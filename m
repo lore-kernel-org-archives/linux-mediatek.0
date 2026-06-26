@@ -4,82 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE56ECD4F26
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2026 08:23:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FC6DCDE008
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2026 08:25:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xYGUQ3BK82lNxZT2T8m+B+M94mEtALcyUvit8Pk1ycM=; b=IYFlh04QE1nWla
-	2Dn2amvvNdo55QUAKVqfUroZGzKiKsG3pq0uo4Y4sRoQn2OMgtw6VkwZVmZ5sIOZv073ZZzYy0xaL
-	NebMj7CADLJqVvsloFQVv5uTkQ+gBVA2SF99xVRPcPVnWaKKZjbFG2Uucswk5aLUOxh81SO2/0qv0
-	auVDdEWvkkdptdWal1BHsY29EahNkU3IWAZ1TUZfsZmJV1OY/mkwOw9DiYLjZ2NG8N848a6TJ8CI1
-	w45s++hdz32Y8/gqTSPAgfXGe85657kTa+VsTb+aSSyFwnUuD9fEGbJTn6F26cqaxiDa7/q9xB5e7
-	5UvBObDNXz2F+iuMrAKg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=27YABmwHBDKVWbwK/4Je2e6GlPCgX/PJ6Dx90r18aqk=; b=nK8TLmEnB1xk8WLg6udD2MP9KQ
+	ZkR1N4G1nw8A7q+h4KRsw8xwG+68epUr7+szb/H1Vdw52opW6bvgsNbqKdrqJvca0tUmizigFHoxm
+	vW6T0Liu/zFIBga68CK4KUgUD41+JXkVmmtajGy9rnZhJdG5WMNiGGgbNkqW1vtLil3WvLy66QvSP
+	y/pFFoJ8jNSN2ej6ZK7LMgo9pZqpdRUfBJ3fncPTDTiI0SqvpKEgSUbqPu14lH4S2CfHgRceaAQOM
+	9dgItsLod6cmuYEL8i0AMGoD9CWolUh5T7/2bXdU2Po2eGSPjYalZee/snYYiposIt1v9iCl/Yfd8
+	aw2cxjLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wd1qI-0000000AqDu-2syb;
-	Fri, 26 Jun 2026 08:23:18 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1wd1sI-0000000Ar9k-43cE;
+	Fri, 26 Jun 2026 08:25:22 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wd1q4-0000000Aq5n-3ccC
-	for linux-mediatek@lists.infradead.org;
-	Fri, 26 Jun 2026 08:23:06 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-2c6c101aeafso3970525ad.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 26 Jun 2026 01:23:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1782462184; x=1783066984; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xYGUQ3BK82lNxZT2T8m+B+M94mEtALcyUvit8Pk1ycM=;
-        b=Jmo2pUjwi88qMHUJ5qKuc0bavBncCld9kljDlWMz7eskrjNVnDs9vJbq2v82fThtfS
-         6LxqErBQs+MHyknagyjrGS3+084+7pKEgyZ+cjX6HAI8Q6sSX2UxxyVp6xXZCgG6XUQB
-         KITLIwBPxrSnusjMxpv5gNShIgGhmmEa5XZWQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782462184; x=1783066984;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=xYGUQ3BK82lNxZT2T8m+B+M94mEtALcyUvit8Pk1ycM=;
-        b=dR4td1CI7fXW28KMr792RwGzM4scor36l7KbBWpD08Xdr72MPddUOkp3mc4uV95hiz
-         vgzpv3UCd27YFl7Q7Xq2xdpX105Zw8rUxiI5p1ELP+NoG95fGTzHK5eznoRx7f9JI4I6
-         QAE/GxC0BTX2yQ4NTKcpKu5ACTepAjspQLuOSXi+Br7RDvXAjOGTn+umwHJ6J2ZWRQ4e
-         2UGx2wminhoiyFxkS8GtbxTtJ/lx5+mRzpq6YrhSrqjyI23xkxFIm0/e7l9uvRP1mfIW
-         4FPC/zf6vS8KyCfwGjuczbMAhY4aklAja7E+/5xVkfP4bDYjxZeFIBFoWmPnqEc4iEl0
-         uYOA==
-X-Forwarded-Encrypted: i=1; AHgh+RqzB2sPxiUQeyGN3vVm9q8Dikjr2Svyc/QMZOthb/AG2v2wSDj3amGeOyRxPWb0JR+BLcmpZMm2s2PjSPWCrA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzVbWRt+xu1Mp5p9HYe0jqZ3yqOjC81COzd8p1XePuEnJ2FqZnX
-	nWizBAA3zltEnP1lFB38NtDrF1poyfKpFT86N2Gb75+IrSJsSKw4SudmxfhVdr0aeQ==
-X-Gm-Gg: AfdE7ckzgea6bfJyko2eCZrysgUZohmT4osZQQoe5i6fizmQl0XBKeFWgyc++cz2kaU
-	zystlVoZvpH8+Ya3jk5dNaBLE6eVZCk7n8u5dhioYoxVOpS7vAUQgAV6mlYIIOLZYt6iugr1EFk
-	F8n0X61qrFUu5nRcgRvOkyzXTwuUq9ZpbbGGItiC1cZw09goMkt+2d5CQgpfXVTtY3iDoBmue96
-	y2Y2ptzaxrHWhOPQrjKrddnQnXcpWxHZtgAbmzzIcF0ELN/Tr/METDxMP/g8S7qimstlhN83DBg
-	8qm3H98+Wps9Em7+Q+sn9uCBOcahZqKCxjghNBQeM6t7PBGf8iWfz/2HCmZSd7f92cFOxWR+qfy
-	WUs3koptHoH9VNInneQ/x7i+ccwHHWgXLll6qlOUJmIuQKgg2gHofFa5GzNak4W3r3S3cjMexk3
-	YV/VdCXaKS+gYy05C6TF4MvRYC26Ru4t3funR8bPU1zbDXyu3YF402V2Q70jR9VyWMhkXl5ww=
-X-Received: by 2002:a17:902:d2c8:b0:2c7:e823:6834 with SMTP id d9443c01a7336-2c7fc657e3dmr59806355ad.8.1782462184290;
-        Fri, 26 Jun 2026 01:23:04 -0700 (PDT)
-Received: from fshao-p620.tpe.corp.google.com ([2a00:79e0:201d:8:2593:3e55:e36c:f47d])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c7f64dcc30sm34619185ad.66.2026.06.26.01.23.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jun 2026 01:23:03 -0700 (PDT)
-From: Fei Shao <fshao@chromium.org>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: [PATCH 2/2] usb: mtu3: condition PHY wakeup for host mode and runtime suspend
-Date: Fri, 26 Jun 2026 16:21:52 +0800
-Message-ID: <20260626082218.2750459-3-fshao@chromium.org>
-X-Mailer: git-send-email 2.55.0.rc0.799.gd6f94ed593-goog
-In-Reply-To: <20260626082218.2750459-1-fshao@chromium.org>
-References: <20260626082218.2750459-1-fshao@chromium.org>
+	id 1wd1sH-0000000Ar9N-0o4T;
+	Fri, 26 Jun 2026 08:25:21 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id D12E360122;
+	Fri, 26 Jun 2026 08:25:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05A0C1F000E9;
+	Fri, 26 Jun 2026 08:25:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1782462319;
+	bh=27YABmwHBDKVWbwK/4Je2e6GlPCgX/PJ6Dx90r18aqk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Lche6K/mOPJxBZQDkapOmDs9pns2e7kmPPpc5zxRLf/bQR45ed/mef7DnmgBPmgkQ
+	 DgfNWeHEBDBNLXZlZzBVtNbEx6cykz5ST3WvJg83jhBDpfdhMDmacdAgIKEon9TLRk
+	 hpRrYwpYzMR4B7rk0CJdLF0S8U47jRU1XkBc2GHflqcPi6kypIR2BsPO3e2tojI7aU
+	 GjNmsZscXWd8OF0RehVDbf/i+EWEw60xbyxMg7yHfb0Fud+pxPD25dqA9SIiTnkx+2
+	 6c48RmtfHt0+gkwi7ynIo6rwrxeXTJQGTEkNVj5plw2ySCUKhAh9xgESMy+9QAelSp
+	 WcsZJqndrMXrA==
+Date: Fri, 26 Jun 2026 10:25:17 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Simon Horman <horms@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	Madhur Agrawal <madhur.agrawal@airoha.com>
+Subject: Re: [PATCH net] net: airoha: fix max receive size configuration
+Message-ID: <aj43bTR4ttfHsyU7@lore-desk>
+References: <20260625-airoha-fix-rx-max-len-v1-1-45b9b827358d@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260626_012304_965402_32515374 
-X-CRM114-Status: UNSURE (   9.90  )
-X-CRM114-Notice: Please train this message.
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="rEKXp4YYWJj8j3Cp"
+Content-Disposition: inline
+In-Reply-To: <20260625-airoha-fix-rx-max-len-v1-1-45b9b827358d@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,39 +70,359 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Host bus activity during gadget mode system suspend can trigger
-unexpected system wakeups via interrupts because PHY wakeup is enabled
-unconditionally.
 
-Improve the suspend flow by conditioning PHY wakeup setup on
-device_may_wakeup() and restricting it to host mode or runtime suspend
-to ensure proper wakeup handling in gadget mode.
+--rEKXp4YYWJj8j3Cp
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Fei Shao <fshao@chromium.org>
----
+> Set the GDM maximum receive size to AIROHA_MAX_RX_SIZE unconditionally
+> during hardware initialization instead of updating it according to the
+> configured MTU. This avoids dropping incoming frames that exceed the
+> current MTU but could still be processed by the networking stack, which
+> is able to fragment the reply on the TX side (e.g. ICMP echo requests).
+> Move the per-port MTU configuration to the PPE egress path where it
+> belongs, and set the tx frame size running airoha_ppe_set_xmit_frame_size=
+()
+> to dynamically track the maximum MTU across running interfaces sharing
+> the same PPE instance.
+> Fix the PPE MTU register addressing to pack two port entries per
+> register word and add WAN_MTU0 configuration for non-LAN GDM devices.
+>=20
+> Fixes: 54d989d58d2a ("net: airoha: Move min/max packet len configuration =
+in airoha_dev_open()")
+> Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
- drivers/usb/mtu3/mtu3_plat.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+commenting on sashiko's report:
+https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260625-airoha-fix-rx-=
+max-len-v1-1-45b9b827358d%40kernel.org
 
-diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
-index cc8a864dbd63..b4f4c776adb9 100644
---- a/drivers/usb/mtu3/mtu3_plat.c
-+++ b/drivers/usb/mtu3/mtu3_plat.c
-@@ -544,7 +544,8 @@ static int mtu3_suspend_common(struct device *dev, pm_message_t msg)
- 
- 	ssusb_phy_power_off(ssusb);
- 	clk_bulk_disable_unprepare(BULK_CLKS_CNT, ssusb->clks);
--	ssusb_wakeup_set(ssusb, true);
-+	if (device_may_wakeup(dev) && (ssusb->is_host || PMSG_IS_AUTO(msg)))
-+		ssusb_wakeup_set(ssusb, true);
- 	return 0;
- 
- sleep_err:
--- 
-2.55.0.rc0.799.gd6f94ed593-goog
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c  | 68 ++++++++++---------------=
+------
+>  drivers/net/ethernet/airoha/airoha_eth.h  |  2 +
+>  drivers/net/ethernet/airoha/airoha_ppe.c  | 39 +++++++++++++-----
+>  drivers/net/ethernet/airoha/airoha_regs.h |  9 ++--
+>  4 files changed, 58 insertions(+), 60 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
+net/airoha/airoha_eth.c
+> index 932b3a3df2e5..3f451c2d4c24 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -178,10 +178,15 @@ static void airoha_fe_maccr_init(struct airoha_eth =
+*eth)
+>  {
+>  	int p;
+> =20
+> -	for (p =3D 1; p <=3D ARRAY_SIZE(eth->ports); p++)
+> +	for (p =3D 1; p <=3D ARRAY_SIZE(eth->ports); p++) {
+>  		airoha_fe_set(eth, REG_GDM_FWD_CFG(p),
+>  			      GDM_TCP_CKSUM_MASK | GDM_UDP_CKSUM_MASK |
+>  			      GDM_IP4_CKSUM_MASK | GDM_DROP_CRC_ERR_MASK);
+> +		airoha_fe_rmw(eth, REG_GDM_LEN_CFG(p),
+> +			      GDM_SHORT_LEN_MASK | GDM_LONG_LEN_MASK,
+> +			      FIELD_PREP(GDM_SHORT_LEN_MASK, 60) |
+> +			      FIELD_PREP(GDM_LONG_LEN_MASK, AIROHA_MAX_RX_SIZE));
+> +	}
+> =20
+>  	airoha_fe_rmw(eth, REG_CDM_VLAN_CTRL(1), CDM_VLAN_MASK,
+>  		      FIELD_PREP(CDM_VLAN_MASK, 0x8100));
+> @@ -1831,13 +1836,24 @@ static void airoha_update_hw_stats(struct airoha_=
+gdm_dev *dev)
+>  	spin_unlock(&port->stats_lock);
+>  }
+> =20
+> +static void airoha_dev_set_xmit_frame_size(struct net_device *netdev)
+> +{
+> +	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+> +
+> +	airoha_ppe_set_xmit_frame_size(dev);
+> +	if (!airoha_is_lan_gdm_dev(dev))
+> +		airoha_fe_rmw(dev->eth, REG_WAN_MTU0, WAN_MTU0_MASK,
+> +			      FIELD_PREP(WAN_MTU0_MASK,
+> +					 VLAN_ETH_HLEN + netdev->mtu));
+> +}
 
+- Could the WAN_MTU0 update here use the same max-across-siblings
+  aggregation as airoha_ppe_set_xmit_frame_size()?
+  - This is same issue reported by sashiko-gemini. There is just one WAN de=
+vice
+    in the system so we do not need calculate the max MTU here.
+
+> +
+>  static int airoha_dev_open(struct net_device *netdev)
+>  {
+> -	int err, len =3D ETH_HLEN + netdev->mtu + ETH_FCS_LEN;
+>  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+>  	struct airoha_gdm_port *port =3D dev->port;
+> -	u32 cur_len, pse_port =3D FE_PSE_PORT_PPE1;
+>  	struct airoha_qdma *qdma =3D dev->qdma;
+> +	u32 pse_port =3D FE_PSE_PORT_PPE1;
+> +	int err;
+> =20
+>  	netif_tx_start_all_queues(netdev);
+>  	err =3D airoha_set_vip_for_gdm_port(dev, true);
+> @@ -1851,19 +1867,7 @@ static int airoha_dev_open(struct net_device *netd=
+ev)
+>  		airoha_fe_clear(qdma->eth, REG_GDM_INGRESS_CFG(port->id),
+>  				GDM_STAG_EN_MASK);
+> =20
+> -	cur_len =3D airoha_fe_get(qdma->eth, REG_GDM_LEN_CFG(port->id),
+> -				GDM_LONG_LEN_MASK);
+> -	if (!port->users || len > cur_len) {
+> -		/* Opening a sibling net_device with a larger MTU updates the
+> -		 * MTU of already running devices. This is required to allow
+> -		 * multiple net_devices with different MTUs to share the same
+> -		 * GDM port.
+> -		 */
+> -		airoha_fe_rmw(qdma->eth, REG_GDM_LEN_CFG(port->id),
+> -			      GDM_SHORT_LEN_MASK | GDM_LONG_LEN_MASK,
+> -			      FIELD_PREP(GDM_SHORT_LEN_MASK, 60) |
+> -			      FIELD_PREP(GDM_LONG_LEN_MASK, len));
+> -	}
+> +	airoha_dev_set_xmit_frame_size(netdev);
+>  	port->users++;
+> =20
+>  	if (!airoha_is_lan_gdm_dev(dev) &&
+> @@ -1875,30 +1879,6 @@ static int airoha_dev_open(struct net_device *netd=
+ev)
+>  	return 0;
+>  }
+> =20
+> -static void airoha_set_port_mtu(struct airoha_eth *eth,
+> -				struct airoha_gdm_port *port)
+> -{
+> -	u32 len =3D 0;
+> -	int i;
+> -
+> -	for (i =3D 0; i < ARRAY_SIZE(port->devs); i++) {
+> -		struct airoha_gdm_dev *dev =3D port->devs[i];
+> -		struct net_device *netdev;
+> -
+> -		if (!dev)
+> -			continue;
+> -
+> -		netdev =3D netdev_from_priv(dev);
+> -		if (netif_running(netdev))
+> -			len =3D max_t(u32, len, netdev->mtu);
+> -	}
+> -	len +=3D ETH_HLEN + ETH_FCS_LEN;
+> -
+> -	airoha_fe_rmw(eth, REG_GDM_LEN_CFG(port->id),
+> -		      GDM_LONG_LEN_MASK,
+> -		      FIELD_PREP(GDM_LONG_LEN_MASK, len));
+> -}
+> -
+>  static int airoha_dev_stop(struct net_device *netdev)
+>  {
+>  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+> @@ -1909,7 +1889,7 @@ static int airoha_dev_stop(struct net_device *netde=
+v)
+>  	airoha_set_vip_for_gdm_port(dev, false);
+> =20
+>  	if (--port->users)
+> -		airoha_set_port_mtu(dev->eth, port);
+> +		airoha_ppe_set_xmit_frame_size(dev);
+
+- On the close path, the call is to airoha_ppe_set_xmit_frame_size()
+  directly rather than the airoha_dev_set_xmit_frame_size() wrapper.
+  Does this mean WAN_MTU0 is never refreshed when a WAN dev is closed?
+  For example, if a small-MTU sibling is closed while a larger-MTU dev
+  remains running, the PPE MTU register gets recomputed to the larger
+  value but WAN_MTU0 retains the smaller value written at the last open
+  or change_mtu.
+  The commit message states:
+    set the tx frame size running airoha_ppe_set_xmit_frame_size()
+    to dynamically track the maximum MTU across running interfaces sharing
+    the same PPE instance.
+  Is the asymmetry between PPE MTU (max across siblings) and WAN_MTU0
+  (per-netdev write) intentional?
+  - This is same issue reported by sashiko-gemini. There is just one WAN de=
+vice
+    in the system so there is no point to update WAN_MTU0 if the WAN device=
+ is
+    stopped.
+
+Regards,
+Lorenzo
+
+>  	else
+>  		airoha_set_gdm_port_fwd_cfg(qdma->eth,
+>  					    REG_GDM_FWD_CFG(port->id),
+> @@ -1962,10 +1942,6 @@ static int airoha_enable_gdm2_loopback(struct airo=
+ha_gdm_dev *dev)
+>  		      FIELD_PREP(LPBK_CHAN_MASK, chan) |
+>  		      LBK_GAP_MODE_MASK | LBK_LEN_MODE_MASK |
+>  		      LBK_CHAN_MODE_MASK | LPBK_EN_MASK);
+> -	airoha_fe_rmw(eth, REG_GDM_LEN_CFG(AIROHA_GDM2_IDX),
+> -		      GDM_SHORT_LEN_MASK | GDM_LONG_LEN_MASK,
+> -		      FIELD_PREP(GDM_SHORT_LEN_MASK, 60) |
+> -		      FIELD_PREP(GDM_LONG_LEN_MASK, AIROHA_MAX_MTU));
+>  	/* Forward the traffic to the proper GDM port */
+>  	pse_port =3D port->id =3D=3D AIROHA_GDM3_IDX ? FE_PSE_PORT_GDM3
+>  					       : FE_PSE_PORT_GDM4;
+> @@ -2098,7 +2074,7 @@ static int airoha_dev_change_mtu(struct net_device =
+*netdev, int mtu)
+> =20
+>  	WRITE_ONCE(netdev->mtu, mtu);
+>  	if (port->users)
+> -		airoha_set_port_mtu(dev->eth, port);
+> +		airoha_dev_set_xmit_frame_size(netdev);
+> =20
+>  	return 0;
+>  }
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
+net/airoha/airoha_eth.h
+> index d7ff8c5200e2..0c3fb6e5d7f1 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> @@ -23,6 +23,7 @@
+>  #define AIROHA_MAX_DSA_PORTS		7
+>  #define AIROHA_MAX_NUM_RSTS		3
+>  #define AIROHA_MAX_MTU			9220
+> +#define AIROHA_MAX_RX_SIZE		16128
+>  #define AIROHA_MAX_PACKET_SIZE		2048
+>  #define AIROHA_NUM_QOS_CHANNELS		4
+>  #define AIROHA_NUM_QOS_QUEUES		8
+> @@ -676,6 +677,7 @@ int airoha_get_fe_port(struct airoha_gdm_dev *dev);
+>  bool airoha_is_valid_gdm_dev(struct airoha_eth *eth,
+>  			     struct airoha_gdm_dev *dev);
+> =20
+> +void airoha_ppe_set_xmit_frame_size(struct airoha_gdm_dev *dev);
+>  void airoha_ppe_set_cpu_port(struct airoha_gdm_dev *dev, u8 ppe_id, u8 f=
+port);
+>  bool airoha_ppe_is_enabled(struct airoha_eth *eth, int index);
+>  void airoha_ppe_check_skb(struct airoha_ppe_dev *dev, struct sk_buff *sk=
+b,
+> diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ether=
+net/airoha/airoha_ppe.c
+> index 42f4b0f21d17..e7c78293002a 100644
+> --- a/drivers/net/ethernet/airoha/airoha_ppe.c
+> +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+> @@ -97,6 +97,33 @@ void airoha_ppe_set_cpu_port(struct airoha_gdm_dev *de=
+v, u8 ppe_id, u8 fport)
+>  		      __field_prep(DFT_CPORT_MASK(fport), fe_cpu_port));
+>  }
+> =20
+> +void airoha_ppe_set_xmit_frame_size(struct airoha_gdm_dev *dev)
+> +{
+> +	struct airoha_gdm_port *port =3D dev->port;
+> +	struct airoha_eth *eth =3D dev->eth;
+> +	int i, ppe_id, index;
+> +	u32 len =3D 0;
+> +
+> +	for (i =3D 0; i < ARRAY_SIZE(port->devs); i++) {
+> +		struct airoha_gdm_dev *d =3D port->devs[i];
+> +		struct net_device *netdev;
+> +
+> +		if (!d)
+> +			continue;
+> +
+> +		netdev =3D netdev_from_priv(d);
+> +		if (netif_running(netdev))
+> +			len =3D max_t(u32, len, netdev->mtu);
+> +	}
+> +	len +=3D VLAN_ETH_HLEN;
+> +
+> +	ppe_id =3D !airoha_is_lan_gdm_dev(dev) && airoha_ppe_is_enabled(eth, 1);
+> +	index =3D port->id =3D=3D AIROHA_GDM4_IDX ? 7 : port->id;
+> +	airoha_fe_rmw(eth, REG_PPE_MTU(ppe_id, index),
+> +		      FP_EGRESS_MTU_MASK(index),
+> +		      __field_prep(FP_EGRESS_MTU_MASK(index), len));
+> +}
+> +
+>  static void airoha_ppe_hw_init(struct airoha_ppe *ppe)
+>  {
+>  	u32 sram_ppe_num_data_entries =3D PPE_SRAM_NUM_ENTRIES, sram_num_entrie=
+s;
+> @@ -115,8 +142,6 @@ static void airoha_ppe_hw_init(struct airoha_ppe *ppe)
+>  		PPE_RAM_NUM_ENTRIES_SHIFT(sram_ppe_num_data_entries);
+> =20
+>  	for (i =3D 0; i < eth->soc->num_ppe; i++) {
+> -		int p;
+> -
+>  		airoha_fe_wr(eth, REG_PPE_TB_BASE(i),
+>  			     ppe->foe_dma + sram_tb_size);
+> =20
+> @@ -166,15 +191,6 @@ static void airoha_ppe_hw_init(struct airoha_ppe *pp=
+e)
+>  		airoha_fe_wr(eth, REG_PPE_HASH_SEED(i), PPE_HASH_SEED);
+>  		airoha_fe_clear(eth, REG_PPE_PPE_FLOW_CFG(i),
+>  				PPE_FLOW_CFG_IP6_6RD_MASK);
+> -
+> -		for (p =3D 0; p < ARRAY_SIZE(eth->ports); p++)
+> -			airoha_fe_rmw(eth, REG_PPE_MTU(i, p),
+> -				      FP0_EGRESS_MTU_MASK |
+> -				      FP1_EGRESS_MTU_MASK,
+> -				      FIELD_PREP(FP0_EGRESS_MTU_MASK,
+> -						 AIROHA_MAX_MTU) |
+> -				      FIELD_PREP(FP1_EGRESS_MTU_MASK,
+> -						 AIROHA_MAX_MTU));
+>  	}
+> =20
+>  	for (i =3D 0; i < ARRAY_SIZE(eth->ports); i++) {
+> @@ -196,6 +212,7 @@ static void airoha_ppe_hw_init(struct airoha_ppe *ppe)
+>  				 airoha_ppe_is_enabled(eth, 1);
+>  			fport =3D airoha_get_fe_port(dev);
+>  			airoha_ppe_set_cpu_port(dev, ppe_id, fport);
+> +			airoha_ppe_set_xmit_frame_size(dev);
+>  		}
+>  	}
+>  }
+> diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethe=
+rnet/airoha/airoha_regs.h
+> index 436f3c8779c1..6fed63d013b4 100644
+> --- a/drivers/net/ethernet/airoha/airoha_regs.h
+> +++ b/drivers/net/ethernet/airoha/airoha_regs.h
+> @@ -327,9 +327,8 @@
+>  #define PPE_SRAM_TABLE_EN_MASK			BIT(0)
+> =20
+>  #define REG_PPE_MTU_BASE(_n)			(((_n) ? PPE2_BASE : PPE1_BASE) + 0x304)
+> -#define REG_PPE_MTU(_m, _n)			(REG_PPE_MTU_BASE(_m) + ((_n) << 2))
+> -#define FP1_EGRESS_MTU_MASK			GENMASK(29, 16)
+> -#define FP0_EGRESS_MTU_MASK			GENMASK(13, 0)
+> +#define REG_PPE_MTU(_m, _n)			(REG_PPE_MTU_BASE(_m) + (((_n) / 2) << 2))
+> +#define FP_EGRESS_MTU_MASK(_n)			GENMASK(13 + (((_n) % 2) << 4), ((_n) %=
+ 2) << 4)
+> =20
+>  #define REG_PPE_RAM_CTRL(_n)			(((_n) ? PPE2_BASE : PPE1_BASE) + 0x31c)
+>  #define PPE_SRAM_CTRL_ACK_MASK			BIT(31)
+> @@ -377,6 +376,10 @@
+>  #define REG_SRC_PORT_FC_MAP6		0x2298
+>  #define FC_ID_OF_SRC_PORT_MASK(_n)	GENMASK(4 + ((_n) << 3), ((_n) << 3))
+> =20
+> +#define REG_WAN_MTU0			0x2300
+> +#define WAN_MTU1_MASK			GENMASK(29, 16)
+> +#define WAN_MTU0_MASK			GENMASK(13, 0)
+> +
+>  #define REG_CDM5_RX_OQ1_DROP_CNT	0x29d4
+> =20
+>  /* QDMA */
+>=20
+> ---
+> base-commit: fd1269e454089abda0e4f9e5e25ecd02a90ab009
+> change-id: 20260618-airoha-fix-rx-max-len-57654b661646
+>=20
+> Best regards,
+> --=20
+> Lorenzo Bianconi <lorenzo@kernel.org>
+>=20
+
+--rEKXp4YYWJj8j3Cp
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaj43bQAKCRA6cBh0uS2t
+rFrUAQCOeB4a0gN1IdYKnxN2lXsizU+k1u9UYyshfWu83j3wxgD+MFiRhBMQ733l
+YJwwQzNoR1eIe+9/fCDIkZWCL2Bd9gI=
+=9uSQ
+-----END PGP SIGNATURE-----
+
+--rEKXp4YYWJj8j3Cp--
 
