@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66B9CCDE008
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2026 04:01:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E998CDE00C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2026 04:01:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tfND9Z91LhjGY2TPR8AfQvmfJ5GRmX7kVa2nDwD9bPI=; b=oyLNLaAWzYG+g1A0aP0G11s4vR
-	/mOU2CGaNsoJ+ZIYy0rkI6ZHf3F8tv1ZJDcmDDPfSZqhdk40YdHzTtzJc5f2MErhdXbsJ7W7I6Eoh
-	vqu3mKQTUY2iPIV5hZ76MMdG9Pi9oTeLJYlPNm8FlzuVI2Z9wP+7RYQRZbY/64Kjf+tDTQY2QpDQo
-	OhAxz809afSawAtxrQpznr+t86pHQBZhWNw1t1rk2eD0MD5TJJNCnPQkPMnXgB4yT4plbZYGT4pBA
-	13aSTN37C27TaP8kFV+tJjAN2hoxCRfFiT6tPB04tY6VuR8VHDXO4g+HuP36uKUGj6zwz7blmhpMC
-	+VeuMsHw==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qoLhsaKF0XMnlzQT9UkysdX1D+uL4jIexeYAcszBsCk=; b=x25ByZPUgu2dDbjL228eWLxfmR
+	UPaYO4w2DIlemm7zWOhno1DadZ31vWc2dNHaqnJ6hpHuWZYK7ngtzAXEw438sVHZFlm5F7ZEkf+92
+	+husUd9CbTY1Gez4NVInNx+KS4EOnqnFft55GKB6oZXl7C/HEjaJDU5Y+6b1eF023siNZFRCRFnnl
+	F1jrdtRC7utY5jyBCIMGvW0FunLErY3mE4a+jI1usAQI3C6PVZHIawq9ab88tbrbcVq4lEI28BRwr
+	XW024UUAtwDeuyhVqtpM3/PfvEd0NmrFU8MZn9hP4Ob4bKFlqB4meH6p9Os1FwDFNCGA4H4+o2Vlx
+	m1QsL4pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcxl2-0000000APd0-0WMX;
-	Fri, 26 Jun 2026 04:01:36 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wcxkz-0000000APWh-1QLM;
+	Fri, 26 Jun 2026 04:01:33 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcxkr-0000000APKR-2VLH;
-	Fri, 26 Jun 2026 04:01:27 +0000
-X-UUID: b19d089a711311f1afed4741b24580c9-20260625
+	id 1wcxkp-0000000APHt-32Uf;
+	Fri, 26 Jun 2026 04:01:25 +0000
+X-UUID: aec1d768711311f1acbe4559397dec65-20260625
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=tfND9Z91LhjGY2TPR8AfQvmfJ5GRmX7kVa2nDwD9bPI=;
-	b=LVtdR9uh29+oFDUv+aNsRklag7M0L5izy98jFeIey0jy6BGsWo/2/AgaP7+PQoxzZ377oKOI4lYGUzzqw2urDj73FmeiymSjoEQ4KqWCO0OcHQH+y+tybBU8EoPoCSmQ0bU1X0+KLhR6DZuYgW8/tCLXWz2oW+H2eN5SZJ5BcOs=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=qoLhsaKF0XMnlzQT9UkysdX1D+uL4jIexeYAcszBsCk=;
+	b=TYjmYrTpDs8Nh5H/Y5im7GNKjWngTfBry3mai29K7nO4+gWOR5OPNYRxHnN7uzK9VBaGQ4LwOUWVFPl7eCiMOg7L4AlPmm5zlcdbXye278000deY+QIPLpBiQ5y1YXMuF+XF6lBP4FeZcKu/2DRkjtkN/FRLcFYg/v/wpPw1NCk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.17,REQID:d92c7eb3-00e5-4a53-b09e-32bc1776c786,IP:0,U
+X-CID-O-INFO: VERSION:1.3.17,REQID:23a84540-7f94-4e04-880e-c14a088983cc,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:d497b38,CLOUDID:a9d8f866-eeb4-4f3b-8eb9-dd434ebf4301,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|136|836|865|888|898,TC:-5,Content:0|
-	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
-	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:d497b38,CLOUDID:8d62ae57-8329-46f3-8be7-5acaf04e0995,B
+	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|50,
+	EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0
+	,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: b19d089a711311f1afed4741b24580c9-20260625
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+X-UUID: aec1d768711311f1acbe4559397dec65-20260625
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <justin.yeh@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1573581240; Thu, 25 Jun 2026 21:01:22 -0700
+	with ESMTP id 681510861; Thu, 25 Jun 2026 21:01:17 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 26 Jun 2026 12:01:17 +0800
+ 15.2.2562.29; Fri, 26 Jun 2026 12:01:15 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 26 Jun 2026 12:01:17 +0800
+ 15.2.2562.29 via Frontend Transport; Fri, 26 Jun 2026 12:01:15 +0800
 From: Justin Yeh <justin.yeh@mediatek.com>
 To: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linusw@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
@@ -62,19 +62,17 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	Justin Yeh <justin.yeh@mediatek.com>
-Subject: [PATCH v4 17/32] pinctrl: mediatek: mt8516: Enable module build support
-Date: Fri, 26 Jun 2026 12:00:46 +0800
-Message-ID: <20260626040112.2436185-18-justin.yeh@mediatek.com>
+Subject: [PATCH v4 00/32] pinctrl: mediatek: Enable module build support for all drivers
+Date: Fri, 26 Jun 2026 12:00:29 +0800
+Message-ID: <20260626040112.2436185-1-justin.yeh@mediatek.com>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260626040112.2436185-1-justin.yeh@mediatek.com>
-References: <20260626040112.2436185-1-justin.yeh@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260625_210125_682071_A446A780 
-X-CRM114-Status: GOOD (  11.00  )
+X-CRM114-CacheID: sfid-20260625_210123_772075_7A060388 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,43 +87,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MODULE_LICENSE("GPL v2") macro and change Kconfig option from
-bool to tristate to allow building as a loadable kernel module.
+Sorry for the quick v4 - v3 was sent with an incomplete cover letter
+(template placeholders) by mistake. This v4 also unifies MODULE_LICENSE
+to consistently use "GPL v2" across all patches.
 
-This is required for Android GKI + vendor_dlkm deployments where
-vendor-specific drivers must be kept separate from the GKI vmlinux.
+This series enables all MediaTek pinctrl drivers to be built as loadable
+kernel modules. This is required for Android GKI (Generic Kernel Image) +
+vendor_dlkm deployments where vendor-specific drivers must be kept separate
+from the GKI vmlinux.
 
-Fixes: 264667112ef0 ("pinctrl: mediatek: Add MT8516 Pinctrl driver")
-Signed-off-by: Justin Yeh <justin.yeh@mediatek.com>
----
- drivers/pinctrl/mediatek/Kconfig          | 2 +-
- drivers/pinctrl/mediatek/pinctrl-mt8516.c | 3 +++
- 2 files changed, 4 insertions(+), 1 deletion(-)
+Each patch adds MODULE_LICENSE("GPL v2") and MODULE_DESCRIPTION() macros where
+missing, and changes the Kconfig option from bool to tristate. This allows
+these drivers to be properly packaged as vendor kernel modules while
+maintaining the existing built-in option.
 
-diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-index 5cbdb7d8597d..b92a3718d451 100644
---- a/drivers/pinctrl/mediatek/Kconfig
-+++ b/drivers/pinctrl/mediatek/Kconfig
-@@ -300,7 +300,7 @@ config PINCTRL_MT8365
- 	select PINCTRL_MTK
- 
- config PINCTRL_MT8516
--	bool "MediaTek MT8516 pin control"
-+	tristate "MediaTek MT8516 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8516.c b/drivers/pinctrl/mediatek/pinctrl-mt8516.c
-index 68d6638e7f4b..94de038026a3 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8516.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8516.c
-@@ -343,3 +343,6 @@ static int __init mtk_pinctrl_init(void)
- 	return platform_driver_register(&mtk_pinctrl_driver);
- }
- arch_initcall(mtk_pinctrl_init);
-+
-+MODULE_DESCRIPTION("MediaTek MT8516 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
+Changes in v4:
+  * Fix cover letter content (v3 accidentally sent with template placeholders)
+  * Unify MODULE_LICENSE to use "GPL v2" consistently across all drivers
+  * Update all commit messages to reflect "GPL v2" instead of "GPL"
+
+Changes in v3:
+  * Add MODULE_DESCRIPTION() for all drivers (even those that already had MODULE_LICENSE)
+  * Update commit messages to reflect that we're adding MODULE_DESCRIPTION too
+
+Changes in v2:
+  * Squash MODULE_LICENSE and tristate changes into single patch per driver
+  * Extend fix to all MediaTek pinctrl drivers (32 total), not just MT8189
+  * Add Android GKI + vendor_dlkm context to cover letter
+  * Add MODULE_DESCRIPTION() where it was missing
+  * Add Fixes: tags referencing the original commits that added each driver
+
+Justin Yeh (32):
+  pinctrl: mediatek: mt8189: Enable module build support
+  pinctrl: mediatek: mt6878: Enable module build support
+  pinctrl: mediatek: mt6893: Enable module build support
+  pinctrl: mediatek: mt7622: Enable module build support
+  pinctrl: mediatek: mt7981: Enable module build support
+  pinctrl: mediatek: mt7986: Enable module build support
+  pinctrl: mediatek: mt7988: Enable module build support
+  pinctrl: mediatek: mt8167: Enable module build support
+  pinctrl: mediatek: mt8173: Enable module build support
+  pinctrl: mediatek: mt8183: Enable module build support
+  pinctrl: mediatek: mt8186: Enable module build support
+  pinctrl: mediatek: mt8188: Enable module build support
+  pinctrl: mediatek: mt8192: Enable module build support
+  pinctrl: mediatek: mt8195: Enable module build support
+  pinctrl: mediatek: mt8196: Enable module build support
+  pinctrl: mediatek: mt8365: Enable module build support
+  pinctrl: mediatek: mt8516: Enable module build support
+  pinctrl: mediatek: mt2701: Enable module build support
+  pinctrl: mediatek: mt7623: Enable module build support
+  pinctrl: mediatek: mt7629: Enable module build support
+  pinctrl: mediatek: mt8135: Enable module build support
+  pinctrl: mediatek: mt8127: Enable module build support
+  pinctrl: mediatek: mt7620: Enable module build support
+  pinctrl: mediatek: mt7621: Enable module build support
+  pinctrl: mediatek: mt76x8: Enable module build support
+  pinctrl: mediatek: rt2880: Enable module build support
+  pinctrl: mediatek: rt305x: Enable module build support
+  pinctrl: mediatek: rt3883: Enable module build support
+  pinctrl: mediatek: mt6397: Enable module build support
+  pinctrl: mediatek: mt2712: Enable module build support
+  pinctrl: mediatek: mt6795: Enable module build support
+  pinctrl: mediatek: mt6797: Enable module build support
+
+ drivers/pinctrl/mediatek/Kconfig          | 64 +++++++++++------------
+ drivers/pinctrl/mediatek/pinctrl-mt2701.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt2712.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt6397.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt6795.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt6797.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt6878.c |  1 +
+ drivers/pinctrl/mediatek/pinctrl-mt6893.c |  1 +
+ drivers/pinctrl/mediatek/pinctrl-mt7620.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt7621.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt7622.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt7623.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt7629.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt76x8.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt7981.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt7986.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt7988.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt8127.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt8135.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt8167.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt8173.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt8183.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt8186.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt8188.c |  1 +
+ drivers/pinctrl/mediatek/pinctrl-mt8189.c |  1 +
+ drivers/pinctrl/mediatek/pinctrl-mt8192.c |  1 +
+ drivers/pinctrl/mediatek/pinctrl-mt8195.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-mt8196.c |  1 +
+ drivers/pinctrl/mediatek/pinctrl-mt8365.c |  1 +
+ drivers/pinctrl/mediatek/pinctrl-mt8516.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-rt2880.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-rt305x.c |  3 ++
+ drivers/pinctrl/mediatek/pinctrl-rt3883.c |  3 ++
+ 33 files changed, 114 insertions(+), 32 deletions(-)
+
 -- 
 2.45.2
 
