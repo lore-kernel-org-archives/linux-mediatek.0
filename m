@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAE70CDE00C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2026 01:47:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB6FBCDE008
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2026 01:47:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8OvGKmbo6Ls5xAuTXCein36Ccwe4D0wJym5hMrgmoDs=; b=YtxwzcMgDTRNRQ7aU4xACz1pwm
-	935OmYBy0O4Ji9jYTSWblKT4nGE6SmNrWtvjtBxo/fJhMpgpONq+bMMKm78Ru8QYDflhYZGjco1w4
-	2mS0J8RoBd5hizFxASN9gWEPf8Rf80YD2pezJxDwky5FllmsL8W9nQlr4zNdHTrWpuwu38ig3POQ8
-	C6E5DEKPJvLS7KBtxJzJIA+YHkJ6qZV/J7VjSOwRNc/gdbJx7N66ifJlUiL0+nqBqwwWkFvGarR/P
-	u5+y7k49bEG14/5tGD/RzHr+z912Cpjgx/BI1JNYaK56ldZ/9jemaE5EDzADYC6LI2u96Zdk/Wrjq
-	M2oI6tUg==;
+	bh=IZZhfRnKb7sALnSbtGAx1Pgd6HK4coKjRJT/yXiPfSk=; b=dwtK2h59QpQR8tBS858hfbD1hU
+	ORMIbpGqGGumbn6zWq7hUfIH05Cq3x0sLFr+7+JG0E7g0IMYr2GeuZ5Yxd92LxqIjBtits9MLY1NS
+	pht0TsevTdDBDhgWBWwhBmg1iFwbDbyjhlSV+IjmZsUJ4tRM6cmeZ4K7Ql4HJNrbo+bHvlXzG+aMH
+	OYeghEdkoeUQcRifZA6DIYt1jBmuDeN3ir8rdGuevI+xHPhjKDhJn7ycCu38u6Ycnw2LQUHrErRzH
+	x8Kqo10ORaJIdnIRG+M7+EtoWZz17Dt3f3Lc7psVebv8kIXewLrrDIH1GDIk1qOsFU6EgBIjmpEJd
+	dlGHNFqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcvf1-0000000ACpH-3Z6O;
-	Fri, 26 Jun 2026 01:47:15 +0000
+	id 1wcvf6-0000000ACte-0WB8;
+	Fri, 26 Jun 2026 01:47:20 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wcvcr-0000000A9z8-0GXc;
+	id 1wcvcr-0000000AABL-0Rzj;
 	Fri, 26 Jun 2026 01:45:03 +0000
-X-UUID: a220b4b0710011f1afed4741b24580c9-20260625
+X-UUID: a00dcd8e710011f1afed4741b24580c9-20260625
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=8OvGKmbo6Ls5xAuTXCein36Ccwe4D0wJym5hMrgmoDs=;
-	b=mmnBqK9XblRGam4nQ9TDDzkeI0R5O7ll0YrdknWJl2s6hRJJpkl8wnGYLYAO6aryVGSp0vtnvYMdiBz0e6lflc2WuYEuVxEFg8nOZ91AY/EHj3pWTFT+vbzpyH23sDjT8xmDY3jXSNNVLJg7tz5rCkwPQMO7Wa6NwODXCtD3DIE=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=IZZhfRnKb7sALnSbtGAx1Pgd6HK4coKjRJT/yXiPfSk=;
+	b=dXceoYAAAjzSxgH3F21QIWtD1Z+3mi6QA4mZcZHpOxTjw21TS0lExZHAQFzwxKdOVRvX3k0gRh6euNMN5PuqJZKJEvFgGFPuKO5meyPik3W9wewgZbWGGgIJ2cwgiSPgab2ZAwpC7XjRPD+wlflsBvpgkr8IzlOIEXx1DQl1Rd8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.17,REQID:4482532b-810e-428a-ac9d-1da31b440283,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:d497b38,CLOUDID:a799dcfc-4e5b-4880-a751-e09c9abb260d,B
+X-CID-O-INFO: VERSION:1.3.17,REQID:80edf38d-64c3-4cab-a93a-6b94a46b75b4,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:d497b38,CLOUDID:4c26baf7-0b89-48e7-aff3-7b92a9556644,B
 	ulkID:nil,BulkQuantity:0,SF:81|82|102|136|836|865|888|898,TC:-5,Content:0|
 	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
 	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,18 +42,18 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: a220b4b0710011f1afed4741b24580c9-20260625
+X-UUID: a00dcd8e710011f1afed4741b24580c9-20260625
 Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <justin.yeh@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 641095209; Thu, 25 Jun 2026 18:44:55 -0700
+	with ESMTP id 2023152934; Thu, 25 Jun 2026 18:44:52 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
  MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 26 Jun 2026 09:44:50 +0800
+ 15.2.2562.29; Fri, 26 Jun 2026 09:44:48 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 26 Jun 2026 09:44:49 +0800
+ 15.2.2562.29 via Frontend Transport; Fri, 26 Jun 2026 09:44:48 +0800
 From: Justin Yeh <justin.yeh@mediatek.com>
 To: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linusw@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
@@ -62,9 +62,9 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	Justin Yeh <justin.yeh@mediatek.com>
-Subject: [PATCH v3 28/32] pinctrl: mediatek: rt3883: Enable module build support
-Date: Fri, 26 Jun 2026 09:44:27 +0800
-Message-ID: <20260626014442.2378513-29-justin.yeh@mediatek.com>
+Subject: [PATCH v3 19/32] pinctrl: mediatek: mt7623: Enable module build support
+Date: Fri, 26 Jun 2026 09:44:18 +0800
+Message-ID: <20260626014442.2378513-20-justin.yeh@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20260626014442.2378513-1-justin.yeh@mediatek.com>
 References: <20260626014442.2378513-1-justin.yeh@mediatek.com>
@@ -73,8 +73,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260625_184501_172601_9415B9E3 
-X-CRM114-Status: GOOD (  11.13  )
+X-CRM114-CacheID: sfid-20260625_184501_299475_B4868E8E 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,37 +95,37 @@ bool to tristate to allow building as a loadable kernel module.
 This is required for Android GKI + vendor_dlkm deployments where
 vendor-specific drivers must be kept separate from the GKI vmlinux.
 
-Fixes: dc6ae2057c9c ("pinctrl: ralink: move to mediatek as mtmips")
+Fixes: e7507f57a93a ("pinctrl: mediatek: add MT7623 pinctrl driver based on generic pinctrl binding")
 Signed-off-by: Justin Yeh <justin.yeh@mediatek.com>
 ---
  drivers/pinctrl/mediatek/Kconfig          | 2 +-
- drivers/pinctrl/mediatek/pinctrl-rt3883.c | 3 +++
+ drivers/pinctrl/mediatek/pinctrl-mt7623.c | 3 +++
  2 files changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-index 5b0471b7e920..eb4bb7408f8d 100644
+index 0d2f1872902d..a733ba63b9a7 100644
 --- a/drivers/pinctrl/mediatek/Kconfig
 +++ b/drivers/pinctrl/mediatek/Kconfig
-@@ -83,7 +83,7 @@ config PINCTRL_RT305X
- 	select PINCTRL_MTK_MTMIPS
+@@ -98,7 +98,7 @@ config PINCTRL_MT2701
+ 	select PINCTRL_MTK
  
- config PINCTRL_RT3883
--	bool "Ralink RT3883 pin control"
-+	tristate "Ralink RT3883 pin control"
- 	depends on SOC_RT3883 || COMPILE_TEST
- 	depends on RALINK
- 	default SOC_RT3883
-diff --git a/drivers/pinctrl/mediatek/pinctrl-rt3883.c b/drivers/pinctrl/mediatek/pinctrl-rt3883.c
-index eeaf344c3647..b968b157817c 100644
---- a/drivers/pinctrl/mediatek/pinctrl-rt3883.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-rt3883.c
-@@ -106,3 +106,6 @@ static int __init rt3883_pinctrl_init(void)
- 	return platform_driver_register(&rt3883_pinctrl_driver);
+ config PINCTRL_MT7623
+-	bool "MediaTek MT7623 pin control with generic binding"
++	tristate "MediaTek MT7623 pin control with generic binding"
+ 	depends on MACH_MT7623 || COMPILE_TEST
+ 	depends on OF
+ 	default MACH_MT7623
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7623.c b/drivers/pinctrl/mediatek/pinctrl-mt7623.c
+index 69c06c2c0e21..4db7a0ba466d 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt7623.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt7623.c
+@@ -1440,3 +1440,6 @@ static int __init mtk_pinctrl_init(void)
+ 	return platform_driver_register(&mtk_pinctrl_driver);
  }
- core_initcall_sync(rt3883_pinctrl_init);
+ arch_initcall(mtk_pinctrl_init);
 +
-+MODULE_DESCRIPTION("MediaTek RT3883 Pinctrl Driver");
-+MODULE_LICENSE("GPL");
++MODULE_DESCRIPTION("MediaTek MT7623 Pinctrl Driver");
++MODULE_LICENSE("GPL v2");
 -- 
 2.45.2
 
