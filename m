@@ -4,79 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31FDCCDE00E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2026 07:48:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEA7BCDE008
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Jun 2026 08:18:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B3Jp96yby4mBloce1WqC7k3yvfuGDAMz6lqsjN7sDIA=; b=DCQpHWbKGkxNaXB3j2sAN1LesH
-	/oFnzUp1VwfAwfKtw2Tc9ZOYkr3JdeJqCO282DyeV82Ejk62SByWdgrNoihoF4U9YlLeiJ9Zm5pNS
-	bK7qNYPXikmpFmCc3SqAgXB8CyNVMuqZgPrq2r+eaNd6BQxHIyCj+2Ljt5Sg9sknIHeM3hh/Zeo2/
-	D/aO3j8LWCfCZgmxjMtHT/u8wiC3IaEkA07fmv7Ct9dBY4SNNoGI6FpsoB95b3gOh9/CJalYpRAzJ
-	xZxn/n63gTStljaOyTr/SAXDki1eKLh/+DwRs2e4a5SqI0b/B5Y2VTnDZevx5LgI/tI12fOorsdP5
-	uxDaGW1g==;
+	bh=ZtxQhPJu30QBa2gHBza3bH34Gpdki7PPc1OqZ0o6O+M=; b=OQW53QGATwZn9Lcx53S+yEmwov
+	bfxdsIf4ML3LKO+FWRCHN90VNOyAO2+O2QlKGrwU+pnYAJr3NVBVpNMme5IUIyL0+zsko1ZKDwuOu
+	ZDsB4wxUKZ+V9MpEpiXRhfiOxEbm/tcJ+FOR9FXzqJL1vFaUrS130l3vn8t0uPtypshZylfRAXs1+
+	I1LUo3ru6ra3NSeMzUZ1X2oXuNDb4iFmUDpfdArX+MnuNZEExAsDxck9N6uU8pzoZiI+QjaaaXPx4
+	e3+Dr/VoPuEZxMebXHJAwmDklJPrfzGJr0uPeh2MS7admqfJovNedAJu4HyJlYbqSYufGdOIWndGV
+	GPQnCVeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wd1Ih-0000000AiUs-04na;
-	Fri, 26 Jun 2026 07:48:35 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wd1lv-0000000AmZ1-0z1S;
+	Fri, 26 Jun 2026 08:18:47 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wd1Ic-0000000AiSd-2mD0
-	for linux-mediatek@lists.infradead.org;
-	Fri, 26 Jun 2026 07:48:32 +0000
-X-UUID: 69c49bd0713311f1acbe4559397dec65-20260626
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=B3Jp96yby4mBloce1WqC7k3yvfuGDAMz6lqsjN7sDIA=;
-	b=PpSnV0DmHdP9cn+YykHB1cicQEmCZZb5fNFwnlyTkGgUSp++A7kZfdMiKFnHJE2o5FnDCWSu0v7p46Mm3U5+f7/ek8bzTvjx5cdxTAUuJVQ4Dkm9LwbwmmDvy/IQYrXf1h258GFYI+G9dr1XSKj9+xw5rIMJPfEh3dPDeQjnEbI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.17,REQID:34594d7d-9a18-487d-8290-06072bb7270a,IP:0,U
-	RL:25,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:d497b38,CLOUDID:834296da-5eb1-42d4-aa37-265f0625e786,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|123|136|836|865|888|898,TC:-5,Conten
-	t:0|15|50,EDM:-3,IP:nil,URL:97|99|83|106|11|1,File:130,RT:0,Bulk:nil,QS:ni
-	l,BEC:-1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 69c49bd0713311f1acbe4559397dec65-20260626
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2090192131; Fri, 26 Jun 2026 00:48:25 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 26 Jun 2026 15:48:22 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 26 Jun 2026 15:48:22 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-kernel@vger.kernel.org>
-CC: <p.zabel@pengutronix.de>, <robh@kernel.org>,
-	<krzysztof.kozlowski@linaro.org>, <conor+dt@kernel.org>,
-	<matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
-	<wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<linux-devicetree@vger.kernel.org>, <peter.wang@mediatek.com>,
-	<chun-hung.wu@mediatek.com>, <alice.chao@mediatek.com>,
-	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>
-Subject: [PATCH v1 1/2] Documentation: dt: reset: add mediatek,syscon-reset binding
-Date: Fri, 26 Jun 2026 15:46:08 +0800
-Message-ID: <20260626074820.2537772-2-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260626074820.2537772-1-peter.wang@mediatek.com>
-References: <20260626074820.2537772-1-peter.wang@mediatek.com>
+	id 1wd1lu-0000000AmYZ-29DH;
+	Fri, 26 Jun 2026 08:18:46 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id F361944117;
+	Fri, 26 Jun 2026 08:18:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 598BC1F000E9;
+	Fri, 26 Jun 2026 08:18:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1782461925;
+	bh=ZtxQhPJu30QBa2gHBza3bH34Gpdki7PPc1OqZ0o6O+M=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=SnRcd/da4ssM836Uj7Ka02pmNfKYkBanvDPZV/Qb97XwSBcdI6RxDOblxnKNdHPBo
+	 I/m8XAd2sbwuj1Qu01YSLqcwHUQeA/YfotV2/iU5gBnJTrfH36XhE9ZwysN8VOjekL
+	 gJ+CHyZ4u9Cn+D6BAoZJ+owrke+ZdSrUUvcIp+aBc9F9FX/d8taCAlKk+JL+3qgrDU
+	 GT2zy+SUwSpsrsUFbzS7lAybbR6oZQBm+RvqpQ+eM7UBsk1spDNX3ENRi4j5w0Li8a
+	 Ba4/LslxO7t1u+HiAO8sfIorU3DNx8OwRCgEpDKFvFBoZYAbxYTn/PcbzliveA1FRD
+	 XyS8aZHDlpztg==
+Date: Fri, 26 Jun 2026 10:18:43 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Simon Horman <horms@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	Madhur Agrawal <madhur.agrawal@airoha.com>
+Subject: Re: [PATCH net] net: airoha: fix max receive size configuration
+Message-ID: <aj4145PuomGhMM1J@lore-desk>
+References: <20260625-airoha-fix-rx-max-len-v1-1-45b9b827358d@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260626_004830_711944_AE6530F7 
-X-CRM114-Status: GOOD (  16.73  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="BF1a/QprwyKDmdJk"
+Content-Disposition: inline
+In-Reply-To: <20260625-airoha-fix-rx-max-len-v1-1-45b9b827358d@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,132 +73,344 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
 
-Add Device Tree binding documentation for the MediaTek SYSCON reset
-controller (mediatek,syscon-reset). This binding describes a reset
-controller that is part of a MediaTek SYSCON MFD block and manages
-multiple reset lines within that block.
+--BF1a/QprwyKDmdJk
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-The reset lines are defined via the 'mediatek,reset-bits' property,
-where each entry is a five-cell tuple specifying the register offsets
-and bit positions for asserting and deasserting a reset line:
+> Set the GDM maximum receive size to AIROHA_MAX_RX_SIZE unconditionally
+> during hardware initialization instead of updating it according to the
+> configured MTU. This avoids dropping incoming frames that exceed the
+> current MTU but could still be processed by the networking stack, which
+> is able to fragment the reply on the TX side (e.g. ICMP echo requests).
+> Move the per-port MTU configuration to the PPE egress path where it
+> belongs, and set the tx frame size running airoha_ppe_set_xmit_frame_size=
+()
+> to dynamically track the maximum MTU across running interfaces sharing
+> the same PPE instance.
+> Fix the PPE MTU register addressing to pack two port entries per
+> register word and add WAN_MTU0 configuration for non-LAN GDM devices.
 
-  <set_offset set_bit clear_offset clear_bit delay_us>
+commenting on sashiko's report:
+https://sashiko.dev/#/patchset/20260625-airoha-fix-rx-max-len-v1-1-45b9b827=
+358d%40kernel.org
 
-Consumers reference individual reset lines by index into this list
-using the standard '#reset-cells = <1>' scheme.
+>=20
+> Fixes: 54d989d58d2a ("net: airoha: Move min/max packet len configuration =
+in airoha_dev_open()")
+> Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c  | 68 ++++++++++---------------=
+------
+>  drivers/net/ethernet/airoha/airoha_eth.h  |  2 +
+>  drivers/net/ethernet/airoha/airoha_ppe.c  | 39 +++++++++++++-----
+>  drivers/net/ethernet/airoha/airoha_regs.h |  9 ++--
+>  4 files changed, 58 insertions(+), 60 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
+net/airoha/airoha_eth.c
+> index 932b3a3df2e5..3f451c2d4c24 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -178,10 +178,15 @@ static void airoha_fe_maccr_init(struct airoha_eth =
+*eth)
+>  {
+>  	int p;
+> =20
+> -	for (p =3D 1; p <=3D ARRAY_SIZE(eth->ports); p++)
+> +	for (p =3D 1; p <=3D ARRAY_SIZE(eth->ports); p++) {
+>  		airoha_fe_set(eth, REG_GDM_FWD_CFG(p),
+>  			      GDM_TCP_CKSUM_MASK | GDM_UDP_CKSUM_MASK |
+>  			      GDM_IP4_CKSUM_MASK | GDM_DROP_CRC_ERR_MASK);
+> +		airoha_fe_rmw(eth, REG_GDM_LEN_CFG(p),
+> +			      GDM_SHORT_LEN_MASK | GDM_LONG_LEN_MASK,
+> +			      FIELD_PREP(GDM_SHORT_LEN_MASK, 60) |
+> +			      FIELD_PREP(GDM_LONG_LEN_MASK, AIROHA_MAX_RX_SIZE));
+> +	}
+> =20
+>  	airoha_fe_rmw(eth, REG_CDM_VLAN_CTRL(1), CDM_VLAN_MASK,
+>  		      FIELD_PREP(CDM_VLAN_MASK, 0x8100));
+> @@ -1831,13 +1836,24 @@ static void airoha_update_hw_stats(struct airoha_=
+gdm_dev *dev)
+>  	spin_unlock(&port->stats_lock);
 
-An example is provided showing a UFS subsystem use case, where the
-reset controller is instantiated as a child node of the UFS syscon
-MFD node.
+- This is a pre-existing issue, but can the spin_lock() used in
+  airoha_update_hw_stats() cause a deadlock?
+  If a process context holds port->stats_lock via spin_lock() and is preemp=
+ted
+  by a networking softirq on the same CPU that calls dev_get_stats()
+  (which invokes ndo_get_stats64 -> airoha_update_hw_stats()), will the sof=
+tirq
+  spin forever trying to acquire the same lock? Should this use spin_lock_b=
+h()
+  instead?
+  - The reported issue has not been introduced by this patch. Moreover, I do
+    not think this is a real problem since in the current codebase
+    airoha_update_hw_stats() is always run in process context and not in-irq
+    context.
 
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
----
- .../bindings/reset/mediatek,syscon-reset.yaml | 93 +++++++++++++++++++
- 1 file changed, 93 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/reset/mediatek,syscon-reset.yaml
+>  }
+> =20
+> +static void airoha_dev_set_xmit_frame_size(struct net_device *netdev)
+> +{
+> +	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+> +
+> +	airoha_ppe_set_xmit_frame_size(dev);
+> +	if (!airoha_is_lan_gdm_dev(dev))
+> +		airoha_fe_rmw(dev->eth, REG_WAN_MTU0, WAN_MTU0_MASK,
+> +			      FIELD_PREP(WAN_MTU0_MASK,
+> +					 VLAN_ETH_HLEN + netdev->mtu));
+> +}
 
-diff --git a/Documentation/devicetree/bindings/reset/mediatek,syscon-reset.yaml b/Documentation/devicetree/bindings/reset/mediatek,syscon-reset.yaml
-new file mode 100644
-index 000000000000..45520ae6f090
---- /dev/null
-+++ b/Documentation/devicetree/bindings/reset/mediatek,syscon-reset.yaml
-@@ -0,0 +1,93 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek SYSCON Reset Controller
-+
-+maintainers:
-+  - Peter Wang <peter.wang@mediatek.com>
-+
-+description: |
-+  This describes a reset controller which is part of a MediaTek SYSCON block
-+  and is designed to manage multiple reset lines within that block.
-+
-+  The node should be a child of a syscon MFD node; it uses the parent's
-+  regmap and therefore does not require its own 'reg' property.
-+
-+  The reset specifier for consumers is an index into the 'mediatek,reset-bits'
-+  list. For example, to reference the second reset line:
-+
-+    resets = <&ufs0cfgao_rst 1>;
-+    reset-names = "hci_rst";
-+
-+properties:
-+  compatible:
-+    const: mediatek,syscon-reset
-+
-+  '#reset-cells':
-+    const: 1
-+    description:
-+      The cell should contain the index into the 'mediatek,reset-bits'
-+      property to select the specific reset line.
-+
-+  mediatek,reset-bits:
-+    $ref: /schemas/types.yaml#/definitions/uint32-matrix
-+    minItems: 1
-+    maxItems: 64
-+    description: |
-+      A list of reset bit definitions. Each reset line is defined by a
-+      five-cell entry: <set_offset set_bit clear_offset clear_bit delay_us>.
-+      The reset specifier in the consumer driver will be an index into
-+      this list. Up to 64 reset lines are supported per controller instance.
-+    items:
-+      items:
-+        - description: >
-+            Register offset from the parent syscon base for asserting
-+            the reset. Must be 4-byte aligned.
-+          minimum: 0
-+          multipleOf: 4
-+        - description: >
-+            Bit index (0-based) within the register for asserting reset.
-+          minimum: 0
-+          maximum: 31
-+        - description: >
-+            Register offset from the parent syscon base for deasserting
-+            the reset. Must be 4-byte aligned.
-+          minimum: 0
-+          multipleOf: 4
-+        - description: >
-+            Bit index (0-based) within the register for deasserting reset.
-+          minimum: 0
-+          maximum: 31
-+        - description: >
-+            Minimum delay in microseconds between assertion and deassertion
-+            during a full reset cycle. Use 0 if no delay is required.
-+          minimum: 0
-+          maximum: 1000000
-+
-+required:
-+  - compatible
-+  - '#reset-cells'
-+  - mediatek,reset-bits
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    ufs0cfg_ao: syscon@16840000 {
-+        compatible = "mediatek,mt8183-ufs0cfg_ao", "syscon", "simple-mfd";
-+        reg = <0x16840000 0x1000>;
-+        #address-cells = <1>;
-+        #size-cells = <1>;
-+
-+        ufs0cfgao_rst: reset-controller {
-+            compatible = "mediatek,syscon-reset";
-+            #reset-cells = <1>;
-+            mediatek,reset-bits =
-+                <0x48  3  0x4c  3  100>,
-+                <0x148 0  0x14c 0  100>,
-+                <0x148 1  0x14c 1  100>,
-+                <0x148 2  0x14c 2  0>;
-+        };
-+    };
--- 
-2.45.2
+- Does this unconditional write to REG_WAN_MTU0 break sibling network devic=
+es
+  sharing the same WAN port?=20
+  If multiple interfaces share the same hardware port, this appears to over=
+write
+  the shared register using only the current interface's MTU, ignoring the
+  maximum MTU of any active sibling interfaces. Could this cause the hardwa=
+re to
+  drop frames for sibling interfaces if their MTU is larger than the most
+  recently configured interface?
+  - This is not a real issue since we can have at most a single WAN port in=
+ the
+    system
 
+> +
+>  static int airoha_dev_open(struct net_device *netdev)
+>  {
+> -	int err, len =3D ETH_HLEN + netdev->mtu + ETH_FCS_LEN;
+>  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+>  	struct airoha_gdm_port *port =3D dev->port;
+> -	u32 cur_len, pse_port =3D FE_PSE_PORT_PPE1;
+>  	struct airoha_qdma *qdma =3D dev->qdma;
+> +	u32 pse_port =3D FE_PSE_PORT_PPE1;
+> +	int err;
+> =20
+>  	netif_tx_start_all_queues(netdev);
+>  	err =3D airoha_set_vip_for_gdm_port(dev, true);
+
+[...]
+
+>  static int airoha_dev_stop(struct net_device *netdev)
+>  {
+>  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+> @@ -1909,7 +1889,7 @@ static int airoha_dev_stop(struct net_device *netde=
+v)
+>  	airoha_set_vip_for_gdm_port(dev, false);
+> =20
+>  	if (--port->users)
+> -		airoha_set_port_mtu(dev->eth, port);
+> +		airoha_ppe_set_xmit_frame_size(dev);
+
+- Does this stop path fail to update the WAN MTU limit?
+  When an interface is stopped, airoha_ppe_set_xmit_frame_size() recalculat=
+es
+  the PPE MTU, but it looks like the global REG_WAN_MTU0 register is not up=
+dated
+  here. Will this prevent the MTU limit from correctly shrinking when an
+  interface is brought down?
+  - This is not a real issue since, as pointed out above, we can have at mo=
+st a
+    single WAN port in the system, so there is no point to reconfigure
+    REG_WAN_MTU0 if this interface is stopped.
+
+>  	else
+>  		airoha_set_gdm_port_fwd_cfg(qdma->eth,
+>  					    REG_GDM_FWD_CFG(port->id),
+> @@ -1962,10 +1942,6 @@ static int airoha_enable_gdm2_loopback(struct airo=
+ha_gdm_dev *dev)
+>  		      FIELD_PREP(LPBK_CHAN_MASK, chan) |
+>  		      LBK_GAP_MODE_MASK | LBK_LEN_MODE_MASK |
+>  		      LBK_CHAN_MODE_MASK | LPBK_EN_MASK);
+> -	airoha_fe_rmw(eth, REG_GDM_LEN_CFG(AIROHA_GDM2_IDX),
+> -		      GDM_SHORT_LEN_MASK | GDM_LONG_LEN_MASK,
+> -		      FIELD_PREP(GDM_SHORT_LEN_MASK, 60) |
+> -		      FIELD_PREP(GDM_LONG_LEN_MASK, AIROHA_MAX_MTU));
+>  	/* Forward the traffic to the proper GDM port */
+>  	pse_port =3D port->id =3D=3D AIROHA_GDM3_IDX ? FE_PSE_PORT_GDM3
+>  					       : FE_PSE_PORT_GDM4;
+> @@ -2098,7 +2074,7 @@ static int airoha_dev_change_mtu(struct net_device =
+*netdev, int mtu)
+> =20
+>  	WRITE_ONCE(netdev->mtu, mtu);
+>  	if (port->users)
+> -		airoha_set_port_mtu(dev->eth, port);
+> +		airoha_dev_set_xmit_frame_size(netdev);
+> =20
+>  	return 0;
+>  }
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
+net/airoha/airoha_eth.h
+> index d7ff8c5200e2..0c3fb6e5d7f1 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> @@ -23,6 +23,7 @@
+>  #define AIROHA_MAX_DSA_PORTS		7
+>  #define AIROHA_MAX_NUM_RSTS		3
+>  #define AIROHA_MAX_MTU			9220
+> +#define AIROHA_MAX_RX_SIZE		16128
+>  #define AIROHA_MAX_PACKET_SIZE		2048
+>  #define AIROHA_NUM_QOS_CHANNELS		4
+>  #define AIROHA_NUM_QOS_QUEUES		8
+> @@ -676,6 +677,7 @@ int airoha_get_fe_port(struct airoha_gdm_dev *dev);
+>  bool airoha_is_valid_gdm_dev(struct airoha_eth *eth,
+>  			     struct airoha_gdm_dev *dev);
+> =20
+> +void airoha_ppe_set_xmit_frame_size(struct airoha_gdm_dev *dev);
+>  void airoha_ppe_set_cpu_port(struct airoha_gdm_dev *dev, u8 ppe_id, u8 f=
+port);
+>  bool airoha_ppe_is_enabled(struct airoha_eth *eth, int index);
+>  void airoha_ppe_check_skb(struct airoha_ppe_dev *dev, struct sk_buff *sk=
+b,
+> diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ether=
+net/airoha/airoha_ppe.c
+> index 42f4b0f21d17..e7c78293002a 100644
+> --- a/drivers/net/ethernet/airoha/airoha_ppe.c
+> +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+> @@ -97,6 +97,33 @@ void airoha_ppe_set_cpu_port(struct airoha_gdm_dev *de=
+v, u8 ppe_id, u8 fport)
+>  		      __field_prep(DFT_CPORT_MASK(fport), fe_cpu_port));
+>  }
+> =20
+> +void airoha_ppe_set_xmit_frame_size(struct airoha_gdm_dev *dev)
+> +{
+> +	struct airoha_gdm_port *port =3D dev->port;
+> +	struct airoha_eth *eth =3D dev->eth;
+> +	int i, ppe_id, index;
+> +	u32 len =3D 0;
+> +
+> +	for (i =3D 0; i < ARRAY_SIZE(port->devs); i++) {
+> +		struct airoha_gdm_dev *d =3D port->devs[i];
+> +		struct net_device *netdev;
+> +
+> +		if (!d)
+> +			continue;
+> +
+> +		netdev =3D netdev_from_priv(d);
+> +		if (netif_running(netdev))
+> +			len =3D max_t(u32, len, netdev->mtu);
+> +	}
+> +	len +=3D VLAN_ETH_HLEN;
+> +
+> +	ppe_id =3D !airoha_is_lan_gdm_dev(dev) && airoha_ppe_is_enabled(eth, 1);
+> +	index =3D port->id =3D=3D AIROHA_GDM4_IDX ? 7 : port->id;
+> +	airoha_fe_rmw(eth, REG_PPE_MTU(ppe_id, index),
+> +		      FP_EGRESS_MTU_MASK(index),
+> +		      __field_prep(FP_EGRESS_MTU_MASK(index), len));
+
+- Does this leave the egress MTU limit uninitialized for other PPE engines?
+  The patch removes the loop in airoha_ppe_hw_init() that previously initia=
+lized
+  REG_PPE_MTU for all ports on all available PPEs. This function now only
+  configures it for a single ppe_id.
+  During cross-PPE routing (such as WAN-to-LAN), if PPE1 (WAN) forwards a p=
+acket
+  to a LAN port, it will check REG_PPE_MTU(1, LAN_port). Since this registe=
+r was
+  only configured for PPE0, will the uninitialized limit (0) cause the pack=
+et to
+  be dropped?
+  - This is not a real issue since every airoha_gdm_dev/net_device is
+    associated to a PPE engine/QDMA according to the logic in
+    airoha_dev_open()/airoha_dev_set_qdma(). The other PPE engine's MTU wil=
+l be
+    updated according to the assigned net_device.
+
+Regards,
+Lorenzo
+
+> +}
+> +
+>  static void airoha_ppe_hw_init(struct airoha_ppe *ppe)
+>  {
+>  	u32 sram_ppe_num_data_entries =3D PPE_SRAM_NUM_ENTRIES, sram_num_entrie=
+s;
+> @@ -115,8 +142,6 @@ static void airoha_ppe_hw_init(struct airoha_ppe *ppe)
+>  		PPE_RAM_NUM_ENTRIES_SHIFT(sram_ppe_num_data_entries);
+> =20
+>  	for (i =3D 0; i < eth->soc->num_ppe; i++) {
+> -		int p;
+> -
+>  		airoha_fe_wr(eth, REG_PPE_TB_BASE(i),
+>  			     ppe->foe_dma + sram_tb_size);
+> =20
+> @@ -166,15 +191,6 @@ static void airoha_ppe_hw_init(struct airoha_ppe *pp=
+e)
+>  		airoha_fe_wr(eth, REG_PPE_HASH_SEED(i), PPE_HASH_SEED);
+>  		airoha_fe_clear(eth, REG_PPE_PPE_FLOW_CFG(i),
+>  				PPE_FLOW_CFG_IP6_6RD_MASK);
+> -
+> -		for (p =3D 0; p < ARRAY_SIZE(eth->ports); p++)
+> -			airoha_fe_rmw(eth, REG_PPE_MTU(i, p),
+> -				      FP0_EGRESS_MTU_MASK |
+> -				      FP1_EGRESS_MTU_MASK,
+> -				      FIELD_PREP(FP0_EGRESS_MTU_MASK,
+> -						 AIROHA_MAX_MTU) |
+> -				      FIELD_PREP(FP1_EGRESS_MTU_MASK,
+> -						 AIROHA_MAX_MTU));
+>  	}
+> =20
+>  	for (i =3D 0; i < ARRAY_SIZE(eth->ports); i++) {
+> @@ -196,6 +212,7 @@ static void airoha_ppe_hw_init(struct airoha_ppe *ppe)
+>  				 airoha_ppe_is_enabled(eth, 1);
+>  			fport =3D airoha_get_fe_port(dev);
+>  			airoha_ppe_set_cpu_port(dev, ppe_id, fport);
+> +			airoha_ppe_set_xmit_frame_size(dev);
+>  		}
+>  	}
+>  }
+> diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethe=
+rnet/airoha/airoha_regs.h
+> index 436f3c8779c1..6fed63d013b4 100644
+> --- a/drivers/net/ethernet/airoha/airoha_regs.h
+> +++ b/drivers/net/ethernet/airoha/airoha_regs.h
+> @@ -327,9 +327,8 @@
+>  #define PPE_SRAM_TABLE_EN_MASK			BIT(0)
+> =20
+>  #define REG_PPE_MTU_BASE(_n)			(((_n) ? PPE2_BASE : PPE1_BASE) + 0x304)
+> -#define REG_PPE_MTU(_m, _n)			(REG_PPE_MTU_BASE(_m) + ((_n) << 2))
+> -#define FP1_EGRESS_MTU_MASK			GENMASK(29, 16)
+> -#define FP0_EGRESS_MTU_MASK			GENMASK(13, 0)
+> +#define REG_PPE_MTU(_m, _n)			(REG_PPE_MTU_BASE(_m) + (((_n) / 2) << 2))
+> +#define FP_EGRESS_MTU_MASK(_n)			GENMASK(13 + (((_n) % 2) << 4), ((_n) %=
+ 2) << 4)
+> =20
+>  #define REG_PPE_RAM_CTRL(_n)			(((_n) ? PPE2_BASE : PPE1_BASE) + 0x31c)
+>  #define PPE_SRAM_CTRL_ACK_MASK			BIT(31)
+> @@ -377,6 +376,10 @@
+>  #define REG_SRC_PORT_FC_MAP6		0x2298
+>  #define FC_ID_OF_SRC_PORT_MASK(_n)	GENMASK(4 + ((_n) << 3), ((_n) << 3))
+> =20
+> +#define REG_WAN_MTU0			0x2300
+> +#define WAN_MTU1_MASK			GENMASK(29, 16)
+> +#define WAN_MTU0_MASK			GENMASK(13, 0)
+> +
+>  #define REG_CDM5_RX_OQ1_DROP_CNT	0x29d4
+> =20
+>  /* QDMA */
+>=20
+> ---
+> base-commit: fd1269e454089abda0e4f9e5e25ecd02a90ab009
+> change-id: 20260618-airoha-fix-rx-max-len-57654b661646
+>=20
+> Best regards,
+> --=20
+> Lorenzo Bianconi <lorenzo@kernel.org>
+>=20
+
+--BF1a/QprwyKDmdJk
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaj414wAKCRA6cBh0uS2t
+rLvbAP94ZhyV7OMjBDV3xaCqtFSlUkd5Ry2z2BWqSZuABjs1OwEA2sf5yxm2DyBH
+I+O1FXfoDBvmOPl6x7yKZX4XXWiYrQM=
+=chVI
+-----END PGP SIGNATURE-----
+
+--BF1a/QprwyKDmdJk--
 
