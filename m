@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1DC5C43211
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6C10C43327
 	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jun 2026 12:15:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ENGLhUzySY12FfgNeO/39C61qpfSr8IVf4djxpXqVbg=; b=fHCql64HGv9jb8SsTjd3OZOSKL
-	6kLrPowDCGgZu0kkMpO9txAcRWPz1+GI339ErbMVmLPr5tm4/YzbOcW6jxji4IX+VzhU4JIFst9lh
-	KJ2fixJ69TF8v5E9hfytlJM8tahqLLGGveTnBUDfKXGYWRCVEGihXvjZ6OPbUUJqe0Z5FglqgYjcY
-	mVX4afiqYjTJUx/4vc53DE271mLxia7qzP56ZnRTANBnCKr7NuWc7jWapIiFAagGfvAt7hzDhdfUo
-	vUO+BWgvllcc2Lt0LYBt6So8vrgTaWY3XdtrLgc9TBGExjZZmOQ+qlXFgu3Osi3ZJU1yiwbtwy28S
-	xL55H0rQ==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=o6TslkgUAWDqod3FQpYnfSZ08UmiNf29gC+HqLWyQ4E=; b=26/wq4lyEttp0OKz1ap0oJtOmR
+	ZTo5Uq866VYUBK7f3pD/t5Fd9hFymrToCLUjovc+a08OUswDtsec49B/NqvN1xBgxOJWa7IWXW51f
+	htH9t3DihQrZV9+TU1Judpr3GC/dyD3+XL/+jZ79RRL855cNzKqdw7wVZ8qTTeMkBC4sz0rWfUGoo
+	o02F88W7y4D9aH16LK5KhluHEtx2rwjHQC45m6EC6XFn7rAiBL42p82pfJvW0H9u8msYvwDvC828z
+	+Q9BBdiXdkPpwsDZAuKkEI2R5KWJ0RtP3VurVcDGluIY9/6jUowh/cTZPkiUkndb0sJ7R1rsPkbjc
+	K+CfbhbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdRw7-0000000CRLX-3sCU;
-	Sat, 27 Jun 2026 12:15:03 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1wdRwA-0000000CRN4-0Qzf;
+	Sat, 27 Jun 2026 12:15:06 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdRw6-0000000CRK5-0210
+	id 1wdRw7-0000000CRKt-2H2d
 	for linux-mediatek@lists.infradead.org;
-	Sat, 27 Jun 2026 12:15:03 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-49241dbf9c1so16085335e9.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 27 Jun 2026 05:15:01 -0700 (PDT)
+	Sat, 27 Jun 2026 12:15:04 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-49258ac7294so13275835e9.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 27 Jun 2026 05:15:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1782562500; x=1783167300; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:from:to:cc:subject:date:message-id:reply-to;
-        bh=ENGLhUzySY12FfgNeO/39C61qpfSr8IVf4djxpXqVbg=;
-        b=U5+brozu/R7P/ii+dXA7MPiWppj/jXr6s1R0vDAxbxbdHbVFVHiqGB+yN5IKcH2siN
-         KiXUuOyo8s6RYVW+NRVIySZsFf8PWYmJzNKNz5pt35xJiCJ4iBjGpLAw7khdWkzMpbR0
-         ScHv92aNbsVLIq/EeqbioJMQGxC2jlYsbajrwhGJ67VzrraYEMYtIMzwAZrUwQONaobj
-         oPOTMEJqaluch8PveaEAiuja8six9L1rZSDGE7OfGPprfbdL9SUonjjFNDQiO0dGXDlW
-         Yx0bwUxLF7gcPb+ej7BlmbPgkcwe+yUnmLCA30rKlv4vDXkh6sd3W3xe8LKtiNAR0EHm
-         nrcg==
+        d=gmail.com; s=20251104; t=1782562501; x=1783167301; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=o6TslkgUAWDqod3FQpYnfSZ08UmiNf29gC+HqLWyQ4E=;
+        b=FLqJD/QzHfel0SLLK/RO0jZD9dLPH5sy5rVHUXhxNUjz3QJmRxhaWaZxt5X1552IwJ
+         Vjg3m6XaDQftnVxfgeYGJT28bzSPVyZdQ3b5ZiDRNJDvH1sGMrBWCGUDCICmsdAAwjNH
+         v/ikQSlQGhkECNQYGdwlMklrSQDz3JlXX1u2sEDir/ZsLHhEGy8LQyZP3xT74Tx37OlS
+         89i8aAUel0+4rLVlutbkN5zEsb92CUJjKOkIR0Eb1EjsVmYKny7j+iMcA+dVAqLTmrsz
+         RZavWTdVOpBHvv7Wx89XKXon4i+63t8jx5YfSrkS16B3Marz/8KdZ5RUh3yGTr7ERQ7P
+         /Z8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782562500; x=1783167300;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ENGLhUzySY12FfgNeO/39C61qpfSr8IVf4djxpXqVbg=;
-        b=DQGdsv2mqHu6cOx4pqAfFuc18eem9GxOfBSsCXjsxHNXtTsFmE9agsvb6RJOqEwsH6
-         jrpjvM7auDEHCWv6fFb8Scliw0P8wC38T1SBy5HbLSghIQ/BWrbijM16798bNON8VLS1
-         4gltzRt8utsHfmTeRObg+sWScThGk0pg+/oeW9S2jeQOH49zE92Hkq9Lxt+AR8j0/DBC
-         8QWemBdqP8XtGj15y/V9UafsfPQQ72smU5PTHfPBlSOw+5vzSK1pW1CpXpxsfeExVPTR
-         GmPIX4LgXLq/gCXQrN6n3DXgYxLwH+WDhGOa5V6vTYPptOMlxFSdk+9BkS8jQG0yH8Uc
-         SZzg==
-X-Forwarded-Encrypted: i=1; AFNElJ9Qj1+rHPot0q9F4l2CmN5t5tCZjYwiH6w0wDt4WTQaDAz51UQFdySsOeh9TeUSMVqse6p77gQKSAcADUg/5g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwbWHMOpTL5MO2lbzKFHgY3lRMITykBROZL5xNV8FBbbni/Ba9q
-	2+Et61Ljjs2Evh/JuqS2te5J9/l16JuoDSxbQDiAFnfLmbAD1uaCnmcQ
-X-Gm-Gg: AfdE7clQe6WU0csooJANdWkB2sKPFafgwGHJwb7JM+Wk7jQRaYCFolO97wKr2yfqbeG
-	XEpARPwQ46Co8vEwZPHhGmXjuSs/zntzsWMz75n5fHDltgO4zdVx/h/+/W8XMbTXa4Gi+Q5Mp6x
-	Y6b0w4gfuuAhObAlL1OF8itvERctn1NPAAMnuCgE5hBXqSzZozjqtvdgoXkcFDurB8iSCgek8QZ
-	lT+A81UdaeBNwtRNRk9V4SNkM/oCXpVvd0l1QSLpI8Fm1ArHGY8/vD11qVRrgmVP3TUAlXBivvp
-	juRVnxh/4LXOMObkeJkuk1boKmmRxBtFDRUGAYmgTO6VQ1Oecy8e1j7+k3NLdoiwRr+9wudAn00
-	Kc3KneP3lmRIcsLOxss9E+3tmUiLYz7PrfNj4WVAkoSvifu5TtrtIsKsi8J799WCaAH6fadopX7
-	eySv3RC5CdCUKhip4//aFN37xHdk2M8wMQqRxmZe4tBR/BRm5yuqOzmr9SU7yqdA==
-X-Received: by 2002:a05:600c:3f06:b0:492:33a8:5499 with SMTP id 5b1f17b1804b1-492668858a8mr160407315e9.17.1782562499407;
-        Sat, 27 Jun 2026 05:14:59 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1782562501; x=1783167301;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=o6TslkgUAWDqod3FQpYnfSZ08UmiNf29gC+HqLWyQ4E=;
+        b=Mz4qZ1oDkDTgpKMZjsZigftlUiaChr7Lgq2tzTn+Rz6BRFgPqJ3J+eRermZLRaL3rs
+         8p7mWHdIBnBuMfqfiUp+a+5OzC20O9ZR07Nwf3Rvo4zDlXTE7Emg1sHJH3vq5+rSRZed
+         6M+9ns+txTbHlFztq6IZviy0FN3uXYwRI6CYqNwzgBElSZ9l/YYW1mx7iY+BCARY07CH
+         s8FriHatfNSNTRaZKZOQOXuLcc+dr5Yuw3uXcRXv6Ekh+06o8yw+LfF0sRXurJOlKSV+
+         4XOvDqrO0bU0Ypj7KtlXpJqD64M+icP7fByfxiR1JmieyvjNcBN1F6NXXx+59F6S1ZOV
+         TJwQ==
+X-Forwarded-Encrypted: i=1; AFNElJ/ZN2ySuinFqLarhOT6WH0gsQME3DFFbZrd6YEeeZeuJQipJ7S67xwmpmevvAPa6jT4ArvDv+Wo/1THYzc82g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyIKS6wtRNa5X9+tdut/sjTbtgOSimBEcAQmyjFHKlC9yb+CJwb
+	iM7G8C3FnWMfJ5hkGCaPrAKuQ4Su79wmu7MlPgCf3e3Rq2Pgfd/sgTeB
+X-Gm-Gg: AfdE7clQJvTd+HoKId/zVxFy2bDGiwFeh1Hpq/1gWpFkUbevASaJPpzr4l7ffFFCG1X
+	fU/AIx0byx4B4BT8+M4q3pPLZg2AB4m3vQYynHu1KmS4Ewtbpnv9Q7nWUvHGVmscRD433O33Qsk
+	k6UY3phh94N2I6DLACiOPCsBIREKtYzXpEf1wyppsqN6UN0S2xKHXPthtrNGBYw+Qzs42A2RTTQ
+	0YW94tUwB6XpLbO5GcmGRZtO015XDYGRpIuxeX9a196ZtaDhiHIvqJoRbBqB4/1i6AyLXE6FJnQ
+	QmtsFwoQdDO/h9ywAylgpO77fg6D0DsDHX61w4GcmrP0HE04jvyfYSpoESZoCRQVrffrW8+iDLG
+	ZLrkfqn7P5QjnWCXRvKHKly119+ge2s1oLP7q0OaFEqbvPcPhoJN/g4ZfAhAwTeO0WoVC/U7zqn
+	66Xea0Ua2oCYsKyVltp4fZcyZkYZx08ybnRopAII4NcYXvJ2OjcuJGJwziSfezKA==
+X-Received: by 2002:a05:600c:3b24:b0:492:3fcb:22fe with SMTP id 5b1f17b1804b1-492668551dbmr160952675e9.1.1782562501557;
+        Sat, 27 Jun 2026 05:15:01 -0700 (PDT)
 Received: from Ansuel-XPS24.localdomain (93-34-89-195.ip49.fastwebnet.it. [93.34.89.195])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-49269002511sm149028265e9.8.2026.06.27.05.14.58
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-49269002511sm149028265e9.8.2026.06.27.05.14.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 27 Jun 2026 05:14:59 -0700 (PDT)
+        Sat, 27 Jun 2026 05:15:00 -0700 (PDT)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Bjorn Helgaas <bhelgaas@google.com>,
 	Lorenzo Pieralisi <lpieralisi@kernel.org>,
@@ -91,15 +92,18 @@ To: Bjorn Helgaas <bhelgaas@google.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v3 0/4] CI: mediatek-gen3: Add 2-lanes mode support + clock
-Date: Sat, 27 Jun 2026 14:14:41 +0200
-Message-ID: <20260627121450.3529133-1-ansuelsmth@gmail.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: [PATCH v3 1/4] dt-bindings: clock: airoha: Add additional reset for PCIe PERSTOUT
+Date: Sat, 27 Jun 2026 14:14:42 +0200
+Message-ID: <20260627121450.3529133-2-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260627121450.3529133-1-ansuelsmth@gmail.com>
+References: <20260627121450.3529133-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260627_051502_071845_1029C129 
-X-CRM114-Status: GOOD (  15.09  )
+X-CRM114-CacheID: sfid-20260627_051503_627341_81319CD6 
+X-CRM114-Status: GOOD (  10.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,54 +118,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This small series introduce support for 2-lanes mode for Airoha AN7581
-SoC. This is needed for correctly functionality of Eagle WiFi Card
-normally attached to this SoC that require a 2-line PCIe card to
-correctly work (and give the proper performance)
+Add additional reset to control PCIe PERSTOUT reset line for each of the 3
+PCIe lines.
 
-The first 2 patch address a limitation of the PCIe implementation
-where the PERSTOUT reset were indirectly asserted and deasserted
-all at the same time (for all the 3 PCIe card) with PCIe
-enable and disable.
-The 2 patch address this and introduce correct reset to control
-reset line for the relevant PCIe line.
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+---
+ include/dt-bindings/reset/airoha,en7581-reset.h | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-The last 2 patch add additional logic and support to assert
-and deassert the PERSTOUT and also apply the required configuration
-for 2-lanes mode.
-
-2-lanes mode is implemented in DT by adding the required property
-and by defining the "num-lanes" to 2.
-
-Changes v3:
-- Add Ack from Krzysztof
-- Improve commit description of PCIe patch
-- Use pcie->num_lanes instead of possible uninit variable num_lanes
-Changes v2:
-- Address typo regs -> reg in Documentation
-- Address typo lan -> lane in Documentation
-- Apply a suggested fix from Airoha for PCIe MUX configuration
-  before PHY init
-- Parse secondary reg in probe
-- Add missing reset_status handling for inverted bits
-- Move SCU to local handling in power_up
-- Add check for max num-lanes for EN7581
-
-Christian Marangi (4):
-  dt-bindings: clock: airoha: Add additional reset for PCIe PERSTOUT
-  clk: en7523: add support for dedicated PCIe PERSTOUT reset
-  dt-bindings: PCI: mediatek-gen3: Split Airoha schema and document
-    2-lanes
-  PCI: mediatek-gen3: Add 2-lanes mode support for Airoha AN7581
-
- .../bindings/pci/airoha,en7581-pcie.yaml      | 251 ++++++++++++++++++
- .../bindings/pci/mediatek-pcie-gen3.yaml      |  77 +-----
- drivers/clk/clk-en7523.c                      |  39 ++-
- drivers/pci/controller/pcie-mediatek-gen3.c   | 104 ++++++--
- .../dt-bindings/reset/airoha,en7581-reset.h   |   4 +
- 5 files changed, 375 insertions(+), 100 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/pci/airoha,en7581-pcie.yaml
-
+diff --git a/include/dt-bindings/reset/airoha,en7581-reset.h b/include/dt-bindings/reset/airoha,en7581-reset.h
+index 6544a1790b83..25e75534daa9 100644
+--- a/include/dt-bindings/reset/airoha,en7581-reset.h
++++ b/include/dt-bindings/reset/airoha,en7581-reset.h
+@@ -62,5 +62,9 @@
+ #define EN7581_CPU_TIMER_RST		50
+ #define EN7581_PCIE_HB_RST		51
+ #define EN7581_XPON_MAC_RST		52
++/* RST_PCIC */
++#define EN7581_PCIC_PERSTOUT0_RST	53
++#define EN7581_PCIC_PERSTOUT1_RST	54
++#define EN7581_PCIC_PERSTOUT2_RST	55
+ 
+ #endif /* __DT_BINDINGS_RESET_CONTROLLER_AIROHA_EN7581_H_ */
 -- 
 2.53.0
 
