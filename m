@@ -4,105 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDA80C43458
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jun 2026 12:15:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAAF6C43458
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Jun 2026 12:33:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
-	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n0HAnRoWmxVJhdNy0Aj/UApzioKy1NxiDXgx0VMIzbA=; b=bTgSIKDw4QlYKntADe6EKWr2lR
-	9F1gkoq8/2iwLqIL2ZRii/h6PQYdAZK50bEihBnSA6opdf5AhBhpDnCAM3h2rNl8+3BRp2Gveyr8U
-	n9G4ahP59XLNYXERhYU58yP43AFmezmJztEIbjMdBaC89FEVIFEyDWvcvOiOLabucnTggxhk05G1L
-	p3b/NEoYg+oVkh13Uy9yYEV15GyGQ48uaw/NfpW5NZqiU+fYTrjNxkNOKFJUoGhYcGyD3ZmKKXnmm
-	QvprlwQvBz+I/uW8/Q4RyqBxDtDZPpg7Q0BdYK2us/4Z78+vfCVDWEn4ZJR0JT2G9YIoprxey5uQG
-	p75WZ57A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3PtIUvxIw7trdusrNOr6fjoOoHqmRqU46S4I9pGH/As=; b=iUgXX5YhcrazhfwXX7o3w6n0Cf
+	nn42TPMa9xHFnVTHRH4NwZWSGZjrqL/g7lu8lfpVmvtwMadZ4rWc2GTnccKyOcRCbmlKtUHV8OCmH
+	bXLbX5nJW8ce7MOnzYk0ctGkyWYyuDudHap5U7mm0dFO8/eicvj6he8PWyA2HahMx5molG+34AUcZ
+	Hdbh7EF79aOBQk9ROiygaKtKmsUYTrFAZqkCD45ZzuTCc2wtbBgtFfCcQ34rVDACOnIFsaBU/2kHy
+	JmMHmdCucHcKn4S8ALELzWXBm3HFBVi1hAOfBeuEvKPUuMv4Py1SUMd6c3K0mHwXztG4Fj4h8hOYp
+	pfRNwkgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdRwO-0000000CRXH-3Beb;
-	Sat, 27 Jun 2026 12:15:20 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1wdSDw-0000000CSRt-0qlq;
+	Sat, 27 Jun 2026 12:33:28 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdRwC-0000000CROG-0mTF
+	id 1wdSDt-0000000CSRC-1Ps9
 	for linux-mediatek@lists.infradead.org;
-	Sat, 27 Jun 2026 12:15:09 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-493a5392c60so15165e9.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 27 Jun 2026 05:15:07 -0700 (PDT)
+	Sat, 27 Jun 2026 12:33:26 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-4926fe5be4bso10064545e9.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 27 Jun 2026 05:33:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1782562506; x=1783167306; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=n0HAnRoWmxVJhdNy0Aj/UApzioKy1NxiDXgx0VMIzbA=;
-        b=jkcZMuzCfaN+XBcSETpAYQwXaDAir+BNxdhbpBVXTySlfecNZFk7jG/Pgu1Y8rkDvP
-         BRXx5YUGugs/m1IdjlMxQ/9nLvrLA2yzOcovZHEImqxhVZ0wERWRY+MDT1ZnLNY3WsC2
-         /ib5nureZ1FLw6Ag+zgytkwY2sslgKKR35RKHv2r5chS67p6T8sV3yyV+ag1UWcKJLae
-         nQvoiE0kEfyXCpJMQZDzn/q0jra58Kvhdm2M4ywV1Noe9lTNH+EJ8C+OhTncH5Vivf8F
-         f6nEDM6+Ru+xTqtm8Q6lpsIfS5JRZrIo2DoRJroqLrAN4XUr3Lfu3h2LWSnnM6PFAnrt
-         JNKQ==
+        d=gmail.com; s=20251104; t=1782563603; x=1783168403; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=3PtIUvxIw7trdusrNOr6fjoOoHqmRqU46S4I9pGH/As=;
+        b=R7746qcY8q4GLqbBpr/+osa3Pfvm56/8k3DVmeA9rd80CKzD7XT/9spZHLUyutHGQH
+         GLvVJMI10oJDeqKaz7FWux20h7VRr4lME6ox5123XMhe+nGgqRASlXp4GaFExKPg2mmb
+         SfBHVGeXEpXqM8ZnT1MCyxlFc2VLxe0cpKH9OtuDtjgvHbo7KLcQYbicLWN/G6h1AOon
+         GlQwQTW5F8X95i70gYRehbagPAUcjVIYEGvM3Qehg4Qw2LTDhWUtV6jnwdpvJhi2gnNK
+         0JAdfGJ3IQVRuC+MjX7SfeoemZbwE8XEutrT4tRLvhg4Z7bQ6Vzzj6B32VwOnTDekPS6
+         kFcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782562506; x=1783167306;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=n0HAnRoWmxVJhdNy0Aj/UApzioKy1NxiDXgx0VMIzbA=;
-        b=ntV0oUT8yb2EV6bhlx4uPTKQBvk3tqbWAhLyGuerf03FrqMl8ftMH3FOU0CHcm1lYY
-         QwbiMF9huVHr+kgatJwp1Wdbo+EeBeZ15QeLU086mxLlSr/r+S+e9hYJMmljjjNGGZFn
-         26wMB87dJjadGZvhKSxSov7fgv10LgnNV+vuJs5kpU6boU0uwVK5BkhNnLtJNaqnw5QO
-         XSBFPvgqOoenO4E7P/jjFihp2b2eCZL6QeJ+ZJInkUC5lIHyRLQbmQyXJE5u4BGI6O2d
-         4W7wF9iZNxLYebMA6uUXTzYCRN9f91q5oR4yn4gdLKI9JnJIsm0o3lREyM5KXiKpq6bY
-         DY2Q==
-X-Forwarded-Encrypted: i=1; AFNElJ+DdyG/+jZzVv3UVUn/j03t73sNDp7ilbk6nIgPS8Kf2ViPY9hoOgA2UHkzZtVH3jmbSWLMYNcJZlxWRRa4hQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxTjJ3MRvR7MLadc581leL7vddUx2DGl1AYSeajPy1wiB66xclc
-	jaBl7Ie6LlrPzI9hFQs6ElBtw0QlQKSLYPjdCcmcYUg2wLM/iryZN7wn
-X-Gm-Gg: AfdE7cnxxy9v24oEy66Fy2jMFbA2F6tIikCyLGjHDCklcdbz0617I5CWgbsdfQiLqEz
-	mphYy4mkvDu8YtMMEMPR0jgnbow+bJvq7iyQnkOfAktRA2Ye9p5oA1dltYwFqVM+o0QKVrSoob/
-	K7IjWJV9dkjPRpHEe0Z0EcQtmW6d743Gss8rmdyZJf7x27SSMcAJ6eKxcKWrEzsCBiAECU2XO/K
-	zNh0mLj/coN3JDSpI33usDCm3ZEzQICf6GraIT6svD9yzodbaSPrBXdWnB4C5BWk9832t+DGyt0
-	QVyEq26DwZygEstsg7uwlov+4tmEAh/0Rxezq/stD9ELzd+toacvy4D0CKvyFpzz+/aM8Dhsvt6
-	7SjK8AIxbn6BbhRprllG0CtpzyV/xd3h4fhNV8k3D7F3O2ERWkEgJGDw7V+bxfNtHCEwCQuUT9r
-	9DNeAo+PIMdcU4qzjR6peIu2zAw57TXuErkubvtBvVVMEfiz3/FjYcNsF4Y5mfo/iGRtT1bSac
-X-Received: by 2002:a05:600c:e557:20b0:490:a1dc:e542 with SMTP id 5b1f17b1804b1-49266862d71mr106741475e9.6.1782562506392;
-        Sat, 27 Jun 2026 05:15:06 -0700 (PDT)
-Received: from Ansuel-XPS24.localdomain (93-34-89-195.ip49.fastwebnet.it. [93.34.89.195])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-49269002511sm149028265e9.8.2026.06.27.05.15.04
+        d=1e100.net; s=20251104; t=1782563603; x=1783168403;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=3PtIUvxIw7trdusrNOr6fjoOoHqmRqU46S4I9pGH/As=;
+        b=KpmJaW8lLNeMb2JUpZa6EfYRjTUDzBRLVLvOKiKtqSoL47yyssamteLE6Mrl8FD8vu
+         K82QgsaVEmsMMXI+g9gFuEjxcj7qe79Te0bt2JwOQ68rFFlCk1uT6EdNgjCFGO44yEWZ
+         MFhY3UtEn7xPoR4BNFVA4DPBxSayK6luo8tMXH1s6XkwUWf6krtCjfuGvn0wxj7up2fr
+         rzeYZpj/HyUiPAI/EA8YiR5MVZq1Akyf+2iPaV6n+iDPn3cderGLr4OP4TxlovNSyBpw
+         Wv7N+HSRSsC5K8yRyauDKqfAzFKqyJ4OhjKsUdozfo2dST/+pCxekv/NNaymy3X3DKaY
+         bwdg==
+X-Forwarded-Encrypted: i=1; AFNElJ+UU285lkl7/GlaHG4uWOrwihVbrIn1wGo6AiKAWnALjRVnLFJ6GUKttt20wcRuQ+Dy8SL8aZ8kNNIkzRGULA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyZsxk5r9Cf45cZFoX1kAzeJzGLhfJ83dj+swKHiUeZh12JT6Hf
+	jZtjKG3tUu+uASgZ3LdXFsdR4escLKvgiCVJ8JIqC6tO37eRB2Yhgk7C89z2HasA
+X-Gm-Gg: AfdE7cmf2cvbKUuboCnKK0/ZIV/AnIt0EktQtUpfxbJATJvbUz8X53VBGDYjvSag3I7
+	c7P6tW6aUXy07X5Fcsjo/2V5GG4LUy38BVQjtVFDB8EXxd8gR55RpKsZrKjdMrGB3vLx1VVzCDi
+	loOUrWB1eYCFLp+R1KY41CgCQglgA/mTYJyWcBZ/lL/ivykVMdnZUh+2HKVKh5vv8WxMr+jLbkC
+	rLu81HnsiWMaY1rUkX0UDx4xY69gda2X0+iBaw//ed45ZMmX0BoGctRB8S82rzHj+/n5wKL0457
+	TzdYC5vE+dmBPW2Z3mLbv/E5aUOBWilzm/9k4IlN3RdnkRVgY2RpQXzUdrjxqF8w9atIhR5pFTa
+	QMHGDRgOTCHU2+2axm/v77tsUvJhRlZ+RNTxNq00BMM7pY4tW4Sgj9cAaBeHiQc2/0/fv9xEgcO
+	67YofuhsGXHACTKcHJBKBScH8t4LCXVIcRFh4is33Vx1u2
+X-Received: by 2002:a05:600c:81c5:b0:492:4ff5:fb9e with SMTP id 5b1f17b1804b1-4926fcade65mr62722535e9.37.1782563603146;
+        Sat, 27 Jun 2026 05:33:23 -0700 (PDT)
+Received: from Ansuel-XPS. (93-34-89-195.ip49.fastwebnet.it. [93.34.89.195])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-492690a1a85sm271536875e9.15.2026.06.27.05.33.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 27 Jun 2026 05:15:05 -0700 (PDT)
+        Sat, 27 Jun 2026 05:33:22 -0700 (PDT)
+Message-ID: <6a3fc312.6161eb1e.3441bb.c0de@mx.google.com>
+X-Google-Original-Message-ID: <aj_DD_djHkw7CLZ4@Ansuel-XPS.>
+Date: Sat, 27 Jun 2026 14:33:19 +0200
 From: Christian Marangi <ansuelsmth@gmail.com>
-To: Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
+To: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Brian Masney <bmasney@redhat.com>,
+	Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Shuah Khan <skhan@linuxfoundation.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Saravana Kannan <saravanak@kernel.org>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	linux-pci@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v3 4/4] PCI: mediatek-gen3: Add 2-lanes mode support for Airoha AN7581
-Date: Sat, 27 Jun 2026 14:14:45 +0200
-Message-ID: <20260627121450.3529133-5-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260627121450.3529133-1-ansuelsmth@gmail.com>
-References: <20260627121450.3529133-1-ansuelsmth@gmail.com>
+	Nathan Chancellor <nathan@kernel.org>,
+	Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
+	Bill Wendling <morbo@google.com>,
+	Justin Stitt <justinstitt@google.com>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
+Subject: Re: [RFC PATCH net-next v8 03/12] net: phylink: add
+ phylink_release_pcs() to externally release a PCS
+References: <20260618125752.1223-1-ansuelsmth@gmail.com>
+ <20260618125752.1223-4-ansuelsmth@gmail.com>
+ <a271385e-302d-45c7-a1df-aebd380b427b@bootlin.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <a271385e-302d-45c7-a1df-aebd380b427b@bootlin.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260627_051508_269523_973232EE 
-X-CRM114-Status: GOOD (  25.39  )
+X-CRM114-CacheID: sfid-20260627_053325_439095_2B77C35C 
+X-CRM114-Status: GOOD (  50.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,212 +120,155 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Airoha AN7581 SoC supports configuring the first PCIe0 lane to 2-lanes
-mode (2x link) by bonding it with the second PCIe lane (PCIe1). This is
-done by configuring the PCIe MUX in the SCU register.
+On Thu, Jun 25, 2026 at 04:13:14PM +0200, Maxime Chevallier wrote:
+> Hello Christian,
+> 
+> On 6/18/26 14:57, Christian Marangi wrote:
+> > Add phylink_release_pcs() to externally release a PCS from a phylink
+> > instance. This can be used to handle case when a single PCS needs to be
+> > removed and the phylink instance needs to be refreshed.
+> > 
+> > On calling phylink_release_pcs(), the PCS will be removed from the
+> > phylink internal PCS list and the phylink supported_interfaces value is
+> > reparsed with the remaining PCS interfaces.
+> > 
+> > Also a phylink resolve is triggered to handle the PCS removal.
+> > 
+> > The flag force_major_config is set to make phylink resolve reconfigure
+> > the interface (even if it didn't change).
+> > This is needed to handle the special case when the current PCS used
+> > by phylink is removed and a major_config is needed to propagae the
+> > configuration change. With this option enabled we also force mac_config
+> > even if the PHY link is not up for the in-band case.
+> > 
+> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> > ---
+> >  drivers/net/phy/phylink.c | 56 +++++++++++++++++++++++++++++++++++++++
+> >  include/linux/phylink.h   |  2 ++
+> >  2 files changed, 58 insertions(+)
+> > 
+> > diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
+> > index c38bcd43b8c8..064d6f5a06da 100644
+> > --- a/drivers/net/phy/phylink.c
+> > +++ b/drivers/net/phy/phylink.c
+> > @@ -158,6 +158,8 @@ static const phy_interface_t phylink_sfp_interface_preference[] = {
+> >  static DECLARE_PHY_INTERFACE_MASK(phylink_sfp_interfaces);
+> >  
+> >  static void phylink_run_resolve(struct phylink *pl);
+> > +static void phylink_link_down(struct phylink *pl);
+> > +static void phylink_pcs_disable(struct phylink_pcs *pcs);
+> >  
+> >  /**
+> >   * phylink_set_port_modes() - set the port type modes in the ethtool mask
+> > @@ -918,6 +920,60 @@ static void phylink_resolve_an_pause(struct phylink_link_state *state)
+> >  	}
+> >  }
+> >  
+> > +/**
+> > + * phylink_release_pcs - Removes a PCS from the phylink PCS available list
+> > + * @pcs: a pointer to the phylink_pcs struct to be released
+> > + *
+> > + * This function release a PCS from the phylink PCS available list if
+> > + * actually in use. It also refreshes the supported interfaces of the
+> > + * phylink instance by copying the supported interfaces from the phylink
+> > + * conf and merging the supported interfaces of the remaining available PCS
+> > + * in the list and trigger a resolve.
+> > + */
+> > +void phylink_release_pcs(struct phylink_pcs *pcs)
+> > +{
+> > +	struct phylink *pl;
+> > +
+> > +	ASSERT_RTNL();
+> > +
+> > +	pl = pcs->phylink;
+> > +	if (!pl)
+> > +		return;
+> > +
+> > +	mutex_lock(&pl->state_mutex);
+> > +
+> > +	list_del(&pcs->list);
+> > +	pcs->phylink = NULL;
+> > +
+> > +	/*
+> > +	 * Check if we are removing the PCS currently
+> > +	 * in use by phylink. If this is the case, tear down
+> > +	 * the link, force phylink resolve to reconfigure the
+> > +	 * interface mode, disable the current PCS and set the
+> > +	 * phylink PCS to NULL.
+> > +	 */
+> > +	if (pl->pcs == pcs) {
+> > +		phylink_link_down(pl);
+> > +		phylink_pcs_disable(pl->pcs);
+> > +
+> > +		pl->force_major_config = true;
+> > +		pl->pcs = NULL;
+> > +	}
+> > +
+> > +	mutex_unlock(&pl->state_mutex);
+> > +
+> > +	/* Refresh supported interfaces */
+> > +	phy_interface_copy(pl->supported_interfaces,
+> > +			   pl->config->supported_interfaces);
+> > +	list_for_each_entry(pcs, &pl->pcs_list, list)
+> > +		phy_interface_or(pl->supported_interfaces,
+> > +				 pl->supported_interfaces,
+> > +				 pcs->supported_interfaces);
+> 
+> I've given more thought to that 'supported_interfaces' thing. This
+> patchset redefines the meaning of
+> 
+>   pl->config->supported_interfaces
+> 
+> Currently, it's filled by the MAC driver and means "Every interface
+> we can support, including the ones provided by PCSs that we can use
+> with this MAC".
+> 
+> It now becomes "Every interface we support without needing a PCS", at
+> least the way I understand that.
+>
 
-To correctly configure PCIe0 in 2x link, define in DT the following
-additional property:
-- additional reg, 'sec-pcie-mac' for the secondary PCIe.
-- PERSTOUT reset for both main and secondary PCIE0, called 'perstout' and
-  'sec-perstout'
-- airoha,scu property to correctly configure the SCU register for the PCIe
-  MUX
-- 'num-lanes' set to '2' to enable PCIe0 in 2x link
+Wait but with the current code using the OR logic, it still follows
+"Every interface we can support...". The modes that needs a PCS are
+specificed with the pcs_interfaces mask in phylink_config.
 
-In such configuration the EQ preset are configured to the same values.
+The late add and release operates on the phylink supported_interfaces ONLY
+when the MAC didn't specify support for it (by removing it as only the PCS
+will declare support for it)
 
-To permit correct configuration of the PCIe line, additional logic is added
-to assert and deassert the PERSTOUT resets.
+The confusion is present because everything is validated later on
+major_config so those supported_interfaces are just an HINT that are later
+verified with get_caps and with the pcs_validate OPs.
 
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
----
- drivers/pci/controller/pcie-mediatek-gen3.c | 104 ++++++++++++++++----
- 1 file changed, 87 insertions(+), 17 deletions(-)
+Adding the supported_interfaces to phylink is really to keep an original
+reference of the value. This is to address a pattern I have notice where
+the MAC driver always OR the interfaces with the one supported by the PCS.
+(I remember it was pointed out by Russell)
 
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index b0accd828589..ba28d95e5d44 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -32,6 +32,11 @@
- 
- #include "../pci.h"
- 
-+/* AN7581 SCU register */
-+#define SCU_PCIC			0x88
-+#define SCU_PCIC_PCIE_CTRL		GENMASK(7, 0)
-+
-+/* PCIe register */
- #define PCIE_BASE_CFG_REG		0x14
- #define PCIE_BASE_CFG_SPEED		GENMASK(15, 8)
- 
-@@ -131,6 +136,7 @@
- #define PCIE_ATR_TLP_TYPE_IO		PCIE_ATR_TLP_TYPE(2)
- 
- #define MAX_NUM_PHY_RESETS		3
-+#define MAX_NUM_PERSTOUT_RESETS		2
- 
- #define PCIE_MTK_RESET_TIME_US		10
- 
-@@ -203,9 +209,11 @@ struct mtk_msi_set {
- struct mtk_gen3_pcie {
- 	struct device *dev;
- 	void __iomem *base;
-+	void __iomem *sec_base;
- 	phys_addr_t reg_base;
- 	struct reset_control *mac_reset;
- 	struct reset_control_bulk_data phy_resets[MAX_NUM_PHY_RESETS];
-+	struct reset_control_bulk_data perstout_resets[MAX_NUM_PERSTOUT_RESETS];
- 	struct phy *phy;
- 	struct clk_bulk_data *clks;
- 	int num_clks;
-@@ -928,6 +936,14 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
- 	if (ret)
- 		return dev_err_probe(dev, ret, "failed to get PHY bulk reset\n");
- 
-+	pcie->perstout_resets[0].id = "perstout";
-+	pcie->perstout_resets[1].id = "sec-perstout";
-+
-+	ret = devm_reset_control_bulk_get_optional_exclusive(dev, MAX_NUM_PERSTOUT_RESETS,
-+							     pcie->perstout_resets);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to get PERSTOUT bulk reset\n");
-+
- 	pcie->mac_reset = devm_reset_control_get_optional_exclusive(dev, "mac");
- 	if (IS_ERR(pcie->mac_reset))
- 		return dev_err_probe(dev, PTR_ERR(pcie->mac_reset), "failed to get MAC reset\n");
-@@ -949,18 +965,38 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
- 			pcie->num_lanes = num_lanes;
- 	}
- 
-+	/* Map secondary PCIe for 2-lanes mode for EN7581 */
-+	if (pcie->num_lanes == 2 && device_is_compatible(dev, "airoha,en7581-pcie")) {
-+		regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sec-pcie-mac");
-+		if (!regs)
-+			return -EINVAL;
-+		pcie->sec_base = devm_ioremap_resource(dev, regs);
-+		if (IS_ERR(pcie->sec_base))
-+			return dev_err_probe(dev, PTR_ERR(pcie->sec_base), "failed to map secondary register base\n");
-+	}
-+
- 	return 0;
- }
- 
- static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- {
- 	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
-+	unsigned int num_lanes = max(1, pcie->num_lanes);
-+	struct regmap *pbus_regmap, *scu;
- 	struct device *dev = pcie->dev;
- 	struct resource_entry *entry;
--	struct regmap *pbus_regmap;
- 	u32 val, args[2], size;
- 	resource_size_t addr;
--	int err;
-+	int i, err;
-+
-+	if (num_lanes > 2)
-+		return dev_err_probe(dev, -EINVAL, "unsupported num-lanes, maximum 2 lanes supported\n");
-+
-+	if (num_lanes == 2) {
-+		scu = syscon_regmap_lookup_by_phandle(dev->of_node, "airoha,scu");
-+		if (IS_ERR(scu))
-+			return dev_err_probe(dev, PTR_ERR(scu), "failed to map SCU regmap\n");
-+	}
- 
- 	/*
- 	 * The controller may have been left out of reset by the bootloader
-@@ -992,6 +1028,19 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- 	size = lower_32_bits(resource_size(entry->res));
- 	regmap_write(pbus_regmap, args[1], GENMASK(31, __fls(size)));
- 
-+	/* Assert PERSTOUT for all relevant lines */
-+	err = reset_control_bulk_assert(MAX_NUM_PERSTOUT_RESETS,
-+					pcie->perstout_resets);
-+	if (err) {
-+		dev_err(dev, "failed to assert PERSTOUTs\n");
-+		return err;
-+	}
-+
-+	/* Configure SCU MUX to disable PCIE1 for 2 lines mode */
-+	if (num_lanes == 2)
-+		regmap_update_bits(scu, SCU_PCIC, SCU_PCIC_PCIE_CTRL,
-+				   FIELD_PREP(SCU_PCIC_PCIE_CTRL, BIT(1)));
-+
- 	/*
- 	 * Unlike the other MediaTek Gen3 controllers, the Airoha EN7581
- 	 * requires PHY initialization and power-on before PHY reset deassert.
-@@ -1024,18 +1073,6 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- 	pm_runtime_enable(dev);
- 	pm_runtime_get_sync(dev);
- 
--	val = FIELD_PREP(PCIE_VAL_LN0_DOWNSTREAM, 0x47) |
--	      FIELD_PREP(PCIE_VAL_LN1_DOWNSTREAM, 0x47) |
--	      FIELD_PREP(PCIE_VAL_LN0_UPSTREAM, 0x41) |
--	      FIELD_PREP(PCIE_VAL_LN1_UPSTREAM, 0x41);
--	writel_relaxed(val, pcie->base + PCIE_EQ_PRESET_01_REG);
--
--	val = PCIE_K_PHYPARAM_QUERY | PCIE_K_QUERY_TIMEOUT |
--	      FIELD_PREP(PCIE_K_PRESET_TO_USE_16G, 0x80) |
--	      FIELD_PREP(PCIE_K_PRESET_TO_USE, 0x2) |
--	      FIELD_PREP(PCIE_K_FINETUNE_MAX, 0xf);
--	writel_relaxed(val, pcie->base + PCIE_PIPE4_PIE8_REG);
--
- 	err = clk_bulk_prepare_enable(pcie->num_clks, pcie->clks);
- 	if (err) {
- 		dev_err(dev, "failed to prepare clock\n");
-@@ -1043,14 +1080,47 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- 	}
- 
- 	/*
--	 * Airoha EN7581 performs PCIe reset via clk callbacks since it has a
--	 * hw issue with PCIE_PE_RSTB signal. Add wait for the time needed to
--	 * complete the PCIe reset.
-+	 * Old Airoha EN7581 clock driver performed PCIe reset via
-+	 * clk callbacks since it has a hw issue with PCIE_PE_RSTB signal.
-+	 * This is now handled by dedicated PERSTOUT resets with clk
-+	 * driver only enabling the refclk.
-+	 *
-+	 * Wait is still needed for refclk to stabilize
- 	 */
- 	msleep(PCIE_T_PVPERL_MS);
- 
-+	/* Configure all the lines to the same EQ config */
-+	for (i = 0; i < num_lanes; i++) {
-+		void __iomem *base = pcie->base;
-+
-+		if (i == 1)
-+			base = pcie->sec_base;
-+
-+		val = FIELD_PREP(PCIE_VAL_LN0_DOWNSTREAM, 0x47) |
-+			FIELD_PREP(PCIE_VAL_LN1_DOWNSTREAM, 0x47) |
-+			FIELD_PREP(PCIE_VAL_LN0_UPSTREAM, 0x41) |
-+			FIELD_PREP(PCIE_VAL_LN1_UPSTREAM, 0x41);
-+		writel_relaxed(val, base + PCIE_EQ_PRESET_01_REG);
-+
-+		val = PCIE_K_PHYPARAM_QUERY | PCIE_K_QUERY_TIMEOUT |
-+			FIELD_PREP(PCIE_K_PRESET_TO_USE_16G, 0x80) |
-+			FIELD_PREP(PCIE_K_PRESET_TO_USE, 0x2) |
-+			FIELD_PREP(PCIE_K_FINETUNE_MAX, 0xf);
-+		writel_relaxed(val, base + PCIE_PIPE4_PIE8_REG);
-+	}
-+
-+	/* Deassert PERSTOUT for all relevant lines */
-+	err = reset_control_bulk_deassert(MAX_NUM_PERSTOUT_RESETS,
-+					  pcie->perstout_resets);
-+	if (err) {
-+		dev_err(dev, "failed to deassert PERSTOUTs\n");
-+		goto err_perstout_deassert;
-+	}
-+
- 	return 0;
- 
-+err_perstout_deassert:
-+	clk_bulk_disable_unprepare(pcie->num_clks, pcie->clks);
- err_clk_prepare_enable:
- 	pm_runtime_put_sync(dev);
- 	pm_runtime_disable(dev);
+But I'm more than open to discussion as this is something marginal to the
+whole implementation, I'm also questioning if this OR is actually useful to
+anything on the nth tought on this.
+
+One thing that I notice is that parsing this early with AND might be
+problematic at phylink_create, but I still have to evaluate that.
+
+My take is that would be good to have some review also on the other logic
+as I think I reached a point where Sashiko starts to comments on more or
+less unreal problem.
+
+> It's not an error in your code, but I think this is worth documenting
+> somewhere as this changes one the things that's already fairly
+> error-prone in new drivers.
+> 
+> I don't know to what extent people use that, be we have a porting guide
+> that explains how to use phylink in a MAC driver, maybe an update in there
+> would be nice as well :
+> 
+> https://docs.kernel.org/networking/sfp-phylink.html#rough-guide-to-converting-a-network-driver-to-sfp-phylink
+> 
+> Maxime
+> 
+> 
+
 -- 
-2.53.0
-
+	Ansuel
 
