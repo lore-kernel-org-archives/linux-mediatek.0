@@ -4,99 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2842C43458
-	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jun 2026 17:34:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06EFEC43458
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jun 2026 19:15:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IvP5EC4HPkXdnPkEEbC3Vgbr3RX7xQ2s7hFuOh57p+w=; b=lQQCk02rIEZgLMqUkg/Lb9ipiz
-	VgnJVO28kljAIpT7TDSxkcr9L8FLQlcTdE7LSQsdaL12k6qyAjWOj0wWgBln9x8p5dOqgwhUX9nXC
-	n2+/CE9fQA5c31AF+5WOaxRN0ct9qAb1raFYTWt5m/a4MMjdEiYgk68DjWi6sXZaHc7YeFuvtFaQJ
-	axjm+G2JcxU2BuOQQLe5gVPMX9l3QEsaocfxkpRCU+zOWxYl+9p/i/zzx4hZD5kTcFMQIeoYPFdy/
-	e25NcyFIITWAJv7yKLIvb9LWNK1OPgbXl2qp3vxMODF9nAUTVPF3Qp/B7/vLUS819G57/aUfqEPcg
-	6x8Wz/qQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XxvgHWh0eQuIndRLsQaT1KKb6oiwdrh7l2i05NrIeJM=; b=sgcU7w7HYLW77mY61AjxLYztzr
+	X9iIReKrASjqs9su7LYZG+H2fy7UWMxoN9ZHwkaMe1S/AoRSe72H4pYEJE0XLPebmzRcR5pDXXGT1
+	ZLVBPB9ZwkZ/FdeTgBjWmTO5IO6WksbzX1mYxtHS+IaXfu7BBxdpnEc+jDtMq130pIgc1+Q/FLI/i
+	YLbNEIUNZueAHVLAy0T73lkG980VO9DfgF02+W1KXQaRaV4/1y2zOd5/z40hFm1no1MMyM7h7dEcb
+	SUXVXSQ5MyJTZ0oLpjblI4L71XFxzJUWtENhqrFbbAg2u1KCD8cRmEmQTC5C4FwDSeKg9Qp8hjXsk
+	nr2wEx2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdtOk-0000000DFLo-2a9i;
-	Sun, 28 Jun 2026 17:34:26 +0000
-Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
+	id 1wduyZ-0000000DJYX-45up;
+	Sun, 28 Jun 2026 19:15:31 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdtOg-0000000DFLC-44t1
+	id 1wduyY-0000000DJYR-3eB0
 	for linux-mediatek@lists.infradead.org;
-	Sun, 28 Jun 2026 17:34:25 +0000
-Received: by mail-ot1-x32a.google.com with SMTP id 46e09a7af769-7e9c5cacf1aso425603a34.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 28 Jun 2026 10:34:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1782668061; x=1783272861; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=IvP5EC4HPkXdnPkEEbC3Vgbr3RX7xQ2s7hFuOh57p+w=;
-        b=E6pKRkeovoxaLAY9IjGHf30vDChuY6bH9Vv3wRpRoaXmlH/Yn+jmLw5ZpFZyGSAMKb
-         R+N5scyBDS6MwXAjtaa0wxeMUFjBXtJYDnBJWM+sOCzw29tR4Pd87AjH8YURHLpj8sPW
-         VePk5IKoR9wXjtM8qgBgqjHS8mNyHDhLqcpa6mLi83ly85KlbF2KBzs0ryLBGJ5Wt1oL
-         zkTOHVe/GSrZrVaY3faw0tTkITwtfcbrcl1dBvesjRPEH4JZREVfHfoSxnBGNY9wC82w
-         Gy+fHBAgn1KnHs7CgTBXGlS1Dx+5VUQJvfY+xa5s1mvTBl43/TK+iHMTUoHguqhlYyL3
-         +Dfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782668061; x=1783272861;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=IvP5EC4HPkXdnPkEEbC3Vgbr3RX7xQ2s7hFuOh57p+w=;
-        b=o5K683yoWMI3YJHnatRfL36mTmtPtrr6BtILwJx/Mmr+Jsh6cWUOQQ/faV+DBVeOi9
-         8ys2MdSh9G9Cu+Es2XZX046nRJSEOByKx/yB7cg3a5DB5hjP/DXCNYU5Y2wi3p1+UizS
-         f2+1fWNEf4nG2x0egel8XUwrSTaMOZFw5apQbyp88GB3L1k+PUSCCHdj0WxXdm578azy
-         TJGDaxyaz8kynyPrtgHW8C9uGCMLrLiIGfJT0X+pLOc5owksz5abLUwG9SlopBWaw/n2
-         gtDmTpI2rU/CE0ixStLk6SHvPPNwf4ygsZRP9E/OSKgd5Kf0+2dSVMGIViPu1LM3GVwL
-         6WDg==
-X-Forwarded-Encrypted: i=1; AFNElJ+Ye5uoa1qot2t82GD+V355tCjoTAJ9Msa9by3q6yoEg83Yu/dvY0DLYwj0QmRb0lWoXRheHrlGyCyZLL8m2A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyYLMFBO3Ng+pXHmGktnX8tVkA+KQWDwEfE1XS3sYD4irvpiOLV
-	1+8Bb0NgR0uvjCtojv2UAhpyx+IgvLY7T+3xuDbmRMSD51chhTATWouKuaDz2B35NnA=
-X-Gm-Gg: AfdE7cl0gUPbkTxJ54DVjhFwePYhCjd8l+9uyJWzBjvuJNctqnJjghDKkQnb+Vfo7rw
-	6ZmZpSugtk1aJvfTqRKB9ItXGulBZ7IXrJOEgr76Q35g9kfRMz18LBfnsGFCTYijLEo5LmMOxTs
-	/H0aQeQxgbOeaRCjzfr52fzGWCM2NIqABO06nh7BSYQZVNwzpFAGiK5/qVaVeq7gl7OO07QjcjQ
-	QwyQdWvRQTxY+yOpIs54+4N3tBuVyHclpwUAC2KYQoVIQBwT6k4eNNYyZ0jIcGs0woFx7cyV4wn
-	xPGPyrfIxwhM0iB+OXsLUFv3GGD5Tx0S51RkJdcon6JYVYy5jnpssg0rZmaHp2Nv5uvg1HWi7Fk
-	7p2wOW6fL8nqB6AcjD29YpVqrjvsOk+HRA6tokZLA3f67OkoNjjVKMnymwc1vU453o4kRcjRjwj
-	FpGFmgaDpRRsjc/rX9EjZU5h92ugqWzvzJLriGuPxIWD76fpAnjcXd9gs5st7SUCI=
-X-Received: by 2002:a05:6830:4998:b0:7e6:f083:130e with SMTP id 46e09a7af769-7e99bfef82bmr13002333a34.4.1782668061288;
-        Sun, 28 Jun 2026 10:34:21 -0700 (PDT)
-Received: from ?IPV6:2600:8803:e7e4:500:f242:ecd6:f61e:d764? ([2600:8803:e7e4:500:f242:ecd6:f61e:d764])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7e9aa7eb558sm6725566a34.24.2026.06.28.10.34.20
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 28 Jun 2026 10:34:20 -0700 (PDT)
-Message-ID: <3f914030-44e8-4f63-ae72-7fde7d843325@baylibre.com>
-Date: Sun, 28 Jun 2026 12:34:20 -0500
+	Sun, 28 Jun 2026 19:15:30 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 38FC841397;
+	Sun, 28 Jun 2026 19:15:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 504BB1F000E9;
+	Sun, 28 Jun 2026 19:15:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1782674130;
+	bh=XxvgHWh0eQuIndRLsQaT1KKb6oiwdrh7l2i05NrIeJM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=iIzqZVXQIcHzIves2M+OO318TWw//MONsNcnEmnJN2AUPvn1LUAGO5cyOcZJDuZ2u
+	 mwSi4uQPIVvUcJuTxcC4RVerKXEC4gd+CpxiE7HOHPJ1MTXCb1tHeyZO8iGgNGdlFR
+	 Eq8t7QtzoXOjBFgab7OHQvWv0WoiMmXRyu0/oDEanbFvgzr5aVZfZMGAC5vL+Nmvnl
+	 T4hb9/OWG1zkbrtK2nwv37pLchSkS9OtqE7zp8iXLUEXOR8UFISrRwHbp4ACihKlHX
+	 HlWzrmvGFgDOZL/oGwNfiAyec7Q0kfZWxYsiNbv6Pr0Gs4q6GmofsovHXEdy84Ts+D
+	 UUuLbsyx5R/gg==
+Date: Sun, 28 Jun 2026 20:15:25 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Larsson <benjamin.larsson@genexis.eu>,
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	Markus Gothe <markus.gothe@genexis.eu>,
+	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
+Subject: Re: [PATCH v6 01/17] dt-bindings: pinctrl: airoha: update/fix device
+ tree binding schemas
+Message-ID: <20260628-pronto-stash-ea7ff79bd0d3@spud>
+References: <20260628143733.273651-1-mikhail.kshevetskiy@iopsys.eu>
+ <20260628143733.273651-2-mikhail.kshevetskiy@iopsys.eu>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/4] AUXADC driver for the MediaTek mt6323 PMIC
-To: rva333@protonmail.com, Jonathan Cameron <jic23@kernel.org>,
- =?UTF-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>,
- Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Lee Jones <lee@kernel.org>
-Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Ben Grisdale <bengris32@protonmail.ch>,
- Conor Dooley <conor.dooley@microchip.com>,
- Andy Shevchenko <andriy.shevchenko@intel.com>
-References: <20260623-mt6323-adc-v4-0-299680ad3194@protonmail.com>
-Content-Language: en-US
-From: David Lechner <dlechner@baylibre.com>
-In-Reply-To: <20260623-mt6323-adc-v4-0-299680ad3194@protonmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260628_103423_017563_8947984B 
-X-CRM114-Status: UNSURE (   9.83  )
-X-CRM114-Notice: Please train this message.
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="lPGuEethiyCynXtY"
+Content-Disposition: inline
+In-Reply-To: <20260628143733.273651-2-mikhail.kshevetskiy@iopsys.eu>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,21 +80,160 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/23/26 3:16 AM, Roman Vivchar via B4 Relay wrote:
-> This series adds support for the 15-bit AUXADC hardware block found on
-> the MediaTek mt6323 PMIC.
-> 
-> The previous version of the series for all AUXADC, EFUSE and thermal
-> drivers was split after Krzysztof's comment [1].
-> 
-> Tested on the MediaTek mt6572 and mt8163 SoCs (Ben), both paired with a
-> mt6323.
-> 
-> [1]: https://lore.kernel.org/linux-mediatek/20260504-mt6323-v1-0-799b58b355ff@protonmail.com/T/#med30fad67a090be35f549231336b2dec295233f6
-> 
-> Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
-> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-> ---
-Reviewed-by: David Lechner <dlechner@baylibre.com>
+--lPGuEethiyCynXtY
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Sun, Jun 28, 2026 at 05:37:17PM +0300, Mikhail Kshevetskiy wrote:
+> This patch fix several misprints and sync device tree binding schemas
+> with actual driver code.
+
+Please split this up and provide some explanation for why each thing is
+incorrect.
+
+pw-bot: changes-requested
+
+>=20
+
+Missing a Fixes: tag.
+
+Thanks,
+Conor.
+
+> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+> ---
+>  .../pinctrl/airoha,an7583-pinctrl.yaml        | 37 +++++++------------
+>  .../pinctrl/airoha,en7581-pinctrl.yaml        |  4 +-
+>  2 files changed, 16 insertions(+), 25 deletions(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/pinctrl/airoha,an7583-pinc=
+trl.yaml b/Documentation/devicetree/bindings/pinctrl/airoha,an7583-pinctrl.=
+yaml
+> index 79910214d9b5..f52802a3ad79 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/airoha,an7583-pinctrl.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/airoha,an7583-pinctrl.yaml
+> @@ -61,7 +61,7 @@ patternProperties:
+>              description:
+>                A string containing the name of the function to mux to the=
+ group.
+>              enum: [pon, tod_1pps, sipo, mdio, uart, i2c, jtag, pcm, spi,
+> -                   pcm_spi, i2s, emmc, pnand, pcie_reset, pwm, phy1_led0,
+> +                   pcm_spi, emmc, pnand, pcie_reset, pwm, phy1_led0,
+>                     phy2_led0, phy3_led0, phy4_led0, phy1_led1, phy2_led1,
+>                     phy3_led1, phy4_led1]
+> =20
+> @@ -159,17 +159,8 @@ patternProperties:
+>                properties:
+>                  groups:
+>                    items:
+> -                    enum: [pcm_spi, pcm_spi_int, pcm_spi_rst, pcm_spi_cs=
+1,
+> -                           pcm_spi_cs2, pcm_spi_cs3, pcm_spi_cs4]
+> -                  maxItems: 7
+> -          - if:
+> -              properties:
+> -                function:
+> -                  const: i2c
+> -            then:
+> -              properties:
+> -                groups:
+> -                  enum: [i2s]
+> +                    enum: [pcm_spi, pcm_spi_rst, pcm_spi_cs1]
+> +                  maxItems: 3
+>            - if:
+>                properties:
+>                  function:
+> @@ -207,7 +198,8 @@ patternProperties:
+>                           gpio20, gpio21, gpio22, gpio23, gpio24, gpio25,
+>                           gpio26, gpio27, gpio28, gpio29, gpio30, gpio31,
+>                           gpio36, gpio37, gpio38, gpio39, gpio40, gpio41,
+> -                         gpio42, gpio43, gpio44, gpio45, gpio46, gpio47]
+> +                         gpio42, gpio43, gpio44, gpio45, gpio46, gpio47,
+> +                         gpio48]
+>            - if:
+>                properties:
+>                  function:
+> @@ -288,17 +280,16 @@ patternProperties:
+>              description:
+>                An array of strings. Each string contains the name of a pi=
+n.
+>              items:
+> -              enum: [uart1_txd, uart1_rxd, i2c_scl, i2c_sda, spi_cs0, sp=
+i_clk,
+> -                     spi_mosi, spi_miso, gpio0, gpio1, gpio2, gpio3, gpi=
+o4,
+> -                     gpio5, gpio6, gpio7, gpio8, gpio9, gpio10, gpio11, =
+gpio12,
+> -                     gpio13, gpio14, gpio15, gpio16, gpio17, gpio18, gpi=
+o19,
+> -                     gpio20, gpio21, gpio22, gpio23, gpio24, gpio25, gpi=
+o26,
+> -                     gpio27, gpio28, gpio29, gpio30, gpio31, gpio32, gpi=
+o33,
+> -                     gpio34, gpio35, gpio36, gpio37, gpio38, gpio39, gpi=
+o40,
+> -                     gpio41, gpio42, gpio43, gpio44, gpio45, gpio46,
+> -                     pcie_reset0, pcie_reset1, pcie_reset2]
+> +              enum: [gpio0, gpio1, gpio2, gpio3, gpio4, gpio5, gpio6, gp=
+io7,
+> +                     gpio8, gpio9, gpio10, gpio11, gpio12, gpio13, gpio1=
+4,
+> +                     gpio15, gpio16, gpio17, gpio18, gpio19, gpio20, gpi=
+o21,
+> +                     gpio22, gpio23, gpio24, gpio25, gpio26, gpio27, gpi=
+o28,
+> +                     gpio29, gpio30, gpio31, gpio32, gpio33, gpio34, gpi=
+o35,
+> +                     gpio36, gpio37, gpio38, i2c0_scl, i2c0_sda, i2c1_sc=
+l,
+> +                     i2c1_sda, spi_clk, spi_cs, spi_mosi, spi_miso, uart=
+_txd,
+> +                     uart_rxd, pcie_reset0, pcie_reset1, mdc_0, mdio_0]
+>              minItems: 1
+> -            maxItems: 58
+> +            maxItems: 53
+> =20
+>            bias-disable: true
+> =20
+> diff --git a/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinc=
+trl.yaml b/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.=
+yaml
+> index 21fd4f1ba78b..12dd85b5b410 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
+> @@ -166,7 +166,7 @@ patternProperties:
+>            - if:
+>                properties:
+>                  function:
+> -                  const: i2c
+> +                  const: i2s
+>              then:
+>                properties:
+>                  groups:
+> @@ -208,7 +208,7 @@ patternProperties:
+>                           gpio20, gpio21, gpio22, gpio23, gpio24, gpio25,
+>                           gpio26, gpio27, gpio28, gpio29, gpio30, gpio31,
+>                           gpio36, gpio37, gpio38, gpio39, gpio40, gpio41,
+> -                         gpio42, gpio43, gpio44, gpio45, gpio46, gpio47]
+> +                         gpio42, gpio43, gpio44, gpio45, gpio46]
+>            - if:
+>                properties:
+>                  function:
+> --=20
+> 2.53.0
+>=20
+
+--lPGuEethiyCynXtY
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCakFyxgAKCRB4tDGHoIJi
+0g6dAQD9tb4JAvk+3o+T9mnLzjVVmU+dF8yfrer/nFDzCEl+KgD/fvB+Le8z8O7A
+aGEIjdyyNk8gIeUK6sG087pH7fwRLAg=
+=Qf7e
+-----END PGP SIGNATURE-----
+
+--lPGuEethiyCynXtY--
 
