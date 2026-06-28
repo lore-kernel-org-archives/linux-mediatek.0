@@ -4,77 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2F33C43458
-	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jun 2026 03:56:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 461FCC43458
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jun 2026 14:23:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:
-	Content-Transfer-Encoding:Cc:Date:In-Reply-To:From:Subject:Mime-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w+xoCVd8WBKFwRN/yXjXG1KvLkyE55qRDYLdgT/0Hx4=; b=upFOr/LIy+oeaPn2FcB5LkAuu0
-	qJyXtA/7iqLHtBk1tkCXy48rhhHl5VTRmnQz5/44aBbIF5YoLUjZBjjT8Vq6nysUs4k/5kH0iZ9bw
-	FPqJ5gtn9HMtTUSzLQQIhtGFU+ocJBo0vqqR4P8sVE1o7AIRetURQW9OQgDFM0G8ENx7SDuNwMsem
-	eXeP0kw7hpYqhxnQtyyRH5G3Vtbs3APcQxue9nlLsuvc1Vf5JJbUHt/0+eCUhv79z/ZmUsvVLnD/x
-	hCVKvbuyHj8hu/AFlL8jfBC6PZ9M6YP14OkqQEoYmU4UiaeIc/oS9ohM1nsxd5ppLpDJXX8wi+WYC
-	fHZWJvxQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Vczm7YwWGcXl6BUuvuoQawBq9n1D13yeM3SOthDuKAM=; b=XyJUokZc5P8kGJ0pn/p7GRZ5ls
+	13O4DCM/opCjJr2Wt5CpDfiFPhj48cVafGNK9aEVc6XxV/MdaYY/zrmcKti0xlaLlncneeILX1vVW
+	0nMXwwdRj/g051XnyJ8xq4K2K3e0vaX3iA2KtnI7cuHLqwrH4Ht+VfXtMdbOBob3+g2BPZfzzjzIB
+	bfY5zBER06/yzAzQ663wnM7/xUNDMeaOAIwdfdqh6uyWJJ49ELkVXUvpk8dygnjQsFUSshM+LArOh
+	YgMbr2Ppi5FaM2iInB8O8ztNUNaiy2bD0v/GzGuaG5d/LKdNzbOiQAW5tWDOwAAe1/luiiI4QdBdk
+	w/q3LgVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdgcs-0000000Ctoh-0e6z;
-	Sun, 28 Jun 2026 03:56:10 +0000
-Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
+	id 1wdqPb-0000000D8aR-23ic;
+	Sun, 28 Jun 2026 14:23:07 +0000
+Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdgco-0000000CtoH-2fHE;
-	Sun, 28 Jun 2026 03:56:09 +0000
-Received: from smtpclient.apple (unknown [117.182.74.7])
-	by APP-01 (Coremail) with SMTP id qwCowADXfdYKm0BqqCuqAw--.7249S7;
-	Sun, 28 Jun 2026 11:55:57 +0800 (CST)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.700.81.1.8\))
-Subject: Re: [PATCH] fix: drm/mediatek: mtk_drm_probe: of_node_get in loop
- overwrites previous   node references without release
+	id 1wdqPX-0000000D8Zy-38Cj;
+	Sun, 28 Jun 2026 14:23:05 +0000
+Received: from localhost.localdomain (unknown [117.182.74.7])
+	by APP-05 (Coremail) with SMTP id zQCowAAXnP8_LkFquD7IFQ--.8366S2;
+	Sun, 28 Jun 2026 22:22:56 +0800 (CST)
 From: WenTao Liang <vulab@iscas.ac.cn>
-In-Reply-To: <20260626132849.38694-1-vulab@iscas.ac.cn>
-Date: Sun, 28 Jun 2026 11:55:46 +0800
-Cc: dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- stable@vger.kernel.org
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <6172B26B-FC2B-4886-8578-E981C4FF14F6@iscas.ac.cn>
-References: <20260626132849.38694-1-vulab@iscas.ac.cn>
 To: chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de,
- airlied@gmail.com,
- simona@ffwll.ch,
- matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com
-X-Mailer: Apple Mail (2.3826.700.81.1.8)
-X-CM-TRANSID: qwCowADXfdYKm0BqqCuqAw--.7249S7
-X-Coremail-Antispam: 1UD129KBjvJXoW7CFyUArW7ur4fXr17KrWrGrg_yoW8AF4kpF
-	WUKFWYyrW8Kr4xKFyvyFn8uFySy3WSq3y8Wa10q3W8uwn0yFyUXFy5Xa17tFZ7AFyIkF13
-	Jan8JF93ur12vFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUUm2b7Iv0xC_tr1lb4IE77IF4wAFF20E14v26rWj6s0DM7CY07I2
-	0VC2zVCF04k26cxKx2IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28IrcIa0xkI8VA2jI
-	8067AKxVWUAVCq3wA2048vs2IY020Ec7CjxVAFwI0_Xr0E3s1l8cAvFVAK0II2c7xJM28C
-	jxkF64kEwVA0rcxSw2x7M28EF7xvwVC0I7IYx2IY67AKxVW7JVWDJwA2z4x0Y4vE2Ix0cI
-	8IcVCY1x0267AKxVW8Jr0_Cr1UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2
-	z280aVCY1x0267AKxVWxJr0_GcWle2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2
-	IEw4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAFwI0_JrI_JrylYx0Ex4A2jsIE14v26r1j6r4U
-	McvjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvY0x0EwIxGrwACI402YVCY1x02628vn2kIc2
-	xKxwCY1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWU
-	JVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67
-	kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVW8JVW5JwCI42IY
-	6xIIjxv20xvEc7CjxVAFwI0_Gr1j6F4UJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIx
-	AIcVC2z280aVAFwI0_Gr0_Cr1lIxAIcVC2z280aVCY1x0267AKxVW8Jr0_Cr1UYxBIdaVF
-	xhVjvjDU0xZFpf9x07jj5lbUUUUU=
+	p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	WenTao Liang <vulab@iscas.ac.cn>,
+	Greg KH <gregkh@linuxfoundation.org>,
+	stable@vger.kernel.org
+Subject: [PATCH v2] drm/mediatek: fix of_node leak in mtk_drm_probe loop
+Date: Sun, 28 Jun 2026 22:17:51 +0800
+Message-Id: <20260628141751.47090-1-vulab@iscas.ac.cn>
+X-Mailer: git-send-email 2.39.5 (Apple Git-154)
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: zQCowAAXnP8_LkFquD7IFQ--.8366S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7AFy8ur4ktF43Ar4xKw1kuFg_yoW8Wr45pF
+	WDKFWYyrW0qr4xKFyvyFyUury3A3WSqayxWr4Yg3WxZwn8tFy7XFyFqay7KFZ7AFyxC3Wa
+	q3Z8AFyfury7AFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUU9Y14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+	1l84ACjcxK6xIIjxv20xvE14v26r4j6ryUM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
+	6F4UM28EF7xvwVC2z280aVAFwI0_GcCE3s1l84ACjcxK6I8E87Iv6xkF7I0E14v26rxl6s
+	0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xII
+	jxv20xvE14v26r106r15McIj6I8E87Iv67AKxVW8JVWxJwAm72CE4IkC6x0Yz7v_Jr0_Gr
+	1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7M4IIrI8v6xkF7I0E8cxa
+	n2IY04v7MxkF7I0En4kS14v26r1q6r43MxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4
+	AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE
+	17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMI
+	IF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4l
+	IxAIcVC2z280aVAFwI0_Cr0_Gr1UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr1j6F4UJbIYCT
+	nIWIevJa73UjIFyTuYvjfUOlkVUUUUU
 X-Originating-IP: [117.182.74.7]
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBggMA2pAhrYiZAAAsd
+X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBgMMA2pBKkEGVwAAsb
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260627_205607_141460_FE2E66A4 
-X-CRM114-Status: GOOD (  13.05  )
+X-CRM114-CacheID: sfid-20260628_072304_152634_7BD992A1 
+X-CRM114-Status: UNSURE (   8.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,63 +86,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+In the for_each_child_of_node loop, private->comp_node[comp_id] and
+private->mutex_node are assigned via of_node_get without first releasing
+any previously stored reference for the same index. When the same comp_id
+or mmsys_id matches multiple nodes, earlier node references are
+overwritten and permanently leaked.
 
+Suggested-by: Greg KH <gregkh@linuxfoundation.org>
+Fixes: 1ef7ed48356c ("drm/mediatek: Modify mediatek-drm for mt8195 multi mmsys support")
+Cc: stable@vger.kernel.org
+Signed-off-by: WenTao Liang <vulab@iscas.ac.cn>
+---
+Changes in v2:
+- Fix patch format based on reviewer feedback
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-> 2026=E5=B9=B46=E6=9C=8826=E6=97=A5 21:28=EF=BC=8CWenTao Liang =
-<vulab@iscas.ac.cn> =E5=86=99=E9=81=93=EF=BC=9A
->=20
-> In the for_each_child_of_node loop, private->comp_node[comp_id] and
->  private->mutex_node are assigned via of_node_get without first =
-releasing
->  any previously stored reference for the same index. When the same =
-comp_id
->  or mmsys_id matches multiple nodes, earlier node references are
->  overwritten and permanently leaked.
->=20
-> Cc: stable@vger.kernel.org
-> Fixes: 1ef7ed48356c ("drm/mediatek: Modify mediatek-drm for mt8195 =
-multi mmsys support")
-> Signed-off-by: WenTao Liang <vulab@iscas.ac.cn>
-> ---
-> drivers/gpu/drm/mediatek/mtk_drm_drv.c | 3 ++-
-> 1 file changed, 2 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c =
-b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index c86a3f54f35b..2c0d8db9ade2 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -1138,6 +1138,7 @@ static int mtk_drm_probe(struct platform_device =
-*pdev)
->=20
-> 			id =3D of_alias_get_id(node, "mutex");
-> 			if (id < 0 || id =3D=3D private->data->mmsys_id) =
-{
-> +				of_node_put(private->mutex_node);
-> 				private->mutex_node =3D =
-of_node_get(node);
-> 				dev_dbg(dev, "get mutex for mmsys %d", =
-private->data->mmsys_id);
-> 			}
-> @@ -1153,7 +1154,7 @@ static int mtk_drm_probe(struct platform_device =
-*pdev)
->=20
-> 		if (!mtk_drm_find_mmsys_comp(private, comp_id))
-> 			continue;
-> -
-> +		of_node_put(private->comp_node[comp_id]);
-> 		private->comp_node[comp_id] =3D of_node_get(node);
->=20
-> 		/*
-> --=20
-> 2.39.5 (Apple Git-154)
-
-Please ignore this patch. I will resend a proper version after
-learning the kernel submission process.
-
-Apologies for the noise.
-
-Best regards,
-WenTao Liang
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index c86a3f54f35b..58860f7071a9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -1138,6 +1138,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 
+ 			id = of_alias_get_id(node, "mutex");
+ 			if (id < 0 || id == private->data->mmsys_id) {
++				of_node_put(private->mutex_node);
+ 				private->mutex_node = of_node_get(node);
+ 				dev_dbg(dev, "get mutex for mmsys %d", private->data->mmsys_id);
+ 			}
+@@ -1154,6 +1155,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 		if (!mtk_drm_find_mmsys_comp(private, comp_id))
+ 			continue;
+ 
++		of_node_put(private->comp_node[comp_id]);
+ 		private->comp_node[comp_id] = of_node_get(node);
+ 
+ 		/*
+-- 
+2.39.5 (Apple Git-154)
 
 
