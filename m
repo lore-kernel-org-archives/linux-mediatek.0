@@ -4,74 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 461FCC43458
-	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jun 2026 14:23:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38BECC43458
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Jun 2026 14:37:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Vczm7YwWGcXl6BUuvuoQawBq9n1D13yeM3SOthDuKAM=; b=XyJUokZc5P8kGJ0pn/p7GRZ5ls
-	13O4DCM/opCjJr2Wt5CpDfiFPhj48cVafGNK9aEVc6XxV/MdaYY/zrmcKti0xlaLlncneeILX1vVW
-	0nMXwwdRj/g051XnyJ8xq4K2K3e0vaX3iA2KtnI7cuHLqwrH4Ht+VfXtMdbOBob3+g2BPZfzzjzIB
-	bfY5zBER06/yzAzQ663wnM7/xUNDMeaOAIwdfdqh6uyWJJ49ELkVXUvpk8dygnjQsFUSshM+LArOh
-	YgMbr2Ppi5FaM2iInB8O8ztNUNaiy2bD0v/GzGuaG5d/LKdNzbOiQAW5tWDOwAAe1/luiiI4QdBdk
-	w/q3LgVQ==;
+	bh=IeuBR7NBu2tWVe6w20M1HNjdUZqHfL8R/ggccKptDes=; b=VudXWFMQ2UiMn5x1HAuc6jAXno
+	HqhNgYP0AEfxMAoZ59LX2Bfv2g7IxsR68PLJrp2nS8Z6m2OWGDCX83whd3JPjDfyKdlvIFZgaZk1u
+	LIvtagQe4ZuqO0XwLvV939UqQvv70YCNeXJCvhkoxoI7hxKUrCU8Rk5dv4ThTvJsZHsLs4ul1Q1fr
+	pKA95Pe9vnvFa93x5zJS/Lb7Dqk/M0g3h3yrvnL3oKZitLY4ipN/bvX3W9dQ8noi3Qns5wUV10aux
+	YgHIJ5Ljdrf07ZCbRrnFz4rE3d/xP1iwQa31UC/4Kte3SBlAJKQ0CGuEQ9oH96Km6qt/6g0ua3RAQ
+	0ibjZSZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdqPb-0000000D8aR-23ic;
-	Sun, 28 Jun 2026 14:23:07 +0000
-Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
+	id 1wdqdw-0000000D95Z-3OqR;
+	Sun, 28 Jun 2026 14:37:56 +0000
+Received: from mail-francecentralazon11023078.outbound.protection.outlook.com ([40.107.162.78] helo=PA4PR04CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wdqPX-0000000D8Zy-38Cj;
-	Sun, 28 Jun 2026 14:23:05 +0000
-Received: from localhost.localdomain (unknown [117.182.74.7])
-	by APP-05 (Coremail) with SMTP id zQCowAAXnP8_LkFquD7IFQ--.8366S2;
-	Sun, 28 Jun 2026 22:22:56 +0800 (CST)
-From: WenTao Liang <vulab@iscas.ac.cn>
-To: chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
+	id 1wdqdu-0000000D957-1XBS
+	for linux-mediatek@lists.infradead.org;
+	Sun, 28 Jun 2026 14:37:56 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ugGRSWwxuvNDYoSltfA3Z4eqznWkA3T/fvzstJJnQww0zp1pgeXxHiAFLBGum4IYqwNqw3Hv//WSG9fHDbYlTwJzp6Qvy6VZy8yCDWlWdO77xc4emvnzs1u/Z3f1Qmw4q6IsAi4NQwT0wYHBiHXdpygYXIJuODcsKBGDeAhPO9LoHla97zfOYE882Fiue5HAqvzwu/+OanRZNA9Ap/QWdeU2OdHiwwlt1OSthqDWNqUOoXUWSg9cQPe4+e91kNOFrG+Tr1z0X1r4wHtbeCkvLbeITP1wVwzPm5lUMz0KgYLonNVa3PfP5gvGIw34Cc750N73ngc/Fk5rzNoCm5kGZw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=IeuBR7NBu2tWVe6w20M1HNjdUZqHfL8R/ggccKptDes=;
+ b=mrYO1Wknhl2RjQf77+w4no7IWJTRcir2lqsaR7oanYIoKCF8Nqc+WXHOC9czvYjtbtA03VvMggXEocq5Si8/+VXQW2Hqwg380qcdWuSJFGtXMZzQ39IurcAiogOOU4xuwFk1Y0SBI4qUVehs23+P0sIv5/NaMRYANRsfwMQlNk2yGBpNDmz8ZcrsOgC045x++7O1QrPRCoP6L+VEqS5zfcayL8p1tNkBzBKUJiVAhe5mOLtvONCBNmRz35cY2RAVgezqUZ/pWDBGZpHnUsXiir1mVPAPR2CrXbpHhNsUjbqnwjT+yA2YPMaT0jGJMlVCyDm22vp0kFGR69KRWAN5eg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
+ dkim=pass header.d=iopsys.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=IeuBR7NBu2tWVe6w20M1HNjdUZqHfL8R/ggccKptDes=;
+ b=kgd/ia4SA0GHynQ1XnoPf0g7YPYiAjKc8IVwwNru4ZY+KTv5TLTWyOCYeDnwTXgPVXskOt8vif1/dyjtQI9K93Pj89fF1GNPsEK+0VD5uuAamauRJ/k+XBe5yN1lXzDZRZm3UZDy1dfxvg+J/rdh03gG6ZQL8PERLnvpzhRZpDOtBDYvHU4QoWu4ucWMyhEDA4cNKvE4Wv52XgmNJgopUkyqAzb+9GbIHukiNvH00kkTkUvyYux4A1Gpse/tcxKN81QKF1oZesS2EldpSXu1llVDsRJcpmR2AZdzRQ7Afm5G8P/3u9yL8a91vi7Xj0uD2iNAipytJKKlJEtSDa5QKQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=iopsys.eu;
+Received: from DU2PR08MB10037.eurprd08.prod.outlook.com (2603:10a6:10:49a::20)
+ by AS2PR08MB10009.eurprd08.prod.outlook.com (2603:10a6:20b:64b::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.159.19; Sun, 28 Jun
+ 2026 14:37:46 +0000
+Received: from DU2PR08MB10037.eurprd08.prod.outlook.com
+ ([fe80::3c7:6d2e:8afe:e4dc]) by DU2PR08MB10037.eurprd08.prod.outlook.com
+ ([fe80::3c7:6d2e:8afe:e4dc%5]) with mapi id 15.21.0159.007; Sun, 28 Jun 2026
+ 14:37:46 +0000
+From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+To: Linus Walleij <linusw@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Larsson <benjamin.larsson@genexis.eu>,
+	linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	WenTao Liang <vulab@iscas.ac.cn>,
-	Greg KH <gregkh@linuxfoundation.org>,
-	stable@vger.kernel.org
-Subject: [PATCH v2] drm/mediatek: fix of_node leak in mtk_drm_probe loop
-Date: Sun, 28 Jun 2026 22:17:51 +0800
-Message-Id: <20260628141751.47090-1-vulab@iscas.ac.cn>
-X-Mailer: git-send-email 2.39.5 (Apple Git-154)
-MIME-Version: 1.0
+	linux-mediatek@lists.infradead.org,
+	Markus Gothe <markus.gothe@genexis.eu>,
+	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
+Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Subject: [PATCH v6 00/17] pinctrl: airoha: split on shared and SoC drivers, add more SoCs
+Date: Sun, 28 Jun 2026 17:37:16 +0300
+Message-ID: <20260628143733.273651-1-mikhail.kshevetskiy@iopsys.eu>
+X-Mailer: git-send-email 2.53.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: zQCowAAXnP8_LkFquD7IFQ--.8366S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7AFy8ur4ktF43Ar4xKw1kuFg_yoW8Wr45pF
-	WDKFWYyrW0qr4xKFyvyFyUury3A3WSqayxWr4Yg3WxZwn8tFy7XFyFqay7KFZ7AFyxC3Wa
-	q3Z8AFyfury7AFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUU9Y14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26r4j6ryUM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
-	6F4UM28EF7xvwVC2z280aVAFwI0_GcCE3s1l84ACjcxK6I8E87Iv6xkF7I0E14v26rxl6s
-	0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xII
-	jxv20xvE14v26r106r15McIj6I8E87Iv67AKxVW8JVWxJwAm72CE4IkC6x0Yz7v_Jr0_Gr
-	1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7M4IIrI8v6xkF7I0E8cxa
-	n2IY04v7MxkF7I0En4kS14v26r1q6r43MxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4
-	AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE
-	17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMI
-	IF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4l
-	IxAIcVC2z280aVAFwI0_Cr0_Gr1UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr1j6F4UJbIYCT
-	nIWIevJa73UjIFyTuYvjfUOlkVUUUUU
-X-Originating-IP: [117.182.74.7]
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBgMMA2pBKkEGVwAAsb
+Content-Type: text/plain
+X-ClientProxiedBy: MM0P280CA0006.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:190:a::12) To DU2PR08MB10037.eurprd08.prod.outlook.com
+ (2603:10a6:10:49a::20)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU2PR08MB10037:EE_|AS2PR08MB10009:EE_
+X-MS-Office365-Filtering-Correlation-Id: e6c4f1fb-15c8-47a3-55af-08ded522d236
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|23010399003|376014|7416014|52116014|3023799007|11063799006|56012099006|18002099003|38350700014|921020;
+X-Microsoft-Antispam-Message-Info: tHk4gxtpuozhPI1UEpa9WJt8KYHCLLssUCr6aBolqR84Me46Vi8gf/yyb04KN/r2svOZ8H1QayjldVRsdRzp+Q6ktbmaOApH95GZu+u70Hl/eH9ocdtScosIH4M+TVxFdOqkv8ur92sU1cxFCAreuC+7juk4Cxej5wthz08+hwJULbEj48VT2mnmc/yRyEA5VUiwQ2xrtnszRctAQvhVRMDdcZQEdows67o3ge3jJlxprundmRqZhgXJbrSBebMTK+3Di+6Z+/aDPsSKGjsy0+ITDPZ29Fu36GxNri4SaiHMoAI3ZeZSCB9/JS7WCME7ZDBcz8YNDvC1F4ah1suwlPfpwGpaTU3AI+Oe1yRMSGom1/SM1u7AsBOXb9AjQgRMRGDs3ci01XF7CGo3NlpEwkcAQoBpqOd1LXd0CP9nQ4Diyoq3PbzGVbMX0KJH6X6xAT5iwiInCDzR4iU7jpTihk5g75YjSVcWu98UYat6Cm3wb0rZT7YasO9glsB4IVTh/i+kuL7XZDAjiGupzqeHmBvXCYLPOHV7V3pkV8m+rGPEBPWQ73Nc7aIpWFxTHjBKXmTUpqd/79zye6Gb1J/uNBHpypcTWhOP391IDS5RXXaAArSIKW61HMMpNeEK8RuaJYIA69l7Va5vupyCBxj61/LJhmI1hc+vc78nWMkyJWSmQXU2h+FF/tm/t/Krbf49
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR08MB10037.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(23010399003)(376014)(7416014)(52116014)(3023799007)(11063799006)(56012099006)(18002099003)(38350700014)(921020);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?EQaMZW6l5rMbUQQE++jY2E/viCQQ6w/i8ABvOYIoGNgg/FzVZMYcqaANZkux?=
+ =?us-ascii?Q?2/rYl8g10RHHZ2UAt5Pd3bqL+tS8g5At/DXo/1qDKuce2o76+k1mniaVH3CJ?=
+ =?us-ascii?Q?bRTU1osFvwFYVQR1NWupnNJptoRS/cctIfKnHcwwjbykyMHQpZZwD6vZ6v0d?=
+ =?us-ascii?Q?dHqRFNy2Y3Br46B30K0hBd8hO74qCeVTA/GctSiWTmApEfzjaUqIHGnHsjub?=
+ =?us-ascii?Q?MGynq72hA/O15GEIuHhuZjrJlCaM0tc2YVxhiV+ZdrhFIO2z2iuRdGGh955l?=
+ =?us-ascii?Q?xDqIxY28YXAeL35HaeC9Ub9oQn6DqJzfg3sXmmHx0s4/5j9Q1dKgjkVDINda?=
+ =?us-ascii?Q?iGtn+bJn3G0P2UuzQmQyw8F/o75qW3GMJHZ//KeWdsO/F1LuDhVVPSMaweDX?=
+ =?us-ascii?Q?WEIjiJe6SgGJ+3XGeJlmyC3VHDTg4ixNP/x2BxK22UxAYeOLIYIqlaj81Du/?=
+ =?us-ascii?Q?zbZ3Q6UNmsVOtVMLyMjQDTuDUn/IpYBnprbrshqUnFYs2HifMYh0D8kNBv8B?=
+ =?us-ascii?Q?GUO72iE8i309PX4fb9galCTHAJCl6VjWqO4khQkXyhn0qmQNW11r+UCa1S5E?=
+ =?us-ascii?Q?k58nvm+sRT5z1iaqmm1m/2EyO7y/XEdyQCuGUKmxhlTletpVTkUREQpaSCg0?=
+ =?us-ascii?Q?EfqnDPHaQIeJkMjMl0ADHs2ZtcICPvO2S+nRlhRQcPJTjWYOWLIeGrIj9CmN?=
+ =?us-ascii?Q?vPREwcNRarxQyHbRFGd4IQgYPVdSrjQJAd8XFUI5XhAR3qv3frUIUfNA4heE?=
+ =?us-ascii?Q?M6Lyo/uDtv17klJHNIL/H/ekHkwFVDDuQyXMrkoTb2KBEP5EzalHkYYt6yjD?=
+ =?us-ascii?Q?432fxtYOZAXzDd6a9k2POPtFaE38IPcCgI8Qc2wcMXep98g0By27SmA5gj4J?=
+ =?us-ascii?Q?6fC5TQaXKfJdAYbSOI3sz2WZckS0c2rQnIEsPLQVCZnk1XPRLMr979YO5rf6?=
+ =?us-ascii?Q?TaWIIJIdGEDSpFF2IwfNwoSN3honlwn98vhn60+XxBPdFr2GIzYa5FJZBKre?=
+ =?us-ascii?Q?ZzGwjx9tlOKLNlv/FshtbUKkuK+b5x+hFXFjDD0sJHqgw64ayksyXngf6/NO?=
+ =?us-ascii?Q?LjX6KKFvdn0BTOlQAyY4K1o4n94Hv/y4seHACXemNOkMB3FypOyiZ7esN8De?=
+ =?us-ascii?Q?SSDhgV5CsdwFOlOMLMnQQ8Ke1kr/nvE7ESp25JpMzNQSKu+vZ4AhzzsIs548?=
+ =?us-ascii?Q?5c/0KMp4CyUOwYLW/4ayWbmUmPZ4x4z3TW+dV1633WEddFPVd1rbWctI+yGs?=
+ =?us-ascii?Q?r1ehcEAAfM/ZZQZDSG/yoX63jqSYLN+dOAKUEDBwWaYLIZQoOgmcD5ynMJtj?=
+ =?us-ascii?Q?EV22zJ0yRLwNkicntKCDRMtfWq5vFg5qXs9UaZXBCmLS2rUtnjL3buSPhPIP?=
+ =?us-ascii?Q?NRE+fl6tUcGBfcmGNrmgE6NXpBiNCZbIEb7foORqRYyo/NQpnWGZkd6RygIl?=
+ =?us-ascii?Q?reO31NqR34CmgWD/E5SRQ+QuGq2a0bpVuyk5xKWDO0Q8ICP+tB6cQcytjegz?=
+ =?us-ascii?Q?Ty/+kdsBNMlHeoUPT0UzJ29ucv2QH5anyxj76AWnrPR3JrRy8GYA+e8/QIHo?=
+ =?us-ascii?Q?ML1CU2iU8EJOKP+JsiRuYq0KMNMGazGIivmmDbR7norj8no2cS3yGI6zejP4?=
+ =?us-ascii?Q?WJT7Shi7eLsc8LaO6hYrFusCRfTPDrFvoNcYb+IlXL6OdfASlz54PNe5/mUH?=
+ =?us-ascii?Q?72M1XioroWH5RViZlNYBgZ16hRa/J6DCE0ZT50YcELCaXURREti7eGjLLQdT?=
+ =?us-ascii?Q?maCLg6uZRvzCqXNsqMTLIqjeVn/udIk=3D?=
+X-OriginatorOrg: iopsys.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: e6c4f1fb-15c8-47a3-55af-08ded522d236
+X-MS-Exchange-CrossTenant-AuthSource: DU2PR08MB10037.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Jun 2026 14:37:46.7312
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: zwzIvFrws5O5WnqFM4MrkrkNmnVFSKWEz2rIH0CvAWpXl7I+lyZqec6ME4J6xjZuVLoZVgBuxceg1VFYkhHjnkzoKH6utfrdbxmcQjhZ7uY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS2PR08MB10009
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260628_072304_152634_7BD992A1 
-X-CRM114-Status: UNSURE (   8.56  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260628_073754_808642_2A535F67 
+X-CRM114-Status: GOOD (  10.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,44 +146,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In the for_each_child_of_node loop, private->comp_node[comp_id] and
-private->mutex_node are assigned via of_node_get without first releasing
-any previously stored reference for the same index. When the same comp_id
-or mmsys_id matches multiple nodes, earlier node references are
-overwritten and permanently leaked.
+This patchset
+ * fixes more airoha pinctrl issues
+ * split combined driver on common code and several SoC specific drivers
+ * improves an7583 pinctrl support
+ * adds support of en7523 SoC
+ * adds support of an7563 SoC
 
-Suggested-by: Greg KH <gregkh@linuxfoundation.org>
-Fixes: 1ef7ed48356c ("drm/mediatek: Modify mediatek-drm for mt8195 multi mmsys support")
-Cc: stable@vger.kernel.org
-Signed-off-by: WenTao Liang <vulab@iscas.ac.cn>
----
-Changes in v2:
-- Fix patch format based on reviewer feedback
----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 ++
- 1 file changed, 2 insertions(+)
+The driver split changes are based on Matheus Sampaio Queiroga work.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index c86a3f54f35b..58860f7071a9 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -1138,6 +1138,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 
- 			id = of_alias_get_id(node, "mutex");
- 			if (id < 0 || id == private->data->mmsys_id) {
-+				of_node_put(private->mutex_node);
- 				private->mutex_node = of_node_get(node);
- 				dev_dbg(dev, "get mutex for mmsys %d", private->data->mmsys_id);
- 			}
-@@ -1154,6 +1155,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 		if (!mtk_drm_find_mmsys_comp(private, comp_id))
- 			continue;
- 
-+		of_node_put(private->comp_node[comp_id]);
- 		private->comp_node[comp_id] = of_node_get(node);
- 
- 		/*
+Changes v2:
+ * more issues of airoha pinctrl driver was fixed
+ * SoC specific register addresses, bitfields, macroses were
+   removed from common header and placed to SoC specific file
+ * fixed address of LAN LED mappings registers for en7523 SoC
+ * improves support of an7583 pinctrl
+
+Changes v3:
+ * improve searching of chip scu regmap necessary for drivers
+   operations
+
+Changes v4:
+ * an7583: add support of OLT pin function
+ * an7581: do a proper fix of pcie_reset pins mux/conf.
+
+Changes v5:
+ * improve description of an7583 i2c pinmux fix
+ * rename an7583 registers to match its an7583 names
+ * add support of an7563 SoC
+
+Changes v6:
+ * fix some of the issues found by
+   https://sashiko.dev/#/patchset/20260622113046.3619139-1-mikhail.kshevetskiy%40iopsys.eu
+ * update device tree binding
+ * add bindings for en7523 and an7563
+
+Mikhail Kshevetskiy (17):
+  dt-bindings: pinctrl: airoha: update/fix device tree binding schemas
+  pinctrl: airoha: an7581: fix misprint in bitfield name
+  pinctrl: airoha: an7583: fix I2C0_SDA_PD register bit order
+  pinctrl: airoha: an7583: there is no mux to enable the second i2c bus
+  pinctrl: airoha: an7581: fix mux/conf of pcie_reset pins
+  pinctrl: airoha: an7583: fix muxing of non-gpio default pins
+  pinctrl: airoha: move common definitions to the separate header
+  pinctrl: airoha: split driver on shared code and SoC specific drivers
+  pinctrl: airoha: an7581: remove en7581 prefix from variable names
+  pinctrl: airoha: an7583: remove an7583 prefix from variable names and
+    definitions
+  pinctrl: airoha: an7583: rename registers to match its an7583 names
+  pinctrl: airoha: an7583: add support for npu_uart pinmux
+  pinctrl: airoha: an7583: add support for pon_alt pinmux
+  pinctrl: airoha: an7583: add support for olt pinmux
+  pinctrl: airoha: add support of en7523 SoC
+  pinctrl: airoha: try to find chip scu node by phandle first
+  pinctrl: airoha: add support of an7563 SoC
+
+ .../pinctrl/airoha,an7563-pinctrl.yaml        |  348 +++
+ .../pinctrl/airoha,an7583-pinctrl.yaml        |   65 +-
+ .../pinctrl/airoha,en7523-pinctrl.yaml        |  375 +++
+ .../pinctrl/airoha,en7581-pinctrl.yaml        |   15 +-
+ drivers/pinctrl/airoha/Kconfig                |   30 +-
+ drivers/pinctrl/airoha/Makefile               |    7 +
+ drivers/pinctrl/airoha/airoha-common.h        |  171 ++
+ drivers/pinctrl/airoha/pinctrl-airoha.c       | 2455 +----------------
+ drivers/pinctrl/airoha/pinctrl-an7563.c       | 1115 ++++++++
+ drivers/pinctrl/airoha/pinctrl-an7581.c       | 1487 ++++++++++
+ drivers/pinctrl/airoha/pinctrl-an7583.c       | 1497 ++++++++++
+ drivers/pinctrl/airoha/pinctrl-en7523.c       | 1125 ++++++++
+ 12 files changed, 6250 insertions(+), 2440 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/airoha,an7563-pinctrl.yaml
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/airoha,en7523-pinctrl.yaml
+ create mode 100644 drivers/pinctrl/airoha/airoha-common.h
+ create mode 100644 drivers/pinctrl/airoha/pinctrl-an7563.c
+ create mode 100644 drivers/pinctrl/airoha/pinctrl-an7581.c
+ create mode 100644 drivers/pinctrl/airoha/pinctrl-an7583.c
+ create mode 100644 drivers/pinctrl/airoha/pinctrl-en7523.c
+
 -- 
-2.39.5 (Apple Git-154)
+2.53.0
 
 
