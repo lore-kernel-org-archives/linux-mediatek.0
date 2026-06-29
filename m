@@ -4,124 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7705C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2026 07:29:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9669C43327
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2026 08:35:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JEmazexdEjQceaq8RuFjuuddx0SGFge2E+F8Vah1LAI=; b=C/ZGLs2eJNawRsAp6NR4L22fpH
-	QhDlwBfJejRWKyAi1cp4EyD+4RcLAVX90kO6o190XFRuk5Wk33kR/eB+zI+PfjmCxC19u3HD1WOvv
-	3ntYbP7XCuIJAqWoFjyPLu2eq9LLsjBeTQfMouK0CPxzVWa9Au9eBPozRSae5wPQwi8RHcQ4/uJcg
-	B14i2ASn0VZ/sKpjiJqNGi3ZF7jXtONtq586kOCYEX/y46QLvsGTnD7+ZPS2XlffPF7++CHKBynAL
-	HnVEkJNRfoYi0axhhGFj2nF4RBt4BUcHqAgyaCl5SHy41j2jtMnequkFY2VksuiX9WYpTUh7cBXKF
-	YSTJb23A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8StqZ2ZvnvjvPuHl88BWmQ+kB4Rag7l2q/B8b2J1o9k=; b=v5bIG51Z31F8nf7+g90eWk+OhW
+	AMwyleZ2oKPOqexuwFd3GynLUIdoaPJDuNCMxjHRpblA/0Gw/iweZW8p95VsJLDdtUElphXqfIsSN
+	3VBFmXzHsQP87Q0ii+lQ408elJGrIGZDWQGSr4sKY4UPvNKSFYsCDf3bb0zmu9VvsVuVTLZXR2kUQ
+	mwMkP0Fdt4/bgKINxOkAnI0445cY7MenFPU2RwXzQqmu4VyFrMOfbdMhFz9SVabOuTba9CVh4SI75
+	r9YZ37FOe8w/u2P+dZh0O0llQilzfkcPomx4s818I6KUubXsDPZc08OHpZ7Tnx1bm8GrAeA6slsg1
+	n2kMCJYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we6RI-0000000Du9f-06pg;
-	Mon, 29 Jun 2026 07:29:56 +0000
-Received: from exmail3.compal.com ([59.120.207.196] helo=tpecef22.compal.com)
+	id 1we7TC-0000000E15e-3sk9;
+	Mon, 29 Jun 2026 08:35:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we6RF-0000000Du8R-2RNx;
-	Mon, 29 Jun 2026 07:29:55 +0000
-X-UUID: 4e416cac738c11f1a87c2323a98e90a4-20260629
+	id 1we7TA-0000000E14W-44UT
+	for linux-mediatek@lists.infradead.org;
+	Mon, 29 Jun 2026 08:35:58 +0000
+X-UUID: 86effd94739511f1acbe4559397dec65-20260629
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=8StqZ2ZvnvjvPuHl88BWmQ+kB4Rag7l2q/B8b2J1o9k=;
+	b=tVjQnbd3fGILrcnhLdE/9NDaJCMNqmHosla4otX1Ch1wDBp0T7uqJewHXAhKSIyr1qrFetxIpu8zKKNUvjTXwOgp2DcsxR1h5oUQF4BFE+YPDKo4Dutg85Q7LphuwpvkaLt9HfxbQ9UDCp6Kd8BPORsdS1gYZBTgNFUbQhX1ZpE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.15,REQID:907641b7-04f5-4a01-97d9-06b208054f42,IP:0,U
+X-CID-O-INFO: VERSION:1.3.17,REQID:c10e1dc5-7dc1-4ef1-a08c-9f51470b121b,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:e276073,CLOUDID:8d139912-9a7e-42e1-81ab-466f1025c889,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|865|888|
-	898,TC:-5,Content:-10|0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:ni
-	l,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE
-	:0,ARC:0
+X-CID-META: VersionHash:d497b38,CLOUDID:be1fecbb-16fe-4666-9091-b0c333957a8c,B
+	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|50|
+	99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 4e416cac738c11f1a87c2323a98e90a4-20260629
-Received: from sdmg11.sdbg.compal.com [(10.113.168.9)] by tpecef22.compal.com
-	(envelope-from <jackbb_wu@compal.com>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 455135195; Mon, 29 Jun 2026 15:29:47 +0800
-X-UUID: 4ad2ccaa738c11f1b328fd8a884f4420-20260629
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.15,REQID:1fa9fa6c-31b0-4637-8a18-3b434aa4d833,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e276073,CLOUDID:64f40748-b183-4e35-bd22-a1c52f713e18,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|865|888|
-	898,TC:-5,Content:-10|0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:ni
-	l,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE
-	:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 4ad2ccaa738c11f1b328fd8a884f4420-20260629
-Received: from sdbmbx13.tpe.compalcomm.com [(10.113.2.137)] by sdmg11.sdbg.compal.com
-	(envelope-from <jackbb_wu@compal.com>)
-	(Compal Mail Service with TLSv1.2 ECDHE-RSA-AES128-SHA 128/128)
-	with ESMTP id 160527563; Mon, 29 Jun 2026 15:29:41 +0800
-Received: from SDBMBX13.tpe.compalcomm.com (10.113.2.137) by
- SDBMBX13.tpe.compalcomm.com (10.113.2.137) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.29;
- Mon, 29 Jun 2026 15:29:39 +0800
-Received: from SDBMBX13.tpe.compalcomm.com ([fe80::7d1b:448d:4d95:51b0]) by
- SDBMBX13.tpe.compalcomm.com ([fe80::7d1b:448d:4d95:51b0%11]) with mapi id
- 15.02.2562.029; Mon, 29 Jun 2026 15:29:39 +0800
-From: "Wu. JackBB (GSM)" <JackBB_Wu@compal.com>
-To: Andrew Lunn <andrew@lunn.ch>
-CC: Loic Poulain <loic.poulain@oss.qualcomm.com>, Sergey Ryazanov
-	<ryazanov.s.a@gmail.com>, Johannes Berg <johannes@sipsolutions.net>, "Andrew
- Lunn" <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, "Eric
- Dumazet" <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
-	<pabeni@redhat.com>, Wen-Zhi Huang <wen-zhi.huang@mediatek.com>, Shi-Wei Yeh
-	<shi-wei.yeh@mediatek.com>, Minano Tseng <Minano.tseng@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Simon Horman <horms@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-doc@vger.kernel.org"
-	<linux-doc@vger.kernel.org>
-Subject: RE: [External Mail] Re: [PATCH v3 3/7] net: wwan: t9xx: Add control
- DMA interface
-Thread-Topic: [External Mail] Re: [PATCH v3 3/7] net: wwan: t9xx: Add control
- DMA interface
-Thread-Index: AQHdA/S+CwMCW7pQiESBKr0/82m1rbZVKgXn
-Date: Mon, 29 Jun 2026 07:29:39 +0000
-Message-ID: <970c47c350314cd3804cf89c782ac0f6@compal.com>
-References: <20260624-t9xx_driver_v1-v3-0-73ff03f60c48@compal.com>
- <20260624-t9xx_driver_v1-v3-3-73ff03f60c48@compal.com>,<dc007021-9013-47b2-b06a-fe4a50d26722@lunn.ch>
-In-Reply-To: <dc007021-9013-47b2-b06a-fe4a50d26722@lunn.ch>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.113.2.241]
-x-tm-as-product-ver: SMEX-14.0.0.3239-9.1.2019-30036.005
-x-tm-as-result: No-10--8.478700-8.000000
-x-tmase-matchedrid: q6+TWfRxf4cuv++HU7VXryRFbfQbCufdN0X64jGy2db7+pncqRJfyyKW
-	8VJRcYq50d8wVypPKQLFjZEb2XXb3XkHMxUIdlxLbSejuH+Mi12dVbkPpTjx96zU/PXAxei4Rwv
-	rUDOnxbSG4JQWzp0ZirEQ0+Zqfe0ecXL3P3dqoBwKonRFsndtvW3OCu/eDpHU46a484IITvqB4k
-	+feVEvLIV5aJP42NR/UqXCEoYB+d2eLwfnJiUpL5GPSO6O5JCao4NJa7SjFsrXNxRQEjCxuVo7G
-	mCOJYd1O50T9A74HCu2FEUBwKd8yqnVdfVjtgB0tC7XpKGqhd4X0Ptm/gKnCihqD7a/0RgVmiaa
-	avfjQzE=
-x-tm-as-user-approved-sender: No
-x-tm-as-user-blocked-sender: No
-x-tmase-result: 10--8.478700-8.000000
-x-tmase-version: SMEX-14.0.0.3239-9.1.2019-30036.005
-x-tm-snts-smtp: F486DDB1691634C44801D42887E841FF8D7C96BF50693F24AC5918CFE8BC784F2000:8
-Content-Type: text/plain; charset="big5"
-Content-Transfer-Encoding: base64
+X-UUID: 86effd94739511f1acbe4559397dec65-20260629
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <jb.tsai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 254413082; Mon, 29 Jun 2026 01:35:47 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 29 Jun 2026 16:35:45 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 29 Jun 2026 16:35:45 +0800
+From: JB Tsai <jb.tsai@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<Deren.Wu@mediatek.com>, <Sean.Wang@mediatek.com>, <Quan.Zhou@mediatek.com>,
+	<Ryder.Lee@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<litien.chang@mediatek.com>, <Charlie-cy.Wu@mediatek.com>,
+	<jb.tsai@mediatek.com>, Charlie-cy Wu
+	<charlie-cy.wu@mediatek.corp-partner.google.com>
+Subject: [PATCH] wifi: mt76: mt7921: refactor regd update to fix recursive mutex deadlock
+Date: Mon, 29 Jun 2026 16:35:43 +0800
+Message-ID: <20260629083543.153564-1-jb.tsai@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260629_002954_003455_BC64E96F 
-X-CRM114-Status: GOOD (  15.48  )
+X-CRM114-CacheID: sfid-20260629_013557_038383_6D4164CF 
+X-CRM114-Status: GOOD (  13.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,28 +88,118 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQW5kcmV3LA0KDQo+ID4gK3N0YXRpYyBpbmxpbmUgdm9pZCBtdGtfY2xkbWFfY2xyX2JkX2Rz
-YyhzdHJ1Y3QgY2xkbWFfZHJ2X2luZm8gKmRydl9pbmZvLA0KPiA+ICsJCQkJCXN0cnVjdCBiZF9k
-c2MgKmJkX2RzY19wb29sLCBpbnQgbnJfYmRzKQ0KPg0KPiBObyBpbmxpbmUgZnVuY3Rpb25zIGlu
-IEMgZmlsZXMuIFBsZWFzZSBsZXQgdGhlIGNvbXBpbGVyIGRlY2lkZS4NCg0KV2lsbCByZW1vdmUg
-aW5saW5lIGZyb20gYWxsIHN0YXRpYyBmdW5jdGlvbnMgaW4gLmMgZmlsZXMuDQoNCj4gPiArCQli
-ZF9kc2MtPnNrYiA9IF9fZGV2X2FsbG9jX3NrYihyZXEtPmZyYWdfc2l6ZSwgR0ZQX0tFUk5FTCk7
-DQo+ID4gKwkJaWYgKCFiZF9kc2MtPnNrYikgew0KPiA+ICsJCQlkZXZfd2FybigobWRldiktPmRl
-diwgIkZhaWxlZCB0byBhbGxvYyBTS0JcbiIpOw0KPg0KPiBZb3UgbWlnaHQgd2FudCB0byByYXRl
-IGxpbWl0IHRoaXMsIGFuZCB0aGUgb3RoZXIgc2ltaWxhciBtZXNzYWdlcyBpbg0KPiB0aGUgZGF0
-YSBwYXRoLCBvdGhlcndpc2UgaXQgY291bGQgYmUgYSBET1MuDQoNCldpbGwgc3dpdGNoIHRvIGRl
-dl93YXJuX3JhdGVsaW1pdGVkKCkgZm9yIGRhdGEgcGF0aCB3YXJuaW5ncy4NCg0KPiA+ICsJfSB3
-aGlsZSAoKytjbnQgPCAxMCk7DQo+DQo+IFBsZWFzZSB1c2Ugb25lIG9mIHRoZSBoZWxwZXJzIGZy
-b20gaW9wb2xsLmguDQoNCldpbGwgcmVwbGFjZSB3aXRoIHJlYWRfcG9sbF90aW1lb3V0KCkgaW4g
-djQuDQoNCj4gPiArCQkJZGV2bV9rZnJlZSh0cmFucy0+bWRldi0+ZGV2LCBzcnZfcXVlKTsNCj4N
-Cj4gSXQgaXMgdW51c3VhbCB0byBzZWUgZGV2bV9rZnJlZSgpLiBXaHkgaXMgaXQgbmVlZGVkPw0K
-DQpXaWxsIHJlbW92ZSByZWR1bmRhbnQgZGV2bV9rZnJlZSgpIGNhbGxzIGFuZCBsZXQgZGV2cmVz
-IGhhbmRsZQ0KY2xlYW51cCBvbiBwcm9iZSBmYWlsdXJlLg0KDQo+ID4gK3N0YXRpYyB1bnNpZ25l
-ZCBpbnQgY3RybF9wb3J0X2NobF9tdHU7DQo+DQo+IElzIHRoaXMgYSBnbG9iYWwgdmFyaWFibGU/
-IFdoeSBpcyBpdCBub3QgcGFydCBvZiBwcml2Pw0KDQo+ID4gK21vZHVsZV9wYXJhbShjdHJsX3Bv
-cnRfY2hsX210dSwgdWludCwgMDY0NCk7DQo+DQo+IE5vIG1vZHVsZXMgcGFyYW1ldGVycyBwbGVh
-c2UuIElmIHRoaXMgaXMgYW4gTVRVLCB3aHkgbm90IHVzZSB0aGUNCj4gbm9ybWFsIG5ldHdvcmtp
-bmcgaW50ZXJmYWNlcyB0byBzZXQgdGhlIE1UVT8NCg0KV2lsbCByZW1vdmUgdGhlIG1vZHVsZSBw
-YXJhbWV0ZXIgZW50aXJlbHkuIFRoZSBjb250cm9sIHBvcnQgTVRVDQppcyBkZXRlcm1pbmVkIGJ5
-IHRoZSBkZXZpY2UgZHVyaW5nIGhhbmRzaGFrZS4NCg0KVGhhbmtzLg0KDQpKYWNrIFd1
+From: Charlie-cy Wu <charlie-cy.wu@mediatek.corp-partner.google.com>
+
+Split mt7921_mcu_regd_update() into two functions to prevent recursive
+mutex acquisition. Introduce __mt7921_mcu_regd_update() as the internal
+implementation that assumes the mutex is already held by the caller,
+while mt7921_mcu_regd_update() remains as the external interface that
+handles mutex acquisition and release.
+
+This fixes a deadlock issue when mt7921_regd_set_6ghz_power_type() is
+called with the device mutex already held. Without this change, calling
+mt7921_mcu_regd_update() would attempt to acquire the same mutex again,
+causing a recursive lock deadlock.
+
+The __mt7921_mcu_regd_update() function can be safely called when the
+caller has already acquired the device mutex, avoiding the deadlock
+while maintaining proper synchronization for regulatory domain updates.
+
+Fixes: dc2608cf5224 ("wifi: mt76: mt7921: refactor regulatory notifier flow")
+Signed-off-by: Charlie-cy Wu <Charlie-cy.Wu@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7921/main.c  |  2 +-
+ .../net/wireless/mediatek/mt76/mt7921/regd.c  | 30 ++++++++++++-------
+ .../net/wireless/mediatek/mt76/mt7921/regd.h  |  2 ++
+ 3 files changed, 22 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index af5d16055396..b3f29ebf4015 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -808,7 +808,7 @@ mt7921_regd_set_6ghz_power_type(struct ieee80211_vif *vif, bool is_add)
+ 
+ out:
+ 	if (vif->bss_conf.chanreq.oper.chan->band == NL80211_BAND_6GHZ)
+-		mt7921_mcu_regd_update(dev, dev->mt76.alpha2, dev->country_ie_env);
++		__mt7921_mcu_regd_update(dev, dev->mt76.alpha2, dev->country_ie_env);
+ }
+ 
+ int mt7921_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/regd.c b/drivers/net/wireless/mediatek/mt76/mt7921/regd.c
+index f122e418d825..f923af1440d7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/regd.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/regd.c
+@@ -71,36 +71,44 @@ mt7921_regd_channel_update(struct wiphy *wiphy, struct mt792x_dev *dev)
+ 	}
+ }
+ 
+-int mt7921_mcu_regd_update(struct mt792x_dev *dev, u8 *alpha2,
+-			   enum environment_cap country_ie_env)
++/* Internal version that assumes mutex is already held by caller */
++int __mt7921_mcu_regd_update(struct mt792x_dev *dev, u8 *alpha2,
++			     enum environment_cap country_ie_env)
+ {
+ 	struct mt76_dev *mdev = &dev->mt76;
+ 	struct ieee80211_hw *hw = mdev->hw;
+ 	struct wiphy *wiphy = hw->wiphy;
+ 	int ret = 0;
+ 
+-	dev->regd_in_progress = true;
+-
+-	mt792x_mutex_acquire(dev);
+ 	if (!dev->regd_change)
+-		goto err;
++		return 0;
+ 
+ 	ret = mt7921_mcu_set_clc(dev, alpha2, country_ie_env);
+ 	if (ret < 0)
+-		goto err;
++		return ret;
+ 
+ 	mt7921_regd_channel_update(wiphy, dev);
+ 
+ 	ret = mt76_connac_mcu_set_channel_domain(hw->priv);
+ 	if (ret < 0)
+-		goto err;
++		return ret;
+ 
+ 	ret = mt7921_set_tx_sar_pwr(hw, NULL);
+-	if (ret < 0)
+-		goto err;
+ 
+-err:
++	return ret;
++}
++
++int mt7921_mcu_regd_update(struct mt792x_dev *dev, u8 *alpha2,
++			   enum environment_cap country_ie_env)
++{
++	int ret = 0;
++
++	dev->regd_in_progress = true;
++
++	mt792x_mutex_acquire(dev);
++	ret = __mt7921_mcu_regd_update(dev, alpha2, country_ie_env);
+ 	mt792x_mutex_release(dev);
++
+ 	dev->regd_change = false;
+ 	dev->regd_in_progress = false;
+ 	wake_up(&dev->wait);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/regd.h b/drivers/net/wireless/mediatek/mt76/mt7921/regd.h
+index 571f31629e9e..5b24d0902c36 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/regd.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/regd.h
+@@ -10,6 +10,8 @@ struct regulatory_request;
+ 
+ int mt7921_mcu_regd_update(struct mt792x_dev *dev, u8 *alpha2,
+ 			   enum environment_cap country_ie_env);
++int __mt7921_mcu_regd_update(struct mt792x_dev *dev, u8 *alpha2,
++			     enum environment_cap country_ie_env);
+ void mt7921_regd_notifier(struct wiphy *wiphy,
+ 			  struct regulatory_request *request);
+ bool mt7921_regd_clc_supported(struct mt792x_dev *dev);
+-- 
+2.45.2
+
 
