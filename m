@@ -4,90 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF490C43458
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 11:08:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E4BCC43327
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 11:17:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6bh4jBEphMG7ihkZ16kaaoOAnDIWxUT6Wo00wnq5q+E=; b=IRFV0gi6QokqCq9b9kHx65SWyn
-	6EBXCx7Aqu7uu06BvGZiru3zCDGWbZCTY2BVllyDbAGZMDzAbhNus+YbsGrOxyhOwmf6ORsZ1tKBm
-	6KbE41NaAvTpLsSKO6C7RkiXQD5hIGbD5vKp9lZV8ERtj1IWKMfVlrYHxlcyZX3BplU1f8Gs15Q8g
-	o2eb2RddIxBoMSiwMq9AjOvsXMyg6hDRUmUc2WhfmWVhynlD76kAIzIB9jH99AgxbOFPl1ki4O/m8
-	YD83QxHMT/jA9D+63cOBM2HpG+wwDLdrIGAwB3V2ngEj31iGrbHMC9sc8j95jzqh1KebdH8YeZsFJ
-	1Uv1T9gw==;
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dhzauwQZPbpylpGr4WGE9mMiIv1Y0Ir+oeoCGGiZuDg=; b=iAFb5R/VP2Wfrhv9IkY+SwStp6
+	2uFaTD/+zYqCVKaO403Dwb31hxev2p3blQb9Rn0xMWHeK9zmWtLif0fR8JOB8d2aIp0oh1OoNHIMi
+	KrHxceVWDJgw2eybU2FvvTTxtqk9w6zL2zfxrUrZx7Oky3nbMYd/Bo8cZ1YEMWY8jedAzSdiXcQsK
+	zIZz+3PXmvG0zy1ehKU7KIDSmrX1ypMJ3B83csHF2sfgtOXAQrQZcMqHoSGWP6uOL+dmfzomUj0gk
+	mLh1Zg2OYBaJuYU9OkgU36h+MAqHNzD+JPKIimLlahoqB9e3Eoh245UxsEccAiTq7Nxn5PrqzN8Xq
+	ofX/ByqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weWKK-0000000GnXH-44Wc;
-	Tue, 30 Jun 2026 11:08:28 +0000
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+	id 1weWSf-0000000Gp5H-0KXv;
+	Tue, 30 Jun 2026 11:17:05 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weWKI-0000000GnW2-0ogt
-	for linux-mediatek@lists.infradead.org;
-	Tue, 30 Jun 2026 11:08:27 +0000
-Received: by mail-pj1-x102c.google.com with SMTP id 98e67ed59e1d1-37f816d01e3so3003430a91.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2026 04:08:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1782817705; x=1783422505; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=6bh4jBEphMG7ihkZ16kaaoOAnDIWxUT6Wo00wnq5q+E=;
-        b=ohdN5ItcHvxSc5IcUajxcN7Myrotg/sPPJVgt5lTDMXBNY6DoI2ZfOnxucGsx/4dfE
-         unAZLWgC18zSUKk9Adv5yYCgQX7Ftaa21yD+vaPZoYdoj4zJpm8FCVfxECWpC38XC8XO
-         YVLglrdDnTiLSA7R5LsrH9BHag79KbQLtew6cmWtYPYj7ta6Vzbflj/wWQI79H3pNeKa
-         LbJfs5S4pnCq80RDRRTB/vX1E+UfQNRplA7sndp1u6eI34fXNIzwVfyZKXrFNuEhyK2a
-         aDbzG4M+P0Rfrny/RjgXrDTMSwiCXgaLg3+tU4wLtA4vorZtpXgT9BvzVyH+UrZ1IoIr
-         2vMQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782817705; x=1783422505;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=6bh4jBEphMG7ihkZ16kaaoOAnDIWxUT6Wo00wnq5q+E=;
-        b=U3wWmI0+emsLIhouL9zhuvzfpqlzeFn5Av/KCzL7IJYiXv8eF4ocWJZfr5UpZtXmVd
-         0BqbVFL7OfqtF9KHwWbeQkjLGrsNcOxOi0cuBKzVk4T4VnY9yLuIah+x4Svd6qLfreYi
-         9W4NW5jOYPIHMYsulTwL/hF0fagy3rUluF5MbCcLyQvuhK1pixs1i2zq+ErJx29ZBOCw
-         TzzadNesH/ivXUfHkBqftoEGuWCn044zBFCT0W4fUuNvpwtdEGcDyMkG7vArVuTWGeNb
-         HgMuc2rK6v+ifxccD6pMJ6PtaysNWnmKJQYj/1fzpaB/ctGL9bDa4ShvlqVU371VuU98
-         ElLg==
-X-Forwarded-Encrypted: i=1; AHgh+RqDpQlVwZdMzk/Mm32Qp616cYvatmZbk/sLB1gOym6UCG9GGu7AdWGiA9yvuswGqAuNNZYPS0QsLvX+XbB4MQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyX+QVrq6D/lieQ60vtbRAbWwz/4Dj2oro83UDqAGDWtkC3ARco
-	M7AOfxUjWfCRHZoFXUjJXxGHFIFyK5DHAwMHpzIDjqCusj45FF/N2HMB
-X-Gm-Gg: AfdE7ckyDdYPAGet/GpbWmMKXK+H4WIAZgbBH/MkXfPUqpYfWFy+1iNClDw17C2rCGQ
-	9KzW/gE0die6Xrmve0xmJuBd/efQkxTu9UNKsZxSLWVi2U0lzaMMPjQ0EN79M9wkzwNoZld0XjH
-	ARTa7UOMa+hl2WBnWYZhzu8AkTQHN4S9PTrDl8GKIq6mCxtnTLrXEMS78biR3BM6dC1YnQOzDAr
-	FkQkwoaU5c1bbAK6bAKPQZYiMT4AVonJAPemrKscWa84kI7PZ9POMvneekdkbnsYK3QG3AEgeKf
-	iXjeLfqiCeaSOzU7/uxwqOAvRHhtp5kNNZjJGFsqT1yosOvf5q/ich0YLvokDPNkLx27tGqqK20
-	/MAQhTaUP1mclrCnUJHT+GvsVllew9hwsjVhWLm03atVgAbi9jVtyeDjuFTGqnP9CQvh0qL7eKi
-	n1n9+qGwozzjynlQ26qPXgkciP4b13lACe5ArNEp5JM+hnUpk4x3WusShdOA==
-X-Received: by 2002:a17:90b:3bc7:b0:37c:6505:e7c3 with SMTP id 98e67ed59e1d1-3805273970amr2295663a91.22.1782817705202;
-        Tue, 30 Jun 2026 04:08:25 -0700 (PDT)
-Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-380532b020fsm1501738a91.1.2026.06.30.04.08.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Jun 2026 04:08:24 -0700 (PDT)
-From: phucduc.bui@gmail.com
-To: Stefan Roese <sr@denx.de>,
-	Andi Shyti <andi.shyti@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-i2c@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH] i2c: mt7621: Use dev_err_probe() for clock acquisition failures
-Date: Tue, 30 Jun 2026 18:08:09 +0700
-Message-ID: <20260630110809.559134-1-phucduc.bui@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1weWSV-0000000Gp0W-03dO;
+	Tue, 30 Jun 2026 11:16:55 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id C157341450;
+	Tue, 30 Jun 2026 11:16:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 90D9C1F00A3D;
+	Tue, 30 Jun 2026 11:16:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1782818214;
+	bh=dhzauwQZPbpylpGr4WGE9mMiIv1Y0Ir+oeoCGGiZuDg=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=UNSA3/+D4r4cXAUAKPFvhYTv+69PZbKlTh/NF3TZEpJ79O3McYU/fwKvHa8S7Au8X
+	 tX+y9qFmH6BPicNXjYYrlg/+j9DkBZTOmp5fDfF82aSx1rwaLaKKhHCs08Y9W1rNfi
+	 5Ztpl705/j5PzUbR/AowX4vMebYvQ0Xr3oTbEGjJBru5MDRRY9r6W1fMoP5Vynuukf
+	 rEq/9ouifH2RwckH0jfh6hQdqbxSSqLI992u/HezAKa/rBMHmvSyv+1x6CI8TRgk/E
+	 1Glrnw2PT127SjjgnMl8/IQ4lmL66DAjjfg1DyFlGzz0gA6ifGxBa8bG9MbsCGMIN/
+	 k9fB3VhenjZEw==
+From: Mark Brown <broonie@kernel.org>
+To: linux-mediatek@lists.infradead.org, 
+ Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20260615185810.11804-1-l.scorcia@gmail.com>
+References: <20260615185810.11804-1-l.scorcia@gmail.com>
+Subject: Re: [PATCH v4] ASoC: dt-bindings: mtk-btcvsd-snd: Convert to DT
+ Schema
+Message-Id: <178275431870.47562.12564836681670805353.b4-ty@b4>
+Date: Mon, 29 Jun 2026 18:31:58 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260630_040826_236844_87F6A494 
-X-CRM114-Status: UNSURE (   9.28  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.16-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1137; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=sWHuPdL4V7aEh8FugrGqBsjNaOpEn9LSPJKhiXzoATk=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqQ6WjLm2GfsXw6NKD5XVY0W5AtH6+Er1DxKMlP
+ fHioa7fM6WJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCakOlowAKCRAk1otyXVSH
+ 0LmmB/9aq99s/+8+af6mipyDDgGfYxlP702UF2VGKCa6ALZ7GWzOw8XxmiNG9hYfUhlcXMHJ5tF
+ GQlTZvXT6Sp7YyFnWHOqvKkoQafpEkiWL9d7+G1Tm73WSTgHmYFucxwOWf6KTTfdxy3ePy5q0yC
+ kB3LfDbjrhgEaO3T4VE2dZd8oc3Qw9uf7kxrYzh5BByuYO0knHFu2PLZC5AYqe2hX7qZFN+gfCF
+ IooPHITfNjS6eKssJdyR2qUzl6NGzvweMWn27In54iB5sbm/C8ZomO9s9TTti3ntJi5nMK1kVAT
+ mYJLbo8Th01HOax++kLQSM9Kvy6GUiwBhvLAcAwNgFY3R/br
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,36 +86,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: bui duc phuc <phucduc.bui@gmail.com>
+On Mon, 15 Jun 2026 20:57:50 +0200, Luca Leonardo Scorcia wrote:
+> ASoC: dt-bindings: mtk-btcvsd-snd: Convert to DT Schema
 
-Use dev_err_probe() when devm_clk_get_enabled() fails. This correctly
-handles -EPROBE_DEFER while simplifying the error handling.
+Applied to
 
-No functional change intended.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.3
 
-Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
----
- drivers/i2c/busses/i2c-mt7621.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+Thanks!
 
-diff --git a/drivers/i2c/busses/i2c-mt7621.c b/drivers/i2c/busses/i2c-mt7621.c
-index 0a288c998419..8b0407d70c4c 100644
---- a/drivers/i2c/busses/i2c-mt7621.c
-+++ b/drivers/i2c/busses/i2c-mt7621.c
-@@ -280,10 +280,8 @@ static int mtk_i2c_probe(struct platform_device *pdev)
- 		return PTR_ERR(i2c->base);
- 
- 	i2c->clk = devm_clk_get_enabled(&pdev->dev, NULL);
--	if (IS_ERR(i2c->clk)) {
--		dev_err(&pdev->dev, "Failed to enable clock\n");
--		return PTR_ERR(i2c->clk);
--	}
-+	if (IS_ERR(i2c->clk))
-+		dev_err_probe(&pdev->dev, PTR_ERR(i2c->clk), "Failed to enable clock\n");
- 
- 	i2c->dev = &pdev->dev;
- 
--- 
-2.43.0
+[1/1] ASoC: dt-bindings: mtk-btcvsd-snd: Convert to DT Schema
+      https://git.kernel.org/broonie/sound/c/012dfa0c45ec
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
