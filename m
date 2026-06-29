@@ -4,93 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63DC0C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2026 15:00:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46AF4C43458
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2026 15:28:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=JO1fCQG5PwkKtjMsyUkbYJB7JtjMw8bGs1lH/7GPTdc=; b=bwvyIH9TEyAbWjoQrnl0bftQjz
-	fJ8UNZJ/NZh0it0T2ZvToDVkyi6TcKPsNA1Cf59fLfBapCaEjhaamJxyxxryE+Pves/+2UpARvS9E
-	bB1Ylp2U+plVAjx8n+1ylIJIN5dM7NNJ4HqYBQfSpAGHzXzCfPt1IAnZDIhf7VBKEDvhd7FZgnETb
-	M5cw0g3RRJ8NMHuk7mHzGNcb1XsCn6AfoZFMDgfzLmwIUy+hU1OrrPP9toEDBtbqfqpIb87fD3xHi
-	GF1qKsWriRHjEwy/lVCkYMAi3sNO6eCGgKbJZ0UuwVlzZxp25Tn5qov2Y/BDTpfiOJEQQA+OB7RYX
-	wVcN87hA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=B109+8NZEbMQJ0pDHwjFopml2ryZkezn+CpF9BZP+m0=; b=tk0ckhuYq4ETNre9N+biYsYvoC
+	/P20F+xCdgBFmErkwmgDHKCnDN9is//dX0k1qJgsQDcaAxDXgB5qPxnnzCW6iPjErW+lRAXOVBKDK
+	i/FmSU04doqAXCM1pdEJeK/3ed+dIfz1ZdBjL98qXwLbBdPEfgV3nFF2JTpHJmgsDwsMQIrp+YQnb
+	Vkwun2w75MnA+uPzaaZY5u5WI9SN+gqsLLFOaHPnElz2gvR2LuAdoeCCpKV5KtI5kCpQiwoo/7QXM
+	Dh9PgrKQvwlgBbdbxjDZCd2yiV2+Tang6WS/hkhv5OI9Tni1zpju1/x3xPvDaim+g4KLos3ur0lx4
+	WsTBs5Eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weDT3-0000000EzZs-1bAe;
-	Mon, 29 Jun 2026 15:00:13 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1weDuU-0000000F4Op-3zul;
+	Mon, 29 Jun 2026 15:28:34 +0000
+Received: from sender4-op-o15.zoho.com ([136.143.188.15])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weDSz-0000000EzUJ-3UtV
-	for linux-mediatek@lists.infradead.org;
-	Mon, 29 Jun 2026 15:00:11 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-8471013fac2so739083b3a.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 29 Jun 2026 08:00:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1782745209; x=1783350009; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=JO1fCQG5PwkKtjMsyUkbYJB7JtjMw8bGs1lH/7GPTdc=;
-        b=arW2NJ9ioGFXzw7epm2V8J6YfmoekNewsZyGoV5bOq8KBcUqcLvWJtaqyKvOif6XAu
-         Wy9JR5BoyrCIhgOsMQP2uQVndIeNxYO11OgXVnTVQjYV+B+8nnsa4dr7HSufGA+OdOeY
-         CV2WEAkyCGEYAU21sDmjyiVhjom8vzyIFBycHVpYQu/w5JybFIt7fqivu32MqQPAStsG
-         DGM6TfY6THtyej2qhSPmb3Hln0KHQ1zN4u9BS/YqkbrPm7LboZMUWvjhzXxIbiv2u/1/
-         y0jNIHB5AlbxAhDHbhagZfVPC17Ja0IjDmLTLfJ7baYfYiY5j87FlDxg8bgG9KIvGlhz
-         w76A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782745209; x=1783350009;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=JO1fCQG5PwkKtjMsyUkbYJB7JtjMw8bGs1lH/7GPTdc=;
-        b=fDSXp7qmKqY15+IYs9p6Zq2eR5qXrMshJ2cT0An4y6RsGtyjE08SDfxiACAZKAdRdr
-         LheQoC3yZN8g+vCkD7Z9RBLhuAvbq8kDSfzMLQzsdLv/sfBIvfz0bC+WAac8c6zIHW1M
-         FMOg2vTnp0emMc2JiwKvp0s2OAP92uGzHLEWeVJuI4zdpsI2qteW0CaaxwOuxsq2Pm+a
-         fIO1VPYp11FxMzUOujhI01cDJ78X2aIYgZZTEqgM11rsip/bzaQqMEWZMRMw4Iott9+a
-         92a/mZnOsm3ozwOjHWJsI/wlq6EkV031EcHDKDYx/wUtpLm66KYD49X02i9d0bK4gKzp
-         B2Mw==
-X-Forwarded-Encrypted: i=1; AHgh+Rr8AWkLERyKIleCKr596dfGqZzP5JQUf7ZlQCFs/lW24K7ZKMQDzrR4TsGMOKygO35CGgZVMeP9BPNgzSVmUQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzEREs0x8AoCSC68caREI3pwSVqeTl0jcYQx8OqOLl2c7d0c5qP
-	z8AO+eVRqO0DMNo3dQBFJH3dg5KqTFrw5quA1EmEOiT7mY4mIV4Nqkt6
-X-Gm-Gg: AfdE7cnDYgiOWyUz6VrnCwq/l4FNp7/pCoNRsY81ZwO/uQn+wg1Wfpc2Qe4H8z+VGyk
-	GUB/tCQ76K4MyiIbNxHOlRADVHPX9FTWeSBPf0uN48AdgcZeB7FWcxWqzVvfuKt99iyFjBAyz76
-	4gOE/3/tqHfz9L6sfPZtUVdzPK18B8Z6eAgVM4rqTjYFBakfQGcYsCBDsbuoXWDNYdkBYggxPXH
-	vWGgKOzFGV0FFhVUXSVKj9+E+YSGd6sbnFg4NrJKmGzP4gMk2z0PD3CfOeMyl4dCOUVESCkwLm3
-	EJ048HhBRt4sgzp1dKoORZPDRGVfBr/Su9N+z2b2pZ81ScAaCZV89PVu93LIHiJdRdBNtEg4gP4
-	NlQgUs75KSlnxgwjMRB5IET2gTZqumm0GCeLh0Gsai3UVrY+uwQ65DxVNIViFcYAFS+g9+bdIO/
-	Z2vT4hs+QC0MJtYEOXp0OXo+i/Hg22ZX0DHa03rHhhIMXa
-X-Received: by 2002:aa7:888f:0:b0:847:8971:87bb with SMTP id d2e1a72fcca58-8479ae75cf7mr678238b3a.21.1782745208912;
-        Mon, 29 Jun 2026 08:00:08 -0700 (PDT)
-Received: from buffalo-ssd (M014013071096.v4.enabler.ne.jp. [14.13.71.96])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-845e9fa4601sm3572368b3a.6.2026.06.29.08.00.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jun 2026 08:00:08 -0700 (PDT)
-From: Akari Tsuyukusa <akkun11.open@gmail.com>
-To: Yong Wu <yong.wu@mediatek.com>,
-	"Joerg Roedel (AMD)" <joro@8bytes.org>,
-	Will Deacon <will@kernel.org>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Miles Chen <miles.chen@mediatek.com>,
-	Joerg Roedel <jroedel@suse.de>
-Cc: Akari Tsuyukusa <akkun11.open@gmail.com>,
-	iommu@lists.linux.dev (open list:MEDIATEK IOMMU DRIVER),
-	linux-mediatek@lists.infradead.org (moderated list:MEDIATEK IOMMU DRIVER),
-	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCH] iommu/mediatek-v1: Fix off-by-one in MT2701_LARB_NR_MAX
-Date: Mon, 29 Jun 2026 23:59:44 +0900
-Message-ID: <20260629145946.312819-1-akkun11.open@gmail.com>
-X-Mailer: git-send-email 2.54.0
+	id 1weDuQ-0000000F4Nz-0i24;
+	Mon, 29 Jun 2026 15:28:33 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1782746898; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=CtlubN3O8T/gOMm2+m+XcDWQpAq/BF9WpPC0tSjP56mWXesZRObtNEcYXZYMIccoIM6KuKEyuvtUbqiQbNfU0YtNnsJUwgt06RWGc0JuQ/eFQ8/+fO59Pct8dxTlJS2ATyz5m51Ccd9da7ZSZDw2BTZ13CwiPeBPO9ma114LxC0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1782746898; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=B109+8NZEbMQJ0pDHwjFopml2ryZkezn+CpF9BZP+m0=; 
+	b=ELdEe6YWSjqJAjZD0z59BviM+eT8nv6Ozqmym+B89mTnXL/jmw4FTUGhYilNzPADzovGObCJfyvmPco4sSvEz/GMYoaY6eb0D97bMKmpUlpBSm35oobkkppKGJGRwKDe3MZA98PuDtPLIM14Z9hQ9p/HIw+uDsxGCyeCo31scjo=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=rong.moe;
+	spf=pass  smtp.mailfrom=i@rong.moe;
+	dmarc=pass header.from=<i@rong.moe>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1782746898;
+	s=zmail2048; d=rong.moe; i=i@rong.moe;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
+	bh=B109+8NZEbMQJ0pDHwjFopml2ryZkezn+CpF9BZP+m0=;
+	b=bJxMcgTrrMris7kfCVoAGhygrhOqnwMpXzMvmEwDUVbgywJC1hkMN1TX+Me7XnZS
+	/KqoNmgwLx6k5DMntK9sz3RgTobK54hh0u+DYD+NHOge/ZzwBKlR6RJcgEODwIO/q/t
+	d1HaoV8yBNXBNaFUiuYOHmYUDl4kVVQem/Z3wz8eNfr1QDrWusFWYMJbb45RKNNCfQF
+	vuVFDh7fxiOdDygrjxv/1D4Viwgg4YerGoysO2Qu3mdFcV8WSgdQ+yyeAFSm5zTCL84
+	7hwNPUV0soR2hqACk2qMqjy/VHYK1lZBFrQ0pEeB5J5S6Kz9QoT6G99esv6MIB+ijUP
+	X3lAdYdQRg==
+Received: by mx.zohomail.com with SMTPS id 1782746895981162.6356666501132;
+	Mon, 29 Jun 2026 08:28:15 -0700 (PDT)
+From: Rong Zhang <i@rong.moe>
+Date: Mon, 29 Jun 2026 23:27:58 +0800
+Subject: [PATCH] Bluetooth: Properly disable remote wakeup for
+ MT7922/MT7925 on Ryzen platform
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260629-btmtk-ryzen-remote-wakeup-v1-1-1d2f1cee6d22@rong.moe>
+X-B4-Tracking: v=1; b=H4sIAP2OQmoC/yXMyw6CMBBG4Vchs3aSiqLoqxAXbf3RkVDItHgjv
+ LtVl9/inJkiVBDpWMykuEuUIWSsVwX5qw0XsJyzqdwYZ2t/YJf61LG+3gis6IcEftgO08imquz
+ W7Hd1iZZyPypaef7ezenvOLkbfPoOaVk+2uGS530AAAA=
+X-Change-ID: 230ba8c9-btmtk-ryzen-remote-wakeup-055a407682ef
+To: Marcel Holtmann <marcel@holtmann.org>, 
+ Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Luiz Augusto von Dentz <luiz.von.dentz@intel.com>, 
+ =?utf-8?q?Chris_Lu_=28=E9=99=B8=E7=A8=9A=E6=B3=93=29?= <Chris.Lu@mediatek.com>, 
+ =?utf-8?q?Will-CY_Lee_=28=E6=9D=8E=E6=94=BF=E7=A9=8E=29?= <Will-CY.Lee@mediatek.com>, 
+ =?utf-8?q?SS_Wu_=28=E5=B7=AB=E6=86=B2=E6=AC=A3=29?= <ss.wu@mediatek.com>, 
+ linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Rong Zhang <i@rong.moe>
+X-Mailer: b4 0.16-dev-d5d98
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260629_080009_899817_A184B7B8 
-X-CRM114-Status: GOOD (  12.01  )
+X-CRM114-CacheID: sfid-20260629_082830_250435_B39A6640 
+X-CRM114-Status: GOOD (  22.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,38 +91,168 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mt2701_m4u_in_larb[] array contains 4 (for LARB0 to LARB3)
-elements, meaning mt2701_m4u_to_larb() can legitimately return 3.
-The current check `if (larbid >= MT2701_LARB_NR_MAX)` incorrectly
-rejects valid LARB3 with -EINVAL.
+It is reported that a remote wakeup could cause MT7922/MT7925's btusb
+interface completely unresponsive. Resetting the xHCI root hub doesn't
+help at all, and recovering from such a state needs a power cycle.
 
-Fix this off-by-one error by updating MT2701_LARB_NR_MAX to 4.
+All reports seen to be relevant to Ryzen-based laptops. These NICs are
+usually used as OEM components thanks to some sort of reference designs.
 
-Note that this does not cause immediate issues with the current
-mt2701.dtsi and mt7623n.dtsi because it only defines 3 LARBs:
-    mediatek,larbs = <&larb0 &larb1 &larb2>;
-Thus, larbid never reaches 3 in the existing upstream device tree.
+Their popularity on other platforms is unclear. While there is still a
+chance that the quirk may exist on other platforms, be cautious and only
+apply the quirk on AMD platforms for the time being.
 
-Fixes: de78657e16f4 ("iommu/mediatek: Fix NULL pointer dereference when printing dev_name")
-Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
+Meanwhile, though device_set_wakeup_capable(false) is the correct fix
+for other NICs with fake remote wakeup capabilities, doing so for
+MT7922/MT7925 effectively prevents it from being used as wakeup
+sources as per userspace requests. Hence, return -EBUSY on runtime
+suspend to prevent the interface from being autosuspended while it's
+still opened, which has the same effect as
+device_set_wakeup_capable(false), since disabling remote wakeup simply
+causes the USB core to gate runtime autosuspend as well due to
+needs_remote_wakeup == 1. The interface can be safely autosuspended as
+long as remote wakeup is disabled, i.e., after closing the HCI device.
+
+Specifically, the interface may still take the advantage of remote
+wakeup in order to wake up the system from sleep if userspace has
+enabled it as a wakeup source.
+
+Fixes: e31d761628ad ("Bluetooth: btmtk: Disable remote wakeup for MT7922/MT7925")
+Signed-off-by: Rong Zhang <i@rong.moe>
 ---
- drivers/iommu/mtk_iommu_v1.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/bluetooth/btmtk.c | 10 ---------
+ drivers/bluetooth/btusb.c | 57 +++++++++++++++++++++++++++++++++++++++++++----
+ 2 files changed, 53 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index ac97dd2868d4..e907c9953142 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -88,7 +88,7 @@ struct dma_iommu_mapping {
- /* MTK generation one iommu HW only support 4K size mapping */
- #define MT2701_IOMMU_PAGE_SHIFT			12
- #define MT2701_IOMMU_PAGE_SIZE			(1UL << MT2701_IOMMU_PAGE_SHIFT)
--#define MT2701_LARB_NR_MAX			3
-+#define MT2701_LARB_NR_MAX			4
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 02a96342e964..4614434dd57b 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -1381,16 +1381,6 @@ int btmtk_usb_setup(struct hci_dev *hdev)
+ 		break;
+ 	case 0x7922:
+ 	case 0x7925:
+-		/*
+-		 * A remote wakeup could cause the device completely unresponsive, and
+-		 * recovering from such a state needs a power cycle.
+-		 *
+-		 * Since the remote wakeup capability is super broken, just disable it
+-		 * to get rid of the troubles. The device can still be autosuspended
+-		 * when the bluetooth interface is closed.
+-		 */
+-		device_set_wakeup_capable(&btmtk_data->udev->dev, false);
+-		fallthrough;
+ 	case 0x7961:
+ 	case 0x7902:
+ 	case 0x6639:
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 08c0a99a62c5..023ae782f41a 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -6,6 +6,7 @@
+  *  Copyright (C) 2005-2008  Marcel Holtmann <marcel@holtmann.org>
+  */
  
- /*
-  * MTK m4u support 4GB iova address space, and only support 4K page
--- 
-2.54.0
++#include <linux/cpufeature.h>
+ #include <linux/dmi.h>
+ #include <linux/module.h>
+ #include <linux/usb.h>
+@@ -957,6 +958,7 @@ struct qca_dump_info {
+ #define BTUSB_USE_ALT3_FOR_WBS	15
+ #define BTUSB_ALT6_CONTINUOUS_TX	16
+ #define BTUSB_HW_SSR_ACTIVE	17
++#define BTUSB_WAKEUP_BROKEN	18
+ 
+ struct btusb_data {
+ 	struct hci_dev       *hdev;
+@@ -2936,10 +2938,20 @@ static int btusb_send_frame_mtk(struct hci_dev *hdev, struct sk_buff *skb)
+ 	}
+ }
+ 
++static inline bool platform_is_ryzen(void)
++{
++#ifdef CONFIG_X86
++	return boot_cpu_has(X86_FEATURE_ZEN);
++#else
++	return false;
++#endif
++}
++
+ static int btusb_mtk_setup(struct hci_dev *hdev)
+ {
+ 	struct btusb_data *data = hci_get_drvdata(hdev);
+ 	struct btmtk_data *btmtk_data = hci_get_priv(hdev);
++	int err;
+ 
+ 	/* MediaTek WMT vendor cmd requiring below USB resources to
+ 	 * complete the handshake.
+@@ -2956,7 +2968,29 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
+ 		btusb_mtk_claim_iso_intf(data);
+ 	}
+ 
+-	return btmtk_usb_setup(hdev);
++	err = btmtk_usb_setup(hdev);
++	if (err)
++		return err;
++
++	switch (btmtk_data->dev_id) {
++	case 0x7922:
++	case 0x7925:
++		/*
++		 * All reports seen to be relevant to Ryzen-based laptops. These
++		 * NICs are usually used as OEM components thanks to some sort
++		 * of reference designs.
++		 *
++		 * Their popularity on other platforms is unclear. While there
++		 * is still a chance that the quirk may exist on other
++		 * platforms, be cautious and only apply the quirk on AMD
++		 * platforms for the time being.
++		 */
++		if (platform_is_ryzen())
++			set_bit(BTUSB_WAKEUP_BROKEN, &data->flags);
++		break;
++	}
++
++	return 0;
+ }
+ 
+ static int btusb_mtk_shutdown(struct hci_dev *hdev)
+@@ -4532,11 +4566,26 @@ static int btusb_suspend(struct usb_interface *intf, pm_message_t message)
+ 
+ 	BT_DBG("intf %p", intf);
+ 
+-	/* Don't auto-suspend if there are connections or discovery in
+-	 * progress; external suspend calls shall never fail.
++	/*
++	 * It is reported that remote wakeup events could sometimes cause some
++	 * adapters completely unresponsive. Resetting the xHCI root hub doesn't
++	 * help at all, and recovering from such a state needs a power cycle.
++	 * Since disabling remote wakeup simply causes the USB core to gate
++	 * runtime autosuspend as well due to needs_remote_wakeup == 1, let's do
++	 * this ourselves to make our life easier. The interface can be safely
++	 * autosuspended as long as remote wakeup is disabled, i.e., after
++	 * closing the HCI device.
++	 *
++	 * Don't auto-suspend if there are connections or discovery in progress.
++	 *
++	 * External suspend calls shall never fail. Specifically, a device with
++	 * broken remote wakeup may still take the advantage of remote wakeup in
++	 * order to wake up the system from sleep if userspace has enabled it as
++	 * a wakeup source.
+ 	 */
+ 	if (PMSG_IS_AUTO(message) &&
+-	    (hci_conn_count(data->hdev) || hci_discovery_active(data->hdev)))
++	    ((test_bit(BTUSB_WAKEUP_BROKEN, &data->flags) && data->intf->needs_remote_wakeup) ||
++	     hci_conn_count(data->hdev) || hci_discovery_active(data->hdev)))
+ 		return -EBUSY;
+ 
+ 	if (data->suspend_count++)
+
+---
+base-commit: dc59e4fea9d83f03bad6bddf3fa2e52491777482
+change-id: 230ba8c9-btmtk-ryzen-remote-wakeup-055a407682ef
+
+Thanks,
+Rong
 
 
