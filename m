@@ -4,53 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6052C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2026 12:56:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36EE8C43458
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2026 13:21:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WPie0Gg6b2v2ZP4XO28LvRJOOPs0APl6SWKDvvzSHTw=; b=epZXfw3pPVNBmXjDhqzQN7t2cj
-	6iF2Rv5zve/zqPr0I7w+6V82Z37fVGBhJ3j0EJNHjrlllmhOKhAl7CCCnPTfObxDz5CzX9fAon0/y
-	8GJJWCWycjc+PF6w4kfCqJ0+vVjo20mZhDAzMWwm1p2bnFGagXG5zDLuTrfWP2NtdMH4gNQ04NA7D
-	SemcwlxjxtHdWunSzwTlXMOT2OCHIERgJmHli8n5sFaBc92n6DoDofIss0Q3sJ5o1fsbEFCyim5it
-	dgA7ZdFJ3VbwsOcahBevEBAsnQkWT7wr9GA/1imjk/QXT/cn9BpnekWohfweM9CJXjVgXXZ59KjGi
-	ZPOJX9YA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=IheE9qVzV7PsklKZKF/CcoIEwL18pQsEGgmo5EP68GU=; b=EcfYGwXhHig8zzxyqR+h5y+Mzt
+	CSe8A0oBl0dxS4sIUkGMucpnOP02Ufe+YagvZD59c2AYVAqOVIf4x+jpJlN6LveVe8tv2ZwMfgUn9
+	8MLEvcP/5CO2lBomM5mvnNwmSniMBUrmND6TvEvImgt+RdVL4FJc2B67OMxpXgwfVFIsfcCj1/iZN
+	oliBH17HyiQy59RZaWOVgD+5iwMT+jRxIPIt6VmMfZX+IirraR912W/V+mdO0yYt2JzESz4H9bQJX
+	/xsATHTl01gfPs2D7sqBFjIVu2qqw3kAIuMQIYl7sf6nf+0LdfGZ0B5IkWUCBsbIulankhjD0DSDq
+	GS6h9KKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weBXF-0000000EdhV-1YVU;
-	Mon, 29 Jun 2026 12:56:25 +0000
-Received: from chamillionaire.breakpoint.cc ([2a0a:51c0:0:237:300::1])
+	id 1weBvE-0000000EjGK-3dSJ;
+	Mon, 29 Jun 2026 13:21:12 +0000
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weBXC-0000000Edgi-2ZAZ;
-	Mon, 29 Jun 2026 12:56:24 +0000
-Received: by Chamillionaire.breakpoint.cc (Postfix, from userid 1003)
-	id C98976032C; Mon, 29 Jun 2026 14:56:16 +0200 (CEST)
-Date: Mon, 29 Jun 2026 14:56:16 +0200
-From: Florian Westphal <fw@strlen.de>
-To: Daniel Pawlik <pawlik.dan@gmail.com>
-Cc: netfilter-devel@vger.kernel.org, netdev@vger.kernel.org,
-	pablo@netfilter.org, phil@nwl.cc, davem@davemloft.net,
-	edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
-	horms@kernel.org, andrew+netdev@lunn.ch, razor@blackwall.org,
-	idosch@nvidia.com, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, bridge@lists.linux.dev,
-	coreteam@netfilter.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, rchen14b@gmail.com,
-	lorenzo@kernel.org
-Subject: Re: [PATCH 0/5] netfilter: nf_flow_table_path: L2 bridge offload
-Message-ID: <akJrZpkuM2GkOqWA@strlen.de>
-References: <20260629123253.1912621-1-pawlik.dan@gmail.com>
+	id 1weBvB-0000000EjF8-3YVz
+	for linux-mediatek@lists.infradead.org;
+	Mon, 29 Jun 2026 13:21:11 +0000
+Received: by mail-pj1-x102d.google.com with SMTP id 98e67ed59e1d1-37e11438c66so1264655a91.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Jun 2026 06:21:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1782739269; x=1783344069; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=IheE9qVzV7PsklKZKF/CcoIEwL18pQsEGgmo5EP68GU=;
+        b=Exse2RCbEN9M6T2AOfyTjhHBlZO2zwCEP2eo1eN8rI5OJSUnaFQlRRpTB8kLPu7/tR
+         Evc7s9jpxihD0iXbf7uoOKeGGsL2I1nW7G3bbamF/xKAW6/Rpz1HlkgFexzVI3QgCHZ8
+         MiZJWdB6NNniEXERs88O8QPPplpo52lbVRBGuSEsKQABQEAuONjtErc9Ir5CKSczmB0Z
+         GMONbf+XtwmMg9OG4nx4UU/90mg1+nQQFeZhYrMW7bdDdGMcGayGCHHVrPA9lHyH50U9
+         jMGE3NW7K2rn/Ny0b7Ey0eye91L+D/k4UASgkLWYL8SelSGM86a14Dp0mwNkykjChlkY
+         U0Yw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1782739269; x=1783344069;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=IheE9qVzV7PsklKZKF/CcoIEwL18pQsEGgmo5EP68GU=;
+        b=ccyiv1Ua6VO8i6nySpDmP2yadCZa0NhDcuSoSXRe+2AZrZ8KXQo47Wx5ZKLlxi+3kC
+         K0SU29io5x/B7ANSTu8xmV2T1vCYomO0OLWcovZSCTs5X1m2X7qLf2J2fCknijApW1KX
+         GAPR5GjZhmAPc27rQRFCMeKz1KsxAolIy/OzwvxFhux1/h3wS2XML2KNiB08iGY97AE+
+         F6hW1Yp5j2PhYZ0+/5b5amG1ZHbJJ3ybJH8dvao1kPhXPifTZy48WJianri+1d6JhM0G
+         StrAkiP2ZxHIF8QwOBI1WJoYVEc4bQ3XK+Im5zx/6EWd8HcuNhegeXfwjRZaljJlYb0j
+         ZacA==
+X-Forwarded-Encrypted: i=1; AHgh+RpMg6C/w1fk3NRAPW8IpGOq7d0NEP2V7ojEcrjDvRB/w9CJWSx1J8j4kbfn7yU7JMYupTNBY++kB1OQ9vfjGw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyZaqcxdJmytuv+guDfTOLczPX5yyE8bQREAsNpOtaLEggWoGUW
+	/xkRYCaw13gY9cXWWmpNdExmGoMXqENQcOCOx3jJsWB/lJrQP+uVIh8m
+X-Gm-Gg: AfdE7cnkE8lJGbGjtc8FrvD1cilonRKREepllzlwQ7FRN2o0iegullDPdRGYKK7sOA+
+	+e2jviyhoT5t+CbMUuEZ8VgEKOqZdmeb7L8UJnR48CwYrSADWEa0wMaX9zxplCV7/KV4RtS9wKG
+	zvNOLtkyE7tFxlrPp5loCgwuYD2nE6KJIr3yesbKmhlB1IwMwDAtDDcwy2JhMqTsLa5EUoZx5yc
+	n5hCmKMQSHXQ+ed3+8DcyINf4uRrp5qqVBc3xHKYSom52zVbE/VXDs0pp62gqUx+4dnD4WQqvWN
+	RdHouB3KTDQFBNl/SlX9I5kbhn51WiRPXL1gxpsZlnReZx5rYO3DKQAMzdRuIRYKqHav9FOR/mb
+	IibU3X5GZ71R6mDjRNx+Z4Welrht+MjXjtoyWT/XsnjBvdkk7hraEoUxDJwp8g9pYFGA7vERw33
+	f7gIiKhlRevRYhcjqpVqQlMrItiFkCJ8UpOZwoEkgtvdKT
+X-Received: by 2002:a17:90b:3f10:b0:37f:db06:2299 with SMTP id 98e67ed59e1d1-37fdb062e8amr5490736a91.21.1782739268802;
+        Mon, 29 Jun 2026 06:21:08 -0700 (PDT)
+Received: from buffalo-ssd (M014013071096.v4.enabler.ne.jp. [14.13.71.96])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-37df411ddf7sm9007528a91.16.2026.06.29.06.21.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 29 Jun 2026 06:21:08 -0700 (PDT)
+From: Akari Tsuyukusa <akkun11.open@gmail.com>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Brian Masney <bmasney@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Henry Chen <henryc.chen@mediatek.com>,
+	James Liao <jamesjj.liao@mediatek.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Akari Tsuyukusa <akkun11.open@gmail.com>,
+	linux-clk@vger.kernel.org (open list:COMMON CLK FRAMEWORK),
+	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH] clk: mediatek: mt8135: Fix inverted gate control for devapc_ck
+Date: Mon, 29 Jun 2026 22:20:43 +0900
+Message-ID: <20260629132044.208905-1-akkun11.open@gmail.com>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260629123253.1912621-1-pawlik.dan@gmail.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260629_055622_788254_18E890DF 
-X-CRM114-Status: UNSURE (   8.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260629_062109_896973_0B299BCA 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,30 +105,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Daniel Pawlik <pawlik.dan@gmail.com> wrote:
-> -----------------------------
-> 1. Load kmod-br-netfilter so that bridged IP traffic traverses the
->    netfilter forward chain.
+The devapc_ck (CLK_INFRA_DEVAPC) on MT8135 is currently using
+"mtk_clk_gate_ops_setclr". However, checking the downstream kernel reveals
+that this clock is configured with set:enable and clr:disable making
+"mtk_clk_gate_ops_setclr_inv" the appropriate choice.
+But, it is strange that some downstream kernels are not like that.
 
-Ouch.  br_netfilter should die.  Really.  Its a gross hack, never
-use this thing...
+Amazon: INV
+ChromiumOS (early): not INV
+ChromiumOS 3.16 to 3.18-revew-v2: INV
+ChromiumOS 3.18-review-v3 and later (sent to kernel.org): not INV
 
-> 2. Enable netfilter hooks on the bridge:
->      echo 1 > /sys/class/net/<br>/bridge/nf_call_iptables
->      echo 1 > /sys/class/net/<br>/bridge/nf_call_ip6tables
->
-> 3. Register bridge member interfaces in the nft flowtable:
->      table inet filter {
->          flowtable f {
->              hook ingress priority filter
->              devices = { eth0, wlan0 }
->          }
+Link: https://github.com/amazon-oss/android_kernel_amazon_mt8135/blob/e2b2163a8ec4a7c8d961c89003a15b4ba0f0e371/arch/arm/mach-mt8135/mt_clkmgr.c#L1022-L1028
+Link: https://github.com/mtk09422/chromiumos-third_party-kernel-mediatek/blob/4b624ee66e65d5dcd43fca36b313086efae8922a/arch/arm/boot/dts/mt8135-clocks.dtsi#L944-L948
+Link: https://github.com/mtk09422/chromiumos-third_party-kernel-mediatek/blob/decd80c01d0dbe9f3afa8ff72273b5618b418180/drivers/clk/mediatek/clk-mt8135.c#L881-L882
+Link: https://github.com/mtk09422/chromiumos-third_party-kernel-mediatek/blob/9b6f06cb7637100aa1a42e1fc351b36b384a1c54/drivers/clk/mediatek/clk-mt8135.c#L450
+Fixes: a8aede794843 ("clk: mediatek: Add basic clocks for Mediatek MT8135.")
+Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
+---
+ drivers/clk/mediatek/clk-mt8135.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-I think that bridge flowtable should use 'table bridge ...', not
-use the br_netfilter compat hacks.
+diff --git a/drivers/clk/mediatek/clk-mt8135.c b/drivers/clk/mediatek/clk-mt8135.c
+index 084e48a554c2..1d20e15608f7 100644
+--- a/drivers/clk/mediatek/clk-mt8135.c
++++ b/drivers/clk/mediatek/clk-mt8135.c
+@@ -409,6 +409,9 @@ static const struct mtk_gate_regs infra_cg_regs = {
+ 	GATE_MTK_FLAGS(_id, _name, _parent, &infra_cg_regs, _shift,	\
+ 		       &mtk_clk_gate_ops_setclr, CLK_IS_CRITICAL)
+ 
++#define GATE_ICG_INV(_id, _name, _parent, _shift)	\
++	GATE_MTK(_id, _name, _parent, &infra_cg_regs, _shift, &mtk_clk_gate_ops_setclr_inv)
++
+ static const struct mtk_gate infra_clks[] = {
+ 	GATE_DUMMY(CLK_DUMMY, "infra_dummy"),
+ 	GATE_ICG(CLK_INFRA_PMIC_WRAP, "pmic_wrap_ck", "axi_sel", 23),
+@@ -419,7 +422,7 @@ static const struct mtk_gate infra_clks[] = {
+ 	GATE_ICG(CLK_INFRA_CPUM, "cpum_ck", "cpum_tck_in", 15),
+ 	GATE_ICG_AO(CLK_INFRA_M4U, "m4u_ck", "mem_sel", 8),
+ 	GATE_ICG(CLK_INFRA_MFGAXI, "mfgaxi_ck", "axi_sel", 7),
+-	GATE_ICG(CLK_INFRA_DEVAPC, "devapc_ck", "axi_sel", 6),
++	GATE_ICG_INV(CLK_INFRA_DEVAPC, "devapc_ck", "axi_sel", 6),
+ 	GATE_ICG(CLK_INFRA_AUDIO, "audio_ck", "aud_intbus_sel", 5),
+ 	GATE_ICG(CLK_INFRA_MFG_BUS, "mfg_bus_ck", "axi_sel", 2),
+ 	GATE_ICG(CLK_INFRA_SMI, "smi_ck", "smi_sel", 1),
+-- 
+2.54.0
 
-Sorry.
-
-Are you aware of Eric Woudstras bridge flowtable patches?
-https://lore.kernel.org/netfilter-devel/20250408142802.96101-5-ericwouds@gmail.com/
 
