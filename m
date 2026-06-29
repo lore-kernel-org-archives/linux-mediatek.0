@@ -4,70 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2729FC43458
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2026 07:07:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72CCCC43458
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2026 07:18:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rpKKJsSgEMNNb2PbpdYzECjjWhociaNiCYNn2RuSxKg=; b=wcONDbiztpUNwDzb3L7WhCKggk
-	zTOmeB+PVCrgN6s6oz00nz5PRECJ5FbxipIq5Ym1gTzOHffySsQ3PIdTat+udmNrdkJyxxBbTCCx3
-	UvvGXqPnwTDZLGazUHQWHz4MEXHHA0EVodNjNj9O2ZGiJZTbDxDzEpDqHVjEMHlxAJiQs8iefDG4r
-	4NLgQT4GWywmUQwnTKRpbjS0jp+xUrQDrXGRG1fTcgCO/bXhkHZ6kxr3gweFLOHBJJyncnvK9k8oj
-	Cv4q5f2F9yoZOO2mURPYJet8cgE1gPtIgv2Sjtt1ovs5KbHJZAR2q3Nc9qwdmjvL9aK+1xEtuIorh
-	StY1vjMw==;
+	bh=BovyFstc80MYHmYyIZVG50kULX+1YfHlAuIHPTiI6jk=; b=yVSj3k+g8rjtdcLiNc8GJcS2di
+	hyzz0lLk0oED4/7/LYJWwFPAcItZhDt7bAbeiKme/LYyw+aRCH5LgPOJpzK4xEep0UMvHEXY62nwb
+	0W3oiXVlfHQg1sXYt31Ep34Wo9qxVL7pmukRb66M1NodN5MC9W+eoi2nms0ZR1y/a+9nLupeuI7QQ
+	7IDUk3iIota5C0phhd6ChvWe45dtc3oIf+8infyawIbunE/QUCaA/YKeX4roSYHCRFughGA2dT6pU
+	ZD0fp0QDPrZKxQ+1ardcFNTN1NdtbtuDCrdnoJTi6rGDbd5B5n4p7ghfefwwbmIj+RFq7YoAR4DwH
+	IjOtt+Lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we65a-0000000DrB2-021k;
-	Mon, 29 Jun 2026 07:07:30 +0000
-Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
+	id 1we6Fw-0000000DsJo-10wN;
+	Mon, 29 Jun 2026 07:18:12 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we65X-0000000Dr9X-0vQj;
-	Mon, 29 Jun 2026 07:07:29 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de (drehscheibe.grey.stw.pengutronix.de [IPv6:2a0a:edc0:0:c01:1d::a2])
-	(Authenticated sender: relay-from-drehscheibe.grey.stw.pengutronix.de)
-	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 7740B20027F;
-	Mon, 29 Jun 2026 09:07:22 +0200 (CEST)
-Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1we65S-005CZR-1I;
-	Mon, 29 Jun 2026 09:07:22 +0200
-Received: from pza by lupine with local (Exim 4.98.2)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1we65S-000000003Wg-1Jlm;
-	Mon, 29 Jun 2026 09:07:22 +0200
-Message-ID: <68b43224e0a124c055fc228b3a254fc7908dbcdd.camel@pengutronix.de>
-Subject: Re: [PATCH v3 2/4] clk: en7523: add support for dedicated PCIe
- PERSTOUT reset
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Christian Marangi <ansuelsmth@gmail.com>, Bjorn Helgaas	
- <bhelgaas@google.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof
- =?UTF-8?Q?Wilczy=C5=84ski?=	 <kwilczynski@kernel.org>, Manivannan
- Sadhasivam <mani@kernel.org>, Rob Herring	 <robh@kernel.org>, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, Conor Dooley	 <conor+dt@kernel.org>, Ryder
- Lee <ryder.lee@mediatek.com>, Michael Turquette	 <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Brian Masney	 <bmasney@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Jianjun Wang
- <jianjun.wang@mediatek.com>, 	linux-pci@vger.kernel.org,
- devicetree@vger.kernel.org, 	linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, 	linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-Date: Mon, 29 Jun 2026 09:07:22 +0200
-In-Reply-To: <20260627121450.3529133-3-ansuelsmth@gmail.com>
-References: <20260627121450.3529133-1-ansuelsmth@gmail.com>
-	 <20260627121450.3529133-3-ansuelsmth@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2-0+deb13u1 
+	id 1we6Ft-0000000DsIu-2KIW
+	for linux-mediatek@lists.infradead.org;
+	Mon, 29 Jun 2026 07:18:10 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-47122683cf3so593892f8f.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Jun 2026 00:18:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1782717487; x=1783322287; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=BovyFstc80MYHmYyIZVG50kULX+1YfHlAuIHPTiI6jk=;
+        b=ji/DDkcjLeGT3bbSFLg0GiU/DJRiHPqUbulMD7lALkB5YtPik51qHY1/yRd8l30GaP
+         iV0uqDsp9DsW7XP6582oLyDCNfsigY3JQng/aL0I4631Efl63+FKm8FH2wdxbkSEnjla
+         AcnIdF3XB0k/2/MqhfTf1P7XcV++DuTgN7D0HDRNzdXuZ+PwlrSe+Kn+UAQ7VoPPPDk6
+         oRjI2Jcq6T3QbIjehtvJsWnIarDYDS8n72iw5tvUVGO+ymuJL8zl3plCK8wXDq845LoK
+         aCiY0KkwGpADkL81EmweYeJs1CyCj6UAx+XZ1tNjHnEG7BuMrA8Fmgj7zBEm5zTJpbKk
+         Civg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1782717487; x=1783322287;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=BovyFstc80MYHmYyIZVG50kULX+1YfHlAuIHPTiI6jk=;
+        b=h71+0TMsuTBKFsm/DHhN7gPfHlt0uWMJgO7HwHebKZ0dm/XybZclFMCCMxZbpdC8VC
+         3o0LMYt0MwUbgwiGW2/6+R7gnsuAl7/T9shN6+3+0DLgQ0/aTmEfpVqK8MSq30cQmM3S
+         zImmyn7cOMcB8IyfsSEl15DbYBRybYnIwitjI0Ux1FrZSb7WPWO7l8kAZWs2mGmMs9Aa
+         OmWIMdlB80yH5/qnm8mnE3+xeSpitUNeEt/KpnxYQdAzaigJzcHrapCSDcfbHSCDzVZO
+         pc8t0r1RrJ94p6tjQj/TvCu0a/OHkcirjiyk8sWmzY+Q9POUde5+sbJtKZ4yLeZDqi2Q
+         xbww==
+X-Forwarded-Encrypted: i=1; AHgh+Rp5DRNyd9VQF2g6NvkaOSwcAoFgsWBNHgMJGEcZLmXt42qHCMNP5HE6il7snPRg5O42JqLKzw1BzsRTytw7MA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxfJRkrBMzI7be9k3DTtsD1j61/CqAQOSF7QnQyFwZEO6kOmWZm
+	o31uS7YEHNVazbO3A6JMrJZlWjTNAjOclFtv/eO44mGegpVZG3o7NPHH
+X-Gm-Gg: AfdE7cnOqK18OBTGY5tZZXQjJ5x9T0iWxrXxhksNTgdejHItklbbO+Aq/wvZjQw/fzr
+	VUeAmBF5gGZHTaFw77dj247ZBh8UrLiWVk8x3vHlvlhxGSX3vgi0vQ7BufSV+cbnvDJhtW8H6uf
+	3DEHZdi/9DZcOWNUYiNfowmRNAMYubizF0SIv3WyE1j2Ft/oTA34/ZyuBaXG18ubuu33gwsKD22
+	00ys0Wo5639IV+JIOFxWEjvJMO72TEJs+qT93mQI1o+5dIhRNh92ZXNBRBaxcBqAQFOIqkh8yek
+	PHXwk9gnjlILFzjYNUd2dDlf7XC+Fhp0ohQaTO3xpRnqDdUgkS+GUcgUZGrf2PzlqdnZKqeGLAB
+	qbKYAVB20U1fpUJgRg50/lHmHW3fonQtzI9hKbxPz8ZyCdvZf85bUuzHcopBFXA7ARvFRGxZCXX
+	MXFPlY6EiD9QEVRslIWt4LXzExjHMIOP9Haggohh+j9jIO7zh3n57Le2ufae7tDpb5uvs=
+X-Received: by 2002:a5d:6a48:0:b0:46d:32:3340 with SMTP id ffacd0b85a97d-46fb8d93892mr12284633f8f.36.1782717486707;
+        Mon, 29 Jun 2026 00:18:06 -0700 (PDT)
+Received: from Ansuel-XPS. (host-80-183-219-152.pool80183.interbusiness.it. [80.183.219.152])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47290ed4377sm13297042f8f.37.2026.06.29.00.18.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 29 Jun 2026 00:18:05 -0700 (PDT)
+Message-ID: <6a421c2d.1e0bfc4f.b2eb6.06fb@mx.google.com>
+X-Google-Original-Message-ID: <akIcKbA8zsoalq-G@Ansuel-XPS.>
+Date: Mon, 29 Jun 2026 09:18:01 +0200
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Shuah Khan <skhan@linuxfoundation.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Saravana Kannan <saravanak@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
+	Bill Wendling <morbo@google.com>,
+	Justin Stitt <justinstitt@google.com>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
+Subject: Re: [RFC PATCH net-next v8 03/12] net: phylink: add
+ phylink_release_pcs() to externally release a PCS
+References: <20260618125752.1223-1-ansuelsmth@gmail.com>
+ <20260618125752.1223-4-ansuelsmth@gmail.com>
+ <a271385e-302d-45c7-a1df-aebd380b427b@bootlin.com>
+ <6a3fc312.6161eb1e.3441bb.c0de@mx.google.com>
+ <178defc6-8e60-4b0b-b3b0-f0f2a4003b68@bootlin.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <178defc6-8e60-4b0b-b3b0-f0f2a4003b68@bootlin.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260629_000727_439888_A0078E5A 
-X-CRM114-Status: GOOD (  16.69  )
+X-CRM114-CacheID: sfid-20260629_001809_645758_E213C232 
+X-CRM114-Status: GOOD (  64.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,58 +122,206 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sa, 2026-06-27 at 14:14 +0200, Christian Marangi wrote:
-> Add support for resetting the PCIe lines with the PERSTOUT reset. These
-> special reset are controlled by the PCIC register and are specific to eac=
-h
-> of the 3 PCIe lines.
->=20
-> Notice that reset logic is inverted for these bit where 0 is assert and 1
-> deassert. This is intenrally handled in the reset function.
-                        ^^
-typo: internally
+On Mon, Jun 29, 2026 at 09:04:49AM +0200, Maxime Chevallier wrote:
+> Hi Christian,
+> 
+> On 6/27/26 14:33, Christian Marangi wrote:
+> > On Thu, Jun 25, 2026 at 04:13:14PM +0200, Maxime Chevallier wrote:
+> >> Hello Christian,
+> >>
+> >> On 6/18/26 14:57, Christian Marangi wrote:
+> >>> Add phylink_release_pcs() to externally release a PCS from a phylink
+> >>> instance. This can be used to handle case when a single PCS needs to be
+> >>> removed and the phylink instance needs to be refreshed.
+> >>>
+> >>> On calling phylink_release_pcs(), the PCS will be removed from the
+> >>> phylink internal PCS list and the phylink supported_interfaces value is
+> >>> reparsed with the remaining PCS interfaces.
+> >>>
+> >>> Also a phylink resolve is triggered to handle the PCS removal.
+> >>>
+> >>> The flag force_major_config is set to make phylink resolve reconfigure
+> >>> the interface (even if it didn't change).
+> >>> This is needed to handle the special case when the current PCS used
+> >>> by phylink is removed and a major_config is needed to propagae the
+> >>> configuration change. With this option enabled we also force mac_config
+> >>> even if the PHY link is not up for the in-band case.
+> >>>
+> >>> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> >>> ---
+> >>>  drivers/net/phy/phylink.c | 56 +++++++++++++++++++++++++++++++++++++++
+> >>>  include/linux/phylink.h   |  2 ++
+> >>>  2 files changed, 58 insertions(+)
+> >>>
+> >>> diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
+> >>> index c38bcd43b8c8..064d6f5a06da 100644
+> >>> --- a/drivers/net/phy/phylink.c
+> >>> +++ b/drivers/net/phy/phylink.c
+> >>> @@ -158,6 +158,8 @@ static const phy_interface_t phylink_sfp_interface_preference[] = {
+> >>>  static DECLARE_PHY_INTERFACE_MASK(phylink_sfp_interfaces);
+> >>>  
+> >>>  static void phylink_run_resolve(struct phylink *pl);
+> >>> +static void phylink_link_down(struct phylink *pl);
+> >>> +static void phylink_pcs_disable(struct phylink_pcs *pcs);
+> >>>  
+> >>>  /**
+> >>>   * phylink_set_port_modes() - set the port type modes in the ethtool mask
+> >>> @@ -918,6 +920,60 @@ static void phylink_resolve_an_pause(struct phylink_link_state *state)
+> >>>  	}
+> >>>  }
+> >>>  
+> >>> +/**
+> >>> + * phylink_release_pcs - Removes a PCS from the phylink PCS available list
+> >>> + * @pcs: a pointer to the phylink_pcs struct to be released
+> >>> + *
+> >>> + * This function release a PCS from the phylink PCS available list if
+> >>> + * actually in use. It also refreshes the supported interfaces of the
+> >>> + * phylink instance by copying the supported interfaces from the phylink
+> >>> + * conf and merging the supported interfaces of the remaining available PCS
+> >>> + * in the list and trigger a resolve.
+> >>> + */
+> >>> +void phylink_release_pcs(struct phylink_pcs *pcs)
+> >>> +{
+> >>> +	struct phylink *pl;
+> >>> +
+> >>> +	ASSERT_RTNL();
+> >>> +
+> >>> +	pl = pcs->phylink;
+> >>> +	if (!pl)
+> >>> +		return;
+> >>> +
+> >>> +	mutex_lock(&pl->state_mutex);
+> >>> +
+> >>> +	list_del(&pcs->list);
+> >>> +	pcs->phylink = NULL;
+> >>> +
+> >>> +	/*
+> >>> +	 * Check if we are removing the PCS currently
+> >>> +	 * in use by phylink. If this is the case, tear down
+> >>> +	 * the link, force phylink resolve to reconfigure the
+> >>> +	 * interface mode, disable the current PCS and set the
+> >>> +	 * phylink PCS to NULL.
+> >>> +	 */
+> >>> +	if (pl->pcs == pcs) {
+> >>> +		phylink_link_down(pl);
+> >>> +		phylink_pcs_disable(pl->pcs);
+> >>> +
+> >>> +		pl->force_major_config = true;
+> >>> +		pl->pcs = NULL;
+> >>> +	}
+> >>> +
+> >>> +	mutex_unlock(&pl->state_mutex);
+> >>> +
+> >>> +	/* Refresh supported interfaces */
+> >>> +	phy_interface_copy(pl->supported_interfaces,
+> >>> +			   pl->config->supported_interfaces);
+> >>> +	list_for_each_entry(pcs, &pl->pcs_list, list)
+> >>> +		phy_interface_or(pl->supported_interfaces,
+> >>> +				 pl->supported_interfaces,
+> >>> +				 pcs->supported_interfaces);
+> >>
+> >> I've given more thought to that 'supported_interfaces' thing. This
+> >> patchset redefines the meaning of
+> >>
+> >>   pl->config->supported_interfaces
+> >>
+> >> Currently, it's filled by the MAC driver and means "Every interface
+> >> we can support, including the ones provided by PCSs that we can use
+> >> with this MAC".
+> >>
+> >> It now becomes "Every interface we support without needing a PCS", at
+> >> least the way I understand that.
+> >>
+> > 
+> > Wait but with the current code using the OR logic, it still follows
+> > "Every interface we can support...". The modes that needs a PCS are
+> > specificed with the pcs_interfaces mask in phylink_config.
+> 
+> you current code is correct, I was mostly concerned about the doc
+> that goes along with it :)
 
-> PCI enable/disable are updated to drop PERSTOUT bits in favor dedicated
-> reset handling.
->=20
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
->  drivers/clk/clk-en7523.c | 39 ++++++++++++++++++++++++++++-----------
->  1 file changed, 28 insertions(+), 11 deletions(-)
->=20
-> diff --git a/drivers/clk/clk-en7523.c b/drivers/clk/clk-en7523.c
-> index 1ab0e2eca5d3..c9b21d9bf2f3 100644
-> --- a/drivers/clk/clk-en7523.c
-> +++ b/drivers/clk/clk-en7523.c
-[...]
-> @@ -754,14 +756,21 @@ static int en7523_reset_update(struct reset_control=
-ler_dev *rcdev,
->  			       unsigned long id, bool assert)
->  {
->  	struct en_rst_data *rst_data =3D container_of(rcdev, struct en_rst_data=
-, rcdev);
-> -	void __iomem *addr =3D rst_data->base + rst_data->bank_ofs[id / RST_NR_=
-PER_BANK];
-> +	u32 offset =3D rst_data->bank_ofs[id / RST_NR_PER_BANK];
-> +	void __iomem *addr =3D rst_data->base + offset;
-> +	bool inverted =3D false;
->  	u32 val;
-> =20
-> +	/* For PCIC reset logic is inverted, 0:assert 1:deassert*/
-> +	if (offset =3D=3D REG_NP_SCU_PCIC)
-> +		inverted =3D true;
-> +
->  	val =3D readl(addr);
-> +	val &=3D ~BIT(id % RST_NR_PER_BANK);
->  	if (assert)
-> -		val |=3D BIT(id % RST_NR_PER_BANK);
-> +		val |=3D inverted ? 0 : BIT(id % RST_NR_PER_BANK);
->  	else
-> -		val &=3D ~BIT(id % RST_NR_PER_BANK);
-> +		val |=3D inverted ? BIT(id % RST_NR_PER_BANK) : 0;
+Oh yep thanks, I will update also that entry. Also maybe check the .rst
+introduced and tell me if something is confusing or badly described.
 
-You can simplify this into a single (assert ^ inverted) condition.
+> 
+> So in the end, we'd have something like (simplified):
+> 
+> pl->config.supported_interfaces = RGMII_xx | SGMII | 1000BaseX
+> pl->config.pcs_interfaces = SGMII | 1000BaseX
+> 
+> pcs->supported_interface = SGMII| 1000BaseX
+> 
+> correct ?
+> 
 
-regards
-Philipp
+Correct. phylink_config describing that for SGMII and 1000BaseX a PCS is
+required and the related PCS declaring support for those modes.
+
+Code will skip searching for a PCS for RGMII.
+
+> > 
+> > The late add and release operates on the phylink supported_interfaces ONLY
+> > when the MAC didn't specify support for it (by removing it as only the PCS
+> > will declare support for it)
+> > 
+> > The confusion is present because everything is validated later on
+> > major_config so those supported_interfaces are just an HINT that are later
+> > verified with get_caps and with the pcs_validate OPs.
+> > 
+> > Adding the supported_interfaces to phylink is really to keep an original
+> > reference of the value. This is to address a pattern I have notice where
+> > the MAC driver always OR the interfaces with the one supported by the PCS.
+> > (I remember it was pointed out by Russell)
+> > 
+> > But I'm more than open to discussion as this is something marginal to the
+> > whole implementation, I'm also questioning if this OR is actually useful to
+> > anything on the nth tought on this.
+> > 
+> > One thing that I notice is that parsing this early with AND might be
+> > problematic at phylink_create, but I still have to evaluate that.
+> > 
+> > My take is that would be good to have some review also on the other logic
+> > as I think I reached a point where Sashiko starts to comments on more or
+> > less unreal problem.
+> 
+> True, TBH all the fwnode part is something I'm a bit less familiar with though
+> so maybe someone else can browse through that.
+> 
+> FWIW, I've tested that whole series on a board that has "legacy" PCS board
+> that has mvpp2 and 2 possible PCSs, and it seems to work fine so no regressions
+> there :)
+> 
+> A side note with the "legacy" naming, I'd rather have it called "built-in" or
+> something like that, I don't see a clear path to porting the existing code to
+> fwnode without breaking DT compat, as it's likely we'll have to remove the PCS
+> register ranges out of the MAC's range. 
+
+I think also built-in might be confusing as a SoC might have a PCS built-in
+but just as a separate device on a different register map.
+
+A better description might be "externally-managed" but that is very long...
+
+Also the use of fwnode and DT is just to reference them and use the normal
+helper but the implementation is liberal on custom implementation for the
+current code.
+
+Everything is around the pcs_interface mask, num_possible_pcs and the
+fill_available_pcs.
+
+Nobody stops from implementing custom parser in fill_available_pcs and
+return a PCS pointer created directly by the MAC. (In such case late and
+release won't be needed as everything is present when phylink_create is
+called)
+
+On OpenWrt we migrated every SoC that used ""exotic"" pcs reference (Qcom,
+Realtek, MTK, Airoha) but I don't have a board that used something like the
+'pcs' property.
+
+> 
+> Thanks for this work anyway, this is great !
+> 
+> Maxime
+
+-- 
+	Ansuel
 
