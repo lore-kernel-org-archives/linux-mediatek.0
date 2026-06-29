@@ -4,93 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8F13C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2026 11:14:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50B1AC43458
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2026 12:23:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2/cQZtNVmZAXOHG03ROLnDmaqSKnwebUtW14oX2KZQc=; b=J7xvsLwcDa+ucxn2nE7cXjCotc
-	e9/BBoCNLa4EJwHsH+G3AskW5ZJ0fsoE20U5bcnXm/IfO9oik7RV1pcDGSpEFwkQezekqabcBUbvI
-	kIbfTpPo74mUKWd+XIootWFfPG8JfYaJ1LNoCr5spgPAUKwucKhYH18/7FS9aew+a9sLoTvVGrSxn
-	MtHd7p2dO+3TZWXt99RwCnMscolFvUgNhdSU7nE/FFW1t3c66FTYNjtTKmoQgVnpjkbEt+tUIGJLf
-	dLeeh+L3/lJzTT4khLQAQaZEIQmuu7T9ofdVhgc9jZ0CMWQVttqtMZWvsZBCsOh+eLT43zErS6Eme
-	p5diSP7w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=L6V4gGpbEy0fZNQjjmmHmHR8RvVrPmpP6jHF02hQyRM=; b=MgcimxJoh88Kseu+zRlMQ3g5Hv
+	e6QXO3dF0VgTp3W1Dgu3+9R12308ryib8gHRvYEg8+qI2f3dy0LlkeajOExTMcCm3fy9OCAGg/zqz
+	bQxbBzn817QrcGdT7Bau/aBzoO1q2hVMAu5wJtMmxTuw9UokALG2B5jHpqCqi41maC8dde1dK9Z7T
+	5VgjJNov439ORNlbscwAM984X7eYQPJ49iETnf9ebPKg+F90g59R9aL+YXTQot35tuJWo0Fal2cKf
+	z3dksudHulfYov6ZMBFV78cUPj/ByRR6HxZkz+srmICd7NnUsWX1323z5SoQc73LbvssPvLMKS4hX
+	/nttwL2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we9wU-0000000EP0o-0Lz9;
-	Mon, 29 Jun 2026 11:14:22 +0000
-Received: from mgamail.intel.com ([192.198.163.17])
+	id 1weB1R-0000000EXiH-2Y88;
+	Mon, 29 Jun 2026 12:23:33 +0000
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we9wR-0000000EOzK-1TfM;
-	Mon, 29 Jun 2026 11:14:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1782731659; x=1814267659;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=gLqMN8vpA2AzELZ43hBji5CPMGlrPDZKkBk5U11/0oM=;
-  b=WVe7oLg/3L0D38VeplokGcMGoEZOHGTnSHd4AINqNF9Lkl5XoITG7fcx
-   4RwUUQZ8+rB7zsLkyNax46tQ7Ufdtp/01sDGZYbPm+VsGaPyJWK2J08D0
-   pZ/tIVPUvjK8ZqKdQIkt1R3Fi03ZCAA1AKG5q52oOcGiJSjxxZyyGZh+G
-   dXGJS8uIpn+Qe6yFaH47JtWgyCCI7K/prkwH13vRzGlsOPbd4GBqiEUwr
-   Vsx+mJC4rxaYdBbVR7FqF077fmgy4Jha5KgaHaUGqJ1JA1sBSfxgopjFa
-   uRITmic7nRuqIk900fFmoNJPH7LxZAZldh5skovZo9+QG/y/95nk3mcOq
-   A==;
-X-CSE-ConnectionGUID: 3EiY5LaTQSW5xCxrt7h2bg==
-X-CSE-MsgGUID: UW7K/l8nQwujOqXGK12ypw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11831"; a="83290142"
-X-IronPort-AV: E=Sophos;i="6.24,231,1774335600"; 
-   d="scan'208";a="83290142"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Jun 2026 04:14:18 -0700
-X-CSE-ConnectionGUID: NVYSf8rjSpKNO2Qk94jDzw==
-X-CSE-MsgGUID: wKmi9k3IRtWOyVUpONdWzg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,231,1774335600"; 
-   d="scan'208";a="248569133"
-Received: from kniemiec-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.207])
-  by fmviesa007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Jun 2026 04:14:12 -0700
-Date: Mon, 29 Jun 2026 14:14:10 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Bartosz Golaszewski <brgl@kernel.org>,
-	Alan Stern <stern@rowland.harvard.edu>, linux-acpi@vger.kernel.org,
-	driver-core@lists.linux.dev, linux-pm@vger.kernel.org,
-	linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Daniel Scally <djrscally@gmail.com>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>,
+	id 1weB1P-0000000EXhO-0jpe
+	for linux-mediatek@lists.infradead.org;
+	Mon, 29 Jun 2026 12:23:32 +0000
+Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-2c9e89fded0so9704515ad.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Jun 2026 05:23:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1782735810; x=1783340610; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=L6V4gGpbEy0fZNQjjmmHmHR8RvVrPmpP6jHF02hQyRM=;
+        b=ZcLcuYZHrmrhw7YIABFGFDLegOOfPCFwsk70XxPaRAfkzx4YYsncdO79lrMNr7ImdT
+         Yhv72EW2xbDW8psQQWPkiu4505gHP+D/KOeZBsgLDRn8l0yD5c8gKX3EVdK9kxfDnYfb
+         EQ0VBokx8ppXSuES8LV4P/wbavMqptBZy843nUSXxOYktD+uIySkdco8QDY1uD92nOIw
+         gjyKE8a8YzIuOZP/dU2rcnlTmf2tW6P4mBqo15bhuvHOj+DNE3a9P49KJf8vJghEhC1S
+         +KG22mSE9b+xnS+pU+OFo2TGqLxRRu86YTiGkZj2ZuqZu6gvygQdffm/O5YButJ2UQY7
+         cjfA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1782735810; x=1783340610;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=L6V4gGpbEy0fZNQjjmmHmHR8RvVrPmpP6jHF02hQyRM=;
+        b=LWUVY3e6KBye1YUuyknm6JBOL0Y+XHSQ6Bc3k1Y8fFF/rRTcB+gBJ+vZxCpxftC+BW
+         BEqPJW8RuK/8npIlYLcFDxAQqoGJ1/iP6nbDsWMVV1O2pgtqaRvN/sNIHpe3aQSRwtuE
+         CxvR/7NImMGCP9oVyVY4JKX0eaBClWTOQJ3IuoEqrVzrXj44C+87DPi4tYvmJmg5XKRm
+         f5Dd9icTqQtu3W0JAGGde4CjobaDdARqxCQroUhQ8pWc+8k63R7fy7rAksrZiUEFI36c
+         rIO5rvI44k+9p5JMWvrh4rci7412TclWPVoCfrteqxUB3EqWjfn+ghNjsagSZ276zCaB
+         NMTQ==
+X-Forwarded-Encrypted: i=1; AHgh+Roc0K60jDyDnIpI4lTf2LIxlpszXb3kI75PtDSLmWzwQYdjs8HaJZHjO+2PILEXh1saA6ZplwJoVeZtWdVK7A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz6c8z5j00d2foMuB3jSM3eooh0Di6aaydyhIANUckbw3BNo0vS
+	GDvrjsgQisYK7pQHlsx+yZDyKX+tbUR/b5Qws4LHrEZQ5L3lbRHtFoGm
+X-Gm-Gg: AfdE7cnR3uV6ij46svyvywDbrBoQbC16Ry4j3dEYA51MwEkbfGGRXoXSU6tzhxjW6JZ
+	aGLFP/6Ryub1wH+3ckrRIKVPvQlDGramfflRDTAW5D5fXGcg2fD5J5Aq1Qw+/wGvrlg5s9m1exC
+	r2Ft9En1MnySWCA4HAdbzUWK2HeMgIF41a8M15drRNE3bjsDNS3rcj1wvQRFUq2YHdlBOJqcdbs
+	hG47DDVT6tg8EQL+lolv4tp2nS9eqR5GP915VLY0bHhr9K1qrzdEFSUsf7zAhzeD+n/I5LK6JId
+	QL0o30jjlRQACSCQ2+XLdycKMb+OdTOVWQOIBO1TLNnlNPPS25NuMSUcjMKVG7DjiKMF8QS81PM
+	WFlzBBxZhOOIPSRH4SugDYD+Q4Z7ukwu9fVlGcMNe+EeWyHfZTiaKDjB5sP9Nu93kmTxVzqpbFZ
+	nmfxgQV4x76lQXR9Mqn9kviMfdnZwXZ0e83dnvS9twkVjt
+X-Received: by 2002:a17:902:ecd1:b0:2c9:fa31:850c with SMTP id d9443c01a7336-2c9fa318680mr27451165ad.39.1782735809679;
+        Mon, 29 Jun 2026 05:23:29 -0700 (PDT)
+Received: from buffalo-ssd (M014013071096.v4.enabler.ne.jp. [14.13.71.96])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c89d9bdde7sm57104195ad.75.2026.06.29.05.23.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 29 Jun 2026 05:23:29 -0700 (PDT)
+From: Akari Tsuyukusa <akkun11.open@gmail.com>
+To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2 07/16] usb: hub: Power on connected M.2 E-key
- connectors
-Message-ID: <akJTgn0aZDtH04ij@ashevche-desk.local>
-References: <20260610084053.2059858-1-wenst@chromium.org>
- <20260610084053.2059858-8-wenst@chromium.org>
- <CAMRc=Mc3DqGb2MsvM4tjcqFuRraAO+EftO1UrtNFvR5dMRXmVA@mail.gmail.com>
- <CAGXv+5HQa9BH5wyVwKNxjXLEZDnE0sbeQjgNxwmAG+OF8bbz=w@mail.gmail.com>
- <CAGXv+5Gbf8+=hMZcK0pYraC1t4qmDx_WVPkr2RhWdm3bq_LZEQ@mail.gmail.com>
+Cc: devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Akari Tsuyukusa <akkun11.open@gmail.com>
+Subject: [PATCH] arm: dts: mediatek: mt6589: Fix timer interrupt trigger type
+Date: Mon, 29 Jun 2026 21:22:46 +0900
+Message-ID: <20260629122246.148696-1-akkun11.open@gmail.com>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5Gbf8+=hMZcK0pYraC1t4qmDx_WVPkr2RhWdm3bq_LZEQ@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260629_041419_412592_2BCAAEEB 
-X-CRM114-Status: GOOD (  16.50  )
+X-CRM114-CacheID: sfid-20260629_052331_206933_C7F2BDCB 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,44 +102,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 29, 2026 at 02:46:42PM +0800, Chen-Yu Tsai wrote:
-> On Fri, Jun 12, 2026 at 4:55 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
-> > On Thu, Jun 11, 2026 at 6:11 PM Bartosz Golaszewski <brgl@kernel.org> wrote:
-> > > On Wed, 10 Jun 2026 10:40:41 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
+MT6589 uses IRQ_TYPE_LEVEL_LOW for arch timer, but I sent a patch using
+IRQ_TYPE_LEVEL_HIGH.
+The timer worked correctly regardless of whether IRQ_TYPE_LEVEL_LOW or
+IRQ_TYPE_LEVEL_HIGH was used in the Device Tree, therefore, there is no
+actual impact. However, this is not a correct description of the hardware
+so correct it.
 
-...
+Fixes: 2a5d54507c68 ("arm: dts: mediatek: mt6589: Add Arm Generic Timer node")
+Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
+---
+ arch/arm/boot/dts/mediatek/mt6589.dtsi | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-> > Yeah, instead we need
-> >
-> >     config USB
-> >         depends on POWER_SEQUENCING && !POWER_SEQUENCING
-> 
-> FTR:
-> 
-> Somehow I remembered this incorrectly. It should be the following instead:
-> 
->     depends on POWER_SEQUENCING || !POWER_SEQUENCING
-
-We have depends on ... if ... expression nowadays for that kind of case.
-
-> and the dependency issue mentioned below then goes away.
-> 
-> > But I ran into a dozen or so drivers that have "select USB", mostly
-> > input devices:
-> >
-> >     config TOUCHSCREEN_USB_COMPOSITE
-> >         tristate "USB Touchscreen Driver"
-> >         depends on USB_ARCH_HAS_HCD
-> >         select USB
-> >
-> > Kconfig complains about unmet dependencies.
-> >
-> > > I see Andy has some suggestions but in general I like this approach much better
-> > > than adding the pwrseq_get_index() function. Thanks!
-
+diff --git a/arch/arm/boot/dts/mediatek/mt6589.dtsi b/arch/arm/boot/dts/mediatek/mt6589.dtsi
+index 46dea445742b..df3b7bfeac33 100644
+--- a/arch/arm/boot/dts/mediatek/mt6589.dtsi
++++ b/arch/arm/boot/dts/mediatek/mt6589.dtsi
+@@ -45,10 +45,10 @@ cpu@3 {
+ 	timer {
+ 		compatible = "arm,armv7-timer";
+ 		interrupt-parent = <&gic>;
+-		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
+-			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
+-			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
+-			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
++		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
++			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
++			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
++			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>;
+ 		clock-frequency = <13000000>;
+ 		arm,cpu-registers-not-fw-configured;
+ 	};
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.54.0
 
 
