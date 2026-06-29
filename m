@@ -4,125 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E69DAC43458
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2026 07:27:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D2AEC43458
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2026 07:27:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SyP1rDr+scbd8EHqOhd2SEKwzz9Yk3yho9coNffyF3s=; b=z/+L3Fj4wIV6jWXnFBE8t5Z36f
-	HbFoWo7bp+aCFZfcZ39ZuC/wR8WNjH13qCfTTfQNG96NIiPnGlYY4SRjPJvwsLJrnJlFVVcXlrQQt
-	OpPOBXciW0IEqekBw8fVgdL0qhlzv2oDD+7r6QMUtOL/UV5Z6b5z1nsjNohChuHAbQu2oCmizu8l3
-	ZpsMHNasdaocyqPm4e+ilqazBhzpj0EGtfyBde4Xd+AD+YOm7q6L47QDHPcmchxlRrBrlhEqwa70o
-	TNwX4/CL6hnF4RVO9DX8YXhy+a67bqLFvgGuCtCrlT/vt2U/91j1GNW0RQ/CuMqt6UrusHsgkUemH
-	Emwe0J/Q==;
+	bh=eBV8+Lqv6LzBCkekw0TZncRmTA/42jKif/q/Zf74Sfc=; b=4k9padABUNjz4O3JisrSiKbnLw
+	VlSjAJJ18RFGG8k09AoznzX0ckGyEMWJt7acT6gufFSuNH412tBfnDqxCDzFjh8qDKgQEnuETl3+K
+	0RQrw8eXnwCJS3PxcW0KwDXQLjzJ3R4wIEdMcEIa5wLn/fLCjC9TIdMs21C20zKyk5u6G7Xk6oOc5
+	x6uyqG6CMD2wabzAx8PQIyIQ94qWBBdOSIPgQG2shchA40X/rBlMCn8MwB7jC6ns+yGwLgBn1AWNX
+	fC3e7RJBz41k0GVHNlXAWh9PuMoj+RBYyzNDOZYjkDhZabN8UTsIXhkYf7X7q3GERF22TGBS7F30N
+	35vOjD+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we6OS-0000000DsyR-3Tr5;
-	Mon, 29 Jun 2026 07:27:00 +0000
-Received: from exmail3.compal.com ([59.120.207.196] helo=tpecef22.compal.com)
+	id 1we6PG-0000000Dt5o-46MP;
+	Mon, 29 Jun 2026 07:27:50 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we6OP-0000000Dsxu-2F5i;
-	Mon, 29 Jun 2026 07:26:58 +0000
-X-UUID: e5119798738b11f1a87c2323a98e90a4-20260629
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.15,REQID:a88dff58-80aa-4fd8-8822-6aca3768c74b,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e276073,CLOUDID:300c9912-9a7e-42e1-81ab-466f1025c889,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|865|888|
-	898,TC:-5,Content:-10|0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:ni
-	l,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE
-	:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: e5119798738b11f1a87c2323a98e90a4-20260629
-Received: from sdmg12.sdbg.compal.com [(10.113.168.10)] by tpecef22.compal.com
-	(envelope-from <jackbb_wu@compal.com>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 1505790952; Mon, 29 Jun 2026 15:26:50 +0800
-X-UUID: e216f86c738b11f1a9f9c99e036204b4-20260629
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.15,REQID:412e1593-7594-480f-8640-49ac201ef9bf,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e276073,CLOUDID:d57df88b-c1a3-4335-bf81-c4a7f9da024d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|865|888|
-	898,TC:-5,Content:-10|0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:ni
-	l,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE
-	:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: e216f86c738b11f1a9f9c99e036204b4-20260629
-Received: from sdbmbx12.tpe.compalcomm.com [(10.113.2.136)] by sdmg12.sdbg.compal.com
-	(envelope-from <jackbb_wu@compal.com>)
-	(Compal Mail Service with TLSv1.2 ECDHE-RSA-AES256-SHA 256/256)
-	with ESMTP id 1908956407; Mon, 29 Jun 2026 15:26:45 +0800
-Received: from SDBMBX13.tpe.compalcomm.com (10.113.2.137) by
- SDBMBX12.tpe.compalcomm.com (10.113.2.136) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id 15.2.2562.29;
- Mon, 29 Jun 2026 15:26:40 +0800
-Received: from SDBMBX13.tpe.compalcomm.com ([fe80::7d1b:448d:4d95:51b0]) by
- SDBMBX13.tpe.compalcomm.com ([fe80::7d1b:448d:4d95:51b0%11]) with mapi id
- 15.02.2562.029; Mon, 29 Jun 2026 15:26:40 +0800
-From: "Wu. JackBB (GSM)" <JackBB_Wu@compal.com>
-To: Andrew Lunn <andrew@lunn.ch>
-CC: Loic Poulain <loic.poulain@oss.qualcomm.com>, Sergey Ryazanov
-	<ryazanov.s.a@gmail.com>, Johannes Berg <johannes@sipsolutions.net>, "Andrew
- Lunn" <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, "Eric
- Dumazet" <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
-	<pabeni@redhat.com>, Wen-Zhi Huang <wen-zhi.huang@mediatek.com>, Shi-Wei Yeh
-	<shi-wei.yeh@mediatek.com>, Minano Tseng <Minano.tseng@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Simon Horman <horms@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-doc@vger.kernel.org"
-	<linux-doc@vger.kernel.org>
-Subject: RE: [External Mail] Re: [PATCH v3 2/7] net: wwan: t9xx: Add control
- plane transaction layer
-Thread-Topic: [External Mail] Re: [PATCH v3 2/7] net: wwan: t9xx: Add control
- plane transaction layer
-Thread-Index: AQHdA/KoG0AzoVDQmky5mWyAxH40ubZVI4cU
-Date: Mon, 29 Jun 2026 07:26:40 +0000
-Message-ID: <49939d4d682f4c1fb359973ea2cdbd00@compal.com>
-References: <20260624-t9xx_driver_v1-v3-0-73ff03f60c48@compal.com>
- <20260624-t9xx_driver_v1-v3-2-73ff03f60c48@compal.com>,<2a90ae6b-2b6d-4340-b557-915252cc3488@lunn.ch>
-In-Reply-To: <2a90ae6b-2b6d-4340-b557-915252cc3488@lunn.ch>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.113.2.241]
-x-tm-as-product-ver: SMEX-14.0.0.3239-9.1.2019-30036.005
-x-tm-as-result: No-10--4.183300-8.000000
-x-tmase-matchedrid: tkB2VEODQ1cuv++HU7VXryRFbfQbCufdN0X64jGy2db7+pncqRJfy2XQ
-	7TcqkNINhElhJj9TP7jAaX2MpgGS36gkniSqkpn+WZxYhPYYrMlHgZVDYg0zz4vmY1hE2VDUJQk
-	txNYzOLPtFo0/MAzmm/xu9bNQI/V0YNP5ZvfGAKupSoJx15avkdZEjr6xrP/hagCqz15rA4CvI7
-	qr7lIWqpm1ztAFUDBkjMlIlc7424OFF2q3JMLbrJGPSO6O5JCao4NJa7SjFsq4ssz2NHTRNT0wV
-	pvG2n4d28gAxP/Ts6IHvfG6dvIquv6mDCw61sljHGqZLFSL6vqvbctbyBVCOC+JND9IHIJ4kfMa
-	fuDIkC0Ich2EKbNazC40qe60KYOEZS4zlkrLF17MiA92IomI4m+o7cT3SFLw39InOc4KUjGgIAo
-	CghvZZgz+8rPHUa6xHcvjWJiii5la1X5Zxk7x/Q==
-x-tm-as-user-approved-sender: No
-x-tm-as-user-blocked-sender: No
-x-tmase-result: 10--4.183300-8.000000
-x-tmase-version: SMEX-14.0.0.3239-9.1.2019-30036.005
-x-tm-snts-smtp: BD93CB2734EF2CC9B20D2CE68070D84515D2F48398ED874D2E0ED1AAC02636F92000:8
-Content-Type: text/plain; charset="big5"
-Content-Transfer-Encoding: base64
+	id 1we6PE-0000000Dt4p-1ovK
+	for linux-mediatek@lists.infradead.org;
+	Mon, 29 Jun 2026 07:27:49 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-47122683cf3so601694f8f.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Jun 2026 00:27:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1782718067; x=1783322867; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=eBV8+Lqv6LzBCkekw0TZncRmTA/42jKif/q/Zf74Sfc=;
+        b=U4NO79WA/mAqaMWfSoNTEWVNTs/+4sPobxTSW14G/o7C7I/qcFj3ntoI2lhi0mAVFX
+         D9BhVM9OGQ/Db2L+VwnRuDrregdw/vymCb4XsROSLuXZ7/hTeT4IRsv3CQrhaUSx5moc
+         hgdHoIYILqYQI1++THRQ721L2I9eoRit0x5VZqkXRlghWiFt1ZrTiY44v9t8DChThXJo
+         LQiG8GUy0oK7RvFL9nwwhNlWNi2l/gSbWtBeqsd1AC1TjC+qXaVqdmWu5oyUqov36foc
+         9jivSbb7I9Gj1CsaoEP8Tke+3ljds6yThUtz/a2JEZ2lg9woCTw0jK1OjpfAndKwkJgl
+         IXuA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1782718067; x=1783322867;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=eBV8+Lqv6LzBCkekw0TZncRmTA/42jKif/q/Zf74Sfc=;
+        b=YIn0d8xB3MnBQ1BAM3kxcOVT1XB84kdqWJGEvhDwwlJTUWXKICGzgiFVoI40e4KApA
+         4C0Os75UJvbqA57hEJ50YAtVAJfYbJtJzLM8rVOXEMi07C2mE46V+wmi+uSTDL7vhjmW
+         uMUNZGQdqQ1BGNBNj37tSI7aiq35u9bAnz9+cI1qAlx034GucHo3pwdR1EvxWQi6eqmp
+         k0dDYfe9jui7Sk4ghdDqpEjaziJj5NHKFZIyma8ZLDIjO/NJLsh82KCcJ4OJGhqQCN6V
+         M8VE/PC/gb64uUKsmATP6iNNOvpmgDNvWzJXjuEtVPLeUluJKR3yTO5+TwGWuyaSHT7G
+         oldw==
+X-Forwarded-Encrypted: i=1; AFNElJ9qjfvRIwpv6G3zxoX9VT3MwF8H/QKL64rzWLgNyhaMkxTPuYiNpxvkE0zNdSp4WTXz83zVM71zoW1M16fYIw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyJfUnWctGWpSDD6IUn9+yyUDlC/bYC5IxROVBJVXO2KRmZcjQW
+	YR7CnUjwLD93NCsTpjPhz7MgXEzgcHyXXyVSsUHgBE9/+RmapVy/xGvg
+X-Gm-Gg: AfdE7clKIedOgkndo9+cIBuHLSPnV/wUYdJrfo+M8su2rVSCPrZY8BI9l+np0oaGFpC
+	tL9e/6obWtvLB49Xe+w06tNsDDfyvafytoFdqJJkoiz29fPnPjbtYhqHojPixYLBldADKsPVaTK
+	3yTgaUmuWII6+u0D5S/WnEe1SFZRsEiWGIJsRam0lJEm/wNzzS/L88ens0ieXCxylpA6PofwEud
+	0RLJ7uVa8FK7cLoPVHJG9JddkwFEfPX0mN+GkfC+uM4YFgpMogC/1jrrtCM3vPfy4aUpTxFaQOc
+	gG1Z/5tEhe8iS4YS9f4oYSBseAieqliZqW1aVNQs1x35hlTqPinCAV34e/a7hADYGMd+T6akyz4
+	jcymeq3sRhlEMgkCCzeQzYmmirGwt2h2rmn5aJ2oTIHq8SRKx+CNzO6A0ULiGyyDaOfV1Ugpw7/
+	88nWBBaSGtw5h9sZs28uInrBBQ0ruFVWHob+J2VETS2q0QbzgbUYQ7OpA6zN35hUOTwC8=
+X-Received: by 2002:a05:600c:8b14:b0:493:b2e8:637c with SMTP id 5b1f17b1804b1-493b2e86404mr14198305e9.1.1782718066323;
+        Mon, 29 Jun 2026 00:27:46 -0700 (PDT)
+Received: from Ansuel-XPS. (host-80-183-219-152.pool80183.interbusiness.it. [80.183.219.152])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-472c7bec9c2sm12681213f8f.12.2026.06.29.00.27.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 29 Jun 2026 00:27:45 -0700 (PDT)
+Message-ID: <6a421e71.39c9bec7.1462ca.d6ce@mx.google.com>
+X-Google-Original-Message-ID: <akIebr33n_BgDL7X@Ansuel-XPS.>
+Date: Mon, 29 Jun 2026 09:27:42 +0200
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>, linux-pci@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v3 2/4] clk: en7523: add support for dedicated PCIe
+ PERSTOUT reset
+References: <20260627121450.3529133-1-ansuelsmth@gmail.com>
+ <20260627121450.3529133-3-ansuelsmth@gmail.com>
+ <68b43224e0a124c055fc228b3a254fc7908dbcdd.camel@pengutronix.de>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <68b43224e0a124c055fc228b3a254fc7908dbcdd.camel@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260629_002657_940095_D5B68CD1 
-X-CRM114-Status: GOOD (  13.39  )
+X-CRM114-CacheID: sfid-20260629_002748_488519_6185A7BA 
+X-CRM114-Status: GOOD (  24.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,23 +115,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQW5kcmV3LA0KDQo+ID4gK3N0YXRpYyBpbnQgX19pbml0IG10a19jb21tb25fZHJ2X2luaXQo
-dm9pZCkNCj4gPiArew0KPiA+ICsJcmV0dXJuIDA7DQo+ID4gK30NCj4gPiArbW9kdWxlX2luaXQo
-bXRrX2NvbW1vbl9kcnZfaW5pdCk7DQo+ID4gKw0KPiA+ICtzdGF0aWMgdm9pZCBfX2V4aXQgbXRr
-X2NvbW1vbl9kcnZfZXhpdCh2b2lkKQ0KPiA+ICt7DQo+ID4gK30NCj4gPiArbW9kdWxlX2V4aXQo
-bXRrX2NvbW1vbl9kcnZfZXhpdCk7DQo+DQo+IFNpbmNlIHRoZXNlIGRvbid0IGRvIGFueXRoaW5n
-LCB0aGV5IHNob3VsZCBub3QgYmUgbmVlZGVkLg0KDQpXaWxsIG1vdmUgbW9kdWxlX2luaXQvbW9k
-dWxlX2V4aXQgdG8gdGhlIHBhdGNoIHRoYXQgZmlyc3QgYWRkcw0KY29udGVudCB0byB0aGVtIGlu
-IHY0Lg0KDQo+ID4gKwlTRVRfSFdfQklUUyhod19iaXRzLCBjaHMsIE1IQ0NJRl9SQzJFUF9FVlRf
-REVWSUNFX1JFU0VULA0KPiA+ICsJCSAgICBERVZfRVZUX0gyRF9ERVZJQ0VfUkVTRVQpOw0KPiA+
-ICsNCj4gPiArCXJldHVybiBMRTMyX1RPX1UzMihjcHVfdG9fbGUzMihod19iaXRzKSk7DQo+DQo+
-IFBsZWFzZSBkb24ndCBhZGQgd2hpdGUgc3BhY2UgbGlrZSB0aGlzLiBJIGFzc3VtZSBhIHByZXZp
-b3VzIHBhdGNoDQo+IGFkZGVkIHRoaXMgY29kZSwgc28gbW92ZSB0aGlzIHRvIHRoYXQgcGF0Y2gu
-DQoNCldpbGwgcmVtb3ZlIHRoZSBleHRyYSBibGFuayBsaW5lIGluIHY0Lg0KDQo+ID4gLQlkZXZt
-X2tmcmVlKGRldiwgbWRldik7DQo+ID4gKwltdGtfZGV2X2ZyZWUobWRldik7DQo+DQo+IFdoeSBh
-cmUgeW91IHJlbW92aW5nIGRldm1fIGNhbGxzPw0KDQptdGtfZGV2X2FsbG9jL210a19kZXZfZnJl
-ZSBhcmUgcGFpcmVkIHdyYXBwZXJzIHNvIHRoZSBjYWxsZXINCmRvZXNuJ3QgbmVlZCB0byBrbm93
-IHRoZSB1bmRlcmx5aW5nIGFsbG9jYXRpb24gbWVjaGFuaXNtLg0KVGhlIGRldm1fa2ZyZWUgaXMg
-c3RpbGwgY2FsbGVkIGluc2lkZSBtdGtfZGV2X2ZyZWUuDQoNClRoYW5rcy4NCg0KSmFjayBXdS4N
-Cg0K
+On Mon, Jun 29, 2026 at 09:07:22AM +0200, Philipp Zabel wrote:
+> On Sa, 2026-06-27 at 14:14 +0200, Christian Marangi wrote:
+> > Add support for resetting the PCIe lines with the PERSTOUT reset. These
+> > special reset are controlled by the PCIC register and are specific to each
+> > of the 3 PCIe lines.
+> > 
+> > Notice that reset logic is inverted for these bit where 0 is assert and 1
+> > deassert. This is intenrally handled in the reset function.
+>                         ^^
+> typo: internally
+>
+
+Thanks!
+ 
+> > PCI enable/disable are updated to drop PERSTOUT bits in favor dedicated
+> > reset handling.
+> > 
+> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> > ---
+> >  drivers/clk/clk-en7523.c | 39 ++++++++++++++++++++++++++++-----------
+> >  1 file changed, 28 insertions(+), 11 deletions(-)
+> > 
+> > diff --git a/drivers/clk/clk-en7523.c b/drivers/clk/clk-en7523.c
+> > index 1ab0e2eca5d3..c9b21d9bf2f3 100644
+> > --- a/drivers/clk/clk-en7523.c
+> > +++ b/drivers/clk/clk-en7523.c
+> [...]
+> > @@ -754,14 +756,21 @@ static int en7523_reset_update(struct reset_controller_dev *rcdev,
+> >  			       unsigned long id, bool assert)
+> >  {
+> >  	struct en_rst_data *rst_data = container_of(rcdev, struct en_rst_data, rcdev);
+> > -	void __iomem *addr = rst_data->base + rst_data->bank_ofs[id / RST_NR_PER_BANK];
+> > +	u32 offset = rst_data->bank_ofs[id / RST_NR_PER_BANK];
+> > +	void __iomem *addr = rst_data->base + offset;
+> > +	bool inverted = false;
+> >  	u32 val;
+> >  
+> > +	/* For PCIC reset logic is inverted, 0:assert 1:deassert*/
+> > +	if (offset == REG_NP_SCU_PCIC)
+> > +		inverted = true;
+> > +
+> >  	val = readl(addr);
+> > +	val &= ~BIT(id % RST_NR_PER_BANK);
+> >  	if (assert)
+> > -		val |= BIT(id % RST_NR_PER_BANK);
+> > +		val |= inverted ? 0 : BIT(id % RST_NR_PER_BANK);
+> >  	else
+> > -		val &= ~BIT(id % RST_NR_PER_BANK);
+> > +		val |= inverted ? BIT(id % RST_NR_PER_BANK) : 0;
+> 
+> You can simplify this into a single (assert ^ inverted) condition.
+> 
+
+Yep I know but I feel this would decrease readability of the logic. Do you
+think it's worth it?
+
+> regards
+> Philipp
+
+-- 
+	Ansuel
 
