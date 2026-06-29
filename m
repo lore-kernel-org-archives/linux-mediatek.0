@@ -4,45 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CCBEC43458
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2026 06:42:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42955C43458
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2026 06:44:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wr78EnuqSRjaPvDhU+/m42ml5qRCvbTZ/fBVTr06/ss=; b=TRdpU6vXHdrfWN+nr6mdE8nUX9
-	buutEpfzyL8QXsq0RwQ3nSvJP8PG2sc/0U2/ilOpf1F86Uuq05EOYuaeP3IpIivOELy676nZFnwH+
-	kFrQBp7g+mFo7FicO66E/AveENDS9LQTDuvU62H28aC/WX6LXDEH/eqWxC2rDuVS+XcWNKiylRKjQ
-	2D3/5sI5I9T5S9ORQhquOLvM7hqq86qZGP6tJewWc+EIhfwvPNq1PfTrBTAbxGQl+5ZvbdNv1JYtH
-	hc1ugMJTAdGfuFA6AAMy+xpO/tuSpwqH5V2GtlRPDL+U7cJ6QZw2MLVqS2HihTzdBreLPzd0/Boty
-	DIMWN/vw==;
+	bh=oKTGWI1jp8H7IiOfgs3/aP0RtGzg5rFkKVq4Tvxst2w=; b=iVbY5ZR0F626wPXr+YZhuTrLDj
+	kCiepL3BV5hDAICSQXhcXJE/KmZ4ClxiNj68iOCHkMt0h98FCB5QLQyA36ahSjrhh4FJl6VwZBsXG
+	qhpvxD3+CLHPW3b2GJpSFLUo6zRByMs3U/e/3g6fcqKpWdkq0zowMZhEvPTO3QFRr4YILZFJ1GTgg
+	6JcbUfBOlPN0sAEyvRuDT+NkyRJs5p2kM7DIAC9oG1uYHnth7hEjX7OTnb2mickA+mo8kDDDGACNb
+	ZCttU1ed/K9jjguELAKmhek/yq7tJvdI3B+VdHoRMmqTVXHEMVLzGZhD+FA9tr3jcniVaLJf3FMZ5
+	yj/VLL8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we5hT-0000000DmJ7-0wOM;
-	Mon, 29 Jun 2026 06:42:35 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1we5jH-0000000Dn83-22N7;
+	Mon, 29 Jun 2026 06:44:27 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we5hR-0000000DmIz-2DIp
+	id 1we5jG-0000000Dn7f-12zF
 	for linux-mediatek@lists.infradead.org;
-	Mon, 29 Jun 2026 06:42:33 +0000
+	Mon, 29 Jun 2026 06:44:26 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id A3A0C6001D;
-	Mon, 29 Jun 2026 06:42:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5EC2B1F000E9;
-	Mon, 29 Jun 2026 06:42:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782715352;
-	bh=wr78EnuqSRjaPvDhU+/m42ml5qRCvbTZ/fBVTr06/ss=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=ZcWPtk8PXmu31LLew82wST+cIuRMIkzO0bscqeYqE89tHzzRY8UUCbVTG+mAM5xPV
-	 6KyMUbGNmqiJfLHcqbmX92EpxMdb0Gbxj2LcThHBlXfFjTcs5JKXdOYgXdQ21S+VyN
-	 wCyesbUqagN8Jv9gf9pECkTm74xiKAmW0YZco7BMS8tHLw8rUrPK4B60OZBntTwxS6
-	 H1UhbLX32TFacBhl90Ugd3qGFNPaQoMjV9AJV7US+BFFm4jAXHX2voesLBERBojZ6D
-	 hSY2R2WSlpwiEJ1LTDguwovj+9ZDEE2ju/V26YP5yclTbG4mpU1FS7hx+91QdYUFjs
-	 kpR0FjIpcRgnQ==
-Date: Mon, 29 Jun 2026 08:42:22 +0200
+	by sea.source.kernel.org (Postfix) with ESMTP id A7D2B40936;
+	Mon, 29 Jun 2026 06:44:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9E66D1F000E9;
+	Mon, 29 Jun 2026 06:44:24 +0000 (UTC)
+Date: Mon, 29 Jun 2026 08:43:52 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
 Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>, 
@@ -52,15 +42,14 @@ Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>,
 	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-mediatek@lists.infradead.org, Markus Gothe <markus.gothe@genexis.eu>, 
 	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
-Subject: Re: [PATCH v6 05/17] pinctrl: airoha: an7581: fix mux/conf of
- pcie_reset pins
-Message-ID: <20260629-numbat-of-undeniable-poetry-deb3b9@quoll>
+Subject: Re: [PATCH v6 17/17] pinctrl: airoha: add support of an7563 SoC
+Message-ID: <20260629-natural-vengeful-doberman-7b979b@quoll>
 References: <20260628143733.273651-1-mikhail.kshevetskiy@iopsys.eu>
- <20260628143733.273651-6-mikhail.kshevetskiy@iopsys.eu>
+ <20260628143733.273651-18-mikhail.kshevetskiy@iopsys.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260628143733.273651-6-mikhail.kshevetskiy@iopsys.eu>
+In-Reply-To: <20260628143733.273651-18-mikhail.kshevetskiy@iopsys.eu>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,29 +64,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jun 28, 2026 at 05:37:21PM +0300, Mikhail Kshevetskiy wrote:
-> In the an7581 case
->  * gpio47 and pcie_reset0 shares pin 60,
->  * gpio48 and pcie_reset1 shares pin 61,
->  * gpio49 and pcie_reset2 shares pin 62.
-> but current driver treat them as pins 61--63. This is wrong.
+On Sun, Jun 28, 2026 at 05:37:33PM +0300, Mikhail Kshevetskiy wrote:
+> This patch adds support of Airoha an7563 SoC pin controller.
+> Also it adds corresponding device tree binding schema.
 > 
-> Also current an7581 pinmux implementation have following issues:
->  * current pcie_reset pin function actually sets corresponding
->    pins as gpios.
->  * there is no proper way to set pcie_reset pins as gpios.
->  * there is no way to set pcie_reset pins as pwm.
-> 
-> This patch fixes above issues. Also device tree binding schema
-> was updated.
+> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+> ---
+>  .../pinctrl/airoha,an7563-pinctrl.yaml        |  348 +++++
 
-Same comment.
+I could understand ignoring checkpatch when removing pieces of ABI.
+I can imagine it feels logical to someone.
 
-Please run scripts/checkpatch.pl on the patches and fix reported
-warnings. After that, run also 'scripts/checkpatch.pl --strict' on the
-patches and (probably) fix more warnings. Some warnings can be ignored,
-especially from --strict run, but the code here looks like it needs a
-fix. Feel free to get in touch if the warning is not clear.
+This I do not understand. REQUIREMENT to run checkpatch is there for a reason.
 
 Best regards,
 Krzysztof
