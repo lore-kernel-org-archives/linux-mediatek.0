@@ -4,55 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C447C43602
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2026 18:02:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD2EFC43458
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2026 18:10:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=PnkTGV/nH6e70Wn8noO3/L4aE2s/K8jiLLk5T/vfk5c=; b=xiPQK0caXbzNwiXCG9mDadgPDX
-	SvoSRiVmdbyht9/o4BPxRqASObX5s+71idHmJHJMSHsxpRlhqMUqJewppkJV1/4wrlVMKi5yJYzdO
-	2lPgZx9FhoD+5ChA2eJbVB/xNCfQ2PXgCavuyw924N4aPMeeV5kvbY+767uymwb3HkG50eTJxD9aZ
-	U+D34RxFeVoIPuqIIL1btNB5QRIKuecL4OwUHdZzIWExggiR8AUtpW45SXLqFhGH+RJ9V/EERrd+c
-	WqYENZJmAORWGWE6HcmwV6ZQ3bKeqxgjNfNWZbFxIB5sqrXGWuHWFjxMDbJTB6hKNUcMYmuJmTVw5
-	5yogtmhg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=72JIEoLKx37OHH8fZ3TP/h3pK5BaK4rA7WRI0tmZ6Ug=; b=3AL8AZXqxC7TjUCofVCGP7Ochq
+	33yoN31Pj57JbO2yVgY3MgtZRI/ORTZvAXW8rIJm6jqhEWeZKumZrKD47fX1Ip8aQH4WDbvaNgv9O
+	5XSUinStzISGjddQiPMGTJtFlCaiU4/5CAcOFLUIqqf7BovTktG3gKazh5Xw5Ck9QB1Gz7+Zl1oMR
+	jbMv8i6jjBkwtrRzwNWAyQSRsjTvAkrIwik4aKOZ+QtKZT4lapJi46GMAyEJzUYtF8ZuJ7SVbeK2Y
+	Fg6owUy+Z68eRAJ9he72YodFO0BfiK26j8Blf2iQrMGTf4/yz2ImmBASrZoT1+nfwSW0AcoNTSWnF
+	rMmMEAjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weGJF-0000000FKP9-0ecL;
-	Mon, 29 Jun 2026 18:02:17 +0000
-Received: from mail.schwarzvogel.de ([2a01:4f8:252:1806::25])
+	id 1weGRZ-0000000FKx4-1tD2;
+	Mon, 29 Jun 2026 18:10:53 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weGJB-0000000FKOU-2aAq
-	for linux-mediatek@lists.infradead.org;
-	Mon, 29 Jun 2026 18:02:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=schwarzvogel.de; s=x; h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:
-	Resent-Date:In-Reply-To:References;
-	bh=PnkTGV/nH6e70Wn8noO3/L4aE2s/K8jiLLk5T/vfk5c=; b=Srpshzp0Kx7hCZ42t/jyKztTKe
-	OeVumzx6BwASHi7o1/wfpSde/GdT/YTxABgXFsziUMXqklcNzSdP+3qKKwiEt8qq98XEaAO4KpoGp
-	e7mimrUpGUxdW+r70NemY3PQ10XTUQCh0MlXL+zp//wrz8yG74mJ5/95qqHrQ31hazplX8COT5xi/
-	N4Y8qrW5FWzzbyyCcoJeadNr/TnER867+Tw9H6vtStuYbGoSXiBbHx27LdiTP2po0cCdJD0KWIA0B
-	W+R7+30PEGnLI0aory2IN37m6wvJOd1gc+l9rHb1G0+dP4puuBEE7oFmVBJOqyWiJXG3Ih/oo3NY+
-	Pk6+F6vw==;
-Received: from klausman by mail.schwarzvogel.de with local (Exim 4.99.4)
-	(envelope-from <klausman@schwarzvogel.de>)
-	id 1weGJ4-000000003k2-1g7D;
-	Mon, 29 Jun 2026 20:02:06 +0200
-Date: Mon, 29 Jun 2026 20:02:06 +0200
-From: Tobias Klausmann <klausman@schwarzvogel.de>
-To: linux-mediatek@lists.infradead.org
-Cc: linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>
-Subject: mt76 newly rejects formerly working MAC from EPROM
-Message-ID: <30a90714-02d8-45f2-a7f1-4cfe0627d50b@skade.local>
+	id 1weGRY-0000000FKwr-0lnB;
+	Mon, 29 Jun 2026 18:10:52 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 2E83F60123;
+	Mon, 29 Jun 2026 18:10:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1D361F000E9;
+	Mon, 29 Jun 2026 18:10:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1782756650;
+	bh=72JIEoLKx37OHH8fZ3TP/h3pK5BaK4rA7WRI0tmZ6Ug=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=o09ITYZh4w9HQLdMETw+RbyLYPuUij1cj0zZ+iwiboHf9/qkxSY4F9C5ELJ7dyu72
+	 o5JEqiENhkhRTwcJ7yRX8u2oaprTSetcoZWgaXevNg5+jnVB3xEne84oBzfw7/ZA+6
+	 GJJBLzP/x6sFRC2VlXEl9ybfay7RkZuUFP3SjwX6yzBK3kTfUPB9XAT3ZHKipH2ONq
+	 OuZDNKBnhdWNZaiSJAkCjnpffuLaE7t9Si50I+eupzMtepAUijN5ZroA/Tt7hoU52A
+	 I12dE6+o1Uulj8RlMga1YLRG4uxqdbL0WZjXs5e5uOyCrdekVvZ81AHy68vuqegjdx
+	 qQb6n+QGBYGHA==
+Date: Mon, 29 Jun 2026 19:10:45 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Woodrow Douglass <wdouglass@carnegierobotics.com>,
+	linux-kernel@vger.kernel.org,
+	Michael Hennerich <michael.hennerich@analog.com>,
+	Support Opensource <support.opensource@diasemi.com>,
+	Ivaylo Ivanov <ivo.ivanov.ivanov1@gmail.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Saravanan Sekar <sravanhome@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jagan Teki <jagan@amarulasolutions.com>,
+	Icenowy Zheng <icenowy@aosc.io>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v3 0/2] regulator: Rework i2c_device_id initialisation
+Message-ID: <d1e9fb06-893e-44dd-8231-ecddbbfe242e@sirena.org.uk>
+References: <cover.1781888370.git.u.kleine-koenig@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="pT/lO1kZRus4BcJI"
 Content-Disposition: inline
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260629_110213_974500_51FAE9DA 
-X-CRM114-Status: GOOD (  14.52  )
+In-Reply-To: <cover.1781888370.git.u.kleine-koenig@baylibre.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,70 +81,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi!
 
-As of 7.2-rc1, my mediatek USB wifi dongle no longer works the way it
-used to. I now get an error about its MAC being wrong:
+--pT/lO1kZRus4BcJI
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-usbcore: registered new interface driver mt7921u
-mt7921u 8-1:1.0: HW/SW Version: 0x8a108a10, Build Time: 20260224110909a
-mt7921u 8-1:1.0: WM Firmware Version: ____010000, Build Time: 20260224110949
-mt7921u 8-1:1.0: Invalid MAC address, using random address c2:4d:ae:23:29:38
-mt7921u 8-1:1.0 wlxc24dae232938: renamed from wlan0
+On Fri, Jun 19, 2026 at 07:17:07PM +0200, Uwe Kleine-K=F6nig (The Capable H=
+ub) wrote:
+> Hello,
+>=20
+> v2 is available at https://lore.kernel.org/lkml/cover.1779184320.git.u.kl=
+eine-koenig@baylibre.com .
+>=20
+> The only change is that I rebased to next-20260619 and dropped the
+> adaptions to the of_regulator_match arrays that Laurent pointed out to
+> not belong into this patch set.
 
-This naturally breaks my udev rules, interface naming etc etc.
+This needs rebasing against current code.
 
-So I bisected it, and this is the commit that started it:
+--pT/lO1kZRus4BcJI
+Content-Type: application/pgp-signature; name="signature.asc"
 
-commit 31ee1582717e220cc5a3fa8f3940d5693c5c9169 (HEAD)
-Author: Rosen Penev <rosenp@gmail.com>
-Date:   Sun Apr 26 22:17:46 2026 -0700
+-----BEGIN PGP SIGNATURE-----
 
-    wifi: mt76: fix of_get_mac_address error handling
-    
-    Check return value instead of is_valid_ether_addr. The latter is handled
-    by the former.
-    
-    Signed-off-by: Rosen Penev <rosenp@gmail.com>
-    Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-    Link: https://patch.msgid.link/20260427051746.954704-1-rosenp@gmail.com
-    Signed-off-by: Felix Fietkau <nbd@nbd.name>
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmpCtSQACgkQJNaLcl1U
+h9AWPwf/ZoeFDRo86smT9VFPfcgi57D21M5dPfxTBTc05y3kPdFeXMlMbdURSfE5
+oVJ1RpgGSq1JLLz1XbfGdNiAtgfQ5jjXUf0/WXnaY8vE3GAPmWdmiITQ93eoQbDq
+KZHD13wuGD44/gj67Xit6UYhslEzK0uwMKcks3san1EQK1+qpVP6/fe34W4EfNMT
+m39cXQ0HCgYkwM+nkFhQ5jY+lrm+W8wA+GlVE6hngeodmGxh+rmHm4aN4FU3g1l9
+6vp1psv+p7BZnX/CD++phWOB81kWjtErDYO749WgnFs5vjylPne0w8+h+gTNVXh1
+YOOl47yQsKhzdPsrjE5LGihrpxbCwg==
+=1RUD
+-----END PGP SIGNATURE-----
 
-diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
-index afdb73661866e..b99d7452800fd 100644
---- a/drivers/net/wireless/mediatek/mt76/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
-@@ -181,7 +181,7 @@ mt76_eeprom_override(struct mt76_phy *phy)
-        if (err == -EPROBE_DEFER)
-                return err;
- 
--       if (!is_valid_ether_addr(phy->macaddr)) {
-+       if (err) {
-                eth_random_addr(phy->macaddr);
-                dev_info(dev->dev,
-                         "Invalid MAC address, using random address %pM\n",
-
-SO I thought that maybe my device had had a broken MAC all this time,
-and I just didn't notice. I changed the code a bit to emit the erroneous
-MAC and the value of err, which resulted in:
-
-usbcore: registered new interface driver mt7921u
-mt7921u 8-1:1.0: HW/SW Version: 0x8a108a10, Build Time: 20260224110909a
-mt7921u 8-1:1.0: WM Firmware Version: ____010000, Build Time: 20260224110949
-mt7921u 8-1:1.0: Invalid MAC address e0:e1:a9:38:96:29 err: -19
-mt7921u 8-1:1.0: Using random address 3a:ca:1d:51:83:f2
-mt7921u 8-1:1.0 wlx3aca1d5183f2: renamed from wlan0
-
-To me, e0:e1:a9:38:96:29 looks like a perfectly valid MAC, so at a
-minimum, the current code's wording is misleading: it assumes the only
-way of_get_mac_address() can ever return a nonzero value is if the MAC
-is invalid. However, looking at its code, I only see one nonzero return
-statement, which returns ENODEV, which seems at odds with "broken MAC".
-
-Either way, I am looking for a way to get a stable MAC again, either by
-fixing this commit (if it is indeed a bug) or fixing my hardware (if the
-bug is there.
-
-Best,
-Tobias Klausmann
+--pT/lO1kZRus4BcJI--
 
