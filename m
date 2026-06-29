@@ -4,111 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F400C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2026 06:40:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76E32C43458
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Jun 2026 06:41:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nKPlqGqW5oJ/H0q4sQbbq+CTgJbfTH8wo1foU4DCqkM=; b=qyePxjKBRAyE7f4a+iL/PsWk5N
-	0QfhTMrXgsBb6iie68xBXEKxZ9qUMBPm6iBvdup051b6VbaFpb6MkJLx8DHK4jwvFe5oMG00PR3YH
-	mNw0qCFKvTX44wr6iUjLLPsXWz58382wdxYZ8Pj0bbsXC1JS7yRj1OJl9ppFJjZiQ9x0wxVvB4Vzy
-	VMmtzBofiAE+oFqfCWtvA3Pw+carJ08NYxr8w/hzI+lbRf6ZyCSE8X5XODFYyBdk5kW7x1KgEeKCW
-	HDcwgQ3vuRwbkmFXcE9gfaITJtBW7s8Buodw0EH1D5z6JSj4zYBsGFKc61CCRbPMEWCliF3I+eYKR
-	OGAn3WBA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LJNxsIbjOvKv5Z4KyI22FNEB/VGm79BTV2nCIXFX1mo=; b=n1/gDxwpBTp4J8eKOaRN3XlRfy
+	y72UXgHSrg8DJ6Vjw7/vjpy1YqXTsTZ568icmEGZY4W00d27nzHlfVNrTtFg2QDpQVF7QDo1mzYKe
+	q6r10WQETjiXrIvHtK9ueiEaBqGd3VoOyvMajZ4m99smxLDqIxwTrvh47uB+sjSC09KotgOclaoZo
+	XA7IiyuHetwL7UQdqFIGNMOGjEh2sit1HFn7N7pwKiCcus+3QfNPr5koEM9Le3bBN/ErS8fM4ce8j
+	3I5pg/KTqHqnDhhjYCL6B0Tj/ZuYKl2EuIhG74kZeLttz+fx+DluEhNUqpePc6591SHz8q2oq74tv
+	rmmKRlKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we5fU-0000000DlxH-3w0E;
-	Mon, 29 Jun 2026 06:40:32 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1we5gm-0000000Dm5H-3sEi;
+	Mon, 29 Jun 2026 06:41:52 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1we5fT-0000000Dlww-0gFa
+	id 1we5gl-0000000Dm4f-1A14
 	for linux-mediatek@lists.infradead.org;
-	Mon, 29 Jun 2026 06:40:31 +0000
+	Mon, 29 Jun 2026 06:41:51 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 973A96001D;
-	Mon, 29 Jun 2026 06:40:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 690EE1F000E9;
-	Mon, 29 Jun 2026 06:40:25 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 16556438E8;
+	Mon, 29 Jun 2026 06:41:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDEFF1F000E9;
+	Mon, 29 Jun 2026 06:41:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782715230;
-	bh=nKPlqGqW5oJ/H0q4sQbbq+CTgJbfTH8wo1foU4DCqkM=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To;
-	b=l/apJkN1TMfNPxIcBbaYnEnVw2HJWxhljGEL1H0V4CzExnZirH/pIQM1Sveogdy+D
-	 IS91PZBzs5q33Bmtrk0wybifBi9KsfGdEitLQ5FyJmScnAloz21py12LbaT+FIDn1o
-	 Ybg9dnxtUNg05idliKqHTubSED9NVcRh+rnHTqKtqSFGLbMuLh94U/bKkVKuX0Y6ED
-	 p/KTCYvrm0joWvkZqigx3K1TonFBmpNQW5qzE/exO4Yh7nF1HpxnM6rLYNJ2AVTrCP
-	 ou31+9bLBa1w0tzXld9/eFqwETVTpE4pRNM6JS5BUV4enCqP/7mYPPwfhthQvIhH3a
-	 i0g3mPEUWDRiA==
-Message-ID: <028e9078-4ce3-4f04-9db2-34cb83eaf861@kernel.org>
-Date: Mon, 29 Jun 2026 08:40:22 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 04/17] pinctrl: airoha: an7583: there is no mux to
- enable the second i2c bus
+	s=k20260515; t=1782715310;
+	bh=LJNxsIbjOvKv5Z4KyI22FNEB/VGm79BTV2nCIXFX1mo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=IajG+TGLQzVGcp/P34WawshYbFzWNQmxMSxCpOp8Tqf4IH8lr0kc4tiJMb9BItj4k
+	 vgGyymO1OWFVZu+kmu0PRFuCrrw5Glq+6vsl0JDMb/tTYUXYzge42eLWHHUmSBkjBo
+	 piz3hSbHbaBn13GLzMGyfQCeBk20qJ6/gLsCJAAaNwhB8Hq2TS8GOgBoD59QcQHME0
+	 7jyQ9oK6I3Nj9lxj9PtAmyiXQ8rgpt+aaUe3//4GvfHnTOtLG2CVv8BcWukwWAPMmN
+	 hQRivhOSxw5I9RvjPDxUHUqvnlWCf05hdwHhVr7hvjjtLZpv5atmcHo/r7Nkhk3tq5
+	 nFDDAtbJLYoKw==
+Date: Mon, 29 Jun 2026 08:41:42 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Christian Marangi <ansuelsmth@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benjamin Larsson <benjamin.larsson@genexis.eu>, linux-gpio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Markus Gothe <markus.gothe@genexis.eu>,
- Matheus Sampaio Queiroga <srherobrine20@gmail.com>
+Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Christian Marangi <ansuelsmth@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Benjamin Larsson <benjamin.larsson@genexis.eu>, 
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, Markus Gothe <markus.gothe@genexis.eu>, 
+	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
+Subject: Re: [PATCH v6 06/17] pinctrl: airoha: an7583: fix muxing of non-gpio
+ default pins
+Message-ID: <20260629-inchworm-of-authentic-adventure-ac9eef@quoll>
 References: <20260628143733.273651-1-mikhail.kshevetskiy@iopsys.eu>
- <20260628143733.273651-5-mikhail.kshevetskiy@iopsys.eu>
- <20260629-prehistoric-unstoppable-galago-c519da@quoll>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <20260629-prehistoric-unstoppable-galago-c519da@quoll>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+ <20260628143733.273651-7-mikhail.kshevetskiy@iopsys.eu>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20260628143733.273651-7-mikhail.kshevetskiy@iopsys.eu>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,25 +75,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 29/06/2026 08:38, Krzysztof Kozlowski wrote:
-> On Sun, Jun 28, 2026 at 05:37:20PM +0300, Mikhail Kshevetskiy wrote:
->> In the AN7583 case there is no mux bit to enable the second i2c bus,
->> so remove it.
+On Sun, Jun 28, 2026 at 05:37:22PM +0300, Mikhail Kshevetskiy wrote:
+> Current an7583 pinmux implementation have following issues:
+>  * pins 51 and 52 can't be set as pcie_reset, current pcie_reset code
+>    will sets pins to gpio mode instead.
+>  * there is no proper way to set pins 41--54 to gpio mode.
+>  * pins 41--53 can't be actually set as pwm pins. These pins must be
+>    muxed to gpio mode as well.
 > 
-> But you do not remove second i2c bus, but the i2c bus.
-> 
->> Also remove i2c pin function from device tree binding schema.
-> 
-> Why?
-> 
->>
->> Fixes: 3ffeb17a9a27 ("pinctrl: airoha: add support for Airoha AN7583 PINs")
->> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
->> ---
->>  .../bindings/pinctrl/airoha,an7583-pinctrl.yaml        | 10 +---------
->>  drivers/pinctrl/airoha/pinctrl-airoha.c                |  1 -
+> This patch fixes above issues. Also device tree binding schema
+> was updated.
 
-Also:
+Also was updated? "Also" is a sign you are mixing two commits into one.
+
+Describe WHY you are doing things, not what you did. And describe in
+details, becayse "binding was updated" brings no information.
+
+> 
+> Fixes: 3ffeb17a9a27 ("pinctrl: airoha: add support for Airoha AN7583 PINs")
+> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+> ---
+>  .../pinctrl/airoha,an7583-pinctrl.yaml        | 14 ++-
+>  drivers/pinctrl/airoha/pinctrl-airoha.c       | 99 ++++++++++++++++---
 
 Please run scripts/checkpatch.pl on the patches and fix reported
 warnings. After that, run also 'scripts/checkpatch.pl --strict' on the
@@ -151,4 +106,5 @@ fix. Feel free to get in touch if the warning is not clear.
 
 Best regards,
 Krzysztof
+
 
