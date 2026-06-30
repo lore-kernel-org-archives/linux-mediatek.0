@@ -4,72 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C1E6C43458
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 13:26:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B02A8C43458
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 13:29:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pXygJ/RMTPQNrcPVAiG6RR6YqxRwAnw6sxAPhTT6WAQ=; b=zGqPs7jTrr2jtyzR7bXo82epxm
-	NJ/goEaKxl5CsAojbrPv3mwEdZw4YpnZdq8U3v/yeO5G1Q+/6pYyTwSGM/qxS4T9DDmdFVu1Qyh25
-	1V9HLu+PYuDIXb0LUi7+9aR9R2uuWzVqAHS83rpBXVz0lE09VWEIp0vGEzv0+KOvT3Iyg91L12Q4g
-	r+GL7B9yGblO3PFT/rNEJTxP3KwIsAz68xBD+Powd5MECsmvyvD/lDbMI6D0xZwS4LStMGaXKfikN
-	Dj0+3ayaPzNkGt4uSseIBD9TUq6tolixcGLZSPpGddfaCdgV2osS+BcaFIfOEY03K0IeHBi4ECN/L
-	4gsYsy4A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ac1w5UDndWpfCVQuaUsP7m+pP7PCwbr3gsBFVFw2qGA=; b=QH1f9rNJQIaSRkdNvxTWQBoADg
+	Ypodlm4iBWi1n6G3HnfYokkqn6ycIAPRTIc0cgxvLZyAkCuTQVw83j+L8klypUirDH9vN5p+C1fsq
+	FBCXSgVmGV/leFMX1yaBIropEJmtqlImclJE9ktk1esjj4fYomIN0h5DruzI4RoTQH4+mx+X09PVW
+	pasCShTaSQjtkJ/6XYB3GC+u5R/bIH/coFpJx9mKiyhbLXqiqvI3bm8RqKyaMaFIjfmsAjiwn2rAd
+	XY0a3nSzwYw/Ou+JZ7fmCjhQxP9Wuvq8yKfCFEiHGn51SxIVBlooPr0xMpdPZYAp3r4bpmtbSYV1t
+	HMr5xAQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weYTj-0000000H9vx-2kmX;
-	Tue, 30 Jun 2026 13:26:21 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1weYWO-0000000HAD7-1H48;
+	Tue, 30 Jun 2026 13:29:04 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weYTh-0000000H9vk-3ZRo
-	for linux-mediatek@lists.infradead.org;
-	Tue, 30 Jun 2026 13:26:17 +0000
+	id 1weYWM-0000000HACS-0lTQ;
+	Tue, 30 Jun 2026 13:29:02 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 314C7601DC
-	for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2026 13:26:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE4201F00A3E
-	for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2026 13:26:16 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id E9941413E3;
+	Tue, 30 Jun 2026 13:29:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 105D11F000E9;
+	Tue, 30 Jun 2026 13:28:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782825976;
-	bh=pXygJ/RMTPQNrcPVAiG6RR6YqxRwAnw6sxAPhTT6WAQ=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=dmgyYO+r/cqtUF5r6CPFKYWEvoAeyK/FSjcn+dry/Y41At+kX7GtDMuHKEZvta2hP
-	 BexWcZI3mbV6524/BbhQPJD2T5IV+I2WBJ0U7PyNYY2m70b8cTetFZ3CcuqHaYR8+6
-	 qV0vZvmnFmUs8pQpn3RoaM6q0snZsxjfKOKYyimMcU8VFDBQlJtNt31H0UzfDuDUuC
-	 hh+iqyi1nPhfmqyLcQhslNQ65XBXgRL4G7KHo8EtXetzpVyN9OAzGRAwgVEn6h28hj
-	 FnzI/7sXqIFIwEAZYdIe41KOl1qVK3A/INI51/ndogFTFvyNqUGX6cNf6MRHYHeXOR
-	 /8dd44xkBBM9w==
-Received: by mail-lj1-f182.google.com with SMTP id 38308e7fff4ca-39b19e7d6fcso11407941fa.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2026 06:26:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+RrEo72enzKIl6R6i/FY+WymKLlp5Zw9RoJMraPTmmT9Xi1UeZuT7gog33D3Pzezc5BbcM4mIYAM/B6WouFnZA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YySH70cgSQ7D08/NDniPeHkWuH8BNIrIwXtLNCXbhFuu1KAhJMU
-	O4e4ioVQSS2fvmICO7onZLs5c47yuAMLKrau8JVpy5KmzFK6lFXLSpzodIfWuGJAzU8MBUQROav
-	9EWKqcq+bb74GdvQsD9sg7vxQWjYT6lE=
-X-Received: by 2002:a05:6512:a354:b0:5ae:b270:505e with SMTP id
- 2adb3069b0e04-5aebdb7d428mr680479e87.1.1782825975726; Tue, 30 Jun 2026
- 06:26:15 -0700 (PDT)
+	s=k20260515; t=1782826141;
+	bh=ac1w5UDndWpfCVQuaUsP7m+pP7PCwbr3gsBFVFw2qGA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=QKmCj9qbPK0we9uPiMzsH/1QI6avTbJheXUhzVhwkeaYfI+Jpd3HS4x2mbeB0dwYn
+	 d8w/RNPjSGg1L53htA99jxAztPNEoxgurte9Ag5XBLdJWWnV6pfG1EK1qEySHdavGc
+	 ngO2XsQhNwQBud6rWIBkjjZGZvfYKPDjXo9OPJZ77+7lInP4qC6tu8kNDBlWOCoQzs
+	 9Fa24EWY9G8HarZsR3tucNx7Kw+HzhBCAUZGAWMRaH6vbicVMmsu16Kk2c6l9peDWy
+	 TATPkcMk7V/VBzym6rD71QDQlndxoibjFncQuW9RyKVxpgnzkHkRqA2B+Z9WKIaJRp
+	 S3lJH2JULnXDg==
+Date: Tue, 30 Jun 2026 14:28:53 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Bui Duc Phuc <phucduc.bui@gmail.com>
+Cc: Herve Codina <herve.codina@bootlin.com>, Takashi Iwai <tiwai@suse.com>,
+	Nick Li <nick.li@foursemi.com>,
+	Support Opensource <support.opensource@diasemi.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
+	Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
+	Oder Chiou <oder_chiou@realtek.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	u.kleine-koenig@baylibre.com, Zhang Yi <zhangyi@everest-semi.com>,
+	Marco Crivellari <marco.crivellari@suse.com>,
+	Kees Cook <kees@kernel.org>, HyeongJun An <sammiee5311@gmail.com>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Qianfeng Rong <rongqianfeng@vivo.com>, linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org, patches@opensource.cirrus.com,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 09/27] ASoC: codecs: idt821034: Use guard() for mutex
+ locks
+Message-ID: <f5ab965a-9640-4df0-8108-7877f34b6950@sirena.org.uk>
+References: <20260630063449.503996-1-phucduc.bui@gmail.com>
+ <20260630063449.503996-10-phucduc.bui@gmail.com>
+ <20260630092821.650c30ec@bootlin.com>
+ <CAABR9nG5Wo1Wb+2_T6dR+6XTw8Vs9awSpQrSZ+k6=jp_ogoGCw@mail.gmail.com>
 MIME-Version: 1.0
-References: <20260617043654.2790253-1-mikhail.kshevetskiy@iopsys.eu> <CAD++jLmY6Ase3hPC00z_kAJe+vJBUyrEHZEAOcWqkiuFnRGCcA@mail.gmail.com>
-In-Reply-To: <CAD++jLmY6Ase3hPC00z_kAJe+vJBUyrEHZEAOcWqkiuFnRGCcA@mail.gmail.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Tue, 30 Jun 2026 14:26:02 +0100
-X-Gmail-Original-Message-ID: <CAD++jL=W6oTH6SszTXzESrQfbnb4=MDhGa2MwFZJTxtfZWrL1Q@mail.gmail.com>
-X-Gm-Features: AVVi8CdMqlD-NNESA5p_L_MjCXc2S_nvvYlYGQu1Hdjs5hWQXyMGqa8I_zRSf2c
-Message-ID: <CAD++jL=W6oTH6SszTXzESrQfbnb4=MDhGa2MwFZJTxtfZWrL1Q@mail.gmail.com>
-Subject: Re: [PATCH v4 00/14] pinctrl: airoha: split driver on shared code and
- SoC specific drivers, add supporf of en7523
-To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Christian Marangi <ansuelsmth@gmail.com>, 
-	Benjamin Larsson <benjamin.larsson@genexis.eu>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
-	linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	Markus Gothe <markus.gothe@genexis.eu>, 
-	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="YvGUs531CHtahqis"
+Content-Disposition: inline
+In-Reply-To: <CAABR9nG5Wo1Wb+2_T6dR+6XTw8Vs9awSpQrSZ+k6=jp_ogoGCw@mail.gmail.com>
+X-Cookie: Air is water with holes in it.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,23 +94,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 30, 2026 at 1:09=E2=80=AFPM Linus Walleij <linusw@kernel.org> w=
-rote:
-> On Wed, Jun 17, 2026 at 5:37=E2=80=AFAM Mikhail Kshevetskiy
-> <mikhail.kshevetskiy@iopsys.eu> wrote:
->
-> > This patchset
-> >  * fixes more airoha pinctrl issues
-> >  * split combined driver on common code and several SoC specific driver=
-s
-> >  * improves an7583 pinctrl support
-> >  * adds support of en7523 SoC
->
-> No comments for two weeks so patches applied.
 
-I realized there is v5 and v6 which are still being discussed so I backed
-these out.
+--YvGUs531CHtahqis
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Yours,
-Linus Walleij
+On Tue, Jun 30, 2026 at 04:14:33PM +0700, Bui Duc Phuc wrote:
+> On Tue, Jun 30, 2026 at 2:28=E2=80=AFPM Herve Codina <herve.codina@bootli=
+n.com> wrote:
+> >
+> > Hi,
+
+Please delete unneeded context from mails when replying.  Doing this
+makes it much easier to find your reply in the message, helping ensure
+it won't be missed by people scrolling through the irrelevant quoted
+material.
+
+--YvGUs531CHtahqis
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmpDxJQACgkQJNaLcl1U
+h9DhNQf/XmcvwsWjntcyq28UDoJfIndKAZ0IelWf8Emc+uAmXZNPOWpTM0uqDZes
+/u7MDWAJqUVrhYSkVnpJHeqxagbMgkx8LTWcL9BnkPiUdZCLvpEdsUFp/JUQv6pO
+G8cTLXcjn6emBGCu8fhDirNEMVIAc9OU2Sck85rDBWPz2TCNklkyQs4/7OJCLFcL
+zMkFBQviyoWI3SmaGdbyfEBaC9bKtnapaXKXHNaf34EBXup36NEgzi5akVxGZ1Au
+ZLbaF0yTkzZ1amPpEz3/apXiNcqeqX4XkBDT7VrtCHCEWwL5opd3/Y/JPPy6zeZP
+iOKnlSkh2KUc6XIBbcGg+ofuL0J8+w==
+=Bcef
+-----END PGP SIGNATURE-----
+
+--YvGUs531CHtahqis--
 
