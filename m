@@ -4,63 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB6DEC43458
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 14:21:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5001DC43327
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 14:48:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uf3tZtSzNbehh4Nx6CrO/toFKRJaA2UElBa8z8KsYfE=; b=uYKPwaDoyG+b7mYiH3MUhp7Ge3
-	G/tI32FHIrpbC8dzRwtEMmVZs1nGUQT4n88FW8H4XlltaufZFQAEZg0eQ6K/H74Atf/DK6MnaK2as
-	lXtNOPThNgApBv9GvDloi8BW47/KDxhv7SFTv35mJoIJ+fBs63/Nz+YtVj3Hagzpd5ryd7eHG06G+
-	DCCUG1MNz3SveRUUA7ss/v3YV4PSxoEWAu7EPFKDvb175XvkQcUdu2NLcVSgFQCvWA5ZlDX5Dyqzw
-	Az+x7GqatBzrZ9Mt3K5grQVy26plfpZCgf3MX+XJuxkUlD7f1jAvFz4ufRlAo23Z1E+B4Q7yf61BD
-	Geghdm6w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FTJrhxBEl3twqdJgMl/PY4mPnQS4A0KwvpKQuTDw05U=; b=iwiKw4nwR9wu+XmiPTqYh/OPUR
+	vUBrm4YENtHeb2foy7Li346+yoJEK4SGkyWfs8rFzsMfBL3l+u8pfuibon1tMzxlXByyyl1fr2Lfs
+	kfgW8PDHLLg7fCAvIBOEhDqtPH1LbdM08NV9nxCWRHXG5c7enCsofGwOO3buMKc5M2J2HTthlAhfR
+	Jftn4XS2haCtniV+Td5uDm2FNyeHh/NgVtHn1HbRkyYFdLbLJwrAXjP0jxH0N2c0TdxsvV4N0v9ja
+	Co60s20NJt8HzbwQqw7os7IayKzcmKsY4fG94x7scw1dA/CzkEEw7E5dZJ3VItO3W17aClTdLk21t
+	VMBFvlKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weZLF-0000000HGj7-1z9n;
-	Tue, 30 Jun 2026 14:21:37 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1weZlQ-0000000HImP-0GTs;
+	Tue, 30 Jun 2026 14:48:40 +0000
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weZLE-0000000HGif-0duG;
-	Tue, 30 Jun 2026 14:21:36 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7BEDE601DC;
-	Tue, 30 Jun 2026 14:21:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A92621F000E9;
-	Tue, 30 Jun 2026 14:21:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782829295;
-	bh=uf3tZtSzNbehh4Nx6CrO/toFKRJaA2UElBa8z8KsYfE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=a+fkrxwE2viVklnDIJaB2owP/yudzqZiTItfQ62ffCrrQ2XwRjm1UmnGuQJKwiw7u
-	 MydEBg9SWU39wQrK+vJh0PuAukrp6wjhZhU2Am+o/Rb7zgXK5KX7yLm2avKtEndyKp
-	 ERq2JFO2jAA+hUvREQN5fCGHZdSFm5RKL2YwkSJr9qWMbzHkVD7GfpYZtQjkmSvE5K
-	 zOWo8SmLKNlHokaTnLv7di9cW3u9I2cU0c8dtzZDKDa7dvfQRTzXzXHY0Wvcnjw7AX
-	 mtvmmEQmy8+nzgXpdYExsJROf8h5kva3QizjfZ0UxebUi4Tl6itRZGBso7XC6+RSTP
-	 zMo8J5mUYSNKA==
-Date: Tue, 30 Jun 2026 16:21:32 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Aniket Negi <aniket.negi03@gmail.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Simon Horman <horms@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] net: airoha: fix MIB stats collection to be lossless
-Message-ID: <akPQ7P1Dqb00oWa3@lore-desk>
-References: <20260630111834.233643-1-aniket.negi03@gmail.com>
+	id 1weZlN-0000000HIlq-3VgH
+	for linux-mediatek@lists.infradead.org;
+	Tue, 30 Jun 2026 14:48:38 +0000
+Received: by mail-pf1-x435.google.com with SMTP id d2e1a72fcca58-847917c3678so315376b3a.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2026 07:48:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1782830916; x=1783435716; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=FTJrhxBEl3twqdJgMl/PY4mPnQS4A0KwvpKQuTDw05U=;
+        b=kf08SinUsgJuQbIu6vytAZZWR7ljzA7JU42SktUIOcs3Gf07dyrpO1BOv0d2iM2GoZ
+         EVcdmLZP+F2AaC2dTY9yQTXJy1LDBZT8kNyN53nfiZLa1VgJnwpXc8oYgaqI0Ws00sG+
+         C1QMuZqKVIabKqzxW5elF2DZdG5lN/a+gF1sNMdJdy1Fypev6IDCVeD8krkBKNoMm9C4
+         2Epe6xfy2rXYKjk/eN8gK2Fs0WS8YvCpUqMvaJDrWXmVPFeroKUuhIwSXJBoW6dpOORB
+         djeqAFDlGmpIJ2xCAMOvGfo5Yz44RUiK1PTz6AXa2TdQ2BeL9mK5hwJihC7vuafb9Wue
+         d2eA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1782830916; x=1783435716;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=FTJrhxBEl3twqdJgMl/PY4mPnQS4A0KwvpKQuTDw05U=;
+        b=lA5nvvSOUz1/2AHYG7glUKeH3KKgN/5hNVcdQt28Y0NIGpskYHc1Q+eogI7Gt2Np5r
+         dYlXxp+gf9cjC9tmWwu0Ql4wKdzTwYychZLWXNs1uR/ow1/v328lyPr0LjrGDh/dqyxI
+         wbOK8qkJvqtJGCXJEz0ez9CRsRwkv1ZNE1aEVY6M6ZwKLbQ5PAgXfnKXvFeCWsXxFmHy
+         ONdfcNWC7h4+cKEY7FHCNDaTUctWeqi02yXDnQw5qZICEMokUQyGvdNvMtQlT0RI80ie
+         cUnamIDpeZ/G/Wyvt26GkzjyURhlyb3/s0v0rRUXvUlP4YYysFmfmcSriqNxSAaaG/tv
+         FK5g==
+X-Forwarded-Encrypted: i=1; AHgh+RpAbVfdll+aC7EqW1D14Vy4ZM/aGisYhhuQmk2kQzxnD/EO+pWT1kh/IVL3zfhTiTbTSi1PYjoDTVKtDg4z3w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzqSgL/51NlceCvCHHSFDk65qOgGHv3ZLbMhVYlEqqC28TtKKrV
+	8EWtGtaUE+El/BpLaMqXrzeXDKqmUq+qpABP6GcHTTUm/X4Ggc7rXdLr
+X-Gm-Gg: AfdE7ckZ91s/RpJgEDMrjtxr1u7r0rPXIvoONyfHudfXyRrs6ZVftCZCnzaMTpCtZIv
+	YkEnm28KxWbFGNg7SPUh4t+XnlGbGPVZT2B1aUiHndC5d2gZVrZZhkqKEO+RqfXpojoFDdXzkN9
+	9vk665vsjl14yURuiZWZ/+lur7gjBL+IJlB5IoWa1zE7dTPd1ziAuhXhDJ4NTeyyb+dUoDVsUTj
+	iV4dpVS7XlNxfe0SwRebyW5ocwdwM1v9cYg9SCYdzTkL22ICLAj/iywlaOkykTr86QjtE4UH6HA
+	y43Aa/h4R3MkzuP7+H38LLFOnX/mgl2oTeUYXgk7c59dhMiGex48oDCdd3QPlNTF60agyIskor7
+	Hcn1iqm23Em0R7ijYwb4IYDNlsffYpGs5br/AXcQF0Vxji/4ONpQEeWcFdlsfXi/JbK8GGkHoYQ
+	w1Z21ZjiLT9vg5vX6iXkDApBcmg9C/AY25ILd8ncE7gzS5zzPuQOHfVg==
+X-Received: by 2002:a05:6a00:85a3:b0:842:dd4:d9e2 with SMTP id d2e1a72fcca58-847a7ed202dmr1411685b3a.0.1782830916332;
+        Tue, 30 Jun 2026 07:48:36 -0700 (PDT)
+Received: from DESKTOP-VNSSJ2S.lan (59-127-145-64.hinet-ip.hinet.net. [59.127.145.64])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-847a03a6fcasm2220480b3a.58.2026.06.30.07.48.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 30 Jun 2026 07:48:35 -0700 (PDT)
+From: Zhi-Jun You <hujy652@gmail.com>
+To: lorenzo@kernel.org
+Cc: nbd@nbd.name,
+	netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Zhi-Jun You <hujy652@gmail.com>
+Subject: [PATCH net] net:ethernet: mtk_wed: setup WDMA_RING_TX(0) for non-DBDC MT7986
+Date: Tue, 30 Jun 2026 22:48:31 +0800
+Message-ID: <20260630144831.1109-1-hujy652@gmail.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="yOBFIEcluc84Gy5g"
-Content-Disposition: inline
-In-Reply-To: <20260630111834.233643-1-aniket.negi03@gmail.com>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260630_074837_878884_4EEE7C72 
+X-CRM114-Status: UNSURE (   9.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,395 +98,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+WDMA_RING_TX(0) is required to set MTK_WED_WDMA_RING_TX for WED RX
+but on a non-DBDC MT7986 it is never setup because idx is 1.
 
---yOBFIEcluc84Gy5g
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Setting MTK_WED_WDMA_RING_TX with WDMA_RING_TX(1) is not feasible because
+WED still tries to send through WDMA_RING_TX(0). This is verified with
+register dump.
 
-> The airoha_dev_get_hw_stats() function had two correctness issues in the
-> way it collects hardware MIB counters.
->=20
-> Bug 1: Read-clear race causes silent packet loss in statistics
->=20
-> airoha_update_hw_stats() read all MIB registers and then cleared them
-> via REG_FE_GDM_MIB_CLEAR. There is a time window between the last
-> register read and the hardware clear. Any packet that the hardware
-> counts during this window is lost: the register is incremented, then
-> cleared, without the increment ever being read by software. Under
-> sustained traffic this causes a permanent and growing undercount in all
-> reported statistics.
->=20
-> This is particularly misleading for tx_ok_pkts and tx_ok_bytes, which
-> routers and traffic monitors use to detect packet forwarding loss
-> between two points in a hardware-accelerated path (e.g., between two
-> netdevs in the QDMA/PPE fast-path). An inaccurate count makes it
-> impossible to reliably attribute drops in the forwarding pipeline
-> without capturing traffic at both ends independently.
->=20
-> Bug 2: 32-bit counter overflow causes stat corruption
->=20
-> Several MIB registers are only 32 bits wide: tx_drops, tx_broadcast,
-> tx_multicast, rx_drops, rx_broadcast, rx_multicast, rx_errors,
-> rx_crc_error, rx_over_errors, rx_fragment, rx_jabber, and the runt and
-> long buckets of the tx_len[]/rx_len[].
->=20
-> The original code relied on MIB_CLEAR to keep register values small
-> enough that a simple '+=3D val' per cycle did not lose data across a
-> wrap. Once clearing is removed (to fix Bug 1), raw '+=3D val' silently
-> corrupts the accumulated software counter on overflow.
->=20
-> Fix both issues together:
->=20
-> - 64-bit H+L register pairs (tx_ok_pkts, tx_ok_bytes, tx_len[1..5],
->   rx_ok_pkts, rx_ok_bytes, rx_len[1..5]): read directly from hardware
->   without clearing. Hardware accumulates the full running total; a
->   single direct assignment per poll is correct and lossless.
->=20
-> - 32-bit registers (tx_drops, tx_broadcast, tx_multicast, rx_drops,
->   rx_broadcast, rx_multicast, rx_errors, rx_crc_error, rx_over_errors,
->   rx_fragment, rx_jabber, and the runt/long buckets in tx_len[0]/[6]
->   and rx_len[0]/[6]): track the previous hardware value in a new
->   hw_prev_stats sub-struct inside airoha_hw_stats and accumulate
->   (u32)(curr - prev) into the 64-bit software counter. Unsigned
->   subtraction handles wrap-around transparently:
->   prev=3D0xFFFFFF00, curr=3D0x00000010 -> delta=3D(u32)(0x10-0xFFFFFF00)=
-=3D0x110
->=20
-> Remove the REG_FE_GDM_MIB_CLEAR write from airoha_update_hw_stats()
-> entirely. Because the driver no longer clears hardware counters, the
-> read-clear race window is eliminated.
->=20
-> The hw_prev_stats fields are zero-initialised by the existing
-> devm_kzalloc() call in airoha_alloc_gdm_device().
->=20
-> Fixes: 8f4695fb67b2 ("net: airoha: better handle MIBs for GDM ports with =
-multiple devs attached")
-> Signed-off-by: Aniket Negi <aniket.negi03@gmail.com>
-> ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 132 +++++++++++------------
->  drivers/net/ethernet/airoha/airoha_eth.h |  22 ++++
->  2 files changed, 86 insertions(+), 68 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index 1caf6766f2c0..7ae4e294478e 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -1696,133 +1696,133 @@ static void airoha_dev_get_hw_stats(struct airo=
-ha_gdm_dev *dev)
-> =20
->  	u64_stats_update_begin(&dev->stats.syncp);
-> =20
-> -	/* TX */
-> +	/* TX - 64-bit H+L registers: hw accumulates the total, read directly. =
-*/
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_OK_PKT_CNT_H(port->id));
-> -	dev->stats.tx_ok_pkts +=3D ((u64)val << 32);
-> -	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_OK_PKT_CNT_L(port->id));
-> -	dev->stats.tx_ok_pkts +=3D val;
-> +	dev->stats.tx_ok_pkts =3D (u64)val << 32;
+Fix this by calling mtk_wed_wdma_tx_ring_setup if WDMA_RING_TX(0) is not
+setup and guard it with mtk_wed_is_v2.
 
-I guess it is more readable to store REG_FE_GDM_TX_OK_PKT_CNT_L() read in v=
-al
-here. Something like:
+Fixes: 4c5de09eb0d0 ("net: ethernet: mtk_wed: add configure wed wo support")
+Signed-off-by: Zhi-Jun You <hujy652@gmail.com>
+---
+ drivers/net/ethernet/mediatek/mtk_wed.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_OK_PKT_CNT_L(port->id));
-	dev->stats.tx_ok_pkts +=3D val;
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
+index 10d9beaae372..2420557f6c96 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+@@ -2334,6 +2334,10 @@ mtk_wed_start(struct mtk_wed_device *dev, u32 irq_mask)
+ 		if (!dev->rx_wdma[i].desc)
+ 			mtk_wed_wdma_rx_ring_setup(dev, i, 16, false);
+ 
++	if (mtk_wed_is_v2(dev->hw))
++		if (!dev->tx_wdma[0].desc)
++			mtk_wed_wdma_tx_ring_setup(dev, 0, MTK_WED_WDMA_RING_SIZE, false);
++
+ 	if (dev->wlan.hw_rro) {
+ 		for (i = 0; i < MTK_WED_RX_PAGE_QUEUES; i++) {
+ 			u32 addr = MTK_WED_RRO_MSDU_PG_CTRL0(i) +
+-- 
+2.47.3
 
-This apply even to occurrence below
-
-> +	dev->stats.tx_ok_pkts +=3D airoha_fe_rr(eth, REG_FE_GDM_TX_OK_PKT_CNT_L=
-(port->id));
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_OK_BYTE_CNT_H(port->id));
-> -	dev->stats.tx_ok_bytes +=3D ((u64)val << 32);
-> -	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_OK_BYTE_CNT_L(port->id));
-> -	dev->stats.tx_ok_bytes +=3D val;
-> +	dev->stats.tx_ok_bytes =3D (u64)val << 32;
-> +	dev->stats.tx_ok_bytes +=3D airoha_fe_rr(eth, REG_FE_GDM_TX_OK_BYTE_CNT=
-_L(port->id));
-> =20
-> +	/* TX - 32-bit registers: accumulate delta to handle wrap-around. */
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_DROP_CNT(port->id));
-> -	dev->stats.tx_drops +=3D val;
-> +	dev->stats.tx_drops +=3D (u32)(val - dev->stats.hw_prev_stats.tx_drops);
-> +	dev->stats.hw_prev_stats.tx_drops =3D val;
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_BC_CNT(port->id));
-> -	dev->stats.tx_broadcast +=3D val;
-> +	dev->stats.tx_broadcast +=3D (u32)(val - dev->stats.hw_prev_stats.tx_br=
-oadcast);
-> +	dev->stats.hw_prev_stats.tx_broadcast =3D val;
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_MC_CNT(port->id));
-> -	dev->stats.tx_multicast +=3D val;
-> +	dev->stats.tx_multicast +=3D (u32)(val - dev->stats.hw_prev_stats.tx_mu=
-lticast);
-> +	dev->stats.hw_prev_stats.tx_multicast =3D val;
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_RUNT_CNT(port->id));
-> -	dev->stats.tx_len[i] +=3D val;
-> +	dev->stats.tx_len[i] +=3D (u32)(val - dev->stats.hw_prev_stats.tx_len[i=
-]);
-> +	dev->stats.hw_prev_stats.tx_len[i] =3D val;
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_E64_CNT_H(port->id));
-> -	dev->stats.tx_len[i] +=3D ((u64)val << 32);
-> -	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_E64_CNT_L(port->id));
-> -	dev->stats.tx_len[i++] +=3D val;
-> +	dev->stats.tx_len[i] +=3D (u64)val << 32;
-
-Since now we do not reset MIB counters, this is wrong, you can't use "+=3D"
-
-> +	dev->stats.tx_len[i++] +=3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_E64_CNT=
-_L(port->id));
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L64_CNT_H(port->id));
-> -	dev->stats.tx_len[i] +=3D ((u64)val << 32);
-> -	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L64_CNT_L(port->id));
-> -	dev->stats.tx_len[i++] +=3D val;
-> +	dev->stats.tx_len[i] =3D (u64)val << 32;
-> +	dev->stats.tx_len[i++] +=3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L64_CNT=
-_L(port->id));
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L127_CNT_H(port->id));
-> -	dev->stats.tx_len[i] +=3D ((u64)val << 32);
-> -	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L127_CNT_L(port->id));
-> -	dev->stats.tx_len[i++] +=3D val;
-> +	dev->stats.tx_len[i] =3D (u64)val << 32;
-> +	dev->stats.tx_len[i++] +=3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L127_CN=
-T_L(port->id));
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L255_CNT_H(port->id));
-> -	dev->stats.tx_len[i] +=3D ((u64)val << 32);
-> -	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L255_CNT_L(port->id));
-> -	dev->stats.tx_len[i++] +=3D val;
-> +	dev->stats.tx_len[i] =3D (u64)val << 32;
-> +	dev->stats.tx_len[i++] +=3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L255_CN=
-T_L(port->id));
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L511_CNT_H(port->id));
-> -	dev->stats.tx_len[i] +=3D ((u64)val << 32);
-> -	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L511_CNT_L(port->id));
-> -	dev->stats.tx_len[i++] +=3D val;
-> +	dev->stats.tx_len[i] =3D (u64)val << 32;
-> +	dev->stats.tx_len[i++] +=3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L511_CN=
-T_L(port->id));
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L1023_CNT_H(port->id));
-> -	dev->stats.tx_len[i] +=3D ((u64)val << 32);
-> -	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L1023_CNT_L(port->id));
-> -	dev->stats.tx_len[i++] +=3D val;
-> +	dev->stats.tx_len[i] =3D (u64)val << 32;
-> +	dev->stats.tx_len[i++] +=3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L1023_C=
-NT_L(port->id));
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_LONG_CNT(port->id));
-> -	dev->stats.tx_len[i++] +=3D val;
-> +	dev->stats.tx_len[i] +=3D (u32)(val - dev->stats.hw_prev_stats.tx_len[i=
-]);
-> +	dev->stats.hw_prev_stats.tx_len[i++] =3D val;
-> =20
->  	/* RX */
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_OK_PKT_CNT_H(port->id));
-> -	dev->stats.rx_ok_pkts +=3D ((u64)val << 32);
-> -	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_OK_PKT_CNT_L(port->id));
-> -	dev->stats.rx_ok_pkts +=3D val;
-> +	dev->stats.rx_ok_pkts =3D (u64)val << 32;
-> +	dev->stats.rx_ok_pkts +=3D airoha_fe_rr(eth, REG_FE_GDM_RX_OK_PKT_CNT_L=
-(port->id));
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_OK_BYTE_CNT_H(port->id));
-> -	dev->stats.rx_ok_bytes +=3D ((u64)val << 32);
-> -	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_OK_BYTE_CNT_L(port->id));
-> -	dev->stats.rx_ok_bytes +=3D val;
-> +	dev->stats.rx_ok_bytes =3D (u64)val << 32;
-> +	dev->stats.rx_ok_bytes +=3D airoha_fe_rr(eth, REG_FE_GDM_RX_OK_BYTE_CNT=
-_L(port->id));
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_DROP_CNT(port->id));
-> -	dev->stats.rx_drops +=3D val;
-> +	dev->stats.rx_drops +=3D (u32)(val - dev->stats.hw_prev_stats.rx_drops);
-> +	dev->stats.hw_prev_stats.rx_drops =3D val;
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_BC_CNT(port->id));
-> -	dev->stats.rx_broadcast +=3D val;
-> +	dev->stats.rx_broadcast +=3D (u32)(val - dev->stats.hw_prev_stats.rx_br=
-oadcast);
-> +	dev->stats.hw_prev_stats.rx_broadcast =3D val;
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_MC_CNT(port->id));
-> -	dev->stats.rx_multicast +=3D val;
-> +	dev->stats.rx_multicast +=3D (u32)(val - dev->stats.hw_prev_stats.rx_mu=
-lticast);
-> +	dev->stats.hw_prev_stats.rx_multicast =3D val;
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ERROR_DROP_CNT(port->id));
-> -	dev->stats.rx_errors +=3D val;
-> +	dev->stats.rx_errors +=3D (u32)(val - dev->stats.hw_prev_stats.rx_error=
-s);
-> +	dev->stats.hw_prev_stats.rx_errors =3D val;
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_CRC_ERR_CNT(port->id));
-> -	dev->stats.rx_crc_error +=3D val;
-> +	dev->stats.rx_crc_error +=3D (u32)(val - dev->stats.hw_prev_stats.rx_cr=
-c_error);
-> +	dev->stats.hw_prev_stats.rx_crc_error =3D val;
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_OVERFLOW_DROP_CNT(port->id));
-> -	dev->stats.rx_over_errors +=3D val;
-> +	dev->stats.rx_over_errors +=3D (u32)(val - dev->stats.hw_prev_stats.rx_=
-over_errors);
-> +	dev->stats.hw_prev_stats.rx_over_errors =3D val;
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_FRAG_CNT(port->id));
-> -	dev->stats.rx_fragment +=3D val;
-> +	dev->stats.rx_fragment +=3D (u32)(val - dev->stats.hw_prev_stats.rx_fra=
-gment);
-> +	dev->stats.hw_prev_stats.rx_fragment =3D val;
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_JABBER_CNT(port->id));
-> -	dev->stats.rx_jabber +=3D val;
-> +	dev->stats.rx_jabber +=3D (u32)(val - dev->stats.hw_prev_stats.rx_jabbe=
-r);
-> +	dev->stats.hw_prev_stats.rx_jabber =3D val;
-> =20
->  	i =3D 0;
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_RUNT_CNT(port->id));
-> -	dev->stats.rx_len[i] +=3D val;
-> +	dev->stats.rx_len[i] +=3D (u32)(val - dev->stats.hw_prev_stats.rx_len[i=
-]);
-> +	dev->stats.hw_prev_stats.rx_len[i] =3D val;
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_E64_CNT_H(port->id));
-> -	dev->stats.rx_len[i] +=3D ((u64)val << 32);
-> -	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_E64_CNT_L(port->id));
-> -	dev->stats.rx_len[i++] +=3D val;
-> +	dev->stats.rx_len[i] +=3D (u64)val << 32;
-
-same here.
-
-> +	dev->stats.rx_len[i++] +=3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_E64_CNT=
-_L(port->id));
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L64_CNT_H(port->id));
-> -	dev->stats.rx_len[i] +=3D ((u64)val << 32);
-> -	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L64_CNT_L(port->id));
-> -	dev->stats.rx_len[i++] +=3D val;
-> +	dev->stats.rx_len[i] =3D (u64)val << 32;
-> +	dev->stats.rx_len[i++] +=3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L64_CNT=
-_L(port->id));
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L127_CNT_H(port->id));
-> -	dev->stats.rx_len[i] +=3D ((u64)val << 32);
-> -	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L127_CNT_L(port->id));
-> -	dev->stats.rx_len[i++] +=3D val;
-> +	dev->stats.rx_len[i] =3D (u64)val << 32;
-> +	dev->stats.rx_len[i++] +=3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L127_CN=
-T_L(port->id));
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L255_CNT_H(port->id));
-> -	dev->stats.rx_len[i] +=3D ((u64)val << 32);
-> -	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L255_CNT_L(port->id));
-> -	dev->stats.rx_len[i++] +=3D val;
-> +	dev->stats.rx_len[i] =3D (u64)val << 32;
-> +	dev->stats.rx_len[i++] +=3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L255_CN=
-T_L(port->id));
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L511_CNT_H(port->id));
-> -	dev->stats.rx_len[i] +=3D ((u64)val << 32);
-> -	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L511_CNT_L(port->id));
-> -	dev->stats.rx_len[i++] +=3D val;
-> +	dev->stats.rx_len[i] =3D (u64)val << 32;
-> +	dev->stats.rx_len[i++] +=3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L511_CN=
-T_L(port->id));
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L1023_CNT_H(port->id));
-> -	dev->stats.rx_len[i] +=3D ((u64)val << 32);
-> -	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L1023_CNT_L(port->id));
-> -	dev->stats.rx_len[i++] +=3D val;
-> +	dev->stats.rx_len[i] =3D (u64)val << 32;
-> +	dev->stats.rx_len[i++] +=3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L1023_C=
-NT_L(port->id));
-> =20
->  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_LONG_CNT(port->id));
-> -	dev->stats.rx_len[i++] +=3D val;
-> +	dev->stats.rx_len[i] +=3D (u32)(val - dev->stats.hw_prev_stats.rx_len[i=
-]);
-> +	dev->stats.hw_prev_stats.rx_len[i++] =3D val;
-> =20
->  	u64_stats_update_end(&dev->stats.syncp);
->  }
-> @@ -1839,10 +1839,6 @@ static void airoha_update_hw_stats(struct airoha_g=
-dm_dev *dev)
->  			airoha_dev_get_hw_stats(port->devs[i]);
->  	}
-> =20
-> -	/* Reset MIB counters */
-> -	airoha_fe_set(dev->eth, REG_FE_GDM_MIB_CLEAR(port->id),
-> -		      FE_GDM_MIB_RX_CLEAR_MASK | FE_GDM_MIB_TX_CLEAR_MASK);
-> -
->  	spin_unlock(&port->stats_lock);
->  }
-> =20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
-net/airoha/airoha_eth.h
-> index 2765244d937c..af12ad6eac17 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.h
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-> @@ -244,6 +244,28 @@ struct airoha_hw_stats {
->  	u64 rx_fragment;
->  	u64 rx_jabber;
->  	u64 rx_len[7];
-> +
-> +	struct {
-> +	/* Previous HW register values for 32-bit counter delta tracking.
-> +	 * Storing the last seen value and accumulating (u32)(curr - prev)
-> +	 * in 64-bit software counter & handles wrap-around transparently
-> +	 * via unsigned arithmetic. These fields are never reported to
-> +	 * userspace.
-> +	 */
-
-can you please align the comment here?
-
-> +		u32 tx_drops;
-> +		u32 tx_broadcast;
-> +		u32 tx_multicast;
-> +		u32 tx_len[7];
-> +		u32 rx_drops;
-> +		u32 rx_broadcast;
-> +		u32 rx_multicast;
-> +		u32 rx_errors;
-> +		u32 rx_crc_error;
-> +		u32 rx_over_errors;
-> +		u32 rx_fragment;
-> +		u32 rx_jabber;
-> +		u32 rx_len[7];
-> +	} hw_prev_stats;
-
-Maybe something like "prev_val32" ?
-
-Regards,
-Lorenzo
-
->  };
-> =20
->  enum {
-> --=20
-> 2.43.0
->=20
-
---yOBFIEcluc84Gy5g
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCakPQ7AAKCRA6cBh0uS2t
-rBF4AQDoGxth7iXv5nW/hFOnhPAxlu91TAoRUN+EWUN8W0qKcQD/Vqa2O4h9tDgX
-7WNDy8zAOyP1AXvXVKK+bbdS0SQXLAQ=
-=J9zf
------END PGP SIGNATURE-----
-
---yOBFIEcluc84Gy5g--
 
