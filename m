@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D27EC43458
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 06:37:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 361A8C43458
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 06:37:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=78eN83RWVPj3usGOOjpXeDQAtr7LkbhNmieBoJ7adsI=; b=4vemyMfQJa5p6cys7JJRRuXIja
-	ErkvWGAWdqUOU4dwueg6mFVgKIG6x3Uf7msh4wwqj7jD2AefmIBbK1EZwBdfBschk7O6rQZ4hXgxV
-	b+VH6Hs8+20/2L1t0qX9qsNPHUXh7GkB8TP9AonSvYwHrh5Nln6K/U0G+Yc3j+MpDyBthyGDYee+q
-	cRc6brLHF0TKJMn5jAY7KK1l2xkmaqLDhJUiQ99alGgAu3c1ALs3Trqr6OM13s9PF0FTcyPznMrC7
-	Y4sUER/VqQWKUEmBr+CDs9X4QYby/GNkAgIsIJax4uVVqS+7OZXbpTlj0EI8Gc6vrm+ppLIGaPTFT
-	m7Nv1RzQ==;
+	bh=jE/vGes9bWof+nCBjw7kvawhZty+DCUG3JNg48uQoDI=; b=fnj32kXIoeefOhds0tI12K8g+8
+	yDhlzI5hRwuQ/Sk7KoslxO+Jku1a17ELjjAYOMYXk3Kwfd7r6oWal/PZHHYs7oL9WMatulTjfsMm3
+	0Tmnpd5TdAvpDtVlUZ8U4hpyhOp1GEhnMfVEtmNUmXa8Ss6DMBjguPrNJMzxxVHMucGBz4caB1kzN
+	lSBQnRxGtb7kgxXlAAPUEhYH5OaTbro93ffqEXXqgKDf+BAbwpJC/iDizrFZ4lsyQr/KphSrb0oaq
+	quxXDGe9rvhfHiDtTbuxoWkMnAt91Dih11bOXIh2hZsqRrIfuL9RQYz8qc6I1yfKA1vEniaFbB5EF
+	OdfSIGWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weS6N-0000000FziP-15KK;
-	Tue, 30 Jun 2026 06:37:47 +0000
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+	id 1weS6Y-0000000Fzua-1XtT;
+	Tue, 30 Jun 2026 06:37:58 +0000
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weS6K-0000000Fzfi-3rfW
+	id 1weS6S-0000000Fzns-1O1x
 	for linux-mediatek@lists.infradead.org;
-	Tue, 30 Jun 2026 06:37:46 +0000
-Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-8423f236418so2119771b3a.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 29 Jun 2026 23:37:44 -0700 (PDT)
+	Tue, 30 Jun 2026 06:37:54 +0000
+Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-845ea8924a2so959261b3a.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Jun 2026 23:37:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1782801464; x=1783406264; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1782801472; x=1783406272; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=78eN83RWVPj3usGOOjpXeDQAtr7LkbhNmieBoJ7adsI=;
-        b=CQJelmfnUYVv8+mFuXZNvtKelsWxQ55ZLk7saFNw422bSKSVzuF/UwRniOKrCP4KRT
-         EA7GcBlHADPZ6juxiZOAsG2I03qz0kqKZAFlziGaFL92uhkl+ekkzkJHDHo9YVrrnSxW
-         RPVlzO7/4gD2Wa6FOZVZJxoO1PMr1U+a4N76rTmSMXcyRByaWROaPqMeWGP/b93zNyze
-         iZWmBw20Ew/8CHDvpO7eexYk770Tp+Pjj7c11CufB+dcBDus/BQE/pgs+9Gt5/tFxGwg
-         5EEd+tXlC+xw0Ub8YHr7mbSZCwKmUVuQ0QolkMGraNRUMadIfPW1ihiOkaiN4+bJbl+u
-         TSgQ==
+         :message-id:reply-to;
+        bh=jE/vGes9bWof+nCBjw7kvawhZty+DCUG3JNg48uQoDI=;
+        b=kdJHcz2adZUdfTo+2vy18qo4+dTKzlQzj3eaUSOPpo6ZDubOs7m4syUmpz3J6IOi5T
+         Pp+h/y+zSOEjCu4qqfucY9Ezz2Lf3oP2USMpKAkuhTYBjOhlESgqj41rFH0vjFGKSzKi
+         rVyYZmVZWakDu1bDh6lfDjlF0QMu/Y8Z05jkb76FgGGovwfOTnLOY6Q2KMECg7RHvSI8
+         mm/T5+5hukzAtIVICAISUr9keaHDqeOwKQLmYDuS9I98WCuajoBzbkCUaChbbyaPMJGE
+         SnFq741PRpq07nfajzx/ajYjXHGaKBauxnOfXvTQON69OjAL4nh/e0/bjG6LySLzh0bX
+         Vieg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782801464; x=1783406264;
+        d=1e100.net; s=20251104; t=1782801472; x=1783406272;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=78eN83RWVPj3usGOOjpXeDQAtr7LkbhNmieBoJ7adsI=;
-        b=YhLjQFeaLuvd1mhV601kTqrvWFYEDU5mjjwGKyz8D0AJhDfHrtNpFQ/r4eK1jSzZdJ
-         w6Y/gQtc4slJnf81Pn3tz8aIQTyAW9vSb1iH8kcYZgZCqexyjsXuvCpfWNsx+DvZpCx5
-         A5Knk6JcpCkFaXxdLaSXY9gpSRJdrfSqJF4gjm8Nh5pkdQF7B6dR1q38RbDWfcadyG1b
-         EAWVaU02sb5crSfncbRj+/3ME5WLB7tybWiBa6lzfJZumwm6ym+yPUIEWefgFZu5OQF8
-         GMsfYGHAVhx1IUGjEGr0HVQoLYtBh6TXyZEq6OhXVxQgMb6DC2y8CBQ7YmSfgioNPq8w
-         BkXw==
-X-Forwarded-Encrypted: i=1; AHgh+Rp0skBXEKsMcnTYrgcWuTHUMFT/E8KKX7s7SDLTnZbJGSL0idHVBAq8vq4aXUB9O61l8pTObrxJ6038v7Qh0w==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywlv0Ov15rr4Ibql7bYsXAtmb4zuNAf5D5jn4idXHIg0mK84c6D
-	N68NuGvTW5QsfXh9RRfDIwu+aaauzSsIiJTbLxvzL1tWdCNFY87UVoIm
-X-Gm-Gg: AfdE7cm7bOuU2MJNp+CCrF9QlTi8A8CSnUVdFVFSt2wBWisMMgE1PUchOlC5SUsS6TG
-	BSmcuhIigWmlf+8kT2+a3lE1Q1WY07UPHPQZrEEw/Wbs49T0e2HGw9lTN8qOybDxkjAnwN4Vf4C
-	8Y//UWI5+a3KqEknPQxQ2xiX6mcr/sV9C8dcPPeKPJx/ECdyTgJv3i1zma3B2YfivInt4d/E7vv
-	dMNyb07O90mlYn9+0NAjb2nix4dpUqUN25TZI3hVLT+zzIzlsliQ1j5qd3snP+lE+7G7ruEjpHB
-	1vxlI/K+KNfKABKN/b9gQ3dUdIWuQcA9ExFnfaJC6zG+/ts/6/IJ7lORyhoTO+tsy30THjJZ/fV
-	ssWy05OMANvY7b23ireapotx1HYEsGO59NFkHol0vNjfbPF+TK4bO4etfbjC6wU7ui1+jcG2Q2I
-	Rasny3QB1jPlAURjEpATd+x8QQaL59ydKX4Y1JBMnTUioM5D4=
-X-Received: by 2002:a05:6a00:130f:b0:842:5a8d:302c with SMTP id d2e1a72fcca58-8479f232c38mr1853902b3a.38.1782801464159;
-        Mon, 29 Jun 2026 23:37:44 -0700 (PDT)
+         :to:cc:subject:date:message-id:reply-to;
+        bh=jE/vGes9bWof+nCBjw7kvawhZty+DCUG3JNg48uQoDI=;
+        b=ockAHpEJhAk5T1d/d+Gabjf5hFh3c/VZD4vB+wKcMMNNZU8fySHzApm57PYf6FVopU
+         NPWBiB4d5ZYV7QMxTyQM+mPWjQKSiOvnA7OwE90tbaUDq0BSpPAh0l1LXThHFhHdKMh1
+         CBMgNcXv2/8PBgw4a6vIHEf1m6YYz77EAraf15wbadLpE9uoFRI7iThiHbsaaKOGW0dW
+         sYz9h28aQWsh2mg++sU5vBTam+g/9MzH9tU13Fx/3vMyuwiF5/LQeHMVmcfH3M8SAynW
+         PqzufqgcxIs3MWtPc5BDHs4FGpcQfwuq1s80CFEeQL+dw791Sx1zheUOoW4Z2Mn1xsZx
+         9htQ==
+X-Forwarded-Encrypted: i=1; AHgh+RrN+7j8YfLldgeaBLjL/7smfAukesIhtAEoVZoy0qOQbMMU0tglphhgsff8XLVRe6RugRXkBQw8nimCBJZeMw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyWHsnCfW++nC/46cINAIlo9eljbL5PFQbCkIsf4x6t/bEbPRjU
+	iVhbaK2fB5FtxGc5pui9rx9fZCD97cE7VCk30YuRU3AQ/kjDN8wlXedH
+X-Gm-Gg: AfdE7cm7oWfi1zjs8cjyZXpr4k+x81AOjEY5dCpFets3ssVPEe/2K/W9VaoLgU5+5vL
+	cFxVJBqzJbaW80jgz2a6Zyoh86bxnlnmfdOFI/lygo0qXjTYNnH8UBJPSORWUxCU2E18zCI2ur4
+	gLN0wosUzFb5oXcmZ/f50umFEU+gb1FGjbJCuFVUMls1qw8T8ySrYFF3xWwAZdkB3f1EjpubhWN
+	kyINcdOnv9WDfEOypNLyoN+0KADpTJcfisgrg3zHSiYdK6g7ApFkuDJkZpkM/3p3Iy2p+83VjUq
+	qEYZmPgggcxdpevjI+LXM88l1xy06/0L6r99/Dou3sIiY4cWKLpSFNMGO8e9EgNTV3DmHEFqqWe
+	yWXAfnMWsExCyvJ3q6PmYDY6pwWTc+/F4YdIU5UUR4vzs1tk0JUO5vLSJXyQbavYdQUHFm2bbxb
+	su1FnTbRfSReoX6DI6ojbfsdQBRC91lGoysEysoqSeDDNSnF8=
+X-Received: by 2002:a05:6a00:3d0f:b0:847:8a47:264d with SMTP id d2e1a72fcca58-8479f22aa22mr1967010b3a.36.1782801471671;
+        Mon, 29 Jun 2026 23:37:51 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-847a02cd237sm1165061b3a.32.2026.06.29.23.37.37
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-847a02cd237sm1165061b3a.32.2026.06.29.23.37.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jun 2026 23:37:43 -0700 (PDT)
+        Mon, 29 Jun 2026 23:37:51 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>,
 	Takashi Iwai <tiwai@suse.com>,
@@ -103,17 +103,17 @@ Cc: Support Opensource <support.opensource@diasemi.com>,
 	linux-arm-msm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH 18/27] ASoC: codecs: rt5645: Use guard() for mutex locks
-Date: Tue, 30 Jun 2026 13:34:40 +0700
-Message-ID: <20260630063449.503996-19-phucduc.bui@gmail.com>
+Subject: [PATCH 19/27] ASoC: codecs: rt5665: Use guard() for mutex locks
+Date: Tue, 30 Jun 2026 13:34:41 +0700
+Message-ID: <20260630063449.503996-20-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260630063449.503996-1-phucduc.bui@gmail.com>
 References: <20260630063449.503996-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260629_233744_978680_88DA0AC2 
-X-CRM114-Status: GOOD (  15.05  )
+X-CRM114-CacheID: sfid-20260629_233752_401424_EE3337B8 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,13 +135,13 @@ Merely code refactoring, and no behavior change.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/codecs/rt5645.c | 160 +++++++++++++++++++-------------------
- 1 file changed, 79 insertions(+), 81 deletions(-)
+ sound/soc/codecs/rt5665.c | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
 
-diff --git a/sound/soc/codecs/rt5645.c b/sound/soc/codecs/rt5645.c
-index e9819653b30d..7cdca9774545 100644
---- a/sound/soc/codecs/rt5645.c
-+++ b/sound/soc/codecs/rt5645.c
+diff --git a/sound/soc/codecs/rt5665.c b/sound/soc/codecs/rt5665.c
+index 48f57cd0920d..1d987472ba42 100644
+--- a/sound/soc/codecs/rt5665.c
++++ b/sound/soc/codecs/rt5665.c
 @@ -6,6 +6,7 @@
   * Author: Bard Liao <bardliao@realtek.com>
   */
@@ -150,178 +150,63 @@ index e9819653b30d..7cdca9774545 100644
  #include <linux/module.h>
  #include <linux/moduleparam.h>
  #include <linux/init.h>
-@@ -3323,93 +3324,90 @@ static void rt5645_jack_detect_work(struct work_struct *work)
- 	if (!rt5645->component)
- 		return;
- 
--	mutex_lock(&rt5645->jd_mutex);
--
--	switch (rt5645->pdata.jd_mode) {
--	case 0: /* Not using rt5645 JD */
--		if (rt5645->gpiod_hp_det) {
--			gpio_state = gpiod_get_value(rt5645->gpiod_hp_det);
--			if (rt5645->pdata.inv_hp_pol)
--				gpio_state ^= 1;
--			dev_dbg(rt5645->component->dev, "gpio_state = %d\n",
--				gpio_state);
--			report = rt5645_jack_detect(rt5645->component, gpio_state);
-+	scoped_guard(mutex, &rt5645->jd_mutex) {
-+		switch (rt5645->pdata.jd_mode) {
-+		case 0: /* Not using rt5645 JD */
-+			if (rt5645->gpiod_hp_det) {
-+				gpio_state = gpiod_get_value(rt5645->gpiod_hp_det);
-+				if (rt5645->pdata.inv_hp_pol)
-+					gpio_state ^= 1;
-+				dev_dbg(rt5645->component->dev, "gpio_state = %d\n",
-+					gpio_state);
-+				report = rt5645_jack_detect(rt5645->component, gpio_state);
-+			}
-+			snd_soc_jack_report(rt5645->hp_jack,
-+					    report, SND_JACK_HEADPHONE);
-+			snd_soc_jack_report(rt5645->mic_jack,
-+					    report, SND_JACK_MICROPHONE);
-+			return;
-+		case 4:
-+			val = snd_soc_component_read(rt5645->component, RT5645_A_JD_CTRL1) & 0x0020;
-+			break;
-+		default: /* read rt5645 jd1_1 status */
-+			val = snd_soc_component_read(rt5645->component, RT5645_INT_IRQ_ST) & 0x1000;
-+			break;
- 		}
--		snd_soc_jack_report(rt5645->hp_jack,
--				    report, SND_JACK_HEADPHONE);
--		snd_soc_jack_report(rt5645->mic_jack,
--				    report, SND_JACK_MICROPHONE);
--		mutex_unlock(&rt5645->jd_mutex);
--		return;
--	case 4:
--		val = snd_soc_component_read(rt5645->component, RT5645_A_JD_CTRL1) & 0x0020;
--		break;
--	default: /* read rt5645 jd1_1 status */
--		val = snd_soc_component_read(rt5645->component, RT5645_INT_IRQ_ST) & 0x1000;
--		break;
--
--	}
- 
--	if (!val && (rt5645->jack_type == 0)) { /* jack in */
--		report = rt5645_jack_detect(rt5645->component, 1);
--	} else if (!val && rt5645->jack_type == SND_JACK_HEADSET) {
--		/* for push button and jack out */
--		btn_type = 0;
--		if (snd_soc_component_read(rt5645->component, RT5645_INT_IRQ_ST) & 0x4) {
--			/* button pressed */
--			report = SND_JACK_HEADSET;
--			btn_type = rt5645_button_detect(rt5645->component);
--			/* rt5650 can report three kinds of button behavior,
--			   one click, double click and hold. However,
--			   currently we will report button pressed/released
--			   event. So all the three button behaviors are
--			   treated as button pressed. */
--			switch (btn_type) {
--			case 0x8000:
--			case 0x4000:
--			case 0x2000:
--				report |= SND_JACK_BTN_0;
--				break;
--			case 0x1000:
--			case 0x0800:
--			case 0x0400:
--				report |= SND_JACK_BTN_1;
--				break;
--			case 0x0200:
--			case 0x0100:
--			case 0x0080:
--				report |= SND_JACK_BTN_2;
--				break;
--			case 0x0040:
--			case 0x0020:
--			case 0x0010:
--				report |= SND_JACK_BTN_3;
--				break;
--			case 0x0000: /* unpressed */
--				break;
--			default:
--				dev_err(rt5645->component->dev,
--					"Unexpected button code 0x%04x\n",
--					btn_type);
--				break;
-+		if (!val && rt5645->jack_type == 0) { /* jack in */
-+			report = rt5645_jack_detect(rt5645->component, 1);
-+		} else if (!val && rt5645->jack_type == SND_JACK_HEADSET) {
-+			/* for push button and jack out */
-+			btn_type = 0;
-+			if (snd_soc_component_read(rt5645->component, RT5645_INT_IRQ_ST) & 0x4) {
-+				/* button pressed */
-+				report = SND_JACK_HEADSET;
-+				btn_type = rt5645_button_detect(rt5645->component);
-+				/*
-+				 * rt5650 can report three kinds of button behavior,
-+				 * one click, double click and hold. However,
-+				 * currently we will report button pressed/released
-+				 * event. So all the three button behaviors are
-+				 * treated as button pressed.
-+				 */
-+				switch (btn_type) {
-+				case 0x8000:
-+				case 0x4000:
-+				case 0x2000:
-+					report |= SND_JACK_BTN_0;
-+					break;
-+				case 0x1000:
-+				case 0x0800:
-+				case 0x0400:
-+					report |= SND_JACK_BTN_1;
-+					break;
-+				case 0x0200:
-+				case 0x0100:
-+				case 0x0080:
-+					report |= SND_JACK_BTN_2;
-+					break;
-+				case 0x0040:
-+				case 0x0020:
-+				case 0x0010:
-+					report |= SND_JACK_BTN_3;
-+					break;
-+				case 0x0000: /* unpressed */
-+					break;
-+				default:
-+					dev_err(rt5645->component->dev,
-+						"Unexpected button code 0x%04x\n",
-+						btn_type);
-+					break;
-+				}
- 			}
-+			if (btn_type == 0)/* button release */
-+				report =  rt5645->jack_type;
-+			else
-+				mod_timer(&rt5645->btn_check_timer,
-+					  msecs_to_jiffies(100));
-+		} else {
-+			/* jack out */
-+			report = 0;
-+			snd_soc_component_update_bits(rt5645->component,
-+						      RT5645_INT_IRQ_ST, 0x1, 0x0);
-+			rt5645_jack_detect(rt5645->component, 0);
- 		}
--		if (btn_type == 0)/* button release */
--			report =  rt5645->jack_type;
--		else {
--			mod_timer(&rt5645->btn_check_timer,
--				msecs_to_jiffies(100));
--		}
--	} else {
--		/* jack out */
--		report = 0;
--		snd_soc_component_update_bits(rt5645->component,
--				    RT5645_INT_IRQ_ST, 0x1, 0x0);
--		rt5645_jack_detect(rt5645->component, 0);
+@@ -1208,7 +1209,7 @@ static void rt5665_jack_detect_handler(struct work_struct *work)
+ 		usleep_range(10000, 15000);
  	}
  
--	mutex_unlock(&rt5645->jd_mutex);
+-	mutex_lock(&rt5665->calibrate_mutex);
++	guard(mutex)(&rt5665->calibrate_mutex);
+ 
+ 	val = snd_soc_component_read(rt5665->component, RT5665_AJD1_CTRL) & 0x0010;
+ 	if (!val) {
+@@ -1274,8 +1275,6 @@ static void rt5665_jack_detect_handler(struct work_struct *work)
+ 		schedule_delayed_work(&rt5665->jd_check_work, 0);
+ 	else
+ 		cancel_delayed_work_sync(&rt5665->jd_check_work);
 -
- 	snd_soc_jack_report(rt5645->hp_jack, report, SND_JACK_HEADPHONE);
- 	snd_soc_jack_report(rt5645->mic_jack, report, SND_JACK_MICROPHONE);
- 	if (rt5645->en_button_func)
+-	mutex_unlock(&rt5665->calibrate_mutex);
+ }
+ 
+ static const char * const rt5665_clk_sync[] = {
+@@ -4564,7 +4563,7 @@ static void rt5665_calibrate(struct rt5665_priv *rt5665)
+ {
+ 	int value, count;
+ 
+-	mutex_lock(&rt5665->calibrate_mutex);
++	guard(mutex)(&rt5665->calibrate_mutex);
+ 
+ 	regcache_cache_bypass(rt5665->regmap, true);
+ 
+@@ -4601,7 +4600,8 @@ static void rt5665_calibrate(struct rt5665_priv *rt5665)
+ 			pr_err("HP Calibration Failure\n");
+ 			regmap_write(rt5665->regmap, RT5665_RESET, 0);
+ 			regcache_cache_bypass(rt5665->regmap, false);
+-			goto out_unlock;
++			rt5665->calibration_done = true;
++			return;
+ 		}
+ 
+ 		count++;
+@@ -4620,7 +4620,8 @@ static void rt5665_calibrate(struct rt5665_priv *rt5665)
+ 			pr_err("MONO Calibration Failure\n");
+ 			regmap_write(rt5665->regmap, RT5665_RESET, 0);
+ 			regcache_cache_bypass(rt5665->regmap, false);
+-			goto out_unlock;
++			rt5665->calibration_done = true;
++			return;
+ 		}
+ 
+ 		count++;
+@@ -4635,9 +4636,7 @@ static void rt5665_calibrate(struct rt5665_priv *rt5665)
+ 	regmap_write(rt5665->regmap, RT5665_BIAS_CUR_CTRL_8, 0xa602);
+ 	regmap_write(rt5665->regmap, RT5665_ASRC_8, 0x0120);
+ 
+-out_unlock:
+ 	rt5665->calibration_done = true;
+-	mutex_unlock(&rt5665->calibrate_mutex);
+ }
+ 
+ static void rt5665_calibrate_handler(struct work_struct *work)
 -- 
 2.43.0
 
