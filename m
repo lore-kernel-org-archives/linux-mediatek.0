@@ -4,62 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3510C43458
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 16:19:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BEA0C43458
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 16:39:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FDAfDvzy+acD3YqGoCYl3nzfWw0aFuZI5HDAO/z/8Ls=; b=i3ut5Sd51rU0um5iqhK2Hx4XNl
-	IZJRX5pt+PRAK2nQ3tuCDhFf1Hkd7OwRiqu1wt1xps1kBbqEx/SD/+DyfbUS4dV6UDAu48q9FMLIE
-	8BJeP8Av7uLkWahkXK8MQqQI+78JMcsUqJvF5ApXSs5FuDjkuZ8gBXbYf40OCzZH3tVBV3hXxw1Zp
-	P/jG568zvQ7TyshgD5jOEt8d+xEuDFYCiKiSMCdwiAsXvjPApLmIET6h9OazH/oPWVcZ8NJqbeWbr
-	enBjmDEWNNKkWKfejomPf2HXTLsKjiJW4delYiAc/M9kfqFdV532l65/r7NCwxg4uouW7b3pIiRV7
-	t6mdop+g==;
+	bh=5y1+upEHw2aVmmfQc7NmwlD1vJ7ldcPCjL3K67v3kVM=; b=OlM77IxPlpRkpkA+UkF8Q9dzmO
+	xzJ2aKwSiv/lQBx5z+1Bz1zLmgDj4gcwjUNOKvzv7mylKBd22P7EABNgKW6fjQyP71s4BKeZRUDcP
+	3xaEpxzj5VwvjDG2L0aVDraFYyY0qBcHyhh0vLFrBRAnIuAyTVDjkQo2BmspitpxdpKnyKtkPrC3f
+	LZocFgUCfrFxFMDXGIHrxh6y2Q2vBakc9gpxwRtkRzickLLaldquung6kdqwiTEdQGqiRTV7rewCo
+	s4r6MjYcg/oN5opnseOiccQ7c+dU9+dST78LZW+GbYVulnOtBVPEA9jdFkfWL24NoLhWuVNvoVN5g
+	tJgAZJEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1webAz-0000000HSWf-1ytZ;
-	Tue, 30 Jun 2026 16:19:09 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1webUo-0000000HUcS-1aSF;
+	Tue, 30 Jun 2026 16:39:38 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1webAx-0000000HSWI-3J94;
-	Tue, 30 Jun 2026 16:19:07 +0000
+	id 1webUn-0000000HUbv-220r;
+	Tue, 30 Jun 2026 16:39:37 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E9594600BB;
-	Tue, 30 Jun 2026 16:19:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 225DE1F000E9;
-	Tue, 30 Jun 2026 16:19:05 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B021A600BB;
+	Tue, 30 Jun 2026 16:39:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 415601F000E9;
+	Tue, 30 Jun 2026 16:39:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782836346;
-	bh=FDAfDvzy+acD3YqGoCYl3nzfWw0aFuZI5HDAO/z/8Ls=;
+	s=k20260515; t=1782837576;
+	bh=5y1+upEHw2aVmmfQc7NmwlD1vJ7ldcPCjL3K67v3kVM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=dFMxDZlMqRC2l4zAdEBFqRtXe5dgSQad0ZKT667f+b5JkT936qjRqYBzNi8PGaV39
-	 aga/92P65RtpH4zIWKsanhoEE3pnHuAKDbPvMUmteiE/UCNhKF59yDzSqe1/07CwgZ
-	 OOUgyA6vRmD2dT+HidcZeXW5lKOQpPkLkJ8xyMjhmXNMNtFXfYu3YXwPrSt7XpHikM
-	 JKggfQ8MrIQgX+OzxAjsZcP6s7CW4WswRhfWWG5U/Y99PP3o/TUrRTEagfAaU2iqwS
-	 lXK/ofqL4AXYTOwQYoIsYCM+NmqXgowST3VyO4y/sOTgyefYpQDvpD9SlOWXRw2gKM
-	 UvQTCTkMiQxsA==
-Date: Tue, 30 Jun 2026 18:19:04 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Paolo Abeni <pabeni@redhat.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Simon Horman <horms@kernel.org>,
+	b=c2jZtrhLB2/QXI1U1YIaFApsftQcs9m8LqVlyzcANboeutPLdeCkiwTnVEZjDCyit
+	 X0Y95SAAFZgUpm79p1I3UcPbtEE5ZfChErW8ImZ8QQQi+s/CoOWak3a0TkOzFFp4OV
+	 a3GvWRGmUMRGgLCitrKIltfYT/jx8mT/FDP8R52885EKIIBJIrwR/LkBmkY1aTBYbo
+	 Lb+NkW/k9yRSJHsXzz8Kv7x6/Mnj1AFFigALczLhMUCmIY/L4tpMbHaRh4FTUqcA13
+	 Gxw92QgmmLPLkhff3nVK5s7Wt5roeuaD9CgYhtEgHvTSlj5UhfeGVFbyVVrueMX7Xa
+	 REMo4LW/Z/R4A==
+Date: Tue, 30 Jun 2026 11:39:35 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	Madhur Agrawal <madhur.agrawal@airoha.com>
-Subject: Re: [PATCH net] net: airoha: fix max receive size configuration
-Message-ID: <akPseKb8X7Q8nTg3@lore-desk>
-References: <20260625-airoha-fix-rx-max-len-v1-1-45b9b827358d@kernel.org>
- <94901706-e7f3-4ff7-9b19-9965f593e228@redhat.com>
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-clk@vger.kernel.org,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Brian Masney <bmasney@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	linux-pci@vger.kernel.org
+Subject: Re: [PATCH v2 3/4] dt-bindings: PCI: mediatek-gen3: Split Airoha
+ schema and document 2-lanes
+Message-ID: <178283757491.3920026.421543369418004225.robh@kernel.org>
+References: <20260626092029.3525264-1-ansuelsmth@gmail.com>
+ <20260626092029.3525264-4-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="gbI4hZHtB9TsjBtv"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <94901706-e7f3-4ff7-9b19-9965f593e228@redhat.com>
+In-Reply-To: <20260626092029.3525264-4-ansuelsmth@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,54 +85,26 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---gbI4hZHtB9TsjBtv
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Fri, 26 Jun 2026 11:20:27 +0200, Christian Marangi wrote:
+> To permit proper documentation of required property to support PCIe
+> configured for 2-lanes mode, split the Airoha schema part from the
+> mediatek-gen3 schema to a dedicated schema.
+> 
+> A PCIe configured for 2-lanes mode require an additional reg for the
+> secondary PCIe to be configured and the airoha,scu phandle to correctly
+> configure the PCIe MUX.
+> 
+> Rework the mediatek-gen3 schema to drop any redundant constraint previsouly
+> introduced for Airoha PCIe properties.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>  .../bindings/pci/airoha,en7581-pcie.yaml      | 251 ++++++++++++++++++
+>  .../bindings/pci/mediatek-pcie-gen3.yaml      |  77 +-----
+>  2 files changed, 256 insertions(+), 72 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/pci/airoha,en7581-pcie.yaml
+> 
 
-On Jun 30, Paolo Abeni wrote:
-> On 6/25/26 8:49 AM, Lorenzo Bianconi wrote:
-> > Set the GDM maximum receive size to AIROHA_MAX_RX_SIZE unconditionally
-> > during hardware initialization instead of updating it according to the
-> > configured MTU. This avoids dropping incoming frames that exceed the
-> > current MTU but could still be processed by the networking stack, which
-> > is able to fragment the reply on the TX side (e.g. ICMP echo requests).
-> > Move the per-port MTU configuration to the PPE egress path where it
-> > belongs, and set the tx frame size running airoha_ppe_set_xmit_frame_si=
-ze()
-> > to dynamically track the maximum MTU across running interfaces sharing
-> > the same PPE instance.
-> > Fix the PPE MTU register addressing to pack two port entries per
-> > register word and add WAN_MTU0 configuration for non-LAN GDM devices.
-> >=20
-> > Fixes: 54d989d58d2a ("net: airoha: Move min/max packet len configuratio=
-n in airoha_dev_open()")
-> > Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
->=20
-> PW bot is on holiday, no automated notifications for a while.
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
-It's too hot even for the bot :)
-
-Regards,
-Lorenzo
-
->=20
-> Applied, thanks!
->=20
-> /P
->=20
-
---gbI4hZHtB9TsjBtv
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCakPseAAKCRA6cBh0uS2t
-rH1JAPoDbzhL1nA8oMVHk3V1xDwDjGNcTmfsB+ewrnQo6LhQHQD/RauHvWeHPwKj
-BvwMcM9wg/++9wq6uGSMBPxT36uh1gM=
-=LZi/
------END PGP SIGNATURE-----
-
---gbI4hZHtB9TsjBtv--
 
