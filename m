@@ -4,86 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE8BEC43458
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 06:37:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEF3AC43458
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 06:37:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JleaosgPudHEejmUeNFrpNbP60XzHFLgR4c9WPlcTX8=; b=n795IAbmZFZhfsHPb15vY6XTYh
-	nUmQmQba3UVlVV/Q5DFIodcF8M+bDoRsYU/+yBjG/7sNoT+2Gco9uhjib1LzTbsVoXJ8QssUloC0I
-	ir5+2yJHEdSnfzLbROOjdpInvm6rVwSImCrx+6Rvob3pwOQNI+MHgW2/1w4ceBY0QCnNiP1pzo0r1
-	Z5ImAiiA6+dIAjrPj8I64C2LDBdJhlSWnbvKBDgxfUVlGGAwO0gp4yj1Gfp5CdaMY9qiNf0kpBDUv
-	qd7Jsk9KotQHV3ui9otU14AXqYs1zL+PdgWU30T4aanSUA2on83acQoNYsTztNYKmvXlH1Lez+AFs
-	834Kfhsw==;
+	bh=ro7dNqCD2kLl5dqOgIDoE4tVtLHIEVBSdhnRDBcC1Vc=; b=1e6RspqWNg45E+7LhsZE/31Faw
+	rXEh+tbfFHkQeSohXV+fsido3vgNUMHBLTCb7RV7/hBWlMqAlEbARDcJeLf3/E111pt9+yBqI4hVW
+	SLytRW3CpwhNrAMkwQKi/4GjjKui/JeVW8Av2uz/nEzbDUJSJ4AU0MozvGeUPAKbNiyT0KY+TJ+AD
+	bI6R4rL46hfl8auqVVJzmIXcI005OGlCbeGiDhBlcCQ6mMqTMPp3ynOErzz35WX3v2f/clSRqJcIR
+	EH0tTBm2jR6VZmzvIsPGxoj8HMk0ZGqplUvGmtAN+s+WPEJ2+VbARcaGwVQEWlRmBERsYvCuwvqlH
+	ir4ffctg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weS6D-0000000FzYM-3SGy;
-	Tue, 30 Jun 2026 06:37:37 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1weS6G-0000000Fzb4-07Gf;
+	Tue, 30 Jun 2026 06:37:40 +0000
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weS6A-0000000FzUM-18i5
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 30 Jun 2026 06:37:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=JleaosgPudHEejmUeNFrpNbP60XzHFLgR4c9WPlcTX8=; b=PzZZ6zKHeVx+EiQpo+odrOcGYv
-	O3y+VucYQA8P9GOS7fdwyqvGkqtg+Ll70T/qCoNsXGjJq9vX1QJBqPjFIBZJZel+8LFa9HJDbmIA2
-	CtzfJ95oGDuMfFXu8u5umB9RarONUd5ZGBsJHPihqzi9qsXwWbYbfhzDOH510PKk/JGdiVlKpoUY1
-	+IeVSjSjl3qe+53xfaCgdrZz2U65byUf7wQ5A6Ypmb2/I0PETljoy/dY/qJL6xV3NWxgX7P6OHeps
-	ifzxld+oQ2fxjVcn9VHI4okpU79qMYKugVUtuToS1BWrG24kKMxlSyxjwqhV/UQ6hDE2EDBni4qNx
-	LQ8Wq1FA==;
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1weS66-00000001ZNP-3ND1
+	id 1weS6D-0000000FzXU-1CZe
 	for linux-mediatek@lists.infradead.org;
-	Tue, 30 Jun 2026 06:37:32 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-845eb7b96feso1194256b3a.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 29 Jun 2026 23:37:30 -0700 (PDT)
+	Tue, 30 Jun 2026 06:37:39 +0000
+Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-845b6d9bf39so165786b3a.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Jun 2026 23:37:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1782801449; x=1783406249; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1782801456; x=1783406256; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=JleaosgPudHEejmUeNFrpNbP60XzHFLgR4c9WPlcTX8=;
-        b=YPAdyRX2rJF6XsM8ParU1VGg/tg3u3sVi3weMawHkQAsteN0my8cwL1QpnDQzmyoKg
-         0OEhS9T21nCZtPrGPNQiOINlf0lYktYaeZ4YlwQ93hgmErN0104hNmsYmu+R/ANB/f/4
-         4FDay0zFtShxEmIAqE8dsjOljt+arUSPRDFuNDZAe+5COl//dMhatHcvK9tQnUvKEkKw
-         B4dSD5YhyRhu/SY14dcEjoR14ibqGq1IDaU33m6EzeZUuepQyNi8op4y59d5az532i5b
-         xhIJqHKG0fghocvut38rI5+O97LKwtFwi4XH9LWjREggwVCy7geYslaeAR98fuFTclRz
-         EBLA==
+        bh=ro7dNqCD2kLl5dqOgIDoE4tVtLHIEVBSdhnRDBcC1Vc=;
+        b=RvQmI9cJHWM7mOMQ49DgOlpzOrO1bRdA3yldL1PiUPni97uMDV49kT4BZONhIOzY6T
+         F+7C5z73wtT8hujkubK7YhsEvY5j0Xo7ofdqsmu2YxLFlA3hk2HJvIwBovs7E79loDZp
+         4Ay7EIDKwH/fQeW1eo1YY20c3vZDBeIoarscVYJOfMttrGvSMWKlFhPJijhGF0sNS0Oj
+         HTmoonG+da9lLo3RzKLkqaugOuUbGgpl4fHy56Bg0+knlv06slCMZnGIXdepzNjnKD0r
+         yQv26nqB9taMYIrw5Q9S3So/y+g7p46uXJT9+VHZX2cNvoeMpTc6L8iLDkeJHDqNx9Rm
+         VO4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782801449; x=1783406249;
+        d=1e100.net; s=20251104; t=1782801456; x=1783406256;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=JleaosgPudHEejmUeNFrpNbP60XzHFLgR4c9WPlcTX8=;
-        b=C9YswpWBLWpqxvkE+81gpHCVBoNG3JUs8Z3ITzmpWK05UrzOaUBOVousSSVuEzm9sT
-         dDObd6lLW+9y8xpj8YVQli66HJy0DdV4HAHbwWTM+1B+xd1GIFgYJL+YisXgNdDrqaad
-         dBhRwRVnfNv0BcPcXNwT6d3RSpn6DSQoe3pPyLDU+O4UvJAY1FKsQSXrY9f2tjDgN72l
-         FVFZ6IWMowqaDcmSMv3yLOeGCcccEvlZZz5QyngpwKN0JB7iCHss8CDfqOwXURIctJ3b
-         c5g6iZbICThV69HTnDgXsgOknJW13qy+BhvyjcW05K9+5p3b0wB7OZNo2LoZSm5/L19w
-         aQ3Q==
-X-Forwarded-Encrypted: i=1; AHgh+Rrzk+1DnrjvnHC+6C4x6E4sn0hDiIXtSCbXUKjsG+S6iiOKVZOpQ0j6ubjnryNGt/bdG2GJBOkCTEkdRxv0QA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxUjYmu1CNIILhdu+eBA05cjbbwrdO9+uitdBqIcv0j0HcI17eW
-	Y4J7p9zfwqRUidM94DbMfVrVQzAFtnGGGqu95YEsO1Kcr/0vBmauqIXP
-X-Gm-Gg: AfdE7ckPJ1/jYOPOJua3MMIwMQJH0IE4Cz+/atzDKbPpP8x41TTzhR4ZyA0GctS/5xd
-	/uMA/R8J6JfDyuQiwm+D+xXVwewmW8XIajCm3uo1HccEyDmIkPx/kDrc1ub+oBEy3TmzN4zLPNE
-	nzYp+iwYF1lBC1QT3INs9h/88NIJklH2DF4Toe/89YNoihUt2M+ZjEOxlPj2LwKHAleoJ4FlWCq
-	WQUxtPwZGma/DfVAhxuqS5Oz88oIGEOtuP7Ux4bRClRsVqK68xGI1sgR86u/58nNBrhBH53Y9R7
-	19f8Jw8a7piq1x9/QKFe0mlysCOd9VrkHbFsPL1QHSvJcjdKsD8lG0Y5uBU36EBkEaP0SzezTQL
-	fPIXm3jtpbcRbHxGyi8EUPAGIQbMzA2iZGvpxIcNByKDrKD/DMZnVVMv7xclyzw31OTVLjqB8Iq
-	roCXgxCh5K+bNEEeJKXeSHoxHDA/LIdifCHBQ2uivnnDzO0Aw6QOdGDhgywQ==
-X-Received: by 2002:a05:6a00:4b4b:b0:847:8842:8c63 with SMTP id d2e1a72fcca58-8479f2ea745mr1734146b3a.56.1782801449017;
-        Mon, 29 Jun 2026 23:37:29 -0700 (PDT)
+        bh=ro7dNqCD2kLl5dqOgIDoE4tVtLHIEVBSdhnRDBcC1Vc=;
+        b=bo7WwbCJiVOdNYRI3OMtx7KTP1WvJm62JorUhP/MoPyYra7tV9rrmK2IQ7kJeecInj
+         Qi/UMWKksSumH4E587Zebd5hI61ebURcXg9o1Pzannd4080gY6q8DuqdxpV4Gyip60rk
+         WsRTW9z0MW9fN1kckOyKu2lhaVbFGMHo5Tc1+sGSl5VmaCbTslhMkeDd7fHnrsQIJVnw
+         k0PeiUGl+hmDRtVXN9cKwLptM3RBEUtm0SAVycu0zvH4vPYBjbINiVBIAeL391/lC3cx
+         dHuwmGI8KafjZwtyLfrwHTHkB3GSW+oEJxMMgmlOo+esIVifnJSo73rbSh+xATLQ8CfF
+         8Q+A==
+X-Forwarded-Encrypted: i=1; AHgh+RoFrojFyIJ1jvCZCG0+67Q7oWgJzvJklKOJ4Nc86Ta71uhrquPIEswb6Fphdegkz3DbPyOgU0nYjFmSc5aNQA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzDbmqvu4nqAVlreqJu+rnyNJnyZy7LxsVph5NyM5LnNHLIXS+l
+	7BTr5nyGT/DX8TV1+L8Qmre+mRVAcMHcqrUuwat2C+kUTgjMuJfhFGbV
+X-Gm-Gg: AfdE7clfWfIB1RgzjZQaZmZSCq3gXC9OU14gVUQkbdd1ugcX7ttTz1BrcLrV7txJzUw
+	us6WYFTJW1W7r0ppbRIRWHeO2RzxfFUhPzXWZYEwaq24FAhYNoxmQK17lIvNwI27J4s2bEpJNQK
+	q3qJ7TALpP/ih2KnAjvxacmiPp5RCgS+fdWnC99mH6inhX1JSW6Qk33xAiNywfE6LWXj5MBWXgg
+	a3Gnd5bVmyI9LG8FYHBMqJJTVGzMGL2D9303CqIjeoCg67+kbetzzi5Xx3x6C8PeejJ5+b7bIdA
+	dovZj/HLM6Oi6FXOvQ89dPmB6KTl2riOo2Il37L0NZQSPdshotIxBe4kLB/aE1WE+NhB6VhAhtT
+	HUGDK9BdDV0BIzV+UbEpK1qtpe+Whfy7lqmVG/zNPKv1TjjafLdLyD1X4Q4iWI9D5oklfqaqtsT
+	WhOUezN7EAgvWiUZgXnf6HF31UEoDVe1sn0h4n8a/9DThYnrs=
+X-Received: by 2002:a05:6a00:3d04:b0:837:f111:b70 with SMTP id d2e1a72fcca58-847a81835d1mr428150b3a.4.1782801456574;
+        Mon, 29 Jun 2026 23:37:36 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-847a02cd237sm1165061b3a.32.2026.06.29.23.37.22
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-847a02cd237sm1165061b3a.32.2026.06.29.23.37.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jun 2026 23:37:28 -0700 (PDT)
+        Mon, 29 Jun 2026 23:37:36 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>,
 	Takashi Iwai <tiwai@suse.com>,
@@ -118,17 +103,17 @@ Cc: Support Opensource <support.opensource@diasemi.com>,
 	linux-arm-msm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH 16/27] ASoC: codecs: peb2466: Use guard() for mutex locks
-Date: Tue, 30 Jun 2026 13:34:38 +0700
-Message-ID: <20260630063449.503996-17-phucduc.bui@gmail.com>
+Subject: [PATCH 17/27] ASoC: codecs: rt5514-spi: Use guard() for mutex locks
+Date: Tue, 30 Jun 2026 13:34:39 +0700
+Message-ID: <20260630063449.503996-18-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260630063449.503996-1-phucduc.bui@gmail.com>
 References: <20260630063449.503996-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260630_073731_089390_D3C58B45 
-X-CRM114-Status: GOOD (  12.71  )
+X-CRM114-CacheID: sfid-20260629_233737_732467_F23FBA22 
+X-CRM114-Status: GOOD (  12.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,55 +135,91 @@ Merely code refactoring, and no behavior change.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/codecs/peb2466.c | 16 ++++++----------
- 1 file changed, 6 insertions(+), 10 deletions(-)
+ sound/soc/codecs/rt5514-spi.c | 21 ++++++++-------------
+ 1 file changed, 8 insertions(+), 13 deletions(-)
 
-diff --git a/sound/soc/codecs/peb2466.c b/sound/soc/codecs/peb2466.c
-index 2d71d204d8fa..5a1ed02abb84 100644
---- a/sound/soc/codecs/peb2466.c
-+++ b/sound/soc/codecs/peb2466.c
+diff --git a/sound/soc/codecs/rt5514-spi.c b/sound/soc/codecs/rt5514-spi.c
+index 199507d12841..91290bfe8daa 100644
+--- a/sound/soc/codecs/rt5514-spi.c
++++ b/sound/soc/codecs/rt5514-spi.c
 @@ -6,6 +6,7 @@
- //
- // Author: Herve Codina <herve.codina@bootlin.com>
+  * Author: Oder Chiou <oder_chiou@realtek.com>
+  */
  
 +#include <linux/cleanup.h>
- #include <linux/unaligned.h>
- #include <linux/clk.h>
- #include <linux/firmware.h>
-@@ -1704,13 +1705,11 @@ static int peb2466_chip_gpio_update_bits(struct peb2466 *peb2466, unsigned int x
- 	 * So, a specific cache value is used.
- 	 */
+ #include <linux/module.h>
+ #include <linux/input.h>
+ #include <linux/spi/spi.h>
+@@ -79,17 +80,17 @@ static void rt5514_spi_copy_work(struct work_struct *work)
+ 	unsigned int cur_wp, remain_data;
+ 	u8 buf[8];
  
--	mutex_lock(&peb2466->gpio.lock);
-+	guard(mutex)(&peb2466->gpio.lock);
+-	mutex_lock(&rt5514_dsp->dma_lock);
++	guard(mutex)(&rt5514_dsp->dma_lock);
+ 	if (!rt5514_dsp->substream) {
+ 		dev_err(rt5514_dsp->dev, "No pcm substream\n");
+-		goto done;
++		return;
+ 	}
  
- 	cache = peb2466_chip_gpio_get_cache(peb2466, xr_reg);
--	if (!cache) {
--		ret = -EINVAL;
--		goto end;
--	}
-+	if (!cache)
-+		return -EINVAL;
+ 	runtime = rt5514_dsp->substream->runtime;
+ 	period_bytes = snd_pcm_lib_period_bytes(rt5514_dsp->substream);
+ 	if (!period_bytes) {
+ 		schedule_delayed_work(&rt5514_dsp->copy_work, 5);
+-		goto done;
++		return;
+ 	}
  
- 	tmp = *cache;
- 	tmp &= ~mask;
-@@ -1718,14 +1717,11 @@ static int peb2466_chip_gpio_update_bits(struct peb2466 *peb2466, unsigned int x
+ 	if (rt5514_dsp->buf_size % period_bytes)
+@@ -111,7 +112,7 @@ static void rt5514_spi_copy_work(struct work_struct *work)
  
- 	ret = regmap_write(peb2466->regmap, xr_reg, tmp);
- 	if (ret)
--		goto end;
-+		return ret;
+ 		if (remain_data < period_bytes) {
+ 			schedule_delayed_work(&rt5514_dsp->copy_work, 5);
+-			goto done;
++			return;
+ 		}
+ 	}
  
- 	*cache = tmp;
--	ret = 0;
+@@ -146,9 +147,6 @@ static void rt5514_spi_copy_work(struct work_struct *work)
+ 	snd_pcm_period_elapsed(rt5514_dsp->substream);
  
--end:
--	mutex_unlock(&peb2466->gpio.lock);
--	return ret;
-+	return 0;
+ 	schedule_delayed_work(&rt5514_dsp->copy_work, 5);
+-
+-done:
+-	mutex_unlock(&rt5514_dsp->dma_lock);
  }
  
- static int peb2466_chip_gpio_set(struct gpio_chip *c, unsigned int offset,
+ static void rt5514_schedule_copy(struct rt5514_dsp *rt5514_dsp)
+@@ -216,7 +214,7 @@ static int rt5514_spi_hw_params(struct snd_soc_component *component,
+ 		snd_soc_component_get_drvdata(component);
+ 	u8 buf[8];
+ 
+-	mutex_lock(&rt5514_dsp->dma_lock);
++	guard(mutex)(&rt5514_dsp->dma_lock);
+ 	rt5514_dsp->substream = substream;
+ 	rt5514_dsp->dma_offset = 0;
+ 
+@@ -225,8 +223,6 @@ static int rt5514_spi_hw_params(struct snd_soc_component *component,
+ 	if (buf[0] & RT5514_IRQ_STATUS_BIT)
+ 		rt5514_schedule_copy(rt5514_dsp);
+ 
+-	mutex_unlock(&rt5514_dsp->dma_lock);
+-
+ 	return 0;
+ }
+ 
+@@ -236,9 +232,8 @@ static int rt5514_spi_hw_free(struct snd_soc_component *component,
+ 	struct rt5514_dsp *rt5514_dsp =
+ 		snd_soc_component_get_drvdata(component);
+ 
+-	mutex_lock(&rt5514_dsp->dma_lock);
+-	rt5514_dsp->substream = NULL;
+-	mutex_unlock(&rt5514_dsp->dma_lock);
++	scoped_guard(mutex, &rt5514_dsp->dma_lock)
++		rt5514_dsp->substream = NULL;
+ 
+ 	cancel_delayed_work_sync(&rt5514_dsp->copy_work);
+ 
 -- 
 2.43.0
 
