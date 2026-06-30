@@ -4,64 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C54AC43458
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 20:56:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D56DCC43458
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 21:02:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LgXozJM0Esf3soperqUV4RS/1nz6e3EwjgHcCk4GTiw=; b=TVOtJjqUxHfuOxg5YiPfEEqbPR
-	YuhOx04pVJDtxq3UX2kqBpOLreOKvyauNpve33ZssgCdpKpw+cAmkpJbw1OIA2oqn+SiCUHAiP0lu
-	pU53CQMonNvoegNymlZZM2iNVqK27QqyDtau3ee4LwCFFf2Rvlu1nDn8BW1H4aExSdlLQObQwOcSd
-	reuS7WDmMa+yVlQaTWRRjQIenC2KjMjJ4AZeIMuFy4Da0ulszeFBxGlBKTrSDvN+HRYvOTVyLc2dl
-	G5nGyiO2cl7aP42xlmIW4KlBMct4gqGD3AzkDv+ah6De8A3CiG/mgKiQ9MSX+dA52Azxobv4/i9a2
-	FRzKYlyw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qyAJVegbfyrJxQWNLL4+WJEBhbqapbMYo1uIZ2+vwQ0=; b=CYkhw3BHfskFrxsASdSorPHdsx
+	qW6qo1ser3Qy4TYdDmxp3jjEyv8DEwHMVjgwO5qlX9TCDr2OuVS73LvgzHiWYowezcvZ4kjyfwUDP
+	jXiVJ9nZWxzQIApEWPpvNq7RqAbgjh+c07a7ehABcYX8ZudSUJMhnovEwNw9ccQtq+dFQL2BT35sS
+	x5abQXXOdkHdDwFrQPSy4JVFgOUPy/7xITEZXK6f9C8u6i055w287XGCMRTTqdom9Te+mEFk6jw7o
+	Nn3k1byA2EUyu3wVvGun9kRHoH57TV/tj5RR2lXri2bjGe+8ncWge53L/hb4umnOObLMEj8iQJXnu
+	iytj8kTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wefVK-00000000CPF-0XoN;
-	Tue, 30 Jun 2026 20:56:26 +0000
-Received: from smtprelay0013.hostedemail.com ([216.40.44.13] helo=relay.hostedemail.com)
+	id 1wefb3-00000000DCu-3cNS;
+	Tue, 30 Jun 2026 21:02:22 +0000
+Received: from mail-dl1-x1232.google.com ([2607:f8b0:4864:20::1232])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wefVH-00000000COW-1QvT
+	id 1wefb1-00000000DC0-0lHO
 	for linux-mediatek@lists.infradead.org;
-	Tue, 30 Jun 2026 20:56:24 +0000
-Received: from omf06.hostedemail.com (lb01a-stub [10.200.18.249])
-	by unirelay02.hostedemail.com (Postfix) with ESMTP id 13EB0120123;
-	Tue, 30 Jun 2026 20:56:17 +0000 (UTC)
-Received: from [HIDDEN] (Authenticated sender: rostedt@goodmis.org) by omf06.hostedemail.com (Postfix) with ESMTPA id ADB7F20010;
-	Tue, 30 Jun 2026 20:56:12 +0000 (UTC)
-Date: Tue, 30 Jun 2026 16:56:12 -0400
-From: Steven Rostedt <rostedt@goodmis.org>
-To: <peter.wang@mediatek.com>
-Cc: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
- <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
- <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
- <chun-hung.wu@mediatek.com>, <alice.chao@mediatek.com>,
- <cc.chou@mediatek.com>, <chaotian.jing@mediatek.com>,
- <jiajie.hao@mediatek.com>, <yi-fan.peng@mediatek.com>,
- <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>, <tun-yu.yu@mediatek.com>,
- <eddie.huang@mediatek.com>, <naomi.chu@mediatek.com>,
- <ed.tsai@mediatek.com>, <bvanassche@acm.org>
-Subject: Re: [PATCH v3] ufs: core: add hba parameter to trace events
-Message-ID: <20260630165612.3e21b510@gandalf.local.home>
-In-Reply-To: <20250214083026.1177880-1-peter.wang@mediatek.com>
-References: <20250214083026.1177880-1-peter.wang@mediatek.com>
-X-Mailer: Claws Mail 3.20.0git84 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+	Tue, 30 Jun 2026 21:02:20 +0000
+Received: by mail-dl1-x1232.google.com with SMTP id a92af1059eb24-13b2b08a553so2854675c88.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2026 14:02:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1782853338; x=1783458138; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=qyAJVegbfyrJxQWNLL4+WJEBhbqapbMYo1uIZ2+vwQ0=;
+        b=Xhyq0h6nFKNvTDQrG1/x0v9/+t7+lH1d0jpRAsCvwQLKAWTHR7DdEAWnewUaIAjZs3
+         lBsqtqiTdK3vKFbv6rFRGNsZfvstETVr0fBhb6q1aRV6sNYagLnsY3/sDNWXM94l14bq
+         BxyXF6yzUZHQci53nNzRR7uYwI8Cw6dWAd+7BvlOpLQx+pgCLi/Uit+9xghlJTx2vdvI
+         gCU8yJ1nLbgoAR03rswuXvyL1nET1ZjTeGalEMLJ+zkgZjqYOQotOSK1WfY1h2WlEhzv
+         8qADCW/jjoHiznbpw26G4WbYUIhl2DYhY9dQ9OwURvIgGaOBfrJ384WZysZ/INimiAnQ
+         XayQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1782853338; x=1783458138;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qyAJVegbfyrJxQWNLL4+WJEBhbqapbMYo1uIZ2+vwQ0=;
+        b=n8RpTl8jKkwxgOcMyd2N5r2APUyViFjmCHbuRMxIPFDqqv0eqOxzUtZ8vYgoAMMmvx
+         qVZLw4FREI+xw4NSGhE9eYSIehIgB0Qy8JhV8QM757c2VVN60OZtoKK7jSahLsNQbTtK
+         ZOLBDsnzsvQGHR8uhipuSJrr6tZ3vTqqToSgCqThGZ3nKpoiNViTTU6/AYO/5Zp5Tmg2
+         Aaxn0bkiAqICvzSgg8/KXq9qy8sdP1xK/uIBNCtRjdDa0dYOdXuh0iKp93CTWMMInetG
+         4m2zevWAscphlEx8oAPp4kFtX/Vjbg6f9YF9yYlQwtj3xse0LxedOZB4QKL0oyFiQA4Q
+         k2Cg==
+X-Forwarded-Encrypted: i=1; AHgh+Rojpf0aO8M5cr99p9lsQNlAEXuTn9W5CepVrWuq7YNGXhg3XTUdkv3ueJLtDJOp9wS2MR8tpoCDLClv+ol3sQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx9skTMYw/ybOhRXTYk16rC/Zrll2PwJsMGG8faTOLVNZ86fBcv
+	GABqjMstOVBFNkl6XYAce6GJ2PkyHhdJjvrLD8U/OAdc/aZilhW7GJSuGMqx32jJ
+X-Gm-Gg: AfdE7clsmmt2xZ4aBTuYWbul7mSH69AXvYCtcnY09QrjwXSEbR5UeDH5FXj33CAtVWy
+	c3N/667BVWycnchgv9QfzNu5n+ZqFZPJXPvEiXSaauPBEfnxGj03sJrLptNztK2bxp8qnqIir6H
+	CqHg1KxXvr4b0cRLEUnJ/Seb2d3DsR4IATabd0sU5wBRHS0y51XcxlWEBvUHUsY+N41DmEKGz5t
+	HRjaR1gRkBDG5vGiKFHI5sSe1oNwniuR+m1psy3U+k97zcff2qXxaB7sGrKq0bgRrbJ17bk/+aD
+	ihXe/RaXNokSkjYmwfghd6XrJXHgDgmQUfS9P6rCfkGZwfsmKYvuIteWsXh3OCWsd3f6al0Gznx
+	ub29sftwjndO7AytrLSjSMjWnaFHRBhQTL+ii7+hQmkWm5S1Oqz8F7TKdxQXFUVdsXZAnVH5LPh
+	zT1jb8/YWDyFehp7Nhf5JQTUW57wnqbF9vhd/lr+5bjJtTmjIILKnhufH7UIV0IwYrbtWqm//XD
+	Llm2QFiMQ==
+X-Received: by 2002:a05:7300:6144:b0:306:f474:7389 with SMTP id 5a478bee46e88-30ee134fe86mr3861886eec.25.1782853337951;
+        Tue, 30 Jun 2026 14:02:17 -0700 (PDT)
+Received: from ryzen.lan ([2601:644:8000:7a86::e34])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-30ee2f5c4c3sm11592642eec.2.2026.06.30.14.02.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 30 Jun 2026 14:02:17 -0700 (PDT)
+From: Rosen Penev <rosenp@gmail.com>
+To: linux-wireless@vger.kernel.org
+Cc: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rosen Penev <rosenp@gmail.com>,
+	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH wireless-next] wifi: mt76: fix MAC address for non OF pcie cards
+Date: Tue, 30 Jun 2026 14:02:15 -0700
+Message-ID: <20260630210215.400379-1-rosenp@gmail.com>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Rspamd-Queue-Id: ADB7F20010
-X-Stat-Signature: a91khpzt41hbtwnya4hbwi8kk583ma9y
-X-Rspamd-Server: rspamout06
-X-Session-Marker: 726F737465647440676F6F646D69732E6F7267
-X-Session-ID: U2FsdGVkX18XEdqmnOvCJFHQSlGyLSrMbLdwtYz64Mc=
-X-HE-Tag: 1782852972-403709
-X-HE-Meta: U2FsdGVkX19O995+yYKSbgc0QBIAYiDlHJb3jzPWpqxs6nLjN/KhphKM9MNIf0B59sVXGhitkyRuCOZZfblmGLb1C+Vy/5NlfVrH3smBU7dll1wHsZN2xPGr57UJBPlvM9c3w3p9hrCYDMi4DhVfT2Zl/405SNem/bnTpsXWt2sX2N5mN7MviYhMMhG4aN0S27S58WxzY4JU9UB5He8ino+NJOG7M3UYun33+NhS+kwLMSXcjqelQ4HKyNlbIuwI+UQ5Bp0rt6fCeFwUU3oyaO6+PM85V9CygJv7o+sehy0rjzEOUwo2x1FsGH0evq6MFiGJgstE4ALxX+/zElQJv0k1V7KbHrm0G2el+6v/gCPeZ+0Di+H81A==
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260630_135623_439845_32FE2973 
-X-CRM114-Status: GOOD (  18.17  )
+X-CRM114-CacheID: sfid-20260630_140219_229697_7767AFC1 
+X-CRM114-Status: GOOD (  11.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,81 +105,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 14 Feb 2025 16:29:36 +0800
-<peter.wang@mediatek.com> wrote:
+If seems the check for err is wrong as the proper macaddr gets written
+to from the EEPROM itself. Meaning checking err from of_get_mac_address is
+wrong as the proper macaddr has been written by this point.
 
-> From: Peter Wang <peter.wang@mediatek.com>
-> 
-> Included the ufs_hba structure as a parameter in various trace events
-> to provide more context and improve debugging capabilities.
-> Also remove dev_name which can replace by dev_name(hba->dev).
-> 
-> V3:
->  - Remove dev_name entry form TP_STRUCT__entry() to reduce the size.
-> 
+Fixes: 31ee1582717e ("wifi: mt76: fix of_get_mac_address error handling")
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/eeprom.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
+index b99d7452800f..afdb73661866 100644
+--- a/drivers/net/wireless/mediatek/mt76/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
+@@ -181,7 +181,7 @@ mt76_eeprom_override(struct mt76_phy *phy)
+ 	if (err == -EPROBE_DEFER)
+ 		return err;
+ 
+-	if (err) {
++	if (!is_valid_ether_addr(phy->macaddr)) {
+ 		eth_random_addr(phy->macaddr);
+ 		dev_info(dev->dev,
+ 			 "Invalid MAC address, using random address %pM\n",
+-- 
+2.55.0
 
-> V2:
->  - Remove dev_name and replace it with dev_name(hba->dev).
-
-This patch needs to be reverted, as the above causes a bug.
-
-> 
-> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
-> ---
->  drivers/ufs/core/ufs_trace.h | 135 ++++++++++++++++++-----------------
->  drivers/ufs/core/ufshcd.c    |  68 +++++++++---------
->  2 files changed, 103 insertions(+), 100 deletions(-)
-> 
-> diff --git a/drivers/ufs/core/ufs_trace.h b/drivers/ufs/core/ufs_trace.h
-> index 84deca2b841d..caa32e23ffa5 100644
-> --- a/drivers/ufs/core/ufs_trace.h
-> +++ b/drivers/ufs/core/ufs_trace.h
-> @@ -83,34 +83,34 @@ UFS_CMD_TRACE_TSF_TYPES
->  
->  TRACE_EVENT(ufshcd_clk_gating,
->  
-> -	TP_PROTO(const char *dev_name, int state),
-> +	TP_PROTO(struct ufs_hba *hba, int state),
->  
-> -	TP_ARGS(dev_name, state),
-> +	TP_ARGS(hba, state),
->  
->  	TP_STRUCT__entry(
-> -		__string(dev_name, dev_name)
-> +		__field(struct ufs_hba *, hba)
->  		__field(int, state)
->  	),
->  
->  	TP_fast_assign(
-> -		__assign_str(dev_name);
-> +		__entry->hba = hba;
->  		__entry->state = state;
->  	),
->  
->  	TP_printk("%s: gating state changed to %s",
-> -		__get_str(dev_name),
-> +		dev_name(__entry->hba->dev),
-
-NO YOU CAN NOT DO THIS!!!!
-
-The TP_fast_assign() happens when the trace event occurs. That is, where
-the trace_ufshcd_clk_gating() function is called.
-
-The TP_printk() happens when a user reads the "trace" file. Which could be
-seconds, minutes, hours, days, even months later! There is absolutely no
-guarantee that the pointer to __entry->hba would be around. This would
-cause a crash of the kernel when the "trace" file is read.
-
-I'm adding a boot up test to cause code like this to trigger a warning when
-the trace event is registered (how I found this bug):
-
-  https://lore.kernel.org/all/20260630164439.51e61b71@gandalf.local.home/
-
->  		__print_symbolic(__entry->state, UFSCHD_CLK_GATING_STATES))
->  );
-
-The same goes for the rest of this file.
-
--- Steve
 
