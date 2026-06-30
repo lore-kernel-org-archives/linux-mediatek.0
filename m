@@ -4,71 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C772BC43458
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 06:36:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1017EC43458
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 06:36:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1nOU0FRM/CVb4ITNAIwXG/xESH05yUYICHxJJfHCnxk=; b=FeiJmSqRmtZA7bvX2rgLUarAlQ
-	XWu145Uy+qTNlDUr15C1Yl5ph7IF3CuRt+/Dw6FK0tOfgp5F37nUI+fsb22nvxgIerrx46lCajSCg
-	JJrAuhZBNJBF6BxMEVgW1oWt0x4BoWiqfLjo50mP75rsoIz4TkHtmI4DoPFaHTF0QeR6LBbLVnHsE
-	Xih8hlLRvp1AXKA1+voTcdYlGwMNURG3XSYcaegWDMgIOCyuP81NaMiIoKj2OHwo66gJfwwpza/4Y
-	pBy9eiI2oKCpPdoZrJLMEso/Tmx2UhdPEEPZ1Y3yy63vM71CK24HssI087xD2sESnskegXWmY24Oi
-	c2mCnEgg==;
+	bh=aUrf6Km35HLEs48Iv+5EKVZGrilhk0m+5i7bYMdUoc0=; b=WAg+o9uQZS5PgDFVmIXsj9ykZv
+	uONyunwOuw2RTHfvPkp53z0KRz/8C8aQt5RJOni/+VW4ZnRPxrlt57I5BGjSPzcgnDqst3fBS8SQu
+	wFcANjnojC48w/hxHBWPY2P7NJbALBWKAFlXpVTwKauLDT6il/e2pZpn6QugDd3vTOxJoFwNRHy7p
+	92ZaKekzLrq6iP4U/BROlSfkOVwnxrwuSIv0PBnHI+/D3HgrdGuBfAXbLiHKwqTKKyt+V9TvW0ZYt
+	xilVdep7AlqJJ8vBOd23nB4g3QPe5HGFyPHuWpH+7FuNcEgdWgdsr8K+ffwPWwUDb9wxugi+I2twk
+	b+7dFntg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weS50-0000000FyUt-3YHU;
-	Tue, 30 Jun 2026 06:36:22 +0000
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+	id 1weS5D-0000000FydO-0Y3I;
+	Tue, 30 Jun 2026 06:36:35 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weS4y-0000000FyT6-3SdH
+	id 1weS5B-0000000Fybl-2C0k
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 30 Jun 2026 06:36:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=aUrf6Km35HLEs48Iv+5EKVZGrilhk0m+5i7bYMdUoc0=; b=m7F+T2nfwHHUihoB6JIGQTTIS6
+	XxkU+2jP2BJjjIOi8Rf0pEkaCFKK8T/yqDufggNyvA12uoJN/HiYYjcR0+uFUwxzgNJSHbxyRxei+
+	6AHjPSiZCpk9R4JVoJBi7SAsa5BCpLaTqKBuic0h3WxUIIbg/12OYR2NYerZFfOtImOML2FppRoLH
+	TbEtm5W9TSMv4Fv3Zr9OuXL9e9DjxHB4M3nv06ooWJCsrQMyw4XPbn8/4LrcDb7j4ZNw1YiHY7CB3
+	DjbsZN6iqpl2Yf7Ci1aZcy6QlemRuMu4zsrIELXCc5aHh7580iqvq0f5X8BzNhzQ600YRopxhoX6n
+	eYIY/VwA==;
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1weS57-00000001ZCi-1BnB
 	for linux-mediatek@lists.infradead.org;
-	Tue, 30 Jun 2026 06:36:21 +0000
-Received: by mail-pf1-x435.google.com with SMTP id d2e1a72fcca58-8471013fac2so1078368b3a.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 29 Jun 2026 23:36:20 -0700 (PDT)
+	Tue, 30 Jun 2026 06:36:32 +0000
+Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-84794e800f4so640378b3a.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 29 Jun 2026 23:36:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1782801380; x=1783406180; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1782801387; x=1783406187; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=1nOU0FRM/CVb4ITNAIwXG/xESH05yUYICHxJJfHCnxk=;
-        b=F+yw5e4p2iVLW4u+oyW6YtC+XLVfIB5rFvz1rLM+RuzOhMAyniEqrZTx9/0MrdXnK/
-         RyfTcgoUBARMoIN/mPrJSYaSBuM7NjHHJJZ2G847GXzOA5zpzyf0se7d2sKSYpEX9jJO
-         LoMDdGvHkYNeTqsrg44WrrsGozyINOEbp6+cwf3PWA06+qCjm8q3QD20ozxZWxwwqXmL
-         DncNOgYSMuE7JxnETAcDRSLzv9MnNlYyhIDmnHPt6eV+t0QabT3htSGIJE4rB/RZO4ol
-         IbKrUgn1O/j9Z82I+yKQ1rvv5c91uZvvBErBfNRcLz4yMqKQwhYcndERkT3AJGqcpXoE
-         UUQg==
+        bh=aUrf6Km35HLEs48Iv+5EKVZGrilhk0m+5i7bYMdUoc0=;
+        b=GAcJDKOpQzWI4ZsYAjmUA3QQGc28u5OEXMLcKjXeQ8J+nlqfJfOO3AEQ8svk5fO6FD
+         2Yf0I+OQROYYxZA0lBTXO0FqRmiKKUWmvKVWqcDWpEljBq/OYSTkoTgUJNWFA4G+FqTT
+         eHIc1mL/czVlLnpoTdTztVOQhAnwX45cW3ZEzIObZZ2Bz9PYYlXceUVqPAkiPTDmXQYP
+         YQ/gvJLlYHQMawRb4e3JMmFnbCCvUHjFYjnE+LWNS5xUVbOpgy4iq6E57JirIlIJhPds
+         1CpEPX8VMf6YPgb2JH89w0N6AiFe02VF6xVI9YolO2QzC3HLdYoNNZFd/CBRN5JhjXHk
+         Cgkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782801380; x=1783406180;
+        d=1e100.net; s=20251104; t=1782801387; x=1783406187;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=1nOU0FRM/CVb4ITNAIwXG/xESH05yUYICHxJJfHCnxk=;
-        b=ALHDLPhzKd1V6SKI5FcWZcimLPNBclCNmf82zTNfdP4sGUrDcUVB3UMRB2AF4rzm/Y
-         vwT4rGA4+xNIE1n3Idbr46msSy9PqJ4ecbChG/0m2g50W6xH3UK3M8tb+MjnxRlg8U+h
-         llHoWSMjn76DlEdgWZQAPQ+vqOX8cEUn2Sngt6R/3MtQh5Q/3HIeBHNv8YQj8PMXH9KW
-         vtp/zxO95xPoFD9gec60+T4KPsTnIgeXoVL8ovxx69UQ7lruWAL21AS8BvdXaQOmYZiT
-         vbRVARtjLe/JS/NTHH8WRVmBBjXrqrCno8SBG1/zIUag/sQ3KTbeGKO3T6NKe+7+unMa
-         3B0g==
-X-Forwarded-Encrypted: i=1; AHgh+Rr8z4hH7O/e3Pi2cMS23e2vJFTa1RWr8uDzIgAomApCTO2ABO9W8XKJreGxvMpJM7GDNIwOorZHTn/oudzzng==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwtTWGyfm3KeMgAQsmgThaqUJ4uqchUmwzKPsvoDAh3waVEsPd3
-	YfbZn7Ursx7sTs5qxCkyVuPH3SvXg2Odwb36hin24BPTxWNtfpzV0cbs
-X-Gm-Gg: AfdE7cmUW3mZ6/EVtQBTz0esUuLxW07XKvGfo8oz/W6zdDIEDGgwI/k/oDbNcQSkmd2
-	MZbjuF4n87w6bKqmKMf+4W1/pEHkhSH7HGoGsG0zKJ5EidT2+tLxa0IT8JC9eVWD/CdEt8N3hCt
-	ibP6x2JrfAHBPzVNUAMSRvqtkI3F+SsSF3J7d3y9j34kZqqLTVifunQhUCN8LD6NcCWX4vtygQJ
-	/MjxMRLoMVurVdrTs9cjzrBCFKCd429bIUL1V+TOjH2udumpcnXUhFQYz1Z/AGb3yxqZ9bL6QTR
-	YKPwyLh8SW6+gZchoTv3zdM2DNuxzD6W1kn0ERLIFv5tzIPsxBS2vZlDIurnmeDq+Ss6rL18war
-	BmQ5gLvnzF/FHm+P1iNuOehGkSTk6NLNRMPFxeBPqR8EEpnjpovct6fSQqS8V98C4weoM4qC9Dl
-	PVS+zLPwbZzm3owSzWYGE9II35PhC2cefv9AKOAGfC+O0JSEE=
-X-Received: by 2002:aa7:9066:0:b0:846:2f3c:3f66 with SMTP id d2e1a72fcca58-8479f2bf928mr1991151b3a.60.1782801379790;
-        Mon, 29 Jun 2026 23:36:19 -0700 (PDT)
+        bh=aUrf6Km35HLEs48Iv+5EKVZGrilhk0m+5i7bYMdUoc0=;
+        b=HWQbWIz/XkJm43S5iJD00gxchGbEy956fIGsB8xRoX92odVYgmOO9oHgjpFmkXUUjd
+         wwJzyP5VbFZKiDjoVjMImd8NXSgukbkTEGQK/jtOnzg/cR0sKo06KjeRwKP0NjiKbuYd
+         uZZQud76uCAdWkGN2A7FXsi69/KM8Tv/5IkHFd8+nYmqJGHL6LAObtCbjw3BQyA74raq
+         3UNLn2vyqNWciPW9oyZreRdYqfAtE/tWQ7And8jeH0iAnqp93R+UR3zbHqpyuTfpBXHD
+         R24qVoWvM+3HqtYug1ak+0OP1Ol2WGKKQCtiu7oMiXCbT7JAzIahffHEA983NDwmApgX
+         ZzSw==
+X-Forwarded-Encrypted: i=1; AHgh+RoO+HUhD/cIq7RokC7WC1Ea26ckGx+HtzTGJPHPj8sEtImx5W53vhlf98khlu09UlekiCIdUuitvDdM2NxruQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzHivOKiHQHuUgzh91MMJQ3baqL6VOElkkxghbB8e0KY63tmiKm
+	32Enrxj0efqsaFIN+hDYZ9l8FT0K1M0R0kJfhV5nsNaA0KZ7Z4/s0o4Z
+X-Gm-Gg: AfdE7cldgXvglz0a7r1loJSGQtmd3dWiHZXXL3HCjHyFZaJJy32s7Q3OQmDnaulfL6y
+	2ybwyZmSyic37Y6PdXWaMfNle5Jf0o21iBJ91pFQ2+OrVe4kSDE/mOm9Zi69qSaG43gbg0CyiBp
+	qLJz392H7PFijzPbM7nYqgKoiU6WogAhpgcjaj6qhVO9RtmXrdB3byOafJzNgOMLDmx5pAcm6iA
+	nkt1M0dDvggBJNaUZQazkiTupcQ6r+jZg+7S78Rdmi7dqM56f7P23ywUjdaEw4DqGSONt15QV9b
+	sv1dxuVoROIxmQ+lFBD1Lsr9HGChMD9DVnmLagbmpPLxgMdm5hqA0PDYX3AV9aIJYrkcNlAOOc+
+	EIdK1/dlYAIICL7bpj4KccM0g9HuhgPXPqHhxnxCcJg6F2fXrTqGhHd34xEVcxUp4Q+hj/GkQWt
+	33fTmw6ecGceX7jj3E03gxRj+J1I369e0bWa/kMOJVeN2W7PA=
+X-Received: by 2002:a05:6a00:995:b0:846:169c:d815 with SMTP id d2e1a72fcca58-8479f2d139dmr2002482b3a.60.1782801387427;
+        Mon, 29 Jun 2026 23:36:27 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-847a02cd237sm1165061b3a.32.2026.06.29.23.36.13
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-847a02cd237sm1165061b3a.32.2026.06.29.23.36.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jun 2026 23:36:19 -0700 (PDT)
+        Mon, 29 Jun 2026 23:36:27 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>,
 	Takashi Iwai <tiwai@suse.com>,
@@ -103,17 +118,17 @@ Cc: Support Opensource <support.opensource@diasemi.com>,
 	linux-arm-msm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH 07/27] ASoC: codecs: hdac_hdmi: Use guard() for mutex locks
-Date: Tue, 30 Jun 2026 13:34:29 +0700
-Message-ID: <20260630063449.503996-8-phucduc.bui@gmail.com>
+Subject: [PATCH 08/27] ASoC: codecs: hdmi-codec: Use guard() for mutex locks
+Date: Tue, 30 Jun 2026 13:34:30 +0700
+Message-ID: <20260630063449.503996-9-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260630063449.503996-1-phucduc.bui@gmail.com>
 References: <20260630063449.503996-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260629_233620_876900_51F4AD9F 
-X-CRM114-Status: GOOD (  16.93  )
+X-CRM114-CacheID: sfid-20260630_073629_530957_50AE6908 
+X-CRM114-Status: GOOD (  11.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,203 +150,77 @@ Merely code refactoring, and no behavior change.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/codecs/hdac_hdmi.c | 117 +++++++++++++++++------------------
- 1 file changed, 57 insertions(+), 60 deletions(-)
+ sound/soc/codecs/hdmi-codec.c | 15 ++++++---------
+ 1 file changed, 6 insertions(+), 9 deletions(-)
 
-diff --git a/sound/soc/codecs/hdac_hdmi.c b/sound/soc/codecs/hdac_hdmi.c
-index 3220f9226e0b..387fa22438a0 100644
---- a/sound/soc/codecs/hdac_hdmi.c
-+++ b/sound/soc/codecs/hdac_hdmi.c
-@@ -10,6 +10,7 @@
-  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+diff --git a/sound/soc/codecs/hdmi-codec.c b/sound/soc/codecs/hdmi-codec.c
+index 13ae9e83bc21..bc2c22436ba6 100644
+--- a/sound/soc/codecs/hdmi-codec.c
++++ b/sound/soc/codecs/hdmi-codec.c
+@@ -4,6 +4,7 @@
+  * Copyright (C) 2015 Texas Instruments Incorporated - https://www.ti.com/
+  * Author: Jyri Sarha <jsarha@ti.com>
   */
- 
 +#include <linux/cleanup.h>
- #include <linux/init.h>
- #include <linux/delay.h>
  #include <linux/module.h>
-@@ -537,10 +538,11 @@ static struct hdac_hdmi_port *hdac_hdmi_get_port_from_cvt(
- 				continue;
+ #include <linux/string.h>
+ #include <sound/core.h>
+@@ -452,31 +453,30 @@ static int hdmi_codec_startup(struct snd_pcm_substream *substream,
+ 	if (!((has_playback && tx) || (has_capture && !tx)))
+ 		return 0;
  
- 			list_for_each_entry(port, &pcm->port_list, head) {
--				mutex_lock(&pcm->lock);
--				ret = hdac_hdmi_query_port_connlist(hdev,
--							port->pin, port);
--				mutex_unlock(&pcm->lock);
-+				scoped_guard(mutex, &pcm->lock) {
-+					ret = hdac_hdmi_query_port_connlist(hdev,
-+									    port->pin,
-+									    port);
-+				}
- 				if (ret < 0)
- 					continue;
- 
-@@ -640,11 +642,11 @@ static void hdac_hdmi_pcm_close(struct snd_pcm_substream *substream,
- 	pcm = hdac_hdmi_get_pcm_from_cvt(hdmi, dai_map->cvt);
- 
- 	if (pcm) {
--		mutex_lock(&pcm->lock);
--		pcm->chmap_set = false;
--		memset(pcm->chmap, 0, sizeof(pcm->chmap));
--		pcm->channels = 0;
--		mutex_unlock(&pcm->lock);
-+		scoped_guard(mutex, &pcm->lock) {
-+			pcm->chmap_set = false;
-+			memset(pcm->chmap, 0, sizeof(pcm->chmap));
-+			pcm->channels = 0;
-+		}
- 	}
- 
- 	if (dai_map->port)
-@@ -922,7 +924,7 @@ static int hdac_hdmi_set_pin_port_mux(struct snd_kcontrol *kcontrol,
- 	if (port == NULL)
+-	mutex_lock(&hcp->lock);
++	guard(mutex)(&hcp->lock);
+ 	if (hcp->busy) {
+ 		dev_err(dai->dev, "Only one simultaneous stream supported!\n");
+-		mutex_unlock(&hcp->lock);
  		return -EINVAL;
- 
--	mutex_lock(&hdmi->pin_mutex);
-+	guard(mutex)(&hdmi->pin_mutex);
- 	list_for_each_entry(pcm, &hdmi->pcm_list, head) {
- 		if (list_empty(&pcm->port_list))
- 			continue;
-@@ -945,12 +947,10 @@ static int hdac_hdmi_set_pin_port_mux(struct snd_kcontrol *kcontrol,
- 			list_add_tail(&port->head, &pcm->port_list);
- 			if (port->eld.monitor_present && port->eld.eld_valid) {
- 				hdac_hdmi_jack_report_sync(pcm, port, true);
--				mutex_unlock(&hdmi->pin_mutex);
- 				return ret;
- 			}
- 		}
  	}
--	mutex_unlock(&hdmi->pin_mutex);
  
+ 	if (hcp->hcd.ops->audio_startup) {
+ 		ret = hcp->hcd.ops->audio_startup(dai->dev->parent, hcp->hcd.data);
+ 		if (ret)
+-			goto err;
++			return ret;
+ 	}
+ 
+ 	if (tx && hcp->hcd.ops->get_eld) {
+ 		ret = hcp->hcd.ops->get_eld(dai->dev->parent, hcp->hcd.data,
+ 					    hcp->eld, sizeof(hcp->eld));
+ 		if (ret)
+-			goto err;
++			return ret;
+ 
+ 		snd_parse_eld(dai->dev, &hcp->eld_parsed,
+ 			      hcp->eld, sizeof(hcp->eld));
+ 
+ 		ret = snd_pcm_hw_constraint_eld(substream->runtime, hcp->eld);
+ 		if (ret)
+-			goto err;
++			return ret;
+ 
+ 		/* Select chmap supported */
+ 		hdmi_codec_eld_chmap(hcp);
+@@ -484,8 +484,6 @@ static int hdmi_codec_startup(struct snd_pcm_substream *substream,
+ 
+ 	hcp->busy = true;
+ 
+-err:
+-	mutex_unlock(&hcp->lock);
  	return ret;
  }
-@@ -1274,67 +1274,65 @@ static void hdac_hdmi_present_sense(struct hdac_hdmi_pin *pin,
- 	 * In case of non MST pin, get_eld info API expectes port
- 	 * to be -1.
- 	 */
--	mutex_lock(&hdmi->pin_mutex);
--	port->eld.monitor_present = false;
-+	scoped_guard(mutex, &hdmi->pin_mutex) {
-+		port->eld.monitor_present = false;
  
--	if (pin->mst_capable)
--		port_id = port->id;
-+		if (pin->mst_capable)
-+			port_id = port->id;
+@@ -503,9 +501,8 @@ static void hdmi_codec_shutdown(struct snd_pcm_substream *substream,
+ 	hcp->chmap_idx = HDMI_CODEC_CHMAP_IDX_UNKNOWN;
+ 	hcp->hcd.ops->audio_shutdown(dai->dev->parent, hcp->hcd.data);
  
--	size = snd_hdac_acomp_get_eld(hdev, pin->nid, port_id,
--				&port->eld.monitor_present,
--				port->eld.eld_buffer,
--				ELD_MAX_SIZE);
-+		size = snd_hdac_acomp_get_eld(hdev, pin->nid, port_id,
-+					      &port->eld.monitor_present,
-+					      port->eld.eld_buffer,
-+					      ELD_MAX_SIZE);
- 
--	if (size > 0) {
--		size = min(size, ELD_MAX_SIZE);
--		if (hdac_hdmi_parse_eld(hdev, port) < 0)
--			size = -EINVAL;
--	}
--
--	eld_valid = port->eld.eld_valid;
-+		if (size > 0) {
-+			size = min(size, ELD_MAX_SIZE);
-+			if (hdac_hdmi_parse_eld(hdev, port) < 0)
-+				size = -EINVAL;
-+		}
- 
--	if (size > 0) {
--		port->eld.eld_valid = true;
--		port->eld.eld_size = size;
--	} else {
--		port->eld.eld_valid = false;
--		port->eld.eld_size = 0;
--	}
-+		eld_valid = port->eld.eld_valid;
- 
--	eld_changed = (eld_valid != port->eld.eld_valid);
-+		if (size > 0) {
-+			port->eld.eld_valid = true;
-+			port->eld.eld_size = size;
-+		} else {
-+			port->eld.eld_valid = false;
-+			port->eld.eld_size = 0;
-+		}
- 
--	pcm = hdac_hdmi_get_pcm(hdev, port);
-+		eld_changed = (eld_valid != port->eld.eld_valid);
- 
--	if (!port->eld.monitor_present || !port->eld.eld_valid) {
-+		pcm = hdac_hdmi_get_pcm(hdev, port);
- 
--		dev_dbg(&hdev->dev, "%s: disconnect for pin:port %d:%d\n",
--			__func__, pin->nid, port->id);
-+		if (!port->eld.monitor_present || !port->eld.eld_valid) {
- 
--		/*
--		 * PCMs are not registered during device probe, so don't
--		 * report jack here. It will be done in usermode mux
--		 * control select.
--		 */
--		if (pcm) {
--			hdac_hdmi_jack_report(pcm, port, false);
--			schedule_work(&port->dapm_work);
--		}
-+			dev_dbg(&hdev->dev, "%s: disconnect for pin:port %d:%d\n",
-+				__func__, pin->nid, port->id);
- 
--		mutex_unlock(&hdmi->pin_mutex);
--		return;
--	}
-+			/*
-+			 * PCMs are not registered during device probe, so don't
-+			 * report jack here. It will be done in usermode mux
-+			 * control select.
-+			 */
-+			if (pcm) {
-+				hdac_hdmi_jack_report(pcm, port, false);
-+				schedule_work(&port->dapm_work);
-+			}
- 
--	if (port->eld.monitor_present && port->eld.eld_valid) {
--		if (pcm) {
--			hdac_hdmi_jack_report(pcm, port, true);
--			schedule_work(&port->dapm_work);
-+			return;
- 		}
- 
--		print_hex_dump_debug("ELD: ", DUMP_PREFIX_OFFSET, 16, 1,
--			  port->eld.eld_buffer, port->eld.eld_size, false);
-+		if (port->eld.monitor_present && port->eld.eld_valid) {
-+			if (pcm) {
-+				hdac_hdmi_jack_report(pcm, port, true);
-+				schedule_work(&port->dapm_work);
-+			}
- 
-+			print_hex_dump_debug("ELD: ", DUMP_PREFIX_OFFSET, 16, 1,
-+					     port->eld.eld_buffer, port->eld.eld_size, false);
-+		}
- 	}
--	mutex_unlock(&hdmi->pin_mutex);
- 
- 	if (eld_changed && pcm)
- 		snd_ctl_notify(hdmi->card,
-@@ -1795,13 +1793,12 @@ static void hdac_hdmi_set_chmap(struct hdac_device *hdev, int pcm_idx,
- 	if (list_empty(&pcm->port_list))
- 		return;
- 
--	mutex_lock(&pcm->lock);
-+	guard(mutex)(&pcm->lock);
- 	pcm->chmap_set = true;
- 	memcpy(pcm->chmap, chmap, ARRAY_SIZE(pcm->chmap));
- 	list_for_each_entry(port, &pcm->port_list, head)
- 		if (prepared)
- 			hdac_hdmi_setup_audio_infoframe(hdev, pcm, port);
--	mutex_unlock(&pcm->lock);
+-	mutex_lock(&hcp->lock);
++	guard(mutex)(&hcp->lock);
+ 	hcp->busy = false;
+-	mutex_unlock(&hcp->lock);
  }
  
- static bool is_hdac_hdmi_pcm_attached(struct hdac_device *hdev, int pcm_idx)
+ static int hdmi_codec_fill_codec_params(struct snd_soc_dai *dai,
 -- 
 2.43.0
 
