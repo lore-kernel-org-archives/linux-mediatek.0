@@ -4,86 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5001DC43327
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 14:48:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0A5AC43327
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 14:55:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=FTJrhxBEl3twqdJgMl/PY4mPnQS4A0KwvpKQuTDw05U=; b=iwiKw4nwR9wu+XmiPTqYh/OPUR
-	vUBrm4YENtHeb2foy7Li346+yoJEK4SGkyWfs8rFzsMfBL3l+u8pfuibon1tMzxlXByyyl1fr2Lfs
-	kfgW8PDHLLg7fCAvIBOEhDqtPH1LbdM08NV9nxCWRHXG5c7enCsofGwOO3buMKc5M2J2HTthlAhfR
-	Jftn4XS2haCtniV+Td5uDm2FNyeHh/NgVtHn1HbRkyYFdLbLJwrAXjP0jxH0N2c0TdxsvV4N0v9ja
-	Co60s20NJt8HzbwQqw7os7IayKzcmKsY4fG94x7scw1dA/CzkEEw7E5dZJ3VItO3W17aClTdLk21t
-	VMBFvlKQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FrOy3rj9ErYPsJBF3jjZifi/JmWhngje4d+c3PkjfiI=; b=m4YBeLwJMC7kI8DSoa5r3FrG07
+	/5/UN8T85sO41TNETod6Ur6wXI8jDKHmxA3dRiGSUvWppN+LGgnUVAyZ5dag0TFhFf3lshBs1cYQy
+	BBCIPmBX4GqVs690hGNuaVQgx7xGJOk/DcB3Rgnaxvtdz5MJVQrrOJ9IPz3qWduLlwLw8UlqxrjnP
+	4YF8AOORwOWqPwcSyN4p2YO6PJox5oR0aP/KaapGm0TXjj7EX/RZlymNzU8pk2eyqHjYEDJQj2wjc
+	hPBy6MjT/+ROkenNx/i4B8rnVmLSzQrjQoNwEcGNhVjPmpbwmiv4mg2dpwMkO81XyAYaUXiW1LPps
+	l4x2UFsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weZlQ-0000000HImP-0GTs;
-	Tue, 30 Jun 2026 14:48:40 +0000
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+	id 1weZrj-0000000HJFM-0laq;
+	Tue, 30 Jun 2026 14:55:11 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weZlN-0000000HIlq-3VgH
-	for linux-mediatek@lists.infradead.org;
-	Tue, 30 Jun 2026 14:48:38 +0000
-Received: by mail-pf1-x435.google.com with SMTP id d2e1a72fcca58-847917c3678so315376b3a.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2026 07:48:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1782830916; x=1783435716; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=FTJrhxBEl3twqdJgMl/PY4mPnQS4A0KwvpKQuTDw05U=;
-        b=kf08SinUsgJuQbIu6vytAZZWR7ljzA7JU42SktUIOcs3Gf07dyrpO1BOv0d2iM2GoZ
-         EVcdmLZP+F2AaC2dTY9yQTXJy1LDBZT8kNyN53nfiZLa1VgJnwpXc8oYgaqI0Ws00sG+
-         C1QMuZqKVIabKqzxW5elF2DZdG5lN/a+gF1sNMdJdy1Fypev6IDCVeD8krkBKNoMm9C4
-         2Epe6xfy2rXYKjk/eN8gK2Fs0WS8YvCpUqMvaJDrWXmVPFeroKUuhIwSXJBoW6dpOORB
-         djeqAFDlGmpIJ2xCAMOvGfo5Yz44RUiK1PTz6AXa2TdQ2BeL9mK5hwJihC7vuafb9Wue
-         d2eA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782830916; x=1783435716;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=FTJrhxBEl3twqdJgMl/PY4mPnQS4A0KwvpKQuTDw05U=;
-        b=lA5nvvSOUz1/2AHYG7glUKeH3KKgN/5hNVcdQt28Y0NIGpskYHc1Q+eogI7Gt2Np5r
-         dYlXxp+gf9cjC9tmWwu0Ql4wKdzTwYychZLWXNs1uR/ow1/v328lyPr0LjrGDh/dqyxI
-         wbOK8qkJvqtJGCXJEz0ez9CRsRwkv1ZNE1aEVY6M6ZwKLbQ5PAgXfnKXvFeCWsXxFmHy
-         ONdfcNWC7h4+cKEY7FHCNDaTUctWeqi02yXDnQw5qZICEMokUQyGvdNvMtQlT0RI80ie
-         cUnamIDpeZ/G/Wyvt26GkzjyURhlyb3/s0v0rRUXvUlP4YYysFmfmcSriqNxSAaaG/tv
-         FK5g==
-X-Forwarded-Encrypted: i=1; AHgh+RpAbVfdll+aC7EqW1D14Vy4ZM/aGisYhhuQmk2kQzxnD/EO+pWT1kh/IVL3zfhTiTbTSi1PYjoDTVKtDg4z3w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzqSgL/51NlceCvCHHSFDk65qOgGHv3ZLbMhVYlEqqC28TtKKrV
-	8EWtGtaUE+El/BpLaMqXrzeXDKqmUq+qpABP6GcHTTUm/X4Ggc7rXdLr
-X-Gm-Gg: AfdE7ckZ91s/RpJgEDMrjtxr1u7r0rPXIvoONyfHudfXyRrs6ZVftCZCnzaMTpCtZIv
-	YkEnm28KxWbFGNg7SPUh4t+XnlGbGPVZT2B1aUiHndC5d2gZVrZZhkqKEO+RqfXpojoFDdXzkN9
-	9vk665vsjl14yURuiZWZ/+lur7gjBL+IJlB5IoWa1zE7dTPd1ziAuhXhDJ4NTeyyb+dUoDVsUTj
-	iV4dpVS7XlNxfe0SwRebyW5ocwdwM1v9cYg9SCYdzTkL22ICLAj/iywlaOkykTr86QjtE4UH6HA
-	y43Aa/h4R3MkzuP7+H38LLFOnX/mgl2oTeUYXgk7c59dhMiGex48oDCdd3QPlNTF60agyIskor7
-	Hcn1iqm23Em0R7ijYwb4IYDNlsffYpGs5br/AXcQF0Vxji/4ONpQEeWcFdlsfXi/JbK8GGkHoYQ
-	w1Z21ZjiLT9vg5vX6iXkDApBcmg9C/AY25ILd8ncE7gzS5zzPuQOHfVg==
-X-Received: by 2002:a05:6a00:85a3:b0:842:dd4:d9e2 with SMTP id d2e1a72fcca58-847a7ed202dmr1411685b3a.0.1782830916332;
-        Tue, 30 Jun 2026 07:48:36 -0700 (PDT)
-Received: from DESKTOP-VNSSJ2S.lan (59-127-145-64.hinet-ip.hinet.net. [59.127.145.64])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-847a03a6fcasm2220480b3a.58.2026.06.30.07.48.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Jun 2026 07:48:35 -0700 (PDT)
-From: Zhi-Jun You <hujy652@gmail.com>
-To: lorenzo@kernel.org
-Cc: nbd@nbd.name,
-	netdev@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Zhi-Jun You <hujy652@gmail.com>
-Subject: [PATCH net] net:ethernet: mtk_wed: setup WDMA_RING_TX(0) for non-DBDC MT7986
-Date: Tue, 30 Jun 2026 22:48:31 +0800
-Message-ID: <20260630144831.1109-1-hujy652@gmail.com>
-X-Mailer: git-send-email 2.47.3
+	id 1weZrh-0000000HJEn-0uuH;
+	Tue, 30 Jun 2026 14:55:09 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 7E8D860018;
+	Tue, 30 Jun 2026 14:55:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 73DB41F00A3E;
+	Tue, 30 Jun 2026 14:54:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1782831307;
+	bh=FrOy3rj9ErYPsJBF3jjZifi/JmWhngje4d+c3PkjfiI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=oKfVzFZ6b/XSsHTT24iTlGuILVTem1fiPHNzbqfkkfEvgofuYcLnT0ZBgbClmJSyU
+	 1Lje1eKxqCR4srhyHKb8b43TaGt/wOdQZXmv9MCfqI/QaKY0Sm3heWK7BVrIeOZDzf
+	 P2zz/ZVNqH0yjYGkLQQLLiGvp654MVGM2V4RrpCvRDYfrZqeDqSFpN1iBK/jQBipio
+	 GzOMvwzGE77O+3r4MhfmAyJvycRC+cbAkpZPfltFgLx+L3FcsZRkJbecwAdR5VffFu
+	 7XRMQ3++8oaFXaRC4M35PtNbbbb3CmOuL7Rrw8sLRlduulgMHMNmiiOglxx3k9yzNS
+	 XQhqm13RH8Dug==
+Date: Tue, 30 Jun 2026 16:54:52 +0200
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Brian Masney <bmasney@redhat.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jianjun Wang <jianjun.wang@mediatek.com>, 
+	linux-pci@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v3 3/4] dt-bindings: PCI: mediatek-gen3: Split Airoha
+ schema and document 2-lanes
+Message-ID: <alqqddz52csz4pcbiilfca7a47x6jsazf2um4ydwiqq6ejrgz4@4qhkbj4k5i5s>
+References: <20260627121450.3529133-1-ansuelsmth@gmail.com>
+ <20260627121450.3529133-4-ansuelsmth@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260630_074837_878884_4EEE7C72 
-X-CRM114-Status: UNSURE (   9.82  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20260627121450.3529133-4-ansuelsmth@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,38 +78,257 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-WDMA_RING_TX(0) is required to set MTK_WED_WDMA_RING_TX for WED RX
-but on a non-DBDC MT7986 it is never setup because idx is 1.
+On Sat, Jun 27, 2026 at 02:14:44PM +0200, Christian Marangi wrote:
+> To permit proper documentation of required property to support PCIe
+> configured for 2-lanes mode, split the Airoha schema part from the
+> mediatek-gen3 schema to a dedicated schema.
+> 
+> A PCIe configured for 2-lanes mode require an additional reg for the
+> secondary PCIe to be configured and the airoha,scu phandle to correctly
+> configure the PCIe MUX.
+> 
+> Rework the mediatek-gen3 schema to drop any redundant constraint previsouly
+> introduced for Airoha PCIe properties.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>  .../bindings/pci/airoha,en7581-pcie.yaml      | 251 ++++++++++++++++++
+>  .../bindings/pci/mediatek-pcie-gen3.yaml      |  77 +-----
+>  2 files changed, 256 insertions(+), 72 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/pci/airoha,en7581-pcie.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/pci/airoha,en7581-pcie.yaml b/Documentation/devicetree/bindings/pci/airoha,en7581-pcie.yaml
+> new file mode 100644
+> index 000000000000..c690ba7f207c
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pci/airoha,en7581-pcie.yaml
+> @@ -0,0 +1,251 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/pci/airoha,en7581-pcie.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Gen3 PCIe controller on Airoha SoCs
+> +
+> +maintainers:
+> +  - Christian Marangi <ansuelsmth@gmail.com>
+> +
+> +description: |+
+> +  PCIe Gen3 MAC controller for Airoha SoCs, it supports Gen3 speed
+> +  and compatible with Gen2, Gen1 speed.
+> +
+> +  This PCIe controller supports up to 256 MSI vectors, the MSI hardware
+> +  block diagram is as follows:
+> +
+> +                    +-----+
+> +                    | GIC |
+> +                    +-----+
+> +                       ^
+> +                       |
+> +                   port->irq
+> +                       |
+> +               +-+-+-+-+-+-+-+-+
+> +               |0|1|2|3|4|5|6|7| (PCIe intc)
+> +               +-+-+-+-+-+-+-+-+
+> +                ^ ^           ^
+> +                | |    ...    |
+> +        +-------+ +------+    +-----------+
+> +        |                |                |
+> +  +-+-+---+--+--+  +-+-+---+--+--+  +-+-+---+--+--+
+> +  |0|1|...|30|31|  |0|1|...|30|31|  |0|1|...|30|31| (MSI sets)
+> +  +-+-+---+--+--+  +-+-+---+--+--+  +-+-+---+--+--+
+> +   ^ ^      ^  ^    ^ ^      ^  ^    ^ ^      ^  ^
+> +   | |      |  |    | |      |  |    | |      |  |  (MSI vectors)
+> +   | |      |  |    | |      |  |    | |      |  |
+> +
+> +    (MSI SET0)       (MSI SET1)  ...   (MSI SET7)
+> +
+> +  With 256 MSI vectors supported, the MSI vectors are composed of 8 sets,
+> +  each set has its own address for MSI message, and supports 32 MSI vectors
+> +  to generate interrupt.
+> +
+> +properties:
+> +  compatible:
+> +    const: airoha,en7581-pcie
+> +
+> +  reg:
+> +    minItems: 1
+> +    maxItems: 2
+> +
+> +  reg-names:
+> +    minItems: 1
+> +    maxItems: 2
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  ranges:
+> +    minItems: 1
+> +    maxItems: 8
 
-Setting MTK_WED_WDMA_RING_TX with WDMA_RING_TX(1) is not feasible because
-WED still tries to send through WDMA_RING_TX(0). This is verified with
-register dump.
+8 entries? Really?
 
-Fix this by calling mtk_wed_wdma_tx_ring_setup if WDMA_RING_TX(0) is not
-setup and guard it with mtk_wed_is_v2.
+> +
+> +  iommu-map:
+> +    maxItems: 1
+> +
+> +  iommu-map-mask:
+> +    const: 0
 
-Fixes: 4c5de09eb0d0 ("net: ethernet: mtk_wed: add configure wed wo support")
-Signed-off-by: Zhi-Jun You <hujy652@gmail.com>
----
- drivers/net/ethernet/mediatek/mtk_wed.c | 4 ++++
- 1 file changed, 4 insertions(+)
+Why these iommu properties are not present in the example?
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-index 10d9beaae372..2420557f6c96 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-@@ -2334,6 +2334,10 @@ mtk_wed_start(struct mtk_wed_device *dev, u32 irq_mask)
- 		if (!dev->rx_wdma[i].desc)
- 			mtk_wed_wdma_rx_ring_setup(dev, i, 16, false);
- 
-+	if (mtk_wed_is_v2(dev->hw))
-+		if (!dev->tx_wdma[0].desc)
-+			mtk_wed_wdma_tx_ring_setup(dev, 0, MTK_WED_WDMA_RING_SIZE, false);
-+
- 	if (dev->wlan.hw_rro) {
- 		for (i = 0; i < MTK_WED_RX_PAGE_QUEUES; i++) {
- 			u32 addr = MTK_WED_RRO_MSDU_PG_CTRL0(i) +
+> +
+> +  resets:
+> +    minItems: 1
+> +    maxItems: 4
+> +
+> +  reset-names:
+> +    minItems: 1
+> +    maxItems: 4
+> +
+> +  clocks:
+> +    maxItems: 1
+> +
+> +  clock-names:
+> +    items:
+> +      - const: sys-ck
+
+sys-clk?
+
+> +
+> +  phys:
+> +    maxItems: 1
+> +
+> +  phy-names:
+> +    items:
+> +      - const: pcie-phy
+
+If there is going to be only one PHY, then I think you can drop the phy-names
+property.
+
+> +
+> +  num-lanes:
+> +    enum: [1, 2]
+> +
+> +  mediatek,pbus-csr:
+> +    $ref: /schemas/types.yaml#/definitions/phandle-array
+> +    items:
+> +      - items:
+> +          - description: phandle to pbus-csr syscon
+> +          - description: offset of pbus-csr base address register
+> +          - description: offset of pbus-csr base address mask register
+> +    description:
+> +      Phandle with two arguments to the syscon node used to detect if
+> +      a given address is accessible on PCIe controller.
+> +
+> +  airoha,scu:
+> +    $ref: /schemas/types.yaml#/definitions/phandle-array
+> +    items:
+> +      - items:
+> +          - description: phandle to airoha SCU syscon
+> +    description:
+> +      Phandle to SCU syscon to configure PCIe MUX for 2 lines support.
+> +
+> +  '#interrupt-cells':
+> +    const: 1
+> +
+> +  interrupt-controller:
+> +    description: Interrupt controller node for handling legacy PCI interrupts.
+
+s/legacy/INTx
+
+> +    type: object
+> +    properties:
+> +      '#address-cells':
+> +        const: 0
+> +      '#interrupt-cells':
+> +        const: 1
+> +      interrupt-controller: true
+> +
+> +    required:
+> +      - '#address-cells'
+> +      - '#interrupt-cells'
+> +      - interrupt-controller
+> +
+> +    additionalProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - reg-names
+> +  - interrupts
+> +  - ranges
+> +  - clocks
+> +  - clock-names
+> +  - '#interrupt-cells'
+> +  - interrupt-controller
+> +
+> +allOf:
+> +  - $ref: /schemas/pci/pci-host-bridge.yaml#
+> +  - if:
+> +      properties:
+> +        num-lanes:
+> +          const: 2
+> +    then:
+> +      properties:
+> +        reg:
+> +          minItems: 2
+> +
+> +        reg-names:
+> +          items:
+> +            - const: pcie-mac
+> +            - const: sec-pcie-mac
+> +
+> +        resets:
+> +          minItems: 4
+> +
+> +        reset-names:
+> +          items:
+> +            - const: phy-lane0
+> +            - const: phy-lane1
+> +            - const: perstout
+> +            - const: sec-perstout
+> +
+> +      required:
+> +        - airoha,scu
+> +
+> +    else:
+> +      properties:
+> +        reg:
+> +          maxItems: 1
+> +
+> +        reg-names:
+> +          items:
+> +            - const: pcie-mac
+> +
+> +        resets:
+> +          minItems: 2
+> +          maxItems: 3
+> +
+> +        reset-names:
+> +          minItems: 2
+> +          items:
+> +            - enum: [ phy-lane0, phy-lane1, phy-lane2 ]
+> +            - enum: [ phy-lane1, perstout ]
+> +            - const: phy-lane2
+> +
+> +unevaluatedProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +
+> +    bus {
+> +        #address-cells = <2>;
+> +        #size-cells = <2>;
+> +
+
+You can drop bus node.
+
+- Mani
+
 -- 
-2.47.3
-
+மணிவண்ணன் சதாசிவம்
 
