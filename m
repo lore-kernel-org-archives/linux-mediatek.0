@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E4BCC43327
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 11:17:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36A28C43458
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 11:17:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dhzauwQZPbpylpGr4WGE9mMiIv1Y0Ir+oeoCGGiZuDg=; b=iAFb5R/VP2Wfrhv9IkY+SwStp6
-	2uFaTD/+zYqCVKaO403Dwb31hxev2p3blQb9Rn0xMWHeK9zmWtLif0fR8JOB8d2aIp0oh1OoNHIMi
-	KrHxceVWDJgw2eybU2FvvTTxtqk9w6zL2zfxrUrZx7Oky3nbMYd/Bo8cZ1YEMWY8jedAzSdiXcQsK
-	zIZz+3PXmvG0zy1ehKU7KIDSmrX1ypMJ3B83csHF2sfgtOXAQrQZcMqHoSGWP6uOL+dmfzomUj0gk
-	mLh1Zg2OYBaJuYU9OkgU36h+MAqHNzD+JPKIimLlahoqB9e3Eoh245UxsEccAiTq7Nxn5PrqzN8Xq
-	ofX/ByqQ==;
+	bh=yxWYFypKe8y01eo76tZUt9hvhCGD0P07VdmXzqAFk9k=; b=hrMJ6+KDyQgc6wz3BAnvRsFgyY
+	xraM61eKHDvO9rtMjaj0MLJf7qN0fBr0vimGSBcI1WkgFkSO9JipGgNvpnxaFTTcB3C3pQuS+4DXK
+	SEca4dFs1CDHZ8qSHeJf/+2bCSLMFTA+3chUXF9uidx1uruC9QOkfW2nktmIEx2OwLLcP63PUkgaZ
+	jcI4jubdlMPZ8kpF/DBrfvsY+8eDtknyrARdyP/XjtiT51A+He1kbx6NrRZf2DwutBzr1Smu2+jQb
+	LsXuSyL4y2TzL9aRV1583NEeXLRE8NpV6545+MKpzSLNgLbMTQd7+c1eWEErGI8AysKKRrckwobE/
+	MuFJ8SEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weWSf-0000000Gp5H-0KXv;
-	Tue, 30 Jun 2026 11:17:05 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1weWTW-0000000GpLJ-1AWR;
+	Tue, 30 Jun 2026 11:17:58 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weWSV-0000000Gp0W-03dO;
-	Tue, 30 Jun 2026 11:16:55 +0000
+	id 1weWTV-0000000GpKp-3a92
+	for linux-mediatek@lists.infradead.org;
+	Tue, 30 Jun 2026 11:17:57 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id C157341450;
-	Tue, 30 Jun 2026 11:16:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 90D9C1F00A3D;
-	Tue, 30 Jun 2026 11:16:52 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 9CD9E43C1C
+	for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2026 11:17:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 849351F00ACF
+	for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2026 11:17:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782818214;
-	bh=dhzauwQZPbpylpGr4WGE9mMiIv1Y0Ir+oeoCGGiZuDg=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=UNSA3/+D4r4cXAUAKPFvhYTv+69PZbKlTh/NF3TZEpJ79O3McYU/fwKvHa8S7Au8X
-	 tX+y9qFmH6BPicNXjYYrlg/+j9DkBZTOmp5fDfF82aSx1rwaLaKKhHCs08Y9W1rNfi
-	 5Ztpl705/j5PzUbR/AowX4vMebYvQ0Xr3oTbEGjJBru5MDRRY9r6W1fMoP5Vynuukf
-	 rEq/9ouifH2RwckH0jfh6hQdqbxSSqLI992u/HezAKa/rBMHmvSyv+1x6CI8TRgk/E
-	 1Glrnw2PT127SjjgnMl8/IQ4lmL66DAjjfg1DyFlGzz0gA6ifGxBa8bG9MbsCGMIN/
-	 k9fB3VhenjZEw==
-From: Mark Brown <broonie@kernel.org>
-To: linux-mediatek@lists.infradead.org, 
- Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20260615185810.11804-1-l.scorcia@gmail.com>
-References: <20260615185810.11804-1-l.scorcia@gmail.com>
-Subject: Re: [PATCH v4] ASoC: dt-bindings: mtk-btcvsd-snd: Convert to DT
- Schema
-Message-Id: <178275431870.47562.12564836681670805353.b4-ty@b4>
-Date: Mon, 29 Jun 2026 18:31:58 +0100
+	s=k20260515; t=1782818277;
+	bh=yxWYFypKe8y01eo76tZUt9hvhCGD0P07VdmXzqAFk9k=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=Pp/Vx9o7LARmVE3umUis2ryH3Qz50yuFOrvN1AuKqxQxVgl/uCM21huHARJce6fxb
+	 vD+t07Qv00g6zt7be1w5gZz3ffqiNv1HQW7ipXiqStxNDOwenJwP7Gp5xDKaRSV4C7
+	 ja2LSY31tZelA5olPHOj2jrJm5tluwq51U7wS3l83bjh7WXp9MGLiLFPKmKCTLo4As
+	 /GlJnrlbMbJi3ziU0JrNCqZQ1DO2drar+VnBvf9MvpGud5XCoQ5DtltoC+KVv0AzAM
+	 7fwoPnbmYaMZ+xi+HWaDeOpDpHwweSSBwn4n/1fKr8+Atl28omzYNCZIfOk/bTvw2t
+	 7KKysrXAoyD+Q==
+Received: by mail-lj1-f179.google.com with SMTP id 38308e7fff4ca-39b27812c96so1728021fa.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2026 04:17:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+RoYy7X7dY85X/hzlxBQy7VPMYWaI1DNyuDmojcjELjV9CI4Uwpw1riRsMn0m6/WgGO9d3DuFRY04x46Z3G8HA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxuSfTBk8bUNwmqAepKx2sg2I/i6Bc+ElUIsdyKCxT97rUR1DT8
+	DiCDqpgpaUeTMQcno07vP4H/VBb8XNVse2vJY+Vlg9CfxMt15a3pdxX8NUpRKEMQOvtViXA9lGi
+	AApkTBnGcA3Tv0eg7wRtkePLB+U24vAY=
+X-Received: by 2002:a05:6512:12c8:b0:5ae:b7ce:9ca5 with SMTP id
+ 2adb3069b0e04-5aebdb9f97bmr823000e87.18.1782818276164; Tue, 30 Jun 2026
+ 04:17:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.16-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1137; i=broonie@kernel.org;
- h=from:subject:message-id; bh=sWHuPdL4V7aEh8FugrGqBsjNaOpEn9LSPJKhiXzoATk=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqQ6WjLm2GfsXw6NKD5XVY0W5AtH6+Er1DxKMlP
- fHioa7fM6WJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCakOlowAKCRAk1otyXVSH
- 0LmmB/9aq99s/+8+af6mipyDDgGfYxlP702UF2VGKCa6ALZ7GWzOw8XxmiNG9hYfUhlcXMHJ5tF
- GQlTZvXT6Sp7YyFnWHOqvKkoQafpEkiWL9d7+G1Tm73WSTgHmYFucxwOWf6KTTfdxy3ePy5q0yC
- kB3LfDbjrhgEaO3T4VE2dZd8oc3Qw9uf7kxrYzh5BByuYO0knHFu2PLZC5AYqe2hX7qZFN+gfCF
- IooPHITfNjS6eKssJdyR2qUzl6NGzvweMWn27In54iB5sbm/C8ZomO9s9TTti3ntJi5nMK1kVAT
- mYJLbo8Th01HOax++kLQSM9Kvy6GUiwBhvLAcAwNgFY3R/br
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+References: <20260530145800.1029920-1-y.oudjana@protonmail.com>
+ <20260530145800.1029920-7-y.oudjana@protonmail.com> <CAD++jLkA3v0RD1skaanqqG2eN8JLivUQPrYdK+hbX1YhQBgKqw@mail.gmail.com>
+ <PjcK3j_TxnXwwBQ8ATPAPOO6LJl5b0Laa_6eSBTVfEfqsxIcaeDEVS4q4UkvGQA7CLQbuGxopLF6p3eIh1JAIDTkPFIgwp-hVP-fex_WEqU=@protonmail.com>
+In-Reply-To: <PjcK3j_TxnXwwBQ8ATPAPOO6LJl5b0Laa_6eSBTVfEfqsxIcaeDEVS4q4UkvGQA7CLQbuGxopLF6p3eIh1JAIDTkPFIgwp-hVP-fex_WEqU=@protonmail.com>
+From: Linus Walleij <linusw@kernel.org>
+Date: Tue, 30 Jun 2026 12:17:43 +0100
+X-Gmail-Original-Message-ID: <CAD++jLmwYVGbfJk5WpN1kBJJ1r74Ja4JOfNB6iNdvDCAvB51NA@mail.gmail.com>
+X-Gm-Features: AVVi8CdsW-ifP9tBu011_-zch5iumUPieAs3JkBwAhQtx4Bpw01RxsGY5oIOGnw
+Message-ID: <CAD++jLmwYVGbfJk5WpN1kBJJ1r74Ja4JOfNB6iNdvDCAvB51NA@mail.gmail.com>
+Subject: Re: [PATCH v8 6/6] pinctrl: mediatek: Add MT6735 pinctrl driver
+To: Yassine Oudjana <y.oudjana@protonmail.com>
+Cc: Yassine Oudjana <yassine.oudjana@gmail.com>, Sean Wang <sean.wang@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Andy Teng <andy.teng@mediatek.com>, linux-mediatek@lists.infradead.org, 
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,35 +86,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 15 Jun 2026 20:57:50 +0200, Luca Leonardo Scorcia wrote:
-> ASoC: dt-bindings: mtk-btcvsd-snd: Convert to DT Schema
+On Sat, Jun 13, 2026 at 11:20=E2=80=AFAM Yassine Oudjana
+<y.oudjana@protonmail.com> wrote:
+> On Monday, June 8th, 2026 at 9:41 PM, Linus Walleij <linusw@kernel.org> w=
+rote:
 
-Applied to
+> > > From: Yassine Oudjana <y.oudjana@protonmail.com>
+> > >
+> > > Add a driver for the MediaTek MT6735 SoC pin controller. This driver
+> > > also supports the pin controller on MT6735M, which lacks 6 physical
+> > > pins (198-203) used for MSDC2 on MT6735.
+> > >
+> > > Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
+> >
+> > Sashiko has good comments on this driver, look into them!
+>
+> Didn't receive any comments and I don't see anything on the mailing list
+> archives either. Am I missing something?
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.3
+https://lore.kernel.org/linux-devicetree/20260530155503.9A6C41F00893@smtp.k=
+ernel.org/
 
-Thanks!
-
-[1/1] ASoC: dt-bindings: mtk-btcvsd-snd: Convert to DT Schema
-      https://git.kernel.org/broonie/sound/c/012dfa0c45ec
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+Yours,
+Linus Walleij
 
