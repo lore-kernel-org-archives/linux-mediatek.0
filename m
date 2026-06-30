@@ -4,126 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5271C43602
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 11:30:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD64DC43458
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 12:09:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J8SvJGTZ2u1IZwFhcs3i7c0fEcalkO1dVS/ZfeJcwRI=; b=HYCeChwGMEH1LaeefeGZR3EBRv
-	Yz7S71XTJd+FqBVunLk3VxxypBq61sT9GXGKzs0cJAH0eZonn3jE9wqycG5JLaPn9U4nRNv5wRiix
-	0V4gUocDgK5X2lwCSrHyVZ3e9c0UyEAUXZR2vVkZVw7Lfl3SyY7q4O96GoBARSYgnH5j/8nBazvTw
-	MJDYDVis1y7T/75oK9KG7LuE1uhUQOw1vYkvBzsKDEbUErCl273dy5bNpGKS98NyIILXem8eMYNmz
-	st79iB7e4IO4V/3YxL7IkKC2/fvoQNLxcAiJ6Qy5br937ya0ynAln10GL0Jq5PecwU7vBpfS+888O
-	9aAJx6tA==;
+	bh=N7yjC32RZFO2zeCVufXjAZbsnHlmLLdCxMY1qn9+twI=; b=rfTaeXjqeMdDiJMRK6mmrY8gAj
+	hX9ATBEKTDlhkEmf3xF14EYLYaL1XGv0/iIeqPG4KJ254yDUXbeW0nXQw9d9RPKsASheCKJNBhQjy
+	EPiea7y8irlZ/vLxzbeOyvpXtpB6SO1VwcJXw9vhpUDc77FSLfVtfFzqUFkCbUd0K/uWj3onKJjKU
+	bzpP9/EbPmCkrWqlr9b+rJ8gDQvJyyDQ8qWsRDjwfcT/7v2YVwlFU99F1D+vM/2/5Hryd5o3bDANf
+	OwmbA5bzTQuZd/Oj/EmLu686UycqWt7jqxkJvchFBYWgT4W9qu9ADEZIDAxUcaPTnjDa+ET0wAFXM
+	fXsfZZ1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weWfO-0000000Gqrl-2bNm;
-	Tue, 30 Jun 2026 11:30:14 +0000
-Received: from relay.yourmailgateway.de ([188.68.63.98])
+	id 1weXHV-0000000GvpP-0yfi;
+	Tue, 30 Jun 2026 12:09:37 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weWfL-0000000GqoS-3xN0;
-	Tue, 30 Jun 2026 11:30:13 +0000
-Received: from mors-relay-2501.netcup.net (localhost [127.0.0.1])
-	by mors-relay-2501.netcup.net (Postfix) with ESMTPS id 4gqLXt10tcz68bK;
-	Tue, 30 Jun 2026 13:30:06 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=leemhuis.info;
-	s=key2; t=1782819006;
-	bh=bND4nmC52SsdVbchgWHn53BVqAbA6/MYoTfwdivb9iU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=is9Pq9ItxwkIslCPKQiyVXINTZo2e0qhaFUi1k0wqbGfVvVQ8DLphx7r6ho4fyQ+E
-	 R14uV3uADzX76+1OH1LNcHYeQB2IXH1CBTniT9ByFBamngmPxO4bI3IeBv4Hh9+Qos
-	 TSt+b+iS0TrUZBuVypc9JpRldu4aEq6tifHYMbRU/qo1sO6KXZmKoa93AlC0WCwSM+
-	 2F39VWLk0ffi0bw5oOH/5t/x+85csWB1rV/qjnhKCVXRLU6p/aWgsu8ODS4D1J4VCC
-	 Ie3lCsaclNsmDD1XXGT9KOIYjn9/3lhwlZIwqm1cJiSbsidlDIZUUpCWlvW8FsDYe/
-	 C9sFaJITwyWig==
-Received: from policy01-mors.netcup.net (unknown [46.38.225.35])
-	by mors-relay-2501.netcup.net (Postfix) with ESMTPS id 4gqLXt0H1jz4xLr;
-	Tue, 30 Jun 2026 13:30:06 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at policy01-mors.netcup.net
-Received: from mxe9fb.netcup.net (unknown [10.243.12.53])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by policy01-mors.netcup.net (Postfix) with ESMTPS id 4gqLXf19t2z8tZB;
-	Tue, 30 Jun 2026 13:29:54 +0200 (CEST)
-Received: from [IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f] (unknown [IPv6:2a02:8108:8984:1d00:a0cf:1912:4be:477f])
-	by mxe9fb.netcup.net (Postfix) with ESMTPSA id 2DA965FC41;
-	Tue, 30 Jun 2026 13:29:53 +0200 (CEST)
-Authentication-Results: mxe9fb;
-        spf=pass (sender IP is 2a02:8108:8984:1d00:a0cf:1912:4be:477f) smtp.mailfrom=regressions@leemhuis.info smtp.helo=[IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f]
-Received-SPF: pass (mxe9fb: connection is authenticated)
-Message-ID: <b143b62e-ca11-4f00-ad60-f71ae55213b9@leemhuis.info>
-Date: Tue, 30 Jun 2026 13:29:51 +0200
+	id 1weXHT-0000000GvpF-0cwi
+	for linux-mediatek@lists.infradead.org;
+	Tue, 30 Jun 2026 12:09:35 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 3C41A600FC
+	for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2026 12:09:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E8A2B1F00A3E
+	for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2026 12:09:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1782821373;
+	bh=N7yjC32RZFO2zeCVufXjAZbsnHlmLLdCxMY1qn9+twI=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=NcLHVss9KsnF/5DOh4xxod83EuSVKq1XaEYc7aEP3bZB96dKjjeL/ENc2BaG4OXVn
+	 f0TuJ1Nv41EDG7BStv5oOegOmtpmM0Q/IWuE2XTuKyy2UotOTIbKEuD+Yyr4MylJZj
+	 mHZZHWcr6yHnQ3UDQDgPBAb9wxotApqLHlCw6HE28zET4QwJNf0LiJySGImmftiMEU
+	 qyGDCz3Crnlpm/atu+Po5IM8PA/8ddhcGD50rte9cdMBbcrOfwI7orBj/EggPpBZzL
+	 cr28OoiruwUwQDlTZr5+PhKDQfimSOVb0EWtw/Oot/52Ir3ukBo9EjcwN+EU/aFtSa
+	 WmwZGKthk3+yg==
+Received: by mail-lf1-f41.google.com with SMTP id 2adb3069b0e04-5aeba09900bso1594242e87.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2026 05:09:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+Ro+vKnGMPM/jx0jK4sbs3ef5ELl8rznO6VmlBUvlhYsp9Qj/GifEYNoF2kkufU4h4x10GBd0TE3et3b0WS4QQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwlsQukbUZ6f6sHCn1f8cu3y9oZcyywY58gaybI9LAK8zZyAugL
+	oPrRfERvDiooHs4ytL6us7wU7y/fKzEX4/LjOoqZm+19Bt33ue96YwzQkWeNWKRqzfQYTvzhIKu
+	ESsVV2chqBtYxIEkh6l2BhQceBKOEm9o=
+X-Received: by 2002:a05:6512:a354:b0:5ae:b7c4:d2d2 with SMTP id
+ 2adb3069b0e04-5aebdb8dd04mr655348e87.12.1782821372740; Tue, 30 Jun 2026
+ 05:09:32 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] wifi: mt76: add wcid publish check in mt76_sta_add
-To: Jiajia Liu <liujiajia@kylinos.cn>, Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Leon Yen <leon.yen@mediatek.com>
-Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Linux kernel regressions list <regressions@lists.linux.dev>
-References: <20260528033814.46418-1-liujiajia@kylinos.cn>
-From: Thorsten Leemhuis <regressions@leemhuis.info>
-Content-Language: de-DE, en-US
-X-Enigmail-Draft-Status: N11222
-Autocrypt: addr=linux@leemhuis.info; keydata=
- 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 MEK4
-In-Reply-To: <20260528033814.46418-1-liujiajia@kylinos.cn>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-PPP-Message-ID: <178281899374.842439.7183806903184206113@mxe9fb.netcup.net>
-X-NC-CID: kHJGrrkTMORIpTtCI7QdXFhTPxpnjuYc1xCuYWft9J8OiKDCI30=
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260630_043012_311843_58526816 
-X-CRM114-Status: GOOD (  20.65  )
+References: <20260617043654.2790253-1-mikhail.kshevetskiy@iopsys.eu>
+In-Reply-To: <20260617043654.2790253-1-mikhail.kshevetskiy@iopsys.eu>
+From: Linus Walleij <linusw@kernel.org>
+Date: Tue, 30 Jun 2026 13:09:19 +0100
+X-Gmail-Original-Message-ID: <CAD++jLmY6Ase3hPC00z_kAJe+vJBUyrEHZEAOcWqkiuFnRGCcA@mail.gmail.com>
+X-Gm-Features: AVVi8CeqvdqmX1k7t5vMa_RRoP0ZutCzLez8z7gtB59RFtVfKunQWvBDYQA20dM
+Message-ID: <CAD++jLmY6Ase3hPC00z_kAJe+vJBUyrEHZEAOcWqkiuFnRGCcA@mail.gmail.com>
+Subject: Re: [PATCH v4 00/14] pinctrl: airoha: split driver on shared code and
+ SoC specific drivers, add supporf of en7523
+To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Christian Marangi <ansuelsmth@gmail.com>, 
+	Benjamin Larsson <benjamin.larsson@genexis.eu>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
+	linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	Markus Gothe <markus.gothe@genexis.eu>, 
+	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,79 +84,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/28/26 05:38, Jiajia Liu wrote:
-> Since mt7925_mac_sta_add publishes wcid, add publish check in mt76_sta_add
-> to avoid reinitializing the wcid->poll_list.
-> 
-> Found dev->sta_poll_list corruption when using mt7925 and 7.1-rc4.
+On Wed, Jun 17, 2026 at 5:37=E2=80=AFAM Mikhail Kshevetskiy
+<mikhail.kshevetskiy@iopsys.eu> wrote:
 
-Jiajia Liu, Felox: given that the problem seems to be in 7.1, should we
-ask the stable team to pick this regression fix up, as this change was
-mainlined (as 20b126920a259d ("wifi: mt76: add wcid publish check in
-mt76_sta_add") [v7.2-rc1]), but lacks both a Fixes and a Stable tag?
+> This patchset
+>  * fixes more airoha pinctrl issues
+>  * split combined driver on common code and several SoC specific drivers
+>  * improves an7583 pinctrl support
+>  * adds support of en7523 SoC
 
-Ciao, Thorsten
+No comments for two weeks so patches applied.
 
-> According to the corruption information, prev->next was changed to itself.
-> 
-> wlan0: disconnect from AP 90:fb:5d:94:8b:e3 for new auth to 90:fb:5d:94:8b:e2
-> wlan0: authenticate with 90:fb:5d:94:8b:e2 (local address=84:9e:56:9c:7e:6b)
-> wlan0: send auth to 90:fb:5d:94:8b:e2 (try 1/3)
->  slab kmalloc-8k start ffff8c80958a6000 pointer offset 4160 size 8192
-> list_add corruption. prev->next should be next (ffff8c808a7488f8), but was ffff8c80958a7040. (prev=ffff8c80958a7040).
-> 
->  mt76_wcid_add_poll+0x95/0xd0 [mt76]
->  mt7925_mac_add_txs.part.0+0xa5/0xe0 [mt7925_common]
->  mt7925_rx_check+0xa7/0xc0 [mt7925_common]
->  mt76_dma_rx_poll+0x50d/0x790 [mt76]
->  mt792x_poll_rx+0x52/0xe0 [mt792x_lib]
-> 
-> Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
-> ---
-> 
-> Changes in v2:
->   - use dev->wcid table instead of adding MT_WCID_FLAG_DRV_PUBLSH for
->     wcid publish check suggested by Sean
->   - subject and commit message update
-> 
-> ---
->  drivers/net/wireless/mediatek/mt76/mac80211.c | 15 ++++++++++++---
->  1 file changed, 12 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-> index 4ae5e4715a9c..b78b4cd206e0 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-> @@ -1576,6 +1576,7 @@ mt76_sta_add(struct mt76_phy *phy, struct ieee80211_vif *vif,
->  {
->  	struct mt76_wcid *wcid = (struct mt76_wcid *)sta->drv_priv;
->  	struct mt76_dev *dev = phy->dev;
-> +	struct mt76_wcid *published;
->  	int ret;
->  	int i;
->  
-> @@ -1595,11 +1596,19 @@ mt76_sta_add(struct mt76_phy *phy, struct ieee80211_vif *vif,
->  		mtxq->wcid = wcid->idx;
->  	}
->  
-> -	ewma_signal_init(&wcid->rssi);
-> -	rcu_assign_pointer(dev->wcid[wcid->idx], wcid);
-> +	published = rcu_dereference_protected(dev->wcid[wcid->idx],
-> +					      lockdep_is_held(&dev->mutex));
-> +	if (published != wcid) {
-> +		WARN_ON_ONCE(published);
-> +		ewma_signal_init(&wcid->rssi);
-> +		rcu_assign_pointer(dev->wcid[wcid->idx], wcid);
-> +		mt76_wcid_init(wcid, phy->band_idx);
-> +	} else {
-> +		wcid->phy_idx = phy->band_idx;
-> +	}
-> +
->  	phy->num_sta++;
->  
-> -	mt76_wcid_init(wcid, phy->band_idx);
->  out:
->  	mutex_unlock(&dev->mutex);
->  
-
+Yours,
+Linus Walleij
 
