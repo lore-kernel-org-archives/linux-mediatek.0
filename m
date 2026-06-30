@@ -4,116 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 609D4C43327
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 21:03:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B06F2C43602
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 21:50:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q7JoXzPTuey5MTxrK590E54YxP0efCGYmeHmx7RdAY0=; b=LOtXUCiSmurBnXEcPSMSvunmqa
-	5dhhXkZxdfEtkfbib7esbY/ygrozC1JmDaiUpqlsAWKgH5E1RAoFgxpJUz3ZDrtOr9KjNO4FwO4R8
-	dVNXshXUUrUxfk3CRjSzBWpfMsBPtlduNJwN/iugwMuXIFsLWSRMYVNQiN4FrBLsjH5u95k0q17a+
-	yUgOo3WMYgbPWOII3U4PKP3bNyNQ2dOAPUSSgXhrmQZJ8SXSEiy1HBvHW59eCXMwt9gErXcID+VKo
-	YQcfugg26nSHPBUicbHeQrwqzugrvQf3ptH65BZrC+MqT5JeI1ebRlfMkmrofLIkNxQAK6SsBSpkY
-	17g2tu0w==;
+	bh=KxL3rolEVDT4va+DpSSGT4PPQJnzOeFNXpzN2aCiRSI=; b=RK+nwbHHJCDd2aUqjJnzmS8Pd3
+	WWPIO9PWpjCroLDoaARfnkdCyax8o/jz/pJNgupM7bxiDwK0NgaidLjqyX2P8cmdrwa6Jf52QcBp7
+	LsLbFSUIqPnJKd3CRjN+P82n3rcl+xfkFlLv5h6EhGW4JuppBJekva0ovu/5rP4L3EcmF2vA0wmQ8
+	UdIpu/hXEId/DfwhZ4h5JMHGaPCVsa8w0TCZFNQ20LKRg4lLI8gjUnBp0UUIob2IX1fiZfHKMZdNi
+	BSvr5xzwMdfweHmrNqCAZ/I3CTwbCAIfI4RjSW9PjU+6tuABELMHnOZyiT+qJSPL2LbCtw6ZtxUZ+
+	oL4E2k6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wefcD-00000000DNt-3aGb;
-	Tue, 30 Jun 2026 21:03:35 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1wegLB-00000000Gug-3Yl0;
+	Tue, 30 Jun 2026 21:50:04 +0000
+Received: from smtprelay0012.hostedemail.com ([216.40.44.12] helo=relay.hostedemail.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wefcA-00000000DMd-2P6W
+	id 1wegL8-00000000Gtl-0bjM
 	for linux-mediatek@lists.infradead.org;
-	Tue, 30 Jun 2026 21:03:32 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-5aeb2bc82ccso3500962e87.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2026 14:03:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1782853408; cv=none;
-        d=google.com; s=arc-20260327;
-        b=X4XRrNnxQpNiWpSU6CpHxMdaL4M7OUwMopu/ZnWG+bO3VHIzSCGM5yvNIpsXoXdTxh
-         JMeAW94gCjUzpP+XGFFZ+dOdpu+ujKAlPgW2aA2BLArSyaGl2zrhW8Pee51oX346mbSy
-         zVuFqPzj48mw/SknsQi/JVpf/cEdqzezWu8hwpctTy40yE0S7GCmEvkedoTcaARa9fLZ
-         j33As6bi8H4JLXNES/US2YKrjynUrwAyXb60aIr8xJpr1cBro5FcFELXSjtCJdbOQXxz
-         oqZ4KgJx7VRoLcZDIoyMUXcEDX3cwHawCdT0PmguEmNU4F6tVTafqA5LdGDqg/jUS61L
-         +lqQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=q7JoXzPTuey5MTxrK590E54YxP0efCGYmeHmx7RdAY0=;
-        fh=2vMyJcwN7Vy0PLs2fvyGcqHvmHyeCtQ4GKW2RyYpkn4=;
-        b=mBnoqqDbCjALvtALaBC6tUdJ9R7NZoCOlZkkji74+LPTsI14HSlwTLFPWfQVM545+f
-         +ZO0w+wBdIg3FWnpLTnEtVIKO7w0UlM8lZQizRgHZtW64/tLkkcwzrhBYOtiYIY5v83K
-         toPHgc236NrXZZW31ONcSH8cH/V0G9hIFfBLpQjfjBYfN7hZnNbphmWqB6WByIz2y3se
-         CR99GHwBxq94G8xZrIiIVLRC7bAI+J28eZ9ntQWMs34vHBNgzzTQ7hKvWlBd8GawCQmo
-         GkGVw0MIy2Vn0/OWrZ1+K4+ECcwgCroumTIwHFOfdgxfAyxFxyYzVbyHRZp2qsTnSP5+
-         tzoA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1782853408; x=1783458208; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=q7JoXzPTuey5MTxrK590E54YxP0efCGYmeHmx7RdAY0=;
-        b=sNvxy3mlrxmGLBcEnW13bOdxYrZ/FNKoETClAf5cfB4JANT8s/9UmQ2Y9KgQsmVDF8
-         lsVMT7xcLwtqwyVvOV2udAGGTtkLiJfkPtuQPfYpbaRNxFQoG0mX6XRPCv6hjXdH9+c3
-         pjlfHTNACB35v0nS5aOcqZOBYtG1/xbaUqSmCIHF3t4ybW0/EaHZmsV3MyHB76SZs9+z
-         4Zwhbuz931pB/xsp6U4JtRFMwcv2iA9xzpM8L/QzLgALQSMtxfIa1w64I0f/TClJn/wm
-         vL6UnIrIpVC+g/TkeNFIALGZeX+Kkj7mo0LuAqdYW1f8X0zFQLaqlE3HJvS7Y9cvhN0S
-         rPPQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782853408; x=1783458208;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=q7JoXzPTuey5MTxrK590E54YxP0efCGYmeHmx7RdAY0=;
-        b=P7oVJDvKG+kpWReXNKxUXCS4GgOMZTgdDah2KDIgDsRB+9oIGB7SSjbWL0N4T7FQ0X
-         lGF3VOdM6EvXc8daLS5/ifyoo+h5wPe7Aj6v6aRUtYYc9euYLuIitHbsuoohrD33mscn
-         tBwnu3zqGPQEMdSec+rz2xbMmbzpK7p4lxbzDkV0F7OVclhHh5xHYgmzzJiWwrhDlnbr
-         vFrHw4Af2nRqFaGGN1WOlFzzZGyI3S2WcJqDSDSoQhSfM7t6WL3lUJZCplwCXLwHdYgv
-         yUw4Jsc/95i/MXwx3OHoi4HE0SWTzJyf7PCA48QVAR5PIhWrYZbMR6f2LqzdK7Ifw8Vh
-         fYuA==
-X-Forwarded-Encrypted: i=1; AHgh+RoYfS+jtqLv958akKmegFvu6LuoQ7MnxYbZk1Ity3JYUZRIP/1XBMCvSilR2EU7RpKKhTKypaKYHnnSPqmT1A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzjFI8NDeDjbV0oqsgEVo92v+/craNFRfv6XJpgFYDZrSYDnrz0
-	aMbOcc7Gr3Slpz/Yyc4enWlLdXGmvLu70IcaycBKnTnATAYpIYg7YHDlmMhapY/rlX8jVPhxF10
-	+Ld8sGcsNKKbYEgmzIgx7GhpQ0u7T16E=
-X-Gm-Gg: AfdE7cluIWyJ/oLbQWQGRizzoKtKfHobNTEi4f8XKaHHs2B6KxiFA8uXOpnfex11mNh
-	0rRWb6LRDlzadNUVc07Xkts3OElfiq/1jJ215/rkfY2svUzZv75DT0DBOmoZmGNwg7AVym3BsEi
-	+vf3pHmsu+l5VeRyv4noFtfwdvL2M8Xzz7D0XLJmqCKlx89z9O04g69qoXj2iaWos+hJqVLable
-	hcwgxgvM2SceNkUB1OLryGZbnMhDfIY+qDH0OYZj3PonyggClJ5JOfHitPFH26nmPGe9WmGOgJ3
-	F09zod6hWLc6AEs0CgTes0ZP189wVjPmA+5B3HBAZLtpOWl9l8TK3KdD6SjguyWoVM1JW1Z8UG8
-	YEQ2BFf0s6U/wYuBWEt5eJpn46PU=
-X-Received: by 2002:a05:6512:618c:b0:5ae:a9ec:9fc4 with SMTP id
- 2adb3069b0e04-5aebdbc70a5mr1360054e87.63.1782853408064; Tue, 30 Jun 2026
- 14:03:28 -0700 (PDT)
+	Tue, 30 Jun 2026 21:49:59 +0000
+Received: from omf02.hostedemail.com (lb01a-stub [10.200.18.249])
+	by unirelay06.hostedemail.com (Postfix) with ESMTP id 403081C4D3D;
+	Tue, 30 Jun 2026 21:49:54 +0000 (UTC)
+Received: from [HIDDEN] (Authenticated sender: rostedt@goodmis.org) by omf02.hostedemail.com (Postfix) with ESMTPA id 89BA880011;
+	Tue, 30 Jun 2026 21:49:49 +0000 (UTC)
+Date: Tue, 30 Jun 2026 17:49:49 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: <peter.wang@mediatek.com>
+Cc: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+ <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
+ <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <chun-hung.wu@mediatek.com>, <alice.chao@mediatek.com>,
+ <cc.chou@mediatek.com>, <chaotian.jing@mediatek.com>,
+ <jiajie.hao@mediatek.com>, <yi-fan.peng@mediatek.com>,
+ <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>, <tun-yu.yu@mediatek.com>,
+ <eddie.huang@mediatek.com>, <naomi.chu@mediatek.com>,
+ <ed.tsai@mediatek.com>, <bvanassche@acm.org>, Linux Trace Kernel
+ <linux-trace-kernel@vger.kernel.org>
+Subject: Re: [PATCH v3] ufs: core: add hba parameter to trace events
+Message-ID: <20260630174949.16a9d867@gandalf.local.home>
+In-Reply-To: <20260630165612.3e21b510@gandalf.local.home>
+References: <20250214083026.1177880-1-peter.wang@mediatek.com>
+	<20260630165612.3e21b510@gandalf.local.home>
+X-Mailer: Claws Mail 3.20.0git84 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-References: <20260427051746.954704-1-rosenp@gmail.com> <ajRmlyx_AEGybykL@soda.int.kasm.eu>
- <CAKxU2N-gfH8Tq29-j2MArogLZuO7JEqtN5LNPVygJzrAERa3cg@mail.gmail.com>
- <ajSDtsJCmYnMNJSD@parmesan.int.kasm.eu> <DJCNDEE8JMPL.1DL49X1EUDFCE@gmail.com>
- <173df064-f373-4cce-b35f-e52f728be263@leemhuis.info>
-In-Reply-To: <173df064-f373-4cce-b35f-e52f728be263@leemhuis.info>
-From: Rosen Penev <rosenp@gmail.com>
-Date: Tue, 30 Jun 2026 14:03:13 -0700
-X-Gm-Features: AVVi8CdKSeWNxVJXoQWTYXgaetJpdvlliSZ-GmhRr-ByVwdKSQxkvdocgc7yH_E
-Message-ID: <CAKxU2N9hw6bUNA+rZC_jfZVzi7bMXe96jzLWdL9F3P4=rYnmUQ@mail.gmail.com>
-Subject: Re: [PATCH wireless-next] wifi: mt76: fix of_get_mac_address error handling
-To: Thorsten Leemhuis <regressions@leemhuis.info>
-Cc: Felix Fietkau <nbd@nbd.name>, linux-wireless@vger.kernel.org, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	Tobias Klausmann <klausman@schwarzvogel.de>, Klara Modin <klarasmodin@gmail.com>, 
-	Linux kernel regressions list <regressions@lists.linux.dev>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Rspamd-Server: rspamout05
+X-Rspamd-Queue-Id: 89BA880011
+X-Stat-Signature: zos49tdjtipgczwyznzu5ysm1neddnbt
+X-Session-Marker: 726F737465647440676F6F646D69732E6F7267
+X-Session-ID: U2FsdGVkX19HS5wj3FmjR/6nlugjqjNUD4CtmIyueu4=
+X-HE-Tag: 1782856189-902037
+X-HE-Meta: U2FsdGVkX1+ct3S9wj9/rXc92SKoO6+Hfwymjc0MrzcE9PcUIltCCG96E2qjO5DwH94u/1YaFxCD3VVej/72IZ/D1TRoZXUXBgaizmcQK5gSswyuFgFSc5g+ptsPAL6PhZc8eou89Ef4UGhbxeMimseREvSgbxWIjnoaAa3Bbw9LicC27+4o+ysE0r6e98ejbKa9dnhGbeXJOXFgoHwH4N76NHE7YIktHW4bSPc+TKqf5cVjp9i8F3RUeCO8iQoZPaU3uIBi2A+3MNIpnFeqwedCfIHjrCrL+/p/nrUkVEEpXkQpL89PiCvtW/GmBGkEDeqlyB4RXvw8gpIWNDSGv9S4JFjJM7IdyWJLiwhKLHYRAn7UjwBJDdhgZOh2CdrtPk1V6r88pEychDDySzRKOA==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260630_140330_706686_AA24E83D 
-X-CRM114-Status: GOOD (  25.64  )
+X-CRM114-CacheID: sfid-20260630_144958_245052_2F539DFA 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,72 +78,232 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 30, 2026 at 5:18=E2=80=AFAM Thorsten Leemhuis
-<regressions@leemhuis.info> wrote:
->
-> On 6/19/26 03:50, Rosen Penev wrote:
-> > On Thu Jun 18, 2026 at 4:51 PM PDT, Klara Modin wrote:
-> >> On 2026-06-18 16:01:45 -0700, Rosen Penev wrote:
-> >>> On Thu, Jun 18, 2026 at 2:47=E2=80=AFPM Klara Modin <klarasmodin@gmai=
-l.com> wrote:
-> >>>> On 2026-04-26 22:17:46 -0700, Rosen Penev wrote:
-> >>>>> Check return value instead of is_valid_ether_addr. The latter is ha=
-ndled
-> >>>>> by the former.
-> >>>>>
-> >>>>> Signed-off-by: Rosen Penev <rosenp@gmail.com>
-> >>>>> [...]
-> >>>>>>>> Recently I have started to see randomized MAC-addresses on my
-> x86 laptop
-> >>>> with a MT7922 and the above message printed in the kernel log. I hav=
-e
-> >>>> CONFIG_OF turned on, but since this is an ACPI system the device is =
-not
-> >>>> described by any device tree and the earlier of_get_mac_address() li=
-kely
-> >>>> fails with -ENODEV. Looking at the !CONFIG_OF stub for
-> >>>> of_get_mac_address it always returns -ENODEV, meaning this will alwa=
-ys
-> >>>> randomize the mac in that case too.
-> >>
-> >>> IIRC, the normal device_get_mac_address supports nvmem now. Does that
-> >>> fix your use case?
-> >>
-> >> I tried this:
-> >> [...]
-> >> but I still get a random MAC.
-> > Then the original patch should be reverted. Unfortunate that it doesn't
-> > workq
->
-> Happens, no worries, but seems nobody submitted such a revert yet since
-> you posted that. Unless I'm missing something -- if so, please do not
-> hesitate to tell me!
->
-> But if no revert is in the works, could you please submit one, given
-> that it was your change that cause the problem?
-https://lore.kernel.org/linux-wireless/20260630210215.400379-1-rosenp@gmail=
-.com/T/#u
->
-> Side note: Tobias (now CCed) ran into the same problem, too:
-> https://lore.kernel.org/all/30a90714-02d8-45f2-a7f1-4cfe0627d50b@skade.lo=
-cal/
->
-> Makes me wonder if more people are affected by this and if we should try
-> to mainline the revert rather sooner than later.
->
-> Ciao, Thorsten
->
-> >>>>
-> >>>> Reverting this patch fixes the issue and the correct MAC address is
-> >>>> used. I'm not sure if there is any case where of_get_mac_addres() co=
-uld
-> >>>> fail in a way that results in a valid MAC address but it seems unlik=
-ely
-> >>>> to me.
-> >>>>
-> >>>> Regards,
-> >>>> Klara Modin
-> >
-> >
->
+On Tue, 30 Jun 2026 16:56:12 -0400
+Steven Rostedt <rostedt@goodmis.org> wrote:
+
+> >  
+> >  	TP_printk("%s: gating state changed to %s",
+> > -		__get_str(dev_name),
+> > +		dev_name(__entry->hba->dev),  
+> 
+> NO YOU CAN NOT DO THIS!!!!
+
+This is why you should always Cc linux-trace-kernel@vger.kernel.org on any
+trace event updates. We look to catch bugs like this.
+
+The below patch should fix it, and I'll send it as a proper patch soon:
+
+diff --git a/drivers/ufs/core/ufs_trace.h b/drivers/ufs/core/ufs_trace.h
+index 309ae51b4906..377a3c54b9f5 100644
+--- a/drivers/ufs/core/ufs_trace.h
++++ b/drivers/ufs/core/ufs_trace.h
+@@ -89,16 +89,18 @@ TRACE_EVENT(ufshcd_clk_gating,
+ 
+ 	TP_STRUCT__entry(
+ 		__field(struct ufs_hba *, hba)
++		__string(dev_name, dev_name(hba->dev))
+ 		__field(int, state)
+ 	),
+ 
+ 	TP_fast_assign(
++		__assign_str(dev_name);
+ 		__entry->hba = hba;
+ 		__entry->state = state;
+ 	),
+ 
+ 	TP_printk("%s: gating state changed to %s",
+-		dev_name(__entry->hba->dev),
++		__get_str(dev_name),
+ 		__print_symbolic(__entry->state, UFSCHD_CLK_GATING_STATES))
+ );
+ 
+@@ -111,6 +113,7 @@ TRACE_EVENT(ufshcd_clk_scaling,
+ 
+ 	TP_STRUCT__entry(
+ 		__field(struct ufs_hba *, hba)
++		__string(dev_name, dev_name(hba->dev))
+ 		__string(state, state)
+ 		__string(clk, clk)
+ 		__field(u32, prev_state)
+@@ -119,6 +122,7 @@ TRACE_EVENT(ufshcd_clk_scaling,
+ 
+ 	TP_fast_assign(
+ 		__entry->hba = hba;
++		__assign_str(dev_name);
+ 		__assign_str(state);
+ 		__assign_str(clk);
+ 		__entry->prev_state = prev_state;
+@@ -126,7 +130,7 @@ TRACE_EVENT(ufshcd_clk_scaling,
+ 	),
+ 
+ 	TP_printk("%s: %s %s from %u to %u Hz",
+-		dev_name(__entry->hba->dev), __get_str(state), __get_str(clk),
++		__get_str(dev_name), __get_str(state), __get_str(clk),
+ 		__entry->prev_state, __entry->curr_state)
+ );
+ 
+@@ -138,16 +142,18 @@ TRACE_EVENT(ufshcd_auto_bkops_state,
+ 
+ 	TP_STRUCT__entry(
+ 		__field(struct ufs_hba *, hba)
++		__string(dev_name, dev_name(hba->dev))
+ 		__string(state, state)
+ 	),
+ 
+ 	TP_fast_assign(
+ 		__entry->hba = hba;
++		__assign_str(dev_name);
+ 		__assign_str(state);
+ 	),
+ 
+ 	TP_printk("%s: auto bkops - %s",
+-		dev_name(__entry->hba->dev), __get_str(state))
++		__get_str(dev_name), __get_str(state))
+ );
+ 
+ DECLARE_EVENT_CLASS(ufshcd_profiling_template,
+@@ -158,6 +164,7 @@ DECLARE_EVENT_CLASS(ufshcd_profiling_template,
+ 
+ 	TP_STRUCT__entry(
+ 		__field(struct ufs_hba *, hba)
++		__string(dev_name, dev_name(hba->dev))
+ 		__string(profile_info, profile_info)
+ 		__field(s64, time_us)
+ 		__field(int, err)
+@@ -165,13 +172,14 @@ DECLARE_EVENT_CLASS(ufshcd_profiling_template,
+ 
+ 	TP_fast_assign(
+ 		__entry->hba = hba;
++		__assign_str(dev_name);
+ 		__assign_str(profile_info);
+ 		__entry->time_us = time_us;
+ 		__entry->err = err;
+ 	),
+ 
+ 	TP_printk("%s: %s: took %lld usecs, err %d",
+-		dev_name(__entry->hba->dev), __get_str(profile_info),
++		__get_str(dev_name), __get_str(profile_info),
+ 		__entry->time_us, __entry->err)
+ );
+ 
+@@ -200,6 +208,7 @@ DECLARE_EVENT_CLASS(ufshcd_template,
+ 		__field(s64, usecs)
+ 		__field(int, err)
+ 		__field(struct ufs_hba *, hba)
++		__string(dev_name, dev_name(hba->dev))
+ 		__field(int, dev_state)
+ 		__field(int, link_state)
+ 	),
+@@ -208,13 +217,14 @@ DECLARE_EVENT_CLASS(ufshcd_template,
+ 		__entry->usecs = usecs;
+ 		__entry->err = err;
+ 		__entry->hba = hba;
++		__assign_str(dev_name);
+ 		__entry->dev_state = dev_state;
+ 		__entry->link_state = link_state;
+ 	),
+ 
+ 	TP_printk(
+ 		"%s: took %lld usecs, dev_state: %s, link_state: %s, err %d",
+-		dev_name(__entry->hba->dev),
++		__get_str(dev_name),
+ 		__entry->usecs,
+ 		__print_symbolic(__entry->dev_state, UFS_PWR_MODES),
+ 		__print_symbolic(__entry->link_state, UFS_LINK_STATES),
+@@ -279,6 +289,7 @@ TRACE_EVENT(ufshcd_command,
+ 	TP_STRUCT__entry(
+ 		__field(struct scsi_device *, sdev)
+ 		__field(struct ufs_hba *, hba)
++		__string(dev_name, dev_name(&sdev->sdev_dev))
+ 		__field(enum ufs_trace_str_t, str_t)
+ 		__field(unsigned int, tag)
+ 		__field(u32, doorbell)
+@@ -291,6 +302,7 @@ TRACE_EVENT(ufshcd_command,
+ 	),
+ 
+ 	TP_fast_assign(
++		__assign_str(dev_name);
+ 		__entry->sdev = sdev;
+ 		__entry->hba = hba;
+ 		__entry->str_t = str_t;
+@@ -307,7 +319,7 @@ TRACE_EVENT(ufshcd_command,
+ 	TP_printk(
+ 		"%s: %s: tag: %u, DB: 0x%x, size: %d, IS: %u, LBA: %llu, opcode: 0x%x (%s), group_id: 0x%x, hwq_id: %d",
+ 		show_ufs_cmd_trace_str(__entry->str_t),
+-		dev_name(&__entry->sdev->sdev_dev), __entry->tag,
++		__get_str(dev_name), __entry->tag,
+ 		__entry->doorbell, __entry->transfer_len, __entry->intr,
+ 		__entry->lba, (u32)__entry->opcode, str_opcode(__entry->opcode),
+ 		(u32)__entry->group_id, __entry->hwq_id
+@@ -322,6 +334,7 @@ TRACE_EVENT(ufshcd_uic_command,
+ 
+ 	TP_STRUCT__entry(
+ 		__field(struct ufs_hba *, hba)
++		__string(dev_name, dev_name(hba->dev))
+ 		__field(enum ufs_trace_str_t, str_t)
+ 		__field(u32, cmd)
+ 		__field(u32, arg1)
+@@ -331,6 +344,7 @@ TRACE_EVENT(ufshcd_uic_command,
+ 
+ 	TP_fast_assign(
+ 		__entry->hba = hba;
++		__assign_str(dev_name);
+ 		__entry->str_t = str_t;
+ 		__entry->cmd = cmd;
+ 		__entry->arg1 = arg1;
+@@ -340,7 +354,7 @@ TRACE_EVENT(ufshcd_uic_command,
+ 
+ 	TP_printk(
+ 		"%s: %s: cmd: 0x%x, arg1: 0x%x, arg2: 0x%x, arg3: 0x%x",
+-		show_ufs_cmd_trace_str(__entry->str_t), dev_name(__entry->hba->dev),
++		show_ufs_cmd_trace_str(__entry->str_t), __get_str(dev_name),
+ 		__entry->cmd, __entry->arg1, __entry->arg2, __entry->arg3
+ 	)
+ );
+@@ -353,6 +367,7 @@ TRACE_EVENT(ufshcd_upiu,
+ 
+ 	TP_STRUCT__entry(
+ 		__field(struct ufs_hba *, hba)
++		__string(dev_name, dev_name(hba->dev))
+ 		__field(enum ufs_trace_str_t, str_t)
+ 		__array(unsigned char, hdr, 12)
+ 		__array(unsigned char, tsf, 16)
+@@ -361,6 +376,7 @@ TRACE_EVENT(ufshcd_upiu,
+ 
+ 	TP_fast_assign(
+ 		__entry->hba = hba;
++		__assign_str(dev_name);
+ 		__entry->str_t = str_t;
+ 		memcpy(__entry->hdr, hdr, sizeof(__entry->hdr));
+ 		memcpy(__entry->tsf, tsf, sizeof(__entry->tsf));
+@@ -369,7 +385,7 @@ TRACE_EVENT(ufshcd_upiu,
+ 
+ 	TP_printk(
+ 		"%s: %s: HDR:%s, %s:%s",
+-		show_ufs_cmd_trace_str(__entry->str_t), dev_name(__entry->hba->dev),
++		show_ufs_cmd_trace_str(__entry->str_t), __get_str(dev_name),
+ 		__print_hex(__entry->hdr, sizeof(__entry->hdr)),
+ 		show_ufs_cmd_trace_tsf(__entry->tsf_t),
+ 		__print_hex(__entry->tsf, sizeof(__entry->tsf))
+@@ -384,16 +400,18 @@ TRACE_EVENT(ufshcd_exception_event,
+ 
+ 	TP_STRUCT__entry(
+ 		__field(struct ufs_hba *, hba)
++		__string(dev_name, dev_name(hba->dev))
+ 		__field(u16, status)
+ 	),
+ 
+ 	TP_fast_assign(
+ 		__entry->hba = hba;
++		__assign_str(dev_name);
+ 		__entry->status = status;
+ 	),
+ 
+ 	TP_printk("%s: status 0x%x",
+-		dev_name(__entry->hba->dev), __entry->status
++		__get_str(dev_name), __entry->status
+ 	)
+ );
+ 
+-- Steve
 
