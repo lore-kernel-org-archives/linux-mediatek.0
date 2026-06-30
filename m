@@ -4,77 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56DCDC43458
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 19:15:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C54AC43458
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 20:56:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1qagP0VuISi0UOXqphEC64UCJS1rYEuCpGZ+HrzWmK8=; b=fy6hGYItJ1ogqIs3croyAbBzGo
-	NBMIlrkOKaU25ZmG3V4rV7pa0TkIZO65W8gtwdqDh0CkkJ12WmDXZfJUe3mwVPJY/boxn33I2mJoW
-	U0HwDyykrQGKe6ls48ubz1++5sufl6zP+M0rlIH9XZkSsYDmX33kFq3DgJH0XbGS54Gc14Klxk4ND
-	RDfpWcmEZN4FADiWFebc8MSiCf3d92anPY31jnsizJhGswsjL+7QHXMd2tKT5TvI7OWVIU+h73GAV
-	FlnpkderBHdneMp0V2CrUfypiwMXRNtyBfK8HR+6V4V2xBWkZZwVsU95fJxB1yT5aaF+N4Yj3r7Hv
-	zQyn+xCQ==;
+	bh=LgXozJM0Esf3soperqUV4RS/1nz6e3EwjgHcCk4GTiw=; b=TVOtJjqUxHfuOxg5YiPfEEqbPR
+	YuhOx04pVJDtxq3UX2kqBpOLreOKvyauNpve33ZssgCdpKpw+cAmkpJbw1OIA2oqn+SiCUHAiP0lu
+	pU53CQMonNvoegNymlZZM2iNVqK27QqyDtau3ee4LwCFFf2Rvlu1nDn8BW1H4aExSdlLQObQwOcSd
+	reuS7WDmMa+yVlQaTWRRjQIenC2KjMjJ4AZeIMuFy4Da0ulszeFBxGlBKTrSDvN+HRYvOTVyLc2dl
+	G5nGyiO2cl7aP42xlmIW4KlBMct4gqGD3AzkDv+ah6De8A3CiG/mgKiQ9MSX+dA52Azxobv4/i9a2
+	FRzKYlyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wedw1-000000006cg-0kOZ;
-	Tue, 30 Jun 2026 19:15:53 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1wefVK-00000000CPF-0XoN;
+	Tue, 30 Jun 2026 20:56:26 +0000
+Received: from smtprelay0013.hostedemail.com ([216.40.44.13] helo=relay.hostedemail.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wedvp-000000006bx-1Hmd;
-	Tue, 30 Jun 2026 19:15:42 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1782846932; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=O3eJ1En/l9r2mDqOFLIxD267cRY9zriaeO74GfZ6YClSvSR+yp+31StrsNE5ll4CHdH/wX00frO5sXGD6rH/zSvyS1KNzhzJSnn6xXQ+u63Cgo/mCbqJ57wpu50N1oafYLjhOm3aEdR1cIy60W+1ZNP3j8Yj1u5833ek7Lywe9A=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1782846932; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=1qagP0VuISi0UOXqphEC64UCJS1rYEuCpGZ+HrzWmK8=; 
-	b=LUdOVPOY11Mr+fl4wSwar9giH8+XUDU/7D4Vuae2BF0zQqVPb5irb37bdETm8cHv76a0cLvpHCZg3mhvOdJ+1frpEyljiJDN9IZHEzf1FyBXQjet6gSOaxkf7i9S7KqawSeLGOJRyPKRgJvBkTLwpeXnr3C2TRbbWzdqK7l366M=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=rong.moe;
-	spf=pass  smtp.mailfrom=i@rong.moe;
-	dmarc=pass header.from=<i@rong.moe>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1782846932;
-	s=zmail2048; d=rong.moe; i=i@rong.moe;
-	h=Date:Date:From:From:To:To:CC:Subject:Subject:In-Reply-To:References:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To:Cc;
-	bh=1qagP0VuISi0UOXqphEC64UCJS1rYEuCpGZ+HrzWmK8=;
-	b=WKdlm2zYjWv5uWW9qnDQTh9z34SpI6+w5yRv78MPN9oW1AWAwK1yqWOD3hBwbb0D
-	PFXcLD5Epg5tr0xjHWfQOBuv4bNTuWT6A2+tm6oqTAdsgpXQT5Xbjsd8Mg+eQ7H3z2X
-	tIcaf+AvRcwbdi2w2MEgX1FkFKJ+JndHaNkwRLkucZf3/GYHCdYTnu2u3knbJAGqMVN
-	bne78IRVMI3zJnsP28CRxCTee95JtrjB06LFWTcn8Ja6XgP1kFpAQ54AcBnhMa6S4n4
-	F0i61y0/n9ObNFou24Zh2kI1pGI/IJNbAOSzy9Epj4uj3b6tTnr6F4ZHKFEdW3EVW+W
-	Cnwd/JSIzQ==
-Received: by mx.zohomail.com with SMTPS id 1782846928874810.0972195254349;
-	Tue, 30 Jun 2026 12:15:28 -0700 (PDT)
-Date: Wed, 01 Jul 2026 03:15:19 +0800
-From: Rong Zhang <i@rong.moe>
-To: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-CC: Marcel Holtmann <marcel@holtmann.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Luiz Augusto von Dentz <luiz.von.dentz@intel.com>,
- =?UTF-8?B?Q2hyaXMgTHUgKOmZuOeomuazkyk=?= <Chris.Lu@mediatek.com>,
- =?UTF-8?B?V2lsbC1DWSBMZWUgKOadjuaUv+epjik=?= <Will-CY.Lee@mediatek.com>,
- =?UTF-8?B?U1MgV3UgKOW3q+aGsuasoyk=?= <ss.wu@mediatek.com>,
- linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH=5D_Bluetooth=3A_Properly_disable_remo?=
- =?US-ASCII?Q?te_wakeup_for_MT7922/MT7925_on_Ryzen_platform?=
-User-Agent: Thunderbird for Android
-In-Reply-To: <CABBYNZLhqQF-V8sJORwMW2C_4FxFY+pkAK=cSDg4aeWJYfiJrA@mail.gmail.com>
-References: <20260629-btmtk-ryzen-remote-wakeup-v1-1-1d2f1cee6d22@rong.moe> <CABBYNZLhqQF-V8sJORwMW2C_4FxFY+pkAK=cSDg4aeWJYfiJrA@mail.gmail.com>
-Message-ID: <7410991C-F48D-4D58-8F27-0DFCB27E81FF@rong.moe>
+	id 1wefVH-00000000COW-1QvT
+	for linux-mediatek@lists.infradead.org;
+	Tue, 30 Jun 2026 20:56:24 +0000
+Received: from omf06.hostedemail.com (lb01a-stub [10.200.18.249])
+	by unirelay02.hostedemail.com (Postfix) with ESMTP id 13EB0120123;
+	Tue, 30 Jun 2026 20:56:17 +0000 (UTC)
+Received: from [HIDDEN] (Authenticated sender: rostedt@goodmis.org) by omf06.hostedemail.com (Postfix) with ESMTPA id ADB7F20010;
+	Tue, 30 Jun 2026 20:56:12 +0000 (UTC)
+Date: Tue, 30 Jun 2026 16:56:12 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: <peter.wang@mediatek.com>
+Cc: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+ <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
+ <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <chun-hung.wu@mediatek.com>, <alice.chao@mediatek.com>,
+ <cc.chou@mediatek.com>, <chaotian.jing@mediatek.com>,
+ <jiajie.hao@mediatek.com>, <yi-fan.peng@mediatek.com>,
+ <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>, <tun-yu.yu@mediatek.com>,
+ <eddie.huang@mediatek.com>, <naomi.chu@mediatek.com>,
+ <ed.tsai@mediatek.com>, <bvanassche@acm.org>
+Subject: Re: [PATCH v3] ufs: core: add hba parameter to trace events
+Message-ID: <20260630165612.3e21b510@gandalf.local.home>
+In-Reply-To: <20250214083026.1177880-1-peter.wang@mediatek.com>
+References: <20250214083026.1177880-1-peter.wang@mediatek.com>
+X-Mailer: Claws Mail 3.20.0git84 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-ZohoMailClient: External
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Rspamd-Queue-Id: ADB7F20010
+X-Stat-Signature: a91khpzt41hbtwnya4hbwi8kk583ma9y
+X-Rspamd-Server: rspamout06
+X-Session-Marker: 726F737465647440676F6F646D69732E6F7267
+X-Session-ID: U2FsdGVkX18XEdqmnOvCJFHQSlGyLSrMbLdwtYz64Mc=
+X-HE-Tag: 1782852972-403709
+X-HE-Meta: U2FsdGVkX19O995+yYKSbgc0QBIAYiDlHJb3jzPWpqxs6nLjN/KhphKM9MNIf0B59sVXGhitkyRuCOZZfblmGLb1C+Vy/5NlfVrH3smBU7dll1wHsZN2xPGr57UJBPlvM9c3w3p9hrCYDMi4DhVfT2Zl/405SNem/bnTpsXWt2sX2N5mN7MviYhMMhG4aN0S27S58WxzY4JU9UB5He8ino+NJOG7M3UYun33+NhS+kwLMSXcjqelQ4HKyNlbIuwI+UQ5Bp0rt6fCeFwUU3oyaO6+PM85V9CygJv7o+sehy0rjzEOUwo2x1FsGH0evq6MFiGJgstE4ALxX+/zElQJv0k1V7KbHrm0G2el+6v/gCPeZ+0Di+H81A==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260630_121541_394186_13E70978 
-X-CRM114-Status: GOOD (  28.29  )
+X-CRM114-CacheID: sfid-20260630_135623_439845_32FE2973 
+X-CRM114-Status: GOOD (  18.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,229 +76,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Luiz,
+On Fri, 14 Feb 2025 16:29:36 +0800
+<peter.wang@mediatek.com> wrote:
 
-=E4=BA=8E 2026=E5=B9=B47=E6=9C=881=E6=97=A5 GMT+08:00 02:13:39=EF=BC=8CLui=
-z Augusto von Dentz <luiz=2Edentz@gmail=2Ecom> =E5=86=99=E9=81=93=EF=BC=9A
->Hi Rong,
->
->On Mon, Jun 29, 2026 at 11:28=E2=80=AFAM Rong Zhang <i@rong=2Emoe> wrote:
->>
->> It is reported that a remote wakeup could cause MT7922/MT7925's btusb
->> interface completely unresponsive=2E Resetting the xHCI root hub doesn'=
-t
->> help at all, and recovering from such a state needs a power cycle=2E
->>
->> All reports seen to be relevant to Ryzen-based laptops=2E These NICs ar=
-e
->> usually used as OEM components thanks to some sort of reference designs=
-=2E
->>
->> Their popularity on other platforms is unclear=2E While there is still =
-a
->> chance that the quirk may exist on other platforms, be cautious and onl=
-y
->> apply the quirk on AMD platforms for the time being=2E
->>
->> Meanwhile, though device_set_wakeup_capable(false) is the correct fix
->> for other NICs with fake remote wakeup capabilities, doing so for
->> MT7922/MT7925 effectively prevents it from being used as wakeup
->> sources as per userspace requests=2E Hence, return -EBUSY on runtime
->> suspend to prevent the interface from being autosuspended while it's
->> still opened, which has the same effect as
->> device_set_wakeup_capable(false), since disabling remote wakeup simply
->> causes the USB core to gate runtime autosuspend as well due to
->> needs_remote_wakeup =3D=3D 1=2E The interface can be safely autosuspend=
-ed as
->> long as remote wakeup is disabled, i=2Ee=2E, after closing the HCI devi=
-ce=2E
->>
->> Specifically, the interface may still take the advantage of remote
->> wakeup in order to wake up the system from sleep if userspace has
->> enabled it as a wakeup source=2E
->>
->> Fixes: e31d761628ad ("Bluetooth: btmtk: Disable remote wakeup for MT792=
-2/MT7925")
->> Signed-off-by: Rong Zhang <i@rong=2Emoe>
->> ---
->>  drivers/bluetooth/btmtk=2Ec | 10 ---------
->>  drivers/bluetooth/btusb=2Ec | 57 +++++++++++++++++++++++++++++++++++++=
-++++++----
->>  2 files changed, 53 insertions(+), 14 deletions(-)
->>
->> diff --git a/drivers/bluetooth/btmtk=2Ec b/drivers/bluetooth/btmtk=2Ec
->> index 02a96342e964=2E=2E4614434dd57b 100644
->> --- a/drivers/bluetooth/btmtk=2Ec
->> +++ b/drivers/bluetooth/btmtk=2Ec
->> @@ -1381,16 +1381,6 @@ int btmtk_usb_setup(struct hci_dev *hdev)
->>                 break;
->>         case 0x7922:
->>         case 0x7925:
->> -               /*
->> -                * A remote wakeup could cause the device completely un=
-responsive, and
->> -                * recovering from such a state needs a power cycle=2E
->> -                *
->> -                * Since the remote wakeup capability is super broken, =
-just disable it
->> -                * to get rid of the troubles=2E The device can still b=
-e autosuspended
->> -                * when the bluetooth interface is closed=2E
->> -                */
->> -               device_set_wakeup_capable(&btmtk_data->udev->dev, false=
-);
->> -               fallthrough;
->>         case 0x7961:
->>         case 0x7902:
->>         case 0x6639:
->> diff --git a/drivers/bluetooth/btusb=2Ec b/drivers/bluetooth/btusb=2Ec
->> index 08c0a99a62c5=2E=2E023ae782f41a 100644
->> --- a/drivers/bluetooth/btusb=2Ec
->> +++ b/drivers/bluetooth/btusb=2Ec
->> @@ -6,6 +6,7 @@
->>   *  Copyright (C) 2005-2008  Marcel Holtmann <marcel@holtmann=2Eorg>
->>   */
->>
->> +#include <linux/cpufeature=2Eh>
->>  #include <linux/dmi=2Eh>
->>  #include <linux/module=2Eh>
->>  #include <linux/usb=2Eh>
->> @@ -957,6 +958,7 @@ struct qca_dump_info {
->>  #define BTUSB_USE_ALT3_FOR_WBS 15
->>  #define BTUSB_ALT6_CONTINUOUS_TX       16
->>  #define BTUSB_HW_SSR_ACTIVE    17
->> +#define BTUSB_WAKEUP_BROKEN    18
->>
->>  struct btusb_data {
->>         struct hci_dev       *hdev;
->> @@ -2936,10 +2938,20 @@ static int btusb_send_frame_mtk(struct hci_dev =
-*hdev, struct sk_buff *skb)
->>         }
->>  }
->>
->> +static inline bool platform_is_ryzen(void)
->> +{
->> +#ifdef CONFIG_X86
->> +       return boot_cpu_has(X86_FEATURE_ZEN);
->> +#else
->> +       return false;
->> +#endif
->> +}
->> +
->>  static int btusb_mtk_setup(struct hci_dev *hdev)
->>  {
->>         struct btusb_data *data =3D hci_get_drvdata(hdev);
->>         struct btmtk_data *btmtk_data =3D hci_get_priv(hdev);
->> +       int err;
->>
->>         /* MediaTek WMT vendor cmd requiring below USB resources to
->>          * complete the handshake=2E
->> @@ -2956,7 +2968,29 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
->>                 btusb_mtk_claim_iso_intf(data);
->>         }
->>
->> -       return btmtk_usb_setup(hdev);
->> +       err =3D btmtk_usb_setup(hdev);
->> +       if (err)
->> +               return err;
->> +
->> +       switch (btmtk_data->dev_id) {
->> +       case 0x7922:
->> +       case 0x7925:
->> +               /*
->> +                * All reports seen to be relevant to Ryzen-based lapto=
-ps=2E These
->> +                * NICs are usually used as OEM components thanks to so=
-me sort
->> +                * of reference designs=2E
->> +                *
->> +                * Their popularity on other platforms is unclear=2E Wh=
-ile there
->> +                * is still a chance that the quirk may exist on other
->> +                * platforms, be cautious and only apply the quirk on A=
-MD
->> +                * platforms for the time being=2E
->> +                */
->
->Is this going to be a reliable way to detect if wakeup is broken or
->not? Since USB is a bus capable of hotplug, this check would block not
->only internal/built-in controllers with the above IDs but also those
->plugged via external ports if the CPU happens to be of the ZEN
->familly=2E
+> From: Peter Wang <peter.wang@mediatek.com>
+> 
+> Included the ufs_hba structure as a parameter in various trace events
+> to provide more context and improve debugging capabilities.
+> Also remove dev_name which can replace by dev_name(hba->dev).
+> 
+> V3:
+>  - Remove dev_name entry form TP_STRUCT__entry() to reduce the size.
+> 
 
-Hmm, it seems that we can detect the device's position by comparing its pa=
-rent and its bus=2E We can additionally make it further by checking against=
- the root hub's VID=2E In this manner we should be able to drop the boot_cp=
-u_has() check too=2E
 
-I will try and send a v2=2E
+> V2:
+>  - Remove dev_name and replace it with dev_name(hba->dev).
 
-Thanks,
-Rong
+This patch needs to be reverted, as the above causes a bug.
 
->
->> +               if (platform_is_ryzen())
->> +                       set_bit(BTUSB_WAKEUP_BROKEN, &data->flags);
->> +               break;
->> +       }
->> +
->> +       return 0;
->>  }
->>
->>  static int btusb_mtk_shutdown(struct hci_dev *hdev)
->> @@ -4532,11 +4566,26 @@ static int btusb_suspend(struct usb_interface *=
-intf, pm_message_t message)
->>
->>         BT_DBG("intf %p", intf);
->>
->> -       /* Don't auto-suspend if there are connections or discovery in
->> -        * progress; external suspend calls shall never fail=2E
->> +       /*
->> +        * It is reported that remote wakeup events could sometimes cau=
-se some
->> +        * adapters completely unresponsive=2E Resetting the xHCI root =
-hub doesn't
->> +        * help at all, and recovering from such a state needs a power =
-cycle=2E
->> +        * Since disabling remote wakeup simply causes the USB core to =
-gate
->> +        * runtime autosuspend as well due to needs_remote_wakeup =3D=
-=3D 1, let's do
->> +        * this ourselves to make our life easier=2E The interface can =
-be safely
->> +        * autosuspended as long as remote wakeup is disabled, i=2Ee=2E=
-, after
->> +        * closing the HCI device=2E
->> +        *
->> +        * Don't auto-suspend if there are connections or discovery in =
-progress=2E
->> +        *
->> +        * External suspend calls shall never fail=2E Specifically, a d=
-evice with
->> +        * broken remote wakeup may still take the advantage of remote =
-wakeup in
->> +        * order to wake up the system from sleep if userspace has enab=
-led it as
->> +        * a wakeup source=2E
->>          */
->>         if (PMSG_IS_AUTO(message) &&
->> -           (hci_conn_count(data->hdev) || hci_discovery_active(data->h=
-dev)))
->> +           ((test_bit(BTUSB_WAKEUP_BROKEN, &data->flags) && data->intf=
-->needs_remote_wakeup) ||
->> +            hci_conn_count(data->hdev) || hci_discovery_active(data->h=
-dev)))
->>                 return -EBUSY;
->>
->>         if (data->suspend_count++)
->>
->> ---
->> base-commit: dc59e4fea9d83f03bad6bddf3fa2e52491777482
->> change-id: 230ba8c9-btmtk-ryzen-remote-wakeup-055a407682ef
->>
->> Thanks,
->> Rong
->>
->
->
+> 
+> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+> ---
+>  drivers/ufs/core/ufs_trace.h | 135 ++++++++++++++++++-----------------
+>  drivers/ufs/core/ufshcd.c    |  68 +++++++++---------
+>  2 files changed, 103 insertions(+), 100 deletions(-)
+> 
+> diff --git a/drivers/ufs/core/ufs_trace.h b/drivers/ufs/core/ufs_trace.h
+> index 84deca2b841d..caa32e23ffa5 100644
+> --- a/drivers/ufs/core/ufs_trace.h
+> +++ b/drivers/ufs/core/ufs_trace.h
+> @@ -83,34 +83,34 @@ UFS_CMD_TRACE_TSF_TYPES
+>  
+>  TRACE_EVENT(ufshcd_clk_gating,
+>  
+> -	TP_PROTO(const char *dev_name, int state),
+> +	TP_PROTO(struct ufs_hba *hba, int state),
+>  
+> -	TP_ARGS(dev_name, state),
+> +	TP_ARGS(hba, state),
+>  
+>  	TP_STRUCT__entry(
+> -		__string(dev_name, dev_name)
+> +		__field(struct ufs_hba *, hba)
+>  		__field(int, state)
+>  	),
+>  
+>  	TP_fast_assign(
+> -		__assign_str(dev_name);
+> +		__entry->hba = hba;
+>  		__entry->state = state;
+>  	),
+>  
+>  	TP_printk("%s: gating state changed to %s",
+> -		__get_str(dev_name),
+> +		dev_name(__entry->hba->dev),
+
+NO YOU CAN NOT DO THIS!!!!
+
+The TP_fast_assign() happens when the trace event occurs. That is, where
+the trace_ufshcd_clk_gating() function is called.
+
+The TP_printk() happens when a user reads the "trace" file. Which could be
+seconds, minutes, hours, days, even months later! There is absolutely no
+guarantee that the pointer to __entry->hba would be around. This would
+cause a crash of the kernel when the "trace" file is read.
+
+I'm adding a boot up test to cause code like this to trigger a warning when
+the trace event is registered (how I found this bug):
+
+  https://lore.kernel.org/all/20260630164439.51e61b71@gandalf.local.home/
+
+>  		__print_symbolic(__entry->state, UFSCHD_CLK_GATING_STATES))
+>  );
+
+The same goes for the rest of this file.
+
+-- Steve
 
