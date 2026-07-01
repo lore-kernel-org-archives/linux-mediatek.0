@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEAF6C44501
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 12:20:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8116C44500
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 12:20:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yypRmBCUWIxl+HGMvLm537bNGK8OjqXD29gbJvwfD6w=; b=2iuXtiilR0pEuorsWto1x0/UrV
-	zO+HA0QTPQD27dDNZhoo3+YUzz75VsT7Vl/MRPto4rITiZnUccQPxUKmwg2reu6Y0v+sdc7y4kDro
-	6ESrGyh+B1C6arcP63cL1o6VefJpzqUTsAe3iORuN9cQMFLkeJ8hCj3S/gncbzjETIQVst7mur40y
-	J2pP0Ijbad6gX2Krfiq0Y/7xy4GczTJyxOOR1N6ep3VjpoHgDIXzZGfS8GzYhg87z0uERHtTQghc+
-	XrPN/karabxyD9rigPKIz8xdNIQi/ksMCUN+yr95yoh3kfWDGVkGlPIGP9l5rZ/egWbKhQwpv9atZ
-	7DZC21Og==;
+	bh=hSsCm9oC5WGuQqg4Ekp2Yk8zcDXeJLTMOS//uxL8NLU=; b=ujmbOP892kUgHZysRdumzO5FDT
+	K1UiIiLUT1M5e17hdYBQmvoiX3j9wYLeSKOPe7qtdG4s1f0SxMs7a8scMJ3WxDeBAQEisKJhrUNzR
+	iYyLBhV8Zqu9XXDPUJD5HuLpF/5/2RGTmi1sbafjD9IL6w2oEk8dIIFPHkGpHxljwG3D0mOHa1stK
+	KiU2s7nOHxW2rSC6CIg2ynYFWmQPPxcJ5VKQVFd+vinjRYT3vv8Fbj4QuHJYJQYDh3eDsdjZAMWkD
+	pxkV+DUYYPzhBuNC0GLPwm8lSdunu+42ohApx1vZX6kk1vBw9XLtwae73kt3Fo/eTafU49Zyiiwe7
+	NadE58zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetvn-00000001sKB-2Ufi;
-	Wed, 01 Jul 2026 12:20:43 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wetvp-00000001sRP-32GQ;
+	Wed, 01 Jul 2026 12:20:45 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetvc-00000001rkY-37BI;
-	Wed, 01 Jul 2026 12:20:33 +0000
+	id 1wetvg-00000001rsO-07YP;
+	Wed, 01 Jul 2026 12:20:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=yypRmBCUWIxl+HGMvLm537bNGK8OjqXD29gbJvwfD6w=; b=gCCb5PpNZNLm2RE5/ybtaPchEg
-	NOahi5OPbhWPEZy5gh8URdmpU6ot6gfxH1hjbxc5nUMpLYZzAT6v7NT7CNM3lhXYPquZ7f59XvKao
-	iJE7IVIRZbmzdCV1//0C6hnn0V8EEGCXGdNkx0eqe2aV07mhHt/eM6NN44rzpmaNzm836HS3co8CC
-	y1ZtCJRsaWUehjwEJub0doIG2nI+BxAKmLrWVkWSCheLMhjhijDQfxTmdNi49/l5ol+AWsuZGmraw
-	oZpoi4xd/5KNyJw1jKd1YRXDacOyR154Uz1V88pQSL8JO6iWiA1cnOsr90tTAiV4saYCTJ+nvZlvt
-	TjKv17KA==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wetva-00000002jIw-08o5;
-	Wed, 01 Jul 2026 12:20:31 +0000
+	bh=hSsCm9oC5WGuQqg4Ekp2Yk8zcDXeJLTMOS//uxL8NLU=; b=HwLwG66grSVh9S5msJW7Jz4tyX
+	y96WcwzMQz8eIrZIt5ZRvDYlAgeMENopNtQdZ7zEfvatdMd1z6aEqLAlB9pUirtiHqxMvXEyc1t7c
+	lKfN4MxP6b22UMAv6kMl65+MQyz+VhK3Bt6w+DFJT48tbMrWCSXDDdTD6kvORKOcMPByI/vMdafmx
+	zhzF49ulL5Ffg/xkJRHc2WuQgnyaDmI1+GU/WpoLrlvMliyff1nfbm35VFYqbBl4T32GplWbNBhON
+	/b+zX5tRZNtUab8NTxtN5JOkGSAVFmj7KfhqZR7CnvW9BaaiqHRsXrdw+WdcmSR4baUpcP7tgxWXV
+	8F4Ar7Cg==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by casper.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wetvc-00000006ae8-3Yfg;
+	Wed, 01 Jul 2026 12:20:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1782908428;
-	bh=o0Yw5UvJ7mIldIg8Qe+QDn/C3b8GslyK/JoVs7xCZ6Q=;
+	s=mail; t=1782908431;
+	bh=EOZmf0bYgCSlqzHe+EFqmI+WhvQMCCQ8OXvvWzbVQeQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=VxBnyC2HEyx+nHWBRJscwbqLoyygFubY/jhQ5hqDRVaIp3SDMyN2UR7PIUp6bGC71
-	 FfUwkJigzaTHZgJLm7fKRwRAfWQ+pXuCrqZpU+ZsryUbAAmn0ki7U5/P5jt+CvndLd
-	 BB+P3M7Lb1q0ixrx4rZv/ur7iwozXSNUbm3BcsqmkJGM/3XGXo50v8yuan+kMdF5RZ
-	 pM0pGVr9hY6gZYYJSVT8HeDu1I+VKdCOZkWl3Oz2LJWhMPVzFBLSUa5KQ+Bjgt3csf
-	 EMLU/RosiQNj+Ox7+8/fTOeepKyqKGlE5Xe/mFffYJNQ7tIhM6kVPMEQ6aJmC02NTU
-	 s2fBg1aGTM8Wg==
+	b=IkhCODZ84HN6Iom/0BtQCukA8GGIDkvu0Zb9ql/SQKi/3JqBj/v5JLoh9vShpqJYV
+	 F/njEKMNP5fwo+yLN+GhOzcWnZYsBX2uQulR/VQMYwdZz26mkOCC83RoxqsYaaQ4Xw
+	 CN0OCWhewkt4MTl5e7xnOZL1tl8Ad5GVjOPCQqnSkYVhcqVlTCtzr0dPv3p0Cnm1ko
+	 QRGHrK5eq3MnOQy+L2gveEKZORXHpq994GmHctZprHi8z+Zmsof4nK7kf7c0NKDHYq
+	 O7mJlL+wz1oj1C8pIKQUYwPadUDbIsb+2JPeRvUc/dooqRF0+//g08S/MtuNj2lsIj
+	 9mJmEQ4FkuDjA==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 75E0917E116D;
-	Wed,  1 Jul 2026 14:20:27 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C6EF817E1411;
+	Wed,  1 Jul 2026 14:20:30 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -84,17 +84,17 @@ Cc: p.zabel@pengutronix.de,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH 01/11] dt-bindings: display: mediatek: dp: Deprecate nvmem efuse data
-Date: Wed,  1 Jul 2026 14:20:14 +0200
-Message-ID: <20260701122024.19557-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 04/11] drm/mediatek: mtk_dp: Clarify SMC eDP/DP video unmute commands
+Date: Wed,  1 Jul 2026 14:20:17 +0200
+Message-ID: <20260701122024.19557-5-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260701122024.19557-1-angelogioacchino.delregno@collabora.com>
 References: <20260701122024.19557-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_132030_180222_125E5968 
-X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-CacheID: sfid-20260701_132033_080529_61D43EA6 
+X-CRM114-Status: UNSURE (   9.74  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -110,33 +110,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Deprecate nvmem-cells and nvmem-cell-names and clarify their
-purpose, as those are for PHY calibration data, not for the DP
-IP itself, and that data shall go in the PHY binding instead.
+The eDP/DP video unmute commands are not expressed as bits:
+instead, in the firmware, those are defined as incremental
+unsigned integer numbers: use the correct representation of
+those to improve readability.
+
+This commit brings no functional changes.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../devicetree/bindings/display/mediatek/mediatek,dp.yaml     | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/mediatek/mtk_dp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-index 8f4bd9fb560b..980f76667ada 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-@@ -30,10 +30,12 @@ properties:
-     maxItems: 1
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index 2c738c16dafa..f551c4543f4e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -36,8 +36,8 @@
+ #include "mtk_dp_reg.h"
  
-   nvmem-cells:
-+    deprecated: true
-     maxItems: 1
--    description: efuse data for display port calibration
-+    description: efuse data for display port phy calibration
+ #define MTK_DP_SIP_CONTROL_AARCH32	MTK_SIP_SMC_CMD(0x523)
+-#define MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE	(BIT(0) | BIT(5))
+-#define MTK_DP_SIP_ATF_VIDEO_UNMUTE	BIT(5)
++#define MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE	33
++#define MTK_DP_SIP_ATF_VIDEO_UNMUTE	32
  
-   nvmem-cell-names:
-+    deprecated: true
-     const: dp_calibration_data
- 
-   power-domains:
+ #define MTK_DP_THREAD_CABLE_STATE_CHG	BIT(0)
+ #define MTK_DP_THREAD_HPD_EVENT		BIT(1)
 -- 
 2.54.0
 
