@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 386EAC44500
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 12:20:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 974A7C43602
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 12:20:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VBbVY1P0BXOAj9WGBZV/qKqgm8Py9Z+vOsn3CnnEyFs=; b=Vw/6IU5zp1iDCduBW85jnni31j
-	WoZTVhoTSf1mvr8Skz/GTHr8rhRhN1r9pt5Ard85SaMk+rnVsAgsejswNd4Qa3kwTkr1NKACBbGcm
-	otapVuZQvMH2dibCxu7vODrY8mcQasmjj0F1be7rS5Z1aUtFE/qFltKiZIzH3yBfn2s8RnX7ijqj5
-	4MH7w+tZf36BKO+Vwx0Y/LNAs6OHCXSutk1Oe6jJr8z2hlh5mlwYvS6H7vPPqgC3d1R4I7sYYNtIE
-	1FDk7uh+q/e2EPP7MkR9qH1kQIv5LCDQ6Wel6ij+fUfc271JfaFJ6iTEoHjtZRPgC5bz2oDpjJZ4+
-	Gde29FMg==;
+	bh=uZv8XIyCEDj1PPhX50CCe0ZUegv+LfPwHdWDtTqa3ic=; b=IplPyq250Bc2V2D2VlAT1pKIcf
+	zgiU9VAKI2TI1WghReWxtSG9059KWcDqkn2gqVxlL1m7SRCatihht6lAEQ28Hi0D8eQ/95u0QxQsX
+	SF9v8YpIE+zAgV7dM/kUwN8a9m69yVN1dz+uhPTseyMhXB6xRST/r0Df3WX0hFlAfpB69qrZwj3hV
+	EV/4GKjZ+Htpdcic9CtbjXwXG1sba6FdOdUlOIC2OFrZIC/eZoVLTMoeRj5WmoI9Nh2Ihgl+MMfOD
+	5AKwU0CJ6kFbO2G3OCE6TjoUqHLRdv+QUjXHrOmaK+HWBxY9ysHywEEk8aPwEhmYfBkvD5DGOGYET
+	r11fY21g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetvs-00000001sci-3hud;
-	Wed, 01 Jul 2026 12:20:48 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wetvu-00000001sia-3Nqk;
+	Wed, 01 Jul 2026 12:20:50 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetvj-00000001s3y-2Bwv;
-	Wed, 01 Jul 2026 12:20:39 +0000
+	id 1wetvl-00000001sAq-2lda;
+	Wed, 01 Jul 2026 12:20:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=VBbVY1P0BXOAj9WGBZV/qKqgm8Py9Z+vOsn3CnnEyFs=; b=PXhsT5E4+SVG5f4KkUplQLS1vZ
-	EXQl1RR9ClFoTgFKZXMng6vgO+phavFzFkGupaHLxNwAcWl8rtng/dTOytMxVYNalKYcJs5otZynG
-	WhFlGDh15CUs+MwkneG4qByrA1ohOeCfC61e6g5ifG9f/hSRlWF82zi7ddwW9S5Q1ooJNAwtq1/cB
-	H5RVyipKgDvc+ZyVB4Jc2rHFlOgp83hyhXNfgUMW7CZ8jdCgQx+RXD85JNs+nFH8gjEwJ6eaVHCtm
-	GLphUPHER71kPu+9+y6HioNfa2Ivii0i6VwjFcYFpehMNHoRfIdJnLB01/hERzEZRmxOLyF5DUyza
-	fyuLu11g==;
+	bh=uZv8XIyCEDj1PPhX50CCe0ZUegv+LfPwHdWDtTqa3ic=; b=Ogx+qEfvUR5y0oUss+bpw4LtYH
+	Dh076y4DaHvG7N4OhsDZPqth6Fgy9Oxx8WLxn3++RdDCD/RqBcTfIRZ8h32ucB4cWdD0kpK/n9oFI
+	f/h4DCjvsoIf4f8vCdgvcfiIxPEfmmqjtGOLg+AnsjqRonsCLMXO9FgNRbDFQL2urEvRTxHjYjson
+	0JZhufIc9R6JdZ7le6v5u702pxO6zAg/6BCwWuQBxifIdhJWIHoLZQFMUzDkQCyYo4vjYdmuPUxEn
+	MzixZhpAK9jfigPsYpitISBmzL6AcJM/eBFkuYEjj4dd8++ym9dEwZ2ieUOSeFGpQisov9yICmhPH
+	MlU0I2Yg==;
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wetvg-00000002jMF-0n3p;
-	Wed, 01 Jul 2026 12:20:38 +0000
+	by casper.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wetvh-00000006agC-2wyJ;
+	Wed, 01 Jul 2026 12:20:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1782908434;
-	bh=7zzcLEDLfA5nbvd3rmnarcTdTM/piIa7uIm8EO8nqq0=;
+	s=mail; t=1782908436;
+	bh=5qrR17bDP11PF0Y+AWGupsl3Ns6N2I8PqUxjSFIFbA0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=K5KxoXgFvzANjiYNyNMvJI3NSE3Y+RSkW+plIJDrfp0MfAe4Sy0MnM+jZj4Wxg6uJ
-	 rJOEdrs6WAmQxjwcEampm6zXYYF52L7P0Yw/uTpJ+KqVpnFbrJSH/kz0il2/E1WpvE
-	 ou1iRK64NB3t8tgTGJaCMuZi9CsFEx2kO7l+SrsbCRJZ25+zWSqKaNv3OWmVFRcDF+
-	 FRg8QqVn0YeLj7Nn7aMMwP7qf7QeE0KzIQzS/OsV+6Jfg03yCmWzv0XtrHPMTSYhVY
-	 S+iSVjFErygQ09iaF2aDDkfDdyxAspUpIX+AYklsZtTXuUWgAs7FpWPsyRCTP4S7uv
-	 djezl3xHLTFXw==
+	b=e2kPL7MnT2+MWveBSV0kY0rYIVauYSqzQ6zmGgJAnbd76UlhZ2PxS2PvZBSa4rkHg
+	 xHy5g6sN41ZRPZBWxQbKqSXoZxkB6Wassddep/2xT/ZGUxsDS+OX/JcZyE9tLRvzOq
+	 sVe+HrxgXEyN2M4FT43cFh8e5oJsVb5q+eYDVGaa35ELmScxxscZmB9Z0+WqRXjOoH
+	 Ph/Ffs2zieRN1L7knpO03t/GxLuHQlIaTVhara3PXQhNc9tLMDpT8//J6wnrxX7WiN
+	 /c85/rKFf09TXBpv+OLh4XZTdSoOYT5FkmhP1mVCRcao3eG64xPU9edt0esiBXrsJ/
+	 OTVW0FESC9YTQ==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C220C17E1583;
-	Wed,  1 Jul 2026 14:20:33 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0671B17E0857;
+	Wed,  1 Jul 2026 14:20:34 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -84,17 +84,17 @@ Cc: p.zabel@pengutronix.de,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH 06/11] drm/mediatek: mtk_dp: Use PHY API for PHY power sequences
-Date: Wed,  1 Jul 2026 14:20:19 +0200
-Message-ID: <20260701122024.19557-7-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 07/11] drm/mediatek: mtk_dp: Add support for PHY from devicetree
+Date: Wed,  1 Jul 2026 14:20:20 +0200
+Message-ID: <20260701122024.19557-8-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260701122024.19557-1-angelogioacchino.delregno@collabora.com>
 References: <20260701122024.19557-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_132036_355900_0CC99C47 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20260701_132037_968500_24DEE9A8 
+X-CRM114-Status: GOOD (  16.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,73 +109,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The PHY driver has gained support for .power_on() and .power_off()
-callbacks: use the API provided phy_power_on(), phy_power_off()
-functions instead of writing into PHY registers from this driver.
+Add support for specifying `phys` in devicetree to pass handle
+to the DisplayPort PHY.
+
+In order to retain compatibility with older devicetrees, check if
+`phys` was specified: if not, initialize the regmap_mmio with the
+legacy configuration and register the mediatek-dp-phy platform
+device from this driver, and get the PHY calibration data.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dp.c | 32 ++++++++++++++++++++++++-------
- 1 file changed, 25 insertions(+), 7 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dp.c | 50 ++++++++++++++++++++++++++-----
+ 1 file changed, 43 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 97bce8966a1f..3b5348ab487d 100644
+index 3b5348ab487d..bf3a4b15f3ec 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dp.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -1415,6 +1415,8 @@ static void mtk_dp_aux_panel_poweron(struct mtk_dp *mtk_dp, bool pwron)
+@@ -426,6 +426,15 @@ static const struct regmap_config mtk_dp_regmap_legacy_config = {
+ 	.name = "mtk-dp-registers",
+ };
  
- static void mtk_dp_power_enable(struct mtk_dp *mtk_dp)
- {
-+	int ret;
++static const struct regmap_config mtk_dp_regmap_config = {
++	.reg_bits = 32,
++	.val_bits = 32,
++	.reg_stride = 4,
++	.max_register = SEC_OFFSET + 0x90,
++	.name = "mtk-dp-registers",
++};
 +
- 	mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_RESET_AND_PROBE,
- 			   0, SW_RST_B_PHYD);
++
+ static struct mtk_dp *mtk_dp_from_bridge(struct drm_bridge *b)
+ {
+ 	return container_of(b, struct mtk_dp, bridge);
+@@ -1298,7 +1307,13 @@ static int mtk_dp_phy_configure(struct mtk_dp *mtk_dp,
+ 	if (ret)
+ 		return ret;
  
-@@ -1425,21 +1427,37 @@ static void mtk_dp_power_enable(struct mtk_dp *mtk_dp)
- 			   SW_RST_B_PHYD, SW_RST_B_PHYD);
+-	mtk_dp_set_calibration_data(mtk_dp);
++	/*
++	 * For legacy, deprecated strategy, set partial PHY calibration here.
++	 * New-style will set all PHY calibrations with phy ops instead.
++	 */
++	if (mtk_dp->phy_dev)
++		mtk_dp_set_calibration_data(mtk_dp);
++
  	mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
- 			   DP_PWR_STATE_BANDGAP_TPLL, DP_PWR_STATE_MASK);
--	mtk_dp_write(mtk_dp, DP_PHY_AUX_RX_CTL,
--		     RG_DPAUX_RX_VALID_DEGLITCH_EN | RG_XTP_GLB_CKDET_EN |
--		     RG_DPAUX_RX_EN);
--	mtk_dp_update_bits(mtk_dp, MTK_DP_0034, 0, DA_CKM_CKTX0_EN_FORCE_EN);
-+
-+	if (mtk_dp->phy_dev) {
-+		mtk_dp_write(mtk_dp, DP_PHY_AUX_RX_CTL,
-+			     RG_DPAUX_RX_VALID_DEGLITCH_EN | RG_XTP_GLB_CKDET_EN |
-+			     RG_DPAUX_RX_EN);
-+		mtk_dp_update_bits(mtk_dp, MTK_DP_0034, 0, DA_CKM_CKTX0_EN_FORCE_EN);
-+	} else {
-+		ret = phy_power_on(mtk_dp->phy);
-+		if (ret)
-+			dev_warn(mtk_dp->dev, "Could not power on PHY!\n");
-+	}
- }
+ 			   DP_PWR_STATE_BANDGAP_TPLL_LANE, DP_PWR_STATE_MASK);
  
- static void mtk_dp_power_disable(struct mtk_dp *mtk_dp)
+@@ -2132,8 +2147,9 @@ static int mtk_dp_wait_hpd_asserted(struct drm_dp_aux *mtk_aux, unsigned long wa
+ static int mtk_dp_dt_parse(struct mtk_dp *mtk_dp,
+ 			   struct platform_device *pdev)
  {
-+	int ret;
+-	struct device_node *endpoint;
++	const struct regmap_config *regmap_cfg;
+ 	struct device *dev = &pdev->dev;
++	struct device_node *endpoint;
+ 	int ret;
+ 	void __iomem *base;
+ 	u32 linkrate;
+@@ -2143,7 +2159,12 @@ static int mtk_dp_dt_parse(struct mtk_dp *mtk_dp,
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
+ 
+-	mtk_dp->regs = devm_regmap_init_mmio(dev, base, &mtk_dp_regmap_legacy_config);
++	if (!mtk_dp->legacy_regoff)
++		regmap_cfg = &mtk_dp_regmap_config;
++	else
++		regmap_cfg = &mtk_dp_regmap_legacy_config;
 +
- 	mtk_dp_write(mtk_dp, MTK_DP_TOP_PWR_STATE, 0);
++	mtk_dp->regs = devm_regmap_init_mmio(dev, base, regmap_cfg);
+ 	if (IS_ERR(mtk_dp->regs))
+ 		return PTR_ERR(mtk_dp->regs);
  
--	mtk_dp_update_bits(mtk_dp, MTK_DP_0034,
-+	if (unlikely(mtk_dp->phy_dev)) {
-+		mtk_dp_update_bits(mtk_dp, MTK_DP_0034,
- 			   DA_CKM_CKTX0_EN_FORCE_EN, DA_CKM_CKTX0_EN_FORCE_EN);
+@@ -2769,6 +2790,7 @@ static int mtk_dp_register_phy(struct mtk_dp *mtk_dp)
+ 				     "Failed to add phy unregister devm action");
+ 	}
  
--	/* Disable RX */
--	mtk_dp_write(mtk_dp, DP_PHY_AUX_RX_CTL, 0);
-+		/* Disable RX */
-+		mtk_dp_write(mtk_dp, DP_PHY_AUX_RX_CTL, 0);
++	/* PHY calibration data is in mtk_dp only for legacy devicetree */
+ 	mtk_dp_get_calibration_data(mtk_dp);
+ 
+ 	mtk_dp->phy = devm_phy_get(&mtk_dp->phy_dev->dev, "dp");
+@@ -2821,7 +2843,12 @@ static int mtk_dp_probe(struct platform_device *pdev)
+ 
+ 	mtk_dp->dev = dev;
+ 	mtk_dp->data = (struct mtk_dp_data *)of_device_get_match_data(dev);
+-	mtk_dp->legacy_regoff = MTK_DP_TOP_OFFSET_LEGACY;
++
++	/* Prefer PHY from devicetree - if not found, this is legacy */
++	if (of_property_present(dev->of_node, "phys"))
++		mtk_dp->legacy_regoff = 0;
++	else
++		mtk_dp->legacy_regoff = MTK_DP_TOP_OFFSET_LEGACY;
+ 
+ 	ret = mtk_dp_dt_parse(mtk_dp, pdev);
+ 	if (ret)
+@@ -2872,9 +2899,18 @@ static int mtk_dp_probe(struct platform_device *pdev)
+ 					     "Failed to register audio driver\n");
+ 	}
+ 
+-	ret = mtk_dp_register_phy(mtk_dp);
+-	if (ret)
+-		return ret;
++	if (!mtk_dp->legacy_regoff) {
++		mtk_dp->phy = devm_phy_get(dev, NULL);
++		if (IS_ERR(mtk_dp->phy))
++			return dev_err_probe(dev, PTR_ERR(mtk_dp->phy),
++					     "Failed to get phy\n");
++
++		mtk_dp->phy_dev = NULL;
 +	} else {
-+		ret = phy_power_off(mtk_dp->phy);
++		ret = mtk_dp_register_phy(mtk_dp);
 +		if (ret)
-+			dev_warn(mtk_dp->dev, "Could not power off PHY!\n");
++			return ret;
 +	}
-+
- 	mtk_dp_write(mtk_dp, MTK_DP_TOP_MEM_PD,
- 		     0x550 | FUSE_SEL | MEM_ISO_EN);
- }
+ 
+ 	mtk_dp->bridge.of_node = dev->of_node;
+ 	mtk_dp->bridge.type = mtk_dp->data->bridge_type;
 -- 
 2.54.0
 
