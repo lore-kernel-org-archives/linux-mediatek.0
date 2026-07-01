@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C46D1C43602
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 12:19:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F53AC44500
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 12:19:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ML6K8fvh5HehRwpusoeb1p/s8HNb8zIUF7ESiNL6LkU=; b=TOf2zSJ4KT6U1gvU9NIfaZ8LNh
-	xEZc7EpK9bf2dPnE2E5spUqZnH4qKHs0wOV3GsECeJ9A/hRbslFO2j/x4KSO+D9KgQYDir9OeeN39
-	OnaqC6NaRYHr8Dcj2zTv2IxhNDKez4PshahLSATyzmHUCx0nIafw8qaZFrrFN0H11+PSMNiAbRE2F
-	TzwvG+EvwJPNnE5xQD57VdbZzv2fBeYA0oSIgzR0MU7ynE3pqgzVpECoNf9aH2bUveEBpFkPMPa8m
-	abKzEtcwnja25eMag/KVDcmp625Eeh7f2Lk8ErMxoNQDoo5j1hIxd6x56ejc3mFzVKt7F6yuq/K/g
-	tq9mIaag==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pP9J/TTZy1l7JoyMMnXL9QmANNesNlHyMG0AEFj+YYU=; b=joWGGdgAf/zykFd4voVfrcY+LL
+	3Ux0qsFkoHfF9u6yr3OYa1kf7olrqjMxDMtI2g19hxOoNDc9PLkB5glOgOfGZ0xCMZm9+qPzUz/hM
+	3O5eTicGAGnPUT9yN+/w4kNvjPWvhV7nXDdP0GERUF/cJ5RTcXGxGu4yB7lkfVZpO8Cm0qHPP6eH3
+	DdZ3XryjDkFZKc2CLAC3ufbNMT48CkelUzBhvNcpDEP4QUWOEi+2WCV4LWSw7d11o5oLL6BtBw9yE
+	2BKqTOvo+5oXuKQfdTh22+FYgHpXIaUMHZfbcLp/Nk3LBAmKmmCjNkyUgxjtOcrQaePbJwbPLB7Rv
+	GiJPPkQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetuc-00000001p1w-00Oy;
+	id 1wetuc-00000001p2V-16u4;
 	Wed, 01 Jul 2026 12:19:30 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetuY-00000001oxe-2BuN;
+	id 1wetuZ-00000001oyI-1aCw;
 	Wed, 01 Jul 2026 12:19:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1782908363;
-	bh=RIGHToQ86+80dzU39WU9it8zdhmzP6nEWWQjnFhwEXU=;
-	h=From:To:Cc:Subject:Date:From;
-	b=SLOOeJbwtD22khwDQNSCEIXb2djNF8mPJ225Fxb0j2ZXY8SEJJO92p6+bQqCzsezh
-	 1/viTRmV6/yR+CyoDSt52XoWDvHOYZr8XHE7I94fBo7wgN2yDTmTfWR3F4yMQD3GTe
-	 rvo6g34jnhqocWbpq3W6Hewb3+WqdR8T+h4Gr3TN2Z/Ir8GoDfbal9lje7Njw3qwLa
-	 qlYluFXthnKidoLpxu8zkA6+RwRGlY2+UBrwqUuLXwFEtPZcD7ZvLXGW2asJq3NIWr
-	 R6VnCG6CrzclJa7IcoPwYk7k2hMrgPK4QypVgO3RazmTPYujnGKmvHvYiiW2VWj1kH
-	 WOA1ZujbOgcbg==
+	s=mail; t=1782908365;
+	bh=TWooJiKjn16GH6/HEfDtjbdB7XRBrQNOtnBbpjNV8M4=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=MBcsVPFhYUxX+45W77QYy5+qffOC2+EOJZDoA6cbkQ2F27RRqZV42tHhNZxsoDXnu
+	 FgLyOkA8WRm//t7P/ck7vQyRNLlMCJxpdsUb+muEv0gIOD8GkPenVGK8sdI1Luld3T
+	 hBWajQPtb+Y5NO1RfHoSRqKJe6fApG3G+7Bv2Ai7xkCQZfc8PbjoKoca+ygQDeOWBG
+	 mL2fp+DPLbEwucidmKPAdf1Zhgq5d8U+Gv5c03vTxZZ4CArn9HStRJJP6XNufdyUxn
+	 e1vumAbLnmZx4BIIrnUeew2bksIQeRVn/L8IgPDa0bhZOOHle6mmYCeLaktcWREQmX
+	 l7j2Ci9khreYQ==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 257A017E0909;
-	Wed,  1 Jul 2026 14:19:23 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D987417E0D72;
+	Wed,  1 Jul 2026 14:19:24 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: ulfh@kernel.org
 Cc: robh@kernel.org,
@@ -62,15 +62,17 @@ Cc: robh@kernel.org,
 	linux-mediatek@lists.infradead.org,
 	justin.yeh@mediatek.com,
 	kernel@collabora.com
-Subject: [PATCH 0/4] pmdomains: Fixes and add support for HFRP Direct
-Date: Wed,  1 Jul 2026 14:19:16 +0200
-Message-ID: <20260701121920.19347-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 2/4] pmdomain: mediatek: Respect PD relationships during error cleanup
+Date: Wed,  1 Jul 2026 14:19:18 +0200
+Message-ID: <20260701121920.19347-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260701121920.19347-1-angelogioacchino.delregno@collabora.com>
+References: <20260701121920.19347-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_051926_717886_ED824062 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20260701_051927_574019_16E1E038 
+X-CRM114-Status: GOOD (  19.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,32 +87,155 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series adds support for the DirectCTL HFRPSYS power domains found
-on the MT8196 SoC (the ones without HW Voter support) and also adds a
-fix to respect the power domain relationships during error cleanup,
-which avoids HW lockups in case probe deferrals in the specific case
-of "almost fully probed" power domains (where most of them probed and
-got set up but a probe deferral happened almost at the end), behavior
-seen on the MT8189 SoC during bringup (but honestly I have no idea how
-are the current ones working fine without this fix...!).
+In case any probe error occurs (usually, a probe deferral) the
+power domains shall be cleaned up while respecting their child
+to parent relationship, or the system may freeze.
 
-This was tested on MT8173, MT8186, MT8188, MT8189, MT8192, MT8195 and
-also on MT8196, over months of development, both manually and over CI,
-with no regressions detected.
+In order to do that without any memory footprint impacts after
+the fact, allocate a temporary array in the probe function and
+use it to store the indices of the added power domains in the
+correct order.
 
-AngeloGioacchino Del Regno (4):
-  dt-bindings: power: mediatek: Add support for MT8196 direct HFRP
-  pmdomain: mediatek: Respect PD relationships during error cleanup
-  pmdomain: mediatek: Add support for Direct CTL simple power sequence
-  pmdomain: mediatek: Add support for MT8196 HFRP DirectCTL domains
+This will be used in the error cleanup path and will be freed
+at the end regardless of the probe status as, when the probing
+succeeds, the genpd API takes care of unregistering all PDs in
+the correct order anyway.
 
- .../power/mediatek,power-controller.yaml      |   1 +
- drivers/pmdomain/mediatek/mt8196-pm-domains.h |  27 ++++
- drivers/pmdomain/mediatek/mtk-pm-domains.c    | 134 ++++++++++++++----
- drivers/pmdomain/mediatek/mtk-pm-domains.h    |   1 +
- .../dt-bindings/power/mediatek,mt8196-power.h |   4 +
- 5 files changed, 141 insertions(+), 26 deletions(-)
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/pmdomain/mediatek/mtk-pm-domains.c | 43 +++++++++++++++++-----
+ 1 file changed, 33 insertions(+), 10 deletions(-)
 
+diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+index e1cfd4223473..db543d4b1813 100644
+--- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
++++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+@@ -738,7 +738,8 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+ }
+ 
+ static struct
+-generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_node *node)
++generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_node *node,
++					 u8 *domains_idx, u8 *num_domains)
+ {
+ 	const struct scpsys_domain_data *domain_data;
+ 	const struct scpsys_hwv_domain_data *hwv_domain_data;
+@@ -906,6 +907,7 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+ 	else
+ 		pm_genpd_init(&pd->genpd, NULL, false);
+ 
++	domains_idx[(*num_domains)++] = (u8) id;
+ 	scpsys->domains[id] = &pd->genpd;
+ 
+ 	return scpsys->pd_data.domains[id];
+@@ -917,7 +919,8 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+ 	return ERR_PTR(ret);
+ }
+ 
+-static int scpsys_add_subdomain(struct scpsys *scpsys, struct device_node *parent)
++static int scpsys_add_subdomain(struct scpsys *scpsys, struct device_node *parent,
++				u8 *domains_idx, u8 *num_domains)
+ {
+ 	struct generic_pm_domain *child_pd, *parent_pd;
+ 	struct device_node *child;
+@@ -940,7 +943,7 @@ static int scpsys_add_subdomain(struct scpsys *scpsys, struct device_node *paren
+ 
+ 		parent_pd = scpsys->pd_data.domains[id];
+ 
+-		child_pd = scpsys_add_one_domain(scpsys, child);
++		child_pd = scpsys_add_one_domain(scpsys, child, domains_idx, num_domains);
+ 		if (IS_ERR(child_pd)) {
+ 			ret = PTR_ERR(child_pd);
+ 			dev_err_probe(scpsys->dev, ret, "%pOF: failed to get child domain id\n",
+@@ -949,7 +952,7 @@ static int scpsys_add_subdomain(struct scpsys *scpsys, struct device_node *paren
+ 		}
+ 
+ 		/* recursive call to add all subdomains */
+-		ret = scpsys_add_subdomain(scpsys, child);
++		ret = scpsys_add_subdomain(scpsys, child, domains_idx, num_domains);
+ 		if (ret)
+ 			goto err_put_node;
+ 
+@@ -991,14 +994,16 @@ static void scpsys_remove_one_domain(struct scpsys_domain *pd)
+ 	clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
+ }
+ 
+-static void scpsys_domain_cleanup(struct scpsys *scpsys)
++static void scpsys_domain_cleanup(struct scpsys *scpsys, u8 *domains_idx, u8 num_probed)
+ {
+ 	struct generic_pm_domain *genpd;
+ 	struct scpsys_domain *pd;
+ 	int i;
+ 
+-	for (i = scpsys->pd_data.num_domains - 1; i >= 0; i--) {
+-		genpd = scpsys->pd_data.domains[i];
++	for (i = num_probed - 1; i >= 0; i--) {
++		u8 pd_idx = domains_idx[i];
++
++		genpd = scpsys->pd_data.domains[pd_idx];
+ 		if (genpd) {
+ 			pd = to_scpsys_domain(genpd);
+ 			scpsys_remove_one_domain(pd);
+@@ -1215,6 +1220,8 @@ static int scpsys_probe(struct platform_device *pdev)
+ 	struct device *parent;
+ 	struct scpsys *scpsys;
+ 	int num_domains, ret;
++	u8 num_added_pds = 0;
++	u8 *added_pds_idx;
+ 
+ 	soc = of_device_get_match_data(&pdev->dev);
+ 	if (!soc) {
+@@ -1228,6 +1235,19 @@ static int scpsys_probe(struct platform_device *pdev)
+ 	if (!scpsys)
+ 		return -ENOMEM;
+ 
++	/*
++	 * Temporarily store the IDs of the power domains that are added as in
++	 * case of a probe deferral this can be used to correctly cleanup all
++	 * of what was added before.
++	 *
++	 * Note that this array is used only in the probe function and must be
++	 * freed at the end, regardless of whether all of the power domains were
++	 * probed successfully or any failure happened.
++	 */
++	added_pds_idx = devm_kmalloc_array(dev, num_domains, sizeof(*added_pds_idx), GFP_KERNEL);
++	if (!added_pds_idx)
++		return -ENOMEM;
++
+ 	scpsys->dev = dev;
+ 	scpsys->soc_data = soc;
+ 
+@@ -1258,13 +1278,15 @@ static int scpsys_probe(struct platform_device *pdev)
+ 	for_each_available_child_of_node_scoped(np, node) {
+ 		struct generic_pm_domain *domain;
+ 
+-		domain = scpsys_add_one_domain(scpsys, node);
++		domain = scpsys_add_one_domain(scpsys, node,
++					       added_pds_idx, &num_added_pds);
+ 		if (IS_ERR(domain)) {
+ 			ret = PTR_ERR(domain);
+ 			goto err_cleanup_domains;
+ 		}
+ 
+-		ret = scpsys_add_subdomain(scpsys, node);
++		ret = scpsys_add_subdomain(scpsys, node,
++					   added_pds_idx, &num_added_pds);
+ 		if (ret)
+ 			goto err_cleanup_domains;
+ 	}
+@@ -1280,10 +1302,11 @@ static int scpsys_probe(struct platform_device *pdev)
+ 		goto err_cleanup_domains;
+ 	}
+ 
++	devm_kfree(dev, added_pds_idx);
+ 	return 0;
+ 
+ err_cleanup_domains:
+-	scpsys_domain_cleanup(scpsys);
++	scpsys_domain_cleanup(scpsys, added_pds_idx, num_added_pds);
+ 	return ret;
+ }
+ 
 -- 
 2.54.0
 
