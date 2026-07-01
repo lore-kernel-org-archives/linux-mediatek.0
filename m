@@ -4,65 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20539C43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 16:59:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BC9CC43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 17:00:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6GKUiK4lsUyxfOQTa+DkkuPa9nC5WHhgH6dZ6JcMOVs=; b=mTR/F2DiStxbmAzCupLg+63KE5
-	WQm1ZK6q8qKFKw6gR2+hR9MA46l4j+nCk9yiiQwhdc5et7DTB7I+nVXqJN8AuHIecNubq4WO9KR8D
-	2KD/biWxdybE1he+4ZpRH5moE0QNnpx+e1HhVOn1pkFCAmgz4FuGpWe8cvcf6dGOImva3FkKtK9Yn
-	QKn3HyLXseTdt0XHAGQhquxj+8dHlc3YEId0DjzDhYWHdQ2VrOE6GVLzu8PHUBoPCWfQ5+z79opcK
-	WO0SVVPTc1P0v3eK8nPgG8MDMX3J04Tsszt4m8rl7aii6XRdaDQ5FZcfnNcHCbf5A7DEQqAUE7ofZ
-	wIB/F+JQ==;
+	bh=Lkp4HiOPABBONoTf78hQOCnxl/elkCfMhe6Bpuh0yx4=; b=EXZgGdvV1lXF4CeOlz+0KrVsU7
+	d9C0nRIMoI8Fqq89yn3I+wrXqO2bI6M1AKTieyh1rvjTAfdBKiP8CP2NbQQbdy186HGCTFzv6KTtL
+	g9EX1JHH8HkpMYWYVOJD+CQnzDs9Mc22mkVGt0RVP08J+Z9yRVSbrBP/tBoSzCFykpcyQ3bp9ac3A
+	acSUQLPgMIPu7nP7jFvvmJF4iRznorlmjY1orbrlp68Lr1sFkG0ZFf7GjC+E1a4mrX1aB3yoCaGeD
+	kEtZF1y+9n/MI9MAa7BrUATjf6F6O7HgoTN57FGpMsnfiIn5vVIENo0lZEN1y97JtTUNpFuDF8Xuj
+	gdsAMEzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weyHt-00000002eQI-0hvC;
-	Wed, 01 Jul 2026 16:59:49 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1weyIF-00000002eaI-1iJt;
+	Wed, 01 Jul 2026 17:00:11 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weyHs-00000002ePI-20UB;
-	Wed, 01 Jul 2026 16:59:48 +0000
+	id 1weyIE-00000002eZU-1ZSq;
+	Wed, 01 Jul 2026 17:00:10 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id BC31141FF6;
-	Wed,  1 Jul 2026 16:59:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D24801F000E9;
-	Wed,  1 Jul 2026 16:59:44 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 789686001D;
+	Wed,  1 Jul 2026 17:00:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE47A1F000E9;
+	Wed,  1 Jul 2026 17:00:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782925187;
-	bh=6GKUiK4lsUyxfOQTa+DkkuPa9nC5WHhgH6dZ6JcMOVs=;
+	s=k20260515; t=1782925209;
+	bh=Lkp4HiOPABBONoTf78hQOCnxl/elkCfMhe6Bpuh0yx4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=iGr0AfCfMipgDELZfH0oNnfdhHmQ9iHn3TMHt2oyDoUr+mrZrIPry83rqlC/Mpc1s
-	 vbUc5VJtHdPnLMYSSuHe3Z4yMiskIo94XfuhGpTksHHZaWVI7NqADY+0sp9Iitiy5o
-	 s+aQ67e4zxkdBwYCcpFRgVmEmr0G5G1B6C4N0F1bGTAGHHRuu/oEZgyfkh0hLHm+eI
-	 UXl0LOtWFDDp3pJMspLg9z7eYML0G3HAUaf4rmL0VipejFw5s1Gp3acukG6WbfPiUR
-	 I/Rvc0p54AyDEg/793xbBZlXOlBiGFZr4tNKf2jTebseP7OTJ57sHxfSnnJbuCpca8
-	 MbhMFiCinUFLg==
-Date: Wed, 1 Jul 2026 17:59:42 +0100
+	b=A8j4rPn8GXnN682mi5i14xifdRIV0M5B159dMsfcnWdWH2sb2mMioWiJGhFLzrWc0
+	 Dyr9c2MoFSnr/orqV99qlyqFaveNQ7qAy7okRZOhpWmyag2MRRhGCGhbLZ4Dzm3qU5
+	 VAU86MGUpc7T7/jw5E1fWMEAbyZcF2sEGdVKV4IqwoTy4PP/cP407BP1fy5X6UqH5b
+	 DSogYVufJ95XHKi8Y+HofC3K131mqd68wdmHEx6GpZGyk0kiFJlnJsk7EgvequLex5
+	 MoL5cW4HPQUA6iRA59HhmxmIdKm1dSIH3EqXDHzNpdjlxAzdbVR//xcefQ6xZsHOvm
+	 Twzdtils5wQJw==
+Date: Wed, 1 Jul 2026 18:00:04 +0100
 From: Conor Dooley <conor@kernel.org>
 To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Rob Herring <robh@kernel.org>,
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] dt-bindings: phy: mediatek,tphy: Add support for MT8189
- SoC
-Message-ID: <20260701-graveness-program-2cfcab411ef1@spud>
-References: <20260701-mt8189-dt-bindings-tphy-v1-1-5848a2be8303@collabora.com>
+	kernel@collabora.com, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: mfd: mediatek,mt8195-scpsys: Add support
+ for MT8189 SoC
+Message-ID: <20260701-twisted-splurge-d8428a6ab8c2@spud>
+References: <20260701-mt8189-dt-bindings-scpsys-v1-1-2c04f0fda1b7@collabora.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="9rSKBT53BZC4l7pJ"
+	protocol="application/pgp-signature"; boundary="6LIruBZ0RnifyB06"
 Content-Disposition: inline
-In-Reply-To: <20260701-mt8189-dt-bindings-tphy-v1-1-5848a2be8303@collabora.com>
+In-Reply-To: <20260701-mt8189-dt-bindings-scpsys-v1-1-2c04f0fda1b7@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,23 +75,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---9rSKBT53BZC4l7pJ
+--6LIruBZ0RnifyB06
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 Acked-by: Conor Dooley <conor.dooley@microchip.com>
 pw-bot: not-applicable
 
---9rSKBT53BZC4l7pJ
+--6LIruBZ0RnifyB06
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCakVHfgAKCRB4tDGHoIJi
-0gsbAQCfNvGEjyLqD8GFLj1gnnm4qZzfsFcFiF05x5MMWV//IAD9EICibF/goigl
-+KUPdrJ40+4unbogYm9VMeQegp4NRgM=
-=p73x
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCakVHlAAKCRB4tDGHoIJi
+0v2hAP4xG8uRvU5urx9tcNk5sTMtXUUWh0Pp6QoPg3ZhJxrmsQD/W7k1BGw3eGna
+wHVQ02sZvHrnrhOF9xU/nWYvggscKAk=
+=8Tor
 -----END PGP SIGNATURE-----
 
---9rSKBT53BZC4l7pJ--
+--6LIruBZ0RnifyB06--
 
