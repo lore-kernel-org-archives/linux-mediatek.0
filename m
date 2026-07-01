@@ -4,80 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F08F8C43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 15:47:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D14CC43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 15:55:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=NRactH9G8VIg87UGgdIMTyvt5IVxZz9zv/IYqfJqpdw=; b=3Et8S6eDHV3H/W+xmGsjqeVUpg
-	lH6s7geOSO9P6Q2ofihWs4E1FQUlO5nIN8JmN0nyahIrWphXCrUin7UGoZrq6SklTlU0ecEAxl9Hk
-	vevMV4I0Oi8TfOO0biI+ITWK4dA1BsVtH6qcz/eXWOmusvvNivnHq5iX4dKpgUqOgQTyUiLm7KBEp
-	gR4y5HO3bfuQQ9LTF7eST85OoE0vLSRgZDKE0h88Mfr7F8pk+Vf+AqmOPF4FImUWIZ++vtdXfXhzb
-	isMgb/gIWbMKm5qmY41H3zhZUI57HJJDddK9bbYWf51VgoMar9EcGB8oJqnY4pYqhWMIlrPJtR0Mb
-	Q1Jh393w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PXa34OubSbzCty4qUjMoYcxwd7ic9Igd3aMKODlP5w8=; b=UmW4SKYp9FkzrAK7FoCPJEN3Dk
+	WHPj5PEWNx3IsKsC93fc9WvHyoW3x/6dTP3oJUvCNOon1ZtCGqTzlp2jlzzl10llcvcXnDFMY7ALa
+	pN/z7c6ft2TaLihwxKNL4p4jtgAXR0RUQgD5HHnnX/WZazYMAGE2Rvc32+hQKjzzaMQNZ08vLf7g5
+	D1sMh9doT0kkxOPmTwit4itp6fQB7GqxFl1VHPHkXb9kx+ZsljhtRvYrwOqfdQbaXIskH7w2dGasR
+	ldzT/YrIxJjOi3lTWE+5lXxbj64ZYHJ0nri0RaaO48Sz/eObcl2FGnmQMp3eu/cKyy7FJ6Mm7dmF0
+	P5nJKdhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wexA8-00000002Qsu-3uzW;
-	Wed, 01 Jul 2026 15:47:44 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wexHP-00000002RvE-1APg;
+	Wed, 01 Jul 2026 15:55:15 +0000
+Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wexA6-00000002Qs4-3YSC;
-	Wed, 01 Jul 2026 15:47:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1782920859;
-	bh=Ky9AIH6/lq3FHpbsWjW7cQtA0kjqF07M4MVwKxOHcRs=;
-	h=From:Date:Subject:To:Cc:From;
-	b=mHpvIqwNp84u6/vvEm9g+BG98EFMuN+XKb/mWOpwbdTBqqkoW4jbvWpoqticz77at
-	 tJaBSxNVfU5jTcA1Dqy17ROjbdQR0XdHldSAIWOLdSoxLDm4BtTNZ2fl34Ak6Qy3hi
-	 xtvYsRUi+bmjICiJCukTyrwjy5VzY/c1sXw1WGSmNlERYFCjlR7x1lp8bS8T/Hsjm7
-	 w9w/eaUo/5beDO/ZqtzTUnURFVyvqegw3C4pWlLStn7+tvygo222Pep/zk2+ZPg5j1
-	 H1imdLxDMYAlFoClXT+8W2O3OQPV78xgbfEwfMxEQshAM9ZNrhysQYvVnoNO7dnq4G
-	 9tTShUonVWYPg==
-Received: from yukiji.home (unknown [100.64.0.131])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 093D817E02CB;
-	Wed,  1 Jul 2026 17:47:38 +0200 (CEST)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Wed, 01 Jul 2026 17:47:20 +0200
-Subject: [PATCH] dt-bindings: dma: mediatek,uart-dma: add support for
- MT8189 SoC
+	id 1wexHM-00000002Rua-31Mt
+	for linux-mediatek@lists.infradead.org;
+	Wed, 01 Jul 2026 15:55:14 +0000
+Received: by mail-yx1-xb12e.google.com with SMTP id 956f58d0204a3-664d4478a64so930603d50.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 01 Jul 2026 08:55:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1782921312; cv=none;
+        d=google.com; s=arc-20260327;
+        b=YD8xgxvnlmTaWl64K3JOC/4UsauvoafGMk7HXgKIDUFYybtfLom0APCpLeSKqtjXOO
+         2dj9HUD1gUkpM3I2OCdjlJcqEc2EzCxK9qUSX/5dADL4GchJ0CTRFNra9Y89T9QbDwYK
+         RD2ogenfcufVRYD6w3h2Q0bUOQOWrxFHnW6DoUrO2/4F+h+NHAv3ZZzZNW08tlIGuCO8
+         64oBpoKN3xualNq25GMyjqV1HBTwsbpRoBS4eW+GHlMhBHOkMPMcZniid1zc9VuOOhSz
+         DDNYOLgSv7T8Fzw6jNdUxV4l56bcOefFTCWqMQIeCksfaLgNudVetX9sT/yuiy0Q19ZX
+         unng==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=PXa34OubSbzCty4qUjMoYcxwd7ic9Igd3aMKODlP5w8=;
+        fh=uSBY8Frv5ylcgGGbXJrRJoQBRCqPOR9o6v/ETewQ+70=;
+        b=GyCDSCWwSSADG7umRbW2CqwRnD37L+r4WKJrq+50UcYFWOcXjYEh+UqzQaOudAu/Mh
+         ydB50qbR/dcTKn5RJ28jTFj0DLppYOgHceLjIsmmfBoxVevAwZAYHWlXgxjbKJdXP1ps
+         gJq+IiWSB25NBptNTEKP36Kb1Uq2Y2irtopDlGIgP15zMu6mc/rikFelQbLVcvHJStb3
+         ZCCsExsR8eRIQ2MrtycGpGduDRzUEkFRuyA/Ru1qDfX/o/YVeUrD1g/3rPI+nPqE5QuB
+         T5JC/1J93ebTxNNMBaNI2XFSmCIZVIoX4O8yVXlLO23DVpF/UedimDJJ7KsCWCQI40f9
+         SM5w==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1782921312; x=1783526112; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=PXa34OubSbzCty4qUjMoYcxwd7ic9Igd3aMKODlP5w8=;
+        b=pSQu3+gf5oc7fnGu4dyO/Duq8QfEOY2aw0a/noTrGpyH1l8EEW12T7QcIMQEAmQnr6
+         0WlNGhqZftmbjPTyD8W5yOhdDmXeGATEtAMBfbE1Dti589NfXsPavDkOmDuihTCv2UWK
+         vPbkB0xw4A+kwA0eP8rAaEHZQqBsuv13tbEgUKh5m07RCASS4HQwa8hlPGdR18Cc5lgx
+         w7/oxGBUnPclCshsQPzKV7AN/Ble1XrFhl9X4zywlkHZcNW+9QswO+hgoJpg+kCMvumS
+         MhHho1I67y/94GFM/F12ksEpxkAEwoee8d7DdED7CCA+KShTR/kIvJ06aJPqxFUWMoZp
+         h8fQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1782921312; x=1783526112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=PXa34OubSbzCty4qUjMoYcxwd7ic9Igd3aMKODlP5w8=;
+        b=MHTehxaeIblHsupcYHnwIM95wzT3qoyDjf9iKwS8OAF5zSJkEct1Bmkv/TE4ugtRP5
+         65i4a41ZCrdNStjUegE9ciSfAMhTWpJ2zd14sPTY9ZJoI7cFKGgZQFfYPTFKKHz2ZtBA
+         2oIHcR4SRZiiCEqlegcIv7rRYb40byGlKV2UMEyeuquOGDbYVDK9w4JBBZPkHmyTwCRW
+         YCtv4GCsbVO5cnj60oFR+0/WY6YX1MOOEUNmX1FEOrKvs4b6MISfU7EdXj4UPVLAgRc2
+         5QgOvEkU+gZttC8A/RUjk4HldCyy614YLnUqbFuNVKPFpU1u0TU0w/3kNHGBgsmOLHog
+         3loA==
+X-Forwarded-Encrypted: i=1; AHgh+RoSSbDH6ALF8JbZmmpTdnROh8uXd2fXZKXUEDt82kVB7IqT2z8xj+vNZ05T40C8+E8ev8C1eG+rVInswgN7cw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxWy2JdKMRkVQ+jDKRFgkKUK1BNPJmOP5dxfLrNDZHRb0UdoPUe
+	vcn9pl8ZpxQAU5dMc3nsH2+4HdKtME5dF6garHzEThzPi5Q4YRt4yYYOSAHNR/rHtxRJWntrEOr
+	sRrmGbRx0IETMRLymd74vMdg1K7W4Erw=
+X-Gm-Gg: AfdE7cnUmrGSYgdy+hwow/XHc7ynTcUhw/lzXnCdL7sx/I0iceJwTWE9RDcfxmWzUVZ
+	uR/Jv3lo+FB0zF5z8vpXLhFyblUUJdOUjJ1lBBv6DZzJOyYlkXeWROTRXK2QnC+4+bJay0o/H9+
+	JUoVon3IqEhs/77wEhJp7LGTOZfBkNR/2sZiZLTCFPKktxr/fqDE0ZcX6K2GRwa0CD8zPN/uyDO
+	IFW19ieXXVlsDJ0VP/8Dt+1iSpE/JY/gPXuSk6mw6VWCTOE1N/z1TEBdGO73irSChN1AfDg+eMg
+	ajhfduiy+cjrwqHApvNP4s9Fk+QFYgBzknnBRdDpTTE3GyIXklAN7f/IFmkbtSUYKTE=
+X-Received: by 2002:a05:690e:1449:b0:664:c053:d6a2 with SMTP id
+ 956f58d0204a3-66521a0acd3mr2114483d50.23.1782921311536; Wed, 01 Jul 2026
+ 08:55:11 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260701-mt8189-dt-bindings-uart-dma-v1-1-c7106216a40d@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yWNQQ6DIBAAv0L23E3AppT6lcYDyGL3ALaAxsT49
- xI9zhxmdiiUmQr0YodMKxeeUwN1EzB+bJoI2TeGTnZaPqXCWI0yL/QVHSfPaSq42FzRR4vBBO/
- IPDSRgVb4Zgq8nfX3cHGm39Im9ZLgbCEc5xi59iLRVvEc6buE4Tj+p2kPCp4AAAA=
-X-Change-ID: 20260701-mt8189-dt-bindings-uart-dma-f8fdbe856ee8
-To: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
- Frank Li <Frank.Li@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Long Cheng <long.cheng@mediatek.com>
-Cc: kernel@collabora.com, dmaengine@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1782920858; l=1072;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=Ky9AIH6/lq3FHpbsWjW7cQtA0kjqF07M4MVwKxOHcRs=;
- b=ofMvNwFJxd2WVq31avixKD4TbRj35vFDFtRR0jcj91McrJ+rG7GfQZ47Vwn2QS6H9O8ZGXCOp
- xmk7QNrBj7BBEHNOkJQLU2Oeu5O4fFX1HVyVk6W14l0cMXrxUhzUck5
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+References: <20260701121345.1231906-1-chris.lu@mediatek.com> <20260701121345.1231906-2-chris.lu@mediatek.com>
+In-Reply-To: <20260701121345.1231906-2-chris.lu@mediatek.com>
+From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+Date: Wed, 1 Jul 2026 11:55:00 -0400
+X-Gm-Features: AVVi8Cc0zrlvMcYjXiLQwVVmWaxkK7Jt0w4udvPGfPhOH5l9CxGEp5ydFE3Z1pA
+Message-ID: <CABBYNZKOD8xFk2PVcKAqB=wYnhtSyDOiUTaXSOkumMF5o-dwxg@mail.gmail.com>
+Subject: Re: [PATCH v7 1/3] Bluetooth: btmtk: Replace magic numbers with WMT
+ packet flag enum
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>, 
+	SS Wu <ss.wu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>, 
+	linux-bluetooth <linux-bluetooth@vger.kernel.org>, 
+	linux-kernel <linux-kernel@vger.kernel.org>, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>, Paul Menzel <pmenzel@molgen.mpg.de>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_084743_039141_0422CD97 
-X-CRM114-Status: UNSURE (   8.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260701_085512_769378_3057CBCC 
+X-CRM114-Status: GOOD (  17.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,33 +121,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the compatible string for the APDMA IP found in MT8189 SoC,
-that supports 35-bits addressing as MT6985 SoC.
+Hi Chris,
 
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
----
- Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml | 1 +
- 1 file changed, 1 insertion(+)
+On Wed, Jul 1, 2026 at 8:13=E2=80=AFAM Chris Lu <chris.lu@mediatek.com> wro=
+te:
+>
+> Add BTMTK_WMT_PKT_* enum to represent WMT download packet sequence flags,
+> improving code readability. Replace magic numbers (1, 2, 3) in
+> btmtk_setup_firmware_79xx() and btmtk_setup_firmware() with descriptive
+> enum values:
+>
+> - BTMTK_WMT_PKT_START (1): First packet of a sequence
+> - BTMTK_WMT_PKT_CONTINUE (2): Continuation packet
+> - BTMTK_WMT_PKT_END (3): Final packet of a sequence
+>
+> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+> Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+> Assisted-by: Claude:Sonnet-4.5
+> ---
+>  drivers/bluetooth/btmtk.c | 12 ++++++------
+>  drivers/bluetooth/btmtk.h |  6 ++++++
+>  2 files changed, 12 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+> index 02a96342e964..40c2a64aa6b7 100644
+> --- a/drivers/bluetooth/btmtk.c
+> +++ b/drivers/bluetooth/btmtk.c
+> @@ -230,12 +230,12 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev,=
+ const char *fwname,
+>                         while (dl_size > 0) {
+>                                 dlen =3D min_t(int, 250, dl_size);
+>                                 if (first_block =3D=3D 1) {
+> -                                       flag =3D 1;
+> +                                       flag =3D BTMTK_WMT_PKT_START;
+>                                         first_block =3D 0;
+>                                 } else if (dl_size - dlen <=3D 0) {
+> -                                       flag =3D 3;
+> +                                       flag =3D BTMTK_WMT_PKT_END;
+>                                 } else {
+> -                                       flag =3D 2;
+> +                                       flag =3D BTMTK_WMT_PKT_CONTINUE;
+>                                 }
+>
+>                                 wmt_params.flag =3D flag;
+> @@ -314,7 +314,7 @@ int btmtk_setup_firmware(struct hci_dev *hdev, const =
+char *fwname,
+>
+>         fw_size -=3D 30;
+>         fw_ptr +=3D 30;
+> -       flag =3D 1;
+> +       flag =3D BTMTK_WMT_PKT_START;
+>
+>         wmt_params.op =3D BTMTK_WMT_PATCH_DWNLD;
+>         wmt_params.status =3D NULL;
+> @@ -324,9 +324,9 @@ int btmtk_setup_firmware(struct hci_dev *hdev, const =
+char *fwname,
+>
+>                 /* Tell device the position in sequence */
+>                 if (fw_size - dlen <=3D 0)
+> -                       flag =3D 3;
+> +                       flag =3D BTMTK_WMT_PKT_END;
+>                 else if (fw_size < fw->size - 30)
+> -                       flag =3D 2;
+> +                       flag =3D BTMTK_WMT_PKT_CONTINUE;
+>
+>                 wmt_params.flag =3D flag;
+>                 wmt_params.dlen =3D dlen;
+> diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+> index c83c24897c95..51c18dde0a80 100644
+> --- a/drivers/bluetooth/btmtk.h
+> +++ b/drivers/bluetooth/btmtk.h
+> @@ -66,6 +66,12 @@ enum {
+>         BTMTK_WMT_ON_PROGRESS,
+>  };
+>
+> +enum {
+> +       BTMTK_WMT_PKT_START =3D 1,
+> +       BTMTK_WMT_PKT_CONTINUE =3D 2,
+> +       BTMTK_WMT_PKT_END =3D 3,
+> +};
+> +
+>  struct btmtk_wmt_hdr {
+>         u8      dir;
+>         u8      op;
+> --
+> 2.45.2
 
-diff --git a/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml b/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
-index 3708518fe7fc..bba20e88a6dc 100644
---- a/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
-+++ b/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
-@@ -40,6 +40,7 @@ properties:
-       - items:
-           - enum:
-               - mediatek,mt6991-uart-dma
-+              - mediatek,mt8189-uart-dma
-               - mediatek,mt8196-uart-dma
-           - const: mediatek,mt6985-uart-dma
-       - enum:
+Ones last issue regarding SDIO from sashiko:
 
----
-base-commit: ba7c57499e5999aeae8dd4f954eb2600589d80aa
-change-id: 20260701-mt8189-dt-bindings-uart-dma-f8fdbe856ee8
+https://sashiko.dev/#/patchset/20260701121345.1231906-1-chris.lu%40mediatek=
+.com
 
-Best regards,
--- 
-Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-
+--=20
+Luiz Augusto von Dentz
 
