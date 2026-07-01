@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC495C43602
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 12:21:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A8CFC44501
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 12:21:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DUnx9PyoyYl2+83SGc5ulyDpcRZSKGw30N8sazgNnVg=; b=XQ93/SvywxEOseoZU84yNk6Qm4
-	h3hUjZusWVBssPHObjHMiCx4eOWWQr0sDV/rrB2ocSvTu5Lpa3XiwQEG1YYkbbHDKqx/MSLM6+6Ox
-	oK74BrKnvRPcXMywUGMEsdGGGDT474cvw+3slrbo6f/9uDlBqrJJrXSEOiTIQ8JOspCTIrf6t73a2
-	GVfAtmkOgWE0/VHXAfsc7MWMOgL5B8MvQsF2hU56A++HLpaDmfODeCjbuxFJSzV9qxoBzmOWNFkvH
-	uZuDLl4Z+03CPYDk5PgeZGZ0HzR03hshynEh0d2WS1AO9iBFL3XaEaJcnmrIovFPIOYcSXlLx7QcV
-	jiceahCg==;
+	bh=ulnU4ItQiW+x4IFQUgwhDo/KjUl2F74dtI9+YusiXsI=; b=ATmSm/Qh1Ph/LRcwLzNioP/dFU
+	VE2N64FNKQ7wx2Sb3SCYFM4X/of4dJWzqo6L/WeRjcu6XcRBXlgZ0KO2EmRhFrrrwIZg/DSPggtgh
+	r77cTVaxgd/fvy1j6vO4wRWJ+7nI1bx60qiSt+HSPzJVE/2D/d1FbOXVpy6tgI1QRGKkGZmwcUygn
+	aGYXaDrs+Drom/gcLa14JENh783mZBq+AJGx6JgD+NcUOpPqUhynoPi9a1r7JaowLNKvVdN3WV6qX
+	bYEiv/fnRncoa9UO1xXG4GhaFgPAxLvNrJ3dbIMoxP5ZE/J/TQskwbozcSRaGNin1v3IDQQXxRxUN
+	W5oL41ZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetwg-00000001umP-2a40;
-	Wed, 01 Jul 2026 12:21:38 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1wetwi-00000001ur8-0MoI;
+	Wed, 01 Jul 2026 12:21:40 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetwH-00000001tm0-0Uy1;
-	Wed, 01 Jul 2026 12:21:13 +0000
+	id 1wetwJ-00000001trI-2Pwi;
+	Wed, 01 Jul 2026 12:21:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=DUnx9PyoyYl2+83SGc5ulyDpcRZSKGw30N8sazgNnVg=; b=onEBrE688qe2cn3IOcFRxujVlf
-	QYvF8VfClJw4UTWGd6pjDXKCiTIiQY/prL9o9B3chnC2gckOPLudTrbdj9sTEWXImxMKKji7rKMaK
-	nFzaXv+vYihaqH4uuRtslV6AOT5nw5XL8sl/siKGLHWTiK0OGHhvpRkoKPsRIrJ9TtItoYLEiO1OY
-	WZEy3TCRM8rotvfehbKaDfKv4FzQQ3k4He5NIMxuF6RRhI+I+Yum9XzdQa1arpEPJ9FnQeHiGI89s
-	jYSflJa6I2VV3AanbdnV8TFOunJ0I0E0hWUtiAMzKZSsGwPvD5adeOOOvF/ZLmlg7EOzooo2s6eKb
-	xQHpagUA==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by casper.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetwE-00000006aqA-0m35;
+	bh=ulnU4ItQiW+x4IFQUgwhDo/KjUl2F74dtI9+YusiXsI=; b=jmLE3BCqp84vKUqBe8mM91czv3
+	JidrC68BndnW4GS5Y4UFdKdZ4amJ6AX6V2Gz2Hk12Wc8Ktr10OEaTuI74dAbcrwcO5+RnXZBuVqjQ
+	1U0x85nmtAZow7iyEjcXwFMiVqs6QcyexHKNdq2LPtXThFraea5eb/vByfZQoCqN5WC38YUL1Ic35
+	oN80KigzOGkYqm8K9LzkD4purw7EpWuQPbmM3Ms1L616EbivKzxlpBBHUGuQPTIDvNs/hxcKrPgjn
+	tlrf4Xcu6NXZrtvjifWLwZJejv/NfnNubaeBveQhRfn38MjTkDPvvLtifL12/xYTXcmZkc7ACT6gl
+	RavuHKKw==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1wetwC-00000002jd6-0dxZ;
 	Wed, 01 Jul 2026 12:21:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1782908469;
-	bh=qGaUZZGDMdPi15E0uv7JzAyEsx2eZTqS7P8cmGb9ccw=;
+	s=mail; t=1782908466;
+	bh=gcCOGWCtiQjkn/Cjq5l9iNxePEf+xSdyXx0qiipj9bo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=FuI23H95iqLw/2dnWfP/lE2fIJhvK0fh+crKKYR/vqvmjMImyjsPiowe/ifuuY5mV
-	 uMCMh/JXcZcCXrWwP9UlaZINhFkLpWDcYYEj8lMlP91cDlEf8KKlr+zM/gShxW0CEt
-	 wrFvJGxZaqgGI9h+eDPu5KMvAm25kcDBTsbF6TJcDgLHCrgc7RjZ1ZcRjweT+vcLi6
-	 adJKZniEmaE9atdrA6O5XeS1x1RtuJD/UYoVhjL6pz7Kv39M5W5nnHR/7BnKJf6YtX
-	 w18eNSCeY06ZuBZf2DWZj+W+k67oVJhSwRRshLrafduAMiy5Su+yF3ftE2weYr2xra
-	 Nx/z4j+nu25RQ==
+	b=ocJoGaIMy03Ch2z8HPk0z8wYBTim3UYrCopjIhpdc7hI7VhA9nHBdbj02AJH148ng
+	 e1iKXbTZ7PyDMDA+URErghDfnxJiE1GGZeeq8yfyWaTRK4MhovW7PUEkUQ7W+jwn2Y
+	 xjn4m7bBqgsuIH+fIhQ+D+3eQ7gQmcA4W5PF0iiMPCkhqCIXGepfC7aZEaAT1uXyW2
+	 NMJhpsB4xR9XPOayBAfUwfX+W3WkXCuGA7RM1DOtWHBovHuwmGlvUwvn9TmuSmFw9y
+	 y+m7N+lb5NzRZuFgxr38FfpgAGLYQxBLkcbrFd6BZB2KaGe4c/duMqObc95xzihMeF
+	 39og/sC5ma/hA==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 39F0A17E35C9;
-	Wed,  1 Jul 2026 14:21:08 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EDDA617E0FAA;
+	Wed,  1 Jul 2026 14:21:05 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -78,17 +78,17 @@ Cc: p.zabel@pengutronix.de,
 	justin.yeh@mediatek.com,
 	jason-jh.lin@mediatek.com,
 	kernel@collabora.com
-Subject: [PATCH 07/42] drm/mediatek: ddp_comp: Move internal component register in function
-Date: Wed,  1 Jul 2026 14:20:22 +0200
-Message-ID: <20260701122057.19648-8-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 05/42] drm/mediatek: Rename all display component type to have DISP_ prefix
+Date: Wed,  1 Jul 2026 14:20:20 +0200
+Message-ID: <20260701122057.19648-6-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260701122057.19648-1-angelogioacchino.delregno@collabora.com>
 References: <20260701122057.19648-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_132110_429538_9D51926C 
-X-CRM114-Status: GOOD (  12.53  )
+X-CRM114-CacheID: sfid-20260701_132108_399346_250C6C97 
+X-CRM114-Status: GOOD (  16.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,101 +103,176 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation for adding an helper serving the purpose of finally
-removing duplicated code to check for internal/simple components,
-and for improving human readability in the up coming refactoring,
-move the internal/simple component registration logic to its own
-mtk_ddp_comp_init_internal_comp() function.
+The mtk_ddp_comp_type enumeration will end up containing both the
+Display Controller and Media Data Path Controller components: this
+is because those can be interconnected together (as in, using MDP
+components in Display Controller paths is possible!) and because
+both MMSYS and MuteX are managing both of those in practically the
+same way.
 
-This brings no functional changes.
+Rename all of the Display Controller related HW components in the
+list to always have a "DISP_" prefix.
+This includes components that are in the MDP Controller instead,
+and the strategy here is for some of those to also have the same
+DISP_ prefix, so that:
+ - Display Controller specific components have a DISP_ prefix
+   - Example: MTK_DISP_(NAME)
+ - MDP Controller components that can be interconnected to the
+   Display Controller will have both DISP_ and MDP_ prefixes
+   - Example: MTK_DISP_MDP_(NAME)
+ - MDP Controller components that are exclusive to MDP and can
+   not be interconnected with Display Controller will only have
+   an MDP_ prefix but not a DISP_ prefix
+   - Example: MTK_MDP_(NAME).
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_ddp_comp.c | 55 +++++++++++++++----------
- 1 file changed, 33 insertions(+), 22 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c | 28 +++++++++----------
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c  | 36 ++++++++++++-------------
+ include/linux/soc/mediatek/mtk-mmsys.h  |  6 ++---
+ 3 files changed, 35 insertions(+), 35 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-index d716fd9f8a70..2ba2123238b3 100644
+index 94b356da6de7..a6c1815ffa39 100644
 --- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
 +++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.c
-@@ -629,6 +629,38 @@ static void mtk_ddp_comp_clk_put(void *_clk)
- 	clk_put(clk);
- }
+@@ -423,9 +423,9 @@ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
+ 	[MTK_DISP_RDMA] = "rdma",
+ 	[MTK_DISP_UFOE] = "ufoe",
+ 	[MTK_DISP_WDMA] = "wdma",
+-	[MTK_DP_INTF] = "dp-intf",
+-	[MTK_DPI] = "dpi",
+-	[MTK_DSI] = "dsi",
++	[MTK_DISP_DP_INTF] = "dp-intf",
++	[MTK_DISP_DPI] = "dpi",
++	[MTK_DISP_DSI] = "dsi",
+ };
  
-+static int mtk_ddp_comp_init_internal_comp(struct device *dev, struct device *comp_dev)
-+{
-+	struct device_node *comp_node = comp_dev->of_node;
-+	struct mtk_ddp_comp_dev *priv;
-+	int ret;
-+
-+	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	priv->regs = devm_of_iomap(dev, comp_node, 0, NULL);
-+	if (IS_ERR(priv->regs))
-+		return PTR_ERR(priv->regs);
-+
-+	priv->clk = of_clk_get(comp_node, 0);
-+	if (IS_ERR(priv->clk))
-+		return PTR_ERR(priv->clk);
-+
-+	ret = devm_add_action_or_reset(dev, mtk_ddp_comp_clk_put, priv->clk);
-+	if (ret)
-+		return ret;
-+
-+#if IS_REACHABLE(CONFIG_MTK_CMDQ)
-+	ret = cmdq_dev_get_client_reg(comp_dev, &priv->cmdq_reg, 0);
-+	if (ret)
-+		dev_dbg(comp_dev, "get mediatek,gce-client-reg fail!\n");
-+#endif
-+	dev_set_drvdata(comp_dev, priv);
-+
-+	return 0;
-+};
-+
- int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
- 		      struct mtk_drm_comp_list *hlist,
- 		      unsigned int comp_id)
-@@ -636,7 +668,6 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
- 	struct platform_device *comp_pdev;
- 	struct mtk_ddp_comp *comp;
- 	enum mtk_ddp_comp_type type;
--	struct mtk_ddp_comp_dev *priv;
- 	int ret;
+ struct mtk_ddp_comp_match {
+@@ -442,17 +442,17 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_DRM_ID_MAX]
+ 	[DDP_COMPONENT_COLOR0]		= { MTK_DISP_COLOR,		0, &ddp_color },
+ 	[DDP_COMPONENT_COLOR1]		= { MTK_DISP_COLOR,		1, &ddp_color },
+ 	[DDP_COMPONENT_DITHER0]		= { MTK_DISP_DITHER,		0, &ddp_dither },
+-	[DDP_COMPONENT_DP_INTF0]	= { MTK_DP_INTF,		0, &ddp_dpi },
+-	[DDP_COMPONENT_DP_INTF1]	= { MTK_DP_INTF,		1, &ddp_dpi },
+-	[DDP_COMPONENT_DPI0]		= { MTK_DPI,			0, &ddp_dpi },
+-	[DDP_COMPONENT_DPI1]		= { MTK_DPI,			1, &ddp_dpi },
++	[DDP_COMPONENT_DP_INTF0]	= { MTK_DISP_DP_INTF,		0, &ddp_dpi },
++	[DDP_COMPONENT_DP_INTF1]	= { MTK_DISP_DP_INTF,		1, &ddp_dpi },
++	[DDP_COMPONENT_DPI0]		= { MTK_DISP_DPI,		0, &ddp_dpi },
++	[DDP_COMPONENT_DPI1]		= { MTK_DISP_DPI,		1, &ddp_dpi },
+ 	[DDP_COMPONENT_DRM_OVL_ADAPTOR]	= { MTK_DISP_OVL_ADAPTOR,	0, &ddp_ovl_adaptor },
+ 	[DDP_COMPONENT_DSC0]		= { MTK_DISP_DSC,		0, &ddp_dsc },
+ 	[DDP_COMPONENT_DSC1]		= { MTK_DISP_DSC,		1, &ddp_dsc },
+-	[DDP_COMPONENT_DSI0]		= { MTK_DSI,			0, &ddp_dsi },
+-	[DDP_COMPONENT_DSI1]		= { MTK_DSI,			1, &ddp_dsi },
+-	[DDP_COMPONENT_DSI2]		= { MTK_DSI,			2, &ddp_dsi },
+-	[DDP_COMPONENT_DSI3]		= { MTK_DSI,			3, &ddp_dsi },
++	[DDP_COMPONENT_DSI0]		= { MTK_DISP_DSI,		0, &ddp_dsi },
++	[DDP_COMPONENT_DSI1]		= { MTK_DISP_DSI,		1, &ddp_dsi },
++	[DDP_COMPONENT_DSI2]		= { MTK_DISP_DSI,		2, &ddp_dsi },
++	[DDP_COMPONENT_DSI3]		= { MTK_DISP_DSI,		3, &ddp_dsi },
+ 	[DDP_COMPONENT_GAMMA]		= { MTK_DISP_GAMMA,		0, &ddp_gamma },
+ 	[DDP_COMPONENT_MERGE0]		= { MTK_DISP_MERGE,		0, &ddp_merge },
+ 	[DDP_COMPONENT_MERGE1]		= { MTK_DISP_MERGE,		1, &ddp_merge },
+@@ -659,9 +659,9 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node, struct mtk_d
+ 	    type == MTK_DISP_PWM ||
+ 	    type == MTK_DISP_RDMA ||
+ 	    type == MTK_DISP_WDMA ||
+-	    type == MTK_DPI ||
+-	    type == MTK_DP_INTF ||
+-	    type == MTK_DSI)
++	    type == MTK_DISP_DPI ||
++	    type == MTK_DISP_DP_INTF ||
++	    type == MTK_DISP_DSI)
+ 		return 0;
  
- 	if (comp_id >= DDP_COMPONENT_DRM_ID_MAX)
-@@ -686,29 +717,9 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
- 	    type == MTK_DISP_DSI)
- 		goto end;
+ 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index e54f0654f2f9..9c6dfc1e384b 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -801,35 +801,35 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	{ .compatible = "mediatek,mt8173-disp-wdma",
+ 	  .data = (void *)MTK_DISP_WDMA },
+ 	{ .compatible = "mediatek,mt2701-dpi",
+-	  .data = (void *)MTK_DPI },
++	  .data = (void *)MTK_DISP_DPI },
+ 	{ .compatible = "mediatek,mt8167-dsi",
+-	  .data = (void *)MTK_DSI },
++	  .data = (void *)MTK_DISP_DSI },
+ 	{ .compatible = "mediatek,mt8173-dpi",
+-	  .data = (void *)MTK_DPI },
++	  .data = (void *)MTK_DISP_DPI },
+ 	{ .compatible = "mediatek,mt8183-dpi",
+-	  .data = (void *)MTK_DPI },
++	  .data = (void *)MTK_DISP_DPI },
+ 	{ .compatible = "mediatek,mt8186-dpi",
+-	  .data = (void *)MTK_DPI },
++	  .data = (void *)MTK_DISP_DPI },
+ 	{ .compatible = "mediatek,mt8188-dp-intf",
+-	  .data = (void *)MTK_DP_INTF },
++	  .data = (void *)MTK_DISP_DP_INTF },
+ 	{ .compatible = "mediatek,mt8192-dpi",
+-	  .data = (void *)MTK_DPI },
++	  .data = (void *)MTK_DISP_DPI },
+ 	{ .compatible = "mediatek,mt8195-dp-intf",
+-	  .data = (void *)MTK_DP_INTF },
++	  .data = (void *)MTK_DISP_DP_INTF },
+ 	{ .compatible = "mediatek,mt8195-dpi",
+-	  .data = (void *)MTK_DPI },
++	  .data = (void *)MTK_DISP_DPI },
+ 	{ .compatible = "mediatek,mt2701-dsi",
+-	  .data = (void *)MTK_DSI },
++	  .data = (void *)MTK_DISP_DSI },
+ 	{ .compatible = "mediatek,mt8173-dsi",
+-	  .data = (void *)MTK_DSI },
++	  .data = (void *)MTK_DISP_DSI },
+ 	{ .compatible = "mediatek,mt8183-dsi",
+-	  .data = (void *)MTK_DSI },
++	  .data = (void *)MTK_DISP_DSI },
+ 	{ .compatible = "mediatek,mt8186-dsi",
+-	  .data = (void *)MTK_DSI },
++	  .data = (void *)MTK_DISP_DSI },
+ 	{ .compatible = "mediatek,mt8188-dsi",
+-	  .data = (void *)MTK_DSI },
++	  .data = (void *)MTK_DISP_DSI },
+ 	{ .compatible = "mediatek,mt8196-dsi",
+-	  .data = (void *)MTK_DSI },
++	  .data = (void *)MTK_DISP_DSI },
+ 	{ }
+ };
  
--	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
--	if (!priv)
--		return -ENOMEM;
--
--	priv->regs = devm_of_iomap(dev, node, 0, NULL);
--	if (IS_ERR(priv->regs))
--		return PTR_ERR(priv->regs);
--
--	priv->clk = of_clk_get(node, 0);
--	if (IS_ERR(priv->clk))
--		return PTR_ERR(priv->clk);
--
--	ret = devm_add_action_or_reset(dev, mtk_ddp_comp_clk_put, priv->clk);
-+	ret = mtk_ddp_comp_init_internal_comp(dev, comp->dev);
- 	if (ret)
- 		return ret;
--
--#if IS_REACHABLE(CONFIG_MTK_CMDQ)
--	ret = cmdq_dev_get_client_reg(comp->dev, &priv->cmdq_reg, 0);
--	if (ret)
--		dev_dbg(comp->dev, "get mediatek,gce-client-reg fail!\n");
--#endif
--
--	platform_set_drvdata(comp_pdev, priv);
- end:
- 	hash_add(hlist->ddp_list, &comp->lnode, comp->id);
+@@ -1176,9 +1176,9 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 		    comp_type == MTK_DISP_OVL_ADAPTOR ||
+ 		    comp_type == MTK_DISP_RDMA ||
+ 		    comp_type == MTK_DISP_WDMA ||
+-		    comp_type == MTK_DP_INTF ||
+-		    comp_type == MTK_DPI ||
+-		    comp_type == MTK_DSI) {
++		    comp_type == MTK_DISP_DP_INTF ||
++		    comp_type == MTK_DISP_DPI ||
++		    comp_type == MTK_DISP_DSI) {
+ 			dev_info(dev, "Adding component match for %pOF\n",
+ 				 node);
+ 			drm_of_component_match_add(dev, &match, component_compare_of,
+diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
+index 3ddfdeac658d..bbdd0b01927d 100644
+--- a/include/linux/soc/mediatek/mtk-mmsys.h
++++ b/include/linux/soc/mediatek/mtk-mmsys.h
+@@ -111,9 +111,9 @@ enum mtk_ddp_comp_type {
+ 	MTK_DISP_MDP_RDMA,
  
+ 	/* Keep Display outputs at the end for readability */
+-	MTK_DPI,
+-	MTK_DP_INTF,
+-	MTK_DSI,
++	MTK_DISP_DPI,
++	MTK_DISP_DP_INTF,
++	MTK_DISP_DSI,
+ 
+ 	MTK_DDP_COMP_TYPE_MAX
+ };
 -- 
 2.54.0
 
