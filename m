@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBBA1C44506
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 14:23:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 433ACC43327
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 14:38:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
 	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
 	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yM8HcAoywZQROnbGbiMNPlQQuS/3De3vvYBkNdJ6Ssw=; b=eNAKdhclzP7JNEeIGpR4ceN3F5
-	33Cl9bMY0SsuWHYf27xFJAIUbtpd5JY9ptfwSIM8CXPKDWnJb8K7V9GJnnx+8OCk0kDbZIGkm7jT2
-	FrZHE1rySdliAjLNxA05uNKMGVVXmXK6tRUPe5Luy4DHFuNwg75SBn5FjMuXuewLxKSrihoFwUxpE
-	kiEHq0zQJeRZG381BJQc7DptgoFC8hjBDA5TDyMYMwwnSmAh6SDSDndsmAb8vZopmmFkh/Ow48Yp5
-	pM9ggtyRGegSKXVCNR3rKjixp4pYqv47qK07lEz2A4pctYjSYwIwxT/oX8HGE33kZ2egQJHhYZU9g
-	t9Eq/LIQ==;
+	bh=DoAPIKHlQF01BQdUW983/8p5nb/vO5Fh5kJQWUG/dxQ=; b=dnV+HaSJKxVADfaT7897gw7eC3
+	qql+YCw5HhBVxG1hfV6+2tVG8AWRm6XyhaZcukhOhxcwx5pZKsXMWnD8CfiKG+yF8aBwxmduIKlMx
+	e2xYuVjEnhdqE2usX4hWeT9lijUXI8hapOJCnqa8PeyNFcDdQeDwgRSgc9La7EfjaadmTCsoktHoy
+	+BT8QGH7ZXQJ2einypx9eP6UudNBuZ8pllcrRcZ4pAhV/ERoi8eURT46y1UQ1HVTPUiSzgCy/jzkh
+	gc+AFAasj2jFOlsO0o60/PW/ga6loPLgJnHnymNjTe6R+xLuhcaxfUe70OpopctOk8klrb5yKCUOa
+	e7eYGabw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wevqu-00000002H6n-3VUW;
-	Wed, 01 Jul 2026 14:23:48 +0000
+	id 1wew5U-00000002JI0-3d2f;
+	Wed, 01 Jul 2026 14:38:52 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wevqr-00000002H0G-2ZGv;
-	Wed, 01 Jul 2026 14:23:45 +0000
+	id 1wew5U-00000002JHh-0D6r;
+	Wed, 01 Jul 2026 14:38:52 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5ED8C42A47;
-	Wed,  1 Jul 2026 14:23:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1AF011F00ACF;
-	Wed,  1 Jul 2026 14:23:45 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7A65742E2A;
+	Wed,  1 Jul 2026 14:38:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34EC81F000E9;
+	Wed,  1 Jul 2026 14:38:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782915825;
-	bh=yM8HcAoywZQROnbGbiMNPlQQuS/3De3vvYBkNdJ6Ssw=;
+	s=k20260515; t=1782916731;
+	bh=DoAPIKHlQF01BQdUW983/8p5nb/vO5Fh5kJQWUG/dxQ=;
 	h=Date:From:Cc:To:In-Reply-To:References:Subject;
-	b=dm+ezxjK6+6YX6PEsusjTDfb3QpL0aI6bc4m2j4IIuhZcA5kuFU5OmJecyRnYSudt
-	 RWt8/QEs82rbWzGasUdJzfrtb0tGuMGTH7qlNqzeeVDtRdIVgPeB8s6Vf2id9P0x5c
-	 YK2+LemCD/pK5dDwILNNRHzfaaL4ySljWEmvNGzLtN+xC2XqhUuAWJLCW/OMvk8ZG5
-	 Ucq8jv5gUx1IeNk6dkBdwaWSx2jPISueSh/HQ3jUMsLjKaCMsuNSZkTNdkRdeoxRQ3
-	 ouvVvXC9pRjlAbKM3+Wq2JohCdCuNVni31Y0PjWBiMZbOtnSpKIuO2HH3A4TIgfqhf
-	 pbKgkUNtjcL8A==
-Date: Wed, 01 Jul 2026 09:23:44 -0500
+	b=ePjixhTP3XZgrzhZdeHkU+VCPkYuzgpl2DzTg6EuV5D7zoGrCxE0H4loNSi3lbqPB
+	 MNpNB+p5gzVEaG47iCyZ4SXEN3tuV4PQXnjqaJqWIoWDU+CZVLWoKOQAqOeyVREenz
+	 0znKSxkVXVcTPQm9s0hgMVON/QEjwg6v+AEr+0fusTrOfe/Uxlg61jXskQP/77qw5R
+	 4MD7BSMdgHs0ENBjVjyKjrkouPznJtTI3qYypogcwNTr1a+0ZAzLGizfVYHGO5NT/G
+	 mKHNPd3iTm80lkGSARlqEXZSJoWXuynP0L5f9lodG2UxDokboZhdPa57EWFTKPbzU3
+	 0jk3Ld++wS1Ww==
+Date: Wed, 01 Jul 2026 09:38:50 -0500
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
 From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, p.zabel@pengutronix.de, 
- tzimmermann@suse.de, justin.yeh@mediatek.com, krzk+dt@kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- kernel@collabora.com, mripard@kernel.org, chunkuang.hu@kernel.org, 
- maarten.lankhorst@linux.intel.com, conor+dt@kernel.org, 
- matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org, 
- jason-jh.lin@mediatek.com, devicetree@vger.kernel.org, airlied@gmail.com, 
- simona@ffwll.ch
+Cc: dri-devel@lists.freedesktop.org, conor+dt@kernel.org, 
+ p.zabel@pengutronix.de, linux-mediatek@lists.infradead.org, 
+ vkoul@kernel.org, chunfeng.yun@mediatek.com, linux-phy@lists.infradead.org, 
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, 
+ kernel@collabora.com, linux-kernel@vger.kernel.org, 
+ neil.armstrong@linaro.org, justin.yeh@mediatek.com, krzk+dt@kernel.org, 
+ devicetree@vger.kernel.org, chunkuang.hu@kernel.org
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20260701122057.19648-41-angelogioacchino.delregno@collabora.com>
-References: <20260701122057.19648-1-angelogioacchino.delregno@collabora.com>
- <20260701122057.19648-41-angelogioacchino.delregno@collabora.com>
-Message-Id: <178291581931.4116323.2079243136968676585.robh@kernel.org>
-Subject: Re: [PATCH 40/42] dt-bindings: display: mediatek: Introduce MT8196
- Image Resizer
+In-Reply-To: <20260701122008.19509-2-angelogioacchino.delregno@collabora.com>
+References: <20260701122008.19509-1-angelogioacchino.delregno@collabora.com>
+ <20260701122008.19509-2-angelogioacchino.delregno@collabora.com>
+Message-Id: <178291673047.19807.6106947084460440701.robh@kernel.org>
+Subject: Re: [PATCH 01/12] dt-bindings: phy: Document MT8195 and MT8196
+ DisplayPort PHYs
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,15 +75,21 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Wed, 01 Jul 2026 14:20:55 +0200, AngeloGioacchino Del Regno wrote:
-> Add documentation for the Image Resizer "RSZ" Scaler block found
-> in the MT8196 SoC and its variants.
+On Wed, 01 Jul 2026 14:19:57 +0200, AngeloGioacchino Del Regno wrote:
+> This adds bindings for the DisplayPort and Embedded DisplayPort
+> PHYs found in the MediaTek MT8195 SoC (and variants of) and for
+> the Embedded DisplayPort found in the MT8196 SoC (and variants).
+> 
+> This PHY supports varying impedance calibrations for the various
+> signals to reach an optimal EYE signal pattern for any specific
+> board(s), especially useful for very high bitrates such as HBR3
+> and higher, depending on board design.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../display/mediatek/mediatek,mt8196-rsz.yaml | 97 +++++++++++++++++++
->  1 file changed, 97 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-rsz.yaml
+>  .../bindings/phy/mediatek,mt8195-dp-phy.yaml  | 77 +++++++++++++++++++
+>  1 file changed, 77 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/mediatek,mt8195-dp-phy.yaml
 > 
 
 My bot found errors running 'make dt_binding_check' on your patch:
@@ -92,12 +97,12 @@ My bot found errors running 'make dt_binding_check' on your patch:
 yamllint warnings/errors:
 
 dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-rsz.yaml: ignoring, error in schema: properties: compatible
-Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-rsz.example.dtb: /example-0/scaler@329d0000: failed to match any schema with compatible: ['mediatek,mt8196-disp-rsz']
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/phy/mediatek,mt8195-dp-phy.example.dtb: phy@1c500000 (mediatek,mt8195-dp-phy): reg: [[0, 475004928], [0, 8192]] is too long
+	from schema $id: http://devicetree.org/schemas/phy/mediatek,mt8195-dp-phy.yaml
 
 doc reference errors (make refcheckdocs):
 
-See https://patchwork.kernel.org/project/devicetree/patch/20260701122057.19648-41-angelogioacchino.delregno@collabora.com
+See https://patchwork.kernel.org/project/devicetree/patch/20260701122008.19509-2-angelogioacchino.delregno@collabora.com
 
 The base for the series is generally the latest rc1. A different dependency
 should be noted in *this* patch.
