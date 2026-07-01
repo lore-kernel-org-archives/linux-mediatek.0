@@ -4,59 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64D3BC43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 12:20:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3056C44503
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 12:20:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q4Wp0dHCtsoG1frr/XIQdfLbL8oT+wFc4AqOM4AVNOY=; b=h9ED3ddADVsYelWfKAqaUrQjX7
-	iDhXN326NyKmFAnjplaBTPR8QStTuHSs5bgEfCj5HXQHRyTpjtN0D1o4qxE3gPSPrEmrVKX/NwXwE
-	EHBZuUNV6xTNGWQp+FQq60aK6jGyGyMH/e4vionD9+KnJOx0huvEp89b/tBd60GGA7X9RoZlfao3U
-	EJD1ZFWYyZAtTdwqkjMK3nRfbY4Uthh9PXF+9BDPBaPKoRgVm3DVsgu084ABeKV9DvqPPsBldhcsn
-	VxL5xoBrPO9pD4XYsaGqFY61/PNhbMDagR5AqWIDmailuRuvII56fRmtlYL2hDXsUithw5xjha7xh
-	4H7JN09Q==;
+	bh=gfPlYtfrP6GY0+5wsTGEwFao1Yb+D6ofNCleV3602Sw=; b=HzpIAORT7hqhvkghRCIfU2+6I7
+	8chTdKyeB1969qpU5Licbc5jRiDGwXEAFIG6xPhwF1pj1FFCsGIE3MkyTb7ps1kQiUgMoWnAHnG6J
+	eqdxiuGysepYWfXNK+pChlFgDZSy/HvN/B2B1xNPrJtYwJ4etQbiR/d8vcCrGBOr1E+6lrTHK1nAE
+	jMAEDXWAC+cLS6jVI7DFbp2MutpAwG6XEBRNC85NAPPo22fIAWWIsewb7V2521XlcLT4aeX3DK0QY
+	IvC3bVnSE6fMc536dhFiNn+TLm9Qys/7aGv6BHoXmnkeX+UpBcfc6VUxFnB/4kuLQYRtLqwVKtbtW
+	0vUag3+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetv6-00000001qIS-1Pho;
-	Wed, 01 Jul 2026 12:20:00 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wetv8-00000001qPm-2r85;
+	Wed, 01 Jul 2026 12:20:02 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetv5-00000001qCz-1KSn;
+	id 1wetv4-00000001q8I-0apd;
 	Wed, 01 Jul 2026 12:19:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=q4Wp0dHCtsoG1frr/XIQdfLbL8oT+wFc4AqOM4AVNOY=; b=lr+++H3k4+GEmqo8fH9riEbaus
-	LRmFB/f7uqzTvDa8jP9fDHwCqzPJp3ICiS7cAr+PIKiT/CQ+bkZfNl5DZScMctiOdge4CjqIcimo3
-	98MiVRY0thibZM1YQUzJFpEeZdVhpfn+B79uQtdAS0ySOUgu9qcUxyhmRVBv4UNUhUWFJDI0E3jHx
-	6IRPthHpxX6N9MgrrFpH2Oe4VSWzmgRtEya7Gardc2y0/ERVoeYJT4CGbiKuSie2pDeFMZqCKY1fm
-	Cnc/MwM6e/V/7Y4AGl7qxGtei5CTxLN8TtaZ95wtZp1iziy4tUxMpKwtd3Qke1d1XQdNRcvzvWHZs
-	S8Vs6O7g==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wetv0-00000002j0Y-3wTq;
-	Wed, 01 Jul 2026 12:19:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1782908393;
-	bh=1Xktl+tViKcSMcXwqlJWLud9f63zaG5zSnYbWqZ1CJY=;
+	s=mail; t=1782908396;
+	bh=QNH1iHvpfMsQ+pWPD1R8m5fZdLcwcye2yv1zfGln2d8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=dSy+ldQ+EXnqS5mp18wZ7I7kwDNBDfOKP2wrwZsIiwjFfih8IoDAARrSloZjX13TW
-	 wenuw6saMxvap6p3+L5r5PlpD7kbaCxS+zCSb2ty5YZl4ODQBS2X0Ku/w7Q2dfSyTr
-	 FCyCsXCHpfqkjMUhZ1+V4uSQTArlMknJ8yri4tL1lpjB0Novnv4GhOD23F2ZNwwPmo
-	 NjLb0cWQLgfo19cgK7AgZXbqOE79dhyIRjG1f5ZjoB5Jf4b27rZ7N4tRCOJ42tEiFZ
-	 v/u2TPqvlvLFqc49G7LsIjY22IGA7RauFTe3DmqkysnpcZQJw+86lK2IDNHzPVtX+M
-	 V8vrL9TokLlyQ==
+	b=V/ClS8ivY1drh/w9FmbWjnaaetdBufT0lQbWm06DnxGLb3C0wXbzFgC6R9iLUjJcD
+	 /eqVd7uIQ9EeHfxF0Y01XMmfXYZqLnJSxsBvIMakMz0V5+ZLEbv0vcNcTDv2svtsWt
+	 UEtMRLCbKMGVYTUxQ97bnIWztxTAOJnbu3cBW45Ezh48dJVIC78OCCW2YXwYyupLDQ
+	 XfPnt7gcMZxzaBzaN3XbaP7ccMRfuZpZauuZzKsIXKALgQcPmAB4w9gA9A6Y0yikYD
+	 Fo2tmzllDGc8ITHWXpC/55gVV/OwJBTb8K4EhRxVCyndlldwcseusFoL+CKx6T5ZQc
+	 hefF2r8crZ0GQ==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9EAA217E0CA2;
-	Wed,  1 Jul 2026 14:19:52 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 94D7617E0CD4;
+	Wed,  1 Jul 2026 14:19:55 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -79,17 +65,18 @@ Cc: p.zabel@pengutronix.de,
 	kernel@collabora.com,
 	justin.yeh@mediatek.com,
 	jason-jh.lin@mediatek.com
-Subject: [PATCH 01/10] dt-bindings: display: mediatek: dsc: Add MT8196 compatible
-Date: Wed,  1 Jul 2026 14:19:41 +0200
-Message-ID: <20260701121950.19454-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 03/10] dt-bindings: display: mediatek: dsi: Document MT8189 and MT8196
+Date: Wed,  1 Jul 2026 14:19:43 +0200
+Message-ID: <20260701121950.19454-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260701121950.19454-1-angelogioacchino.delregno@collabora.com>
 References: <20260701121950.19454-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_131955_189031_40C9AF65 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20260701_051958_330685_725AF12E 
+X-CRM114-Status: UNSURE (   8.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,31 +91,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible for the Display Stream Compression (DSC) IP found
-in the display controller of the MT8196 SoC.
-
-This IP is compatible with the one found in MT8195.
+Add compatible strings for MT8189 and MT8196 SoCs.
+These are compatible with the DSI IPs found in the MT8188/95 and
+others, but with differences making them not fully compatible.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../devicetree/bindings/display/mediatek/mediatek,dsc.yaml    | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ .../devicetree/bindings/display/mediatek/mediatek,dsi.yaml      | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
-index a5b88eb97e3b..c8b3e86943e4 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
-@@ -23,7 +23,9 @@ properties:
-       - enum:
-           - mediatek,mt8195-disp-dsc
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
+index 27ffbccc2a08..b5cdfe0eaca4 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
+@@ -30,6 +30,8 @@ properties:
+           - mediatek,mt8183-dsi
+           - mediatek,mt8186-dsi
+           - mediatek,mt8188-dsi
++          - mediatek,mt8189-dsi
++          - mediatek,mt8196-dsi
        - items:
--          - const: mediatek,mt8188-disp-dsc
-+          - enum:
-+              - mediatek,mt8188-disp-dsc
-+              - mediatek,mt8196-disp-dsc
-           - const: mediatek,mt8195-disp-dsc
- 
-   reg:
+           - enum:
+               - mediatek,mt6795-dsi
 -- 
 2.54.0
 
