@@ -4,62 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 433ACC43327
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 14:38:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88E84C43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 14:44:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DoAPIKHlQF01BQdUW983/8p5nb/vO5Fh5kJQWUG/dxQ=; b=dnV+HaSJKxVADfaT7897gw7eC3
-	qql+YCw5HhBVxG1hfV6+2tVG8AWRm6XyhaZcukhOhxcwx5pZKsXMWnD8CfiKG+yF8aBwxmduIKlMx
-	e2xYuVjEnhdqE2usX4hWeT9lijUXI8hapOJCnqa8PeyNFcDdQeDwgRSgc9La7EfjaadmTCsoktHoy
-	+BT8QGH7ZXQJ2einypx9eP6UudNBuZ8pllcrRcZ4pAhV/ERoi8eURT46y1UQ1HVTPUiSzgCy/jzkh
-	gc+AFAasj2jFOlsO0o60/PW/ga6loPLgJnHnymNjTe6R+xLuhcaxfUe70OpopctOk8klrb5yKCUOa
-	e7eYGabw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=VfQs6YbhwqfM6PYKkvxJkzuYRlp2q84IA/pI/kYb9Fs=; b=3aUNYJvZv3IhdHrg0Pfkrjve/H
+	8eG5m9oqbQhd57dNjmibJmcJKsi6CKm4t0i26nV+uHtk62giQDvCbIsdAQ2Dwk2fNkaO10sodEBx1
+	nlhrKJRbKy75xtDNBW7S0n1aLdw8CQsxie2jJMkn/Z+pz7RogJR4uzO85m9ygxqyufucfjCdTdWd1
+	+ic2R5wLNufk5uAhCSBx9vFuOmT6HN6kXDZ4Ws39awXdWVp/8/6yAq1xBZO3+i2JzDSl5g2m/X6nj
+	R514dPaVFRM2IhCNJyi9pUy/DQQocrRXxwT0h7W4dE747TLARt1gHa/NkdaZPCcO7UDYWEIVnrAM4
+	pnpyzjrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wew5U-00000002JI0-3d2f;
-	Wed, 01 Jul 2026 14:38:52 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wewB8-00000002Kzb-20D4;
+	Wed, 01 Jul 2026 14:44:42 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wew5U-00000002JHh-0D6r;
-	Wed, 01 Jul 2026 14:38:52 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7A65742E2A;
-	Wed,  1 Jul 2026 14:38:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34EC81F000E9;
-	Wed,  1 Jul 2026 14:38:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782916731;
-	bh=DoAPIKHlQF01BQdUW983/8p5nb/vO5Fh5kJQWUG/dxQ=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject;
-	b=ePjixhTP3XZgrzhZdeHkU+VCPkYuzgpl2DzTg6EuV5D7zoGrCxE0H4loNSi3lbqPB
-	 MNpNB+p5gzVEaG47iCyZ4SXEN3tuV4PQXnjqaJqWIoWDU+CZVLWoKOQAqOeyVREenz
-	 0znKSxkVXVcTPQm9s0hgMVON/QEjwg6v+AEr+0fusTrOfe/Uxlg61jXskQP/77qw5R
-	 4MD7BSMdgHs0ENBjVjyKjrkouPznJtTI3qYypogcwNTr1a+0ZAzLGizfVYHGO5NT/G
-	 mKHNPd3iTm80lkGSARlqEXZSJoWXuynP0L5f9lodG2UxDokboZhdPa57EWFTKPbzU3
-	 0jk3Ld++wS1Ww==
-Date: Wed, 01 Jul 2026 09:38:50 -0500
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1wewB5-00000002Kyv-3aig;
+	Wed, 01 Jul 2026 14:44:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1782917077;
+	bh=tZpKvDZlB9soTN2cRNYslYLJsX+eIX7hVXfQ9nGwd0A=;
+	h=From:Date:Subject:To:Cc:From;
+	b=ahvtcu2+VeacQEEnG2Z9NQn0diy7la11Hcl2KEf2sgGq/j7HRTT4rHKdXgCTfZetO
+	 ja4hjssoV/1uQNj8/yX55ylPiD5W5nOOkTf71xbEQqBb2FgVUne9If6kpJ4iWaXYeC
+	 AJNwpQD+BoSKmG3gzoyBkMQxZBuw3b1PAQhOoJkpzOj+DTbR1wyq37Xt90Br6Kf8w9
+	 ZIVKKrxf2mncfR3cg9GVV29PD7S40/g/zdpNIJ7vfevy4t0+oV71egPLCYj4cbeZNA
+	 VI/nByVlEnM6ygC3Rr1azb8cMlcqYrVD8qRtw/HXO/0Vvv+YMUzH6T190OkHareIU1
+	 860VNJn2/KtqQ==
+Received: from yukiji.home (unknown [100.64.0.131])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BD83517E010F;
+	Wed,  1 Jul 2026 16:44:36 +0200 (CEST)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Wed, 01 Jul 2026 16:44:26 +0200
+Subject: [PATCH] dt-bindings: mmc: mtk-sd: Document extra clocks for MT8189
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, conor+dt@kernel.org, 
- p.zabel@pengutronix.de, linux-mediatek@lists.infradead.org, 
- vkoul@kernel.org, chunfeng.yun@mediatek.com, linux-phy@lists.infradead.org, 
- matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, 
- kernel@collabora.com, linux-kernel@vger.kernel.org, 
- neil.armstrong@linaro.org, justin.yeh@mediatek.com, krzk+dt@kernel.org, 
- devicetree@vger.kernel.org, chunkuang.hu@kernel.org
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20260701122008.19509-2-angelogioacchino.delregno@collabora.com>
-References: <20260701122008.19509-1-angelogioacchino.delregno@collabora.com>
- <20260701122008.19509-2-angelogioacchino.delregno@collabora.com>
-Message-Id: <178291673047.19807.6106947084460440701.robh@kernel.org>
-Subject: Re: [PATCH 01/12] dt-bindings: phy: Document MT8195 and MT8196
- DisplayPort PHYs
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260701-mt8189-mmc-dt-bindings-fix-v1-1-e75f241a275b@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yWNQQ6DIBAAv0L23E3ABop+pfEgsLV7AFvAxsT49
+ xI9zhxmdiiUmQoMYodMPy68pAbqJsC/pzQTcmgMneyMfEiFsVple4zRY6joOAVOc8EXb9i87r3
+ VQTsDLfDJ1PQZf44XZ/qu7VEvCW4qhH6JkesgEm0Vz4+5SxiP4w+tXqFVnQAAAA==
+X-Change-ID: 20260701-mt8189-mmc-dt-bindings-fix-18959c85d5b6
+To: Chaotian Jing <chaotian.jing@mediatek.com>, 
+ Ulf Hansson <ulfh@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Wenbin Mei <wenbin.mei@mediatek.com>
+Cc: kernel@collabora.com, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+ linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1782917076; l=2496;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=tZpKvDZlB9soTN2cRNYslYLJsX+eIX7hVXfQ9nGwd0A=;
+ b=jpUjw2cMbJ5XQ8Hgo+osXrEb0d7+wM28LWJl7HBta3RRWAk5YSnysdJl0DTb/Q6tKUOTeYHEs
+ 8v0hP9nJkNiBkEMG/qS3JbXHVtsOMi6E/HTv6eAiPBuLkCprOb3JYiy
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260701_074440_051906_B30222D2 
+X-CRM114-Status: GOOD (  10.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,47 +92,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+MT8189 SoC MMC Controller IP has 4 additional clocks.
+Describe them in the dt-bindings for this SoC.
 
-On Wed, 01 Jul 2026 14:19:57 +0200, AngeloGioacchino Del Regno wrote:
-> This adds bindings for the DisplayPort and Embedded DisplayPort
-> PHYs found in the MediaTek MT8195 SoC (and variants of) and for
-> the Embedded DisplayPort found in the MT8196 SoC (and variants).
-> 
-> This PHY supports varying impedance calibrations for the various
-> signals to reach an optimal EYE signal pattern for any specific
-> board(s), especially useful for very high bitrates such as HBR3
-> and higher, depending on board design.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../bindings/phy/mediatek,mt8195-dp-phy.yaml  | 77 +++++++++++++++++++
->  1 file changed, 77 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/phy/mediatek,mt8195-dp-phy.yaml
-> 
+Fixes: 7514f64780a4 ("dt-bindings: mmc: mtk-sd: Add support for MT8189 SoC")
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+The patch is based on linux-next tree (tag: next-20260630) and has
+been tested on Mediatek Genio 520-EVK (MT8371) and 720-EVK (MT8391)
+boards with board hardware enablement patch series.
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Additional note:
+There is currently no use of "mediatek,mt8189-mmc" compatible in
+Mediatek board devicetrees.
+---
+ Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 29 ++++++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
 
-yamllint warnings/errors:
+diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+index eb3755bdfdf7..a4d032224dce 100644
+--- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
++++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+@@ -193,7 +193,6 @@ allOf:
+             - mediatek,mt8183-mmc
+             - mediatek,mt8186-mmc
+             - mediatek,mt8188-mmc
+-            - mediatek,mt8189-mmc
+             - mediatek,mt8195-mmc
+             - mediatek,mt8196-mmc
+             - mediatek,mt8516-mmc
+@@ -348,6 +347,34 @@ allOf:
+             - const: axi_cg
+             - const: ahb_cg
+ 
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt8189-mmc
++    then:
++      properties:
++        clocks:
++          minItems: 6
++          items:
++            - description: source clock
++            - description: HCLK which used for host
++            - description: independent source clock gate
++            - description: bus clock used for internal register access
++            - description: peripheral bus clock gate
++            - description: AXI bus clock gate
++            - description: crypto clock used for data encrypt/decrypt (optional)
++        clock-names:
++          minItems: 6
++          items:
++            - const: source
++            - const: hclk
++            - const: source_cg
++            - const: bus_clk
++            - const: pclk_cg
++            - const: axi_cg
++            - const: crypto
++
+ unevaluatedProperties: false
+ 
+ examples:
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/phy/mediatek,mt8195-dp-phy.example.dtb: phy@1c500000 (mediatek,mt8195-dp-phy): reg: [[0, 475004928], [0, 8192]] is too long
-	from schema $id: http://devicetree.org/schemas/phy/mediatek,mt8195-dp-phy.yaml
+---
+base-commit: ba7c57499e5999aeae8dd4f954eb2600589d80aa
+change-id: 20260701-mt8189-mmc-dt-bindings-fix-18959c85d5b6
 
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.kernel.org/project/devicetree/patch/20260701122008.19509-2-angelogioacchino.delregno@collabora.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+Best regards,
+-- 
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
 
