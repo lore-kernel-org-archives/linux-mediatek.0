@@ -4,65 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7E85C43458
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Jun 2026 22:59:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED992C43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 01:09:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mOQYmXoJWq6uX92/nhVniUwSxIBi5/wxJoHqcXLAVdA=; b=H5zYj2nHIg5hkUGV8Tfm74ts1B
-	oA9+1QjQNNeDqv3NbL2U/dg83aQCEo3ANM+rT2amfhYw339uM2/2mAx2XQOWE+70GsXLEI3nRdbqJ
-	65ZQjCKdJgbfWsiDab/X3sQV46vR+l83NxviQhg02z2Dv/LhBLCPSIhbztO1sio/kTbSyrPAZpC1v
-	E7z8ssWq/tdhs6hEZQD3tH4A3BECZ5nsAkX6gK6vdMxxQrBVTwsA4CqSJ72i2u4CzhH0v+ZLTeCwc
-	DGvlfVEivyU1yXWMWuwaNBfTWifkp6zXDiZqi2ahK9ZQFKeXZwi4A5LoPaI6vJMgCB5B8CX4Ke7U7
-	oDSygDGQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7HlLa5ZFr16KNcTsaTNAJ5bA9P3jnXoKjhSCLJyTnxc=; b=c3wRylVL5LleB9dJQ9C7sf4FsV
+	ApLvwGXG3rc+ERYDATNcsHCNJpaiKMBKUxxrO1e4CTNumR3cX3dkbJ3+1tvN3M0K+Tr5gQwIPqcgs
+	fRAC/lMffVKDq1ENB5fzxRcDZPMlR+Fpp8EbGflqjvM3NM+CjLYtvRQkDy9jyjB+J5m+lK+pANMtb
+	/yyY6ju7kgsLEDVhMp7fqvD9dCE0OqUFqvkBSe6skr+2nj86XlhaECPeAx3OP0J0u6h5Bimta5mar
+	NoUc/fTkH15rSwObYr+rwbZRIiTSmtyI/1iVwnzB9iO4l+DDouYs1fkKXT/HvtAVk9iorELrE+ns+
+	neR1v16Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wehQ6-00000000L6F-2b5W;
-	Tue, 30 Jun 2026 22:59:10 +0000
-Received: from smtprelay0010.hostedemail.com ([216.40.44.10] helo=relay.hostedemail.com)
+	id 1wejSM-00000000RIl-399z;
+	Wed, 01 Jul 2026 01:09:38 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wehQ1-00000000L5L-37Sh
+	id 1wejSJ-00000000RIO-3uOV
 	for linux-mediatek@lists.infradead.org;
-	Tue, 30 Jun 2026 22:59:07 +0000
-Received: from omf14.hostedemail.com (lb01a-stub [10.200.18.249])
-	by unirelay10.hostedemail.com (Postfix) with ESMTP id 1064AC077A;
-	Tue, 30 Jun 2026 22:59:02 +0000 (UTC)
-Received: from [HIDDEN] (Authenticated sender: rostedt@goodmis.org) by omf14.hostedemail.com (Postfix) with ESMTPA id 664BF30;
-	Tue, 30 Jun 2026 22:58:57 +0000 (UTC)
-Date: Tue, 30 Jun 2026 18:58:57 -0400
-From: Steven Rostedt <rostedt@goodmis.org>
-To: Bart Van Assche <bvanassche@acm.org>
-Cc: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com, sutoshd@codeaurora.org, wsd_upstream@mediatek.com,
- linux-mediatek@lists.infradead.org, chun-hung.wu@mediatek.com,
- alice.chao@mediatek.com, cc.chou@mediatek.com, chaotian.jing@mediatek.com,
- jiajie.hao@mediatek.com, yi-fan.peng@mediatek.com, qilin.tan@mediatek.com,
- lin.gui@mediatek.com, tun-yu.yu@mediatek.com, eddie.huang@mediatek.com,
- naomi.chu@mediatek.com, ed.tsai@mediatek.com, Linux Trace Kernel
- <linux-trace-kernel@vger.kernel.org>
-Subject: Re: [PATCH v2] ufs: core: add hba parameter to trace events
-Message-ID: <20260630185857.54c55d97@gandalf.local.home>
-In-Reply-To: <16f26ea9-69d6-4f2f-9adc-c576c288a2f5@acm.org>
-References: <20250213113707.955255-1-peter.wang@mediatek.com>
-	<16f26ea9-69d6-4f2f-9adc-c576c288a2f5@acm.org>
-X-Mailer: Claws Mail 3.20.0git84 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+	Wed, 01 Jul 2026 01:09:37 +0000
+X-UUID: 8441fc4674e911f1acbe4559397dec65-20260630
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=7HlLa5ZFr16KNcTsaTNAJ5bA9P3jnXoKjhSCLJyTnxc=;
+	b=WhHhqtmv87Luuo/IomRQ4VaIOfDYMINBbSYLEFT95dX71pzaUnHkvTBGLwuMootCpNMVfOtYaa7hpkCYiVlk5Z22wpfVjz7S80aikJzSWznvzq51ZpoqnLEUQc9SIi5CpjGAHRGdmomTtydDvObTajaLufw4wJ8E9DQ6V2imx2k=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.17,REQID:0497245e-f69a-40ec-a92a-2adf05b5755b,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:d497b38,CLOUDID:d188d881-6310-4e6b-a6b1-aca20d98ed8b,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 8441fc4674e911f1acbe4559397dec65-20260630
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
+	(envelope-from <eason.lai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 521301154; Tue, 30 Jun 2026 18:09:32 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Wed, 1 Jul 2026 09:09:29 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 1 Jul 2026 09:09:29 +0800
+From: Eason Lai <eason.lai@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<Yf.Luo@mediatek.com>, <kun.wu@mediatek.com>, <deren.wu@mediatek.com>,
+	<sean.wang@mediatek.com>, <quan.zhou@mediatek.com>, <ryder.lee@mediatek.com>,
+	<leon.yen@mediatek.com>, <litien.chang@mediatek.com>, <jb.tsai@mediatek.com>,
+	<eason.lai@mediatek.com>, Eason Lai <Eason.Lai@mediatek.com>
+Subject: [PATCH v6 1/1] wifi: mt76: mt792x: fix use-after-free in mt76_rx_poll_complete
+Date: Wed, 1 Jul 2026 09:06:54 +0800
+Message-ID: <20260701010654.956863-1-eason.lai@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Rspamd-Server: rspamout01
-X-Rspamd-Queue-Id: 664BF30
-X-Stat-Signature: uwehtoqqednqhf3zyo5jct5fcbfkhzr8
-X-Session-Marker: 726F737465647440676F6F646D69732E6F7267
-X-Session-ID: U2FsdGVkX1/neeUCV/R9KHhr+SS3nL47b2vY2VzQvkE=
-X-HE-Tag: 1782860337-648722
-X-HE-Meta: U2FsdGVkX19nYBCqwu9Ixhtn09ay8RBzQ10D02bQ6sj9JfNDHi+XUt/BVZ4gGAaXgyyFLsjh8lbrwf4x+RJUcsbgjLoQE+pFkRBoKhPWJonoTwg32+oRA1Y1xvdg4Em/A6mEJW5v6irtqUi3xX04bR0xjgdImMU3GChz6lRzZlbQjRZgzPmzbJRVi1MhHvAAn0d+3nM7OKrXU0ggWrQ4X3YT7vqhxODo/OFhNtsUStSPx97/RBhxC340pR2yjuNo0ObTldNO+0gp2B05+BunahPio2cMJcm0ZCt9ASPRpbaPnS2jeDiNFb8ZTLXet79cxCGTvH5+zIBllavd2ZRAM1TtlB9R5pfMugudoQQQ8tik9aTC7JvqKQ==
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260630_155905_848683_317E30D5 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20260630_180936_050847_B87353CC 
+X-CRM114-Status: GOOD (  14.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,38 +86,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 13 Feb 2025 09:19:42 -0800
-Bart Van Assche <bvanassche@acm.org> wrote:
+From: Eason Lai <Eason.Lai@mediatek.com>
 
-> On 2/13/25 3:35 AM, peter.wang@mediatek.com wrote:
-> > diff --git a/drivers/ufs/core/ufs_trace.h b/drivers/ufs/core/ufs_trace.h
-> > index 84deca2b841d..2f79982846b6 100644
-> > --- a/drivers/ufs/core/ufs_trace.h
-> > +++ b/drivers/ufs/core/ufs_trace.h
-> > @@ -83,16 +83,18 @@ UFS_CMD_TRACE_TSF_TYPES
-> >   
-> >   TRACE_EVENT(ufshcd_clk_gating,
-> >   
-> > -	TP_PROTO(const char *dev_name, int state),
-> > +	TP_PROTO(struct ufs_hba *hba, int state),
-> >   
-> > -	TP_ARGS(dev_name, state),
-> > +	TP_ARGS(hba, state),
-> >   
-> >   	TP_STRUCT__entry(
-> > -		__string(dev_name, dev_name)
-> > +		__field(struct ufs_hba *, hba)
-> > +		__string(dev_name, dev_name(hba->dev))
-> >   		__field(int, state)
-> >   	),  
-> 
-> Please reduce the size of the tracing entries by removing dev_name from 
-> TP_STRUCT__entry() and by replacing 'dev_name' with 'dev_name(hba->dev)'
-> in the TP_printk() calls.
+A use-after-free issue occurs in mt76_rx_poll_complete due to a race
+condition. The STA has already been removed, but the rx_status still
+had a pointer to the wcid in the STA.
 
-For future references, please do not recommend moving dereferences into the
-TP_printk() callers. Those happen when the event is read by the user and
-the hba pointer may no longer exist.
+Set the links' wcid pointers to be NULL for a MLD in
+mt7925_sta_pre_rcu_remove()
 
--- Steve
+BUG: KASAN: invalid-access in mt76_rx_poll_complete+0x280/0x470
+Call trace:
+dump_backtrace+0xec/0x128
+show_stack+0x18/0x28
+dump_stack_lvl+0x40/0xc8
+print_report+0x1b8/0x710
+kasan_report+0xe0/0x144
+do_bad_area+0x120/0x260
+do_tag_check_fault+0x20/0x34
+do_mem_abort+0x54/0xa8
+el1_abort+0x3c/0x5c
+el1h_64_sync_handler+0x40/0xcc
+el1h_64_sync+0x7c/0x80
+mt76_rx_poll_complete+0x280/0x470
+mt76_dma_rx_poll+0x114/0x51c
+mt792x_poll_rx+0x60/0xf8
+napi_threaded_poll_loop+0xe0/0x450
+napi_threaded_poll+0x80/0x9c
+kthread+0x11c/0x158
+ret_from_fork+0x10/0x20
+
+Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
+Signed-off-by: Eason Lai <Eason.Lai@mediatek.com>
+---
+v2: fix mt76x02 build errors
+v3: fix mt76x02 build error due to variable set but not used
+v4: fix use-after-free in MLO
+v5: correct commit message
+v6: correct commit message
+---
+ .../net/wireless/mediatek/mt76/mt7925/main.c  | 36 ++++++++++++++++++-
+ 1 file changed, 35 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index 73d3722739d0..e3fb6392eda2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -2410,6 +2410,40 @@ static void mt7925_channel_switch_rx_beacon(struct ieee80211_hw *hw,
+ 	}
+ }
+ 
++static void mt7925_sta_pre_rcu_remove(struct ieee80211_hw *hw,
++				      struct ieee80211_vif *vif,
++				      struct ieee80211_sta *sta)
++{
++	struct mt76_phy *phy = hw->priv;
++	struct mt76_dev *dev = phy->dev;
++	struct mt76_wcid *wcid = (struct mt76_wcid *)sta->drv_priv;
++
++	mutex_lock(&dev->mutex);
++	spin_lock_bh(&dev->status_lock);
++
++	if (ieee80211_vif_is_mld(vif)) {
++		struct mt792x_sta *msta = (struct mt792x_sta *)sta->drv_priv;
++		struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
++		unsigned long valid = mvif->valid_links;
++		struct mt792x_link_sta *mlink;
++		unsigned int link_id;
++
++		for_each_set_bit(link_id, &valid, IEEE80211_MLD_MAX_NUM_LINKS) {
++			mlink = mt792x_sta_to_link(msta, link_id);
++			if (!mlink || !mlink->wcid.sta)
++				continue;
++			if (mlink->wcid.idx < ARRAY_SIZE(dev->wcid))
++				rcu_assign_pointer(dev->wcid[mlink->wcid.idx],
++						   NULL);
++		}
++	} else {
++		rcu_assign_pointer(dev->wcid[wcid->idx], NULL);
++	}
++
++	spin_unlock_bh(&dev->status_lock);
++	mutex_unlock(&dev->mutex);
++}
++
+ const struct ieee80211_ops mt7925_ops = {
+ 	.tx = mt792x_tx,
+ 	.start = mt7925_start,
+@@ -2422,7 +2456,7 @@ const struct ieee80211_ops mt7925_ops = {
+ 	.start_ap = mt7925_start_ap,
+ 	.stop_ap = mt7925_stop_ap,
+ 	.sta_state = mt76_sta_state,
+-	.sta_pre_rcu_remove = mt76_sta_pre_rcu_remove,
++	.sta_pre_rcu_remove = mt7925_sta_pre_rcu_remove,
+ 	.set_key = mt7925_set_key,
+ 	.sta_set_decap_offload = mt7925_sta_set_decap_offload,
+ #if IS_ENABLED(CONFIG_IPV6)
+-- 
+2.45.2
+
 
