@@ -4,80 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9259C43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 11:02:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 269BAC43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 12:14:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oxk6ktef0CtcpkX9OEzR0N5hQPdE1diNEHXY7SV+68M=; b=DpZKJ4fQrXD+c07fztXpomb9ZP
-	HwcbQFrM9kyvxFR6Pxs7A/4e8zs+lGoetcsbtQK3YHZlV6VGdNuT/cZChbar3dwZaLgnzGWks/5Y6
-	uZtqS76ceufH46SvA4fbHRE1Rz5aHB0xMhY2lPB5k9wjUo360WX7D7qw3DovWpoijr/myPk2zfFW6
-	pk4etqDJCswxNYHV2+mGNhgFVeL4BcEts1Q+A5Lp6G2WXLZzQEExGjevYFDXhC/0U1W4gnMnBqzsD
-	dH2ZLVeivw4fSQpuzTr9Xd/MHDLKeRtoAsTOFu2oLC8n+lwnDBpn0qMT9pKE06qBTVPYO8oMXeI44
-	1wDchp8g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=sPC+uU4dZUPOEqH7jbkr5hTk4ommvFMEylVFhp/9i2w=; b=utXxkrhKwVMrAukKc22xEire5I
+	aBvyxJ7IdDLMwVb8xR9pSUw7K7TsIy8wWqjVzwbR7JfSd9UjoSQMWQKBHkTeHU5DgoS8HB/lnMFx+
+	vUFvAPfgXzflXsdNe9IRZdpLcWmDYIMfR5vQqG6ju/B6stS7yZXPQPhwabehsN3MlGhsV6iKuzPJ1
+	Svb/lt4turh5QqnCAb7Ai80L8teDXXiNe4cxhAJRvk102BktNM/OiANHfaEhDohvmTIAT6+/lDxYQ
+	bG84aIrBfRkH4FopO5QsUlCER7WS/YBxCxrCEPVvy+Z5uM/U19kMW+bHE/CrA2BXFtE/iuYV55OoY
+	o19v9+7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wesiP-00000001PDE-3FAH;
-	Wed, 01 Jul 2026 11:02:49 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wetpG-00000001oNt-2tts;
+	Wed, 01 Jul 2026 12:13:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wesiN-00000001PBb-2Zav;
-	Wed, 01 Jul 2026 11:02:47 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1B2BC43D50;
-	Wed,  1 Jul 2026 11:02:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D49A11F000E9;
-	Wed,  1 Jul 2026 11:02:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782903767;
-	bh=oxk6ktef0CtcpkX9OEzR0N5hQPdE1diNEHXY7SV+68M=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=ZmsE07005kHFibUaDJe2OI9QNMYtKgqf1WfHojOhD7o26Xa+oTaVbH6eX05ziEa1O
-	 n2xljvNPURuy7LXvvkpCHeB7TJMme35Qshby2Q5AsEOiA6OniMFRNIRCiObUoPBbTK
-	 RDuN8kR0iRAvh31abrFdzu84vQjQ+syLk4uTCZ7ckV7BEwXYX58yP0mhEgUu+mKk4X
-	 UP1i42NIxEUENCV0cymC/LTkZ2oBnPOb5h1ri02USnK1EKODRajZW5wZ6Dbz477sRI
-	 i0iqgzyE6PlS3AXHhQDvbwgJ8mpzEhWByERnQb6zj0ZEckXucYFgEYZEMMqxiF7Flo
-	 Y4SminheQF4WQ==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, 
- Woodrow Douglass <wdouglass@carnegierobotics.com>, 
- Michael Hennerich <michael.hennerich@analog.com>, 
- Support Opensource <support.opensource@diasemi.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Ivaylo Ivanov <ivo.ivanov.ivanov1@gmail.com>, 
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
- Andrei Simion <andrei.simion@microchip.com>, 
- Saravanan Sekar <sravanhome@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Jagan Teki <jagan@amarulasolutions.com>, Icenowy Zheng <icenowy@aosc.io>, 
- Alexis Czezar Torreno <alexisczezar.torreno@analog.com>, 
- =?utf-8?q?Uwe_Kleine-K=C3=B6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <cover.1782827697.git.u.kleine-koenig@baylibre.com>
-References: <cover.1782827697.git.u.kleine-koenig@baylibre.com>
-Subject: Re: [PATCH v4 0/3] regulator: Rework i2c_device_id initialisation
-Message-Id: <178285924112.12243.6143940055220497340.b4-ty@b4>
-Date: Tue, 30 Jun 2026 23:40:41 +0100
+	id 1wetpD-00000001oNS-38TA
+	for linux-mediatek@lists.infradead.org;
+	Wed, 01 Jul 2026 12:13:57 +0000
+X-UUID: 51688512754611f1acbe4559397dec65-20260701
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=sPC+uU4dZUPOEqH7jbkr5hTk4ommvFMEylVFhp/9i2w=;
+	b=oRp4qbKRK8JsR7pkBl9hCo9ZarxGiITyw3Co7OoSPsoTybXpygEAFUAS1gjur0vugUio/0YOWGng2WEDrjZZAHC8VXHCunn7KMSYLsPdELeCHB8s3IzOjJ5JB0byBL058bgLabq8h1WFdRwrXh7DrbYUynUYttUl283m8whBCxk=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.17,REQID:125b0532-e3c4-46f3-9fde-9f9fd6a6eabf,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:d497b38,CLOUDID:6db09c14-ea64-44d4-98db-4e1fb89955a3,B
+	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|50|
+	99|100|102|156|200|213,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,B
+	EC:-1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 51688512754611f1acbe4559397dec65-20260701
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1069073473; Wed, 01 Jul 2026 05:13:49 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Wed, 1 Jul 2026 20:13:47 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 1 Jul 2026 20:13:47 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
+	SS Wu <ss.wu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>,
+	linux-bluetooth <linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Paul Menzel <pmenzel@molgen.mpg.de>,
+	Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH v7 0/3] Bluetooth: btmtk: Add MT7928 support
+Date: Wed, 1 Jul 2026 20:13:42 +0800
+Message-ID: <20260701121345.1231906-1-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.16-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1522; i=broonie@kernel.org;
- h=from:subject:message-id; bh=Se8qvSnLyHP7PFMUp7FvEWErFUDObH56rpra7K5A4IU=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqRPPSkuOjyGJnC2onBkCSeSpvaMwcJclIilDAU
- MSbZC7ZbL+JATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCakTz0gAKCRAk1otyXVSH
- 0NWXB/9W0gSges1rte4PrGSwpKauYIdmOSbe2NOTmDKfZmGK8VTaOVGe55uBVK9mCwNJxUP/RVi
- KNLawM9pdiX8G373DtyTrGM9+5xwydpWx2thMXS01Ty+f0XyVp2U8R8psHLxbtw7dwcw33fw1rL
- b8gGXUuGZshCQAPwS1C7x+EH1h9ckZGtzKPBsIjFs8ltK8dic/cNGblxTZ1J1hBhP4oKzEqBWwO
- CQuLQtr8lhoEkWBmOjFfGk496jB6K0DrDPK0hk1Qy4NqBJbNV0d2oadZpdTUfUQio+rAqekfhLh
- ZFrquoKSgTUbdh+OQD3aJ2tDR6tkLs3QFYUzLIgv4mMvzAs0
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260701_051355_798696_0A6938CB 
+X-CRM114-Status: GOOD (  12.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,46 +88,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 30 Jun 2026 16:01:06 +0200, Uwe Kleine-König (The Capable Hub) wrote:
-> regulator: Rework i2c_device_id initialisation
-> 
-> Hello,
-> 
-> changes since v2
-> (https://lore.kernel.org/lkml/cover.1781888370.git.u.kleine-koenig@baylibre.com):
-> 
-> [...]
+This patch series adds support for MT7928 (device ID 0x7935) to the
+btmtk driver, which requires a new two-stage firmware loading process
+with CBMCU firmware.
 
-Applied to
+Patch 1 refactors existing firmware download code by replacing magic
+numbers with a descriptive BTMTK_WMT_PKT_* enum, making the packet
+sequencing logic clearer.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-7.3
+Patch 2 improves BT firmware logging to provide more useful information
+for debugging: adds firmware filename before loading and displays chip ID
+as HW version instead of firmware's hwver field.
 
-Thanks!
+Patch 3 implements MT7928 firmware download flow, which requires loading
+CBMCU firmware before Bluetooth firmware. The CBMCU firmware uses a
+two-phase download sequence: Phase 1 downloads the section containing
+global descriptor and signature data, Phase 2 downloads the remaining
+firmware sections. After CBMCU firmware completes, the driver continues
+to load the Bluetooth firmware following the standard flow.
 
-[1/3] regulator: Drop unused i2c driver data
-      https://git.kernel.org/broonie/regulator/c/3ac69e3cb288
-[2/3] regulator: Use named initializers for arrays of i2c_device_data
-      https://git.kernel.org/broonie/regulator/c/8e74b2db5867
-[3/3] regulator: Improve style of i2c_device_id arrays
-      https://git.kernel.org/broonie/regulator/c/2924fa8381ee
+Tested on MT7928 hardware with successful firmware loading and
+Bluetooth functionality verification.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+Changes in v7:
+- Patch 1: Extend magic number refactoring to btmtk_setup_firmware()
+  in addition to btmtk_setup_firmware_79xx() for consistency across
+  the driver
+- Patch 2: Fix potential buffer over-read by using %.16s format
+  specifier for hdr->datetime which is a 16-byte array that may not
+  be null-terminated
+- Patch 3: Apply same %.16s fix to CBMCU firmware logging to prevent
+  reading beyond array boundary
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+Changes in v6:
+- Fix timeout handling in btmtk_cbmcu_patch_status() to return -ETIMEDOUT
+  instead of success when polling exhausts retry count, preventing silent
+  timeout that could bypass concurrent download protection
+- Add integer overflow protection in btmtk_load_cbmcu_firmware() using
+  check_mul_overflow() and check_add_overflow() to prevent malicious
+  firmware with large section_num from bypassing size validation through
+  32-bit arithmetic wraparound on 32-bit architectures
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+Changes in v5:
+- Split into three patches: refactoring, logging improvement, and
+  new feature
+- Add Patch 2 to improve BT firmware logging independently
+  * Add firmware filename before loading
+  * Display chip ID (dev_id) as HW version
+  * Use clearer log format with separate HW/SW version fields
+- Apply same logging improvements to CBMCU firmware in Patch 3
+- Better separation of concerns for easier review
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+Changes in v4:
+- Split into two patches: refactoring and new feature
+- Add BTMTK_WMT_PKT_* enum to improve code readability
+- Replace magic numbers (0xF0, 0xF1) with descriptive macros
+- Define MTK_SEC_CBMCU_DESC macro for section type
+- Add MT7928 marketing name comment
+- Include firmware filename in error messages
+- Add detailed size information in firmware validation errors
+- Use BTMTK_WMT_PKT_* enum in CBMCU download function
 
-Thanks,
-Mark
+Changes in v3:
+- Add firmware size validation with bounds checking
+- Improve error messages with context information
+- Add section offset validation for both phases
+
+Changes in v2:
+- Simplified enum usage by consolidating status definitions
+- Improved code maintainability
+
+Chris Lu (3):
+  Bluetooth: btmtk: Replace magic numbers with WMT packet flag enum
+  Bluetooth: btmtk: Improve BT firmware logging
+  Bluetooth: btmtk: Add MT7928 support
+
+ drivers/bluetooth/btmtk.c | 388 +++++++++++++++++++++++++++++++++++++-
+ drivers/bluetooth/btmtk.h |   9 +
+ 2 files changed, 388 insertions(+), 9 deletions(-)
+
+--
+2.45.2
 
 
