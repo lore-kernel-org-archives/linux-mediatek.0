@@ -4,65 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72907C43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 18:29:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38DD8C43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 19:33:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oouf/dK+KVCQpIL5LxKtT/u/Z+E2ntQeaZfCAiSQ8EI=; b=flfrozjSrmKDnW5at4EimYk1WC
-	hjgYdVCFlL33fTZxa4U3ZhLduDpYfBR5+BnXIAKo+SUHoe9ee42je+U3P3ispV8O4XNWoDLCNCGMQ
-	/uXPC/XbKdMzKcB/HlUutHXPSQNHTTS5fMlZtImRLBYay2hOAjTJlfRGXm7VLjAwWCdu5UdBy/6X7
-	VMoFLiq/VOc04RU4ZJ2Vs0YQjCoEuKvVfxKZ1q0Fkzs6/4BX5S1o0iUNLPXZGRqDlAOouSd4KCfRw
-	E+QBW1hswwm9zMyLlthblOgE9tvDsfM+Mdsy2Igw1//sK7C55e/XhCFGJhVsfVmRLUngudDoWhj7u
-	ZhldJsUg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=y4PTITJeaNIkozE3meEc+/LOStBuvpZ1F0k6rTLYgIc=; b=YCW1aT+sH49BTs3iuakGZUiXrj
+	ibbyqz4KKoS0fYMS4nJAPcoD48rer0j1hxBtnsfRFnNQ8d7DW3GkMHrhIHK8xr0ZghJ09yDsnPV5Y
+	Loip13TeGDbzkiy97ve7jvoklazrVAkP+W04eDq+Roce+RYmVHbQIkUQiWlfRtcr+vKM5O3fCDDVd
+	DighqjYFRWJZZ7M4Nkjp2NlF/1GtH3PmKU9ylaqMIJmDHfrFqWiU89q47o46/8X4Di4GUc2GOakFl
+	pQO05FgnZAmMzd7f2z6319rTzszAa0GDxWqd/YdbmSxmv8zVOX3+tnIWeweoqGeqFAesdjTvveU0X
+	Vh1NB9+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wezgq-00000002pRn-0VEn;
-	Wed, 01 Jul 2026 18:29:40 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wf0gN-00000002u8l-2sfB;
+	Wed, 01 Jul 2026 19:33:15 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wezgo-00000002pRO-08mI;
-	Wed, 01 Jul 2026 18:29:38 +0000
+	id 1wf0gL-00000002u8J-1Vdp;
+	Wed, 01 Jul 2026 19:33:13 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0850B60138;
-	Wed,  1 Jul 2026 18:29:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF5FC1F00A3A;
-	Wed,  1 Jul 2026 18:29:34 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 20DB3436BF;
+	Wed,  1 Jul 2026 19:33:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB78F1F00ACF;
+	Wed,  1 Jul 2026 19:33:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782930576;
-	bh=oouf/dK+KVCQpIL5LxKtT/u/Z+E2ntQeaZfCAiSQ8EI=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=VYkvCZduhCdySp7hXHzjgXIR7cuZyFtTKEveIl7wuCR8Uisy6nUQ0D+18L8KPP+Bm
-	 zXy9qWlA79l62K19CEV7oach/0mgqjWFY5fsiZvmgWYdgbgXOpp70LjBpYVgrVwLWM
-	 xoFCuzGmJrzEZrLYaA7W1wDnuKGHjOhhNEQsCm2p13YJxXEfjAX6YX0WmJrMJCRcrD
-	 oibjmbB9SkkXkicl9IysYY72s5H06OzlgTjHIN5cNXjm1rYcWw3LlsaGBlNWV80DTi
-	 sryYFJjyD/9wGMdnMIu4I1PwQJpjvPi+mYiU4TZeESzGnV2G19Stgtdz/mpADJuvmh
-	 qYd75WqKxmwHA==
-Date: Wed, 1 Jul 2026 19:29:31 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: David Lechner <dlechner@baylibre.com>
-Cc: rva333@protonmail.com, Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy
- Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Lee Jones <lee@kernel.org>,
- linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Ben Grisdale <bengris32@protonmail.ch>,
- Conor Dooley <conor.dooley@microchip.com>, Andy Shevchenko
- <andriy.shevchenko@intel.com>
-Subject: Re: [PATCH v4 0/4] AUXADC driver for the MediaTek mt6323 PMIC
-Message-ID: <20260701192931.1be293bd@jic23-huawei>
-In-Reply-To: <3f914030-44e8-4f63-ae72-7fde7d843325@baylibre.com>
-References: <20260623-mt6323-adc-v4-0-299680ad3194@protonmail.com>
-	<3f914030-44e8-4f63-ae72-7fde7d843325@baylibre.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+	s=k20260515; t=1782934393;
+	bh=y4PTITJeaNIkozE3meEc+/LOStBuvpZ1F0k6rTLYgIc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=MhLYFGI/EzKuP0AVdYS4aO1EMqKxNLXd2UtHw+U00joiFOhrJAEyjvIl0cvJ6T6Qg
+	 fW5ng+J7F6CL6oYjPneYixOL0SNKMctoP/Q2wnskcH0qzocOhKL93CfIH1NJlFQvaI
+	 E9Mfg4QqkMhtKDhW2CxtmLPxDJQvJ19SOn5+5NJUZ4xgajSqShtMk2Q40EUfwf2CGi
+	 jeOK6uIld3FhNMt6Az2A5lj0hPSwl0M0Fpti4OPF49D9Nyq9bPYBXBvUmEeZoz2sF6
+	 lgHBrjryZeYyqieAhnFf60lYg8NPtmjrFnD66oSKqaK6hF0Y+GgiBlCF3EsUG7zL2M
+	 ekVorbgfO2pMg==
+Date: Wed, 1 Jul 2026 14:33:11 -0500
+From: Rob Herring <robh@kernel.org>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Edward-JW Yang <edward-jw.yang@mediatek.com>,
+	Richard Cochran <richardcochran@gmail.com>, kernel@collabora.com,
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH 02/15] dt-bindings: clock: mediatek: regroup MT8188
+ dt-bindings into MT8186
+Message-ID: <20260701193311.GA1402559-robh@kernel.org>
+References: <20260701-mt8189-clocks-system-base-v1-0-2b048feea50a@collabora.com>
+ <20260701-mt8189-clocks-system-base-v1-2-2b048feea50a@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260701-mt8189-clocks-system-base-v1-2-2b048feea50a@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,35 +80,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 28 Jun 2026 12:34:20 -0500
-David Lechner <dlechner@baylibre.com> wrote:
-
-> On 6/23/26 3:16 AM, Roman Vivchar via B4 Relay wrote:
-> > This series adds support for the 15-bit AUXADC hardware block found on
-> > the MediaTek mt6323 PMIC.
-> > 
-> > The previous version of the series for all AUXADC, EFUSE and thermal
-> > drivers was split after Krzysztof's comment [1].
-> > 
-> > Tested on the MediaTek mt6572 and mt8163 SoCs (Ben), both paired with a
-> > mt6323.
-> > 
-> > [1]: https://lore.kernel.org/linux-mediatek/20260504-mt6323-v1-0-799b58b355ff@protonmail.com/T/#med30fad67a090be35f549231336b2dec295233f6
-> > 
-> > Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
-> > Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-> > ---  
-> Reviewed-by: David Lechner <dlechner@baylibre.com>
+On Wed, Jul 01, 2026 at 03:11:07PM +0200, Louis-Alexis Eyraud wrote:
+> Regroup the MT8188 clock and system clock dt-bindings into MT8186 ones
+> to ease maintainability and have common files for several currently
+> supported SoC or new future ones, that have the same kind of clock
+> controller design.
 > 
+> Note:
+> The `#clock-cells` property is a required property for all compatibles
+> declared in MT8188 clock and system clock dt-bindings but not in MT8186
+> ones.
+> To avoid ABI breakage, conditional blocks to check this requirement
+> for MT8188 compatibles are added, rather than enforcing it for MT8186
+> compatibles.
 
-Applied patch 1 - with some hand editing due to another change
-to that binding, and patch 2 to the testing branch of iio.git
-which I'll push out as togreg once the bots have given it a clean
-bill of health.
+If the existing DTs are just wrong, then I would just make #clock-cells 
+required. But please update the .dts files so the warnings don't grow.
 
-I'm assuming 3 will go via mfd and 4 via the soc tree.
+The grouping I would do here is:
 
-Thanks,
+- clock controller only
+- reset controller only
+- both clock and reset controller
 
-Jonathan
+That should avoid any if/then schemas.
+
+Rob
 
