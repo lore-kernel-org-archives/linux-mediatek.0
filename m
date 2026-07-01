@@ -4,80 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88E84C43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 14:44:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 404AFC43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 15:14:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VfQs6YbhwqfM6PYKkvxJkzuYRlp2q84IA/pI/kYb9Fs=; b=3aUNYJvZv3IhdHrg0Pfkrjve/H
-	8eG5m9oqbQhd57dNjmibJmcJKsi6CKm4t0i26nV+uHtk62giQDvCbIsdAQ2Dwk2fNkaO10sodEBx1
-	nlhrKJRbKy75xtDNBW7S0n1aLdw8CQsxie2jJMkn/Z+pz7RogJR4uzO85m9ygxqyufucfjCdTdWd1
-	+ic2R5wLNufk5uAhCSBx9vFuOmT6HN6kXDZ4Ws39awXdWVp/8/6yAq1xBZO3+i2JzDSl5g2m/X6nj
-	R514dPaVFRM2IhCNJyi9pUy/DQQocrRXxwT0h7W4dE747TLARt1gHa/NkdaZPCcO7UDYWEIVnrAM4
-	pnpyzjrQ==;
+	bh=S/D01f1lxznSla805qWXMa0NsEd+89/1YqBpgfP7e7c=; b=xqWQQ/HitA++ywNyH7qLzZqFOh
+	/PbEKKywVeKJdvj1jLqGoY9Ag0Edxax5AhBgx0dHrs0+OpIuedz6D2STiRnMolit6g/x9+y36M9Wr
+	BiXVGmoG7uFYhbYuMCjRYqHuep1JGRWDOkzx7lTLKygRpyxe5j8pcV76tdCPoyTBpBD7qDUVhQX0U
+	Jw9nq/HLIsIrMEAAS2HgvSEIxb5rkB7kD3I4RHgiwIsNxGiOkjOrmYrZXryN6QiN4+Xq9imQFLtGD
+	zTRmNKCoVreNKxQNpoWsnFDkOE20wiYp7aNY/Ixwnb8NHIl2bNNLATBuK6F+bu6DtToDd7Cl3UJ7o
+	ZEBXc9iA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wewB8-00000002Kzb-20D4;
-	Wed, 01 Jul 2026 14:44:42 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wewdv-00000002NYs-0oSi;
+	Wed, 01 Jul 2026 15:14:27 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wewB5-00000002Kyv-3aig;
-	Wed, 01 Jul 2026 14:44:41 +0000
+	id 1wewds-00000002NXX-1rIq;
+	Wed, 01 Jul 2026 15:14:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1782917077;
-	bh=tZpKvDZlB9soTN2cRNYslYLJsX+eIX7hVXfQ9nGwd0A=;
+	s=mail; t=1782918861;
+	bh=RtmejQkvm77nZpvuKQD7/tDw888Rv3+bfUSpMvP01H4=;
 	h=From:Date:Subject:To:Cc:From;
-	b=ahvtcu2+VeacQEEnG2Z9NQn0diy7la11Hcl2KEf2sgGq/j7HRTT4rHKdXgCTfZetO
-	 ja4hjssoV/1uQNj8/yX55ylPiD5W5nOOkTf71xbEQqBb2FgVUne9If6kpJ4iWaXYeC
-	 AJNwpQD+BoSKmG3gzoyBkMQxZBuw3b1PAQhOoJkpzOj+DTbR1wyq37Xt90Br6Kf8w9
-	 ZIVKKrxf2mncfR3cg9GVV29PD7S40/g/zdpNIJ7vfevy4t0+oV71egPLCYj4cbeZNA
-	 VI/nByVlEnM6ygC3Rr1azb8cMlcqYrVD8qRtw/HXO/0Vvv+YMUzH6T190OkHareIU1
-	 860VNJn2/KtqQ==
+	b=mAYEfh87h39cWihtQLd4t5D0dkhlKEiPSZvVZWkm8e9+C6YKdLg9ifNsNNp/7I5GY
+	 rIuvr3tIZGjtM7P/pSn695/T8bLMZskI84dri9DUKh7jDIFbGiY2rdhpsUsWlUnvKF
+	 UbPhsuGswyrpKaBbnWQeQc/QqYed5VVxZFkVteck5qtQSEYES2yj8xwgFhK+qZIYhr
+	 F1kz2ioysxxnleMfu7sAiuzyFnZ3xAfFh3lG+7yzQgNqvlaVDEln/aevogxGw69O6G
+	 17Xnc6kSnKiil0KiTEnccsT+njtH+5KhEnM4VAMrAWqTPc7wUbVnbeBvP/Hv615BAs
+	 SobxzqKJHx2Vw==
 Received: from yukiji.home (unknown [100.64.0.131])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BD83517E010F;
-	Wed,  1 Jul 2026 16:44:36 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0596C17E0432;
+	Wed,  1 Jul 2026 17:14:20 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Wed, 01 Jul 2026 16:44:26 +0200
-Subject: [PATCH] dt-bindings: mmc: mtk-sd: Document extra clocks for MT8189
+Date: Wed, 01 Jul 2026 17:14:06 +0200
+Subject: [PATCH] dt-bindings: mfd: mediatek,mt8195-scpsys: Add support for
+ MT8189 SoC
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260701-mt8189-mmc-dt-bindings-fix-v1-1-e75f241a275b@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yWNQQ6DIBAAv0L23E3ABop+pfEgsLV7AFvAxsT49
- xI9zhxmdiiUmQoMYodMPy68pAbqJsC/pzQTcmgMneyMfEiFsVple4zRY6joOAVOc8EXb9i87r3
- VQTsDLfDJ1PQZf44XZ/qu7VEvCW4qhH6JkesgEm0Vz4+5SxiP4w+tXqFVnQAAAA==
-X-Change-ID: 20260701-mt8189-mmc-dt-bindings-fix-18959c85d5b6
-To: Chaotian Jing <chaotian.jing@mediatek.com>, 
- Ulf Hansson <ulfh@kernel.org>, Rob Herring <robh@kernel.org>, 
+Message-Id: <20260701-mt8189-dt-bindings-scpsys-v1-1-2c04f0fda1b7@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yWNQQ6CMBBFr0Jm7SRtjRW4imFR2hFn0YKdajCEu
+ 9vA8v3kv7eBUGYS6JsNMn1ZeE4V9KUB/3JpIuRQGYwyVt2Vxlha3XYYCo6cAqdJUPwiP0GlfWe
+ 1ct7fDNT/kunJ6+F+DCdnen9qopwjjE4I/Rwjl75JtBY8MvaqYNj3PzO62gOcAAAA
+X-Change-ID: 20260701-mt8189-dt-bindings-scpsys-01c9610acc52
+To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Wenbin Mei <wenbin.mei@mediatek.com>
-Cc: kernel@collabora.com, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
- linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1782917076; l=2496;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1782918860; l=1288;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=tZpKvDZlB9soTN2cRNYslYLJsX+eIX7hVXfQ9nGwd0A=;
- b=jpUjw2cMbJ5XQ8Hgo+osXrEb0d7+wM28LWJl7HBta3RRWAk5YSnysdJl0DTb/Q6tKUOTeYHEs
- 8v0hP9nJkNiBkEMG/qS3JbXHVtsOMi6E/HTv6eAiPBuLkCprOb3JYiy
+ bh=RtmejQkvm77nZpvuKQD7/tDw888Rv3+bfUSpMvP01H4=;
+ b=iaoJytQ5vltimAwnK0uYMl0TOHTHipFnUZtH8mPRD7vkkzeBXWB4ZnjSEd3CEDggAodHHZ96F
+ XyR6eIIUbrpCh+xO1SsD2gRuM2GeQMyHEdeIrTcvbsLEiGNwYP72Ye7
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_074440_051906_B30222D2 
-X-CRM114-Status: GOOD (  10.26  )
+X-CRM114-CacheID: sfid-20260701_081424_645683_17AD50F9 
+X-CRM114-Status: GOOD (  10.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,74 +89,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8189 SoC MMC Controller IP has 4 additional clocks.
-Describe them in the dt-bindings for this SoC.
+Add a compatible string for the scpsys block found in the MediaTek
+MT8189 SoC.
 
-Fixes: 7514f64780a4 ("dt-bindings: mmc: mtk-sd: Add support for MT8189 SoC")
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
 The patch is based on linux-next tree (tag: next-20260630) and has
 been tested on Mediatek Genio 520-EVK (MT8371) and 720-EVK (MT8391)
 boards with board hardware enablement patch series.
-
-Additional note:
-There is currently no use of "mediatek,mt8189-mmc" compatible in
-Mediatek board devicetrees.
 ---
- Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 29 ++++++++++++++++++++++-
- 1 file changed, 28 insertions(+), 1 deletion(-)
+ Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-index eb3755bdfdf7..a4d032224dce 100644
---- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-+++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-@@ -193,7 +193,6 @@ allOf:
-             - mediatek,mt8183-mmc
-             - mediatek,mt8186-mmc
-             - mediatek,mt8188-mmc
--            - mediatek,mt8189-mmc
-             - mediatek,mt8195-mmc
-             - mediatek,mt8196-mmc
-             - mediatek,mt8516-mmc
-@@ -348,6 +347,34 @@ allOf:
-             - const: axi_cg
-             - const: ahb_cg
- 
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: mediatek,mt8189-mmc
-+    then:
-+      properties:
-+        clocks:
-+          minItems: 6
-+          items:
-+            - description: source clock
-+            - description: HCLK which used for host
-+            - description: independent source clock gate
-+            - description: bus clock used for internal register access
-+            - description: peripheral bus clock gate
-+            - description: AXI bus clock gate
-+            - description: crypto clock used for data encrypt/decrypt (optional)
-+        clock-names:
-+          minItems: 6
-+          items:
-+            - const: source
-+            - const: hclk
-+            - const: source_cg
-+            - const: bus_clk
-+            - const: pclk_cg
-+            - const: axi_cg
-+            - const: crypto
-+
- unevaluatedProperties: false
- 
- examples:
+diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
+index 4cafa381979b..9f073d0c28ef 100644
+--- a/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
++++ b/Documentation/devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml
+@@ -26,6 +26,7 @@ properties:
+           - mediatek,mt8183-scpsys
+           - mediatek,mt8186-scpsys
+           - mediatek,mt8188-scpsys
++          - mediatek,mt8189-scpsys
+           - mediatek,mt8192-scpsys
+           - mediatek,mt8195-scpsys
+           - mediatek,mt8365-scpsys
 
 ---
 base-commit: ba7c57499e5999aeae8dd4f954eb2600589d80aa
-change-id: 20260701-mt8189-mmc-dt-bindings-fix-18959c85d5b6
+change-id: 20260701-mt8189-dt-bindings-scpsys-01c9610acc52
 
 Best regards,
 -- 
