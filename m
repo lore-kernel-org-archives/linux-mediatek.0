@@ -4,59 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2423C43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 20:07:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FAE8C43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 20:49:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=PmqtZ9UynrtR3FXqygucaN5FcrVeXQgED/Jne2Xy9pA=; b=csr4D8OhvlA9S02zSBN6KItMw9
-	UsnCdk28JPXJejBVd5k2BgRbm7fuC99Tqi68vzXNmnnqtxfZFmLVTpyF1YGElqTJeHlb7TKWejink
-	O4RKIqsH28Kdv8J8RD8hBkKOgnzTR5EIDjkx44tdrgAt8H3Ue+C3NdheLHTs2iLw8ur/0/iq3DOdp
-	F5nqFJ9MNUc2zr34HFkjW/QlMFN6nlxmNLdjSF+7BFXb3rDJ/J3JzA72DyW0KDKVP/i18/zNZwTnR
-	0nRviBKVk5a8T8A298SBGQr8+ao4yPgYB5arS1DN6BKO8LiwDO4HoTQU5NG4rMQ0x9Bg9e76xhIYW
-	ZZm2TyNw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0OI9r+oDLNMoCCNp+jvgl6P08jRKSfU7E7aeuxBZlOQ=; b=W4ezwV5zFzesKBJerxUUgLmZRc
+	2uHFwtu3eRbpphV+7sqJ263995z9TIt1NL4kWyLWm7qnC8zI6dUeExrJUrHnHIxd2uFWs3vOjGI7u
+	7YZLM1vJIAmtsVsH2sViZhsVlev+wD+VoZemCWMV2s8CQ90/OvwmtpLZWPfVwKm2OgtnmkyP45vh4
+	f4WuDVutmZoTrVIZy0NZbIWci4KO6xDZ4fcXdZuzJnk3KdEJCSsqpxS275L84+ErC+UvMP3FsiNL8
+	VBbarJY966tjGkjOQvNGiNmxxKJoR37xdAsb7lCfhBOA8c1RX/J13lvDxUdWUQD0on4YVmtMhE4C+
+	nWM6w1hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wf1DD-00000002wg7-1ue8;
-	Wed, 01 Jul 2026 20:07:11 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wf1ru-0000000301u-3F0U;
+	Wed, 01 Jul 2026 20:49:14 +0000
+Received: from mo4-p02-ob.smtp.rzone.de ([85.215.255.81])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wf1DB-00000002wfu-21be;
-	Wed, 01 Jul 2026 20:07:09 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id CD73D6001D;
-	Wed,  1 Jul 2026 20:07:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D6D41F000E9;
-	Wed,  1 Jul 2026 20:07:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782936428;
-	bh=PmqtZ9UynrtR3FXqygucaN5FcrVeXQgED/Jne2Xy9pA=;
-	h=From:To:Cc:Subject:Date;
-	b=LdmtY/jv28LGUzbuMjalCIUQ4PD/AlaW3wUQLb4XEM13SYZxh/h6ReC3bry7jri/D
-	 8pDQkW3eo+CkS/UMSg2+tw0tYzVC0IPvorWqr4pObAn/4rryizJCg+8QR9rZVfo9Tx
-	 fW1A4biWSxn4vjHron24xbvORJ9TKpjqg55tKQA0KIJHDX9Yv3x03md5mj7E1viDBU
-	 os3h6erWjpCrB4r19hFCoUWn0FVDp8pOuyOIPv/8Gk+QqAR14ncd5SK4IKITxIfO91
-	 MHLY8n9VsOulwCUNq017PicsxlBtWkN/8kNBfI3Du3CRvnxQ2C+WLsgLYK1DepXaIK
-	 59XxFzIHR8lgA==
-From: Vladimir Zapolskiy <vz@kernel.org>
-To: Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Frank Li <Frank.Li@kernel.org>
-Cc: Long Cheng <long.cheng@mediatek.com>,
-	dmaengine@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] dmaengine: mediatek: mtk-uart-apdma: Return -ENOMEM on memory allocation failure
-Date: Wed,  1 Jul 2026 23:07:03 +0300
-Message-ID: <20260701200703.117929-1-vz@kernel.org>
-X-Mailer: git-send-email 2.51.0
+	id 1wf1rs-0000000301H-1m2R;
+	Wed, 01 Jul 2026 20:49:13 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1782938946; cv=none;
+    d=strato.com; s=strato-dkim-0002;
+    b=OwFN0gPD+BiuM4H6omziC9HWaxRyCyapRT2uKi9EFb7YL7zfTa4siBw6pjiqE/E2UW
+    /9Jnw079GPsGR2Dd0YfwoAv4V86rwJw+vRzkK3k86qBWC/iJeM8/pun8FvFuuxXYTkbW
+    PTsmffApLXWk+ZD1L3mhWM9OCPcFEKMciwrK/L8ZTSPJkJ3nrrik496TGRewLL3LtX+8
+    WHeaPZZ6DojK0KUhJKp6ENyszQrAm6cLORJrJW/5+DV1g8e+nKCPiyqHwB7n9aPWN0Et
+    tnh0hK9lNOAIvjZzdRKLgnjFDAvj8JAK1k7gblXsCoRPi4Z4kVa/o5Yh3H2QDM1ezBR4
+    zOjA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; t=1782938946;
+    s=strato-dkim-0002; d=strato.com;
+    h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Cc:Date:
+    From:Subject:Sender;
+    bh=0OI9r+oDLNMoCCNp+jvgl6P08jRKSfU7E7aeuxBZlOQ=;
+    b=HdxzqBaRCHSC8u3tKtwPAL0ctTU1/AVWXlIBgGV9h+RnuRUZZDw/0k/X13tuf7EtDY
+    /Rr0wzdZRFpxUPYxdJgil1Y/3ClsS6LlJ6PmKuDUgvMrB8i8reRXpDcaMXw0+ly+22OE
+    1z2jnL+pxkFmGAgv4MT+LndKUh+W7oM5N9ycbcFIJaPyd5+PmuMQL+AouE3iYufMuG1j
+    MMXXTtlMx/SCqovv7WM1qLePnBNzGl94rhiauUFZqQOf1lNhO5S2diJDUHBMiumWpbVj
+    zRzuKo5ehy+6cppXJP7zQEfW3lykUpmKRdroa+/fakg1hfh2/nt0b1bRw4T+B+0gd+DR
+    RO0g==
+ARC-Authentication-Results: i=1; strato.com;
+    arc=none;
+    dkim=none
+X-RZG-CLASS-ID: mo02
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1782938946;
+    s=strato-dkim-0002; d=iokpp.de;
+    h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Cc:Date:
+    From:Subject:Sender;
+    bh=0OI9r+oDLNMoCCNp+jvgl6P08jRKSfU7E7aeuxBZlOQ=;
+    b=sIai4biILPLJ3qx6cnpm9RRIVP5MADxN2cHXM5kK9ofXpRkcri9XD/IddbgDCMEYFY
+    Nucj8fnxifKV2l8OECinbLlPVfMjK/xFKoIW1HlMEF5tZswCxIp+OKC+35xggA8qbeBM
+    cbi1mA75/rXPK/M/Wl/rymRoVdkw1CXAwC0u1e+JkIFKYqk05yYtZCPv3glH/hYV6SUk
+    SolA0aRAaaj83QrkXMLAVjSbwYTZHAh121nyyWTwuKVeJAjBLgILocbkGh704GCeCeLc
+    l+heDDEZnDcCIRLD5i0MB0N58Qsz0tt4E/j3gZDU3yF3GnkvNBzrjIPzA80ua6BzzZyH
+    z2EQ==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; t=1782938946;
+    s=strato-dkim-0003; d=iokpp.de;
+    h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Cc:Date:
+    From:Subject:Sender;
+    bh=0OI9r+oDLNMoCCNp+jvgl6P08jRKSfU7E7aeuxBZlOQ=;
+    b=tHf9G+j3iVW3fB/gSnpgkz62pZdUbJLh5lze5IV0e5jjCcfBXOSjuB23+y5f7nDk6j
+    UBBbT+xn4e5QQR33KQBA==
+X-RZG-AUTH: ":LmkFe0i9dN8c2t4QQyGBB/NDXvjDB6pBSe9tgBDSDt0V0zNriHg+YfT0rGWUpI6weUrZX7j5d8vw1ZwljKUZAZetExYucA=="
+Received: from p200300c5871477310ac0be5030e43536.dip0.t-ipconnect.de
+    by smtp.strato.de (RZmta 55.5.6 AUTH)
+    with ESMTPSA id z4d388261Kn5VQK
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256 bits))
+	(Client did not present a certificate);
+    Wed, 1 Jul 2026 22:49:05 +0200 (CEST)
+Message-ID: <3362cec069bd3437c378f356c3e1333d3428070e.camel@iokpp.de>
+Subject: Re: [PATCH v2 3/3] scsi: ufs: core: Always run tx_eqtr POST_CHANGE
+ notify
+From: Bean Huo <beanhuo@iokpp.de>
+To: Can Guo <can.guo@oss.qualcomm.com>, bvanassche@acm.org,
+ beanhuo@micron.com,  peter.wang@mediatek.com, martin.petersen@oracle.com,
+ mani@kernel.org
+Cc: linux-scsi@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>, Avri
+ Altman <avri.altman@wdc.com>, "James E.J. Bottomley"
+ <James.Bottomley@HansenPartnership.com>,  Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,  open list
+ <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
+ support:Keyword:mediatek" <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support:Keyword:mediatek"
+ <linux-mediatek@lists.infradead.org>
+Date: Wed, 01 Jul 2026 22:49:05 +0200
+In-Reply-To: <20260625121306.1655467-4-can.guo@oss.qualcomm.com>
+References: <20260625121306.1655467-1-can.guo@oss.qualcomm.com>
+	 <20260625121306.1655467-4-can.guo@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.44.4-0ubuntu2.1 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260701_134912_748195_89641FDC 
+X-CRM114-Status: UNSURE (   6.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,29 +116,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If dynamic memory allocation in driver's probe function execution fails, it
-should be reported to the driver's framework with -ENOMEM error code.
+On Thu, 2026-06-25 at 05:13 -0700, Can Guo wrote:
+> ufshcd_tx_eqtr() skips POST_CHANGE notify when __ufshcd_tx_eqtr()
+> fails. That can leave variant cleanup incomplete when PRE_CHANGE saved
+> temporary state that POST_CHANGE is expected to restore.
+>=20
+> Always call POST_CHANGE once PRE_CHANGE has succeeded. Keep the TX EQTR
+> result as the primary return value, and only propagate POST_CHANGE
+> failure when TX EQTR itself succeeded.
+>=20
+> Log PRE_CHANGE and POST_CHANGE notify failures to make variant callback
+> failures visible in TX EQTR error paths.
+>=20
+> Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
+> Reviewed-by: Peter Wang <peter.wang@mediatek.com>
+> Signed-off-by: Can Guo <can.guo@oss.qualcomm.com>
 
-Fixes: 9135408c3ace ("dmaengine: mediatek: Add MediaTek UART APDMA support")
-Signed-off-by: Vladimir Zapolskiy <vz@kernel.org>
----
- drivers/dma/mediatek/mtk-uart-apdma.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Loods good to me!
 
-diff --git a/drivers/dma/mediatek/mtk-uart-apdma.c b/drivers/dma/mediatek/mtk-uart-apdma.c
-index c269d84d7bd2..f74e9a328588 100644
---- a/drivers/dma/mediatek/mtk-uart-apdma.c
-+++ b/drivers/dma/mediatek/mtk-uart-apdma.c
-@@ -531,7 +531,7 @@ static int mtk_uart_apdma_probe(struct platform_device *pdev)
- 	for (i = 0; i < mtkd->dma_requests; i++) {
- 		c = devm_kzalloc(mtkd->ddev.dev, sizeof(*c), GFP_KERNEL);
- 		if (!c) {
--			rc = -ENODEV;
-+			rc = -ENOMEM;
- 			goto err_no_dma;
- 		}
- 
--- 
-2.51.0
-
+Reviewed-by: Bean Huo <beanhuo@micron.com>
 
