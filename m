@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 307F4C43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 12:19:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38314C43602
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 12:19:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oqGtlgZEYCI95N9DJUurPCghJw7MFIlkGVBezzzioz8=; b=joIx4mgMrO7PY75WGHFG1DkehD
-	4VK//BD4tU4HlCES7RrmxmGj/mQIlkwOka6x42cWLHQoIhjN3+xRXHIKwXi3nT8NXoZiQ+6TXCmKb
-	usLcXVDhyFKNe0pknbI+J1aDOzfzQ6tJerpC9OUQ7aTBeuzJ3qq9DcNU+7hSB+h0U1bl3Kp1qKMhT
-	fwhpdmMyYXJXbQbZVCKnL+KdjBA+Dn1x3fSa+HCvGtit//0AXo8Qy670F0BTYrnU8EzoRtby1YEOq
-	JxB3qviODuskp8079szaY0T2IPEuLuBPg5g5S2WmEfntX9Ch2ltDtaJXJHpYiX5kFgdwkhE52JRww
-	Of+PoHOA==;
+	bh=zTokNJJPhiwC84lyIu3GOUx3hsJTak28hNBAGHupzns=; b=3+OdkFjltvnE7WKGCljYy/o3+F
+	3mKAuuk5nufxs1uTk7sMNPICeDnn7ow75/2ZtS5IhXbt1P1eVDiGbGUDC+HbB1CZi3B21GnbOOjq0
+	7Bn2SEEuhIyWTjji8BHMTTz8/Ob5VBjqMV3LzKOiPkhihRM9VtbbYBZgCb7Ll40uTNoROWx/w1pVS
+	y2U41788+YRBMWxSyPjmBJF5VbVxrsQj/kEgxKn6FoPGg2uclCocnE83qhSuwGJWAYwMHaINfZCtt
+	809Ps6aohfBUN/IMMVWmb5XavAL3tCiZ0uI5Jl1LuSeYUU+Srgd8ECD5hiDoSVRIY0SrhfAgyUING
+	W/uh3Mkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetuj-00000001pHG-3wcD;
-	Wed, 01 Jul 2026 12:19:37 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wetul-00000001pKE-0dI5;
+	Wed, 01 Jul 2026 12:19:39 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetuf-00000001p69-3vBc;
+	id 1wetui-00000001pBb-3bdW;
+	Wed, 01 Jul 2026 12:19:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=zTokNJJPhiwC84lyIu3GOUx3hsJTak28hNBAGHupzns=; b=B8I74X4VsY2y7Wxn9WxmZo914j
+	XSLvGPosm5qXXR7VCVeJusZAc2/f+6Ys4sVYanr9MYJRzjexm2O5QgbIJI6PW3jWdFtERr3GWhZvL
+	WwZhqamERAGmSLWYmPWOHwlC2ZQqGjDrzXkYMsOxDxDaJBuoDUjAaMzr+vK1ZdXZkoWw+I7KcEhPj
+	HyEDWA2UnJVl2aOcbgga/SbO/dl2IPN5JBHBZ2hXNfdiP+KeCGVNjn/TDc0Nw/aiPftDjXCjw9p1o
+	OgHq9r+02sIX8ZjngqrPzm461O+nIpCyk+FUHb+jRcwnQulwB3WofCw/MXvcxmmvhzJr660ULsWTQ
+	2GloFPEA==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1wetuf-00000002iuM-41fp;
 	Wed, 01 Jul 2026 12:19:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1782908372;
-	bh=Zo8DY2p+sclgU6ZpYmPwfUACzcUgRe8O1TmDoQnLwC0=;
+	bh=FP4PyTvgp8XB6N3XqeaC/sT6Tr0nsSIcWUYH3AkEMlQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KDl/DVCXk2tNVL9sOF4qxGbOLecvBw950BACdrGC2BKKomPbyz4hPfiMZ91eHOqXh
-	 VKrmrPmXh7lXli0R9Jh2JBj4DTwFI7NtqfOmGAzMQUgvYjxgGTbn4i7GyMopdM99rg
-	 ND4d5vsPh2hiMRgS4q2BUS28ewCNkLjrxk/Za6Pi5ANeWn5P/VdyITiUg1iiZRP5GM
-	 7cD1zrTPx5bLQwhYDvsaAUk02vLxQo7CEnygjwFrR/YGsyzMNMXwDSxm0y9HwQWIng
-	 0BffvRTUnXVce3p+7FWryICHRNeDvsIH+EZOAGB8xkUnpznSMyv06WsBOV7lAVM/R3
-	 FQILpxT/DSzBw==
+	b=OcOWkjUQKWqQYRgXsnf5FPTk9JOuD8+SHjfVcCSbCZ+JC5l5lo4SEdmiltcKKBmns
+	 YB/whWE7SOUTK8lF9OijckzQ4z6mKZQaZ4yAdvXAplCyEY6fnt/k5w81njxktUZL/k
+	 vSR1+iRA3Lwx58o4k/2DiOAyPLzJGHfea0BiQnc8BNgmKvLyzxyMo7Jiy6eg3z3uiL
+	 hny3vj2KUPkvV8ga1esWNaOWpTgb1voaWk8TINh5hSTmzrtf8H+kbWvxFlLpR/KktA
+	 yliEAlvBBVo6GBkcklLHbp2zzRtei7HHplDvmH02FGebFAhhsOI57ttOZPWYWLSIJk
+	 LaxlQP+0OLwYw==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B061C17E0FAA;
-	Wed,  1 Jul 2026 14:19:31 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 538F317E0FB0;
+	Wed,  1 Jul 2026 14:19:32 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-mediatek@lists.infradead.org
 Cc: robh@kernel.org,
@@ -55,17 +69,17 @@ Cc: robh@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com,
 	justin.yeh@mediatek.com
-Subject: [PATCH 2/7] arm64: dts: mediatek: mt8173: Add and use UART AP_DMA controller
-Date: Wed,  1 Jul 2026 14:19:24 +0200
-Message-ID: <20260701121929.19374-3-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 3/7] arm64: dts: mediatek: mt8183: Add and use UART AP_DMA controller
+Date: Wed,  1 Jul 2026 14:19:25 +0200
+Message-ID: <20260701121929.19374-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260701121929.19374-1-angelogioacchino.delregno@collabora.com>
 References: <20260701121929.19374-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_051934_127684_E392BB34 
-X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-CacheID: sfid-20260701_131934_131001_5D2AFE80 
+X-CRM114-Status: UNSURE (   9.61  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,75 +101,63 @@ UART controllers in the SoC.
 
 In order to increase the efficiency of data TX/RX over the UART
 controllers, add the UART DMA controller and assign the right
-channels to each of the four UART controllers.
+channels to each of the three UART controllers.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 27 ++++++++++++++++++++++++
- 1 file changed, 27 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 81ddb4eec48e..43159ae6da8f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -673,6 +673,25 @@ gic: interrupt-controller@10221000 {
- 				(GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 174aa8175ad6..6faaccbba580 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1059,6 +1059,22 @@ gce: mailbox@10238000 {
+ 			clock-names = "gce";
  		};
  
-+		apdma: dma-controller@11000300 {
-+			compatible = "mediatek,mt8173-uart-dma", "mediatek,mt6577-uart-dma";
-+			reg = <0 0x11000300 0 0x80>, <0 0x11000380 0 0x80>,
-+			      <0 0x11000400 0 0x80>, <0 0x11000480 0 0x80>,
-+			      <0 0x11000500 0 0x80>, <0 0x11000580 0 0x80>,
-+			      <0 0x11000600 0 0x80>, <0 0x11000680 0 0x80>;
-+			interrupts = <GIC_SPI 95 IRQ_TYPE_LEVEL_LOW>,
-+				     <GIC_SPI 96 IRQ_TYPE_LEVEL_LOW>,
-+				     <GIC_SPI 97 IRQ_TYPE_LEVEL_LOW>,
-+				     <GIC_SPI 98 IRQ_TYPE_LEVEL_LOW>,
-+				     <GIC_SPI 99 IRQ_TYPE_LEVEL_LOW>,
-+				     <GIC_SPI 100 IRQ_TYPE_LEVEL_LOW>,
-+				     <GIC_SPI 101 IRQ_TYPE_LEVEL_LOW>,
-+				     <GIC_SPI 100 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&pericfg CLK_PERI_AP_DMA>;
++		apdma: dma-controller@11000780 {
++			compatible = "mediatek,mt8183-uart-dma", "mediatek,mt6577-uart-dma";
++			reg = <0 0x11000780 0 0x80>, <0 0x11000800 0 0x80>,
++			      <0 0x11000880 0 0x80>, <0 0x11000900 0 0x80>,
++			      <0 0x11000980 0 0x80>, <0 0x11000a00 0 0x80>;
++			interrupts = <GIC_SPI 108 IRQ_TYPE_LEVEL_LOW>,
++				     <GIC_SPI 109 IRQ_TYPE_LEVEL_LOW>,
++				     <GIC_SPI 110 IRQ_TYPE_LEVEL_LOW>,
++				     <GIC_SPI 111 IRQ_TYPE_LEVEL_LOW>,
++				     <GIC_SPI 112 IRQ_TYPE_LEVEL_LOW>,
++				     <GIC_SPI 113 IRQ_TYPE_LEVEL_LOW>;
++			clocks = <&infracfg CLK_INFRA_AP_DMA>;
 +			#dma-cells = <1>;
-+			dma-requests = <8>;
++			dma-requests = <6>;
 +		};
 +
  		auxadc: auxadc@11001000 {
- 			compatible = "mediatek,mt8173-auxadc";
- 			reg = <0 0x11001000 0 0x1000>;
-@@ -688,6 +707,8 @@ uart0: serial@11002000 {
- 			interrupts = <GIC_SPI 83 IRQ_TYPE_LEVEL_LOW>;
- 			clocks = <&pericfg CLK_PERI_UART0_SEL>, <&pericfg CLK_PERI_UART0>;
+ 			compatible = "mediatek,mt8183-auxadc",
+ 				     "mediatek,mt8173-auxadc";
+@@ -1076,6 +1092,8 @@ uart0: serial@11002000 {
+ 			interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
+ 			clocks = <&clk26m>, <&infracfg CLK_INFRA_UART0>;
  			clock-names = "baud", "bus";
 +			dmas = <&apdma 0>, <&apdma 1>;
 +			dma-names = "tx", "rx";
  			status = "disabled";
  		};
  
-@@ -698,6 +719,8 @@ uart1: serial@11003000 {
- 			interrupts = <GIC_SPI 84 IRQ_TYPE_LEVEL_LOW>;
- 			clocks = <&pericfg CLK_PERI_UART1_SEL>, <&pericfg CLK_PERI_UART1>;
+@@ -1086,6 +1104,8 @@ uart1: serial@11003000 {
+ 			interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
+ 			clocks = <&clk26m>, <&infracfg CLK_INFRA_UART1>;
  			clock-names = "baud", "bus";
 +			dmas = <&apdma 2>, <&apdma 3>;
 +			dma-names = "tx", "rx";
  			status = "disabled";
  		};
  
-@@ -708,6 +731,8 @@ uart2: serial@11004000 {
- 			interrupts = <GIC_SPI 85 IRQ_TYPE_LEVEL_LOW>;
- 			clocks = <&pericfg CLK_PERI_UART2_SEL>, <&pericfg CLK_PERI_UART2>;
+@@ -1096,6 +1116,8 @@ uart2: serial@11004000 {
+ 			interrupts = <GIC_SPI 93 IRQ_TYPE_LEVEL_LOW>;
+ 			clocks = <&clk26m>, <&infracfg CLK_INFRA_UART2>;
  			clock-names = "baud", "bus";
 +			dmas = <&apdma 4>, <&apdma 5>;
-+			dma-names = "tx", "rx";
- 			status = "disabled";
- 		};
- 
-@@ -718,6 +743,8 @@ uart3: serial@11005000 {
- 			interrupts = <GIC_SPI 86 IRQ_TYPE_LEVEL_LOW>;
- 			clocks = <&pericfg CLK_PERI_UART3_SEL>, <&pericfg CLK_PERI_UART3>;
- 			clock-names = "baud", "bus";
-+			dmas = <&apdma 6>, <&apdma 7>;
 +			dma-names = "tx", "rx";
  			status = "disabled";
  		};
