@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6ADFC44501
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 12:19:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64D3BC43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 12:20:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+LWeeP+LfVHgCufS+BonfQBwgvXLIlJZwa3HYsSNtas=; b=JvL+vTq2u0BA9N7qaYgjVuFueS
-	/Z/gqISTZIwUL/15cQGrcq46Gii42qbFqh/aptmtE0t2ZLHo4qVUSu4AYrPlaRMK0Q1q+s9ppMFa/
-	sVRKSQ3rjue8/TTrtHaQ/c/4pBz66ygCnQw+ytiE1dgqkWYcHgGnOQMJWzpVgTt696vuNbPF4jphO
-	y7fzJR+XzLpwHIW9MiPWq/NdxfiBiLu0Ipqgi+NONJh2POmiPIR4ImMzqZ7hFe1yqYgMwb1WxYQRI
-	wZ7l6JoL/k9dfMGxZebVT2ikDrDW1nkV5IrqILPHKmEixZwd7eCk/UNfjMMdgStosASgcMA/8i5ZJ
-	3HUdP34g==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=q4Wp0dHCtsoG1frr/XIQdfLbL8oT+wFc4AqOM4AVNOY=; b=h9ED3ddADVsYelWfKAqaUrQjX7
+	iDhXN326NyKmFAnjplaBTPR8QStTuHSs5bgEfCj5HXQHRyTpjtN0D1o4qxE3gPSPrEmrVKX/NwXwE
+	EHBZuUNV6xTNGWQp+FQq60aK6jGyGyMH/e4vionD9+KnJOx0huvEp89b/tBd60GGA7X9RoZlfao3U
+	EJD1ZFWYyZAtTdwqkjMK3nRfbY4Uthh9PXF+9BDPBaPKoRgVm3DVsgu084ABeKV9DvqPPsBldhcsn
+	VxL5xoBrPO9pD4XYsaGqFY61/PNhbMDagR5AqWIDmailuRuvII56fRmtlYL2hDXsUithw5xjha7xh
+	4H7JN09Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetv4-00000001qE4-3qYD;
-	Wed, 01 Jul 2026 12:19:58 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wetv6-00000001qIS-1Pho;
+	Wed, 01 Jul 2026 12:20:00 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetv0-00000001py4-1uOz;
-	Wed, 01 Jul 2026 12:19:56 +0000
+	id 1wetv5-00000001qCz-1KSn;
+	Wed, 01 Jul 2026 12:19:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=q4Wp0dHCtsoG1frr/XIQdfLbL8oT+wFc4AqOM4AVNOY=; b=lr+++H3k4+GEmqo8fH9riEbaus
+	LRmFB/f7uqzTvDa8jP9fDHwCqzPJp3ICiS7cAr+PIKiT/CQ+bkZfNl5DZScMctiOdge4CjqIcimo3
+	98MiVRY0thibZM1YQUzJFpEeZdVhpfn+B79uQtdAS0ySOUgu9qcUxyhmRVBv4UNUhUWFJDI0E3jHx
+	6IRPthHpxX6N9MgrrFpH2Oe4VSWzmgRtEya7Gardc2y0/ERVoeYJT4CGbiKuSie2pDeFMZqCKY1fm
+	Cnc/MwM6e/V/7Y4AGl7qxGtei5CTxLN8TtaZ95wtZp1iziy4tUxMpKwtd3Qke1d1XQdNRcvzvWHZs
+	S8Vs6O7g==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1wetv0-00000002j0Y-3wTq;
+	Wed, 01 Jul 2026 12:19:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1782908392;
-	bh=tpdx3d9lVe+qNRkoeJfOrvoQbcLTXbuez+FunS1tz9A=;
-	h=From:To:Cc:Subject:Date:From;
-	b=LmECkaI8QO7YDdjP24JLe9N3YTdNVQl9YlgzjKTDXg/Di6Wj59My/CffJdvZaCLAm
-	 Sj3bz+xjXDw5ZrKFxqmc+xuvuq/vxiiyOfutITZdkSUs8LHUjNwwiaCoKgGxYx9Fjk
-	 Q6g0rGpq+Jpb0hhaqx3+DLwp9UXO8vn4i4HrRBd4lm61VfxgGB3cKov7Om9SEpSONf
-	 a395OFB/p+pHQk/sma1bAFcNFyd/wup+s36RMxgws00xkXSh09ujecJ/oq3Q0ul3sC
-	 hoFrNMnpr4KlW5G+JwwiMp9JF/OGXmdZd0MnFp09kI8iQX0b416aNojz6/uNqOMUP3
-	 vbmG4Yufn638A==
+	s=mail; t=1782908393;
+	bh=1Xktl+tViKcSMcXwqlJWLud9f63zaG5zSnYbWqZ1CJY=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=dSy+ldQ+EXnqS5mp18wZ7I7kwDNBDfOKP2wrwZsIiwjFfih8IoDAARrSloZjX13TW
+	 wenuw6saMxvap6p3+L5r5PlpD7kbaCxS+zCSb2ty5YZl4ODQBS2X0Ku/w7Q2dfSyTr
+	 FCyCsXCHpfqkjMUhZ1+V4uSQTArlMknJ8yri4tL1lpjB0Novnv4GhOD23F2ZNwwPmo
+	 NjLb0cWQLgfo19cgK7AgZXbqOE79dhyIRjG1f5ZjoB5Jf4b27rZ7N4tRCOJ42tEiFZ
+	 v/u2TPqvlvLFqc49G7LsIjY22IGA7RauFTe3DmqkysnpcZQJw+86lK2IDNHzPVtX+M
+	 V8vrL9TokLlyQ==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AD9CE17E0909;
-	Wed,  1 Jul 2026 14:19:51 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9EAA217E0CA2;
+	Wed,  1 Jul 2026 14:19:52 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -65,16 +79,17 @@ Cc: p.zabel@pengutronix.de,
 	kernel@collabora.com,
 	justin.yeh@mediatek.com,
 	jason-jh.lin@mediatek.com
-Subject: [PATCH 00/10] drm/mediatek: Add DSC, WDMA, MT8189/96 DSI support
-Date: Wed,  1 Jul 2026 14:19:40 +0200
-Message-ID: <20260701121950.19454-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 01/10] dt-bindings: display: mediatek: dsc: Add MT8196 compatible
+Date: Wed,  1 Jul 2026 14:19:41 +0200
+Message-ID: <20260701121950.19454-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260701121950.19454-1-angelogioacchino.delregno@collabora.com>
+References: <20260701121950.19454-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_051954_682254_ECB7FC11 
-X-CRM114-Status: UNSURE (   9.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260701_131955_189031_40C9AF65 
+X-CRM114-Status: GOOD (  10.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,43 +104,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series adds support for:
- - Display Stream Compression (DSC) for DSI and DisplayPort for both
-   legacy (8188/92/95 and others) and for Kompanio Ultra MT8196 SoCs
- - Write DMA (WDMA) Engine (for legacy only at this time) as a step
-   to enable Writeback support (coming later with a restructuring of
-   the entire mediatek-drm driver)
- - Newer MIPI DSI IP revisions, found in MT8189 and MT8196 SoCs
+Add compatible for the Display Stream Compression (DSC) IP found
+in the display controller of the MT8196 SoC.
 
-AngeloGioacchino Del Regno (10):
-  dt-bindings: display: mediatek: dsc: Add MT8196 compatible
-  drm/mediatek: Implement Display Stream Compression support
-  dt-bindings: display: mediatek: dsi: Document MT8189 and MT8196
-  drm/mediatek: mtk_dsi: Enable interrupt at component bind time
-  drm/mediatek: mtk_dsi: Transfer register offsets to per-SoC const
-  drm/mediatek: mtk_dsi: Add support for MT8189
-  drm/mediatek: mtk_dsi: Add support for MT8196
-  drm/mediatek: mtk_dsi: Enable PM Runtime on probe
-  dt-bindings: display: mediatek: wdma: Add compatibles for more SoCs
-  drm/mediatek: Add Write DMA (WDMA) Engine for Writeback support
+This IP is compatible with the one found in MT8195.
 
- .../display/mediatek/mediatek,dsc.yaml        |   4 +-
- .../display/mediatek/mediatek,dsi.yaml        |   2 +
- .../display/mediatek/mediatek,wdma.yaml       |   5 +
- drivers/gpu/drm/mediatek/Makefile             |   2 +
- drivers/gpu/drm/mediatek/mtk_crtc.c           |  21 +
- drivers/gpu/drm/mediatek/mtk_ddp_comp.c       |  64 +-
- drivers/gpu/drm/mediatek/mtk_ddp_comp.h       |   9 +
- drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  29 +
- drivers/gpu/drm/mediatek/mtk_disp_dsc.c       | 435 +++++++++++
- drivers/gpu/drm/mediatek/mtk_disp_wdma.c      | 611 +++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        |   8 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   2 +
- drivers/gpu/drm/mediatek/mtk_dsi.c            | 733 ++++++++++++++----
- 13 files changed, 1741 insertions(+), 184 deletions(-)
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_dsc.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_wdma.c
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../devicetree/bindings/display/mediatek/mediatek,dsc.yaml    | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
+index a5b88eb97e3b..c8b3e86943e4 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
+@@ -23,7 +23,9 @@ properties:
+       - enum:
+           - mediatek,mt8195-disp-dsc
+       - items:
+-          - const: mediatek,mt8188-disp-dsc
++          - enum:
++              - mediatek,mt8188-disp-dsc
++              - mediatek,mt8196-disp-dsc
+           - const: mediatek,mt8195-disp-dsc
+ 
+   reg:
 -- 
 2.54.0
 
