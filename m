@@ -4,72 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62513C43602
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 05:40:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 012AAC43602
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 06:11:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2UmmNH+yZDAjjZR6MqM+QgQOsu35Gsqs14tgC0MIavM=; b=gxkSJvqokBjG3UhQ2i0vYdec5o
-	0nmBxVlk9oQQDBRr66fJGg/goBh9acDlP5MKYcuZT9Bt67BDgSudAv5YPKHm0h4Bdb7PW63G7ufJc
-	a2PP2BYrztgAF2INrjXHIrAh1Y32Do/emZunRwwas8QwvA2jkpBN2EhzZT3yzqNKcPeV8Ie8IXNng
-	mvCrF0zrK40h1ZQsClA74WAUBWmVAKDXT9Yi4fOupZxQmvUlaEmIcqxD1zk4GLNoJrpr8MI38jKVp
-	IB6RqyWaVFlNs4Rm8QsrWzglhauGNrdlo3Vejeag3UwHjpylLJ76jS4NgBstM8S+nApMf8fMPyFIB
-	ZdTYrq6g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CWhVhD5eLCMV4lXuEV0ZYaY1wQTvatZLeKGOm+NJE/g=; b=DXr+Ps59gbm+U3uejgaVejnodp
+	r6jMCcuTyzv4GgzBujs1KLSuvs0m8qensRqLDPLYa4nPOVkdnOj6lEgnKz/m6rSOUUX7TxZhtYxuy
+	7z5jZ9aPVq4pCVdxwZvkxkbSGhttApGavRoxmT8uoMtaTC0Q5aqJWIy8BWMoXDVnJUF0os+a5r5H4
+	+3arj74cJgTpJFoCa3Ipr/DPunXxlSOgOEkYMMkEbXthCtW4hiwdvl+CSh8nkQCCz87O63swBIs2m
+	H7JwlYEFBMYq5Hx361zJldXSFr4RliL/xMiWdvvOJwJuti6whukyCIOAUHW1I3/XF9DVBDpZFwQlS
+	T6z6mPPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wenfz-00000000guJ-0CXg;
-	Wed, 01 Jul 2026 05:39:59 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1weoAN-00000000m9L-0Tjn;
+	Wed, 01 Jul 2026 06:11:23 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wenfv-00000000gt6-3J8B;
-	Wed, 01 Jul 2026 05:39:57 +0000
-X-UUID: 442ae94e750f11f1aa26b74ffac11d73-20260701
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:f37576a9-a375-4c7f-ad87-6d3dd921d54d,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e7bac3a,CLOUDID:0e3cee1c3040dfdb058ab0416684d043,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|865|898,TC:nil,Content:0
-	|15|50,EDM:-3,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,O
-	SI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 442ae94e750f11f1aa26b74ffac11d73-20260701
-X-User: liujiajia@kylinos.cn
-Received: from nature [(10.44.16.150)] by mailgw.kylinos.cn
-	(envelope-from <liujiajia@kylinos.cn>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 1450260893; Wed, 01 Jul 2026 13:39:45 +0800
-Date: Wed, 1 Jul 2026 13:39:42 +0800
-From: Jiajia Liu <liujiajia@kylinos.cn>
-To: Thorsten Leemhuis <regressions@leemhuis.info>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
-	Leon Yen <leon.yen@mediatek.com>, linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Linux kernel regressions list <regressions@lists.linux.dev>
-Subject: Re: [PATCH v2] wifi: mt76: add wcid publish check in mt76_sta_add
-Message-ID: <akSoHk-BozrpWPmZ@nature>
-References: <20260528033814.46418-1-liujiajia@kylinos.cn>
- <b143b62e-ca11-4f00-ad60-f71ae55213b9@leemhuis.info>
+	id 1weoAK-00000000m8W-2KsX
+	for linux-mediatek@lists.infradead.org;
+	Wed, 01 Jul 2026 06:11:22 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-6986578d8c0so491746a12.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 30 Jun 2026 23:11:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1782886277; cv=none;
+        d=google.com; s=arc-20260327;
+        b=c51SqfaV8HFmN9LDRF60rrDZLKcMHRa/o+Zz2hBp6zeYghXZX6DLXpy/GjR7uiIPOO
+         bCzq95EH0auHIMQ5cfoF5gI/jFua8hZVZreBvqNtWq3vhJrgCCsQLxtqytBflq+rzu1m
+         V+tOW88gmJdN4h4r05GpKoE9g3zkn2n7WrqC+sH+XAsX9dDmUfYcE9ij/O/vI54ZMNTx
+         SQ7zPBSH0bI9fZbZ+NLLbeljNoLsQRbBdwot0zrCj+czinbp153aR2EKBxj/32aZPqZd
+         TFsSkxpFhJWP2B/SiBcMIae/xNuWuhljr7UL80dIG/8w1FHNoaAEalRDMKpobWqVkpA0
+         CsLA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=CWhVhD5eLCMV4lXuEV0ZYaY1wQTvatZLeKGOm+NJE/g=;
+        fh=FHNZW9QsfUYMZ5euuGuilFTXcOuo5PjBVSNATCFZUTs=;
+        b=e4F2ebJKLNHWDnk03ubHkeb8nFr47ETUnFUX/35/g75MBSgP0QOmMq4ldE1agAQyFX
+         FFKD9Rmy3zUSSBrQyHsJeaoIlWVjFvaACm0ngHhuhvD/IMTKBOiP+anh0e9hFEdG9bnW
+         4uxSdsvM7VuMhuU5Wp/PTVmEWpclb6F+yort9IzaC+OfJfTl2bjOXa7zChxHBj4Vsuml
+         oDpZ7BkPeT1WmibmLFSUtYl0MAA9YB+ohFBZO3NNAos5PiNcvXUAqLEITziKwiKQBZZL
+         FQXkaaTu6tKpkLjMikEezBpnTK3lJTYBL/wZnUZwN7HZeW+30hqkXy4EIGIwi5Htb4IV
+         VZgg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1782886277; x=1783491077; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=CWhVhD5eLCMV4lXuEV0ZYaY1wQTvatZLeKGOm+NJE/g=;
+        b=bDQg94/XgUcmmNuEJM/JkjKBJ5K7npfYNI3tnfaR62C+Q4mmNivijn+xR5z67LqdI3
+         bJCxHA5nodZyDq+bd7ckST6asblq5pQ2ppFSq13k0rht+073syFFhBuTVL8Aw1mEI7hO
+         BKXCKtp42nWdxCJOBipYOEUaN6gohyguC447jBMQNG+3NLflmJgaS5grM5aakg7Ozv98
+         hcu+S0mGQ4AUTHZoAXMjqabUH5/za72mCfWCzGaf5D1e5meUVqMkc9b09kJcSfis7uhJ
+         Thqw7wAa3LbKKcbd9JDVlmKw/yh/sJ6FOcZb1r3b8/SD5H2x72+zAqu/hY1iKAYeKFIn
+         erSQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1782886277; x=1783491077;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=CWhVhD5eLCMV4lXuEV0ZYaY1wQTvatZLeKGOm+NJE/g=;
+        b=gtUo51ePQDkqcMXd8Z7qVo2cwEYt1To9GetH7eD6doOH/N7gwH/Wc69xuPqpTaanEb
+         FDzMVXhgZNXfdYBVRVh559QgciCALVx8RBnydw/JK7tGV4LDWRB6QOiQvqhV08EkAtna
+         We8CvwueH7Op5KdTlNNP5pHxjgzWK/Edg+/Z9xBQOANs0vpVYvtHQi3ppmOfjsr368r1
+         60pEtxHnIHNJaMIcLwo9nYHK4XYy+TOzOCWi+Q+icM9KtH+B+l7j2MDpe/ceamK3PATo
+         +MNCG4nCdNnjJrVCbDtj/LbMZQ5dNvNF3NCAVES/F9KkqsQlr8BLMVzcfsx99RomUnd3
+         T+Eg==
+X-Forwarded-Encrypted: i=1; AHgh+RqNQvfC4vskt5DCBDG2x4bPW7OKPv35DSQhqYSEXSAxSEGZEZ4kkXSxugvGoaFlnq6oy22UMCdzd0Z0odoC+Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxN3ZRiH5+LKcbA1pfnZ+ZpQQfLNUdl13zlL1dzph/eqdczgGE1
+	OkkR6B8jyRosJiqWcVZN4tQ0LrRhXmLghV3emxMGaB1mzUwmXXQycwHfeprW5y6HffRIKYRph4t
+	3ARizML9HA8oB0r3yRbfevQQts6pzkLA=
+X-Gm-Gg: AfdE7ckeWsVkPPc9B6rCfw+r1mgm6a1pT9r9JMYiKKpM4wqGXjZhTOXQTSDYrw5lnxM
+	y3n4qabkfOFEb9DmEjHNCBG+llVcnMk+piC4mpUlAtIOLI6yki1LEdYPBj9/WWR0Bg/gKPaeiBS
+	Ian7iLaEvXwgYmhxBjfOgbjGXwfDXXxV56obD5p/iw/Bj4AhgvKbdWIt2lsuhgYTEsTeGDQNj7p
+	2vuwwqyhjYknL2GdoNiwjQQq/5NcyLSPQqCwRQWy09oKYQ7CHhPwqUv+FozoPMe4CnmBVDMLkJ5
+	GkmAFko=
+X-Received: by 2002:a17:907:3e18:b0:c12:a330:b92b with SMTP id
+ a640c23a62f3a-c12aa14aac6mr6173366b.40.1782886276371; Tue, 30 Jun 2026
+ 23:11:16 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <b143b62e-ca11-4f00-ad60-f71ae55213b9@leemhuis.info>
+References: <20260630065735.3341614-1-pawlik.dan@gmail.com> <akOCJI-2kAAwOQzz@chamomile>
+In-Reply-To: <akOCJI-2kAAwOQzz@chamomile>
+From: Daniel Pawlik <pawlik.dan@gmail.com>
+Date: Wed, 1 Jul 2026 08:11:05 +0200
+X-Gm-Features: AVVi8CfA9uhypD8RuUIaiCQhrLk2tdtBO915kC01GwUewd1n6TYEXO1SRl3IXQQ
+Message-ID: <CALC2ApjGZFFPXr4d-r+4VNCpQO1N3Z4NOiBXwYU307jm-626OA@mail.gmail.com>
+Subject: Re: [PATCH v2 0/5] netfilter: nf_flow_table_path: L2 bridge offload
+To: Pablo Neira Ayuso <pablo@netfilter.org>
+Cc: netfilter-devel@vger.kernel.org, netdev@vger.kernel.org, 
+	bridge@lists.linux.dev, coreteam@netfilter.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260630_223956_123145_5EB30854 
-X-CRM114-Status: GOOD (  24.08  )
+X-CRM114-CacheID: sfid-20260630_231120_652716_AA5E9633 
+X-CRM114-Status: GOOD (  28.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,84 +117,126 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jun 30, 2026 at 01:29:51PM +0200, Thorsten Leemhuis wrote:
-> On 5/28/26 05:38, Jiajia Liu wrote:
-> > Since mt7925_mac_sta_add publishes wcid, add publish check in mt76_sta_add
-> > to avoid reinitializing the wcid->poll_list.
-> > 
-> > Found dev->sta_poll_list corruption when using mt7925 and 7.1-rc4.
-> 
-> Jiajia Liu, Felox: given that the problem seems to be in 7.1, should we
-> ask the stable team to pick this regression fix up, as this change was
-> mainlined (as 20b126920a259d ("wifi: mt76: add wcid publish check in
-> mt76_sta_add") [v7.2-rc1]), but lacks both a Fixes and a Stable tag?
+Hi Florian, Pablo,
 
-Yes. It seems to be related to cbf5e61da660 ("wifi: mt76: initialize
-more wcid fields mt76_wcid_init") [v6.14-rc1]. But I didn't reproduce
-when I checked it out and tested. So Fixes was not added.
+I'll leave it up to you - if `br_netfilter` isn't the right approach
+in this case, then we can drop that series.
 
-> 
-> Ciao, Thorsten
-> 
-> > According to the corruption information, prev->next was changed to itself.
-> > 
-> > wlan0: disconnect from AP 90:fb:5d:94:8b:e3 for new auth to 90:fb:5d:94:8b:e2
-> > wlan0: authenticate with 90:fb:5d:94:8b:e2 (local address=84:9e:56:9c:7e:6b)
-> > wlan0: send auth to 90:fb:5d:94:8b:e2 (try 1/3)
-> >  slab kmalloc-8k start ffff8c80958a6000 pointer offset 4160 size 8192
-> > list_add corruption. prev->next should be next (ffff8c808a7488f8), but was ffff8c80958a7040. (prev=ffff8c80958a7040).
-> > 
-> >  mt76_wcid_add_poll+0x95/0xd0 [mt76]
-> >  mt7925_mac_add_txs.part.0+0xa5/0xe0 [mt7925_common]
-> >  mt7925_rx_check+0xa7/0xc0 [mt7925_common]
-> >  mt76_dma_rx_poll+0x50d/0x790 [mt76]
-> >  mt792x_poll_rx+0x52/0xe0 [mt792x_lib]
-> > 
-> > Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
-> > ---
-> > 
-> > Changes in v2:
-> >   - use dev->wcid table instead of adding MT_WCID_FLAG_DRV_PUBLSH for
-> >     wcid publish check suggested by Sean
-> >   - subject and commit message update
-> > 
-> > ---
-> >  drivers/net/wireless/mediatek/mt76/mac80211.c | 15 ++++++++++++---
-> >  1 file changed, 12 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-> > index 4ae5e4715a9c..b78b4cd206e0 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-> > @@ -1576,6 +1576,7 @@ mt76_sta_add(struct mt76_phy *phy, struct ieee80211_vif *vif,
-> >  {
-> >  	struct mt76_wcid *wcid = (struct mt76_wcid *)sta->drv_priv;
-> >  	struct mt76_dev *dev = phy->dev;
-> > +	struct mt76_wcid *published;
-> >  	int ret;
-> >  	int i;
-> >  
-> > @@ -1595,11 +1596,19 @@ mt76_sta_add(struct mt76_phy *phy, struct ieee80211_vif *vif,
-> >  		mtxq->wcid = wcid->idx;
-> >  	}
-> >  
-> > -	ewma_signal_init(&wcid->rssi);
-> > -	rcu_assign_pointer(dev->wcid[wcid->idx], wcid);
-> > +	published = rcu_dereference_protected(dev->wcid[wcid->idx],
-> > +					      lockdep_is_held(&dev->mutex));
-> > +	if (published != wcid) {
-> > +		WARN_ON_ONCE(published);
-> > +		ewma_signal_init(&wcid->rssi);
-> > +		rcu_assign_pointer(dev->wcid[wcid->idx], wcid);
-> > +		mt76_wcid_init(wcid, phy->band_idx);
-> > +	} else {
-> > +		wcid->phy_idx = phy->band_idx;
-> > +	}
-> > +
-> >  	phy->num_sta++;
-> >  
-> > -	mt76_wcid_init(wcid, phy->band_idx);
-> >  out:
-> >  	mutex_unlock(&dev->mutex);
+Before your reply, I wasn't familiar with Eric Woudstra's
+"bridge-fastpath" series - thanks for the tip.
+I'll take a look at it and try to build on those patches.
+
+Thanks, and best regards,
+Dan
+
+
+wt., 30 cze 2026 o 10:45 Pablo Neira Ayuso <pablo@netfilter.org> napisa=C5=
+=82(a):
+>
+> Hi,
+>
+> On Tue, Jun 30, 2026 at 08:57:30AM +0200, Daniel Pawlik wrote:
+> > This series adds L2 bridge offload support to nft_flow_offload, allowin=
+g
+> > bridged IPv4/IPv6 flows to be accelerated by the flowtable fast path
+> > without requiring L3 routing.
 > >
+> > Background
+> > ----------
+> > Hardware flow offload engines (e.g. MediaTek PPE) can accelerate bridge=
+d
+> > traffic but require that nft_flow_offload detect and handle bridged flo=
+ws
+> > differently from routed ones: no routing table lookup, MAC addresses fr=
+om
+> > the Ethernet header, and VLAN context pre-populated from the bridge por=
+t.
+> >
+> > v2: Fix missing Returns: tags in kernel-doc comments for the three new
+> >     bridge helpers (br_fdb_has_forwarding_entry_rcu,
+> >     br_vlan_get_offload_info_rcu, br_vlan_is_enabled_rcu).
+> >
+> > Patches
+> > -------
+> > 1/5  net: export __dev_fill_forward_path
+> >      Refactors dev_fill_forward_path() to expose __dev_fill_forward_pat=
+h()
+> >      which accepts a caller-supplied net_device_path_ctx, needed to
+> >      pre-populate VLAN state before the forward path walk.
+> >
+> > 2/5  net: bridge: add flow offload helpers
+> >      Adds br_fdb_has_forwarding_entry_rcu(), br_vlan_get_offload_info_r=
+cu()
+> >      and br_vlan_is_enabled_rcu() to expose bridge state to nft_flow_of=
+fload
+> >      without requiring inclusion of net/bridge/br_private.h.
+> >
+> > 3/5  netfilter: nf_flow_table_path: add L2 bridge offload
+> >      Core of the series. Adds nft_flow_offload_is_bridging() detection,
+> >      nft_flow_route_bridging() which avoids nf_route() (fails for
+> >      bridged-only subnets), MAC/VLAN pre-population for bridged flows,
+> >      and a dst leak fix. nft_flow_route() becomes a thin dispatcher.
+> >
+> > 4/5  netfilter: nf_flow_table_path: handle DEV_PATH_MTK_WDMA in path in=
+fo
+> >      Fixes zero-source-MAC in PPE entries when a bridged flow traverses
+> >      MT7996/MT7915 WiFi WDMA hardware.
+> >
+> > 5/5  netfilter: nf_flow_table_path: add VLAN passthrough support
+> >      Records VLAN encap info for passthrough-mode bridge ports so hardw=
+are
+> >      offload entries include the correct VLAN tag.
+> >
+> > Rebase note
+> > -----------
+> > Originally developed against OpenWrt pending-6.18 patches by Ryan Chen
+> > <rchen14b@gmail.com> and Bo-Cun Chen <bc-bocun.chen@mediatek.com>.
+> > Rebased to current upstream: path discovery infrastructure moved to
+> > nf_flow_table_path.c in commit 93d7a7ed0734 ("netfilter: flowtable: mov=
+e
+> > path discovery infrastructure to its own file"), so all netfilter chang=
+es
+> > now land in that file rather than nft_flow_offload.c.
+> >
+> > How to enable bridge offload
+> > -----------------------------
+> > 1. Load kmod-br-netfilter so that bridged IP traffic traverses the
+> >    netfilter forward chain.
+> >
+> > 2. Enable netfilter hooks on the bridge:
+> >      echo 1 > /sys/class/net/<br>/bridge/nf_call_iptables
+> >      echo 1 > /sys/class/net/<br>/bridge/nf_call_ip6tables
+>
+> This requires br_netfilter which is a no go.
+>
+> Sorry, but we should really target at the native nf_conntrack_bridge
+> support.
+>
+> > 3. Register bridge member interfaces in the nft flowtable:
+> >      table inet filter {
+> >          flowtable f {
+> >              hook ingress priority filter
+> >              devices =3D { eth0, wlan0 }
+> >          }
+> >          chain forward {
+> >              type filter hook forward priority filter
+> >              meta l4proto { tcp, udp } flow add @f
+> >          }
+> >      }
+>
+> Yes, but br_netfilter makes no sense for nftables.
+>
+> br_netfilter was made to fill gap at the time ebtables was lagging a
+> lot behind iptables in terms of features. And getting ebtables on pair
+> with iptables in functionality was not feasible either, because it
+> required many new extensions that were specific of the bridge family,
+> which probably was not a big deal, but it also required to get
+> the ebtables command line tool on pair with iptables userspace, which
+> has received more development attention/effort that the bridge tool.
+>
+> All of this does not stand true anymore with nftables, where the
+> bridge family capabilities are at pair with the inet families.
+>
+> I am looking now at the native flowtable bridge support, I will get
+> back to you with updates.
 
