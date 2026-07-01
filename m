@@ -4,62 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B76FAC43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 06:51:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE642C43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 07:46:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PiCN0XbHNxL3wiS2C15r2mhEdbBCiGu3dJWvUYNOTRY=; b=RrkqwapDMob9FWofVohpVmZawP
-	4NgUfUGoYfJanh9FRuWVTG4LjHhPc/Rhe/cI5P24RZYGZphVWrWyRv8+E/0DvLUeetpSbel2oJanP
-	OVXWcvO9pGQLvTs8MoFSKsC7EptVTfqzfL1DgKPU57xrGOVQ07IER0JzutH0ShRSJsQhDKKjy6sUB
-	kZWOEb/02usk7jkGxl83EQ0ZAAJ7CM7+FcxYRCkxsWaJt8+bx970iBYdmqoqSpyGU3xZvW11y6lVa
-	w4shaPrvk6ycO0EdYQo3CZZ5gx8KCJ9zng6jaAmTWc5DysR3kn1clpgRZC09VG7lw+aHKbxwwMSgQ
-	VZevljiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=l7mCsGPgokHXyP8uY+tRPYlUOzo/mMetz6YXudC9qco=; b=efFJYZanuF9NuAef+9dTfSDyRW
+	m0eGnylQxKm1/NKAb6LgQ9q1FT46OYuKQtKY6Hk/Su/9XEhsdZF2B1XehlZtELZIy3cJAbmMgEW0e
+	lHOO3WryoVDjdWtWewH4op2MBZNVvfSdPe7NJ4j/Xf3yn1mU/KaX8LnU0j0HvPCjRsmppd5vIb5/8
+	IqmV8teLeGlfRs6K+b8JeHGAUaqQED9WVhZAlifsOo7wDuCwX/FuuqpWEkrwbnVZY/740FToisg2s
+	UiygxmxkUMgLRzJzyRaDojflHBLMYdEDp+ZHAwkWQ91r46N/bpVT36oERIBMc+m5MJ0Cz0JFYY6lF
+	BEr40R/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weonJ-00000000pef-0R3V;
-	Wed, 01 Jul 2026 06:51:37 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wepeS-00000000wFL-2mKO;
+	Wed, 01 Jul 2026 07:46:32 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1weonH-00000000peB-0pcu;
-	Wed, 01 Jul 2026 06:51:35 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A80E442003;
-	Wed,  1 Jul 2026 06:51:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E9CB1F000E9;
-	Wed,  1 Jul 2026 06:51:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782888694;
-	bh=PiCN0XbHNxL3wiS2C15r2mhEdbBCiGu3dJWvUYNOTRY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=lazT/QJg6tNx8ADnUeOrhR3oQvxrL7lGXlFte3tRvPd+enNiiTRSvpBghuXOx2+fR
-	 mow8Tuq6QcTEMyXmRy+0GmmRjGFgdAKov6rLldCqifp4fTpbe/2DiQP9Y6iDOrh9GA
-	 xz6bVHsNd1d++2pwdRqbxRH0EAMVdaWIskPQ5GIvkDu/sQPKRfT6fK/SxVwxzSXyA6
-	 /dG++YTgMt0WjvnIzHUJxcS3F+pBwwe5L3yp6YMi1tpoqrdtD1pZW1j2EX5bzRl6SK
-	 4W36EwVVbQnfHaCPwANNlElPzwDhS4DabNCQwThnoyWv5VBH5PP97sFYSnasI/vY6v
-	 A+V/K0+jt3rGg==
-Date: Wed, 1 Jul 2026 08:51:31 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Aniket Negi <aniket.negi03@gmail.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, aniket.negi@airoha.com
-Subject: Re: [PATCH] net: airoha: fix MIB stats collection to be lossless
-Message-ID: <akS48y8gCJf-EmTP@lore-desk>
-References: <akPQ7P1Dqb00oWa3@lore-desk>
- <20260701063823.239783-1-aniket.negi03@gmail.com>
+	id 1wepeP-00000000wDI-2GJy;
+	Wed, 01 Jul 2026 07:46:30 +0000
+X-UUID: f4393cb2752011f1afed4741b24580c9-20260701
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=l7mCsGPgokHXyP8uY+tRPYlUOzo/mMetz6YXudC9qco=;
+	b=AePkhl2Dy1E77S4Ha6FRsCvC18z+9g7Tr88d0krmINAvE/4w3aWGxUO4HxeAhzQ7v/fFZ/1uWlLjSuF0cWxLxSusvD6RLbNtCa/aGh1XvduTs4m0Qd1XLsFJFH5zNWJ82Fs1CMuD2tIsxV/Qr4XHqC36KI/egLh9R+VGIHZheCE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.17,REQID:dad55192-46a5-4dc1-9456-0a974533faa9,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:d497b38,CLOUDID:ae672a04-3795-4a90-800e-68e9393a343e,B
+	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|50|
+	99,EDM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: f4393cb2752011f1afed4741b24580c9-20260701
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <congcong.yao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1631106793; Wed, 01 Jul 2026 00:46:22 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Wed, 1 Jul 2026 15:46:19 +0800
+Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 1 Jul 2026 15:46:18 +0800
+From: Congcong Yao <Congcong.Yao@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>, Rob
+ Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<jarried.lin@mediatek.com>, <vince-wl.liu@mediatek.com>,
+	<justin.yeh@mediatek.com>, Congcong Yao <Congcong.Yao@mediatek.com>
+Subject: [PATCH v3 0/2] MT8189 SMI SUPPORT
+Date: Wed, 1 Jul 2026 15:44:45 +0800
+Message-ID: <20260701074533.175803-1-Congcong.Yao@mediatek.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="9rMejwU9NztTVBPE"
-Content-Disposition: inline
-In-Reply-To: <20260701063823.239783-1-aniket.negi03@gmail.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260701_004629_592331_39A8DD89 
+X-CRM114-Status: UNSURE (   8.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,179 +89,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Based on tag: next-20260629, linux-next/master
 
---9rMejwU9NztTVBPE
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This patchset add mt8189 smi support.
 
-> Hi Lorenzo,
->=20
-> Thank you for the detailed review and suggestions!
->=20
-> > > +	/* TX - 64-bit H+L registers: hw accumulates the total, read direct=
-ly. =3D
-> > */
-> > >  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_OK_PKT_CNT_H(port->id));
-> > > -	dev->stats.tx_ok_pkts +=3D ((u64)val << 32);
-> > > -	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_OK_PKT_CNT_L(port->id));
-> > > -	dev->stats.tx_ok_pkts +=3D val;
-> > > +	dev->stats.tx_ok_pkts =3D (u64)val << 32;
-> >=20
-> > I guess it is more readable to store REG_FE_GDM_TX_OK_PKT_CNT_L() read =
-in v=3D
-> > al
-> > here. Something like:
-> >=20
-> > 	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_OK_PKT_CNT_L(port->id));
-> > 	dev->stats.tx_ok_pkts +=3D val;
-> >=20
-> > This apply even to occurrence below
-> Agreed. I'll store CNT_L read in val first to improve readability.
->=20
-> > > +	dev->stats.tx_ok_pkts +=3D airoha_fe_rr(eth, REG_FE_GDM_TX_OK_PKT_C=
-NT_L=3D
-> > (port->id));
-> > > =3D20
-> > >  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_OK_BYTE_CNT_H(port->id));
-> > > -	dev->stats.tx_ok_bytes +=3D ((u64)val << 32);
-> > > -	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_OK_BYTE_CNT_L(port->id));
-> > > -	dev->stats.tx_ok_bytes +=3D val;
-> > > +	dev->stats.tx_ok_bytes =3D (u64)val << 32;
-> > > +	dev->stats.tx_ok_bytes +=3D airoha_fe_rr(eth, REG_FE_GDM_TX_OK_BYTE=
-_CNT=3D
-> > _L(port->id));
-> > > =3D20
-> > > +	/* TX - 32-bit registers: accumulate delta to handle wrap-around. */
-> > >  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_DROP_CNT(port->id));
-> > > -	dev->stats.tx_drops +=3D val;
-> > > +	dev->stats.tx_drops +=3D (u32)(val - dev->stats.hw_prev_stats.tx_dr=
-ops);
-> > > +	dev->stats.hw_prev_stats.tx_drops =3D val;
-> > > =3D20
-> > >  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_BC_CNT(port->id));
-> > > -	dev->stats.tx_broadcast +=3D val;
-> > > +	dev->stats.tx_broadcast +=3D (u32)(val - dev->stats.hw_prev_stats.t=
-x_br=3D
-> > oadcast);
-> > > +	dev->stats.hw_prev_stats.tx_broadcast =3D val;
-> > > =3D20
-> > >  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_MC_CNT(port->id));
-> > > -	dev->stats.tx_multicast +=3D val;
-> > > +	dev->stats.tx_multicast +=3D (u32)(val - dev->stats.hw_prev_stats.t=
-x_mu=3D
-> > lticast);
-> > > +	dev->stats.hw_prev_stats.tx_multicast =3D val;
-> > > =3D20
-> > >  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_RUNT_CNT(port->id));
-> > > -	dev->stats.tx_len[i] +=3D val;
-> > > +	dev->stats.tx_len[i] +=3D (u32)(val - dev->stats.hw_prev_stats.tx_l=
-en[i=3D
-> > ]);
-> > > +	dev->stats.hw_prev_stats.tx_len[i] =3D val;
-> > > =3D20
-> > >  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_E64_CNT_H(port->id));
-> > > -	dev->stats.tx_len[i] +=3D ((u64)val << 32);
-> > > -	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_E64_CNT_L(port->id));
-> > > -	dev->stats.tx_len[i++] +=3D val;
-> > > +	dev->stats.tx_len[i] +=3D (u64)val << 32;
-> > =20
-> > Since now we do not reset MIB counters, this is wrong, you can't use "+=
-=3D"
->=20
-> You are absolutely right, since MIB counters are no longer cleared, using=
- "+=3D" for E64 counter would cause double counting each iteration. This wa=
-s missed in the patch, specifically for the case where runt count(32 bit) a=
-nd E64 counter (64 bit) need to be combined in the same counter.=20
->=20
-> I'll fix this by using separate accumulator fields to "tx_runt_accum/rx_r=
-unt_accum" to track the runt deltas, then compute tx_len[i] as tx_len[i]=3D=
- tx_runt_accum + E64_CNT (H+L).
->=20
-> > >  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_RUNT_CNT(port->id));
-> > > -	dev->stats.rx_len[i] +=3D val;
-> > > +	dev->stats.rx_len[i] +=3D (u32)(val - dev->stats.hw_prev_stats.rx_l=
-en[i=3D
-> > ]);
-> > > +	dev->stats.hw_prev_stats.rx_len[i] =3D val;
-> > > =3D20
-> > >  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_E64_CNT_H(port->id));
-> > > -	dev->stats.rx_len[i] +=3D ((u64)val << 32);
-> > > -	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_E64_CNT_L(port->id));
-> > > -	dev->stats.rx_len[i++] +=3D val;
-> > > +	dev->stats.rx_len[i] +=3D (u64)val << 32;
-> >=20
-> > same here.
->=20
-> Acked. The same approach above will be applied to rx_len[i].=20
->=20
-> > > +
-> > > +	struct {
-> > > +	/* Previous HW register values for 32-bit counter delta tracking.
-> > > +	 * Storing the last seen value and accumulating (u32)(curr - prev)
-> > > +	 * in 64-bit software counter & handles wrap-around transparently
-> > > +	 * via unsigned arithmetic. These fields are never reported to
-> > > +	 * userspace.
-> > > +	 */
-> >=20
-> > can you please align the comment here?
->=20
-> Will fix the comment alignment.
->=20
-> >=20
-> > > +		u32 tx_drops;
-> > > +		u32 tx_broadcast;
-> > > +		u32 tx_multicast;
-> > > +		u32 tx_len[7];
-> > > +		u32 rx_drops;
-> > > +		u32 rx_broadcast;
-> > > +		u32 rx_multicast;
-> > > +		u32 rx_errors;
-> > > +		u32 rx_crc_error;
-> > > +		u32 rx_over_errors;
-> > > +		u32 rx_fragment;
-> > > +		u32 rx_jabber;
-> > > +		u32 rx_len[7];
-> > > +	} hw_prev_stats;
-> >=20
-> > Maybe something like "prev_val32" ?
-> >=20
-> > Will update the name of struct to hold prev counter from hw_pre_stats t=
-o prev_val32.
->=20
-> Good suggestion. However, since the struct hw_prev_stats now contains bot=
-h u32 (previous register value) and u64 (runt accumulators) fields. I'll re=
-name it to "prev_mib_state" to better reflect its dual purpose of storing p=
-revious register values for delta calculation and accumulators for combined=
- counters.=20
+---
+Changes in v3:
+- Change the clock numbers of smi-sub-common to minium 3
+- Link to v2:
+  https://lore.kernel.org/linux-mediatek/20260427070444.20247-1-zhengnan.chen@mediatek.com/
+---
 
-Maybe better mib_prev?
+Zhengnan Chen (2):
+  dt-bindings: memory-controllers: mtk-smi: Add support for mt8189
+  memory: mtk-smi: Add mt8189 support
 
-Since now we do not reset the MIB counters in airoha_update_hw_stats(), we =
-can
-get rid of the for loop there and just call airoha_dev_get_hw_stats() with =
-the
-provided dev pointer. Even better, just rename airoha_dev_get_hw_stats() in
-airoha_update_hw_stats() and move the spinlock there. What do you think?
+ .../mediatek,smi-common.yaml                  | 18 ++++++++
+ .../memory-controllers/mediatek,smi-larb.yaml |  3 ++
+ drivers/memory/mtk-smi.c                      | 44 +++++++++++++++++++
+ 3 files changed, 65 insertions(+)
 
-Regards,
-Lorenzo
+-- 
+2.43.0
 
->  =20
-> Regards,
-> Aniket Negi
->=20
-
---9rMejwU9NztTVBPE
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCakS48wAKCRA6cBh0uS2t
-rHTFAP98GZd4vah+/iyTOTP+JaCGb7y8uJEZbADWZ+6OdKVipQEAoZh7+BYH/Ppl
-mqqkT8muUF4OwTApIzilfaivEim+bgI=
-=w6dd
------END PGP SIGNATURE-----
-
---9rMejwU9NztTVBPE--
 
