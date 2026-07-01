@@ -4,75 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82EECC43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 12:19:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5699AC44502
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 12:19:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W5mH5JIQnoiobbgS9lfnDOVJ6b74GA0zlbH6+bjZbE4=; b=Mp+1EzenYMkFzlu1lP8lkpjgrf
-	WQoJvgrZ3ONPS0Cj1d+R1yBisb9+YU4sWJDMKul3fphw9/CwZxK0J+WpHNVenIVE4Hc4VRnhgDHt2
-	8RHGhJa+GT3adoWnP3hhLrGKuXGFeNhpz0swQERpdH0YwgUQzYf1aTyzDaOzYFlnWTrs1fSQ0Uugy
-	wAWqxkZG+5gW1rQPgc/KloWdGcZGbFN7LYUdvhFBLQ/BnXsTNqZhBciSBf6jpOt8lC3cxscW50Oiq
-	R25Xvmcm8qV2ee4kbTdSzs7ivVNrtij0WRCdBeEkmr+CEIQ8soWgPygswztiSfO7+KDHT2DXB8sA+
-	cyZSV6qQ==;
+	bh=qbyvnp21xsrXSWWM1FsPxQLHNBpEVdNHO9YSXm/Ryyw=; b=nMUxtVrQw7Jh0uOZlFYj2Mfe+/
+	2qLyodNKnN43a0Ox+Pe48GKnUFegNDLcwCPJhOFw1q+v9PCPWvVvG2Xzxvb1O9cmiGECrfW/62iEM
+	lF2zoAPkbI0NNMPJY1n7aXZMVfmGF/rtdF34eo+XIjQ1Qcq7oYAs6wx7i5h25fOTdMaJKsXoLHmW3
+	mtMcrS2bDhsuSdbrElmUgs1g/H62jGwHdveqbV4+bVJBGjQpTRmWe619YPY7F38uzgkMAK4Oc3Stt
+	HFE/YQZNAWIgilMH50L97XWI6KvUUlrunWZY55j2oVJZgr8kPJPetI9VbSVIUKYdKl2sX7CivaCgJ
+	hmWGv2Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetue-00000001p5v-1uxf;
-	Wed, 01 Jul 2026 12:19:32 +0000
+	id 1wetui-00000001pCO-0epG;
+	Wed, 01 Jul 2026 12:19:36 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetub-00000001ozb-2FWR;
-	Wed, 01 Jul 2026 12:19:31 +0000
+	id 1wetuf-00000001p59-1LNm;
+	Wed, 01 Jul 2026 12:19:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1782908367;
-	bh=nFaHAQDWvz/QYHBbsjAstFu2Yh0VdHVUTI4SPQHE5lU=;
+	s=mail; t=1782908371;
+	bh=k8gRabJ0ojQ3AdJqjRNNwX5ZebkOglKCv5qFLpZE2uw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=OZqsj0bVFvsIXSdjZIFcl0e8Or8atOk2QqGzlp/Z42eqkmHtz44e2bf+VOIWbE9E1
-	 cqhly5hVX7T6B33F5PfpGQTT1jpuzOyFpMTGbcreSY1gDovvwoxK49QIhVjP9zRzmy
-	 hTjfkWfwL6ecDO0mm1W3CsR0lyCVuQpOZAMfoYovHLbUsBYu0lqoEXQVxyhWZacri0
-	 ORDkQoz6l/mx4zKrtrat+fTs+Ev+cJ6MpI8jp2qj3Kw1apySAefZeKPZJMNqoPPdeL
-	 vUSeIGP2511zH5bjRTyzjKJaUJdRt+xY0T9ew+fsydQnOVrYzinbDvZkwZk77AcylN
-	 TzeBGYVUHqQWw==
+	b=LwYCS+xtgmjY7nAF2fOKzDYcu3vi751HRewIZlIlHjXwAIlFCf/q9M+rAXyxwLVFV
+	 3WF29bZlbF48NYN81gUWjaxJBEOqKY2i9CZYsVfyaQeSXtZxzb1ol85uFCKTTr70NZ
+	 fbEpuF3dxJr1NPRVD04SEy48qklQAY8MqUWLtE7IIBCNt4Y0EI8dY+vaqHy7jcryB0
+	 tByGNzFeSuVggPfQ+OY3pTKl/wTKH8yfBfUZuyI55KSGlFxG2F6IowFXL4LpeoKNgh
+	 ii1b+E8rkJo9fPgl2rdDuTlI9rAOE75fRVa1/nYoCjoKGSiYG7YQonfkipjdLfp8V9
+	 gt6xsxmVRaqAg==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9733217E0FAA;
-	Wed,  1 Jul 2026 14:19:26 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1700517E0D72;
+	Wed,  1 Jul 2026 14:19:31 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: ulfh@kernel.org
+To: linux-mediatek@lists.infradead.org
 Cc: robh@kernel.org,
 	krzk+dt@kernel.org,
 	conor+dt@kernel.org,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	nfraprado@collabora.com,
-	irving-ch.lin@mediatek.com,
-	macpaul.lin@mediatek.com,
-	aford173@gmail.com,
-	mbrugger@suse.com,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	justin.yeh@mediatek.com,
-	kernel@collabora.com
-Subject: [PATCH 4/4] pmdomain: mediatek: Add support for MT8196 HFRP DirectCTL domains
-Date: Wed,  1 Jul 2026 14:19:20 +0200
-Message-ID: <20260701121920.19347-5-angelogioacchino.delregno@collabora.com>
+	kernel@collabora.com,
+	justin.yeh@mediatek.com
+Subject: [PATCH 1/7] arm64: dts: mediatek: mt6795: Remove deprecated UART DMA property
+Date: Wed,  1 Jul 2026 14:19:23 +0200
+Message-ID: <20260701121929.19374-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260701121920.19347-1-angelogioacchino.delregno@collabora.com>
-References: <20260701121920.19347-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260701121929.19374-1-angelogioacchino.delregno@collabora.com>
+References: <20260701121929.19374-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_051929_921374_F1CA319D 
-X-CRM114-Status: GOOD (  10.71  )
+X-CRM114-CacheID: sfid-20260701_051933_511372_A924CDCA 
+X-CRM114-Status: GOOD (  11.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,76 +80,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the power domains provided by the HFRPSYS Power
-Controller of the MT8196 SoC.
-Those control power to the eDP and DP Transmitter IPs.
+Remove the mediatek,dma-33bits property as it is now deprecated
+and, while at it, also remove the fallback compatible as it was
+not entirely right to use anyway, because this IP is not fully
+compatible with the one found in MT6577 and would create more
+issues than the ones it could resolve (as in - it's better to
+not probe the controller than to probe it and manage it in some
+incorrect way).
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/pmdomain/mediatek/mt8196-pm-domains.h | 27 +++++++++++++++++++
- drivers/pmdomain/mediatek/mtk-pm-domains.c    |  4 +++
- 2 files changed, 31 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt6795.dtsi | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/pmdomain/mediatek/mt8196-pm-domains.h b/drivers/pmdomain/mediatek/mt8196-pm-domains.h
-index 2e4b28720659..d704c9fa9337 100644
---- a/drivers/pmdomain/mediatek/mt8196-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mt8196-pm-domains.h
-@@ -602,6 +602,27 @@ static const struct scpsys_hwv_domain_data hfrpsys_hwv_domain_data_mt8196[] = {
- 	},
- };
+diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+index dcbb7495835c..2d3db0c6fcf5 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+@@ -548,8 +548,7 @@ uart1: serial@11003000 {
+ 		};
  
-+static const struct scpsys_domain_data hfrpsys_domain_data_mt8196[] = {
-+	[MT8196_POWER_DOMAIN_EDPTX] = {
-+		.name = "edp-tx",
-+		.sta_mask = MT8196_PWR_ACK,
-+		.sta2nd_mask = MT8196_PWR_ACK_2ND,
-+		.ctl_offs = 0x74,
-+		.pwr_sta_offs = 0x74,
-+		.pwr_sta2nd_offs = 0x74,
-+		.caps = MTK_SCPD_SIMPLE_PWRSEQ,
-+	},
-+	[MT8196_POWER_DOMAIN_DPTX] = {
-+		.name = "dp-tx",
-+		.sta_mask = MT8196_PWR_ACK,
-+		.sta2nd_mask = MT8196_PWR_ACK_2ND,
-+		.ctl_offs = 0x78,
-+		.pwr_sta_offs = 0x78,
-+		.pwr_sta2nd_offs = 0x78,
-+		.caps = MTK_SCPD_SIMPLE_PWRSEQ,
-+	},
-+};
-+
- static const struct scpsys_soc_data mt8196_scpsys_data = {
- 	.domains_data = scpsys_domain_data_mt8196,
- 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8196),
-@@ -616,6 +637,12 @@ static const struct scpsys_soc_data mt8196_scpsys_hwv_data = {
- 	.type = SCPSYS_MTCMOS_TYPE_HW_VOTER,
- };
+ 		apdma: dma-controller@11000380 {
+-			compatible = "mediatek,mt6795-uart-dma",
+-				     "mediatek,mt6577-uart-dma";
++			compatible = "mediatek,mt6795-uart-dma";
+ 			reg = <0 0x11000380 0 0x60>,
+ 			      <0 0x11000400 0 0x60>,
+ 			      <0 0x11000480 0 0x60>,
+@@ -569,7 +568,6 @@ apdma: dma-controller@11000380 {
+ 			dma-requests = <8>;
+ 			clocks = <&pericfg CLK_PERI_AP_DMA>;
+ 			clock-names = "apdma";
+-			mediatek,dma-33bits;
+ 			#dma-cells = <1>;
+ 		};
  
-+static const struct scpsys_soc_data mt8196_hfrpsys_data = {
-+	.domains_data = hfrpsys_domain_data_mt8196,
-+	.num_domains = ARRAY_SIZE(hfrpsys_domain_data_mt8196),
-+	.type = SCPSYS_MTCMOS_TYPE_DIRECT_CTL,
-+};
-+
- static const struct scpsys_soc_data mt8196_hfrpsys_hwv_data = {
- 	.hwv_domains_data = hfrpsys_hwv_domain_data_mt8196,
- 	.num_hwv_domains = ARRAY_SIZE(hfrpsys_hwv_domain_data_mt8196),
-diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-index 5276adea1d04..f69cf69ba0f6 100644
---- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-+++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-@@ -1252,6 +1252,10 @@ static const struct of_device_id scpsys_of_match[] = {
- 		.compatible = "mediatek,mt8196-power-controller",
- 		.data = &mt8196_scpsys_data,
- 	},
-+	{
-+		.compatible = "mediatek,mt8196-hfrp-power-controller",
-+		.data = &mt8196_hfrpsys_data,
-+	},
- 	{
- 		.compatible = "mediatek,mt8196-hwv-hfrp-power-controller",
- 		.data = &mt8196_hfrpsys_hwv_data,
 -- 
 2.54.0
 
