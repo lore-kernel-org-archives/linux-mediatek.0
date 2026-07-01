@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14192C43602
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEAF6C44501
 	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Jul 2026 12:20:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,81 +12,90 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oiRBiC71AJTilv2l5S+MEmJPfyr+FMJMiueTJaFZmOA=; b=djtjcvIlB58kj5bNjNapygt7Kx
-	2/sG2hxwZa8vnOskgYVAanQhMdZUns4N9g3yxX12q4OhER5ntGjUHK7AdOVMoA5XGmA/N2RvkhbZK
-	N6mmLoJPm1ZFR1PJdha7GBxpt65LbFsjAdeyOpbBdsCRNZiomf6cqEClrawD7pljDfQ4dv2iKHD0n
-	J7Hq8OVduXqgcBhaYQu+A1/L69gVeLNmV5oogSrmPO/w8uVNsGYsdYuMcw3Smpst4c2mgC6ztUMJ+
-	zyP0yq6a/DlftqSDVQgM8HjjrmIVwJVQZmj9CK4Ljpxla8dspdTCrT0pXOw4Bjk60nDS1yB6Q5tzz
-	3Dr0s3YQ==;
+	bh=yypRmBCUWIxl+HGMvLm537bNGK8OjqXD29gbJvwfD6w=; b=2iuXtiilR0pEuorsWto1x0/UrV
+	zO+HA0QTPQD27dDNZhoo3+YUzz75VsT7Vl/MRPto4rITiZnUccQPxUKmwg2reu6Y0v+sdc7y4kDro
+	6ESrGyh+B1C6arcP63cL1o6VefJpzqUTsAe3iORuN9cQMFLkeJ8hCj3S/gncbzjETIQVst7mur40y
+	J2pP0Ijbad6gX2Krfiq0Y/7xy4GczTJyxOOR1N6ep3VjpoHgDIXzZGfS8GzYhg87z0uERHtTQghc+
+	XrPN/karabxyD9rigPKIz8xdNIQi/ksMCUN+yr95yoh3kfWDGVkGlPIGP9l5rZ/egWbKhQwpv9atZ
+	7DZC21Og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetvm-00000001sH3-31Hn;
-	Wed, 01 Jul 2026 12:20:42 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1wetvn-00000001sKB-2Ufi;
+	Wed, 01 Jul 2026 12:20:43 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetvZ-00000001ra9-07Kl;
-	Wed, 01 Jul 2026 12:20:29 +0000
+	id 1wetvc-00000001rkY-37BI;
+	Wed, 01 Jul 2026 12:20:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=oiRBiC71AJTilv2l5S+MEmJPfyr+FMJMiueTJaFZmOA=; b=qxSOFrlZZE2PUltz4YQnzwxsue
-	+2I9ADui2UJMXZcsL2c608SDDprMkMlzfIxvnHhW6t6QZjXpbYYNcVp/2HmwUw3IaaRvoTVfog7IE
-	D8uAlCcGLEe3c64i+Rt+1Ihm8qZBCZTW4MlOpVEBAT8tNsS03VB2p5ZuxWdcHaflmM9PQJ0bR9OuX
-	yZKHov6BVD068Y0wmG5doSXhvuRObwYO45Z80jf/yR0sRLztUjRgDBRH91xokRZotNxmzRLqpP1y8
-	3k3M5YgFD2bqx6J5hetj8Lu6DVK4YDU1zAJBaVGOFKygHzoBWHX5b48G3Von67AMmnY5GLHypykWq
-	cbL2aL+w==;
+	bh=yypRmBCUWIxl+HGMvLm537bNGK8OjqXD29gbJvwfD6w=; b=gCCb5PpNZNLm2RE5/ybtaPchEg
+	NOahi5OPbhWPEZy5gh8URdmpU6ot6gfxH1hjbxc5nUMpLYZzAT6v7NT7CNM3lhXYPquZ7f59XvKao
+	iJE7IVIRZbmzdCV1//0C6hnn0V8EEGCXGdNkx0eqe2aV07mhHt/eM6NN44rzpmaNzm836HS3co8CC
+	y1ZtCJRsaWUehjwEJub0doIG2nI+BxAKmLrWVkWSCheLMhjhijDQfxTmdNi49/l5ol+AWsuZGmraw
+	oZpoi4xd/5KNyJw1jKd1YRXDacOyR154Uz1V88pQSL8JO6iWiA1cnOsr90tTAiV4saYCTJ+nvZlvt
+	TjKv17KA==;
 Received: from bali.collaboradmins.com ([148.251.105.195])
-	by casper.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wetvP-00000006aYJ-1TWn;
-	Wed, 01 Jul 2026 12:20:27 +0000
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1wetva-00000002jIw-08o5;
+	Wed, 01 Jul 2026 12:20:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1782908417;
-	bh=3xaFVtB+sdmI4U8DTkJvH4kHZiMSV8phaSXhpZ/6ybk=;
+	s=mail; t=1782908428;
+	bh=o0Yw5UvJ7mIldIg8Qe+QDn/C3b8GslyK/JoVs7xCZ6Q=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=oR3U6+qvJvnxvweoNtdQ082mX9WW9RtmOMwPnF6m2VO/g8CTfarJ3ao9jnYBRAtXX
-	 wk5WTMwXmKfYkvKTvnQYNhHAYUwdt3S++rqhOo2wT4qdB+DSRnJAu+PLkifjN09r1V
-	 nPK/UJm+DPwVkZbK8doDBTu7RPfx2d/LJqVhBnm8AWch9Rg9hehxDtmeljTFoOkG8E
-	 LIQ+hcgXcsFIkP2sKnP8OpTDDwSeKyHeRB8D9bUIBjnd+l4syHap57GmjzefeAuDCT
-	 1blqqsY14pixbE4qqYytWqdxY02rngtWiTsLKcfbIxQhDEO0AaaGwp2AHZ8nNclFfy
-	 cBQo+ccR6tlIg==
+	b=VxBnyC2HEyx+nHWBRJscwbqLoyygFubY/jhQ5hqDRVaIp3SDMyN2UR7PIUp6bGC71
+	 FfUwkJigzaTHZgJLm7fKRwRAfWQ+pXuCrqZpU+ZsryUbAAmn0ki7U5/P5jt+CvndLd
+	 BB+P3M7Lb1q0ixrx4rZv/ur7iwozXSNUbm3BcsqmkJGM/3XGXo50v8yuan+kMdF5RZ
+	 pM0pGVr9hY6gZYYJSVT8HeDu1I+VKdCOZkWl3Oz2LJWhMPVzFBLSUa5KQ+Bjgt3csf
+	 EMLU/RosiQNj+Ox7+8/fTOeepKyqKGlE5Xe/mFffYJNQ7tIhM6kVPMEQ6aJmC02NTU
+	 s2fBg1aGTM8Wg==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A1C5417E1583;
-	Wed,  1 Jul 2026 14:20:16 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 75E0917E116D;
+	Wed,  1 Jul 2026 14:20:27 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunfeng.yun@mediatek.com
-Cc: vkoul@kernel.org,
-	neil.armstrong@linaro.org,
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
 	robh@kernel.org,
 	krzk+dt@kernel.org,
 	conor+dt@kernel.org,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de,
+	jitao.shi@mediatek.com,
+	granquet@baylibre.com,
+	rex-bc.chen@mediatek.com,
+	dmitry.osipenko@collabora.com,
+	ck.hu@mediatek.com,
+	amergnat@baylibre.com,
 	justin.yeh@mediatek.com,
-	linux-arm-kernel@lists.infradead.org,
+	jason-jh.lin@mediatek.com,
+	dri-devel@lists.freedesktop.org,
 	linux-mediatek@lists.infradead.org,
-	linux-phy@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH 07/12] phy: phy-mtk-dp: Support setting volt swing and preemphasis values
-Date: Wed,  1 Jul 2026 14:20:03 +0200
-Message-ID: <20260701122008.19509-8-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 01/11] dt-bindings: display: mediatek: dp: Deprecate nvmem efuse data
+Date: Wed,  1 Jul 2026 14:20:14 +0200
+Message-ID: <20260701122024.19557-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260701122008.19509-1-angelogioacchino.delregno@collabora.com>
-References: <20260701122008.19509-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260701122024.19557-1-angelogioacchino.delregno@collabora.com>
+References: <20260701122024.19557-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_132019_634902_217ADE62 
-X-CRM114-Status: GOOD (  14.20  )
+X-CRM114-CacheID: sfid-20260701_132030_180222_125E5968 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,103 +110,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for honoring the set_voltages request to set the
-voltage swing and preemphasis values in the .configure() callback.
-
-For proper hardware cleanup, reset both in the .reset() callback.
+Deprecate nvmem-cells and nvmem-cell-names and clarify their
+purpose, as those are for PHY calibration data, not for the DP
+IP itself, and that data shall go in the PHY binding instead.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/phy/mediatek/phy-mtk-dp.c | 41 ++++++++++++++++++++++++++++++-
- 1 file changed, 40 insertions(+), 1 deletion(-)
+ .../devicetree/bindings/display/mediatek/mediatek,dp.yaml     | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/phy/mediatek/phy-mtk-dp.c b/drivers/phy/mediatek/phy-mtk-dp.c
-index a2cd22b9da06..17d871530cca 100644
---- a/drivers/phy/mediatek/phy-mtk-dp.c
-+++ b/drivers/phy/mediatek/phy-mtk-dp.c
-@@ -48,6 +48,11 @@
- /* DP_PHYD_TX_CTL_0 */
- #define PHYD_TX_LN_EN			GENMASK(7, 4)
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+index 8f4bd9fb560b..980f76667ada 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+@@ -30,10 +30,12 @@ properties:
+     maxItems: 1
  
-+/* DP_PHYD_DRIVING_FORCE */
-+#define PHYD_DP_TX_FORCE_VOLT_SWING_EN	BIT(0)
-+#define PHYD_DP_TX_FORCE_VOLT_SWING_VAL	GENMASK(2, 1)
-+#define PHYD_DP_TX_FORCE_PRE_EMPH_VAL	GENMASK(4, 3)
-+
- #define XTP_LN_TX_LCTXC0_SW0_PRE0_DEFAULT	BIT(4)
- #define XTP_LN_TX_LCTXC0_SW0_PRE1_DEFAULT	(BIT(10) | BIT(12))
- #define XTP_LN_TX_LCTXC0_SW0_PRE2_DEFAULT	GENMASK(20, 19)
-@@ -101,6 +106,7 @@ enum mtk_dp_phya_ana_glb_regidx {
- };
+   nvmem-cells:
++    deprecated: true
+     maxItems: 1
+-    description: efuse data for display port calibration
++    description: efuse data for display port phy calibration
  
- enum mtk_dp_phyd_dig_lane_regidx {
-+	DP_PHYD_LAN_DRIVING_FORCE,
- 	DP_PHYD_LAN_DRIVING_PARAM_0,
- 	DP_PHYD_LAN_MAX
- };
-@@ -121,6 +127,7 @@ static const u8 mt8195_phy_ana_glb_regs[DP_PHYA_GLOBAL_MAX] = {
- };
+   nvmem-cell-names:
++    deprecated: true
+     const: dp_calibration_data
  
- static const u8 mt8195_phy_dig_lane_regs[DP_PHYD_LAN_MAX] = {
-+	[DP_PHYD_LAN_DRIVING_FORCE] = 0x18,
- 	[DP_PHYD_LAN_DRIVING_PARAM_0] = 0x2c,
- };
- 
-@@ -235,6 +242,28 @@ static int mtk_dp_phy_configure(struct phy *phy, union phy_configure_opts *opts)
- 				   PHYD_TX_LN_EN, val);
- 	}
- 
-+	if (opts->dp.set_voltages) {
-+		const u32 reg_drv_force = pdata->regs_dig_lane[DP_PHYD_LAN_DRIVING_FORCE];
-+
-+		if (opts->dp.lanes > 4) {
-+			dev_err(&phy->dev, "Wrong lanes config %u\n", opts->dp.lanes);
-+			return -EINVAL;
-+		}
-+
-+		for (i = 0; i < opts->dp.lanes; i++) {
-+			const u32 off_dig_lane = pdata->off_dig_lane[i];
-+			u32 val;
-+
-+			val = FIELD_PREP(PHYD_DP_TX_FORCE_VOLT_SWING_VAL, opts->dp.voltage[i]);
-+			val |= FIELD_PREP(PHYD_DP_TX_FORCE_PRE_EMPH_VAL, opts->dp.pre[i]);
-+
-+			regmap_update_bits(dp_phy->regmap, off_dig_lane + reg_drv_force,
-+					   PHYD_DP_TX_FORCE_VOLT_SWING_VAL |
-+					   PHYD_DP_TX_FORCE_PRE_EMPH_VAL,
-+					   val);
-+		}
-+	}
-+
- 	regmap_update_bits(dp_phy->regmap,
- 			   pdata->off_dig_glb + pdata->regs_dig_glb[DP_PHYD_PLL_CTL_1],
- 			   TPLL_SSC_EN, opts->dp.ssc ? TPLL_SSC_EN : 0);
-@@ -329,7 +358,8 @@ static int mtk_dp_phy_reset(struct phy *phy)
- 	struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
- 	const struct mtk_dp_phy_pdata *pdata = dp_phy->pdata;
- 	const u32 reg_rst = pdata->regs_dig_glb[DP_PHYD_SW_RST];
--	int ret;
-+	const u32 reg_drv_force = pdata->regs_dig_lane[DP_PHYD_LAN_DRIVING_FORCE];
-+	int i, ret;
- 
- 	/* Clearing bits sets reset state */
- 	regmap_clear_bits(dp_phy->regmap, pdata->off_dig_glb + reg_rst, DP_GLB_SW_RST_PHYD);
-@@ -345,6 +375,15 @@ static int mtk_dp_phy_reset(struct phy *phy)
- 	if (ret)
- 		dev_err(dp_phy->dev, "Could not disable lanes during reset!\n");
- 
-+	/* Reset Voltage Swing and Preemphasis values */
-+	for (i = 0; i < MTK_DP_PHY_MAX_LANES; i++) {
-+		const u32 off_dig_lane = pdata->off_dig_lane[i];
-+
-+		regmap_clear_bits(dp_phy->regmap, off_dig_lane + reg_drv_force,
-+				   PHYD_DP_TX_FORCE_VOLT_SWING_VAL |
-+				   PHYD_DP_TX_FORCE_PRE_EMPH_VAL);
-+	}
-+
- 	return 0;
- }
- 
+   power-domains:
 -- 
 2.54.0
 
