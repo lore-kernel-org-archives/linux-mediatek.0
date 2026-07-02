@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22BFDC43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2026 14:02:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5B74C43327
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2026 15:07:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TRLANPogjG6BWRTX1aijmLnnh9jWiE73CCVCRyKbidE=; b=iTfbus4wM9nV0lOdphKjEgV6bC
-	PXJ9q60YdJGi73FptnbqJ/at6EBp4pVX035lZqRoI8oJk9OqTH7BUZjpQrjtK+RFORNVHkRw+DE24
-	FLz/+uUmhTfvPdGGNfMXz4xHRPKMoEJG8o8eXJQW3jMXvzo4f6or66MUVPsCf3IeTn6Y6CUdkFNPs
-	BMyfk40dCZrcP5JbcM+O+BehJsM7QUyv9tTJQcadl7mWvNwsYgaCZeLqves7aGV8QW3h+se38o1ww
-	3EPSsKkixaORbacQSiKymR90qrJmcfR8MC0z2x/oC4wMqJ7KCmQK4zWcwWZ+zQNF3XovcuFRmeqiG
-	eU7H8xvQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ScyQhIkjFFeLltD3MMNuyE4Zhyfx9/649xL6SwKi5zo=; b=tLQfGwHDJHA8GNPeWtEGB1L2le
+	f8WQieaivPlMWatYonnCFd1XV3+4IxDlXvfOE++68x7TuYjU1sg6l8ImC3O98N6JLceOq+3dpnqwh
+	v17pA4FNVIueQhDhef8llbLva7oOmjUx2n/OX9o7ZfptKPpMQ3PJiYZ4jdhNeMZW8JOvbo5d+YZbk
+	1DWcHeV1OLWPzHsucbsIPXfKpUQ7OgSv/zFdVq9eYEik+W+AFbftLFN8wsHstCIk+TyF2VJtmycb4
+	luJxl6+thfd33B3fIOTARnlZJY6MclGOIIvAIyq1uyw0V+G2+GT+LAPD45kNfBrArfULorBrSLIgE
+	Fi97Z2uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfI0B-00000004aHR-0fhc;
-	Thu, 02 Jul 2026 14:02:51 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wfJ0a-00000004lGj-1Ktz;
+	Thu, 02 Jul 2026 15:07:20 +0000
+Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfI09-00000004aH6-3NxA;
-	Thu, 02 Jul 2026 14:02:49 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id D6324601E0;
-	Thu,  2 Jul 2026 14:02:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0729E1F00A3A;
-	Thu,  2 Jul 2026 14:02:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783000968;
-	bh=TRLANPogjG6BWRTX1aijmLnnh9jWiE73CCVCRyKbidE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=N6ap/tSFutvf35GNTz0GsvSkLAEWYxueVqNTildc9lfjjAsYMBYyhDhhZZQJEh6iY
-	 3p3teI3pgWlL4y0/ZxxfsM+5S680oE+4878wOPWz9gjxMdJ0lGOx3hLmeMh64lDaTK
-	 DtjWoUmygyb5qEr4HiAgCI59ywtogq3eTDKraP/vxbq3vDo7LXmM8He/sn/p82ndoL
-	 Im9/KVEihiF2j5BzZlpds1+uzUMV654VFn2SZ/idZLMS3+lWFGlzZKz4gC4U6caDVw
-	 NgPJvyGwULwvCFOxR86dzw3HFroaT0OboKzS2Y5tv7/Te8y1LDHJQjD7Qw74AcCRkt
-	 VlLCbHyNc3/4A==
-Date: Thu, 2 Jul 2026 16:02:46 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: Simon Horman <horms@kernel.org>,
-	Alexander Lobakin <aleksander.lobakin@intel.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	Madhur Agrawal <madhur.agrawal@airoha.com>
-Subject: Re: [PATCH net-next v7 3/3] net: airoha: defer GDM3/GDM4 WAN mode
- and GDM2 loopback to QoS offload
-Message-ID: <akZvhnIYe-FMfoOo@lore-desk>
-References: <20260701-airoha-ethtool-priv_flags-v7-0-b4153bd44428@kernel.org>
- <20260701-airoha-ethtool-priv_flags-v7-3-b4153bd44428@kernel.org>
+	id 1wfJ0X-00000004lG1-2SMC
+	for linux-mediatek@lists.infradead.org;
+	Thu, 02 Jul 2026 15:07:19 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 8E8312EC1F3;
+	Thu,  2 Jul 2026 17:07:07 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
+	t=1783004831; h=from:subject:date:message-id:to:cc:mime-version:
+	 content-transfer-encoding; bh=ScyQhIkjFFeLltD3MMNuyE4Zhyfx9/649xL6SwKi5zo=;
+	b=pDCrfVriwEIfnYuMy77/ILvwXL/l9d/M8D2nkFUHoCQMWcO4fJVVbuu+rmd0PFyGbsnWH/
+	UZ1NeDWiehSTDvfq6AdWhorMNoK9VJ23IKL7fCCn0+HgdjHGhQV07BJ+ZkbGEYYB+IJM9U
+	+xmJJMcruGJ85mA8MCZAABLXnHktyjeapDNrHxQVMCsXxA68DZuXdfUFJ0PRJU/OuS0T/K
+	Z6mocXcSHGoFvifavCNbkrTAObN7uk3C1ko95FFRuVvKLCuLZPvjBcWkjO8BtbqKSwLS88
+	3k9NYb/QGSNhvi/FCTnEikOg+GUyEeYohT/9X3mtqLu+d7mEQUmBe3w6bve+Wg==
+From: Caleb James DeLisle <cjd@cjdns.fr>
+To: linux-pci@vger.kernel.org
+Cc: linux-mips@vger.kernel.org,
+	naseefkm@gmail.com,
+	ryder.lee@mediatek.com,
+	helgaas@kernel.org,
+	lpieralisi@kernel.org,
+	kwilczynski@kernel.org,
+	mani@kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	ansuelsmth@gmail.com,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Caleb James DeLisle <cjd@cjdns.fr>
+Subject: [PATCH v11] PCI: mediatek: Add support for EcoNet EN7528 SoC
+Date: Thu,  2 Jul 2026 15:07:04 +0000
+Message-Id: <20260702150704.265282-1-cjd@cjdns.fr>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="3joh1UuMhMZBOkHW"
-Content-Disposition: inline
-In-Reply-To: <20260701-airoha-ethtool-priv_flags-v7-3-b4153bd44428@kernel.org>
+Content-Transfer-Encoding: 8bit
+X-Last-TLS-Session-Version: TLSv1.3
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260702_080718_005276_5ABC8DFD 
+X-CRM114-Status: GOOD (  21.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,365 +79,258 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add support for the PCIe present on the EcoNet EN7528 (and EN751221) SoCs.
 
---3joh1UuMhMZBOkHW
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+These SoCs have a mix of Gen1 and Gen2 capable ports, but the Gen2 ports
+require re-training after startup.
 
-On Jul 01, Lorenzo Bianconi wrote:
-> GDM3 and GDM4 ports require GDM2 loopback to be enabled for hardware
-> QoS offload to function. Without it, HTB and ETS offload on these ports
-> do not work.
-> Previously, GDM3/GDM4 ports were automatically configured as WAN with
-> GDM2 loopback enabled during ndo_init(). Add the capability to configure
-> GDM3/GDM4 as WAN/LAN on demand when QoS offload is created or destroyed.
-> Hook airoha_enable_qos_for_gdm34() into TC_HTB_CREATE so that requesting
-> HTB offload on a GDM3/GDM4 LAN port switches it to WAN mode and enables
-> GDM2 loopback, with proper rollback on failure. Introduce the
-> AIROHA_DEV_F_QOS flag to track whether a device has an active HTB
-> qdisc; clear it on TC_HTB_DESTROY. The device keeps its WAN role after
-> qdisc teardown so that its configuration is preserved until another
-> device explicitly needs the WAN role for QoS offload.
-> If another GDM3/GDM4 device already holds the WAN role without an active
-> QoS qdisc, demote it to LAN before promoting the requesting device. Skip
-> the demotion when the requesting device is itself already the WAN device.
-> Since airoha_dev_set_qdma() can now be called on a running device to
-> migrate between QDMA blocks, make dev->qdma an RCU pointer so the TX
-> path can safely dereference it without holding RTNL.
-> Hold flow_offload_mutex in airoha_enable_qos_for_gdm34() and
-> airoha_disable_qos_for_gdm34() around the dev->flags update,
-> airoha_dev_set_qdma() and GDM2 loopback configuration, serializing
-> against concurrent airoha_ppe_hw_init() in the TC_SETUP_CLSFLOWER
-> offload path.
-> Introduce airoha_qdma_deref() helper that wraps rcu_dereference_protected=
-()
-> with a lockdep condition accepting either rtnl_lock or flow_offload_mutex,
-> and use it across all control-path dereferences of the RCU-protected
-> dev->qdma pointer.
-> Add airoha_disable_gdm2_loopback() to disable GDM2 hw loopback.
->=20
-> Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
-> Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
-> Reviewed-by: Simon Horman <horms@kernel.org>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Co-developed-by: Ahmed Naseef <naseefkm@gmail.com>
+Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
+Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
+---
+Rebased on bcabbbd29c53 ("Merge branch 'pci/controller/rzg3s-host'")
+v10: https://lore.kernel.org/linux-mips/20260611082329.243515-1-cjd@cjdns.fr/
+---
+ drivers/pci/controller/Kconfig         |   2 +-
+ drivers/pci/controller/pcie-mediatek.c | 154 +++++++++++++++++++++++++
+ 2 files changed, 155 insertions(+), 1 deletion(-)
 
-Commenting on Sashiko's report:
-https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260701-airoha-ethtool=
--priv_flags-v7-0-b4153bd44428%40kernel.org
+diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
+index 2247709ef6d6..8a3a31b2bc12 100644
+--- a/drivers/pci/controller/Kconfig
++++ b/drivers/pci/controller/Kconfig
+@@ -209,7 +209,7 @@ config PCI_MVEBU
+ 
+ config PCIE_MEDIATEK
+ 	tristate "MediaTek PCIe controller"
+-	depends on ARCH_AIROHA || ARCH_MEDIATEK || COMPILE_TEST
++	depends on ARCH_AIROHA || ARCH_MEDIATEK || ECONET || COMPILE_TEST
+ 	depends on OF
+ 	depends on PCI_MSI
+ 	select IRQ_MSI_LIB
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 8b57c3d75b94..a60d1ae076f8 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -10,11 +10,13 @@
+ #include <linux/bitfield.h>
+ #include <linux/clk.h>
+ #include <linux/delay.h>
++#include <linux/errno.h>
+ #include <linux/iopoll.h>
+ #include <linux/irq.h>
+ #include <linux/irqchip/chained_irq.h>
+ #include <linux/irqchip/irq-msi-lib.h>
+ #include <linux/irqdomain.h>
++#include <linux/kconfig.h>
+ #include <linux/kernel.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/msi.h>
+@@ -78,6 +80,7 @@
+ 
+ #define PCIE_CONF_VEND_ID	0x100
+ #define PCIE_CONF_DEVICE_ID	0x102
++#define PCIE_CONF_REV_CLASS	0x104
+ #define PCIE_CONF_CLASS_ID	0x106
+ 
+ #define PCIE_INT_MASK		0x420
+@@ -90,6 +93,11 @@
+ #define MSI_MASK		BIT(23)
+ #define MTK_MSI_IRQS_NUM	32
+ 
++#define EN7528_HOST_MODE	0x00804201
++#define EN7528_LINKUP_REG	0x50
++#define EN7528_RC0_LINKUP	BIT(1)
++#define EN7528_RC1_LINKUP	BIT(2)
++
+ #define PCIE_AHB_TRANS_BASE0_L	0x438
+ #define PCIE_AHB_TRANS_BASE0_H	0x43c
+ #define AHB2PCIE_SIZE(x)	((x) & GENMASK(4, 0))
+@@ -145,12 +153,15 @@ struct mtk_pcie_port;
+  * @MTK_PCIE_FIX_DEVICE_ID: host's device ID needed to be fixed
+  * @MTK_PCIE_NO_MSI: Bridge has no MSI support, and relies on an external block
+  * @MTK_PCIE_SKIP_RSTB: Skip calling RSTB bits on PCIe probe
++ * @MTK_PCIE_RETRAIN: Retrain link to bridge after startup because some
++ *                    Gen2-capable devices start as Gen1.
+  */
+ enum mtk_pcie_quirks {
+ 	MTK_PCIE_FIX_CLASS_ID = BIT(0),
+ 	MTK_PCIE_FIX_DEVICE_ID = BIT(1),
+ 	MTK_PCIE_NO_MSI = BIT(2),
+ 	MTK_PCIE_SKIP_RSTB = BIT(3),
++	MTK_PCIE_RETRAIN = BIT(4),
+ };
+ 
+ /**
+@@ -756,6 +767,134 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+ 	return 0;
+ }
+ 
++static int mtk_pcie_startup_port_en7528(struct mtk_pcie_port *port)
++{
++	struct mtk_pcie *pcie = port->pcie;
++	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
++	struct resource *mem = NULL;
++	struct resource_entry *entry;
++	u32 val, link_mask;
++	int err;
++
++	entry = resource_list_first_type(&host->windows, IORESOURCE_MEM);
++	if (entry)
++		mem = entry->res;
++	if (!mem)
++		return -EINVAL;
++
++	if (!pcie->cfg) {
++		dev_err(pcie->dev, "EN7528: pciecfg syscon not available\n");
++		return -EINVAL;
++	}
++
++	/* Assert all reset signals */
++	writel(0, port->base + PCIE_RST_CTRL);
++
++	/*
++	 * Enable PCIe link down reset, if link status changed from link up to
++	 * link down, this will reset MAC control registers and configuration
++	 * space.
++	 */
++	writel(PCIE_LINKDOWN_RST_EN, port->base + PCIE_RST_CTRL);
++
++	msleep(PCIE_T_PVPERL_MS);
++
++	/* De-assert PHY, PE, PIPE, MAC and configuration reset */
++	val = readl(port->base + PCIE_RST_CTRL);
++	val |= PCIE_PHY_RSTB | PCIE_PERSTB | PCIE_PIPE_SRSTB |
++	       PCIE_MAC_SRSTB | PCIE_CRSTB;
++	writel(val, port->base + PCIE_RST_CTRL);
++
++	writel(PCIE_CLASS_CODE | PCIE_REVISION_ID,
++	       port->base + PCIE_CONF_REV_CLASS);
++	writel(EN7528_HOST_MODE, port->base);
++
++	link_mask = (port->slot == 0) ? EN7528_RC0_LINKUP : EN7528_RC1_LINKUP;
++
++	/* 100ms timeout value should be enough for Gen1/2 training */
++	err = regmap_read_poll_timeout(pcie->cfg, EN7528_LINKUP_REG, val,
++				       !!(val & link_mask), 20,
++				       PCI_PM_D3COLD_WAIT * USEC_PER_MSEC);
++	if (err) {
++		dev_err(pcie->dev, "EN7528: port%d link timeout\n", port->slot);
++		return -ETIMEDOUT;
++	}
++
++	/* Activate INTx interrupts */
++	val = readl(port->base + PCIE_INT_MASK);
++	val &= ~INTX_MASK;
++	writel(val, port->base + PCIE_INT_MASK);
++
++	if (IS_ENABLED(CONFIG_PCI_MSI))
++		mtk_pcie_enable_msi(port);
++
++	/* Set AHB to PCIe translation windows */
++	val = lower_32_bits(mem->start) |
++	      AHB2PCIE_SIZE(fls(resource_size(mem)));
++	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
++
++	val = upper_32_bits(mem->start);
++	writel(val, port->base + PCIE_AHB_TRANS_BASE0_H);
++
++	writel(WIN_ENABLE, port->base + PCIE_AXI_WINDOW0);
++
++	if (!IS_BUILTIN(CONFIG_PCIE_MEDIATEK))
++		dev_info(pcie->dev,
++			 "module not built-in, Gen2 unavailable even if supported\n");
++
++	return 0;
++}
++
++/**
++ * mtk_pcie_retrain - retrain the root bridge link if needed
++ * @dev: The device, for use in logging
++ * @host: The host bridge which contains the link
++ *
++ * Due to what is likely a hardware bug, some devices (notably EcoNet) start up
++ * as Gen1, and must be retrained once after initial configuration in order to
++ * reach Gen2.
++ *
++ * These devices always self-identify as Gen2 capable, but sometimes the PHY is
++ * only capable of Gen1 operation, and sometimes the PCIe card (e.g. wifi) is
++ * only Gen1 capable. Therefore it is most convenient to retrain every port
++ * after startup.
++ */
++static int mtk_pcie_retrain(struct device *dev, struct pci_host_bridge *host)
++{
++	struct pci_dev *rp;
++	int ret = -ENOENT;
++	u16 lnksta = 0;
++	u32 speed;
++
++	/* Should already have been warned about during startup_port */
++	if (!IS_BUILTIN(CONFIG_PCIE_MEDIATEK))
++		return 0;
++
++	guard(rwsem_read)(&pci_bus_sem);
++
++	for_each_pci_bridge(rp, host->bus) {
++		if (pci_pcie_type(rp) != PCI_EXP_TYPE_ROOT_PORT)
++			continue;
++
++#if IS_BUILTIN(CONFIG_PCIE_MEDIATEK)
++		ret = pcie_retrain_link(rp, true);
++#endif
++
++		if (ret)
++			return dev_err_probe(&rp->dev, ret,
++					     "failed to retrain port\n");
++
++		pcie_capability_read_word(rp, PCI_EXP_LNKSTA, &lnksta);
++		speed = lnksta & PCI_EXP_LNKSTA_CLS;
++
++		pci_info(rp, "link retrained, speed %s\n",
++			 pci_speed_string(pcie_link_speed[speed]));
++
++	}
++
++	return 0;
++}
++
+ static void __iomem *mtk_pcie_map_bus(struct pci_bus *bus,
+ 				      unsigned int devfn, int where)
+ {
+@@ -1169,6 +1308,13 @@ static int mtk_pcie_probe(struct platform_device *pdev)
+ 	if (err)
+ 		goto put_resources;
+ 
++	/*
++	 * Ignore error because pci_host_probe() was already called, and in any
++	 * case it is possible that the port will still work as Gen1.
++	 */
++	if (pcie->soc->quirks & MTK_PCIE_RETRAIN)
++		mtk_pcie_retrain(dev, host);
++
+ 	return 0;
+ 
+ put_resources:
+@@ -1290,8 +1436,16 @@ static const struct mtk_pcie_soc mtk_pcie_soc_mt7629 = {
+ 	.quirks = MTK_PCIE_FIX_CLASS_ID | MTK_PCIE_FIX_DEVICE_ID,
+ };
+ 
++static const struct mtk_pcie_soc mtk_pcie_soc_en7528 = {
++	.ops = &mtk_pcie_ops_v2,
++	.startup = mtk_pcie_startup_port_en7528,
++	.setup_irq = mtk_pcie_setup_irq,
++	.quirks = MTK_PCIE_RETRAIN,
++};
++
+ static const struct of_device_id mtk_pcie_ids[] = {
+ 	{ .compatible = "airoha,an7583-pcie", .data = &mtk_pcie_soc_an7583 },
++	{ .compatible = "econet,en7528-pcie", .data = &mtk_pcie_soc_en7528 },
+ 	{ .compatible = "mediatek,mt2701-pcie", .data = &mtk_pcie_soc_v1 },
+ 	{ .compatible = "mediatek,mt7623-pcie", .data = &mtk_pcie_soc_v1 },
+ 	{ .compatible = "mediatek,mt2712-pcie", .data = &mtk_pcie_soc_mt2712 },
 
-> ---
->  drivers/net/ethernet/airoha/airoha_eth.c  | 219 ++++++++++++++++++++++++=
-++----
->  drivers/net/ethernet/airoha/airoha_eth.h  |  13 +-
->  drivers/net/ethernet/airoha/airoha_ppe.c  |   9 +-
->  drivers/net/ethernet/airoha/airoha_regs.h |   1 +
->  4 files changed, 214 insertions(+), 28 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index 2c9ceb9f16f8..609a5ea67fb7 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+base-commit: bcabbbd29c53a5b07eff29f8861d045b2c709c26
+-- 
+2.39.5
 
-[...]
-
-> +static void airoha_disable_qos_for_gdm34(struct net_device *netdev)
-> +{
-> +	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> +	struct airoha_gdm_port *port =3D dev->port;
-> +	int err;
-> +
-> +	if (port->id !=3D AIROHA_GDM3_IDX &&
-> +	    port->id !=3D AIROHA_GDM4_IDX)
-> +		return;
-> +
-> +	err =3D airoha_disable_gdm2_loopback(dev);
-> +	if (err)
-> +		netdev_warn(netdev,
-> +			    "failed disabling GDM2 loopback: %d\n", err);
-> +
-> +	dev->flags &=3D ~AIROHA_DEV_F_WAN;
-> +	airoha_dev_set_qdma(dev);
-> +
-> +	airoha_set_macaddr(dev, netdev->dev_addr);
-
-- Should the return value of airoha_set_macaddr() be checked here?
-  airoha_set_macaddr() can return -EINVAL when the device MAC MSBs do
-  not match other same-role sibling devices:
-  	if (!is_zero_ether_addr(ref_addr) && memcmp(ref_addr, addr, 3)) {
-  		...
-  		return -EINVAL;
-  	}
-  Since AIROHA_DEV_F_WAN has just been cleared and dev->qdma has been
-  switched to QDMA0, the scan now iterates LAN-role peers.  If the
-  ex-WAN MAC's top three bytes disagree with the LAN peers, the call
-  returns -EINVAL and the HW MAC registers are left unwritten while
-  the software state has already been flipped to LAN.
-  - The asymmetry is intentional. airoha_disable_qos_for_gdm34() is a
-    teardown path that returns void, the demotion has to happen regardless.
-    Moreover, airoha_set_macaddr() can fail just if the device is
-    misconfigured.
-
-
-> +	if (netif_running(netdev))
-> +		airoha_set_gdm_port_fwd_cfg(dev->eth,
-> +					    REG_GDM_FWD_CFG(port->id),
-> +					    FE_PSE_PORT_PPE1);
-> +}
-> +
-> +static int airoha_enable_qos_for_gdm34(struct net_device *netdev,
-> +				       struct netlink_ext_ack *extack)
-> +{
-> +	struct airoha_gdm_dev *wan_dev, *dev =3D netdev_priv(netdev);
-> +	struct airoha_gdm_port *port =3D dev->port;
-> +	struct airoha_eth *eth =3D dev->eth;
-> +	int err =3D -EBUSY;
-> +
-> +	if (port->id !=3D AIROHA_GDM3_IDX &&
-> +	    port->id !=3D AIROHA_GDM4_IDX) {
-> +		/* HW QoS is always supported by GDM1 and GDM2 */
-> +		return 0;
-> +	}
-> +
-> +	if (!airoha_is_lan_gdm_dev(dev)) /* Already enabled */
-> +		return 0;
-> +
-> +	mutex_lock(&flow_offload_mutex);
-> +
-> +	wan_dev =3D airoha_get_wan_gdm_dev(eth);
-> +	if (wan_dev) {
-> +		if ((wan_dev->flags & AIROHA_DEV_F_QOS) ||
-> +		    wan_dev->port->id =3D=3D AIROHA_GDM2_IDX) {
-> +			NL_SET_ERR_MSG_MOD(extack,
-> +					   "QoS configured for WAN device");
-> +			goto error_unlock;
-> +		}
-> +		airoha_disable_qos_for_gdm34(netdev_from_priv(wan_dev));
-> +	}
-> +
-> +	dev->flags |=3D AIROHA_DEV_F_WAN;
-> +	airoha_dev_set_qdma(dev);
-> +	err =3D airoha_enable_gdm2_loopback(dev);
-> +	if (err)
-> +		goto error_disable_wan;
-> +
-> +	err =3D airoha_set_macaddr(dev, netdev->dev_addr);
-> +	if (err)
-> +		goto error_disable_loopback;
-> +
-> +	if (netif_running(netdev)) {
-> +		u32 pse_port;
-> +
-> +		pse_port =3D airoha_ppe_is_enabled(eth, 1) ? FE_PSE_PORT_PPE2
-> +							 : FE_PSE_PORT_PPE1;
-> +		airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(port->id),
-> +					    pse_port);
-> +	}
-> +
-> +	mutex_unlock(&flow_offload_mutex);
-> +
-> +	return 0;
-> +
-> +error_disable_loopback:
-> +	airoha_disable_gdm2_loopback(dev);
-> +error_disable_wan:
-> +	dev->flags &=3D ~AIROHA_DEV_F_WAN;
-> +	airoha_dev_set_qdma(dev);
-> +error_unlock:
-> +	mutex_unlock(&flow_offload_mutex);
-> +
-> +	return err;
-
-- Does this failure path fully implement the "proper rollback on failure"
-  described in the commit message?
-  Earlier in the function, if a peer wan_dev exists it is demoted via:
-  	airoha_disable_qos_for_gdm34(netdev_from_priv(wan_dev));
-  That helper clears AIROHA_DEV_F_WAN on wan_dev, swaps its RCU qdma
-  pointer to QDMA0, disables GDM2 loopback, rewrites its MAC to the LAN
-  registers, and (if wan_dev was running) sets its REG_GDM_FWD_CFG to
-  FE_PSE_PORT_PPE1.
-  If a later step for the requesting device fails, the error labels
-  error_disable_loopback / error_disable_wan / error_unlock only unwind
-  the requesting device.  The demoted wan_dev is never re-promoted.
-  For example, airoha_set_macaddr(dev, netdev->dev_addr) can return
-  -EINVAL when the requesting device's MAC MSBs disagree with the other
-  WAN-role peers:
-  	if (!is_zero_ether_addr(ref_addr) && memcmp(ref_addr, addr, 3)) {
-  		...
-  		return -EINVAL;
-  	}
-  In that case the failed tc qdisc add returns to userspace, the
-  requesting device is rolled back to LAN, and no GDM3/GDM4 device holds
-  the WAN role anymore.  The previously working WAN device silently loses
-  its WAN role and QDMA1 binding.
-  Should the error paths re-promote wan_dev, or should the preconditions
-  that can fail (MAC MSB check, GDM2 loopback setup) be validated before
-  mutating the peer's state?
-  - This issue has been already reported in the past. If the configuration
-    fails, I think there is no point to move back the previous device as WA=
-N.
-    The user will be able to log again and re-apply the configuration.
-    Moreover, airoha_enable_qos_for_gdm34() can fail just if the device is
-    misconfigured (failures in airoha_enable_gdm2_loopback() or
-    airoha_set_macaddr()).
-
-Regards,
-Lorenzo
-
-> +}
-> +
->  static int airoha_tc_htb_destroy(struct net_device *netdev)
->  {
->  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> @@ -3057,6 +3217,8 @@ static int airoha_tc_htb_destroy(struct net_device =
-*netdev)
->  	for_each_set_bit(q, dev->qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS)
->  		airoha_tc_remove_htb_queue(netdev, q);
-> =20
-> +	dev->flags &=3D ~AIROHA_DEV_F_QOS;
-> +
->  	return 0;
->  }
-> =20
-> @@ -3076,24 +3238,33 @@ static int airoha_tc_get_htb_get_leaf_queue(struc=
-t net_device *netdev,
->  	return 0;
->  }
-> =20
-> -static int airoha_tc_setup_qdisc_htb(struct net_device *dev,
-> +static int airoha_tc_setup_qdisc_htb(struct net_device *netdev,
->  				     struct tc_htb_qopt_offload *opt)
->  {
->  	switch (opt->command) {
-> -	case TC_HTB_CREATE:
-> +	case TC_HTB_CREATE: {
-> +		struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> +		int err;
-> +
-> +		err =3D airoha_enable_qos_for_gdm34(netdev, opt->extack);
-> +		if (err)
-> +			return err;
-> +
-> +		dev->flags |=3D AIROHA_DEV_F_QOS;
->  		break;
-> +	}
->  	case TC_HTB_DESTROY:
-> -		return airoha_tc_htb_destroy(dev);
-> +		return airoha_tc_htb_destroy(netdev);
->  	case TC_HTB_NODE_MODIFY:
-> -		return airoha_tc_htb_modify_queue(dev, opt);
-> +		return airoha_tc_htb_modify_queue(netdev, opt);
->  	case TC_HTB_LEAF_ALLOC_QUEUE:
-> -		return airoha_tc_htb_alloc_leaf_queue(dev, opt);
-> +		return airoha_tc_htb_alloc_leaf_queue(netdev, opt);
->  	case TC_HTB_LEAF_DEL:
->  	case TC_HTB_LEAF_DEL_LAST:
->  	case TC_HTB_LEAF_DEL_LAST_FORCE:
-> -		return airoha_tc_htb_delete_leaf_queue(dev, opt);
-> +		return airoha_tc_htb_delete_leaf_queue(netdev, opt);
->  	case TC_HTB_LEAF_QUERY_QUEUE:
-> -		return airoha_tc_get_htb_get_leaf_queue(dev, opt);
-> +		return airoha_tc_get_htb_get_leaf_queue(netdev, opt);
->  	default:
->  		return -EOPNOTSUPP;
->  	}
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
-net/airoha/airoha_eth.h
-> index ac5f571f3e53..a314330fcd48 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.h
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-> @@ -537,11 +537,12 @@ struct airoha_qdma {
-> =20
->  enum airoha_dev_flags {
->  	AIROHA_DEV_F_WAN =3D BIT(0),
-> +	AIROHA_DEV_F_QOS =3D BIT(1),
->  };
-> =20
->  struct airoha_gdm_dev {
-> +	struct airoha_qdma __rcu *qdma;
->  	struct airoha_gdm_port *port;
-> -	struct airoha_qdma *qdma;
->  	struct airoha_eth *eth;
-> =20
->  	DECLARE_BITMAP(qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS);
-> @@ -677,6 +678,16 @@ int airoha_get_fe_port(struct airoha_gdm_dev *dev);
->  bool airoha_is_valid_gdm_dev(struct airoha_eth *eth,
->  			     struct airoha_gdm_dev *dev);
-> =20
-> +extern struct mutex flow_offload_mutex;
-> +
-> +static inline struct airoha_qdma *
-> +airoha_qdma_deref(struct airoha_gdm_dev *dev)
-> +{
-> +	return rcu_dereference_protected(dev->qdma,
-> +					 lockdep_rtnl_is_held() ||
-> +					 lockdep_is_held(&flow_offload_mutex));
-> +}
-> +
->  void airoha_ppe_set_cpu_port(struct airoha_gdm_dev *dev, u8 ppe_id, u8 f=
-port);
->  bool airoha_ppe_is_enabled(struct airoha_eth *eth, int index);
->  void airoha_ppe_check_skb(struct airoha_ppe_dev *dev, struct sk_buff *sk=
-b,
-> diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ether=
-net/airoha/airoha_ppe.c
-> index 42f4b0f21d17..0f260c50ac3c 100644
-> --- a/drivers/net/ethernet/airoha/airoha_ppe.c
-> +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-> @@ -15,7 +15,10 @@
->  #include "airoha_regs.h"
->  #include "airoha_eth.h"
-> =20
-> -static DEFINE_MUTEX(flow_offload_mutex);
-> +/* Serialize airoha_gdm_dev flags, QDMA pointer and PPE CPU port
-> + * configuration.
-> + */
-> +DEFINE_MUTEX(flow_offload_mutex);
->  static DEFINE_SPINLOCK(ppe_lock);
-> =20
->  static const struct rhashtable_params airoha_flow_table_params =3D {
-> @@ -86,8 +89,8 @@ static u32 airoha_ppe_get_timestamp(struct airoha_ppe *=
-ppe)
-> =20
->  void airoha_ppe_set_cpu_port(struct airoha_gdm_dev *dev, u8 ppe_id, u8 f=
-port)
->  {
-> -	struct airoha_qdma *qdma =3D dev->qdma;
-> -	struct airoha_eth *eth =3D qdma->eth;
-> +	struct airoha_qdma *qdma =3D airoha_qdma_deref(dev);
-> +	struct airoha_eth *eth =3D dev->eth;
->  	u8 qdma_id =3D qdma - &eth->qdma[0];
->  	u32 fe_cpu_port;
-> =20
-> diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethe=
-rnet/airoha/airoha_regs.h
-> index 436f3c8779c1..4e17dfbcf2b8 100644
-> --- a/drivers/net/ethernet/airoha/airoha_regs.h
-> +++ b/drivers/net/ethernet/airoha/airoha_regs.h
-> @@ -376,6 +376,7 @@
-> =20
->  #define REG_SRC_PORT_FC_MAP6		0x2298
->  #define FC_ID_OF_SRC_PORT_MASK(_n)	GENMASK(4 + ((_n) << 3), ((_n) << 3))
-> +#define FC_MAP6_DEF_VALUE		0x1b1a1918
-> =20
->  #define REG_CDM5_RX_OQ1_DROP_CNT	0x29d4
-> =20
->=20
-> --=20
-> 2.54.0
->=20
-
---3joh1UuMhMZBOkHW
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCakZvhgAKCRA6cBh0uS2t
-rIRYAP9gzcl34KcdQs9GVZfh4viK4ItMdpu29s/BbxNVtTtMNAD/RwZlJOqrEZwM
-fGTIrKivFyTiI/EeXxJk4PrT3kNzNwI=
-=zq2G
------END PGP SIGNATURE-----
-
---3joh1UuMhMZBOkHW--
 
