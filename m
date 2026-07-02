@@ -4,78 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2621EC44500
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2026 13:17:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22095C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2026 13:31:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SMqwiBjsY811wsdhvrMKy4I/6nVJL+QwyBvMLtPCIa0=; b=H9R2z2PjqOfEnawSai+qIVOKZv
-	n/N4tFHEHtaXU8NB3jjLWyA6SfUrhJQ/JCZTSl58DPksBGZyctjaIxf/mL+7vfDchMt7Cb/cwRQcm
-	zlBVe/kcHA9sTBNyDEC3ZOblnUlUiAF5lmolyX3QVrJP10kIc8q13QHYXbpuakEkxXtLDqlt6DzFz
-	FFks3czN+GCps7n/80cTH1C+MnEK/Nyc5bxS5/ZCJIZ5vVNwIChtBOIhDnGwaOOvc+gi7Fpakqheq
-	4CiDrLXUhWmWDf2pxwYwKCnBDGPj4/2Pb4N+QwyNTo5qVOz+O4ImkgN9Gs+Hhwok0L0Vro2sEOQR7
-	AmUCs6Rw==;
+	bh=0HPk8+YsOQqKlukslOqig0MS3VE3L+5Yg6OWF2ZMGn8=; b=F7pK/C8nOdLIZM8RvUDzvMWpV8
+	30D3VOIXRqV8+KzIu/D0RmKjITcLceSDNuA9Sn1o+5czS5HriyuCvnyO5c06dFg638iCoQfKBNpet
+	F5ZhFW+745HYcw8O933e76Co3TcniL51cps+l6yczf017+l6QK4WyMn+TXdSiJc7TWYoMtk+8xbPW
+	9aoXUoVu9qGm9wqFiVxQwYHa3tflJSljChPedzOQEJxVjWs5qIJLaG/ZAUM36StZNLqZ8BBY8p13k
+	wbvE1cTQ2JJ4nPOciQOHq7cqQPNQ9efNH40uQoA3MdzQT5lnPM1/Sn5Fm/a4BwDJ+NRwIjvStpV4R
+	DI/+XCHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfHIf-00000004VHr-2X6Y;
-	Thu, 02 Jul 2026 13:17:53 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1wfHVz-00000004WWa-2ged;
+	Thu, 02 Jul 2026 13:31:39 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfHId-00000004VGm-1OoO;
-	Thu, 02 Jul 2026 13:17:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=SMqwiBjsY811wsdhvrMKy4I/6nVJL+QwyBvMLtPCIa0=; b=hz0z6wqwjfes3BE50Xqto7zsNL
-	9eVqpXP/xwtLZ115zutnnXHtn1IIhPGlpCdXwVzOuERWVewx3WLOOLC3DtMaFCaHUGSrgwqHIL6wS
-	1Ub2iKLLM8VjFXFfAhXU7ogEuMLDtk0Q9ziEQjwCJEKijQYMU9FOJl3ABt7/jIsyvdog=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1wfHHv-00ANFi-8x; Thu, 02 Jul 2026 15:17:07 +0200
-Date: Thu, 2 Jul 2026 15:17:07 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: "Wu. JackBB (GSM)" <JackBB_Wu@compal.com>
-Cc: Loic Poulain <loic.poulain@oss.qualcomm.com>,
-	Sergey Ryazanov <ryazanov.s.a@gmail.com>,
-	Johannes Berg <johannes@sipsolutions.net>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
+	id 1wfHVx-00000004WW4-2P9i;
+	Thu, 02 Jul 2026 13:31:37 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 99DCA60120;
+	Thu,  2 Jul 2026 13:31:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB5B61F000E9;
+	Thu,  2 Jul 2026 13:31:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1782999096;
+	bh=0HPk8+YsOQqKlukslOqig0MS3VE3L+5Yg6OWF2ZMGn8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=c/RIu+kahcF183i9PsQbNfmJpGsLWoMRFzygjmp9ZBKn397N/v0SpKiLTMhwYFGep
+	 d6mhTrCt6K0HZ0tbxVvt010eDIKRrI7PVL3ePaCQiYesURKzJyDsbGNGPjEGjjA41P
+	 y68ko3+ChB/+vGEYX68SySMkI2H4XvFZl14m/jCO+quwpMMq0QiL6ovaF+TJAXGBIx
+	 VDR4BLf5nfL1hERcGEOybAMxHH+oBzy5ckm9ktEc4AQOlnvujUJPhUBMermgEVwJRP
+	 blOux97Y38AqiNh3xOgz4dHKFasyc29qsHmCHCaaoV9UiH4hQV1JVjPbPfgJzr0fyD
+	 neNcPQZSD0Erw==
+Date: Thu, 2 Jul 2026 15:31:34 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Wen-Zhi Huang <wen-zhi.huang@mediatek.com>,
-	Shi-Wei Yeh <shi-wei.yeh@mediatek.com>,
-	Minano Tseng <Minano.tseng@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Simon Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
-	Shuah Khan <skhan@linuxfoundation.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>
-Subject: Re: [External Mail] Re: [PATCH v3 2/7] net: wwan: t9xx: Add control
- plane transaction layer
-Message-ID: <1e75c090-f4aa-4a02-82f5-fd4f3854acbe@lunn.ch>
-References: <20260624-t9xx_driver_v1-v3-0-73ff03f60c48@compal.com>
- <20260624-t9xx_driver_v1-v3-2-73ff03f60c48@compal.com>
- <2a90ae6b-2b6d-4340-b557-915252cc3488@lunn.ch>
- <49939d4d682f4c1fb359973ea2cdbd00@compal.com>
- <92b1e341-31a1-4f60-80d5-ccf8f742a38a@lunn.ch>
- <4ec081f8df234cc584702abc67213965@compal.com>
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: Simon Horman <horms@kernel.org>,
+	Alexander Lobakin <aleksander.lobakin@intel.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next v7 2/3] net: airoha: fix ETS QoS stats counter
+ underflow and cross-channel corruption
+Message-ID: <akZoNu-5JGv0eoyl@lore-desk>
+References: <20260701-airoha-ethtool-priv_flags-v7-0-b4153bd44428@kernel.org>
+ <20260701-airoha-ethtool-priv_flags-v7-2-b4153bd44428@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="aiGdtKHDVLsOXAYb"
 Content-Disposition: inline
-In-Reply-To: <4ec081f8df234cc584702abc67213965@compal.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_061751_394962_584901CC 
-X-CRM114-Status: UNSURE (   6.70  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20260701-airoha-ethtool-priv_flags-v7-2-b4153bd44428@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,14 +75,131 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> We will also remove all unnecessary devm_kfree() calls from probe
-> error paths and remove paths, keeping them only where resources
-> are freed and re-allocated at runtime (e.g., CLDMA queue lifecycle
-> during modem reset cycles).
 
-There is no point using devm_ if you are going to manually manage
-their release. Anything which has a shorter lifetime than the device
-should use kzalloc()/kfree().
+--aiGdtKHDVLsOXAYb
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-       Andrew
+> airoha_qdma_get_tx_ets_stats() has two bugs:
+> - The hardware counters read via airoha_qdma_rr() are 32-bit values
+>   but are stored in u64 locals and subtracted from u64 baselines. When
+>   a 32-bit hardware counter wraps around, the subtraction produces a
+>   large underflow value passed to _bstats_update().
+> - The baseline counters (cpu_tx_packets, fwd_tx_packets) are stored as
+>   single per-device fields, but airoha_qdma_get_tx_ets_stats() is
+>   called with different channel values (0-3). Each call reads a
+>   different channel's hardware counter but overwrites the same
+>   baseline, corrupting the delta computation for other channels.
+>=20
+> Fix both by:
+> - Narrowing the counter locals and baselines to u32 so that 32-bit
+>   unsigned subtraction handles wrap-around naturally.
+> - Grouping the baselines into a per-channel qos_stats array so each
+>   channel tracks its own previous counter value independently.
+>=20
+> Fixes: 20bf7d07c956 ("net: airoha: Add sched ETS offload support")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+
+commenting on sashiko's report:
+https://sashiko.dev/#/patchset/20260701-airoha-ethtool-priv_flags-v7-0-b415=
+3bd44428%40kernel.org
+
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c | 18 +++++++++++-------
+>  drivers/net/ethernet/airoha/airoha_eth.h |  7 ++++---
+>  2 files changed, 15 insertions(+), 10 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
+net/airoha/airoha_eth.c
+> index 8bba54ebcf07..2c9ceb9f16f8 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -2491,16 +2491,20 @@ static int airoha_qdma_get_tx_ets_stats(struct ne=
+t_device *netdev, int channel,
+>  {
+>  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+>  	struct airoha_qdma *qdma =3D dev->qdma;
+> +	u32 cpu_tx_packets, fwd_tx_packets;
+> +	u64 tx_packets;
+> =20
+> -	u64 cpu_tx_packets =3D airoha_qdma_rr(qdma, REG_CNTR_VAL(channel << 1));
+> -	u64 fwd_tx_packets =3D airoha_qdma_rr(qdma,
+> -					    REG_CNTR_VAL((channel << 1) + 1));
+> -	u64 tx_packets =3D (cpu_tx_packets - dev->cpu_tx_packets) +
+> -			 (fwd_tx_packets - dev->fwd_tx_packets);
+> +	cpu_tx_packets =3D airoha_qdma_rr(qdma, REG_CNTR_VAL(channel << 1));
+> +	fwd_tx_packets =3D airoha_qdma_rr(qdma,
+> +					REG_CNTR_VAL((channel << 1) + 1));
+> +	tx_packets =3D (u32)(cpu_tx_packets -
+> +			   dev->qos_stats[channel].cpu_tx_packets) +
+> +		     (u32)(fwd_tx_packets -
+> +			   dev->qos_stats[channel].fwd_tx_packets);
+
+- Will this addition overflow in 32-bit space before the result is assigned=
+ to
+  the 64-bit tx_packets?
+  - I do not think this is a problem since we are just considering the delta
+    betwen cpu_tx_packets/fwd_tx_packets and the previous value. Moreover, =
+the
+    u32 cast will take care of possible wrap-around.
+
+> =20
+>  	_bstats_update(opt->stats.bstats, 0, tx_packets);
+
+- This isn't a bug introduced by this patch, but does calling _bstats_updat=
+e()
+  here directly from process context race with the software datapath?
+  - Sashiko is right here. This is a pre-existing (theoretical) issue not
+    introduced by this patch. However, since the Airoha EN7581/EN7583 is
+    ARM64-only, u64_stats_update_begin/end are NOPs on this platform and
+    there is no actual race. IIUC the seqcount corruption scenario only
+    applies to 32-bit architectures. I guess we can=20
+
+Regards,
+Lorenzo
+
+> -	dev->cpu_tx_packets =3D cpu_tx_packets;
+> -	dev->fwd_tx_packets =3D fwd_tx_packets;
+> +	dev->qos_stats[channel].cpu_tx_packets =3D cpu_tx_packets;
+> +	dev->qos_stats[channel].fwd_tx_packets =3D fwd_tx_packets;
+> =20
+>  	return 0;
+>  }
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
+net/airoha/airoha_eth.h
+> index 87ab3ea10664..ac5f571f3e53 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> @@ -545,9 +545,10 @@ struct airoha_gdm_dev {
+>  	struct airoha_eth *eth;
+> =20
+>  	DECLARE_BITMAP(qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS);
+> -	/* qos stats counters */
+> -	u64 cpu_tx_packets;
+> -	u64 fwd_tx_packets;
+> +	struct {
+> +		u32 cpu_tx_packets;
+> +		u32 fwd_tx_packets;
+> +	} qos_stats[AIROHA_NUM_QOS_CHANNELS];
+> =20
+>  	u32 flags;
+>  	int nbq;
+>=20
+> --=20
+> 2.54.0
+>=20
+
+--aiGdtKHDVLsOXAYb
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCakZoNgAKCRA6cBh0uS2t
+rNc/AP9d+2YOP1S1SNyBHjNiFhBfuR8jv/9MDmMjZxCpFo7S2gD7BatNzmZ6nP1/
+RIQIliLks6/sHt9qcjkyHXxERoiP3Qs=
+=uGrz
+-----END PGP SIGNATURE-----
+
+--aiGdtKHDVLsOXAYb--
 
