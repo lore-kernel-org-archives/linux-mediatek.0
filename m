@@ -4,64 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC139C43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2026 08:00:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EBE3C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2026 08:22:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q4PYqXEPA9CrErHqa91ZJaH1kjYdbpYUf9UuYq6zkao=; b=xL5QJPQ9I4y47Icr13WcACHS4d
-	rwYyfxXi6inJogMJuWyOaalzGbRn5F2CeLWIN2+7dT36T5qQz44H9QS18l1ZwuT6PKh6tCG4T3ulw
-	xjHXxvVtBzStdnuDtzptwq4PpExEQ7JYu3J7MaQBMGi2pYELAll1/AHWKbdUJYqCIRfYpoHpWaVfm
-	rhUsNYw8wa9BJ0a1xaYZ//UBV2wQ7JmAUlxJag+OkrlhmfFrUPaIY0AZIJ+G9HbHhg/oZFhIoMdFO
-	4NhYn8E6uYJ5MDUuzzbDIQ8IZlqkIzxwacnwr2atNJjFMUpQjBufzIwT75K5JhuQ/LgsdQr872DI7
-	c+gsIq9w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=i07GUu6cLZiRMg+KpKsbgcQqGtHU6wKn9pZZaj1EafY=; b=dcZY1m1gVCbOkn1lp45wwzCq+V
+	VktTyPY7KDOiA4sWMk8Fcq0Vwsu7y7qSuthUn7ux1iEPGUMB7fikgsdkF+ZSp4YXrUZtpVfKx9XYk
+	eyq+CIGurRqla36oW1BSlJ7eLERl84MxaS5pU2OMBuBYZDdIUI9L5MHn9jd2OB9A6aODEPR7O74VE
+	5uCc6aiLq4Pbx0brD6TfzrKse0NX7ku8YFYLMgNcqQuFAGxqD00dx+gBpSkR9864Z30oQMZ8sSB00
+	G4qfO4Y3pLB1pSXznWGQxTs/BzDeAY6VzQlM1F2GTMDQDXVBPiSOYn9ph+F9lOH7tElYb6+deWC6M
+	jpdlyhBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfCL7-00000003nHJ-3Frt;
-	Thu, 02 Jul 2026 08:00:05 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wfCgN-00000003qVx-3ARk;
+	Thu, 02 Jul 2026 08:22:03 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfCL6-00000003nGE-17tt;
-	Thu, 02 Jul 2026 08:00:04 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id A86CE6001D;
-	Thu,  2 Jul 2026 08:00:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0887B1F00A3A;
-	Thu,  2 Jul 2026 08:00:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1782979203;
-	bh=Q4PYqXEPA9CrErHqa91ZJaH1kjYdbpYUf9UuYq6zkao=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=nfGzv4gNN7z2ExxL240I0Gbl0zh0l+AvOBpM02Qw2GF2kbT+rsa/Vpf47GM/Dsbvs
-	 UeNAX/nLxswRSgVjAeQSARnGkcKkTVWYs5wLRXsJmUrk/ou6ScpCE4GB5V5iAkNt/m
-	 yzLoV+IFhj2neMYJ8INuEBG3r+7hNipm3lx9Iw/oobb/o+ZczRu586hbxyJ1B6eAyk
-	 g5loD7xSWUUxW/omAGX/kRXhcO9NV8FpW1dsnMJbs8IKZFLDR5P1PTMiev8LE6N84t
-	 +sf+TltQ/ErSy0kh+aJqpJZypkRjhycPmQsb+WLHfB0rzBj97I3NgadJDPcYFIL5T1
-	 ImX2zueWK4vWQ==
-Date: Thu, 2 Jul 2026 09:59:59 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, 
-	maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, 
-	simona@ffwll.ch, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com, matthias.bgg@gmail.com, 
-	andi.shyti@kernel.org, djakov@kernel.org, broonie@kernel.org, jitao.shi@mediatek.com, 
-	ck.hu@mediatek.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, justin.yeh@mediatek.com, 
-	jason-jh.lin@mediatek.com, kernel@collabora.com
-Subject: Re: [PATCH 3/6] dt-bindings: display: mediatek: Allow
- trigger-sources on relevant HW
-Message-ID: <20260702-authentic-dugong-of-whirlwind-ac3e3a@quoll>
-References: <20260701122043.19612-1-angelogioacchino.delregno@collabora.com>
- <20260701122043.19612-4-angelogioacchino.delregno@collabora.com>
+	id 1wfCgL-00000003qRt-1NYv;
+	Thu, 02 Jul 2026 08:22:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1782980519;
+	bh=SdqZifpTME4P22Rm/5g9MNYujks2ExaR7a48hkpIJro=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=n5kSsWaziA4wYy9eg1SkTnkPsFwzss2nhBTUTVLS+eB5n+eTv0q/6BjhoK9hnBVSj
+	 hXmpn1MDV+VEmPZQKfrTVLlVJzCzlEcTVHpMlA99R6cpBXDABpKnZiQsMYUkW9pOwL
+	 28hLLXCvB/CHqPa67Yimua34P0n8xxdA3CcVCjvxMLLFPBLdd6U0FfCkFv/oCa6Tq8
+	 Dr+6Wf5PT21tnILYGJDRb7cxVCI6/m/6wnkjyDRrFTBzy2ET2PU15MyNbQmdzTFBQ6
+	 2j7CyUF88LrFJFf+VxTG6kvIwE6jzdT5puB8eP/ZQXvFO5H8T8r64aa8hOueyBBfQr
+	 BHmK4guGikP1A==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A8C2D17E00A0;
+	Thu,  2 Jul 2026 10:21:58 +0200 (CEST)
+Message-ID: <d740db6f-10f7-4531-98cc-33251a01b9ad@collabora.com>
+Date: Thu, 2 Jul 2026 10:21:58 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260701122043.19612-4-angelogioacchino.delregno@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] dmaengine: mediatek: mtk-uart-apdma: Return -ENOMEM on
+ memory allocation failure
+To: Vladimir Zapolskiy <vz@kernel.org>, Sean Wang <sean.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Vinod Koul <vkoul@kernel.org>,
+ Frank Li <Frank.Li@kernel.org>
+Cc: Long Cheng <long.cheng@mediatek.com>, dmaengine@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260701200703.117929-1-vz@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260701200703.117929-1-vz@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260702_012201_525113_06D89B98 
+X-CRM114-Status: UNSURE (   6.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,16 +78,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 01, 2026 at 02:20:40PM +0200, AngeloGioacchino Del Regno wrote:
-> Most of the MediaTek Display Controller hardware sub-IPs need a
-> specific (and reserved to them) MuteX trigger.
+On 7/1/26 22:07, Vladimir Zapolskiy wrote:
+> If dynamic memory allocation in driver's probe function execution fails, it
+> should be reported to the driver's framework with -ENOMEM error code.
 > 
-> Since now MuteX is a trigger source, allow specifying trigger
-> sources in all of the display IPs that support one.
+> Fixes: 9135408c3ace ("dmaengine: mediatek: Add MediaTek UART APDMA support")
+> Signed-off-by: Vladimir Zapolskiy <vz@kernel.org>
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-
-Best regards,
-Krzysztof
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
