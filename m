@@ -4,107 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E77CEC43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2026 10:02:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CA26C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2026 10:14:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LfUu6pC7EJB8qiPkqY3N8+Svxs7+7n13Ik8Ta0Guoyw=; b=jsG5OVaHyowJZ0jqFfzRW0dgH0
-	cvyLwtv9kZhFfWDPQ3qWXp/UhCdSOf4XGj2YtsT7J5CkSjAt6gu5i8VhB7vJbU+HVXQp1dj6gE/XS
-	uT29flMFd+1stehA90RAAXW8135HdrUahrs+uQdjDEevYqqenOA4C7HFKd+FU3nSXYm07W2t7Bgis
-	ME1yqf4zuArCVVH7jDWKSiiMmPUO8q0MpofPhLoGRpZIVfEsboT2/RolrZs9n3gMYSXSO+CM/tqcQ
-	CSeYfeHJWC5uMOr7n3A4kd+zTsrReJ1F8Y5B9+MNscgxCb4WAJbxY6eN8VfjvljgrrJwv1CgiN0L3
-	4IysXfCA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NrLmXw2+grSg8BDLzNZP31Z2rCqGp6CpomTh+kmD5Sk=; b=UXsyAZWntT6J+ouqf4jWEPkbiU
+	hQGgcrZ+bC8hhZYkqmkTZC0XbUrhtU4/uvtancWfEidMHPF4AVRTZP1IFlcJwjiV70nCrr0iibTq8
+	IA5t8akL6b+X6f+U/HD20E6rciJ4rIT5g+2Bnkme3oVzNp0T1dcU/gsdYS+ClcZL82g1z6fETQWxO
+	tF8Vk+VD2m+79w8mVYM0AMIiaIEm6C/AcAKwsb4zWwcqyj+pgdjF/sX0/kV2unHvexJL7H8rMWe6W
+	Ja4OamBCb1WqpyPdnLhzvxtnqHHPiTl38z0AFaZL327+qtW84YC2iy7L+utdVBs1GiSrTNgV9edyc
+	lk6IVLyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfEFR-000000047jg-1HED;
-	Thu, 02 Jul 2026 10:02:21 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1wfERY-000000049Fl-1yQt;
+	Thu, 02 Jul 2026 10:14:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfEFO-000000047iZ-3yJM
+	id 1wfERV-000000049FI-3Jug
 	for linux-mediatek@lists.infradead.org;
-	Thu, 02 Jul 2026 10:02:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1782986538;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=LfUu6pC7EJB8qiPkqY3N8+Svxs7+7n13Ik8Ta0Guoyw=;
-	b=P5ms3SYDYuxgXZ5OShfS9Iehx4CCpELFuI/MNI2jdAPWDWuSOmcH/VtTl2Khni/rCAhIBU
-	iymC6c0tpC8Wj64FkLNvm5d8qO/AA/05+5NsA7OxQA9kHVB+VRJjyah/0RHLLUEQlKEFMj
-	rbxByKwF5AHCzXobguEj9j+a7V5QKp4=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-324-m8da4SzsOzKT6BnSNFqgvA-1; Thu, 02 Jul 2026 06:02:15 -0400
-X-MC-Unique: m8da4SzsOzKT6BnSNFqgvA-1
-X-Mimecast-MFC-AGG-ID: m8da4SzsOzKT6BnSNFqgvA_1782986534
-Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-492714d002cso11747915e9.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 02 Jul 2026 03:02:14 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1782986534; x=1783591334;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=LfUu6pC7EJB8qiPkqY3N8+Svxs7+7n13Ik8Ta0Guoyw=;
-        b=IBRBHn09cPJ2m3ufZv1HdwkdrLzPxpmLPfeLf/2Uo+ND9kjfbZyeXy1ChwoSfk/lUB
-         Q0UH4JddS1VtPKFXBCmsQxyTZ25PaBBdWR+ngMOtpLddYn7dTprKbu4SxKM4nZ63k2/3
-         2HY9EUtAqLbpqmtMhBvpVkMgdxDpJeJEJ5/D/e2VysiPulGP3ymZnYjdTFLSHenbzKok
-         tPGxx9RGQLDmZ54ViSjBXGuGvoHpfj/4hCa4aMks4CNUD8ZjYqoowFJdt0GUQYxNZ5cJ
-         EZ7DvNSfWHksJ+GNsBTKBsU1ERncv/nXwmDEsk1j6d4MDzS17sU82xZaXa/dyjVQ92Ny
-         NMfA==
-X-Forwarded-Encrypted: i=1; AFNElJ/NM6kOPNP/g/EkYftzDmrsrwcOnSMam2Z+/X8f4cYQ2CFbgA/oaSoZl5ZZ0wSiUMer1fv/Vcjt5AW4ycDYVQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz9G6HnljMOEVFzHgiJ94FtgAtqLcdYlznJy2CitEtQ8XEwgNvL
-	gMllpeDR8OhCHky6pMvRJli/1xruLOtJMG2IP6MxNy9DmcmWQwgietius8VOMgD1OmrXPH/VfIg
-	QXZqojduMQe+NaHkJkdAHlLEF2A575gEOUehIcsOUgLhf7fbzDHGl6PgbMRi5KV3vnhKpfPVMBw
-	==
-X-Gm-Gg: AfdE7cnHdSZXYCnQxWnknhNgT/1EvgjcoH/QJAWb0UAEYcO1mfsuGud7tIgmyXDf8oV
-	STQXwWBa8PuHw9XaMM5/ovtAjdPHHXSvDnO3lvZxceXkHZLm6jAFySCo1uvpgwLIzP4PWyaxICL
-	mnNO1cFEpzBCCWFTcKyFs8N6eePABhFki2My5ZbZxBBBiRS3/irTmtuvWXsUKgqO9MPaowXxMGM
-	IDtn6xNI7Vc4jusl7t9q3B0b569I3JFO5vycyYjGAyxtesqrhbmeL7W1BlfEA3ec5BBipyPHsCB
-	lCgkuMAK12u5Pb6phyJ40pr4zIH4SEYNzaZ2fC5W4wjchl0rmR6lQny6AMh05hW1+TSkLTjaCE0
-	UDx2OITuLeWZA5QNTIOq2P8uwk9JSId+ZVLFwWWO9YvkkFnnB2v5KwU7QWPlMfIqitBsmeCfxVY
-	UAOl3V1/ig2g==
-X-Received: by 2002:a05:600c:1547:b0:493:b729:3a9 with SMTP id 5b1f17b1804b1-493c3cfb04fmr58962425e9.27.1782986533625;
-        Thu, 02 Jul 2026 03:02:13 -0700 (PDT)
-X-Received: by 2002:a05:600c:1547:b0:493:b729:3a9 with SMTP id 5b1f17b1804b1-493c3cfb04fmr58961865e9.27.1782986533117;
-        Thu, 02 Jul 2026 03:02:13 -0700 (PDT)
-Received: from ?IPV6:2a0d:3344:5521:6b10:2eb7:f61a:75:4534? ([2a0d:3344:5521:6b10:2eb7:f61a:75:4534])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-493bef17c82sm80193455e9.1.2026.07.02.03.02.10
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 02 Jul 2026 03:02:11 -0700 (PDT)
-Message-ID: <3f540a8a-4167-4727-9516-6fb91335333f@redhat.com>
-Date: Thu, 2 Jul 2026 12:02:09 +0200
+	Thu, 02 Jul 2026 10:14:51 +0000
+X-UUID: d6d16e2c75fe11f1acbe4559397dec65-20260702
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=NrLmXw2+grSg8BDLzNZP31Z2rCqGp6CpomTh+kmD5Sk=;
+	b=FFYX6ZvA9itPH1VFnzV9x7CyPgRfyBor3WjtR6xY/esbEeXZPwQKRqVU3rDgaluDbk4lFUBXyUBbMUH7XryuEmtHGyUaYDk+iWBF0R97HGlEX+kar4kPWdnHpGyoQMfs/kzcDJsiw0yIICeLrEPe/a78HMx7UymhM1oWU/25hwE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.17,REQID:f34dea35-f622-4d48-b70a-b9fb353eeedf,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:d497b38,CLOUDID:c511a714-ea64-44d4-98db-4e1fb89955a3,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
+	0|99|200|213,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:
+	0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: d6d16e2c75fe11f1acbe4559397dec65-20260702
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1701755197; Thu, 02 Jul 2026 03:14:41 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Thu, 2 Jul 2026 18:14:38 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Thu, 2 Jul 2026 18:14:38 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
+	SS Wu <ss.wu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>,
+	linux-bluetooth <linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Paul Menzel <pmenzel@molgen.mpg.de>,
+	Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH v9 1/6] Bluetooth: btmtk: Add firmware size validation in btmtk_setup_firmware_79xx()
+Date: Thu, 2 Jul 2026 18:14:31 +0800
+Message-ID: <20260702101437.1787800-2-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20260702101437.1787800-1-chris.lu@mediatek.com>
+References: <20260702101437.1787800-1-chris.lu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] Subject: [PATCH] net: gro: fix double aggregation of
- flush-marked skbs
-To: Shiming Cheng <shiming.cheng@mediatek.com>, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, horms@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- willemb@google.com, daniel.zahka@gmail.com, alice@isovalent.com,
- sd@queasysnail.net, eilaimemedsnaimel@gmail.com, imv4bel@gmail.com,
- nbd@nbd.name, dsahern@kernel.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: stable@vger.kernel.org, lena.wang@mediatek.com
-References: <20260630023512.26927-1-shiming.cheng@mediatek.com>
-From: Paolo Abeni <pabeni@redhat.com>
-In-Reply-To: <20260630023512.26927-1-shiming.cheng@mediatek.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 2ATcRbujsVlSu28vZbgy4CvTt8BWtth5UG0QysYwx7c_1782986534
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_030219_053122_FF04CD1F 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20260702_031449_860170_44CA5F8C 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,44 +90,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Note: the patch subject is quite uncorrected
+Add firmware size validation to prevent out-of-bounds access when loading
+truncated or malicious firmware files.
 
-On 6/30/26 4:35 AM, Shiming Cheng wrote:
-> The new skb_gro_receive_list() function is missing a critical safety check
-> present in the legacy skb_gro_receive() path. Specifically, it does not
-> validate NAPI_GRO_CB(skb)->flush before allowing packet aggregation.
+Add three levels of validation:
+1. Minimum size check for header and global descriptor
+2. Section map bounds check with integer overflow protection using
+   check_mul_overflow() and check_add_overflow()
+3. Section data bounds check before accessing each section
 
-skb_gro_receive_list() is not very "new" and definitely
-skb_gro_receive() is not legacy.
+This matches the validation approach used in btmtk_load_cbmcu_firmware().
 
-> This allows already-GRO'd packets with existing frag_list to be
-> re-aggregated into a new GRO session, corrupting the frag_list chain
-> structure. When skb_segment() attempts to unpack these malformed packets,
-> it encounters invalid state and triggers a kernel panic.
-> 
-> Scenario (Tethering/Device forwarding):
->   1. Driver: Generated aggregated packet P1 via LRO with frag_list
->   2. Dev A: Receives aggregated fraglist packet and flush flag set
->   3. Dev A: Re-enters GRO, skb_gro_receive_list() is called
->   4. Missing flush check allows re-aggregation despite flush flag
->   5. Frag_list chain becomes corrupted (loops or dangling refs)
->   6. Dev B: TX path calls skb_segment(), crashes on corrupted frag_list
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+Assisted-by: Claude:Sonnet-4.5
+---
+ drivers/bluetooth/btmtk.c | 39 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
 
-I can't parse the above. Is this something that can happen with in-tree
-drivers or do you need OoT module to trigger it? In any case please
-clarify the actual order and the involved driver. Possibly a stack
-strace leading to the critical aggregation could help.
-
-> Fix: Add NAPI_GRO_CB(skb)->flush validation to the early-return check in
-> skb_gro_receive_list(), matching the defensive programming pattern of
-> skb_gro_receive().
-> 
-> Fixes: 8928756d53d5 ("net: add fraglist GRO/GSO support")
-
-The fix tag is wrong, should be:
-
-Fixes: 3a1296a38d0c ('net: Support GRO/GSO fraglist chaining.')
-
-/P
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 02a96342e964..3491060b3ae9 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -145,6 +145,7 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
+ 	int err, dlen, i, status;
+ 	u8 flag, first_block, retry;
+ 	u32 section_num, dl_size, section_offset;
++	size_t expected_size;
+ 	u8 cmd[64];
+ 
+ 	err = request_firmware(&fw, fwname, &hdev->dev);
+@@ -153,12 +154,40 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
+ 		return err;
+ 	}
+ 
++	/* Validate minimum firmware size for header and global descriptor */
++	if (fw->size < MTK_FW_ROM_PATCH_HEADER_SIZE + MTK_FW_ROM_PATCH_GD_SIZE) {
++		bt_dev_err(hdev, "Firmware file too small: size=%zu, expected at least %u bytes",
++			   fw->size, MTK_FW_ROM_PATCH_HEADER_SIZE + MTK_FW_ROM_PATCH_GD_SIZE);
++		err = -EINVAL;
++		goto err_release_fw;
++	}
++
+ 	fw_ptr = fw->data;
+ 	fw_bin_ptr = fw_ptr;
+ 	hdr = (struct btmtk_patch_header *)fw_ptr;
+ 	globaldesc = (struct btmtk_global_desc *)(fw_ptr + MTK_FW_ROM_PATCH_HEADER_SIZE);
+ 	section_num = le32_to_cpu(globaldesc->section_num);
+ 
++	/* Check for potential integer overflow in size calculation */
++	if (check_mul_overflow((size_t)MTK_FW_ROM_PATCH_SEC_MAP_SIZE,
++			       (size_t)section_num, &expected_size) ||
++	    check_add_overflow(expected_size,
++			       (size_t)(MTK_FW_ROM_PATCH_HEADER_SIZE +
++					MTK_FW_ROM_PATCH_GD_SIZE),
++			       &expected_size)) {
++		bt_dev_err(hdev, "Firmware size calculation overflow (section_num=%u)",
++			   section_num);
++		err = -EINVAL;
++		goto err_release_fw;
++	}
++
++	if (fw->size < expected_size) {
++		bt_dev_err(hdev, "Firmware truncated: size=%zu, expected=%zu (section_num=%u)",
++			   fw->size, expected_size, section_num);
++		err = -EINVAL;
++		goto err_release_fw;
++	}
++
+ 	bt_dev_info(hdev, "HW/SW Version: 0x%04x%04x, Build Time: %s",
+ 		    le16_to_cpu(hdr->hwver), le16_to_cpu(hdr->swver), hdr->datetime);
+ 
+@@ -171,6 +200,16 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
+ 		section_offset = le32_to_cpu(sectionmap->secoffset);
+ 		dl_size = le32_to_cpu(sectionmap->bin_info_spec.dlsize);
+ 
++		/* Validate section boundaries to prevent out-of-bounds access */
++		if (dl_size > 0 &&
++		    (section_offset > fw->size ||
++		     dl_size > fw->size - section_offset)) {
++			bt_dev_err(hdev, "Section %d out of bounds: offset=%u, size=%u, fw_size=%zu",
++				   i, section_offset, dl_size, fw->size);
++			err = -EINVAL;
++			goto err_release_fw;
++		}
++
+ 		/* MT6639: only download sections where dlmode byte0 == 0x01,
+ 		 * matching the Windows driver behavior which skips WiFi/other
+ 		 * sections that would cause the chip to hang.
+-- 
+2.45.2
 
 
