@@ -4,60 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 733FBC43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2026 06:49:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9881EC43327
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2026 07:26:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DScu2F9GlencqsVQe1ntWCrOn9yiVKDV5LAVRAHfOFk=; b=yyt95Lyu4DknVLuLwKdn3mUbQo
-	PEomgeRNY42fqgXHC2waLQppM50jjwzCHiV79mKkFqp132mPKH0pGWpO93KuK133aJVkVcH/z5qvm
-	dvAxYNVoPSkvQ5WXOoJ1cd1CQSBTwHnb7waMaU2ObafIi742RNBVlc3oTgneeD70TEJW1V5rOnqnV
-	9BKZ+/FrqAfPJz0SYY8LqE6mzTJxkPaarztn5dZ1cBe5LDh+EmBAnLHG+o/UQ0quS6rC/O45Sju45
-	DKgeOzEXtlfVmIkIIaShh4mb+LDJvCc2ppU5Mgc7Er2xwavJ7wr1YFupF4YRZ9NDDd780mCRYVuuy
-	g81mnQkA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/IrX8y8BLkijmUoSoBnXVp0nku7Q3K71ZfC/Ir1boA0=; b=MOA4TfgAGf4yyWQa3xjfcGa9eM
+	itiwz13BXM5Mx99+qRoqttFOr2trsKKMuJr/6C3h50H1XIrBwOS5A/EdhQ6Ba3gycmIkjHhMZFRrr
+	KrGBfr0dOmEU9BLDcR920e9R8p5Ri++RWuICkiWQjrQRdoWTk9XlZkOxATuxumW/vgqytdAR+kiFR
+	omSoB1jIXw/DI1Qtc3+uNvv9s762nCNQKOU3fHQPlLuZZ4+st+Os2/tM2uNdbYXOAy1prOev9s6eh
+	fx53dzlf497MvRdGjn5KL9bfeIBPwHHye063azf8Nux4/wvvXR+KzjaE3iLJ0bZLb5jRoNgeLRNPU
+	+BkJAc/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfBF4-00000003fmZ-3Zaf;
-	Thu, 02 Jul 2026 06:49:46 +0000
-Received: from mx3.molgen.mpg.de ([141.14.17.11])
+	id 1wfBod-00000003iLf-1sgI;
+	Thu, 02 Jul 2026 07:26:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfBF0-00000003fm9-3PUy
-	for linux-mediatek@lists.infradead.org;
-	Thu, 02 Jul 2026 06:49:45 +0000
-Received: from [192.168.0.150] (ip5f5af106.dynamic.kabel-deutschland.de [95.90.241.6])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: pmenzel)
-	by mx.molgen.mpg.de (Postfix) with ESMTPSA id 5C8004C2C37D69;
-	Thu, 02 Jul 2026 08:49:34 +0200 (CEST)
-Message-ID: <e36d0e98-db4b-43b8-b1bd-98687ed946c3@molgen.mpg.de>
-Date: Thu, 2 Jul 2026 08:49:33 +0200
+	id 1wfBoa-00000003iJH-3VXr;
+	Thu, 02 Jul 2026 07:26:29 +0000
+X-UUID: 53d5b7e275e711f1afed4741b24580c9-20260702
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From; bh=/IrX8y8BLkijmUoSoBnXVp0nku7Q3K71ZfC/Ir1boA0=;
+	b=DG2cdL3se6ioNAMVQ09Z5Bvmx7va0CzIklcTsuNFCXfQ9oyi0iKGUhWKE+ZmDTE3CttXVoloR3B6iVlKxjOdXjbLD/xUEagLXDhjAzxyjFYO7xjf2AdPZqUtuaACkNbLJPv2hNp1/6Tm+mJlOF31+0XiDkZCCLB9FlI2GujHVUU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.17,REQID:aa3fa5ae-77d0-40f1-b20a-25605e46bea6,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:d497b38,CLOUDID:923ae781-6310-4e6b-a6b1-aca20d98ed8b,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
+	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
+	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 53d5b7e275e711f1afed4741b24580c9-20260702
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+	(envelope-from <kyrie.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1717828338; Thu, 02 Jul 2026 00:26:22 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Thu, 2 Jul 2026 15:26:20 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Thu, 2 Jul 2026 15:26:19 +0800
+From: Kyrie Wu <kyrie.wu@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+	<krzk+dt@kernel.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH v15 02/12] media: mediatek: jpeg: fix jpeg buffer payload size setting
+Date: Thu, 2 Jul 2026 15:26:02 +0800
+Message-ID: <20260702072614.10373-3-kyrie.wu@mediatek.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20260702072614.10373-1-kyrie.wu@mediatek.com>
+References: <20260702072614.10373-1-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [Bug 220564] hci0: ACL packet for unknown connection handle 3837
- and sound interruption
-To: =?UTF-8?B?Q2hyaXMgTHUgKOmZuOeomuazkyk=?= <Chris.Lu@mediatek.com>,
- Sean Wang <Sean.Wang@mediatek.com>
-Cc: luiz.dentz@gmail.com, linux-mediatek@lists.infradead.org,
- =?UTF-8?B?U1MgV3UgKOW3q+aGsuasoyk=?= <ss.wu@mediatek.com>,
- linux-bluetooth@vger.kernel.org, =?UTF-8?B?V2lsbC1DWSBMZWUgKOadjuaUv+epjik=?=
- <Will-CY.Lee@mediatek.com>
-References: <bug-220564-62941@https.bugzilla.kernel.org/>
- <bug-220564-62941-11iNnkhOy2@https.bugzilla.kernel.org/>
- <90dc98dd-dcee-49ac-8050-abfe6b93775b@molgen.mpg.de>
- <e697d97e072b9211687fe15e5e28022faec35d0a.camel@mediatek.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <e697d97e072b9211687fe15e5e28022faec35d0a.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260701_234943_200373_DBC5E2EC 
-X-CRM114-Status: GOOD (  25.56  )
+X-CRM114-CacheID: sfid-20260702_002628_880954_95F74619 
+X-CRM114-Status: GOOD (  14.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,119 +91,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[To: -mark-yw.chen@mediatek.com (bounced)]
+For multi-core jpegdec, if one core gets resolution change event,
+the payload size, representing the size of Y/C data, needs to change.
+But others are decoding at the same time and it can not be changed
+immediately, which results in the payload size to not match the real
+buffer length.
+The payload size must less than the real buffer length to remove
+the warnning logs.
 
-Dear Chris,
+Fixes: 0fa49df4222f ("media: mtk-jpegdec: support jpegdec multi-hardware")
+Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+---
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
 
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 1e014fd698ae..3960ad21d7f0 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -702,6 +702,7 @@ static int mtk_jpeg_buf_prepare(struct vb2_buffer *vb)
+ 	struct mtk_jpeg_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+ 	struct mtk_jpeg_q_data *q_data = NULL;
+ 	struct v4l2_plane_pix_format plane_fmt = {};
++	size_t max_size;
+ 	int i;
+ 
+ 	q_data = mtk_jpeg_get_q_data(ctx, vb->vb2_queue->type);
+@@ -710,12 +711,20 @@ static int mtk_jpeg_buf_prepare(struct vb2_buffer *vb)
+ 
+ 	for (i = 0; i < q_data->fmt->colplanes; i++) {
+ 		plane_fmt = q_data->pix_mp.plane_fmt[i];
++		max_size = plane_fmt.sizeimage;
++
+ 		if (ctx->enable_exif &&
+-		    q_data->fmt->fourcc == V4L2_PIX_FMT_JPEG)
+-			vb2_set_plane_payload(vb, i, plane_fmt.sizeimage +
+-					      MTK_JPEG_MAX_EXIF_SIZE);
+-		else
+-			vb2_set_plane_payload(vb, i,  plane_fmt.sizeimage);
++			q_data->fmt->fourcc == V4L2_PIX_FMT_JPEG) {
++			max_size += MTK_JPEG_MAX_EXIF_SIZE;
++
++			vb2_set_plane_payload(vb, i,
++					      MIN(vb->planes[i].length,
++						  max_size));
++		} else {
++			vb2_set_plane_payload(vb, i,
++					      MIN(plane_fmt.sizeimage,
++						  vb->planes[i].length));
++		}
+ 	}
+ 
+ 	return 0;
+-- 
+2.45.2
 
-Thank you for your instant reply.
-
-Am 02.07.26 um 04:48 schrieb Chris Lu (陸稚泓):
-
-> On Wed, 2026-07-01 at 18:32 +0200, Paul Menzel wrote:
-
->> Unfortunately, you do not have an account in the Linux Kernel Bugzilla,
->> so I am replying to this notification.
->>
->> Am 01.07.26 um 17:09 schrieb bugzilla-daemon@kernel.org:
->>> https://bugzilla.kernel.org/show_bug.cgi?id=220564
->>>
->>> --- Comment #13 from Rob Hogan (robhogan@gmail.com) ---
->>> I'm pretty sure it's the same issue. Extract from syslog below:
-
-[…]
-
->>> The full btmon log is too large to attach I think. Let me know if there's
->>> something else I should be turning on to help debug.
- >>
->> Claude Opus 4.8 analyzed:
->>
->> The decisive detail: the handle is byte-for-byte 3837 across three
->> unrelated reporters — different laptop, different speaker
->> (F0:EF:86:C3:50:D8 here vs. the Lenovo in comment #1), different
->> kernel.
->> Random corruption wouldn't land on the same handle every time. A fixed
->> value is a firmware sentinel. This is the ACL twin of the ISO
->> misbehaviour Pauli Virtanen already documented ("MT7925 continuously
->> sends invalid ISO packets")—related [1][2]—, and it's the same shape
->> as
->> the handles the MediaTek driver already intercepts:
->>
->>       // drivers/bluetooth/btmtk.c  btmtk_usb_recv_acl()
->>       case 0xfc6f: /* Firmware dump from device */ ...
->>       case 0x05ff: /* Firmware debug logging 1 */
->>       case 0x05fe: /* Firmware debug logging 2 */
->>           return hci_recv_diag(hdev, skb);   // routed to diag, NOT into L2CAP
->>
->> 0x2EFD isn't in that list, so it falls through to hci_recv_frame() →
->> hci_acldata_packet() → no matching connection → the error. So the
->> disconnect in Rob's syslog is likely a coincident A2DP timeout, not
->> caused by the log line — the spurious packet just shares the
->> timeline.
->>
->> Should the kernel ignore handle 3837?
->>
->> Two different places, two different answers:
->>
->> - In generic hci_core.c — no. HCI_CONN_HANDLE_MAX = 0x0eff, and 3837 =
->> 0x0EFD is inside the spec-valid range (just below the max). A
->> non-MediaTek controller could legitimately assign it. Dropping it
->> generically would silently break other hardware. So my rate-limit patch
->> is the right vendor-neutral change: it stops the flood without dropping
->> anyone's data.
->>
->> - In btmtk_usb_recv_acl() — probably yes, and that's the real fix,
->> routing these to hci_recv_diag() exactly like 0x05fe/0x05ff. That both
->> kills the spam and stops feeding garbage into L2CAP.
->>
->> But I won't add that magic number on inference alone, and here's the
->> honest gap:
->>
->> 1. I have no MediaTek doc confirming 0x2EFD/0x0EFD is a firmware-log
->> handle. The existing constants came from the vendor.
->> 2. The existing cases match the raw 16-bit value with a non-flag high
->> nibble (0x05ff, 0xfc6f). Ours has high nibble 0x2, which looks like a
->> real PB=start flag — so matching semantics (raw 0x2EFD? masked
->> 0x0EFD?
->> do fragments arrive as 0x1EFD?) aren't obvious, and a wrong mask
->> could drop real ACL fragments.
->>
->> To close that gap before touching the driver, the bug needs the full
->> btmon (Rob offered it), to confirm:
->>
->> - no HCI Connection Complete / LE Enhanced Connection Complete ever
->> assigns handle 0x0EFD, and
->> - the 0x?EFD packets always carry this same non-L2CAP payload and
->> never a real ACL fragment.
->>
->> @Mediatek, can you please confirm, that this handle should be
->> ignored.
-
->> [1]: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=6dc22ab9f085ae165e4ce89d61fb426f94e8a969
->> [2]: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=edef6576853e51faa11bb286884c362ff7fc83a0
-
-> From my initial look, ACL data with 0x2EFD is a diag event sent from
-> Firmware layer. The reason why the data is being reported still needs
-> further investigation. At least, I don't think it should be appearing.
-> 
-> Regarding your suggestion, adding it to the recv_acl function is one
-> solution, but I'll bring this back for internal discussion to see
-> whether disabling it from firmware would be more appropriate. If that
-> turns out to be difficult, we'll then consider addressing it from
-> driver side.
-
-Understood. Keep in mind, as the firmware sending the diag event has 
-been published and you cannot expect everybody updating the Linux kernel 
-also updating the firmware, the Linux kernel driver should also be 
-“fixed” to deal with the older firmware.
-
-Also, I believe the reporters/commenters are annoyed by the audio 
-interruptions. Please feel free to comment in the Linux Kernel Bugzilla 
-issue, what diagnostics you need, and if this should be handled 
-separately, like via email lists or a separate bug report.
-
-
-Kind regards,
-
-Paul
 
