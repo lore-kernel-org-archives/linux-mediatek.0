@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 068C1C43458
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 12:08:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EB77C43458
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 12:10:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:References:MIME-Version:In-Reply-To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PjYdTZtX7lK06ob/wWBa1ApljcuOIaY/cFe1TQGyGz4=; b=0cEBoyqKV2yVnlD1CACFp/JGec
-	5WgLNvDDv6wrK/SzAfwzYbNNscFxDHsXVptZMLpC+zyb6a/I2/wa8ZzmkELttkDKnqkVkhcaMhB17
-	ldavbFKvJyKkpWH8O0nWZwIOmXbkJ7gNCU/KFhVAJgWXlu9A4ZDVlt3IXkloPs3bIwRm3xSWvb+Dh
-	Sxmh1sbToHOTM2JFpHKoPCrA99kOERNwNnNDfaUnylExC39Ez7TQVLbEb5wOrvnaAJMCxjZpkiaan
-	Q8whUx7YbkOdqgaFAeXKfH+GDW117VIq0CXvb5HSmNHZkL+kN0Oq82u/0+mdvp+IdyFueDxMdkqe4
-	VJa13JJQ==;
+	bh=FRnTE+sfqNi4P4NSTy/kqSXlrErtvnHm1QlBxXoiDG4=; b=usZHoQQhXhtalqTGZjZwU+hMJM
+	SyTm0J7i2lIz/GiglbjgG5GRnRSM+wMheoUbb+N14LA4a7UnMK7gW8NLoS9XUMMJDKEAQns8MRvpn
+	UMhSv0i8eHl+W9d3GYrMC7/b6HMotuzvXPneSADQmv97Zkt45MQGNLEyXPPFZUCaSB+VRS7V0Rpuo
+	6Br9hq2q9uXudOUXRHxXOwNh2hOtPQZEQxVzNcI8yu613g1NfHnQC3SRQHY5Q94mR9Lsv+Eq70lnn
+	Ebt6yvaKZ7kRkmOOrLuQVrWkqv0W12IuvZVaZtJSA5L+y1szcgf3LGoqk+1OU0MQsz3Gd23VCDsMz
+	6TJOdPow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfcgZ-00000006tu4-1lQV;
-	Fri, 03 Jul 2026 12:07:59 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wfcib-00000006uKe-435M;
+	Fri, 03 Jul 2026 12:10:05 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfcgY-00000006ttp-1xsT
+	id 1wfcia-00000006uKN-3qZA
 	for linux-mediatek@lists.infradead.org;
-	Fri, 03 Jul 2026 12:07:58 +0000
+	Fri, 03 Jul 2026 12:10:04 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 84B956001A
-	for <linux-mediatek@lists.infradead.org>; Fri,  3 Jul 2026 12:07:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A6881F00A3D
-	for <linux-mediatek@lists.infradead.org>; Fri,  3 Jul 2026 12:07:57 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6D0BA405D8
+	for <linux-mediatek@lists.infradead.org>; Fri,  3 Jul 2026 12:10:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 509D51F00A3E
+	for <linux-mediatek@lists.infradead.org>; Fri,  3 Jul 2026 12:10:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783080477;
-	bh=PjYdTZtX7lK06ob/wWBa1ApljcuOIaY/cFe1TQGyGz4=;
+	s=k20260515; t=1783080604;
+	bh=FRnTE+sfqNi4P4NSTy/kqSXlrErtvnHm1QlBxXoiDG4=;
 	h=From:In-Reply-To:References:Date:Subject:To:Cc;
-	b=WTWi0jR7xVCoxYKYqgxGq2fcoz5SNKI3/szg5jvDubWkKDZOL52ioyEKLmIcyAcpx
-	 sSmaP4ca9BOE32xZQ9v/sp22wjWqCBoK8xAAhOFCFxIPV/lSpuXiy5uBIeZd4Ka8au
-	 mupp6ItSo4dd4lZOsZRKtj7kZ2PFM46nBtvA66Y04MEHJfDZgsbpHqeoMvYwyYitw5
-	 ifd1bhmOq1HXeR+tLGHkv/exz8r4DCMSObfom4g2+N9u3PhrdGMmBkOB+MTMuDfCC0
-	 JDSpo4w5XSF9yHQ+6OG+Vmmz0dYmxDGap8vxmfspH2EKlva+vLm8tcfIyjsjzg5K2w
-	 ZqPvtvwNRyAHw==
-Received: by mail-lf1-f44.google.com with SMTP id 2adb3069b0e04-5aeb59d54b1so482715e87.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 05:07:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+RqwE1RM57Pphi+Y2G2rj+uwZct2gQCHXp9xlW1g2Tvt8jzkLjW9t3X9Lg2eJl/f2dyYG++IYDHbhJZV5JKrUw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YysMTuCVt0KM+punZxLmVoM0sMe+YyY9rHdm4j1W5Vja9NxK5Of
-	ySJWhKTvevNH2N3fm5zelbeU8Gnuc3tImpNbelEIxOkSxsfO17CRecOKkM4fIqLVGidjFhDhqfV
-	70xpUJWp14eU7xPLDPZficKTNjFa+0UJFgZ/RbPRdCw==
-X-Received: by 2002:a05:6512:4cd:b0:5ae:a9ec:9fc4 with SMTP id
- 2adb3069b0e04-5aec807d281mr1746358e87.63.1783080475763; Fri, 03 Jul 2026
- 05:07:55 -0700 (PDT)
+	b=R5EQi/XUeS15y7qKoAb3iyfRNON/HfPCXUy4TXekpkz50HKLNuxkqfKMtIacIPCj2
+	 excH/UeAK7lKnCYiE7kk/ZGc1Jfdv4I7p7pz/KRc++S0aaGZcMMiQLjOLAiJOjGnft
+	 WMtcYRr9SpfVqjeoJajNQ/rtXF8WYtixMqYLReWDkKRvSDsn0G4NEMqd2rcm7GxCeW
+	 4I4Nd6FfGuJ0Rx/EhdyECwnNkB7IuIcqDASN9jsbcVfNYBfIt1QxTQKalBynI+NzXm
+	 +gC1za7Gwuqlvy4P/sjLjFDhyho2uKcKCsSlqjXvXaKuMVevHXQehOOSdPTahIYEnd
+	 giIul7JI8B9WQ==
+Received: by mail-lj1-f173.google.com with SMTP id 38308e7fff4ca-39b38d3c929so4471851fa.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 05:10:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+RrLf65K0M33hb7HtPaWljLNZRzoTG6MUPgTloo+2qkZVf6tEanu0hEhf7leaJ8kQsQMYIK/WxJt699Nl4QEYg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxqZrFeITrGvGpn1zUEiiY7SKgog9OIxYDz7wImihrz873Jrz9s
+	LmX5wU4Gh8tvGQge3XjMiQ9cTM0vsPLW/OVvOuwGavle/RDVO6fPAAjO/W60jzc4Tvj73tbIudM
+	Kehe2N4yFFl3M+m127Desu4mVeLFwCzIKazd5ySRWGA==
+X-Received: by 2002:a2e:b538:0:b0:39b:2b9c:5447 with SMTP id
+ 38308e7fff4ca-39b33f83e54mr14578471fa.5.1783080603058; Fri, 03 Jul 2026
+ 05:10:03 -0700 (PDT)
 Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Fri, 3 Jul 2026 07:07:53 -0500
+ HTTPREST; Fri, 3 Jul 2026 07:09:59 -0500
 Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Fri, 3 Jul 2026 07:07:53 -0500
+ HTTPREST; Fri, 3 Jul 2026 07:09:59 -0500
 From: Bartosz Golaszewski <brgl@kernel.org>
-In-Reply-To: <20260703110317.1283411-4-wenst@chromium.org>
+In-Reply-To: <20260703110317.1283411-6-wenst@chromium.org>
 MIME-Version: 1.0
-References: <20260703110317.1283411-1-wenst@chromium.org> <20260703110317.1283411-4-wenst@chromium.org>
-Date: Fri, 3 Jul 2026 07:07:53 -0500
-X-Gmail-Original-Message-ID: <CAMRc=MfPC=Jm6RFkCYG6vsYQiWHxBeNq0L59rwahF_6Fu2Ledw@mail.gmail.com>
-X-Gm-Features: AVVi8CfXtDf2gFZfiLD1uTcC0ptlbG8CkVr7knkjsqBhpkA4tCpa69WB2eeLrDU
-Message-ID: <CAMRc=MfPC=Jm6RFkCYG6vsYQiWHxBeNq0L59rwahF_6Fu2Ledw@mail.gmail.com>
-Subject: Re: [PATCH v3 03/13] power: sequencing: Add pwrseq_power_is_on()
+References: <20260703110317.1283411-1-wenst@chromium.org> <20260703110317.1283411-6-wenst@chromium.org>
+Date: Fri, 3 Jul 2026 07:09:59 -0500
+X-Gmail-Original-Message-ID: <CAMRc=MddJrLT1f62-MCoKQ3ZzchHRypXF0njO0K1Fgxmpv4BGQ@mail.gmail.com>
+X-Gm-Features: AVVi8CcIrznNQZqmZR1andR36KwnRtt161WRtINBstw2LlkWAj-ZsW0prqZIcwI
+Message-ID: <CAMRc=MddJrLT1f62-MCoKQ3ZzchHRypXF0njO0K1Fgxmpv4BGQ@mail.gmail.com>
+Subject: Re: [PATCH v3 05/13] usb: hub: Associate port@ fwnode with USB port device
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: linux-acpi@vger.kernel.org, driver-core@lists.linux.dev, 
 	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org, 
@@ -93,16 +93,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 3 Jul 2026 13:03:04 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
-> The power sequencing consumer API already does power on state tracking
-> internally. Expose the state to consumers through pwrseq_power_is_on()
-> so that they don't have to reimplement it locally.
+On Fri, 3 Jul 2026 13:03:06 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
+> When a USB hub port is connected to a connector in a firmware node
+> graph, the port itself has a node in the graph.
 >
+> Associate the port's firmware node with the USB port's device,
+> usb_port::dev. This is used in later changes for the M.2 slot power
+> sequencing provider to match against the requesting port.
+>
+> To avoid potential conflicts with ACPI firmware nodes and then causing
+> power management issues, only assign the firmware node if the hub's
+> firmware node is not an ACPI firmware node.
+>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
 
-They wouldn't be able to do it as the field is private to pwrseq core anyway.
-
-In what situation would consumers need this? Typically you know what state the
-handle is in if you control it.
-
-Bart
+Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
 
