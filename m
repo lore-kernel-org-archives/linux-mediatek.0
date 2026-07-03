@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5950AC43458
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 11:56:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 600EBC43458
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 11:56:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0B1463+Qr0zm+lZPP190miffZziNrhNxavOC7rjqnck=; b=NQoeQZA21668pd7nn3qvfYT/Q+
-	NZMgKPMePJb97RTFB7zV3VKN7OZSI2tH+I4dvKVaGUiT39uN/Gdx3BOX/dlh4sQCpRB4xIxGCH5bI
-	BE0L94NHvzZLioKDtgl4KenoSmrhXZZR78VKVN7BvOgyoWnv+Dnr5lNENMnTEPtt0c+R9qq7VaUOA
-	5RcN/93a3pizvWh5nTIt7CULi0pEsaiz67K1F5h6MX3YCxsYyVrlNvwsHx5XrvVLdsb7VYtaPH4qS
-	7AUn7jGM3dO5ymIL89n2f7/QCiULSMteFqrY32QzqHgkg8pJB/M58EwsGh71gQD/TbGEJXp+/p7ac
-	+4uQvQaQ==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rJOQnYDmj56BFKnk3PptuIiEN5/cefcVZ6+liIWlLhk=; b=cv48ahVG3Lg9Tyytvv5v8GcQsi
+	yFXPDy84jnre85QqSyXsJyhueGHb/YI9HxV1/25n46uQsMo6fzo18iGISy1Y6xm3iOPpnETr+cbxE
+	on7MKgCZY+CQ0yLw+5f6VnqIebi5UhNwcAOnhmd2fXDuyVq8G1suk9nexb4eD5mXcwTV6lDeDvm0w
+	h1oJ+MvsfEa+jMU/eWaYhLiWsfuKitHg8WQ6chBvddTsM7/GQnLvw9og4i6I3C/K3N7pIYSQ2Auzh
+	dLUsPfTM5qa2Btnvrp/BTUcC3KyCg9EayysA+FNu8eFFJnsC4l/rmCT+ud8yGX6uM1dK2pexTv9ZS
+	24pVfNLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfcVD-00000006rd3-0Uyn;
-	Fri, 03 Jul 2026 11:56:15 +0000
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+	id 1wfcVG-00000006rft-1ewt;
+	Fri, 03 Jul 2026 11:56:18 +0000
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfcVA-00000006rbw-0RUT
+	id 1wfcVD-00000006rd1-0ycs
 	for linux-mediatek@lists.infradead.org;
-	Fri, 03 Jul 2026 11:56:13 +0000
-Received: by mail-pg1-x534.google.com with SMTP id 41be03b00d2f7-c8b49639fbaso370106a12.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 04:56:11 -0700 (PDT)
+	Fri, 03 Jul 2026 11:56:16 +0000
+Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-84592b55832so314096b3a.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 04:56:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1783079771; x=1783684571; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=0B1463+Qr0zm+lZPP190miffZziNrhNxavOC7rjqnck=;
-        b=EU77Ym/NCah38zQMk6OqUe3TbPVU+fXwjxp36whYyYPGL33y7e9suj3yxaYUmldvwr
-         6aVRMIjRb9EiyqJLsh8gENVlBk2r+lkdaMl8lJ7zHZS4EemUsIRwwc2EQdz505/01SbN
-         ox4BAXnJ6ZERanEKoCFpPubqA5ZbiPsPf7WRo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783079771; x=1783684571;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=chromium.org; s=google; t=1783079774; x=1783684574; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=0B1463+Qr0zm+lZPP190miffZziNrhNxavOC7rjqnck=;
-        b=jQl2bCLlvOVtMuQzbChrLK+JKdUcMlVzb79GUTlTr3qH5eQXOw9Jq1XMWYxQqV50Kz
-         CbYZ9xAkhWvbmDo1yNTmYLYRCRlC/FkbRSYeVjclj2UDdwmlKoz14QvGFdbFTCYijofm
-         4QE9ZD0ACSswji8s6yuvX0gVvfDejYxIjnyBMa2Tp+WV1GnR40Q3IA5nJ2undEhf5j9t
-         KxB4Wvl7fpKJYS4nWij0Hvz6B+YdCveJJ216g+JUKSV+ojcagHYU/NdY/1H7TanT5vCc
-         DQoS4FCJ/+hP05IDIoQZmCGBH6IonM0WbKUd+ofKjwkbVXy9lL3hMTQUhAmycI3tgayx
-         RJOQ==
-X-Forwarded-Encrypted: i=1; AFNElJ+GWOoPc92Ne+RvQep8N2zWA5n0WR/IfWkxqQm9sieFR0YN4TRqSDjrpmrSHbwXX72SW9ABLxmSX8N1NVZdYg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz4Qk80ii/CVnq6qiYUC+kCSBCJuyptOERSuz2A9NVOlv/inlT8
-	mhvc2eTA/o6VfR+Z0hziFcXRMd09p4lhoVtQua9UEVIProYpzuC1RtmtaAFlF4S/5g==
-X-Gm-Gg: AfdE7clmmTwNN1NiyvScvRGI+li8iNmhIsCe8pRPE8FeE8xGhhSdvEnd612fOWQwja2
-	IqSOFh6q53lzmGO3EuLmv0YDOZxrxi/2cuuKOpYCXI93HyLJKoeclhoRHWz1zLxjm4mDdP2KPha
-	SI49wsZvh9zy56BSt3drnwchaDZfMT4l5OWUmvM7TcQ/cL5HY8TnFXa1MBgs4829E/io8C2TpYi
-	9jJ2dSbN+lTmLYaGRPR14EiI5kRxmP2cX13KPSzaI6ZQIV7iMqkatSHATo6zHYXUQHsr5TIBV/N
-	B7+/ixSiGvxzbGoEsseMWtkrKvqRt0w8Tr83ji/tkQckG2Q4fhZdeDF88dUahPCQrtTXOzU5YHJ
-	Dj8E0JkDUrcJfsroUT1tc8nahkEJ8WLnrfPggbUJWzTO21WAd0A0kmvb+K3q0go6EBroGvRsA0g
-	eKGyXF7ht+VJaseprYe9eggsoWlV1whNAASMdWtcf42KtdM/YflkWihfinQX7OVf7eBakhgQ==
-X-Received: by 2002:a05:6a20:1602:b0:3bf:6f30:1ccd with SMTP id adf61e73a8af0-3bfed505340mr13580575637.42.1783079771207;
-        Fri, 03 Jul 2026 04:56:11 -0700 (PDT)
+        bh=rJOQnYDmj56BFKnk3PptuIiEN5/cefcVZ6+liIWlLhk=;
+        b=SXJSgSPeJopD4ictZ9CVz3MI/pJH61WBNOauaHHC/P1lAU2WnJBUtZDGO7PyJQi8mV
+         J1csRthqb8HRoqh9ExyPvSbDUsLBaF9Rgc83djsxCuXtfx3njdaUmFOOwoW88+SKEzic
+         l/2FgkeVJcOz7/pC1a+HYQvSBuZ1390JRC7ec=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783079774; x=1783684574;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=rJOQnYDmj56BFKnk3PptuIiEN5/cefcVZ6+liIWlLhk=;
+        b=E208uF86fmXw+ydTys1Ko6nuelnNMvy26Qs6bi+P89WL3Y1sgbOelXx6KBM1mYjzCF
+         rKiZYY55MwLqNe/lUqgJlHdn6Xiq640YP3pDg1Kz4Bi86SlBcikADSJ2pVReF3ODoIRq
+         wb+gfhi778rXX6bf+lTRJgygZZGnMbAh/kmAKMwEnddZoPEEKsA3RHxFRVdJxCVEt6R1
+         j+S5ABMG9Mu6QZi4UpdgcPHir/fZDEO9wWKv4q99AwUyzjENkrnce0HtRVfaj328/9au
+         UNgjvLXTEtcqOjaTAPvPpY42tzZj/VGYYbZ7v6/dHFpuhkvc6mDFIzacjZaA9DUqhxSg
+         jhYw==
+X-Forwarded-Encrypted: i=1; AFNElJ+R4Ntf2t8LKc3dbIurYT4dHeSD4oMohPyYR+240X5SOw5H7Z61oY2sfL3UKwaQbhj3p9Wj1LA7Mnwp8KKPYQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxGKe8PDlt5XIGgGnEGkrOAVkolb62+CTjEJF/Qv893aYXd3JYX
+	EFUFBPJxZv1VZTEBwvykSDl4YK6FOSrjXAZktGUqTLMs/d0XgKWThzQZSlaptB36rw==
+X-Gm-Gg: AfdE7ck9ti8sCqiF2Mox36l6ibjx6euDBVBGW+LcnkaOV//JkyIDxdJzaZGm1pSQrUF
+	ilk8ipLs/cdS9EGEBl0HC01/jHN1U5FfDkiDobuG5tIfL5XH4VvujMYbLDwe2ssgX140PtkDVKI
+	0evgZgh1F9BCShw6nib/xJqZ+iYzjSDIDlVtHJ/1KDrju0K3AWyur2xxRe18uiRzn1otbZNsFBa
+	PLiYggO9Go0ISQgLc470P+i2qvq8qaxsv5S0LYdmydQrhrf7MvyiyZtVTUrp7AI9S4qwjS+9w5e
+	LI50R/8ycUQpm6dIxEXiBoyPiVNsPTp6/8zCFO2IUMnGbgi0zxbm74A2h62UgOX0+So9IBTZukd
+	24EjTt514CZJ0asF4u+5c+CAy9jKX7eNDMd67Lj0N6E/k5NW0kYq8ZitydDRA6s96oo+OPlnhHt
+	8NCz4Fg6SfjOkk8r6YFYrM1iHXJO7nSeuWs0c16ZksX7reP642Xdar1abM+LywmLOx/ZxzOA==
+X-Received: by 2002:a05:6a00:cc9:b0:845:e23f:108 with SMTP id d2e1a72fcca58-847c088ec3fmr9998078b3a.42.1783079774322;
+        Fri, 03 Jul 2026 04:56:14 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:7bc5:6c83:76cd:cbd6])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c9e8bd30ca5sm2569540a12.0.2026.07.03.04.56.08
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c9e8bd30ca5sm2569540a12.0.2026.07.03.04.56.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Jul 2026 04:56:10 -0700 (PDT)
+        Fri, 03 Jul 2026 04:56:14 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -81,15 +82,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-input@vger.kernel.org,
 	linux-i2c@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 0/7] arm64: mediatek: Chromebook trackpad supply fixes
-Date: Fri,  3 Jul 2026 19:55:53 +0800
-Message-ID: <20260703115601.1323491-1-wenst@chromium.org>
+Subject: [PATCH v2 1/7] Input: elan_i2c - Wait for initialization after enabling regulator supply
+Date: Fri,  3 Jul 2026 19:55:54 +0800
+Message-ID: <20260703115601.1323491-2-wenst@chromium.org>
 X-Mailer: git-send-email 2.55.0.rc0.799.gd6f94ed593-goog
+In-Reply-To: <20260703115601.1323491-1-wenst@chromium.org>
+References: <20260703115601.1323491-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260703_045612_176278_C5A80AF0 
-X-CRM114-Status: GOOD (  20.45  )
+X-CRM114-CacheID: sfid-20260703_045615_293315_38080BBA 
+X-CRM114-Status: GOOD (  17.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,80 +107,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi everyone,
+Elan trackpad controllers require some delay after enabling power to
+the controller for the hardware and firmware to initialize:
 
-This series fixes the trackpad descriptions on some MediaTek-based
-Chromebooks: either the trackpad's supply was set as always-on to
-workaround missing delays in the driver, or the delay and supply
-are missing from the trackpad's device node.
+  - 2ms for hardware initialization
+  - 100ms for firmware initialization
 
-v1 was just the first patch [1]. It has since grown to cover multiple
-drivers and devices.
+Until then, the hardware will not respond to I2C transfers. This was
+observed on the MT8173 Chromebooks after the regulator supply for the
+trackpad was changed to "not always on".
 
+Add proper delays after regulator_enable() calls. To avoid impacting
+the boot time of existing devices that have the power rails always on,
+skip the delay if the regulator supply was already enabled. In this
+case the regulator is either always on, was on by default at power up,
+or was left on by some other driver, such as the I2C OF component
+prober. Either way the controller has had ample time to initialize.
 
-Patch 1 adds the correct enable delay after enabling the supply regulator
-for the Elan trackpad to initialize. Compared to v1, the delay is now
-skipped if the regulator was already enabled to avoid impacting boot
-time or time before the trackpad is operational.
+Fixes: 6696777c6506 ("Input: add driver for Elan I2C/SMbus touchpad")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+Changes since v1:
+- Delay only if the regulator was previously disabled / turned off
+- Link to v1
+  https://lore.kernel.org/all/20241001093815.2481899-1-wenst@chromium.org/
+---
+ drivers/input/mouse/elan_i2c_core.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-Patch 2 applies the same logic of skipping the power on delay to the
-i2c-hid-of driver.
-
-Patch 3 applies the same logic of skipping the power on delay to the
-i2c OF component prober library.
-
-Patch 4 adds a delay between when the device node found is enabled and
-when regulator_disable() is called. This gives an asynchronously probing
-driver some time to increment the enable count of their regulator
-reference, thus keeping the device operational and allowing the driver
-to skip the initialization delay.
-
-Patch 5 adds the correct delay for probing trackpads for Hana devices
-to the ChromeOS OF component prober.
-
-Patch 6 removes the "always-on" setting from the trackpad supply for
-Elm / Hana and adds the correct delay to the second source trackpad.
-This corrects the hardware description.
-
-Patch 7 adds the supply and power on delay properties to the Synaptics
-trackpad on the Spherion device. Combined with previous driver changes
-this should cause no actual functional changes or delays.
-
-
-Please take a look. There are no build time dependencies between any
-of the patches, but the DT changes must go in after all the driver
-changes land, especially the first one adding delays to the Elan
-trackpad driver. Otherwise one could potentially end up with a
-non-functional trackpad on the device.
-
-
-Thanks
-ChenYu
-
-[1] https://lore.kernel.org/all/20241001093815.2481899-1-wenst@chromium.org/
-
-Chen-Yu Tsai (7):
-  Input: elan_i2c - Wait for initialization after enabling regulator
-    supply
-  HID: i2c-hid-of: skip post-power-on delay if already powered on
-  i2c: of-prober: skip post-power-on delay if already powered on
-  i2c: of-prober: Defer regulator_disable() on successful probe in
-    simple helper
-  platform/chrome: of_hw_prober: Add delay for hana trackpads
-  arm64: dts: mediatek: mt8173-elm-hana: Unmark trackpad supply as
-    always-on
-  arm64: dts: mediatek: mt8192-asurada-spherion: Add Synaptics
-    trackpad's supply
-
- .../boot/dts/mediatek/mt8173-elm-hana.dtsi    |  8 +----
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi  |  1 -
- .../mediatek/mt8192-asurada-spherion-r0.dts   |  2 ++
- drivers/hid/i2c-hid/i2c-hid-of.c              |  8 ++++-
- drivers/i2c/i2c-core-of-prober.c              | 29 +++++++++++++++----
- drivers/input/mouse/elan_i2c_core.c           | 13 +++++++++
- .../platform/chrome/chromeos_of_hw_prober.c   |  4 +--
- 7 files changed, 48 insertions(+), 17 deletions(-)
-
+diff --git a/drivers/input/mouse/elan_i2c_core.c b/drivers/input/mouse/elan_i2c_core.c
+index f93dd545d66b..db48d7ef8357 100644
+--- a/drivers/input/mouse/elan_i2c_core.c
++++ b/drivers/input/mouse/elan_i2c_core.c
+@@ -47,6 +47,8 @@
+ #define ETP_FWIDTH_REDUCE	90
+ #define ETP_FINGER_WIDTH	15
+ #define ETP_RETRY_COUNT		3
++/* H/W init 2 ms + F/W init 100 ms w/ round up */
++#define ETP_POWER_ON_DELAY	110
+ 
+ /* quirks to control the device */
+ #define ETP_QUIRK_QUICK_WAKEUP	BIT(0)
+@@ -1219,6 +1221,7 @@ static int elan_probe(struct i2c_client *client)
+ 	struct device *dev = &client->dev;
+ 	struct elan_tp_data *data;
+ 	unsigned long irqflags;
++	bool supply_was_enabled;
+ 	int error;
+ 
+ 	if (IS_ENABLED(CONFIG_MOUSE_ELAN_I2C_I2C) &&
+@@ -1250,6 +1253,8 @@ static int elan_probe(struct i2c_client *client)
+ 	if (IS_ERR(data->vcc))
+ 		return dev_err_probe(dev, PTR_ERR(data->vcc), "Failed to get 'vcc' regulator\n");
+ 
++	supply_was_enabled = regulator_is_enabled(data->vcc);
++
+ 	error = regulator_enable(data->vcc);
+ 	if (error) {
+ 		dev_err(dev, "Failed to enable regulator: %d\n", error);
+@@ -1263,6 +1268,9 @@ static int elan_probe(struct i2c_client *client)
+ 		return error;
+ 	}
+ 
++	if (!supply_was_enabled)
++		msleep(ETP_POWER_ON_DELAY);
++
+ 	/* Make sure there is something at this address */
+ 	error = i2c_smbus_read_byte(client);
+ 	if (error < 0) {
+@@ -1406,11 +1414,16 @@ static int elan_resume(struct device *dev)
+ 	int error;
+ 
+ 	if (!device_may_wakeup(dev)) {
++		bool supply_was_enabled = regulator_is_enabled(data->vcc);
++
+ 		error = regulator_enable(data->vcc);
+ 		if (error) {
+ 			dev_err(dev, "error %d enabling regulator\n", error);
+ 			goto err;
+ 		}
++
++		if (!supply_was_enabled)
++			msleep(ETP_POWER_ON_DELAY);
+ 	}
+ 
+ 	error = elan_set_power(data, true);
 -- 
 2.55.0.rc0.799.gd6f94ed593-goog
 
