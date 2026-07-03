@@ -4,202 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBAB0C43458
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 19:52:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 687B0C43458
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 22:04:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DVazRrG0aSxY8WYlC8x0UHgHkIRBJsYN5YFcXqpwEZE=; b=lM2WQ6YEB7EaZ5FzWy21S+5t9X
-	1Q7pDg+RIUwEq5PHk6w88MQOY1niFFBvYrb1Lwq/KpUPwoJhwTp8nhUB59iS5kYt8RMKsAh3CsOAP
-	vZqU7M5djE69hNmzHLWbQ+Crgjk6ivahcHn/42SkaNzzJCog6DPIdN58FZcKfYxJmKjgv1b7Godmy
-	8VKG3DoM2AVDgG3dexrfW3s8ZK0Wvo452kEbI0ued0Yl0eQYGT+CNrG1Bm5FiGRYmvmVJXdTTo2qC
-	ya2rGainUMeTdncrwnorQRSv8MABob6DcJpyDchvmtVttorPm+dvp8HA/CH7wqeTAaoND4c8Tc46H
-	BjKP+6sQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7TiflaSmlDHD5QUweyOWTNN1cwlytjiZ+cyZbaPXtE4=; b=m4f+3dsIcrG7QLPjHt9d07SMAF
+	/dAplZ3Wm9++SkMfELGwXcE1klwXxRUiz6Ko2Q6ekPQh7XWYAqfAF04Qoa/c04MBko2hVwfPomRBz
+	4YsTwG6iKUXBFb04NfHIQIz/vlgPgHsC7sZmqOykpbl8sdSMkCJcEGSf4snLGYDANLY7d2XMh7YCv
+	rNBUU0CkpB4pPp0V3fSjyya2ANbNNTnkwysDK/2OIo8iJjMZ7sZ+BUr467D/+9n8st1mj5Q01NK/M
+	4T3rpW3G//9RRsNWgaBKS7U07dj7mmMBDvX4GsnmAtJCfmDAWYFkLzDWeRJmnWuHfbrkF/3xOl/Lb
+	2+WQpMxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfjvz-00000007p1x-3g7U;
-	Fri, 03 Jul 2026 19:52:23 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1wflzP-00000007xP1-2Zef;
+	Fri, 03 Jul 2026 22:04:03 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfjvx-00000007p1C-1EOd
+	id 1wflzN-00000007xOY-1Sce
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 03 Jul 2026 22:04:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=7TiflaSmlDHD5QUweyOWTNN1cwlytjiZ+cyZbaPXtE4=; b=AWDTJrZKQYKyglcYikjim16XFF
+	HKv/DMXLBnYU5BtJrfuOtek53J0jTfjOBJgHghSIIDSR4wCueiwz3dk+XAFQIOZ5jiJvWssbQcWsN
+	Fpisr8pZj2fl++hCLW8XF8i67qYjAHe3j6nhIGtaC7V0cPiU2/HJg8pms7z7NmVT3LP2T6azmlzV7
+	NzyyTd5BbrIyVp8tku4mgJlgQnpdguRyO2HcV96prgh6Ke0CWDhqXCoIzW5H8ig2OFmgqxbL2jUVt
+	NjvhSEgpIt7AocFel3InsgNZwI1p5H/POM8spr7u+vFBlcEPrU0MHdS7uhRRgtc2QIMu/TA9oXxVt
+	xJEGN/eg==;
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1wflyb-00000005Ax3-2OsF
 	for linux-mediatek@lists.infradead.org;
-	Fri, 03 Jul 2026 19:52:22 +0000
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 663HiVeQ631517
-	for <linux-mediatek@lists.infradead.org>; Fri, 3 Jul 2026 19:52:20 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=qcppdkim1; bh=DVazRrG0aSx
-	Y8WYlC8x0UHgHkIRBJsYN5YFcXqpwEZE=; b=TXRWzJJ2mDiAw8ndD7aCyMTUf3i
-	qUwQeZ18wqKRvWYaRG7r+U4Zxk17QhXrKV+uyNMifJqDY+dgJJQUE1PxEVafitbL
-	/sq5Mw3Xx8o/4twkp24WyE+09HMdwsGNbm1kb8tfUe4hThZERMz+wvsZtyy92Lwb
-	nrBIctgsjjqOJkLu+zd2LD45dyuWrZ/mPnBa/MBW3qg8dEJJgHe+i4VpsMo3vRop
-	HEkWuF2pAHHoEiQK1DLWavNEjRrtWZLcXJ1zYzjPtBxzPlLbgbJNPMNInXMxnGEF
-	qThiaYPMZK+b3IqAmA49y6rMxQqQcVfei0p5lzYtDgpnoThnuaLpXxDP8BQ==
-Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com [209.85.216.71])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f6b03a00p-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 19:52:20 +0000 (GMT)
-Received: by mail-pj1-f71.google.com with SMTP id 98e67ed59e1d1-38101e6fc6cso1540999a91.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 12:52:20 -0700 (PDT)
+	Fri, 03 Jul 2026 22:03:54 +0000
+Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-2ca11143dbbso7171135ad.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 15:03:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1783108339; x=1783713139; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=DVazRrG0aSxY8WYlC8x0UHgHkIRBJsYN5YFcXqpwEZE=;
-        b=Jufj1SZo/31RUozbPOVRnx29vraTVdpefb7pBrKObsID43neXAUSAGeUwVLbvBgixe
-         /VJlWHaVC1EZ+2VY4mR6yE+yjNBWz7qe920kyzn1gc5DEiXSe90NEs4NzDevWynr6bkx
-         HnmkcbtLhPnqIR4y+o8ibPTzekTtNPApQfBWeleVR6Ay73otvGRpz7a4ObyeTgzAHWXr
-         OA4hEY5dzw145q29hpVAfeVzi6SOCQtdsE9Wxo15vNFZihY0dPtelkgRW1r7ghHXMpvN
-         nKVv/hr3U+AQGd+G7dZILdvCqz9OkV54bXnk2w8yxnkA2syH1Y0MHm7wWjR8qdnEZhRX
-         IL6Q==
+        d=gmail.com; s=20251104; t=1783116191; x=1783720991; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=7TiflaSmlDHD5QUweyOWTNN1cwlytjiZ+cyZbaPXtE4=;
+        b=PaeDU40MrcEetNJL9Ul/Dp4axA0w9tR6HCFjaD4l2yYPwpKfTr+3QV4jUMh+R6oyhT
+         RzeL9gIwL+iTB/zFJtr1oAvfrMDhdcF9ERWGcuA3WJHGCa1A78OYCOJrmvuJNSmQ5ba7
+         u2VhC8o6Wc6IUoWJ3lk+f9aCzyTo0eEVvFYV1NiPXrZPb1lMkdzQBypLvbluJqOhzqLB
+         wwHJ290uZD7l4w+b8uJeZo9Z4eIMrbSv3gDi2JRdFed1V5kHEoFZA5sO72a7zKVXJA8m
+         Xk5HlXgNh3q3fPU4CXcZ8hn539rYgGzTH941a6aizKNvs72dvkhYYACGgR6Fbq0IwMT4
+         fFDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783108339; x=1783713139;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=DVazRrG0aSxY8WYlC8x0UHgHkIRBJsYN5YFcXqpwEZE=;
-        b=GpfMnUree865/FflZ2oUYLmuiTB/+iPof0Um9aJdMwxn5X/WtWPtm0ow0vaRJyrWl3
-         2jrLi8MJSSXKI0OvMl77MJvvt+VYOiQxhsJK9ydBNjrSwrbWZpmn4rEFLyqJ4uS2W1gc
-         xa3WrteTd+Xga/l+nyLIa8ffZQrxJzUPAjiyjTfbYG7ovGWYZEjT8o85ABX5MMdTyiCS
-         b9s4aaDLnkiDwNQIhkA/iGRoZsN2YBoudNosvvm44elV+HLESRTS6r68jvpo50oEv5OA
-         l09r+gqHGw3w5sff5OpOzxP1Jo6kqEpGrVp5JKNRgQI8sFTOms4SDL17GSA3OD8myft7
-         Z+jg==
-X-Forwarded-Encrypted: i=1; AHgh+RpeeP5at0SfMEYR1Qz5D9tP2mvxgS0J/h4baMfnYMsig3OD7iD9J5SkQn67MVpy8nwSoHi17IfMUa0NhyotoA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx19PT+sNF8CY+mr042sSwVOp/d4BuwNy04ra4klsQU4FkuB4qo
-	sIHxhfodKJ+4A3QlU9p22DLVXgK1Ft9KeWQGB2+Ppr9K0DE4tR1FA7ytBUMLyD1w5R6daS1/b1p
-	hT+rJ+u+chL8bkUgRNZGX++OzsZeuAF/bKo0P+KScnGYxRx6g9SRn4OmGRc47jmR79Ta8lMO76k
-	E=
-X-Gm-Gg: AfdE7cnA9x/lFr7nRScK6pKqsU340QwjA0zPJw5PnLIbumkhAnu66Er3F+m+Ei848X3
-	GzUk1PsC8HoHY+mRhkrZAf1bXGA/GaiiePUwoEp3YIYdMGMOKw4a3cyFLN4JIfenawveCJhyhmg
-	e8E5epI+fBf1aUgLDuq2LzaDu2lMAf6w2GVDuDqeI5bhSc/oPIUlILYxJ6HbPNPNzJqxCovhEm6
-	0kTnGynuMjrZobZzRNv3OZflCWohdvQumuoIjb6WRZISz3R+NT2fwOSY2u021xN6wK2LWAjy1Mi
-	IfaGKEthpoG1g5DeBHP2fPH4KV0HYVgU6ziKBAL8+HPbwtS8v7Nk1qrMBMX/Z86QEbMiRT+PTZB
-	wEsEd4H/xAlBzuWQjg2frqLDRiDOP5uJiFpf5bw==
-X-Received: by 2002:a17:90b:2d07:b0:37e:1bc4:b6ae with SMTP id 98e67ed59e1d1-382808b20c0mr790719a91.8.1783108339131;
-        Fri, 03 Jul 2026 12:52:19 -0700 (PDT)
-X-Received: by 2002:a17:90b:2d07:b0:37e:1bc4:b6ae with SMTP id 98e67ed59e1d1-382808b20c0mr790679a91.8.1783108338648;
-        Fri, 03 Jul 2026 12:52:18 -0700 (PDT)
-Received: from hu-mojha-hyd.qualcomm.com ([202.46.23.25])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-30f290b6bc2sm10065845eec.27.2026.07.03.12.51.55
+        d=1e100.net; s=20251104; t=1783116191; x=1783720991;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=7TiflaSmlDHD5QUweyOWTNN1cwlytjiZ+cyZbaPXtE4=;
+        b=TGEHulRmwvzQq0GeLJ02/cFle7sFz1vZUk+jRsM229xAUVspZGt3j4Fx7VrYtdHWOD
+         DJMJG43oEag9vnmKcGcZtuwlwzvNcPG1FC8C79RySmfIbsHPh8OaSCfDwZ4NhSPojqT6
+         J0JfItIeCswKPwam6kqzTukTe8lAUqxV24WjvYznpuY/SmzVU3OT8NwWFyl3+ey+OapU
+         6yIiwspwD5ytW1tEOEcvFxFxQ5FQKUNEDJOfv7555cIn6Ldbx4Y/LG9PrD75Q0aNBkPO
+         XzCJKW4lumo+9ZSfkQxUx4OcF73qID/UkjGGNezM/Q0DFTrW4VOos9yJ4LeGSmWXFLnX
+         x9Tw==
+X-Forwarded-Encrypted: i=1; AHgh+Rqgw5Yz1KBOQrA9xwL1npSI0npKW7EpGbgl07QQay3Vn3tMK1ipKND4vPgYyLw05jV6s02Pwwquuq8UmzjUgg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxLCScni6pwxS9zFvMz4fAs1eHga9ZgoW7lmkfr+kx2mcZ4IAs2
+	Koa6ob2d+th+1PtHfnTNHFljGpie8osW9EQcl4q4NMxOHVPhEuxeLjJy
+X-Gm-Gg: AfdE7cmdFt9ur6lX/AJy0h2Lx17CSYn9wI04iz0uw5E6P8rPY9qZbhKmY6aAIf1Vzpu
+	o0Cq9r3J5cCd93fnrXQoVucSfH7zoSwVrHDpKdKkCjsM5Z7KOmtLQo2zm5U/Rc8NVttg2GALLL6
+	77/aULDWMqkwveAD4ky1tvAkuq0ychLcDWtj+AeKcuIHvEPUvTfsdzZ76eJGv1fa0vNsg6zTaQg
+	/XI+prmSNdBjT7JBcD80/9j87T4wjhwcsCU9jGBafA08+j4Z12bGGCqCVOdF7YqHzBTUppyZMfF
+	M4Ug4hancum3pxdYoBPhma/3U7csVCe/4kHBNkzLQwLIgAHUKttNelxvupY9di2w2obUXhuEWJb
+	XX8DznBqCgJ6Mc44FSLzcSZfV04zuejajAvz/bkGbUGW7nzz6OmOk3Y/MAy4TiXbVcwflUlnb4P
+	DO9UOrP5hHn8mbxoCAAl6Goagu7Z0+hyE0HBRmV7QnKF3doq7vumJsjAoLA8qXi3pW5pUv0oAsl
+	R93tPIKQg==
+X-Received: by 2002:a17:903:3bcb:b0:2c8:1f56:9fc5 with SMTP id d9443c01a7336-2cbb9ec70a6mr8823645ad.35.1783116190489;
+        Fri, 03 Jul 2026 15:03:10 -0700 (PDT)
+Received: from ryzen.lan ([2601:644:8000:7a86::e34])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cad77657cbsm14598455ad.47.2026.07.03.15.03.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Jul 2026 12:52:18 -0700 (PDT)
-From: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
-To: Bjorn Andersson <andersson@kernel.org>,
-        Konrad Dybcio <konradybcio@kernel.org>,
-        Liviu Dudau <liviu.dudau@arm.com>,
-        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-        Maxime Ripard <mripard@kernel.org>,
-        Thomas Zimmermann <tzimmermann@suse.de>,
-        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-        Joel Stanley <joel@jms.id.au>,
-        Andrew Jeffery <andrew@codeconstruct.com.au>,
-        Paul Cercueil <paul@crapouillou.net>,
-        Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
-        Paul Kocialkowski <paulk@sys-base.io>,
-        Linus Walleij <linusw@kernel.org>, Chen-Yu Tsai <wens@kernel.org>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>,
-        Alexey Brodkin <abrodkin@synopsys.com>,
-        Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-        Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-        Michal Simek <michal.simek@amd.com>,
-        Daniel Scally <dan.scally@ideasonboard.com>,
-        Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
-        Mauro Carvalho Chehab <mchehab@kernel.org>,
-        Eddie James <eajames@linux.ibm.com>,
-        Tiffany Lin <tiffany.lin@mediatek.com>,
-        Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-        Yunfei Dong <yunfei.dong@mediatek.com>,
-        Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-        Houlong Wei <houlong.wei@mediatek.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Joseph Liu <kwliu@nuvoton.com>, Marvin Lin <kflin@nuvoton.com>,
-        Dmitry Osipenko <dmitry.osipenko@collabora.com>,
-        Krzysztof Kozlowski <krzk@kernel.org>,
-        Thierry Reding <thierry.reding@kernel.org>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Srinivas Kandagatla <srini@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
-        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-        Ge Gordon <gordon.ge@bst.ai>, Adrian Hunter <adrian.hunter@intel.com>,
-        Ulf Hansson <ulfh@kernel.org>, Rob Herring <robh@kernel.org>,
-        Saravana Kannan <saravanak@kernel.org>,
-        Mathieu Poirier <mathieu.poirier@linaro.org>,
-        Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-        Shengjiu Wang <shengjiu.wang@gmail.com>,
-        Xiubo Li <Xiubo.Lee@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>,
-        Mark Brown <broonie@kernel.org>, Frank Li <Frank.Li@nxp.com>,
-        Sascha Hauer <s.hauer@pengutronix.de>,
-        Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
-        Bard Liao <yung-chuan.liao@linux.intel.com>,
-        Daniel Baluta <daniel.baluta@nxp.com>,
-        Orson Zhai <orsonzhai@gmail.com>,
-        Baolin Wang <baolin.wang@linux.alibaba.com>,
-        Peter Chen <peter.chen@cixtech.com>,
-        Fugang Duan <fugang.duan@cixtech.com>
-Cc: Ekansh Gupta <ekansh.gupta@oss.qualcomm.com>,
-        BST Linux Kernel Upstream Group <bst-upstream@bstai.top>,
-        Fabio Estevam <festevam@gmail.com>,
-        Nicolin Chen <nicoleotsuka@gmail.com>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Kai Vehmanen <kai.vehmanen@linux.intel.com>,
-        Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
-        Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
-        Chunyan Zhang <zhang.lyra@gmail.com>,
-        CIX Linux Kernel Upstream Group <cix-kernel-upstream@cixtech.com>,
-        linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
-        dri-devel@lists.freedesktop.org, linux-aspeed@lists.ozlabs.org,
-        linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
-        linux-sunxi@lists.linux.dev, linux-media@vger.kernel.org,
-        openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
-        kernel@collabora.com, linux-tegra@vger.kernel.org,
-        linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
-        linux-remoteproc@vger.kernel.org, linux-staging@lists.linux.dev,
-        linux-sound@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
-        imx@lists.linux.dev, sound-open-firmware@alsa-project.org,
-        Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
-Subject: [PATCH 32/42] drm: aspeed: Use devm_of_reserved_mem_device_init()
-Date: Sat,  4 Jul 2026 01:08:45 +0530
-Message-ID: <20260703193855.110619-33-mukesh.ojha@oss.qualcomm.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260703193855.110619-1-mukesh.ojha@oss.qualcomm.com>
-References: <20260703193855.110619-1-mukesh.ojha@oss.qualcomm.com>
+        Fri, 03 Jul 2026 15:03:09 -0700 (PDT)
+From: Rosen Penev <rosenp@gmail.com>
+To: linux-usb@vger.kernel.org
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Kees Cook <kees@kernel.org>,
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
+	linux-arm-kernel@lists.infradead.org (moderated list:MEDIATEK USB3 DRD IP DRIVER),
+	linux-mediatek@lists.infradead.org (moderated list:MEDIATEK USB3 DRD IP DRIVER),
+	linux-kernel@vger.kernel.org (open list),
+	linux-hardening@vger.kernel.org (open list:KERNEL HARDENING (not covered by other areas):Keyword:\b__counted_by(_le|_be|_ptr)?\b)
+Subject: [PATCHv2] usb: mtu3: allocate phys with ssusb
+Date: Fri,  3 Jul 2026 15:03:08 -0700
+Message-ID: <20260703220308.294247-1-rosenp@gmail.com>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzAzMDIwMCBTYWx0ZWRfX5Mi1i9/xtQEA
- TL8WuPv4iRiUjLwe4akmY46Wi9rXVr1nTM+19d0ZLKT9uSgKL/d1Mcn8wrQlu52wcui2Cbo4ota
- HglBXtUdQ/qZoYbZcI7LNEDS/oVW8MA=
-X-Proofpoint-GUID: VJqoRz3c5DNLa4VHoiVvyeDXAJUYvCBN
-X-Authority-Analysis: v=2.4 cv=FoY1OWrq c=1 sm=1 tr=0 ts=6a4812f4 cx=c_pps
- a=UNFcQwm+pnOIJct1K4W+Mw==:117 a=ZePRamnt/+rB5gQjfz0u9A==:17
- a=RAioF0-LDSMA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22 a=EUspDBNiAAAA:8
- a=YxFYfaw6DuWYmsw8bRUA:9 a=uKXjsCUrEbL0IQVhDsJ9:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzAzMDIwMCBTYWx0ZWRfX4P/F6bHHmhRK
- UC2RBKfh9XRYA/TgQEj3RVMDcEZXCwsDibp4vslWMbogj7ZCFEVc8FzsEJzyLXC72PUDWv1nsnJ
- Y3BZODz4u+1KdAmcjQ0Ng530FUESs7Uh+P9qfeEeGzRz0JcdFBZ+WgzhdP0dTMbEKCBIwU0tQUM
- KdO1lVlnzXMEqeNrt6rxprnyHBOAJOBfKttBxVuimEUDtESNkOyycNdz9r6uAtirECmSuYR2he+
- k+UcoL2u8OJubrZM4mi6YrkfQYmH6QcfSzPSqMs+V4XBIiS5qJo7Km5OR56eEQ7TE7N96JJuWWU
- U6BhZB1dqqX1gH0AaxLQEi9AzyLs2tgxt/nlz+WAvtIiGLYx9GUV2Fr0rL5qTsMX+Z6rZSoRHLX
- W6O9O7tmZ/vAqR+d/S9K7v0lOu/fkoYpic+xDaWYFsyf9euAZ4xq4RSAgbOPIwbyBKMFXnBeD66
- Mu1XLI2Ychpl2B0c3vg==
-X-Proofpoint-ORIG-GUID: VJqoRz3c5DNLa4VHoiVvyeDXAJUYvCBN
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
- definitions=2026-07-03_03,2026-07-03_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 clxscore=1015 malwarescore=0 adultscore=0 suspectscore=0
- spamscore=0 bulkscore=0 priorityscore=1501 lowpriorityscore=0 impostorscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607030200
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260703_125221_439900_4A51686B 
-X-CRM114-Status: GOOD (  16.35  )
+X-CRM114-CacheID: sfid-20260703_230353_215255_9E972882 
+X-CRM114-Status: GOOD (  14.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -214,29 +117,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the devres-managed devm_of_reserved_mem_device_init() to ensure
-the reserved memory region is released on device removal, fixing a
-missing cleanup in the original code.
+Use a flexible array member to combine allocations. Slightly more
+efficient to have a single allocation like this.
 
-Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
+Add __counted_by for extra runtime analysis.
+
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
 ---
- drivers/gpu/drm/aspeed/aspeed_gfx_drv.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ v2: add max() call to prevent negative values.
+ drivers/usb/mtu3/mtu3.h      |  2 +-
+ drivers/usb/mtu3/mtu3_plat.c | 19 +++++++------------
+ 2 files changed, 8 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/gpu/drm/aspeed/aspeed_gfx_drv.c b/drivers/gpu/drm/aspeed/aspeed_gfx_drv.c
-index d4577663a1f0..2c7e54fc35d9 100644
---- a/drivers/gpu/drm/aspeed/aspeed_gfx_drv.c
-+++ b/drivers/gpu/drm/aspeed/aspeed_gfx_drv.c
-@@ -168,7 +168,7 @@ static int aspeed_gfx_load(struct drm_device *drm)
- 		}
- 	}
+diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
+index ba5a63669e5f..d71849388602 100644
+--- a/drivers/usb/mtu3/mtu3.h
++++ b/drivers/usb/mtu3/mtu3.h
+@@ -252,7 +252,6 @@ struct ssusb_mtk {
+ 	struct mtu3 *u3d;
+ 	void __iomem *mac_base;
+ 	void __iomem *ippc_base;
+-	struct phy **phys;
+ 	int num_phys;
+ 	int wakeup_irq;
+ 	/* common power & clock */
+@@ -272,6 +271,7 @@ struct ssusb_mtk {
+ 	struct regmap *uwk;
+ 	u32 uwk_reg_base;
+ 	u32 uwk_vers;
++	struct phy *phys[] __counted_by(num_phys);
+ };
  
--	ret = of_reserved_mem_device_init(drm->dev);
-+	ret = devm_of_reserved_mem_device_init(drm->dev);
+ /**
+diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
+index cc8a864dbd63..afb01b76e1d7 100644
+--- a/drivers/usb/mtu3/mtu3_plat.c
++++ b/drivers/usb/mtu3/mtu3_plat.c
+@@ -240,17 +240,6 @@ static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
+ 	if (ret)
+ 		return ret;
+ 
+-	ssusb->num_phys = of_count_phandle_with_args(node,
+-			"phys", "#phy-cells");
+-	if (ssusb->num_phys > 0) {
+-		ssusb->phys = devm_kcalloc(dev, ssusb->num_phys,
+-					sizeof(*ssusb->phys), GFP_KERNEL);
+-		if (!ssusb->phys)
+-			return -ENOMEM;
+-	} else {
+-		ssusb->num_phys = 0;
+-	}
+-
+ 	for (i = 0; i < ssusb->num_phys; i++) {
+ 		ssusb->phys[i] = devm_of_phy_get_by_index(dev, node, i);
+ 		if (IS_ERR(ssusb->phys[i])) {
+@@ -330,12 +319,18 @@ static int mtu3_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct ssusb_mtk *ssusb;
+ 	int ret = -ENOMEM;
++	int num_phys;
+ 
++	num_phys = of_count_phandle_with_args(dev->of_node,
++			"phys", "#phy-cells");
++	num_phys = max(0, num_phys);
+ 	/* all elements are set to ZERO as default value */
+-	ssusb = devm_kzalloc(dev, sizeof(*ssusb), GFP_KERNEL);
++	ssusb = devm_kzalloc(dev, struct_size(ssusb, phys, num_phys), GFP_KERNEL);
+ 	if (!ssusb)
+ 		return -ENOMEM;
+ 
++	ssusb->num_phys = num_phys;
++
+ 	ret = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(32));
  	if (ret) {
- 		dev_err(&pdev->dev,
- 			"failed to initialize reserved mem: %d\n", ret);
+ 		dev_err(dev, "No suitable DMA config available\n");
 -- 
-2.53.0
+2.55.0
 
 
