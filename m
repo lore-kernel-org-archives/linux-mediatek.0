@@ -4,58 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 230F7C43327
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jul 2026 18:55:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 112DEC43458
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 01:00:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fNS4tqccb04+QtS0h43Z588lZs7oUTCl9VD/wpTFlbQ=; b=jUHa9bRBUfY97vg4zAnJ6hrdpZ
-	FkJoRKrwT0QsG+GMDHKVhD1xghkSsJm3A9ifLHasQdWMsGJM1osXEUJyJl/2L0bHWBtI6RzbdbaVu
-	/yUHMbXYR+rU7yUqM2m0iYz36rt+m4CI2cytwdunxgTWpV8andomfyAb2DU8opL3uoAawcGYK34NX
-	M9kpz35/hnuXJQrTRqY2r7gfUFB6JQk5bbumupdJKTBIKVI8smeiz27JIdYkwLbk2/iBuDDXzspW5
-	AxmhncbLgjM++oIJ7WObjIEdIFlt6RxPJuTi7sABfbrU2SdIgkJOlbVZb/9fBMtzyntrxRczJCFZZ
-	4FDDP2lw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=OG+AH5OioDQ5bL6HxNycjtqG2Tg+0W/zAAEWZHSKmng=; b=EC64f8LufRXXHcLP7Z2qZRVjJE
+	o0d12z+oqS+AoXc5dzj1NrwS15oi/5wQsWV/QlSwBjCISZC7Dxky4HjVUAjp2KUYfF17DHs4wLfrP
+	Thju8V6/Mali96Le5/3XFZSKPBxfpIj++xvVw92Z5+brE77e9dCR10QepeM+SJGOIlu5tN/OfRiAS
+	/lJBUuMP2j58BcBh4zDTSKN6nsnGx/fyxxYCoRRVSsCjPHYEvTczqu871yG1JVbp6+RsY8QGoHPmt
+	NG/qjHESCGMK3FyU1Z+86dljJ2O4N1LTnTf6i5Q63tifUlbg1FMZXE1rFSUhwSTf4Oiv4yomw9p/7
+	z+aIpiIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfMZP-00000005IOz-42PA;
-	Thu, 02 Jul 2026 18:55:31 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wfSGM-00000005oNm-3uvc;
+	Fri, 03 Jul 2026 01:00:15 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfMZO-00000005IOK-1flp;
-	Thu, 02 Jul 2026 18:55:30 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 62880601CF;
-	Thu,  2 Jul 2026 18:55:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4FB9B1F000E9;
-	Thu,  2 Jul 2026 18:55:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783018529;
-	bh=fNS4tqccb04+QtS0h43Z588lZs7oUTCl9VD/wpTFlbQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=NacNS6bg/nGPS5YUVw5jH76wz5YShTWSyyE8s+P9wfrl2yzgf4tTqcvZHd84S/7Dg
-	 DDaRntRlSXAQmnWC9ElrOfi+TuWSbnb7FQi3I4Te4lO1VsC4K6hrneeJsRSTr2B5hG
-	 v60VUaXomKc6i8I8XKVWIzjnJsOPFhn0XrSMskbWikxlCGMT2LKUKUChoG6CXUGT5h
-	 koccK0yAKwj+292C599zTt87zjQ+SsCFkTAFkjKlxCEFClwz47A+xtLqXaKv6pEn3h
-	 51yzH/sYvncroPFkvHbxw8GTs8sxwIWGve6jNtawVKeMepHRu8pziEf52iuZ80c7LE
-	 4SHH3bL6VawbA==
-Date: Thu, 2 Jul 2026 19:55:21 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Kyrie Wu =?utf-8?B?KOWQtOaZlyk=?= <Kyrie.Wu@mediatek.com>
-Subject: Re: [PATCH v5 11/14] dt-bindings: media: mediatek: vcodec: add
- decoder dt-bindings for mt8196
-Message-ID: <20260702-parlor-disband-fdc2f049336c@spud>
-References: <20260603084045.17488-1-kyrie.wu@mediatek.com>
- <20260603084045.17488-12-kyrie.wu@mediatek.com>
- <20260603-pentagram-unleveled-8729d0003aa7@spud>
- <6cb7ae4a09d476a04ceefca50564646712ad391b.camel@mediatek.com>
+	id 1wfSGG-00000005oNH-12aA
+	for linux-mediatek@lists.infradead.org;
+	Fri, 03 Jul 2026 01:00:13 +0000
+X-UUID: 842dafe2767a11f1acbe4559397dec65-20260702
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=OG+AH5OioDQ5bL6HxNycjtqG2Tg+0W/zAAEWZHSKmng=;
+	b=o1bC3HFj0D09cn61QkAUg+9v4gS8yNzlvKafvMRwEkYJR8NcgjW6L9JpNC7idd4556t6EX3JGfREKBPQDHZ3zq8o3yQx6cE9r5ZHCRoa2Iozl+PGCKpzQPDW0oVYJ0RzrjIce47xGOmPIJxiEkqKztbH4XbRe2mVTkJzRdsshH4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.17,REQID:87bf5cc1-a7cc-46b5-ac80-340f5130b01c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:d497b38,CLOUDID:1c393d04-3795-4a90-800e-68e9393a343e,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 842dafe2767a11f1acbe4559397dec65-20260702
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <eason.lai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1825141656; Thu, 02 Jul 2026 18:00:00 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Fri, 3 Jul 2026 08:59:57 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Fri, 3 Jul 2026 08:59:57 +0800
+From: Eason Lai <eason.lai@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<Yf.Luo@mediatek.com>, <kun.wu@mediatek.com>, <deren.wu@mediatek.com>,
+	<sean.wang@mediatek.com>, <quan.zhou@mediatek.com>, <ryder.lee@mediatek.com>,
+	<leon.yen@mediatek.com>, <litien.chang@mediatek.com>, <jb.tsai@mediatek.com>,
+	<eason.lai@mediatek.com>, Eason Lai <Eason.Lai@mediatek.com>
+Subject: [PATCH v1 1/1] wifi: mt76: mt792x: Fix memory leak in SDIO TX path
+Date: Fri, 3 Jul 2026 08:59:45 +0800
+Message-ID: <20260703005945.2244533-1-eason.lai@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="JdEKl3bSogEo/Lcd"
-Content-Disposition: inline
-In-Reply-To: <6cb7ae4a09d476a04ceefca50564646712ad391b.camel@mediatek.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260702_180008_316611_E38F4146 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,97 +83,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "fanwu01@zju.edu.cn" <fanwu01@zju.edu.cn>, Andrew-CT Chen =?utf-8?B?KOmZs+aZuui/qik=?= <Andrew-CT.Chen@mediatek.com>, "kees@kernel.org" <kees@kernel.org>, Yunfei Dong =?utf-8?B?KOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>, "jacopo.mondi@ideasonboard.com" <jacopo.mondi@ideasonboard.com>, "haoxiang_li2024@163.com" <haoxiang_li2024@163.com>, Irui Wang =?utf-8?B?KOeOi+eRnik=?= <Irui.Wang@mediatek.com>, "laurent.pinchart+renesas@ideasonboard.com" <laurent.pinchart+renesas@ideasonboard.com>, "benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>, "sebastian.fricke@collabora.com" <sebastian.fricke@collabora.com>, "wenst@chromium.org" <wenst@chromium.org>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>, "sakari.ailus@linux.intel.com" <sakari.ailus@linux.intel.com>, "robh@kernel.org" <robh@kernel.org>, "mchehab@kernel.org" <mchehab@kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "tzungbi@kernel.org" <tzungbi@kernel.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, Tiffany Lin =?utf-8?B?KOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>, "rongqianfeng@vivo.com" <rongqianfeng@vivo.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "hverkuil+cisco@kernel.org" <hverkuil+cisco@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "tfiga@chromium.org" <tfiga@chromium.org>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, "ribalda@chromium.org" <ribalda@chromium.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, "nicolas.dufresne@collabora.com" <nicolas.dufresne@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---JdEKl3bSogEo/Lcd
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+From: Eason Lai <Eason.Lai@mediatek.com>
 
-On Thu, Jul 02, 2026 at 05:39:24AM +0000, Kyrie Wu (=E5=90=B4=E6=99=97) wro=
-te:
-> On Wed, 2026-06-03 at 17:14 +0100, Conor Dooley wrote:
-> > On Wed, Jun 03, 2026 at 04:40:41PM +0800, Kyrie Wu wrote:
-> > > From: Yunfei Dong <yunfei.dong@mediatek.com>
-> > >=20
-> > > The MT8196 decoder differs from previous generations in several
-> > > key aspects, most notably in its use of VCP instead of SCP.
-> > > Additionally, the MT8196 enhances codec capabilities by supporting
-> > > HEVC Main10 profile decoding. To accommodate these hardware
-> > > changes,
-> > > the binding constraints specify a total of 12 clock inputs,
-> > > consisting of 9 decoder clocks and 3 VCP interface clocks,
-> > > along with 2 power domains covering both the decoder and VCP
-> > > subsystems.
-> >=20
-> > I'm pretty pretty confused by this statement about constraints, since
-> > there's none added?
-> > The vcodec-dec node doesn't even seem to permit clocks at all?
-> >=20
-> Dear Conor,
->=20
-> I apologize for any confusion my commit message caused. What I wanted
-> to convey was the hardware differences between the MT8196 and previous
-> ICs. If you feel that the VCP and clock information are not suitable
-> for this location, I would like to rewrite the commit message as
-> follows:
-> Compared to previous ICs, the MT8196 supports a 10-bit decoder and has
-> a decoding capability of 4K@120fps, using a dual hardware decoding
-> architecture of LAT+CORE.
+When tx_prepare_skb() returns an error in the SDIO TX path, the
+skb is not freed, leading to a memory leak. This can occur when
+zero-length frames (such as WNM NULL frames) are dropped to prevent
+potential hardware TX hangs.
 
-Sure? But your comments about the constraints are odd and I do not know
-if that means you omitted changing constraints when you should have?
-For example, using lat+core only permits you 10 input clocks but your
-commit message talks about 12.
+Fix this by properly releasing the skb with ieee80211_tx_status_ext()
+when tx_prepare_skb() fails.
 
->=20
-> Thanks.
->=20
-> Regards,
-> Kyrie.
-> > >=20
-> > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> > > Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> > > ---
-> > >  .../bindings/media/mediatek,vcodec-subdev-decoder.yaml           |=
-=20
-> > > 1 +
-> > >  1 file changed, 1 insertion(+)
-> > >=20
-> > > diff --git
-> > > a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-
-> > > decoder.yaml
-> > > b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-
-> > > decoder.yaml
-> > > index bf8082d87ac0..74e1d88d3056 100644
-> > > --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-
-> > > subdev-decoder.yaml
-> > > +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-
-> > > subdev-decoder.yaml
-> > > @@ -76,6 +76,7 @@ properties:
-> > >        - mediatek,mt8186-vcodec-dec
-> > >        - mediatek,mt8188-vcodec-dec
-> > >        - mediatek,mt8195-vcodec-dec
-> > > +      - mediatek,mt8196-vcodec-dec
-> > > =20
-> > >    reg:
-> > >      minItems: 1
-> > > --=20
-> > > 2.45.2
-> > >=20
+Fixes: b747fa343817 ("mt76: mt7915: drop zero-length packet to avoid Tx hang")
+Signed-off-by: Eason Lai <Eason.Lai@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/sdio.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
---JdEKl3bSogEo/Lcd
-Content-Type: application/pgp-signature; name=signature.asc
+diff --git a/drivers/net/wireless/mediatek/mt76/sdio.c b/drivers/net/wireless/mediatek/mt76/sdio.c
+index 8bae77c761be..ba5f123f7e39 100644
+--- a/drivers/net/wireless/mediatek/mt76/sdio.c
++++ b/drivers/net/wireless/mediatek/mt76/sdio.c
+@@ -519,6 +519,10 @@ mt76s_tx_queue_skb(struct mt76_phy *phy, struct mt76_queue *q,
+ 		   enum mt76_txq_id qid, struct sk_buff *skb,
+ 		   struct mt76_wcid *wcid, struct ieee80211_sta *sta)
+ {
++	struct ieee80211_tx_status status = {
++		.sta = sta,
++	};
++
+ 	struct mt76_tx_info tx_info = {
+ 		.skb = skb,
+ 	};
+@@ -531,8 +535,13 @@ mt76s_tx_queue_skb(struct mt76_phy *phy, struct mt76_queue *q,
+ 
+ 	skb->prev = skb->next = NULL;
+ 	err = dev->drv->tx_prepare_skb(dev, NULL, qid, wcid, sta, &tx_info);
+-	if (err < 0)
++	if (err < 0) {
++		status.skb = tx_info.skb;
++		spin_lock_bh(&dev->rx_lock);
++		ieee80211_tx_status_ext(dev->hw, &status);
++		spin_unlock_bh(&dev->rx_lock);
+ 		return err;
++	}
+ 
+ 	q->entry[q->head].skb = tx_info.skb;
+ 	q->entry[q->head].buf_sz = len;
+-- 
+2.45.2
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaka0GAAKCRB4tDGHoIJi
-0gcwAQCtMtUoW/cbg4OpVaaf+u+0oq30lr9mkXMb60IDpSgRaQEAsdk2ey0KDekc
-nYS63SVumLqJUdoy4hxVqlFifZehUQo=
-=16wN
------END PGP SIGNATURE-----
-
---JdEKl3bSogEo/Lcd--
 
