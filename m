@@ -4,81 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D561EC43458
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 06:34:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2B69C43602
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 09:20:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Subject:Cc:To:From:MIME-Version:Date:Message-ID:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EQk94zEgbUXH/njc2bJoBjQ43tAUJebQHKZAgqlRP58=; b=zlXF74wt/8NTcul9M4FqGPdXAc
-	TRDyq17VhV5WPs56VCPTaB1KPesu9x6C8YJXczTtKs6fZHwynPfCfmaaqK8YCYFJZ/asb+cSF2wqy
-	Mm3g5yydglvjR+jG8ipi0Npoy78u5fXcgjfWrsygO5rN8BkzFMeQV+wv4S/nijYMRKzruKfXW1xjj
-	EFBfa82Qkz1BgNysYRo5RPQg+8bp2I5sfCdCfkq8Wu3zYzbv2cYQDi6Y0nUrakgQG4jYsl/Dvgyub
-	i3O6GxZCDXciNJJJvYXUES5kWh33FztEjg3uhPgLj5cqMNEqW3tDPZvgJzpwkMzCmJfblvmOT9bXM
-	SqQHrzMg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8avXWQARkeiSCL69SLt7SOMVDKzGcDbduYcPsftLroI=; b=MCL4sXnKf1MBz2
+	CNE9AiosxMXSKjmBVfeX1NcJduvDfAlTMKEhYLVw+EIZRRFKnOB0hoyNZZ+GzCck7950CPWsoh8om
+	Db5hHlQBehgwS5KQrROWJvNhS4qkbhaGeP8RqfL28mHWAFqfxOq06xthfPM5zqaIPEG5iUg5h/HGN
+	G4GX5OBIQhBaX9YFUHoIvGPXGkV3zITo87Nw8IZqu5pPG6uEUwi2JfwW4CxvUjPHE06mhgSkH1Zj7
+	xakMgUHOWFg4CwEeXBkzUhPqg+8E/kG4WGYC/RVp/rR2vz+J9NAEUh38c9mvJQOYKrveFlOhYIQaz
+	nN7dGH7wdDW3G/bFUKkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfXTh-00000006B1Y-25s8;
-	Fri, 03 Jul 2026 06:34:21 +0000
-Received: from relay.yourmailgateway.de ([46.38.247.119])
+	id 1wfa4B-00000006Sny-0kmf;
+	Fri, 03 Jul 2026 09:20:11 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfXTe-00000006B0X-2HSV
-	for linux-mediatek@lists.infradead.org;
-	Fri, 03 Jul 2026 06:34:20 +0000
-Received: from mors-relay-8404.netcup.net (localhost [127.0.0.1])
-	by mors-relay-8404.netcup.net (Postfix) with ESMTPS id 4gs3r35lNTz87WN;
-	Fri,  3 Jul 2026 08:34:11 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=leemhuis.info;
-	s=key2; t=1783060451;
-	bh=wquMac3iXj0ao4VbxcoVDw1jeCiQnyRzUPYephGxJWI=;
-	h=Date:From:To:Cc:Subject:From;
-	b=jO+neQFag7qS8Cgf8KU1wj+x/nI53fFdkKDx2K8wqjmvGTh7jm1rGT15FxgM09CWL
-	 KT/1vzPjkCpWSEWIyDOBHn9+xkbPCWaWj2L074CoeXe4vP5Z89olWEj9vUqtU0n6n7
-	 siMKD/UVZpHP3Z1C5JRpGbtvhnCa3CgbbRUKr7Xrucp0sXePPaIdyDTnYKLNwnEYX5
-	 gI4WKp/0rWO3R7+61Z5srPavtLa3eU3f9HYt8Zw5JR9zZX293rIvlfaBtJU7ZZAZDs
-	 ld4vsP+ngYqwswTfWq4winj3H6cJZS0YJvHxq7t/CfovPF4YxeheQVNPxjRuX74K33
-	 Xp50OszJwfVmw==
-Received: from policy02-mors.netcup.net (unknown [46.38.225.35])
-	by mors-relay-8404.netcup.net (Postfix) with ESMTPS id 4gs3r352PZz4y3R;
-	Fri,  3 Jul 2026 08:34:11 +0200 (CEST)
-Received: from mxe9fb.netcup.net (unknown [10.243.12.53])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by policy02-mors.netcup.net (Postfix) with ESMTPS id 4gs3r30D8pz8sbF;
-	Fri,  3 Jul 2026 08:34:10 +0200 (CEST)
-Received: from [IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f] (unknown [IPv6:2a02:8108:8984:1d00:a0cf:1912:4be:477f])
-	by mxe9fb.netcup.net (Postfix) with ESMTPSA id A9DAC5F9DD;
-	Fri,  3 Jul 2026 08:34:09 +0200 (CEST)
-Authentication-Results: mxe9fb;
-        spf=pass (sender IP is 2a02:8108:8984:1d00:a0cf:1912:4be:477f) smtp.mailfrom=regressions@leemhuis.info smtp.helo=[IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f]
-Received-SPF: pass (mxe9fb: connection is authenticated)
-Message-ID: <7ea1c4a0-d38f-413b-993b-7846b2b7debd@leemhuis.info>
-Date: Fri, 3 Jul 2026 08:34:04 +0200
+	id 1wfa4A-00000006Sng-17hk;
+	Fri, 03 Jul 2026 09:20:10 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 48B5F41173;
+	Fri,  3 Jul 2026 09:20:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A265C1F000E9;
+	Fri,  3 Jul 2026 09:20:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783070409;
+	bh=8avXWQARkeiSCL69SLt7SOMVDKzGcDbduYcPsftLroI=;
+	h=From:Subject:Date:To:Cc;
+	b=SJUij5X3FQRUPi5L1yrtICjMKHvaVmCOxHsENFe7wPDzYHYGKRvI4OehI0tjGBEBL
+	 BQcGAnPEVGszTJRfnjhm0rZKl2nDmaOEGEtdZQCMp4rl87M1iN3lo5c2hY4dMXSw8A
+	 WuYvOTtRDCnl7NqqoF5sPpim/vswLVhEEMWNUEYmtaQlhNu0LZV3y1mYI/MLDKw+O4
+	 B5hqa4sxZxOejJMAZaTjo1gqCh5kqoEKy/x2fEOPvwRzCZ0hKnXOQ0ASiYfhJAJplI
+	 6S57VSUKqYb0nY1ZelWAQRZIHoynkhGtq/QRU0HzT8O9zg2G0Of6Xuhq6s6LIIeTyp
+	 k5EDduz4WgVhQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net-next v8 0/3] airoha: add the capability to configure
+ GDM3/GDM4 as WAN/LAN on demand
+Date: Fri, 03 Jul 2026 11:19:24 +0200
+Message-Id: <20260703-airoha-ethtool-priv_flags-v8-0-015ba5ac89ee@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Thorsten Leemhuis <regressions@leemhuis.info>
-Content-Language: de-DE, en-US
-To: Chris Lu <chris.lu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>
-Cc: Linux kernel regressions list <regressions@lists.linux.dev>,
- linux-mediatek <linux-mediatek@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- linux-bluetooth <linux-bluetooth@vger.kernel.org>,
- "stable@vger.kernel.org" <stable@vger.kernel.org>
-Subject: btmtk: regression in 6.6.142: NULL pointer dereference in
- btmtk_usb_hci_wmt_sync during resume from S4
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-PPP-Message-ID: <178306045006.2570955.4688252285094479308@mxe9fb.netcup.net>
-X-Rspamd-Server: rspamd-worker-8404
-X-Rspamd-Queue-Id: A9DAC5F9DD
-X-NC-CID: VbNHS0oX1QXCKViIOo6Fnmu8ywTSde/sFR4qjOaanBJLN0ZeUKo=
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260702_233418_754169_30E4AA66 
-X-CRM114-Status: UNSURE (   8.83  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/43QX2vEIAwA8K9y+DyHUav2nvY9xhj+ia3sqIct5
+ cbR7z7pyzoKMgKBEPJLyJPMWBLO5Hp5koJrmlOeamFeLsSPdhqQplBrwhlXrAa1qeTRUlzGJec
+ bvZe0fsabHWbqlLWa+ZoMI3X+XjCmx26/kwkXOuFjIR+1M6Z5yeV7X7rC3v+HvwIFKhk47vuIf
+ YS3LywT3l5zGXZ25UdKtyheKS2519YCguEnShwp06JEpQQaFMGLqKE7UfJAAWtRkjKqGJreR24
+ i2hPVHSloUV2lPEBAZqRR4fwrdaB436JUpYxyXjEWBDh/ovQvpVnzKl0pJ6ETLkgpuflDbdv2A
+ +kLOUiPAgAA
+X-Change-ID: 20260606-airoha-ethtool-priv_flags-b6aa70caa780
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Simon Horman <horms@kernel.org>, 
+ Alexander Lobakin <aleksander.lobakin@intel.com>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ netdev@vger.kernel.org, Madhur Agrawal <madhur.agrawal@airoha.com>
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,78 +79,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chris & Sean! I noticed a report about a regression with btmtk that
-happens in 6.6.y series. This strictly speaking is the domain of the
-stable team, but maybe you want to take a look nevertheless:
+Add the capability to configure GDM3/GDM4 as WAN/LAN on demand when QoS
+offload is created or destroyed.
+Make dev->qdma an RCU pointer so the TX path can safely dereference it
+without holding RTNL.
+Introduce airoha_qdma_start() and airoha_qdma_stop() helpers.
 
-https://bugzilla.kernel.org/show_bug.cgi?id=221696
+---
+Changes in v8:
+- Rebase on top of next-next to fix conflicts.
+- Link to v7: https://lore.kernel.org/r/20260701-airoha-ethtool-priv_flags-v7-0-b4153bd44428@kernel.org
 
-To quote:
-"""
-I have a problem that appeared in the 6.6.y series recently, I believe
-in or around f0457842215438786e2e205ad06a4fbb8ab63cd0, although I
-haven't bisected. The problem did not exist in 6.6.140 but does exist in
-6.6.142 and 6.6.143.
+Changes in v7:
+- Fix ETS stats accounting in patch 2/3
+- Reset ETS stats accounting in airoha_dev_set_qdma().
+- Link to v6: https://lore.kernel.org/r/20260629-airoha-ethtool-priv_flags-v6-0-86bc600d31bc@kernel.org
 
-The problem — during resume from hibernation (platform S4) I see this
-NULL pointer dereference in the kernel log:
+Changes in v6:
+- Rebase on top of next-next
+- Add patch 1/3: "rename airoha_priv_flags to airoha_dev_flags"
+- Drop patch 2/3: "refactor QDMA start/stop into reusable helpers"
+- Link to v5: https://lore.kernel.org/r/20260611-airoha-ethtool-priv_flags-v5-0-c11de08486d1@kernel.org
 
-BUG: kernel NULL pointer dereference, address: 0000000000000219
-#PF: supervisor read access in kernel mode
-#PF: error_code(0x0000) - not-present page
-PGD 0 P4D 0
-Oops: 0000 [#1] SMP
-CPU: 7 PID: 214 Comm: kworker/u33:0 Not tainted 6.6.143-gentoo #1
-Hardware name: Framework Laptop 16 (AMD Ryzen 7040 Series)/FRANMZCP09,
-BIOS 04.03 12/22/2025
-Workqueue: hci0 hci_power_on
-RIP: 0010:__pm_runtime_resume+0x15/0x80
-Code: 55 fe ff ff 83 e0 02 45 31 e4 e9 45 fd ff ff 66 0f 1f 44 00 00 f3
-0f 1e fa 41 54 55 53 48 89 fb 48 83 ec…
-RSP: 0018:ffffc90004a37c18 EFLAGS: 00010246
-RAX: ffff88810bdcd4f8 RBX: 0000000000000050 RCX: 0000000000000000
-RDX: 0000000000000035 RSI: 0000000000000004 RDI: 0000000000000050
-RBP: 0000000000000035 R08: ffff888fdfde6bd0 R09: ffff888101338a40
-R10: 0000000000000001 R11: 0000000000000040 R12: ffff888101338a40
-R13: ffffc90004a37cc0 R14: 000000000000003a R15: ffffc90004a37cb4
-FS:  0000000000000000(0000) GS:ffff888fdfdc0000(0000) knlGS:0000000000000000
-GS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: 0000000000000219 CR3: 0000000003e11000 CR4: 0000000000750ee0
-PKRU: 55555554
-Call Trace:
- <TASK>
- usb_autopm_get_interface+0x1a/0x50
- btmtk_usb_hci_wmt_sync+0xb8/0x480
- ? btmtk_usb_wmt_recv+0x240/0x240
- btmtk_setup_firmware_79xx+0x1a4/0x360
- btusb_mtk_setup+0x45b/0x690
- hci_dev_open_sync+0xdd/0xa40
- ? try_to_wake_up+0x235/0x510
- hci_power_on+0x69/0x2b0
- ? lock_timer_base+0x6a/0x90
- process_one_work+0x154/0x2f0
- ? process_one_work+0x2f0/0x2f0
- worker_thread+0x18b/0x310
- kthread+0xe0/0x110
- ? kthread_complete_and_exit+0x30/0x30
- ret_from_fork+0x2c/0x40
- ? kthread_complete_and_exit+0x30/0x30
- ret_from_frok_asm+0x11/0x20
- </TASK>
-CR2: 0000000000000219
----[ end trace 0000000000000000 ]---
+Changes in v5:
+- Add patch 1/3: use int instead of atomic_t for qdma users counter
+- Protect dev->flags with flow_offload_mutex mutex.
+- Introduce AIROHA_PRIV_F_QOS in order to handle better WAN/LAN
+  switching.
+- Link to v4: https://lore.kernel.org/r/20260610-airoha-ethtool-priv_flags-v4-0-60e89cf28fea@kernel.org
 
-The BUG dump appears while the system is waiting for me to enter my LUKS
-passphrase — i.e., *before* the initramfs writes the swap device
-major:minor to /sys/power/resume to initiate resume from hibernation.
+Changes in v4:
+- Move back QDMA TX/RX DMA enable to airoha_dev_open()/airoha_dev_stop().
+- Configure GDM3/4 as WAN if GDM2 is not available in ndo_init()
+  callback.
+- Protect qdma pointer in airoha_gdm_dev struct using RCU.
+- Rely on rtnl_dereference() to access qdma pointer in the control path.
+- Add airoha_qdma_start() and airoha_qdma_stop() utility routines in
+  patch 1/2
+- Link to v3: https://lore.kernel.org/r/20260608-airoha-ethtool-priv_flags-v3-1-3e8e3dc3f715@kernel.org
 
-I am still running kernel 6.6.140 in my current session. In other words,
-a 6.6.143 kernel is booting to resume a suspended session that is
-running a 6.6.140 kernel.
-"""
+Changes in v3:
+- Do not introduce ethtool private flags support to configure LAN/WAN
+  for GDM3/4 and rely on tc qdisc offload for it instead.
+- Set GDM3/4 ports as LAN by default.
+- Move QDMA TX/RX DMA enable from airoha_dev_open() to airoha_probe()
+  and the corresponding disable from airoha_dev_stop() to airoha_qdma_cleanup().
+- Link to v2: https://lore.kernel.org/r/20260607-airoha-ethtool-priv_flags-v2-1-742c7aa1e182@kernel.org
 
-This does not happen in mainline -- apparently it is fixed by
-"Bluetooth: btmtk: move btusb_mtk_[setup, shutdown] to btmtk.c"
+Changes in v2:
+- Rework airoha_dev_set_wan_flag routine
+- Enable GDM_STRIP_CRC_MASK in airoha_disable_gdm2_loopback()
+- Do not always reset REG_SRC_PORT_FC_MAP6 in
+  airoha_disable_gdm2_loopback() but use the same condition used in
+  airoha_enable_gdm2_loopback().
+- Link to v1: https://lore.kernel.org/r/20260606-airoha-ethtool-priv_flags-v1-1-401b2c9fe9f1@kernel.org
 
-Ciao, Thorsten
+---
+Lorenzo Bianconi (3):
+      net: airoha: rename airoha_priv_flags to airoha_dev_flags
+      net: airoha: fix ETS QoS stats counter underflow and cross-channel corruption
+      net: airoha: defer GDM3/GDM4 WAN mode and GDM2 loopback to QoS offload
+
+ drivers/net/ethernet/airoha/airoha_eth.c  | 253 ++++++++++++++++++++++++++----
+ drivers/net/ethernet/airoha/airoha_eth.h  |  26 ++-
+ drivers/net/ethernet/airoha/airoha_ppe.c  |   9 +-
+ drivers/net/ethernet/airoha/airoha_regs.h |   1 +
+ 4 files changed, 246 insertions(+), 43 deletions(-)
+---
+base-commit: 6fb33632323a396c9dc2bb9bea483e013e547d57
+change-id: 20260606-airoha-ethtool-priv_flags-b6aa70caa780
+
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
