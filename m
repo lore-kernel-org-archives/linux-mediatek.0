@@ -4,62 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C69B2C43458
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 11:02:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B11D0C43458
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 11:03:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VWY2Crs2joWjAQwhRFf+Tu4H97AY31GvwuXuYsgMjIs=; b=H87B2qsvf5Z8GWLrCalEU5lp2G
-	59YaJJ92hmLNCmRmFClxplJX2DwzxyZ+EzZLRiTlRWu1gTgZ2f3qwJ+wi0zJV8oVtmIFOsCLk4Xrx
-	F8ySQHrWs5HqMbqlGbme+qGGGiH0jRbNp1I/r4Bd/ghqqDUQ23DK4mivEOXy0aJUFZb5CI9efZTNZ
-	l2GXHlEFQ6G4WvO5VZat5za9/bqJDcDtnXxGzW/ggPEMUIl5e5r9y3DAczbmGfFalyMApRY88gTG8
-	lQywGHp/0HSKv2ZtDMatbNSk/VV0jRmY/t04NMky7rekSf+I6bSPKEFJrK8MU8aw3j9COK5lqUQFD
-	LuQHC9QQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Sqs/izjUXlQxLzNznfrFoz35GSBVfbHOxBq9DzMVAxY=; b=elrl8KQliResEkA4LXiMKzx0/R
+	mtc9qCCbkNWCbKydFWtM/jqw8o8fsNbWvnFFfx7UUyH3S+wgHgx9b0K/Fh3FYSafwgBZ6CCSPMh/w
+	nxahG0++qMy5Ml2Iy+UbWqSeU7wBzODA6KJJ1vxAlPuzPp/cCC+4AaUxAZLkCEy6ARyrgFzG6/dAQ
+	CungPOCj5ezn6/SDYZ5swBggvKSFoSJHCaikcxsf/DQrDEZBp63DUstgsCu/FEwImXq5mCSGiMn9c
+	FMMfFjySwcfsNz93zFKtGmM9KfXtOXkmFU2F4whKLNnt/5ON6gLfo60GnqYeggZWlBahIThrA16QL
+	8KkattOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfbfK-00000006kZ6-1Q5g;
-	Fri, 03 Jul 2026 11:02:38 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wfbgL-00000006ktl-0lvE;
+	Fri, 03 Jul 2026 11:03:41 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfbfJ-00000006kYs-2KWk;
-	Fri, 03 Jul 2026 11:02:37 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7D1846001A;
-	Fri,  3 Jul 2026 11:02:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C79C1F000E9;
-	Fri,  3 Jul 2026 11:02:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783076556;
-	bh=VWY2Crs2joWjAQwhRFf+Tu4H97AY31GvwuXuYsgMjIs=;
-	h=From:Date:Subject:To:Cc;
-	b=LCStCaPn43su3iXeUQzmDLqFuQZ4oM0kJD2nJAu3aU0wVEKqYwevTzcilprZaa6cr
-	 H3xX63A8ilzSfrH/+mjCbQZ48UmflToCkPX//KbVdJM22GnWJoPY4VSJ20ynhvHLE5
-	 pYBkH0LoFs6KlytUbhi7HqPqGKoUS1ah4eclgRroLt3i3LpPdRjdTP5cF4iwSTDBfj
-	 V8ofktig5E80kpRPUDiuOsZ6vaWt1I5yFMc3twWuFpkHUy0NTv09y44N5tYTj5fjBM
-	 WyE//yoFUu7gS2wfIlGgWIbibF3EqCmiO5Lvsxkv/JKJO0/y9RPqp/mDwP/Sk7E3OQ
-	 anBQVc9KC1Muw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 03 Jul 2026 13:02:17 +0200
-Subject: [PATCH net-next] net: airoha: add preliminary support to configure
- tx hw QoS queue during flowtable offloading
+	id 1wfbgI-00000006ksK-3EWf
+	for linux-mediatek@lists.infradead.org;
+	Fri, 03 Jul 2026 11:03:40 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-2c82538b6b0so3487175ad.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 04:03:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1783076617; x=1783681417; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Sqs/izjUXlQxLzNznfrFoz35GSBVfbHOxBq9DzMVAxY=;
+        b=JWNS2oiN/z7YNtlLmhZwJQqBr9S+XjAcpQfnXl+kAdZTLxYhVSo8F8iVQQSA8HT1jB
+         XXD4nRgEvatSX/vJbxCqsDTzLZPNaOtQrd0edahqAfEkiBpnbPHl58Oyki5w/DhS2IGU
+         43r5OdZTGffna2tazmB8N/5ZBj1wSjLKChOy8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783076617; x=1783681417;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Sqs/izjUXlQxLzNznfrFoz35GSBVfbHOxBq9DzMVAxY=;
+        b=Fvf/LYcDxydjhXpENmyKcPsbrHSOjDZqIIALgVJ28evTn98PasujucNDJy8T5kYLLa
+         gDhhSocElLW4zlm/IwG9aGpRtbZVP8JXHW0c9/QYOXNvWck0dzjBelU6myUqLtfkqOUN
+         bg1IVWptyPP/PuRgZDlQkjOhrdB9EYUlH4/JMNOfJIXjVdCR+zBuqUgswTJRJFW21yUX
+         Va92E+H+/7MrM0VaF3YqnWEKoH+5Ihz+C4tOOh7TfN1KHyJwd7zoMYSBTyojnN58WTXs
+         aJc6+7LhhYXf0BoHhK/NiAYcJP5A5qP5ln95qPTjKyFbEyTQOVqTb4hWmhhb0CWnaU5U
+         n+gg==
+X-Forwarded-Encrypted: i=1; AHgh+RpxTZ39T4aKsNmx2Vls1umEi7+Inyg5mBz659ZexrDRfrUR29L1p9wO2SLx/usBQy2sqA7LH///4t+qWLqJsA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywe0P2uvQ4zcp7AZPHw65iwixUisDhI+S2RWWaba9IqKgcul67w
+	QweqNdpsMTMGRzR+9r+3WCL1I6dVdwhNbaj1/PSd03WFWaemavkhxDk/noqJA7R/8w==
+X-Gm-Gg: AfdE7cnfFLgwMA+GdA1MkpCAPpwOvoaGWyUurTI/cES7rqf9pyhwgCaVhH8JPrwJvZn
+	kJL+zzRRBIp4tdBkqX38q/HFw6ValzY8KcdgWrp/TDhfQXQg2waSkj5RH14Fis9Sd1q1zYmOxQ6
+	KT/6KS87dzDMpN008tJaIqhFdkCUIEwhXnqkCIoruTYhF4dkCv53fiipETf0+j2Xrd84e0RxJma
+	WwtBHDOQSeGHdQ9veFUKLg6P9bN6AyxwtMPFMZ6sbJ7CbGKGnC0Jb3zo7kEagvWC85oNF/6YNEh
+	0Sb6zAN40zvnaJ6f/VPl1nTMvgOkU2dcP4v9QNpYRjgUb6N9/8D4ovmaiTQynCcfwMDlWWm2Fc4
+	yGl3QbadbpDkhFfPerBIywQ2xATzOqkWh+BOnBncdgQ7+qoi9ArVzD37gRObBBRfJ1b+ORr3fQ1
+	ygSNP750YwWZDW+R8V8Y1hz3CKwqXsdyid7xn7Adg3UOHPJY0+0QlH297XXGIhy7GpxfVYCQ==
+X-Received: by 2002:a17:902:e54c:b0:2ca:d818:61e5 with SMTP id d9443c01a7336-2cad818638cmr21373785ad.26.1783076617402;
+        Fri, 03 Jul 2026 04:03:37 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:7bc5:6c83:76cd:cbd6])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cad6f25e15sm7785315ad.13.2026.07.03.04.03.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 03 Jul 2026 04:03:35 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Bartosz Golaszewski <brgl@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	linux-acpi@vger.kernel.org,
+	driver-core@lists.linux.dev,
+	linux-pm@vger.kernel.org,
+	linux-usb@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Alan Stern <stern@rowland.harvard.edu>
+Subject: [PATCH v3 00/13] arm64: mediatek: Add M.2 E-key slot on Chromebooks
+Date: Fri,  3 Jul 2026 19:03:01 +0800
+Message-ID: <20260703110317.1283411-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.55.0.rc0.799.gd6f94ed593-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260703-airoha-hw-qos-queue-stub-v1-1-ef253ffdd093@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MQQ7CIBBG4as0s3YSCsaKVzEuUP/KbMAyoE2a3
- l3i8lu8t5GiCJQuw0YFH1HJqWM8DPSIIb3A8uwma+zJTMZxkJJj4PjlJSsvDQ2std3ZOz+NR+f
- 8bM/U83fBLOt/faWEyglrpdu+/wAEbzSbdAAAAA==
-X-Change-ID: 20260703-airoha-hw-qos-queue-stub-939714339f28
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.3
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260703_040338_867736_7735FFA6 
+X-CRM114-Status: GOOD (  30.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,74 +113,157 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the plumbing to program the AIROHA_FOE_QID field in the PPE FOE
-entry with a per-flow priority value during flowtable offload. This
-allows the hardware to steer offloaded flows to a specific QoS queue
-on the egress QDMA block for traffic forwarded between two interfaces
-via hardware acceleration, bypassing the kernel forwarding path.
-The priority parameter is currently always zero because netfilter does
-not yet provide a mechanism to pass the skb priority field to the
-flowtable offload driver. Once that support is added in the netfilter
-subsystem, the driver will be able to extract the priority from the
-flow rule and map it to the appropriate hardware queue.
+Hi everyone,
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_ppe.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+This is v3 of my attempt at integrating the power sequencing API into
+the USB core to support the USB connection on M.2 E-key slots. M.2
+E-key was enabled in v7.1-rc1 with just PCIe and UART supported [1].
 
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index e7c78293002a..fdb973fc779c 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -331,7 +331,7 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
- 					struct airoha_foe_entry *hwe,
- 					struct net_device *netdev, int type,
- 					struct airoha_flow_data *data,
--					int l4proto)
-+					int l4proto, u8 priority)
- {
- 	u32 qdata = FIELD_PREP(AIROHA_FOE_SHAPER_ID, 0x7f), ports_pad, val;
- 	int wlan_etype = -EINVAL, dsa_port = airoha_get_dsa_port(&netdev);
-@@ -386,7 +386,9 @@ static int airoha_ppe_foe_entry_prepare(struct airoha_eth *eth,
- 			 */
- 			channel = dsa_port >= 0 ? dsa_port : port->id;
- 			channel = channel % AIROHA_NUM_QOS_CHANNELS;
--			qdata |= FIELD_PREP(AIROHA_FOE_CHANNEL, channel);
-+			priority = priority % AIROHA_NUM_QOS_QUEUES;
-+			qdata |= FIELD_PREP(AIROHA_FOE_CHANNEL, channel) |
-+				 FIELD_PREP(AIROHA_FOE_QID, priority);
- 
- 			val |= FIELD_PREP(AIROHA_FOE_IB2_PSE_PORT, pse_port) |
- 			       AIROHA_FOE_IB2_PSE_QOS;
-@@ -1079,10 +1081,10 @@ static int airoha_ppe_flow_offload_replace(struct airoha_eth *eth,
- 	struct airoha_flow_data data = {};
- 	struct net_device *odev = NULL;
- 	struct flow_action_entry *act;
-+	u8 l4proto = 0, priority = 0;
- 	struct airoha_foe_entry hwe;
- 	int err, i, offload_type;
- 	u16 addr_type = 0;
--	u8 l4proto = 0;
- 
- 	if (rhashtable_lookup(&eth->flow_table, &f->cookie,
- 			      airoha_flow_table_params))
-@@ -1177,7 +1179,7 @@ static int airoha_ppe_flow_offload_replace(struct airoha_eth *eth,
- 		return -EINVAL;
- 
- 	err = airoha_ppe_foe_entry_prepare(eth, &hwe, odev, offload_type,
--					   &data, l4proto);
-+					   &data, l4proto, priority);
- 	if (err)
- 		return err;
- 
+Major changes since v2:
+- Removed changes for MT8192 Asurada family: one of the device is
+  shipped with RTL8822CE-VR, which is PCIe + UART and needs more work.
+- Removed changes for USB A ports: VBUS one the type A ports on
+  Chromebooks are not directly controllable from the OS and VBUS is
+  modeled as always on. As such the changes I made don't actually
+  change how the system works.
+- Added new pwrseq_power_is_on() function
+- Make new pwrseq integration effectively OF only by not assigning the
+  port fwnode if the hub's fwnode is an ACPI node
+- Added patch to convert remaining instances of directly setting/clearing
+  USB_PORT_FEAT_POWER to usb_hub_set_port_power()
+- Power sequencing state removed again in favor of state tracking by
+  pwrseq subsystem
+- Power sequencing descriptor again separately requested for HS and SS
+  ports
+- Dropped pwrseq_power_off() call before pwrseq_put(); the latter calls
+  the former implicitly if the power state was left on
+- Squashed DT binding revert and addition into one patch
 
----
-base-commit: 9507d09b2b8fc775652f5c5670028daa9d83a2bd
-change-id: 20260703-airoha-hw-qos-queue-stub-939714339f28
+- Link to v2:
+  https://lore.kernel.org/all/20260610084053.2059858-1-wenst@chromium.org/
 
-Best regards,
+
+Major changes since v1:
+- No longer adding the "index" parameter the power sequencing API
+- Switched from OF graph to fwnode graph APIs
+- Tie "port@" node to usb_port device, and use this device as consumer
+  to acquire power sequencing descriptor
+- Power sequencing descriptor now only tied to USB 2.0 port to avoid
+  double reference
+- Power sequencing state tracking added
+- Link to v1
+  https://lore.kernel.org/all/20260515090149.3169406-1-wenst@chromium.org/
+
+The series is based on next-20260702.
+
+
+Patch 1 and 2 add new fwnode graph helpers. These are used by the patch
+5 and 8, respectively.
+
+Patch 3 adds a new pwrseq_power_is_on() for a power sequencer consumer
+to query the current request state. Note that this is not the _actual_
+state.
+
+Patch 4 reworks the USB hub driver to return the actual error code from
+hub_configure() in hub_probe(). This is needed in the next patch to
+correctly return -EPROBE_DEFER returned by pwrseq_get() in patch 9.
+
+Patch 5 makes the USB port device associated with a "port@" fwnode if
+available. This depends on patch 1.
+
+Patch 6 changes usb_port_is_power_on() so that |struct usb_port*| is
+passed in instead of |struct usb_hub*|. This patch does not change any
+functionality.
+
+Patch 8 lets the USB hub driver look for power sequencers for each port.
+Currently this only works for M.2 E-key connections, but it could be
+extended to cover other cases. It should also make port reset via turning
+off the port VBUS work, even when VBUS is not directly controlled by the
+hub. This depends on patch 2 and 3 for the new helpers.
+
+Patch 9 reverts an incorrectly modeled OF graph connection for the
+MediaTek XHCI controller and adds a proper representation.
+
+Patch 10 adds matching pwrseq consumer by "port@" node to the M.2 slot
+driver. This is only used for the USB target, but there is no attempt
+to differentiate the connection type. The driver simply tries matching
+the "port@" node first, then falling back to the port parent or device's
+node.
+
+Patch 11 reworks the power sequencing targets for the E-key connector in
+the pcie-m2 driver to add targets for USB and SDIO. The former is used
+later on in this series.
+
+Patches 12 and 13 enable the M.2 E-key slots (or slot-like integration)
+found on MT8195 and MT8188 MediaTek-based Chromebooks. 
+
+
+This series unfortunately spans multiple trees. The way I see it:
+
+  - Patch 1 and 2 go through the driver core, and an immutable tag is
+    provided to be merged together with the USB patches.
+
+  - Patch 3 gets an ack from Bartosz, and goes through the USB tree.
+
+  - Patch 4 through 9 (all the USB related ones) go through the USB
+    tree, along with the dependencies above.
+
+  - Patch 10 and 11 go through the power sequencing tree.
+
+  - Patch 12 and 13 (device tree only) go through the soc tree via the
+    mediatek tree.
+
+Some of us discussed v1 at Embedded Recipes, and I believe Bartosz, Mani
+and I agree on this approach. The debate is likely going to be on
+whether this should be integrated into the USB core or not. I believe it
+should, so that the power sequencing timing is tied to the USB port
+being brought up. I do have a fallback option of just enabling the USB
+power sequencing target inside the M.2 slot driver if a valid OF graph
+connection is seen. But this is less desired for the reason given above.
+
+Please have a look and share your thoughts.
+
+
+Thanks
+ChenYu
+
+
+[1] https://lore.kernel.org/all/20260326-pci-m2-e-v7-0-43324a7866e6@oss.qualcomm.com/
+
+Chen-Yu Tsai (13):
+  device property: Add fwnode_graph_get_port_by_id()
+  device property: Add fwnode_graph_get_next_port_endpoint()
+  power: sequencing: Add pwrseq_power_is_on()
+  usb: hub: Return actual error from hub_configure() in hub_probe()
+  usb: hub: Associate port@ fwnode with USB port device
+  usb: hub: Pass |struct usb_port*| to usb_port_is_power_on()
+  usb: hub: Use usb_hub_set_port_power() to control port power
+    everywhere
+  usb: hub: Power on connected M.2 E-key connectors with power
+    sequencing API
+  dt-bindings: usb: mediatek,mtk-xhci: Switch to ports for USB
+    connections
+  power: sequencing: pcie-m2: support matching on remote "port" node
+  power: sequencing: pcie-m2: Add usb and sdio targets for E-key
+    connector
+  arm64: dts: mediatek: mt8195-cherry: Add M.2 E-key slot
+  arm64: dts: mediatek: mt8188-geralt: Add WiFi/BT as M.2 E-key slot
+
+ .../bindings/usb/mediatek,mtk-xhci.yaml       | 17 +++-
+ .../boot/dts/mediatek/mt8188-geralt.dtsi      | 92 ++++++++++++++++++-
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      | 73 ++++++++++++++-
+ drivers/base/property.c                       | 47 ++++++++++
+ drivers/power/sequencing/core.c               | 18 ++++
+ drivers/power/sequencing/pwrseq-pcie-m2.c     | 52 ++++++++---
+ drivers/usb/Kconfig                           |  1 +
+ drivers/usb/core/hub.c                        | 78 +++++++++++-----
+ drivers/usb/core/hub.h                        | 12 ++-
+ drivers/usb/core/port.c                       | 62 ++++++++++++-
+ include/linux/property.h                      |  3 +
+ include/linux/pwrseq/consumer.h               |  1 +
+ 12 files changed, 401 insertions(+), 55 deletions(-)
+
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.55.0.rc0.799.gd6f94ed593-goog
 
 
