@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E3FCC43458
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 13:02:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D401C43458
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 13:11:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q3C7hQoOXJkEa/gjjOgg7bVIM6ICp5ILXS3NQN1aXDE=; b=bgetx7hFEw3xUnbeQ81w855spM
-	C5zRw7GW2Gx0t5yhPa71PEU+8tckC6th/wGhjY4X0P/clXh5cP1tBYH66B5m+U9lvjDTFLGzYOKfe
-	I+orDnRaVlvK1QWDVBls5OE7yPqIVZt+gh0lIx4p7GHxjdZYHWKv6lMX05Tfrs0kBFfWfEsuDpyK5
-	GbJae8mILpaYeEGg8wfpLViIURmBiMezs4UY1szzA/qUW06eV0XgGMRjNNGzwSLIAyG/QBKyP1+iP
-	nPxgQMBRQnMwpHpJukwOvwMEGUi9Ak/1gG/jkoxEL9+TVFl04RPnfJsypAKVRAdvPq4c1QLEVbT9/
-	uoxIZIiQ==;
+	bh=tcD68ggny1joEpMqpashahzuMhH7VhG1V/QEZFS6CWY=; b=wSAt7mMtap/685u+DYLhbQdqj9
+	fMdyhol8m/DQV8guzcbOr1cLlf3/KtwFeWzXhG46X/eCJiaiK71lT2OFKSB5uQX0w19XKsSo/LMjs
+	6alHw3fkmioPdpBSGnTDvmfJjvPA9G2TYRBDOyq6o28ZPW1D4cWjP2uwZvX0XLq0tv/3xXN6uv9j1
+	il39CU8JTfzKD3n4hdDqdCbNKZ91WpWfL/xvMXk/C5ZNl7wYPuh56b5TmtaKy7DuLXMsLUzgXEcmy
+	EKhhhPFXZ3wvhjWFKqX6cIB6uF8+7V0T8GL3bqh3X6CB616cWWCWM+Xu/JLJqaeVTzXgk8IyCduUh
+	F7phh2ZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfdWy-000000072Aa-2rJ7;
-	Fri, 03 Jul 2026 13:02:08 +0000
-Received: from mgamail.intel.com ([192.198.163.13])
+	id 1wfdg1-000000073Gz-0B46;
+	Fri, 03 Jul 2026 13:11:29 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfdWw-0000000729q-0sfK;
-	Fri, 03 Jul 2026 13:02:07 +0000
+	id 1wfdfy-000000073GW-215j;
+	Fri, 03 Jul 2026 13:11:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1783083726; x=1814619726;
+  t=1783084286; x=1814620286;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=go3A92f+qVfLN0BBANEqxhTi+7+zvO5fvzs2fUIzcw4=;
-  b=NuzrB/0gQgSBjssMI1Y5o8NIJwrzbE9E4Ise0k3V+h37YH8vGbm+bvNu
-   /ngCGHyXXH86Bbis97tt1Hfs3vdb+naI32hRp6CeSqPNK5UHwUo9XIIiO
-   euEN2H5hbkQVZAr092yi+bTMiegC5fxgVMxWA+QkZHEZouBmej3Cz78z2
-   cZ3Vx12L2XmkabMSJdTjLZvneSl1JLUTLEzKSK3nXjefZ+tHi0RyTDuTS
-   r5voX6G2maILsMdjI69WgdRbc7hbhrOjF0YWuXss+LY5VkA8W3IFYwq1Y
-   W4CpTqffgEwg1YmHud1gjciF+QEM99lBMNjtfTikaG7hlVhWwYn2GEPRJ
+  bh=ur0KVXHfio32hANukgiS55qHcr/vid5LoYAKVA8ObVY=;
+  b=ETgClG3D1EQeMLFzmtw6vJIEQFE8TIwPEiURekGiPldrPWxoHi/qeK3l
+   6e54VZYpGh2qCfzDpwHIN8vjmIViKDcuPyIuU0pEU/XUy67Sdkh2zo/ep
+   xJa0DHXBoe5C9peQBBwh/Bup0XG4/rAbFtp5UNUWHwNNlRoN2WiF+/GOa
+   oxhT0hrIGrBrtsTast0MvQigy7Y00RwG2viGVJTV+ZI6kUgUqf9bSPjJ8
+   5lg5/fureaiBcjXAvq9F88lWjwHBPhtrq9BH9aFLQEHjFoF2S6Al7MG9d
+   UXyZN35RQMCzIRfo3XyilCFLJ/nQuAWUwcNlggV3S9L17O7aT8YAzcKnE
    A==;
-X-CSE-ConnectionGUID: 5isnYXXQRU2LkILwQSipWw==
-X-CSE-MsgGUID: oiV5PtMOTS6ktRX1mJIxTg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11835"; a="86386253"
+X-CSE-ConnectionGUID: 4y3nLF6XQPKbaS7mxPxz0Q==
+X-CSE-MsgGUID: npPua//xRZ2C8NzaFcO5Yg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11835"; a="84028529"
 X-IronPort-AV: E=Sophos;i="6.25,145,1779174000"; 
-   d="scan'208";a="86386253"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jul 2026 06:02:05 -0700
-X-CSE-ConnectionGUID: pugGM/gaQTaY9txxcMNEVA==
-X-CSE-MsgGUID: mOxugsDkT6C+FxXoN/1dQA==
+   d="scan'208";a="84028529"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jul 2026 06:11:25 -0700
+X-CSE-ConnectionGUID: OtKHXtZxRy+HZdZh/F4u3A==
+X-CSE-MsgGUID: 7twUTalZTUmLgv086/XQfQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.25,145,1779174000"; 
-   d="scan'208";a="250458340"
+   d="scan'208";a="248664397"
 Received: from carterle-desk.ger.corp.intel.com (HELO localhost) ([10.245.245.80])
-  by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jul 2026 06:02:00 -0700
-Date: Fri, 3 Jul 2026 16:01:58 +0300
+  by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jul 2026 06:11:20 -0700
+Date: Fri, 3 Jul 2026 16:11:18 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Bartosz Golaszewski <brgl@kernel.org>,
@@ -72,21 +72,22 @@ Cc: Bartosz Golaszewski <brgl@kernel.org>,
 	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	Manivannan Sadhasivam <mani@kernel.org>,
-	Alan Stern <stern@rowland.harvard.edu>
-Subject: Re: [PATCH v3 05/13] usb: hub: Associate port@ fwnode with USB port
- device
-Message-ID: <akeyxn390mVmYo83@ashevche-desk.local>
+	Alan Stern <stern@rowland.harvard.edu>,
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Subject: Re: [PATCH v3 06/13] usb: hub: Pass |struct usb_port*| to
+ usb_port_is_power_on()
+Message-ID: <ake09vk4fEv1D9QC@ashevche-desk.local>
 References: <20260703110317.1283411-1-wenst@chromium.org>
- <20260703110317.1283411-6-wenst@chromium.org>
+ <20260703110317.1283411-7-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260703110317.1283411-6-wenst@chromium.org>
+In-Reply-To: <20260703110317.1283411-7-wenst@chromium.org>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260703_060206_293223_1340A27C 
-X-CRM114-Status: GOOD (  11.98  )
+X-CRM114-CacheID: sfid-20260703_061126_960490_1D123BC1 
+X-CRM114-Status: GOOD (  12.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,20 +102,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 03, 2026 at 07:03:06PM +0800, Chen-Yu Tsai wrote:
-> When a USB hub port is connected to a connector in a firmware node
-> graph, the port itself has a node in the graph.
+On Fri, Jul 03, 2026 at 07:03:07PM +0800, Chen-Yu Tsai wrote:
+> usb_port_is_power_on() currently takes |struct usb_hub*|, but only needs
+> it to tell if the hub/port is SuperSpeed or not.
 > 
-> Associate the port's firmware node with the USB port's device,
-> usb_port::dev. This is used in later changes for the M.2 slot power
-> sequencing provider to match against the requesting port.
+> In a subsequent change, usb_port_is_power_on() needs access to a pwrseq
+> state tracking field in |struct usb_port|. Either structure can be used
+> to identify whether a port/hub is SuperSpeed or not, as the field in
+> |struct usb_port| is inherited from the hub:
 > 
-> To avoid potential conflicts with ACPI firmware nodes and then causing
-> power management issues, only assign the firmware node if the hub's
-> firmware node is not an ACPI firmware node.
+>     port->is_superspeed = hub_is_superspeed(hub)
+> 
+> Replace usb_port_is_power_on()'s |struct usb_hub*| parameter with
+> |struct usb_port*| so a subsequent change can use it.
 
-Now I'm more confident that it does not mess up with ACPI case.
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+At a brief look this will be the only function that takes usb_port
+instead of usb_hub in the entire hub.h (I don't count container_of()
+as a function). With that being said I would rather see it to be moved
+to port.c altogether (yes, it's more invasive change, but looks more
+consistent).  I would even dare to move struct usb_port (and container_of()
+accompanied with that) and this function to port.h. This might require
+a separate patch, though.
+
+Perhaps something like: 1) "move struct usb_port and associated APIs to port.h";
+2) "...this patch...".
 
 -- 
 With Best Regards,
