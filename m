@@ -4,112 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62E58C43458
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 11:56:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45F2FC43602
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 12:05:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+wQQi5qAJUnUkHX1saOq3zIx6e8dXlHzf8E6xF+VOzM=; b=MzxXD2l5C3CDk46S9sZGMR07MB
-	XQMIqT6DbMT33HN6QK8TwSHjWALDejcuyuaL9X6jOngcAgnytPn3tWQkBpyOlvSe+64I8aKRjg+68
-	Xm2KluYmrXQeuETjMYp/LIoHU7DNfCPk2w3reucSdlD51gfOCk10TijH16Cxq25le4pYstSKizpVz
-	JoulM4U9l3bnBrRNAvza3ZIDESE9fuG6ywb8zqtp4Rc9LnZwMuwvtTTI2zChqxTZrZQ1aEeel7Qoh
-	9S2BKPozoU93azB17RQvEzLhWiReQcVPev045XqxptbtWVgiekhkU+ArQCazWnegSpJ/pE9Vab16g
-	76YtMs9Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:References:MIME-Version:In-Reply-To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lYt6V9Jnqt8R/CJJl+keIMNvwfnVSgPAem6i+B/iGB0=; b=Vbo/oOaZ/OyKrlzBQqtFUTtdGq
+	M2PJQzPMbdt14De88Phl9ucd6wjvHD5zfvigwLZLDI4ILUP1eC8yeekkE+8ugOGwvyCQNVmiJE0kB
+	wsjlo6KAjkQ3TBgYc3PLqVbM/4aC1yvY537RnOYvAhQdaYBEnzmDHhDsq9T5tuQXzFOF0Z8ioDbrt
+	mJBEu7f9EcEpEmu8ad7w4PZrcRNdNtguhfn5nJZWAiHBc0L7ivsqeVB1kSsVJ4zJjAbLBKMWjsahO
+	Mikx95r7hA7SmhdeuKGvwlm4MLmmrEpKWIrcTGjtz8kIoVIppP4umKhWXzErzLTB5yfqWlzoBTL4u
+	G34RhbVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfcVf-00000006s9p-1a4P;
-	Fri, 03 Jul 2026 11:56:43 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wfcde-00000006tZy-45t0;
+	Fri, 03 Jul 2026 12:04:58 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfcVe-00000006s8b-1Fyj
-	for linux-mediatek@bombadil.infradead.org;
-	Fri, 03 Jul 2026 11:56:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=+wQQi5qAJUnUkHX1saOq3zIx6e8dXlHzf8E6xF+VOzM=; b=jbEUGUGBA+x2zmkkyCWvjR2D+l
-	zOnzZKf+UsxBzB30IK2IdynrvegrFFlz6pruKK59+5jNZJBYqpzUoXKcd+JhmnG3Zl5DhAM23/Nfi
-	jIUpFpeBWLF2nIcqX6M4iGYq3l8XQCW7YN+gXZuECUjRnoJS5AS2cpQdCKzdd3a4duXBpM4wfhlFA
-	rAY7qsuhBQO9GNH/gB2QLEZ7AEb0w2Sb22FJ3V83lxVIv/OLtz28Tptt6Q8Ny96O9CZ0tXj2AkwR7
-	v01C7LcwMukI2IRWFuRgWpwa2PxW5jIYV0bb6TlfPBjDmcbF1ok1YlLZ4l9bnpfEVSXuyLru2kA1u
-	WrCWjjgQ==;
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wfcVb-00000004m7r-1Qj1
+	id 1wfcdd-00000006tZO-0TCi
 	for linux-mediatek@lists.infradead.org;
-	Fri, 03 Jul 2026 11:56:41 +0000
-Received: by mail-pj1-x102c.google.com with SMTP id 98e67ed59e1d1-3812c718debso366629a91.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 04:56:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1783079796; x=1783684596; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=+wQQi5qAJUnUkHX1saOq3zIx6e8dXlHzf8E6xF+VOzM=;
-        b=Pw1UV5izLBcVfLLmuKCcIUytLN8zNTkMvqlO/aaCR784lABCiZGmAlPn5baMxRf5Ap
-         aFF6fXn7zsurCDyTW7+DjiGxfk0zQNzFmhBJCYptJFnccii7HnRrTVTPe4uEKwSCuzYg
-         AdaU5V+6biGA6TZBfnvYv2tLjqV17fKSTp25o=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783079796; x=1783684596;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=+wQQi5qAJUnUkHX1saOq3zIx6e8dXlHzf8E6xF+VOzM=;
-        b=OsKFUMrF43jgmIJZbd7nRlMTrYG2nSkASWCOf1EF4w3SxZKC4raRjNimRJ66pLOjWC
-         PcabX3V9Wzg4DXS/vv+Y5AXKhNEY2iteN76YHNrDkKdBsU8iQe7OyHo/8npZkuHpOX9W
-         +WLH4YJ/JjWuWvIrXvxl9KGEhUEuHgiip3jXzoPelp44l9GMQZ+lXj4C0RFg0fK7MPYT
-         GMvge75tvkzeb1nGqvwhl1I7Pw+/zc4aZ47dwW33KAvB9WwKeZE9p6MFmae3bHmcU2bi
-         YL/JO4FQN0VuJ6MdJlejhfLfgIbH0caCVdoiTWuSotDdCeYki/m3eRGb0Vxnu/rySQzQ
-         9LqQ==
-X-Forwarded-Encrypted: i=1; AFNElJ+niRLFLGkWMLquS/SvdNNOwXRPM4Zkc2uB0zosQs+QTcAGmnqbU+qtD9GjppDWFMhu86USWcT+swObwO94rg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxUz4if2yGAYXLw7tF2K+a25WHCFQ0mTMC59hdpDqxtZf2Sj5Tk
-	3+KglB/HtPrTokHmbEhnLqXMwzoIc2DNqeU3ASY1Lr1YbAxhDRrLVFEDs5bk6wM+Cw==
-X-Gm-Gg: AfdE7cn0woJbDL051JzFCOZhsdcM6plKPETP1doYvN88ZAgE77HD/RVYp127pEl+vGb
-	vDaIjNpM399YF1UMwi/NAkicjdOi9oggluLSo2eL2ItvtP324j/bQNhB17Yb52azoP39eIz9jHn
-	lMLXdLkl2kdug1M+AXLm+ZnsWdDx+4T48TGNVsRorYo2WS06SoiD0DWX3mtYYDmM1S8LWSgYqnA
-	L4GJgH0WzJiEaBRiaX4P5ESoDmqr3qVLT/NIUT0pvorZqSJClDzk+wzCWLf4kr+HaKFpEmroEmY
-	dlaiSuk5prX3PkX+TK42f+vKGG4P1uvJyjoSSabSIs0BzGQxrFFXc1oA/yvhvsiivxUc5d8r4Al
-	20dPSnBpoJDiJjgUKmsradKYwHp7UhONnhEJYboHrOPmxoR8Ogj3WTtCdDA9CctPWkvDuXL7YWB
-	ks14PRV+fcwKy04eVjFZ5GIrSY5tZ3/dTOSVSgghnmY5UIXmPTaF4aZ+TsExQbHBTT2zPcmykRQ
-	QwKDEin
-X-Received: by 2002:a05:6a21:b88:b0:3bf:6222:2e7e with SMTP id adf61e73a8af0-3bfed0e254cmr11946730637.4.1783079795734;
-        Fri, 03 Jul 2026 04:56:35 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:7bc5:6c83:76cd:cbd6])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c9e8bd30ca5sm2569540a12.0.2026.07.03.04.56.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Jul 2026 04:56:35 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Jiri Kosina <jikos@kernel.org>,
-	Andi Shyti <andi.shyti@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	chrome-platform@lists.linux.dev,
-	linux-input@vger.kernel.org,
-	linux-i2c@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	stable+noautosel@kernel.org
-Subject: [PATCH v2 7/7] arm64: dts: mediatek: mt8192-asurada-spherion: Add Synaptics trackpad's supply
-Date: Fri,  3 Jul 2026 19:56:00 +0800
-Message-ID: <20260703115601.1323491-8-wenst@chromium.org>
-X-Mailer: git-send-email 2.55.0.rc0.799.gd6f94ed593-goog
-In-Reply-To: <20260703115601.1323491-1-wenst@chromium.org>
-References: <20260703115601.1323491-1-wenst@chromium.org>
+	Fri, 03 Jul 2026 12:04:57 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id DAC0F43D5A
+	for <linux-mediatek@lists.infradead.org>; Fri,  3 Jul 2026 12:04:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 840621F00A3A
+	for <linux-mediatek@lists.infradead.org>; Fri,  3 Jul 2026 12:04:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783080296;
+	bh=lYt6V9Jnqt8R/CJJl+keIMNvwfnVSgPAem6i+B/iGB0=;
+	h=From:In-Reply-To:References:Date:Subject:To:Cc;
+	b=R43BrsCkCyKD/cc1XKL6zqzw3XTY2TUpQl7n0q5JuLJdVZNi18xkae1IcOWb2pmP2
+	 illl8oyL+0cRX0a1cWPr+392XOPXDshG8txXXgvS94Pp4A+9wQYLOQOlDuarGUYpNa
+	 JJfDmLgE6juRr8ofDcXTnOfq2Z9ENufPlYGG+yOG/Imcaimd0ivaN3esJXMdFhYPFQ
+	 Bexmo1mq6eIpDnf3bjJSY/SnYCDQOQxQEIeP3Qte3g+4Mh/Byg7UCDdPPnWPgQA3wM
+	 A4JVLQ0D5sW6yI4X5kTy2RCb8QmLJC/zsYvs7mMibj9jUM++lMCCkhqezmnfaIVnt/
+	 F5x0ONb5FeqHA==
+Received: by mail-lj1-f173.google.com with SMTP id 38308e7fff4ca-39af6402933so4320181fa.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 05:04:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+RqGdFR0vPtHXwBjjpRGDnhgCkACBN6bEdn+jt81zHL0OXZabxbXv70ATyBA/PKy57H+KryDCRNJBQQ3dP2wdA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxYt4+3wRouZJVODZEvejHKftzN1kNrF/r3qUaNSJ3CmiHBYEA+
+	B6/iIdXRaAX0w/9jhNmUtrZ8NBEJ2IaksTP8AqCOvbhcR+sEHwAj8JLr9huRV8Kmfyi1v0WqwyZ
+	+XT0y3CtmNI1Z1qcYmeceIOnbSWlx3bQ0RPCcdi++ug==
+X-Received: by 2002:a2e:beaa:0:b0:39b:32b3:b31f with SMTP id
+ 38308e7fff4ca-39b36dbe62amr23176871fa.5.1783080295099; Fri, 03 Jul 2026
+ 05:04:55 -0700 (PDT)
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Fri, 3 Jul 2026 07:04:53 -0500
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Fri, 3 Jul 2026 07:04:53 -0500
+From: Bartosz Golaszewski <brgl@kernel.org>
+In-Reply-To: <20260703110317.1283411-3-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260703_125639_551460_2A7378E6 
-X-CRM114-Status: GOOD (  13.36  )
+References: <20260703110317.1283411-1-wenst@chromium.org> <20260703110317.1283411-3-wenst@chromium.org>
+Date: Fri, 3 Jul 2026 07:04:53 -0500
+X-Gmail-Original-Message-ID: <CAMRc=Mc7TzwLS1Kbyd9OwXPJcHk-39kxgfagxxCCbKYK8QG0Vg@mail.gmail.com>
+X-Gm-Features: AVVi8CfmsSUQO2IQlOpABcTwLAPK-fQZLHJJwpMHDg07kXLzC1jeLanLhSp6ZO4
+Message-ID: <CAMRc=Mc7TzwLS1Kbyd9OwXPJcHk-39kxgfagxxCCbKYK8QG0Vg@mail.gmail.com>
+Subject: Re: [PATCH v3 02/13] device property: Add fwnode_graph_get_next_port_endpoint()
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: linux-acpi@vger.kernel.org, driver-core@lists.linux.dev, 
+	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Manivannan Sadhasivam <mani@kernel.org>, Alan Stern <stern@rowland.harvard.edu>, 
+	Bartosz Golaszewski <brgl@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Daniel Scally <djrscally@gmail.com>, 
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,40 +93,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Synaptics trackpad, like the Elan trackpad option, is fed from the
-system 3.3V power rail. Add it to the trackpad device node.
+On Fri, 3 Jul 2026 13:03:03 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
+> Due to design constraints of the power sequencing API, the consumer
+> must first be sure that the other side is actually a provider, or it
+> will continually get -EPROBE_DEFER when requesting the power
+> sequencing descriptor.
+>
+> In the upcoming USB power sequencing integration, the USB hub driver
+> first needs to check whether a graph connection exists, and whether
+> the other side of the connection is a supported connector type. The
+> USB port is tied to a "port" firmware node, and this new helper will
+> be used to get the endpoint under the known "port" firmware node.
+>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+> Changes since v2:
+> - Dropped unused |ep| variable
+> - Rewrote as do {} while()
+> - Dropped WARN() use
+> ---
+>  drivers/base/property.c  | 25 +++++++++++++++++++++++++
+>  include/linux/property.h |  2 ++
+>  2 files changed, 27 insertions(+)
+>
+> diff --git a/drivers/base/property.c b/drivers/base/property.c
+> index 3e3e19ef66a9..7e7ad3635806 100644
+> --- a/drivers/base/property.c
+> +++ b/drivers/base/property.c
+> @@ -1099,6 +1099,31 @@ int fwnode_irq_get_byname(const struct fwnode_handle *fwnode, const char *name)
+>  }
+>  EXPORT_SYMBOL(fwnode_irq_get_byname);
+>
+> +/**
+> + * fwnode_graph_get_next_port_endpoint - Get next endpoint firmware node in port
+> + * @port: Pointer to the target port firmware node
+> + * @prev: Previous endpoint node or %NULL to get the first
+> + *
+> + * The caller is responsible for calling fwnode_handle_put() on the returned
+> + * fwnode pointer. Note that this function also puts a reference to @prev
+> + * unconditionally.
+> + *
+> + * Return: an endpoint firmware node pointer or %NULL if no more endpoints
 
-Also add the correct post-power-on delay, even though in practice it is
-not required. The Synaptics trackpad requires 100ms after power-on (or
-deasserting the reset, whichever comes later) to fully initialize. The
-power is always on and the reset pin is not routed out, so the
-implementation could try skipping the delay.
+I think the correct keyword is Returns: followed by a newline.
 
-Cc: <stable+noautosel@kernel.org> # Without driver changes only lengthens probe time
-Fixes: 925ebc0cd55c ("arm64: dts: mt8192-asurada-spherion: Add Synaptics trackpad support")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
-I think this shouldn't be backported, as backporting it without the
-driver enhancements just delays the trackpad probing with no real
-gains.
----
- arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts | 2 ++
- 1 file changed, 2 insertions(+)
+> + * are available.
+> + */
+> +struct fwnode_handle *fwnode_graph_get_next_port_endpoint(const struct fwnode_handle *port,
+> +							  struct fwnode_handle *prev)
+> +{
+> +	do {
+> +		prev = fwnode_get_next_child_node(port, prev);
+> +		if (fwnode_name_eq(prev, "endpoint"))
+> +			break;
+> +	} while (prev);
+> +
+> +	return prev;
+> +}
+> +EXPORT_SYMBOL_GPL(fwnode_graph_get_next_port_endpoint);
+> +
+>  /**
+>   * fwnode_graph_get_next_endpoint - Get next endpoint firmware node
+>   * @fwnode: Pointer to the parent firmware node
+> diff --git a/include/linux/property.h b/include/linux/property.h
+> index e04901c0bd8f..931e703393cb 100644
+> --- a/include/linux/property.h
+> +++ b/include/linux/property.h
+> @@ -506,6 +506,8 @@ int fwnode_get_phy_mode(const struct fwnode_handle *fwnode);
+>  void __iomem *fwnode_iomap(struct fwnode_handle *fwnode, int index);
+>
+>  struct fwnode_handle *fwnode_graph_get_port_by_id(struct fwnode_handle *fwnode, u32 id);
+> +struct fwnode_handle *fwnode_graph_get_next_port_endpoint(
+> +	const struct fwnode_handle *port, struct fwnode_handle *prev);
+>  struct fwnode_handle *fwnode_graph_get_next_endpoint(
+>  	const struct fwnode_handle *fwnode, struct fwnode_handle *prev);
+>  struct fwnode_handle *
+> --
+> 2.55.0.rc0.799.gd6f94ed593-goog
+>
+>
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts b/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts
-index 163960f58db5..147a8e9a3a71 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts
-@@ -90,6 +90,8 @@ trackpad@2c {
- 		hid-descr-addr = <0x20>;
- 		interrupts-extended = <&pio 15 IRQ_TYPE_LEVEL_LOW>;
- 		wakeup-source;
-+		vdd-supply = <&pp3300_u>;
-+		post-power-on-delay-ms = <100>;
- 		status = "fail-needs-probe";
- 	};
- };
--- 
-2.55.0.rc0.799.gd6f94ed593-goog
-
+Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
 
