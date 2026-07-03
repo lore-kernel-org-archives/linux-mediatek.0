@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F1BAC43458
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 19:39:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2384C43458
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 19:40:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kAqGWShsALrUvOo44yJ9PZPqBuVxxzDIDv0SXARnsDY=; b=1YWO/n6FRTyPqRDSOy9/J182LA
-	BIlCLQEhRsoAZHFqll+eeQ5Bt5u3b8/cChyU0/kM7YJnx6svZOd5O97FNtAtpSwqIpFjnj0IaI0+i
-	GdND7rOZjqr/36I7/h35gAK9HkuIEsaxR+M5IP1/IYr9QYvrOI/WcRkBzxTsDzvRhMrVqmHSojK24
-	mmbPsn2SUPuKs1Lu/pztDKaiKKdm8OYsUbEcNOeGHes4NVRIY/32wtBwOGL5XOzcyB1BIcpyulIvk
-	BmQQ4vrZ6ic0QDW3tAeJQHaPmHt9GC9gJVt4Wp8NJzw7yTLHrSplNxU+oFNQKdCp4bXJapzrPJWLA
-	vfyJ3YPw==;
+	bh=PGH0Mfb9t3dkT8UvMf5f1wosC3eQeF337EZxodGa2xo=; b=3P3szOc9QWKxab3nEbCT/0UvKU
+	y2NfzxzKf+vfMXFXldVoAxBi5uPyCoo2tQET5ENGzk5f0Q7Oss/a+wD5hPDb9d9NDF8qn5cC2l3R/
+	MTIEelEuvrSLK8dVKpihbqk5Neq4tCJjI00gIdKR+y4h4niz3c68P+qlmuEEWvvy7PXKx9Oll36ZW
+	ouaRTAhF5/GQuRAhH0um37uAj/JybEOe4ihliEAi3ose5/1jJTinDc2FCD/2/89AglKGzu0danh9T
+	WxFyuxeMco3RS8ueZoaS/VOb8KSaep4VqU4v+RVXv48GD1mX1X1xGKNMuTn6sqcW8a8Q1C1QhY7Re
+	6o5rAmOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfjjt-00000007n1Q-3gOX;
-	Fri, 03 Jul 2026 19:39:53 +0000
+	id 1wfjkI-00000007n5r-0Ztj;
+	Fri, 03 Jul 2026 19:40:18 +0000
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfjjr-00000007n0m-4BTd
+	id 1wfjkF-00000007n5A-2g6j
 	for linux-mediatek@lists.infradead.org;
-	Fri, 03 Jul 2026 19:39:53 +0000
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 663HicbY685038
-	for <linux-mediatek@lists.infradead.org>; Fri, 3 Jul 2026 19:39:51 GMT
+	Fri, 03 Jul 2026 19:40:16 +0000
+Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 663HiPV8545518
+	for <linux-mediatek@lists.infradead.org>; Fri, 3 Jul 2026 19:40:15 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=qcppdkim1; bh=kAqGWShsALr
-	UvOo44yJ9PZPqBuVxxzDIDv0SXARnsDY=; b=iZuu44D62fDE9nUkMGsQ/kikCWN
-	vJtcLEgw6+dGCeIIHuOlMsUIpFKZZGJPJqfdF+O1SYEhJ9Ewxr3bmWpbtRmLiIqQ
-	jYkNIvEv+KCpR6MtdXix1MGky2N2ZQ+IKKh/NsqwJzV4809aM+q8nNtoVSj4h9GS
-	7ZOJF8MX23ckx9HxrND4qmrfOFK47QtXOdWwXxI5gur6l6dxQmmA/LR6so3jKGq/
-	W7A00TMFaZJ0ko+VVC0tHFFvu0ryV81DeIP4S6UmjKnzb0SJmxCATCZFjAZe9zfa
-	KCzmbOBkJT97xvyMzhw69zt86W2jJf7+4G93pb8Mz+QzA56HX9qkqRm3E6A==
-Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com [209.85.216.72])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f64b5brne-1
+	:mime-version:references:subject:to; s=qcppdkim1; bh=PGH0Mfb9t3d
+	kT8UvMf5f1wosC3eQeF337EZxodGa2xo=; b=HipLHZTmLwrBQObeVsOGWExITfp
+	t7/tVWx4vzKDtDPxgNwrOMMLEYbY4ozBpTauLC1kSTV/W7k1Qm0e12vRO+ogANBW
+	NW0APmhU3sAdU2NrCqlWIoHmD0kU4SQGq4ljc6YwuMSM7GFhHObmCpJ+/+rhnKsQ
+	INKlcMzloIbYPjrnEN/lLIpHGyWDH5yPXXSi8+KcBgoraO6K/MnRfB3UUkLILky6
+	qTPqH4OVJXMwBZsrvWtdNjSsexZaz22Q5jADDCPONMxS+LjIGY3qz0KpGGSr3YaR
+	wcrE60nfHX13IMBNYdT4V8pqcZ2+pD+AyngKR10muMKnOdEdCQYuLKpAovQ==
+Received: from mail-pj1-f69.google.com (mail-pj1-f69.google.com [209.85.216.69])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f682btqp9-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 19:39:51 +0000 (GMT)
-Received: by mail-pj1-f72.google.com with SMTP id 98e67ed59e1d1-37fca5f21b1so2244381a91.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 12:39:51 -0700 (PDT)
+	for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 19:40:15 +0000 (GMT)
+Received: by mail-pj1-f69.google.com with SMTP id 98e67ed59e1d1-3810e5c5871so1379506a91.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 12:40:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1783107591; x=1783712391; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1783107614; x=1783712414; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=kAqGWShsALrUvOo44yJ9PZPqBuVxxzDIDv0SXARnsDY=;
-        b=dMVwc6AJ90/UAfwaBn1jHcFZsGaORFNtkzAiOgC4/mkNUCpP5owRPB1wAMkvneKVM9
-         PgwDhZMMfmNDWioROw/LXXvJIPwJJ0hLonAs4CrbJFfj9cR/pu9lppsoBXmb9oBL5InJ
-         p6gKK8szDz3a6WORalEQgMG44+p7P4NIskryu/WMV27ptbHO2L7WfG1ZoYUZ4v7xb8yj
-         qB7Bbm9l+EMq6kQ1PziaJPpARG2zWCji9PMzkc5fB1Wuxbgl7/Q4Ulz+5liWMwKeqp3T
-         bua252nPouh/w0gXaEyNMzez7XT7haiO7hT/HkFK6GqDhx2W/qXFWy6nmO09u89KJmga
-         /AEA==
+        bh=PGH0Mfb9t3dkT8UvMf5f1wosC3eQeF337EZxodGa2xo=;
+        b=OFVFGgzK190ktkVhrx93HeeJTu4f20irZMwkefZKVE0A65dEnBYzQ8EAL8hVpFJ40e
+         QC/5UzwqH/vf0/s/yKWuxk7WW0GXLijdzGSCmD6q4J+i33O+Y61GGo+ZMIc5pqOrjF+C
+         jZtsQcz50+gWzihfQR6lCb5S9AYA5yIGLi7yp5qIH1qLDlxgMpcDBoQVaGxirpUXkj0H
+         BWFa6NJY1eRzgJ74ol6ev3rFMCy02fQCcAwTrqijFSnkIXLM/Zyhj+pe50X3cB5GV3Vb
+         seXFxNQkVUcXJNoBMZrNIZcLCIAKusMQOpkjqZ2Q1+SlJ6hxvOG3jLeExDx6Xc8DGvGH
+         tuPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783107591; x=1783712391;
+        d=1e100.net; s=20251104; t=1783107614; x=1783712414;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=kAqGWShsALrUvOo44yJ9PZPqBuVxxzDIDv0SXARnsDY=;
-        b=svBbhOkDhyrzes255f1PybpguD6oAqE3tmplPjFxP2vF8uZnMV7GvAE3U5RnpYWPgn
-         MnM7urTemnGOHv9bykUFGs0ADfiZFEMMmJBi+B3BcO6fPL/7hiDYqpJrLWffp1BT2f5d
-         PvtN6/PC5+0qenp40fzJwBlh6IBkEkel+3CDjB/5qzxwah2gWj6msPDViUqOCzqRDQjz
-         Ocpv+GcuCMcU/hLZLwFGXr8Pbi7V5FQIfW2PuLb639al4gpzMlfuIr9q9e9q4au0f2lg
-         aNAgD5Wn9L/fra/qmLcQHZD9rNDwdLjmrnE+WbsC/GuX/lGEoYz2+FfIFNZQPsZ2qA0p
-         OHRQ==
-X-Forwarded-Encrypted: i=1; AHgh+RrpMhFVkMI8I/9Oje9NW4Jwl4CnBNZSEgruV9UgDahwdZBI1fk68/zzyR4uJV81EcmoGCaxLBLNsuHrZdW/Yg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YySIVL1T+ocKLVjBesnraMsyJVDNdA82x7bpyj95iXJj9bIT5lu
-	Jru0OMhPGwhXqEVuZTF2wA/B80h9jmDLRn+PaG87txunedKD86sCPjU2/aJ4sm1eD0AEcEmemfO
-	IPGiWntxtykUAYgOHp3h2WxvU8qcpjqEyfznnSpiTA2x16ZqHxLKcSjgxPoB7HQTIfdv4CiB7ad
-	4=
-X-Gm-Gg: AfdE7ck7MaloThY3bHkgAqM0+n1N7wU195TqF+KrcSHVx621wc/gOOxJQpE1r81M3A1
-	ic3eAMFSEuN4cbfCoNtgCRK1Z5C3aC9PI49X2uHBeBXCw3jObBqCiKEYp3fiW+74H85CIDrrQL7
-	hdRvC0VnUfAmQFABLTS/G4TCWmVsnsyHVXlKIWEFr8YmXoGKslDtOKlqvhtbZgNp7lnZ7oTu6Gp
-	3f0/NQij5oyOGEph9J7UNnYJTIhzgwbjXR40pgHroGYIa2FxEACIgrKY9+M0/A7s8XSvH5I+gOj
-	pQRl7RQJAhzCLtEVrIZIfSn2BZp1ZU4ZJmlo8YxACI7gIgHmJgHi6/WgoJU2s/kRhVZAINdi+TY
-	TfZ5pfyyCW/7hEm/OkGulLaUIfAbpigs/whoIzg==
-X-Received: by 2002:a17:90a:e70c:b0:380:ce69:2669 with SMTP id 98e67ed59e1d1-381122ebda9mr5933759a91.9.1783107590256;
-        Fri, 03 Jul 2026 12:39:50 -0700 (PDT)
-X-Received: by 2002:a17:90a:e70c:b0:380:ce69:2669 with SMTP id 98e67ed59e1d1-381122ebda9mr5933658a91.9.1783107589588;
-        Fri, 03 Jul 2026 12:39:49 -0700 (PDT)
+        bh=PGH0Mfb9t3dkT8UvMf5f1wosC3eQeF337EZxodGa2xo=;
+        b=tA11/x3Djd8xREYqL9sZxqNZezYOSLushkSo83RWvIRa4owan0qlzIfSIpScUCFV0F
+         iVAlEzWj3YNR/NiK2Fju1+y1X00JYczkph5qLZMrwKw/6OzGnlJ3gdiZn+wQ/Db5mAWC
+         bcrLZV6PwrdI5w+LTZGAAkCTk0Ezb3lFRFjsbgEEaeYvFKjKraGPFFP+UJgVm/BgqPH0
+         EU44paYNX7Zu52/lrZGUr2zlzfQqJMND0syt8ksfcFX4wX+a6CtMSPfDDIZgUaFNriEs
+         npVIA7fVXuqafJUozzjUpmQk4m01uzU3WWcdXBbNU2EJpgXmtoyNQOm21Is0LZGYrqos
+         9QYg==
+X-Forwarded-Encrypted: i=1; AHgh+RqIaBz0aGsI5jhjAiKZ5OABpTuzrmNf8DrVDoO7ALkl8P+I0beJhTgOmLPlngm2ocfDSZGlW8gXlMYIPjbJfg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyDRmFQqsG7E9pwJN3v9t+vj75bab05kyUaw+dykhzWSO16bbXb
+	HbtN4rI62RMnpcARzg3Qx/kkDAnpd2fyLdrufnZ2beQDPwuhjCPQRjKVfwMU6JpR/iLMiP05mXA
+	AjA9p4auUa7Lebcbte5Jh6h962r9ZFO95ohUXdw8api8Iijd5bLTocxmKiUSDd5oKoXCCSaUj7M
+	8=
+X-Gm-Gg: AfdE7cn9MrJmncRVg0aOOanM13Iy98daTf8mLBexWMKKW6/BoF7GZjlf9Fqoe0q1sDI
+	l31ZhO0Aae0job/kcC2dAT7jLXvRNLbN5f6vWmv1o3kL5oDm6Zt3i3ToFCewCHf5bp0sgBsvLct
+	UqCtBXT43Ewq5XuRPEiVhGXFxge5Awl/z5ONLmqS93bnp9OVnxkCR19omYYuXYCxJGIs523yR0K
+	BoYgnJuOoAJez9dJw5K2CFbb78AVQhDGS7EPLNP58Y67DMjGpJhBVNerd1hCvT2pHR6p0WA/FKk
+	cf3MRmQMNkaFJMvgoURnPDqekZzWpEgBXK/acmvueSTcr9S8XVi3PfPlWnWqkpkAPGqGSQODnTr
+	xXalQIlL58yumBni/H0Oku/InjtSjqDbZvU8zkg==
+X-Received: by 2002:a17:90b:4fd1:b0:37f:db06:2299 with SMTP id 98e67ed59e1d1-3829f0054e1mr764368a91.21.1783107614340;
+        Fri, 03 Jul 2026 12:40:14 -0700 (PDT)
+X-Received: by 2002:a17:90b:4fd1:b0:37f:db06:2299 with SMTP id 98e67ed59e1d1-3829f0054e1mr764330a91.21.1783107613641;
+        Fri, 03 Jul 2026 12:40:13 -0700 (PDT)
 Received: from hu-mojha-hyd.qualcomm.com ([202.46.23.25])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-30f290b6bc2sm10065845eec.27.2026.07.03.12.39.25
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-30f290b6bc2sm10065845eec.27.2026.07.03.12.39.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Jul 2026 12:39:49 -0700 (PDT)
+        Fri, 03 Jul 2026 12:40:13 -0700 (PDT)
 From: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
 To: Bjorn Andersson <andersson@kernel.org>,
         Konrad Dybcio <konradybcio@kernel.org>,
@@ -162,46 +162,44 @@ Cc: Ekansh Gupta <ekansh.gupta@oss.qualcomm.com>,
         linux-remoteproc@vger.kernel.org, linux-staging@lists.linux.dev,
         linux-sound@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
         imx@lists.linux.dev, sound-open-firmware@alsa-project.org,
-        Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
         Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
-Subject: [PATCH 01/42] of: reserved_mem: Introduce devres-managed initialization functions
-Date: Sat,  4 Jul 2026 01:08:14 +0530
-Message-ID: <20260703193855.110619-2-mukesh.ojha@oss.qualcomm.com>
+Subject: [PATCH 02/42] of: reserved_mem: Add devm_of_reserved_mem_device_init_by_name()
+Date: Sat,  4 Jul 2026 01:08:15 +0530
+Message-ID: <20260703193855.110619-3-mukesh.ojha@oss.qualcomm.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260703193855.110619-1-mukesh.ojha@oss.qualcomm.com>
 References: <20260703193855.110619-1-mukesh.ojha@oss.qualcomm.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzAzMDE5OCBTYWx0ZWRfX08n4g1VDGUQM
- OD4/4R/TSFml4Es3AMnaCQ/k8YLchWk2lVl9YhkPe8V+ybUyIRsWuGJfPDFSXA786wxOymo5NwN
- 6wIKUZk5o3RRzp80UuJVPkvQXxQFvpI=
-X-Authority-Analysis: v=2.4 cv=FOQrAeos c=1 sm=1 tr=0 ts=6a481007 cx=c_pps
- a=RP+M6JBNLl+fLTcSJhASfg==:117 a=ZePRamnt/+rB5gQjfz0u9A==:17
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzAzMDE5OCBTYWx0ZWRfX9apEskKz6/S7
+ TMAcgnGuUhW84Y+h28VTkLEftPfm7gtmuIpieKSLEL6jypWFevISQvRWJTSraEF+gcO+LK9EY0M
+ Uv9E7DuIvBVx/+y6ModbCsn2ozpji2Wv49zFEtPuh/6maf3Uigj5+hJtotxLoqJ2fhklx4cIegi
+ /JMNRhRh8YoSv2kT3KDC0Y8nT83yF9y8WDhxuMiiB5VDNtRq6tDceKFTWbw0l05thJtm+ikzRdZ
+ /X4Kg/1tM/cDJsWqFs8uWRc/iH5N1TgLPrVlvFMS4KDNy4ISL7HzchZXstosD+PEtNxuEOzv+tp
+ CvwFjdDXnchyqXhdHgecAIF9TnwmQgR1pe5stypW7vSb0PrleiC8DK8kOSLyqILqV8cT7en69pe
+ e8k0rUxThiuBYYP/TmHHqgoeyVgZgE7/aerXLdUBW+5tKe3Taj8lR1jWo/xNlT/bPyrj4Kxxdj/
+ c1o3I3/Dl9cYbheh9Rg==
+X-Proofpoint-ORIG-GUID: 55WEZ5WEdOgH46sUDsd1PW6rfLgK8GSu
+X-Authority-Analysis: v=2.4 cv=cc3iaHDM c=1 sm=1 tr=0 ts=6a48101f cx=c_pps
+ a=vVfyC5vLCtgYJKYeQD43oA==:117 a=ZePRamnt/+rB5gQjfz0u9A==:17
  a=RAioF0-LDSMA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22 a=EUspDBNiAAAA:8
- a=C96w-YAaP-Zupzk_Mv8A:9 a=iS9zxrgQBfv6-_F4QbHw:22
-X-Proofpoint-ORIG-GUID: DHVLILM1BIXM_afy7Wg6FnJCuOcTuuJ1
-X-Proofpoint-GUID: DHVLILM1BIXM_afy7Wg6FnJCuOcTuuJ1
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzAzMDE5OCBTYWx0ZWRfXzcP69Xf2lMNv
- yFGl/fEk21MphknBEtZRbPIocz1OwnBX4pu1e9NfpEJ5owbjVhk40o5/CxfOCYAUa4LfBUvNlkL
- euNF2RtHXRjoNpqZbRrdVbjfxZH7X2FelcZ04z0xcl9UnFfpEUgQRrwPEpOrHr+5eMMZk7BJVa/
- yL4DEEU0f6qU+G6p1i560SmEqG/qwAjQuGBJoj9lUVk1Sovfh7G7CoyscTeNmnjx9JaWhp2m3+t
- iaL8abNGc1TBB4mLPJVD0ICZtYlGe75FFW6B1nXFfKBeQPq7Eml3A1QYCmI/qsbc4Ij0x0gWhGL
- lTAkd6QgNWZgGFrUJ5Z8lr8xrL6Rgyp4DYVsOS3kN06NFhCQFt7hB1Y1QuPRDEnkC+oCDbjBhgb
- 5qeglcKkqiaOHY7ix6kQxxl1EJ2qNfZKRq+CSdDdQnpoG7V7cg3kWkxzyB1hY5v+vilI9dJ+YoE
- 2Usxp/iCoz84GQh+Pog==
+ a=u7WPNUs3qKkmUXheDGA7:22 a=_K5XuSEh1TEqbUxoQ0s3:22 a=EUspDBNiAAAA:8
+ a=K3bnyJ_z4bF7bLuR74EA:9 a=rl5im9kqc5Lf4LNbBjHf:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzAzMDE5OCBTYWx0ZWRfX/74/FvR7n8oS
+ CD/zwfUvSmhaaHUM+MlLizZpLhOw1fpGRc0Vzgn2DmNhyoiX0/AH31irBN9vXOnBS+OSCwADEo4
+ wxJBqGTgQecFJLsY2rcK6+Qiz2qoRFY=
+X-Proofpoint-GUID: 55WEZ5WEdOgH46sUDsd1PW6rfLgK8GSu
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
  definitions=2026-07-03_03,2026-07-03_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 suspectscore=0 priorityscore=1501 lowpriorityscore=0
- bulkscore=0 adultscore=0 clxscore=1015 malwarescore=0 phishscore=0
- spamscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2607030198
+ clxscore=1015 suspectscore=0 adultscore=0 bulkscore=0 priorityscore=1501
+ phishscore=0 spamscore=0 impostorscore=0 malwarescore=0 lowpriorityscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607030198
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260703_123952_048538_A4F0DEE5 
-X-CRM114-Status: GOOD (  19.91  )
+X-CRM114-CacheID: sfid-20260703_124015_682272_6F7CB1E3 
+X-CRM114-Status: GOOD (  15.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -216,116 +214,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Add a resource managed inline wrapper for
+of_reserved_mem_device_init_by_name() to complement the existing
+devm_of_reserved_mem_device_init_by_idx() and
+devm_of_reserved_mem_device_init() helpers.
 
-Introduce devres-based helpers for of_reserved_mem_device_init(_by_idx)
-to help fight dangling references and ever so slightly reduce the
-number of boilerplate deinitialization calls.
-
-Signed-off-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
 Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
 ---
- drivers/of/of_reserved_mem.c    | 41 +++++++++++++++++++++++++++++++++
- include/linux/of_reserved_mem.h | 25 ++++++++++++++++++++
- 2 files changed, 66 insertions(+)
+ include/linux/of_reserved_mem.h | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-diff --git a/drivers/of/of_reserved_mem.c b/drivers/of/of_reserved_mem.c
-index 82222bd45ac6..b35541e9fbe8 100644
---- a/drivers/of/of_reserved_mem.c
-+++ b/drivers/of/of_reserved_mem.c
-@@ -787,6 +787,47 @@ void of_reserved_mem_device_release(struct device *dev)
- }
- EXPORT_SYMBOL_GPL(of_reserved_mem_device_release);
- 
-+static void devm_of_reserved_mem_device_release(struct device *dev, void *res)
-+{
-+	of_reserved_mem_device_release(*(struct device **)res);
-+}
-+
-+/**
-+ * devm_of_reserved_mem_device_init_by_idx() - Resource managed of_reserved_mem_device_init_by_idx()
-+ * @dev: Pointer to the device to configure
-+ * @np: Pointer to the device node with 'memory-region' property
-+ * @idx: Index of selected region
-+ *
-+ * This is a resource managed version of of_reserved_mem_device_init_by_idx().
-+ * The reserved memory region will be released automatically when the device
-+ * is unbound.
-+ *
-+ * Returns: Negative errno on failure or zero on success.
-+ */
-+int devm_of_reserved_mem_device_init_by_idx(struct device *dev,
-+					    struct device_node *np, int idx)
-+{
-+	struct device **ptr;
-+	int ret;
-+
-+	ptr = devres_alloc(devm_of_reserved_mem_device_release, sizeof(*ptr),
-+			   GFP_KERNEL);
-+	if (!ptr)
-+		return -ENOMEM;
-+
-+	ret = of_reserved_mem_device_init_by_idx(dev, np, idx);
-+	if (ret) {
-+		devres_free(ptr);
-+		return ret;
-+	}
-+
-+	*ptr = dev;
-+	devres_add(dev, ptr);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(devm_of_reserved_mem_device_init_by_idx);
-+
- /**
-  * of_reserved_mem_lookup() - acquire reserved_mem from a device node
-  * @np:		node pointer of the desired reserved-memory region
 diff --git a/include/linux/of_reserved_mem.h b/include/linux/of_reserved_mem.h
-index e8b20b29fa68..b9fd78123d77 100644
+index b9fd78123d77..52aacdbf432c 100644
 --- a/include/linux/of_reserved_mem.h
 +++ b/include/linux/of_reserved_mem.h
-@@ -40,6 +40,9 @@ int of_reserved_mem_device_init_by_name(struct device *dev,
- 					const char *name);
- void of_reserved_mem_device_release(struct device *dev);
- 
-+int devm_of_reserved_mem_device_init_by_idx(struct device *dev,
-+					    struct device_node *np, int idx);
-+
- struct reserved_mem *of_reserved_mem_lookup(struct device_node *np);
- int of_reserved_mem_region_to_resource(const struct device_node *np,
- 				       unsigned int idx, struct resource *res);
-@@ -68,6 +71,13 @@ static inline int of_reserved_mem_device_init_by_name(struct device *dev,
- 
- static inline void of_reserved_mem_device_release(struct device *pdev) { }
- 
-+static inline int devm_of_reserved_mem_device_init_by_idx(struct device *dev,
-+							  struct device_node *np,
-+							  int idx)
-+{
-+	return -EOPNOTSUPP;
-+}
-+
- static inline struct reserved_mem *of_reserved_mem_lookup(struct device_node *np)
- {
- 	return NULL;
-@@ -108,4 +118,19 @@ static inline int of_reserved_mem_device_init(struct device *dev)
- 	return of_reserved_mem_device_init_by_idx(dev, dev->of_node, 0);
+@@ -133,4 +133,25 @@ static inline int devm_of_reserved_mem_device_init(struct device *dev)
+ 	return devm_of_reserved_mem_device_init_by_idx(dev, dev->of_node, 0);
  }
  
 +/**
-+ * devm_of_reserved_mem_device_init() - Resource managed version of of_reserved_mem_device_init()
++ * devm_of_reserved_mem_device_init_by_name() - Resource managed of_reserved_mem_device_init_by_name
 + * @dev:	Pointer to the device to configure
++ * @np:		Pointer to the device node with 'memory-region' property
++ * @name:	Name of the selected memory region
 + *
-+ * This is a resource managed version of of_reserved_mem_device_init().
++ * This is a resource managed version of of_reserved_mem_device_init_by_name().
 + * The reserved memory region will be released automatically when the device
 + * is unbound.
 + *
 + * Returns error code or zero on success.
 + */
-+static inline int devm_of_reserved_mem_device_init(struct device *dev)
++static inline int devm_of_reserved_mem_device_init_by_name(struct device *dev,
++							   struct device_node *np,
++							   const char *name)
 +{
-+	return devm_of_reserved_mem_device_init_by_idx(dev, dev->of_node, 0);
++	int idx = of_property_match_string(np, "memory-region-names", name);
++
++	return devm_of_reserved_mem_device_init_by_idx(dev, np, idx);
 +}
 +
  #endif /* __OF_RESERVED_MEM_H */
