@@ -4,90 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D401C43458
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 13:11:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 934A2C43458
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 13:16:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:References:MIME-Version:
+	In-Reply-To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tcD68ggny1joEpMqpashahzuMhH7VhG1V/QEZFS6CWY=; b=wSAt7mMtap/685u+DYLhbQdqj9
-	fMdyhol8m/DQV8guzcbOr1cLlf3/KtwFeWzXhG46X/eCJiaiK71lT2OFKSB5uQX0w19XKsSo/LMjs
-	6alHw3fkmioPdpBSGnTDvmfJjvPA9G2TYRBDOyq6o28ZPW1D4cWjP2uwZvX0XLq0tv/3xXN6uv9j1
-	il39CU8JTfzKD3n4hdDqdCbNKZ91WpWfL/xvMXk/C5ZNl7wYPuh56b5TmtaKy7DuLXMsLUzgXEcmy
-	EKhhhPFXZ3wvhjWFKqX6cIB6uF8+7V0T8GL3bqh3X6CB616cWWCWM+Xu/JLJqaeVTzXgk8IyCduUh
-	F7phh2ZQ==;
+	bh=gV0Slrjr8IXK+MlTCt7MN9hZHNcIK5BTbT3wdZMhFWk=; b=OcBhiUVxoSMEICvA/9Q8XGlSK1
+	PuU2GZH9sRz3UXqiANprkObXXyh5wJAm+ndcjRFmZ37ZlYpwKldVWcU3EhbjDrkj6qCPC4b36LmT/
+	8GYx7RamoXDP+yFzCWbTmf/NtOSpTX3SAectRosSDgA+v/VWQMKEsyomhgeBQqfzSBpTXjER7WSMQ
+	8uzuJv+aLupikCnPrs6p7SiyqN3aMpuUgLahuAFOotadt40rqcOmw0ZZUsRr2HowY7+24n7pTdHYW
+	CLRbjDieHrQyf/qgABvauvPiRZuFJZs1MnwnBuR6ePV8oxMYqeV2veuXgaPtswcl5bIULC2c6qjxJ
+	fw356a4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfdg1-000000073Gz-0B46;
-	Fri, 03 Jul 2026 13:11:29 +0000
-Received: from mgamail.intel.com ([198.175.65.16])
+	id 1wfdl8-0000000745f-25Ph;
+	Fri, 03 Jul 2026 13:16:46 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfdfy-000000073GW-215j;
-	Fri, 03 Jul 2026 13:11:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1783084286; x=1814620286;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=ur0KVXHfio32hANukgiS55qHcr/vid5LoYAKVA8ObVY=;
-  b=ETgClG3D1EQeMLFzmtw6vJIEQFE8TIwPEiURekGiPldrPWxoHi/qeK3l
-   6e54VZYpGh2qCfzDpwHIN8vjmIViKDcuPyIuU0pEU/XUy67Sdkh2zo/ep
-   xJa0DHXBoe5C9peQBBwh/Bup0XG4/rAbFtp5UNUWHwNNlRoN2WiF+/GOa
-   oxhT0hrIGrBrtsTast0MvQigy7Y00RwG2viGVJTV+ZI6kUgUqf9bSPjJ8
-   5lg5/fureaiBcjXAvq9F88lWjwHBPhtrq9BH9aFLQEHjFoF2S6Al7MG9d
-   UXyZN35RQMCzIRfo3XyilCFLJ/nQuAWUwcNlggV3S9L17O7aT8YAzcKnE
-   A==;
-X-CSE-ConnectionGUID: 4y3nLF6XQPKbaS7mxPxz0Q==
-X-CSE-MsgGUID: npPua//xRZ2C8NzaFcO5Yg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11835"; a="84028529"
-X-IronPort-AV: E=Sophos;i="6.25,145,1779174000"; 
-   d="scan'208";a="84028529"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jul 2026 06:11:25 -0700
-X-CSE-ConnectionGUID: OtKHXtZxRy+HZdZh/F4u3A==
-X-CSE-MsgGUID: 7twUTalZTUmLgv086/XQfQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,145,1779174000"; 
-   d="scan'208";a="248664397"
-Received: from carterle-desk.ger.corp.intel.com (HELO localhost) ([10.245.245.80])
-  by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jul 2026 06:11:20 -0700
-Date: Fri, 3 Jul 2026 16:11:18 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Bartosz Golaszewski <brgl@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Daniel Scally <djrscally@gmail.com>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-acpi@vger.kernel.org, driver-core@lists.linux.dev,
-	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Alan Stern <stern@rowland.harvard.edu>,
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: Re: [PATCH v3 06/13] usb: hub: Pass |struct usb_port*| to
- usb_port_is_power_on()
-Message-ID: <ake09vk4fEv1D9QC@ashevche-desk.local>
-References: <20260703110317.1283411-1-wenst@chromium.org>
- <20260703110317.1283411-7-wenst@chromium.org>
+	id 1wfdl7-00000007450-05hv
+	for linux-mediatek@lists.infradead.org;
+	Fri, 03 Jul 2026 13:16:45 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 4AEDC43A2A
+	for <linux-mediatek@lists.infradead.org>; Fri,  3 Jul 2026 13:16:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 26DC61F0155F
+	for <linux-mediatek@lists.infradead.org>; Fri,  3 Jul 2026 13:16:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783084602;
+	bh=gV0Slrjr8IXK+MlTCt7MN9hZHNcIK5BTbT3wdZMhFWk=;
+	h=From:In-Reply-To:References:Date:Subject:To:Cc;
+	b=oSjWQJMVtg8g/LXoUb/K2FqnMziWICTYSrswtHn0oREeAe9aGAEYylsP6FTuQE+dn
+	 wjGcvMuvcRqlVqoh7z8fwaNzIObZDxlRBmXX30cJheTBHAMRiQRW2RuEZByS4wcOe3
+	 jylAsGqYV5LUq0Mtm9kijSAaV4jz7Z1m1+pn3+uswdn7rouFE4CSzcakh1RFvjbTVG
+	 TAo/PBKLlq4cY94y8732frnrFqI0G+57B/6Coa9bTvjuMcke80Ok/wRiEhvPcWYLrq
+	 QZcgKjIj341ZG9DxLr1WSAQ9oGUWetnM5Ixk3cqNtqKBGe3XjpxSF3vLN/YA0yWB72
+	 oPqwysfcEV0eQ==
+Received: by mail-lj1-f172.google.com with SMTP id 38308e7fff4ca-39af6402933so4937221fa.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 06:16:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+RqjPpcMXkS8JEtqKk74k1deNdCfTC0qxpM6II+XGLvoZzyFyaYEtdClo1HPKYN7Op4mwsYAm48tbpSOgX+q7w==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yye/rNToiALSmLZhiNU3FB1kLuyiNz3XxZDQnVihDW3ex7x2yJg
+	j671e126sPBysk1NmHhF5VdZIO6qDIk4I5OuWzLNmfeGE4gLEjTpjgONeFQHLrZ2YKiAa0LK31L
+	A/E33eQufJvGpKiktCkX5pcXM6dILe4VN3tEKoRo/1g==
+X-Received: by 2002:a05:651c:2554:10b0:39b:90f:b1dc with SMTP id
+ 38308e7fff4ca-39b36e0af76mr18538581fa.13.1783084600750; Fri, 03 Jul 2026
+ 06:16:40 -0700 (PDT)
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Fri, 3 Jul 2026 08:16:39 -0500
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Fri, 3 Jul 2026 08:16:39 -0500
+From: Bartosz Golaszewski <brgl@kernel.org>
+In-Reply-To: <CAGXv+5GHFnMj3qr5BcpLCQk25rWYOgnMKUX079ScELs4uqEdVg@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260703110317.1283411-7-wenst@chromium.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260703_061126_960490_1D123BC1 
-X-CRM114-Status: GOOD (  12.98  )
+References: <20260703110317.1283411-1-wenst@chromium.org> <20260703110317.1283411-9-wenst@chromium.org>
+ <CAMRc=MdMhr6qAnAtUePbuBbsH=3MzRC+BrL5GssbNTwGjp_ayA@mail.gmail.com> <CAGXv+5GHFnMj3qr5BcpLCQk25rWYOgnMKUX079ScELs4uqEdVg@mail.gmail.com>
+Date: Fri, 3 Jul 2026 08:16:39 -0500
+X-Gmail-Original-Message-ID: <CAMRc=Mdoj204dTwVMeqFwsVt3f4JJUJtk93VL2hDgh7+C60eqw@mail.gmail.com>
+X-Gm-Features: AVVi8CfEGr9ongua6ulDVSCJ0raV9SIaG27LcZHKlrYzQjvFFBvVAoVU8_PqL0s
+Message-ID: <CAMRc=Mdoj204dTwVMeqFwsVt3f4JJUJtk93VL2hDgh7+C60eqw@mail.gmail.com>
+Subject: Re: [PATCH v3 08/13] usb: hub: Power on connected M.2 E-key
+ connectors with power sequencing API
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: linux-acpi@vger.kernel.org, driver-core@lists.linux.dev, 
+	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Manivannan Sadhasivam <mani@kernel.org>, Alan Stern <stern@rowland.harvard.edu>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Daniel Scally <djrscally@gmail.com>, 
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Bartosz Golaszewski <brgl@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,34 +97,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 03, 2026 at 07:03:07PM +0800, Chen-Yu Tsai wrote:
-> usb_port_is_power_on() currently takes |struct usb_hub*|, but only needs
-> it to tell if the hub/port is SuperSpeed or not.
-> 
-> In a subsequent change, usb_port_is_power_on() needs access to a pwrseq
-> state tracking field in |struct usb_port|. Either structure can be used
-> to identify whether a port/hub is SuperSpeed or not, as the field in
-> |struct usb_port| is inherited from the hub:
-> 
->     port->is_superspeed = hub_is_superspeed(hub)
-> 
-> Replace usb_port_is_power_on()'s |struct usb_hub*| parameter with
-> |struct usb_port*| so a subsequent change can use it.
+On Fri, 3 Jul 2026 14:58:56 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
+> On Fri, Jul 3, 2026 at 8:41=E2=80=AFPM Bartosz Golaszewski <brgl@kernel.o=
+rg> wrote:
+>>
+>> So this is only needed to not have to track the state in a separate fiel=
+d?
+>
+> Correct. Reading the field is not the problem. Updating it is, as the
+> fields are packed bitfields, and Sashiko suggested that locking would
+> be needed, though it may have been for the peer port, which has since
+> been removed.
+>
 
-At a brief look this will be the only function that takes usb_port
-instead of usb_hub in the entire hub.h (I don't count container_of()
-as a function). With that being said I would rather see it to be moved
-to port.c altogether (yes, it's more invasive change, but looks more
-consistent).  I would even dare to move struct usb_port (and container_of()
-accompanied with that) and this function to port.h. This might require
-a separate patch, though.
+I'm not sure if it is. The user controlls the handle. We could argue, it's =
+up
+to them to provide synchroniztion. We only assign the target and pwrseq fie=
+lds
+once in pwrseq_match_device() and only change the powered_on field later wi=
+th
+pwrseq_power_on/off(). Unless the user does something weird, we should be
+alright. Maybe a small note in the kernel doc would be in order.
 
-Perhaps something like: 1) "move struct usb_port and associated APIs to port.h";
-2) "...this patch...".
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+Thanks,
+Bartosz
 
