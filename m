@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D7EAC44500
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 19:43:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BC00C43458
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jul 2026 19:43:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z1EEVIKsLJKUgc5TxRSkb+8QfAsvTDn+685DsfCzyOg=; b=bT3KahE4rCRbZ0eXHsvbnHFCct
-	aNCtIJTLsKmOe+MDYExi870x4E4JSYEgWfg09bAec0OfClXrLELaMOuzyUnCC/XxbdSOJe8hZ5Rl6
-	T9ENZ7FiZcq0Rpx+svqrl9A2ZWScxR4brqDZJkCJJiqnm5w6sZCYvRqEA9SmivsL1BlaqFpTTyolQ
-	jF4ZTmMhyRV86YqvOZ6B7QnWGdebYf1zwtei/JaIaRAPb9fDiaZFqjlEjqpFXeO+GzTWdKD9wnUTG
-	2bM4ykxKBKATDBUuByybZg84rHX0w3d6iZyDaG+6IK0GyLQvDnYheUw+yGobGywu7Iz2Wysfy9wvJ
-	4pQ9PCGw==;
+	bh=bn4n8Ensq4b2jWU5voHmUQF7/CVhT1UW+T0M+N3rGrg=; b=v/gnoLATys0l5aguzLTFKEsn81
+	kTQuIpy7JI32zAzKv5wniAr2qyHGLHEC28zu6jHEiC3OfbDlbmjVlx5lO6eFSnPeaVg69IH5+9WLK
+	xhXBNXtWUf8ebaqmiS4drGpS0VB2kcjco8B1XoarT4kHYhQGx57C5FKdaAhTlFXtT7yj4cUh3j3ZX
+	Upkwz02BJ0lLGguMH3rlGaSiiSMKuG9VmXJaU4NsGRfD+RC9felvhSYg1w4j4qnqpMgRHaOKhNy7d
+	g/9CJVSZusA7eXDikZSd14SKI98zLA2D7Uq/NJHtJe0mzkQgjo7UfUVxFsU5tEnqwG9I0ufRb5wVE
+	Jr1h89Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfjn0-00000007nTL-2CCX;
-	Fri, 03 Jul 2026 19:43:06 +0000
+	id 1wfjnO-00000007nVx-2tDp;
+	Fri, 03 Jul 2026 19:43:30 +0000
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfjmx-00000007nSh-3xyz
+	id 1wfjnL-00000007nVF-3hAK
 	for linux-mediatek@lists.infradead.org;
-	Fri, 03 Jul 2026 19:43:05 +0000
+	Fri, 03 Jul 2026 19:43:29 +0000
 Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 663Hj63i547537
-	for <linux-mediatek@lists.infradead.org>; Fri, 3 Jul 2026 19:43:03 GMT
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 663Hj63l547537
+	for <linux-mediatek@lists.infradead.org>; Fri, 3 Jul 2026 19:43:27 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=qcppdkim1; bh=Z1EEVIKsLJK
-	Ugc5TxRSkb+8QfAsvTDn+685DsfCzyOg=; b=dBy/JQfo/vmPcUgd+SG5C/HFppQ
-	VQPpo60m5XuLLe8IZz9VmkujdeOWKORaedTIbeEBXY3MrqaFrb5buG/dtNw1flVa
-	gmLIGrbmt1RBL2AacXvRap654MDBA4a6SeaUuliy+gHrr788pt04eMSI9xpgs33+
-	R5AZgG4+5VHgVaE2/+1DnI3BIA5lvOsSyAeCDfw9UMvsglqVfpNNovb5N7PeoTwg
-	ln+ebK3WQ+ukRC6+S/3BEacZiLuSKmeNDsLRfTMLfQIiHJVlcehaxynQlPbJBxiI
-	lA6TlzgWIpcuF6cQsHlG+pIWLBg20HuTazq1cz/Ht4OmvhKuWxEpUIEngyw==
-Received: from mail-pj1-f69.google.com (mail-pj1-f69.google.com [209.85.216.69])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f67j02vjp-1
+	:mime-version:references:subject:to; s=qcppdkim1; bh=bn4n8Ensq4b
+	2jWU5voHmUQF7/CVhT1UW+T0M+N3rGrg=; b=nOeTG4ty30vKw+ttbYanSVJ6ILE
+	BTAP2O4+nJPij6iXWRyXJ6gBds/5MB5tBMGqFWh+/u8gKduK/0McbMFjobNCnuzN
+	1y+6/ZZnKyZ62+pPM/DEC4Iylg8Krq0wAPqD6KdtuGk+Zdk4DKUeyMhiXbzJYdVL
+	bIj/QJM7hN5BtusgbHD8m9xNThogT6wHKhQIkdOp/hbQypKE27fZgHchGeO+1BTT
+	VPUpeh/bBZI59ScXYRgw65wzTgoMMnoJmFsZzRgRsYFyWaGGYCwKpfq4lPUztwV7
+	wVHDf06/SCOxR42J2Z9vbHr4UhAdTAjtbJeXNkQiLE7+wIkknP7olxo/NEw==
+Received: from mail-pg1-f198.google.com (mail-pg1-f198.google.com [209.85.215.198])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f67j02vkt-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 19:43:03 +0000 (GMT)
-Received: by mail-pj1-f69.google.com with SMTP id 98e67ed59e1d1-37fec599568so1496220a91.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 12:43:03 -0700 (PDT)
+	for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 19:43:27 +0000 (GMT)
+Received: by mail-pg1-f198.google.com with SMTP id 41be03b00d2f7-c88da04b719so672978a12.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 03 Jul 2026 12:43:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1783107783; x=1783712583; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1783107807; x=1783712607; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=Z1EEVIKsLJKUgc5TxRSkb+8QfAsvTDn+685DsfCzyOg=;
-        b=e371nIO7gujBffLQpzz0z84qypntM9658XMoszpnwJeclCIwwrmFJX2yT84DULubWI
-         FyZb099mqHq3Q2kfjYQgR4nmEI4i7Bxv6aT3JHL5D4TCQVpU44TJilez3bHaQMFI9Hpl
-         t4+SHJUS9ZIWxpTKJZYYa6CzBNVy5GCfjuf0lZ8aqBa+GSlhwBCdQmOWq3jp6FvPzLQi
-         qo8HEzX3bbQlaboplq4v4JU38O/qsIrwip6cf0NsH80LpQbIri6zzZUJQlykxfsxVffh
-         YbaT1WPeDwLHmf6ueWXR7fFGhTmA4lps2/6v0jYUL1Zvg2UB9Jn8KBB3rWDS5IASG6nf
-         klRw==
+        bh=bn4n8Ensq4b2jWU5voHmUQF7/CVhT1UW+T0M+N3rGrg=;
+        b=N846Cmsk2HqgAhsKK//sp6CH7PUgbYiPu3f2qVWFO5xMefhL4vdB1ey0VlW7roL5B5
+         anc6YFX91n/VGakqM7J0YiRZYsvFZ4LgcA1T2j5uM+m8L7KXRhCXCk+V17HrQ1Nt5pQZ
+         o4hx64gWFTHPepJzBorQvsHTfbALVDv+JeqAgAePVpOQJkU8RsIE7oewUhxPbqmG35O2
+         Z+YduC+HAV1wLS6bH1Zyl5xvwg5B+w0llTjmn28AMUtZtuL71piArn7H9U5oPSe+ee6m
+         A3E/5inA7BMqVPA2WRY0LnFeGjgcPwUgbEb0XImwtSxFf5REHqRJ+od93juQgiqZjYgS
+         gdIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783107783; x=1783712583;
+        d=1e100.net; s=20251104; t=1783107807; x=1783712607;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=Z1EEVIKsLJKUgc5TxRSkb+8QfAsvTDn+685DsfCzyOg=;
-        b=TcPul3v4a9O6P+AxgvEIPCAmvmCSM7NWCU08Y79FMjgocuXTbTDLwBe5IWOIj8bPnG
-         XqeV30HfRT5Vf2GCWBi9pd448FyfTSDu3WsvqY1z7xu2nEtC34E/WkhR/dyH3NXWyrV2
-         u6Oq36pN7d54p5014arROGer7rACYGHq6qd14KxYIqkWChocMVQi7zDEtCRB9UHk3h2I
-         1FTx4jQc+t0bKaGSBcjh73AbeNngxKDEFUDM8w0b4HORHF5h7W6/QOHxyLC1GHspiUry
-         4cTAH2tyENF5fPF2Rfxmc7NDU3aWK0JKpc/yXbgngGMfmns8Po64k3zFRVfV0sW43ZMx
-         58FA==
-X-Forwarded-Encrypted: i=1; AHgh+Ro4NKb1eJbAsRJr7QS6qKd2r+Dzt08CIuSLtwLjh/2yT6m4pkpbNhpMg8Qqw21O3EJZ8a6tNbYWBOMX3W3baw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwNN23Y+yvKAxkA3LdSucoSzk4R+8BFbgCr8f5pGOI/H5mhHp3K
-	GGwrY7fRL1cnUlZXYUZ0AUnhq1W4yh+DyxRcBywjCQQqMjaYNGycvn5v+NNpwqsyvL/evlo/SeW
-	TC2YF+AcN3BoJUz0GxyQlce1TqZr7IxC7/qwYcdBAEfI+kxpwM0sjMHo5oXsxD6PvFL9kjsHwsT
-	Y=
-X-Gm-Gg: AfdE7clUfxQpII90Abjxq+XWblgYNBtQnME9cl/jTJxkitDcq7GkdBzrWK5Q3yJANGk
-	3cPCslxT34cytdfriWlEmg7Vtx9cMTnc9hFN5zCsCuQAbRfNi3lMykls+kafv0lDdLConBXdlBa
-	Ez4wvjcOx8V7XA/FL1M+YISfYv0xvjQ5DJx/sB/lkSBKlYUpMM5TKncgmQk/NPwNFafwz1FjiQF
-	8xA+v2PwRhMLXM9z0Hzpc50fHdZQwr1nvrUNRHZfDF740qYTq/e+SCOqjHv9w8ZGtbJvkg9i0An
-	hZ68ycNjXJCkMEgN2b1yHnEua+wBcm7FD9H1m1nUrsylRCQeF4HPQqROnUIuV/XwgFdmRRCVhdg
-	/LsSSK3aJ72rrHS/eaIIACXIJX46ZTvLWJ4QOBQ==
-X-Received: by 2002:a17:90a:d40f:b0:36a:a16b:5f6d with SMTP id 98e67ed59e1d1-382807aa1b0mr732951a91.7.1783107782572;
-        Fri, 03 Jul 2026 12:43:02 -0700 (PDT)
-X-Received: by 2002:a17:90a:d40f:b0:36a:a16b:5f6d with SMTP id 98e67ed59e1d1-382807aa1b0mr732847a91.7.1783107781822;
-        Fri, 03 Jul 2026 12:43:01 -0700 (PDT)
+        bh=bn4n8Ensq4b2jWU5voHmUQF7/CVhT1UW+T0M+N3rGrg=;
+        b=cQMENFb3FHMHAL0RR0OZ9xP1otPlfgTaoSewYJ88/sjeHnFNYoM+hPrOS60uqhpGd9
+         xXB+rIAX+ArxfYjZIgwC/4Oub1QTnSGgq6Gf2p1AyFS8cq8DteTM2grTM0RWwNahWKHX
+         C97oyidF0uhyXZ8NajbZ+VfI1fbGQesA/ZwVJy6ZglpZRFeG4mVyFtizdE/lX/DLIvQk
+         Ly0Aw6oJWjQsU4ms5YICc0OWCDtN8SOBKidQlHhOaLtKTJjjnNop/PfyBkbGcsERWDAM
+         oBv6A//0jpu8t+g2NqECqmazbMfObRa+6N2gr/dT6PhdCtFjaIZ856rIte6tctvwUQpf
+         0zWw==
+X-Forwarded-Encrypted: i=1; AHgh+Rr/stINCKLg7X9Ra/jHESfdKa6ssYyCktBN6aW7PGJSUkvrIB/FPIGumbFsNteAdWUkeYeIE1kKWLB49AfY2g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzZ20kfDMeQe8dFVGZ5IxPES/fMhclthpaxg8qt7GmKIuVVEwVA
+	gmRR6lsM0X+Nl+/0WTGmM0UQUGZY7hfMm/iGEmRGgnUM2tOY35R8FrJXgNb6tYPIoHmnz+5CA+j
+	iw9OpyVMmZ7/wpgicwXKsg0aiTpKk5e5eoesP6/vvML0h8O3FUpW1N21zCdsfLfMhsoVxbof+Bj
+	U=
+X-Gm-Gg: AfdE7ckkZw0yRo9agO/1diCtPsq+rX8A4q7Daos0pKWvjUiduVPYZaxizFskUIvnHk/
+	ED8vKC0GyLY5K6dEX9dZTB+wiUSUPX5t13Iz9hquEH5dlHHR+jTGdBL1MnTVlX8Ak/TooSfE1V7
+	a8GPD/+Lwmzv1QAiQ+D3bzLVQrCF28vN76F90oNvXoaYTf20LbgAwwlU6ST3nNRhWnlmloAMozY
+	XVkCgbk6E/7hOPn8Y8G74w5Wz8/6V7zvsoFbGvb43nqKRBn5Vo06r/J7oM2gD4pZ7yEarY6R4q0
+	OcfoUnhmqA9rrzaP4CxNBIAY9FureCxwszqUP8NtdACmd+g69VxqYlfYcd1muakS1sJyJrLHuPS
+	7vxWYU+B6A3f4y8H0h2hzgPX2zCB1cBRjFnKSpw==
+X-Received: by 2002:a17:90b:48c6:b0:37e:2005:6507 with SMTP id 98e67ed59e1d1-38280e98cfamr773004a91.15.1783107806456;
+        Fri, 03 Jul 2026 12:43:26 -0700 (PDT)
+X-Received: by 2002:a17:90b:48c6:b0:37e:2005:6507 with SMTP id 98e67ed59e1d1-38280e98cfamr772970a91.15.1783107805852;
+        Fri, 03 Jul 2026 12:43:25 -0700 (PDT)
 Received: from hu-mojha-hyd.qualcomm.com ([202.46.23.25])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-30f290b6bc2sm10065845eec.27.2026.07.03.12.42.38
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-30f290b6bc2sm10065845eec.27.2026.07.03.12.43.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Jul 2026 12:43:01 -0700 (PDT)
+        Fri, 03 Jul 2026 12:43:25 -0700 (PDT)
 From: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
 To: Bjorn Andersson <andersson@kernel.org>,
         Konrad Dybcio <konradybcio@kernel.org>,
@@ -163,32 +163,32 @@ Cc: Ekansh Gupta <ekansh.gupta@oss.qualcomm.com>,
         linux-sound@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
         imx@lists.linux.dev, sound-open-firmware@alsa-project.org,
         Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
-Subject: [PATCH 09/42] drm: hdlcd: Use devm_of_reserved_mem_device_init()
-Date: Sat,  4 Jul 2026 01:08:22 +0530
-Message-ID: <20260703193855.110619-10-mukesh.ojha@oss.qualcomm.com>
+Subject: [PATCH 10/42] drm: pl111: Use devm_of_reserved_mem_device_init()
+Date: Sat,  4 Jul 2026 01:08:23 +0530
+Message-ID: <20260703193855.110619-11-mukesh.ojha@oss.qualcomm.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260703193855.110619-1-mukesh.ojha@oss.qualcomm.com>
 References: <20260703193855.110619-1-mukesh.ojha@oss.qualcomm.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: cObJ5dcKWiRqSm_L5-aSVLXncgtPfgD9
-X-Proofpoint-ORIG-GUID: cObJ5dcKWiRqSm_L5-aSVLXncgtPfgD9
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzAzMDE5OSBTYWx0ZWRfX3mlp9jDZ2mDL
- NF5rBaTQKyLddBf0TQwajTwpZcfzoRCWnCSRRlNmfafn/6glDWtzwKJYECfAWA/kuhb+E+cptSo
- SDt5I6wOU+PrLiOgZn9uvvJ01MRUt6E=
-X-Authority-Analysis: v=2.4 cv=Yuc/gYYX c=1 sm=1 tr=0 ts=6a4810c7 cx=c_pps
- a=vVfyC5vLCtgYJKYeQD43oA==:117 a=ZePRamnt/+rB5gQjfz0u9A==:17
+X-Proofpoint-GUID: aF0WRPKkSOt_P0ZzQGtMoNBOVvfVGHTx
+X-Proofpoint-ORIG-GUID: aF0WRPKkSOt_P0ZzQGtMoNBOVvfVGHTx
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzAzMDE5OSBTYWx0ZWRfX2/mhW9UF82h7
+ oZt7rtvTfFc4gh8SZyF8Fv6xlbaeHYYH/GrKq/iWLe8qM8PxEAXKvP1XvsLiv+VCkliMdADImqy
+ /uPzO6NpnQU1dUlr01PUQIS53eTIZyg=
+X-Authority-Analysis: v=2.4 cv=Yuc/gYYX c=1 sm=1 tr=0 ts=6a4810df cx=c_pps
+ a=Qgeoaf8Lrialg5Z894R3/Q==:117 a=ZePRamnt/+rB5gQjfz0u9A==:17
  a=RAioF0-LDSMA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
  a=u7WPNUs3qKkmUXheDGA7:22 a=YMgV9FUhrdKAYTUUvYB2:22 a=EUspDBNiAAAA:8
- a=zu8Q1U5i7KxegdXecekA:9 a=rl5im9kqc5Lf4LNbBjHf:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzAzMDE5OSBTYWx0ZWRfX81C/9yx+DNZD
- rX8FKLrsbttu7FxQ8ht9jPTUFpQst7YwMkhK2gugOhtDISdTppkNH07bcrwF0hvJb5/YemW2C3t
- Xy0XRsW+It/07ZdX10ANpOXqUYBbiozDxfN2mAiZxt6DdQAL+B7EfmgAszEWeXPSqjvmB70QUsa
- IJ7T47286c4ydmGxZ/QM6TGq+9nGT0I9pxvRgJZOjX4Ov2KI/4uaECsHLNFWbi74MmATpXIkiRD
- l1J12pFslKpt/VuwnJLZmGwmm7nrFL2UUNPG/hfajFMTMVuxEyzP68Dm8GTwfabwTcOashG51XK
- GHi5EpRFPlHuHIdXzCVo0fQhOt4x8TjOy+D++v/QcgD7zKl8ocovK+Wa/F9K4w/p0T6evJz8tzm
- prGaArYADsHueaEPMuWpdGjAEXDWYepvfZqDCzjn+Z516MwXGhduzmPde8x4beiF8Y8yVX2HK4P
- JhmDvE9w3Sd5zDCeZOw==
+ a=ih0ztwYHz3j8HjU85xEA:9 a=x9snwWr2DeNwDh03kgHS:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzAzMDE5OSBTYWx0ZWRfX+tpyM67LWXUL
+ JVQcjscTd4Kj/eJLdD49vaby5L/AMcLAq8m+IuRzv82dvTFjCdV+Vq7QreJAZ+AN2I3NPc29tkx
+ aiQbN6W+gfEMhwEA2gcCSSMSUSTGyNIP0T4r3njcAwOa4jztFeyDTjJCSsv0P8EMQzr6ShZxMMw
+ JWaB8646PiQoS6dOnkGqMUwPcVC48MXmt+pcIbxkl2S06NvdigRr7m/DJLoHm8y4a56lRczsXnV
+ RNMGWlD/u0UT+4jaBsi6mqtlqoErAhcsww0FYIHKqpwGWkcIFQCWsvd0VTs6zv0RqBDZ1n8rprO
+ PTaIux+6eZ8BNIeX21CGxMhplDhpRPCkXihfuwPEObTvR9ovfG5xwq9NcaxJpu00Fi7Oh6cznXJ
+ EWNmDGXUwgZQ80OrBz0ft4R9WxpJO9dRuVhbPwmNWTps52DhYo8A4Kv6eYco7WiwDMZyqhCqix4
+ irYS+iFOX7wV72e0jAQ==
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
  definitions=2026-07-03_03,2026-07-03_01,2025-10-01_01
@@ -198,8 +198,8 @@ X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607030199
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260703_124304_010575_10FCCC44 
-X-CRM114-Status: GOOD (  16.52  )
+X-CRM114-CacheID: sfid-20260703_124327_928109_9EB4CA9E 
+X-CRM114-Status: GOOD (  15.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -215,53 +215,44 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Switch to devm_of_reserved_mem_device_init() so the reserved memory
-region is released automatically on probe failure or device unbind.
-Remove the three explicit of_reserved_mem_device_release() calls in
-the setup_fail error path, the bind error path, and hdlcd_drm_unbind().
+region is released automatically on probe failure or device removal.
+Remove the explicit of_reserved_mem_device_release() calls in the
+dev_put error path and pl111_amba_remove().
 
 Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
 ---
- drivers/gpu/drm/arm/hdlcd_drv.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+ drivers/gpu/drm/pl111/pl111_drv.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/gpu/drm/arm/hdlcd_drv.c b/drivers/gpu/drm/arm/hdlcd_drv.c
-index 81d45f2dd6a7..67466fd441d5 100644
---- a/drivers/gpu/drm/arm/hdlcd_drv.c
-+++ b/drivers/gpu/drm/arm/hdlcd_drv.c
-@@ -134,7 +134,7 @@ static int hdlcd_load(struct drm_device *drm, unsigned long flags)
- 		version & HDLCD_VERSION_MINOR_MASK);
+diff --git a/drivers/gpu/drm/pl111/pl111_drv.c b/drivers/gpu/drm/pl111/pl111_drv.c
+index ac7b1d12a0f5..25ce37a4e8bf 100644
+--- a/drivers/gpu/drm/pl111/pl111_drv.c
++++ b/drivers/gpu/drm/pl111/pl111_drv.c
+@@ -254,7 +254,7 @@ static int pl111_amba_probe(struct amba_device *amba_dev,
+ 	drm->dev_private = priv;
+ 	priv->variant = variant;
  
- 	/* Get the optional framebuffer memory resource */
--	ret = of_reserved_mem_device_init(drm->dev);
-+	ret = devm_of_reserved_mem_device_init(drm->dev);
- 	if (ret && ret != -ENODEV)
- 		return ret;
+-	ret = of_reserved_mem_device_init(dev);
++	ret = devm_of_reserved_mem_device_init(dev);
+ 	if (!ret) {
+ 		drm_info(drm, "using device-specific reserved memory\n");
+ 		priv->use_device_memory = true;
+@@ -313,7 +313,6 @@ static int pl111_amba_probe(struct amba_device *amba_dev,
  
-@@ -164,8 +164,6 @@ static int hdlcd_load(struct drm_device *drm, unsigned long flags)
- irq_fail:
- 	drm_crtc_cleanup(&hdlcd->crtc);
- setup_fail:
--	of_reserved_mem_device_release(drm->dev);
--
- 	return ret;
- }
- 
-@@ -316,7 +314,6 @@ static int hdlcd_drm_bind(struct device *dev)
- 	of_node_put(hdlcd->crtc.port);
- 	hdlcd->crtc.port = NULL;
- 	hdlcd_irq_uninstall(hdlcd);
--	of_reserved_mem_device_release(drm->dev);
- err_free:
- 	dev_set_drvdata(dev, NULL);
- 	return ret;
-@@ -338,7 +335,6 @@ static void hdlcd_drm_unbind(struct device *dev)
- 	pm_runtime_put(dev);
- 	if (pm_runtime_enabled(dev))
- 		pm_runtime_disable(dev);
+ dev_put:
+ 	drm_dev_put(drm);
 -	of_reserved_mem_device_release(dev);
- 	dev_set_drvdata(dev, NULL);
+ 
+ 	return ret;
+ }
+@@ -329,7 +328,6 @@ static void pl111_amba_remove(struct amba_device *amba_dev)
+ 	if (priv->panel)
+ 		drm_panel_bridge_remove(priv->bridge);
+ 	drm_dev_put(drm);
+-	of_reserved_mem_device_release(dev);
  }
  
+ static void pl111_amba_shutdown(struct amba_device *amba_dev)
 -- 
 2.53.0
 
