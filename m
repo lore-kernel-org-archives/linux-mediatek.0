@@ -4,55 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83584C44500
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81930C43602
 	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jul 2026 19:21:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bZdXKtmIEuJrtqSvdiabYiC6Ln4JkpgsnTVdQrUl4fM=; b=yhwBmTiKxGEWUaR82TNA/fK4PQ
-	59CzvffyeOjAv6xkFDZano7n95n/1zSPKvcl03jjbNVybE5G6rvLOiBqvKM3uKrg3iJPXfulPES1Q
-	sNVhrk6VgSH0RVCLhgb7Q0fKGxu7kh9ou3pTD3yp3xDalncBMNt3unSfhOeShMdQL3ViP8bQNH+FO
-	aE4mzDPIKweF1l2xYYX886VdZOlWuTlxF52uPnulI250ooAVGfaQzU3wM86YEy1bhxfHylS/tEJLL
-	PdtcB6P40zsxEofomnMx9JCIG0BsJ4qXra2Rs52Ui+riZ+LtGF/aw84lhCo5fMcT+Q5t+6e5mjHC9
-	cieWSd7Q==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6hhUGyc+mT3QeW23DP6O9D/tS3OeqgAHNIRcWRxe91w=; b=Hxybm2v18/1pHeFzXOjSQUWUcP
+	h2dTF/ul0zETNI8VKgdI8yybuyUM4TzS9iq9yDRoM2iI9o/e0BP1zO7cpJl88bSISI1lfz4n3kASc
+	3PYOJzaBkVLPPiaOcD7zmKZvnMUg2y0ZRiIWrllCsq5KDIMpElkntbioOU8zJb70TGbCl8cnPFc8X
+	s4IYBF/ef1W/XITeDyLNE5Hku9LvxD3jjb1n/oCXE0xiiy9BAriDHHK/d2pFNHEKn0ZWb8v4PzpOc
+	09XX3V8cXfvr/Lql/HTA+U/qvejwgs9srjkO16wZUdOmzIeBnVnNpkfGnqHxnwMeqhmYDp0tADCnD
+	Xt6Gge4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wg5vw-00000008hRE-3uzU;
-	Sat, 04 Jul 2026 19:21:48 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wg5vx-00000008hRQ-0ZwK;
+	Sat, 04 Jul 2026 19:21:49 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wg5vv-00000008hQe-1oU1;
+	id 1wg5vv-00000008hQg-3291;
 	Sat, 04 Jul 2026 19:21:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3ADD440794;
+	by tor.source.kernel.org (Postfix) with ESMTP id 63A8A60052;
 	Sat,  4 Jul 2026 19:21:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id F2AD1C2BCC6;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id E73C1C19425;
 	Sat,  4 Jul 2026 19:21:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1783192906;
-	bh=qTdriu943CBSGqpOSZgwkmagkjYfITvCJGhf7IcjgQw=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=QPwbxMpXjxqOf43NEBy3z1ALslcIWVuvkjPW9uJDIT3yLOfBFC5RvhY7OSfra09e5
-	 mzaevUZ3/9X8+TOPYKJgXZAqg48eL8izX0vxthq1bbkBVneWbcIIWpwXUrGK6xDalT
-	 JjJ0lBQXl94VicHq4suXcLce/z6uJcoBGtBTeMPfUzDR3hTMvUUXOYJ/7jPrjDokP3
-	 0wxudwX6WHkdDwfAoToVlxsRn62rWjAbsaEtapV+77qBltpKC0TQaRZbJsDruj0npV
-	 m3ktDmw9IUp0sCBV7PntiQnnf6xvb5kadWSyMhE2OY8UWioVjV4/I3F8BnBh/ix+1f
-	 +E9DX/xeG9Y6g==
+	bh=DrmEnoWmyWcxAHLbfs449WCtfzaKrN+jtcI2xYUq4jM=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=s2h+J/PXSLPoVCq5HoZTcJWZRH1TyzEPI1fBa+lUbkvKpeQ/NWU+exS23rgQz7aMQ
+	 WpOVKdlRcl+UqJnX1PVFgWzykvpOWO6KwqSyqRwmHEoJj52Rk0nYj9OJi42o3n+TeY
+	 8WIOBZ9zYUxytb+hjtyGGqWYbNt7qHipnHuGcdvHaXFRFB0FF9RgVS6RMqKMdrC46i
+	 Q04QiOw5CUK4EpGPFNoorpG/p7iBzCGQfnF+ANTiI5/HkyLkCzcFVc6/MKS5G77cy8
+	 OoHmT7YmCGh9uF/ABrS9Duz5rKQruZQZHlLFvAeLx5xrArJAS0czltsB/3OdRIG/+G
+	 JxRPrkaXntVDg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CF022C44500;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C05C3C43458;
 	Sat,  4 Jul 2026 19:21:45 +0000 (UTC)
 From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Sat, 04 Jul 2026 22:21:42 +0300
-Subject: [PATCH 1/2] ARM: dts: mediatek: mt6572: rename fixed clocks
+Subject: [PATCH 0/2] ARM: dts: mediatek: mt6572 DT cleanup + cache info
+Date: Sat, 04 Jul 2026 22:21:41 +0300
+Message-Id: <20260704-6572-phase1-v1-0-61c2fe6be19c@protonmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260704-6572-phase1-v1-1-61c2fe6be19c@protonmail.com>
-References: <20260704-6572-phase1-v1-0-61c2fe6be19c@protonmail.com>
-In-Reply-To: <20260704-6572-phase1-v1-0-61c2fe6be19c@protonmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMTQqAIBBA4avErBNUMqGrRIt+xpwWFk5FEN49q
+ +W3eO8GxkjI0BQ3RDyJaQ0Zqixg9H2YUdCUDVrqWlpZidpYLTbfMyohVTUZowZnnYZcbBEdXd+
+ t7X7zMSw47u8CUnoAi2ZjYW8AAAA=
+X-Change-ID: 20260704-6572-phase1-014d551bf7f2
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -61,11 +63,11 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Roman Vivchar <rva333@protonmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1783192904; l=2336;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783192904; l=1091;
  i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=SimJbn1seivrKmmRN96xb6J0kutHD3BQPIniNyDo7go=;
- b=c+Av2aNOkGN2greCY8UEhfA8rgi89AtUEVMFHxzvYp2a72Wv61tz27SXDVF8HqMAkkxfmlYAK
- 3DNmltYVtOUDqqlorG25pEcknnMlMcZ7fLA3BB//ECcFmakEaij/WCw
+ bh=DrmEnoWmyWcxAHLbfs449WCtfzaKrN+jtcI2xYUq4jM=;
+ b=nNNWxh6dknyQMeqBS+KrQhlN0NrksqTdzm8NiuX/by9b77T9D8qEXOtuC8k79UQS8ERkyIADj
+ qgfY6gpSNb8CKCHewkxtdNFWWAFO1ei7BN4q//uqqMkR2wju2Q+JzwK
 X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
  pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
 X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
@@ -86,82 +88,34 @@ Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Roman Vivchar <rva333@protonmail.com>
+This series replaces legacy clock naming like uart_clk, system_clk and
+rtc_clk with clk-*FREQ* equivalents. It also adds L1 and L2 cache info
+to properly describe hardware.
 
-Old-style naming like uart_clk, system_clk and rtc_clk doesn't actually
-reflect hardware on the mt6572 SoC.
+Note that patch 1 doesn't break DT ABI. The changed clock node names
+and labels are consumed only by phandles, and there are no drivers
+relying on the legacy names.
 
-For example, uart_clk is used as parent for various parts of the SoC
-like AXI bus, MMC controller, SPI, etc. While it usually shouldn't be
-used as active parent, uart_clk is a wrong name. The same logic applies
-to the rtc_clk, that is also used as input for MultiMedia subsystem
-clock.
-
-Therefore, rename all uart_clk, system_clk and rtc_clk to clk26m, clk13m
-and clk32k to properly describe the hardware.
+As a brief heads-up, this series is a small part of an ongoing effort
+to upstream mt6572 support. In my kernel tree, I have brought up clocks,
+pinctrl, eMMC/microSD, cpufreq, thermal, DRM, GPU and more. I plan to
+send those series in the near future.
 
 Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
- arch/arm/boot/dts/mediatek/mt6572.dtsi | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+Roman Vivchar (2):
+      ARM: dts: mediatek: mt6572: rename fixed clocks
+      ARM: dts: mediatek: mt6572: add cache data
 
-diff --git a/arch/arm/boot/dts/mediatek/mt6572.dtsi b/arch/arm/boot/dts/mediatek/mt6572.dtsi
-index ac70f266d698..fa0e5df766c2 100644
---- a/arch/arm/boot/dts/mediatek/mt6572.dtsi
-+++ b/arch/arm/boot/dts/mediatek/mt6572.dtsi
-@@ -28,19 +28,19 @@ cpu@1 {
- 		};
- 	};
- 
--	uart_clk: dummy26m {
-+	clk26m: clk26m {
- 		compatible = "fixed-clock";
- 		clock-frequency = <26000000>;
- 		#clock-cells = <0>;
- 	};
- 
--	system_clk: dummy13m {
-+	clk13m: clk13m {
- 		compatible = "fixed-clock";
- 		clock-frequency = <13000000>;
- 		#clock-cells = <0>;
- 	};
- 
--	rtc_clk: dummy32k {
-+	clk32k: clk32k {
- 		compatible = "fixed-clock";
- 		clock-frequency = <32000>;
- 		#clock-cells = <0>;
-@@ -64,7 +64,7 @@ timer: timer@10008000 {
- 			compatible = "mediatek,mt6572-timer", "mediatek,mt6577-timer";
- 			reg = <0x10008000 0x80>;
- 			interrupts = <GIC_SPI 74 IRQ_TYPE_LEVEL_LOW>;
--			clocks = <&system_clk>, <&rtc_clk>;
-+			clocks = <&clk13m>, <&clk32k>;
- 			clock-names = "system-clk", "rtc-clk";
- 		};
- 
-@@ -91,7 +91,7 @@ uart0: serial@11005000 {
- 			compatible = "mediatek,mt6572-uart", "mediatek,mt6577-uart";
- 			reg = <0x11005000 0x400>;
- 			interrupts = <GIC_SPI 31 IRQ_TYPE_LEVEL_LOW>;
--			clocks = <&uart_clk>;
-+			clocks = <&clk26m>;
- 			clock-names = "baud";
- 			status = "disabled";
- 		};
-@@ -100,7 +100,7 @@ uart1: serial@11006000 {
- 			compatible = "mediatek,mt6572-uart", "mediatek,mt6577-uart";
- 			reg = <0x11006000 0x400>;
- 			interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_LOW>;
--			clocks = <&uart_clk>;
-+			clocks = <&clk26m>;
- 			clock-names = "baud";
- 			status = "disabled";
- 		};
+ arch/arm/boot/dts/mediatek/mt6572.dtsi | 35 ++++++++++++++++++++++++++++------
+ 1 file changed, 29 insertions(+), 6 deletions(-)
+---
+base-commit: 8cd9520d35a6c38db6567e97dd93b1f11f185dc6
+change-id: 20260704-6572-phase1-014d551bf7f2
 
--- 
-2.54.0
+Best regards,
+--  
+Roman Vivchar <rva333@protonmail.com>
 
 
 
