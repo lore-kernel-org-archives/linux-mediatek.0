@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B17C4C43458
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jul 2026 12:45:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B56AEC43458
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jul 2026 12:48:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DRiztJVM/qkYZyhkFYpvYvD4OFRtK8O6HUAq2udZdnA=; b=UqRWoZLAel9+nVLt9NMYIonwAd
-	BivDeTYlwhDVOzlX+0kqrD8YD+pJHitBsaw5JN6MzFdWOgrbh+izWzpUT32bVWUuRsH7AMN/s7ATi
-	gb9JHze3hXwf1zfKePX8nmpOVrH7nehxxJUNFyrF+IIdRW7rRKAsndlaOpZFp2y4cgTjKJ4/zofyu
-	9DiYx+OeaqfnXZMm5W1JayQMKB4zStlFy/CBSjPOheglys1tWqbgVR0K+UlRTBu1b3q4ycYmIEqzq
-	kM69vneweGpWVywDC6sVqSyuTSmnQ6hjIOcYSw3S8eLf3n0X2hCCHc7Runh3tsCv7J0qO5XmpHGum
-	eE9iuJNw==;
+	bh=olTk5+OAatmaufPAh5O9gFnO4XCsta1tBlKM7ahJZXo=; b=0Rk0kuj2e5ZESa/xzFo2SXp5wb
+	0OeWR11/RNKcO8W/IxFxelDLVBaQJzKruq7TlnOe6mtBEmVBGKCu9UV5370NE+0wwa4HzU/8QuUbD
+	ofCmz2VWkJWMU2BNnIXg9wzz83tIa+m2oxrqfp9zAChROq7Hhh6m49B3v1ML6S5mL1I/1ckjis2KX
+	6A1vNGEi+PSk1FLAl3S0gmGXfdGUumoissUV9RK1kzP6snzjwXPcnj5z/rphZuXEfn+hk74P01UwW
+	YlY5DfTGa+TYs6CUsVfLo8hrDfrGfFa2QSflmO5qbBQhXAzSsO4joVgF2gifsd/VmzRpPsYzhbzyu
+	Lc+MLddA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfzjv-00000008RxG-3Z9n;
-	Sat, 04 Jul 2026 12:44:59 +0000
+	id 1wfzn9-00000008SFd-1ySs;
+	Sat, 04 Jul 2026 12:48:19 +0000
 Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfzjt-00000008Rwm-06KM;
-	Sat, 04 Jul 2026 12:44:58 +0000
+	id 1wfzn6-00000008SFA-0eFT;
+	Sat, 04 Jul 2026 12:48:17 +0000
 Received: from localhost.localdomain (unknown [111.196.245.140])
-	by APP-03 (Coremail) with SMTP id rQCowADXu+JDAElqeFXWFg--.22738S2;
-	Sat, 04 Jul 2026 20:44:51 +0800 (CST)
+	by APP-03 (Coremail) with SMTP id rQCowADX2sEKAUlq_mPWFg--.11552S2;
+	Sat, 04 Jul 2026 20:48:10 +0800 (CST)
 From: Pengpeng Hou <pengpeng@iscas.ac.cn>
 To: Yassine Oudjana <y.oudjana@protonmail.com>,
 	Michael Turquette <mturquette@baylibre.com>,
@@ -41,17 +41,17 @@ Cc: Pengpeng Hou <pengpeng@iscas.ac.cn>,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] clk: mediatek: mt6735-vdecsys: add missing MODULE_DEVICE_TABLE()
-Date: Sat,  4 Jul 2026 20:44:50 +0800
-Message-ID: <20260704124450.11035-1-pengpeng@iscas.ac.cn>
+Subject: [PATCH] clk: mediatek: mt6735-vencsys: add missing MODULE_DEVICE_TABLE()
+Date: Sat,  4 Jul 2026 20:48:08 +0800
+Message-ID: <20260704124808.19916-1-pengpeng@iscas.ac.cn>
 X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: rQCowADXu+JDAElqeFXWFg--.22738S2
-X-Coremail-Antispam: 1UD129KBjvdXoWrtr45uw1rurW7Aw4DuryrtFb_yoWktFXEkr
-	1DXrZrZr1jgryvkFWftFs3ZFW29an5ZFykJF93KrWIq347CrnrZws2g39IqryUWryxZFnx
-	Xr93WF18CFW7ZjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUIcSsGvfJTRUUUba8FF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
+X-CM-TRANSID: rQCowADX2sEKAUlq_mPWFg--.11552S2
+X-Coremail-Antispam: 1UD129KBjvdXoWrtr45uw1rurW7Aw4DuryrtFb_yoWktFX_Cr
+	1kXrZ3Xr1xKF1v9FWftFnavFWI9an8ZrykJas3Kr42qa47CwnFyan2g39Iqr1UWr18ZFsx
+	Jrn3Wa48GFW7ujkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUIcSsGvfJTRUUUbaxFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
 	6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
 	A2z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Cr0_
 	Gr1UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2z280aVCY1x0267AKxVW0oV
@@ -61,13 +61,13 @@ X-Coremail-Antispam: 1UD129KBjvdXoWrtr45uw1rurW7Aw4DuryrtFb_yoWktFXEkr
 	Y2ka0xkIwI1lc7CjxVAaw2AFwI0_Jw0_GFyl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x
 	0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2
 	zVAF1VAY17CE14v26r1q6r43MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_JFI_Gr
-	1lIxAIcVC0I7IYx2IY6xkF7I0E14v26r4j6F4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWU
-	CwCI42IY6I8E87Iv67AKxVWxJVW8Jr1lIxAIcVC2z280aVCY1x0267AKxVWxJr0_GcJvcS
-	sGvfC2KfnxnUUI43ZEXa7VU1go2UUUUUU==
+	1lIxAIcVC0I7IYx2IY6xkF7I0E14v26F4j6r4UJwCI42IY6xAIw20EY4v20xvaj40_Jr0_
+	JF4lIxAIcVC2z280aVAFwI0_Cr0_Gr1UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Cr1j6rxdYx
+	BIdaVFxhVjvjDU0xZFpf9x0JUtgA7UUUUU=
 X-Originating-IP: [111.196.245.140]
 X-CM-SenderInfo: pshqw1xhqjqxpvfd2hldfou0/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260704_054457_460420_62DC7B31 
+X-CRM114-CacheID: sfid-20260704_054816_561458_EC3B2452 
 X-CRM114-Status: UNSURE (   8.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -96,20 +96,20 @@ the platform driver, and the missing module alias publication.
 
 Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
 ---
- drivers/clk/mediatek/clk-mt6735-vdecsys.c | 1 +
+ drivers/clk/mediatek/clk-mt6735-vencsys.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/drivers/clk/mediatek/clk-mt6735-vdecsys.c b/drivers/clk/mediatek/clk-mt6735-vdecsys.c
-index 8817085fc1db..d53ebf92e878 100644
---- a/drivers/clk/mediatek/clk-mt6735-vdecsys.c
-+++ b/drivers/clk/mediatek/clk-mt6735-vdecsys.c
-@@ -63,6 +63,7 @@ static const struct of_device_id of_match_mt6735_vdecsys[] = {
- 	{ .compatible = "mediatek,mt6735-vdecsys", .data = &vdecsys_clks },
+diff --git a/drivers/clk/mediatek/clk-mt6735-vencsys.c b/drivers/clk/mediatek/clk-mt6735-vencsys.c
+index 8dec7f98492a..64ba9da9fd42 100644
+--- a/drivers/clk/mediatek/clk-mt6735-vencsys.c
++++ b/drivers/clk/mediatek/clk-mt6735-vencsys.c
+@@ -37,6 +37,7 @@ static const struct of_device_id of_match_mt6735_vencsys[] = {
+ 	{ .compatible = "mediatek,mt6735-vencsys", .data = &vencsys_clks },
  	{ /* sentinel */ }
  };
-+MODULE_DEVICE_TABLE(of, of_match_mt6735_vdecsys);
++MODULE_DEVICE_TABLE(of, of_match_mt6735_vencsys);
  
- static struct platform_driver clk_mt6735_vdecsys = {
+ static struct platform_driver clk_mt6735_vencsys = {
  	.probe = mtk_clk_simple_probe,
 
 
