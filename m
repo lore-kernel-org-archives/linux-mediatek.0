@@ -4,75 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81930C43602
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jul 2026 19:21:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1F71C43458
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jul 2026 23:44:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6hhUGyc+mT3QeW23DP6O9D/tS3OeqgAHNIRcWRxe91w=; b=Hxybm2v18/1pHeFzXOjSQUWUcP
-	h2dTF/ul0zETNI8VKgdI8yybuyUM4TzS9iq9yDRoM2iI9o/e0BP1zO7cpJl88bSISI1lfz4n3kASc
-	3PYOJzaBkVLPPiaOcD7zmKZvnMUg2y0ZRiIWrllCsq5KDIMpElkntbioOU8zJb70TGbCl8cnPFc8X
-	s4IYBF/ef1W/XITeDyLNE5Hku9LvxD3jjb1n/oCXE0xiiy9BAriDHHK/d2pFNHEKn0ZWb8v4PzpOc
-	09XX3V8cXfvr/Lql/HTA+U/qvejwgs9srjkO16wZUdOmzIeBnVnNpkfGnqHxnwMeqhmYDp0tADCnD
-	Xt6Gge4Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ijJ32Xash5Jt49SnX7A5/BLB4XwCy86Iuli9undALZU=; b=ezNAXqXWXGT/nCaFYUNLSzE+bX
+	ijWmjv9Wr/iNsqoZtNBdYzTlY/CGFW1B521uOViA3hOLoHYwgF4qu+tyCegyy49Sw8ofeYRBheUnl
+	PHtUunbZF4W/yq7TsucD25hm6CN7R+g1Qz3URiNun1xlTa7iwsb2tZxLa76s2YuqumjuSvE8CDZ+M
+	v0/TbTLyXzH6Q+fg/T1vObw9oJPNVCGldePZX/KzP/FaS6II+nFCH3t8y9vbdM69lIksVDy9ri3RN
+	Nt+a4HN3yTYm8athBE/xs/Dr7RoDGFSelNQWqkWtwk5kCzVksMLEJYKE4+Hi9uD03ZAeao/ecZlNS
+	56yYUQoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wg5vx-00000008hRQ-0ZwK;
-	Sat, 04 Jul 2026 19:21:49 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wgA26-00000008r35-0lid;
+	Sat, 04 Jul 2026 23:44:26 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wg5vv-00000008hQg-3291;
-	Sat, 04 Jul 2026 19:21:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 63A8A60052;
-	Sat,  4 Jul 2026 19:21:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id E73C1C19425;
-	Sat,  4 Jul 2026 19:21:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1783192906;
-	bh=DrmEnoWmyWcxAHLbfs449WCtfzaKrN+jtcI2xYUq4jM=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=s2h+J/PXSLPoVCq5HoZTcJWZRH1TyzEPI1fBa+lUbkvKpeQ/NWU+exS23rgQz7aMQ
-	 WpOVKdlRcl+UqJnX1PVFgWzykvpOWO6KwqSyqRwmHEoJj52Rk0nYj9OJi42o3n+TeY
-	 8WIOBZ9zYUxytb+hjtyGGqWYbNt7qHipnHuGcdvHaXFRFB0FF9RgVS6RMqKMdrC46i
-	 Q04QiOw5CUK4EpGPFNoorpG/p7iBzCGQfnF+ANTiI5/HkyLkCzcFVc6/MKS5G77cy8
-	 OoHmT7YmCGh9uF/ABrS9Duz5rKQruZQZHlLFvAeLx5xrArJAS0czltsB/3OdRIG/+G
-	 JxRPrkaXntVDg==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C05C3C43458;
-	Sat,  4 Jul 2026 19:21:45 +0000 (UTC)
-From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Subject: [PATCH 0/2] ARM: dts: mediatek: mt6572 DT cleanup + cache info
-Date: Sat, 04 Jul 2026 22:21:41 +0300
-Message-Id: <20260704-6572-phase1-v1-0-61c2fe6be19c@protonmail.com>
+	id 1wgA23-00000008r2P-11WY
+	for linux-mediatek@lists.infradead.org;
+	Sat, 04 Jul 2026 23:44:24 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2c7cfa17fedso17191215ad.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 04 Jul 2026 16:44:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1783208662; x=1783813462; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=ijJ32Xash5Jt49SnX7A5/BLB4XwCy86Iuli9undALZU=;
+        b=j1a5KlUNHdY9MzOcWItsxi6PvaZxtGUQFK7q7kn7b9IxXeCgza4fUIEKqpqjQ1bQ3M
+         NFxFpe1yyySz4Obm4vohCOVxoEXDw6SmAr587z2lcte5GbLTjBbBpU4qKZpE3HxWrVLb
+         p563SsnlYX+PUnImTIjjPlTNsPpYM0+HMbG/tWLDAs/Gz6MbC5xxeg1weO3gZiOVsrsi
+         jQ0tYUC7zXcUS7S3YIMNcbIsAhzhpRv0oZ4/kGTUWBobk8w54WFh2nEnfseDzLNW6IgP
+         NtYWkJOq2lk9SeOO8fKztDUb/bWrIKL3XM/hQzc+sy8SO72lk3VFpr0T/nd5oU2+Y1D3
+         d3Cg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783208662; x=1783813462;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ijJ32Xash5Jt49SnX7A5/BLB4XwCy86Iuli9undALZU=;
+        b=pe5olG5luNcuOBgVorJStfr+SXW0uiiNJ0JRwCkTzoi55pGG5BmU1U4RNZ2JHVoQ/Q
+         lvY6XgcBxcIW/WdWehMflxWFKi1K4/Lar/EsLQC3LANT8b/WykXVtjI4IV3IAlxfrOCa
+         YHQS75lQu2x+p+RV3v3UvfPMOuYGRptAI/l29nzli+Htx4pU0tuxAwBJmFVF4wPGIq0B
+         dBrCQ61h9vHAj6ayROEjY4gG6Jc4Eip8qrtYtYM+NV3C3cptCGvxGdV9d9pzE+25+4bA
+         aHIjVWx8d7s4XElZIGg1/EWnJNKlth4yV5SnySZDr/A0v8mrCrMRm1wiGjsMcOZXD65l
+         0wCw==
+X-Forwarded-Encrypted: i=1; AHgh+RpGjNr3t2RNXtutuXr6s8HT08LgeHlicz0iyCq/AwqZJJztlBaigK4Zd/iaMf3Y30wBSIoc9g7VNNrgzrqm2A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy1FXBueGUdpDX8tZCgRDuScUYfSpMaobLH3EwR3b/5byWpP2R9
+	0zz/ZnW+tkwc4OYzFSigj+Sj70pLoPFT1CoqOo7lpUI2WDohqNuUSoDx
+X-Gm-Gg: AfdE7cmAz+yy00yLK/Y4n/kGmY5J/rn2ogFINK1SFto1Xjh+B3Y47XJgDBWxVNWNkHX
+	HcHFdhJBvbEqiy7RGk5c4Vomfny9d36LU1nR01MJVz54mn9cmYbxFJC+tkVkW7iq7tXdmUPXYzO
+	IB6S7zvU8ua+BbZrXSjUv0lMiSdCKUonI+EsABFuGwRYweA9K5+KYGv5UCptlhoHYZIDmpDD/j3
+	PXP+XEXf5zojRLSOJSQorVGt0LIxCzh2cT5ziVsxifC53Cu48l9JjiQSp4lwxk8PSEc3DoOkkWd
+	omAMF+aDptKUSIxprY3LMRx2ST/cXBzYbR0BVCbZT2S9l9gQd+91rqAeFAz3w6E/jMCBh+gyGjV
+	u5xK8u1HBuVd8kbjdn4mCCj7cIf6Q9zRsSs7xQ8rfQI0vCfhiWzDKybeobeIUmiCJEi3cHxJRDR
+	XODok/8Qqb5bTMlCoOzpIvoEaxc/aJVqk9jOPo7NIl3MB/1u/6bz2OxE7dsAH+dYW/
+X-Received: by 2002:a17:902:db05:b0:2ca:6c8:abd8 with SMTP id d9443c01a7336-2cbb74ff24dmr43520125ad.12.1783208662110;
+        Sat, 04 Jul 2026 16:44:22 -0700 (PDT)
+Received: from google.com ([2a00:79e0:2ebe:8:3f90:534a:314e:e11d])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-13b3c7ef188sm34410696c88.2.2026.07.04.16.44.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 04 Jul 2026 16:44:21 -0700 (PDT)
+Date: Sat, 4 Jul 2026 16:44:18 -0700
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Benson Leung <bleung@chromium.org>, 
+	Tzung-Bi Shih <tzungbi@kernel.org>, Jiri Kosina <jikos@kernel.org>, 
+	Andi Shyti <andi.shyti@kernel.org>, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, chrome-platform@lists.linux.dev, linux-input@vger.kernel.org, 
+	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/7] Input: elan_i2c - Wait for initialization after
+ enabling regulator supply
+Message-ID: <akmZOC_J2ZTl4zLX@google.com>
+References: <20260703115601.1323491-1-wenst@chromium.org>
+ <20260703115601.1323491-2-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMTQqAIBBA4avErBNUMqGrRIt+xpwWFk5FEN49q
- +W3eO8GxkjI0BQ3RDyJaQ0Zqixg9H2YUdCUDVrqWlpZidpYLTbfMyohVTUZowZnnYZcbBEdXd+
- t7X7zMSw47u8CUnoAi2ZjYW8AAAA=
-X-Change-ID: 20260704-6572-phase1-014d551bf7f2
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Roman Vivchar <rva333@protonmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1783192904; l=1091;
- i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=DrmEnoWmyWcxAHLbfs449WCtfzaKrN+jtcI2xYUq4jM=;
- b=nNNWxh6dknyQMeqBS+KrQhlN0NrksqTdzm8NiuX/by9b77T9D8qEXOtuC8k79UQS8ERkyIADj
- qgfY6gpSNb8CKCHewkxtdNFWWAFO1ei7BN4q//uqqMkR2wju2Q+JzwK
-X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
- pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
-X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
- auth_id=777
-X-Original-From: Roman Vivchar <rva333@protonmail.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260703115601.1323491-2-wenst@chromium.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260704_164423_288882_8E2DC7B7 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,38 +100,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series replaces legacy clock naming like uart_clk, system_clk and
-rtc_clk with clk-*FREQ* equivalents. It also adds L1 and L2 cache info
-to properly describe hardware.
+Hi Chen-Yu,
 
-Note that patch 1 doesn't break DT ABI. The changed clock node names
-and labels are consumed only by phandles, and there are no drivers
-relying on the legacy names.
+On Fri, Jul 03, 2026 at 07:55:54PM +0800, Chen-Yu Tsai wrote:
+> Elan trackpad controllers require some delay after enabling power to
+> the controller for the hardware and firmware to initialize:
+> 
+>   - 2ms for hardware initialization
+>   - 100ms for firmware initialization
+> 
+> Until then, the hardware will not respond to I2C transfers. This was
+> observed on the MT8173 Chromebooks after the regulator supply for the
+> trackpad was changed to "not always on".
+> 
+> Add proper delays after regulator_enable() calls. To avoid impacting
+> the boot time of existing devices that have the power rails always on,
+> skip the delay if the regulator supply was already enabled. In this
+> case the regulator is either always on, was on by default at power up,
+> or was left on by some other driver, such as the I2C OF component
+> prober. Either way the controller has had ample time to initialize.
 
-As a brief heads-up, this series is a small part of an ongoing effort
-to upstream mt6572 support. In my kernel tree, I have brought up clocks,
-pinctrl, eMMC/microSD, cpufreq, thermal, DRM, GPU and more. I plan to
-send those series in the near future.
+Unfortunately we do not know that [it had ample time]. For this code be
+reliable we need to record the time at which given regulator was turned
+on and then execute/adjust the delay as needed. Until we have it we need
+to assume the regulator was enabled at the time of regulator_enable()
+call.
 
-Signed-off-by: Roman Vivchar <rva333@protonmail.com>
----
-Roman Vivchar (2):
-      ARM: dts: mediatek: mt6572: rename fixed clocks
-      ARM: dts: mediatek: mt6572: add cache data
+I am not concerned with increased boot time too much given the driver is
+set up for asynchronous probing.
 
- arch/arm/boot/dts/mediatek/mt6572.dtsi | 35 ++++++++++++++++++++++++++++------
- 1 file changed, 29 insertions(+), 6 deletions(-)
----
-base-commit: 8cd9520d35a6c38db6567e97dd93b1f11f185dc6
-change-id: 20260704-6572-phase1-014d551bf7f2
+Thanks.
 
-Best regards,
---  
-Roman Vivchar <rva333@protonmail.com>
-
-
+-- 
+Dmitry
 
