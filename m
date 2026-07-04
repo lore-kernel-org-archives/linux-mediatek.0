@@ -4,62 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EA51C43458
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jul 2026 14:21:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F4BCC43458
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jul 2026 17:31:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=gKSm7rIc5n9tWg7a0XJc9GGyaUYz7rX65FqoNZLGJqQ=; b=uZi2sIt8TtF1qFfrqbpYXhXRaP
-	hk76C3M1Bqx90+JTmaRUfU0MlUKZHmL5D/SMiQLZuqPbfoN+4gBpS17v/3KF+gXdLh3K1d7m7WHaK
-	/pMxVZQUvOXdU6kY4x2v5E7Evf0Jglq1CcKwTMcyGCa+Mxvmlsa428mgpZhBPwk72V0iV8PeD4pOE
-	E+iWIy1MRl+6N9h7RS8Y49weAN9Iky7e3Pu4/7X80rXVBusVLdTV9VFNTE4TTr1iO54dmJ+HwqhCV
-	HAaXmyTZY4T2QMadXfmhSCWDtgzZyuydWT7rZdabbfx2KlRDNCaJVmAPebemAL6ooilAdRfPkvkfq
-	gMg/oUZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uGW3vnuOQowUku+yOKABC0SiawHjWOple2z61d4A5zU=; b=ZUAVoJu34O/wJKvUrQWkVhwpiy
+	WCEZPZ9sq4rg7rgYWFPu5BfWOFe3aUzZnHB7DEVUpHLhqEKo9E18BQ67/Z03wZ+KC8qo7Cx2OBwbn
+	XI3zqa3INU3UMCjVMZ6WRQHJX8rSWV5a00YENxVpyUXKwPOca005dk0Zjvpphp9/zylxg1CDaKGsx
+	AtCUFWKtatzTGzZUT4I7j5PBrd7ic0OYeX1t4KL3IX2N6v+Fm0MaEghKj5Ddy22kLsUZePcJ4dNLI
+	eMw92vCpyTfK+BPUW687Wof10iC4i+N6ctnik1gCseCYHichDJCh/vmpW3a4istDgOxET3iioIr3z
+	epnRw0dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wg1Fj-00000008VEJ-0p7z;
-	Sat, 04 Jul 2026 14:21:55 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wg4DI-00000008cgv-2b65;
+	Sat, 04 Jul 2026 17:31:36 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wg1Fh-00000008VE4-40B7;
-	Sat, 04 Jul 2026 14:21:54 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id B34776001A;
-	Sat,  4 Jul 2026 14:21:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE1991F000E9;
-	Sat,  4 Jul 2026 14:21:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783174912;
-	bh=gKSm7rIc5n9tWg7a0XJc9GGyaUYz7rX65FqoNZLGJqQ=;
-	h=From:Date:Subject:To:Cc;
-	b=mF4XiaXojCm4JUT+iUgovxPxOtZwrJUZJ/KN4x5HdunoTS2k5X5N6UhaZWfyrdRox
-	 ZxMWjJqfjbnaa1zL5YgTuEEvkNvM9BXSHlaE87MHXgF4PkpBd1S/sHKWBQ7DOiLLFA
-	 NDz/hnlCcgT/x9AialtNBhoH1N1SM/0vnxYHMM5OxumRHJUvajGc4mcp70/ZtMP7pP
-	 /CRyLrbPRvrqLFagKdVQUHxWeMVT9mFBBlcGrNrF4imTNCUYq0Zuo5gXiyqHuO1yUu
-	 qlyRQ95c5TSo5UIxJWZ7yk5OWafRCHIoLmUALBEVX7F89NBJC2mU92Sx/z0S21MXIM
-	 W4XaxqIi7HGyw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sat, 04 Jul 2026 16:21:38 +0200
-Subject: [PATCH net] net: airoha: fix ETS channel derivation in
- airoha_tc_setup_qdisc_ets()
+	id 1wg4DG-00000008cg0-0c6V
+	for linux-mediatek@lists.infradead.org;
+	Sat, 04 Jul 2026 17:31:35 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-2cacb8416a1so11290505ad.1
+        for <linux-mediatek@lists.infradead.org>; Sat, 04 Jul 2026 10:31:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1783186293; x=1783791093; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to;
+        bh=uGW3vnuOQowUku+yOKABC0SiawHjWOple2z61d4A5zU=;
+        b=ZDctpDo5zrL2y0RackA4IbCe9ihbc4+SwIl0SXWjrmmRPS5FfEU6OJce9qiCIO2LeA
+         SbiFuJ0wGTaDDr6MmPeAZNM7nh2Vniblkxy4JUzYiPS06OSc2+on/AHxxXnRYLRg15OS
+         BMH2kvd1xXFcs9wGJvWyDAJr3ih3iOSzalA7JuABBJTOs+aREFb+Ke3Fz8dIW+JO3tSM
+         PscadcIA09hXrT2FJqqnpR6VzKqfDRgb0O3S+Q2jD9P1jN6nyo468QrHkSzFuBDY9yCK
+         mfeFUc5iuTHVrGvUT7rvDk76kE4ehnBM7V6akTIgX8gw2mwa2Z6ARwalDbIqvYh93w0G
+         sFrQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783186293; x=1783791093;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=uGW3vnuOQowUku+yOKABC0SiawHjWOple2z61d4A5zU=;
+        b=d5eO0Tkl7fsj0bn6a6yyDpdOqPo8LMEti3xDr+qEyOcyxYIVm2BssC7QCIlDiD70eP
+         BjQrwlQAWZE9xwQ1GPe3EbJ/9mDx4x0FcxXPvVCAL73i5C0vokYRs0KNdjIO3S21vdxK
+         Vadr+cZ84wbRG86RlrrQjnNJFNkxNZ77EWV48rfmMLbXhoipelzuK0NDldaNYNp1rCQE
+         lJ1n7Tt61uhcBml/TZWP9N/3U7sq/4jPKQtau0ofgOIEuZ7U/xVpkuMrQxkQagcwbX8G
+         f43zF8rmZ5HfpOUbf5lolacgXcHX5+hjXbF4GFmI3NkMskGZvfuHgB1lJuhKbNvMA22O
+         N2Rw==
+X-Forwarded-Encrypted: i=1; AHgh+RrjnQlmOFuf/meCkZ649o7UxH3sgR9KqaB5GaMJXDDnmWbwhfoFQS0C+TdbUYiQ8Nmy3ZtQvLR5dj84zckS5Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy8aGslgZnWd2AO2pYakbLEQdRmeH6MHw9rtCmwDSDerlJr8Atw
+	Zd8UcTC1WygFiPqYO1mGpJs0dd6/crdpHdp+iDB0jX9Kk7LoaRYjiwzl
+X-Gm-Gg: AfdE7cm0yrf/Rh2WAUq7s0DaTgts+5GEJPI/ylZcZ5xGXFkkeNjz+8wzhKgHprEIo/5
+	GmrYBYUbeDN606bviwbUoXmY17ArmhNa5783bcHuPu9F2K18jduSO8qobSvBfjetvCuHjr7Kcro
+	pf6PYWoZKqxAWDpaPQTZtnPrJoJrZG2SeqHoYY1egx1yA5CI8PO/u4r2HfZNWU21KfW09Qu+cF6
+	42HlN6Ymfkv2D/jxUXKh8FTZzrPxPlOGd7VqZaG8dKM+hcd8AmTuZYL3vnDOGg76FGtjAOTRFWz
+	mb0B5LQZOD0Z0O7CPNmwlqUPwS2WNTH51F69VoWaErZZe66QgOR2i93MAu+dnIaUuEp3nwkDjqr
+	Y8YXIXXNi6i3Ot3MEd0XCzVliDLXW5O5sM203cU3RM3ghEr6AJHfOWDRdTATZihTRE6nlWKKsa+
+	Gk/A==
+X-Received: by 2002:a17:902:e74f:b0:2ca:ce92:6e44 with SMTP id d9443c01a7336-2cb97e58139mr41657465ad.8.1783186293171;
+        Sat, 04 Jul 2026 10:31:33 -0700 (PDT)
+Received: from lgs.. ([118.193.39.55])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cad71328d8sm25082305ad.29.2026.07.04.10.31.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 04 Jul 2026 10:31:32 -0700 (PDT)
+From: Guangshuo Li <lgs201920130244@gmail.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hans Verkuil <hverkuil+cisco@kernel.org>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Guangshuo Li <lgs201920130244@gmail.com>,
+	Johan Hovold <johan@kernel.org>,
+	Marco Crivellari <marco.crivellari@suse.com>,
+	=?UTF-8?q?Thomas=20Wei=C3=9Fschuh?= <thomas.weissschuh@linutronix.de>,
+	Kees Cook <kees@kernel.org>,
+	linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] media: platform: mtk-mdp3: Fix SCP device refcounting
+Date: Sun,  5 Jul 2026 01:31:19 +0800
+Message-ID: <20260704173119.254975-1-lgs201920130244@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260704-airoha-ets-handle-fix-v1-1-42516b3549a1@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MSwqEMBAFrxJ6bUP80OJcZXARzFMbJA6JDILk7
- tPMsl7x6qGCrCj0cg9lfLXomQzaxtGyh7SBNRpT5zvxox84aD73wLgKm48HeNWbZWlFIvrYT0L
- 2/WTY/O++KeGiudYfUjnaemwAAAA=
-X-Change-ID: 20260704-airoha-ets-handle-fix-6c166de3d396
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.3
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260704_103134_193868_24178071 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,43 +106,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Derive the hardware QoS channel from opt->parent instead of opt->handle
-in airoha_tc_setup_qdisc_ets(). The ETS qdisc handle is either
-user-specified or auto-allocated by qdisc_alloc_handle() and bears no
-relation to the HTB leaf classid that identifies the hardware channel.
-HTB derives the channel from TC_H_MIN(opt->classid), and ETS is always
-attached as a child of an HTB leaf, so its opt->parent matches that
-classid. Using opt->handle instead can cause two ETS qdiscs on different
-HTB leaves to collide on the same hardware channel, corrupting scheduler
-configuration and stats.
+mdp_probe() first tries to get the SCP handle with scp_get(). When that
+fails, it falls back to looking up the SCP platform device with
+__get_pdev_by_id() and then reads its driver data.
 
-Fixes: 20bf7d07c956 ("net: airoha: Add sched ETS offload support")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+The fallback lookup returns the platform device with a reference, just
+like scp_get() does. However, the fallback path currently drops that
+reference immediately after platform_get_drvdata(). The driver later
+still calls scp_put(mdp->scp) unconditionally from the probe error path
+and from mdp_video_device_release(), which drops the SCP device
+reference again.
+
+Keep the fallback reference until the existing scp_put() call, so that
+the fallback path follows the same ownership rules as the scp_get()
+path.
+
+Fixes: 8f6f3aa21517 ("media: platform: mtk-mdp3: fix device leaks at probe")
+Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
 ---
- drivers/net/ethernet/airoha/airoha_eth.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 59001fd4b6f7..fac2aaefffff 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -2504,8 +2504,7 @@ static int airoha_tc_setup_qdisc_ets(struct net_device *dev,
- 	if (opt->parent == TC_H_ROOT)
- 		return -EINVAL;
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+index 8f4da4cf55d2..121b1006ffdc 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+@@ -294,7 +294,6 @@ static int mdp_probe(struct platform_device *pdev)
+ 			goto err_destroy_clock_wq;
+ 		}
+ 		mdp->scp = platform_get_drvdata(mm_pdev);
+-		put_device(&mm_pdev->dev);
+ 	}
  
--	channel = TC_H_MAJ(opt->handle) >> 16;
--	channel = channel % AIROHA_NUM_QOS_CHANNELS;
-+	channel = TC_H_MIN(opt->parent) % AIROHA_NUM_QOS_CHANNELS;
- 
- 	switch (opt->command) {
- 	case TC_ETS_REPLACE:
-
----
-base-commit: d6456743424721a837e1509b912f362caaeecd97
-change-id: 20260704-airoha-ets-handle-fix-6c166de3d396
-
-Best regards,
+ 	mdp->rproc_handle = scp_get_rproc(mdp->scp);
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.43.0
 
 
