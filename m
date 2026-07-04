@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7768C43458
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jul 2026 12:29:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B49DC43458
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jul 2026 12:43:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=vrJZ91s2/LsbGDr3Ls1c+Gt8vSq5DG7f89oaeYDJFzY=; b=BidV+kn7vQ15cAtfG+mrpOBfCA
-	jG81ZW0KWnXHL/MsAqnOD5M39chONDYekiADZe2kHg+qlZSSaDNIf4oIsMJ0Vi7PXTeaGIK2ywVzg
-	/8sYpw9xJtBz6iLHqGtTTj5Pc4DdikGBr53CKru6hwDp+lyo0SKBLG+bKvDyTObl472/rMJEkZLBY
-	xPFvr3VhKSetrWLxyitxX1C5p5JELrtE5yMzhdlNcaSafoLrDg/m0ppqwYNfhevtgt5tSRgCFcT1w
-	1KEC+p+vGwLLesCatQMUfNdW+T/C6FgkYmZtfkKRgut/y+n5Hy1yvy7rZU2Z43AgLLN6dGKyjPkzs
-	X8IoX29Q==;
+	bh=PvBdnPFzCI2cJGJurSVI615l2mX7LADbpuSlcM2zv5I=; b=OviXiM66A+1hkzsT3YlQHuPBJj
+	8tKrSJEvzT2KsJ94dU44MebAMXzE0LVoIjSoqw8CNk6o9e0f2RPOTfTGN6OCnyUXi+zwsDz05sSKG
+	Xe8Y1gDVf1nBN8BkLuZleuH+V3h4/Yl9b74HXcAxdCdEP/Oh/+QW8DND+T1eDvkJf/12cEJa+lBYe
+	PVACl5E0AGZItf1TWwFkTN0nR6ZviZQco9lVWuPhGUt8Vf+j7K+J7BYlO5Dl7hMMXwbkIcPx0YAjw
+	RVekFIl8o4G61mlr5zEyoIMLw3PiJiayTODBoAsvBc5/QfSOo4xO8tVkDfZnI89+LN9YZ+NlczWHY
+	HwgZyYqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfzUz-00000008QgO-3dIK;
-	Sat, 04 Jul 2026 12:29:33 +0000
+	id 1wfziG-00000008RiB-1Wee;
+	Sat, 04 Jul 2026 12:43:16 +0000
 Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wfzUx-00000008Qfs-0Avv;
-	Sat, 04 Jul 2026 12:29:32 +0000
+	id 1wfziD-00000008Rh7-1tmw;
+	Sat, 04 Jul 2026 12:43:15 +0000
 Received: from localhost.localdomain (unknown [111.196.245.140])
-	by APP-03 (Coremail) with SMTP id rQCowAC3r7ao_Ehq5SLWFg--.11584S2;
-	Sat, 04 Jul 2026 20:29:28 +0800 (CST)
+	by APP-03 (Coremail) with SMTP id rQCowADX2sHe_0hqEk_WFg--.11510S2;
+	Sat, 04 Jul 2026 20:43:10 +0800 (CST)
 From: Pengpeng Hou <pengpeng@iscas.ac.cn>
-To: Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: Pengpeng Hou <pengpeng@iscas.ac.cn>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH] regulator: mt6316: add missing MODULE_DEVICE_TABLE()
-Date: Sat,  4 Jul 2026 20:29:26 +0800
-Message-ID: <20260704122926.21586-1-pengpeng@iscas.ac.cn>
+Subject: [PATCH] soc: mediatek: add missing MODULE_DEVICE_TABLE()
+Date: Sat,  4 Jul 2026 20:43:08 +0800
+Message-ID: <20260704124308.6241-1-pengpeng@iscas.ac.cn>
 X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: rQCowAC3r7ao_Ehq5SLWFg--.11584S2
-X-Coremail-Antispam: 1UD129KBjvdXoWrtr45uw1rurW7Aw4DuryrtFb_yoWkCwc_Cr
-	yrX3Z7Wrs7urZ7KFyIqFsIyryFywn2gFZ7XryxKFWFv3W7ZF17Ca9rWrZIvw4UJr48JFnr
-	ZwnxWF4fCr4a9jkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUIcSsGvfJTRUUUbxkFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
+X-CM-TRANSID: rQCowADX2sHe_0hqEk_WFg--.11510S2
+X-Coremail-Antispam: 1UD129KBjvdXoWrtr45uw1rurW7Aw4DuryrtFb_yoWkWFbEkr
+	1kZFZrWF1DCryF9a1ftrs3ZryIkaykZrn7JryrKr1Fq3W7Xw17WF4qqrnxXwn7Jr40yas8
+	Xrn8XF4rGF42vjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUIcSsGvfJTRUUUb4kFF20E14v26r1j6r4UM7CY07I20VC2zVCF04k26cxKx2IYs7xG
 	6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
-	A2z4x0Y4vE2Ix0cI8IcVAFwI0_Xr0_Ar1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr1j
-	6F4UJwA2z4x0Y4vEx4A2jsIE14v26F4UJVW0owA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Gc
-	CE3s1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E
-	2Ix0cI8IcVAFwI0_Jw0_WrylYx0Ex4A2jsIE14v26F4j6r4UJwAm72CE4IkC6x0Yz7v_Jr
-	0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7MxkF7I0En4kS14v2
-	6r126r1DMxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrV
-	AFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCI
-	c40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r4j6ryUMIIF0xvE2Ix0cI8IcVCY1x0267
-	AKxVW8Jr0_Cr1UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVWx
-	JVW8Jr1lIxAIcVC2z280aVCY1x0267AKxVWxJr0_GcJvcSsGvfC2KfnxnUUI43ZEXa7VU1
-	1SoJUUUUU==
+	A2z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr0_
+	Cr1l84ACjcxK6I8E87Iv67AKxVWxJr0_GcWl84ACjcxK6I8E87Iv6xkF7I0E14v26rxl6s
+	0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xII
+	jxv20xvE14v26r126r1DMcIj6I8E87Iv67AKxVWxJVW8Jr1lOx8S6xCaFVCjc4AY6r1j6r
+	4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwCY1x0262kKe7AKxVWU
+	AVWUtwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14
+	v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_JF0_Jw1lIxkG
+	c2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI
+	0_Gr0_Cr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26F4j6r4U
+	JwCI42IY6I8E87Iv6xkF7I0E14v26F4UJVW0obIYCTnIWIevJa73UjIFyTuYvjfUODGOUU
+	UUU
 X-Originating-IP: [111.196.245.140]
 X-CM-SenderInfo: pshqw1xhqjqxpvfd2hldfou0/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260704_052931_451795_82789B0D 
-X-CRM114-Status: UNSURE (   8.88  )
+X-CRM114-CacheID: sfid-20260704_054313_858865_6EB7C54E 
+X-CRM114-Status: UNSURE (   8.89  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,20 +91,20 @@ the platform driver, and the missing module alias publication.
 
 Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
 ---
- drivers/regulator/mt6316-regulator.c | 1 +
+ drivers/soc/mediatek/mtk-dvfsrc.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/drivers/regulator/mt6316-regulator.c b/drivers/regulator/mt6316-regulator.c
-index 952852bbe923..b170506eec57 100644
---- a/drivers/regulator/mt6316-regulator.c
-+++ b/drivers/regulator/mt6316-regulator.c
-@@ -329,6 +329,7 @@ static const struct of_device_id mt6316_regulator_match[] = {
- 	{ .compatible = "mediatek,mt6316d-regulator", .data = (void *)MT6316_TYPE_4PHASE },
+diff --git a/drivers/soc/mediatek/mtk-dvfsrc.c b/drivers/soc/mediatek/mtk-dvfsrc.c
+index 548a28f50242..e8cdee8aed35 100644
+--- a/drivers/soc/mediatek/mtk-dvfsrc.c
++++ b/drivers/soc/mediatek/mtk-dvfsrc.c
+@@ -862,6 +862,7 @@ static const struct of_device_id mtk_dvfsrc_of_match[] = {
+ 	{ .compatible = "mediatek,mt8196-dvfsrc", .data = &mt8196_data },
  	{ /* sentinel */ }
  };
-+MODULE_DEVICE_TABLE(of, mt6316_regulator_match);
++MODULE_DEVICE_TABLE(of, mtk_dvfsrc_of_match);
  
- static struct spmi_driver mt6316_regulator_driver = {
- 	.driver = {
+ static struct platform_driver mtk_dvfsrc_driver = {
+ 	.probe	= mtk_dvfsrc_probe,
 
 
