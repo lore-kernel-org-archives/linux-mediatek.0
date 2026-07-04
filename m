@@ -4,94 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F4BCC43458
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jul 2026 17:31:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4799CC44500
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jul 2026 17:44:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uGW3vnuOQowUku+yOKABC0SiawHjWOple2z61d4A5zU=; b=ZUAVoJu34O/wJKvUrQWkVhwpiy
-	WCEZPZ9sq4rg7rgYWFPu5BfWOFe3aUzZnHB7DEVUpHLhqEKo9E18BQ67/Z03wZ+KC8qo7Cx2OBwbn
-	XI3zqa3INU3UMCjVMZ6WRQHJX8rSWV5a00YENxVpyUXKwPOca005dk0Zjvpphp9/zylxg1CDaKGsx
-	AtCUFWKtatzTGzZUT4I7j5PBrd7ic0OYeX1t4KL3IX2N6v+Fm0MaEghKj5Ddy22kLsUZePcJ4dNLI
-	eMw92vCpyTfK+BPUW687Wof10iC4i+N6ctnik1gCseCYHichDJCh/vmpW3a4istDgOxET3iioIr3z
-	epnRw0dg==;
+	bh=z6ud/EPfqlMZplwdn/5Y4rUm6oDx99RAJ6/NlqJ75W8=; b=N01rpWBtgO5QPrC/noZIhWJqhh
+	ow5ii4GbjVOzYgFr07/HGExpJRmqtSRJurvpydybNJ8oIGFeb6hk9ZGL+x3tP145FtWeOl3clsOox
+	xoXoOy45TzaoT0jhzCWACkyo9aZ0PGTjSDfi6JPdCdsdDmg8PhGHsRzalNr2KyF9zydouOUMHj1Mj
+	jaLoOPgFK41vaI6SMVqz8s2dELUWZ7Angna92FTohmYB3CcF3EJphQ/5gLbbYWD8qIUB4cw2lklTG
+	bOtdaArouwQQTPQR7iV2AAidKiqTYksl7GbKlUpkDdDMKeFyL6o9iMFURbxxGJ7lXJtdLN8sYNont
+	G1/YAz0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wg4DI-00000008cgv-2b65;
-	Sat, 04 Jul 2026 17:31:36 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1wg4Ps-00000008dXn-1E1C;
+	Sat, 04 Jul 2026 17:44:36 +0000
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wg4DG-00000008cg0-0c6V
+	id 1wg4Pq-00000008dX5-1mdH
 	for linux-mediatek@lists.infradead.org;
-	Sat, 04 Jul 2026 17:31:35 +0000
-Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-2cacb8416a1so11290505ad.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 04 Jul 2026 10:31:33 -0700 (PDT)
+	Sat, 04 Jul 2026 17:44:35 +0000
+Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-2c7cfa17fedso15603935ad.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 04 Jul 2026 10:44:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783186293; x=1783791093; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:from:to:cc:subject:date:message-id:reply-to;
-        bh=uGW3vnuOQowUku+yOKABC0SiawHjWOple2z61d4A5zU=;
-        b=ZDctpDo5zrL2y0RackA4IbCe9ihbc4+SwIl0SXWjrmmRPS5FfEU6OJce9qiCIO2LeA
-         SbiFuJ0wGTaDDr6MmPeAZNM7nh2Vniblkxy4JUzYiPS06OSc2+on/AHxxXnRYLRg15OS
-         BMH2kvd1xXFcs9wGJvWyDAJr3ih3iOSzalA7JuABBJTOs+aREFb+Ke3Fz8dIW+JO3tSM
-         PscadcIA09hXrT2FJqqnpR6VzKqfDRgb0O3S+Q2jD9P1jN6nyo468QrHkSzFuBDY9yCK
-         mfeFUc5iuTHVrGvUT7rvDk76kE4ehnBM7V6akTIgX8gw2mwa2Z6ARwalDbIqvYh93w0G
-         sFrQ==
+        d=gmail.com; s=20251104; t=1783187073; x=1783791873; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=z6ud/EPfqlMZplwdn/5Y4rUm6oDx99RAJ6/NlqJ75W8=;
+        b=pqofVxZ/LJlY27y5Unh9TBcquDA6Z/cmqDuD4LKO3YZ/qgVeQcs1rRgwtuF/zU+mzv
+         XR21dxtp/r17fq4cI28Qsps3u1gGnmKqyLpaSBCzDriBJeX+cXIBLrNqCC4JggbCMt3R
+         JSbDvwHnxP2lAdiMXpjXclCzh681jZRTAIU8AkAOk38C88n6poxYWs8snaRNFWiFhJ+T
+         L9Ge2spmkpMcyOntr1T/dqh5tD+PcujlBLU2XZarvwaXUbjMGbBjc5ZyX9/qXCaPk8w6
+         Ug4Gq32c5MfKcLhgcU/AGuwgwDoHYiNz7IqKIKaH6s0aElQpv8tuODNvSP5OG/O/FOCr
+         7dEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783186293; x=1783791093;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=uGW3vnuOQowUku+yOKABC0SiawHjWOple2z61d4A5zU=;
-        b=d5eO0Tkl7fsj0bn6a6yyDpdOqPo8LMEti3xDr+qEyOcyxYIVm2BssC7QCIlDiD70eP
-         BjQrwlQAWZE9xwQ1GPe3EbJ/9mDx4x0FcxXPvVCAL73i5C0vokYRs0KNdjIO3S21vdxK
-         Vadr+cZ84wbRG86RlrrQjnNJFNkxNZ77EWV48rfmMLbXhoipelzuK0NDldaNYNp1rCQE
-         lJ1n7Tt61uhcBml/TZWP9N/3U7sq/4jPKQtau0ofgOIEuZ7U/xVpkuMrQxkQagcwbX8G
-         f43zF8rmZ5HfpOUbf5lolacgXcHX5+hjXbF4GFmI3NkMskGZvfuHgB1lJuhKbNvMA22O
-         N2Rw==
-X-Forwarded-Encrypted: i=1; AHgh+RrjnQlmOFuf/meCkZ649o7UxH3sgR9KqaB5GaMJXDDnmWbwhfoFQS0C+TdbUYiQ8Nmy3ZtQvLR5dj84zckS5Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy8aGslgZnWd2AO2pYakbLEQdRmeH6MHw9rtCmwDSDerlJr8Atw
-	Zd8UcTC1WygFiPqYO1mGpJs0dd6/crdpHdp+iDB0jX9Kk7LoaRYjiwzl
-X-Gm-Gg: AfdE7cm0yrf/Rh2WAUq7s0DaTgts+5GEJPI/ylZcZ5xGXFkkeNjz+8wzhKgHprEIo/5
-	GmrYBYUbeDN606bviwbUoXmY17ArmhNa5783bcHuPu9F2K18jduSO8qobSvBfjetvCuHjr7Kcro
-	pf6PYWoZKqxAWDpaPQTZtnPrJoJrZG2SeqHoYY1egx1yA5CI8PO/u4r2HfZNWU21KfW09Qu+cF6
-	42HlN6Ymfkv2D/jxUXKh8FTZzrPxPlOGd7VqZaG8dKM+hcd8AmTuZYL3vnDOGg76FGtjAOTRFWz
-	mb0B5LQZOD0Z0O7CPNmwlqUPwS2WNTH51F69VoWaErZZe66QgOR2i93MAu+dnIaUuEp3nwkDjqr
-	Y8YXIXXNi6i3Ot3MEd0XCzVliDLXW5O5sM203cU3RM3ghEr6AJHfOWDRdTATZihTRE6nlWKKsa+
-	Gk/A==
-X-Received: by 2002:a17:902:e74f:b0:2ca:ce92:6e44 with SMTP id d9443c01a7336-2cb97e58139mr41657465ad.8.1783186293171;
-        Sat, 04 Jul 2026 10:31:33 -0700 (PDT)
-Received: from lgs.. ([118.193.39.55])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cad71328d8sm25082305ad.29.2026.07.04.10.31.28
+        d=1e100.net; s=20251104; t=1783187073; x=1783791873;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=z6ud/EPfqlMZplwdn/5Y4rUm6oDx99RAJ6/NlqJ75W8=;
+        b=qcMHzmkmGHn+97sT+qE2VP0yfJtV3Q37VciW9MAq8bLkIgnZA5XPlZAUiNVO5BO03q
+         QNwkLzFXCzLwElHbi2fX1+q/3gbcZ125xAESUqRCFHS0VpsxEyj5ubRAzuOuGYHfeA7P
+         9sO4BHnIJnRoC7Cir8kALiNdC0t/VPsjkq/FbRdewkZ6Xlic5aqzwy1DJbZBKqnrPrE9
+         cViwIwxyDqkpMG9dRyoYRyslIevXDf91WAUivVz2GHhzi5XHq0RlvuorllR84ZMjgREO
+         +oSvnQmVYFzFBj/n/Otcvtu5ZHt5XmW8XJkBI5Iv39PwpVKg9dSzlTcgQs1cPsWhXvCq
+         9xGg==
+X-Forwarded-Encrypted: i=1; AHgh+RqhDW6wE6OuCIH9PbYvP5P1ePNgGcVJIkMz0adJ5Zk5CaOmkkybgwU3ZB2g8rcrrpSwsKvGlbJQBLgxK+feYA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxzlQmNJ63anfWUU0h6copJl/IfZOaB7dnLb6U23Oj2eXRHhWCU
+	M1/9ZAZZNyhJaLhJJk//AK3DgX5lk5uxYizDJhwZCygB8MpwiqFLFXEW
+X-Gm-Gg: AfdE7ckSMtZ/Xl/3cvPwwbnhzfGUKZ4uxv2e8KfqTwGM4kNmi6d1buYoZoWrS7B6frj
+	X6p/x0wzdhch5yhfZ5AuOE0VRx3pY/LPCsKQ1KXqHHsK9M4t8LwjMYtXo8D4KOWGalEPQMdmWw9
+	qVlennzLUdp1YRrspSXBI8ItuXq33GDk3qolWGfh1ykvW6e08zvT4XSyxD4i3WRs2GC4p3ycriq
+	pxmv1UpDvoWgIQh1XZYzplGv3ANkp0QZZw6gL3hbSFVYHe/pq0fukj+57uNRnHIUr999LYfT7vd
+	5z2Sm2zplH4gCsST/nwDJ/ytPg8qP/c5A9l7saoLOj84FppRpL7HH06ibdcmMgoeQHKJW0NCmKh
+	MZspuACnTPVZ35kvte4GqeD53DcB1CZDVQv6ScacE8FKGwvsohN9v7garhq6PIsyTW8u2Z7k=
+X-Received: by 2002:a17:903:32cb:b0:2c9:b01a:fbd4 with SMTP id d9443c01a7336-2cbb7511bd4mr37563465ad.16.1783187073499;
+        Sat, 04 Jul 2026 10:44:33 -0700 (PDT)
+Received: from lgs.. ([2001:250:5800:1000::f280])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cad78a3e76sm24836105ad.82.2026.07.04.10.44.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 04 Jul 2026 10:31:32 -0700 (PDT)
+        Sat, 04 Jul 2026 10:44:33 -0700 (PDT)
 From: Guangshuo Li <lgs201920130244@gmail.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hans Verkuil <hverkuil+cisco@kernel.org>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Guangshuo Li <lgs201920130244@gmail.com>,
 	Johan Hovold <johan@kernel.org>,
-	Marco Crivellari <marco.crivellari@suse.com>,
-	=?UTF-8?q?Thomas=20Wei=C3=9Fschuh?= <thomas.weissschuh@linutronix.de>,
-	Kees Cook <kees@kernel.org>,
-	linux-media@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] media: platform: mtk-mdp3: Fix SCP device refcounting
-Date: Sun,  5 Jul 2026 01:31:19 +0800
-Message-ID: <20260704173119.254975-1-lgs201920130244@gmail.com>
+	linux-arm-kernel@lists.infradead.org
+Cc: Guangshuo Li <lgs201920130244@gmail.com>
+Subject: [PATCH] drm/mediatek: mtk_hdmi: Fix DDC adapter double put in v2
+Date: Sun,  5 Jul 2026 01:41:13 +0800
+Message-ID: <20260704174113.255485-1-lgs201920130244@gmail.com>
 X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260704_103134_193868_24178071 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20260704_104434_517031_EFDD3811 
+X-CRM114-Status: GOOD (  10.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,39 +103,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mdp_probe() first tries to get the SCP handle with scp_get(). When that
-fails, it falls back to looking up the SCP platform device with
-__get_pdev_by_id() and then reads its driver data.
+mtk_hdmi_common_probe() gets the DDC adapter with
+of_find_i2c_adapter_by_node() and registers a devm action to release the
+adapter device reference with put_device().
 
-The fallback lookup returns the platform device with a reference, just
-like scp_get() does. However, the fallback path currently drops that
-reference immediately after platform_get_drvdata(). The driver later
-still calls scp_put(mdp->scp) unconditionally from the probe error path
-and from mdp_video_device_release(), which drops the SCP device
-reference again.
+The HDMI v2 remove callback also calls i2c_put_adapter() on the same DDC
+adapter. This is not paired with the find helper and it drops the adapter
+device reference before the devm action drops it again.
 
-Keep the fallback reference until the existing scp_put() call, so that
-the fallback path follows the same ownership rules as the scp_get()
-path.
+Remove the extra i2c_put_adapter() call from the HDMI v2 remove callback
+and let the common devm action release the adapter device reference.
 
-Fixes: 8f6f3aa21517 ("media: platform: mtk-mdp3: fix device leaks at probe")
+Fixes: 9545bae5c8ac ("drm/mediatek: mtk_hdmi: Fix probe device leaks")
 Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
 ---
- drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/gpu/drm/mediatek/mtk_hdmi_v2.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-index 8f4da4cf55d2..121b1006ffdc 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-@@ -294,7 +294,6 @@ static int mdp_probe(struct platform_device *pdev)
- 			goto err_destroy_clock_wq;
- 		}
- 		mdp->scp = platform_get_drvdata(mm_pdev);
--		put_device(&mm_pdev->dev);
- 	}
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c b/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
+index 7bbf463056c9..e668506daf67 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
+@@ -1501,9 +1501,6 @@ static int mtk_hdmi_v2_probe(struct platform_device *pdev)
  
- 	mdp->rproc_handle = scp_get_rproc(mdp->scp);
+ static void mtk_hdmi_v2_remove(struct platform_device *pdev)
+ {
+-	struct mtk_hdmi *hdmi = platform_get_drvdata(pdev);
+-
+-	i2c_put_adapter(hdmi->ddc_adpt);
+ }
+ 
+ static const struct of_device_id mtk_drm_hdmi_v2_of_ids[] = {
 -- 
 2.43.0
 
