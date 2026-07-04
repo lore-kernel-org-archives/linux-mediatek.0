@@ -4,91 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4799CC44500
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jul 2026 17:44:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EC9BC43458
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jul 2026 19:21:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=z6ud/EPfqlMZplwdn/5Y4rUm6oDx99RAJ6/NlqJ75W8=; b=N01rpWBtgO5QPrC/noZIhWJqhh
-	ow5ii4GbjVOzYgFr07/HGExpJRmqtSRJurvpydybNJ8oIGFeb6hk9ZGL+x3tP145FtWeOl3clsOox
-	xoXoOy45TzaoT0jhzCWACkyo9aZ0PGTjSDfi6JPdCdsdDmg8PhGHsRzalNr2KyF9zydouOUMHj1Mj
-	jaLoOPgFK41vaI6SMVqz8s2dELUWZ7Angna92FTohmYB3CcF3EJphQ/5gLbbYWD8qIUB4cw2lklTG
-	bOtdaArouwQQTPQR7iV2AAidKiqTYksl7GbKlUpkDdDMKeFyL6o9iMFURbxxGJ7lXJtdLN8sYNont
-	G1/YAz0g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JGgiWXJNS4hqvmIJPvOtAPs9Wwg2oZlyqbXWGMcSc4g=; b=yLGt0RxH/dq+yrdRCFoyQgXryU
+	BRYeyH+ci+fS/TYqMMRmLUiwflTHYxgOtwvibL1AKBSbwuWvQi6NsF7kHJLEseho/OE4/uEpuNAhl
+	Tb066w1hBGKvpyEDCIX7wcdYnzqCIKwYPUpe9HYV2WyrtjS92hAFNydBpRhsPdXhreGtMwfF8g6Fa
+	2UeWe9j/rab4etbPs2mCbT4wr9uXbKrcXp/EFK/auxxHIUQkIUCk80JzpUff4XP92MZfJuBs9Nxj2
+	p3CxWQ8xSi9XdRryWNKs/gTSqysepEBA38IsYtP6zNLdgR3s4PW3jBwg7PIT8WQSYB7JVzMcQyO0R
+	xP9aIfYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wg4Ps-00000008dXn-1E1C;
-	Sat, 04 Jul 2026 17:44:36 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1wg5vx-00000008hRU-0lOT;
+	Sat, 04 Jul 2026 19:21:49 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wg4Pq-00000008dX5-1mdH
-	for linux-mediatek@lists.infradead.org;
-	Sat, 04 Jul 2026 17:44:35 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-2c7cfa17fedso15603935ad.3
-        for <linux-mediatek@lists.infradead.org>; Sat, 04 Jul 2026 10:44:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783187073; x=1783791873; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=z6ud/EPfqlMZplwdn/5Y4rUm6oDx99RAJ6/NlqJ75W8=;
-        b=pqofVxZ/LJlY27y5Unh9TBcquDA6Z/cmqDuD4LKO3YZ/qgVeQcs1rRgwtuF/zU+mzv
-         XR21dxtp/r17fq4cI28Qsps3u1gGnmKqyLpaSBCzDriBJeX+cXIBLrNqCC4JggbCMt3R
-         JSbDvwHnxP2lAdiMXpjXclCzh681jZRTAIU8AkAOk38C88n6poxYWs8snaRNFWiFhJ+T
-         L9Ge2spmkpMcyOntr1T/dqh5tD+PcujlBLU2XZarvwaXUbjMGbBjc5ZyX9/qXCaPk8w6
-         Ug4Gq32c5MfKcLhgcU/AGuwgwDoHYiNz7IqKIKaH6s0aElQpv8tuODNvSP5OG/O/FOCr
-         7dEw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783187073; x=1783791873;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=z6ud/EPfqlMZplwdn/5Y4rUm6oDx99RAJ6/NlqJ75W8=;
-        b=qcMHzmkmGHn+97sT+qE2VP0yfJtV3Q37VciW9MAq8bLkIgnZA5XPlZAUiNVO5BO03q
-         QNwkLzFXCzLwElHbi2fX1+q/3gbcZ125xAESUqRCFHS0VpsxEyj5ubRAzuOuGYHfeA7P
-         9sO4BHnIJnRoC7Cir8kALiNdC0t/VPsjkq/FbRdewkZ6Xlic5aqzwy1DJbZBKqnrPrE9
-         cViwIwxyDqkpMG9dRyoYRyslIevXDf91WAUivVz2GHhzi5XHq0RlvuorllR84ZMjgREO
-         +oSvnQmVYFzFBj/n/Otcvtu5ZHt5XmW8XJkBI5Iv39PwpVKg9dSzlTcgQs1cPsWhXvCq
-         9xGg==
-X-Forwarded-Encrypted: i=1; AHgh+RqhDW6wE6OuCIH9PbYvP5P1ePNgGcVJIkMz0adJ5Zk5CaOmkkybgwU3ZB2g8rcrrpSwsKvGlbJQBLgxK+feYA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxzlQmNJ63anfWUU0h6copJl/IfZOaB7dnLb6U23Oj2eXRHhWCU
-	M1/9ZAZZNyhJaLhJJk//AK3DgX5lk5uxYizDJhwZCygB8MpwiqFLFXEW
-X-Gm-Gg: AfdE7ckSMtZ/Xl/3cvPwwbnhzfGUKZ4uxv2e8KfqTwGM4kNmi6d1buYoZoWrS7B6frj
-	X6p/x0wzdhch5yhfZ5AuOE0VRx3pY/LPCsKQ1KXqHHsK9M4t8LwjMYtXo8D4KOWGalEPQMdmWw9
-	qVlennzLUdp1YRrspSXBI8ItuXq33GDk3qolWGfh1ykvW6e08zvT4XSyxD4i3WRs2GC4p3ycriq
-	pxmv1UpDvoWgIQh1XZYzplGv3ANkp0QZZw6gL3hbSFVYHe/pq0fukj+57uNRnHIUr999LYfT7vd
-	5z2Sm2zplH4gCsST/nwDJ/ytPg8qP/c5A9l7saoLOj84FppRpL7HH06ibdcmMgoeQHKJW0NCmKh
-	MZspuACnTPVZ35kvte4GqeD53DcB1CZDVQv6ScacE8FKGwvsohN9v7garhq6PIsyTW8u2Z7k=
-X-Received: by 2002:a17:903:32cb:b0:2c9:b01a:fbd4 with SMTP id d9443c01a7336-2cbb7511bd4mr37563465ad.16.1783187073499;
-        Sat, 04 Jul 2026 10:44:33 -0700 (PDT)
-Received: from lgs.. ([2001:250:5800:1000::f280])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cad78a3e76sm24836105ad.82.2026.07.04.10.44.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 04 Jul 2026 10:44:33 -0700 (PDT)
-From: Guangshuo Li <lgs201920130244@gmail.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Johan Hovold <johan@kernel.org>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Cc: Guangshuo Li <lgs201920130244@gmail.com>
-Subject: [PATCH] drm/mediatek: mtk_hdmi: Fix DDC adapter double put in v2
-Date: Sun,  5 Jul 2026 01:41:13 +0800
-Message-ID: <20260704174113.255485-1-lgs201920130244@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1wg5vv-00000008hQf-32Mz;
+	Sat, 04 Jul 2026 19:21:47 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 6A9B26136D;
+	Sat,  4 Jul 2026 19:21:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 05023C2BCF5;
+	Sat,  4 Jul 2026 19:21:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1783192906;
+	bh=9DFNETMVj1y6LqC/8kUN3WRmPvqY/OPjVK2Q0keBtQY=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=KTTKJ3Wo1+iTpUO6RLNmFPhaZcHopQhdx3qcxxzYSYkhEP1jZRDlR7sUJBD9jSmuU
+	 6jFWG003Y9IJM4hqYWoBQY86wkKzNklI/tIvCbLDbmY8XhnCqkZFwXmEXemf7365a0
+	 WMbe/P9DbaIubW13XVp9lEWXeP6rdDrX1awILgD1BotVEMuBgWMpoyfFs2xzl43/mp
+	 NlOU2W3C85iamvyCMS9AtLlLpMbvFB7h0YhuHeQujWDThKtDRD3YQxJaPYUICYxPYs
+	 L0OLZIP4EVPXdXlR9gU577rgPgLyl3wk0fScB7rUigtP/PfQZ6H+9YuayEa0fnaHKU
+	 HXeLotrmYwQeQ==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DB2AEC44501;
+	Sat,  4 Jul 2026 19:21:45 +0000 (UTC)
+From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
+Date: Sat, 04 Jul 2026 22:21:43 +0300
+Subject: [PATCH 2/2] ARM: dts: mediatek: mt6572: add cache data
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260704_104434_517031_EFDD3811 
-X-CRM114-Status: GOOD (  10.52  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260704-6572-phase1-v1-2-61c2fe6be19c@protonmail.com>
+References: <20260704-6572-phase1-v1-0-61c2fe6be19c@protonmail.com>
+In-Reply-To: <20260704-6572-phase1-v1-0-61c2fe6be19c@protonmail.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Roman Vivchar <rva333@protonmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783192904; l=1386;
+ i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
+ bh=SDakxdcc7QkbCtbafL/keArn3jI3hsMDqsWxhluf3lA=;
+ b=D6OZSx1nW4RarZ2Josaqo2/lJX3OtNQVawPvXYZ6zqjyvMR9rd8EDHavRzVnU8ZJGSlS5jPk8
+ qV0iizoUJQRDBHuwp3dg0lIrPrwJg3+6W0GS5SHerkv6m32DIAxNnSI
+X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
+ pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
+X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
+ auth_id=777
+X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,41 +82,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_hdmi_common_probe() gets the DDC adapter with
-of_find_i2c_adapter_by_node() and registers a devm action to release the
-adapter device reference with put_device().
+From: Roman Vivchar <rva333@protonmail.com>
 
-The HDMI v2 remove callback also calls i2c_put_adapter() on the same DDC
-adapter. This is not paired with the find helper and it drops the adapter
-device reference before the devm action drops it again.
+MediaTek mt6572 includes 32 KB I-cache and D-cache, and 256 KB L2 cache.
 
-Remove the extra i2c_put_adapter() call from the HDMI v2 remove callback
-and let the common devm action release the adapter device reference.
+Add information about cache size, cache line size and cache sets to the
+devicetree.
 
-Fixes: 9545bae5c8ac ("drm/mediatek: mtk_hdmi: Fix probe device leaks")
-Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi_v2.c | 3 ---
- 1 file changed, 3 deletions(-)
+ arch/arm/boot/dts/mediatek/mt6572.dtsi | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c b/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
-index 7bbf463056c9..e668506daf67 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
-@@ -1501,9 +1501,6 @@ static int mtk_hdmi_v2_probe(struct platform_device *pdev)
+diff --git a/arch/arm/boot/dts/mediatek/mt6572.dtsi b/arch/arm/boot/dts/mediatek/mt6572.dtsi
+index fa0e5df766c2..5716505dc9e4 100644
+--- a/arch/arm/boot/dts/mediatek/mt6572.dtsi
++++ b/arch/arm/boot/dts/mediatek/mt6572.dtsi
+@@ -20,11 +20,34 @@ cpu@0 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a7";
+ 			reg = <0x0>;
++			i-cache-size = <32768>;
++			i-cache-line-size = <64>;
++			i-cache-sets = <256>;
++			d-cache-size = <32768>;
++			d-cache-line-size = <64>;
++			d-cache-sets = <128>;
++			next-level-cache = <&l2>;
+ 		};
+ 		cpu@1 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a7";
+ 			reg = <0x1>;
++			i-cache-size = <32768>;
++			i-cache-line-size = <64>;
++			i-cache-sets = <256>;
++			d-cache-size = <32768>;
++			d-cache-line-size = <64>;
++			d-cache-sets = <128>;
++			next-level-cache = <&l2>;
++		};
++
++		l2: l2-cache {
++			compatible = "cache";
++			cache-level = <2>;
++			cache-size = <262144>;
++			cache-line-size = <64>;
++			cache-sets = <512>;
++			cache-unified;
+ 		};
+ 	};
  
- static void mtk_hdmi_v2_remove(struct platform_device *pdev)
- {
--	struct mtk_hdmi *hdmi = platform_get_drvdata(pdev);
--
--	i2c_put_adapter(hdmi->ddc_adpt);
- }
- 
- static const struct of_device_id mtk_drm_hdmi_v2_of_ids[] = {
+
 -- 
-2.43.0
+2.54.0
+
 
 
