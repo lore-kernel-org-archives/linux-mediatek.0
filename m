@@ -4,91 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1F71C43458
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jul 2026 23:44:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4396CC43602
+	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Jul 2026 01:08:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ijJ32Xash5Jt49SnX7A5/BLB4XwCy86Iuli9undALZU=; b=ezNAXqXWXGT/nCaFYUNLSzE+bX
-	ijWmjv9Wr/iNsqoZtNBdYzTlY/CGFW1B521uOViA3hOLoHYwgF4qu+tyCegyy49Sw8ofeYRBheUnl
-	PHtUunbZF4W/yq7TsucD25hm6CN7R+g1Qz3URiNun1xlTa7iwsb2tZxLa76s2YuqumjuSvE8CDZ+M
-	v0/TbTLyXzH6Q+fg/T1vObw9oJPNVCGldePZX/KzP/FaS6II+nFCH3t8y9vbdM69lIksVDy9ri3RN
-	Nt+a4HN3yTYm8athBE/xs/Dr7RoDGFSelNQWqkWtwk5kCzVksMLEJYKE4+Hi9uD03ZAeao/ecZlNS
-	56yYUQoQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3duzwyHdi6RgshCaFz1ynAPla1JdMO1NFXgABI7Eh3s=; b=D1gHZGMhXQ2+C28h3s7A+fgnku
+	lpLX+A+yWWj3XK73eqgwLYG2PvxiVpRaPkHsRYcj24qmJJu7kT097I/CsbblxaXts/AshqhNSmbcy
+	2XnvF0sAGxg4kZ7xmqVZJRBTEbHI+XexK1L7RiIUkProGgsKnAIqm3mN6Bp8DmWExgCzMT37jIb1t
+	LZRA6JmArTO3H5aqgCZPqego6DVShsTMPgCBKNWvk2zgNmBYmzT7uqiFPZdRAmrj0xvs+s7PbX/cN
+	vtSLJ9kC2zg3NECTr3IuLlJ02ym2jLHk5Wg6cw8XPqTE+Hfdfsc6FMZUtSPUSGOSeZP9Y0bKV9HDW
+	Ih+BhcRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgA26-00000008r35-0lid;
-	Sat, 04 Jul 2026 23:44:26 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1wgBLB-00000008tCs-0V1p;
+	Sun, 05 Jul 2026 01:08:13 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgA23-00000008r2P-11WY
-	for linux-mediatek@lists.infradead.org;
-	Sat, 04 Jul 2026 23:44:24 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2c7cfa17fedso17191215ad.3
-        for <linux-mediatek@lists.infradead.org>; Sat, 04 Jul 2026 16:44:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783208662; x=1783813462; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=ijJ32Xash5Jt49SnX7A5/BLB4XwCy86Iuli9undALZU=;
-        b=j1a5KlUNHdY9MzOcWItsxi6PvaZxtGUQFK7q7kn7b9IxXeCgza4fUIEKqpqjQ1bQ3M
-         NFxFpe1yyySz4Obm4vohCOVxoEXDw6SmAr587z2lcte5GbLTjBbBpU4qKZpE3HxWrVLb
-         p563SsnlYX+PUnImTIjjPlTNsPpYM0+HMbG/tWLDAs/Gz6MbC5xxeg1weO3gZiOVsrsi
-         jQ0tYUC7zXcUS7S3YIMNcbIsAhzhpRv0oZ4/kGTUWBobk8w54WFh2nEnfseDzLNW6IgP
-         NtYWkJOq2lk9SeOO8fKztDUb/bWrIKL3XM/hQzc+sy8SO72lk3VFpr0T/nd5oU2+Y1D3
-         d3Cg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783208662; x=1783813462;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ijJ32Xash5Jt49SnX7A5/BLB4XwCy86Iuli9undALZU=;
-        b=pe5olG5luNcuOBgVorJStfr+SXW0uiiNJ0JRwCkTzoi55pGG5BmU1U4RNZ2JHVoQ/Q
-         lvY6XgcBxcIW/WdWehMflxWFKi1K4/Lar/EsLQC3LANT8b/WykXVtjI4IV3IAlxfrOCa
-         YHQS75lQu2x+p+RV3v3UvfPMOuYGRptAI/l29nzli+Htx4pU0tuxAwBJmFVF4wPGIq0B
-         dBrCQ61h9vHAj6ayROEjY4gG6Jc4Eip8qrtYtYM+NV3C3cptCGvxGdV9d9pzE+25+4bA
-         aHIjVWx8d7s4XElZIGg1/EWnJNKlth4yV5SnySZDr/A0v8mrCrMRm1wiGjsMcOZXD65l
-         0wCw==
-X-Forwarded-Encrypted: i=1; AHgh+RpGjNr3t2RNXtutuXr6s8HT08LgeHlicz0iyCq/AwqZJJztlBaigK4Zd/iaMf3Y30wBSIoc9g7VNNrgzrqm2A==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy1FXBueGUdpDX8tZCgRDuScUYfSpMaobLH3EwR3b/5byWpP2R9
-	0zz/ZnW+tkwc4OYzFSigj+Sj70pLoPFT1CoqOo7lpUI2WDohqNuUSoDx
-X-Gm-Gg: AfdE7cmAz+yy00yLK/Y4n/kGmY5J/rn2ogFINK1SFto1Xjh+B3Y47XJgDBWxVNWNkHX
-	HcHFdhJBvbEqiy7RGk5c4Vomfny9d36LU1nR01MJVz54mn9cmYbxFJC+tkVkW7iq7tXdmUPXYzO
-	IB6S7zvU8ua+BbZrXSjUv0lMiSdCKUonI+EsABFuGwRYweA9K5+KYGv5UCptlhoHYZIDmpDD/j3
-	PXP+XEXf5zojRLSOJSQorVGt0LIxCzh2cT5ziVsxifC53Cu48l9JjiQSp4lwxk8PSEc3DoOkkWd
-	omAMF+aDptKUSIxprY3LMRx2ST/cXBzYbR0BVCbZT2S9l9gQd+91rqAeFAz3w6E/jMCBh+gyGjV
-	u5xK8u1HBuVd8kbjdn4mCCj7cIf6Q9zRsSs7xQ8rfQI0vCfhiWzDKybeobeIUmiCJEi3cHxJRDR
-	XODok/8Qqb5bTMlCoOzpIvoEaxc/aJVqk9jOPo7NIl3MB/1u/6bz2OxE7dsAH+dYW/
-X-Received: by 2002:a17:902:db05:b0:2ca:6c8:abd8 with SMTP id d9443c01a7336-2cbb74ff24dmr43520125ad.12.1783208662110;
-        Sat, 04 Jul 2026 16:44:22 -0700 (PDT)
-Received: from google.com ([2a00:79e0:2ebe:8:3f90:534a:314e:e11d])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-13b3c7ef188sm34410696c88.2.2026.07.04.16.44.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 04 Jul 2026 16:44:21 -0700 (PDT)
-Date: Sat, 4 Jul 2026 16:44:18 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Benson Leung <bleung@chromium.org>, 
-	Tzung-Bi Shih <tzungbi@kernel.org>, Jiri Kosina <jikos@kernel.org>, 
-	Andi Shyti <andi.shyti@kernel.org>, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, chrome-platform@lists.linux.dev, linux-input@vger.kernel.org, 
-	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/7] Input: elan_i2c - Wait for initialization after
- enabling regulator supply
-Message-ID: <akmZOC_J2ZTl4zLX@google.com>
-References: <20260703115601.1323491-1-wenst@chromium.org>
- <20260703115601.1323491-2-wenst@chromium.org>
+	id 1wgBLA-00000008tCd-1RAp;
+	Sun, 05 Jul 2026 01:08:12 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id F2B8343942;
+	Sun,  5 Jul 2026 01:08:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F2BF1F000E9;
+	Sun,  5 Jul 2026 01:08:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783213690;
+	bh=3duzwyHdi6RgshCaFz1ynAPla1JdMO1NFXgABI7Eh3s=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=RBkPSMZz/BRsU6kDJgLsvltCHl/7nmfEQhY9exVykMN2oKxRiBkjx0bffH+fLPUYH
+	 2ck3iltRsWHYzSENjgVtJrOJreGEUuUNSVj3Lw6/17RResfLk3hMjVq8SFBY9BhwDf
+	 sKGEtqWnoWO1tu5pP6nXAc6xmwVh8UNIja+d2sdcRPZaulrROXaGk/79+rxatMNbsr
+	 c2v95I5UOD7pAE9DXeaUhAJJOM+Z8Ue+In01tEjX7ZGwWogIhtIPwhvb1sf0fVcC/Q
+	 IwJtuFvlG/z8wx2ctp0O4Cx1DHR5NHBJURe7Lg72aFRhuLvN9Mldzb+6xKPfPOkOCm
+	 T0vQCQ2/MHtEg==
+Date: Sun, 5 Jul 2026 02:07:58 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Cc: Romain Gantois <romain.gantois@bootlin.com>, MyungJoo Ham
+ <myungjoo.ham@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, Guenter
+ Roeck <linux@roeck-us.net>, Peter Rosin <peda@axentia.se>, David Lechner
+ <dlechner@baylibre.com>, Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy
+ Shevchenko <andy@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Michael
+ Hennerich <Michael.Hennerich@analog.com>, Mariel Tinaco
+ <Mariel.Tinaco@analog.com>, Kevin Tsai <ktsai@capellamicro.com>, Linus
+ Walleij <linus.walleij@linaro.org>, Eugen Hristev
+ <eugen.hristev@linaro.org>, Vinod Koul <vkoul@kernel.org>, Kishon Vijay
+ Abraham I <kishon@kernel.org>, Sebastian Reichel <sre@kernel.org>, Chen-Yu
+ Tsai <wens@csie.org>, Hans de Goede <hansg@kernel.org>, Support Opensource
+ <support.opensource@diasemi.com>, Paul Cercueil <paul@crapouillou.net>,
+ Iskren Chernev <me@iskren.info>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>, Matheus Castello
+ <matheus@castello.eng.br>, Saravanan Sekar <sravanhome@gmail.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Casey Connolly
+ <casey.connolly@linaro.org>, Pali =?UTF-8?B?Um9ow6Fy?= <pali@kernel.org>,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Amit
+ Kucheria <amitk@kernel.org>, Thara Gopinath <thara.gopinath@gmail.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano
+ <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba
+ <lukasz.luba@arm.com>, Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Sylwester
+ Nawrocki <s.nawrocki@samsung.com>, Olivier Moysan
+ <olivier.moysan@foss.st.com>, Arnaud Pouliquen
+ <arnaud.pouliquen@foss.st.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Thomas Petazzoni
+ <thomas.petazzoni@bootlin.com>, linux-kernel@vger.kernel.org,
+ linux-hwmon@vger.kernel.org, linux-iio@vger.kernel.org,
+ linux-input@vger.kernel.org, linux-phy@lists.infradead.org,
+ linux-pm@vger.kernel.org, linux-mips@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-sound@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ Sebastian Reichel <sebastian.reichel@collabora.com>, Andy Shevchenko
+ <andriy.shevchenko@intel.com>
+Subject: Re: [PATCH v2 2/2] iio: inkern: Use namespaced exports
+Message-ID: <20260705020758.011f4f3c@jic23-huawei>
+In-Reply-To: <20260603182052.7d23c067@jic23-huawei>
+References: <20251209-iio-inkern-use-namespaced-exports-v2-0-9799a33c4b7f@bootlin.com>
+	<20251209-iio-inkern-use-namespaced-exports-v2-2-9799a33c4b7f@bootlin.com>
+	<acBr-W2ILu9tnMyd@google.com>
+	<20260603182052.7d23c067@jic23-huawei>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260703115601.1323491-2-wenst@chromium.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260704_164423_288882_8E2DC7B7 
-X-CRM114-Status: GOOD (  14.12  )
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,37 +108,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chen-Yu,
+On Wed, 3 Jun 2026 18:20:52 +0100
+Jonathan Cameron <jic23@kernel.org> wrote:
 
-On Fri, Jul 03, 2026 at 07:55:54PM +0800, Chen-Yu Tsai wrote:
-> Elan trackpad controllers require some delay after enabling power to
-> the controller for the hardware and firmware to initialize:
+> On Sun, 22 Mar 2026 15:24:21 -0700
+> Dmitry Torokhov <dmitry.torokhov@gmail.com> wrote:
 > 
->   - 2ms for hardware initialization
->   - 100ms for firmware initialization
+> > On Tue, Dec 09, 2025 at 09:25:56AM +0100, Romain Gantois wrote:  
+> > > Use namespaced exports for IIO consumer API functions.
+> > > 
+> > > This will make it easier to manage the IIO export surface. Consumer drivers
+> > > will only be provided access to a specific set of functions, thereby
+> > > restricting usage of internal IIO functions by other parts of the kernel.
+> > > 
+> > > This change cannot be split into several parts without breaking
+> > > bisectability, thus all of the affected drivers are modified at once.
+> > > 
+> > > Acked-by: Sebastian Reichel <sebastian.reichel@collabora.com> # for power-supply
+> > > Acked-by: Guenter Roeck <linux@roeck-us.net>
+> > > Reviewed-by: Andy Shevchenko <andriy.shevchenko@intel.com>
+> > > Signed-off-by: Romain Gantois <romain.gantois@bootlin.com>    
+> > 
+> > For input:
+> > 
+> > Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+> > 
+> > Thanks.
+> >   
 > 
-> Until then, the hardware will not respond to I2C transfers. This was
-> observed on the MT8173 Chromebooks after the regulator supply for the
-> trackpad was changed to "not always on".
+> For anyone wondering what happened to this... I forgot to apply this at the
+> beginning of the cycle and by the time I remembered we had too much queued up
+> so it would have been messy to do an immutable branch.   Anyhow, I plan to
+> sort this at start of next cycle.
+
+Immutable branch created as: iio-inkern-namespace-ib based on v7.2-rc1
+on https://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio.git
+
+I've merged it into the testing branch of iio.git so if anyone else does
+need to merge this to avoid conflicts, perhaps wait a day or two until
+I've pushed it out as togreg for linux-next to pick up.
+
+Thanks,
+
+Jonathan
 > 
-> Add proper delays after regulator_enable() calls. To avoid impacting
-> the boot time of existing devices that have the power rails always on,
-> skip the delay if the regulator supply was already enabled. In this
-> case the regulator is either always on, was on by default at power up,
-> or was left on by some other driver, such as the I2C OF component
-> prober. Either way the controller has had ample time to initialize.
+> Jonathan
 
-Unfortunately we do not know that [it had ample time]. For this code be
-reliable we need to record the time at which given regulator was turned
-on and then execute/adjust the delay as needed. Until we have it we need
-to assume the regulator was enabled at the time of regulator_enable()
-call.
-
-I am not concerned with increased boot time too much given the driver is
-set up for asynchronous probing.
-
-Thanks.
-
--- 
-Dmitry
 
