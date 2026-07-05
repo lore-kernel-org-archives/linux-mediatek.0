@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 810A3C43458
-	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Jul 2026 18:55:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E65DBC43602
+	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Jul 2026 18:55:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X3s+/ParZGutlIjQLSuAI0IrbHulKPYjszcMT2PF/co=; b=wuqAN7bga2XHPddv1nhYmhaY6Q
-	auU6HF7We0TirgtGD5vHWmgX5buS4iMpSPnAkA8jQXuvIbIDDuaUJ8TRbNYO66wVMT64y0KNtmKpG
-	FAlhH0HBWgJqUifmxlTPzCmXXVifC4IOgg0GM51UCiPsIS6hGTn0ztHJuwdR2u6w1+F64n43bqPwP
-	a3h/1ml0iFkUHOxWZASlkuS3qcPJFIyn4j36GzW2iU7AWdE0YyrEz2Mnh54CJ8aqb7gHS0oXS5t5r
-	TDXXxjsaWizTMoXQBAQj/eO05L9Ek8JOnKJJrVFKC2qm3oy0171YGXxLFgCQLoTclxs4MA6YFQidI
-	h3jlMIjg==;
+	bh=hIRVAbhVg74ibPgDqMroiyMfd0QBQnj3/npAxSfKpyU=; b=czNu6i+aRP+oJQLpTXvzodzQJo
+	tTikTwJRuaVFHvqyYl/8ACxOPklPMBIApzPL0aDGJi2hWgRgNMlWUAR4oGYphRctGDCV+8TI+DIpo
+	phuT+iOhyn0SbJdhPLfX14avhu8Tupz8eKhIYnjBIyn8tVt+QvsK5Q+9qcZ2jd6KnurbRgmFuoP0M
+	eyiiWe6/Fj0Sb9nu3ab95Tcx3YiZI6pvemdLZilRr89V/FisLh8U2EBhBGacn0ty6Fj37Ve0BnczL
+	3k+9fN05MsIlIiINs5erANHt/64rHRqOBNcOdkEmB8Cjyok3Z7I8Mx3WGco6UGOHUJlf47GeT2fIe
+	4YiV4p0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgS0J-00000009ZhF-1ua3;
-	Sun, 05 Jul 2026 18:55:47 +0000
+	id 1wgS0M-00000009ZiS-2b1j;
+	Sun, 05 Jul 2026 18:55:50 +0000
 Received: from mail.mdapi.ch ([31.3.128.54])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgS0G-00000009ZgM-3UQE;
-	Sun, 05 Jul 2026 18:55:46 +0000
+	id 1wgS0J-00000009ZgT-0QVs;
+	Sun, 05 Jul 2026 18:55:48 +0000
 From: Martino Dell'Ambrogio <tillo@tillo.ch>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tillo.ch; s=mail202603;
-	t=1783277730;
+	t=1783277738;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=X3s+/ParZGutlIjQLSuAI0IrbHulKPYjszcMT2PF/co=;
-	b=NLMUdShJ9c1NiBRPaRo29NTdt5nNsMPDmvNm11/HwY+IG8GqYFGfwmn344/jnfdUqR73XK
-	jLBGPmQKEGxQugLMvrwXUuw6l5fSwvNJyDl+mPif8clzU2Qg3xlZIt/nd0nmlyhbatfeWH
-	5WKigcKslzMfGuelVuc32QlUvRBEDalCJpBcj3nB7nEyAyyoYO9f0YSPZ2fNEV2TM56V9K
-	SG22gcmqLv0Kh0gN8um8xj4tZ0ywhmWDb6baPlFndLrp5z4pL7KZGCSUEYpWEy2C0SM31P
-	sihCXpmvzTn04S/6de8+XgeJrFNRCOiYh2n/p7uwAa9mkrjqPAAPJpPRc+3hvA==
+	bh=hIRVAbhVg74ibPgDqMroiyMfd0QBQnj3/npAxSfKpyU=;
+	b=DZ53J28fOH+t2GJWaDWNiWzmumVZO1A89FRjDM36zr7fT2zgsqfBfcZFb4paIoBLW6Hvps
+	Iw3w10VgxAQ2IKFOYW0zB+OdMONm78C+xbMUxuKkIM6IHX1DVeYBzZwIVnVSSBA04t/z4O
+	oM66GuOtGJ89gjUSYEP+bRQExw9mr4NWYHBylcR1s/qJA+TQ4WsSkoEeRYJLyzSwnOfRsc
+	poj/JdFTb53ZVIVHxZeYH+8QgCUGXqGnzBUcizgcB77QQjn7lZ7efa3YlC5dQBFSAi1a3/
+	2dcWZAtaQcV6NR2TcbRLkHBH537VlbuKrD7Krk5JrDvDP+zY1qKyuItQ3drUTA==
 To: matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com
 Cc: kees@kernel.org,
@@ -49,15 +49,15 @@ Cc: kees@kernel.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Martino Dell'Ambrogio <tillo@tillo.ch>
-Subject: Re: [PATCH v2] arm64: dts: mediatek: mt7988a-bananapi-bpi-r4: add ramoops region
-Date: Sun,  5 Jul 2026 20:55:13 +0200
-Message-ID: <20260705185513.138353-1-tillo@tillo.ch>
-In-Reply-To: <20260528123645.2650085-1-tillo@tillo.ch>
-References: <20260528123645.2650085-1-tillo@tillo.ch>
+Subject: Re: [PATCH v2] arm64: dts: mediatek: mt7986a-bananapi-bpi-r3: add ramoops region
+Date: Sun,  5 Jul 2026 20:55:32 +0200
+Message-ID: <20260705185532.139292-1-tillo@tillo.ch>
+In-Reply-To: <20260528123655.2650868-1-tillo@tillo.ch>
+References: <20260528123655.2650868-1-tillo@tillo.ch>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260705_115545_249261_FB400D96 
+X-CRM114-CacheID: sfid-20260705_115547_298645_C88D881E 
 X-CRM114-Status: UNSURE (   3.16  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -76,8 +76,8 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Gentle ping - is there anything I should improve on this one?
 
-The matching BPI-R3 (mt7986a) patch is at:
-https://lore.kernel.org/all/20260528123655.2650868-1-tillo@tillo.ch/
+The matching BPI-R4 (mt7988a) patch is at:
+https://lore.kernel.org/all/20260528123645.2650085-1-tillo@tillo.ch/
 
 Thanks!
 Martino
