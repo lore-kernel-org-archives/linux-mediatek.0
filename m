@@ -4,54 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A61BBC44500
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 15:07:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDEB8C44500
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 15:09:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:
-	Content-Transfer-Encoding:Mime-Version:From:Cc:Subject:To:Message-Id:Date:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ObC9OwRxOMV1pm3KyljcyooxBRThvnIdSuo4lp1vHn0=; b=gCylCSdaPFbl+a7mkUvi4A/BxL
-	Q2VBZKiuYMYCz1AjJbJVleOmcsqnMZnxTbbzu3d0HRHmTxRor667JeaX+cW4ezJDzCWDsq1zmWefx
-	syv1yr7MwrlKg5oADMk9IXHQfGjsi41qzf65q39a3T7Gmu337ZgbjhGFF/fAd6/G+T1Rg/XF4Tncd
-	a6NbHNCIf+7uRIcfS4h7OFR7vezXlgOF6q2nGlu6DQC0G8vOlYrkfrafrJp4lzCycPhpkg7hhdcMt
-	zOhsyg4xZ0QtiBQm0Q6P4bMESdMabJUbDGpRUiCO/LJyd4MQr/CjALi5I+ktnHufLAzQ6mFfXMjpN
-	4tQt3BjA==;
+	bh=7uGc6qOcbWaZba6BNWE0w8BupLDIVpLKSnAAYXy5/LA=; b=aQgRsTsx1eUNXtarJj1It8YAPT
+	BUSuZXqki1GV+Pb3ovuHNQvTbB1nCMCTiRR45k0EhRZvirr5+GB6wB4ZD3EQ9jFavEqbhLnYkpYar
+	z8VAeo3V+HxWtw3g2OeVGJBFYeOzOp/XpPUxvGRKfwvI+Fth3kamaeMO1rFEOLR+D7ujq9TmCcnno
+	oD8DVs9N+J993+TcfdnO5y89BXnlSs6qnkU97n7Vh5s2sEWifp+XGzy6ExifQecaGvSztGfbr/kGL
+	MY5f1MgQrUQUwZka83Z6iF6qGOu2F/Ic5+ijTRJYenfZIhnPUbqJuleq6TmTjZ7BMlgQTJ6+PnYJy
+	IiSoh+Bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgkub-0000000CqHz-1vrk;
-	Mon, 06 Jul 2026 15:07:09 +0000
-Received: from sendmail.purelymail.com ([34.202.193.197])
+	id 1wgkwN-0000000CqTg-41Ht;
+	Mon, 06 Jul 2026 15:08:59 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgkuZ-0000000CqHB-0KbG
-	for linux-mediatek@lists.infradead.org;
-	Mon, 06 Jul 2026 15:07:09 +0000
-DKIM-Signature: a=rsa-sha256; b=Vf6itBlKxB6l6Us3jkVkauWXmLtgJRnbJ9tDT+Vv/54zNAdQpf54yjhOjlmp7/paoN1Jc79WG/tYAI0X5pB1GCDSRdAZPxqmYTGProrS8PnVxu2hklsA2BFtOztuwDO15ZL4InO+EbmHOIspfYF/3AS6gcbVhrNjbkV0JCBPvzvNM+5+nZLnAjuJHhbe/eEA0nh2EJNQqpIKxOBbdPTm1bMgz0o42XcDHTmZO+nF17ehb9hVyKK4xiJFe9jm5+ybHUyrdGsINA17RKcWdujWsSR4NMxUUEHNJfRyHFhK13A90OvSH9A10Bawqgyq8uWH9NtPfNKE2IiLDcQ7UeDJkA==; s=purelymail3; d=rcpassos.me; v=1; bh=ObC9OwRxOMV1pm3KyljcyooxBRThvnIdSuo4lp1vHn0=; h=Received:Date:To:Subject:From;
-DKIM-Signature: a=rsa-sha256; b=MSCw5BQPA6Mk6wZnqLFNiT1f4+lYBoM8eot/AnknIv+g9XQ/s5OnQCMYiO5u1vAZzR4rHT+S4DYgVbDrjQLYKTSt3CktupbZ/LV0R7qFPnEGMlY/OiaqrxJCZ4P11RrQQIS0H0Ts1TiC+70/iMCGKCU5qwwyc7G/JmyS4eA12HnlQoe7qJzGU5OYqTzyUxnp9A6TF/MaMgFhAtLBi40kvJSzC+mKVOJGX4Har96I1azlbgY2FhU1eCcJJYbnMi4ASgBOPTrZJx+a4z3g27/v8mJ5kcVum8yOzOQGfjiCyZV/hor41nVbXOpxU2Ui7usVKw37ZhyWHKx72XTOr48jRA==; s=purelymail3; d=purelymail.com; v=1; bh=ObC9OwRxOMV1pm3KyljcyooxBRThvnIdSuo4lp1vHn0=; h=Feedback-ID:Received:Date:To:Subject:From;
-Feedback-ID: 45355:7809:null:purelymail
-X-Pm-Original-To: linux-mediatek@lists.infradead.org
-Received: by smtp.purelymail.com (Purelymail SMTP) with ESMTPSA id -1093595095;
-          (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
-          Mon, 06 Jul 2026 15:06:57 +0000 (UTC)
-Content-Type: text/plain; charset=UTF-8
-Date: Mon, 06 Jul 2026 12:06:54 -0300
-Message-Id: <DJRKYMIBYSWD.778JD1HG7W7S@rcpassos.me>
-To: "JB Tsai" <jb.tsai@mediatek.com>, <nbd@nbd.name>, <lorenzo@kernel.org>
-Subject: Re: [PATCH] wifi: mt76: mt7925: Fix unregister deadlock
-Cc: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <Sean.Wang@mediatek.com>, <Quan.Zhou@mediatek.com>,
- <Ryder.Lee@mediatek.com>, <Leon.Yen@mediatek.com>,
- <litien.chang@mediatek.com>, "Fei Shao" <fshao@google.com>
-From: "Rafael Passos" <rafael@rcpassos.me>
-Mime-Version: 1.0
+	id 1wgkwL-0000000CqSx-1H9v;
+	Mon, 06 Jul 2026 15:08:58 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1783350530; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=KPsfhiRXCf62s1OD5a77dlrT765LM4geTQwnspwwaF9iA/UClFJYyjZUR4d3iN/yC6N2YWJRetoZuZE8jlBLA7N094NXjiAbQhoNzY0YflKhrKmEBhCAjL8yWZpCgRjFSoMrCapRg26glxeeXxgWPXSIn2PPSz5Uj3qjO2qzYnc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1783350530; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=7uGc6qOcbWaZba6BNWE0w8BupLDIVpLKSnAAYXy5/LA=; 
+	b=jQGUTSXzm8Mz6Xjfgj9ThaozJ27mZRqyH6el57aksBAjvwtN8IIXkXd1MrtGY4+l5iLjw3siFb+ydDfXTMXXt/f0T7FOqN2Wqr/D9Q1zir5TAOocBimrfMx4nbyEjkIkrvFHwaVAD9mNNx7kvkfU3gDtgClNmbWVbECcRv3hDLc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=rong.moe;
+	spf=pass  smtp.mailfrom=i@rong.moe;
+	dmarc=pass header.from=<i@rong.moe>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1783350530;
+	s=zmail2048; d=rong.moe; i=i@rong.moe;
+	h=Date:Date:From:From:To:To:CC:Subject:Subject:In-Reply-To:References:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To:Cc;
+	bh=7uGc6qOcbWaZba6BNWE0w8BupLDIVpLKSnAAYXy5/LA=;
+	b=q3eQUZ0IqazpyaqParrDoAt0z0vmwXbsUOt4onTMMj6Nz4XaPBzoBWotFlgj3u5k
+	qqWOzGVVOys8PF+9feZuAG73he9MsoxJKSIvtPjqNpYfnVbbZ7TxfHfBloIQsU7Q2BT
+	lazx5YDOFKqXDLxtdjJzna5ZnoTtS3q90/iAtcf4goTXwUKUj4MS2uWLsswNXJg3+YO
+	2yyu/R4QwqZcYD7iuP4QrpnQxXBI99yY1VCSSnm7hE2FP6PlRs+j3HiHJ9Mki0c1eAs
+	vh2XGViNiGsIzurkI8O3MR2Vd9pqXfn9TYDU1JDZxYTcZC194hJbNRAL6tdu925HPGG
+	tB/6zmwXHA==
+Received: by mx.zohomail.com with SMTPS id 1783350527830956.3838171300544;
+	Mon, 6 Jul 2026 08:08:47 -0700 (PDT)
+Date: Mon, 06 Jul 2026 23:08:36 +0800
+From: Rong Zhang <i@rong.moe>
+To: Rafael Passos <rafael@rcpassos.me>, Marcel Holtmann <marcel@holtmann.org>,
+ Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: Luiz Augusto von Dentz <luiz.von.dentz@intel.com>,
+ =?UTF-8?B?Q2hyaXMgTHUgKOmZuOeomuazkyk=?= <Chris.Lu@mediatek.com>,
+ =?UTF-8?B?V2lsbC1DWSBMZWUgKOadjuaUv+epjik=?= <Will-CY.Lee@mediatek.com>,
+ =?UTF-8?B?U1MgV3UgKOW3q+aGsuasoyk=?= <ss.wu@mediatek.com>,
+ linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2=5D_Bluetooth=3A_Properly_disable_rem?=
+ =?US-ASCII?Q?ote_wakeup_for_MT7922/MT7925_on_Ryzen_platform?=
+User-Agent: Thunderbird for Android
+In-Reply-To: <DJRKO72HWZOI.QJYJUAC45QOJ@rcpassos.me>
+References: <20260701-btmtk-ryzen-remote-wakeup-v2-1-767ac7907472@rong.moe> <DJRKO72HWZOI.QJYJUAC45QOJ@rcpassos.me>
+Message-ID: <79D5F3E6-8F40-4422-BB2D-16691E377394@rong.moe>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-Mailer: aerc 0.21.0
-References: <20260630090610.586954-1-jb.tsai@mediatek.com>
-In-Reply-To: <20260630090610.586954-1-jb.tsai@mediatek.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_080707_204631_6652D7D5 
-X-CRM114-Status: UNSURE (   4.89  )
+X-CRM114-CacheID: sfid-20260706_080857_405216_1353F4AC 
+X-CRM114-Status: UNSURE (   7.35  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -67,19 +90,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-I was having issues with the MT7925 on the ASRock B850M with Bluetooth.
-I tested this and other patches in my investigation.
-My issue was a platform bug causing a failure in USB enumeration
-before the driver path (unrelated to the patch).
+Hi Rafael,=20
 
-I can confirm this patch does not introduce regressions on this platform.
-I tested system power cycling and suspension, BT/Wifi adapter enable/disabl=
-e,
-and also modprobing in/out mt7925{e/u}
-Patch applied on top of mailine (7.2 rc1).
+=E4=BA=8E 2026=E5=B9=B47=E6=9C=886=E6=97=A5 GMT+08:00 22:53:17=EF=BC=8CRaf=
+ael Passos <rafael@rcpassos=2Eme> =E5=86=99=E9=81=93=EF=BC=9A
+>I was having issues with Bluetooth on the ASRock B850M with MT7925=2E
+>I tested this and other patches in my investigation process=2E
+>My issue was a platform bug causing a failure in USB enumeration
+>before the driver path (unrelated to the patch)=2E
+>
+>I can confirm this patch does not introduce regressions on this platform=
+=2E
+>I tested system power cycling and suspension,
+>and also BT/Wifi adapter enable/disable=2E
+>Patch applied on top of mailine (7=2E2 rc1)=2E
+>
+>Tested-by: Rafael Passos <rafael@rcpassos=2Eme>
 
-Tested-by: Rafael Passos <rafael@rcpassos.me>
+Thanks a lot for your testing!
+
+Your issue sounds related to the remote wakeup issue I am addressing=2E Af=
+ter triggering the remote wakeup bug, rebooting the platform without a powe=
+r cycle [1] always causes a failure in USB enumeration before the driver pa=
+th=2E
+
+[1]: power off, unplug AC, wait for a while, plug AC, power on=2E
 
 Thanks,
-Rafael Passos
+Rong
+
+>
+>Thanks,
+>Rafael Passos
 
