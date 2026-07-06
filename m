@@ -4,75 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E983C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 10:11:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BB66C44508
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 10:16:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:content-type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6UrHChc8M+M+p0SiB4fBzc+NlWnId3OCW6A/n3Cjpjw=; b=lbX//5WaMv3MaFMbkFa/PR4sKN
-	mXQklYuT0n/eimuuRX+6SyFqAv0FvZj/FoPT8jBgivTgObRmgmTVvE6Llty6k9D8ScnQexZyXujd+
-	80kF/3O0EKXX/mvYwWDSFdYP3lY3RFo0kDKuIYxS1F19xzXphNnEgFURfuH1TwopzedPWzrh9IAOz
-	RbUK3j1+r16OGZIZvXluvN4KYSyx/on0tcOWjqL/eO3cvllkj3TLdoy3nPIhXOlo7ax1POb4oAAiT
-	+VY0fyd6iZ4n4CYBr46CJ0XmMNRZTTElGtItT//0LLYMjE5z9g6k70yqlL9HB07OXARBcFd4zL9tn
-	nnvDBzEw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C+/nylRkmFnwlWEjUGCWoM2czawsOZZdaU1lrtkld0A=; b=ZSE5bRwLzu2nanMeVcCk9vzrbK
+	rJ3qrQfhlF8Ow0onmpObO75uiWZv2LJ3jnC/oIH8wjs24pn2w4JAkrKbstxbJofCrS+vZ2z5THz+N
+	gI/9Uje4hOcaG+BiNPjAwCpAmkcW3KCg0fuD+P+Oo3ZGceIbSbSvW67o5khB3iHheCoCdlcl8h2FQ
+	KsV+2buqWRr2as0gRVdeUr2BMwPg7IDag6LPNAQHu7rdqhAmtpBFIm4zPudwFYzkRao/tkd1n2GaC
+	boY/jPRKRCfyjpxof99VupLfSDxvGL8O1W+VxFhqNaU4XXyAs5fUgIZbUzkgNFq/CdVVEmr+yWlJ9
+	4oh3vEfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wggI2-0000000C9qb-0EK9;
-	Mon, 06 Jul 2026 10:11:02 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1wggNf-0000000CAez-2duP;
+	Mon, 06 Jul 2026 10:16:51 +0000
+Received: from relay.yourmailgateway.de ([188.68.61.103])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wggHx-0000000C9pR-24SU
-	for linux-mediatek@lists.infradead.org;
-	Mon, 06 Jul 2026 10:11:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1783332656;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=6UrHChc8M+M+p0SiB4fBzc+NlWnId3OCW6A/n3Cjpjw=;
-	b=eHNcMmPviiVg7gAZMu4v1OOiUUJibHETqVl0w7seiR7kKoeOB0UJned+CSSfR9cmiBjzuc
-	OUKrRCVZU+afEkTrLsWAAQ9kS/pgAk3M8EuEcrrYEQqLthjVs+vCao5z7r46kOdS/G6/Kd
-	loNxOLPYGuM2YJGRd7PcZlVFMqrFaUw=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-61-6UL7jBsPPSGmYehftaPLMA-1; Mon,
- 06 Jul 2026 06:10:52 -0400
-X-MC-Unique: 6UL7jBsPPSGmYehftaPLMA-1
-X-Mimecast-MFC-AGG-ID: 6UL7jBsPPSGmYehftaPLMA_1783332651
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+	id 1wggNZ-0000000CAZf-0usN;
+	Mon, 06 Jul 2026 10:16:48 +0000
+Received: from mors-relay-8403.netcup.net (localhost [127.0.0.1])
+	by mors-relay-8403.netcup.net (Postfix) with ESMTPS id 4gv0dR0WZzz8CrY;
+	Mon,  6 Jul 2026 12:16:43 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=leemhuis.info;
+	s=key2; t=1783333003;
+	bh=O3HDA58hVYQ2UIV9LDldz/TAOxq4sg0yXPvgUB7pTJ8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=JuWnDMjmbm9uc6WBo/iJg/eYbpNm53vDepAtcb7TVBiWfW6CXnlFafaYeex8jucij
+	 JHMlVUdXMhBTcH0Z1z705kFAXBwAMbJ2OMjWp6BgaugBlnuYS5gpKWLjxrQJBjBP6i
+	 xFrVLD0rEi7Hm+3YNUwiJKt4+Z9X6xwQzaNrE89ugFGU1wF9bde/nMrTS4rZ51R8rq
+	 twolQswST4td/JkJe0gmULNKcGA5piU9jpMB+Uj4rpCr0iqcfbxCrSZUJfPw4ZeloZ
+	 WghDQyuTPsSaEHnuLKc3VwCR2dTg7VrzI5SfpSxtUn4FU0xQj8tRIe7sdOl4yiN35a
+	 ZAakz8Xyf2FiA==
+Received: from policy01-mors.netcup.net (unknown [46.38.225.35])
+	by mors-relay-8403.netcup.net (Postfix) with ESMTPS id 4gv0dQ6w3zz8BSm;
+	Mon,  6 Jul 2026 12:16:42 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at policy01-mors.netcup.net
+Received: from mxe9fb.netcup.net (unknown [10.243.12.53])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 16C851955F72;
-	Mon,  6 Jul 2026 10:10:51 +0000 (UTC)
-Received: from gerbillo.redhat.com (unknown [10.44.32.156])
-	by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 4178E1800591;
-	Mon,  6 Jul 2026 10:10:49 +0000 (UTC)
-From: Paolo Abeni <pabeni@redhat.com>
-To: hujy652@gmail.com
-Cc: lorenzo@kernel.org,
-	nbd@nbd.name,
-	netdev@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net] net:ethernet: mtk_wed: setup WDMA_RING_TX(0) for non-DBDC MT7986
-Date: Mon,  6 Jul 2026 12:10:44 +0200
-Message-ID: <20260706101044.161059-1-pabeni@redhat.com>
-In-Reply-To: <20260630144831.1109-1-hujy652@gmail.com>
-References: <20260630144831.1109-1-hujy652@gmail.com>
+	by policy01-mors.netcup.net (Postfix) with ESMTPS id 4gv0dN6MWtz8sbk;
+	Mon,  6 Jul 2026 12:16:40 +0200 (CEST)
+Received: from [IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f] (unknown [IPv6:2a02:8108:8984:1d00:a0cf:1912:4be:477f])
+	by mxe9fb.netcup.net (Postfix) with ESMTPSA id 1472B60438;
+	Mon,  6 Jul 2026 12:16:40 +0200 (CEST)
+Authentication-Results: mxe9fb;
+        spf=pass (sender IP is 2a02:8108:8984:1d00:a0cf:1912:4be:477f) smtp.mailfrom=regressions@leemhuis.info smtp.helo=[IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f]
+Received-SPF: pass (mxe9fb: connection is authenticated)
+Message-ID: <f0d99b1a-e383-4d14-adb1-4ccab46efddb@leemhuis.info>
+Date: Mon, 6 Jul 2026 12:16:38 +0200
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: A-qlRW1dLjI3DTbKPSzeKO_xdsrhtK-uq6a2c4xN6Rs_1783332651
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] drm/mediatek: mtk_dsi: enable hs clock during pre-enable
+To: Adam Thiede <me@adamthiede.com>, Gary Bisson <bisson.gary@gmail.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Linux kernel regressions list <regressions@lists.linux.dev>
+References: <20260120-mtkdsi-v1-1-b0f4094f3ac3@gmail.com>
+ <42607fa4-485d-4142-b31c-7bfac71118d2@adamthiede.com> <ajka2220depklK1_@owl5>
+ <bac79214-050d-448b-be63-0586d45c807d@adamthiede.com>
+From: Thorsten Leemhuis <regressions@leemhuis.info>
+Content-Language: de-DE, en-US
+X-Enigmail-Draft-Status: N11222
+Autocrypt: addr=linux@leemhuis.info; keydata=
+ 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 MEK4
+In-Reply-To: <bac79214-050d-448b-be63-0586d45c807d@adamthiede.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-PPP-Message-ID: <178333300057.643948.6218888156290066716@mxe9fb.netcup.net>
+X-NC-CID: CjcezfaIEXrSstuGOSqS1Cqzufs3YbLMXdijf71d3Ds3mx8zQQM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_031058_167168_AF067163 
-X-CRM114-Status: GOOD (  16.99  )
+X-CRM114-CacheID: sfid-20260706_031646_795080_A49C8876 
+X-CRM114-Status: GOOD (  21.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,68 +139,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: AI Reviewer <ai@example.com>
+On 6/22/26 15:23, Adam Thiede wrote:
+> On 6/22/26 06:22, Gary Bisson wrote:
+>> On Thu, Jun 18, 2026 at 04:06:28PM -0500, Adam Thiede wrote:
+>>> On 1/20/26 05:36, Gary Bisson wrote:
+>>>> Some bridges, such as the TI SN65DSI83, require the HS clock to be
+>>>> running in order to lock its PLL during its own pre-enable function.
+>>>>
+>>>> Without this change, the bridge gives the following error:
+>>>> sn65dsi83 14-002c: failed to lock PLL, ret=-110
+>>>> sn65dsi83 14-002c: Unexpected link status 0x01
+>>>> sn65dsi83 14-002c: reset the pipe
+>>>> [...]
+>>>
+>>> This commit was part of 7.1 and caused a problem for me.
+>>> I'm running postmarketOS (basically Alpine Linux) on a Lenovo C330
+>>> chromebook with a Mediatek MT8173 processor.
+>>> The problem: when the display on my laptop powers off (via suspend or
+>>> idle,
+>>> like xset dpms off) the picture does not come back when the display
+>>> powers
+>>> back on (from resume). The display backlight comes on and brightness is
+>>> adjustable but there is no picture. The only fix is to reboot.
+>>>
+>>> Reverting this commit and applying it as a patch on top of 7.1
+>>> addresses the
+>>> issue for me.
+>>>
+>>> You can view the config I'm using here:
+>>> https://gitlab.postmarketos.org/postmarketOS/pmaports/-/
+>>> merge_requests/8819
+>>>
+>>> Is there any sort of testing or other debugging info I can provide to
+>>> help
+>>> address this issue?
+>>
+>> Thanks for reporting the issue, could you share some logs? Is the driver
+>> saying anything during resume? Also, what type of panel is used on that
+>> chromebook?
+>
+> The curious thing is that there are no real logs in dmesg or /var/log/
+> messages about this. This picture just fails to come back. If there are
+> some kernel params I can set to get deeper logging, that would help, but
+> I'm not aware of any.
+> 
+> I think the panel is a "BOE NV116WHM-T00" - I used this command to get
+> info: cat /sys/class/drm/card0-eDP-1/edid | edid-decode
+> 
+> Output: https://termbin.com/8nbd
 
-This is an AI-generated review of your patch. The human sending this
-email has considered the AI review valid, or at least plausible.
-Full review at: https://sashiko.dev/
----
-net:ethernet: mtk_wed: setup WDMA_RING_TX(0) for non-DBDC MT7986
+This looked stalled. If I'm mistaken here, please let me known; but if
+no solution is in sight, should we maybe just revert the change until a
+proper was found?
 
-This commit updates mtk_wed_start() to configure WDMA_RING_TX(0) on
-non-DBDC MT7986 devices. It adds a call to mtk_wed_wdma_tx_ring_setup()
-for v2 hardware if the descriptor is not yet set up.
-
-> diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-> index 10d9beaae3721..2420557f6c966 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_wed.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-> @@ -2334,6 +2334,10 @@ mtk_wed_start(struct mtk_wed_device *dev, u32 irq_mask)
->  		if (!dev->rx_wdma[i].desc)
->  			mtk_wed_wdma_rx_ring_setup(dev, i, 16, false);
-
-[Severity: High]
-This isn't a bug introduced by this patch, but does this loop need to check
-the return value of mtk_wed_wdma_rx_ring_setup()?
-
-If mtk_wed_wdma_rx_ring_setup() returns -ENOMEM, the hardware registers are
-not programmed, but mtk_wed_start() continues execution and enables DMA.
-
-Could this lead to hardware DMA using an uninitialized ring base address?
-
->  
-> +	if (mtk_wed_is_v2(dev->hw))
-> +		if (!dev->tx_wdma[0].desc)
-> +			mtk_wed_wdma_tx_ring_setup(dev, 0, MTK_WED_WDMA_RING_SIZE, false);
-
-[Severity: High]
-Are there similar error handling concerns with this new call to
-mtk_wed_wdma_tx_ring_setup()?
-
-Like the RX path, if dma_alloc_coherent() fails inside this setup function,
-it returns -ENOMEM without programming the hardware registers.
-
-Since mtk_wed_start() doesn't check this return value, it will proceed to
-enable hardware DMA, which might attempt to use an uninitialized DMA address.
-
-[Severity: High]
-Does the check for !dev->tx_wdma[0].desc prevent necessary hardware
-initialization after a warm reset?
-
-When the WLAN driver triggers a hardware reset, the WED hardware registers
-are cleared, and mtk_wed_start() is called again.
-
-Because dev->tx_wdma[0].desc was allocated during the initial start, the
-guard will evaluate to false, skipping the hardware register reprogramming
-for tx_wdma[0].
-
-Will the hardware DMA end up using a zeroed ring base address after a reset?
-
-> +
->  	if (dev->wlan.hw_rro) {
->  		for (i = 0; i < MTK_WED_RX_PAGE_QUEUES; i++) {
->  			u32 addr = MTK_WED_RRO_MSDU_PG_CTRL0(i) +
--- 
-This is an AI-generated review.
+Ciao, Thorsten
 
 
