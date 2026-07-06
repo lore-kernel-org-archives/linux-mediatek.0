@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B16C7C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 12:16:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A9CAC43458
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 12:17:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z/lKSRcjWKapJuVT4TtgVFwUxKxBHhkUK36Xyw1gFTU=; b=h1tbnqkG9uIO0r1MMJy2cv2kwy
-	KpnoQ3TOIuPNfbHnVDUpc4XIPK8dMHuW9XLzYXvA4pdb1dnKUDTNPpMo7UdgI6RUc6rNQUym8+S5e
-	YUsH3EKv2gGAsFpyrNsTMra2EA75B/0XbTkJL8gE5UBTdbOZ99G2qHf1wWG90rb53+OkqJBJ8Dy99
-	k9r/S2Fhl4N9Kv247Mr+1mE1p8nt+8i/4s1N5WmAogIFOJNFBqyB1vugItibsqqj+iKvh62bfxm8E
-	xieUctqhp10vBAa4gZMTCS0nKtMHdH0eQ84RfDeXXM0G2qHWJvHhZt1df9T8X7y1ddET5wrv9m7Un
-	f0tikDlw==;
+	bh=E0ybWUMT5ykKHMt3hRKrJAElXW0KNmumYbWeY/gC6qE=; b=1KZdtvNHek8bkotqYlstMCjXKI
+	rvzE+xQIONRlGJM1ERqPBozWedgkHup92YDYlODOtGBjSwtvReTz84nYh+AVtypsqNGQU3Mikreou
+	oFwp8n3t1QKSOaTmJh/VmLHg4UdAI0zAKFybT2XN2+gCFzociz2N4JapxiFz4zQwEZyBZu86mtuwP
+	30YvjGOklvBaiJ6DjXiYMQKvKf9Zqw396Pi45BDPlEQ928l8x4aQ0hf15SB6rKrS9rU/U8vbfpIAc
+	rEpHvqFffwM9SCJ1UrMyBzVjUZ7XE0hFqC1tPq9q05uA8a4VVI9z3m+Pvy8S8Q3IAp0Oq6dbEQg6b
+	LGj4pcMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgiFR-0000000CSVP-2iRg;
-	Mon, 06 Jul 2026 12:16:29 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wgiFx-0000000CScq-48Wa;
+	Mon, 06 Jul 2026 12:17:04 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgiFP-0000000CSUn-03OS;
-	Mon, 06 Jul 2026 12:16:27 +0000
+	id 1wgiFv-0000000CScL-3x7F;
+	Mon, 06 Jul 2026 12:16:59 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4D48B600C3;
-	Mon,  6 Jul 2026 12:16:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB7811F000E9;
-	Mon,  6 Jul 2026 12:16:08 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 608CC414E3;
+	Mon,  6 Jul 2026 12:16:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13E081F000E9;
+	Mon,  6 Jul 2026 12:16:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783340185;
-	bh=Z/lKSRcjWKapJuVT4TtgVFwUxKxBHhkUK36Xyw1gFTU=;
+	s=k20260515; t=1783340219;
+	bh=E0ybWUMT5ykKHMt3hRKrJAElXW0KNmumYbWeY/gC6qE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=dW5IodGu3nJX8tn88T9LM0lVQH7B5jfoPkOf0/3aM09o2lOWbX5/1tGJteOIx5aLR
-	 6QMzRBv5Ym2m9tdoG15pdKLOvIlH/expuQAYXijlgRFOW3BFLSk5s0QVLDVa8qLu4n
-	 s0T+1tTPeI4UtcMDbils+y2W4FB0RpuRXqzSs43+b6E7A8n1Hdcyz15cbQ2dcZvDV9
-	 PbLaqmINOR4dyPTKyA3QCIT91q3zjgsqRENCYLsmuqYD+eUNgL0npmvOsnBO3CNGQd
-	 2GWMjfkdCyIx5/NBqXveNcRvzQX8yvF28yrkaYeV1T0p/x2tXHKF6oDpSuv3dxEljV
-	 mJqJPa69yVtJQ==
-Date: Mon, 6 Jul 2026 13:16:06 +0100
+	b=I456lAOLpHSI7yX4A3hGGu328x/LhYikS9Ad81LPAWRZkgK1VEhn3TPLSvhmzn0mM
+	 0K73I5A/A2Bz2iV9kLkAFoGuRqyr6pAN1YrqId+GUAibWHnH01wwnN03nRJ9CEhKoU
+	 gpJr/YCB6noB3KBe2aHXueA71P9tgn3jtye5mWfDylSGkWocqdFhguXArQhxaGhHxQ
+	 zbpWSaDSwhRVmCueSSRyKRQgZfSgn/FC+3+kT1JZj75r3yYAX6kHqwofiETMmSmubH
+	 wW5EDq67+npBKnaKGfJ9FW79U9Mhb9gfjWQEsWnMT+yIt7aOIzflF6u0d+o41JuFb5
+	 XVUr9hkJ77CdA==
+Date: Mon, 6 Jul 2026 13:16:41 +0100
 From: Mark Brown <broonie@kernel.org>
 To: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
 Cc: Bjorn Andersson <andersson@kernel.org>,
@@ -118,9 +118,9 @@ Cc: Bjorn Andersson <andersson@kernel.org>,
 	linux-remoteproc@vger.kernel.org, linux-staging@lists.linux.dev,
 	linux-sound@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
 	imx@lists.linux.dev, sound-open-firmware@alsa-project.org
-Subject: Re: [PATCH 25/42] ASoC: mediatek: mt8192: Use
+Subject: Re: [PATCH 26/42] ASoC: mediatek: mt8196: Use
  devm_of_reserved_mem_device_init()
-Message-ID: <231e493b-cd54-4e8e-b14b-ce7ade97d645@sirena.org.uk>
+Message-ID: <84b6a669-017f-4737-b6c4-124b0653190a@sirena.org.uk>
 Mail-Followup-To: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>,
 	Bjorn Andersson <andersson@kernel.org>,
 	Konrad Dybcio <konradybcio@kernel.org>,
@@ -197,12 +197,12 @@ Mail-Followup-To: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>,
 	linux-sound@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
 	imx@lists.linux.dev, sound-open-firmware@alsa-project.org
 References: <20260703193855.110619-1-mukesh.ojha@oss.qualcomm.com>
- <20260703193855.110619-26-mukesh.ojha@oss.qualcomm.com>
+ <20260703193855.110619-27-mukesh.ojha@oss.qualcomm.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="RIv4GAh9IbQg1LAQ"
+	protocol="application/pgp-signature"; boundary="k1yPzPS+gn5eXmuc"
 Content-Disposition: inline
-In-Reply-To: <20260703193855.110619-26-mukesh.ojha@oss.qualcomm.com>
+In-Reply-To: <20260703193855.110619-27-mukesh.ojha@oss.qualcomm.com>
 X-Cookie: Did I do an INCORRECT THING??
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -219,32 +219,32 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---RIv4GAh9IbQg1LAQ
+--k1yPzPS+gn5eXmuc
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-On Sat, Jul 04, 2026 at 01:08:38AM +0530, Mukesh Ojha wrote:
-> Replace the hand-rolled devm wrapper (mt8192_afe_release_reserved_mem +
+On Sat, Jul 04, 2026 at 01:08:39AM +0530, Mukesh Ojha wrote:
+> Replace the hand-rolled devm wrapper (mt8196_afe_release_reserved_mem +
 > devm_add_action_or_reset) with the standard
 > devm_of_reserved_mem_device_init(), letting the device resource manager
 > handle cleanup automatically.
 
 Acked-by: Mark Brown <broonie@kernel.org>
 
---RIv4GAh9IbQg1LAQ
+--k1yPzPS+gn5eXmuc
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmpLnIUACgkQJNaLcl1U
-h9DXVQgAgtqnDlgz3o2aHoFiTshZUD1qTjoT5cLKw0RATdj7LLFbJi395gfR5E71
-JvVM9mudvxBLvs79vDRE5Rfy6beFPzQh5Dg1SQ76jAOtAzA9FZAUKezAHRhNQs9c
-reptszRK+aOUOTASYnOIQALfQhbgcXPtWJXGwTdYKeXYSe8LIzcalJxVkQ1fn7G8
-97f3HiN6zJErpvZPyuJ6R4I3vG+bqurBBacdUZQIaTFS2PwbuqAwwz+NDTatPdP8
-N8OdIEIYo9H1aLp5LJllxJsFosUxl+CxOpdbkxE9ccuJL5TlN0PxRoWsUvkv2AZn
-nbRAQNLgyPBrtH2zEMZVAFK9As3uMQ==
-=Txxl
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmpLnKgACgkQJNaLcl1U
+h9CxFwf/VwVZ8veo1WnA5s69MQki3XNfL+yi+NPIe9jNxNccdyC7N4F+ss0+2sq4
+p8vCAoMmJ05DKMFm564Fmd7qBTw7+pkscjBvwQIr+B2rVpTsvKFyYiLN7gZY5qJZ
+4fAKdROuzN5U4ZhsKPf1q6c7eerXcBgi0mXh1YOmGHXoofQa6KAyuZDO/j1nN6FG
+nHQbdKDLWcJ8S0AgNBQa1svluugNFONywr/uCZ1WJg9GSQevoPgAeFCFHFL49qJL
+eXZO7nm0nm4c/5Hk4++HNZl0jdT/Sdvv2Uy12s8agngU9qWvFIowOpTFDBAfTMZw
+XbGlJ/sB0lGgeYUNWcxpVNyGxY14Kg==
+=kZm9
 -----END PGP SIGNATURE-----
 
---RIv4GAh9IbQg1LAQ--
+--k1yPzPS+gn5eXmuc--
 
