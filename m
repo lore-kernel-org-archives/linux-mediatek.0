@@ -4,109 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BB09C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 16:37:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7081EC43458
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 17:37:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Mime-Version:Subject:References:In-Reply-To:Message-ID:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0pJcWvIhqLuJxPO4aE4cyY/xCREGxJtBF+FRAD54hro=; b=owJS4UX6ZcJK0JjOpy8nhpg4T2
-	URs7wnO8cL9nm+5XgB4KAf9TeWIRoG6UiuZMXBrk+S5UpYGlygLbJ02xke0UVw/ZzQFd/9VI0iXya
-	qxad2qJwJQ4tDLYOApppReifMW9wa0jsxkbV2aTE5cVpw4ZVVnwOGzFc5zeh2FMp1CxfE/pwfGTao
-	UULy2dOWS5zho0buLFa2zEWtSB8bxx5lFsx7JC5SP8HbhrE+QlJNupbi9YviACZW/rJRJHkNYPzlK
-	0lIHCzR3OtCkOSVUPemtXZ0VqRnKOJWspkme4p++e8zCfJym6Xt8YaGwu+zZ7pvNwgL0+8F8ARVxd
-	Z3kBgD6g==;
+	bh=v2R7RMzgtl4p0GUyY1wULxMAxNHG70RoVQmfeFubRL8=; b=gGTznDFqxKvH4N9+pqQH5nI+SG
+	o1QZQi8vmLq+ytLBjuzbC8Wo4NN3k9j2h1ZfeMP43W7SKXu/Nfrq6FMsYmKEduNGoI4Z99JpS1Ne4
+	/jgqVdrdS36NlND+n5UyskdB+xsOeVrK6vdvE1RYKfXX8Fj4YUKUyVJLDxm7HmCDxwHvdiGKWLCRr
+	veevgL9ckwh7d3DRCwqZ1lsLAWondOhyhdTQjvOQoAN4w5tFploFKXfjVnih0vxY1SnckG+8UyFqH
+	S5v5/0na0MRAIz+JmYIsEweB3xx5HwcKavdfQ1FbKCdJYYgpEqSz9xcpzHquWVpmoKBKaFSKKlCo/
+	z8FfcgNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgmJZ-0000000D5Hv-07Fk;
-	Mon, 06 Jul 2026 16:37:01 +0000
-Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+	id 1wgnGM-0000000DDVG-0bsF;
+	Mon, 06 Jul 2026 17:37:46 +0000
+Received: from mail-24418.protonmail.ch ([109.224.244.18])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgmJS-0000000D5DR-1JrM
-	for linux-mediatek@lists.infradead.org;
-	Mon, 06 Jul 2026 16:36:59 +0000
-Received: by mail-yw1-x112b.google.com with SMTP id 00721157ae682-8114a4542b2so48970077b3.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 Jul 2026 09:36:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783355813; x=1783960613; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:subject
-         :references:in-reply-to:message-id:cc:to:from:date:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=0pJcWvIhqLuJxPO4aE4cyY/xCREGxJtBF+FRAD54hro=;
-        b=gOHEMhveuBDidlQ5lx3daP3HcGAG4JE1zpPTwKB8rqcy7T+Ikya/b5kZXBYfkQUE+8
-         ZIDaGrvF6l1E1b+F8NKoyzb7Z/0va4ga8AWniVT69rjt0rAzVCpOVkDfCldk7rOVby1N
-         tqEFSeukPxdg1hWySubrk9qG/ek1nThpHIGpzaaR0puHgpJ/U3NCe3yuT6/qVJgcamiB
-         jCbn4njFsv8J4/BINtCS3okeIREDVYFtVwMaF8LvHCiGKR+ij9keLh058XDcq1aipqFp
-         XpO1C6Rf1uPb1w0zcY+bToyYOfFh8DKomFwiWs78D8+7PNeM9hVztkSOfhauzObSch1H
-         urLw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783355813; x=1783960613;
-        h=content-transfer-encoding:content-type:mime-version:subject
-         :references:in-reply-to:message-id:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=0pJcWvIhqLuJxPO4aE4cyY/xCREGxJtBF+FRAD54hro=;
-        b=rwrmBJrGG2FmwPh3EpqVABY5awq1TYAqOgnAPEcK3KgCXLEgRUyyGQLOtDn/0jnIqW
-         4LngiOvbhMEz9jq7Lezc7y8xh2o/vWbgAhUUhwgdDawEd6jZiAs9pYTlJaxjlOv14n2E
-         jAOXxzN7XhUYKyLCmEzlybl2o/Jn422pun8QR+To8K3FcgUy632GoJY04nkGZ9VayfGm
-         HvsF8u75hEneCak5JnseeHNlI611nRTGuVihH9yunLlFXyYZMwf3B38dxl7PaMOeewCN
-         g+iHR1GunpITsuYFg+tbbgHQn5+cEbHWnyalI7os9sbZwqrUItFslgJ321TDwnzOJIs5
-         +9wg==
-X-Forwarded-Encrypted: i=1; AHgh+RoHymD/g5OriehWLl+FmqZmFCdn5m++XaiaecMTFyoGjT6js5EknwnAAjxPaV8wgPfrOIlknK5roV4jeOVqYA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwUuNCnCKcgJrrziHGHjn7IiEBSvqPqCyh3TnBApgIvNFn1qaUg
-	jnkyVDCCqFanKwR1Ewmj9d+qX58RBaL1g1tKfEIv5afe/mQmjQnm2d5i
-X-Gm-Gg: AfdE7ckcvbpizx3sYBIEfZZpCE4fggr89rm8EUUia48bLWx1ByGNh674BspQW9BT/EV
-	bZe24zT7eQ8w4QmOPdsTFAqZK3wqsuxYaM3Y3O7iOCxHaTU3n0u4GFo+3D5AuByqWjPVWmG5t3S
-	5/WxL/N5vTIUXxcqMZwypEuNiS9dcDBIIQ8KKOazsfxCSd/FGHfrlXC043HCEOEtVAnQoZMxuvx
-	n3fmoPO+nEKQSe1/td2ZI/smXE13IAQw2u+NYxE2CZtRV5mb7fR8fG964qXVjKHfHb/8bL/zGCg
-	8tlNYQciCUEweddsMqBiQompnfnxp7j836A6tbp6s+FKosNYkAv02v8YSwBrMr5fGJYfrEN694+
-	XRI4sV8eeUPYEZ5OW5cFJg7qaXaHVSwDwHaaziVEiCyogU+QD6pZ2U730lj5A6DeTPZ1wEtQysT
-	GdZ0ym2LoRO6ki68e9EtPk7AQoLmvE4J3eAbpMNFGXF+eFkDjjme5I53nKaWnlRses2w==
-X-Received: by 2002:a05:690c:ed6:b0:80c:85e5:8750 with SMTP id 00721157ae682-81be33a3727mr8097857b3.57.1783355812853;
-        Mon, 06 Jul 2026 09:36:52 -0700 (PDT)
-Received: from gmail.com (172.235.85.34.bc.googleusercontent.com. [34.85.235.172])
-        by smtp.gmail.com with ESMTPSA id 00721157ae682-8144bd26ebfsm59805817b3.48.2026.07.06.09.36.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Jul 2026 09:36:52 -0700 (PDT)
-Date: Mon, 06 Jul 2026 12:36:51 -0400
-From: Willem de Bruijn <willemdebruijn.kernel@gmail.com>
-To: Shiming Cheng <shiming.cheng@mediatek.com>, 
- davem@davemloft.net, 
- edumazet@google.com, 
- kuba@kernel.org, 
- pabeni@redhat.com, 
- horms@kernel.org, 
- matthias.bgg@gmail.com, 
- angelogioacchino.delregno@collabora.com, 
- willemb@google.com, 
- daniel.zahka@gmail.com, 
- alice@isovalent.com, 
- sd@queasysnail.net, 
- eilaimemedsnaimel@gmail.com, 
- imv4bel@gmail.com, 
- nbd@nbd.name, 
- dsahern@kernel.org, 
- netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- steffen.klassert@secunet.com
-Cc: stable@vger.kernel.org, 
- lena.wang@mediatek.com, 
- shiming.cheng@mediatek.com
-Message-ID: <willemdebruijn.kernel.27b4940999026@gmail.com>
-In-Reply-To: <20260706034611.360-1-shiming.cheng@mediatek.com>
-References: <20260706034611.360-1-shiming.cheng@mediatek.com>
-Subject: Re: [PATCH v5] net: gro: fix double aggregation of flush-marked skbs
-Mime-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: 7bit
+	id 1wgnGI-0000000DDUO-2yn7;
+	Mon, 06 Jul 2026 17:37:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=protonmail; t=1783359456; x=1783618656;
+	bh=v2R7RMzgtl4p0GUyY1wULxMAxNHG70RoVQmfeFubRL8=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=Tmwz7SmHDAgLUbBdkKgYKpJS7gp59kkKj6XRcI2cpJdIOO9cBKlV0r14p9wHsP4zH
+	 b0dOACHWQ3AHO9qcXZmjzwPPlM20znCP9hiR/NrvjwKfsUMcw/fXVOCMc68m88bNvh
+	 x0ErvReN98A48O/teawZ9bv7Fs09pMTfd+w+izmN/j6gHmFq26/4wKoNQi9jW4VdOc
+	 luyEcOG8T4e9IVdV2LV1yfiidJ8MvkaeASsTcCagXZdubT4W3MUQXF4iV6CvhGnnjh
+	 9yZBn0fc6TdEWmlvgYoZKVCN2fN+btC3fpmF7jwR80JwhlurzVYWkqXH7F7pl9qvAf
+	 t9MKIMhCdmlTQ==
+Date: Mon, 06 Jul 2026 17:37:28 +0000
+To: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+From: Zakariya Hadrami <zkh1@proton.me>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-watchdog@vger.kernel.org, Zakariya Hadrami <zkh1@proton.me>
+Subject: Re: [PATCH v2 0/5] ARM: Basic support for Amazon ford tablet (MT8127)
+Message-ID: <20260706-mt8127-amazon-ford-basic-v2-0-akvkMzQcnDB-79Ya@proton.me>
+In-Reply-To: <20260617-mt8127-amazon-ford-basic-v2-0-6859e29e72a8@proton.me>
+References: <20260617-mt8127-amazon-ford-basic-v2-0-6859e29e72a8@proton.me>
+Feedback-ID: 198761268:user:proton
+X-Pm-Message-ID: 879d977e9a35ea1cee412757959b56d4f370c935
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_093654_366023_CE311A6E 
-X-CRM114-Status: GOOD (  22.91  )
+X-CRM114-CacheID: sfid-20260706_103743_538511_4AE63564 
+X-CRM114-Status: UNSURE (   5.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,95 +69,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[PATCH net v5]
+Hi everyone,
 
-Shiming Cheng wrote:
-> The skb_gro_receive_list() function is missing a critical safety check
-> that exists in the skb_gro_receive() implementation. Specifically, it
-> does not validate NAPI_GRO_CB(skb)->flush before allowing packet
-> aggregation
+Gentle ping regarding the last 3 patches of this v2 series. First two docum=
+entation
+patches were kindly reviewed respectively by Mr. Roeck and Mr. Kozlowski.
 
-In v3 I requested referring to the commit that fixed this in
-skb_gro_receive: commit 0ab03f353d36 ("net-gro: Fix GRO flush when
-receiving a GSO packet."). That explains the issue well.
-> 
-> This allows already-GRO'd packets with existing frag_list to be
-> re-aggregated into a new GRO session, corrupting the frag_list chain
-> structure. When skb_segment() attempts to unpack these malformed packets,
-> it encounters invalid state and triggers a kernel panic.
-> 
-> Scenario (Tethering/Device forwarding):
->   1. Driver: Generated aggregated packet P1 via LRO with frag_list
->   2. Dev A: Receives aggregated fraglist packet and flush flag set
->   3. Dev A: Re-enters GRO, skb_gro_receive_list() is called
->   4. Missing flush check allows re-aggregation despite flush flag
->   5. Frag_list chain becomes corrupted (loops or dangling refs)
->   6. Dev B: TX path calls skb_segment(), crashes on corrupted frag_list
-> 
-> Root cause in skb_segment():
->   The check at line ~4891:
->     if (hsize <= 0 && i >= nfrags && skb_headlen(list_skb) &&
->         (skb_headlen(list_skb) == len || sg)) {
-> 
->   When frag_list is corrupted by double aggregation, when list_skb is
->   a NULL pointer from skb->next, skb_headlen(list_skb) dereference
->   NULL/corrupted pointers occurs.
-> 
-> Call Trace:
->  skb_headlen(NULL skb)
->  skb_segment
->  tcp_gso_segment
->  tcp4_gso_segment
->  inet_gso_segment
->  skb_mac_gso_segment
->  __skb_gso_segment
->  skb_gso_segment
->  validate_xmit_skb
->  validate_xmit_skb_list
->  sch_direct_xmit
->  qdisc_restart
->  __qdisc_run
->  qdisc_run
->  net_tx_action
-> 
-> Fix: Add NAPI_GRO_CB(skb)->flush validation to the early-return check in
-> skb_gro_receive_list(), matching the defensive programming pattern of
-> skb_gro_receive().
-> 
-> Fixes: 3a1296a38d0c ("net: Support GRO/GSO fraglist chaining.")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Shiming Cheng <shiming.cheng@mediatek.com>
-> ---
->  net/core/gro.c | 9 ++++++++-
->  1 file changed, 8 insertions(+), 1 deletion(-)
-> 
-> diff --git a/net/core/gro.c b/net/core/gro.c
-> index 35f2f708f010..b1573d98f3a5 100644
-> --- a/net/core/gro.c
-> +++ b/net/core/gro.c
-> @@ -229,7 +229,14 @@ int skb_gro_receive(struct sk_buff *p, struct sk_buff *skb)
->  
->  int skb_gro_receive_list(struct sk_buff *p, struct sk_buff *skb)
->  {
-> -	if (unlikely(p->len + skb->len >= 65536))
-> +	/*
-> +	 * Packets marked with NAPI_GRO_CB(skb)->flush have already gone
-> +	 * through GRO/LRO processing and must not be aggregated again.
-> +	 * Re-entering frag_list GRO may corrupt the frag_list chain and
-> +	 * later crash during GSO segmentaiont.
-> +	 */
+Link to the full v2 series thread:
+=09https://lore.kernel.org/all/20260617-mt8127-amazon-ford-basic-v2-0-6859e=
+29e72a8@proton.me
 
-Such a verbose comment is not needed. Code would be overwhelmed by
-comments if done everywhere.
+Thank you very much.
 
-> +	if (unlikely(p->len + skb->len >= 65536 ||
-> +		     NAPI_GRO_CB(skb)->flush))
->  		return -E2BIG;
->  
->  	if (!pskb_may_pull(skb, skb_gro_offset(skb))) {
-> -- 
-> 2.45.2
-> 
-
+--=20
+Best regards,
+Zakariya
 
 
