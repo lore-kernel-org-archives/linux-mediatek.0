@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDE68C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 06:37:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C2E2C43458
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 06:50:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VjcZmBFuXjLsV7sfYoSAPXXZPZioIsyWeSwOGddaHg0=; b=vBXS2kZmjEuMa3aCV0GyPSDNPM
-	t3pR8/uR0Qb0R2/N6ffqJTjxyvnHuJ17G3mzPmOfy4gcJtJ5+wp0xhDU5UL//qqaP2PcWGFbtfcMu
-	H+/pp0OMTIcQdmc2FyYR3EYhqPQCutOr0UTiZR25H4dqMh7t77ye8EWXKJBSY7LnkPsVhrsmImZP1
-	C/D7vWPwSk67ND2zfEAhhIuoiAUVx2s3mioAuN3JJ5AX196JwSToaATTHuXoU5lNH6nlh40FG13so
-	SI0w3Z4siUQg2EmC9UKmvSsfXGmSLQKWWFsufMvIo4NV8uvejq1/4fvr6M+huUZC9G10+zk1RsWlZ
-	heLOjbOQ==;
+	bh=MBcKvaitl6TGKL/fg12umkfFHChEJFVRuFuHd7Ccm5Y=; b=KRLgZbkVcp1dXJ1RJfHmAr+n5N
+	48jNzUyGkRIKqQf4NXEdbYF1zAe8inrkNBFqm4uec7hkiUIDO4NF+ddL8Hb0H7+4wagJBGmG5SFOG
+	7J3mhrEDNrIGYXLeg0U3DcndNX5rzWYZDmEBnpMy/Eef07GXnKToR4zRlv32PXWQed2/QxMWg+Ofp
+	n0ufpx60ouMQKXG4x/xkql+n8rjnzzVtJM3XlGYg0lzJOUUgOSPPRTSLC2gYDZdusW3/kjYyadP3h
+	bpl0FOJndMM8A+adO44UbIjWRPN1FA7vgp/2m3QiHE8IhwJfZqSUQ3a1xtSa1pmR0Vj4suGbO+fu3
+	xx6Xp+2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgcxS-0000000BdU8-2kYb;
-	Mon, 06 Jul 2026 06:37:34 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wgd9r-0000000Beq9-04qm;
+	Mon, 06 Jul 2026 06:50:23 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgcxR-0000000BdTY-2LQ4;
-	Mon, 06 Jul 2026 06:37:33 +0000
+	id 1wgd9p-0000000Bepo-1ANP;
+	Mon, 06 Jul 2026 06:50:21 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8AAFC60018;
-	Mon,  6 Jul 2026 06:37:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3EFA11F00A3A;
-	Mon,  6 Jul 2026 06:37:32 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B2E5661383;
+	Mon,  6 Jul 2026 06:50:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 65E051F000E9;
+	Mon,  6 Jul 2026 06:50:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783319852;
-	bh=VjcZmBFuXjLsV7sfYoSAPXXZPZioIsyWeSwOGddaHg0=;
+	s=k20260515; t=1783320620;
+	bh=MBcKvaitl6TGKL/fg12umkfFHChEJFVRuFuHd7Ccm5Y=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=YDyKS0SaRDvwlaShaJjV9biNKvr0BeBb2h3WIkgVUVMOtl/pqz7jwholBzal2OxMX
-	 FJFO0GE0tFw3/VQuPzqDai2SnLB219yrF4noFlP6D6luh0uwUu+TmSh8sTgYmFJly0
-	 S/KmJOPJe1oDQDBJPrEP6lKy6DMjAWS/XKAxktdISW3zP2sTCIsGevRz1DSwlXWCnp
-	 A62U9+WLtsCIQ/1RoRqwTojDt0iwpFIFT3kDapWfqoPF9ZWz8nDDWaxeFJcrPgfTIf
-	 e4sFc8+idj5v1sMgInW8l0tEcSH1fa7qE1vJ/UYlmvIOHzefPNJF4kfD1jKeLXQ+fH
-	 vWF6kuxUltseQ==
+	b=INOnzt4tSmE/dVljgT+XcA6lbhwyBP1xun90kstroUCflGF5BhkiCaHIWf90V0ERE
+	 SpgABeN5sE8ZVwDCvMJm3gjPYN3MPdRIoIgqJb+ilBy0sF2JSEuA4rbU37vte0NAJN
+	 XwzSKQ45QdF3c76tUCyK1IHxE0zv68FmmlGNsLUgztP4/hB5DQ/XYXKrRcVL9IrAr6
+	 alUNpCJLlLmaUIgteZZqUuglxVMFgTPtGU5Cj4G8ZvBRWIfSKwGkfet3o1YGpdEi/E
+	 HBnhLEhHiBok2FaYXLeI5PIQgKsF4UhsBGA44elzdUIpLH130SRvoJlaMsaacmtvL4
+	 /k6oj4VzzBeFg==
 Received: from johan by xi.lan with local (Exim 4.99.4)
 	(envelope-from <johan@kernel.org>)
-	id 1wgcxN-00000001Y5w-1Pmp;
-	Mon, 06 Jul 2026 08:37:29 +0200
-Date: Mon, 6 Jul 2026 08:37:29 +0200
+	id 1wgd9l-00000001d97-3Qv5;
+	Mon, 06 Jul 2026 08:50:17 +0200
+Date: Mon, 6 Jul 2026 08:50:17 +0200
 From: Johan Hovold <johan@kernel.org>
 To: Guangshuo Li <lgs201920130244@gmail.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	CK Hu <ck.hu@mediatek.com>,
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	Hans Verkuil <hverkuil+cisco@kernel.org>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Marco Crivellari <marco.crivellari@suse.com>,
+	Thomas =?utf-8?Q?Wei=C3=9Fschuh?= <thomas.weissschuh@linutronix.de>,
+	Kees Cook <kees@kernel.org>, linux-media@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	stable@vger.kernel.org
-Subject: Re: [PATCH v2] drm/mediatek: mtk_hdmi: Fix DDC adapter double put in
- v2
-Message-ID: <aktNKSUuxVYLpqsJ@hovoldconsulting.com>
-References: <20260706015507.453222-1-lgs201920130244@gmail.com>
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] media: platform: mtk-mdp3: Fix SCP device refcounting
+Message-ID: <aktQKf4QrsnUADdf@hovoldconsulting.com>
+References: <20260704173119.254975-1-lgs201920130244@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260706015507.453222-1-lgs201920130244@gmail.com>
+In-Reply-To: <20260704173119.254975-1-lgs201920130244@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,32 +79,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 06, 2026 at 09:55:07AM +0800, Guangshuo Li wrote:
-> mtk_hdmi_common_probe() gets the DDC adapter with
-> of_find_i2c_adapter_by_node() and registers a devm action to release the
-> adapter device reference with put_device().
+On Sun, Jul 05, 2026 at 01:31:19AM +0800, Guangshuo Li wrote:
+> mdp_probe() first tries to get the SCP handle with scp_get(). When that
+> fails, it falls back to looking up the SCP platform device with
+> __get_pdev_by_id() and then reads its driver data.
 > 
-> The HDMI v2 remove callback also calls i2c_put_adapter() on the same DDC
-> adapter. This is not paired with of_find_i2c_adapter_by_node(): it drops
-> the adapter device reference before the devm action drops it again, and
-> it also puts a module reference that was never taken.
+> The fallback lookup returns the platform device with a reference, just
+> like scp_get() does. However, the fallback path currently drops that
+> reference immediately after platform_get_drvdata(). The driver later
+> still calls scp_put(mdp->scp) unconditionally from the probe error path
+> and from mdp_video_device_release(), which drops the SCP device
+> reference again.
 > 
-> Remove the extra i2c_put_adapter() call and drop the now-empty HDMI v2
-> remove callback. The common devm action releases the adapter device
-> reference.
-> 
-> Fixes: 8d0f79886273 ("drm/mediatek: Introduce HDMI/DDC v2 for MT8195/MT8188")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
-> ---
-> v2:
->   - Drop the empty remove callback, as suggested by Johan Hovold.
->   - Mention that i2c_put_adapter() also drops a module reference that was
->     never taken.
->   - Fix the Fixes tag.
->   - Add Cc stable.
+> Keep the fallback reference until the existing scp_put() call, so that
+> the fallback path follows the same ownership rules as the scp_get()
+> path.
 
-Please remember to CC reviewers:
+Thanks for catching that.
+ 
+> Fixes: 8f6f3aa21517 ("media: platform: mtk-mdp3: fix device leaks at probe")
+
+This one should also go to stable:
+
+Cc: stable@vger.kernel.org
+
+> Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
 
 Reviewed-by: Johan Hovold <johan@kernel.org>
+
+Johan
 
