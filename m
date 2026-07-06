@@ -4,82 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D641BC43458
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 08:19:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AC75C43602
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 08:27:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eKAddAQnV4Mof49a5ZigeyhJcCiP49LYRA419jtb8sc=; b=ujWZMLpwYrGUVE90p8+kbJIEnB
-	3VbnHgc4cOTgNnomnc2Cu35Md7YdKACFC9LNwutW4hoXb3pYLHoFW9S/BvXmsLwOIavGERZ6NVSGv
-	sCr//Pdo8m6T4GF4MtYU+xnkqQE6ck88v8nQ8ODURRdmJu1tkp9nXB1PnPR0nPlQpWZWPLIQ4/60R
-	YZ11Hkl0JnAdzkUcX0B3WJcnqonIA1QCSajS8MxIKuIvsQSGnjn6Ksm/56/cca5QyFbdqLq6SpooR
-	4sgz07369i57Us9QQi1XhT9wo2f58xFg2Y4X5XBe8x26WI07O4dk9xc0FXlCEedTdmrZYnRDOXd45
-	YnQDUPbw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FbNlnCUzmA8Q8RudJAiPNZWwoLt4HvmES37Xr8snSwo=; b=SrC+4rmWB9v4x4NxnbyMmm8eux
+	3sAxB0sm6znNwEGprYdtCnDL5NQyZ54D1gOIjhC6XQp+KoFRvc7BhD1lLR8pKunIMmGU26vm/gHje
+	+cRlGZl8DoMk3DIgcqqGpaqmG5xcNAmDEJ8g0o44iopD06KRFdUbXK+EjNMffRl1WayZRPeHwBOM+
+	bx2J77dYgbQflM2I7X7+7PqYcv9PWA1bw4zhlLqD9zkE4vFf8PNweFuua6UzQfJA55vbAqCaEIVzT
+	xKiftQu6waYlueRSy/ezgN2Xlkoj0o6x28Mngy4nO9iU6pkUqgJfI6ciAaQpqIaS+YQ1/+LsZ9Dte
+	3b0QQ5BQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgeYC-0000000BoFc-0IIj;
-	Mon, 06 Jul 2026 08:19:36 +0000
-Received: from mail.schwarzvogel.de ([2a01:4f8:252:1806::25])
+	id 1wgefv-0000000BpAo-1ENw;
+	Mon, 06 Jul 2026 08:27:35 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgeY8-0000000BoF6-19mK;
-	Mon, 06 Jul 2026 08:19:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=schwarzvogel.de; s=x; h=In-Reply-To:Content-Type:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date;
-	bh=eKAddAQnV4Mof49a5ZigeyhJcCiP49LYRA419jtb8sc=; b=JXBskQTw5CCzHgaZB+4VudI7mV
-	68KcNcOXo9HHXyeRzple9XTDPxezjcRRiMisayRHEwz61yknMfqcDDHGxeQFR6L5tYp1QhihKgG3y
-	4A0YzbYnkja529pgVOL2Wofr/hjV7S1dSQX9hU0MSBPvoElTgWWG+qZmte46uNwFDidJuaHUt9csb
-	MKpWvzpSeHhUT02Mel+DgnQMWFbdfeEJnL6iUrfT5reNqLGof9H+6Vc5gAziPgX7fS5OdZGGYecw+
-	hbwfhKr8FbJi4AWk7t6NND1ezyZG7mMFK5ww3sQmP5EdbsdDV5b5xMC9uWbwBJ7izR3If94qeSC3e
-	LHJOewDw==;
-Received: from klausman by mail.schwarzvogel.de with local (Exim 4.99.4)
-	(envelope-from <klausman@schwarzvogel.de>)
-	id 1wgeXu-00000000l0g-3HM8;
-	Mon, 06 Jul 2026 10:19:18 +0200
-Date: Mon, 6 Jul 2026 10:19:18 +0200
-From: Tobias Klausmann <klausman@schwarzvogel.de>
-To: Thorsten Leemhuis <regressions@leemhuis.info>
-Cc: Rosen Penev <rosenp@gmail.com>, linux-wireless@vger.kernel.org,
-	Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	Linux kernel regressions list <regressions@lists.linux.dev>,
-	Klara Modin <klarasmodin@gmail.com>
-Subject: Re: [PATCH wireless-next] wifi: mt76: fix MAC address for non OF
- pcie cards
-Message-ID: <58c4dee3-5b13-4faf-8803-3d52f59eba51@skade.local>
-Mail-Followup-To: Thorsten Leemhuis <regressions@leemhuis.info>,
-	Rosen Penev <rosenp@gmail.com>, linux-wireless@vger.kernel.org,
-	Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	Linux kernel regressions list <regressions@lists.linux.dev>,
-	Klara Modin <klarasmodin@gmail.com>
-References: <20260630210215.400379-1-rosenp@gmail.com>
- <036cc81d-115a-4c0e-9542-71ed2ee04e9b@leemhuis.info>
+	id 1wgefq-0000000Bp9j-0fwg;
+	Mon, 06 Jul 2026 08:27:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783326447;
+	bh=NkIZmh+s/VjlejKVHahLAUu+YBVSswgxPaKaVGW3dvI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=KEmsYLTk8g2i1/b1AtD63hLseWnA7yL1At/puOH3wj17FmCA6Bn1HWvv5dQlt3GqO
+	 CikRqyhgnQTISwAG/QoYTrvLC87QRO01vdkScdOuKmRaGNKp3CcFTqEbCHIOkeQ/oH
+	 A+Cisw2qmt/WCpv6SJ6y++f0HjmNbnUVVq+Ei+VLjr0FdkYx1YYcfqBpkEgHBmXRIB
+	 2XuGc80RjYTnoH+EG4+JAxi/wSeKmCTfHkeW/Ntm84oWqogT6ncUX0GxaHWRzdeOnq
+	 Vc3CjbvHiCEU5GotgIJL518Ui4CF2kLHA99Cn3nPGWJQ1stE40DZ2LaxNI7nLiFo/f
+	 h3nW+pIM3VfyA==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2049517E018C;
+	Mon, 06 Jul 2026 10:27:27 +0200 (CEST)
+Message-ID: <efaffb1b-1084-40f1-8d32-2679f0a425ab@collabora.com>
+Date: Mon, 6 Jul 2026 10:27:26 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <036cc81d-115a-4c0e-9542-71ed2ee04e9b@leemhuis.info>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] clk: mediatek: remove unneeded 'fast_io' parameter in
+ regmap_config
+To: Wolfram Sang <wsa+renesas@sang-engineering.com>,
+ linux-kernel@vger.kernel.org
+Cc: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260705163523.1797-2-wsa+renesas@sang-engineering.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260705163523.1797-2-wsa+renesas@sang-engineering.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_011932_638782_07EFD0F3 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20260706_012730_357393_217C98D9 
+X-CRM114-Status: UNSURE (   6.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,34 +79,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi! 
-
-On Mon, 06 Jul 2026, Thorsten Leemhuis wrote:
-> On 6/30/26 23:02, Rosen Penev wrote:
-> > If seems the check for err is wrong as the proper macaddr gets written
-> > to from the EEPROM itself. Meaning checking err from of_get_mac_address is
-> > wrong as the proper macaddr has been written by this point.
+On 7/5/26 18:35, Wolfram Sang wrote:
+> When using MMIO with regmap, fast_io is implied. No need to set it
+> again.
 > 
-> By our submission guidelines and requests from Linus this afaics should
-> also contain:
-> 
-> Reported-by: Klara Modin <klarasmodin@gmail.com>
-> Closes: https://lore.kernel.org/all/ajRmlyx_AEGybykL@soda.int.kasm.eu/
-> Reported-by: Tobias Klausmann <klausman@schwarzvogel.de>
-> Closes:
-> https://lore.kernel.org/linux-wireless/30a90714-02d8-45f2-a7f1-4cfe0627d50b@skade.local/
-> 
-> Both of them now CCed, too, to give them a chance to provide a "Tested-by:".
-> 
-> > Fixes: 31ee1582717e ("wifi: mt76: fix of_get_mac_address error handling")
+> Signed-off-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
 
-Indeed:
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Tested-by: Tobias Klausmann <klausman@schwarzvogel.de>
-
-I've been running 7.2.0-rc1+the revert for a few days now with zero
-issues (not that I expected any).
-
-Best,
-Tobias
 
