@@ -4,80 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0CD7C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 06:56:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED7F4C43458
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 06:56:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=K+iH0oScX6vUoO3wK//wIGjcdPMvMKHF3g6QanG2LHo=; b=sTCLG7JlpAzB2zFhAzoB2eFzBh
-	1QXD5gIkxSxxc8w9MXw8yLzPBD0C/Gwulns5CGF8BTV+R/NmA2WTrcLnmqJ+rXDl+7Jh6ja/eYKYX
-	n18kRwqSrr8K6wGBqJK9tfqyBTwogthNrTXMU2wxLaBElPDHRxHuhYac/dGOpoORTInJQ13on9Dnn
-	Fu/bhLkiOuCd8Jky8leTUL94afMJpNFtUBNHTw2qui8xnM9wgJk5Kiufql9/1VnisrDU4nuajVHyd
-	mSZVWdKe5p+kK7m3iyHf4Znj+PogrJmXCzYtUHdCkvlYYgAQskHEaBcjNA8vp+eXx5k+sdhkK2RHg
-	jMuVwpQw==;
+	bh=2hQHBwjnlwqn6dPE3I0HghH4cOLWxdH4aGvpuK1BKR8=; b=xLruEdJ554TEZIC/WJF6a1lWuI
+	gCxacvcBWGas/Tx6Cja78DN2ty4DcTzSW+N2d1Nop7wkm372BCjMbwUuzwpQQNOPpZoUkyiM1YwhL
+	MhR8VooUg0+4PwNUELofsZaRaGKBQGI+pKTZV3MWvbeuNOzTISFFKy/RRdtzwTRO8vq6DPa76tUfC
+	ZymThyW9spSfWlgmQPkLAG3AnEKRMGrYvsA9Egt4b8hA7ClcfaGLWQmUclBra/Rzi1zDQjGHm0Xlv
+	o9YEdSoJmesoJELVnVcPFNSgJM0TpAOtgEqQp8wZuaCra4QZBRXUJH2tWpdMrfHDEc0cDREiZKamV
+	Q+XRQFTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgdFZ-0000000Bfeu-34B4;
-	Mon, 06 Jul 2026 06:56:17 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	id 1wgdFm-0000000BfiN-3KzA;
+	Mon, 06 Jul 2026 06:56:31 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgdFU-0000000BfdI-13Kg
+	id 1wgdFl-0000000Bfhl-19Ii
 	for linux-mediatek@lists.infradead.org;
-	Mon, 06 Jul 2026 06:56:16 +0000
-Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-847e6f03df8so3285262b3a.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 05 Jul 2026 23:56:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783320971; x=1783925771; darn=lists.infradead.org;
-        h=mime-version:message-id:date:subject:cc:to:from:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=K+iH0oScX6vUoO3wK//wIGjcdPMvMKHF3g6QanG2LHo=;
-        b=UMnIHIaw/j0yEqcU7m4EMrXhV3bmjGLtrAUtCpc3tAe79M7PgKt4zE1Al9T+kKh7Dl
-         j7i/JXpRsM5v4wbICl51VP9EWddk2+TW+jLQAWCULsItJP8K7y+CqjB1wIbi5XNmGWJg
-         DeRR0BmPtvLCmaNpjDQy0NEMIMov8OfQHpIFV3dA6hWIX9HCzCgqEieaCdZBvJ+QRNwu
-         PLtDBs57rxhUTyfGJcZjTc+Dn9M/VVyiqwLJ5kw2evlq3cQn5IPc7EzDfqZRM3JIz2xF
-         Qi/BRX4k/Y+kA8kYgHjVqMZ89Jakhr97GW685x9ixL2EIInqwVHMrf2atOsBK81jqco6
-         c4/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783320971; x=1783925771;
-        h=mime-version:message-id:date:subject:cc:to:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=K+iH0oScX6vUoO3wK//wIGjcdPMvMKHF3g6QanG2LHo=;
-        b=FiV2rFeIjuxdFbodTeLRJv2NZGDhJUxFfpkRNiR1TgxdnCf9EKF4qx6sN9cpNb0dX4
-         Fo9cAsbDPPvBXj1ldG4YCOLp/ZY73uzOFti3caaqCE2+30lgd8IBofTlQYIms4tBdIrS
-         hyJ7R8qsrzS+5SSNLbB34d07uarxk7XKX/5xZ05z93aEmxJG1BioH9uN/GWAKSFxMrsC
-         4934irU7ck4biIvDEPpMbFLdU62L9JL1vU0bg4LTG6G3qurjZ1eSBPbpjprY+XRYi3yo
-         YiVbOOLMk7Gd5H3d+xkKkkU1fZwA4eyVVW138U9d0w4ZQfzKpr6qDXb00GJclFSxV95f
-         eYXQ==
-X-Forwarded-Encrypted: i=1; AHgh+RonN15zj7bbicfEZS/g25u8OzafqpRfy7LfAeqsrRP2LBWyiX2MY/Flfq7nI6ay3hNk/AkLYWWWo5u+22hGHw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YweHanZy10LYQkkjOWFJd6edbMBUPg6yuhj8moC9R2eRznjOTxo
-	LxQ8blpz8/w0Avt7ll/8ocXtoBD5rBA1kTio53fRch0Za1Hra7F+PCSt
-X-Gm-Gg: AfdE7cnMlu5l0ayc3TTFyIFGIYb6bauZVEvAl/0r/OCKZ9j4Mhpwka8NWKg1s70+YLz
-	+O00xuerDhmu0Pjb3ovarvL01yc5LPpjjnxmf90YHMoOw3ReMooZp2/gIEapsSVMFx07hUSPSCP
-	TT0fdzeG7GjX06q5+LV97HF1vQcRKBw1be3LsbayFNJUPrpr51vfZ/mOPxRXezTSpmyo5ikisBT
-	t0iHgicutmReMlc1MLnyMN2/9b57K+qwqXEQjVD2GdMVZAiFFRfZujeMKsdvtwZ4r7W04U+uC5X
-	L3fl46nvhS7MoNNLvOhwLdEu2vCVTS4wYs3NYNQAc6XIP8QRQmvHvOyAie7vzixsJEWv0nZ5o7x
-	ojr9Sin2N9tCdM5ub1F751kJn+hguaFVJ8MnhdSoFEsiI56Mqi8q1dfi44o70QYlAW9K+AZzWuh
-	vpdX7LWA==
-X-Received: by 2002:a05:6a00:4612:b0:847:84a2:cda7 with SMTP id d2e1a72fcca58-847f6d5a847mr9033848b3a.12.1783320970734;
-        Sun, 05 Jul 2026 23:56:10 -0700 (PDT)
-Received: from [127.0.1.1] ([47.253.114.73])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-847f6d7a915sm3181753b3a.44.2026.07.05.23.56.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 05 Jul 2026 23:56:10 -0700 (PDT)
-From: Wayen Yan <win847@gmail.com>
-To: netdev@vger.kernel.org
-Cc: lorenzo@kernel.org, horms@kernel.org, pabeni@redhat.com, kuba@kernel.org, edumazet@google.com, andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH net] net: airoha: fix HTB class modification offload
-Date: Mon, 6 Jul 2026 14:18:58 +0800
-Message-ID: <178332096675.2250671.599544331813347302@gmail.com>
-Content-Type: text/plain; charset=utf-8
+	Mon, 06 Jul 2026 06:56:29 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 5D8EC61879;
+	Mon,  6 Jul 2026 06:56:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12E671F00A3D;
+	Mon,  6 Jul 2026 06:56:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783320987;
+	bh=2hQHBwjnlwqn6dPE3I0HghH4cOLWxdH4aGvpuK1BKR8=;
+	h=From:To:Cc:Subject:Date;
+	b=ltJQNxvtZQBcF3ikQATIetZQg6U+kzmKWAhm2jQXrLiArEMvh9MU6FDW770gd4aSL
+	 1bR4GYUi7viobCEyvuK2bq4A+66F6rOUUCA3FLmDoggz8rUrIDql1t5nrwaWgyXEA9
+	 mr7JM1v1wuGvVTEcuE3BrnNkFqnIwll/qJKdsbxXLbXPcvXv1QFasZDl2CvZfWESt+
+	 4zzjGY83KUFRzBHahMmPcucXwjqKSen+Qt9ukjVxcQ4FDtQLRhkgv/Kd51sd9dowyu
+	 7MpIeLF/8G31QkMHzoriRi5z7YBKfzaLK/VaKFKJfTNst9zyrs0a4UQdb+I29XQ905
+	 Po0C/kRgStXOA==
+Received: from johan by xi.lan with local (Exim 4.99.4)
+	(envelope-from <johan@kernel.org>)
+	id 1wgdFg-00000001dJ7-37Da;
+	Mon, 06 Jul 2026 08:56:24 +0200
+From: Johan Hovold <johan@kernel.org>
+To: Bjorn Andersson <andersson@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Guangshuo Li <lgs201920130244@gmail.com>,
+	linux-remoteproc@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Johan Hovold <johan@kernel.org>,
+	stable@vger.kernel.org,
+	Erin Lo <erin.lo@mediatek.com>
+Subject: [PATCH] remoteproc: scp: fix device reference leak on failed lookup
+Date: Mon,  6 Jul 2026 08:56:14 +0200
+Message-ID: <20260706065614.389412-1-johan@kernel.org>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260705_235612_285709_87C1DAD2 
-X-CRM114-Status: GOOD (  11.59  )
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,93 +78,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-HTB core does not populate parent_classid for TC_HTB_NODE_MODIFY.
-Airoha currently checks parent_classid against TC_HTB_CLASSID_ROOT
-in a helper shared by both TC_HTB_LEAF_ALLOC_QUEUE and
-TC_HTB_NODE_MODIFY. Since the modify path leaves parent_classid as
-zero, the check always fails and changing parameters of an already
-offloaded HTB class is rejected with -EINVAL.
+Make sure to drop the reference taken to the SCP device when attempting
+to look up its driver data before the driver has been bound.
 
-Move the root-parent check into the allocation path and validate
-modify requests using the per-netdev QoS channel bitmap, consistent
-with the delete and query paths.
+Note that holding a reference to a device does not prevent its driver
+data from going away.
 
-Fixes: ef1ca9271313 ("net: airoha: Add sched HTB offload support")
-Signed-off-by: Wayen Yan <win847@gmail.com>
+Fixes: 63c13d61eafe ("remoteproc/mediatek: add SCP support for mt8183")
+Cc: stable@vger.kernel.org	# 5.6
+Cc: Erin Lo <erin.lo@mediatek.com>
+Signed-off-by: Johan Hovold <johan@kernel.org>
 ---
- drivers/net/ethernet/airoha/airoha_eth.c | 32 +++++++++++++++++-------
- 1 file changed, 23 insertions(+), 9 deletions(-)
+ drivers/remoteproc/mtk_scp.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 59001fd4b6f7..8e4e79c1e4c2 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -2766,18 +2766,13 @@ static int airoha_qdma_set_tx_rate_limit(struct net_device *netdev,
- 	return 0;
- }
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index 85a74c9ec521..436656bdfa8b 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -36,6 +36,7 @@ struct mtk_scp *scp_get(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *scp_node;
+ 	struct platform_device *scp_pdev;
++	struct mtk_scp *scp;
  
--static int airoha_tc_htb_modify_queue(struct net_device *dev,
--				      struct tc_htb_qopt_offload *opt)
-+static int airoha_tc_htb_set_rate(struct net_device *dev,
-+				  struct tc_htb_qopt_offload *opt,
-+				  u32 channel)
- {
--	u32 channel = TC_H_MIN(opt->classid) % AIROHA_NUM_QOS_CHANNELS;
- 	u32 rate = div_u64(opt->rate, 1000) << 3; /* kbps */
- 	int err;
- 
--	if (opt->parent_classid != TC_HTB_CLASSID_ROOT) {
--		NL_SET_ERR_MSG_MOD(opt->extack, "invalid parent classid");
--		return -EINVAL;
--	}
--
- 	err = airoha_qdma_set_tx_rate_limit(dev, channel, rate, opt->quantum);
- 	if (err)
- 		NL_SET_ERR_MSG_MOD(opt->extack,
-@@ -2786,6 +2781,20 @@ static int airoha_tc_htb_modify_queue(struct net_device *dev,
- 	return err;
- }
- 
-+static int airoha_tc_htb_modify_queue(struct net_device *netdev,
-+				      struct tc_htb_qopt_offload *opt)
-+{
-+	u32 channel = TC_H_MIN(opt->classid) % AIROHA_NUM_QOS_CHANNELS;
-+	struct airoha_gdm_dev *dev = netdev_priv(netdev);
-+
-+	if (!test_bit(channel, dev->qos_sq_bmap)) {
-+		NL_SET_ERR_MSG_MOD(opt->extack, "invalid queue id");
-+		return -EINVAL;
-+	}
-+
-+	return airoha_tc_htb_set_rate(netdev, opt, channel);
-+}
-+
- static int airoha_tc_htb_alloc_leaf_queue(struct net_device *netdev,
- 					  struct tc_htb_qopt_offload *opt)
- {
-@@ -2794,6 +2803,11 @@ static int airoha_tc_htb_alloc_leaf_queue(struct net_device *netdev,
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
- 	struct airoha_qdma *qdma = dev->qdma;
- 
-+	if (opt->parent_classid != TC_HTB_CLASSID_ROOT) {
-+		NL_SET_ERR_MSG_MOD(opt->extack, "invalid parent classid");
-+		return -EINVAL;
-+	}
-+
- 	/* Here we need to check the requested QDMA channel is not already
- 	 * in use by another net_device running on the same QDMA block.
- 	 */
-@@ -2803,7 +2817,7 @@ static int airoha_tc_htb_alloc_leaf_queue(struct net_device *netdev,
- 		return -EBUSY;
+ 	scp_node = of_parse_phandle(dev->of_node, "mediatek,scp", 0);
+ 	if (!scp_node) {
+@@ -51,7 +52,13 @@ struct mtk_scp *scp_get(struct platform_device *pdev)
+ 		return NULL;
  	}
  
--	err = airoha_tc_htb_modify_queue(netdev, opt);
-+	err = airoha_tc_htb_set_rate(netdev, opt, channel);
- 	if (err)
- 		goto error;
+-	return platform_get_drvdata(scp_pdev);
++	scp = platform_get_drvdata(scp_pdev);
++	if (!scp) {
++		put_device(&scp_pdev->dev);
++		return NULL;
++	}
++
++	return scp;
+ }
+ EXPORT_SYMBOL_GPL(scp_get);
  
 -- 
-2.51.0
-
+2.54.0
 
 
