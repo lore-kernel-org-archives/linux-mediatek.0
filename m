@@ -4,56 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7081EC43458
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 17:37:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B12D7C43458
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 18:22:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:
+	Mime-Version:Content-Transfer-Encoding:To:From:Cc:Subject:Message-Id:Date:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v2R7RMzgtl4p0GUyY1wULxMAxNHG70RoVQmfeFubRL8=; b=gGTznDFqxKvH4N9+pqQH5nI+SG
-	o1QZQi8vmLq+ytLBjuzbC8Wo4NN3k9j2h1ZfeMP43W7SKXu/Nfrq6FMsYmKEduNGoI4Z99JpS1Ne4
-	/jgqVdrdS36NlND+n5UyskdB+xsOeVrK6vdvE1RYKfXX8Fj4YUKUyVJLDxm7HmCDxwHvdiGKWLCRr
-	veevgL9ckwh7d3DRCwqZ1lsLAWondOhyhdTQjvOQoAN4w5tFploFKXfjVnih0vxY1SnckG+8UyFqH
-	S5v5/0na0MRAIz+JmYIsEweB3xx5HwcKavdfQ1FbKCdJYYgpEqSz9xcpzHquWVpmoKBKaFSKKlCo/
-	z8FfcgNg==;
+	bh=+93hx6XVp6hnWKYUhk6yq/sXR5a08PxGewfyuomRE2A=; b=mr4KtybRQ8xJWakQZdrQUXV+L/
+	nqSgmBPsjSXUnWCImLub13bhYu8dYWI8vRx2qNCAxMitmpCXwiN/yUwAAjtAoMMy2/OU/crOL2xWK
+	hkQF9tm2o2qpoXHmI9p2IqcAtto8jPmr44/aLT5kvF2iQuJaIhp5WnmwuVneYATZkdiCkRIuMTkd2
+	oeSp97bLdzMrIvPsxZXe8PAAur1hmXl1oJ333L0n0fjSn98s5bzi8pGPtSVYIwMS6XEG/rPm5XdTv
+	mOGx0vVfzvHHeMc5bAZHeHg6m1pweSM3PjYXt89bEYF/rOASkRSo2dQjyqxnpElTtwYXzeiiaxgT1
+	fWBlke7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgnGM-0000000DDVG-0bsF;
-	Mon, 06 Jul 2026 17:37:46 +0000
-Received: from mail-24418.protonmail.ch ([109.224.244.18])
+	id 1wgnxa-0000000DKdS-343D;
+	Mon, 06 Jul 2026 18:22:26 +0000
+Received: from sendmail.purelymail.com ([34.202.193.197])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgnGI-0000000DDUO-2yn7;
-	Mon, 06 Jul 2026 17:37:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
-	s=protonmail; t=1783359456; x=1783618656;
-	bh=v2R7RMzgtl4p0GUyY1wULxMAxNHG70RoVQmfeFubRL8=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=Tmwz7SmHDAgLUbBdkKgYKpJS7gp59kkKj6XRcI2cpJdIOO9cBKlV0r14p9wHsP4zH
-	 b0dOACHWQ3AHO9qcXZmjzwPPlM20znCP9hiR/NrvjwKfsUMcw/fXVOCMc68m88bNvh
-	 x0ErvReN98A48O/teawZ9bv7Fs09pMTfd+w+izmN/j6gHmFq26/4wKoNQi9jW4VdOc
-	 luyEcOG8T4e9IVdV2LV1yfiidJ8MvkaeASsTcCagXZdubT4W3MUQXF4iV6CvhGnnjh
-	 9yZBn0fc6TdEWmlvgYoZKVCN2fN+btC3fpmF7jwR80JwhlurzVYWkqXH7F7pl9qvAf
-	 t9MKIMhCdmlTQ==
-Date: Mon, 06 Jul 2026 17:37:28 +0000
-To: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-From: Zakariya Hadrami <zkh1@proton.me>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-watchdog@vger.kernel.org, Zakariya Hadrami <zkh1@proton.me>
-Subject: Re: [PATCH v2 0/5] ARM: Basic support for Amazon ford tablet (MT8127)
-Message-ID: <20260706-mt8127-amazon-ford-basic-v2-0-akvkMzQcnDB-79Ya@proton.me>
-In-Reply-To: <20260617-mt8127-amazon-ford-basic-v2-0-6859e29e72a8@proton.me>
-References: <20260617-mt8127-amazon-ford-basic-v2-0-6859e29e72a8@proton.me>
-Feedback-ID: 198761268:user:proton
-X-Pm-Message-ID: 879d977e9a35ea1cee412757959b56d4f370c935
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+	id 1wgnxY-0000000DKbz-1YiA
+	for linux-mediatek@lists.infradead.org;
+	Mon, 06 Jul 2026 18:22:25 +0000
+Authentication-Results: purelymail.com; auth=pass
+DKIM-Signature: a=rsa-sha256; b=RQuPLUX0AgnrLZJVUCxiIX2ZUpaP1ztnxfTSLd3J638vuJAV0mNnU23tAHs/oqGSuezVvg6sE7n8eAS3PPn1ARRIJylwsWEkt1nwMCWgI81iAUBp6jwf+A8idEvKwQMqkMg87gNtBmqPYm2RPs8LA+vLQHvMxQzRpRornwiCQqMRfs1rHy6/+PL93xICFOQCcFDv5jBYdP0dKSRw/vq0W9CzBCBAMua+cdhsG2jFe+aBWPeY2kypG+KIvzo3I+PNh48aBp0NqSYpDbRmGgzMY6FKxVrEppInCWsZZM1b5GxrTyb4msGJx1e2ca7zy1riYiCwLTotlIk4rQiImwmCZQ==; s=purelymail3; d=rcpassos.me; v=1; bh=+93hx6XVp6hnWKYUhk6yq/sXR5a08PxGewfyuomRE2A=; h=Received:Date:Subject:From:To;
+DKIM-Signature: a=rsa-sha256; b=Kh0B5ylVuJIOUxKMm9ypUEKa6ixP4vE15z0DtWFF61NlVf8pt8FKaKDmK/s4EsIpBfN37fLPK+ZXuP32a8tEkXAl1N9nhcx0G4KTwd127+X5LnqjkTh4wOxdeqXmzvjyawp2UV0DVO9d8WXL48p0hV24kYA8C3uZglEepYCZBP5qF5Xi1RJHUzIQ3oGwLY5OIHVk66CwqvHc9WJOF4bbRAPEBqcrtucY4mR2dMvV7HQeMLl4h1fg3lKemsz99DQPN4Ms57GqvlNqefOcdcQMAWdgUH/cViQZUypnksYa9iZ98t3kWtNGZvmVn1bHh8ZRZdaJtAWaFv0fHbTuToKJSQ==; s=purelymail3; d=purelymail.com; v=1; bh=+93hx6XVp6hnWKYUhk6yq/sXR5a08PxGewfyuomRE2A=; h=Feedback-ID:Received:Date:Subject:From:To;
+Feedback-ID: 45355:7809:null:purelymail
+X-Pm-Original-To: linux-mediatek@lists.infradead.org
+Received: by smtp.purelymail.com (Purelymail SMTP) with ESMTPSA id 205051992;
+          (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
+          Mon, 06 Jul 2026 18:21:59 +0000 (UTC)
+Content-Type: text/plain; charset=UTF-8
+Date: Mon, 06 Jul 2026 15:21:57 -0300
+Message-Id: <DJRP3YO7Y0WK.20KNRZIMX1CYK@rcpassos.me>
+Subject: Re: [PATCH v2] Bluetooth: Properly disable remote wakeup for
+ MT7922/MT7925 on Ryzen platform
+Cc: "Luiz Augusto von Dentz" <luiz.von.dentz@intel.com>,
+ =?utf-8?b?Q2hyaXMgTHUgKOmZuOeomuazkyk=?= <Chris.Lu@mediatek.com>,
+ =?utf-8?b?V2lsbC1DWSBMZWUgKOadjuaUv+epjik=?= <Will-CY.Lee@mediatek.com>,
+ =?utf-8?b?U1MgV3UgKOW3q+aGsuasoyk=?= <ss.wu@mediatek.com>,
+ <linux-bluetooth@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+From: "Rafael Passos" <rafael@rcpassos.me>
+To: "Rong Zhang" <i@rong.moe>, "Rafael Passos" <rafael@rcpassos.me>, "Marcel
+ Holtmann" <marcel@holtmann.org>, "Luiz Augusto von Dentz"
+ <luiz.dentz@gmail.com>, "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>
 Content-Transfer-Encoding: quoted-printable
+Mime-Version: 1.0
+X-Mailer: aerc 0.21.0
+References: <20260701-btmtk-ryzen-remote-wakeup-v2-1-767ac7907472@rong.moe>
+ <DJRKO72HWZOI.QJYJUAC45QOJ@rcpassos.me>
+ <79D5F3E6-8F40-4422-BB2D-16691E377394@rong.moe>
+In-Reply-To: <79D5F3E6-8F40-4422-BB2D-16691E377394@rong.moe>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_103743_538511_4AE63564 
-X-CRM114-Status: UNSURE (   5.06  )
+X-CRM114-CacheID: sfid-20260706_112224_473101_F522E118 
+X-CRM114-Status: UNSURE (   9.79  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -69,20 +77,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi everyone,
+On Mon Jul 6, 2026 at 12:08 PM -03, Rong Zhang wrote:
+> Hi Rafael,=20
+>
+> =E4=BA=8E 2026=E5=B9=B47=E6=9C=886=E6=97=A5 GMT+08:00 22:53:17=EF=BC=8CRa=
+fael Passos <rafael@rcpassos.me> =E5=86=99=E9=81=93=EF=BC=9A
+>>Tested-by: Rafael Passos <rafael@rcpassos.me>
+>
+> Thanks a lot for your testing!
+>
+> Your issue sounds related to the remote wakeup issue I am addressing. Aft=
+er triggering the remote wakeup bug, rebooting the platform without a power=
+ cycle [1] always causes a failure in USB enumeration before the driver pat=
+h.
 
-Gentle ping regarding the last 3 patches of this v2 series. First two docum=
-entation
-patches were kindly reviewed respectively by Mr. Roeck and Mr. Kozlowski.
+In my case, just the power cycle was not sufficient. I had to also
+change settings in BIOS [1], and only then it came back.
+Even after reverting all settings to the same state as before.
 
-Link to the full v2 series thread:
-=09https://lore.kernel.org/all/20260617-mt8127-amazon-ford-basic-v2-0-6859e=
-29e72a8@proton.me
+I was hoping to fix this in Kernel, but I don't see a way forward.
+If you have any other ideas or patches to test, send them my way!
+I will gladly help.
 
-Thank you very much.
+[1] I turned off sr-iov, resize-bar & disabled "Bluetooth On/Off".
+In a previous attempt, fast-boot and TPM were also disabled.
 
---=20
-Best regards,
-Zakariya
-
+Thanks,
+Rafael Passos
 
