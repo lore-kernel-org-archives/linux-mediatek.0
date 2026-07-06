@@ -4,119 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EA81C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 07:19:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6C3EC43458
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 07:23:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VIt88eh6zWv+oEhKK/Aw514C6mk0Vd1i5LusZK/Ssuc=; b=CdrpIHuW/qgsSIXRwSiKSOdc/1
-	Fr0f4aOXOQ1PF0taChSbIuDiQXLvv7sWKUyMEAPJ95/efAZEYQZEPwCqZiuLFvg+uZHzlqAeuLBO7
-	1v8c21LIHcSGdkw6GB3swxTFrv+N/+yaqbk+L4EMAva7vE7rPRp+uafPCfT2pvHmrxM5MxqjgVQV7
-	uaH9RurqMPv2sbIe4XU6lvhnGqbvUb38Z+y3YPk9/0JY7UPJj5A6gNfRKz6kPZcxBALYyJrewOnmk
-	HZbBpAMYoUlUGDfiYA9LKyyouoqD/ZL3N/XtJ4fbHSIIHMV6wXRr8tIK4zFtQIEfD7QUtKYIQWSpF
-	Ci/KrM9Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kIBtgCFszTWP1qcdbZOl4sVMRlBDgVmkXu+0qxoupHs=; b=rXPGtt3cK2x1UzuF8/WGvtHNni
+	XUpDaRvjYVFFAmyvtJ2kVhzbMcjbjfl6K+qRky6aiepsyiLYih0wXKy/OPV73EWgo/snliQvH9M3Y
+	bU09tqzLl/oSbc0bGHgodI/f1Gv8JoWHqgb64CTuaZFkYo9QnOdA6Qon9glUdSm2ZlPPYnS54Euiv
+	wq3K+9BlWL9WbnG7zVpA3kdlCVwJz/tSbAUOUfMeaFbnbjrkVM9kZgwxHawaYhrTE9WHq2L6Wa/tn
+	Dyt/aeGLQHu0vbFrNJ6On8u8H69m9mpqRnF2zc+jtv1/u+mjYqin+jLyVViqU5D5GNr4wzMEW7UXC
+	wPl6h06A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgdcR-0000000BiN7-1eav;
-	Mon, 06 Jul 2026 07:19:55 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1wgdg0-0000000BirR-1ULU;
+	Mon, 06 Jul 2026 07:23:36 +0000
+Received: from relay.yourmailgateway.de ([188.68.61.103])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgdcO-0000000BiKw-1p6U
-	for linux-mediatek@lists.infradead.org;
-	Mon, 06 Jul 2026 07:19:54 +0000
-Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-4720d22c94aso2637506f8f.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 Jul 2026 00:19:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1783322390; x=1783927190; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=VIt88eh6zWv+oEhKK/Aw514C6mk0Vd1i5LusZK/Ssuc=;
-        b=m9ANpRyHkZO0DNPZ5tpdKb0G3H+1KfZJD+iijO0+3zVOCMeat9lBhEHGTgN3E7M8XZ
-         WXh7qCsaJBM+yO/5fkUF0Lu0pCcNCLbOWhCgrOszKtcULKYXcyc00lP3rZufIl7SwMrU
-         ykyCW0/4gevAjru7WnD5k76uK5Wq2JAgykYL7h0CviZ7+wSV+8R6vL3bD8D10u5dTFJv
-         173DwNZa8s64Wr116PGM3q+fo3wm8zefAgLyq0KnGcc2oRlTxgNbwFocN7ECat6AH0hH
-         lxeyz0kz3lsUWkeEISCGaAA/xVzvhTEhHXC44s0E0d27RjGEp7dGrPwUdFruXU2pV86A
-         SGew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783322390; x=1783927190;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=VIt88eh6zWv+oEhKK/Aw514C6mk0Vd1i5LusZK/Ssuc=;
-        b=ISBeZZv+2S/zwJDG2RQcX75cAtGJNtRRUBjv7qHCpsoPdIL5zrkNwGnJNcZPOG0Ud3
-         8a53v5dMGG8P1Be+qdlWe5whBUWwzP5BIgB52FJDGnyD9Sz4xtiG5bKTKA1ItOJSAKGs
-         GkhY8uIsJ4MfBtGe0IAFHbPbYtna1QbR+lNZiFS8jt3lDCR3Zdg5cdN8oalfk9/HoGYY
-         j2CoalEtwmzLFkiEq08LrZ1n7s1sQkhym/v4oTfKtr838N1AnzqZTR4LsRhXg7MPRIQc
-         NdV6zFFchMMIfHC9lyo3f7DsdEmlUvxyi918Mgav+7Ie9YOeUXQ+7WLm1MmOcVbFHvMm
-         Udog==
-X-Forwarded-Encrypted: i=1; AHgh+RpMfyjHX8OQIyApn67d0fzh7r5hwZ0jW8woSkADl+SH+3nHIqnWX9CUpktDfkUE4UUCsb7vP+OQZkwiuM2TUA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyQid7/hxqCJ1TYKOl8eLzOOMpgClIW1I+cZF1os6TVAivmmQiQ
-	9KaN0U/4/BLJ7PGGof3sXsCEjGkH2MdzNN2dHNNDtAwu8KpqF+Ojc0cOVVRv0267Hf4=
-X-Gm-Gg: AfdE7cmrdlomAWv9/1/CzwYg958z9/ob/yJaHa6COW4bNv/KIUsnw+iVWJPmi7t6XXc
-	mzutjEjCUw87wigAOr9QL1YalhuZ6QD4xHHWkXtEhdTVHjcIPt74OwY3FTFdgNhgvPavNGewnjl
-	WLGnMvY3Lt9m86YUMpV2pHF4A7zrUiGCuXdDg5Cm5JcMRL7iRluvt20rtT/EqSedKH7NpesYTgd
-	nRSt9wcZRMe4NejU95vG5zGgmGB2gMbTlCujnBcVyQ4Goj+gkexmEqE0wsgi88n5eaqD2k9tFyn
-	aOAladwsyp+o5pvzQNSGDu2G8gv618Lqx3qqyXSALd3U0S5xyN4eGwnLVdZukW3RdaVCocHkiCN
-	8cWqUv9pCG/Cjyi/tbQq16SDj7cCG1SqXmkCEwDSD6Xy0F3o5wHxGNkaLbhYsR2u5PrV1q8xAk3
-	7LMtU30AmKVh/jlpaghXHk8GaQpuWngzQwEVOV5U9fLd/FCqFf2gUtwmzkytoVnKQjc1bVtUj/7
-	2nq
-X-Received: by 2002:a05:6000:d4f:b0:478:4de8:9b91 with SMTP id ffacd0b85a97d-47aac7d018dmr7577860f8f.41.1783322390409;
-        Mon, 06 Jul 2026 00:19:50 -0700 (PDT)
-Received: from localhost (p200300f65f47db0426af56a07ec3b32d.dip0.t-ipconnect.de. [2003:f6:5f47:db04:26af:56a0:7ec3:b32d])
-        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-47aa039bcdasm23183058f8f.21.2026.07.06.00.19.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Jul 2026 00:19:49 -0700 (PDT)
-Date: Mon, 6 Jul 2026 09:19:47 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
-To: Chen Wang <chen.wang@linux.dev>
-Cc: linux-pwm@vger.kernel.org, Sven Peter <sven@kernel.org>, 
-	Janne Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Benson Leung <bleung@chromium.org>, Guenter Roeck <groeck@chromium.org>, Frank Li <Frank.Li@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>, 
-	Vladimir Zapolskiy <vz@mleia.com>, Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
-	Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	Magnus Damm <magnus.damm@gmail.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Peter Griffin <peter.griffin@linaro.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Paul Walmsley <pjw@kernel.org>, 
-	Samuel Holland <samuel.holland@sifive.com>, Michael Walle <mwalle@kernel.org>, 
-	Inochi Amaoto <inochiama@gmail.com>, Orson Zhai <orsonzhai@gmail.com>, 
-	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Fabrice Gasnier <fabrice.gasnier@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Chen-Yu Tsai <wens@kernel.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Hammer Hsieh <hammerh0314@gmail.com>, 
-	Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>, Alexey Charkov <alchark@gmail.com>, 
-	Sean Anderson <sean.anderson@linux.dev>, Michal Simek <michal.simek@amd.com>, asahi@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-rpi-kernel@lists.infradead.org, chrome-platform@lists.linux.dev, imx@lists.linux.dev, 
-	linux-mips@vger.kernel.org, linux-amlogic@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-riscv@lists.infradead.org, sophgo@lists.linux.dev, linux-stm32@st-md-mailman.stormreply.com, 
-	linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH v1 4/5] pwm: Unify coding style of of_device_id arrays
-Message-ID: <aktWoIfY_DdO6gb4@monoceros>
-References: <cover.1783263835.git.ukleinek@kernel.org>
- <20de6cd60c2938aad2d21397b92742849418ab1b.1783263835.git.ukleinek@kernel.org>
- <973f3d6f-6ff4-4685-9c9f-b07987f74d98@linux.dev>
+	id 1wgdfx-0000000Bipl-0Bls;
+	Mon, 06 Jul 2026 07:23:35 +0000
+Received: from mors-relay-8403.netcup.net (localhost [127.0.0.1])
+	by mors-relay-8403.netcup.net (Postfix) with ESMTPS id 4gtwnV2DHtz83DZ;
+	Mon,  6 Jul 2026 09:23:26 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=leemhuis.info;
+	s=key2; t=1783322606;
+	bh=7BcUALbaQ0crsQznMwR03L85X/3Y7vchJUpjg0YxJ88=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=D6td/E/MGunn50kBB5L2rSgdnxhKTqXeXsyhhT1qHrqKo2WwaVYqou4x/lE6HcOnk
+	 fKjFGrAfeq3nF1BbTfxSVF6UV9XaTYZW0pTCZZwuIpb4X0zVpb64uIjcCXZd1N2Xbe
+	 vwE6FviGxplf8+jHgpbAwe7eGR1o/ozwq0UIdRneKq4si1d6hV3KjBOqwUYsA1Jyu/
+	 o8zJe5gICB1t7UEbOLy/2YmRIylbDndC12k8ev4lGGny0IM3CpNP7UCVvbNQZ6Qbqx
+	 h3Mkf2boyEgkabmTxLm+EzlqI9zrbVQLfp4QuhQGrK8iJs5UZNRvXMVs8rtsmtb2za
+	 gvGlqB7EQdmCA==
+Received: from policy01-mors.netcup.net (unknown [46.38.225.35])
+	by mors-relay-8403.netcup.net (Postfix) with ESMTPS id 4gtwnV1TStz839R;
+	Mon,  6 Jul 2026 09:23:26 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at policy01-mors.netcup.net
+Received: from mxe9fb.netcup.net (unknown [10.243.12.53])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by policy01-mors.netcup.net (Postfix) with ESMTPS id 4gtwnS2ycRz8tfB;
+	Mon,  6 Jul 2026 09:23:24 +0200 (CEST)
+Received: from [IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f] (unknown [IPv6:2a02:8108:8984:1d00:a0cf:1912:4be:477f])
+	by mxe9fb.netcup.net (Postfix) with ESMTPSA id 1173E603B3;
+	Mon,  6 Jul 2026 09:23:22 +0200 (CEST)
+Authentication-Results: mxe9fb;
+        spf=pass (sender IP is 2a02:8108:8984:1d00:a0cf:1912:4be:477f) smtp.mailfrom=regressions@leemhuis.info smtp.helo=[IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f]
+Received-SPF: pass (mxe9fb: connection is authenticated)
+Message-ID: <036cc81d-115a-4c0e-9542-71ed2ee04e9b@leemhuis.info>
+Date: Mon, 6 Jul 2026 09:23:21 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="64vjgbl764osolti"
-Content-Disposition: inline
-In-Reply-To: <973f3d6f-6ff4-4685-9c9f-b07987f74d98@linux.dev>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH wireless-next] wifi: mt76: fix MAC address for non OF pcie
+ cards
+To: Rosen Penev <rosenp@gmail.com>, linux-wireless@vger.kernel.org
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>,
+ Linux kernel regressions list <regressions@lists.linux.dev>,
+ Klara Modin <klarasmodin@gmail.com>,
+ Tobias Klausmann <klausman@schwarzvogel.de>
+References: <20260630210215.400379-1-rosenp@gmail.com>
+From: Thorsten Leemhuis <regressions@leemhuis.info>
+Content-Language: de-DE, en-US
+X-Enigmail-Draft-Status: N11222
+Autocrypt: addr=linux@leemhuis.info; keydata=
+ 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 MEK4
+In-Reply-To: <20260630210215.400379-1-rosenp@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-PPP-Message-ID: <178332260404.335435.16724517191704331600@mxe9fb.netcup.net>
+X-NC-CID: MBZYx3B8fq+hVNOQQyB10TWknSYHbMIMdxf5mTcosreFLKr2VrU=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_001952_522629_9A653583 
-X-CRM114-Status: GOOD (  19.66  )
+X-CRM114-CacheID: sfid-20260706_002333_814707_9928511B 
+X-CRM114-Status: GOOD (  18.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,79 +144,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 6/30/26 23:02, Rosen Penev wrote:
+> If seems the check for err is wrong as the proper macaddr gets written
+> to from the EEPROM itself. Meaning checking err from of_get_mac_address is
+> wrong as the proper macaddr has been written by this point.
 
---64vjgbl764osolti
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v1 4/5] pwm: Unify coding style of of_device_id arrays
-MIME-Version: 1.0
+By our submission guidelines and requests from Linus this afaics should
+also contain:
 
-Hello Chen,
+Reported-by: Klara Modin <klarasmodin@gmail.com>
+Closes: https://lore.kernel.org/all/ajRmlyx_AEGybykL@soda.int.kasm.eu/
+Reported-by: Tobias Klausmann <klausman@schwarzvogel.de>
+Closes:
+https://lore.kernel.org/linux-wireless/30a90714-02d8-45f2-a7f1-4cfe0627d50b@skade.local/
 
-On Mon, Jul 06, 2026 at 08:33:47AM +0800, Chen Wang wrote:
-> On 7/5/2026 11:14 PM, Uwe Kleine-K=C3=B6nig (The Capable Hub) wrote:
-> >   - Use a single space in a of_device_id array terminator; A single spa=
-ce
-> >     after the opening { and before the closing } in non-empty
-> >     initializers;
-> >   - No comma after an array terminator;
-> >   - Also no trailing comma after a named initializer iff the
-> iff -> if
+Both of them now CCed, too, to give them a chance to provide a "Tested-by:".
 
-This is actually intended. iff =3D "if and only if", see e.g.
-https://en.wikipedia.org/wiki/If_and_only_if .
+> Fixes: 31ee1582717e ("wifi: mt76: fix of_get_mac_address error handling")
 
-> >     closing } is on the same line;
-> >=20
-> > Signed-off-by: Uwe Kleine-K=C3=B6nig (The Capable Hub) <u.kleine-koenig=
-@baylibre.com>
->=20
-> [......]
->=20
-> > diff --git a/drivers/pwm/pwm-sophgo-sg2042.c b/drivers/pwm/pwm-sophgo-s=
-g2042.c
-> > index 7d07b0ca7d29..0b6461172e6a 100644
-> > --- a/drivers/pwm/pwm-sophgo-sg2042.c
-> > +++ b/drivers/pwm/pwm-sophgo-sg2042.c
-> > @@ -225,11 +225,10 @@ static const struct sg2042_chip_data sg2044_chip_=
-data =3D {
-> >   static const struct of_device_id sg2042_pwm_ids[] =3D {
-> >   	{
-> >   		.compatible =3D "sophgo,sg2042-pwm",
-> > -		.data =3D &sg2042_chip_data
-> > -	},
-> > -	{
-> > +		.data =3D &sg2042_chip_data,
-> > +	}, {
-> >   		.compatible =3D "sophgo,sg2044-pwm",
-> > -		.data =3D &sg2044_chip_data
-> > +		.data =3D &sg2044_chip_data,
-> >   	},
-> >   	{ }
-> >   };
->=20
-> Changes to sophgo related files=EF=BC=9A
->=20
-> Reviewed-by: Chen Wang <chen.wang@linux.dev>
+Given this and the reports linked above this afaics should also be
+tagged with "wireless", and not with "wireless-next", as this commit is
+in 7.2-rc1 -- and thus ideally should be fixed by now. See
+https://www.kernel.org/doc/html/latest/process/handling-regressions.html#on-how-quickly-regressions-should-be-fixed,
+which contains links to these quotes from Linus:
 
-Thanks
-Uwe
+""But a user complaining should basically result in an immediate fix -
+possibly a "revert and rethink"."" and ""It's also worth noting that
+"immediate" obviously doesn't mean "right this *second* when the problem
+has been reported". But if it's a regression with a known commit that
+caused it, I think the rule of thumb should generally be "within a
+week", preferably before the next rc.""
 
---64vjgbl764osolti
-Content-Type: application/pgp-signature; name="signature.asc"
+Ciao, Thorsten
 
------BEGIN PGP SIGNATURE-----
+> Signed-off-by: Rosen Penev <rosenp@gmail.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/eeprom.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
+> index b99d7452800f..afdb73661866 100644
+> --- a/drivers/net/wireless/mediatek/mt76/eeprom.c
+> +++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
+> @@ -181,7 +181,7 @@ mt76_eeprom_override(struct mt76_phy *phy)
+>  	if (err == -EPROBE_DEFER)
+>  		return err;
+>  
+> -	if (err) {
+> +	if (!is_valid_ether_addr(phy->macaddr)) {
+>  		eth_random_addr(phy->macaddr);
+>  		dev_info(dev->dev,
+>  			 "Invalid MAC address, using random address %pM\n",
 
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmpLVxEACgkQj4D7WH0S
-/k6otAf+MDN98V1OLHB7JSvapxuE4DwDpddJFumdMe3z/vu/P/VdI1oEao4PKhGo
-2fMsJUgJT4k/6wIfoB6C3asAQFoEg3UirigbTf0d26+LpcWXfr+MJ/e2tzlX/Yzn
-2dH88yKAhOR4HFj73YAi1FscS6vtyPmk7w2A84lWRMvteeY+zJan75O9xwgRC7FX
-gEMJExnAEBHY9tEW8dgB3EK07MFFQWLlVpGQll6BbLHxOcMIz17Pj/sI6+7Sv0xW
-cahUhiwZ1m+Y0EElAHIwQFoWyyyg7KINbFYsCsnyL1ev/EbUFyGCMRuR270OEIJW
-bKMoVE2keTYc8IQjmKqk7x/VPRLsTw==
-=LX/u
------END PGP SIGNATURE-----
-
---64vjgbl764osolti--
 
