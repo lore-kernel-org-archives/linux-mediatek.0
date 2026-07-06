@@ -4,95 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C4FBC43458
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 16:01:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BB09C43458
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 16:37:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tO7793JOX0rslqPnZgPSCQ6msrdQ9/AjwMFhZI6Ph54=; b=Sh83sey0RsmxYUXAV38eKGnohk
-	6MhaHqhCSvfA1OL/ICoGMigSGQqorGKymxlsd90CvrSiOrzpYnLcB6PKr3iQEWnUAFEjWS0G9A7kj
-	4BTHc92+nFyqG2HXfUx/JgRHO8pu3tcVdeIU6ffAtjEPRo4QLKdy9ELXAIrh6ZLzC/YR7P1v+boXd
-	p3pyPInrRzIaxn/qM/0jPdG9+oJO1az/1pIHdMc6cRiAGr8CnLTVEAtlqN6w3e0YG53Pr5aO2xwt+
-	zfxiOMm9GrcJFFOwl+8NeOTK4aSqhtSunQ9DcaNZBlryhRDWmpxqjxERbI+b82gBZcfdXYRUSwXOl
-	61/6u5SA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Mime-Version:Subject:References:In-Reply-To:Message-ID:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0pJcWvIhqLuJxPO4aE4cyY/xCREGxJtBF+FRAD54hro=; b=owJS4UX6ZcJK0JjOpy8nhpg4T2
+	URs7wnO8cL9nm+5XgB4KAf9TeWIRoG6UiuZMXBrk+S5UpYGlygLbJ02xke0UVw/ZzQFd/9VI0iXya
+	qxad2qJwJQ4tDLYOApppReifMW9wa0jsxkbV2aTE5cVpw4ZVVnwOGzFc5zeh2FMp1CxfE/pwfGTao
+	UULy2dOWS5zho0buLFa2zEWtSB8bxx5lFsx7JC5SP8HbhrE+QlJNupbi9YviACZW/rJRJHkNYPzlK
+	0lIHCzR3OtCkOSVUPemtXZ0VqRnKOJWspkme4p++e8zCfJym6Xt8YaGwu+zZ7pvNwgL0+8F8ARVxd
+	Z3kBgD6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wglkj-0000000CyhP-3nX3;
-	Mon, 06 Jul 2026 16:01:01 +0000
-Received: from mgamail.intel.com ([192.198.163.10])
+	id 1wgmJZ-0000000D5Hv-07Fk;
+	Mon, 06 Jul 2026 16:37:01 +0000
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wglkh-0000000Cyg7-2v1X;
-	Mon, 06 Jul 2026 16:01:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1783353659; x=1814889659;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=CNeXdCq4YUYr/jn29WXp0/HYvFmsD6R6iES7V1e2kXU=;
-  b=bbIegzf4MGsxr9qRTE6ii1PNH7LpAdrOiLg2dNgpBfZ49GOVcXGLsLLz
-   fJVtvR6LW6dQBSsRBsG+IEanPUWIvezt1ntUPlkmRlqrJeQ7agbBbpMla
-   DXga+wuNuw6gA8yPMydm9lTj1+KMNgSbgBZe+7fEqp7+3SbLDAiWtG/VB
-   nMTF6pzkLtA3ySEbznXpjEyHQVsYlZFr2hu1JmxFKtb0RtshvIWhjye07
-   GNHuUzI/9ngxym3DbM9Knf0zQ/k6OLCnrWelxzxRoMOn6lBbB0sO+Tbd+
-   l2N6xtPfg8Yjl1ECV8lZuLiWPRC3iL2+XYEe0KAff209dd1xsPZhxDG4P
-   Q==;
-X-CSE-ConnectionGUID: 9GRcZXeMTiWhS7WaUeRr4w==
-X-CSE-MsgGUID: bHd1iiSfSNyJ2G/WZ7v5Wg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11838"; a="95370644"
-X-IronPort-AV: E=Sophos;i="6.25,149,1779174000"; 
-   d="scan'208";a="95370644"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Jul 2026 09:00:57 -0700
-X-CSE-ConnectionGUID: W+MT9vknQx+rEQ4fdWnATQ==
-X-CSE-MsgGUID: kJ90HQUOT+izFt8uG3wJzQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,149,1779174000"; 
-   d="scan'208";a="250408991"
-Received: from vpanait-mobl.ger.corp.intel.com (HELO localhost) ([10.245.244.48])
-  by fmviesa007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Jul 2026 09:00:52 -0700
-Date: Mon, 6 Jul 2026 19:00:49 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Bartosz Golaszewski <brgl@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Daniel Scally <djrscally@gmail.com>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-acpi@vger.kernel.org, driver-core@lists.linux.dev,
-	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Alan Stern <stern@rowland.harvard.edu>,
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: Re: [PATCH v3 06/13] usb: hub: Pass |struct usb_port*| to
- usb_port_is_power_on()
-Message-ID: <akvRMcGnUPxE3sxR@ashevche-desk.local>
-References: <20260703110317.1283411-1-wenst@chromium.org>
- <20260703110317.1283411-7-wenst@chromium.org>
- <ake09vk4fEv1D9QC@ashevche-desk.local>
- <CAGXv+5GNucSXrhL=YxarSJHD2ezzYDK3EovFu-zy012KgZ+ZBg@mail.gmail.com>
- <ake6FNy83LLtCs3b@ashevche-desk.local>
- <CAGXv+5EgpizA3Pc8ScNuChPhvFKWd5F6dxB-wT4-7EwabE-9dQ@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5EgpizA3Pc8ScNuChPhvFKWd5F6dxB-wT4-7EwabE-9dQ@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+	id 1wgmJS-0000000D5DR-1JrM
+	for linux-mediatek@lists.infradead.org;
+	Mon, 06 Jul 2026 16:36:59 +0000
+Received: by mail-yw1-x112b.google.com with SMTP id 00721157ae682-8114a4542b2so48970077b3.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 06 Jul 2026 09:36:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1783355813; x=1783960613; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:subject
+         :references:in-reply-to:message-id:cc:to:from:date:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=0pJcWvIhqLuJxPO4aE4cyY/xCREGxJtBF+FRAD54hro=;
+        b=gOHEMhveuBDidlQ5lx3daP3HcGAG4JE1zpPTwKB8rqcy7T+Ikya/b5kZXBYfkQUE+8
+         ZIDaGrvF6l1E1b+F8NKoyzb7Z/0va4ga8AWniVT69rjt0rAzVCpOVkDfCldk7rOVby1N
+         tqEFSeukPxdg1hWySubrk9qG/ek1nThpHIGpzaaR0puHgpJ/U3NCe3yuT6/qVJgcamiB
+         jCbn4njFsv8J4/BINtCS3okeIREDVYFtVwMaF8LvHCiGKR+ij9keLh058XDcq1aipqFp
+         XpO1C6Rf1uPb1w0zcY+bToyYOfFh8DKomFwiWs78D8+7PNeM9hVztkSOfhauzObSch1H
+         urLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783355813; x=1783960613;
+        h=content-transfer-encoding:content-type:mime-version:subject
+         :references:in-reply-to:message-id:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=0pJcWvIhqLuJxPO4aE4cyY/xCREGxJtBF+FRAD54hro=;
+        b=rwrmBJrGG2FmwPh3EpqVABY5awq1TYAqOgnAPEcK3KgCXLEgRUyyGQLOtDn/0jnIqW
+         4LngiOvbhMEz9jq7Lezc7y8xh2o/vWbgAhUUhwgdDawEd6jZiAs9pYTlJaxjlOv14n2E
+         jAOXxzN7XhUYKyLCmEzlybl2o/Jn422pun8QR+To8K3FcgUy632GoJY04nkGZ9VayfGm
+         HvsF8u75hEneCak5JnseeHNlI611nRTGuVihH9yunLlFXyYZMwf3B38dxl7PaMOeewCN
+         g+iHR1GunpITsuYFg+tbbgHQn5+cEbHWnyalI7os9sbZwqrUItFslgJ321TDwnzOJIs5
+         +9wg==
+X-Forwarded-Encrypted: i=1; AHgh+RoHymD/g5OriehWLl+FmqZmFCdn5m++XaiaecMTFyoGjT6js5EknwnAAjxPaV8wgPfrOIlknK5roV4jeOVqYA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwUuNCnCKcgJrrziHGHjn7IiEBSvqPqCyh3TnBApgIvNFn1qaUg
+	jnkyVDCCqFanKwR1Ewmj9d+qX58RBaL1g1tKfEIv5afe/mQmjQnm2d5i
+X-Gm-Gg: AfdE7ckcvbpizx3sYBIEfZZpCE4fggr89rm8EUUia48bLWx1ByGNh674BspQW9BT/EV
+	bZe24zT7eQ8w4QmOPdsTFAqZK3wqsuxYaM3Y3O7iOCxHaTU3n0u4GFo+3D5AuByqWjPVWmG5t3S
+	5/WxL/N5vTIUXxcqMZwypEuNiS9dcDBIIQ8KKOazsfxCSd/FGHfrlXC043HCEOEtVAnQoZMxuvx
+	n3fmoPO+nEKQSe1/td2ZI/smXE13IAQw2u+NYxE2CZtRV5mb7fR8fG964qXVjKHfHb/8bL/zGCg
+	8tlNYQciCUEweddsMqBiQompnfnxp7j836A6tbp6s+FKosNYkAv02v8YSwBrMr5fGJYfrEN694+
+	XRI4sV8eeUPYEZ5OW5cFJg7qaXaHVSwDwHaaziVEiCyogU+QD6pZ2U730lj5A6DeTPZ1wEtQysT
+	GdZ0ym2LoRO6ki68e9EtPk7AQoLmvE4J3eAbpMNFGXF+eFkDjjme5I53nKaWnlRses2w==
+X-Received: by 2002:a05:690c:ed6:b0:80c:85e5:8750 with SMTP id 00721157ae682-81be33a3727mr8097857b3.57.1783355812853;
+        Mon, 06 Jul 2026 09:36:52 -0700 (PDT)
+Received: from gmail.com (172.235.85.34.bc.googleusercontent.com. [34.85.235.172])
+        by smtp.gmail.com with ESMTPSA id 00721157ae682-8144bd26ebfsm59805817b3.48.2026.07.06.09.36.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 06 Jul 2026 09:36:52 -0700 (PDT)
+Date: Mon, 06 Jul 2026 12:36:51 -0400
+From: Willem de Bruijn <willemdebruijn.kernel@gmail.com>
+To: Shiming Cheng <shiming.cheng@mediatek.com>, 
+ davem@davemloft.net, 
+ edumazet@google.com, 
+ kuba@kernel.org, 
+ pabeni@redhat.com, 
+ horms@kernel.org, 
+ matthias.bgg@gmail.com, 
+ angelogioacchino.delregno@collabora.com, 
+ willemb@google.com, 
+ daniel.zahka@gmail.com, 
+ alice@isovalent.com, 
+ sd@queasysnail.net, 
+ eilaimemedsnaimel@gmail.com, 
+ imv4bel@gmail.com, 
+ nbd@nbd.name, 
+ dsahern@kernel.org, 
+ netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ steffen.klassert@secunet.com
+Cc: stable@vger.kernel.org, 
+ lena.wang@mediatek.com, 
+ shiming.cheng@mediatek.com
+Message-ID: <willemdebruijn.kernel.27b4940999026@gmail.com>
+In-Reply-To: <20260706034611.360-1-shiming.cheng@mediatek.com>
+References: <20260706034611.360-1-shiming.cheng@mediatek.com>
+Subject: Re: [PATCH v5] net: gro: fix double aggregation of flush-marked skbs
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_090059_749872_B6B22AA4 
-X-CRM114-Status: GOOD (  28.94  )
+X-CRM114-CacheID: sfid-20260706_093654_366023_CE311A6E 
+X-CRM114-Status: GOOD (  22.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,75 +121,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 06, 2026 at 07:08:07PM +0800, Chen-Yu Tsai wrote:
-> On Fri, Jul 3, 2026 at 9:33 PM Andy Shevchenko
-> <andriy.shevchenko@linux.intel.com> wrote:
-> > On Fri, Jul 03, 2026 at 09:17:16PM +0800, Chen-Yu Tsai wrote:
-> > > On Fri, Jul 3, 2026 at 9:11 PM Andy Shevchenko
-> > > <andriy.shevchenko@linux.intel.com> wrote:
-> > > > On Fri, Jul 03, 2026 at 07:03:07PM +0800, Chen-Yu Tsai wrote:
+[PATCH net v5]
 
-...
+Shiming Cheng wrote:
+> The skb_gro_receive_list() function is missing a critical safety check
+> that exists in the skb_gro_receive() implementation. Specifically, it
+> does not validate NAPI_GRO_CB(skb)->flush before allowing packet
+> aggregation
 
-> > > > At a brief look this will be the only function that takes usb_port
-> > > > instead of usb_hub in the entire hub.h (I don't count container_of()
-> > > > as a function). With that being said I would rather see it to be moved
-> > > > to port.c altogether (yes, it's more invasive change, but looks more
-> > > > consistent).  I would even dare to move struct usb_port (and container_of()
-> > > > accompanied with that) and this function to port.h. This might require
-> > > > a separate patch, though.
-> > >
-> > > I agree with the reasoning, especially given the function name. However
-> > > I wonder if it would cause problems given the linking order. I'll give
-> > > it a try nevertheless and report back.
-> >
-> > Thanks!
-> >
-> > In case it won't fly (but I still think it's better to split), can you at least
-> > group usb_port APIs and struct? Means moving the proto closer to that struct
-> > usb_port followed by container_of().
+In v3 I requested referring to the commit that fixed this in
+skb_gro_receive: commit 0ab03f353d36 ("net-gro: Fix GRO flush when
+receiving a GSO packet."). That explains the issue well.
 > 
-> Looks like it works out fine. port.o is linked in after hub.o, so moving
-> the function from the latter to the former doesn't cause issues. One might
-> even say that it is the correct thing to do.
-
-That's what I say! :-)
-
-> > > > Perhaps something like: 1) "move struct usb_port and associated APIs to port.h";
-> > > > 2) "...this patch...".
+> This allows already-GRO'd packets with existing frag_list to be
+> re-aggregated into a new GRO session, corrupting the frag_list chain
+> structure. When skb_segment() attempts to unpack these malformed packets,
+> it encounters invalid state and triggers a kernel panic.
 > 
-> There are still some left in hub.c:
+> Scenario (Tethering/Device forwarding):
+>   1. Driver: Generated aggregated packet P1 via LRO with frag_list
+>   2. Dev A: Receives aggregated fraglist packet and flush flag set
+>   3. Dev A: Re-enters GRO, skb_gro_receive_list() is called
+>   4. Missing flush check allows re-aggregation despite flush flag
+>   5. Frag_list chain becomes corrupted (loops or dangling refs)
+>   6. Dev B: TX path calls skb_segment(), crashes on corrupted frag_list
 > 
-> static void usb_lock_port(struct usb_port *port_dev)
-> static void usb_unlock_port(struct usb_port *port_dev)
-> static void port_over_current_notify(struct usb_port *port_dev)
-
-> static void hub_usb3_port_prepare_disable(struct usb_hub *hub,
->                                           struct usb_port *port_dev)
-
-This one takes hub as well.
-
-> These are used only in hub.c and moving them probably makes things
-> messier?
-
-Perhaps better naming to each (kinda moving to usb hub namespace)?
-
-> OOTH, the following bits are in port.c but declared in hub.h:
+> Root cause in skb_segment():
+>   The check at line ~4891:
+>     if (hsize <= 0 && i >= nfrags && skb_headlen(list_skb) &&
+>         (skb_headlen(list_skb) == len || sg)) {
 > 
-> int usb_hub_create_port_device(struct usb_hub *hub,
->          int port1);
-> void usb_hub_remove_port_device(struct usb_hub *hub,
->          int port1);
+>   When frag_list is corrupted by double aggregation, when list_skb is
+>   a NULL pointer from skb->next, skb_headlen(list_skb) dereference
+>   NULL/corrupted pointers occurs.
 > 
-> Any preferences for these while we're reorganizing the code?
+> Call Trace:
+>  skb_headlen(NULL skb)
+>  skb_segment
+>  tcp_gso_segment
+>  tcp4_gso_segment
+>  inet_gso_segment
+>  skb_mac_gso_segment
+>  __skb_gso_segment
+>  skb_gso_segment
+>  validate_xmit_skb
+>  validate_xmit_skb_list
+>  sch_direct_xmit
+>  qdisc_restart
+>  __qdisc_run
+>  qdisc_run
+>  net_tx_action
+> 
+> Fix: Add NAPI_GRO_CB(skb)->flush validation to the early-return check in
+> skb_gro_receive_list(), matching the defensive programming pattern of
+> skb_gro_receive().
+> 
+> Fixes: 3a1296a38d0c ("net: Support GRO/GSO fraglist chaining.")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Shiming Cheng <shiming.cheng@mediatek.com>
+> ---
+>  net/core/gro.c | 9 ++++++++-
+>  1 file changed, 8 insertions(+), 1 deletion(-)
+> 
+> diff --git a/net/core/gro.c b/net/core/gro.c
+> index 35f2f708f010..b1573d98f3a5 100644
+> --- a/net/core/gro.c
+> +++ b/net/core/gro.c
+> @@ -229,7 +229,14 @@ int skb_gro_receive(struct sk_buff *p, struct sk_buff *skb)
+>  
+>  int skb_gro_receive_list(struct sk_buff *p, struct sk_buff *skb)
+>  {
+> -	if (unlikely(p->len + skb->len >= 65536))
+> +	/*
+> +	 * Packets marked with NAPI_GRO_CB(skb)->flush have already gone
+> +	 * through GRO/LRO processing and must not be aggregated again.
+> +	 * Re-entering frag_list GRO may corrupt the frag_list chain and
+> +	 * later crash during GSO segmentaiont.
+> +	 */
 
-These ones would be good to be in hub.c if there is no circular dependencies or
-alike.
+Such a verbose comment is not needed. Code would be overwhelmed by
+comments if done everywhere.
 
-
--- 
-With Best Regards,
-Andy Shevchenko
+> +	if (unlikely(p->len + skb->len >= 65536 ||
+> +		     NAPI_GRO_CB(skb)->flush))
+>  		return -E2BIG;
+>  
+>  	if (!pskb_may_pull(skb, skb_gro_offset(skb))) {
+> -- 
+> 2.45.2
+> 
 
 
 
