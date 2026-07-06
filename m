@@ -4,170 +4,159 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24EBFC43458
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 15:46:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD22DC43458
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 15:47:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+OnMOn2/de6czvKsT65QKA7vIysNRqWUd1S/71D1Jas=; b=MfVorKoLcJTKiB19Ty0nTWKl/E
-	9ELqETm8BF6h6Fy3EKQSm8K8qA6xVlgkMSmaKBEa2TVHvJlbZmMOb0zfeFBtE26AT1LAeorOJZsvM
-	7nTWmAln3c/2eL9659nt9A382hvacJCs9hX6aQW3b/TVCIiPUXthl3hT8iD9JT7HjUzJGtxt6h/dS
-	rHgDfb+mEofvDNLtdTCI80iLT7h3fZ7ZKsoIp89Wxg2O1MqWLIvF7Gvzg2GzTFLUJPM/nX2dNG2Cz
-	mv603btEA2f1kPq5yF+vnI76ym8M2ku+O2zLdNoDIDW4K6y1HVy8Gw1GPC2MDhQT2P2n5p+TTDNuC
-	msBMRe3g==;
+	bh=HUxYdITeq/FY+FFUjMdRTMxDfy5p0X/5gpQ0/qb6sDI=; b=fEMDezGCahbpJxvJkpaN6hZoKs
+	PGWfq8lYnssXlpBxszwfO+u5vZ13FMVtEIMKl7Ihe3ocYAGVvXnqGltzn86BaCSkiQpNCTMgEeVlR
+	1GIBx1XKC5K3tHdDxGxIpSElxNnzMqNcC7htafm1J6Cd5/LlyWB5ySBPuFI8cVpO6eGGDX8gNxcPY
+	MZ/WlmPhBVAo4HQui/mPm6ez6lGyNiFpcGPCqTWYQ5Tzdo0GakjC6RlhsLUHlAkT15mq5NxbH9gdo
+	btJydV8+FOCccI0pmwE8SdA7z2C2b9coIsg1jyD6TsU/LnT/zb/jXvkc/7GRyejINmDe53tE3yKG0
+	jy7CEhEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wglWj-0000000CwD9-2s8u;
-	Mon, 06 Jul 2026 15:46:33 +0000
+	id 1wglXn-0000000CwX3-3jXn;
+	Mon, 06 Jul 2026 15:47:39 +0000
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wglWg-0000000CwC4-2z3F
+	id 1wglXl-0000000CwVf-2wZe
 	for linux-mediatek@lists.infradead.org;
-	Mon, 06 Jul 2026 15:46:31 +0000
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 666FF6gg832916
-	for <linux-mediatek@lists.infradead.org>; Mon, 6 Jul 2026 15:46:30 GMT
+	Mon, 06 Jul 2026 15:47:38 +0000
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 666FF3nS981419
+	for <linux-mediatek@lists.infradead.org>; Mon, 6 Jul 2026 15:47:37 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	+OnMOn2/de6czvKsT65QKA7vIysNRqWUd1S/71D1Jas=; b=hXZp1fbz4cz372gL
-	swOx37jRUZyhMOJu11R2PHaveWDbkEDuxJtIIw4ZT8oFYwMMK0fEMQd5MDT2KCnP
-	XASsVc0hrVC9REAWNI++Jh/oryw7S61DX6jKX1daudC2gs038daj+7xFQQgF988+
-	JPH+iDKbsv8dnDthyUtGuJefBq/O8S5tEJ2U4eUOBxCenwg+6OzRVVzZt/AYtFjd
-	mh0HyEE8+WxFz8efJ/yINBZoPcjRTpPy6IBmGwV/H+I5Jcx8dZIxnwVKGM4XVHhu
-	9fArCoYwqx5Bk9VzTbzuv8X/36v6/sds5G9lYjuxWbzWAvoU9PWrdm/SDU7CBcMz
-	tYON5Q==
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com [209.85.219.71])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f8a98hgyt-1
+	HUxYdITeq/FY+FFUjMdRTMxDfy5p0X/5gpQ0/qb6sDI=; b=fb7UTHsy2qV3f//A
+	xMmgKNW5GqGvhgOJ1plc98d4btdiVlUep3RLCEgrqpyl8HDfraQ7zeQEvQFQCZwd
+	3iGaAqVGF5tlBr2MDqJtoXi0YpHS6wZQ0IRnJUspHODAIOQVAhhluSK9OKCgVt+l
+	qhNc1+6x/qjiH6O999ghpvRwUAzqHoXEj3LTZI/sTwa9flZNqalMGpywJIZ6JbnY
+	wo/ee2r0fbuEtPXzn7QdwgXRffN1SWuhwC9wDLlUUrNu7YmGfikWUL7ruFGV4gn4
+	2vysvBx/px7SlWDIHDSjUSpbJq6QCgUjXm1iMMxdChlWYu+jAUelbO5raXUkRkca
+	7n4+Mg==
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com [209.85.219.72])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f89kgsr57-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Mon, 06 Jul 2026 15:46:29 +0000 (GMT)
-Received: by mail-qv1-f71.google.com with SMTP id 6a1803df08f44-8f0f45415cfso39805356d6.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 Jul 2026 08:46:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783352789; cv=none;
+	for <linux-mediatek@lists.infradead.org>; Mon, 06 Jul 2026 15:47:37 +0000 (GMT)
+Received: by mail-qv1-f72.google.com with SMTP id 6a1803df08f44-8ec235c7c66so41840216d6.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 06 Jul 2026 08:47:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783352856; cv=none;
         d=google.com; s=arc-20260327;
-        b=XCcPiOpCUCZSIDzPLiiKp12YteMZKcip1tF3OdOq3ofL4qMKzlKX0OOjUJc88AgjLw
-         5zOnPtsGOymhqwmOHmmfwg6jiC/hpzjV7bYreClAWkerUqjP708DRkITQpDfzxAH4P1B
-         EdZupBR5lPWdDVqP3zJWt4UUHmskF2Ecy4ZTSILl7KqPtXDFULxbsf6/CIzsOLv934+5
-         /tuXXmZkDHR5UAo5vKboAKfkpy30JkI/c6CQJc54vGhthClsAbZcKEz2o8z+LN8nK5D6
-         6xZBoqj7hJjhP4Zb3QtbG8xEMK6ORJVR77lETVs42xmTDVtHR1D+rzVFBthMTs/uHGAe
-         0hiQ==
+        b=kXcZoYmRhR5+xspDOGgJi/iu2PgvecF/2SwxrS2SRjWzo+ocWpYloVZY2T/E+Udjkp
+         53rRMmx38sv08EHp05q/2jPPSV+QDVJJr8QGgkAUw0VR+ZDJCzODEUNC4RjAw099u3CL
+         ssWnXRQroNmGQvHRgyZcC9ddPe+3ONRKbHrLHsWsmBzyaBRKKsxBxX3g1qhRKd0fQB8a
+         Q3+9QIZExqUKQnnwQuF1pjVlcTTufg5+3IeLXNSH7OsYV5EbBMFDRPN2qEN8d61XSYUs
+         ynwecf5ZrCVzLFQF35lvVj8BPnau7EoiGsj4JmaN1FS3gXT+TG6vt50EjGFrUjUVBTdt
+         nP8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=+OnMOn2/de6czvKsT65QKA7vIysNRqWUd1S/71D1Jas=;
-        fh=obOd52SXTnTqFzEZsJwQQBSecCX8mzv1yXuCrGUfRF0=;
-        b=sC2JzIjmcaGMU7Zc1UEkngC8KlRoP0Sjmyisltu80QAOYk0Zmpad2B2Fy9/eNE7koC
-         GuEl8ReVDUIyw4nInYTc4l4CMpuPp6TOhGVIvPlqEzhyJJDCa08d54sN18sPAoCDoqhd
-         dlHVYXFkt/rSVVQxgWjTihKGhR0Un5iZC1+Bh77FVhbBlNSOH1FFRZVYWQEFKSVtNY29
-         8fkYV8mWDVGizdhySIWXgIIMmdJspIDmSxyVaVIajuYo+oEfGtFaWs+THgOdXi3L9jwP
-         z/pueOO7N9GVSMiyzd5y7jgZwCQg4pNJEnRdNckUjV581Y7fIb3ZnqaygcuMaCaw4bWf
-         D84Q==;
+        bh=HUxYdITeq/FY+FFUjMdRTMxDfy5p0X/5gpQ0/qb6sDI=;
+        fh=Hs3mloD6EtuH9EFXzy2p0XLsMUAqj8jYhwIOhuHdc6o=;
+        b=I7P4hzXTJsKwAe5JepT0W0N3SMCPA2cGngLvjEE2E3H6cZ6cmtcX4FTHnhaNw8/hGg
+         1EUYjhJ0Nmw0lBtbJh0Vjo7E8esbZHRHIOj5CtNkNM0NNQSRfu3wbhu5VGRvrCcY6lwa
+         LdL41apEZir+ny0pemtwes98chzh9jDZWGVgC7li8qJ+kfFLbvcG9U1Z7/IR4ZfS64EM
+         nKwHhLMV6rVtUEj2i3eXDrWXKTBpXDSRoLZLjBFN29XEj1jV00za4Cr1xDkTCMnQWc39
+         +SVATtsN6Oi5StlpBLd7C5VA39XE/rbKP/pNUVhU0ksvKheSlMh5QXbJV1/nXLGU23cN
+         5LkA==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1783352789; x=1783957589; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1783352856; x=1783957656; darn=lists.infradead.org;
         h=content-transfer-encoding:content-type:cc:to:subject:message-id
          :date:from:in-reply-to:references:mime-version:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=+OnMOn2/de6czvKsT65QKA7vIysNRqWUd1S/71D1Jas=;
-        b=OPuvuj86dLThpqE0Hvv0MZrTC7BqopbPJMkZnddjZ3Z40a1CjnI4rVJwTIk+kQr3xk
-         woPkK1WGd+XaiPMwydseOwwzukJmVDk5gouuIn4gTjhzXXbfgOIgoxg6qZDT9XG5Sx+E
-         3LGiWQtZzgUopTBYF4rky9EroH408SV0H+aORpniBMxnLx6olonceU8WqYZvI+FZhZ0H
-         ahuGYhHBuHw9HNxv66kkxS0VwsK2TCV2C72BIz1pZ83/cndmaOIHFb5ITMeg6dJa+0lA
-         cCYc+IcM5+nduD3p2sTAn6q5TYqRa7sPG3yzHYWRUkWYYtbcXkDdtOe+Kb+W2qZuglSn
-         ER8A==
+        bh=HUxYdITeq/FY+FFUjMdRTMxDfy5p0X/5gpQ0/qb6sDI=;
+        b=PooumEfmhr8cfI+4iC38cRHf3SEDM3TenlJRz9Zj/4d72oMuJtkisuKPv+Kk5HFYFv
+         SoD0QYEkCb4vDQZbylJlPyMrUGmiG9zoRxLb051AdO5AjWti/ekJjSmftar87X1iVbkz
+         pC7ewSGHHBeWdF1tlyvAorEptnpMBP7v5ZIviI3opida2RyBf75uKlo2NsNFoql9+YTv
+         +B+yuV3Nk9dBqSlk0wSXxi9mtrYnI9VP4qVmjha+N2nmSls1FqdRFDWClrWyo+1hq7dx
+         FYVKqbUAH3NXAtlvsDK5m6Ny3D/MB7eByq2yw9BGzUORWRwXNoXG0c7LRUSP5oq1Gt0b
+         IAFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783352789; x=1783957589;
+        d=1e100.net; s=20251104; t=1783352856; x=1783957656;
         h=content-transfer-encoding:content-type:cc:to:subject:message-id
          :date:from:in-reply-to:references:mime-version:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=+OnMOn2/de6czvKsT65QKA7vIysNRqWUd1S/71D1Jas=;
-        b=fDF+oe4jly4hkm3zTN0cMoXG8k56WDGvGsq5r7D0MSwWUVVVBxPJEgboj3hh3OxVmn
-         v31tAbFuFOcfmyPjy8BWZxBScJmLoFtLaBaiTCHZfd7PY4Vip3UHtJLrKjMPNLJ8D62Z
-         7j0xn2LEsWTequAv7lKh7O3OesNPgJDg07KEkjwM0tLBtUro+DDVRfLNDQoeEesRW/LC
-         5vociV4ef3k5FasDfquf5kDPIZR2nwE3KUWwx3M7h1dxn3PZWRRSAzwB33OQev0UZO/n
-         voCg+O0KShPSDY4XSBrOR51xI94BDH66eW5vyFXSllwWx9Op6wCvhTjirP9GSgfO6A0e
-         Vz3Q==
-X-Forwarded-Encrypted: i=1; AHgh+Rr4YwfvLdQitQb5LRmjGGTPLaPl/ssMLJnR4ACgo3LKcVotT7I/g9pr0v11QHP7yTcwL6ysUF+EQBKHcE0MDg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwQvVcUd0L7eQa2lsXcuKqkKpmvqUkCD/K1tWYVU53h4eNxMaRn
-	QGr+Ir0zRc6MIQVxbR/zWaXoyrpJJyyQ9u4XRn+c04TTdXSBVpsHZgkycMVZ7/22Y7ZMh56TEUC
-	MPhJCbXnTCnFIFeLu0qx4k9c7jy0EbFTye+HW8Q0RFNat1yTSO5X6F8F+0xemJFcYcp8tPMU8Sf
-	9tADaQd133D3+BS1Rep3cZxmy3iZdRgZ7idNtwiorrSSs0QNrBvA==
-X-Gm-Gg: AfdE7cmNHaiExO5EGGh7iTGaJWw694qJNbB1cqIRsp1dOWAr+ruOVQmzouIvXF92Sjl
-	HSqnBsBkBeMasX9qcRGwzZME9Gv9amgrtvk4pMMrdpfaZvSrChOmWE/SeVHFXpV0nxR3M10Enn8
-	JcH/FD7jCti3q5RixlRhSFrit4Nb7Y8NGpNoq95Mp0sJtoBTFpd3pR+BQI8jW3+7YMxjSa
-X-Received: by 2002:a05:6214:5003:b0:8f3:e97:59b8 with SMTP id 6a1803df08f44-8fcb3d3ee24mr12450896d6.29.1783352788267;
-        Mon, 06 Jul 2026 08:46:28 -0700 (PDT)
-X-Received: by 2002:a05:6214:5003:b0:8f3:e97:59b8 with SMTP id
- 6a1803df08f44-8fcb3d3ee24mr12450156d6.29.1783352787606; Mon, 06 Jul 2026
- 08:46:27 -0700 (PDT)
+        bh=HUxYdITeq/FY+FFUjMdRTMxDfy5p0X/5gpQ0/qb6sDI=;
+        b=Abt0GTurcuuSrauOcyeFCIp6VWngVnwSsuPUBMyOglZ1NdU0fO+ZSqFBX/H1h2U8Uj
+         fnJ3okTthuTXABC34A6psrHZSETTr4SdX6yz56XoUwwrJKVv8K/KDNLHWjav3+wo93tI
+         flyXmmnJ1szFTt9TS+VaCfUBYF1QK5fWUeE9u5w7MC/54qoUcNgk5cYNvglf3uV5hRLC
+         9lYt5YhkYcqedDCwy+CSloZiqvTDiLTMM+LVimUHg3UeZunVhEXjFtBj0SCkWh2gfaIC
+         WUjdXby14JdxES7RKtfLbOMNUjZ09zhlKhOeY6rJA6aza1eqiTq4yUgGrbci+wXb/7r+
+         4TIA==
+X-Forwarded-Encrypted: i=1; AHgh+RreZLzQwLwbcF3+EWUuu8i8mObHlGC9YoAXZWnVXrbE99tSJJocn89zpm8Dt07ddRXCrmUGV8Ks2uf2IcQhAQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyNWUl5xjmg1jzwWukcSKi/Lr2SF/xRXXolJ5y7FUAcAk98Pd60
+	P2RFWdtiHUmbeW0AOXdN3Q1MK/qbNKJ9NY4KiAgRqRBygWMgZ6UfJ/yrtBNf2RoYmyDadeKfMEc
+	ivo6zcyNb4emndvXK/kNPB8evaxBP5WT4y/4aePU9B+WZzdE3B68EAqp4g/QdyoWgvTxwUfFows
+	5bJeoKqWWIlBaGzun+iKGc3Po5HLfdRi6ZEBk/R65ewl4bdI12lg==
+X-Gm-Gg: AfdE7cmPAGWqvOC+x3VitQZzm8mwI9bM8KjxqNK3bbTN4r81ejtaNWygd6grGiVLY/Z
+	wM97tks2qLvlyFD9StTeq/74IQK3btSUR4/1GFoNkykPlxcxY/KjTDMk/7DHfoK2hiRL90ZiKXR
+	afH6AfR/2paeUyo+B2YB/bWxkxrrpULIUlYlb0A5ZONh+YA2CF6mhWd8ddd6mBx/Q2eVVz
+X-Received: by 2002:a05:6214:3bc7:b0:8e9:f62b:8f9c with SMTP id 6a1803df08f44-8fcb59c6085mr13169516d6.49.1783352856092;
+        Mon, 06 Jul 2026 08:47:36 -0700 (PDT)
+X-Received: by 2002:a05:6214:3bc7:b0:8e9:f62b:8f9c with SMTP id
+ 6a1803df08f44-8fcb59c6085mr13168716d6.49.1783352855484; Mon, 06 Jul 2026
+ 08:47:35 -0700 (PDT)
 MIME-Version: 1.0
-References: <CGME20260624021955epcas1p2ba2fa4eb8bd0aafaf7b46bde2cf524be@epcas1p2.samsung.com>
- <20260624021912.632627-1-cw9316.lee@samsung.com>
-In-Reply-To: <20260624021912.632627-1-cw9316.lee@samsung.com>
+References: <20260701-mt8189-mmc-dt-bindings-fix-v1-1-e75f241a275b@collabora.com>
+In-Reply-To: <20260701-mt8189-mmc-dt-bindings-fix-v1-1-e75f241a275b@collabora.com>
 From: Ulf Hansson <ulf.hansson@oss.qualcomm.com>
-Date: Mon, 6 Jul 2026 17:46:16 +0200
-X-Gm-Features: AVVi8CcBYSP5zyLpt00Q11yUujyWdz_mc32EjqBaIjLdlr5HgDzXa1HvKfgTjLk
-Message-ID: <CAPx+jO9=7B4SYyKSwvGqx+zzMsJ+hhFUK_vmU-HNYQZfKv+bdQ@mail.gmail.com>
-Subject: Re: [PATCH] mmc: cqhci: Remove unused intmask parameter from cqhci_irq()
-To: Chanwoo Lee <cw9316.lee@samsung.com>
-Cc: Adrian Hunter <adrian.hunter@intel.com>,
-        Asutosh Das <quic_asutoshd@quicinc.com>,
-        Ritesh Harjani <ritesh.list@gmail.com>, Ulf Hansson <ulfh@kernel.org>,
-        Chaotian Jing <chaotian.jing@mediatek.com>,
+Date: Mon, 6 Jul 2026 17:47:24 +0200
+X-Gm-Features: AVVi8CfPNJrEYS0E8R69POW_oPeNyXt4oUaNnxJ3KUF6es4aIXlmymOTBoUEd9A
+Message-ID: <CAPx+jO-vFS+p7K9unKDtPGHMNNdS0Z6YwsgtE1cv01TxFmpNmg@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: mmc: mtk-sd: Document extra clocks for MT8189
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson <ulfh@kernel.org>,
+        Rob Herring <robh@kernel.org>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley <conor+dt@kernel.org>,
         Matthias Brugger <matthias.bgg@gmail.com>,
         AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Kamal Dasu <kamal.dasu@broadcom.com>, Al Cooper <alcooperx@gmail.com>,
-        Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-        Florian Fainelli <florian.fainelli@broadcom.com>,
-        Haibo Chen <haibo.chen@nxp.com>, Frank Li <Frank.Li@nxp.com>,
-        Sascha Hauer <s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>,
-        Michal Simek <michal.simek@amd.com>,
-        Thierry Reding <thierry.reding@kernel.org>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        "open list:EMMC CMDQ HOST CONTROLLER INTERFACE (CQHCI) DRIVER" <linux-mmc@vger.kernel.org>,
-        open list <linux-kernel@vger.kernel.org>,
-        "moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-        "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-        "open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
-        "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>
+        Wenbin Mei <wenbin.mei@mediatek.com>, kernel@collabora.com,
+        Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
+        linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
+        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Authority-Analysis: v=2.4 cv=SpigLvO0 c=1 sm=1 tr=0 ts=6a4bcdd5 cx=c_pps
- a=UgVkIMxJMSkC9lv97toC5g==:117 a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10
+X-Proofpoint-GUID: 2YAASfUg2DrsDkBMYAzql4iMHEqK4lHV
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA2MDE2MSBTYWx0ZWRfXwdvcNc/qPi0y
+ TwVMFpakFSAxCScDOPPFGNmiCfXjFh8QMSqDbM5x0Y7keBnQdgzFXGbGKtOn95+OWg7Rqzn7AJI
+ KjpE0zf040v+MICha/qCJDBaYLiRKcynEJSnTARM0GZgAxU8JiHdLv6qL4B3psUarZrawz6LjFT
+ MSwVmPTRrnKMATqwsqNIJqJV8DbWyyKN+m9N9dYpu0y1/7+8vnaUO9yxKC6eQqhNsY38Qk4zcCk
+ 07AUftRpjfsVOg9+EUsp1zrG1a0BfY8PktViPI9FDMV1BeHK4vL39SvRLkMGNJWD7HiJk0k07XR
+ S3J6HFI5laZTbF027Ttn5pO/z0iNvGIvQGi9mHamxNUIbnfxpz40pGNGSBND2RjQgg/9zbpT/cA
+ 5BMfdxM5Td8+H0stplYrno/hKv4bo7/Bqz7EcptywD8/npC7Wekzoq+U3OJc5krV69yDe3xCfGw
+ sRg6blS6wzMVkNbLlzA==
+X-Proofpoint-ORIG-GUID: 2YAASfUg2DrsDkBMYAzql4iMHEqK4lHV
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA2MDE2MSBTYWx0ZWRfX97PpWtOICIsP
+ JxdAUvGjUUhyO7h3h9GRgBWPKo8y14o2KRAZZ2X4p0R+CezxbKR9VW/Td+kF2UskTmPinBDF34B
+ 3D1W3FnYUUfaLk6MQDB/CgJKinP0PD8=
+X-Authority-Analysis: v=2.4 cv=c6Sbhx9l c=1 sm=1 tr=0 ts=6a4bce19 cx=c_pps
+ a=7E5Bxpl4vBhpaufnMqZlrw==:117 a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10
  a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
- a=_K5XuSEh1TEqbUxoQ0s3:22 a=hD80L64hAAAA:8 a=EqBXy2bI2-3AcK8LOXQA:9
- a=QEXdDO2ut3YA:10 a=1HOtulTD9v-eNWfpl4qZ:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA2MDE2MCBTYWx0ZWRfXwKS9ueftstKe
- baHfLbbd3rz0nqIyJcSRTdi2itZxHYw8xf5gR1tUOIm/oiaVMmkjoArGJsozeezkxZ3POy59Oa8
- 3QLeIiDSJvgoZi08l1RBtzqkjWmjaSxch5505MLzDP8/FVY6T4hTpvVVh0J9J5tcTVwcQjmysy0
- +xUVrucup6lci3feIzOnLEoNyT7Zv1DrBuW3MaALgq/rW/dn4YK/mICqmLry8ID8ayeU5LUrm4F
- jIizYSutftzbrAbAD+VTt7u0KNaUT41mH6B+pPIkMyl0Q5NL/BjmCKugIZUBDmRhk0gYg1vCf6y
- gn1heD1nz0HYf/Enp8pNSRqHK+dGyzhXKLYdZ6PtIXnqVfqLZQVHsGL9R2CFyYufFpUtuMEcNLN
- SAWgym6aNzUHKuzQQSrazhwn/5KEFRgcluT5qryvSBSmJVLht5ywy5hepn7AmvsfptttwpF7VlV
- RpmYDBBu/cUs4RD9Gdg==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA2MDE2MCBTYWx0ZWRfX4QpCU4d92Ew1
- dJc/4rMw9TMQdXGihaq1k4D1mCnO+EUptAcUIghhm7lhU1VCtSs6ES3uzelfaBoYGTwj7nkFgIw
- hC5TmC9YfSh7JlRapfim4w3wNvqv7fg=
-X-Proofpoint-GUID: NmxgTHhTA3Il1STAqDL1g5LUqVy2lU93
-X-Proofpoint-ORIG-GUID: NmxgTHhTA3Il1STAqDL1g5LUqVy2lU93
+ a=yOCtJkima9RkubShWh1s:22 a=QX4gbG5DAAAA:8 a=6cAowrh06DlNpcgoBcwA:9
+ a=QEXdDO2ut3YA:10 a=pJ04lnu7RYOZP9TFuWaZ:22 a=AbAUZ8qAyYyZVLSsDulk:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-07-06_02,2026-07-06_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 priorityscore=1501 spamscore=0 clxscore=1015 phishscore=0
- bulkscore=0 adultscore=0 suspectscore=0 impostorscore=0 lowpriorityscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607060160
+ malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 clxscore=1015
+ adultscore=0 priorityscore=1501 lowpriorityscore=0 spamscore=0
+ impostorscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2607060161
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_084630_757486_781D9AB2 
-X-CRM114-Status: GOOD (  19.98  )
+X-CRM114-CacheID: sfid-20260706_084737_743108_65B4ECF3 
+X-CRM114-Status: GOOD (  20.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -182,15 +171,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 24, 2026 at 4:20=E2=80=AFAM Chanwoo Lee <cw9316.lee@samsung.com=
-> wrote:
+On Wed, Jul 1, 2026 at 4:44=E2=80=AFPM Louis-Alexis Eyraud
+<louisalexis.eyraud@collabora.com> wrote:
 >
-> The intmask parameter of cqhci_irq() is never used within the function
-> body. The function reads the CQHCI interrupt status directly via
-> cqhci_readl() and processes interrupts independently of the SDHCI
-> intmask value passed by callers.
+> MT8189 SoC MMC Controller IP has 4 additional clocks.
+> Describe them in the dt-bindings for this SoC.
 >
-> Signed-off-by: Chanwoo Lee <cw9316.lee@samsung.com>
+> Fixes: 7514f64780a4 ("dt-bindings: mmc: mtk-sd: Add support for MT8189 So=
+C")
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
 Applied for next, thanks!
 
@@ -199,203 +188,74 @@ Uffe
 
 
 > ---
->  drivers/mmc/host/cqhci-core.c       | 3 +--
->  drivers/mmc/host/cqhci.h            | 3 +--
->  drivers/mmc/host/mtk-sd.c           | 2 +-
->  drivers/mmc/host/sdhci-brcmstb.c    | 2 +-
->  drivers/mmc/host/sdhci-esdhc-imx.c  | 2 +-
->  drivers/mmc/host/sdhci-msm.c        | 2 +-
->  drivers/mmc/host/sdhci-of-arasan.c  | 2 +-
->  drivers/mmc/host/sdhci-of-dwcmshc.c | 2 +-
->  drivers/mmc/host/sdhci-pci-core.c   | 2 +-
->  drivers/mmc/host/sdhci-pci-gli.c    | 2 +-
->  drivers/mmc/host/sdhci-tegra.c      | 2 +-
->  drivers/mmc/host/sdhci_am654.c      | 2 +-
->  12 files changed, 12 insertions(+), 14 deletions(-)
+> The patch is based on linux-next tree (tag: next-20260630) and has
+> been tested on Mediatek Genio 520-EVK (MT8371) and 720-EVK (MT8391)
+> boards with board hardware enablement patch series.
 >
-> diff --git a/drivers/mmc/host/cqhci-core.c b/drivers/mmc/host/cqhci-core.=
-c
-> index 178277d90c31..98ceb0b9a6d1 100644
-> --- a/drivers/mmc/host/cqhci-core.c
-> +++ b/drivers/mmc/host/cqhci-core.c
-> @@ -819,8 +819,7 @@ static void cqhci_finish_mrq(struct mmc_host *mmc, un=
-signed int tag)
->         mmc_cqe_request_done(mmc, mrq);
->  }
+> Additional note:
+> There is currently no use of "mediatek,mt8189-mmc" compatible in
+> Mediatek board devicetrees.
+> ---
+>  Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 29 +++++++++++++++++=
++++++-
+>  1 file changed, 28 insertions(+), 1 deletion(-)
 >
-> -irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
-> -                     int data_error)
-> +irqreturn_t cqhci_irq(struct mmc_host *mmc, int cmd_error, int data_erro=
-r)
->  {
->         u32 status;
->         unsigned long tag =3D 0, comp_status;
-> diff --git a/drivers/mmc/host/cqhci.h b/drivers/mmc/host/cqhci.h
-> index 3668856531c1..8fbbc48c3f85 100644
-> --- a/drivers/mmc/host/cqhci.h
-> +++ b/drivers/mmc/host/cqhci.h
-> @@ -315,8 +315,7 @@ static inline u32 cqhci_readl(struct cqhci_host *host=
-, int reg)
+> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Document=
+ation/devicetree/bindings/mmc/mtk-sd.yaml
+> index eb3755bdfdf7..a4d032224dce 100644
+> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> @@ -193,7 +193,6 @@ allOf:
+>              - mediatek,mt8183-mmc
+>              - mediatek,mt8186-mmc
+>              - mediatek,mt8188-mmc
+> -            - mediatek,mt8189-mmc
+>              - mediatek,mt8195-mmc
+>              - mediatek,mt8196-mmc
+>              - mediatek,mt8516-mmc
+> @@ -348,6 +347,34 @@ allOf:
+>              - const: axi_cg
+>              - const: ahb_cg
 >
->  struct platform_device;
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: mediatek,mt8189-mmc
+> +    then:
+> +      properties:
+> +        clocks:
+> +          minItems: 6
+> +          items:
+> +            - description: source clock
+> +            - description: HCLK which used for host
+> +            - description: independent source clock gate
+> +            - description: bus clock used for internal register access
+> +            - description: peripheral bus clock gate
+> +            - description: AXI bus clock gate
+> +            - description: crypto clock used for data encrypt/decrypt (o=
+ptional)
+> +        clock-names:
+> +          minItems: 6
+> +          items:
+> +            - const: source
+> +            - const: hclk
+> +            - const: source_cg
+> +            - const: bus_clk
+> +            - const: pclk_cg
+> +            - const: axi_cg
+> +            - const: crypto
+> +
+>  unevaluatedProperties: false
 >
-> -irqreturn_t cqhci_irq(struct mmc_host *mmc, u32 intmask, int cmd_error,
-> -                     int data_error);
-> +irqreturn_t cqhci_irq(struct mmc_host *mmc, int cmd_error, int data_erro=
-r);
->  int cqhci_init(struct cqhci_host *cq_host, struct mmc_host *mmc, bool dm=
-a64);
->  struct cqhci_host *cqhci_pltfm_init(struct platform_device *pdev);
->  int cqhci_deactivate(struct mmc_host *mmc);
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index b2680cc054bd..01ea3adbdf3b 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -1805,7 +1805,7 @@ static irqreturn_t msdc_cmdq_irq(struct msdc_host *=
-host, u32 intsts)
->                         cmd_err, dat_err, intsts);
->         }
+>  examples:
 >
-> -       return cqhci_irq(mmc, 0, cmd_err, dat_err);
-> +       return cqhci_irq(mmc, cmd_err, dat_err);
->  }
+> ---
+> base-commit: ba7c57499e5999aeae8dd4f954eb2600589d80aa
+> change-id: 20260701-mt8189-mmc-dt-bindings-fix-18959c85d5b6
 >
->  static irqreturn_t msdc_irq(int irq, void *dev_id)
-> diff --git a/drivers/mmc/host/sdhci-brcmstb.c b/drivers/mmc/host/sdhci-br=
-cmstb.c
-> index 57e45951644e..1de2f05fd958 100644
-> --- a/drivers/mmc/host/sdhci-brcmstb.c
-> +++ b/drivers/mmc/host/sdhci-brcmstb.c
-> @@ -430,7 +430,7 @@ static u32 sdhci_brcmstb_cqhci_irq(struct sdhci_host =
-*host, u32 intmask)
->         if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
->                 return intmask;
->
-> -       cqhci_irq(host->mmc, intmask, cmd_error, data_error);
-> +       cqhci_irq(host->mmc, cmd_error, data_error);
->
->         return 0;
->  }
-> diff --git a/drivers/mmc/host/sdhci-esdhc-imx.c b/drivers/mmc/host/sdhci-=
-esdhc-imx.c
-> index 18ecddd6df6f..d0fa83f67a80 100644
-> --- a/drivers/mmc/host/sdhci-esdhc-imx.c
-> +++ b/drivers/mmc/host/sdhci-esdhc-imx.c
-> @@ -1503,7 +1503,7 @@ static u32 esdhc_cqhci_irq(struct sdhci_host *host,=
- u32 intmask)
->         if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
->                 return intmask;
->
-> -       cqhci_irq(host->mmc, intmask, cmd_error, data_error);
-> +       cqhci_irq(host->mmc, cmd_error, data_error);
->
->         return 0;
->  }
-> diff --git a/drivers/mmc/host/sdhci-msm.c b/drivers/mmc/host/sdhci-msm.c
-> index 0882ce74e0c9..ceed47ccfda8 100644
-> --- a/drivers/mmc/host/sdhci-msm.c
-> +++ b/drivers/mmc/host/sdhci-msm.c
-> @@ -2165,7 +2165,7 @@ static u32 sdhci_msm_cqe_irq(struct sdhci_host *hos=
-t, u32 intmask)
->         if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
->                 return intmask;
->
-> -       cqhci_irq(host->mmc, intmask, cmd_error, data_error);
-> +       cqhci_irq(host->mmc, cmd_error, data_error);
->         return 0;
->  }
->
-> diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-=
-of-arasan.c
-> index 785d3acb18c5..4ca73e7d799e 100644
-> --- a/drivers/mmc/host/sdhci-of-arasan.c
-> +++ b/drivers/mmc/host/sdhci-of-arasan.c
-> @@ -555,7 +555,7 @@ static u32 sdhci_arasan_cqhci_irq(struct sdhci_host *=
-host, u32 intmask)
->         if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
->                 return intmask;
->
-> -       cqhci_irq(host->mmc, intmask, cmd_error, data_error);
-> +       cqhci_irq(host->mmc, cmd_error, data_error);
->
->         return 0;
->  }
-> diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci=
--of-dwcmshc.c
-> index eef53455b8ee..4c5fa6a6931d 100644
-> --- a/drivers/mmc/host/sdhci-of-dwcmshc.c
-> +++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
-> @@ -624,7 +624,7 @@ static u32 dwcmshc_cqe_irq_handler(struct sdhci_host =
-*host, u32 intmask)
->         if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
->                 return intmask;
->
-> -       cqhci_irq(host->mmc, intmask, cmd_error, data_error);
-> +       cqhci_irq(host->mmc, cmd_error, data_error);
->
->         return 0;
->  }
-> diff --git a/drivers/mmc/host/sdhci-pci-core.c b/drivers/mmc/host/sdhci-p=
-ci-core.c
-> index c347fac24515..b121d896a804 100644
-> --- a/drivers/mmc/host/sdhci-pci-core.c
-> +++ b/drivers/mmc/host/sdhci-pci-core.c
-> @@ -215,7 +215,7 @@ static u32 sdhci_cqhci_irq(struct sdhci_host *host, u=
-32 intmask)
->         if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
->                 return intmask;
->
-> -       cqhci_irq(host->mmc, intmask, cmd_error, data_error);
-> +       cqhci_irq(host->mmc, cmd_error, data_error);
->
->         return 0;
->  }
-> diff --git a/drivers/mmc/host/sdhci-pci-gli.c b/drivers/mmc/host/sdhci-pc=
-i-gli.c
-> index 6e4084407662..b55618566d65 100644
-> --- a/drivers/mmc/host/sdhci-pci-gli.c
-> +++ b/drivers/mmc/host/sdhci-pci-gli.c
-> @@ -1760,7 +1760,7 @@ static u32 sdhci_gl9763e_cqhci_irq(struct sdhci_hos=
-t *host, u32 intmask)
->         if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
->                 return intmask;
->
-> -       cqhci_irq(host->mmc, intmask, cmd_error, data_error);
-> +       cqhci_irq(host->mmc, cmd_error, data_error);
->
->         return 0;
->  }
-> diff --git a/drivers/mmc/host/sdhci-tegra.c b/drivers/mmc/host/sdhci-tegr=
-a.c
-> index 820ce4dae58b..221e48b59f48 100644
-> --- a/drivers/mmc/host/sdhci-tegra.c
-> +++ b/drivers/mmc/host/sdhci-tegra.c
-> @@ -1280,7 +1280,7 @@ static u32 sdhci_tegra_cqhci_irq(struct sdhci_host =
-*host, u32 intmask)
->         if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
->                 return intmask;
->
-> -       cqhci_irq(host->mmc, intmask, cmd_error, data_error);
-> +       cqhci_irq(host->mmc, cmd_error, data_error);
->
->         return 0;
->  }
-> diff --git a/drivers/mmc/host/sdhci_am654.c b/drivers/mmc/host/sdhci_am65=
-4.c
-> index d235b0aecfdb..2a27db2f558b 100644
-> --- a/drivers/mmc/host/sdhci_am654.c
-> +++ b/drivers/mmc/host/sdhci_am654.c
-> @@ -462,7 +462,7 @@ static u32 sdhci_am654_cqhci_irq(struct sdhci_host *h=
-ost, u32 intmask)
->         if (!sdhci_cqe_irq(host, intmask, &cmd_error, &data_error))
->                 return intmask;
->
-> -       cqhci_irq(host->mmc, intmask, cmd_error, data_error);
-> +       cqhci_irq(host->mmc, cmd_error, data_error);
->
->         return 0;
->  }
+> Best regards,
 > --
-> 2.43.0
+> Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 >
 
