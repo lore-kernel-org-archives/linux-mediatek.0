@@ -4,62 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8235C43602
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 14:53:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04928C43458
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 15:02:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:
-	Mime-Version:Content-Transfer-Encoding:To:From:Cc:Subject:Message-Id:Date:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GUkyk/4FJ+l7g40rHdo7hpp51HEwukBFxiiyIWeaPf0=; b=pd4vDErfAFPJYUv2HC1wU+C4fd
-	dRvZWt1BzR7uOWlb+E8ZWlJ/jnne1tANKzZL6USBqn/3ySxYyaninH1fkskOSLTnU/JK3dX/z25qx
-	M8sVrMAP7sd9jvoApzen7ePy00vhP4JPdspfT/5ReyenAqMWIVsYR3+F3M0p7NHegXoMXgL/kfs2O
-	V4xL16pMQDx4IUoxup1L/ysj96z1DSQgFx9nYDBlCm8RvkUZdq5XHFjIOn6Rzqe/ytH7X2QSrjvOF
-	+ksxgjmYgjz2ay447NLJck49RJpq7i1cSlpbvTX/oE1wpKYYLi3PaZ8XWLr9/no4Qg7db3IDGR0RJ
-	InLrHBxA==;
+	bh=3XwyWTIrA/V6J7edt1EVqOvQjuCfvvAm71aap9OvOCI=; b=tZQL7QrbtHYCnDVzSuf77RMOAb
+	80XpKMt2T2Emo7ewyV4asBaHmsas2+mOIf/TlVSDVG4xgLulctAa0O4CdGdQO3oB+4B1JuxFAvFqQ
+	nJgMPklyuXBNSIVtZz7WldR1WOWZN5RugrsJsilTc8ixhPJAeOU81lcUCmtQsFXu5KYp3bN6hQNr8
+	+JUFrkLAdMXsy95rSHGQlaRUBleRgMY3VJrQb/sLaVm5WkOBHU9X1srMh1H7LEjIL47SRd0iUuXAd
+	S3v8JQJvYM0Yw9PIh9EMC0dLt5oEXIiX1gJslO48JdzCU/1Npoiusae1CSlldP+gpLfyLDclNA796
+	h/ezkMow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgkhq-0000000Co9b-2SVD;
-	Mon, 06 Jul 2026 14:53:58 +0000
-Received: from sendmail.purelymail.com ([34.202.193.197])
+	id 1wgkqV-0000000CpUX-3cte;
+	Mon, 06 Jul 2026 15:02:55 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgkho-0000000Co8z-3ma0
-	for linux-mediatek@lists.infradead.org;
-	Mon, 06 Jul 2026 14:53:58 +0000
-DKIM-Signature: a=rsa-sha256; b=OPHaaWS/h1hJ0iUeP8n30+fHAUp9db2Ut/nSah4+HsvX2bSjsyAmHK1ZjlchIKnq3+29MIgLIk08YMluoB2E59KNLzrJ1Y2adLp7XbJOvMOuvJC921AhN8CAVarGzUkHYdjv7LrmSsl8f4apCGJbYzY5WEmfuq++zmWl4YkMskQ3z+itWE9tdZG3vuV0V4iWRwvwR8Be6yoUb3ebqK7iMEKkl0SlSrvnA3CRgK3k0KzI8D0J1xO3GMwsb2GzVWHPCdIIIMNhLZfYOfDtKmNhfrA8ejoysKVxmx4iddCx6JE9IDqyIiduEZPgDtLJ0u/iQi8PpZGL2XnopXhGtD1V2g==; s=purelymail3; d=rcpassos.me; v=1; bh=GUkyk/4FJ+l7g40rHdo7hpp51HEwukBFxiiyIWeaPf0=; h=Received:Date:Subject:From:To;
-DKIM-Signature: a=rsa-sha256; b=FQTyH4+plKzkKO3IEcpfytstiws8fLmw1tmp9kkBmVX+9R0BtnlIaH26Uf1z8FqnmdPYIxa5O0UK/6R1TGTz4t2s9DhBZ8UyHdHEiqkbVZcdmZTg8OxYEH4xVfOyVOp90ycOcb3mEmxgv+4Jy5vYYRw2wAPIxnFb4/8Xj/SbbPFLk22GcTtkiLkRqs7Z16P2RSL8yJAv1cU4cZFh2ajJwA85PBlp8kcU35gjt5Kpeyv9QqOR8W3+3jdCwhnCojX1hhI7C5b59LSe/Ngglo5Y4K2U50DSKgUtD3UkYxQBxQph/M7l6oAbyRwd9pTfb8zlJs11Rj21jCGxtCu9EHErhQ==; s=purelymail3; d=purelymail.com; v=1; bh=GUkyk/4FJ+l7g40rHdo7hpp51HEwukBFxiiyIWeaPf0=; h=Feedback-ID:Received:Date:Subject:From:To;
-Feedback-ID: 45355:7809:null:purelymail
-X-Pm-Original-To: linux-mediatek@lists.infradead.org
-Received: by smtp.purelymail.com (Purelymail SMTP) with ESMTPSA id -2012387389;
-          (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
-          Mon, 06 Jul 2026 14:53:19 +0000 (UTC)
+	id 1wgkqQ-0000000CpTB-1VZG;
+	Mon, 06 Jul 2026 15:02:51 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1783350034; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=ShBwgIB9Tp0j2ieVFNXD2nNlBvkYSrZX6KL3AeDB+tfLOnE+7CHZu5rN/HP3/wiA65AfS2awNfBnLG6v3KttLERp5k37uX5cTjLkGlHu1epQC0tpKbiWTjw2bmWO4R3cJ9Bceq/UN4MGpiO+12hQk2boeKqRMVN9X9phSckbKF0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1783350034; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=3XwyWTIrA/V6J7edt1EVqOvQjuCfvvAm71aap9OvOCI=; 
+	b=aUIQNdoKYFXhqBqNhsY+F02CkGve6EXcuTScFbe5OHL/WHUKXk+LgtUumBUdfOodPJNOea5bCjHJ9ycCR0cPvohjbCewZV5P129fWS7uy+uA2tTiwdLdX3wI3zpXyvb7h2kq1Re2lQrUV6CFisZwObNuwW+4qzyVdb787O027/g=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
+	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1783350034;
+	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=3XwyWTIrA/V6J7edt1EVqOvQjuCfvvAm71aap9OvOCI=;
+	b=ImgA1Hj80B9JHQg2Jp0iR3Hfkzuv+c1ZmjHHLY5vXEEHJlu3rx/mY5cc4HVAWJDf
+	QREjGnw/uNA5JcHG0nEUz0PUvTE/0uKgXtwmj8p0wIRVC2fcF+pZOIvPjdNL8NnCNrh
+	RgJCMxLw7XsRX8tO1eirdxvjf97IRGDZQzh4oCj8=
+Received: by mx.zohomail.com with SMTPS id 1783350031182921.1240379629376;
+	Mon, 6 Jul 2026 08:00:31 -0700 (PDT)
+Message-ID: <3541fb84-81ce-4415-8027-38aa611834ae@collabora.com>
+Date: Mon, 6 Jul 2026 18:00:09 +0300
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 06/42] media: synopsys: hdmirx: Use
+ devm_of_reserved_mem_device_init()
+To: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konradybcio@kernel.org>, Liviu Dudau <liviu.dudau@arm.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Paul Cercueil <paul@crapouillou.net>,
+ Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
+ Paul Kocialkowski <paulk@sys-base.io>, Linus Walleij <linusw@kernel.org>,
+ Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Alexey Brodkin
+ <abrodkin@synopsys.com>, Laurent Pinchart
+ <laurent.pinchart@ideasonboard.com>,
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+ Michal Simek <michal.simek@amd.com>,
+ Daniel Scally <dan.scally@ideasonboard.com>,
+ Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Eddie James <eajames@linux.ibm.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Houlong Wei <houlong.wei@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Joseph Liu <kwliu@nuvoton.com>, Marvin Lin <kflin@nuvoton.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Thierry Reding <thierry.reding@kernel.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Srinivas Kandagatla <srini@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Ge Gordon
+ <gordon.ge@bst.ai>, Adrian Hunter <adrian.hunter@intel.com>,
+ Ulf Hansson <ulfh@kernel.org>, Rob Herring <robh@kernel.org>,
+ Saravana Kannan <saravanak@kernel.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Shengjiu Wang <shengjiu.wang@gmail.com>, Xiubo Li <Xiubo.Lee@gmail.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+ Bard Liao <yung-chuan.liao@linux.intel.com>,
+ Daniel Baluta <daniel.baluta@nxp.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Peter Chen <peter.chen@cixtech.com>, Fugang Duan <fugang.duan@cixtech.com>
+Cc: Ekansh Gupta <ekansh.gupta@oss.qualcomm.com>,
+ BST Linux Kernel Upstream Group <bst-upstream@bstai.top>,
+ Fabio Estevam <festevam@gmail.com>, Nicolin Chen <nicoleotsuka@gmail.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
+ Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>,
+ CIX Linux Kernel Upstream Group <cix-kernel-upstream@cixtech.com>,
+ linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-aspeed@lists.ozlabs.org,
+ linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, linux-media@vger.kernel.org,
+ openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com, linux-tegra@vger.kernel.org,
+ linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-remoteproc@vger.kernel.org, linux-staging@lists.linux.dev,
+ linux-sound@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+ imx@lists.linux.dev, sound-open-firmware@alsa-project.org
+References: <20260703193855.110619-1-mukesh.ojha@oss.qualcomm.com>
+ <20260703193855.110619-7-mukesh.ojha@oss.qualcomm.com>
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260703193855.110619-7-mukesh.ojha@oss.qualcomm.com>
 Content-Type: text/plain; charset=UTF-8
-Date: Mon, 06 Jul 2026 11:53:17 -0300
-Message-Id: <DJRKO72HWZOI.QJYJUAC45QOJ@rcpassos.me>
-Subject: Re: [PATCH v2] Bluetooth: Properly disable remote wakeup for
- MT7922/MT7925 on Ryzen platform
-Cc: "Luiz Augusto von Dentz" <luiz.von.dentz@intel.com>,
- =?utf-8?b?Q2hyaXMgTHUgKOmZuOeomuazkyk=?= <Chris.Lu@mediatek.com>,
- =?utf-8?b?V2lsbC1DWSBMZWUgKOadjuaUv+epjik=?= <Will-CY.Lee@mediatek.com>,
- =?utf-8?b?U1MgV3UgKOW3q+aGsuasoyk=?= <ss.wu@mediatek.com>,
- <linux-bluetooth@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-From: "Rafael Passos" <rafael@rcpassos.me>
-To: "Rong Zhang" <i@rong.moe>, "Marcel Holtmann" <marcel@holtmann.org>,
- "Luiz Augusto von Dentz" <luiz.dentz@gmail.com>, "Matthias Brugger"
- <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
- <angelogioacchino.delregno@collabora.com>
-Content-Transfer-Encoding: quoted-printable
-Mime-Version: 1.0
-X-Mailer: aerc 0.21.0
-References: <20260701-btmtk-ryzen-remote-wakeup-v2-1-767ac7907472@rong.moe>
-In-Reply-To: <20260701-btmtk-ryzen-remote-wakeup-v2-1-767ac7907472@rong.moe>
+Content-Transfer-Encoding: 7bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_075357_019149_8E39E524 
-X-CRM114-Status: UNSURE (   5.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260706_080250_426953_3DE3A836 
+X-CRM114-Status: GOOD (  18.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,18 +141,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-I was having issues with Bluetooth on the ASRock B850M with MT7925.
-I tested this and other patches in my investigation process.
-My issue was a platform bug causing a failure in USB enumeration
-before the driver path (unrelated to the patch).
+On 7/3/26 22:38, Mukesh Ojha wrote:
+> Replace the hand-rolled devm_hdmirx_of_reserved_mem_device_release()
+> devres action with devm_of_reserved_mem_device_init(), which handles the
+> cleanup automatically. This removes both the wrapper function and the
+> devm_add_action_or_reset() call.
+> 
+> Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
+> ---
+>  .../media/platform/synopsys/hdmirx/snps_hdmirx.c | 16 ++--------------
+>  1 file changed, 2 insertions(+), 14 deletions(-)
+> 
+> diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+> index 25f8ca0d6d94..7c6acc6d7e88 100644
+> --- a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+> +++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+> @@ -2265,11 +2265,6 @@ static const struct hdmirx_cec_ops hdmirx_cec_ops = {
+>  	.read = hdmirx_readl,
+>  };
+>  
+> -static void devm_hdmirx_of_reserved_mem_device_release(void *dev)
+> -{
+> -	of_reserved_mem_device_release(dev);
+> -}
+> -
+>  static int hdmirx_parse_dt(struct snps_hdmirx_dev *hdmirx_dev)
+>  {
+>  	struct device *dev = hdmirx_dev->dev;
+> @@ -2316,16 +2311,9 @@ static int hdmirx_parse_dt(struct snps_hdmirx_dev *hdmirx_dev)
+>  	if (!device_property_read_bool(dev, "hpd-is-active-low"))
+>  		hdmirx_dev->hpd_trigger_level_high = true;
+>  
+> -	ret = of_reserved_mem_device_init(dev);
+> -	if (ret) {
+> +	ret = devm_of_reserved_mem_device_init(dev);
+> +	if (ret)
+>  		dev_warn(dev, "no reserved memory for HDMIRX, use default CMA\n");
+> -	} else {
+> -		ret = devm_add_action_or_reset(dev,
+> -					       devm_hdmirx_of_reserved_mem_device_release,
+> -					       dev);
+> -		if (ret)
+> -			return ret;
+> -	}
+>  
+>  	return 0;
+>  }
 
-I can confirm this patch does not introduce regressions on this platform.
-I tested system power cycling and suspension,
-and also BT/Wifi adapter enable/disable.
-Patch applied on top of mailine (7.2 rc1).
+Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 
-Tested-by: Rafael Passos <rafael@rcpassos.me>
-
-Thanks,
-Rafael Passos
+-- 
+Best regards,
+Dmitry
 
