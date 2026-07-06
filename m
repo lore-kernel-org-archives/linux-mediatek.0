@@ -4,139 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28CE5C43602
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 15:21:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87771C44500
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 15:35:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8A51OX/9my7e6tIHaoARVbxZ+6ZmCrlNFfVyyluoI3Y=; b=XTwEwPJtNJQnCAOBQtntw+zvTg
-	/lllFEJKZCHGFMLadGoPLx+QpC6rGal+IoLHRsh1XRF9KlEYkEgXxCO2gw06on4ut9mrfimDaLVSu
-	zAXH36uCmf3LbEMNNtob/XMUSIbJhS8YFyN0kiFVcU1TnEK2ZI/IcbKpXQSDpT+ccYYC1HQOdJZkc
-	utHMNWK+oK27ELtnbmYCayeCMzAqNhs3VW+4QEiZ4yVBILk3YsMDjlDBRC1/QdlaWTZFXis/MzjuH
-	7CSoNqCrRFe8OrOdBlR+l+quD/WSgwVNoXUTfrtNJyRmvq8DjgvrczrovvBclG7yDe0ll2KMyqGi9
-	zIEZfwwA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nz9V1Z40aZ9Pp49Pl4b5IYoI16Na9eREnr92Rd6P67k=; b=vtdpYipsMmikFqEk28iJKCl5bW
+	GfOa+ybJvLo458+uxUvuLOdV1Y3ixIvSYFBLC9hp8dQFj6uKpzbseIuPOf9AtjfzV6VnIFLPzoaVK
+	VFq7BnAfaYry5yymgyiZmEOQFQt0Xk0J8IgKoPp9w5YhAIF7Y8LubQOpE3kTlnjUc9HQvnWbQJxjo
+	dPQEt5DIrmzzOgOCm+hlwzuTCYatOH2xMaikvmz1/E6oD7EVYbIchepAruae60Gyk4kEsoqZmbTA7
+	uTW3n1+HT9xJScUYLG8uxdSm1FRnkx3UEXOhkF99uM/1RNZh2geV0iaPRJ6YGLc9OLJpC3J8zF803
+	4EM37Iug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgl8c-0000000Cs6W-3U4x;
-	Mon, 06 Jul 2026 15:21:38 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1wglMK-0000000CtzG-1U2u;
+	Mon, 06 Jul 2026 15:35:48 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgl8a-0000000Cs5U-09wT
+	id 1wglMH-0000000Ctwi-1QF1
 	for linux-mediatek@lists.infradead.org;
-	Mon, 06 Jul 2026 15:21:37 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-471eeac43bfso3548240f8f.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 Jul 2026 08:21:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=suse.com; s=google; t=1783351294; x=1783956094; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=8A51OX/9my7e6tIHaoARVbxZ+6ZmCrlNFfVyyluoI3Y=;
-        b=MbwGqcZH0BcyVHSi5iw/Ek8XtT9S0ZC+eoCC4ri41iodbWinriB7mTsvHE8gsF4xsf
-         VpgRgRv4ueL0zSa8Mb97F4dTpwGaXrcQmWw6SPoqldhVBhfJBq4EtppTMvOj+UQqXR3b
-         wawCWHAmEuCPYQE4kUvfe60kLLA0PlWENYEWeh2Or2vpDl/FY+Qq8H/zDLjt170+xLqA
-         8zxZaYybT3F0xssZrgXYZns8Ww+k56e6GSLDPB2c5E4VGLV4WmL+FGll95vVpOfi+CQd
-         XfeO6SAZPeFw+Gx7ZtTrTYzBMU04i5RW6bngxq4jOsyk11XuOXhoRtwGZnlsFbqYA3Hn
-         m+NQ==
+	Mon, 06 Jul 2026 15:35:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1783352143;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=nz9V1Z40aZ9Pp49Pl4b5IYoI16Na9eREnr92Rd6P67k=;
+	b=VDlxitduT2hpoPuDSXDMhTDQPkpLQ9il7p2jxYaSclKrruGjbCOmlXW+l6Srjt0JCi/c9t
+	Zv2S2DZldkDD2Gz4lNBWmFSGIuSNBqxszL76Hefi6e1PhVql7bdrMO89YtINs2QK6RztHM
+	kjiQrh8KVsy6ANrvn3QzIpqtR1aiECE=
+Received: from mail-yw1-f197.google.com (mail-yw1-f197.google.com
+ [209.85.128.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-659-Tdpfzg6KMBeiyAOO6AAUSg-1; Mon, 06 Jul 2026 11:35:41 -0400
+X-MC-Unique: Tdpfzg6KMBeiyAOO6AAUSg-1
+X-Mimecast-MFC-AGG-ID: Tdpfzg6KMBeiyAOO6AAUSg_1783352141
+Received: by mail-yw1-f197.google.com with SMTP id 00721157ae682-80e910ddbc6so91746197b3.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 06 Jul 2026 08:35:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783351294; x=1783956094;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8A51OX/9my7e6tIHaoARVbxZ+6ZmCrlNFfVyyluoI3Y=;
-        b=TLrU0Q2AjAR2oornM/gWaOa8N4nn3I7z7HIIDJPkS0e0erIdKKrud3SesCSD7fFNKw
-         e13Ew8Kjbba/kdczOaAy7Q9y1NoC1Y+viYkFNbirxc7uDKH4aa4b2YOYY2+CiAvAA3LW
-         PPaE44G1lvRGuddgY67ESU25DOvCoriBGNRr0NvrRmpKboY6r9gmoGz0XZ48tX8nB0pB
-         4m13Dr//K6cTcTRFZjnNgl5t2+NQCRz5kvPvMClmRe8O0WzLlxgPU2s1TCrNMUPtkMEb
-         SdYKHwLV2IXqPRQ0b9XKR9A28R0M4jdlXhHpqoFpGaDT+O1pdE3FhzMl9k69puhyuzqS
-         SuJA==
-X-Forwarded-Encrypted: i=1; AHgh+RpaTjVSkD/+RLWWj+Vp1g2n3nOlPZxre6yPTFN7TIai+abK6WORUO03PIVzjfafP0YirZ2isdTYyFIKubiTOw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywl/k8fOHuEyhlGUi8lQNmySM8TjU5FAKqG+aP6AiDbg5FPjxbE
-	nzC55h7GuGKNAWjJSGHo4XfcqUstxFmYJR6Jv4i3oGF4lxXFhdixA14sfmoalg8PMt0=
-X-Gm-Gg: AfdE7clT5cHVMaCgsJrKw5eNH/9N+DjHae2qgghvcVCJimU4q7R+ZYFpSPnsRIemKS/
-	VbK8J8XtqKZ3WIQMT4IIQPbtPWPgeroQroE+IoyMHZbi+jbEyW5eIWYOn6c4k46xT7CjvbcEKmu
-	pqTsjsHkPe4FZTxZIL7rGN1Z+Q2WqieK2nlWKZcvMPzdmA/8CtDXU0TqNC2o0UsnXt7yERcgyTa
-	xBx8Z+w+4R6TYbgQ+37yiCEjArZz6bLIxef3I3lrrLDUcgusbhr6oH61AnTXMTpDII/SDGHeDFs
-	odlW0P0coq6mZ9vJ7JvTRKKxyXPcQ6vfJvTb++M/ZPo4YxxC2+zke2VLRr4eP020w+y82PR2VgJ
-	A/aqTfySxrS8JnQPxmmBVPnQv0Eujy8GXGDIRDivNTqEExofDD93rpEB3VmfFOfmaKkG6FUPhHQ
-	yTg/wUPZAPBKSDbQRNeJI4U9mGt2+XnFp/3HVJIzBQgPp2QvaNU0EkKK5qvyX8
-X-Received: by 2002:adf:e40e:0:b0:475:f0c2:75a6 with SMTP id ffacd0b85a97d-47de66f2e70mr580585f8f.55.1783351294208;
-        Mon, 06 Jul 2026 08:21:34 -0700 (PDT)
-Received: from [192.168.1.136] (48.85-85-171.dynamic.clientes.euskaltel.es. [85.85.171.48])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47aa09608d4sm26469667f8f.25.2026.07.06.08.21.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 06 Jul 2026 08:21:33 -0700 (PDT)
-Message-ID: <747bb78f-5ebf-40cf-9922-98e69920a9d8@suse.com>
-Date: Mon, 6 Jul 2026 17:21:30 +0200
+        d=1e100.net; s=20251104; t=1783352141; x=1783956941;
+        h=user-agent:in-reply-to:content-disposition:content-type
+         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=nz9V1Z40aZ9Pp49Pl4b5IYoI16Na9eREnr92Rd6P67k=;
+        b=g12JcGWpycHXNKiIjaiYhMwhM5xMeq9+2j/hIeHANqb3i6ZO2iEXTNFPTdKTn498Oz
+         sZ6H16QgiKvCfb0zHFrnNp7Xm7XyqT+VqA0C3VQyjvgJbsavEsgOfe20bq4B3n1sxqMD
+         oePMPxqICFtVybMl/cUi4YB5WYVWBQ4g6srT7YzO1iGEoX7nKxilZufb+sAPCbWLZd3F
+         75JTGh4EK8VQZwqTJ/lWKFlJO7B+mBPMu5BT8FBU2q/X5Ie0CMbnplq3uUnIz0BuSHe1
+         togUTfAdFMeNPtAr0JJDCA1AfCZSzr/LwADbqVcwYm/cJkABhGKA/BHE+Z5iBF6BC77d
+         /pSA==
+X-Forwarded-Encrypted: i=1; AHgh+RoehW8IeimyOe1gNrRkT/3DheB9WWgoKOJCnjot7YI1X8B0HKpq1xFvZ3owifR/EgZCEuS69cuYlVnMhdqdLg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyCEo+lSop7p5L77hDHAQR2j09BnjZ6UJ8IWiFPYVZr/5hUvDyt
+	Edkc7CFn8HpXKFDSXoytV4FT2HdoZq0wlmfiJclOKleSKYSb2ho33GiLciUE/6LG7is0rftnt3V
+	I70oAosP5VO3Gb++k+UNWT25QUkRCNlbH/eGTGZdWUDy3rI9UB5z0S/zO5le/gqoDHBOst1gkNA
+	==
+X-Gm-Gg: AfdE7cngOWdM+6wB09kBaRrH1Bu5mxUr+l7g9UUwWOx10RJdWgtybZPRaEKURLo/Wn+
+	pqtSb57OZcApDzkmc4Nne4c4FY8c/7DVDrq6yrp1KXw2ufC9ymcmuoI6NI/VfNUr3j/oLx+6x5T
+	p0HBOccqQ5H5GPNplbXXwXwQxPCBb5/8Eq4SuXg6EIuJMuy5VefCKmn6hmvi6oqIxuvcGnBLDEO
+	r9qi7PKONrHVtTo7R6KbJz+r724kn9noLp9fnCGAXUO7/0zqOcNNtJ24eIwvijDuKdbfLWyBqZH
+	xukro1znIOPIoo9jgCCwlZMqqaKed3AYyV58E+BdsNjr+GyyQ36YUIya90yh6YQkluZqXLsP/1Q
+	ZlNX7ybdOoP3dNtUbx3+L57yBbPLEDWLJh52HCWGe9HcDPQ==
+X-Received: by 2002:a05:690c:3601:b0:80c:85e5:8759 with SMTP id 00721157ae682-81be38b8fe5mr5792547b3.66.1783352140776;
+        Mon, 06 Jul 2026 08:35:40 -0700 (PDT)
+X-Received: by 2002:a05:690c:3601:b0:80c:85e5:8759 with SMTP id 00721157ae682-81be38b8fe5mr5792387b3.66.1783352140419;
+        Mon, 06 Jul 2026 08:35:40 -0700 (PDT)
+Received: from redhat.com (c-73-183-53-213.hsd1.pa.comcast.net. [73.183.53.213])
+        by smtp.gmail.com with ESMTPSA id 00721157ae682-8144783fa21sm58952937b3.2.2026.07.06.08.35.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 06 Jul 2026 08:35:38 -0700 (PDT)
+Date: Mon, 6 Jul 2026 11:35:37 -0400
+From: Brian Masney <bmasney@redhat.com>
+To: Pengpeng Hou <pengpeng@iscas.ac.cn>
+Cc: Yassine Oudjana <y.oudjana@protonmail.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] clk: mediatek: mt6735-vdecsys: add missing
+ MODULE_DEVICE_TABLE()
+Message-ID: <akvLSe4WOXpxgbO3@redhat.com>
+References: <20260704124450.11035-1-pengpeng@iscas.ac.cn>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/4] pmdomain: mediatek: Add support for MT8196 HFRP
- DirectCTL domains
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- ulfh@kernel.org
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, nfraprado@collabora.com, irving-ch.lin@mediatek.com,
- macpaul.lin@mediatek.com, aford173@gmail.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- justin.yeh@mediatek.com, kernel@collabora.com
-References: <20260701121920.19347-1-angelogioacchino.delregno@collabora.com>
- <20260701121920.19347-5-angelogioacchino.delregno@collabora.com>
-Content-Language: en-US, ca-ES, es-ES
-From: Matthias Brugger <mbrugger@suse.com>
-Autocrypt: addr=mbrugger@suse.com; keydata=
- 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
- PVrr2NoUqi/bxI8fFQJD1jVj8K0=
-In-Reply-To: <20260701121920.19347-5-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <20260704124450.11035-1-pengpeng@iscas.ac.cn>
+User-Agent: Mutt/2.3.2 (2026-04-26)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 2NlrHvIlTlVSzSXGrnN5NwWZXPF4Fdfr0BeWI8ItRmE_1783352141
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_082136_120044_408F481B 
-X-CRM114-Status: GOOD (  13.72  )
+X-CRM114-CacheID: sfid-20260706_083545_461015_CB07D712 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,81 +115,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 01/07/2026 14:19, AngeloGioacchino Del Regno wrote:
-> Add support for the power domains provided by the HFRPSYS Power
-> Controller of the MT8196 SoC.
-> Those control power to the eDP and DP Transmitter IPs.
+On Sat, Jul 04, 2026 at 08:44:50PM +0800, Pengpeng Hou wrote:
+> The driver has an OF match table wired to .of_match_table, but does
+> not export the table with MODULE_DEVICE_TABLE().
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-> ---
->   drivers/pmdomain/mediatek/mt8196-pm-domains.h | 27 +++++++++++++++++++
->   drivers/pmdomain/mediatek/mtk-pm-domains.c    |  4 +++
->   2 files changed, 31 insertions(+)
+> Add the missing MODULE_DEVICE_TABLE(of, ...) entry so module alias
+> information is generated for OF based module autoloading.
 > 
-> diff --git a/drivers/pmdomain/mediatek/mt8196-pm-domains.h b/drivers/pmdomain/mediatek/mt8196-pm-domains.h
-> index 2e4b28720659..d704c9fa9337 100644
-> --- a/drivers/pmdomain/mediatek/mt8196-pm-domains.h
-> +++ b/drivers/pmdomain/mediatek/mt8196-pm-domains.h
-> @@ -602,6 +602,27 @@ static const struct scpsys_hwv_domain_data hfrpsys_hwv_domain_data_mt8196[] = {
->   	},
->   };
->   
-> +static const struct scpsys_domain_data hfrpsys_domain_data_mt8196[] = {
-> +	[MT8196_POWER_DOMAIN_EDPTX] = {
-> +		.name = "edp-tx",
-> +		.sta_mask = MT8196_PWR_ACK,
-> +		.sta2nd_mask = MT8196_PWR_ACK_2ND,
-> +		.ctl_offs = 0x74,
-> +		.pwr_sta_offs = 0x74,
-> +		.pwr_sta2nd_offs = 0x74,
-> +		.caps = MTK_SCPD_SIMPLE_PWRSEQ,
-> +	},
-> +	[MT8196_POWER_DOMAIN_DPTX] = {
-> +		.name = "dp-tx",
-> +		.sta_mask = MT8196_PWR_ACK,
-> +		.sta2nd_mask = MT8196_PWR_ACK_2ND,
-> +		.ctl_offs = 0x78,
-> +		.pwr_sta_offs = 0x78,
-> +		.pwr_sta2nd_offs = 0x78,
-> +		.caps = MTK_SCPD_SIMPLE_PWRSEQ,
-> +	},
-> +};
-> +
->   static const struct scpsys_soc_data mt8196_scpsys_data = {
->   	.domains_data = scpsys_domain_data_mt8196,
->   	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8196),
-> @@ -616,6 +637,12 @@ static const struct scpsys_soc_data mt8196_scpsys_hwv_data = {
->   	.type = SCPSYS_MTCMOS_TYPE_HW_VOTER,
->   };
->   
-> +static const struct scpsys_soc_data mt8196_hfrpsys_data = {
-> +	.domains_data = hfrpsys_domain_data_mt8196,
-> +	.num_domains = ARRAY_SIZE(hfrpsys_domain_data_mt8196),
-> +	.type = SCPSYS_MTCMOS_TYPE_DIRECT_CTL,
-> +};
-> +
->   static const struct scpsys_soc_data mt8196_hfrpsys_hwv_data = {
->   	.hwv_domains_data = hfrpsys_hwv_domain_data_mt8196,
->   	.num_hwv_domains = ARRAY_SIZE(hfrpsys_hwv_domain_data_mt8196),
-> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> index 5276adea1d04..f69cf69ba0f6 100644
-> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> @@ -1252,6 +1252,10 @@ static const struct of_device_id scpsys_of_match[] = {
->   		.compatible = "mediatek,mt8196-power-controller",
->   		.data = &mt8196_scpsys_data,
->   	},
-> +	{
-> +		.compatible = "mediatek,mt8196-hfrp-power-controller",
-> +		.data = &mt8196_hfrpsys_data,
-> +	},
->   	{
->   		.compatible = "mediatek,mt8196-hwv-hfrp-power-controller",
->   		.data = &mt8196_hfrpsys_hwv_data,
+> This is a source-level fix.  It does not claim dynamic hardware
+> reproduction; the evidence is the driver-owned match table, its use by
+> the platform driver, and the missing module alias publication.
+> 
+> Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
+
+Reviewed-by: Brian Masney <bmasney@redhat.com>
 
 
