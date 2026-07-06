@@ -4,129 +4,140 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04928C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 15:02:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32C66C43458
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 15:06:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3XwyWTIrA/V6J7edt1EVqOvQjuCfvvAm71aap9OvOCI=; b=tZQL7QrbtHYCnDVzSuf77RMOAb
-	80XpKMt2T2Emo7ewyV4asBaHmsas2+mOIf/TlVSDVG4xgLulctAa0O4CdGdQO3oB+4B1JuxFAvFqQ
-	nJgMPklyuXBNSIVtZz7WldR1WOWZN5RugrsJsilTc8ixhPJAeOU81lcUCmtQsFXu5KYp3bN6hQNr8
-	+JUFrkLAdMXsy95rSHGQlaRUBleRgMY3VJrQb/sLaVm5WkOBHU9X1srMh1H7LEjIL47SRd0iUuXAd
-	S3v8JQJvYM0Yw9PIh9EMC0dLt5oEXIiX1gJslO48JdzCU/1Npoiusae1CSlldP+gpLfyLDclNA796
-	h/ezkMow==;
+	bh=Z7QdVjoOKtxuvUEU767FFuHnfqMD1JnXubUuX2zL/s8=; b=DozP345pu+oj2Wd5MlsSKtWLGy
+	/GlMukJTSGBAnSJrlcz9XbZ8h5VVocuWhh711GhP2tZQw6jAdvr2wFvqVF043ZRo1LYOvOlvp+MxN
+	UxsBKVJ49XLLAR4HHiQ7SHqvtSuuE8wLgaypiEXlP4mLl14Dtq3mNXUklHF2anrNTvNMzIxTCz7F5
+	BC5MLc/wThO/s11XchGN+qRwnG7IKFXuGhFCP32KG3Zg8eNgRzCq1fa0dVmm7KsQHB5Lg3+iUMuh6
+	L3Hc1m97sST7snrIi2UA4x1bpSQuNxnEGoEQD9IOb11/3NYO8kv5R0s6pSaPwfDkB45xLRRzq8BJr
+	wfoIVu4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgkqV-0000000CpUX-3cte;
-	Mon, 06 Jul 2026 15:02:55 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1wgkty-0000000Cq8N-1FDb;
+	Mon, 06 Jul 2026 15:06:30 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgkqQ-0000000CpTB-1VZG;
-	Mon, 06 Jul 2026 15:02:51 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1783350034; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ShBwgIB9Tp0j2ieVFNXD2nNlBvkYSrZX6KL3AeDB+tfLOnE+7CHZu5rN/HP3/wiA65AfS2awNfBnLG6v3KttLERp5k37uX5cTjLkGlHu1epQC0tpKbiWTjw2bmWO4R3cJ9Bceq/UN4MGpiO+12hQk2boeKqRMVN9X9phSckbKF0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1783350034; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=3XwyWTIrA/V6J7edt1EVqOvQjuCfvvAm71aap9OvOCI=; 
-	b=aUIQNdoKYFXhqBqNhsY+F02CkGve6EXcuTScFbe5OHL/WHUKXk+LgtUumBUdfOodPJNOea5bCjHJ9ycCR0cPvohjbCewZV5P129fWS7uy+uA2tTiwdLdX3wI3zpXyvb7h2kq1Re2lQrUV6CFisZwObNuwW+4qzyVdb787O027/g=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
-	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1783350034;
-	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=3XwyWTIrA/V6J7edt1EVqOvQjuCfvvAm71aap9OvOCI=;
-	b=ImgA1Hj80B9JHQg2Jp0iR3Hfkzuv+c1ZmjHHLY5vXEEHJlu3rx/mY5cc4HVAWJDf
-	QREjGnw/uNA5JcHG0nEUz0PUvTE/0uKgXtwmj8p0wIRVC2fcF+pZOIvPjdNL8NnCNrh
-	RgJCMxLw7XsRX8tO1eirdxvjf97IRGDZQzh4oCj8=
-Received: by mx.zohomail.com with SMTPS id 1783350031182921.1240379629376;
-	Mon, 6 Jul 2026 08:00:31 -0700 (PDT)
-Message-ID: <3541fb84-81ce-4415-8027-38aa611834ae@collabora.com>
-Date: Mon, 6 Jul 2026 18:00:09 +0300
+	id 1wgktu-0000000Cq7E-0O2m
+	for linux-mediatek@lists.infradead.org;
+	Mon, 06 Jul 2026 15:06:28 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-493b61b52b6so21848545e9.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 06 Jul 2026 08:06:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=suse.com; s=google; t=1783350384; x=1783955184; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=Z7QdVjoOKtxuvUEU767FFuHnfqMD1JnXubUuX2zL/s8=;
+        b=d/KesYU2kRZ5V/vd/EyPep+C7MIUTqy7Blu30eyncYOU/C++RVTw5GMhbdYf3p+IQx
+         18nlQtoEfyCBg7CEVxJJC82a+uMcv/o57g3ewlYHklMlcYXquRRscuq43GmajtcXjJn2
+         KHyQh94oVXv3vOlHOoUEnEtaXCzrjpHUgG50tdUoBElqnpOT0HvCvGd6p/SeH7VZCtZ4
+         9gyIoYhFUsL0Sk2mUFP5mifizBkRo0CjK02OSrBuvVhe4MwrirLKJaiqhvvZVRJfFJl9
+         e/dLF9ASFgXq61AdHzG+edzvgJ7MHkPxjCexv+9VsRb8QciNMv32lCjDpR7eyuKp8ojp
+         PL0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783350384; x=1783955184;
+        h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=Z7QdVjoOKtxuvUEU767FFuHnfqMD1JnXubUuX2zL/s8=;
+        b=qOxMiltSzDgFrvQW1Jfy0xMFDkL1Xj6CWbje33749rhurQJko3MIevzkHa+397OP20
+         N1/C3o0E2/LO+y0R9uR07xnmaQ+KvMVR6sZNTXT9AB2/gWX61tFyh+2p0IUU/yDm55s+
+         puDb9tHApFN8fMUSasWHs1dtdpvN/Gd5VYyrZ1dxjvtB4cxq1m8fkVLpBV//AaJemu3C
+         yAesMO8QTIDtGw9H1jd95wv7k1TJLehIm4zzQHhb/7WFNJ6RHsYSq9mpfdDD+XAtWdu/
+         6ONMfmjzS5lP9Gy8PkK8X7rHRP2JiprslFf18SeO7cUQq2Qw9L3ovt4Sjv3c9Axu9xu0
+         ECjQ==
+X-Forwarded-Encrypted: i=1; AHgh+RrAEF2M5pQiA3fMgAU9HuZKXh2Pr2VEmc+Hi9tzkjql1Ixb4Coh7eo/mNB2F7qWCQowwo8idjNx+kcrG1LQ1A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxCPcxyaf+7GBrui4WfPfi584WHuFOpfwExRoyG9pMMMZVG4P11
+	23FEzX7Z/fUynpIe9/T9Y33iNb9w0zdjDWst/XgHyRwDvuTKNKJxG7ywlXtjE9waSAg=
+X-Gm-Gg: AfdE7cln8tgw9KtUhLvK2uPABwfmW4el+Cq/xgINC6a8LSP3va00Fp+u19/SYskDG3l
+	t8AO7I5qotpHIrB8QbM5sKtmzxf0gCS3bf+x39yJoUWWWqeAjLwvLff3xyIFUavfJFO6VhOAHRA
+	gDGIy+gcR/nKWtLyo4PFCsTd2gIcRnnu+DVWjtKAXAR28emPy7k5YWqJskhbIYsjOBNI0/9o4lD
+	meMq8yCiP3I5RyCrt/3yZn1zl9HNlMpS2Xm48JaM50GgwoJLSm5/nZGb1HwSQV51IrpbwzaxkpD
+	wX5iHfl5WhnTCIjQwqSpsJwUYc34sa8p+G4Kx9lsalYo24SWw9d+frKq5RRIoRYxRv96w8QLclx
+	nLrbPssqM8UW5AL0IOrP0eMQAl3W2HHOZvMvBsKgkrMxP2+D79YqkasbhvEEsRNlNGJ1YcAij1W
+	sBQW8RQggUQu31CA7fFdbMAh/2Atr9O/LlAzKXh5ZkHpfAk6aAGHZgRaORgzde
+X-Received: by 2002:a05:600c:6990:b0:493:915b:dc4a with SMTP id 5b1f17b1804b1-493df055999mr10670715e9.8.1783350382884;
+        Mon, 06 Jul 2026 08:06:22 -0700 (PDT)
+Received: from [192.168.1.136] (48.85-85-171.dynamic.clientes.euskaltel.es. [85.85.171.48])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-493bef17c82sm291903115e9.1.2026.07.06.08.06.20
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 06 Jul 2026 08:06:22 -0700 (PDT)
+Message-ID: <a275b0b4-30c6-4a9e-bcd1-56de269423de@suse.com>
+Date: Mon, 6 Jul 2026 17:06:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 06/42] media: synopsys: hdmirx: Use
- devm_of_reserved_mem_device_init()
-To: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>,
- Bjorn Andersson <andersson@kernel.org>,
- Konrad Dybcio <konradybcio@kernel.org>, Liviu Dudau <liviu.dudau@arm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Paul Cercueil <paul@crapouillou.net>,
- Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
- Paul Kocialkowski <paulk@sys-base.io>, Linus Walleij <linusw@kernel.org>,
- Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Alexey Brodkin
- <abrodkin@synopsys.com>, Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>,
- Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
- Michal Simek <michal.simek@amd.com>,
- Daniel Scally <dan.scally@ideasonboard.com>,
- Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Eddie James <eajames@linux.ibm.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
- Houlong Wei <houlong.wei@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Joseph Liu <kwliu@nuvoton.com>, Marvin Lin <kflin@nuvoton.com>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Thierry Reding <thierry.reding@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Srinivas Kandagatla <srini@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Ge Gordon
- <gordon.ge@bst.ai>, Adrian Hunter <adrian.hunter@intel.com>,
- Ulf Hansson <ulfh@kernel.org>, Rob Herring <robh@kernel.org>,
- Saravana Kannan <saravanak@kernel.org>,
- Mathieu Poirier <mathieu.poirier@linaro.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Shengjiu Wang <shengjiu.wang@gmail.com>, Xiubo Li <Xiubo.Lee@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
- Bard Liao <yung-chuan.liao@linux.intel.com>,
- Daniel Baluta <daniel.baluta@nxp.com>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Peter Chen <peter.chen@cixtech.com>, Fugang Duan <fugang.duan@cixtech.com>
-Cc: Ekansh Gupta <ekansh.gupta@oss.qualcomm.com>,
- BST Linux Kernel Upstream Group <bst-upstream@bstai.top>,
- Fabio Estevam <festevam@gmail.com>, Nicolin Chen <nicoleotsuka@gmail.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Kai Vehmanen <kai.vehmanen@linux.intel.com>,
- Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
- Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>,
- CIX Linux Kernel Upstream Group <cix-kernel-upstream@cixtech.com>,
- linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-aspeed@lists.ozlabs.org,
- linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
- linux-sunxi@lists.linux.dev, linux-media@vger.kernel.org,
- openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com, linux-tegra@vger.kernel.org,
- linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
- linux-remoteproc@vger.kernel.org, linux-staging@lists.linux.dev,
- linux-sound@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- imx@lists.linux.dev, sound-open-firmware@alsa-project.org
-References: <20260703193855.110619-1-mukesh.ojha@oss.qualcomm.com>
- <20260703193855.110619-7-mukesh.ojha@oss.qualcomm.com>
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260703193855.110619-7-mukesh.ojha@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8
+Subject: Re: [PATCH 1/4] dt-bindings: power: mediatek: Add support for MT8196
+ direct HFRP
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ ulfh@kernel.org
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, nfraprado@collabora.com, irving-ch.lin@mediatek.com,
+ macpaul.lin@mediatek.com, aford173@gmail.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ justin.yeh@mediatek.com, kernel@collabora.com
+References: <20260701121920.19347-1-angelogioacchino.delregno@collabora.com>
+ <20260701121920.19347-2-angelogioacchino.delregno@collabora.com>
+Content-Language: en-US, ca-ES, es-ES
+From: Matthias Brugger <mbrugger@suse.com>
+Autocrypt: addr=mbrugger@suse.com; keydata=
+ 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
+ PVrr2NoUqi/bxI8fFQJD1jVj8K0=
+In-Reply-To: <20260701121920.19347-2-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_080250_426953_3DE3A836 
-X-CRM114-Status: GOOD (  18.10  )
+X-CRM114-CacheID: sfid-20260706_080627_218854_976BFF5D 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,56 +152,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/3/26 22:38, Mukesh Ojha wrote:
-> Replace the hand-rolled devm_hdmirx_of_reserved_mem_device_release()
-> devres action with devm_of_reserved_mem_device_init(), which handles the
-> cleanup automatically. This removes both the wrapper function and the
-> devm_add_action_or_reset() call.
+
+
+On 01/07/2026 14:19, AngeloGioacchino Del Regno wrote:
+> Add support for the HFRPSYS direct control power domains in the
+> MT8196 SoC, controlling power for the DisplayPort and for the
+> Embedded DisplayPort Transmitter IPs.
 > 
-> Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
 > ---
->  .../media/platform/synopsys/hdmirx/snps_hdmirx.c | 16 ++--------------
->  1 file changed, 2 insertions(+), 14 deletions(-)
+>   .../devicetree/bindings/power/mediatek,power-controller.yaml  | 1 +
+>   include/dt-bindings/power/mediatek,mt8196-power.h             | 4 ++++
+>   2 files changed, 5 insertions(+)
 > 
-> diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-> index 25f8ca0d6d94..7c6acc6d7e88 100644
-> --- a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-> +++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-> @@ -2265,11 +2265,6 @@ static const struct hdmirx_cec_ops hdmirx_cec_ops = {
->  	.read = hdmirx_readl,
->  };
->  
-> -static void devm_hdmirx_of_reserved_mem_device_release(void *dev)
-> -{
-> -	of_reserved_mem_device_release(dev);
-> -}
-> -
->  static int hdmirx_parse_dt(struct snps_hdmirx_dev *hdmirx_dev)
->  {
->  	struct device *dev = hdmirx_dev->dev;
-> @@ -2316,16 +2311,9 @@ static int hdmirx_parse_dt(struct snps_hdmirx_dev *hdmirx_dev)
->  	if (!device_property_read_bool(dev, "hpd-is-active-low"))
->  		hdmirx_dev->hpd_trigger_level_high = true;
->  
-> -	ret = of_reserved_mem_device_init(dev);
-> -	if (ret) {
-> +	ret = devm_of_reserved_mem_device_init(dev);
-> +	if (ret)
->  		dev_warn(dev, "no reserved memory for HDMIRX, use default CMA\n");
-> -	} else {
-> -		ret = devm_add_action_or_reset(dev,
-> -					       devm_hdmirx_of_reserved_mem_device_release,
-> -					       dev);
-> -		if (ret)
-> -			return ret;
-> -	}
->  
->  	return 0;
->  }
+> diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+> index 07f046277f8a..070c6e5666dc 100644
+> --- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+> +++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+> @@ -34,6 +34,7 @@ properties:
+>         - mediatek,mt8189-power-controller
+>         - mediatek,mt8192-power-controller
+>         - mediatek,mt8195-power-controller
+> +      - mediatek,mt8196-hfrp-power-controller
+>         - mediatek,mt8196-hwv-hfrp-power-controller
+>         - mediatek,mt8196-hwv-scp-power-controller
+>         - mediatek,mt8196-power-controller
+> diff --git a/include/dt-bindings/power/mediatek,mt8196-power.h b/include/dt-bindings/power/mediatek,mt8196-power.h
+> index 0f622a93c807..085790bf8124 100644
+> --- a/include/dt-bindings/power/mediatek,mt8196-power.h
+> +++ b/include/dt-bindings/power/mediatek,mt8196-power.h
+> @@ -30,6 +30,10 @@
+>   #define MT8196_POWER_DOMAIN_MM_PROC_DORMANT		0
+>   #define MT8196_POWER_DOMAIN_SSR				1
+>   
+> +/* HFRPSYS Multimedia Power Control (MMPC) - Direct Control */
+> +#define MT8196_POWER_DOMAIN_EDPTX			0
+> +#define MT8196_POWER_DOMAIN_DPTX			1
+> +
+>   /* HFRPSYS MultiMedia Power Control (MMPC) - HW Voter */
+>   #define MT8196_POWER_DOMAIN_VDE0			0
+>   #define MT8196_POWER_DOMAIN_VDE1			1
 
-Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-
--- 
-Best regards,
-Dmitry
 
