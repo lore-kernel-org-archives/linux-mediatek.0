@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA4EDC43458
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 12:43:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4B5CC44500
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 12:45:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WGnoM0RyzV43Ghs+593I0p51zAgB7jugq7icsoB0chY=; b=E72zFrJGZMaWU3fDJT99xhRRL/
-	puBXZLM88DyjI7fjHhHqabUqbCawpo0/s7eWHEygCnj0jnEvSDDq/td4Qr1kxF2GWt+nwIvcD/hEM
-	ty6a4bDNBiSxqF5yJ+fzso83Oo24E5HWJucruCSm07I7ihrxbJI8vu6JD5PTV1VQZcysba7xeGW4u
-	WMd47T8FVTjBzL6lJtAgQLB5sOhL7RNCk3iAJq2IiNJegMPbG80JCSMAqCR2L6QtvxBRdR6DKYP4v
-	DY2NZAadNEqatZscQSYaq7036HIPQsS08hyP8edsjpNKCTLSccHtqCGQjGS2zkxSZzlSk6jBMGnqU
-	B4bcV7aw==;
+	bh=MvFK766ptEP7zJlMpnqJQ0glv+bGUWfEWjxmlfWUuP4=; b=anRLNyVhdtmwJIt719lJwQt6Pn
+	9V6j+9nsXPuT9H2MhGU+z4TX7UFfSz62UJrgBi5HpXgAogX1kHUZdQZJyqN4S1hRLIKtsAPpqCR0X
+	ul2E1w/fQf1sh/+7hFvYt1Mkhp6+NqjkMq8PrIoPzGNMPiOKyypU040seHY92+7x/1T6EUWY+ScPX
+	CVch6gxDspWfG+lum+ywU51J3QCaDmDbsvlMad8KNsC9vV3CONsBsMq4Tt38Pm5xqlzV92+NFkfrk
+	DkjGJ7J0BQiQDAxLhWFrLdbntN1BWsKqo4C/MSGYPq0EAgNlwKC7+mrJuUcXDjK8nRtWsQKrv0fBm
+	7UAPd/LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh58t-0000000Eydy-3HuY;
-	Tue, 07 Jul 2026 12:43:15 +0000
+	id 1wh5BO-0000000EzLv-3h9I;
+	Tue, 07 Jul 2026 12:45:50 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh58r-0000000EydZ-0u7n;
-	Tue, 07 Jul 2026 12:43:14 +0000
+	id 1wh5BM-0000000EzKw-0eNI;
+	Tue, 07 Jul 2026 12:45:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=WGnoM0RyzV43Ghs+593I0p51zAgB7jugq7icsoB0chY=; b=xNDKmKLFkXiDfSxJf42Y4VuQ/H
-	iY+XPbQPA+WTT2gt1DBe+ndWSah2pwzWw/48J+/MjYBlMrvn+qamvRT2EPSZPHWNUM6y1uELHYTKC
-	tr4NlHmGMudpIDbYttbTlcC1757lpNT5KOlwf6See3A1E56VGaR0ZRimxDoMGhUjfrlQ=;
+	bh=MvFK766ptEP7zJlMpnqJQ0glv+bGUWfEWjxmlfWUuP4=; b=NtgCOLV2/9lu413W8fu9vLfwnq
+	MJbVyUzeJs+gLBHp/oUvRIcMCYn0awZKiF9Pge2yubK/cevoUqcr6tHGpIP7Fnz3mpW2x2TNNE/gJ
+	cCTqnkipNgNthrjGeF32c1SnjVREq+6T9cxCRI6HWF99QkE90ni/s1S9vLCciQEIHhB8=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1wh58a-00BA3I-EW; Tue, 07 Jul 2026 14:42:56 +0200
-Date: Tue, 7 Jul 2026 14:42:56 +0200
+	id 1wh5B7-00BA6I-HS; Tue, 07 Jul 2026 14:45:33 +0200
+Date: Tue, 7 Jul 2026 14:45:33 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -59,18 +59,18 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH net-next 1/6] dt-bindings: net: mediatek-dwmac: add
- support for MT8189 SoC
-Message-ID: <b810b9cd-8f5e-4c9d-8496-908aae55dac1@lunn.ch>
+Subject: Re: [PATCH net-next 2/6] net: stmmac: mediatek: add PERI_ETH_CTRLx
+ register offset in platform data
+Message-ID: <3e135fe0-4ef9-45be-a962-d131c8a2e9e0@lunn.ch>
 References: <20260707-dwmac-mediatek-mt8189-v1-0-17f345eaaca3@collabora.com>
- <20260707-dwmac-mediatek-mt8189-v1-1-17f345eaaca3@collabora.com>
+ <20260707-dwmac-mediatek-mt8189-v1-2-17f345eaaca3@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260707-dwmac-mediatek-mt8189-v1-1-17f345eaaca3@collabora.com>
+In-Reply-To: <20260707-dwmac-mediatek-mt8189-v1-2-17f345eaaca3@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260707_054313_279426_5AC21FB8 
-X-CRM114-Status: UNSURE (   6.95  )
+X-CRM114-CacheID: sfid-20260707_054548_191238_B3C7BDB5 
+X-CRM114-Status: UNSURE (   5.44  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,21 +86,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - mediatek,mt8189-gmac
-> +    then:
-> +      properties:
-> +        clocks:
-> +          items:
-> +            - description: MAC Main clock
-> +            - description: PTP clock
-> +            - description: RMII reference clock provided by MAC
+> +	.peri_eth_ctrl_offset = MT8195_PERI_ETH_CTRL_BASE,
 
-Since this is a MAC, it sounds like it is consuming its own clock?
+nitpick:
+
+Could the naming be more consistent? offset vs base?
 
 	Andrew
 
