@@ -4,79 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCFF9C44500
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 10:38:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0990C43458
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 10:44:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eH4zP0BWjNHOJWTZglVvPRAhL/cihhAtv+SNAE1TDmg=; b=Ljav071f+7NJDlGxdgw85bRgtG
-	UfRDfv0gCPZy2vVOPKru88sn+Oe2ygnAwF4tiOAxBAWxGqd5LjXPEg+zoWg2RZATqYqWwSQyojhQv
-	NWMjBq2ep7Mznw4c1fHV3HH2TrsNahhZ/VQWMdSaiU6ZNZ7Hrnm38KUwHbjZ9/NIn0VEQceo6NDhj
-	iC3mpXjpFQ8iz7B1r4GUakXD++bZKVeCpcXktRprBsCmPGig2VhdIAgR7+jp5Yh9THhaKpIw3mnLd
-	o13/A0WdR5/ty7+50XFMbm3h02etEOolelvR9cTnQXS6bnFfcHVEh8vAeen5TzdgHZonRm2j5al7L
-	a3i7aH4Q==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Zgrh/mASxWOx6HSigXPKqA3nGSJPR3udlEHH4VDDYpM=; b=vlqTmqZpATJ2UWETDn/Sue4D36
+	o4zZZnLV/vPvO+QerjXRKdz52mOR1vaYs9iya6s1m/Nqk7TSM6ZNtDrlCOIsxF5vOAlQrSxkgCgiE
+	I07eCC314Zy/X6D6ECpH2sCxbVH36YEjSKC1IENl6QLvlSIqlGxJAMElrlRLESTgf8F7BQD0BlPYV
+	7o7Qfr68U9XpwD/ZhuAcZeuWWA8MY2kgJ+a62zTzemEj3hR+gwd93UlUO/lverzAZIi4o7Eu8MB1u
+	Ywlkbt6dpjO8LSwj7j6o+lnHWPwzIJY/J4N2Hgi/sXjZPIPWd+OEbRrcdbjzggOLkm9be6z9TzthT
+	+3COkWCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh3C9-0000000Eltv-2qYP;
-	Tue, 07 Jul 2026 10:38:29 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wh3I5-0000000Emjb-2EjG;
+	Tue, 07 Jul 2026 10:44:37 +0000
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh3C7-0000000ElsH-0Ahm;
-	Tue, 07 Jul 2026 10:38:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783420705;
-	bh=EysvwkzHmGNKxX+6cYNAW+x0Vszx1rvcj8dTl/KXMQc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Ucqm1aiMyjsc3XqQFQ2I2SZcGeGNl8tDJGnSHdHpBwnupfIfLiBA3BR2j5VWRYGFA
-	 Q4AP8yUpmAb1PP1ndKUoQsduzbMFziYOIoYk+MND0PNBnkGQfUSomNE1EWZEdEDw6d
-	 rr4xDG2Brj8x8BrG6eg/P2w9vu5+7HUQow13H6gxJ+w7HolRZ4otuvv5QQXYBGbTMU
-	 /A4jthgx4aiXYDKNeUyQM6GiS6JXafclLsKnZTQOj/6U5xQ2InWxBrOxJzQ/tciXlu
-	 hSqDkhZpYOYSpTdvlAAFU5WJ4LKDKZPfbPTcsMTpd5E9alkHL9sxRi3AjWt42MNtjZ
-	 IMOMnFFk+MiUg==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5611F17E0564;
-	Tue, 07 Jul 2026 12:38:24 +0200 (CEST)
-Message-ID: <6fed12a6-0c94-477f-8a2e-466c33ea2e29@collabora.com>
-Date: Tue, 7 Jul 2026 12:38:23 +0200
+	id 1wh3I2-0000000EmiH-0YMy
+	for linux-mediatek@lists.infradead.org;
+	Tue, 07 Jul 2026 10:44:36 +0000
+Received: by mail-pg1-x52b.google.com with SMTP id 41be03b00d2f7-c981c2c37cbso2590430a12.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jul 2026 03:44:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1783421073; x=1784025873; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Zgrh/mASxWOx6HSigXPKqA3nGSJPR3udlEHH4VDDYpM=;
+        b=V1Mx3k8mVqBo5a3zPVuclUr9L3qXnqXdnqOK88FCCCygtGm4BKj5hS9DeAuTkHlb3I
+         gjE2rspsUuRG720N6hZhXAw/9QJwM4tKDSJf7vhuwMcuX2+i2P0fYTFemR7tUjJCcAwl
+         5UU8PZNGf8Z7q9VzkEtye+2KCVu9j+fuKaVPs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783421073; x=1784025873;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Zgrh/mASxWOx6HSigXPKqA3nGSJPR3udlEHH4VDDYpM=;
+        b=e6macJfrb8AEJp9BZY83BXuId+hNHX/JrtZM3cd2D6Mw1wf5A7UKrU+gqU0Q8n6vXm
+         COkepCoTm+WrWs/a/TC+ak/+RtcIHy3WVl39auZixVDLoD77d4ztLKNlSuHHdRbPDWmW
+         X0D/RNci26rMXOVGoZA66aLffHWkYS3XCbgncXGUCTCjlJ2qjokpcGpy/L8GAqQviM/Z
+         GutP4QB99u+iqUfbpXtVbeg0m6Bx8QKn1CJX1/Bot9/zWdTStG7UiSMq4kbV0AnSHNNS
+         ZLI+I178WjN/NLh/nS0WQ77iHweE6fPv0Y44WocRralbKrg+B9nefLqvhWY52uD6yL9Z
+         pwNw==
+X-Forwarded-Encrypted: i=1; AHgh+RrbhhsCS5HeiOt0w2h2G97+rtSWmwLXlRv9QHtD2pLCbqnSx5C+9v1KtxiFNti5sD6/jyt0BrRDxGjX2aPwZQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxLFLnFiKkY9rlvNbdRzIY0Fn0JjLJI4WQ/8ao7V95hb5VRN6RC
+	yGsu5YnqllqStsw6sKHkf+CyXTA0T38utemLcwISj5rxZng2A/QYZJ64f3f+4vKFfg==
+X-Gm-Gg: AfdE7cn1kRrxFO7zpMXKxQIbRn4r26yu36kf0EudATFLaQM3Kb6ZMQL7IC0TYEV55b5
+	bpQGlrdOFcv6FlE/cXT9UP1tugPKps/UCwYgPeVaE6Vfe6AO5NhbXScX9LXhfNbfO1SFNXORUlh
+	XbwIpC9V+UDq9s4m4fqxEgFLD8VFfGCMlUBIOTJ+15vlQkjEXHmPPXCLzVkhBru0QNTddqG4LXl
+	B+xB1u9YkVaEmezVy5tbPjgHHKPA6nclu3eGyxzZh/zf7zaAisKyQ7nzFaSTS0UX9uE873psTVl
+	ecyJHR7++ffmjzWJy8cNng2dDmGIO96xyKYFiHhAESYyxndF/Ig7X93mc217Urqut7WNjlKPKzZ
+	ssv4pEj7mIdGUgz2yG9+t4V1vXD1isX5plI7h7JYdD8+43/ZNB3l75EUAEU655NwJn7n0rVAjJA
+	8D9bEdf7louLh9giRySJfNwHPVz4PqIFFRbiad0gaaNt3DzL9n283WaVOIO+hBeTMdSgZr5g==
+X-Received: by 2002:a05:6a21:3204:b0:3c0:9c18:d5a7 with SMTP id adf61e73a8af0-3c09c18d6f0mr2745290637.68.1783421072707;
+        Tue, 07 Jul 2026 03:44:32 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:cfca:cfe0:c982:e981])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-ca5af7d5b95sm790980a12.3.2026.07.07.03.44.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 Jul 2026 03:44:32 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: mediatek: mt8188-geralt: Add MT6319 PMIC
+Date: Tue,  7 Jul 2026 18:44:25 +0800
+Message-ID: <20260707104427.3409290-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.55.0.rc2.803.g1fd1e6609c-goog
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm/mediatek: mtk_dsi: enable hs clock during pre-enable
-To: Thorsten Leemhuis <regressions@leemhuis.info>,
- =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "me@adamthiede.com" <me@adamthiede.com>,
- "bisson.gary@gmail.com" <bisson.gary@gmail.com>
-Cc: "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- "simona@ffwll.ch" <simona@ffwll.ch>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "airlied@gmail.com" <airlied@gmail.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "regressions@lists.linux.dev" <regressions@lists.linux.dev>
-References: <20260120-mtkdsi-v1-1-b0f4094f3ac3@gmail.com>
- <42607fa4-485d-4142-b31c-7bfac71118d2@adamthiede.com> <ajka2220depklK1_@owl5>
- <bac79214-050d-448b-be63-0586d45c807d@adamthiede.com>
- <f0d99b1a-e383-4d14-adb1-4ccab46efddb@leemhuis.info>
- <5baeb90d2c3736df67ad075ede4ac765bfeaed2d.camel@mediatek.com>
- <84233951-ee22-4980-9f17-2af1df51fdbf@leemhuis.info>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <84233951-ee22-4980-9f17-2af1df51fdbf@leemhuis.info>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260707_033827_257287_9E5B86CC 
-X-CRM114-Status: GOOD (  28.67  )
+X-CRM114-CacheID: sfid-20260707_034434_224468_8948985D 
+X-CRM114-Status: GOOD (  13.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,99 +96,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/7/26 10:51, Thorsten Leemhuis wrote:
-> On 7/7/26 04:20, CK Hu (胡俊光) wrote:
->> On Mon, 2026-07-06 at 12:16 +0200, Thorsten Leemhuis wrote:
->>> On 6/22/26 15:23, Adam Thiede wrote:
->>>> On 6/22/26 06:22, Gary Bisson wrote:
->>>>> On Thu, Jun 18, 2026 at 04:06:28PM -0500, Adam Thiede wrote:
->>>>>> On 1/20/26 05:36, Gary Bisson wrote:
->>>>>>> Some bridges, such as the TI SN65DSI83, require the HS clock to be
->>>>>>> running in order to lock its PLL during its own pre-enable function.
->>>>>>>
->>>>>>> Without this change, the bridge gives the following error:
->>>>>>> sn65dsi83 14-002c: failed to lock PLL, ret=-110
->>>>>>> sn65dsi83 14-002c: Unexpected link status 0x01
->>>>>>> sn65dsi83 14-002c: reset the pipe
->>>>>>> [...]
->>>>>>
->>>>>> This commit was part of 7.1 and caused a problem for me.
->>>>>> I'm running postmarketOS (basically Alpine Linux) on a Lenovo C330
->>>>>> chromebook with a Mediatek MT8173 processor.
->>>>>> The problem: when the display on my laptop powers off (via suspend or
->>>>>> idle,
->>>>>> like xset dpms off) the picture does not come back when the display
->>>>>> powers
->>>>>> back on (from resume). The display backlight comes on and brightness is
->>>>>> adjustable but there is no picture. The only fix is to reboot.
->>>>>>
->>>>>> Reverting this commit and applying it as a patch on top of 7.1
->>>>>> addresses the
->>>>>> issue for me.
->>>>>>
->>>>>> You can view the config I'm using here:
->>>>>> https://urldefense.com/v3/__https://gitlab.postmarketos.org/postmarketOS/pmaports/-/__;!!CTRNKA9wMg0ARbw!jrsPDtSEUdaINzLlq92Li8gmsEBkTOxZ6WUzNHjvIN6CyOJjHiHkNSOhIRPXFTLPlaYlxU2uvryVkwjUAN9bmax5$
->>>>>> merge_requests/8819
->>>>>>
->>>>>> Is there any sort of testing or other debugging info I can provide to
->>>>>> help
->>>>>> address this issue?
->>>>>
->>>>> Thanks for reporting the issue, could you share some logs? Is the driver
->>>>> saying anything during resume? Also, what type of panel is used on that
->>>>> chromebook?
->>>>
->>>> The curious thing is that there are no real logs in dmesg or /var/log/
->>>> messages about this. This picture just fails to come back. If there are
->>>> some kernel params I can set to get deeper logging, that would help, but
->>>> I'm not aware of any.
->>>>
->>>> I think the panel is a "BOE NV116WHM-T00" - I used this command to get
->>>> info: cat /sys/class/drm/card0-eDP-1/edid | edid-decode
->>>>
->>>> Output: https://urldefense.com/v3/__https://termbin.com/8nbd__;!!CTRNKA9wMg0ARbw!jrsPDtSEUdaINzLlq92Li8gmsEBkTOxZ6WUzNHjvIN6CyOJjHiHkNSOhIRPXFTLPlaYlxU2uvryVkwjUAJooSyqL$
->>>
->>> This looked stalled. If I'm mistaken here, please let me known; but if
->>> no solution is in sight, should we maybe just revert the change until a
->>> proper was found?
->>
->> It's welcome anyone to provide a revert patch,
->> but I would still wait for the fixup patch until 7.2-rc4.
->> If no fixup patch exist, then apply the revert patch.
->  From my understanding of things the position in the devel cycle doesn't
-> matter much in a case like this. To quote Linus statements from
-> https://www.kernel.org/doc/html/latest/process/handling-regressions.html#on-how-quickly-regressions-should-be-fixed
-> 
-> """
->  From 2026-01-22:
-> 
->   But a user complaining should basically result in an immediate fix -
->   possibly a "revert and rethink".
-> 
-> With a later clarification on 2026-01-28:
-> 
->   It's also worth noting that "immediate" obviously doesn't mean "right
->   this *second* when the problem has been reported".
-> 
->   But if it's a regression with a known commit that caused it, I think
->   the rule of thumb should generally be "within a week", preferably
->   before the next rc.
-> """
-> 
-> Adam reported the problem about three weeks ago, so we are way past the
-> "rule of thumb" timeframe Linus set.
-> 
-> Ciao, Thorsten
+The Geralt design uses a MT6319 PMIC to power the big cores and LPDDR4X
+DRAM.
 
-This is a kind of odd situation here. The fix from Adam is actually correct, as in,
-the SN65DSI83 bridge gets broken without...
+Add a device node for it and hook up all the supplies.
 
-....but then, there's some more oddness going on: I tried to reproduce this on my
-MT8173 Elm device, but there I can resume the system just fine, and the display is
-up and running like normal?
+This change requires a firmware fix for the SPMI bus to read back
+correctly. The required firmware version is 15842.175.0. This is
+included in ChromeOS releases R150-16700.22.0 (available in Beta
+channel as of writing or stable channel in mid-July) or
+R151-16721.0.0 and later.
 
-I'm not sure what to advice here at this point - just adding some info.
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ .../boot/dts/mediatek/mt8188-geralt.dtsi      | 66 +++++++++++++++++++
+ 1 file changed, 66 insertions(+)
 
-Cheers,
-Angelo
+diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+index f382f90c48f5..fea52c377d88 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+@@ -4,6 +4,8 @@
+  */
+ /dts-v1/;
+ #include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/spmi/spmi.h>
++
+ #include "mt8188.dtsi"
+ #include "mt6359.dtsi"
+ 
+@@ -241,6 +243,14 @@ &cpu5 {
+ 	cpu-supply = <&mt6359_vcore_buck_reg>;
+ };
+ 
++&cpu6 {
++	cpu-supply = <&mt6319_buck1>;
++};
++
++&cpu7 {
++	cpu-supply = <&mt6319_buck1>;
++};
++
+ /*
+  * Geralt is the reference design and doesn't have target TDP.
+  * Ciri is (currently) the only device following Geralt, and its
+@@ -1156,6 +1166,14 @@ pins-bus {
+ 		};
+ 	};
+ 
++	spmi_pins: spmi-pins {
++		pins-bus {
++			pinmux = <PINMUX_GPIO175__FUNC_B0_SPMI_M_SCL>,
++				 <PINMUX_GPIO176__FUNC_B0_SPMI_M_SDA>;
++			bias-disable;
++		};
++	};
++
+ 	uart0_pins: uart0-pins {
+ 		pins-bus {
+ 			pinmux = <PINMUX_GPIO31__FUNC_O_UTXD0>,
+@@ -1267,6 +1285,54 @@ &spi2 {
+ 	status = "okay";
+ };
+ 
++&spmi {
++	pinctrl-names = "default";
++	pinctrl-0 = <&spmi_pins>;
++	#address-cells = <2>;
++	#size-cells = <0>;
++	status = "okay";
++
++	pmic@6 {
++		compatible = "mediatek,mt6319-regulator", "mediatek,mt6315-regulator";
++		reg = <0x6 SPMI_USID>;
++		pvdd1-supply = <&pp4200_s5>;
++		pvdd2-supply = <&pp4200_s5>;
++		pvdd3-supply = <&pp4200_s5>;
++		pvdd4-supply = <&pp4200_s5>;
++
++		regulators {
++			mt6319_buck1: vbuck1 {
++					regulator-name = "ppvar_dvdd_proc_bc";
++					regulator-min-microvolt = <520000>;
++					regulator-max-microvolt = <1155000>;
++					regulator-enable-ramp-delay = <256>;
++					regulator-allowed-modes = <0 1 2>;
++					regulator-always-on;
++			};
++
++			/* vbuck2 is ganged with vbuck1 */
++
++			mt6319_buck3: vbuck3 {
++					regulator-name = "pp1125_emi_vdd2";
++					regulator-min-microvolt = <1060000>;
++					regulator-max-microvolt = <1170000>;
++					regulator-enable-ramp-delay = <256>;
++					regulator-allowed-modes = <0 1 2>;
++					regulator-always-on;
++			};
++
++			mt6319_buck4: vbuck4 {
++					regulator-name = "pp0600_emi_vddq";
++					regulator-min-microvolt = <570000>;
++					regulator-max-microvolt = <650000>;
++					regulator-enable-ramp-delay = <256>;
++					regulator-allowed-modes = <0 1 2>;
++					regulator-always-on;
++			};
++		};
++	};
++};
++
+ &uart0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart0_pins>;
+-- 
+2.55.0.rc2.803.g1fd1e6609c-goog
+
 
