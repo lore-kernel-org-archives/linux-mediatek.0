@@ -4,75 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3CE1C43602
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 15:55:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90E48C43458
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 16:26:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CYRvnY/6VFZnCZSc1Stup4dnuuEa+s/VIE6RlDzSsEw=; b=nYvJT6UH+DmM+o5Mx3JvJ0XrGj
-	CUDBZ68w5WkuFvqBy3vBNhhvs76cIbVEhzyzmt5zTtPwF4I8gxsGAP9RhYeUoX2gxJv2Z4G5cxE52
-	NgJsPTHTV5v0ny9zzcKq/DCK4M1owAi6wT7Jd8RwhkBpRuWAmHSten9Thgg7pkhAF4GrgTxxgOaTM
-	iSfi4Z5Sq7xv0ztT6kSQQzUKhkrX1eItxDZvLWr3cFP8oWhzDMz5XuvfSTKzjX9U/OP42W6ZkukbM
-	XNfV5UqfQiwij5DaofKJZkw5BNoPs+alMNpJ7yYfCCHMwK6aHup6OIQ9JdUH1sOLiZM42v1Cvoc7d
-	z2aUSJRA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xaDuq1ZB1HflLrDzdt+OV6vrfoAZsFjA2zyfOAaYkgE=; b=bwuOE8pdxbFDxduOBvmptGDh+t
+	0m7wRXeGVS5D3X4bFDSFJ1AmGwW7KLeeqoelz/LNIWP8MRfyrJNfGQnZ0jYvXgBsl0gEOq2Kyhbpk
+	vER6CZb84j1F4jXDR7WXKitsrjVdjX4bCjXiIsECMsseQXUm574H7kdls9vJHKERfQhrjqTftiVuv
+	MFVyCQQHdS0MWzm7NbgOxVvRVr5CHf0CvLPG9PX1kjDiiKw+BMKFElgqMK+HqjUqY3gOd19R0x2zP
+	VXCCcdh9VQbdtFhAmmU1CxJiLD8o+S+iAH446LXALSQmDT0gYCpbwyFhLTKL02wnQ4JjshjMMFCoz
+	M2XSoRig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh89H-0000000FP2c-3Ixo;
-	Tue, 07 Jul 2026 15:55:51 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wh8cW-0000000FSj1-13U2;
+	Tue, 07 Jul 2026 16:26:04 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh89C-0000000FOx3-2qaQ;
-	Tue, 07 Jul 2026 15:55:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783439744;
-	bh=Y1wf8wYLXtRKCiCh6GvSL6BWrh06Q0lZPjwpjKjisfY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=iPKZOeTJMUCkgYz+at/blLwrOhhbJn2majGFewfXp5jcL05PLS30o8jdaS8H7RDsC
-	 hoT8rXZd4hSi+CFmH3goLiPnpHCroo5+IxKDqW7FrZQtq9Vyo/4M8pfw9ntKd9gC/f
-	 +ZtHt+WstL9hfaHP3dLnjaI/Mw02VNpi4FpZAZOROojUskr/w634rn1R3BcSBXDGhK
-	 8ZUhfJ6M0e9Ey4CRn9uaHfThfC+yuclZqR9MnQd8W+DRT0YIFsvxg+SiT2ZBGFYCZv
-	 JSQvCiNo6jNGipg4seSC3pFzyUez8otsuAkyScDlDE3Hckslc5xkMHvxgUJlHU90Cz
-	 79kLOukK7uqyg==
-Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2BA6E17E0DE6;
-	Tue, 07 Jul 2026 17:55:44 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: ulfh@kernel.org
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	nfraprado@collabora.com,
-	irving-ch.lin@mediatek.com,
-	macpaul.lin@mediatek.com,
-	aford173@gmail.com,
-	mbrugger@suse.com,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	justin.yeh@mediatek.com,
-	kernel@collabora.com
-Subject: [PATCH v2 3/4] pmdomain: mediatek: Add support for Direct CTL simple power sequence
-Date: Tue,  7 Jul 2026 17:55:34 +0200
-Message-ID: <20260707155535.199383-4-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260707155535.199383-1-angelogioacchino.delregno@collabora.com>
-References: <20260707155535.199383-1-angelogioacchino.delregno@collabora.com>
+	id 1wh8cT-0000000FShw-2s3o;
+	Tue, 07 Jul 2026 16:26:02 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 5AA7540BBC;
+	Tue,  7 Jul 2026 16:26:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8B171F000E9;
+	Tue,  7 Jul 2026 16:26:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783441561;
+	bh=xaDuq1ZB1HflLrDzdt+OV6vrfoAZsFjA2zyfOAaYkgE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=CYyP7Mf4+GN9JppbBY9CLselE708FkBS7NaTpa1ICCH0kPty9sSTKl2ceN25EiSJB
+	 f+vwZpciH0whckwTcU4M8zGYtWzdOdGvzCBArGAagQ/3KeJmfZGopKUXTKUBF8e3OC
+	 srz0EXlTtlhOzcfztwb3jJ3XietlHsdhwt2UunmcVg+h7jdYqAzHu0JDcgj6Rk4aIL
+	 z7gMtD3mENFrZC7bTrMgsXJrbwZjJdTP3X+362B4RqKqXRhji9DdgZW2vmkKO0xp7J
+	 iAyQgBr9rX3CuDaVcNR5RqsYZZq6UVzRJtY5NXGrJKQg9YzfDPKaMuLIudP9umfRry
+	 KaRS7V12x2hrA==
+Date: Tue, 7 Jul 2026 18:25:58 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Simon Horman <horms@kernel.org>, David Ahern <dsahern@kernel.org>,
+	Ido Schimmel <idosch@nvidia.com>,
+	Pablo Neira Ayuso <pablo@netfilter.org>,
+	Florian Westphal <fw@strlen.de>, Phil Sutter <phil@nwl.cc>,
+	Shuah Khan <shuah@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
+	linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH nf-next v4 3/6] net: netfilter: Add IPv4 over IPv6 tunnel
+ flowtable acceleration
+Message-ID: <ak0olot-8WTVrtGB@lore-desk>
+References: <20260703-b4-flowtable-sw-accel-ip6ip-v4-0-00398cd12382@kernel.org>
+ <20260703-b4-flowtable-sw-accel-ip6ip-v4-3-00398cd12382@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260707_085546_871491_B1BE6DE1 
-X-CRM114-Status: GOOD (  21.11  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="KpcLrKuIJxPbhAqD"
+Content-Disposition: inline
+In-Reply-To: <20260703-b4-flowtable-sw-accel-ip6ip-v4-3-00398cd12382@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,225 +83,251 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some new SoCs like MT8196, MT6991, and others, have got one
-additional power controller (usually in the HFRP Multimedia
-block) which needs a simplified power on/off sequence while
-using Direct Control strategy.
 
-Domains using the "simple power sequence" are not backed by
-the RTFF hardware, have no Bus Protection mechanism, lacks
-the ISO, PWR_ON, PWR_ON_2ND bits, and therefore get enabled
-automatically after getting out of reset.
+--KpcLrKuIJxPbhAqD
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-This simple power sequence is then a subset of the full one
-as only needs the enablement of the specific power domain's
-clock input and reset (where, again, after getting out of
-reset, the ISO and PWR_ON bits are automatically internally
-getting flipped) to enable or disable (power on or off).
+commenting on shashiko's report:
+https://sashiko.dev/#/patchset/20260703-b4-flowtable-sw-accel-ip6ip-v4-0-00=
+398cd12382%40kernel.org
 
-Moreover, the simple power sequence power domains guarantee
-that they always get enabled/disabled after executing the
-relevant power sequence (on/off) so, differently from the
-others, there is also no need to poll for a PWR_ACK.
+> Introduce sw flowtable acceleration for the TX/RX paths of
+> IPv4 over IPv6 tunnels, relying on the netfilter flowtable
+> infrastructure.
+> The feature can be tested with a forwarding scenario between two
+> NICs (eth0 and eth1), where an IPv4 over IPv6 tunnel is used to
+> reach a remote site via eth1 as the underlay device:
+>=20
+>     ETH0 -- TUN0 <=3D=3D> ETH1 -- [IP network] -- TUN1 (2001:db8:2::2)
+>=20
+> [IP configuration]
+>=20
+> 6: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state U=
+P group default qlen 1000
+>     link/ether 00:00:22:33:11:55 brd ff:ff:ff:ff:ff:ff
+>     inet 192.168.0.2/24 scope global eth0
+>        valid_lft forever preferred_lft forever
+> 7: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state U=
+P group default qlen 1000
+>     link/ether 00:11:22:33:11:55 brd ff:ff:ff:ff:ff:ff
+>     inet6 2001:db8:2::1/64 scope global nodad
+>        valid_lft forever preferred_lft forever
+> 8: tun0@NONE: <POINTOPOINT,NOARP,UP,LOWER_UP> mtu 1480 qdisc noqueue stat=
+e UNKNOWN group default qlen 1000
+>     link/tunnel6 2001:db8:2::1 peer 2001:db8:2::2 permaddr ce9c:2940:7dcc=
+::
+>     inet 192.168.100.1/24 scope global tun0
+>        valid_lft forever preferred_lft forever
+>=20
+> $ ip route show
+> default via 192.168.100.2 dev tun0
+> 192.168.0.0/24 dev eth0 proto kernel scope link src 192.168.0.2
+> 192.168.100.0/24 dev tun0 proto kernel scope link src 192.168.100.1
+>=20
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/pmdomain/mediatek/mtk-pm-domains.c | 93 ++++++++++++++++++----
- drivers/pmdomain/mediatek/mtk-pm-domains.h |  1 +
- 2 files changed, 78 insertions(+), 16 deletions(-)
+[...]
 
-diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-index db543d4b1813..feba436279c5 100644
---- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-+++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-@@ -549,9 +549,11 @@ static int scpsys_ctl_pwrseq_on(struct scpsys_domain *pd)
- 	return 0;
- }
- 
--static void scpsys_ctl_pwrseq_off(struct scpsys_domain *pd)
-+static int scpsys_ctl_pwrseq_off(struct scpsys_domain *pd)
- {
- 	struct scpsys *scpsys = pd->scpsys;
-+	bool tmp;
-+	int ret;
- 
- 	switch (pd->data->rtff_type) {
- 	case SCPSYS_RTFF_TYPE_GENERIC:
-@@ -583,6 +585,41 @@ static void scpsys_ctl_pwrseq_off(struct scpsys_domain *pd)
- 	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
- 	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_ON_2ND_BIT);
- 	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_ON_BIT);
-+
-+	/* wait until PWR_ACK = 0 */
-+	ret = readx_poll_timeout(scpsys_domain_is_on, pd, tmp, !tmp, MTK_POLL_DELAY_US,
-+				 MTK_POLL_TIMEOUT);
-+	if (ret < 0)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static int scpsys_simple_pwrseq_on(struct scpsys_domain *pd)
-+{
-+	struct scpsys *scpsys = pd->scpsys;
-+
-+	/* Enable subsys clock input and trigger power domain reset state */
-+	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_CLK_DIS_BIT);
-+	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
-+
-+	/* Wait for the hardware to stabilize */
-+	udelay(1);
-+
-+	/* Get out of reset: set power on */
-+	regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
-+
-+	return 0;
-+}
-+
-+static int scpsys_simple_pwrseq_off(struct scpsys_domain *pd)
-+{
-+	struct scpsys *scpsys = pd->scpsys;
-+
-+	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
-+	regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_CLK_DIS_BIT);
-+
-+	return 0;
- }
- 
- static int scpsys_modem_pwrseq_on(struct scpsys_domain *pd)
-@@ -605,14 +642,24 @@ static int scpsys_modem_pwrseq_on(struct scpsys_domain *pd)
- 	return 0;
- }
- 
--static void scpsys_modem_pwrseq_off(struct scpsys_domain *pd)
-+static int scpsys_modem_pwrseq_off(struct scpsys_domain *pd)
- {
- 	struct scpsys *scpsys = pd->scpsys;
-+	bool tmp;
-+	int ret;
- 
- 	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_ON_BIT);
- 
- 	if (!MTK_SCPD_CAPS(pd, MTK_SCPD_SKIP_RESET_B))
- 		regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
-+
-+	/* wait until PWR_ACK = 0 */
-+	ret = readx_poll_timeout(scpsys_domain_is_on, pd, tmp, !tmp, MTK_POLL_DELAY_US,
-+				 MTK_POLL_TIMEOUT);
-+	if (ret < 0)
-+		return ret;
-+
-+	return 0;
- }
- 
- static int scpsys_power_on(struct generic_pm_domain *genpd)
-@@ -635,6 +682,8 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 
- 	if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_PWRSEQ))
- 		ret = scpsys_modem_pwrseq_on(pd);
-+	else if (MTK_SCPD_CAPS(pd, MTK_SCPD_SIMPLE_PWRSEQ))
-+		ret = scpsys_simple_pwrseq_on(pd);
- 	else
- 		ret = scpsys_ctl_pwrseq_on(pd);
- 
-@@ -662,9 +711,11 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 			goto err_pwr_ack;
- 	}
- 
--	ret = scpsys_sram_enable(pd);
--	if (ret < 0)
--		goto err_disable_subsys_clks;
-+	if (!MTK_SCPD_CAPS(pd, MTK_SCPD_SIMPLE_PWRSEQ)) {
-+		ret = scpsys_sram_enable(pd);
-+		if (ret < 0)
-+			goto err_disable_subsys_clks;
-+	}
- 
- 	ret = scpsys_bus_protect_disable(pd, 0);
- 	if (ret < 0)
-@@ -682,7 +733,8 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- err_enable_bus_protect:
- 	scpsys_bus_protect_enable(pd, 0);
- err_disable_sram:
--	scpsys_sram_disable(pd);
-+	if (!MTK_SCPD_CAPS(pd, MTK_SCPD_SIMPLE_PWRSEQ))
-+		scpsys_sram_disable(pd);
- err_disable_subsys_clks:
- 	if (!MTK_SCPD_CAPS(pd, MTK_SCPD_STRICT_BUS_PROTECTION))
- 		clk_bulk_disable_unprepare(pd->num_subsys_clks,
-@@ -698,16 +750,17 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- {
- 	struct scpsys_domain *pd = container_of(genpd, struct scpsys_domain, genpd);
- 	struct scpsys *scpsys = pd->scpsys;
--	bool tmp;
- 	int ret;
- 
- 	ret = scpsys_bus_protect_enable(pd, 0);
- 	if (ret < 0)
- 		return ret;
- 
--	ret = scpsys_sram_disable(pd);
--	if (ret < 0)
--		return ret;
-+	if (!MTK_SCPD_CAPS(pd, MTK_SCPD_SIMPLE_PWRSEQ)) {
-+		ret = scpsys_sram_disable(pd);
-+		if (ret < 0)
-+			return ret;
-+	}
- 
- 	if (pd->data->ext_buck_iso_offs && MTK_SCPD_CAPS(pd, MTK_SCPD_EXT_BUCK_ISO))
- 		regmap_set_bits(scpsys->base, pd->data->ext_buck_iso_offs,
-@@ -720,15 +773,17 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 		return ret;
- 
- 	if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_PWRSEQ))
--		scpsys_modem_pwrseq_off(pd);
-+		ret = scpsys_modem_pwrseq_off(pd);
-+	else if (MTK_SCPD_CAPS(pd, MTK_SCPD_SIMPLE_PWRSEQ))
-+		ret = scpsys_simple_pwrseq_off(pd);
- 	else
--		scpsys_ctl_pwrseq_off(pd);
-+		ret = scpsys_ctl_pwrseq_off(pd);
- 
--	/* wait until PWR_ACK = 0 */
--	ret = readx_poll_timeout(scpsys_domain_is_on, pd, tmp, !tmp, MTK_POLL_DELAY_US,
--				 MTK_POLL_TIMEOUT);
--	if (ret < 0)
-+	if (ret < 0) {
-+		/* Re-enable clocks so that next power off doesn't break the refcount */
-+		clk_bulk_prepare_enable(pd->num_subsys_clks, pd->subsys_clks);
- 		return ret;
-+	}
- 
- 	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
- 
-@@ -1083,6 +1138,12 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
- 		regmap[2] = NULL;
- 	}
- 
-+	/* If no access controllers are needed, don't allocate and don't fail */
-+	if (num_regmaps == 0) {
-+		scpsys->bus_prot = NULL;
-+		return 0;
-+	}
-+
- 	scpsys->bus_prot = devm_kmalloc_array(dev, num_regmaps,
- 					      sizeof(*scpsys->bus_prot), GFP_KERNEL);
- 	if (!scpsys->bus_prot)
-diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.h b/drivers/pmdomain/mediatek/mtk-pm-domains.h
-index a5dca24cbc2f..092403de66fa 100644
---- a/drivers/pmdomain/mediatek/mtk-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mtk-pm-domains.h
-@@ -17,6 +17,7 @@
- #define MTK_SCPD_MODEM_PWRSEQ		BIT(10)
- #define MTK_SCPD_SKIP_RESET_B		BIT(11)
- #define MTK_SCPD_INFRA_PWR_CTL		BIT(12)
-+#define MTK_SCPD_SIMPLE_PWRSEQ		BIT(13)
- #define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data ?		\
- 					 (_scpd)->data->caps & (_x) :	\
- 					 (_scpd)->hwv_data->caps & (_x))
--- 
-2.54.0
+>  	struct nf_flow_xmit xmit =3D {};
+> +	struct in6_addr *ip6_daddr;
+>  	struct flow_offload *flow;
+>  	struct neighbour *neigh;
+>  	struct rtable *rt;
+> @@ -844,25 +872,41 @@ nf_flow_offload_ip_hook(void *priv, struct sk_buff =
+*skb,
+>  	other_tuple =3D &flow->tuplehash[!dir].tuple;
+>  	ip_daddr =3D other_tuple->src_v4.s_addr;
+> =20
+> -	if (nf_flow_tunnel_v4_push(state->net, skb, other_tuple, &ip_daddr) < 0)
+> +	if (nf_flow_tunnel_push(state->net, skb, other_tuple, &ip_daddr,
+> +				&ip6_daddr) < 0)
+>  		return NF_DROP;
+> =20
+>  	switch (tuplehash->tuple.xmit_type) {
+> -	case FLOW_OFFLOAD_XMIT_NEIGH:
+> -		rt =3D dst_rtable(tuplehash->tuple.dst_cache);
+> +	case FLOW_OFFLOAD_XMIT_NEIGH: {
+> +		struct dst_entry *dst;
+> +
+>  		xmit.outdev =3D dev_get_by_index_rcu(state->net, tuplehash->tuple.ifid=
+x);
+>  		if (!xmit.outdev) {
+>  			flow_offload_teardown(flow);
+>  			return NF_DROP;
+>  		}
+> -		neigh =3D ip_neigh_gw4(rt->dst.dev, rt_nexthop(rt, ip_daddr));
+> +		if (other_tuple->tun.encap_proto =3D=3D AF_INET6 ||
+> +		    ctx.tun.proto =3D=3D IPPROTO_IPV6) {
+> +			struct rt6_info *rt6;
+> +
+> +			rt6 =3D dst_rt6_info(tuplehash->tuple.dst_cache);
+> +			neigh =3D ip_neigh_gw6(rt6->dst.dev,
+> +					     rt6_nexthop(rt6, ip6_daddr));
+> +			dst =3D &rt6->dst;
+> +		} else {
+> +			rt =3D dst_rtable(tuplehash->tuple.dst_cache);
+> +			neigh =3D ip_neigh_gw4(rt->dst.dev,
+> +					     rt_nexthop(rt, ip_daddr));
+> +			dst =3D &rt->dst;
+> +		}
 
+- Does this logic correctly handle cross-family tunneling like an IPv6-in-I=
+Pv4
+  packet (SIT) being forwarded out via another IPv4 tunnel?
+  - SIT support is added by a following patch in the series.
+
+>  		if (IS_ERR(neigh)) {
+>  			flow_offload_teardown(flow);
+>  			return NF_DROP;
+>  		}
+>  		xmit.dest =3D neigh->ha;
+> -		skb_dst_set_noref(skb, &rt->dst);
+> +		skb_dst_set_noref(skb, dst);
+>  		break;
+> +	}
+>  	case FLOW_OFFLOAD_XMIT_DIRECT:
+>  		xmit.outdev =3D dev_get_by_index_rcu(state->net, tuplehash->tuple.out.=
+ifidx);
+>  		if (!xmit.outdev) {
+> @@ -1112,8 +1156,12 @@ nf_flow_offload_ipv6_lookup(struct nf_flowtable_ct=
+x *ctx,
+>  	if (!nf_flow_skb_encap_protocol(ctx, skb, htons(ETH_P_IPV6)))
+>  		return NULL;
+> =20
+> -	if (nf_flow_tuple_ipv6(ctx, skb, &tuple) < 0)
+> +	if (ctx->tun.proto =3D=3D IPPROTO_IPIP) {
+> +		if (nf_flow_tuple_ip(ctx, skb, &tuple) < 0)
+> +			return NULL;
+> +	} else if (nf_flow_tuple_ipv6(ctx, skb, &tuple) < 0) {
+>  		return NULL;
+> +	}
+> =20
+>  	return flow_offload_lookup(flow_table, &tuple);
+>  }
+> @@ -1140,7 +1188,11 @@ nf_flow_offload_ipv6_hook(void *priv, struct sk_bu=
+ff *skb,
+>  	if (tuplehash =3D=3D NULL)
+>  		return NF_ACCEPT;
+> =20
+> -	ret =3D nf_flow_offload_ipv6_forward(&ctx, flow_table, tuplehash, skb);
+> +	if (ctx.tun.proto =3D=3D IPPROTO_IPIP)
+> +		ret =3D nf_flow_offload_forward(&ctx, flow_table, tuplehash, skb);
+> +	else
+> +		ret =3D nf_flow_offload_ipv6_forward(&ctx, flow_table, tuplehash,
+> +						   skb);
+>  	if (ret < 0)
+>  		return NF_DROP;
+>  	else if (ret =3D=3D 0)
+> @@ -1164,21 +1216,38 @@ nf_flow_offload_ipv6_hook(void *priv, struct sk_b=
+uff *skb,
+>  		return NF_DROP;
+> =20
+>  	switch (tuplehash->tuple.xmit_type) {
+> -	case FLOW_OFFLOAD_XMIT_NEIGH:
+> -		rt =3D dst_rt6_info(tuplehash->tuple.dst_cache);
+> +	case FLOW_OFFLOAD_XMIT_NEIGH: {
+> +		struct dst_entry *dst;
+> +
+>  		xmit.outdev =3D dev_get_by_index_rcu(state->net, tuplehash->tuple.ifid=
+x);
+>  		if (!xmit.outdev) {
+>  			flow_offload_teardown(flow);
+>  			return NF_DROP;
+>  		}
+> -		neigh =3D ip_neigh_gw6(rt->dst.dev, rt6_nexthop(rt, ip6_daddr));
+> +		if (other_tuple->tun.encap_proto =3D=3D AF_INET ||
+> +		    ctx.tun.proto =3D=3D IPPROTO_IPIP) {
+> +			__be32 ip_daddr =3D other_tuple->src_v4.s_addr;
+> +			struct rtable *rt4;
+> +
+> +			skb->protocol =3D htons(ETH_P_IP);
+> +			rt4 =3D dst_rtable(tuplehash->tuple.dst_cache);
+> +			neigh =3D ip_neigh_gw4(rt4->dst.dev,
+> +					     rt_nexthop(rt4, ip_daddr));
+> +			dst =3D &rt4->dst;
+
+- Can this branch incorrectly cast a struct rt6_info to a struct rtable
+  if an IPv4-in-IPv6 packet is forwarded to another IPv6 tunnel?
+  - Double tunnel encapsulation is not currently supported.
+
+Regards,
+Lorenzo
+
+> +		} else {
+> +			rt =3D dst_rt6_info(tuplehash->tuple.dst_cache);
+> +			neigh =3D ip_neigh_gw6(rt->dst.dev,
+> +					     rt6_nexthop(rt, ip6_daddr));
+> +			dst =3D &rt->dst;
+> +		}
+>  		if (IS_ERR(neigh)) {
+>  			flow_offload_teardown(flow);
+>  			return NF_DROP;
+>  		}
+>  		xmit.dest =3D neigh->ha;
+> -		skb_dst_set_noref(skb, &rt->dst);
+> +		skb_dst_set_noref(skb, dst);
+>  		break;
+> +	}
+>  	case FLOW_OFFLOAD_XMIT_DIRECT:
+>  		xmit.outdev =3D dev_get_by_index_rcu(state->net, tuplehash->tuple.out.=
+ifidx);
+>  		if (!xmit.outdev) {
+> diff --git a/net/netfilter/nf_flow_table_path.c b/net/netfilter/nf_flow_t=
+able_path.c
+> index caaf48c5fd2a..5e84b7f18a26 100644
+> --- a/net/netfilter/nf_flow_table_path.c
+> +++ b/net/netfilter/nf_flow_table_path.c
+> @@ -216,12 +216,13 @@ static int nft_flow_tunnel_update_route(const struc=
+t nft_pktinfo *pkt,
+>  	struct dst_entry *tun_dst =3D NULL;
+>  	struct flowi fl =3D {};
+> =20
+> -	switch (nft_pf(pkt)) {
+> +	switch (tun->encap_proto) {
+>  	case NFPROTO_IPV4:
+>  		fl.u.ip4.daddr =3D tun->dst_v4.s_addr;
+>  		fl.u.ip4.saddr =3D tun->src_v4.s_addr;
+>  		fl.u.ip4.flowi4_iif =3D nft_in(pkt)->ifindex;
+> -		fl.u.ip4.flowi4_dscp =3D ip4h_dscp(ip_hdr(pkt->skb));
+> +		if (nft_pf(pkt) =3D=3D NFPROTO_IPV4)
+> +			fl.u.ip4.flowi4_dscp =3D ip4h_dscp(ip_hdr(pkt->skb));
+>  		fl.u.ip4.flowi4_mark =3D pkt->skb->mark;
+>  		fl.u.ip4.flowi4_flags =3D FLOWI_FLAG_ANYSRC;
+>  		break;
+> @@ -229,13 +230,14 @@ static int nft_flow_tunnel_update_route(const struc=
+t nft_pktinfo *pkt,
+>  		fl.u.ip6.daddr =3D tun->dst_v6;
+>  		fl.u.ip6.saddr =3D tun->src_v6;
+>  		fl.u.ip6.flowi6_iif =3D nft_in(pkt)->ifindex;
+> -		fl.u.ip6.flowlabel =3D ip6_flowinfo(ipv6_hdr(pkt->skb));
+> +		if (nft_pf(pkt) =3D=3D NFPROTO_IPV6)
+> +			fl.u.ip6.flowlabel =3D ip6_flowinfo(ipv6_hdr(pkt->skb));
+>  		fl.u.ip6.flowi6_mark =3D pkt->skb->mark;
+>  		fl.u.ip6.flowi6_flags =3D FLOWI_FLAG_ANYSRC;
+>  		break;
+>  	}
+> =20
+> -	nf_route(nft_net(pkt), &tun_dst, &fl, false, nft_pf(pkt));
+> +	nf_route(nft_net(pkt), &tun_dst, &fl, false, tun->encap_proto);
+>  	if (!tun_dst)
+>  		return -ENOENT;
+> =20
+>=20
+> --=20
+> 2.55.0
+>=20
+
+--KpcLrKuIJxPbhAqD
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCak0olgAKCRA6cBh0uS2t
+rI3NAQClQS3W+Ft7PA84x3n6YiTHeu7fpbuZ5bFy/w/e7uXuhgD/RyZixGGKm2Qr
+cNBbhlAS61B4HSxfpr27WoCCykRS+Ac=
+=gbZe
+-----END PGP SIGNATURE-----
+
+--KpcLrKuIJxPbhAqD--
 
