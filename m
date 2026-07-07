@@ -4,93 +4,173 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFAC9C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jul 2026 23:29:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2AB5C43602
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 01:37:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=gcBgjqeSOfuptOO3Y+Jfj7CL+AEDlaiqctCql/yUeXE=; b=YzTBpO7d/qFM9VE7TdVCDYNIX7
-	kBrN+xd2u6D8zOQf1AfxmUU2+Tzs8soRAKbofs6K4trVq6Qm0TrvdBML1YOD1Mbe5PNGp3+WbFc1K
-	vDgRD9/c2zeFXXaKo48ba/T7w+G0Vkixf4OC97lHOi+mxXSbHljxgw0+DI07zB5WaKneNzpEbP2Vx
-	qfGPqwIHjMZDCjBYpYcRXEqhklL4yH3bfrNj8D2cIx/RoyAWH9PK+867flUk4ueSSwevf7IC+czLE
-	JG0L1aVhDcDDf0hHWfbCAjaKGO5E+MwZsi6TbkDsWscGBKvATYw2fNTP0diBpz2YOSMhEdtbdw/J/
-	CGf1d3vg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zVAt++BBwa9Lp7CQU3w81aHy4kuxWu8xS5VkSssx/8s=; b=K4Cb7EzizaJnJQmIIwHQEyXlDX
+	e90AGgjct8BS+4i3gl6ApTQ/rzswKSLd6tOoPJtKNYPoNrwtSW+F91aDD8SOt0OoHXojd60NRaUHn
+	nl3I9ZwkP+f+0zw/n6bvCkemUl2jp1tkepD8x5nKolJ2iF0lRLrW+AMj9X5AMtTo3Vqc3c25hfUkd
+	A8byaEcR/FcGwtgzTbwH2UKl7rT/aV6GY7Nx/0zxO0f1bwdEhhXJu+3pPBNLFPPPtXPH/LPh1693L
+	FdbLKojeYvpnvTom+hqU4EkZfmSA2CUJrN9cTKqdwD51nberExrP38Dxy15h18NR8ruEPiyP7gTVN
+	v5VjqxGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgskN-0000000DnRe-2QEQ;
-	Mon, 06 Jul 2026 23:29:07 +0000
-Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
+	id 1wgukG-0000000Dsvf-0iDQ;
+	Tue, 07 Jul 2026 01:37:08 +0000
+Received: from mail-koreacentralazon11023104.outbound.protection.outlook.com ([40.107.44.104] helo=SEYPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgskK-0000000DnQu-3KME
-	for linux-mediatek@lists.infradead.org;
-	Mon, 06 Jul 2026 23:29:06 +0000
-Received: by mail-qv1-xf35.google.com with SMTP id 6a1803df08f44-8efcfdb2b43so26608276d6.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 Jul 2026 16:29:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783380543; x=1783985343; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=gcBgjqeSOfuptOO3Y+Jfj7CL+AEDlaiqctCql/yUeXE=;
-        b=jGUA/qzsWQUYhXfHBoJSAs8MD+xWujQLDaEnpL4wO69Inu0V8wF+V8v/6Sefx7vdK7
-         7AFA7lCUiUpf0Z628EEFlLeMOATxjXxrY5F0hIUCGTzVhqVYH5P1DKnk29lQasbBCSOH
-         OFzertDGWkY0bAwXHL+8L+ZbnKslB2AzwztSRYGq3cGnZKTB6ze3vzpCZE60/jYtoixo
-         6wZoAxiM8AeL8Jmi+Qi6Y5q0/DQL77A0/M/cIrg/A28BsB8gvOav101IqMErhRMcoPB8
-         Lo/4NggTMToQi3Bm+5MU127Gxcy9y9sl7CUNnf6vczRGvHyL3D4cem0SWbd3uhsMEBMz
-         wcsA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783380543; x=1783985343;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gcBgjqeSOfuptOO3Y+Jfj7CL+AEDlaiqctCql/yUeXE=;
-        b=c7ia95i0bBqIyBT8R4rtDO7cVq4wjvbVWrcUzc2a9y3+lbX7I3GfzIj9CQOK7aHru3
-         8iilh47MSgm97X5KoBJ555A078Wk6xFvN2gcsiWFqsngXavdfzXsn4uuFAS0i5PE259t
-         uqDg8lKZlDIYvzT+ijnMoBQG7LaEYINeQ7IEcCQlpXMRTiH4pwS9HOvEUZguB7vArjr1
-         XW33pPoC2QWY6vuyIluNTSuD+sxkkXhXZVz7GzPB/2vmMxinmgmZCM30G6U17BhwKlLQ
-         C+Y+LhhHUc7vWDhm+e/PYuc1XgIt1JKfP7lnwf8SF4UzG57BlJ2rnxYEkQHJDUbBczR/
-         s6xQ==
-X-Forwarded-Encrypted: i=1; AHgh+RrsbwwTmwIK/bv7vFQgyy2tL6oGN05aMN1BnhpO5oxeUObxpPRS02lwZTWYF3VdHCfN4Dp32TyfeuS/WYllvg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxe0HlQnvg1lbo7d9Us1HfIYYa5uaZNyqjo7Q05r/5em4sHYyWw
-	iIQOpViJV5G0Y31dJVhbbdk1cI7vistuWpWxs8hxqyvUIcoGcnjGyIfg
-X-Gm-Gg: AfdE7cnTzF5ZoD3WHFNqReEx+7G9Khl2uvFW9AES8REddU4r988jEYqOdX0S8eeO4xc
-	41vWWdk+6VA7dyKScz0+4YFimJLzJuSD9zth60i/8jL1VTG3jvIHHzvC7ibFklpOqMJKqleZ+PL
-	EOvf9r+QjWJkdK+ObRtfq/p2wQQRGbeiBBqf8Yx8KfzE7832LJvx9PKZnfvXT0DfMvfaDI+dBg1
-	PBnqLwHd+oViFblHV9po5PQwH9mxSlbB3BwMYp3XsAxcL2JmvtM+i0sODdX5rAAH2v3yVr6iZ6x
-	CbBPAn/uSYihezwvLUN7lPVzLhY39gmjOPhCIIZ/n+hKIaxaa7oztjjNAAW6plxNO9zQi0P/ZCG
-	lUl+P5h4/sMNm2e2C9rO4ETdO/xvlSdR5vW3TdcWRqnRktBdBpkuVTLIoAm87bG27NTAXYHCF2G
-	BSPG7mzCw0qx7P+KdJzIn3MB8hBwRySS7SvOGQk0hZt3qsEhNhLSEJeNreFIOnsVC5Js/XnGxRf
-	2LYU0tiKLYfSYmFV710
-X-Received: by 2002:a05:6214:5701:b0:8f0:11df:c80d with SMTP id 6a1803df08f44-8fcb56c8c27mr39823556d6.42.1783380542597;
-        Mon, 06 Jul 2026 16:29:02 -0700 (PDT)
-Received: from ryzen.lan ([2601:644:8000:7a86::e34])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-8f471de83f8sm148902706d6.33.2026.07.06.16.28.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Jul 2026 16:29:01 -0700 (PDT)
-From: Rosen Penev <rosenp@gmail.com>
-To: linux-wireless@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
+	id 1wgukC-0000000Dsuo-0bo2;
+	Tue, 07 Jul 2026 01:37:06 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=enilA8zYZzVL1Y1E8qXyS7/jZFIXtdnJgPiYOmK83r9gOPTKJqwAyI7CyKQs+aKJ1M+HROiyeuGbdPHmRVnJhy8f9qATTUWW/dR+MGYmZboIEBamyfvWeCtG4iGsKDHMY2kTdJvNX5nHkKeH7TKowAy9NEs1b0yc3CF/5K1y/QsnJDJ3tJKH2NOWanUBrhBBdaKZhZN/Ldv5hNETIzEw1qS3ZklECAswkfAwdyvZsZb6Z0hIrUVzYZFStGf3lUW33Dk6c2R8Dsy3z4d2cRMJHVFhIL64JDowVSpYTgqbLqB1q7KSMChujI+tLRZo//qeztXYZaGviP1AgewKeZG6ZA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=zVAt++BBwa9Lp7CQU3w81aHy4kuxWu8xS5VkSssx/8s=;
+ b=SfMp+HnA/nq59x5AwpIC0k7qpcQi7ldLr+1t2moMNCA4VpXIRK3jyw4SzceIhwaMHBE62OTqFCusu/qV9Hq8mUU68M1RknexNMQwMUDWX/+KLaLBBZyVNSNGSGqQm3zZgCj9USN3uKolqS4FnPJiwobgFokr8JLFK3TBIPxfdipT4A8d5ADV0EfacqXDymSeClaJP+h3oiNPCUqGtmh3/j8fLFwEOVTATcnMN4cKKHaV2K0LTEk6qNqFqsL9MlYAmlqdDk0UAPnSHh+/XIkw/3D+bp8Tt4mg8bzdqVe0S5tO/Hr939ErpSqiU5v4MfF4esSzg4pG1LLn6dbXRZrL2Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 222.71.101.198) smtp.rcpttodomain=linux.intel.com smtp.mailfrom=cixtech.com;
+ dmarc=bestguesspass action=none header.from=cixtech.com; dkim=none (message
+ not signed); arc=none (0)
+Received: from PUVP216CA0003.KORP216.PROD.OUTLOOK.COM (2603:1096:301:16f::7)
+ by SEZPR06MB5992.apcprd06.prod.outlook.com (2603:1096:101:f2::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.10; Tue, 7 Jul
+ 2026 01:36:42 +0000
+Received: from TY2PEPF0000AB85.apcprd03.prod.outlook.com
+ (2603:1096:301:16f:cafe::97) by PUVP216CA0003.outlook.office365.com
+ (2603:1096:301:16f::7) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.181.13 via Frontend Transport; Tue, 7
+ Jul 2026 01:36:42 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 222.71.101.198)
+ smtp.mailfrom=cixtech.com; dkim=none (message not signed)
+ header.d=none;dmarc=bestguesspass action=none header.from=cixtech.com;
+Received-SPF: Pass (protection.outlook.com: domain of cixtech.com designates
+ 222.71.101.198 as permitted sender) receiver=protection.outlook.com;
+ client-ip=222.71.101.198; helo=smtprelay.cixcomputing.com; pr=C
+Received: from smtprelay.cixcomputing.com (222.71.101.198) by
+ TY2PEPF0000AB85.mail.protection.outlook.com (10.167.253.5) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.181.6 via Frontend Transport; Tue, 7 Jul 2026 01:36:41 +0000
+Received: from gary-System-Product-Name (unknown [172.16.64.196])
+	by smtprelay.cixcomputing.com (Postfix) with ESMTPSA id 15ED34351F23;
+	Tue,  7 Jul 2026 09:36:40 +0800 (CST)
+Date: Tue, 7 Jul 2026 09:34:46 +0800
+From: Gary Yang <gary.yang@cixtech.com>
+To: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konradybcio@kernel.org>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
+	Paul Kocialkowski <paulk@sys-base.io>,
+	Linus Walleij <linusw@kernel.org>, Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Alexey Brodkin <abrodkin@synopsys.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Daniel Scally <dan.scally@ideasonboard.com>,
+	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Eddie James <eajames@linux.ibm.com>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+	Houlong Wei <houlong.wei@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rosen Penev <rosenp@gmail.com>,
-	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCHv2 wireless] wifi: mt76: fix MAC address for non OF pcie cards
-Date: Mon,  6 Jul 2026 16:28:57 -0700
-Message-ID: <20260706232857.807044-1-rosenp@gmail.com>
-X-Mailer: git-send-email 2.55.0
+	Joseph Liu <kwliu@nuvoton.com>, Marvin Lin <kflin@nuvoton.com>,
+	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Ge Gordon <gordon.ge@bst.ai>,
+	Adrian Hunter <adrian.hunter@intel.com>,
+	Ulf Hansson <ulfh@kernel.org>, Rob Herring <robh@kernel.org>,
+	Saravana Kannan <saravanak@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Shengjiu Wang <shengjiu.wang@gmail.com>,
+	Xiubo Li <Xiubo.Lee@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>, Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+	Bard Liao <yung-chuan.liao@linux.intel.com>,
+	Daniel Baluta <daniel.baluta@nxp.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Peter Chen <peter.chen@cixtech.com>,
+	Fugang Duan <fugang.duan@cixtech.com>,
+	Ekansh Gupta <ekansh.gupta@oss.qualcomm.com>,
+	BST Linux Kernel Upstream Group <bst-upstream@bstai.top>,
+	Fabio Estevam <festevam@gmail.com>,
+	Nicolin Chen <nicoleotsuka@gmail.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
+	Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	CIX Linux Kernel Upstream Group <cix-kernel-upstream@cixtech.com>,
+	linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, linux-aspeed@lists.ozlabs.org,
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+	linux-sunxi@lists.linux.dev, linux-media@vger.kernel.org,
+	openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
+	kernel@collabora.com, linux-tegra@vger.kernel.org,
+	linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-remoteproc@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-sound@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+	imx@lists.linux.dev, sound-open-firmware@alsa-project.org
+Subject: Re: [PATCH 31/42] ASoC: cix-ipbloq: Use
+ devm_of_reserved_mem_device_init()
+Message-ID: <akxXtlUYtT3T-huE@gary-System-Product-Name>
+References: <20260703193855.110619-1-mukesh.ojha@oss.qualcomm.com>
+ <20260703193855.110619-32-mukesh.ojha@oss.qualcomm.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20260703193855.110619-32-mukesh.ojha@oss.qualcomm.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TY2PEPF0000AB85:EE_|SEZPR06MB5992:EE_
+X-MS-Office365-Filtering-Correlation-Id: 58b0bcd8-fc53-439a-90a3-08dedbc83256
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|23010399003|82310400026|1800799024|36860700016|376014|4143699003|22082099003|18002099003|56012099006;
+X-Microsoft-Antispam-Message-Info: PbsmJJUC3r+PSMHFYv1/5KAHLPksanDfP7Pr+9GjfsZBINxm7MQ/6oaciRBlKjgm8PiiDmCKpLrQa3R0g79rj/OxhD1HdasUwlMwOHrf0JU8wHBBXuG3hdrKLpnv3P2vBaYKWkRyc7YH5GxFLqRfvvRthoAbKoabp1FOx4VB5JAj7OOr80zr2tzMjzlR47UUAXdphACxz6nv6LEjFZjw5nkP/Lfsoqsy57C1SI/3g+k5VsMhfKjzOnAQN3EyPypuAs7HBnj/AgliW+5HrJP1s74vhFuGt9CA1adcAJymarP4P5Nu6rX/AGOmLp1FnrjZvD2gczG1qUGKllxinGTkHAq4cqKLnqUQi8kaQUtaGx1KVfb86Qb1Z9CU5EFISIvQPEeR4m6sVRd3OljqlwtBXwmq8NH0FKD6SzKRqX4kD7GACn0dK6g6lsKQaR0sduqxWfqLbbg995xOWjawLEAXZ5XeivDMAZdOzhoR1hZr9DyJLv97YF00hvFCX5vTY7XkkngNF6u6oJDxRFbKaxRldx2PRzrbyC1rKEQxL5IX49C9fw7ENvTpNXgi0JPL/z+qTwPIgc77MJq1fRsrgmnB0IzA4DF+dUOpoKdg8bFdE74+HkbQgvupu+ng7tbGCb//sb+zUbDWK84eo+dJfWy2FVgLDQ3OEd3TdRSJu+GPRJAWAcu149u8rXkMyUlF6D54k0cbFWV3qZoNda129jn/Gg==
+X-Forefront-Antispam-Report: CIP:222.71.101.198;CTRY:CN;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:smtprelay.cixcomputing.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(7416014)(23010399003)(82310400026)(1800799024)(36860700016)(376014)(4143699003)(22082099003)(18002099003)(56012099006);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: YQP9tmTZsZsst2XVhSMEt6ze26TOYYsaRySCTBU4b2JeGgsxxgjlxfxR5rqo9srtq52gxFXeRrAQpizWmq4rnR131aJL0yADN5UOJK5lOhRoyD34mXpqnTYllYtoO8lT3DKhABUr/r2VCTrknBLHcdjkvQxRqySLGfkJL2ujdOo/T6nQjmBRjqZerpuQXpvNUbQjY+9vRg32YosHnAcL16AMcUeJKjcxDswM9WRodsARyKalf+gPqZeGfVvQ8KBlfqwwBXHZU+z4FORlOWYRleGy1UUtXHCYuF2zFO2AEVXiVpYxVmrrfudDWbEcZaDDnNgniI5tZ2x+7qCWJ2wsDNzhdk4pdS+t1rXnoA677qfpLmy+0wLuODVSDADMZKXY1btJl1j4/a4CCslM/GsYj2UZ3ZJuQONRDXT5z0louJEFMWXX8aZh++Us93/xLCDu
+X-OriginatorOrg: cixtech.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Jul 2026 01:36:41.4300
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 58b0bcd8-fc53-439a-90a3-08dedbc83256
+X-MS-Exchange-CrossTenant-Id: 0409f77a-e53d-4d23-943e-ccade7cb4811
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=0409f77a-e53d-4d23-943e-ccade7cb4811;Ip=[222.71.101.198];Helo=[smtprelay.cixcomputing.com]
+X-MS-Exchange-CrossTenant-AuthSource: TY2PEPF0000AB85.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR06MB5992
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_162904_841608_5CAAE5D8 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20260706_183704_212094_EF4EAD1C 
+X-CRM114-Status: GOOD (  20.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,38 +185,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If seems the check for err is wrong as the proper macaddr gets written
-to from the EEPROM itself. Meaning checking err from of_get_mac_address is
-wrong as the proper macaddr has been written by this point.
+On 2026-07-04 01:08, Mukesh Ojha wrote:
 
-Reported-by: Klara Modin <klarasmodin@gmail.com>
-Closes: https://lore.kernel.org/all/ajRmlyx_AEGybykL@soda.int.kasm.eu/
-Reported-by: Tobias Klausmann <klausman@schwarzvogel.de>
-Closes:
-https://lore.kernel.org/linux-wireless/30a90714-02d8-45f2-a7f1-4cfe0627d50b@skade.local/
-Fixes: 31ee1582717e ("wifi: mt76: fix of_get_mac_address error handling")
-Signed-off-by: Rosen Penev <rosenp@gmail.com>
-Tested-by: Tobias Klausmann <klausman@schwarzvogel.de>
-Tested-by: Klara Modin <klarasmodin@gmail.com>
----
- v2: add extra tags and target wireless
- drivers/net/wireless/mediatek/mt76/eeprom.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> [Some people who received this message don't often get email from mukesh.ojha@oss.qualcomm.com. Learn why this is important at https://aka.ms/LearnAboutSenderIdentification ]
+> 
+> EXTERNAL EMAIL
+> 
+> Use the devres-managed devm_of_reserved_mem_device_init() to ensure
+> the reserved memory region is released on device removal, fixing a
+> missing cleanup in the original code.
+> 
+> Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
+> ---
+>  sound/hda/controllers/cix-ipbloq.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/sound/hda/controllers/cix-ipbloq.c b/sound/hda/controllers/cix-ipbloq.c
+> index c1084a915c13..815932e5c58b 100644
+> --- a/sound/hda/controllers/cix-ipbloq.c
+> +++ b/sound/hda/controllers/cix-ipbloq.c
+> @@ -257,7 +257,7 @@ static int cix_ipbloq_hda_probe(struct platform_device *pdev)
+> 
+>         dma_set_mask_and_coherent(hda->dev, DMA_BIT_MASK(32));
+> 
+> -       err = of_reserved_mem_device_init(hda->dev);
+> +       err = devm_of_reserved_mem_device_init(hda->dev);
+>         if (err < 0 && err != -ENODEV) {
+>                 dev_err(hda->dev,
+>                         "failed to init reserved mem for DMA, err = %d\n", err);
 
-diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
-index b99d7452800f..afdb73661866 100644
---- a/drivers/net/wireless/mediatek/mt76/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
-@@ -181,7 +181,7 @@ mt76_eeprom_override(struct mt76_phy *phy)
- 	if (err == -EPROBE_DEFER)
- 		return err;
- 
--	if (err) {
-+	if (!is_valid_ether_addr(phy->macaddr)) {
- 		eth_random_addr(phy->macaddr);
- 		dev_info(dev->dev,
- 			 "Invalid MAC address, using random address %pM\n",
--- 
-2.55.0
+Reviewed-by: Gary Yang <gary.yang@cixtech.com>
 
+> --
+> 2.53.0
+> 
 
