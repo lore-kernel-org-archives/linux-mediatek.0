@@ -4,131 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD4F8C43602
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 14:48:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E851BC43602
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 15:05:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FFPv6f1DvPzvaf/+BF1GucAu1+JyaOuON0uoWlg9A54=; b=aA+vnYHzWBZzBxnsOnthWT5V1U
-	2LUu9r6tGLdiaVmQqoxfOQ01rkgAXYbviaC2bLppm2Qf5Rb/Yf47Gs30y4DIVSCq8SNfoUGobL5F8
-	E4K+7o237HsseXjrCm8PbgeClNdotBeVZr99EYiJOu0NcmYwzCxRCKtuYpqYIs1SLX4X8eGdaR6oj
-	FUz7k9DmA2LNaIRg/OLfSpKdNTFakqqYQug12clVhBqOdcklW3S46SJ6rj7dqqB9GctrZAgZ1nCzb
-	Em+gnLpGWVQNrdofFIFYpTNBg/AeLr9aMooVE/1+lRrCWXjqNRwU3YW1s3VGryz9Lllx1W9y4VfI0
-	nF5FADtQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7SSWQg6HrEbpp/1xgGT38ar/90z2MxrGW6oImpnAmb0=; b=Ag3Ykwm/EjvroRF+6a1a19Uuxb
+	csEpvjjlKrsjYENj9GD0ern08/M4A4lqcxpm6Atv/ZPMba3zr9GVL60GJmNpytQm3LVe0PnaVrPrG
+	iVnmEEGQQC/nwwCeMzP+yfVfXaUEvWeIvnyjscYf5Qy7cc2sXnlZECO+a/pRolKg2hfoTJa4bYIco
+	JQUaRiKeNT7IABGh0Dk53K+3dL59l5SIbkTbFMo4/UJJK4gniRc+tBpKpWFQ8Lwn/6AZVpCpqbvMR
+	5tiWg92di3F7eH71OdgLs0O8XLNrfu8LgothD7jTbgyoyglObaySk7o5fBr4KXKmKDHarrGSWVKKa
+	+oP4nDOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh76T-0000000FD6o-3WUC;
-	Tue, 07 Jul 2026 14:48:53 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wh7Mk-0000000FFGi-07JR;
+	Tue, 07 Jul 2026 15:05:42 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh76S-0000000FD5D-2gEg
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 07 Jul 2026 14:48:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:In-Reply-To:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=FFPv6f1DvPzvaf/+BF1GucAu1+JyaOuON0uoWlg9A54=; b=KrBv1cwba2J69Ikxvwxru7RpAG
-	HiTzPAgbD7QIhMqqIpqm/sGWBhrdB4ghO8k34oWM2nKEebvOWW9UFqxPS9RPDFonofyowO3OfQxhJ
-	9sDu0hvEKJ4JEvK+oPoY4M1nFk8wJnXWBBw1/nihRsWoiftySviBmvUbjPIDH1SekEICHEy451nUE
-	WJUa69vaqaopiw3ZhV/1slzG/eOKFwO6n55SVnfwluQA4S/54lVDrgrUu6BxY7Q63DkgVzjG4A7fS
-	X6K2dV/0fVXiDgLlcBRDrjxf0rW61TdM4mwgNdCMVJqnF6atU9vOeC0SY4ZXNlu1eFjHv1StrVlVr
-	Ewy/7u7Q==;
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wh76P-00000007ZH3-3a8g
+	id 1wh7Me-0000000FFEC-14Jv
 	for linux-mediatek@lists.infradead.org;
-	Tue, 07 Jul 2026 14:48:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1783435728;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=FFPv6f1DvPzvaf/+BF1GucAu1+JyaOuON0uoWlg9A54=;
-	b=D4RwYmFUqmLScJDTjhXOUfG2e0/0cE62nSuOrxBm/41rgYo3/geFnZ5kf0u7oSm6BTSNKu
-	d8iLHjeVNU2mDIQV2DhMiyPv0shFnBgiZExUaF/WzwU0cDrc2RjxxzmEClbsZ+HexeMEnG
-	zowZf/c1IpH9LoOthX4ieGaL58OijAs=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1783435728;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=FFPv6f1DvPzvaf/+BF1GucAu1+JyaOuON0uoWlg9A54=;
-	b=D4RwYmFUqmLScJDTjhXOUfG2e0/0cE62nSuOrxBm/41rgYo3/geFnZ5kf0u7oSm6BTSNKu
-	d8iLHjeVNU2mDIQV2DhMiyPv0shFnBgiZExUaF/WzwU0cDrc2RjxxzmEClbsZ+HexeMEnG
-	zowZf/c1IpH9LoOthX4ieGaL58OijAs=
-Received: from mail-oo1-f72.google.com (mail-oo1-f72.google.com
- [209.85.161.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-619-G6Y8ZdvOMc2-lK8sgiSEAQ-1; Tue, 07 Jul 2026 10:47:26 -0400
-X-MC-Unique: G6Y8ZdvOMc2-lK8sgiSEAQ-1
-X-Mimecast-MFC-AGG-ID: G6Y8ZdvOMc2-lK8sgiSEAQ_1783435645
-Received: by mail-oo1-f72.google.com with SMTP id 006d021491bc7-6a17bd28f4bso6579850eaf.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jul 2026 07:47:25 -0700 (PDT)
+	Tue, 07 Jul 2026 15:05:39 +0000
+Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-2cad4170e8eso51732275ad.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jul 2026 08:05:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1783436736; x=1784041536; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=7SSWQg6HrEbpp/1xgGT38ar/90z2MxrGW6oImpnAmb0=;
+        b=pxV6ZV120m1PsMPpaxl1fWqKeJHZRu11CCJRfThXUFwuq5KSgTtjsI/R3n92/23eWz
+         iNAr6Ru4+oObseSJnHhu8l3aIrP5wx1H4E0PLgnBTyGHvp3lptTnIvZTRulGzd+lMmFN
+         SGuSC+OCaaxTenczr/xrkK0P3+46jru62E2ilT3sCP+4YBG8p+c3+OqN+n3OPKyZjrbv
+         rSRKvQ/1KjV3jcXl8YW6TYknbUeakY1+T06Jb7WHE0/luZxo+HnkneoexbBYviysiiMM
+         ir98g/8KzBYqmTDIaXLieHKRJWDvGOJCyrmBp2AMtLgyGGSi4w4B/SSSnNJBUPwcHU/n
+         3ArA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783435645; x=1784040445;
-        h=user-agent:in-reply-to:content-disposition:content-type
-         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=FFPv6f1DvPzvaf/+BF1GucAu1+JyaOuON0uoWlg9A54=;
-        b=ZJCHkBZMjDTE7ScEJWNn6VANjgvVo3926j3LDZrImvhPEP+Ejkw5dOiyVsVNudQR9E
-         3rD0cWYQlXmOdA2h86xk/sfwrY0kWjwdYxr+JlYLfpg/+gMrF6GvMSIbSeW8Sx+53wmh
-         nOZEiD8B/oAba1UHiVLnrTv5dVzxbO9eSeovOG6BMotyhKaLX4x+xbpv+qLyip+gcJIl
-         YuaIOI2s4Z7YuF5mc+pYBmLngND5bnHrJyPYxlG2ueUCrfsfpIf6yZUhdoE7bdbNIdoZ
-         NGgTKWaFO6U/ckf69PnwsMBRsBa9uHzqhlLuMapylV2FyJ5bblKDQUdfSP0AodBYSkDU
-         LrVw==
-X-Forwarded-Encrypted: i=1; AFNElJ8FEmjH7bOPWwu2zEfcqO6qu+trA9iijfmJLmK4270LAZCBahl1vVEMrVVHLGaS4Y5jYCdfOU2xfomfcr1nFg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyeLbBh80JPSDHDoa4wtqhPWOArpXy3v2jXKHOxErzE/4NgzvCQ
-	aZOfv00pW4Y5QceYLNynQM2Axo2TcAv0jmoQh8ljzUCWq+GWQv/zqR96/SUSRyLvbaU2wZbARDZ
-	ratENyTcOoGI5/WeyqbHNOWKJJMS1IZeZbxhhFbK/JUrIabgeb7orotM/KoXF89dc5f/LFszI5A
-	==
-X-Gm-Gg: AfdE7ckxFFSJU+akGxQXB8sBa4D4XZLytFK4MXTH6URaeoKze0UfrhJFvKZXIAlbySF
-	7jmUDSWZbRzHryZ8Spg76s0ICVqYII4Em3owp8wvwomJuNhkKsBeCFgE4OTjuBLHKTcGCtbFRij
-	tQH11WBNK+lFNvrksl1mNJQdGRx1xfsk7l+Iw9/tpCB9h3dO3UQE/ld6QmzcpQOMmSeqE70IO4b
-	/Rt/mvw8Be7xYLhmyOd3K3VpMQTcFklSBmtl/7/8QzI84C4v5y8RkUuXcHxAHEJpC2hcZaC8kSC
-	9sh4bLQKB0fKOk/ufoSqttIjv4mGd08A7QR0vQzxj+R2Mzd2/bM/aUJmvINgpO7GU0CEJs/lqP5
-	AdP9S+v1T
-X-Received: by 2002:a05:6820:4b09:b0:6a1:5ca0:d52d with SMTP id 006d021491bc7-6a35536af6cmr3395673eaf.17.1783435644630;
-        Tue, 07 Jul 2026 07:47:24 -0700 (PDT)
-X-Received: by 2002:a05:6820:4b09:b0:6a1:5ca0:d52d with SMTP id 006d021491bc7-6a35536af6cmr3395595eaf.17.1783435642165;
-        Tue, 07 Jul 2026 07:47:22 -0700 (PDT)
-Received: from redhat.com ([2600:382:850a:55b4:731e:b0d4:e0cc:410])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7eb544a1725sm13981552a34.16.2026.07.07.07.47.19
+        d=1e100.net; s=20251104; t=1783436736; x=1784041536;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=7SSWQg6HrEbpp/1xgGT38ar/90z2MxrGW6oImpnAmb0=;
+        b=EXZBsuiax+l5B5ZOPExSdkGW7q8b5ZTFLljzNKuf8K4fQDi6mbdosEsoz/6zlSCn4u
+         bSRtN27XFXdGsaTs/rf6nHFejX/WutTgwSthRiB7uRe4ZGpAhHIC4SvVytdsI/8Aqn1z
+         C4LkgLxGvMDrUw7oCixwoP8n/Zl3ySzH92QmcwAWLS5Gm4aOKiLRlRv96BjBLw2IgtVm
+         ipsl4TMDqwA0AoaPuDtbCjEjSeygJ2n5zM+lfofsIYvEpZqSNpjM/rNPzYeXQGthZmqH
+         xzNMpwG9HuyqPfNbdhYFDoohwFHTEOnXcfgTdkqvLEwJ7AB33O1I4yioLJWGy5S2cUH6
+         Y2iw==
+X-Forwarded-Encrypted: i=1; AHgh+Rp2K9lLq4bYYz80zOGjp8m6c6n11TRZbmAilDGN4hmWkn75lNoFp0x6ipuud61Uyk6Oc66gWUhv++TveQ2SQw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwxwP2ft6/BXJeKKVARk96R3CtaO3DbQbCU0oxYDaJF5OKAvCWW
+	DtIhIlFvkV/Sn/SL01hFh4UETGZ9Wco81fqniKSU1taOlk2vIr6y3Z3l
+X-Gm-Gg: AfdE7clG4Rp2LIRd2k3BRGmsmTKX3FzBDkeMnfm37lynHJqnpcvDyF7RAIaESNTNRit
+	C7HJ5jUS/ii9UIu+0bSsd/W8DUBhbcHyIt+XNZkpqry6B2ESjNNewIOP3EzwXOQ/8k2tQ9A6Uur
+	Y1opWDNKgak+/h9O3VdtsAT8A87TkiEEKd/Dmt60JZ+N86LPuXiyA8N95iuGj8hlWYY1eC4vNnx
+	bFKJrT5J3cn1r1SD/fjps0//WfhTZ/Ftg+/NLlgqIxg7AUzNp74VCbSaZsmH075b4zei5V9Oj2H
+	N2pw0Mfmc4hg4QhXFCjfNLzQ4PQvN+bfalOB4w6LYht5AqCfEK8XX6D1KWWdDLXgt8e4PEBTb+m
+	K7xBrUOoGmxewcVh48Jux6ChqtdrRbHBJq5hAx4/YrNOckwKovEFZTjTBOPFDG7O+9i3A3EWvcM
+	oWjvmSrymHrbFAP5i+5jkH7fDtGhovKli3
+X-Received: by 2002:a17:90b:4f48:b0:387:e0bb:57f6 with SMTP id 98e67ed59e1d1-387e0bb5c07mr2778290a91.39.1783436735574;
+        Tue, 07 Jul 2026 08:05:35 -0700 (PDT)
+Received: from haichao.tail057a43.ts.net ([2001:da8:e000:1206:239e:a31b:1d0d:374f])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-387d229a20csm1284197a91.16.2026.07.07.08.05.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Jul 2026 07:47:21 -0700 (PDT)
-Date: Tue, 7 Jul 2026 10:47:17 -0400
-From: Brian Masney <bmasney@redhat.com>
-To: Akari Tsuyukusa <akkun11.open@gmail.com>
-Cc: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"open list:COMMON CLK FRAMEWORK" <linux-clk@vger.kernel.org>,
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	stable@vger.kernel.org, Chen-Yu Tsai <wenst@chromium.org>,
-	Miles Chen <miles.chen@mediatek.com>
-Subject: Re: [PATCH v2 1/6] clk: mediatek: mt2712: fix memory leak on module
- removal
-Message-ID: <ak0RdSkV71J1_1By@redhat.com>
-References: <20260707074839.240676-1-akkun11.open@gmail.com>
- <20260707074839.240676-2-akkun11.open@gmail.com>
+        Tue, 07 Jul 2026 08:05:34 -0700 (PDT)
+From: Ruoyu Wang <ruoyuw560@gmail.com>
+To: chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	Ruoyu Wang <ruoyuw560@gmail.com>
+Subject: [PATCH] drm/mediatek: Check CRTC state before freeing
+Date: Tue,  7 Jul 2026 23:05:28 +0800
+Message-ID: <20260707150528.2270739-1-ruoyuw560@gmail.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-In-Reply-To: <20260707074839.240676-2-akkun11.open@gmail.com>
-User-Agent: Mutt/2.3.2 (2026-04-26)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: oJjKph12ZodmjwlfjD_2GTng-aXjK6AMuWZBQ9d3Afs_1783435645
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260707_154850_091060_FF2BF298 
-X-CRM114-Status: GOOD (  11.11  )
+X-CRM114-CacheID: sfid-20260707_080536_291855_F21DD22A 
+X-CRM114-Status: GOOD (  12.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,20 +103,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 07, 2026 at 04:48:30PM +0900, Akari Tsuyukusa wrote:
-> clk_mt2712_apmixed_probe() in clk-mt2712-apmixedsys.c does not call
-> platform_set_drvdata(), but clk_mt2712_apmixed_remove() callback calls
-> platform_get_drvdata().
-> This results in platform_get_drvdata() returning NULL, which leads to
-> calling kfree(NULL) in mtk_free_clk_data(NULL).
-> This leaves clk_data unreleased, causing a memory leak.
-> 
-> Fix this by calling platform_set_drvdata() during probe.
-> 
-> Fixes: c6368ce86435 ("clk: mediatek: mt2712-apmixedsys: Add .remove() callback for module build")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
+mtk_crtc_reset() destroys the current CRTC state only when crtc->state
+is non-NULL, but it always converts crtc->state to struct mtk_crtc_state
+and passes the result to kfree().
 
-Reviewed-by: Brian Masney <bmasney@redhat.com>
+When reset is called without an existing state, container_of(NULL, ...)
+does not produce NULL. Keep the mtk state free in the same crtc->state
+guard as the helper state destruction.
+
+This issue was found by a static analysis checker and confirmed by
+manual source review.
+
+Fixes: 2d267b81898e ("drm/mtk: Use __drm_atomic_helper_crtc_reset")
+Signed-off-by: Ruoyu Wang <ruoyuw560@gmail.com>
+---
+ drivers/gpu/drm/mediatek/mtk_crtc.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
+index 8e552cdc3b53b..97e3ff412e6ee 100644
+--- a/drivers/gpu/drm/mediatek/mtk_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
+@@ -154,10 +154,10 @@ static void mtk_crtc_reset(struct drm_crtc *crtc)
+ {
+ 	struct mtk_crtc_state *state;
+ 
+-	if (crtc->state)
++	if (crtc->state) {
+ 		__drm_atomic_helper_crtc_destroy_state(crtc->state);
+-
+-	kfree(to_mtk_crtc_state(crtc->state));
++		kfree(to_mtk_crtc_state(crtc->state));
++	}
+ 	crtc->state = NULL;
+ 
+ 	state = kzalloc_obj(*state);
+-- 
+2.51.0
 
 
