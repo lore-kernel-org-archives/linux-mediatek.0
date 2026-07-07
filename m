@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 134C0C4450E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 14:20:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42930C44510
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 14:20:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HZDdAh1x260xTyHuguek6wak65/DqnRDMwyCKbWOlmI=; b=hre6SdJoPDtOO4xkVrvGb7tzeo
-	i90ZIIWQ4O/FK/6cCGpesNkC6llyNZsh4GgMb2mLU6FLpqFzhcYiEL+pGYmFkChw/bE+Ag0zCUu10
-	y6YRDZnxX6CM2wssIBzKrPG179aEZk+ZCPXeCCHqcWgNI9Wnm8s1W9F8e6c4LvDRqeFWb9IUAtY2T
-	Z7kOL4PSszsQ3p+l5pvFuCfs6AtTYwMZ3kSkfBivqAVq59AHGuEDZvLw8NQH3I2lsjT8F5zG7kcMS
-	VKsG1zedBk2KAXbGybNrtFm1UcKakbKVlmGjBjZnANoEKWN3HCMIC4cCMJ9aZtMjq8WqTi4Whdu2L
-	EcGXqkpg==;
+	bh=4yekgiJ+T/S7uCQwESFyMiYYet29UYuCPdFELTnGD58=; b=tTriyDqkNlhVkODHcQo/zBYApc
+	86EGo04QAfN5GCriPioGn+nDw5pV9GUwUWWf44yg6noptuj2MykUmWZYeglB1xsRCkGnhUsJHkXNz
+	lfJUX9Trt4jkXfQqoWxLyr2D3KHd8O6fIXk97SmafQHCLGm0ZjathyJXg57X4GRfGqaiw7rDGTKGW
+	+FTo0y5h8bswQOm+A12eykUXgtEPPGqtx5uf268eOmNaeqnhia+I86tAhrA7/B40TjF9QRQyiIjr5
+	hKv4uA75G7Ah2uliq9dCHzGE9zH3TRZZdAPHbWHdfLRQXSKxFaQ8XGNJiNWMOZFd+kroK/e7JSqm1
+	1aN2xwGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh6eZ-0000000F8ya-3lVV;
-	Tue, 07 Jul 2026 14:20:03 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wh6ea-0000000F90B-1LWW;
+	Tue, 07 Jul 2026 14:20:04 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh6eN-0000000F8fI-1Dqg;
-	Tue, 07 Jul 2026 14:19:55 +0000
+	id 1wh6eO-0000000F8gf-1eiI;
+	Tue, 07 Jul 2026 14:19:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=4yekgiJ+T/S7uCQwESFyMiYYet29UYuCPdFELTnGD58=; b=AHkYLL3WDEeIfydNF8/OJMHSa7
+	4cOT/Ts8og5KG+773QAoagdksWHXK1gyu2+8UmdfuoMp8BankItPhv5og+WDpxd53aRpM7whYOTQ/
+	SRsHwPujSBqMVDHl73nKD5o6+u3lrT6ttCzIhD2C4VMWu7eKEaApije2TNFYNolHQFnMAemlQWQDa
+	y46hDgvAWyqIpWYYlVFh6b1Vk/Bm0fWTePVn1BzzfmseWoLyxyrFqWYmhRetnLm62MFKG7SPszYKG
+	NPrL8G5tb3X+TwgOU1rZptH2Hws9VkbTPjsFE9H02wNVfWiBNoGtlTrDure4lr8tzowaF1CxpzZej
+	0bVYxiig==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1wh6eL-00000007XSa-2gp1;
+	Tue, 07 Jul 2026 14:19:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783433987;
-	bh=Et7mc0fxDGDscgRTZmaSVlDH8n5Hd7CjUYz/srmnArU=;
+	s=mail; t=1783433983;
+	bh=WveJIKcSDFtln6moBUm4mMfeMv6Y8I/JiesYCykNM8g=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=FB7g9hEhhRhlaS9xJbog35MVSjZEQTc9jvmPLGwhFWkP2+yBbP5dklPuke/R0b0DA
-	 FbWwqlpSNjJOzzzhtR3aeEUW/ZpdMDOMuKQQVS2RsUz3n5Phx0Ny/yOHr0+tme3T1u
-	 Mg9Siz8gVT4zIbbgZ7sxGmxR6ZjAoNdR9oUuXBqcVNoz/2Cx+v3vufXjzCVlXs0++6
-	 vRW5VNkg4C87Ggw/lgGHR5t4Tc6wQT/2OHlY0+BIbueWrUBH6NAIFd8RYbGOU1bCyV
-	 AFl1tTh+Hf6rxR645zcetIJLzeVOX2MHHwfcTYp3Vhw3fU/n0gCid4k6esq/KiQFMO
-	 esIWIumkrzcwg==
+	b=P3rCZigGNePOeVqgXIfA27gU7VeZpSthMnDYkEbWFAuhC7/2UvIWyq0dXHDtST9qv
+	 DtDeWyQlcUD7f4CB6f81QCUbzrzfrsWnL9mUaPZlRzSr82Te9B+5PApGOza9A9CR7o
+	 1kOqZ3+difP6MCv+Lkx+/GKjnrpqcJBadMxTJkHLPaCoZCbJrCzM3TRxAOmsdIj9rO
+	 IvFuEhKiTML0w/SAqYDXTAk3ga0uw88gNXdeMuGpTtyuwsFDLbHu8rNJMFdnNPkRqc
+	 3jmA8YYVogqR8zBXyM46p1Moy3GAjGOxmrBTDTD5F+xhTABTaPnkMYzpPp78bHq7hd
+	 irAHCGLAfAWrA==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E018B17E0EA6;
-	Tue, 07 Jul 2026 16:19:46 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C4FB417E018C;
+	Tue, 07 Jul 2026 16:19:42 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunfeng.yun@mediatek.com
 Cc: vkoul@kernel.org,
@@ -62,17 +76,17 @@ Cc: vkoul@kernel.org,
 	linux-kernel@vger.kernel.org,
 	dri-devel@lists.freedesktop.org,
 	kernel@collabora.com
-Subject: [PATCH v2 07/12] phy: phy-mtk-dp: Support setting volt swing and preemphasis values
-Date: Tue,  7 Jul 2026 16:19:26 +0200
-Message-ID: <20260707141931.191172-8-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 02/12] phy: phy-mtk-dp: Rename regs to regmap in struct mtk_dp_phy
+Date: Tue,  7 Jul 2026 16:19:21 +0200
+Message-ID: <20260707141931.191172-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260707141931.191172-1-angelogioacchino.delregno@collabora.com>
 References: <20260707141931.191172-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260707_071951_485019_B7EBE38A 
-X-CRM114-Status: GOOD (  15.05  )
+X-CRM114-CacheID: sfid-20260707_151949_836680_89FCA7E7 
+X-CRM114-Status: GOOD (  11.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,106 +101,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for honoring the set_voltages request to set the
-voltage swing and preemphasis values in the .configure() callback.
-
-For proper hardware cleanup, reset both in the .reset() callback.
+In preparation to perform further cleanups and to extend the
+driver to support more SoCs, rename the `regs` member to `regmap`
+to improve readability, as this is a common name across many
+kernel drivers for a struct regmap.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/phy/mediatek/phy-mtk-dp.c | 44 ++++++++++++++++++++++++++++++-
- 1 file changed, 43 insertions(+), 1 deletion(-)
+ drivers/phy/mediatek/phy-mtk-dp.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/phy/mediatek/phy-mtk-dp.c b/drivers/phy/mediatek/phy-mtk-dp.c
-index 2f3ec3fa384d..270825f130a9 100644
+index d7024a144335..bf7b3a95e72d 100644
 --- a/drivers/phy/mediatek/phy-mtk-dp.c
 +++ b/drivers/phy/mediatek/phy-mtk-dp.c
-@@ -48,6 +48,11 @@
- /* DP_PHYD_TX_CTL_0 */
- #define PHYD_TX_LN_EN			GENMASK(7, 4)
+@@ -79,7 +79,7 @@
+ 				 XTP_LN_TX_LCTXCP1_SW3_PRE0_DEFAULT)
  
-+/* DP_PHYD_DRIVING_FORCE */
-+#define PHYD_DP_TX_FORCE_VOLT_SWING_EN	BIT(0)
-+#define PHYD_DP_TX_FORCE_VOLT_SWING_VAL	GENMASK(2, 1)
-+#define PHYD_DP_TX_FORCE_PRE_EMPH_VAL	GENMASK(4, 3)
-+
- #define XTP_LN_TX_LCTXC0_SW0_PRE0_DEFAULT	BIT(4)
- #define XTP_LN_TX_LCTXC0_SW0_PRE1_DEFAULT	(BIT(10) | BIT(12))
- #define XTP_LN_TX_LCTXC0_SW0_PRE2_DEFAULT	GENMASK(20, 19)
-@@ -101,6 +106,7 @@ enum mtk_dp_phya_ana_glb_regidx {
+ struct mtk_dp_phy {
+-	struct regmap *regs;
++	struct regmap *regmap;
  };
  
- enum mtk_dp_phyd_dig_lane_regidx {
-+	DP_PHYD_LAN_DRIVING_FORCE,
- 	DP_PHYD_LAN_DRIVING_PARAM_0,
- 	DP_PHYD_LAN_MAX
- };
-@@ -121,6 +127,7 @@ static const u8 mt8195_phy_ana_glb_regs[DP_PHYA_GLOBAL_MAX] = {
- };
+ static int mtk_dp_phy_init(struct phy *phy)
+@@ -94,13 +94,13 @@ static int mtk_dp_phy_init(struct phy *phy)
+ 		DRIVING_PARAM_8_DEFAULT
+ 	};
  
- static const u8 mt8195_phy_dig_lane_regs[DP_PHYD_LAN_MAX] = {
-+	[DP_PHYD_LAN_DRIVING_FORCE] = 0x18,
- 	[DP_PHYD_LAN_DRIVING_PARAM_0] = 0x2c,
- };
+-	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE0_DRIVING_PARAM_3,
++	regmap_bulk_write(dp_phy->regmap, MTK_DP_LANE0_DRIVING_PARAM_3,
+ 			  driving_params, ARRAY_SIZE(driving_params));
+-	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE1_DRIVING_PARAM_3,
++	regmap_bulk_write(dp_phy->regmap, MTK_DP_LANE1_DRIVING_PARAM_3,
+ 			  driving_params, ARRAY_SIZE(driving_params));
+-	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE2_DRIVING_PARAM_3,
++	regmap_bulk_write(dp_phy->regmap, MTK_DP_LANE2_DRIVING_PARAM_3,
+ 			  driving_params, ARRAY_SIZE(driving_params));
+-	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE3_DRIVING_PARAM_3,
++	regmap_bulk_write(dp_phy->regmap, MTK_DP_LANE3_DRIVING_PARAM_3,
+ 			  driving_params, ARRAY_SIZE(driving_params));
  
-@@ -235,6 +242,30 @@ static int mtk_dp_phy_configure(struct phy *phy, union phy_configure_opts *opts)
- 				   PHYD_TX_LN_EN, val);
+ 	return 0;
+@@ -131,10 +131,10 @@ static int mtk_dp_phy_configure(struct phy *phy, union phy_configure_opts *opts)
+ 			val = BIT_RATE_HBR3;
+ 			break;
+ 		}
+-		regmap_write(dp_phy->regs, MTK_DP_PHY_DIG_BIT_RATE, val);
++		regmap_write(dp_phy->regmap, MTK_DP_PHY_DIG_BIT_RATE, val);
  	}
  
-+	if (opts->dp.set_voltages) {
-+		const u32 reg_drv_force = pdata->regs_dig_lane[DP_PHYD_LAN_DRIVING_FORCE];
-+
-+		if (opts->dp.lanes > 4) {
-+			dev_err(&phy->dev, "Wrong lanes config %u\n", opts->dp.lanes);
-+			return -EINVAL;
-+		}
-+
-+		for (i = 0; i < opts->dp.lanes; i++) {
-+			const u32 off_dig_lane = pdata->off_dig_lane[i];
-+			u32 val;
-+
-+			val = FIELD_PREP(PHYD_DP_TX_FORCE_VOLT_SWING_VAL, opts->dp.voltage[i]);
-+			val |= FIELD_PREP(PHYD_DP_TX_FORCE_PRE_EMPH_VAL, opts->dp.pre[i]);
-+			val |= PHYD_DP_TX_FORCE_VOLT_SWING_EN;
-+
-+			regmap_update_bits(dp_phy->regmap, off_dig_lane + reg_drv_force,
-+					   PHYD_DP_TX_FORCE_VOLT_SWING_EN |
-+					   PHYD_DP_TX_FORCE_VOLT_SWING_VAL |
-+					   PHYD_DP_TX_FORCE_PRE_EMPH_VAL,
-+					   val);
-+		}
-+	}
-+
- 	regmap_update_bits(dp_phy->regmap,
- 			   pdata->off_dig_glb + pdata->regs_dig_glb[DP_PHYD_PLL_CTL_1],
+-	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_PLL_CTL_1,
++	regmap_update_bits(dp_phy->regmap, MTK_DP_PHY_DIG_PLL_CTL_1,
  			   TPLL_SSC_EN, opts->dp.ssc ? TPLL_SSC_EN : 0);
-@@ -337,7 +368,8 @@ static int mtk_dp_phy_reset(struct phy *phy)
- 	struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
- 	const struct mtk_dp_phy_pdata *pdata = dp_phy->pdata;
- 	const u32 reg_rst = pdata->regs_dig_glb[DP_PHYD_SW_RST];
--	int ret;
-+	const u32 reg_drv_force = pdata->regs_dig_lane[DP_PHYD_LAN_DRIVING_FORCE];
-+	int i, ret;
  
- 	/* Clearing bits sets reset state */
- 	regmap_clear_bits(dp_phy->regmap, pdata->off_dig_glb + reg_rst, DP_GLB_SW_RST_PHYD);
-@@ -353,6 +385,16 @@ static int mtk_dp_phy_reset(struct phy *phy)
- 	if (ret)
- 		dev_err(dp_phy->dev, "Could not disable lanes during reset!\n");
- 
-+	/* Reset Voltage Swing and Preemphasis values */
-+	for (i = 0; i < MTK_DP_PHY_MAX_LANES; i++) {
-+		const u32 off_dig_lane = pdata->off_dig_lane[i];
-+
-+		regmap_clear_bits(dp_phy->regmap, off_dig_lane + reg_drv_force,
-+				   PHYD_DP_TX_FORCE_VOLT_SWING_EN |
-+				   PHYD_DP_TX_FORCE_VOLT_SWING_VAL |
-+				   PHYD_DP_TX_FORCE_PRE_EMPH_VAL);
-+	}
-+
  	return 0;
- }
+@@ -144,10 +144,10 @@ static int mtk_dp_phy_reset(struct phy *phy)
+ {
+ 	struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
  
+-	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_SW_RST,
++	regmap_update_bits(dp_phy->regmap, MTK_DP_PHY_DIG_SW_RST,
+ 			   DP_GLB_SW_RST_PHYD, 0);
+ 	usleep_range(50, 200);
+-	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_SW_RST,
++	regmap_update_bits(dp_phy->regmap, MTK_DP_PHY_DIG_SW_RST,
+ 			   DP_GLB_SW_RST_PHYD, 1);
+ 
+ 	return 0;
+@@ -176,7 +176,7 @@ static int mtk_dp_phy_probe(struct platform_device *pdev)
+ 	if (!dp_phy)
+ 		return -ENOMEM;
+ 
+-	dp_phy->regs = regs;
++	dp_phy->regmap = regs;
+ 	phy = devm_phy_create(dev, NULL, &mtk_dp_phy_dev_ops);
+ 	if (IS_ERR(phy))
+ 		return dev_err_probe(dev, PTR_ERR(phy),
 -- 
 2.54.0
 
