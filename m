@@ -4,116 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55396C43458
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 04:29:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B95BC43458
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 07:38:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1bHz8pIdj5qCHMVmE3ZgrvqBvuIVwQ8F/DhCqlx20Pk=; b=hFUf6dnDxWbG50BQctFcTNfR5Q
-	xKpwd0/30Y60uyFcCVgApxb47IyuI26o09vjhgXfl9+WPECKfT7tp+MaIf709qbM/C2DMoYIqR3PD
-	ozuPEDz8wHxRuYJM7ZhO6GKKELAWPWngxjIUAGro0BCLAqu38x+Y7KDCnUyhU3Z1NN41BEdweSZeU
-	0I1SAn4p2jSv8qjTF08N1A7OKvMGM/7Wz+VxZlPTb+iyEOkt5m7HfSiyrQl9tqv6FirCrQ/K9oPgc
-	q1A3VhIenIfdxL7KW41v1r1OCfOsMe3ZxcVgvW/YekBxVkZ9AmLrn/nrqC9r1RpVH0uOAN5O7rVMw
-	Ph5IQJEQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Qr1IGlrekLARy25R9WI1UDHgK1tJnna2f9/3DXKhVd8=; b=LnnuMCc52Y/XBhjwDvxaXKcjDJ
+	eECqrqGf0LoebSuHUXN6te7mHf+pdBU+quoNWkYXWVmdSdFot5x1obMc9IQkm/xOeHDix2agiFMDD
+	5pZa8wcec8BNXnOCyDG98HiYE8JrjU3pywwy+5rXkdrvGIyh2sMOokiASv+PjXQJBexXyG5MugIgB
+	zN5TD2JqNf+/jNTH6dj15YY3h6Ay4+daf44HUvS4vBu62474gX7xPlWQm9Znl42E/+mBd7OMT0p/Z
+	LY7H35kKturGRgj/aDqaQpaYod+8hndfPU+uNwXXPrnNhJkivKnOQkfKuiu3AMnfR0DgstytpE3UZ
+	TfRu6Yag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgxQt-0000000E4fu-39Ao;
-	Tue, 07 Jul 2026 04:29:19 +0000
-Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
+	id 1wh0OA-0000000EKoH-20q8;
+	Tue, 07 Jul 2026 07:38:42 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgxQr-0000000E4fD-2shz
+	id 1wh0O7-0000000EKnm-1DhN
 	for linux-mediatek@lists.infradead.org;
-	Tue, 07 Jul 2026 04:29:18 +0000
-Received: by mail-yx1-xb130.google.com with SMTP id 956f58d0204a3-664dd23829eso3376204d50.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 06 Jul 2026 21:29:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783398556; cv=none;
-        d=google.com; s=arc-20260327;
-        b=T3HM+cXo69TaXirAEfgCMI7gbEFXihIMr6tX23zvHit1jQOqUQuOXbe1Cs4G+NngFB
-         oEy+y+l+ayIuASeoO+JMJvYgZfMqhp7ErxiBAgD4cBesTlNA3AzNIjQtE+oVXrUBkYTU
-         FA5rino+y4qSnXl67goYbH7C9ZIgSX/EB0iC13aXE3fbywGOZnCe83lq7rOBHOJ71apk
-         Jr/RH/R/aIQNZiBqRXb3h+kySdn6ONhQxwdOJAbgswWZ4NZkdLNzZtV+2lIJPg25kjfK
-         ZXaZGE3XCJZUKcLHE0UCWycsDLKqdYP6QDPxg6oYwHKQ+ywbTJpZdVRzneYlk5ZnVEVw
-         TBDg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=1bHz8pIdj5qCHMVmE3ZgrvqBvuIVwQ8F/DhCqlx20Pk=;
-        fh=O7S7nHmG4wGfGRlZy2LAZkpRetsTHO3zHurz6+jyzVw=;
-        b=Am5/ZxmC+MVGLC7xdCIUx1dFKZ27fSFDsIIofZZm8rAOKDQsdMtAuBEtWkk1WBhWdV
-         v8Mndkwsv/nrIsBEWkYgV+t2gbLrdNjxEjTq8bk6RpI1V/1YrbeRFB9Dj/0opljbdg7n
-         C/Fzk8COeJ8+ioZpNgvBB+LEHg8oVlw26R5moPEGdawSLmQAilX4Ej5QHQfrqw9MurG4
-         gUfyT7yHF1D8M0r60J6jeZHE5yTWsTw6GTsp3XaPPgMPZSsK2sytP0FJ3Pmvns3exxuU
-         SiX8SJ+Co6yjJkUKYigYHd8a0635Qe9bqQadlBDif8HEKKgvCUya8uh72A05P5tTyYq0
-         tyMA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Tue, 07 Jul 2026 07:38:40 +0000
+Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-6986578d8c0so5271405a12.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jul 2026 00:38:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1783398556; x=1784003356; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=1bHz8pIdj5qCHMVmE3ZgrvqBvuIVwQ8F/DhCqlx20Pk=;
-        b=R3v8cxWHHKs/J+OG4UUgF1wEZVIf72lMoZSaxDZF7m8s8ZRnzJvj3V0wdp4v6G2lG1
-         e3OyFMCc6v+skW3gOkbuKy4w/W4qNjABdjoEXJmMNIPhlvgAOOm2UBudzk7USWL94ciX
-         TjjomfQL3ZWxyS+yhc1aF3txUClFEjRLZklzA=
+        d=gmail.com; s=20251104; t=1783409916; x=1784014716; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Qr1IGlrekLARy25R9WI1UDHgK1tJnna2f9/3DXKhVd8=;
+        b=mXqSg5T7s8aLCV/kaJCblf0ixFTzL41HR+L7opQkFtUc17W2AM/YpXObPKFGt62xPO
+         AvgF9rSAOQFxhNNR7hU8tuvwwgQrBs7DV+FLZeuuICFNLLRkYcJVZ66bZa3S5oVu2Xeb
+         iypKOnclsXhl45ldFdTaNPiBzFcNHPMrU07A5CzW9p2X58fN93N/mUp+73btRHkCs/6d
+         7j//EwP5f/0ABXW7/3WU5keUzZYsre48Dm6XMy2LIRBoEHxviKoBX9+7qUId9yvxebQ0
+         PbCXNXGNyqIOjBA1/wVOuwCLP8z/kSou9QSoluniHcDoeHsgdx6B1MjxfImn93VQJQzd
+         bvGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783398556; x=1784003356;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=1bHz8pIdj5qCHMVmE3ZgrvqBvuIVwQ8F/DhCqlx20Pk=;
-        b=cSxznfOsXMzJM1A7PzVLLvAeAPruHne8DiCKKryheINR/1ob2yRveFRG7RbyVpWQBa
-         w4/SAhKYTvq/p03UOXw1ZFd8vjsCdsQcdVfUCY2UqsRgJBXL7ZEtiKYE2Slk9SyZGg3t
-         fgspyG6+kCyOn6OnSz+zqUGlyXFly+zlifVPFsTTCm2YnDHv5LbWDon/2pL4WdYRb5hp
-         hsvsalY7SznAhn6yNm3fPGquLyjHmyIIkxsbxYw2QdQoIW4Uv+O7og5hP03Huc3fMI+0
-         xRkVmStFy+/ZLs+qZrMSNlK9Qo5gTag4xzKvFT61I14NGusAANVA1OChwOCAMQwnAk7p
-         vG4A==
-X-Forwarded-Encrypted: i=1; AHgh+RqXrHRc71WEw3JhfPOGosJC57rv82ZNQ1VT7GqKinXEY6l+1zTI3Rf99nrq1g4PwmEhTbW7HfDhry5OCl2xdg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx2AvGt8zX56PLH9tlHgi4CX/mrLnsCXv9Kj37Vhbk7dEvcBZYb
-	7vWEEAntSoWdoXv+/xProPXXUQnSn4OxUjIpkbr0Sc71ni7X50SXdfTgw0SJ9/vYzulsQPDizDh
-	J7eoIQpDPtZ51FEUu/YvArBbrsyzL/AV74B1MRdml
-X-Gm-Gg: AfdE7cnV1bmrYBQ/Bhsm33cSzib2rlmF2THatRMvybWyzUTvq8dNb5HPOLi26TDIEIU
-	16YqWyfXcAQq0HLdyeRAHz7JXPaha/qbGyCvDdp8asRv77ec0XhI4+hJbLt3xD6Jf/fqiszlJF8
-	7YHAStklXAvXILc8hAaMHPzN2w8CRtQrnTVrFHaXTbhXKBShi4T7b/EIkAzoIVAoWB9YqqJlwbz
-	zPkws+1MQ8HUtvqy9Ev09eXHfIdJFmkpZKqodkxZsBL3ipSe5zIlsakfiFnN4dwywjdjYlno4qw
-	B7c6zQ5rY3GEqnvq+abG+UnDVYFZIQTT57purQ==
-X-Received: by 2002:a05:690e:4549:10b0:662:b6fc:ab84 with SMTP id
- 956f58d0204a3-6677fa2ea7bmr2174279d50.17.1783398556262; Mon, 06 Jul 2026
- 21:29:16 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1783409916; x=1784014716;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Qr1IGlrekLARy25R9WI1UDHgK1tJnna2f9/3DXKhVd8=;
+        b=AOLXAktu73GB5O8MeFbCliOnQoUNpWPl9IJyN+E4BC6y7/fUu6vF24T9Dlihj4zenY
+         e17VFWBfhDZBmnCX8qT5Zs8la6PPQS0898ntOzVMYXOyLRn+Jb2/qkRCg3ZgerRMDzmW
+         etADwEOwEZxRMgADvsPIT00p9sOAVs/B1DPHXESsc2tZdg+HS28/ZJZtWYrMCOGDVRZn
+         JH45pfYcRFQdJhKBuZKTLh8S56gQTCOGDv5zrXiBsyYniFtNVfPb72fHoOZrGk12vuwS
+         fKfi3O1uU6QsK4NGpGgCerwPW9269qsak4Ilbssw//bb3WAiXhyVGW4/pWZa/Ur9iYxc
+         Dy4g==
+X-Forwarded-Encrypted: i=1; AHgh+RrHHFekyujA7TACx4ODBH72FsxLdlNWqCJZKAmd9zwGG5Zd/rODAL7dLYy2J079MPVIdioJgvFQguKL74R8Tg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxUcQI+akSB7Ok0/qlUKGzLarKnziT/BjuRWI+jTL63aJyyGwZO
+	OWSADAFinotac1w6eB/embDYa2t1OONSAynYqwW60fvud/bvHdjGuDfk
+X-Gm-Gg: AfdE7cluIqwkWMu3K6H8Ani8EJAlDhgyed0UniK8Kprmb2JMIRWOnqBAXugMUEXYlOW
+	/ZNIhK3xwptU4xOfs6S5WE3kCdUw8gxDoYST/VeEj3ImwdfhBkJt8NjgsWtW2FTycmE8IgG1ns2
+	8maVxRaw5RC83m+5HOPV9K3r/+Rv5tabgL3Ul3pILG1zVxrkq4Yg18CzdiJhKLV0/GORi49MDIw
+	gwq0EeIjlZsjMkS4YVqOZivs8hLswdrJpyXBSPj4d7jvqWJn4K7l0y/GxDKW/eylW2wTQCC60jW
+	dCnEDA/DnDg4lRUzKMzI8vThicIgYUvzNzy9ODFtiSZfoRvGQST5nacFaR47XEgHihPFoXI06dN
+	s0eJYEObkwuCbmDk8Z3Jixqb95nSze0w/9ZmMD/LCBm4TVNPCP35DEdEVbZYT1E1ijd3aJUN0x9
+	i3DipWUDB+m6GuguYydgnS0eEzameWAaL9YZAr/AaHzBLIGfzfKgKBChAptMILixVUfTajBzRMb
+	pDS63c+Za86XHXJ70YQqNa2lwBWzJJ0JfNgHM07whjp
+X-Received: by 2002:a05:6402:120b:b0:699:f995:13a with SMTP id 4fb4d7f45d1cf-69a85c32c1dmr1602091a12.32.1783409916010;
+        Tue, 07 Jul 2026 00:38:36 -0700 (PDT)
+Received: from eric (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-69a19d7a375sm5123969a12.15.2026.07.07.00.38.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 Jul 2026 00:38:35 -0700 (PDT)
+From: Eric Woudstra <ericwouds@gmail.com>
+To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Edward Parker <edward@topnotchit.com>
+Cc: netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	coreteam@netfilter.org,
+	Eric Woudstra <ericwouds@gmail.com>
+Subject: [RFC PATCH net v1] Revert "net: dsa: mt7530: untag VLAN-aware bridge PVID"
+Date: Tue,  7 Jul 2026 09:38:26 +0200
+Message-ID: <20260707073826.919541-1-ericwouds@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-References: <20260703110317.1283411-1-wenst@chromium.org> <20260703110317.1283411-7-wenst@chromium.org>
- <ake09vk4fEv1D9QC@ashevche-desk.local> <CAGXv+5GNucSXrhL=YxarSJHD2ezzYDK3EovFu-zy012KgZ+ZBg@mail.gmail.com>
- <ake6FNy83LLtCs3b@ashevche-desk.local> <CAGXv+5EgpizA3Pc8ScNuChPhvFKWd5F6dxB-wT4-7EwabE-9dQ@mail.gmail.com>
- <akvRMcGnUPxE3sxR@ashevche-desk.local>
-In-Reply-To: <akvRMcGnUPxE3sxR@ashevche-desk.local>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 7 Jul 2026 12:29:05 +0800
-X-Gm-Features: AVVi8CeDQS-P0cN7_fGlNwSI_p7eUQN2BPzLo_iMICLRCJ8sboVGUDAVuWI9R6g
-Message-ID: <CAGXv+5EqsDbzTg9eDMGK3Ph6Pe3_uDoSrjVL4q23cy6jZCk2tw@mail.gmail.com>
-Subject: Re: [PATCH v3 06/13] usb: hub: Pass |struct usb_port*| to usb_port_is_power_on()
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Bartosz Golaszewski <brgl@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Daniel Scally <djrscally@gmail.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
-	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-acpi@vger.kernel.org, 
-	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
-	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>, 
-	Alan Stern <stern@rowland.harvard.edu>, 
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_212917_796912_06A611A9 
-X-CRM114-Status: GOOD (  33.29  )
+X-CRM114-CacheID: sfid-20260707_003839_403102_637766B4 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,102 +108,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 7, 2026 at 12:01=E2=80=AFAM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
->
-> On Mon, Jul 06, 2026 at 07:08:07PM +0800, Chen-Yu Tsai wrote:
-> > On Fri, Jul 3, 2026 at 9:33=E2=80=AFPM Andy Shevchenko
-> > <andriy.shevchenko@linux.intel.com> wrote:
-> > > On Fri, Jul 03, 2026 at 09:17:16PM +0800, Chen-Yu Tsai wrote:
-> > > > On Fri, Jul 3, 2026 at 9:11=E2=80=AFPM Andy Shevchenko
-> > > > <andriy.shevchenko@linux.intel.com> wrote:
-> > > > > On Fri, Jul 03, 2026 at 07:03:07PM +0800, Chen-Yu Tsai wrote:
->
-> ...
->
-> > > > > At a brief look this will be the only function that takes usb_por=
-t
-> > > > > instead of usb_hub in the entire hub.h (I don't count container_o=
-f()
-> > > > > as a function). With that being said I would rather see it to be =
-moved
-> > > > > to port.c altogether (yes, it's more invasive change, but looks m=
-ore
-> > > > > consistent).  I would even dare to move struct usb_port (and cont=
-ainer_of()
-> > > > > accompanied with that) and this function to port.h. This might re=
-quire
-> > > > > a separate patch, though.
-> > > >
-> > > > I agree with the reasoning, especially given the function name. How=
-ever
-> > > > I wonder if it would cause problems given the linking order. I'll g=
-ive
-> > > > it a try nevertheless and report back.
-> > >
-> > > Thanks!
-> > >
-> > > In case it won't fly (but I still think it's better to split), can yo=
-u at least
-> > > group usb_port APIs and struct? Means moving the proto closer to that=
- struct
-> > > usb_port followed by container_of().
-> >
-> > Looks like it works out fine. port.o is linked in after hub.o, so movin=
-g
-> > the function from the latter to the former doesn't cause issues. One mi=
-ght
-> > even say that it is the correct thing to do.
->
-> That's what I say! :-)
->
-> > > > > Perhaps something like: 1) "move struct usb_port and associated A=
-PIs to port.h";
-> > > > > 2) "...this patch...".
-> >
-> > There are still some left in hub.c:
-> >
-> > static void usb_lock_port(struct usb_port *port_dev)
-> > static void usb_unlock_port(struct usb_port *port_dev)
+This reverts commit 4cb3cd670b2a29e52dd3cfd6463e44121674c9b8.
 
-These are only used internally in hub.c as a wrapper for the port mutex.
+In the case of a userport of a switchdev attached to a vlan-aware bridge,
+with untagged packets incoming, tagged at ingress of the bridge:
 
-> > static void port_over_current_notify(struct usb_port *port_dev)
+For all switchdev userports that support SWITCHDEV_OBJ_ID_PORT_VLAN,
+which includes dsa-userports, the behaviour is that the tag is visible
+in the ingress-hook. The commit mentioned above changes that, making
+mt7530 deviate from this. Only on mt7530 the tag is not present in the
+ingress-hook.
 
-This is only used by the hub's overcurrent event handler.
+This, for one, is a problem for the software (forwarding) fastpath.
+The flowtuple for this flow is created, with the tag included and marked
+with the corresponding in_vlan_ingress bit.
 
-> > static void hub_usb3_port_prepare_disable(struct usb_hub *hub,
-> >                                           struct usb_port *port_dev)
->
-> This one takes hub as well.
->
-> > These are used only in hub.c and moving them probably makes things
-> > messier?
->
-> Perhaps better naming to each (kinda moving to usb hub namespace)?
->
-> > OOTH, the following bits are in port.c but declared in hub.h:
-> >
-> > int usb_hub_create_port_device(struct usb_hub *hub,
-> >          int port1);
-> > void usb_hub_remove_port_device(struct usb_hub *hub,
-> >          int port1);
-> >
-> > Any preferences for these while we're reorganizing the code?
->
-> These ones would be good to be in hub.c if there is no circular dependenc=
-ies or
-> alike.
+Inside the ingress hook of the fastpath the incoming packet is tried to
+match with the hash of this tuple, but is does not match any more.
+The tag is missing. The packet does not follow the software-fastpath
+in this direction.
 
-Those two, along with all the static functions they call, ends up being
-half of port.c. That doesn't help the size of hub.c, which is already
-over 6000 lines. I think I'll leave this one as is.
+Fixes: 4cb3cd670b2a ("net: dsa: mt7530: untag VLAN-aware bridge PVID")
+Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
+---
+ drivers/net/dsa/mt7530.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-Both this part and the remaining bits in hub.c I mentioned above are
-outside the scope of this series. We can discuss whether they really
-need to be moved or renamed.
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 3c2a3029b10cf..752ba92b08517 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2447,7 +2447,6 @@ mt7530_setup(struct dsa_switch *ds)
+ 	}
+ 
+ 	ds->assisted_learning_on_cpu_port = true;
+-	ds->untag_vlan_aware_bridge_pvid = true;
+ 	ds->mtu_enforcement_ingress = true;
+ 	ds->ageing_time_min = 2 * 1000;
+ 	ds->ageing_time_max = (AGE_CNT_MAX + 1) * (AGE_UNIT_MAX + 1) * 1000;
+@@ -2639,7 +2638,6 @@ mt7531_setup_common(struct dsa_switch *ds)
+ 	int ret, i;
+ 
+ 	ds->assisted_learning_on_cpu_port = true;
+-	ds->untag_vlan_aware_bridge_pvid = true;
+ 	ds->mtu_enforcement_ingress = true;
+ 	ds->ageing_time_min = 2 * 1000;
+ 	ds->ageing_time_max = (AGE_CNT_MAX + 1) * (AGE_UNIT_MAX + 1) * 1000;
+-- 
+2.53.0
 
-
-Thanks
-ChenYu
 
