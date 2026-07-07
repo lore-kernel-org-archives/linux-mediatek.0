@@ -4,65 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75B99C43458
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 11:24:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82165C43458
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 11:41:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j3yiw9fGT8tcoZt18Mq7scIuD28H39S39adFgYTtqwc=; b=47AN/B4wKhZCPlyuTTBE3F0Q5Q
-	Qjp7Ey+kHfquZrSbSVPft+MXwOvYU5RboUethgpOez6/7cpjXphW/cIlaGw82AfmvbrFK9ejHFJHz
-	Tc5jeStXQTv2Dvp6ENEUJqXXLWRVsQNnDXoc1GWN5PGHWjl0U1GVMXZrKrDDDM4nJJi/bpEa7Aki0
-	bMZrEbVmsOqZ2ls9GcQQCFelSxEQ9lSixSUslQkWrgnwv4SVKIdWLm+ck2Kb+5wR7iLsa7GnFj0mF
-	WtJ/Mjzrov+a5dIaIQ72Q5zmmZsAOJsjU/W4W4Qhg88TnmYhVDM50aYNX1QelAkwBXlUYICtXmB9u
-	4UTymcYA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vLgY48wjnxI6KTkbs3yoMb3mqAR6cMMCjHviW4AsdM4=; b=STmt/thOwbQeQoS7p8AvEgF99d
+	xqRrf+elLaiRS70RuCUZrLyrt5px3VjnJvFji4M+Jg6Vf+tDZRMUw0OKCoyFcIZPuUCbEGxXeWvNV
+	lh7Pxw7nLjWema86O6oq9lf5QYZtLNZz2F2HoQngXEh+2TQNeMJHz5hJYaB6Mybb1MHO1dBMN1w3r
+	fDi6qED6hBo4pP2dhgqk4/mBvCQHL65C3Ja3Uh6Js7/9njmIxwZiu2ZiWFE4vx1+CV/we3RNTZGt7
+	SY1jGbhEe8A+Um0nyNPb4wAdW+cpAgn244heCdzo4U+yny0PSWSIV42gHb0KlGKWQTS5UJ+JjH4JH
+	zV50rGjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh3uH-0000000EqQg-2twi;
-	Tue, 07 Jul 2026 11:24:05 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh3uF-0000000EqPo-1IWU;
-	Tue, 07 Jul 2026 11:24:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783423441;
-	bh=MNq3g0GFVF/h1p5eOlO9D0oZO//Tjm7KBHuMFBBripA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=a04izbRncf2krS+ydY9IR1ojtF7rMi1XhRyL3Ln0TWJNeR+DcmnBnMtZG9J89H8xx
-	 2KrUVOeBGOGItQiQkbAmzRVQlbV9YSmaEHd8jV4Hbmr6R3UxwW8JZRZ2t5iQG69H98
-	 ZFZFXSS6/qNSPEPalaJxztRc6y2vtA9HKxmRtXPeMEieukHkLaFt9iZ3eZvTN7JREt
-	 CHaf5SXRfB0jhNIEvFU+DlhJJneyX4HK5ml5P5Bvbja3yl118+lnwqx1X6380Ab1qC
-	 mYmtxYdVbTpbnhGVIaPDQkjYrZvVpXbMMGv6BfZSKRWJDmScfPCHHOFAJes3cwvhco
-	 FbpVCAiypBGaA==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B8EEF17E0521;
-	Tue, 07 Jul 2026 13:24:00 +0200 (CEST)
-Message-ID: <94c10212-9c27-4875-8a88-78bfb67fb382@collabora.com>
-Date: Tue, 7 Jul 2026 13:24:00 +0200
+	id 1wh4BM-0000000EsXP-1eRu;
+	Tue, 07 Jul 2026 11:41:44 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wh4BJ-0000000EsWc-3KCF
+	for linux-mediatek@lists.infradead.org;
+	Tue, 07 Jul 2026 11:41:43 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E6B882680
+	for <linux-mediatek@lists.infradead.org>; Tue,  7 Jul 2026 04:41:36 -0700 (PDT)
+Received: from [192.168.0.1] (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 13C2B3F85F
+	for <linux-mediatek@lists.infradead.org>; Tue,  7 Jul 2026 04:41:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
+	t=1783424501; bh=AXimq/rtIFwP4aD04kh/5vfPSxje93mi8aUhDJB2eB0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=a698ZurBe8eyThtnd49aEVo4SpeAR9eU+cIonu4/SsLrfRcdi1OKGOMc+fgW4ybft
+	 5zuLMoDDZp34WKFWgT0MiI1VpxO2OtheLzHloGQSy9J1PKfnQwUP6FnmlzEnMhhNVR
+	 uwEPWs1KEcq+dMegob3nnaZw2rL79JC4F9Ktu96I=
+Date: Tue, 7 Jul 2026 12:39:54 +0100
+From: Liviu Dudau <liviu.dudau@arm.com>
+To: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konradybcio@kernel.org>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
+	Paul Kocialkowski <paulk@sys-base.io>,
+	Linus Walleij <linusw@kernel.org>, Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Alexey Brodkin <abrodkin@synopsys.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Daniel Scally <dan.scally@ideasonboard.com>,
+	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Eddie James <eajames@linux.ibm.com>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+	Houlong Wei <houlong.wei@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Joseph Liu <kwliu@nuvoton.com>, Marvin Lin <kflin@nuvoton.com>,
+	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Ge Gordon <gordon.ge@bst.ai>,
+	Adrian Hunter <adrian.hunter@intel.com>,
+	Ulf Hansson <ulfh@kernel.org>, Rob Herring <robh@kernel.org>,
+	Saravana Kannan <saravanak@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Shengjiu Wang <shengjiu.wang@gmail.com>,
+	Xiubo Li <Xiubo.Lee@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>, Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+	Bard Liao <yung-chuan.liao@linux.intel.com>,
+	Daniel Baluta <daniel.baluta@nxp.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Peter Chen <peter.chen@cixtech.com>,
+	Fugang Duan <fugang.duan@cixtech.com>,
+	Ekansh Gupta <ekansh.gupta@oss.qualcomm.com>,
+	BST Linux Kernel Upstream Group <bst-upstream@bstai.top>,
+	Fabio Estevam <festevam@gmail.com>,
+	Nicolin Chen <nicoleotsuka@gmail.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
+	Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	CIX Linux Kernel Upstream Group <cix-kernel-upstream@cixtech.com>,
+	linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, linux-aspeed@lists.ozlabs.org,
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+	linux-sunxi@lists.linux.dev, linux-media@vger.kernel.org,
+	openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
+	kernel@collabora.com, linux-tegra@vger.kernel.org,
+	linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-remoteproc@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-sound@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+	imx@lists.linux.dev, sound-open-firmware@alsa-project.org
+Subject: Re: [PATCH 00/42] of: reserved_mem: Introduce devres helpers and
+ convert drivers
+Message-ID: <akzliqtjZVwNw594@e142607>
+References: <20260703193855.110619-1-mukesh.ojha@oss.qualcomm.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8188-geralt: Add MT6319 PMIC
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20260707104427.3409290-1-wenst@chromium.org>
- <176dd24c-c3cf-4ab9-8497-594ed65d10ec@collabora.com>
- <CAGXv+5F86JU9+LPSy8PtuCPrdhBnvcA=PX1d++Yh3u7mK_Jxmw@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAGXv+5F86JU9+LPSy8PtuCPrdhBnvcA=PX1d++Yh3u7mK_Jxmw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20260703193855.110619-1-mukesh.ojha@oss.qualcomm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260707_042403_501187_78B63829 
-X-CRM114-Status: GOOD (  24.01  )
+X-CRM114-CacheID: sfid-20260707_044141_921283_58B8971E 
+X-CRM114-Status: GOOD (  18.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,163 +142,134 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/7/26 13:08, Chen-Yu Tsai wrote:
-> On Tue, Jul 7, 2026 at 7:05 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> On 7/7/26 12:44, Chen-Yu Tsai wrote:
->>> The Geralt design uses a MT6319 PMIC to power the big cores and LPDDR4X
->>> DRAM.
->>>
->>> Add a device node for it and hook up all the supplies.
->>>
->>> This change requires a firmware fix for the SPMI bus to read back
->>> correctly. The required firmware version is 15842.175.0. This is
->>> included in ChromeOS releases R150-16700.22.0 (available in Beta
->>> channel as of writing or stable channel in mid-July) or
->>> R151-16721.0.0 and later.
->>>
->>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
->>
->> This is a big problem then.
->>
->> I take it as if the firmware fix is not in place, probing the CPU power supplies
->> will fail, with all the consequences.
+On Sat, Jul 04, 2026 at 01:08:13AM +0530, Mukesh Ojha wrote:
+> Drivers using of_reserved_mem_device_init() and its variants must
+> manually call of_reserved_mem_device_release() in their remove and
+> error-unwind paths. This is repetitive boilerplate that is easy to
+> get wrong, and several drivers have open-coded the teardown
+> inconsistently or skipped it entirely, leading to dangling reserved
+> memory references.
 > 
-> That's right.
+> This series introduces devres-managed wrappers —
+> devm_of_reserved_mem_device_init(), devm_of_reserved_mem_device_init_by_idx(),
+> and devm_of_reserved_mem_device_init_by_name() — that tie the reserved
+> memory region lifetime to the device, releasing it automatically on
+> unbind. The remaining 40 patches convert drivers across the drm, media,
+> ASoC, remoteproc, firmware, mmc, memory and misc subsystems to use these
+> helpers, yielding a net reduction of ~90 lines of boilerplate.
 > 
->> This means that with this, we're breaking all Geralt machines with older firmware,
->> which is not acceptable...
->>
->> ...so this needs a different solution, or strong reasons to make me understand that
->> I'm wrong, if I'm wrong.
+> This series depends on  https://lore.kernel.org/lkml/20260703164457.4040457-1-mukesh.ojha@oss.qualcomm.com/
 > 
-> We can drop the CPU supplies (they don't matter since cpufreq is hardware
-> driven) and just add the regulators. How does that sound? If the firmware
-> isn't updated, the PMIC will fail to probe, but since nothing is using it,
-> the system will continue to work (with some annoying error messages).
+> Konrad Dybcio (1):
+>   of: reserved_mem: Introduce devres-managed initialization functions
+> 
+> Mukesh Ojha (41):
+>   of: reserved_mem: Add devm_of_reserved_mem_device_init_by_name()
+>   firmware: qcom: scm: Use devm_of_reserved_mem_device_init()
+>   remoteproc: da8xx: Use devm_of_reserved_mem_device_init()
+>   remoteproc: keystone: Use devm_of_reserved_mem_device_init()
+>   media: synopsys: hdmirx: Use devm_of_reserved_mem_device_init()
+>   remoteproc: omap: Use devm_of_reserved_mem_device_init()
+>   drm: logicvc: Use devm_of_reserved_mem_device_init()
+>   drm: hdlcd: Use devm_of_reserved_mem_device_init()
+>   drm: pl111: Use devm_of_reserved_mem_device_init()
+>   remoteproc: mtk_scp: Use devm_of_reserved_mem_device_init()
+>   media: aspeed: Use devm_of_reserved_mem_device_init()
+>   media: nuvoton: npcm-video: Use devm_of_reserved_mem_device_init()
+>   memory: tegra210-emc: Use devm_of_reserved_mem_device_init_by_name()
+>   drm: komeda: Use devm_of_reserved_mem_device_init()
+>   drm: malidp: Use devm_of_reserved_mem_device_init()
+
+For the hdlcd, komeda and malidp drivers:
+
+Reviewed-by: Liviu Dudau <liviu.dudau@arm.com>
+
+Best regards,
+Liviu
+
+>   drm: ingenic: Use devm_of_reserved_mem_device_init()
+>   drm: kmb: Use devm_of_reserved_mem_device_init()
+>   drm: sun4i: Use devm_of_reserved_mem_device_init()
+>   drm: xlnx: zynqmp_dpsub: Use devm_of_reserved_mem_device_init()
+>   media: arm: mali-c55: Use devm_of_reserved_mem_device_init()
+>   media: mediatek: vpu: Use devm_of_reserved_mem_device_init()
+>   mmc: sdhci-of-bst: Use devm_of_reserved_mem_device_init_by_idx()
+>   remoteproc: ti_k3: Use devm_of_reserved_mem_device_init()
+>   ASoC: mediatek: mt8192: Use devm_of_reserved_mem_device_init()
+>   ASoC: mediatek: mt8196: Use devm_of_reserved_mem_device_init()
+>   ASoC: mediatek: mt8183: Use devm_of_reserved_mem_device_init()
+>   ASoC: mediatek: mt8189: Use devm_of_reserved_mem_device_init()
+>   ASoC: SOF: imx: Use devm_of_reserved_mem_device_init_by_name()
+>   staging: media: cedrus: Use devm_of_reserved_mem_device_init()
+>   ASoC: cix-ipbloq: Use devm_of_reserved_mem_device_init()
+>   drm: aspeed: Use devm_of_reserved_mem_device_init()
+>   drm: arcpgu: Use devm_of_reserved_mem_device_init()
+>   ASoC: mediatek: mt8173: Use devm_of_reserved_mem_device_init()
+>   ASoC: mediatek: mt8186: Use devm_of_reserved_mem_device_init()
+>   ASoC: mediatek: mt8188: Use devm_of_reserved_mem_device_init()
+>   ASoC: mediatek: mt8195: Use devm_of_reserved_mem_device_init()
+>   ASoC: SOF: mediatek: mt8186: Use devm_of_reserved_mem_device_init()
+>   ASoC: SOF: mediatek: mt8195: Use devm_of_reserved_mem_device_init()
+>   misc: fastrpc: Use devm_of_reserved_mem_device_init()
+>   ASoC: fsl: imx-rpmsg: Use devm_of_reserved_mem_device_init_by_idx()
+>   ASoC: sprd: Use devm_of_reserved_mem_device_init()
+> 
+>  drivers/firmware/qcom/qcom_scm.c              | 22 +++------
+>  .../gpu/drm/arm/display/komeda/komeda_dev.c   |  4 +-
+>  drivers/gpu/drm/arm/hdlcd_drv.c               |  6 +--
+>  drivers/gpu/drm/arm/malidp_drv.c              |  4 +-
+>  drivers/gpu/drm/aspeed/aspeed_gfx_drv.c       |  2 +-
+>  drivers/gpu/drm/ingenic/ingenic-drm-drv.c     | 13 +-----
+>  drivers/gpu/drm/kmb/kmb_drv.c                 | 12 +----
+>  drivers/gpu/drm/logicvc/logicvc_drm.c         | 21 ++++-----
+>  drivers/gpu/drm/pl111/pl111_drv.c             |  4 +-
+>  drivers/gpu/drm/sun4i/sun4i_drv.c             |  4 +-
+>  drivers/gpu/drm/tiny/arcpgu.c                 |  2 +-
+>  drivers/gpu/drm/xlnx/zynqmp_dpsub.c           |  4 +-
+>  .../platform/arm/mali-c55/mali-c55-core.c     | 12 ++---
+>  drivers/media/platform/aspeed/aspeed-video.c  | 12 ++---
+>  drivers/media/platform/mediatek/vpu/mtk_vpu.c |  3 +-
+>  drivers/media/platform/nuvoton/npcm-video.c   |  9 +---
+>  .../platform/synopsys/hdmirx/snps_hdmirx.c    | 16 +------
+>  drivers/memory/tegra/tegra210-emc-core.c      | 21 ++++-----
+>  drivers/misc/fastrpc.c                        |  2 +-
+>  drivers/mmc/host/sdhci-of-bst.c               |  7 +--
+>  drivers/of/of_reserved_mem.c                  | 41 +++++++++++++++++
+>  drivers/remoteproc/da8xx_remoteproc.c         | 10 +---
+>  drivers/remoteproc/keystone_remoteproc.c      | 16 +------
+>  drivers/remoteproc/mtk_scp.c                  |  3 +-
+>  drivers/remoteproc/omap_remoteproc.c          | 13 +-----
+>  drivers/remoteproc/ti_k3_common.c             | 13 +-----
+>  drivers/remoteproc/ti_k3_common.h             |  1 -
+>  .../staging/media/sunxi/cedrus/cedrus_hw.c    |  6 +--
+>  include/linux/of_reserved_mem.h               | 46 +++++++++++++++++++
+>  sound/hda/controllers/cix-ipbloq.c            |  2 +-
+>  sound/soc/fsl/imx-rpmsg.c                     |  2 +-
+>  sound/soc/mediatek/mt8173/mt8173-afe-pcm.c    |  2 +-
+>  sound/soc/mediatek/mt8183/mt8183-afe-pcm.c    | 13 +-----
+>  sound/soc/mediatek/mt8186/mt8186-afe-pcm.c    |  2 +-
+>  sound/soc/mediatek/mt8188/mt8188-afe-pcm.c    |  2 +-
+>  sound/soc/mediatek/mt8189/mt8189-afe-pcm.c    | 16 +------
+>  sound/soc/mediatek/mt8192/mt8192-afe-pcm.c    | 11 +----
+>  sound/soc/mediatek/mt8195/mt8195-afe-pcm.c    |  2 +-
+>  sound/soc/mediatek/mt8196/mt8196-afe-pcm.c    | 14 +-----
+>  sound/soc/sof/imx/imx-common.c                |  9 ++--
+>  sound/soc/sof/mediatek/mt8186/mt8186.c        |  2 +-
+>  sound/soc/sof/mediatek/mt8195/mt8195.c        |  2 +-
+>  sound/soc/sprd/sprd-pcm-dma.c                 |  3 +-
+>  43 files changed, 162 insertions(+), 249 deletions(-)
+> 
+> -- 
+> 2.53.0
 > 
 
-That'd be wrong, but less wrong than not having anything described...
-
-...I wonder if, at this point, you could set the SPMI node to status = "fail" and
-have the *new* firmware override that to "ok".
-
-That's the only reasonable way to go forward, IMO.
-
-Of course, avoid having the firmware adding the CPU supplies, because that would
-be rather sketchy then. Just "if spmi status fail found, change to ok".
-
-Cheers,
-Angelo
-
-> 
-> ChenYu
-> 
->> Cheers,
->> Angelo
->>
->>> ---
->>>    .../boot/dts/mediatek/mt8188-geralt.dtsi      | 66 +++++++++++++++++++
->>>    1 file changed, 66 insertions(+)
->>>
->>> diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
->>> index f382f90c48f5..fea52c377d88 100644
->>> --- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
->>> +++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
->>> @@ -4,6 +4,8 @@
->>>     */
->>>    /dts-v1/;
->>>    #include <dt-bindings/gpio/gpio.h>
->>> +#include <dt-bindings/spmi/spmi.h>
->>> +
->>>    #include "mt8188.dtsi"
->>>    #include "mt6359.dtsi"
->>>
->>> @@ -241,6 +243,14 @@ &cpu5 {
->>>        cpu-supply = <&mt6359_vcore_buck_reg>;
->>>    };
->>>
->>> +&cpu6 {
->>> +     cpu-supply = <&mt6319_buck1>;
->>> +};
->>> +
->>> +&cpu7 {
->>> +     cpu-supply = <&mt6319_buck1>;
->>> +};
->>> +
->>>    /*
->>>     * Geralt is the reference design and doesn't have target TDP.
->>>     * Ciri is (currently) the only device following Geralt, and its
->>> @@ -1156,6 +1166,14 @@ pins-bus {
->>>                };
->>>        };
->>>
->>> +     spmi_pins: spmi-pins {
->>> +             pins-bus {
->>> +                     pinmux = <PINMUX_GPIO175__FUNC_B0_SPMI_M_SCL>,
->>> +                              <PINMUX_GPIO176__FUNC_B0_SPMI_M_SDA>;
->>> +                     bias-disable;
->>> +             };
->>> +     };
->>> +
->>>        uart0_pins: uart0-pins {
->>>                pins-bus {
->>>                        pinmux = <PINMUX_GPIO31__FUNC_O_UTXD0>,
->>> @@ -1267,6 +1285,54 @@ &spi2 {
->>>        status = "okay";
->>>    };
->>>
->>> +&spmi {
->>> +     pinctrl-names = "default";
->>> +     pinctrl-0 = <&spmi_pins>;
->>> +     #address-cells = <2>;
->>> +     #size-cells = <0>;
->>> +     status = "okay";
->>> +
->>> +     pmic@6 {
->>> +             compatible = "mediatek,mt6319-regulator", "mediatek,mt6315-regulator";
->>> +             reg = <0x6 SPMI_USID>;
->>> +             pvdd1-supply = <&pp4200_s5>;
->>> +             pvdd2-supply = <&pp4200_s5>;
->>> +             pvdd3-supply = <&pp4200_s5>;
->>> +             pvdd4-supply = <&pp4200_s5>;
->>> +
->>> +             regulators {
->>> +                     mt6319_buck1: vbuck1 {
->>> +                                     regulator-name = "ppvar_dvdd_proc_bc";
->>> +                                     regulator-min-microvolt = <520000>;
->>> +                                     regulator-max-microvolt = <1155000>;
->>> +                                     regulator-enable-ramp-delay = <256>;
->>> +                                     regulator-allowed-modes = <0 1 2>;
->>> +                                     regulator-always-on;
->>> +                     };
->>> +
->>> +                     /* vbuck2 is ganged with vbuck1 */
->>> +
->>> +                     mt6319_buck3: vbuck3 {
->>> +                                     regulator-name = "pp1125_emi_vdd2";
->>> +                                     regulator-min-microvolt = <1060000>;
->>> +                                     regulator-max-microvolt = <1170000>;
->>> +                                     regulator-enable-ramp-delay = <256>;
->>> +                                     regulator-allowed-modes = <0 1 2>;
->>> +                                     regulator-always-on;
->>> +                     };
->>> +
->>> +                     mt6319_buck4: vbuck4 {
->>> +                                     regulator-name = "pp0600_emi_vddq";
->>> +                                     regulator-min-microvolt = <570000>;
->>> +                                     regulator-max-microvolt = <650000>;
->>> +                                     regulator-enable-ramp-delay = <256>;
->>> +                                     regulator-allowed-modes = <0 1 2>;
->>> +                                     regulator-always-on;
->>> +                     };
->>> +             };
->>> +     };
->>> +};
->>> +
->>>    &uart0 {
->>>        pinctrl-names = "default";
->>>        pinctrl-0 = <&uart0_pins>;
->>
+-- 
+====================
+| I would like to |
+| fix the world,  |
+| but they're not |
+| giving me the   |
+ \ source code!  /
+  ---------------
+    ¯\_(ツ)_/¯
 
