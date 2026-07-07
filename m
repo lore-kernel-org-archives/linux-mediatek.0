@@ -4,96 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B95BC43458
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 07:38:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8A08C43458
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 07:49:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Qr1IGlrekLARy25R9WI1UDHgK1tJnna2f9/3DXKhVd8=; b=LnnuMCc52Y/XBhjwDvxaXKcjDJ
-	eECqrqGf0LoebSuHUXN6te7mHf+pdBU+quoNWkYXWVmdSdFot5x1obMc9IQkm/xOeHDix2agiFMDD
-	5pZa8wcec8BNXnOCyDG98HiYE8JrjU3pywwy+5rXkdrvGIyh2sMOokiASv+PjXQJBexXyG5MugIgB
-	zN5TD2JqNf+/jNTH6dj15YY3h6Ay4+daf44HUvS4vBu62474gX7xPlWQm9Znl42E/+mBd7OMT0p/Z
-	LY7H35kKturGRgj/aDqaQpaYod+8hndfPU+uNwXXPrnNhJkivKnOQkfKuiu3AMnfR0DgstytpE3UZ
-	TfRu6Yag==;
+	bh=47qH9DhdGsXSvcnn2TMzn7MFl2kXpbMH9aBDXUUfcBo=; b=Fv/07hbyezXG92LfK84uUIH/dK
+	5xE51bBkebytk+/jPPt458Z39NT4/hjpsALj8ufeFmJsp9PN5CXpmvc3fhxY0btLkdP7Sbx389jg5
+	3Wvl/U2F+1Xir2RMvol/VOgGwFvuFkEdqJi6D8l67hrEIj9M0fdBQImqoDAzGRLmbmVcYtcrSQE8D
+	LF2eNg6vAwhxZRfOCvDd+CNg3HlN1R9uQ9UctIGbcEPffvquzz4aOjlNFKjRjeZbbStpYf5OsaVSR
+	ljhqUZr4Yuzu1jvnJdQdtK+4BzlByNn9WPXjraWfAwJAfXdR3odDemMw2kNAMEovbwXM1ky1V3MVv
+	dNNC6+7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh0OA-0000000EKoH-20q8;
-	Tue, 07 Jul 2026 07:38:42 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1wh0YQ-0000000EMHb-3J13;
+	Tue, 07 Jul 2026 07:49:18 +0000
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh0O7-0000000EKnm-1DhN
+	id 1wh0YO-0000000EMGx-2kuV
 	for linux-mediatek@lists.infradead.org;
-	Tue, 07 Jul 2026 07:38:40 +0000
-Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-6986578d8c0so5271405a12.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jul 2026 00:38:37 -0700 (PDT)
+	Tue, 07 Jul 2026 07:49:17 +0000
+Received: by mail-pj1-x102b.google.com with SMTP id 98e67ed59e1d1-37cab825ec9so3894968a91.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jul 2026 00:49:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783409916; x=1784014716; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1783410555; x=1784015355; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Qr1IGlrekLARy25R9WI1UDHgK1tJnna2f9/3DXKhVd8=;
-        b=mXqSg5T7s8aLCV/kaJCblf0ixFTzL41HR+L7opQkFtUc17W2AM/YpXObPKFGt62xPO
-         AvgF9rSAOQFxhNNR7hU8tuvwwgQrBs7DV+FLZeuuICFNLLRkYcJVZ66bZa3S5oVu2Xeb
-         iypKOnclsXhl45ldFdTaNPiBzFcNHPMrU07A5CzW9p2X58fN93N/mUp+73btRHkCs/6d
-         7j//EwP5f/0ABXW7/3WU5keUzZYsre48Dm6XMy2LIRBoEHxviKoBX9+7qUId9yvxebQ0
-         PbCXNXGNyqIOjBA1/wVOuwCLP8z/kSou9QSoluniHcDoeHsgdx6B1MjxfImn93VQJQzd
-         bvGw==
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=47qH9DhdGsXSvcnn2TMzn7MFl2kXpbMH9aBDXUUfcBo=;
+        b=fXLhFvRFZ7piQVmZk/+3lHBnsqwgTQT8pR8RmAxdWslJCaUGBLXemEnDe/DpxtKRWM
+         9hTu8EU2yLQQqY7IFFFMYbGZlYFvHBCkvi6q1432TOIwlEytsyogcdhC4lZW3BevsmP4
+         11qOcrtN0E3SQDfvt3oN4HR2n0WFEqHti+2kkw71Qvuow0CDqK3Ab6vHiM1yvZfB5CXp
+         qCV9rq+t4/LsRkVfJG1aOIZvLB9F6utid4xqjtMRa1bn1G68JMuoaK+ahk41GNkNsl7j
+         Q/WEQe5LNwfhVxEm5ZFphHxpp3FPYrJ8dgSASeJSVttXOlAzVu3S74ia0+mc9sFaHS3T
+         wsXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783409916; x=1784014716;
+        d=1e100.net; s=20251104; t=1783410555; x=1784015355;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Qr1IGlrekLARy25R9WI1UDHgK1tJnna2f9/3DXKhVd8=;
-        b=AOLXAktu73GB5O8MeFbCliOnQoUNpWPl9IJyN+E4BC6y7/fUu6vF24T9Dlihj4zenY
-         e17VFWBfhDZBmnCX8qT5Zs8la6PPQS0898ntOzVMYXOyLRn+Jb2/qkRCg3ZgerRMDzmW
-         etADwEOwEZxRMgADvsPIT00p9sOAVs/B1DPHXESsc2tZdg+HS28/ZJZtWYrMCOGDVRZn
-         JH45pfYcRFQdJhKBuZKTLh8S56gQTCOGDv5zrXiBsyYniFtNVfPb72fHoOZrGk12vuwS
-         fKfi3O1uU6QsK4NGpGgCerwPW9269qsak4Ilbssw//bb3WAiXhyVGW4/pWZa/Ur9iYxc
-         Dy4g==
-X-Forwarded-Encrypted: i=1; AHgh+RrHHFekyujA7TACx4ODBH72FsxLdlNWqCJZKAmd9zwGG5Zd/rODAL7dLYy2J079MPVIdioJgvFQguKL74R8Tg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxUcQI+akSB7Ok0/qlUKGzLarKnziT/BjuRWI+jTL63aJyyGwZO
-	OWSADAFinotac1w6eB/embDYa2t1OONSAynYqwW60fvud/bvHdjGuDfk
-X-Gm-Gg: AfdE7cluIqwkWMu3K6H8Ani8EJAlDhgyed0UniK8Kprmb2JMIRWOnqBAXugMUEXYlOW
-	/ZNIhK3xwptU4xOfs6S5WE3kCdUw8gxDoYST/VeEj3ImwdfhBkJt8NjgsWtW2FTycmE8IgG1ns2
-	8maVxRaw5RC83m+5HOPV9K3r/+Rv5tabgL3Ul3pILG1zVxrkq4Yg18CzdiJhKLV0/GORi49MDIw
-	gwq0EeIjlZsjMkS4YVqOZivs8hLswdrJpyXBSPj4d7jvqWJn4K7l0y/GxDKW/eylW2wTQCC60jW
-	dCnEDA/DnDg4lRUzKMzI8vThicIgYUvzNzy9ODFtiSZfoRvGQST5nacFaR47XEgHihPFoXI06dN
-	s0eJYEObkwuCbmDk8Z3Jixqb95nSze0w/9ZmMD/LCBm4TVNPCP35DEdEVbZYT1E1ijd3aJUN0x9
-	i3DipWUDB+m6GuguYydgnS0eEzameWAaL9YZAr/AaHzBLIGfzfKgKBChAptMILixVUfTajBzRMb
-	pDS63c+Za86XHXJ70YQqNa2lwBWzJJ0JfNgHM07whjp
-X-Received: by 2002:a05:6402:120b:b0:699:f995:13a with SMTP id 4fb4d7f45d1cf-69a85c32c1dmr1602091a12.32.1783409916010;
-        Tue, 07 Jul 2026 00:38:36 -0700 (PDT)
-Received: from eric (2001-1c00-020d-1300-1b1c-4449-176a-89ea.cable.dynamic.v6.ziggo.nl. [2001:1c00:20d:1300:1b1c:4449:176a:89ea])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-69a19d7a375sm5123969a12.15.2026.07.07.00.38.34
+         :message-id:reply-to:content-type;
+        bh=47qH9DhdGsXSvcnn2TMzn7MFl2kXpbMH9aBDXUUfcBo=;
+        b=P6BBx0iptJ4rIvEJB3BQYv4MPRhx88G6U0yqvAMg/+BIFi7aNIqmurUy4fJ74mTj0X
+         kKLUmnfQhIiZqTD3riNKvsCstDdd5VHV1lcAxIerZp5bneVrrImm5ofrWUPH9AU/QYmK
+         QNFb5Mui0O1GhYfqlNAupQUB6LuAk4AfqcFm7s23bkx00hNid1eGR11iW5YFezv8dkmY
+         3cFM2YutHIVQzE315nGb/t2axRrxb5JZ8zuutZcBas0CcpOvVJ1At5r/UtcQqK18J0Dg
+         QgzsYx5GapgnSYDItIpcSUQxQiwStM+Td/413JoRupcpGtgZcsv1f098ybBshWV+Jpxl
+         3C3w==
+X-Forwarded-Encrypted: i=1; AHgh+RruBMHRhzUeKmfiABXf0CuutNDsn+Novf9vIuMaxJlDW/palhHhLvBNa2FVDObD5J+UE4WadTPkr8/JD6ffUQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyvIIYA64xJr2ZfBslcHwQY16Q+bwKjo+w+zxwsIqaprc6N9ZTu
+	uCqXOGyG4yAHjDe2BllcKzwv88xuJLDVfzMtQgNTiuABOHVE9AJ6at+n
+X-Gm-Gg: AfdE7ckTID0e2iLBMDCbPR3JzVmFy4i2ZnrU/Syxv8sUOKLUJk/RjgAUaOkdQ9WS0Xh
+	yrc8HxVzK8T1YRsLnE/qoBPywO30o/U96iVEyp5EedDMPhlSyjDue2fcHFlhPFrGxywfXIosHXQ
+	ZmX8Uc6mrHl7jNHUa+Q4UpnDwIPTdOGLiAiL1swZWk6LLwCI0QEbSsTS4NiBJ0Dd82SCWHwS38b
+	w14+gkp5/X73ri4GO2d/8PQsHVBhbLvBLSUVebdG7dppQUsfr0iEtYEWQipJn9eLCrb+D/5wP9E
+	Bf0J4rXWMZbJKcvhtRoer6U3nIOyiJr/SiPfI4Ja4JaB+F/lkG1UN3R6M4+9+GO8YUDLfiyBbVj
+	IbvumaoMptiqU6YNZAEGdTqSj64mmEzlWr2I27FsfZ5VRs1AuahpbF2wZxDaQ7yK8NMAGrGDLqC
+	BagRXdNIqVfx4MsL68lTppsg7sZ/9BTBaAcJnPyrpmbPkx
+X-Received: by 2002:a17:90a:da86:b0:381:28e0:624d with SMTP id 98e67ed59e1d1-387597e83dcmr4179386a91.28.1783410555332;
+        Tue, 07 Jul 2026 00:49:15 -0700 (PDT)
+Received: from buffalo-ssd (M014013071096.v4.enabler.ne.jp. [14.13.71.96])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-387d20a361asm626710a91.15.2026.07.07.00.49.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Jul 2026 00:38:35 -0700 (PDT)
-From: Eric Woudstra <ericwouds@gmail.com>
-To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
+        Tue, 07 Jul 2026 00:49:14 -0700 (PDT)
+From: Akari Tsuyukusa <akkun11.open@gmail.com>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Brian Masney <bmasney@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Edward Parker <edward@topnotchit.com>
-Cc: netdev@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	coreteam@netfilter.org,
-	Eric Woudstra <ericwouds@gmail.com>
-Subject: [RFC PATCH net v1] Revert "net: dsa: mt7530: untag VLAN-aware bridge PVID"
-Date: Tue,  7 Jul 2026 09:38:26 +0200
-Message-ID: <20260707073826.919541-1-ericwouds@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-clk@vger.kernel.org (open list:COMMON CLK FRAMEWORK),
+	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	stable@vger.kernel.org,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Miles Chen <miles.chen@mediatek.com>,
+	Akari Tsuyukusa <akkun11.open@gmail.com>
+Subject: [PATCH v2 0/6] clk: mediatek: fix memory leak on module removal
+Date: Tue,  7 Jul 2026 16:48:29 +0900
+Message-ID: <20260707074839.240676-1-akkun11.open@gmail.com>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260707_003839_403102_637766B4 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20260707_004916_697294_2ECCD67C 
+X-CRM114-Status: UNSURE (   7.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,53 +106,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This reverts commit 4cb3cd670b2a29e52dd3cfd6463e44121674c9b8.
+Some MediaTek clock drivers do not call platform_set_drvdata()
+during probe,
+but their remove callback calls platform_get_drvdata().
+This results in platform_get_drvdata() returning NULL,
+which leads to calling kfree(NULL) in mtk_free_clk_data(NULL).
+This leaves clk_data unreleased, causing a memory leak.
 
-In the case of a userport of a switchdev attached to a vlan-aware bridge,
-with untagged packets incoming, tagged at ingress of the bridge:
+Fix this by calling platform_set_drvdata() during probe.
 
-For all switchdev userports that support SWITCHDEV_OBJ_ID_PORT_VLAN,
-which includes dsa-userports, the behaviour is that the tag is visible
-in the ingress-hook. The commit mentioned above changes that, making
-mt7530 deviate from this. Only on mt7530 the tag is not present in the
-ingress-hook.
+Changes in v2:
+- Add a newline between platform_set_drvdata() and return
+  (suggested by Brian Masney)
+- Split the patch per SoC, (also suggested by Brian Masney)
+- Add "Cc: stable@vger.kernel.org"
 
-This, for one, is a problem for the software (forwarding) fastpath.
-The flowtuple for this flow is created, with the tag included and marked
-with the corresponding in_vlan_ingress bit.
+Link to v1: https://lore.kernel.org/linux-mediatek/20260629142348.273766-1-akkun11.open@gmail.com/T/#u
 
-Inside the ingress hook of the fastpath the incoming packet is tried to
-match with the hash of this tuple, but is does not match any more.
-The tag is missing. The packet does not follow the software-fastpath
-in this direction.
+Akari Tsuyukusa (6):
+  clk: mediatek: mt2712: fix memory leak on module removal
+  clk: mediatek: mt6795: fix memory leak on module removal
+  clk: mediatek: mt7622: fix memory leak on module removal
+  clk: mediatek: mt8135: fix memory leak on module removal
+  clk: mediatek: mt8173: fix memory leak on module removal
+  clk: mediatek: mt8192: fix memory leak on module removal
 
-Fixes: 4cb3cd670b2a ("net: dsa: mt7530: untag VLAN-aware bridge PVID")
-Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
----
- drivers/net/dsa/mt7530.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/clk/mediatek/clk-mt2712-apmixedsys.c | 2 ++
+ drivers/clk/mediatek/clk-mt6795-apmixedsys.c | 2 ++
+ drivers/clk/mediatek/clk-mt6795-infracfg.c   | 2 ++
+ drivers/clk/mediatek/clk-mt6795-pericfg.c    | 2 ++
+ drivers/clk/mediatek/clk-mt7622-apmixedsys.c | 2 ++
+ drivers/clk/mediatek/clk-mt7622-infracfg.c   | 2 ++
+ drivers/clk/mediatek/clk-mt8135-apmixedsys.c | 2 ++
+ drivers/clk/mediatek/clk-mt8173-apmixedsys.c | 2 ++
+ drivers/clk/mediatek/clk-mt8173-infracfg.c   | 2 ++
+ drivers/clk/mediatek/clk-mt8192-apmixedsys.c | 2 ++
+ 10 files changed, 20 insertions(+)
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 3c2a3029b10cf..752ba92b08517 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2447,7 +2447,6 @@ mt7530_setup(struct dsa_switch *ds)
- 	}
- 
- 	ds->assisted_learning_on_cpu_port = true;
--	ds->untag_vlan_aware_bridge_pvid = true;
- 	ds->mtu_enforcement_ingress = true;
- 	ds->ageing_time_min = 2 * 1000;
- 	ds->ageing_time_max = (AGE_CNT_MAX + 1) * (AGE_UNIT_MAX + 1) * 1000;
-@@ -2639,7 +2638,6 @@ mt7531_setup_common(struct dsa_switch *ds)
- 	int ret, i;
- 
- 	ds->assisted_learning_on_cpu_port = true;
--	ds->untag_vlan_aware_bridge_pvid = true;
- 	ds->mtu_enforcement_ingress = true;
- 	ds->ageing_time_min = 2 * 1000;
- 	ds->ageing_time_max = (AGE_CNT_MAX + 1) * (AGE_UNIT_MAX + 1) * 1000;
 -- 
-2.53.0
+2.54.0
 
 
