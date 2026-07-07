@@ -4,126 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B41BC44501
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 14:11:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05697C44502
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 14:19:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=20E1hLMMPXhHS8pnWfbMyHG7K9cQcKn2dO/QA3nMBBw=; b=rySynIpZEoGpsmyOVSDoLqsKnN
-	NEJdz1HoXFBgfsmxxWUryZAjq84BrGQQQ5wigUWcanznsQo6wmNc0YRKUsOJZSN4O7HO7if60kNvr
-	sC1zUVGFI8k3/uFM1xNyj07vjymSCnqqkrF89FZVlNgBIARXJX2CFWYvmKaXNbLX08xrzYzE9cXv5
-	CaVX1D9ZeHuDRO6B7P1sBEtCwsQCDIyxgyBa4TG60gyWEGUtPMb+FCJiaOctCsneaGuzVnQBHzvlk
-	7rTFeE2kqTQpFUB/Yw3XwdiAXo3moNYLSjuW93lFSnYsacg2Hxg8uMg79WX/q2IdOyuRqcpIUBCVk
-	2uIGfusQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HAeB/Op8nmvOd27gL/buoe+pif44ZJYHQOLqJFWuvo4=; b=nwGQN1SRM5uKVbA9jYsWnWqxhE
+	HNL7CzJWdd5YSAZpZ/dNL5diwu6/iaFdqB4f3z3fUD8buxu5/KtDNWZaaNBct3FMEWVa5D9rSNUGD
+	O1YfEHNujnaNkg+CVWXVczjmYbgscHuYXLmK8rOSV/zV17GnPBzPpAZ5UmAanRHCB1zYpd91TtbZI
+	u4vHSux1KIDyg+7SmbPkeVVnVAu/i7iiKT8ToF9AnQ/HxZPYkTe5WerP5OCcXApsXp+3U4oBPWJ79
+	fWA1TI/9FJVthngR+hGYxoNFG3SS1ZKnas9x6AV829Acv9swc8gexOk08g/zwK+ujUnXC+3dUtx8f
+	sfhqPKXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh6WV-0000000F7Rn-2jZX;
-	Tue, 07 Jul 2026 14:11:43 +0000
-Received: from leonov.paulk.fr ([185.233.101.22])
+	id 1wh6eL-0000000F8eb-0iBN;
+	Tue, 07 Jul 2026 14:19:49 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh6WO-0000000F7Pb-3h0S;
-	Tue, 07 Jul 2026 14:11:39 +0000
-Received: from laika.paulk.fr (12.234.24.109.rev.sfr.net [109.24.234.12])
-	by leonov.paulk.fr (Postfix) with ESMTPS id 90E113700332;
-	Tue,  7 Jul 2026 14:11:10 +0000 (UTC)
-Received: by laika.paulk.fr (Postfix, from userid 65534)
-	id 05208AE5EBF; Tue,  7 Jul 2026 14:11:05 +0000 (UTC)
-Received: from shepard (unknown [192.168.1.1])
-	by laika.paulk.fr (Postfix) with ESMTPSA id 6816EAE5EBF;
-	Tue,  7 Jul 2026 14:10:55 +0000 (UTC)
-Date: Tue, 7 Jul 2026 16:10:52 +0200
-From: Paul Kocialkowski <paulk@sys-base.io>
-To: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
-Cc: Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konradybcio@kernel.org>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Joel Stanley <joel@jms.id.au>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
-	Linus Walleij <linusw@kernel.org>, Chen-Yu Tsai <wens@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Alexey Brodkin <abrodkin@synopsys.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Daniel Scally <dan.scally@ideasonboard.com>,
-	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Eddie James <eajames@linux.ibm.com>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-	Houlong Wei <houlong.wei@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Joseph Liu <kwliu@nuvoton.com>, Marvin Lin <kflin@nuvoton.com>,
-	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Thierry Reding <thierry.reding@kernel.org>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Srinivas Kandagatla <srini@kernel.org>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Ge Gordon <gordon.ge@bst.ai>,
-	Adrian Hunter <adrian.hunter@intel.com>,
-	Ulf Hansson <ulfh@kernel.org>, Rob Herring <robh@kernel.org>,
-	Saravana Kannan <saravanak@kernel.org>,
-	Mathieu Poirier <mathieu.poirier@linaro.org>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Shengjiu Wang <shengjiu.wang@gmail.com>,
-	Xiubo Li <Xiubo.Lee@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Frank Li <Frank.Li@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
-	Bard Liao <yung-chuan.liao@linux.intel.com>,
-	Daniel Baluta <daniel.baluta@nxp.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Peter Chen <peter.chen@cixtech.com>,
-	Fugang Duan <fugang.duan@cixtech.com>,
-	Ekansh Gupta <ekansh.gupta@oss.qualcomm.com>,
-	BST Linux Kernel Upstream Group <bst-upstream@bstai.top>,
-	Fabio Estevam <festevam@gmail.com>,
-	Nicolin Chen <nicoleotsuka@gmail.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
-	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
-	Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	CIX Linux Kernel Upstream Group <cix-kernel-upstream@cixtech.com>,
-	linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, linux-aspeed@lists.ozlabs.org,
-	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
-	linux-sunxi@lists.linux.dev, linux-media@vger.kernel.org,
-	openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
-	kernel@collabora.com, linux-tegra@vger.kernel.org,
-	linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-remoteproc@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-sound@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
-	imx@lists.linux.dev, sound-open-firmware@alsa-project.org
-Subject: Re: [PATCH 08/42] drm: logicvc: Use
- devm_of_reserved_mem_device_init()
-Message-ID: <ak0I7AbfFITG1nyi@shepard>
-References: <20260703193855.110619-1-mukesh.ojha@oss.qualcomm.com>
- <20260703193855.110619-9-mukesh.ojha@oss.qualcomm.com>
+	id 1wh6eH-0000000F8cU-0IV8;
+	Tue, 07 Jul 2026 14:19:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783433981;
+	bh=X99KKDPKDM77EUe/K6IwQ6N3jw1s5gDXs0w54CvjxZ4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=IpN4sGTRbigL3LEZNRe+mqGHxT8wFbKvRLsqh0ZAz/EyFvhA1cCX/D8gB17qhdB0f
+	 l/Iht+L5Y7/EJ81L5B1FTSB6z2CKWtBEBPFa+bZrO9RArYmAmZej7ehEGnRa7dg8kQ
+	 ukBwj66jefpWIt30+R9pLxYPW97g1qPKXZqQiDjcS54II2ODPyywBH2fE09XN6oYYJ
+	 FejvJSgL5mtEDipmqlie7U3UvCm/t5PgNmGOTdW2HWw2/nuNyAyQueGhI4fYCN4qTd
+	 wvoK9IqJYlu4YAh1VSwFc4SFKBon/nWQW3Yd+ZtScB1HXp399HSYfYnpx2otIaTW/+
+	 IySYs4MvxWyEA==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 270A417E003B;
+	Tue, 07 Jul 2026 16:19:41 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunfeng.yun@mediatek.com
+Cc: vkoul@kernel.org,
+	neil.armstrong@linaro.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de,
+	justin.yeh@mediatek.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	kernel@collabora.com
+Subject: [PATCH v2 00/12] PHY: MediaTek DP PHY refactor and MT8196 eDP
+Date: Tue,  7 Jul 2026 16:19:19 +0200
+Message-ID: <20260707141931.191172-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ThTwSIZV2a2cCNSQ"
-Content-Disposition: inline
-In-Reply-To: <20260703193855.110619-9-mukesh.ojha@oss.qualcomm.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260707_071138_533235_5A47C05C 
-X-CRM114-Status: GOOD (  26.59  )
+X-CRM114-CacheID: sfid-20260707_071945_264847_1CDBDF84 
+X-CRM114-Status: GOOD (  16.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,167 +85,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---ThTwSIZV2a2cCNSQ
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Changes in v2:
+ - Fixed register offsets for ANA phy in MT8196
+ - Set/clear FORCE_VOLT_SWING_EN bit when configuring and resetting
+   the voltage swing registers
+ - Fixed endianness issue in call to nvmem_read_u16 (Sashiko)
+ - Added early exit during lanes disablement if none are enabled to
+   avoid out-of-bounds bitwise shift (Sashiko)
+ - Removed useless call to pm_runtime_get_sync() in probe(), which
+   also fixes issues pointed out by Sashiko
+ - Fixed wrong dig vs ana register array usage in power_on/off (Sashiko)
 
-Hi Mukesh,
 
-On Sat 04 Jul 26, 01:08, Mukesh Ojha wrote:
-> Switch to devm_of_reserved_mem_device_init() so the reserved memory
-> region is released automatically on probe failure or device unbind.
-> Replace all error paths that jumped to error_reserved_mem: with
-> error_early: since the manual cleanup label is no longer needed, and
-> remove the explicit of_reserved_mem_device_release() call in the remove
-> function.
->=20
-> Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
+This series performs major refactoring on the MediaTek DisplayPort PHY
+driver, makes it probe with devicetree instead of getting registered
+by the mtk_dp DRM driver, adds power_on/off() callbacks, and honors
+the phy configure opts' set_lanes and set_voltages for, respectively,
+varying the number of lanes and setting the voltage pre-emphasis and
+swing on the PHY, for each lane.
 
-Looks good to me, thanks!
+This driver now also properly gets the PHY (EYE) Calibration Data from
+NVMEM (eFuse array) if provided, instead of getting it (improperly)
+injected by the mtk_dp driver.
 
-Reviewed-by: Paul Kocialkowski <paulk@sys-base.io>
-Acked-by: Paul Kocialkowski <paulk@sys-base.io>
+Additionally, all of the driving parameters calculations and most of
+the other register definitions were refactored to greatly enhance the
+human readability of this code.
 
-All the best,
+As a last step, this also transfers the register offsets for both the
+digital and analog phy registers in arrays assigned to soc specific
+data, in an effort to both introduce support for new minor revisions
+of the MediaTek DisplayPort PHY and to have a clearer view of the
+register related differences between those (for example, it is easily
+understandable that the analog part remained exactly the same between
+MT8195 and MT8196, but the digital part gets a slight update).
 
-Paul
+Speaking of which, as a last step, this also adds support for the
+MT8196 SoC (and its derivatives), which uses this PHY only for its
+Embedded DisplayPort (eDP) IP (spoiler: the DP one seems to be way
+too different and requiring an entirely new PHY driver).
 
-> ---
->  drivers/gpu/drm/logicvc/logicvc_drm.c | 21 ++++++++-------------
->  1 file changed, 8 insertions(+), 13 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/logicvc/logicvc_drm.c b/drivers/gpu/drm/logi=
-cvc/logicvc_drm.c
-> index bbebf4fc7f51..d6dbe52ff0a9 100644
-> --- a/drivers/gpu/drm/logicvc/logicvc_drm.c
-> +++ b/drivers/gpu/drm/logicvc/logicvc_drm.c
-> @@ -306,7 +306,7 @@ static int logicvc_drm_probe(struct platform_device *=
-pdev)
->  	int irq;
->  	int ret;
-> =20
-> -	ret =3D of_reserved_mem_device_init(dev);
-> +	ret =3D devm_of_reserved_mem_device_init(dev);
->  	if (ret && ret !=3D -ENODEV) {
->  		dev_err(dev, "Failed to init memory region\n");
->  		goto error_early;
-> @@ -327,14 +327,14 @@ static int logicvc_drm_probe(struct platform_device=
- *pdev)
->  		ret =3D of_address_to_resource(of_node, 0, &res);
->  		if (ret) {
->  			dev_err(dev, "Failed to get resource from address\n");
-> -			goto error_reserved_mem;
-> +			goto error_early;
->  		}
-> =20
->  		base =3D devm_ioremap_resource(dev, &res);
->  		if (IS_ERR(base)) {
->  			dev_err(dev, "Failed to map I/O base\n");
->  			ret =3D PTR_ERR(base);
-> -			goto error_reserved_mem;
-> +			goto error_early;
->  		}
-> =20
->  		logicvc_drm_regmap_config.max_register =3D resource_size(&res) -
-> @@ -345,21 +345,21 @@ static int logicvc_drm_probe(struct platform_device=
- *pdev)
->  		if (IS_ERR(regmap)) {
->  			dev_err(dev, "Failed to create regmap for I/O\n");
->  			ret =3D PTR_ERR(regmap);
-> -			goto error_reserved_mem;
-> +			goto error_early;
->  		}
->  	}
-> =20
->  	irq =3D platform_get_irq(pdev, 0);
->  	if (irq < 0) {
->  		ret =3D -ENODEV;
-> -		goto error_reserved_mem;
-> +		goto error_early;
->  	}
-> =20
->  	logicvc =3D devm_drm_dev_alloc(dev, &logicvc_drm_driver,
->  				     struct logicvc_drm, drm_dev);
->  	if (IS_ERR(logicvc)) {
->  		ret =3D PTR_ERR(logicvc);
-> -		goto error_reserved_mem;
-> +		goto error_early;
->  	}
-> =20
->  	platform_set_drvdata(pdev, logicvc);
-> @@ -371,7 +371,7 @@ static int logicvc_drm_probe(struct platform_device *=
-pdev)
->  	caps =3D logicvc_drm_caps_match(logicvc);
->  	if (!caps) {
->  		ret =3D -EINVAL;
-> -		goto error_reserved_mem;
-> +		goto error_early;
->  	}
-> =20
->  	logicvc->caps =3D caps;
-> @@ -382,7 +382,7 @@ static int logicvc_drm_probe(struct platform_device *=
-pdev)
->  	ret =3D logicvc_clocks_prepare(logicvc);
->  	if (ret) {
->  		drm_err(drm_dev, "Failed to prepare clocks\n");
-> -		goto error_reserved_mem;
-> +		goto error_early;
->  	}
-> =20
->  	ret =3D devm_request_irq(dev, irq, logicvc_drm_irq_handler, 0,
-> @@ -450,9 +450,6 @@ static int logicvc_drm_probe(struct platform_device *=
-pdev)
->  error_clocks:
->  	logicvc_clocks_unprepare(logicvc);
-> =20
-> -error_reserved_mem:
-> -	of_reserved_mem_device_release(dev);
-> -
->  error_early:
->  	return ret;
->  }
-> @@ -469,8 +466,6 @@ static void logicvc_drm_remove(struct platform_device=
- *pdev)
->  	logicvc_mode_fini(logicvc);
-> =20
->  	logicvc_clocks_unprepare(logicvc);
-> -
-> -	of_reserved_mem_device_release(dev);
->  }
-> =20
->  static void logicvc_drm_shutdown(struct platform_device *pdev)
-> --=20
-> 2.53.0
->=20
+In this state, this driver can also easily support the MT8189 SoC
+with a few lines of code: even though I do have clean code to add
+support for this one, I was not (*yet*) able to test it on upstream
+based kernels, and for this reason I decided to leave that one out
+for now (but it's coming later for sure).
 
---=20
-Paul Kocialkowski,
+NOTE!
+Despite all the apparently breaking changes in the refactoring, full
+compatibility with older MTK_DP driver and with old devicetrees was
+retained and carefully tested on multiple platforms!
 
-Independent contractor - sys-base - https://www.sys-base.io/
-Free software developer - https://www.paulk.fr/
+P.S.: I am aware of the BUILD_DRIVING_PARAM_0( 0, 2, 4, 7) checkpatch
+warning and I didn't fix it in bigger favor of human readability.
 
-Expert in multimedia, graphics and embedded hardware support with Linux.
+AngeloGioacchino Del Regno (12):
+  dt-bindings: phy: Document MT8195 and MT8196 DisplayPort PHYs
+  phy: phy-mtk-dp: Rename regs to regmap in struct mtk_dp_phy
+  phy: phy-mtk-dp: Allow probing with devicetree match
+  phy: phy-mtk-dp: Migrate register offsets to SoC specific pdata
+  phy: phy-mtk-dp: Implement power_on and power_off PHY callbacks
+  phy: phy-mtk-dp: Support set_lanes in configure and properly cleanup
+  phy: phy-mtk-dp: Support setting volt swing and preemphasis values
+  phy: phy-mtk-dp: Add support for digital and analog calibration
+  phy: phy-mtk-dp: Rewrite and document default driving param macros
+  phy: phy-mtk-dp: Add bitrate register val definitions to SoC data
+  phy: phy-mtk-dp: Add PHYD Lane EN register mask to SoC data
+  phy: phy-mtk-dp: Add support for MT8196 eDP PHY
 
---ThTwSIZV2a2cCNSQ
-Content-Type: application/pgp-signature; name=signature.asc
+ .../bindings/phy/mediatek,mt8195-dp-phy.yaml  |  77 ++
+ drivers/phy/mediatek/phy-mtk-dp.c             | 863 ++++++++++++++++--
+ 2 files changed, 843 insertions(+), 97 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/phy/mediatek,mt8195-dp-phy.yaml
 
------BEGIN PGP SIGNATURE-----
+-- 
+2.54.0
 
-iQIzBAEBCgAdFiEEAbcMXZQMtj1fphLChP3B6o/ulQwFAmpNCOwACgkQhP3B6o/u
-lQyaPQ//f4pAYoEPe2VkBx5ziaC0VkGALJ8pMaCBZzEG6pnd2z1UBPK8Y2xJLlQP
-5bkyAxCQjpN0fwzwtB+kdA0jp2iokJqDThaLYoql9R0Qvj2DyOy7x+SwRqbRzdyJ
-npZtxXLCuF9oXL4YlUHBVPkgL9WsGf2cMpqkXAI/iPd0K+9zBfxT48xlRnuslCQF
-gwlVwkghlca2EFVG0f4q4HVkGRcFkAM9pYpKZD4B4iS89SwzHmJo44SZWV0CsWfe
-ysY5SERP+XL8EbiVlQxCWyqo9Yb//Ikc/EuIWFPMzPW7hp4ZTzjzYaRtVdWEM3Or
-GQ8uFNoXZfWHzfBpHk1Ewfdr7JBtXM0vPIh650GS2SCdGaCS0Ud2UUv7QZdSluel
-uGrsM82ZQ6ts4V8ct1O/dWG7TwYnc8BaFADG90JdKck+zb3fRnQ07aTNrF/bRDU1
-gcnN0yfM/zPIZAc7GA+4Stzok5c+bj2Sb849b5S5g6LNETsScU+WPK5pvEjjWq9E
-zsLawR41dclgUWujmQqflY1sbvVA3YsAADIxWAAsT1WDULfQ/c70/2rMIvNATzBN
-VxbCWSZtk77xMlu6aje7HIbEQa9PGm52xeqNOqfwv/t5kGZxU1fqyAULXAfSYQ2R
-jkjMhoWPkeb15z5Be0yQY0auFkEuIORZboIqn49NxQW0LVu7byA=
-=tX4X
------END PGP SIGNATURE-----
-
---ThTwSIZV2a2cCNSQ--
 
