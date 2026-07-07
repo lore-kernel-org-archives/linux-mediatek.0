@@ -4,184 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B187C43458
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 03:09:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55396C43458
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 04:29:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZlT5XJB9JtVsXmxIOKbP62UuX3T8ObZtTMNyUkr7yMg=; b=CR9QDdRC+BtffXwi6oF9pwmID5
-	pIDfRTeIMwBlHryh6T5J5gwK9AofMm1Df6tGlr5C3q8DuGINTO+8ON0fPFcLV/3AhVMswBtPQZULD
-	t5MYSUL0/QGrJAMCBcjsmjNPQMENbwX5oW7j8LbSlEETH1IE2e/VjHPWbk5FnTVylfb68CNDGvtGJ
-	fu3iMpteeuIsm2ifVF/dnRv9q2rgrP2L2zhXc7H2G0cpoHNu0WKffgLmCmP/OWGJTujXaXWeNyldP
-	hHBZvr1pn6d8KqRerDyLmd7qGgWUuVofnV3LZElYnK+4y8oUGkJnGRDW313ImzwOrIL7dQ1GjqZRP
-	N6z6lJTA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1bHz8pIdj5qCHMVmE3ZgrvqBvuIVwQ8F/DhCqlx20Pk=; b=hFUf6dnDxWbG50BQctFcTNfR5Q
+	xKpwd0/30Y60uyFcCVgApxb47IyuI26o09vjhgXfl9+WPECKfT7tp+MaIf709qbM/C2DMoYIqR3PD
+	ozuPEDz8wHxRuYJM7ZhO6GKKELAWPWngxjIUAGro0BCLAqu38x+Y7KDCnUyhU3Z1NN41BEdweSZeU
+	0I1SAn4p2jSv8qjTF08N1A7OKvMGM/7Wz+VxZlPTb+iyEOkt5m7HfSiyrQl9tqv6FirCrQ/K9oPgc
+	q1A3VhIenIfdxL7KW41v1r1OCfOsMe3ZxcVgvW/YekBxVkZ9AmLrn/nrqC9r1RpVH0uOAN5O7rVMw
+	Ph5IQJEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgwBS-0000000Dydy-09Rl;
-	Tue, 07 Jul 2026 03:09:18 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wgxQt-0000000E4fu-39Ao;
+	Tue, 07 Jul 2026 04:29:19 +0000
+Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wgwBO-0000000DydL-3e1i;
-	Tue, 07 Jul 2026 03:09:16 +0000
-X-UUID: 3af10d6279b111f1afed4741b24580c9-20260706
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=ZlT5XJB9JtVsXmxIOKbP62UuX3T8ObZtTMNyUkr7yMg=;
-	b=Z3LoGPAOhTgfjnSYCxq29raD+AC1M4VHC8i+Xs8O0WAwC5x+DAgKQ8yDbyY1qwXdRh7yab82se1S4qX0VDrwGEIeCUOabS37UmYEcxrHLaefow9le0RqVh3Qqsz4CZef0jckUUNPlFOMog0RDH0kSuHNBRHgIkm1Uq9ztB34q2M=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.17,REQID:9752bb55-553a-40b3-8243-a79f8eaaf1ae,IP:0,U
-	RL:0,TC:0,Content:1,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:1
-X-CID-META: VersionHash:d497b38,CLOUDID:8635ecd6-4504-45e1-b7e4-0b9331be048a,B
-	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|110|111|836|865|888|898,TC:-5,
-	Content:4|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-
-	1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 3af10d6279b111f1afed4741b24580c9-20260706
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1993185436; Mon, 06 Jul 2026 20:09:13 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Tue, 7 Jul 2026 11:09:10 +0800
-Received: from SI4PR04CU002.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Tue, 7 Jul 2026 11:09:10 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=dFZoO+Htwpbp6xX2t/rbOS/hI0VXw8oKE9xIfg0+xl7PRKCGFSin1Ubj1wRMeRTV2IVSPH43tZUzvk2Sck7xtYApiFnsjtZZ3o17KyvfAGWplTRv6IKfd9DzZE0+ps6dtV615F+aLv+B9aKUNq7s9/aWZyCQzDjgoPUZF0HHw1uC7JIQRxWf/6Z56QuB8OxxKw5zCZ+MGmkz/eR3XJfcVxKQHJEx/q3T9BMYWG7jqPqr3d/Xy7tr6KSjvfSPCSfUsOFyE3tUBTv5dnpyl/H3j0Zzjy+vjWiObISXVjw3sL68QDYPw1T6Wglhy76RuCDNesmKc+6p7VUw8Sg2r0lc6w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ZlT5XJB9JtVsXmxIOKbP62UuX3T8ObZtTMNyUkr7yMg=;
- b=EOi4scDTbt+lusGU29CZcgho3XZoJwhWTQj8RrCCzp0sbA/hUL99zi17iKldlKJNg+T1NZuVEW09cdSnRLLnGHto9I9YynCAZKlXh1Xacm5kttn7YQse6R0RtRPxECaDlj/IZho+lpCB5x2MTfZIIMiacsaaqOQSl8W11svr63ajjpiVh07ztI2g+ejy8ngruKOlyqMGU/2A96HZyUCzJvgz9gmf6ZSKBQLKJEjkUHu8aQZb89M6RX6IqoE7VTfddRheUuzLICHNcTweUjxcVv6aUG4NBI6wR0T5KSeVQBfOzmDRtYG41gPbWuGTPZqkC/otoxWnK9LMVHOUBUAXAA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	id 1wgxQr-0000000E4fD-2shz
+	for linux-mediatek@lists.infradead.org;
+	Tue, 07 Jul 2026 04:29:18 +0000
+Received: by mail-yx1-xb130.google.com with SMTP id 956f58d0204a3-664dd23829eso3376204d50.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 06 Jul 2026 21:29:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783398556; cv=none;
+        d=google.com; s=arc-20260327;
+        b=T3HM+cXo69TaXirAEfgCMI7gbEFXihIMr6tX23zvHit1jQOqUQuOXbe1Cs4G+NngFB
+         oEy+y+l+ayIuASeoO+JMJvYgZfMqhp7ErxiBAgD4cBesTlNA3AzNIjQtE+oVXrUBkYTU
+         FA5rino+y4qSnXl67goYbH7C9ZIgSX/EB0iC13aXE3fbywGOZnCe83lq7rOBHOJ71apk
+         Jr/RH/R/aIQNZiBqRXb3h+kySdn6ONhQxwdOJAbgswWZ4NZkdLNzZtV+2lIJPg25kjfK
+         ZXaZGE3XCJZUKcLHE0UCWycsDLKqdYP6QDPxg6oYwHKQ+ywbTJpZdVRzneYlk5ZnVEVw
+         TBDg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=1bHz8pIdj5qCHMVmE3ZgrvqBvuIVwQ8F/DhCqlx20Pk=;
+        fh=O7S7nHmG4wGfGRlZy2LAZkpRetsTHO3zHurz6+jyzVw=;
+        b=Am5/ZxmC+MVGLC7xdCIUx1dFKZ27fSFDsIIofZZm8rAOKDQsdMtAuBEtWkk1WBhWdV
+         v8Mndkwsv/nrIsBEWkYgV+t2gbLrdNjxEjTq8bk6RpI1V/1YrbeRFB9Dj/0opljbdg7n
+         C/Fzk8COeJ8+ioZpNgvBB+LEHg8oVlw26R5moPEGdawSLmQAilX4Ej5QHQfrqw9MurG4
+         gUfyT7yHF1D8M0r60J6jeZHE5yTWsTw6GTsp3XaPPgMPZSsK2sytP0FJ3Pmvns3exxuU
+         SiX8SJ+Co6yjJkUKYigYHd8a0635Qe9bqQadlBDif8HEKKgvCUya8uh72A05P5tTyYq0
+         tyMA==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ZlT5XJB9JtVsXmxIOKbP62UuX3T8ObZtTMNyUkr7yMg=;
- b=hXBeA32xnDHO4Z9l2KZdQbM9hgUudJRXFtZqhjU70B3fj64Es2m5BJHavi9Ftj6hdV/HFB0KwwQKYXxhFI9dygJs0qaohAcaizpdzX3BHVn7ldwZFVBpmpIdp3pCQBmQxsG+Ehig7d8SVbifoNq7z/oPXt08dsxxKP5t7Uawcfs=
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
- by TYZPR03MB7437.apcprd03.prod.outlook.com (2603:1096:400:418::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.8; Tue, 7 Jul 2026
- 03:09:06 +0000
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::a3c2:b94a:70f:e640]) by TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::a3c2:b94a:70f:e640%4]) with mapi id 15.21.0181.010; Tue, 7 Jul 2026
- 03:09:06 +0000
-From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-CC: "robh@kernel.org" <robh@kernel.org>, "tzimmermann@suse.de"
-	<tzimmermann@suse.de>, "simona@ffwll.ch" <simona@ffwll.ch>,
-	"mripard@kernel.org" <mripard@kernel.org>, "kernel@collabora.com"
-	<kernel@collabora.com>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "maarten.lankhorst@linux.intel.com"
-	<maarten.lankhorst@linux.intel.com>, "dri-devel@lists.freedesktop.org"
-	<dri-devel@lists.freedesktop.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"krzk+dt@kernel.org" <krzk+dt@kernel.org>, "p.zabel@pengutronix.de"
-	<p.zabel@pengutronix.de>, "airlied@gmail.com" <airlied@gmail.com>,
-	=?utf-8?B?SnVzdGluIFllaCAo6JGJ6Iux6IyCKQ==?= <Justin.Yeh@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-	=?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
-Subject: Re: [PATCH 07/42] drm/mediatek: ddp_comp: Move internal component
- register in function
-Thread-Topic: [PATCH 07/42] drm/mediatek: ddp_comp: Move internal component
- register in function
-Thread-Index: AQHdCVQx1q2BMeeCtU2ZOBtgvaK3OLZhaUgA
-Date: Tue, 7 Jul 2026 03:09:06 +0000
-Message-ID: <8c5076fb17970a6c31f706f78079d90ce5b8da57.camel@mediatek.com>
-References: <20260701122057.19648-1-angelogioacchino.delregno@collabora.com>
-	 <20260701122057.19648-8-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20260701122057.19648-8-angelogioacchino.delregno@collabora.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Evolution 3.52.3-0ubuntu1 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|TYZPR03MB7437:EE_
-x-ms-office365-filtering-correlation-id: ec400ae3-f20e-41a6-5608-08dedbd51b3e
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|376014|1800799024|7416014|23010399003|42112799006|366016|38070700021|56012099006|11063799006|4143699003|22082099003|18002099003;
-x-microsoft-antispam-message-info: Rw3SX+9bx0f7+FkR8JudzhuzhJGHBuIVGAV/yv92h6MEcKlpz7UGW3QGf5GRBJaeHYJo0j42CV0EJCoGXJbEFZcoQakwTIe/ijv2ZokXCrJh3HSlcVCP/2oIGvJGdjChcFYpH4+BvCvMiBT7VLRuodVgXINdJGbstfoPvLVSJAWD4YoQOuQ3QPG9pqm/mEZDyty6GW2Huv1YKmA+xB0uQ8q9cJt9GO1ZbppYathZd/mmkgf5RW6H8wgzxsnDkjAbldlIZlR+Uh8WU3XJX+0sRyiBtAo/QLqf5KkrLEf24/zdaNMC+r0QcOPQGUNhomtjq/etOvdMR0waxgM06yykDtCdATFlPG3q43wlqDvzCqGhh0Qyb/C75WK0fxTcR6gTRTWUU4fzysdU3qwRGqXAf2V4Iv3W+38OVYHM49i+TJHafRcHkGVYwexhwDHNsE/4KLboImVOkKT0c2U5Z0r+BzbV76bLaHQ7rnQ4ZQMxs1s7Q9Wbrrx3yI93UYWEWaJ9f5FDDNS76xW52keayHbIoy3PoC/S3CTq/zMXcrA91l5xhMinYXZDwrqg7G3vs2t6k4kA4kU15u0JS+7Ki7W+3kEnMInRHG6M/nnv4j5/KYkCDYD1NvhZk27wrRlqWVk/SCHfr9HtWmTIW3EaIYH5BKS50/RgDKfydlr4KyLsT2K0/2RmDbqTr4CwI3sgPnBxEhaJVSvsRIS3FeFxGRebQthG2G4Aub/DvOZ17sA+Et8=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(1800799024)(7416014)(23010399003)(42112799006)(366016)(38070700021)(56012099006)(11063799006)(4143699003)(22082099003)(18002099003);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?d1kyeFp5b2hEYWVmK2tiL3NwUXVPelorTDNKWVNHQ0NZMk1ndjQxaW11b2Fk?=
- =?utf-8?B?NzIyYjc5THhycHMrdlgra21hZkRwRlZybnFjSmsrWFZNcjd1VkJSeUdoMnpa?=
- =?utf-8?B?U0V2RGoraTU2QXN1ckFoeERHdTVNb0RwZElNV1ZPbFYvNzl0UG5WQ1BvNytz?=
- =?utf-8?B?cWwyVFd1VXJRUW1nWk04bVdyZURsbkJPSWM0SlNMejhvRGJ5b2k3c1NhVElp?=
- =?utf-8?B?bnMvV2szYzdOZDg5bVo4eWc1MGlHMHF1ZmR3eGR6SThuRFBXbEllMytWUlU3?=
- =?utf-8?B?RWRRVTFSaFArWForOHRQTG1mTFlBVk1TOUhFSFV0SExzRjlFZytVRVFHd091?=
- =?utf-8?B?UWMzcUhDVnZDekxEV2FnVnFCOTlqaVQyZ0Vjckxzb1RRR0JkU2R0L0FxLzN1?=
- =?utf-8?B?bEszWlk1bmc0NWx2U215ak1tVTNoaFJWbEtGQkVrSVdRdTQxWSs0djB2VXpY?=
- =?utf-8?B?dzB3dDBkN1gvak11RnpNdXFyc09hVE5pRVovbFZlYitBRUhwL3FrWVdMaGdl?=
- =?utf-8?B?amp5YVFOak1SQ1JwcUhqNTBsazJadXcxU21aY3pLR0FSNmhxTFhCSmZGbEVK?=
- =?utf-8?B?UGdTNHZRQ2JYcFhzOFJpNGdvNnIwdHpmbWRhbnh6SEVYU2pXUndWUndzQW9i?=
- =?utf-8?B?M2wyRzJpdy9BNFFIWmpMOW9uNy9IYUFhTWcwZW96a1E0cS9yNWUvMnhhTVli?=
- =?utf-8?B?c2hobFhwS0xCbkVRczd3d2RyTnpIQlBMR2xrRG1DVkNvQklZd1JwUkM3ZDNR?=
- =?utf-8?B?dU9XaGZxV2NmQnFFcloyMjNrUkF5NDhwR0JxOVhQeC83S3BaRUtiSElSeDI2?=
- =?utf-8?B?VGhLbzVDSXBrTGxHZnZHVmJwQVpGbXc5UnRvUkZjbW9RYUcrc1AzbmwyVy9h?=
- =?utf-8?B?d0RmN2NmT3psb21IeG11MTJ0cFQ2NThURXdXZ3ZhcjMwamZGMGUwc1FDUkZH?=
- =?utf-8?B?U1NNWUNxemVJdllBUC9vWVo0MUgvc0w5Wm95UUNVNm1qVHVOdU9XQUdZU2gr?=
- =?utf-8?B?MEM1UXZtcEgzeXpaRkd6OE9wbUJCbGNZaXdVT3VIakNhQkpuYjFuQ3FOWG5v?=
- =?utf-8?B?T1ZxYXA2bEJuRzN6M3QzOWNhMUlTOU5EWGxmYVNKZGtLdHAxbDR4TmVDeHZQ?=
- =?utf-8?B?V2o0dG8yN1NFSk9UTUxKSmxVUmxxVjFYTjZHUGdiZGNEZDhDaGo1Rkx3dkpj?=
- =?utf-8?B?QnhHWTZsaTRLRjU5aGliWnQxR3d6OFY4OG9qb1VRNUR4U2lCcXJhWjBpK0JV?=
- =?utf-8?B?cTk4VFV4a09wQlJhNTNXYi83ZFRZZU9JZUtOVjlLWS91NmlUaEZELzRlbkNl?=
- =?utf-8?B?bGkwWnNmZU51QXBwbldLU0lJSFYzSk4zb2pRdDN0SlFvM1FQZGY3VHJZNmRO?=
- =?utf-8?B?K3ROMHlZaHNWTnN6b1UvQzJrd1FFOXBobCs2bGNzQXVmdmNFMWEyWGlVMWY4?=
- =?utf-8?B?YkNHUkFaMExDcjRsNW5PeStPZEVobE9lZnJQVXFwbGpHVzdtdi84dVVValVh?=
- =?utf-8?B?T2YwekNYMUNkNGc0UDZFUURXYVFKWnRteHNNU0xyV1Y0ZWxIaVI1aW1ZZVRN?=
- =?utf-8?B?Y0Yxd2xpb1ZJdUExZ3dBOFZJNGs2VFVrZzdjeXVuQ2Z6amt3aWU4bDBXeVdi?=
- =?utf-8?B?OVZlakFONTN4elR3Rk9uTncvTXpyTjNIcTBIcXBlMWxNZVl4ZHV3ZnF2OUU3?=
- =?utf-8?B?UGtiUWJvSVpvekxQa1QrY3QxamdJSHJteHdkaGVFYVpiZi9Qb0EzZzVYU0Jw?=
- =?utf-8?B?dWlWSWtNd3FEY0I1UDFiQkVqVE14Q200TTdmT3o2OUpDcUw2ZysyWHp2TFk3?=
- =?utf-8?B?Q2JMVlJmR1ZiS09RZjRaTjlDQjN3SDNvWURwaUxRREo3UktkeElvZ0RnZzc3?=
- =?utf-8?B?TE96TkxYQ0VXUm1GbHBETDExSEFBbW90N3ZOWmpvME1lL1p2dWgrb081VzFt?=
- =?utf-8?B?dDF6TVBzcEpnc3JYOXJWQ1Z0MitxTk10clRYeTJhclY3Y3FOUnM0V1hTQ1lu?=
- =?utf-8?B?NG5peHdvK2dYU2p6WUtOb1BJWkpvdXZzLzRWYkloQkFMdG43MzdSeW5xSXZW?=
- =?utf-8?B?VVpMMnZBQkc1NDhDRkloV0VSZ1FIWGU3ZHFYYXZlRWtSZHJtajIxbW1NSDd3?=
- =?utf-8?B?SnRHeE01RkdvcG01eFhLR21WZUFJbGEyZi9BNFdPTEhTamJEanRINWIyVzZ4?=
- =?utf-8?B?TkdhcU0wSzNlV0N1WTZWZVdweUYxQUZsOGdZZjBNY09sVEhWRURRZDdsQTNI?=
- =?utf-8?B?cjhTdGFaVkRFdjZOcWJNL2NHQkZtSUxqbVFGR1RXek5kVitwY3oyeU9mYnJC?=
- =?utf-8?B?RTN2Q2E0U004Rm5STWtJTVIzd1cyRGJQUitURXo4Sk9GWXVPL09LQT09?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <E966083BE0768F4C836E2D07B389CDB7@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=chromium.org; s=google; t=1783398556; x=1784003356; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=1bHz8pIdj5qCHMVmE3ZgrvqBvuIVwQ8F/DhCqlx20Pk=;
+        b=R3v8cxWHHKs/J+OG4UUgF1wEZVIf72lMoZSaxDZF7m8s8ZRnzJvj3V0wdp4v6G2lG1
+         e3OyFMCc6v+skW3gOkbuKy4w/W4qNjABdjoEXJmMNIPhlvgAOOm2UBudzk7USWL94ciX
+         TjjomfQL3ZWxyS+yhc1aF3txUClFEjRLZklzA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783398556; x=1784003356;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=1bHz8pIdj5qCHMVmE3ZgrvqBvuIVwQ8F/DhCqlx20Pk=;
+        b=cSxznfOsXMzJM1A7PzVLLvAeAPruHne8DiCKKryheINR/1ob2yRveFRG7RbyVpWQBa
+         w4/SAhKYTvq/p03UOXw1ZFd8vjsCdsQcdVfUCY2UqsRgJBXL7ZEtiKYE2Slk9SyZGg3t
+         fgspyG6+kCyOn6OnSz+zqUGlyXFly+zlifVPFsTTCm2YnDHv5LbWDon/2pL4WdYRb5hp
+         hsvsalY7SznAhn6yNm3fPGquLyjHmyIIkxsbxYw2QdQoIW4Uv+O7og5hP03Huc3fMI+0
+         xRkVmStFy+/ZLs+qZrMSNlK9Qo5gTag4xzKvFT61I14NGusAANVA1OChwOCAMQwnAk7p
+         vG4A==
+X-Forwarded-Encrypted: i=1; AHgh+RqXrHRc71WEw3JhfPOGosJC57rv82ZNQ1VT7GqKinXEY6l+1zTI3Rf99nrq1g4PwmEhTbW7HfDhry5OCl2xdg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx2AvGt8zX56PLH9tlHgi4CX/mrLnsCXv9Kj37Vhbk7dEvcBZYb
+	7vWEEAntSoWdoXv+/xProPXXUQnSn4OxUjIpkbr0Sc71ni7X50SXdfTgw0SJ9/vYzulsQPDizDh
+	J7eoIQpDPtZ51FEUu/YvArBbrsyzL/AV74B1MRdml
+X-Gm-Gg: AfdE7cnV1bmrYBQ/Bhsm33cSzib2rlmF2THatRMvybWyzUTvq8dNb5HPOLi26TDIEIU
+	16YqWyfXcAQq0HLdyeRAHz7JXPaha/qbGyCvDdp8asRv77ec0XhI4+hJbLt3xD6Jf/fqiszlJF8
+	7YHAStklXAvXILc8hAaMHPzN2w8CRtQrnTVrFHaXTbhXKBShi4T7b/EIkAzoIVAoWB9YqqJlwbz
+	zPkws+1MQ8HUtvqy9Ev09eXHfIdJFmkpZKqodkxZsBL3ipSe5zIlsakfiFnN4dwywjdjYlno4qw
+	B7c6zQ5rY3GEqnvq+abG+UnDVYFZIQTT57purQ==
+X-Received: by 2002:a05:690e:4549:10b0:662:b6fc:ab84 with SMTP id
+ 956f58d0204a3-6677fa2ea7bmr2174279d50.17.1783398556262; Mon, 06 Jul 2026
+ 21:29:16 -0700 (PDT)
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: X+/JOn8OQ1zhnxDZXExC+zz6z/gOErRPbAaRaOCADuvfDoJIg5gzezH/MQcGFBIzFa/nr2zJgy/gH81U/6GogS43+39E4YS/bs3QFRgN4SUCT0/yxARcifFANDl5CKOKF15+6WT8xGy9xpc7kBoiNrKrBi1o+JR481jD6/KEgfv3FLxkkviMYNndFGNVtUP78LEvVqZ8tb96uZfzMIsUd3pBVWs4khHbkRk2MyTdO6HlucmjKxzkRAjwEvxtJoWHhli28ztN5N6OQa/8VGYvwe4d58TVgkeJ2Ws9Lu696+s1LWXl3SCV5tg3m+eQzkyN0jz7vH6OPWeDaTEFTy4tcg==
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ec400ae3-f20e-41a6-5608-08dedbd51b3e
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Jul 2026 03:09:06.4157
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: mXiODR6iAm/zfBHiC3L2xuEyVzwrOAgoTJfdlAhU1IePcj/nnk8IpohzDmyy6Kywyx6+sgzgr3E4LsA/hggqsw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB7437
-X-MTK: N
+References: <20260703110317.1283411-1-wenst@chromium.org> <20260703110317.1283411-7-wenst@chromium.org>
+ <ake09vk4fEv1D9QC@ashevche-desk.local> <CAGXv+5GNucSXrhL=YxarSJHD2ezzYDK3EovFu-zy012KgZ+ZBg@mail.gmail.com>
+ <ake6FNy83LLtCs3b@ashevche-desk.local> <CAGXv+5EgpizA3Pc8ScNuChPhvFKWd5F6dxB-wT4-7EwabE-9dQ@mail.gmail.com>
+ <akvRMcGnUPxE3sxR@ashevche-desk.local>
+In-Reply-To: <akvRMcGnUPxE3sxR@ashevche-desk.local>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 7 Jul 2026 12:29:05 +0800
+X-Gm-Features: AVVi8CeDQS-P0cN7_fGlNwSI_p7eUQN2BPzLo_iMICLRCJ8sboVGUDAVuWI9R6g
+Message-ID: <CAGXv+5EqsDbzTg9eDMGK3Ph6Pe3_uDoSrjVL4q23cy6jZCk2tw@mail.gmail.com>
+Subject: Re: [PATCH v3 06/13] usb: hub: Pass |struct usb_port*| to usb_port_is_power_on()
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Bartosz Golaszewski <brgl@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Daniel Scally <djrscally@gmail.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-acpi@vger.kernel.org, 
+	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>, 
+	Alan Stern <stern@rowland.harvard.edu>, 
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260706_200914_922001_9A8142DE 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20260706_212917_796912_06A611A9 
+X-CRM114-Status: GOOD (  33.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -196,15 +128,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCAyMDI2LTA3LTAxIGF0IDE0OjIwICswMjAwLCBBbmdlbG9HaW9hY2NoaW5vIERlbCBS
-ZWdubyB3cm90ZToNCj4gSW4gcHJlcGFyYXRpb24gZm9yIGFkZGluZyBhbiBoZWxwZXIgc2Vydmlu
-ZyB0aGUgcHVycG9zZSBvZiBmaW5hbGx5DQo+IHJlbW92aW5nIGR1cGxpY2F0ZWQgY29kZSB0byBj
-aGVjayBmb3IgaW50ZXJuYWwvc2ltcGxlIGNvbXBvbmVudHMsDQo+IGFuZCBmb3IgaW1wcm92aW5n
-IGh1bWFuIHJlYWRhYmlsaXR5IGluIHRoZSB1cCBjb21pbmcgcmVmYWN0b3JpbmcsDQo+IG1vdmUg
-dGhlIGludGVybmFsL3NpbXBsZSBjb21wb25lbnQgcmVnaXN0cmF0aW9uIGxvZ2ljIHRvIGl0cyBv
-d24NCj4gbXRrX2RkcF9jb21wX2luaXRfaW50ZXJuYWxfY29tcCgpIGZ1bmN0aW9uLg0KPiANCj4g
-VGhpcyBicmluZ3Mgbm8gZnVuY3Rpb25hbCBjaGFuZ2VzLg0KDQpSZXZpZXdlZC1ieTogQ0sgSHUg
-PGNrLmh1QG1lZGlhdGVrLmNvbT4NCg0KPiANCj4gU2lnbmVkLW9mZi1ieTogQW5nZWxvR2lvYWNj
-aGlubyBEZWwgUmVnbm8gPGFuZ2Vsb2dpb2FjY2hpbm8uZGVscmVnbm9AY29sbGFib3JhLmNvbT4N
-Cj4gLS0tDQo+ICANCg0K
+On Tue, Jul 7, 2026 at 12:01=E2=80=AFAM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+>
+> On Mon, Jul 06, 2026 at 07:08:07PM +0800, Chen-Yu Tsai wrote:
+> > On Fri, Jul 3, 2026 at 9:33=E2=80=AFPM Andy Shevchenko
+> > <andriy.shevchenko@linux.intel.com> wrote:
+> > > On Fri, Jul 03, 2026 at 09:17:16PM +0800, Chen-Yu Tsai wrote:
+> > > > On Fri, Jul 3, 2026 at 9:11=E2=80=AFPM Andy Shevchenko
+> > > > <andriy.shevchenko@linux.intel.com> wrote:
+> > > > > On Fri, Jul 03, 2026 at 07:03:07PM +0800, Chen-Yu Tsai wrote:
+>
+> ...
+>
+> > > > > At a brief look this will be the only function that takes usb_por=
+t
+> > > > > instead of usb_hub in the entire hub.h (I don't count container_o=
+f()
+> > > > > as a function). With that being said I would rather see it to be =
+moved
+> > > > > to port.c altogether (yes, it's more invasive change, but looks m=
+ore
+> > > > > consistent).  I would even dare to move struct usb_port (and cont=
+ainer_of()
+> > > > > accompanied with that) and this function to port.h. This might re=
+quire
+> > > > > a separate patch, though.
+> > > >
+> > > > I agree with the reasoning, especially given the function name. How=
+ever
+> > > > I wonder if it would cause problems given the linking order. I'll g=
+ive
+> > > > it a try nevertheless and report back.
+> > >
+> > > Thanks!
+> > >
+> > > In case it won't fly (but I still think it's better to split), can yo=
+u at least
+> > > group usb_port APIs and struct? Means moving the proto closer to that=
+ struct
+> > > usb_port followed by container_of().
+> >
+> > Looks like it works out fine. port.o is linked in after hub.o, so movin=
+g
+> > the function from the latter to the former doesn't cause issues. One mi=
+ght
+> > even say that it is the correct thing to do.
+>
+> That's what I say! :-)
+>
+> > > > > Perhaps something like: 1) "move struct usb_port and associated A=
+PIs to port.h";
+> > > > > 2) "...this patch...".
+> >
+> > There are still some left in hub.c:
+> >
+> > static void usb_lock_port(struct usb_port *port_dev)
+> > static void usb_unlock_port(struct usb_port *port_dev)
+
+These are only used internally in hub.c as a wrapper for the port mutex.
+
+> > static void port_over_current_notify(struct usb_port *port_dev)
+
+This is only used by the hub's overcurrent event handler.
+
+> > static void hub_usb3_port_prepare_disable(struct usb_hub *hub,
+> >                                           struct usb_port *port_dev)
+>
+> This one takes hub as well.
+>
+> > These are used only in hub.c and moving them probably makes things
+> > messier?
+>
+> Perhaps better naming to each (kinda moving to usb hub namespace)?
+>
+> > OOTH, the following bits are in port.c but declared in hub.h:
+> >
+> > int usb_hub_create_port_device(struct usb_hub *hub,
+> >          int port1);
+> > void usb_hub_remove_port_device(struct usb_hub *hub,
+> >          int port1);
+> >
+> > Any preferences for these while we're reorganizing the code?
+>
+> These ones would be good to be in hub.c if there is no circular dependenc=
+ies or
+> alike.
+
+Those two, along with all the static functions they call, ends up being
+half of port.c. That doesn't help the size of hub.c, which is already
+over 6000 lines. I think I'll leave this one as is.
+
+Both this part and the remaining bits in hub.c I mentioned above are
+outside the scope of this series. We can discuss whether they really
+need to be moved or renamed.
+
+
+Thanks
+ChenYu
 
