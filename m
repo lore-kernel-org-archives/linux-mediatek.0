@@ -4,111 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20192C43458
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 07:55:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 412A5C43458
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 08:21:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=45TUjnFLPimeXg8OXKr+ik8F39XYQsq1QYkNFiI3doc=; b=d0lCoJxpGptn7doIugwP8cJWfM
-	oFnSK9YxY8tOjSWi5jWkk0ddM5WKBriejphi9pvdRJuSkCr9qXseG0vMX2CidZuo+f3gXVHjtrx+0
-	4RL04GqtoTEIGrthXWltEg2EsEIXI3z2+RS7eG0oP4DveJ9CRbCyOHsf3cKHN34ruTncF84dhvlbP
-	VDFAjrRvlj++drU0QkBKWXOKFTg4AdKiYh34up17PQljudNm/fRu3c9XCz/m17QSUfUKYwJxaw9R5
-	H9cupkVovm0349EQFwK3gZLpYVvrvyjBr8qBTSTa/6sVv7X53jel4/K57iwOHkrEf5x+ga2VqZRuF
-	dC6lPnBw==;
+	bh=tPeZIWzjG13kPG0Y/Q0QqlrCLKyYK9fimfj5O11eX/g=; b=y9j6arI5cd/v1joiXZwYacpoy8
+	hEmwkBUX9LdvjeLARoSl3aohk4Ta4EetSnAGnx6wh4R5hiYkBeYPyFKuWwpANUGhzTInN6fudDd5o
+	s5VKPjOAtXU1JTN709cckdSUIV/wtH/vciKe7tF3iDU4IU3BOCTl1IImQJxrVL+Tc11aDqu04EyDI
+	zG/eKU8NfeFh6uEUJKwbm7FMZmfuI9LjbN49HEYUQ8zjgqQfTnCFq4lcO8yY7xUBkVLbVk1JpvJzm
+	1VwMTiISwTjOEhgIjiJGAltkz763nESbmdl8GLcFUEbVbUVGye6HkSeoxdO/iTKvuPmuktDOclBME
+	uYkD/xcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh0e7-0000000ENhn-0jTs;
-	Tue, 07 Jul 2026 07:55:11 +0000
-Received: from mail-qt1-x830.google.com ([2607:f8b0:4864:20::830])
+	id 1wh13m-0000000ERyD-1sXS;
+	Tue, 07 Jul 2026 08:21:42 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh0e4-0000000ENgX-21fM
-	for linux-mediatek@lists.infradead.org;
-	Tue, 07 Jul 2026 07:55:09 +0000
-Received: by mail-qt1-x830.google.com with SMTP id d75a77b69052e-51c2cce930cso41898271cf.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jul 2026 00:55:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783410907; cv=none;
-        d=google.com; s=arc-20260327;
-        b=p4b+nk+6rZv2SDu2JkGwPYiTAFCPHyuaTxKZdlwOpB4r0dQD+okwy0TACR0YQFvVt+
-         cPSS7zeGprTTD0jCNZLDMTFFHhnx3mkbDcfQsVxMRzRSb5dZd+HyJh1DCJqo3Ou/qp97
-         Zju9KNmOr3fkwyqfWK8JS2Kru91Ai/yvNYzkWIbRMZuiXIF07eK5zLbrwvUyNrpEY+NQ
-         k2kUU3zZMOyGzEVPT8JQXGispK/Ub4FdaZnGl/1ydz1r7EKe57JlDyPPNfU8XxBGr3qC
-         yao1bhzpF3PXsg9qAt3Z/VHgg5ueM5Lh5hjAlqUnCXg24YwbYaFMMJ+Kjqxy3g06uF1C
-         UvZw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=45TUjnFLPimeXg8OXKr+ik8F39XYQsq1QYkNFiI3doc=;
-        fh=e5z3S6ZxW11rkbWreJ9xt4V24qERrVLHytliedTXZMI=;
-        b=gLechaZOzudUOL5wr4jL5Omlc1olAvsDpIwjhe+5hyEjB2ZJ/g8AsmpqWBpmFHuoqi
-         e+GSeERnEepyhpPcrtEgviWVo201nQsEqfSM1uTnWItC+cSUmDwscXWUqCwxW31NT9l2
-         W/yFjwr6D0pe9q6rMpqyg7PO9/6E1aPcYAO4CTwKsG1XIPB/8BVlssxM9gIy8XKsVo4F
-         +PJtZX+0y24oEdJzs+/4p8PLOt4TRFY7sk8hqFh1jJ2E1juUbNGBNuwLT6YNz+10Y9XH
-         5/UySBPFRMoP0RcvRcyUyMgd/Lxn7oBMLYwqSmuRh15+RUCFLJkMuhuXi+oZiun3KZ7f
-         DgSQ==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783410907; x=1784015707; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=45TUjnFLPimeXg8OXKr+ik8F39XYQsq1QYkNFiI3doc=;
-        b=i+803W2n2V2cxrhujNdttzihwdz9ibfsv89laWs/geDGg8nFrzcJr8yQyN1KE3kmn7
-         8ZFAW43L2v/4Dcq62kJ1lAgg0X4xSP6kw/1HfWeuFEt7V1y545Uj7dX2yy1fpqIoiJoh
-         Jqwk20pK1s8Rtdp406tE/t3jdnDQu5ItjmtPEIWhNdRPxys1SmZsZWF+pRxwJUGr+yTw
-         Tk3Go72W2AdMy2HXnYvBptk+ha1sOi76NsoqL0kAzYll3yGgcPDVpb6rGHPVBMziyFxn
-         UcltSm0k8SBMSjfO01xqb+5gBNx0iprplwvGcHwBHxr7XCZuXnrtLBP+SEbra0iwXkt6
-         VO8Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783410907; x=1784015707;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=45TUjnFLPimeXg8OXKr+ik8F39XYQsq1QYkNFiI3doc=;
-        b=F2b/t8xDwboCMY5UmuhstcPFxHVhO0W6GuH5kxkyoZKRqBXXq42g25WBBiWmwFijJ4
-         RziXbl6BX+rv7ldAGin2yQJgQBL5SPbQzVXqOAAPPhb2uy+BxCs8Z9duKo1J4EVU8G2c
-         rtuN8P2yULOBeHgC0gTxJK47uCpt2XzxxC6aXdbP4Czh+ejeO8kLkQPUviZ6Pt8Impda
-         JXYkl9mDjADlYwIFNLjgyb2i9h47K7XrAWsySWKm4452oMPjbFf66LvK64n0to+dTOYc
-         XvpKuvCTYX3bdINOxr9l/vUx7E41tjzaHw9JErVKTciqpgYa2Y2IiIpd2W44MSDbiPkV
-         pvBg==
-X-Forwarded-Encrypted: i=1; AHgh+Rp8I83Rfrkm/5ZQdCnqe/2FoXelQO1FDBQial1UZzF8kAs259urYZ9TsnDNJPq47RQmwLzuZJ6L56shVkL5zQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyqQH/DUTrBBr7RLDWPqUkxRHMiAcH3v5PpAMc4Kh4AfkEgfJGV
-	FnFUZIdlRGmj628mDpqo8aG99YuGfShEFe+3mLi5+I912gWRdF2EUN0MeldXQ0ZejaUWJ4i25WE
-	gI6msiLwtEI/Rv6kSzSwMk17kJWkRXDcI0hiFQ9Q=
-X-Gm-Gg: AfdE7cnUxkBOVVDJgsvJ/BdMjGJhI/icNjjkNryrm9pmidAsagYJJ9RWridme+1CGnh
-	bV5hsaJUYAXDDkGuzbdUZkKYtrzZ3KMGE+uAC+QjmcFNrtwFpBug/GUM70eFn8Ny/WigZRjolUU
-	epXzlnvdhZU89UouYI+nIZXH3Fowb7jyoByQMwzZ7OHk2RXdI6nA6DBlSHcEYK0WBwuWVSq8GPj
-	D80ZVG7Unp6H0v27cW3cTTNFzvi2xe1o8eb7QErJGBAg79sJy4JyLyxLB+kw6P1h1PNtH4JPS23
-	50sl9Hl8Vo6ZfC4=
-X-Received: by 2002:ac8:5944:0:b0:51a:8c97:fb9a with SMTP id
- d75a77b69052e-51c748e99d3mr43147321cf.67.1783410907124; Tue, 07 Jul 2026
- 00:55:07 -0700 (PDT)
+	id 1wh13j-0000000ERvE-1Wer;
+	Tue, 07 Jul 2026 08:21:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783412496;
+	bh=bH9Gs0qF0keeUPajExUcfUVpg+DQrsbg/viTr25L8LI=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=FYuXXy8xaODgicQa0bDQdSq4Vr4LREoEZC1shF5oKZQIwiXMUo2DnIVMgsMwwtuqY
+	 snJt/6M96H690QoAhDNNXvSPBpz2eN7Pxj8Mm+DRXEn3/nwhbf+LaKdWLXqaThWzuv
+	 jPhgoE5e+ngG4g+MZLLXBiibQlJM5AJqWbUg0RaV9l6OsWCFHLFHttsuJU3pN2iCUy
+	 SQ+aHmWmWFH3hrXRaFkWJJXLjgvQ8d5cHCRiCU/ETbZ82XbeFVV4eJ9acF5MLd1DSx
+	 H4kgctMUI+TYWrMLJXo0yM30hP2JImZ+A99CQgRaT9qMCpw6+x2dnVXqGY78OQoc7S
+	 Pn6f6ZfmwK8+g==
+Received: from yukiji.home (unknown [100.64.0.131])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EFF9C17E0795;
+	Tue, 07 Jul 2026 10:21:34 +0200 (CEST)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Tue, 07 Jul 2026 10:21:19 +0200
+Subject: [PATCH net-next 1/6] dt-bindings: net: mediatek-dwmac: add support
+ for MT8189 SoC
 MIME-Version: 1.0
-References: <20260629142348.273766-1-akkun11.open@gmail.com> <akwJmKqZJS1sJzFk@redhat.com>
-In-Reply-To: <akwJmKqZJS1sJzFk@redhat.com>
-From: Akari Tsuyukusa <akkun11.open@gmail.com>
-Date: Tue, 7 Jul 2026 16:54:56 +0900
-X-Gm-Features: AVVi8CfBz91Cjj_2TyUNSllobZ66hJIFMho_I-2O9RLREdueZiXV-s936xkFDMc
-Message-ID: <CAKr_iV5zZ2TR0cE6E8=5JLYqFwYsvGEs8vqKL-rN3RtuSu0Unw@mail.gmail.com>
-Subject: Re: [PATCH] clk: mediatek: fix memory leak on module removal
-To: Brian Masney <bmasney@redhat.com>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, 
-	Miles Chen <miles.chen@mediatek.com>, 
-	"open list:COMMON CLK FRAMEWORK" <linux-clk@vger.kernel.org>, 
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260707-dwmac-mediatek-mt8189-v1-1-17f345eaaca3@collabora.com>
+References: <20260707-dwmac-mediatek-mt8189-v1-0-17f345eaaca3@collabora.com>
+In-Reply-To: <20260707-dwmac-mediatek-mt8189-v1-0-17f345eaaca3@collabora.com>
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Richard Cochran <richardcochran@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Biao Huang <biao.huang@mediatek.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>
+Cc: maxime.chevallier@bootlin.com, rmk+kernel@armlinux.org.uk, 
+ kernel@collabora.com, netdev@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ linux-stm32@st-md-mailman.stormreply.com, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783412493; l=3289;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=bH9Gs0qF0keeUPajExUcfUVpg+DQrsbg/viTr25L8LI=;
+ b=gCeukStCgJ3WFlJpW6pSIe620a8nm6VrzleEOcXfvUlIOJwl6YLnEWPDvr7+fO9EMzCYz/QF7
+ STF4dpk3ltvBOAKfg+6sYokZWxenb11nexxLATn8UxgFzR+vNWEf9lQ
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260707_005508_533393_5F389C13 
-X-CRM114-Status: GOOD (  13.08  )
+X-CRM114-CacheID: sfid-20260707_012139_572614_F1C9E5DB 
+X-CRM114-Status: UNSURE (   9.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,34 +96,129 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Brian,
+Add new compatible string and clock definitions for the Ethernet MAC
+IP found in MT8189 SoC.
 
-On Tue, Jul 7, 2026 at 5:01=E2=80=AFAM Brian Masney <bmasney@redhat.com> wr=
-ote:
-> On Mon, Jun 29, 2026 at 11:23:40PM +0900, Akari Tsuyukusa wrote:
-> > diff --git a/drivers/clk/mediatek/clk-mt2712-apmixedsys.c b/drivers/clk=
-/mediatek/clk-mt2712-apmixedsys.c
-> > index 54b18e9f83f8..24522fc24019 100644
-> > --- a/drivers/clk/mediatek/clk-mt2712-apmixedsys.c
-> > +++ b/drivers/clk/mediatek/clk-mt2712-apmixedsys.c
-> > @@ -129,6 +129,7 @@ static int clk_mt2712_apmixed_probe(struct platform=
-_device *pdev)
-> >               goto unregister_plls;
-> >       }
-> >
-> > +     platform_set_drvdata(pdev, clk_data);
-> >       return 0;
->
-> Please add a newline before the return.
->
-> Also, please split each fix out into their own patch to make backporting
-> to downstream kernels easier.
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+ .../devicetree/bindings/net/mediatek-dwmac.yaml    | 77 +++++++++++++++-------
+ 1 file changed, 54 insertions(+), 23 deletions(-)
 
-Thank you for your review.
-I fixed them in v2.
-https://lore.kernel.org/linux-mediatek/20260707074839.240676-1-akkun11.open=
-@gmail.com/T/#t
+diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+index 3aab21b8e8de..000abec023b3 100644
+--- a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+@@ -20,13 +20,11 @@ select:
+         enum:
+           - mediatek,mt2712-gmac
+           - mediatek,mt8188-gmac
++          - mediatek,mt8189-gmac
+           - mediatek,mt8195-gmac
+   required:
+     - compatible
+ 
+-allOf:
+-  - $ref: snps,dwmac.yaml#
+-
+ properties:
+   compatible:
+     oneOf:
+@@ -36,6 +34,7 @@ properties:
+           - const: snps,dwmac-4.20a
+       - items:
+           - enum:
++              - mediatek,mt8189-gmac
+               - mediatek,mt8195-gmac
+           - const: snps,dwmac-5.10a
+       - items:
+@@ -44,26 +43,6 @@ properties:
+           - const: mediatek,mt8195-gmac
+           - const: snps,dwmac-5.10a
+ 
+-  clocks:
+-    minItems: 5
+-    items:
+-      - description: AXI clock
+-      - description: APB clock
+-      - description: MAC Main clock
+-      - description: PTP clock
+-      - description: RMII reference clock provided by MAC
+-      - description: MAC clock gate
+-
+-  clock-names:
+-    minItems: 5
+-    items:
+-      - const: axi
+-      - const: apb
+-      - const: mac_main
+-      - const: ptp_ref
+-      - const: rmii_internal
+-      - const: mac_cg
+-
+   interrupts:
+     maxItems: 1
+ 
+@@ -147,6 +126,58 @@ required:
+   - phy-mode
+   - mediatek,pericfg
+ 
++allOf:
++  - $ref: snps,dwmac.yaml#
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt2712-gmac
++              - mediatek,mt8188-gmac
++              - mediatek,mt8195-gmac
++    then:
++      properties:
++        clocks:
++          minItems: 5
++          items:
++            - description: AXI clock
++            - description: APB clock
++            - description: MAC Main clock
++            - description: PTP clock
++            - description: RMII reference clock provided by MAC
++            - description: MAC clock gate
++
++        clock-names:
++          minItems: 5
++          items:
++            - const: axi
++            - const: apb
++            - const: mac_main
++            - const: ptp_ref
++            - const: rmii_internal
++            - const: mac_cg
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt8189-gmac
++    then:
++      properties:
++        clocks:
++          items:
++            - description: MAC Main clock
++            - description: PTP clock
++            - description: RMII reference clock provided by MAC
++
++        clock-names:
++          items:
++            - const: mac_main
++            - const: ptp_ref
++            - const: rmii_internal
++
+ unevaluatedProperties: false
+ 
+ examples:
 
-Best regards,
-Akari
+-- 
+2.55.0
+
 
