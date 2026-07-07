@@ -4,89 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BC4DC4450A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 14:20:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD478C43458
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 14:47:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4WZPy/c3sDMh6FvNOubKwY8eXgDSBJISVtNHbO2gM08=; b=ZOuYxWIT6npUYOBI/9haS7aKvq
-	oMw+cebfu9TaBL5Z37F6B1xVQIo5LFHaGU7/95YYvTU0XMPEqMvc0UI0tUKRUwS6BhKnmEMRMPw1q
-	Uh4iTRmR7m/ZYOyHg/J/sVYFvZaLAWiMsqZrKJMpjx+61yVzzXD7LnTH4QlHf3uJxSwjKHSFbXUgD
-	LNCVj0ZLwzFZTgaDmWPI3P0hk9bZ+cIbakCTcwinOWtieU6Wh3eV9nwIfEidFcbEPHC1s+SwuYkRJ
-	OY3vSWmxi83BKGRAoP7BjDjNmDt/UX8H+vUiNCvrAdf249hTxN1cDZaiWDdHse3ccQFVoAs+MQp1z
-	GVis7egA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ph7EonUkISD+ckd5Ulg8eFLpvpFj+V9UnIoIMQ3RmAQ=; b=U28JAzbYi9zeVV6KthH3/dSedF
+	OKazPbIzmjOH8gsCXu17ZzooDrShspfl+95HI99dpYI1deYfaTldnM/XpH3jOAkV+F858azVW4WeG
+	8qF4J/17pCdCSH4jzerCGDILL593OrJUgTWAsKyjO/pd88R2rB7LhOk8SLoZ2z05iKNrnPYEuuHB5
+	E3X8+kry6d2dUh/FDTlAJrl93d2NUpepwey7g7WqzCYYAhm74Vfelvy64Pztf9LNREeEbwkzOBMph
+	/CaybxOZyk6maORHmGkerzTY68aKc4PrquBYNNO6Wfuugov7y2w30EevjOb68+2Mwo/Ogq7AAr12Q
+	2/yms7LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh6eg-0000000F9A1-2RwE;
-	Tue, 07 Jul 2026 14:20:10 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wh75H-0000000FCbR-2isB;
+	Tue, 07 Jul 2026 14:47:39 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh6eR-0000000F8id-3Di5;
-	Tue, 07 Jul 2026 14:19:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=4WZPy/c3sDMh6FvNOubKwY8eXgDSBJISVtNHbO2gM08=; b=DFPf9TYM1HRIdE37v0k7ANnIRB
-	/VE+Em9qs5TIsXE83GrVKCJ2BaLIHznL+EHbB+/b7jrv/Em6AvokkHIVvuAFahI73QITCOXa/7fBQ
-	YqnzKhtkouqRo8lSdqeqlQU6FlsZt2hYCGHtiNWELp71arDSdibicO4mCDxNn11a8YLH0LHc2CEoZ
-	MxiIcid/fKnnDG++lq3CJVf7+NH6iAA+Ksu+5Mz5h6erU0wCUWJIQqP6SClDgCi5IQOTTKnqmK6Kx
-	xbcpJ9mIcImqH24JsJ33xJK3Hs5hT/fRkhzOq3XXhV0LMUqnSGJSu3qCybnoU/Rt3xiU/pyYb4N7U
-	J4m6DhSg==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wh6eO-00000007XVc-2HRR;
-	Tue, 07 Jul 2026 14:19:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783433990;
-	bh=1mFwOiUnJoBtpdzPigcW8ucCsQx6xBaelg4YAbDZAJw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=gAYBUVS5YAHxL44NpBbw6lJESG2MwC+fA1bhwtE4X8RoSiQzZ1kNWUAOXATS7sp9z
-	 ME4SsMDnDv9QWmWnDIw0z9qWhmAGEbHhygDwoMW+5rcInMHS9sOM1cRV5rF2NLS39K
-	 YwAsqMOaLWllP8B8JW60RadNMXDfuDDRpYGBfro4i5rUN3wWJoSEwm+8VIlR9nZfid
-	 XX8hbHDZaWOWfPBduDpCXQWPPZAZA0+0ScrvS/bsnmeUc9tDuSuaUV5sf8Eufwc3yD
-	 b6G3W88qtXEurUpzvGTds6vRttS1mQOLi0VrvBzXJBHX5hBk2pdtCZ54jB6sp0sX3b
-	 tn1pMR2uwkDOA==
-Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5B3BB17E0076;
-	Tue, 07 Jul 2026 16:19:49 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunfeng.yun@mediatek.com
-Cc: vkoul@kernel.org,
-	neil.armstrong@linaro.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de,
-	justin.yeh@mediatek.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	kernel@collabora.com
-Subject: [PATCH v2 10/12] phy: phy-mtk-dp: Add bitrate register val definitions to SoC data
-Date: Tue,  7 Jul 2026 16:19:29 +0200
-Message-ID: <20260707141931.191172-11-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260707141931.191172-1-angelogioacchino.delregno@collabora.com>
-References: <20260707141931.191172-1-angelogioacchino.delregno@collabora.com>
+	id 1wh75E-0000000FCaB-1LBR
+	for linux-mediatek@lists.infradead.org;
+	Tue, 07 Jul 2026 14:47:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1783435655;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ph7EonUkISD+ckd5Ulg8eFLpvpFj+V9UnIoIMQ3RmAQ=;
+	b=PV3S61lyNhnK0gRLnbVCiCW9miqAnHF5oKIw1Ar6CrZxgYVE9l302ndTJC1yvjoM2GiAj1
+	Qf8RuSPpvmkWmqrPe5CBXt1aS3/45Zi66E8JTe4lEmrVeGXDA1Mz/2wSpLYZIDPFUUzNmY
+	d5BQrZm7nKXSfvTON8tcUgXBDgc2afI=
+Received: from mail-oo1-f71.google.com (mail-oo1-f71.google.com
+ [209.85.161.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-60-p4iViBwxONW7Vp52RYiW2Q-1; Tue, 07 Jul 2026 10:47:32 -0400
+X-MC-Unique: p4iViBwxONW7Vp52RYiW2Q-1
+X-Mimecast-MFC-AGG-ID: p4iViBwxONW7Vp52RYiW2Q_1783435652
+Received: by mail-oo1-f71.google.com with SMTP id 006d021491bc7-6a151035f9aso7356555eaf.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jul 2026 07:47:32 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783435652; x=1784040452;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=ph7EonUkISD+ckd5Ulg8eFLpvpFj+V9UnIoIMQ3RmAQ=;
+        b=LjM+JbnVjLgJks7b2fBVXUAlYQaEbyrkxqMfFmSIz1SIyyHywaVak0nYgIsjU/s0fk
+         eDOpb3O5pswXHjbk9eaqfNCrZIFSbsyw3+5rgz/oxjVrDSkbOsN/m4XB75/NWLdpTsMY
+         nBU2eOeeHsEtGz9CSegF1nlX8Q6Z0sq7FXkKMLdA4at1LE49D6zLUeH76mMNlv/+4A+P
+         meAWKb+uyUc8HPL3lZpJcz6as/fiqVzbwbw6P/MU0Ud1QphjGrWqrRt9qZU3F7KSeLGa
+         JHBLO73w6fW/XQCFq8eew9Kaoz4d2KW0QpSOVImwwkD8vW+usIdC8SSsJDyBY2ksZGej
+         IyTg==
+X-Forwarded-Encrypted: i=1; AFNElJ9lS2dVfBzawiZIFTwwfAxo3xtoFCMRc+3IShOSLO+hn6iZa0bqv3iaHZ9xtcz8KLLu777IZEfmrHPh1fqvww==@lists.infradead.org
+X-Gm-Message-State: AOJu0YySUwvQIIbtM/He/sm5o5e4v5zIlAdHdf8jTjSBQl4VVZIY1Xzu
+	oio62JJ6SvKc0mL3zyAGtVOkbcTLdB/3zIeClELnNz5AYl2GbdoInoPRsV1C6VoSrol2X6O7Eaf
+	sNw0mQ9FiHoePzDtDyc04bG3ACXOsLRfkP85QcG/tCx5u2uGcX8Wi1i/II1H8pFOcUr96+Bsqcg
+	==
+X-Gm-Gg: AfdE7clyXj0fNMUft30nAl1C76ZeVV7GLBBJiMB1OUJCkDnQVFCov9qsqWPZZs54i6R
+	1tOyYmxSQ75/rJkWR6Sqh7+/XfFwSYMQhVqzV3zAaUpy1Tum1GJ063DWO1U1+SCbUAYzaNFioJy
+	8ld/0ic5Ne4hx153FFc6NX3wfziHXAu7jobHvGf28nt+3rYrG4+uGuAd0HgdEK9xfoFJEabFDzc
+	lc1myBrumBUtdEHa2FV5d+7KKtGUZUPUQFGgbK+Glrh+cULJxYS2TmZLMVEKkfqtBcfEvhIwpHs
+	jFkJwcTxnLz6YOfJvelG4teZiXbcvyokKhE4LMqztC5gE1vbB0mZ3eJf7G5A82l9KnvyGFr7GZW
+	+y1YKck8g
+X-Received: by 2002:a05:6820:a09:b0:6a3:2b61:4cc7 with SMTP id 006d021491bc7-6a355597cdbmr3682025eaf.72.1783435651886;
+        Tue, 07 Jul 2026 07:47:31 -0700 (PDT)
+X-Received: by 2002:a05:6820:a09:b0:6a3:2b61:4cc7 with SMTP id 006d021491bc7-6a355597cdbmr3682007eaf.72.1783435651367;
+        Tue, 07 Jul 2026 07:47:31 -0700 (PDT)
+Received: from redhat.com ([2600:382:850a:55b4:731e:b0d4:e0cc:410])
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-44cfb54f775sm13945468fac.10.2026.07.07.07.47.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 Jul 2026 07:47:29 -0700 (PDT)
+Date: Tue, 7 Jul 2026 10:47:26 -0400
+From: Brian Masney <bmasney@redhat.com>
+To: Akari Tsuyukusa <akkun11.open@gmail.com>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Miles Chen <miles.chen@mediatek.com>,
+	"open list:COMMON CLK FRAMEWORK" <linux-clk@vger.kernel.org>,
+	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	stable@vger.kernel.org
+Subject: Re: [PATCH v2 2/6] clk: mediatek: mt6795: fix memory leak on module
+ removal
+Message-ID: <ak0RfpOX-KTT5IZt@redhat.com>
+References: <20260707074839.240676-1-akkun11.open@gmail.com>
+ <20260707074839.240676-3-akkun11.open@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20260707074839.240676-3-akkun11.open@gmail.com>
+User-Agent: Mutt/2.3.2 (2026-04-26)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 0WCAKCbYl_d7tApR2JTojwgiBmI3W9PqD7TVgRjKxwM_1783435652
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260707_151952_700350_245662C9 
-X-CRM114-Status: GOOD (  13.36  )
+X-CRM114-CacheID: sfid-20260707_074736_781623_ED8775F5 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,120 +119,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation for adding support for the eDP PHY found in newer
-SoCs, transfer the bitrate register value definitions to SoC
-specific data.
+On Tue, Jul 07, 2026 at 04:48:31PM +0900, Akari Tsuyukusa wrote:
+> clk-mt6795-apmixedsys.c, clk-mt6795-infracfg.c and clk-mt6795-pericfg.c
+> do not call platform_set_drvdata() during their driver probe callback,
+> but their remove callback calls platform_get_drvdata().
+> This results in platform_get_drvdata() returning NULL, which leads to
+> calling kfree(NULL) in mtk_free_clk_data(NULL).
+> This leaves clk_data unreleased, causing a memory leak.
+> 
+> Fix this by calling platform_set_drvdata() during probe.
+> 
+> Fixes: 0d363282bb0c ("clk: mediatek: Add MediaTek Helio X10 MT6795 clock drivers")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/phy/mediatek/phy-mtk-dp.c | 36 +++++++++++++++++++++++--------
- 1 file changed, 27 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/phy/mediatek/phy-mtk-dp.c b/drivers/phy/mediatek/phy-mtk-dp.c
-index 9a800d6b91c3..8ac086360138 100644
---- a/drivers/phy/mediatek/phy-mtk-dp.c
-+++ b/drivers/phy/mediatek/phy-mtk-dp.c
-@@ -42,10 +42,6 @@
- 
- /* DP_PHYD_BIT_RATE */
- #define PHYD_DIG_RG_BIT_RATE		GENMASK(1, 0)
--#  define BIT_RATE_RBR			0
--#  define BIT_RATE_HBR			1
--#  define BIT_RATE_HBR2			2
--#  define BIT_RATE_HBR3			3
- 
- /* DP_PHYD_SW_RST */
- #define PHYD_DIG_GLB_SW_RST_B		GENMASK(7, 0)
-@@ -157,6 +153,14 @@ enum mtk_dp_phyd_dig_glb_regidx {
- 	DP_PHYD_GLOBAL_MAX
- };
- 
-+enum mtk_dp_phyd_bit_rate_regval {
-+	DP_PHYD_BIT_RATE_RBR,
-+	DP_PHYD_BIT_RATE_HBR,
-+	DP_PHYD_BIT_RATE_HBR2,
-+	DP_PHYD_BIT_RATE_HBR3,
-+	DP_PHYD_BIT_RATE_MAX,
-+};
-+
- static const u8 mt8195_phy_ana_glb_regs[DP_PHYA_GLOBAL_MAX] = {
- 	[DP_PHYA_GLB_BIAS_GEN_0] = 0x0,
- 	[DP_PHYA_GLB_BIAS_GEN_1] = 0x4,
-@@ -183,6 +187,13 @@ static const u8 mt8195_phy_dig_glb_regs[DP_PHYD_GLOBAL_MAX] = {
- 	[DP_PHYD_TX_CTL_0] = 0x44,
- };
- 
-+static const u8 mt8195_phy_dig_bitrate_val[DP_PHYD_BIT_RATE_MAX] = {
-+	[DP_PHYD_BIT_RATE_RBR] = 0,
-+	[DP_PHYD_BIT_RATE_HBR] = 1,
-+	[DP_PHYD_BIT_RATE_HBR2] = 2,
-+	[DP_PHYD_BIT_RATE_HBR3] = 3
-+};
-+
- /**
-  * struct mtk_dp_phya_imp_sel - Per-Lane Impedance Selection
-  * @pmos: Impedance selection for P-Channel MOSFET
-@@ -203,6 +214,7 @@ struct mtk_dp_phya_imp_sel {
-  * @regs_ana_lane:  Register (layout) offsets for ana_lan
-  * @regs_dig_glb:   Register (layout) offsets for dig_glb
-  * @regs_dig_lane:  Register (layout) offsets for dig_lan
-+ * @val_dig_bitrate:IP Version specific register values for Bit Rate setting
-  * @ana_bias_r:     Internal resistance "R" Selection Settings (global)
-  * @ana_cktx_imp:   TX Clock Impedance Selection Settings (global)
-  * @ana_lanes_imp:  TX Impedance Selection Settings (for all lanes)
-@@ -221,6 +233,9 @@ struct mtk_dp_phy_pdata {
- 	const u8 *regs_dig_glb;
- 	const u8 *regs_dig_lane;
- 
-+	/* IP-Version specific register value arrays */
-+	const u8 *val_dig_bitrate;
-+
- 	/* Calibration defaults */
- 	u8 ana_bias_r;
- 	u8 ana_cktx_imp;
-@@ -326,6 +341,7 @@ static int mtk_dp_phy_configure(struct phy *phy, union phy_configure_opts *opts)
- 
- 	if (opts->dp.set_rate) {
- 		const u32 reg_bit_rate = pdata->regs_dig_glb[DP_PHYD_BIT_RATE];
-+		enum mtk_dp_phyd_bit_rate_regval regval_idx;
- 
- 		switch (opts->dp.link_rate) {
- 		default:
-@@ -334,19 +350,20 @@ static int mtk_dp_phy_configure(struct phy *phy, union phy_configure_opts *opts)
- 				opts->dp.link_rate);
- 			return -EINVAL;
- 		case 1620:
--			val = BIT_RATE_RBR;
-+			regval_idx = DP_PHYD_BIT_RATE_RBR;
- 			break;
- 		case 2700:
--			val = BIT_RATE_HBR;
-+			regval_idx = DP_PHYD_BIT_RATE_HBR;
- 			break;
- 		case 5400:
--			val = BIT_RATE_HBR2;
-+			regval_idx = DP_PHYD_BIT_RATE_HBR2;
- 			break;
- 		case 8100:
--			val = BIT_RATE_HBR3;
-+			regval_idx = DP_PHYD_BIT_RATE_HBR3;
- 			break;
- 		}
--		regmap_write(dp_phy->regmap, pdata->off_dig_glb + reg_bit_rate, val);
-+		regmap_write(dp_phy->regmap, pdata->off_dig_glb + reg_bit_rate,
-+			     pdata->val_dig_bitrate[regval_idx]);
- 	}
- 
- 	if (opts->dp.set_lanes) {
-@@ -744,6 +761,7 @@ static const struct mtk_dp_phy_pdata mt8195_dp_phy_data = {
- 	.regs_ana_lane = mt8195_phy_ana_lane_regs,
- 	.regs_dig_glb = mt8195_phy_dig_glb_regs,
- 	.regs_dig_lane = mt8195_phy_dig_lane_regs,
-+	.val_dig_bitrate = mt8195_phy_dig_bitrate_val,
- 	.ana_bias_r = 15,
- 	.ana_cktx_imp = 8,
- 	.ana_lanes_imp = {
--- 
-2.54.0
+Reviewed-by: Brian Masney <bmasney@redhat.com>
 
 
