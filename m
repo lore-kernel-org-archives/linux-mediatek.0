@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3355C43458
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 07:49:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1529EC43458
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 07:49:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+brjFLVFjY/4CAFVXT8akEWDnOfxHjuH7xO2k8ZWc/w=; b=sLVISLt+2PnbXX6qBwgo1JIPw0
-	Nb9rpbPWknNMw+Gho1+FXh/0RuIbrSFiu/cbmLlK11C9Q+x1M28ur0Rl8gDQHhLCZKuwkSv9jONIF
-	6bLkaxEBQkOA9lgwJsCz3t0r+hOA2PWwePnrPk2TPngJPtGCdFTN7GsTX8d32c5E8w89Gd1bqQp3a
-	hrAmAiJoEtvJ8ss+BkV6GQoQCOZdVZTmfAPCxoPB4ne2p7GxieZ9z08ukJ/4PLUdNoXdl5uCa0/pL
-	i21TO8uYTrLScjgWU0Yu9Ez/s0wasFnlmc/epO/MokUueomzoC7rp0fYvLRBIpcEk+xJvhNKMNZNm
-	lO06bKrg==;
+	bh=t0usj1Azn3b9r2TvYMyi39ADdH0kaKf4fB0NJ5kTbFs=; b=OPA1HLjjv6B9dQJKuGk7RaJ9C/
+	5caYZHGFwDfa8Nn1NRRZx1JLNX1H3gNPIFJGNpHty3C5mfhMsbSE2+i1ZZOtOzLJYFxDRfdAR8y++
+	LNr5k3wCdT0Ux0z9/vxGABR3lZfX6LIGEsNSsDeuxrmibPtM003FDMtpeh4YQavdyFDL+dwCtRj+a
+	+b3yo4FhaFhrToPGkLJ74ADNcAt4il1vCGN0H/v5nppT6V+nGdq6iuehanwxr0kOh2XrB/PvFHU1o
+	15dxuXoXDq275xhLoqmm2e81WM4S8bmxW59ILeYoTX7ADVC1F1K7uJHV7rQWkYJO43Cz8fmA8yydW
+	0CaFttzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh0Yd-0000000EMRH-37r7;
-	Tue, 07 Jul 2026 07:49:31 +0000
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+	id 1wh0Yk-0000000EMWn-17rj;
+	Tue, 07 Jul 2026 07:49:38 +0000
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh0YY-0000000EMMx-0vEH
+	id 1wh0Yb-0000000EMPu-1e0C
 	for linux-mediatek@lists.infradead.org;
-	Tue, 07 Jul 2026 07:49:28 +0000
-Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-37fc02e660bso3148902a91.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jul 2026 00:49:26 -0700 (PDT)
+	Tue, 07 Jul 2026 07:49:32 +0000
+Received: by mail-pj1-x1034.google.com with SMTP id 98e67ed59e1d1-381891a9525so3598550a91.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jul 2026 00:49:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783410565; x=1784015365; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1783410568; x=1784015368; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=+brjFLVFjY/4CAFVXT8akEWDnOfxHjuH7xO2k8ZWc/w=;
-        b=Q2QXsDxMSyRD0fYILyK617pBlWf1Wj24RhdY29Kxtio1nwpIavfMM2d9m1e+mkT/Z8
-         cH8DOcB0Wh83Uc82bwBxRP8qMsgL62JS8xrvgG5OHnkaMxyE5euce+tHr9XL7CVoB7mz
-         s78jFd4bx3mz2x7sFhS1jOneNTCptGFBSAw3GfWvzqegVOVtn2ENPYDZqx6rxrGoLBI8
-         BJVHi2UvW1SkWmeDMVFlCDI8/bkJ8BX4oECAStTd2IkXZl0MOtlSIR4BVqIPK8pnsv/t
-         rPIKLKMjkEuVekIy07MOB3pvPBwFBTBrLiGBVXNm62QCs9jg0DCKJAgJ0lnXa58CbhxT
-         sIng==
+        bh=t0usj1Azn3b9r2TvYMyi39ADdH0kaKf4fB0NJ5kTbFs=;
+        b=dU1l9TiJIcjvry19kPWGYIt/HdAGeFSDVuc0xlX1qeaOkhw8YYtx3dY30YEZgUY4tU
+         pK6mfG28n5ab7pjIsWgREso/V03L4fCpYUVNKFPKHbTGGOGoZMxCuGw4yot6/YbZeuSo
+         +kY6bnkqRTHPABF/pHzdTE6bUrgjanF9Mu5FFw0g+RGKo5DIRefFym6vaZ5w3o0Si1da
+         yd7m/wK2+gpaT2wgi5hx/b7fP/whIxhLJSezHUVnVOKmDafCjy0ZdIBvDAImdr8TzRQK
+         5HuIjjh3esWCZ4Od05wgadBLXZxZyv8G5jjPUXqxqKxIUFTnYaAzkuX589J9xB7oayol
+         PjWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783410565; x=1784015365;
+        d=1e100.net; s=20251104; t=1783410568; x=1784015368;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=+brjFLVFjY/4CAFVXT8akEWDnOfxHjuH7xO2k8ZWc/w=;
-        b=VbXpspMTLYkG7k/MoKq0p4gmDT7C1Ll6YOClzEzUMTElJIx5VCoSQWVVTAvkxAvKBn
-         TOAReByqJgLqxDQEIaJaO4LzW1NTpRFzm7nwzGtevk5Kz+x4l02WKw90WFMe7AvXQcW+
-         mZOJgcbzT2ir/mL6TeKwnN4NwRpnfLLdNSpzHERyj6NgFgNMndCDPZ5jnUGlm7aP5C+J
-         5XlZSwwEB8jaQ3+iEHHkjcSNt+nbLCXHuEGyjatsZsu513CXf3AYCKSeFGDO5BCO4ZVU
-         HRQKMJXS8OhuJa7FguX1MXhjsiPggNRS8K9mYe0mTZCjcqZR6Kg+W1o7GivEUWA3N4pk
-         HY5w==
-X-Forwarded-Encrypted: i=1; AHgh+Roaou71jkYmjKtY9OFRKIlk92iKtmU35jLaiz+eCgBJ9qTpihfOWN4YABzIfif0vutkKn+kHnUL52GlwmRaLg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzDti91Em/r0aNMFrUSfYJfLAr24jMyUvJIgZvDRp5YiQt4IKyW
-	J/09+cqlmiZ0gTDUbdJ/bbNjRTLlYLN5l3ezJOwQUVcAiQt3ocoH3sUn
-X-Gm-Gg: AfdE7cnHdRHJbOXj5zvhDUxvxbUZpVtULRLBYevxb1HeEQL6Z+yMR9hFqQ/NyqJyzqR
-	clf65UXHAIZt5U38muliS+yYO5etD34b6GIEL/n4Uca8VNttqLKVP//tzOdGJ1XPj818FpXpGdU
-	X39MbPR6HKDpmhHQPkzZWIVtdKCRVGH8qWETIqOP2QUqO1BO2BXyQgJePHyOChevYwp6a9FoiMr
-	itaAj9Kbrvc+pcnvmyTRr7nxyAS4EaR+g9MFy94bZNU3TWOXuc+p+PniHP2V8bIWgFQ8kKv2oYc
-	TlpwaRUseLAE3/1o3jcN5bMtnKzJY87lPlqoLoIfed+xqDKLzXHUSJi65dJq8XKEFzflvX1ggnb
-	Vp47fnMxjGdvTVysdtHqNt2E3TEwliKKsKaZ5n/C4s13LlqtAwAViGi656XwYEc1KPH+Iy0mBA6
-	8idkMaD6RxbJslmfODlC6XShMR6M27/+ox3MFsHGqP03QO
-X-Received: by 2002:a17:90b:2709:b0:380:9d0d:7af8 with SMTP id 98e67ed59e1d1-38758260ad3mr4159340a91.20.1783410565340;
-        Tue, 07 Jul 2026 00:49:25 -0700 (PDT)
+        bh=t0usj1Azn3b9r2TvYMyi39ADdH0kaKf4fB0NJ5kTbFs=;
+        b=VWRtNwzhHSPBN6xlltYPpwOp3MxE04QX7ul5odJedzFmW69vpmA7atBnfcnO8inayz
+         b2D98ZE0NwC9LwEJLfp94gDBeBXtCVEiHfM7DEVUimOCKfAj37nvoMS2EP4/6w6qX9An
+         t+ipiQxPCCdHcepMBScNgF0GrkVcj863ZfP8ZwOaHEWO8j1Pu09dj4ylIU1B5cTwDLVC
+         UPfxv66jeccLPDWU23VuH7nCYTZjPxyEB3LyThOqp0d6JCvkfL/iMJSN7Jbbum3BoUne
+         fAtuNJ8h3imTdTC328h9QYEqLuGfzHRDDw9MEiXoB7uN17ZL8uXgFnR2ReW9JKyfGU6b
+         pVKw==
+X-Forwarded-Encrypted: i=1; AHgh+Rp+noASdMMvDxhFtDDTb3eCyVteLUf9ERn1qJRwCDLFIunsHif2fUhb7rjD4N//X3mvVDAjSfNeuAX8BZPDxw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxtVpcUPEI3Kb8MGhb0mG7B6cnNpP+R0R6Sty0ZnPR10gQvzYqQ
+	AfR/1X7JpG6iKPKOypzCrdKZ5Zi74b5Y/2iUHXk4g+9s0l9K9y0oa/hK
+X-Gm-Gg: AfdE7cm7Al7DJVGSVGrHycEuqQlV0S8NEE9+qe6fXUj7YX/jeerJY7oD3On4UrxaO50
+	/U2yU59dH1j+JNIp4EJdM6xoa1jqJYFdJgK7Uq2A3R7iAXIC2bpxVJXZhm4rU9SfSf2/sCIP8bH
+	q0UezBEoWAtMkrSkoxnC1ysP2ayGIKGJLCuPI8TSenLQNlmaloja54rXtGl4w7/BE2AIXL9+NJ8
+	H6LtnJuWJdEwhv2i4gm1JFAQgqomCRIgGcxozi9J9r48VZj/t2zWXFwLbB2UUv5nGU+o6QOIRO+
+	546qAHirBXGi1Sb/H+PC374pMXOnpRMlEE8mG4GZgc+leNkvduzz8CZ4SItffilSPuJxgZ8Z+LY
+	aemr4gpO2T12sSJn7QLo4mupz1BW9LHE/ayzu5nawUwJ4xyDHPjoLA24bMmJJfxRHq5g3LJBBnQ
+	1bMz5j/8Z9Bzg9iDTxUvFgu+uHjQoQGX41rzZhMnW5Owvg
+X-Received: by 2002:a17:90b:4a0c:b0:380:873:49cb with SMTP id 98e67ed59e1d1-387572b380cmr4047566a91.21.1783410568403;
+        Tue, 07 Jul 2026 00:49:28 -0700 (PDT)
 Received: from buffalo-ssd (M014013071096.v4.enabler.ne.jp. [14.13.71.96])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-387d20a361asm626710a91.15.2026.07.07.00.49.22
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-387d20a361asm626710a91.15.2026.07.07.00.49.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Jul 2026 00:49:25 -0700 (PDT)
+        Tue, 07 Jul 2026 00:49:28 -0700 (PDT)
 From: Akari Tsuyukusa <akkun11.open@gmail.com>
 To: Michael Turquette <mturquette@baylibre.com>,
 	Stephen Boyd <sboyd@kernel.org>,
@@ -83,17 +83,17 @@ Cc: linux-clk@vger.kernel.org (open list:COMMON CLK FRAMEWORK),
 	Chen-Yu Tsai <wenst@chromium.org>,
 	Miles Chen <miles.chen@mediatek.com>,
 	Akari Tsuyukusa <akkun11.open@gmail.com>
-Subject: [PATCH v2 3/6] clk: mediatek: mt7622: fix memory leak on module removal
-Date: Tue,  7 Jul 2026 16:48:32 +0900
-Message-ID: <20260707074839.240676-4-akkun11.open@gmail.com>
+Subject: [PATCH v2 4/6] clk: mediatek: mt8135: fix memory leak on module removal
+Date: Tue,  7 Jul 2026 16:48:33 +0900
+Message-ID: <20260707074839.240676-5-akkun11.open@gmail.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260707074839.240676-1-akkun11.open@gmail.com>
 References: <20260707074839.240676-1-akkun11.open@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260707_004926_267382_6EB9ADC9 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20260707_004931_719765_45DCBC64 
+X-CRM114-Status: GOOD (  11.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,50 +108,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-clk-mt7622-apmixedsys.c and clk-mt7622-infracfg.c do not call
-platform_set_drvdata() during their driver probe callback,
-but their remove callback calls platform_get_drvdata().
+clk_mt8135_apmixed_probe() in clk-mt8135-apmixedsys.c does not call
+platform_set_drvdata(), but clk_mt8135_apmixed_remove() callback calls
+platform_get_drvdata().
 This results in platform_get_drvdata() returning NULL,
 which leads to calling kfree(NULL) in mtk_free_clk_data(NULL).
 This leaves clk_data unreleased, causing a memory leak.
 
 Fix this by calling platform_set_drvdata() during probe.
 
-Fixes: c50e2ea6507b ("clk: mediatek: mt7622-apmixedsys: Add .remove() callback for module build")
-Fixes: 838b86331c5e ("clk: mediatek: mt7622: Move infracfg to clk-mt7622-infracfg.c")
+Fixes: 54b7026f011e ("clk: mediatek: mt8135-apmixedsys: Convert to platform_driver and module")
 Cc: stable@vger.kernel.org
 Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
 ---
- drivers/clk/mediatek/clk-mt7622-apmixedsys.c | 2 ++
- drivers/clk/mediatek/clk-mt7622-infracfg.c   | 2 ++
- 2 files changed, 4 insertions(+)
+ drivers/clk/mediatek/clk-mt8135-apmixedsys.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/clk/mediatek/clk-mt7622-apmixedsys.c b/drivers/clk/mediatek/clk-mt7622-apmixedsys.c
-index 8a29eaab0cfc..fae8abda14b3 100644
---- a/drivers/clk/mediatek/clk-mt7622-apmixedsys.c
-+++ b/drivers/clk/mediatek/clk-mt7622-apmixedsys.c
-@@ -109,6 +109,8 @@ static int clk_mt7622_apmixed_probe(struct platform_device *pdev)
+diff --git a/drivers/clk/mediatek/clk-mt8135-apmixedsys.c b/drivers/clk/mediatek/clk-mt8135-apmixedsys.c
+index 19e4ee489ec3..e3b7dc13b458 100644
+--- a/drivers/clk/mediatek/clk-mt8135-apmixedsys.c
++++ b/drivers/clk/mediatek/clk-mt8135-apmixedsys.c
+@@ -66,6 +66,8 @@ static int clk_mt8135_apmixed_probe(struct platform_device *pdev)
  	if (ret)
- 		goto unregister_gates;
+ 		goto unregister_plls;
  
 +	platform_set_drvdata(pdev, clk_data);
 +
  	return 0;
  
- unregister_gates:
-diff --git a/drivers/clk/mediatek/clk-mt7622-infracfg.c b/drivers/clk/mediatek/clk-mt7622-infracfg.c
-index cfdf3b07c3e0..cec19447d637 100644
---- a/drivers/clk/mediatek/clk-mt7622-infracfg.c
-+++ b/drivers/clk/mediatek/clk-mt7622-infracfg.c
-@@ -90,6 +90,8 @@ static int clk_mt7622_infracfg_probe(struct platform_device *pdev)
- 	if (ret)
- 		goto unregister_cpumuxes;
- 
-+	platform_set_drvdata(pdev, clk_data);
-+
- 	return 0;
- 
- unregister_cpumuxes:
+ unregister_plls:
 -- 
 2.54.0
 
