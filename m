@@ -4,55 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7916C44502
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 15:11:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A906CC43458
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 15:12:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=JjlforA+ziaBJVLx4Cnr7pb3fjV8I7GXKYxgRHaZVMM=; b=OsmzVXbFszmezR
-	liyADZkhKvjSLK15EzlWzSzkLBSel8nvRf7lPfZr+MLDMusrXHCxdosgLFhAwnbRLVEz5/2+Sz4mb
-	obQW9KE/PENXDt1HPzWKyZXyYqUj2CMggTEG0u3Buc1nuou7tmGs9uaf0kQUBonVGTgJrvApfNhg2
-	G7D11pE2rzUBqNJHBN8lt/HQI2Dcx+uCzXO7MJre1TGOrr8A7YrkF4Ctb91lSa8fxJqBOgg7Z/Mbz
-	dRC+t5+DP+FYoUSsEns1AvuG1fCynBc+QfVxb6Lyfj14yhdkSigiSRTyCE1C8LHQ4z9Nq5m9Gc8uC
-	kRjiCWSEuT1Ci7n+coYg==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RjJo3Fj4Y3M7P7UUf2J8RDjcdklOkU4JBfrPJgHwwLc=; b=3j3dHE2NFNFiHPMOoJu7sObnav
+	IazCNMlMGKeYp/RVAGzDyQCFREk6VksIZHt1pI0wQxgsZry/oPTECFmjdfDUSolGrhKfB/NngJQDY
+	ln4J3MY6mZmU5Lxot3eae6mDFRLDKacoN8ZZyNbiFQCpi4F09r7SMJ2W+KRa+of9KEvT1KVyx/pTc
+	+ffdJKjkIFMuP6JT3rPAmB0nL9gnC7PFxe3gOLAfuNg/0Y7yx6h7ro4UeWLLrgZPI5wYaUpXM5GDf
+	0ecS8+7BnfzX/oms8xHEtRg1Fn96ziUAR2wkmw914ihQ3PYxgBzY0ToODBCMzTvEZGYDMp12XgVUb
+	qrMpm5Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh7SP-0000000FFph-3FdD;
-	Tue, 07 Jul 2026 15:11:33 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wh7TT-0000000FFxx-1DBf;
+	Tue, 07 Jul 2026 15:12:40 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh7SO-0000000FFpO-0saD;
-	Tue, 07 Jul 2026 15:11:32 +0000
+	id 1wh7TS-0000000FFx8-0bRt;
+	Tue, 07 Jul 2026 15:12:38 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 375DA600BB;
-	Tue,  7 Jul 2026 15:11:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4AFFE1F000E9;
-	Tue,  7 Jul 2026 15:11:30 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 68BFF6187C;
+	Tue,  7 Jul 2026 15:12:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9FC1C1F00A3A;
+	Tue,  7 Jul 2026 15:12:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783437090;
-	bh=JjlforA+ziaBJVLx4Cnr7pb3fjV8I7GXKYxgRHaZVMM=;
-	h=From:Subject:Date:To:Cc;
-	b=X2OMVpVVZIPZgxnKjrKjswDJh0duEmdapPSfE68qiGhWWIKiIDY0RU163wpGKIaDe
-	 eGem2XLqIyxXzMI7rOMp33ad74vgjmwJNl5or2vF8DICNrz+8otdvm3vmFtBN2R30e
-	 C2VA3XzVrOXeVfRfw4v8rOgzBJf7Dr2AUBLvtWrahyFfzWeFNty09CqqQPa20BbzlD
-	 g8Ce8t9oGlLDKtxa1W9CFIqQtY07w04lRVRfqXm2hbvlWi8f9ZNikY5JwSut+Ba1AL
-	 6pryS3NyKnoiaqPK+HavXoR4vYMCcYwvj/6b/sNgh8zGu/JJho2AbgO392+U7EAx8s
-	 9aSuchoVMFnDA==
+	s=k20260515; t=1783437157;
+	bh=RjJo3Fj4Y3M7P7UUf2J8RDjcdklOkU4JBfrPJgHwwLc=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc;
+	b=oNrE6GLHfhtGtv/ZYgV4pjobiyQ6dd9YmJn6lQ3RbhmHw2lwFIsvE16xGK9fDQGgY
+	 Nm35ldQswJ6l6Ls6GYfEcBwE1NXRpev0XPn6sEWk325kD4HkUMBYC4gcPT+tHh4Ivf
+	 Hr/RF6/no7dtTJVfKVU9JTQxoegV/Larnrsi3hNaou6N/fVbI4Uu7OnXaLDUhpfDkL
+	 uzkc5UHPAomj7PWjiS+0kKMkftaSx0SIvasOJT3RF3sVoPYvrvYDIMmIAWu9hIhic8
+	 cL8b+69YHk2V2RLsrlyIVd3HCC1BioAVOuPkfmhGmZ1xp/BfoR2WceRlbmKaB8aPSg
+	 f3Oqy/dtFQ5IA==
 From: Maxime Ripard <mripard@kernel.org>
-Subject: [PATCH v2 00/37] drm/bridge: Convert all bridges to atomic
-Date: Tue, 07 Jul 2026 17:11:07 +0200
-Message-Id: <20260707-drm-all-atomic-bridges-v2-0-21d03cbca446@kernel.org>
+Date: Tue, 07 Jul 2026 17:11:35 +0200
+Subject: [PATCH v2 28/37] drm/mediatek: dpi: Switch to atomic bridge
+ callbacks
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3WOQQ6CMBBFr0Jm7ZgWsRhX3sO4KHTAiZTqtBKM4
- e4CunX5J3lv3hsiCVOEY/YGoYEjh34e+SaD+mr7lpDdvCFXuVFG79GJR9t1aFPwXGMl7FqKWDh
- bNFS6Zn9oYIbvQg2Pq/h8+W6hx3P2p+8RKhsJ6+A9p2O2WD3HGnsaEy7PUJWocljYK8cU5LU2D
- nqFfznlv5xBo8LK7MjstNHGVKcbSU/dNkgLl2maPp8VRM/5AAAA
-X-Change-ID: 20260615-drm-all-atomic-bridges-4da4fe7df58f
+Message-Id: <20260707-drm-all-atomic-bridges-v2-28-21d03cbca446@kernel.org>
+References: <20260707-drm-all-atomic-bridges-v2-0-21d03cbca446@kernel.org>
+In-Reply-To: <20260707-drm-all-atomic-bridges-v2-0-21d03cbca446@kernel.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
  Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -61,46 +59,18 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
 Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
  Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
  Luca Ceresoli <luca.ceresoli@bootlin.com>, dri-devel@lists.freedesktop.org, 
- Maxime Ripard <mripard@kernel.org>, Joshua Peisach <jpeisach@ubuntu.com>, 
- Sasha Finkelstein <k@chaosmail.tech>, Janne Grunau <j@jannau.net>, 
- asahi@lists.linux.dev, Benson Leung <bleung@chromium.org>, 
- Guenter Roeck <groeck@chromium.org>, chrome-platform@lists.linux.dev, 
- Francesco Dolcini <francesco.dolcini@toradex.com>, 
- Francesco Dolcini <francesco@dolcini.it>, 
- Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
- Ian Ray <ian.ray@gehealthcare.com>, 
- Peter Senna Tschudin <peter.senna@gmail.com>, 
- Martyn Welch <martyn.welch@collabora.co.uk>, 
- Manikandan Muralidharan <manikandan.m@microchip.com>, 
- Dharma Balasubiramani <dharma.b@microchip.com>, 
- Russell King <linux@armlinux.org.uk>, Inki Dae <inki.dae@samsung.com>, 
- Seung-Woo Kim <sw0312.kim@samsung.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, 
- Krzysztof Kozlowski <krzk@kernel.org>, 
- Alim Akhtar <alim.akhtar@samsung.com>, linux-arm-kernel@lists.infradead.org, 
- linux-samsung-soc@vger.kernel.org, Linus Walleij <linusw@kernel.org>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Maxime Ripard <mripard@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
  Philipp Zabel <p.zabel@pengutronix.de>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-mediatek@lists.infradead.org, 
- Rob Clark <robin.clark@oss.qualcomm.com>, 
- Dmitry Baryshkov <lumag@kernel.org>, 
- Abhinav Kumar <abhinav.kumar@linux.dev>, 
- Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>, 
- Marijn Suijten <marijn.suijten@somainline.org>, 
- freedreno@lists.freedesktop.org, 
- Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
- Alain Volmat <alain.volmat@foss.st.com>, 
- Raphael Gallais-Pou <rgallaispou@gmail.com>, 
- Ian Ray <ian.ray@gehealthcare.com>
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5894; i=mripard@kernel.org;
- h=from:subject:message-id; bh=HI3ffE+ujzSlcnMKd2l9E+SAUa2JXxPL6wEPc8J2u9o=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDFm+4gJcoUWvVI19WyLDClrCZKtabhWXCV5aIbT3AMdVa
- 73aZpaOqSwMwpwMsmKKLE9kwk4vb19c5WC/8gfMHFYmkCEMXJwCMBF/acaGD8+KT92Pu/z8cfKm
- sw3hWnHKQk6bdh5i/mO39m41F/OpVzaFVr5zZ2yZuTYu1aRIn1GNsT7tUmCS/BrLj5m1V9q/FP9
- YY9Qm9ndNyRHJ65k/NTZ6FU+UnfbF7vQ077xOc5/WY7mdvwA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4993; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=nXbzB00QYc3JnjKw7I84CN7MUu3KVoNBVXjt0wzqJ64=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDFm+4jJRgtkrGbrYgwXTZaZ/b7tkK/7F7wjT7mNXSz7n1
+ aTL/OHtmMrCIMzJICumyPJEJuz08vbFVQ72K3/AzGFlAhnCwMUpABNROMTY0HxUcuqNjlzX5ssf
+ rlakB5nJhpzZt3vyZImfUmbf9bUU7OX8c5ZZCnlZsolzqWrX6mgy1ml8nrnaq7Hovlxd9M9kqd/
+ fJ5rfjZPrP7/450EbqYZV/1X+W3O4eXeJ1wTFy9ibNcjpAwA=
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -117,115 +87,197 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+The dpi bridge uses the legacy non-atomic enable and disable bridge
+callbacks.
 
-Over the years, most of the bridges have been converted to atomic
-modesetting and hooks, but not all of them. This forces us to maintain
-two different code path in quite a few places, which is pretty
-bothersome. The switch to atomic modesetting for legacy bridges though
-is pretty trivial, and we don't have a lot of drivers still using the
-legacy path.
+In order to remove the legacy bridge callback support from the DRM
+bridge core, switch to their atomic counterparts and add the bridge
+atomic state handlers.
 
-This series converts all bridges to atomic modesetting and drops the
-legacy codepaths where relevant.
+Generated by the following Coccinelle script:
 
-Let me know what you think,
-Maxime
+@ is_bridge @
+identifier funcs;
+@@
+
+ struct drm_bridge_funcs funcs = {
+	...,
+ };
+
+@ has_create_state depends on is_bridge @
+identifier funcs, f;
+@@
+
+struct drm_bridge_funcs funcs = {
+  ...,
+  .atomic_create_state = f,
+  ...,
+};
+
+@ update_struct depends on (is_bridge && !has_create_state) @
+identifier is_bridge.funcs;
+identifier f;
+@@
+
+ struct drm_bridge_funcs funcs = {
++	.atomic_create_state = drm_atomic_helper_bridge_create_state,
++	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
++	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
+ 	...,
+ };
+
+@ update_pre_enable_struct depends on is_bridge @
+identifier is_bridge.funcs;
+identifier f;
+@@
+
+ struct drm_bridge_funcs funcs = {
+ 	...,
+-	.pre_enable = f,
++	.atomic_pre_enable = f,
+ 	...,
+ };
+
+@ update_pre_enable_impl depends on update_pre_enable_struct @
+identifier update_pre_enable_struct.f;
+identifier b;
+@@
+
+-void f(struct drm_bridge *b)
++void f(struct drm_bridge *b, struct drm_atomic_commit *commit)
+ {
+	...
+ }
+
+@ update_enable_struct depends on is_bridge @
+identifier is_bridge.funcs;
+identifier f;
+@@
+
+ struct drm_bridge_funcs funcs = {
+ 	...,
+-	.enable = f,
++	.atomic_enable = f,
+ 	...,
+ };
+
+@ update_enable_impl depends on update_enable_struct @
+identifier update_enable_struct.f;
+identifier b;
+@@
+
+-void f(struct drm_bridge *b)
++void f(struct drm_bridge *b, struct drm_atomic_commit *commit)
+ {
+	...
+ }
+
+@ update_disable_struct depends on is_bridge @
+identifier is_bridge.funcs;
+identifier f;
+@@
+
+ struct drm_bridge_funcs funcs = {
+ 	...,
+-	.disable = f,
++	.atomic_disable = f,
+ 	...,
+ };
+
+@ update_disable_impl depends on update_disable_struct @
+identifier update_disable_struct.f;
+identifier b;
+@@
+
+-void f(struct drm_bridge *b)
++void f(struct drm_bridge *b, struct drm_atomic_commit *commit)
+ {
+	...
+ }
+
+@ update_post_disable_struct depends on is_bridge @
+identifier is_bridge.funcs;
+identifier f;
+@@
+
+ struct drm_bridge_funcs funcs = {
+ 	...,
+-	.post_disable = f,
++	.atomic_post_disable = f,
+ 	...,
+ };
+
+@ update_post_disable_impl depends on update_post_disable_struct @
+identifier update_post_disable_struct.f;
+identifier b;
+@@
+
+-void f(struct drm_bridge *b)
++void f(struct drm_bridge *b, struct drm_atomic_commit *commit)
+ {
+	...
+ }
 
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
----
-Changes in v2:
-- Rebase on top of current drm-misc-next
-- Improve commit messages
-- Fix the references in the doc
-- Link to v1: https://lore.kernel.org/r/20260617-drm-all-atomic-bridges-v1-0-b63e6316166b@kernel.org
 
 ---
-Maxime Ripard (37):
-      drm/adp: mipi: Add atomic bridge state handlers
-      drm/bridge: analogix-anx6345: Switch to atomic bridge callbacks
-      drm/bridge: analogix-anx78xx: Switch to atomic bridge callbacks
-      drm/bridge: aux-bridge: Add atomic bridge state handlers
-      drm/bridge: aux-hpd-bridge: Add atomic bridge state handlers
-      drm/bridge: chrontel-ch7033: Switch to atomic bridge callbacks
-      drm/bridge: cros-ec-anx7688: Add atomic bridge state handlers
-      drm/bridge: lontium-lt8713sx: Add atomic bridge state handlers
-      drm/bridge: lontium-lt8912b: Switch to atomic bridge callbacks
-      drm/bridge: lontium-lt9611uxc: Add atomic bridge state handlers
-      drm/bridge: lvds-codec: Switch to atomic bridge callbacks
-      drm/bridge: megachips-stdpxxxx-ge-b850v3-fw: Add atomic bridge state handlers
-      drm/bridge: microchip-lvds: Add atomic bridge state handlers
-      drm/bridge: nxp-ptn3460: Switch to atomic bridge callbacks
-      drm/bridge: of-display-mode-bridge: Add atomic bridge state handlers
-      drm/bridge: parade-ps8622: Switch to atomic bridge callbacks
-      drm/bridge: sii9234: Add atomic bridge state handlers
-      drm/bridge: sil-sii8620: Add atomic bridge state handlers
-      drm/bridge: simple-bridge: Switch to atomic bridge callbacks
-      drm/bridge: tc358764: Switch to atomic bridge callbacks
-      drm/bridge: tda998x: Switch to atomic bridge callbacks
-      drm/bridge: ti-tfp410: Switch to atomic bridge callbacks
-      drm/bridge: ti-tpd12s015: Add atomic bridge state handlers
-      drm/bridge: thc63lvd1024: Switch to atomic bridge callbacks
-      drm/bridge: waveshare-dsi: Switch to atomic bridge callbacks
-      drm/exynos: mic: Switch to atomic bridge callbacks
-      drm/mcde: dsi: Add atomic bridge state handlers
-      drm/mediatek: dpi: Switch to atomic bridge callbacks
-      drm/msm: dsi: Switch to atomic bridge callbacks
-      drm/omap: dpi: Switch to atomic bridge callbacks
-      drm/omap: dsi: Switch to atomic bridge callbacks
-      drm/omap: sdi: Switch to atomic bridge callbacks
-      drm/omap: venc: Switch to atomic bridge callbacks
-      drm/sti: dvo: Switch to atomic bridge callbacks
-      drm/sti: hda: Switch to atomic bridge callbacks
-      drm/sti: hdmi: Switch to atomic bridge callbacks
-      drm/bridge: Remove legacy bridge callback support
-
- drivers/gpu/drm/adp/adp-mipi.c                     |   4 +
- drivers/gpu/drm/bridge/analogix/analogix-anx6345.c |  13 ++-
- drivers/gpu/drm/bridge/analogix/analogix-anx78xx.c |  13 ++-
- drivers/gpu/drm/bridge/aux-bridge.c                |   4 +
- drivers/gpu/drm/bridge/aux-hpd-bridge.c            |   4 +
- drivers/gpu/drm/bridge/chrontel-ch7033.c           |  13 ++-
- drivers/gpu/drm/bridge/cros-ec-anx7688.c           |   4 +
- drivers/gpu/drm/bridge/lontium-lt8713sx.c          |   4 +
- drivers/gpu/drm/bridge/lontium-lt8912b.c           |   8 +-
- drivers/gpu/drm/bridge/lontium-lt9611uxc.c         |   3 +
- drivers/gpu/drm/bridge/lvds-codec.c                |  10 +-
- .../drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c   |   3 +
- drivers/gpu/drm/bridge/microchip-lvds.c            |   3 +
- drivers/gpu/drm/bridge/nxp-ptn3460.c               |  17 ++--
- drivers/gpu/drm/bridge/of-display-mode-bridge.c    |   4 +
- drivers/gpu/drm/bridge/parade-ps8622.c             |  18 ++--
- drivers/gpu/drm/bridge/sii9234.c                   |   4 +
- drivers/gpu/drm/bridge/sil-sii8620.c               |   4 +
- drivers/gpu/drm/bridge/simple-bridge.c             |  13 ++-
- drivers/gpu/drm/bridge/tc358764.c                  |  13 ++-
- drivers/gpu/drm/bridge/tda998x_drv.c               |  13 ++-
- drivers/gpu/drm/bridge/thc63lvd1024.c              |  14 ++-
- drivers/gpu/drm/bridge/ti-tfp410.c                 |  10 +-
- drivers/gpu/drm/bridge/ti-tpd12s015.c              |   4 +
- drivers/gpu/drm/bridge/waveshare-dsi.c             |  14 ++-
- drivers/gpu/drm/drm_bridge.c                       |  61 ++++--------
- drivers/gpu/drm/exynos/exynos_drm_mic.c            |  14 ++-
- drivers/gpu/drm/mcde/mcde_dsi.c                    |   3 +
- drivers/gpu/drm/mediatek/mtk_dpi.c                 |  10 +-
- drivers/gpu/drm/msm/dsi/dsi_manager.c              |  13 ++-
- drivers/gpu/drm/omapdrm/dss/dpi.c                  |  14 ++-
- drivers/gpu/drm/omapdrm/dss/dsi.c                  |  14 ++-
- drivers/gpu/drm/omapdrm/dss/sdi.c                  |  14 ++-
- drivers/gpu/drm/omapdrm/dss/venc.c                 |  14 ++-
- drivers/gpu/drm/sti/sti_dvo.c                      |  20 ++--
- drivers/gpu/drm/sti/sti_hda.c                      |  20 ++--
- drivers/gpu/drm/sti/sti_hdmi.c                     |  20 ++--
- drivers/gpu/drm/tests/drm_bridge_test.c            | 104 ---------------------
- include/drm/drm_bridge.h                           | 103 --------------------
- 39 files changed, 287 insertions(+), 351 deletions(-)
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org
 ---
-base-commit: 928e01b05e0a147db8df1152f95acbb801630308
-change-id: 20260615-drm-all-atomic-bridges-4da4fe7df58f
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-Best regards,
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 959c994eef24..0e4f430de983 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -848,21 +848,23 @@ static void mtk_dpi_bridge_mode_set(struct drm_bridge *bridge,
+ 	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
+ 
+ 	drm_mode_copy(&dpi->mode, adjusted_mode);
+ }
+ 
+-static void mtk_dpi_bridge_disable(struct drm_bridge *bridge)
++static void mtk_dpi_bridge_disable(struct drm_bridge *bridge,
++				   struct drm_atomic_commit *commit)
+ {
+ 	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
+ 
+ 	mtk_dpi_power_off(dpi);
+ 
+ 	if (dpi->pinctrl && dpi->pins_gpio)
+ 		pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
+ }
+ 
+-static void mtk_dpi_bridge_enable(struct drm_bridge *bridge)
++static void mtk_dpi_bridge_enable(struct drm_bridge *bridge,
++				  struct drm_atomic_commit *commit)
+ {
+ 	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
+ 
+ 	if (dpi->pinctrl && dpi->pins_dpi)
+ 		pinctrl_select_state(dpi->pinctrl, dpi->pins_dpi);
+@@ -980,12 +982,12 @@ static void mtk_dpi_debugfs_init(struct drm_bridge *bridge, struct dentry *root)
+ 
+ static const struct drm_bridge_funcs mtk_dpi_bridge_funcs = {
+ 	.attach = mtk_dpi_bridge_attach,
+ 	.mode_set = mtk_dpi_bridge_mode_set,
+ 	.mode_valid = mtk_dpi_bridge_mode_valid,
+-	.disable = mtk_dpi_bridge_disable,
+-	.enable = mtk_dpi_bridge_enable,
++	.atomic_disable = mtk_dpi_bridge_disable,
++	.atomic_enable = mtk_dpi_bridge_enable,
+ 	.atomic_check = mtk_dpi_bridge_atomic_check,
+ 	.atomic_get_output_bus_fmts = mtk_dpi_bridge_atomic_get_output_bus_fmts,
+ 	.atomic_get_input_bus_fmts = mtk_dpi_bridge_atomic_get_input_bus_fmts,
+ 	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
+ 	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
+
 -- 
-Maxime Ripard <mripard@kernel.org>
+2.54.0
 
 
