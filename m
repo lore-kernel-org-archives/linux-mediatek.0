@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38E6CC43458
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 14:06:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B41BC44501
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 14:11:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qCciVIAgFYNh8iiCE6A1FVMN5+3AnpIFscEXkkxF9ew=; b=PGGXw6YZLvZSu29Qph9H6PcLoh
-	E3ZYdfF1ngVCc4vclEHlYgRQ9p4dQWufzn80Fi0yLnt3qUVb3/ogpqd11qvozA3XiDF/sT63H9b6m
-	9mI9oDDyrylX4iTeiYUFQ2vrIl+9PDYwHN3JCKAf/5F/G+BfTP8XqUVHPsaqtCCNAp6Yrqsuz0qW5
-	WyhoTVb2PdgzDipNrsziDWdMbb4oQvFGW7ubqYFu7qaj0kSEtm3If3Tam4E7JVqfZ9+/X6nzK9iK1
-	L5FGUMxH4ZnJFbb2y8idTG2pk6ovaypIiYYCetsWfMANWLieZpDKO7njJA5eo98ByAr3G0z64FtQl
-	RI8IpB+g==;
+	bh=20E1hLMMPXhHS8pnWfbMyHG7K9cQcKn2dO/QA3nMBBw=; b=rySynIpZEoGpsmyOVSDoLqsKnN
+	NEJdz1HoXFBgfsmxxWUryZAjq84BrGQQQ5wigUWcanznsQo6wmNc0YRKUsOJZSN4O7HO7if60kNvr
+	sC1zUVGFI8k3/uFM1xNyj07vjymSCnqqkrF89FZVlNgBIARXJX2CFWYvmKaXNbLX08xrzYzE9cXv5
+	CaVX1D9ZeHuDRO6B7P1sBEtCwsQCDIyxgyBa4TG60gyWEGUtPMb+FCJiaOctCsneaGuzVnQBHzvlk
+	7rTFeE2kqTQpFUB/Yw3XwdiAXo3moNYLSjuW93lFSnYsacg2Hxg8uMg79WX/q2IdOyuRqcpIUBCVk
+	2uIGfusQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh6RK-0000000F77V-2U5z;
-	Tue, 07 Jul 2026 14:06:22 +0000
+	id 1wh6WV-0000000F7Rn-2jZX;
+	Tue, 07 Jul 2026 14:11:43 +0000
 Received: from leonov.paulk.fr ([185.233.101.22])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh6RF-0000000F76N-3Rf5;
-	Tue, 07 Jul 2026 14:06:20 +0000
+	id 1wh6WO-0000000F7Pb-3h0S;
+	Tue, 07 Jul 2026 14:11:39 +0000
 Received: from laika.paulk.fr (12.234.24.109.rev.sfr.net [109.24.234.12])
-	by leonov.paulk.fr (Postfix) with ESMTPS id F01F33700312;
-	Tue,  7 Jul 2026 14:05:37 +0000 (UTC)
+	by leonov.paulk.fr (Postfix) with ESMTPS id 90E113700332;
+	Tue,  7 Jul 2026 14:11:10 +0000 (UTC)
 Received: by laika.paulk.fr (Postfix, from userid 65534)
-	id 8FFE1AE5EC3; Tue,  7 Jul 2026 14:05:31 +0000 (UTC)
+	id 05208AE5EBF; Tue,  7 Jul 2026 14:11:05 +0000 (UTC)
 Received: from shepard (unknown [192.168.1.1])
-	by laika.paulk.fr (Postfix) with ESMTPSA id B6432AE5EB6;
-	Tue,  7 Jul 2026 14:05:21 +0000 (UTC)
-Date: Tue, 7 Jul 2026 16:05:19 +0200
+	by laika.paulk.fr (Postfix) with ESMTPSA id 6816EAE5EBF;
+	Tue,  7 Jul 2026 14:10:55 +0000 (UTC)
+Date: Tue, 7 Jul 2026 16:10:52 +0200
 From: Paul Kocialkowski <paulk@sys-base.io>
 To: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
 Cc: Bjorn Andersson <andersson@kernel.org>,
@@ -111,19 +111,19 @@ Cc: Bjorn Andersson <andersson@kernel.org>,
 	linux-remoteproc@vger.kernel.org, linux-staging@lists.linux.dev,
 	linux-sound@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
 	imx@lists.linux.dev, sound-open-firmware@alsa-project.org
-Subject: Re: [PATCH 30/42] staging: media: cedrus: Use
+Subject: Re: [PATCH 08/42] drm: logicvc: Use
  devm_of_reserved_mem_device_init()
-Message-ID: <ak0HnzMzGT_WZ9u1@shepard>
+Message-ID: <ak0I7AbfFITG1nyi@shepard>
 References: <20260703193855.110619-1-mukesh.ojha@oss.qualcomm.com>
- <20260703193855.110619-31-mukesh.ojha@oss.qualcomm.com>
+ <20260703193855.110619-9-mukesh.ojha@oss.qualcomm.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="L/gXhcj/KYS6Adou"
+	protocol="application/pgp-signature"; boundary="ThTwSIZV2a2cCNSQ"
 Content-Disposition: inline
-In-Reply-To: <20260703193855.110619-31-mukesh.ojha@oss.qualcomm.com>
+In-Reply-To: <20260703193855.110619-9-mukesh.ojha@oss.qualcomm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260707_070618_192798_3D665E6E 
-X-CRM114-Status: GOOD (  23.04  )
+X-CRM114-CacheID: sfid-20260707_071138_533235_5A47C05C 
+X-CRM114-Status: GOOD (  26.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,7 +138,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---L/gXhcj/KYS6Adou
+--ThTwSIZV2a2cCNSQ
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
@@ -146,57 +146,128 @@ Content-Transfer-Encoding: quoted-printable
 Hi Mukesh,
 
 On Sat 04 Jul 26, 01:08, Mukesh Ojha wrote:
-> Use the devres-managed devm_of_reserved_mem_device_init() instead of
-> the manual of_reserved_mem_device_init()/of_reserved_mem_device_release()
-> pair, letting the device resource manager handle cleanup automatically.
-
-Thanks for your work!
-
-> Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
-> ---
->  drivers/staging/media/sunxi/cedrus/cedrus_hw.c | 6 +-----
->  1 file changed, 1 insertion(+), 5 deletions(-)
+> Switch to devm_of_reserved_mem_device_init() so the reserved memory
+> region is released automatically on probe failure or device unbind.
+> Replace all error paths that jumped to error_reserved_mem: with
+> error_early: since the manual cleanup label is no longer needed, and
+> remove the explicit of_reserved_mem_device_release() call in the remove
+> function.
 >=20
-> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c b/drivers/sta=
-ging/media/sunxi/cedrus/cedrus_hw.c
-> index 444fb53878d1..7b5aa94064a1 100644
-> --- a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-> @@ -266,7 +266,7 @@ int cedrus_hw_probe(struct cedrus_dev *dev)
->  		return ret;
->  	}
-> =20
-> -	ret =3D of_reserved_mem_device_init(dev->dev);
-> +	ret =3D devm_of_reserved_mem_device_init(dev->dev);
->  	if (ret && ret !=3D -ENODEV) {
->  		dev_err(dev->dev, "Failed to reserve memory\n");
-> =20
-> @@ -341,8 +341,6 @@ int cedrus_hw_probe(struct cedrus_dev *dev)
->  err_sram:
->  	sunxi_sram_release(dev->dev);
->  err_mem:
+> Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
 
-Could you also remove this label and switch the goto user to a regular
-return ret?
+Looks good to me, thanks!
 
-Thanks!
+Reviewed-by: Paul Kocialkowski <paulk@sys-base.io>
+Acked-by: Paul Kocialkowski <paulk@sys-base.io>
 
 All the best,
 
 Paul
 
-> -	of_reserved_mem_device_release(dev->dev);
+> ---
+>  drivers/gpu/drm/logicvc/logicvc_drm.c | 21 ++++++++-------------
+>  1 file changed, 8 insertions(+), 13 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/logicvc/logicvc_drm.c b/drivers/gpu/drm/logi=
+cvc/logicvc_drm.c
+> index bbebf4fc7f51..d6dbe52ff0a9 100644
+> --- a/drivers/gpu/drm/logicvc/logicvc_drm.c
+> +++ b/drivers/gpu/drm/logicvc/logicvc_drm.c
+> @@ -306,7 +306,7 @@ static int logicvc_drm_probe(struct platform_device *=
+pdev)
+>  	int irq;
+>  	int ret;
+> =20
+> -	ret =3D of_reserved_mem_device_init(dev);
+> +	ret =3D devm_of_reserved_mem_device_init(dev);
+>  	if (ret && ret !=3D -ENODEV) {
+>  		dev_err(dev, "Failed to init memory region\n");
+>  		goto error_early;
+> @@ -327,14 +327,14 @@ static int logicvc_drm_probe(struct platform_device=
+ *pdev)
+>  		ret =3D of_address_to_resource(of_node, 0, &res);
+>  		if (ret) {
+>  			dev_err(dev, "Failed to get resource from address\n");
+> -			goto error_reserved_mem;
+> +			goto error_early;
+>  		}
+> =20
+>  		base =3D devm_ioremap_resource(dev, &res);
+>  		if (IS_ERR(base)) {
+>  			dev_err(dev, "Failed to map I/O base\n");
+>  			ret =3D PTR_ERR(base);
+> -			goto error_reserved_mem;
+> +			goto error_early;
+>  		}
+> =20
+>  		logicvc_drm_regmap_config.max_register =3D resource_size(&res) -
+> @@ -345,21 +345,21 @@ static int logicvc_drm_probe(struct platform_device=
+ *pdev)
+>  		if (IS_ERR(regmap)) {
+>  			dev_err(dev, "Failed to create regmap for I/O\n");
+>  			ret =3D PTR_ERR(regmap);
+> -			goto error_reserved_mem;
+> +			goto error_early;
+>  		}
+>  	}
+> =20
+>  	irq =3D platform_get_irq(pdev, 0);
+>  	if (irq < 0) {
+>  		ret =3D -ENODEV;
+> -		goto error_reserved_mem;
+> +		goto error_early;
+>  	}
+> =20
+>  	logicvc =3D devm_drm_dev_alloc(dev, &logicvc_drm_driver,
+>  				     struct logicvc_drm, drm_dev);
+>  	if (IS_ERR(logicvc)) {
+>  		ret =3D PTR_ERR(logicvc);
+> -		goto error_reserved_mem;
+> +		goto error_early;
+>  	}
+> =20
+>  	platform_set_drvdata(pdev, logicvc);
+> @@ -371,7 +371,7 @@ static int logicvc_drm_probe(struct platform_device *=
+pdev)
+>  	caps =3D logicvc_drm_caps_match(logicvc);
+>  	if (!caps) {
+>  		ret =3D -EINVAL;
+> -		goto error_reserved_mem;
+> +		goto error_early;
+>  	}
+> =20
+>  	logicvc->caps =3D caps;
+> @@ -382,7 +382,7 @@ static int logicvc_drm_probe(struct platform_device *=
+pdev)
+>  	ret =3D logicvc_clocks_prepare(logicvc);
+>  	if (ret) {
+>  		drm_err(drm_dev, "Failed to prepare clocks\n");
+> -		goto error_reserved_mem;
+> +		goto error_early;
+>  	}
+> =20
+>  	ret =3D devm_request_irq(dev, irq, logicvc_drm_irq_handler, 0,
+> @@ -450,9 +450,6 @@ static int logicvc_drm_probe(struct platform_device *=
+pdev)
+>  error_clocks:
+>  	logicvc_clocks_unprepare(logicvc);
+> =20
+> -error_reserved_mem:
+> -	of_reserved_mem_device_release(dev);
 > -
+>  error_early:
 >  	return ret;
 >  }
+> @@ -469,8 +466,6 @@ static void logicvc_drm_remove(struct platform_device=
+ *pdev)
+>  	logicvc_mode_fini(logicvc);
 > =20
-> @@ -353,6 +351,4 @@ void cedrus_hw_remove(struct cedrus_dev *dev)
->  		cedrus_hw_suspend(dev->dev);
-> =20
->  	sunxi_sram_release(dev->dev);
+>  	logicvc_clocks_unprepare(logicvc);
 > -
-> -	of_reserved_mem_device_release(dev->dev);
+> -	of_reserved_mem_device_release(dev);
 >  }
+> =20
+>  static void logicvc_drm_shutdown(struct platform_device *pdev)
 > --=20
 > 2.53.0
 >=20
@@ -209,25 +280,25 @@ Free software developer - https://www.paulk.fr/
 
 Expert in multimedia, graphics and embedded hardware support with Linux.
 
---L/gXhcj/KYS6Adou
+--ThTwSIZV2a2cCNSQ
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEEAbcMXZQMtj1fphLChP3B6o/ulQwFAmpNB58ACgkQhP3B6o/u
-lQyTjg//fLyoug7RFssI1dop/066e79975deN6blykU3a96LxKKn7ru6j0LCnfu4
-VTSFjvO7qjkf2yQeXqxnQWvrXBT/JiPMb/nPvBW0MGDi1M1+4kT7238LR5fuNLU0
-eBAuY181rHDg+ftoXP7Rzj0XZlZ/dck0119WsWFEUk9gP0Q8BlgTs7QTUu3k2E+E
-VUftOitNophkc0JUvgUi5wKODfIgzgp/nj9ZnCsjF9QSDjcr3Wjn2qwvdS4hG43H
-m8QkFdiim8NX6PKzgqcjLNOUEXjjphI6+onlAT3qREs2ThXycXu0m5/+r+5IP6AT
-OeVpkJQ9zrx91+tL94Yi4iXPERdq1zcnpUsiE1YhOnlB/KfCAXX3WeS6ZjLfF5aW
-7/5j2Bd/rTlqCSH25ek2EQKZj476WJUgYplyAGFpLb/3iXyV89VpkdIk2VEc7ynK
-V99TGimHONG+iiDOl/z3pn+MX5RzXeMWhmevSrfiTJzsG5Kb+mOKr86er3oTehf0
-g8NOS3ITmO5IGHbfJSUx236uPw58QMEWKmKyZ/Sx7nDhhhskPBSgCJSvSPn0cbz9
-cXejK2y8wLRj1RaSjCGUdM9ZoZPlNDoyqDrWZDxI2tzgXFYDbcuFEHM19GIDPTTY
-2iujg05WmAKMP0jVtjzc7NoSbdBmeZG2atzsSP6M76kSPNdEJvI=
-=0n6x
+iQIzBAEBCgAdFiEEAbcMXZQMtj1fphLChP3B6o/ulQwFAmpNCOwACgkQhP3B6o/u
+lQyaPQ//f4pAYoEPe2VkBx5ziaC0VkGALJ8pMaCBZzEG6pnd2z1UBPK8Y2xJLlQP
+5bkyAxCQjpN0fwzwtB+kdA0jp2iokJqDThaLYoql9R0Qvj2DyOy7x+SwRqbRzdyJ
+npZtxXLCuF9oXL4YlUHBVPkgL9WsGf2cMpqkXAI/iPd0K+9zBfxT48xlRnuslCQF
+gwlVwkghlca2EFVG0f4q4HVkGRcFkAM9pYpKZD4B4iS89SwzHmJo44SZWV0CsWfe
+ysY5SERP+XL8EbiVlQxCWyqo9Yb//Ikc/EuIWFPMzPW7hp4ZTzjzYaRtVdWEM3Or
+GQ8uFNoXZfWHzfBpHk1Ewfdr7JBtXM0vPIh650GS2SCdGaCS0Ud2UUv7QZdSluel
+uGrsM82ZQ6ts4V8ct1O/dWG7TwYnc8BaFADG90JdKck+zb3fRnQ07aTNrF/bRDU1
+gcnN0yfM/zPIZAc7GA+4Stzok5c+bj2Sb849b5S5g6LNETsScU+WPK5pvEjjWq9E
+zsLawR41dclgUWujmQqflY1sbvVA3YsAADIxWAAsT1WDULfQ/c70/2rMIvNATzBN
+VxbCWSZtk77xMlu6aje7HIbEQa9PGm52xeqNOqfwv/t5kGZxU1fqyAULXAfSYQ2R
+jkjMhoWPkeb15z5Be0yQY0auFkEuIORZboIqn49NxQW0LVu7byA=
+=tX4X
 -----END PGP SIGNATURE-----
 
---L/gXhcj/KYS6Adou--
+--ThTwSIZV2a2cCNSQ--
 
