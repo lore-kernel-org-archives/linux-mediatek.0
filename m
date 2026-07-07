@@ -4,71 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90E48C43458
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 16:26:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54E48C43458
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 18:07:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xaDuq1ZB1HflLrDzdt+OV6vrfoAZsFjA2zyfOAaYkgE=; b=bwuOE8pdxbFDxduOBvmptGDh+t
-	0m7wRXeGVS5D3X4bFDSFJ1AmGwW7KLeeqoelz/LNIWP8MRfyrJNfGQnZ0jYvXgBsl0gEOq2Kyhbpk
-	vER6CZb84j1F4jXDR7WXKitsrjVdjX4bCjXiIsECMsseQXUm574H7kdls9vJHKERfQhrjqTftiVuv
-	MFVyCQQHdS0MWzm7NbgOxVvRVr5CHf0CvLPG9PX1kjDiiKw+BMKFElgqMK+HqjUqY3gOd19R0x2zP
-	VXCCcdh9VQbdtFhAmmU1CxJiLD8o+S+iAH446LXALSQmDT0gYCpbwyFhLTKL02wnQ4JjshjMMFCoz
-	M2XSoRig==;
+	bh=kNdgV6dE37fi1AWMEoHcLd1JawMZipROu/aTEW/qPRY=; b=td07+evP9YYvOT8Lk8G2qgUOdy
+	aQXKFuHmhWW68D5v483nXMTcvXH8FBNUPDr3e8YqvEU/6elM7CjcgcFJ3XGLdgsmRKSvLAi6D/xS/
+	ttChJiznB+Z1KC5xszPojmSObETW6U+/mASSuGIwI8K21btzF1fB1dh7wqvXS2BTLMFss2h4Best/
+	xPRLxFKortCIdITTKhoJkJR1e68oMWpXrFsEtVV9pw0OR/Fcc9XDRK8hF7uDgk27Bk54VLDxDK5FD
+	kHH0ZT/SwHdKHRyg9a/HyltXvU1gVqNRBo5zuBXCmHn9jDLsYEc2oLzcdF6y0hTPvu/I0i5S5Ya52
+	pBAG87Dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh8cW-0000000FSj1-13U2;
-	Tue, 07 Jul 2026 16:26:04 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1whACM-0000000FcAP-28Ww;
+	Tue, 07 Jul 2026 18:07:10 +0000
+Received: from aposti.net ([185.119.170.32])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh8cT-0000000FShw-2s3o;
-	Tue, 07 Jul 2026 16:26:02 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5AA7540BBC;
-	Tue,  7 Jul 2026 16:26:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8B171F000E9;
-	Tue,  7 Jul 2026 16:26:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783441561;
-	bh=xaDuq1ZB1HflLrDzdt+OV6vrfoAZsFjA2zyfOAaYkgE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=CYyP7Mf4+GN9JppbBY9CLselE708FkBS7NaTpa1ICCH0kPty9sSTKl2ceN25EiSJB
-	 f+vwZpciH0whckwTcU4M8zGYtWzdOdGvzCBArGAagQ/3KeJmfZGopKUXTKUBF8e3OC
-	 srz0EXlTtlhOzcfztwb3jJ3XietlHsdhwt2UunmcVg+h7jdYqAzHu0JDcgj6Rk4aIL
-	 z7gMtD3mENFrZC7bTrMgsXJrbwZjJdTP3X+362B4RqKqXRhji9DdgZW2vmkKO0xp7J
-	 iAyQgBr9rX3CuDaVcNR5RqsYZZq6UVzRJtY5NXGrJKQg9YzfDPKaMuLIudP9umfRry
-	 KaRS7V12x2hrA==
-Date: Tue, 7 Jul 2026 18:25:58 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Felix Fietkau <nbd@nbd.name>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Simon Horman <horms@kernel.org>, David Ahern <dsahern@kernel.org>,
-	Ido Schimmel <idosch@nvidia.com>,
-	Pablo Neira Ayuso <pablo@netfilter.org>,
-	Florian Westphal <fw@strlen.de>, Phil Sutter <phil@nwl.cc>,
-	Shuah Khan <shuah@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
-	linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH nf-next v4 3/6] net: netfilter: Add IPv4 over IPv6 tunnel
- flowtable acceleration
-Message-ID: <ak0olot-8WTVrtGB@lore-desk>
-References: <20260703-b4-flowtable-sw-accel-ip6ip-v4-0-00398cd12382@kernel.org>
- <20260703-b4-flowtable-sw-accel-ip6ip-v4-3-00398cd12382@kernel.org>
+	id 1whACG-0000000Fc9T-2Yy7;
+	Tue, 07 Jul 2026 18:07:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=crapouillou.net;
+	s=mail; t=1783447618;
+	bh=jSZnB0sLqjEJbBoqe7AZJRMFNCZugWpISC+yCdraaOk=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=taLqIYWARPanxMePLjn0T7clMcda7af2pvmrr0dQzpeuwc0nctWzpeP7MFrEdwHD3
+	 wFNI1Cev/uBH+lstwttbgnjYpRUlRSvuTptlXHNnBzTOSCT1/sAyy72NlnTqVPq0M/
+	 E7dkR8V01XIjaryuVKTvkbf8yDy1RmuISroVos5g=
+Message-ID: <f46dfcfe04c5f8270b2ea1a947ddc0a0eeda7dbc.camel@crapouillou.net>
+Subject: Re: [PATCH 17/42] drm: ingenic: Use
+ devm_of_reserved_mem_device_init()
+From: Paul Cercueil <paul@crapouillou.net>
+To: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>, Bjorn Andersson	
+ <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, Liviu Dudau
+	 <liviu.dudau@arm.com>, Maarten Lankhorst
+ <maarten.lankhorst@linux.intel.com>,  Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Joel Stanley <joel@jms.id.au>, Andrew
+ Jeffery <andrew@codeconstruct.com.au>,  Anitha Chrisanthus
+ <anitha.chrisanthus@intel.com>, Paul Kocialkowski <paulk@sys-base.io>,
+ Linus Walleij	 <linusw@kernel.org>, Chen-Yu Tsai <wens@kernel.org>, Jernej
+ Skrabec	 <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>,
+ Alexey Brodkin <abrodkin@synopsys.com>, Laurent Pinchart
+ <laurent.pinchart@ideasonboard.com>, Tomi Valkeinen
+ <tomi.valkeinen@ideasonboard.com>, Michal Simek <michal.simek@amd.com>,
+ Daniel Scally	 <dan.scally@ideasonboard.com>, Jacopo Mondi
+ <jacopo.mondi@ideasonboard.com>,  Mauro Carvalho Chehab	
+ <mchehab@kernel.org>, Eddie James <eajames@linux.ibm.com>, Tiffany Lin	
+ <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+ Yunfei Dong <yunfei.dong@mediatek.com>, Minghsiu Tsai
+ <minghsiu.tsai@mediatek.com>, Houlong Wei	 <houlong.wei@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Joseph Liu <kwliu@nuvoton.com>,
+ Marvin Lin <kflin@nuvoton.com>,  Dmitry Osipenko
+ <dmitry.osipenko@collabora.com>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Thierry Reding	 <thierry.reding@kernel.org>, Jonathan Hunter
+ <jonathanh@nvidia.com>,  Srinivas Kandagatla	 <srini@kernel.org>, Arnd
+ Bergmann <arnd@arndb.de>, Greg Kroah-Hartman	 <gregkh@linuxfoundation.org>,
+ Ge Gordon <gordon.ge@bst.ai>, Adrian Hunter	 <adrian.hunter@intel.com>, Ulf
+ Hansson <ulfh@kernel.org>, Rob Herring	 <robh@kernel.org>, Saravana Kannan
+ <saravanak@kernel.org>, Mathieu Poirier	 <mathieu.poirier@linaro.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai	 <tiwai@suse.com>, Shengjiu
+ Wang <shengjiu.wang@gmail.com>, Xiubo Li	 <Xiubo.Lee@gmail.com>, Liam
+ Girdwood <lgirdwood@gmail.com>, Mark Brown	 <broonie@kernel.org>, Frank Li
+ <Frank.Li@nxp.com>, Sascha Hauer	 <s.hauer@pengutronix.de>, Peter Ujfalusi
+ <peter.ujfalusi@linux.intel.com>,  Bard Liao
+ <yung-chuan.liao@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>,
+ Orson Zhai	 <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Peter Chen	 <peter.chen@cixtech.com>,
+ Fugang Duan <fugang.duan@cixtech.com>
+Cc: Ekansh Gupta <ekansh.gupta@oss.qualcomm.com>, BST Linux Kernel Upstream
+ Group <bst-upstream@bstai.top>, Fabio Estevam <festevam@gmail.com>, Nicolin
+ Chen <nicoleotsuka@gmail.com>,  Pengutronix Kernel Team	
+ <kernel@pengutronix.de>, Kai Vehmanen <kai.vehmanen@linux.intel.com>, 
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, Vijendar Mukunda
+ <Vijendar.Mukunda@amd.com>, Chunyan Zhang	 <zhang.lyra@gmail.com>, CIX
+ Linux Kernel Upstream Group	 <cix-kernel-upstream@cixtech.com>,
+ linux-arm-msm@vger.kernel.org, 	linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, 	linux-aspeed@lists.ozlabs.org,
+ linux-arm-kernel@lists.infradead.org, 	linux-mips@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, 	linux-media@vger.kernel.org,
+ openbmc@lists.ozlabs.org, 	linux-mediatek@lists.infradead.org,
+ kernel@collabora.com, 	linux-tegra@vger.kernel.org,
+ linux-mmc@vger.kernel.org, 	devicetree@vger.kernel.org,
+ linux-remoteproc@vger.kernel.org, 	linux-staging@lists.linux.dev,
+ linux-sound@vger.kernel.org, 	linuxppc-dev@lists.ozlabs.org,
+ imx@lists.linux.dev, 	sound-open-firmware@alsa-project.org
+Date: Tue, 07 Jul 2026 20:06:50 +0200
+In-Reply-To: <20260703193855.110619-18-mukesh.ojha@oss.qualcomm.com>
+References: <20260703193855.110619-1-mukesh.ojha@oss.qualcomm.com>
+	 <20260703193855.110619-18-mukesh.ojha@oss.qualcomm.com>
+Autocrypt: addr=paul@crapouillou.net; prefer-encrypt=mutual;
+ keydata=mQENBF0KhcEBCADkfmrzdTOp/gFOMQX0QwKE2WgeCJiHPWkpEuPH81/HB2dpjPZNW03ZM
+ LQfECbbaEkdbN4YnPfXgcc1uBe5mwOAPV1MBlaZcEt4M67iYQwSNrP7maPS3IaQJ18ES8JJ5Uf5Uz
+ FZaUawgH+oipYGW+v31cX6L3k+dGsPRM0Pyo0sQt52fsopNPZ9iag0iY7dGNuKenaEqkYNjwEgTtN
+ z8dt6s3hMpHIKZFL3OhAGi88wF/21isv0zkF4J0wlf9gYUTEEY3Eulx80PTVqGIcHZzfavlWIdzhe
+ +rxHTDGVwseR2Y1WjgFGQ2F+vXetAB8NEeygXee+i9nY5qt9c07m8mzjABEBAAG0JFBhdWwgQ2VyY
+ 3VlaWwgPHBhdWxAY3JhcG91aWxsb3UubmV0PokBTgQTAQoAOBYhBNdHYd8OeCBwpMuVxnPua9InSr
+ 1BBQJdCoXBAhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEHPua9InSr1BgvIH/0kLyrI3V0f
+ 33a6D3BJwc1grbygPVYGuC5l5eMnAI+rDmLR19E2yvibRpgUc87NmPEQPpbbtAZt8On/2WZoE5OIP
+ dlId/AHNpdgAtGXo0ZX4LGeVPjxjdkbrKVHxbcdcnY+zzaFglpbVSvp76pxqgVg8PgxkAAeeJV+ET
+ 4t0823Gz2HzCL/6JZhvKAEtHVulOWoBh368SYdolp1TSfORWmHzvQiCCCA+j0cMkYVGzIQzEQhX7U
+ rf9N/nhU5/SGLFEi9DcBfXoGzhyQyLXflhJtKm3XGB1K/pPulbKaPcKAl6rIDWPuFpHkSbmZ9r4KF
+ lBwgAhlGy6nqP7O3u7q23hRU=
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="KpcLrKuIJxPbhAqD"
-Content-Disposition: inline
-In-Reply-To: <20260703-b4-flowtable-sw-accel-ip6ip-v4-3-00398cd12382@kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260707_110705_006087_01A5837C 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,251 +129,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
---KpcLrKuIJxPbhAqD
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-commenting on shashiko's report:
-https://sashiko.dev/#/patchset/20260703-b4-flowtable-sw-accel-ip6ip-v4-0-00=
-398cd12382%40kernel.org
-
-> Introduce sw flowtable acceleration for the TX/RX paths of
-> IPv4 over IPv6 tunnels, relying on the netfilter flowtable
-> infrastructure.
-> The feature can be tested with a forwarding scenario between two
-> NICs (eth0 and eth1), where an IPv4 over IPv6 tunnel is used to
-> reach a remote site via eth1 as the underlay device:
+Le samedi 04 juillet 2026 =C3=A0 01:08 +0530, Mukesh Ojha a =C3=A9crit=C2=
+=A0:
+> Replace the hand-rolled devm wrapper (ingenic_drm_release_rmem +
+> devm_add_action_or_reset) with the standard
+> devm_of_reserved_mem_device_init(), letting the device resource
+> manager handle cleanup automatically.
 >=20
->     ETH0 -- TUN0 <=3D=3D> ETH1 -- [IP network] -- TUN1 (2001:db8:2::2)
+> Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
+
+Reviewed-by: Paul Cercueil <paul@crapouillou.net>
+
+Cheers,
+-Paul
+
+> ---
+> =C2=A0drivers/gpu/drm/ingenic/ingenic-drm-drv.c | 13 +------------
+> =C2=A01 file changed, 1 insertion(+), 12 deletions(-)
 >=20
-> [IP configuration]
->=20
-> 6: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state U=
-P group default qlen 1000
->     link/ether 00:00:22:33:11:55 brd ff:ff:ff:ff:ff:ff
->     inet 192.168.0.2/24 scope global eth0
->        valid_lft forever preferred_lft forever
-> 7: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state U=
-P group default qlen 1000
->     link/ether 00:11:22:33:11:55 brd ff:ff:ff:ff:ff:ff
->     inet6 2001:db8:2::1/64 scope global nodad
->        valid_lft forever preferred_lft forever
-> 8: tun0@NONE: <POINTOPOINT,NOARP,UP,LOWER_UP> mtu 1480 qdisc noqueue stat=
-e UNKNOWN group default qlen 1000
->     link/tunnel6 2001:db8:2::1 peer 2001:db8:2::2 permaddr ce9c:2940:7dcc=
-::
->     inet 192.168.100.1/24 scope global tun0
->        valid_lft forever preferred_lft forever
->=20
-> $ ip route show
-> default via 192.168.100.2 dev tun0
-> 192.168.0.0/24 dev eth0 proto kernel scope link src 192.168.0.2
-> 192.168.100.0/24 dev tun0 proto kernel scope link src 192.168.100.1
->=20
-
-[...]
-
->  	struct nf_flow_xmit xmit =3D {};
-> +	struct in6_addr *ip6_daddr;
->  	struct flow_offload *flow;
->  	struct neighbour *neigh;
->  	struct rtable *rt;
-> @@ -844,25 +872,41 @@ nf_flow_offload_ip_hook(void *priv, struct sk_buff =
-*skb,
->  	other_tuple =3D &flow->tuplehash[!dir].tuple;
->  	ip_daddr =3D other_tuple->src_v4.s_addr;
-> =20
-> -	if (nf_flow_tunnel_v4_push(state->net, skb, other_tuple, &ip_daddr) < 0)
-> +	if (nf_flow_tunnel_push(state->net, skb, other_tuple, &ip_daddr,
-> +				&ip6_daddr) < 0)
->  		return NF_DROP;
-> =20
->  	switch (tuplehash->tuple.xmit_type) {
-> -	case FLOW_OFFLOAD_XMIT_NEIGH:
-> -		rt =3D dst_rtable(tuplehash->tuple.dst_cache);
-> +	case FLOW_OFFLOAD_XMIT_NEIGH: {
-> +		struct dst_entry *dst;
-> +
->  		xmit.outdev =3D dev_get_by_index_rcu(state->net, tuplehash->tuple.ifid=
-x);
->  		if (!xmit.outdev) {
->  			flow_offload_teardown(flow);
->  			return NF_DROP;
->  		}
-> -		neigh =3D ip_neigh_gw4(rt->dst.dev, rt_nexthop(rt, ip_daddr));
-> +		if (other_tuple->tun.encap_proto =3D=3D AF_INET6 ||
-> +		    ctx.tun.proto =3D=3D IPPROTO_IPV6) {
-> +			struct rt6_info *rt6;
-> +
-> +			rt6 =3D dst_rt6_info(tuplehash->tuple.dst_cache);
-> +			neigh =3D ip_neigh_gw6(rt6->dst.dev,
-> +					     rt6_nexthop(rt6, ip6_daddr));
-> +			dst =3D &rt6->dst;
-> +		} else {
-> +			rt =3D dst_rtable(tuplehash->tuple.dst_cache);
-> +			neigh =3D ip_neigh_gw4(rt->dst.dev,
-> +					     rt_nexthop(rt, ip_daddr));
-> +			dst =3D &rt->dst;
-> +		}
-
-- Does this logic correctly handle cross-family tunneling like an IPv6-in-I=
-Pv4
-  packet (SIT) being forwarded out via another IPv4 tunnel?
-  - SIT support is added by a following patch in the series.
-
->  		if (IS_ERR(neigh)) {
->  			flow_offload_teardown(flow);
->  			return NF_DROP;
->  		}
->  		xmit.dest =3D neigh->ha;
-> -		skb_dst_set_noref(skb, &rt->dst);
-> +		skb_dst_set_noref(skb, dst);
->  		break;
-> +	}
->  	case FLOW_OFFLOAD_XMIT_DIRECT:
->  		xmit.outdev =3D dev_get_by_index_rcu(state->net, tuplehash->tuple.out.=
-ifidx);
->  		if (!xmit.outdev) {
-> @@ -1112,8 +1156,12 @@ nf_flow_offload_ipv6_lookup(struct nf_flowtable_ct=
-x *ctx,
->  	if (!nf_flow_skb_encap_protocol(ctx, skb, htons(ETH_P_IPV6)))
->  		return NULL;
-> =20
-> -	if (nf_flow_tuple_ipv6(ctx, skb, &tuple) < 0)
-> +	if (ctx->tun.proto =3D=3D IPPROTO_IPIP) {
-> +		if (nf_flow_tuple_ip(ctx, skb, &tuple) < 0)
-> +			return NULL;
-> +	} else if (nf_flow_tuple_ipv6(ctx, skb, &tuple) < 0) {
->  		return NULL;
-> +	}
-> =20
->  	return flow_offload_lookup(flow_table, &tuple);
->  }
-> @@ -1140,7 +1188,11 @@ nf_flow_offload_ipv6_hook(void *priv, struct sk_bu=
-ff *skb,
->  	if (tuplehash =3D=3D NULL)
->  		return NF_ACCEPT;
-> =20
-> -	ret =3D nf_flow_offload_ipv6_forward(&ctx, flow_table, tuplehash, skb);
-> +	if (ctx.tun.proto =3D=3D IPPROTO_IPIP)
-> +		ret =3D nf_flow_offload_forward(&ctx, flow_table, tuplehash, skb);
-> +	else
-> +		ret =3D nf_flow_offload_ipv6_forward(&ctx, flow_table, tuplehash,
-> +						   skb);
->  	if (ret < 0)
->  		return NF_DROP;
->  	else if (ret =3D=3D 0)
-> @@ -1164,21 +1216,38 @@ nf_flow_offload_ipv6_hook(void *priv, struct sk_b=
-uff *skb,
->  		return NF_DROP;
-> =20
->  	switch (tuplehash->tuple.xmit_type) {
-> -	case FLOW_OFFLOAD_XMIT_NEIGH:
-> -		rt =3D dst_rt6_info(tuplehash->tuple.dst_cache);
-> +	case FLOW_OFFLOAD_XMIT_NEIGH: {
-> +		struct dst_entry *dst;
-> +
->  		xmit.outdev =3D dev_get_by_index_rcu(state->net, tuplehash->tuple.ifid=
-x);
->  		if (!xmit.outdev) {
->  			flow_offload_teardown(flow);
->  			return NF_DROP;
->  		}
-> -		neigh =3D ip_neigh_gw6(rt->dst.dev, rt6_nexthop(rt, ip6_daddr));
-> +		if (other_tuple->tun.encap_proto =3D=3D AF_INET ||
-> +		    ctx.tun.proto =3D=3D IPPROTO_IPIP) {
-> +			__be32 ip_daddr =3D other_tuple->src_v4.s_addr;
-> +			struct rtable *rt4;
-> +
-> +			skb->protocol =3D htons(ETH_P_IP);
-> +			rt4 =3D dst_rtable(tuplehash->tuple.dst_cache);
-> +			neigh =3D ip_neigh_gw4(rt4->dst.dev,
-> +					     rt_nexthop(rt4, ip_daddr));
-> +			dst =3D &rt4->dst;
-
-- Can this branch incorrectly cast a struct rt6_info to a struct rtable
-  if an IPv4-in-IPv6 packet is forwarded to another IPv6 tunnel?
-  - Double tunnel encapsulation is not currently supported.
-
-Regards,
-Lorenzo
-
-> +		} else {
-> +			rt =3D dst_rt6_info(tuplehash->tuple.dst_cache);
-> +			neigh =3D ip_neigh_gw6(rt->dst.dev,
-> +					     rt6_nexthop(rt, ip6_daddr));
-> +			dst =3D &rt->dst;
-> +		}
->  		if (IS_ERR(neigh)) {
->  			flow_offload_teardown(flow);
->  			return NF_DROP;
->  		}
->  		xmit.dest =3D neigh->ha;
-> -		skb_dst_set_noref(skb, &rt->dst);
-> +		skb_dst_set_noref(skb, dst);
->  		break;
-> +	}
->  	case FLOW_OFFLOAD_XMIT_DIRECT:
->  		xmit.outdev =3D dev_get_by_index_rcu(state->net, tuplehash->tuple.out.=
-ifidx);
->  		if (!xmit.outdev) {
-> diff --git a/net/netfilter/nf_flow_table_path.c b/net/netfilter/nf_flow_t=
-able_path.c
-> index caaf48c5fd2a..5e84b7f18a26 100644
-> --- a/net/netfilter/nf_flow_table_path.c
-> +++ b/net/netfilter/nf_flow_table_path.c
-> @@ -216,12 +216,13 @@ static int nft_flow_tunnel_update_route(const struc=
-t nft_pktinfo *pkt,
->  	struct dst_entry *tun_dst =3D NULL;
->  	struct flowi fl =3D {};
-> =20
-> -	switch (nft_pf(pkt)) {
-> +	switch (tun->encap_proto) {
->  	case NFPROTO_IPV4:
->  		fl.u.ip4.daddr =3D tun->dst_v4.s_addr;
->  		fl.u.ip4.saddr =3D tun->src_v4.s_addr;
->  		fl.u.ip4.flowi4_iif =3D nft_in(pkt)->ifindex;
-> -		fl.u.ip4.flowi4_dscp =3D ip4h_dscp(ip_hdr(pkt->skb));
-> +		if (nft_pf(pkt) =3D=3D NFPROTO_IPV4)
-> +			fl.u.ip4.flowi4_dscp =3D ip4h_dscp(ip_hdr(pkt->skb));
->  		fl.u.ip4.flowi4_mark =3D pkt->skb->mark;
->  		fl.u.ip4.flowi4_flags =3D FLOWI_FLAG_ANYSRC;
->  		break;
-> @@ -229,13 +230,14 @@ static int nft_flow_tunnel_update_route(const struc=
-t nft_pktinfo *pkt,
->  		fl.u.ip6.daddr =3D tun->dst_v6;
->  		fl.u.ip6.saddr =3D tun->src_v6;
->  		fl.u.ip6.flowi6_iif =3D nft_in(pkt)->ifindex;
-> -		fl.u.ip6.flowlabel =3D ip6_flowinfo(ipv6_hdr(pkt->skb));
-> +		if (nft_pf(pkt) =3D=3D NFPROTO_IPV6)
-> +			fl.u.ip6.flowlabel =3D ip6_flowinfo(ipv6_hdr(pkt->skb));
->  		fl.u.ip6.flowi6_mark =3D pkt->skb->mark;
->  		fl.u.ip6.flowi6_flags =3D FLOWI_FLAG_ANYSRC;
->  		break;
->  	}
-> =20
-> -	nf_route(nft_net(pkt), &tun_dst, &fl, false, nft_pf(pkt));
-> +	nf_route(nft_net(pkt), &tun_dst, &fl, false, tun->encap_proto);
->  	if (!tun_dst)
->  		return -ENOENT;
-> =20
->=20
-> --=20
-> 2.55.0
->=20
-
---KpcLrKuIJxPbhAqD
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCak0olgAKCRA6cBh0uS2t
-rI3NAQClQS3W+Ft7PA84x3n6YiTHeu7fpbuZ5bFy/w/e7uXuhgD/RyZixGGKm2Qr
-cNBbhlAS61B4HSxfpr27WoCCykRS+Ac=
-=gbZe
------END PGP SIGNATURE-----
-
---KpcLrKuIJxPbhAqD--
+> diff --git a/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
+> b/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
+> index 7e569af22391..990c3b4625fa 100644
+> --- a/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
+> +++ b/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
+> @@ -1060,11 +1060,6 @@ static void ingenic_drm_unbind_all(void *d)
+> =C2=A0	component_unbind_all(priv->dev, &priv->drm);
+> =C2=A0}
+> =C2=A0
+> -static void __maybe_unused ingenic_drm_release_rmem(void *d)
+> -{
+> -	of_reserved_mem_device_release(d);
+> -}
+> -
+> =C2=A0static void ingenic_drm_configure_hwdesc(struct ingenic_drm *priv,
+> =C2=A0					 unsigned int hwdesc,
+> =C2=A0					 unsigned int next_hwdesc,
+> u32 id)
+> @@ -1127,16 +1122,10 @@ static int ingenic_drm_bind(struct device
+> *dev, bool has_components)
+> =C2=A0	}
+> =C2=A0
+> =C2=A0	if (IS_ENABLED(CONFIG_OF_RESERVED_MEM)) {
+> -		ret =3D of_reserved_mem_device_init(dev);
+> +		ret =3D devm_of_reserved_mem_device_init(dev);
+> =C2=A0
+> =C2=A0		if (ret && ret !=3D -ENODEV)
+> =C2=A0			dev_warn(dev, "Failed to get reserved
+> memory: %d\n", ret);
+> -
+> -		if (!ret) {
+> -			ret =3D devm_add_action_or_reset(dev,
+> ingenic_drm_release_rmem, dev);
+> -			if (ret)
+> -				return ret;
+> -		}
+> =C2=A0	}
+> =C2=A0
+> =C2=A0	priv =3D devm_drm_dev_alloc(dev, &ingenic_drm_driver_data,
 
