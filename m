@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45F42C44511
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 14:20:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12659C43602
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 14:20:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zgyw8r4s+T9vPexTCgL2+WlVIxMl2aQ4qlg73KmZAXE=; b=4e/9NzuRn0LFJO7RNUAK5cOaa4
-	oRTLZCIxKm8EM5NH5MNIN6iyXx7gMwyWaJ2rgR6eky6qefx/KopZVq/jLg0EDzQ7gDK2KtPAw6AjV
-	oAfu5SLmPRP3587sqysC8VoiewRLRAgEVkdcuav6sSHPs1RoLDO+2pcCnxNdcvlGK6TL4uzFcTpaT
-	MeoBU8m2/eD56eTjrzta1n9bZCmGPFcupKWDHpBpX5jmdHD0f8MvXjxIiYBQ69IeFGTboH1u/ZY2l
-	PYj2wiOEOovsui/2bX37B63I7FMqYwv4Yqv38ZvHh98TgFHmRyyOO1twuUppXHalMhnj+07/zq/be
-	tFoBpWxg==;
+	bh=v5OrzgsU7rIRwzsqk8aQF/0r3LIC+nCVvbvICuv5eM0=; b=guFjeTxR03kGn1A++QYHCwOfdp
+	MPrHdNa5oJ9n21Idk0030ocX+Epox+K/fQo3Ocr5NPtxq85qIiGV+pa5jz1MevChU2w2UJrMAdkW1
+	ZKQGtAxmf1DEUSOqlESLup7RKwkv5UIUFLeWnIav8HV0kex+q2TKRPYqBvVOSkT7074zjQaxSVwBN
+	D9WXETkGZ9y82qHLrLgQYwBe6eOes9605kXH87AzkKOl5WjwAt3e0kMyi6n0Bhse0IC0ij4CYjCzi
+	aDGqJZTo3Q2Hb+WHUvDMPn5xRSknd9ZZqT0/EMhzgoBuy+QJUBgueUJOxlBtpOY51DyTY6ykAeuN2
+	Srua+Ufg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh6ea-0000000F91y-3aI2;
-	Tue, 07 Jul 2026 14:20:04 +0000
+	id 1wh6eb-0000000F93C-0psy;
+	Tue, 07 Jul 2026 14:20:05 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh6eR-0000000F8if-32k5;
+	id 1wh6eR-0000000F8ie-39vo;
 	Tue, 07 Jul 2026 14:19:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=zgyw8r4s+T9vPexTCgL2+WlVIxMl2aQ4qlg73KmZAXE=; b=cRl37MM+UUPHEwD61Aa/E0sjgI
-	w2ZLiXbRuRiMPt4lKnvpWy4Zdah11f4kXwyhNJS+WCb+VTdflH8ZhWHSK7FmDtiGWPI7+4socwVlQ
-	ilCpoZTJ+iuNyPW+CkzOFthSGMiTq7E7BHF6NpomydOb68zuaKhvAiu5yLLJRuS7ECozX+h3Q08Tq
-	hM3/IC6oAoYp7xEdPOsGYKrQDN80e5xs4pZ5WG4qDlN/LYphJO71T+jDih93VEbSvfQepsQw0Fe7B
-	6Iu0LiMrpUFYo0S6PO5ZpJpmnXM3SzrTsfB3pMy7LIGL1nIDLyxBLRDYDFlpFxuLhgWkydORlxldo
-	XAy/C++g==;
+	bh=v5OrzgsU7rIRwzsqk8aQF/0r3LIC+nCVvbvICuv5eM0=; b=Ah0Riz73OEyyGAfjiY/iORrTI7
+	w2xbgqYGw8wworlLyvTuOgo3A2XgHdDyBHF7di/p0uo2U0DZj4XlfDKdILYiDcIQMkR+BNIy1toCq
+	Iu6Wfyq3q4Tb7ptFb5VO8XD50/QOXspRaHiOhiUKx7M8Y7RiX+aseQ1Ov3BM/6CFxzqpGPSCZE7y2
+	rEV/XgQWI0pFFhpSmgfLwyWb8/c4wfPxSaAp4pWvVtL62f20ldW7PhNYQ1HviSChrAtuDUKEMSbrP
+	QXZM9bPQa5982T7oMatfr0apwkwoabrYB4vrS76L/zWn0QxcAo0FrH4grSG5maN2eXmSYW0A/3VXL
+	a5hIBBRA==;
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wh6eO-00000007XVf-34aF;
+	id 1wh6eO-00000007XVe-2hwP;
 	Tue, 07 Jul 2026 14:19:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783433989;
-	bh=g56HTzFjQriNIjmGY0HeYfsgLd54rCi6BNQWauoc674=;
+	s=mail; t=1783433990;
+	bh=TqL4eWaaA0oBsoWcRTHb3KyJlw6H0KWveV++ZhZWwEk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lB1NJaLQv+0XGsnpHHoB/od19J78zhYXbMj0FCgSFmSLbRFa62KS+VcPRJ8DpNwt1
-	 r+MykOrEVemj7pVXy5y7yjd/SykIizHnU7wKOxy65dhEJCL3bzoOGrmDf9U28BNdF5
-	 H2ZswztvH8I4Pcxo5NF1AjwsiPw9cvtVd7ulaQMWbiRIfpkigkJOecZR8cL2jyiBkh
-	 TylljqIARxJa0blxooi0zi2bZWXaPzmqVRwXbWaEw0jONMwlAU7wAg4g54EcPqTg7c
-	 n4d4D1OTRNgWsANGYq4COV4CYt/U/60B51e/dsSKw/Byp5rPEky8oDBzdf2SZpLsz0
-	 1MVojqQJj8j5Q==
+	b=XufPc1GxuFTH6dTwOeh91VGAIm6UKaHUqzEFgIKksq6LCFz/si9vSw8FeMlUoDffc
+	 dXiwV1XnHVV07960LDcxoBdt7Q4sLTSEprKoEF42IuwX8srM5nhd+4S1vDpkxzBS2O
+	 Lh6fiXdB6h/d66uq5J2S/4/6NxRTspmT4Kc8NL+rhvr0IEjlrVhUzmlBFijqr+eInb
+	 3xTb4tpHrLAmJ/ahJA9DHXTUsyhdZQbTZBa6iyUVUnyWmGPcP1gKrZT+riHw2NT/uz
+	 1z//CZYaIzbIZxVnErNwew6FSF8vO2RdBgrZhgAS+TuHi2hq5VjqJjHJ6FgsgVVyc4
+	 CSTcUpK8D2Y7w==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8A39A17E003B;
-	Tue, 07 Jul 2026 16:19:48 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2E41717E0FAC;
+	Tue, 07 Jul 2026 16:19:50 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunfeng.yun@mediatek.com
 Cc: vkoul@kernel.org,
@@ -76,18 +76,17 @@ Cc: vkoul@kernel.org,
 	linux-kernel@vger.kernel.org,
 	dri-devel@lists.freedesktop.org,
 	kernel@collabora.com
-Subject: [PATCH v2 09/12] phy: phy-mtk-dp: Rewrite and document default driving param macros
-Date: Tue,  7 Jul 2026 16:19:28 +0200
-Message-ID: <20260707141931.191172-10-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 11/12] phy: phy-mtk-dp: Add PHYD Lane EN register mask to SoC data
+Date: Tue,  7 Jul 2026 16:19:30 +0200
+Message-ID: <20260707141931.191172-12-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260707141931.191172-1-angelogioacchino.delregno@collabora.com>
 References: <20260707141931.191172-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260707_151952_957041_799B0E3B 
-X-CRM114-Status: UNSURE (   8.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260707_151952_746263_DB4835F1 
+X-CRM114-Status: GOOD (  13.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,112 +101,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use FIELD_PREP_CONST and add nicer definitions/macros to build the
-default driving parameters for the PHY and, while at it, also add
-comments explaining what they are supposed to set in the PHY.
+In preparation for adding support for the eDP PHY found in newer
+SoCs, transfer the register mask for PHYD_TX_LN_EN to SoC specific
+data.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/phy/mediatek/phy-mtk-dp.c | 86 +++++++++++++++----------------
- 1 file changed, 41 insertions(+), 45 deletions(-)
+ drivers/phy/mediatek/phy-mtk-dp.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/phy/mediatek/phy-mtk-dp.c b/drivers/phy/mediatek/phy-mtk-dp.c
-index d0ef8e8f6670..9a800d6b91c3 100644
+index 8ac086360138..64bdfda5394f 100644
 --- a/drivers/phy/mediatek/phy-mtk-dp.c
 +++ b/drivers/phy/mediatek/phy-mtk-dp.c
-@@ -85,51 +85,47 @@
-  * [2,5,8]: Swing 2 Pre1 and Swing 3 Pre0
-  */
- #define PHYD_DIG_NUM_DRV_PARA_REGS	9
--#define XTP_LN_TX_LCTXC0_SW0_PRE0_DEFAULT	BIT(4)
--#define XTP_LN_TX_LCTXC0_SW0_PRE1_DEFAULT	(BIT(10) | BIT(12))
--#define XTP_LN_TX_LCTXC0_SW0_PRE2_DEFAULT	GENMASK(20, 19)
--#define XTP_LN_TX_LCTXC0_SW0_PRE3_DEFAULT	GENMASK(29, 29)
--#define MT8195_DRIVING_PARAM_3_DEFAULT	(XTP_LN_TX_LCTXC0_SW0_PRE0_DEFAULT | \
--				 XTP_LN_TX_LCTXC0_SW0_PRE1_DEFAULT | \
--				 XTP_LN_TX_LCTXC0_SW0_PRE2_DEFAULT | \
--				 XTP_LN_TX_LCTXC0_SW0_PRE3_DEFAULT)
--
--#define XTP_LN_TX_LCTXC0_SW1_PRE0_DEFAULT	GENMASK(4, 3)
--#define XTP_LN_TX_LCTXC0_SW1_PRE1_DEFAULT	GENMASK(12, 9)
--#define XTP_LN_TX_LCTXC0_SW1_PRE2_DEFAULT	(BIT(18) | BIT(21))
--#define XTP_LN_TX_LCTXC0_SW2_PRE0_DEFAULT	GENMASK(29, 29)
--#define MT8195_DRIVING_PARAM_4_DEFAULT	(XTP_LN_TX_LCTXC0_SW1_PRE0_DEFAULT | \
--				 XTP_LN_TX_LCTXC0_SW1_PRE1_DEFAULT | \
--				 XTP_LN_TX_LCTXC0_SW1_PRE2_DEFAULT | \
--				 XTP_LN_TX_LCTXC0_SW2_PRE0_DEFAULT)
--
--#define XTP_LN_TX_LCTXC0_SW2_PRE1_DEFAULT	(BIT(3) | BIT(5))
--#define XTP_LN_TX_LCTXC0_SW3_PRE0_DEFAULT	GENMASK(13, 12)
--#define MT8195_DRIVING_PARAM_5_DEFAULT	(XTP_LN_TX_LCTXC0_SW2_PRE1_DEFAULT | \
--				 XTP_LN_TX_LCTXC0_SW3_PRE0_DEFAULT)
--
--#define XTP_LN_TX_LCTXCP1_SW0_PRE0_DEFAULT	0
--#define XTP_LN_TX_LCTXCP1_SW0_PRE1_DEFAULT	GENMASK(10, 10)
--#define XTP_LN_TX_LCTXCP1_SW0_PRE2_DEFAULT	GENMASK(19, 19)
--#define XTP_LN_TX_LCTXCP1_SW0_PRE3_DEFAULT	GENMASK(28, 28)
--#define MT8195_DRIVING_PARAM_6_DEFAULT	(XTP_LN_TX_LCTXCP1_SW0_PRE0_DEFAULT | \
--				 XTP_LN_TX_LCTXCP1_SW0_PRE1_DEFAULT | \
--				 XTP_LN_TX_LCTXCP1_SW0_PRE2_DEFAULT | \
--				 XTP_LN_TX_LCTXCP1_SW0_PRE3_DEFAULT)
--
--#define XTP_LN_TX_LCTXCP1_SW1_PRE0_DEFAULT	0
--#define XTP_LN_TX_LCTXCP1_SW1_PRE1_DEFAULT	GENMASK(10, 9)
--#define XTP_LN_TX_LCTXCP1_SW1_PRE2_DEFAULT	GENMASK(19, 18)
--#define XTP_LN_TX_LCTXCP1_SW2_PRE0_DEFAULT	0
--#define MT8195_DRIVING_PARAM_7_DEFAULT	(XTP_LN_TX_LCTXCP1_SW1_PRE0_DEFAULT | \
--				 XTP_LN_TX_LCTXCP1_SW1_PRE1_DEFAULT | \
--				 XTP_LN_TX_LCTXCP1_SW1_PRE2_DEFAULT | \
--				 XTP_LN_TX_LCTXCP1_SW2_PRE0_DEFAULT)
--
--#define XTP_LN_TX_LCTXCP1_SW2_PRE1_DEFAULT	GENMASK(3, 3)
--#define XTP_LN_TX_LCTXCP1_SW3_PRE0_DEFAULT	0
--#define MT8195_DRIVING_PARAM_8_DEFAULT	(XTP_LN_TX_LCTXCP1_SW2_PRE1_DEFAULT | \
--				 XTP_LN_TX_LCTXCP1_SW3_PRE0_DEFAULT)
-+#define XTP_LN_TX_LCTXC_SW0_PRE0	GENMASK(5, 0)
-+#define XTP_LN_TX_LCTXC_SW0_PRE1	GENMASK(13, 8)
-+#define XTP_LN_TX_LCTXC_SW0_PRE2	GENMASK(21, 16)
-+#define XTP_LN_TX_LCTXC_SW0_PRE3	GENMASK(29, 24)
-+
-+#define XTP_LN_TX_LCTXC_SW1_PRE0	GENMASK(5, 0)
-+#define XTP_LN_TX_LCTXC_SW1_PRE1	GENMASK(13, 8)
-+#define XTP_LN_TX_LCTXC_SW1_PRE2	GENMASK(21, 16)
-+#define XTP_LN_TX_LCTXC_SW2_PRE0	GENMASK(29, 24)
-+
-+#define XTP_LN_TX_LCTXC_SW2_PRE1	GENMASK(5, 0)
-+#define XTP_LN_TX_LCTXC_SW3_PRE0	GENMASK(13, 8)
-+
-+#define BUILD_DRIVING_PARAM_0(sw0_pre0, sw0_pre1, sw0_pre2, sw0_pre3) (	\
-+	FIELD_PREP_CONST(XTP_LN_TX_LCTXC_SW0_PRE0, sw0_pre0) |		\
-+	FIELD_PREP_CONST(XTP_LN_TX_LCTXC_SW0_PRE1, sw0_pre1) |		\
-+	FIELD_PREP_CONST(XTP_LN_TX_LCTXC_SW0_PRE2, sw0_pre2) |		\
-+	FIELD_PREP_CONST(XTP_LN_TX_LCTXC_SW0_PRE3, sw0_pre3)		\
-+)
-+
-+#define BUILD_DRIVING_PARAM_12(sw1_pre0, sw1_pre1, sw1_pre2, sw2_pre0) (\
-+	FIELD_PREP_CONST(XTP_LN_TX_LCTXC_SW1_PRE0, sw1_pre0) |		\
-+	FIELD_PREP_CONST(XTP_LN_TX_LCTXC_SW1_PRE1, sw1_pre1) |		\
-+	FIELD_PREP_CONST(XTP_LN_TX_LCTXC_SW1_PRE2, sw1_pre2) |		\
-+	FIELD_PREP_CONST(XTP_LN_TX_LCTXC_SW2_PRE0, sw2_pre0)		\
-+)
-+
-+#define BUILD_DRIVING_PARAM_23(sw2_pre1, sw3_pre0) (			\
-+	FIELD_PREP_CONST(XTP_LN_TX_LCTXC_SW2_PRE1, sw2_pre1) |		\
-+	FIELD_PREP_CONST(XTP_LN_TX_LCTXC_SW3_PRE0, sw3_pre0)		\
-+)
-+
-+/* MT8195: Logic State Change Point (LC TX C) */
-+#define MT8195_DRIVING_PARAM_3_DEFAULT	BUILD_DRIVING_PARAM_0( 16, 20, 24, 32)
-+#define MT8195_DRIVING_PARAM_4_DEFAULT	BUILD_DRIVING_PARAM_12(24, 30, 36, 32)
-+#define MT8195_DRIVING_PARAM_5_DEFAULT	BUILD_DRIVING_PARAM_23(40, 48)
-+
-+/* MT8195: Positive Edge (LC TX CP) */
-+#define MT8195_DRIVING_PARAM_6_DEFAULT	BUILD_DRIVING_PARAM_0( 0, 4, 8, 16)
-+#define MT8195_DRIVING_PARAM_7_DEFAULT	BUILD_DRIVING_PARAM_12(0, 6, 12, 0)
-+#define MT8195_DRIVING_PARAM_8_DEFAULT	BUILD_DRIVING_PARAM_23(8, 0)
+@@ -214,6 +214,7 @@ struct mtk_dp_phya_imp_sel {
+  * @regs_ana_lane:  Register (layout) offsets for ana_lan
+  * @regs_dig_glb:   Register (layout) offsets for dig_glb
+  * @regs_dig_lane:  Register (layout) offsets for dig_lan
++ * @mask_dig_tx_ln: Register mask for PHYD_TX_LN_EN field
+  * @val_dig_bitrate:IP Version specific register values for Bit Rate setting
+  * @ana_bias_r:     Internal resistance "R" Selection Settings (global)
+  * @ana_cktx_imp:   TX Clock Impedance Selection Settings (global)
+@@ -233,6 +234,9 @@ struct mtk_dp_phy_pdata {
+ 	const u8 *regs_dig_glb;
+ 	const u8 *regs_dig_lane;
  
- enum mtk_dp_phya_ana_glb_regidx {
- 	DP_PHYA_GLB_BIAS_GEN_0,
++	/* Register masks */
++	u32 mask_dig_tx_ln;
++
+ 	/* IP-Version specific register value arrays */
+ 	const u8 *val_dig_bitrate;
+ 
+@@ -371,10 +375,10 @@ static int mtk_dp_phy_configure(struct phy *phy, union phy_configure_opts *opts)
+ 
+ 		val = 0;
+ 		for (i = 0; i < opts->dp.lanes; i++)
+-			val |= FIELD_PREP(PHYD_TX_LN_EN, BIT(i));
++			val |= field_prep(pdata->mask_dig_tx_ln, BIT(i));
+ 
+ 		regmap_update_bits(dp_phy->regmap, pdata->off_dig_glb + reg_dig_tx_ctl,
+-				   PHYD_TX_LN_EN, val);
++				   pdata->mask_dig_tx_ln, val);
+ 	}
+ 
+ 	if (opts->dp.set_voltages) {
+@@ -450,7 +454,7 @@ static int mtk_dp_phy_disable_all_lanes(struct mtk_dp_phy *dp_phy)
+ 		return ret;
+ 
+ 	/* Get mask of currently enabled lane */
+-	val = FIELD_GET(PHYD_TX_LN_EN, val);
++	val = field_get(pdata->mask_dig_tx_ln, val);
+ 	if (val == 0)
+ 		return 0;
+ 
+@@ -461,7 +465,7 @@ static int mtk_dp_phy_disable_all_lanes(struct mtk_dp_phy *dp_phy)
+ 
+ 		ret = regmap_clear_bits(dp_phy->regmap,
+ 					pdata->off_dig_glb + regs[DP_PHYD_TX_CTL_0],
+-					FIELD_PREP(PHYD_TX_LN_EN, BIT(lane_num)));
++					field_prep(pdata->mask_dig_tx_ln, BIT(lane_num)));
+ 		if (ret)
+ 			return ret;
+ 	} while (val);
+@@ -761,6 +765,7 @@ static const struct mtk_dp_phy_pdata mt8195_dp_phy_data = {
+ 	.regs_ana_lane = mt8195_phy_ana_lane_regs,
+ 	.regs_dig_glb = mt8195_phy_dig_glb_regs,
+ 	.regs_dig_lane = mt8195_phy_dig_lane_regs,
++	.mask_dig_tx_ln = PHYD_TX_LN_EN,
+ 	.val_dig_bitrate = mt8195_phy_dig_bitrate_val,
+ 	.ana_bias_r = 15,
+ 	.ana_cktx_imp = 8,
 -- 
 2.54.0
 
