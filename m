@@ -4,79 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 088EEC43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 07:28:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41243C43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 07:56:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nvzXlqdntkeYd6Lz6Tq6hR2GvHLprwV8utLcRsUGXgk=; b=OH+nYPoAwuuc6zgu70VKOtxp3i
-	WvGTHTNn9D9HF4JBO4b7kl+D/WXdHRy3AKyI4/j5lx3+WdVdfg0edCzdruSjqAnoJENTYSB8tfP8E
-	synCIYg7YbW3aMvv29uOMoaAghUNJA2bHWz62FuKuDDhAFbtbgpquPeDgcHhf8nNJ7PCyEHr04YI8
-	KXI7ME5TayVuY5YX2jeHxo2aZkJDRQBsEd+jp6ezX78PyPy+cwNVTpq/C8ejdHuBMFouspWTo37hk
-	th8EKSD2HSeB3ttDeNFe1BlUPWy9hJVgG+RXStvxd1LSJGl3xGOms9Xg6nNzJNpde98klGVOp/6tq
-	f/oQnLuA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=u7omd6J2J6sDKoi1bxgaYKfVCN67GZzKzySVfWVBIZY=; b=KZ3RlPJvnW8hloYttENYT4TSHQ
+	jdpePvyWxMwLTu/uipajDvNM60KKo6r0+8+5wAsU79DcsSoXLx60sqqcjyhAbkv9CdMhCZ7JldB7o
+	Q57n5+5rbYcggwsxV205aTvaA2iS/kBhbzTarDJeVEZ/SDyzqQSHByyI/MazTsrdALngPCDwjR4Gx
+	fbvoPUvcxsnVs8pgLnqGNX6CHjxfpKBnebtR9OrQ8yxso+yeild1+EgqS2hzr4QY8tgAlKS3yleLH
+	8Hk2ipSQkFUrxN4TUgPcwLYN+kFwJAYdJrpiObGbc3PwPsZmuyIKpw4USZ5QbHS8FhScrReCOa8lR
+	xf/7AY8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whMhu-0000000GVXq-0jwZ;
-	Wed, 08 Jul 2026 07:28:34 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1whN8V-0000000GYRC-1X3s;
+	Wed, 08 Jul 2026 07:56:03 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whMhr-0000000GVXE-1vtY;
-	Wed, 08 Jul 2026 07:28:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1783495695; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=WR5jo7+vNWexm49ePnWJOndMo1YlNnhLvzLsnvOGNkAw7Yqz6+O5R2/lJUMWFmcamZ/p7xmgwbDcps7hG3OHydjhtqfGChWey+1WU8DR8pt9jHvIoFBugPOfWIi+A98szZWp9Z/0FR/eDBIrn0qM1OeQn7L7YZwaUH+sH0oNC0Y=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1783495695; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=nvzXlqdntkeYd6Lz6Tq6hR2GvHLprwV8utLcRsUGXgk=; 
-	b=mD8doOq0sE4gog0+/qNqHVag3+yT/oNYfgA7rNTMtEW8+hFuckEzn1WKuxjwLXX0zuWDXwAa9a/vcfjztyFTLPUm9EVOQCWkDosgDW0EsqTW76lcRl5tXNvQGiTzb7l1vefDIRTFOaETlkKYw7v7jqOQB3/wy4xrW6l6ck7HIJo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=robert.mader@collabora.com;
-	dmarc=pass header.from=<robert.mader@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1783495695;
-	s=zohomail; d=collabora.com; i=robert.mader@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=nvzXlqdntkeYd6Lz6Tq6hR2GvHLprwV8utLcRsUGXgk=;
-	b=f4xLgGRkJ2ufgc51CfXJ0UGO08OQ8/7KRgGSsaU+OjaFp0gAMaAOjCAT8UUZbdr7
-	DmTR3+gowpM8M5bETqjafQGItxHQWNqHOUKISNrHgLqgMIw+b7fgBEwDWWOOOvk+OoM
-	lLCb6NtI5uF8XwI/z0uX+rsESFOkWTGZu2nbDAwU=
-Received: by mx.zohomail.com with SMTPS id 1783495694387551.6316499671505;
-	Wed, 8 Jul 2026 00:28:14 -0700 (PDT)
-Message-ID: <e8384d37-5fb6-442a-b17a-547506abd157@collabora.com>
-Date: Wed, 8 Jul 2026 09:28:07 +0200
+	id 1whN8S-0000000GYQH-44Dq
+	for linux-mediatek@lists.infradead.org;
+	Wed, 08 Jul 2026 07:56:02 +0000
+Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-84794e800f4so238276b3a.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 00:56:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1783497360; x=1784102160; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=u7omd6J2J6sDKoi1bxgaYKfVCN67GZzKzySVfWVBIZY=;
+        b=gzyt7JD0heH2kcuHdjeaMeeL4nDQ5ziK56Dy8ntttwpTIQTp3DXV30v1PVYnwzCUXy
+         ss/2kGkUbgZxzG0Q/HxmQVj0Sl7hZg2boFPCNFtCxqBF1enSCj0Vw7dNdEZ0om6vcQvI
+         HS8m6kA6n1S72mvNoA4gY1M1rogNwr3hkSkHBilTL6kTw99aH9acg2MRJJ3GsCtpRVuM
+         z1MYuRMWchCssdCBzNsc/Td41Z7JzG70p2ltZd5bauykcIAByFFBp/L/gQDwgqEKVd6K
+         JBGUVMMfPdunYu34kSXW2j3bq0e7ATmA7ZaQoSp7CJBQnB89y2ceabmXlm8YuSOQ6m+I
+         pbpg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783497360; x=1784102160;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=u7omd6J2J6sDKoi1bxgaYKfVCN67GZzKzySVfWVBIZY=;
+        b=X5JUZE3GqaKI1avo56BRcSbBaEQMyMrMLpKdPlwpft6OJCcRwXl3Ec1gBVl40w4WGO
+         Pko5U8ZbF5po6Z972yMZj59aH5PtyiyYK//ycx7wB0H3wQazX1/ytOZSFv5VlWoaWzOe
+         RTi7DiscZmLr9/m3Tze+4xJD9EeSx9T2vFbsJiAWUcXZIeO95OV0ATnY6/0N+Tt5cfi/
+         nvgLWHwsMRjGJ7sd13SMqm/qgAAOZlShrnqxd0mTQ/1A6vE7WolF/8GzkQgrS3opXZe0
+         R0w7zvSjSKfC8gll7f+d8wbUAzo1y8zzVVADxHOGc+aPRZ1TyHUrO43QlyZsjXTr9ZN9
+         /ppA==
+X-Forwarded-Encrypted: i=1; AHgh+Rqm6ESBYteP92BWWiuJZWGavN5fQvu4MahBTU8Uo+sBkULy8L9iM4YwRRviAdQo7T/wsgX9lS2XWMUxDw5ThQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzpRKvr/ql9WFgaJLiHM7zI9dSqOM6LxXVquVjhulGizQpVQ5mI
+	LeKoTUBle+3YbXS+EZhndWjkOD7tXcYFei7h94Cio4KrTUbF3nm4jYYo
+X-Gm-Gg: AfdE7cmuZdkwSf89qqcFPwm5W0MOS6ziUt5IB3qKocEv7YRybCD9uxDfRewMnfn6hM1
+	ZWoXYQJ5KQtl8sKJtd0u46TC8r2PBJX/jWjqSD0A/BHzn77w8ZLIbETYZOi73E3l60qsUvOZisa
+	vikGhFDEJAax9U+rcOmpyPFGBGaiGcbOMqYWa2Z7hEluozumB6DbsXDALeJ4XURAPDiXpfApetf
+	ACX67gDn4ttK83Iq7aMe7q7B5JgpgZhmHXhziFYqwRcPoTavT866e2Tav4AFZuY0nKR1rhB8h0A
+	HOs4O2B8wV2HShEtWEvJBHNLTmanI1QBpIZhab0COUMb8mOnMESOwn2MRH5g0fIN84+P9vjkvSB
+	ZrdqjugHC0a7t4ik0pKotR2HaYs7lHJMmLCZLL4UR6PlsA3cMUZrulQJ7a41WAgTo601k8iavWx
+	nJp4r7aC5rEw==
+X-Received: by 2002:a05:6a00:928a:b0:842:4f20:53ff with SMTP id d2e1a72fcca58-84842f9f153mr1982201b3a.42.1783497360063;
+        Wed, 08 Jul 2026 00:56:00 -0700 (PDT)
+Received: from lgs.. ([101.76.249.46])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-847f6d496besm6668958b3a.36.2026.07.08.00.55.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Jul 2026 00:55:58 -0700 (PDT)
+From: Guangshuo Li <lgs201920130244@gmail.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
+	Javier Tia <floss@jetm.me>,
+	Leon Yen <leon.yen@mediatek.com>,
+	Deren Wu <deren.wu@mediatek.com>,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Guangshuo Li <lgs201920130244@gmail.com>
+Subject: [PATCH] wifi: mt76: mt7925: guard link STA in decap offload
+Date: Wed,  8 Jul 2026 15:55:39 +0800
+Message-ID: <20260708075539.726200-1-lgs201920130244@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 06/21] drm: Introduce
- DRM_CLIENT_CAP_CRTC_COLOR_PIPELINE
-To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Louis Chauvet <louis.chauvet@bootlin.com>,
- Haneen Mohammed <hamohammed.sa@gmail.com>,
- Melissa Wen <melissa.srw@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com, =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?=
- <nfraprado@collabora.com>
-References: <20251223-mtk-post-blend-color-pipeline-v3-0-7d969f9a37a0@collabora.com>
- <20251223-mtk-post-blend-color-pipeline-v3-6-7d969f9a37a0@collabora.com>
-Content-Language: en-US, de-DE
-From: Robert Mader <robert.mader@collabora.com>
-In-Reply-To: <20251223-mtk-post-blend-color-pipeline-v3-6-7d969f9a37a0@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_002831_564179_161C9734 
-X-CRM114-Status: GOOD (  25.98  )
+X-CRM114-CacheID: sfid-20260708_005601_008561_A3DA030E 
+X-CRM114-Status: GOOD (  10.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,227 +108,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, thanks for the series!
+mt7925_sta_set_decap_offload() iterates over the vif valid_links mask
+when updating decap offload state for an MLO station. The station may not
+have a link STA for every valid link of the vif, so mt792x_sta_to_link()
+can return NULL for a link that belongs to the vif but not to the station.
 
-On 23.12.25 19:01, Ariel D'Alessandro wrote:
-> From: "Nícolas F. R. A. Prado" <nfraprado@collabora.com>
->
-> Introduce DRM_CLIENT_CAP_CRTC_COLOR_PIPELINE which a DRM client can set
-> to enable the usage of CRTC (post-blend) color pipelines instead of the
-> now deprecated CRTC color management properties: "GAMMA_LUT",
-> "DEGAMMA_LUT" and "CTM".
->
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> Co-developed-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-> Reviewed-by: Louis Chauvet <louis.chauvet@bootlin.com>
-> ---
->   drivers/gpu/drm/drm_atomic_uapi.c   | 20 ++++++++++++++++++++
->   drivers/gpu/drm/drm_connector.c     |  1 +
->   drivers/gpu/drm/drm_crtc_internal.h |  1 +
->   drivers/gpu/drm/drm_ioctl.c         |  9 +++++++++
->   drivers/gpu/drm/drm_mode_object.c   |  9 +++++++++
->   include/drm/drm_file.h              |  7 +++++++
->   include/uapi/drm/drm.h              | 19 +++++++++++++++++++
->   7 files changed, 66 insertions(+)
->
-> diff --git a/drivers/gpu/drm/drm_atomic_uapi.c b/drivers/gpu/drm/drm_atomic_uapi.c
-> index 07d0d224fe58c..d1bc78b2567a9 100644
-> --- a/drivers/gpu/drm/drm_atomic_uapi.c
-> +++ b/drivers/gpu/drm/drm_atomic_uapi.c
-> @@ -433,6 +433,11 @@ static int drm_atomic_crtc_set_property(struct drm_crtc *crtc,
->   	if (property == config->prop_active)
->   		state->active = val;
->   	else if (property == crtc->color_pipeline_property) {
-> +		if (!file_priv->crtc_color_pipeline) {
-> +			drm_dbg_atomic(dev,
-> +				"Setting COLOR_PIPELINE CRTC property not permitted without DRM_CLIENT_CAP_CRTC_COLOR_PIPELINE client cap\n");
-> +			return -EINVAL;
-> +		}
->   		/* find DRM colorop object */
->   		struct drm_colorop *colorop = NULL;
->   
-> @@ -451,6 +456,11 @@ static int drm_atomic_crtc_set_property(struct drm_crtc *crtc,
->   	} else if (property == config->prop_vrr_enabled) {
->   		state->vrr_enabled = val;
->   	} else if (property == config->degamma_lut_property) {
-> +		if (file_priv->crtc_color_pipeline) {
-> +			drm_dbg_atomic(dev,
-> +				"Setting DEGAMMA_LUT CRTC property not permitted with DRM_CLIENT_CAP_CRTC_COLOR_PIPELINE client cap\n");
-> +			return -EINVAL;
-> +		}
->   		ret = drm_property_replace_blob_from_id(dev,
->   					&state->degamma_lut,
->   					val,
-> @@ -459,6 +469,11 @@ static int drm_atomic_crtc_set_property(struct drm_crtc *crtc,
->   		state->color_mgmt_changed |= replaced;
->   		return ret;
->   	} else if (property == config->ctm_property) {
-> +		if (file_priv->crtc_color_pipeline) {
-> +			drm_dbg_atomic(dev,
-> +				"Setting CTM CRTC property not permitted with DRM_CLIENT_CAP_CRTC_COLOR_PIPELINE client cap\n");
-> +			return -EINVAL;
-> +		}
->   		ret = drm_property_replace_blob_from_id(dev,
->   					&state->ctm,
->   					val,
-> @@ -467,6 +482,11 @@ static int drm_atomic_crtc_set_property(struct drm_crtc *crtc,
->   		state->color_mgmt_changed |= replaced;
->   		return ret;
->   	} else if (property == config->gamma_lut_property) {
-> +		if (file_priv->crtc_color_pipeline) {
-> +			drm_dbg_atomic(dev,
-> +				"Setting GAMMA_LUT CRTC property not permitted with DRM_CLIENT_CAP_CRTC_COLOR_PIPELINE client cap\n");
-> +			return -EINVAL;
-> +		}
->   		ret = drm_property_replace_blob_from_id(dev,
->   					&state->gamma_lut,
->   					val,
-> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
-> index 4d6dc9ebfdb5b..aec8a5c0d593a 100644
-> --- a/drivers/gpu/drm/drm_connector.c
-> +++ b/drivers/gpu/drm/drm_connector.c
-> @@ -3440,6 +3440,7 @@ int drm_mode_getconnector(struct drm_device *dev, void *data,
->   	 */
->   	ret = drm_mode_object_get_properties(&connector->base, file_priv->atomic,
->   			file_priv->plane_color_pipeline,
-> +			file_priv->crtc_color_pipeline,
->   			(uint32_t __user *)(unsigned long)(out_resp->props_ptr),
->   			(uint64_t __user *)(unsigned long)(out_resp->prop_values_ptr),
->   			&out_resp->count_props);
-> diff --git a/drivers/gpu/drm/drm_crtc_internal.h b/drivers/gpu/drm/drm_crtc_internal.h
-> index c094092296448..ab02e6295271d 100644
-> --- a/drivers/gpu/drm/drm_crtc_internal.h
-> +++ b/drivers/gpu/drm/drm_crtc_internal.h
-> @@ -164,6 +164,7 @@ void drm_mode_object_unregister(struct drm_device *dev,
->   				struct drm_mode_object *object);
->   int drm_mode_object_get_properties(struct drm_mode_object *obj, bool atomic,
->   				   bool plane_color_pipeline,
-> +				   bool crtc_color_pipeline,
->   				   uint32_t __user *prop_ptr,
->   				   uint64_t __user *prop_values,
->   				   uint32_t *arg_count_props);
-> diff --git a/drivers/gpu/drm/drm_ioctl.c b/drivers/gpu/drm/drm_ioctl.c
-> index 2884075660ddd..14746afd82783 100644
-> --- a/drivers/gpu/drm/drm_ioctl.c
-> +++ b/drivers/gpu/drm/drm_ioctl.c
-> @@ -383,6 +383,15 @@ drm_setclientcap(struct drm_device *dev, void *data, struct drm_file *file_priv)
->   			return -EINVAL;
->   		file_priv->plane_color_pipeline = req->value;
->   		break;
-> +	case DRM_CLIENT_CAP_CRTC_COLOR_PIPELINE:
-> +		if (!file_priv->atomic)
-> +			return -EINVAL;
-> +		if (req->value > 1)
-> +			return -EINVAL;
-> +		if (!drm_core_check_feature(dev, DRIVER_CRTC_COLOR_PIPELINE))
-> +			return -EINVAL;
+The function currently dereferences mlink before checking whether the
+link WCID is ready. If mlink is NULL, setting or clearing
+MT_WCID_FLAG_HDR_TRANS dereferences a NULL pointer.
 
-For DRM_CLIENT_CAP_PLANE_COLOR_PIPELINE we just solved the equivalent 
-problem by checking if drivers actually expose pipelines (see 
-https://lore.kernel.org/dri-devel/20260703073230.19982-1-robert.mader@collabora.com/ 
-which just landed drm-misc-fixes and is marked for backporting). I 
-initially went with the same approach of using a driver feature (see 
-https://lore.kernel.org/dri-devel/20260630084229.529682-2-robert.mader@collabora.com/), 
-however the explicit check turned out to be both sufficient and simpler. 
-Using that approach would allow you to drop the patches 5, 17 and 21.
+Skip links without a station link before touching mlink->wcid.
 
-Regards
+Fixes: b859ad65309a ("wifi: mt76: mt7925: add link handling in mt7925_sta_set_decap_offload")
+Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7925/main.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-> +		file_priv->crtc_color_pipeline = req->value;
-> +		break;
->   	default:
->   		return -EINVAL;
->   	}
-> diff --git a/drivers/gpu/drm/drm_mode_object.c b/drivers/gpu/drm/drm_mode_object.c
-> index b45d501b10c86..ea4508f6a09a6 100644
-> --- a/drivers/gpu/drm/drm_mode_object.c
-> +++ b/drivers/gpu/drm/drm_mode_object.c
-> @@ -388,6 +388,7 @@ EXPORT_SYMBOL(drm_object_property_get_default_value);
->   /* helper for getconnector and getproperties ioctls */
->   int drm_mode_object_get_properties(struct drm_mode_object *obj, bool atomic,
->   				   bool plane_color_pipeline,
-> +				   bool crtc_color_pipeline,
->   				   uint32_t __user *prop_ptr,
->   				   uint64_t __user *prop_values,
->   				   uint32_t *arg_count_props)
-> @@ -416,6 +417,13 @@ int drm_mode_object_get_properties(struct drm_mode_object *obj, bool atomic,
->   				continue;
->   		}
->   
-> +		if (!crtc_color_pipeline && obj->type == DRM_MODE_OBJECT_CRTC) {
-> +			struct drm_crtc *crtc = obj_to_crtc(obj);
-> +
-> +			if (prop == crtc->color_pipeline_property)
-> +				continue;
-> +		}
-> +
->   		if (*arg_count_props > count) {
->   			ret = __drm_object_property_get_value(obj, prop, &val);
->   			if (ret)
-> @@ -475,6 +483,7 @@ int drm_mode_obj_get_properties_ioctl(struct drm_device *dev, void *data,
->   
->   	ret = drm_mode_object_get_properties(obj, file_priv->atomic,
->   			file_priv->plane_color_pipeline,
-> +			file_priv->crtc_color_pipeline,
->   			(uint32_t __user *)(unsigned long)(arg->props_ptr),
->   			(uint64_t __user *)(unsigned long)(arg->prop_values_ptr),
->   			&arg->count_props);
-> diff --git a/include/drm/drm_file.h b/include/drm/drm_file.h
-> index 6ee70ad65e1fd..d0c323378ae46 100644
-> --- a/include/drm/drm_file.h
-> +++ b/include/drm/drm_file.h
-> @@ -214,6 +214,13 @@ struct drm_file {
->   	 */
->   	bool plane_color_pipeline;
->   
-> +	/**
-> +	 * @crtc_color_pipeline:
-> +	 *
-> +	 * True if client understands CRTC (post-blend) color pipelines
-> +	 */
-> +	bool crtc_color_pipeline;
-> +
->   	/**
->   	 * @was_master:
->   	 *
-> diff --git a/include/uapi/drm/drm.h b/include/uapi/drm/drm.h
-> index d726828bdf408..991ef14c5377c 100644
-> --- a/include/uapi/drm/drm.h
-> +++ b/include/uapi/drm/drm.h
-> @@ -927,6 +927,25 @@ struct drm_get_cap {
->    */
->   #define DRM_CLIENT_CAP_PLANE_COLOR_PIPELINE	7
->   
-> +/**
-> + * DRM_CLIENT_CAP_CRTC_COLOR_PIPELINE
-> + *
-> + * If set to 1 the DRM core will allow setting the COLOR_PIPELINE
-> + * property on a &drm_crtc, as well as drm_colorop properties.
-> + *
-> + * Setting of these crtc properties will be rejected when this client
-> + * cap is set:
-> + * - GAMMA_LUT
-> + * - DEGAMMA_LUT
-> + * - CTM
-> + *
-> + * The client must enable &DRM_CLIENT_CAP_ATOMIC first.
-> + *
-> + * This client cap can only be set if the driver sets the corresponding driver
-> + * cap &DRM_CAP_CRTC_COLOR_PIPELINE.
-> + */
-> +#define DRM_CLIENT_CAP_CRTC_COLOR_PIPELINE	8
-> +
->   /* DRM_IOCTL_SET_CLIENT_CAP ioctl argument type */
->   struct drm_set_client_cap {
->   	__u64 capability;
->
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index a9059866b701..2b6cc8e253c0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -1713,6 +1713,9 @@ static void mt7925_sta_set_decap_offload(struct ieee80211_hw *hw,
+ 		mconf = mt792x_vif_to_link(mvif, i);
+ 		mlink = mt792x_sta_to_link(msta, i);
+ 
++		if (!mlink)
++			continue;
++
+ 		if (enabled)
+ 			set_bit(MT_WCID_FLAG_HDR_TRANS, &mlink->wcid.flags);
+ 		else
 -- 
-Robert Mader
-Consultant Software Developer
-
-Collabora Ltd.
-Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
-Registered in England & Wales, no. 5513718
+2.43.0
 
 
