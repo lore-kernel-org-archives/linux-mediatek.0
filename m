@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6414C43602
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 11:45:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26CE0C43602
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 12:05:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
 	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=10jNbGRvZsPmWMGouxLK8UHxoLr85rz2aRkumx5Y9/A=; b=WAssFqlI4tiJZRdS6Xpc2W/VvU
-	uyuANoD+rsSx9NYDsTVGs7NUREVzsIeURqO6ir7uy1ZjEWL2eiDN5OOejENM1aHnJ94i/w32MqfwX
-	/yJdBW4pbWbSlhQl+9i6mYeetSofZ5wvKjhW21qxRZYSx3DULg3wGb4/00zrGtmuiKBybqVrsihas
-	DMO38PvQzuKzeUVvx0P2WCW8zJrY5zjc4H7H+E/7wUgksHk8fMMhDnwhPSCkfBQkt5P+BH9fKn0fM
-	Wy7fLSZ99cz+5PxNmLfrFnn9SLg+ccupxcIz3WdNO9+T1EZ2wi4/aqeToRfm9skc9ajKM5dBdMHUc
-	B3hREYGg==;
+	bh=wGYZTikwg2rXaLxaDX2K7Y9au6mX/qYf21+84FQdF+0=; b=Vqgv0ZeTu/pvUBWJcP91bsM8Jl
+	DR+je2wU+Ue0YEJRshg8JKij4Jq+NG8n60XiaHfX64gp5V6qNyWxyPJxJowK+EGRbQHBXr0vV4iKe
+	et6foqKhW5L0LpAJ3xU2dakob0Zr4K+h0WmiIOCCcP5BK1a5oQce9QT+CUCq/AHMQFZPNQe4wLzmi
+	1hs7fwK6+RShtabsFSNl+NUnXTmxetZeM0H/kgCfpspLpbtYHXbsNX9lZZWjRoFrx7kKgJzJVtAeA
+	xQQKm+ZUyLFlvkV+ZSOXcdg3ZVOB/nC1tFqON6lWiF1U8cPtO7TPJmzc29R8bs59Kt+e3Vi6mtpmu
+	3Yox84hA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whQiJ-0000000H2Nk-3PEQ;
-	Wed, 08 Jul 2026 11:45:15 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1whR2L-0000000H3hK-3mO4;
+	Wed, 08 Jul 2026 12:05:57 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whQiH-0000000H2N7-0Y5M;
-	Wed, 08 Jul 2026 11:45:14 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1783511084; cv=none; 
+	id 1whR2J-0000000H3gr-0LkS;
+	Wed, 08 Jul 2026 12:05:56 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1783512307; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=BbzfzKxqbvPnrvyVyHOhzb8iD20zR3d66/NJqDevEdeclatBqZjVOp40FJJBVUGAkZDBYHC3ODWdArm/rrjpPI/IYXPshf4P9TSy6xjx5FerLYq09rVpkQAzZ0wtIsSdxbEgl7L1HfDSB20xpPNMSd/B5CoQVlqmup2BYQWPqWA=
+	b=KvgWjgnVrtF6+ZkBWicFziVYuQdsIssCDuicOCsak8yQIYN7+5NGdf+ouUluqMO+Ev9SpCAtLa9UAT0ZMlgXiSB9fnXQvS3VTwuC0nWRDjuzSKl2xyNx2lP4/AACMn9OXW18m83oYXQSvoABm1Md5du7KWpgypvrj/KL/C/BvOY=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1783511084; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=10jNbGRvZsPmWMGouxLK8UHxoLr85rz2aRkumx5Y9/A=; 
-	b=LLI7sW882jTnhgaNd1popR55mSPsaxMbsW7mOffkw42FDSe0VycSQiGZ6O64cH0tHIQxND9to8OpnJaDzWBoOpCCdbMpAlocI3IZmYvw7TkOJqvBGqRvPyB3UW/jSL7WMfvBv+qkEAA9ROigdTLXPBOSp/QugRRqThk+tJqbR9E=
+	t=1783512307; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=wGYZTikwg2rXaLxaDX2K7Y9au6mX/qYf21+84FQdF+0=; 
+	b=i+SFhQOt8b7X+gb4HX6jliFLSEB9iWLysvFJn85UUCNPBSUlqm6LfKn81LjB2ZHGWpqst9XokiDCZIokBV4eByx9ip9FUP+H/CCPbfSzyqN+p47WVR2x96GqZ1hz6NZyIuQ+FKj317l4DDPoEhyS7bJN1g38dA+n5857+d9hjZE=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
 	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1783511084;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1783512307;
 	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
 	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=10jNbGRvZsPmWMGouxLK8UHxoLr85rz2aRkumx5Y9/A=;
-	b=hHGodoC5rNtt9ao4ZOa0g7TQj9LXm/mPnD0kmSkHKFrfpnRPy4Mnq1S3IQjvaToI
-	LBIjBPD3bgr6htQpPURhrwg7UUMeCeGicaNuGHnfvGhRuM4zF2kDIcjqD0IrVq3NnNs
-	mazulxdQPHJYyp46a0hAfQktOenapwaW2mdU/4ms=
-Received: by mx.zohomail.com with SMTPS id 1783511083198326.6815554898435;
-	Wed, 8 Jul 2026 04:44:43 -0700 (PDT)
-Message-ID: <3c22fe68c08c414b789c79144ae569840e1ba6a9.camel@collabora.com>
-Subject: Re: [PATCH net-next 2/6] net: stmmac: mediatek: add PERI_ETH_CTRLx
- register offset in platform data
+	bh=wGYZTikwg2rXaLxaDX2K7Y9au6mX/qYf21+84FQdF+0=;
+	b=EL8T/+B7liCUlfZVaMPg9+sHHWJLi6JR1rw48kEi/26KZG9GVaSE91tpGn8QaUwq
+	zOQx89xA1YldfIIOlBnXMApdwV0+nR1dNcGKgWuVRwjL5ACuITyd4pP7q5KXz7I3mqp
+	3q+Jp1BO50LeAAOOYScLmdFpi7obyJAdCFf/uy1o=
+Received: by mx.zohomail.com with SMTPS id 1783512305076652.4555392247563;
+	Wed, 8 Jul 2026 05:05:05 -0700 (PDT)
+Message-ID: <658a04060e5c415af97dcc84284ab8962d1b7348.camel@collabora.com>
+Subject: Re: [PATCH net-next 3/6] net: stmmac: mediatek: rename MT2712 and
+ MT8195 variant methods
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>,  Eric Dumazet <edumazet@google.com>, Jakub Kicinski
- <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley	
- <conor+dt@kernel.org>, Richard Cochran <richardcochran@gmail.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
+To: Maxime Chevallier <maxime.chevallier@bootlin.com>, Andrew Lunn	
+ <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet	 <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
+ Abeni	 <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski	 <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Richard Cochran	 <richardcochran@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
  <angelogioacchino.delregno@collabora.com>, Biao Huang
- <biao.huang@mediatek.com>,  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	maxime.chevallier@bootlin.com, rmk+kernel@armlinux.org.uk,
- kernel@collabora.com, 	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ <biao.huang@mediatek.com>, Maxime Coquelin	 <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>
+Cc: rmk+kernel@armlinux.org.uk, kernel@collabora.com,
+ netdev@vger.kernel.org, 	devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, 
 	linux-stm32@st-md-mailman.stormreply.com
-Date: Wed, 08 Jul 2026 13:44:36 +0200
-In-Reply-To: <3e135fe0-4ef9-45be-a962-d131c8a2e9e0@lunn.ch>
+Date: Wed, 08 Jul 2026 14:04:59 +0200
+In-Reply-To: <5dbd217b-8df5-42cd-9197-36e0fb91ffe7@bootlin.com>
 References: <20260707-dwmac-mediatek-mt8189-v1-0-17f345eaaca3@collabora.com>
-	 <20260707-dwmac-mediatek-mt8189-v1-2-17f345eaaca3@collabora.com>
-	 <3e135fe0-4ef9-45be-a962-d131c8a2e9e0@lunn.ch>
+	 <20260707-dwmac-mediatek-mt8189-v1-3-17f345eaaca3@collabora.com>
+	 <5dbd217b-8df5-42cd-9197-36e0fb91ffe7@bootlin.com>
 Organization: Collabora Ltd
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
@@ -77,9 +77,8 @@ User-Agent: Evolution 3.60.2 (3.60.2-1.fc44)
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_044513_229278_E49FD71B 
-X-CRM114-Status: UNSURE (   9.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260708_050555_183958_5D388C8D 
+X-CRM114-Status: GOOD (  22.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,25 +93,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andrew
+Hi Maxime,
 
-On Tue, 2026-07-07 at 14:45 +0200, Andrew Lunn wrote:
-> > +	.peri_eth_ctrl_offset =3D MT8195_PERI_ETH_CTRL_BASE,
+On Tue, 2026-07-07 at 11:05 +0200, Maxime Chevallier wrote:
 >=20
-> nitpick:
 >=20
-> Could the naming be more consistent? offset vs base?
+> On 7/7/26 10:21, Louis-Alexis Eyraud wrote:
+> > In preparation of newer SoC support, rename MT2712 and MT8195
+> > variant
+> > methods and sub functions to more generic names.
+> >=20
+> > Signed-off-by: Louis-Alexis Eyraud
+> > <louisalexis.eyraud@collabora.com>
+> > ---
+> > =C2=A0.../net/ethernet/stmicro/stmmac/dwmac-mediatek.c=C2=A0=C2=A0 | 32
+> > +++++++++++-----------
+> > =C2=A01 file changed, 16 insertions(+), 16 deletions(-)
+> >=20
+> > diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> > b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> > index 0cabab4fd89a..28e87990b0a1 100644
+> > --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> > +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> > @@ -110,7 +110,7 @@ static const char * const mt8195_dwmac_clk_l[]
+> > =3D {
+> > =C2=A0	"axi", "apb", "mac_cg", "mac_main", "ptp_ref"
+> > =C2=A0};
+> > =C2=A0
+> > -static int mt2712_set_interface(struct mediatek_dwmac_plat_data
+> > *plat,
+> > +static int set_phy_interface_v1(struct mediatek_dwmac_plat_data
+> > *plat,
+> > =C2=A0				u8 phy_intf_sel)
 >=20
-> 	Andrew
+> What does this naming of "v1 / v2" refer to ?
+>=20
+> I personally don't find it much better than the current one prefixed
+> by the SoC
+> name. You still end-up using registers that have the "MT8195_" prefix
+> in their
+> names in the 'v2' variants of these functions, so it still sound SoC-
+> family specific :)
+>=20
+I agree.
 
-Ack.=C2=A0
+In a work in progress version of this series, I had renamed all
+register definitions as well (to remove the mt8195_ prefix) but dropped
+the changes because too much difference for little gain.
+I kept this patch but it does not really improve the code.
 
-The commit description and subject also use offset terminology and not
-base so better keep the consistency.
-
-I'll rename this define to MT8195_PERI_ETH_CTRL_OFFSET in the v2
-version and do the same for the MT8189 one in patch 6.
+> I'd say you can keep the original names as-is, or if you really want
+> a rename,
+> maybe use the mt81xx_ prefix for MT8195 and MT8189 ?
+I'll drop this patch in v2 to keep the existing names (and smaller
+changes).
 
 Regards,
 Louis-Alexis
+
+> Maxime
 
