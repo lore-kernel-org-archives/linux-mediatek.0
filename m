@@ -4,81 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26CE0C43602
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 12:05:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F4E5C43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 12:08:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wGYZTikwg2rXaLxaDX2K7Y9au6mX/qYf21+84FQdF+0=; b=Vqgv0ZeTu/pvUBWJcP91bsM8Jl
-	DR+je2wU+Ue0YEJRshg8JKij4Jq+NG8n60XiaHfX64gp5V6qNyWxyPJxJowK+EGRbQHBXr0vV4iKe
-	et6foqKhW5L0LpAJ3xU2dakob0Zr4K+h0WmiIOCCcP5BK1a5oQce9QT+CUCq/AHMQFZPNQe4wLzmi
-	1hs7fwK6+RShtabsFSNl+NUnXTmxetZeM0H/kgCfpspLpbtYHXbsNX9lZZWjRoFrx7kKgJzJVtAeA
-	xQQKm+ZUyLFlvkV+ZSOXcdg3ZVOB/nC1tFqON6lWiF1U8cPtO7TPJmzc29R8bs59Kt+e3Vi6mtpmu
-	3Yox84hA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=X/P0XI2f+jIz2x5Bw9cZxHv5AndciwcR9koDyZ8FmdY=; b=EDCJwpVUsuOA5mPLvRfoHJ6KSz
+	VT6dxYkv+kx2cifrrj63rO2ilUp1kvXEa86w5VFbvNpZa0pJDS6wv7gg5jFdh3tmTnhqbX8eCQW9c
+	9zYoYcX1r15CrtXTamfVwJZF1h5Xolq3YX8iusjwS0z0idksi7RxEAzaThso7vboBQvAPwl8pVIgQ
+	9TWPYJuUD1WwXhl1Jgxitrn0ySouPs1UJ6DNLk9dg9vtrZD5/ymTlHBjDpwRqM8ev+tw/6ZY3+al7
+	RcE4H9I5foK+e+zziG7w2uB7tyYpDL67MLT4mNKPa2pDlaD6lH71/ClHzLpgZCd172fJujKyWCFdF
+	rPFZJojQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whR2L-0000000H3hK-3mO4;
-	Wed, 08 Jul 2026 12:05:57 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1whR53-0000000H3wW-1x6c;
+	Wed, 08 Jul 2026 12:08:45 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whR2J-0000000H3gr-0LkS;
-	Wed, 08 Jul 2026 12:05:56 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1783512307; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=KvgWjgnVrtF6+ZkBWicFziVYuQdsIssCDuicOCsak8yQIYN7+5NGdf+ouUluqMO+Ev9SpCAtLa9UAT0ZMlgXiSB9fnXQvS3VTwuC0nWRDjuzSKl2xyNx2lP4/AACMn9OXW18m83oYXQSvoABm1Md5du7KWpgypvrj/KL/C/BvOY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1783512307; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=wGYZTikwg2rXaLxaDX2K7Y9au6mX/qYf21+84FQdF+0=; 
-	b=i+SFhQOt8b7X+gb4HX6jliFLSEB9iWLysvFJn85UUCNPBSUlqm6LfKn81LjB2ZHGWpqst9XokiDCZIokBV4eByx9ip9FUP+H/CCPbfSzyqN+p47WVR2x96GqZ1hz6NZyIuQ+FKj317l4DDPoEhyS7bJN1g38dA+n5857+d9hjZE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
-	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1783512307;
-	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=wGYZTikwg2rXaLxaDX2K7Y9au6mX/qYf21+84FQdF+0=;
-	b=EL8T/+B7liCUlfZVaMPg9+sHHWJLi6JR1rw48kEi/26KZG9GVaSE91tpGn8QaUwq
-	zOQx89xA1YldfIIOlBnXMApdwV0+nR1dNcGKgWuVRwjL5ACuITyd4pP7q5KXz7I3mqp
-	3q+Jp1BO50LeAAOOYScLmdFpi7obyJAdCFf/uy1o=
-Received: by mx.zohomail.com with SMTPS id 1783512305076652.4555392247563;
-	Wed, 8 Jul 2026 05:05:05 -0700 (PDT)
-Message-ID: <658a04060e5c415af97dcc84284ab8962d1b7348.camel@collabora.com>
-Subject: Re: [PATCH net-next 3/6] net: stmmac: mediatek: rename MT2712 and
- MT8195 variant methods
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-To: Maxime Chevallier <maxime.chevallier@bootlin.com>, Andrew Lunn	
- <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet	 <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni	 <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski	 <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Richard Cochran	 <richardcochran@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Biao Huang
- <biao.huang@mediatek.com>, Maxime Coquelin	 <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>
-Cc: rmk+kernel@armlinux.org.uk, kernel@collabora.com,
- netdev@vger.kernel.org, 	devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com
-Date: Wed, 08 Jul 2026 14:04:59 +0200
-In-Reply-To: <5dbd217b-8df5-42cd-9197-36e0fb91ffe7@bootlin.com>
-References: <20260707-dwmac-mediatek-mt8189-v1-0-17f345eaaca3@collabora.com>
-	 <20260707-dwmac-mediatek-mt8189-v1-3-17f345eaaca3@collabora.com>
-	 <5dbd217b-8df5-42cd-9197-36e0fb91ffe7@bootlin.com>
-Organization: Collabora Ltd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
+	id 1whR51-0000000H3vV-33A8
+	for linux-mediatek@lists.infradead.org;
+	Wed, 08 Jul 2026 12:08:44 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2caf228a910so4067465ad.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 05:08:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1783512523; x=1784117323; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=X/P0XI2f+jIz2x5Bw9cZxHv5AndciwcR9koDyZ8FmdY=;
+        b=npHLKXMCZf1w8s7W8+b9foi/zVHcPzJvM91nn5BHEEQkgjm3aJqtXdqtHQFMC9RLtC
+         TMPbUaFExlxc7Tchczn/YFqe8N3Bzts7Lrwnt9xy2lWx6g8CCBeyFo9pXgoYNnB5BcX1
+         ot61mdVi8DrMp9hJANMlKuM22nnBozNsPRyIUTB7am04op5/gUUjDeqY/rQipJvThmt7
+         A8LNtowhG1lQr4PnREwuKfxqe6/y+R8j6LIAKeIsxr0WAPtTJthOPv5MyD6Etk4ncWBJ
+         Jh2rgGRq/tYzlqKyaVzLeelKFRAplBfkK5MrtjRPVqF2rISTnkoPm+KS5OYQbM+qMlzi
+         FWYQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783512523; x=1784117323;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=X/P0XI2f+jIz2x5Bw9cZxHv5AndciwcR9koDyZ8FmdY=;
+        b=A5j2R80MmkvRZsTwMhK+PNmaL+0vwxUNCN0GVy/6bGk3oudCJgl1gqi2dlRlL/ul4Z
+         iSZpVKqJmNx+02n7AulI4y55jNydStwYjp0HQMJ2FRXMiWaA3G/0bENl8kbxMH13+EGl
+         31B3WgK6MMVts/e5LOliCKB4qCq3CVxZp0jh40fBBm/u6fw0i1KRk1siMjTJzxPQMyGV
+         +qucK+YzUzoedtzjed/0NTGwe3p+grZqbzNVmDaz8zYai3O4taXgS3+r8bXRxRyFwE0b
+         YOzXrnN1t7ft8gVSmJ9rJHnY2ZXa4pdz1Ngg28z4+7BPEguj/mV5C3ULStfnThX2qDjI
+         qVaQ==
+X-Forwarded-Encrypted: i=1; AHgh+RopjTKuL/lc5k1kT/P/eikKCcNfS18mN1Hr0a7knl2AgG5F2B0+1kqPHTMIiD3HdDTdnUSPmVMVharT1oWXoQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YweCfgMXFDFcSeBjyHjck+sGTtoShGsuY8sf80vXIg/qb21CyP5
+	UZ9JaTpvd8AyHGKXKo0M2YF6tI7xUtbURZvLqgVo8Y+DxF8U0FjjCyeltS+kI53qxagsYw==
+X-Gm-Gg: AfdE7cno0d6iZSxwHb+Gx1jD1EpW3hBr0BTjZLEWe0Hlk4rQuve06tq5W28uIrRIqHy
+	6HaEGNAAAx5bmKD/Pj9vkqK1kfwUMQelMTubZDHiGIUSIUEWgyNWLP20IWArTqyPN9V4FYX8XoJ
+	Y3dzW8F8aA9GhuR59S/WKgQwzXBRs03TWmjYSZ5G9JCgZy91KFXjf2YDIqEomiOAHsbSYskjZ/X
+	tFZG+D7FqNthEbjdxx3QGjM7VsB0YHvyFxK4iBSXhU+LZr1+HWVA04uZWEQuIer2hLv2ekNC0m1
+	y1J1KMzDfYUAK7hkFGs+WZCovZokafFFqbAd1iB1SPnu025gqeTHclpbbVR7ox2ll82LpHdYSX7
+	PpLyPakNWFVPBE5EkUCsjZcTBGFkEM7b5OaTm74I7wnzurNN6Y84zG1DaKijpKdPGDblHyHEUHf
+	DZPtkJj4QWyA08ug==
+X-Received: by 2002:a17:903:fa5:b0:2cc:a977:4260 with SMTP id d9443c01a7336-2ccea3b0e5bmr25272395ad.21.1783512522781;
+        Wed, 08 Jul 2026 05:08:42 -0700 (PDT)
+Received: from lgs.. ([101.36.109.218])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9d1f030sm27088705ad.51.2026.07.08.05.08.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Jul 2026 05:08:42 -0700 (PDT)
+From: Guangshuo Li <lgs201920130244@gmail.com>
+To: Bin Liu <bin.liu@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Fan Wu <fanwu01@zju.edu.cn>,
+	Hans Verkuil <hverkuil+cisco@kernel.org>,
+	linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Guangshuo Li <lgs201920130244@gmail.com>
+Subject: [PATCH] media: mtk-jpeg: drain hardware completion before freeing context
+Date: Wed,  8 Jul 2026 20:08:33 +0800
+Message-ID: <20260708120833.755998-1-lgs201920130244@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-ZohoMailClient: External
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_050555_183958_5D388C8D 
-X-CRM114-Status: GOOD (  22.18  )
+X-CRM114-CacheID: sfid-20260708_050843_778333_AA9D2D3A 
+X-CRM114-Status: GOOD (  12.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,63 +104,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
+The change referenced by the Fixes tag cancels ctx->jpeg_work before
+freeing the JPEG context from mtk_jpeg_release().
 
-On Tue, 2026-07-07 at 11:05 +0200, Maxime Chevallier wrote:
->=20
->=20
-> On 7/7/26 10:21, Louis-Alexis Eyraud wrote:
-> > In preparation of newer SoC support, rename MT2712 and MT8195
-> > variant
-> > methods and sub functions to more generic names.
-> >=20
-> > Signed-off-by: Louis-Alexis Eyraud
-> > <louisalexis.eyraud@collabora.com>
-> > ---
-> > =C2=A0.../net/ethernet/stmicro/stmmac/dwmac-mediatek.c=C2=A0=C2=A0 | 32
-> > +++++++++++-----------
-> > =C2=A01 file changed, 16 insertions(+), 16 deletions(-)
-> >=20
-> > diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> > b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> > index 0cabab4fd89a..28e87990b0a1 100644
-> > --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> > +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> > @@ -110,7 +110,7 @@ static const char * const mt8195_dwmac_clk_l[]
-> > =3D {
-> > =C2=A0	"axi", "apb", "mac_cg", "mac_main", "ptp_ref"
-> > =C2=A0};
-> > =C2=A0
-> > -static int mt2712_set_interface(struct mediatek_dwmac_plat_data
-> > *plat,
-> > +static int set_phy_interface_v1(struct mediatek_dwmac_plat_data
-> > *plat,
-> > =C2=A0				u8 phy_intf_sel)
->=20
-> What does this naming of "v1 / v2" refer to ?
->=20
-> I personally don't find it much better than the current one prefixed
-> by the SoC
-> name. You still end-up using registers that have the "MT8195_" prefix
-> in their
-> names in the 'v2' variants of these functions, so it still sound SoC-
-> family specific :)
->=20
-I agree.
+That prevents a queued or running JPEG worker from dereferencing the
+context after it has been freed. However, on multi-core hardware the
+worker can program a hardware instance, arm the per-hardware timeout
+work, store the context in hw_param.curr_ctx and then return while the
+hardware completion is still pending.
 
-In a work in progress version of this series, I had renamed all
-register definitions as well (to remove the mt8195_ prefix) but dropped
-the changes because too much difference for little gain.
-I kept this patch but it does not really improve the code.
+In that state cancel_work_sync(&ctx->jpeg_work) can complete even though
+the IRQ handler or timeout work can still recover the same context from
+hw_param.curr_ctx. If userspace closes the file before the hardware
+completion path has run, release can free the context and a later IRQ or
+timeout work can dereference the freed ctx while updating the done queues.
 
-> I'd say you can keep the original names as-is, or if you really want
-> a rename,
-> maybe use the mt81xx_ prefix for MT8195 and MT8189 ?
-I'll drop this patch in v2 to keep the existing names (and smaller
-changes).
+Drain the in-flight hardware completion state associated with the context
+before freeing it.
 
-Regards,
-Louis-Alexis
+Fixes: 34c519feef3e ("media: mtk-jpeg: fix use-after-free in release path due to uncancelled work")
+Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+---
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-> Maxime
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index d147ec483081..bc9eea0483ce 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1202,8 +1202,11 @@ static int mtk_jpeg_release(struct file *file)
+ 	struct mtk_jpeg_dev *jpeg = video_drvdata(file);
+ 	struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
+ 
+-	if (jpeg->variant->jpeg_worker)
++	if (jpeg->variant->jpeg_worker) {
+ 		cancel_work_sync(&ctx->jpeg_work);
++		mtk_jpeg_release_hw(jpeg, ctx);
++	}
++
+ 	mutex_lock(&jpeg->lock);
+ 	v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
+ 	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
+-- 
+2.43.0
+
 
