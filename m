@@ -4,77 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31EE0C43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 14:36:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 697D0C43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 16:07:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3RsIPvZTD5nyIx31RnZBoJDbs5La8Zh1JeU+CoAk0mc=; b=l2lxM39MXlggQbmsQ39R24HT2k
-	1ITSvZWGo1BhLHN/aYhx/Am5SvzUpbVokSkO5MuaQUwh0s4FWGGDaMEgotQY3RqM3KuzkxU31ugv0
-	shsLUqY60H68TsrILV+iFC4flr+9fOZ60zwxasKGJNZEf/7mtdcmu6QwZetHBWoF5PUl+SZfWWqr+
-	4sKVafy54jp2jQUN8vlbqy83z+8uPKXAOq15hfju+CgWhmizZJMr8BlbgBS4HierHI69kebSqxWxw
-	vDjoO56rzbrWF3jtXBB7zPYjY/oBpjnkdHiWForqtBzXfDJrRVz61uA0904VzEj7tuCYv61/AR5ZK
-	p+3g/7ZQ==;
+	bh=exy7p9QtkuXDfpcyj8ku2UPNcwFPx2QlA4xJwPA8uFs=; b=C3cJve60/6vmKfWVZjyn0/XM09
+	iNb0+3+xmNQAjbWu/xnE2lvfsgYNTxKstfmTsSmKimDN7Bl+ImciV7/UNQUDyfjBYvDMByIwRq1k3
+	WklgpPwitG4S3SOb/r0Bkb9yUtv0BrSaJCru1OPeKhi1+TFtW+WJx+3y8JisaukDgl7IxSq05efnW
+	9e4Y8sZQ/WoZJa6SUUJweFbtdvCRzLstNPdChUdmrjaYyWqHV26Sg8kxDfskQhKsO60o13JDlJ46b
+	cWZl29gQkOitFG0MKaDpKQ5AqQDJHr49cPSLjc9kBvg/bva9673CHDgoScLnwydIXf3EP8IFdcwZa
+	VGVKBpMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whTNX-0000000HMal-0f7d;
-	Wed, 08 Jul 2026 14:35:59 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1whUoK-0000000HYvm-1Jbf;
+	Wed, 08 Jul 2026 16:07:44 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whTNV-0000000HMa0-3aY1;
-	Wed, 08 Jul 2026 14:35:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
-	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
-	In-Reply-To:References; bh=3RsIPvZTD5nyIx31RnZBoJDbs5La8Zh1JeU+CoAk0mc=; b=Yb
-	OHKqa1T/B64IUbHGnRIp5MUkE/sqUTcfU+fOTp4OdCC8IXPMUblg7xAEbtfI6mPatQsy5wLoEIfw5
-	k9FEupjoPV+I/yDDkkQBFzXdcyd2+uZmyhbI8FrJpRIj2U70jU17dy+IY9pmVK3R++4cIYekuR7l7
-	ftGjZ2nL0usWUlI=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1whTNB-00BKwC-V6; Wed, 08 Jul 2026 16:35:37 +0200
-Date: Wed, 8 Jul 2026 16:35:37 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	id 1whUoJ-0000000HYvK-0OnS;
+	Wed, 08 Jul 2026 16:07:43 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 30C9F60EEF;
+	Wed,  8 Jul 2026 16:07:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5DDD81F000E9;
+	Wed,  8 Jul 2026 16:07:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783526861;
+	bh=exy7p9QtkuXDfpcyj8ku2UPNcwFPx2QlA4xJwPA8uFs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Rg4kOn0EmMXipQiZft2pT0tgPbKnaXcpO04jmtwP+QMMUUY8Q/55DbvS4+rYmQDXR
+	 LRIDIRoWWpW37aIOILZnrO9ncO5AItSr4gxKR0MXnWu0+q8CCKNJE9xkeltwqjRKzN
+	 PzCJ4bLZgLIFdu3KRyHfV8mIfkrYjjayvzcvXAXuChWUCLfwwly7KWb3xX5aZIMIkw
+	 52I4zRgs7IpJ/ad6VA8zsN2/XyDHVfugavlkjaa+hKHyaKKmNrFtrrDf9OAGj3RNvW
+	 M+ULQey0YwCexrrYCMfzEcNVqTWWhYBCgbJo3G8vIwT08q1IxpznB9fSre5MDgdQ+z
+	 UMDJaZL2UgkjA==
+Date: Wed, 8 Jul 2026 18:07:39 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Aniket Negi <aniket.negi03@gmail.com>
+Cc: netdev@vger.kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, aniket.negi@airoha.com,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Richard Cochran <richardcochran@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Biao Huang <biao.huang@mediatek.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	maxime.chevallier@bootlin.com, rmk+kernel@armlinux.org.uk,
-	kernel@collabora.com, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Simon Horman <horms@kernel.org>,
+	Christian Marangi <ansuelsmth@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH net-next 1/6] dt-bindings: net: mediatek-dwmac: add
- support for MT8189 SoC
-Message-ID: <6ea11726-8d50-411e-afab-da346e09ab9b@lunn.ch>
-References: <20260707-dwmac-mediatek-mt8189-v1-0-17f345eaaca3@collabora.com>
- <20260707-dwmac-mediatek-mt8189-v1-1-17f345eaaca3@collabora.com>
- <b810b9cd-8f5e-4c9d-8496-908aae55dac1@lunn.ch>
- <8304b0a704c8db697767584b8c34388f07ba401d.camel@collabora.com>
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH net v5] net: airoha: fix MIB stats collection to be
+ lossless
+Message-ID: <ak51y14ExRpUsoIU@lore-desk>
+References: <20260707152639.105628-1-aniket.negi03@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="5uWWnxEBTL4lVj+c"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <8304b0a704c8db697767584b8c34388f07ba401d.camel@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_073557_892702_AA4F1C0B 
-X-CRM114-Status: GOOD (  16.20  )
+In-Reply-To: <20260707152639.105628-1-aniket.negi03@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,41 +77,437 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> On Tue, 2026-07-07 at 14:42 +0200, Andrew Lunn wrote:
-> > > +  - if:
-> > > +      properties:
-> > > +        compatible:
-> > > +          contains:
-> > > +            enum:
-> > > +              - mediatek,mt8189-gmac
-> > > +    then:
-> > > +      properties:
-> > > +        clocks:
-> > > +          items:
-> > > +            - description: MAC Main clock
-> > > +            - description: PTP clock
-> > > +            - description: RMII reference clock provided by MAC
-> > 
-> > Since this is a MAC, it sounds like it is consuming its own clock?
-> 
-> In the driver ([1]), this clock is described as being only used and
-> needed in RMII when MAC provides the reference clock, and useless
-> otherwise (RGMII/MII or RMII when PHY provides the reference clock).
 
-So it sounds like this is a clock output, going to the PHY, as its
-reference clock input. So ideally, the PHY should consume this clock,
-not the MAC.
+--5uWWnxEBTL4lVj+c
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> Its use and configuration also depends on the "mediatek,rmii-clk-from-
-> mac" vendor property ([2]) presence in devicetree.
+> REG_FE_GDM_MIB_CLEAR after every read creates a race window where
+> packets arriving between read and clear are lost from statistics.
+>=20
+> Switch to a delta-based approach instead:
+>=20
+> - 64-bit H+L registers (ok pkts/bytes, E64..L1023): read absolute
+>   hardware total directly into a local variable; clamp with max(new, old)
+>   to prevent torn-read regression when the counter carries between the
+>   two reads.
+>=20
+> - 32-bit registers (drops, bc, mc, errors, runt, long): accumulate
+>   (u32)(curr - prev) into a 64-bit software counter; unsigned
+>   subtraction handles wrap-around transparently.
+>=20
+> - tx/rx_len[0] ([0,64] bucket): combines RUNT_CNT (32-bit, delta via
+>   tx_runt/rx_runt) and E64_CNT (64-bit, absolute) into a single local
+>   accumulator; max(new, old) applied here too to guard against a torn
+>   read of E64 when the RUNT accumulator is unchanged between polls.
+>=20
+> MIB counters are zeroed by the SCU FE reset (EN7581_FE_RST) asserted
+> in airoha_hw_init() at module load, so no explicit MIB clear is needed
+> in airoha_fe_init().
+>=20
+> Merge airoha_dev_get_hw_stats() into airoha_update_hw_stats() and
+> move stats_lock inside. Plain spin_lock() is correct: the function
+> is only called from ndo_get_stats64() in process context. Each dev
+> refreshes only its own MIB counters; sibling devs on a shared GDM3/4
+> port are polled when their own netdev is queried.
+>=20
+> Fixes: 8f4695fb67b2 ("net: airoha: better handle MIBs for GDM ports with =
+multiple devs attached")
+> Signed-off-by: Aniket Negi <aniket.negi03@gmail.com>
 
-This makes it sounds like it is historically wrong, and the patch is
-just extending this to the new device.
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Do you have a board using RMII? Can you list the clock in the PHY
-node, not the MAC, and see if it still works?
+> ---
+>=20
+> Changes in v5:
+> - Link to V4: https://lore.kernel.org/20260706154730.36949-1-aniket.negi0=
+3@gmail.com
+> - Drop MIB clear loop from airoha_fe_init(): SCU FE reset (EN7581_FE_RST)
+>   resets MIB counters at module load, making the explicit clear redundant
+> - Rename local variable tmp -> data; drop prev variable; use + instead
+>   of | for H+L combination; inline max(data, dev->stats.x) per
+>   maintainer nits (Lorenzo Bianconi)
+> - Extend max() clamping to the hybrid tx/rx_len[0] (RUNT+E64) bucket to
+>   guard against E64 torn reads when the RUNT accumulator is stable
+> - Fix undefined behaviour: split i++ out of expressions that also read
+>   i as an array subscript in the same statement
+> - Retain REG_FE_GDM_MIB_CLEAR/FE_GDM_MIB_{RX,TX}_CLEAR_MASK definitions
+>   in airoha_regs.h as register documentation (per Lorenzo Bianconi)
+>=20
+> Changes in v4:
+> - Add max(new, old) clamping for 64-bit H+L register pairs to ensure
+>   monotonically non-decreasing stats despite torn reads between H and L
+> - Use local variable for all 64-bit H+L computations to prevent lockless
+>   readers from seeing intermediate values during piecewise write
+> - Add one-shot MIB counter clear in airoha_fe_init() to establish a
+>   clean baseline (kexec, driver rebind, warm reboot)
+> - Document sibling dev polling design in commit message
+>=20
+> Changes in v3:
+> - Link to V2: https://lore.kernel.org/20260701173941.314795-1-aniket.negi=
+03@gmail.com/
+> - Add Acked-by tag from Lorenzo
+> - Rename from tx_runt_cnt to tx_runt, tx_long_cnt to tx_long,
+>   tx_runt_accum64 to tx_runt64
+> - Rename from rx_runt_cnt to rx_runt, rx_long_cnt to rx_long,
+>   rx_runt_accum64 to rx_runt64
+> - Condense the marked comments in V2, remove new line after comment
+>=20
+> Changes in v2:
+> - Link to V1: https://lore.kernel.org/20260630111834.233643-1-aniket.negi=
+03@gmail.com
+> - Store _CNT_L register reads in val before adding to stats
+> - Fix double-counting bug in the RUNT+E64 combined bucket
+> - Replace 7-element tx_len[]/rx_len[] shadow arrays with focused fields
+> - Rename inner struct hw_prev_stats to mib_prev
+> - Rename airoha_dev_get_hw_stats() to airoha_update_hw_stats() and
+>   move the port spin_lock inside, removing the separate wrapper
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c | 171 ++++++++++++++---------
+>  drivers/net/ethernet/airoha/airoha_eth.h |  27 ++++
+>  2 files changed, 132 insertions(+), 66 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
+net/airoha/airoha_eth.c
+> index 59001fd4b6f7..90aa8b0210bd 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -1686,11 +1686,14 @@ static void airoha_qdma_stop_napi(struct airoha_q=
+dma *qdma)
+>  	}
+>  }
+> =20
+> -static void airoha_dev_get_hw_stats(struct airoha_gdm_dev *dev)
+> +static void airoha_update_hw_stats(struct airoha_gdm_dev *dev)
+>  {
+>  	struct airoha_gdm_port *port =3D dev->port;
+>  	struct airoha_eth *eth =3D dev->eth;
+>  	u32 val, i =3D 0;
+> +	u64 data;
+> +
+> +	spin_lock(&port->stats_lock);
+> =20
+>  	/* Read relevant MIB for GDM with multiple port attached */
+>  	if (port->id =3D=3D AIROHA_GDM3_IDX || port->id =3D=3D AIROHA_GDM4_IDX)
+> @@ -1701,152 +1704,188 @@ static void airoha_dev_get_hw_stats(struct airo=
+ha_gdm_dev *dev)
+> =20
+>  	u64_stats_update_begin(&dev->stats.syncp);
+> =20
+> -	/* TX */
+> +	/* TX - 64-bit H+L registers: hw accumulates the total, read directly.
+> +	 * Use local variable to prevent readers from seeing intermediate value=
+s.
+> +	 * Clamp to prevent regression from torn reads between H and L.
+> +	 */
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_OK_PKT_CNT_H(port->id));
+> -	dev->stats.tx_ok_pkts +=3D ((u64)val << 32);
+> +	data =3D (u64)val << 32;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_OK_PKT_CNT_L(port->id));
+> -	dev->stats.tx_ok_pkts +=3D val;
+> +	data +=3D val;
+> +	dev->stats.tx_ok_pkts =3D max(data, dev->stats.tx_ok_pkts);
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_OK_BYTE_CNT_H(port->id));
+> -	dev->stats.tx_ok_bytes +=3D ((u64)val << 32);
+> +	data =3D (u64)val << 32;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_OK_BYTE_CNT_L(port->id));
+> -	dev->stats.tx_ok_bytes +=3D val;
+> +	data +=3D val;
+> +	dev->stats.tx_ok_bytes =3D max(data, dev->stats.tx_ok_bytes);
+> =20
+> +	/* TX - 32-bit registers: accumulate delta to handle wrap-around. */
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_DROP_CNT(port->id));
+> -	dev->stats.tx_drops +=3D val;
+> +	dev->stats.tx_drops +=3D (u32)(val - dev->stats.mib_prev.tx_drops);
+> +	dev->stats.mib_prev.tx_drops =3D val;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_BC_CNT(port->id));
+> -	dev->stats.tx_broadcast +=3D val;
+> +	dev->stats.tx_broadcast +=3D (u32)(val - dev->stats.mib_prev.tx_broadca=
+st);
+> +	dev->stats.mib_prev.tx_broadcast =3D val;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_MC_CNT(port->id));
+> -	dev->stats.tx_multicast +=3D val;
+> +	dev->stats.tx_multicast +=3D (u32)(val - dev->stats.mib_prev.tx_multica=
+st);
+> +	dev->stats.mib_prev.tx_multicast =3D val;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_RUNT_CNT(port->id));
+> -	dev->stats.tx_len[i] +=3D val;
+> +	dev->stats.mib_prev.tx_runt64 +=3D
+> +		(u32)(val - dev->stats.mib_prev.tx_runt);
+> +	dev->stats.mib_prev.tx_runt =3D val;
+> =20
+> +	/* tx_len[0]: RUNT (32-bit, delta) + E64 (64-bit, absolute). */
+> +	data =3D dev->stats.mib_prev.tx_runt64;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_E64_CNT_H(port->id));
+> -	dev->stats.tx_len[i] +=3D ((u64)val << 32);
+> +	data +=3D (u64)val << 32;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_E64_CNT_L(port->id));
+> -	dev->stats.tx_len[i++] +=3D val;
+> +	data +=3D val;
+> +	dev->stats.tx_len[i] =3D max(data, dev->stats.tx_len[i]);
+> +	i++;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L64_CNT_H(port->id));
+> -	dev->stats.tx_len[i] +=3D ((u64)val << 32);
+> +	data =3D (u64)val << 32;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L64_CNT_L(port->id));
+> -	dev->stats.tx_len[i++] +=3D val;
+> +	data +=3D val;
+> +	dev->stats.tx_len[i] =3D max(data, dev->stats.tx_len[i]);
+> +	i++;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L127_CNT_H(port->id));
+> -	dev->stats.tx_len[i] +=3D ((u64)val << 32);
+> +	data =3D (u64)val << 32;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L127_CNT_L(port->id));
+> -	dev->stats.tx_len[i++] +=3D val;
+> +	data +=3D val;
+> +	dev->stats.tx_len[i] =3D max(data, dev->stats.tx_len[i]);
+> +	i++;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L255_CNT_H(port->id));
+> -	dev->stats.tx_len[i] +=3D ((u64)val << 32);
+> +	data =3D (u64)val << 32;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L255_CNT_L(port->id));
+> -	dev->stats.tx_len[i++] +=3D val;
+> +	data +=3D val;
+> +	dev->stats.tx_len[i] =3D max(data, dev->stats.tx_len[i]);
+> +	i++;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L511_CNT_H(port->id));
+> -	dev->stats.tx_len[i] +=3D ((u64)val << 32);
+> +	data =3D (u64)val << 32;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L511_CNT_L(port->id));
+> -	dev->stats.tx_len[i++] +=3D val;
+> +	data +=3D val;
+> +	dev->stats.tx_len[i] =3D max(data, dev->stats.tx_len[i]);
+> +	i++;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L1023_CNT_H(port->id));
+> -	dev->stats.tx_len[i] +=3D ((u64)val << 32);
+> +	data =3D (u64)val << 32;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_L1023_CNT_L(port->id));
+> -	dev->stats.tx_len[i++] +=3D val;
+> +	data +=3D val;
+> +	dev->stats.tx_len[i] =3D max(data, dev->stats.tx_len[i]);
+> +	i++;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_TX_ETH_LONG_CNT(port->id));
+> -	dev->stats.tx_len[i++] +=3D val;
+> +	dev->stats.tx_len[i++] +=3D (u32)(val - dev->stats.mib_prev.tx_long);
+> +	dev->stats.mib_prev.tx_long =3D val;
+> =20
+>  	/* RX */
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_OK_PKT_CNT_H(port->id));
+> -	dev->stats.rx_ok_pkts +=3D ((u64)val << 32);
+> +	data =3D (u64)val << 32;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_OK_PKT_CNT_L(port->id));
+> -	dev->stats.rx_ok_pkts +=3D val;
+> +	data +=3D val;
+> +	dev->stats.rx_ok_pkts =3D max(data, dev->stats.rx_ok_pkts);
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_OK_BYTE_CNT_H(port->id));
+> -	dev->stats.rx_ok_bytes +=3D ((u64)val << 32);
+> +	data =3D (u64)val << 32;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_OK_BYTE_CNT_L(port->id));
+> -	dev->stats.rx_ok_bytes +=3D val;
+> +	data +=3D val;
+> +	dev->stats.rx_ok_bytes =3D max(data, dev->stats.rx_ok_bytes);
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_DROP_CNT(port->id));
+> -	dev->stats.rx_drops +=3D val;
+> +	dev->stats.rx_drops +=3D (u32)(val - dev->stats.mib_prev.rx_drops);
+> +	dev->stats.mib_prev.rx_drops =3D val;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_BC_CNT(port->id));
+> -	dev->stats.rx_broadcast +=3D val;
+> +	dev->stats.rx_broadcast +=3D (u32)(val - dev->stats.mib_prev.rx_broadca=
+st);
+> +	dev->stats.mib_prev.rx_broadcast =3D val;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_MC_CNT(port->id));
+> -	dev->stats.rx_multicast +=3D val;
+> +	dev->stats.rx_multicast +=3D (u32)(val - dev->stats.mib_prev.rx_multica=
+st);
+> +	dev->stats.mib_prev.rx_multicast =3D val;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ERROR_DROP_CNT(port->id));
+> -	dev->stats.rx_errors +=3D val;
+> +	dev->stats.rx_errors +=3D (u32)(val - dev->stats.mib_prev.rx_errors);
+> +	dev->stats.mib_prev.rx_errors =3D val;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_CRC_ERR_CNT(port->id));
+> -	dev->stats.rx_crc_error +=3D val;
+> +	dev->stats.rx_crc_error +=3D (u32)(val - dev->stats.mib_prev.rx_crc_err=
+or);
+> +	dev->stats.mib_prev.rx_crc_error =3D val;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_OVERFLOW_DROP_CNT(port->id));
+> -	dev->stats.rx_over_errors +=3D val;
+> +	dev->stats.rx_over_errors +=3D (u32)(val - dev->stats.mib_prev.rx_over_=
+errors);
+> +	dev->stats.mib_prev.rx_over_errors =3D val;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_FRAG_CNT(port->id));
+> -	dev->stats.rx_fragment +=3D val;
+> +	dev->stats.rx_fragment +=3D (u32)(val - dev->stats.mib_prev.rx_fragment=
+);
+> +	dev->stats.mib_prev.rx_fragment =3D val;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_JABBER_CNT(port->id));
+> -	dev->stats.rx_jabber +=3D val;
+> +	dev->stats.rx_jabber +=3D (u32)(val - dev->stats.mib_prev.rx_jabber);
+> +	dev->stats.mib_prev.rx_jabber =3D val;
+> =20
+>  	i =3D 0;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_RUNT_CNT(port->id));
+> -	dev->stats.rx_len[i] +=3D val;
+> +	dev->stats.mib_prev.rx_runt64 +=3D
+> +		(u32)(val - dev->stats.mib_prev.rx_runt);
+> +	dev->stats.mib_prev.rx_runt =3D val;
+> =20
+> +	/* rx_len[0]: RUNT (32-bit, delta) + E64 (64-bit, absolute). */
+> +	data =3D dev->stats.mib_prev.rx_runt64;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_E64_CNT_H(port->id));
+> -	dev->stats.rx_len[i] +=3D ((u64)val << 32);
+> +	data +=3D (u64)val << 32;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_E64_CNT_L(port->id));
+> -	dev->stats.rx_len[i++] +=3D val;
+> +	data +=3D val;
+> +	dev->stats.rx_len[i] =3D max(data, dev->stats.rx_len[i]);
+> +	i++;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L64_CNT_H(port->id));
+> -	dev->stats.rx_len[i] +=3D ((u64)val << 32);
+> +	data =3D (u64)val << 32;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L64_CNT_L(port->id));
+> -	dev->stats.rx_len[i++] +=3D val;
+> +	data +=3D val;
+> +	dev->stats.rx_len[i] =3D max(data, dev->stats.rx_len[i]);
+> +	i++;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L127_CNT_H(port->id));
+> -	dev->stats.rx_len[i] +=3D ((u64)val << 32);
+> +	data =3D (u64)val << 32;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L127_CNT_L(port->id));
+> -	dev->stats.rx_len[i++] +=3D val;
+> +	data +=3D val;
+> +	dev->stats.rx_len[i] =3D max(data, dev->stats.rx_len[i]);
+> +	i++;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L255_CNT_H(port->id));
+> -	dev->stats.rx_len[i] +=3D ((u64)val << 32);
+> +	data =3D (u64)val << 32;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L255_CNT_L(port->id));
+> -	dev->stats.rx_len[i++] +=3D val;
+> +	data +=3D val;
+> +	dev->stats.rx_len[i] =3D max(data, dev->stats.rx_len[i]);
+> +	i++;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L511_CNT_H(port->id));
+> -	dev->stats.rx_len[i] +=3D ((u64)val << 32);
+> +	data =3D (u64)val << 32;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L511_CNT_L(port->id));
+> -	dev->stats.rx_len[i++] +=3D val;
+> +	data +=3D val;
+> +	dev->stats.rx_len[i] =3D max(data, dev->stats.rx_len[i]);
+> +	i++;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L1023_CNT_H(port->id));
+> -	dev->stats.rx_len[i] +=3D ((u64)val << 32);
+> +	data =3D (u64)val << 32;
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_L1023_CNT_L(port->id));
+> -	dev->stats.rx_len[i++] +=3D val;
+> +	data +=3D val;
+> +	dev->stats.rx_len[i] =3D max(data, dev->stats.rx_len[i]);
+> +	i++;
+> =20
+>  	val =3D airoha_fe_rr(eth, REG_FE_GDM_RX_ETH_LONG_CNT(port->id));
+> -	dev->stats.rx_len[i++] +=3D val;
+> +	dev->stats.rx_len[i] +=3D (u32)(val - dev->stats.mib_prev.rx_long);
+> +	dev->stats.mib_prev.rx_long =3D val;
+> =20
+>  	u64_stats_update_end(&dev->stats.syncp);
+> -}
+> -
+> -static void airoha_update_hw_stats(struct airoha_gdm_dev *dev)
+> -{
+> -	struct airoha_gdm_port *port =3D dev->port;
+> -	int i;
+> -
+> -	spin_lock(&port->stats_lock);
+> -
+> -	for (i =3D 0; i < ARRAY_SIZE(port->devs); i++) {
+> -		if (port->devs[i])
+> -			airoha_dev_get_hw_stats(port->devs[i]);
+> -	}
+> -
+> -	/* Reset MIB counters */
+> -	airoha_fe_set(dev->eth, REG_FE_GDM_MIB_CLEAR(port->id),
+> -		      FE_GDM_MIB_RX_CLEAR_MASK | FE_GDM_MIB_TX_CLEAR_MASK);
+> =20
+>  	spin_unlock(&port->stats_lock);
+>  }
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
+net/airoha/airoha_eth.h
+> index f6d01a8e8da1..fe934f9ffe8a 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> @@ -245,6 +245,33 @@ struct airoha_hw_stats {
+>  	u64 rx_fragment;
+>  	u64 rx_jabber;
+>  	u64 rx_len[7];
+> +
+> +	struct {
+> +		/* Previous HW register values for 32-bit counter delta
+> +		 * tracking. Storing the last seen value and accumulating
+> +		 * (u32)(curr - prev) into the 64-bit software counter
+> +		 * handles wrap-around transparently via unsigned arithmetic.
+> +		 * tx_runt64/rx_runt64 hold the running sum of runt deltas.
+> +		 * These fields are never reported to userspace.
+> +		 */
+> +		u32 tx_drops;
+> +		u32 tx_broadcast;
+> +		u32 tx_multicast;
+> +		u32 tx_runt;
+> +		u32 tx_long;
+> +		u64 tx_runt64;
+> +		u32 rx_drops;
+> +		u32 rx_broadcast;
+> +		u32 rx_multicast;
+> +		u32 rx_errors;
+> +		u32 rx_crc_error;
+> +		u32 rx_over_errors;
+> +		u32 rx_fragment;
+> +		u32 rx_jabber;
+> +		u32 rx_runt;
+> +		u32 rx_long;
+> +		u64 rx_runt64;
+> +	} mib_prev;
+>  };
+> =20
+>  enum {
+>=20
+> base-commit: 60444706aa17616efc03190d099ac347e28b3d0a
+> --=20
+> 2.43.0
+>=20
 
-Ideally, for a new device, we should not repeat past errors.
+--5uWWnxEBTL4lVj+c
+Content-Type: application/pgp-signature; name=signature.asc
 
-	 Andrew
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCak51ywAKCRA6cBh0uS2t
+rL6KAQC3G82YIv750NxWZybN2S5Lci/5VhTEmgD3aXjffILFyAEAgLSY7/aKW8R2
+vcZBRHW43BT5uvbGRSVKULCOJp1FvA0=
+=GN8V
+-----END PGP SIGNATURE-----
+
+--5uWWnxEBTL4lVj+c--
 
