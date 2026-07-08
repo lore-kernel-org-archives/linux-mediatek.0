@@ -4,60 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FB98C43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 13:03:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BCBBC43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 13:45:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3BmCoU/mJxpggR/8PGM1XrH38msRz7NT+nvS7+P+Qc0=; b=lV9zQyiL4tk192Y8xKBLPpjVMz
-	BKzD/wEbMOQqbw3KTuibTyqY+HokUfgWB9A54EU3Gd22NWZBYeviAyspHos5Qfml7Tg62ZqLYWwkt
-	AYyn9oYMBfmEeBV3j9s9/3JdAqb4Z6BKywZXEUzP/uihS+xMhc1qM1HsuuOU9jcGK+MU4hl0NhkvE
-	bN+Tr2LtySG+bwU8isJPlvupLsogp/StgIe+4Mw2ARHAgrYJyaHz3jr3pD2rNx2vimyUdgPRkKa0m
-	JsAdig3ZAydMOIsYTkIJvShE6pElFclayTNEirKN8aImMt3YXZ0R2O733f/olN2tR72OaaXaKtgxV
-	WMglijIw==;
+	bh=qWprFcj4shuGHq5yxrj4ujGarnc9yIZ52TmhC/6XIwk=; b=HYJL6qzo1MPtzTajoaC5iZw5IW
+	sV2VWdVlnzhd4De38yWoMoFvVc8lGikabX/6FAa9+giMe47CKDFvZIbmsfZYC9KudAJj6EUwanqqQ
+	oW42QPeqC7HTV6qDaeWlSozk1UkhvImzW+b4sV9uhit4G8lV8Wd5Ni3+7nh2bel38YC855PZMI2Zz
+	jRHkgi92XNZ8ZM53Ec2M1XGkwOE41RzXbzBrmV1efirfQKxiDAi+OPXCRx09QJviCSxSaty3t7Xic
+	G01PggkyimDnUbgqAwpUVMgLgPst325fJeZJEeTz0xcMFUbPJK2GLEF+2mL2JOORpByyIAZUvfw6/
+	KSGWSc1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whRvy-0000000HABe-1uc4;
-	Wed, 08 Jul 2026 13:03:26 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1whSaG-0000000HDRa-2qaN;
+	Wed, 08 Jul 2026 13:45:04 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whRvw-0000000HAB3-1701;
-	Wed, 08 Jul 2026 13:03:24 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id BC62940825;
-	Wed,  8 Jul 2026 13:03:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2469B1F000E9;
-	Wed,  8 Jul 2026 13:03:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783515803;
-	bh=3BmCoU/mJxpggR/8PGM1XrH38msRz7NT+nvS7+P+Qc0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=dyYAYbPxsIIELLH3Qz6lbSbauelb937sO2KTTNPuNZbeIxrTHzIP6FGLvW1KGkvoe
-	 n4ajs4thOSB3QRsXi5WEK9Jun+If8h6v35ZAWNgDviRR29DJ+FBEm+fOsbtZ57WLiH
-	 yqOlgtx6h3n02vpskNKi4CeNvW7LNNoz1xTuPpKqdewUwoO62QS80q1qRuk6lY7BYU
-	 h3hSBYviXOq7hm7xjaEAEz+j7ERQbC/mE2NRunm9o7gRg8v5MfEBJvp11tOfS22XEf
-	 6A3HTp1KF5aRofksx0irwvcT3KBTZy3tgMqX7XSvS5a4YUUdchaKRaC3rEdxs5N47l
-	 NRZYwPOaE7XHw==
-Date: Wed, 8 Jul 2026 15:03:21 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Wayen Yan <win847@gmail.com>
-Cc: netdev@vger.kernel.org, horms@kernel.org, pabeni@redhat.com,
-	kuba@kernel.org, edumazet@google.com, andrew+netdev@lunn.ch,
-	angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net] net: airoha: Fix potential use-after-free in
- airoha_ppe_deinit()
-Message-ID: <ak5KmSbAQJXcU3sW@lore-desk>
-References: <178351022574.97989.6880403520276841703@gmail.com>
+	id 1whSaE-0000000HDQh-0pdg;
+	Wed, 08 Jul 2026 13:45:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1783518290; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=HBq9iS9jB6ewfkBvD6l/hbdZk9lWKDtHUbN71aNOZzsPLaY3iejK0SyY1j/4NBwcd9eUXrS+SniQU/2qJDseInB9kzWsSB1x5o6XcRGzRTkW3fzh9mXmRrTEM38b/bPRWHnLqzQmtdZzhYRN5kTvn5g1GWHdz5W38zNcUGDPR1w=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1783518290; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=qWprFcj4shuGHq5yxrj4ujGarnc9yIZ52TmhC/6XIwk=; 
+	b=m6cuxMrOVq4L8VkW/d073JvTz5zzxha3+ZKqTNROYRjUXXEbtxF1PaXWsflkd0SVK0gOre6P4sulmjdLtx0F7J7LCaaYCla+xr1elj1AHOb6EwnWOZdvoZfLQkQ5KHmdyjACCyE8UQsMr+OELEjcVBo68P3XkKdoxRn2PSiEQ64=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
+	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1783518290;
+	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=qWprFcj4shuGHq5yxrj4ujGarnc9yIZ52TmhC/6XIwk=;
+	b=PB5MOWP6bfWP1uYvdd2mougUVnAF9pEe1jEhriEp822oJuoalAbrJcw9fBaiUssu
+	cjDdpxFnM0U3H7mB8Krxm0/TwkhW5jVwv7DdRs4J8Eur4cNdBl08RvlqbcuxgegdjJS
+	wDFfIWKK2x+8boHirToKdrVaKDl1pBin8nwP48/w=
+Received: by mx.zohomail.com with SMTPS id 178351828794519.896016735108105;
+	Wed, 8 Jul 2026 06:44:47 -0700 (PDT)
+Message-ID: <d1e37bd4f2a05fed6c7bfdc5d9a0fa90c892d608.camel@collabora.com>
+Subject: Re: [PATCH 02/15] dt-bindings: clock: mediatek: regroup MT8188
+ dt-bindings into MT8186
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+To: Rob Herring <robh@kernel.org>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>,  Brian Masney <bmasney@redhat.com>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Conor Dooley	 <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Chun-Jie Chen
+ <chun-jie.chen@mediatek.com>, Philipp Zabel	 <p.zabel@pengutronix.de>,
+ Edward-JW Yang <edward-jw.yang@mediatek.com>,  Richard Cochran
+ <richardcochran@gmail.com>, kernel@collabora.com,
+ linux-clk@vger.kernel.org, 	devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, 	netdev@vger.kernel.org
+Date: Wed, 08 Jul 2026 15:44:42 +0200
+In-Reply-To: <20260701193311.GA1402559-robh@kernel.org>
+References: <20260701-mt8189-clocks-system-base-v1-0-2b048feea50a@collabora.com>
+	 <20260701-mt8189-clocks-system-base-v1-2-2b048feea50a@collabora.com>
+	 <20260701193311.GA1402559-robh@kernel.org>
+Organization: Collabora Ltd
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="3aCkLgBstNRB5eAc"
-Content-Disposition: inline
-In-Reply-To: <178351022574.97989.6880403520276841703@gmail.com>
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260708_064502_272435_CDB48B44 
+X-CRM114-Status: GOOD (  23.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,65 +90,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello Rob,
 
---3aCkLgBstNRB5eAc
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Wed, 2026-07-01 at 14:33 -0500, Rob Herring wrote:
+> On Wed, Jul 01, 2026 at 03:11:07PM +0200, Louis-Alexis Eyraud wrote:
+> > Regroup the MT8188 clock and system clock dt-bindings into MT8186
+> > ones
+> > to ease maintainability and have common files for several currently
+> > supported SoC or new future ones, that have the same kind of clock
+> > controller design.
+> >=20
+> > Note:
+> > The `#clock-cells` property is a required property for all
+> > compatibles
+> > declared in MT8188 clock and system clock dt-bindings but not in
+> > MT8186
+> > ones.
+> > To avoid ABI breakage, conditional blocks to check this requirement
+> > for MT8188 compatibles are added, rather than enforcing it for
+> > MT8186
+> > compatibles.
+>=20
+> If the existing DTs are just wrong, then I would just make #clock-
+> cells=20
+> required. But please update the .dts files so the warnings don't
+> grow.
+>=20
+I've tested to make the #clock-cells required for the MT8186, MT8192
+and MT8195 system and functional clock controllers.
+I did not see new warnings, so no extra dts patches would be needed.
 
-> airoha_ppe_deinit() replaces the NPU pointer with NULL via
-> rcu_replace_pointer() but does not wait for existing RCU readers
-> to exit before calling ppe_deinit() and airoha_npu_put(). This can
-> cause a use-after-free if a reader in an RCU read-side critical
-> section still holds a reference to the NPU when it is freed.
->=20
-> The init path (airoha_ppe_init) already calls synchronize_rcu()
-> after rcu_assign_pointer(), but the deinit path introduced in
-> commit 6abcf751bc08 ("net: airoha: Fix schedule while atomic in
-> airoha_ppe_deinit()") omitted the matching barrier when switching
-> from rcu_read_lock()/rcu_dereference() to rcu_replace_pointer().
->=20
-> Add synchronize_rcu() before ppe_deinit() to ensure all existing
-> RCU readers have completed before the NPU resources are released.
->=20
-> Fixes: 6abcf751bc084804a9e5b3051442e8a2ce67f48a ("net: airoha: Fix schedu=
-le while atomic in airoha_ppe_deinit()")
-> Signed-off-by: Wayen Yan <win847@gmail.com>
+I'll add new patches (one per SoC) in the next revision of the series
+for this, as it simplifies the grouping patches (no more if/then to
+require #clock-cells for the MT8188/MT8189 clock controllers) and the
+note in commit message could be removed.
 
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
-> ---
->  drivers/net/ethernet/airoha/airoha_ppe.c | 1 +
->  1 file changed, 1 insertion(+)
+> The grouping I would do here is:
 >=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ether=
-net/airoha/airoha_ppe.c
-> index e7c78293002a..f6396925722d 100644
-> --- a/drivers/net/ethernet/airoha/airoha_ppe.c
-> +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-> @@ -1659,6 +1659,7 @@ void airoha_ppe_deinit(struct airoha_eth *eth)
->  	npu =3D rcu_replace_pointer(eth->npu, NULL,
->  				  lockdep_is_held(&flow_offload_mutex));
->  	if (npu) {
-> +		synchronize_rcu();
->  		npu->ops.ppe_deinit(npu);
->  		airoha_npu_put(npu);
->  	}
-> --=20
-> 2.51.0
+> - clock controller only
+> - reset controller only
+> - both clock and reset controller
 >=20
+> That should avoid any if/then schemas.
 >=20
 
---3aCkLgBstNRB5eAc
-Content-Type: application/pgp-signature; name=signature.asc
+By this grouping, I understand you suggest having separate dt-bindings
+files, that could look like:
+- mediatek,mt8186-clock.yaml: clock controllers
+- <name to be found>: reset controllers
+- <name to be found>: clock controllers with reset controller
+- mediatek,mt8186-sys-clock.yaml: system clock controllers.
+- <name to be found>: system clock controllers with reset controller
 
------BEGIN PGP SIGNATURE-----
+Is that what you meant?
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCak5KmQAKCRA6cBh0uS2t
-rO4SAQC9XjKbr4FL6USCpb+vk0nuGcS4kQNSPUegG0T8eqjCtQD7B3MdOSiy8IBZ
-Vj4KmUaxBPWe3TLxHe1uwKv127c+lQA=
-=ioCF
------END PGP SIGNATURE-----
+There is no pure reset controllers for those SoC so no dedicated file
+would needed at the moment.
+The system clock controllers all have reset-controllers, even they may
+currently be not all implemented, so no separate files for system clock
+controllers would needed as well.
 
---3aCkLgBstNRB5eAc--
+Also, from what I see the current dt-bindings, the system clocks
+controllers for the MT8186/MT8188/MT8192/MT8195 SoC have the #reset-
+cells property but it is not required for them (examples:
+mediatek,mt8188-infracfg-ao or mediatek,mt8195-infracfg_ao).
+
+With the patches to make the #clock-cells property required, I already
+removed the biggest if/else block in mediatek,mt8186-clock.yaml, so
+only the one regarding #reset-cells property remains.
+
+So, should I create separate files, following the grouping suggestion,
+for the v2 of this patch?
+
+Regards,
+Louis-Alexis
+
+> Rob
 
