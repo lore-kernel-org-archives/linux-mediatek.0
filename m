@@ -4,77 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C00ABC43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 21:34:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEEF6C43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 23:34:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QOSXPs572gwC1zNEaba3iUlnyvy4QAECU2owztJON50=; b=CqbsfWBVXXm8D+tX6LxFTvXi6q
-	DkDdyEUxCcIvyoD+xQOc42SjfMkJcIAHOxqPTPgB7zQ0fEaU3FXp+QXNLN7Vpv3WPAh+ST9l9HMzt
-	28rWIq5j3cgJAfDU2+0/z5ipH5JVNsjwTRe/LL9Erpfx9R7rfoFoCp4953+/xazMSa/yUQwC+k7x0
-	rkqfGdLt5CssrwgQPqQ8H80bmd9/f+PvVP9uHp7FNmOWN4+TtLMGbFGnaBMkt9NVKHBfzqo/9Spyl
-	Ye1mSAJIr++fhhsdmTBWBBvq+NuvAJpYc3u/+s5TOaqKWVStJrZzN1JETSKWY5I7t5AnLzwy8lh30
-	20v20DRw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	MIME-Version:Content-Type:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tkrEjWV2T4kZn9l/EN1RfmTfNtrV7m8I3DpucB/PUhw=; b=C93pddHzHAVyjidXNG/z/HisVu
+	LZp6+4ELoT6x2tw6zhLZZoTjHNTEaeLF5PBYmeAUBSMSCN11fKmIUNaMD0qrjGGtEZso8b+wohV6r
+	dHGH32cH+y+lJFJvXlfRbHHbC9QJCjgZuKiLCA2ZiSJRnn9b3QFpETjAbBrXefHz8jSNwiIlB5YGp
+	kfNzOAEPrxSj58pIjHQjyZZEDk83i26jp2X7uS4sc7yIBotzazWb4P+n+cZI3Gel/AZW4qvvUzUIX
+	6QrcBeKe+uacc2qhV5p1tQ/SKEmfLctJb9Tk4dy8CFKRI6cG3MoJKO82NqFFaz8HbES9H+PFAyrxN
+	tF3zYMRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whZus-00000000S3A-1GgT;
-	Wed, 08 Jul 2026 21:34:50 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1whbmP-00000000bGf-2eNa;
+	Wed, 08 Jul 2026 23:34:13 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whZur-00000000S2s-1NTO
+	id 1whbmN-00000000bFm-0Dy5
 	for linux-mediatek@lists.infradead.org;
-	Wed, 08 Jul 2026 21:34:49 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 72758601EC
-	for <linux-mediatek@lists.infradead.org>; Wed,  8 Jul 2026 21:34:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2849B1F00ADF
-	for <linux-mediatek@lists.infradead.org>; Wed,  8 Jul 2026 21:34:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783546488;
-	bh=QOSXPs572gwC1zNEaba3iUlnyvy4QAECU2owztJON50=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=oLWiMIEJ0W+2X8o0NSe2rZ6aZ3sA6U0G3Dq+g9ru8SeVgFY7ajC/IFv/EZWpsR5Xk
-	 geK/gPYk+UMZRfpa7k1QenCnUGWTbPm3ZsHpkyFzbIAayQBkS6sjilk9ExJRQu8Fs8
-	 7EUnOZAdU1U0xEUWoDATI9FLYwtAhcc2Ly8+nhDxtj4JA8NlBLjGZxSP1Y6GZSOwvI
-	 c+vM8ee3gvlIvJVR8u83IXaNI3/rRtMq7NuqbKXPpIyvrNqSEkSKhU01Jg0EunLJhk
-	 uLfFyYjwY7928goknVNQYJCKy4nlHiR+Dd4FM77K/mm76Z7uNJh7YJTm+FHDnLrUBz
-	 pC+WHzxSmARzw==
-Received: by mail-ed1-f48.google.com with SMTP id 4fb4d7f45d1cf-698c0ff45b5so453572a12.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 14:34:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+Rp5Qb/vqtIXPuHgPynSEoC4hBZJCwPBaw429kNfRNO0gHvI8nDBLQPM8T0Cxgj2iLgaWMw7R0EkQx0kgm79pw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwQMKZTOeVcJnWxYSHOeiCwi/H8Yh7cnkmJj9zouZ5X5l7Q0Zsl
-	YTXZk97YtSPnWIpmUVtwhqVCRG4U8st6qAdc+9tsUgmbf5jJFwSdqHI2pI0yBD9/hbc2cxDmOy2
-	fFS1vaDcERkDvJce+DqbcH2OMm7TOkg==
-X-Received: by 2002:a17:906:2099:b0:c15:c323:36e5 with SMTP id
- a640c23a62f3a-c15e744ffafmr1138866b.10.1783546486746; Wed, 08 Jul 2026
- 14:34:46 -0700 (PDT)
+	Wed, 08 Jul 2026 23:34:12 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-2ccf2360620so9799775ad.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 16:34:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1783553650; x=1784158450; darn=lists.infradead.org;
+        h=references:in-reply-to:mime-version:content-type:message-id:date
+         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=tkrEjWV2T4kZn9l/EN1RfmTfNtrV7m8I3DpucB/PUhw=;
+        b=OcCRxX0joBcyMHCbkK8Sc9SIRhzsjP6bNAt5hn5xZkt4nq5CfNTYozzofPf0x5mQN2
+         xWfckgzMM9rcb2bW3f/W+iIg6LZR4R0ZcoxW7qJHJW/HrYimKjdZYxKss4wYc9ZhGy1w
+         gw322PK4YP2pOtnFVKgdEvxdkyKEtglwYhwFvOs/belHXs6q4WB2FCLAXgFwY8c73JPV
+         yghVJhHusyggoAjbkj40U4/at56tO4fAnO5KoayQSyPD4dYc0UJh146TlLmBIey4g/OK
+         GcxQmGH/+BcCtuRcKmqFR8iBUouafrvi9NLalX18u4d4Wv6oVOATP+vEnYbsoLLOxscJ
+         D8bw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783553650; x=1784158450;
+        h=references:in-reply-to:mime-version:content-type:message-id:date
+         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=tkrEjWV2T4kZn9l/EN1RfmTfNtrV7m8I3DpucB/PUhw=;
+        b=m0PJpxnhsO6YYf/eHgnTQNLK3Sx5OFfnfbEQfARFAooUiibF6L2XPV9lFX93ONpJAy
+         rqC3kU0JFGN4fhlu+v+/SK1emjZTMHBTKTn7uOG9FAjs33n+M1tRiXy+nfdudgGSPVLk
+         8HRpFjISf9FxNtXsyRpoC28wSj7hnNMi72Mb2MZhmL+lzlycm4xOSGXPDG1bKcTQXNZg
+         i73lPcv4sfnnF78YwuHT8gemgyTpdjgOTbuKnAx0LAbZhnoCW03bAZScCfahlwBLSaHQ
+         mmEf+xR5XyQ3YaF7GnVJbmEW3Lc64l0KjR2F5I6ZRT4uSRp2POWdD7LTWlWLkB2+7sSA
+         dVcA==
+X-Forwarded-Encrypted: i=1; AHgh+RpmC6I5PX0TnhiiIiW0lGhS2OC2GOqTMpoA7GLJVcSwuyZiymeUKyZPTRfUY4tW2ApgqJpiI0Qseq3ev3jRCg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyfb+QKKc6dyGFr9CaU7pcvSX6OmvjctYeTh3PIavncob6eQ6B8
+	ctedOBTVXvN3n0GjneDk2WLBV4a5JqT6pZCE1qsZ34lTy6YCcElrLaVt
+X-Gm-Gg: AfdE7cn0uxt76AyKj9QICl12vDh3IuSXXFECqyFBbJuHkL4xf5etkCvfzHUP+BtN6po
+	y5wjWpPbdpPRYSNYYyPpz8iAi2XwVOvadzttAXS7rVqexcEGt1v1CPRjAV9OiJQ8Dltd9mt84x4
+	YOHRY49KQ9n2Jixl/XSQHl5Jmkqu0ACoZPZYRpSej9aOA2SXVReP9/gwf1U/4w6J9wXBPj4w2xf
+	tzrRVymNCWRAywCIH+X9nrZaVC1+5vaqLhOCuxocK+3aWozqitsKf5OMoIVdiEp1fdzkhNWNEr4
+	NRNZATI/D6QbmHp/DIrdlk8KZ+HvIO/calWJV0MqI5XbGia4HRLe7pmV+6AjQzCrNUj/hlXEkgW
+	rwoXyoTELUvDOrk/k5BCFrM14JTPDA6oeeHdFc6XeqygIFlmTrIamjqk1K805Z++yk31L28NMxr
+	oQ8u+lMA==
+X-Received: by 2002:a17:902:d58b:b0:2ca:cb8a:f26b with SMTP id d9443c01a7336-2ccea348afamr45697605ad.10.1783553650075;
+        Wed, 08 Jul 2026 16:34:10 -0700 (PDT)
+Received: from [127.0.1.1] ([47.253.114.73])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9bdb56fsm34840455ad.15.2026.07.08.16.34.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Jul 2026 16:34:09 -0700 (PDT)
+From: Wayen Yan <win847@gmail.com>
+To: netdev@vger.kernel.org
+Cc: lorenzo@kernel.org, horms@kernel.org, pabeni@redhat.com, kuba@kernel.org, edumazet@google.com, andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>, Daniel Golle <daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>, SkyLake Huang <SkyLake.Huang@mediatek.com>, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH net-next 4/5] net: phy: mediatek: add calibration logic for AN7581
+Date: Thu, 09 Jul 2026 00:30:00 +0800
+Message-ID: <178355364330.113879.7307879640095189809@gmail.com>
+Content-Type: text/plain; charset=utf-8
 MIME-Version: 1.0
-References: <20260701-mt8189-clocks-system-base-v1-0-2b048feea50a@collabora.com>
- <20260701-mt8189-clocks-system-base-v1-2-2b048feea50a@collabora.com>
- <20260701193311.GA1402559-robh@kernel.org> <d1e37bd4f2a05fed6c7bfdc5d9a0fa90c892d608.camel@collabora.com>
-In-Reply-To: <d1e37bd4f2a05fed6c7bfdc5d9a0fa90c892d608.camel@collabora.com>
-From: Rob Herring <robh@kernel.org>
-Date: Wed, 8 Jul 2026 16:34:35 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqK8mmkhp8rM1QVB8cqLmTVqy5toFdt3Y1AFLJ5-wOdhgQ@mail.gmail.com>
-X-Gm-Features: AUfX_mw1Ig80oWjopfC3vG9UTQnueKyNCwAlWOrtHD_SpQ7K2JXbmkzTxRjcs9w
-Message-ID: <CAL_JsqK8mmkhp8rM1QVB8cqLmTVqy5toFdt3Y1AFLJ5-wOdhgQ@mail.gmail.com>
-Subject: Re: [PATCH 02/15] dt-bindings: clock: mediatek: regroup MT8188
- dt-bindings into MT8186
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
-	Brian Masney <bmasney@redhat.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Chun-Jie Chen <chun-jie.chen@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Edward-JW Yang <edward-jw.yang@mediatek.com>, Richard Cochran <richardcochran@gmail.com>, 
-	kernel@collabora.com, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20260708102341.53919-5-ansuelsmth@gmail.com>
+References: <20260708102341.53919-1-ansuelsmth@gmail.com> <20260708102341.53919-5-ansuelsmth@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260708_163411_119825_6FA150BB 
+X-CRM114-Status: UNSURE (   8.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,88 +97,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 8, 2026 at 8:45=E2=80=AFAM Louis-Alexis Eyraud
-<louisalexis.eyraud@collabora.com> wrote:
->
-> Hello Rob,
->
-> On Wed, 2026-07-01 at 14:33 -0500, Rob Herring wrote:
-> > On Wed, Jul 01, 2026 at 03:11:07PM +0200, Louis-Alexis Eyraud wrote:
-> > > Regroup the MT8188 clock and system clock dt-bindings into MT8186
-> > > ones
-> > > to ease maintainability and have common files for several currently
-> > > supported SoC or new future ones, that have the same kind of clock
-> > > controller design.
-> > >
-> > > Note:
-> > > The `#clock-cells` property is a required property for all
-> > > compatibles
-> > > declared in MT8188 clock and system clock dt-bindings but not in
-> > > MT8186
-> > > ones.
-> > > To avoid ABI breakage, conditional blocks to check this requirement
-> > > for MT8188 compatibles are added, rather than enforcing it for
-> > > MT8186
-> > > compatibles.
-> >
-> > If the existing DTs are just wrong, then I would just make #clock-
-> > cells
-> > required. But please update the .dts files so the warnings don't
-> > grow.
-> >
-> I've tested to make the #clock-cells required for the MT8186, MT8192
-> and MT8195 system and functional clock controllers.
-> I did not see new warnings, so no extra dts patches would be needed.
->
-> I'll add new patches (one per SoC) in the next revision of the series
-> for this, as it simplifies the grouping patches (no more if/then to
-> require #clock-cells for the MT8188/MT8189 clock controllers) and the
-> note in commit message could be removed.
->
-> > The grouping I would do here is:
-> >
-> > - clock controller only
-> > - reset controller only
-> > - both clock and reset controller
-> >
-> > That should avoid any if/then schemas.
-> >
->
-> By this grouping, I understand you suggest having separate dt-bindings
-> files, that could look like:
-> - mediatek,mt8186-clock.yaml: clock controllers
-> - <name to be found>: reset controllers
-> - <name to be found>: clock controllers with reset controller
-> - mediatek,mt8186-sys-clock.yaml: system clock controllers.
-> - <name to be found>: system clock controllers with reset controller
->
-> Is that what you meant?
+Hi Christian,
 
-I think so, but not sure I understand the distinction with clock
-controllers and system clock controllers.
+Thanks for working on this. One critical bug found that will crash
+on probe, plus a couple of minor issues.
 
-> There is no pure reset controllers for those SoC so no dedicated file
-> would needed at the moment.
-> The system clock controllers all have reset-controllers, even they may
-> currently be not all implemented, so no separate files for system clock
-> controllers would needed as well.
->
-> Also, from what I see the current dt-bindings, the system clocks
-> controllers for the MT8186/MT8188/MT8192/MT8195 SoC have the #reset-
-> cells property but it is not required for them (examples:
-> mediatek,mt8188-infracfg-ao or mediatek,mt8195-infracfg_ao).
->
-> With the patches to make the #clock-cells property required, I already
-> removed the biggest if/else block in mediatek,mt8186-clock.yaml, so
-> only the one regarding #reset-cells property remains.
->
-> So, should I create separate files, following the grouping suggestion,
-> for the v2 of this patch?
+1) Uninitialized shared pointer in an7581_phy_probe()
 
-Shrug. There's no hard rule here, it's a judgment call. With one
-if/then block dropped, it's a bit more tolerable to keep it as-is. If
-the if/then schemas are as long as the rest of the schema (minus any
-example), then I would say to split the schemas.
+The local variable `shared` is declared but never assigned before
+use:
 
-Rob
+    static int an7581_phy_probe(struct phy_device *phydev)
+    {
+        struct airoha_socphy_shared *shared;   /* not initialized */
+        ...
+        ret = devm_phy_package_join(&phydev->mdio.dev, phydev, 0,
+                                    sizeof(struct airoha_socphy_shared));
+        if (ret)
+            return ret;
+
+        ...
+        if (phydev->mdio.addr == AIROHA_DEFAULT_PORT0_ADDR)
+            shared->phydev_p0 = phydev;   /* writing to uninitialized pointer */
+
+devm_phy_package_join() allocates the shared priv data internally
+(accessible via phydev->shared->priv), but the local variable
+`shared` itself is never populated. You need to call
+phy_package_get_priv(phydev) after the join succeeds before
+accessing any shared fields.
+
+Fix:
+
+    shared = phy_package_get_priv(phydev);
+
+should be added right after devm_phy_package_join() succeeds.
+
+Without this fix, the first PHY to probe (addr == 0x9) will crash,
+and all subsequent PHYs' config_init will dereference an
+uninitialized phydev_p0 in every calibration function.
+
+2) Typo: mdi_resister_type -> mdi_resistor_type
+
+The field name "resister" appears in multiple places (enum, struct
+field, config_init, FIXME comments). It should be "resistor".
+This will be baked into the ABI once merged so worth fixing now:
+
+- enum airoha_mdi_resister_type -> airoha_mdi_resistor_type
+- shared->mdi_resister_type -> shared->mdi_resistor_type
+- FIXME comment: "MDI Resister Type" -> "MDI Resistor Type"
+
+3) Observation: mdi_resister_type is always MDI_5R but tables have
+   MDI_0R data
+
+Currently the code hardcodes mdi_resister_type = MDI_5R, so the
+MDI_0R entries in an7581_tx_amp_compensation_tbl[] are dead data.
+The FIXME suggests this should be read from SCU registers
+eventually. Consider adding the MDI_0R branch now (or at minimum
+an else) so the code structure is ready when the SCU read is
+implemented, and avoid shipping dead table data.
+
+Best,
+Wayen
+
 
