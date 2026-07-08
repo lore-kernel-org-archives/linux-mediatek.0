@@ -4,98 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92980C43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 17:13:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E027C43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 17:22:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zfmAyoMMb2wOrJd1JOChx63QvBzEFg9LxEcj6r2lKq0=; b=P338L0ezVsC4t6mDC6xL+ftHLA
-	oiUU+MQrE3iG8eRQr/iHmq+ZQmJ8YlPSONXLy0zdU4aL0c1TBWyUJ6RLFrPN2jqv4G7fengdk+Y/c
-	nNY0G5pCVdUTP/O9Q7JC1nhwtJVdvEN2KDCUcGlmYRGrSEr34oAVq5yUSvUvMxMup1U8EwkLO447n
-	/pbgMMbPV6S0NwZqQ77QbCG1dPVlntW0a4qF4YD7DHHP17OwRKvXnu9ywHE+gMvDKqReMs6E8emoy
-	6or3vO2w6p65Bv07OCgOfpbsIQfdJ488OrfDHlwvapR60e2GHdB5S+ZU+K/Pke4A3ngWqT1w8dLd0
-	5x8U6iEQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=i7IPmNgvS9mOLFEChWl8INVOYxpfS2/NOpNSeCStxpc=; b=0aZNLR5i5YPhtTo93eIDLq7Y5y
+	H/jVpGmM7tKfuL2D+Jvu2FUGnZPz5xaAC8OlqLYuwIo0/JM/4JAXSe8g2DZGYC4MCN7ivOO2tEqHg
+	RD1HNIaCBfkT4j+NxGCySD93KWr+U4fryCq3VxndQ/S3kFTwy3k+EMZm+QHy5tWkHfRGWDFjsOaQX
+	Upw8ubtmxkFRQwRp/WmqIjTEkYxOHd1yNwmGWHxrUv+Amd3WC/KS1EuEcSDGVaoY57smOo/TCDKFM
+	z51D2nALAJS4ya5sCdAtkCPLP6jbuOWw66i/8F1DjJoLxDh+a+qsQzQkYEnU84o5nnvnD04ZzS9lR
+	3BGOBF4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whVpp-000000004FB-1U3p;
-	Wed, 08 Jul 2026 17:13:21 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1whVz4-000000005dD-0abV;
+	Wed, 08 Jul 2026 17:22:54 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whVpl-000000004DY-3DZN
-	for linux-mediatek@lists.infradead.org;
-	Wed, 08 Jul 2026 17:13:20 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id B7DC54E40CF3;
-	Wed,  8 Jul 2026 17:13:12 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 79AB260339;
-	Wed,  8 Jul 2026 17:13:12 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 537A811BC19AE;
-	Wed,  8 Jul 2026 19:12:57 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1783530790; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=zfmAyoMMb2wOrJd1JOChx63QvBzEFg9LxEcj6r2lKq0=;
-	b=NULni/6NFJ20KXh/pLbAeGrodYIPFdy8eBKw/RzQ8jTjYVIOvQUspy5qI1oy+zxGvEH+zJ
-	WvoEK/O51fn4m48VZqqjYI81CQOxKWiScZbhJgJK2YVbNsZS1VGyuYZaMx3SLmnfr6jQoI
-	YR2AKo/UgzIYjSUwzS3rpj+IKjb2Q+LhZ7cuFyaUM6XIR+e8wEmd4HbVythE68S0mmv3Cs
-	j3oVLe6v+J9QSUhcNCD7mRipL0D8vtu88BOWe2ZQTs+kPxWTy/tKTtUto+VyBJhtPXpxqr
-	+JFdA0Avyf2sOR23P7FkAyhriBrPYmbpdEOaTOxocTMTFz9QJqO1ky88LwxwQA==
-Date: Wed, 08 Jul 2026 19:12:56 +0200
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-To: Maxime Ripard <mripard@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>
-CC: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- dri-devel@lists.freedesktop.org, Joshua Peisach <jpeisach@ubuntu.com>,
- Sasha Finkelstein <k@chaosmail.tech>, Janne Grunau <j@jannau.net>,
- asahi@lists.linux.dev, Benson Leung <bleung@chromium.org>,
- Guenter Roeck <groeck@chromium.org>, chrome-platform@lists.linux.dev,
- Francesco Dolcini <francesco.dolcini@toradex.com>,
- Francesco Dolcini <francesco@dolcini.it>,
- Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
- Ian Ray <ian.ray@gehealthcare.com>,
- Peter Senna Tschudin <peter.senna@gmail.com>,
- Martyn Welch <martyn.welch@collabora.co.uk>,
- Manikandan Muralidharan <manikandan.m@microchip.com>,
- Dharma Balasubiramani <dharma.b@microchip.com>,
- Russell King <linux@armlinux.org.uk>, Inki Dae <inki.dae@samsung.com>,
- Seung-Woo Kim <sw0312.kim@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
- linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- Linus Walleij <linusw@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-mediatek@lists.infradead.org, Rob Clark <robin.clark@oss.qualcomm.com>,
- Dmitry Baryshkov <lumag@kernel.org>, Abhinav Kumar <abhinav.kumar@linux.dev>,
- Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>,
- Marijn Suijten <marijn.suijten@somainline.org>,
- freedreno@lists.freedesktop.org,
- Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
- Alain Volmat <alain.volmat@foss.st.com>,
- Raphael Gallais-Pou <rgallaispou@gmail.com>
-Subject: Re: [PATCH v2 00/37] drm/bridge: Convert all bridges to atomic
-User-Agent: K-9 Mail for Android
-In-Reply-To: <20260707-drm-all-atomic-bridges-v2-0-21d03cbca446@kernel.org>
-References: <20260707-drm-all-atomic-bridges-v2-0-21d03cbca446@kernel.org>
-Message-ID: <CB4505B9-E9E5-402D-B5A6-A72395D2E5E9@bootlin.com>
+	id 1whVz3-000000005cX-02BW;
+	Wed, 08 Jul 2026 17:22:53 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 0F8BC6001A;
+	Wed,  8 Jul 2026 17:22:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1BE661F000E9;
+	Wed,  8 Jul 2026 17:22:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783531371;
+	bh=i7IPmNgvS9mOLFEChWl8INVOYxpfS2/NOpNSeCStxpc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=h++1O9ENPah2e3Ku13KPLHp893MhKU+YG8XBJT1RVVBjXvzCfjcXEShyIaRP6wggM
+	 R9Tr7x6BoME33r+edVBHNsW3iFZAU+BrJ8UDv8g8hrqAw8HZQAdEvFj0N+fWmty2G+
+	 M4Nv4QRACaZCYMWM+UYIKV8KamYtpI3JoV4roGDa2v8eVfXJCl7qP2r96ezkYmEgI5
+	 UyO70ToZ6P5z5EQdwoGQNG2mU8XG/gN3bbiQU1+rYCn4NPzYIoEuJ60PybSp6WAdRH
+	 I8cVW8wA0Dt0MhQaRIMOavPaPWqZisxasJq6Jb3QhJu5kI6i8U7g5qAHRYgB7O6jJq
+	 VHruDas3phubw==
+Date: Wed, 8 Jul 2026 18:22:43 +0100
+From: Mark Brown <broonie@kernel.org>
+To: phucduc.bui@gmail.com
+Cc: Takashi Iwai <tiwai@suse.com>, Nick Li <nick.li@foursemi.com>,
+	Herve Codina <herve.codina@bootlin.com>,
+	Support Opensource <support.opensource@diasemi.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
+	Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
+	Oder Chiou <oder_chiou@realtek.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	u.kleine-koenig@baylibre.com, Zhang Yi <zhangyi@everest-semi.com>,
+	Marco Crivellari <marco.crivellari@suse.com>,
+	Kees Cook <kees@kernel.org>, HyeongJun An <sammiee5311@gmail.com>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Qianfeng Rong <rongqianfeng@vivo.com>, linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org, patches@opensource.cirrus.com,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2 00/27] ASoC: codecs: Use guard() for mutex & spin
+ locks - part 2
+Message-ID: <c9f7eaac-9bf7-408a-a4a6-56f3ec6177a6@sirena.org.uk>
+References: <20260708141734.578926-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Last-TLS-Session-Version: TLSv1.3
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_101317_948035_68369FB6 
-X-CRM114-Status: UNSURE (   9.17  )
-X-CRM114-Notice: Please train this message.
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="PgruSEpo43eVP3iy"
+Content-Disposition: inline
+In-Reply-To: <20260708141734.578926-1-phucduc.bui@gmail.com>
+X-Cookie: The other line moves faster.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,30 +92,35 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
+--PgruSEpo43eVP3iy
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Il 7 luglio 2026 17:11:07 CEST, Maxime Ripard <mripard@kernel=2Eorg> ha sc=
-ritto:
->Hi,
->
->Over the years, most of the bridges have been converted to atomic
->modesetting and hooks, but not all of them=2E This forces us to maintain
->two different code path in quite a few places, which is pretty
->bothersome=2E The switch to atomic modesetting for legacy bridges though
->is pretty trivial, and we don't have a lot of drivers still using the
->legacy path=2E
->
->This series converts all bridges to atomic modesetting and drops the
->legacy codepaths where relevant=2E
->
->Let me know what you think,
->Maxime
->
->Signed-off-by: Maxime Ripard <mripard@kernel=2Eorg>
+On Wed, Jul 08, 2026 at 09:17:07PM +0700, phucduc.bui@gmail.com wrote:
+> From: bui duc phuc <phucduc.bui@gmail.com>
+>=20
+> Hi all,
+>=20
+> This series converts mutex and spinlock handling in ASoC codec drivers
+> to use the guard() and scoped_guard() helpers.
 
-I'm out of office so I'm afraid I can only reply from mobile, but I review=
-ed the series on a real laptop:
+This doesn't apply against current code, please check and resend.
 
-Reviewed-by: Luca Ceresoli <luca=2Eceresoli@bootlin=2Ecom>
+--PgruSEpo43eVP3iy
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Luca
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmpOh2IACgkQJNaLcl1U
+h9AHoQgAhXWcuJJkJInaKgPMlux4hFBIjfDxewy++xXi2dE4XZFZF9qSXoZ7tP64
+OjmBor4HySFyF0TcRcavMwLenxRl4hNX4GheO004Y93pxBC/tWufADjMLYCDHE9h
+BjFlvQyoP5A3VovCCADSNqMcDCBqgcgz1KC0NpwTyTXzgGgOtCsT38do2/WKBH+q
+G5DJvrjY2TZpzcIqvF9VMqxiQqUCXMEFFz29fsjP+4J2lhRjxMb3fIJeRsdhw3yT
+nbNBZooFgQiKUwh2YpA9Mip214LxN9UEvd5HkehzudvMfMIxwUyKE/Io5gKKsCNo
+lq7PXPnBIfRaMWCJUDCq632/gxKqSw==
+=rQ7N
+-----END PGP SIGNATURE-----
+
+--PgruSEpo43eVP3iy--
 
