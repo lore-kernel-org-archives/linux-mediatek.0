@@ -4,98 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6E57C44501
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 12:42:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ED54C43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 12:57:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=FeTFZKGeXcKtdGzHWtUv5E1DeHN3B2mS7xb47BxMxw0=; b=jEdt1Nb9WVhB/ZF3DTHdltYssA
-	UUAizh+kWAHI8LwRdn4yG6ErBx2g7iba59OH/uP6/FlO2RHwv1Qjd1vZdHfADMTyHxNIwwmlvWkl3
-	fMJln4gYMyq67J1eu04pjRYIpxOUYjAf1smM0Cn75vDUUzP2pnHVaAqAo100S9fQM/yZj/MLJXvog
-	ASZSnnLuxPp/ZIB8ooXFBQIA0eLfag0dwpjg6RJ3uXU0KplPWddyr8fitBro9mP1BwIdeBRsIny5C
-	SzihDGDsRFN8s9rO3DHjIKJ8Ulid6lqD6O5JnZk80XTrSQn0hW2XND2P/EXcQiEUTA2Es5Sv++aPo
-	qLppUxtw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qRWldEfKotFz0RFdvk3K7yQLwFVfCSqWSdZVW6pQ84g=; b=g7IvuVidw63OSsGEH81hLOg6ua
+	+ugQ1GNTwXkl6haq8DZFGWRdvKV1b4GIM8ndu8hxN9ahEJeQcJikWyOfapGEjGrREfbl6Q49zgQzZ
+	xwDKDL3xYlukP9J/Ccv2NBBjX7YIrnrsAikWduIeYayXoMF0Is+pmpwZpE1tECjXtLJ0yiNlAv/05
+	ZOq+HBlMAwzdTDGZqzesCwEoZODBWMzEPTMOXYVLWf8+1OWT1Fh7tM9xxNv25U3EyvLGJ5YbKQRy6
+	9LJ/PQtVaDAtUR/XSlEBPN1fTTE0Rt2chlhTFIJA6GMcjs54WCDIeK7XcBdHRW9uQw0V/rCQbJ+Tq
+	ZGnE7+sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whRc3-0000000H8U8-3CJN;
-	Wed, 08 Jul 2026 12:42:51 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1whRqP-0000000H9aD-19HZ;
+	Wed, 08 Jul 2026 12:57:41 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whRc1-0000000H8TH-2yqP
-	for linux-mediatek@lists.infradead.org;
-	Wed, 08 Jul 2026 12:42:50 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-847aa193d98so505037b3a.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 05:42:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783514569; x=1784119369; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:from:to:cc:subject:date:message-id:reply-to;
-        bh=FeTFZKGeXcKtdGzHWtUv5E1DeHN3B2mS7xb47BxMxw0=;
-        b=NH+AQhEvffnzctiDU/ENoewgB0O9n7tqq3BTdt5G7HLzMJcr4Yk1tZIJbpJVOH4yeB
-         y+h0E1O+L9NS4qEBHBmLgq2WWxbWbnXTnDANqgKTm5YVWmJTgv+l83JT/Wrrn+FuBBNO
-         jBlWLcDBKO240be3iuvqFcdDwn+bPlY0QqONJMYlbNk7wLfhaRzCaOOjwd7CfLr5YAGB
-         XhNYV4eINbfPuz+AW7USZsOgaMJcPtVAhhPrEWfEpA4PgDnnrc97TPqwnYUQyG+FVjoM
-         HDH83e0GdhSLddo9fD/61/JCrHnVxthmZY3u7v3L0OLRgs8L9TbLYhPz1gQF1XtdF+SR
-         DWOA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783514569; x=1784119369;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=FeTFZKGeXcKtdGzHWtUv5E1DeHN3B2mS7xb47BxMxw0=;
-        b=fv6G/4hy51R61TWyv6vAG5csn8QOsW4M1qLR6zBHQ6wEGZ4daHPxb82oRjaxiLqvqr
-         aBjoWqtX+zMJJ4DDdiOIuxNz2N4hyy0PwhbTBi4YiA7f3O6nwsvSRA4SoglyYnrqRfOZ
-         eEIgHUSSArpUkE22768yUFr5Iu+3CwOEP+eXjGYHR1rvleq5Vvg62NPJT3+5Hzg0eICV
-         4M1Szj62WGvE2uTpEK0+naK0uUxwHwM/CIpsseZld6HcAmQ0W0zwZ5OR64ZXW6rf33Y4
-         obN1XXnb/d6/MVEFqFV5WOkBnEDBoYr/WVJ0t49yVwCkhwqSTdHUDGZuwrWRF5hyzdTw
-         uuiw==
-X-Forwarded-Encrypted: i=1; AHgh+RqCo8xom8SO1SfqPuwRoTMSitgp7aOJ+vDdbrJJFurmyRYi8ZLv8vF0osuaQ8EvD5Y8HiIcOPW7QTvjJxFqQQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwkzbZdyVmcw6fj8bRIwDryTajwvT2/+yvrKS0522wluGKWmL9u
-	OCX4YMXPAX4SMBcNu8Olqb7kjjMOd8HEhHMBQKTyOFqD/QT0K82gSkMG
-X-Gm-Gg: AfdE7ck+SboBn6FpKFcxN7eB/WuXMS/H9u2fqGmpfi4NJ4U+hy2KC9d2qkHwoXaEmVv
-	/kM39RRYLVLhw9gBzYulSPmdF2YqmGXkawziksUG7begx8DR7F7QJn00XVguZb5oeR1eayIpTDE
-	h2E2TMkRSSvKB2evvywcneZC7TO5ZCKOpKvNOHV1et3ljS29jlNZ3O6Q4qzp8jfePxMqaSPCcxP
-	Rh1amiKOdyjtIY0R51v5CHSIR4N5lQKNYEaZsbJUG+HkEUY/riz/5pDHCLPOD6HMFiXXZKzp/x6
-	rTglZy55znm/bnkdrNIGVMRzH67Zb2mEV9q/BpmRydrKMJp41hML2K+PaNdqCCoGmuon9B43Myi
-	4h0DWrKJtfM6HVRUM/j+QvldgFD1NqKsyqBe6Nt7pjM48+6/brQlWcPvM2RBLRzomBW9FTAQtVD
-	I+hA==
-X-Received: by 2002:a05:6a00:3021:b0:847:8b1d:22fe with SMTP id d2e1a72fcca58-8484341100bmr2523607b3a.50.1783514568759;
-        Wed, 08 Jul 2026 05:42:48 -0700 (PDT)
-Received: from lgs.. ([101.36.106.88])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-847f6d7c2casm6963729b3a.43.2026.07.08.05.42.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jul 2026 05:42:48 -0700 (PDT)
-From: Guangshuo Li <lgs201920130244@gmail.com>
-To: Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-	Houlong Wei <houlong.wei@mediatek.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil+cisco@kernel.org>,
-	Tomasz Figa <tfiga@chromium.org>,
-	Guangshuo Li <lgs201920130244@gmail.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Haoxiang Li <haoxiang_li2024@163.com>,
-	linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1whRqO-0000000H9Zf-2e9n;
+	Wed, 08 Jul 2026 12:57:40 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 179A960054;
+	Wed,  8 Jul 2026 12:57:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45F481F000E9;
+	Wed,  8 Jul 2026 12:57:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783515459;
+	bh=qRWldEfKotFz0RFdvk3K7yQLwFVfCSqWSdZVW6pQ84g=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=TgoZy0kS3bz79fZjR9pb0xVWBZcQ38mOq5nUZTlP1W5U7hHHvwuUMWxW/RteOsLR6
+	 vheU6GNS9szCoKdTolmTKXZy4MZr3JRDAt4bbyWMdIPFdR7Iq1/ubyLY6z6mymZ8cb
+	 4sZelPFPMfAwghJQ1QNXlLKwPgKs3Q+Z8HFdXo1CkTrrtbCp5ieCmiPIieyQNTk9AQ
+	 FCD2REueExEfHu0hgQ4uXjNRnKdYKJ6E8uY0pdxPkCRP+8K1M4DEVEIwGupeJEKf2y
+	 OqzaHPxKmpCOi+hje6tEswt6x9HOHJCG+KJBPN1EzmotWRjqA4f6yasvNAUZxNFoSa
+	 nJzuJJGTVhj9g==
+Date: Wed, 8 Jul 2026 14:57:37 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Wayen Yan <win847@gmail.com>
+Cc: netdev@vger.kernel.org, horms@kernel.org, pabeni@redhat.com,
+	kuba@kernel.org, edumazet@google.com, andrew+netdev@lunn.ch,
+	angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH] media: mediatek: vcodec: unregister VPU watchdog handler
-Date: Wed,  8 Jul 2026 20:42:35 +0800
-Message-ID: <20260708124235.763036-1-lgs201920130244@gmail.com>
-X-Mailer: git-send-email 2.43.0
+Subject: Re: [PATCH net] net: airoha: Fix DMA direction for NPU mailbox buffer
+Message-ID: <ak5JQZwD2D4ogWw3@lore-desk>
+References: <178351055214.98729.11403147818632027428@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_054249_752426_191D4EA6 
-X-CRM114-Status: GOOD (  14.54  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="fqtiECgthKw6C3p6"
+Content-Disposition: inline
+In-Reply-To: <178351055214.98729.11403147818632027428@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,91 +71,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_vcodec_fw_vpu_init() registers a VPU watchdog reset handler and
-passes the vcodec device as the private data.
 
-The handler is stored in the VPU device and can outlive the vcodec
-device. If firmware initialization fails after the handler has been
-registered, or if the vcodec device is later removed, the VPU watchdog
-table can keep a pointer to a vcodec device that is about to be released.
-A later VPU watchdog reset can then call the reset handler with a stale
-pointer and dereference freed memory while walking the vcodec context
-list.
+--fqtiECgthKw6C3p6
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Add a VPU watchdog unregister helper and clear the vcodec watchdog
-handler from both the firmware initialization failure path and the VPU
-firmware release path before dropping the VPU device reference.
+> airoha_npu_send_msg() always maps the mailbox buffer with DMA_TO_DEVICE,
+> but some callers expect the NPU to write response data back into the
+> same buffer:
+>=20
+> - airoha_npu_wlan_msg_get() (NPU_OP_GET): NPU writes response into
+>   the buffer, then the caller reads it via memcpy()
+> - airoha_npu_ppe_stats_setup() (NPU_OP_SET): NPU writes back
+>   npu_stats_addr field in the response
+>=20
+> On non-cache-coherent architectures like EN7581 (Cortex-A53 without
+> hardware cache coherency for NPU DMA), DMA_TO_DEVICE unmap is a no-op
+> =E2=80=94 it does not invalidate the CPU cache. If the NPU-written cache =
+line
+> is still present in the CPU cache when the caller reads the buffer,
+> the CPU observes stale data instead of the NPU response.
+>=20
+> This is a timing-sensitive bug: small mailbox buffers (~24 bytes)
+> typically fit in a single cache line and may survive in the cache
+> until the caller reads them, producing silent data corruption rather
+> than a crash. The bug is more likely to trigger when the caller reads
+> the response immediately after dma_unmap_single() without intervening
+> cache-evicting operations.
+>=20
+> Fix by using DMA_BIDIRECTIONAL for both map and unmap, which ensures
+> dma_unmap_single() invalidates the CPU cache on non-coherent systems.
+> The mailbox buffers are small so there is no performance concern.
 
-Fixes: 01abf5fbb081 ("media: mediatek: vcodec: separate struct 'mtk_vcodec_ctx'")
-Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
----
- .../mediatek/vcodec/common/mtk_vcodec_fw_vpu.c    |  4 ++++
- drivers/media/platform/mediatek/vpu/mtk_vpu.c     | 15 +++++++++++++++
- drivers/media/platform/mediatek/vpu/mtk_vpu.h     |  2 ++
- 3 files changed, 21 insertions(+)
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-index 3632037f78f5..c79a78c371ea 100644
---- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vpu.c
-@@ -40,6 +40,9 @@ static int mtk_vcodec_vpu_ipi_send(struct mtk_vcodec_fw *fw, int id, void *buf,
- 
- static void mtk_vcodec_vpu_release(struct mtk_vcodec_fw *fw)
- {
-+	vpu_wdt_unreg_handler(fw->pdev,
-+			      fw->fw_use == ENCODER ? VPU_RST_ENC :
-+				       VPU_RST_DEC);
- 	put_device(&fw->pdev->dev);
- }
- 
-@@ -120,6 +123,7 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(void *priv, enum mtk_vcodec_fw_use
- 
- 	fw = devm_kzalloc(&plat_dev->dev, sizeof(*fw), GFP_KERNEL);
- 	if (!fw) {
-+		vpu_wdt_unreg_handler(fw_pdev, rst_id);
- 		put_device(&fw_pdev->dev);
- 		return ERR_PTR(-ENOMEM);
- 	}
-diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.c b/drivers/media/platform/mediatek/vpu/mtk_vpu.c
-index 8d8319f0cd22..f59f45fecc75 100644
---- a/drivers/media/platform/mediatek/vpu/mtk_vpu.c
-+++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.c
-@@ -437,6 +437,21 @@ int vpu_wdt_reg_handler(struct platform_device *pdev,
- }
- EXPORT_SYMBOL_GPL(vpu_wdt_reg_handler);
- 
-++void vpu_wdt_unreg_handler(struct platform_device *pdev, enum rst_id id)
-+{
-+	struct mtk_vpu *vpu = platform_get_drvdata(pdev);
-+
-+	if (!vpu || id >= VPU_RST_MAX)
-+		return;
-+
-+	mutex_lock(&vpu->vpu_mutex);
-+	vpu->wdt.handler[id].reset_func = NULL;
-+	vpu->wdt.handler[id].priv = NULL;
-+	mutex_unlock(&vpu->vpu_mutex);
-+}
-+EXPORT_SYMBOL_GPL(vpu_wdt_unreg_handler);
-+
-+
- unsigned int vpu_get_vdec_hw_capa(struct platform_device *pdev)
- {
- 	struct mtk_vpu *vpu = platform_get_drvdata(pdev);
-diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.h b/drivers/media/platform/mediatek/vpu/mtk_vpu.h
-index 3951547e9ec5..2ccb481a04cf 100644
---- a/drivers/media/platform/mediatek/vpu/mtk_vpu.h
-+++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.h
-@@ -141,6 +141,8 @@ int vpu_wdt_reg_handler(struct platform_device *pdev,
- 			void vpu_wdt_reset_func(void *priv),
- 			void *priv, enum rst_id id);
- 
-+void vpu_wdt_unreg_handler(struct platform_device *pdev, enum rst_id id);
-+
- /**
-  * vpu_get_vdec_hw_capa - get video decoder hardware capability
-  *
--- 
-2.43.0
+>=20
+> Fixes: c52918744ee1e49cea86622a2633b9782446428f ("net: airoha: npu: Move =
+memory allocation in airoha_npu_send_msg() caller")
+> Signed-off-by: Wayen Yan <win847@gmail.com>
+> ---
+>  drivers/net/ethernet/airoha/airoha_npu.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ether=
+net/airoha/airoha_npu.c
+> index 870d61fdd9c6..b679bed952de 100644
+> --- a/drivers/net/ethernet/airoha/airoha_npu.c
+> +++ b/drivers/net/ethernet/airoha/airoha_npu.c
+> @@ -168,7 +168,7 @@ static int airoha_npu_send_msg(struct airoha_npu *npu=
+, int func_id,
+>  	dma_addr_t dma_addr;
+>  	int ret;
+> =20
+> -	dma_addr =3D dma_map_single(npu->dev, p, size, DMA_TO_DEVICE);
+> +	dma_addr =3D dma_map_single(npu->dev, p, size, DMA_BIDIRECTIONAL);
+>  	ret =3D dma_mapping_error(npu->dev, dma_addr);
+>  	if (ret)
+>  		return ret;
+> @@ -191,7 +191,7 @@ static int airoha_npu_send_msg(struct airoha_npu *npu=
+, int func_id,
+> =20
+>  	spin_unlock_bh(&npu->cores[core].lock);
+> =20
+> -	dma_unmap_single(npu->dev, dma_addr, size, DMA_TO_DEVICE);
+> +	dma_unmap_single(npu->dev, dma_addr, size, DMA_BIDIRECTIONAL);
+> =20
+>  	return ret;
+>  }
+> --=20
+> 2.51.0
+>=20
+>=20
 
+--fqtiECgthKw6C3p6
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCak5JQQAKCRA6cBh0uS2t
+rEkuAQDBR2AU7po/548CG9jgOQ4FrFUOWREXpwLycau0KwabmgEAoT0GbuBjIF0v
+B0mV4hsyWdRr1ux3Q6bkcxszl+YIfwg=
+=TO0g
+-----END PGP SIGNATURE-----
+
+--fqtiECgthKw6C3p6--
 
