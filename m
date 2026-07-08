@@ -4,59 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ED54C43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 12:57:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59191C43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 12:58:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qRWldEfKotFz0RFdvk3K7yQLwFVfCSqWSdZVW6pQ84g=; b=g7IvuVidw63OSsGEH81hLOg6ua
-	+ugQ1GNTwXkl6haq8DZFGWRdvKV1b4GIM8ndu8hxN9ahEJeQcJikWyOfapGEjGrREfbl6Q49zgQzZ
-	xwDKDL3xYlukP9J/Ccv2NBBjX7YIrnrsAikWduIeYayXoMF0Is+pmpwZpE1tECjXtLJ0yiNlAv/05
-	ZOq+HBlMAwzdTDGZqzesCwEoZODBWMzEPTMOXYVLWf8+1OWT1Fh7tM9xxNv25U3EyvLGJ5YbKQRy6
-	9LJ/PQtVaDAtUR/XSlEBPN1fTTE0Rt2chlhTFIJA6GMcjs54WCDIeK7XcBdHRW9uQw0V/rCQbJ+Tq
-	ZGnE7+sg==;
+	bh=rcoRsbC0BO6uVEMaG71BCowfWGAxbSpWO+tIQGO84C8=; b=qhbWHFtK7z9gw9c4mWsRXmNMPW
+	AJcr6sq9CLJCpBF9aG9ZzIhqxvpzqhCPRpyCY8xhL7WlqAilq1NuhwQDSoYIyiF+mH30GRR07hxDe
+	af8LL1rr6np+ThP+zW2DL+9q2PPPQoLIQPbweRDiSfcpGm4D0pZiPGkM3KaO89kf+Gub2r82w6u8K
+	1wvu2UOug1ll5ngzffX1tyfqUicCCAIYg3mmkMSdnwuJJWYtQh5UuDnlpGt/m8ryScBrTYqXEjFi8
+	c96SdzR6Oj/tKEiCcruM8kMlQx5LL1tNVeAAL3SkhVIs+86EnAbyVcPwrP9kUWZ9d7HfDfZN+860F
+	LzWmV2gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whRqP-0000000H9aD-19HZ;
-	Wed, 08 Jul 2026 12:57:41 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1whRqt-0000000H9ga-1Rvk;
+	Wed, 08 Jul 2026 12:58:11 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whRqO-0000000H9Zf-2e9n;
-	Wed, 08 Jul 2026 12:57:40 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 179A960054;
-	Wed,  8 Jul 2026 12:57:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45F481F000E9;
-	Wed,  8 Jul 2026 12:57:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783515459;
-	bh=qRWldEfKotFz0RFdvk3K7yQLwFVfCSqWSdZVW6pQ84g=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=TgoZy0kS3bz79fZjR9pb0xVWBZcQ38mOq5nUZTlP1W5U7hHHvwuUMWxW/RteOsLR6
-	 vheU6GNS9szCoKdTolmTKXZy4MZr3JRDAt4bbyWMdIPFdR7Iq1/ubyLY6z6mymZ8cb
-	 4sZelPFPMfAwghJQ1QNXlLKwPgKs3Q+Z8HFdXo1CkTrrtbCp5ieCmiPIieyQNTk9AQ
-	 FCD2REueExEfHu0hgQ4uXjNRnKdYKJ6E8uY0pdxPkCRP+8K1M4DEVEIwGupeJEKf2y
-	 OqzaHPxKmpCOi+hje6tEswt6x9HOHJCG+KJBPN1EzmotWRjqA4f6yasvNAUZxNFoSa
-	 nJzuJJGTVhj9g==
-Date: Wed, 8 Jul 2026 14:57:37 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Wayen Yan <win847@gmail.com>
-Cc: netdev@vger.kernel.org, horms@kernel.org, pabeni@redhat.com,
-	kuba@kernel.org, edumazet@google.com, andrew+netdev@lunn.ch,
-	angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net] net: airoha: Fix DMA direction for NPU mailbox buffer
-Message-ID: <ak5JQZwD2D4ogWw3@lore-desk>
-References: <178351055214.98729.11403147818632027428@gmail.com>
+	id 1whRqq-0000000H9f4-37yw
+	for linux-mediatek@lists.infradead.org;
+	Wed, 08 Jul 2026 12:58:10 +0000
+Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-c15b1da6b82so71113266b.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 05:58:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1783515487; x=1784120287; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:content-type
+         :references:in-reply-to:date:cc:to:from:subject:message-id:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=rcoRsbC0BO6uVEMaG71BCowfWGAxbSpWO+tIQGO84C8=;
+        b=lAY1sUOuJqClr5wVNIZxcahi18Se0Wsv26mZ5/BwrKvr59hK5lW3uFkHbm2b7Qkgzr
+         lip4RbAtvQn6rjWQDzjBTgf51ri6EUNV7oowkgyc1PH/hfhhNR2wiX0PBnPfLVraUgIq
+         5Jpf25JwaQLSmPDEI6nZc8VXqf4TeeobgIWmOYkT1iWlQ1EtmQOlppl2BGUiOfdD5JGB
+         tjggMY1tONhNwAMagak74VT3FggIb60ihBU0r7s6Wo06LRg9ddUquLOvy30AuhIwW6XD
+         U3Pz0rC8Vq1L9fYtska/mdgLmhhKy1TOtPCdqrk7/mKOTcAA61+By0wHepUwzkTvPkjQ
+         sW6w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783515487; x=1784120287;
+        h=mime-version:user-agent:content-transfer-encoding:content-type
+         :references:in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=rcoRsbC0BO6uVEMaG71BCowfWGAxbSpWO+tIQGO84C8=;
+        b=UZR4HSvZHpx24DEwMMFA7DbyW5aXao7gVnGkgmhiTdLk1JhVxaAYR78S7HXW0SoWjl
+         tZEk5VPuwHmF+JpIKsvz7JjDzQK1CQLMJZ/uL/yXOK3s/SNo+RgZ6b+QL+EhH/i76xxw
+         NOwXVXZ7/4SGDsdgMCt+Qp/LopzXRG2qNg43na7bFKxWpPw3zY2/Gis//7u6htJ7Q/cU
+         C3+gMAJcft1rxDmTLZpNiyFl/xKexd8ROBbSnKY+ODBGetmMA622TIDnhkWd4qDr+bMX
+         NxLpLy8RLXp5CbzewUEY16X7rwwsX9haWyQB6Kp6ajiE6eaXrIYRAPcArPCGI0okeB6H
+         HPQw==
+X-Forwarded-Encrypted: i=1; AHgh+Rowghu4mxM1FGuh1nTvU9VT1FBhYZiCjElIJi6blvvjuF3GY4IhJE0h00D910JWAs51kBt0M0b6/qKoLbkw8w==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw6+E9DKIEY26j8O7zsKECl57QTACZWHJDIMR0TTv5zoFNugmEs
+	TeU1O0NbYibIO/4uZOKa0DI7x9q5ZX6D2qXg8mwgfWEf8QgWXTdX8kFbmzTd0x6YC2E=
+X-Gm-Gg: AfdE7cmPlWYCnhmOCWhvu5Aw6ik6fVoVllmfkfdPRAeaW7qOoX45ZkTQvK32lRBDxHf
+	pqhd3VVP8HbATNwmpWmqZzY2dtBwWALrYEgsLRojeGtEIDnnFuaJznw+tjQOlChbCIBxlmkPcff
+	L120BCmUupBqGIGic9zfLUnx7dRJPxOpgB1p67xRMiAP90DQ+naP3JWupeV8DyE0WH1HxAyanjt
+	paVxybRnt4agyYwOpohuQpfBI5hn1lW9pAwBYRb2TNscPcbTCXSPOGZlG8oA3qOKqmpfDzACBp7
+	mjUR4lelEzCHiv6PEHZZi7Yl2YGAuuJV5qHcyu3tvf2g6+fo2fjVNbzimkJ2mjF6cmP+9FjeVe6
+	6icFT889Q3BpiXZPfk+65ezjX7kjbsLqXiImQVVeEBiVn341B4Sx2rJ/9L5C2Q3GtsVLRUlHcdd
+	uuIEpCSvr6A5JRn0dI0cE=
+X-Received: by 2002:a17:907:7211:b0:c12:4597:601f with SMTP id a640c23a62f3a-c15ce131902mr120160066b.53.1783515486648;
+        Wed, 08 Jul 2026 05:58:06 -0700 (PDT)
+Received: from draszik.lan ([212.129.81.171])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c15ad84c636sm324005266b.22.2026.07.08.05.58.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Jul 2026 05:58:06 -0700 (PDT)
+Message-ID: <eed86cadd335597d7c7a4278a9a09706913ba6a3.camel@linaro.org>
+Subject: Re: [PATCH v2 21/23] mfd: Unify style of of_device_id arrays
+From: =?ISO-8859-1?Q?Andr=E9?= Draszik <andre.draszik@linaro.org>
+To: Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= "(The Capable Hub)"
+	 <u.kleine-koenig@baylibre.com>
+Cc: Lee Jones <lee@kernel.org>, Linus Walleij <linusw@kernel.org>, Nicolas
+ Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>,  Claudiu Beznea
+ <claudiu.beznea@tuxon.dev>, Chen-Yu Tsai <wens@kernel.org>, Florian
+ Fainelli	 <florian.fainelli@broadcom.com>, Broadcom internal kernel review
+ list	 <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>,
+ Scott Branden <sbranden@broadcom.com>, Marek Vasut
+ <marek.vasut+renesas@gmail.com>, James Ogletree	
+ <jogletre@opensource.cirrus.com>, Fred Treven <fred.treven@cirrus.com>, Ben
+ Bright <ben.bright@cirrus.com>, David Rhodes <david.rhodes@cirrus.com>,
+ Richard Fitzgerald	 <rf@opensource.cirrus.com>, Support Opensource
+ <support.opensource@diasemi.com>,  Krzysztof Kozlowski	 <krzk@kernel.org>,
+ Peter Griffin <peter.griffin@linaro.org>, Alim Akhtar	
+ <alim.akhtar@samsung.com>, Tim Harvey <tharvey@gateworks.com>, Neil
+ Armstrong	 <neil.armstrong@linaro.org>, Charles Keepax
+ <ckeepax@opensource.cirrus.com>,  Sven Peter <sven@kernel.org>, Janne
+ Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>, Mathieu Dubois-Briand
+ <mathieu.dubois-briand@bootlin.com>, Chanwoo Choi <cw00.choi@samsung.com>,
+ Luca Ceresoli	 <luca.ceresoli@bootlin.com>, Saravanan Sekar
+ <sravanhome@gmail.com>,  Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team	 <kernel@pengutronix.de>, Fabio Estevam
+ <festevam@gmail.com>, Jonathan =?ISO-8859-1?Q?Neusch=E4fer?=	
+ <j.neuschaefer@gmx.net>, Aaro Koskinen <aaro.koskinen@iki.fi>, Andreas
+ Kemnade	 <andreas@kemnade.info>, Kevin Hilman <khilman@baylibre.com>, Roger
+ Quadros	 <rogerq@kernel.org>, Tony Lindgren <tony@atomide.com>, Matti
+ Vaittinen	 <mazziesaccount@gmail.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang	 <baolin.wang@linux.alibaba.com>, Chunyan Zhang
+ <zhang.lyra@gmail.com>,  Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue	
+ <alexandre.torgue@foss.st.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, Liviu Dudau <liviu.dudau@arm.com>,
+ Sudeep Holla <sudeep.holla@kernel.org>,  Lorenzo Pieralisi
+ <lpieralisi@kernel.org>, Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm	 <magnus.damm@gmail.com>, mfd@lists.linux.dev,
+ linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
+ patches@opensource.cirrus.com, 	linux-rpi-kernel@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, 	linux-sound@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org, 	linux-amlogic@lists.infradead.org,
+ asahi@lists.linux.dev, 	linux-mediatek@lists.infradead.org,
+ imx@lists.linux.dev, 	linux-omap@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, 	linux-stm32@st-md-mailman.stormreply.com,
+ linux-sunxi@lists.linux.dev
+Date: Wed, 08 Jul 2026 13:58:20 +0100
+In-Reply-To: <ce43f6ec640a7835d64d3d696ff09229c3d31075.1783507945.git.u.kleine-koenig@baylibre.com>
+References: <cover.1783507945.git.u.kleine-koenig@baylibre.com>
+	 <ce43f6ec640a7835d64d3d696ff09229c3d31075.1783507945.git.u.kleine-koenig@baylibre.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2-8+build1 
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="fqtiECgthKw6C3p6"
-Content-Disposition: inline
-In-Reply-To: <178351055214.98729.11403147818632027428@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260708_055808_826051_B1399311 
+X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,89 +145,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---fqtiECgthKw6C3p6
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> airoha_npu_send_msg() always maps the mailbox buffer with DMA_TO_DEVICE,
-> but some callers expect the NPU to write response data back into the
-> same buffer:
+On Wed, 2026-07-08 at 13:15 +0200, Uwe Kleine-K=C3=B6nig (The Capable Hub) =
+wrote:
+> These arrays already mostly match the most used and generally
+> recommended coding style. That is:
 >=20
-> - airoha_npu_wlan_msg_get() (NPU_OP_GET): NPU writes response into
->   the buffer, then the caller reads it via memcpy()
-> - airoha_npu_ppe_stats_setup() (NPU_OP_SET): NPU writes back
->   npu_stats_addr field in the response
+> =C2=A0- no comma after the list terminator;
+> =C2=A0- a comma after an initializer if (and only if) the closing } is no=
+t
+> =C2=A0=C2=A0 directly following;
+> =C2=A0- no explicit zeros in the list terminator;
+> =C2=A0- a space after an opening { and before a closing }, a single space=
+ in
+> =C2=A0=C2=A0 the list terminator;
 >=20
-> On non-cache-coherent architectures like EN7581 (Cortex-A53 without
-> hardware cache coherency for NPU DMA), DMA_TO_DEVICE unmap is a no-op
-> =E2=80=94 it does not invalidate the CPU cache. If the NPU-written cache =
-line
-> is still present in the CPU cache when the caller reads the buffer,
-> the CPU observes stale data instead of the NPU response.
+> Adapt the offenders accordingly.
 >=20
-> This is a timing-sensitive bug: small mailbox buffers (~24 bytes)
-> typically fit in a single cache line and may survive in the cache
-> until the caller reads them, producing silent data corruption rather
-> than a crash. The bug is more likely to trigger when the caller reads
-> the response immediately after dma_unmap_single() without intervening
-> cache-evicting operations.
->=20
-> Fix by using DMA_BIDIRECTIONAL for both map and unmap, which ensures
-> dma_unmap_single() invalidates the CPU cache on non-coherent systems.
-> The mailbox buffers are small so there is no performance concern.
-
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
->=20
-> Fixes: c52918744ee1e49cea86622a2633b9782446428f ("net: airoha: npu: Move =
-memory allocation in airoha_npu_send_msg() caller")
-> Signed-off-by: Wayen Yan <win847@gmail.com>
+> Signed-off-by: Uwe Kleine-K=C3=B6nig (The Capable Hub) <u.kleine-koenig@b=
+aylibre.com>
 > ---
->  drivers/net/ethernet/airoha/airoha_npu.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ether=
-net/airoha/airoha_npu.c
-> index 870d61fdd9c6..b679bed952de 100644
-> --- a/drivers/net/ethernet/airoha/airoha_npu.c
-> +++ b/drivers/net/ethernet/airoha/airoha_npu.c
-> @@ -168,7 +168,7 @@ static int airoha_npu_send_msg(struct airoha_npu *npu=
-, int func_id,
->  	dma_addr_t dma_addr;
->  	int ret;
-> =20
-> -	dma_addr =3D dma_map_single(npu->dev, p, size, DMA_TO_DEVICE);
-> +	dma_addr =3D dma_map_single(npu->dev, p, size, DMA_BIDIRECTIONAL);
->  	ret =3D dma_mapping_error(npu->dev, dma_addr);
->  	if (ret)
->  		return ret;
-> @@ -191,7 +191,7 @@ static int airoha_npu_send_msg(struct airoha_npu *npu=
-, int func_id,
-> =20
->  	spin_unlock_bh(&npu->cores[core].lock);
-> =20
-> -	dma_unmap_single(npu->dev, dma_addr, size, DMA_TO_DEVICE);
-> +	dma_unmap_single(npu->dev, dma_addr, size, DMA_BIDIRECTIONAL);
-> =20
->  	return ret;
->  }
-> --=20
-> 2.51.0
->=20
->=20
+> =C2=A0drivers/mfd/max77759.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 |=C2=A0 2 +-
 
---fqtiECgthKw6C3p6
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCak5JQQAKCRA6cBh0uS2t
-rEkuAQDBR2AU7po/548CG9jgOQ4FrFUOWREXpwLycau0KwabmgEAoT0GbuBjIF0v
-B0mV4hsyWdRr1ux3Q6bkcxszl+YIfwg=
-=TO0g
------END PGP SIGNATURE-----
-
---fqtiECgthKw6C3p6--
+Reviewed-by: Andr=C3=A9 Draszik <andre.draszik@linaro.org> # for Maxim MAX7=
+7759
 
