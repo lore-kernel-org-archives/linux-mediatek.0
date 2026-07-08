@@ -4,92 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F4E5C43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 12:08:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BB9AC43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 12:12:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=X/P0XI2f+jIz2x5Bw9cZxHv5AndciwcR9koDyZ8FmdY=; b=EDCJwpVUsuOA5mPLvRfoHJ6KSz
-	VT6dxYkv+kx2cifrrj63rO2ilUp1kvXEa86w5VFbvNpZa0pJDS6wv7gg5jFdh3tmTnhqbX8eCQW9c
-	9zYoYcX1r15CrtXTamfVwJZF1h5Xolq3YX8iusjwS0z0idksi7RxEAzaThso7vboBQvAPwl8pVIgQ
-	9TWPYJuUD1WwXhl1Jgxitrn0ySouPs1UJ6DNLk9dg9vtrZD5/ymTlHBjDpwRqM8ev+tw/6ZY3+al7
-	RcE4H9I5foK+e+zziG7w2uB7tyYpDL67MLT4mNKPa2pDlaD6lH71/ClHzLpgZCd172fJujKyWCFdF
-	rPFZJojQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LMTh0V639Yf2I2TTVIIe/eluhRhvYcsFWaLhme4GuFU=; b=u3KsV2Tk1YKTm8rZASFl5WYpQd
+	+cjI+Q8mqZNHlecIBeyjuw2FfY3tRZhy4sp3BVmx3aDE08NVhOsWC1OxeykTpgSd/I/wR0bOe5/iM
+	WpZIop8mXEOLYH1kKRm21dSnBW/VVunW0jHdavu2KQ8zOng0+mdR5J0YPdSSd+8ncWg1R8GhSwV+5
+	jikvsyVllIbhYrfs2hlcLmjddHo7jyed00vcrELn89GrrqJvPav7tefEsCoMygj5mUdiBMX9dZFmS
+	aWsEHym668OVN+EMoAgGo+48y1Zc0shnfKlnRzK6hNxZysmENbsUYdnb96XJ4ESMBfKJVcyktn6Px
+	twSsvBTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whR53-0000000H3wW-1x6c;
-	Wed, 08 Jul 2026 12:08:45 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1whR8o-0000000H4LQ-0veq;
+	Wed, 08 Jul 2026 12:12:38 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whR51-0000000H3vV-33A8
-	for linux-mediatek@lists.infradead.org;
-	Wed, 08 Jul 2026 12:08:44 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2caf228a910so4067465ad.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 05:08:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783512523; x=1784117323; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=X/P0XI2f+jIz2x5Bw9cZxHv5AndciwcR9koDyZ8FmdY=;
-        b=npHLKXMCZf1w8s7W8+b9foi/zVHcPzJvM91nn5BHEEQkgjm3aJqtXdqtHQFMC9RLtC
-         TMPbUaFExlxc7Tchczn/YFqe8N3Bzts7Lrwnt9xy2lWx6g8CCBeyFo9pXgoYNnB5BcX1
-         ot61mdVi8DrMp9hJANMlKuM22nnBozNsPRyIUTB7am04op5/gUUjDeqY/rQipJvThmt7
-         A8LNtowhG1lQr4PnREwuKfxqe6/y+R8j6LIAKeIsxr0WAPtTJthOPv5MyD6Etk4ncWBJ
-         Jh2rgGRq/tYzlqKyaVzLeelKFRAplBfkK5MrtjRPVqF2rISTnkoPm+KS5OYQbM+qMlzi
-         FWYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783512523; x=1784117323;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=X/P0XI2f+jIz2x5Bw9cZxHv5AndciwcR9koDyZ8FmdY=;
-        b=A5j2R80MmkvRZsTwMhK+PNmaL+0vwxUNCN0GVy/6bGk3oudCJgl1gqi2dlRlL/ul4Z
-         iSZpVKqJmNx+02n7AulI4y55jNydStwYjp0HQMJ2FRXMiWaA3G/0bENl8kbxMH13+EGl
-         31B3WgK6MMVts/e5LOliCKB4qCq3CVxZp0jh40fBBm/u6fw0i1KRk1siMjTJzxPQMyGV
-         +qucK+YzUzoedtzjed/0NTGwe3p+grZqbzNVmDaz8zYai3O4taXgS3+r8bXRxRyFwE0b
-         YOzXrnN1t7ft8gVSmJ9rJHnY2ZXa4pdz1Ngg28z4+7BPEguj/mV5C3ULStfnThX2qDjI
-         qVaQ==
-X-Forwarded-Encrypted: i=1; AHgh+RopjTKuL/lc5k1kT/P/eikKCcNfS18mN1Hr0a7knl2AgG5F2B0+1kqPHTMIiD3HdDTdnUSPmVMVharT1oWXoQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YweCfgMXFDFcSeBjyHjck+sGTtoShGsuY8sf80vXIg/qb21CyP5
-	UZ9JaTpvd8AyHGKXKo0M2YF6tI7xUtbURZvLqgVo8Y+DxF8U0FjjCyeltS+kI53qxagsYw==
-X-Gm-Gg: AfdE7cno0d6iZSxwHb+Gx1jD1EpW3hBr0BTjZLEWe0Hlk4rQuve06tq5W28uIrRIqHy
-	6HaEGNAAAx5bmKD/Pj9vkqK1kfwUMQelMTubZDHiGIUSIUEWgyNWLP20IWArTqyPN9V4FYX8XoJ
-	Y3dzW8F8aA9GhuR59S/WKgQwzXBRs03TWmjYSZ5G9JCgZy91KFXjf2YDIqEomiOAHsbSYskjZ/X
-	tFZG+D7FqNthEbjdxx3QGjM7VsB0YHvyFxK4iBSXhU+LZr1+HWVA04uZWEQuIer2hLv2ekNC0m1
-	y1J1KMzDfYUAK7hkFGs+WZCovZokafFFqbAd1iB1SPnu025gqeTHclpbbVR7ox2ll82LpHdYSX7
-	PpLyPakNWFVPBE5EkUCsjZcTBGFkEM7b5OaTm74I7wnzurNN6Y84zG1DaKijpKdPGDblHyHEUHf
-	DZPtkJj4QWyA08ug==
-X-Received: by 2002:a17:903:fa5:b0:2cc:a977:4260 with SMTP id d9443c01a7336-2ccea3b0e5bmr25272395ad.21.1783512522781;
-        Wed, 08 Jul 2026 05:08:42 -0700 (PDT)
-Received: from lgs.. ([101.36.109.218])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9d1f030sm27088705ad.51.2026.07.08.05.08.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jul 2026 05:08:42 -0700 (PDT)
-From: Guangshuo Li <lgs201920130244@gmail.com>
-To: Bin Liu <bin.liu@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Fan Wu <fanwu01@zju.edu.cn>,
-	Hans Verkuil <hverkuil+cisco@kernel.org>,
-	linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Guangshuo Li <lgs201920130244@gmail.com>
-Subject: [PATCH] media: mtk-jpeg: drain hardware completion before freeing context
-Date: Wed,  8 Jul 2026 20:08:33 +0800
-Message-ID: <20260708120833.755998-1-lgs201920130244@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1whR8k-0000000H4Ji-2NK2;
+	Wed, 08 Jul 2026 12:12:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783512750;
+	bh=LWzKAWbjXwRZm/8P259BKzlhUiJ6T2PGRVC7hN/IGTE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=khi/t3Rn7xuVoMQK1wZmJSqjU13hZ8VjC9Trgd3XIn6eOMPD6pcUnkVdIBhUWN/3N
+	 kTRZuDS4OM+fAXzDZgihCWwkiPmM1l72+SdSp4ZedCgpggoFTdwF50yzcOjlN1f1Ub
+	 jjLzAzV4lhmYA0vx3HYXEod5M4AN+3zpDt9YCNzr5tFmWGhvlFUoC8T01SL1LNMTDj
+	 SdeCysDTcbel7p4EpfA9Av1A/u1m2/ZSHSLBdNpD0MzuxGlcFUqJIw6CXOy4r2W6Fn
+	 CVRXhu0TVZvLErOJxH+HxzucljwRIa4HfBCOR1oamCcNVEMXM3Eo/RQhnA26HA2Cz+
+	 wBgg5s+g9CMrg==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B78B317E0713;
+	Wed, 08 Jul 2026 14:12:29 +0200 (CEST)
+Message-ID: <956e84d2-728a-4e8c-8026-ae1a41e69171@collabora.com>
+Date: Wed, 8 Jul 2026 14:12:29 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] drm/mediatek: mtk_dsi: enable hs clock during pre-enable
+To: Adam Thiede <me@adamthiede.com>,
+ Thorsten Leemhuis <regressions@leemhuis.info>,
+ =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "bisson.gary@gmail.com" <bisson.gary@gmail.com>
+Cc: "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "simona@ffwll.ch" <simona@ffwll.ch>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "regressions@lists.linux.dev" <regressions@lists.linux.dev>
+References: <20260120-mtkdsi-v1-1-b0f4094f3ac3@gmail.com>
+ <42607fa4-485d-4142-b31c-7bfac71118d2@adamthiede.com> <ajka2220depklK1_@owl5>
+ <bac79214-050d-448b-be63-0586d45c807d@adamthiede.com>
+ <f0d99b1a-e383-4d14-adb1-4ccab46efddb@leemhuis.info>
+ <5baeb90d2c3736df67ad075ede4ac765bfeaed2d.camel@mediatek.com>
+ <84233951-ee22-4980-9f17-2af1df51fdbf@leemhuis.info>
+ <6fed12a6-0c94-477f-8a2e-466c33ea2e29@collabora.com>
+ <dbc251f2-0c67-4970-a101-c19129055082@adamthiede.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <dbc251f2-0c67-4970-a101-c19129055082@adamthiede.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_050843_778333_AA9D2D3A 
-X-CRM114-Status: GOOD (  12.84  )
+X-CRM114-CacheID: sfid-20260708_051234_764169_BB75E208 
+X-CRM114-Status: GOOD (  26.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,48 +93,116 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The change referenced by the Fixes tag cancels ctx->jpeg_work before
-freeing the JPEG context from mtk_jpeg_release().
+On 7/8/26 03:25, Adam Thiede wrote:
+> On 7/7/26 05:38, AngeloGioacchino Del Regno wrote:
+>> On 7/7/26 10:51, Thorsten Leemhuis wrote:
+>>> On 7/7/26 04:20, CK Hu (胡俊光) wrote:
+>>>> On Mon, 2026-07-06 at 12:16 +0200, Thorsten Leemhuis wrote:
+>>>>> On 6/22/26 15:23, Adam Thiede wrote:
+>>>>>> On 6/22/26 06:22, Gary Bisson wrote:
+>>>>>>> On Thu, Jun 18, 2026 at 04:06:28PM -0500, Adam Thiede wrote:
+>>>>>>>> On 1/20/26 05:36, Gary Bisson wrote:
+>>>>>>>>> Some bridges, such as the TI SN65DSI83, require the HS clock to be
+>>>>>>>>> running in order to lock its PLL during its own pre-enable function.
+>>>>>>>>>
+>>>>>>>>> Without this change, the bridge gives the following error:
+>>>>>>>>> sn65dsi83 14-002c: failed to lock PLL, ret=-110
+>>>>>>>>> sn65dsi83 14-002c: Unexpected link status 0x01
+>>>>>>>>> sn65dsi83 14-002c: reset the pipe
+>>>>>>>>> [...]
+>>>>>>>>
+>>>>>>>> This commit was part of 7.1 and caused a problem for me.
+>>>>>>>> I'm running postmarketOS (basically Alpine Linux) on a Lenovo C330
+>>>>>>>> chromebook with a Mediatek MT8173 processor.
+>>>>>>>> The problem: when the display on my laptop powers off (via suspend or
+>>>>>>>> idle,
+>>>>>>>> like xset dpms off) the picture does not come back when the display
+>>>>>>>> powers
+>>>>>>>> back on (from resume). The display backlight comes on and brightness is
+>>>>>>>> adjustable but there is no picture. The only fix is to reboot.
+>>>>>>>>
+>>>>>>>> Reverting this commit and applying it as a patch on top of 7.1
+>>>>>>>> addresses the
+>>>>>>>> issue for me.
+>>>>>>>>
+>>>>>>>> You can view the config I'm using here:
+>>>>>>>> https://urldefense.com/v3/__https://gitlab.postmarketos.org/ postmarketOS/ 
+>>>>>>>> pmaports/-/__;!!CTRNKA9wMg0ARbw! 
+>>>>>>>> jrsPDtSEUdaINzLlq92Li8gmsEBkTOxZ6WUzNHjvIN6CyOJjHiHkNSOhIRPXFTLPlaYlxU2uvryVkwjUAN9bmax5$
+>>>>>>>> merge_requests/8819
+>>>>>>>>
+>>>>>>>> Is there any sort of testing or other debugging info I can provide to
+>>>>>>>> help
+>>>>>>>> address this issue?
+>>>>>>>
+>>>>>>> Thanks for reporting the issue, could you share some logs? Is the driver
+>>>>>>> saying anything during resume? Also, what type of panel is used on that
+>>>>>>> chromebook?
+>>>>>>
+>>>>>> The curious thing is that there are no real logs in dmesg or /var/log/
+>>>>>> messages about this. This picture just fails to come back. If there are
+>>>>>> some kernel params I can set to get deeper logging, that would help, but
+>>>>>> I'm not aware of any.
+>>>>>>
+>>>>>> I think the panel is a "BOE NV116WHM-T00" - I used this command to get
+>>>>>> info: cat /sys/class/drm/card0-eDP-1/edid | edid-decode
+>>>>>>
+>>>>>> Output: https://urldefense.com/v3/__https://termbin.com/8nbd__;!! 
+>>>>>> CTRNKA9wMg0ARbw! 
+>>>>>> jrsPDtSEUdaINzLlq92Li8gmsEBkTOxZ6WUzNHjvIN6CyOJjHiHkNSOhIRPXFTLPlaYlxU2uvryVkwjUAJooSyqL$
+>>>>>
+>>>>> This looked stalled. If I'm mistaken here, please let me known; but if
+>>>>> no solution is in sight, should we maybe just revert the change until a
+>>>>> proper was found?
+>>>>
+>>>> It's welcome anyone to provide a revert patch,
+>>>> but I would still wait for the fixup patch until 7.2-rc4.
+>>>> If no fixup patch exist, then apply the revert patch.
+>>>  From my understanding of things the position in the devel cycle doesn't
+>>> matter much in a case like this. To quote Linus statements from
+>>> https://www.kernel.org/doc/html/latest/process/handling- regressions.html#on- 
+>>> how-quickly-regressions-should-be-fixed
+>>>
+>>> """
+>>>  From 2026-01-22:
+>>>
+>>>   But a user complaining should basically result in an immediate fix -
+>>>   possibly a "revert and rethink".
+>>>
+>>> With a later clarification on 2026-01-28:
+>>>
+>>>   It's also worth noting that "immediate" obviously doesn't mean "right
+>>>   this *second* when the problem has been reported".
+>>>
+>>>   But if it's a regression with a known commit that caused it, I think
+>>>   the rule of thumb should generally be "within a week", preferably
+>>>   before the next rc.
+>>> """
+>>>
+>>> Adam reported the problem about three weeks ago, so we are way past the
+>>> "rule of thumb" timeframe Linus set.
+>>>
+>>> Ciao, Thorsten
+>>
+>> This is a kind of odd situation here. The fix from Adam is actually correct, as in,
+>> the SN65DSI83 bridge gets broken without...
+>>
+>> ....but then, there's some more oddness going on: I tried to reproduce this on my
+>> MT8173 Elm device, but there I can resume the system just fine, and the display is
+>> up and running like normal?
+>>
+>> I'm not sure what to advice here at this point - just adding some info.
+>>
+>> Cheers,
+>> Angelo
+> Angelo, would you mind sharing your config, and the details of what you're running? 
+> It might be a configuration difference.
+> Thanks!
 
-That prevents a queued or running JPEG worker from dereferencing the
-context after it has been freed. However, on multi-core hardware the
-worker can program a hardware instance, arm the per-hardware timeout
-work, store the context in hw_param.curr_ctx and then return while the
-hardware completion is still pending.
+Sure, here it is:
 
-In that state cancel_work_sync(&ctx->jpeg_work) can complete even though
-the IRQ handler or timeout work can still recover the same context from
-hw_param.curr_ctx. If userspace closes the file before the hardware
-completion path has run, release can free the context and a later IRQ or
-timeout work can dereference the freed ctx while updating the done queues.
+https://gitlab.collabora.com/mediatek/aiot/linux/-/blob/mediatek-dev/arch/arm64/configs/defconfig?ref_type=heads
 
-Drain the in-flight hardware completion state associated with the context
-before freeing it.
-
-Fixes: 34c519feef3e ("media: mtk-jpeg: fix use-after-free in release path due to uncancelled work")
-Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
----
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index d147ec483081..bc9eea0483ce 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1202,8 +1202,11 @@ static int mtk_jpeg_release(struct file *file)
- 	struct mtk_jpeg_dev *jpeg = video_drvdata(file);
- 	struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
- 
--	if (jpeg->variant->jpeg_worker)
-+	if (jpeg->variant->jpeg_worker) {
- 		cancel_work_sync(&ctx->jpeg_work);
-+		mtk_jpeg_release_hw(jpeg, ctx);
-+	}
-+
- 	mutex_lock(&jpeg->lock);
- 	v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
- 	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
--- 
-2.43.0
-
+Cheers,
+Angelo
 
