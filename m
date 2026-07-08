@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C03DC43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 12:14:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04A8FC43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 12:19:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4yOipLOM76yQ4J1l/AoGPxGOwmes2/QBhbkzUXSfv48=; b=T7xVwZ+ba45ZSlnVb1zf4sz5yv
-	hfy+YvVrN1IZpaC3HajLfyPrLHFItZ0lrI3EE5JvjWO4NvzvTq4bKjtInUJ0R7Q2ysdOz48LkmTfI
-	aRo2LbyStaGUfAPamlKhDyYsEQhu7Gs1/o7f7kuPLryX7aUhoQjA+KrEE/OrjAOPxGXuscEzb0XjJ
-	9CuX+SaHw/GIZ6iFgEHSgrbch5UgqdHWCUXdEen1QIOAhijzcB6GF+hZb2Z0bKJcxQ6wlSFvdTrf7
-	IBOwJHtuPozd6D9hY9xOe446hLAjzKk4Ly2EuRFAxD3nKFfDxMHb85+3mC3YpsacCmlhevGYaei8D
-	D2PNwmPA==;
+	bh=riq6rqkQnl8P/JfB4GBhJk2g0snk9O0dnZlY+FFrxgA=; b=HxNHYJk+haMfbSQgJ3se23ijvx
+	WRlOgJlU+am1JwuRRtxElO7WpC4DrDTmKXc37ABLX1o1mld710AgVe2iIkmlp6moeGddrkbu2Atd9
+	jT965R842NWNtDO/pcWBk7iKvIKIlPyitFnONd1L/mSiiZSjsa0SSipL4ltZo7PDFjNMG5Gvh8QEn
+	sml+MW3C13J8x++BZk9EfI9MpZaLw9y3grD0YLymBX1vmVFLnsV8p1YcfE31YhMB7VeUNX904hol0
+	gM5ZksbaD4yUKUbxxzGsTxAYaV/7uluLnUSBay3ry6cnNRTG7KO+EhEd+1CvCSCZiDGFXvx4PJQ/G
+	tNM/CtEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whndy-00000002Khp-1On2;
-	Thu, 09 Jul 2026 12:14:18 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1whniX-00000002Nli-43Yu;
+	Thu, 09 Jul 2026 12:19:01 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whndw-00000002KaQ-1Ml0;
-	Thu, 09 Jul 2026 12:14:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:To:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=4yOipLOM76yQ4J1l/AoGPxGOwmes2/QBhbkzUXSfv48=; b=cxR2YObU8Z/iBrqZhLu/c4nkzh
-	BS4CzBYetPFsi1yo0dwJ2HWaochSHiZcx/NDGbICQzrfxevPXVoi1Zz5q/LTpG4JdbgGTOrAQAwAc
-	ofe6eZBvhf1ITH+WYRRT7h4fMohlbK3gHdnW/WwTkUB4T6qoTILaN2tkMtNgTlPZOV5r1id9pMkfD
-	05XmiJ1DthY1OXtWJZK0XSTlNYgqaYX3vvsEutN78/PnXLA4iJLWK9/o4R0je6sxRUBgIGZsxQHKe
-	lffGf97C8Tc178Vo6G655A7hDwxpdWBjPX3uxFMbECu+3FL42/roDITAnsIGO2xAuCp7cag/dGz89
-	1VC0dMDw==;
-Received: from mail-24429.protonmail.ch ([109.224.244.29])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1whndp-00000009Bkv-3gZz;
-	Thu, 09 Jul 2026 12:14:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1783599240; x=1783858440;
-	bh=4yOipLOM76yQ4J1l/AoGPxGOwmes2/QBhbkzUXSfv48=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=oaCgmtiJpF5ov1O6PcsF8Zf62ipzpbQ7Vm29b3b1i/u5dBmBJ6lHSwDHrGwmTIDa/
-	 E2iG2FFJ0zDl6HKwKoyMoIjK9Utt6IBaLP91AE/SA3dxbssEz0e0Hf3kmY7nDB2H8M
-	 tprFTDpyy/+Zf8wwthgArRQykZPbvRG3UglthMv5WhSo3h29Wkm9bSg5h7oR6S09F5
-	 4vc6Q6g3I+QqdSBz7W1d2XpZfq4wtSkIiu6m+Zzw3EcKzGiVQ78xTLfpGHi5pw2srA
-	 rIHtQWbFiwIN/1I51YXx6aefwBjFZVpIQKzUkZwrVCE1tGZa1Ce4fM/jILtV3sqFMB
-	 l4S0DWe8OpXcw==
-Date: Thu, 09 Jul 2026 12:12:55 +0000
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-From: Roman Vivchar <rva333@protonmail.com>
-Cc: Qii Wang <qii.wang@mediatek.com>, Andi Shyti <andi.shyti@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] i2c: mediatek: fix WRRD for SoCs without auto_restart option
-Message-ID: <GOZtJ6Ys4Syt4VaGQyJvmYEIe6dx97flmTygat-nc_gMwsKVrDaDOQjP2ZbX1Qqwx5PYjWo6rJwo-8H32NQQAQi4Z7x6y9wpBNyYea9liZA=@protonmail.com>
-In-Reply-To: <0eb85793-5995-4177-9b04-338246d6979e@collabora.com>
-References: <20260624-6572-6595-i2c-v1-1-9155cebaae20@protonmail.com> <0eb85793-5995-4177-9b04-338246d6979e@collabora.com>
-Feedback-ID: 173184497:user:proton
-X-Pm-Message-ID: fbbc57c64a4c608f23b74d2008055f4ccc372fd6
+	id 1whniW-00000002NlU-3t1W;
+	Thu, 09 Jul 2026 12:19:00 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 308C16136B;
+	Thu,  9 Jul 2026 12:19:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B2661F000E9;
+	Thu,  9 Jul 2026 12:18:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783599539;
+	bh=riq6rqkQnl8P/JfB4GBhJk2g0snk9O0dnZlY+FFrxgA=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=LOqUs3UCkBc/xbgBOqEV632aTXo5IxA4fF5dXKZBYiMPcynEw1iNcryr1xNieA5Cc
+	 PSgZYxIdVi7tRHmpySDYOemz2XSR2ysadL4MDRE4hvjkoGPefby60o6DP3MS0IabQR
+	 CwzkEabDZCGcgFbCogYlUqWLMOBDC07Tidxoyl8ZPR8rnLV4GrxV1YfYvxMl6ZrhO5
+	 HFlz+zx7+hetCqQoFN7L/sghM/6RFLVIHIHBktceSOuaB961sHwpz6cyfRYa9M5Bgz
+	 keWg4b5ecxm4YWcm7AvXJu+yi7N9ieE//g3L9xcUtoX/F8D+lHKd70tIvYyPFOTaCz
+	 G0urslkWVw5KA==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Pengpeng Hou <pengpeng@iscas.ac.cn>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20260704122926.21586-1-pengpeng@iscas.ac.cn>
+References: <20260704122926.21586-1-pengpeng@iscas.ac.cn>
+Subject: Re: [PATCH] regulator: mt6316: add missing MODULE_DEVICE_TABLE()
+Message-Id: <178353551134.26140.1203811762340207802.b4-ty@b4>
+Date: Wed, 08 Jul 2026 19:31:51 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_131410_102845_A4E80DB3 
-X-CRM114-Status: GOOD (  16.58  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.16-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1130; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=upsU8hgKO99NO/2yQfwWsl/iz3vX0dM4Qyf2YJw3SxM=;
+ b=owEBbAGT/pANAwAKASTWi3JdVIfQAcsmYgBqT5Gxa0st6O5bL+9aF2cM+EsKHmgZsxO85RCh2
+ TaUTiOE4R6JATIEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCak+RsQAKCRAk1otyXVSH
+ 0GryB/YoZzZZ3lT/s0ydzaS9QLlsTlVCeuBW0FxsQ3Raa1ODrX+fIP8PI6SU5UVqOvwa1GABVi3
+ 0UioAUERWQtPdt21NQcR85Y7EXDrKZhSjT//dvCBJ+CGdb+LhpPUTE6n/958oV7fSCNSruOmY5v
+ yIknSUrWWopvFAT7kfoVkWw771KM/SjuunL3MS3L33JAjjPaTHNZ1itgGbVdfe6+6sEvxzgLvx3
+ nXibp0GiHmNbiP+dRqpRuxZD3KLl/9RQMAeNvdUICxl+1iAhMAz3UzTCmXhyrrU9cnkImvRInoR
+ EKAEGfozdpmPu3k3yRSJLbXWSM7tVA3bnZx/FqA8XRWcVJ4=
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,67 +82,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+On Sat, 04 Jul 2026 20:29:26 +0800, Pengpeng Hou wrote:
+> regulator: mt6316: add missing MODULE_DEVICE_TABLE()
 
-On Thursday, July 9th, 2026 at 2:46 PM, AngeloGioacchino Del Regno <angelog=
-ioacchino.delregno@collabora.com> wrote:
+Applied to
 
-> On 6/23/26 23:40, Roman Vivchar via B4 Relay wrote:
-> > From: Roman Vivchar <rva333@protonmail.com>
-> >
-> > MediaTek mt65xx family SoCs have no auto restart, however, they still
-> > support the WRRD mode in the hardware. Because auto_restart is set to 0=
-,
-> > the WRRD mode will be never enabled, leading to read errors.
-> >
-> > Fix this by removing auto_restart check from the WRRD enable path.
-> >
->=20
-> Are you sure that MT6577 and MT6589 do support WRRD?
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-7.2
 
-Yes, I have checked their downstream kernels[1][2] and they both mention
-WRRD.
+Thanks!
 
-We also tested mt6589 (privately) and the i2c was working. To be fair,
-it had some other fixes, but at worst this patch is no-op.
+[1/1] regulator: mt6316: add missing MODULE_DEVICE_TABLE()
+      https://git.kernel.org/broonie/regulator/c/91f0063ca99e
 
-mt6577 is a tough one... I don't think there's any recent kernel with
-it. I plan to make it work with upstream, but that's a TODO. Either way,
-vendor code has WRRD support.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-> If you're not 100% sure, or you want to be careful (which I would, in thi=
-s case),
-> please add a `unsigned char wrrd_supported:1` to struct mtk_i2c_compatibl=
-e, set
-> it to `1` on *all* of the SoCs that support auto_restart (as that's effec=
-tively
-> a different feature - it just happens that all the ones supporting this a=
-lso do
-> support that, up until today), and add a new one for your MT6572, declari=
-ng no
-> auto_restart but wrrd_supported.
->=20
-> That would make me sure that you're not breaking anything, and would guar=
-antee
-> you a R-b.
->
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-As far as I know, there's no SoC without both auto restart and WRRD.
-Adding wrrd_supported that always equals to true sounds redundant to
-me.
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-Let me know if you still prefer having separate flag for the WRRD.
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-> Cheers,
-> Angelo
->=20
+Thanks,
+Mark
 
-[1]: https://github.com/GoldRenard/lenovo_A390_mt6577_uboot_kernel/blob/38e=
-a59263984e26c0dd8e5891b22a35f61e60ed5/mediatek/platform/mt6577/kernel/drive=
-rs/i2c/i2c.c#L963-L975
-[2]: https://github.com/bq/aquaris-5/blob/bc1d0d0e35c969670e2d869001be944ad=
-0c9c5e5/mediatek/platform/mt6589/kernel/drivers/i2c/i2c.c#L728
-
-Best regards,
-Roman
 
