@@ -4,96 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E96BCC43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 11:18:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DE51C43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 11:30:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9h4E8fzpkUKefQYXbM+5aTJxB/wkrGJJdLAlPHgwa7A=; b=dj4+2q+Xnmd07+iZf2BaTgTezg
-	YDRmpglhmtCQ1REGUdoqGmwuXvE5zoUyt7rAVUGxcAgjW2UTxnfMHHMwyrDN3XSeZkIobDCZicNg7
-	g5g38yGxhwPNvpuIsgcRCoRORtVoKuFIJQGG7SqU6jCUMYtqA8QpPSPhSYrBAr5I7pvYgYHmSAdPS
-	p3thPpU6rP0aTiUXKN3N5o+M/XF3OK+gwynyyqwJJ5FdVmKsv7zYB7t+BJBk7ca+ERtefEaIf5V7Z
-	fLcqHWEXpoDK/AmDqYVu3REAYL1L6hDsdEFyfe4yWEmzHdndtKFOiJ8CgeKXjJRaTtqauE/wq/Yh9
-	sja6C1Yw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=AsxOcajZ7gYxW17W0Pj55YOWQAyg0/24La7iNV21scc=; b=k+7ToCz1JD9pg7DGVbeZMhps28
+	pGqqcxIPWhSSiE4wC5DHqP3hDaY1dItQ6HDZ3eDIzyskINcWMBIOV5Y0sB0+qNjs+Yf/4Rek/u8MX
+	+5QUkmGf1de4Ho2KydNLGFHa4Lh2KngrggH6Gd3muNkX+fGwxvk8yJKnMyDJ4equIO+cmjlIxE+zV
+	CwLYvyWuGusVEyNkUVpfchIwBBRO/bS2e1W3OEcSgYHYjU+iNBpTzuDpP1HECk+Xzf4JG83oEzoYc
+	n2bpB0Mh8R7shxtKfrDozdvUl7CY/6ls0Sonqg/JDWQQqRtgHS4ZZdP2JX6ej+L0nzT8XGFHZRaKp
+	+3X69WkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whQI3-0000000GzUk-0mKi;
-	Wed, 08 Jul 2026 11:18:07 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1whQU6-0000000H15D-0E1x;
+	Wed, 08 Jul 2026 11:30:34 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whQHz-0000000GzQC-1bwL
+	id 1whQU4-0000000H14K-0Vib
 	for linux-mediatek@lists.infradead.org;
-	Wed, 08 Jul 2026 11:18:04 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-493c83474ddso4881825e9.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 04:18:02 -0700 (PDT)
+	Wed, 08 Jul 2026 11:30:33 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2cae1a3a744so4366265ad.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 04:30:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1783509481; x=1784114281; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=9h4E8fzpkUKefQYXbM+5aTJxB/wkrGJJdLAlPHgwa7A=;
-        b=DEK7+0hEK8b4uOWcWHLghNei18Aeq8zg/HCLeAnEoO98d5R4n5MzEUG8E6IFgHoxOy
-         L1PTSmQ25Daiy4IytP8sX7OPjcnhb9H9fkD9BqdvshqbsOeexsq9dNoimNUsAa873Eiq
-         4KkOMTp7OAqNQ25MXL7l+jAKLyAm0nyFp6Q0nxsf6VGPpMpjggHVVZxCe1nHNz/SeN98
-         6W2eiR65Zt1fynJv1WuqhmX4J+qW5qiCsnR9NKGpqTnrLAWUtprN0KMXl0L8Bdo5ff1U
-         l9/FQ1MoAObWEgHNwZLbAilLhOYagxaMytyfbxIL04uUyWYGxpdTXp6JajxRUpVQMVwm
-         NYtg==
+        d=gmail.com; s=20251104; t=1783510231; x=1784115031; darn=lists.infradead.org;
+        h=mime-version:message-id:date:subject:cc:to:from:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=AsxOcajZ7gYxW17W0Pj55YOWQAyg0/24La7iNV21scc=;
+        b=FX7PMMKXGJ5id5aL0OOmd53Y3I3xcFrJJDBeY3avVLiOH0xWTf9u2hE6j34cQLkrsd
+         2wYkPUT3XyfHERJjc2jbYKITeByluFlMWqZmZaDHJ+ta/0CMZo/BrvylKQWzdwjvx4XR
+         uw7Tt0rYj0Qh/B0wNZtdoACq3jtkxtI72ZgaH/JvOhqj13mBiuJMZ+skO39AuNIfOPTi
+         ey+PqXAOBzYT4r6HuWfO+JeMfquJm4h4hlgrA1k3ORn+q23pZ0M3WHlyILpz+Qibdk5k
+         RVQHPPC+BcNYxLHwd/fAjoE2lhiUk/Yk1wTI7m+vRjZgXYepEe/ebw1cgI4CSseM6afP
+         qYyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783509481; x=1784114281;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=9h4E8fzpkUKefQYXbM+5aTJxB/wkrGJJdLAlPHgwa7A=;
-        b=Ssq1T6jCFJOFyQRO+HBTNYytFL3M/MiO5iajtPmSKzPgQuh3K4JWh3MQbVkd7rjpch
-         z/aA8ixQqX58VUCD+zX57JcoWVr1blXD/LE2e+nCCZ6o4FuchGZIbLLjZ9ne99HmVVpz
-         S7a2zEhgyM4J3Zz0Vhemj0tBUpVHv+0IcPe+LHuP9p/yC8rEywYY6Mo3AE3hJUJ573gY
-         zqBFGV7YV+AxVjmKKgsJkV+ihLSrtj3wH3puClhWsBg2ImbQo+lwtYFjSHK3lOJ3roed
-         dL7W9JoGl07hi2pblNW7E7lpjBea6jcm2mEecjMrYvZjVzXju9FgKPsCZJw9napVHKWJ
-         w4MA==
-X-Forwarded-Encrypted: i=1; AHgh+Rrt3X+rf2VJ5ccLZa/Y42vg4Bp/EGw9+bLNmWpycumbe24KnM32qRVGRxtcze6JGrnd51TWAXS6CdIJ7L6udg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw+CXuc7lcBp6R8kMpuoq9xoHzoo45LxPD0oBeToNp9C2AFxQjk
-	YY1EqiuNVwx9jdKV9OqdzB7aJRAtfTzX2hLjUk3hwgt27y26+bQ8oR+20ZRtpwhY3j4=
-X-Gm-Gg: AfdE7cn1QQFeoNmGF/iuPiQ0WGIYOzLTpY4U8xMHsujtlQtdVZLZac6TvYeDIlzd0TL
-	qe2AsRT4KxzKWvcVlgRuHuwVfKMwv/G4OVdBoQS8jGGi5CcX1gO30lU8yMic0sVJXBFw5a1eJ+c
-	864LrYLTn2P/drNcu1DvRTRSc08Uycl6T587OoF0rzsM5Gnd8/ulL5V9/Ay8SNRzj+bePpjDGgs
-	L4LvN9lbTlh30pWMDokbPCsnzQvZ5LvDh0rJzc80Qkb963aS+WPJRGukNphb9w5AMEDEp+rMbgk
-	bYgCfbn7a8FuoVtt2lFj1nZaQHIeL83LGLAYTqagmEmeN+VwFRMj9QsFNMHTCAkbqduVDT80avb
-	FkCEKtOU1O82VOQQf7BY3cK6Aud2w1ZROj0o7DAXRZlL1OtNqIKGV8p4KTo4D61Wob2P4r8wPDM
-	PnmSAyeWBJt1wMDXxnzXueALKUN7n68e1OhgOzpYhgHZvnXWoM5AyvcuAiZ4CxbhKhIh41Tr54w
-	cvsu7CReqh/cT2QDg==
-X-Received: by 2002:a05:600c:a55:b0:490:469c:556b with SMTP id 5b1f17b1804b1-493e68bef13mr21155325e9.12.1783509481596;
-        Wed, 08 Jul 2026 04:18:01 -0700 (PDT)
-Received: from 1.0.0.127.in-addr.arpa (host-79-16-115-126.retail.telecomitalia.it. [79.16.115.126])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47aa0a55be4sm37867694f8f.31.2026.07.08.04.18.00
+        d=1e100.net; s=20251104; t=1783510231; x=1784115031;
+        h=mime-version:message-id:date:subject:cc:to:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=AsxOcajZ7gYxW17W0Pj55YOWQAyg0/24La7iNV21scc=;
+        b=aAIecv5BAJ+mmj8oZ7g2S01ISfXwM5dxejRuSzv4xxZCqqpmvJqBIjo8JJT6y82RAo
+         68B6ztFwaOr+QB6mhR7evY7b5zoI5cFyFUecXPh/MXjSdDB/3PP0fPpGu/NvxOzHULvh
+         /FmXUS331vcU0M+JZbblqZ3hOW7IvvHB2OTLMoxmNmWPwsPzbIJX2OXutY04uTtMviCt
+         PNEr1bPegnxTU14WMBWOyKK+UrQS0NkfeWO1l7LT8ilO0QLBAi34y9AWVUMkXXMIXz7m
+         liTOE5s69URjJODnM8j2DlczhgQD6obq4SPtMY3XbwPIvn/j3EVxfr7kcVFYmuJQbWYK
+         +dtg==
+X-Forwarded-Encrypted: i=1; AHgh+RrRPpzLY1qAjRSWW7rFqxfhSfCglI+j/YWJj/hc1cdBT6ojgp2hVMrpUpJeuuhSocUK5pfM59VVP/5vjSIg5Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzmxxcLmwfBja1aDfeHWU2AjZLx74tfpxXnpoxLospqQicCPmu/
+	gchKiGDCPnBZswQspBVn1NpNMtEAeDlf3zvDarDPWVyYa7IpJY2O8Yyl
+X-Gm-Gg: AfdE7cmwH3zTMBTb8RCr6oM785arYLV4iTl2Caj64gYsuBMnf57pq635lag5zxn+/Jc
+	JlxSGMk6UBB2E14uEQVGEYE9c7ohp+nQUZFEXZEsEKHWNf+UVXRkJoX4YoBH6GG0l0rJgVCHF1I
+	hOCe+bi6YiC48nWSK9krYidUe6GK9Oe2g5LTXV+Ezj6gPZ1dMuIVr5F8pV5Mm7hdBJiDa32SFKR
+	SFxDcbP0Tb8IvX6anBnfZDjZDtKx0zHTSg8UDcUs85KZYFEWwek/j7VuohSOYWceQNHzB2LQY/u
+	dlHc8sbwi8RKJnsz0GjdJP1FXu43XPrB8mmUhJT8FqHWtmrxrDMQ1kNUlhE29aVB53t6HPAaOb4
+	A0e28q8a6XOJVocQGw7EA7wM5E2vnL3YacxGngUOSuAuO+xevgLBOgMLX273nTmGQQa8vpkeX1P
+	OQLrn20w==
+X-Received: by 2002:a17:903:1aae:b0:2ca:ecfa:1308 with SMTP id d9443c01a7336-2ccea396a45mr22556175ad.20.1783510230507;
+        Wed, 08 Jul 2026 04:30:30 -0700 (PDT)
+Received: from [127.0.1.1] ([47.253.114.73])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9bdb877sm26691105ad.14.2026.07.08.04.30.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jul 2026 04:18:01 -0700 (PDT)
-From: Carlo Caione <ccaione@baylibre.com>
-Date: Wed, 08 Jul 2026 13:17:41 +0200
-Subject: [PATCH 2/2] serial: 8250_mtk: honor DT serial aliases
+        Wed, 08 Jul 2026 04:30:30 -0700 (PDT)
+From: Wayen Yan <win847@gmail.com>
+To: netdev@vger.kernel.org
+Cc: lorenzo@kernel.org, horms@kernel.org, pabeni@redhat.com, kuba@kernel.org, edumazet@google.com, andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH net] net: airoha: Fix potential use-after-free in airoha_ppe_deinit()
+Date: Wed, 8 Jul 2026 19:16:16 +0800
+Message-ID: <178351022574.97989.6880403520276841703@gmail.com>
+Content-Type: text/plain; charset=utf-8
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260708-ccaione-genio-serial-aliases-v1-2-bf22229e9383@baylibre.com>
-References: <20260708-ccaione-genio-serial-aliases-v1-0-bf22229e9383@baylibre.com>
-In-Reply-To: <20260708-ccaione-genio-serial-aliases-v1-0-bf22229e9383@baylibre.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Jiri Slaby <jirislaby@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-serial@vger.kernel.org, dlechner@baylibre.com, jstephan@baylibre.com, 
- Carlo Caione <ccaione@baylibre.com>
-X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_041803_437086_96397675 
-X-CRM114-Status: GOOD (  15.36  )
+X-CRM114-CacheID: sfid-20260708_043032_158715_39E5664F 
+X-CRM114-Status: UNSURE (   9.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,53 +93,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Genio board DTs provide serial aliases for all enabled UARTs, but
-the MTK 8250 driver still registered every port with the default line
-number. If uart0 deferred and another UART probed first, the 8250 core
-could still assign ttyS0 to the wrong port despite the DT aliases.
+airoha_ppe_deinit() replaces the NPU pointer with NULL via
+rcu_replace_pointer() but does not wait for existing RCU readers
+to exit before calling ppe_deinit() and airoha_npu_put(). This can
+cause a use-after-free if a reader in an RCU read-side critical
+section still holds a reference to the NPU when it is freed.
 
-Read the serial alias during OF probe and seed uart.port.line before
-registering the port so the 8250 core reserves the requested ttyS slot.
+The init path (airoha_ppe_init) already calls synchronize_rcu()
+after rcu_assign_pointer(), but the deinit path introduced in
+commit 6abcf751bc08 ("net: airoha: Fix schedule while atomic in
+airoha_ppe_deinit()") omitted the matching barrier when switching
+from rcu_read_lock()/rcu_dereference() to rcu_replace_pointer().
 
-Signed-off-by: Carlo Caione <ccaione@baylibre.com>
+Add synchronize_rcu() before ppe_deinit() to ensure all existing
+RCU readers have completed before the NPU resources are released.
+
+Fixes: 6abcf751bc084804a9e5b3051442e8a2ce67f48a ("net: airoha: Fix schedule while atomic in airoha_ppe_deinit()")
+Signed-off-by: Wayen Yan <win847@gmail.com>
 ---
- drivers/tty/serial/8250/8250_mtk.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/airoha/airoha_ppe.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-index e6a56cf54ae0..841d64f6a707 100644
---- a/drivers/tty/serial/8250/8250_mtk.c
-+++ b/drivers/tty/serial/8250/8250_mtk.c
-@@ -8,6 +8,7 @@
- #include <linux/clk.h>
- #include <linux/io.h>
- #include <linux/module.h>
-+#include <linux/of.h>
- #include <linux/of_irq.h>
- #include <linux/of_platform.h>
- #include <linux/pinctrl/consumer.h>
-@@ -521,7 +522,7 @@ static int mtk8250_probe(struct platform_device *pdev)
- 	struct uart_8250_port uart = {};
- 	struct mtk8250_data *data;
- 	struct resource *regs;
--	int irq, err;
-+	int irq, err, line;
- 	struct fwnode_handle *fwnode = dev_fwnode(&pdev->dev);
- 
- 	irq = platform_get_irq(pdev, 0);
-@@ -575,6 +576,10 @@ static int mtk8250_probe(struct platform_device *pdev)
- #endif
- 
- 	if (is_of_node(fwnode)) {
-+		line = of_alias_get_id(pdev->dev.of_node, "serial");
-+		if (line >= 0)
-+			uart.port.line = line;
-+
- 		/* Disable Rate Fix function */
- 		writel(0x0, uart.port.membase +
- 			(MTK_UART_RATE_FIX << uart.port.regshift));
-
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index e7c78293002a..f6396925722d 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -1659,6 +1659,7 @@ void airoha_ppe_deinit(struct airoha_eth *eth)
+ 	npu = rcu_replace_pointer(eth->npu, NULL,
+ 				  lockdep_is_held(&flow_offload_mutex));
+ 	if (npu) {
++		synchronize_rcu();
+ 		npu->ops.ppe_deinit(npu);
+ 		airoha_npu_put(npu);
+ 	}
 -- 
-2.55.0
+2.51.0
+
 
 
