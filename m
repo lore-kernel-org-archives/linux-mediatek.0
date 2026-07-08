@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F0D2C43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 14:21:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEE4DC43602
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 14:21:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jE/vGes9bWof+nCBjw7kvawhZty+DCUG3JNg48uQoDI=; b=ztL5RJpfa8O6bUXfbAasq0d2ya
-	Ua8gCc2Vbve1cxrKYkccncAuP8OLV69ky9gfazMzCaQWARjZYT0S+DaoVRqKeuaAVrB6sD1SrDci4
-	Fax3gE4QJts7BBTf2Rbdej+2nQ9G/qEkUDwhVm6tDH+ex6u1PWsbxW2M5JNue1SGTlDp1fYN94wpR
-	gjBk8XA2gqOoaw5LfabCjl+17MHnvoOtrT5uvwelszQYkWOasE9ql7yT2hSgnWNr7VjAeyJiO1dEc
-	M3JJg+IFClQm414BjYFWNoi6YgFOslinTtquWY9NLyRVRxULMWbNKoXmnLNm2p4+CSt0Dl9b4hWri
-	VM0IMEJQ==;
+	bh=26LuwxXuYnG2tABKOgMVR7HJmLwQlsRPpHyBPQzuKoY=; b=jkhfAbRKCASeBoEX+yl8TdrtmW
+	MFJOVhX3v+w8EM4qvFhpRUKdn6r+vkTfUdspHQ19e8OiFFjQyH9UKX907YoTJoQfp+sBTyBMQkVws
+	z1iSNuBAqHXS47803AuXRu+p+TOJbHwoZFSDr1nfAQnKwAXCh93UR74hhDGRQGAX0nceS3Nw93Bfg
+	W14P6Wc1hgvJauon3DZ2GfY9w/os2G3X9biiQVEyyYK0tX603br+ydZq01Jmr1/FeBc+LTG5S2uCH
+	kyS8g61gyiPr7GJ6qwkQtGZTLe870EBJit8ac/Uv1pDOc3ZgfY4IGIgIItEUqZofaXss3zZx0bL7H
+	GG06XumA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whT9p-0000000HIAT-36AQ;
-	Wed, 08 Jul 2026 14:21:49 +0000
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	id 1whT9r-0000000HIDO-492J;
+	Wed, 08 Jul 2026 14:21:51 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whT9e-0000000HHzY-49qY
+	id 1whT9n-0000000HI7J-01Ke
 	for linux-mediatek@lists.infradead.org;
-	Wed, 08 Jul 2026 14:21:48 +0000
-Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-2cabc0a1ab6so10647765ad.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 07:21:38 -0700 (PDT)
+	Wed, 08 Jul 2026 14:21:49 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-2cac59f8b64so8700545ad.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 07:21:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783520498; x=1784125298; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1783520506; x=1784125306; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=jE/vGes9bWof+nCBjw7kvawhZty+DCUG3JNg48uQoDI=;
-        b=a+0rRsGYdwWnRKD+cgKO4ArWWuFbVAOfOTsaopDRpsEpCKjKNRgMQxTNic10N1ITjW
-         aTup8QdVWtlcREAPvuVj5IRhCh3jZbCz42/Z+bDbr3qa2divlkaHEa8niyXYYxzKmE3G
-         Bx/lAYlgoPPmtohBiYg1Mey2x35tohcTUaMnA8kQiM70d/58NZEjfUMf/YV8FH/21g56
-         NyjGZVYu/nzdJWPPI3XQ/Tj7BSXuv1xrxpjZlWgUxto7E2Uks0jhsoMu5jHTem1lLgGJ
-         fr8OSEMjb3o+q2p0OKjoNHoTTAD3HuDfPnp8pjWgH9M0ZcePcJBm9s7ppwu1WJVPhdL3
-         k8SQ==
+        bh=26LuwxXuYnG2tABKOgMVR7HJmLwQlsRPpHyBPQzuKoY=;
+        b=FJivnlB5pYlTxj3VGsvN6yEsBcZjRNj6g4Fb7+/ziHV8BqaiGXnYRTdYOXQuvgxagA
+         Dj1GwiO7HyrQyMWZlIrBOHNWcYIiUOnvTxEJHtFMhVgmRcoaiKj57FgWsKlwC7q8k0We
+         PaxRP7+vz7M9wTjFTcfki6uKdlwk9buzj58jEBtS7FozgSaw/2STeSuQcHG0G6OqVGqL
+         72Z8v+mjrzUakjel6+Pw5h4Z5VN+vqjk6Z66SutqYipJIbygJP+Vr1TyQOySDyZA0HaZ
+         5e42pEdKargR4/XJ4JE40LIyLUn7XIyshAtFfE+y5kqYJLWlWCAzJ7hTAZ85BIA+vm8+
+         ngAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783520498; x=1784125298;
+        d=1e100.net; s=20251104; t=1783520506; x=1784125306;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=jE/vGes9bWof+nCBjw7kvawhZty+DCUG3JNg48uQoDI=;
-        b=sB7hE0SZ7I12K0G0/tAcpQbA+bsjiIHBOKPd0VLPzDdyGRJrq3GAZjNea9CQIwNioA
-         KHvHMULPzqP3VrNCUf2yAE33YzV4M/nKfdHsWxwIfrtPKWn97Ev07Bxr41vIt7vcwxJO
-         HigCGn88LPZQEOywfNpBP+is4HekC2QrRqCQ3RM973TRzMO0W93a1K/Q6p4Bd449Dn1W
-         l6gCxPYb5QhoSMgBRYp5CQO/Tcp+MzQV4jTw/XxYKa6+ywoj45+WaQHqsj9erTID3ky1
-         SVg6lHsQMtZAh/Z4SayhCvv31W22eCHJ8JNMCvOP96qNB5eqzOacnGmoi7os0RubeKcB
-         kbcg==
-X-Forwarded-Encrypted: i=1; AHgh+RotxnwPdkz4hp4YYQNN/tXnOOo38EzZmEwecYVotMf+AMRtPujLZiRHUDU65TD/esVxRF65KYEZvGcBZ8ettA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzaFDZdpdoWjzHnmW2DXETV8qhJOaPa8MjoQTKPL+4BxknMUxCA
-	SnAsOfpU9xmfLpKYLyPHk59JAp4ugZMD6nNKbFqHzeE4HYvXOWpseSGc
-X-Gm-Gg: AfdE7clH4hvvmxsakqOFu1+A/1XK276PrNVnltT9Um7pfE3wLnhSm/u9K9UU5uDGPGH
-	uqMtJm8/JkHeqL4i6ulXrKte7bfxN6jFjhW0lKn5sH3SjZewkRGyU6w55emgwWbLg7OVhvj95t5
-	ChB1oI57fWPSSFBf8U1Kh+le2G6soelwNe5ln1JK+h9y3PltXHEoA20HjivFsBlm3qXgLuXiule
-	yaebbiS7cCfEIcOTWQxQOrgy7MiVplCoIJuN+R8i32/Oufi7kSJFxhky5+FAL3wO5lhkNs/iY7h
-	5GSQOWvreYg+tDZsUhxS5ZdOL21GNcaU1oJ67t/Ig/E5m0TAzRpwF+o6hq9x+9Sa+lyLBbFYcCc
-	F1k/+EUF/pw8MpNEuNr+zfeLaLVm3h3YfSVVMGoa/2y2SAJw8JRWUNTfvKRtv9VKSdnDMX3yMKP
-	Kqc/dr5mRZ7blI1TGwAnJmggN5frSPqX+DFERELjH7U30lPQE=
-X-Received: by 2002:a17:902:ebd2:b0:2c6:a772:7e43 with SMTP id d9443c01a7336-2ccea39354fmr32045325ad.18.1783520498057;
-        Wed, 08 Jul 2026 07:21:38 -0700 (PDT)
+        bh=26LuwxXuYnG2tABKOgMVR7HJmLwQlsRPpHyBPQzuKoY=;
+        b=KLoBe08GmRENgnMDD84BdSgumRwdU6Ls097yRLxCHMJRvvC1jMIR5XAHjLqoByWo4V
+         Yp7qqq63+dt8SPwnx7SfxiogY6ME2pSATmtK/Ro8QR6pSRP12aV05AFal9qeKkCO+F6H
+         xCVQF6KScv/A8SF0ittFdyaVEmik1GLBJ/f1XT8p63LEKvQ5/Gq/LCTQZ1i//pig6z4y
+         zzSJzwtdoIUdXK/8ZDxZvOYN6cZHv9Zttc/LLeFxq1rwaND1B4QyCWgc68cn8P8zpyh5
+         MAhzt2nQ6nz0j5vq8uLzlWlkNvDwAyRZSXaOIkVZrFXcknZklz8S5Z8TY1Jz/R6Yw6WL
+         VBjA==
+X-Forwarded-Encrypted: i=1; AHgh+Rq9+vhKY3KcH12Tp2kKCrZ5QdKDV77/g5RbLEuB25v56IOD2IYu4Hl4uPz1K1g//Ke1fx22HbbTrvJ1af/OmQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyTHp8rU3nMBTzM1h/fkhNvokG8wykhmXWPgffXAnJqaxI1CcI7
+	ZtEcW0Rx8R41nsNLE/oxSr/Z82fVjd+Gt5BZgMj0rBOtE2VdK+08ea60
+X-Gm-Gg: AfdE7cnBWAL2Fj8etNhW/tAieaJTpofGRcP39WnVPtnAlnZvVWneeSDjcu9UfyUHPt6
+	LKfRXaNTnCKf3QQqBP4U+w+qwP/kaczbYNFaeIjXcgHKBNEzQplYRkxLcI58vgbVF9a1Dzgf4oz
+	7jtWdybFvwJywrwLPLoksQPfc/3tRsEP0RjDp/pm84rWile5Zfvv1gdIRrLDiLgo5GSBmygEOPd
+	U+cD8UNjaWoRSKA9BWZfFKmum4yFyflpNsZqkZ2/IleaS5DeS9QyKOMsukqDGSNCbCSky/2gTIX
+	cdUoCv8D6R07cy3sg1cBoDvNYZrsYBbOjzcakRDVrCdM4vXE6YMDxyFLQUzgyZSLl6LrSkDBKdf
+	EdY61aokfTpgSMK6887A7FUhcXBHfBd8toqLCn4yk4GgKuo0HoKeL8mF6/pCleZSYKJb7RxRzFm
+	heG3biAGEXGmLMRDc1P9bVi8XGGyHiwlh+1HYzrZL4fk0xmVI=
+X-Received: by 2002:a17:903:2447:b0:2c9:97a8:afe7 with SMTP id d9443c01a7336-2ccea3cb09amr29387565ad.42.1783520506198;
+        Wed, 08 Jul 2026 07:21:46 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9d3bcc0sm28841575ad.67.2026.07.08.07.21.31
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9d3bcc0sm28841575ad.67.2026.07.08.07.21.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jul 2026 07:21:37 -0700 (PDT)
+        Wed, 08 Jul 2026 07:21:45 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>,
 	Takashi Iwai <tiwai@suse.com>,
@@ -103,17 +103,17 @@ Cc: Support Opensource <support.opensource@diasemi.com>,
 	linux-arm-msm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH v2 19/27] ASoC: codecs: rt5665: Use guard() for mutex locks
-Date: Wed,  8 Jul 2026 21:17:26 +0700
-Message-ID: <20260708141734.578926-20-phucduc.bui@gmail.com>
+Subject: [PATCH v2 20/27] ASoC: codecs: rt5668: Use guard() for mutex locks
+Date: Wed,  8 Jul 2026 21:17:27 +0700
+Message-ID: <20260708141734.578926-21-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260708141734.578926-1-phucduc.bui@gmail.com>
 References: <20260708141734.578926-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_072139_090313_997CC1B1 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20260708_072147_080190_19E8F71B 
+X-CRM114-Status: GOOD (  11.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,13 +135,13 @@ Merely code refactoring, and no behavior change.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/codecs/rt5665.c | 15 +++++++--------
- 1 file changed, 7 insertions(+), 8 deletions(-)
+ sound/soc/codecs/rt5668.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
 
-diff --git a/sound/soc/codecs/rt5665.c b/sound/soc/codecs/rt5665.c
-index 48f57cd0920d..1d987472ba42 100644
---- a/sound/soc/codecs/rt5665.c
-+++ b/sound/soc/codecs/rt5665.c
+diff --git a/sound/soc/codecs/rt5668.c b/sound/soc/codecs/rt5668.c
+index fed6de40b8c8..4154bad27610 100644
+--- a/sound/soc/codecs/rt5668.c
++++ b/sound/soc/codecs/rt5668.c
 @@ -6,6 +6,7 @@
   * Author: Bard Liao <bardliao@realtek.com>
   */
@@ -150,63 +150,43 @@ index 48f57cd0920d..1d987472ba42 100644
  #include <linux/module.h>
  #include <linux/moduleparam.h>
  #include <linux/init.h>
-@@ -1208,7 +1209,7 @@ static void rt5665_jack_detect_handler(struct work_struct *work)
- 		usleep_range(10000, 15000);
+@@ -986,7 +987,7 @@ static void rt5668_jack_detect_handler(struct work_struct *work)
+ 		return;
  	}
  
--	mutex_lock(&rt5665->calibrate_mutex);
-+	guard(mutex)(&rt5665->calibrate_mutex);
+-	mutex_lock(&rt5668->calibrate_mutex);
++	guard(mutex)(&rt5668->calibrate_mutex);
  
- 	val = snd_soc_component_read(rt5665->component, RT5665_AJD1_CTRL) & 0x0010;
- 	if (!val) {
-@@ -1274,8 +1275,6 @@ static void rt5665_jack_detect_handler(struct work_struct *work)
- 		schedule_delayed_work(&rt5665->jd_check_work, 0);
+ 	val = snd_soc_component_read(rt5668->component, RT5668_AJD1_CTRL)
+ 		& RT5668_JDH_RS_MASK;
+@@ -1053,8 +1054,6 @@ static void rt5668_jack_detect_handler(struct work_struct *work)
+ 		schedule_delayed_work(&rt5668->jd_check_work, 0);
  	else
- 		cancel_delayed_work_sync(&rt5665->jd_check_work);
+ 		cancel_delayed_work_sync(&rt5668->jd_check_work);
 -
--	mutex_unlock(&rt5665->calibrate_mutex);
+-	mutex_unlock(&rt5668->calibrate_mutex);
  }
  
- static const char * const rt5665_clk_sync[] = {
-@@ -4564,7 +4563,7 @@ static void rt5665_calibrate(struct rt5665_priv *rt5665)
+ static const struct snd_kcontrol_new rt5668_snd_controls[] = {
+@@ -2356,7 +2355,7 @@ static void rt5668_calibrate(struct rt5668_priv *rt5668)
  {
  	int value, count;
  
--	mutex_lock(&rt5665->calibrate_mutex);
-+	guard(mutex)(&rt5665->calibrate_mutex);
+-	mutex_lock(&rt5668->calibrate_mutex);
++	guard(mutex)(&rt5668->calibrate_mutex);
  
- 	regcache_cache_bypass(rt5665->regmap, true);
- 
-@@ -4601,7 +4600,8 @@ static void rt5665_calibrate(struct rt5665_priv *rt5665)
- 			pr_err("HP Calibration Failure\n");
- 			regmap_write(rt5665->regmap, RT5665_RESET, 0);
- 			regcache_cache_bypass(rt5665->regmap, false);
--			goto out_unlock;
-+			rt5665->calibration_done = true;
-+			return;
- 		}
- 
- 		count++;
-@@ -4620,7 +4620,8 @@ static void rt5665_calibrate(struct rt5665_priv *rt5665)
- 			pr_err("MONO Calibration Failure\n");
- 			regmap_write(rt5665->regmap, RT5665_RESET, 0);
- 			regcache_cache_bypass(rt5665->regmap, false);
--			goto out_unlock;
-+			rt5665->calibration_done = true;
-+			return;
- 		}
- 
- 		count++;
-@@ -4635,9 +4636,7 @@ static void rt5665_calibrate(struct rt5665_priv *rt5665)
- 	regmap_write(rt5665->regmap, RT5665_BIAS_CUR_CTRL_8, 0xa602);
- 	regmap_write(rt5665->regmap, RT5665_ASRC_8, 0x0120);
- 
--out_unlock:
- 	rt5665->calibration_done = true;
--	mutex_unlock(&rt5665->calibrate_mutex);
+ 	rt5668_reset(rt5668->regmap);
+ 	regmap_write(rt5668->regmap, RT5668_PWR_ANLG_1, 0xa2bf);
+@@ -2400,9 +2399,6 @@ static void rt5668_calibrate(struct rt5668_priv *rt5668)
+ 	/* restore settings */
+ 	regmap_write(rt5668->regmap, RT5668_STO1_ADC_MIXER, 0xc0c4);
+ 	regmap_write(rt5668->regmap, RT5668_PWR_DIG_1, 0x0000);
+-
+-	mutex_unlock(&rt5668->calibrate_mutex);
+-
  }
  
- static void rt5665_calibrate_handler(struct work_struct *work)
+ static int rt5668_i2c_probe(struct i2c_client *i2c)
 -- 
 2.43.0
 
