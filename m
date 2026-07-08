@@ -4,180 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59466C43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 03:46:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E79FC43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 04:26:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VdfSArLpFYrNaj+8rLIb7F26z0jTyBYEPkbBqfNHCiA=; b=Jick6zPetjdy0tEdQpeUD9rXQs
-	N8GVbE4qpPSxopTgEoZgbe/qZu2TTAbvYqvTrrPtBqAPnI+JoYVOgDcO09bb4NNZOIRHA4e8XoTt0
-	44vgbfRgXSkxDz2kfj1TIPW5M/ew3TYuQAWgAcVVZRXHdVTq8vsmS69XDSaxDFR0aUzFmAfLMu+gb
-	ZsoZcOyUtpxLms1GwVun3tzC+Aw6eUzaRlisUlgJpwBGVCZcXgbGKVQJSyaS4d99X/6xsN+gAIpzr
-	/QUTswI2AwIQ2WqM/cwGUXH67eB0jbFYmJ34n0J4SWL+FaHL7eXXJag6jWT6NDcTZmnn2lZJO4BEb
-	3M2dtu4g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9TWqEVDO1Px1PCZICb5KMgjoiJimA/1tHVt9yLna+xE=; b=Zv1jM5doex3caMSDoWfTwsidB+
+	QkZYdLyc5bK4o3+iF40b9129T5bhjh3oRqASy0VXaas61GW/JLg7hLXZB8IEWDU69CPTzFFB8Fipo
+	TNqkHPuqaguq+uSImLuOMCpbxxjxnpXqdRQDPqPjbtreT8tfOleG5qcbu6CohfZttTtFVUuIvVqXx
+	WIf5uhFVTGgEuowppkk+GmYsw923hAuXLUvkjzAQA+RGvO3T+ldMqXjFiHlp6r7ctiGHzIIq4CjLG
+	vocYic3VEILSj9lddQDO+CzlmT2HXS3y0v+9lDaIzxUILvNOxteHZ93pOOk+z74NA3+Qqdwy8Ey46
+	YN5qkiwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whJF6-0000000GI2S-079R;
-	Wed, 08 Jul 2026 03:46:36 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1whJrO-0000000GJiD-2anS;
+	Wed, 08 Jul 2026 04:26:10 +0000
+Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whJF2-0000000GI1r-2tNa;
-	Wed, 08 Jul 2026 03:46:34 +0000
-X-UUID: 977e97607a7f11f1acbe4559397dec65-20260707
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=VdfSArLpFYrNaj+8rLIb7F26z0jTyBYEPkbBqfNHCiA=;
-	b=ofl2IgPYAc2viSqGylLd2LB5QYhtFL5TgKf8d+iKHzNOrgt9ciSPKv5Ft5eoAtvOmPaPfLsnrCLpGY14Sq3wuIBlkX3AMllK97uQJyIAgYJ+7Q3GK15s+VV/hPYHt5bUvw+i8HveLz8AiZtTkTJ6hq20RM7k99fRnVZbEWv9t2E=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.17,REQID:d63cb21b-5900-4949-9036-68aaf9c7baac,IP:0,U
-	RL:0,TC:0,Content:13,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:13
-X-CID-META: VersionHash:d497b38,CLOUDID:17041d8e-1010-4359-aee5-9ea266a8cac1,B
-	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|110|111|836|865|888|898,TC:-5,
-	Content:3|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-
-	1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 977e97607a7f11f1acbe4559397dec65-20260707
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <ed.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1688259885; Tue, 07 Jul 2026 20:46:24 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 8 Jul 2026 11:46:22 +0800
-Received: from SI4PR04CU001.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 8 Jul 2026 11:46:22 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=IR7P0N5v9OQIcXnz9HWs8qfPSI9UhzBi2Ap9Q61kp+Z4isP2KE/C+hsbo3jiUssZ2ZYYrHr5xr6DF+g4XEbCg7XqOGRWXg5ZqYWScaxR2YXF0g6F/z1SzWYoIOnCtOntrFrbRhGM9fZIdYa3OMbPQwzz/4s0j8V3D68WX8Zh61J7MO/HpDLquJEVBWByaYf1w0pkNg3RC2HR7bXZ9Y8rcXs2PwrykH5v8U1KyFGt9GLF9fTGN1LomccK1DKHbWyWfEeGaCFm+QSUXIpdCgcYCz/ys9y8KdxBgVYjyTs0gYo4YuvRr6MEh7dDEqpAABaz8GeHHKulTPv9Vjp/Pj050Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=VdfSArLpFYrNaj+8rLIb7F26z0jTyBYEPkbBqfNHCiA=;
- b=HmCLT4lUAAgHffSr6dKgY2eOk/B+frfOlxUtcLyHN4zEOmAPA6Co8Tno0IlOm0rOuTxZTjDIuBKqn42+L/wQW4J8MfTakPycNefmGMy5nDssbzhRO3FdI8msTwRZKQylRnhjEC3FNCcNMswjwPapoMmy4F3hWaJNey8CO02l+H7fh9afYMGrJi3hfhyU78tEJxyJVIm6laynXV3KjnWsvTApcCPbZDYuygiuiN5+/GSYlTx0l9fnr4YgvSLNEqP4CqJzKoralIxjJmnRhp/f0Rmq0SUZnwQZN1c0O4rg/egDZnNjR4BER8CBitJLIJrQc9FkbEsE915AV5fVZT8AhQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
+	id 1whJrL-0000000GJhK-3Pn1
+	for linux-mediatek@lists.infradead.org;
+	Wed, 08 Jul 2026 04:26:09 +0000
+Received: by mail-yx1-xb129.google.com with SMTP id 956f58d0204a3-664d4478a64so277159d50.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 07 Jul 2026 21:26:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783484766; cv=none;
+        d=google.com; s=arc-20260327;
+        b=RV66uqkcmXJW9t/L0F0MkO0/9dqwKfvik7fw/o03TdFaJ+5Lx7EBiM5/jWisp5yV/D
+         sx2uxmvC/PnlNmJjc4atiJKTHxxX7rIURye9EzR0bATRUgf3Y+BIbTIH88AtmOyMcKPc
+         upQtVFLeqrjjhUO1CsS2v8SL+n3w2zOUdW/sjotaKkY/ndDDICo8Sk5FDabxiWLJN46w
+         6+3xf04pULsq4I0CmxhuUedGD9TdhJ3Jd4bUaZaxhuCedWiFakSHsUkZmJCUhKhClml6
+         I6D0o90B8pevdhdUOi7DzY2oMV2tUWrr89c2X9KsG4M4plncoO3a9rjvmEZQ9zVcsIyi
+         /BUQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=9TWqEVDO1Px1PCZICb5KMgjoiJimA/1tHVt9yLna+xE=;
+        fh=LnJ/gLZD55v5lPbC6p+ehLV0mWT53f08cuh38oH2Cc0=;
+        b=f4embFZXIVX6AkSvKewtgA7yHh3puEOt4hXxTp+oxoNcocfvN5AAM3KrE3aulHtu7q
+         +FjVnvDTVmmKe2cDTlUmmbX9Tped1PlvDexfsK38jPt4fT7uaN9icMsbrg9DZ96F/tbA
+         ryHvnk/jEUjK2YufMgvu5RcrATnUx+8BPs19gfsvh8oeaYFbsnyLG1Yk9K27zb6VMedm
+         sFJw/WtHK4EAjClZSPSnV7vtw30zf8o2iiwnRiTI3v0MARLqEHlsFJilb5vLjbj2kSHY
+         mxsDNPv7TDRABHF0GCOfiAozibJFk71sSt3fnCYHN7HG65ws+iN6QKEJSHnK8zm53B6t
+         VSjw==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VdfSArLpFYrNaj+8rLIb7F26z0jTyBYEPkbBqfNHCiA=;
- b=KYjYDWC4IKl1bNeUBSYfwZLsEwffUVB0iV5zj+qENQuRjfQm4IcA8u0YTDjl/j2GebTWlnPTx6xlVKNAGy5ERlaA7SbBIK/RamBWor+RTRYYp84rPxSVXsZ/1zIAA7i1pJ4Hki/0XgWf8YBodELA/Jq4WqQ3zmGAyCF8RjzXCeI=
-Received: from SI2PR03MB5545.apcprd03.prod.outlook.com (2603:1096:4:131::9) by
- OSNPR03MB10397.apcprd03.prod.outlook.com (2603:1096:604:480::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.11; Wed, 8 Jul
- 2026 03:46:19 +0000
-Received: from SI2PR03MB5545.apcprd03.prod.outlook.com
- ([fe80::42a2:bb5:d1fd:3ac6]) by SI2PR03MB5545.apcprd03.prod.outlook.com
- ([fe80::42a2:bb5:d1fd:3ac6%6]) with mapi id 15.21.0181.012; Wed, 8 Jul 2026
- 03:46:19 +0000
-From: =?utf-8?B?RWQgVHNhaSAo6JSh5a6X6LuSKQ==?= <Ed.Tsai@mediatek.com>
-To: "avri.altman@wdc.com" <avri.altman@wdc.com>, "linux-scsi@vger.kernel.org"
-	<linux-scsi@vger.kernel.org>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, "bvanassche@acm.org"
-	<bvanassche@acm.org>, "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"martin.petersen@oracle.com" <martin.petersen@oracle.com>,
-	"James.Bottomley@HansenPartnership.com"
-	<James.Bottomley@HansenPartnership.com>
-CC: =?utf-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
-	wsd_upstream <wsd_upstream@mediatek.com>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, =?utf-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?=
-	<Chun-hung.Wu@mediatek.com>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-	=?utf-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?= <Naomi.Chu@mediatek.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	=?utf-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>
-Subject: Re: [PATCH v3 0/3] ufs: Add callback for vendor-specific RTT
- capability
-Thread-Topic: [PATCH v3 0/3] ufs: Add callback for vendor-specific RTT
- capability
-Thread-Index: AQHc/Iv9ExxycAm0nkGXM20PmE0YubZjH36A
-Date: Wed, 8 Jul 2026 03:46:19 +0000
-Message-ID: <9d28fc1645b621f52ec8fd00456b1432b9bf157d.camel@mediatek.com>
-References: <20260615055802.105479-1-ed.tsai@mediatek.com>
-In-Reply-To: <20260615055802.105479-1-ed.tsai@mediatek.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR03MB5545:EE_|OSNPR03MB10397:EE_
-x-ms-office365-filtering-correlation-id: 3977fb6f-e1db-4274-51e8-08dedca37876
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|23010399003|366016|7416014|376014|1800799024|56012099006|11063799006|38070700021|18002099003|22082099003;
-x-microsoft-antispam-message-info: 4bjcBKCo0Z05g684Cp0TWzP+iyTW+D6eU2NSz07jMQYJ1Eh9Ab5YLMcNvuvmj06MLI2M/NCTjk43aJcgF8adiqHYBpRI4rNCEc1HYUtkA8D7ZepTeqyhEf2Mg4wF4YpjY/+0gtSl3Fg8M5+CFF1VB0+rofmpwSn+MvfCC2fPLTBfOkzMBVEUpkrdZ4WdJVWDPDwFZmTTL2dR37hoyGQz/FWAkhDSJX/bDJ+I9vXxzb4+NsODlBY0UMzuwbE7PFEZy3JueqOpMYWwqJg6Rh/k1nKGNiJi/dKAGfSQXBX3y6gu/LBXNkAmnd6JONNKhMZy0pdhhicRXhPdcUbhiKC0BNWSlOYCGCvpcwFZPhZm7zNZgAYalCRMw9B1ztY5bTABR89/4Phn/dDzpDdbEFxtbsASM3ffPoIx/x0ljFBI4DjgydNiu31MY14NANgeOY0ulSZPA69xgh6xQ11auKCe05WQhOMJwTJmg0nN/Zn3Waqz9FchZB1wScD0rUYms+4rDIBMbqe5t5IHWkYVwXfnDVMlV5jNK3Qa2Lh6wDxd2EPijUOZJpj9HRwFPXvXmYMdNhOs2SlXdh3A5NF7lb+16EtCvnyjqAgiDA222ZZDoqy8jBL+Ow4B8JQBhQ6kJ96AMtj8mF6sQLCL7Orjisx3a6t8al5SNSO7T6i37huwFbEBBsTbJFk2s+J1S0r/IbpgJkIEjb3l5ZWJlSoCBO45ErRHobmn9IlR8Lao6/eHxts=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB5545.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(366016)(7416014)(376014)(1800799024)(56012099006)(11063799006)(38070700021)(18002099003)(22082099003);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?SEYrQ1NiSTJzb20yNmhaQlBNd2xPazVlanRvOW1qUkprNitDRWI5cUsxR1Nv?=
- =?utf-8?B?OGJvOHZYWkY1TW5ReDBMVmVjeXAwYVRoL0NSU0IzNDd2UnVDSkNWTENFczJa?=
- =?utf-8?B?WlQxK2Ntbzlaa2lMN0NHZkRqTFgrNmRQUnNyRUlRWmJTdjIxaXVGUytzUkVS?=
- =?utf-8?B?U1czTWp6cGYrMG9LTjZVajZocVU3a2FSVmFxRXVTY1BCRHdYcGpVdS96Q2s3?=
- =?utf-8?B?bTlIdUVGMktRaWZ4UGlDYzFhb3NPWEExY2VMNXpZR2pQODlhMVhkWUMvVDg1?=
- =?utf-8?B?SUt0Z0J2eWdFeTI5djZRSEI4dmhuQTd1dW9MLzIrWVZpNG1PNUllbUxPNVVE?=
- =?utf-8?B?NVlOZEM2dDBERWpraWhoYkc4bkl1S0h4Y3ZMTy85WEZnZjRNYkpBTDFJSG9W?=
- =?utf-8?B?bjdvZkxaQkREcFoxR3YwZUk1WUM1NmRKaTRnUHl5MUVlOVBrSzZRbFBWQkh6?=
- =?utf-8?B?VGFmSExBTzNoOWNkR3FwdHVKYTI5bFg3Y2JiT3ZqV3RsYVdjaWlnUThtbysz?=
- =?utf-8?B?cktOVUJ3S21WR2Z4WFNlY0VXWTEybEM1UG5PK05tc2FyTm1tOFIyNTJCcmVj?=
- =?utf-8?B?Y2N4QVVwcmNZanQrMjVrdWZOUEFtMFR5dmlNME5IM1FOS2FLam1mWWR2blZp?=
- =?utf-8?B?OTdCUEpQazRLK1JjRFZoY0EzaXZKZzVWcWdjelVkRmEyKzROWExxWTJvdWxr?=
- =?utf-8?B?UUVTdHhVRlZUUXI1WGsrWnpOcERKT0txUjdDUURHaVFhM01VVWY1VytQRkVP?=
- =?utf-8?B?RVhnMmN3V0dlMVZGb0FseG5ZaXhoZUpiZnRJWDY1eFFuL2c3NHM5WTB3eXgx?=
- =?utf-8?B?Q2lYTlVkQmdWWkFXSXdOaGUrWElXQXB3QlVVMEdaRSt6OHR1eDRkUE5IMUQx?=
- =?utf-8?B?YlRLcGRiSzVNY0hVRXBWeC9XNGFrK2E3U1VSbGhIaUt3N0pWdDYxcSs2Snp0?=
- =?utf-8?B?R0E3T3lEUTdCbUNsNEQ3UmFmS1NncmVNZzhQOTZPU1FOY09tMzd3R05xbDhs?=
- =?utf-8?B?YWNjUGExRlZjaGR3akN1R2ZBU1MyOU5hMjNNeFhFMERBczhFbFE1MHR6MFUv?=
- =?utf-8?B?VkRMUFdIcVJ3UFJsVWMzY0RyVExmVGRMc1UrbDZkZUYxTUZjcGJnMTVCWkIx?=
- =?utf-8?B?LytMdkk2aEtqMU1aOHlrdlc4akE2SEEreVVrV3NrK2RhQzFNTGhCMlJndjNS?=
- =?utf-8?B?MEdLdFJMZVNqbE9MZFFBWjNjbzNzYmd5ejJhTWxtM0VMZENoN09seEpQTXdo?=
- =?utf-8?B?T2pvVkNKZFoyWVc4SXptYzdNbm53SnFreVgvTGwwYmZzU1oyOG0xQmRSaVoz?=
- =?utf-8?B?N1hwRGFTdkk3aVd5bC9WKzVsaWZadnpLMGhYbWt0enZzL3oxNHNaUVJoTFNx?=
- =?utf-8?B?bXhYNEh4M1lUTmFPc3JGZ0ZIdkJuUHZycTJ4T3pUaVNoendRai8wQlJSeUhD?=
- =?utf-8?B?dlM2cUt2Y2xnZFlzNHVPQnAwamVXNEtqN2JidG9iWE9jZEFQdFlWUE5xdVJ0?=
- =?utf-8?B?SGVqSWRQY2k0dWtPOGxuWlBpem1UY0ZBTmI3bHVkb3g4cWdaeG05MDczbEZ1?=
- =?utf-8?B?M2dkMWlacFhuOGJpdjBvMGZveTk3d2tyTnlxZHVvMFFKbWJ6ekwrdE9hcWhD?=
- =?utf-8?B?Vm5jTVJSV1B1K0doN3NKeEx2UURmUjNzdloyb3Y5Vk84cHBadHBqQ0Z5ZHlV?=
- =?utf-8?B?NlFRVkZHbytab0xvVGZsakw0bEJ6cFdnVlh3cjdhczN6eGx5UUtaSDYvS0s1?=
- =?utf-8?B?YUQwTjlvZ1V1YUMwcThRUXJBeHZOc2E3NEJHTU53QkI0Z0pKVjBGNEJ2TkNU?=
- =?utf-8?B?Wm9obi91cWxnRVkweUp3a1Y5eWNGOGR5cVRxSnJWSnhiWEphM1hpdEluVkZP?=
- =?utf-8?B?ZzR0UHJiUFNpeE5MTzFmcm1rU24rZnlodjYxankxSDVqRm12MDBnV0xJc3pi?=
- =?utf-8?B?VXFpOHZ6ZlVFOTVxMTdhWThLMllQYitVWE5xUFVRSW5tYU5NYVM1SnZsa0lD?=
- =?utf-8?B?NnErTzc0RWhxaHZJWXI1L2kvbm5UeTF0K3cwRlBJb0RRbFFzRGdobjhpZUxv?=
- =?utf-8?B?bk9LNlNuQThzWnJuYXVLU1BoRVJSdGp1SzRZQ1gxRDFLd3V6ZUZYN0dhZjM5?=
- =?utf-8?B?bnRBaHRhbXEybjZpNUF5dUhGZkhQUzN0TTluZ2pTeTNSdmYzMUxZSSt3Snov?=
- =?utf-8?B?RzVVcEdjam0rSDVhSGlXMmZiem9RaGxEcFdyQ090cGFwT24yREVFa2ppSE5Q?=
- =?utf-8?B?T0VVaFZ1cTNBUjVlMGVJU1NYb2J3bkhNYkJQQ1BSZmNrcmM2MWY3YVB3ZTUz?=
- =?utf-8?B?VkJoTExwNjhLaTd0M2VPS2prYktMdFF3UnlKb3dEQ3EvYzRHYzJ0dz09?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <66E213172FDF2349BCC0601D038B0615@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+        d=chromium.org; s=google; t=1783484766; x=1784089566; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=9TWqEVDO1Px1PCZICb5KMgjoiJimA/1tHVt9yLna+xE=;
+        b=URGZnyuJt9w/VzhRXTedvaHvxJhDiVd3dV8FeAUcOVpYkuQpIheruvA2gvkT5T05nE
+         3zgq6VNcaIC8DwB4KD5IPkdHGLsJrQBAtNmz7VCzjSykFdH32kxk3YMe2h0OtKB9xPhU
+         ZUohvXcvFpeaLQu3tukP60mDKgQXPOrgs5hrY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783484766; x=1784089566;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=9TWqEVDO1Px1PCZICb5KMgjoiJimA/1tHVt9yLna+xE=;
+        b=mim5AHnQyq+HLzLzzKDWXaTSQTW89YgCQmgR4ORpD3Hs5WilqLY7lOW79wrw1y4XSb
+         7mThviqXw6WUbcS4F1ZlpLcyoD2m5dm8jDjZdn/GYhUTgnn10Z6Hux0IDGdnwWj9fXVm
+         BHX5pYvvI3s5VYavSGdbpNFRORN6K8+Y9YVnLPxrH2GwPZhrBiMlaL+3YT3c3bZ8zlIf
+         OR56F8SPkPoImwUZL/puX8v3+BH8uLBG/a4dvT7VMN8mLS8hoyFHSCzYfMcQm6J6hZQu
+         81wp7lsj+TOIUXXc8RDk3ubwguhE/ERtRe6brxkqG3c9uM5A+JCYIxHjAZQXLUOj1VSE
+         633Q==
+X-Forwarded-Encrypted: i=1; AHgh+Rqd48hditHtaR6mXxWm4vVzDLetu+rP4b9i1yICYMeRem+hD4kMK9Bp9SCtBXng+CO/ApOvNePz2zhjk+mMbg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwtnOGn7U+8lxRd9YprwKtSx5c7Z3LrIcc5rGNO5XzXAyKu+h7P
+	Wn9o39D8KMTj8aQlZJ/rG+tsO7OSogkv7Hn5RRyVpLvmb3KOfFWsslHsOR1uQeuktkZi5iAeHaA
+	XsKfqxaQceN/wCyaZxiBwEJ4MW72MgqWsP7o7m65S
+X-Gm-Gg: AfdE7cmgWl6CgaQJeQhfMa/DHJeuKdsJ5x27FugkPGOZQ99RpkL/EsaUjMhcIfbPge+
+	uLSqYKFiHQayULR/ke7qX/ZVQYD6kjcejx1IOq2/JHa7qnjnIJcA3wFwYa58DVQo/al888Mflgr
+	fyBTKksdIPMrpzd4inYYI+tje498vH8+oWarGZI0n8LlKBCEvbTStfu4AuAPxKBh+zK5A15j6O1
+	AOBGTMCVCGW4asHHHaJWiQIkauo11da53sr3gaVVroB3INnLKlfhpdlwb/2PqJl6H23JwkqNccR
+	EkRuVMrYic+RbP3nye+tDBjcpnU=
+X-Received: by 2002:a05:690e:1916:b0:662:dcc4:c6bb with SMTP id
+ 956f58d0204a3-6679f0909a2mr589124d50.37.1783484766428; Tue, 07 Jul 2026
+ 21:26:06 -0700 (PDT)
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: qsox/P0zr7XK1fwoA1+dynqcZkHRmNpSIgRW9xsRUZV9XvlzulJIN9cmsyNVzdqEiHrZsGnu6jCERp1pNhRhINK3OvpkMjhoLm2M6GQRcZ7VD141gNXmtxHbyQHUieZPjiFPrK7v1nYWF+Ss3Q+gxGOLgwdBtZ0o2aSo5MBWxM8amvkkzYsLd/IKpmCebbBwKkOZJx4wDnEuyGGG7sIK3oMwQaH/OjwsZPc/3VtOIrirlhsooCw7kBRcJHPCob4IoSY1LHORVrfww/uaEaGgcrxmsXcVktjBX2VNlhAuocdjJV0rXaEZZGt2lqfy4WTkYNcH9Bu473MGktXDfR0D7A==
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB5545.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3977fb6f-e1db-4274-51e8-08dedca37876
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Jul 2026 03:46:19.1537
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: IZvjkbJymh0aRyo85V97jZejTM+TLs7vesAXoUF7bfF/YjItIbdmBoDNjsgfQfqRwrmlosvItUU9YBRai83sfw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: OSNPR03MB10397
-X-MTK: N
+References: <20260707104427.3409290-1-wenst@chromium.org> <176dd24c-c3cf-4ab9-8497-594ed65d10ec@collabora.com>
+ <CAGXv+5F86JU9+LPSy8PtuCPrdhBnvcA=PX1d++Yh3u7mK_Jxmw@mail.gmail.com> <94c10212-9c27-4875-8a88-78bfb67fb382@collabora.com>
+In-Reply-To: <94c10212-9c27-4875-8a88-78bfb67fb382@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 8 Jul 2026 12:25:55 +0800
+X-Gm-Features: AVVi8CdMjcjDEO3nU05c3hnTSzfBa4pXETiFq-WswvUgQmZHYpqwsoBeVo-3znY
+Message-ID: <CAGXv+5EsWVbLtUP6b75fvkDVSqUDoAOA1t3hPO4cA9sAA02=WA@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8188-geralt: Add MT6319 PMIC
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260707_204633_166588_8E3BC5A3 
-X-CRM114-Status: GOOD (  19.98  )
+X-CRM114-CacheID: sfid-20260707_212607_908996_2B6ABC22 
+X-CRM114-Status: GOOD (  35.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -192,35 +116,207 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDI2LTA2LTE1IGF0IDEzOjU3ICswODAwLCBlZC50c2FpQG1lZGlhdGVrLmNvbSB3
-cm90ZToNCj4gRnJvbTogRWQgVHNhaSA8ZWQudHNhaUBtZWRpYXRlay5jb20+DQo+IA0KPiBUaGUg
-Zmlyc3QgcGF0Y2ggYWRkcyB0aGUgZ2V0X2hiYV9ub3J0dCgpIGNhbGxiYWNrIHRvIHRoZSBVRlMg
-Y29yZQ0KPiBsYXllciwNCj4gYWxsb3dpbmcgdmVuZG9yIGRyaXZlcnMgdG8gcHJvdmlkZSBkeW5h
-bWljLCBwbGF0Zm9ybS1zcGVjaWZpYyBSVFQNCj4gY2FwYWJpbGl0eSBoYW5kbGluZy4NCj4gDQo+
-IFRoZSBzZWNvbmQgcGF0Y2ggaW1wbGVtZW50cyB0aGlzIGNhbGxiYWNrIGluIHRoZSBNZWRpYVRl
-ayBVRlMgZHJpdmVyLA0KPiBkaXN0aW5ndWlzaGluZyBiZXR3ZWVuIGxlZ2FjeSBwbGF0Zm9ybXMg
-KHdoaWNoIHJlcXVpcmUgdGhlIFJUVCB0byBiZQ0KPiBsaW1pdGVkIHRvIDIpIGFuZCBuZXdlciBN
-VDY5OTUgQjArIHBsYXRmb3JtcyAod2hpY2ggY2FuIHVzZSB0aGUgdmFsdWUNCj4gZnJvbSB0aGUg
-Y2FwYWJpbGl0eSByZWdpc3RlciBkaXJlY3RseSkuDQo+IA0KPiBUaGUgdGhpcmQgcGF0Y2ggcmVt
-b3ZlcyB0aGUgbWF4X251bV9ydHQgZmllbGQgZnJvbQ0KPiB1ZnNfaGJhX3ZhcmlhbnRfb3BzDQo+
-IGFzIGl0IGlzIG5vdyByZXBsYWNlZCBieSB0aGUgZ2V0X2hiYV9ub3J0dCgpIGNhbGxiYWNrLg0K
-PiANCj4gQ2hhbmdlcyBpbiB2MzoNCj4gLSBGaXggaW5jb21wbGV0ZSB2MiB0aGF0IHdhcyBzZW50
-IHByZW1hdHVyZWx5IC0gbm93IHByb3Blcmx5IHJlbW92ZXMNCj4gwqAgbWF4X251bV9ydHQgZmll
-bGQgaW4gcGF0Y2ggMw0KPiANCj4gQ2hhbmdlcyBpbiB2MjoNCj4gLSBLZWVwIG1heF9udW1fcnR0
-IGZpZWxkIGluIHBhdGNoIDEgdG8gbWFpbnRhaW4gYmlzZWN0YWJpbGl0eQ0KPiAtIFNwbGl0IHJl
-bW92YWwgb2YgbWF4X251bV9ydHQgaW50byBhIHNlcGFyYXRlIHBhdGNoIChwYXRjaCAzKQ0KPiAN
-Cj4gRWQgVHNhaSAoMyk6DQo+IMKgIHVmczogY29yZTogQWRkIGdldF9oYmFfbm9ydHQgY2FsbGJh
-Y2sgZm9yIHZlbmRvci1zcGVjaWZpYyBSVFQNCj4gwqDCoMKgIGNhcGFiaWxpdHkNCj4gwqAgdWZz
-OiBtZWRpYXRlazogSW1wbGVtZW50IGdldF9oYmFfbm9ydHQgY2FsbGJhY2sgZm9yIFJUVCBjYXBh
-YmlsaXR5DQo+IMKgIHVmczogY29yZTogUmVtb3ZlIG1heF9udW1fcnR0IGZpZWxkIGZyb20gdWZz
-X2hiYV92YXJpYW50X29wcw0KPiANCj4gwqBkcml2ZXJzL3Vmcy9jb3JlL3Vmc2hjZC5jwqDCoMKg
-wqDCoMKgIHzCoCA5ICsrKysrLS0tLQ0KPiDCoGRyaXZlcnMvdWZzL2hvc3QvdWZzLW1lZGlhdGVr
-LmMgfCAxMiArKysrKysrKysrKy0NCj4gwqBkcml2ZXJzL3Vmcy9ob3N0L3Vmcy1tZWRpYXRlay5o
-IHzCoCA0ICsrLS0NCj4gwqBpbmNsdWRlL3Vmcy91ZnNoY2QuaMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgfMKgIDUgKysrLS0NCj4gwqA0IGZpbGVzIGNoYW5nZWQsIDIxIGluc2VydGlvbnMoKyksIDkg
-ZGVsZXRpb25zKC0pDQo+IA0KDQpIaSBNYXJ0aW4sDQoNCkp1c3QgYSBnZW50bGUgcGluZyBvbiB0
-aGlzIHBhdGNoIHNlcmllcy4NCg0KQWxsIHRocmVlIHBhdGNoZXMgaGF2ZSByZWNlaXZlZCByZXZp
-ZXdlZCB0YWdzIGZyb20gQmFydCBhbmQgUGV0ZXIuDQpDb3VsZCB5b3UgcGxlYXNlIGNvbnNpZGVy
-IHBpY2tpbmcgdGhpcyB1cCBmb3IgdGhlIG5leHQgY3ljbGUgd2hlbiB5b3UNCmhhdmUgYSBjaGFu
-Y2U/DQoNClRoYW5rcywNCg0KRWQuDQo=
+On Tue, Jul 7, 2026 at 7:24=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> On 7/7/26 13:08, Chen-Yu Tsai wrote:
+> > On Tue, Jul 7, 2026 at 7:05=E2=80=AFPM AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com> wrote:
+> >>
+> >> On 7/7/26 12:44, Chen-Yu Tsai wrote:
+> >>> The Geralt design uses a MT6319 PMIC to power the big cores and LPDDR=
+4X
+> >>> DRAM.
+> >>>
+> >>> Add a device node for it and hook up all the supplies.
+> >>>
+> >>> This change requires a firmware fix for the SPMI bus to read back
+> >>> correctly. The required firmware version is 15842.175.0. This is
+> >>> included in ChromeOS releases R150-16700.22.0 (available in Beta
+> >>> channel as of writing or stable channel in mid-July) or
+> >>> R151-16721.0.0 and later.
+> >>>
+> >>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> >>
+> >> This is a big problem then.
+> >>
+> >> I take it as if the firmware fix is not in place, probing the CPU powe=
+r supplies
+> >> will fail, with all the consequences.
+> >
+> > That's right.
+> >
+> >> This means that with this, we're breaking all Geralt machines with old=
+er firmware,
+> >> which is not acceptable...
+> >>
+> >> ...so this needs a different solution, or strong reasons to make me un=
+derstand that
+> >> I'm wrong, if I'm wrong.
+> >
+> > We can drop the CPU supplies (they don't matter since cpufreq is hardwa=
+re
+> > driven) and just add the regulators. How does that sound? If the firmwa=
+re
+> > isn't updated, the PMIC will fail to probe, but since nothing is using =
+it,
+> > the system will continue to work (with some annoying error messages).
+> >
+>
+> That'd be wrong, but less wrong than not having anything described...
+
+Yeah. As I said, it doesn't affect usability.
+
+> ...I wonder if, at this point, you could set the SPMI node to status =3D =
+"fail" and
+> have the *new* firmware override that to "ok".
+>
+> That's the only reasonable way to go forward, IMO.
+
+I'm afraid it is unlikely to get a firmware release to fix a non-critical
+issue. We were fortunate that there was an actual critical issue being
+fixed that allowed me to merge the small fix for the SPMI controller.
+
+I think it would be great if everyone could update their OS and firmware,
+but I understand that some devices never get updates, such as those in
+board farms that never boot into ChromeOS.
+
+
+ChenYu
+
+> Of course, avoid having the firmware adding the CPU supplies, because tha=
+t would
+> be rather sketchy then. Just "if spmi status fail found, change to ok".
+>
+> Cheers,
+> Angelo
+>
+> >
+> > ChenYu
+> >
+> >> Cheers,
+> >> Angelo
+> >>
+> >>> ---
+> >>>    .../boot/dts/mediatek/mt8188-geralt.dtsi      | 66 +++++++++++++++=
+++++
+> >>>    1 file changed, 66 insertions(+)
+> >>>
+> >>> diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/a=
+rm64/boot/dts/mediatek/mt8188-geralt.dtsi
+> >>> index f382f90c48f5..fea52c377d88 100644
+> >>> --- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+> >>> +++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+> >>> @@ -4,6 +4,8 @@
+> >>>     */
+> >>>    /dts-v1/;
+> >>>    #include <dt-bindings/gpio/gpio.h>
+> >>> +#include <dt-bindings/spmi/spmi.h>
+> >>> +
+> >>>    #include "mt8188.dtsi"
+> >>>    #include "mt6359.dtsi"
+> >>>
+> >>> @@ -241,6 +243,14 @@ &cpu5 {
+> >>>        cpu-supply =3D <&mt6359_vcore_buck_reg>;
+> >>>    };
+> >>>
+> >>> +&cpu6 {
+> >>> +     cpu-supply =3D <&mt6319_buck1>;
+> >>> +};
+> >>> +
+> >>> +&cpu7 {
+> >>> +     cpu-supply =3D <&mt6319_buck1>;
+> >>> +};
+> >>> +
+> >>>    /*
+> >>>     * Geralt is the reference design and doesn't have target TDP.
+> >>>     * Ciri is (currently) the only device following Geralt, and its
+> >>> @@ -1156,6 +1166,14 @@ pins-bus {
+> >>>                };
+> >>>        };
+> >>>
+> >>> +     spmi_pins: spmi-pins {
+> >>> +             pins-bus {
+> >>> +                     pinmux =3D <PINMUX_GPIO175__FUNC_B0_SPMI_M_SCL>=
+,
+> >>> +                              <PINMUX_GPIO176__FUNC_B0_SPMI_M_SDA>;
+> >>> +                     bias-disable;
+> >>> +             };
+> >>> +     };
+> >>> +
+> >>>        uart0_pins: uart0-pins {
+> >>>                pins-bus {
+> >>>                        pinmux =3D <PINMUX_GPIO31__FUNC_O_UTXD0>,
+> >>> @@ -1267,6 +1285,54 @@ &spi2 {
+> >>>        status =3D "okay";
+> >>>    };
+> >>>
+> >>> +&spmi {
+> >>> +     pinctrl-names =3D "default";
+> >>> +     pinctrl-0 =3D <&spmi_pins>;
+> >>> +     #address-cells =3D <2>;
+> >>> +     #size-cells =3D <0>;
+> >>> +     status =3D "okay";
+> >>> +
+> >>> +     pmic@6 {
+> >>> +             compatible =3D "mediatek,mt6319-regulator", "mediatek,m=
+t6315-regulator";
+> >>> +             reg =3D <0x6 SPMI_USID>;
+> >>> +             pvdd1-supply =3D <&pp4200_s5>;
+> >>> +             pvdd2-supply =3D <&pp4200_s5>;
+> >>> +             pvdd3-supply =3D <&pp4200_s5>;
+> >>> +             pvdd4-supply =3D <&pp4200_s5>;
+> >>> +
+> >>> +             regulators {
+> >>> +                     mt6319_buck1: vbuck1 {
+> >>> +                                     regulator-name =3D "ppvar_dvdd_=
+proc_bc";
+> >>> +                                     regulator-min-microvolt =3D <52=
+0000>;
+> >>> +                                     regulator-max-microvolt =3D <11=
+55000>;
+> >>> +                                     regulator-enable-ramp-delay =3D=
+ <256>;
+> >>> +                                     regulator-allowed-modes =3D <0 =
+1 2>;
+> >>> +                                     regulator-always-on;
+> >>> +                     };
+> >>> +
+> >>> +                     /* vbuck2 is ganged with vbuck1 */
+> >>> +
+> >>> +                     mt6319_buck3: vbuck3 {
+> >>> +                                     regulator-name =3D "pp1125_emi_=
+vdd2";
+> >>> +                                     regulator-min-microvolt =3D <10=
+60000>;
+> >>> +                                     regulator-max-microvolt =3D <11=
+70000>;
+> >>> +                                     regulator-enable-ramp-delay =3D=
+ <256>;
+> >>> +                                     regulator-allowed-modes =3D <0 =
+1 2>;
+> >>> +                                     regulator-always-on;
+> >>> +                     };
+> >>> +
+> >>> +                     mt6319_buck4: vbuck4 {
+> >>> +                                     regulator-name =3D "pp0600_emi_=
+vddq";
+> >>> +                                     regulator-min-microvolt =3D <57=
+0000>;
+> >>> +                                     regulator-max-microvolt =3D <65=
+0000>;
+> >>> +                                     regulator-enable-ramp-delay =3D=
+ <256>;
+> >>> +                                     regulator-allowed-modes =3D <0 =
+1 2>;
+> >>> +                                     regulator-always-on;
+> >>> +                     };
+> >>> +             };
+> >>> +     };
+> >>> +};
+> >>> +
+> >>>    &uart0 {
+> >>>        pinctrl-names =3D "default";
+> >>>        pinctrl-0 =3D <&uart0_pins>;
+> >>
 
