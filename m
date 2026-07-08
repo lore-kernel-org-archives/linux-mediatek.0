@@ -4,95 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD4CFC43602
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 12:21:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0AF4C43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 12:26:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Bsvd183HUzNrbaQaZyJehydG+OJhqnijLN4x6jt8zdI=; b=3ohI8kxWBrI52lUyjvOaO2nUMI
-	6EibzP/SLH68RkZLPLC8jv0UsYov5HIbLu6DgvGsR+h/j4naMmTvb+5Hk32c3IFMuPDx3/LlRrlW4
-	dTMnI44PsqXoPaXrz6rN70CvZuL6eKrpKZiXDeIMV/8+KN7qUaJI6w24/D8vrRqABsyE5jDcVRszA
-	SaycJ7rPzCjU446SLRzrWsqqirlgTvSD/zJ3so1AbeRaxnJ3W2CWTieoaqQGXVOwxccCbD8Oq3NS/
-	WC25FUNcYJ1RJXRk2wQhQnh5csEVva9+DBKhFZU/Pqe3zj2NYgUNdHOoO8FjWwMvJDmrsJohF8Yce
-	PkDpNC9A==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4yFE/LzuQwCoaoowtkf39McdJs5Na+TVKukLee8GqeQ=; b=C3qzzSytPwP7+9a10A1JQu1r9u
+	HXovfZYTuLk7lwhGlk1Rm3YbLFCf8VWQxBvqQjt5gnuWIG8tjrSIVuwV4gC4BxC84sD1O8keaffA9
+	cyL258fNq+jlYQAiOaHBYeJP3s8QZ9zd/TTQikDJq/e2AYggLlvO0wUKSCQRYuLAdGt3GKxuGOfHc
+	mXlbIhsm61wukvT3th3Vq6/tSXf9tAyc6v54fYHuFu4CFErLeDMDLDgulXXlQqEAqibHr28Ma+COf
+	Y25aF44N+8dDmlRJzJp0QEw/TnX5wLJcm1jEH3yVZxB08o4rQGForTOtw527qM85BbfjiZCKZ/TXy
+	Fs6fa+Wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whRHR-0000000H6w1-413L;
-	Wed, 08 Jul 2026 12:21:33 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1whRLj-0000000H7Lz-2MuW;
+	Wed, 08 Jul 2026 12:25:59 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whRHP-0000000H6v1-1Xxh
-	for linux-mediatek@lists.infradead.org;
-	Wed, 08 Jul 2026 12:21:32 +0000
-Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-2cc73e322dbso5636385ad.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 05:21:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783513290; x=1784118090; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Bsvd183HUzNrbaQaZyJehydG+OJhqnijLN4x6jt8zdI=;
-        b=ka78JC9pRp+GCbITMutAlCql5FiueCNOTw2+63edDcn5b6VIIDIbkX2roO9a02pg7q
-         LOfSVvsz79+EY+Iv++wcjvQxbB15Vah2VxwIsME37fb+zx+L/iyGXf448JrjnK1aI/Ob
-         moz5k+5XidTAMttXd/URlXqEfAAOqZqJRrtIYasmfleLxBjtfn2kKJqadOFuB2sa1MiU
-         6BxcoRcFB0C6SosDTjebGa2Ll+00e2bBBHJanCAt+k9TDFIc6AYQcj9jsoGWUDjKmeX2
-         l209wsx3lR3iN6sqi7lX8Pl+EnZbYyc2xEVHVccZvbGYR3jXpLJKXXYgtxoKEG/ow3uZ
-         3sKg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783513290; x=1784118090;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Bsvd183HUzNrbaQaZyJehydG+OJhqnijLN4x6jt8zdI=;
-        b=TiV/3sqstFnFPrWXM5FLNRHFF4YG3bEAevv/ITKeQFoDpFKRMxJYqA2nhXClKGgXy+
-         FafbdY1DzIn5bxUFL1GyoyKyek4wmy7POkAWVorXD9N9OW6qxZjLOWqheWldkZ0yHzmd
-         QVQHtpe4GKv+A3IO+GQP+0mxeo6WmVBWZKIzA6L8LZyOLomaDqWnOsUwQlOURc3VZW7L
-         /mRl3e/gKWFSQ6pMI3gRWJeNnu2uU40CxZd8VqN105s96HTVBWQvQOZu21mYHSPF1WP0
-         iJIpYJadKGtVync1WH2tM/DyCZ4gsrP0lX17b+fZP3ccYjUYy4yZN24vxpYfT8aetOHe
-         NY6g==
-X-Forwarded-Encrypted: i=1; AHgh+RorO51vx4SWByYq0T0RHKhSEDhISVzq04Y7s1uO/61+dFwmkwbmg28eEI4YwXBnpj+7BnKNQnc5/EpSgKtLfw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywn/dpyZqsz4EGPsWhBRiHAFn434FkbbQ2aRwvBVXRjU2bfOA+C
-	fh1xiQT8/3oPnBPFvDO/rj3Sp4Zwj4SrjoxM/7vUDV1ZbMo2w8urzjA9
-X-Gm-Gg: AfdE7cmqm5u4YmCEAPHHV7u5YoSAckkEJ9sdzCfUlIDBvEPlZ5DjZkwA/OAyJljgNor
-	zCOMpXbNHPlOZL1M49EPkUMTlVW5x3NnqXotIEeOyvZv6Pj6aRPxZTCfDYFByCLpyvGt3k/pOvg
-	pLbxzlFZvO6ZaOyZ/j+tNstXE7badOGFqYArfVd4z8scIV1Iv2wBFJGvnF/lDPD+eCHCrcGkpSf
-	UHPfkPUF8qsWsCP6fBiNfTsulmdQM6Ou3qgUF8wbQ5YX5KFImi0QyXNT5nbVW02sw8jrPbTWgG6
-	f0X/67BrXCwWCKvgNYcgRc3/jDWbdCg7d//4yX7hIaHFP80/jCRYz032PaM4FmWbJ11lj2sXzLi
-	js8+svFQc6XPclG8Cpa7obpeI2Tl4RcFACGgbuv0toxOTLr6BPAG7UUJs0LF8EGv+PqriXJo=
-X-Received: by 2002:a17:902:ff8e:b0:2ca:329:3da1 with SMTP id d9443c01a7336-2ccea3ca5eemr24449855ad.16.1783513290120;
-        Wed, 08 Jul 2026 05:21:30 -0700 (PDT)
-Received: from lgs.. ([2001:250:5800:1000::f280])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9d3d474sm27620135ad.70.2026.07.08.05.21.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jul 2026 05:21:29 -0700 (PDT)
-From: Guangshuo Li <lgs201920130244@gmail.com>
-To: Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-	Houlong Wei <houlong.wei@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	Eizan Miyamoto <eizan@chromium.org>,
-	Enric Balletbo i Serra <eballetbo@kernel.org>,
-	linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Guangshuo Li <lgs201920130244@gmail.com>
-Subject: [PATCH] media: mtk-mdp: unregister VPU watchdog handler
-Date: Wed,  8 Jul 2026 20:19:10 +0800
-Message-ID: <20260708121910.758166-1-lgs201920130244@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1whRLd-0000000H7Ka-3tJd;
+	Wed, 08 Jul 2026 12:25:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783513550;
+	bh=W8v2dINa6Dgjvzp5ci4OC5UR98N/+SgHHDA47TjTizs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=YpQo4bDP6QpLzUXt0yiyBhnFDYbzmEeBYK32e5G9/0lDmOH8xeh/OrS4Ac0l2FMgd
+	 8rKrDA+SG2G0o0XWQrg3FMmFceW1sCemnB+xRNOTuR2N3ccxsD+hc6C31FezJuNRx4
+	 wzvkt8Pt1p9c3ubjRZU5UpjPqZtRx9XavN9+95QGQnenzfQFzgLloELGOT6MhbEaHI
+	 wIRVWJpXLOShmLtnOMk1/14oI4ObpGWmAFphlj89H5EiRFF2q5mXFy0HZMtTZKYp4A
+	 LQGRLNPufkpXn0pvS48+Se26piJX+iMNY9vtH3QCHMeECkVigmlOsMruL/bfuzEUJs
+	 b1C1ZZHRE5VNw==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 95AB817E0564;
+	Wed, 08 Jul 2026 14:25:49 +0200 (CEST)
+Message-ID: <c4294b5c-7f53-473f-b1db-d21527d6a2ce@collabora.com>
+Date: Wed, 8 Jul 2026 14:25:49 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] drm/mediatek: mtk_dsi: enable hs clock during pre-enable
+To: Gary Bisson <bisson.gary@gmail.com>, Adam Thiede <me@adamthiede.com>
+Cc: Thorsten Leemhuis <regressions@leemhuis.info>,
+ =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "simona@ffwll.ch" <simona@ffwll.ch>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "regressions@lists.linux.dev" <regressions@lists.linux.dev>
+References: <20260120-mtkdsi-v1-1-b0f4094f3ac3@gmail.com>
+ <42607fa4-485d-4142-b31c-7bfac71118d2@adamthiede.com> <ajka2220depklK1_@owl5>
+ <bac79214-050d-448b-be63-0586d45c807d@adamthiede.com>
+ <f0d99b1a-e383-4d14-adb1-4ccab46efddb@leemhuis.info>
+ <5baeb90d2c3736df67ad075ede4ac765bfeaed2d.camel@mediatek.com>
+ <84233951-ee22-4980-9f17-2af1df51fdbf@leemhuis.info>
+ <6fed12a6-0c94-477f-8a2e-466c33ea2e29@collabora.com>
+ <dbc251f2-0c67-4970-a101-c19129055082@adamthiede.com> <ak4-0SkPaeU3N2lh@owl5>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <ak4-0SkPaeU3N2lh@owl5>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_052131_407568_850737CD 
-X-CRM114-Status: GOOD (  14.14  )
+X-CRM114-CacheID: sfid-20260708_052554_127178_8946CF95 
+X-CRM114-Status: GOOD (  31.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,88 +92,145 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_mdp_probe() registers the MDP reset handler with the VPU watchdog
-code and passes the MDP device as the private data.
+On 7/8/26 14:13, Gary Bisson wrote:
+> Hi Adam,
+> 
+> On Tue, Jul 07, 2026 at 08:25:41PM -0500, Adam Thiede wrote:
+>> On 7/7/26 05:38, AngeloGioacchino Del Regno wrote:
+>>> On 7/7/26 10:51, Thorsten Leemhuis wrote:
+>>>> On 7/7/26 04:20, CK Hu (胡俊光) wrote:
+>>>>> On Mon, 2026-07-06 at 12:16 +0200, Thorsten Leemhuis wrote:
+>>>>>> On 6/22/26 15:23, Adam Thiede wrote:
+>>>>>>> On 6/22/26 06:22, Gary Bisson wrote:
+>>>>>>>> On Thu, Jun 18, 2026 at 04:06:28PM -0500, Adam Thiede wrote:
+>>>>>>>>> On 1/20/26 05:36, Gary Bisson wrote:
+>>>>>>>>>> Some bridges, such as the TI SN65DSI83, require the HS clock to be
+>>>>>>>>>> running in order to lock its PLL during its
+>>>>>>>>>> own pre-enable function.
+>>>>>>>>>>
+>>>>>>>>>> Without this change, the bridge gives the following error:
+>>>>>>>>>> sn65dsi83 14-002c: failed to lock PLL, ret=-110
+>>>>>>>>>> sn65dsi83 14-002c: Unexpected link status 0x01
+>>>>>>>>>> sn65dsi83 14-002c: reset the pipe
+>>>>>>>>>> [...]
+>>>>>>>>>
+>>>>>>>>> This commit was part of 7.1 and caused a problem for me.
+>>>>>>>>> I'm running postmarketOS (basically Alpine Linux) on a Lenovo C330
+>>>>>>>>> chromebook with a Mediatek MT8173 processor.
+>>>>>>>>> The problem: when the display on my laptop
+>>>>>>>>> powers off (via suspend or
+>>>>>>>>> idle,
+>>>>>>>>> like xset dpms off) the picture does not come back when the display
+>>>>>>>>> powers
+>>>>>>>>> back on (from resume). The display backlight
+>>>>>>>>> comes on and brightness is
+>>>>>>>>> adjustable but there is no picture. The only fix is to reboot.
+>>>>>>>>>
+>>>>>>>>> Reverting this commit and applying it as a patch on top of 7.1
+>>>>>>>>> addresses the
+>>>>>>>>> issue for me.
+>>>>>>>>>
+>>>>>>>>> You can view the config I'm using here:
+>>>>>>>>> https://urldefense.com/v3/__https://gitlab.postmarketos.org/
+>>>>>>>>> postmarketOS/pmaports/-/__;!!CTRNKA9wMg0ARbw! jrsPDtSEUdaINzLlq92Li8gmsEBkTOxZ6WUzNHjvIN6CyOJjHiHkNSOhIRPXFTLPlaYlxU2uvryVkwjUAN9bmax5$
+>>>>>>>>> merge_requests/8819
+>>>>>>>>>
+>>>>>>>>> Is there any sort of testing or other debugging
+>>>>>>>>> info I can provide to
+>>>>>>>>> help
+>>>>>>>>> address this issue?
+>>>>>>>>
+>>>>>>>> Thanks for reporting the issue, could you share some
+>>>>>>>> logs? Is the driver
+>>>>>>>> saying anything during resume? Also, what type of
+>>>>>>>> panel is used on that
+>>>>>>>> chromebook?
+>>>>>>>
+>>>>>>> The curious thing is that there are no real logs in dmesg or /var/log/
+>>>>>>> messages about this. This picture just fails to come
+>>>>>>> back. If there are
+>>>>>>> some kernel params I can set to get deeper logging, that
+>>>>>>> would help, but
+>>>>>>> I'm not aware of any.
+>>>>>>>
+>>>>>>> I think the panel is a "BOE NV116WHM-T00" - I used this command to get
+>>>>>>> info: cat /sys/class/drm/card0-eDP-1/edid | edid-decode
+>>>>>>>
+>>>>>>> Output:
+>>>>>>> https://urldefense.com/v3/__https://termbin.com/8nbd__;!!
+>>>>>>> CTRNKA9wMg0ARbw! jrsPDtSEUdaINzLlq92Li8gmsEBkTOxZ6WUzNHjvIN6CyOJjHiHkNSOhIRPXFTLPlaYlxU2uvryVkwjUAJooSyqL$
+>>>>>>
+>>>>>> This looked stalled. If I'm mistaken here, please let me known; but if
+>>>>>> no solution is in sight, should we maybe just revert the change until a
+>>>>>> proper was found?
+>>>>>
+>>>>> It's welcome anyone to provide a revert patch,
+>>>>> but I would still wait for the fixup patch until 7.2-rc4.
+>>>>> If no fixup patch exist, then apply the revert patch.
+>>>>   From my understanding of things the position in the devel cycle doesn't
+>>>> matter much in a case like this. To quote Linus statements from
+>>>> https://www.kernel.org/doc/html/latest/process/handling-
+>>>> regressions.html#on-how-quickly-regressions-should-be-fixed
+>>>>
+>>>> """
+>>>>   From 2026-01-22:
+>>>>
+>>>>    But a user complaining should basically result in an immediate fix -
+>>>>    possibly a "revert and rethink".
+>>>>
+>>>> With a later clarification on 2026-01-28:
+>>>>
+>>>>    It's also worth noting that "immediate" obviously doesn't mean "right
+>>>>    this *second* when the problem has been reported".
+>>>>
+>>>>    But if it's a regression with a known commit that caused it, I think
+>>>>    the rule of thumb should generally be "within a week", preferably
+>>>>    before the next rc.
+>>>> """
+>>>>
+>>>> Adam reported the problem about three weeks ago, so we are way past the
+>>>> "rule of thumb" timeframe Linus set.
+>>>>
+>>>> Ciao, Thorsten
+>>>
+>>> This is a kind of odd situation here. The fix from Adam is actually
+>>> correct, as in,
+>>> the SN65DSI83 bridge gets broken without...
+>>>
+>>> ....but then, there's some more oddness going on: I tried to reproduce
+>>> this on my
+>>> MT8173 Elm device, but there I can resume the system just fine, and the
+>>> display is
+>>> up and running like normal?
+>>>
+>>> I'm not sure what to advice here at this point - just adding some info.
+>>>
+>>> Cheers,
+>>> Angelo
+>> Angelo, would you mind sharing your config, and the details of what you're
+>> running? It might be a configuration difference.
+> 
+> As a FYI here is the latest branch I tested that patch on:
+> https://github.com/gibsson/linux-next/commits/master-mtk/
+> 
+> As far as I remember suspend/resume was ok. It was tested with a
+> Tungsten510 SMARC SOM (MT8370) + sn65dsi83 + tm070jdhg30 display.
+> Both the bridge and the display are mainline, you can see that the main
+> change is in the defconfig where a bunch of options are changed to be
+> built-in (for NFS booting).
+> 
+> I'll try to repro against latest kernel this week and report back.
+> 
+> In your case, is the panel upstream as well?
+> 
+> Regards,
+> Gary
 
-The handler is stored in the VPU device and can outlive the MDP probe or
-remove path. If probe fails after the handler has been registered, or if
-the MDP device is removed, the VPU watchdog table can keep a pointer to
-an MDP object that is about to be released. A later VPU watchdog reset can
-then call mtk_mdp_reset_handler() with a stale pointer and dereference
-freed memory while queuing the MDP watchdog work.
+Gary, thanks for chiming in.
 
-Add a VPU watchdog unregister helper and clear the MDP watchdog handler
-from both the probe error path and the remove path before dropping the VPU
-device reference.
+The machine he's referring to is using a Parade PS8640 DSI to eDP bridge: check
+mt8173-elm.dtsi for (slightly) more information.
 
-Fixes: ee18fc7b0b95 ("media: mtk-mdp: handle vpu_wdt_reg_handler() errors during probe")
-Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
----
- .../media/platform/mediatek/mdp/mtk_mdp_core.c    |  2 ++
- drivers/media/platform/mediatek/vpu/mtk_vpu.c     | 15 +++++++++++++++
- drivers/media/platform/mediatek/vpu/mtk_vpu.h     |  2 ++
- 3 files changed, 19 insertions(+)
-
-diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-index 8432833814f3..5ccb7aa925d9 100644
---- a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-+++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-@@ -221,6 +221,7 @@ static int mtk_mdp_probe(struct platform_device *pdev)
- 	return 0;
- 
- err_reg_handler:
-+	vpu_wdt_unreg_handler(mdp->vpu_dev, VPU_RST_MDP);
- 	platform_device_put(mdp->vpu_dev);
- 
- err_vpu_get_dev:
-@@ -254,6 +255,7 @@ static void mtk_mdp_remove(struct platform_device *pdev)
- 
- 	pm_runtime_disable(&pdev->dev);
- 	vb2_dma_contig_clear_max_seg_size(&pdev->dev);
-+	vpu_wdt_unreg_handler(mdp->vpu_dev, VPU_RST_MDP);
- 	platform_device_put(mdp->vpu_dev);
- 	mtk_mdp_unregister_m2m_device(mdp);
- 	v4l2_device_unregister(&mdp->v4l2_dev);
-diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.c b/drivers/media/platform/mediatek/vpu/mtk_vpu.c
-index 8d8319f0cd22..5dc50a658c2b 100644
---- a/drivers/media/platform/mediatek/vpu/mtk_vpu.c
-+++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.c
-@@ -437,6 +437,21 @@ int vpu_wdt_reg_handler(struct platform_device *pdev,
- }
- EXPORT_SYMBOL_GPL(vpu_wdt_reg_handler);
- 
-+void vpu_wdt_unreg_handler(struct platform_device *pdev, enum rst_id id)
-+{
-+	struct mtk_vpu *vpu = platform_get_drvdata(pdev);
-+
-+	if (!vpu || id >= VPU_RST_MAX)
-+		return;
-+
-+	mutex_lock(&vpu->vpu_mutex);
-+	vpu->wdt.handler[id].reset_func = NULL;
-+	vpu->wdt.handler[id].priv = NULL;
-+	mutex_unlock(&vpu->vpu_mutex);
-+}
-+EXPORT_SYMBOL_GPL(vpu_wdt_unreg_handler);
-+
-+
- unsigned int vpu_get_vdec_hw_capa(struct platform_device *pdev)
- {
- 	struct mtk_vpu *vpu = platform_get_drvdata(pdev);
-diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.h b/drivers/media/platform/mediatek/vpu/mtk_vpu.h
-index 3951547e9ec5..2ccb481a04cf 100644
---- a/drivers/media/platform/mediatek/vpu/mtk_vpu.h
-+++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.h
-@@ -141,6 +141,8 @@ int vpu_wdt_reg_handler(struct platform_device *pdev,
- 			void vpu_wdt_reset_func(void *priv),
- 			void *priv, enum rst_id id);
- 
-+void vpu_wdt_unreg_handler(struct platform_device *pdev, enum rst_id id);
-+
- /**
-  * vpu_get_vdec_hw_capa - get video decoder hardware capability
-  *
--- 
-2.43.0
-
+Cheers,
+Angelo
 
