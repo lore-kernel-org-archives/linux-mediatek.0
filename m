@@ -4,204 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C3E3C43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 12:18:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD4CFC43602
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 12:21:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XGJUac9104TObIpNWbR9EWZ0V9tMEEp8kOa0oEcOx3w=; b=uHcuAAoDqBLSujsqr9fXWKW+7M
-	M1NoahxZbFULZ8lPi+VXqb2JTFjAdzPnn2I0RKJNx/VQovVkQ5RyvENgegmM/Tu4U/YRo/kpL1ST2
-	8/fRhIBDbI1jEn0X44hK7HkzvmXuug+sqJr6+bzvys8iAF1KlTs/Ebd7WEylLBsXdF/lNhsjoCKyK
-	+GFvmbx0nct0Fwq8Ws9E6Lw/0PeoO9U76o7DcMGS0DjBh92hsH22kNu3P4zIfM8fiKjjEugAea8ou
-	2U47SUoPqSJlye9r8Pu5Wt6zf+NKeZTyGuhScmZGcq6+TV8CQFtXGSftKjNPPF1LEETqUKQjWexf9
-	uX+WfIAg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Bsvd183HUzNrbaQaZyJehydG+OJhqnijLN4x6jt8zdI=; b=3ohI8kxWBrI52lUyjvOaO2nUMI
+	6EibzP/SLH68RkZLPLC8jv0UsYov5HIbLu6DgvGsR+h/j4naMmTvb+5Hk32c3IFMuPDx3/LlRrlW4
+	dTMnI44PsqXoPaXrz6rN70CvZuL6eKrpKZiXDeIMV/8+KN7qUaJI6w24/D8vrRqABsyE5jDcVRszA
+	SaycJ7rPzCjU446SLRzrWsqqirlgTvSD/zJ3so1AbeRaxnJ3W2CWTieoaqQGXVOwxccCbD8Oq3NS/
+	WC25FUNcYJ1RJXRk2wQhQnh5csEVva9+DBKhFZU/Pqe3zj2NYgUNdHOoO8FjWwMvJDmrsJohF8Yce
+	PkDpNC9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whREl-0000000H6Sw-1Xpa;
-	Wed, 08 Jul 2026 12:18:47 +0000
-Received: from mx0a-001ae601.pphosted.com ([67.231.149.25] helo=mx0b-001ae601.pphosted.com)
+	id 1whRHR-0000000H6w1-413L;
+	Wed, 08 Jul 2026 12:21:33 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whREi-0000000H6Rh-3qQ2;
-	Wed, 08 Jul 2026 12:18:46 +0000
-Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
-	by mx0a-001ae601.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 668934Ia3306096;
-	Wed, 8 Jul 2026 07:18:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=
-	PODMain02222019; bh=XGJUac9104TObIpNWbR9EWZ0V9tMEEp8kOa0oEcOx3w=; b=
-	IkZBJ+raRb1vzrWXS3GjkgQwqZGv/I9JJhUN2fegKX7hcUbkRPfOq2Q/YyCjxh2Z
-	2pstUZ5d45kPgW4C24jxT+3sSvqWVcYD+NBlOw2MiNaLfzg/9F2EA0w1jkmbvepx
-	O+MIQ8ccSqWy10Ywkku/hOukZnqaCkg3daVJNw0/Nobz6sDAyuvWj5+nn6Ghcv3C
-	UkekfD0ACRFmOp1mOT+wp5wJFQjOlMVZMlZ/wuY0dyNCqG4XGNIol/OjoaMIsIL0
-	0ZQevavqyy0O5znxxDG35YwBYBKBTi1Pi98Wsif/ATgZAkS41POfPPTBTHfR6P5I
-	m+Pz17YEduFt3YO4h7p8Dg==
-Received: from sn4pr2101cu001.outbound.protection.outlook.com (mail-southcentralusazon11022136.outbound.protection.outlook.com [40.93.195.136])
-	by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 4f6yjxp4bg-1
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
-	Wed, 08 Jul 2026 07:18:44 -0500 (CDT)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Za+dnQje+JZMp80ccp6WDxKTSEKZDUhQPTFGaWN3gneRCZEUWLjInvxRYrajjK/ZVX9u/Mb1i8i2/kbcSM0wnU5pDGAVkwdwSMLnSo02XdXHM95csgZtiysVqqfHhqvDRmYqSumSRe/KLxX/f/FK2K0cpgvLaI43P1HNZc1RgJowlut0xJe59STvWAYlZ9KtTxZ9aF3XVvNayZpBfgZFoUEE8tjJaHHn0fn6j4eCrDANoT67JL2LvLxZEIYoIoBi8xExMvwmgi/DwdFqPAAZXhL9XKsIKsZyAvMhF4VI4tknMccgmzhbyKBkuL7Rj588MeehnPbMuk16zCP1Fnhv7g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=BQz++E58YQqpGecUeeqhedx547eJTWVzup9T6XFgHeY=;
- b=EVIvcE0y9t2bFQpkBMeXqIw/frIfxlgot5QuvVQV37RXupvwraH7sb5/WfgSrMH2dFSNNtw606hpc0y+I5/opiDnerobIrIVP2SwJWF2QS0qrcRiS9LK0Coj63n8h6zm6DTQPRYrU2zjijRvmTFnnJrn97h7N4ZLHpjUQLvhwXSS4uJpNh4X9V/imBkFz55M7EBN7fSntoNbxcoT9TWue6w8riS3cE+hAYz007nsTL8FdO1YKJKCTs3iNDBZTORYScO3puZp+5At5VYmcbl0/Ln6kuKEPNSRKeDKBXfupfyPQwhYsRTeY18J7wkbIXy07e9yHxR68MvEQuuFMSMALw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=softfail (sender ip
- is 84.19.233.75) smtp.rcpttodomain=lists.infradead.org
- smtp.mailfrom=opensource.cirrus.com; dmarc=fail (p=reject sp=reject pct=100)
- action=oreject header.from=opensource.cirrus.com; dkim=none (message not
- signed); arc=none (0)
+	id 1whRHP-0000000H6v1-1Xxh
+	for linux-mediatek@lists.infradead.org;
+	Wed, 08 Jul 2026 12:21:32 +0000
+Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-2cc73e322dbso5636385ad.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 05:21:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=cirrus4.onmicrosoft.com; s=selector2-cirrus4-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=BQz++E58YQqpGecUeeqhedx547eJTWVzup9T6XFgHeY=;
- b=xBxoOesSJUSbT7He9w4P77Knb4Q7VuH2vcE/koEN7BkjC1Pub72vvzUS4q0tAOpd/iI7CJeXkwk1s57BiKCXMmDGyl7M0ttDKCfpuzK91UsvkjLyxv/HZ1yrguCsGR0w9xrdBPqnNVrTUMiYi6qxPCsD5kt/Gw9KsMNUyHp5re0=
-Received: from MN0P221CA0004.NAMP221.PROD.OUTLOOK.COM (2603:10b6:208:52a::11)
- by DS7PR19MB4437.namprd19.prod.outlook.com (2603:10b6:5:2c4::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.15; Wed, 8 Jul
- 2026 12:18:37 +0000
-Received: from BL02EPF0002992C.namprd02.prod.outlook.com
- (2603:10b6:208:52a:cafe::61) by MN0P221CA0004.outlook.office365.com
- (2603:10b6:208:52a::11) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.21.202.10 via Frontend Transport; Wed, 8
- Jul 2026 12:18:37 +0000
-X-MS-Exchange-Authentication-Results: spf=softfail (sender IP is 84.19.233.75)
- smtp.mailfrom=opensource.cirrus.com; dkim=none (message not signed)
- header.d=none;dmarc=fail action=oreject header.from=opensource.cirrus.com;
-Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
- opensource.cirrus.com discourages use of 84.19.233.75 as permitted sender)
-Received: from edirelay1.ad.cirrus.com (84.19.233.75) by
- BL02EPF0002992C.mail.protection.outlook.com (10.167.249.57) with Microsoft
- SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.181.6
- via Frontend Transport; Wed, 8 Jul 2026 12:18:37 +0000
-Received: from ediswmail9.ad.cirrus.com (ediswmail9.ad.cirrus.com [198.61.86.93])
-	by edirelay1.ad.cirrus.com (Postfix) with ESMTPS id 4FC30406542;
-	Wed,  8 Jul 2026 12:18:36 +0000 (UTC)
-Received: from opensource.cirrus.com (ediswmail9.ad.cirrus.com [198.61.86.93])
-	by ediswmail9.ad.cirrus.com (Postfix) with ESMTPSA id 2948282025A;
-	Wed,  8 Jul 2026 12:18:36 +0000 (UTC)
-Date: Wed, 8 Jul 2026 13:18:35 +0100
-From: Charles Keepax <ckeepax@opensource.cirrus.com>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
-Cc: Lee Jones <lee@kernel.org>, Linus Walleij <linusw@kernel.org>,
-        Nicolas Ferre <nicolas.ferre@microchip.com>,
-        Alexandre Belloni <alexandre.belloni@bootlin.com>,
-        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-        Chen-Yu Tsai <wens@kernel.org>,
-        Florian Fainelli <florian.fainelli@broadcom.com>,
-        Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-        Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-        Marek Vasut <marek.vasut+renesas@gmail.com>,
-        James Ogletree <jogletre@opensource.cirrus.com>,
-        Fred Treven <fred.treven@cirrus.com>,
-        Ben Bright <ben.bright@cirrus.com>,
-        David Rhodes <david.rhodes@cirrus.com>,
-        Richard Fitzgerald <rf@opensource.cirrus.com>,
-        Support Opensource <support.opensource@diasemi.com>,
-        Krzysztof Kozlowski <krzk@kernel.org>,
-        Peter Griffin <peter.griffin@linaro.org>,
-        Alim Akhtar <alim.akhtar@samsung.com>,
-        Tim Harvey <tharvey@gateworks.com>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
-        Neal Gompa <neal@gompa.dev>,
-        Mathieu Dubois-Briand <mathieu.dubois-briand@bootlin.com>,
-        Chanwoo Choi <cw00.choi@samsung.com>,
-        Luca Ceresoli <luca.ceresoli@bootlin.com>,
-        =?iso-8859-1?Q?Andr=E9?= Draszik <andre.draszik@linaro.org>,
-        Saravanan Sekar <sravanhome@gmail.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>,
-        Jonathan =?iso-8859-1?Q?Neusch=E4fer?= <j.neuschaefer@gmx.net>,
-        Aaro Koskinen <aaro.koskinen@iki.fi>,
-        Andreas Kemnade <andreas@kemnade.info>,
-        Kevin Hilman <khilman@baylibre.com>, Roger Quadros <rogerq@kernel.org>,
-        Tony Lindgren <tony@atomide.com>,
-        Matti Vaittinen <mazziesaccount@gmail.com>,
-        Orson Zhai <orsonzhai@gmail.com>,
-        Baolin Wang <baolin.wang@linux.alibaba.com>,
-        Chunyan Zhang <zhang.lyra@gmail.com>,
-        Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
-        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-        Alexandre Torgue <alexandre.torgue@foss.st.com>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>,
-        Liviu Dudau <liviu.dudau@arm.com>,
-        Sudeep Holla <sudeep.holla@kernel.org>,
-        Lorenzo Pieralisi <lpieralisi@kernel.org>,
-        Geert Uytterhoeven <geert+renesas@glider.be>,
-        Magnus Damm <magnus.damm@gmail.com>, mfd@lists.linux.dev,
-        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        patches@opensource.cirrus.com, linux-rpi-kernel@lists.infradead.org,
-        linux-renesas-soc@vger.kernel.org, linux-sound@vger.kernel.org,
-        linux-samsung-soc@vger.kernel.org, linux-amlogic@lists.infradead.org,
-        asahi@lists.linux.dev, linux-mediatek@lists.infradead.org,
-        imx@lists.linux.dev, linux-omap@vger.kernel.org,
-        linux-arm-msm@vger.kernel.org,
-        linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH v2 21/23] mfd: Unify style of of_device_id arrays
-Message-ID: <ak5AG3ReEVvDsAAC@opensource.cirrus.com>
-References: <cover.1783507945.git.u.kleine-koenig@baylibre.com>
- <ce43f6ec640a7835d64d3d696ff09229c3d31075.1783507945.git.u.kleine-koenig@baylibre.com>
+        d=gmail.com; s=20251104; t=1783513290; x=1784118090; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Bsvd183HUzNrbaQaZyJehydG+OJhqnijLN4x6jt8zdI=;
+        b=ka78JC9pRp+GCbITMutAlCql5FiueCNOTw2+63edDcn5b6VIIDIbkX2roO9a02pg7q
+         LOfSVvsz79+EY+Iv++wcjvQxbB15Vah2VxwIsME37fb+zx+L/iyGXf448JrjnK1aI/Ob
+         moz5k+5XidTAMttXd/URlXqEfAAOqZqJRrtIYasmfleLxBjtfn2kKJqadOFuB2sa1MiU
+         6BxcoRcFB0C6SosDTjebGa2Ll+00e2bBBHJanCAt+k9TDFIc6AYQcj9jsoGWUDjKmeX2
+         l209wsx3lR3iN6sqi7lX8Pl+EnZbYyc2xEVHVccZvbGYR3jXpLJKXXYgtxoKEG/ow3uZ
+         3sKg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783513290; x=1784118090;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Bsvd183HUzNrbaQaZyJehydG+OJhqnijLN4x6jt8zdI=;
+        b=TiV/3sqstFnFPrWXM5FLNRHFF4YG3bEAevv/ITKeQFoDpFKRMxJYqA2nhXClKGgXy+
+         FafbdY1DzIn5bxUFL1GyoyKyek4wmy7POkAWVorXD9N9OW6qxZjLOWqheWldkZ0yHzmd
+         QVQHtpe4GKv+A3IO+GQP+0mxeo6WmVBWZKIzA6L8LZyOLomaDqWnOsUwQlOURc3VZW7L
+         /mRl3e/gKWFSQ6pMI3gRWJeNnu2uU40CxZd8VqN105s96HTVBWQvQOZu21mYHSPF1WP0
+         iJIpYJadKGtVync1WH2tM/DyCZ4gsrP0lX17b+fZP3ccYjUYy4yZN24vxpYfT8aetOHe
+         NY6g==
+X-Forwarded-Encrypted: i=1; AHgh+RorO51vx4SWByYq0T0RHKhSEDhISVzq04Y7s1uO/61+dFwmkwbmg28eEI4YwXBnpj+7BnKNQnc5/EpSgKtLfw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywn/dpyZqsz4EGPsWhBRiHAFn434FkbbQ2aRwvBVXRjU2bfOA+C
+	fh1xiQT8/3oPnBPFvDO/rj3Sp4Zwj4SrjoxM/7vUDV1ZbMo2w8urzjA9
+X-Gm-Gg: AfdE7cmqm5u4YmCEAPHHV7u5YoSAckkEJ9sdzCfUlIDBvEPlZ5DjZkwA/OAyJljgNor
+	zCOMpXbNHPlOZL1M49EPkUMTlVW5x3NnqXotIEeOyvZv6Pj6aRPxZTCfDYFByCLpyvGt3k/pOvg
+	pLbxzlFZvO6ZaOyZ/j+tNstXE7badOGFqYArfVd4z8scIV1Iv2wBFJGvnF/lDPD+eCHCrcGkpSf
+	UHPfkPUF8qsWsCP6fBiNfTsulmdQM6Ou3qgUF8wbQ5YX5KFImi0QyXNT5nbVW02sw8jrPbTWgG6
+	f0X/67BrXCwWCKvgNYcgRc3/jDWbdCg7d//4yX7hIaHFP80/jCRYz032PaM4FmWbJ11lj2sXzLi
+	js8+svFQc6XPclG8Cpa7obpeI2Tl4RcFACGgbuv0toxOTLr6BPAG7UUJs0LF8EGv+PqriXJo=
+X-Received: by 2002:a17:902:ff8e:b0:2ca:329:3da1 with SMTP id d9443c01a7336-2ccea3ca5eemr24449855ad.16.1783513290120;
+        Wed, 08 Jul 2026 05:21:30 -0700 (PDT)
+Received: from lgs.. ([2001:250:5800:1000::f280])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9d3d474sm27620135ad.70.2026.07.08.05.21.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Jul 2026 05:21:29 -0700 (PDT)
+From: Guangshuo Li <lgs201920130244@gmail.com>
+To: Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+	Houlong Wei <houlong.wei@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Hans Verkuil <hverkuil@kernel.org>,
+	Eizan Miyamoto <eizan@chromium.org>,
+	Enric Balletbo i Serra <eballetbo@kernel.org>,
+	linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Guangshuo Li <lgs201920130244@gmail.com>
+Subject: [PATCH] media: mtk-mdp: unregister VPU watchdog handler
+Date: Wed,  8 Jul 2026 20:19:10 +0800
+Message-ID: <20260708121910.758166-1-lgs201920130244@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <ce43f6ec640a7835d64d3d696ff09229c3d31075.1783507945.git.u.kleine-koenig@baylibre.com>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL02EPF0002992C:EE_|DS7PR19MB4437:EE_
-X-MS-Office365-Filtering-Correlation-Id: 68a28bc5-46db-42c1-1932-08dedceb09dc
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700016|61400799027|23010399003|7416014|376014|82310400026|11063799006|56012099006|5023799004|4143699003|22082099003|16102099003|18002099003;
-X-Microsoft-Antispam-Message-Info: dNN+PCMXP3dNBGx2Acjn7RSsQiqZp8uFLYQgGEMzLAzvXJ7UA2OpJI00vgG7oZi4G2Zd4HlNIsIW5jR+p9GNmHaERVwbkdsi1+YcrlGEycOrNmMfXJyffBqMwWOM11E21kf52MlI3oNg5yXLzK7T28PeLY9II/NnMF62ua7Nt+UQjoIvG3NOfEwSIlbSDzL8LTQrL2tKIQIKXzGRqRqjT045mhhZEMU3TViEUlp1CmvCDFdtKGD6S8nLU+KvCXPepBD6h/HWhe84zCf/VW3Q2C0V97ToZ9sUdV/yaSXUC1g44yo5ftPxxx07fBezQnjOpMMgoN/EoqYBtcEwVFIfSvV0A5bK/k6IZ9PAPGnmT99MxZMRxNG2TeeEw9bLXwpMYutz0pQSevUdVgZ31XERHi1g+p7t5yGbLcuwu6zX/Km1z7QKXYL03Nm50Bpp5K0IpcL47rxZt2Zupfr6A3GNWLrkkeJhSixCJHnph9cTLirGwqlydjRLVJ+Zsxinwe5Tn1iRia6+p4pFuS7JHCZPXq0zUmQtst8r8Gcex6vWgMe5UaQt43So+pKJR+FrcELJJ8jVPztxoo6/EPd7MiI1K+OZ3a9qgSSpllqZkk381KdCrBJ2FJvdDxuxFcmvXuMAWjxrkpdodc9ZCGnCwqL6T8n4h0EGCa8sQOA6BNXkIvLxqguYmPj9lJtFBwC3s97bY1yLcAfF+g0mC4ryCaSsYg==
-X-Forefront-Antispam-Report: CIP:84.19.233.75;CTRY:GB;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:edirelay1.ad.cirrus.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(36860700016)(61400799027)(23010399003)(7416014)(376014)(82310400026)(11063799006)(56012099006)(5023799004)(4143699003)(22082099003)(16102099003)(18002099003);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: Y+W/UKYfxPi2pz5l8SMpCjvaZeNsEDM1v4bzL3wNk6mO/iVxe3AHF4M6p3HnwOWD5tFVSsodiRyTWvG/41yb/qowp7nnmd1iJ3AlzanXM4M0XRX+9a46Iern16VtE/dctOjuw/BorQ8m04yonxFXZ6d7p1IyWCyNzEo5NFG9X7rNDUEko29DsY2k8Nlz5XKkOLAg8Wyg3EKRsX6U5UpFm89N8C4o1scffH2oJ+r/bzPe2qqH21XdQgroQgAS/+k0sId3dQBkx5nYIYknrIVwGgvkmgEaJa0P2j32JUpi3ZDTSVnPAmisyyCOg5d7v31aOOiPC09SVPKr2hLg1d0VkRrTLhRGlU9uThdjH7BD149Mwki1ueyrZ7BLu5bVgFPBOH0hycznJ0J8x1U909+k3ejdUPctUGqn6+X4YZrPpaku3cqS79PaCgXRID6zuEr1
-X-Exchange-RoutingPolicyChecked: YlW4LBdvqj8Vkw6H2aPWjK/IZsmXvBongAE14JgyeUxzWwqsh6DYxxMGDx1Ph/G7szI2AfO4BgmlUnhgBgi4glRKZXLLZSv8C0LoTDrkLkqos6KLSLccDIGobWh3O8MeAMcBDp0rQ3tJm87/UiAjr4YA93aqXrTIbEbNMQh91hyKTI/+btdasaAgk/QPDPBHQ9ciBYpk+YxNxMDumyjLtEwiQ0aldnqtBV5uW8j8reuLMTPVqaB8KraEyrnITx0dA8Q7t/GdvfHDlv/mg0DXpBBbJRC4J15UUkhHn98qzx8TsP1fMAYh0txOs4WeH9RCgrKUaf2PLbr6EBoGxcbl1A==
-X-OriginatorOrg: opensource.cirrus.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Jul 2026 12:18:37.1994
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 68a28bc5-46db-42c1-1932-08dedceb09dc
-X-MS-Exchange-CrossTenant-Id: bec09025-e5bc-40d1-a355-8e955c307de8
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=bec09025-e5bc-40d1-a355-8e955c307de8;Ip=[84.19.233.75];Helo=[edirelay1.ad.cirrus.com]
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TreatMessagesAsInternal-BL02EPF0002992C.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR19MB4437
-X-Authority-Analysis: v=2.4 cv=Fo81OWrq c=1 sm=1 tr=0 ts=6a4e4024 cx=c_pps
- a=2hJN3FG5vRdYsizhUtvj5Q==:117 a=h1hSm8JtM9GN1ddwPAif2w==:17
- a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
- a=8nJEP1OIZ-IA:10 a=RAioF0-LDSMA:10 a=s63m1ICgrNkA:10 a=RWc_ulEos4gA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=iX4cTi3TZMoOKdANLEfx:22 a=Dj2-6B8FqX4mGL0U3gbX:22
- a=IpJZQVW2AAAA:8 a=w1d2syhTAAAA:8 a=Dc1nfGASFo0QrZ5EXQ8A:9 a=3ZKOabzyN94A:10
- a=wPNLvfGTeEIA:10 a=IawgGOuG5U0WyFbmm1f5:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA4MDEyMCBTYWx0ZWRfX1uloLmf0t/ao
- 761/Ct/lnjjBxRUW7PnQYIp0stqXGPTVksQUAK6+4drkMLSm1GWEAwb5JeZgSXaNeaDu6dGlM9K
- N/Sk0F/RO5lgb3XJ9N4AIsHDdXL6ELw=
-X-Proofpoint-GUID: n02IjOAvDwPUpUShZRVgjN3fPeAOoOT3
-X-Proofpoint-ORIG-GUID: n02IjOAvDwPUpUShZRVgjN3fPeAOoOT3
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA4MDEyMCBTYWx0ZWRfX6+Ougbz0z3yr
- zmG8ifQvARHtBJS2OmIBQRIKjwzBUnyRhLiykaHBzw4QwXi9fCb1hLt7JOhBRbi3Sj56Qpt3Ah5
- ST02bg9FoXNimO3QplpBQSFpBYl42MuuIJF8Qcy+Iy7v7MC2pgFBl6tl+8jaZmrSZkjjCSptlb2
- c51D2AleKfytcXfoKSKlggvUEAm0cmqi6ZTIY7hpBiBHrNC/s+5Oz0roWyv5pYJKSrz21lnpwKO
- LoFgllcgh9s97gVDnWM5kxizKnDOIhX1WQDkS6mdJjcU8rC7bJP7c9fPIlkqFcnb50qEJIiFZCs
- lWPhoglyYZ2ncVrhZRCbQuXjBFi65KnJtp/Z2H7yQuj6zT7P6J8sgB2k7NtTP56Xmp3UnXS1od5
- SDzrF0E9WJE+m4ZgYuDfEVhYdYwmdMU6/yk0eXEZzezcCAYS9WchAEMzLxxMqsE5HgiOA90Smv/
- 1Y+xgdg7KTabZvnms0g==
-X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_051844_963345_A22005FC 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20260708_052131_407568_850737CD 
+X-CRM114-Status: GOOD (  14.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -216,32 +107,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 08, 2026 at 01:15:28PM +0200, Uwe Kleine-König (The Capable Hub) wrote:
-> These arrays already mostly match the most used and generally
-> recommended coding style. That is:
-> 
->  - no comma after the list terminator;
->  - a comma after an initializer if (and only if) the closing } is not
->    directly following;
->  - no explicit zeros in the list terminator;
->  - a space after an opening { and before a closing }, a single space in
->    the list terminator;
-> 
-> Adapt the offenders accordingly.
-> 
-> Signed-off-by: Uwe Kleine-König (The Capable Hub) <u.kleine-koenig@baylibre.com>
-> ---
->  drivers/mfd/arizona-i2c.c      |  2 +-
->  drivers/mfd/arizona-spi.c      |  2 +-
->  drivers/mfd/cs40l50-i2c.c      |  2 +-
->  drivers/mfd/cs40l50-spi.c      |  2 +-
->  drivers/mfd/cs42l43-i2c.c      |  2 +-
->  drivers/mfd/lochnagar-i2c.c    |  2 +-
->  drivers/mfd/madera-core.c      |  2 +-
->  drivers/mfd/wm831x-core.c      |  2 +-
+mtk_mdp_probe() registers the MDP reset handler with the VPU watchdog
+code and passes the MDP device as the private data.
 
-Reviewed-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+The handler is stored in the VPU device and can outlive the MDP probe or
+remove path. If probe fails after the handler has been registered, or if
+the MDP device is removed, the VPU watchdog table can keep a pointer to
+an MDP object that is about to be released. A later VPU watchdog reset can
+then call mtk_mdp_reset_handler() with a stale pointer and dereference
+freed memory while queuing the MDP watchdog work.
 
-Thanks,
-Charles
+Add a VPU watchdog unregister helper and clear the MDP watchdog handler
+from both the probe error path and the remove path before dropping the VPU
+device reference.
+
+Fixes: ee18fc7b0b95 ("media: mtk-mdp: handle vpu_wdt_reg_handler() errors during probe")
+Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+---
+ .../media/platform/mediatek/mdp/mtk_mdp_core.c    |  2 ++
+ drivers/media/platform/mediatek/vpu/mtk_vpu.c     | 15 +++++++++++++++
+ drivers/media/platform/mediatek/vpu/mtk_vpu.h     |  2 ++
+ 3 files changed, 19 insertions(+)
+
+diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
+index 8432833814f3..5ccb7aa925d9 100644
+--- a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
++++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
+@@ -221,6 +221,7 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+ 	return 0;
+ 
+ err_reg_handler:
++	vpu_wdt_unreg_handler(mdp->vpu_dev, VPU_RST_MDP);
+ 	platform_device_put(mdp->vpu_dev);
+ 
+ err_vpu_get_dev:
+@@ -254,6 +255,7 @@ static void mtk_mdp_remove(struct platform_device *pdev)
+ 
+ 	pm_runtime_disable(&pdev->dev);
+ 	vb2_dma_contig_clear_max_seg_size(&pdev->dev);
++	vpu_wdt_unreg_handler(mdp->vpu_dev, VPU_RST_MDP);
+ 	platform_device_put(mdp->vpu_dev);
+ 	mtk_mdp_unregister_m2m_device(mdp);
+ 	v4l2_device_unregister(&mdp->v4l2_dev);
+diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.c b/drivers/media/platform/mediatek/vpu/mtk_vpu.c
+index 8d8319f0cd22..5dc50a658c2b 100644
+--- a/drivers/media/platform/mediatek/vpu/mtk_vpu.c
++++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.c
+@@ -437,6 +437,21 @@ int vpu_wdt_reg_handler(struct platform_device *pdev,
+ }
+ EXPORT_SYMBOL_GPL(vpu_wdt_reg_handler);
+ 
++void vpu_wdt_unreg_handler(struct platform_device *pdev, enum rst_id id)
++{
++	struct mtk_vpu *vpu = platform_get_drvdata(pdev);
++
++	if (!vpu || id >= VPU_RST_MAX)
++		return;
++
++	mutex_lock(&vpu->vpu_mutex);
++	vpu->wdt.handler[id].reset_func = NULL;
++	vpu->wdt.handler[id].priv = NULL;
++	mutex_unlock(&vpu->vpu_mutex);
++}
++EXPORT_SYMBOL_GPL(vpu_wdt_unreg_handler);
++
++
+ unsigned int vpu_get_vdec_hw_capa(struct platform_device *pdev)
+ {
+ 	struct mtk_vpu *vpu = platform_get_drvdata(pdev);
+diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.h b/drivers/media/platform/mediatek/vpu/mtk_vpu.h
+index 3951547e9ec5..2ccb481a04cf 100644
+--- a/drivers/media/platform/mediatek/vpu/mtk_vpu.h
++++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.h
+@@ -141,6 +141,8 @@ int vpu_wdt_reg_handler(struct platform_device *pdev,
+ 			void vpu_wdt_reset_func(void *priv),
+ 			void *priv, enum rst_id id);
+ 
++void vpu_wdt_unreg_handler(struct platform_device *pdev, enum rst_id id);
++
+ /**
+  * vpu_get_vdec_hw_capa - get video decoder hardware capability
+  *
+-- 
+2.43.0
+
 
