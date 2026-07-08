@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04A8FC43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 12:19:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B1F2C44506
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 12:19:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=riq6rqkQnl8P/JfB4GBhJk2g0snk9O0dnZlY+FFrxgA=; b=HxNHYJk+haMfbSQgJ3se23ijvx
-	WRlOgJlU+am1JwuRRtxElO7WpC4DrDTmKXc37ABLX1o1mld710AgVe2iIkmlp6moeGddrkbu2Atd9
-	jT965R842NWNtDO/pcWBk7iKvIKIlPyitFnONd1L/mSiiZSjsa0SSipL4ltZo7PDFjNMG5Gvh8QEn
-	sml+MW3C13J8x++BZk9EfI9MpZaLw9y3grD0YLymBX1vmVFLnsV8p1YcfE31YhMB7VeUNX904hol0
-	gM5ZksbaD4yUKUbxxzGsTxAYaV/7uluLnUSBay3ry6cnNRTG7KO+EhEd+1CvCSCZiDGFXvx4PJQ/G
-	tNM/CtEg==;
+	bh=ErBa7+UjArO+55YjZ9gqUOEbafHVptzJdn3lXICH5kU=; b=L/7hR7LFHGWPPm113EYn7XXy7w
+	ljKgbvtvMIprFrAKoFfNk5rFxtVSAVssJpSQ+lYxPjF7IxhzHpkfQIglmG0TWPWBM9iHwdPVuB0TM
+	9pvMg9oP2kGix5gvaBFi5wAYt/g9zKD21tEefuKKCfTd1Gd36w13/Q88F0jdX/rStwkZVcb/mlmX5
+	Jf2t3y/KFgHt/L1vAJ8Vuu8Dc7+mkBx9ZFVZ2uSdR7E0jiwwLOUMf5kf1Jm5xCIQuiNOZoZBPsX5i
+	/3whq5BwTPDLHZ1KJB1kiYgTgZ5qJr3AO+AgpZNwb7t7/Q8W3G3wd3JnnszbLeXqAXBzFTp4Ek2SV
+	0NBMZNNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whniX-00000002Nli-43Yu;
-	Thu, 09 Jul 2026 12:19:01 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1whnig-00000002Not-0PJu;
+	Thu, 09 Jul 2026 12:19:10 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whniW-00000002NlU-3t1W;
-	Thu, 09 Jul 2026 12:19:00 +0000
+	id 1whnia-00000002NmV-2uto;
+	Thu, 09 Jul 2026 12:19:04 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 308C16136B;
-	Thu,  9 Jul 2026 12:19:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B2661F000E9;
-	Thu,  9 Jul 2026 12:18:58 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 24AC540AB2;
+	Thu,  9 Jul 2026 12:19:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDC631F00A3D;
+	Thu,  9 Jul 2026 12:19:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783599539;
-	bh=riq6rqkQnl8P/JfB4GBhJk2g0snk9O0dnZlY+FFrxgA=;
+	s=k20260515; t=1783599544;
+	bh=ErBa7+UjArO+55YjZ9gqUOEbafHVptzJdn3lXICH5kU=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=LOqUs3UCkBc/xbgBOqEV632aTXo5IxA4fF5dXKZBYiMPcynEw1iNcryr1xNieA5Cc
-	 PSgZYxIdVi7tRHmpySDYOemz2XSR2ysadL4MDRE4hvjkoGPefby60o6DP3MS0IabQR
-	 CwzkEabDZCGcgFbCogYlUqWLMOBDC07Tidxoyl8ZPR8rnLV4GrxV1YfYvxMl6ZrhO5
-	 HFlz+zx7+hetCqQoFN7L/sghM/6RFLVIHIHBktceSOuaB961sHwpz6cyfRYa9M5Bgz
-	 keWg4b5ecxm4YWcm7AvXJu+yi7N9ieE//g3L9xcUtoX/F8D+lHKd70tIvYyPFOTaCz
-	 G0urslkWVw5KA==
+	b=a0fV7YAysv4KJZWmUWH7UGP5s37f+VQxAcHZtGGw9y/479RWKOCQGq/QZheWPqJYp
+	 7Fi8gY48k1QvrxC6BM8exKaX8lkkgDczfYiAsAhpTTMQv+fXLYIjuroN2e0AjuvoyD
+	 mOK43o5j5zk88YunXItS7o4kiCc3AaOV+psKCwCvgHx1ikaWbchbRgEZuBsa4LNhSR
+	 Ss70bMy+aSxHDUx527VH/wcghxprW3WM6eSXacz18MBZyivipldob6a+VTSweQKUR0
+	 3fWWFSSj6JRoZPxHWj1UqOh5AL3RcBRWgz+2twt7G0gGouJJ3ASLmXmL2yoHPjYeyt
+	 GbavE85czsycQ==
 From: Mark Brown <broonie@kernel.org>
 To: Liam Girdwood <lgirdwood@gmail.com>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -48,24 +48,24 @@ To: Liam Girdwood <lgirdwood@gmail.com>,
  Pengpeng Hou <pengpeng@iscas.ac.cn>
 Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org
-In-Reply-To: <20260704122926.21586-1-pengpeng@iscas.ac.cn>
-References: <20260704122926.21586-1-pengpeng@iscas.ac.cn>
-Subject: Re: [PATCH] regulator: mt6316: add missing MODULE_DEVICE_TABLE()
-Message-Id: <178353551134.26140.1203811762340207802.b4-ty@b4>
-Date: Wed, 08 Jul 2026 19:31:51 +0100
+In-Reply-To: <20260704124352.7981-1-pengpeng@iscas.ac.cn>
+References: <20260704124352.7981-1-pengpeng@iscas.ac.cn>
+Subject: Re: [PATCH] regulator: mt6363: add missing MODULE_DEVICE_TABLE()
+Message-Id: <178353557275.26140.6129042207824618409.b4-ty@b4>
+Date: Wed, 08 Jul 2026 19:32:52 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.16-dev
 X-Developer-Signature: v=1; a=openpgp-sha256; l=1130; i=broonie@kernel.org;
- h=from:subject:message-id; bh=upsU8hgKO99NO/2yQfwWsl/iz3vX0dM4Qyf2YJw3SxM=;
- b=owEBbAGT/pANAwAKASTWi3JdVIfQAcsmYgBqT5Gxa0st6O5bL+9aF2cM+EsKHmgZsxO85RCh2
- TaUTiOE4R6JATIEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCak+RsQAKCRAk1otyXVSH
- 0GryB/YoZzZZ3lT/s0ydzaS9QLlsTlVCeuBW0FxsQ3Raa1ODrX+fIP8PI6SU5UVqOvwa1GABVi3
- 0UioAUERWQtPdt21NQcR85Y7EXDrKZhSjT//dvCBJ+CGdb+LhpPUTE6n/958oV7fSCNSruOmY5v
- yIknSUrWWopvFAT7kfoVkWw771KM/SjuunL3MS3L33JAjjPaTHNZ1itgGbVdfe6+6sEvxzgLvx3
- nXibp0GiHmNbiP+dRqpRuxZD3KLl/9RQMAeNvdUICxl+1iAhMAz3UzTCmXhyrrU9cnkImvRInoR
- EKAEGfozdpmPu3k3yRSJLbXWSM7tVA3bnZx/FqA8XRWcVJ4=
+ h=from:subject:message-id; bh=QGgAuc8kvyRqplVzSqiyOB3T3WMIjIQLy14/UIpf6lU=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqT5G19zRj4kse2z2+hrjwgqs2feuBtz7ykzz/4
+ 1mg/LgVzZuJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCak+RtQAKCRAk1otyXVSH
+ 0P5PB/9oiFAy/5JTcWl60nJ3O1AVIz++cSxBxQGGFRqQApKTgdXkjzLSuJ3uDK5HTYVRwMA3Dkc
+ hoiKFri+MxXfGCZb4UZbx6336zChaJv0I5vC6LkaxTU0bJrQSb4ywJxrlcn8CDbTe370MnLG57v
+ OESCq/pmXYkr9lXnXeProJ6XhA/I5P+q3NicZKONZJdqMFwnmFLwbDJ4kzIfOoucFL0gTj6h6Ug
+ brGj6Aq/7iTUtIkd6wc4WDD0j/kdfRDg9e77K7HYl6r+zVt5Rmkqj9EqAtuihWREjMk8F0LbBb2
+ TrYWjwMmv9PFRuQ8eRhxzTVXIwEf/dPEigoBjZSwx/bTua88
 X-Developer-Key: i=broonie@kernel.org; a=openpgp;
  fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -82,8 +82,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 04 Jul 2026 20:29:26 +0800, Pengpeng Hou wrote:
-> regulator: mt6316: add missing MODULE_DEVICE_TABLE()
+On Sat, 04 Jul 2026 20:43:52 +0800, Pengpeng Hou wrote:
+> regulator: mt6363: add missing MODULE_DEVICE_TABLE()
 
 Applied to
 
@@ -91,8 +91,8 @@ Applied to
 
 Thanks!
 
-[1/1] regulator: mt6316: add missing MODULE_DEVICE_TABLE()
-      https://git.kernel.org/broonie/regulator/c/91f0063ca99e
+[1/1] regulator: mt6363: add missing MODULE_DEVICE_TABLE()
+      https://git.kernel.org/broonie/regulator/c/87063bab4519
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
