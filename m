@@ -4,117 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54E48C43458
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jul 2026 18:07:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F1F4C43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 01:26:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kNdgV6dE37fi1AWMEoHcLd1JawMZipROu/aTEW/qPRY=; b=td07+evP9YYvOT8Lk8G2qgUOdy
-	aQXKFuHmhWW68D5v483nXMTcvXH8FBNUPDr3e8YqvEU/6elM7CjcgcFJ3XGLdgsmRKSvLAi6D/xS/
-	ttChJiznB+Z1KC5xszPojmSObETW6U+/mASSuGIwI8K21btzF1fB1dh7wqvXS2BTLMFss2h4Best/
-	xPRLxFKortCIdITTKhoJkJR1e68oMWpXrFsEtVV9pw0OR/Fcc9XDRK8hF7uDgk27Bk54VLDxDK5FD
-	kHH0ZT/SwHdKHRyg9a/HyltXvU1gVqNRBo5zuBXCmHn9jDLsYEc2oLzcdF6y0hTPvu/I0i5S5Ya52
-	pBAG87Dg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PuWChsb4E1cC29lK7Elvpm/ZqbcvbK/u7X5aWPVhl78=; b=kquW/+b+fbabKgDJHVHT5V6guu
+	DrgZAc0m9uu+lDU20T9nZeUcylgSQkVbx4Z9QPhP2eWHzLHfyO0/4QYO65XSrIlcNwUKV57jSC5kN
+	6WeSkMYh5gMcNdXdrDzCgQVIlZ6egmx2PuHP1cCwRZjjbHACvObuNbEAl3ITpa0mW1hmNHFr/LFNz
+	n1XdK0nX1PL7usX9blWek6W0xKZ9AFAktMiy0wjqusBZr+QezW5YsE90zfDYISeC4CnM9aFu1SIzX
+	MLA7i3i0tzk6p5w1q14G89kUATJsngv01GbV/JxlrwyzfPbkBj/5HZVMX9xkVkYixxWS+fJeUPeik
+	Ud4A6PKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whACM-0000000FcAP-28Ww;
-	Tue, 07 Jul 2026 18:07:10 +0000
-Received: from aposti.net ([185.119.170.32])
+	id 1whH33-0000000G6FW-1nRZ;
+	Wed, 08 Jul 2026 01:26:01 +0000
+Received: from mout-p-103.mailbox.org ([80.241.56.161])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whACG-0000000Fc9T-2Yy7;
-	Tue, 07 Jul 2026 18:07:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=crapouillou.net;
-	s=mail; t=1783447618;
-	bh=jSZnB0sLqjEJbBoqe7AZJRMFNCZugWpISC+yCdraaOk=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=taLqIYWARPanxMePLjn0T7clMcda7af2pvmrr0dQzpeuwc0nctWzpeP7MFrEdwHD3
-	 wFNI1Cev/uBH+lstwttbgnjYpRUlRSvuTptlXHNnBzTOSCT1/sAyy72NlnTqVPq0M/
-	 E7dkR8V01XIjaryuVKTvkbf8yDy1RmuISroVos5g=
-Message-ID: <f46dfcfe04c5f8270b2ea1a947ddc0a0eeda7dbc.camel@crapouillou.net>
-Subject: Re: [PATCH 17/42] drm: ingenic: Use
- devm_of_reserved_mem_device_init()
-From: Paul Cercueil <paul@crapouillou.net>
-To: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>, Bjorn Andersson	
- <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, Liviu Dudau
-	 <liviu.dudau@arm.com>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>,  Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, Joel Stanley <joel@jms.id.au>, Andrew
- Jeffery <andrew@codeconstruct.com.au>,  Anitha Chrisanthus
- <anitha.chrisanthus@intel.com>, Paul Kocialkowski <paulk@sys-base.io>,
- Linus Walleij	 <linusw@kernel.org>, Chen-Yu Tsai <wens@kernel.org>, Jernej
- Skrabec	 <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>,
- Alexey Brodkin <abrodkin@synopsys.com>, Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>, Tomi Valkeinen
- <tomi.valkeinen@ideasonboard.com>, Michal Simek <michal.simek@amd.com>,
- Daniel Scally	 <dan.scally@ideasonboard.com>, Jacopo Mondi
- <jacopo.mondi@ideasonboard.com>,  Mauro Carvalho Chehab	
- <mchehab@kernel.org>, Eddie James <eajames@linux.ibm.com>, Tiffany Lin	
- <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
- Yunfei Dong <yunfei.dong@mediatek.com>, Minghsiu Tsai
- <minghsiu.tsai@mediatek.com>, Houlong Wei	 <houlong.wei@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Joseph Liu <kwliu@nuvoton.com>,
- Marvin Lin <kflin@nuvoton.com>,  Dmitry Osipenko
- <dmitry.osipenko@collabora.com>, Krzysztof Kozlowski <krzk@kernel.org>,
- Thierry Reding	 <thierry.reding@kernel.org>, Jonathan Hunter
- <jonathanh@nvidia.com>,  Srinivas Kandagatla	 <srini@kernel.org>, Arnd
- Bergmann <arnd@arndb.de>, Greg Kroah-Hartman	 <gregkh@linuxfoundation.org>,
- Ge Gordon <gordon.ge@bst.ai>, Adrian Hunter	 <adrian.hunter@intel.com>, Ulf
- Hansson <ulfh@kernel.org>, Rob Herring	 <robh@kernel.org>, Saravana Kannan
- <saravanak@kernel.org>, Mathieu Poirier	 <mathieu.poirier@linaro.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai	 <tiwai@suse.com>, Shengjiu
- Wang <shengjiu.wang@gmail.com>, Xiubo Li	 <Xiubo.Lee@gmail.com>, Liam
- Girdwood <lgirdwood@gmail.com>, Mark Brown	 <broonie@kernel.org>, Frank Li
- <Frank.Li@nxp.com>, Sascha Hauer	 <s.hauer@pengutronix.de>, Peter Ujfalusi
- <peter.ujfalusi@linux.intel.com>,  Bard Liao
- <yung-chuan.liao@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>,
- Orson Zhai	 <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Peter Chen	 <peter.chen@cixtech.com>,
- Fugang Duan <fugang.duan@cixtech.com>
-Cc: Ekansh Gupta <ekansh.gupta@oss.qualcomm.com>, BST Linux Kernel Upstream
- Group <bst-upstream@bstai.top>, Fabio Estevam <festevam@gmail.com>, Nicolin
- Chen <nicoleotsuka@gmail.com>,  Pengutronix Kernel Team	
- <kernel@pengutronix.de>, Kai Vehmanen <kai.vehmanen@linux.intel.com>, 
- Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, Vijendar Mukunda
- <Vijendar.Mukunda@amd.com>, Chunyan Zhang	 <zhang.lyra@gmail.com>, CIX
- Linux Kernel Upstream Group	 <cix-kernel-upstream@cixtech.com>,
- linux-arm-msm@vger.kernel.org, 	linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, 	linux-aspeed@lists.ozlabs.org,
- linux-arm-kernel@lists.infradead.org, 	linux-mips@vger.kernel.org,
- linux-sunxi@lists.linux.dev, 	linux-media@vger.kernel.org,
- openbmc@lists.ozlabs.org, 	linux-mediatek@lists.infradead.org,
- kernel@collabora.com, 	linux-tegra@vger.kernel.org,
- linux-mmc@vger.kernel.org, 	devicetree@vger.kernel.org,
- linux-remoteproc@vger.kernel.org, 	linux-staging@lists.linux.dev,
- linux-sound@vger.kernel.org, 	linuxppc-dev@lists.ozlabs.org,
- imx@lists.linux.dev, 	sound-open-firmware@alsa-project.org
-Date: Tue, 07 Jul 2026 20:06:50 +0200
-In-Reply-To: <20260703193855.110619-18-mukesh.ojha@oss.qualcomm.com>
-References: <20260703193855.110619-1-mukesh.ojha@oss.qualcomm.com>
-	 <20260703193855.110619-18-mukesh.ojha@oss.qualcomm.com>
-Autocrypt: addr=paul@crapouillou.net; prefer-encrypt=mutual;
- keydata=mQENBF0KhcEBCADkfmrzdTOp/gFOMQX0QwKE2WgeCJiHPWkpEuPH81/HB2dpjPZNW03ZM
- LQfECbbaEkdbN4YnPfXgcc1uBe5mwOAPV1MBlaZcEt4M67iYQwSNrP7maPS3IaQJ18ES8JJ5Uf5Uz
- FZaUawgH+oipYGW+v31cX6L3k+dGsPRM0Pyo0sQt52fsopNPZ9iag0iY7dGNuKenaEqkYNjwEgTtN
- z8dt6s3hMpHIKZFL3OhAGi88wF/21isv0zkF4J0wlf9gYUTEEY3Eulx80PTVqGIcHZzfavlWIdzhe
- +rxHTDGVwseR2Y1WjgFGQ2F+vXetAB8NEeygXee+i9nY5qt9c07m8mzjABEBAAG0JFBhdWwgQ2VyY
- 3VlaWwgPHBhdWxAY3JhcG91aWxsb3UubmV0PokBTgQTAQoAOBYhBNdHYd8OeCBwpMuVxnPua9InSr
- 1BBQJdCoXBAhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEHPua9InSr1BgvIH/0kLyrI3V0f
- 33a6D3BJwc1grbygPVYGuC5l5eMnAI+rDmLR19E2yvibRpgUc87NmPEQPpbbtAZt8On/2WZoE5OIP
- dlId/AHNpdgAtGXo0ZX4LGeVPjxjdkbrKVHxbcdcnY+zzaFglpbVSvp76pxqgVg8PgxkAAeeJV+ET
- 4t0823Gz2HzCL/6JZhvKAEtHVulOWoBh368SYdolp1TSfORWmHzvQiCCCA+j0cMkYVGzIQzEQhX7U
- rf9N/nhU5/SGLFEi9DcBfXoGzhyQyLXflhJtKm3XGB1K/pPulbKaPcKAl6rIDWPuFpHkSbmZ9r4KF
- lBwgAhlGy6nqP7O3u7q23hRU=
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	id 1whH30-0000000G6Ep-16li;
+	Wed, 08 Jul 2026 01:25:59 +0000
+Received: from smtp202.mailbox.org (smtp202.mailbox.org [IPv6:2001:67c:2050:b231:465::202])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA512)
+	(No client certificate requested)
+	by mout-p-103.mailbox.org (Postfix) with ESMTPS id 4gw0ly2RnBzKmyK;
+	Wed, 08 Jul 2026 03:25:50 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=adamthiede.com;
+	s=MBO0001; t=1783473950;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=PuWChsb4E1cC29lK7Elvpm/ZqbcvbK/u7X5aWPVhl78=;
+	b=Cs8ehjxWZTm6YQKo5RjJY0pYmJZL9egmgNuBv+FZ3+yoXhvLMJN06rjHtXpjrtH0Uwab7y
+	1V8Io12Juoe8wIw1Eo0beU78PvwVwSv8k9pGzKo6It81Lnz5i+ruT2dPJw82DV3uOi3esZ
+	+dJCVLU5H46DAfqINzQ/A1kTJSdjRJBljEB/PxuJE1gUetMlYNByqdwzE32bgqO6IFncth
+	590JilTLXjMtD4yiDt+OKub9gxqI7faWK/LRNmE8TyHyJQc1oP9OD/rXH6Zjl4hRvNUbiW
+	QcP4Y0oG10vL6efjqKIcliQYi43ac9q8Jzye3/CqIHHOxth4x/MRkdAMigQNPA==
+Authentication-Results: outgoing_mbo_mout;
+	dkim=none;
+	spf=pass (outgoing_mbo_mout: domain of me@adamthiede.com designates 2001:67c:2050:b231:465::202 as permitted sender) smtp.mailfrom=me@adamthiede.com
+Message-ID: <dbc251f2-0c67-4970-a101-c19129055082@adamthiede.com>
+Date: Tue, 7 Jul 2026 20:25:41 -0500
 MIME-Version: 1.0
+Subject: Re: [PATCH] drm/mediatek: mtk_dsi: enable hs clock during pre-enable
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Thorsten Leemhuis <regressions@leemhuis.info>,
+ =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ "bisson.gary@gmail.com" <bisson.gary@gmail.com>
+Cc: "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "simona@ffwll.ch" <simona@ffwll.ch>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "regressions@lists.linux.dev" <regressions@lists.linux.dev>
+References: <20260120-mtkdsi-v1-1-b0f4094f3ac3@gmail.com>
+ <42607fa4-485d-4142-b31c-7bfac71118d2@adamthiede.com> <ajka2220depklK1_@owl5>
+ <bac79214-050d-448b-be63-0586d45c807d@adamthiede.com>
+ <f0d99b1a-e383-4d14-adb1-4ccab46efddb@leemhuis.info>
+ <5baeb90d2c3736df67ad075ede4ac765bfeaed2d.camel@mediatek.com>
+ <84233951-ee22-4980-9f17-2af1df51fdbf@leemhuis.info>
+ <6fed12a6-0c94-477f-8a2e-466c33ea2e29@collabora.com>
+Content-Language: en-US
+From: Adam Thiede <me@adamthiede.com>
+Autocrypt: addr=me@adamthiede.com; keydata=
+ xsBNBF+n+90BCAC2ZRLVcvdXDgfY7EppN05eNor3U7/eeiNCCEIWZkYLhikUEP1ReLGBkXpK
+ Pc70hfnKAKkCoth3IwhDty9WXMNU+iLNei4ieb2luW+UqluR6xIUIA+txahMU9YcjVaQTKf/
+ yZWO4yl6pfBPCxC2UdPZKBAdGoi5NnE0ABFNbhBETQhhBic533lZn33ByupfI3acECnQdjgQ
+ llCUpDbw4I+S/N1iFiEHcbMXH7ZB00e3IYNorZ1E9v7p++5rDY1fQ9gXpieg1vFKwSq1NJWo
+ 9xx336YjaTUbX0EwrdKd9l8AktA3yRjckaK5TAcwSQaDtHvhpbl4ebvPhtwHh699MroXABEB
+ AAHNH0FkYW0gVGhpZWRlIDxtZUBhZGFtdGhpZWRlLmNvbT7CwI4EEwEIADgCGwMFCwkIBwIG
+ FQoJCAsCBBYCAwECHgECF4AWIQQtG9pGQ7sz3tf8M/kC7fV9o/vRzgUCZL1HxQAKCRAC7fV9
+ o/vRzgyRB/wLqRCvvWhQCMgvzeKvru9wcXquhb77K8H/ByLbfiT8YBuP3lZFVh0IQhgO9Ylk
+ fIoOJE4V+jjxyOnO2d9xjGbvAmmR6yT0gfLzSVWqrC4k+V9MWLv43nrNzxt41dvo5j824FAl
+ X+zaiRZCdO8Jtxg5Elpiop2SKLi1utX1Z8i6YZh+ccJZlchUBAGUTk+D4UjK7vUcjLWT96ya
+ CtdtTfXyw36CvGOPEWfc6++Kkl/5sgej1i7biPYzu/r0vssaQYTXKSrv6Cfa3Maa89ASiTtv
+ q4qmhLnJeCrPxWlRAf6LEizeBEkOasYni2u8sp4wBezEq45Ozu45sfPkqLpPolG7zsBNBF+n
+ +90BCADBRt+vrToRBEG580n77S99qSEkbKD+oJtCVyovnjMNkg0K9UG68LIeCX/ezngiV1M8
+ JISvw5iFOuUFqGX/1hLl9wgt/YpuIrgWOp8XxkotavTCloLDvQmufJPO1L8bnnA+WgP2YgVZ
+ 5MJTj/t4DI+yQgysEjsH8aurHO2uuqgJE+xK+2dy6Cl/wskuGxObksSPmmFH5PH0Joziwrtl
+ 61ouLE2XwKbkMgIGEKkbFgbfwz3/QuLZGBni+OOtLzXeZ9wNTW/AHUPy6S9U4F+5z6/09fVT
+ tTH0cvrgAGjbASlYx2VqGONXAsxCfjulq6ryJBFlPLp949c/JTTgOojukCSbABEBAAHCwHYE
+ GAEIACACGwwWIQQtG9pGQ7sz3tf8M/kC7fV9o/vRzgUCZL1H0gAKCRAC7fV9o/vRzlamCACs
+ vHw+0heTm+BfC3S8DUST6889gidIIwdqBep1ByzetCph7Bq8Y8BlT5YTX0u/bSKkxCzFgeTm
+ vC341Q09ST2XjLAl1ZTdzGhH9gcgYyOw34pr5fPQRJLB392mPzD8YReRzciNbhWzj+DLgeVe
+ ouyfGajd6jDjkf4FEq+trQLGZhpfsKn3JnDbzBUs945D50l/vz9q/QN3qZO+H4F6g8ZeMnqo
+ FOEFN26xVtdEDr+0DNFsbgKmEzs675kdAY78ZZdbEetX/FSknxJ+FK1ZW3J7Yswwulj34AXP
+ LB49Mk8Ot7fo6mdt0DkV11JS9LmKxKvpY+KTlrKG+i7pVCSZvVUx
+In-Reply-To: <6fed12a6-0c94-477f-8a2e-466c33ea2e29@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Rspamd-Queue-Id: 4gw0ly2RnBzKmyK
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260707_110705_006087_01A5837C 
-X-CRM114-Status: GOOD (  14.98  )
+X-CRM114-CacheID: sfid-20260707_182558_472725_EB5A1E2E 
+X-CRM114-Status: GOOD (  30.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,63 +120,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-Le samedi 04 juillet 2026 =C3=A0 01:08 +0530, Mukesh Ojha a =C3=A9crit=C2=
-=A0:
-> Replace the hand-rolled devm wrapper (ingenic_drm_release_rmem +
-> devm_add_action_or_reset) with the standard
-> devm_of_reserved_mem_device_init(), letting the device resource
-> manager handle cleanup automatically.
->=20
-> Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
-
-Reviewed-by: Paul Cercueil <paul@crapouillou.net>
-
-Cheers,
--Paul
-
-> ---
-> =C2=A0drivers/gpu/drm/ingenic/ingenic-drm-drv.c | 13 +------------
-> =C2=A01 file changed, 1 insertion(+), 12 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
-> b/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
-> index 7e569af22391..990c3b4625fa 100644
-> --- a/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
-> +++ b/drivers/gpu/drm/ingenic/ingenic-drm-drv.c
-> @@ -1060,11 +1060,6 @@ static void ingenic_drm_unbind_all(void *d)
-> =C2=A0	component_unbind_all(priv->dev, &priv->drm);
-> =C2=A0}
-> =C2=A0
-> -static void __maybe_unused ingenic_drm_release_rmem(void *d)
-> -{
-> -	of_reserved_mem_device_release(d);
-> -}
-> -
-> =C2=A0static void ingenic_drm_configure_hwdesc(struct ingenic_drm *priv,
-> =C2=A0					 unsigned int hwdesc,
-> =C2=A0					 unsigned int next_hwdesc,
-> u32 id)
-> @@ -1127,16 +1122,10 @@ static int ingenic_drm_bind(struct device
-> *dev, bool has_components)
-> =C2=A0	}
-> =C2=A0
-> =C2=A0	if (IS_ENABLED(CONFIG_OF_RESERVED_MEM)) {
-> -		ret =3D of_reserved_mem_device_init(dev);
-> +		ret =3D devm_of_reserved_mem_device_init(dev);
-> =C2=A0
-> =C2=A0		if (ret && ret !=3D -ENODEV)
-> =C2=A0			dev_warn(dev, "Failed to get reserved
-> memory: %d\n", ret);
-> -
-> -		if (!ret) {
-> -			ret =3D devm_add_action_or_reset(dev,
-> ingenic_drm_release_rmem, dev);
-> -			if (ret)
-> -				return ret;
-> -		}
-> =C2=A0	}
-> =C2=A0
-> =C2=A0	priv =3D devm_drm_dev_alloc(dev, &ingenic_drm_driver_data,
+On 7/7/26 05:38, AngeloGioacchino Del Regno wrote:
+> On 7/7/26 10:51, Thorsten Leemhuis wrote:
+>> On 7/7/26 04:20, CK Hu (胡俊光) wrote:
+>>> On Mon, 2026-07-06 at 12:16 +0200, Thorsten Leemhuis wrote:
+>>>> On 6/22/26 15:23, Adam Thiede wrote:
+>>>>> On 6/22/26 06:22, Gary Bisson wrote:
+>>>>>> On Thu, Jun 18, 2026 at 04:06:28PM -0500, Adam Thiede wrote:
+>>>>>>> On 1/20/26 05:36, Gary Bisson wrote:
+>>>>>>>> Some bridges, such as the TI SN65DSI83, require the HS clock to be
+>>>>>>>> running in order to lock its PLL during its own pre-enable 
+>>>>>>>> function.
+>>>>>>>>
+>>>>>>>> Without this change, the bridge gives the following error:
+>>>>>>>> sn65dsi83 14-002c: failed to lock PLL, ret=-110
+>>>>>>>> sn65dsi83 14-002c: Unexpected link status 0x01
+>>>>>>>> sn65dsi83 14-002c: reset the pipe
+>>>>>>>> [...]
+>>>>>>>
+>>>>>>> This commit was part of 7.1 and caused a problem for me.
+>>>>>>> I'm running postmarketOS (basically Alpine Linux) on a Lenovo C330
+>>>>>>> chromebook with a Mediatek MT8173 processor.
+>>>>>>> The problem: when the display on my laptop powers off (via 
+>>>>>>> suspend or
+>>>>>>> idle,
+>>>>>>> like xset dpms off) the picture does not come back when the display
+>>>>>>> powers
+>>>>>>> back on (from resume). The display backlight comes on and 
+>>>>>>> brightness is
+>>>>>>> adjustable but there is no picture. The only fix is to reboot.
+>>>>>>>
+>>>>>>> Reverting this commit and applying it as a patch on top of 7.1
+>>>>>>> addresses the
+>>>>>>> issue for me.
+>>>>>>>
+>>>>>>> You can view the config I'm using here:
+>>>>>>> https://urldefense.com/v3/__https://gitlab.postmarketos.org/ 
+>>>>>>> postmarketOS/pmaports/-/__;!!CTRNKA9wMg0ARbw! 
+>>>>>>> jrsPDtSEUdaINzLlq92Li8gmsEBkTOxZ6WUzNHjvIN6CyOJjHiHkNSOhIRPXFTLPlaYlxU2uvryVkwjUAN9bmax5$
+>>>>>>> merge_requests/8819
+>>>>>>>
+>>>>>>> Is there any sort of testing or other debugging info I can 
+>>>>>>> provide to
+>>>>>>> help
+>>>>>>> address this issue?
+>>>>>>
+>>>>>> Thanks for reporting the issue, could you share some logs? Is the 
+>>>>>> driver
+>>>>>> saying anything during resume? Also, what type of panel is used on 
+>>>>>> that
+>>>>>> chromebook?
+>>>>>
+>>>>> The curious thing is that there are no real logs in dmesg or /var/log/
+>>>>> messages about this. This picture just fails to come back. If there 
+>>>>> are
+>>>>> some kernel params I can set to get deeper logging, that would 
+>>>>> help, but
+>>>>> I'm not aware of any.
+>>>>>
+>>>>> I think the panel is a "BOE NV116WHM-T00" - I used this command to get
+>>>>> info: cat /sys/class/drm/card0-eDP-1/edid | edid-decode
+>>>>>
+>>>>> Output: https://urldefense.com/v3/__https://termbin.com/8nbd__;!! 
+>>>>> CTRNKA9wMg0ARbw! 
+>>>>> jrsPDtSEUdaINzLlq92Li8gmsEBkTOxZ6WUzNHjvIN6CyOJjHiHkNSOhIRPXFTLPlaYlxU2uvryVkwjUAJooSyqL$
+>>>>
+>>>> This looked stalled. If I'm mistaken here, please let me known; but if
+>>>> no solution is in sight, should we maybe just revert the change until a
+>>>> proper was found?
+>>>
+>>> It's welcome anyone to provide a revert patch,
+>>> but I would still wait for the fixup patch until 7.2-rc4.
+>>> If no fixup patch exist, then apply the revert patch.
+>>  From my understanding of things the position in the devel cycle doesn't
+>> matter much in a case like this. To quote Linus statements from
+>> https://www.kernel.org/doc/html/latest/process/handling- 
+>> regressions.html#on-how-quickly-regressions-should-be-fixed
+>>
+>> """
+>>  From 2026-01-22:
+>>
+>>   But a user complaining should basically result in an immediate fix -
+>>   possibly a "revert and rethink".
+>>
+>> With a later clarification on 2026-01-28:
+>>
+>>   It's also worth noting that "immediate" obviously doesn't mean "right
+>>   this *second* when the problem has been reported".
+>>
+>>   But if it's a regression with a known commit that caused it, I think
+>>   the rule of thumb should generally be "within a week", preferably
+>>   before the next rc.
+>> """
+>>
+>> Adam reported the problem about three weeks ago, so we are way past the
+>> "rule of thumb" timeframe Linus set.
+>>
+>> Ciao, Thorsten
+> 
+> This is a kind of odd situation here. The fix from Adam is actually 
+> correct, as in,
+> the SN65DSI83 bridge gets broken without...
+> 
+> ....but then, there's some more oddness going on: I tried to reproduce 
+> this on my
+> MT8173 Elm device, but there I can resume the system just fine, and the 
+> display is
+> up and running like normal?
+> 
+> I'm not sure what to advice here at this point - just adding some info.
+> 
+> Cheers,
+> Angelo
+Angelo, would you mind sharing your config, and the details of what 
+you're running? It might be a configuration difference.
+Thanks!
 
