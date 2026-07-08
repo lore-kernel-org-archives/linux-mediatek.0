@@ -4,105 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 493B6C43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 08:15:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB8C6C43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 08:18:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SXXv+6sXHuG3kLi8r5M/4A6sQ9dakJtPq27Tv/WBH0s=; b=OcaO4w98V5FUF3RcbucN4TP3Kt
-	DzvD1doilpB4qR0qABBl3AkYbYdhgD/4bPrSxHHopAjTwQJA4zoojVwBQjKq0PZVFs6XwFYQCgzTk
-	6N/DSJgWPsFFHu7AK/j8LbUZ/ynq6zP0+jRgb6Fg8vNsdq65n1pA7Fa5yVW+YR0VEZRiMUf3M48V9
-	tNk/ljIhnhbhm+jIJyxW+K5hrAgBYUii7e2RlwwTs1/rz1YbkEAx5YwO3fnF3Navxnx2iv+7VtmxY
-	TwG2Me4GMnfYqFts7Yfj/R80psBdTAkMdxKEDrzSOx098+uu6p2Euo+lXRxrJBX8KjvwUM3g80fO1
-	MTfTqzMg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Nm52Xlrw1GluHl4mcq4+4Pp2e2HBmEU2CFEZNaVo9gI=; b=Jz2WniqZbQ24NZNABIGlyhTa4j
+	uAReF1p+iBmVUp2gC3m7/dbxX/TxqmLAuzoYTK9A0wgWwnYa/UeL3JC8z4kx40WapGm/uL/JnDbHZ
+	bLpHnWihP9jsBU7ar3mcwpIJv7Ir10GdsTfyWgVx8nkOz3s8n4fkMQorQQXhhznL6rhoggGhudoXV
+	drpWkr5DCepRc8RHjbdeEyK4kNQT9/4h12UVkbJid22wD4Yo7/QXrDVYu7lWJ9AGzsFpsdhopfVe3
+	KOmFtg1d41wYpAsLYg92gtqR3OB6lEgC1Ohk5TcXfLDcIJYKDrcFq147vHYJsOlxcIpcWSA8OIgeO
+	YAElH3lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whNRR-0000000GasC-0LOB;
-	Wed, 08 Jul 2026 08:15:37 +0000
-Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
+	id 1whNTo-0000000GbFs-1kHw;
+	Wed, 08 Jul 2026 08:18:04 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whNRO-0000000GarK-0vjX
-	for linux-mediatek@lists.infradead.org;
-	Wed, 08 Jul 2026 08:15:35 +0000
-Received: by mail-yx1-xb135.google.com with SMTP id 956f58d0204a3-664d78637f8so538462d50.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 01:15:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783498533; cv=none;
-        d=google.com; s=arc-20260327;
-        b=DHNuxWTlKMHqiapamdNNCepNl00xBDQfD9yMfs/ut2H84C8qMVE+JJylCQw7O6fPEF
-         D60QIXot+gJ765WGOfY+lcQznTjblmIOvX0VGUTyVCvjr+woMQG9IpjcP1xH/+5QkJAi
-         sX1AczJ/LRF26e5UFKZRDLBWwvBAzSX7uxB5p3sUb4vegwPct1tDllHTKwjGSiqz9Wma
-         ZkPDWWjedx3L2u9UCECVF/5ZMz/UZ+BEnS/q5FvVNIBrC7Sh7HJKDy7P12Q8XeF83/Z2
-         e1brvzLF6bNNYyV+9DCv6PERaX/8TmBtSzsj1d1oysRjcrq6xl2xBNzvq4g2R2z4h5Nj
-         HQRw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=SXXv+6sXHuG3kLi8r5M/4A6sQ9dakJtPq27Tv/WBH0s=;
-        fh=y/7+WSfzGn1stvcnYGfm54JwcgeVqmHwEonOAVvfBU4=;
-        b=m8cCgXNuDeZFMRcs383okJzQN5ywPIeuQAyFi0YknJp9mtmbU3NPgml6+xfc4ha+uV
-         GA2Xn6eSjx4YLdP/tveDnrKfVOhntqFS9yVK4punKqP6rs91FD7CSwxQ97yn11gR1Nq1
-         nbCG8pFscxzqDOBdgQ8tdW0mR93aeppyemxbfen+9k0NCv+TxsVBXz/w6oALSR0OiGsz
-         KF1KWyFVZG1b3oXIgGwhTj/j3rddQrHv3zjLDyjTEqndWobKVeo7R8IDEuhfNVR5lMOJ
-         LXfu6HxT6PCiLumTiCsFNSqIj8Z0HaNCJq8/KrmIEyszDYQwrPJKe5IOYqPHWoAYRNK9
-         7Q6A==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1783498533; x=1784103333; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=SXXv+6sXHuG3kLi8r5M/4A6sQ9dakJtPq27Tv/WBH0s=;
-        b=nfrfL84fiPVHaxHfFoPmkwtnzSCkSPJst4YppOMvG1Ecm4MZ5F7n8iW3ccr9koxYjP
-         P53IGS8cEpFI+1U8K+UIo6e9S+fM81kXjzGGQhyafvdqfSQmGwrOTZtelA43u007hv/u
-         qZGoyqnkhILciV4xtq3HTYyI5p9/kx/To5Kjg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783498533; x=1784103333;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=SXXv+6sXHuG3kLi8r5M/4A6sQ9dakJtPq27Tv/WBH0s=;
-        b=RqtbYy7BfUj1F8SOogDTo4G3EA2Y7zUwOPb9DQwg0XU3Eog6d7snNajh6Mss4aAWQN
-         eE56VW5uzNme81EaDaqeABX1xLrgGXeYh/mer+D0x20AjsgsMfg0yQKKpIHhAHDWZKxZ
-         7nFzuecR503xE90TGXR925DBigKxK4gAx84C6yWsG4fDxpvoW7dFdJoNwH+2va/5TdyN
-         2/xenQhDIW6aol0bT1taaHWX9wCXoNZ2M8WyUGyMExaWogAsu1ztwUr6qRzkLXnt8phg
-         EHR9Ro4xVvMO/KvAU2g91OcdIdIm470KxSmjebHdmkgUky5F5xbi8uQpGA4NRdmsDcRJ
-         wytg==
-X-Forwarded-Encrypted: i=1; AHgh+RozhEilw/iuslXPriS25spWoIgGH6XowyK6yLRzlkpTU6B9c/blTquJzPi3rvpicitKj73K7jyYKcOXzEkPYg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw7j0VLu9YZFW2d0lye1sduWySufB4z1m6HC7BnPGl7rR/rGDQ5
-	NYpaVWMH+fyOTl3KN43+N5k21Ql6GFExrsyIaD2fwniV+3SwiCVgB4uig4UUNasWWFEEXRXpg4O
-	OwYH4/BPUSwFWXx5s/z34qHXCCAgK7pERiLW0jSV/
-X-Gm-Gg: AfdE7cnOo8q4dGjA8qa+te9ZCtB4Wa7v0KdAImhc9qW5D54KdprTtEhS1JBiPlNHe9O
-	/gpioETOow8deuSDFcg4BTHVYpz1Zm4i2BuagksRBECwFNOEZUMxz1NPDKJ7c3A7NwoFMgiXSfa
-	wHtLNZG8Fvv6AZbGNTA9Q1VbnE3VX23rI4StmxOZAJw67GjqAK06Sx7dAq3fHN7vqjmykSdqE6K
-	kz+gkKFa9qqldwsR86l75IqDTIphiyDSP1X6eDcPiX2wPaTGFZxstdPuyU/OpvEK2CxC+3QtigH
-	Y93anHA2BoVJrmEti5P/9fbYcww=
-X-Received: by 2002:a05:690e:438d:b0:664:ae6b:b48e with SMTP id
- 956f58d0204a3-6679f1bd123mr838906d50.67.1783498533057; Wed, 08 Jul 2026
- 01:15:33 -0700 (PDT)
+	id 1whNTm-0000000GbFB-2D2s;
+	Wed, 08 Jul 2026 08:18:02 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 7B61C60008;
+	Wed,  8 Jul 2026 08:18:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ABAB91F000E9;
+	Wed,  8 Jul 2026 08:18:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783498681;
+	bh=Nm52Xlrw1GluHl4mcq4+4Pp2e2HBmEU2CFEZNaVo9gI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=YhPnM10a9gwlKMBNycSZUM39DOUl9zyRQXQ1wVzwd8qDtzBS4/kf0Qs1WVXhaadDQ
+	 LNtTMKeIQzPf95tCxGqavdjN9ptDFWSCrxVt6OQTrBWl7i3c8NZl/q23pyYKRKvXip
+	 lR1lbJ5J5/6ND3wXMbQQAbNC8GMtWtWWBQKhxQss7Yo/HnpiPEkSGm2Bx6HEz4usW/
+	 16llHLVN7Aj+uQtbN1SRDjK63it1I6ffHly8O7CH3Y+YYf5LPkdjLy1spE9ChW4XJV
+	 gTERzkKKKoJDl9n/10ggCw1QZDzQSdBnguf2iMh/MRrlnJ6qktrEcTbWdeKaWTNqEP
+	 83xqSULzzJC+A==
+Date: Wed, 8 Jul 2026 10:17:58 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Simon Horman <horms@kernel.org>, David Ahern <dsahern@kernel.org>,
+	Ido Schimmel <idosch@nvidia.com>,
+	Pablo Neira Ayuso <pablo@netfilter.org>,
+	Florian Westphal <fw@strlen.de>, Phil Sutter <phil@nwl.cc>,
+	Shuah Khan <shuah@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
+	linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH nf-next v4 5/6] net: netfilter: Add SIT tunnel flowtable
+ acceleration
+Message-ID: <ak4HthcJhms-_tfT@lore-desk>
+References: <20260703-b4-flowtable-sw-accel-ip6ip-v4-0-00398cd12382@kernel.org>
+ <20260703-b4-flowtable-sw-accel-ip6ip-v4-5-00398cd12382@kernel.org>
 MIME-Version: 1.0
-References: <20260707104427.3409290-1-wenst@chromium.org> <176dd24c-c3cf-4ab9-8497-594ed65d10ec@collabora.com>
- <CAGXv+5F86JU9+LPSy8PtuCPrdhBnvcA=PX1d++Yh3u7mK_Jxmw@mail.gmail.com>
- <94c10212-9c27-4875-8a88-78bfb67fb382@collabora.com> <CAGXv+5EsWVbLtUP6b75fvkDVSqUDoAOA1t3hPO4cA9sAA02=WA@mail.gmail.com>
- <2834aca4-916f-4d3e-afb4-cd2425b035ef@collabora.com>
-In-Reply-To: <2834aca4-916f-4d3e-afb4-cd2425b035ef@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 8 Jul 2026 16:15:22 +0800
-X-Gm-Features: AVVi8CeOUHa5MdrVz6aDKyiGOSJ6AaGRjTGNLqqbDw6HCk8vEuopNlJIo0CvBmo
-Message-ID: <CAGXv+5F1JJ0q_7yuGbTLbbi11E5q0SJvLAX7n=P7UjFLyJjBoA@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8188-geralt: Add MT6319 PMIC
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_011534_339720_1B73A47C 
-X-CRM114-Status: GOOD (  48.17  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Oz9APxSaQ2vAwgoj"
+Content-Disposition: inline
+In-Reply-To: <20260703-b4-flowtable-sw-accel-ip6ip-v4-5-00398cd12382@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,278 +83,597 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 8, 2026 at 4:02=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> On 7/8/26 06:25, Chen-Yu Tsai wrote:
-> > On Tue, Jul 7, 2026 at 7:24=E2=80=AFPM AngeloGioacchino Del Regno
-> > <angelogioacchino.delregno@collabora.com> wrote:
-> >>
-> >> On 7/7/26 13:08, Chen-Yu Tsai wrote:
-> >>> On Tue, Jul 7, 2026 at 7:05=E2=80=AFPM AngeloGioacchino Del Regno
-> >>> <angelogioacchino.delregno@collabora.com> wrote:
-> >>>>
-> >>>> On 7/7/26 12:44, Chen-Yu Tsai wrote:
-> >>>>> The Geralt design uses a MT6319 PMIC to power the big cores and LPD=
-DR4X
-> >>>>> DRAM.
-> >>>>>
-> >>>>> Add a device node for it and hook up all the supplies.
-> >>>>>
-> >>>>> This change requires a firmware fix for the SPMI bus to read back
-> >>>>> correctly. The required firmware version is 15842.175.0. This is
-> >>>>> included in ChromeOS releases R150-16700.22.0 (available in Beta
-> >>>>> channel as of writing or stable channel in mid-July) or
-> >>>>> R151-16721.0.0 and later.
-> >>>>>
-> >>>>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> >>>>
-> >>>> This is a big problem then.
-> >>>>
-> >>>> I take it as if the firmware fix is not in place, probing the CPU po=
-wer supplies
-> >>>> will fail, with all the consequences.
-> >>>
-> >>> That's right.
-> >>>
-> >>>> This means that with this, we're breaking all Geralt machines with o=
-lder firmware,
-> >>>> which is not acceptable...
-> >>>>
-> >>>> ...so this needs a different solution, or strong reasons to make me =
-understand that
-> >>>> I'm wrong, if I'm wrong.
-> >>>
-> >>> We can drop the CPU supplies (they don't matter since cpufreq is hard=
-ware
-> >>> driven) and just add the regulators. How does that sound? If the firm=
-ware
-> >>> isn't updated, the PMIC will fail to probe, but since nothing is usin=
-g it,
-> >>> the system will continue to work (with some annoying error messages).
-> >>>
-> >>
-> >> That'd be wrong, but less wrong than not having anything described...
-> >
-> > Yeah. As I said, it doesn't affect usability.
-> >
-> >> ...I wonder if, at this point, you could set the SPMI node to status =
-=3D "fail" and
-> >> have the *new* firmware override that to "ok".
-> >>
-> >> That's the only reasonable way to go forward, IMO.
-> >
-> > I'm afraid it is unlikely to get a firmware release to fix a non-critic=
-al
-> > issue. We were fortunate that there was an actual critical issue being
-> > fixed that allowed me to merge the small fix for the SPMI controller.
-> >
->
-> Yeah, I know how it is regarding firmware updates... but you know, I *mus=
-t* try to
-> get OEMs/ODMs to do the right thing when hacky things get in front of me,=
- and I am
-> fully aware that many of them largely underestimate such issues, and even=
- close the
-> possibility to fix those, which is even worst.
 
-Well, it is at least possible to land a fix into our tree, but it's not
-going to go through the qualification process for a firmware release
-because of resource (cost) reasons.
+--Oz9APxSaQ2vAwgoj
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I think (?) the firmware builds are public, but that doesn't really help
-the average user.
+> Introduce sw flowtable acceleration for the TX/RX paths of
+> SIT tunnels, relying on the netfilter flowtable infrastructure.
+> The feature can be tested with a forwarding scenario between two
+> NICs (eth0 and eth1), where a SIT tunnel is used to reach a remote
+> site via eth1 as the underlay device:
+>=20
+>     ETH0 -- TUN0 <=3D=3D> ETH1 -- [IP network] -- TUN1 (192.168.2.2)
+>=20
+> [IP configuration]
+>=20
+> 6: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state U=
+P group default qlen 1000
+>     link/ether 00:00:22:33:11:55 brd ff:ff:ff:ff:ff:ff
+>     inet6 2001:db8:1::2/64 scope global nodad
+>        valid_lft forever preferred_lft forever
+> 7: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state U=
+P group default qlen 1000
+>     link/ether 00:11:22:33:11:55 brd ff:ff:ff:ff:ff:ff
+>     inet 192.168.2.1/24 scope global eth1
+>        valid_lft forever preferred_lft forever
+> 8: tun0@NONE: <POINTOPOINT,NOARP,UP,LOWER_UP> mtu 1480 qdisc noqueue stat=
+e UNKNOWN group default qlen 1000
+>     link/sit 192.168.2.1 peer 192.168.2.2
+>     inet6 2001:db8:200::1/64 scope global nodad
+>        valid_lft forever preferred_lft forever
 
-> On the other hand, I know you, and I know that you always try to do the s=
-ame
-> whenever you can, so please, be aware that I'm not complaining about you.
+commenting on sashiko's report:
+https://sashiko.dev/#/patchset/20260703-b4-flowtable-sw-accel-ip6ip-v4-0-00=
+398cd12382%40kernel.org
 
-I understand what you are asking and why, and I would ask the same if
-possible.
+>=20
+> $ ip route show
+> 192.168.2.0/24 dev eth1 proto kernel scope link src 192.168.2.1
+>=20
+> $ ip -6 route show
+> 2001:db8:1::/64 dev eth0 proto kernel metric 256 pref medium
+> 2001:db8:200::/64 dev tun0 proto kernel metric 256 pref medium
+> default via 2001:db8:200::2 dev tun0 metric 1024 pref medium
+>=20
+> $ nft list ruleset
+> table inet filter {
+>     flowtable ft {
+>         hook ingress priority filter
+>         devices =3D { eth0, eth1 }
+>     }
+>=20
+>     chain forward {
+>         type filter hook forward priority filter; policy accept;
+>         meta l4proto { tcp, udp } flow add @ft
+>     }
+> }
+>=20
+> When reproducing this scenario using veth interfaces, the following
+> results were observed:
+>=20
+> - TCP stream received from SIT tunnel:
+>   - net-next (baseline):                ~118 Gbps
+>   - net-next + SIT flowtable support: ~148 Gbps
+>=20
+> - TCP stream transmitted to SIT tunnel:
+>   - net-next (baseline):                ~131 Gbps
+>   - net-next + SIT flowtable support: ~147 Gbps
+>=20
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  net/ipv6/sit.c                   |  26 ++++
+>  net/netfilter/nf_flow_table_ip.c | 290 +++++++++++++++++++++------------=
+------
+>  2 files changed, 182 insertions(+), 134 deletions(-)
+>=20
+> diff --git a/net/ipv6/sit.c b/net/ipv6/sit.c
+> index a38b24fb8384..0ac6f7839878 100644
+> --- a/net/ipv6/sit.c
+> +++ b/net/ipv6/sit.c
+> @@ -1365,6 +1365,31 @@ ipip6_tunnel_ctl(struct net_device *dev, struct ip=
+_tunnel_parm_kern *p,
+>  	}
+>  }
+> =20
+> +static int ipip6_tunnel_fill_forward_path(struct net_device_path_ctx *ct=
+x,
+> +					  struct net_device_path *path)
+> +{
+> +	struct ip_tunnel *tunnel =3D netdev_priv(ctx->dev);
+> +	const struct iphdr *tiph =3D &tunnel->parms.iph;
+> +	struct rtable *rt;
+> +
+> +	rt =3D ip_route_output(dev_net(ctx->dev), tiph->daddr, 0, 0, 0,
+> +			     RT_SCOPE_UNIVERSE);
 
-> > I think it would be great if everyone could update their OS and firmwar=
-e,
-> > but I understand that some devices never get updates, such as those in
-> > board farms that never boot into ChromeOS.
->
-> Unfortunately, this is not just a ChromeOS problem but way larger...
->
-> Anyway, I'll stop here to prevent myself from going OT too much and being=
- grumpier
-> than I already am :-P
->
-> I guess then just add the SPMI PMIC and add a big comment that clearly st=
-ates
-> something like
->
-> /*
->   * The mt6319_buck1 is the cpu-supply for CPU6 and CPU7.
->   *
->   * However, this device ships with a broken firmware which needs to be u=
-pdated to
->   * at version XXXXXXX or newer in order to workaround a bug that (descri=
-be bug).
->   *
->   * [blahblah text so that's why the cpu supply was not assigned to cpu6/=
-7].
->   */
->
-> ...so that everyone reading the DT is fully aware of what's going on and =
-can act
-> accordingly if they wish.
->
-> How does that sound?
+- Does this handle NBMA (ISATAP/6to4/6rd) SIT tunnels correctly? For these
+  tunnels, tiph->daddr is typically 0 since the remote destination is resol=
+ved
+  per-packet.
+  If we unconditionally query the routing table here with tiph->daddr, it
+  will route to 0.0.0.0, causing the flow offload tuple to use 0.0.0.0 as t=
+he
+  outer encapsulation destination. Could this result in all offloaded traff=
+ic
+  for these tunnels being silently dropped?
+  - I will fix it in v5
 
-Works for me. I'll send a revised patch.
+> +	if (IS_ERR(rt))
+> +		return PTR_ERR(rt);
+> +
+> +	path->type =3D DEV_PATH_TUN;
+> +	path->tun.src_v4.s_addr =3D tiph->saddr;
+> +	path->tun.dst_v4.s_addr =3D tiph->daddr;
+> +	path->tun.l3_proto =3D IPPROTO_IPV6;
 
+- Is it safe to hardcode path->tun.l3_proto to IPPROTO_IPV6 here?
+  SIT tunnels can also support IPv4 payloads. If an IPv4 flow is offloaded
+  over a SIT tunnel, the flow tuple will erroneously record the payload as
+  IPv6. During encapsulation, nf_flow_tunnel_ipip_push() might then parse
+  the inner IPv4 header as an IPv6 header, which could corrupt TOS and TTL
+  extraction.
+  - I will fix it in v5
 
-Thanks
-ChenYu
+> +	path->tun.encap_proto =3D AF_INET;
+> +	path->dev =3D ctx->dev;
+> +
+> +	ctx->dev =3D rt->dst.dev;
+> +	ip_rt_put(rt);
+> +
+> +	return 0;
+> +}
+> +
+>  static int
+>  ipip6_tunnel_siocdevprivate(struct net_device *dev, struct ifreq *ifr,
+>  			    void __user *data, int cmd)
+> @@ -1401,6 +1426,7 @@ static const struct net_device_ops ipip6_netdev_ops=
+ =3D {
+>  	.ndo_siocdevprivate =3D ipip6_tunnel_siocdevprivate,
+>  	.ndo_get_iflink =3D ip_tunnel_get_iflink,
+>  	.ndo_tunnel_ctl =3D ipip6_tunnel_ctl,
+> +	.ndo_fill_forward_path =3D ipip6_tunnel_fill_forward_path,
+>  };
+> =20
+>  static void ipip6_dev_free(struct net_device *dev)
+> diff --git a/net/netfilter/nf_flow_table_ip.c b/net/netfilter/nf_flow_tab=
+le_ip.c
+> index 4b6de16bd4f3..f02e71ae5448 100644
+> --- a/net/netfilter/nf_flow_table_ip.c
+> +++ b/net/netfilter/nf_flow_table_ip.c
+> @@ -338,7 +338,7 @@ static bool nf_flow_ip4_tunnel_proto(struct nf_flowta=
+ble_ctx *ctx,
+>  	if (iph->ttl <=3D 1)
+>  		return false;
+> =20
+> -	if (iph->protocol =3D=3D IPPROTO_IPIP) {
+> +	if (iph->protocol =3D=3D IPPROTO_IPIP || iph->protocol =3D=3D IPPROTO_I=
+PV6) {
+>  		ctx->tun.proto =3D iph->protocol;
+>  		ctx->tun.hdr_size =3D size;
+>  		ctx->offset +=3D ctx->tun.hdr_size;
+> @@ -464,21 +464,6 @@ static void nf_flow_encap_pop(struct nf_flowtable_ct=
+x *ctx,
+>  		nf_flow_ip_tunnel_pop(ctx, skb);
+>  }
+> =20
+> -static struct flow_offload_tuple_rhash *
+> -nf_flow_offload_lookup(struct nf_flowtable_ctx *ctx,
+> -		       struct nf_flowtable *flow_table, struct sk_buff *skb)
+> -{
+> -	struct flow_offload_tuple tuple =3D {};
+> -
+> -	if (!nf_flow_skb_encap_protocol(ctx, skb, htons(ETH_P_IP)))
+> -		return NULL;
+> -
+> -	if (nf_flow_tuple_ip(ctx, skb, &tuple) < 0)
+> -		return NULL;
+> -
+> -	return flow_offload_lookup(flow_table, &tuple);
+> -}
+> -
+>  static int nf_flow_offload_forward(struct nf_flowtable_ctx *ctx,
+>  				   struct nf_flowtable *flow_table,
+>  				   struct flow_offload_tuple_rhash *tuplehash,
+> @@ -606,19 +591,33 @@ static int nf_flow_tunnel_ipip_push(struct net *net=
+, struct sk_buff *skb,
+>  				    struct flow_offload_tuple *tuple,
+>  				    __be32 *ip_daddr)
+>  {
+> -	struct iphdr *iph =3D (struct iphdr *)skb_network_header(skb);
+>  	struct rtable *rt =3D dst_rtable(tuple->dst_cache);
+> -	u8 tos =3D iph->tos, ttl =3D iph->ttl;
+> -	__be16 frag_off =3D iph->frag_off;
+> -	u32 headroom =3D sizeof(*iph);
+> +	__be16 frag_off =3D 0;
+> +	struct iphdr *iph;
+> +	u8 tos =3D 0, ttl;
+> +	u32 headroom;
+>  	int err;
+> =20
+> +	if (tuple->tun.l3_proto =3D=3D IPPROTO_IPV6) {
+> +		struct ipv6hdr *ip6h;
+> +
+> +		ip6h =3D (struct ipv6hdr *)skb_network_header(skb);
+> +		tos =3D ipv6_get_dsfield(ip6h);
+> +		ttl =3D ip6h->hop_limit;
+> +	} else {
+> +		iph =3D (struct iphdr *)skb_network_header(skb);
+> +		frag_off =3D iph->frag_off;
+> +		tos =3D iph->tos;
+> +		ttl =3D iph->ttl;
+> +	}
+> +
+>  	err =3D iptunnel_handle_offloads(skb, SKB_GSO_IPXIP4);
+>  	if (err)
+>  		return err;
+> =20
+> -	skb_set_inner_ipproto(skb, IPPROTO_IPIP);
+> -	headroom +=3D LL_RESERVED_SPACE(rt->dst.dev) + rt->dst.header_len;
+> +	skb_set_inner_ipproto(skb, tuple->tun.l3_proto);
+> +	headroom =3D sizeof(*iph) + LL_RESERVED_SPACE(rt->dst.dev) +
+> +		   rt->dst.header_len;
 
-> Cheers,
-> Angelo
->
-> >
-> >
-> > ChenYu
-> >
-> >> Of course, avoid having the firmware adding the CPU supplies, because =
-that would
-> >> be rather sketchy then. Just "if spmi status fail found, change to ok"=
-.
-> >>
-> >> Cheers,
-> >> Angelo
-> >>
-> >>>
-> >>> ChenYu
-> >>>
-> >>>> Cheers,
-> >>>> Angelo
-> >>>>
-> >>>>> ---
-> >>>>>     .../boot/dts/mediatek/mt8188-geralt.dtsi      | 66 ++++++++++++=
-+++++++
-> >>>>>     1 file changed, 66 insertions(+)
-> >>>>>
-> >>>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch=
-/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-> >>>>> index f382f90c48f5..fea52c377d88 100644
-> >>>>> --- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-> >>>>> +++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-> >>>>> @@ -4,6 +4,8 @@
-> >>>>>      */
-> >>>>>     /dts-v1/;
-> >>>>>     #include <dt-bindings/gpio/gpio.h>
-> >>>>> +#include <dt-bindings/spmi/spmi.h>
-> >>>>> +
-> >>>>>     #include "mt8188.dtsi"
-> >>>>>     #include "mt6359.dtsi"
-> >>>>>
-> >>>>> @@ -241,6 +243,14 @@ &cpu5 {
-> >>>>>         cpu-supply =3D <&mt6359_vcore_buck_reg>;
-> >>>>>     };
-> >>>>>
-> >>>>> +&cpu6 {
-> >>>>> +     cpu-supply =3D <&mt6319_buck1>;
-> >>>>> +};
-> >>>>> +
-> >>>>> +&cpu7 {
-> >>>>> +     cpu-supply =3D <&mt6319_buck1>;
-> >>>>> +};
-> >>>>> +
-> >>>>>     /*
-> >>>>>      * Geralt is the reference design and doesn't have target TDP.
-> >>>>>      * Ciri is (currently) the only device following Geralt, and it=
-s
-> >>>>> @@ -1156,6 +1166,14 @@ pins-bus {
-> >>>>>                 };
-> >>>>>         };
-> >>>>>
-> >>>>> +     spmi_pins: spmi-pins {
-> >>>>> +             pins-bus {
-> >>>>> +                     pinmux =3D <PINMUX_GPIO175__FUNC_B0_SPMI_M_SC=
-L>,
-> >>>>> +                              <PINMUX_GPIO176__FUNC_B0_SPMI_M_SDA>=
-;
-> >>>>> +                     bias-disable;
-> >>>>> +             };
-> >>>>> +     };
-> >>>>> +
-> >>>>>         uart0_pins: uart0-pins {
-> >>>>>                 pins-bus {
-> >>>>>                         pinmux =3D <PINMUX_GPIO31__FUNC_O_UTXD0>,
-> >>>>> @@ -1267,6 +1285,54 @@ &spi2 {
-> >>>>>         status =3D "okay";
-> >>>>>     };
-> >>>>>
-> >>>>> +&spmi {
-> >>>>> +     pinctrl-names =3D "default";
-> >>>>> +     pinctrl-0 =3D <&spmi_pins>;
-> >>>>> +     #address-cells =3D <2>;
-> >>>>> +     #size-cells =3D <0>;
-> >>>>> +     status =3D "okay";
-> >>>>> +
-> >>>>> +     pmic@6 {
-> >>>>> +             compatible =3D "mediatek,mt6319-regulator", "mediatek=
-,mt6315-regulator";
-> >>>>> +             reg =3D <0x6 SPMI_USID>;
-> >>>>> +             pvdd1-supply =3D <&pp4200_s5>;
-> >>>>> +             pvdd2-supply =3D <&pp4200_s5>;
-> >>>>> +             pvdd3-supply =3D <&pp4200_s5>;
-> >>>>> +             pvdd4-supply =3D <&pp4200_s5>;
-> >>>>> +
-> >>>>> +             regulators {
-> >>>>> +                     mt6319_buck1: vbuck1 {
-> >>>>> +                                     regulator-name =3D "ppvar_dvd=
-d_proc_bc";
-> >>>>> +                                     regulator-min-microvolt =3D <=
-520000>;
-> >>>>> +                                     regulator-max-microvolt =3D <=
-1155000>;
-> >>>>> +                                     regulator-enable-ramp-delay =
-=3D <256>;
-> >>>>> +                                     regulator-allowed-modes =3D <=
-0 1 2>;
-> >>>>> +                                     regulator-always-on;
-> >>>>> +                     };
-> >>>>> +
-> >>>>> +                     /* vbuck2 is ganged with vbuck1 */
-> >>>>> +
-> >>>>> +                     mt6319_buck3: vbuck3 {
-> >>>>> +                                     regulator-name =3D "pp1125_em=
-i_vdd2";
-> >>>>> +                                     regulator-min-microvolt =3D <=
-1060000>;
-> >>>>> +                                     regulator-max-microvolt =3D <=
-1170000>;
-> >>>>> +                                     regulator-enable-ramp-delay =
-=3D <256>;
-> >>>>> +                                     regulator-allowed-modes =3D <=
-0 1 2>;
-> >>>>> +                                     regulator-always-on;
-> >>>>> +                     };
-> >>>>> +
-> >>>>> +                     mt6319_buck4: vbuck4 {
-> >>>>> +                                     regulator-name =3D "pp0600_em=
-i_vddq";
-> >>>>> +                                     regulator-min-microvolt =3D <=
-570000>;
-> >>>>> +                                     regulator-max-microvolt =3D <=
-650000>;
-> >>>>> +                                     regulator-enable-ramp-delay =
-=3D <256>;
-> >>>>> +                                     regulator-allowed-modes =3D <=
-0 1 2>;
-> >>>>> +                                     regulator-always-on;
-> >>>>> +                     };
-> >>>>> +             };
-> >>>>> +     };
-> >>>>> +};
-> >>>>> +
-> >>>>>     &uart0 {
-> >>>>>         pinctrl-names =3D "default";
-> >>>>>         pinctrl-0 =3D <&uart0_pins>;
-> >>>>
->
+- This isn't a bug introduced by this patch, but is it correct to calculate
+  the headroom using rt->dst.dev?
+  The rt variable is derived from the reply direction tuple, so rt->dst.dev
+  points to the internal ingress device (e.g. eth0) rather than the egress
+  underlay device (e.g. eth1).
+  If the physical egress device requires more headroom than the internal
+  device, this allocation might be too small and trigger an skb_under_panic
+  during encapsulation.
+  - This is already fixed by a Pablo's fix
+
+>  	err =3D skb_cow_head(skb, headroom);
+>  	if (err)
+>  		return err;
+> @@ -629,6 +628,7 @@ static int nf_flow_tunnel_ipip_push(struct net *net, =
+struct sk_buff *skb,
+>  	/* Push down and install the IP header. */
+>  	skb_push(skb, sizeof(*iph));
+>  	skb_reset_network_header(skb);
+> +	skb->protocol =3D htons(ETH_P_IP);
+> =20
+>  	iph =3D ip_hdr(skb);
+>  	iph->version	=3D 4;
+> @@ -723,16 +723,6 @@ static int nf_flow_tunnel_push(struct net *net, stru=
+ct sk_buff *skb,
+>  	}
+>  }
+> =20
+> -static int nf_flow_tunnel_v6_push(struct net *net, struct sk_buff *skb,
+> -				  struct flow_offload_tuple *tuple,
+> -				  struct in6_addr **ip6_daddr)
+> -{
+> -	if (tuple->tun_num)
+> -		return nf_flow_tunnel_ip6ip6_push(net, skb, tuple, ip6_daddr);
+> -
+> -	return 0;
+> -}
+> -
+>  static int nf_flow_encap_push(struct sk_buff *skb,
+>  			      struct flow_offload_tuple *tuple,
+>  			      struct net_device *outdev)
+> @@ -830,103 +820,6 @@ static unsigned int nf_flow_queue_xmit(struct net *=
+net, struct sk_buff *skb,
+>  	return NF_STOLEN;
+>  }
+> =20
+> -unsigned int
+> -nf_flow_offload_ip_hook(void *priv, struct sk_buff *skb,
+> -			const struct nf_hook_state *state)
+> -{
+> -	struct flow_offload_tuple_rhash *tuplehash;
+> -	struct nf_flowtable *flow_table =3D priv;
+> -	struct flow_offload_tuple *other_tuple;
+> -	enum flow_offload_tuple_dir dir;
+> -	struct nf_flowtable_ctx ctx =3D {
+> -		.in	=3D state->in,
+> -	};
+> -	struct nf_flow_xmit xmit =3D {};
+> -	struct in6_addr *ip6_daddr;
+> -	struct flow_offload *flow;
+> -	struct neighbour *neigh;
+> -	struct rtable *rt;
+> -	__be32 ip_daddr;
+> -	int ret;
+> -
+> -	tuplehash =3D nf_flow_offload_lookup(&ctx, flow_table, skb);
+> -	if (!tuplehash)
+> -		return NF_ACCEPT;
+> -
+> -	ret =3D nf_flow_offload_forward(&ctx, flow_table, tuplehash, skb);
+> -	if (ret < 0)
+> -		return NF_DROP;
+> -	else if (ret =3D=3D 0)
+> -		return NF_ACCEPT;
+> -
+> -	if (unlikely(tuplehash->tuple.xmit_type =3D=3D FLOW_OFFLOAD_XMIT_XFRM))=
+ {
+> -		rt =3D dst_rtable(tuplehash->tuple.dst_cache);
+> -		memset(skb->cb, 0, sizeof(struct inet_skb_parm));
+> -		IPCB(skb)->iif =3D skb->dev->ifindex;
+> -		IPCB(skb)->flags =3D IPSKB_FORWARDED;
+> -		return nf_flow_xmit_xfrm(skb, state, &rt->dst);
+
+- Since ctx.tun.proto can now be IPPROTO_IPV6 for an inner IPv6 packet
+  encapsulated in IPv4, is it safe to unconditionally cast the route to
+  rtable and initialize IPCB(skb) here?
+  - This is not a real problem since IP tunnel flowtable acceleration is not
+    supported for FLOW_OFFLOAD_XMIT_XFRM xmit_type.
+
+Regards,
+Lorenzo
+
+> -	}
+> -
+> -	dir =3D tuplehash->tuple.dir;
+> -	flow =3D container_of(tuplehash, struct flow_offload, tuplehash[dir]);
+> -	other_tuple =3D &flow->tuplehash[!dir].tuple;
+> -	ip_daddr =3D other_tuple->src_v4.s_addr;
+> -
+> -	if (nf_flow_tunnel_push(state->net, skb, other_tuple, &ip_daddr,
+> -				&ip6_daddr) < 0)
+> -		return NF_DROP;
+> -
+> -	switch (tuplehash->tuple.xmit_type) {
+> -	case FLOW_OFFLOAD_XMIT_NEIGH: {
+> -		struct dst_entry *dst;
+> -
+> -		xmit.outdev =3D dev_get_by_index_rcu(state->net, tuplehash->tuple.ifid=
+x);
+> -		if (!xmit.outdev) {
+> -			flow_offload_teardown(flow);
+> -			return NF_DROP;
+> -		}
+> -		if (other_tuple->tun.encap_proto =3D=3D AF_INET6 ||
+> -		    ctx.tun.proto =3D=3D IPPROTO_IPV6) {
+> -			struct rt6_info *rt6;
+> -
+> -			rt6 =3D dst_rt6_info(tuplehash->tuple.dst_cache);
+> -			neigh =3D ip_neigh_gw6(rt6->dst.dev,
+> -					     rt6_nexthop(rt6, ip6_daddr));
+> -			dst =3D &rt6->dst;
+> -		} else {
+> -			rt =3D dst_rtable(tuplehash->tuple.dst_cache);
+> -			neigh =3D ip_neigh_gw4(rt->dst.dev,
+> -					     rt_nexthop(rt, ip_daddr));
+> -			dst =3D &rt->dst;
+> -		}
+> -		if (IS_ERR(neigh)) {
+> -			flow_offload_teardown(flow);
+> -			return NF_DROP;
+> -		}
+> -		xmit.dest =3D neigh->ha;
+> -		skb_dst_set_noref(skb, dst);
+> -		break;
+> -	}
+> -	case FLOW_OFFLOAD_XMIT_DIRECT:
+> -		xmit.outdev =3D dev_get_by_index_rcu(state->net, tuplehash->tuple.out.=
+ifidx);
+> -		if (!xmit.outdev) {
+> -			flow_offload_teardown(flow);
+> -			return NF_DROP;
+> -		}
+> -		xmit.dest =3D tuplehash->tuple.out.h_dest;
+> -		xmit.source =3D tuplehash->tuple.out.h_source;
+> -		break;
+> -	default:
+> -		WARN_ON_ONCE(1);
+> -		return NF_DROP;
+> -	}
+> -	xmit.tuple =3D other_tuple;
+> -	xmit.needs_gso_segment =3D tuplehash->tuple.needs_gso_segment;
+> -
+> -	return nf_flow_queue_xmit(state->net, skb, &xmit);
+> -}
+> -EXPORT_SYMBOL_GPL(nf_flow_offload_ip_hook);
+> -
+>  static void nf_flow_nat_ipv6_tcp(struct sk_buff *skb, unsigned int thoff,
+>  				 struct in6_addr *addr,
+>  				 struct in6_addr *new_addr,
+> @@ -1111,8 +1004,16 @@ static int nf_flow_offload_ipv6_forward(struct nf_=
+flowtable_ctx *ctx,
+>  	flow =3D container_of(tuplehash, struct flow_offload, tuplehash[dir]);
+> =20
+>  	mtu =3D flow->tuplehash[dir].tuple.mtu + ctx->offset;
+> -	if (flow->tuplehash[!dir].tuple.tun_num)
+> +	switch (flow->tuplehash[!dir].tuple.tun.encap_proto) {
+> +	case AF_INET:
+> +		mtu -=3D sizeof(struct iphdr);
+> +		break;
+> +	case AF_INET6:
+>  		mtu -=3D sizeof(*ip6h);
+> +		break;
+> +	default:
+> +		break;
+> +	}
+> =20
+>  	if (unlikely(nf_flow_exceeds_mtu(skb, mtu)))
+>  		return 0;
+> @@ -1146,6 +1047,25 @@ static int nf_flow_offload_ipv6_forward(struct nf_=
+flowtable_ctx *ctx,
+>  	return 1;
+>  }
+> =20
+> +static struct flow_offload_tuple_rhash *
+> +nf_flow_offload_lookup(struct nf_flowtable_ctx *ctx,
+> +		       struct nf_flowtable *flow_table, struct sk_buff *skb)
+> +{
+> +	struct flow_offload_tuple tuple =3D {};
+> +
+> +	if (!nf_flow_skb_encap_protocol(ctx, skb, htons(ETH_P_IP)))
+> +		return NULL;
+> +
+> +	if (ctx->tun.proto =3D=3D IPPROTO_IPV6) {
+> +		if (nf_flow_tuple_ipv6(ctx, skb, &tuple) < 0)
+> +			return NULL;
+> +	} else if (nf_flow_tuple_ip(ctx, skb, &tuple) < 0) {
+> +		return NULL;
+> +	}
+> +
+> +	return flow_offload_lookup(flow_table, &tuple);
+> +}
+> +
+>  static struct flow_offload_tuple_rhash *
+>  nf_flow_offload_ipv6_lookup(struct nf_flowtable_ctx *ctx,
+>  			    struct nf_flowtable *flow_table,
+> @@ -1166,6 +1086,108 @@ nf_flow_offload_ipv6_lookup(struct nf_flowtable_c=
+tx *ctx,
+>  	return flow_offload_lookup(flow_table, &tuple);
+>  }
+> =20
+> +unsigned int
+> +nf_flow_offload_ip_hook(void *priv, struct sk_buff *skb,
+> +			const struct nf_hook_state *state)
+> +{
+> +	struct flow_offload_tuple_rhash *tuplehash;
+> +	struct nf_flowtable *flow_table =3D priv;
+> +	struct flow_offload_tuple *other_tuple;
+> +	enum flow_offload_tuple_dir dir;
+> +	struct nf_flowtable_ctx ctx =3D {
+> +		.in	=3D state->in,
+> +	};
+> +	struct nf_flow_xmit xmit =3D {};
+> +	struct in6_addr *ip6_daddr;
+> +	struct flow_offload *flow;
+> +	struct neighbour *neigh;
+> +	struct rtable *rt;
+> +	__be32 ip_daddr;
+> +	int ret;
+> +
+> +	tuplehash =3D nf_flow_offload_lookup(&ctx, flow_table, skb);
+> +	if (!tuplehash)
+> +		return NF_ACCEPT;
+> +
+> +	if (ctx.tun.proto =3D=3D IPPROTO_IPV6)
+> +		ret =3D nf_flow_offload_ipv6_forward(&ctx, flow_table, tuplehash,
+> +						   skb);
+> +	else
+> +		ret =3D nf_flow_offload_forward(&ctx, flow_table, tuplehash, skb);
+> +	if (ret < 0)
+> +		return NF_DROP;
+> +	else if (ret =3D=3D 0)
+> +		return NF_ACCEPT;
+> +
+> +	if (unlikely(tuplehash->tuple.xmit_type =3D=3D FLOW_OFFLOAD_XMIT_XFRM))=
+ {
+> +		rt =3D dst_rtable(tuplehash->tuple.dst_cache);
+> +		memset(skb->cb, 0, sizeof(struct inet_skb_parm));
+> +		IPCB(skb)->iif =3D skb->dev->ifindex;
+> +		IPCB(skb)->flags =3D IPSKB_FORWARDED;
+> +		return nf_flow_xmit_xfrm(skb, state, &rt->dst);
+> +	}
+> +
+> +	dir =3D tuplehash->tuple.dir;
+> +	flow =3D container_of(tuplehash, struct flow_offload, tuplehash[dir]);
+> +	other_tuple =3D &flow->tuplehash[!dir].tuple;
+> +	ip_daddr =3D other_tuple->src_v4.s_addr;
+> +	ip6_daddr =3D &other_tuple->src_v6;
+> +
+> +	if (nf_flow_tunnel_push(state->net, skb, other_tuple, &ip_daddr,
+> +				&ip6_daddr) < 0)
+> +		return NF_DROP;
+> +
+> +	switch (tuplehash->tuple.xmit_type) {
+> +	case FLOW_OFFLOAD_XMIT_NEIGH: {
+> +		struct dst_entry *dst;
+> +
+> +		xmit.outdev =3D dev_get_by_index_rcu(state->net, tuplehash->tuple.ifid=
+x);
+> +		if (!xmit.outdev) {
+> +			flow_offload_teardown(flow);
+> +			return NF_DROP;
+> +		}
+> +		if (other_tuple->tun.encap_proto =3D=3D AF_INET6 ||
+> +		    ctx.tun.proto =3D=3D IPPROTO_IPV6) {
+> +			struct rt6_info *rt6;
+> +
+> +			rt6 =3D dst_rt6_info(tuplehash->tuple.dst_cache);
+> +			neigh =3D ip_neigh_gw6(rt6->dst.dev,
+> +					     rt6_nexthop(rt6, ip6_daddr));
+> +			dst =3D &rt6->dst;
+> +		} else {
+> +			rt =3D dst_rtable(tuplehash->tuple.dst_cache);
+> +			neigh =3D ip_neigh_gw4(rt->dst.dev,
+> +					     rt_nexthop(rt, ip_daddr));
+> +			dst =3D &rt->dst;
+> +		}
+> +		if (IS_ERR(neigh)) {
+> +			flow_offload_teardown(flow);
+> +			return NF_DROP;
+> +		}
+> +		xmit.dest =3D neigh->ha;
+> +		skb_dst_set_noref(skb, dst);
+> +		break;
+> +	}
+> +	case FLOW_OFFLOAD_XMIT_DIRECT:
+> +		xmit.outdev =3D dev_get_by_index_rcu(state->net, tuplehash->tuple.out.=
+ifidx);
+> +		if (!xmit.outdev) {
+> +			flow_offload_teardown(flow);
+> +			return NF_DROP;
+> +		}
+> +		xmit.dest =3D tuplehash->tuple.out.h_dest;
+> +		xmit.source =3D tuplehash->tuple.out.h_source;
+> +		break;
+> +	default:
+> +		WARN_ON_ONCE(1);
+> +		return NF_DROP;
+> +	}
+> +	xmit.tuple =3D other_tuple;
+> +	xmit.needs_gso_segment =3D tuplehash->tuple.needs_gso_segment;
+> +
+> +	return nf_flow_queue_xmit(state->net, skb, &xmit);
+> +}
+> +EXPORT_SYMBOL_GPL(nf_flow_offload_ip_hook);
+> +
+>  unsigned int
+>  nf_flow_offload_ipv6_hook(void *priv, struct sk_buff *skb,
+>  			  const struct nf_hook_state *state)
+> @@ -1182,6 +1204,7 @@ nf_flow_offload_ipv6_hook(void *priv, struct sk_buf=
+f *skb,
+>  	struct flow_offload *flow;
+>  	struct neighbour *neigh;
+>  	struct rt6_info *rt;
+> +	__be32 ip_daddr;
+>  	int ret;
+> =20
+>  	tuplehash =3D nf_flow_offload_ipv6_lookup(&ctx, flow_table, skb);
+> @@ -1209,10 +1232,11 @@ nf_flow_offload_ipv6_hook(void *priv, struct sk_b=
+uff *skb,
+>  	dir =3D tuplehash->tuple.dir;
+>  	flow =3D container_of(tuplehash, struct flow_offload, tuplehash[dir]);
+>  	other_tuple =3D &flow->tuplehash[!dir].tuple;
+> +	ip_daddr =3D other_tuple->src_v4.s_addr;
+>  	ip6_daddr =3D &other_tuple->src_v6;
+> =20
+> -	if (nf_flow_tunnel_v6_push(state->net, skb, other_tuple,
+> -				   &ip6_daddr) < 0)
+> +	if (nf_flow_tunnel_push(state->net, skb, other_tuple, &ip_daddr,
+> +				&ip6_daddr) < 0)
+>  		return NF_DROP;
+> =20
+>  	switch (tuplehash->tuple.xmit_type) {
+> @@ -1226,10 +1250,8 @@ nf_flow_offload_ipv6_hook(void *priv, struct sk_bu=
+ff *skb,
+>  		}
+>  		if (other_tuple->tun.encap_proto =3D=3D AF_INET ||
+>  		    ctx.tun.proto =3D=3D IPPROTO_IPIP) {
+> -			__be32 ip_daddr =3D other_tuple->src_v4.s_addr;
+>  			struct rtable *rt4;
+> =20
+> -			skb->protocol =3D htons(ETH_P_IP);
+>  			rt4 =3D dst_rtable(tuplehash->tuple.dst_cache);
+>  			neigh =3D ip_neigh_gw4(rt4->dst.dev,
+>  					     rt_nexthop(rt4, ip_daddr));
+>=20
+> --=20
+> 2.55.0
+>=20
+
+--Oz9APxSaQ2vAwgoj
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCak4HtgAKCRA6cBh0uS2t
+rGpOAQDCkU3Vscylv74eHnaaoL0n+IhBoXjPk01p6STMIWJHlwD/WI3QrHCtFS9G
+4OFbvq1Mlh6WhzD625CmYluuRt3z5w0=
+=WL9c
+-----END PGP SIGNATURE-----
+
+--Oz9APxSaQ2vAwgoj--
 
