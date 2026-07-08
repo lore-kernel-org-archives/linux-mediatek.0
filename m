@@ -4,101 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5B08C44503
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 10:24:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FDAAC43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 10:34:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
-	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ER7MUt+NKPquufARTcXhEHjCrBjJvnX8oO9uSMDLvh0=; b=ivSIAQxf31XKOe488CWWx83Cgs
-	IaxtUO8Hcvk/2Rzcq8+TtsB+mEXyCBjQ046rU4iHytqgCoZcDOm3aUktlCjyQbnxIkr0l1qjjgfkJ
-	XeGleeMz9raUi2MHEOlgy23wJHuht3yKyemi6goZXN2lQXrxtwOWpeYhl7KlUMWieTEJpMfMjiosM
-	CXg+2YdFaNMMgP02+2aNGWOiOWnAj7Lh3Wuk7rqNxLfymouNWfJ5EYEaWV/bo1NNFQ3V50Mr298nV
-	fExkvM/t0A/NZ0L40gkm12Kg2Kh9ptx4f0AieL7XkeER62oRk06Gk5rjuTRNoYGmh1VcSscxFJxIB
-	Vvpmt6Zw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4XQ0wLbsM/AS7qA52MIZH67Ua3KezvjkhA2tS6lMiJs=; b=llH4as7HauGM2+e7NN3Lo8cHoZ
+	+RE2u57CY3lsezVZgLAFejZHW4PAl88KTjrxKAqs/7RVaDjsLDz2AeK/XZG90IuXqgX2D5IiYPrx5
+	oQuYF1ly6zrJal98LbqSj7VUJvLGQ3Q4+/iK4AYonC98yqd+pMFDBB8IHk8Klgu/OYOB7aEFnPkSt
+	IAleeKC9OI4VrYLIZWglMnlcmIw+tOCcC4sSyQWQYUGLKjOLxZ5O5iupWBF/rSwNiDv1imSFlZ5p7
+	s1LENpjjclq2J1nCfgwPEbyeRQfYpM1Db7e8b09Sar5mpa2nA3ySigGdJRu3SkjgXjDR82sUtjemL
+	V8zTk8wQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whPRq-0000000GtEE-1KbJ;
-	Wed, 08 Jul 2026 10:24:10 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1whPbQ-0000000GuRe-0ZrM;
+	Wed, 08 Jul 2026 10:34:05 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whPRe-0000000Gt0Y-0rZk
-	for linux-mediatek@lists.infradead.org;
-	Wed, 08 Jul 2026 10:24:02 +0000
-Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-47de0093c42so498753f8f.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 03:23:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783506236; x=1784111036; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=ER7MUt+NKPquufARTcXhEHjCrBjJvnX8oO9uSMDLvh0=;
-        b=ROEDU5NLU9CP3hbfVzIMM9aIuYkT2iGFii6NXgtfH2wM6PizPyUjAtNbXC3k4MN0jD
-         yktdYH2MImvXa4pSBSav8EP7Xx6Fng8kF1oy8N27mJC42hXV35h5z6hlzzsoHru4AsrM
-         kA0unDPCGtELMKXyUcsexedMiHuCwoMRBgsFXJuqHftr/p9gsdv2RALavMcng9i/aki0
-         sulwtb2jiulufdRK4kgS7GP7NlnV1BlPOAa35KHltXkm7BECwfZyacC0l5zrGj/HJD/M
-         rXZ3z+Z8nLm93fxOQ1NA9VssUr4I+Dh87o3ANHesCz7+OOOCDpXlqrvrLovbmkknvgHc
-         mYjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783506236; x=1784111036;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=ER7MUt+NKPquufARTcXhEHjCrBjJvnX8oO9uSMDLvh0=;
-        b=S68ekXelx8vQGJpi5YC6ap2/LEz40Hr5GVgnzU/O0vY6xj+esrO1sI61sADttMoXV/
-         K+6aCyL/QHtnX2NlOeAzkO135fSKrZny2IXylh40e5ihe20bFmC7IHZm0Rji0YtNwqtH
-         mOpqWUhDFwN39UXUJm5ROcVbe3x6jqT3YWzsYeCdpiI+wNzBGNAjqC5rk/K4/mo6CPBC
-         9AYdGosX17P2X41ItszXp+kox7sjVnen+mOs+nBaXzqXab0r5+oGVok5Db2QvOHRRIWY
-         le6+P4lxTh5JsMJbHf6ik8ZZlmgp0cSFC4q+BpqqGOomk1RgBxHK7BbGnVD46Vvck8mJ
-         ILSA==
-X-Forwarded-Encrypted: i=1; AHgh+Rq4TzYE0WQLUa25RJ/6Q6UC/zy/SrFFEFk5tY1N8vw6qIp8+vfAQ7SK5sRm5FuqbnSR3vzQvuYW7vmuTiH54Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxsDXuBCLiY+KjyAN19aJAbwRTmDlpTWCuLnM/h5lx2Or/pQgre
-	9Dh3a1eh5gYd2PjoRSMuWErichb4s6Vs9ouv6pWGsRyGmzxUSqNUV6FE
-X-Gm-Gg: AfdE7cnnLpuA5xWiVsjqTKrnaCVQikZQXFs6I6M/rOEZJ4M71BRq2dzwQDUxMpgncCz
-	49qx+kPKn9ICTLjy4m0sIGmLYfiD+DD3ul7pEgR2ya2OY1ZBJc+LANLoWQMtblkp8CH9P3/CF9E
-	yx7FWxQ88Du6SMkq858GvJuKJYxphDIpg1lnY93YhCcOq/ouAuE9gAuEUIHPrtbqcfXO3i9VUHF
-	8ZgUis6swDPd30TsTxmTNOLrkd+VBXrLdKksF+fmWQsXPcwvV+N6zbEgXIO/6jC6sK6RAhEgel7
-	G3D514/XNkBy8vm3kDdebSlNz8GWZoCQ1qqdJEyvstZCQms1DmBAf9MfwhcEln3efoQs6pEbVb6
-	WF7gCgaVqIxd5u307bR8uy72t5WMlEHUEZeK6cqQAXZCmJXKc9RuCoyBmMd+E8ZD8RNByGgG4oR
-	l/r0Cu/3ZDm9c1uap42ayc1+wUK7tVy388OkEIxHtSnx+FGWdbtIhm8p1Kr3YQPrb03zV0W+cQc
-	FRCR93XuDlyAbx+qVk=
-X-Received: by 2002:a5d:5d07:0:b0:473:f4c3:4d51 with SMTP id ffacd0b85a97d-47df079abe1mr1739457f8f.43.1783506236114;
-        Wed, 08 Jul 2026 03:23:56 -0700 (PDT)
-Received: from Ansuel-XPS24.localdomain (host-95-248-227-210.retail.telecomitalia.it. [95.248.227.210])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-47aa0f2186bsm40660248f8f.36.2026.07.08.03.23.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jul 2026 03:23:55 -0700 (PDT)
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
+	id 1whPbO-0000000GuR2-2P19;
+	Wed, 08 Jul 2026 10:34:02 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id A24F660008;
+	Wed,  8 Jul 2026 10:34:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1B961F000E9;
+	Wed,  8 Jul 2026 10:34:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783506841;
+	bh=4XQ0wLbsM/AS7qA52MIZH67Ua3KezvjkhA2tS6lMiJs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=gR6Usnq7B8n7kg/b2ZH5jlJH3PyqWYzHUTSp20hBE553UOQt9GxZpMb4t9WXHASxG
+	 l6A7OnZXV+TBBy0EclhYaH8vtpACh3VS8FHx+UtTNa95QO4U7HWtuRq8Pl/TYwaKbf
+	 iK8VTDe8oWTGDtJo52d7lCmiT8mD2bCA3NuTrRvj84Kf1j6IsO3lqOjF/Dz/jDnYAy
+	 9V63U9XVD+G2xWim6WusbSa9bLyMVnSOFS/7VZAkEm7Q2Sjy5Xq1w0xaI8V5HiIVVe
+	 5EU1tMceL7ytYksChrm8KZfAGetucCXFr37cVwuwyJFhw5c7mzvhnI9jrfD82v6XMe
+	 SNCe4+xTeV/8w==
+Date: Wed, 8 Jul 2026 12:33:58 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Felix Fietkau <nbd@nbd.name>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next 4/5] net: phy: mediatek: add calibration logic for AN7581
-Date: Wed,  8 Jul 2026 12:23:30 +0200
-Message-ID: <20260708102341.53919-5-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260708102341.53919-1-ansuelsmth@gmail.com>
-References: <20260708102341.53919-1-ansuelsmth@gmail.com>
+	Simon Horman <horms@kernel.org>, David Ahern <dsahern@kernel.org>,
+	Ido Schimmel <idosch@nvidia.com>,
+	Pablo Neira Ayuso <pablo@netfilter.org>,
+	Florian Westphal <fw@strlen.de>, Phil Sutter <phil@nwl.cc>,
+	Shuah Khan <shuah@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
+	linux-kselftest@vger.kernel.org
+Subject: Re: [PATCH nf-next v4 5/6] net: netfilter: Add SIT tunnel flowtable
+ acceleration
+Message-ID: <ak4nltE006uDesMl@lore-desk>
+References: <20260703-b4-flowtable-sw-accel-ip6ip-v4-0-00398cd12382@kernel.org>
+ <20260703-b4-flowtable-sw-accel-ip6ip-v4-5-00398cd12382@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_032359_823198_12C2CBAF 
-X-CRM114-Status: GOOD (  20.12  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="NkuvXEfgx3dvazRZ"
+Content-Disposition: inline
+In-Reply-To: <20260703-b4-flowtable-sw-accel-ip6ip-v4-5-00398cd12382@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,1613 +83,613 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Airoha AN7581 require dedicated calibration and specific tuneup to make
-the Ethernet port work on specific HW PCB layout.
 
-The calibration process is similar to Mediatek PHY but Airoha PHY use
-Software calibration process instead of making use of EFUSE.
+--NkuvXEfgx3dvazRZ
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-It does also require some complex table for TX Amp compensation and
-multiple register settings for EEE and 10/100M to correctly work.
-Also the PHY apply a different TX Amp compensation table based on the
-SoC PDIDR version. Such version info is stored in the SCU SoC registers.
+commenting on sashiko's report:
+https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260703-b4-flowtable-s=
+w-accel-ip6ip-v4-0-00398cd12382%40kernel.org
 
-Add module version as suggested by Airoha to identify the calibration logic
-with a specific version.
+> Introduce sw flowtable acceleration for the TX/RX paths of
+> SIT tunnels, relying on the netfilter flowtable infrastructure.
+> The feature can be tested with a forwarding scenario between two
+> NICs (eth0 and eth1), where a SIT tunnel is used to reach a remote
+> site via eth1 as the underlay device:
+>=20
+>     ETH0 -- TUN0 <=3D=3D> ETH1 -- [IP network] -- TUN1 (192.168.2.2)
+>=20
+> [IP configuration]
+>=20
+> 6: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state U=
+P group default qlen 1000
+>     link/ether 00:00:22:33:11:55 brd ff:ff:ff:ff:ff:ff
+>     inet6 2001:db8:1::2/64 scope global nodad
+>        valid_lft forever preferred_lft forever
+> 7: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state U=
+P group default qlen 1000
+>     link/ether 00:11:22:33:11:55 brd ff:ff:ff:ff:ff:ff
+>     inet 192.168.2.1/24 scope global eth1
+>        valid_lft forever preferred_lft forever
+> 8: tun0@NONE: <POINTOPOINT,NOARP,UP,LOWER_UP> mtu 1480 qdisc noqueue stat=
+e UNKNOWN group default qlen 1000
+>     link/sit 192.168.2.1 peer 192.168.2.2
+>     inet6 2001:db8:200::1/64 scope global nodad
+>        valid_lft forever preferred_lft forever
+>=20
+> $ ip route show
+> 192.168.2.0/24 dev eth1 proto kernel scope link src 192.168.2.1
+>=20
+> $ ip -6 route show
+> 2001:db8:1::/64 dev eth0 proto kernel metric 256 pref medium
+> 2001:db8:200::/64 dev tun0 proto kernel metric 256 pref medium
+> default via 2001:db8:200::2 dev tun0 metric 1024 pref medium
+>=20
+> $ nft list ruleset
+> table inet filter {
+>     flowtable ft {
+>         hook ingress priority filter
+>         devices =3D { eth0, eth1 }
+>     }
+>=20
+>     chain forward {
+>         type filter hook forward priority filter; policy accept;
+>         meta l4proto { tcp, udp } flow add @ft
+>     }
+> }
+>=20
+> When reproducing this scenario using veth interfaces, the following
+> results were observed:
+>=20
+> - TCP stream received from SIT tunnel:
+>   - net-next (baseline):                ~118 Gbps
+>   - net-next + SIT flowtable support: ~148 Gbps
+>=20
+> - TCP stream transmitted to SIT tunnel:
+>   - net-next (baseline):                ~131 Gbps
+>   - net-next + SIT flowtable support: ~147 Gbps
+>=20
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  net/ipv6/sit.c                   |  26 ++++
+>  net/netfilter/nf_flow_table_ip.c | 290 +++++++++++++++++++++------------=
+------
+>  2 files changed, 182 insertions(+), 134 deletions(-)
+>=20
+> diff --git a/net/ipv6/sit.c b/net/ipv6/sit.c
+> index a38b24fb8384..0ac6f7839878 100644
+> --- a/net/ipv6/sit.c
+> +++ b/net/ipv6/sit.c
+> @@ -1365,6 +1365,31 @@ ipip6_tunnel_ctl(struct net_device *dev, struct ip=
+_tunnel_parm_kern *p,
+>  	}
+>  }
+> =20
+> +static int ipip6_tunnel_fill_forward_path(struct net_device_path_ctx *ct=
+x,
+> +					  struct net_device_path *path)
+> +{
+> +	struct ip_tunnel *tunnel =3D netdev_priv(ctx->dev);
+> +	const struct iphdr *tiph =3D &tunnel->parms.iph;
+> +	struct rtable *rt;
+> +
+> +	rt =3D ip_route_output(dev_net(ctx->dev), tiph->daddr, 0, 0, 0,
+> +			     RT_SCOPE_UNIVERSE);
+> +	if (IS_ERR(rt))
+> +		return PTR_ERR(rt);
+> +
+> +	path->type =3D DEV_PATH_TUN;
+> +	path->tun.src_v4.s_addr =3D tiph->saddr;
+> +	path->tun.dst_v4.s_addr =3D tiph->daddr;
+> +	path->tun.l3_proto =3D IPPROTO_IPV6;
+> +	path->tun.encap_proto =3D AF_INET;
+> +	path->dev =3D ctx->dev;
+> +
+> +	ctx->dev =3D rt->dst.dev;
+> +	ip_rt_put(rt);
+> +
+> +	return 0;
 
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
----
- drivers/net/phy/mediatek/airoha-ge-soc.c | 1489 ++++++++++++++++++++++
- drivers/net/phy/mediatek/mtk-ge-soc.h    |   13 +
- 2 files changed, 1502 insertions(+)
+- Is tiph->daddr always meaningful here?  SIT supports several modes where
+  tunnel->parms.iph.daddr is either zero or a placeholder and the real
+  outer IPv4 endpoint is derived per-packet from the inner IPv6
+  destination:
+    - ISATAP (dev->priv_flags & IFF_ISATAP), resolved by
+      ipip6_tunnel_dst_find(..., true)
+    - 6rd / 6to4, resolved per-packet via try_6rd() / check_6rd()
+    - NBMA / point-to-multipoint (tiph->daddr =3D=3D 0), resolved by
+      ipip6_tunnel_dst_find(..., false)
+  In these cases ip_route_output(daddr=3D0) will fall through to the default
+  route, ctx->dev gets resolved to the wrong underlay, and every
+  accelerated packet is encapsulated toward 0.0.0.0 (or a fixed unicast
+  that does not match the flow) regardless of the actual inner
+  destination.
+  Compare ip6_tnl_fill_forward_path() which returns -EOPNOTSUPP when it
+  detects unsupported tunnel features; would something equivalent make
+  sense here, at least for !tiph->daddr, IFF_ISATAP, and 6rd configured
+  tunnels?
+  Does this path also need to consider tunnel->encap?  SIT supports FOU
+  and GUE via ip_tunnel_encap(skb, &tunnel->encap, &protocol, &fl4) in the
+  slow path, and there is no rejection here when tunnel->encap.type is
+  not TUNNEL_ENCAP_NONE.  Once a SIT tunnel that was configured with
+  encap fou/gue is attached to a flowtable, the fast path pushes a plain
+  IPv4 outer header via nf_flow_tunnel_ipip_push() and skips the FOU/GUE
+  encapsulation entirely.  ip6_tnl_fill_forward_path() has an
+  -EOPNOTSUPP guard for its own analogous case (encaplimit); would a
+  similar guard work here?
+  The slow path in ipip6_tunnel_xmit() uses flowi4_init_output() with
+  tunnel->parms.link (oif), tunnel->fwmark, tos & INET_DSCP_MASK, and
+  tiph->saddr:
+      flowi4_init_output(&fl4, tunnel->parms.link, tunnel->fwmark,
+                         tos & INET_DSCP_MASK, RT_SCOPE_UNIVERSE,
+                         IPPROTO_IPV6, 0, dst, tiph->saddr, ...);
+  The call above passes 0 for saddr, dscp and oif and does not pass a
+  fwmark.  For a SIT tunnel bound to a specific link, using fwmark-based
+  policy routing, or configured with a source address, can the fast-path
+  route lookup diverge from what the slow path would pick, so that
+  rt->dst.dev (which becomes ctx->dev and drives the flowtable egress)
+  ends up on a different underlay device than slow-path packets on the
+  same tunnel?
+  - I will fix it in v5.
 
-diff --git a/drivers/net/phy/mediatek/airoha-ge-soc.c b/drivers/net/phy/mediatek/airoha-ge-soc.c
-index 429594f27792..bc487b093cfa 100644
---- a/drivers/net/phy/mediatek/airoha-ge-soc.c
-+++ b/drivers/net/phy/mediatek/airoha-ge-soc.c
-@@ -1,16 +1,1493 @@
- // SPDX-License-Identifier: GPL-2.0+
-+#include <linux/bitfield.h>
- #include <linux/pinctrl/consumer.h>
- #include <linux/phy.h>
- 
-+#include "../phylib.h"
- #include "mtk.h"
- #include "mtk-ge-soc.h"
- 
-+#define AIROHA_DEFAULT_PORT0_ADDR		0x9
- #define AIROHA_PHY_MAX_LEDS			2
- 
-+enum airoha_mdi_resister_type {
-+	MDI_0R,
-+	MDI_5R,
-+
-+	MDI_TYPE_MAX,
-+};
-+
-+enum airoha_transformer_type {
-+	TXMR,
-+	DISCRETE,
-+
-+	TRANSFORMER_TYPE_MAX,
-+};
-+
-+enum airoha_calib_const_type {
-+	TX_AMP_TEST_A,
-+	TX_AMP_TEST_B,
-+	TX_AMP_TEST_C,
-+	TX_AMP_TEST_D,
-+	TX_AMP_1G_A,
-+	TX_AMP_1G_B,
-+	TX_AMP_1G_C,
-+	TX_AMP_1G_D,
-+	TX_AMP_100M_A,
-+	TX_AMP_100M_B,
-+	TX_AMP_10M_A,
-+	TX_AMP_10M_B,
-+	R50_A,
-+	R50_B,
-+	R50_C,
-+	R50_D,
-+
-+	CALIB_CONST_TYPE_MAX,
-+};
-+
-+struct airoha_socphy_shared {
-+	struct phy_device *phydev_p0;
-+	enum airoha_transformer_type transformer_type[4];
-+	enum airoha_mdi_resister_type mdi_resister_type;
-+	bool rext_sw_calib_done;
-+	int (*tx_amp_compensation_tbl)[TRANSFORMER_TYPE_MAX][MDI_TYPE_MAX][CALIB_CONST_TYPE_MAX][4];
-+	u8 *r50_cal_tbl;
-+};
-+
-+/*
-+ * 2 chip revision
-+ * TXMR or discrete
-+ * 2 MDI type
-+ * TX AMP test/TX AMP 1G/TX AMP 100M/TX AMP 10M/R50
-+ * 4 PHY
-+ */
-+static int an7581_tx_amp_compensation_tbl[2][TRANSFORMER_TYPE_MAX][MDI_TYPE_MAX][CALIB_CONST_TYPE_MAX][4] = {
-+	{ /* IC version 1 */
-+		[TXMR] = {
-+			{ },
-+			{
-+				[TX_AMP_TEST_A] = { -12, -11, -9, -6 },
-+				[TX_AMP_TEST_B] = { -9, -13, -9, -5 },
-+				[TX_AMP_TEST_C] = { -5, -4, -3, 1 },
-+				[TX_AMP_TEST_D] = { -9, -8, -7, -5 },
-+				[TX_AMP_1G_A] = { -12, -11, -9, -6 },
-+				[TX_AMP_1G_B] = { -9, -13, -9, -5 },
-+				[TX_AMP_1G_C] = { -5, -4, -3, 1 },
-+				[TX_AMP_1G_D] = { -9, -8, -7, -5 },
-+				[TX_AMP_100M_A] = { -2, -2, 0, 2 },
-+				[TX_AMP_100M_B] = { -2, -2, 1, 1 },
-+				[TX_AMP_10M_A] = { 0, 0, 0, 0 },
-+				[TX_AMP_10M_B] = { 0, 0, 0, 0 },
-+				[R50_A] = { 15, 15, 15, 15 },
-+				[R50_B] = { 15, 15, 18, 15 },
-+				[R50_C] = { -8, -8, -8, -8 },
-+				[R50_D] = { -8, -8, -8, -8 },
-+			},
-+		},
-+		[DISCRETE] = {
-+			{ },
-+			{
-+				[TX_AMP_TEST_A] = { -9, -7, -7, -5 },
-+				[TX_AMP_TEST_B] = { -9, -9, -7, -4 },
-+				[TX_AMP_TEST_C] = { -9, -7, -9, -6 },
-+				[TX_AMP_TEST_D] = { -11, -9, -10, -8 },
-+				[TX_AMP_1G_A] = { -9, -7, -7, -5 },
-+				[TX_AMP_1G_B] = { -9, -8, -7, -4 },
-+				[TX_AMP_1G_C] = { -9, -7, -9, -6 },
-+				[TX_AMP_1G_D] = { -11, -8, -10, -8 },
-+				[TX_AMP_100M_A] = { 4, 3, 4, 4 },
-+				[TX_AMP_100M_B] = { 4, 4, 5, 4 },
-+				[TX_AMP_10M_A] = { 0, 0, 0, 0 },
-+				[TX_AMP_10M_B] = { 0, 0, 0, 0 },
-+				[R50_A] = { 0, 0, 0, 0 },
-+				[R50_B] = { 0, 0, 0, 0 },
-+				[R50_C] = { 0, 0, 0, 0 },
-+				[R50_D] = { 0, 0, 0, 0 },
-+			},
-+		},
-+	},
-+	{ /* IC version 2 */
-+		[TXMR] = {
-+			{ },
-+			{
-+				[TX_AMP_TEST_A] = { -10, -12, -12, -11 },
-+				[TX_AMP_TEST_B] = { -10, -11, -11, -10 },
-+				[TX_AMP_TEST_C] = { -5, -7, -9, -3 },
-+				[TX_AMP_TEST_D] = { -8, -10, -7, -8 },
-+				[TX_AMP_1G_A] = { -12, -6, -6, 4 },
-+				[TX_AMP_1G_B] = { -10, -5, -5, 1 },
-+				[TX_AMP_1G_C] = { -5, -3, -4, 11 },
-+				[TX_AMP_1G_D] = { -8, -3, -3, 4 },
-+				[TX_AMP_100M_A] = { 2, 1, 0, 3 },
-+				[TX_AMP_100M_B] = { 0, 0, 0, 3 },
-+				[TX_AMP_10M_A] = { 0, 0, 0, 0 },
-+				[TX_AMP_10M_B] = { 0, 0, 0, 0 },
-+				[R50_A] = { 15, 15, 15, 15 },
-+				[R50_B] = { 15, 15, 18, 15 },
-+				[R50_C] = { 4, 4, 4, 4 },
-+				[R50_D] = { 4, 4, 4, 4 },
-+			},
-+		},
-+		[DISCRETE] = {
-+			{ },
-+			{
-+				[TX_AMP_TEST_A] = { -11, 11, -12, -7 },
-+				[TX_AMP_TEST_B] = { -9, -10, -9, -8 },
-+				[TX_AMP_TEST_C] = { -6, -3, -7, -4 },
-+				[TX_AMP_TEST_D] = { -7, -8, -10, -7 },
-+				[TX_AMP_1G_A] = { -11, -11, -12, -7 },
-+				[TX_AMP_1G_B] = { -9, -10, -9, -8 },
-+				[TX_AMP_1G_C] = { -6, -3, -7, -4 },
-+				[TX_AMP_1G_D] = { -7, -8, -10, -7 },
-+				[TX_AMP_100M_A] = { 2, 2, 1, 2 },
-+				[TX_AMP_100M_B] = { 3, 3, 3, 3 },
-+				[TX_AMP_10M_A] = { 0, 0, 0, 0 },
-+				[TX_AMP_10M_B] = { 0, 0, 0, 0 },
-+				[R50_A] = { 12, 12, 12, 12 },
-+				[R50_B] = { 7, 7, 7, 7 },
-+				[R50_C] = { 2, 2, 0, 0 },
-+				[R50_D] = { 0, 0, 2, 2 },
-+			},
-+		},
-+	},
-+};
-+
-+static u8 an7581_zcal_to_r45ohm[64] = {
-+	127, 127, 127, 127, 127, 127, 127, 127, 127, 127, 127, 127, 127, 127, 127, 127,
-+	127, 127, 127, 127, 127, 127, 127, 127, 123, 119, 115, 112, 108, 104, 100,  96,
-+	 94,  92,  88,  85,  82,  80,  76,  74,  72,  68,  66,  64,  62,  60,  56,  55,
-+	 52,  50,  48,  46,  44,  42,  40,  39,  36,  35,  32,  32,  30,  28,  27,  25
-+};
-+
-+static int airoha_cal_cycle(struct phy_device *phydev, int devad,
-+			    u32 regnum, u16 mask, u16 cal_val)
-+{
-+	struct airoha_socphy_shared *shared = phy_package_get_priv(phydev);
-+	struct phy_device *phydev_p0;
-+	int ret;
-+
-+	phydev_p0 = shared->phydev_p0;
-+
-+	phy_modify_mmd(phydev, devad, regnum, mask, cal_val);
-+
-+	ret = mtk_cal_cycle_wait(phydev_p0);
-+	phydev_dbg(phydev, "cal_val: 0x%x, ret: %d\n", cal_val, ret);
-+
-+	return ret;
-+}
-+
-+static int airoha_rext_cal_sw(struct phy_device *phydev)
-+{
-+	int calibration_polarity;
-+	u8 zcal_ctrl = 32;
-+	int first_calib;
-+	int ret;
-+
-+	/* BG voltage output */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x100, 0xc000);
-+	/* tst_mode2 */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0xff, 0x2);
-+
-+	phy_clear_bits_mmd(phydev, MDIO_MMD_VEND2, 0xff,
-+			   GENMASK(15, 4) | GENMASK(1, 0));
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG0,
-+		      MTK_PHY_RG_CAL_CKINV | MTK_PHY_RG_ANA_CALEN |
-+		      MTK_PHY_RG_REXT_CALEN);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG1, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG6, 0);
-+
-+	phydev_dbg(phydev, "Start REXT SW cal.\n");
-+	first_calib = airoha_cal_cycle(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG5,
-+				       MTK_PHY_RG_REXT_ZCAL_CTRL_MASK, zcal_ctrl);
-+
-+	if (first_calib < 0) {
-+		phydev_err(phydev, "REXT SW calibration failed.\n");
-+		return -EINVAL;
-+	}
-+
-+	/* If REXT calibration failed:
-+	 * - increase dB until calibration succeed.
-+	 * If REXT calibration succeeded:
-+	 * - decrease dB until calibration fail to fine tune it.
-+	 */
-+	if (first_calib == 1)
-+		calibration_polarity = -1;
-+	else
-+		calibration_polarity = 1;
-+
-+	while (zcal_ctrl > 0 &&
-+	       zcal_ctrl < FIELD_MAX(MTK_PHY_RG_REXT_ZCAL_CTRL_MASK)) {
-+		zcal_ctrl += calibration_polarity;
-+
-+		ret = airoha_cal_cycle(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG5,
-+				       MTK_PHY_RG_REXT_ZCAL_CTRL_MASK, zcal_ctrl);
-+		/* Exit if we either failed or succeeded compared to the
-+		 * first calibration result. (aka we finished fine tuning or
-+		 * we succeeded with calibration)
-+		 */
-+		if (ret != first_calib)
-+			break;
-+	}
-+
-+	if (ret < 0) {
-+		phydev_err(phydev, "REXT SW calibration failed.\n");
-+		return -EINVAL;
-+	}
-+
-+	if (zcal_ctrl == 0 ||
-+	    zcal_ctrl == FIELD_MAX(MTK_PHY_RG_REXT_ZCAL_CTRL_MASK)) {
-+		zcal_ctrl = 32;
-+		phydev_err(phydev, "REXT SW calibration saturation. Defaulting to %x.\n",
-+			   zcal_ctrl);
-+	}
-+
-+	phy_modify_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG5,
-+		       MTK_PHY_RG_REXT_TRIM_MASK,
-+		       FIELD_PREP(MTK_PHY_RG_REXT_TRIM_MASK, zcal_ctrl));
-+	phy_modify_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_RG_BG_RASEL,
-+		       MTK_PHY_RG_BG_RASEL_MASK,
-+		       FIELD_PREP(MTK_PHY_RG_BG_RASEL_MASK, zcal_ctrl >> 3));
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG0, 0);
-+
-+	return 0;
-+}
-+
-+static int airoha_tx_offset_cal_sw(struct phy_device *phydev, u8 txg_calen_x)
-+{
-+	struct airoha_socphy_shared *shared = phy_package_get_priv(phydev);
-+	struct phy_device *phydev_p0;
-+	u16 dev1e_145_tmp, bmcr_tmp;
-+	int calibration_polarity;
-+	u16 reg_dac1, reg_dac2;
-+	int zcal_ctrl = 0;
-+	int first_calib;
-+	u16 reg, mask;
-+	int ret;
-+
-+	phydev_p0 = shared->phydev_p0;
-+
-+	/* BG voltage output */
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND2, 0x100, 0xc000);
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG0,
-+		      MTK_PHY_RG_ANA_CALEN);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG1,
-+		      MTK_PHY_RG_TXVOS_CALEN);
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG0,
-+		      MTK_PHY_RG_ANA_CALEN);
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG1,
-+		      MTK_PHY_RG_TXVOS_CALEN);
-+
-+	/* Force 1G full duplex for calibration */
-+	bmcr_tmp = phy_read(phydev, MII_BMCR);
-+	phy_write(phydev, MII_BMCR, BMCR_FULLDPLX | BMCR_SPEED1000);
-+
-+	/* Force MDI */
-+	dev1e_145_tmp = phy_read_mmd(phydev, MDIO_MMD_VEND1, 0x0145);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x0145, 0x1010);
-+
-+	/* 1e_96[15]:bypass_tx_offset_cal, Hw bypass, Fw cal */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x96,
-+		      0x8000);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x3e,
-+		      0xf808);
-+
-+	switch (txg_calen_x) {
-+	case PAIR_A:
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xdd, BIT(12));
-+		reg_dac1 = MTK_PHY_RG_DASN_DAC_IN0_A;
-+		reg_dac2 = MTK_PHY_RG_DASN_DAC_IN1_A;
-+		reg = MTK_PHY_RG_CR_TX_AMP_OFFSET_A_B;
-+		mask = MTK_PHY_CR_TX_AMP_OFFSET_A_MASK;
-+		break;
-+	case PAIR_B:
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xdd, BIT(8));
-+		reg_dac1 = MTK_PHY_RG_DASN_DAC_IN0_B;
-+		reg_dac2 = MTK_PHY_RG_DASN_DAC_IN1_B;
-+		reg = MTK_PHY_RG_CR_TX_AMP_OFFSET_A_B;
-+		mask = MTK_PHY_CR_TX_AMP_OFFSET_B_MASK;
-+		break;
-+	case PAIR_C:
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xdd, BIT(4));
-+		reg_dac1 = MTK_PHY_RG_DASN_DAC_IN0_C;
-+		reg_dac2 = MTK_PHY_RG_DASN_DAC_IN1_C;
-+		reg = MTK_PHY_RG_CR_TX_AMP_OFFSET_C_D;
-+		mask = MTK_PHY_CR_TX_AMP_OFFSET_C_MASK;
-+		break;
-+	case PAIR_D:
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xdd, BIT(0));
-+		reg_dac1 = MTK_PHY_RG_DASN_DAC_IN0_D;
-+		reg_dac2 = MTK_PHY_RG_DASN_DAC_IN1_D;
-+		reg = MTK_PHY_RG_CR_TX_AMP_OFFSET_C_D;
-+		mask = MTK_PHY_CR_TX_AMP_OFFSET_D_MASK;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, reg_dac1,
-+		      0x8000);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, reg_dac2,
-+		      0x8000);
-+
-+	phydev_dbg(phydev, "Start TX Offset SW cal.\n");
-+
-+	first_calib = airoha_cal_cycle(phydev, MDIO_MMD_VEND1, reg, mask,
-+				       zcal_ctrl << __ffs(mask));
-+
-+	/* If TX Offset calibration failed:
-+	 * - increase dB until calibration succeed.
-+	 * If TX Offset calibration succeeded:
-+	 * - decrease dB until calibration fail to fine tune it.
-+	 */
-+	if (first_calib == 1)
-+		calibration_polarity = -1;
-+	else
-+		calibration_polarity = 1;
-+
-+	while (zcal_ctrl > -32 && zcal_ctrl < 32) {
-+		u32 val;
-+
-+		zcal_ctrl += calibration_polarity;
-+		if (zcal_ctrl >= 0)
-+			val = zcal_ctrl;
-+		else
-+			/* BIT(5) signal negative number for TX Offset */
-+			val = BIT(5) | abs(zcal_ctrl);
-+
-+		ret = airoha_cal_cycle(phydev, MDIO_MMD_VEND1, reg, mask,
-+				       val << __ffs(mask));
-+		/* Exit if we either failed or succeeded compared to the
-+		 * first calibration result. (aka we finished fine tuning or
-+		 * we succeeded with calibration)
-+		 */
-+		if (ret != first_calib)
-+			break;
-+	}
-+
-+	if (ret < 0) {
-+		phydev_err(phydev, "TX Offset calibration failed.\n");
-+		return -EINVAL;
-+	}
-+
-+	if (zcal_ctrl == -32 ||
-+	    zcal_ctrl == 32) {
-+		zcal_ctrl = 0;
-+		phydev_err(phydev, "TX Offset SW calibration saturation. Defaulting to %x.\n",
-+			   zcal_ctrl);
-+
-+		phy_modify_mmd(phydev, MDIO_MMD_VEND1, reg, mask,
-+			       zcal_ctrl << __ffs(mask));
-+	}
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x100, 0x0);
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN0_A, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN0_B, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN0_C, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN0_D, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN1_A, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN1_B, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN1_C, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN1_D, 0);
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG0, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG1, 0);
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG0, 0);
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG1, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x96, 0x0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x3e, 0xc000);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xdd, 0);
-+
-+	/* Restore BMCR */
-+	phy_write(phydev, MII_BMCR, bmcr_tmp);
-+
-+	/* Restore MDI */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x0145, dev1e_145_tmp);
-+
-+	return 0;
-+}
-+
-+static int airoha_tx_amp_cal_sw(struct phy_device *phydev, u8 txg_calen_x)
-+{
-+	struct airoha_socphy_shared *shared = phy_package_get_priv(phydev);
-+	u16 mask_gbe, mask_tbt, mask_tst, mask_hbt;
-+	u16 reg, reg_100, reg_dac1, reg_dac2;
-+	struct phy_device *phydev_p0;
-+	int calibration_polarity;
-+	u8 zcal_ctrl = 32;
-+	int first_calib;
-+	int ret;
-+
-+	phydev_p0 = shared->phydev_p0;
-+
-+	/* BG voltage output */
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND2, 0x100, 0xc000);
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x145, 0x1010);
-+
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG0,
-+		      MTK_PHY_RG_CAL_CKINV | MTK_PHY_RG_ANA_CALEN);
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG1,
-+		      MTK_PHY_RG_TXVOS_CALEN);
-+
-+	/* select 1V */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG6, 0x10);
-+
-+	/* enable Tx VLD*/
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x3e, 0xf808);
-+
-+	/* Force 1G full duplex for calibration */
-+	phy_write(phydev, MII_BMCR, BMCR_FULLDPLX | BMCR_SPEED1000);
-+
-+	switch (txg_calen_x) {
-+	case PAIR_A:
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xdd, BIT(12));
-+		reg_dac1 = MTK_PHY_RG_DASN_DAC_IN0_A;
-+		reg_dac2 = MTK_PHY_RG_DASN_DAC_IN1_A;
-+		reg = MTK_PHY_TXVLD_DA_RG;
-+		mask_gbe = MTK_PHY_DA_TX_I2MPB_A_GBE_MASK;
-+		mask_tbt = MTK_PHY_DA_TX_I2MPB_A_TBT_MASK;
-+		reg_100 = MTK_PHY_TX_I2MPB_TEST_MODE_A2;
-+		mask_hbt = MTK_PHY_DA_TX_I2MPB_A_HBT_MASK;
-+		mask_tst = MTK_PHY_DA_TX_I2MPB_A_TST_MASK;
-+		break;
-+	case PAIR_B:
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xdd, BIT(8));
-+		reg_dac1 = MTK_PHY_RG_DASN_DAC_IN0_B;
-+		reg_dac2 = MTK_PHY_RG_DASN_DAC_IN1_B;
-+		reg = MTK_PHY_TX_I2MPB_TEST_MODE_B1;
-+		mask_gbe = MTK_PHY_DA_TX_I2MPB_B_GBE_MASK;
-+		mask_tbt = MTK_PHY_DA_TX_I2MPB_B_TBT_MASK;
-+		reg_100 = MTK_PHY_TX_I2MPB_TEST_MODE_B2;
-+		mask_hbt = MTK_PHY_DA_TX_I2MPB_B_HBT_MASK;
-+		mask_tst = MTK_PHY_DA_TX_I2MPB_B_TST_MASK;
-+		break;
-+	case PAIR_C:
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xdd, BIT(4));
-+		reg_dac1 = MTK_PHY_RG_DASN_DAC_IN0_C;
-+		reg_dac2 = MTK_PHY_RG_DASN_DAC_IN1_C;
-+		reg = MTK_PHY_TX_I2MPB_TEST_MODE_C1;
-+		mask_gbe = MTK_PHY_DA_TX_I2MPB_C_GBE_MASK;
-+		mask_tbt = MTK_PHY_DA_TX_I2MPB_C_TBT_MASK;
-+		reg_100 = MTK_PHY_TX_I2MPB_TEST_MODE_C2;
-+		mask_hbt = MTK_PHY_DA_TX_I2MPB_C_HBT_MASK;
-+		mask_tst = MTK_PHY_DA_TX_I2MPB_C_TST_MASK;
-+		break;
-+	case PAIR_D:
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xdd, BIT(0));
-+		reg_dac1 = MTK_PHY_RG_DASN_DAC_IN0_D;
-+		reg_dac2 = MTK_PHY_RG_DASN_DAC_IN1_D;
-+		reg = MTK_PHY_TX_I2MPB_TEST_MODE_D1;
-+		mask_gbe = MTK_PHY_DA_TX_I2MPB_D_GBE_MASK;
-+		mask_tbt = MTK_PHY_DA_TX_I2MPB_D_TBT_MASK;
-+		reg_100 = MTK_PHY_TX_I2MPB_TEST_MODE_D2;
-+		mask_hbt = MTK_PHY_DA_TX_I2MPB_D_HBT_MASK;
-+		mask_tst = MTK_PHY_DA_TX_I2MPB_D_TST_MASK;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, reg_dac1,
-+		      0x8000 | 0xf0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, reg_dac2,
-+		      0x8000 | 0xf0);
-+
-+	phydev_dbg(phydev, "Start TX Amp SW cal.\n");
-+	first_calib = airoha_cal_cycle(phydev, MDIO_MMD_VEND1, reg,
-+				       mask_gbe, zcal_ctrl << __ffs(mask_gbe));
-+
-+	/* If TX Amp calibration failed:
-+	 * - increase dB until calibration succeed.
-+	 * If TX Amp calibration succeeded:
-+	 * - decrease dB until calibration fail to fine tune it.
-+	 */
-+	if (first_calib == 1)
-+		calibration_polarity = -1;
-+	else
-+		calibration_polarity = 1;
-+
-+	while (zcal_ctrl > 0 &&
-+	       zcal_ctrl < FIELD_MAX(MTK_PHY_RG_REXT_ZCAL_CTRL_MASK)) {
-+		zcal_ctrl += calibration_polarity;
-+
-+		ret = airoha_cal_cycle(phydev, MDIO_MMD_VEND1, reg,
-+				       mask_gbe, zcal_ctrl << __ffs(mask_gbe));
-+		/* Exit if we either failed or succeeded compared to the
-+		 * first calibration result. (aka we finished fine tuning or
-+		 * we succeeded with calibration)
-+		 */
-+		if (ret != first_calib)
-+			break;
-+	}
-+
-+	if (ret < 0) {
-+		phydev_err(phydev, "TX AMP calibration failed.\n");
-+		phy_modify_mmd(phydev, MDIO_MMD_VEND1, reg,
-+			       mask_gbe | mask_tbt,
-+			       (zcal_ctrl << __ffs(mask_gbe)) |
-+			       (zcal_ctrl << __ffs(mask_tbt)));
-+
-+		return -EINVAL;
-+	}
-+
-+	if (zcal_ctrl == 0 ||
-+	    zcal_ctrl == FIELD_MAX(MTK_PHY_RG_REXT_ZCAL_CTRL_MASK))
-+		phydev_warn(phydev, "TX AMP SW calibration saturation.\n");
-+
-+	phy_modify_mmd(phydev, MDIO_MMD_VEND1, reg,
-+		       mask_gbe | mask_tbt,
-+		       (zcal_ctrl << __ffs(mask_gbe)) |
-+		       (zcal_ctrl << __ffs(mask_tbt)));
-+
-+	phy_modify_mmd(phydev, MDIO_MMD_VEND1, reg_100,
-+		       mask_hbt | mask_tst,
-+		       (zcal_ctrl << __ffs(mask_hbt)) |
-+		       (zcal_ctrl << __ffs(mask_tst)));
-+
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND2, 0x100, 0x0);
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN0_A, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN0_B, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN0_C, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN0_D, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN1_A, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN1_B, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN1_C, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN1_D, 0);
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND1, 0x145, 0x1000);
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG0, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG1, 0);
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG0, 0);
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG1, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x3e, 0xc000);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xdd, 0);
-+
-+	/* Restore AN enable */
-+	phy_write(phydev, MII_BMCR, BMCR_ANENABLE);
-+
-+	return 0;
-+}
-+
-+static int airoha_tx_r50_cal_sw(struct phy_device *phydev, u8 txg_calen_x)
-+{
-+	struct airoha_socphy_shared *shared = phy_package_get_priv(phydev);
-+	struct phy_device *phydev_p0;
-+	u16 dev1e_145_tmp, bmcr_tmp;
-+	int calibration_polarity;
-+	u8 zcal_ctrl = 32;
-+	int first_calib;
-+	u16 reg;
-+	int ret;
-+
-+	phydev_p0 = shared->phydev_p0;
-+
-+	/* BG voltage output */
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND2, 0x100, 0xc000);
-+
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG0,
-+		      MTK_PHY_RG_CAL_CKINV | MTK_PHY_RG_ANA_CALEN);
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG1, 0);
-+	/* select 1V */
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG6, 0x10);
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG0,
-+		      MTK_PHY_RG_CAL_CKINV | MTK_PHY_RG_ANA_CALEN);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG1, 0);
-+	/* select 1V */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG6, 0x10);
-+
-+	/* Force 1G full duplex for calibration */
-+	bmcr_tmp = phy_read(phydev, MII_BMCR);
-+	phy_write(phydev, MII_BMCR, BMCR_FULLDPLX | BMCR_SPEED1000);
-+
-+	/* Force MDI */
-+	dev1e_145_tmp = phy_read_mmd(phydev, MDIO_MMD_VEND1, 0x0145);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x0145, 0x1010);
-+
-+	/* disable tx slew control */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x0185, 0x0000);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x00fb, 0x0100);
-+
-+	switch (txg_calen_x) {
-+	case PAIR_A:
-+		phy_set_bits_mmd(phydev, MDIO_MMD_VEND1,
-+				 MTK_PHY_RG_ANA_CAL_RG0,
-+				 MTK_PHY_RG_ZCALEN_A);
-+		break;
-+	case PAIR_B:
-+		phy_set_bits_mmd(phydev, MDIO_MMD_VEND1,
-+				 MTK_PHY_RG_ANA_CAL_RG1,
-+				 MTK_PHY_RG_ZCALEN_B);
-+		break;
-+	case PAIR_C:
-+		phy_set_bits_mmd(phydev, MDIO_MMD_VEND1,
-+				 MTK_PHY_RG_ANA_CAL_RG1,
-+				 MTK_PHY_RG_ZCALEN_C);
-+		break;
-+	case PAIR_D:
-+		phy_set_bits_mmd(phydev, MDIO_MMD_VEND1,
-+				 MTK_PHY_RG_ANA_CAL_RG1,
-+				 MTK_PHY_RG_ZCALEN_D);
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	phydev_dbg(phydev, "Start TX r50 SW cal.\n");
-+	first_calib = airoha_cal_cycle(phydev_p0, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG5,
-+				       MTK_PHY_RG_REXT_ZCAL_CTRL_MASK, zcal_ctrl);
-+
-+	if (first_calib < 0) {
-+		phydev_err(phydev, "TX r50 SW calibration failed.\n");
-+		return -EINVAL;
-+	}
-+
-+	/* If TX r50 calibration failed:
-+	 * - increase dB until calibration succeed.
-+	 * If TX r50 calibration succeeded:
-+	 * - decrease dB until calibration fail to fine tune it.
-+	 */
-+	if (first_calib == 1)
-+		calibration_polarity = -1;
-+	else
-+		calibration_polarity = 1;
-+
-+	while (zcal_ctrl > 0 &&
-+	       zcal_ctrl < FIELD_MAX(MTK_PHY_RG_REXT_ZCAL_CTRL_MASK)) {
-+		zcal_ctrl += calibration_polarity;
-+
-+		ret = airoha_cal_cycle(phydev_p0, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG5,
-+				       MTK_PHY_RG_REXT_ZCAL_CTRL_MASK, zcal_ctrl);
-+		/* Exit if we either failed or succeeded compared to the
-+		 * first calibration result. (aka we finished fine tuning or
-+		 * we succeeded with calibration)
-+		 */
-+		if (ret != first_calib)
-+			break;
-+	}
-+
-+	if (ret < 0) {
-+		phydev_err(phydev, "TX r50 SW calibration failed.\n");
-+		return -EINVAL;
-+	}
-+
-+	if (zcal_ctrl == 0 ||
-+	    zcal_ctrl == FIELD_MAX(MTK_PHY_RG_REXT_ZCAL_CTRL_MASK))
-+		phydev_warn(phydev, "TX r50 SW calibration saturation.\n");
-+
-+	zcal_ctrl = shared->r50_cal_tbl[zcal_ctrl];
-+
-+	switch (txg_calen_x) {
-+	case PAIR_A:
-+		reg = BIT(7) | FIELD_PREP(MTK_PHY_CR_TX_R50_OFFSET_A_MASK, zcal_ctrl);
-+		phy_modify_mmd(phydev, MDIO_MMD_VEND1,
-+			       MTK_PHY_RG_CR_TX_R50_OFFSET_A_B,
-+			       BIT(7) | MTK_PHY_CR_TX_R50_OFFSET_A_MASK, reg);
-+		break;
-+	case PAIR_B:
-+		reg = BIT(7) | FIELD_PREP(MTK_PHY_CR_TX_R50_OFFSET_B_MASK, zcal_ctrl);
-+		phy_modify_mmd(phydev, MDIO_MMD_VEND1,
-+			       MTK_PHY_RG_CR_TX_R50_OFFSET_A_B,
-+			       BIT(7) | MTK_PHY_CR_TX_R50_OFFSET_B_MASK, reg);
-+		break;
-+	case PAIR_C:
-+		reg = BIT(7) | FIELD_PREP(MTK_PHY_CR_TX_R50_OFFSET_C_MASK, zcal_ctrl);
-+		phy_modify_mmd(phydev, MDIO_MMD_VEND1,
-+			       MTK_PHY_RG_CR_TX_R50_OFFSET_C_D,
-+			       BIT(7) | MTK_PHY_CR_TX_R50_OFFSET_C_MASK, reg);
-+		break;
-+	case PAIR_D:
-+		reg = BIT(7) | FIELD_PREP(MTK_PHY_CR_TX_R50_OFFSET_D_MASK, zcal_ctrl);
-+		phy_modify_mmd(phydev, MDIO_MMD_VEND1,
-+			       MTK_PHY_RG_CR_TX_R50_OFFSET_C_D,
-+			       BIT(7) | MTK_PHY_CR_TX_R50_OFFSET_D_MASK, reg);
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG0, 0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG1, 0);
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG0, 0);
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG1, 0);
-+
-+	/* Enable tx slew control */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x0185, 0x0001);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x00fb, 0x0000);
-+
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND2, 0x100, 0x0);
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG6, 0x0);
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG6, 0x0);
-+
-+	/* Restore BMCR */
-+	phy_write(phydev, MII_BMCR, bmcr_tmp);
-+
-+	/* Restore MDI */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x0145, dev1e_145_tmp);
-+
-+	return 0;
-+}
-+
-+static int airoha_rx_offset_cal_sw(struct phy_device *phydev)
-+{
-+	/* Hw bypass, Fw cal */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x96, 0x8000);
-+	/* tx/rx_cal_criteria_value */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x37, 0x0033);
-+
-+	/* rx offset cal by Hw setup */
-+	phy_clear_bits_mmd(phydev, MDIO_MMD_VEND1, 0x39,
-+			   BIT(14) | BIT(11));
-+
-+	/* disable rtune calibration */
-+	phy_clear_bits_mmd(phydev, MDIO_MMD_VEND2, 0x107,
-+			   BIT(12));
-+
-+	/* bypass tx/rx dc offset cancellation process */
-+	phy_set_bits_mmd(phydev, MDIO_MMD_VEND1, 0x171,
-+			 BIT(8) | BIT(7));
-+
-+	/* rx offset calibration start */
-+	phy_set_bits_mmd(phydev, MDIO_MMD_VEND1, 0x39,
-+			 BIT(13));
-+
-+	/* rx offset calibration stop */
-+	phy_clear_bits_mmd(phydev, MDIO_MMD_VEND1, 0x39,
-+			   BIT(13));
-+
-+	mdelay(10);
-+
-+	phy_clear_bits_mmd(phydev, MDIO_MMD_VEND1, 0x171,
-+			   BIT(8) | BIT(7));
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG6,
-+		      0x1);
-+
-+	return 0;
-+}
-+
-+static int airoha_cal_sw(struct phy_device *phydev, enum CAL_ITEM cal_item,
-+			 u8 start_pair, u8 end_pair)
-+{
-+	u8 pair_n;
-+	int ret;
-+
-+	for (pair_n = start_pair; pair_n <= end_pair; pair_n++) {
-+		switch (cal_item) {
-+		case REXT:
-+			ret = airoha_rext_cal_sw(phydev);
-+			break;
-+		case TX_OFFSET:
-+			ret = airoha_tx_offset_cal_sw(phydev, pair_n);
-+			break;
-+		case TX_AMP:
-+			ret = airoha_tx_amp_cal_sw(phydev, pair_n);
-+			break;
-+		case TX_R50:
-+			ret = airoha_tx_r50_cal_sw(phydev, pair_n);
-+			break;
-+		case RX_OFFSET:
-+			ret = airoha_rx_offset_cal_sw(phydev);
-+			break;
-+		default:
-+			return -EINVAL;
-+		}
-+		if (ret)
-+			return ret;
-+	}
-+	return 0;
-+}
-+
-+static int airoha_start_cal(struct phy_device *phydev, enum CAL_ITEM cal_item,
-+			    enum CAL_MODE cal_mode, u8 start_pair,
-+			    u8 end_pair, u32 *buf)
-+{
-+	int ret;
-+
-+	switch (cal_mode) {
-+	case SW_M:
-+		ret = airoha_cal_sw(phydev, cal_item, start_pair, end_pair);
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
-+	if (ret) {
-+		phydev_err(phydev, "cal %d failed\n", cal_item);
-+		return -EIO;
-+	}
-+
-+	return 0;
-+}
-+
-+static int airoha_phy_calib(struct phy_device *phydev)
-+{
-+	struct airoha_socphy_shared *shared = phy_package_get_priv(phydev);
-+	struct phy_device *phydev_p0;
-+	int ret;
-+
-+	phydev_p0 = shared->phydev_p0;
-+
-+	/* PreCalibrate Set */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x5c, 0x6666);
-+
-+	if (!shared->rext_sw_calib_done) {
-+		ret = airoha_start_cal(phydev, REXT, SW_M, NO_PAIR, NO_PAIR, NULL);
-+		if (ret)
-+			return ret;
-+
-+		shared->rext_sw_calib_done = true;
-+	}
-+
-+	ret = airoha_start_cal(phydev, TX_R50, SW_M, PAIR_A, PAIR_D, NULL);
-+	if (ret)
-+		return ret;
-+
-+	ret = airoha_start_cal(phydev, TX_OFFSET, SW_M, PAIR_A, PAIR_D, NULL);
-+	if (ret)
-+		return ret;
-+
-+	ret = airoha_start_cal(phydev, TX_AMP, SW_M, PAIR_A, PAIR_D, NULL);
-+	if (ret)
-+		return ret;
-+
-+	ret = airoha_start_cal(phydev, RX_OFFSET, SW_M, NO_PAIR, NO_PAIR, NULL);
-+	if (ret)
-+		return ret;
-+
-+	/* Gating, short with other pair */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x15, 0x0);
-+
-+	phy_write_mmd(phydev_p0, MDIO_MMD_VEND2, 0x100, 0x0);
-+
-+	return 0;
-+}
-+
-+static int airoha_phy_auto_select_transformer(struct phy_device *phydev)
-+{
-+	struct airoha_socphy_shared *shared = phy_package_get_priv(phydev);
-+	struct phy_device *phydev_p0;
-+	u8 phy_offset;
-+	u16 bmcr_tmp;
-+	u16 val;
-+	int i;
-+
-+	phydev_p0 = shared->phydev_p0;
-+	phy_offset = phydev->mdio.addr - phydev_p0->mdio.addr;
-+
-+	/* Force 1G full duplex for calibration */
-+	bmcr_tmp = phy_read(phydev, MII_BMCR);
-+	phy_write(phydev, MII_BMCR, BMCR_FULLDPLX | BMCR_SPEED1000);
-+
-+	phy_modify_mmd(phydev, MDIO_MMD_VEND2, 0x271, GENMASK(4, 0),
-+		       FIELD_PREP(GENMASK(4, 0), 0x3));
-+
-+	phy_modify_mmd(phydev, MDIO_MMD_VEND2, 0x269, GENMASK(15, 12),
-+		       FIELD_PREP(GENMASK(15, 12), 0x2));
-+
-+	phy_modify_mmd(phydev, MDIO_MMD_VEND2, 0x26f, GENMASK(14, 12),
-+		       FIELD_PREP(GENMASK(14, 12), 0x0));
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xdd, BIT(12));
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN0_A,
-+		      0x8000 | 0xf0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN1_A,
-+		      0x8000 | 0xf0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN0_B,
-+		      0x8000 | 0xf0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN1_B,
-+		      0x8000 | 0xf0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN0_C,
-+		      0x8000 | 0xf0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN1_C,
-+		      0x8000 | 0xf0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN0_D,
-+		      0x8000 | 0xf0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN1_D,
-+		      0x8000 | 0xf0);
-+
-+	/* Force pGA gain */
-+	phy_select_page(phydev, MTK_PHY_PAGE_EXTENDED_52B5);
-+	__mtk_tr_modify(phydev, 0x1, 0xf, 0x10,
-+			GENMASK(20, 15),
-+			FIELD_PREP(GENMASK(20, 15), 0x1f));
-+
-+	__mtk_tr_modify(phydev, 0x1, 0xf, 0x11,
-+			GENMASK(23, 18) | GENMASK(15, 10) | GENMASK(7, 2),
-+			FIELD_PREP(GENMASK(23, 18), 0x1f) |
-+			FIELD_PREP(GENMASK(15, 10), 0x1f) |
-+			FIELD_PREP(GENMASK(7, 2), 0x1f));
-+	phy_restore_page(phydev, MTK_PHY_PAGE_STANDARD, 0);
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xc9, 0xffff);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x151, 0x12);
-+
-+	switch (phy_offset) {
-+	case 0:
-+		val = 0x1;
-+		break;
-+	case 1:
-+		val = 0x3;
-+		break;
-+	case 2:
-+		val = 0x5;
-+		break;
-+	case 3:
-+		val = 0x7;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x15,
-+		      FIELD_PREP(GENMASK(14, 12), val) | 0x161);
-+	mdelay(500);
-+
-+	for (i = 0; i < 3; i++)
-+		val = phy_read_mmd(phydev, MDIO_MMD_VEND2, 0x1a);
-+
-+	/* Check the value and report transformer type for later */
-+	shared->transformer_type[phy_offset] = val < 0xe0;
-+
-+	/* Switch to Default */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x15, 0x1000);
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xdd, 0x0);
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN0_A,
-+		      0x0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN1_A,
-+		      0x0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN0_B,
-+		      0x0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN1_B,
-+		      0x0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN0_C,
-+		      0x0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN1_C,
-+		      0x0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN0_D,
-+		      0x0);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_DASN_DAC_IN1_D,
-+		      0x0);
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xc9, 0xfff);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x151, 0x0);
-+
-+	phy_select_page(phydev, MTK_PHY_PAGE_EXTENDED_52B5);
-+	__mtk_tr_modify(phydev, 0x1, 0xf, 0x10,
-+			GENMASK(20, 15),
-+			FIELD_PREP(GENMASK(20, 15), 0x4));
-+
-+	__mtk_tr_modify(phydev, 0x1, 0xf, 0x11,
-+			GENMASK(23, 18) | GENMASK(15, 10) | GENMASK(7, 2),
-+			FIELD_PREP(GENMASK(23, 18), 0x0) |
-+			FIELD_PREP(GENMASK(15, 10), 0x0) |
-+			FIELD_PREP(GENMASK(7, 2), 0x0));
-+	phy_restore_page(phydev, MTK_PHY_PAGE_STANDARD, 0);
-+
-+	/* Restore BMCR */
-+	phy_write(phydev, MII_BMCR, bmcr_tmp);
-+
-+	return 0;
-+}
-+
-+static int airoha_phy_tx_amp_compensation(struct phy_device *phydev)
-+{
-+	struct airoha_socphy_shared *shared = phy_package_get_priv(phydev);
-+
-+	u16 reg_1e_12_read;
-+	u16 reg_1e_16_read;
-+	u16 reg_1e_17_read;
-+	u16 reg_1e_18_read;
-+	u16 reg_1e_19_read;
-+	u16 reg_1e_20_read;
-+	u16 reg_1e_21_read;
-+	u16 reg_1e_22_read;
-+	u16 reg_1e_174_read;
-+	u16 reg_1e_175_read;
-+
-+	int reg_1e_12_header;
-+	int reg_1e_16_header;
-+	int reg_1e_17_header;
-+	int reg_1e_18_header;
-+	int reg_1e_19_header;
-+	int reg_1e_21_header;
-+	int reg_1e_174_header;
-+	int reg_1e_175_header;
-+
-+	int reg_1e_12_end;
-+	int reg_1e_16_end;
-+	int reg_1e_17_end;
-+	int reg_1e_18_end;
-+	int reg_1e_20_end;
-+	int reg_1e_22_end;
-+	int reg_1e_174_end;
-+	int reg_1e_175_end;
-+
-+	struct phy_device *phydev_p0;
-+	u8 phy_offset;
-+
-+	int txamp_low_limit = -3;
-+	int txamp_high_limit = 0x42;
-+
-+	int r50_low_limit = -8;
-+	int r50_high_limit = 0x88;
-+
-+	bool overflow;
-+	int (*tx_amp_table)[CALIB_CONST_TYPE_MAX][4];
-+	int transformer_type, mdi_resister_type;
-+
-+	phydev_p0 = shared->phydev_p0;
-+	phy_offset = phydev->mdio.addr - phydev_p0->mdio.addr;
-+
-+	transformer_type = shared->transformer_type[phy_offset];
-+	mdi_resister_type = shared->mdi_resister_type;
-+	tx_amp_table = shared->tx_amp_compensation_tbl[transformer_type][mdi_resister_type];
-+
-+	reg_1e_12_read = phy_read_mmd(phydev, MDIO_MMD_VEND1, 0x12);
-+	reg_1e_16_read = phy_read_mmd(phydev, MDIO_MMD_VEND1, 0x16);
-+	reg_1e_17_read = phy_read_mmd(phydev, MDIO_MMD_VEND1, 0x17);
-+	reg_1e_18_read = phy_read_mmd(phydev, MDIO_MMD_VEND1, 0x18);
-+	reg_1e_19_read = phy_read_mmd(phydev, MDIO_MMD_VEND1, 0x19);
-+	reg_1e_20_read = phy_read_mmd(phydev, MDIO_MMD_VEND1, 0x20);
-+	reg_1e_21_read = phy_read_mmd(phydev, MDIO_MMD_VEND1, 0x21);
-+	reg_1e_22_read = phy_read_mmd(phydev, MDIO_MMD_VEND1, 0x22);
-+	reg_1e_174_read = phy_read_mmd(phydev, MDIO_MMD_VEND1, 0x174);
-+	reg_1e_175_read = phy_read_mmd(phydev, MDIO_MMD_VEND1, 0x175);
-+
-+	reg_1e_12_header = ((reg_1e_12_read & 0xfc00) / 1024) + *tx_amp_table[TX_AMP_1G_A][phy_offset];
-+	reg_1e_17_header = ((reg_1e_17_read & 0x3f00) / 256) + *tx_amp_table[TX_AMP_1G_B][phy_offset];
-+	reg_1e_19_header = ((reg_1e_19_read & 0x3f00) / 256) + *tx_amp_table[TX_AMP_1G_C][phy_offset];
-+	reg_1e_21_header = ((reg_1e_21_read & 0x3f00) / 256) + *tx_amp_table[TX_AMP_1G_D][phy_offset];
-+
-+	overflow = false;
-+	if (reg_1e_12_header < txamp_low_limit ||
-+	    reg_1e_12_header > txamp_high_limit)
-+		overflow = true;
-+	if (reg_1e_17_header < txamp_low_limit ||
-+	    reg_1e_17_header > txamp_high_limit)
-+		overflow = true;
-+	if (reg_1e_19_header < txamp_low_limit ||
-+	    reg_1e_19_header > txamp_high_limit)
-+		overflow = true;
-+	if (reg_1e_21_header < txamp_low_limit ||
-+	    reg_1e_21_header > txamp_high_limit)
-+		overflow = true;
-+
-+	if (overflow) {
-+		reg_1e_12_header = 0x20;
-+		reg_1e_17_header = 0x20;
-+		reg_1e_19_header = 0x20;
-+		reg_1e_21_header = 0x20;
-+	} else {
-+		if (reg_1e_12_header < 0)
-+			reg_1e_12_header = 0;
-+		else if (reg_1e_12_header > 0x3f)
-+			reg_1e_12_header = 0x3f;
-+		if (reg_1e_17_header < 0)
-+			reg_1e_17_header = 0;
-+		else if (reg_1e_17_header > 0x3f)
-+			reg_1e_17_header = 0x3f;
-+		if (reg_1e_19_header < 0)
-+			reg_1e_19_header = 0;
-+		else if (reg_1e_19_header > 0x3f)
-+			reg_1e_19_header = 0x3f;
-+		if (reg_1e_21_header < 0)
-+			reg_1e_21_header = 0;
-+		else if (reg_1e_21_header > 0x3f)
-+			reg_1e_21_header = 0x3f;
-+	}
-+
-+	reg_1e_16_end = (reg_1e_16_read & 0x003f) + *tx_amp_table[TX_AMP_TEST_A][phy_offset];
-+	reg_1e_18_end = (reg_1e_18_read & 0x003f) + *tx_amp_table[TX_AMP_TEST_B][phy_offset];
-+	reg_1e_20_end = (reg_1e_20_read & 0x003f) + *tx_amp_table[TX_AMP_TEST_C][phy_offset];
-+	reg_1e_22_end = (reg_1e_22_read & 0x003f) + *tx_amp_table[TX_AMP_TEST_D][phy_offset];
-+
-+	overflow = false;
-+	if (reg_1e_16_end < txamp_low_limit ||
-+	    reg_1e_16_end > txamp_high_limit)
-+		overflow = true;
-+	if (reg_1e_18_end < txamp_low_limit ||
-+	    reg_1e_18_end > txamp_high_limit)
-+		overflow = true;
-+	if (reg_1e_20_end < txamp_low_limit ||
-+	    reg_1e_20_end > txamp_high_limit)
-+		overflow = true;
-+	if (reg_1e_22_end < txamp_low_limit ||
-+	    reg_1e_22_end > txamp_high_limit)
-+		overflow = true;
-+
-+	if (overflow) {
-+		reg_1e_16_end = 0x20;
-+		reg_1e_18_end = 0x20;
-+		reg_1e_20_end = 0x20;
-+		reg_1e_22_end = 0x20;
-+	} else {
-+		if (reg_1e_16_end < 0)
-+			reg_1e_16_end = 0;
-+		else if (reg_1e_16_end > 0x3f)
-+			reg_1e_16_end = 0x3f;
-+		if (reg_1e_18_end < 0)
-+			reg_1e_18_end = 0;
-+		else if (reg_1e_18_end > 0x3f)
-+			reg_1e_18_end = 0x3f;
-+		if (reg_1e_20_end < 0)
-+			reg_1e_20_end = 0;
-+		else if (reg_1e_20_end > 0x3f)
-+			reg_1e_20_end = 0x3f;
-+		if (reg_1e_22_end < 0)
-+			reg_1e_22_end = 0;
-+		else if (reg_1e_22_end > 0x3f)
-+			reg_1e_22_end = 0x3f;
-+	}
-+
-+	reg_1e_16_header = ((reg_1e_16_read & 0xfc00) / 1024) + *tx_amp_table[TX_AMP_100M_A][phy_offset];
-+	reg_1e_18_header = ((reg_1e_18_read & 0x3f00) / 256) + *tx_amp_table[TX_AMP_100M_B][phy_offset];
-+
-+	overflow = false;
-+	if (reg_1e_16_header < txamp_low_limit ||
-+	    reg_1e_16_header > txamp_high_limit)
-+		overflow = true;
-+	if (reg_1e_18_header < txamp_low_limit ||
-+	    reg_1e_18_header > txamp_high_limit)
-+		overflow = true;
-+
-+	if (overflow) {
-+		reg_1e_16_header = 0x20;
-+		reg_1e_18_header = 0x20;
-+	} else {
-+		if (reg_1e_16_header < 0)
-+			reg_1e_16_header = 0;
-+		else if (reg_1e_16_header > 0x3f)
-+			reg_1e_16_header = 0x3f;
-+		if (reg_1e_18_header < 0)
-+			reg_1e_18_header = 0;
-+		else if (reg_1e_18_header > 0x3f)
-+			reg_1e_18_header = 0x3f;
-+	}
-+
-+	reg_1e_12_end = (reg_1e_12_read & 0x003f) + *tx_amp_table[TX_AMP_10M_A][phy_offset];
-+	reg_1e_17_end = (reg_1e_17_read & 0x003f) + *tx_amp_table[TX_AMP_10M_B][phy_offset];
-+
-+	overflow = false;
-+	if (reg_1e_12_end < txamp_low_limit ||
-+	    reg_1e_12_end > txamp_high_limit)
-+		overflow = true;
-+	if (reg_1e_17_end < txamp_low_limit ||
-+	    reg_1e_17_end > txamp_high_limit)
-+		overflow = true;
-+
-+	if (overflow) {
-+		reg_1e_12_end = 0x20;
-+		reg_1e_17_end = 0x20;
-+	} else {
-+		if (reg_1e_12_end < 0)
-+			reg_1e_12_end = 0;
-+		else if (reg_1e_12_end > 0x3f)
-+			reg_1e_12_end = 0x3f;
-+		if (reg_1e_17_end < 0)
-+			reg_1e_17_end = 0;
-+		else if (reg_1e_17_end > 0x3f)
-+			reg_1e_17_end = 0x3f;
-+	}
-+
-+	reg_1e_174_header = ((reg_1e_174_read & 0x7f00) / 256) + *tx_amp_table[R50_A][phy_offset];
-+	reg_1e_174_end = (reg_1e_174_read & 0x007f) + *tx_amp_table[R50_B][phy_offset];
-+	reg_1e_175_header = ((reg_1e_175_read & 0x7f00) / 256) + *tx_amp_table[R50_C][phy_offset];
-+	reg_1e_175_end = (reg_1e_175_read & 0x007f) + *tx_amp_table[R50_D][phy_offset];
-+
-+	overflow = false;
-+	if (reg_1e_174_header < r50_low_limit ||
-+	    reg_1e_174_header > r50_high_limit)
-+		overflow = true;
-+	if (reg_1e_174_end < r50_low_limit ||
-+	    reg_1e_174_end > r50_high_limit)
-+		overflow = true;
-+	if (reg_1e_175_header < r50_low_limit ||
-+	    reg_1e_175_header > r50_high_limit)
-+		overflow = true;
-+	if (reg_1e_175_end < r50_low_limit ||
-+	    reg_1e_175_end > r50_high_limit)
-+		overflow = true;
-+
-+	if (overflow) {
-+		reg_1e_174_header = 0x34;
-+		reg_1e_174_end = 0x34;
-+		reg_1e_175_header = 0x34;
-+		reg_1e_175_end = 0x34;
-+	} else {
-+		if (reg_1e_174_header < 0)
-+			reg_1e_174_header = 0;
-+		else if (reg_1e_174_header > 0x7f)
-+			reg_1e_174_header = 0x7f;
-+		if (reg_1e_174_end < 0)
-+			reg_1e_174_end = 0;
-+		else if (reg_1e_174_end > 0x7f)
-+			reg_1e_174_end = 0x7f;
-+		if (reg_1e_175_header < 0)
-+			reg_1e_175_header = 0;
-+		else if (reg_1e_175_header > 0x7f)
-+			reg_1e_175_header = 0x7f;
-+		if (reg_1e_175_end < 0)
-+			reg_1e_175_end = 0;
-+		else if (reg_1e_175_end > 0x7f)
-+			reg_1e_175_end = 0x7f;
-+	}
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x12,
-+		      (reg_1e_12_header * 1024) + reg_1e_12_end);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x16,
-+		      (reg_1e_16_header * 1024) + reg_1e_16_end);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x17,
-+		      (reg_1e_17_header * 256) + reg_1e_17_end);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x18,
-+		      (reg_1e_18_header * 256) + reg_1e_18_end);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x19,
-+		      (reg_1e_19_read & 0x00ff) + (reg_1e_19_header * 256));
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x20,
-+		      (reg_1e_20_read & 0xff00) + reg_1e_20_end);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x21,
-+		      (reg_1e_21_read & 0x00ff) + (reg_1e_21_header * 256));
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x22,
-+		      (reg_1e_22_read & 0xff00) + reg_1e_22_end);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x174,
-+		      0x8080 + (reg_1e_174_header * 256) + reg_1e_174_end);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x175,
-+		      0x8080 + (reg_1e_175_header * 256) + reg_1e_175_end);
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x176, 0x4400);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x177, 0x0044);
-+
-+	return 0;
-+}
-+
-+static int an7581_phy_config_init(struct phy_device *phydev)
-+{
-+	struct airoha_socphy_shared *shared = phy_package_get_priv(phydev);
-+	struct phy_device *phydev_p0;
-+	u32 soc_pdidr;
-+	u8 phy_offset;
-+	int ret;
-+
-+	phydev_p0 = shared->phydev_p0;
-+	phy_offset = phydev->mdio.addr - phydev_p0->mdio.addr;
-+
-+	/* FIXME: Read SoC PDIDR if available or default to 1 */
-+	soc_pdidr = 1;
-+
-+	shared->mdi_resister_type = MDI_5R;
-+	if (soc_pdidr == 1)
-+		shared->tx_amp_compensation_tbl = &an7581_tx_amp_compensation_tbl[0];
-+	else
-+		shared->tx_amp_compensation_tbl = &an7581_tx_amp_compensation_tbl[1];
-+	shared->r50_cal_tbl = an7581_zcal_to_r45ohm;
-+
-+	ret = airoha_phy_calib(phydev);
-+	if (ret)
-+		return ret;
-+
-+	ret = airoha_phy_auto_select_transformer(phydev);
-+	if (ret)
-+		return ret;
-+
-+	ret = airoha_phy_tx_amp_compensation(phydev);
-+	if (ret)
-+		return ret;
-+
-+	/* RX setting for 5R_TXMR before AN setting */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xe6, 0x1111);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xe7, 0x5555);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xe9, 0x0001);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xfe, 0x0000);
-+
-+	/* Long Loop Reach setting */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x11, 0xff00);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x202, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x203, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x204, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x205, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x206, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x207, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x208, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x209, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x20a, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x20b, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x20e, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x20f, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x210, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x211, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x212, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x213, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x214, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x215, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x216, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x217, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x21a, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x21b, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x21c, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x21d, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x21e, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x21f, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x220, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x221, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x222, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x223, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x226, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x227, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x228, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x229, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x22a, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x22b, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x22c, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x22d, 0x0025);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x22e, 0x2310);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x22f, 0x0025);
-+
-+	/* RX Setting */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x3c, 0xc000);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x3d, 0x0000);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x3e, 0xc000);
-+
-+	/* EEE setting */
-+	phy_write_mmd(phydev, MDIO_MMD_AN, 0x3c, 0x0000);
-+
-+	/* RX */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x41, 0x3333);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x44, 0x00c0);
-+
-+	/* 10M settings */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x1a3, 0x00d2);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x1a4, 0x010e);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x27b, 0x1177);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x27c, 0x0808);
-+
-+	phy_select_page(phydev, MTK_PHY_PAGE_EXTENDED_1);
-+	__phy_write(phydev, 0x14, 0x3a18);
-+	phy_restore_page(phydev, MTK_PHY_PAGE_STANDARD, 0);
-+
-+	phy_write(phydev, 0x9, 0x1e00);
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x269, 0x2114);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x26a, 0x1113);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x26f, 0x0000);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x271, 0x2c63);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x272, 0x0c2b);
-+
-+	/* EEE set because power down can't set tokenring */
-+	phy_select_page(phydev, MTK_PHY_PAGE_EXTENDED_52B5);
-+	__mtk_tr_write(phydev, 0x0, 0x7, 0x15, 0x0055a0);
-+	__mtk_tr_write(phydev, 0x0, 0x7, 0x17, 0x07ff3f);
-+	__mtk_tr_write(phydev, 0x1, 0xf, 0x0, 0x00001e);
-+	__mtk_tr_write(phydev, 0x1, 0xf, 0x1, 0x6fb90a);
-+	__mtk_tr_write(phydev, 0x1, 0xf, 0x18, 0x0e2f00);
-+	__mtk_tr_write(phydev, 0x1, 0xd, 0x26, 0x444444);
-+	__mtk_tr_write(phydev, 0x2, 0xd, 0x3, 0x000004);
-+	__mtk_tr_write(phydev, 0x2, 0xd, 0x6, 0x2ebaef);
-+	__mtk_tr_write(phydev, 0x2, 0xd, 0x8, 0x00000b);
-+	__mtk_tr_write(phydev, 0x2, 0xd, 0xc, 0x00504d);
-+	__mtk_tr_write(phydev, 0x2, 0xd, 0xd, 0x02314f);
-+	__mtk_tr_write(phydev, 0x2, 0xd, 0xf, 0x003028);
-+	__mtk_tr_write(phydev, 0x2, 0xd, 0x10, 0x00000a);
-+	__mtk_tr_write(phydev, 0x2, 0xd, 0x11, 0x040001);
-+	__mtk_tr_write(phydev, 0x2, 0xd, 0x14, 0x00024a);
-+	__mtk_tr_write(phydev, 0x2, 0xd, 0x1c, 0x003210);
-+	phy_restore_page(phydev, MTK_PHY_PAGE_STANDARD, 0);
-+
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x120, 0x8014);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x122, 0xffff);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x144, 0x0200);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x14a, 0xee20);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x19b, 0x0111);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x234, 0x1181);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x238, 0x0120);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x239, 0x0117);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x2d1, 0x0733);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x323, 0x0011);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x324, 0x013f);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x326, 0x0037);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x268, 0x07f4);
-+
-+	if (shared->transformer_type[phy_offset] == TXMR) {
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x00, 0x0187);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x01, 0x01cc);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x02, 0x01c2);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x03, 0x0109);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x04, 0x020b);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x05, 0x0202);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x06, 0x0387);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x07, 0x03c5);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x08, 0x03c2);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x09, 0x0309);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x0a, 0x000e);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x0b, 0x0002);
-+
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x23, 0x0880);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x24, 0x0880);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x25, 0x0880);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x26, 0x0880);
-+	} else {
-+		if (soc_pdidr == 2) {
-+			phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x269, 0x1114);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x26a, 0x1113);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x26f, 0x2000);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x271, 0x4c88);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x272, 0x0c2b);
-+
-+			/* 100M sharp */
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x00, 0x0190);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x01, 0x01c8);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x02, 0x01c0);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x03, 0x0030);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x04, 0x0208);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x05, 0x0000);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x06, 0x0318);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x07, 0x03c8);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x08, 0x03c0);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x09, 0x0230);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x0a, 0x0008);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x0b, 0x0200);
-+
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x23, 0x0885);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x24, 0x0885);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x25, 0x0885);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x26, 0x0885);
-+		} else {
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x00, 0x0190);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x01, 0x01cf);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x02, 0x01c0);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x03, 0x0030);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x04, 0x020f);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x05, 0x0000);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x06, 0x0318);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x07, 0x03cf);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x08, 0x03c0);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x09, 0x0230);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x0a, 0x000f);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x0b, 0x0200);
-+
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x23, 0x0003);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x24, 0x0003);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x25, 0x0003);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x26, 0x0003);
-+		}
-+	}
-+
-+	return 0;
-+}
-+
- static int an7581_phy_probe(struct phy_device *phydev)
+- Is it safe to hardcode IPPROTO_IPV6 here?  sit_tunnel_xmit() dispatches
+  on skb->protocol and legitimately supports ETH_P_IP (IPv4-in-IPv4 via
+  IPPROTO_IPIP) and, if CONFIG_MPLS is set, ETH_P_MPLS_UC (IPPROTO_MPLS);
+  ipip6_valid_ip_proto() also accepts both on the receive side.
+  If flowtable acceleration engages for a flow whose inner payload is
+  IPv4 or MPLS through a SIT device, the outer iph->protocol that
+  nf_flow_tunnel_ipip_push() synthesises from tuple->tun.l3_proto will be
+  IPPROTO_IPV6, and the receiver will drop or misparse the packet.
+  ip6_tnl_fill_forward_path() selects l3_proto from ctx->ether_type
+  (ETH_P_IP =3D> IPPROTO_IPIP, else IPPROTO_IPV6) =E2=80=94 would something=
+ similar
+  be appropriate here?
+  - I will fix it in v5.
+
+Regards,
+Lorenzo
+
+> +}
+> +
+>  static int
+>  ipip6_tunnel_siocdevprivate(struct net_device *dev, struct ifreq *ifr,
+>  			    void __user *data, int cmd)
+> @@ -1401,6 +1426,7 @@ static const struct net_device_ops ipip6_netdev_ops=
+ =3D {
+>  	.ndo_siocdevprivate =3D ipip6_tunnel_siocdevprivate,
+>  	.ndo_get_iflink =3D ip_tunnel_get_iflink,
+>  	.ndo_tunnel_ctl =3D ipip6_tunnel_ctl,
+> +	.ndo_fill_forward_path =3D ipip6_tunnel_fill_forward_path,
+>  };
+> =20
+>  static void ipip6_dev_free(struct net_device *dev)
+> diff --git a/net/netfilter/nf_flow_table_ip.c b/net/netfilter/nf_flow_tab=
+le_ip.c
+> index 4b6de16bd4f3..f02e71ae5448 100644
+> --- a/net/netfilter/nf_flow_table_ip.c
+> +++ b/net/netfilter/nf_flow_table_ip.c
+> @@ -338,7 +338,7 @@ static bool nf_flow_ip4_tunnel_proto(struct nf_flowta=
+ble_ctx *ctx,
+>  	if (iph->ttl <=3D 1)
+>  		return false;
+> =20
+> -	if (iph->protocol =3D=3D IPPROTO_IPIP) {
+> +	if (iph->protocol =3D=3D IPPROTO_IPIP || iph->protocol =3D=3D IPPROTO_I=
+PV6) {
+>  		ctx->tun.proto =3D iph->protocol;
+>  		ctx->tun.hdr_size =3D size;
+>  		ctx->offset +=3D ctx->tun.hdr_size;
+> @@ -464,21 +464,6 @@ static void nf_flow_encap_pop(struct nf_flowtable_ct=
+x *ctx,
+>  		nf_flow_ip_tunnel_pop(ctx, skb);
+>  }
+> =20
+> -static struct flow_offload_tuple_rhash *
+> -nf_flow_offload_lookup(struct nf_flowtable_ctx *ctx,
+> -		       struct nf_flowtable *flow_table, struct sk_buff *skb)
+> -{
+> -	struct flow_offload_tuple tuple =3D {};
+> -
+> -	if (!nf_flow_skb_encap_protocol(ctx, skb, htons(ETH_P_IP)))
+> -		return NULL;
+> -
+> -	if (nf_flow_tuple_ip(ctx, skb, &tuple) < 0)
+> -		return NULL;
+> -
+> -	return flow_offload_lookup(flow_table, &tuple);
+> -}
+> -
+>  static int nf_flow_offload_forward(struct nf_flowtable_ctx *ctx,
+>  				   struct nf_flowtable *flow_table,
+>  				   struct flow_offload_tuple_rhash *tuplehash,
+> @@ -606,19 +591,33 @@ static int nf_flow_tunnel_ipip_push(struct net *net=
+, struct sk_buff *skb,
+>  				    struct flow_offload_tuple *tuple,
+>  				    __be32 *ip_daddr)
+>  {
+> -	struct iphdr *iph =3D (struct iphdr *)skb_network_header(skb);
+>  	struct rtable *rt =3D dst_rtable(tuple->dst_cache);
+> -	u8 tos =3D iph->tos, ttl =3D iph->ttl;
+> -	__be16 frag_off =3D iph->frag_off;
+> -	u32 headroom =3D sizeof(*iph);
+> +	__be16 frag_off =3D 0;
+> +	struct iphdr *iph;
+> +	u8 tos =3D 0, ttl;
+> +	u32 headroom;
+>  	int err;
+> =20
+> +	if (tuple->tun.l3_proto =3D=3D IPPROTO_IPV6) {
+> +		struct ipv6hdr *ip6h;
+> +
+> +		ip6h =3D (struct ipv6hdr *)skb_network_header(skb);
+> +		tos =3D ipv6_get_dsfield(ip6h);
+> +		ttl =3D ip6h->hop_limit;
+> +	} else {
+> +		iph =3D (struct iphdr *)skb_network_header(skb);
+> +		frag_off =3D iph->frag_off;
+> +		tos =3D iph->tos;
+> +		ttl =3D iph->ttl;
+> +	}
+> +
+>  	err =3D iptunnel_handle_offloads(skb, SKB_GSO_IPXIP4);
+>  	if (err)
+>  		return err;
+> =20
+> -	skb_set_inner_ipproto(skb, IPPROTO_IPIP);
+> -	headroom +=3D LL_RESERVED_SPACE(rt->dst.dev) + rt->dst.header_len;
+> +	skb_set_inner_ipproto(skb, tuple->tun.l3_proto);
+> +	headroom =3D sizeof(*iph) + LL_RESERVED_SPACE(rt->dst.dev) +
+> +		   rt->dst.header_len;
+>  	err =3D skb_cow_head(skb, headroom);
+>  	if (err)
+>  		return err;
+> @@ -629,6 +628,7 @@ static int nf_flow_tunnel_ipip_push(struct net *net, =
+struct sk_buff *skb,
+>  	/* Push down and install the IP header. */
+>  	skb_push(skb, sizeof(*iph));
+>  	skb_reset_network_header(skb);
+> +	skb->protocol =3D htons(ETH_P_IP);
+> =20
+>  	iph =3D ip_hdr(skb);
+>  	iph->version	=3D 4;
+> @@ -723,16 +723,6 @@ static int nf_flow_tunnel_push(struct net *net, stru=
+ct sk_buff *skb,
+>  	}
+>  }
+> =20
+> -static int nf_flow_tunnel_v6_push(struct net *net, struct sk_buff *skb,
+> -				  struct flow_offload_tuple *tuple,
+> -				  struct in6_addr **ip6_daddr)
+> -{
+> -	if (tuple->tun_num)
+> -		return nf_flow_tunnel_ip6ip6_push(net, skb, tuple, ip6_daddr);
+> -
+> -	return 0;
+> -}
+> -
+>  static int nf_flow_encap_push(struct sk_buff *skb,
+>  			      struct flow_offload_tuple *tuple,
+>  			      struct net_device *outdev)
+> @@ -830,103 +820,6 @@ static unsigned int nf_flow_queue_xmit(struct net *=
+net, struct sk_buff *skb,
+>  	return NF_STOLEN;
+>  }
+> =20
+> -unsigned int
+> -nf_flow_offload_ip_hook(void *priv, struct sk_buff *skb,
+> -			const struct nf_hook_state *state)
+> -{
+> -	struct flow_offload_tuple_rhash *tuplehash;
+> -	struct nf_flowtable *flow_table =3D priv;
+> -	struct flow_offload_tuple *other_tuple;
+> -	enum flow_offload_tuple_dir dir;
+> -	struct nf_flowtable_ctx ctx =3D {
+> -		.in	=3D state->in,
+> -	};
+> -	struct nf_flow_xmit xmit =3D {};
+> -	struct in6_addr *ip6_daddr;
+> -	struct flow_offload *flow;
+> -	struct neighbour *neigh;
+> -	struct rtable *rt;
+> -	__be32 ip_daddr;
+> -	int ret;
+> -
+> -	tuplehash =3D nf_flow_offload_lookup(&ctx, flow_table, skb);
+> -	if (!tuplehash)
+> -		return NF_ACCEPT;
+> -
+> -	ret =3D nf_flow_offload_forward(&ctx, flow_table, tuplehash, skb);
+> -	if (ret < 0)
+> -		return NF_DROP;
+> -	else if (ret =3D=3D 0)
+> -		return NF_ACCEPT;
+> -
+> -	if (unlikely(tuplehash->tuple.xmit_type =3D=3D FLOW_OFFLOAD_XMIT_XFRM))=
  {
-+	struct airoha_socphy_shared *shared;
- 	struct mtk_socphy_priv *priv;
- 	struct pinctrl *pinctrl;
-+	int ret;
- 
- 	/* Toggle pinctrl to enable PHY LED */
- 	pinctrl = devm_pinctrl_get_select(&phydev->mdio.dev, "gbe-led");
-@@ -18,10 +1495,18 @@ static int an7581_phy_probe(struct phy_device *phydev)
- 		dev_err(&phydev->mdio.bus->dev,
- 			"Failed to setup PHY LED pinctrl\n");
- 
-+	ret = devm_phy_package_join(&phydev->mdio.dev, phydev, 0,
-+				    sizeof(struct airoha_socphy_shared));
-+	if (ret)
-+		return ret;
-+
- 	priv = devm_kzalloc(&phydev->mdio.dev, sizeof(*priv), GFP_KERNEL);
- 	if (!priv)
- 		return -ENOMEM;
- 
-+	if (phydev->mdio.addr == AIROHA_DEFAULT_PORT0_ADDR)
-+		shared->phydev_p0 = phydev;
-+
- 	phydev->priv = priv;
- 
- 	return 0;
-@@ -63,6 +1548,7 @@ static struct phy_driver mtk_socphy_driver[] = {
- 	{
- 		PHY_ID_MATCH_EXACT(AIROHA_GPHY_ID_AN7581),
- 		.name		= "Airoha AN7581 PHY",
-+		.config_init	= an7581_phy_config_init,
- 		.config_intr	= genphy_no_config_intr,
- 		.handle_interrupt = genphy_handle_interrupt_no_ack,
- 		.probe		= an7581_phy_probe,
-@@ -72,6 +1558,8 @@ static struct phy_driver mtk_socphy_driver[] = {
- 		.led_hw_control_set = mt798x_phy_led_hw_control_set,
- 		.led_hw_control_get = mt798x_phy_led_hw_control_get,
- 		.led_polarity_set = an7581_phy_led_polarity_set,
-+		.read_page	= mtk_phy_read_page,
-+		.write_page	= mtk_phy_write_page,
- 	},
- 	{
- 		PHY_ID_MATCH_EXACT(AIROHA_GPHY_ID_AN7583),
-@@ -98,5 +1586,6 @@ static const struct mdio_device_id __maybe_unused airoha_socphy_tbl[] = {
- MODULE_DESCRIPTION("Airoha SoC Gigabit Ethernet PHY driver");
- MODULE_AUTHOR("Christian Marangi <ansuelsmth@gmail.com>");
- MODULE_LICENSE("GPL");
-+MODULE_VERSION("01.01.20260306");
- 
- MODULE_DEVICE_TABLE(mdio, airoha_socphy_tbl);
-diff --git a/drivers/net/phy/mediatek/mtk-ge-soc.h b/drivers/net/phy/mediatek/mtk-ge-soc.h
-index 507e68343576..5e9d24a9833c 100644
---- a/drivers/net/phy/mediatek/mtk-ge-soc.h
-+++ b/drivers/net/phy/mediatek/mtk-ge-soc.h
-@@ -12,6 +12,7 @@
- 
- #define MTK_EXT_PAGE_ACCESS			0x1f
- #define MTK_PHY_PAGE_STANDARD			0x0000
-+#define MTK_PHY_PAGE_EXTENDED_1			0x0001
- #define MTK_PHY_PAGE_EXTENDED_3			0x0003
- 
- #define MTK_PHY_LPI_REG_14			0x14
-@@ -177,6 +178,7 @@
- #define MTK_PHY_RG_ANA_CAL_RG0			0xdb
- #define   MTK_PHY_RG_CAL_CKINV			BIT(12)
- #define   MTK_PHY_RG_ANA_CALEN			BIT(8)
-+#define   MTK_PHY_RG_REXT_CALEN			BIT(4)
- #define   MTK_PHY_RG_ZCALEN_A			BIT(0)
- 
- #define MTK_PHY_RG_ANA_CAL_RG1			0xdc
-@@ -187,6 +189,9 @@
- 
- #define MTK_PHY_RG_ANA_CAL_RG5			0xe0
- #define   MTK_PHY_RG_REXT_TRIM_MASK		GENMASK(13, 8)
-+#define   MTK_PHY_RG_REXT_ZCAL_CTRL_MASK	GENMASK(5, 0)
-+
-+#define MTK_PHY_RG_ANA_CAL_RG6			0xe1
- 
- #define MTK_PHY_RG_TX_FILTER			0xfe
- 
-@@ -208,6 +213,14 @@
- #define   MTK_PHY_CR_TX_AMP_OFFSET_C_MASK	GENMASK(13, 8)
- #define   MTK_PHY_CR_TX_AMP_OFFSET_D_MASK	GENMASK(6, 0)
- 
-+#define MTK_PHY_RG_CR_TX_R50_OFFSET_A_B		0x174
-+#define   MTK_PHY_CR_TX_R50_OFFSET_A_MASK	GENMASK(13, 8)
-+#define   MTK_PHY_CR_TX_R50_OFFSET_B_MASK	GENMASK(6, 0)
-+
-+#define MTK_PHY_RG_CR_TX_R50_OFFSET_C_D		0x175
-+#define   MTK_PHY_CR_TX_R50_OFFSET_C_MASK	GENMASK(13, 8)
-+#define   MTK_PHY_CR_TX_R50_OFFSET_D_MASK	GENMASK(6, 0)
-+
- #define MTK_PHY_RG_AD_CAL_COMP			0x17a
- #define   MTK_PHY_AD_CAL_COMP_OUT_MASK		GENMASK(8, 8)
- 
--- 
-2.53.0
+> -		rt =3D dst_rtable(tuplehash->tuple.dst_cache);
+> -		memset(skb->cb, 0, sizeof(struct inet_skb_parm));
+> -		IPCB(skb)->iif =3D skb->dev->ifindex;
+> -		IPCB(skb)->flags =3D IPSKB_FORWARDED;
+> -		return nf_flow_xmit_xfrm(skb, state, &rt->dst);
+> -	}
+> -
+> -	dir =3D tuplehash->tuple.dir;
+> -	flow =3D container_of(tuplehash, struct flow_offload, tuplehash[dir]);
+> -	other_tuple =3D &flow->tuplehash[!dir].tuple;
+> -	ip_daddr =3D other_tuple->src_v4.s_addr;
+> -
+> -	if (nf_flow_tunnel_push(state->net, skb, other_tuple, &ip_daddr,
+> -				&ip6_daddr) < 0)
+> -		return NF_DROP;
+> -
+> -	switch (tuplehash->tuple.xmit_type) {
+> -	case FLOW_OFFLOAD_XMIT_NEIGH: {
+> -		struct dst_entry *dst;
+> -
+> -		xmit.outdev =3D dev_get_by_index_rcu(state->net, tuplehash->tuple.ifid=
+x);
+> -		if (!xmit.outdev) {
+> -			flow_offload_teardown(flow);
+> -			return NF_DROP;
+> -		}
+> -		if (other_tuple->tun.encap_proto =3D=3D AF_INET6 ||
+> -		    ctx.tun.proto =3D=3D IPPROTO_IPV6) {
+> -			struct rt6_info *rt6;
+> -
+> -			rt6 =3D dst_rt6_info(tuplehash->tuple.dst_cache);
+> -			neigh =3D ip_neigh_gw6(rt6->dst.dev,
+> -					     rt6_nexthop(rt6, ip6_daddr));
+> -			dst =3D &rt6->dst;
+> -		} else {
+> -			rt =3D dst_rtable(tuplehash->tuple.dst_cache);
+> -			neigh =3D ip_neigh_gw4(rt->dst.dev,
+> -					     rt_nexthop(rt, ip_daddr));
+> -			dst =3D &rt->dst;
+> -		}
+> -		if (IS_ERR(neigh)) {
+> -			flow_offload_teardown(flow);
+> -			return NF_DROP;
+> -		}
+> -		xmit.dest =3D neigh->ha;
+> -		skb_dst_set_noref(skb, dst);
+> -		break;
+> -	}
+> -	case FLOW_OFFLOAD_XMIT_DIRECT:
+> -		xmit.outdev =3D dev_get_by_index_rcu(state->net, tuplehash->tuple.out.=
+ifidx);
+> -		if (!xmit.outdev) {
+> -			flow_offload_teardown(flow);
+> -			return NF_DROP;
+> -		}
+> -		xmit.dest =3D tuplehash->tuple.out.h_dest;
+> -		xmit.source =3D tuplehash->tuple.out.h_source;
+> -		break;
+> -	default:
+> -		WARN_ON_ONCE(1);
+> -		return NF_DROP;
+> -	}
+> -	xmit.tuple =3D other_tuple;
+> -	xmit.needs_gso_segment =3D tuplehash->tuple.needs_gso_segment;
+> -
+> -	return nf_flow_queue_xmit(state->net, skb, &xmit);
+> -}
+> -EXPORT_SYMBOL_GPL(nf_flow_offload_ip_hook);
+> -
+>  static void nf_flow_nat_ipv6_tcp(struct sk_buff *skb, unsigned int thoff,
+>  				 struct in6_addr *addr,
+>  				 struct in6_addr *new_addr,
+> @@ -1111,8 +1004,16 @@ static int nf_flow_offload_ipv6_forward(struct nf_=
+flowtable_ctx *ctx,
+>  	flow =3D container_of(tuplehash, struct flow_offload, tuplehash[dir]);
+> =20
+>  	mtu =3D flow->tuplehash[dir].tuple.mtu + ctx->offset;
+> -	if (flow->tuplehash[!dir].tuple.tun_num)
+> +	switch (flow->tuplehash[!dir].tuple.tun.encap_proto) {
+> +	case AF_INET:
+> +		mtu -=3D sizeof(struct iphdr);
+> +		break;
+> +	case AF_INET6:
+>  		mtu -=3D sizeof(*ip6h);
+> +		break;
+> +	default:
+> +		break;
+> +	}
+> =20
+>  	if (unlikely(nf_flow_exceeds_mtu(skb, mtu)))
+>  		return 0;
+> @@ -1146,6 +1047,25 @@ static int nf_flow_offload_ipv6_forward(struct nf_=
+flowtable_ctx *ctx,
+>  	return 1;
+>  }
+> =20
+> +static struct flow_offload_tuple_rhash *
+> +nf_flow_offload_lookup(struct nf_flowtable_ctx *ctx,
+> +		       struct nf_flowtable *flow_table, struct sk_buff *skb)
+> +{
+> +	struct flow_offload_tuple tuple =3D {};
+> +
+> +	if (!nf_flow_skb_encap_protocol(ctx, skb, htons(ETH_P_IP)))
+> +		return NULL;
+> +
+> +	if (ctx->tun.proto =3D=3D IPPROTO_IPV6) {
+> +		if (nf_flow_tuple_ipv6(ctx, skb, &tuple) < 0)
+> +			return NULL;
+> +	} else if (nf_flow_tuple_ip(ctx, skb, &tuple) < 0) {
+> +		return NULL;
+> +	}
+> +
+> +	return flow_offload_lookup(flow_table, &tuple);
+> +}
+> +
+>  static struct flow_offload_tuple_rhash *
+>  nf_flow_offload_ipv6_lookup(struct nf_flowtable_ctx *ctx,
+>  			    struct nf_flowtable *flow_table,
+> @@ -1166,6 +1086,108 @@ nf_flow_offload_ipv6_lookup(struct nf_flowtable_c=
+tx *ctx,
+>  	return flow_offload_lookup(flow_table, &tuple);
+>  }
+> =20
+> +unsigned int
+> +nf_flow_offload_ip_hook(void *priv, struct sk_buff *skb,
+> +			const struct nf_hook_state *state)
+> +{
+> +	struct flow_offload_tuple_rhash *tuplehash;
+> +	struct nf_flowtable *flow_table =3D priv;
+> +	struct flow_offload_tuple *other_tuple;
+> +	enum flow_offload_tuple_dir dir;
+> +	struct nf_flowtable_ctx ctx =3D {
+> +		.in	=3D state->in,
+> +	};
+> +	struct nf_flow_xmit xmit =3D {};
+> +	struct in6_addr *ip6_daddr;
+> +	struct flow_offload *flow;
+> +	struct neighbour *neigh;
+> +	struct rtable *rt;
+> +	__be32 ip_daddr;
+> +	int ret;
+> +
+> +	tuplehash =3D nf_flow_offload_lookup(&ctx, flow_table, skb);
+> +	if (!tuplehash)
+> +		return NF_ACCEPT;
+> +
+> +	if (ctx.tun.proto =3D=3D IPPROTO_IPV6)
+> +		ret =3D nf_flow_offload_ipv6_forward(&ctx, flow_table, tuplehash,
+> +						   skb);
+> +	else
+> +		ret =3D nf_flow_offload_forward(&ctx, flow_table, tuplehash, skb);
+> +	if (ret < 0)
+> +		return NF_DROP;
+> +	else if (ret =3D=3D 0)
+> +		return NF_ACCEPT;
+> +
+> +	if (unlikely(tuplehash->tuple.xmit_type =3D=3D FLOW_OFFLOAD_XMIT_XFRM))=
+ {
+> +		rt =3D dst_rtable(tuplehash->tuple.dst_cache);
+> +		memset(skb->cb, 0, sizeof(struct inet_skb_parm));
+> +		IPCB(skb)->iif =3D skb->dev->ifindex;
+> +		IPCB(skb)->flags =3D IPSKB_FORWARDED;
+> +		return nf_flow_xmit_xfrm(skb, state, &rt->dst);
+> +	}
+> +
+> +	dir =3D tuplehash->tuple.dir;
+> +	flow =3D container_of(tuplehash, struct flow_offload, tuplehash[dir]);
+> +	other_tuple =3D &flow->tuplehash[!dir].tuple;
+> +	ip_daddr =3D other_tuple->src_v4.s_addr;
+> +	ip6_daddr =3D &other_tuple->src_v6;
+> +
+> +	if (nf_flow_tunnel_push(state->net, skb, other_tuple, &ip_daddr,
+> +				&ip6_daddr) < 0)
+> +		return NF_DROP;
+> +
+> +	switch (tuplehash->tuple.xmit_type) {
+> +	case FLOW_OFFLOAD_XMIT_NEIGH: {
+> +		struct dst_entry *dst;
+> +
+> +		xmit.outdev =3D dev_get_by_index_rcu(state->net, tuplehash->tuple.ifid=
+x);
+> +		if (!xmit.outdev) {
+> +			flow_offload_teardown(flow);
+> +			return NF_DROP;
+> +		}
+> +		if (other_tuple->tun.encap_proto =3D=3D AF_INET6 ||
+> +		    ctx.tun.proto =3D=3D IPPROTO_IPV6) {
+> +			struct rt6_info *rt6;
+> +
+> +			rt6 =3D dst_rt6_info(tuplehash->tuple.dst_cache);
+> +			neigh =3D ip_neigh_gw6(rt6->dst.dev,
+> +					     rt6_nexthop(rt6, ip6_daddr));
+> +			dst =3D &rt6->dst;
+> +		} else {
+> +			rt =3D dst_rtable(tuplehash->tuple.dst_cache);
+> +			neigh =3D ip_neigh_gw4(rt->dst.dev,
+> +					     rt_nexthop(rt, ip_daddr));
+> +			dst =3D &rt->dst;
+> +		}
+> +		if (IS_ERR(neigh)) {
+> +			flow_offload_teardown(flow);
+> +			return NF_DROP;
+> +		}
+> +		xmit.dest =3D neigh->ha;
+> +		skb_dst_set_noref(skb, dst);
+> +		break;
+> +	}
+> +	case FLOW_OFFLOAD_XMIT_DIRECT:
+> +		xmit.outdev =3D dev_get_by_index_rcu(state->net, tuplehash->tuple.out.=
+ifidx);
+> +		if (!xmit.outdev) {
+> +			flow_offload_teardown(flow);
+> +			return NF_DROP;
+> +		}
+> +		xmit.dest =3D tuplehash->tuple.out.h_dest;
+> +		xmit.source =3D tuplehash->tuple.out.h_source;
+> +		break;
+> +	default:
+> +		WARN_ON_ONCE(1);
+> +		return NF_DROP;
+> +	}
+> +	xmit.tuple =3D other_tuple;
+> +	xmit.needs_gso_segment =3D tuplehash->tuple.needs_gso_segment;
+> +
+> +	return nf_flow_queue_xmit(state->net, skb, &xmit);
+> +}
+> +EXPORT_SYMBOL_GPL(nf_flow_offload_ip_hook);
+> +
+>  unsigned int
+>  nf_flow_offload_ipv6_hook(void *priv, struct sk_buff *skb,
+>  			  const struct nf_hook_state *state)
+> @@ -1182,6 +1204,7 @@ nf_flow_offload_ipv6_hook(void *priv, struct sk_buf=
+f *skb,
+>  	struct flow_offload *flow;
+>  	struct neighbour *neigh;
+>  	struct rt6_info *rt;
+> +	__be32 ip_daddr;
+>  	int ret;
+> =20
+>  	tuplehash =3D nf_flow_offload_ipv6_lookup(&ctx, flow_table, skb);
+> @@ -1209,10 +1232,11 @@ nf_flow_offload_ipv6_hook(void *priv, struct sk_b=
+uff *skb,
+>  	dir =3D tuplehash->tuple.dir;
+>  	flow =3D container_of(tuplehash, struct flow_offload, tuplehash[dir]);
+>  	other_tuple =3D &flow->tuplehash[!dir].tuple;
+> +	ip_daddr =3D other_tuple->src_v4.s_addr;
+>  	ip6_daddr =3D &other_tuple->src_v6;
+> =20
+> -	if (nf_flow_tunnel_v6_push(state->net, skb, other_tuple,
+> -				   &ip6_daddr) < 0)
+> +	if (nf_flow_tunnel_push(state->net, skb, other_tuple, &ip_daddr,
+> +				&ip6_daddr) < 0)
+>  		return NF_DROP;
+> =20
+>  	switch (tuplehash->tuple.xmit_type) {
+> @@ -1226,10 +1250,8 @@ nf_flow_offload_ipv6_hook(void *priv, struct sk_bu=
+ff *skb,
+>  		}
+>  		if (other_tuple->tun.encap_proto =3D=3D AF_INET ||
+>  		    ctx.tun.proto =3D=3D IPPROTO_IPIP) {
+> -			__be32 ip_daddr =3D other_tuple->src_v4.s_addr;
+>  			struct rtable *rt4;
+> =20
+> -			skb->protocol =3D htons(ETH_P_IP);
+>  			rt4 =3D dst_rtable(tuplehash->tuple.dst_cache);
+>  			neigh =3D ip_neigh_gw4(rt4->dst.dev,
+>  					     rt_nexthop(rt4, ip_daddr));
+>=20
+> --=20
+> 2.55.0
+>=20
 
+--NkuvXEfgx3dvazRZ
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCak4nlgAKCRA6cBh0uS2t
+rOh5AP9fOGNYzlTp7AR2qFPq8VS8a6YuIHmKAzD1VpsxUjVTmwD8D+8nU13rcQk+
+V1y0WA1OUphgiW0Tj3vJT8Xs7OmmRQI=
+=0lEd
+-----END PGP SIGNATURE-----
+
+--NkuvXEfgx3dvazRZ--
 
