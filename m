@@ -4,79 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7562C43458
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 09:19:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB0C1C43458
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jul 2026 09:23:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8mLykkioY9gB/csEoiMGrFSY7TuzOaT0dL6TaXHQpEY=; b=ftDNtqyVsNIWQcd4ugSqMbFUXr
-	Ahxc9N2jKe50S9HaxfxDv9DF8ljtC+bc8EwqeN4oyT5ObPXZZiXKS1f3P+WdVhq/fTRNPRCD5QYap
-	Xe9WLBpbMb0PK8VIpICkOEwVhxWROAqOLPrO59k6Ah+9Vrjjo7b920IE7qM/NW/vTPQaGHFMCAzcN
-	n8IdJSYNhASjADDMUlfNHfStNunKIcTnn6QyI6VQyXzdxviW2djSEyvFNLorzVgACGw1DWnVM7dtF
-	GAC9225BbCNABwLOY0I2+/W6GsMlsN/csb7TOPC6F7QiUCn8DUVIGzI9ZQ7HkOlsfDQVYuRjvjvE0
-	pUxitQ2A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3SacGhwSbkGS3qcaoGtvVjy4TybBKSuqQFODkWgiYfM=; b=25O6uSdGvihFVIUajoC3PslHy0
+	9DtEuXntLXsM9W6pnTqrFz0GrMkH+Bl7NWq4KtMoOHA9vE7YAVabx/yfbGF7WOqZBbZss8doT8XOu
+	zz2hT9nS2XiRPwWM6PlnJBPg0M63e8T2JjDzgXso1SCci+eKW4SS7Z5Xfxwnts2UYQ5Di4kx6Tvzg
+	WbUXLvLDiQ17VDg0b1kHBIkH9mYlfrYVdfOmDrdo5mcyJodaJs0DsQs9lHtulb4g8aYTUUn1JX2wD
+	rnVJj8OKNnyoO/5xt+sJXhUWpp/dpNS9GxCV+0YNVUMbAntcI/YH9LDDHeiuudLUSzYsQyvDVvd7x
+	GkdpSWgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whOR4-0000000Gjek-3aqc;
-	Wed, 08 Jul 2026 09:19:19 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1whOUh-0000000Gjy4-3VzQ;
+	Wed, 08 Jul 2026 09:23:03 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whOR0-0000000Gjdu-471G;
-	Wed, 08 Jul 2026 09:19:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783502352;
-	bh=4H+StpOW2ZH0hn4OeaLVWGpQKMud7otOxAZzPt6gxyU=;
-	h=From:Date:Subject:To:Cc:From;
-	b=BL6oo2KOaOY8P9CiXuyeTGeHyyCgOERtejWG8PQgEsFFIYiJkDNsgeiate6HKB8Pp
-	 4Qu0zmmliVMpunBLArD3kt78cckNb2XDIUwo01goTEdR9qlXgFVbdhfdo4QKWX6V8u
-	 QHZKCsvBt34BlgJkOihAIOPvogUBfS4KG0a/BGNWCFppBHay2b28jH0dkxW1Txlch1
-	 kdds4GZRwmtpMHZFob4uFlJZ7Mnh5v55fkALrUsr9qWbV7shmP6RL720jGmAG4R7X6
-	 45LOQxkR33XUR7/bi/6c5zCH1deJFxJ5OsL29GD0QKG2+r4/27VvCNWmN2OKFdHvkM
-	 vDHTF2l9hNUAg==
-Received: from yukiji.home (unknown [100.64.0.131])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8EB2917E0521;
-	Wed, 08 Jul 2026 11:19:11 +0200 (CEST)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Wed, 08 Jul 2026 11:18:59 +0200
-Subject: [PATCH] clk: mediatek: pllfh: Fix IO remapping leak in
- register_pllfhs error path
+	id 1whOUe-0000000Gjwr-2U6V
+	for linux-mediatek@lists.infradead.org;
+	Wed, 08 Jul 2026 09:23:01 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-2c6b67d5fa1so5317535ad.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 02:23:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1783502580; x=1784107380; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=3SacGhwSbkGS3qcaoGtvVjy4TybBKSuqQFODkWgiYfM=;
+        b=simqDRkiB83Dpf7NvsV4rIB9roBEod45ebOwzCnGi0TNQtyRDEaew3ILsAz3W5pkjt
+         sRxkRPCRDXI0yTzW30g3HUWDvTR0OnZdvaNQLwcsJHfrxZmTqJ9ByGiDa2WZtP2lmQZd
+         4oRtJtUMeqmXYeFZfZIPmWckIFJwQLgffKXJP0s9uuchzl7gYSj7LFY95IxCXUOv4VpQ
+         UkqWwWRw4v7JR0UHh/j8H4b69IBVcaZFsnTIogHq07nYunbjvE+aB0BUn1nH4mI3zSyg
+         AOFQCmv66sa3/6gF1rqW7NEXhojif2j/tQd/k06Mnf67PYnWbaKOP2oEEf2s+dUts1sN
+         9mCg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783502580; x=1784107380;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=3SacGhwSbkGS3qcaoGtvVjy4TybBKSuqQFODkWgiYfM=;
+        b=cO8QrnJv3fsg6DeXuLjHteKH7oWvz3r/CqBBP+sW6g6wYzs4mPWoLmoI2KYfncUByp
+         2mYOETGqj0Q57l1LhGgK7A3keO/Y+PWW5Mg/eZI93OUKA7O4AFfXu/NyZoMOjiXd9T8g
+         RGwnLyWP91RWj8c4ragFKWsHkSwVtsy5w8uHk+L03L0TW9KUmVXrqnzxKQd7XzGqbs0H
+         ElQuljFeRUKLyKWxkUFdF9uW1X8h6YNfiufMEQh5becf9Wp3587tHqU5i/3xew6RHBRg
+         dBeC0tZYDBsWMiAYeomZGbfzwnr90ieXWZW3Q422ozMaN4Kh30BLE2of7J1+fmNyP1z0
+         4QoA==
+X-Forwarded-Encrypted: i=1; AHgh+RqjBvk4hDoXkSdQl2GWhgSlbKzdaekLpdTLwr6wCTpbc1enuKM1rbqh7GqWhIYcUvtIMFsLQfVJNtCgepIWgg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwIJJ3RnwsXs3T1QUDqjVny3MaAB4++rakhSKX2lPtF9KsdOB0L
+	qjCVB04e5BjgD4IkYp0km7OYMj/8xvu9tRotKdN4/Ns21JM+v9bH9yTI
+X-Gm-Gg: AfdE7cltl4LT3n5F1vZ/FudINILMgs3yc7RKB34OR/DioWkXaZa6BPipr72TdVC6XTa
+	/Bm8ol/x5ESGqYHxHsRdu6F7SeRIRp/HTq2R9Ot4nROP3HRXVx794nyKL5ulJ1jRzuWoP9muu/E
+	gfsp3AnK8EHhmuaqhYeKlX8m8E2eqmPeTed2h2rTDFFNed2o3NJPvXVUIkKUTNBD9fuXvOfqgIH
+	ZjglaeLrNB5DDPHAhn/kZsvaXjoj/GrcbS36Fu1J1Ru2G8R/RKcbNu5vq4V+s2BSmsV1DNLhMyb
+	8PoiCvVwphmOgXoj2zYb1aY+qEWENedbB0+B+j10KEBAR0MST2Y1kLmymPHWIZV3trDZGmhZTaT
+	Swgqkp3/u/N8mraINnQ5+yE9/LiWQfdLEZd09NJreDb7p4eGetLy52oc6pOfgBNcXfAz2V+N3jr
+	KLaa2l3Q==
+X-Received: by 2002:a17:902:cec2:b0:2cc:9179:32e with SMTP id d9443c01a7336-2ccea37df94mr17127855ad.10.1783502579629;
+        Wed, 08 Jul 2026 02:22:59 -0700 (PDT)
+Received: from lgs.. ([2001:250:5800:1000::f280])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9d1e279sm24999735ad.45.2026.07.08.02.22.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Jul 2026 02:22:59 -0700 (PDT)
+From: Guangshuo Li <lgs201920130244@gmail.com>
+To: Ulf Hansson <ulfh@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?= <nfraprado@collabora.com>,
+	Irving-CH Lin <irving-ch.lin@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>,
+	Adam Ford <aford173@gmail.com>,
+	Guangshuo Li <lgs201920130244@gmail.com>,
+	linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] pmdomain: mediatek: fix remaining %pOF after of_node_put()
+Date: Wed,  8 Jul 2026 17:20:38 +0800
+Message-ID: <20260708092038.741308-1-lgs201920130244@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260708-clk-mediatek-pllfh-fix-v1-1-2cfc2d6b258e@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/y2NQQ7CIBBFr0Jm7SSIUUqvYrpAOrWTAq2ApknTu
- 0usy/eS//4GmRJThlZskOjDmedY4XwS4EYbn4TcVwYl1U1q2aDzEwbq2RaacPF+GHHgFTUZZy9
- X0xhSUMdLoqp/4Xt3cKLXu/bLIeFhM6GbQ+DSikhrwf+Hhm7fv/+XTYuZAAAA
-X-Change-ID: 20260708-clk-mediatek-pllfh-fix-7e9ca35989e2
-To: Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chen-Yu Tsai <wenst@chromium.org>, 
- Edward-JW Yang <edward-jw.yang@mediatek.com>, 
- Johnson Wang <johnson.wang@mediatek.com>
-Cc: kernel@collabora.com, linux-clk@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1783502351; l=4683;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=4H+StpOW2ZH0hn4OeaLVWGpQKMud7otOxAZzPt6gxyU=;
- b=NejNT+aEHaLKBMGOPalAU8w8iI66YYZDyCVarlySqapXDEAVq1t/74meWPuqrFdW9lBd1UIud
- kQ0cuKSTGJHCt3UCqknLZebd6K5QpPJpV+d7An1loKRmngpurlwc2kx
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_021915_201323_D7ECCAF5 
-X-CRM114-Status: GOOD (  17.67  )
+X-CRM114-CacheID: sfid-20260708_022300_660594_699032E5 
+X-CRM114-Status: GOOD (  12.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,156 +104,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When mtk_clk_register_pllfhs function fails to register a PLL, it
-unregisters all PLLs and cleans up itself in its error path before
-returning, so the function callers don't need to do it.
+scpsys_get_bus_protection_legacy() looks up several legacy bus
+protection regmaps from device-tree nodes.
 
-But contrary to mtk_clk_unregister_pllfhs function, that does almost
-the same sequence, it does not free the IO memory mapped on fhctl node,
-leading to a leak.
+Two error paths put the device node before checking whether the regmap
+lookup failed, but still pass that node to dev_err_probe() with %pOF on
+failure. If of_node_put() drops the last reference, the later %pOF
+formatting can dereference a freed device node.
 
-Fix this leak by factorizing the cleanup sequence in a new private
-function and use it both mtk_clk_register_pllfhs and
-mtk_clk_unregister_pllfhs functions.
+Keep the node reference until after the error message has been emitted in
+the infracfg and SMI lookup paths. Also drop the SMI node before
+returning when the SMI phandle is missing.
 
-Also, change the loop index start value to avoid the -1 operation on
-index at each loop.
-
-Fixes: d7964de8a8ea ("clk: mediatek: Add new clock driver to handle FHCTL hardware")
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Fixes: c29345fa5f66 ("pmdomain: mediatek: Refactor bus protection regmaps retrieval")
+Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
 ---
-This patch aims to fix a issue, detected by Sashiko
-during another series review ([1]), regarding the use of 
-mtk_clk_register_pllfhs function.
+ drivers/pmdomain/mediatek/mtk-pm-domains.c | 22 +++++++++++++++-------
+ 1 file changed, 15 insertions(+), 7 deletions(-)
 
-The patch is based on linux-next tree (tag: next-20260707).
-
-[1]: https://sashiko.dev/#/patchset/20260701-mt8189-clocks-system-base-v1-0-2b048feea50a%40collabora.com?part=6
----
- drivers/clk/mediatek/clk-pllfh.c | 87 ++++++++++++++++++----------------------
- 1 file changed, 39 insertions(+), 48 deletions(-)
-
-diff --git a/drivers/clk/mediatek/clk-pllfh.c b/drivers/clk/mediatek/clk-pllfh.c
-index aa95cd9197b3..7463aa35d7e3 100644
---- a/drivers/clk/mediatek/clk-pllfh.c
-+++ b/drivers/clk/mediatek/clk-pllfh.c
-@@ -197,6 +197,43 @@ static void mtk_clk_unregister_pllfh(struct clk_hw *hw)
- 	kfree(fh);
- }
- 
-+static void mtk_clk_cleanup_pllfhs(const struct mtk_pll_data *plls, int num_plls,
-+				   struct mtk_pllfh_data *pllfhs, int num_fhs,
-+				   struct clk_hw_onecell_data *clk_data)
-+{
-+	void __iomem *base = NULL, *fhctl_base = NULL;
-+	int i;
-+
-+	for (i = num_plls - 1; i > 0; i--) {
-+		const struct mtk_pll_data *pll = &plls[i];
-+		struct mtk_pllfh_data *pllfh;
-+		bool use_fhctl;
-+
-+		if (IS_ERR_OR_NULL(clk_data->hws[pll->id]))
-+			continue;
-+
-+		pllfh = get_pllfh_by_id(pllfhs, num_fhs, pll->id);
-+		use_fhctl = fhctl_is_supported_and_enabled(pllfh);
-+
-+		if (use_fhctl) {
-+			fhctl_base = pllfh->state.base;
-+			mtk_clk_unregister_pllfh(clk_data->hws[pll->id]);
-+		} else {
-+			base = mtk_clk_pll_get_base(clk_data->hws[pll->id],
-+						    pll);
-+			mtk_clk_unregister_pll(clk_data->hws[pll->id]);
+diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+index e1cfd4223473..f877d6694dd5 100644
+--- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
++++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+@@ -1032,12 +1032,15 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
+ 	node = of_find_node_with_property(np, "mediatek,infracfg");
+ 	if (node) {
+ 		regmap[0] = syscon_regmap_lookup_by_phandle(node, "mediatek,infracfg");
+-		of_node_put(node);
+ 		num_regmaps++;
+-		if (IS_ERR(regmap[0]))
+-			return dev_err_probe(dev, PTR_ERR(regmap[0]),
++		if (IS_ERR(regmap[0])) {
++			ret = dev_err_probe(dev, PTR_ERR(regmap[0]),
+ 					     "%pOF: failed to get infracfg regmap\n",
+ 					     node);
++			of_node_put(node);
++			return ret;
 +		}
-+
-+		clk_data->hws[pll->id] = ERR_PTR(-ENOENT);
-+	}
-+
-+	if (fhctl_base)
-+		iounmap(fhctl_base);
-+
-+	iounmap(base);
-+}
-+
-+
- int mtk_clk_register_pllfhs(struct device *dev,
- 			    const struct mtk_pll_data *plls, int num_plls,
- 			    struct mtk_pllfh_data *pllfhs, int num_fhs,
-@@ -238,24 +275,7 @@ int mtk_clk_register_pllfhs(struct device *dev,
- 	return 0;
++		of_node_put(node);
+ 	} else {
+ 		regmap[0] = NULL;
+ 	}
+@@ -1046,17 +1049,22 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
+ 	node = of_find_node_with_property(np, "mediatek,smi");
+ 	if (node) {
+ 		smi_np = of_parse_phandle(node, "mediatek,smi", 0);
+-		of_node_put(node);
+-		if (!smi_np)
++		if (!smi_np) {
++			of_node_put(node);
+ 			return -ENODEV;
++		}
  
- err:
--	while (--i >= 0) {
--		const struct mtk_pll_data *pll = &plls[i];
--		struct mtk_pllfh_data *pllfh;
--		bool use_fhctl;
--
--		pllfh = get_pllfh_by_id(pllfhs, num_fhs, pll->id);
--		use_fhctl = fhctl_is_supported_and_enabled(pllfh);
--
--		if (use_fhctl)
--			mtk_clk_unregister_pllfh(clk_data->hws[pll->id]);
--		else
--			mtk_clk_unregister_pll(clk_data->hws[pll->id]);
--
--		clk_data->hws[pll->id] = ERR_PTR(-ENOENT);
--	}
--
--	iounmap(base);
--
-+	mtk_clk_cleanup_pllfhs(plls, i, pllfhs, num_fhs, clk_data);
- 	return PTR_ERR(hw);
- }
- EXPORT_SYMBOL_GPL(mtk_clk_register_pllfhs);
-@@ -264,38 +284,9 @@ void mtk_clk_unregister_pllfhs(const struct mtk_pll_data *plls, int num_plls,
- 			       struct mtk_pllfh_data *pllfhs, int num_fhs,
- 			       struct clk_hw_onecell_data *clk_data)
- {
--	void __iomem *base = NULL, *fhctl_base = NULL;
--	int i;
--
- 	if (!clk_data)
- 		return;
- 
--	for (i = num_plls; i > 0; i--) {
--		const struct mtk_pll_data *pll = &plls[i - 1];
--		struct mtk_pllfh_data *pllfh;
--		bool use_fhctl;
--
--		if (IS_ERR_OR_NULL(clk_data->hws[pll->id]))
--			continue;
--
--		pllfh = get_pllfh_by_id(pllfhs, num_fhs, pll->id);
--		use_fhctl = fhctl_is_supported_and_enabled(pllfh);
--
--		if (use_fhctl) {
--			fhctl_base = pllfh->state.base;
--			mtk_clk_unregister_pllfh(clk_data->hws[pll->id]);
--		} else {
--			base = mtk_clk_pll_get_base(clk_data->hws[pll->id],
--						    pll);
--			mtk_clk_unregister_pll(clk_data->hws[pll->id]);
--		}
--
--		clk_data->hws[pll->id] = ERR_PTR(-ENOENT);
--	}
--
--	if (fhctl_base)
--		iounmap(fhctl_base);
--
--	iounmap(base);
-+	mtk_clk_cleanup_pllfhs(plls, num_plls, pllfhs, num_fhs, clk_data);
- }
- EXPORT_SYMBOL_GPL(mtk_clk_unregister_pllfhs);
-
----
-base-commit: b3a87fbe738f19cbe19411cf749f3d8c09c04de4
-change-id: 20260708-clk-mediatek-pllfh-fix-7e9ca35989e2
-
-Best regards,
+ 		regmap[1] = device_node_to_regmap(smi_np);
+ 		num_regmaps++;
+ 		of_node_put(smi_np);
+-		if (IS_ERR(regmap[1]))
+-			return dev_err_probe(dev, PTR_ERR(regmap[1]),
++		if (IS_ERR(regmap[1])) {
++			ret = dev_err_probe(dev, PTR_ERR(regmap[1]),
+ 					     "%pOF: failed to get SMI regmap\n",
+ 					     node);
++			of_node_put(node);
++			return ret;
++		}
++		of_node_put(node);
+ 	} else {
+ 		regmap[1] = NULL;
+ 	}
 -- 
-Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+2.43.0
 
 
