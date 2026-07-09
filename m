@@ -4,80 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3B4EC44506
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 13:43:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FFB1C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 13:46:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2NwPjjnUZWrH+h1kaVagksWOBsdMuMZDJHzblOITnSI=; b=vI1Ll6COQIywumwtWmklzDtYaF
-	b3SGwAExhKCGgFlvzdg8SnJ+A4xEzOLMfpHC5GSQinsHpAU6W1VKxpGK8THtlzah7T2lYal4NGGpL
-	dWC0aUfXZ3XNrZdFYNHp3AyrG3NQrcp9fToU4GYHcLE7fpgXMEXrIWFqQulbNt4foy2luq1kYivyD
-	r+yHDtmJB0H/W9nkTyKg6yr320KlD7O03oRdSitRZ4XqEp6bT4HBlarQpwPkCSMUCajJgRVkCL9ra
-	Jc8LOVfMUJlaSt2tfOzlDudi7roULtWObikwPP9msTSVpaS45tWlXLwdDBoy7HyCVf63kZocOYOYP
-	wSk5pxEA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VJDvm2qFGqyazE/f3miZk39Ls5Z/IDZ7Dgt1XYVnHJA=; b=0DmVk7nQsyn0j8D5+UBs8WwFWa
+	57SvvexoKCHY4Ww+p4peX0WJoUsFNBW50ccZHvL5CARumaXLIy7jjikkVK5beiJiPygmX58wBroWc
+	pQREwnw545HPMNOyHvbnSc4JUeajfm7wUxJ7ceu59Qere6eve4hNhjfA1RWmAJqDnkJ5FwWpPfyMx
+	OvWHZl9Oe97cVdAceqdyxw/q4TTWSrNrwiNQq6hUXxzs1zIHxSpbxz8sHzpYN+j16Kr/SyYKOP/rB
+	WPlJPfWqOVK3b3fdlfRRD+OdmW7Mx2utbAM8W5EM7e8Pd7ESbNXcr4RBcpTyv/HqH6kY7Za/QEA5/
+	++BFvG1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whp2L-00000002bi4-3AvV;
-	Thu, 09 Jul 2026 13:43:33 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1whp5Q-00000002d78-1JsD;
+	Thu, 09 Jul 2026 13:46:44 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whp29-00000002b9X-1nUQ;
-	Thu, 09 Jul 2026 13:43:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783604597;
-	bh=Zh06wlUmAIC1iukSKooFVWp0hF17e98otRnRFvdgrT0=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=njIjOfihOr89WM74Ecc4NIH3sr+XpmV/usKRBODEOeR6wzO4I9hj8cyvcOl+ofhh8
-	 T9LJNgPTt6SouBPpCvlULnW3MrFNImrNLJIidZmUUoKzBhnBOtXkXggacR0fzDkX8Y
-	 8Biao1yKPeRLwGCTbO/c23QLEmevYRqFrmDR4xKyTXi9OIzVMY6kZsn+B3GACsXu6U
-	 J0zxNs6sbX9oePAGjTouKObhtiA9XxJu8lIxi1fUoiamDMkyT5V8R5SjmQBNQm3Jlx
-	 UfeCRigwdMUwpLwD7xOnx4ZF2Pn+tvwpsD/dsyKA7uE4nl//4podEQIKIS9s2ff1O2
-	 SLW5X7ZWG/nCg==
-Received: from yukiji.home (unknown [100.64.0.131])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AFFDE17E0CDE;
-	Thu, 09 Jul 2026 15:43:16 +0200 (CEST)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Thu, 09 Jul 2026 15:42:58 +0200
-Subject: [PATCH v2 18/18] clk: mediatek: Add MT8189 ufs clock support
+	id 1whp5N-00000002d6E-1d6h
+	for linux-mediatek@lists.infradead.org;
+	Thu, 09 Jul 2026 13:46:43 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-493b77b150aso15205705e9.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jul 2026 06:46:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1783604799; x=1784209599; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:subject:cc:to:from:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=VJDvm2qFGqyazE/f3miZk39Ls5Z/IDZ7Dgt1XYVnHJA=;
+        b=kKuggUx4ujlKywzIEC6m1qtog/LK7GVopxlmDolHppzsK5gEgKItInB3GlCiOeO17X
+         D4GHIHqakRDlxnPl1bS+oEDsY4Y+OgZHeArZuVLEAA6yka6Ah5OQ2quZAz2mJ1hgurN+
+         mroo9Q/XKi/TXn+Q8Nlab16oisjacILKRDFUl9sKh3wQIS4hbO9tbu8ci9mMa3vLkpCh
+         6LbC0tN5Onubvsgd8qE82E2Z3Y1KxfLWcgO8y2IKkTF1tVawVfS87shVVlcImJHDC2BU
+         /oH57G26DbkkDl9vYBwaJvmmIV53JZfKp8RwrbG47SnzdsmwUiX+OJFA87NV90AHCxl/
+         j5lg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783604799; x=1784209599;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:subject:cc:to:from:date:message-id:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=VJDvm2qFGqyazE/f3miZk39Ls5Z/IDZ7Dgt1XYVnHJA=;
+        b=UwJcuOVY4xKPf2zVmnPz6u1RAJHS6ZIAm7raRC117fqySuL2sOdnZFSTDojMyvLDBm
+         6WagrwjrwWmC0NBFcNECi6LLXp5SYwY/TG33dq6MOWV1yOK7V+QKcgRFUdVczNYaFWUa
+         T0NvNd1In3DxolafqVclMJZtC8t+q+/DCbTXJ1hXbrDJd8U9yx5E8e2S//YZLP0E7SR9
+         GuWAa3+dkqJ+L6rC714JpZQjgIz0SL81cCca2320EKi63azuB30/7Yu9JDElTMx/aWv7
+         mk8+9cOrm8uDMdki4ACIVmUXPs5i+ZVdJs4pMJxCqnJ80jiT9vSmPJpEeO8BmmJKyScX
+         5a/g==
+X-Forwarded-Encrypted: i=1; AHgh+Rp/IioathmYqt9ei5RrUw+r0EPZO8pFngONdhc3m77VGaVjlwVGXtDEQt3vTdZ/pq7BevShex+w7ZoCP6xy3w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YztvgdeMAMFwoGmdrvCl5ba21YY/EK8NZEpWLkjEl3SoO9hvfva
+	SK+0HTsONSuaoMSdxzqzDiHrpsPYS06AnPS0pEh+bBrNGBsPVYyeD3c/
+X-Gm-Gg: AfdE7cll9aqvkG0Nm0VinYrYSWCDPUzAlOeqcsf3qN49j624wyReE5cr7URpCc+9ZK0
+	mqvaCaS7bri8p/yzz1O89IVsoTw5j5wA6z3KjHCBs7JuqrWSWV6La3nxgiIsWSZOcQlAwR2XHc6
+	RMt0fptgG6PmM1yhMYL7zkTy83MI65x+5+m2MvPZsarnNr8ZjeVOuexisxq6wnxtPYHdEoYkDDd
+	Yoxg89N1ip2QXtJfDjZaKwjbnFQsoHgqFMbxMzJufhYx+2jSVq62Pi4oVGXTe4/7uxttkTfmwJH
+	7tZqNX4d04XFL3S8OlX0N/N+7TKKxFVyGUSbeALC8Y+FGC3nk3OPB22FkxCrK6+2B8QUGVus42o
+	lI7iZrc2aG06XGfNHfXSnEourdbk1Jub4s3F38S9uwwLHnhQpjy+K58Jpc7O9wk6RAxc50rwtlS
+	Q+Yn8PDhDpH4/LN+Xv9mKgPHw9tMvy4T+A8jywDyIxGWHbjbnSiu+ylMhSwOZ9CBA=
+X-Received: by 2002:a05:600c:4e11:b0:493:ee2b:c876 with SMTP id 5b1f17b1804b1-493ee2bcc04mr21300345e9.35.1783604799102;
+        Thu, 09 Jul 2026 06:46:39 -0700 (PDT)
+Received: from Ansuel-XPS. (host-95-248-227-210.retail.telecomitalia.it. [95.248.227.210])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-493eb6cccfdsm63149545e9.1.2026.07.09.06.46.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Jul 2026 06:46:38 -0700 (PDT)
+Message-ID: <6a4fa63e.f4f4081c.1a06be.032e@mx.google.com>
+X-Google-Original-Message-ID: <ak-mPUz-V4FANYy5@Ansuel-XPS.>
+Date: Thu, 9 Jul 2026 15:46:37 +0200
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next 2/5] net: phy: mediatek: move MTK GE SoC
+ registers define to dedicated header
+References: <20260708102341.53919-1-ansuelsmth@gmail.com>
+ <20260708102341.53919-3-ansuelsmth@gmail.com>
+ <788172f8-1005-4df1-afb7-320a135bdaf9@lunn.ch>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260709-mt8189-clocks-system-base-v2-18-2926da3db6cf@collabora.com>
-References: <20260709-mt8189-clocks-system-base-v2-0-2926da3db6cf@collabora.com>
-In-Reply-To: <20260709-mt8189-clocks-system-base-v2-0-2926da3db6cf@collabora.com>
-To: Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chun-Jie Chen <chun-jie.chen@mediatek.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Edward-JW Yang <edward-jw.yang@mediatek.com>, 
- Richard Cochran <richardcochran@gmail.com>
-Cc: kernel@collabora.com, linux-clk@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- netdev@vger.kernel.org, Irving-CH Lin <irving-ch.lin@mediatek.com>, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1783604575; l=7242;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=Zh06wlUmAIC1iukSKooFVWp0hF17e98otRnRFvdgrT0=;
- b=mcgvx8ea02XMf1eYBOCqpbqokkWD16lTMmQ+XCN8kN3QIUqNBemzFzRiQuu3JV52pENGAJQJT
- 41M0bVisOZyAYcmJYk9RYVHoGaV47EwGDoaj8FfUME10qXyTAzaC1NP
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <788172f8-1005-4df1-afb7-320a135bdaf9@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_064321_977256_5DE5BF65 
-X-CRM114-Status: GOOD (  18.58  )
+X-CRM114-CacheID: sfid-20260709_064641_431000_3DA621C0 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,196 +114,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the MT8189 ufs clock controller,
-which provides clock gate control for Universal Flash Storage.
+On Thu, Jul 09, 2026 at 01:44:37AM +0200, Andrew Lunn wrote:
+> On Wed, Jul 08, 2026 at 12:23:28PM +0200, Christian Marangi wrote:
+> > In preparation for support of special Software Calibration for Airoha
+> > PHY, move the MTK GE SoC registers define to a dedicated header.
+> > 
+> > It's also needed to generalize the cal_cycle function as Airoha needs
+> > only part of its logic (the wait logic) to complete a calibration cycle.
+> 
+> Can this be two patches?
+> 
 
-Co-developed-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
-Signed-off-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
-Co-developed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
----
- drivers/clk/mediatek/Kconfig          |  12 +++
- drivers/clk/mediatek/Makefile         |   1 +
- drivers/clk/mediatek/clk-mt8189-ufs.c | 133 ++++++++++++++++++++++++++++++++++
- 3 files changed, 146 insertions(+)
-
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index 919a916f1f4f..34a270a377cc 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -882,6 +882,18 @@ config COMMON_CLK_MT8189_SCP
- 	  management for SCP-related features, ensuring proper clock
- 	  distribution and gating for power efficiency and functionality.
- 
-+config COMMON_CLK_MT8189_UFS
-+	tristate "Clock driver for MediaTek MT8189 ufs"
-+	depends on COMMON_CLK_MT8189
-+	default COMMON_CLK_MT8189
-+	help
-+	  Enable this to support the clock management for the Universal Flash
-+	  Storage (UFS) interface on MediaTek MT8189 SoCs. This includes
-+	  clock sources, dividers, and gates that are specific to the UFS
-+	  feature of the MT8189 platform. It is recommended to enable this
-+	  option if the system includes a UFS device that relies on the MT8189
-+	  SoC for clock management.
-+
- config COMMON_CLK_MT8192
- 	tristate "Clock driver for MediaTek MT8192"
- 	depends on ARM64 || COMPILE_TEST
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index a3a93a16b369..1aa9f4265225 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -130,6 +130,7 @@ obj-$(CONFIG_COMMON_CLK_MT8189_DBGAO) += clk-mt8189-dbgao.o
- obj-$(CONFIG_COMMON_CLK_MT8189_DVFSRC) += clk-mt8189-dvfsrc.o
- obj-$(CONFIG_COMMON_CLK_MT8189_IIC) += clk-mt8189-iic.o
- obj-$(CONFIG_COMMON_CLK_MT8189_SCP) += clk-mt8189-scp.o
-+obj-$(CONFIG_COMMON_CLK_MT8189_UFS) += clk-mt8189-ufs.o
- obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192-apmixedsys.o clk-mt8192.o
- obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
- obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
-diff --git a/drivers/clk/mediatek/clk-mt8189-ufs.c b/drivers/clk/mediatek/clk-mt8189-ufs.c
-new file mode 100644
-index 000000000000..85afab04420f
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8189-ufs.c
-@@ -0,0 +1,133 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (C) 2025-2026 MediaTek Inc.
-+ *                    Qiqi Wang <qiqi.wang@mediatek.com>
-+ *                    Irving-CH Lin <irving-ch.lin@mediatek.com>
-+ * Copyright (C) 2026 Collabora Ltd.
-+ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ *                    Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-+ */
-+
-+#include <linux/clk-provider.h>
-+#include <linux/module.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
-+
-+#include "clk-mtk.h"
-+#include "clk-gate.h"
-+
-+#include <dt-bindings/clock/mediatek,mt8189-clk.h>
-+#include <dt-bindings/reset/mediatek,mt8189-resets.h>
-+
-+#define MT8189_UFSCFG_AO_RST0_SET_OFFSET	0x48
-+#define MT8189_UFSCFG_PDN_RST0_SET_OFFSET	0x48
-+
-+static const struct mtk_gate_regs ufscfg_ao_reg_cg_regs = {
-+	.set_ofs = 0x8,
-+	.clr_ofs = 0xc,
-+	.sta_ofs = 0x4,
-+};
-+
-+#define GATE_UFSCFG_AO_REG(_id, _name, _parent, _shift)		\
-+	GATE_MTK(_id, _name, _parent, &ufscfg_ao_reg_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-+
-+static const struct mtk_gate ufscfg_ao_reg_clks[] = {
-+	GATE_UFSCFG_AO_REG(CLK_UFSCFG_AO_REG_UNIPRO_TX_SYM,
-+			   "ufscfg_ao_unipro_tx_sym", "clk26m", 1),
-+	GATE_UFSCFG_AO_REG(CLK_UFSCFG_AO_REG_UNIPRO_RX_SYM0,
-+			   "ufscfg_ao_unipro_rx_sym0", "clk26m", 2),
-+	GATE_UFSCFG_AO_REG(CLK_UFSCFG_AO_REG_UNIPRO_RX_SYM1,
-+			   "ufscfg_ao_unipro_rx_sym1", "clk26m", 3),
-+	GATE_UFSCFG_AO_REG(CLK_UFSCFG_AO_REG_UNIPRO_SYS,
-+			   "ufscfg_ao_unipro_sys", "ufs_sel", 4),
-+	GATE_UFSCFG_AO_REG(CLK_UFSCFG_AO_REG_U_SAP_CFG,
-+			   "ufscfg_ao_u_sap_cfg", "clk26m", 5),
-+	GATE_UFSCFG_AO_REG(CLK_UFSCFG_AO_REG_U_PHY_TOP_AHB_S_BUS,
-+			   "ufscfg_ao_u_phy_ahb_s_bus", "axi_u_sel", 6),
-+};
-+
-+static u16 ufscfg_ao_rst_ofs[] = {
-+	MT8189_UFSCFG_AO_RST0_SET_OFFSET,
-+};
-+
-+static u16 ufscfg_ao_rst_idx_map[] = {
-+	[MT8189_UFSAO_RST_UFS_MPHY] = 8,
-+};
-+
-+static const struct mtk_clk_rst_desc ufscfg_ao_rst_desc = {
-+	.version = MTK_RST_SET_CLR,
-+	.rst_bank_ofs = ufscfg_ao_rst_ofs,
-+	.rst_bank_nr = ARRAY_SIZE(ufscfg_ao_rst_ofs),
-+	.rst_idx_map = ufscfg_ao_rst_idx_map,
-+	.rst_idx_map_nr = ARRAY_SIZE(ufscfg_ao_rst_idx_map),
-+};
-+
-+static const struct mtk_clk_desc ufscfg_ao_reg_mcd = {
-+	.clks = ufscfg_ao_reg_clks,
-+	.num_clks = ARRAY_SIZE(ufscfg_ao_reg_clks),
-+	.rst_desc = &ufscfg_ao_rst_desc,
-+};
-+
-+static const struct mtk_gate_regs ufscfg_pdn_reg_cg_regs = {
-+	.set_ofs = 0x8,
-+	.clr_ofs = 0xc,
-+	.sta_ofs = 0x4,
-+};
-+
-+#define GATE_UFSCFG_PDN_REG(_id, _name, _parent, _shift)	\
-+	GATE_MTK(_id, _name, _parent, &ufscfg_pdn_reg_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-+
-+static const struct mtk_gate ufscfg_pdn_reg_clks[] = {
-+	GATE_UFSCFG_PDN_REG(CLK_UFSCFG_REG_UFSHCI_UFS,
-+			    "ufscfg_ufshci_ufs", "ufs_sel", 0),
-+	GATE_UFSCFG_PDN_REG(CLK_UFSCFG_REG_UFSHCI_AES,
-+			    "ufscfg_ufshci_aes", "aes_ufsfde_sel", 1),
-+	GATE_UFSCFG_PDN_REG(CLK_UFSCFG_REG_UFSHCI_U_AHB,
-+			    "ufscfg_ufshci_u_ahb", "axi_u_sel", 3),
-+	GATE_UFSCFG_PDN_REG(CLK_UFSCFG_REG_UFSHCI_U_AXI,
-+			    "ufscfg_ufshci_u_axi", "mem_sub_u_sel", 5),
-+};
-+
-+static u16 ufscfg_pdn_rst_ofs[] = {
-+	MT8189_UFSCFG_PDN_RST0_SET_OFFSET,
-+};
-+
-+static u16 ufscfg_pdn_rst_idx_map[] = {
-+	[MT8189_UFSPDN_RST_UFS_UNIPRO] = 0,
-+	[MT8189_UFSPDN_RST_UFS_CRYPTO] = 1,
-+	[MT8189_UFSPDN_RST_UFS_HCI] = 2,
-+};
-+
-+static const struct mtk_clk_rst_desc ufscfg_pdn_rst_desc = {
-+	.version = MTK_RST_SET_CLR,
-+	.rst_bank_ofs = ufscfg_pdn_rst_ofs,
-+	.rst_bank_nr = ARRAY_SIZE(ufscfg_pdn_rst_ofs),
-+	.rst_idx_map = ufscfg_pdn_rst_idx_map,
-+	.rst_idx_map_nr = ARRAY_SIZE(ufscfg_pdn_rst_idx_map),
-+};
-+
-+static const struct mtk_clk_desc ufscfg_pdn_reg_mcd = {
-+	.clks = ufscfg_pdn_reg_clks,
-+	.num_clks = ARRAY_SIZE(ufscfg_pdn_reg_clks),
-+	.rst_desc = &ufscfg_pdn_rst_desc,
-+};
-+
-+static const struct of_device_id of_match_clk_mt8189_ufs[] = {
-+	{ .compatible = "mediatek,mt8189-ufscfg-ao", .data = &ufscfg_ao_reg_mcd },
-+	{ .compatible = "mediatek,mt8189-ufscfg-pdn", .data = &ufscfg_pdn_reg_mcd },
-+	{ /* sentinel */ }
-+};
-+MODULE_DEVICE_TABLE(of, of_match_clk_mt8189_ufs);
-+
-+static struct platform_driver clk_mt8189_ufs_drv = {
-+	.probe = mtk_clk_simple_probe,
-+	.remove = mtk_clk_simple_remove,
-+	.driver = {
-+		.name = "clk-mt8189-ufs",
-+		.of_match_table = of_match_clk_mt8189_ufs,
-+	},
-+};
-+module_platform_driver(clk_mt8189_ufs_drv);
-+
-+MODULE_DESCRIPTION("MediaTek MT8189 ufs clocks driver");
-+MODULE_LICENSE("GPL");
+Sure, will split.
 
 -- 
-2.55.0
-
+	Ansuel
 
