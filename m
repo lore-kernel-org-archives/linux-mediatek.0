@@ -4,129 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BD0EC43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 06:54:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 433DAC43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 07:02:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Umjxh1wdEigWfrDYfCtSPiAZ4y/Nii4EbVro+PImADI=; b=IF0GGXXUQjq55JddXjhg5vMo1i
-	f1FBsi4CzkYpZpZTfnObnkIi3ORjL9xmuDJXiei9UkVgqwEi6dReHEw8f291z4WghE0xcEf1Ydicn
-	wiqRHmirNfPREN8CPteg53x6u2+V2nyVGWaIlJsXHqjD1wJmKKVPxy9f0+fbCkbDP88aaU+bDpJ/x
-	aFC7oabDrafcT+pOBkQaBoKYv023y+aApW3Me00W+CjvI+e4NKupbj3MozKuDqq0ccWLEVfR6d9nB
-	OrbDD7hgnbo1PdHp57gFZNG/QffdQnd0Sw2rgUocJ+KStxf2EXWy90GUbVcsO00jFd3CEk6/ZZ7mG
-	Ldy9roAQ==;
+	bh=uD6Osf6Z82OsRPDVnF3a4ym/ndZXwELdg64JuzBVz90=; b=gES2Q1oUQH2zYAPTTVBQqewejm
+	5dwlbGZyflftGRmjS5scPy5zTFLr/Lkdeg3yB1eOk5zmybm7xoBwQSKQegyK5LdaMijsAKwMIx3jS
+	b2SKrTJoBEsIiSSjjghR+y80jV8LPX/HIRtPly4HZtKcy6FWfh0JthAEQkLXzq7Oja9j93RCQ04wc
+	fnR0VOzVeRvU4yHIAvXBUeN4orYz9nD9zRsefMsqTWTCv1Yoc+4ZanbFwvlnLSz66yscGdcODSIkP
+	Envi04pGzRbZtAyUxbm17FRwpQ8UwheVgBcULYRRP+1PUGT1+ACaAA0OlgfGqTvDPJlX1+eHmo2AW
+	ZdmoNMrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whie7-00000001Dk5-02FR;
-	Thu, 09 Jul 2026 06:54:07 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1whimJ-00000001ELB-0d8l;
+	Thu, 09 Jul 2026 07:02:35 +0000
+Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whie5-00000001Djg-21KT;
-	Thu, 09 Jul 2026 06:54:05 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id CA9D86001A;
-	Thu,  9 Jul 2026 06:54:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA18F1F000E9;
-	Thu,  9 Jul 2026 06:53:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783580044;
-	bh=Umjxh1wdEigWfrDYfCtSPiAZ4y/Nii4EbVro+PImADI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=eve+Ku/buy7nr9gkUgllmP30UOO+QyApAmLGK6h4Qn42Nr4HNLucG+pYmO07Wtxmk
-	 DWtBcDkCybkjMlqjaJAwd+FunPhP/l5E8qcTL2xsPlkrRQwgTqcC58b15eC4WZCrNW
-	 fy+PA4ct/pREL/oK75G/cagLF2JMP2E0x1x6qNQGOEUW/edqJPbb3eXflbtPImj6rr
-	 6mU9S7lgocbnzdZMe07a8786qBJXU0lxf05aRXoxRuFJMsGDl2iAXDkYuqhNkARf4s
-	 MxPTFY6X9AF2y/gnXEoGeobYHJvx5MR4EWTe2hp42in/8iWVNNdGaLMqCpALPbiZyj
-	 rFX4rJG1dpVLQ==
-Message-ID: <9320a573-ebf8-459b-a313-3a8b73a6180b@kernel.org>
-Date: Thu, 9 Jul 2026 08:53:54 +0200
+	id 1whimG-00000001EKI-271D
+	for linux-mediatek@lists.infradead.org;
+	Thu, 09 Jul 2026 07:02:34 +0000
+Received: by mail-yx1-xb136.google.com with SMTP id 956f58d0204a3-664ce3000e6so1496193d50.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jul 2026 00:02:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783580551; cv=none;
+        d=google.com; s=arc-20260327;
+        b=XphfttVfNT6pJGy4RcJytVaxtVx+YFXh9hWLrGRtri+t6e1z5YUQmKC8svdu9UP56C
+         6/uuhcu+LFZ3aHG9NKpgIrpgK56UK+MI4I7RJrfNCeQNtvt2MU/u+NnX/nWHWd6bTPoO
+         e9LeoKxVnhVtaWkK8ZfpWBVmk09L06pQS2Hk4miy0RIY3Z2UFlmyoYoAVmog7TyrcomB
+         zJjiqITkMyhImSOmQ2dblZUZK4/WcgUvi1jsnft0y4jtXkyi4hwAUfXOST8lGqPBOmCE
+         y+TAIno70mWmCD+M2+nTfytWPBJfksl+6394sx1fsYK2tJeq99BXsLrl8YbQmPbX8uf6
+         9y9w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=uD6Osf6Z82OsRPDVnF3a4ym/ndZXwELdg64JuzBVz90=;
+        fh=2L50Jo8XORsH8Iryf+Uchn/TcMCSB2Euz4mwMP1NkNk=;
+        b=rmj25pyZ3MJ6b/LBtKx8MyyKZTicTLwLaec84nLt8IDq7wUOXMt0cLUVwsN4YcQ9KV
+         6EgWAtGXmo2TbBvSWRfA9Qo4pLrsnqHtClo63Lzd55TcV79IKmB4KTQqT3mZBOeqdb1W
+         wJlvp+W5GqDa587JiNH9kYa/PwOxqkCHBFXQomzGDvQdDEW3QjP7jdmRWuI7rvGKRj5a
+         2rfMFTOyf2rRHzIe0JFURfdGtnubkHI2tMwbZvJyVZ2mfoEkV55yCgVjvk9YsMeEIcmX
+         h3oWAA/Dwqoap2WQ2q4gf8oXilNuAf2h3j7UYHG+PjdAnpQH+x0KbkDawL3tvaRpnb3F
+         BS7w==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1783580551; x=1784185351; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=uD6Osf6Z82OsRPDVnF3a4ym/ndZXwELdg64JuzBVz90=;
+        b=N+S55Gfs+A1UnPe+Dj8FIeTfkP68AMPTaNLAMPb62gKzOf5wJXhbshlopHL/ua5dn0
+         mULJmFIstEZAqzVXugdYvDvcGEqY9rMp2UCGCwyHY1/baFKFC4E/5zcV8v2fB5h7Gxot
+         I44seM/dlP/qVqV1jZTSBoMiIGNMT3qwEYrYs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783580551; x=1784185351;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=uD6Osf6Z82OsRPDVnF3a4ym/ndZXwELdg64JuzBVz90=;
+        b=c4lo8tzE2n8TcecaznWFM4nZyrjFet3YTFft40hCGhTGNNSmCy8/t0JEMH90svNfiM
+         At0TQFnwI0zGUXH3uusJXopUSdvzYQ7pnyJXz71wa+l1+QazZYvOuZ5jUpmeG53c7LWA
+         sW8Xt8T6bpDS6TZle6SFgG7UyblqX69kEZKnn3uslzaMMYbDYfJyyuGlRLcCxw7h+7yi
+         mXmWtm+JSGRcLRG/GvZmcagxbtDjmR2NdkCjJDIcf7klfgu8xke9/Ljk86nwVMo8NC8n
+         3LbB3Q/fsr/5309lZ77g/+1gWymiev8y0BN8/ZkCon2wiKYaJyCBUCVvuBQvXIhIa4hi
+         5wLQ==
+X-Forwarded-Encrypted: i=1; AHgh+RqrEPJsHxPsBGACsFnvAYE7lI2EK0b8iXE4xwBWI4WxAiqjQoXi4tJPD7A36Gm1/S4UMxG9PMeOrj/SSyw53g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwTqVNDG+v797FxatM+Bw/h/0jsOHQWacD1cS5BBDy8w24rPCoJ
+	L5xN87RpREtgdABkO1AdaEHIU5MJCWk7U/Fn+vphcB16aY1gI7P/1/8/fB0H3g7EWYBPWS96wAF
+	jzzNPq+XoCh4AT38h3RLoBLbenupAx04lw8ggs/1Z
+X-Gm-Gg: AfdE7cmecJOK7TX8UBhl6D5SCGiCTeouVOa3paFbYyctiG9pjlw2rLk5g7hW3Y0MSgG
+	Tp1UjRRLzwVp1/WNJghjXGPfJXGSmfr2QWt9YE9/wnr9iZjNHC2oZA6K6BwICH5HJdBFw5TwjoL
+	YRpY7w6yq1qkZH4ZWbUWbvDi4IM7idEQ+h1stCjx5F4G5mIewtgwK6aD5mnSjf9m1mkNDw5DSjg
+	jF2A6OOLMfoYhEsWYemnX+MMzcuNBbEJeRpSGVJT3RUdfxTJYSfwHIj44y5whwsHeSYVtLRzYX0
+	+ygb+rQavEIJqjS6NTrpyT+glXcl9QBOl9t2eg==
+X-Received: by 2002:a53:cf41:0:b0:667:8b91:2436 with SMTP id
+ 956f58d0204a3-6679f2660e4mr3536586d50.101.1783580550797; Thu, 09 Jul 2026
+ 00:02:30 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/6] tty: serial: propagate errors from uart_ops.pm
- callback
-To: Praveen Talari <praveen.talari@oss.qualcomm.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- =?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Richard Genoud <richard.genoud@bootlin.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Peter Griffin <peter.griffin@linaro.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>,
- Patrice Chotard <patrice.chotard@foss.st.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Peter Korsgaard <jacmet@sunsite.dk>, Michal Simek <michal.simek@amd.com>,
- Aaro Koskinen <aaro.koskinen@iki.fi>,
- Janusz Krzysztofik <jmkrzyszt@gmail.com>, Tony Lindgren <tony@atomide.com>,
- Russell King <linux@armlinux.org.uk>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- bjorn.andersson@oss.qualcomm.com,
- Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-Cc: linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-omap@vger.kernel.org,
- linux-mips@vger.kernel.org,
- Mukesh Kumar Savaliya <mukesh.savaliya@oss.qualcomm.com>,
- aniket.randive@oss.qualcomm.com, chandana.chiluveru@oss.qualcomm.com
-References: <20260709-add_return_check_for_uart_change_pm-v1-0-e85c6ffa8ec4@oss.qualcomm.com>
-Content-Language: en-US
-From: Jiri Slaby <jirislaby@kernel.org>
-Autocrypt: addr=jirislaby@kernel.org; keydata=
- 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
-In-Reply-To: <20260709-add_return_check_for_uart_change_pm-v1-0-e85c6ffa8ec4@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20260709063450.1615041-1-justin.yeh@mediatek.com> <20260709063450.1615041-4-justin.yeh@mediatek.com>
+In-Reply-To: <20260709063450.1615041-4-justin.yeh@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 9 Jul 2026 15:02:20 +0800
+X-Gm-Features: AVVi8Cc-6951WW98xAGZ6jiAvP0W_Uwp4fM0w9OTetzj576Smn-XC53Uyv0aJbs
+Message-ID: <CAGXv+5F3K+xpF8OVJPZgwd7cGJ6oWLZg3Qjh9hgdCop8bCMLEQ@mail.gmail.com>
+Subject: Re: [PATCH v5 3/4] pinctrl: mediatek: mt7986: register both platform
+ drivers from a single initcall
+To: Justin Yeh <justin.yeh@mediatek.com>
+Cc: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linusw@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260709_000232_932667_BD9A8371 
+X-CRM114-Status: GOOD (  12.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,58 +119,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09. 07. 26, 8:25, Praveen Talari wrote:
-> The uart_ops.pm callback has been declared void since its introduction,
-> which means any error from a driver's power management implementation is
-> silently discarded by uart_change_pm(). Beyond losing the error
-> information, uart_change_pm() unconditionally updates state->pm_state
-> even when the underlying hardware transition failed. This causes the
-> serial core to track a power state that does not reflect reality:
-> subsequent calls to uart_change_pm() see the stale cached state as
-> matching the requested state and skip the callback entirely, leaving the
-> hardware permanently stuck with no further recovery attempt.
-> 
-> On modern platforms where the .pm callback performs real work —
-> enabling clock trees, interacting with runtime PM, asserting voltage
-> regulators — this is a correctness gap. Failures are invisible to the
-> PM framework, the port proceeds to call ops->startup() on potentially
-> unpowered hardware, and suspend/resume errors are hidden from the core
-> that needs to handle them.
-> 
-> This series fixes the problem in four steps:
-> 
->    Patch 1 changes the uart_ops.pm callback signature from void to int,
->    updates uart_change_pm() to propagate errors and only commit
->    state->pm_state on success, and handles the return value at every
->    call site in serial_core.c with appropriate policy per context
->    (propagate, log, or skip-on-failure).
+On Thu, Jul 9, 2026 at 2:35=E2=80=AFPM Justin Yeh <justin.yeh@mediatek.com>=
+ wrote:
+>
+> The MT7986 driver registers two separate platform drivers (mt7986a and
+> mt7986b) and used to call arch_initcall() twice, once for each.
+>
+> This is fine while the driver is built-in, but a single translation unit
+> can only provide one module_init(). Since arch_initcall() expands to
+> module_init() when built as a module, having two of them would break the
+> module build with a redefinition of init_module()/__inittest().
+>
+> Fold both platform drivers into a single driver array and register them
+> from one initcall using platform_register_drivers(), matching the shape o=
+f
+> the other MediaTek pinctrl SoC drivers. platform_register_drivers() also
+> rolls back the first registration if the second one fails.
+>
+> No functional change for built-in builds; this is a preparatory cleanup
+> for enabling module builds.
+>
+> Signed-off-by: Justin Yeh <justin.yeh@mediatek.com>
 
-So does this break build without the below applied? IOW: breaks 
-bisectability?
-
->    Patch 2 updates the 8250 driver family: serial8250_do_pm() and
->    serial8250_pm() are updated to return int (with the exported symbol
->    declaration updated in serial_8250.h), and the 8250 sub-driver
->    pm callbacks are updated to return 0.
-> 
->    Patch 3 updates the remaining non-8250 serial drivers. All .pm
->    implementations are updated to return 0. The sh-sci forward
->    declaration shared with rsci is also updated.
-> 
->    Patch 4 updates arch-level implementations: SA1100 (assabet, h3xxx),
->    OMAP1/ams-delta (modem_pm, now propagates regulator errors), and
->    MIPS/Alchemy (alchemy_8250_pm).
-> 
-> All existing .pm implementations return 0, so there is no functional
-> change for any current driver. The series purely adds the infrastructure
-> for drivers to report errors going forward, with the serial core ready
-> to handle them correctly.
-
-OK, now I miss the rationale behind the patchset. Neither there is a 
-possible code path to actually test this?
-
-thanks,
--- 
-js
-suse labs
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
