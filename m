@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DDE2C44501
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 08:54:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C878C44503
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 09:09:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vMBVFDSljvSf4iCDRlBQTGvBtWXGxxkV5RPlQKApDWM=; b=DBzyaWk2GzLpZDpwkZ9TDG0jJT
-	FB01mvK918vE/bLZZNLDGfwi/ht+CIqsWA6wWtzSZngIxlZKpApQMcpY3sftvvGkTDHN2857qzhVC
-	4wA/Yz9JvUpcCXuPYXNbhfeNjB0HcEP1hU+n3Ge6k/b3zVsnDApq98Pm6V9/l1V0GIacl1AA100AZ
-	orkjPtN/1FhHFsfX9Q/XeUn93eEbP3GEzZ9R+CEpdRZl5BTSXTg86zlLXcF6DqJsCWNnb2LXMZurS
-	3yBD+90qDpeduAtxtu/SRJvDGt0ZmYhyKtrZ717leb1LjEkcxQF9DGqRH2pcVJeyt+PB8XjhLqIvV
-	umJfyk3w==;
+	bh=jrrfogBkoUTUQtPpOPPb0EfuLBqOI+De983Yj09gBhs=; b=c5kdcIHUas1tfTplBQ1zaCUNWl
+	JhZvubRUgfCuRDXtOOV71wZJtGp06SpHNQdJi9nPpIoAfPgxJZh7RinyHjaf1qjFf8vdCGoSAQ9mu
+	Ln/szSbxM1N/HH/LlsS2HdXDo8mViMs2PG9+bPjJQDvrOWTltk7kOs2FVChY7HSBVayjQhD5cbkyn
+	kSWx1xAvyPlu6EQi9f6jN94dS9AVupY0Blz1cWepUsCHcHhhaFHuy65EQafn96MaRGb8uAnphTAC6
+	ZHvDSLDncboRCZl/Irtc5mSiTjKuD8i3fhXQS7sumD88xb7FcGrqaONS0sdySgMoB8QVHNcpRRVEz
+	G3wkaO3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkWw-00000001ehE-14cX;
-	Thu, 09 Jul 2026 08:54:50 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1whklJ-00000001ipJ-1tbc;
+	Thu, 09 Jul 2026 09:09:41 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkUw-00000001aUs-3fwv;
-	Thu, 09 Jul 2026 08:52:46 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 71EE443F85;
-	Thu,  9 Jul 2026 08:52:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D452F1F00A3D;
-	Thu,  9 Jul 2026 08:52:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783587166;
-	bh=vMBVFDSljvSf4iCDRlBQTGvBtWXGxxkV5RPlQKApDWM=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=S0XP92IXyNjbyhVM7iPqEpJXW19G71PWW8a19Z/YchM55XF6VDr5MM+tBRIGnnPNL
-	 x6dKFYVXDll15LcaukTfJA5iHo5OnOLR3iaBzP5bspflciiIW79LwFPS+dTdcCVLVl
-	 htRiGX79MW7BNGxcQTro5g9CmngTwV3UraNgKTRl8vbd3yKt2omoF2ymo5vAnA6clX
-	 +mukWhOBOO+GSakD8Xp6imfaFY3Mdq/HDwe1X8090OVN0G6hmCSpYSuJsKH6m0HxIn
-	 v3Qi8fqOPuWwRbycNdmNuAwtptSpD1CxJHT4dVdniIHHDhP2IGaEippnQhjFLdNtfH
-	 KEYbINk4z1Ccg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 09 Jul 2026 10:52:13 +0200
-Subject: [PATCH nf-next v5 6/6] selftests: netfilter: nft_flowtable.sh: add
- SIT flowtable selftest
+	id 1whklG-00000001ilY-28eG;
+	Thu, 09 Jul 2026 09:09:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783588174;
+	bh=Mar/IjyYNl2k5CmvryGot5Czt1iXajxPeDD0/orHm60=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=UscovhSEgE9OWFcvoR/LAjwxZriz4UfJVXiKh1xC5NLQ9z5dVWzAkuOevR6Qzj8qp
+	 KypZGBCFsayu4wLO2la9xvWqg3T0bq+t+nnfmUdoFYTwzpbKb1qbW3Da9aajkb71Rz
+	 w9+sCHgLPVP4uHkxwn5PHoMr1Ks1GUSg9gZJgOHfUAg28UTs6tr6Famu8UfFkccSfj
+	 rECcv1LGnFej3/z4hOfpoLWh6cCZ/+9HQFR8CylW9VimPOoXVcOjOPrcLEjVX71124
+	 gGtul7dfRbpUE9GtsGB2DTFhi2gn1jIDQgGqjsceVf7IXlNbttRHKH62JA1Hzz/P1V
+	 Hjxj7zsmP9fPg==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B1D8717E05E8;
+	Thu, 09 Jul 2026 11:09:33 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: linux-mediatek@lists.infradead.org
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com,
+	justin.yeh@mediatek.com
+Subject: [PATCH v3 1/7] arm64: dts: mediatek: mt6795: Remove deprecated UART DMA property
+Date: Thu,  9 Jul 2026 11:09:18 +0200
+Message-ID: <20260709090924.27056-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260709090924.27056-1-angelogioacchino.delregno@collabora.com>
+References: <20260709090924.27056-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260709-b4-flowtable-sw-accel-ip6ip-v5-6-828ceaf85bab@kernel.org>
-References: <20260709-b4-flowtable-sw-accel-ip6ip-v5-0-828ceaf85bab@kernel.org>
-In-Reply-To: <20260709-b4-flowtable-sw-accel-ip6ip-v5-0-828ceaf85bab@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Felix Fietkau <nbd@nbd.name>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Simon Horman <horms@kernel.org>, David Ahern <dsahern@kernel.org>, 
- Ido Schimmel <idosch@nvidia.com>, Pablo Neira Ayuso <pablo@netfilter.org>, 
- Florian Westphal <fw@strlen.de>, Phil Sutter <phil@nwl.cc>, 
- Shuah Khan <shuah@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- netfilter-devel@vger.kernel.org, coreteam@netfilter.org, 
- linux-kselftest@vger.kernel.org
-X-Mailer: b4 0.14.3
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260709_020938_769546_53D50D9D 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,127 +80,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Similar to IPIP, IP6IP6 and IPv4 over IPv6, introduce specific selftest
-for SIT flowtable sw acceleration in nft_flowtable.sh
+Remove the mediatek,dma-33bits property as it is now deprecated
+and, while at it, also remove the fallback compatible as it was
+not entirely right to use anyway, because this IP is not fully
+compatible with the one found in MT6577 and would create more
+issues than the ones it could resolve (as in - it's better to
+not probe the controller than to probe it and manage it in some
+incorrect way).
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- tools/testing/selftests/net/netfilter/config       |  1 +
- .../selftests/net/netfilter/nft_flowtable.sh       | 45 ++++++++++++++++++++++
- 2 files changed, 46 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt6795.dtsi | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/tools/testing/selftests/net/netfilter/config b/tools/testing/selftests/net/netfilter/config
-index c3c121b6f300..a212b9edbcd9 100644
---- a/tools/testing/selftests/net/netfilter/config
-+++ b/tools/testing/selftests/net/netfilter/config
-@@ -35,6 +35,7 @@ CONFIG_IP_SCTP=m
- CONFIG_IPV6=y
- CONFIG_IPV6_MULTIPLE_TABLES=y
- CONFIG_IPV6_TUNNEL=m
-+CONFIG_IPV6_SIT=m
- CONFIG_IP_VS=m
- CONFIG_IP_VS_PROTO_TCP=y
- CONFIG_IP_VS_RR=m
-diff --git a/tools/testing/selftests/net/netfilter/nft_flowtable.sh b/tools/testing/selftests/net/netfilter/nft_flowtable.sh
-index b14c80c6e372..46bd080108be 100755
---- a/tools/testing/selftests/net/netfilter/nft_flowtable.sh
-+++ b/tools/testing/selftests/net/netfilter/nft_flowtable.sh
-@@ -597,6 +597,10 @@ ip -net "$nsr1" addr add 192.168.210.1/24 dev tun6
- ip -net "$nsr1" addr add fee1:3::1/64 dev tun6 nodad
- ip netns exec "$nsr1" sysctl net.ipv4.conf.tun6.forwarding=1 > /dev/null
+diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+index 134cfa77e3b1..6dd706b27830 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+@@ -547,8 +547,7 @@ uart1: serial@11003000 {
+ 		};
  
-+ip -net "$nsr1" link add name sit1 type sit local 192.168.10.1 remote 192.168.10.2 ttl 255
-+ip -net "$nsr1" link set sit1 up
-+ip -net "$nsr1" addr add fe01:3::1/64 dev sit1 nodad
-+
- ip -net "$nsr2" link add name tun0 type ipip local 192.168.10.2 remote 192.168.10.1
- ip -net "$nsr2" link set tun0 up
- ip -net "$nsr2" addr add 192.168.100.2/24 dev tun0
-@@ -608,6 +612,10 @@ ip -net "$nsr2" addr add 192.168.210.2/24 dev tun6
- ip -net "$nsr2" addr add fee1:3::2/64 dev tun6 nodad
- ip netns exec "$nsr2" sysctl net.ipv4.conf.tun6.forwarding=1 > /dev/null
+ 		apdma: dma-controller@11000380 {
+-			compatible = "mediatek,mt6795-uart-dma",
+-				     "mediatek,mt6577-uart-dma";
++			compatible = "mediatek,mt6795-uart-dma";
+ 			reg = <0 0x11000380 0 0x60>,
+ 			      <0 0x11000400 0 0x60>,
+ 			      <0 0x11000480 0 0x60>,
+@@ -568,7 +567,6 @@ apdma: dma-controller@11000380 {
+ 			dma-requests = <8>;
+ 			clocks = <&pericfg CLK_PERI_AP_DMA>;
+ 			clock-names = "apdma";
+-			mediatek,dma-33bits;
+ 			#dma-cells = <1>;
+ 		};
  
-+ip -net "$nsr2" link add name sit1 type sit local 192.168.10.2 remote 192.168.10.1 ttl 255
-+ip -net "$nsr2" link set sit1 up
-+ip -net "$nsr2" addr add fe01:3::2/64 dev sit1 nodad
-+
- ip -net "$nsr1" route change default via 192.168.100.2
- ip -net "$nsr2" route change default via 192.168.100.1
- 
-@@ -622,6 +630,7 @@ ip -6 -net "$ns2" route add default via dead:2::1
- 
- ip netns exec "$nsr1" nft -a insert rule inet filter forward 'meta oif tun0 accept'
- ip netns exec "$nsr1" nft -a insert rule inet filter forward 'meta oif tun6 accept'
-+ip netns exec "$nsr1" nft -a insert rule inet filter forward 'meta oif sit1 accept'
- ip netns exec "$nsr1" nft -a insert rule inet filter forward \
- 	'meta oif "veth0" tcp sport 12345 ct mark set 1 flow add @f1 counter name routed_repl accept'
- 
-@@ -648,6 +657,19 @@ if ! test_tcp_forwarding_nat "$ns1" "$ns2" 1 "IP4IP6 tunnel"; then
- 	ret=1
- fi
- 
-+ip -6 -net "$nsr1" route delete default
-+ip -6 -net "$nsr1" route add default via fe01:3::2
-+ip -6 -net "$nsr2" route delete default
-+ip -6 -net "$nsr2" route add default via fe01:3::1
-+
-+if test_tcp_forwarding "$ns1" "$ns2" 1 6 "[dead:2::99]" 12345; then
-+	echo "PASS: flow offload for ns1/ns2 SIT tunnel"
-+else
-+	echo "FAIL: flow offload for ns1/ns2 with SIT tunnel" 1>&2
-+	ip netns exec "$nsr1" nft list ruleset
-+	ret=1
-+fi
-+
- # Create vlan tagged devices for IPIP traffic.
- ip -net "$nsr1" link add link veth1 name veth1.10 type vlan id 10
- ip -net "$nsr1" link set veth1.10 up
-@@ -672,6 +694,11 @@ ip -6 -net "$nsr1" route delete default
- ip -6 -net "$nsr1" route add default via fee1:5::2
- ip netns exec "$nsr1" nft -a insert rule inet filter forward 'meta oif tun6.10 accept'
- 
-+ip -net "$nsr1" link add name sit1.10 type sit local 192.168.20.1 remote 192.168.20.2 ttl 255
-+ip -net "$nsr1" link set sit1.10 up
-+ip -net "$nsr1" addr add fe01:5::1/64 dev sit1.10 nodad
-+ip netns exec "$nsr1" nft -a insert rule inet filter forward 'meta oif sit1.10 accept'
-+
- ip -net "$nsr2" link add link veth0 name veth0.10 type vlan id 10
- ip -net "$nsr2" link set veth0.10 up
- ip -net "$nsr2" addr add 192.168.20.2/24 dev veth0.10
-@@ -689,6 +716,11 @@ ip -net "$nsr2" link set tun6.10 up
- ip -net "$nsr2" addr add 192.168.220.2/24 dev tun6.10
- ip -net "$nsr2" addr add fee1:5::2/64 dev tun6.10 nodad
- ip netns exec "$nsr2" sysctl net.ipv4.conf.tun6/10.forwarding=1 > /dev/null
-+
-+ip -net "$nsr2" link add name sit1.10 type sit local 192.168.20.2 remote 192.168.20.1 ttl 255
-+ip -net "$nsr2" link set sit1.10 up
-+ip -net "$nsr2" addr add fe01:5::2/64 dev sit1.10 nodad
-+
- ip -6 -net "$nsr2" route delete default
- ip -6 -net "$nsr2" route add default via fee1:5::1
- 
-@@ -715,6 +747,19 @@ if ! test_tcp_forwarding_nat "$ns1" "$ns2" 1 "IP4IP6 tunnel over vlan"; then
- 	ret=1
- fi
- 
-+ip -6 -net "$nsr1" route delete default
-+ip -6 -net "$nsr1" route add default via fe01:5::2
-+ip -6 -net "$nsr2" route delete default
-+ip -6 -net "$nsr2" route add default via fe01:5::1
-+
-+if test_tcp_forwarding "$ns1" "$ns2" 1 6 "[dead:2::99]" 12345; then
-+	echo "PASS: flow offload for ns1/ns2 SIT tunnel over vlan"
-+else
-+	echo "FAIL: flow offload for ns1/ns2 with SIT tunnel over vlan" 1>&2
-+	ip netns exec "$nsr1" nft list ruleset
-+	ret=1
-+fi
-+
- # Restore the previous configuration
- ip -net "$nsr1" route change default via 192.168.10.2
- ip -net "$nsr2" route change default via 192.168.10.1
-
 -- 
-2.55.0
+2.54.0
 
 
