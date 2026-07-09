@@ -4,72 +4,173 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E559C43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 13:58:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16290C44501
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 13:59:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=46gRT6EGamNoSUT5rbdn0gLPqND7Y+nkwBGzaqBABbo=; b=Y62Gtr5QphELbgRej92l00Sug+
-	ErKmgzr9aKN0pBLo3U1k2ckuKA3BG7R8S/HdwilzbBdv1NqngOiHgKayRkbAulmFRk/0cOr18o79U
-	tYwQy8RHBhWm4YAOy0Z2yVwlhtIqK+Vi0dAM/jfaZEiiNHZz59BLKEL1D/Ti8BlVxvRAdPQKKDTA3
-	4CB9GHOvVnnItrCtDLi/II7g5zbELZK3v+aXglC68K5Qvbz5WVj1H6tVmxC0wbsFVRpjEw4FU8UZv
-	kwOk9Kh0fHI31uLk62gbMrnYBu/FC2SXROAoz4LOvJM0MEI2dJw7fMzoNVEk+Al2w2BWEqGCGiqnS
-	FksZWOqg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:Subject:To:From:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=oOzwOcQbvakUVf8rVMR1KArGq4nCtlU53/DRC0r1R/g=; b=pS2YjIr1YB0rIyjxkxf60HCAKS
+	+VWNnnbv6fqGxqZmtU6HHnyGRIxzif4k7KL2EWETA4Mns/hdx4NyvN9uFyb/zbNM48Ffo7I3iegTv
+	1t/3C3LwSGRC1lZRamSJf18TQF5MwMROpfChqinCsvnETMiyx6wMHOv2FcYCLcz3igY5GnfWLge5p
+	MRELZvUsPxwgah2AZIB6uUYCMpQsFfOdRxpiD8FClzDFdfn/fYMUclMY61RkYzesWBKoiElsHZDhf
+	sFwgTlS/ScimdtP/HYKTi6yKfD3vw+GtSINpbgJ0Sptx0B+nqoZuqlgTm+6wN3QsNadq2V37SwQ7T
+	8+xf2hqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whpGq-00000002etM-2VC5;
-	Thu, 09 Jul 2026 13:58:32 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1whpHf-00000002f5p-3t85;
+	Thu, 09 Jul 2026 13:59:23 +0000
+Received: from mail-koreacentralazon11013027.outbound.protection.outlook.com ([40.107.44.27] helo=SEYPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whpGn-00000002esK-1SS4;
-	Thu, 09 Jul 2026 13:58:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783605505;
-	bh=DjWIojAzSpqrury6RVuc3AKXDQ21nXDPRrnz5nALTGA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Uk9k61TiU5kLuxeWd3yKSlAqlof2xEMCyZ91YUH3EfsxlKkfbd0J9XbYPF2Ozvnx2
-	 znsCEGFc0wsenIpMQNl9u8fUGgAEXMNXikFccXqUNWwyipJ6b4k7hwQdB+28KHNYgV
-	 DhGM+/SdJbKXOTVW8bKfuCRp6qIndc4Bicdywmrx8J4xx3lLAWIOOTO1Uui4dEFIlM
-	 njnJBYlIgqMZkMzTUVIyiAa4RtLla1XMF/0vUPccM7sSh2aOyGfsAHSchAmSGL9UJx
-	 GMq1i7dDU2zbAh61mKNXgcrr/LfUmlxvBwforDJ3gRoQAAgG63SBV3U7NlObDn0Baf
-	 +WVSbE+qB6gzg==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 08BAF17E071A;
-	Thu, 09 Jul 2026 15:58:23 +0200 (CEST)
-Message-ID: <fba4f7d6-d480-4f1a-8d80-3dd0a797b61e@collabora.com>
-Date: Thu, 9 Jul 2026 15:58:23 +0200
+	id 1whpHc-00000002f3r-1rhg;
+	Thu, 09 Jul 2026 13:59:22 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ifb/3cTpOKpweRJ2AASLT/5/Nw2HPjtcxkkb5aJXdcW00hY0fGBjKcxJZDhEoEo8Ehe4qQtzwlMBZH8gF5Hj/BI2hXNr+7oHY5pAuWh8t/QpRRAoVglhEaSwgJJQ7uWht8iXK9SXnWkuPQgIT9bLcAjgcooGlf9FTKiMhQ8h9q0FDxY2b5hOINdXVFnIZRkPeEcsu0O1yUWyCvjtgE3WB6WZ2dzCPKd5O6U5C9ph1p43G8Kt24kyIFkng+C4+TwP5IZutW3xKUt/QgHFVhcC3qBOeXdZ1sc1kw/ERSHv+nwzRBxNSHsmXjVxiwb4ZeRspmwjks2Ur0XCLzEQCtZtDQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=oOzwOcQbvakUVf8rVMR1KArGq4nCtlU53/DRC0r1R/g=;
+ b=MQu051oXLJbGXwwE/tzxe2j/puHA2bpNwr7+23zcCic8F13NnPFYSlCdfqheeqVHDj/qCUmi++b8FOe3fd60lorBHjf936ZaWdtW99LM7Vkw8FsrduaYfW9OryDNcTNQw+2IxiCfHSUbO1+f723qjYjwYc2jmEgCsKGTE8OUqYYC1i9tg6+rPPCrOiYzBe964+nkZwGct70cr66b8Aq0onvE3+tuAF2dvivSHP5dU63solZVh/l87z65tGhkJQxahB1fqFAUqvB1VmLfNTzNdXytovv+jO0S0G9rZaeOzH7WdJmQof7ATV2eNIIWqukvg4tInRzAa4E2N0tO4nncRA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=oOzwOcQbvakUVf8rVMR1KArGq4nCtlU53/DRC0r1R/g=;
+ b=ILXVx4+hd517/hcQPFiqr4A/Qx+2GjH2ZibTDLuTh5GCh6kA4Ri8oAAnZAbVdXDV/NoUm6Lx/MxOamU6dxS8E1r8iMiAmcno9k0NaLuPIF2VCkIo9bkom08GDo3shVWcljZea5/MM4rgrNyaNIuWMLCYhT81N8lkvYC0A441YyEkbxShJHK5PFO9IK7GR71erQJ5pszLjClOvuFCvXIOLSI5zj5Hh3oB9lN44akIi0/g/c+3f8tp4oWmdJZ9WC8EY2SIOY2X/TSjDv3xHb/r7Sg3lwLHYRWdmp+GGJ6tij7tLsBXdR0ZNuJPVIYO5qMG2TaifWbrcld6lyKzshVCQA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Received: from SEZPR06MB5832.apcprd06.prod.outlook.com (2603:1096:101:c8::12)
+ by PUZPR06MB5673.apcprd06.prod.outlook.com (2603:1096:301:fb::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.15; Thu, 9 Jul
+ 2026 13:59:03 +0000
+Received: from SEZPR06MB5832.apcprd06.prod.outlook.com
+ ([fe80::f98:5e32:4ccb:d07b]) by SEZPR06MB5832.apcprd06.prod.outlook.com
+ ([fe80::f98:5e32:4ccb:d07b%6]) with mapi id 15.21.0181.014; Thu, 9 Jul 2026
+ 13:59:02 +0000
+From: Pan Chuang <panchuang@vivo.com>
+To: Frank Li <Frank.Li@nxp.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Keguang Zhang <keguang.zhang@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Daniel Mack <daniel@zonque.org>,
+	Haojian Zhuang <haojian.zhuang@gmail.com>,
+	Robert Jarzmik <robert.jarzmik@free.fr>,
+	Paul Walmsley <pjw@kernel.org>,
+	Samuel Holland <samuel.holland@sifive.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	=?UTF-8?q?Am=C3=A9lie=20Delaunay?= <amelie.delaunay@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Laxman Dewangan <ldewangan@nvidia.com>,
+	Jon Hunter <jonathanh@nvidia.com>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	Icenowy Zheng <zhengxingda@iscas.ac.cn>,
+	Kees Cook <kees@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Pan Chuang <panchuang@vivo.com>,
+	Miaoqian Lin <linmq006@gmail.com>,
+	Jyothi Kumar Seerapu <quic_jseerapu@quicinc.com>,
+	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
+	Biju Das <biju.das.jz@bp.renesas.com>,
+	Cosmin Tanislav <cosmin-gabriel.tanislav.xa@renesas.com>,
+	John Madieu <john.madieu.xa@bp.renesas.com>,
+	Thomas Andreatta <thomasandreatta2000@gmail.com>,
+	imx@lists.linux.dev (open list:FREESCALE eDMA DRIVER),
+	dmaengine@vger.kernel.org (open list:FREESCALE eDMA DRIVER),
+	linux-kernel@vger.kernel.org (open list),
+	linux-mips@vger.kernel.org (open list:MIPS/LOONGSON1 ARCHITECTURE),
+	linux-arm-kernel@lists.infradead.org (moderated list:MEDIATEK DMA DRIVER),
+	linux-mediatek@lists.infradead.org (moderated list:MEDIATEK DMA DRIVER),
+	linux-actions@lists.infradead.org (moderated list:ARM/ACTIONS SEMI ARCHITECTURE),
+	linux-arm-msm@vger.kernel.org (open list:ARM/QUALCOMM MAILING LIST),
+	linux-riscv@lists.infradead.org (open list:SIFIVE DRIVERS),
+	linux-renesas-soc@vger.kernel.org (open list:ARM/RISC-V/RENESAS ARCHITECTURE),
+	linux-stm32@st-md-mailman.stormreply.com (moderated list:STM32 DMA DRIVERS),
+	linux-sunxi@lists.linux.dev (open list:ARM/Allwinner sunXi SoC support),
+	linux-tegra@vger.kernel.org (open list:TEGRA ARCHITECTURE SUPPORT)
+Subject: [PATCH 00/26] dmaengine: Remove redundant error messages on IRQ request failure
+Date: Thu,  9 Jul 2026 21:58:04 +0800
+Message-Id: <20260709135846.97972-1-panchuang@vivo.com>
+X-Mailer: git-send-email 2.34.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: TYCP301CA0073.JPNP301.PROD.OUTLOOK.COM
+ (2603:1096:405:7d::11) To SEZPR06MB5832.apcprd06.prod.outlook.com
+ (2603:1096:101:c8::12)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/6] dt-bindings: soc: mediatek: mutex: Allow
- #trigger-source-cells
-To: krzk+dt@kernel.org
-Cc: p.zabel@pengutronix.de, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
- robh@kernel.org, conor+dt@kernel.org, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, matthias.bgg@gmail.com, andi.shyti@kernel.org,
- djakov@kernel.org, broonie@kernel.org, jitao.shi@mediatek.com,
- ck.hu@mediatek.com, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, justin.yeh@mediatek.com,
- jason-jh.lin@mediatek.com, kernel@collabora.com, chunkuang.hu@kernel.org
-References: <20260701122043.19612-1-angelogioacchino.delregno@collabora.com>
- <20260701122043.19612-3-angelogioacchino.delregno@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260701122043.19612-3-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SEZPR06MB5832:EE_|PUZPR06MB5673:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7fcd5df5-2006-45b2-e3ad-08deddc23b56
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|52116014|7416014|376014|23010399003|18002099003|56012099006|11063799006|921020|38350700014|6133799003|41080700001;
+X-Microsoft-Antispam-Message-Info: ilQVOiP7mW7zZkAoqwuF2SKeDCbTeIa3bwZhFZd06A4lanF5GgK8UN7cbORqHeiP14zEYw9/NW76TdHeBMOc7KbLxxmmfmATu2VDParzQXIXMzMXur2IUUwnLzCYVKUEvRfD/0CJ+zFFpTYJE93U2d0FeTh3KQcuNKf5BxfqlbCvfYqmUXz+AOeyn38JXFZC7PrkLKB+egLQj91PO9OMUnNY1Gzj84m/yGLU0/9FnFlMgXlkbMAzXAm+hM4e1XgeCab7CGd53dKMjKnmmHGNw8UrYM9FO6aKXIKY2q29ho7kb0aYVtUIcsGugR3fUF4wUwkihncpz3QPv4cR0vL3MkfuFs1mLbYH/hsCRAT9AMA4CZ3L5LVe2TsGsa766jdCq0X4q7VSAGmlZPrvenwnaxlvsDWjSVVGjpdrw45K0poDJlTIStOrNnErmAKpl73YR2R/ZkkPRg412Vv39G/A6gLqnVQEBWnLfphRF9N2Wgez0+VWyYHbSEtjZ8mbrs0/3fJR4wlJLoBbnMwdwh28P9JM7hti2S5IqKdD/o9HKJ53TAd5A13GB8VcRqsM17IjSZj6Or1SRgPZ3LirVQtXDAZiNER003nTXPbqinsi2zZ/aEtc2HB2jU6Lt8ZuBPlPwcX0pTaldkSZ5nI0VutpjIhgiBm7vEFc313IFJUe9dE9nEQEW93myFpY1xEn2dlIEcpRD2bgx8itZiRE5VsGO/q6xNgKETBWpeROfVaSgrKG0tRKubGd4u+1xtrpimYpnDDnTfFE1+wWHHDPvJIevA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5832.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(52116014)(7416014)(376014)(23010399003)(18002099003)(56012099006)(11063799006)(921020)(38350700014)(6133799003)(41080700001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?aw2kElSYYd+5jSr9MQ4IQOlIvGiXaQs2AlEPZnyMee/6bxyQ6Bxm0qGzHWk3?=
+ =?us-ascii?Q?w5/jh3NdyHInHO8TPJQTAbLOCSL3HjSiOdyIEjVTeTeCLPfetBjfZxwXB2az?=
+ =?us-ascii?Q?ObBet0x/i2YJyjydcB7Lcj5MYIwvSQgWIcL9lGY0aZrPaa4VK3fqDXkPUBzA?=
+ =?us-ascii?Q?1TRmfRAho+lgCJ0er9cQtAUf52wh4r0pfGBQg/NqNX4gE+LYXAaSe91zw0FQ?=
+ =?us-ascii?Q?+RYHXs8LW4X5CjYdWaVflhBul/xFvxNQugSkXk2wa2hXRhAbwJCfShpZ/Zjr?=
+ =?us-ascii?Q?rDpF5qXavGUwpTep1yHmFWIaHpDQsdgRZEC2yIkPGcN6qmVKDtUni64TgCIj?=
+ =?us-ascii?Q?AeCqTZcyZHPkHcaJB9lAHVdArL7KdpZkv4SIQYaxiBiK9pMpEeKulkQNvRW9?=
+ =?us-ascii?Q?Cf9PZxhJYfZeIcX2aFc+bXADKI16KoQX3B+n9ORZVYJii4HqpfJULSixMsgi?=
+ =?us-ascii?Q?AO3BW3CiEMvis1l1pPsaRz+pSYzSIYVpbmHZxbXmO01g9WXhfI1WjPkzUq5X?=
+ =?us-ascii?Q?zhkeEQ05p6spp5r9SQI14dJdIv6AF0Dv/XpEU0+I8uukKBqzJDkKvTX7hR3o?=
+ =?us-ascii?Q?1HaHEXAw9iUN22fkTIH8u0O0iivPghm9nquCr4x0nrAIGsfnChOzwqSPaJil?=
+ =?us-ascii?Q?4dl2nIqwZfngezJeG3HKa9aBCV9KAFsISu5F/MvszAzfXd45p2jeCCThUPCe?=
+ =?us-ascii?Q?vl0qJdzDcbG53wCFBi+FzOxU/stt7z607rpArCMtJh/M8JC5IrZVqZ8genlZ?=
+ =?us-ascii?Q?pJyQNe6oCbONHs/4jZGOm22KDRpBTFdSP6RXyRS/5dc1kpto8zkd01asDDBu?=
+ =?us-ascii?Q?8UsfmFaYKpYdYm6x+F2c5I0kwKNJqE7loUs1pwhBZwrSqsZM8fQU2ahKmDj8?=
+ =?us-ascii?Q?V3YapXNNgq3s138UX5/yb/70WF2dNbt+CQ7AJLy1Qxc0oozjGm1E3UaDPFt/?=
+ =?us-ascii?Q?jUvJRG0z2i/ZTJs8UbyDVAXePoneMjeDD8W4XN1j4anp407g5aAAIIXOpET/?=
+ =?us-ascii?Q?2cis2Hfg254tMIZSszLDXAASdQbwdm+YnhAc7iZcZd9VRm6DTLzbRM5JgVZm?=
+ =?us-ascii?Q?tjkZy3ovddq+qlFW6zuSGGRC8DveVVAKZOtDYXdE1pK9ScJBnR5f9RVZkP69?=
+ =?us-ascii?Q?atkAKNvBNwBxzudzn36PCG03zHeTMIidr5VSgMZNb6anc7K0GaH/KNXfcCNi?=
+ =?us-ascii?Q?bmT7y68bOB7jC+NFpSTaEP5//vHNQGEVId0WxcA67GAqMbIRDyjLFbU8Ms03?=
+ =?us-ascii?Q?kXLs7JikTd41baBZcbO3O5+aHOUJfIX3LwPF9wgkjptzyUn1/YumhVfSMfDY?=
+ =?us-ascii?Q?0ftSyMJ/BKRknCHsZqb/o0HnzFSAD8y5BKHbzlUeDNqo1r5xpyWjCF3cTPAO?=
+ =?us-ascii?Q?3pkF1ShrUdkiXjHpYLS4CdtxqrVud8aOrsdkPwHrEFJDDAoPgqXvJWm8yqEx?=
+ =?us-ascii?Q?+vMQALUiSGDODJGOAWEFmBS32LCB1XTTPxdCUAC3QVqRax68soeDXI4nCb+o?=
+ =?us-ascii?Q?8KU1f39RquunVbZ7FWcbuPLwFXpBJmMIXw3mgnd/G6bxmocb7B3l+XXvBUUU?=
+ =?us-ascii?Q?PToBGu6oZM3YxxEjZKJvb3pn0xBA20vAJ+6h3H6xWksylUn2pEl9zkdm6oBQ?=
+ =?us-ascii?Q?wcWSbvhF2ceC7gma/xigQuZWMfaZGYiDwOLOMY/VOaA3Nnerqhfc3UIcaCZ2?=
+ =?us-ascii?Q?JpAZSlwbtgnZM26wwPGCD4LcCVcikKOaZn/dSk7bcvytVUUXz1G2xVVMgstk?=
+ =?us-ascii?Q?GgXAqzLAQA=3D=3D?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7fcd5df5-2006-45b2-e3ad-08deddc23b56
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5832.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jul 2026 13:59:02.5293
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: j9BqxFm1rEhzm30o8qIar/kq5DJdfww5Oa5Osi004Zw8gdJxEtscjggn3n0/0DvfT5S2bUBf0/yii4ALFUu00Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PUZPR06MB5673
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_065829_620016_F27D169F 
-X-CRM114-Status: GOOD (  13.89  )
+X-CRM114-CacheID: sfid-20260709_065920_619087_58835A50 
+X-CRM114-Status: UNSURE (   8.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,48 +185,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/1/26 14:20, AngeloGioacchino Del Regno wrote:
-> This hardware controls trigger sources, and there's even a generic
-> binding just for that: allow #trigger-source-cells in MuteX, so
-> that this is allowed to provide triggers to external HW.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Commit 55b48e23f5c4b6f5ca9b7ab09599b17dcf501c10 ("genirq/devres: Add
+error handling in devm_request_*_irq()") added automatic error logging
+to devm_request_threaded_irq() and devm_request_any_context_irq() via
+the new devm_request_result() helper. The helper prints device name,
+IRQ number, handler functions, and error code on failure.
 
-Hey Krzysztof, I noticed you gave your A-b/R-b on the other two bindings commits
-but you skipped this.
+Since devm_request_irq() is a static inline wrapper around
+devm_request_threaded_irq(), it also benefits from this automatic
+logging.
 
-Did you have any doubts on this one that I may clarify for you, or was it just
-that this one slipped through while reviewing?
+This series removes the now-redundant dev_err() and dev_err_probe() calls
+in dmaengine drivers that follow these devm_request_*_irq() functions,
+as the core now provides more detailed diagnostic information on failure.
 
-Cheers,
-Angelo
+Pan Chuang (26):
+  dmaengine: fsl-edma-main: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: fsl-qdma: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: loongson-loongson1-apb-dma: Remove redundant
+    dev_err()/dev_err_probe()
+  dmaengine: mediatek-mtk-cqdma: Remove redundant
+    dev_err()/dev_err_probe()
+  dmaengine: mediatek-mtk-hsdma: Remove redundant
+    dev_err()/dev_err_probe()
+  dmaengine: mmp_pdma: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: moxart-dma: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: owl-dma: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: pxa_dma: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: qcom-gpi: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: sf-pdma-sf-pdma: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: sh-rcar-dmac: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: sh-rz-dmac: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: sh-shdmac: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: sh-usb-dmac: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: sprd-dma: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: st_fdma: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: stm32-stm32-dma: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: stm32-stm32-dma3: Remove redundant
+    dev_err()/dev_err_probe()
+  dmaengine: stm32-stm32-mdma: Remove redundant
+    dev_err()/dev_err_probe()
+  dmaengine: sun4i-dma: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: sun6i-dma: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: tegra20-apb-dma: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: ti-edma: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: uniphier-xdmac: Remove redundant dev_err()/dev_err_probe()
+  dmaengine: xgene-dma: Remove redundant dev_err()/dev_err_probe()
 
-> ---
->   .../devicetree/bindings/soc/mediatek/mediatek,mutex.yaml      | 4 ++++
->   1 file changed, 4 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-> index 1ba086ad749d..429ea149068e 100644
-> --- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-> +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
-> @@ -57,6 +57,9 @@ properties:
->       items:
->         - description: MUTEX Clock
->   
-> +  '#trigger-source-cells':
-> +    const: 1
-> +
->     mediatek,gce-events:
->       description:
->         The event id which is mapping to the specific hardware event signal
-> @@ -119,6 +122,7 @@ examples:
->               interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_LOW>;
->               power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
->               clocks = <&mmsys CLK_MM_MUTEX_32K>;
-> +            #trigger-source-cells = <1>;
->               mediatek,gce-events = <CMDQ_EVENT_MUTEX0_STREAM_EOF>,
->                                     <CMDQ_EVENT_MUTEX1_STREAM_EOF>;
->           };
+ drivers/dma/fsl-edma-main.c              | 23 +++++++----------------
+ drivers/dma/fsl-qdma.c                   |  4 +---
+ drivers/dma/loongson/loongson1-apb-dma.c |  4 +---
+ drivers/dma/mediatek/mtk-cqdma.c         |  5 +----
+ drivers/dma/mediatek/mtk-hsdma.c         |  5 +----
+ drivers/dma/mmp_pdma.c                   |  4 +---
+ drivers/dma/moxart-dma.c                 |  4 +---
+ drivers/dma/owl-dma.c                    |  4 +---
+ drivers/dma/pxa_dma.c                    |  6 +-----
+ drivers/dma/qcom/gpi.c                   |  5 +----
+ drivers/dma/sf-pdma/sf-pdma.c            |  8 ++------
+ drivers/dma/sh/rcar-dmac.c               |  5 +----
+ drivers/dma/sh/rz-dmac.c                 |  8 +-------
+ drivers/dma/sh/shdmac.c                  |  6 +-----
+ drivers/dma/sh/usb-dmac.c                |  5 +----
+ drivers/dma/sprd-dma.c                   |  4 +---
+ drivers/dma/st_fdma.c                    |  4 +---
+ drivers/dma/stm32/stm32-dma.c            |  6 +-----
+ drivers/dma/stm32/stm32-dma3.c           |  5 +----
+ drivers/dma/stm32/stm32-mdma.c           |  4 +---
+ drivers/dma/sun4i-dma.c                  |  2 +-
+ drivers/dma/sun6i-dma.c                  |  4 +---
+ drivers/dma/tegra20-apb-dma.c            |  6 +-----
+ drivers/dma/ti/edma.c                    |  8 ++------
+ drivers/dma/uniphier-xdmac.c             |  4 +---
+ drivers/dma/xgene-dma.c                  |  5 +----
+ 26 files changed, 34 insertions(+), 114 deletions(-)
 
+-- 
+2.34.1
 
 
