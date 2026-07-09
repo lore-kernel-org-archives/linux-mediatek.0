@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2E86C43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 04:59:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F260C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 04:59:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ad0P2VMz9bf8HA6F8SGWlOPHl2k6oftAxCYlJLG1Vz4=; b=Rf8pwjpcIGvlqigTVhokEDKqiL
-	AY3vmQUY0P+AdB/nCeG1sJYgDu2OtqSXhUy1QDAJBpyq5QAew4A//n3kRAf2mwsIII3uX4ySim+l9
-	8DoCTCuA7k0w/4rvacZ2wTKTqwVim8O+28/TE3DqLoHGHj7zHboHPWovwNmACB4UFyNnxTJ8EJSIT
-	y9IvrhSc065WM0iIUYC+fdRMMQJK1vUNBZjIi4Iu/xdFAZ1InSwt+wNluO0Se3ume9qnoHV47BTgR
-	igsCdL5V8spzlgtF4qYfxYg9EWYBVGVEJvj4e4nrfuM53pgmsZGknOJCt3ExnLhA7ZL33rsWTDVCZ
-	fdJtMQuQ==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=i+E/hLMGoCFm2Bo6D9s4vrTO1A3cUntDy1XLWjBr550=; b=jve2+6t+LrjtQk1bGC3Zg+9dW4
+	cmyUkmRiWSH/ruvIH+7hrmFpkalU3NzVm6pQ3pqP038+ighmgE9HrYu9i5fgtb32HKKCFL+HdriBE
+	f3UYFeOKuC5CvTTvfMyiFyDqCowTf6nDD7y7w9u5IClNlffOh5frygQUZXNs/VLYRzscZHxl5PyzB
+	ct1FWEw8Cs2XgL3ydrU17okojm6ERnRso6rjjZB6p6trczvJwbPVyLAfVl/2+oGSw9oefBoEvJBRe
+	/8D9dlLn/jE5vFJovYpdd1Oh9mIW7fPRVCBV2GqM3/RGrfqbIQpqQBjBQFiAP6EgLRHazJ6E8IET5
+	n9NkvmlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whgrQ-000000011iU-1x6H;
-	Thu, 09 Jul 2026 04:59:44 +0000
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+	id 1whgrZ-000000011ll-2CZq;
+	Thu, 09 Jul 2026 04:59:53 +0000
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whgrN-000000011hV-435h
+	id 1whgrX-000000011ko-1C6Y
 	for linux-mediatek@lists.infradead.org;
-	Thu, 09 Jul 2026 04:59:43 +0000
-Received: by mail-pj1-x1029.google.com with SMTP id 98e67ed59e1d1-384c94c9414so1275630a91.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 21:59:41 -0700 (PDT)
+	Thu, 09 Jul 2026 04:59:52 +0000
+Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-388b404ea89so540909a91.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 21:59:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783573181; x=1784177981; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=ad0P2VMz9bf8HA6F8SGWlOPHl2k6oftAxCYlJLG1Vz4=;
-        b=eoZXdCuCex+f1b8o4Ywh74nx3zACg5nHHK/2Pjsj/YGmFU0YWYlNDVrWbfo6l4qkBV
-         kdB+C7tkJaUD8XdAsxIszYW0WAlMxQB56n5uYQFXA6LClDjANX4YHSn1jjr+hpUCFCeY
-         PLvcmMLJLnsm/uS7y403CmlniULsQPm5WjFcoRyVEaQzncTVFC8Oxwje1WRR5zfEHTZr
-         hwEktMb/U/7xMC7p4OoSmVizKsN73/ctN/SgAIPOCmu9BJDtsnRGLSczZzUD9ADKFsJO
-         MSYIf8I1LrlnKtMu0cSLvpfoXAXUpCQbmidgAiFMVZ2XfDr0NgtvrhHO0lrYYcxkNMfu
-         EGKg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783573181; x=1784177981;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20251104; t=1783573191; x=1784177991; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=ad0P2VMz9bf8HA6F8SGWlOPHl2k6oftAxCYlJLG1Vz4=;
-        b=aCg9h/gQBRSmskyGE3Fr9FtlzwDVecfrC0JS/CqXgsspkLa47vyvVDdlLV+Kx6fMst
-         mmvl07gJU8ANjKcrzKLic9ly6+uMZjfmrpuT63hNRewNoPXWGh/bJL2mwLQ/+WDn7teu
-         /sHkvwjqvl21vtzOTkNxRIl79FTXoZ3H3gJ0uM1eOkhYN7V7cBt5KVFcRpYPVyTZ9Tkw
-         l9acU58fwCtVuDGI/boLtkrBk56hDxoFlYq5Wtzun0Ea5uBNpee/yaaQpHpfDmFqnIBc
-         inJj7Rn6SE92J1N2dyuywER9NlO4pNAuiLz3/D4/GIhH4T7Z49tpceooV6hx36uxeLIw
-         IXOA==
-X-Forwarded-Encrypted: i=1; AHgh+Rryrvd10N+24ccYVfWMvVXuzol5JfI73dA/SZXHV2qtAUFJNhvys8R57AZtjLqMQ7qgqAMop+XkpdUUGuCBWg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxgRVkC+26F4iH/yS4/2srRkFfHdBF2OWUXbbThquCycAv1VDxl
-	y7sQWYmIO0z70h2jOXcOLJCVlxIegDznGud3MFnXZUYRENcwA/7wZIvQ
-X-Gm-Gg: AfdE7ckDzn7KBwj16ubnbenmADHEMgS60BwzRBBoscSEmadNIB3Bdct5H4wGnNopfqg
-	IScOWQ9LiO/6rB9jJXBVZFSCl6vr9H/N+7/MU7Wx8IYbIiz/Uw0UrRIUDecm72oghtPbFwCG9LE
-	w9EIfJRq3V3zjsZlcvmN2h1hPypIMOPKPLw90WvaZv9/xji2eeFyOEOsAQcVDQMXzbG7Wg6D1fI
-	eb31d/H3SPuNnWzglek7lIavCAN+EzM/eXEdpNHLRZPTPWT77pF4Y6IsocxbW1SqZLK5k9JCAGS
-	Gt/7h8nA27Ap4dzpuz4YTghofoQnePgghS/GAkGzw6gMljBS3Y1lDleqIX236hXqFJQ+a1G2o9w
-	RXq63QA563bvlx2Q6Ll0dSU6nkQVmMfjIEYAngeR7eS+3E/+/uML1Opy4mQQoQR6hIUzhFYVPKi
-	VDrPSXssS5lB+kxn+04gY7UlwmLz01wLES9iCHiQyma3PVzlzFXwU5I2LQWg==
-X-Received: by 2002:a17:90b:258f:b0:380:15fa:c5b2 with SMTP id 98e67ed59e1d1-3894043e537mr5070234a91.18.1783573180995;
-        Wed, 08 Jul 2026 21:59:40 -0700 (PDT)
+        bh=i+E/hLMGoCFm2Bo6D9s4vrTO1A3cUntDy1XLWjBr550=;
+        b=Z6JaaD767IYjEELwIOalaCzx7OjUR+rb0kme2w/VgOYz9cC/C/a05cUPdrx3E9ApV5
+         zIk3W//EuVJN0qry51G62ZfszRrhSTJF5dx8FWGd0l7X/wRxMdHSPu8mvy0/lvp571tv
+         y6Ji0oRysRsXJI+BrPY70ouOUlG2LhAixJYH6Hj1HR1H9qNwicD3lQ9HCmjjenpCmhe8
+         3Zmt2WsMSakLlNpzxFKzxC9b/KWKDnIMHAngMr9gC0JGdsbPzaeOZA/pgATKh2biQfhV
+         oEADWMrtHj6PstksrSxD7pVO4RuDtfRK2xABX2WLmG3yBvVuC9foF3s/QdUysUTXRpNm
+         W1CA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783573191; x=1784177991;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=i+E/hLMGoCFm2Bo6D9s4vrTO1A3cUntDy1XLWjBr550=;
+        b=sYLdGySVFg5W4NkHWQbpr66Pp6Bqz7tbH9nK3pCtDNImllKyKj/uK7mCPpSipzenEk
+         nHm+SJOp89WDfalgOo9PujXvSR1Qu0GRrVbywNAWTl/jZHcxqlIPrJwsLzzKoLzd6+bV
+         De4NZGnUjVjPn4Ykf1RtF62U5FYEtty18MbY/KcGLPANNC9PTH00pjL06Su9mgeDxw/B
+         D6rUzzDQHnNE1CHkq4oBdn05q2t9PWPmzBVEdSHIPwCLXfk9MXd56r9poQyMK1F03/25
+         NnFcIRtwdSUI8oe6dqLxP2yX8IW1gevxCEgeqd6W0wpU534f4KIo6SzNDSrNWFrebC+t
+         ZMjQ==
+X-Forwarded-Encrypted: i=1; AHgh+RpBUYXVkOBQcjM2e5zdHAqCwZGU+gcZ1hxETVM/LYjBhIqv8k75pt9YZCNIDdCS7GFwkHzWKFhNRevhyHhZYA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzp39Dtq5qTCUrZ00kLtLESNCnFrL3GD5F/irn9V11goITDXjqE
+	O24NUCbob1ZxvCsWLGVwUR+QC8AH7bLZw0QbrdUfEE40kt+JUrE60uiE
+X-Gm-Gg: AfdE7ckjWI8DuE9qZka5r+LrhyyF+1+tRpknqq9tdY4htnylYlx5WYGDfByzg2m0Vr6
+	XQrxQ6899kQkCEPdHrK/R7tUiDowPRpo5Efm/7ws/nrBvEsk6r9Vci2kLVuuhLbwKPCACp5AQr8
+	0x0XXZ72YKWRf1Bbbo2H2c1L/ITIuVPHOUCgm01Ii3m8G3cBZ1a5LDiCVhDco+TTEcNwI6JKLrK
+	63nhnHeqdGj+DVonhzZIhryc9xOPl/eReN5gFgqKRa5dQxyebywntgyTZGSazTpdI4Cjn06MAGp
+	dLzyPfzTCuYHsXi3rBEPHgPSipycpNqty+YbJzoy8d0LgjpjAo6xhtf1nNubEo2nZ9pqtEx9ODd
+	eaG45TY6ZbMbhrO3lStEaZ/jonHOtiI64zNjklsxk5G6Syk36TH6aULixmWkWQPTTT9MBExrBLi
+	o+Gm5Dzv2qQyk/ibPvXI1SQBOOSi6FG3Yo9S8euEA/+rUUgGk=
+X-Received: by 2002:a17:90b:274d:b0:385:39ac:fe4b with SMTP id 98e67ed59e1d1-38b75528c91mr1355508a91.17.1783573190664;
+        Wed, 08 Jul 2026 21:59:50 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-38a5506b47esm490481a91.3.2026.07.08.21.59.33
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-38a5506b47esm490481a91.3.2026.07.08.21.59.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jul 2026 21:59:40 -0700 (PDT)
+        Wed, 08 Jul 2026 21:59:50 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>,
 	Takashi Iwai <tiwai@suse.com>,
@@ -102,15 +103,17 @@ Cc: Support Opensource <support.opensource@diasemi.com>,
 	linux-arm-msm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH v3 00/27] ASoC: codecs: Use guard() for mutex & spin locks - part 2
-Date: Thu,  9 Jul 2026 11:58:35 +0700
-Message-ID: <20260709045902.498848-1-phucduc.bui@gmail.com>
+Subject: [PATCH v3 01/27] ASoC: codecs: da7213: Use guard() for mutex locks
+Date: Thu,  9 Jul 2026 11:58:36 +0700
+Message-ID: <20260709045902.498848-2-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260709045902.498848-1-phucduc.bui@gmail.com>
+References: <20260709045902.498848-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_215942_013099_C4431FB1 
-X-CRM114-Status: GOOD (  11.43  )
+X-CRM114-CacheID: sfid-20260708_215951_325518_7F0B6268 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,104 +130,116 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: bui duc phuc <phucduc.bui@gmail.com>
 
-Hi all,
+Clean up the code using guard() for mutex locks.
+Merely code refactoring, and no behavior change.
 
-This series converts mutex and spinlock handling in ASoC codec drivers
-to use the guard() and scoped_guard() helpers.
+Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
+---
+ sound/soc/codecs/da7213.c | 37 ++++++++++++-------------------------
+ 1 file changed, 12 insertions(+), 25 deletions(-)
 
-This is part 2 of a larger 78-patch conversion series. Part 1 (24
-patches) has already been posted, while this series contains the next
-27 patches to keep the review manageable.
-
-https://lore.kernel.org/all/20260617103235.449609-1-phucduc.bui@gmail.com/
-
-The changes are purely refactoring and have no functional impact.
-Compile-tested only.
-
-Changes in v3:
- - Rebased onto the latest broonie/for-next.
-
-Changes in v2: 
- - Add Reviewed-by tags from Charles and Herve.
- - Address Herve's review comments.
-
-Link v2: 
-https://lore.kernel.org/all/20260708141734.578926-1-phucduc.bui@gmail.com/
-Link v1 : 
-https://lore.kernel.org/all/20260630063449.503996-1-phucduc.bui@gmail.com/
-
-
-Best regards,
-Phuc
-
-
-bui duc phuc (27):
-  ASoC: codecs: da7213: Use guard() for mutex locks
-  ASoC: codecs: da7219: Use guard() for mutex locks
-  ASoC: codecs: es8316: Use guard() for mutex locks
-  ASoC: codecs: es8326: Use guard() for mutex locks
-  ASoC: codecs: es9356: Use guard() for mutex locks
-  ASoC: codecs: fs210x: Use guard() for mutex locks
-  ASoC: codecs: hdac_hdmi: Use guard() for mutex locks
-  ASoC: codecs: hdmi-codec: Use guard() for mutex locks
-  ASoC: codecs: idt821034: Use guard() for mutex locks
-  ASoC: codecs: lpass-macro: Use guard() for mutex locks
-  ASoC: codecs: madera: Use guard() for mutex locks
-  ASoC: codecs: max98095: Use guard() for mutex locks
-  ASoC: codecs: mt6359-accdet: Use guard() for mutex locks
-  ASoC: codecs: pcm512x: Use guard() for mutex locks
-  ASoC: codecs: pcm6240: Use guard() for mutex locks
-  ASoC: codecs: peb2466: Use guard() for mutex locks
-  ASoC: codecs: rt5514-spi: Use guard() for mutex locks
-  ASoC: codecs: rt5645: Use guard() for mutex locks
-  ASoC: codecs: rt5665: Use guard() for mutex locks
-  ASoC: codecs: rt5668: Use guard() for mutex locks
-  ASoC: codecs: rt5677: Use guard() for mutex locks
-  ASoC: codecs: rt5682: Use guard() for mutex locks
-  ASoC: codecs: rt700: Use guard() for mutex locks
-  ASoC: codecs: rt711: Use guard() for mutex locks
-  ASoC: codecs: rt712: Use guard() for mutex locks
-  ASoC: codecs: rt721: Use guard() for mutex locks
-  ASoC: codecs: rt722: Use guard() for mutex locks
-
- sound/soc/codecs/da7213.c             |  37 ++----
- sound/soc/codecs/da7219.c             |  62 +++-------
- sound/soc/codecs/es8316.c             |  31 +++--
- sound/soc/codecs/es8326.c             |  30 +++--
- sound/soc/codecs/es9356.c             |  29 ++---
- sound/soc/codecs/fs210x.c             |  89 +++++---------
- sound/soc/codecs/hdac_hdmi.c          | 117 +++++++++----------
- sound/soc/codecs/hdmi-codec.c         |  15 +--
- sound/soc/codecs/idt821034.c          | 144 +++++++++--------------
- sound/soc/codecs/lpass-macro-common.c |  12 +-
- sound/soc/codecs/madera.c             |  39 +++----
- sound/soc/codecs/max98095.c           |  35 +++---
- sound/soc/codecs/mt6359-accdet.c      |  13 +--
- sound/soc/codecs/pcm512x.c            |  19 +--
- sound/soc/codecs/pcm6240.c            |  25 ++--
- sound/soc/codecs/peb2466.c            |  16 +--
- sound/soc/codecs/rt5514-spi.c         |  21 ++--
- sound/soc/codecs/rt5645.c             | 160 +++++++++++++-------------
- sound/soc/codecs/rt5665.c             |  15 ++-
- sound/soc/codecs/rt5668.c             |  10 +-
- sound/soc/codecs/rt5677-spi.c         |  36 +++---
- sound/soc/codecs/rt5677.c             |  75 ++++++------
- sound/soc/codecs/rt5682-sdw.c         |  24 ++--
- sound/soc/codecs/rt5682.c             |   5 +-
- sound/soc/codecs/rt5682s.c            |  17 +--
- sound/soc/codecs/rt700-sdw.c          |  14 +--
- sound/soc/codecs/rt711-sdca-sdw.c     |  29 ++---
- sound/soc/codecs/rt711-sdca.c         |   5 +-
- sound/soc/codecs/rt711-sdw.c          |  24 ++--
- sound/soc/codecs/rt711.c              |  50 ++++----
- sound/soc/codecs/rt712-sdca-sdw.c     |  30 ++---
- sound/soc/codecs/rt712-sdca.c         |   5 +-
- sound/soc/codecs/rt721-sdca-sdw.c     |  29 ++---
- sound/soc/codecs/rt721-sdca.c         |   5 +-
- sound/soc/codecs/rt722-sdca-sdw.c     |  29 ++---
- sound/soc/codecs/rt722-sdca.c         |   4 +-
- 36 files changed, 569 insertions(+), 731 deletions(-)
-
+diff --git a/sound/soc/codecs/da7213.c b/sound/soc/codecs/da7213.c
+index 4bf91ab2553a..923b997efbc4 100644
+--- a/sound/soc/codecs/da7213.c
++++ b/sound/soc/codecs/da7213.c
+@@ -11,6 +11,7 @@
+ #include <linux/acpi.h>
+ #include <linux/of.h>
+ #include <linux/property.h>
++#include <linux/cleanup.h>
+ #include <linux/clk.h>
+ #include <linux/delay.h>
+ #include <linux/i2c.h>
+@@ -216,13 +217,10 @@ static int da7213_volsw_locked_get(struct snd_kcontrol *kcontrol,
+ {
+ 	struct snd_soc_component *component = snd_kcontrol_chip(kcontrol);
+ 	struct da7213_priv *da7213 = snd_soc_component_get_drvdata(component);
+-	int ret;
+ 
+-	mutex_lock(&da7213->ctrl_lock);
+-	ret = snd_soc_get_volsw(kcontrol, ucontrol);
+-	mutex_unlock(&da7213->ctrl_lock);
++	guard(mutex)(&da7213->ctrl_lock);
+ 
+-	return ret;
++	return snd_soc_get_volsw(kcontrol, ucontrol);
+ }
+ 
+ static int da7213_volsw_locked_put(struct snd_kcontrol *kcontrol,
+@@ -230,13 +228,10 @@ static int da7213_volsw_locked_put(struct snd_kcontrol *kcontrol,
+ {
+ 	struct snd_soc_component *component = snd_kcontrol_chip(kcontrol);
+ 	struct da7213_priv *da7213 = snd_soc_component_get_drvdata(component);
+-	int ret;
+ 
+-	mutex_lock(&da7213->ctrl_lock);
+-	ret = snd_soc_put_volsw(kcontrol, ucontrol);
+-	mutex_unlock(&da7213->ctrl_lock);
++	guard(mutex)(&da7213->ctrl_lock);
+ 
+-	return ret;
++	return snd_soc_put_volsw(kcontrol, ucontrol);
+ }
+ 
+ static int da7213_enum_locked_get(struct snd_kcontrol *kcontrol,
+@@ -244,13 +239,10 @@ static int da7213_enum_locked_get(struct snd_kcontrol *kcontrol,
+ {
+ 	struct snd_soc_component *component = snd_kcontrol_chip(kcontrol);
+ 	struct da7213_priv *da7213 = snd_soc_component_get_drvdata(component);
+-	int ret;
+ 
+-	mutex_lock(&da7213->ctrl_lock);
+-	ret = snd_soc_get_enum_double(kcontrol, ucontrol);
+-	mutex_unlock(&da7213->ctrl_lock);
++	guard(mutex)(&da7213->ctrl_lock);
+ 
+-	return ret;
++	return snd_soc_get_enum_double(kcontrol, ucontrol);
+ }
+ 
+ static int da7213_enum_locked_put(struct snd_kcontrol *kcontrol,
+@@ -258,13 +250,10 @@ static int da7213_enum_locked_put(struct snd_kcontrol *kcontrol,
+ {
+ 	struct snd_soc_component *component = snd_kcontrol_chip(kcontrol);
+ 	struct da7213_priv *da7213 = snd_soc_component_get_drvdata(component);
+-	int ret;
+ 
+-	mutex_lock(&da7213->ctrl_lock);
+-	ret = snd_soc_put_enum_double(kcontrol, ucontrol);
+-	mutex_unlock(&da7213->ctrl_lock);
++	guard(mutex)(&da7213->ctrl_lock);
+ 
+-	return ret;
++	return snd_soc_put_enum_double(kcontrol, ucontrol);
+ }
+ 
+ /* ALC */
+@@ -465,9 +454,8 @@ static int da7213_tonegen_freq_get(struct snd_kcontrol *kcontrol,
+ 	__le16 val;
+ 	int ret;
+ 
+-	mutex_lock(&da7213->ctrl_lock);
+-	ret = regmap_raw_read(da7213->regmap, reg, &val, sizeof(val));
+-	mutex_unlock(&da7213->ctrl_lock);
++	scoped_guard(mutex, &da7213->ctrl_lock)
++		ret = regmap_raw_read(da7213->regmap, reg, &val, sizeof(val));
+ 
+ 	if (ret)
+ 		return ret;
+@@ -499,12 +487,11 @@ static int da7213_tonegen_freq_put(struct snd_kcontrol *kcontrol,
+ 	 */
+ 	val_new = cpu_to_le16(ucontrol->value.integer.value[0]);
+ 
+-	mutex_lock(&da7213->ctrl_lock);
++	guard(mutex)(&da7213->ctrl_lock);
+ 	ret = regmap_raw_read(da7213->regmap, reg, &val_old, sizeof(val_old));
+ 	if (ret == 0 && (val_old != val_new))
+ 		ret = regmap_raw_write(da7213->regmap, reg,
+ 				&val_new, sizeof(val_new));
+-	mutex_unlock(&da7213->ctrl_lock);
+ 
+ 	if (ret < 0)
+ 		return ret;
 -- 
 2.43.0
 
