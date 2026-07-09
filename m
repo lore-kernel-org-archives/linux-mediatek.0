@@ -4,93 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41F25C43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 13:24:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEF20C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 13:31:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wGX/8llQgktP9uhRGMAJdUwUlNVBv8iTAag4vGe1GhU=; b=UjkzCXys6hgsLQU/xDCRqbjKki
-	3a8jvhjlIPyyLX+7EYnGXFivDSpS0e3F9PyM6L2ifO6HEOQxLChUWNUVPiR5Njs2oHaLP351MFwtt
-	P9aV5umEIlKe38Cn6BxSmO/bHcT8W8IZPQPU2AlY8GmMdzDOfy4K93NqHlIhQSuu532BNWF9ItTYS
-	9YOKsNMmo1Hc4aquJ1ldial9+b1TsAbeaHBhBmqc3J40elIdo2hSXNVXyuZc44mhBpAx1TsG7Tqnx
-	XIT+w/WbnLcX6UtXEnoOGNhFxlsnHShABJcKUQvLz/rbw1maiM3/XWpiJwpURrK/VV0G2u2yOX0QX
-	45Sx/zFQ==;
+	bh=9pQ/gqP0G3y+IbZnocO3iDIwsT0eZyiWm41rqRCN6BY=; b=IyYkasOTrLH0bql0IoxNLQE+nk
+	V+xjcvC//TOXz64m6TKRkNca+bBi4WV3pH3ylrddaqRT26z6pyQaevZnhMUNDfX6lrO/HdhC5nFQ9
+	izCGlYNLz1MDxCmehBs2XQyKcDc/Pbr82Xve3F99FGwwXjVAoGoOtNHn3nz/2V4GQk4TEhPXFpUnY
+	uF7nFXrTozsKrHJWARrX9OtsOYSfkD33ivJf3SetecRJzHCfnxBsLVLvtstMr69fyXBwNZYLtrLSO
+	7fFFnOKvw1kf3jyixaenNZ1V3uMANILQRfxNpzdESKQ80zh/KzmgceqF+8MMO+z2qa6rwx/oRVcH+
+	30tWByLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whojs-00000002Xo0-3tyV;
-	Thu, 09 Jul 2026 13:24:28 +0000
-Received: from fhigh-a2-smtp.messagingengine.com ([103.168.172.153])
+	id 1whoqi-00000002Z3E-39ek;
+	Thu, 09 Jul 2026 13:31:32 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whojq-00000002Xn4-20Nt;
-	Thu, 09 Jul 2026 13:24:28 +0000
-Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
-	by mailfhigh.phl.internal (Postfix) with ESMTP id 1B1EC1400151;
-	Thu,  9 Jul 2026 09:24:23 -0400 (EDT)
-Received: from phl-frontend-03 ([10.202.2.162])
-  by phl-compute-02.internal (MEProxy); Thu, 09 Jul 2026 09:24:23 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=cc
-	:cc:content-transfer-encoding:content-type:date:date:from:from
-	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
-	:to; s=fm2; t=1783603463; x=1783689863; bh=wGX/8llQgktP9uhRGMAJd
-	UwUlNVBv8iTAag4vGe1GhU=; b=ZXoSJkpdC5mkhxwGCFhYVOeL1WuJ7wODi6SrO
-	XhDAPgdg4esQhNFLz/+/F1XTfS/UohqmgIvf2zp+3bUNPpcuYcWeBTBBL/U6osM4
-	q5PLYVP08U0oBETrkMZpKJ3gYrR4Ocf09n6sbNB1ME1InsNl5zHdAGLYjmy6SBfy
-	/Jg6IAl06Vb0/4i6UyaRlncU0h/9IU6CB6xaQdBNBG7AFbJfsxNCLxaTbDcp9yqd
-	X/kLtrSBuycDIWfxsf9Cx7HRhQmyiZYtNM6LpoNXB20Vfv3NUvcrGCz6oNJ7g64P
-	ZpZjuBcwoCB+GTvMBK0qvWwW6P2eflBOhWpf1Ix+ums2+paig==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:message-id:mime-version:reply-to:subject:subject:to
-	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
-	1783603463; x=1783689863; bh=wGX/8llQgktP9uhRGMAJdUwUlNVBv8iTAag
-	4vGe1GhU=; b=pYDWn46+qzT0tq8+yCTDERCYTc42H6t7RcWcEG3vQsr3NazDN5E
-	hzbqQVcQxs1PW1660csePRGKt7AOC/U0AMoCpEPXkFk7UloJGimPi3pkwHhlVlJa
-	lTVnoel17LyjuNaMb3h4rjulh4l/snx7aW8QnjqYYAgKgd0GYCzFaJE20r4PbTLu
-	o0bKGXpZhFLtITw063r1oaVCDF94b8If8ACsKdp2/hwlpusxdIj4BJSRfmMoMBlQ
-	GaQXy17DZ3zzDl2rXCvuF9gboaPznBin7CWKea+T7dwLvhbSMfkIEL75icX2KCa2
-	EUPkVLSEiZ3jd+iwWR6NNx9BGxZMfsF1CWA==
-X-ME-Sender: <xms:BqFPausLqxSjo-hXlIp1tqCjDHTTh13WYiE_YPj8UmuwgWsd55nIiA>
-    <xme:BqFPauZTXc9NnwTBcAnmyr6mN5_s0iXAo4IBJq3UzrxndhACr95WeHoC_RgwyCFQS
-    D_5S72GfcP1z_Wm-TVOia7iC16tvDCwqXs_RwdwM0zGq0F6u00>
-X-ME-Received: <xmr:BqFPaozTLf6gQiIwQdgnoVsOScGn9ozCwslRu7RRQtFZbtkxDav9wGCqFJdsUjaDmKGdK8gcLWNIu2oEJrzJtMF7TILmF5E7_RA>
-X-ME-Proxy-Cause: dmFkZTF4y12o2fouM9BMGiLlCXxzON6QJktU5ZMw61OZlwMGXCfWvXX11sepL1RHTZiVGm
-    qD6UI7Qn5dttq6BYQnCaFKulS0dSlPonVGh2GPoeLpJ1GLyJqOcyEKkyFBqMEPShOIy1EW
-    BFWZWOa0Z1nRQof90N0fEid2O8AA+sGJ8uiEm0qn6tIITNwttmx2li3sCi+r1jev/bHXrY
-    DCYljvRd5kXWKAO+X2sYYDdvQSHskpnb3bT/VAmNr9yG8lStLbKiCG76+wXXTcy08Nqeah
-    nEhqMdkQhZ6JNslFh0mE9bus5iTJVTPHp5YW48Cz8/rqecWUBBv6xjeT5m4P7vw7cEATg0
-    4Tk6x6JnK9qJbTa0NFUBLbkSCox148JcUm5REgnJN+xqfebWSwh+Gm7SGZXSSBeeB0ypHW
-    B18KKUSPqIWsmoXgVsFyP9imCh5sSlnIIkbhAQ9XlWVyFVn7VvpPuAzK5kgYLwjvFR3OT6
-    ipETHZVzvqN227P/DQoJoQMJsjK1J5+Eodro6yA0D7l0cnz2YCtHWOxp/M57z6t16FXQn/
-    x1lelK5dKAp2q5nE5B7lyPJR4yijcHyp2SqAqVEpRsqmJy6Jr1x44dGxrq/CPtKhKmY9lD
-    VLjiq8APOM3cDiWe/ob79Pbk58KBO2ByACDFIiix0FT6IeX56ULYfTatObaQ
-X-ME-Proxy: <xmx:BqFPaujecNEyuVGyrvx7O5mWEvbtGz5C-um-F1wJ9kc3zRB9DWm2pw>
-    <xmx:BqFPask0dy5v2MFfqme4452AsoVlXNBcHYfP_tAvt_0vS6jKnzk9uQ>
-    <xmx:BqFPash9KWhLPAoo81qmsjRFTmkgBq5QUGsNvY24mDYx17YMvDF92A>
-    <xmx:BqFPao0SwUz75L-joRfovl930Bz69gi34RjiuTW66bVLc8adc54CZw>
-    <xmx:B6FPatSabWOTOv8zn1bcLiTuiLWN6_YWcPUwfUrLGOAlusmjSFsoDhls>
-Feedback-ID: i1d2843be:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 9 Jul 2026 09:24:22 -0400 (EDT)
-From: Griffin Kroah-Hartman <griffin@kroah.com>
-To: linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Griffin Kroah-Hartman <griffin@kroah.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] soc: mediatek: mtk-socinfo Add error handling in devm_kasprintf()
-Date: Thu,  9 Jul 2026 15:24:16 +0200
-Message-ID: <20260709132416.212212-1-griffin@kroah.com>
-X-Mailer: git-send-email 2.55.0
+	id 1whoqh-00000002Z2t-2h3v;
+	Thu, 09 Jul 2026 13:31:31 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 11A6C403AC;
+	Thu,  9 Jul 2026 13:31:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id DC8FDC2BCB7;
+	Thu,  9 Jul 2026 13:31:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1783603890;
+	bh=28FI2HV+RQto7uL7vOBZUQ3tD2S865OcagwBjanwseE=;
+	h=From:Date:Subject:To:Cc:Reply-To:From;
+	b=Vcf2M8ynpe3cb+4GqG9PhCk8FBZz8xsKHdrgyyV3RTw/BFvxJgd0KF9O8MLB3QcJA
+	 IqDMBoCXOST783QPl3xEV1ZIZLfGKnSb8csbKj2I0AXVfhvfRRlYs/XRrHBTu+mvxj
+	 UNlX7xeowNdrJwYZuXCWK74Lzavk2dxBRvcIQIMlJjtjkFT2A2GQP52FESMPdUaxha
+	 fzuD7ZPhGzrJ7yrDiM9NumS46gfI2WDkfcLIgy/eup7LOESIULgo7cj8xEIdyN90+6
+	 EETEduw+J+/8NKR+mvwFnMk4xZh553+kSulxDFuEltfHxXkT3fdCKRjcI893IyOcxl
+	 vN6Ffv4IutBhg==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B8CF9C43458;
+	Thu,  9 Jul 2026 13:31:30 +0000 (UTC)
+From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
+Date: Thu, 09 Jul 2026 16:31:29 +0300
+Subject: [PATCH v2] i2c: mediatek: fix WRRD for SoCs without auto_restart
+ option
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_062426_581672_2DA785BF 
-X-CRM114-Status: GOOD (  10.64  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260709-6572-6595-i2c-v2-1-b2fb8510d1d3@protonmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/12N0QqCQBBFf0XmuQ13cjfsyf8IH9Zpyol0ZdekE
+ P+91eglBi4cuPfMDJGDcIRTNkPgSaL4PgHuMqDW9TdWckkMmKPNLR6UNUdMURolSMoylVSwdek
+ gbYbAV3ltvnP95fhs7kzjKlkbrcTRh/f2cNJr7+cu/tyTVlqV2hjixjnGvBqCH33fOXnsyXdQL
+ 8vyAXrC7/bBAAAA
+X-Change-ID: 20260623-6572-6595-i2c-6ec9c4e6a6a6
+To: Qii Wang <qii.wang@mediatek.com>, Andi Shyti <andi.shyti@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ stable@vger.kernel.org, Roman Vivchar <rva333@protonmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783603888; l=2133;
+ i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
+ bh=5I4uNLRRu2akfikPizlAwyA4WFLdXzLI6g0+07ulnqg=;
+ b=knMH5OtWF4DJGyJyp/5TwXppDN/rEXeTi+WquMx+mWXenqL3U45hmu6DwLPj1jf6sZkwwXkMG
+ 41rs/GAxG3jDmbD3MVx/NKtXxKLTrR01TvdgYiQGk3Zrgt8YKihoscR
+X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
+ pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
+X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
+ auth_id=777
+X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,43 +85,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add an error check to the devm_kasprintf() function in
-mtk_socinfo_create_socinfo_node(), returning -ENOMEM if the function
-failed.
+From: Roman Vivchar <rva333@protonmail.com>
 
-Assisted-by: gkh_clanker_t1000
-CC: Matthias Brugger <matthias.bgg@gmail.com>
-CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Griffin Kroah-Hartman <griffin@kroah.com>
+MediaTek mt65xx family SoCs have no auto restart, however, they still
+support the WRRD mode in the hardware. Because auto_restart is set to 0,
+the WRRD mode will be never enabled, leading to read errors.
+
+Fix this by removing auto_restart check from the WRRD enable path.
+
+Fixes: b49218365280 ("i2c: mediatek: fix potential incorrect use of I2C_MASTER_WRRD")
+Cc: stable@vger.kernel.org
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
- drivers/soc/mediatek/mtk-socinfo.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+This is a preparation for the mt6572/6595 upstreaming.
 
-diff --git a/drivers/soc/mediatek/mtk-socinfo.c b/drivers/soc/mediatek/mtk-socinfo.c
-index 424a1eb82c20..e294730ba709 100644
---- a/drivers/soc/mediatek/mtk-socinfo.c
-+++ b/drivers/soc/mediatek/mtk-socinfo.c
-@@ -76,11 +76,14 @@ static int mtk_socinfo_create_socinfo_node(struct mtk_socinfo *mtk_socinfop)
- 	if (!attrs)
- 		return -ENOMEM;
+mt65xx family SoCs don't have auto restart, but vendor kernels keep using
+WRRD mode. Lack of the WRRD mode makes i2c reads impossible from both
+userspace and kernel drivers.
+
+Without patch (mt6595, da9210 buck at 0x68):
+~ # i2cget -y 1 0x68 0x00
+Error: Read failed
+~ # i2cget -y 1 0x68 0x01
+Error: Read failed
+
+With patch:
+~ # i2cget -y 1 0x68 0x00
+0x80
+~ # i2cget -y 1 0x68 0x01
+0x00
+
+Same behavior observed on mt6572 devices.
+
+This change doesn't affect SoCs with auto restart option.
+---
+Changes in v2:
+- Add Fixes and Reviewed-by tags
+- Add Cc stable
+- Link to v1: https://patch.msgid.link/20260624-6572-6595-i2c-v1-1-9155cebaae20@protonmail.com
+---
+ drivers/i2c/busses/i2c-mt65xx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index 126040ca05f1..307925fb78e3 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -1258,7 +1258,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
+ 	i2c->auto_restart = i2c->dev_comp->auto_restart;
  
--	if (data->marketing_name != NULL && data->marketing_name[0] != '\0')
-+	if (data->marketing_name != NULL && data->marketing_name[0] != '\0') {
- 		attrs->family = devm_kasprintf(mtk_socinfop->dev, GFP_KERNEL, "MediaTek %s",
- 					       data->marketing_name);
--	else
-+		if (!attrs->family)
-+			return -ENOMEM;
-+	} else {
- 		attrs->family = soc_manufacturer;
-+	}
- 
- 	attrs->soc_id = data->soc_name;
- 	/*
--- 
-2.55.0
+ 	/* checking if we can skip restart and optimize using WRRD mode */
+-	if (i2c->auto_restart && num == 2) {
++	if (num == 2) {
+ 		if (!(msgs[0].flags & I2C_M_RD) && (msgs[1].flags & I2C_M_RD) &&
+ 		    msgs[0].addr == msgs[1].addr) {
+ 			i2c->auto_restart = 0;
+
+---
+base-commit: 8cd9520d35a6c38db6567e97dd93b1f11f185dc6
+change-id: 20260623-6572-6595-i2c-6ec9c4e6a6a6
+
+Best regards,
+--  
+Roman Vivchar <rva333@protonmail.com>
+
 
 
