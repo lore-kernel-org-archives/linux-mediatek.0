@@ -4,81 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF406C44501
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:52:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF6D3C44501
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:53:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ebSYsfBOd+5t2zRyUYCm1GHFM+JA8nAhgvcl2wESu68=; b=V0O/dQWYZKNELpnfNT908GRGYG
-	h4s2wWKiTqHj1RaZ4irE+NBDe63J7gwX8U43umuagjhyfzMzOrmo6pACQXP5fSrcScKZVqnWRZL/3
-	P8Wl3vUzIGBep/ie+F6DmAQW+nDhBXjSdBo0G3Q/Ge4Y/YbF9Ay1udYmQ+JoUrKPzfmLbotkt/dTx
-	O+DFyjgceI5oNbC64vKpWRICYSf1NKHH54hSH3b9sBRzNjvFDGul+Z9nDNFothcKNjYMGRiy3qZpn
-	riuQiiTBsG5fGiyDFGraiqBwu6IKncr1ygExAbjtuACl2kf9i84QhUM6TI5ULu9CDnTdG+TA0+tPl
-	MZQTKXmA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ezt2SofOrqZTo5xv7YFTnXKeo4BljsFdsLljsLCtGx0=; b=CKZjtsxqK1xElhocXWEkEJEVVV
+	oNtux30kdjmAaq/Wpt3ZuunrisVGNGRqxCvFc4Fn3eJZnNtSyen8THWHmnTquoFzY/321SrSnEMs6
+	Ap8s2Ztr/j32818/5bXYn8RZsZgN7FLWLHEsRCgPyEjyKTPQzO4GW3w8cHoi4RDqwBKnWNzD4eaAy
+	2adNiKA/OLbs1CzHqwYVytbjeN2GT/cXrmBKWPiLm39T/Z5xU9il6XjkZb52PM8+KqujzVk6g/4Rz
+	QWTbigmEkur9hdzRp8Ost5PuLLWcTltMK4z7fUesEjQInmtchNvs1U5DX7fjgXspLP5D/VWMZXKC4
+	3jGEWX9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whmNC-000000021Lh-3mk4;
-	Thu, 09 Jul 2026 10:52:54 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1whmNm-000000021lH-4BfH;
+	Thu, 09 Jul 2026 10:53:31 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whmNB-000000021JT-1Chp;
-	Thu, 09 Jul 2026 10:52:53 +0000
+	id 1whmNl-000000021jL-2qii;
+	Thu, 09 Jul 2026 10:53:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4BAFB43D08;
-	Thu,  9 Jul 2026 10:52:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 1DEDCC2BCF4;
-	Thu,  9 Jul 2026 10:52:52 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6C1E64184E;
+	Thu,  9 Jul 2026 10:53:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 44EB3C2BCB7;
+	Thu,  9 Jul 2026 10:53:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1783594372;
-	bh=Kr3kxrls9pqLY8PgcynW/TkNHifyJ1XzFoDFVGYZsIM=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=vQ+VWMRer81B4+w+o6YWF7gzKTqf7pQ11AcUlhkAnDI6ei2v9SwmrILiBy7wxoEvC
-	 AHi+y0CmKWq9BCNjYplYRbd92TbxoYhNQlLctjXTeRDmgntBxBBfULmL3QJIr/1IjO
-	 BnmFNWDwvWHbSFdw22Phdph7+VCOA5do6oEUnWPxIrPwp3zb9VjDSH51PJK2c0lS7e
-	 TBWqWvXpaW1jpFfEdTarsJ/DlnFF7lbLlLSyp6ODwnoDcJa+kg0P5BtJryswxJ+zDE
-	 y87Lv3lcfSjPIFbAdJzEKWfJ+N/Kv/mY+c2XSo6kC7U99pKKnKehAEMBox3diEGkFB
-	 ff+WiA6zByagA==
+	s=k20201202; t=1783594409;
+	bh=mqQBhz/HMPQayPRAajQKmkdZDJ3luKs8aaJSgln6cao=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=j+QPvegc4tIDS6otfyA2YYQeWRC0xvpqoyzGwHG1ECSG21dTztr8T0pa69GxAgZqr
+	 IHzoPwlA+vTj4M1Q+apBQ12j2Zw0ku8nqYkux0K4qxWCqwijohg0kkW3lx0Kn8ha6x
+	 ZLiweYNeOEdDer/ES0fiHT/FLuXJWDZ29UbMD8hYRa4BsTtLoRS+29bVmiaCQF0crz
+	 31wOsShzEEWqok6+bbMBP5vH1bqdN4mHJ8futuaf1z6wAGdV4r9U76y4a3GkoBqlwI
+	 U4wHzbzwgo9zazzOGDBxaqXelY128xE2fwhk7A1ez1yDhfXU+gc71fovQNOeaXe0aJ
+	 BAYWbMAJBbIyA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0CECCC44507;
-	Thu,  9 Jul 2026 10:52:52 +0000 (UTC)
-From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Thu, 09 Jul 2026 13:52:48 +0300
-Subject: [PATCH v5 2/4] iio: adc: mt6323-auxadc: add mt6323 PMIC AUXADC
- driver
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 30803C43458;
+	Thu,  9 Jul 2026 10:53:29 +0000 (UTC)
+From: Jack Wu via B4 Relay <devnull+jackbb_wu.compal.com@kernel.org>
+Subject: [PATCH v4 0/7] net: wwan: t9xx: Add MediaTek T9XX WWAN driver
+Date: Thu, 09 Jul 2026 18:53:22 +0800
+Message-Id: <20260709-t9xx_driver_v1-v4-0-a8c009d509c5@compal.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260709-mt6323-adc-v5-2-d11b8332a735@protonmail.com>
-References: <20260709-mt6323-adc-v5-0-d11b8332a735@protonmail.com>
-In-Reply-To: <20260709-mt6323-adc-v5-0-d11b8332a735@protonmail.com>
-To: Jonathan Cameron <jic23@kernel.org>, 
- David Lechner <dlechner@baylibre.com>, 
- =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
- Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
+X-B4-Tracking: v=1; b=H4sIAKN9T2oC/3XNTQrCMBAF4KtI1kby18a68h4ipU1mNKJtSWqol
+ N7dVBcqRRgYHsz3ZiQBvINAdquReIguuLZJQa1XxJyr5gTU2ZSJYCJnmShoXwxDab2L4MvIKdd
+ K4bZCrWVBEuo8oBtehYfjO4d7fQHTzy3zxdmFvvWP18fI57u/5WkYrW2NIAzjkOm9aW9ddd2kR
+ eb2KD4+52zhRfImzyprUcha4sLLLy/UwsvktURkEnNm1PbHT9P0BPCLWk0/AQAA
+X-Change-ID: 20260529-t9xx_driver_v1-1744f8af7739
+To: Loic Poulain <loic.poulain@oss.qualcomm.com>, 
+ Sergey Ryazanov <ryazanov.s.a@gmail.com>, 
+ Johannes Berg <johannes@sipsolutions.net>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Jack Wu <jackbb_wu@compal.com>, Wen-Zhi Huang <wen-zhi.huang@mediatek.com>, 
+ Shi-Wei Yeh <shi-wei.yeh@mediatek.com>, 
+ Minano Tseng <Minano.tseng@mediatek.com>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Lee Jones <lee@kernel.org>
-Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Ben Grisdale <bengris32@protonmail.ch>, 
- Roman Vivchar <rva333@protonmail.com>, 
- Andy Shevchenko <andriy.shevchenko@intel.com>
+ Simon Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
+ Shuah Khan <skhan@linuxfoundation.org>
+Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-doc@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1783594368; l=12074;
- i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=cdo2n4utcrxfxA30v7GaqTLAN07hVaOJ8J00i2r47v8=;
- b=K1Qexdec+rvZH+fj2iqi1fh0euQUtDdT1ke13Qr7DF0tLSZyhAiCCGJCIxf4Z3NpA4XyXSjy7
- hDduw6NNqk5C1cf8cQhSp2ll7DriipRYmo+K+78SMVMD3uMLrxYvhYi
-X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
- pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
-X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
- auth_id=777
-X-Original-From: Roman Vivchar <rva333@protonmail.com>
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783594406; l=16237;
+ i=jackbb_wu@compal.com; s=20260526; h=from:subject:message-id;
+ bh=mqQBhz/HMPQayPRAajQKmkdZDJ3luKs8aaJSgln6cao=;
+ b=SAfTc4+5YuhHIB2vJ79u44xEObuFPCO9TdLf+l0L87NYHw5PjQ62h0UnVBs915nYtx61sbL5a
+ 0mBcv1AHLj6ADyhbdqTxb2gezP+oc7mGzOCweoMfe/739XCkZn+fb5f
+X-Developer-Key: i=jackbb_wu@compal.com; a=ed25519;
+ pk=VH1prTWixNl8OEUPPSfII3p46MzJpQN8J3+ecE1tZXg=
+X-Endpoint-Received: by B4 Relay for jackbb_wu@compal.com/20260526 with
+ auth_id=793
+X-Original-From: Jack Wu <jackbb_wu@compal.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,399 +94,289 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: rva333@protonmail.com
+Reply-To: jackbb_wu@compal.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Roman Vivchar <rva333@protonmail.com>
+T9XX is the PCIe host device driver for MediaTek's
+t900 modem. The driver uses the WWAN framework
+infrastructure to create the following control ports
+and network interfaces for data transactions.
+* /dev/wwan0at0 - Interface that supports AT commands.
+* /dev/wwan0mbim0 - Interface conforming to the MBIM
+  protocol.
+* wwan0-X - Primary network interface for IP traffic.
 
-The mt6323 AUXADC is a 15-bit ADC used for system monitoring. This driver
-provides support for reading various channels including battery and
-charger voltages, battery and chip temperature, current sensing and
-accessory detection.
+The main blocks in the T9XX driver are:
+* HW layer - Abstracts the hardware bus operations for
+   the device, and provides generic interfaces for the
+   transaction layer to get the device's information and
+   control the device's behavior. It includes:
 
-Add a driver for the AUXADC found in the MediaTek mt6323 PMIC.
+   * PCIe - Implements probe, removal and interrupt
+     handling.
+   * MHCCIF (Modem Host Cross-Core Interface) - Provides
+     interrupt channels for bidirectional event
+     notification such as handshake and port enumeration.
 
-Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@intel.com>
-Reviewed-by: David Lechner <dlechner@baylibre.com>
-Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+* Transaction layer - Implements data transactions for
+   the control plane and the data plane. It includes:
+
+   * DPMAIF (Data Plane Modem AP Interface) - Controls
+     the hardware that provides uplink and downlink
+     queues for the data path. The data exchange takes
+     place using circular buffers to share data buffer
+     addresses and metadata to describe the packets.
+   * CLDMA (Cross Layer DMA) - Manages the hardware
+     used by the port layer to send control messages to
+     the device using MediaTek's CCCI (Cross-Core
+     Communication Interface) protocol.
+   * TX Services - Dispatch packets from the port layer
+     to the device.
+   * RX Services - Dispatch packets to the port layer
+     when receiving packets from the device.
+
+* Port layer - Provides control plane and data plane
+   interfaces to userspace. It includes:
+
+   * Control Plane - Provides device node interfaces
+     for controlling data transactions.
+   * Data Plane - Provides network link interfaces
+     wwanX (0, 1, 2...) for IP data transactions.
+
+* Core logic - Contains the core logic to keep the
+   device working. It includes:
+
+   * FSM (Finite State Machine) - Monitors the state
+     of the device, and notifies each module when the
+     state changes.
+
+The compilation of the T9XX driver is enabled by the
+CONFIG_MTK_T9XX and CONFIG_MTK_T9XX_PCI config option
+which depends on CONFIG_WWAN.
+
+This v2 submission covers the control plane only
+(patches 1-6). The data plane will follow in a
+separate series once the control plane is accepted.
+
 ---
- MAINTAINERS                     |   1 +
- drivers/iio/adc/Kconfig         |  11 ++
- drivers/iio/adc/Makefile        |   1 +
- drivers/iio/adc/mt6323-auxadc.c | 314 ++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 327 insertions(+)
+Changes in v4:
+- Patch 1 (Add PCIe core):
+  - Add ACPI dependency to Kconfig (depends on PCI && ACPI)
+    and remove #ifdef CONFIG_ACPI / #else guards from
+    mtk_pci_fldr() and mtk_pci_pldr()
+  - Remove unnecessary parentheses in (mdev)->dev across
+    all dev_err/dev_warn calls
+  - Remove devm_kfree() calls from mtk_pci_probe() error
+    path and mtk_pci_remove(), devres handles cleanup
+  - Remove mtk_dev_alloc()/mtk_dev_free() wrappers, use
+    devm_kzalloc() directly in mtk_pci_probe()
+  - Convert ext_evt callbacks from devm_kzalloc/devm_kfree
+    to kzalloc/kfree for runtime-managed resources
+- Patch 2 (Add control plane transaction layer):
+  - Remove mtk_dev_alloc()/mtk_dev_free() declarations and
+    implementations from mtk_dev.h and mtk_dev.c
+  - Remove empty module_init/module_exit stubs, defer to
+    Patch 4 where they have actual content
+  - Remove devm_kfree() and unused ctrl_blk variable in
+    mtk_ctrl_exit(), devres handles cleanup
+- Patch 3 (Add control DMA interface):
+  - Remove inline keyword from mtk_cldma_clr_bd_dsc() in
+    .c file, let compiler decide inlining
+  - Replace dev_warn() with dev_warn_ratelimited() for SKB
+    alloc/map failure messages in data path
+  - Replace open-coded do/while polling loop with
+    read_poll_timeout() from <linux/iopoll.h> in
+    mtk_cldma_stop_queue()
+  - Remove ctrl_port_chl_mtu module_param, MODULE_PARM_DESC,
+    and mtk_ctrl_queue_info_update() with associated macros
+  - Remove unnecessary parentheses in (mdev)->dev across
+    mtk_cldma.c and mtk_trans_ctrl.c
+  - Convert CLDMA txq/rxq/cd from devm_kzalloc/devm_kfree
+    to kzalloc/kfree for runtime-managed resources
+  - Convert trb_srv/srv_que from devm_kzalloc/devm_kfree
+    to kzalloc/kfree for runtime-managed resources
+  - Remove devm_kfree() and unused variables from
+    mtk_cldma_exit() and mtk_trans_ctrl_exit(), devres
+    handles cleanup for device-lifetime resources
+  - Remove unnecessary NULL checks before kfree() for
+    bd_dsc_pool in txq_free/rxq_free
+- Patch 4 (Add control port):
+  - Add module_init/module_exit with mtk_port_io_init/exit
+    content, moved from Patch 2
+  - Remove unnecessary parentheses in (mdev)->dev in
+    mtk_port.c
+  - Remove devm_kfree() from mtk_port_mngr_init() error
+    path and mtk_port_mngr_exit(), devres handles cleanup
+  - Simplify mtk_trans_ctrl_init() error path: replace goto
+    err_free_trans with direct return -ENOMEM
+- Patch 5 (Add FSM thread):
+  - Remove unnecessary parentheses in (mdev)->dev across
+    mtk_fsm.c and mtk_ctrl_plane.c
+  - Convert FSM notifiers from devm_kzalloc/devm_kfree to
+    kzalloc/kfree for runtime-managed resources
+  - Convert CLDMA drv_info from devm_kzalloc/devm_kfree to
+    kzalloc/kfree for runtime-managed resources
+  - Remove devm_kfree() from mtk_fsm_init()/mtk_fsm_exit()
+    and mtk_ctrl_init()/mtk_ctrl_exit(), devres handles
+    cleanup for device-lifetime resources
+- Link to v3: https://patch.msgid.link/20260624-t9xx_driver_v1-v3-0-73ff03f60c48@compal.com
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 86b9a35c3d20..69c157edb92f 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -16582,6 +16582,7 @@ MEDIATEK MT6323 PMIC AUXADC DRIVER
- M:	Roman Vivchar <rva333@protonmail.com>
- L:	linux-iio@vger.kernel.org
- S:	Maintained
-+F:	drivers/iio/adc/mt6323-auxadc.c
- F:	include/dt-bindings/iio/adc/mediatek,mt6323-auxadc.h
- 
- MEDIATEK MT6735 CLOCK & RESET DRIVERS
-diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
-index bc21034078b5..8035e5313153 100644
---- a/drivers/iio/adc/Kconfig
-+++ b/drivers/iio/adc/Kconfig
-@@ -1166,6 +1166,17 @@ config MCP3911
- 	  This driver can also be built as a module. If so, the module will be
- 	  called mcp3911.
- 
-+config MEDIATEK_MT6323_AUXADC
-+	tristate "MediaTek MT6323 PMIC AUXADC driver"
-+	depends on MFD_MT6397
-+	help
-+	  Say yes here to enable support for MediaTek MT6323 PMIC Auxiliary ADC.
-+	  This driver provides multiple channels for system monitoring,
-+	  such as battery voltage, PMIC temperature, and others.
-+
-+	  This driver can also be built as a module. If so, the module will be
-+	  called mt6323-auxadc.
-+
- config MEDIATEK_MT6359_AUXADC
- 	tristate "MediaTek MT6359 PMIC AUXADC driver"
- 	depends on MFD_MT6397
-diff --git a/drivers/iio/adc/Makefile b/drivers/iio/adc/Makefile
-index 707dd708912f..dc24d0ae76a5 100644
---- a/drivers/iio/adc/Makefile
-+++ b/drivers/iio/adc/Makefile
-@@ -100,6 +100,7 @@ obj-$(CONFIG_MCP320X) += mcp320x.o
- obj-$(CONFIG_MCP3422) += mcp3422.o
- obj-$(CONFIG_MCP3564) += mcp3564.o
- obj-$(CONFIG_MCP3911) += mcp3911.o
-+obj-$(CONFIG_MEDIATEK_MT6323_AUXADC) += mt6323-auxadc.o
- obj-$(CONFIG_MEDIATEK_MT6359_AUXADC) += mt6359-auxadc.o
- obj-$(CONFIG_MEDIATEK_MT6360_ADC) += mt6360-adc.o
- obj-$(CONFIG_MEDIATEK_MT6370_ADC) += mt6370-adc.o
-diff --git a/drivers/iio/adc/mt6323-auxadc.c b/drivers/iio/adc/mt6323-auxadc.c
-new file mode 100644
-index 000000000000..c450fb6f09cb
---- /dev/null
-+++ b/drivers/iio/adc/mt6323-auxadc.c
-@@ -0,0 +1,314 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2026 Roman Vivchar <rva333@protonmail.com>
-+ *
-+ * Based on drivers/iio/adc/mt6359-auxadc.c
-+ */
-+
-+#include <linux/array_size.h>
-+#include <linux/bitfield.h>
-+#include <linux/bits.h>
-+#include <linux/cleanup.h>
-+#include <linux/delay.h>
-+#include <linux/iio/iio.h>
-+#include <linux/mod_devicetable.h>
-+#include <linux/module.h>
-+#include <linux/mutex.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+#include <linux/stringify.h>
-+#include <linux/time.h>
-+#include <linux/types.h>
-+
-+#include <linux/mfd/mt6323/registers.h>
-+
-+#include <dt-bindings/iio/adc/mediatek,mt6323-auxadc.h>
-+
-+#define AUXADC_STRUP_CON10_RSTB_SEL	BIT(7)
-+#define AUXADC_STRUP_CON10_RSTB_SW	BIT(5)
-+
-+#define AUXADC_TOP_CKPDN2_CTL_CK	BIT(5)
-+
-+#define AUXADC_TRIM_CH2_MASK		GENMASK(11, 10)
-+#define AUXADC_TRIM_CH4_MASK		GENMASK(9, 8)
-+#define AUXADC_TRIM_CH5_MASK		GENMASK(5, 4)
-+#define AUXADC_TRIM_CH6_MASK		GENMASK(3, 2)
-+
-+#define AUXADC_CON27_VREF18_ENB_MD	BIT(15)
-+#define AUXADC_CON27_MD_STATUS		BIT(0)
-+
-+#define AUXADC_CON19_GPS_STATUS		BIT(1)
-+
-+#define AUXADC_CON26_VREF18_SELB	BIT(1)
-+#define AUXADC_CON26_DECI_GDLY_SEL	BIT(0)
-+
-+#define AUXADC_CON11_VBUF_EN		BIT(4)
-+
-+#define AUXADC_CON19_DECI_GDLY_MASK	GENMASK(15, 14)
-+#define AUXADC_ADC19_BUSY_MASK		GENMASK(15, 1)
-+#define AUXADC_READY_MASK		BIT(15)
-+#define AUXADC_DATA_MASK		GENMASK(14, 0)
-+
-+#define AUXADC_CON9_OSR_MASK		GENMASK(12, 10)
-+#define AUXADC_DEFAULT_OSR		3
-+
-+#define MTK_PMIC_IIO_CHAN(_name, _chan, _addr)                  \
-+{                                                               \
-+	.type = IIO_VOLTAGE,                                    \
-+	.indexed = 1,                                           \
-+	.channel = _chan,                                       \
-+	.address = _addr,                                       \
-+	.datasheet_name = __stringify(_name),                   \
-+	.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |          \
-+			      BIT(IIO_CHAN_INFO_SCALE),         \
-+}
-+
-+/*
-+ * AUXADC reports everything in mV, including temperature and
-+ * current channels. Channel macros are mapped such that their
-+ * ID matches their respective hardware bit position in CON22.
-+ */
-+static const struct iio_chan_spec mt6323_auxadc_channels[] = {
-+	MTK_PMIC_IIO_CHAN(baton2,    MT6323_AUXADC_BATON2,    MT6323_AUXADC_ADC6),
-+	MTK_PMIC_IIO_CHAN(ch6,       MT6323_AUXADC_CH6,       MT6323_AUXADC_ADC11),
-+	MTK_PMIC_IIO_CHAN(bat_temp,  MT6323_AUXADC_BAT_TEMP,  MT6323_AUXADC_ADC5),
-+	MTK_PMIC_IIO_CHAN(chip_temp, MT6323_AUXADC_CHIP_TEMP, MT6323_AUXADC_ADC4),
-+	MTK_PMIC_IIO_CHAN(vcdt,      MT6323_AUXADC_VCDT,      MT6323_AUXADC_ADC2),
-+	MTK_PMIC_IIO_CHAN(baton1,    MT6323_AUXADC_BATON1,    MT6323_AUXADC_ADC3),
-+	MTK_PMIC_IIO_CHAN(isense,    MT6323_AUXADC_ISENSE,    MT6323_AUXADC_ADC1),
-+	MTK_PMIC_IIO_CHAN(batsns,    MT6323_AUXADC_BATSNS,    MT6323_AUXADC_ADC0),
-+	MTK_PMIC_IIO_CHAN(accdet,    MT6323_AUXADC_ACCDET,    MT6323_AUXADC_ADC7),
-+};
-+
-+/*
-+ * The MediaTek MT6323 (as well as a lot of other PMICs) has the following hierarchy:
-+ * PMIC AUXADC <- PMIC MFD <- SoC PWRAP (wrapper for PWRAP FSM)
-+ *
-+ * Therefore, PWRAP regmap should be obtained using dev->parent->parent.
-+ */
-+struct mt6323_auxadc {
-+	struct regmap *regmap;
-+	/* AUXADC doesn't support reading multiple channels simultaneously. */
-+	struct mutex lock;
-+};
-+
-+static int mt6323_auxadc_prepare_channel(struct mt6323_auxadc *auxadc)
-+{
-+	struct regmap *map = auxadc->regmap;
-+	u32 val;
-+	int ret;
-+
-+	ret = regmap_read(map, MT6323_AUXADC_CON19, &val);
-+	if (ret)
-+		return ret;
-+
-+	/* The ADC is idle. */
-+	if (!(val & AUXADC_CON19_DECI_GDLY_MASK))
-+		return 0;
-+
-+	ret = regmap_read_poll_timeout(map, MT6323_AUXADC_ADC19,
-+				       val, !(val & AUXADC_ADC19_BUSY_MASK),
-+				       10, 500);
-+	if (ret)
-+		return ret;
-+
-+	return regmap_clear_bits(map, MT6323_AUXADC_CON19,
-+				 AUXADC_CON19_DECI_GDLY_MASK);
-+}
-+
-+static int mt6323_auxadc_request(struct mt6323_auxadc *auxadc,
-+				 unsigned long channel)
-+{
-+	struct regmap *map = auxadc->regmap;
-+	int ret;
-+
-+	ret = regmap_set_bits(map, MT6323_AUXADC_CON11, AUXADC_CON11_VBUF_EN);
-+	if (ret)
-+		return ret;
-+
-+	return regmap_set_bits(map, MT6323_AUXADC_CON22, BIT(channel));
-+}
-+
-+static int mt6323_auxadc_release(struct mt6323_auxadc *auxadc,
-+				 unsigned long channel)
-+{
-+	struct regmap *map = auxadc->regmap;
-+	int ret;
-+
-+	ret = regmap_clear_bits(map, MT6323_AUXADC_CON22, BIT(channel));
-+	if (ret)
-+		return ret;
-+
-+	return regmap_clear_bits(map, MT6323_AUXADC_CON11, AUXADC_CON11_VBUF_EN);
-+}
-+
-+static int mt6323_auxadc_read(struct mt6323_auxadc *auxadc,
-+			      const struct iio_chan_spec *chan, int *out)
-+{
-+	struct regmap *map = auxadc->regmap;
-+	u32 val;
-+	int ret;
-+
-+	ret = regmap_read_poll_timeout(map, chan->address,
-+				       val, (val & AUXADC_READY_MASK),
-+				       1 * USEC_PER_MSEC, 100 * USEC_PER_MSEC);
-+	if (ret)
-+		return ret;
-+
-+	*out = FIELD_GET(AUXADC_DATA_MASK, val);
-+
-+	return 0;
-+}
-+
-+static int mt6323_auxadc_read_raw(struct iio_dev *indio_dev,
-+				  const struct iio_chan_spec *chan,
-+				  int *val, int *val2, long mask)
-+{
-+	struct mt6323_auxadc *auxadc = iio_priv(indio_dev);
-+	int ret, mult;
-+
-+	switch (mask) {
-+	case IIO_CHAN_INFO_SCALE:
-+		if (chan->channel == MT6323_AUXADC_ISENSE ||
-+		    chan->channel == MT6323_AUXADC_BATSNS)
-+			mult = 4;
-+		else
-+			mult = 1;
-+
-+		/* 1800mV full range with 15-bit resolution. */
-+		*val = mult * 1800;
-+		*val2 = 15;
-+
-+		return IIO_VAL_FRACTIONAL_LOG2;
-+	case IIO_CHAN_INFO_RAW: {
-+		guard(mutex)(&auxadc->lock);
-+
-+		ret = mt6323_auxadc_prepare_channel(auxadc);
-+		if (ret)
-+			return ret;
-+
-+		ret = mt6323_auxadc_request(auxadc, chan->channel);
-+		if (ret)
-+			return ret;
-+
-+		/* Hardware limitation: the AUXADC needs a delay to become ready. */
-+		fsleep(300);
-+
-+		ret = mt6323_auxadc_read(auxadc, chan, val);
-+
-+		if (mt6323_auxadc_release(auxadc, chan->channel))
-+			dev_err(&indio_dev->dev,
-+				"failed to release channel %d\n", chan->channel);
-+
-+		if (ret)
-+			return ret;
-+
-+		return IIO_VAL_INT;
-+	}
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static int mt6323_auxadc_init(struct mt6323_auxadc *auxadc)
-+{
-+	struct regmap *map = auxadc->regmap;
-+	int ret;
-+
-+	ret = regmap_set_bits(map, MT6323_STRUP_CON10,
-+			      AUXADC_STRUP_CON10_RSTB_SW |
-+			      AUXADC_STRUP_CON10_RSTB_SEL);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(map, MT6323_TOP_CKPDN2, AUXADC_TOP_CKPDN2_CTL_CK);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_update_bits(map, MT6323_AUXADC_CON10,
-+				 AUXADC_TRIM_CH2_MASK | AUXADC_TRIM_CH4_MASK |
-+				 AUXADC_TRIM_CH5_MASK | AUXADC_TRIM_CH6_MASK,
-+				 FIELD_PREP(AUXADC_TRIM_CH2_MASK, 1) |
-+				 FIELD_PREP(AUXADC_TRIM_CH4_MASK, 1) |
-+				 FIELD_PREP(AUXADC_TRIM_CH5_MASK, 1) |
-+				 FIELD_PREP(AUXADC_TRIM_CH6_MASK, 1));
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(map, MT6323_AUXADC_CON27,
-+			      AUXADC_CON27_VREF18_ENB_MD |
-+			      AUXADC_CON27_MD_STATUS);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(map, MT6323_AUXADC_CON19, AUXADC_CON19_GPS_STATUS);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(map, MT6323_AUXADC_CON26,
-+			      AUXADC_CON26_VREF18_SELB |
-+			      AUXADC_CON26_DECI_GDLY_SEL);
-+	if (ret)
-+		return ret;
-+
-+	return regmap_update_bits(map, MT6323_AUXADC_CON9, AUXADC_CON9_OSR_MASK,
-+				  FIELD_PREP(AUXADC_CON9_OSR_MASK, AUXADC_DEFAULT_OSR));
-+}
-+
-+static const struct iio_info mt6323_auxadc_iio_info = {
-+	.read_raw = mt6323_auxadc_read_raw,
-+};
-+
-+static int mt6323_auxadc_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct mt6323_auxadc *auxadc;
-+	struct regmap *regmap;
-+	struct iio_dev *iio;
-+	int ret;
-+
-+	regmap = dev_get_regmap(dev->parent->parent, NULL);
-+	if (!regmap)
-+		return dev_err_probe(dev, -ENODEV, "failed to get regmap\n");
-+
-+	iio = devm_iio_device_alloc(dev, sizeof(*auxadc));
-+	if (!iio)
-+		return -ENOMEM;
-+
-+	auxadc = iio_priv(iio);
-+	auxadc->regmap = regmap;
-+
-+	ret = devm_mutex_init(dev, &auxadc->lock);
-+	if (ret)
-+		return ret;
-+
-+	ret = mt6323_auxadc_init(auxadc);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to initialize auxadc\n");
-+
-+	iio->name = "mt6323-auxadc";
-+	iio->info = &mt6323_auxadc_iio_info;
-+	iio->modes = INDIO_DIRECT_MODE;
-+	iio->channels = mt6323_auxadc_channels;
-+	iio->num_channels = ARRAY_SIZE(mt6323_auxadc_channels);
-+
-+	return devm_iio_device_register(dev, iio);
-+}
-+
-+static const struct of_device_id mt6323_auxadc_of_match[] = {
-+	{ .compatible = "mediatek,mt6323-auxadc" },
-+	{ }
-+};
-+MODULE_DEVICE_TABLE(of, mt6323_auxadc_of_match);
-+
-+static struct platform_driver mt6323_auxadc_driver = {
-+	.driver = {
-+		.name = "mt6323-auxadc",
-+		.of_match_table = mt6323_auxadc_of_match,
-+	},
-+	.probe	= mt6323_auxadc_probe,
-+};
-+module_platform_driver(mt6323_auxadc_driver);
-+
-+MODULE_LICENSE("GPL");
-+MODULE_DESCRIPTION("MediaTek MT6323 PMIC AUXADC Driver");
+Changes in v3:
+- Address sashiko AI code review comments and fix sparse warnings
+- Patch 1 (Add PCIe core):
+  - Move extern declaration of mtk_dev_cfg_0900 from mtk_pci.c to mtk_pci.h to fix sparse warning
+  - Remove mtk_pci_bar_exit(): pcim_iounmap_region() was called with bitmask instead of BAR index, and pcim_iomap_regions() is devres-managed so manual unmap is redundant [sashiko]
+  - Remove pci_disable_device() from probe error path and remove path: pcim_enable_device() registers devres cleanup, manual disable causes enable_cnt underflow [sashiko]
+- Patch 3 (Add control DMA interface):
+  - Add #include "mtk_cldma.h" in mtk_cldma_drv_m9xx.c to fix sparse undeclared symbol warnings for mtk_cldma_regs_m9xx and cldma_drv_ops_m9xx
+  - Move extern declaration of mtk_ctrl_info_m9xx from mtk_trans_ctrl.c to mtk_trans_ctrl.h to fix sparse undeclared symbol warning
+  - Replace kcalloc + radix_tree_gang_lookup with radix_tree_for_each_slot() in mtk_ctrl_remove_radix_tree() to eliminate allocation in teardown path [sashiko]
+  - Add missing mtk_pci_dev_exit() call in mtk_pci_remove() to properly clean up FSM and trans_ctrl resources before device removal [sashiko]
+- Patch 4 (Add control port):
+  - Replace kcalloc + radix_tree_gang_lookup with radix_tree_for_each_slot() and single-entry gang_lookup in mtk_port_tbl_destroy() to eliminate allocation failure in teardown path [sashiko]
+  - Add port = NULL after mtk_port_put_locked() in mtk_port_internal_open() error path to prevent returning un-refcounted pointer [sashiko]
+  - Restore skb_unlink + trb_complete for non-EAGAIN errors in mtk_ctrl_trb_handler() TX path to prevent infinite retry loop [sashiko]
+- Patch 5 (Add FSM thread):
+  - Check mtk_pci_register_irq() return value in mtk_cldma_dev_init() and add err_destroy_wq error label to fix unreachable dead code [sashiko]
+  - Propagate specific error codes (ENOMEM/EIO/EINVAL) from mtk_cldma_dev_init() error paths instead of generic -EIO [sashiko]
+  - Free head SKB after detaching frag_list in mtk_cldma_rxq_free() scatter-gather mode to fix memory leak [sashiko]
+- Patch 6 (Add AT & MBIM WWAN ports):
+  - Remove unused write_lock mutex from struct mtk_port and its mutex_init call [sashiko]
+- Link to v2: https://patch.msgid.link/20260610-t9xx_driver_v1-v2-0-c65addf23b3f@compal.com
 
--- 
-2.54.0
+Changes in v2:
+- Split series into control plane (this v2) and data plane (follow-up)
+- Patch 1 (Add PCIe core):
+  - Rename BAR_NUM to MTK_PCI_BAR_NUM for driver prefix consistency
+  - Replace magic numbers in mtk_pci_setup_atr() with named defines
+  - Remove redundant ATR register comments, use blank line separators
+  - Add kernel-doc comments to all non-static functions
+  - Convert 4 MMIO wrapper functions to static inline in header [sashiko]
+  - Remove unnecessary unlikely() from IRQ validation paths
+  - Add irq_cnt == 0 and irq_id < 0 guards in mtk_pci_get_virq_id() [sashiko]
+  - Initialize hw_bits at declaration for consistency
+  - Merge same-type variable declarations into single lines
+  - Add #else/#endif comments for CONFIG_ACPI blocks
+  - Add newlines in mtk_pci_pldr() for readability
+  - Move return into default case in mtk_pci_dev_reset()
+  - Simplify mtk_mhccif_init() error path to use direct returns
+  - Change -EFAULT to -ENOLINK for PCIe link check failure
+  - Rename goto label "out" to "log_err" in mtk_pci_probe()
+  - Wrap long lines to stay within 80 columns
+  - Fix IRQ vector leak: add pci_free_irq_vectors() on error path [sashiko]
+  - Fix mtk_pci_remove() ordering: free IRQ before cancel_work_sync [sashiko]
+  - Fix mtk_pci_pldr() ACPI buffer leak: free first result before second call [sashiko]
+  - Replace msleep(500) with MTK_PLDR_POWER_OFF_DELAY_MS define
+  - Remove unused EXT_EVT_H2D_DRM_DISABLE_AP and related register define [sashiko]
+  - Increase MTK_IRQ_NAME_LEN from 20 to 32 to fix W=1 format-truncation warning [sashiko]
+- Patch 2 (Add control plane transaction layer):
+  - Add kernel-doc comments to mtk_ctrl_init() and mtk_ctrl_exit()
+  - Change mtk_ctrl_exit() return type from int to void
+  - Set mdev->ctrl_blk to NULL after freeing in mtk_ctrl_exit() [sashiko]
+  - Change ctrl_blk from void* to typed struct mtk_ctrl_blk* [sashiko]
+  - Remove redundant "depends on MTK_T9XX" from MTK_T9XX_PCI Kconfig [sashiko]
+  - Use mtk_dev_free() instead of devm_kfree() in mtk_pci_probe() error path [sashiko]
+- Patch 3 (Add control DMA interface):
+  - Add @ops kernel-doc parameter for mtk_ctrl_init()
+  - Rename 'err' to 'ret' consistently throughout the patch
+  - Reorder variable declarations to follow reverse Christmas tree style
+  - Change mtk_cldma_txq_free() return type from int to void
+  - Change mtk_cldma_rxq_free() return type from int to void
+  - Change mtk_cldma_exit() return type from int to void
+  - Remove unnecessary zero-initialization of ret in mtk_cldma_start_xfer()
+  - Remove unnecessary zero-initialization of ret in mtk_cldma_tx()
+  - Use direct return instead of goto out in mtk_cldma_submit_tx() error paths
+  - Move software state before HWO flag in mtk_cldma_submit_tx()
+  - Squash variable declarations in mtk_cldma_check_intr_status()
+  - Remove unlikely() from validation paths in mtk_cldma_check_ch_cfg()
+  - Clamp data_recv_len with min_t to prevent skb_over_panic in mtk_cldma_rx_skb_adjust() [sashiko]
+  - Use READ_ONCE() for HWO flag polling in mtk_cldma_check_rx_req() [sashiko]
+  - Fix mtk_cldma_rx_done_work() to always unmask interrupt on error path [sashiko]
+  - Add DMA address guard in mtk_cldma_txq_free() teardown loop [sashiko]
+  - Add IS_ERR() check for kthread_run() in mtk_ctrl_trb_srv_init() [sashiko]
+  - Fix queue_info memory leak on validation failure in mtk_pcie_hif_init() [sashiko]
+  - Handle non-EAGAIN errors in mtk_ctrl_trb_handler() TX path [sashiko]
+  - Fix 'err' typo to 'ret' in mtk_cldma_txbuf_set() error message
+  - Remove unused variable mdev in mtk_cldma_rx_check_again() [sashiko]
+  - Remove unused variables trans and ctrl_blk in mtk_cldma_txq_free() and mtk_cldma_rxq_free() [sashiko]
+- Patch 4 (Add control port):
+  - Add @cfg kernel-doc parameter for mtk_ctrl_init()
+  - Update mtk_ctrl_init() return description to cover additional error codes
+  - Fix double list_del in mtk_port_stale_list_grp_cleanup() [sashiko]
+  - Fix direct mtk_port_trb_free() call to use kref_put() in mtk_port_ch_enable() error path [sashiko]
+  - Fix direct mtk_port_trb_free() call to use kref_put() in mtk_port_ch_disable() error path [sashiko]
+  - Add mtk_port_tbl_destroy() in mtk_port_mngr_init() error path to prevent port memory leak [sashiko]
+  - Change port_ops exit/reset/enable/disable callbacks from int to void
+  - Move -EIO dispatch comment to where the code was introduced
+- Patch 5 (Add FSM thread):
+  - Add bounds check for rtft_entry in mtk_fsm_parse_hs2_msg() [sashiko]
+  - Add skb length validation before accessing ctrl_msg_header in mtk_fsm_sap_ctrl_msg_handler() [sashiko]
+  - Fix skb leak on CTRL_MSG_HS2 mismatch return in mtk_fsm_sap_ctrl_msg_handler() [sashiko]
+  - Add skb length validation before accessing ctrl_msg_header in mtk_fsm_md_ctrl_msg_handler() [sashiko]
+  - Replace devm_kzalloc/devm_kfree with kzalloc/kfree for FSM events [sashiko]
+  - Fix mtk_fsm_evt_submit() to return -ETIMEDOUT on blocking event timeout [sashiko]
+  - Change FSM kthread from TASK_INTERRUPTIBLE to TASK_UNINTERRUPTIBLE [sashiko]
+  - Remove unused variable hw_id in mtk_cldma_dev_exit() [sashiko]
+- Patch 6 (Add AT & MBIM WWAN ports):
+  - Use imperative mode in commit message
+  - Remove unnecessary zero-initialization of ret in mtk_port_copy_data_from()
+  - Change copy_from_user() error code from -EFAULT to -EINVAL in mtk_port_copy_data_from()
+  - Return -EINVAL for zero-length write in mtk_port_common_write()
+  - Change mtk_port_wwan_exit/enable/disable() return type from int to void
+  - Fix packet_size to account for CCCI header reservation in mtk_port_common_write() [sashiko]
+  - Fix WWAN tx callbacks to consume skb and return 0 per wwan_port_ops contract [sashiko]
+  - Fix wwan_create_port() error path: clear ERR_PTR to NULL and call mtk_port_ch_disable() [sashiko]
+- Patch 7 (Add maintainers entry): new patch
+- Link to v1: https://patch.msgid.link/20260529-t9xx_driver_v1-v1-0-bdbfe2c01e57@compal.com
+
+---
+Jack Wu (7):
+      net: wwan: t9xx: Add PCIe core
+      net: wwan: t9xx: Add control plane transaction layer
+      net: wwan: t9xx: Add control DMA interface
+      net: wwan: t9xx: Add control port
+      net: wwan: t9xx: Add FSM thread
+      net: wwan: t9xx: Add AT & MBIM WWAN ports
+      net: wwan: t9xx: Add maintainers entry
+
+ MAINTAINERS                                     |    9 +
+ drivers/net/wwan/Kconfig                        |   17 +
+ drivers/net/wwan/Makefile                       |    1 +
+ drivers/net/wwan/t9xx/Makefile                  |   14 +
+ drivers/net/wwan/t9xx/mtk_ctrl_plane.c          |  108 ++
+ drivers/net/wwan/t9xx/mtk_ctrl_plane.h          |   88 ++
+ drivers/net/wwan/t9xx/mtk_dev.c                 |   33 +
+ drivers/net/wwan/t9xx/mtk_dev.h                 |  111 ++
+ drivers/net/wwan/t9xx/mtk_fsm.c                 |  946 +++++++++++++++
+ drivers/net/wwan/t9xx/mtk_fsm.h                 |  140 +++
+ drivers/net/wwan/t9xx/mtk_port.c                |  966 +++++++++++++++
+ drivers/net/wwan/t9xx/mtk_port.h                |  174 +++
+ drivers/net/wwan/t9xx/mtk_port_io.c             |  573 +++++++++
+ drivers/net/wwan/t9xx/mtk_port_io.h             |   41 +
+ drivers/net/wwan/t9xx/mtk_utility.h             |   33 +
+ drivers/net/wwan/t9xx/pcie/Makefile             |   15 +
+ drivers/net/wwan/t9xx/pcie/mtk_cldma.c          | 1418 +++++++++++++++++++++++
+ drivers/net/wwan/t9xx/pcie/mtk_cldma.h          |  173 +++
+ drivers/net/wwan/t9xx/pcie/mtk_cldma_drv.c      |  369 ++++++
+ drivers/net/wwan/t9xx/pcie/mtk_cldma_drv.h      |  174 +++
+ drivers/net/wwan/t9xx/pcie/mtk_cldma_drv_m9xx.c |  178 +++
+ drivers/net/wwan/t9xx/pcie/mtk_cldma_drv_m9xx.h |  101 ++
+ drivers/net/wwan/t9xx/pcie/mtk_ctrl_cfg_m9xx.c  |   55 +
+ drivers/net/wwan/t9xx/pcie/mtk_pci.c            | 1085 +++++++++++++++++
+ drivers/net/wwan/t9xx/pcie/mtk_pci.h            |  234 ++++
+ drivers/net/wwan/t9xx/pcie/mtk_pci_drv_m9xx.c   |   69 ++
+ drivers/net/wwan/t9xx/pcie/mtk_pci_reg.h        |   71 ++
+ drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.c     |  563 +++++++++
+ drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.h     |  107 ++
+ 29 files changed, 7866 insertions(+)
+---
+base-commit: eb3f4b7426cfd2b79d65b7d37155480b32259a11
+change-id: 20260529-t9xx_driver_v1-1744f8af7739
+
+Best regards,
+--  
+Jack Wu <jackbb_wu@compal.com>
 
 
 
