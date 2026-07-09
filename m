@@ -4,98 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2493EC44506
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 17:00:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E934CC43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 17:00:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ftx4kksthHB8P8rF6BFuSI8P+XMB3UDpz0Oz9g7bP1I=; b=PMsU2v4YSAG+5p0fjY6LOaMCGZ
-	Yd2rOkbO2Mg6TqjMS23OnLY/mJt2YYn96wgGg2dAfDSbV8xG9oIi4qDXWzP/Izd5LuR+gIfAvvk1o
-	STC1hjGMyznCQlfMclwk1inVsSCGrj+la6HsQxxWTlBInHBIuX7Ty6f/IvEaNYRo8AKQt/74alhvr
-	bYsJY3KbcxG0l10IcyuKetp6QIKAoQ1GinSwMMmzW4A8+yn1pZhV20QWyLE8j6W0o+iOo0dzXbg94
-	oK7CK4ilxDFhggrLCMdrwSN62pLZfDFXpYF/bi8eZImHgos2FOjpfO5ihA98w7IvJWzSnrxQVLEbG
-	PNDB6HFQ==;
+	bh=4cwjDj+7KzBcAXPoTLJ3JC9JSJmT9wQOrir5TeBiIjs=; b=EARKp4mtHiZ3yoiscsY7eO9mgv
+	mngcXzNJDRQTLmBPguyCmC8UXn9Oqn1Y0Bsl1pL1Gk6lskUDG+ph4cUN1y+x7NRH4dj23daJe5WX9
+	e7GQXHpPla2zd6dORtqtNwqhYjkID+PDuZjiVF+UpQ7ndCRyiTAbPUzryKQYxrVcTMUiaIwXtIe8v
+	bIDn+9lAMdhQ8vjBSNHC/Fun85WNvj11NACGaemS41uQjODE+9JfVpYuYoqiEO2w5tP/gWn759VNP
+	YdsModvwoZfPTuW8kLTQ13vZHVPhoYBIKUaqRAvP2oSlt6i4mGV/pQPn/ywYF4R4ziF3rAKpl2W7g
+	+Rgq4x0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whs6k-000000034zg-0M4L;
-	Thu, 09 Jul 2026 17:00:18 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1whs6y-000000035CE-3QQN;
+	Thu, 09 Jul 2026 17:00:32 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whs6h-000000034x4-3U6i
+	id 1whs6v-0000000358Q-3fmM
 	for linux-mediatek@lists.infradead.org;
-	Thu, 09 Jul 2026 17:00:17 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-47ddf7b09aaso70536f8f.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jul 2026 10:00:15 -0700 (PDT)
+	Thu, 09 Jul 2026 17:00:32 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-493d1e8aa46so277645e9.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jul 2026 10:00:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1783616414; x=1784221214; darn=lists.infradead.org;
+        d=baylibre.com; s=google; t=1783616428; x=1784221228; darn=lists.infradead.org;
         h=content-transfer-encoding:content-type:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=ftx4kksthHB8P8rF6BFuSI8P+XMB3UDpz0Oz9g7bP1I=;
-        b=DTbokrYwyFB/c9am4LJ/3wLcJ+MmGs5AySgat2Ob2IUOjnxw20ak7OzPEDL/HLE3QV
-         vaPZ2tb9/PaSARcOiVdGb5ujCyGGGAETN2pgpPp26LHYCkHnanjyHvo/5fxrkeOhJdUq
-         v37h7YSlxMa+mBCyK2h3T+hngB2y7VcCBnU72JUDVGBOQcmOanEdrQvPyf06jUuv5G+S
-         KWuKoRRjTvFLr7fpOPSEBy1zZneTKkP7taj2pHOk61xHoe1jm4J9oDMz8kGy34hYyoV1
-         Ac2AvtueLuu4a8G8Cp6qqrDNirGGikuQY3PbkpYsEgF9gx/DRJcUYKFCCkOyRgXVmpRg
-         Mgkw==
+        bh=4cwjDj+7KzBcAXPoTLJ3JC9JSJmT9wQOrir5TeBiIjs=;
+        b=NwfB73pjVjM21+GU02Gc5rDxRUocHHfUvmoACYIVwKXo5HUU9mxVYJYbMNEZk4nQQI
+         lqlo1GwCs3YET6ixmxaUbt9bigoDicioNaPPVQX21+TPGkZT9KMB+IFhKC4VS/Rxf6Hl
+         JYC5Z32DDPXbx+GBgFoonbEIiIvq66CmrxZh7WvE3r/chX2lZuhW4iNQTvizGVlQ5RFu
+         xvRcMT2TMRcNJUfDV72VQnrUq1tPibAopQl3etIhnJEON5a1PhyGJMpvg0JvmhmvYOl+
+         Mx03aaOmMOq19SiXambYP0DBCSoRGBJxTVMR32j+6XafSTQttzPdiqbR3Xnh5WVW6rBa
+         6MZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783616414; x=1784221214;
+        d=1e100.net; s=20251104; t=1783616428; x=1784221228;
         h=content-transfer-encoding:content-type:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=ftx4kksthHB8P8rF6BFuSI8P+XMB3UDpz0Oz9g7bP1I=;
-        b=Byu3393gGCWMFD0sl+VBBetrAra6fyrCKbJMs6IfnZ2GK0tU90pMApB3hK7L+bgTtZ
-         /o7/uY9IhhskNOufifBhZFRVgU6QKEMK9WQiq7+YXY0czCL68qgMf0UizwXNQRD3P3vB
-         HX2bxPDcKnTm9hNfKCr/HTZD/DjMgSCiagQFYs/ZTjNiH1w/M3aEuxg/lk5/upB42IK9
-         wLKSIp6sDg6nYszuPnh7WEPItgZdTGsZZtQt/o7qzWOgGufKWpmNB2zSiwqfy54Q23+v
-         QYuFOFU2nviMsqcmyrQ7ZJhb6bOmtWV8UqU8fr635aLtIjtsSQJthqPrpfIFdKV2QAR1
-         ar6g==
-X-Forwarded-Encrypted: i=1; AHgh+RqS1bt1XS3tzaEEimaM9/2f9X4zspsHxYPez2uNrYoPepboLW3NoCNfy29+cig6NFHMxwUmaLzCyZcsD/c6Wg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyJ2uKuSA2fUIcQZ7n9p5+hiCVASiUUv2hNcwFw8hskWTKPb3Km
-	KY5YYWXV+Ob5kHumA+ILcqugxiML5ZqAgsOmPzQZoKduo0Pl5FmyGMN1ojdLpbtcI6k=
-X-Gm-Gg: AfdE7cmKjSMueh+B+dpGWa+u03eDnT95XKg3m7rOkwH36VSxYkzv8RAJWOVMnSmxYLU
-	h/G5zkTMBBaFnyjDu9gf7dKzfrmyLxu6IAQhoLzS8WmylWJcMEj94K/kYYbQnaSqauVXFzVBEru
-	UoUfGJGpxrQQGMrYI9fN+lAQ+ilwDwS+IVbhduYmasfsp17xBwt10J5mbd1U9yyL8rY1CZUSRv6
-	4ZyIPFi4n+4d7ak74sWAzAvJKbLGhAmbv4hP1Y9TpfgH/Nb7FNlqsIXlV5DYyRkfACM+bmEoiCI
-	7OfG9Wsdotbxb3Vj52aIOfk+1ipGxbMa26s4KL/QJZCSbT9pxsBQTYZy7ShJ+N42/jlC0P8SW7X
-	64AMK6+/Q0hZ0dRA1FtK/Oy+qgTAWDTyxSTKL+LXNxJ5NbjIfME9LmEHGszAL5vEN4t0Mjn5AWD
-	9hhA46GPhFMD+vojrJZbMpK96mHt7MhfU2XLkaMKpd4XiE3hwvgKfE5PqQe/lfjtvtUDW2l325Z
-	sqBm45C0WW0VmM=
-X-Received: by 2002:a05:6000:250d:b0:477:80fa:f474 with SMTP id ffacd0b85a97d-47df076bed7mr8665982f8f.38.1783616414070;
-        Thu, 09 Jul 2026 10:00:14 -0700 (PDT)
+        bh=4cwjDj+7KzBcAXPoTLJ3JC9JSJmT9wQOrir5TeBiIjs=;
+        b=jVXRWy296RFzyRg/mEEvmftjCTljVGfnw+qJtaBrni8JdK2TAlPLUnt43g77yUqovR
+         q8uqiK/qUMBt8MbrovbpW9NgsWlrgF0Yd4t8ASvXCLaDSHjO9Nc2ZTZpq5vRPN12xFwR
+         yZUk8WMgL88YoR9qa7cRnOPDDZH8vNXV+Wb1+fKdxOAQUxgqGbQXBV4Pe38m3/Kfucyb
+         xV/6Ry4DygYozBJuKVta/RkkJ1Zi/OiDNJSl12POQDr7Q/ojOI+k2zXfJhHNy/WnIKMr
+         Ayhls6iwxaBlVoEipVo7/bCi4Mt+O4z9l/eKskgD9a8PDmQERTeC2pnR10ymsA/xg8ex
+         WUhw==
+X-Forwarded-Encrypted: i=1; AHgh+RqqV1aoGhdS1BH2G5QpUIxWImCoxWdI7bRLLurUwgGC3tDuLJ8WCNessdbAk+x+MU78sXmcTqKE1GnmDoG6NA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzelmo/Wt8/PwVUl/MC9nRePuNI4VWTg8ECs/WNArbulr/eYuoR
+	PTv+g4WYURKeio16m5X+XevVUgThziRROzjJOOMXjsi9lgFSBnlow7vSYkn58zvtuwU=
+X-Gm-Gg: AfdE7ckKPgsNJKkxmtf0zDks1DbQjntvA9psp+5VG5qILudN8aSwxv+Uc8bu2QVVUle
+	rCRtHZ/FTTQhNlgtBRohr5Ez5tdZqhKY7vgB4dKkUrrYYddEL86td9mGTTkVw7265LFnYZddxt0
+	Dg21hHoSEimgVRU8F2QFuCD2DVhCxnwVFKYyHxxTSuvn6+0hK6Mgv/8y6ccSkhyu+Dcn992742B
+	e1c01pECMwWJDA8yS54B/ZEdLImgn2cIrHmuA/tyavQh0Z+ncNPaWqfn+Kzi684P9KZTCMliB7r
+	2ek++j3OGltFsdEVcfpdUgKKcPoppjgO21FoQHWj3vaGxAur3XKbNNr2fhJZeN97TAB1q+s8QGR
+	ZSoDV+3XzO3RvNmexieTIiu95uB4jIPA8FPQ/2vu5GzdnzV+RwQ/6y41gHyjOT3MENFvp98ooen
+	21s2VXOl2NhjDjnrHOgni6U+2XFoC2Cdlj/nvdryOoghdCXYgEYRZ75fCuSjLpKNj9pAdkFo/eg
+	ok/
+X-Received: by 2002:a05:600c:3b28:b0:493:bb2e:11a5 with SMTP id 5b1f17b1804b1-493e68c689bmr85633925e9.15.1783616428141;
+        Thu, 09 Jul 2026 10:00:28 -0700 (PDT)
 Received: from localhost (p200300f65f47db043de98c19b374aa68.dip0.t-ipconnect.de. [2003:f6:5f47:db04:3de9:8c19:b374:aa68])
-        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-47a9de1e785sm52656885f8f.8.2026.07.09.10.00.13
+        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-493f2a2e499sm2548325e9.0.2026.07.09.10.00.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Jul 2026 10:00:13 -0700 (PDT)
+        Thu, 09 Jul 2026 10:00:27 -0700 (PDT)
 From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig=20=28The=20Capable=20Hub=29?= <u.kleine-koenig@baylibre.com>
 To: Lee Jones <lee@kernel.org>
-Cc: Benson Leung <bleung@chromium.org>,
+Cc: Linus Walleij <linusw@kernel.org>,
+	Benson Leung <bleung@chromium.org>,
 	Guenter Roeck <groeck@chromium.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	mfd@lists.linux.dev,
-	chrome-platform@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
+	mfd@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	chrome-platform@lists.linux.dev,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 09/23] mfd: Drop unused assignment of platform_device_id driver data
-Date: Thu,  9 Jul 2026 18:58:28 +0200
-Message-ID: <8f219a01ab8fb705f3da3b2bff4b1228d657b3c0.1783615311.git.u.kleine-koenig@baylibre.com>
+Subject: [PATCH v3 16/23] mfd: Use named initializers for platform_device_id array
+Date: Thu,  9 Jul 2026 18:58:35 +0200
+Message-ID: <c7390ea19a88cbfe80e86b7ff308664a2eec27a2.1783615311.git.u.kleine-koenig@baylibre.com>
 X-Mailer: git-send-email 2.55.0.11.g153666a7d9bb
 In-Reply-To: <cover.1783615311.git.u.kleine-koenig@baylibre.com>
 References: <cover.1783615311.git.u.kleine-koenig@baylibre.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1375; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=qaHMCDQ0wnCBevuvFZFgR8vFowOppWXNbsk1WmPicyU=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBqT9NHV5ayzaHMTRxZ1vJcj2e0Qsq0ixb99y703 8QmdWEAqi6JATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCak/TRwAKCRCPgPtYfRL+ TngzB/9bn2VMOHKirYtFbVdvBGptXo3gP9q/1WjUMgg4jlikAF1mRjg2ik2hDfikend7CJM91ve q70Q/wAGS47iHurBLAuL5F9ByDCPX5cWQGQ4kDEBvqebOSC3WBIx483iad/iTQpqONljRVR7PN5 /cZ50Aun/PhGW+qYbIMVb+bDaQSwfjkaplQw0OF5a8YU+wafd6KpidbAK/81W34gpJCoJw8lOoW sYNr6M2uqqwt2Z0ROgI4YbPy4dkgDod6o/lgn8xfxOUcKLmGejaeY/3cKKEweD5tsSdG6jEnCxp 7W4F1KeRPdtXTR64Zj0tvpKocYUOp2Vk/2RBeyy6ZbGr/H15
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2575; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=Yocslbbh2Ly5jl9ltyhoSfTRYYTxd9v0B/P+M4FNVM8=; b=owGbwMvMwMXY3/A7olbonx/jabUkhiz/y5FP8p6Y/xAWruic5Prv2/Jq9oNxS7qtlldzHWtpr jLl3GHSyWjMwsDIxSArpshi37gm06pKLrJz7b/LMINYmUCmMHBxCsBE7tSy/xW/zaVm6TOH4X4O a7V8Fvd/6ULDU0ZMRy+ziwQkJov8+f3ocouBw6b3OSdvsiW8fJ+5Xzlq47cuobVF/yXWv5dIvGy o2fddfJPewfAH9wtKMx1NjBVqH/r/nHnQJe3z+cA7HNLSCt9fnolg8/v4g/m6+aJOrbm7TF696Z y168zJM2t71JKX/k9mtDpeOCXKI9XN469wQLGacbWs1OVfYnxMZ05eWVSccM7uSRyLiLT7rCuN3 lLZe64yXq2RaGJO2sRS+/jllddvXWeIiVV8P628uTbrvGoXk96PpEqzfD/rFvWZMsEPzh6Vr73H wCRfd6X6XUXt9q99NtcqJhnNm2v9JtlbadUBsdsh7NvNAA==
 X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_100015_890721_123E35F9 
-X-CRM114-Status: GOOD (  13.59  )
+X-CRM114-CacheID: sfid-20260709_100030_367930_68F86302 
+X-CRM114-Status: GOOD (  16.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,45 +111,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The drivers explicitly set the .driver_data member of struct
-platform_device_id to zero without relying on that value. Drop these
-unused assignments
+While being less compact, using named initializers allows to more easily
+see which members of the structs are assigned which value without having
+to lookup the declaration of the struct. And it's also more robust
+against changes to the struct definition.
+
+The mentioned robustness is relevant for a planned change to struct
+platform_device_id that replaces .driver_data by an anonymous union.
 
 This patch doesn't modify the compiled arrays, only their representation
 in source form benefits.
 
+Also drop a tailing comma after a list terminator to match the common
+style for these device-id arrays.
+
 Signed-off-by: Uwe Kleine-König (The Capable Hub) <u.kleine-koenig@baylibre.com>
 ---
+ drivers/mfd/ab8500-core.c | 8 ++++----
  drivers/mfd/cros_ec_dev.c | 2 +-
- drivers/mfd/mt6397-core.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/mfd/mt6397-core.c | 4 ++--
+ 3 files changed, 7 insertions(+), 7 deletions(-)
 
+diff --git a/drivers/mfd/ab8500-core.c b/drivers/mfd/ab8500-core.c
+index f0bc0b5a6f4a..7c00c71ca4ba 100644
+--- a/drivers/mfd/ab8500-core.c
++++ b/drivers/mfd/ab8500-core.c
+@@ -1250,10 +1250,10 @@ static int ab8500_probe(struct platform_device *pdev)
+ }
+ 
+ static const struct platform_device_id ab8500_id[] = {
+-	{ "ab8500-core", AB8500_VERSION_AB8500 },
+-	{ "ab8505-core", AB8500_VERSION_AB8505 },
+-	{ "ab9540-i2c", AB8500_VERSION_AB9540 },
+-	{ "ab8540-i2c", AB8500_VERSION_AB8540 },
++	{ .name = "ab8500-core", .driver_data = AB8500_VERSION_AB8500 },
++	{ .name = "ab8505-core", .driver_data = AB8500_VERSION_AB8505 },
++	{ .name = "ab9540-i2c", .driver_data = AB8500_VERSION_AB9540 },
++	{ .name = "ab8540-i2c", .driver_data = AB8500_VERSION_AB8540 },
+ 	{ }
+ };
+ 
 diff --git a/drivers/mfd/cros_ec_dev.c b/drivers/mfd/cros_ec_dev.c
-index e253c753beb6..a933cb936da6 100644
+index a933cb936da6..baa6487abf9e 100644
 --- a/drivers/mfd/cros_ec_dev.c
 +++ b/drivers/mfd/cros_ec_dev.c
 @@ -375,7 +375,7 @@ static void ec_device_remove(struct platform_device *pdev)
  }
  
  static const struct platform_device_id cros_ec_id[] = {
--	{ DRV_NAME, 0 },
-+	{ DRV_NAME },
+-	{ DRV_NAME },
++	{ .name = DRV_NAME },
  	{ /* sentinel */ }
  };
  MODULE_DEVICE_TABLE(platform, cros_ec_id);
 diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-index ea1d039477e3..7987583afc60 100644
+index 7987583afc60..7bbd9b730b75 100644
 --- a/drivers/mfd/mt6397-core.c
 +++ b/drivers/mfd/mt6397-core.c
-@@ -429,7 +429,7 @@ static const struct of_device_id mt6397_of_match[] = {
+@@ -429,8 +429,8 @@ static const struct of_device_id mt6397_of_match[] = {
  MODULE_DEVICE_TABLE(of, mt6397_of_match);
  
  static const struct platform_device_id mt6397_id[] = {
--	{ "mt6397", 0 },
-+	{ "mt6397" },
- 	{ },
+-	{ "mt6397" },
+-	{ },
++	{ .name = "mt6397" },
++	{ }
  };
  MODULE_DEVICE_TABLE(platform, mt6397_id);
+ 
 -- 
 2.55.0.11.g153666a7d9bb
 
