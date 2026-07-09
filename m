@@ -4,108 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E257BC43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 14:26:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9D69C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 14:28:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ULW9VBv4cRlM6iC85iVcPrTJ/RUoBanK7j5g1mX7o9s=; b=JHdSLpiOnyyAX9epYApTVOvA9+
-	LbgFAHEAg3gKQnqHB1iQbHPaCd7DMX0ioLlKQfbasDAEtL1EmtKxCs9q9vc9QOtJ/wYK9n7qXcYJr
-	RsyneOEe74oC2D4wzVaZpqV0jdiPh6jhGrxEweplmn9v1GKDx/aBCi4gU5zfHy9BYoE6p3ByAVdvR
-	cLjjAxYIFO6xGZbX/NdKXpOQ1I6oJpxeL7lTqbYOvJFNClx/JigjYb5v22Xi3zx4csTJMVR4NAfjI
-	jjXQoVXutHYC7NQ/SQvmP1ZSXZqJnRGgkNSWn3s2XeSU/hoRrlybdnuV/OtfQomCZXNMYPSWCpbko
-	y8AfQO/w==;
+	bh=92JJ36rrwvvb7yLlV9W9rV0xnJPT/KBmVXI1YNHLk7c=; b=arHb77q2KmE30yiUZgKnUVevyD
+	QN0N8aVdeSNsh5cSjEre+H8tDH0+mlsolI7y5GH6Pf9iDMdJ6Bf0ByZwsbdfE8HctJ8Yak1rQsfBP
+	ps+VnUZ2u/AUFf+NFtAAG81UBpvTdq+Z03435zG1ww2lro1zIdwwnraM8GgJ9WWKceOxVCZu6afcM
+	l8zvmz4s+9nkqDXEAfPNm4ESpdes65na8tz1afT0PEYOOoOk8hbsMHxGUWuj3d2KZlwaARp2gPMCU
+	KnK8Pn2m1S+YkzVrvJFAqaNVxzBxsWsRVoRnuWlZSf1YBfYeoU2Y26M9XY40WDZ/AjMdpn2UrUqIW
+	NoRvWskg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whpi4-00000002keU-2inM;
-	Thu, 09 Jul 2026 14:26:40 +0000
-Received: from zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
+	id 1whpjd-00000002l6P-3JFZ;
+	Thu, 09 Jul 2026 14:28:17 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whpi1-00000002kcI-1AoW
+	id 1whpjZ-00000002l4B-33GL
 	for linux-mediatek@lists.infradead.org;
-	Thu, 09 Jul 2026 14:26:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	sang-engineering.com; h=date:from:to:cc:subject:message-id
-	:references:mime-version:content-type:in-reply-to; s=k1; bh=ULW9
-	VBv4cRlM6iC85iVcPrTJ/RUoBanK7j5g1mX7o9s=; b=PUzFH9mSrFXR0BT7bcHZ
-	Edu7cwpTc+qJ+OrNpmfIGFDVhxIXkWvuhCfoFDFMwIRDsg61YTEhJsUS9CVKi6az
-	P6v9kZs22j7OxfFuONh4fL96A7/4aZXTeYEKXEFLvDnbaWjtQMvRU/sqEcZFKEHD
-	8CbLj3eD9wSCrMFlNxTu44NT6Nq72wdBYP4Zha/eGHVeKZZ2hJbbBLrepfix+5y8
-	wPbx7qBDvD10x4wZ1uvqlRfiKPJQNDeM6c9wbZwAjaetlqpPufip7tXqIrrtvEGv
-	yj/byiXXftAa0kvhgazHR8mM/mwB9T9fZRFwzl2sGHwDRyxeR+oELM4DKsYB1m8w
-	Vg==
-Received: (qmail 1163672 invoked from network); 9 Jul 2026 16:26:26 +0200
-Received: by mail.zeus03.de with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted, authenticated); 9 Jul 2026 16:26:26 +0200
-X-UD-Smtp-Session: l3s3148p1@Of/AaC5WFLZQT+F6
-Date: Thu, 9 Jul 2026 16:26:25 +0200
-From: Wolfram Sang <wsa+renesas@sang-engineering.com>
-To: Pan Chuang <panchuang@vivo.com>
-Cc: Frank Li <Frank.Li@nxp.com>, Vinod Koul <vkoul@kernel.org>,
-	Keguang Zhang <keguang.zhang@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
+	Thu, 09 Jul 2026 14:28:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1783607292;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=92JJ36rrwvvb7yLlV9W9rV0xnJPT/KBmVXI1YNHLk7c=;
+	b=jTjzgptwPo20f9zD7f0S9uwQWmbqDBjnYzNBwkMSWoLfWn/OhaJvNvzzffNfpZiMFPiPXA
+	/ASFojpjyIFs1/DbXAd5dA2vqQ+Dh0mT5waEYkGFMHzHwVo4teWNOLKxqPRB64F24FpHez
+	RAgI11AEJJp8RfEY9s/k8INxalFygFc=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-117-lvGUv5k_PJadQ9SvxnQm8w-1; Thu, 09 Jul 2026 10:28:09 -0400
+X-MC-Unique: lvGUv5k_PJadQ9SvxnQm8w-1
+X-Mimecast-MFC-AGG-ID: lvGUv5k_PJadQ9SvxnQm8w_1783607288
+Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-92e8004d60eso413587585a.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jul 2026 07:28:09 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783607288; x=1784212088;
+        h=user-agent:in-reply-to:content-disposition:content-type
+         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=92JJ36rrwvvb7yLlV9W9rV0xnJPT/KBmVXI1YNHLk7c=;
+        b=R1SB4bbkADkjwTtVGUGsBL8/UW7Ya9WT/raAvWOUqRiEiI8Ocvm7qP1xtOGg3tSbYI
+         hBnTn13URN50IjCW+7rF8gPuo0GbxjWsBLEoIuaNkMbSrcLbzjRgREpJ3sPmKkqZ16EH
+         0f+vw+hUc9Aety39yKBA+LWESz7XLax5+vbkFODVnxizg3EV8AP12BneIA9CTvJ+KXZk
+         +SyYhBKAR2Tl+4/lHUOtZTcvLE4uPKFgRYXZkptl0fh4ySsTGU9t9jaMILDTRc5DVzOc
+         Snkba5AUt3u6D/S7WkV+Wjcu8G4Z7gwdN3AyfYArFJFkWg9sN0KNm6XAD5+yHpGpHmTD
+         +wEQ==
+X-Forwarded-Encrypted: i=1; AHgh+Roh0gDivWq0D5Vm+LQwkyvvnLu3NssVXkxr1eMDmSPx0kpv8I4P4xAYJgMy1bR+WYnod+rvyiTyZrUBNysXZA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzbJHEHH3z51AYt3590zxCmQSO0sbv01Ul6ABmq9l5OMnvPjMss
+	WRB2OcGevM/KZ7Hos8wxIafTZY4BMmy/yxaVu5fOdzxphP+oyr8198VNg0Gpi5HRDvYR8DZ/2SC
+	XCA3aK4VY5neZr9zDh5fJjxGN9sMdmv1EmbOhEEIIH7RGXFroNDeN3KF2kgZTG84ScJWQsrNKeg
+	==
+X-Gm-Gg: AfdE7cnCGrWy+HzikQIK9u9oXXtqT2q6VlDnaZsfDJYyAK75ihdFH8+4rexi3Azhq7V
+	yE4GeJTt0soUQaBjs0M/gbPbz3rXscavPmDzRJfH/erO/rzamAMLAE/UgjVeMdzRXsI3MwnvdCM
+	Y1GTkAZBZNGZxJ85VIk0rxOfPDrpHOgYGMM0G+2oeZ3nW+sFrQ0GXZ8hLlXFFtbrZ2TlVKAx1lb
+	Bq4UOQnxvehBOMEGelTKIV7tRTXkzN7bKWtGZOZGBdFomokyXcDzYPuSs0dTCdEgx8aFJYfaTpR
+	f6Ks9nw47Zk/bCiXqlQ/rjL4cjJRebnY8wsuxdqOyob6gOoglZnG7rNjQ7PzIkXr0Sx/LRLolia
+	ldCho0YkNA3heONgPQOVe2uD213XIhUOo+t+giqG1rsjtVQ==
+X-Received: by 2002:ac8:7fc8:0:b0:51c:2068:a9f8 with SMTP id d75a77b69052e-51c8b399047mr79250361cf.5.1783607288359;
+        Thu, 09 Jul 2026 07:28:08 -0700 (PDT)
+X-Received: by 2002:ac8:7fc8:0:b0:51c:2068:a9f8 with SMTP id d75a77b69052e-51c8b399047mr79249991cf.5.1783607287938;
+        Thu, 09 Jul 2026 07:28:07 -0700 (PDT)
+Received: from redhat.com (c-73-183-53-213.hsd1.pa.comcast.net. [73.183.53.213])
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-51c41d2cde7sm173167731cf.18.2026.07.09.07.28.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Jul 2026 07:28:07 -0700 (PDT)
+Date: Thu, 9 Jul 2026 10:28:04 -0400
+From: Brian Masney <bmasney@redhat.com>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Daniel Mack <daniel@zonque.org>,
-	Haojian Zhuang <haojian.zhuang@gmail.com>,
-	Robert Jarzmik <robert.jarzmik@free.fr>,
-	Paul Walmsley <pjw@kernel.org>,
-	Samuel Holland <samuel.holland@sifive.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	=?utf-8?Q?Am=C3=A9lie?= Delaunay <amelie.delaunay@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Chen-Yu Tsai <wens@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Laxman Dewangan <ldewangan@nvidia.com>,
-	Jon Hunter <jonathanh@nvidia.com>,
-	Thierry Reding <thierry.reding@kernel.org>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Icenowy Zheng <zhengxingda@iscas.ac.cn>,
-	Kees Cook <kees@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
-	Miaoqian Lin <linmq006@gmail.com>,
-	Jyothi Kumar Seerapu <quic_jseerapu@quicinc.com>,
-	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
-	Biju Das <biju.das.jz@bp.renesas.com>,
-	Cosmin Tanislav <cosmin-gabriel.tanislav.xa@renesas.com>,
-	John Madieu <john.madieu.xa@bp.renesas.com>,
-	Thomas Andreatta <thomasandreatta2000@gmail.com>,
-	"open list:FREESCALE eDMA DRIVER" <imx@lists.linux.dev>,
-	"open list:FREESCALE eDMA DRIVER" <dmaengine@vger.kernel.org>,
-	open list <linux-kernel@vger.kernel.org>,
-	"open list:MIPS/LOONGSON1 ARCHITECTURE" <linux-mips@vger.kernel.org>,
-	"moderated list:MEDIATEK DMA DRIVER" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:MEDIATEK DMA DRIVER" <linux-mediatek@lists.infradead.org>,
-	"moderated list:ARM/ACTIONS SEMI ARCHITECTURE" <linux-actions@lists.infradead.org>,
-	"open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
-	"open list:SIFIVE DRIVERS" <linux-riscv@lists.infradead.org>,
-	"open list:ARM/RISC-V/RENESAS ARCHITECTURE" <linux-renesas-soc@vger.kernel.org>,
-	"moderated list:STM32 DMA DRIVERS" <linux-stm32@st-md-mailman.stormreply.com>,
-	"open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>,
-	"open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>
-Subject: Re: [PATCH 00/26] dmaengine: Remove redundant error messages on IRQ
- request failure
-Message-ID: <ak-vkQ8g_ePdY15f@shikoro>
-References: <20260709135846.97972-1-panchuang@vivo.com>
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Edward-JW Yang <edward-jw.yang@mediatek.com>,
+	Johnson Wang <johnson.wang@mediatek.com>, kernel@collabora.com,
+	linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2] clk: mediatek: pllfh: Fix IO remapping leak in
+ register_pllfhs error path
+Message-ID: <ak-v9MPymB4rg9rP@redhat.com>
+References: <20260709-clk-mediatek-pllfh-fix-v2-1-a235078fe9d5@collabora.com>
 MIME-Version: 1.0
+In-Reply-To: <20260709-clk-mediatek-pllfh-fix-v2-1-a235078fe9d5@collabora.com>
+User-Agent: Mutt/2.3.2 (2026-04-26)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Bj_ZCNRsTVhpZor1UcFMvARxxDDv11QIxLLXd29Toeo_1783607288
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260709135846.97972-1-panchuang@vivo.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_072638_206415_54308D21 
-X-CRM114-Status: GOOD (  11.85  )
+X-CRM114-CacheID: sfid-20260709_072813_837082_CF24B052 
+X-CRM114-Status: GOOD (  15.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,54 +118,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 09, 2026 at 09:58:04PM +0800, Pan Chuang wrote:
-> Commit 55b48e23f5c4b6f5ca9b7ab09599b17dcf501c10 ("genirq/devres: Add
-> error handling in devm_request_*_irq()") added automatic error logging
-> to devm_request_threaded_irq() and devm_request_any_context_irq() via
-> the new devm_request_result() helper. The helper prints device name,
-> IRQ number, handler functions, and error code on failure.
+On Thu, Jul 09, 2026 at 02:23:00PM +0200, Louis-Alexis Eyraud wrote:
+> When mtk_clk_register_pllfhs function fails to register a PLL, it
+> unregisters all PLLs and cleans up itself in its error path before
+> returning, so the function callers don't need to do it.
 > 
-> Since devm_request_irq() is a static inline wrapper around
-> devm_request_threaded_irq(), it also benefits from this automatic
-> logging.
+> But contrary to mtk_clk_unregister_pllfhs function, that does almost
+> the same sequence, it does not free the IO memory mapped on fhctl node,
+> leading to a leak.
 > 
-> This series removes the now-redundant dev_err() and dev_err_probe() calls
-> in dmaengine drivers that follow these devm_request_*_irq() functions,
-> as the core now provides more detailed diagnostic information on failure.
+> Fix this leak by factorizing the cleanup sequence in a new private
+> function and use it both mtk_clk_register_pllfhs and
+> mtk_clk_unregister_pllfhs functions.
 > 
-> Pan Chuang (26):
->   dmaengine: fsl-edma-main: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: fsl-qdma: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: loongson-loongson1-apb-dma: Remove redundant
->     dev_err()/dev_err_probe()
->   dmaengine: mediatek-mtk-cqdma: Remove redundant
->     dev_err()/dev_err_probe()
->   dmaengine: mediatek-mtk-hsdma: Remove redundant
->     dev_err()/dev_err_probe()
->   dmaengine: mmp_pdma: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: moxart-dma: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: owl-dma: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: pxa_dma: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: qcom-gpi: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: sf-pdma-sf-pdma: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: sh-rcar-dmac: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: sh-rz-dmac: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: sh-shdmac: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: sh-usb-dmac: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: sprd-dma: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: st_fdma: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: stm32-stm32-dma: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: stm32-stm32-dma3: Remove redundant
->     dev_err()/dev_err_probe()
->   dmaengine: stm32-stm32-mdma: Remove redundant
->     dev_err()/dev_err_probe()
->   dmaengine: sun4i-dma: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: sun6i-dma: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: tegra20-apb-dma: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: ti-edma: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: uniphier-xdmac: Remove redundant dev_err()/dev_err_probe()
->   dmaengine: xgene-dma: Remove redundant dev_err()/dev_err_probe()
+> Also, change the loop index start value to avoid the -1 operation on
+> index at each loop.
+> 
+> Fixes: d7964de8a8ea ("clk: mediatek: Add new clock driver to handle FHCTL hardware")
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
-One patch per subsystem for such trivial changes, please.
+Reviewed-by: Brian Masney <bmasney@redhat.com>
 
 
