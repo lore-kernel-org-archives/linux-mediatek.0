@@ -4,74 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF54BC43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 11:48:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 072B0C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 11:58:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3TQPn5ED0S2CEUi5fenqh4SrbmSY1R1oHCIp8iBG0cg=; b=W0PoeAPukwK2JcQT7lDgx9PXqe
-	hUipAr/UpoDjNwFlVzf4c0ZShI1I2STVaRhXzlo2kam5C+4igzVQvTBv+zkikY4p4MpymB+900smH
-	K5l2quKsNzPswIWgMPkSfpX5ykC/KV8HP2TsdrOJToVdkAWNPo9gkrGR45RbsJcl35U/eTSwMXkah
-	AZ4QaCRpf7OCmxAnfVXF8m9N74f1lc+7R5XaqyoT9nkdTMNlDlu/abLFhK/U/o9V0XNK50R19EcSb
-	EXxJv577ujtfznTnReJebOdNeDD4CuBOFGr53ogdcat+BrTXFlYjrdyoMu5CGzau7z6wTmr1vAA78
-	OOJ+StDQ==;
+	bh=IJl6jij5cX4a+/CxoRlIkv2OzMELA/ibbpEJDYkPFso=; b=2C5TSD2ABqa3dJhxL7KshevvG5
+	JBl2kxi7c8sjuRmFIWqm3ZFqVu3JyXMtIOoXluNcMYxEGS+GMJ8b5GYSP7fsy1EPgPmVDDq27zSPH
+	9KurSNBtlK0/7S+bPI0zzQja16S0GByJvblmIrA6bscK31ES58AwCpNhQUKf5BZ4uInK5wkPJgZ4R
+	XLC71auhFfe+SjZs17ln6l2ZsGcLB1P7USwEuXYWVT4KfhyWgl+Uly5wMACdyMc09izmjzO5jef91
+	1qbj38bjDobaCiQ7psHPyrp5RNisYK93pOPczvsDHdGSEXYbO6TpgBhfmhygx5jxzcbo37j0zZtb7
+	qtKFZU3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whnFN-00000002GDF-3tzT;
-	Thu, 09 Jul 2026 11:48:53 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1whnOc-00000002Hal-3pN9;
+	Thu, 09 Jul 2026 11:58:26 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whnFJ-00000002GBd-3kkV;
-	Thu, 09 Jul 2026 11:48:51 +0000
+	id 1whnOb-00000002Ha9-2HCj;
+	Thu, 09 Jul 2026 11:58:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=IJl6jij5cX4a+/CxoRlIkv2OzMELA/ibbpEJDYkPFso=; b=QDhKkA0P9KFHYGcxCLhbe8rLqC
+	4lnCdULq+Anynjv/naiIvB7bJT5BtAwhyEt1HpDLen8u9WrN2smg6VqNsgKnfKFhHAxbq7KlWrUXN
+	N6w6mq8aSDIpweabJz5nwfSynHuRVtizKtBrVVZvkcHOJFu6TOhiS6gGFzvvRR9+9SzlnSOyknnQ2
+	LwKx9DcAfjA+w0Ic7JUPHDMawt+4lJXgaqHDQAEtRb9shF2NtJvLFwE++aWk5sPE3w7L+WMJZ2sXj
+	1VIF8yqkRE5aVqWJD4zuURMAE8Y8T29okz5aCsCx4xYxPQhcPfU4NWu4v3PxqZmT7Z7roNA619G/q
+	wG4Uj2rQ==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1whnOT-00000009AvV-2gpW;
+	Thu, 09 Jul 2026 11:58:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783597725;
-	bh=ZHdYtULAHilEW7xPUMMiGj88dz/NRrO/fa+X2KxsnaA=;
+	s=mail; t=1783598295;
+	bh=0l8hKYZsEJCMBNL+X7+mtDqQz8nsijJQ7qlJBYs68jw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mwAafzonvtw8QRaqoEh1DXFgkwvz05LiCUyG6TDqLgT4YMqb9T/XmgEItN5FPv4sf
-	 Gkr/RnWFtgII6U9ZmZWgu+y8Q7bKEyiKV5//R4Gz4T8XLFGcU7GjlsccweZfY3MM45
-	 bw6HS9Tg3NEpzu9DmMUxKVM3Fu+6cYvT8b6zMMTlIRP4EM/6flnMFLzhpY+TUlQj/A
-	 /amzCl4mqOwp2x+D1CgILdpWw+PK5StZJaT8ug1B18nAuT871+7tFC4+qDU/C3kvpV
-	 IHrzrN//LBQwYBfSjxMYyYJiKS4MBkDRc9FXdDEwGaUZhsCW+QvBbhIo70rfIfIac3
-	 f/o4+g21Q1gTA==
+	b=ZDjPdkfSK69yVmIaEAk1+TJxeZr8mt+7OsHyjIIl6rYXJv89ODdh/Z/fyjs99nt48
+	 EgJ2tCrQzWssQva7MvmvBfhnY22o3ASoF/lkc8XCza3wyxbJDCE2KEAttCXIeNr7AH
+	 xQlVvlT4eFsXxZdtbQ3e+FucWTc0XjMTi5O+grXYz9Q8ea4Q4MrCvQtPf8U6VHI9Qh
+	 QDyEzfGWZNgIUR7IqF/sCl8gxbbplLYyfNhdajB3mSrrwxhuv/vUuDtVlN9CWonlyk
+	 NkG5x1h/e/R0ZFtXZffqJWlyZRnAjfYLQ5UGkXdwJ5JmjewOR+U9LvGbjJq84oGfOJ
+	 GOi8azvVyfV1Q==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5BEB717E003B;
-	Thu, 09 Jul 2026 13:48:44 +0200 (CEST)
-Message-ID: <d35e3376-b2d1-45c2-b1d5-96057cecf1d1@collabora.com>
-Date: Thu, 9 Jul 2026 13:48:44 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id ADF0D17E019E;
+	Thu, 09 Jul 2026 13:58:14 +0200 (CEST)
+Message-ID: <e8ba5a28-e06f-4351-ae71-ac0eca350916@collabora.com>
+Date: Thu, 9 Jul 2026 13:58:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] dt-bindings: mediatek: cec: Correct the compatibles
- for mt7623-mt8167
+Subject: Re: [RFC PATCH 1/3] dt-bindings: pinctrl: mt8516/mt8167: Move
+ compatibles from mt66xx to mt6795
 To: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
- linux-mediatek@lists.infradead.org
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>,
- Jitao shi <jitao.shi@mediatek.com>, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-References: <20260624173627.19785-1-l.scorcia@gmail.com>
+ Conor Dooley <conor@kernel.org>
+Cc: linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@kernel.org>,
+ Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20260625104742.113803-1-l.scorcia@gmail.com>
+ <20260625104742.113803-2-l.scorcia@gmail.com>
+ <20260625-cameo-siamese-cd78c349519c@spud>
+ <CAORyz2JHj7i6VhKom+tVd8PWBjM=TFhbr8-mOy3GH6eDYu4WPw@mail.gmail.com>
+ <20260625-unearth-suffering-e2c59d39da0f@spud>
+ <CAORyz2L5YuBifG-ud7QHPva+_nyL_SyXMVQ5EeC0s52isc5J3w@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260624173627.19785-1-l.scorcia@gmail.com>
+In-Reply-To: <CAORyz2L5YuBifG-ud7QHPva+_nyL_SyXMVQ5EeC0s52isc5J3w@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_044850_388358_34DA2838 
-X-CRM114-Status: UNSURE (   7.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260709_125817_905421_E151E291 
+X-CRM114-Status: GOOD (  12.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,23 +99,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/24/26 19:36, Luca Leonardo Scorcia wrote:
-> The HDMI CEC driver for both mt7623 and mt8167 is actually the same as
-> mt8173-cec and the mt7623n.dtsi board include file already uses mt8173-cec
-> compatible as a fallback, but the documentation lists them as separate
-> entries. Correct the binding by adding the correct fallback.
+On 6/26/26 11:12, Luca Leonardo Scorcia wrote:
+>> Usually when making ABI changes because something was inaccurate (but
+>> not wrong to the point that it didn't work at all) it's possible to
+>> support both new and old ABIs at the same time because of new properties
+>> etc. This is a difficult one because it's using the same properties in
+>> different ways. A new compatible would definitely be required for a
+>> genuine fresh start while retaining kernel support for the old mechanism
+>> in this case.
 > 
-> This change fixes the following dtbs_check errors:
-> 
-> DTC [C] arch/arm/boot/dts/mediatek/mt7623n-rfb-emmc.dtb
-> cec@10012000 (mediatek,mt7623-cec): compatible: ['mediatek,mt7623-cec',
->    'mediatek,mt8173-cec'] is too long
-> DTC [C] arch/arm/boot/dts/mediatek/mt7623n-bananapi-bpi-r2.dtb
-> cec@10012000 (mediatek,mt7623-cec): compatible: ['mediatek,mt7623-cec',
->    'mediatek,mt8173-cec'] is too long
-> 
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+> All things considered, the cleanest solution seems to be adding a new
+> compatible, mark the old one as deprecated and also try to fix the old
+> driver code. I'll try to do that before submitting again.
+> Thank you for your help!
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+You can skip the "fix the old driver code" part. The only users here are
+demo boards that aren't even used that much and besides, they're even hard
+to find.
 
+Cheers,
+Angelo
 
