@@ -4,109 +4,170 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19A32C43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 02:07:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05ACEC44503
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 02:32:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Mime-Version:Subject:References:In-Reply-To:Message-ID:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DiPeyVYQaEiVqx7WKQEaIVABISxwCwD67P0r37Z1zdw=; b=z4Cip90W3jKrKOdpYbv4RnsMNQ
-	sB8gIAC0F4C8afdkGX4gl0xYRS8xJWO2si4GZ7bAmawuYlc+qLmkA3r4sO5s1XP90G0wx7tUbOEo1
-	+K93uimLBNMW7TcXojIjeLPWhyrH+9JqadJadeTz/XmF0xCp/7X6tE7GEEcHNjqB4BIAr+ydCmJ1F
-	y2Of5LCE6bmgrQnYfiBYJ4zTV4NQurz63F4c2FCy/mqPfQ78f205KZC0vW3Ca+x6ilQGXatZ2aSHF
-	ioBd26cA+jGoyAoMNbjwvNORobzMW2ELwsmv2+kREPp1f/S8n8x1PY0TGVl4lt77HvPagGkhBsYPV
-	8fPAEGFw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:Subject:To:From:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Zb15SH/XYFa+RyS0cTGgR/gZagBNPGGjTMJKmIURz8M=; b=kw66KeN1mN4pOMARZDlcN95UC6
+	FWNluVmZuUuUr+kzFq79f3Zycffyd1TNIPi7RnXVRwNVqcJYvlomLnLH1AWOQmPYtLgyc8uKq7I/T
+	lCZkovXSzSOVsq16kiA/incUutbC0i0COLVG95WsUAzo9VD011Ynsf6bLUlEbzZWYhjYhsH+NQgKt
+	04yxMZkf9xot07T1z9Iq9St8mUvSk4t2iqffBPz+r90x9J99Y8X5avwNHvKWQtRVGxqTD/uo0sjXd
+	zISKhdIrpOrY/HFJC+DhMyNaLpeor8IpFI6IDHlnbt8HoYFQFRQ8grWpWyH41KdaIdSJOneUZE4fX
+	HbryMVjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wheAc-00000000nZd-0o8l;
-	Thu, 09 Jul 2026 02:07:22 +0000
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+	id 1wheYR-00000000p9W-2aTT;
+	Thu, 09 Jul 2026 02:31:59 +0000
+Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wheAa-00000000nYo-0Hxj
-	for linux-mediatek@lists.infradead.org;
-	Thu, 09 Jul 2026 02:07:21 +0000
-Received: by mail-yw1-x112e.google.com with SMTP id 00721157ae682-80cbb0688c8so21107477b3.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 19:07:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783562839; x=1784167639; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:subject
-         :references:in-reply-to:message-id:cc:to:from:date:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=DiPeyVYQaEiVqx7WKQEaIVABISxwCwD67P0r37Z1zdw=;
-        b=FZC6jaIWPR/HC3TBgXdMzhFT8Y776dWdq2WiBMm9xtK3iPNQBjF2EWXQMgFDbr2Tog
-         2osViER/wz4muOPV7ZyldttUUxELrTwuhna2N6xslXow+ndBCqpRbDGDF8F3Kmf+nhQ8
-         lkyZ+4dqpu24ad6/rIRQaQrlCDi7U6k1vr2luXqR0K+HJfijYG/taAPpnM+B2dCqu5t6
-         ZWnrAEXL7JhCKcZCqVZKdPCefxGAB1Qo8FB6CgD3J64XL9iz/pAeungxQB9/8TptwppZ
-         nM6ViedMm9MlL/iITYyu9CefsXSa+5oL61X+qchaY5u+NqpT+PQzrYPMUBWbhguPsFzR
-         OWRg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783562839; x=1784167639;
-        h=content-transfer-encoding:content-type:mime-version:subject
-         :references:in-reply-to:message-id:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=DiPeyVYQaEiVqx7WKQEaIVABISxwCwD67P0r37Z1zdw=;
-        b=s78Wyz7qzzuygN8TjIixzzduSCsB3a+hJKTBRzLNQT8bCrTZqTcRaqfh6lvQCfthaT
-         3XGNWvT9e7seqanYn4JyWgCiTVTpyJCN/yV5w81QhSN0KuDjsXKuSZIMPurbLOX5kXQ8
-         Ta0RWFfc5yb1ZAsBGyGghVPHP1Vgbj4s1iTKbHE+S4me9tdNB5lb0TwgvKJiKzSBFzQH
-         8o0XDt9ITelicx/rdadG4UoROpJLM8UXzV9yjh0jXr2tZrNhgC58+LahvFSS8QZ3HzhU
-         rapn027sI6FIkvdK8Lt3FlWNqkMmjllcfkguP/wUtPL5XZ038dk19lsFCtn2Y8fTIaKR
-         zJMA==
-X-Forwarded-Encrypted: i=1; AHgh+Rr1u59Ja4DayYZwY47Os9T7sBsaBPv6k7odcbCWNCwoRW4V6s6VXWH5wGi9fqZ4ZImw2GZpD6izppZqLL+vMw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwWszGFqudB90GLgynHcOxf3+zzpHkHbMAcNeoCseyXDOEyaEjf
-	Vp8N/oRy1yT8frUGMh0n/7sEft6rEo7TZ4YMEe3tcip/C4G8DLwhntrp
-X-Gm-Gg: AfdE7clqNCcuL5xSKvobuf31qZ+mKEWecahjuuQ97C70KrmhBYsKKre7UoAlw91dYpM
-	vKF4I8mKlRKTztA3oLZ59iAgranFCLVx+luEg/F+oY+3QG9BodL6rWj3IYomhXq9WI1wfYzEf3T
-	nlP8Ad9WWGWhBciXsubAyNse3/BUp/d4qAT01FStsbndrBJpBKIUTupHfeYn2yCD4ps/LAygC8K
-	FT1hO6XGIkpDr5xHBtfpPoVY7/SrQ9bpZm56c5K42TOuKwGuQR8fSE8vpAFPeFqynsyz7yaBa9R
-	ysb1FrxCxa1V5sE/btnuoz45j7+xFXEqOpEQ71ef7DYv/la7RFwR2o/SZ89xYcAYRsfFXBDZt1w
-	Hoz+NHHKN7efHGgUHzS+UDMy6uPir6IQoQgIRETU6QvUjr63gzSnpCuskxS3nvCVH1dVLFVYMqb
-	uMyTQ4fL5IOU/PhnD59BVdIYrdkfP9jPiQq9Pmef7T1SPsk0YnmxyVD7MuwAbLTMOMig==
-X-Received: by 2002:a05:690c:4b90:b0:814:608a:acb4 with SMTP id 00721157ae682-81dbeb5f73emr38829227b3.27.1783562838726;
-        Wed, 08 Jul 2026 19:07:18 -0700 (PDT)
-Received: from gmail.com (172.235.85.34.bc.googleusercontent.com. [34.85.235.172])
-        by smtp.gmail.com with ESMTPSA id 00721157ae682-81e6be904a4sm6869687b3.7.2026.07.08.19.07.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jul 2026 19:07:18 -0700 (PDT)
-Date: Wed, 08 Jul 2026 22:07:17 -0400
-From: Willem de Bruijn <willemdebruijn.kernel@gmail.com>
-To: Shiming Cheng <shiming.cheng@mediatek.com>, 
- davem@davemloft.net, 
- edumazet@google.com, 
- kuba@kernel.org, 
- pabeni@redhat.com, 
- horms@kernel.org, 
- matthias.bgg@gmail.com, 
- angelogioacchino.delregno@collabora.com, 
- willemb@google.com, 
- daniel.zahka@gmail.com, 
- alice@isovalent.com, 
- sd@queasysnail.net, 
- eilaimemedsnaimel@gmail.com, 
- imv4bel@gmail.com, 
- nbd@nbd.name, 
- dsahern@kernel.org, 
- netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-Cc: stable@vger.kernel.org, 
- steffen.klassert@secunet.com, 
- lena.wang@mediatek.com, 
- shiming.cheng@mediatek.com
-Message-ID: <willemdebruijn.kernel.2801a1401793d@gmail.com>
-In-Reply-To: <20260709014704.3625-1-shiming.cheng@mediatek.com>
-References: <20260709014704.3625-1-shiming.cheng@mediatek.com>
-Subject: Re: [PATCH v7] net: gro: fix double aggregation of flush-marked skbs
-Mime-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: 7bit
+	id 1wheYO-00000000p7q-1mkS;
+	Thu, 09 Jul 2026 02:31:57 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=qHu5emWwIc+uGdLMCWmtc+HuliYBqFQFj69Eb/6qip/xiZIhjPJcoivwGM6/E45cIQQMhcypwwvdUMIcLZKdGKaoB6jMwtCAHYw/fs4+53IM+cLDOEWjkfYUvs/iVPA0HGtGhmVIgUwXj8AnL+2udtEhSPH8wniQr0mGPNI+Jast+ovKwI8XQG5o40SB4wRIW2SSLGgGUYqFxXsphSIDuhjQSOHAI2v7EDhpIQk3/46YPVGX+3dfmNIAxT6Se/SWUd4s6CgROFNAKzbo6Av4Pd0kdJsn9/hiTSFVsfbRSw0pbFU5c4FKcauzZz/nalWucMGD2oEZpTvix58+iFEmvw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Zb15SH/XYFa+RyS0cTGgR/gZagBNPGGjTMJKmIURz8M=;
+ b=xtSAF7ki0R7RdTyVNixnHBgVXyiFOtg4Wk+qbVQjzlIc6yqTM0JLgBye52Q+YLPH2pe6DekT8hj0FiXF27nDZvO6mcZlqkep3v5KI4xX1YeMAP+Z+U2vQOPc7+lOUkIdXaWAVU5EOIstFWYJA3YYcvG0DGFWukPVZsOejZw3fvce7kGM4s9SlI8j7j2LckqFFhfzwpqtQ7aemEVCGtcMvPDkDZf9hHjzzxe0CSRuOKZ3XpAIzrE7L00btSa9d9yYSN88142UiFAiPV5TdSbinP0KuX6Zrkdzh+3oAIMRsx2dv0jXBSxKENYnBQlJmB2Zbauhoy6Ax9bP5dGb6lalQQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Zb15SH/XYFa+RyS0cTGgR/gZagBNPGGjTMJKmIURz8M=;
+ b=KwFXQ/xVozptnhlCLkFe+wIw8eifW3MDFgXMgUgzoA1tU1ReYPmC6D/8adYynMvVeDEwa7iRT8ZPAxTLv5L/H3lkXtLz1of3gA+zOZuESdkLh2HPTggQpmF4IpOS3uClYI/iVBxSdTsdQvB1zp0TK9ZcVjFrCrS/qZi18LzVubRZFk1KY0imE8N0XRDTfX7w2hr0mRL4cuGZ0A8JHgaVvbzjmhLtX+7gk5zhAFDYdLnL0G8CsfguMVZxBqi5zYaEnA7DOoh883TL4yftoM7zxreInxXSu/bi8mTo2lQEw6fHhBlZ2sZnsq7h7yWk4byuEf+tqAd7HiJZs8bU7fq7Wg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Received: from SEZPR06MB5832.apcprd06.prod.outlook.com (2603:1096:101:c8::12)
+ by KUZPR06MB8800.apcprd06.prod.outlook.com (2603:1096:d10:c7::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.11; Thu, 9 Jul
+ 2026 02:31:35 +0000
+Received: from SEZPR06MB5832.apcprd06.prod.outlook.com
+ ([fe80::f98:5e32:4ccb:d07b]) by SEZPR06MB5832.apcprd06.prod.outlook.com
+ ([fe80::f98:5e32:4ccb:d07b%6]) with mapi id 15.21.0181.014; Thu, 9 Jul 2026
+ 02:31:34 +0000
+From: Pan Chuang <panchuang@vivo.com>
+To: "Rafael J. Wysocki" <rafael@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	Lukasz Luba <lukasz.luba@arm.com>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Markus Mayer <mmayer@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	zhanghongchen <zhanghongchen@loongson.cn>,
+	Yinbo Zhu <zhuyinbo@loongson.cn>,
+	Amit Kucheria <amitk@kernel.org>,
+	Thara Gopinath <thara.gopinath@gmail.com>,
+	=?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	John Madieu <john.madieu.xa@bp.renesas.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Bartlomiej Zolnierkiewicz <bzolnier@gmail.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
+	Pan Chuang <panchuang@vivo.com>,
+	Laura Nao <laura.nao@collabora.com>,
+	Mason Chang <mason-cw.chang@mediatek.com>,
+	Fei Shao <fshao@chromium.org>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	"Jiri Slaby (SUSE)" <jirislaby@kernel.org>,
+	Svyatoslav Ryhel <clamor95@gmail.com>,
+	linux-pm@vger.kernel.org (open list:THERMAL),
+	linux-kernel@vger.kernel.org (open list),
+	linux-arm-kernel@lists.infradead.org (moderated list:BROADCOM BCM7XXX ARM ARCHITECTURE),
+	imx@lists.linux.dev (open list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE),
+	linux-arm-msm@vger.kernel.org (open list:QUALCOMM TSENS THERMAL DRIVER),
+	linux-renesas-soc@vger.kernel.org (open list:RENESAS R-CAR THERMAL DRIVERS),
+	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
+	linux-samsung-soc@vger.kernel.org (open list:SAMSUNG THERMAL DRIVER),
+	linux-stm32@st-md-mailman.stormreply.com (moderated list:ARM/STM32 ARCHITECTURE),
+	linux-tegra@vger.kernel.org (open list:TEGRA ARCHITECTURE SUPPORT),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek)
+Subject: [PATCH 00/18] thermal/drivers: Remove redundant error messages on IRQ request failure
+Date: Thu,  9 Jul 2026 10:30:03 +0800
+Message-Id: <20260709023048.599150-1-panchuang@vivo.com>
+X-Mailer: git-send-email 2.34.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: TPYP295CA0019.TWNP295.PROD.OUTLOOK.COM
+ (2603:1096:7d0:a::14) To SEZPR06MB5832.apcprd06.prod.outlook.com
+ (2603:1096:101:c8::12)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SEZPR06MB5832:EE_|KUZPR06MB8800:EE_
+X-MS-Office365-Filtering-Correlation-Id: 70fb9282-7ee3-421d-4ce6-08dedd6231bb
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|52116014|23010399003|366016|1800799024|7416014|376014|38350700014|921020|18002099003|11063799006|56012099006|6133799003;
+X-Microsoft-Antispam-Message-Info: 6etLwCHUEWhmfC31D/Bu8QoyAGLR6iL1slE3kRDmYMOlGHhf3zB8PKFtf5+LC/RoQo3o2vspywARwBPknKqsAMv5/toUka3eJGCIh+EoZSQEGmN1Jug5EbVlfaPGRie+cSwuzh9vGI/booIw1LKcFquoTPIn+rku0G0GqXU6PJLlNN3Px1i08P5jKmrETRvISRmi7+H5J7pvW1PxofYRjKFun/T3AgvADk2fJyxeVJtPdu3XD+gbliUBrRHccg7cfSiPn7EcPrz2LZUyduRdgbWCdqiWzb1s0twg3dxkDyTJCF1faJeR6RjaojvT0BlQJyCxqKG3O1kRGWdlWWZnINVF9NJFrx0ndfYhliVDN9FZu87UFx2W9foaxtEP0jzXZDQqotOswge7x0vObC1YHAhlW5NJZSEpIIIL83JjcO1evYaURywCme18NxU0XJzYRxZisncnZkjj31+AJtk/sILkARtCrRRbHm9It2urggNYpsUD3hsWBbt8mIMvYovJ5xl/rsxSu8EWl5YoNATxqG5mtXKBsfmQ6I9YH9CPWliIHqnYgvLfBUj5ZnLDZsiD/2MA8FuZgZ0fcY+FDGjpbj8KYOMtbO7QErFvbewLPmM1WipG2TdaMTzUFKMdnu2Gv45v1VNjLPKab4IvfMPXX6fexzLk6SYWdKO22zypoG9imL5zDwFtWMVZ7uMCleKp+KHmQw6PMjyBs825ARhFHgQBoaNM8s0/fXkI8y4ryXU=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5832.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(52116014)(23010399003)(366016)(1800799024)(7416014)(376014)(38350700014)(921020)(18002099003)(11063799006)(56012099006)(6133799003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?nLU2s9FefGR5lZlr/WpM/N1cHMI4MOnLXQSGkAnzYUixx89gYPn4qpM4aTkz?=
+ =?us-ascii?Q?YWud6ZFpIeBNAO4uKP5nJ+8sEeGtrDFxv+XkRWQa/pG9R4E6O9xFTkwLApD5?=
+ =?us-ascii?Q?nWhIBhHnwLZY0pIvqsqPE6EjwJtIWoDeIN7c+1lat0DY+EREf5mdWKFS8xbC?=
+ =?us-ascii?Q?MvMfQloj4iCuLe1DYG7hq5kwptcyq9CDnm+QD7R80p10lQdRY0LHRBxx1meD?=
+ =?us-ascii?Q?EzHjknX5y2H2EwANrebn7/zPHimqcbUyqRo7wZTELexW6uf3pYvnnw+Vbptj?=
+ =?us-ascii?Q?7IedyeKme5xf/2Vk66qT0UEcpayTl+PdCw6MAq6Sm+FAoFa7WZyMnQL5FbKe?=
+ =?us-ascii?Q?+GyB+yNWE9RrO8wEtNYAbmhT32ceZ7ilM2+wUsfwbC9bw4rYLqOejejhL9BK?=
+ =?us-ascii?Q?nc1Li1351CaDu3wfaYJWiR6dqpPHokheeaToDQHwXuLB0+gRFQnGjH/LUEFw?=
+ =?us-ascii?Q?jY5D5NMva6b0sf9Z0fhsMYpMr/NYuAs3YJTSwtaxrrHPZvWlz8jcSgigo67i?=
+ =?us-ascii?Q?GxNshuHtP4DHfnx8ujL6OcwJ19pxIokKpTny1U8g3DH0xMvGPCcVup6se7r3?=
+ =?us-ascii?Q?7uGvExkIu+MpZR9jIarqXxBl0+LZHmLqdU9lrAuh8yNshcqF/wBNX3hyFZH3?=
+ =?us-ascii?Q?dz4s9Z04uL3G2aWZCXiHtym2Tqa+Mnshi68C74cfPG+g0QqBJbXqOcMfHWs0?=
+ =?us-ascii?Q?3cyzfO3cMIXkH5gJeactkMGn/CYydqo5qVzghAjMH9oJyaiK4NpPwnN5tqpc?=
+ =?us-ascii?Q?fmFiyeZxDygFK3f20iyOI2tJt+cCd0jbvFq/zU0J0B9r3JIolZBAVTljgRlB?=
+ =?us-ascii?Q?5EtMW09spAvevNikDidRCsLw8OtwpSnud4HYqiE/Sn1ObWZQ+AMS0cU1W4w6?=
+ =?us-ascii?Q?JWj/cgKrLxjwt366NAufQCU5Z6inru56dIBsBWJN6FdLYZAlcrhfH+Y0//47?=
+ =?us-ascii?Q?qqrcLfLTLtqPAK8oa/mdW8i8SpE8SEnk3fYw1EQR6NjAoO2PXJcPYGjIQXbP?=
+ =?us-ascii?Q?7oPp2SGrS0/0Bf7CUKqdeo/Ek0YJwBKWJ2Z776YQa+E9I5DZRSgVmE9DrVzE?=
+ =?us-ascii?Q?se2wjdwsmg+Y2di04qbXxAbGdO3QF7s4m1FTyNPWm1NmfDnZannl8NMy93fx?=
+ =?us-ascii?Q?LUeBCQFljrsYi5PXvjkJXU73JUKjwIywIVcVY31fc3+l/RQp4FsmdOD6hDWq?=
+ =?us-ascii?Q?x5G30OzAOvqlfw5UO1n8hA9awSITgr6Nl3Rf9sgp6bWBf2qLyyO3S6giNhw1?=
+ =?us-ascii?Q?w6zaDTDam6EWHErEfs3YAUotZKmcQ+QK0jm/Xss2eSJI76l2t/cd3PI/nIt3?=
+ =?us-ascii?Q?lViEBnAyKpJdhDu31p9XAAxa7omXozms8li6znxWahXqYmJW3xDdF0DnAvOk?=
+ =?us-ascii?Q?xsJoUS0/JPFJXbAQJj2ukD2SAXHpOrWe+a+SJ1pKcpwDV5kvInjJtG+VWdrv?=
+ =?us-ascii?Q?yS5Q++dY/GzXWbfTqpIRwgTyHMpkPbexaIdCkI1aGDhZsA2AaPctjeXwzUSG?=
+ =?us-ascii?Q?z6LCkK9qLJ1hVl+1ywT1c2S2WMf1I6kvd25y3BUE0xkyu0jmJbzDbQm1YD3s?=
+ =?us-ascii?Q?L65e3Z0XBZkq0CVtl7NWzL5Oehmn+Zw6rsNH4avYsMCeigDfcB4d6ifHuYOV?=
+ =?us-ascii?Q?GwR7eL+uXpRcr37V10erNYnBfiJUDB70MJpZTAkJVBaiPUd9dWRaIo4MpMRq?=
+ =?us-ascii?Q?BhNzTP+UNxzxExIjrFfB8Ika+iXJwR/cl3VKgFGn89eiI+VLgaAllYMr4+vx?=
+ =?us-ascii?Q?i/+or4t1nA=3D=3D?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 70fb9282-7ee3-421d-4ce6-08dedd6231bb
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5832.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jul 2026 02:31:34.7865
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: DVhgkewTd2EN/hIfgnq+yD75CFZFnXJmCw8ddwRZLcc/GekWLNki6edKlLUpUmotdedMVsXx6nTaxfXo8bZQmQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KUZPR06MB8800
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_190720_266200_A60C3033 
-X-CRM114-Status: GOOD (  13.79  )
+X-CRM114-CacheID: sfid-20260708_193156_481729_F3014DAA 
+X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,64 +182,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reminder to mark patches [PATCH net v7]
+Commit 55b48e23f5c4b6f5ca9b7ab09599b17dcf501c10 ("genirq/devres: Add
+error handling in devm_request_*_irq()") added automatic error
+logging to devm_request_threaded_irq() and
+devm_request_any_context_irq() via the new devm_request_result() 
+helper, which prints device name, IRQ number, handler functions, and
+error code on failure.
 
-(or PATCH net-next when targeting that tree)
+Since devm_request_irq() is a static inline wrapper around
+devm_request_threaded_irq(), it also benefits from this automatic
+logging.
 
-Shiming Cheng wrote:
-> Commit 0ab03f353d36 ("net-gro: Fix GRO flush when receiving a GSO
-> packet.") added a flush check to skb_gro_receive(), but
-> skb_gro_receive_list() lacks the same validation.
-> 
-> As a result, packets marked with NAPI_GRO_CB(skb)->flush may still be
-> re-aggregated.
-> 
-> This allows already-GRO'd packets with existing frag_list to be
-> re-aggregated into a new GRO session, corrupting the frag_list chain
-> structure. When skb_segment() attempts to unpack these malformed packets,
-> it encounters invalid state and triggers a kernel panic.
-> 
-> Scenario (Tethering/Device forwarding):
->   1. Driver: Generated aggregated packet P1 via LRO with frag_list
->   2. Dev A: Receives aggregated fraglist packet and flush flag set
->   3. Dev A: Re-enters GRO, skb_gro_receive_list() is called
->   4. Missing flush check allows re-aggregation despite flush flag
->   5. Frag_list chain becomes corrupted (loops or dangling refs)
->   6. Dev B: TX path calls skb_segment(), crashes on corrupted frag_list
-> 
-> Root cause in skb_segment():
->   The check at line ~4891:
->     if (hsize <= 0 && i >= nfrags && skb_headlen(list_skb) &&
->         (skb_headlen(list_skb) == len || sg)) {
-> 
->   When frag_list is corrupted by double aggregation, when list_skb is
->   a NULL pointer from skb->next, skb_headlen(list_skb) dereference
->   NULL/corrupted pointers occurs.
-> 
-> Call Trace:
->  skb_headlen(NULL skb)
->  skb_segment
->  tcp_gso_segment
->  tcp4_gso_segment
->  inet_gso_segment
->  skb_mac_gso_segment
->  __skb_gso_segment
->  skb_gso_segment
->  validate_xmit_skb
->  validate_xmit_skb_list
->  sch_direct_xmit
->  qdisc_restart
->  __qdisc_run
->  qdisc_run
->  net_tx_action
-> 
-> Fix: Add NAPI_GRO_CB(skb)->flush validation to the early-return check in
-> skb_gro_receive_list(), matching the defensive programming pattern of
-> skb_gro_receive().
-> 
-> Fixes: 3a1296a38d0c ("net: Support GRO/GSO fraglist chaining.")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Shiming Cheng <shiming.cheng@mediatek.com>
+Remove the now-redundant dev_err() and dev_err_probe() calls in
+thermal drivers that follow these devm_request_*_irq() functions, as
+the core now provides more detailed diagnostic information on failure.
 
-Reviewed-by: Willem de Bruijn <willemb@google.com>
+Pan Chuang (18):
+  thermal/drivers/airoha: Remove redundant dev_err()
+  thermal/drivers/armada: Remove redundant dev_err()
+  thermal/drivers/db8500: Remove redundant dev_err()
+  thermal/drivers/hisi: Remove redundant dev_err()
+  thermal/drivers/imx: Remove redundant dev_err()
+  thermal/drivers/loongson2: Remove redundant dev_err_probe()
+  thermal/drivers/max77620: Remove redundant dev_err()
+  thermal/drivers/rockchip: Remove redundant dev_err_probe()
+  thermal/drivers/brcmstb_thermal: Remove redundant dev_err_probe()
+  thermal: intel: int340x: Remove redundant dev_err()
+  thermal/drivers/intel/bxt_pmic: Remove redundant dev_err()
+  thermal/drivers/mediatek/lvts_thermal: Remove redundant dev_err()
+  thermal/drivers/qcom: Remove redundant dev_err()
+  thermal/drivers/renesas: Remove redundant dev_err()
+  thermal/drivers/exynos: Remove redundant dev_err()
+  thermal/drivers/st: Remove redundant dev_err()
+  thermal/drivers/tegra: Remove redundant dev_err() and dev_err_probe()
+  thermal/drivers/imx91: Remove redundant dev_err_probe()
+
+ drivers/thermal/airoha_thermal.c                          | 4 +---
+ drivers/thermal/armada_thermal.c                          | 5 +----
+ drivers/thermal/broadcom/brcmstb_thermal.c                | 3 +--
+ drivers/thermal/db8500_thermal.c                          | 8 ++------
+ drivers/thermal/hisi_thermal.c                            | 4 +---
+ drivers/thermal/imx91_thermal.c                           | 2 +-
+ drivers/thermal/imx_thermal.c                             | 4 +---
+ .../intel/int340x_thermal/processor_thermal_device_pci.c  | 8 ++------
+ drivers/thermal/intel/intel_bxt_pmic_thermal.c            | 4 +---
+ drivers/thermal/loongson2_thermal.c                       | 2 +-
+ drivers/thermal/max77620_thermal.c                        | 8 ++------
+ drivers/thermal/mediatek/lvts_thermal.c                   | 2 +-
+ drivers/thermal/qcom/lmh.c                                | 1 -
+ drivers/thermal/qcom/tsens.c                              | 5 +----
+ drivers/thermal/renesas/rcar_thermal.c                    | 4 +---
+ drivers/thermal/renesas/rzg3e_thermal.c                   | 4 +---
+ drivers/thermal/rockchip_thermal.c                        | 3 +--
+ drivers/thermal/samsung/exynos_tmu.c                      | 4 +---
+ drivers/thermal/st/st_thermal_memmap.c                    | 4 +---
+ drivers/thermal/st/stm_thermal.c                          | 5 +----
+ drivers/thermal/tegra/soctherm.c                          | 8 ++------
+ drivers/thermal/tegra/tegra30-tsensor.c                   | 3 +--
+ 22 files changed, 25 insertions(+), 70 deletions(-)
+
+-- 
+2.34.1
+
 
