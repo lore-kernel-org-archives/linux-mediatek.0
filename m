@@ -4,76 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEF20C43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 13:31:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6F68C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 13:43:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9pQ/gqP0G3y+IbZnocO3iDIwsT0eZyiWm41rqRCN6BY=; b=IyYkasOTrLH0bql0IoxNLQE+nk
-	V+xjcvC//TOXz64m6TKRkNca+bBi4WV3pH3ylrddaqRT26z6pyQaevZnhMUNDfX6lrO/HdhC5nFQ9
-	izCGlYNLz1MDxCmehBs2XQyKcDc/Pbr82Xve3F99FGwwXjVAoGoOtNHn3nz/2V4GQk4TEhPXFpUnY
-	uF7nFXrTozsKrHJWARrX9OtsOYSfkD33ivJf3SetecRJzHCfnxBsLVLvtstMr69fyXBwNZYLtrLSO
-	7fFFnOKvw1kf3jyixaenNZ1V3uMANILQRfxNpzdESKQ80zh/KzmgceqF+8MMO+z2qa6rwx/oRVcH+
-	30tWByLw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cW2AsL1oaTRceoRibYD5g69dUvr+KsHpHaVGvu4UyjA=; b=BhA83fRF/VlWi1+ESEdH2KCeok
+	E4QbX04I87BbudzXv3aN2jOjTJWwfq3AGUy3nhthvf3p+ERncQ+VyQVrAdJ2Pwimz4hqO00pE7eTE
+	FIhzlA5I51sigsv8sN7mAUjBN+NoIH2SCNO4m/wt/s4+EkwR5OMhRdzIohtFYTqQS4d1xQarmuFSv
+	i0lsPIOAooYWG6hlMugLhhBuuWnvpXuWa/8m2deB91M/XVbMbZqFBPWSCRtlSkFvrkzLaWG2jcJaw
+	zCwuhi1vtChbFNtOzLSCD3G8tuEI/z/peNkuLvdnXuSFLlm0uvPZ2Du5iwbXMj6rUAMYMWvIvZ00d
+	CckTfO3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whoqi-00000002Z3E-39ek;
-	Thu, 09 Jul 2026 13:31:32 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1whp1r-00000002aob-26N3;
+	Thu, 09 Jul 2026 13:43:03 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whoqh-00000002Z2t-2h3v;
-	Thu, 09 Jul 2026 13:31:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 11A6C403AC;
-	Thu,  9 Jul 2026 13:31:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id DC8FDC2BCB7;
-	Thu,  9 Jul 2026 13:31:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1783603890;
-	bh=28FI2HV+RQto7uL7vOBZUQ3tD2S865OcagwBjanwseE=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=Vcf2M8ynpe3cb+4GqG9PhCk8FBZz8xsKHdrgyyV3RTw/BFvxJgd0KF9O8MLB3QcJA
-	 IqDMBoCXOST783QPl3xEV1ZIZLfGKnSb8csbKj2I0AXVfhvfRRlYs/XRrHBTu+mvxj
-	 UNlX7xeowNdrJwYZuXCWK74Lzavk2dxBRvcIQIMlJjtjkFT2A2GQP52FESMPdUaxha
-	 fzuD7ZPhGzrJ7yrDiM9NumS46gfI2WDkfcLIgy/eup7LOESIULgo7cj8xEIdyN90+6
-	 EETEduw+J+/8NKR+mvwFnMk4xZh553+kSulxDFuEltfHxXkT3fdCKRjcI893IyOcxl
-	 vN6Ffv4IutBhg==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B8CF9C43458;
-	Thu,  9 Jul 2026 13:31:30 +0000 (UTC)
-From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Thu, 09 Jul 2026 16:31:29 +0300
-Subject: [PATCH v2] i2c: mediatek: fix WRRD for SoCs without auto_restart
- option
+	id 1whp1n-00000002amJ-3btq;
+	Thu, 09 Jul 2026 13:43:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783604577;
+	bh=XVmQ+2qFrG9vLkAnDq/06nyA/RqY1ZBMtY7S+LPpWaU=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=oVImF296B76BMDIxAVQ4pJJDt53hrkqTylVfIQHhdJBGG+JOXoiTpkQ4HlShRIGBy
+	 +99eWiwyga17EpieTxMoalweIwqEbJVcpqzSojMerBq6uvv6DIsyQqdkwJVjIpiqh8
+	 oLUw/wQASVLKfyiPockzv9G+0EFZTEbDXiHZfdG0j8vh4nTrWYzWudnuvmmjIAAU3O
+	 4LJlUXMo2m+Lz7tGKUuwNJROCvkVU/uTdMRYbZW/GKpSHLyqfctv/RpUUFMHkKXvwZ
+	 iPwNuuVadwtrd6QH9clL+5fLdrt8L/Jw6QW6wS/OOV+9GM2Y/OTN7tLo+VKBJoYFf6
+	 WARllp/BN5u+Q==
+Received: from yukiji.home (unknown [100.64.0.131])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5FDEC17E0D33;
+	Thu, 09 Jul 2026 15:42:56 +0200 (CEST)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Thu, 09 Jul 2026 15:42:41 +0200
+Subject: [PATCH v2 01/18] dt-bindings: clock: mediatek: Make '#clock-cells'
+ required for MT8186
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260709-6572-6595-i2c-v2-1-b2fb8510d1d3@protonmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/12N0QqCQBBFf0XmuQ13cjfsyf8IH9Zpyol0ZdekE
- P+91eglBi4cuPfMDJGDcIRTNkPgSaL4PgHuMqDW9TdWckkMmKPNLR6UNUdMURolSMoylVSwdek
- gbYbAV3ltvnP95fhs7kzjKlkbrcTRh/f2cNJr7+cu/tyTVlqV2hjixjnGvBqCH33fOXnsyXdQL
- 8vyAXrC7/bBAAAA
-X-Change-ID: 20260623-6572-6595-i2c-6ec9c4e6a6a6
-To: Qii Wang <qii.wang@mediatek.com>, Andi Shyti <andi.shyti@kernel.org>, 
+Message-Id: <20260709-mt8189-clocks-system-base-v2-1-2926da3db6cf@collabora.com>
+References: <20260709-mt8189-clocks-system-base-v2-0-2926da3db6cf@collabora.com>
+In-Reply-To: <20260709-mt8189-clocks-system-base-v2-0-2926da3db6cf@collabora.com>
+To: Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Edward-JW Yang <edward-jw.yang@mediatek.com>, 
+ Richard Cochran <richardcochran@gmail.com>
+Cc: kernel@collabora.com, linux-clk@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- stable@vger.kernel.org, Roman Vivchar <rva333@protonmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1783603888; l=2133;
- i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=5I4uNLRRu2akfikPizlAwyA4WFLdXzLI6g0+07ulnqg=;
- b=knMH5OtWF4DJGyJyp/5TwXppDN/rEXeTi+WquMx+mWXenqL3U45hmu6DwLPj1jf6sZkwwXkMG
- 41rs/GAxG3jDmbD3MVx/NKtXxKLTrR01TvdgYiQGk3Zrgt8YKihoscR
-X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
- pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
-X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
- auth_id=777
-X-Original-From: Roman Vivchar <rva333@protonmail.com>
+ netdev@vger.kernel.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783604575; l=1522;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=XVmQ+2qFrG9vLkAnDq/06nyA/RqY1ZBMtY7S+LPpWaU=;
+ b=TZqFueTbwacWEBBWgedvAqgyOZaJQfOAUdmA5xfp9iOqcMd940T7OGr1evceMtt33cretyDKu
+ QlKQisUifu6CxS+l3ECkxIGw9tu9v+NFL9kTP3G6dhd2GzcKQ+ZPKtq
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260709_064300_088303_5E3CC0DE 
+X-CRM114-Status: UNSURE (   9.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,74 +91,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Roman Vivchar <rva333@protonmail.com>
+Both MT8186 clock controllers dt-bindings (clock and sys-clock)
+document the '#clock-cells' property but do not enforce it as required
+property.
+As clock provider nodes should define this property in devicetrees, add
+it to the required property list in both its dt-bindings files.
 
-MediaTek mt65xx family SoCs have no auto restart, however, they still
-support the WRRD mode in the hardware. Because auto_restart is set to 0,
-the WRRD mode will be never enabled, leading to read errors.
-
-Fix this by removing auto_restart check from the WRRD enable path.
-
-Fixes: b49218365280 ("i2c: mediatek: fix potential incorrect use of I2C_MASTER_WRRD")
-Cc: stable@vger.kernel.org
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
-This is a preparation for the mt6572/6595 upstreaming.
+ Documentation/devicetree/bindings/clock/mediatek,mt8186-clock.yaml     | 1 +
+ Documentation/devicetree/bindings/clock/mediatek,mt8186-sys-clock.yaml | 1 +
+ 2 files changed, 2 insertions(+)
 
-mt65xx family SoCs don't have auto restart, but vendor kernels keep using
-WRRD mode. Lack of the WRRD mode makes i2c reads impossible from both
-userspace and kernel drivers.
-
-Without patch (mt6595, da9210 buck at 0x68):
-~ # i2cget -y 1 0x68 0x00
-Error: Read failed
-~ # i2cget -y 1 0x68 0x01
-Error: Read failed
-
-With patch:
-~ # i2cget -y 1 0x68 0x00
-0x80
-~ # i2cget -y 1 0x68 0x01
-0x00
-
-Same behavior observed on mt6572 devices.
-
-This change doesn't affect SoCs with auto restart option.
----
-Changes in v2:
-- Add Fixes and Reviewed-by tags
-- Add Cc stable
-- Link to v1: https://patch.msgid.link/20260624-6572-6595-i2c-v1-1-9155cebaae20@protonmail.com
----
- drivers/i2c/busses/i2c-mt65xx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 126040ca05f1..307925fb78e3 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -1258,7 +1258,7 @@ static int mtk_i2c_transfer(struct i2c_adapter *adap,
- 	i2c->auto_restart = i2c->dev_comp->auto_restart;
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8186-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8186-clock.yaml
+index f4e58bfa504f..539149c945d0 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,mt8186-clock.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,mt8186-clock.yaml
+@@ -44,6 +44,7 @@ properties:
+ required:
+   - compatible
+   - reg
++  - '#clock-cells'
  
- 	/* checking if we can skip restart and optimize using WRRD mode */
--	if (i2c->auto_restart && num == 2) {
-+	if (num == 2) {
- 		if (!(msgs[0].flags & I2C_M_RD) && (msgs[1].flags & I2C_M_RD) &&
- 		    msgs[0].addr == msgs[1].addr) {
- 			i2c->auto_restart = 0;
+ additionalProperties: false
+ 
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8186-sys-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8186-sys-clock.yaml
+index 1c446fbc5108..f8acc02cafee 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,mt8186-sys-clock.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,mt8186-sys-clock.yaml
+@@ -45,6 +45,7 @@ properties:
+ required:
+   - compatible
+   - reg
++  - '#clock-cells'
+ 
+ additionalProperties: false
+ 
 
----
-base-commit: 8cd9520d35a6c38db6567e97dd93b1f11f185dc6
-change-id: 20260623-6572-6595-i2c-6ec9c4e6a6a6
-
-Best regards,
---  
-Roman Vivchar <rva333@protonmail.com>
-
+-- 
+2.55.0
 
 
