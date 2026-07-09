@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD8C2C43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:06:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02E31C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:06:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ydMHQlgo46kt089evT8Pd0TwdETJnj87IwecBvD1cq0=; b=D7VDyjBiPxgFavQOVUf7VuMJ+v
-	v3Ddv4tSPoGYVynhiNxibl34kmw8gZti4IC6NHPrjVnZLYeaDG7cSRT31KwhJD81adGmt5onNXOgd
-	3zvAaCe7NHoAjIPd7akQsLkmSZfu0vb8zk/Vng0Y2QapjV40mYFDsxnDeOU1/LtFpVyKt0uY+oVbR
-	RpRZYq6Ulhr3YFugaC/QxXtUkzkKIfhUtqzfN4gveKBzdDLmE64ijQqqCao2ItLVLLDfKMIsN5nIs
-	iQRu5IMIjGq5KBcQpZr/+xU5uQ5RckcbnvPv/7i1ayEwlLcYsAXmoRTGEj5zSaaVK7Kiz0SJFIOTI
-	ZzlJr+JA==;
+	bh=YMnO3FrijeeNjJTdq8nqIriO3yp+/GuZLwo6BRCTT7k=; b=f+08PA7aGMTNNLqUbtVk6+ZaO+
+	Ev5Bu1etbqa+8xuaoNwzXjw3cSZHzlJ1/I+YcCj2Xw+FWUrg7zufnovlPEsq1w3SZQrz3ADM7y+KX
+	Zz8YeVbJOLHHW6hSsUFJEn4pk192F7P7m+wF2y4ThuTQO+juSIhBM7SFMWyXqwsrWGD0uOZ+IGwy8
+	2ZSG88efvUgvTEinEcTt6kHaDR9HnJbre8IbE3TGBAo3nG/CJm2kcimIQuAGS/60Ed2/Jzdo+TzzY
+	hZAaWgYD55a0i+Od4DGqQrFQfNOeDiA2Mwn3A6O0JcnECsmSwIxZ43/B//qYgQoGXIj0RTOQ6V55u
+	HW9ZgI/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whleT-00000001sBE-2ffN;
-	Thu, 09 Jul 2026 10:06:41 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1whleV-00000001sD9-3Mtx;
+	Thu, 09 Jul 2026 10:06:44 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whleJ-00000001rzl-1ULQ;
+	id 1whleI-00000001rxh-3JjP;
 	Thu, 09 Jul 2026 10:06:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783591589;
-	bh=nsuItBhJN740rMvT6QbbMjZdRo4XygZJG/um6JZTMDY=;
+	s=mail; t=1783591585;
+	bh=p0T8CgJsDP26jK5PgnEvhpgIbZwwaC/D007t6pvbZOY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=N0pAYCUsFnFkqhiOC8lRitS684ixTC8SzpBjHLV3HXKFXYVCQNeoKGEo48SeZ28IS
-	 1RbGbuFE/X8bfiOfp5JIg9agEMxtBy8M9vmPDpSj4ly1ZKHb5Od3tzo0aNWXNAmPdN
-	 PGtSUSF6J0N5hqBSTv0yIr9Cp6hDt+RgmnALl7BVI24dYLlhifdfaSxWBk3/eNKyhQ
-	 X+80WZItkfuM+W9LmnoMhsZX/6DKFctxnmYsvKFschA2gm4YUknVJilMxGNWUacubn
-	 DjrpX9Eo30YhavoNmx/2yDUL7nLHPXYpOFkkiRpiXTsaWbm6kgPE6DWxa3yl6Tsw5b
-	 E8K59gBrZr6KA==
+	b=lGp4wjsYQTD5z3KSmWvn/vkJVdtHjmQiEDdua6WYXeXMemHo+MhziOoKyXEOS4U4c
+	 4K4aoMEJo3sXak+aoF1oWjw/afnfdTNgvRRrdY76UX/qEeTKgjwRuZ4bJtvEP5QhgA
+	 PV0xgX+NoT8ozGMHt0E+DPaAjYqegtwhxW0fALzfZBa5IOB1+tGpqbEW/vEyAzRlgZ
+	 mSolNJutJQfzZIrwPuuo/Nf8L3N1/nRQY/tq/OrCKhviujLtKuml3pfkRnM5fDLnGS
+	 a1bxMzc/r9MALYZsBX8uHXONKKn6tJufkG2umzAsSdri88MfrfnnNYn2t3yaXbTJ6p
+	 LsLDq6CE9aQzw==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 194E317E05E8;
-	Thu, 09 Jul 2026 12:06:28 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 214B217E0D53;
+	Thu, 09 Jul 2026 12:06:24 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -70,17 +70,17 @@ Cc: p.zabel@pengutronix.de,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v2 06/11] drm/mediatek: mtk_dp: Use PHY API for PHY power sequences
-Date: Thu,  9 Jul 2026 12:06:12 +0200
-Message-ID: <20260709100617.42583-7-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 03/11] drm/mediatek: mtk_dp: Fix hdmi codec and phy driver unregistration
+Date: Thu,  9 Jul 2026 12:06:09 +0200
+Message-ID: <20260709100617.42583-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260709100617.42583-1-angelogioacchino.delregno@collabora.com>
 References: <20260709100617.42583-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_030631_554688_B1B30208 
-X-CRM114-Status: GOOD (  11.84  )
+X-CRM114-CacheID: sfid-20260709_030631_635775_788E5831 
+X-CRM114-Status: GOOD (  16.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,100 +95,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The PHY driver has gained support for .power_on() and .power_off()
-callbacks: use the API provided phy_power_on(), phy_power_off()
-functions instead of writing into PHY registers from this driver.
+During probe, this driver is registering two platform devices: one
+for the HDMI Codec driver and one for the DisplayPort PHY driver.
 
+In the probe function, none of the error cases are unregistering
+any of the two platform devices and this may cause registration
+of multiple instances of those in case this driver returns one or
+more probe deferral(s) in the "wrong" spots.
+
+In order to fix this, add devm actions to unregister those and
+remove the manual calls to platform_device_unregister in the
+mtk_dp_remove() function, as those would otherwise be redundant.
+
+Fixes: e71a8ebbe086 ("drm/mediatek: dp: Audio support for MT8195")
+Fixes: caf2ae486742 ("drm/mediatek: dp: Add support for embedded DisplayPort aux-bus")
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dp.c | 42 ++++++++++++++++++++-----------
- 1 file changed, 28 insertions(+), 14 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dp.c | 30 ++++++++++++++++++++++++++----
+ 1 file changed, 26 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 88e22a9553e0..9c28616c6ada 100644
+index f656b85b8421..1abe3c83772a 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dp.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -1404,6 +1404,8 @@ static void mtk_dp_aux_panel_poweron(struct mtk_dp *mtk_dp, bool pwron)
+@@ -2670,6 +2670,13 @@ static const struct hdmi_codec_ops mtk_dp_audio_codec_ops = {
+ 	.hook_plugged_cb = mtk_dp_audio_hook_plugged_cb,
+ };
  
- static void mtk_dp_power_enable(struct mtk_dp *mtk_dp)
++static void mtk_dp_unregister_pdevs(void *data)
++{
++	struct platform_device *ext_pdev = data;
++
++	platform_device_unregister(ext_pdev);
++}
++
+ static int mtk_dp_register_audio_driver(struct device *dev)
  {
+ 	struct mtk_dp *mtk_dp = dev_get_drvdata(dev);
+@@ -2680,18 +2687,29 @@ static int mtk_dp_register_audio_driver(struct device *dev)
+ 		.data = mtk_dp,
+ 		.no_capture_mute = 1,
+ 	};
 +	int ret;
-+
- 	mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_RESET_AND_PROBE,
- 			   0, SW_RST_B_PHYD);
  
-@@ -1414,20 +1416,35 @@ static void mtk_dp_power_enable(struct mtk_dp *mtk_dp)
- 			   SW_RST_B_PHYD, SW_RST_B_PHYD);
- 	mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
- 			   DP_PWR_STATE_BANDGAP_TPLL, DP_PWR_STATE_MASK);
--	regmap_write(mtk_dp->regs, DP_PHY_AUX_RX_CTL,
--		     RG_DPAUX_RX_VALID_DEGLITCH_EN | RG_XTP_GLB_CKDET_EN |
--		     RG_DPAUX_RX_EN);
--	regmap_clear_bits(mtk_dp->regs, MTK_DP_0034, DA_CKM_CKTX0_EN_FORCE_EN);
+ 	mtk_dp->audio_pdev = platform_device_register_data(dev,
+ 							   HDMI_CODEC_DRV_NAME,
+ 							   PLATFORM_DEVID_AUTO,
+ 							   &codec_data,
+ 							   sizeof(codec_data));
+-	return PTR_ERR_OR_ZERO(mtk_dp->audio_pdev);
++	if (IS_ERR(mtk_dp->audio_pdev))
++		return PTR_ERR(mtk_dp->audio_pdev);
 +
-+	if (mtk_dp->phy_dev) {
-+		regmap_write(mtk_dp->regs, DP_PHY_AUX_RX_CTL,
-+			     RG_DPAUX_RX_VALID_DEGLITCH_EN | RG_XTP_GLB_CKDET_EN |
-+			     RG_DPAUX_RX_EN);
-+		regmap_clear_bits(mtk_dp->regs, MTK_DP_0034, DA_CKM_CKTX0_EN_FORCE_EN);
-+	} else {
-+		ret = phy_power_on(mtk_dp->phy);
-+		if (ret)
-+			dev_warn(mtk_dp->dev, "Could not power on PHY!\n");
++	ret = devm_add_action_or_reset(dev, mtk_dp_unregister_pdevs, mtk_dp->phy_dev);
++	if (ret) {
++		platform_device_unregister(mtk_dp->audio_pdev);
++		return dev_err_probe(dev, ret,
++				     "Failed to add codec unregister devm action");
 +	}
++	return 0;
  }
  
- static void mtk_dp_power_disable(struct mtk_dp *mtk_dp)
+ static int mtk_dp_register_phy(struct mtk_dp *mtk_dp)
  {
+ 	struct device *dev = mtk_dp->dev;
 +	int ret;
-+
- 	mtk_dp_write(mtk_dp, MTK_DP_TOP_PWR_STATE, 0);
  
--	regmap_set_bits(mtk_dp->regs, MTK_DP_0034, DA_CKM_CKTX0_EN_FORCE_EN);
-+	if (unlikely(mtk_dp->phy_dev)) {
-+		regmap_set_bits(mtk_dp->regs, MTK_DP_0034, DA_CKM_CKTX0_EN_FORCE_EN);
- 
--	/* Disable RX */
--	regmap_write(mtk_dp->regs, DP_PHY_AUX_RX_CTL, 0);
-+		/* Disable RX */
-+		regmap_write(mtk_dp->regs, DP_PHY_AUX_RX_CTL, 0);
-+	} else {
-+		ret = phy_power_off(mtk_dp->phy);
-+		if (ret)
-+			dev_warn(mtk_dp->dev, "Could not power off PHY!\n");
-+	}
- 
- 	mtk_dp_write(mtk_dp, MTK_DP_TOP_MEM_PD,
- 		     0x550 | FUSE_SEL | MEM_ISO_EN);
-@@ -2711,12 +2728,11 @@ static int mtk_dp_register_audio_driver(struct device *dev)
- 	if (IS_ERR(mtk_dp->audio_pdev))
- 		return PTR_ERR(mtk_dp->audio_pdev);
- 
--	ret = devm_add_action_or_reset(dev, mtk_dp_unregister_pdevs, mtk_dp->phy_dev);
--	if (ret) {
--		platform_device_unregister(mtk_dp->audio_pdev);
-+	ret = devm_add_action_or_reset(dev, mtk_dp_unregister_pdevs, mtk_dp->audio_pdev);
-+	if (ret)
- 		return dev_err_probe(dev, ret,
- 				     "Failed to add codec unregister devm action");
--	}
-+
- 	return 0;
- }
- 
-@@ -2734,11 +2750,9 @@ static int mtk_dp_register_phy(struct mtk_dp *mtk_dp)
+ 	mtk_dp->phy_dev = platform_device_register_data(dev, "mediatek-dp-phy",
+ 							PLATFORM_DEVID_AUTO,
+@@ -2701,6 +2719,13 @@ static int mtk_dp_register_phy(struct mtk_dp *mtk_dp)
+ 		return dev_err_probe(dev, PTR_ERR(mtk_dp->phy_dev),
  				     "Failed to create device mediatek-dp-phy\n");
  
- 	ret = devm_add_action_or_reset(dev, mtk_dp_unregister_pdevs, mtk_dp->phy_dev);
--	if (ret) {
--		platform_device_unregister(mtk_dp->phy_dev);
-+	if (ret)
- 		return dev_err_probe(dev, ret,
- 				     "Failed to add phy unregister devm action");
--	}
- 
++	ret = devm_add_action_or_reset(dev, mtk_dp_unregister_pdevs, mtk_dp->phy_dev);
++	if (ret) {
++		platform_device_unregister(mtk_dp->phy_dev);
++		return dev_err_probe(dev, ret,
++				     "Failed to add phy unregister devm action");
++	}
++
  	mtk_dp_get_calibration_data(mtk_dp);
  
+ 	mtk_dp->phy = devm_phy_get(&mtk_dp->phy_dev->dev, "dp");
+@@ -2870,9 +2895,6 @@ static void mtk_dp_remove(struct platform_device *pdev)
+ 	pm_runtime_disable(&pdev->dev);
+ 	if (mtk_dp->data->bridge_type != DRM_MODE_CONNECTOR_eDP)
+ 		timer_delete_sync(&mtk_dp->debounce_timer);
+-	platform_device_unregister(mtk_dp->phy_dev);
+-	if (mtk_dp->audio_pdev)
+-		platform_device_unregister(mtk_dp->audio_pdev);
+ }
+ 
+ #ifdef CONFIG_PM_SLEEP
 -- 
 2.54.0
 
