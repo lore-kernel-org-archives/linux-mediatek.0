@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67912C44507
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:06:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89713C44509
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:06:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SqqbkSKoaMCuEKTP1rjiw3CAvuLOaY9tTvIMgKUSf3A=; b=0xUzXOLMdnId5Qv1sve2R68n8G
-	2oeTZK09QBEFJzrxFUMacmRDG5ozId29JcZ+Feo9IXPBiwqBpAtWQ9m+me5JJfIX1iPK7zc9mgW9r
-	UamT7cyjl+gvmW/g1njFD6CTjHFyPcaNcopvhts1GVq/2QPCyw6+ITP34A9je5oCnPUzF82KfGVNX
-	SC8+qHPxZQpL9SNHGXCamXa2m8kphn1sgJjHaXT/31JOdo5IIoEKkF/Uniw3mjCx1WNZk528oAdZ7
-	i0fARqbm8dynZxC3s0TS1vF2kuY7BRu9Q4Kn68NmENSmarVdsKGe/cTQ1JnIJuRXNmHVy3wH64o5z
-	+jMc2rLA==;
+	bh=D8058C/A9/JiNPInm3u81Nx1KBGBbwUCxPwhHLO5A9w=; b=fzLph1QrWDKAFCxj/c0Zb7z7HX
+	IGg8f09vFWIe3hgoJrrjsouyswf3mmWImAOb8hXiGHM3AINOmVWCUtLBJv+nBEfJ0rRwT3pQBXA0J
+	VBlGBT9e05kyZDKtkO1iEwkjMRrb96IRFB1ijgA01IdhhUBa7y3L3x7uSJ326rzxqAHvdQ+1WMjDh
+	8u/i5XdVPMPBbZ5DQTk3gfVTyGgS5JeVIPXpw47Hq3EtnRD9sX2+DcRzP6xCoC3MWPw67oegvMPFh
+	ETzL3hamLxkuH8STZdKlMfWdHSPWvrk+AvCeoPDA9dzW0WYsuvNzWWczfaHamwJij2Yi+OHCi0Ihg
+	ECz0zH5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whleL-00000001s1s-04sy;
-	Thu, 09 Jul 2026 10:06:33 +0000
+	id 1whleR-00000001s8f-1tHt;
+	Thu, 09 Jul 2026 10:06:39 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whleF-00000001rxR-1eMO;
-	Thu, 09 Jul 2026 10:06:28 +0000
+	id 1whleH-00000001rxi-1PHP;
+	Thu, 09 Jul 2026 10:06:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783591584;
-	bh=kHVv2nCdsp0f/QR38D6tcCGOazDnOTOs2KSvBo2SWnI=;
+	s=mail; t=1783591586;
+	bh=CkYqfV3Z8+Hsqh9DjysAZsxWDq7JbUXYo6REfRoh9BA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=BZMgz7gSQL13MyjadStvm3AWiozi59NfL+LA23wPfe0XW8t0cI6BBW19ioiZYjAkh
-	 JVo6zdT+Eif1fpW0uzLJGhY6ZUHQhDYxx5LdhOTxaIE5nqg9WTEANY90/7WERYCXL1
-	 dnvjN2AwM4N1FnZ3m7AU+iPc3juO8ebwnFw6M9Efxpl1qIjA9fpH0UxchnoTIT5RZL
-	 XTjYTQqY8iZfPipraP00x/FWLQViALOzyQIZS09Ooi26Ml7A06OSwaC7q70ecRTHV6
-	 fF//IjIhnBvKLBsFOA2f6S0KCwiSPbvfqF9Hm7hXRGAcinIEetyfmxz2bYR4oFpobM
-	 ycB4x4KbL1W0w==
+	b=hDHMnaBREX6TonYVXJu+CXze57EBvAWsbGKAsspDNMW3UbUY2mqqwFZSA07uv2RW0
+	 Nq/qmkNBghiW5Bjm7sjbE5g4Jw7tZQElV/o2Uuqt0Be6GZEHkTmF1gIVfH0YZBqpiI
+	 0R60sZjgxzfaWea8O1kKJIVZ3IwYs0iB9eRltAcjN6L22J3TG2vZJg/wrLrz3E12NV
+	 KYjx8/Qs946xR+aVeXyUSYuHsCGKQwkDpxBsfBEklVJYr2QuFVQT2l2ZGbtgm4PaCV
+	 6Oq4LLPOU4wxQVNvIQxvhO1pnoLmcPuAuilBW6W6bwKFoWTsYE2jz4P/OrLDMS/0Y/
+	 FRG157DXJ9tyw==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1072617E0CDE;
-	Thu, 09 Jul 2026 12:06:23 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3462D17E0D56;
+	Thu, 09 Jul 2026 12:06:25 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -70,17 +70,17 @@ Cc: p.zabel@pengutronix.de,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v2 02/11] dt-bindings: display: mediatek: dp: Add compatible for MT8196 eDP
-Date: Thu,  9 Jul 2026 12:06:08 +0200
-Message-ID: <20260709100617.42583-3-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 04/11] drm/mediatek: mtk_dp: Clarify SMC eDP/DP video unmute commands
+Date: Thu,  9 Jul 2026 12:06:10 +0200
+Message-ID: <20260709100617.42583-5-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260709100617.42583-1-angelogioacchino.delregno@collabora.com>
 References: <20260709100617.42583-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_030627_657326_F6B4B27F 
-X-CRM114-Status: UNSURE (   8.99  )
+X-CRM114-CacheID: sfid-20260709_030629_878343_AE4978CA 
+X-CRM114-Status: UNSURE (   9.95  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,28 +96,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a new compatible for the Embedded DisplayPort IP found in the
-MT8196 SoC.
+The eDP/DP video unmute commands are not expressed as bits:
+instead, in the firmware, those are defined as incremental
+unsigned integer numbers: use the correct representation of
+those to improve readability.
 
-This IP is compatible with the previous ones, but not fully.
+This commit brings no functional changes.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../devicetree/bindings/display/mediatek/mediatek,dp.yaml        | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/mediatek/mtk_dp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-index 980f76667ada..3a752a99949a 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-@@ -25,6 +25,7 @@ properties:
-       - mediatek,mt8188-edp-tx
-       - mediatek,mt8195-dp-tx
-       - mediatek,mt8195-edp-tx
-+      - mediatek,mt8196-edp-tx
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index 1abe3c83772a..df5dcef91666 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -36,8 +36,8 @@
+ #include "mtk_dp_reg.h"
  
-   reg:
-     maxItems: 1
+ #define MTK_DP_SIP_CONTROL_AARCH32	MTK_SIP_SMC_CMD(0x523)
+-#define MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE	(BIT(0) | BIT(5))
+-#define MTK_DP_SIP_ATF_VIDEO_UNMUTE	BIT(5)
++#define MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE	33
++#define MTK_DP_SIP_ATF_VIDEO_UNMUTE	32
+ 
+ #define MTK_DP_THREAD_CABLE_STATE_CHG	BIT(0)
+ #define MTK_DP_THREAD_HPD_EVENT		BIT(1)
 -- 
 2.54.0
 
