@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72EDEC43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:38:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 886D8C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:39:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=liUtB982pS097ENOX4hJ2wflvh58x2g04BIplTyX6D0=; b=PzawJCA17+qlVThIfwjypyonP0
-	r037FoSfAtBe60bi5mVDTh+Z+Pz4O8ZD4/OQVnBkPRH0rAet19GD+U7iIqp5wVKvsudwxHlVnblBj
-	L+hfttA2kRV+meBQraDaK6MX9wAFQOHv+gScCUH0C5A7smNVpxL0e7nLlZ6b+QJhhmC8cFM6FJSlo
-	h2btren8TMEawnRFd/CuflFueq+t/vroZUTqJjQ8bKDxkwk1QuB2QjSPpO1GnsAs2qG0LQBTH3Xto
-	LvBJHZpa724ieDRMVC00HAeFGRvMXypXOce2FrEwOJzNEd4vKXhwYfv94+ofn9FSatt98aOLKstxY
-	pNHMcOrw==;
+	bh=9A7QPbu0+2KEHtIpgVDSTRvmsxY6yPUK3BF9orDh9j8=; b=WxjwRKZzO0TYK9BExxVANBX9d4
+	7V9fHpm4n9CLGsT4A3GVbjUQSDGv7ERWrb96ohytiYBK3zV4tNLCwuNrI5x2h+pwU4FtUtTt1pU/J
+	j7MGicawXqIKlbg7VgOS3Y4N76x1SMKNdQEw8G/kwIdrGIAAk2dsfQq2UrySdV64tFLS9wjbJYacf
+	eHQBS6KQVfdna4LmIZdBREQEy3GBG0DrObAganNFvGaadJpbreypVsp32WW467PttPXsWb0CSUGUU
+	38u/ro2oAFPjUhLsTW5R9oMj+Y12vpccsH4x0g6VgsCeVAdr22F7xFbI/yqsazU3eGFTYtZ3i0LVL
+	llybm06w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whm9A-00000001zG8-1xzF;
-	Thu, 09 Jul 2026 10:38:24 +0000
-Received: from mgamail.intel.com ([192.198.163.17])
+	id 1whmAc-00000001zXV-2xXb;
+	Thu, 09 Jul 2026 10:39:54 +0000
+Received: from mgamail.intel.com ([192.198.163.12])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whm97-00000001zFd-2sQx;
-	Thu, 09 Jul 2026 10:38:23 +0000
+	id 1whmAa-00000001zWn-07Kn;
+	Thu, 09 Jul 2026 10:39:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1783593501; x=1815129501;
+  t=1783593592; x=1815129592;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=iLiK3CTSDdvUowUyU7p7EgFeHFgaWNMld+MOAz5fmpk=;
-  b=oK3GT2gkIpRJJjuVtzslVKmsKxyiFwWb2BlcR9oEhXYCXYaW1Gif0i9j
-   JTw7qdk8F3GuEmPaV18ONNWZET4Ls2FeVkFTYZ/lQSSGuByCwilXOcEf6
-   doYYxFXC2q1/PmcFpC55ssQpcM8+kC0xo/17YOtgn6ByNhNSESWcujniv
-   D5H3/LojxlP/hV6iV4i+46Bs9wuN/L125Gvs2/BNP37JeVfvsFbEfGpi4
-   BOw44G6ZdSHAs0KJdmVsD1w68jbJiIrZOejQl7gzbuekQQxCKmONMM2jZ
-   B6ZQFZQO/Hr4tOzTiyGb6732SEvSR8RR/E6/Sr7aKRV+GFBR4ll/iZT+E
+  bh=e2sU0s40xkGwnyMyr3Gohlub14CCeKxZuEHRaPaL50k=;
+  b=gonoslVatCxe+Y1dLk5FHk1ngxJuISGjzckB627cHz024n08dBrnUWmS
+   ukz5ap9iznQ05qaVOi3T0uZAPZd7sDm562qVUZKmKYmbIKi9Bq31TVefD
+   r0W5m/a2JgCmVf63bVHxZvKvFIvTtNSeDppjIuLSEQjDUoyw7/dxeuVbQ
+   KXYQWKM2JwAr3yWrZ+K0+l2gMiAxSwc+OPQImWVxiyjEyfEhJD75ipOeV
+   M9YLnFPYNan29+IoRiqCZScDLQk7jNF8z+Vn4Jux8+CDo1G8imslU8GHA
+   YORr93ZUqO4iNYjuPwwWTWeHLJzHpjO7NkUIQwM9+9K91vTchvWtYS4vb
    g==;
-X-CSE-ConnectionGUID: Nj2IYB2MSEerQWX9OQh6aA==
-X-CSE-MsgGUID: im/tOIcJRDeuOiCY1JU2SQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11841"; a="84149232"
+X-CSE-ConnectionGUID: M3n5D1JqQ0GYle9UnGGayQ==
+X-CSE-MsgGUID: 1FjHlwC5TSuummhjJR7lsw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11841"; a="88097648"
 X-IronPort-AV: E=Sophos;i="6.25,154,1779174000"; 
-   d="scan'208";a="84149232"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jul 2026 03:38:21 -0700
-X-CSE-ConnectionGUID: 9eSEoKOvQvKdFLKV0C3kuA==
-X-CSE-MsgGUID: NW8U+aFdQuuqkVYYdWQYwA==
+   d="scan'208";a="88097648"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jul 2026 03:39:51 -0700
+X-CSE-ConnectionGUID: DE8TRutyRcquJ0DgXoxDVw==
+X-CSE-MsgGUID: Dgg5Foy1TwGE9qWU1O2mMQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.25,154,1779174000"; 
-   d="scan'208";a="251896574"
+   d="scan'208";a="292740125"
 Received: from ettammin-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.245.235])
-  by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jul 2026 03:38:16 -0700
-Date: Thu, 9 Jul 2026 13:38:14 +0300
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jul 2026 03:39:47 -0700
+Date: Thu, 9 Jul 2026 13:39:44 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Bartosz Golaszewski <brgl@kernel.org>,
@@ -74,20 +74,20 @@ Cc: Bartosz Golaszewski <brgl@kernel.org>,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Alan Stern <stern@rowland.harvard.edu>,
 	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: Re: [PATCH v4 07/14] usb: hub: Pass |struct usb_port*| to
- usb_port_is_power_on()
-Message-ID: <ak96Fi4U3JJzbW3f@ashevche-desk.local>
+Subject: Re: [PATCH v4 08/14] usb: hub: Use usb_hub_set_port_power() to
+ control port power everywhere
+Message-ID: <ak96cA264qq_FS1r@ashevche-desk.local>
 References: <20260709095726.704448-1-wenst@chromium.org>
- <20260709095726.704448-8-wenst@chromium.org>
+ <20260709095726.704448-9-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260709095726.704448-8-wenst@chromium.org>
+In-Reply-To: <20260709095726.704448-9-wenst@chromium.org>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_033821_734900_7263DC70 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20260709_033952_074785_A1E6DF2A 
+X-CRM114-Status: GOOD (  10.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,19 +102,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 09, 2026 at 05:57:12PM +0800, Chen-Yu Tsai wrote:
-> usb_port_is_power_on() currently takes |struct usb_hub*|, but only needs
-> it to tell if the hub/port is SuperSpeed or not.
+On Thu, Jul 09, 2026 at 05:57:13PM +0800, Chen-Yu Tsai wrote:
+> There are still some instances in the USB hub driver where port power is
+> directly controlled by toggling the USB_PORT_FEAT_POWER feature flag.
 > 
-> In a subsequent change, usb_port_is_power_on() needs access to a pwrseq
-> state tracking field in |struct usb_port|. Either structure can be used
-> to identify whether a port/hub is SuperSpeed or not, as the field in
-> |struct usb_port| is inherited from the hub:
-> 
->     port->is_superspeed = hub_is_superspeed(hub)
-> 
-> Replace usb_port_is_power_on()'s |struct usb_hub*| parameter with
-> |struct usb_port*| so a subsequent change can use it.
+> Switch these instances over to usb_hub_set_port_power() so that only one
+> unified function to do this exists. This makes adding external power
+> control with the power sequencing API easier and consistently applied.
+
+Makes sense even on its own.
 
 Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
