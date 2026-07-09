@@ -4,57 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 422E3C43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 09:17:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8A25C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 09:20:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AsqWHUD3fknq6kvMOwmLLRy83GwDAJJfDfHuuECn8nM=; b=mxZydTtvs4uklCgAJUuKDVz+1R
-	bt/GOOOQITAYiQAeG8ZqUHSEszMxWXsCokM+6pP15wkQcivc+W32f6fZlzU4hKBvpXgLsMPv9q329
-	IxhFWB49++OCCcOjKrBpHjLsmoVhrPBGF62z6PDkF1FeMJvJRc9OChCYOFcAPbh/R7PuL7Ydby44b
-	9ZBH/B/u1MEgNoqGcw4F0pXEoq5Q/S1nxkZoHP0MWQQPA6aSi/5RYkAMbZV+/4UleaqCoaYLs7lgw
-	7KHIz3yQfE6Dv3MKgKfaXngWMvlrSE4Dm95BfHVS6dTTtTSFKsa9nX2JJcaud0x4FvNRLP6MxLL9s
-	iM1vgYXQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wHwfsxRbTOa0gU9usTCXPDJPqT4eeQ+LjY91O9UILnQ=; b=KdslIt4vhMlNaRutthzNvTDHTN
+	N6r1X3FInIugLHOjw6Ts57Qj+XqXqPzXC233mLhXxJZsoUf+S7aGYdzdC9c6hpSQDPcYxcZx8IC1A
+	+gzZkb30dcUZcGnxY5gqZBCVeuEVCQeQAV4+eGpc12y3flWevFhDsukufZoOsJdQs77Hc75SL/pnB
+	qz5KtDtI/lXlRWoPAFVe8z0V7EwRPQ8bsrb41s2nTkzk6nnAMaAmKEq47Rq+kptvYFlV7frl7sO7z
+	6CbBmVe/si+tbCcIUsolZciYC7QY1HmXIaz48agYhZMWarykQpY5YdfAYlci2woO9wyJ5FQecWD5a
+	y6JEVdPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whktJ-00000001kOr-0aZx;
-	Thu, 09 Jul 2026 09:17:57 +0000
-Received: from mail-106104.protonmail.ch ([79.135.106.104])
+	id 1whkvq-00000001kgV-2wIv;
+	Thu, 09 Jul 2026 09:20:34 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whktF-00000001kNC-01Aq
-	for linux-mediatek@lists.infradead.org;
-	Thu, 09 Jul 2026 09:17:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1783588669; x=1783847869;
-	bh=AsqWHUD3fknq6kvMOwmLLRy83GwDAJJfDfHuuECn8nM=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=NOdoSogqN9Ttm5QfIS+N4RKsilr9voDeQP0u6TF7B6VrOVbUItIv3Teyj/xgNfWwS
-	 5vL1lVjWDKQc9maV0a0BNWi86CbbRoH6dUujnykoI4hl3Q1UiiSciKITJwMWKGrwWL
-	 HcBCdbAV9AqVapiduJ+dx1KZVrpZcadK2vo5NAuf9Dfp4t7mrjALM880PnPMFkVqxs
-	 yD4dSpQNlFXwXJee2Ed4I3ym0CfcqUzcYMYKcoZyh1VYqxHf/NS+9iGfH3nBwqetIQ
-	 Ak6hTkFb5E7bS/rRCAKYIiG0nlCmmy6zjPUvbFtrsmJIohVVamvFEKp0LjXbCuly0/
-	 P3CwOWp9c+LYg==
-Date: Thu, 09 Jul 2026 09:17:43 +0000
-To: Qii Wang <qii.wang@mediatek.com>, Andi Shyti <andi.shyti@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-From: Roman Vivchar <rva333@protonmail.com>
-Cc: linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, rva333@protonmail.com
-Subject: Re: [PATCH] i2c: mediatek: fix WRRD for SoCs without auto_restart option
-Message-ID: <G11ljKsJ1-XZySyKn1d9mfw2Wwr4ip3RpX5HfqIPp0602tRxHV-1SG2L0VCEJHfEQ3WDlJ41vjMgd6Dy2ktSTa-QIWuE7RGkkGpVIYwtd0M=@protonmail.com>
-In-Reply-To: <20260624-6572-6595-i2c-v1-1-9155cebaae20@protonmail.com>
-References: <20260624-6572-6595-i2c-v1-1-9155cebaae20@protonmail.com>
-Feedback-ID: 173184497:user:proton
-X-Pm-Message-ID: 12ce95e755351267cc6fbf3031b57ccc2bbe842d
+	id 1whkvm-00000001kfJ-0HMX;
+	Thu, 09 Jul 2026 09:20:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783588827;
+	bh=IUXue47GQ8Gj1555jbfNOvhmcryaDDAxPK4/yzK/6hQ=;
+	h=From:To:Cc:Subject:Date:From;
+	b=KLL1Y9QIwZMKAm/vyXLdVsnTvvPMQtUUuk2Gs5/L2ivp5UJUbwq2PgnxN5Jf0Zc2M
+	 XHTEEQZmyjwE5ISAlVf6RzcLmzLbHdgWskrbxkhX/LY2+oKPs7q6nG3YDEOCUNQOuS
+	 BQ/FxMOaS/YtM7rlrr3Jz9aepeRYLtlGE4vGjwO5ZN30M//dYcemYYfyB4X36CadMw
+	 ILpbKXYz58+2G1m0M33FNS6iih5RDgIN5PfPClnkhqlKSXmbODo+hKVwOzP4hVGIQY
+	 i+MsAsJ8UdGoRDzsKbLyPw+Nx1kz6iy7EV3X0fEDkHmTk5fq+1Shj1SHepwbVsVsWd
+	 ydq/xq7oIq8Hg==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BC52B17E0564;
+	Thu, 09 Jul 2026 11:20:26 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: linux-mediatek@lists.infradead.org
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	bisson.gary@gmail.com,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH] arm64: dts: mediatek: tungsten-smarc: Remove unnecessary cells
+Date: Thu,  9 Jul 2026 11:20:21 +0200
+Message-ID: <20260709092021.34023-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_021753_209749_69A5C855 
-X-CRM114-Status: UNSURE (   3.19  )
+X-CRM114-CacheID: sfid-20260709_022030_254615_331A1135 
+X-CRM114-Status: UNSURE (   8.82  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -70,13 +78,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi everyone,
+Remove unnecessary address and size cells from both the disp_dsi0
+and the xhci2's ethernet usb device subnode to fix a dtbs_check
+warning for avoid_unnecessary_addr_size.
 
-Just sending a gentle ping on this patch. It fixes broken I2C
-functionality for mt65xx platforms.
+Fixes: 9fda4a8a479f ("arm64: dts: mediatek: add device tree for Tungsten 510 board")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi | 4 ----
+ 1 file changed, 4 deletions(-)
 
-Please let me know if you have any feedback.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi
+index 9f5a0ec563e8..8256279c5629 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi
+@@ -265,8 +265,6 @@ &disp_pwm0 {
+ };
+ 
+ &disp_dsi0 {
+-	#address-cells = <1>;
+-	#size-cells = <0>;
+ 	status = "okay";
+ 
+ 	ports {
+@@ -1049,8 +1047,6 @@ &xhci2 {
+ 	ethernet@1 {
+ 		compatible = "usb424,7850";
+ 		reg = <1>;
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+ 
+ 		mdio {
+ 			#address-cells = <1>;
+-- 
+2.54.0
 
-Best regards,
-Roman
 
