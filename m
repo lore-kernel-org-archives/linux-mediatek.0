@@ -4,110 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05ACEC44503
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 02:32:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46347C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 02:32:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-Id:Date:Subject:To:From:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Zb15SH/XYFa+RyS0cTGgR/gZagBNPGGjTMJKmIURz8M=; b=kw66KeN1mN4pOMARZDlcN95UC6
-	FWNluVmZuUuUr+kzFq79f3Zycffyd1TNIPi7RnXVRwNVqcJYvlomLnLH1AWOQmPYtLgyc8uKq7I/T
-	lCZkovXSzSOVsq16kiA/incUutbC0i0COLVG95WsUAzo9VD011Ynsf6bLUlEbzZWYhjYhsH+NQgKt
-	04yxMZkf9xot07T1z9Iq9St8mUvSk4t2iqffBPz+r90x9J99Y8X5avwNHvKWQtRVGxqTD/uo0sjXd
-	zISKhdIrpOrY/HFJC+DhMyNaLpeor8IpFI6IDHlnbt8HoYFQFRQ8grWpWyH41KdaIdSJOneUZE4fX
-	HbryMVjQ==;
+	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ktrXpbKqZqG2gAYmnuuNWG0PT2PdUZg+yG2C8Xc49wA=; b=yQIg3DaO7KMdxyuKp/wR+GaDgH
+	4c7N0/OpIDpq82x57kqNpcvZyEY5CKxk4xYjRxRbRxzAbGPlOTHBtqcQWguudXLyo6V5sveZtlpC/
+	i5ujfvD+zVELuiKycn6VwIJ1SGe/NrHZbipWJxu/rSNY+d21zpEyjtD618Pvt89NGZgQYOAkvbrfS
+	SCrnimkhbH5l00sqrzqNTVdmRCZ3yAVrStAjcXpo71bvcCXL9lalvXE20BzbzJP92IxhiO2qy8Rtt
+	aOnzVCV+WDrNJVyG5kRhKnYnc3/AQFB0jjuB/niVupaKV2WAAqu6xDhr6iyLKxKfl/hZ0nqYeb/05
+	d9GdG/0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wheYR-00000000p9W-2aTT;
-	Thu, 09 Jul 2026 02:31:59 +0000
+	id 1wheYj-00000000pK2-1qER;
+	Thu, 09 Jul 2026 02:32:17 +0000
 Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wheYO-00000000p7q-1mkS;
-	Thu, 09 Jul 2026 02:31:57 +0000
+	id 1wheYh-00000000pHa-04QL;
+	Thu, 09 Jul 2026 02:32:16 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=qHu5emWwIc+uGdLMCWmtc+HuliYBqFQFj69Eb/6qip/xiZIhjPJcoivwGM6/E45cIQQMhcypwwvdUMIcLZKdGKaoB6jMwtCAHYw/fs4+53IM+cLDOEWjkfYUvs/iVPA0HGtGhmVIgUwXj8AnL+2udtEhSPH8wniQr0mGPNI+Jast+ovKwI8XQG5o40SB4wRIW2SSLGgGUYqFxXsphSIDuhjQSOHAI2v7EDhpIQk3/46YPVGX+3dfmNIAxT6Se/SWUd4s6CgROFNAKzbo6Av4Pd0kdJsn9/hiTSFVsfbRSw0pbFU5c4FKcauzZz/nalWucMGD2oEZpTvix58+iFEmvw==
+ b=CdwhaYXrEQM2RklMTGGhdn9pc+U+jwDbgR+blbf5rQ/kB6As9MFxpeBuyCQjtwyZ1w1qmzdCpVmrMhKLXyTAYC9CUNhowGp+CoRlNASpZ8dhbBv4QGY4GHv+8l7vdsYDVSKm/2rr7NbBaYkTQow/1aablxMPtrqhs0HL8P85lOzJAAvHRFjloFu1+cCrwpUOkqK8yAYCWsx5/X30/IslwX4JWQfOZDBrlMp+0PpcqNdwHwp5M0oQUmdyB4LQW8qgRCQB1wHAKR5QRtiTu8Ih9hU9MU5GkdUC7nBl6cjsLh5/clvXb40A7yejAoSEy5v/QEZ1fgjB62ALQMhJr1Mguw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Zb15SH/XYFa+RyS0cTGgR/gZagBNPGGjTMJKmIURz8M=;
- b=xtSAF7ki0R7RdTyVNixnHBgVXyiFOtg4Wk+qbVQjzlIc6yqTM0JLgBye52Q+YLPH2pe6DekT8hj0FiXF27nDZvO6mcZlqkep3v5KI4xX1YeMAP+Z+U2vQOPc7+lOUkIdXaWAVU5EOIstFWYJA3YYcvG0DGFWukPVZsOejZw3fvce7kGM4s9SlI8j7j2LckqFFhfzwpqtQ7aemEVCGtcMvPDkDZf9hHjzzxe0CSRuOKZ3XpAIzrE7L00btSa9d9yYSN88142UiFAiPV5TdSbinP0KuX6Zrkdzh+3oAIMRsx2dv0jXBSxKENYnBQlJmB2Zbauhoy6Ax9bP5dGb6lalQQ==
+ bh=ktrXpbKqZqG2gAYmnuuNWG0PT2PdUZg+yG2C8Xc49wA=;
+ b=Qbnok0ck5DkRde0QMYiDkq125gO3B0oEHJdjLsHTOYa2p7YSkaxC5kTPMZtBylKuE0YgXgFJSjX+57KfKi41RtqbhPLwSoFL8doiD1UQwOpYO+vGULw8F7MXaiclN+TcjabYskrMtfaHnBmDy07qiI4D//xqE7AdJGEC+SGNtRF23v7eS5J1u/+rDuHPgvjvl0N/ZriZwsIwcFAdY37xZ1znFbQNQhLre2nWQhl/rrCWCLnUPULtL2w6VPGP5Ht1Yj8hv7ciWw1j4ABYbgceMVOuc9/ECrJZ9wPVCE4D6EcULPSV5d6eZTRnFgRJtFVGPZy7sv+wKaSFNK7EjUgX3A==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
  dkim=pass header.d=vivo.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Zb15SH/XYFa+RyS0cTGgR/gZagBNPGGjTMJKmIURz8M=;
- b=KwFXQ/xVozptnhlCLkFe+wIw8eifW3MDFgXMgUgzoA1tU1ReYPmC6D/8adYynMvVeDEwa7iRT8ZPAxTLv5L/H3lkXtLz1of3gA+zOZuESdkLh2HPTggQpmF4IpOS3uClYI/iVBxSdTsdQvB1zp0TK9ZcVjFrCrS/qZi18LzVubRZFk1KY0imE8N0XRDTfX7w2hr0mRL4cuGZ0A8JHgaVvbzjmhLtX+7gk5zhAFDYdLnL0G8CsfguMVZxBqi5zYaEnA7DOoh883TL4yftoM7zxreInxXSu/bi8mTo2lQEw6fHhBlZ2sZnsq7h7yWk4byuEf+tqAd7HiJZs8bU7fq7Wg==
+ bh=ktrXpbKqZqG2gAYmnuuNWG0PT2PdUZg+yG2C8Xc49wA=;
+ b=B55hH/P/Uz9jWvagbrEK+Ikolp1flw6Bk/f4f2l9TfCqmGyWiSVOJAQx+9tVuiED7jq+4gc+SnVvShl7w+eY7YwuKzQ8urSh9ex/UNucQvx+nOsx8FLI73hrnGOlWmboJNNWZssD2jT2BPnNbYgkYhigh1SM5m9Ow9DIRl5BMBC7k4Jle9kiRdCKBBcdE7qwmu69RK/d5eVxIv3LZH/UrogvOEne9YIrlQSh+CHupTV8NWV0Li9YbbBXqBxPv2mpUhcIuGPwkqgRyRhHFS4lLVyQwkkz+ujpYn0TAiJ1JyJsBIAD7Trcy54aFqxl+f4M+K6iur9NH3w9Z989RPGDlA==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=vivo.com;
 Received: from SEZPR06MB5832.apcprd06.prod.outlook.com (2603:1096:101:c8::12)
- by KUZPR06MB8800.apcprd06.prod.outlook.com (2603:1096:d10:c7::11) with
+ by SEYPR06MB6278.apcprd06.prod.outlook.com (2603:1096:101:143::5) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.11; Thu, 9 Jul
- 2026 02:31:35 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.15; Thu, 9 Jul
+ 2026 02:32:10 +0000
 Received: from SEZPR06MB5832.apcprd06.prod.outlook.com
  ([fe80::f98:5e32:4ccb:d07b]) by SEZPR06MB5832.apcprd06.prod.outlook.com
  ([fe80::f98:5e32:4ccb:d07b%6]) with mapi id 15.21.0181.014; Thu, 9 Jul 2026
- 02:31:34 +0000
+ 02:32:10 +0000
 From: Pan Chuang <panchuang@vivo.com>
 To: "Rafael J. Wysocki" <rafael@kernel.org>,
 	Daniel Lezcano <daniel.lezcano@kernel.org>,
 	Zhang Rui <rui.zhang@intel.com>,
 	Lukasz Luba <lukasz.luba@arm.com>,
-	Miquel Raynal <miquel.raynal@bootlin.com>,
-	Markus Mayer <mmayer@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Frank Li <Frank.Li@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	zhanghongchen <zhanghongchen@loongson.cn>,
-	Yinbo Zhu <zhuyinbo@loongson.cn>,
-	Amit Kucheria <amitk@kernel.org>,
-	Thara Gopinath <thara.gopinath@gmail.com>,
-	=?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	John Madieu <john.madieu.xa@bp.renesas.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Bartlomiej Zolnierkiewicz <bzolnier@gmail.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Peter Griffin <peter.griffin@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Thierry Reding <thierry.reding@kernel.org>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
-	Pan Chuang <panchuang@vivo.com>,
 	Laura Nao <laura.nao@collabora.com>,
 	Mason Chang <mason-cw.chang@mediatek.com>,
 	Fei Shao <fshao@chromium.org>,
 	Frank Wunderlich <frank-w@public-files.de>,
+	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
 	Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	"Jiri Slaby (SUSE)" <jirislaby@kernel.org>,
-	Svyatoslav Ryhel <clamor95@gmail.com>,
 	linux-pm@vger.kernel.org (open list:THERMAL),
 	linux-kernel@vger.kernel.org (open list),
-	linux-arm-kernel@lists.infradead.org (moderated list:BROADCOM BCM7XXX ARM ARCHITECTURE),
-	imx@lists.linux.dev (open list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE),
-	linux-arm-msm@vger.kernel.org (open list:QUALCOMM TSENS THERMAL DRIVER),
-	linux-renesas-soc@vger.kernel.org (open list:RENESAS R-CAR THERMAL DRIVERS),
-	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
-	linux-samsung-soc@vger.kernel.org (open list:SAMSUNG THERMAL DRIVER),
-	linux-stm32@st-md-mailman.stormreply.com (moderated list:ARM/STM32 ARCHITECTURE),
-	linux-tegra@vger.kernel.org (open list:TEGRA ARCHITECTURE SUPPORT),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek),
 	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek)
-Subject: [PATCH 00/18] thermal/drivers: Remove redundant error messages on IRQ request failure
-Date: Thu,  9 Jul 2026 10:30:03 +0800
-Message-Id: <20260709023048.599150-1-panchuang@vivo.com>
+Cc: Pan Chuang <panchuang@vivo.com>
+Subject: [PATCH 12/18] thermal/drivers/mediatek/lvts_thermal: Remove redundant dev_err()
+Date: Thu,  9 Jul 2026 10:30:15 +0800
+Message-Id: <20260709023048.599150-13-panchuang@vivo.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260709023048.599150-1-panchuang@vivo.com>
+References: <20260709023048.599150-1-panchuang@vivo.com>
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-ClientProxiedBy: TPYP295CA0019.TWNP295.PROD.OUTLOOK.COM
@@ -115,58 +82,58 @@ X-ClientProxiedBy: TPYP295CA0019.TWNP295.PROD.OUTLOOK.COM
  (2603:1096:101:c8::12)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SEZPR06MB5832:EE_|KUZPR06MB8800:EE_
-X-MS-Office365-Filtering-Correlation-Id: 70fb9282-7ee3-421d-4ce6-08dedd6231bb
+X-MS-TrafficTypeDiagnostic: SEZPR06MB5832:EE_|SEYPR06MB6278:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6d89c22a-ed6b-47e8-0bf0-08dedd624748
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|52116014|23010399003|366016|1800799024|7416014|376014|38350700014|921020|18002099003|11063799006|56012099006|6133799003;
-X-Microsoft-Antispam-Message-Info: 6etLwCHUEWhmfC31D/Bu8QoyAGLR6iL1slE3kRDmYMOlGHhf3zB8PKFtf5+LC/RoQo3o2vspywARwBPknKqsAMv5/toUka3eJGCIh+EoZSQEGmN1Jug5EbVlfaPGRie+cSwuzh9vGI/booIw1LKcFquoTPIn+rku0G0GqXU6PJLlNN3Px1i08P5jKmrETRvISRmi7+H5J7pvW1PxofYRjKFun/T3AgvADk2fJyxeVJtPdu3XD+gbliUBrRHccg7cfSiPn7EcPrz2LZUyduRdgbWCdqiWzb1s0twg3dxkDyTJCF1faJeR6RjaojvT0BlQJyCxqKG3O1kRGWdlWWZnINVF9NJFrx0ndfYhliVDN9FZu87UFx2W9foaxtEP0jzXZDQqotOswge7x0vObC1YHAhlW5NJZSEpIIIL83JjcO1evYaURywCme18NxU0XJzYRxZisncnZkjj31+AJtk/sILkARtCrRRbHm9It2urggNYpsUD3hsWBbt8mIMvYovJ5xl/rsxSu8EWl5YoNATxqG5mtXKBsfmQ6I9YH9CPWliIHqnYgvLfBUj5ZnLDZsiD/2MA8FuZgZ0fcY+FDGjpbj8KYOMtbO7QErFvbewLPmM1WipG2TdaMTzUFKMdnu2Gv45v1VNjLPKab4IvfMPXX6fexzLk6SYWdKO22zypoG9imL5zDwFtWMVZ7uMCleKp+KHmQw6PMjyBs825ARhFHgQBoaNM8s0/fXkI8y4ryXU=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5832.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(52116014)(23010399003)(366016)(1800799024)(7416014)(376014)(38350700014)(921020)(18002099003)(11063799006)(56012099006)(6133799003);DIR:OUT;SFP:1101;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|52116014|376014|23010399003|7416014|1800799024|366016|18002099003|22082099003|11063799006|56012099006|921020|38350700014;
+X-Microsoft-Antispam-Message-Info: HQFqOn5yl7sSF4CYI74zr7JL3BuEiwP5w04pAW7qH3xEFOBPG4daOjiy9YEL93zLvPMtf4eRixXLhRBEjd9wka/VyG2mcy8PItcHhSVsWzNv+3Z4PhbL4ZIpAMO7bN5uqfD5XfK60f0hW7scbicIO6XmsvtPCowW98gu+Q1zxExCP86FrnEtCul+9kXmf2WSnk5MCTlm5U1NqU9Tp4mTzgNPZBuakv6MEdE9kzVkg2xG21ZAuOqhGWVQMLG1PopG13+mD1mih0O8dKa1oL8EOzEDhyHyOu80Dt0rezU4QtcR1daZ7fSjl9by6aN2m/PIter7Ta9A8MHh6hy8yfUoJKsk/e2Acl30z54XbvzATn/Etk+SesO59YWYV4BNsfxnOIvnzHTJFRHYksMIwVEL3Hfq1HvUnBt6oNxQB1NVjynAuu5+a0TsCN54K+jDsED69xmLSF3QWjVKvVcwctUPtzEe2iM3YkpZs8g04ot7Bfxk6+sm7t6se89wbcWdYXPTHcfocwv7nZf+dBGUsSvHOmVI+5uYW2TEmDEIIi601cV+/PbULTMUbvlBspWEJafq1qKYcIt6Z+MALvnFarHWvhMHGJDxf1kBMbQYjrlU1JR2jjWwH2HnwuHGgs3u42e5/2OMaAZcTMOH/Li9wcf05kB9L58QEd8hSFsMxH5XpbSF5cEyWgNKM5OtpuROGRD6tcih9w2l8gOsOflO6+ju3x3gyjnavQx4YcNzIi3c5OWXBAm7k+uM/U2ZgJDn3yqX
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5832.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(52116014)(376014)(23010399003)(7416014)(1800799024)(366016)(18002099003)(22082099003)(11063799006)(56012099006)(921020)(38350700014);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?nLU2s9FefGR5lZlr/WpM/N1cHMI4MOnLXQSGkAnzYUixx89gYPn4qpM4aTkz?=
- =?us-ascii?Q?YWud6ZFpIeBNAO4uKP5nJ+8sEeGtrDFxv+XkRWQa/pG9R4E6O9xFTkwLApD5?=
- =?us-ascii?Q?nWhIBhHnwLZY0pIvqsqPE6EjwJtIWoDeIN7c+1lat0DY+EREf5mdWKFS8xbC?=
- =?us-ascii?Q?MvMfQloj4iCuLe1DYG7hq5kwptcyq9CDnm+QD7R80p10lQdRY0LHRBxx1meD?=
- =?us-ascii?Q?EzHjknX5y2H2EwANrebn7/zPHimqcbUyqRo7wZTELexW6uf3pYvnnw+Vbptj?=
- =?us-ascii?Q?7IedyeKme5xf/2Vk66qT0UEcpayTl+PdCw6MAq6Sm+FAoFa7WZyMnQL5FbKe?=
- =?us-ascii?Q?+GyB+yNWE9RrO8wEtNYAbmhT32ceZ7ilM2+wUsfwbC9bw4rYLqOejejhL9BK?=
- =?us-ascii?Q?nc1Li1351CaDu3wfaYJWiR6dqpPHokheeaToDQHwXuLB0+gRFQnGjH/LUEFw?=
- =?us-ascii?Q?jY5D5NMva6b0sf9Z0fhsMYpMr/NYuAs3YJTSwtaxrrHPZvWlz8jcSgigo67i?=
- =?us-ascii?Q?GxNshuHtP4DHfnx8ujL6OcwJ19pxIokKpTny1U8g3DH0xMvGPCcVup6se7r3?=
- =?us-ascii?Q?7uGvExkIu+MpZR9jIarqXxBl0+LZHmLqdU9lrAuh8yNshcqF/wBNX3hyFZH3?=
- =?us-ascii?Q?dz4s9Z04uL3G2aWZCXiHtym2Tqa+Mnshi68C74cfPG+g0QqBJbXqOcMfHWs0?=
- =?us-ascii?Q?3cyzfO3cMIXkH5gJeactkMGn/CYydqo5qVzghAjMH9oJyaiK4NpPwnN5tqpc?=
- =?us-ascii?Q?fmFiyeZxDygFK3f20iyOI2tJt+cCd0jbvFq/zU0J0B9r3JIolZBAVTljgRlB?=
- =?us-ascii?Q?5EtMW09spAvevNikDidRCsLw8OtwpSnud4HYqiE/Sn1ObWZQ+AMS0cU1W4w6?=
- =?us-ascii?Q?JWj/cgKrLxjwt366NAufQCU5Z6inru56dIBsBWJN6FdLYZAlcrhfH+Y0//47?=
- =?us-ascii?Q?qqrcLfLTLtqPAK8oa/mdW8i8SpE8SEnk3fYw1EQR6NjAoO2PXJcPYGjIQXbP?=
- =?us-ascii?Q?7oPp2SGrS0/0Bf7CUKqdeo/Ek0YJwBKWJ2Z776YQa+E9I5DZRSgVmE9DrVzE?=
- =?us-ascii?Q?se2wjdwsmg+Y2di04qbXxAbGdO3QF7s4m1FTyNPWm1NmfDnZannl8NMy93fx?=
- =?us-ascii?Q?LUeBCQFljrsYi5PXvjkJXU73JUKjwIywIVcVY31fc3+l/RQp4FsmdOD6hDWq?=
- =?us-ascii?Q?x5G30OzAOvqlfw5UO1n8hA9awSITgr6Nl3Rf9sgp6bWBf2qLyyO3S6giNhw1?=
- =?us-ascii?Q?w6zaDTDam6EWHErEfs3YAUotZKmcQ+QK0jm/Xss2eSJI76l2t/cd3PI/nIt3?=
- =?us-ascii?Q?lViEBnAyKpJdhDu31p9XAAxa7omXozms8li6znxWahXqYmJW3xDdF0DnAvOk?=
- =?us-ascii?Q?xsJoUS0/JPFJXbAQJj2ukD2SAXHpOrWe+a+SJ1pKcpwDV5kvInjJtG+VWdrv?=
- =?us-ascii?Q?yS5Q++dY/GzXWbfTqpIRwgTyHMpkPbexaIdCkI1aGDhZsA2AaPctjeXwzUSG?=
- =?us-ascii?Q?z6LCkK9qLJ1hVl+1ywT1c2S2WMf1I6kvd25y3BUE0xkyu0jmJbzDbQm1YD3s?=
- =?us-ascii?Q?L65e3Z0XBZkq0CVtl7NWzL5Oehmn+Zw6rsNH4avYsMCeigDfcB4d6ifHuYOV?=
- =?us-ascii?Q?GwR7eL+uXpRcr37V10erNYnBfiJUDB70MJpZTAkJVBaiPUd9dWRaIo4MpMRq?=
- =?us-ascii?Q?BhNzTP+UNxzxExIjrFfB8Ika+iXJwR/cl3VKgFGn89eiI+VLgaAllYMr4+vx?=
- =?us-ascii?Q?i/+or4t1nA=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Mmg6TUwHE0cWqz1JVLy9fG5ZrXjVT0LdUg3fOuAzzzgPf+qp+xyDFamrCBC1?=
+ =?us-ascii?Q?jitfEZO7+ALlu7X40EMYrgatpRsFOB+LmUE9rg22MQ3ntRMfkE3wmJzzVEpq?=
+ =?us-ascii?Q?f+/N2DPh/FN0m3sdLyFmHC5gpccPiYjg6hy59oYfgNv5oXnrQjTNjZvE6aaU?=
+ =?us-ascii?Q?adroVI3lRfk4FVgovvWnFJJuK/o957hCtobKJfZRiZaGBO1IIu4EunmIYnwD?=
+ =?us-ascii?Q?yZw7+h30B9NNLBh6W0hFVJSB4SUPXfYdGUfp0dhXj3GoSaBKORqwDidKHRxW?=
+ =?us-ascii?Q?3MqCsbWZUo66Wgj5Ni9a0G2hroGIyJuIjuk4/tqPgUfdrMDteCYJld4g4gL9?=
+ =?us-ascii?Q?lofFY8Ji12D8UqXQ20GU2DZxtG5prjHPnhmjErbaSJvP8yaFPQTCups/ZUto?=
+ =?us-ascii?Q?C/RjY3osH+p24R1QndcqKhgCQ0nP+lCRDYqMvJE/MY9rzSjimeozYWrgk01v?=
+ =?us-ascii?Q?BBSnTiyiR7yK/uB6u7S+aYwe2VbkLRrHroO0vQdCH+BlZrHTL4vNISZ3qCUT?=
+ =?us-ascii?Q?kh5abTDu7eFc+qN/SPbqUZmRauTVfGgWIMXIK98uMWoW/q3CdkudZi7E2l/A?=
+ =?us-ascii?Q?afXDSZnFGOy0+uSSfEqp1J99kTBFQmypwe6F3fLWjHgNDOrbaUugom+4sbfM?=
+ =?us-ascii?Q?g9dJt4QUVwrTiJwZ9SKoslJCQomWEWUiaiiIsQsLpNNP0huwpveQkpKESG2m?=
+ =?us-ascii?Q?hm4XtsOb1N6KxMd/cHKxEk5LB1u9uOpMNF2CRx2mLuv0Zx1oWUNAO6yKAl4O?=
+ =?us-ascii?Q?HlAQCDsMjGh0DVPZ/BF3IMEArRQ9h8/mBELN4C1bvfs5OXvCYdKQASfpoq0W?=
+ =?us-ascii?Q?9R9dxGMp/MikW/G4sYtIyKv4dtwl1Hy5RDjLBHwHvzuoWqYvbzfae3j+wfxC?=
+ =?us-ascii?Q?23bEolwuAT8+B/2oOQTM5CcZwVXsl0+mLPpa2c5vutsk2T5oh6afQTg1kGCz?=
+ =?us-ascii?Q?U6aealFncjYdSAtudh7XSrVHjxr6bP96WKD3BRLBL9vSDuH0sSTnyJSrvh3d?=
+ =?us-ascii?Q?OmuG4X4yRmR+0c+VTCg95CtTmVkeaev42rwjp45BJYuqBKoqis2X4l5xLeUi?=
+ =?us-ascii?Q?N+JWmz6cf9C4Z8z+HZaeHsiSuhirHAquFsEUWNVks4ezdISEHwjJ40jPwZkw?=
+ =?us-ascii?Q?Dn5bZvFxOP9aF8bVmVv+cpm5qIxZQAg62PEO7nuQ4ykoQzLZ9pd/WzdY+TCa?=
+ =?us-ascii?Q?JeXV8Ee8G1CgzZyzrqTL4wpYnTXgM9+4gzHCu/6cOVj+U6DQvEQ7CejKfJZQ?=
+ =?us-ascii?Q?DkbRQdPDow+R1BD05wB0WMHag/+VyAiWEGulG0C9p5jP5pJwKdaKkh1KJ0c7?=
+ =?us-ascii?Q?lx5ePMV115ieFhrO6LWL5CXAVfHdCZ8fhVORAq5q8VL7jpynDsKuAFJ/VO2G?=
+ =?us-ascii?Q?bstquX4ynvLHOYp7gchb0CxIgb06tNYRLXpsIS7/ZKht3WPUBWv7dQ8pp1xx?=
+ =?us-ascii?Q?upTdBtpCl98L+YyNl1GqCOuPy5EYSf3RYRqYr0a8Dwlr5Lom8i7fT4fZG5+u?=
+ =?us-ascii?Q?tR1vZExaKc+YGB5GHO89aLAVfD3Dv8L21Uv12Vievy+aEU1/Xb5kxL6iJO4h?=
+ =?us-ascii?Q?WlIEghD1nFuNEBSuZazjzg3NE2Lh5nfGJMmN81yDyr9E95g9tkdOdhDe8/2O?=
+ =?us-ascii?Q?bs6ZBUXNBT8M49vSctwk/YyEyhuKDYCZn3/4VF6QLImwwbDXZ+rxwq5Edspu?=
+ =?us-ascii?Q?wKjRJVS5sJ9jiqBdmqb9kCQ0XvsZ7G/agD2Nr3Rggi+K7ztALPh+EJruEDS2?=
+ =?us-ascii?Q?euuSYPgLnQ=3D=3D?=
 X-OriginatorOrg: vivo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 70fb9282-7ee3-421d-4ce6-08dedd6231bb
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6d89c22a-ed6b-47e8-0bf0-08dedd624748
 X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5832.apcprd06.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jul 2026 02:31:34.7865
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jul 2026 02:32:10.7964
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: DVhgkewTd2EN/hIfgnq+yD75CFZFnXJmCw8ddwRZLcc/GekWLNki6edKlLUpUmotdedMVsXx6nTaxfXo8bZQmQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KUZPR06MB8800
+X-MS-Exchange-CrossTenant-UserPrincipalName: c5L4MAO2ABt8SJ02KhiyFZchStDsF35w2/IAdDCJWEuREOVXqeGd6reT+6gv50CykTBwGmaJGTnKnksiE84M4g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB6278
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_193156_481729_F3014DAA 
-X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-CacheID: sfid-20260708_193215_059973_214A427F 
+X-CRM114-Status: UNSURE (   9.80  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -182,65 +149,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Commit 55b48e23f5c4b6f5ca9b7ab09599b17dcf501c10 ("genirq/devres: Add
-error handling in devm_request_*_irq()") added automatic error
-logging to devm_request_threaded_irq() and
-devm_request_any_context_irq() via the new devm_request_result() 
-helper, which prints device name, IRQ number, handler functions, and
-error code on failure.
+The devm_request_threaded_irq() now automatically logs detailed error
+messages on failure. This eliminates the need for driver-specific
+dev_err() calls that previously printed generic messages.
 
-Since devm_request_irq() is a static inline wrapper around
-devm_request_threaded_irq(), it also benefits from this automatic
-logging.
+Signed-off-by: Pan Chuang <panchuang@vivo.com>
+---
+ drivers/thermal/mediatek/lvts_thermal.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Remove the now-redundant dev_err() and dev_err_probe() calls in
-thermal drivers that follow these devm_request_*_irq() functions, as
-the core now provides more detailed diagnostic information on failure.
-
-Pan Chuang (18):
-  thermal/drivers/airoha: Remove redundant dev_err()
-  thermal/drivers/armada: Remove redundant dev_err()
-  thermal/drivers/db8500: Remove redundant dev_err()
-  thermal/drivers/hisi: Remove redundant dev_err()
-  thermal/drivers/imx: Remove redundant dev_err()
-  thermal/drivers/loongson2: Remove redundant dev_err_probe()
-  thermal/drivers/max77620: Remove redundant dev_err()
-  thermal/drivers/rockchip: Remove redundant dev_err_probe()
-  thermal/drivers/brcmstb_thermal: Remove redundant dev_err_probe()
-  thermal: intel: int340x: Remove redundant dev_err()
-  thermal/drivers/intel/bxt_pmic: Remove redundant dev_err()
-  thermal/drivers/mediatek/lvts_thermal: Remove redundant dev_err()
-  thermal/drivers/qcom: Remove redundant dev_err()
-  thermal/drivers/renesas: Remove redundant dev_err()
-  thermal/drivers/exynos: Remove redundant dev_err()
-  thermal/drivers/st: Remove redundant dev_err()
-  thermal/drivers/tegra: Remove redundant dev_err() and dev_err_probe()
-  thermal/drivers/imx91: Remove redundant dev_err_probe()
-
- drivers/thermal/airoha_thermal.c                          | 4 +---
- drivers/thermal/armada_thermal.c                          | 5 +----
- drivers/thermal/broadcom/brcmstb_thermal.c                | 3 +--
- drivers/thermal/db8500_thermal.c                          | 8 ++------
- drivers/thermal/hisi_thermal.c                            | 4 +---
- drivers/thermal/imx91_thermal.c                           | 2 +-
- drivers/thermal/imx_thermal.c                             | 4 +---
- .../intel/int340x_thermal/processor_thermal_device_pci.c  | 8 ++------
- drivers/thermal/intel/intel_bxt_pmic_thermal.c            | 4 +---
- drivers/thermal/loongson2_thermal.c                       | 2 +-
- drivers/thermal/max77620_thermal.c                        | 8 ++------
- drivers/thermal/mediatek/lvts_thermal.c                   | 2 +-
- drivers/thermal/qcom/lmh.c                                | 1 -
- drivers/thermal/qcom/tsens.c                              | 5 +----
- drivers/thermal/renesas/rcar_thermal.c                    | 4 +---
- drivers/thermal/renesas/rzg3e_thermal.c                   | 4 +---
- drivers/thermal/rockchip_thermal.c                        | 3 +--
- drivers/thermal/samsung/exynos_tmu.c                      | 4 +---
- drivers/thermal/st/st_thermal_memmap.c                    | 4 +---
- drivers/thermal/st/stm_thermal.c                          | 5 +----
- drivers/thermal/tegra/soctherm.c                          | 8 ++------
- drivers/thermal/tegra/tegra30-tsensor.c                   | 3 +--
- 22 files changed, 25 insertions(+), 70 deletions(-)
-
+diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+index a9617d5e0077..d357968f362b 100644
+--- a/drivers/thermal/mediatek/lvts_thermal.c
++++ b/drivers/thermal/mediatek/lvts_thermal.c
+@@ -1491,7 +1491,7 @@ static int lvts_probe(struct platform_device *pdev)
+ 	ret = devm_request_threaded_irq(dev, irq, NULL, lvts_irq_handler,
+ 					IRQF_ONESHOT, dev_name(dev), lvts_td);
+ 	if (ret)
+-		return dev_err_probe(dev, ret, "Failed to request interrupt\n");
++		return ret;
+ 
+ 	platform_set_drvdata(pdev, lvts_td);
+ 
 -- 
 2.34.1
 
