@@ -4,90 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 886D8C43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:39:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93C23C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:52:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9A7QPbu0+2KEHtIpgVDSTRvmsxY6yPUK3BF9orDh9j8=; b=WxjwRKZzO0TYK9BExxVANBX9d4
-	7V9fHpm4n9CLGsT4A3GVbjUQSDGv7ERWrb96ohytiYBK3zV4tNLCwuNrI5x2h+pwU4FtUtTt1pU/J
-	j7MGicawXqIKlbg7VgOS3Y4N76x1SMKNdQEw8G/kwIdrGIAAk2dsfQq2UrySdV64tFLS9wjbJYacf
-	eHQBS6KQVfdna4LmIZdBREQEy3GBG0DrObAganNFvGaadJpbreypVsp32WW467PttPXsWb0CSUGUU
-	38u/ro2oAFPjUhLsTW5R9oMj+Y12vpccsH4x0g6VgsCeVAdr22F7xFbI/yqsazU3eGFTYtZ3i0LVL
-	llybm06w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZRa8fd2YEIHvXJW6erDn27mDqiCsivgX1/NWkDYcYt8=; b=XQ+TMtcueY52Pr7RGQ7TyNVolT
+	npftMcCl3+Kc3YpUHM1iTTTMwNyy8O4YaUk3kSqWTRky6cyowCpB25h9HLvuNQOS1HrkaqHom+xCl
+	xr7Jr1taqbIUe2h5OfM5Ja/g1ieo4/SsK6nL1lcOKEWvL2NT6BcbKS2sWLFZo5XL9vp3p6m0jTYBr
+	BQk8Y9q5NHM8tKex+SSH7IsV1/libplC7MRLfASfFb6XgKzqn7tRUa/NQBbuIdY2eOC06yo8UXAJg
+	CCC4KDuLJKFKasoV5IhcziH2fkJr1nbukroh5ikoWm7ua7FdER37xYKcBfHbSG7T4OhSt3Wi++2Pe
+	zbl6+JgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whmAc-00000001zXV-2xXb;
-	Thu, 09 Jul 2026 10:39:54 +0000
-Received: from mgamail.intel.com ([192.198.163.12])
+	id 1whmMh-000000021FE-1gmH;
+	Thu, 09 Jul 2026 10:52:23 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whmAa-00000001zWn-07Kn;
-	Thu, 09 Jul 2026 10:39:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1783593592; x=1815129592;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=e2sU0s40xkGwnyMyr3Gohlub14CCeKxZuEHRaPaL50k=;
-  b=gonoslVatCxe+Y1dLk5FHk1ngxJuISGjzckB627cHz024n08dBrnUWmS
-   ukz5ap9iznQ05qaVOi3T0uZAPZd7sDm562qVUZKmKYmbIKi9Bq31TVefD
-   r0W5m/a2JgCmVf63bVHxZvKvFIvTtNSeDppjIuLSEQjDUoyw7/dxeuVbQ
-   KXYQWKM2JwAr3yWrZ+K0+l2gMiAxSwc+OPQImWVxiyjEyfEhJD75ipOeV
-   M9YLnFPYNan29+IoRiqCZScDLQk7jNF8z+Vn4Jux8+CDo1G8imslU8GHA
-   YORr93ZUqO4iNYjuPwwWTWeHLJzHpjO7NkUIQwM9+9K91vTchvWtYS4vb
-   g==;
-X-CSE-ConnectionGUID: M3n5D1JqQ0GYle9UnGGayQ==
-X-CSE-MsgGUID: 1FjHlwC5TSuummhjJR7lsw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11841"; a="88097648"
-X-IronPort-AV: E=Sophos;i="6.25,154,1779174000"; 
-   d="scan'208";a="88097648"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jul 2026 03:39:51 -0700
-X-CSE-ConnectionGUID: DE8TRutyRcquJ0DgXoxDVw==
-X-CSE-MsgGUID: Dgg5Foy1TwGE9qWU1O2mMQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,154,1779174000"; 
-   d="scan'208";a="292740125"
-Received: from ettammin-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.245.235])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jul 2026 03:39:47 -0700
-Date: Thu, 9 Jul 2026 13:39:44 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Bartosz Golaszewski <brgl@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Daniel Scally <djrscally@gmail.com>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-acpi@vger.kernel.org, driver-core@lists.linux.dev,
-	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Alan Stern <stern@rowland.harvard.edu>,
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: Re: [PATCH v4 08/14] usb: hub: Use usb_hub_set_port_power() to
- control port power everywhere
-Message-ID: <ak96cA264qq_FS1r@ashevche-desk.local>
-References: <20260709095726.704448-1-wenst@chromium.org>
- <20260709095726.704448-9-wenst@chromium.org>
+	id 1whmMe-000000021EO-23HF
+	for linux-mediatek@lists.infradead.org;
+	Thu, 09 Jul 2026 10:52:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783594330;
+	bh=r6FjVnEXwE0IGEmKbTI/hDFm3Nf0DQ8S1T/ck81JAEM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=h2ekCjMHC5AgjXntNqWY2j4muZT4FhN2htvXPl6KTYk6Q165IBO2SsF+8avDrAiAB
+	 EhRlP3kE/rtBT7T08UutOjZ0+eh2EJnuWkxuPSf6UcdNixIRWTr09OY8W2ap4y4tWk
+	 HNkpSmpXODFp6wchiKv//DRKOxAVrC0A3ODgdVmC16tu1zKhfppxyTgOMl4ryDZnZ2
+	 TsGTpWr1QlZL4/hGoSMJXgad7fYUfUGaeFspvSFQrXXz/b+XLWJBZmBlhoDG/JTay+
+	 jjXJqxzewxs9WHRrPOrubkTnmrtNxLNtXNVZDm0KpyXDWOGKEdsEK4DYa2CvWjSCBh
+	 XsUdhdJHIYmjw==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E9ADA17E0886;
+	Thu, 09 Jul 2026 12:52:09 +0200 (CEST)
+Message-ID: <be903cb1-8184-4112-9672-ea262716e5b9@collabora.com>
+Date: Thu, 9 Jul 2026 12:52:09 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260709095726.704448-9-wenst@chromium.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] arm64: dts: mediatek: mt8188-geralt: Add MT6319 PMIC
+To: Chen-Yu Tsai <wenst@chromium.org>, sashiko-reviews@lists.linux.dev
+Cc: devicetree@vger.kernel.org, conor+dt@kernel.org, robh@kernel.org,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, Mark Brown <broonie@kernel.org>
+References: <20260709081928.612294-1-wenst@chromium.org>
+ <20260709083024.330381F000E9@smtp.kernel.org>
+ <CAGXv+5HO5eWaJ-AhH9JG=aZ9f_se8L8Ebz-NRHfKMsNXvGnQTg@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <CAGXv+5HO5eWaJ-AhH9JG=aZ9f_se8L8Ebz-NRHfKMsNXvGnQTg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_033952_074785_A1E6DF2A 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20260709_035220_753339_E61B82D7 
+X-CRM114-Status: GOOD (  25.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,21 +78,135 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 09, 2026 at 05:57:13PM +0800, Chen-Yu Tsai wrote:
-> There are still some instances in the USB hub driver where port power is
-> directly controlled by toggling the USB_PORT_FEAT_POWER feature flag.
+On 7/9/26 11:27, Chen-Yu Tsai wrote:
+> On Thu, Jul 9, 2026 at 4:30 PM <sashiko-bot@kernel.org> wrote:
+>>
+>> Thank you for your contribution! Sashiko AI review found 2 potential issue(s) to consider:
+>> - [High] The MT6319 PMIC fallback compatible triggers incorrect MT6315_PP mode ganging in the regulator driver, causing silent cross-talk between the CPU and EMI VDDQ regulators.
+>> - [Low] Grammatical error in the comment explaining the firmware workaround.
+>> --
+>>
+>> --- Patch [1]: [PATCH v2] arm64: dts: mediatek: mt8188-geralt: Add MT6319 PMIC ---
+>> commit 0ff94c6622559a57199ed1f2d1f4063c6c911df1
+>> Author: Chen-Yu Tsai <wenst@chromium.org>
+>>
+>> arm64: dts: mediatek: mt8188-geralt: Add MT6319 PMIC
+>>
+>> The Geralt design uses a MT6319 PMIC to power the big cores and LPDDR4X
+>> DRAM.
+>>
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+>>> index 8e423504ec052..af05315092f53 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+>> [ ... ]
+>>> @@ -1225,6 +1235,70 @@ &spi2 {
+>>>        status = "okay";
+>>>   };
+>>>
+>>> +&spmi {
+>>> +     pinctrl-names = "default";
+>>> +     pinctrl-0 = <&spmi_pins>;
+>>> +     #address-cells = <2>;
+>>> +     #size-cells = <0>;
+>>> +     status = "okay";
+>>> +
+>>> +     pmic@6 {
+>>> +             compatible = "mediatek,mt6319-regulator", "mediatek,mt6315-regulator";
+>>> +             reg = <0x6 SPMI_USID>;
+>>
+>> [Severity: High]
+>> Does this fallback compatible trigger incorrect mode ganging?
+>>
+>> The mt6315-regulator driver maps USID 6 to the MT6315_PP variant, which
+>> hardcodes mode ganging for vbuck1, vbuck2, and vbuck4. On the MT8188
+>> Geralt's MT6319, vbuck4 is wired as an independent regulator for
+>> pp0600_emi_vddq.
+>>
+>> If a mode change happens on vbuck1 (which is allowed by the
+>> regulator-allowed-modes property), the driver will apply the ganged
+>> mask and silently overwrite vbuck4's mode bits in the PMIC, potentially
+>> forcing the RAM supply into an unexpected mode.
+>>
+>> Could this silent cross-talk between the CPU and EMI VDDQ regulators
+>> lead to memory voltage instability?
 > 
-> Switch these instances over to usb_hub_set_port_power() so that only one
-> unified function to do this exists. This makes adding external power
-> control with the power sequencing API easier and consistently applied.
+> This discrepency is actually bigger than Sashiko mentions. The ganging
+> supported by the driver only applies to the PMICs in the Asuarada design:
+> 
+>    - SPMI ID 6 has 1+2 (GPU); 3 and 4 are unused
+>    - SPMI ID 7 has 1+2+4 (big cores) and 3 (little cores)
+> 
+> On the Cherry design we have:
+> 
+>    - SPMI ID 6 has 1+2 (GPU); 3 and 4 are unused
+>    - SPMI ID 7 has 1+2+3+4 (big cores)
+> 
+> On the Corsola designs with beefier chips:
+> 
+>    - SPMI ID 6 has 1+2 (big cores); 3 and 4 are unused
+> 
+> On the Geralt design (this one):
+> 
+>    - SPMI ID 7 has 1+2 (big cores); 3 (DRAM); 4 (DRAM)
+> 
+> Any ideas on what to do about this mess?
 
-Makes sense even on its own.
+wenst, I think that the only way to fix that properly is to add generic support
+for buck phases ganging in the regulator API... because AFAIK there's nothing
+right now.
 
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+ From what I remember from last time I looked, MediaTek PMICs wouldn't be the
+only ones, there's something else that also has ganged bucks, and again if I
+remember correctly, I remember seeing one platform data struct for each of the
+ganging combinations in that driver.
 
--- 
-With Best Regards,
-Andy Shevchenko
+So.. especially because MTK wouldn't be the first, I think the addition of some
+kind of generic properties (and callbacks) for this kind of configuration in
+the API would be both profitable and welcome.
 
+Mark, any considerations?
+
+Cheers,
+Angelo
+
+> 
+> Another thing is that I kind of wonder why the mode configuration register
+> setting isn't ganged in hardware like the enable and voltage settings.
+> 
+> 
+> Thanks
+> ChenYu
+> 
+>>> +             pvdd1-supply = <&pp4200_s5>;
+>>> +             pvdd2-supply = <&pp4200_s5>;
+>>> +             pvdd3-supply = <&pp4200_s5>;
+>>> +             pvdd4-supply = <&pp4200_s5>;
+>>> +
+>>> +             regulators {
+>>> +                     /*
+>>> +                      * vbuck1 is the cpu-supply for CPU6 and CPU7.
+>>> +                      *
+>>> +                      * However, this device originally shipped with a broken
+>>> +                      * firmware that causes register reads over SPMI fail.
+>>> +                      * This is fixed in firmware version 15842.175.0, which
+>>> +                      * is included in ChromeOS releases R150-16700.22.0 or
+>>> +                      * R151-16721.0.0 and later.
+>>> +                      *
+>>> +                      * Assigning the cpu-supply properties for CPU6 and CPU7
+>>> +                      * without the fix will likely cause CPU DVFS to stop
+>>> +                      * working. Hence the assignment is left out to avoid a
+>>> +                      * regression of the function. If the user is confident
+>>> +                      * that their system has the fix, they can added the
+>>
+>> [Severity: Low]
+>> This isn't a bug, but there is a typo in this comment. It should say
+>> "they can add the property themselves".
+>>
+>>> +                      * property themselves.
+>>> +                      */
+>>
+>> --
+>> Sashiko AI review · https://sashiko.dev/#/patchset/20260709081928.612294-1-wenst@chromium.org?part=1
 
 
