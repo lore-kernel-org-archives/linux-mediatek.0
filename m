@@ -4,78 +4,138 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D84DDC44507
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 03:27:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ECF2C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 03:35:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YPIulzBzzSjRzeVrKrRnT1ZUkoYtICzdzWxddReKMC4=; b=P8YXNh2BUAsy6Od5/kBC3CVSGh
-	4UDiRegnK55c60Vpb1WJv23igQwizF+Ma4qLt2WFSmyWNjC6e8qbvX0CcM+vP2wdqZ3WVCmau2l7k
-	pMwhMN+wv+1nFWYPEmXHnsoCOJsIseZpJFgALGbQCVAJMOiNAWadYvgvu0T6sMrKgfXhK9KPKhsHA
-	RTcuFuvApFtuS8RLTk3yGC2eJlNJRNpvP7B3lUZtsE+3iDLs6hrwGgSD9hGJgN7JjvMq2Nn6NIYAn
-	gqB5bE0xTdwUUDpnAtCH1p9RHuhmoZgBRLixkEDoFTNmniTeWa2UyvG83bOYjlos+3o01ypmKrAPm
-	0GVGrQzw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=m7JAm6c5QpWscHDUz2WKVnHugJ6te115xZNRdOcGfts=; b=ijR0kUICbqy5QTVcn9AgCIqlDV
+	3KYJpJc+03IGiowdWxHs0JmF93wk7IFWQXZBIvLOFe8Hea9f3mkXl1oNDqT9edsQJjnyrH/DeA1gG
+	+OSHd2ZUrSbfILiiaKljLquUKueM0i1v7JTIxaUuV3WSTYRTUIE2TvumUOzvoxdeM3SKoSv6Tcyxd
+	6WkR0vQ8Anpo772z/c1F23Nm01cQajhGs71FWVrAJob8NUWsxV+rSMxHAG7XcDESdzTS7PbtCVD4i
+	rrjnH9kjZq/7HiDVuNRnRKOxBRypn7hVrBHXVnqtg50o+slMFX7X7nStvIH9UA17Ex2kYy78V+AD6
+	jMI1n4UQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whfQS-00000000taR-2ox7;
-	Thu, 09 Jul 2026 03:27:48 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1whfXU-00000000uwX-04nC;
+	Thu, 09 Jul 2026 03:35:04 +0000
+Received: from mail-koreacentralazon11013017.outbound.protection.outlook.com ([40.107.44.17] helo=SEYPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whfQN-00000000tV4-0ykZ;
-	Thu, 09 Jul 2026 03:27:45 +0000
-X-UUID: 21791e4c7b4611f1acbe4559397dec65-20260708
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=YPIulzBzzSjRzeVrKrRnT1ZUkoYtICzdzWxddReKMC4=;
-	b=FIAnpXREU9JXzaOPIQAEtgq9xM+4rCFiC5GrX3T1GDVi5gQcJJcw2a5xZD12golTMB5NEaCQSgtv0Me5okNWU+zRSSydVSQkmLP1b1fpMDJTCSgxD5iOK6ExhGyONLTHiwAu81r02yjyzgoMgWa+s2OduI4hS0B4jo4k2H5mAP8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.17,REQID:1b09705c-7d15-4df5-832c-188b7c7606b6,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:d497b38,CLOUDID:3df1e618-ab14-4403-9336-76696324c5a8,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
-	0|99|100|102|156,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,
-	COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 21791e4c7b4611f1acbe4559397dec65-20260708
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <jianhua.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 70831178; Wed, 08 Jul 2026 20:27:36 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 9 Jul 2026 11:27:33 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Thu, 9 Jul 2026 11:27:33 +0800
-From: Jianhua Lin <jianhua.lin@mediatek.com>
-To: <nicolas@ndufresne.ca>, <mchehab@kernel.org>, <robh@kernel.org>,
-	<krzk+dt@kernel.org>, <conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
-	<jh.hsu@mediatek.com>, Jianhua Lin <jianhua.lin@mediatek.com>
-Subject: [PATCH v9 1/3] dt-bindings: media: mediatek-jpeg-decoder: add MT8189 compatible string
-Date: Thu, 9 Jul 2026 11:26:54 +0800
-Message-ID: <20260709032657.25730-2-jianhua.lin@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20260709032657.25730-1-jianhua.lin@mediatek.com>
-References: <20260709032657.25730-1-jianhua.lin@mediatek.com>
-MIME-Version: 1.0
+	id 1whfXR-00000000uvU-0urS;
+	Thu, 09 Jul 2026 03:35:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Z54+tPnbz0UYYpSHMNHndnOS2Glq9YQIJrz4SOJ5vJHuRdQRv0KuhKocSJSXeLij7m6khOs8yUG0y9HE+RwOrXfpyA0XZJH7Dh62cCZcBaVQFy3jGGJtuYDuHl+uK1lah0Ea6pICJBk5ByOj9SM6EzC90TDxNueiVFHNYbFIZYVW72+IKXs/soPoipQ5lmZD8GWQEppa/wwxQwUZDmiR9sorAVA0KYx6qCqLlZpeISWuZlUstJ4zewZt4cGAmkkYsZYF0B4VbWoL9pcB2ZPEIFeagfBRYExn7hlX08d+XcBFxxQO/44ZlDRcqGs7OYqSnhphZ4VPCstq6S4vtwLwWQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=m7JAm6c5QpWscHDUz2WKVnHugJ6te115xZNRdOcGfts=;
+ b=c/DHEjK/sqWW3eQVC7t31SEohMwEzqRV31SCpo10mb97+fy7LoJBzCMR5bO2NeC4R5xF9LXD8WsvUO93mx+FF3CPN67NEE6a0me3Y+7rRwjuTVt7dzJbiG7wntAdWITtdgFb6Gnv5wnr3fkc363DowNwd/jKS8MELsuxTD2FVnDAlB22KCm6TrjCgGwnxNP01kDeofjlYk+wAJg4+GE5c2sZJmUwE2KYQ4JVyWH/SzvUfbQGxA3T20o33Ma2rPu60JQMpDx7Wy46MB3r3Bnt2cwHc7SRq/VkhbqTDaAJMC2s727sjWqfTw4R/afRtkbZg8cLWym7gYnkW4bQ6Ejmvw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=m7JAm6c5QpWscHDUz2WKVnHugJ6te115xZNRdOcGfts=;
+ b=NutE10FzDHfNJpMrKlBLPBYaVA75/dwliVb7gjlaVv/8DIOLvUSkR5gXgabMpII98TH1rC+MqYsUy9q1SnLqAc55uXA/moe7k0G3MSqwJ57SOO9TImRKL229Q2W5PECxxKjqWuqUlKJB+RP4Jbu8SF9xpJM0+Nzkt42i3a0ENDzU6RyRmnxasWftG5UHptrgSeermQNPLJv0vdsqd8jk61nRuXvUH5ht2HZ7HoThNrELMmLDoDvIWKWb1o9euYSWcAKo6AQ7p3Md9BakAX+y7Qe+CzDC00r+/j7tk2a9sWihaK32VSJ/ewCXHNvqbSvIvAqxoOHy+735jvVRla4TLw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Received: from SEZPR06MB5832.apcprd06.prod.outlook.com (2603:1096:101:c8::12)
+ by SEYPR06MB6360.apcprd06.prod.outlook.com (2603:1096:101:13f::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.15; Thu, 9 Jul
+ 2026 03:34:50 +0000
+Received: from SEZPR06MB5832.apcprd06.prod.outlook.com
+ ([fe80::f98:5e32:4ccb:d07b]) by SEZPR06MB5832.apcprd06.prod.outlook.com
+ ([fe80::f98:5e32:4ccb:d07b%6]) with mapi id 15.21.0181.014; Thu, 9 Jul 2026
+ 03:34:50 +0000
+From: Pan Chuang <panchuang@vivo.com>
+To: Sebastian Reichel <sre@kernel.org>,
+	Linus Walleij <linusw@kernel.org>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Hans de Goede <hansg@kernel.org>,
+	Support Opensource <support.opensource@diasemi.com>,
+	Amit Sunil Dhamne <amitsd@google.com>,
+	Saravanan Sekar <sravanhome@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Samuel Kayode <samkay014@gmail.com>,
+	Casey Connolly <casey.connolly@linaro.org>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	linux-pm@vger.kernel.org (open list:SYSTEM RESET/SHUTDOWN DRIVERS),
+	linux-kernel@vger.kernel.org (open list),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	imx@lists.linux.dev (open list:NXP PF1550 PMIC MFD DRIVER),
+	linux-arm-msm@vger.kernel.org (open list:ARM/QUALCOMM MAILING LIST)
+Cc: Pan Chuang <panchuang@vivo.com>
+Subject: [PATCH 00/43] power: Remove redundant error messages on IRQ request failure
+Date: Thu,  9 Jul 2026 11:33:39 +0800
+Message-Id: <20260709033428.362970-1-panchuang@vivo.com>
+X-Mailer: git-send-email 2.34.1
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+X-ClientProxiedBy: TPYP295CA0017.TWNP295.PROD.OUTLOOK.COM (2603:1096:7d0:a::9)
+ To SEZPR06MB5832.apcprd06.prod.outlook.com (2603:1096:101:c8::12)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SEZPR06MB5832:EE_|SEYPR06MB6360:EE_
+X-MS-Office365-Filtering-Correlation-Id: a2303c2f-d8ba-435a-dc1d-08dedd6b07cc
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|23010399003|1800799024|376014|7416014|52116014|11063799006|56012099006|18002099003|6133799003|921020|38350700014;
+X-Microsoft-Antispam-Message-Info: P0c5wX6Zdb0agOCKZa0qbc0jN69beP1K8FHaERdiu6e56Gf/yLNpXvxXHoMPlOKLVSGeYQf7cQ6wAmReAARiy1MQLI8HUVsd38saL77lgr6j2WjTup3u6fHv4zHPYk5Bvq3pV3vnir1QdSQZeeA1DhvPwJZDIq8iAiGLj8g2fh4/eN8KtTMme1IWN6Po9gyadHLjWQhX6wfczS8fK9wocZps2X7eGonBJ5WKeMuKadv190JODDoB1SSHi7X71O8anqq0dUKxVgRam4mq+wgA/YXLeZMj9T333paFWryw/c9XeLiXYdEV9rnf9HLH3OucCOoCiKJpKGc8ve+xC476uDt8q62smpg3X/VPXb7QBJ0tSl913krygohiupVImHSia2jNAq2VAIrS1OmTPL6OJsSvMxa7bNE0oZA4975Qd8Omka0XQkhCQ3UftYqgiElFVIfK/h48UajCBN2seAX7A0dHz65x2Ogpn2cX696v5NYuP6UTPaWshNDi7Mr9XbF2Tom6G5O6TqTT4w9XkAs+/RcjVmUvDNjAbcDzQ0ukG3M/8ey/+U+jYP68GMQm3fKjCjd307LMZxDV1IsHtPoKbjLOGe/grg279u96NhqWgv3cJPGcjmp3nEVlQ99LIsJ1UQUSbDTQuZhFqduUqtsFergZWluDQmoyZlF6l1atL14wcGr7A6qWR1vWwND4RXQm06uin61hKcJ2roevFYDXMTTlD0r2aMYb2UAf5TvTMMt1h2wklPCunOYtnhneEzNy
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5832.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(23010399003)(1800799024)(376014)(7416014)(52116014)(11063799006)(56012099006)(18002099003)(6133799003)(921020)(38350700014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Gm++FXjTYhidG/YOq9mDMeP/GsaWmq78sj8PLiBG+pGVYK7CultcMM31rXRU?=
+ =?us-ascii?Q?oDgPZizZyPPqjbJxlqJdj6/mnLPmnQuiv4guPL9dnToe8ufRQbGqO02GwODR?=
+ =?us-ascii?Q?+vuWO1JxmvbtXhM9afGoyVZKMuZQ1NnThwanWKYb9lDQsgOuJrgwa42DK47P?=
+ =?us-ascii?Q?0pXmqTnAgn+t6QS9jBk9qa/q4CZpQ/3xxjy7uqSgYN3jlbf3hMZ76CwcX04Y?=
+ =?us-ascii?Q?tWKZ6HVyPHYSbD1kf3I8rJbxzigWZJBpKt2D1auoMX/wmesFGcZLRliKp93n?=
+ =?us-ascii?Q?ga9R5LG3KdWvW9vy45mV2sAuQczZpAH0oSX/CtlwZb/bDV3hBtLEUPLB0y1g?=
+ =?us-ascii?Q?34HMlcMxL7ZcGtfkllzohooyTWVi924oWN2vYOn6n0+cJYXtdvlIppNbjOiP?=
+ =?us-ascii?Q?73Yid07/KF9pBt1n0chkOYmuBHcx70AEaojcjf/AVGGjbUHUhggOrwzxBw8B?=
+ =?us-ascii?Q?4SJeLDjgUT8joF5hzUKC/ddwdvf7iaTy4l7bVE7PwvZznbbYiBwVoASkKZlH?=
+ =?us-ascii?Q?xrhwbJIzsGjbHLCWa6OsXtFs3Kv3TDNFNHkcQ2Vh6BWpAPOVAEJj1MgW+029?=
+ =?us-ascii?Q?+naz+RgoJG9DLFC8K59PePvZ92DfinPGTWS2weVXrzjCqocn3He+o2qaBebE?=
+ =?us-ascii?Q?wvhrq9UL5nxl79HAfMJDhzq068gZ6DJNXOqpp7HvS4NHtgNKm9LR6OnFDgbp?=
+ =?us-ascii?Q?AS+40G4curgPbMRh/kSacHPIoJamN5AYVXdzCkFJ74QFaQ6Hh4WAMQrQ+rUc?=
+ =?us-ascii?Q?r6gpDsRvqH/BH+xZS29GCoACMap7M5dcxSQYhrUCuPIAXDEaPVhbNsE9+AUu?=
+ =?us-ascii?Q?pb8TSxwh4vqR1QnYNpiS/3Hd7OALUHTnniZTdqT9q6h9YPhd6B4bR/+gZhKa?=
+ =?us-ascii?Q?JDocYS7NUfc/D6NSCfmVcnyY0MXOIlTFsINwBDfMNL8ejX7Pk6XtUPzQfIqi?=
+ =?us-ascii?Q?J4mx3PZBKWcQBZjVQm/Yp5vmOhv0jJdA+SNKPf/eMSOTLuc0b+/jvlKZQCX+?=
+ =?us-ascii?Q?TTyCA6DYdz76bJvm3oNdCkbLV5IMT7W2f+m+xoJvtZubERY+mU65bm5n1WLH?=
+ =?us-ascii?Q?OrHvZCCvgMDIToqcl7L1JC4W5b3kTPyHloMFJT0b7T976BQkocPnMh7y+W+6?=
+ =?us-ascii?Q?KpE6/0qzigzp6fJTTdLPVcbYB59PFV3B0FCBJ2vlj01RBG9PWb8SryktFY+T?=
+ =?us-ascii?Q?1V5D5jAY2WT4aq360BnXOv3npX9RPoJtDqiLxKBUNklW1gvtFq8kDOml+92a?=
+ =?us-ascii?Q?BBKcRtTmEx88CxRuI9x57Lx5+kNrWJsUmXKCIYX8h8QmiyXsmPV1Fn0mkWuA?=
+ =?us-ascii?Q?ou3UQDB+DqGTY21esEO7P25EsJygET9mKnkJ9d6C+kYvd2peh9vMsAPkONDf?=
+ =?us-ascii?Q?w66X33gl5nvcP2Cr07U0y50jmXBmKIoWWRm2fLe07qyjbwTTO7bDHowt4lPQ?=
+ =?us-ascii?Q?XfPhDYNTZUhGQ+yblQ5b4mWfxjliLb7H6Ht7Fc+7lpJ2qYIWOitOZpSlbr5f?=
+ =?us-ascii?Q?etXpt0iSzph70OqooPEhNKsTzcEt3+lZrxrTd6hQlayRy0yBmNqvE4nyJpZs?=
+ =?us-ascii?Q?UnmmxLNNXnFU8Tq1i8bzFawN8gRNwZu0TDiYTkcUDj8oAve93HvRFmatG/+9?=
+ =?us-ascii?Q?PHcpYMz19CkVmoYTcOVl/D+ynAT+9ArcKJ673iBnV0n4d4Ph2xvpliaHBolG?=
+ =?us-ascii?Q?+w2S23Mmi+9oj1uRyvY8Yi5H+fS7oVP2T/fM7xTLB6x22FlqeXfbCDrNHC8W?=
+ =?us-ascii?Q?0L4sN5FX1w=3D=3D?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a2303c2f-d8ba-435a-dc1d-08dedd6b07cc
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5832.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jul 2026 03:34:49.7346
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: WhJoL70c7Z48w8Et6VIKeRc3R+ZzNUJdv2Ale4Ygp3C6mEr87vMLZ9leLvs2/2LlHbvQxSqDyChlw2xakVfeqw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB6360
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_202743_276906_31A1F24B 
-X-CRM114-Status: GOOD (  12.40  )
+X-CRM114-CacheID: sfid-20260708_203501_543087_585D5F21 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,109 +150,147 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the compatible string for the JPEG decoder block found in the
-MediaTek MT8189 SoC.
+Commit 55b48e23f5c4b6f5ca9b7ab09599b17dcf501c10 ("genirq/devres: Add
+error handling in devm_request_*_irq()") added automatic error logging
+to devm_request_threaded_irq() and devm_request_any_context_irq() via
+the new devm_request_result() helper. The helper prints device name,
+IRQ number, handler functions, and error code on failure.
 
-Compared to previous generation ICs, the MT8189 JPEG decoder requires
-34-bit IOVA address space support and only needs a single clock
-("jpgdec") instead of two. Therefore, it is added as a standalone
-compatible string without falling back to older SoCs.
+Since devm_request_irq() is a static inline wrapper around
+devm_request_threaded_irq(), it also benefits from this automatic
+logging.
 
-Update the binding schema to include the new compatible string and add
-an `allOf` block with conditional checks. This enforces the single clock
-requirement for MT8189 while preserving the two-clock requirement
-("jpgdec-smi", "jpgdec") for older SoCs.
+This series removes the now-redundant dev_err() and dev_err_probe() calls
+in power drivers that follow these devm_request_*_irq() functions, as the
+core now provides more detailed diagnostic information on failure.
 
-Signed-off-by: Jianhua Lin <jianhua.lin@mediatek.com>
----
- .../bindings/media/mediatek-jpeg-decoder.yaml | 49 ++++++++++++++++---
- 1 file changed, 41 insertions(+), 8 deletions(-)
+Pan Chuang (43):
+  power: reset: pwr-mlxbf: Remove redundant dev_err()/dev_err_probe()
+  power: supply: 88pm860x_battery: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: 88pm860x_charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: ab8500_btemp: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: ab8500_charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: ab8500_fg: Remove redundant dev_err()/dev_err_probe()
+  power: supply: act8945a_charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: axp20x_ac_power: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: axp20x_usb_power: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: axp288_charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: axp288_fuel_gauge: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: bq24190_charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: bq24257_charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: bq24735-charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: bq256xx_charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: bq257xx_charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: cpcap-battery: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: cpcap-charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: da9150-fg: Remove redundant dev_err()/dev_err_probe()
+  power: supply: generic-adc-battery: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: max14656_charger_detector: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: max77759_charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: max8903_charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: max8971_charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: mp2629_charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: mt6360_charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: mt6370-charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: pf1550-charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: qcom_smbb: Remove redundant dev_err()/dev_err_probe()
+  power: supply: qcom_smbx: Remove redundant dev_err()/dev_err_probe()
+  power: supply: rk817_charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: rn5t618_power: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: rt9455_charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: rt9467-charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: rt9471: Remove redundant dev_err()/dev_err_probe()
+  power: supply: sbs-charger: Remove redundant dev_err()/dev_err_probe()
+  power: supply: sc27xx_fuel_gauge: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: surface-rt-ec: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: tps65090-charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: tps65217_charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: twl4030_charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: twl6030_charger: Remove redundant
+    dev_err()/dev_err_probe()
+  power: supply: ucs1002_power: Remove redundant
+    dev_err()/dev_err_probe()
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
-index a4aacd3eb189..13fb4fb61f2b 100644
---- a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
-@@ -15,10 +15,10 @@ description: |-
- properties:
-   compatible:
-     oneOf:
--      - items:
--          - enum:
--              - mediatek,mt8173-jpgdec
--              - mediatek,mt2701-jpgdec
-+      - enum:
-+          - mediatek,mt2701-jpgdec
-+          - mediatek,mt8173-jpgdec
-+          - mediatek,mt8189-jpgdec
-       - items:
-           - enum:
-               - mediatek,mt7623-jpgdec
-@@ -32,13 +32,16 @@ properties:
-     maxItems: 1
- 
-   clocks:
-+    minItems: 1
-     maxItems: 2
--    minItems: 2
- 
-   clock-names:
--    items:
--      - const: jpgdec-smi
--      - const: jpgdec
-+    oneOf:
-+      - items:
-+          - const: jpgdec
-+      - items:
-+          - const: jpgdec-smi
-+          - const: jpgdec
- 
-   power-domains:
-     maxItems: 1
-@@ -51,6 +54,15 @@ properties:
-       Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
-       Ports are according to the HW.
- 
-+  mediatek,larb:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: |
-+      A phandle to the local arbiter (SMI LARB) node. This explicitly
-+      describes the hardware topology where the JPEG block is connected
-+      to a dedicated SMI LARB for memory bandwidth arbitration. It is
-+      required to accurately represent the hardware connection independently
-+      of the IOMMU.
-+
- required:
-   - compatible
-   - reg
-@@ -60,6 +72,27 @@ required:
-   - power-domains
-   - iommus
- 
-+allOf:
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: mediatek,mt8189-jpgdec
-+    then:
-+      properties:
-+        clocks:
-+          maxItems: 1
-+        clock-names:
-+          maxItems: 1
-+      required:
-+        - mediatek,larb
-+    else:
-+      properties:
-+        clocks:
-+          minItems: 2
-+        clock-names:
-+          minItems: 2
-+
- additionalProperties: false
- 
- examples:
+ drivers/power/reset/pwr-mlxbf.c                  |  2 --
+ drivers/power/supply/88pm860x_battery.c          | 10 ++--------
+ drivers/power/supply/88pm860x_charger.c          |  5 +----
+ drivers/power/supply/ab8500_btemp.c              |  5 +----
+ drivers/power/supply/ab8500_charger.c            |  5 +----
+ drivers/power/supply/ab8500_fg.c                 |  2 --
+ drivers/power/supply/act8945a_charger.c          |  4 +---
+ drivers/power/supply/axp20x_ac_power.c           |  5 +----
+ drivers/power/supply/axp20x_usb_power.c          |  5 +----
+ drivers/power/supply/axp288_charger.c            |  3 +--
+ drivers/power/supply/axp288_fuel_gauge.c         |  2 +-
+ drivers/power/supply/bq24190_charger.c           |  4 +---
+ drivers/power/supply/bq24257_charger.c           |  4 +---
+ drivers/power/supply/bq24735-charger.c           |  6 +-----
+ drivers/power/supply/bq256xx_charger.c           |  4 +---
+ drivers/power/supply/bq257xx_charger.c           |  2 --
+ drivers/power/supply/cpcap-battery.c             |  6 +-----
+ drivers/power/supply/cpcap-charger.c             |  6 +-----
+ drivers/power/supply/da9150-fg.c                 |  4 +---
+ drivers/power/supply/generic-adc-battery.c       |  2 +-
+ drivers/power/supply/max14656_charger_detector.c |  4 +---
+ drivers/power/supply/max77759_charger.c          |  4 +---
+ drivers/power/supply/max8903_charger.c           | 15 +++------------
+ drivers/power/supply/max8971_charger.c           |  2 +-
+ drivers/power/supply/mp2629_charger.c            |  4 +---
+ drivers/power/supply/mt6360_charger.c            |  3 +--
+ drivers/power/supply/mt6370-charger.c            |  4 +---
+ drivers/power/supply/pf1550-charger.c            |  3 +--
+ drivers/power/supply/qcom_smbb.c                 |  5 +----
+ drivers/power/supply/qcom_smbx.c                 |  3 +--
+ drivers/power/supply/rk817_charger.c             | 12 ++++--------
+ drivers/power/supply/rn5t618_power.c             |  5 +----
+ drivers/power/supply/rt9455_charger.c            |  4 +---
+ drivers/power/supply/rt9467-charger.c            |  3 +--
+ drivers/power/supply/rt9471.c                    |  3 +--
+ drivers/power/supply/sbs-charger.c               |  2 +-
+ drivers/power/supply/sc27xx_fuel_gauge.c         |  8 ++------
+ drivers/power/supply/surface-rt-ec.c             |  2 +-
+ drivers/power/supply/tps65090-charger.c          |  6 +-----
+ drivers/power/supply/tps65217_charger.c          |  6 +-----
+ drivers/power/supply/twl4030_charger.c           | 10 ++--------
+ drivers/power/supply/twl6030_charger.c           |  4 +---
+ drivers/power/supply/ucs1002_power.c             | 10 ++--------
+ 43 files changed, 49 insertions(+), 159 deletions(-)
+
 -- 
-2.45.2
+2.34.1
 
 
