@@ -4,109 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D324FC43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:16:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 069D8C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:34:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1/g9IC9odOOKLSJ5X43cGRnLu4qzcG9RWG3RGR7ofEM=; b=q0Uhu9UWg11v+Y3MXRUNHhvKlw
-	5xGgu3wAB2P5J2CYXDTpFqN/B/oxC4EbThjeBxEdXpp7CDzedViP/wvKbzO/rFtEeYfhLSS9eavcf
-	ByBjuEFVk/4D2UOcrOaFT1thg4fFkX0hh0Y2xX6oqb9yQFMvLh54c4YXt7PBz+VCnp3f9WGedFaBD
-	xB+ZZ350D6MhbQdlvpbbLQ8hyF08KIDB9fiv4vWcOcg60gCkc2vvnr6I2azoS/XxfosK9X43OVvdH
-	tgUzldhYFNWvoZOJ76HJzKyz8A5uuwgB/zTJYcQwmYf4gkH2JKxYSN/WqAyir+dASjLmwzL0AaDpD
-	O0OdMAQQ==;
+	bh=FQ19BjVTscIH/6I5a29tXX71SIq8/u8k7Y1kfw/hDmM=; b=EMXF0asmHWdRCTjNVKoAOr2Upx
+	Ywlq1LKopoONSJ4oph2KulxHDH8AMOCKwWKcT3M9KpLNth5RIqjOIJSr6l3yDxOnZYWcvL/D1IH+a
+	sBUo1atWovVlYeyo9G7q9+bgSLu56vTyKkUk86KUxStIcCbqnbThsPnh7rNg9z8HVHxWRrEEc0mtZ
+	vmARHyOlhdpPUpcaFJM6ZPwKsX82L6Pp16JD7YA31iYhQ4qWi3lMYMRVAJ1JXgXk9XqvMdZhuluLX
+	JyX6v0OoITN1WDJKGhIbG5diobs8ZiIFUWTu5inAKNPs3e+AiK+VVI36AegyE7qER+CJ29aqw/HAT
+	YSyZoUTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whlnq-00000001v3P-3BQL;
-	Thu, 09 Jul 2026 10:16:22 +0000
-Received: from mgamail.intel.com ([192.198.163.9])
+	id 1whm4s-00000001xEN-3laW;
+	Thu, 09 Jul 2026 10:33:58 +0000
+Received: from mgamail.intel.com ([198.175.65.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whlnn-00000001v2H-2Z4t;
-	Thu, 09 Jul 2026 10:16:20 +0000
+	id 1whm4q-00000001xDD-1MOX;
+	Thu, 09 Jul 2026 10:33:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1783592179; x=1815128179;
+  t=1783593236; x=1815129236;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=vUyuVhXb5XWOW1lu5ae8NpgTwEcJHaHweC6f6X1cbX8=;
-  b=C4i9qXl1Ld6pqkydgykC0omuvagIBNuni3XtdxISCTTS7BwvmQw9md6N
-   GcJDWbq5YfC6IjDvr1QfUAGI1xGDoy9w6RgbRCeX8ycx0AD7e4qZzjbY5
-   im6gW9bYlZ1hEBP6P4dhW0Kxo2PSpfTNb+TcQenVtx1isTFt5HAAKKQPN
-   RYCC4jx1eUYquOw6bdw/3csIKEsiT+lAuxGfvOHbKo7ScDps2od9JClBq
-   sjaQw0dN3AYMkcJXxvp8hmmWRIBiflsiXRNyPgs93Yc+AL2x+TtQjT+8v
-   O4vmtghCivb8rOHfUkQRPS9/0yBVRwjGIGxfKu6YbwHBo5PmxoAnOmIFU
-   g==;
-X-CSE-ConnectionGUID: gL6nZzpKQpKmHc80q1A4GA==
-X-CSE-MsgGUID: 4bZ5H3TvSu6FLEsVTC5DKA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11841"; a="94916086"
+  bh=bWHIEdjL2dr+L3lteYYp6oLrvxioUMyONYbfmyggoc0=;
+  b=kW9a1U1m/C2bVgO+CPTa7CX+9ssv+KkdfsmZOMCEC92GMbMsJdYMrxZq
+   oA9bBEp022XOTA9CJHQ6nhKnLF3z2697CwZ/RBwE2m+h8d6pLw956iJ8s
+   OqbAnbUr4naN1pB/KDjoI/QCNfUiMndzDusjY9T7uu6/jXxUiAfOcczgp
+   gTN3NfzRl9TH7Wu6c4VRg9vKSNiKo0C9Sywkzplz+8RaOPooYqW5izdBr
+   PRT2neIz0HaX/hloDuD8FbtS6P++dnWnK8YuMlifljg21xAjztp7z2xPx
+   i2xb+9uBS78uJeLE2JipoORy6c9lIfYZTLkIoq7O6+gf5A2iJlQlPp/9G
+   Q==;
+X-CSE-ConnectionGUID: Z8vidAmxRiGMvRLuvOxFWw==
+X-CSE-MsgGUID: hr8o+aBdS3Gg57nfdOSLfg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11841"; a="94623171"
 X-IronPort-AV: E=Sophos;i="6.25,154,1779174000"; 
-   d="scan'208";a="94916086"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
-  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jul 2026 03:16:19 -0700
-X-CSE-ConnectionGUID: nZeE0HBNTiyYL9uGZR4QmA==
-X-CSE-MsgGUID: 88JSxELiQ7WNKT7Oj54cVQ==
+   d="scan'208";a="94623171"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jul 2026 03:33:55 -0700
+X-CSE-ConnectionGUID: oJJpjx0aQmOy2HToIrIdLA==
+X-CSE-MsgGUID: F/+fAyoiRoqqeb7dacv0kA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.25,154,1779174000"; 
-   d="scan'208";a="254058060"
+   d="scan'208";a="252799922"
 Received: from ettammin-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.245.235])
-  by orviesa008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jul 2026 03:16:11 -0700
-Date: Thu, 9 Jul 2026 13:16:08 +0300
+  by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jul 2026 03:33:49 -0700
+Date: Thu, 9 Jul 2026 13:33:47 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Praveen Talari <praveen.talari@oss.qualcomm.com>
-Cc: Jiri Slaby <jirislaby@kernel.org>,
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Bartosz Golaszewski <brgl@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Ilpo =?iso-8859-1?Q?J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Richard Genoud <richard.genoud@bootlin.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Peter Griffin <peter.griffin@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Peter Korsgaard <jacmet@sunsite.dk>,
-	Michal Simek <michal.simek@amd.com>,
-	Aaro Koskinen <aaro.koskinen@iki.fi>,
-	Janusz Krzysztofik <jmkrzyszt@gmail.com>,
-	Tony Lindgren <tony@atomide.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	bjorn.andersson@oss.qualcomm.com,
-	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
-	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-omap@vger.kernel.org, linux-mips@vger.kernel.org,
-	Mukesh Kumar Savaliya <mukesh.savaliya@oss.qualcomm.com>,
-	aniket.randive@oss.qualcomm.com,
-	chandana.chiluveru@oss.qualcomm.com
-Subject: Re: [PATCH 0/6] tty: serial: propagate errors from uart_ops.pm
- callback
-Message-ID: <ak906CqHYDooQTVu@ashevche-desk.local>
-References: <20260709-add_return_check_for_uart_change_pm-v1-0-e85c6ffa8ec4@oss.qualcomm.com>
- <9320a573-ebf8-459b-a313-3a8b73a6180b@kernel.org>
- <5eecf3a0-b608-4057-b400-236f6952b380@oss.qualcomm.com>
+	linux-acpi@vger.kernel.org, driver-core@lists.linux.dev,
+	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Alan Stern <stern@rowland.harvard.edu>,
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Subject: Re: [PATCH v4 03/14] power: sequencing: Add pwrseq_power_is_on()
+Message-ID: <ak95C4HVnFn4UEo8@ashevche-desk.local>
+References: <20260709095726.704448-1-wenst@chromium.org>
+ <20260709095726.704448-4-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <5eecf3a0-b608-4057-b400-236f6952b380@oss.qualcomm.com>
+In-Reply-To: <20260709095726.704448-4-wenst@chromium.org>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_031619_685622_3938C227 
-X-CRM114-Status: GOOD (  12.07  )
+X-CRM114-CacheID: sfid-20260709_033356_403328_9D817810 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,21 +101,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 09, 2026 at 02:22:17PM +0530, Praveen Talari wrote:
-> On 09-07-2026 12:23, Jiri Slaby wrote:
-> > On 09. 07. 26, 8:25, Praveen Talari wrote:
+On Thu, Jul 09, 2026 at 05:57:08PM +0800, Chen-Yu Tsai wrote:
+> The power sequencing consumer API already does power on state tracking
+> internally. Expose the state to consumers through pwrseq_power_is_on()
+> so that they don't have to reimplement it locally.
 
 ...
 
-> > OK, now I miss the rationale behind the patchset. Neither there is a
-> > possible code path to actually test this?
-> The rationale is that qcom_geni_serial_pm() calls
-> pm_runtime_resume_and_get() which can fail, but its return value is
-> currently discarded because the callback is void. 
+> Side question: I wonder if making the !POWER_SEQUENCING return success
+> would make developers' lives better? At least that is what the clk and
 
-So, you take the solution from a wrong end. Just get rid of .pm() in your driver.
-With that, problem solved. Really, this series is a road to even more broken
-PM solutions.
+"the clk... mistakenly do."
+
+> regulator consumer APIs do.
+
+When the clock is optional, that is justified, but for non-optional cases it
+makes life actually harder (see for IS_ERR_OR_NULL() checks against
+devm_clk_*() cases, which Krzysztof targets this cycle to eliminate).
+
+That said, if the pwrseq desc can be NULL and the API tolerates that,
+then it might make sense, otherwise it has to return an error.
 
 -- 
 With Best Regards,
