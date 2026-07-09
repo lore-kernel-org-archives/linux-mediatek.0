@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF629C43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 09:58:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35767C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 09:58:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E3HJTWjS7+7k2AMeQ/ADfiVkN81b/TWdXvCN6CQ3PZA=; b=AUsv2ytg2nwr/pZtnKAwlkmB6o
-	h8a4n4kGNYEtN7lCte94l5KId0slSvKDikDEGB0fyCeAWUAe2L63FcVVQMa66d7x5JMpYDV2wWpLm
-	uqRexymdaw/ZlEeGXvcCiGJJBpg2+DZdxaKqA0lhyti3/RVY6byc4DFn7sMJQgEfayEL6QDTLCmtS
-	7Oajj3OPjUs9yNjbXHJ9pGgUvHIom5F9cCpqqkLD6MzEFcdlBtNJWYt0t/gHmah9xDPivEnH5jwAh
-	NG0tNnx/6NuFE1X2cddQF4R6RUyHqnvr9sS1TkyiUK/PwEvZPxzTkCvp6zYaHCm6AomnyrVxV5qMh
-	9F9A3flw==;
+	bh=fzcA9TG2yqej8iZO6JRem4wjlVQiv9Z5qdYjer6rUOE=; b=o9b7xZUnsR+7MaH7lT/HdSO3yb
+	hE5cVk18TolBzenpJB4W21FGtAEKcb4Q0lm7uI7Xq2QuMZBt6kBZyEb5gqpTnjSc5JwX2FjPDN4DD
+	5etVYnbBqOtEHpZmy8Xx7HAY6o3XqK4m2iDgIQGXu83UBNT1pcjHsZtEoELvHlTgAo2Hi6mgdVgeo
+	Ru6jxWynNJXTyYHawsd3HtMSG7hux+GEYOkTJmOHMBzsXVVmb3b1mW5yBU+z54slRt3gnh5gG/u63
+	F9tAzoHLpsAb4ZApn3dugDt9qAX2XL+2hyj4+qGCTFr8D1iJ6aCfUx61jEycZFzeWoY/pnVGMnfr1
+	cxFlZ3ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whlWw-00000001qCV-0W8t;
-	Thu, 09 Jul 2026 09:58:54 +0000
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+	id 1whlX0-00000001qJP-282F;
+	Thu, 09 Jul 2026 09:58:58 +0000
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whlWq-00000001q4O-35lF
+	id 1whlWx-00000001qDK-0yiJ
 	for linux-mediatek@lists.infradead.org;
-	Thu, 09 Jul 2026 09:58:52 +0000
-Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-2cce6a0c9c3so7496675ad.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jul 2026 02:58:48 -0700 (PDT)
+	Thu, 09 Jul 2026 09:58:56 +0000
+Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-2cc73e322dbso15548285ad.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jul 2026 02:58:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1783591128; x=1784195928; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1783591134; x=1784195934; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=E3HJTWjS7+7k2AMeQ/ADfiVkN81b/TWdXvCN6CQ3PZA=;
-        b=YDULfuhBvOo5RCecSwshpOhnMSp0pbW0fWI2GsQLBvzA+y2egfItl6uMgLoTeykAxR
-         f0pKPETACUwgQcJwSy1TAuL8aDRIFDaGhi/4jTyUf+bsLj9Om0TH4e55Jlzp1fSjddgX
-         VIWoDAqaJl5E7Dvot/F8eRX+XJjXtp8cewPCM=
+        bh=fzcA9TG2yqej8iZO6JRem4wjlVQiv9Z5qdYjer6rUOE=;
+        b=WhpoalO8Z1adz1QOsZuZIkikRyhw4GYOovrY1KMyNHxMOp9fqVxQc+Iw45Kzs+Cunk
+         f4HI5bDuU0cM5k2QxOAbfCukWFvIAyJpQV9tZ8GiHHWN3nkekzw4F2sIqElRBryuiS4U
+         cBxV00qmYhuGKmNS5hpojUD+uxQCsACtiacSA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783591128; x=1784195928;
+        d=1e100.net; s=20251104; t=1783591134; x=1784195934;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=E3HJTWjS7+7k2AMeQ/ADfiVkN81b/TWdXvCN6CQ3PZA=;
-        b=UQhJ02E150WbSgHLqgjNzvX9AvpC+K+c6tVP27GzFbx79zKUdFzGsG33s+eBZ8tbek
-         uthUEitijnAoLRHIW/rRZeJYcH1G7UQ0eb8ePTvr4p0uKhMWR07RDG2UYai0FogmNwsP
-         +veMwPUveHPF6bqKdWue51HqUhPqXVUOAx3vuGtZxlBiQRb5UXmQ6C80MMgZxZFxEzAO
-         ILo8xqH5dpYQT84WoIdJESEqnaKzYXUsGQY9+SB44t41q3RipY/2+GYCSA4C2XILu09b
-         L9/OyjWicmkryUD98yjWppm18Vci+xYuZnuVJ6Cj9j9HQfglKIJ0D1ZrGAYVKnpgKOOo
-         dknA==
-X-Forwarded-Encrypted: i=1; AHgh+RpfsdCarcuS5RAoIolx/kQPIJNKoWKmSvmdcFAF05pvJSvcOF2R+4BC1umFXjiLERMQdvtPFJLxlVyrZbFj9g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwgdS12WH0JTjp4/BR4YyFuyV4/ltTf1WvE8bl9mSpoz1ZHG6PJ
-	2so3MuIuGFzrNT5glzGbN2VINqM1oX44GhDPFOXFAfv+AJmzs75lpbTKuTkkRTTEqA==
-X-Gm-Gg: AfdE7cmQTzjakuP33uK/uSHlin+o9nXT69sBKTTZHmFrwFQk4SH33MYya/h9947mzah
-	TH2x3nFM0a21UBskUnr50x0yt+53hB02dhP16KdgREqq5w+D1pWdss7KeL9jft3eOmPOmx61eg9
-	+Yc73L5ZZkdzLYfHboD/FOirlwy2E6CGR54s0ZFj+RfPcjTjeYqqZaS2hVG3aX/8L7/e8IIxAZ/
-	otQozOAG0jYSN/E6Pq4Hw9GUGqXyKJEp7uIbfTJY1Ajg5JNKZebsOI1ASUrRzSwK8yTDp1rDhah
-	F16TZngmk5ykFtnu/sE/6iHrsk8tgtn7aOsgDV238ua4Iw7ExZ2OdN1WMnDoRevcGlKbHKWQiV9
-	elrFLp2shnzrE6ONLnIVGO2ZR9xkEnB6KDoLNpeWY07Uhr6JyHr5C4KvlFccr1KGxJLCld4kmgE
-	7MfPFNtLcBTZu8WYpSoFi2WAe7fFJHNq5c6V42XnwRHr7BwP3ut9wxqcij08uqpMV1k2JeMQ==
-X-Received: by 2002:a17:903:17c6:b0:2cc:7e4a:bcc5 with SMTP id d9443c01a7336-2ccea480bdfmr74905205ad.32.1783591128101;
-        Thu, 09 Jul 2026 02:58:48 -0700 (PDT)
+        bh=fzcA9TG2yqej8iZO6JRem4wjlVQiv9Z5qdYjer6rUOE=;
+        b=AWzt0/WQyVLQzsQvOwTSFAAp9fS/81YKdjGYlC24lFlsBw+xpLcK7jWNaK8swTmm86
+         2CIZr/W8kn7ZIbM6N/lJXF4vPyzYJtSVDX3zdkDmIm8jgUqRgEAdLV9P/m7jIrckx9/d
+         CmYHBu50SwSH0JqSlkFxkUQUn4mtPkkx+yPApy241TfUW3rK+Ll7T2SwVtm9lRImr82K
+         5UQp5F3WojpsmMl43o7s4lzi/TgAGpBtP2BcBfPQKzRUV8+I6ljmaJ2U7mckd6pTtTHF
+         Dx1bw0J+eZFxwHHNTM6EegZ5c8RUDQfUbW8vGSH1udncydq+PQtcAOb0AQ8swC/M1CDn
+         iiAQ==
+X-Forwarded-Encrypted: i=1; AHgh+RogIcafiCU9lnY141amZeTcMU+NW2/icTk6ATeaPrtTugCHfyKZqqVlTD2kY1ZqzMk6Ao2bcWXj/jKgR1fYug==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzjLMp/tYPyjQgxILYF/qRsiOdtCTpRX0dXTxMCcDU1WqjYrLxX
+	deKArU/d3VFp3RepJ7YAlOI0UfpQXbIvf23D5txEPteDeLtsKMGYboMcVxYC1vG/rQ==
+X-Gm-Gg: AfdE7clYKlzZcdoNrHJztteLsaYsGQWa/AVwDXs9j0e11qWdrcXBm4uWZ2FLX4VsDZ7
+	mZnZPq71QIFRS9CziZf/R909pn8BgwvVdM5hyRrwJclv+MdKzbnSKnXzOkLIyyLqPHiDctZ1d/2
+	0VemHnLixADx2+WgPVAFzhdM+tAWWayUWLVZZK1jpafa99hmOuviTklxY4+lEw0LZ9H0X9gVGXG
+	OgpgS3E1jYYjuhMJ+T2trBFrvJ+QYQxY1RDWhB+aeCEGFuqJ8khoVXB/RMLyrE68kBtuj1trgZg
+	Vh3v7o/j1oBGFEtmxZ9LkJ3/xyRplPQT8g++GalWBIwhO1qFx1vqJwNxFYYIt3X8uiLiQtXpf5v
+	qPwRvwBvvRvGG9EUXG4bnV1ZIUuVn9l/WvvWniYSrozG1pUZnUsSPp4sOfB3QalpP4xyqnZZ+Hm
+	jKPhiS/XhzLtK4kzZeyDFO0TDRojIL5MhzDuj/lTHRWIT8J1dDDo388TURZvbE0FD8O/t0TQ==
+X-Received: by 2002:a17:903:184:b0:2c0:a555:80d6 with SMTP id d9443c01a7336-2ccea384cc7mr68024015ad.2.1783591134472;
+        Thu, 09 Jul 2026 02:58:54 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:bd09:6ddb:180a:69c5])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9d5bd2fsm41082155ad.78.2026.07.09.02.58.42
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9d5bd2fsm41082155ad.78.2026.07.09.02.58.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Jul 2026 02:58:47 -0700 (PDT)
+        Thu, 09 Jul 2026 02:58:54 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Bartosz Golaszewski <brgl@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -91,17 +91,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-kernel@vger.kernel.org,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Alan Stern <stern@rowland.harvard.edu>
-Subject: [PATCH v4 13/14] arm64: dts: mediatek: mt8195-cherry: Add M.2 E-key slot
-Date: Thu,  9 Jul 2026 17:57:18 +0800
-Message-ID: <20260709095726.704448-14-wenst@chromium.org>
+Subject: [PATCH v4 14/14] arm64: dts: mediatek: mt8188-geralt: Add WiFi/BT as M.2 E-key slot
+Date: Thu,  9 Jul 2026 17:57:19 +0800
+Message-ID: <20260709095726.704448-15-wenst@chromium.org>
 X-Mailer: git-send-email 2.55.0.795.g602f6c329a-goog
 In-Reply-To: <20260709095726.704448-1-wenst@chromium.org>
 References: <20260709095726.704448-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_025848_808803_8607E548 
-X-CRM114-Status: GOOD (  14.09  )
+X-CRM114-CacheID: sfid-20260709_025855_324426_64A05F69 
+X-CRM114-Status: GOOD (  16.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,39 +116,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Mt8195 Cherry design features an M.2 E-key slot for WiFi/BT combo
-cards. Only PCIe and USB are wired from the SoC to the slot, along with
-some auxiliary signals.
+The MT8188 Geralt design features a chip-on-board WiFi/BT solution. This
+is a M.2 E-key WiFi/BT board layout directly inserted into the mainboard
+design. The connections to the rest of the board are almost the same as
+if it were a separate M.2 card. The only addition is the PMU_EN pin on
+the chip; on M.2 cards this would be tied to the primary power source.
 
-Add the proper representation for it, replacing the PCIe wifi node and
-vpcie3v3-supply property under the PCIe controller, and the vbus-supply
-property under the xhci3 node.
+Model the chip-on-board WiFi/BT solution as a M.2 E-key slot with PCIe,
+USB and auxiliary signals. The PMU_EN pin, which enables the internal
+power controls and regulators, is modeled as a regulator fed by the
+pp3300_wlan regulator. Since power sequencing is now correctly modeled
+using the M.2 E-key slot, drop the "regulator-always-on" property one
+pp3300_wlan regulator. Also drop the comment in xhci2 saying "MT7921's
+power is controlled by PCIe".
+
+Also drop the voltage range on the pp3300_wlan regulator. This
+"regulator" is just a load switch and does not provide any regulation.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
 Changes since v2:
 - Drop default GPIO output state from kill pins pinconfig
 ---
- .../boot/dts/mediatek/mt8195-cherry.dtsi      | 73 +++++++++++++++++--
- 1 file changed, 68 insertions(+), 5 deletions(-)
+ .../boot/dts/mediatek/mt8188-geralt.dtsi      | 92 ++++++++++++++++++-
+ 1 file changed, 88 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index ef7afc436aef..8d4cc30d91e4 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -266,6 +266,47 @@ tboard_thermistor2: thermal-sensor-t2 {
- 						120000 51
- 						125000 44>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+index dee946309121..73b5c0fdeae6 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
+@@ -88,13 +88,11 @@ pp3300_z1: regulator-pp3300-z1 {
+ 	pp3300_wlan: regulator-pp3300-wlan {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "pp3300_wlan";
+-		regulator-always-on;
+-		regulator-min-microvolt = <3300000>;
+-		regulator-max-microvolt = <3300000>;
+ 		enable-active-high;
+ 		gpio = <&pio 12 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-0 = <&wlan_en>;
+ 		pinctrl-names = "default";
++		/* load switch */
+ 		vin-supply = <&pp3300_z1>;
+ 	};
+ 
+@@ -161,6 +159,17 @@ ppvar_mipi_disp_avee: regulator-ppvar-mipi-disp-avee {
+ 		vin-supply = <&pp5000_z1>;
+ 	};
+ 
++	/* PMU_EN pin controls internal regulators and power sequence */
++	wlan_pmu: regulator-wlan-pmu {
++		compatible = "regulator-fixed";
++		regulator-name = "wlan-pmu";
++		enable-active-high;
++		gpio = <&pio 145 GPIO_ACTIVE_HIGH>;
++		pinctrl-0 = <&wlan_pmu_en>;
++		pinctrl-names = "default";
++		vin-supply = <&pp3300_wlan>;
++	};
++
+ 	reserved_memory: reserved-memory {
+ 		#address-cells = <2>;
+ 		#size-cells = <2>;
+@@ -195,6 +204,39 @@ adsp_dma_mem: memory@61000000 {
+ 			no-map;
+ 		};
  	};
 +
 +	wifi-bt-connector {
 +		compatible = "pcie-m2-e-connector";
 +		pinctrl-names = "default";
 +		pinctrl-0 = <&m2_e_key_kill_pins>;
-+		vpcie3v3-supply = <&pp3300_wlan>;
-+		w-disable1-gpios = <&pio 61 GPIO_ACTIVE_LOW>;
-+		w-disable2-gpios = <&pio 59 GPIO_ACTIVE_LOW>;
-+		/* PCIe auxiliary signals wired to controller. */
++		vpcie1v8-supply = <&mt6359_vcn18_ldo_reg>;
++		vpcie3v3-supply = <&wlan_pmu>;
++		w-disable1-gpios = <&pio 13 GPIO_ACTIVE_LOW>;
++		w-disable2-gpios = <&pio 14 GPIO_ACTIVE_LOW>;
 +
 +		ports {
 +			#address-cells = <1>;
@@ -157,72 +199,83 @@ index ef7afc436aef..8d4cc30d91e4 100644
 +			/* PCIe for WiFi */
 +			port@0 {
 +				reg = <0>;
-+				#address-cells = <1>;
-+				#size-cells = <0>;
 +
-+				wifi_ep: endpoint@0 {
-+					reg = <0>;
-+					remote-endpoint = <&pcie1_ep>;
++				wifi_ep: endpoint {
++					remote-endpoint = <&pcie_ep>;
 +				};
 +			};
 +
 +			/* USB for Bluetooth */
 +			port@2 {
 +				reg = <2>;
-+				#address-cells = <1>;
-+				#size-cells = <0>;
 +
-+				bt_ep: endpoint@0 {
-+					reg = <0>;
-+					remote-endpoint = <&usb3_ep>;
++				bt_ep: endpoint {
++					remote-endpoint = <&usb2_ep>;
 +				};
 +			};
-+
-+			/* SDIO, UART and I2S not implemented */
 +		};
 +	};
  };
  
  &adsp {
-@@ -791,14 +832,14 @@ pcie@0 {
- 		reg = <0 0 0 0 0>;
- 		device_type = "pci";
- 		num-lanes = <1>;
--		vpcie3v3-supply = <&pp3300_wlan>;
- 		#address-cells = <3>;
- 		#size-cells = <2>;
- 		ranges;
- 
--		wifi@0 {
--			reg = <0 0 0 0 0>;
--			wakeup-source;
+@@ -659,6 +701,22 @@ &pcie {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pcie_pins>;
+ 	status = "okay";
++
++	pcie@0 {
++		compatible = "pciclass,0604";
++		reg = <0 0 0 0 0>;
++		device_type = "pci";
++		num-lanes = <1>;
++		#address-cells = <3>;
++		#size-cells = <2>;
++		ranges;
++
 +		port {
-+			pcie1_ep: endpoint {
++			pcie_ep: endpoint {
 +				remote-endpoint = <&wifi_ep>;
 +			};
- 		};
- 	};
++		};
++	};
  };
-@@ -1085,6 +1126,13 @@ pins-bus {
+ 
+ &pciephy {
+@@ -1002,6 +1060,13 @@ pins-bus {
  		};
  	};
  
 +	m2_e_key_kill_pins: m2-e-key-kill-pins {
 +		pins-kill {
-+			pinmux = <PINMUX_GPIO61__FUNC_GPIO61>,
-+				 <PINMUX_GPIO59__FUNC_GPIO59>;
++			pinmux = <PINMUX_GPIO13__FUNC_B_GPIO13>,
++				 <PINMUX_GPIO14__FUNC_B_GPIO14>;
 +		};
 +	};
 +
- 	mmc0_pins_default: mmc0-default-pins {
- 		pins-cmd-dat {
- 			pinmux = <PINMUX_GPIO126__FUNC_MSDC0_DAT0>,
-@@ -1637,9 +1685,24 @@ &xhci2 {
- &xhci3 {
- 	/* MT7921's USB Bluetooth has issues with USB2 LPM */
+ 	mipi_disp_avdd_en: mipi-disp-avdd-en-pins {
+ 		pins-en-ppvar-mipi-disp {
+ 			pinmux = <PINMUX_GPIO3__FUNC_B_GPIO3>;
+@@ -1174,6 +1239,13 @@ pins-bus {
+ 		};
+ 	};
+ 
++	wlan_pmu_en: wlan-pmu-en-pins {
++		pins-wlan-pmu-en {
++			pinmux = <PINMUX_GPIO145__FUNC_B_GPIO145>;
++			output-low;
++		};
++	};
++
+ 	wlan_en: wlan-en-pins {
+ 		pins-en-pp3300-wlan {
+ 			pinmux = <PINMUX_GPIO12__FUNC_B_GPIO12>;
+@@ -1417,10 +1489,22 @@ vdosys1_ep_ext: endpoint@1 {
+ };
+ 
+ &xhci2 {
+-	/* no power supply since MT7921's power is controlled by PCIe */
+ 	/* MT7921's USB BT has issues with USB2 LPM */
  	usb2-lpm-disable;
--	vbus-supply = <&pp3300_wlan>;
- 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
  	status = "okay";
 +
 +	ports {
@@ -231,11 +284,8 @@ index ef7afc436aef..8d4cc30d91e4 100644
 +
 +		port@1 {
 +			reg = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
 +
-+			usb3_ep: endpoint@0 {
-+				reg = <0>;
++			usb2_ep: endpoint {
 +				remote-endpoint = <&bt_ep>;
 +			};
 +		};
