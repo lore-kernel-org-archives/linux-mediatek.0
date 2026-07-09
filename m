@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5987C44501
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D84DDC44507
 	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 03:27:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=n//DIo26kTWHyp4QnE/oMY3z5Va3Gw4pBY0FjQJiX5A=; b=fjXN8oqdSlQsdXnqzv36SEgueE
-	BiUmHxiCmCCI0GifLqVrT1AVG4cVQYBejlck6jUtshIm0ZvlfVKFguBqqV4DBXPg8FsTtBbnbMcNM
-	UUvTTMjL0Xiluw/lhdVeR95BYy8stD6tdlCJdTqQ5QNhsU1xfmU1+n2epxdO9y3b2XeMwjhvIykZ+
-	Z2t3DYTumN7SqbUjKg5rKdeoZfy24VkfoQrDcviTXlHP7UaL5IOZxyy65ndK2mAeyYsSJaXXHQsfZ
-	dDhdchkprMqLjpq2H1inkJJ86GGe+O5nzBmb5G44xSFLDZMvbdG+6292a4eY1gA85ptZ+HWcoXyCy
-	D58zkSvQ==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YPIulzBzzSjRzeVrKrRnT1ZUkoYtICzdzWxddReKMC4=; b=P8YXNh2BUAsy6Od5/kBC3CVSGh
+	4UDiRegnK55c60Vpb1WJv23igQwizF+Ma4qLt2WFSmyWNjC6e8qbvX0CcM+vP2wdqZ3WVCmau2l7k
+	pMwhMN+wv+1nFWYPEmXHnsoCOJsIseZpJFgALGbQCVAJMOiNAWadYvgvu0T6sMrKgfXhK9KPKhsHA
+	RTcuFuvApFtuS8RLTk3yGC2eJlNJRNpvP7B3lUZtsE+3iDLs6hrwGgSD9hGJgN7JjvMq2Nn6NIYAn
+	gqB5bE0xTdwUUDpnAtCH1p9RHuhmoZgBRLixkEDoFTNmniTeWa2UyvG83bOYjlos+3o01ypmKrAPm
+	0GVGrQzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whfQS-00000000tZm-1wJN;
+	id 1whfQS-00000000taR-2ox7;
 	Thu, 09 Jul 2026 03:27:48 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whfQN-00000000tVH-1Iel;
-	Thu, 09 Jul 2026 03:27:44 +0000
-X-UUID: 2102e2fe7b4611f1acbe4559397dec65-20260708
+	id 1whfQN-00000000tV4-0ykZ;
+	Thu, 09 Jul 2026 03:27:45 +0000
+X-UUID: 21791e4c7b4611f1acbe4559397dec65-20260708
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=n//DIo26kTWHyp4QnE/oMY3z5Va3Gw4pBY0FjQJiX5A=;
-	b=qo12LQG41ikVVI+ki7lY/Uxd5HnFmjxWSPl/897DtlfOvRcuZTCW2nzGCpguP0Ld8dgBYFJwX0ddeO+y3sNazMTqdUD0KrmUEQRn0ouq0gtxihplqA9L8cvGh6+Sln6lcj+nibJ0rkhSEdcIFdjVPB6LuzqtJ411j65BXzxTzEw=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=YPIulzBzzSjRzeVrKrRnT1ZUkoYtICzdzWxddReKMC4=;
+	b=FIAnpXREU9JXzaOPIQAEtgq9xM+4rCFiC5GrX3T1GDVi5gQcJJcw2a5xZD12golTMB5NEaCQSgtv0Me5okNWU+zRSSydVSQkmLP1b1fpMDJTCSgxD5iOK6ExhGyONLTHiwAu81r02yjyzgoMgWa+s2OduI4hS0B4jo4k2H5mAP8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.17,REQID:9c8e6f15-9b15-4cd8-b2cd-02954957a052,IP:0,U
+X-CID-O-INFO: VERSION:1.3.17,REQID:1b09705c-7d15-4df5-832c-188b7c7606b6,IP:0,U
 	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
 	:release,TS:-5
-X-CID-META: VersionHash:d497b38,CLOUDID:170506cf-4db6-49e6-af1b-870aa8b6eff7,B
-	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|50|
-	99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:d497b38,CLOUDID:3df1e618-ab14-4403-9336-76696324c5a8,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
+	0|99|100|102|156,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,
+	COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 2102e2fe7b4611f1acbe4559397dec65-20260708
+X-UUID: 21791e4c7b4611f1acbe4559397dec65-20260708
 Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
 	(envelope-from <jianhua.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 419006726; Wed, 08 Jul 2026 20:27:35 -0700
+	with ESMTP id 70831178; Wed, 08 Jul 2026 20:27:36 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 9 Jul 2026 11:27:32 +0800
+ 15.2.2562.29; Thu, 9 Jul 2026 11:27:33 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Thu, 9 Jul 2026 11:27:32 +0800
+ 15.2.2562.29 via Frontend Transport; Thu, 9 Jul 2026 11:27:33 +0800
 From: Jianhua Lin <jianhua.lin@mediatek.com>
 To: <nicolas@ndufresne.ca>, <mchehab@kernel.org>, <robh@kernel.org>,
 	<krzk+dt@kernel.org>, <conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
@@ -64,16 +64,18 @@ CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
 	<jh.hsu@mediatek.com>, Jianhua Lin <jianhua.lin@mediatek.com>
-Subject: [PATCH v9 0/3] Mediatek MT8189 JPEG support
-Date: Thu, 9 Jul 2026 11:26:53 +0800
-Message-ID: <20260709032657.25730-1-jianhua.lin@mediatek.com>
+Subject: [PATCH v9 1/3] dt-bindings: media: mediatek-jpeg-decoder: add MT8189 compatible string
+Date: Thu, 9 Jul 2026 11:26:54 +0800
+Message-ID: <20260709032657.25730-2-jianhua.lin@mediatek.com>
 X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20260709032657.25730-1-jianhua.lin@mediatek.com>
+References: <20260709032657.25730-1-jianhua.lin@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_202743_353498_DEED847E 
-X-CRM114-Status: GOOD (  13.23  )
+X-CRM114-CacheID: sfid-20260708_202743_276906_31A1F24B 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,100 +90,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series is based on linux-next tag next-20260707.
+Add the compatible string for the JPEG decoder block found in the
+MediaTek MT8189 SoC.
 
-This series depends on commit 7560349ee0d9 ("media: mediatek: jpeg:
-support 34bits"), which introduced the `support_34bit` field in struct
-mtk_jpeg_variant. That commit has already been merged via the media
-tree and is present in linux-next as of next-20260707.
+Compared to previous generation ICs, the MT8189 JPEG decoder requires
+34-bit IOVA address space support and only needs a single clock
+("jpgdec") instead of two. Therefore, it is added as a standalone
+compatible string without falling back to older SoCs.
 
-Changes compared with v8:
-- Patches 1/3 & 2/3 (dt-bindings: decoder & encoder):
-  - Expand the description of the `mediatek,larb` property to explicitly
-    explain its necessity for accurately describing the hardware topology
-    (SMI LARB connection for memory bandwidth arbitration), independent
-    of the IOMMU driver's implicit handling.
+Update the binding schema to include the new compatible string and add
+an `allOf` block with conditional checks. This enforces the single clock
+requirement for MT8189 while preserving the two-clock requirement
+("jpgdec-smi", "jpgdec") for older SoCs.
 
-Changes compared with v7:
-- Patches 1/3 (dt-bindings: decoder):
-  - In the allOf constraints, only keep maxItems: 1 in the then 
-    branch and minItems: 2 in the else branch; remove duplicated
-    constraints already defined at the top level
-
-Changes compared with v6:
-- Patches 1/3 (dt-bindings: decoder):
-  update the existing `allOf` condition for mediatek,mt8189-jpgdec to
-  make the 'mediatek,larb' property strictly required for MT8189 SoC.
-- Patches 2/3 (dt-bindings: encoder):
-  Add an `allOf` condition to enforce that the `mediatek,larb` property
-  is strictly required when the compatible string contains
-  mediatek,mt8189-jpgenc.
-
-Changes compared with v5:
-- Patches 1/3 (dt-bindings: decoder):
-  - Drop top-level minItems/maxItems for clock-names per Krzysztof's
-    review.
-  - Refine allOf block to strictly enforce clock constraints.
-
-Changes compared with v4:
-- Refines the device tree bindings for JPEG decoder and encoder.
-  - Patches 1/3 (dt-bindings: decoder):
-    Moved the standalone compatible string mediatek,mt8189-jpgdec
-    into the first oneOf entry along with mt2701 and mt8173, as
-    suggested by Rob Herring. This correctly groups all independent
-    ICs and removes the redundant items wrapper.
-  - Patches 2/3 (dt-bindings: encoder):
-    Applied the same logic suggested by Rob Herring to the encoder
-    binding. Restructured the compatible property to clearly
-    distinguish between the standalone IC (mediatek,mt8189-jpgenc)
-    and the ICs that must fallback to mediatek,mtk-jpgenc.
-
-Changes compared with v3:
-- The v4 is resending the cover-letter, because the v3 cover-letter was
-  not sent successfully.
-
-Changes compared with v2:
-- Dropped the dts patch (arm64: dts: mt8188: update JPEG encoder/decoder
-  compatible) as it belongs to a different tree/series.
-- Patches 1/3 (dt-bindings: decoder):
-  - Changed the MT8189 compatible to be a standalone `const` instead of
-    an `enum`.
-  - Added an `allOf` block with conditional checks to enforce the single
-    clock ("jpgdec") requirement for MT8189, while preserving the
-    two-clock requirement for older SoCs.
-  - Updated commit message to reflect the schema structure changes and
-    hardware differences.
-- Patches 2/3 (dt-bindings: encoder):
-  - Changed the MT8189 compatible to be a standalone `const` instead of
-    an `enum` inside the `items` list, as it does not fallback to
-    "mediatek,mtk-jpgenc" due to 34-bit IOVA requirements.
-  - Updated commit message to explain the standalone compatible design.
-- Patches 3/3 (media: mediatek: jpeg):
-  - Refined commit message for better clarity regarding 34-bit IOVA and
-    single clock configuration.
-
-Changes compared with v1:
-- Patches 1/4:
-  - Updating commit message
-- Patches 2/4, 3/4: 
-  - Updating commit message
-  - Adjusted property descriptions acorrding to hardware requirements
-  - Improved formatting for better readability and consistency
-- Patches 4/4:
-  - Updating commit message
-
-Jianhua Lin (3):
-  dt-bindings: media: mediatek-jpeg-decoder: add MT8189 compatible
-    string
-  dt-bindings: media: mediatek-jpeg-encoder: add MT8189 compatible
-    string
-  media: mediatek: jpeg: add compatible for MT8189 SoC
-
+Signed-off-by: Jianhua Lin <jianhua.lin@mediatek.com>
+---
  .../bindings/media/mediatek-jpeg-decoder.yaml | 49 ++++++++++++++++---
- .../bindings/media/mediatek-jpeg-encoder.yaml | 35 ++++++++++---
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 44 +++++++++++++++++
- 3 files changed, 114 insertions(+), 14 deletions(-)
+ 1 file changed, 41 insertions(+), 8 deletions(-)
 
+diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
+index a4aacd3eb189..13fb4fb61f2b 100644
+--- a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
+@@ -15,10 +15,10 @@ description: |-
+ properties:
+   compatible:
+     oneOf:
+-      - items:
+-          - enum:
+-              - mediatek,mt8173-jpgdec
+-              - mediatek,mt2701-jpgdec
++      - enum:
++          - mediatek,mt2701-jpgdec
++          - mediatek,mt8173-jpgdec
++          - mediatek,mt8189-jpgdec
+       - items:
+           - enum:
+               - mediatek,mt7623-jpgdec
+@@ -32,13 +32,16 @@ properties:
+     maxItems: 1
+ 
+   clocks:
++    minItems: 1
+     maxItems: 2
+-    minItems: 2
+ 
+   clock-names:
+-    items:
+-      - const: jpgdec-smi
+-      - const: jpgdec
++    oneOf:
++      - items:
++          - const: jpgdec
++      - items:
++          - const: jpgdec-smi
++          - const: jpgdec
+ 
+   power-domains:
+     maxItems: 1
+@@ -51,6 +54,15 @@ properties:
+       Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
+       Ports are according to the HW.
+ 
++  mediatek,larb:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: |
++      A phandle to the local arbiter (SMI LARB) node. This explicitly
++      describes the hardware topology where the JPEG block is connected
++      to a dedicated SMI LARB for memory bandwidth arbitration. It is
++      required to accurately represent the hardware connection independently
++      of the IOMMU.
++
+ required:
+   - compatible
+   - reg
+@@ -60,6 +72,27 @@ required:
+   - power-domains
+   - iommus
+ 
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt8189-jpgdec
++    then:
++      properties:
++        clocks:
++          maxItems: 1
++        clock-names:
++          maxItems: 1
++      required:
++        - mediatek,larb
++    else:
++      properties:
++        clocks:
++          minItems: 2
++        clock-names:
++          minItems: 2
++
+ additionalProperties: false
+ 
+ examples:
 -- 
 2.45.2
 
