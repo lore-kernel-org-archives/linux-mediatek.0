@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A071EC4450C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:06:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85EF8C44507
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:06:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o0KUgrZrwNsznMUGnZBbqU+2N7o3A/Kb+YL9jJ1QWWo=; b=O2wiaDQuD2HirpCfhRdV80evEB
-	LUT4A6/4axA3ZF2H61GdTOtArT0aviqo6f0KGElvnmJKmK314Q+QgaWyMkIXaSIlJx46IpQR4I5c1
-	5gqhhoo8N4nSZKENfVZ/+YdkVm07l4rwa229vcJbJUadHm5LLQKl/nJhurfCItoVpCFyGDULIWn9V
-	6HY5/gQJH5F+L6RcUHgSYQ5OOalctcDHKQSFbUqUhQSPmKGmE0MPdEuZZb/RA/aQeC5dpnW+x9l1M
-	1zpFYrK7Vtd+ahPWhE/4DogyYpT63jc8g4R6o1NSAtFrgPd/i81kcoO2nJvOedbUVK/7TYOGzsyCW
-	ygpmky8Q==;
+	bh=Qu7JPdBJa35gt8Fiv7D6dielAvggATkOuy9n7/v3rRA=; b=vTRecEhXD4f18yvvvc+llZ8sy7
+	Bm44ZVN6ThfTQ5N2nuwJRZ1sQd1KoLDimXdMw/92B362pE3CqjklE7xdIRR6rTU0UyKta3YHJYhLi
+	5V3mSpNZJZ/ODJ3i7BLTNl+/wMZtTKoBz5m2rg9KunfoewoUekw2NDjBnA4N77b94+Y9kw3bxycYN
+	FVoY8anzMUvn9u9wiy+8vDq132Bpl5HXx6WD4GNSyTaMNRLHauxZ2n0cnMTuly3xgX5QuKUj2jRTl
+	/452FjItqjvmKSnFreK2UiJpWuxQKFnIRpso3OB64ayDMr50kgis1q+APk+E/RxXCBKUlFQcwS5z5
+	UjQnDqXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whleY-00000001sKF-2Swz;
-	Thu, 09 Jul 2026 10:06:46 +0000
+	id 1whleX-00000001sGI-237j;
+	Thu, 09 Jul 2026 10:06:45 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whleR-00000001s65-14kv;
-	Thu, 09 Jul 2026 10:06:41 +0000
+	id 1whleO-00000001s1i-0FyB;
+	Thu, 09 Jul 2026 10:06:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783591596;
-	bh=vIeXSGmYnuqXbWuVwNEh8u50bCXMZ/MRUIXV/uBPzrM=;
+	s=mail; t=1783591591;
+	bh=SpH6ZM4ABg1a5n+c9PFwTijwxdPwpAGt4eWJ7AeT+pk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=qR4Ep6U0r+Al+Okqw+8+c/zp89A+avon0r7EEV7BHsPM+0AfuPUKm64CVkyWXNrZt
-	 N+JYOEUZeNOTNj+RfNlSlynj0FerJj2s8da0PIiJMVfgPk20p1EAim8SqlPIMdmVxX
-	 CssHOnpitGT6o04RDTyNWqcr4BSssNK4SiuJxKBzQlCPWhkdBWb6GFVF/f620f2b+T
-	 Xni9tNYQ3REb9+bUbVisyM7Ckb/ERdI3HPFxs6P5tDzEVt/O015R2oFdf8fD/YovFu
-	 eVQZPAztJvp3yJ2XPU8cNZ7t9/OxxhAkZSBBAzwlEZ+LbBZLUbveIH2Yy9QbO4Nk73
-	 9Lj7mvKsHDFrg==
+	b=UCAkYELdOzkb/NGr+2cOW0TWx3EJ8hM1dJ9F5P+rO6B8E65sPa5vfDqx/1zYIJPXn
+	 gOCN557veQadGCcJT4LcYRghf1Zwk/oWOnREl9i8dJBmZNXXNRqn0+q2G+psxaszWA
+	 rGNoRKzuE74bVejtunBFK99iYAXIGOfg4wsaPoMzihJ+sH7X+iKbfNhAsxTmH9hY7a
+	 4JxqcH9VkUptCFdQ4yo7WJy0RBwdK3V6ROxROeAVQNotYK7TR3RPPaLoeoxokwlBdW
+	 Y69pwdeo2DAo9/kI9H76QDPcszjYcZuGJ05JXJ9TQ+Qzint0tg0RqCDvuk/lrZpLXj
+	 Dlg7GvSwGk7sA==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0041017E0DFB;
-	Thu, 09 Jul 2026 12:06:34 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A9E9F17E0E04;
+	Thu, 09 Jul 2026 12:06:30 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -70,17 +70,17 @@ Cc: p.zabel@pengutronix.de,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v2 11/11] drm/mediatek: mtk_dp: Clarify XTAL freq and Debounce registers
-Date: Thu,  9 Jul 2026 12:06:17 +0200
-Message-ID: <20260709100617.42583-12-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 08/11] drm/mediatek: mtk_dp: Move max link rate to SoC specific data
+Date: Thu,  9 Jul 2026 12:06:14 +0200
+Message-ID: <20260709100617.42583-9-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260709100617.42583-1-angelogioacchino.delregno@collabora.com>
 References: <20260709100617.42583-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_030639_561596_1E572E59 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20260709_030637_086158_BA2A949F 
+X-CRM114-Status: GOOD (  12.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,104 +95,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Clarify the meaning of the sub-fields in the crystal frequency and
-transmitter interrupt debounce registers, with the only purpose of
-increasing human readability.
+In preparation for adding support for the eDP IP found in the
+MT8196 SoC, having a higher supported maximum link rate, move
+this parameter to SoC data instead of statically assigning it
+to the training info during initialization.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dp.c     | 35 ++++++++++++++++-----------
- drivers/gpu/drm/mediatek/mtk_dp_reg.h |  6 +++--
- 2 files changed, 25 insertions(+), 16 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dp.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index 7151421984ca..3790675d9dc4 100644
+index 34a72e0a5f1e..5184159018f3 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dp.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -1216,9 +1216,15 @@ static void mtk_dp_initialize_settings_v2p1(struct mtk_dp *mtk_dp)
+@@ -167,6 +167,7 @@ struct mtk_dp_data {
+ 	bool audio_supported;
+ 	bool audio_pkt_in_hblank_area;
+ 	u16 audio_m_div2_bit;
++	u8 hw_max_link_rate;
+ };
  
- static void mtk_dp_initialize_settings(struct mtk_dp *mtk_dp)
+ static const struct mtk_dp_efuse_fmt mt8188_dp_efuse_fmt[MTK_DP_CAL_MAX] = {
+@@ -1469,7 +1470,7 @@ static void mtk_dp_initialize_priv_data(struct mtk_dp *mtk_dp)
  {
-+	/*
-+	 * Set DP XTAL freq to 26MHz and accumulator to 1.
-+	 * Valid values for XTAL freq are 12 and 26.
-+	 */
- 	mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_342C,
--			   XTAL_FREQ_DP_TRANS_P0_DEFAULT,
--			   XTAL_FREQ_DP_TRANS_P0_MASK);
-+			   FIELD_PREP_CONST(XTAL_FREQ_DP_ACCUM_NUM_MASK, 1) |
-+			   FIELD_PREP_CONST(XTAL_FREQ_DP_CLOCK_MHZ_MASK, 26),
-+			   XTAL_FREQ_DP_ACCUM_NUM_MASK | XTAL_FREQ_DP_CLOCK_MHZ_MASK);
-+
- 	mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3540,
- 			   FEC_CLOCK_EN_MODE_DP_TRANS_P0,
- 			   FEC_CLOCK_EN_MODE_DP_TRANS_P0);
-@@ -1260,28 +1266,29 @@ static void mtk_dp_initialize_aux_hpd_detect_settings(struct mtk_dp *mtk_dp)
+ 	bool plugged_in = (mtk_dp->bridge.type == DRM_MODE_CONNECTOR_eDP);
  
- static void mtk_dp_initialize_hpd_detect_settings(struct mtk_dp *mtk_dp)
- {
--	u32 val;
--
- 	/* Mask AUX TOP interrupt, as this uses transmitter for HPD */
- 	mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_IRQ_MASK,
- 			   AUX_TOP_IRQ_MSK, AUX_TOP_IRQ_MSK);
+-	mtk_dp->train_info.link_rate = DP_LINK_BW_5_4;
++	mtk_dp->train_info.link_rate = mtk_dp->data->hw_max_link_rate;
+ 	mtk_dp->train_info.lane_count = mtk_dp->max_lanes;
+ 	mtk_dp->train_info.cable_plugged_in = plugged_in;
  
--	/* Debounce threshold */
-+	/* Set Hotplug debounce threshold time: xtal_period * deb_thd */
- 	mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3410,
- 			   8, HPD_DEB_THD_DP_TRANS_P0_MASK);
+@@ -2998,6 +2999,7 @@ static const struct mtk_dp_data mt8188_dp_data = {
+ 	.audio_supported = true,
+ 	.audio_pkt_in_hblank_area = true,
+ 	.audio_m_div2_bit = MT8188_AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2,
++	.hw_max_link_rate = DP_LINK_BW_5_4,
+ };
  
--	val = (HPD_INT_THD_DP_TRANS_P0_LOWER_500US |
--	       HPD_INT_THD_DP_TRANS_P0_UPPER_1100US) << 4;
--	mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3410,
--			   val, HPD_INT_THD_DP_TRANS_P0_MASK);
--
- 	/*
--	 * Connect threshold 1.5ms + 5 x 0.1ms = 2ms
--	 * Disconnect threshold 1.5ms + 5 x 0.1ms = 2ms
-+	 * Set interrupt debounce threshold time
-+	 * VAL  |  0     1     2     3  INT_THD
-+	 * Low  | 100   300   500   700 uS
-+	 * High | 700   900  1100  1300 uS
- 	 */
--	val = (5 << 8) | (5 << 12);
- 	mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3410,
--			   val,
-+			   FIELD_PREP_CONST(HPD_INT_LOW_THD_DP_TRANS_P0_MASK, 2) |
-+			   FIELD_PREP_CONST(HPD_INT_HIGH_THD_DP_TRANS_P0_MASK, 2),
-+			   HPD_INT_THD_DP_TRANS_P0_MASK);
-+
-+	/* Connection and Disconnection thresholds: 1.5ms + (5 x 0.1) ms = 2ms */
-+	mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3410,
-+			   FIELD_PREP_CONST(HPD_DISC_THD_DP_TRANS_P0_MASK, 5) |
-+			   FIELD_PREP_CONST(HPD_CONN_THD_DP_TRANS_P0_MASK, 5),
- 			   HPD_DISC_THD_DP_TRANS_P0_MASK |
- 			   HPD_CONN_THD_DP_TRANS_P0_MASK);
- 	mtk_dp_update_bits(mtk_dp, MTK_DP_TRANS_P0_3430,
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp_reg.h b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-index 9caf743f4fe6..ce47b99dddc4 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-+++ b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-@@ -253,6 +253,8 @@
- #define MTK_DP_TRANS_P0_3410				0x1410
- #define HPD_DEB_THD_DP_TRANS_P0_MASK				GENMASK(3, 0)
- #define HPD_INT_THD_DP_TRANS_P0_MASK				GENMASK(7, 4)
-+#define HPD_INT_HIGH_THD_DP_TRANS_P0_MASK			GENMASK(7, 6)
-+#define HPD_INT_LOW_THD_DP_TRANS_P0_MASK			GENMASK(5, 4)
- #define HPD_INT_THD_DP_TRANS_P0_LOWER_500US			(2 << 4)
- #define HPD_INT_THD_DP_TRANS_P0_UPPER_1100US			(2 << 6)
- #define HPD_DISC_THD_DP_TRANS_P0_MASK				GENMASK(11, 8)
-@@ -267,8 +269,8 @@
- #define IRQ_MASK_DP_TRANS_P0_INT_IRQ				(BIT(3) << 4)
- #define IRQ_STATUS_DP_TRANS_P0_MASK				GENMASK(15, 12)
- #define MTK_DP_TRANS_P0_342C				0x142c
--#define XTAL_FREQ_DP_TRANS_P0_DEFAULT				(BIT(0) | BIT(3) | BIT(5) | BIT(6))
--#define XTAL_FREQ_DP_TRANS_P0_MASK				GENMASK(7, 0)
-+#define XTAL_FREQ_DP_ACCUM_NUM_MASK				GENMASK(1, 0)
-+#define XTAL_FREQ_DP_CLOCK_MHZ_MASK				GENMASK(7, 2)
- #define MTK_DP_TRANS_P0_3430				0x1430
- #define HPD_INT_THD_ECO_DP_TRANS_P0_MASK			GENMASK(1, 0)
- #define HPD_INT_THD_ECO_DP_TRANS_P0_HIGH_BOUND_EXT		BIT(1)
+ static const struct mtk_dp_data mt8195_edp_data = {
+@@ -3006,6 +3008,7 @@ static const struct mtk_dp_data mt8195_edp_data = {
+ 	.efuse_fmt = mt8195_edp_efuse_fmt,
+ 	.audio_supported = false,
+ 	.audio_m_div2_bit = MT8195_AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2,
++	.hw_max_link_rate = DP_LINK_BW_5_4,
+ };
+ 
+ static const struct mtk_dp_data mt8195_dp_data = {
+@@ -3014,6 +3017,7 @@ static const struct mtk_dp_data mt8195_dp_data = {
+ 	.efuse_fmt = mt8195_dp_efuse_fmt,
+ 	.audio_supported = true,
+ 	.audio_m_div2_bit = MT8195_AUDIO_M_CODE_MULT_DIV_SEL_DP_ENC0_P0_DIV_2,
++	.hw_max_link_rate = DP_LINK_BW_5_4,
+ };
+ 
+ static const struct of_device_id mtk_dp_of_match[] = {
 -- 
 2.54.0
 
