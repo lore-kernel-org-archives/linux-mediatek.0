@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C197C44506
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 08:46:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65763C44507
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 08:46:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a6lgo3JBrT5GDnX/USsK5ElL9IaxUBSIYk9WosLR3cA=; b=yHZINAqV0mIDjfqsDpqEJuQQ7p
-	hvw8nUHXF6h7VnXJRZl9afgXleh+6pIEdlgq01oaIcw2Loh8Pm7D3Nu6koAllKt8T8p1Cgg6c3us+
-	AxZld10Q+DLo0oU0w8vXFZwU3A+q1+XcmXsXR/G7Ww/Ipnd4KGWq5ReRuCGyr/Wxr4805d/1H/Vmb
-	VNSbwgoRRdQBXcXoR6CatLDOcIngFYnwV5ph81r86dI2MR/9AAzpDrtQpyLjWZTaR7EFAjV21aBMi
-	v33gthvmMeF2lGrgDvvWL+6ly1FMvX/eySw32jmc1cq0UBbzsDlAjJIdi4lWAqdI7vJY44/xbBoTJ
-	N6ot8wNQ==;
+	bh=V0BDPOx5/TOCEfhnUdGgadc+xzKGAGVOIkKWWlMHjtk=; b=meXEl4R03O/e7iHj/1tW2smg9t
+	9G/tqCPDK4Jy00Ph5UAWB1Tt6h7w3kel6w5lfueMXq9ahwxAzmxwZVGHabbUs6BtlJOMMjf9LLRCd
+	ocFdpf/G81sE5Zs5d/A+WPb9uYyIsmbZ6zw0ENIMaocLVXU/1Eb1Iq/O9j/NxzHdI0ZEh0R1z/Ngw
+	1EOokcyvoc0qDsf7ESTr/0AOynG4k36JSYG+xwYiJnTFYhzKBRVL+2+I7+1WPxGPxD4Hiw7dWCr7+
+	N1ZFvJLIkbKzu4hXE2zhjwtCR+rJGJOMxVqh3QV/KBC931tvVhmX7ebJrMSVpClZhqJuB6jfTll1Q
+	fzjLtxrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkPE-00000001U0U-1ppX;
-	Thu, 09 Jul 2026 08:46:52 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1whkPF-00000001U3M-1W9a;
+	Thu, 09 Jul 2026 08:46:53 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkP6-00000001Tt9-34ud;
-	Thu, 09 Jul 2026 08:46:46 +0000
+	id 1whkPA-00000001Ttn-2WQo;
+	Thu, 09 Jul 2026 08:46:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783586802;
-	bh=lGc88COp+efjC5OpWfAp8waYnnKPVs5ajyeOW2vAKtI=;
+	s=mail; t=1783586804;
+	bh=qzkG82fCo2yCvES8L+QvDNPl1CSrAGsEROUCjOB7JQA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=b7gl02wj0tsztBgPUbmZLyVorqJgU+DWFDiqDC5KFmiyTvDBBmZWPp5xTgGIS9YNM
-	 X8U6eukYR5kjluDBjDvH+H7IjtAWHgwilUIWqH6F3D8LrnW0qXYE4UADzMCGvdjyII
-	 BLld3KlMkKBsJ4JIn8yjMwSRYbRnEAe/wf1H57UkPqSIK+UC6iq3ICEob6yUKYJHtL
-	 tcb1X+T5msNV6qxzee2r83vNsUKEs9jB+8vJ5POm7xibmzVSMuK55WOjLDiIQqWlYH
-	 RQbWIdBEKjVh9crOUlRtWTQ1fybkshczevutN3XUhhrcoYTs65ofEe4z8gOKlAM17C
-	 YQJTU88Rdy32Q==
+	b=QGdBVPxufFk462JAQ3czVGczYRbRWJoJcyK9oeyrd7tQZehU2lWJzExKr1kq6xcY3
+	 UWJSfNNWG89PQCWrZaVvDEN0ZwcIpfhNF96wFuDQO2aDBZcura4cK4gyGrDBwx3R8S
+	 VOuWu4TB2riIZ2vCG0hwKpnQDdzdzUpHffydrdJHV4qjOnoK8IVuBGHFT9PfZtAzg3
+	 EqeBIgimodbuRSKZuEUIQKhgzPvROpesd07wLUVYH/iiX1FlrFOgUfhjzI+2Gy8+Im
+	 JESRQ5J8RmRA/XOl22mYpYlz5YzA/l2m5HM/ODSz8yrRAxVQ9tYbs276YSWHf/qROV
+	 7AfqpbThMxlHg==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0EA5E17E0D56;
-	Thu, 09 Jul 2026 10:46:42 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B0F1017E0E04;
+	Thu, 09 Jul 2026 10:46:43 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: ulfh@kernel.org
 Cc: robh@kernel.org,
@@ -62,17 +62,17 @@ Cc: robh@kernel.org,
 	linux-mediatek@lists.infradead.org,
 	justin.yeh@mediatek.com,
 	kernel@collabora.com
-Subject: [PATCH v3 3/5] pmdomain: mediatek: Respect PD relationships during error cleanup
-Date: Thu,  9 Jul 2026 10:46:33 +0200
-Message-ID: <20260709084635.24912-4-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 5/5] pmdomain: mediatek: Add support for MT8196 HFRP DirectCTL domains
+Date: Thu,  9 Jul 2026 10:46:35 +0200
+Message-ID: <20260709084635.24912-6-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260709084635.24912-1-angelogioacchino.delregno@collabora.com>
 References: <20260709084635.24912-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_014644_926866_3B52C8DF 
-X-CRM114-Status: GOOD (  19.31  )
+X-CRM114-CacheID: sfid-20260709_014649_104409_9F1F5749 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,156 +87,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In case any probe error occurs (usually, a probe deferral) the
-power domains shall be cleaned up while respecting their child
-to parent relationship, or the system may freeze.
-
-In order to do that without any memory footprint impacts after
-the fact, allocate a temporary array in the probe function and
-use it to store the indices of the added power domains in the
-correct order.
-
-This will be used in the error cleanup path and will be freed
-at the end regardless of the probe status as, when the probing
-succeeds, the genpd API takes care of unregistering all PDs in
-the correct order anyway.
+Add support for the power domains provided by the HFRPSYS Power
+Controller of the MT8196 SoC.
+Those control power to the eDP and DP Transmitter IPs.
 
 Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/pmdomain/mediatek/mtk-pm-domains.c | 43 +++++++++++++++++-----
- 1 file changed, 33 insertions(+), 10 deletions(-)
+ drivers/pmdomain/mediatek/mt8196-pm-domains.h | 27 +++++++++++++++++++
+ drivers/pmdomain/mediatek/mtk-pm-domains.c    |  6 ++++-
+ 2 files changed, 32 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/pmdomain/mediatek/mt8196-pm-domains.h b/drivers/pmdomain/mediatek/mt8196-pm-domains.h
+index 2e4b28720659..d704c9fa9337 100644
+--- a/drivers/pmdomain/mediatek/mt8196-pm-domains.h
++++ b/drivers/pmdomain/mediatek/mt8196-pm-domains.h
+@@ -602,6 +602,27 @@ static const struct scpsys_hwv_domain_data hfrpsys_hwv_domain_data_mt8196[] = {
+ 	},
+ };
+ 
++static const struct scpsys_domain_data hfrpsys_domain_data_mt8196[] = {
++	[MT8196_POWER_DOMAIN_EDPTX] = {
++		.name = "edp-tx",
++		.sta_mask = MT8196_PWR_ACK,
++		.sta2nd_mask = MT8196_PWR_ACK_2ND,
++		.ctl_offs = 0x74,
++		.pwr_sta_offs = 0x74,
++		.pwr_sta2nd_offs = 0x74,
++		.caps = MTK_SCPD_SIMPLE_PWRSEQ,
++	},
++	[MT8196_POWER_DOMAIN_DPTX] = {
++		.name = "dp-tx",
++		.sta_mask = MT8196_PWR_ACK,
++		.sta2nd_mask = MT8196_PWR_ACK_2ND,
++		.ctl_offs = 0x78,
++		.pwr_sta_offs = 0x78,
++		.pwr_sta2nd_offs = 0x78,
++		.caps = MTK_SCPD_SIMPLE_PWRSEQ,
++	},
++};
++
+ static const struct scpsys_soc_data mt8196_scpsys_data = {
+ 	.domains_data = scpsys_domain_data_mt8196,
+ 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8196),
+@@ -616,6 +637,12 @@ static const struct scpsys_soc_data mt8196_scpsys_hwv_data = {
+ 	.type = SCPSYS_MTCMOS_TYPE_HW_VOTER,
+ };
+ 
++static const struct scpsys_soc_data mt8196_hfrpsys_data = {
++	.domains_data = hfrpsys_domain_data_mt8196,
++	.num_domains = ARRAY_SIZE(hfrpsys_domain_data_mt8196),
++	.type = SCPSYS_MTCMOS_TYPE_DIRECT_CTL,
++};
++
+ static const struct scpsys_soc_data mt8196_hfrpsys_hwv_data = {
+ 	.hwv_domains_data = hfrpsys_hwv_domain_data_mt8196,
+ 	.num_hwv_domains = ARRAY_SIZE(hfrpsys_hwv_domain_data_mt8196),
 diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-index f0a6339affd7..8d49d9ee3cd2 100644
+index 632c5dcdceda..8309a4b46afb 100644
 --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
 +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-@@ -750,7 +750,8 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- }
- 
- static struct
--generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_node *node)
-+generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_node *node,
-+					 u8 *domains_idx, u8 *num_domains)
- {
- 	const struct scpsys_domain_data *domain_data;
- 	const struct scpsys_hwv_domain_data *hwv_domain_data;
-@@ -925,6 +926,7 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- 	else
- 		pm_genpd_init(&pd->genpd, NULL, false);
- 
-+	domains_idx[(*num_domains)++] = (u8) id;
- 	scpsys->domains[id] = &pd->genpd;
- 
- 	return scpsys->pd_data.domains[id];
-@@ -936,7 +938,8 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- 	return ERR_PTR(ret);
- }
- 
--static int scpsys_add_subdomain(struct scpsys *scpsys, struct device_node *parent)
-+static int scpsys_add_subdomain(struct scpsys *scpsys, struct device_node *parent,
-+				u8 *domains_idx, u8 *num_domains)
- {
- 	struct generic_pm_domain *child_pd, *parent_pd;
- 	struct device_node *child;
-@@ -959,7 +962,7 @@ static int scpsys_add_subdomain(struct scpsys *scpsys, struct device_node *paren
- 
- 		parent_pd = scpsys->pd_data.domains[id];
- 
--		child_pd = scpsys_add_one_domain(scpsys, child);
-+		child_pd = scpsys_add_one_domain(scpsys, child, domains_idx, num_domains);
- 		if (IS_ERR(child_pd)) {
- 			ret = PTR_ERR(child_pd);
- 			dev_err_probe(scpsys->dev, ret, "%pOF: failed to get child domain id\n",
-@@ -968,7 +971,7 @@ static int scpsys_add_subdomain(struct scpsys *scpsys, struct device_node *paren
- 		}
- 
- 		/* recursive call to add all subdomains */
--		ret = scpsys_add_subdomain(scpsys, child);
-+		ret = scpsys_add_subdomain(scpsys, child, domains_idx, num_domains);
- 		if (ret)
- 			goto err_put_node;
- 
-@@ -1017,14 +1020,16 @@ static void scpsys_remove_one_domain(struct scpsys_domain *pd)
- 	clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
- }
- 
--static void scpsys_domain_cleanup(struct scpsys *scpsys)
-+static void scpsys_domain_cleanup(struct scpsys *scpsys, u8 *domains_idx, u8 num_probed)
- {
- 	struct generic_pm_domain *genpd;
- 	struct scpsys_domain *pd;
- 	int i;
- 
--	for (i = scpsys->pd_data.num_domains - 1; i >= 0; i--) {
--		genpd = scpsys->pd_data.domains[i];
-+	for (i = num_probed - 1; i >= 0; i--) {
-+		u8 pd_idx = domains_idx[i];
-+
-+		genpd = scpsys->pd_data.domains[pd_idx];
- 		if (genpd) {
- 			pd = to_scpsys_domain(genpd);
- 			scpsys_remove_one_domain(pd);
-@@ -1241,6 +1246,8 @@ static int scpsys_probe(struct platform_device *pdev)
- 	struct device *parent;
- 	struct scpsys *scpsys;
- 	int num_domains, ret;
-+	u8 num_added_pds = 0;
-+	u8 *added_pds_idx;
- 
- 	soc = of_device_get_match_data(&pdev->dev);
- 	if (!soc) {
-@@ -1254,6 +1261,19 @@ static int scpsys_probe(struct platform_device *pdev)
- 	if (!scpsys)
- 		return -ENOMEM;
- 
-+	/*
-+	 * Temporarily store the IDs of the power domains that are added as in
-+	 * case of a probe deferral this can be used to correctly cleanup all
-+	 * of what was added before.
-+	 *
-+	 * Note that this array is used only in the probe function and must be
-+	 * freed at the end, regardless of whether all of the power domains were
-+	 * probed successfully or any failure happened.
-+	 */
-+	added_pds_idx = devm_kmalloc_array(dev, num_domains, sizeof(*added_pds_idx), GFP_KERNEL);
-+	if (!added_pds_idx)
-+		return -ENOMEM;
-+
- 	scpsys->dev = dev;
- 	scpsys->soc_data = soc;
- 
-@@ -1284,13 +1304,15 @@ static int scpsys_probe(struct platform_device *pdev)
- 	for_each_available_child_of_node_scoped(np, node) {
- 		struct generic_pm_domain *domain;
- 
--		domain = scpsys_add_one_domain(scpsys, node);
-+		domain = scpsys_add_one_domain(scpsys, node,
-+					       added_pds_idx, &num_added_pds);
- 		if (IS_ERR(domain)) {
- 			ret = PTR_ERR(domain);
- 			goto err_cleanup_domains;
- 		}
- 
--		ret = scpsys_add_subdomain(scpsys, node);
-+		ret = scpsys_add_subdomain(scpsys, node,
-+					   added_pds_idx, &num_added_pds);
- 		if (ret)
- 			goto err_cleanup_domains;
- 	}
-@@ -1306,10 +1328,11 @@ static int scpsys_probe(struct platform_device *pdev)
- 		goto err_cleanup_domains;
+@@ -1071,7 +1071,7 @@ static void scpsys_remove_one_domain(struct scpsys_domain *pd)
+ 		if (scpsys_hwv_domain_is_enable_done(pd))
+ 			scpsys_hwv_power_off_internal(pd);
+ 	} else {
+-		if (scpsys_domain_is_on(pd))
++		if (scpsys_domain_is_on(pd) || MTK_SCPD_CAPS(pd, MTK_SCPD_SIMPLE_PWRSEQ))
+ 			scpsys_power_off_internal(pd);
  	}
  
-+	devm_kfree(dev, added_pds_idx);
- 	return 0;
- 
- err_cleanup_domains:
--	scpsys_domain_cleanup(scpsys);
-+	scpsys_domain_cleanup(scpsys, added_pds_idx, num_added_pds);
- 	return ret;
- }
- 
+@@ -1288,6 +1288,10 @@ static const struct of_device_id scpsys_of_match[] = {
+ 		.compatible = "mediatek,mt8196-power-controller",
+ 		.data = &mt8196_scpsys_data,
+ 	},
++	{
++		.compatible = "mediatek,mt8196-hfrp-power-controller",
++		.data = &mt8196_hfrpsys_data,
++	},
+ 	{
+ 		.compatible = "mediatek,mt8196-hwv-hfrp-power-controller",
+ 		.data = &mt8196_hfrpsys_hwv_data,
 -- 
 2.54.0
 
