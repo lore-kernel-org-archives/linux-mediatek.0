@@ -4,56 +4,177 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FA1EC43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 06:07:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9BB9C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 06:25:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=36b8H8C5d8xCfDp3UaNB3wNcVTtCzGBrEnzYSQk1yMU=; b=UFq9dRP5G44jce6wx4n/ulmXj0
-	gEyk7VZYVL2E/ayig9o3jdSr6C5JNyfnvo6WYF7dLAZif4njlX1ybGMQWdAT1RtKH6smc2gcd3A7W
-	GnT63N91LKWhkuKhNGWo/v/JOs6BZRsohT3XyIo9cTxOskEpDJc7uXZfkZvex74F5vihy5B38RUKl
-	373jTZ88YS8HopTC5wFlJ9l48taLARe97C7A+oDjJF1xe/uhRYrm8ZH4Hp/Ymnx+bvSQvoAU0gP04
-	6VKQZm2quu7PU99t07S6Nzassh0srIfvppToC9wSe7WZzBLiGb5DCpiUNWlPuZAz+a0vNDkhKQTB4
-	oItqaH8Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1YqnzWWYNh3cmaUOCZIRd7TUov9rA8o7dhqsYSUv9m0=; b=i4clK4bXXc0Qy+
+	eOjyFW47I8sDtiRnsjMVZvwj+S5YFHWQVmtIGsEeaxm5mFWxsbUH27JMTDXGZLCHght3oH4V46Kq+
+	END/PYul7zwx3FvN5PMrOzayANnP2DB/wLPGACBrSlIMohdwwMNS/Vum/8xiMLNB9tt8D/F3bSqYK
+	XuLYQ26j/BeCYyA0MJjClhYpd/Eum6f6nJDataPl1LYg1WjnSH/PVJfEOhHqSSbJMVPmQV4o2FMSJ
+	L1Zb2Gip3qGoN7lB9zGXWV5q9YVyBVCymclNWfvrjWJQblQ3l9k/3P0vPxiPcXaI4l5hPRKxtEB0g
+	mv/4F/KPUvdjEOEcfa5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whhuq-000000016rP-0cgS;
-	Thu, 09 Jul 2026 06:07:20 +0000
-Received: from mail-4319.protonmail.ch ([185.70.43.19])
+	id 1whiCZ-0000000192v-2vnS;
+	Thu, 09 Jul 2026 06:25:39 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whhun-000000016qf-1lZL;
-	Thu, 09 Jul 2026 06:07:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1783577226; x=1783836426;
-	bh=36b8H8C5d8xCfDp3UaNB3wNcVTtCzGBrEnzYSQk1yMU=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=cCfKfgncEAuSlZqAq4s8IHmC+Io4q0gH0nyONnU9wiuFpHDPdFTclJoWYpquyvHjt
-	 yIgt/lxIA6k+QwRoQvbhPGn3PTRIujDSX4YCWCLFH/rC3+B0OiNUXcfMNzCvHY8q5d
-	 5asIuw4/O2rQGeXz5tQDQwFwmejAcwmiTD6I3aQu9uN13IwlNLSBQ+LR03zetsAcad
-	 sQGdcEItr8Ej6DOjOlCN5HxEj4SYUDtLWY0Nmoh/M8gMapEsj4flMLz5LquLAsMVmB
-	 f/ovYdSbTUmham6xeddhJh+9339/6RHoTHWWRvc3wVv1cpmoMOw0MCA475GZoovrnN
-	 PMtZxp/52WY6A==
-Date: Thu, 09 Jul 2026 06:07:02 +0000
-To: Lee Jones <lee@kernel.org>, Jonathan Cameron <jic23@kernel.org>
-From: Roman Vivchar <rva333@protonmail.com>
-Cc: David Lechner <dlechner@baylibre.com>, =?utf-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-iio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ben Grisdale <bengris32@protonmail.ch>
-Subject: Re: [PATCH v4 3/4] mfd: mt6397-core: add mt6323 AUXADC support
-Message-ID: <UV1EGIwox4bkh8ufCFb4GS_Pafo8bovmSI9jzRbQunz7AzjHnmItA-lLCPeeIxOLMoS3douarVEpoTF7DVffFJUcXZTdGTQ6-dfAYdomwak=@protonmail.com>
-In-Reply-To: <20260708211056.GB1727174@google.com>
-References: <20260623-mt6323-adc-v4-0-299680ad3194@protonmail.com> <20260623-mt6323-adc-v4-3-299680ad3194@protonmail.com> <20260708211056.GB1727174@google.com>
-Feedback-ID: 173184497:user:proton
-X-Pm-Message-ID: 2e5f52e3bdeec32ab13894ebd60e7725e6f99467
+	id 1whiCW-0000000191J-2Q1U
+	for linux-mediatek@lists.infradead.org;
+	Thu, 09 Jul 2026 06:25:38 +0000
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 66960a1D837412
+	for <linux-mediatek@lists.infradead.org>; Thu, 9 Jul 2026 06:25:34 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:message-id
+	:mime-version:subject:to; s=qcppdkim1; bh=1YqnzWWYNh3cmaUOCZIRd7
+	TUov9rA8o7dhqsYSUv9m0=; b=D/v0rw55N+8gvJL2TPFvB6q34PLe7kK4RaJT7w
+	WP+mnEBmSOe1UvyzcNS09krx6WOLlf917tXVXnLRrcqAZxP8cRhOA47mW8XnGn1Y
+	k8EsYaxNhGsMwsekKBAPgGT4gJlrVctubMoBKyx8sGsn6O5JrKmWfuMdQ9dRswdA
+	8M/rOYfeXhKrS/v68WfvkoAcAfdCDSWCvm5SD7xtPdVgnmucXbdeuCqHeUUxIXjI
+	bX/2LsSI2Jd0Uri3hT6vNvPCna/B1Qh/GGDh11crLaDF8M4WTbVq0ekjC/ow18Bh
+	hndVNiQFktdwwNs0LdMntW5URBp/Fb1Q7fgb8PTSRTYzfNUw==
+Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com [209.85.214.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4f9sqwap1j-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Thu, 09 Jul 2026 06:25:34 +0000 (GMT)
+Received: by mail-pl1-f197.google.com with SMTP id d9443c01a7336-2cceabd70f5so34739035ad.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 23:25:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1783578333; x=1784183133; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=1YqnzWWYNh3cmaUOCZIRd7TUov9rA8o7dhqsYSUv9m0=;
+        b=N2VKYcw6iN2SlKFcKcmtIKxZVHZbovjf037BlJR/nVnGxerqrG/qxy+rcvRYZ4avDQ
+         iQRDHdf/Nn37qxhujlZw04ykfCNZFVQCxaOxrA8KngqjAkEEWfRw8LC4a2u6PrwV3+lv
+         UuoMweXI4WdwYtIso8oTpfeCGCK05l7WckbMEowqjxc5KcE1qjQuCxP5O2r94W7nswEf
+         YB3703FgeWn5PszqeJ2sZBQRLVDwXQFUXqJS2/UFCQJHLv4xE1QG1wAb1fc2iX2dhvkr
+         yZDN2d8WurPGkrrXsSjav8RuGmvhOOKWP+5b+pyq50t3oXtKhIm6eANuStdOZMq57hdL
+         loOA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783578333; x=1784183133;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=1YqnzWWYNh3cmaUOCZIRd7TUov9rA8o7dhqsYSUv9m0=;
+        b=VQg+0/qiPAgFv/UVJL7QI9i0Zfm6sWIZ87AJYz6bv5i9n4ydbnQiU72Jga6fcx3eIf
+         0Qpz3vT46jwzsjxrb3XcBOZ4cE20hqA3qW0W5080juKlLdEPt3GknzCBWRe+TWrFGksg
+         PFXwt2425rQLLzxxwgyGxkqyc4pp288kdYq5dZUiLSCgksecYjPbMeVwJwCdz8DGBIsZ
+         gPWi1zH7QegBbnZjPIQYDoBuHk8+BgEsy9Vh+2Jg1JPy7fI+47yaLEIn82BAjth6S7hA
+         VXFQfKcEtSagzLBc9uWL/uWRpqFwKue35enl7sIMUQjSkpR/yGN/5CeLCllRNSyluAfC
+         O7Hg==
+X-Forwarded-Encrypted: i=1; AHgh+RrBX1EVyI/ssnOkdnCecO3mKVodd2FIJpMzGf4f8RU425VTvyhXCzRgWPN82vDlrDPrjLTvonlou7zR1Xu5vg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywr4qk9qeDIErJKG4wnKT7SXm/ZOmUsYrP8BtvmJGm3nuPKUWPo
+	KaOfLFBSCIL0Oxy9wvutcgK+GZG5if3C4yhzOdvnoK9P3idCOxEHTgrmbFLlU+DoV1A+IUMDd9g
+	aMU2YFv1WcVLPy3UlfM0EmrzsieW/16rebzy/nf46eRapL9LorQdIHAsRPX9evgCOdCr1pABjZA
+	icR1HTLss=
+X-Gm-Gg: AfdE7cllG7LKNSgq/yXgCDxbzPA/1/QIB1qqHrtmrPzmZZZPJ/K0eHvGkMt5RmFZ822
+	MDyZZEImVLqFQnJLaaureyttZRoovjMoLxmwlQQo8Ogza9TfWIlD1p3++fhuB/r/QlfB/HdBy7K
+	i1xh8MkLuyJT+HchuiPFuQUC9YfUFvOo+XT/XDoDNWMqcZ5N8ImFtsGyaaSidavw1gGeIQJOv7a
+	iOym6j9AnDKpV+/xOfB606gz0EzD3Zmm8k2jIo1IFmEJyT+qL6dPlhi7mX8sVd9el8mYJM56RaW
+	2LKSK6D9+xXo/IYEw/LjNejm8BsyNVnIDyenyY1xy5ojQqP0bRdOaAZ1l3zjKjHFOF6Wn4E9sS2
+	ZayhykK+3Rz1hfDA+lT29Bbdc4ho+mWR/svBSKwu9sIQw
+X-Received: by 2002:a17:903:37cd:b0:2c6:f3ae:2386 with SMTP id d9443c01a7336-2ccea2a571fmr63676755ad.7.1783578333367;
+        Wed, 08 Jul 2026 23:25:33 -0700 (PDT)
+X-Received: by 2002:a17:903:37cd:b0:2c6:f3ae:2386 with SMTP id d9443c01a7336-2ccea2a571fmr63676155ad.7.1783578332723;
+        Wed, 08 Jul 2026 23:25:32 -0700 (PDT)
+Received: from hu-ptalari-hyd.qualcomm.com ([202.46.22.19])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9bf74cbsm37986405ad.18.2026.07.08.23.25.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Jul 2026 23:25:32 -0700 (PDT)
+From: Praveen Talari <praveen.talari@oss.qualcomm.com>
+Subject: [PATCH 0/6] tty: serial: propagate errors from uart_ops.pm
+ callback
+Date: Thu, 09 Jul 2026 11:55:12 +0530
+Message-Id: <20260709-add_return_check_for_uart_change_pm-v1-0-e85c6ffa8ec4@oss.qualcomm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAMg+T2oC/yWNUQrCMBAFr1L220BMaQSvIrKkm42NYlo2iQild
+ 2+0nwPz5q2QWSJnuHYrCH9ijnNqcD51QJNLD1bRNwajjdUXbZXzHoVLlYQ0Mb0wzILVScHDx+W
+ tvKGxt0PbhB5aaREO8ft/ud0PznV8MpVfGrZtB+rg+KeHAAAA
+X-Change-ID: 20260706-add_return_check_for_uart_change_pm-d2cb365202f3
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+        Jiri Slaby <jirislaby@kernel.org>,
+        =?utf-8?q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>,
+        Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Richard Genoud <richard.genoud@bootlin.com>,
+        Nicolas Ferre <nicolas.ferre@microchip.com>,
+        Alexandre Belloni <alexandre.belloni@bootlin.com>,
+        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+        Krzysztof Kozlowski <krzk@kernel.org>,
+        Peter Griffin <peter.griffin@linaro.org>,
+        Alim Akhtar <alim.akhtar@samsung.com>,
+        Orson Zhai <orsonzhai@gmail.com>,
+        Baolin Wang <baolin.wang@linux.alibaba.com>,
+        Chunyan Zhang <zhang.lyra@gmail.com>,
+        Patrice Chotard <patrice.chotard@foss.st.com>,
+        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+        Alexandre Torgue <alexandre.torgue@foss.st.com>,
+        Peter Korsgaard <jacmet@sunsite.dk>,
+        Michal Simek <michal.simek@amd.com>,
+        Aaro Koskinen <aaro.koskinen@iki.fi>,
+        Janusz Krzysztofik <jmkrzyszt@gmail.com>,
+        Tony Lindgren <tony@atomide.com>, Russell King <linux@armlinux.org.uk>,
+        Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+        bjorn.andersson@oss.qualcomm.com,
+        Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Cc: linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        linux-samsung-soc@vger.kernel.org,
+        linux-stm32@st-md-mailman.stormreply.com, linux-omap@vger.kernel.org,
+        linux-mips@vger.kernel.org,
+        Mukesh Kumar Savaliya <mukesh.savaliya@oss.qualcomm.com>,
+        aniket.randive@oss.qualcomm.com, chandana.chiluveru@oss.qualcomm.com,
+        Praveen Talari <praveen.talari@oss.qualcomm.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783578321; l=4632;
+ i=praveen.talari@oss.qualcomm.com; s=20251114; h=from:subject:message-id;
+ bh=xaM/hVUjZo3snEyz/S9bcZ/H9ysyVZEXqq3xmE7nNZU=;
+ b=xstS7B9zPIQfwsEBA4/XFGTcfAsU4oB4GSGJzY7XzF/v3xKj/L2hg5jibSJ09Rtcp/Zvw7q/a
+ rKqBeBXhUaoCx0C8rUDinlyefoUSLITLDPzV1Kykv7lFa1T2iyWiUtz
+X-Developer-Key: i=praveen.talari@oss.qualcomm.com; a=ed25519;
+ pk=NGK/88fjyHXgfhIKwag7+uIytOmyOypvZ/hDFaYPEss=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzA5MDA1OCBTYWx0ZWRfX8iCuTCCaHhFS
+ SkiwfXOwGVkfJFVPlMx/idEXZ7UYi1ieiaZte+SNSjYlohHFlStvQp3gjQBaPWWhLyPP7iN5X43
+ Ps6m3yJzvAZOx2U6QEFbE8ZCzwA1B1ZNmsfuehwE7bNupaVK+T5MoPA1yhv98qQNPM1s1DtU/mf
+ vY1CNwANA1q8zFjJ5sj5LbKW4MRozMSeWE+ku8k626D7FwQBJcgsEUWj2yOMNvWZwAoS8QVmYsp
+ EXeS3Ceb7wgoRqxs//mLlowZtxtM8jfy2/JgK24BTQe2t5q7GIKTGOARiSQqEw+YK0wluIOwbaJ
+ gNMgrtg7BjL67i5MyXWV/lRWKhXqb/PxzGyKSYzgMwgeNZ7iKPfGdue5rqcSrO/M7AN12c6qUol
+ Eq1NCirnOkdlSc4YcBUcGp7TsqrAtQuy4+VZbn4Utr4xp6WvNT5oQyIhZ4kyZR3/HKP/9srdTE4
+ IQcOpixUfijjGKuY6aQ==
+X-Proofpoint-GUID: duc5KUclnE7gulF04p660o6oDNkH4SD-
+X-Authority-Analysis: v=2.4 cv=fMIJG5ae c=1 sm=1 tr=0 ts=6a4f3ede cx=c_pps
+ a=cmESyDAEBpBGqyK7t0alAg==:117 a=fChuTYTh2wq5r3m49p7fHw==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
+ a=EUspDBNiAAAA:8 a=Sp74d_8yOxMrUkFL1bcA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=1OuFwYUASf3TG4hYMiVC:22
+X-Proofpoint-ORIG-GUID: duc5KUclnE7gulF04p660o6oDNkH4SD-
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzA5MDA1OCBTYWx0ZWRfX/2ve+D389N4S
+ FHir74AAtgzeqmr4Te0YkTn8FFd2r5+C0aPL8D2FZeBPUQwil0T1OvETq6lM1SKP6DCkgpuysUQ
+ +o8VsFpD0ZjCePGF0p+PB3U436pS7xI=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-09_01,2026-07-08_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ adultscore=0 bulkscore=0 phishscore=0 clxscore=1011 impostorscore=0
+ spamscore=0 priorityscore=1501 malwarescore=0 lowpriorityscore=0
+ suspectscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2607090058
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_230717_619569_DF097FCC 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20260708_232536_778163_3D817A02 
+X-CRM114-Status: GOOD (  18.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,40 +189,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Lee,
+The uart_ops.pm callback has been declared void since its introduction,
+which means any error from a driver's power management implementation is
+silently discarded by uart_change_pm(). Beyond losing the error
+information, uart_change_pm() unconditionally updates state->pm_state
+even when the underlying hardware transition failed. This causes the
+serial core to track a power state that does not reflect reality:
+subsequent calls to uart_change_pm() see the stale cached state as
+matching the requested state and skip the callback entirely, leaving the
+hardware permanently stuck with no further recovery attempt.
 
-+Jonathan
+On modern platforms where the .pm callback performs real work —
+enabling clock trees, interacting with runtime PM, asserting voltage
+regulators — this is a correctness gap. Failures are invisible to the
+PM framework, the port proceeds to call ops->startup() on potentially
+unpowered hardware, and suspend/resume errors are hidden from the core
+that needs to handle them.
 
-On Thursday, July 9th, 2026 at 12:11 AM, Lee Jones <lee@kernel.org> wrote:
+This series fixes the problem in four steps:
 
-> On Tue, 23 Jun 2026, Roman Vivchar via B4 Relay wrote:
->=20
-> > From: Roman Vivchar <rva333@protonmail.com>
-> >
-> > The mt6323 PMIC includes an AUXADC. Register the AUXADC in the mt6323
-> > devices array to allow the corresponding driver to probe using compatib=
-le
-> > string.
-> >
-> > Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2n=
-d Generation)
-> > Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-> > ---
-> >  drivers/mfd/mt6397-core.c | 3 +++
-> >  1 file changed, 3 insertions(+)
->=20
-> Doesn't apply.  Please rebase and resent with my:
->=20
-> Acked-by: Lee Jones <lee@kernel.org>
+  Patch 1 changes the uart_ops.pm callback signature from void to int,
+  updates uart_change_pm() to propagate errors and only commit
+  state->pm_state on success, and handles the return value at every
+  call site in serial_core.c with appropriate policy per context
+  (propagate, log, or skip-on-failure).
 
-There's a slight cross-tree conflict. Jonathan has already picked
-patch 1 and patch 2 to the iio testing tree. This mfd patch doesn't
-apply because recently merged mt6323 efuse patch (bde6556744888).
+  Patch 2 updates the 8250 driver family: serial8250_do_pm() and
+  serial8250_pm() are updated to return int (with the exported symbol
+  declaration updated in serial_8250.h), and the 8250 sub-driver
+  pm callbacks are updated to return 0.
 
-The iio tree doesn't include mt6323 efuse patch, and there was some
-dt-bindings merge conflict.
-Should I rebase on top of linux-next and send mfd as a standalone patch?
+  Patch 3 updates the remaining non-8250 serial drivers. All .pm
+  implementations are updated to return 0. The sh-sci forward
+  declaration shared with rsci is also updated.
+
+  Patch 4 updates arch-level implementations: SA1100 (assabet, h3xxx),
+  OMAP1/ams-delta (modem_pm, now propagates regulator errors), and
+  MIPS/Alchemy (alchemy_8250_pm).
+
+All existing .pm implementations return 0, so there is no functional
+change for any current driver. The series purely adds the infrastructure
+for drivers to report errors going forward, with the serial core ready
+to handle them correctly.
+
+Signed-off-by: Praveen Talari <praveen.talari@oss.qualcomm.com>
+---
+Praveen Talari (6):
+      tty: serial: change uart_ops.pm callback to return int
+      serial: 8250: update .pm callbacks to return int
+      tty: serial: update .pm callbacks to return int
+      arch: update uart pm callbacks to return int
+      tty: serial: propagate uart_configure_port failure to uart_add_one_port
+      serial: qcom-geni: check return value of pm_runtime_resume_and_get()
+
+ arch/arm/mach-omap1/board-ams-delta.c       |  10 +--
+ arch/arm/mach-sa1100/assabet.c              |   3 +-
+ arch/arm/mach-sa1100/h3xxx.c                |   3 +-
+ arch/mips/alchemy/common/platform.c         |   5 +-
+ drivers/tty/serial/8250/8250_dw.c           |   3 +-
+ drivers/tty/serial/8250/8250_exar.c         |   4 +-
+ drivers/tty/serial/8250/8250_mtk.c          |   4 +-
+ drivers/tty/serial/8250/8250_omap.c         |   6 +-
+ drivers/tty/serial/8250/8250_port.c         |   9 ++-
+ drivers/tty/serial/8250/8250_pxa.c          |   6 +-
+ drivers/tty/serial/atmel_serial.c           |   5 +-
+ drivers/tty/serial/fsl_lpuart.c             |   3 +-
+ drivers/tty/serial/msm_serial.c             |   5 +-
+ drivers/tty/serial/omap-serial.c            |   3 +-
+ drivers/tty/serial/pxa.c                    |   3 +-
+ drivers/tty/serial/qcom_geni_serial.c       |  16 +++--
+ drivers/tty/serial/samsung_tty.c            |   5 +-
+ drivers/tty/serial/sc16is7xx.c              |   5 +-
+ drivers/tty/serial/serial_core.c            | 104 ++++++++++++++++++++--------
+ drivers/tty/serial/serial_txx9.c            |   3 +-
+ drivers/tty/serial/sh-sci-common.h          |   4 +-
+ drivers/tty/serial/sh-sci.c                 |   5 +-
+ drivers/tty/serial/sprd_serial.c            |   5 +-
+ drivers/tty/serial/st-asc.c                 |   5 +-
+ drivers/tty/serial/stm32-usart.c            |   5 +-
+ drivers/tty/serial/uartlite.c               |   5 +-
+ drivers/tty/serial/xilinx_uartps.c          |   5 +-
+ include/linux/platform_data/sa11x0-serial.h |   2 +-
+ include/linux/serial_8250.h                 |   6 +-
+ include/linux/serial_core.h                 |  10 +--
+ 30 files changed, 171 insertions(+), 86 deletions(-)
+---
+base-commit: 8cdeaa50eae8dad34885515f62559ee83e7e8dda
+change-id: 20260706-add_return_check_for_uart_change_pm-d2cb365202f3
 
 Best regards,
-Roman
+--  
+Praveen Talari <praveen.talari@oss.qualcomm.com>
+
 
