@@ -4,61 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09F78C43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 21:27:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E944EC43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 23:54:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K7gv7DO3sRanhSag9LvnX9LZtxm45e9XO0imyrqaXXo=; b=gzEB/5C+Tq0gU5THW0YQeBtOHM
-	isvWjMX9XjxEetXUKdjclGNVN+KtJb4RowtROHoiRzbLvbcarcWw/zzl4z+i1EoRfUtRhwnclEeEf
-	aXeIQkuuwK0jChilNFKsPsKuZTZhn62ZjP3AOZWZ2HcvD2pMplD9POqwMBUw5Yk+yzPbhdu/JMY5H
-	uy8gOx4Z82JUUnBDptwGB3rT9l4EaBouNErp8un7l5/YawUTCYQxYmquoIcdbBRohe+zTU1VRTV89
-	TL1xJ8H146VCGFqA5b2ULCTIGw2rByyIle31WzZ8htR8KmpkQBl9V8yZTNUBDA2GfNyAkKvrz8lAb
-	9+bkLang==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nwdYdybpiL0XEa9EfKFkDvxx2HxR0uRQFmPGoHruEz8=; b=mJEL2C4Sj5NAmJTHd977hjPUi2
+	WjW1IMvOLJukggOMbpwiwubs9mejeSKRedNE7futLEG6KUyg0knepsx+W4OP49X84V296yMbuiQrM
+	n4xmHFpKelJdfiPl73zDUNzwuksewW8mfPFv5fRaOYw1aEQtHpym9QrlPbUs/eeaLsly3Vucow6G/
+	u6dXUUiLNDI41mSUZmYq4tLNlNi8Y34aosISDwPTND6GWy6sGHbW1FxC+SUAjEg9hlFyYHLDzchDC
+	/8xAQKmlpfYL/csKR5QBcJpFFWNHOHbOef0FJkTn+ySIfWCO1rJbJDBLErLAiHGOgDQYGBF2x4wMl
+	k8Ho6K7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whwHd-00000003hBu-3znf;
-	Thu, 09 Jul 2026 21:27:49 +0000
+	id 1whyZZ-00000003rTT-20gl;
+	Thu, 09 Jul 2026 23:54:29 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whwHc-00000003hBd-1qr5;
-	Thu, 09 Jul 2026 21:27:48 +0000
+	id 1whyZY-00000003rTF-0Hbm;
+	Thu, 09 Jul 2026 23:54:28 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id E9B2D43C37;
-	Thu,  9 Jul 2026 21:27:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 29CC11F000E9;
-	Thu,  9 Jul 2026 21:27:47 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8BD0341269;
+	Thu,  9 Jul 2026 23:54:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B92631F000E9;
+	Thu,  9 Jul 2026 23:54:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783632467;
-	bh=K7gv7DO3sRanhSag9LvnX9LZtxm45e9XO0imyrqaXXo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=BvuWBuDz7IFj4YppCCGpHWM4n2RrTqqSFf9MnF4JteCmXladxy8roihQmpUhe3zW2
-	 3kU8DWcbn/KDobOugs7FtOq/4oq5zPpy/f7UQZXXrC1+XYC+1jHng8QLyqLj7Y7DHq
-	 taA14sTXy0s365x58bM8TLUdKUQqelteSYdhO54s9DYANJMZtw8j6OdxxyW0BH4/V5
-	 EEYaEI4nMb9BU2GqTL9+jRdM+sTja/Olu+4ViQpxNzf8zRwx3B+P2/d0XuUqO1IRNa
-	 wenYWNjnmR6XS4ww6wCOKazCY5Uc5dndlQdotWYqSkbVfg2HFhK7+GfpO3cC6r164u
-	 I8FGpqDu+VonQ==
-Date: Thu, 9 Jul 2026 16:27:44 -0500
-From: Bjorn Andersson <andersson@kernel.org>
-To: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
-Cc: Stephan Gerhold <stephan.gerhold@linaro.org>, 
-	Mathieu Poirier <mathieu.poirier@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-msm@vger.kernel.org, linux-remoteproc@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/3] remoteproc: abort subdev stop sequence on first
- failure
-Message-ID: <alAN2t2C5twxuIjd@baldur>
-References: <20260611094851.dkg63rqztsv2pre7@hu-mojha-hyd.qualcomm.com>
- <aiqF5mh1PvWpH3L5@linaro.org>
- <20260611105506.llvya5tda4xsd2lo@hu-mojha-hyd.qualcomm.com>
+	s=k20260515; t=1783641267;
+	bh=nwdYdybpiL0XEa9EfKFkDvxx2HxR0uRQFmPGoHruEz8=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=M542QeCelKml3h1uJ1XQYp8QugIw2+NHmc5YUtO2rJlhu+SKAIbICvHidvONUVA1K
+	 tbsI4a8OlL/atikHfUw6LQ5c3/Ow7MjFrcFYKs3OnJHZIUDPC7m99u49AZk/6TZ7p6
+	 wSRZg+HlmkamLa/ImDnEtj0Za9bfiFJBVJBVeqAdkhCnjW7zLZgBFS5kJ5DKcn09AP
+	 X8jqdwTP7Iy32zMtQCb2WIpSeumTRekRduA+/0uRNs5o+tLdWcZs1vGuvNVl937+Ot
+	 FAktRLc36OCabsEIBtc1xAJwitwWsXh3LorqR4o15dix145vZyFx0q7Ko8GZLheZxt
+	 K075RmpfscQcw==
+Date: Fri, 10 Jul 2026 00:54:24 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: rva333@protonmail.com, David Lechner <dlechner@baylibre.com>, Nuno
+ =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Lee Jones <lee@kernel.org>,
+ linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Ben Grisdale <bengris32@protonmail.ch>,
+ Conor Dooley <conor.dooley@microchip.com>, Andy Shevchenko
+ <andriy.shevchenko@intel.com>
+Subject: Re: [PATCH v5 0/4] AUXADC driver for the MediaTek mt6323 PMIC
+Message-ID: <20260710005424.5c559b5a@jic23-huawei>
+In-Reply-To: <f2d5801c-1d12-4a61-ac23-aa24dfd0ee5c@collabora.com>
+References: <20260709-mt6323-adc-v5-0-d11b8332a735@protonmail.com>
+	<f2d5801c-1d12-4a61-ac23-aa24dfd0ee5c@collabora.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260611105506.llvya5tda4xsd2lo@hu-mojha-hyd.qualcomm.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,78 +77,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 11, 2026 at 04:25:06PM +0530, Mukesh Ojha wrote:
-> On Thu, Jun 11, 2026 at 11:54:46AM +0200, Stephan Gerhold wrote:
-> > On Thu, Jun 11, 2026 at 03:18:51PM +0530, Mukesh Ojha wrote:
-> > > On Tue, Jun 09, 2026 at 01:43:17PM +0200, Stephan Gerhold wrote:
-> > > > On Tue, Jun 09, 2026 at 03:52:52PM +0530, Mukesh Ojha wrote:
-> > > > > If a subdevice fails to stop, it indicates broken communication with the
-> > > > > DSP. Continuing to stop further subdevices against an unresponsive
-> > > > > remote processor could close rpmsg devices that could remove the memory
-> > > > > mapping from HLOS and in case if remote processor touches those memory
-> > > > > can result in SMMU fault.
-> > > > > 
-> > > > > Change rproc_stop_subdevices() to return int and abort on the first
-> > > > > failing subdev. Propagate the error through rproc_stop() and
-> > > > > __rproc_detach() so callers are aware the teardown did not complete
-> > > > > cleanly.
-> > > > > 
-> > > > > Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
-> > > > 
-> > > > But what would callers do about this? If you abort the teardown sequence
-> > > > half-way through you now have an inconsistent half-stopped state that
-> > > > neither a new call to stop() nor a new call to start() could recover
-> > > > from. That doesn't sound much better than the SMMU fault. Or am I
-> > > > missing something here?
-> > > 
-> > > SMMU fault result in device crash while other is non-functional remote
-> > > processor. From Linux side, we do not know the state of remote processor
-> > > when the timeout happens..cleaning the subdevices can result in the
-> > > debug data being lost for hung remote processor.
-> > > 
+On Thu, 9 Jul 2026 13:33:46 +0200
+AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
+
+> On 7/9/26 12:52, Roman Vivchar via B4 Relay wrote:
+> > This series adds support for the 15-bit AUXADC hardware block found on
+> > the MediaTek mt6323 PMIC.
 > > 
-> > Ok, but how do we go from here? Do we expect that the system would have
-> > some userspace monitoring daemon that would collect the debug data and
-> > then reboot the device to make the remoteproc work again?
-> 
-> I would expect the manually collected crash dump in this state to find
-> out the exact reason for remoteproc being stuck instead of ignoring it
-> and claiming a graceful shutdown.
-> 
-
-We need to consider the scenario where there are other users running
-this code than you, and as Stephan suggest, they probably expect the
-system to recover (by some means). Few people would be expected to pull
-out their JTAG hardware and start hacking away...
-
-> Whatever we do here, the remote may be dysfunctional without a reboot,
-> but cleaning the rpmsg device will clean all the required debug data, or
-> at least if possible, tell the rpmsg driver with the rproc state that
-> shutdown was tried but was not graceful.
-> 
-
-That's certainly something we need to take into account, but does the
-use of "may be" leave room for the possibility that we have a
-recoverable error?
-
-Also remember that the user might be in the middle of an important video
-conference when the CDSP hits this error, so we don't necessarily want
-to reboot the system just because we enter such state - there's user
-policy involved here.
-
-Regards,
-Bjorn
-
+> > The previous version of the series for all AUXADC, EFUSE and thermal
+> > drivers was split after Krzysztof's comment [1].
 > > 
-> > With these changes, I don't see how you would start the remoteproc again
-> > without fully rebooting the board. Calling start()/stop() on the
-> > subdevices again would lead to crashes because some of them are in
-> > started state and some of them are in stopped state and we don't even
-> > know which one is in which state.
+> > Tested on the MediaTek mt6572 and mt8163 SoCs (Ben), both paired with a
+> > mt6323.
 > > 
-> > Thanks,
-> > Stephan
+> > [1]: https://lore.kernel.org/linux-mediatek/20260504-mt6323-v1-0-799b58b355ff@protonmail.com/T/#med30fad67a090be35f549231336b2dec295233f6
+> > 
+> > Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
+> > Signed-off-by: Roman Vivchar <rva333@protonmail.com>  
 > 
-> -- 
-> -Mukesh Ojha
+> Whole series is
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> 
+> Cheers,
+> Angelo
+
+As noted on discussion of previous version. I picked up the IIO side of things already
+so I'm assuming nothing else for me to do here.  Shout if not!
+
+Thanks,
+
+Jonathan
+
 
