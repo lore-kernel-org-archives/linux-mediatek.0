@@ -4,89 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 069D8C43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:34:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12C0DC44506
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:34:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FQ19BjVTscIH/6I5a29tXX71SIq8/u8k7Y1kfw/hDmM=; b=EMXF0asmHWdRCTjNVKoAOr2Upx
-	Ywlq1LKopoONSJ4oph2KulxHDH8AMOCKwWKcT3M9KpLNth5RIqjOIJSr6l3yDxOnZYWcvL/D1IH+a
-	sBUo1atWovVlYeyo9G7q9+bgSLu56vTyKkUk86KUxStIcCbqnbThsPnh7rNg9z8HVHxWRrEEc0mtZ
-	vmARHyOlhdpPUpcaFJM6ZPwKsX82L6Pp16JD7YA31iYhQ4qWi3lMYMRVAJ1JXgXk9XqvMdZhuluLX
-	JyX6v0OoITN1WDJKGhIbG5diobs8ZiIFUWTu5inAKNPs3e+AiK+VVI36AegyE7qER+CJ29aqw/HAT
-	YSyZoUTw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yypRmBCUWIxl+HGMvLm537bNGK8OjqXD29gbJvwfD6w=; b=rXgU/MAdU+oID04d5j5ueze/iv
+	/pX23lW5cDUhJ7KQ88z1llx3xw6Qv2l+OeWnT8dB41cbdB5yinXFk3uK6c0DIlXpBHTRMb8pKe4fd
+	wvtWHzyBIwJ11FDMHaXkZazliMEiMEM8g32RJN1tn0Vu0/RhwvkgDhTIjAlJjcLZCYlflqz1HgCDn
+	YBH7C4O0bPlvd59Dei8RqEsxBTpEMNZljTnO7Jq5Da6lu7ByMgRCY9VjguLUsCi+G8AkjBrYZFG5P
+	8+E64aydoNWkb5Ve2zibaSQJQzKNUHWmA/qdCPjGrUl6vrcKQ+2R5BH3fZ8zRnmsYL3GwmRsYWdBh
+	zZrAzPJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whm4s-00000001xEN-3laW;
-	Thu, 09 Jul 2026 10:33:58 +0000
-Received: from mgamail.intel.com ([198.175.65.11])
+	id 1whm5Z-00000001xQ3-0fXj;
+	Thu, 09 Jul 2026 10:34:41 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whm4q-00000001xDD-1MOX;
-	Thu, 09 Jul 2026 10:33:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1783593236; x=1815129236;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=bWHIEdjL2dr+L3lteYYp6oLrvxioUMyONYbfmyggoc0=;
-  b=kW9a1U1m/C2bVgO+CPTa7CX+9ssv+KkdfsmZOMCEC92GMbMsJdYMrxZq
-   oA9bBEp022XOTA9CJHQ6nhKnLF3z2697CwZ/RBwE2m+h8d6pLw956iJ8s
-   OqbAnbUr4naN1pB/KDjoI/QCNfUiMndzDusjY9T7uu6/jXxUiAfOcczgp
-   gTN3NfzRl9TH7Wu6c4VRg9vKSNiKo0C9Sywkzplz+8RaOPooYqW5izdBr
-   PRT2neIz0HaX/hloDuD8FbtS6P++dnWnK8YuMlifljg21xAjztp7z2xPx
-   i2xb+9uBS78uJeLE2JipoORy6c9lIfYZTLkIoq7O6+gf5A2iJlQlPp/9G
-   Q==;
-X-CSE-ConnectionGUID: Z8vidAmxRiGMvRLuvOxFWw==
-X-CSE-MsgGUID: hr8o+aBdS3Gg57nfdOSLfg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11841"; a="94623171"
-X-IronPort-AV: E=Sophos;i="6.25,154,1779174000"; 
-   d="scan'208";a="94623171"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jul 2026 03:33:55 -0700
-X-CSE-ConnectionGUID: oJJpjx0aQmOy2HToIrIdLA==
-X-CSE-MsgGUID: F/+fAyoiRoqqeb7dacv0kA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,154,1779174000"; 
-   d="scan'208";a="252799922"
-Received: from ettammin-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.245.235])
-  by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jul 2026 03:33:49 -0700
-Date: Thu, 9 Jul 2026 13:33:47 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Bartosz Golaszewski <brgl@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Daniel Scally <djrscally@gmail.com>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-acpi@vger.kernel.org, driver-core@lists.linux.dev,
-	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Alan Stern <stern@rowland.harvard.edu>,
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: Re: [PATCH v4 03/14] power: sequencing: Add pwrseq_power_is_on()
-Message-ID: <ak95C4HVnFn4UEo8@ashevche-desk.local>
-References: <20260709095726.704448-1-wenst@chromium.org>
- <20260709095726.704448-4-wenst@chromium.org>
+	id 1whm5V-00000001xNi-31B4;
+	Thu, 09 Jul 2026 10:34:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783593275;
+	bh=o0Yw5UvJ7mIldIg8Qe+QDn/C3b8GslyK/JoVs7xCZ6Q=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=HSNEDKBOFib8MTQf+hrPqmbH71R1tXAjNZerMBPLlnNDeivPoqXY3N/1zsQT0FE11
+	 oo/rnxOpnH1nesh3Os8UU7O9zRbgXXJ1vRfBPLFYyNMzwrVMGAURBy5pMRj88HPOdc
+	 4GzrQaEzz69MtW4vjwsnEWGBeiz6wjS75WSopU/9+EuttRbz+/97TB6KVXDr3/pfa9
+	 8Uc02k0cj8bpeCTW4G98RFvaeI12pgSiJi4Hfk53CYoYPgDJUPrTno85D4yyJw9HuO
+	 3ahPEB+qMyjXaDKSXN+sqthHJ4F4OyjDkuQvyTw+VJWzMpWOTnNdoL6k6WytoHVQ83
+	 4bHf+H9crGHzw==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E0ED517E0CDE;
+	Thu, 09 Jul 2026 12:34:34 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	jitao.shi@mediatek.com,
+	granquet@baylibre.com,
+	rex-bc.chen@mediatek.com,
+	dmitry.osipenko@collabora.com,
+	ck.hu@mediatek.com,
+	amergnat@baylibre.com,
+	justin.yeh@mediatek.com,
+	jason-jh.lin@mediatek.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com
+Subject: [PATCH v3 01/11] dt-bindings: display: mediatek: dp: Deprecate nvmem efuse data
+Date: Thu,  9 Jul 2026 12:34:21 +0200
+Message-ID: <20260709103431.46616-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260709103431.46616-1-angelogioacchino.delregno@collabora.com>
+References: <20260709103431.46616-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260709095726.704448-4-wenst@chromium.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_033356_403328_9D817810 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20260709_033437_902993_BB0B5989 
+X-CRM114-Status: UNSURE (   8.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,30 +96,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 09, 2026 at 05:57:08PM +0800, Chen-Yu Tsai wrote:
-> The power sequencing consumer API already does power on state tracking
-> internally. Expose the state to consumers through pwrseq_power_is_on()
-> so that they don't have to reimplement it locally.
+Deprecate nvmem-cells and nvmem-cell-names and clarify their
+purpose, as those are for PHY calibration data, not for the DP
+IP itself, and that data shall go in the PHY binding instead.
 
-...
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../devicetree/bindings/display/mediatek/mediatek,dp.yaml     | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-> Side question: I wonder if making the !POWER_SEQUENCING return success
-> would make developers' lives better? At least that is what the clk and
-
-"the clk... mistakenly do."
-
-> regulator consumer APIs do.
-
-When the clock is optional, that is justified, but for non-optional cases it
-makes life actually harder (see for IS_ERR_OR_NULL() checks against
-devm_clk_*() cases, which Krzysztof targets this cycle to eliminate).
-
-That said, if the pwrseq desc can be NULL and the API tolerates that,
-then it might make sense, otherwise it has to return an error.
-
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+index 8f4bd9fb560b..980f76667ada 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+@@ -30,10 +30,12 @@ properties:
+     maxItems: 1
+ 
+   nvmem-cells:
++    deprecated: true
+     maxItems: 1
+-    description: efuse data for display port calibration
++    description: efuse data for display port phy calibration
+ 
+   nvmem-cell-names:
++    deprecated: true
+     const: dp_calibration_data
+ 
+   power-domains:
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.54.0
 
 
