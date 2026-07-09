@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F260C43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 04:59:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C84EFC44501
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 05:00:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i+E/hLMGoCFm2Bo6D9s4vrTO1A3cUntDy1XLWjBr550=; b=jve2+6t+LrjtQk1bGC3Zg+9dW4
-	cmyUkmRiWSH/ruvIH+7hrmFpkalU3NzVm6pQ3pqP038+ighmgE9HrYu9i5fgtb32HKKCFL+HdriBE
-	f3UYFeOKuC5CvTTvfMyiFyDqCowTf6nDD7y7w9u5IClNlffOh5frygQUZXNs/VLYRzscZHxl5PyzB
-	ct1FWEw8Cs2XgL3ydrU17okojm6ERnRso6rjjZB6p6trczvJwbPVyLAfVl/2+oGSw9oefBoEvJBRe
-	/8D9dlLn/jE5vFJovYpdd1Oh9mIW7fPRVCBV2GqM3/RGrfqbIQpqQBjBQFiAP6EgLRHazJ6E8IET5
-	n9NkvmlA==;
+	bh=E63rONCybeKNZ9BBxLw4/pUgmeGU/hnyC6bCIs5It3Y=; b=Iu+3ZjfL7bnTX+H+0hhhINHdgS
+	Z+EyhKam6IF4HCWp1qQW7lGnGx8/xj0klhBCNes9vTQzN/GUYVtYxx7AZXPjvJqRzYGHWpZTbmCKB
+	8ItK+gq2LxcnmURn73eQToR6RneujdbZan/DpTZu3LK77nbm4DEOKIj8P0A8+hRkEJklUauvDqs3x
+	t0ke8+hypgtLyHOwVbzmcnPmgK5Zvkz7cu0EwQKO+weSM+lO/EuAYHJF0cs9YcVpdcXCcL+KL2s2r
+	cRpIF1rGFwE4WhfPutmBjTd88C2faOxstb2p8drk/0Do+/Cfdwl4PpE5cR+CnqA5Tgqd3kPaqnKEz
+	1XAgRZaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whgrZ-000000011ll-2CZq;
-	Thu, 09 Jul 2026 04:59:53 +0000
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+	id 1whgrm-000000011sZ-3W56;
+	Thu, 09 Jul 2026 05:00:06 +0000
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whgrX-000000011ko-1C6Y
+	id 1whgrj-000000011r2-1aez
 	for linux-mediatek@lists.infradead.org;
-	Thu, 09 Jul 2026 04:59:52 +0000
-Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-388b404ea89so540909a91.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 21:59:51 -0700 (PDT)
+	Thu, 09 Jul 2026 05:00:05 +0000
+Received: by mail-pj1-x102c.google.com with SMTP id 98e67ed59e1d1-38759bcd877so1155141a91.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 08 Jul 2026 22:00:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783573191; x=1784177991; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1783573202; x=1784178002; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=i+E/hLMGoCFm2Bo6D9s4vrTO1A3cUntDy1XLWjBr550=;
-        b=Z6JaaD767IYjEELwIOalaCzx7OjUR+rb0kme2w/VgOYz9cC/C/a05cUPdrx3E9ApV5
-         zIk3W//EuVJN0qry51G62ZfszRrhSTJF5dx8FWGd0l7X/wRxMdHSPu8mvy0/lvp571tv
-         y6Ji0oRysRsXJI+BrPY70ouOUlG2LhAixJYH6Hj1HR1H9qNwicD3lQ9HCmjjenpCmhe8
-         3Zmt2WsMSakLlNpzxFKzxC9b/KWKDnIMHAngMr9gC0JGdsbPzaeOZA/pgATKh2biQfhV
-         oEADWMrtHj6PstksrSxD7pVO4RuDtfRK2xABX2WLmG3yBvVuC9foF3s/QdUysUTXRpNm
-         W1CA==
+        bh=E63rONCybeKNZ9BBxLw4/pUgmeGU/hnyC6bCIs5It3Y=;
+        b=ihKmQdKcxpzjQzm/uSlnQu97tEaSyc5l+AOtL7LLCq6yBLmLZXtYlkHWQO+6YtfvK2
+         fk7wkqpheQTWK4o/WkyZsbP2XK839aGbJxTnhbUEzvk1+CjlhC1VO8TWnzYiS3jk6qc1
+         RUuJEWelE9YDUIUxwKIUOY6XbA+4JZuPV27IbXaZTDJVG+43ltj4TgB/kLBWfR/x790l
+         GP72iSPzJbrw8DPYJLKKgX8eSWOX+b+QFVbG7FxvAetaNGuaRnYnLoRt5TDDHyGBApgP
+         EfwHIRoZlQHlxOtXintSreg3zBOFZ5UQnyCr3YILye5C2cDVoiN2NxL+QtUSlcjqTw7r
+         KTeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783573191; x=1784177991;
+        d=1e100.net; s=20251104; t=1783573202; x=1784178002;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=i+E/hLMGoCFm2Bo6D9s4vrTO1A3cUntDy1XLWjBr550=;
-        b=sYLdGySVFg5W4NkHWQbpr66Pp6Bqz7tbH9nK3pCtDNImllKyKj/uK7mCPpSipzenEk
-         nHm+SJOp89WDfalgOo9PujXvSR1Qu0GRrVbywNAWTl/jZHcxqlIPrJwsLzzKoLzd6+bV
-         De4NZGnUjVjPn4Ykf1RtF62U5FYEtty18MbY/KcGLPANNC9PTH00pjL06Su9mgeDxw/B
-         D6rUzzDQHnNE1CHkq4oBdn05q2t9PWPmzBVEdSHIPwCLXfk9MXd56r9poQyMK1F03/25
-         NnFcIRtwdSUI8oe6dqLxP2yX8IW1gevxCEgeqd6W0wpU534f4KIo6SzNDSrNWFrebC+t
-         ZMjQ==
-X-Forwarded-Encrypted: i=1; AHgh+RpBUYXVkOBQcjM2e5zdHAqCwZGU+gcZ1hxETVM/LYjBhIqv8k75pt9YZCNIDdCS7GFwkHzWKFhNRevhyHhZYA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzp39Dtq5qTCUrZ00kLtLESNCnFrL3GD5F/irn9V11goITDXjqE
-	O24NUCbob1ZxvCsWLGVwUR+QC8AH7bLZw0QbrdUfEE40kt+JUrE60uiE
-X-Gm-Gg: AfdE7ckjWI8DuE9qZka5r+LrhyyF+1+tRpknqq9tdY4htnylYlx5WYGDfByzg2m0Vr6
-	XQrxQ6899kQkCEPdHrK/R7tUiDowPRpo5Efm/7ws/nrBvEsk6r9Vci2kLVuuhLbwKPCACp5AQr8
-	0x0XXZ72YKWRf1Bbbo2H2c1L/ITIuVPHOUCgm01Ii3m8G3cBZ1a5LDiCVhDco+TTEcNwI6JKLrK
-	63nhnHeqdGj+DVonhzZIhryc9xOPl/eReN5gFgqKRa5dQxyebywntgyTZGSazTpdI4Cjn06MAGp
-	dLzyPfzTCuYHsXi3rBEPHgPSipycpNqty+YbJzoy8d0LgjpjAo6xhtf1nNubEo2nZ9pqtEx9ODd
-	eaG45TY6ZbMbhrO3lStEaZ/jonHOtiI64zNjklsxk5G6Syk36TH6aULixmWkWQPTTT9MBExrBLi
-	o+Gm5Dzv2qQyk/ibPvXI1SQBOOSi6FG3Yo9S8euEA/+rUUgGk=
-X-Received: by 2002:a17:90b:274d:b0:385:39ac:fe4b with SMTP id 98e67ed59e1d1-38b75528c91mr1355508a91.17.1783573190664;
-        Wed, 08 Jul 2026 21:59:50 -0700 (PDT)
+        bh=E63rONCybeKNZ9BBxLw4/pUgmeGU/hnyC6bCIs5It3Y=;
+        b=aJMCeqS4+5L6jtEiASt9mYUWeFcdUSE+KqlnsHDzsIMIK6xpaInhHrMQftWe2/0ZkF
+         cbm36fZ4VFQB1SCFFRIeQt4GG84Qzk1MILbgW0E89us/UiYanxUJi6gy6paGN3S8GOXo
+         6Rowed8s4fwwGLAvY/ADciqVTGWxRqE9PozsVvbiqjOixAun1jG12AI3zwrvZ90MD3TQ
+         qzN6Njk5TY6nMLCQ4Rt9V10VRflyUzBL58SRlVJeS4rfks02LBKBcazdM8HDKSVYloVm
+         GOU7gzGg7Y7VMiam+ZyWfMonxgSBaA+74E9VUMzPM8di36chSi1vhSVNXa0qJRU1N5k0
+         V/hg==
+X-Forwarded-Encrypted: i=1; AHgh+Ro2flXCgUmoavO4ckdM0FvykC6s/vDniCRMyPPdNm286RnEQct52QwXtj89aLWe4IwaETCDBfEARegJNiRZSA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxXCzRJk7+SlJUzPsiB2DKPGruOeT/DJjP24/1YO5K5m6GC+9d/
+	zIDv0yk87IbE5d06i/582FIhwu0expbOSPCA3u3Lu/NKs84v5fknTco6
+X-Gm-Gg: AfdE7cm0CjGiCIF63ayEBnq02BHquUOQuoM7wuPlNB7ts1nuZjZyfmnuFb5rSWwrXfD
+	u37MuUts6J/9CeiNa25JaliTOsQ+/yVdVkvutfb2PuuT7FgBw1/M+dnh09iDPr4jDvFHujo60rF
+	Tq7oAvJsa9obV77GFcJuHs1uJ52wmk2Exc04hfpTBOusY1sI/co5qblp5/qy96hUM9OvZeXK+w2
+	cE24EtBhTcQnkyPi+U8Wz2J8tMfuvvXtVG8+U51ROEeg2NeSHaguwYLj3aAXvMnZrqqUczJcTXl
+	GunsPQV13QvdYk9N3sye+ZDxXxxvuXCxJSj20oz5gBsdmocuWD2pXdoKBZl9IU6y6V/uBW9XlVU
+	Dnzgz6MWH6hSISOhN84gudLFfvcx2F62Y6HO+tZ7MzmETyxhU9HuAPSORRa02g+3RqoMJ3rmnYz
+	sp470/jPb4cZa7ZhWxKkf6JotH8xCNMEYdvVVyYKm4SvmFUNU=
+X-Received: by 2002:a17:90b:5384:b0:387:e0bb:57fe with SMTP id 98e67ed59e1d1-389421ae15amr5296615a91.37.1783573202444;
+        Wed, 08 Jul 2026 22:00:02 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-38a5506b47esm490481a91.3.2026.07.08.21.59.43
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-38a5506b47esm490481a91.3.2026.07.08.21.59.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jul 2026 21:59:50 -0700 (PDT)
+        Wed, 08 Jul 2026 22:00:02 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>,
 	Takashi Iwai <tiwai@suse.com>,
@@ -103,17 +103,17 @@ Cc: Support Opensource <support.opensource@diasemi.com>,
 	linux-arm-msm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH v3 01/27] ASoC: codecs: da7213: Use guard() for mutex locks
-Date: Thu,  9 Jul 2026 11:58:36 +0700
-Message-ID: <20260709045902.498848-2-phucduc.bui@gmail.com>
+Subject: [PATCH v3 02/27] ASoC: codecs: da7219: Use guard() for mutex locks
+Date: Thu,  9 Jul 2026 11:58:37 +0700
+Message-ID: <20260709045902.498848-3-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260709045902.498848-1-phucduc.bui@gmail.com>
 References: <20260709045902.498848-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260708_215951_325518_7F0B6268 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20260708_220003_431531_7477D9AD 
+X-CRM114-Status: GOOD (  13.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,111 +135,174 @@ Merely code refactoring, and no behavior change.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/codecs/da7213.c | 37 ++++++++++++-------------------------
- 1 file changed, 12 insertions(+), 25 deletions(-)
+ sound/soc/codecs/da7219.c | 62 ++++++++++++---------------------------
+ 1 file changed, 19 insertions(+), 43 deletions(-)
 
-diff --git a/sound/soc/codecs/da7213.c b/sound/soc/codecs/da7213.c
-index 4bf91ab2553a..923b997efbc4 100644
---- a/sound/soc/codecs/da7213.c
-+++ b/sound/soc/codecs/da7213.c
-@@ -11,6 +11,7 @@
+diff --git a/sound/soc/codecs/da7219.c b/sound/soc/codecs/da7219.c
+index f0874d891e12..f6d371e93549 100644
+--- a/sound/soc/codecs/da7219.c
++++ b/sound/soc/codecs/da7219.c
+@@ -8,6 +8,7 @@
+  */
+ 
  #include <linux/acpi.h>
- #include <linux/of.h>
- #include <linux/property.h>
 +#include <linux/cleanup.h>
  #include <linux/clk.h>
- #include <linux/delay.h>
- #include <linux/i2c.h>
-@@ -216,13 +217,10 @@ static int da7213_volsw_locked_get(struct snd_kcontrol *kcontrol,
+ #include <linux/clkdev.h>
+ #include <linux/clk-provider.h>
+@@ -256,13 +257,10 @@ static int da7219_volsw_locked_get(struct snd_kcontrol *kcontrol,
  {
  	struct snd_soc_component *component = snd_kcontrol_chip(kcontrol);
- 	struct da7213_priv *da7213 = snd_soc_component_get_drvdata(component);
+ 	struct da7219_priv *da7219 = snd_soc_component_get_drvdata(component);
 -	int ret;
  
--	mutex_lock(&da7213->ctrl_lock);
+-	mutex_lock(&da7219->ctrl_lock);
 -	ret = snd_soc_get_volsw(kcontrol, ucontrol);
--	mutex_unlock(&da7213->ctrl_lock);
-+	guard(mutex)(&da7213->ctrl_lock);
+-	mutex_unlock(&da7219->ctrl_lock);
++	guard(mutex)(&da7219->ctrl_lock);
  
 -	return ret;
 +	return snd_soc_get_volsw(kcontrol, ucontrol);
  }
  
- static int da7213_volsw_locked_put(struct snd_kcontrol *kcontrol,
-@@ -230,13 +228,10 @@ static int da7213_volsw_locked_put(struct snd_kcontrol *kcontrol,
+ static int da7219_volsw_locked_put(struct snd_kcontrol *kcontrol,
+@@ -270,13 +268,10 @@ static int da7219_volsw_locked_put(struct snd_kcontrol *kcontrol,
  {
  	struct snd_soc_component *component = snd_kcontrol_chip(kcontrol);
- 	struct da7213_priv *da7213 = snd_soc_component_get_drvdata(component);
+ 	struct da7219_priv *da7219 = snd_soc_component_get_drvdata(component);
 -	int ret;
  
--	mutex_lock(&da7213->ctrl_lock);
+-	mutex_lock(&da7219->ctrl_lock);
 -	ret = snd_soc_put_volsw(kcontrol, ucontrol);
--	mutex_unlock(&da7213->ctrl_lock);
-+	guard(mutex)(&da7213->ctrl_lock);
+-	mutex_unlock(&da7219->ctrl_lock);
++	guard(mutex)(&da7219->ctrl_lock);
  
 -	return ret;
 +	return snd_soc_put_volsw(kcontrol, ucontrol);
  }
  
- static int da7213_enum_locked_get(struct snd_kcontrol *kcontrol,
-@@ -244,13 +239,10 @@ static int da7213_enum_locked_get(struct snd_kcontrol *kcontrol,
+ static int da7219_enum_locked_get(struct snd_kcontrol *kcontrol,
+@@ -284,13 +279,10 @@ static int da7219_enum_locked_get(struct snd_kcontrol *kcontrol,
  {
  	struct snd_soc_component *component = snd_kcontrol_chip(kcontrol);
- 	struct da7213_priv *da7213 = snd_soc_component_get_drvdata(component);
+ 	struct da7219_priv *da7219 = snd_soc_component_get_drvdata(component);
 -	int ret;
  
--	mutex_lock(&da7213->ctrl_lock);
+-	mutex_lock(&da7219->ctrl_lock);
 -	ret = snd_soc_get_enum_double(kcontrol, ucontrol);
--	mutex_unlock(&da7213->ctrl_lock);
-+	guard(mutex)(&da7213->ctrl_lock);
+-	mutex_unlock(&da7219->ctrl_lock);
++	guard(mutex)(&da7219->ctrl_lock);
  
 -	return ret;
 +	return snd_soc_get_enum_double(kcontrol, ucontrol);
  }
  
- static int da7213_enum_locked_put(struct snd_kcontrol *kcontrol,
-@@ -258,13 +250,10 @@ static int da7213_enum_locked_put(struct snd_kcontrol *kcontrol,
+ static int da7219_enum_locked_put(struct snd_kcontrol *kcontrol,
+@@ -298,13 +290,10 @@ static int da7219_enum_locked_put(struct snd_kcontrol *kcontrol,
  {
  	struct snd_soc_component *component = snd_kcontrol_chip(kcontrol);
- 	struct da7213_priv *da7213 = snd_soc_component_get_drvdata(component);
+ 	struct da7219_priv *da7219 = snd_soc_component_get_drvdata(component);
 -	int ret;
  
--	mutex_lock(&da7213->ctrl_lock);
+-	mutex_lock(&da7219->ctrl_lock);
 -	ret = snd_soc_put_enum_double(kcontrol, ucontrol);
--	mutex_unlock(&da7213->ctrl_lock);
-+	guard(mutex)(&da7213->ctrl_lock);
+-	mutex_unlock(&da7219->ctrl_lock);
++	guard(mutex)(&da7219->ctrl_lock);
  
 -	return ret;
 +	return snd_soc_put_enum_double(kcontrol, ucontrol);
  }
  
  /* ALC */
-@@ -465,9 +454,8 @@ static int da7213_tonegen_freq_get(struct snd_kcontrol *kcontrol,
+@@ -422,9 +411,8 @@ static int da7219_tonegen_freq_get(struct snd_kcontrol *kcontrol,
  	__le16 val;
  	int ret;
  
--	mutex_lock(&da7213->ctrl_lock);
--	ret = regmap_raw_read(da7213->regmap, reg, &val, sizeof(val));
--	mutex_unlock(&da7213->ctrl_lock);
-+	scoped_guard(mutex, &da7213->ctrl_lock)
-+		ret = regmap_raw_read(da7213->regmap, reg, &val, sizeof(val));
+-	mutex_lock(&da7219->ctrl_lock);
+-	ret = regmap_raw_read(da7219->regmap, reg, &val, sizeof(val));
+-	mutex_unlock(&da7219->ctrl_lock);
++	scoped_guard(mutex, &da7219->ctrl_lock)
++		ret = regmap_raw_read(da7219->regmap, reg, &val, sizeof(val));
  
  	if (ret)
  		return ret;
-@@ -499,12 +487,11 @@ static int da7213_tonegen_freq_put(struct snd_kcontrol *kcontrol,
+@@ -456,12 +444,11 @@ static int da7219_tonegen_freq_put(struct snd_kcontrol *kcontrol,
  	 */
  	val_new = cpu_to_le16(ucontrol->value.integer.value[0]);
  
--	mutex_lock(&da7213->ctrl_lock);
-+	guard(mutex)(&da7213->ctrl_lock);
- 	ret = regmap_raw_read(da7213->regmap, reg, &val_old, sizeof(val_old));
+-	mutex_lock(&da7219->ctrl_lock);
++	guard(mutex)(&da7219->ctrl_lock);
+ 	ret = regmap_raw_read(da7219->regmap, reg, &val_old, sizeof(val_old));
  	if (ret == 0 && (val_old != val_new))
- 		ret = regmap_raw_write(da7213->regmap, reg,
- 				&val_new, sizeof(val_new));
--	mutex_unlock(&da7213->ctrl_lock);
+ 		ret = regmap_raw_write(da7219->regmap, reg,
+-				&val_new, sizeof(val_new));
+-	mutex_unlock(&da7219->ctrl_lock);
++				       &val_new, sizeof(val_new));
  
  	if (ret < 0)
  		return ret;
+@@ -1167,15 +1154,12 @@ static int da7219_set_dai_sysclk(struct snd_soc_dai *codec_dai,
+ 	struct da7219_priv *da7219 = snd_soc_component_get_drvdata(component);
+ 	int ret = 0;
+ 
+-	mutex_lock(&da7219->pll_lock);
++	guard(mutex)(&da7219->pll_lock);
+ 
+-	if ((da7219->clk_src == clk_id) && (da7219->mclk_rate == freq)) {
+-		mutex_unlock(&da7219->pll_lock);
++	if (da7219->clk_src == clk_id && da7219->mclk_rate == freq)
+ 		return 0;
+-	}
+ 
+-	if ((freq < 2000000) || (freq > 54000000)) {
+-		mutex_unlock(&da7219->pll_lock);
++	if (freq < 2000000 || freq > 54000000) {
+ 		dev_err(codec_dai->dev, "Unsupported MCLK value %d\n",
+ 			freq);
+ 		return -EINVAL;
+@@ -1193,7 +1177,6 @@ static int da7219_set_dai_sysclk(struct snd_soc_dai *codec_dai,
+ 		break;
+ 	default:
+ 		dev_err(codec_dai->dev, "Unknown clock source %d\n", clk_id);
+-		mutex_unlock(&da7219->pll_lock);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -1203,17 +1186,13 @@ static int da7219_set_dai_sysclk(struct snd_soc_dai *codec_dai,
+ 		freq = clk_round_rate(da7219->mclk, freq);
+ 		ret = clk_set_rate(da7219->mclk, freq);
+ 		if (ret) {
+-			dev_err(codec_dai->dev, "Failed to set clock rate %d\n",
+-				freq);
+-			mutex_unlock(&da7219->pll_lock);
++			dev_err(codec_dai->dev, "Failed to set clock rate %d\n", freq);
+ 			return ret;
+ 		}
+ 	}
+ 
+ 	da7219->mclk_rate = freq;
+ 
+-	mutex_unlock(&da7219->pll_lock);
+-
+ 	return 0;
+ }
+ 
+@@ -1296,13 +1275,10 @@ static int da7219_set_dai_pll(struct snd_soc_dai *codec_dai, int pll_id,
+ {
+ 	struct snd_soc_component *component = codec_dai->component;
+ 	struct da7219_priv *da7219 = snd_soc_component_get_drvdata(component);
+-	int ret;
+ 
+-	mutex_lock(&da7219->pll_lock);
+-	ret = da7219_set_pll(component, source, fout);
+-	mutex_unlock(&da7219->pll_lock);
++	guard(mutex)(&da7219->pll_lock);
+ 
+-	return ret;
++	return da7219_set_pll(component, source, fout);
+ }
+ 
+ static int da7219_set_dai_fmt(struct snd_soc_dai *codec_dai, unsigned int fmt)
 -- 
 2.43.0
 
