@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 654C1C44508
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DDE2C44501
 	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 08:54:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,43 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q/DG8KIAeUkzlzv0I48p4NzVcmjN2QskW0xfgY76fHY=; b=OgiJ8SOAG1UGd3JTkNF1Q903Q7
-	JKC1golMdApDPnyUk0AqgHHgQ1VJjdaBk12x4dB2gKMr4Fs+RXizSVh1gKaMm+G0KG5OCEONFzdQa
-	uIaKJKW9qPfYxlOtiVlaNLajHesYoMXkZIn3AInsowY1umcf3D3dPw1U1sGkCwi2BZkXmg6BoJ/r4
-	uuHmKLzEud0phY2DKb4ZBwsQd1mnb0CHsqKl8nphT2Rffs+eGtcAQHtSIU6qKugRjzVQoVkjkQOZY
-	9bU7Mr7jIEC36Kp1LJ+uBRM3W0Os3QERJlxJf+3tOhjPRwCOUsPdqume1H2nma+XN6iwbaZxhuXI1
-	aB/tovag==;
+	bh=vMBVFDSljvSf4iCDRlBQTGvBtWXGxxkV5RPlQKApDWM=; b=DBzyaWk2GzLpZDpwkZ9TDG0jJT
+	FB01mvK918vE/bLZZNLDGfwi/ht+CIqsWA6wWtzSZngIxlZKpApQMcpY3sftvvGkTDHN2857qzhVC
+	4wA/Yz9JvUpcCXuPYXNbhfeNjB0HcEP1hU+n3Ge6k/b3zVsnDApq98Pm6V9/l1V0GIacl1AA100AZ
+	orkjPtN/1FhHFsfX9Q/XeUn93eEbP3GEzZ9R+CEpdRZl5BTSXTg86zlLXcF6DqJsCWNnb2LXMZurS
+	3yBD+90qDpeduAtxtu/SRJvDGt0ZmYhyKtrZ717leb1LjEkcxQF9DGqRH2pcVJeyt+PB8XjhLqIvV
+	umJfyk3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkWv-00000001efH-20Tv;
-	Thu, 09 Jul 2026 08:54:49 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1whkWw-00000001ehE-14cX;
+	Thu, 09 Jul 2026 08:54:50 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkUu-00000001aUe-3Uz6;
-	Thu, 09 Jul 2026 08:52:44 +0000
+	id 1whkUw-00000001aUs-3fwv;
+	Thu, 09 Jul 2026 08:52:46 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 29F1A6001A;
-	Thu,  9 Jul 2026 08:52:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B91E1F000E9;
-	Thu,  9 Jul 2026 08:52:43 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 71EE443F85;
+	Thu,  9 Jul 2026 08:52:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D452F1F00A3D;
+	Thu,  9 Jul 2026 08:52:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783587163;
-	bh=Q/DG8KIAeUkzlzv0I48p4NzVcmjN2QskW0xfgY76fHY=;
+	s=k20260515; t=1783587166;
+	bh=vMBVFDSljvSf4iCDRlBQTGvBtWXGxxkV5RPlQKApDWM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=RpfCK4WaeMdzmuVEBy6PIbGgNMnGqE9/KNF+OEz3XwSqWTJ+gPpun3gJ90W0pqonb
-	 sVqNpy+IIExgvagd921nDvghZur5qEbE1ZwcvywkpKSWIx8f6NHjZICjEzfXr1+ddq
-	 Dk9eT3LtMy9/vnb/gtA41ZUBO9jVagAASjiE85+Es21Vmk6fPaAIkiHK5V6cKrbq/G
-	 bZyKh/5wGjASgsz8ogLXKPO9jEHRx34VECLC7y4H4kTYmLe3HB8Z06HJ7FY1EGmCJj
-	 xCJOzXg2jtSXM3CB8nupPqBo3Mxjry5gkxU3ECH77siBixPB383WL7YYA0Vk7kVoy1
-	 d9/C/m5LoFsxA==
+	b=S0XP92IXyNjbyhVM7iPqEpJXW19G71PWW8a19Z/YchM55XF6VDr5MM+tBRIGnnPNL
+	 x6dKFYVXDll15LcaukTfJA5iHo5OnOLR3iaBzP5bspflciiIW79LwFPS+dTdcCVLVl
+	 htRiGX79MW7BNGxcQTro5g9CmngTwV3UraNgKTRl8vbd3yKt2omoF2ymo5vAnA6clX
+	 +mukWhOBOO+GSakD8Xp6imfaFY3Mdq/HDwe1X8090OVN0G6hmCSpYSuJsKH6m0HxIn
+	 v3Qi8fqOPuWwRbycNdmNuAwtptSpD1CxJHT4dVdniIHHDhP2IGaEippnQhjFLdNtfH
+	 KEYbINk4z1Ccg==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 09 Jul 2026 10:52:12 +0200
-Subject: [PATCH nf-next v5 5/6] net: netfilter: add SIT tunnel flowtable
- acceleration
+Date: Thu, 09 Jul 2026 10:52:13 +0200
+Subject: [PATCH nf-next v5 6/6] selftests: netfilter: nft_flowtable.sh: add
+ SIT flowtable selftest
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260709-b4-flowtable-sw-accel-ip6ip-v5-5-828ceaf85bab@kernel.org>
+Message-Id: <20260709-b4-flowtable-sw-accel-ip6ip-v5-6-828ceaf85bab@kernel.org>
 References: <20260709-b4-flowtable-sw-accel-ip6ip-v5-0-828ceaf85bab@kernel.org>
 In-Reply-To: <20260709-b4-flowtable-sw-accel-ip6ip-v5-0-828ceaf85bab@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -79,485 +79,125 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce sw flowtable acceleration for the TX/RX paths of
-SIT tunnels, relying on the netfilter flowtable infrastructure.
-The feature can be tested with a forwarding scenario between two
-NICs (eth0 and eth1), where a SIT tunnel is used to reach a remote
-site via eth1 as the underlay device:
-
-    ETH0 -- TUN0 <==> ETH1 -- [IP network] -- TUN1 (192.168.2.2)
-
-[IP configuration]
-
-6: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
-    link/ether 00:00:22:33:11:55 brd ff:ff:ff:ff:ff:ff
-    inet6 2001:db8:1::2/64 scope global nodad
-       valid_lft forever preferred_lft forever
-7: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
-    link/ether 00:11:22:33:11:55 brd ff:ff:ff:ff:ff:ff
-    inet 192.168.2.1/24 scope global eth1
-       valid_lft forever preferred_lft forever
-8: tun0@NONE: <POINTOPOINT,NOARP,UP,LOWER_UP> mtu 1480 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/sit 192.168.2.1 peer 192.168.2.2
-    inet6 2001:db8:200::1/64 scope global nodad
-       valid_lft forever preferred_lft forever
-
-$ ip route show
-192.168.2.0/24 dev eth1 proto kernel scope link src 192.168.2.1
-
-$ ip -6 route show
-2001:db8:1::/64 dev eth0 proto kernel metric 256 pref medium
-2001:db8:200::/64 dev tun0 proto kernel metric 256 pref medium
-default via 2001:db8:200::2 dev tun0 metric 1024 pref medium
-
-$ nft list ruleset
-table inet filter {
-    flowtable ft {
-        hook ingress priority filter
-        devices = { eth0, eth1 }
-    }
-
-    chain forward {
-        type filter hook forward priority filter; policy accept;
-        meta l4proto { tcp, udp } flow add @ft
-    }
-}
-
-When reproducing this scenario using veth interfaces, the following
-results were observed:
-
-- TCP stream received from SIT tunnel:
-  - net-next (baseline):                ~118 Gbps
-  - net-next + SIT flowtable support: ~148 Gbps
-
-- TCP stream transmitted to SIT tunnel:
-  - net-next (baseline):                ~131 Gbps
-  - net-next + SIT flowtable support: ~147 Gbps
+Similar to IPIP, IP6IP6 and IPv4 over IPv6, introduce specific selftest
+for SIT flowtable sw acceleration in nft_flowtable.sh
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- net/ipv6/sit.c                   |  51 +++++++
- net/netfilter/nf_flow_table_ip.c | 280 ++++++++++++++++++++++-----------------
- 2 files changed, 206 insertions(+), 125 deletions(-)
+ tools/testing/selftests/net/netfilter/config       |  1 +
+ .../selftests/net/netfilter/nft_flowtable.sh       | 45 ++++++++++++++++++++++
+ 2 files changed, 46 insertions(+)
 
-diff --git a/net/ipv6/sit.c b/net/ipv6/sit.c
-index a38b24fb8384..ead327c32df2 100644
---- a/net/ipv6/sit.c
-+++ b/net/ipv6/sit.c
-@@ -1365,6 +1365,56 @@ ipip6_tunnel_ctl(struct net_device *dev, struct ip_tunnel_parm_kern *p,
- 	}
- }
+diff --git a/tools/testing/selftests/net/netfilter/config b/tools/testing/selftests/net/netfilter/config
+index c3c121b6f300..a212b9edbcd9 100644
+--- a/tools/testing/selftests/net/netfilter/config
++++ b/tools/testing/selftests/net/netfilter/config
+@@ -35,6 +35,7 @@ CONFIG_IP_SCTP=m
+ CONFIG_IPV6=y
+ CONFIG_IPV6_MULTIPLE_TABLES=y
+ CONFIG_IPV6_TUNNEL=m
++CONFIG_IPV6_SIT=m
+ CONFIG_IP_VS=m
+ CONFIG_IP_VS_PROTO_TCP=y
+ CONFIG_IP_VS_RR=m
+diff --git a/tools/testing/selftests/net/netfilter/nft_flowtable.sh b/tools/testing/selftests/net/netfilter/nft_flowtable.sh
+index b14c80c6e372..46bd080108be 100755
+--- a/tools/testing/selftests/net/netfilter/nft_flowtable.sh
++++ b/tools/testing/selftests/net/netfilter/nft_flowtable.sh
+@@ -597,6 +597,10 @@ ip -net "$nsr1" addr add 192.168.210.1/24 dev tun6
+ ip -net "$nsr1" addr add fee1:3::1/64 dev tun6 nodad
+ ip netns exec "$nsr1" sysctl net.ipv4.conf.tun6.forwarding=1 > /dev/null
  
-+static int ipip6_tunnel_fill_forward_path(struct net_device_path_ctx *ctx,
-+					  struct net_device_path *path)
-+{
-+	struct ip_tunnel *tunnel = netdev_priv(ctx->dev);
-+	const struct iphdr *tiph = &tunnel->parms.iph;
-+	struct rtable *rt;
++ip -net "$nsr1" link add name sit1 type sit local 192.168.10.1 remote 192.168.10.2 ttl 255
++ip -net "$nsr1" link set sit1 up
++ip -net "$nsr1" addr add fe01:3::1/64 dev sit1 nodad
 +
-+	/* NBMA tunnels (ISATAP, 6to4, 6rd) resolve the outer destination
-+	 * per-packet from the inner IPv6 address; not offloadable.
-+	 */
-+	if (!tiph->daddr)
-+		return -EOPNOTSUPP;
-+
-+	/* FOU/GUE encapsulation is handled in the slow path by
-+	 * ip_tunnel_encap(); the fast path only pushes a plain
-+	 * IPv4 header and would skip the UDP encapsulation.
-+	 */
-+	if (tunnel->encap.type != TUNNEL_ENCAP_NONE)
-+		return -EOPNOTSUPP;
-+
-+	rt = ip_route_output(dev_net(ctx->dev), tiph->daddr, tiph->saddr,
-+			     inet_dsfield_to_dscp(tiph->tos),
-+			     tunnel->parms.link, RT_SCOPE_UNIVERSE);
-+	if (IS_ERR(rt))
-+		return PTR_ERR(rt);
-+
-+	path->type = DEV_PATH_TUN;
-+	path->tun.src_v4.s_addr = tiph->saddr;
-+	path->tun.dst_v4.s_addr = tiph->daddr;
-+	path->tun.encap_proto = AF_INET;
-+	path->dev = ctx->dev;
-+
-+	switch (ctx->ether_type) {
-+	case cpu_to_be16(ETH_P_IP):
-+		path->tun.l3_proto = IPPROTO_IPIP;
-+		break;
-+	case cpu_to_be16(ETH_P_IPV6):
-+		path->tun.l3_proto = IPPROTO_IPV6;
-+		break;
-+	default:
-+		ip_rt_put(rt);
-+		return -EOPNOTSUPP;
-+	}
-+
-+	ctx->dev = rt->dst.dev;
-+	ip_rt_put(rt);
-+
-+	return 0;
-+}
-+
- static int
- ipip6_tunnel_siocdevprivate(struct net_device *dev, struct ifreq *ifr,
- 			    void __user *data, int cmd)
-@@ -1401,6 +1451,7 @@ static const struct net_device_ops ipip6_netdev_ops = {
- 	.ndo_siocdevprivate = ipip6_tunnel_siocdevprivate,
- 	.ndo_get_iflink = ip_tunnel_get_iflink,
- 	.ndo_tunnel_ctl = ipip6_tunnel_ctl,
-+	.ndo_fill_forward_path = ipip6_tunnel_fill_forward_path,
- };
+ ip -net "$nsr2" link add name tun0 type ipip local 192.168.10.2 remote 192.168.10.1
+ ip -net "$nsr2" link set tun0 up
+ ip -net "$nsr2" addr add 192.168.100.2/24 dev tun0
+@@ -608,6 +612,10 @@ ip -net "$nsr2" addr add 192.168.210.2/24 dev tun6
+ ip -net "$nsr2" addr add fee1:3::2/64 dev tun6 nodad
+ ip netns exec "$nsr2" sysctl net.ipv4.conf.tun6.forwarding=1 > /dev/null
  
- static void ipip6_dev_free(struct net_device *dev)
-diff --git a/net/netfilter/nf_flow_table_ip.c b/net/netfilter/nf_flow_table_ip.c
-index 26a50e92459d..449818dcef3c 100644
---- a/net/netfilter/nf_flow_table_ip.c
-+++ b/net/netfilter/nf_flow_table_ip.c
-@@ -338,7 +338,7 @@ static bool nf_flow_ip4_tunnel_proto(struct nf_flowtable_ctx *ctx,
- 	if (iph->ttl <= 1)
- 		return false;
++ip -net "$nsr2" link add name sit1 type sit local 192.168.10.2 remote 192.168.10.1 ttl 255
++ip -net "$nsr2" link set sit1 up
++ip -net "$nsr2" addr add fe01:3::2/64 dev sit1 nodad
++
+ ip -net "$nsr1" route change default via 192.168.100.2
+ ip -net "$nsr2" route change default via 192.168.100.1
  
--	if (iph->protocol == IPPROTO_IPIP) {
-+	if (iph->protocol == IPPROTO_IPIP || iph->protocol == IPPROTO_IPV6) {
- 		ctx->tun.proto = iph->protocol;
- 		ctx->tun.hdr_size = size;
- 		ctx->offset += ctx->tun.hdr_size;
-@@ -464,21 +464,6 @@ static void nf_flow_encap_pop(struct nf_flowtable_ctx *ctx,
- 		nf_flow_ip_tunnel_pop(ctx, skb);
- }
+@@ -622,6 +630,7 @@ ip -6 -net "$ns2" route add default via dead:2::1
  
--static struct flow_offload_tuple_rhash *
--nf_flow_offload_lookup(struct nf_flowtable_ctx *ctx,
--		       struct nf_flowtable *flow_table, struct sk_buff *skb)
--{
--	struct flow_offload_tuple tuple = {};
--
--	if (!nf_flow_skb_encap_protocol(ctx, skb, htons(ETH_P_IP)))
--		return NULL;
--
--	if (nf_flow_tuple_ip(ctx, skb, &tuple) < 0)
--		return NULL;
--
--	return flow_offload_lookup(flow_table, &tuple);
--}
--
- static int nf_flow_offload_forward(struct nf_flowtable_ctx *ctx,
- 				   struct nf_flowtable *flow_table,
- 				   struct flow_offload_tuple_rhash *tuplehash,
-@@ -602,23 +587,37 @@ static int nf_flow_pppoe_push(struct sk_buff *skb, u16 id,
- 	return 0;
- }
+ ip netns exec "$nsr1" nft -a insert rule inet filter forward 'meta oif tun0 accept'
+ ip netns exec "$nsr1" nft -a insert rule inet filter forward 'meta oif tun6 accept'
++ip netns exec "$nsr1" nft -a insert rule inet filter forward 'meta oif sit1 accept'
+ ip netns exec "$nsr1" nft -a insert rule inet filter forward \
+ 	'meta oif "veth0" tcp sport 12345 ct mark set 1 flow add @f1 counter name routed_repl accept'
  
--static int nf_flow_tunnel_ipip_push(struct net *net, struct sk_buff *skb,
--				    struct flow_offload_tuple *tuple,
--				    __be32 *ip_daddr)
-+static int nf_flow_tunnel_ip_push(struct net *net, struct sk_buff *skb,
-+				  struct flow_offload_tuple *tuple,
-+				  __be32 *ip_daddr)
- {
--	struct iphdr *iph = (struct iphdr *)skb_network_header(skb);
- 	struct rtable *rt = dst_rtable(tuple->dst_cache);
--	u8 tos = iph->tos, ttl = iph->ttl;
--	__be16 frag_off = iph->frag_off;
--	u32 headroom = sizeof(*iph);
-+	__be16 frag_off = 0;
-+	struct iphdr *iph;
-+	u8 tos = 0, ttl;
-+	u32 headroom;
- 	int err;
+@@ -648,6 +657,19 @@ if ! test_tcp_forwarding_nat "$ns1" "$ns2" 1 "IP4IP6 tunnel"; then
+ 	ret=1
+ fi
  
-+	if (tuple->tun.l3_proto == IPPROTO_IPV6) {
-+		struct ipv6hdr *ip6h;
++ip -6 -net "$nsr1" route delete default
++ip -6 -net "$nsr1" route add default via fe01:3::2
++ip -6 -net "$nsr2" route delete default
++ip -6 -net "$nsr2" route add default via fe01:3::1
 +
-+		ip6h = (struct ipv6hdr *)skb_network_header(skb);
-+		tos = ipv6_get_dsfield(ip6h);
-+		ttl = ip6h->hop_limit;
-+	} else {
-+		iph = (struct iphdr *)skb_network_header(skb);
-+		frag_off = iph->frag_off;
-+		tos = iph->tos;
-+		ttl = iph->ttl;
-+	}
++if test_tcp_forwarding "$ns1" "$ns2" 1 6 "[dead:2::99]" 12345; then
++	echo "PASS: flow offload for ns1/ns2 SIT tunnel"
++else
++	echo "FAIL: flow offload for ns1/ns2 with SIT tunnel" 1>&2
++	ip netns exec "$nsr1" nft list ruleset
++	ret=1
++fi
 +
- 	err = iptunnel_handle_offloads(skb, SKB_GSO_IPXIP4);
- 	if (err)
- 		return err;
+ # Create vlan tagged devices for IPIP traffic.
+ ip -net "$nsr1" link add link veth1 name veth1.10 type vlan id 10
+ ip -net "$nsr1" link set veth1.10 up
+@@ -672,6 +694,11 @@ ip -6 -net "$nsr1" route delete default
+ ip -6 -net "$nsr1" route add default via fee1:5::2
+ ip netns exec "$nsr1" nft -a insert rule inet filter forward 'meta oif tun6.10 accept'
  
--	skb_set_inner_ipproto(skb, IPPROTO_IPIP);
--	headroom += LL_RESERVED_SPACE(rt->dst.dev) + rt->dst.header_len;
-+	skb_set_inner_ipproto(skb, tuple->tun.l3_proto);
-+	headroom = sizeof(*iph) + LL_RESERVED_SPACE(rt->dst.dev) +
-+		   rt->dst.header_len;
- 	err = skb_cow_head(skb, headroom);
- 	if (err)
- 		return err;
-@@ -716,7 +715,7 @@ static int nf_flow_tunnel_push(struct net *net, struct sk_buff *skb,
- {
- 	switch (tuple->tun.encap_proto) {
- 	case AF_INET:
--		return nf_flow_tunnel_ipip_push(net, skb, tuple, ip_daddr);
-+		return nf_flow_tunnel_ip_push(net, skb, tuple, ip_daddr);
- 	case AF_INET6:
- 		return nf_flow_tunnel_ip6_push(net, skb, tuple, ip6_daddr);
- 	default:
-@@ -821,104 +820,6 @@ static unsigned int nf_flow_queue_xmit(struct net *net, struct sk_buff *skb,
- 	return NF_STOLEN;
- }
++ip -net "$nsr1" link add name sit1.10 type sit local 192.168.20.1 remote 192.168.20.2 ttl 255
++ip -net "$nsr1" link set sit1.10 up
++ip -net "$nsr1" addr add fe01:5::1/64 dev sit1.10 nodad
++ip netns exec "$nsr1" nft -a insert rule inet filter forward 'meta oif sit1.10 accept'
++
+ ip -net "$nsr2" link add link veth0 name veth0.10 type vlan id 10
+ ip -net "$nsr2" link set veth0.10 up
+ ip -net "$nsr2" addr add 192.168.20.2/24 dev veth0.10
+@@ -689,6 +716,11 @@ ip -net "$nsr2" link set tun6.10 up
+ ip -net "$nsr2" addr add 192.168.220.2/24 dev tun6.10
+ ip -net "$nsr2" addr add fee1:5::2/64 dev tun6.10 nodad
+ ip netns exec "$nsr2" sysctl net.ipv4.conf.tun6/10.forwarding=1 > /dev/null
++
++ip -net "$nsr2" link add name sit1.10 type sit local 192.168.20.2 remote 192.168.20.1 ttl 255
++ip -net "$nsr2" link set sit1.10 up
++ip -net "$nsr2" addr add fe01:5::2/64 dev sit1.10 nodad
++
+ ip -6 -net "$nsr2" route delete default
+ ip -6 -net "$nsr2" route add default via fee1:5::1
  
--unsigned int
--nf_flow_offload_ip_hook(void *priv, struct sk_buff *skb,
--			const struct nf_hook_state *state)
--{
--	struct flow_offload_tuple_rhash *tuplehash;
--	struct nf_flowtable *flow_table = priv;
--	struct flow_offload_tuple *other_tuple;
--	enum flow_offload_tuple_dir dir;
--	struct nf_flowtable_ctx ctx = {
--		.in	= state->in,
--	};
--	struct nf_flow_xmit xmit = {};
--	struct in6_addr *ip6_daddr;
--	struct flow_offload *flow;
--	struct neighbour *neigh;
--	struct rtable *rt;
--	__be32 ip_daddr;
--	int ret;
--
--	tuplehash = nf_flow_offload_lookup(&ctx, flow_table, skb);
--	if (!tuplehash)
--		return NF_ACCEPT;
--
--	ret = nf_flow_offload_forward(&ctx, flow_table, tuplehash, skb);
--	if (ret < 0)
--		return NF_DROP;
--	else if (ret == 0)
--		return NF_ACCEPT;
--
--	if (unlikely(tuplehash->tuple.xmit_type == FLOW_OFFLOAD_XMIT_XFRM)) {
--		rt = dst_rtable(tuplehash->tuple.dst_cache);
--		memset(skb->cb, 0, sizeof(struct inet_skb_parm));
--		IPCB(skb)->iif = skb->dev->ifindex;
--		IPCB(skb)->flags = IPSKB_FORWARDED;
--		return nf_flow_xmit_xfrm(skb, state, &rt->dst);
--	}
--
--	dir = tuplehash->tuple.dir;
--	flow = container_of(tuplehash, struct flow_offload, tuplehash[dir]);
--	other_tuple = &flow->tuplehash[!dir].tuple;
--	ip_daddr = other_tuple->src_v4.s_addr;
--	ip6_daddr = &other_tuple->src_v6;
--
--	if (nf_flow_tunnel_push(state->net, skb, other_tuple, &ip_daddr,
--				&ip6_daddr) < 0)
--		return NF_DROP;
--
--	switch (tuplehash->tuple.xmit_type) {
--	case FLOW_OFFLOAD_XMIT_NEIGH: {
--		struct dst_entry *dst;
--
--		xmit.outdev = dev_get_by_index_rcu(state->net, tuplehash->tuple.ifidx);
--		if (!xmit.outdev) {
--			flow_offload_teardown(flow);
--			return NF_DROP;
--		}
--		if (other_tuple->tun.encap_proto == AF_INET6 ||
--		    ctx.tun.proto == IPPROTO_IPV6) {
--			struct rt6_info *rt6;
--
--			rt6 = dst_rt6_info(tuplehash->tuple.dst_cache);
--			neigh = ip_neigh_gw6(rt6->dst.dev,
--					     rt6_nexthop(rt6, ip6_daddr));
--			dst = &rt6->dst;
--		} else {
--			rt = dst_rtable(tuplehash->tuple.dst_cache);
--			neigh = ip_neigh_gw4(rt->dst.dev,
--					     rt_nexthop(rt, ip_daddr));
--			dst = &rt->dst;
--		}
--		if (IS_ERR(neigh)) {
--			flow_offload_teardown(flow);
--			return NF_DROP;
--		}
--		xmit.dest = neigh->ha;
--		skb_dst_set_noref(skb, dst);
--		break;
--	}
--	case FLOW_OFFLOAD_XMIT_DIRECT:
--		xmit.outdev = dev_get_by_index_rcu(state->net, tuplehash->tuple.out.ifidx);
--		if (!xmit.outdev) {
--			flow_offload_teardown(flow);
--			return NF_DROP;
--		}
--		xmit.dest = tuplehash->tuple.out.h_dest;
--		xmit.source = tuplehash->tuple.out.h_source;
--		break;
--	default:
--		WARN_ON_ONCE(1);
--		return NF_DROP;
--	}
--	xmit.tuple = other_tuple;
--	xmit.needs_gso_segment = tuplehash->tuple.needs_gso_segment;
--
--	return nf_flow_queue_xmit(state->net, skb, &xmit);
--}
--EXPORT_SYMBOL_GPL(nf_flow_offload_ip_hook);
--
- static void nf_flow_nat_ipv6_tcp(struct sk_buff *skb, unsigned int thoff,
- 				 struct in6_addr *addr,
- 				 struct in6_addr *new_addr,
-@@ -1103,8 +1004,16 @@ static int nf_flow_offload_ipv6_forward(struct nf_flowtable_ctx *ctx,
- 	flow = container_of(tuplehash, struct flow_offload, tuplehash[dir]);
+@@ -715,6 +747,19 @@ if ! test_tcp_forwarding_nat "$ns1" "$ns2" 1 "IP4IP6 tunnel over vlan"; then
+ 	ret=1
+ fi
  
- 	mtu = flow->tuplehash[dir].tuple.mtu + ctx->offset;
--	if (flow->tuplehash[!dir].tuple.tun_num)
-+	switch (flow->tuplehash[!dir].tuple.tun.encap_proto) {
-+	case AF_INET:
-+		mtu -= sizeof(struct iphdr);
-+		break;
-+	case AF_INET6:
- 		mtu -= sizeof(*ip6h);
-+		break;
-+	default:
-+		break;
-+	}
- 
- 	if (unlikely(nf_flow_exceeds_mtu(skb, mtu)))
- 		return 0;
-@@ -1138,6 +1047,25 @@ static int nf_flow_offload_ipv6_forward(struct nf_flowtable_ctx *ctx,
- 	return 1;
- }
- 
-+static struct flow_offload_tuple_rhash *
-+nf_flow_offload_lookup(struct nf_flowtable_ctx *ctx,
-+		       struct nf_flowtable *flow_table, struct sk_buff *skb)
-+{
-+	struct flow_offload_tuple tuple = {};
++ip -6 -net "$nsr1" route delete default
++ip -6 -net "$nsr1" route add default via fe01:5::2
++ip -6 -net "$nsr2" route delete default
++ip -6 -net "$nsr2" route add default via fe01:5::1
 +
-+	if (!nf_flow_skb_encap_protocol(ctx, skb, htons(ETH_P_IP)))
-+		return NULL;
++if test_tcp_forwarding "$ns1" "$ns2" 1 6 "[dead:2::99]" 12345; then
++	echo "PASS: flow offload for ns1/ns2 SIT tunnel over vlan"
++else
++	echo "FAIL: flow offload for ns1/ns2 with SIT tunnel over vlan" 1>&2
++	ip netns exec "$nsr1" nft list ruleset
++	ret=1
++fi
 +
-+	if (ctx->tun.proto == IPPROTO_IPV6) {
-+		if (nf_flow_tuple_ipv6(ctx, skb, &tuple) < 0)
-+			return NULL;
-+	} else if (nf_flow_tuple_ip(ctx, skb, &tuple) < 0) {
-+		return NULL;
-+	}
-+
-+	return flow_offload_lookup(flow_table, &tuple);
-+}
-+
- static struct flow_offload_tuple_rhash *
- nf_flow_offload_ipv6_lookup(struct nf_flowtable_ctx *ctx,
- 			    struct nf_flowtable *flow_table,
-@@ -1158,6 +1086,108 @@ nf_flow_offload_ipv6_lookup(struct nf_flowtable_ctx *ctx,
- 	return flow_offload_lookup(flow_table, &tuple);
- }
- 
-+unsigned int
-+nf_flow_offload_ip_hook(void *priv, struct sk_buff *skb,
-+			const struct nf_hook_state *state)
-+{
-+	struct flow_offload_tuple_rhash *tuplehash;
-+	struct nf_flowtable *flow_table = priv;
-+	struct flow_offload_tuple *other_tuple;
-+	enum flow_offload_tuple_dir dir;
-+	struct nf_flowtable_ctx ctx = {
-+		.in	= state->in,
-+	};
-+	struct nf_flow_xmit xmit = {};
-+	struct in6_addr *ip6_daddr;
-+	struct flow_offload *flow;
-+	struct neighbour *neigh;
-+	struct rtable *rt;
-+	__be32 ip_daddr;
-+	int ret;
-+
-+	tuplehash = nf_flow_offload_lookup(&ctx, flow_table, skb);
-+	if (!tuplehash)
-+		return NF_ACCEPT;
-+
-+	if (ctx.tun.proto == IPPROTO_IPV6)
-+		ret = nf_flow_offload_ipv6_forward(&ctx, flow_table, tuplehash,
-+						   skb);
-+	else
-+		ret = nf_flow_offload_forward(&ctx, flow_table, tuplehash, skb);
-+	if (ret < 0)
-+		return NF_DROP;
-+	else if (ret == 0)
-+		return NF_ACCEPT;
-+
-+	if (unlikely(tuplehash->tuple.xmit_type == FLOW_OFFLOAD_XMIT_XFRM)) {
-+		rt = dst_rtable(tuplehash->tuple.dst_cache);
-+		memset(skb->cb, 0, sizeof(struct inet_skb_parm));
-+		IPCB(skb)->iif = skb->dev->ifindex;
-+		IPCB(skb)->flags = IPSKB_FORWARDED;
-+		return nf_flow_xmit_xfrm(skb, state, &rt->dst);
-+	}
-+
-+	dir = tuplehash->tuple.dir;
-+	flow = container_of(tuplehash, struct flow_offload, tuplehash[dir]);
-+	other_tuple = &flow->tuplehash[!dir].tuple;
-+	ip_daddr = other_tuple->src_v4.s_addr;
-+	ip6_daddr = &other_tuple->src_v6;
-+
-+	if (nf_flow_tunnel_push(state->net, skb, other_tuple, &ip_daddr,
-+				&ip6_daddr) < 0)
-+		return NF_DROP;
-+
-+	switch (tuplehash->tuple.xmit_type) {
-+	case FLOW_OFFLOAD_XMIT_NEIGH: {
-+		struct dst_entry *dst;
-+
-+		xmit.outdev = dev_get_by_index_rcu(state->net, tuplehash->tuple.ifidx);
-+		if (!xmit.outdev) {
-+			flow_offload_teardown(flow);
-+			return NF_DROP;
-+		}
-+		if (other_tuple->tun.encap_proto == AF_INET6 ||
-+		    ctx.tun.proto == IPPROTO_IPV6) {
-+			struct rt6_info *rt6;
-+
-+			rt6 = dst_rt6_info(tuplehash->tuple.dst_cache);
-+			neigh = ip_neigh_gw6(rt6->dst.dev,
-+					     rt6_nexthop(rt6, ip6_daddr));
-+			dst = &rt6->dst;
-+		} else {
-+			rt = dst_rtable(tuplehash->tuple.dst_cache);
-+			neigh = ip_neigh_gw4(rt->dst.dev,
-+					     rt_nexthop(rt, ip_daddr));
-+			dst = &rt->dst;
-+		}
-+		if (IS_ERR(neigh)) {
-+			flow_offload_teardown(flow);
-+			return NF_DROP;
-+		}
-+		xmit.dest = neigh->ha;
-+		skb_dst_set_noref(skb, dst);
-+		break;
-+	}
-+	case FLOW_OFFLOAD_XMIT_DIRECT:
-+		xmit.outdev = dev_get_by_index_rcu(state->net, tuplehash->tuple.out.ifidx);
-+		if (!xmit.outdev) {
-+			flow_offload_teardown(flow);
-+			return NF_DROP;
-+		}
-+		xmit.dest = tuplehash->tuple.out.h_dest;
-+		xmit.source = tuplehash->tuple.out.h_source;
-+		break;
-+	default:
-+		WARN_ON_ONCE(1);
-+		return NF_DROP;
-+	}
-+	xmit.tuple = other_tuple;
-+	xmit.needs_gso_segment = tuplehash->tuple.needs_gso_segment;
-+
-+	return nf_flow_queue_xmit(state->net, skb, &xmit);
-+}
-+EXPORT_SYMBOL_GPL(nf_flow_offload_ip_hook);
-+
- unsigned int
- nf_flow_offload_ipv6_hook(void *priv, struct sk_buff *skb,
- 			  const struct nf_hook_state *state)
+ # Restore the previous configuration
+ ip -net "$nsr1" route change default via 192.168.10.2
+ ip -net "$nsr2" route change default via 192.168.10.1
 
 -- 
 2.55.0
