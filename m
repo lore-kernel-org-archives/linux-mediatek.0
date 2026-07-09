@@ -4,80 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C5B0C43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 12:23:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0F50C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 12:36:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ppA8m/5ehAsAUIEID5gc3TtaxaY7qhRvgyIt23MZjI0=; b=JYOSaqlZmwOf8tn0CT0oP2C27X
-	DoDqAXWxBsb+v3RCGET3qxBg3sJ/tFNH0z7bnewRiFfJ6T8TyN+l9pntT0qDHTihwmmK8IeB1tiSX
-	kLgL4Ss0aVq8k2GXhhi5drbNTl3Ole/o+U9ubSTQicYBB41W49jbo4+v9ciOKNSrTKBDJ9yI96ZFr
-	opkZYRhChUmlOqcZjXmSk/hkvzHsO8FXZlePb0HpEBVfpPOKw4ToOdS/IA89xYNBqY8z11UhXOSl7
-	i1gg7gRM8LIhKp3SEhyGNVWmGk2WcYKlFN93Runu2M08q7yxaRwoIPYp58i0RW7udG7BGdAVFLFRU
-	vZPE/Sbg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5SJ8J70xfNe/JpIRlawsgSJuzP4lRQlWMl+O+tWc9sU=; b=X9T0Flas+/u/bNJ8F86O1EY248
+	r7Sqx/MMYeFF4al7d5OocmqLwfaT9/wOAy9wnq2qQIiazxt9jVT/+/A6unR87GXYmSaFpiCtll9Nj
+	HFIxVCm//Fd+ZKFJxEOK5t+x16+7iE8SS7LbN+rRK/ChWRPLWAcXJVuWuI4FMU45A41NC+rNDyVup
+	pB+i7ZjVSfCfFJMcbdlfxcTbDS+T5LUyTlekLgODTjp8A8AKPiJS3ryoF8ZJUHdh55OeOfX9pFk5Z
+	6Welfp+h3e8e9+FIvP66VVCG81333i+9vtiXQj6zLe7aRetqM0HNBV2O+zclHfMeI0U1kqINFURLR
+	RmumI/Sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whnmn-00000002Ogs-3yW6;
-	Thu, 09 Jul 2026 12:23:25 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1whnyx-00000002QjP-2fot;
+	Thu, 09 Jul 2026 12:35:59 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whnmk-00000002OfM-0a9G;
-	Thu, 09 Jul 2026 12:23:24 +0000
+	id 1whnyv-00000002Qig-04vl;
+	Thu, 09 Jul 2026 12:35:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783599796;
-	bh=9Pqlzqz8P8MV2DzBL9Guxas/1Kj0iveewylpu/2a7js=;
-	h=From:Date:Subject:To:Cc:From;
-	b=aH4tVViNv6WsvRqhKw3v+bPERQ+FMnHani7zy6qxpCzNi8y34LojosQdlo+08hiIC
-	 2qGtNlLLR3ObR5sPEvrUvAxKXUqGtu2VezVEU4t0/zapGWruS+fwMJFhfIMidsw4jT
-	 JC2cS0dbIBPrAefzIKdek9lfB28FcsoLYE2RKxbBbhH26Y4G6fWakw0Jag/u8V07J+
-	 r/7fzO7zom6sSTydeGeZyW4w39Uq1gumFhajbve0evB424pJ3IxRUE1Y+xAcsLPHjP
-	 w6Iyv99qivcxqRi95CmBjYuWH8E6XMEgGJ9ELcg7YXOeUadpI4moDeFaYtP13/ZhwP
-	 yQSfu0uJucuBg==
-Received: from yukiji.home (unknown [100.64.0.131])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1783600553;
+	bh=Wppfbnj881WSgNJYSf89PmL0u3y+RW4UCa78fZI6H30=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Ma11lkQLksFyB/jDWmVFChDw5KJqE7xRFNLDg3q1xg0mDwIG/uugMecMUb4puQOB6
+	 SisVmPveMDSxB7kl1cZQygHkzwSCi7q0wALvQDH+T+oZ0KSApYzRp4ELe1EEvRr9Xj
+	 biJ7oYeNkCyeFVTPkJRU02TGIIcYPJ/4zC9XXgZ/s9nMQ9oHpZnbyMl05xmplTMLyr
+	 PWAfMTCiNU60g+jmAf4f/mB7Y4weKzH8jI2I5QCaWVk6281nKFVX6u6H9TtDaVcTc8
+	 XaBtI9nI2xkpZlrlG3sORkTvZnHkK1i9BL6C/hplorzxK91MQNO97A0Ha/rqu6J78z
+	 f296JdGm6V2gw==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9EEC717E003B;
-	Thu, 09 Jul 2026 14:23:15 +0200 (CEST)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Thu, 09 Jul 2026 14:23:00 +0200
-Subject: [PATCH v2] clk: mediatek: pllfh: Fix IO remapping leak in
- register_pllfhs error path
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 71A6817E079B;
+	Thu, 09 Jul 2026 14:35:53 +0200 (CEST)
+Message-ID: <1b27eabe-1709-4345-b2ba-50b528761683@collabora.com>
+Date: Thu, 9 Jul 2026 14:35:52 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] i2c: mediatek: fix WRRD for SoCs without auto_restart
+ option
+To: Roman Vivchar <rva333@protonmail.com>
+Cc: Qii Wang <qii.wang@mediatek.com>, Andi Shyti <andi.shyti@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-i2c@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20260624-6572-6595-i2c-v1-1-9155cebaae20@protonmail.com>
+ <0eb85793-5995-4177-9b04-338246d6979e@collabora.com>
+ <GOZtJ6Ys4Syt4VaGQyJvmYEIe6dx97flmTygat-nc_gMwsKVrDaDOQjP2ZbX1Qqwx5PYjWo6rJwo-8H32NQQAQi4Z7x6y9wpBNyYea9liZA=@protonmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <GOZtJ6Ys4Syt4VaGQyJvmYEIe6dx97flmTygat-nc_gMwsKVrDaDOQjP2ZbX1Qqwx5PYjWo6rJwo-8H32NQQAQi4Z7x6y9wpBNyYea9liZA=@protonmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260709-clk-mediatek-pllfh-fix-v2-1-a235078fe9d5@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/4WOzQ6CMBCEX4Xs2TVQw58n38NwKGWRDYViWwmG8
- O5WiGeP3yTfzKzgyDI5uEYrWJrZsRkDiFMEqpPjg5CbwCBikcV5XKDSPQ7UsPTU46R122HLC+Z
- UKnlJy6IkAUGeLIV4L75XB1t6vkK/P0KopSNUZhjYX6ORFo+/DfgKHTtv7Hs/Nie78e/DnGCCQ
- rVKNFkt0oJuymgta2PlOQxBtW3bB2Qe8DTxAAAA
-X-Change-ID: 20260708-clk-mediatek-pllfh-fix-7e9ca35989e2
-To: Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chen-Yu Tsai <wenst@chromium.org>, 
- Edward-JW Yang <edward-jw.yang@mediatek.com>, 
- Johnson Wang <johnson.wang@mediatek.com>
-Cc: kernel@collabora.com, linux-clk@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1783599795; l=5633;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=9Pqlzqz8P8MV2DzBL9Guxas/1Kj0iveewylpu/2a7js=;
- b=jE9jCdzkzh8aa4HUmAnn3mHzLjEi6hLljo63wHj/jSpK2+2wIGLOJG+IHzYvklQG1GNRk/l2v
- sDXLBohmW1SCJVwKh95ucfEzUimvEuvpkkD9S+c9fcAG1Uw24owDcsB
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_052322_928525_7A58A88A 
-X-CRM114-Status: GOOD (  19.14  )
+X-CRM114-CacheID: sfid-20260709_053557_232986_7995AF0B 
+X-CRM114-Status: GOOD (  21.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,183 +79,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When mtk_clk_register_pllfhs function fails to register a PLL, it
-unregisters all PLLs and cleans up itself in its error path before
-returning, so the function callers don't need to do it.
+On 7/9/26 14:12, Roman Vivchar wrote:
+> Hi AngeloGioacchino,
+> 
+> On Thursday, July 9th, 2026 at 2:46 PM, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
+> 
+>> On 6/23/26 23:40, Roman Vivchar via B4 Relay wrote:
+>>> From: Roman Vivchar <rva333@protonmail.com>
+>>>
+>>> MediaTek mt65xx family SoCs have no auto restart, however, they still
+>>> support the WRRD mode in the hardware. Because auto_restart is set to 0,
+>>> the WRRD mode will be never enabled, leading to read errors.
+>>>
+>>> Fix this by removing auto_restart check from the WRRD enable path.
+>>>
+>>
+>> Are you sure that MT6577 and MT6589 do support WRRD?
+> 
+> Yes, I have checked their downstream kernels[1][2] and they both mention
+> WRRD.
+> 
+> We also tested mt6589 (privately) and the i2c was working. To be fair,
+> it had some other fixes, but at worst this patch is no-op.
+> 
+> mt6577 is a tough one... I don't think there's any recent kernel with
+> it. I plan to make it work with upstream, but that's a TODO. Either way,
+> vendor code has WRRD support.
+> 
+>> If you're not 100% sure, or you want to be careful (which I would, in this case),
+>> please add a `unsigned char wrrd_supported:1` to struct mtk_i2c_compatible, set
+>> it to `1` on *all* of the SoCs that support auto_restart (as that's effectively
+>> a different feature - it just happens that all the ones supporting this also do
+>> support that, up until today), and add a new one for your MT6572, declaring no
+>> auto_restart but wrrd_supported.
+>>
+>> That would make me sure that you're not breaking anything, and would guarantee
+>> you a R-b.
+>>
+> 
+> As far as I know, there's no SoC without both auto restart and WRRD.
+> Adding wrrd_supported that always equals to true sounds redundant to
+> me.
 
-But contrary to mtk_clk_unregister_pllfhs function, that does almost
-the same sequence, it does not free the IO memory mapped on fhctl node,
-leading to a leak.
+I have just verified on datasheets.
+You're right, both MT6577 and MT6589 do support WRRD, hence your change is good.
 
-Fix this leak by factorizing the cleanup sequence in a new private
-function and use it both mtk_clk_register_pllfhs and
-mtk_clk_unregister_pllfhs functions.
+With this commit, you're fixing a fix... Leilk from MediaTek was indeed wrong, as
+in the commit description he says "the old IC does not support I2C_MASTER_WRRD",
+and that's *very* wrong.
 
-Also, change the loop index start value to avoid the -1 operation on
-index at each loop.
+I can see though what he did, as he inadvertently also fixed the WRRD algo because
+the fix was to increment msgs by 2 instead of 1 when op==WRRD.
 
-Fixes: d7964de8a8ea ("clk: mediatek: Add new clock driver to handle FHCTL hardware")
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
----
-This patch aims to fix a issue, detected by Sashiko
-during another series review ([1]), regarding the use of 
-mtk_clk_register_pllfhs function.
 
-The patch is based on linux-next tree (tag: next-20260708).
+Please, resend your commit as a v2, and add:
 
-[1]: https://sashiko.dev/#/patchset/20260701-mt8189-clocks-system-base-v1-0-2b048feea50a%40collabora.com?part=6
----
-Changes in v2:
-- Rebased on next-20260708
-- Fixed loop stop condition in mtk_clk_cleanup_pllfhs function (B. Masney and
-  Sashiko)
-- Reworked base and fhctl_base address handling in mtk_clk_cleanup_pllfhs. 
-  The function has now both addresses as arguments, so it can either
-  use the provided addresses (register cleanup case) or find them in
-  the pllfh data structures if NULL addresses were given (unregister case) to
-  unmap them (B. Masney and Sashiko)
-- Link to v1: https://lore.kernel.org/r/20260708-clk-mediatek-pllfh-fix-v1-1-2cfc2d6b258e@collabora.com
----
- drivers/clk/mediatek/clk-pllfh.c | 98 ++++++++++++++++++++--------------------
- 1 file changed, 49 insertions(+), 49 deletions(-)
+Fixes: b49218365280 ("i2c: mediatek: fix potential incorrect use of I2C_MASTER_WRRD")
 
-diff --git a/drivers/clk/mediatek/clk-pllfh.c b/drivers/clk/mediatek/clk-pllfh.c
-index aa95cd9197b3..6249fb87b1f5 100644
---- a/drivers/clk/mediatek/clk-pllfh.c
-+++ b/drivers/clk/mediatek/clk-pllfh.c
-@@ -197,12 +197,56 @@ static void mtk_clk_unregister_pllfh(struct clk_hw *hw)
- 	kfree(fh);
- }
- 
-+static void mtk_clk_cleanup_pllfhs(void __iomem *iomem_base,
-+				   const struct mtk_pll_data *plls, int num_plls,
-+				   void __iomem *iomem_fhctl_base,
-+				   struct mtk_pllfh_data *pllfhs, int num_fhs,
-+				   struct clk_hw_onecell_data *clk_data)
-+{
-+	void __iomem *base = iomem_base;
-+	void __iomem *fhctl_base = iomem_fhctl_base;
-+	int i;
-+
-+	for (i = num_plls - 1; i >= 0; i--) {
-+		const struct mtk_pll_data *pll = &plls[i];
-+		struct mtk_pllfh_data *pllfh;
-+		bool use_fhctl;
-+
-+		if (IS_ERR_OR_NULL(clk_data->hws[pll->id]))
-+			continue;
-+
-+		pllfh = get_pllfh_by_id(pllfhs, num_fhs, pll->id);
-+		use_fhctl = fhctl_is_supported_and_enabled(pllfh);
-+
-+		if (!base)
-+			base = mtk_clk_pll_get_base(clk_data->hws[pll->id],
-+							pll);
-+
-+		if (use_fhctl) {
-+			if (!fhctl_base)
-+				fhctl_base = pllfh->state.base;
-+			mtk_clk_unregister_pllfh(clk_data->hws[pll->id]);
-+		} else {
-+			mtk_clk_unregister_pll(clk_data->hws[pll->id]);
-+		}
-+
-+		clk_data->hws[pll->id] = ERR_PTR(-ENOENT);
-+	}
-+
-+	if (fhctl_base)
-+		iounmap(fhctl_base);
-+
-+	if (base)
-+		iounmap(base);
-+}
-+
-+
- int mtk_clk_register_pllfhs(struct device *dev,
- 			    const struct mtk_pll_data *plls, int num_plls,
- 			    struct mtk_pllfh_data *pllfhs, int num_fhs,
- 			    struct clk_hw_onecell_data *clk_data)
- {
--	void __iomem *base;
-+	void __iomem *base, *fhctl_base = NULL;
- 	int i;
- 	struct clk_hw *hw;
- 
-@@ -238,24 +282,8 @@ int mtk_clk_register_pllfhs(struct device *dev,
- 	return 0;
- 
- err:
--	while (--i >= 0) {
--		const struct mtk_pll_data *pll = &plls[i];
--		struct mtk_pllfh_data *pllfh;
--		bool use_fhctl;
--
--		pllfh = get_pllfh_by_id(pllfhs, num_fhs, pll->id);
--		use_fhctl = fhctl_is_supported_and_enabled(pllfh);
--
--		if (use_fhctl)
--			mtk_clk_unregister_pllfh(clk_data->hws[pll->id]);
--		else
--			mtk_clk_unregister_pll(clk_data->hws[pll->id]);
--
--		clk_data->hws[pll->id] = ERR_PTR(-ENOENT);
--	}
--
--	iounmap(base);
--
-+	mtk_clk_cleanup_pllfhs(base, plls, i, fhctl_base, pllfhs, num_fhs,
-+			       clk_data);
- 	return PTR_ERR(hw);
- }
- EXPORT_SYMBOL_GPL(mtk_clk_register_pllfhs);
-@@ -264,38 +292,10 @@ void mtk_clk_unregister_pllfhs(const struct mtk_pll_data *plls, int num_plls,
- 			       struct mtk_pllfh_data *pllfhs, int num_fhs,
- 			       struct clk_hw_onecell_data *clk_data)
- {
--	void __iomem *base = NULL, *fhctl_base = NULL;
--	int i;
--
- 	if (!clk_data)
- 		return;
- 
--	for (i = num_plls; i > 0; i--) {
--		const struct mtk_pll_data *pll = &plls[i - 1];
--		struct mtk_pllfh_data *pllfh;
--		bool use_fhctl;
--
--		if (IS_ERR_OR_NULL(clk_data->hws[pll->id]))
--			continue;
--
--		pllfh = get_pllfh_by_id(pllfhs, num_fhs, pll->id);
--		use_fhctl = fhctl_is_supported_and_enabled(pllfh);
--
--		if (use_fhctl) {
--			fhctl_base = pllfh->state.base;
--			mtk_clk_unregister_pllfh(clk_data->hws[pll->id]);
--		} else {
--			base = mtk_clk_pll_get_base(clk_data->hws[pll->id],
--						    pll);
--			mtk_clk_unregister_pll(clk_data->hws[pll->id]);
--		}
--
--		clk_data->hws[pll->id] = ERR_PTR(-ENOENT);
--	}
--
--	if (fhctl_base)
--		iounmap(fhctl_base);
--
--	iounmap(base);
-+	mtk_clk_cleanup_pllfhs(NULL, plls, num_plls, NULL, pllfhs,
-+			       num_fhs, clk_data);
- }
- EXPORT_SYMBOL_GPL(mtk_clk_unregister_pllfhs);
+and also
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
----
-base-commit: 451b00e20bcd5526c6def9ee76f9bdb322ae9b46
-change-id: 20260708-clk-mediatek-pllfh-fix-7e9ca35989e2
+Cheers!
 
-Best regards,
--- 
-Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-
+> 
+> [1]: https://github.com/GoldRenard/lenovo_A390_mt6577_uboot_kernel/blob/38ea59263984e26c0dd8e5891b22a35f61e60ed5/mediatek/platform/mt6577/kernel/drivers/i2c/i2c.c#L963-L975
+> [2]: https://github.com/bq/aquaris-5/blob/bc1d0d0e35c969670e2d869001be944ad0c9c5e5/mediatek/platform/mt6589/kernel/drivers/i2c/i2c.c#L728
+> 
+> Best regards,
+> Roman
 
