@@ -4,68 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EB4EC43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:03:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A91BC43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:06:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+ak7g+bnNvjs6BgBEr/Bs7DjjcW1VaCyUfDXvUXZ24I=; b=myPfxkg1Ig3Tcv5Q0mN2tkjF2k
-	VvTtcWHutEACbjh1ivOOtaR8Z7Ob/6YJ0aJ4ACZjypb9S4Ar5qIYOHtAdktKbyLMi/JkQ2B+LWapa
-	NRHWPdMuaxZujt0faUVSv6xy2Oi2ZpEieLVOxcL1SSTCH9pRvqLQ0QYMGV6rSZ8Qy+urRFyhTGlVc
-	GPxvmzQae/pZh2uMTuMP+gBd+mV+wlQOkmC5ZpmKl0DU90id2UrJt8ZCR+L5rwgBH8UTKpBW7dEWO
-	YvXU+keyi790rJZxUEJYj/UpKx00th1ctVTroEnUNVsYBfSnzE4tKfgcyLY3c5tqBCQjrZwUTpisZ
-	6dYkAGOA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yypRmBCUWIxl+HGMvLm537bNGK8OjqXD29gbJvwfD6w=; b=xU4Jw12MIHi/vBLafkATsrMj32
+	dNG/k0Sezf2ZeeT8r4h5ug3U+X3KC35p1dGAfLC68IjgDIMGL+U+E7CRGB9gGMb0snvZ5OOZ4huSx
+	9bcp4zzgI3LtcUa6anZWfi9pwm6s+VCGwDPupNokwg/zDFbBoXOYK7E0L37xf+BGF6ZryZLip85wI
+	rUysxWfauF+9MrmVpFTsNpVtbm+cAge/Fjote24cRCfo8NFAZkrgKIyQkSLW1Urk7OtamCCkwlH5j
+	sbs82SIIHhdGZwuDOYL6/1MurYrD4ANGUuXqhPJ3l7dhGSw+B5zkf+61p6I1P2iQpiz/nDJGROC7z
+	v0HTCpAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whlbE-00000001rNg-0m0X;
-	Thu, 09 Jul 2026 10:03:20 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1whleG-00000001rye-3Y30;
+	Thu, 09 Jul 2026 10:06:28 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whlb8-00000001rMB-44c3;
-	Thu, 09 Jul 2026 10:03:15 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2DD1F600C3;
-	Thu,  9 Jul 2026 10:03:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E731C1F000E9;
-	Thu,  9 Jul 2026 10:03:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783591393;
-	bh=+ak7g+bnNvjs6BgBEr/Bs7DjjcW1VaCyUfDXvUXZ24I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=gbAbOtT3xXk/mcJ1eT0tQ/7wTMH+HHidCthinZFuF3zrSj6VpvqufBIjNyy9WdhAb
-	 iXzvhaQZT0jUbVwaBDmQjSY0uw7WRKsLuAuN6zNSfBks8I9jTszW8LBQPKMLgNwl9N
-	 2icoPJfvY1GX+9ejjz7LAV9bnkUnRhLJ2u+v76Sb5dGdp4iMqMudghZdRDXMSNi3iW
-	 ttqmCKfFDH3pKqRy67YcIy1H1kaCh8ZA/R/Dt/K4R3ivi4aYKVyx0JRQBU9YbXskog
-	 bkxfi5V3N1ohep4Cg6imr9Uc3pGgloh4rsV6NBuLw25Z6lX9IZ/PRw2VbyILse1DhH
-	 6ATkVUShF/UWg==
-Date: Thu, 9 Jul 2026 11:03:08 +0100
-From: Lee Jones <lee@kernel.org>
-To: Roman Vivchar <rva333@protonmail.com>
-Cc: Jonathan Cameron <jic23@kernel.org>,
-	David Lechner <dlechner@baylibre.com>,
-	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	id 1whleD-00000001rxQ-3OKe;
+	Thu, 09 Jul 2026 10:06:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783591582;
+	bh=o0Yw5UvJ7mIldIg8Qe+QDn/C3b8GslyK/JoVs7xCZ6Q=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=dmtanCfLju6ifSgcwKO6UemMfKqFnsb7fpAdDEDUJbMmPnnmtR0lL2NpRYKTGeUEq
+	 NszejrSKm4qjdytNmCKFxUORVbqaNn2n65quw5nf5aKOEKBtEGWPz0VYpjBroBaWRg
+	 az4brN2yUOzMQLe5Kg+Pe17+Aki6mKwiCT05NoU2YICo6Iiw821S8VZxI49qC/MeEu
+	 M4MfD9gcwICNolIr3JYoa0UKqITNwoT3p6LNyas5rw0bgVN5bpX9w+JGkoE/8YaiVn
+	 tJJC+34e78n4NGKnt6LB/hy8jzbSrxHLlVRo9Ul4QENgxncgmhO7CQvQQYuVda4QWh
+	 c7A9YJ4tkimiQ==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EDA0B17E05E8;
+	Thu, 09 Jul 2026 12:06:21 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	jitao.shi@mediatek.com,
+	granquet@baylibre.com,
+	rex-bc.chen@mediatek.com,
+	dmitry.osipenko@collabora.com,
+	ck.hu@mediatek.com,
+	amergnat@baylibre.com,
+	justin.yeh@mediatek.com,
+	jason-jh.lin@mediatek.com,
+	dri-devel@lists.freedesktop.org,
 	linux-mediatek@lists.infradead.org,
-	Ben Grisdale <bengris32@protonmail.ch>
-Subject: Re: [PATCH v4 3/4] mfd: mt6397-core: add mt6323 AUXADC support
-Message-ID: <20260709100308.GD2045740@google.com>
-References: <20260623-mt6323-adc-v4-0-299680ad3194@protonmail.com>
- <20260623-mt6323-adc-v4-3-299680ad3194@protonmail.com>
- <20260708211056.GB1727174@google.com>
- <UV1EGIwox4bkh8ufCFb4GS_Pafo8bovmSI9jzRbQunz7AzjHnmItA-lLCPeeIxOLMoS3douarVEpoTF7DVffFJUcXZTdGTQ6-dfAYdomwak=@protonmail.com>
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com
+Subject: [PATCH v2 01/11] dt-bindings: display: mediatek: dp: Deprecate nvmem efuse data
+Date: Thu,  9 Jul 2026 12:06:07 +0200
+Message-ID: <20260709100617.42583-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260709100617.42583-1-angelogioacchino.delregno@collabora.com>
+References: <20260709100617.42583-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <UV1EGIwox4bkh8ufCFb4GS_Pafo8bovmSI9jzRbQunz7AzjHnmItA-lLCPeeIxOLMoS3douarVEpoTF7DVffFJUcXZTdGTQ6-dfAYdomwak=@protonmail.com>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260709_030626_003275_CC47505D 
+X-CRM114-Status: UNSURE (   8.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,48 +96,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 09 Jul 2026, Roman Vivchar wrote:
+Deprecate nvmem-cells and nvmem-cell-names and clarify their
+purpose, as those are for PHY calibration data, not for the DP
+IP itself, and that data shall go in the PHY binding instead.
 
-> Hi Lee,
-> 
-> +Jonathan
-> 
-> On Thursday, July 9th, 2026 at 12:11 AM, Lee Jones <lee@kernel.org> wrote:
-> 
-> > On Tue, 23 Jun 2026, Roman Vivchar via B4 Relay wrote:
-> > 
-> > > From: Roman Vivchar <rva333@protonmail.com>
-> > >
-> > > The mt6323 PMIC includes an AUXADC. Register the AUXADC in the mt6323
-> > > devices array to allow the corresponding driver to probe using compatible
-> > > string.
-> > >
-> > > Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
-> > > Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-> > > ---
-> > >  drivers/mfd/mt6397-core.c | 3 +++
-> > >  1 file changed, 3 insertions(+)
-> > 
-> > Doesn't apply.  Please rebase and resent with my:
-> > 
-> > Acked-by: Lee Jones <lee@kernel.org>
-> 
-> There's a slight cross-tree conflict. Jonathan has already picked
-> patch 1 and patch 2 to the iio testing tree. This mfd patch doesn't
-> apply because recently merged mt6323 efuse patch (bde6556744888).
-> 
-> The iio tree doesn't include mt6323 efuse patch, and there was some
-> dt-bindings merge conflict.
-> Should I rebase on top of linux-next and send mfd as a standalone patch?
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../devicetree/bindings/display/mediatek/mediatek,dp.yaml     | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-No cross-tree conflict.
-
-It doesn't apply because MFD has one of your earlier patches:
-
-  bde655674488 ("mfd: mt6397-core: Add mt6323 EFUSE support")
-
-Rebase onto either Next or for-mfd-next.
-
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+index 8f4bd9fb560b..980f76667ada 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+@@ -30,10 +30,12 @@ properties:
+     maxItems: 1
+ 
+   nvmem-cells:
++    deprecated: true
+     maxItems: 1
+-    description: efuse data for display port calibration
++    description: efuse data for display port phy calibration
+ 
+   nvmem-cell-names:
++    deprecated: true
+     const: dp_calibration_data
+ 
+   power-domains:
 -- 
-Lee Jones
+2.54.0
+
 
