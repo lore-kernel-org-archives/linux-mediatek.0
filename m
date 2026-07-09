@@ -4,89 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B50C5C43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:55:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75A3CC44501
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 11:32:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cMek7e/6OVdU46LZnlf8qTyLjh7R4XSz82LsjtOyPVM=; b=Hp7MkWaUo9OYCD9SjwwK/pu/So
-	IQ7IaIGN8YWNRRje8MJ9XNeq+cCSHZiQ8Fb7SizswiuLP/5vtqmq7mJew97MgGzNuv07N4d9jSA6O
-	TCJ3G9bXyNhsR/fsGUzDEnDn2AFky4NWmADZLelx0wx6kk74yfkIMqiDlhc3709oCQGj6RA+lcCyi
-	p0L6j5m2oAbvjqYZndjaAW8MDLgFGPEEQqPTiWXnEnwz5t8aRPSW6qdSGJWs8MS5hlgsM5Yrgrn0L
-	uV55GNRvrxFPd/3MJKJp6jL7G4jNMlRDFfeqmnyRk8i0NgWPYUaMGbWdoCh5QkPnMEcwYWvlzZAQH
-	WVuUXRAw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SqqbkSKoaMCuEKTP1rjiw3CAvuLOaY9tTvIMgKUSf3A=; b=FWFrAZTs+MDET+LPCjCOUMEkaS
+	vHhyYb0MMZWVX0c2jfB3xmg4L/OZlC7PmQ9cSZkylt6nPZXtHnXtJkZUURUAyiqxIkG5crUB4cucl
+	2XA4n0DbVZ//jd/hayHXhG6YYtZdYNWlUlkNFLUsr8ai1Kj9TMCcwROAlgI1eLxLbuO5w/c7uLZW+
+	sLTN7nsj3S6jmKLq/NDqVis5LjRe8DhbE9QasP++H/caz1ScfZds/Z5qphzc+aR5OUH2PfKMogHEl
+	VYkg/PRho3+0xZWGdCrnpWx+jAx1ky17GBT4FwxYZBWz6yz3zEzRna9QnymjcXI4KTus3jqil/was
+	kAoq3H4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whmPk-0000000234u-3q9r;
-	Thu, 09 Jul 2026 10:55:32 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1whmz2-00000002AoU-1TNO;
+	Thu, 09 Jul 2026 11:32:00 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whmPg-00000002349-2wsL;
-	Thu, 09 Jul 2026 10:55:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1783594529; x=1815130529;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=xFcQQhmhINQD3s4rCXCWmru3qkNnkEH19O9zKAO6j1I=;
-  b=WqEOdHr2JEjRWCK8g8PlzB2JvLE03QYi0/zbn7nIHKLSxoUgTWlp0Rss
-   q3Znnb88Ej0HA7SC/a2hGHWL0I1gf/EAI3XEBaOex28J720YIF547Ok2e
-   1u5pmnW+q/k9QXhl4lg1RbBV1O5W5jSN1rEwCDc3on/jNDmaGvyWxzLN3
-   5GVyPykHMeWCU+bBIgfz93c80EQCR2Sho20XWyYWrrsX/THCVl2T/HgeQ
-   tDenyRlpB6wSfph+qbYesK27o2TDmqPjwdF/YWDXWRk66IFKtj+sSefXM
-   fixCZpxCBJiE3hHnh/buyRBfHMfBHfqmb+vnD8pQLsBIqJkz6A8obBjGX
-   A==;
-X-CSE-ConnectionGUID: Z+mPjy3lRJGkF+n6zlQyVQ==
-X-CSE-MsgGUID: 3/vyVwNLQNa/p3QXOdNHnA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11841"; a="95425814"
-X-IronPort-AV: E=Sophos;i="6.25,154,1779174000"; 
-   d="scan'208";a="95425814"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jul 2026 03:55:28 -0700
-X-CSE-ConnectionGUID: AR6qK3CCSDC7cPGAveNTzQ==
-X-CSE-MsgGUID: 7/7aeqFzRVWBEcBauFhSaA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,154,1779174000"; 
-   d="scan'208";a="255214900"
-Received: from ettammin-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.245.235])
-  by orviesa009-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Jul 2026 03:55:22 -0700
-Date: Thu, 9 Jul 2026 13:55:19 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Bartosz Golaszewski <brgl@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Daniel Scally <djrscally@gmail.com>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-acpi@vger.kernel.org, driver-core@lists.linux.dev,
-	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Alan Stern <stern@rowland.harvard.edu>
-Subject: Re: [PATCH v4 11/14] power: sequencing: pcie-m2: support matching on
- remote "port" node
-Message-ID: <ak9-FxumFw-NtQt2@ashevche-desk.local>
-References: <20260709095726.704448-1-wenst@chromium.org>
- <20260709095726.704448-12-wenst@chromium.org>
+	id 1whmyz-00000002Amb-3kRI;
+	Thu, 09 Jul 2026 11:31:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783596715;
+	bh=kHVv2nCdsp0f/QR38D6tcCGOazDnOTOs2KSvBo2SWnI=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Kge+cX3K0fTqaizyZ10tzOTGOX2YxImO0ZSJIx68xqEqh/2SG+1stjsJa3vEQpARR
+	 PLT6NUWfZsO8N6hLABBrNySbtNidt+hNpr+sFS8mT+IAaOGGBG466qcQPm5PBBNPKE
+	 1SSJn0Jq/muV1Y9G2XLC7DGeSAwk2CaWAf/AR0r6mcpKja0mgzd8Z94RkS2r14aXES
+	 /v5ZmmoCsNmVycc8Il1CLrSmm/0T2XEJOA3GJuBD9LNgqi1X5UO2Nh7de43UqaAm1r
+	 4iU6eki0VgeVR/jrnLb35PMug9/hUJfXDt4Kr5UKlM9dhpAP+tOVH+qdRG5RPajh21
+	 nG2+SOhrVMykg==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 08DD317E0D33;
+	Thu, 09 Jul 2026 13:31:55 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	jitao.shi@mediatek.com,
+	granquet@baylibre.com,
+	rex-bc.chen@mediatek.com,
+	dmitry.osipenko@collabora.com,
+	ck.hu@mediatek.com,
+	amergnat@baylibre.com,
+	justin.yeh@mediatek.com,
+	jason-jh.lin@mediatek.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com
+Subject: [PATCH v4 02/12] dt-bindings: display: mediatek: dp: Add compatible for MT8196 eDP
+Date: Thu,  9 Jul 2026 13:31:38 +0200
+Message-ID: <20260709113148.49090-3-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260709113148.49090-1-angelogioacchino.delregno@collabora.com>
+References: <20260709113148.49090-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260709095726.704448-12-wenst@chromium.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_035528_781158_7BA9BD43 
-X-CRM114-Status: GOOD (  15.51  )
+X-CRM114-CacheID: sfid-20260709_043158_078319_0EA3E606 
+X-CRM114-Status: UNSURE (   8.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,45 +96,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 09, 2026 at 05:57:16PM +0800, Chen-Yu Tsai wrote:
-> A USB hub can have multiple ports, and this driver needs to
-> differentiate which port is being matched to. The USB hub driver now
-> associates the "port" node with the usb_port device, so here we can
-> use the remote "port" node to check for a match. Then fall back to
-> the remote device node for the other connection types.
-> 
-> Also rewrite the existing "remote == dev_of_node(dev)" with
-> device_match_of_node() for consistency.
+Add a new compatible for the Embedded DisplayPort IP found in the
+MT8196 SoC.
 
-...
+This IP is compatible with the previous ones, but not fully.
 
-> +		/* USB port devices are tied to the port nodes. */
-> +		struct device_node *remote_port __free(device_node) =
-> +				of_graph_get_remote_port(endpoint);
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../devicetree/bindings/display/mediatek/mediatek,dp.yaml        | 1 +
+ 1 file changed, 1 insertion(+)
 
-> +
-
-No blank line here as this one is coupled with the check.
-
-> +		if (device_match_of_node(dev, remote_port))
-> +			return PWRSEQ_MATCH_OK;
-> +
-> +		/* Try the remote port parent for other types. */
->  		struct device_node *remote __free(device_node) =
->  				of_graph_get_remote_port_parent(endpoint);
-> -		if (remote && (remote == dev_of_node(dev)))
-
-> +
-
-Ditto.
-
-> +		if (device_match_of_node(dev, remote))
->  			return PWRSEQ_MATCH_OK;
->  	}
-
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+index 980f76667ada..3a752a99949a 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+@@ -25,6 +25,7 @@ properties:
+       - mediatek,mt8188-edp-tx
+       - mediatek,mt8195-dp-tx
+       - mediatek,mt8195-edp-tx
++      - mediatek,mt8196-edp-tx
+ 
+   reg:
+     maxItems: 1
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.54.0
 
 
