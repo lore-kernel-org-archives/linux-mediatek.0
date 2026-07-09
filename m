@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A91BC43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:06:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42498C44508
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 10:06:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yypRmBCUWIxl+HGMvLm537bNGK8OjqXD29gbJvwfD6w=; b=xU4Jw12MIHi/vBLafkATsrMj32
-	dNG/k0Sezf2ZeeT8r4h5ug3U+X3KC35p1dGAfLC68IjgDIMGL+U+E7CRGB9gGMb0snvZ5OOZ4huSx
-	9bcp4zzgI3LtcUa6anZWfi9pwm6s+VCGwDPupNokwg/zDFbBoXOYK7E0L37xf+BGF6ZryZLip85wI
-	rUysxWfauF+9MrmVpFTsNpVtbm+cAge/Fjote24cRCfo8NFAZkrgKIyQkSLW1Urk7OtamCCkwlH5j
-	sbs82SIIHhdGZwuDOYL6/1MurYrD4ANGUuXqhPJ3l7dhGSw+B5zkf+61p6I1P2iQpiz/nDJGROC7z
-	v0HTCpAg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=YpLUPnKiNYLZ1Rvgv6QsYiukIRk96d61Cb2QUEQAbK0=; b=o5dPwE2amNrkzX7KwoGZIcDNSK
+	5maKD4Elgdv5STjpfwskriaSYC5TGKjqBHpTXRmQEH0j2p/hMydN2dSMIPGrEnLAyqSr5IeRpMqAd
+	mV9hsz8KNzE8hZ1I68WRrjg+ZSIKs0z0RgkK3vdFSJK23H1E7MYRpZ2IVf21B2lyvEUZ9mb1vAM0d
+	319WV9mVztcOiwoVzzBZhsz9CGm3bl3gJGHREgv3bFZVSb1NCWj1n0be2EKuRblxXKxfpvAPcbeXo
+	emLs8tfM9TmIjsc61rLnWWwsNm5Kv32Ix8LvfWc3++pvPuqFOCVhZp7ewFsIxPSyQkP9ZROKuJg+5
+	yxoNkXXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whleG-00000001rye-3Y30;
-	Thu, 09 Jul 2026 10:06:28 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1whleL-00000001s2X-1ESU;
+	Thu, 09 Jul 2026 10:06:33 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whleD-00000001rxQ-3OKe;
-	Thu, 09 Jul 2026 10:06:27 +0000
+	id 1whleF-00000001rxO-30Bn;
+	Thu, 09 Jul 2026 10:06:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783591582;
-	bh=o0Yw5UvJ7mIldIg8Qe+QDn/C3b8GslyK/JoVs7xCZ6Q=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=dmtanCfLju6ifSgcwKO6UemMfKqFnsb7fpAdDEDUJbMmPnnmtR0lL2NpRYKTGeUEq
-	 NszejrSKm4qjdytNmCKFxUORVbqaNn2n65quw5nf5aKOEKBtEGWPz0VYpjBroBaWRg
-	 az4brN2yUOzMQLe5Kg+Pe17+Aki6mKwiCT05NoU2YICo6Iiw821S8VZxI49qC/MeEu
-	 M4MfD9gcwICNolIr3JYoa0UKqITNwoT3p6LNyas5rw0bgVN5bpX9w+JGkoE/8YaiVn
-	 tJJC+34e78n4NGKnt6LB/hy8jzbSrxHLlVRo9Ul4QENgxncgmhO7CQvQQYuVda4QWh
-	 c7A9YJ4tkimiQ==
+	s=mail; t=1783591581;
+	bh=1otDgvY7i8uKJGdVJXGeWZacEAhNqHGnr9b13jU33xk=;
+	h=From:To:Cc:Subject:Date:From;
+	b=a9vzMPoL7NNxYdcyAellRVvPv0FDhGDFWFrhOFmcDzHcaehiSVu7QHnmtLI544EM1
+	 YVvdYH0gWohbjz12srNzw06DlTP7hkKTZRT0ajA/uCEJhAw9eVltK90PVhRIubzX8j
+	 4rDm0/YYz73Ok7SEcDZBRH001jBNCt1cc1hW/ksLqqVppaAd69Itfsk6u/6UtU4pOU
+	 q16zVRtv01rL8gf0jTFNRFDCgxHjejQMwoyhXhzSBQyYfpONr6hocXYKQODP665KyN
+	 z9+vZUBnvAF0BDwKyg6ajHGcP/o+mjIwXbYu9O1xspB1Ri0FCsYm9hwUL9C7o03fqf
+	 nAKaYEbimf6sA==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EDA0B17E05E8;
-	Thu, 09 Jul 2026 12:06:21 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D59FF17E05D3;
+	Thu, 09 Jul 2026 12:06:20 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -70,18 +70,15 @@ Cc: p.zabel@pengutronix.de,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v2 01/11] dt-bindings: display: mediatek: dp: Deprecate nvmem efuse data
-Date: Thu,  9 Jul 2026 12:06:07 +0200
-Message-ID: <20260709100617.42583-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 00/11] drm: MediaTek DisplayPort cleanups and MT8196 eDP
+Date: Thu,  9 Jul 2026 12:06:06 +0200
+Message-ID: <20260709100617.42583-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260709100617.42583-1-angelogioacchino.delregno@collabora.com>
-References: <20260709100617.42583-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_030626_003275_CC47505D 
-X-CRM114-Status: UNSURE (   8.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260709_030628_517399_DA4FA9AF 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,33 +93,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Deprecate nvmem-cells and nvmem-cell-names and clarify their
-purpose, as those are for PHY calibration data, not for the DP
-IP itself, and that data shall go in the PHY binding instead.
+Changes in v2:
+ - Fixed all audio_pdev unregister issues (wrong pointer and double
+   free in case of error)
+ - Fixed double free of phy_dev in case of devm_add_action_or_reset()
+   error in legacy probe path
+ - Fixed legacy phy registers erroneously offset by legacy_regoff
+ - Added abstraction of AUX interrupts to legacy transmitter ones
+   for hotplug detection
+ - Fixed forgotten addition of SDP_DP13_EN_DP_ENC1_P0 in mask
+ - Fixed new register mask for interrupt debounce threshold time
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../devicetree/bindings/display/mediatek/mediatek,dp.yaml     | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+This series performs some very much needed cleanups to the MediaTek
+DisplayPort driver, including a fix for the audio codec and PHY driver
+unregistration, a refactor to finally correctly use the PHY (!) and
+introduces support for the Embedded DisplayPort (eDP) IP in MT8196.
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-index 8f4bd9fb560b..980f76667ada 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-@@ -30,10 +30,12 @@ properties:
-     maxItems: 1
- 
-   nvmem-cells:
-+    deprecated: true
-     maxItems: 1
--    description: efuse data for display port calibration
-+    description: efuse data for display port phy calibration
- 
-   nvmem-cell-names:
-+    deprecated: true
-     const: dp_calibration_data
- 
-   power-domains:
+Note that this deprecates the nvmem related properties in this driver
+because those are NOT related to the DisplayPort IP, but rather to the
+DisplayPort PHY, and were therefore transferred there instead (code in
+a different series, updating the PHY driver).
+
+On legacy devices, this driver was carefully tested with both NEW and
+OLD devicetrees, so both with the new, proper PHY usage, and with the
+old platform device registration strategy and eFuse retrieval from DP
+instead of PHY driver.
+
+This was also successfully (manually) tested in a kernel that misses
+the PHY driver updates on devices using old devicetrees (mt8195/88)
+and no regressions were experienced.
+
+AngeloGioacchino Del Regno (11):
+  dt-bindings: display: mediatek: dp: Deprecate nvmem efuse data
+  dt-bindings: display: mediatek: dp: Add compatible for MT8196 eDP
+  drm/mediatek: mtk_dp: Fix hdmi codec and phy driver unregistration
+  drm/mediatek: mtk_dp: Clarify SMC eDP/DP video unmute commands
+  drm/mediatek: mtk_dp: Rework register offsets for proper PHY usage
+  drm/mediatek: mtk_dp: Use PHY API for PHY power sequences
+  drm/mediatek: mtk_dp: Add support for PHY from devicetree
+  drm/mediatek: mtk_dp: Move max link rate to SoC specific data
+  drm/mediatek: mtk_dp: Add support for HotPlug Detection in DP AUX
+  drm/mediatek: mtk_dp: Add support for eDP1.5 IPs and MT8196 SoC
+  drm/mediatek: mtk_dp: Clarify XTAL freq and Debounce registers
+
+ .../display/mediatek/mediatek,dp.yaml         |   5 +-
+ drivers/gpu/drm/mediatek/mtk_dp.c             | 623 +++++++++++++++---
+ drivers/gpu/drm/mediatek/mtk_dp_reg.h         | 328 +++++----
+ 3 files changed, 713 insertions(+), 243 deletions(-)
+
 -- 
 2.54.0
 
