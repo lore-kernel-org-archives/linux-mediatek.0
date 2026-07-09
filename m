@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDD59C43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 09:58:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76D9CC44506
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 09:58:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3NOayELjm3/+NeKg/MUGc6Z0GBz34hjktNSI4aLdsWw=; b=QOqpGsWN+EceWxJKUNDlQpOsbq
-	hHOghQeCuYvTQiBRGszFqaTfPMagZhqiYFIlAvLVEN7Qq5/8e4/quY/AlSLyCkDDUnqYqPYKaFK1Z
-	a2MNXo79DAioqGVWKJKB8KegyVt115uIvnZZvLvjIwvHWz3C/extnu2Hcq6b4WaETrseQQo2mtW9k
-	denwkhdfXsCdZiLHYoVYCJCNEtcjaQulGdm19ru/xnnHSR1rV41un+pTi0qSvjZe5wTD6qHSM2N62
-	k6maZDJWKaR3J4gn+Iypc5MzIIDlnY2oPUSlUDoNxloPKmyGxmaNty5u279X5aPSVMj15gODzxHdD
-	ieTpq2cw==;
+	bh=U/IgEXneIniXkPZT8bYgKBxJsUil0rvnBRux5XQE4VE=; b=NPFJNO43rghbz53hc75OtyJm1O
+	yxxg6BGfrw3aSvz8WsxEUeutN4CrCG6ucKWQ2UfIo72palx/9JC/UtBKJMPISZ/d6FZos/iEgfk2W
+	sjjOIlsAgzWFKU44QCS0/vuTGQcf0PZoUm6BZNwiE/An2WRUI7pMWbBTvdwtyMEGiGS2S9HZzYs3N
+	XFH0TYY0zsJnm/WxbqVWBzxySvXZ6dQdrZCL+LC1r7LEA4YvxVwauBnnfWc2VnFLrq83GvDoB/fGK
+	stWZKg1QLVwiUuYnLH6OsrD9+RrEGRlAMXjVanCpu/tzk1+X2bE782D3R+aNNFBPG+SsCzbEWUoF0
+	Fh1LsUZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whlWQ-00000001pU2-0jyo;
-	Thu, 09 Jul 2026 09:58:22 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1whlWa-00000001piG-3Ebz;
+	Thu, 09 Jul 2026 09:58:32 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whlWN-00000001pPy-1DmQ
+	id 1whlWY-00000001pfJ-3biV
 	for linux-mediatek@lists.infradead.org;
-	Thu, 09 Jul 2026 09:58:20 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-2cc7e86e7aeso16600535ad.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jul 2026 02:58:19 -0700 (PDT)
+	Thu, 09 Jul 2026 09:58:32 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-38759bcd877so1362030a91.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jul 2026 02:58:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1783591099; x=1784195899; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1783591110; x=1784195910; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=3NOayELjm3/+NeKg/MUGc6Z0GBz34hjktNSI4aLdsWw=;
-        b=Ztdts66laL/X9JLSFiSdra5USuwid7TkcB4WMH4brXZk/yr/MgpAQ8lzhKn9TPvR/E
-         XAPIMXaR0BfnoZZ+fELB09QMwQ/MPx8ySBdk1EBv9aOtnk5gIJZ/MkZsqWz+zHJlkcBk
-         95yhLQ8x7OZnGI8GYZMGIypA3IUU6wuCf3yUA=
+        bh=U/IgEXneIniXkPZT8bYgKBxJsUil0rvnBRux5XQE4VE=;
+        b=c+/qzv17559PB1S/QLmUJvmKAkZgGRpg8uFPTYEmrj4XZ8T3qBDMQB5ZepajmE4aje
+         xk9g941Ea+chcD8ow6aXqdYvcmGtoYXNKgVhzoYYRXPrZ34CnYvz85HryVatXPAqKG32
+         hAqZvqIqBQWN7Ud6A3+FeOf6W1U7fUG5OVsTk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783591099; x=1784195899;
+        d=1e100.net; s=20251104; t=1783591110; x=1784195910;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=3NOayELjm3/+NeKg/MUGc6Z0GBz34hjktNSI4aLdsWw=;
-        b=rpcuyeIJMs5VMwb9la5rBT6/2xuWZdrhCt9Gv/BQBH417BfDRBm2p6o1JTBWa/QmV+
-         KFbE9c3Zvm9a/lMAznWGdl97Fi2qWsYjEtdu5nXWMVFjqo4TgWShnkQP0KO4i7K3DT5T
-         cQ0IorizoYtpilK8sxc/s5PgJBpgvtv/8eOlgmOEiTLMjuNsBuKZLh4xQbai/QH/BN8I
-         h/HKJ/klBVxTNlwQiF/L6oAav5iAbu8ef/UupI6OrQd0fUpghA5QNzHvE/GKHsXVhP1x
-         4wIGJ1dfOJXm3M/1M9Rvm5ockvEXMhUCnbZidWCvkth0i3j81EFqSvLThiZ3GMgehKHP
-         Ge4A==
-X-Forwarded-Encrypted: i=1; AHgh+RpNZKUNgpv90fNayW463Uk0bbIzisw6+vP3/9RMg1TD/BO1LkoxHYpdMijLlg3gD/VLAK4RcSqxlQ11Ba6vMA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx6OfuYfF1g4fio0hfSSk64nCybHDreEq7i0Dd4EDku+jBHeovQ
-	b3gtNymB5+0wDTeeW3xHcdjsXhRtrgJfAYQ9JgdcE2D7tVg1V9qeqfBy+zCZYEupvw==
-X-Gm-Gg: AfdE7cn/jul72Y7IrM1iKjA+zTxA/1nBxRWYCMT6WzCaW7q+Q37c5FPSOm6YJVpL/R7
-	ZEd5Uvp/lS0jVgYcVNhdwlwFlPFCgFWMZZ9VbKkI0AmZtUiCaIWwNdmjZ5O+nOUl5GI8Ps8xsbE
-	wbEUWOuZQOloo1HMxyh5BWDiob/ezbxJqTL8nIOjaPG7VOb7hvVvuCJ66flyW7KhajmJIoY5T43
-	rx0vi8rn8bqPGFx1UENImBq+N9SvXMxCUVFcXEItCRp+e+Y4E95BOIRxpqH12CBxHWidRUxPnx/
-	87fJdxajvbkWennEJ+JqFT+5vE6EvntnhnwQpP5btagwkv3vRMGGWHpfTFbemM5R0c11rtvLS/4
-	iAanCN6BNSBUYyR3m3IuiTrThfI7Cni9Lj+8kwl2uDx/hTvJsaP//STAsgIZ7J4u7m4eKrU6f50
-	A9Xkk1gAVPbuLRKYFUSDytjvLFXupqfLiivDg9wqeEv+B1VJLampYEXnug7QlFB8FAynOOZxmE4
-	TpQxeZi
-X-Received: by 2002:a17:903:1247:b0:2ca:eea:eb5c with SMTP id d9443c01a7336-2ccea373170mr66966485ad.18.1783591098706;
-        Thu, 09 Jul 2026 02:58:18 -0700 (PDT)
+        bh=U/IgEXneIniXkPZT8bYgKBxJsUil0rvnBRux5XQE4VE=;
+        b=WXdD6/u7xGbiwMcwyvKSMKnHd52pb1+guIlpt7stzr63ciRVbIjx8ztksja2ybl0lQ
+         5EDEDiJawoDEzaBS2RqboScJcU5Wm1t9/PPuXA+HBm1WlpT+F6MrrROwyC1Y5s1lawP5
+         qowklMCZfScnhLE9zUc4NKefL7vE1zt6ctfh8SlFJX2Lr2hzi7W52/W9QdJd/4Q0kZ0C
+         IY3C6ioVvJIHPnz0VpgGoQchIIPRuwc2JVi/oEGzLGV/OD+sZ4Z1yNcgrw0SdCUBZPDe
+         z3aaJrIeEooIhDrV79LWU6MQuotUGTjuO5E0GdkM0LOGiskQyO5faP6rfki5TGH1YBX4
+         2fnA==
+X-Forwarded-Encrypted: i=1; AHgh+Rohhy1Pq3N9CvnAj6/jx5y6Dv13459QCNQaKKD9yze0lUlY1lU5XFC4c8yZP8Bklc+Fx+sXhLvcv+C4vDCKZA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzZwBb2rCKyls/K/l4nzHdfAj6+xYsgSXXlkLKVaOXisytCRS9M
+	J/SYMSBMx8JERIq3us6DOWDmuCSmrZQNST6A9ShWttDFDL2sn0QCcMU4qjNOKE0FgQ==
+X-Gm-Gg: AfdE7cnOIfeS2DVCsStOGtqoLCGdmFgfN9T5sPOIXasyHZ+3STkow5TMY8VlFmk6sef
+	ucWYM3LQRgRkejKKJuFAt1/8pYsxOz8SphJ9g6sP5qjuqQnXWh9HO+WmSQqllYqGcxabIEEQbOJ
+	YjM2iM+UxhAXS7sOhfV6eaOMXkIfW75Ms3kdPHAeHqO7R3edTgOXdEjWm3Hlk80BY4XOUJlHf7b
+	ldzQGMTOyuANlExc3qYgm+elWgfW3B8goEFz3UppK8lL9mFApXrgfhYkp4Y7jSnHXVd2mxpUi1w
+	4fOKGsFK3nWqzODEfuwnTvV9fRcdnWYvzHXQt8LKjwCp2t6VMZfQ1zhJabvbm3QwHYpxIikGlbl
+	gHgsxqcatjy03ev8WiCmJEgsPzOz+lRgaGPD+Hxurm9s1KRUU7gMKYJ42gllp131LBRng2ihAQg
+	V93gmZx0qM0sjtxtYRYeaYOyaUPobo1nUGhFGaOrhTgraR52q7rAwQIYpNJ4dSHcimI2X5dA==
+X-Received: by 2002:a17:90b:3ccb:b0:37c:607b:2cd9 with SMTP id 98e67ed59e1d1-3893d81f4f6mr6100304a91.0.1783591110117;
+        Thu, 09 Jul 2026 02:58:30 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:bd09:6ddb:180a:69c5])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9d5bd2fsm41082155ad.78.2026.07.09.02.58.13
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9d5bd2fsm41082155ad.78.2026.07.09.02.58.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Jul 2026 02:58:18 -0700 (PDT)
+        Thu, 09 Jul 2026 02:58:29 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Bartosz Golaszewski <brgl@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -92,18 +91,18 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-kernel@vger.kernel.org,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Alan Stern <stern@rowland.harvard.edu>,
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: [PATCH v4 08/14] usb: hub: Use usb_hub_set_port_power() to control port power everywhere
-Date: Thu,  9 Jul 2026 17:57:13 +0800
-Message-ID: <20260709095726.704448-9-wenst@chromium.org>
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: [PATCH v4 10/14] dt-bindings: usb: mediatek,mtk-xhci: Switch to ports for USB connections
+Date: Thu,  9 Jul 2026 17:57:15 +0800
+Message-ID: <20260709095726.704448-11-wenst@chromium.org>
 X-Mailer: git-send-email 2.55.0.795.g602f6c329a-goog
 In-Reply-To: <20260709095726.704448-1-wenst@chromium.org>
 References: <20260709095726.704448-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_025819_337331_A656E441 
-X-CRM114-Status: GOOD (  12.04  )
+X-CRM114-CacheID: sfid-20260709_025830_914963_35644C61 
+X-CRM114-Status: GOOD (  12.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,49 +117,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are still some instances in the USB hub driver where port power is
-directly controlled by toggling the USB_PORT_FEAT_POWER feature flag.
+This reverts commit 454a1e3cd36c113341d7b71e8e691c6e47ab4a8a.
 
-Switch these instances over to usb_hub_set_port_power() so that only one
-unified function to do this exists. This makes adding external power
-control with the power sequencing API easier and consistently applied.
+MediaTek's XHCI implementation supports both USB 2.0 High Speed (HS)
+and USB 3.x Super Speed (SS). The block can also be synthesized with
+either HS-only capability or HS+SS capability. The SSUSB controller
+handles the device or gadget mode. Saying that SSUSB handles the HS
+portion is wrong.
 
-Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+For example, on the MT8195, the first two instances support both HS and
+SS, while the latter two instances support only HS.
+
+Switch to a "ports" sub-node for describing USB connections. Port 1 is
+Super Speed if the controller is SS-capable, otherwise it is High Speed.
+Port 2 is High Speed if SS-capable. This port mapping scheme directly
+matches what the hardware returns in its capability registers.
+
+Fixes: 454a1e3cd36c ("dt-bindings: usb: mediatek,mtk-xhci: Add port for SuperSpeed EP")
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
-Changes since v2:
-- New patch
+Changes since v1:
+- Squashed DT binding revert and addition together
+- Dropped reviewed-by from Bartosz
 ---
- drivers/usb/core/hub.c | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
+ .../bindings/usb/mediatek,mtk-xhci.yaml         | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/usb/core/hub.c b/drivers/usb/core/hub.c
-index c7fa73673582..369280a217cc 100644
---- a/drivers/usb/core/hub.c
-+++ b/drivers/usb/core/hub.c
-@@ -975,11 +975,8 @@ static void hub_power_on(struct usb_hub *hub, bool do_delay)
- 		dev_dbg(hub->intfdev, "trying to enable port power on "
- 				"non-switchable hub\n");
- 	for (port1 = 1; port1 <= hub->hdev->maxchild; port1++)
--		if (test_bit(port1, hub->power_bits))
--			set_port_feature(hub->hdev, port1, USB_PORT_FEAT_POWER);
--		else
--			usb_clear_port_feature(hub->hdev, port1,
--						USB_PORT_FEAT_POWER);
-+		usb_hub_set_port_power(hub->hdev, hub, port1,
-+				       test_bit(port1, hub->power_bits));
- 	if (do_delay)
- 		msleep(hub_power_on_good_delay(hub));
- }
-@@ -5436,7 +5433,7 @@ static void hub_port_connect(struct usb_hub *hub, int port1, u16 portstatus,
- 		if (hub_is_port_power_switchable(hub)
- 				&& !usb_port_is_power_on(port_dev, portstatus)
- 				&& !port_dev->port_owner)
--			set_port_feature(hdev, port1, USB_PORT_FEAT_POWER);
-+			usb_hub_set_port_power(hdev, hub, port1, true);
+diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+index 231e6f35a986..d6c75bd20b78 100644
+--- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
++++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+@@ -107,10 +107,6 @@ properties:
+       - description: USB3/SS(P) PHY
+       - description: USB2/HS PHY
  
- 		if (portstatus & USB_PORT_STAT_ENABLE)
- 			goto done;
+-  port:
+-    $ref: /schemas/graph.yaml#/properties/port
+-    description: Super Speed (SS) Output endpoint to a Type-C connector
+-
+   vusb33-supply:
+     description: Regulator of USB AVDD3.3v
+ 
+@@ -188,6 +184,19 @@ properties:
+   "#size-cells":
+     const: 0
+ 
++  ports:
++    $ref: /schemas/graph.yaml#/properties/ports
++
++    properties:
++      port@1:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Super Speed (SS) data bus if SS-capable;
++          otherwise High Speed (HS) data bus.
++
++      port@2:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: High Speed (HS) data bus if controller is SS-capable.
++
+ patternProperties:
+   "@[0-9a-f]{1}$":
+     type: object
 -- 
 2.55.0.795.g602f6c329a-goog
 
