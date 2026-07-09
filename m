@@ -4,87 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE5E4C43458
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 19:39:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09F78C43458
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Jul 2026 21:27:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=1C9Fd2DZvYyR1+upE043sUmS7e2RixbOHmD9oJqDM90=; b=myOStAtiGHKRs/
-	jz2KJXyb0l6Z/i597hvaRxMBks41gIS1RIRXbnjyDbRiBAKHa5BWJlRiu04N1pg677r1MN9BJLJg7
-	Bfy/ZDd/wxtaFQq0ycnZBj1KuGJi2zdDCoRq5CqSLC5rxEjIusYcSFFcuI92imb0c6gxCKTi7gm/Y
-	PAimevsot6QR1Dxlhctlf7kDBD6AYy4YgoCL0wGzDM8pAXEXZSKUMrfhbh1eGS95Hz/soRaQoRoT+
-	5CkA7PmI4CVynkTzg7fTLLxpBzpNusCz0YzPTgZW1DLA+gBPQpCHgKmdNYI2T0XgwAOV8ZLNbyVA1
-	QsYtWCvd/43CjZGMwVDg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=K7gv7DO3sRanhSag9LvnX9LZtxm45e9XO0imyrqaXXo=; b=gzEB/5C+Tq0gU5THW0YQeBtOHM
+	isvWjMX9XjxEetXUKdjclGNVN+KtJb4RowtROHoiRzbLvbcarcWw/zzl4z+i1EoRfUtRhwnclEeEf
+	aXeIQkuuwK0jChilNFKsPsKuZTZhn62ZjP3AOZWZ2HcvD2pMplD9POqwMBUw5Yk+yzPbhdu/JMY5H
+	uy8gOx4Z82JUUnBDptwGB3rT9l4EaBouNErp8un7l5/YawUTCYQxYmquoIcdbBRohe+zTU1VRTV89
+	TL1xJ8H146VCGFqA5b2ULCTIGw2rByyIle31WzZ8htR8KmpkQBl9V8yZTNUBDA2GfNyAkKvrz8lAb
+	9+bkLang==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whub0-00000003Ug0-40lq;
-	Thu, 09 Jul 2026 19:39:42 +0000
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+	id 1whwHd-00000003hBu-3znf;
+	Thu, 09 Jul 2026 21:27:49 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whuax-00000003Uei-3zo7
-	for linux-mediatek@lists.infradead.org;
-	Thu, 09 Jul 2026 19:39:41 +0000
-Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-2cc827a68fbso511315ad.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jul 2026 12:39:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783625979; x=1784230779; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=1C9Fd2DZvYyR1+upE043sUmS7e2RixbOHmD9oJqDM90=;
-        b=DR2dqw8enPzJbvKW1pbCGOqy0OOK32Ls4kDKuxxD4YH0OJ3WjxjsITi7dziSJxkIet
-         mFHt/G8LDIPoDDg9WA79hGDAN2x4bVeKbihY1VqF00p7ieqZkd+2TzRTwVSeZOn9TW4Z
-         G0xW2+EZGNKtSB0KaO1UMOKQVuM5wrK4H+QvR88erQaDuZRY9QkBcYUbZIPvz5xXGU1g
-         2YCMJWkxh016oeDOmvrUNHNYljsLbFbOKzMrbWAiaPP6g+bjXmSD1d/73oimGoKzPSmt
-         F9IEoDpc1Vf/fX7xWGhcYJ8Q6kP1y5VJ6msotClNtVvhe8AJexJ0/QWz41hxLHLOGh2Q
-         rFxQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783625979; x=1784230779;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=1C9Fd2DZvYyR1+upE043sUmS7e2RixbOHmD9oJqDM90=;
-        b=QY3w6T/s4Hbx3hGCr5W9SZ9kiL0LPFBoMw7MQ2qSDpHL5glxDDk/HzxypnUtna0nw6
-         MtzbhnhTEHKG67hxMT6KqQFhTAR7RGJ4h4LKrkUdouOJL1kAEOzuOX7zdfB3s5u5tUwK
-         gyXcIWpNn/FN3ZJ/8ftJUJD4mPWRLLzjjAQQ0C+mRQzKnkNzHPgyW15jArVh9aGmRaO5
-         DwdE6DIlHD9E0R9DBa7J/8kZlvOGdTp0+Y3kMp6ppfylPHh/qcCSKLk8Et0VoyOy2sFj
-         XfqIJrxM8caGIKkG+QKAQehFOBAnDf82oDMCjEwlYKTnS0Luo3/9ICuJOZ6Yfb4yOExk
-         /HRg==
-X-Gm-Message-State: AOJu0YxrpplR2Q8fwClRHtaSVaC1mwXm5SU5w1/j1i5eqUEo0yTGCKaT
-	E7qNQxf/ZbLOz63ocbnBGP+xD8XIwFphv//hT24AvO5NW4aWPBdFo+2F
-X-Gm-Gg: AfdE7cmv/S9jlMgHeW8/auxi9KQCYnbNX75cy5z8YT3QEzO6dKbmQbxjhozy/wLhMMH
-	BVw3WKUuzQncJNaXBiIyQxUTqOyH0Rv1O1jAAGBVEK3jlAKVjTwBR5T9z0OxmGl1bVve+7sq8CD
-	lGzPX3ryELisnbS9iyNZy2OZVINbffBvVv2gVrv/Jc1OJbo5NYAjkFnI/XJCnAHAE2czXD/tWhB
-	+4/lXdLVjPqhBmKlja64fZZCJNcALqEf4SSy1AHzhmp+ar2OrsKl17a8r7xIh/MFnUQZGqmCNSN
-	kUjZUMHlsWHh40tCxJD/32/YhMA19caoQi4gvdPQWmBOa6BsOEwUMCpiFt/XQaDIYtvJ/o23Oey
-	A21jbGuZXCcITBq4lHzj/FYUZawOomHppB4voktRa745x4Nf8naDVbSTiFl9vgs/aF4Jn+34UyX
-	083Sotpr39a9geK5VdO/TR6A25sWawgpKi5GBjco1nQEx/6xxRDIIN9HZZ5WQwLr6SKg==
-X-Received: by 2002:a17:903:90b:b0:2c4:397:dd7a with SMTP id d9443c01a7336-2ccff09e0fbmr44702215ad.4.1783625978569;
-        Thu, 09 Jul 2026 12:39:38 -0700 (PDT)
-Received: from chenyou.R15NEW (112-104-169-66.adsl.dynamic.seed.net.tw. [112.104.169.66])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9d5bde9sm49018755ad.79.2026.07.09.12.39.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Jul 2026 12:39:37 -0700 (PDT)
-From: Chen-Yu Yeh <chenyou910331@gmail.com>
-To: Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linusw@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] dt-bindings: pinctrl: mt7622: allow gpio-hogs
-Date: Fri, 10 Jul 2026 03:39:27 +0800
-Message-ID: <20260709193927.108105-1-chenyou910331@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1whwHc-00000003hBd-1qr5;
+	Thu, 09 Jul 2026 21:27:48 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id E9B2D43C37;
+	Thu,  9 Jul 2026 21:27:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 29CC11F000E9;
+	Thu,  9 Jul 2026 21:27:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783632467;
+	bh=K7gv7DO3sRanhSag9LvnX9LZtxm45e9XO0imyrqaXXo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=BvuWBuDz7IFj4YppCCGpHWM4n2RrTqqSFf9MnF4JteCmXladxy8roihQmpUhe3zW2
+	 3kU8DWcbn/KDobOugs7FtOq/4oq5zPpy/f7UQZXXrC1+XYC+1jHng8QLyqLj7Y7DHq
+	 taA14sTXy0s365x58bM8TLUdKUQqelteSYdhO54s9DYANJMZtw8j6OdxxyW0BH4/V5
+	 EEYaEI4nMb9BU2GqTL9+jRdM+sTja/Olu+4ViQpxNzf8zRwx3B+P2/d0XuUqO1IRNa
+	 wenYWNjnmR6XS4ww6wCOKazCY5Uc5dndlQdotWYqSkbVfg2HFhK7+GfpO3cC6r164u
+	 I8FGpqDu+VonQ==
+Date: Thu, 9 Jul 2026 16:27:44 -0500
+From: Bjorn Andersson <andersson@kernel.org>
+To: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
+Cc: Stephan Gerhold <stephan.gerhold@linaro.org>, 
+	Mathieu Poirier <mathieu.poirier@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-msm@vger.kernel.org, linux-remoteproc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 2/3] remoteproc: abort subdev stop sequence on first
+ failure
+Message-ID: <alAN2t2C5twxuIjd@baldur>
+References: <20260611094851.dkg63rqztsv2pre7@hu-mojha-hyd.qualcomm.com>
+ <aiqF5mh1PvWpH3L5@linaro.org>
+ <20260611105506.llvya5tda4xsd2lo@hu-mojha-hyd.qualcomm.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_123939_989086_E0AA0627 
-X-CRM114-Status: UNSURE (   7.95  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260611105506.llvya5tda4xsd2lo@hu-mojha-hyd.qualcomm.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,46 +70,81 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Chen-Yu Yeh <chenyou910331@gmail.com>, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Commit 6e3b067d3c5e ("arm64: dts: mediatek: mt7622: Align GPIO hog
-name with bindings") renamed the asm_sel GPIO hog to asm-sel-hog to
-follow the GPIO hog naming convention, but the mt7622 pinctrl binding
-only allows child nodes matching '-pins(-[a-z]+)?$', causing a
-dtbs_check warning:
+On Thu, Jun 11, 2026 at 04:25:06PM +0530, Mukesh Ojha wrote:
+> On Thu, Jun 11, 2026 at 11:54:46AM +0200, Stephan Gerhold wrote:
+> > On Thu, Jun 11, 2026 at 03:18:51PM +0530, Mukesh Ojha wrote:
+> > > On Tue, Jun 09, 2026 at 01:43:17PM +0200, Stephan Gerhold wrote:
+> > > > On Tue, Jun 09, 2026 at 03:52:52PM +0530, Mukesh Ojha wrote:
+> > > > > If a subdevice fails to stop, it indicates broken communication with the
+> > > > > DSP. Continuing to stop further subdevices against an unresponsive
+> > > > > remote processor could close rpmsg devices that could remove the memory
+> > > > > mapping from HLOS and in case if remote processor touches those memory
+> > > > > can result in SMMU fault.
+> > > > > 
+> > > > > Change rproc_stop_subdevices() to return int and abort on the first
+> > > > > failing subdev. Propagate the error through rproc_stop() and
+> > > > > __rproc_detach() so callers are aware the teardown did not complete
+> > > > > cleanly.
+> > > > > 
+> > > > > Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
+> > > > 
+> > > > But what would callers do about this? If you abort the teardown sequence
+> > > > half-way through you now have an inconsistent half-stopped state that
+> > > > neither a new call to stop() nor a new call to start() could recover
+> > > > from. That doesn't sound much better than the SMMU fault. Or am I
+> > > > missing something here?
+> > > 
+> > > SMMU fault result in device crash while other is non-functional remote
+> > > processor. From Linux side, we do not know the state of remote processor
+> > > when the timeout happens..cleaning the subdevices can result in the
+> > > debug data being lost for hung remote processor.
+> > > 
+> > 
+> > Ok, but how do we go from here? Do we expect that the system would have
+> > some userspace monitoring daemon that would collect the debug data and
+> > then reboot the device to make the remoteproc work again?
+> 
+> I would expect the manually collected crash dump in this state to find
+> out the exact reason for remoteproc being stuck instead of ignoring it
+> and claiming a graceful shutdown.
+> 
 
-  mt7622-bananapi-bpi-r64.dtb: pinctrl@10211000 (mediatek,mt7622-pinctrl):
-  'asm-sel-hog' does not match any of the regexes:
-  '-pins(-[a-z]+)?$', '^pinctrl-[0-9]+$'
+We need to consider the scenario where there are other users running
+this code than you, and as Stephan suggest, they probably expect the
+system to recover (by some means). Few people would be expected to pull
+out their JTAG hardware and start hacking away...
 
-Allow gpio-hog nodes in the pinctrl node, following the same pattern
-as commit 9322da935c9a ("dt-bindings: pinctrl: mt7988: allow
-gpio-hogs").
+> Whatever we do here, the remote may be dysfunctional without a reboot,
+> but cleaning the rpmsg device will clean all the required debug data, or
+> at least if possible, tell the rpmsg driver with the rproc state that
+> shutdown was tried but was not graceful.
+> 
 
-Signed-off-by: Chen-Yu Yeh <chenyou910331@gmail.com>
----
- .../devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+That's certainly something we need to take into account, but does the
+use of "may be" leave room for the possibility that we have a
+recoverable error?
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-index 6b925c5099cc..021307b6d801 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
-@@ -65,6 +65,11 @@ then:
-     - "#interrupt-cells"
- 
- patternProperties:
-+  "-hog(-[0-9]+)?$":
-+    type: object
-+    required:
-+      - gpio-hog
-+
-   '-pins(-[a-z]+)?$':
-     type: object
-     additionalProperties: false
--- 
-2.43.0
+Also remember that the user might be in the middle of an important video
+conference when the CDSP hits this error, so we don't necessarily want
+to reboot the system just because we enter such state - there's user
+policy involved here.
 
+Regards,
+Bjorn
+
+> > 
+> > With these changes, I don't see how you would start the remoteproc again
+> > without fully rebooting the board. Calling start()/stop() on the
+> > subdevices again would lead to crashes because some of them are in
+> > started state and some of them are in stopped state and we don't even
+> > know which one is in which state.
+> > 
+> > Thanks,
+> > Stephan
+> 
+> -- 
+> -Mukesh Ojha
 
