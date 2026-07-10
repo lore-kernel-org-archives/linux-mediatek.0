@@ -4,119 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3BC1C43458
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2026 02:05:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D53FC43458
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2026 04:45:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yV/bSXYSLP9qBujU+T7ka+EuaphsnZ2kIz/iz5VjP4s=; b=BG7wXEcmKrrWhMglJCCDNYpWax
-	3LxwAXfQH33szr5niIzm4SUwLLBX6qRCJG68DPKNtpceU/CQ+p9G3TmwGVqp9IjlF8B4AXY4A2Xma
-	V9Pnwq2kvtC8oT9tuHD9yYMZGXx16kjE+dOkTaIhYEEATHPe4VibBFRo4EB0OlK7AcJU4M7wmWzyS
-	A/UiITk+Y8im5eXYGpqBl7wvJDdMgHFWQELWfbcJLwo8T99nha7/iPtSh34SuarBWneepdy9Pjq2b
-	tDXEUCc5Rz9wmyRuaf8EheUu3qQHiWpCBSWRaADvqxZ8WJAl/T9dHd0w7l8xgQD5NZauo6bwPBTI1
-	Q0o9tc+A==;
+	bh=jp+8+5QI95ophkzdeX5PhLSIZp16xbFMwu4QDRkzOEs=; b=4DuAc44tZm9yw6reei4UNx+LYf
+	E/eYFuVAr7UB+FjP/rGFCmS67TycdiJcxYO2g3sGQarStR/LKZibKbVd3HDncVt23U8PvbXfapB49
+	pCvGJVNU1aLNW6kNlYTQW8rY7YxiWRYUX6ErFhoEIT/XfASBt4UuRVd2BdY/0o9IE2SrkMwuNr2F9
+	Gp7PnoRFacXSmltZJw73m3LxX6nG5hlAnL9d5mUyJkDrQQgy+CULg4FX+jMmDbnP1YT0xtF0SlzZB
+	p1SNRKX7Jbhh4iPcwOzoWjCnZwrYdaB/tKSMsVrU23aGEYouLin4fnRhoWhQo1oOEOQ4TqlQ1Y2KP
+	PTl4FVdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wi0cH-00000003wNx-1Gjw;
-	Fri, 10 Jul 2026 02:05:25 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1wi36w-000000046l7-1eGo;
+	Fri, 10 Jul 2026 04:45:14 +0000
+Received: from mail5.25mail.st ([74.50.62.9])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wi0cE-00000003wNF-0gwe
-	for linux-mediatek@lists.infradead.org;
-	Fri, 10 Jul 2026 02:05:23 +0000
-Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-84783bce476so458434b3a.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jul 2026 19:05:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783649121; cv=none;
-        d=google.com; s=arc-20260327;
-        b=JiG7LuOIZ+J5v7tGebPg7doEuA0/EcT2uhusaQSS208ME3poOrp1fYIVjc3x0LaR/8
-         ODoyuytmGDaOTvEr4F/zuUMyRb+ezulOx8PS9MaFkKG0V7yMugshonNA9z5J/vbiEimz
-         uq9fEUXoS2ho2NMUAjzvaQQUk5JhWrdF7jPeziH+BRybsWcszLB82NpKkDMm1KKcEp0Y
-         qMuYaHgSxkG5dinSa+za9u4g/fVsDwz+lpvi5pBdp98LTcyjttcAvyiKD6uWZB9Ypd/q
-         zM4Owv5BbYy29BVrj4PVVvFe6Kh963UU27KMvCKuwkgYANFO6Zkh00EZ3+03iJ/tolbV
-         F2Ig==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=yV/bSXYSLP9qBujU+T7ka+EuaphsnZ2kIz/iz5VjP4s=;
-        fh=psIMp5W4n63wGYtMqovnsGhbvHEDAtujRmT1VFiInw8=;
-        b=kZMp2tG3X5vBx1uewJcOpqspF7jhkeqa3Dp6ogPw1C3D9Y5PxCHPrSOuo77K0wuwVx
-         iioBdK2/TdIn/3XR4C4kvLT3fuSrfjz5o34BjjRgKscsurBp4r8BjnojczjuX+gj3a5O
-         S5DMzzF9PuurOebbZQNDX9Na+n8Be+A0Mt2gtryKna9PTHwjM1X6iSxiWl6MoBdF0DoA
-         THTUO1FSXU7Wgu+2+8nck2C8iNcXIBUaUSOcolOgdBoiYxXKj3r3mbpM+6LXonsgyRw1
-         KPoipUlNhkGHhJf1O8iwCjkLCEZCJZxmCbSvSn+btydc4SeeXPpoz2n65f+ISqAMCatx
-         rIlg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783649121; x=1784253921; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=yV/bSXYSLP9qBujU+T7ka+EuaphsnZ2kIz/iz5VjP4s=;
-        b=tDbF3nPiZ/BT9Segh7x8rzrOq+Hdf6KFqOY3Kd00b1P4eZY/Zh7RNuELNmGxhJ0Cmz
-         LvK9bmMi8h0ekyEcFViGTh5rbDeqW9OroONWeJG7YLxy4DTyTSVPuL2c2ClhFozD6l+q
-         RmGJoftRCflW1fIFC2tJanJwAvQ7Grfrt+8ME1xG6I/IWy1Tjr17P3XvIJBOFbhkGihY
-         a+Pyv+0mENrFre7bt1oiHMjkKAinTb6ewKwO1CtrO8jYW89iP8w6VsL0FiZb9OYI/1T0
-         OQNQduBIXNWHNlwVAGTHILpLGJukJddqEqIBzKs5xe48Y+o0hUlFHDWX3qtUdZNeKGhc
-         yOiQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783649121; x=1784253921;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=yV/bSXYSLP9qBujU+T7ka+EuaphsnZ2kIz/iz5VjP4s=;
-        b=MDXM+M/ELHcCgmyXNaYXxJudG7Y5uMILHNSt287ez651ZaW9yvzRTKqcEJUZnpnKgT
-         TgL2Xn4U0/+NyI+03aaMmJrnX+4vO6Cjvv6UkXDOh1fjV0wUjrm264YavMcWrPzNHeco
-         B2KCbpIq4sJ5rDEpqJPb3KXdroz2ahXrIB+66/9RGX+DmfxELGpszEpEdu+KUPijI8jI
-         R0K+iXq+62CcTB5KlcdU9Aq1x6LHfnQhUWOlmO3JFKSc+2s8ce4LhKk7UmpktgfboskP
-         moH0X8TSAqvL/PJCoRnnV2v9uOuqMhyt+0qacvdXD1zL/gTpwaywSAhikFY1tT5nXz72
-         C1Ng==
-X-Forwarded-Encrypted: i=1; AHgh+RrxQBHVXBFK+9w7/4lX0io+lkYYxXFTGwyxCVs+53wQTMGKPurcDmeW/yPN9nEJm+uRdnrUQxmgn8NjZoJ9Sw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwENewI0QWAlM0kxJgOqC5kX8rdD29LFwj2SmrNc9EBq+tTs9/8
-	IfAKYO4Zt99rvWKCY5mZj5pmi8igFuOcNcqvKmr/97kyo/kGjZhAAvAQd+Q6fzllIkF1wB+XL6j
-	9KUMIalhQv/i+8m8hmC0wuMbJCeHkvxY=
-X-Gm-Gg: AfdE7clp2550IcPhRtoBIspHGkGxcO2LIH9+hfsJ8qbcnFQqj6O0i1Tb+Pmi9qXXood
-	KJFFxmkkiWPyWc/sRoe/yoGxQPahZ8Ihd7OYE/uZw1Uvrtrhh4is66oJxYj5rIPdiUHFOzZDB3o
-	jMrUv55PLcF82LJ9Hwu//5Qj+aA7Eq+gwYk26pA72NYAR1lVl9NBy62IhzQ0y9LAwoKbI1LZH8O
-	m17qUKkHd21wxGkX3c4uQlg/GyyL7EmhnaCWeQr0H3hj5UwwxeK9uDtNVuZlbdHrIIuVRwN0M5t
-	TALiUPGCKJS0LrtDhfHehJDgKAjxwklZQk3qoQ==
-X-Received: by 2002:a05:6a00:858d:b0:848:47d3:47ec with SMTP id
- d2e1a72fcca58-84847d34a8emr7759091b3a.31.1783649120744; Thu, 09 Jul 2026
- 19:05:20 -0700 (PDT)
+	id 1wi36s-000000046kY-2smP;
+	Fri, 10 Jul 2026 04:45:12 +0000
+Received: from localhost (84-231-250-126.elisa-mobile.fi [84.231.250.126])
+	by mail5.25mail.st (Postfix) with ESMTPSA id C8E32617B5;
+	Fri, 10 Jul 2026 04:37:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=atomide.com;
+	s=25mailst; t=1783658352;
+	bh=jp+8+5QI95ophkzdeX5PhLSIZp16xbFMwu4QDRkzOEs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=CTaihVTY3xKeYwYurPIj1PGrGR+oQrwQf6TQ4FUpfmbKGRQQH/0vBl8OOK/WUw/zr
+	 +CHCGjc9WZ0h+gMjDXgKIuG0sfG5b8v/fURlsq3junjLdDh4yjLeo/E3mnyZF5ILb5
+	 0L9YsyLyaxt3ROVT6g7hv2fvRb3jKJLKIJ+xGvLZkROMhpsQ6xMpDQn/A0jBZLmU4Z
+	 ZO8Iro9rshL2Y66OWXG4Ngkys+C/yPaKUbK202WNo4t9V08TAI3OILwZ+ejHZzDyNG
+	 eSqlieskQg4bhu+Sw3PZD6vdc9fq9daM5LBBKO5PSTb9Angg33oCQkJipqydJDwaNj
+	 eyyRZriX8WpVQ==
+Date: Fri, 10 Jul 2026 07:37:46 +0300
+From: Tony Lindgren <tony@atomide.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Praveen Talari <praveen.talari@oss.qualcomm.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Richard Genoud <richard.genoud@bootlin.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Peter Korsgaard <jacmet@sunsite.dk>,
+	Michal Simek <michal.simek@amd.com>,
+	Aaro Koskinen <aaro.koskinen@iki.fi>,
+	Janusz Krzysztofik <jmkrzyszt@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+	bjorn.andersson@oss.qualcomm.com,
+	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
+	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-omap@vger.kernel.org, linux-mips@vger.kernel.org,
+	Mukesh Kumar Savaliya <mukesh.savaliya@oss.qualcomm.com>,
+	aniket.randive@oss.qualcomm.com,
+	chandana.chiluveru@oss.qualcomm.com
+Subject: Re: [PATCH 0/6] tty: serial: propagate errors from uart_ops.pm
+ callback
+Message-ID: <20260710043746.GM30058@atomide.com>
+References: <20260709-add_return_check_for_uart_change_pm-v1-0-e85c6ffa8ec4@oss.qualcomm.com>
+ <ak9OPNcVAhkfxHvZ@ashevche-desk.local>
 MIME-Version: 1.0
-References: <20260709045902.498848-1-phucduc.bui@gmail.com> <c74c52c5-91b3-4764-a7a1-26fc940bf735@sirena.org.uk>
-In-Reply-To: <c74c52c5-91b3-4764-a7a1-26fc940bf735@sirena.org.uk>
-From: Bui Duc Phuc <phucduc.bui@gmail.com>
-Date: Fri, 10 Jul 2026 09:05:09 +0700
-X-Gm-Features: AVVi8CdIYYnh9UcwsbAJsmq3JOOUQJGgVvrgAYTobV4qxqGEgOj9QMvwPYMMhSU
-Message-ID: <CAABR9nFMAujx-Besf2s=+ok=sctBYfz3s94s8aE8Q_yCSd_sbQ@mail.gmail.com>
-Subject: Re: [PATCH v3 00/27] ASoC: codecs: Use guard() for mutex & spin locks
- - part 2
-To: Mark Brown <broonie@kernel.org>
-Cc: Takashi Iwai <tiwai@suse.com>, Nick Li <nick.li@foursemi.com>, 
-	Herve Codina <herve.codina@bootlin.com>, 
-	Support Opensource <support.opensource@diasemi.com>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Jaroslav Kysela <perex@perex.cz>, Srinivas Kandagatla <srini@kernel.org>, 
-	Charles Keepax <ckeepax@opensource.cirrus.com>, 
-	Richard Fitzgerald <rf@opensource.cirrus.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>, Baojun Xu <baojun.xu@ti.com>, 
-	Sen Wang <sen@ti.com>, Oder Chiou <oder_chiou@realtek.com>, Linus Walleij <linusw@kernel.org>, 
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, u.kleine-koenig@baylibre.com, 
-	Zhang Yi <zhangyi@everest-semi.com>, Marco Crivellari <marco.crivellari@suse.com>, 
-	Kees Cook <kees@kernel.org>, HyeongJun An <sammiee5311@gmail.com>, Arnd Bergmann <arnd@arndb.de>, 
-	Qianfeng Rong <rongqianfeng@vivo.com>, linux-sound@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, patches@opensource.cirrus.com, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ak9OPNcVAhkfxHvZ@ashevche-desk.local>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_190522_207717_4DAA9639 
-X-CRM114-Status: UNSURE (   9.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260709_214511_215719_C5E7E41D 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,23 +104,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mark,
+* Andy Shevchenko <andriy.shevchenko@linux.intel.com> [260709 10:38]:
+> Just no, please just properly implement runtime PM. The .pm() must die completely.
+> I used to have the PoC for that long time ago [1], but due to lack of time and
+> other priorities it went abandoned. Also Atlassian made a brain damages move to
+> limit repository to 1Gb, so I haven't able to update it for a few years.
+> 
+> Note, that Tony (you have him in the Cc list) did a lot for some corner cases
+> with that and we still have them IIRC. Tony, do you know what is the state of
+> affairs with runtime PM for UART?
 
-Sorry for the confusion.
+The RX side of things should work for hardware that can wake up to an incoming
+event. Linux for sure needs more work to properly handle the various corner case
+TX wake-up of a PM runtime idled UART. I'm mostly offline until Monday though,
+will check my notes for more details next week.
 
-> On Thu, Jul 09, 2026 at 11:58:35AM +0700, phucduc.bui@gmail.com wrote:
->
-> > bui duc phuc (27):
-> >   ASoC: codecs: da7213: Use guard() for mutex locks
-> >   ASoC: codecs: da7219: Use guard() for mutex locks
->
-> Only the first two of these seem to have come through which has rather
-> confused things?
+Regards,
 
-I've hit my email sending limit. I will send the remaining 25 parts
-after 24 hours
-to ensure they all go through.
+Tony
 
-Best regards,
-Phuc
+> [1]: https://bitbucket.org/andy-shev/linux/branch/topic/uart/rpm-plus
 
