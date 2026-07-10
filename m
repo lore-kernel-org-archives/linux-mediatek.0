@@ -4,117 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25818C43458
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2026 05:08:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DC65C43458
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2026 05:17:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/iQDQsc59ksOHtvDkgxoCvh5YAWSsI1newC+9ZPwxzo=; b=4GRGQ7GWeA6KRTuXtYqvpOH0r9
-	5RgQZvsSnUhXuG4sl4/LEY/hFXwUdhRin7n8d5vSeGGUcSZ0Jb049dJOSO65OUmOrnOPcev8yQcz9
-	qwBdEnuL1//QgF6pQYiW+Sq+axz7ommX5XL7orkb381rVLTPE33hy1B0xJeR0JtSHkhGS4vLMD4Z7
-	ERHoV04nllpuJx9DW4UQpBvP0hZzt2dIfxzZnjecdHfLHO3Xsa1teVLBv7taSvFyg9n5sQL9GLD6q
-	iPeXPfUOAyg1N6/bwRM9MLBMq4RN6YDypcIclDPgTpIXkBddNaLPCGMwkXhrLT30KgS2bPXBaqLtE
-	S+l4Jz7Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=PvwGmo7/Njo2yNt/pF/MC/w+psXZgyvgwLxIt3GSmoQ=; b=AoEB6eGiNtGTa76QLEtLcrY+d+
+	9J3NN6N4m5J2w5QGJ2yBl22vjvndjw5OjMiPuSebzIAPEhJ+Y8RGTnamykRHiWSrCRK5HdF4okqJC
+	7phklgXbsRkArONDVxKw4LL4bgEcfoBEIXFJ2VaVqhQrQpZ0ZD2s5ixf6+vuPM8PXMLphqsOiR1AL
+	rqLwU8+iMaS5NlFLOdZkWk2UIIWWtyS7nY/SirreMKJCqK4pk1kFZmF3SptdGjDSRqnFcRoU5VBLw
+	adyNiSD93Lx6jHIvKvR9J3yT6a5FlRfu+GZS5NL4U2cj3e3ZM2e65et8VcjEqv1NWCfp7iwvSOJaA
+	KowYaopQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wi3Tu-00000004AXZ-1e3x;
-	Fri, 10 Jul 2026 05:08:58 +0000
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+	id 1wi3c2-00000004BOr-3KRM;
+	Fri, 10 Jul 2026 05:17:22 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wi3Tq-00000004ATh-0pft
-	for linux-mediatek@lists.infradead.org;
-	Fri, 10 Jul 2026 05:08:57 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-84536ecfc5bso481999b3a.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jul 2026 22:08:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783660133; x=1784264933; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=/iQDQsc59ksOHtvDkgxoCvh5YAWSsI1newC+9ZPwxzo=;
-        b=FbhiUbv6gEX+GzfkglHEfVp4DJLQE+1xWg0k41CceG6Trccbq9m9JmkHlwsUPCIeBi
-         2g5ejASgkiJw8pzoQXg77Jv+7qCWTL3w0LmTGAxt/btdIXw/NlVoG+qXJk1ik8PA3up/
-         HogjNb5j9f/Rv6Y3LYkZr4BXx37/xEVWpb0fzcb4IftHGX694MDENkO98jJJDJa+MpbP
-         W3btFHeFCRXM2KrFuHJPSg1u7tFebJMul27FI69j2rgfUPVXZ9ghA+z/F98bEii1xzs2
-         IimPsWb6yayP7F4TgfOleae15+YewjrPPf0ZKE2mCrTZvGRjeYIvpBjTg2YBwjd9aiEq
-         0CpA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783660133; x=1784264933;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=/iQDQsc59ksOHtvDkgxoCvh5YAWSsI1newC+9ZPwxzo=;
-        b=YPFf2zyh4L2maHx5I9YC5jq2PYXufwMTCGJus2xNE0DVhVeV3yLbDBXR9DBhj1j3mV
-         ANEWeLHhNxbvc1M/0y6q1ycKX6sFXit3raNpMkr4cjEhcSjp4clCIWXKFA86kTS69jTP
-         p+Jznv4OUumhupzdQE/D+ytbV6naoWu/f1fIbFUol9a4a6hr1PI/4fACc1TBatPuEG42
-         QwUU9KslEX4dtUoxP2RwwRNIEERgDKk32FENlZN4OYgXq4WFKB3KKpW+Nzb2L6kgm9w+
-         aybnGfY1olgMvFwjr+wC0rVDGqFhtxl9XmPhh1e6OqT1A7gf2ZJbY+bWMdwOfXkYwBAE
-         PuSg==
-X-Forwarded-Encrypted: i=1; AHgh+Rov14NpGWAatrn8y9BUT/3T+2LAAQEpXXaPGZQE1QLU6Ng5Q/7e9FCur+UG63YEiNANQ650k/56CnBmNHGw4Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw7ZJa/LazP+ehPBe2zPVgPJAjMwxpm1jpmM03BaiILf2cbRHDE
-	oOIBBmip0kF69c4o0jqjUcIwwV7w/csAQPhYRJKNabfnd/WLsshCOcWv
-X-Gm-Gg: AfdE7clf5RpbqcbLcF23SdOACHULXIXPtXvtMX7r3TY1eif4ehIPChO0iEh+0YXGT/M
-	rvOTtjrUhGLAEXgsk7AChlMzPToh0C9mXUmwMrTeknYDav87v51zoweuctx16AmPi+yjhCmNec8
-	H+4B7uxmKL99v+Fdy7jknqvrMNwu3uXXi2NYwXP6yaEiZQmfKcd3RHjLW3H+XAKDv9HB2VEWv+p
-	s0gCWczgm9rCajz0YjB4Qx0/O22z56bT+wOexlEo0PuPu8Mr5Vd2MQGSy+IEb0CrAlo9pjZ1n2n
-	lqVmtwQkCiRAjYhxGfGDHieCpHJ4o0jA6BIxM+NcClpWDTMHHoifmA0zDgy5caSXZ4eC2MHtkAX
-	SlkL5NmBVUL58+KX1fLtHM1BgH3HhTiBm5UBwD/XPZSnkoLSgdgq2xWU8tW6tJ54byJRBdhx6LY
-	fCNM0HFusl/mvcfOuFIhUGjZS35WAvVX3irV7rdLVjAYi+Mrk=
-X-Received: by 2002:a05:6a00:bd0d:b0:848:6698:2d5a with SMTP id d2e1a72fcca58-848669830bfmr3555077b3a.20.1783660133566;
-        Thu, 09 Jul 2026 22:08:53 -0700 (PDT)
-Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84847275fa0sm3400499b3a.22.2026.07.09.22.08.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Jul 2026 22:08:53 -0700 (PDT)
-From: phucduc.bui@gmail.com
-To: Mark Brown <broonie@kernel.org>,
-	Takashi Iwai <tiwai@suse.com>,
-	Nick Li <nick.li@foursemi.com>,
-	Herve Codina <herve.codina@bootlin.com>
-Cc: Support Opensource <support.opensource@diasemi.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Srinivas Kandagatla <srini@kernel.org>,
-	Charles Keepax <ckeepax@opensource.cirrus.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Shenghao Ding <shenghao-ding@ti.com>,
-	Kevin Lu <kevin-lu@ti.com>,
-	Baojun Xu <baojun.xu@ti.com>,
-	Sen Wang <sen@ti.com>,
-	Oder Chiou <oder_chiou@realtek.com>,
-	Linus Walleij <linusw@kernel.org>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	u.kleine-koenig@baylibre.com,
-	Zhang Yi <zhangyi@everest-semi.com>,
-	Marco Crivellari <marco.crivellari@suse.com>,
-	Kees Cook <kees@kernel.org>,
-	HyeongJun An <sammiee5311@gmail.com>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Qianfeng Rong <rongqianfeng@vivo.com>,
-	linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	patches@opensource.cirrus.com,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH v3 27/27] ASoC: codecs: rt722: Use guard() for mutex locks
-Date: Fri, 10 Jul 2026 12:05:11 +0700
-Message-ID: <20260710050511.14439-25-phucduc.bui@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260710050511.14439-1-phucduc.bui@gmail.com>
-References: <20260709045902.498848-1-phucduc.bui@gmail.com>
- <20260710050511.14439-1-phucduc.bui@gmail.com>
+	id 1wi3c1-00000004BOU-1QzO;
+	Fri, 10 Jul 2026 05:17:21 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id EA411600C3;
+	Fri, 10 Jul 2026 05:17:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id A1717C2BCB8;
+	Fri, 10 Jul 2026 05:17:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1783660639;
+	bh=v8h8OTDsfts+f8xQcfwy8E0kUDGKuTg/aSKZicK6s+c=;
+	h=From:Date:Subject:To:Cc:Reply-To:From;
+	b=X3QWO8xSaSIynshnunmMhWmjYM7riIuCR7wTpFcddWi3GeoSaiZ2gBk8WTHmyw/hV
+	 EnsLZvuPSailE8iOboYfSFdIL473q/1aTmmjLOZu8KI/EslOiI4bKZGy40kJ2ntXPu
+	 kqoLOIzaUfkdyHtQbj7tcS+axg1vXvT/Mz1X/VONTAz6tW7v6BmHTyVq7YPNHVKHfR
+	 1SEiCwtdnXFjTFHP0EnhS7nx5h/VhGwHVqj4YAPx4pP8bZfeCHS/d6wrZZJI88PAVv
+	 nTWAG2e9IMOzBd5kvr3YscHGFh1hk3DV+McvzW1X6/MFAv5oOrpBzvTlivBrZ/Nyp3
+	 PDUudFUCcr6Zg==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8FB15C43458;
+	Fri, 10 Jul 2026 05:17:19 +0000 (UTC)
+From: Miles Krause via B4 Relay <devnull+mileskrause5200.gmail.com@kernel.org>
+Date: Fri, 10 Jul 2026 01:17:18 -0400
+Subject: [PATCH] Bluetooth: btmtk: use bool for first_block
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_220854_308887_20AEA8EB 
-X-CRM114-Status: GOOD (  14.26  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260710-btmtk-first-block-bool-v1-1-e6ac61d918e4@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAF2AUGoC/yXMwQrCMAyA4VcZORtIi6zqq4iHpcs0bq7SVBHG3
+ n1Vj9/h/xcwySoGp2aBLG81TXOF2zUQb918FdS+Gjz5loIj5PIoIw6arSBPKY7IKU3IPe0DHwM
+ dvIMaP7MM+vmNz5e/7cV3ieV7g3XdALQwKO56AAAA
+X-Change-ID: 20260710-btmtk-first-block-bool-bd047b970821
+To: Marcel Holtmann <marcel@holtmann.org>, 
+ Johan Hedberg <johan.hedberg@gmail.com>, 
+ Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-bluetooth@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Miles Krause <mileskrause5200@gmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783660640; l=2026;
+ i=mileskrause5200@gmail.com; s=20260710; h=from:subject:message-id;
+ bh=w0GMxlpAuvW9E5EoNTZ+r/cb96pIyUjH4Ud4DEGtoUM=;
+ b=vYIwok7n0yB2vPf94Ve+SG+QU4JJSO3a1IJ7WltBPX0AqnfPkHP0R5xxqJ7W21A084yFGQG1v
+ wCfGgNfnDrCAaLZ4XoWKi0oVnpEF//C8dsVM/JVzQoGMZxHUK1t+lW9
+X-Developer-Key: i=mileskrause5200@gmail.com; a=ed25519;
+ pk=QNhNjcQarqig3ColJBIEr3DYfWM1PHpP7z+6thxWXaU=
+X-Endpoint-Received: by B4 Relay for mileskrause5200@gmail.com/20260710
+ with auth_id=861
+X-Original-From: Miles Krause <mileskrause5200@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,105 +84,75 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: mileskrause5200@gmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: bui duc phuc <phucduc.bui@gmail.com>
+From: Miles Krause <mileskrause5200@gmail.com>
 
-Clean up the code using guard() for mutex locks.
-Merely code refactoring, and no behavior change.
+first_block is reset for each firmware section and is never used outside
+the section loop. Declare it as a bool inside the loop to limit its scope
+and make its two-state purpose explicit.
 
-Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
+No functional change.
+
+Signed-off-by: Miles Krause <mileskrause5200@gmail.com>
 ---
- sound/soc/codecs/rt722-sdca-sdw.c | 29 ++++++++++++++++-------------
- sound/soc/codecs/rt722-sdca.c     |  4 ++--
- 2 files changed, 18 insertions(+), 15 deletions(-)
+Compile-tested on x86_64 with:
 
-diff --git a/sound/soc/codecs/rt722-sdca-sdw.c b/sound/soc/codecs/rt722-sdca-sdw.c
-index e68aa0350a5b..db1aeea2ecb3 100644
---- a/sound/soc/codecs/rt722-sdca-sdw.c
-+++ b/sound/soc/codecs/rt722-sdca-sdw.c
-@@ -6,6 +6,7 @@
- //
- //
+  make O=out allmodconfig
+  make O=out W=1 drivers/bluetooth/btmtk.o
+
+Sparse-tested with:
+
+  make O=out-sparse allmodconfig
+  make O=out-sparse C=1 CHECK=sparse drivers/bluetooth/btmtk.o
+---
+ drivers/bluetooth/btmtk.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 809762d64fc6..b809eb82fc73 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -63,7 +63,7 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
+ 	const u8 *fw_ptr;
+ 	const u8 *fw_bin_ptr;
+ 	int err, dlen, i, status;
+-	u8 flag, first_block, retry;
++	u8 flag, retry;
+ 	u32 section_num, dl_size, section_offset;
+ 	u8 cmd[64];
  
-+#include <linux/cleanup.h>
- #include <linux/delay.h>
- #include <linux/device.h>
- #include <linux/module.h>
-@@ -513,13 +514,13 @@ static int rt722_sdca_dev_system_suspend(struct device *dev)
- 	 * deferred work completes and before the parent disables
- 	 * interrupts on the link
- 	 */
--	mutex_lock(&rt722_sdca->disable_irq_lock);
--	rt722_sdca->disable_irq = true;
--	ret1 = sdw_update_no_pm(slave, SDW_SCP_SDCA_INTMASK1,
--				SDW_SCP_SDCA_INTMASK_SDCA_0, 0);
--	ret2 = sdw_update_no_pm(slave, SDW_SCP_SDCA_INTMASK2,
--				SDW_SCP_SDCA_INTMASK_SDCA_8, 0);
--	mutex_unlock(&rt722_sdca->disable_irq_lock);
-+	scoped_guard(mutex, &rt722_sdca->disable_irq_lock) {
-+		rt722_sdca->disable_irq = true;
-+		ret1 = sdw_update_no_pm(slave, SDW_SCP_SDCA_INTMASK1,
-+					SDW_SCP_SDCA_INTMASK_SDCA_0, 0);
-+		ret2 = sdw_update_no_pm(slave, SDW_SCP_SDCA_INTMASK2,
-+					SDW_SCP_SDCA_INTMASK_SDCA_8, 0);
-+	}
+@@ -79,7 +79,7 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
+ 	section_num = le32_to_cpu(globaldesc->section_num);
  
- 	if (ret1 < 0 || ret2 < 0) {
- 		/* log but don't prevent suspend from happening */
-@@ -541,13 +542,15 @@ static int rt722_sdca_dev_resume(struct device *dev)
- 		return 0;
+ 	for (i = 0; i < section_num; i++) {
+-		first_block = 1;
++		bool first_block = true;
+ 		fw_ptr = fw_bin_ptr;
+ 		sectionmap = (struct btmtk_section_map *)(fw_ptr + MTK_FW_ROM_PATCH_HEADER_SIZE +
+ 			      MTK_FW_ROM_PATCH_GD_SIZE + MTK_FW_ROM_PATCH_SEC_MAP_SIZE * i);
+@@ -132,9 +132,9 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
  
- 	if (!slave->unattach_request) {
--		mutex_lock(&rt722->disable_irq_lock);
--		if (rt722->disable_irq == true) {
--			sdw_write_no_pm(slave, SDW_SCP_SDCA_INTMASK1, SDW_SCP_SDCA_INTMASK_SDCA_0);
--			sdw_write_no_pm(slave, SDW_SCP_SDCA_INTMASK2, SDW_SCP_SDCA_INTMASK_SDCA_8);
--			rt722->disable_irq = false;
-+		scoped_guard(mutex, &rt722->disable_irq_lock) {
-+			if (rt722->disable_irq) {
-+				sdw_write_no_pm(slave, SDW_SCP_SDCA_INTMASK1,
-+						SDW_SCP_SDCA_INTMASK_SDCA_0);
-+				sdw_write_no_pm(slave, SDW_SCP_SDCA_INTMASK2,
-+						SDW_SCP_SDCA_INTMASK_SDCA_8);
-+				rt722->disable_irq = false;
-+			}
- 		}
--		mutex_unlock(&rt722->disable_irq_lock);
- 	}
- 
- 	ret = sdw_slave_wait_for_init(slave, RT722_PROBE_TIMEOUT);
-diff --git a/sound/soc/codecs/rt722-sdca.c b/sound/soc/codecs/rt722-sdca.c
-index 1b6729f363fc..decf9407ab6d 100644
---- a/sound/soc/codecs/rt722-sdca.c
-+++ b/sound/soc/codecs/rt722-sdca.c
-@@ -6,6 +6,7 @@
- //
- //
- 
-+#include <linux/cleanup.h>
- #include <linux/bitops.h>
- #include <linux/delay.h>
- #include <linux/dmi.h>
-@@ -294,7 +295,7 @@ static void rt722_sdca_btn_check_handler(struct work_struct *work)
- 
- static void rt722_sdca_jack_init(struct rt722_sdca_priv *rt722)
- {
--	mutex_lock(&rt722->calibrate_mutex);
-+	guard(mutex)(&rt722->calibrate_mutex);
- 	if (rt722->hs_jack) {
- 		/* set SCP_SDCA_IntMask1[0]=1 */
- 		sdw_write_no_pm(rt722->slave, SDW_SCP_SDCA_INTMASK1,
-@@ -317,7 +318,6 @@ static void rt722_sdca_jack_init(struct rt722_sdca_priv *rt722)
- 		rt722_sdca_index_update_bits(rt722, RT722_VENDOR_HDA_CTL,
- 			RT722_GE_RELATED_CTL2, 0x4000, 0x4000);
- 	}
--	mutex_unlock(&rt722->calibrate_mutex);
- }
- 
- static int rt722_sdca_set_jack_detect(struct snd_soc_component *component,
--- 
-2.43.0
+ 			while (dl_size > 0) {
+ 				dlen = min_t(int, 250, dl_size);
+-				if (first_block == 1) {
++				if (first_block) {
+ 					flag = 1;
+-					first_block = 0;
++					first_block = false;
+ 				} else if (dl_size - dlen <= 0) {
+ 					flag = 3;
+ 				} else {
+
+---
+base-commit: 64b5c4c8e79c131fe8f135bab5e5dfaa245c5776
+change-id: 20260710-btmtk-first-block-bool-bd047b970821
+
+Best regards,
+--  
+Miles Krause <mileskrause5200@gmail.com>
+
 
 
