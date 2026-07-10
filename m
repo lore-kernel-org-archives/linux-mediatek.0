@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE547C44506
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2026 05:07:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26A32C43458
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2026 05:07:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E+Xd5j1FUZKxifc/BkYvhS7CfaonB+06ASWIZ0hNhk0=; b=4dxf7h76zpiI51ThnKVyHY2hld
-	sqV/Eafh/hvQ1cuxVAUql/OIiasuW+1eyYcnjVuj2nY1FBmBfSuOTjaB3nqyrFFfGNa/Rc1v+YvTc
-	DD+g66gxikbz1L4XqERqP+rsWM6iVMY3B1AGm4L0H3CqiltPiT5t571GDwCzxYL4REixyva+aBnxU
-	aMDyOazIcXkDsay3plAf/rC+mLzFDa6Ni01MH+rf7nGdoFonhiRtRJhayoIA/CBEHVDRRBa9KNrum
-	Wj5X4bssf/bd5uAAtiRcnw72KMBHGi+mT9dBl9bU4P2upDHCOE7QWAS/eH2us4mQuo/GAcLl5O8yg
-	j4QQ2CkQ==;
+	bh=cKqRcXDTZ2AUkUtA/CqdSn+DCaTTyr1WUIIDbJXdQ3w=; b=fISgQhNUwzN9OM1Dlpvqv1ZWPb
+	C0JGy2L/hAlHlTi7pQS/m8xrllK2pDA+S/myYS/I6IfYkX5kbXmyWcJVUpc7e89IzoQew4XI6xSQN
+	a1jR6E6liNAAYnErV+KfPqTM8Aj7zeBA67WqxUtOVKx1FSPKX2euYB6Mh7aWM6E5xE5++tGupJdud
+	y1kPcJ/EMeDEsNe34Mekyhoi1bw2FAuvHdruObEYDAce+/WFdbNWuJtl57Hk24lk3zSCTPXP9AeK0
+	ROF6hSt1lx025Ocu6AazIf0q+cvZywV/tr5jE0lak9X02gWH+7XY91X7B1IF8r6aJsWHMOL5d1KCB
+	pAYexq3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wi3S0-000000048pp-062Y;
-	Fri, 10 Jul 2026 05:07:00 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+	id 1wi3SC-00000004911-1hYt;
+	Fri, 10 Jul 2026 05:07:12 +0000
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wi3Rw-000000048mb-3nyY
+	id 1wi3S5-000000048uh-3D0F
 	for linux-mediatek@lists.infradead.org;
-	Fri, 10 Jul 2026 05:06:58 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-848595b338cso541858b3a.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jul 2026 22:06:56 -0700 (PDT)
+	Fri, 10 Jul 2026 05:07:11 +0000
+Received: by mail-pf1-x42e.google.com with SMTP id d2e1a72fcca58-845b6d9bf39so529767b3a.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jul 2026 22:07:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783660016; x=1784264816; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1783660025; x=1784264825; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=E+Xd5j1FUZKxifc/BkYvhS7CfaonB+06ASWIZ0hNhk0=;
-        b=Oi2Uqw1NTl1TKmJiPfROxtCDv2+jBHpbTpy8u44M/CKf4C9B8YkW9r34cncR/p4NfS
-         jg/YHyqzZQx+ADX+Dd8CQny9eRYIsQOSMMOmclg03G2MtNeg8L6fLfrG6pIHsWYMLGJa
-         TDjukdGiMmv0cUyAlF1bpeI16FZkxp+hbLUPxSnmu7Qq/Xd92MPv09dp0JBh+klbrAq6
-         zGryX9uS5itd1PFoktJHJEHaYkUBiLaG3hPqzmT2ALgm1WX9JQpi03o45GfKle/xBaFf
-         /kzWrS+3Fq3oZ51XpLs3t1Tzz/N+Bvu1gByCRXzIsJDk4yGLYoxejSQj4zB8kr4A7R5Q
-         zISA==
+        bh=cKqRcXDTZ2AUkUtA/CqdSn+DCaTTyr1WUIIDbJXdQ3w=;
+        b=XFsZGL5otl/cyicYrvaPX0COO+3AQdKli5X5ZuTia725I6sI7tLPs0s6ojUH2Wg2qS
+         0NsJXxPGwbrltpi5aEJeCo4l0DH2kt/IJvq8fEPwuwmbEZtus4e53CRMXkvBl+PGikgR
+         95JPOwKvo3lHhoCRLDU8RhyznFznKvIQaNOYPwLy/CzF0ap9Ea60AFWxm4kCpRV9UFJg
+         xZFH5CE2FPxT52RxPJgNb70VfRzP1fnC2D8ZxOaHJvxp+u5bLBeH4n1s3MskzLgIe3z7
+         ZCjB8Y25ahsWEYppQws2VGss9sD1cHHX+hoZckZbQQ0L/Yl1Bl6G+p+s8dbKcbiIbq4q
+         vSgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783660016; x=1784264816;
+        d=1e100.net; s=20251104; t=1783660025; x=1784264825;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=E+Xd5j1FUZKxifc/BkYvhS7CfaonB+06ASWIZ0hNhk0=;
-        b=rNkXDdsJmWnPQ87wMq5mgB255FoaKjjFggCJswB0VPQb49W1ioPtd73CWZ7J/JRNxF
-         KZgN3p5W0yhKqpqfjD66eYSUMt/lPk6p4Gf9bK/dsCQ6SZj31nomygS+7HZdEvTIpULh
-         x2Nj3XBL9/Dru29yqMbu7u2YNYBWsWizx+bYj7J5j+unrwVTIP2MmzMDNLa9/A2pagdQ
-         LToLLbochldUgr4nyjiA0742PbRTjcUlMzq3XNWartOfFv65FsqVrCGPzHU5Sc/84v65
-         V+SFlsTkhmmev4eymqwVx6BSXVL2LUoWGkhsepX3zfjTnQgFX+Ojbs+xFO0Ybdk3Iqg+
-         bydA==
-X-Forwarded-Encrypted: i=1; AHgh+RqpEG+vIGMqf8x/jUb3B/Q7PNCExe55J3GU9V+z4f3OV9CbikOBZt26NvvvcmOoMPG8jitZSP6J1ChGRNoDtw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzlMkaCGFge68E1T9XGQygb0reJhz/vbIPZ9yZI/5I+pzVrFMpp
-	2ZY3pWq6OBIW0UqcYeCSecVn6yh5M9gsHHREtNILkH52xzb1x2HLSvA3
-X-Gm-Gg: AfdE7cnwrsmrRt++V6KhZQqNsDo7q1TMapfGjvAvoR2wv+0glBCnnLvkx5WA+K5xmEh
-	W/tYD9Wi++tbbz7yxjz1SVMaBSph65WVIctgd3tj6rQP2JBlJ06rBVGj/3WkI77ZqPA6Fj9VShw
-	n97PscdNv46eLLQt5O1MoK1btLiUKRskfLWSggwzjDbi9ASFEihEYn6sos5Hdh2+tYuaOHNleJr
-	vL3d7OVsQ5Ajk9In9oS2MY0sUKQmjN7jQJEyZTl7uiySLL6dGh2MUrZ9QguBygoAR1EGn593eja
-	8TSbGhh0+geWSFUqVvnbVWpOmi1gAxIltrzhR7lOPxz3O1wLo+mfvr3Hd30xPQfSK9qyPCTyVpq
-	JBAC3LqTzUF+ff5hmm4jOiQhoCpVUKrXKYYl1Vj+x+Q/lWyiAOBnBBNiVQcqp98FzKsfmQb/7fm
-	Iv76wqxQQCgvCysLq+8wpITTHwH1ZwLnTzyN5SVBwXLxVgIQI=
-X-Received: by 2002:a05:6a00:9487:b0:848:4b27:36a3 with SMTP id d2e1a72fcca58-8484b274223mr7138346b3a.72.1783660016109;
-        Thu, 09 Jul 2026 22:06:56 -0700 (PDT)
+        bh=cKqRcXDTZ2AUkUtA/CqdSn+DCaTTyr1WUIIDbJXdQ3w=;
+        b=JJZOXMWO5RH4S4Ze8EZ1iZvyER56TRRoLVaKNC5kTLo+AO8UBWHIrMzdr+029CpPbY
+         WQBHtkEgUCtg2IgMoX6o6IZiBfMjzD93RJ/2WLEQtyh9P/xzhbbWIPD83tRRIR8G3Mz7
+         gzoSRRfNCBvQnqI/CbiRWlmXvMXjMF6QcIVbhkoeXngYi1wQgUlD1jXqQP6UHVZ6kzWN
+         q7sL16ZNNzjfW5U1bbD6X4dNNo0MdxA+sqCIMNtTWHpxCI3TdAs3jsJbuMIbrR/rkf0B
+         w5GpIHPp+MaGlqAyY8K3bcthC+4Q+7JLGxr7xLdIEenWNF/SkE076ZhYcNSsNdv+6DfE
+         qxpA==
+X-Forwarded-Encrypted: i=1; AHgh+RoMOr9iieQNwmJuNSJZa51YuLC2+knVritIpmtEC/FjOoZmkqZEXAp0qtS/W7dyjFHp8RI/nPuiXQlBmG3kZg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy/U6J5CwQxBPIzsEtS9nyLGOjSr40eMf1iPMv8FltXi73ww5LJ
+	6KjKbFOy655JbFUfOOhIGfHWjHUwPPiSIcvEIikBHrZjaE/r2z55Lp5A
+X-Gm-Gg: AfdE7cnkYtajgS0tD9SZ+L3qXOW2WCePT2n/lZelZINNUR9cIvkf/4a/1v5SGKX0cDw
+	jPT9K49ee0oo/0UMdZ6KrUHcelmQarpjnvJBYitlCBs8dmhkXd2+bBcrwcpxNtD26Vnp7aYKCLG
+	NDKqxtxeE3npvGTuPw4KIxL1Y53yu+HjZo8VTw5krdz+vx05oHVG6O07pJBq1wS/N2tnKWUG4CR
+	bkCZ24Et5x/WxyWFQ82gDxyuDIyMdjAemnGuOZq2zF0gAimDL17lEFY9RyYaM/Wm2HHxxMH0CfX
+	tPEzM5JrkqEfng6sP+DxbTbv++Mhdm55VVNALV9YpeA0707K4Cgmg/Z6kkizGjDx/sDntCrjuV8
+	hSs8IK0HGLvDphwdMe+IZ5CJ3QuH43UOWynO7RGWIO1eIIBS4wzg8w0RXH9072h/WW8ID9TXsQd
+	C5/ZDL8AUDMk8Xh7ey9GWbkGgez0zpa6ZZL51KsTKnfQyaDa8=
+X-Received: by 2002:a05:6a00:b45:b0:847:b45b:fef3 with SMTP id d2e1a72fcca58-84870b7040cmr1847885b3a.27.1783660024823;
+        Thu, 09 Jul 2026 22:07:04 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84847275fa0sm3400499b3a.22.2026.07.09.22.06.48
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84847275fa0sm3400499b3a.22.2026.07.09.22.06.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Jul 2026 22:06:55 -0700 (PDT)
+        Thu, 09 Jul 2026 22:07:04 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>,
 	Takashi Iwai <tiwai@suse.com>,
@@ -103,9 +103,9 @@ Cc: Support Opensource <support.opensource@diasemi.com>,
 	linux-arm-msm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH v3 13/27] ASoC: codecs: mt6359-accdet: Use guard() for mutex locks
-Date: Fri, 10 Jul 2026 12:04:57 +0700
-Message-ID: <20260710050511.14439-11-phucduc.bui@gmail.com>
+Subject: [PATCH v3 14/27] ASoC: codecs: pcm512x: Use guard() for mutex locks
+Date: Fri, 10 Jul 2026 12:04:58 +0700
+Message-ID: <20260710050511.14439-12-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260710050511.14439-1-phucduc.bui@gmail.com>
 References: <20260709045902.498848-1-phucduc.bui@gmail.com>
@@ -113,8 +113,8 @@ References: <20260709045902.498848-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_220656_964330_A46D07B2 
-X-CRM114-Status: GOOD (  12.39  )
+X-CRM114-CacheID: sfid-20260709_220705_800646_707DB9ED 
+X-CRM114-Status: GOOD (  11.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,95 +136,94 @@ Merely code refactoring, and no behavior change.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/codecs/mt6359-accdet.c | 13 ++++---------
- 1 file changed, 4 insertions(+), 9 deletions(-)
+ sound/soc/codecs/pcm512x.c | 19 ++++++-------------
+ 1 file changed, 6 insertions(+), 13 deletions(-)
 
-diff --git a/sound/soc/codecs/mt6359-accdet.c b/sound/soc/codecs/mt6359-accdet.c
-index ed34cc15b80e..e1190c644021 100644
---- a/sound/soc/codecs/mt6359-accdet.c
-+++ b/sound/soc/codecs/mt6359-accdet.c
-@@ -6,6 +6,7 @@
- // Author: Argus Lin <argus.lin@mediatek.com>
- //
+diff --git a/sound/soc/codecs/pcm512x.c b/sound/soc/codecs/pcm512x.c
+index fe3b5011fa16..88e235de1107 100644
+--- a/sound/soc/codecs/pcm512x.c
++++ b/sound/soc/codecs/pcm512x.c
+@@ -6,7 +6,7 @@
+  *		Copyright 2014 Linaro Ltd
+  */
  
+-
 +#include <linux/cleanup.h>
- #include <linux/of.h>
- #include <linux/input.h>
- #include <linux/kthread.h>
-@@ -398,14 +399,13 @@ static void mt6359_accdet_work(struct work_struct *work)
- 	struct mt6359_accdet *priv =
- 		container_of(work, struct mt6359_accdet, accdet_work);
+ #include <linux/init.h>
+ #include <linux/module.h>
+ #include <linux/clk.h>
+@@ -399,10 +399,9 @@ static int pcm512x_digital_playback_switch_get(struct snd_kcontrol *kcontrol,
+ 	struct snd_soc_component *component = snd_kcontrol_chip(kcontrol);
+ 	struct pcm512x_priv *pcm512x = snd_soc_component_get_drvdata(component);
  
--	mutex_lock(&priv->res_lock);
-+	guard(mutex)(&priv->res_lock);
- 	priv->pre_accdet_status = priv->accdet_status;
- 	check_jack_btn_type(priv);
+-	mutex_lock(&pcm512x->mutex);
++	guard(mutex)(&pcm512x->mutex);
+ 	ucontrol->value.integer.value[0] = !(pcm512x->mute & 0x4);
+ 	ucontrol->value.integer.value[1] = !(pcm512x->mute & 0x2);
+-	mutex_unlock(&pcm512x->mutex);
  
- 	if (priv->jack_plugged &&
- 	    priv->pre_accdet_status != priv->accdet_status)
- 		mt6359_accdet_jack_report(priv);
--	mutex_unlock(&priv->res_lock);
+ 	return 0;
  }
+@@ -414,7 +413,7 @@ static int pcm512x_digital_playback_switch_put(struct snd_kcontrol *kcontrol,
+ 	struct pcm512x_priv *pcm512x = snd_soc_component_get_drvdata(component);
+ 	int ret, changed = 0;
  
- static void mt6359_accdet_jd_work(struct work_struct *work)
-@@ -416,7 +416,7 @@ static void mt6359_accdet_jd_work(struct work_struct *work)
- 	struct mt6359_accdet *priv =
- 		container_of(work, struct mt6359_accdet, jd_work);
+-	mutex_lock(&pcm512x->mutex);
++	guard(mutex)(&pcm512x->mutex);
  
--	mutex_lock(&priv->res_lock);
-+	guard(mutex)(&priv->res_lock);
- 	if (priv->jd_sts == M_PLUG_IN) {
- 		priv->jack_plugged = true;
- 
-@@ -450,7 +450,6 @@ static void mt6359_accdet_jd_work(struct work_struct *work)
- 
- 	if (priv->caps & ACCDET_PMIC_EINT_IRQ)
- 		recover_eint_setting(priv);
--	mutex_unlock(&priv->res_lock);
- }
- 
- static irqreturn_t mt6359_accdet_irq(int irq, void *data)
-@@ -459,7 +458,7 @@ static irqreturn_t mt6359_accdet_irq(int irq, void *data)
- 	unsigned int irq_val = 0, val = 0, value = 0;
- 	int ret;
- 
--	mutex_lock(&priv->res_lock);
-+	guard(mutex)(&priv->res_lock);
- 	regmap_read(priv->regmap, ACCDET_IRQ_ADDR, &irq_val);
- 
- 	if (irq_val & ACCDET_IRQ_MASK_SFT) {
-@@ -474,7 +473,6 @@ static irqreturn_t mt6359_accdet_irq(int irq, void *data)
- 					       1000);
- 		if (ret) {
- 			dev_err(priv->dev, "%s(), ret %d\n", __func__, ret);
--			mutex_unlock(&priv->res_lock);
- 			return IRQ_NONE;
+ 	if ((pcm512x->mute & 0x4) == (ucontrol->value.integer.value[0] << 2)) {
+ 		pcm512x->mute ^= 0x4;
+@@ -430,13 +429,10 @@ static int pcm512x_digital_playback_switch_put(struct snd_kcontrol *kcontrol,
+ 		if (ret != 0) {
+ 			dev_err(component->dev,
+ 				"Failed to update digital mute: %d\n", ret);
+-			mutex_unlock(&pcm512x->mutex);
+ 			return ret;
  		}
- 		regmap_update_bits(priv->regmap, ACCDET_IRQ_ADDR,
-@@ -498,7 +496,6 @@ static irqreturn_t mt6359_accdet_irq(int irq, void *data)
- 			if (ret) {
- 				dev_err(priv->dev, "%s(), ret %d\n", __func__,
- 					ret);
--				mutex_unlock(&priv->res_lock);
- 				return IRQ_NONE;
- 			}
- 			regmap_update_bits(priv->regmap, ACCDET_IRQ_ADDR,
-@@ -521,7 +518,6 @@ static irqreturn_t mt6359_accdet_irq(int irq, void *data)
- 			if (ret) {
- 				dev_err(priv->dev, "%s(), ret %d\n", __func__,
- 					ret);
--				mutex_unlock(&priv->res_lock);
- 				return IRQ_NONE;
- 			}
- 			regmap_update_bits(priv->regmap, ACCDET_IRQ_ADDR,
-@@ -540,7 +536,6 @@ static irqreturn_t mt6359_accdet_irq(int irq, void *data)
- 
- 		queue_work(priv->jd_workqueue, &priv->jd_work);
  	}
--	mutex_unlock(&priv->res_lock);
  
- 	return IRQ_HANDLED;
+-	mutex_unlock(&pcm512x->mutex);
+-
+ 	return changed;
  }
+ 
+@@ -1465,7 +1461,7 @@ static int pcm512x_mute(struct snd_soc_dai *dai, int mute, int direction)
+ 	int ret;
+ 	unsigned int mute_det;
+ 
+-	mutex_lock(&pcm512x->mutex);
++	guard(mutex)(&pcm512x->mutex);
+ 
+ 	if (mute) {
+ 		pcm512x->mute |= 0x1;
+@@ -1475,7 +1471,7 @@ static int pcm512x_mute(struct snd_soc_dai *dai, int mute, int direction)
+ 		if (ret != 0) {
+ 			dev_err(component->dev,
+ 				"Failed to set digital mute: %d\n", ret);
+-			goto unlock;
++			return ret;
+ 		}
+ 
+ 		regmap_read_poll_timeout(pcm512x->regmap,
+@@ -1488,7 +1484,7 @@ static int pcm512x_mute(struct snd_soc_dai *dai, int mute, int direction)
+ 		if (ret != 0) {
+ 			dev_err(component->dev,
+ 				"Failed to update digital mute: %d\n", ret);
+-			goto unlock;
++			return ret;
+ 		}
+ 
+ 		regmap_read_poll_timeout(pcm512x->regmap,
+@@ -1499,9 +1495,6 @@ static int pcm512x_mute(struct snd_soc_dai *dai, int mute, int direction)
+ 					 200, 10000);
+ 	}
+ 
+-unlock:
+-	mutex_unlock(&pcm512x->mutex);
+-
+ 	return ret;
+ }
+ 
 -- 
 2.43.0
 
