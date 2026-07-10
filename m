@@ -4,75 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DC65C43458
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2026 05:17:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6A9CC43458
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2026 07:39:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=PvwGmo7/Njo2yNt/pF/MC/w+psXZgyvgwLxIt3GSmoQ=; b=AoEB6eGiNtGTa76QLEtLcrY+d+
-	9J3NN6N4m5J2w5QGJ2yBl22vjvndjw5OjMiPuSebzIAPEhJ+Y8RGTnamykRHiWSrCRK5HdF4okqJC
-	7phklgXbsRkArONDVxKw4LL4bgEcfoBEIXFJ2VaVqhQrQpZ0ZD2s5ixf6+vuPM8PXMLphqsOiR1AL
-	rqLwU8+iMaS5NlFLOdZkWk2UIIWWtyS7nY/SirreMKJCqK4pk1kFZmF3SptdGjDSRqnFcRoU5VBLw
-	adyNiSD93Lx6jHIvKvR9J3yT6a5FlRfu+GZS5NL4U2cj3e3ZM2e65et8VcjEqv1NWCfp7iwvSOJaA
-	KowYaopQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PWU0v4sjJbD2CQ9MCYUXZFpGOf/MY7CyUDjnbwNep8k=; b=t8PGzeWC1xPKWo32OnJsfoPFhr
+	Fq/6JL37PTVr4QdpRuODfEa0j8Ec1IX877o1HJFbf0UuVDL6Uij+WxOgNOlq5iaHnFDeIbtO3d9v7
+	MLOVfzpEty1cZXG5IKLaqXxtf/1v7HWJ9IK3lNrKFvD6V5pqpulULr2GwHUJ8xmjd3WXyIi14jOns
+	Q8mnakpd+spU/6or5X3BoqnDhAYgBcKL1zQl1mfDmBrtJdZI8caGzkqHPwGJ2xuWDE/KTWGptwXO5
+	1ML9jLDaLHiujCvzGXckI911UxuI/wmekkAp/bh9mEuMyOq0vap+UD0Zg0pgsWSYZdl4Etkp9sDRm
+	bC4dMyLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wi3c2-00000004BOr-3KRM;
-	Fri, 10 Jul 2026 05:17:22 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wi5pf-00000004MIN-3ZmD;
+	Fri, 10 Jul 2026 07:39:35 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wi3c1-00000004BOU-1QzO;
-	Fri, 10 Jul 2026 05:17:21 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id EA411600C3;
-	Fri, 10 Jul 2026 05:17:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id A1717C2BCB8;
-	Fri, 10 Jul 2026 05:17:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1783660639;
-	bh=v8h8OTDsfts+f8xQcfwy8E0kUDGKuTg/aSKZicK6s+c=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=X3QWO8xSaSIynshnunmMhWmjYM7riIuCR7wTpFcddWi3GeoSaiZ2gBk8WTHmyw/hV
-	 EnsLZvuPSailE8iOboYfSFdIL473q/1aTmmjLOZu8KI/EslOiI4bKZGy40kJ2ntXPu
-	 kqoLOIzaUfkdyHtQbj7tcS+axg1vXvT/Mz1X/VONTAz6tW7v6BmHTyVq7YPNHVKHfR
-	 1SEiCwtdnXFjTFHP0EnhS7nx5h/VhGwHVqj4YAPx4pP8bZfeCHS/d6wrZZJI88PAVv
-	 nTWAG2e9IMOzBd5kvr3YscHGFh1hk3DV+McvzW1X6/MFAv5oOrpBzvTlivBrZ/Nyp3
-	 PDUudFUCcr6Zg==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8FB15C43458;
-	Fri, 10 Jul 2026 05:17:19 +0000 (UTC)
-From: Miles Krause via B4 Relay <devnull+mileskrause5200.gmail.com@kernel.org>
-Date: Fri, 10 Jul 2026 01:17:18 -0400
-Subject: [PATCH] Bluetooth: btmtk: use bool for first_block
+	id 1wi5pd-00000004MHa-08Ex
+	for linux-mediatek@lists.infradead.org;
+	Fri, 10 Jul 2026 07:39:34 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-47defd0c1c5so366766f8f.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 10 Jul 2026 00:39:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre.com; s=google; t=1783669171; x=1784273971; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=PWU0v4sjJbD2CQ9MCYUXZFpGOf/MY7CyUDjnbwNep8k=;
+        b=gskHSTdGqGqX3eP6iUbJ9heG7LajKq14AetjRZpvWueTErdkVGvtTNBHFs5sCdksyT
+         jVzDP8yl+B7TPmKMkhrhMByQwOrH/JuPwkVCtEcfBTlko9aLd71vXpjzBJmDu2tQCTWD
+         dFo/1OqTno5N03IE2dZVFi4WlTIGpbyZbJeAn5Ho2b1VdOw6tH4GOHHZU/vrYKqQQ7vl
+         th90urRsiNKrZQKD7ySamCZRcfAcOh5I63HrdkGjKdlGURuvx0yiAONELmvulNpZK2tH
+         oQYqscRX0DK17pdqz3Jsbg1f837o/09O+R/N3sFWOGi3bhGxrwpjc2tyO1w5SwXhmgzQ
+         S3qg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783669171; x=1784273971;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=PWU0v4sjJbD2CQ9MCYUXZFpGOf/MY7CyUDjnbwNep8k=;
+        b=pmKg//SWs0hWl32pPyVif5qrYpJeDRSMUG/oM4sqX9+VUCpzxHm4kPBSrMMVgcNgLc
+         z3N8VpGKbf91glmAV8o8IpWNNmsgvqliwVo9vNKJw+LJMj+RKgjqTjXTw/XM2PK/CVZq
+         sfd0VzcfMK8/mzSM+OZCzBPOPeJOn2Z4SYGecsnb8iTguBTOnIPRVnThju/tX6110RsB
+         JZFepZXzIz1fHIKnViIsRBXr5gNkWunW4wnaqS7ps3L6IILcNOpqnDMm4jiqRNuBv+Uu
+         0vzY+j2vVQuY7tuEuiliNoUp1ZMuLUDcmk66N09yCGsuL3U01uTt1sMQrxw11SnTA8tu
+         jrYQ==
+X-Forwarded-Encrypted: i=1; AHgh+Rr2ONyYJsHbRxKib/y0VWManOHRcZztaZEmRk3XltBcJCXXmmyJs1+b/o0i8Rerx9ogZAAJYGIQ+n03eFfo1Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YymmPKvylh8flxPxrJenMGvYu9/qHlqGq9HfUEGgn46JGOCSW6s
+	nLxgSJi9A2qdwMoFns86ey/ctZpVtaExSjGx4wyiBqSxRnpaNXSrVOEf+Aj3HT84Lsg=
+X-Gm-Gg: AfdE7cmBEI8+XrJy2fIKAnEaA7dsWDyXlmRHtrsdfXePdR4HI5HWBaogg75G4aQjlst
+	wmpy8hNUeyP0u4pqT0DaX00+cjS0/VnVrQKfDaO2vah6BZpAFkwx96bUJjiKmIQbPaHSyyjRzsT
+	KtY6hVXOLFqbo91oGec3o89IhZXqQrydfomOl46xEVx6+Rxm0l53aPmzSYQVBJkHYGdvxxoK+E5
+	/AeSgd/31pRm49EqJugLO9CsFYJdrcxUWDj1kV1UGwJ6uG2dF612SQOskIjV7QWOJIdDha+ijCe
+	ICBJsKdAJIXHkija+xknCdUwtOymMRJ5vVvDYgXG7jB6oOK/w6RHsmoBwQswKnGmv091owlHOD+
+	ByAqJbzifSdQXRHYjgMeEfuEnowOlBKhzozjrZz6zkgdHCLe5Rdy0Hs929Wgxouel2RB9cLwqPO
+	cHhsdkLvzPHEpflAPVNNDtXgUGP6ef6U717N04LoXzpbX5fnxPtNBJ0wAWj4b1jemKGrtjgttQN
+	gdP
+X-Received: by 2002:a05:600c:638d:b0:493:df5d:6ca6 with SMTP id 5b1f17b1804b1-493e68c41d7mr93044945e9.25.1783669171165;
+        Fri, 10 Jul 2026 00:39:31 -0700 (PDT)
+Received: from localhost (p200300f65f47db04fbea22a44ee9ba38.dip0.t-ipconnect.de. [2003:f6:5f47:db04:fbea:22a4:4ee9:ba38])
+        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-493f4f09f89sm33853675e9.10.2026.07.10.00.39.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 10 Jul 2026 00:39:30 -0700 (PDT)
+Date: Fri, 10 Jul 2026 09:39:29 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+To: rva333@protonmail.com
+Cc: Jonathan Cameron <jic23@kernel.org>, 
+	David Lechner <dlechner@baylibre.com>, Nuno =?utf-8?B?U8Oh?= <nuno.sa@analog.com>, 
+	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Ben Grisdale <bengris32@protonmail.ch>, Andy Shevchenko <andriy.shevchenko@intel.com>
+Subject: Re: [PATCH v5 2/4] iio: adc: mt6323-auxadc: add mt6323 PMIC AUXADC
+ driver
+Message-ID: <alChi9oG0-2XUFXK@monoceros>
+References: <20260709-mt6323-adc-v5-0-d11b8332a735@protonmail.com>
+ <20260709-mt6323-adc-v5-2-d11b8332a735@protonmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260710-btmtk-first-block-bool-v1-1-e6ac61d918e4@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAF2AUGoC/yXMwQrCMAyA4VcZORtIi6zqq4iHpcs0bq7SVBHG3
- n1Vj9/h/xcwySoGp2aBLG81TXOF2zUQb918FdS+Gjz5loIj5PIoIw6arSBPKY7IKU3IPe0DHwM
- dvIMaP7MM+vmNz5e/7cV3ieV7g3XdALQwKO56AAAA
-X-Change-ID: 20260710-btmtk-first-block-bool-bd047b970821
-To: Marcel Holtmann <marcel@holtmann.org>, 
- Johan Hedberg <johan.hedberg@gmail.com>, 
- Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-bluetooth@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Miles Krause <mileskrause5200@gmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1783660640; l=2026;
- i=mileskrause5200@gmail.com; s=20260710; h=from:subject:message-id;
- bh=w0GMxlpAuvW9E5EoNTZ+r/cb96pIyUjH4Ud4DEGtoUM=;
- b=vYIwok7n0yB2vPf94Ve+SG+QU4JJSO3a1IJ7WltBPX0AqnfPkHP0R5xxqJ7W21A084yFGQG1v
- wCfGgNfnDrCAaLZ4XoWKi0oVnpEF//C8dsVM/JVzQoGMZxHUK1t+lW9
-X-Developer-Key: i=mileskrause5200@gmail.com; a=ed25519;
- pk=QNhNjcQarqig3ColJBIEr3DYfWM1PHpP7z+6thxWXaU=
-X-Endpoint-Received: by B4 Relay for mileskrause5200@gmail.com/20260710
- with auth_id=861
-X-Original-From: Miles Krause <mileskrause5200@gmail.com>
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="w5zvd5vp4pqaarjf"
+Content-Disposition: inline
+In-Reply-To: <20260709-mt6323-adc-v5-2-d11b8332a735@protonmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260710_003933_081733_4D91289A 
+X-CRM114-Status: UNSURE (   7.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,75 +108,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: mileskrause5200@gmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Miles Krause <mileskrause5200@gmail.com>
 
-first_block is reset for each firmware section and is never used outside
-the section loop. Declare it as a bool inside the loop to limit its scope
-and make its two-state purpose explicit.
+--w5zvd5vp4pqaarjf
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Subject: Re: [PATCH v5 2/4] iio: adc: mt6323-auxadc: add mt6323 PMIC AUXADC
+ driver
+MIME-Version: 1.0
 
-No functional change.
+Hello,
 
-Signed-off-by: Miles Krause <mileskrause5200@gmail.com>
----
-Compile-tested on x86_64 with:
+On Thu, Jul 09, 2026 at 01:52:48PM +0300, Roman Vivchar via B4 Relay wrote:
+> +#include <linux/mod_devicetable.h>
 
-  make O=out allmodconfig
-  make O=out W=1 drivers/bluetooth/btmtk.o
+Please don't add new users for this header file. Only use those
+<linux/device-id/*.h> that you actually need (if any).
 
-Sparse-tested with:
+Thanks
+Uwe
 
-  make O=out-sparse allmodconfig
-  make O=out-sparse C=1 CHECK=sparse drivers/bluetooth/btmtk.o
----
- drivers/bluetooth/btmtk.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+--w5zvd5vp4pqaarjf
+Content-Type: application/pgp-signature; name="signature.asc"
 
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 809762d64fc6..b809eb82fc73 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -63,7 +63,7 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
- 	const u8 *fw_ptr;
- 	const u8 *fw_bin_ptr;
- 	int err, dlen, i, status;
--	u8 flag, first_block, retry;
-+	u8 flag, retry;
- 	u32 section_num, dl_size, section_offset;
- 	u8 cmd[64];
- 
-@@ -79,7 +79,7 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
- 	section_num = le32_to_cpu(globaldesc->section_num);
- 
- 	for (i = 0; i < section_num; i++) {
--		first_block = 1;
-+		bool first_block = true;
- 		fw_ptr = fw_bin_ptr;
- 		sectionmap = (struct btmtk_section_map *)(fw_ptr + MTK_FW_ROM_PATCH_HEADER_SIZE +
- 			      MTK_FW_ROM_PATCH_GD_SIZE + MTK_FW_ROM_PATCH_SEC_MAP_SIZE * i);
-@@ -132,9 +132,9 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
- 
- 			while (dl_size > 0) {
- 				dlen = min_t(int, 250, dl_size);
--				if (first_block == 1) {
-+				if (first_block) {
- 					flag = 1;
--					first_block = 0;
-+					first_block = false;
- 				} else if (dl_size - dlen <= 0) {
- 					flag = 3;
- 				} else {
+-----BEGIN PGP SIGNATURE-----
 
----
-base-commit: 64b5c4c8e79c131fe8f135bab5e5dfaa245c5776
-change-id: 20260710-btmtk-first-block-bool-bd047b970821
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmpQoa4ACgkQj4D7WH0S
+/k4pDwf+MvHDR2NtPifHQ1UsidnZd5iG/SkGcVotUqLFeN2Q4NzZWdluwEBDlqYP
+3AALM8XUIbkGVP7dg/LDiffqfsK4fE1kUa3Tmzp3lYrTzMlgZwuu4FxN6V4FTDqt
+ljrJFdNgUMcs20mDR6iIwDq5KUqFbuBOTeLF/8HHcoScvTb8j+3rfp9D+k8iVIWF
+begEnYaOM//SpubNhltzxmf0rcnRnm8+hlR6A3vcLOkP10KQBxk3OAK4oZjiN4dz
+AhMCwZu8VjRctocECGQE6ZTH1aKUSzuGcFX1QrXDPRnhyzHjoMoBZZien0jrGL0J
+A8nk7InQ4UXOD6YjGdppmL36xpQKsQ==
+=N5IU
+-----END PGP SIGNATURE-----
 
-Best regards,
---  
-Miles Krause <mileskrause5200@gmail.com>
-
-
+--w5zvd5vp4pqaarjf--
 
