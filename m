@@ -4,206 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4351BC43458
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2026 16:54:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5D70C43458
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2026 16:58:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WsfF+mbRDPD+GsPWqxzNZj+dFo6F1e9HzKDlJXCosvc=; b=wb2epFE0HALKQ8ouqnjTbMLWxg
-	pypR874oZGyTTkIknJPuhc7IjkzmsvY5DOXKIMk8aMzKa2k/xhGlwyPVYNivT7jRm9H75QO7mrXrS
-	AApWAVFvMoZEzkDS49pxVCygwpy3Dn0696FmyAY3Yt8qC+J8dbCQL4gDedikQf2BHKgOC7lQkosfv
-	bHxUGxi/OnHacN058PhGuo1Nzu7lpK329AeluY2cFgBj9WI1HzRceJdL/S8NeOq6G0YYeg3+YUFF7
-	fJsg73N/fLelQasA8Pmyu0qvDn7JhdoPr231IfhyjwaMUZ6ZGX/A7LIR6T2tKwTprjo3H3wfQvVZt
-	M92vl6HA==;
+	bh=UzL1Q2+7WDC/g3DuLtI+wo+3VqWALiuVF8iASl1uPEU=; b=CtrcsJOIkJA8ZrD1/Y12F2qrkv
+	PTtWotSHtchIxtvyeX+WohutflPIKXHM4gLgSMwAAkoPXugBxFkUsN0AjpWt3IWIrhVJ61HFL2noR
+	gR5jqqDWICqaqjcX1A6k4ACV0ieOIky2rIzNuOSlwwziOrNtaX0HPpkAG6uLRbII/DGqZmT94Q6ku
+	IxFYAFanbVNdts6lJJ+KhPMCqMTuGQHYFUlv9yGftjedyosqG42cdY32nmefaLCmsYJOhMQUTkC6H
+	yZ5ZIp+jRrPup+Sqx3fLX0I/wptdMySpSWUl397jhQGoAGP83/LWAe9oasP5hIeMw7UI5mYJBfrAf
+	wpVDbPZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiEUb-00000005OKL-0kxN;
-	Fri, 10 Jul 2026 16:54:25 +0000
-Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
+	id 1wiEYk-00000005OnY-075Q;
+	Fri, 10 Jul 2026 16:58:42 +0000
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiEUY-00000005OJJ-0ILC;
-	Fri, 10 Jul 2026 16:54:23 +0000
-Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
-	by mx0b-001ae601.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 66AEkwLp3337969;
-	Fri, 10 Jul 2026 11:54:19 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=
-	PODMain02222019; bh=WsfF+mbRDPD+GsPWqxzNZj+dFo6F1e9HzKDlJXCosvc=; b=
-	GE9u7lhURyNL+eTo/OdMcVkqkDFiwsWZlR+aDNVMTBARCjC2zqdI8W+BULvhCWu3
-	j3Rbbp3pPiMtI73Xgs3sUPdhUeRmMzhTZNEB13UMWCU/hIkjrrMmfI+OTXm3aFpc
-	63cX4lxcX047b4cwgMJkLJe0UdSMcQcY4zo8B83yEijUZwBODV14il+1ILRxbN5K
-	UPoMng1CArzavq1MzwbbQCfp2M97jbiNf5mOsesepWNZwx7IFQVtwpShzRsFbVjB
-	HHz9Re6tc7OcnJ1UwV5sMUMBgpaRvyaEi7h5K+QPlzPjnWPceQbH+hRZYoqDsXXM
-	x2W8es3UmIIJGGpAW3i80A==
-Received: from bn8pr05cu002.outbound.protection.outlook.com (mail-eastus2azon11021134.outbound.protection.outlook.com [52.101.57.134])
-	by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 4fb2t6g7be-1
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
-	Fri, 10 Jul 2026 11:54:19 -0500 (CDT)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=CvZJNENh7cNx+HzMNwGICXqY48LWLEwE5ZQs1lGtcuc44MxaZ9kml3oiOK2uvnr+SvarIi23eV5EgObyj7jP4ht9wx+8dj4tnqgWHmUCC/nRdoNw6Z9GFyBs+RPo1WUtSdVs2AWxFunRdEf6r6hQKb38vhPlpgsrIWkariie8rQzTsnSp5Y+Nv7MZAc9h4phgGq92yxSsLGgIpcdkkeYJEQjE6Y+YxnaFkJR8W3xI67d4D50cMX6qRdN+GGUwjjXBpPQCZAcHs5tOeATfGXYUSC+nnu5pjpGyuedbGpjX99r6Aa+E6ePRtrPIJlg6PhUTZ+oIKsveGVAWz1u2G+8rg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=tYaBMSvSvX6TdwuniTCPEburPNpHEzqff4k2rv+0oJo=;
- b=vywk/NVJW0AQtXVCxk/ZivbV4hPf1PhHrcOIERLisnozVf+Rz8GXRFzWyKMTN0e/tTJo3t6H/ul1U4L9VQ/pt7hBuOIT2wxDmFs3QnpCFQA0UHoqlNhppcOhfRrElHJOtJduHZIi7kKLEizf+p21R3duEQm1HT8mKoy7X5wtQw+ay5DKP1h9uuwWAiIABmExHTjsgpfvsWkVdczj0H6VREh0ipo/bRA7zhfQIwg0RMBVKghHC/tpB1dsHjtjjm7strW4EP2BkRIsUCiuMstpkCl2IdHOtjD8Npk4QziFzNIir1lq5Xt6ZkM9DULWGKpukYTsUSB6ZDO7v+Eg2GoNeQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=softfail (sender ip
- is 84.19.233.75) smtp.rcpttodomain=lists.infradead.org
- smtp.mailfrom=opensource.cirrus.com; dmarc=fail (p=reject sp=reject pct=100)
- action=oreject header.from=opensource.cirrus.com; dkim=none (message not
- signed); arc=none (0)
+	id 1wiEYh-00000005OmZ-1P1S
+	for linux-mediatek@lists.infradead.org;
+	Fri, 10 Jul 2026 16:58:40 +0000
+Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-c96c92c0980so684608a12.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 10 Jul 2026 09:58:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=cirrus4.onmicrosoft.com; s=selector2-cirrus4-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tYaBMSvSvX6TdwuniTCPEburPNpHEzqff4k2rv+0oJo=;
- b=piIz7mDT96dCdvMPHGgKmg8TxMRUY7sCNlcF0ANVRkfI5MK+h6Bu/V/osG6ZGJV/xqMY8/FHnZxwvJu2nK2jB2DA71jsfRLhCmqos99x9ILemFN3LLcX9EURAf9OaCALXeucoHMNVZh3UF5obI38gHJ+z05GcXoKMnI1PCtRxM4=
-Received: from MN2PR01CA0057.prod.exchangelabs.com (2603:10b6:208:23f::26) by
- SA0PR19MB4458.namprd19.prod.outlook.com (2603:10b6:806:b6::18) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.21.181.17; Fri, 10 Jul 2026 16:54:16 +0000
-Received: from BN2PEPF00004FC1.namprd04.prod.outlook.com
- (2603:10b6:208:23f:cafe::30) by MN2PR01CA0057.outlook.office365.com
- (2603:10b6:208:23f::26) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.21.202.12 via Frontend Transport; Fri,
- 10 Jul 2026 16:54:16 +0000
-X-MS-Exchange-Authentication-Results: spf=softfail (sender IP is 84.19.233.75)
- smtp.mailfrom=opensource.cirrus.com; dkim=none (message not signed)
- header.d=none;dmarc=fail action=oreject header.from=opensource.cirrus.com;
-Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
- opensource.cirrus.com discourages use of 84.19.233.75 as permitted sender)
-Received: from edirelay1.ad.cirrus.com (84.19.233.75) by
- BN2PEPF00004FC1.mail.protection.outlook.com (10.167.243.187) with Microsoft
- SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.181.6
- via Frontend Transport; Fri, 10 Jul 2026 16:54:15 +0000
-Received: from ediswmail9.ad.cirrus.com (ediswmail9.ad.cirrus.com [198.61.86.93])
-	by edirelay1.ad.cirrus.com (Postfix) with ESMTPS id E590B406542;
-	Fri, 10 Jul 2026 16:54:14 +0000 (UTC)
-Received: from opensource.cirrus.com (ediswmail9.ad.cirrus.com [198.61.86.93])
-	by ediswmail9.ad.cirrus.com (Postfix) with ESMTPSA id BEE57820244;
-	Fri, 10 Jul 2026 16:54:14 +0000 (UTC)
-Date: Fri, 10 Jul 2026 17:54:13 +0100
-From: Charles Keepax <ckeepax@opensource.cirrus.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Mathieu Dubois-Briand <mathieu.dubois-briand@bootlin.com>,
-        Uwe =?iso-8859-1?Q?Kleine-K=F6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>,
-        Lee Jones <lee@kernel.org>, Linus Walleij <linusw@kernel.org>,
-        Nicolas Ferre <nicolas.ferre@microchip.com>,
-        Alexandre Belloni <alexandre.belloni@bootlin.com>,
-        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-        Chen-Yu Tsai <wens@kernel.org>,
-        Florian Fainelli <florian.fainelli@broadcom.com>,
-        Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-        Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-        Marek Vasut <marek.vasut+renesas@gmail.com>,
-        James Ogletree <jogletre@opensource.cirrus.com>,
-        Fred Treven <fred.treven@cirrus.com>,
-        Ben Bright <ben.bright@cirrus.com>,
-        David Rhodes <david.rhodes@cirrus.com>,
-        Richard Fitzgerald <rf@opensource.cirrus.com>,
-        Support Opensource <support.opensource@diasemi.com>,
-        Peter Griffin <peter.griffin@linaro.org>,
-        Alim Akhtar <alim.akhtar@samsung.com>,
-        Tim Harvey <tharvey@gateworks.com>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
-        Neal Gompa <neal@gompa.dev>, Chanwoo Choi <cw00.choi@samsung.com>,
-        Luca Ceresoli <luca.ceresoli@bootlin.com>,
-        =?iso-8859-1?Q?Andr=E9?= Draszik <andre.draszik@linaro.org>,
-        Saravanan Sekar <sravanhome@gmail.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>,
-        Jonathan =?iso-8859-1?Q?Neusch=E4fer?= <j.neuschaefer@gmx.net>,
-        Aaro Koskinen <aaro.koskinen@iki.fi>,
-        Andreas Kemnade <andreas@kemnade.info>,
-        Kevin Hilman <khilman@baylibre.com>, Roger Quadros <rogerq@kernel.org>,
-        Tony Lindgren <tony@atomide.com>,
-        Matti Vaittinen <mazziesaccount@gmail.com>,
-        Orson Zhai <orsonzhai@gmail.com>,
-        Baolin Wang <baolin.wang@linux.alibaba.com>,
-        Chunyan Zhang <zhang.lyra@gmail.com>,
-        Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
-        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-        Alexandre Torgue <alexandre.torgue@foss.st.com>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>,
-        Liviu Dudau <liviu.dudau@arm.com>,
-        Sudeep Holla <sudeep.holla@kernel.org>,
-        Lorenzo Pieralisi <lpieralisi@kernel.org>,
-        Geert Uytterhoeven <geert+renesas@glider.be>,
-        Magnus Damm <magnus.damm@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
-        mfd@lists.linux.dev, linux-kernel@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org, patches@opensource.cirrus.com,
-        linux-rpi-kernel@lists.infradead.org,
-        linux-renesas-soc@vger.kernel.org, linux-sound@vger.kernel.org,
-        linux-samsung-soc@vger.kernel.org, linux-amlogic@lists.infradead.org,
-        asahi@lists.linux.dev, linux-mediatek@lists.infradead.org,
-        imx@lists.linux.dev, linux-omap@vger.kernel.org,
-        linux-arm-msm@vger.kernel.org,
-        linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
-        linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3 21/23] mfd: Unify style of of_device_id arrays
-Message-ID: <alEjtTiSvVTpc67y@opensource.cirrus.com>
-References: <cover.1783615311.git.u.kleine-koenig@baylibre.com>
- <e5cc82aa51da5f545f745b126923fdd6085a68a0.1783615311.git.u.kleine-koenig@baylibre.com>
- <DJUWS6ZZUDS0.2ILHWRFQ1XD1S@bootlin.com>
- <315a0aec-99e8-4d03-a04b-613acfae1f52@kernel.org>
+        d=gmail.com; s=20251104; t=1783702718; x=1784307518; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=UzL1Q2+7WDC/g3DuLtI+wo+3VqWALiuVF8iASl1uPEU=;
+        b=cG9xzzpNjVKpu/TiI9YfSh7CPStxQUQ9MksdIePoiUt1acrugSM0Xq61s4vDKFSMVs
+         vuxuPAs2H8GRIGbW0pJ774YN7NWJ6YYz3EX66qcaiWSJg1kg9qkoRiLe6tW3SRxwJ8rG
+         6adSg50rRcmIf94mgv2zR9SawIeCYwy8ZHF5Jk28yArw9h5egcs23Tye6mkJkCasp0qB
+         u1dKos5XRcKcMWyblaFig6ydxqmyuT8oiSeTWlnBo/LvpanEF8v545j67vimD4nZ4OEq
+         F7qycHKpjcLIXHrd30JmUix77EMzomBoeZX1ZtpBW1a2hNnvwoP1b1inUKdLcEMkYxNK
+         mIHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783702718; x=1784307518;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=UzL1Q2+7WDC/g3DuLtI+wo+3VqWALiuVF8iASl1uPEU=;
+        b=T6s8jqtfuwcq8FtyTWBSqkk9pAyla0wNRrxJuQWidVw/I1/Latp/TJlg0XxL2cFny+
+         tTHYsD82aOBh83RRSNNJb/8yvORsi0xgEx5GTFUmnIyEL8LB39BSa1NbA+a6Nu5AuNGZ
+         ujLl1OfIYdx03mJXq9tGYELFHf9TMAz88ZMg/M57htTmF49nvbQRQbcdpazdGzvUZHIv
+         EzNQwDH1AVSezjH0NtTgI0DeHk/lKQm5JicsirdGv7KIP2/oQ4yMmZdEURaBYKWQKVkX
+         NnJrkRR9nq5q1e8+wF2CnUhU1qMU7wlwuNo6lJYP9I5FQIitgY6bTp1awJKEXOQo6Lqq
+         rZVw==
+X-Forwarded-Encrypted: i=1; AHgh+RpvwqI1WAx+dBrQfI3bSwNU/e7TEhB0v2dI6iO5e1pWr1zP4Bz1tUT8ij2M2TfR+BZWzlx5T0upneCrLgEXXQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxvnhS0Oos7txIH2ZdwHkC3zwjRnUHftfCWaihL9zYPFS/rtOFW
+	yDdqhlGHHCw6V+96+ECE4yHnL8uh82B7uyBDU9bVdoO+yOmR1iWhHofm
+X-Gm-Gg: AfdE7cmZKJ0E5k8Ue1Mv0Aqqrx+iB2UIdO70aaf7qIjg1RRV6CYR6zhVnE1oW1u0JKU
+	HMMRfqjXWC5Lo11hMs2CRgKNcce8B2vn6pOqax1wkYv+zzHDLO68yPJsuP89zmBLS++LjZOFD+B
+	tuw7/W4RJEYnPyr9xv37ibSzvGvsBsgrpK4HNF5FeKF/UvAq/JKnhjFceTfg92DpS2Dpunt2STB
+	PlKCbwjCQcgfVbVxuz5dbpHpVUq9GL/yc3RLplMdw28C50S7swLlSHFRajtCa/5DMko+2HVmD2S
+	8MNI7ARrIxj0Qyk69tCeU7zaKL5JlVLwd8skwen6WA34SojmHHR6sn2RkE6pxtsD8T4zFQ6M7O0
+	dA8d+HJxhVq6Gy1m53f7kp4OkXA9TTWDqQpcVUghLYTtH0zys9lsdAaEREgw8pCHZaDevjcLdWK
+	mNLSfB8KLxtPf0OKJAk1TBESFgh8IVAZZNDV+6o8Y=
+X-Received: by 2002:a05:6a21:1bc3:b0:3bd:4698:e7c4 with SMTP id adf61e73a8af0-3c0bcb7f146mr13586972637.42.1783702718181;
+        Fri, 10 Jul 2026 09:58:38 -0700 (PDT)
+Received: from DESKTOP-TIT0J8O.localdomain ([49.47.198.15])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-311747f72a6sm48876196eec.1.2026.07.10.09.58.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 10 Jul 2026 09:58:37 -0700 (PDT)
+Date: Fri, 10 Jul 2026 20:58:28 +0400
+From: Ahmed Naseef <naseefkm@gmail.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Ahmed Naseef <naseefkm@gmail.com>, netdev@vger.kernel.org,
+	=?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Landen Chao <Landen.Chao@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
+	Russell King <linux@armlinux.org.uk>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Vladimir Oltean <olteanv@gmail.com>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next 2/2] net: dsa: mt7530: add EN7528 support
+Message-ID: <alEktKWsrriHdR40@DESKTOP-TIT0J8O.localdomain>
+References: <cover.1783680864.git.naseefkm@gmail.com>
+ <1865eaedef97e593ba608764c7390209cae85b30.1783680864.git.naseefkm@gmail.com>
+ <f968d3fe-83dc-4b82-972b-0d4d477a1a52@lunn.ch>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <315a0aec-99e8-4d03-a04b-613acfae1f52@kernel.org>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN2PEPF00004FC1:EE_|SA0PR19MB4458:EE_
-X-MS-Office365-Filtering-Correlation-Id: 83d4dfbc-63ca-48ec-9d6e-08dedea3e07e
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|82310400026|36860700016|61400799027|7416014|376014|23010399003|16102099003|18002099003|22082099003|5023799004|11063799006|56012099006|4143699003;
-X-Microsoft-Antispam-Message-Info: 5/4Lr+tbhbqPodXSAkHEkh6L+55dCUessVj57Kp9Q+4XjSNmxV3SPlUCPJswooj6I0DfpPMChZFRg/9aqSndatwrDrnKIMPZG4bPvpvR48g7gJ2P6ob+n0O2tr0wJ1hn8xgYWV65E3OGE2xH1QK32TjpDjZhF62C06dJXFq2tKUU3pyYU1yzfIYSnXIeDJNy3p/eNmO9csNm6jTAXVy1hXD4jJJGStJVubc/w0U1QBvmBTSTX/TseMeNQRpdM/eLeYkML0MA34Yhr5Ipu6ZGB9hihDhkEY61lCiLdaZHEAHrdsrRZjsmbdlBtK++wKxcmpro6YnKFnhnXCNrv0sW/N94J+FG3JQ3rFct0wzbKdvlNLWptp84FHYvwmP2uRX3gaVl8+sbO7IpniVMilHSo6Uac6mHi/M4DvIvFF+3gb3xLP9mkxwkDPxe/IQ62SBh1pNk8JcUekPcLFaLpyGdHyUEGO7uQKx1rWhmNYpvACwI1/C/rBJqtqaDTQ8ZddCQvMLASNEOP2CXwGDRKR70ABoziyOKTZQb5KzR52HCj0gh/dxxMPiWx3uB44wY6Xjb83Q2qJ3oZq2N0qycDMioUYGEJ4rri3j2QZLQWFtmkl6tAhn6RtCECF253Za9SwJdQFqAFTLUj2eraBiYhVsvuhW15vlm6olEUesNBC3uuOIuApI7+2ibcVHVqR6BowvNI54iKEBp2PEFWnRtdJJLZg==
-X-Forefront-Antispam-Report: CIP:84.19.233.75;CTRY:GB;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:edirelay1.ad.cirrus.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(82310400026)(36860700016)(61400799027)(7416014)(376014)(23010399003)(16102099003)(18002099003)(22082099003)(5023799004)(11063799006)(56012099006)(4143699003);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: JoOFsxH1ffJr3SMgRwVqC4RiJg6aW2HJU7koyN0AjnX/OVLH0tXhb5s11mMmXHgkIeJj1OQv+fMLQ/J5QHx3GeKewE6eMEsI5w9NiBHVUSA0XmL2lyCzhAskRQ6rPVu9f+4lN2gWXg4Ad7fhbyCBgOoIXp8AQTqSmSzDV4bJGzcTHs2ifj/k3r2pSeAbGpnCZ+B7VvhFHNa7MO5KdsNFhLMmwRYENyVIuJmu9JZ9jV4omu+9U7F+2NM8cSmd+ZTrTBiY80wLtpu6ATvVZf3K6eFe+wHnnPraFTnqxGTTESbn1UNLhGQdyg6EijOpdxMCnwcK/MQ+p9RHV+gowNhrAd/VPzQpliVaosUYbEH5gb8X3Ui00fu0Brq8MrrdpoDDg5bYhIyBky2hk4pkbaerq4fMrGFzwmESrpV8UNTSnlO21qNbjLqzn60nenQoCUDB
-X-Exchange-RoutingPolicyChecked: Xp101HBMD9YUUXSGEQN6ky2NAr3PtWXk0VOnL7cTFQQFJTuYwyNLANyxUDK19qFP1uKuMR7DUisWRdwwb/fQDh5njNbIJjY7fFmKNe7K2u/cTiR3Jf5M93KNA98fHws+n0XGtVoeLcGBB2AHO6hjJPrzoecfZNzqvCp6f/62wKHw7EyHvOF75wHHBUE8I1a4Bzfxb4+1CdkxZ4wZISubVl8U47s/IiNg6jsvkgMLKbDsFEI/4Q9/MkZyj7S+CKPkX6mj4brl7UDn1tL3EC8ObxNq9w/RVaprqm9LH5IzCdZ6Al6NLquhVFJALJD/37jmyfmMXtYAxjHAWSE3ePQdiw==
-X-OriginatorOrg: opensource.cirrus.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Jul 2026 16:54:15.8418
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 83d4dfbc-63ca-48ec-9d6e-08dedea3e07e
-X-MS-Exchange-CrossTenant-Id: bec09025-e5bc-40d1-a355-8e955c307de8
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=bec09025-e5bc-40d1-a355-8e955c307de8;Ip=[84.19.233.75];Helo=[edirelay1.ad.cirrus.com]
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TreatMessagesAsInternal-BN2PEPF00004FC1.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR19MB4458
-X-Proofpoint-GUID: 25obz_yyNkCnp7YlV3Vkq9nrrYZ2wkQZ
-X-Proofpoint-ORIG-GUID: 25obz_yyNkCnp7YlV3Vkq9nrrYZ2wkQZ
-X-Authority-Analysis: v=2.4 cv=LNBWhpW9 c=1 sm=1 tr=0 ts=6a5123bb cx=c_pps
- a=5CsiemZREWOr6tJEzaiJew==:117 a=h1hSm8JtM9GN1ddwPAif2w==:17
- a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
- a=8nJEP1OIZ-IA:10 a=RAioF0-LDSMA:10 a=s63m1ICgrNkA:10 a=RWc_ulEos4gA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=iX4cTi3TZMoOKdANLEfx:22 a=KfkQE9S9VqCBgivYGm0O:22
- a=KKAkSRfTAAAA:8 a=w1d2syhTAAAA:8 a=tVKXKcanaTD3nCZxYbUA:9 a=3ZKOabzyN94A:10
- a=wPNLvfGTeEIA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzEwMDE2OSBTYWx0ZWRfX/oW/6gBxVPFi
- Qhi4uwSdb7NM/Uf8jm/aoJCHoFK3nEX5W7ba+ZDO11MzMmxW9p1Dgqw/yLvM6RA96yF+nP0zYY8
- RL+yhsPLS2xZqGRLHDOOmhIN3phX0ygTMbp8ZEkbk6XATyW75ZSjP2fm+ZqsAE4ya6Cr2KzWKno
- iUfpgPowO97vk3z9Y/bxfI1pRehKQ2mhRaFaoQzJvURF2BKFOHw5JIfCFPc1Gue7sfJvLlOY7/p
- oNPHLEYYQKcs6FTVrN73cIuL3JYyBetIHcAfiKiPOz1SnlHE6BRpuAnNlGU8JcgYko2Wv02oVCy
- VEoTb3RTeC1is2wwc5HQpjd2wkDV+xorAxoFY59BmQ2mKSQpzjALauOc51MJDWgwYZVB4DrdRMq
- jTnfHplE0sTfv0wPtR/2AfXJCUjhYn8wAL36RTgHUL5k0axZQBT4OkrnXYqWoFbJ8eM5y8yxodP
- RGTzm1bOz1vOi0gH4fQ==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzEwMDE2OSBTYWx0ZWRfX1hRY44W9w1P2
- 2Avh9ilPdk4PhQ1wNCnK5zb4FBq0ljGqyJ8nhmkgQM84FP1Mh41Ry2uvFhATqpceGJ3HPcx7ejW
- 5s+ovOGNZ74U/NKh3LKFpGM4F4+GdBA=
-X-Proofpoint-Spam-Reason: safe
+In-Reply-To: <f968d3fe-83dc-4b82-972b-0d4d477a1a52@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260710_095422_239648_CA64AE93 
-X-CRM114-Status: GOOD (  20.71  )
+X-CRM114-CacheID: sfid-20260710_095839_395979_0757E556 
+X-CRM114-Status: GOOD (  17.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -218,48 +118,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 10, 2026 at 03:15:17PM +0200, Krzysztof Kozlowski wrote:
-> On 10/07/2026 15:00, Mathieu Dubois-Briand wrote:
-> > On Thu Jul 9, 2026 at 6:58 PM CEST, Uwe Kleine-König (The Capable Hub) wrote:
-> >> These arrays already mostly match the most used and generally
-> >> recommended coding style. That is:
-> >>
-> >>  - no comma after the list terminator;
-> >>  - a comma after an initializer if (and only if) the closing } is not
-> >>    directly following;
-> >>  - no explicit zeros in the list terminator;
-> >>  - a space after an opening { and before a closing }, a single space in
-> >>    the list terminator;
-> >>
-> >> Adapt the offenders accordingly.
-> >>
-> >> Reviewed-by: André Draszik <andre.draszik@linaro.org> # for Maxim MAX77759
-> >> Reviewed-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+On Fri, Jul 10, 2026 at 03:32:32PM +0200, Andrew Lunn wrote:
+> > +	/* The EN7528 LAN GPHYs advertise EEE by default, but negotiating EEE
+> > +	 * with common link partners (e.g. Realtek GbE NICs) results in an
+> > +	 * unstable link with dropped frames. Disable EEE advertisement on
+> > +	 * them.
+> > +	 */
+> > +	if (priv->id == ID_EN7528)
+> > +		for (i = EN7528_GPHY_BASE;
+> > +		     i < EN7528_GPHY_BASE + EN7528_NUM_GPHYS; i++)
+> > +			mt7531_ind_c45_phy_write(priv, i, MDIO_MMD_AN,
+> > +						 MDIO_AN_EEE_ADV, 0);
+> > +
 > 
-> Thesr are all Acks, not reviews. Entire commit will now carry multiple
-> review tags, implying it was reviewed by 3 or more people but none of
-> these people actually reviewed the commit. None!
+> The problem with this is, you can still use ethtool to enable EEE.
 > 
-> They looked at one line out of 100.
+> Please look at phylink_bringup_phy(), where it calls
+> phy_disable_eee().
 
-Technically 16 lines out of 375 ;-)
+Thanks, you are right , the register write is the wrong approach.
 
-> This is ridiculous.
-> 
-> Quoting:
-> "Reviewed-by:, instead, indicates that the patch has been reviewed and
-> found acceptable according to the Reviewer's Statement:"
-> 
-> Not piece of a patch. THE PATCH.
+While looking at phylink_bringup_phy(), I noticed that the mt7530
+driver sets config->lpi_capabilities but never config->lpi_interfaces.
+Since
 
-More than happy for it to be switched to an ack if that is the
-preferred process when reviewing parts of larger patches. I have
-always just indicated the parts of the patch reviewed whilst
-responding, apologies for my ignorance of the process. Would
-probably be an idea to update the docs with a specific comment
-for this case I am not sure that is as obvious to me as it was to
-you, and it is very common to be reviewing a part of a larger patch.
+        mac_supports_eee = mac_supports_eee_ops && lpi_capabilities &&
+                           !phy_interface_empty(lpi_interfaces);
+
+that leaves mac_supports_eee false on all mt753x ports, so phylink
+already takes the phy_disable_eee() path for every port and
+phylink_ethtool_set_eee() returns -EOPNOTSUPP. On the EN7528 I
+confirmed "ethtool --set-eee lan1 eee on" reports "Not supported", so
+EEE cannot currently be enabled from userspace on this driver at all.
+That looks like it unintentionally undid the "EEE can now be enabled
+using ethtool" behaviour from commit 06dfcd4098cf ("net: dsa: mt7530:
+fix enabling EEE on MT7531 switch on all boards"), starting with commit
+9cf21773f535 ("net: dsa: mt7530: convert to phylink managed EEE"). That
+is pre-existing and outside the scope of this series, just flagging it.
+
+For the EN7528 the GPHYs report EEE capability, but the link stops
+passing traffic once LPI is entered, so EEE must stay off regardless.
+The register loop cannot express that to phylib, as you noted.
+
+My plan for v2 is to not advertise lpi_capabilities for the EN7528, so
+mac_supports_eee stays false by design and phylink disables EEE on
+these PHYs via phy_disable_eee() and refuses to enable it from
+userspace. Does that sound like the right approach to you, or would
+you prefer it handled differently?
 
 Thanks,
-Charles
+Ahmed
+
+
+> 
+>     Andrew
+> 
+> ---
+> pw-bot: cr
 
