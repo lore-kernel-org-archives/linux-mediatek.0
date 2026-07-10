@@ -4,92 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D53FC43458
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2026 04:45:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8951C43458
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2026 05:05:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jp+8+5QI95ophkzdeX5PhLSIZp16xbFMwu4QDRkzOEs=; b=4DuAc44tZm9yw6reei4UNx+LYf
-	E/eYFuVAr7UB+FjP/rGFCmS67TycdiJcxYO2g3sGQarStR/LKZibKbVd3HDncVt23U8PvbXfapB49
-	pCvGJVNU1aLNW6kNlYTQW8rY7YxiWRYUX6ErFhoEIT/XfASBt4UuRVd2BdY/0o9IE2SrkMwuNr2F9
-	Gp7PnoRFacXSmltZJw73m3LxX6nG5hlAnL9d5mUyJkDrQQgy+CULg4FX+jMmDbnP1YT0xtF0SlzZB
-	p1SNRKX7Jbhh4iPcwOzoWjCnZwrYdaB/tKSMsVrU23aGEYouLin4fnRhoWhQo1oOEOQ4TqlQ1Y2KP
-	PTl4FVdg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8FKz6zL2lYGruFgrXSmVh8CpNcaMm/DKeCPXfcKM2u4=; b=nhJFZ/me5bDrsxrGuaFJeEBMuV
+	OkKYVVV9tXABmVoLMprHItOSoyeU6HHMT1/M8bLsxHmNEGmWdOIkA84NoffAJ4zVt4KLj1gdBju3D
+	raMG0LsdbiL1XNhKt4RKuiuXGGzISIzLzBf0TaJvHdi7Het8svedUlN8Lj7EuRdQyLpKiXmKILxOr
+	yfH9I8EZsA3tbcXciShxRQxxCG2E8xZU+fjTCO/FHkDpab8nZF4tNTHD/HC9jpekVgh/ETEMIINlT
+	HlCwBLtyCNQCt/U4JToehhvBdD4HTTk4V8U48xSdN4nnmLHwOLiNF1D6rVqIEttlLS9t9RMs9weFQ
+	RsIbTPQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wi36w-000000046l7-1eGo;
-	Fri, 10 Jul 2026 04:45:14 +0000
-Received: from mail5.25mail.st ([74.50.62.9])
+	id 1wi3Qb-000000047mf-1P5M;
+	Fri, 10 Jul 2026 05:05:33 +0000
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wi36s-000000046kY-2smP;
-	Fri, 10 Jul 2026 04:45:12 +0000
-Received: from localhost (84-231-250-126.elisa-mobile.fi [84.231.250.126])
-	by mail5.25mail.st (Postfix) with ESMTPSA id C8E32617B5;
-	Fri, 10 Jul 2026 04:37:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=atomide.com;
-	s=25mailst; t=1783658352;
-	bh=jp+8+5QI95ophkzdeX5PhLSIZp16xbFMwu4QDRkzOEs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CTaihVTY3xKeYwYurPIj1PGrGR+oQrwQf6TQ4FUpfmbKGRQQH/0vBl8OOK/WUw/zr
-	 +CHCGjc9WZ0h+gMjDXgKIuG0sfG5b8v/fURlsq3junjLdDh4yjLeo/E3mnyZF5ILb5
-	 0L9YsyLyaxt3ROVT6g7hv2fvRb3jKJLKIJ+xGvLZkROMhpsQ6xMpDQn/A0jBZLmU4Z
-	 ZO8Iro9rshL2Y66OWXG4Ngkys+C/yPaKUbK202WNo4t9V08TAI3OILwZ+ejHZzDyNG
-	 eSqlieskQg4bhu+Sw3PZD6vdc9fq9daM5LBBKO5PSTb9Angg33oCQkJipqydJDwaNj
-	 eyyRZriX8WpVQ==
-Date: Fri, 10 Jul 2026 07:37:46 +0300
-From: Tony Lindgren <tony@atomide.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Praveen Talari <praveen.talari@oss.qualcomm.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jiri Slaby <jirislaby@kernel.org>,
-	Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>,
+	id 1wi3QY-000000047lx-2OEx
+	for linux-mediatek@lists.infradead.org;
+	Fri, 10 Jul 2026 05:05:31 +0000
+Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-84830c774a0so343492b3a.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 09 Jul 2026 22:05:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1783659930; x=1784264730; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=8FKz6zL2lYGruFgrXSmVh8CpNcaMm/DKeCPXfcKM2u4=;
+        b=cZAnfJtNkd2giWgKZjMZ0yTuVGAnUST+8WhVs2ZFs7ft9ZQJXKmjYd7RJKhaou7akK
+         PyrF9wLRsRSQZHw6YXmSJALQc4ebWJQzDAROVhMRJ2xIMtNbfpY5H6QoP4IVU/uQtFvU
+         XfPoF/sDnU2yetolDCae7M0zZxwSplv60M8DqxgPTJhwk2Y/pg/AOqZ83a1icxqYz+cm
+         42XBjjBEJUtX8fRgB1cksjawM5DUrRDzL1ANzWbEAesFcQYugrwsh7iSvUBOru/V2hV6
+         Oj6ZcbgsniDQswD/Y6Fph6XNALfNFLEl9ZeIzYqGqV0efEDRXpjI82kv9P80V+6NvQpd
+         tdug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783659930; x=1784264730;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=8FKz6zL2lYGruFgrXSmVh8CpNcaMm/DKeCPXfcKM2u4=;
+        b=qkOW9EmkHVSskBfOh2SIdzpqK9ciVVxjJiJTvFbJWEgygYW+WT32JGKB5exqV8FSII
+         8EMmcArCx2rbDyckU4kyE5u0ASBOks++LxelhSHhn/iTCGDJa7Mg8JpW2gNNfNAjfcgh
+         XHSW6aaUaKi4ts2goEvFe/hpP1s5Q8i8ZZi6TesB3T6IbG/0wacgH5top8KeOpPJkvS0
+         bFk/PPzvr9Hq29VoJ2EfLKUaMhMCEo1TGRrD/SHOxqfgTNx8sJepQCazj76D6kRfp83H
+         l+Td4ZvGCgtau9WS54PQDr0CqZj8JAZgl3IWI/6FlND402yTvB9Nlj6nM0Ug27iwndcd
+         AIwQ==
+X-Forwarded-Encrypted: i=1; AHgh+RpIcRyl1ytQIssUXG6X6piEy6YheWvSDM+C5Tw/AzTMxe2VK4ybl5bRGDza1G8WfcLs4VBoACzsewyEGe3F+Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyegELj9vv3XBXf9KbdPYNG/HzrrNkRE3xvzWspyS8cvAFKDIWQ
+	mI8B9LkISe5zkWPhNxdB3gGx2GVosM9p2wVFqtJSEQ3OEF/fSWaWtv17
+X-Gm-Gg: AfdE7ckd3XR4rtq9psdwxB3zjeE4jAwnNXu3xHYb85oiF8mL91NkDYmJkZVzV7BfYsC
+	ynddc4VRb4MNlkOrb8N6/FJeEOdAX4SKoPQAeBaTYjZs/l35IQEjVni6qCHKFJRlyTCzl6HABGI
+	bz1G1IJsivUJn9H62pnUPHqVDl8MxEjHQ72fH1cI3OZO+fgcStUqRYoMMxPCxx67lk8SJAf+kx2
+	/OEGLv1VlKRXPfxzX5uM/vw/1h6VjeMG8FIQj+fBBPxxr6JljfO7YxS6iuN7EW4dPaD+YNDhJCw
+	imZ3KJSyMpXibOVK2JrQuH32zzs/oDz3jr9UjwRBTanMaBugnjowkxud8lS5uPut3+2oPUbdyIj
+	rfVysJrAudNeaA5vZmA49QNJaN76yeCP0hWj9ME/0tEfCZuSJIVpCadT6vVch3iO5LAavoc0zes
+	f6CW3NSQrF71Vvy+AXnHZVzmMcEhVR3SQE24l1KvWt/U7Nr8XjYgZ/a+/htg==
+X-Received: by 2002:a05:6a00:400d:b0:848:6447:e09c with SMTP id d2e1a72fcca58-8486447e365mr3946827b3a.39.1783659929668;
+        Thu, 09 Jul 2026 22:05:29 -0700 (PDT)
+Received: from phuc-desktop.. ([183.91.15.56])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84847275fa0sm3400499b3a.22.2026.07.09.22.05.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Jul 2026 22:05:29 -0700 (PDT)
+From: phucduc.bui@gmail.com
+To: Mark Brown <broonie@kernel.org>,
+	Takashi Iwai <tiwai@suse.com>,
+	Nick Li <nick.li@foursemi.com>,
+	Herve Codina <herve.codina@bootlin.com>
+Cc: Support Opensource <support.opensource@diasemi.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Richard Genoud <richard.genoud@bootlin.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Peter Griffin <peter.griffin@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Peter Korsgaard <jacmet@sunsite.dk>,
-	Michal Simek <michal.simek@amd.com>,
-	Aaro Koskinen <aaro.koskinen@iki.fi>,
-	Janusz Krzysztofik <jmkrzyszt@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	bjorn.andersson@oss.qualcomm.com,
-	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
-	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
+	Shenghao Ding <shenghao-ding@ti.com>,
+	Kevin Lu <kevin-lu@ti.com>,
+	Baojun Xu <baojun.xu@ti.com>,
+	Sen Wang <sen@ti.com>,
+	Oder Chiou <oder_chiou@realtek.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	u.kleine-koenig@baylibre.com,
+	Zhang Yi <zhangyi@everest-semi.com>,
+	Marco Crivellari <marco.crivellari@suse.com>,
+	Kees Cook <kees@kernel.org>,
+	HyeongJun An <sammiee5311@gmail.com>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Qianfeng Rong <rongqianfeng@vivo.com>,
+	linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	patches@opensource.cirrus.com,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-omap@vger.kernel.org, linux-mips@vger.kernel.org,
-	Mukesh Kumar Savaliya <mukesh.savaliya@oss.qualcomm.com>,
-	aniket.randive@oss.qualcomm.com,
-	chandana.chiluveru@oss.qualcomm.com
-Subject: Re: [PATCH 0/6] tty: serial: propagate errors from uart_ops.pm
- callback
-Message-ID: <20260710043746.GM30058@atomide.com>
-References: <20260709-add_return_check_for_uart_change_pm-v1-0-e85c6ffa8ec4@oss.qualcomm.com>
- <ak9OPNcVAhkfxHvZ@ashevche-desk.local>
+	bui duc phuc <phucduc.bui@gmail.com>
+Subject: [PATCH v3 03/27] ASoC: codecs: es8316: Use guard() for mutex locks
+Date: Fri, 10 Jul 2026 12:04:47 +0700
+Message-ID: <20260710050511.14439-1-phucduc.bui@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260709045902.498848-1-phucduc.bui@gmail.com>
+References: <20260709045902.498848-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ak9OPNcVAhkfxHvZ@ashevche-desk.local>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260709_214511_215719_C5E7E41D 
-X-CRM114-Status: GOOD (  12.48  )
+X-CRM114-CacheID: sfid-20260709_220530_615393_5FFD62D3 
+X-CRM114-Status: GOOD (  14.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,24 +128,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-* Andy Shevchenko <andriy.shevchenko@linux.intel.com> [260709 10:38]:
-> Just no, please just properly implement runtime PM. The .pm() must die completely.
-> I used to have the PoC for that long time ago [1], but due to lack of time and
-> other priorities it went abandoned. Also Atlassian made a brain damages move to
-> limit repository to 1Gb, so I haven't able to update it for a few years.
-> 
-> Note, that Tony (you have him in the Cc list) did a lot for some corner cases
-> with that and we still have them IIRC. Tony, do you know what is the state of
-> affairs with runtime PM for UART?
+From: bui duc phuc <phucduc.bui@gmail.com>
 
-The RX side of things should work for hardware that can wake up to an incoming
-event. Linux for sure needs more work to properly handle the various corner case
-TX wake-up of a PM runtime idled UART. I'm mostly offline until Monday though,
-will check my notes for more details next week.
+Clean up the code using guard() for mutex locks.
+Merely code refactoring, and no behavior change.
 
-Regards,
+Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
+---
+ sound/soc/codecs/es8316.c | 31 +++++++++++++------------------
+ 1 file changed, 13 insertions(+), 18 deletions(-)
 
-Tony
+diff --git a/sound/soc/codecs/es8316.c b/sound/soc/codecs/es8316.c
+index 3abe77423f29..87f331868dc7 100644
+--- a/sound/soc/codecs/es8316.c
++++ b/sound/soc/codecs/es8316.c
+@@ -9,6 +9,7 @@
+ 
+ #include <linux/module.h>
+ #include <linux/acpi.h>
++#include <linux/cleanup.h>
+ #include <linux/clk.h>
+ #include <linux/delay.h>
+ #include <linux/i2c.h>
+@@ -620,15 +621,15 @@ static irqreturn_t es8316_irq(int irq, void *data)
+ 	struct snd_soc_component *comp = es8316->component;
+ 	unsigned int flags;
+ 
+-	mutex_lock(&es8316->lock);
++	guard(mutex)(&es8316->lock);
+ 
+ 	regmap_read(es8316->regmap, ES8316_GPIO_FLAG, &flags);
+ 	if (flags == 0x00)
+-		goto out; /* Powered-down / reset */
++		return IRQ_HANDLED; /* Powered-down / reset */
+ 
+ 	/* Catch spurious IRQ before set_jack is called */
+ 	if (!es8316->jack)
+-		goto out;
++		return IRQ_HANDLED;
+ 
+ 	if (es8316->jd_inverted)
+ 		flags ^= ES8316_GPIO_FLAG_HP_NOT_INSERTED;
+@@ -681,8 +682,6 @@ static irqreturn_t es8316_irq(int irq, void *data)
+ 		}
+ 	}
+ 
+-out:
+-	mutex_unlock(&es8316->lock);
+ 	return IRQ_HANDLED;
+ }
+ 
+@@ -699,18 +698,16 @@ static void es8316_enable_jack_detect(struct snd_soc_component *component,
+ 	es8316->jd_inverted = device_property_read_bool(component->dev,
+ 							"everest,jack-detect-inverted");
+ 
+-	mutex_lock(&es8316->lock);
++	scoped_guard(mutex, &es8316->lock) {
++		es8316->jack = jack;
+ 
+-	es8316->jack = jack;
+-
+-	if (es8316->jack->status & SND_JACK_MICROPHONE)
+-		es8316_enable_micbias_for_mic_gnd_short_detect(component);
+-
+-	snd_soc_component_update_bits(component, ES8316_GPIO_DEBOUNCE,
+-				      ES8316_GPIO_ENABLE_INTERRUPT,
+-				      ES8316_GPIO_ENABLE_INTERRUPT);
++		if (es8316->jack->status & SND_JACK_MICROPHONE)
++			es8316_enable_micbias_for_mic_gnd_short_detect(component);
+ 
+-	mutex_unlock(&es8316->lock);
++		snd_soc_component_update_bits(component, ES8316_GPIO_DEBOUNCE,
++					      ES8316_GPIO_ENABLE_INTERRUPT,
++					      ES8316_GPIO_ENABLE_INTERRUPT);
++	}
+ 
+ 	/* Enable irq and sync initial jack state */
+ 	enable_irq(es8316->irq);
+@@ -726,7 +723,7 @@ static void es8316_disable_jack_detect(struct snd_soc_component *component)
+ 
+ 	disable_irq(es8316->irq);
+ 
+-	mutex_lock(&es8316->lock);
++	guard(mutex)(&es8316->lock);
+ 
+ 	snd_soc_component_update_bits(component, ES8316_GPIO_DEBOUNCE,
+ 				      ES8316_GPIO_ENABLE_INTERRUPT, 0);
+@@ -737,8 +734,6 @@ static void es8316_disable_jack_detect(struct snd_soc_component *component)
+ 	}
+ 
+ 	es8316->jack = NULL;
+-
+-	mutex_unlock(&es8316->lock);
+ }
+ 
+ static int es8316_set_jack(struct snd_soc_component *component,
+-- 
+2.43.0
 
-> [1]: https://bitbucket.org/andy-shev/linux/branch/topic/uart/rpm-plus
 
