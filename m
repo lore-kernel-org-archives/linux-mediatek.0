@@ -4,80 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27E5BC43458
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2026 13:35:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47ABEC43458
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Jul 2026 15:01:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1zpxir8kPjpVYUNzqhODBD4/GTqr/OadsQZ2UHLHZvw=; b=iuezt3eDj4aol33j8bQIgQdbdk
-	k1DOSX+vEI0RzcVcxXN1rtciWzsimA02ss74pWoBn2cGjVdMnOc2Tn+gkH9596f79EP/mGEZdVxlR
-	Epu4FDKxDg52biK6smK0TQrRR/wK54Nvesj0m8qPcSJ5zacRKX/QORDQiSNzuL4EapaOa/MVp3vmm
-	ZVH5Hex7kvDbzEcggcP4tr6TyGzJ9rmQbMqy0JXnWTZslSkKezJ/PG5hPkBb2Iyw0TDa3S4viYmjV
-	Zbvqmpk+dJyYtdBiPJblaXR114C2ytnCZGDWcVRJtHojtqcOIn5v8Ot+Cj0zrMvqbFIubx/BqGFAg
-	y0x3jQOw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tXY6SQ0Q+anDRvuxV3EfhQNKyQXwe1OYCTxx7Z/YiAY=; b=sDS0CBWBKMqZZF6mCyVkb6SnUP
+	JmwkIYejNWGnb5StbnM698/Gn/0mWEToD93+vwhExGsg49SkvyYAJE+2JoOEzv8wwtUVnL188/PW2
+	lM/OH2tUVq8s+X2Tbd8CxMh3pcdMkSc6q57NUl+Jr051fBeGru8Q/EmNHmervtvy00V6p0t0rGdxw
+	wJ6WfAfJxXloCjGMgGpQ2ZWmdgDgmF6Y7CS2xCFiff4X8Xu85JNlX8hhUgN+EX6dSNq98yFBkhOCG
+	uzNCY1yES3UCoQRGqQQqfmxTkfHz9fByo6XuuTg0t/bLad6vCc1B8ckA4RjpkkvRaGjbrXLgKWqrB
+	xKL5/QMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiBOK-000000051Us-0CUC;
-	Fri, 10 Jul 2026 13:35:44 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1wiCjm-00000005949-1BQ6;
+	Fri, 10 Jul 2026 15:01:58 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiBOH-000000051Tt-1AFk;
-	Fri, 10 Jul 2026 13:35:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
-	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
-	In-Reply-To:References; bh=1zpxir8kPjpVYUNzqhODBD4/GTqr/OadsQZ2UHLHZvw=; b=QG
-	36ZvFHiIJjY4iZpgzBPn4sD/3LNBfbSrTlVSxZguEOBGvjVpJsLEoDeLwaWS0FFf7i06H6y/X+s9M
-	vTI4ayoY6WKZOW57/dqwlNzmLGoFWmomn+GR7HvTqCLovAZM/F29KvDcyNW/ixt19o+tCWH4KW2+G
-	AQlQYrdWrrTFmV0=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1wiBO4-00BeAD-W4; Fri, 10 Jul 2026 15:35:28 +0200
-Date: Fri, 10 Jul 2026 15:35:28 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Richard Cochran <richardcochran@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Biao Huang <biao.huang@mediatek.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	maxime.chevallier@bootlin.com, rmk+kernel@armlinux.org.uk,
-	kernel@collabora.com, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH net-next 1/6] dt-bindings: net: mediatek-dwmac: add
- support for MT8189 SoC
-Message-ID: <b7dc2135-e6c8-4b1d-a03b-c5258cbd7dc8@lunn.ch>
-References: <20260707-dwmac-mediatek-mt8189-v1-0-17f345eaaca3@collabora.com>
- <20260707-dwmac-mediatek-mt8189-v1-1-17f345eaaca3@collabora.com>
- <b810b9cd-8f5e-4c9d-8496-908aae55dac1@lunn.ch>
- <8304b0a704c8db697767584b8c34388f07ba401d.camel@collabora.com>
- <6ea11726-8d50-411e-afab-da346e09ab9b@lunn.ch>
- <f85e08cf5e119e30ab4513e78ffa833fbe0832b7.camel@collabora.com>
+	id 1wiCjk-0000000593G-1eKR;
+	Fri, 10 Jul 2026 15:01:56 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 66550601D9;
+	Fri, 10 Jul 2026 15:01:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 10DD2C2BCC6;
+	Fri, 10 Jul 2026 15:01:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1783695715;
+	bh=Zq0NKaJlpzYFMBprR7tFkC2cwEQusS6IE/2q5o6meCc=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=mFABD7o86SbEULBKr9B++FLg5pgHcX/CuVDH4A7u+/zHkXI/uPfPtz9YTb/UHBTN4
+	 BfL0WKU3oJaokyPRaKi6cVJD+K8QH5t0cLFj8DH5ntFrf09vdOdYS/gQmHpQF/rgZA
+	 84/Wj12+du90BNPyEEqFRQND3EMZBLnOzKEgX4CYxWFVNrXCmsF+hAEvX8MTGh7UkL
+	 IRt9zghavxQOYcnKK4oRFrs0ZP3PKcEZAX90Cj6Y4DHJY1qDCuLFLnlV1uQp7qRu8G
+	 rPek0zi6i0oPAmp5ElFzwiYsq+eSnNEl7nanz9QdscwEbECI2yBl/dX176CfCYzLdU
+	 ejwsuvC5DqvxQ==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E054AC43458;
+	Fri, 10 Jul 2026 15:01:54 +0000 (UTC)
+From: Nikolai Burov via B4 Relay <devnull+nikolai.burov.jolla.com@kernel.org>
+Subject: [PATCH 0/3] pinctrl: mediatek: Add MT6858 support
+Date: Fri, 10 Jul 2026 18:00:22 +0300
+Message-Id: <20260710-mt6858-pinctrl-v1-0-f75ab558f0df@jolla.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <f85e08cf5e119e30ab4513e78ffa833fbe0832b7.camel@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260710_063541_316864_67666DD0 
-X-CRM114-Status: UNSURE (   9.05  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAYJUWoC/yXMQQqDMBBA0avIrBsYI5rEqxQXGqd1RKMkUQTx7
+ sZ2+Rb/nxDIMwWosxM87Rx4cQn5KwM7tO5LgvtkkCgrVKjFHCtdarGys9FPwuSq7Q0ahbKAFK2
+ ePnz8hu/m77B1I9n4XOC6blrsz45yAAAA
+X-Change-ID: 20260708-mt6858-pinctrl-917ad9097023
+To: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sean Wang <sean.wang@kernel.org>
+Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Nikolai Burov <nikolai.burov@jolla.com>, 
+ Nikolai Burov <nikolai.burov+review@abscue.de>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783695712; l=964;
+ i=nikolai.burov@jolla.com; s=20260707; h=from:subject:message-id;
+ bh=Zq0NKaJlpzYFMBprR7tFkC2cwEQusS6IE/2q5o6meCc=;
+ b=dyxBquZP+GmdIg3f4UUg/xOOgljWgtNmiAwORqIKBamjDtTKI7DnD9sXCD3aVIz6d22P2zk0z
+ EG7H7U+F8BLDZvN+uULFm22Jix5qv8l4sW25Lyq79NqY6FOX7UTUuvL
+X-Developer-Key: i=nikolai.burov@jolla.com; a=ed25519;
+ pk=yzpa+PD+ovHUFMIOBA9o2QqGwI110jM6hdGHLc7jtoQ=
+X-Endpoint-Received: by B4 Relay for nikolai.burov@jolla.com/20260707 with
+ auth_id=859
+X-Original-From: Nikolai Burov <nikolai.burov@jolla.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,19 +87,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: nikolai.burov@jolla.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> I don't. 
-> All the MTK Genio boards (510, 520, 720, 1200 EVK) I have are using
-> RGMII only.
-> 
-> > Ideally, for a new device, we should not repeat past errors.
-> 
-> So, do you want I remove this clock from mt8189 clocks list for v2?
+Add support for GPIO and pin configuration on the MT6858 (MediaTek
+Dimensity 7100) SoC.
 
-Yes, lets remove it, until somebody actually has an RMII device, and
-we can figure out the correct way to do it.
+Signed-off-by: Nikolai Burov <nikolai.burov@jolla.com>
+---
+Nikolai Burov (3):
+      dt-bindings: pinctrl: mediatek: Add MT6858
+      pinctrl: mediatek: Add driver for MT6858
+      arm64: dts: mediatek: mt6858: Add pinmux macro header file
 
-   Andrew
+ .../bindings/pinctrl/mediatek,mt6858-pinctrl.yaml  |  190 ++
+ arch/arm64/boot/dts/mediatek/mt6858-pinfunc.h      | 1335 ++++++++++++
+ drivers/pinctrl/mediatek/Kconfig                   |   10 +
+ drivers/pinctrl/mediatek/Makefile                  |    1 +
+ drivers/pinctrl/mediatek/pinctrl-mt6858.c          | 1408 ++++++++++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt6858.h      | 2301 ++++++++++++++++++++
+ 6 files changed, 5245 insertions(+)
+---
+base-commit: bee763d5f341b99cf472afeb508d4988f62a6ca1
+change-id: 20260708-mt6858-pinctrl-917ad9097023
+
+Best regards,
+--  
+Nikolai Burov <nikolai.burov@jolla.com>
+
+
 
