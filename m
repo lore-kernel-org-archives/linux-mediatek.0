@@ -4,95 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11C11C43458
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jul 2026 11:22:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04C2EC43458
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jul 2026 11:41:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=RsxVtJ3F9+zJOkJQ6Hk1HPdO5PzPQX9X5kHg2GQ5Qyw=; b=XRN/EdUD2Np8pAZ8uagcyW3geM
-	v8taoHlrLJY5aQMEMFNkC5kgv+472uWoIJzEeI39UVr7EqW4vQqk4cRPmz+BpX88Lqyoh+jdXCkLH
-	GymY8ApWrke5gItfN7j8lxqX1YIaF7fvCeqMIwE8qLoqjvjGBG8rhDbSDHHs9lnk4ztwXY61OrtYh
-	n+6sYLocqzKv+QEtOzUWU7G08ZQxBteuWzupsJb0hQbry7wtktq8WaT3ZLBG5y+jc+n93gZmD9SRt
-	TS64xTEChbWlo7iWR7N2PTPFwRj5fZR+ocUS2062nBoglYjB5e2IJV/PYUoVYbHp96L4FbfDEcm5K
-	2oDQwtkw==;
+	bh=zLQoqPPcfbSVabfiloqaQboxTOY5hjDi7McFC+NKIs8=; b=kW990SMAM76gF4PquskuM2mWVp
+	EMEv2qGprNEv0jZOcRGq/jIyvlSXeFbVQq+EJHNa2ehK+Ke1aJqPx67MZ++H4oRH/2LaHwmZA8hzO
+	mceHsOntj6dwsBzrNjdEs++RgOzNPbNLo0sW86D9zOXMCpSxul0Fmmaohe0fA58uYXBdjjt+lKZY4
+	kYKLUCUUDcLX8haHP5z8Wi6W81ausg2ziApSf1Kxp2ma6d+6JhoXtp2AnhbvYtkKmEEi6LJuMH2m8
+	nPosQYjfHZjSBFuy+ruAvWAinJIDwp3CT6sjA/SPZvrr/8IvyhJ7fRhlde0gQfWgTz8yQpjbg63Bv
+	RmNZ7ypg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiVmT-00000006ULW-1LLE;
-	Sat, 11 Jul 2026 11:22:01 +0000
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+	id 1wiW59-00000006UpH-3Q2j;
+	Sat, 11 Jul 2026 11:41:19 +0000
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiVmQ-00000006UKl-1CrG
+	id 1wiW56-00000006UoW-1bvi
 	for linux-mediatek@lists.infradead.org;
-	Sat, 11 Jul 2026 11:21:59 +0000
-Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-2ce7d2adef4so22711365ad.3
-        for <linux-mediatek@lists.infradead.org>; Sat, 11 Jul 2026 04:21:57 -0700 (PDT)
+	Sat, 11 Jul 2026 11:41:17 +0000
+Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-3811f512167so2256659a91.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 11 Jul 2026 04:41:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783768917; x=1784373717; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1783770075; x=1784374875; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=RsxVtJ3F9+zJOkJQ6Hk1HPdO5PzPQX9X5kHg2GQ5Qyw=;
-        b=JaneEOaZeMSOylWJhLI7Jzul5Bsa9zx3fGILmrVsdr0cukGfSgqYfnKV08HmXMoiHu
-         QJcfJzxJV46NWIt25GphcXJR7lPKRZjwHjTs3vptdZMieT3li7DqPbimDJ/2ffrnsKPs
-         64fgCmCfHCQMqmkBPjY9zyl/G055ypFoYjFQ2Fet/kcdTvJTgQLp4dTbG4gJmS+9OCFR
-         pDw/mCiAR2JLqkulLzmw//i2Wh0n15UAyycOfqFgQyIIAq36KgIZv/GBJetrLP1xEZ4M
-         1KundQ+h/TnQbUWourBHde2xSGxmMwsSOEPj2BTQL5Q4TTbDx05I57uKCgJBmMnmuXH9
-         yxJw==
+        bh=zLQoqPPcfbSVabfiloqaQboxTOY5hjDi7McFC+NKIs8=;
+        b=hUDBIqKvN09NLCQ9iYIwmmbOWOhmWdP/tYnfBzlsLwccibs5Wzer5uXiOtboI+f2/y
+         6lFuHNep/GJvf9dhF18aOZSTCTciEZSl1cfyX6vM2aaw420/RM8oWZ0D4Ddp94+ZuaVP
+         Gxr5ddKRrFjkurmg9Xr8uRHfUNLo3k+MXCkYoKuuB3P7I1yjfCvdv2c/7V10/+qHgrbD
+         Gw7uNwlnjiMfjI9ImmANT97Hlq/UDNN+95xl5euea0rpjh3AG55hEzLFckYHzSsKEd/O
+         E/KNGcYaVkQbazKAJmGttQ02RVi2vVSep7+Vg7PLOiXCxs8CayOyGg+4X7l4I+QsyeF6
+         8puQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783768917; x=1784373717;
+        d=1e100.net; s=20251104; t=1783770075; x=1784374875;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=RsxVtJ3F9+zJOkJQ6Hk1HPdO5PzPQX9X5kHg2GQ5Qyw=;
-        b=GejYm+2oGDtLwJb49cOPRoJaQ9PjcIZcnsWbyVDFDRMF7DXldUAyG2kFUnp0+7zW8A
-         5fxwVxVbDeVi2cNB8UbDraX5i/9TNfaKScmDF5R2BPR50Wt2gtdIFol48FPZW5YPwY+i
-         BbWtLpl+RhB8wJ9X3y0NAhrLq42D4kx8K/GhwfAsQ90civeB6DK30oGJshAXHj0UWOPd
-         zDb64pq4MRaUe9V3/TZH9/zW4TWqzeZXAIU+/1Gv2w4XuirF534S0BZeQ2guirrYr+Ym
-         EAySzq0tT+Ez640GvnnA2uFWNxu4yc0DEkEwJwNqeyeVuzeS/WZfuVwjQeRoDB/M+4Ro
-         2Ovg==
-X-Forwarded-Encrypted: i=1; AHgh+RqvLAXHa5UfmYNZym35Owy9Fs1Mtra3vNbk6PqAqy0jqzQHqvWWA6G3YjfKoWFXIeqEibIcx5Ax1IvFDo2Xmw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxxT+UWWvMLNa+UP2xZLgc3AHF1vMJjqrub7/Bld3BvC2hDeH/3
-	R4HMVph1z2SERaeq1LXZsQiNqdM0T66ywf8N1aAGARjGgNzUP9KnUTP4
-X-Gm-Gg: AfdE7cmgLIuMbscd+Nx8xQTXK5ChRLQovZLs1MVusK7RBZVqPJpXMDZLlbyvFExxB6x
-	VIrOdKN0s+P+Mxn3gjmuGmxDs8qOF7UQUgFdaO6SVBldUz9hgtTFDcS1neExaYAOC4BpzOFHyIE
-	80eA8Y7B7nlmXbTaS1hekpaio/DOkJnlSXK85aN73Yg4vC1jOFwu21+kopvB1Bt9ZgTDvrFp+fv
-	MWlLPNWSlCied1ID2hzkwKVPPTTrfE/PXnJVpeDOBx6YQiemA10bBjBDYXwCfJtVAQpZiuQasPW
-	03CMbCrJvt8UiAY22N5niF+6Ca7yIxc8B3LGh+s/FpO479jx25oMYIcUZGWe5G6hFNiJAOXBkO7
-	8d3eFxEsyT1QrBcEKfV/n7oo69OSUtKXigJR7C5gslZM6Hb/cDAagYQneaPTl2JOgTY0c8uTvei
-	mUzpRMV/GvqmLAIIXpHBSEymGgarBv1z5t8mZ4DdxqZBcJ03UkqR/jUg==
-X-Received: by 2002:a17:903:2f88:b0:2ca:b8fd:1a8f with SMTP id d9443c01a7336-2ce9f044760mr26086835ad.39.1783768916739;
-        Sat, 11 Jul 2026 04:21:56 -0700 (PDT)
-Received: from DESKTOP-VNSSJ2S.lan (59-127-145-64.hinet-ip.hinet.net. [59.127.145.64])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9c21429sm73254255ad.37.2026.07.11.04.21.53
+        bh=zLQoqPPcfbSVabfiloqaQboxTOY5hjDi7McFC+NKIs8=;
+        b=rC/CKqvnssfc93iwqV/FI67fvHkpLQoOvw6v9DDoAE7urLVbgF+uN/T2ziwuFVi6E7
+         mn/I6Bbij7xHquiJyJZJBzXMbHm3HpjJSRG4Aj7Uww3ah2BJlVR/K3etybbYUQOWTWbt
+         11rgI7REP0r46dkCf+EZ1TlXnsmRRGLGjIFlUIW3A7fWcLb2iOVZSWRpz72Xk61X7/9X
+         seQ4OpGhfO75FMcVL+lVAt7CNXOuMixy7xeuA+tJShcFXDsbMADQYnj67XaYMjr6/Qsn
+         mo0NelPTl15WOqEZ4mFLZ6JzxB29GuHgQG8dzR4LhUBYy0frrcurAmMKNNR8sND2QsFl
+         ++2w==
+X-Forwarded-Encrypted: i=1; AHgh+RosqzBHITAZMr5DIiYAPEoYfzXFlg/zJ7u6OH1fd3f4PHfHsi0nsSrWPNmXfpListeTmEZcRfrto3Txi6TP/Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwPIrGjpOjNt/yCyoQ2RFWdaoEPDA7dNiHXyKKukNy2zxpRApmf
+	Rga/S745toXgqyJ4DprdLS4ij91Xn2TYPE4BJaBTvQHQi+NdUxYqScAF
+X-Gm-Gg: AfdE7cls+k9uq2wtq8B0yYKhAPEPxGr9bZl8yeiatRoafv4dknHTxvxKrXhefdIUxxe
+	VE/BvqeYSE1nr5C/qBEwMqYlymr+jK8qzhs6GIME4XrG1jk6ZCoOrZbFsXbRBU3493dhCyDot1I
+	5RhzwpUH7uvU/5klDimlkI8TwuY+byEFFv7dxl+aaWIxz3/AvV7pFgJmaYnOA7aXQCnausnknMV
+	IkA3mW78Ha3CvL79BHZsnJxaqEqawKZ5XqJ0DUrtqC2+rF39ZkCL2ztJ1HHlagbA7cSInTMKD20
+	17HcCVXyv6ElTX454qmtUPYAiKQZYIzbY63KO0oGQsxhlPv60EKRe45LHkQnpf4+78V75GlHcqQ
+	QOB358suro5uKfhKk0j1X2jUhZO8NvaE/vGTgfS2EHdnOM2t4xngnEFC4MbvmqwUgzYAOO8FAT7
+	ZYmoPllR5gcdAT9Qa2p79s
+X-Received: by 2002:a17:90b:2241:b0:37c:6975:2e3d with SMTP id 98e67ed59e1d1-38dc73c330fmr2515609a91.8.1783770075031;
+        Sat, 11 Jul 2026 04:41:15 -0700 (PDT)
+Received: from DESKTOP-TIT0J8O.dm.ae ([49.47.198.15])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-311935fd091sm32390087eec.24.2026.07.11.04.41.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 11 Jul 2026 04:21:56 -0700 (PDT)
-From: Zhi-Jun You <hujy652@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S . Miller" <davem@davemloft.net>,
+        Sat, 11 Jul 2026 04:41:14 -0700 (PDT)
+From: Ahmed Naseef <naseefkm@gmail.com>
+To: netdev@vger.kernel.org
+Cc: =?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Andrew Lunn <andrew@lunn.ch>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Daniel Golle <daniel@makrotopia.org>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Landen Chao <Landen.Chao@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sujuan Chen <sujuan.chen@mediatek.com>,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Russell King <linux@armlinux.org.uk>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	Zhi-Jun You <hujy652@gmail.com>
-Subject: [PATCH net v2] net:ethernet: mtk_wed: setup WDMA_RING_TX(0) for non-DBDC MT7986
-Date: Sat, 11 Jul 2026 19:21:28 +0800
-Message-ID: <20260711112128.971-1-hujy652@gmail.com>
-X-Mailer: git-send-email 2.47.3
+	Ahmed Naseef <naseefkm@gmail.com>
+Subject: [PATCH net-next v2 0/2] net: dsa: mt7530: add EcoNet EN7528 built-in switch support
+Date: Sat, 11 Jul 2026 15:40:59 +0400
+Message-Id: <cover.1783770059.git.naseefkm@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260711_042158_381309_61EF37E9 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20260711_044116_440716_E4EED40C 
+X-CRM114-Status: GOOD (  23.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,48 +116,165 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-WDMA_RING_TX(0) is required to set MTK_WED_WDMA_RING_TX for WED RX
-but on a non-DBDC MT7986 it is never setup because idx is 1.
+The EcoNet EN7528 is a MIPS SoC whose platform support is already
+upstream. It integrates an MT7530 switch, memory-mapped like the built-in
+switches of the MediaTek MT7988 and Airoha EN7581/AN7583 SoCs, but with a
+true MT7530 core, four Gigabit PHYs on ports 1-4 and a CPU port at a fixed
+1000 Mbps full duplex link.
 
-Setting MTK_WED_WDMA_RING_TX with WDMA_RING_TX(1) is not feasible because
-WED still tries to send through WDMA_RING_TX(0). This is verified with
-register dump.
+Patch 1 documents the compatible, patch 2 adds the driver support.
 
-Fix this by calling mtk_wed_wdma_tx_ring_setup if wed is v2 and
-rx_ring[0] is not allocated and reset tx_wdma[0] if it's already
-allocated.
-
-Fixes: 4c5de09eb0d0 ("net: ethernet: mtk_wed: add configure wed wo support")
-Signed-off-by: Zhi-Jun You <hujy652@gmail.com>
----
 Changes in v2:
-- Address warm reset concern raised by AI review.
-- Return value concern is skipped until further comment from reviewers.
-- Added a comment to explain this special case.
-- Link to v1: https://lore.kernel.org/netdev/20260630144831.1109-1-hujy652@gmail.com/
----
- drivers/net/ethernet/mediatek/mtk_wed.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+- patch 1: reword the commit message to explain what distinguishes the
+  EN7528 from the other built-in switches and why it cannot fall back to
+  one of their compatibles (Conor Dooley).
+- patch 2: drop the setup-time EEE advertisement register writes. Instead
+  leave lpi_capabilities empty for the EN7528, so phylink disables EEE on
+  its PHYs via phy_disable_eee() and rejects enabling it from userspace
+  (Andrew Lunn).
+- Link to v1:
+  https://lore.kernel.org/netdev/cover.1783680864.git.naseefkm@gmail.com/
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-index 10d9beaae372..3fd704cac02f 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-@@ -2334,6 +2334,13 @@ mtk_wed_start(struct mtk_wed_device *dev, u32 irq_mask)
- 		if (!dev->rx_wdma[i].desc)
- 			mtk_wed_wdma_rx_ring_setup(dev, i, 16, false);
- 
-+	/*
-+	 * non-DBDC MT7986 allocates only rx_ring[1] and tx_wdma[1] during setup
-+	 * but tx_wdma[0] is also needed for WED to function.
-+	 */
-+	if (mtk_wed_is_v2(dev->hw) && !dev->rx_ring[0].desc)
-+		mtk_wed_wdma_tx_ring_setup(dev, 0, MTK_WED_WDMA_RING_SIZE, !!dev->tx_wdma[0].desc);
-+
- 	if (dev->wlan.hw_rro) {
- 		for (i = 0; i < MTK_WED_RX_PAGE_QUEUES; i++) {
- 			u32 addr = MTK_WED_RRO_MSDU_PG_CTRL0(i) +
+Ahmed Naseef (2):
+  dt-bindings: net: dsa: mediatek,mt7530: add econet,en7528-switch
+  net: dsa: mt7530: add EN7528 support
+
+ .../bindings/net/dsa/mediatek,mt7530.yaml     |  5 ++
+ drivers/net/dsa/mt7530-mmio.c                 |  1 +
+ drivers/net/dsa/mt7530.c                      | 58 ++++++++++++++++---
+ drivers/net/dsa/mt7530.h                      |  1 +
+ 4 files changed, 57 insertions(+), 8 deletions(-)
+
+Range-diff against v1:
+1:  68e85666b6df ! 1:  2133035bb22e dt-bindings: net: dsa: mediatek,mt7530: add econet,en7528-switch
+    @@ Commit message
+         are connected to integrated Gigabit PHYs and its CPU port is connected
+         internally to the SoC Ethernet MAC.
+     
+    +    Those three switches are MT7531-based, whereas the EN7528 has a genuine
+    +    MT7530 switch core (its chip revision register reads 0x7530). The two
+    +    generations differ in their register programming - for example the CPU
+    +    port is selected through the MT7530-style MFC register rather than the
+    +    MT7531 CFC register - so the EN7528 is not compatible with the existing
+    +    switch compatibles and cannot fall back to one of them.
+    +
+         Add the econet,en7528-switch compatible, with the same constraints as
+         the other built-in switches.
+     
+2:  1865eaedef97 ! 2:  8c7dfabd860a net: dsa: mt7530: add EN7528 support
+    @@ Commit message
+         an ID_EN7528 variant bound with the "econet,en7528-switch" compatible,
+         reusing mt7988_setup() and the indirect PHY accessors.
+     
+    -    The switch core, however, is an MT7530 and not an MT7531 derivative: it
+    -    has no MT7531 CFC register, and the CPU port to trap frames to is set
+    -    through the MT7530-style CPU_EN / CPU_PORT fields of the MFC register, so
+    -    add it to the MT7530 handling in mt753x_conduit_state_change(). For the
+    +    The switch core, however, is an MT7530 and not an MT7531 derivative: the
+    +    CPU port to trap frames to is set through the MT7530-style CPU_EN /
+    +    CPU_PORT fields of the MFC register rather than the MT7531 CFC register,
+    +    so add it to the MT7530 handling in mt753x_conduit_state_change(). For the
+         same reason the MT7530 mirror and force-mode register layouts already
+         apply to it as the default of the MT753X_*() macros.
+     
+    @@ Commit message
+         EN7581 switches, whose CPU ports run at 10 Gbps.
+     
+         The LAN GPHYs advertise EEE by default, but negotiating EEE with some
+    -    link partners results in an unstable link with dropped frames. Disable
+    -    EEE advertisement on them at setup time, like mt7531_setup() does for the
+    -    MT7531 switch PHYs.
+    +    link partners results in an unstable link with dropped frames. Leave the
+    +    LPI capabilities empty for the EN7528 so that phylink disables EEE on
+    +    these PHYs and refuses to enable it from userspace.
+     
+         Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
+     
+    @@ drivers/net/dsa/mt7530.c: static void en7581_mac_port_get_caps(struct dsa_switch
+      static void
+      mt7530_mac_config(struct dsa_switch *ds, int port, unsigned int mode,
+      		  phy_interface_t interface)
+    +@@ drivers/net/dsa/mt7530.c: static void mt753x_phylink_get_caps(struct dsa_switch *ds, int port,
+    + 				    struct phylink_config *config)
+    + {
+    + 	struct mt7530_priv *priv = ds->priv;
+    +-	u32 eeecr;
+    + 
+    + 	config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE;
+    + 
+    +-	config->lpi_capabilities = MAC_100FD | MAC_1000FD | MAC_2500FD;
+    +-
+    +-	eeecr = mt7530_read(priv, MT753X_PMEEECR_P(port));
+    +-	/* tx_lpi_timer should be in microseconds. The time units for
+    +-	 * LPI threshold are unspecified.
+    ++	/* The EN7528 GPHYs report EEE capability, but negotiating EEE with
+    ++	 * common link partners (e.g. Realtek GbE NICs) results in an unstable
+    ++	 * link with dropped frames. Leave the LPI capabilities empty so that
+    ++	 * phylink disables EEE on these PHYs and refuses to enable it from
+    ++	 * userspace.
+    + 	 */
+    +-	config->lpi_timer_default = FIELD_GET(LPI_THRESH_MASK, eeecr);
+    ++	if (priv->id != ID_EN7528) {
+    ++		u32 eeecr = mt7530_read(priv, MT753X_PMEEECR_P(port));
+    ++
+    ++		config->lpi_capabilities = MAC_100FD | MAC_1000FD | MAC_2500FD;
+    ++		/* tx_lpi_timer should be in microseconds. The time units for
+    ++		 * LPI threshold are unspecified.
+    ++		 */
+    ++		config->lpi_timer_default = FIELD_GET(LPI_THRESH_MASK, eeecr);
+    ++	}
+    + 
+    + 	priv->info->mac_port_get_caps(ds, port, config);
+    + }
+     @@ drivers/net/dsa/mt7530.c: mt753x_conduit_state_change(struct dsa_switch *ds,
+      	 * forwarded to the numerically smallest CPU port whose conduit
+      	 * interface is up.
+    @@ drivers/net/dsa/mt7530.c: mt753x_conduit_state_change(struct dsa_switch *ds,
+      		return;
+      
+      	mask = BIT(cpu_dp->index);
+    -@@ drivers/net/dsa/mt7530.c: static int mt753x_setup_tc(struct dsa_switch *ds, int port,
+    - 	}
+    - }
+    - 
+    -+/* The EN7528 LAN ports are integrated GPHYs at MDIO addresses 9..12 (switch
+    -+ * ports 1..4) on the switch internal MDIO bus, reachable only through the PHY
+    -+ * indirect access registers. There is no mdiodev to derive the addresses from.
+    -+ */
+    -+#define EN7528_GPHY_BASE		9
+    -+#define EN7528_NUM_GPHYS		4
+    -+
+    - static int mt7988_setup(struct dsa_switch *ds)
+    - {
+    - 	struct mt7530_priv *priv = ds->priv;
+    -+	int i;
+    - 
+    - 	/* Reset the switch */
+    - 	reset_control_assert(priv->rstc);
+    -@@ drivers/net/dsa/mt7530.c: static int mt7988_setup(struct dsa_switch *ds)
+    - 	/* Reset the switch PHYs */
+    - 	mt7530_write(priv, MT7530_SYS_CTRL, SYS_CTRL_PHY_RST);
+    - 
+    -+	/* The EN7528 LAN GPHYs advertise EEE by default, but negotiating EEE
+    -+	 * with common link partners (e.g. Realtek GbE NICs) results in an
+    -+	 * unstable link with dropped frames. Disable EEE advertisement on
+    -+	 * them.
+    -+	 */
+    -+	if (priv->id == ID_EN7528)
+    -+		for (i = EN7528_GPHY_BASE;
+    -+		     i < EN7528_GPHY_BASE + EN7528_NUM_GPHYS; i++)
+    -+			mt7531_ind_c45_phy_write(priv, i, MDIO_MMD_AN,
+    -+						 MDIO_AN_EEE_ADV, 0);
+    -+
+    - 	return mt7531_setup_common(ds);
+    - }
+    - 
+     @@ drivers/net/dsa/mt7530.c: const struct mt753x_info mt753x_table[] = {
+      		.phy_write_c45 = mt7531_ind_c45_phy_write,
+      		.mac_port_get_caps = en7581_mac_port_get_caps,
+
+base-commit: fe3e786ef4eb6e47d2901f568a27bd920477bbe9
 -- 
-2.47.3
+2.34.1
 
 
