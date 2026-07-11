@@ -4,119 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F215C44501
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jul 2026 00:08:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C60EC43458
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jul 2026 02:41:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H5WuB63RbKuGXGsDIh2uCohEIF6sWSpalpafrYB0BRA=; b=2mxzhrE0K7eRHURGoLQptU853l
-	YljuLG4NHper0tCIVKSnQu7md6/AL3yPEErys4RT/EoXF4Y2cTozNnDBe3zfeVq7vCZPBZuDp3mdx
-	yqJmRQvjRmLhvsWMlQ9qrBTk5QzS5D/Ku0kHxxWIgeSdif81xLbLquo7FlHLDi6gKlbZmEZPzSsup
-	FSrlMJBN+upaUh9Q5EC1TJn5zQ6N5AqtofR6Dw/SvLQOHsfLWGIYTt+S84TKDgvx4+ecCvOE+nd/+
-	1l+IhMwG3TZB6krej3H+hBrWPhcODMilRGpyKn9zFrJLiaELZMX51XbfqFiQ2CwpobYM7NAopHFaE
-	UCMi1eSA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ve+KgfwCf7WAv7Osnu4Dp5X81+V4g7CuHLm8wADOA7c=; b=vkU+LDtJprdDmWVSTNHUAY89Yx
+	wDOq/09/b/IJaO2JaOZ0n1kPQORJkDT65+KUNJr5nZJKIhUYXb+/+9PGv1TU7jt62fiQaM+9+r6oY
+	IQxM4gl9mjZCqxQrAQy8pUaMn7IvRcl5ECuPBZWEcuxqp9cA4+MFi51qRGDV66LZ9L5nAUBzMGD23
+	XxUxrmBR0O6V8DGWvC2hyRXFVAiY7bkuJsmTln3b760+9yRfKipPsH3qdIvIlcF0YWk6p1rKytzDa
+	0Kilv/4kqD434MgYbXEhfgHLZX1RVWOJ2X4epX22O9UgBXKDCLLqezdrIdyLq5mQ6VlELdUV5tLfh
+	KlKvhwMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiLGs-00000006297-3nIc;
-	Sat, 11 Jul 2026 00:08:42 +0000
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+	id 1wiNec-000000069CQ-3c0i;
+	Sat, 11 Jul 2026 02:41:22 +0000
+Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiLGq-0000000628O-2kBP
+	id 1wiNeZ-000000069BZ-3ZzW
 	for linux-mediatek@lists.infradead.org;
-	Sat, 11 Jul 2026 00:08:42 +0000
-Received: by mail-pf1-x435.google.com with SMTP id d2e1a72fcca58-848643382fcso1475954b3a.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 10 Jul 2026 17:08:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783728520; cv=none;
+	Sat, 11 Jul 2026 02:41:21 +0000
+Received: by mail-yx1-xb12d.google.com with SMTP id 956f58d0204a3-6679d88abdcso2393612d50.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 10 Jul 2026 19:41:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783737679; cv=none;
         d=google.com; s=arc-20260327;
-        b=pUUBJGn3u2emOpIOQn+15QSCUrO+QN5ryXs3C3iM1V9NenCD07Ic4p6skj4sXiIt+y
-         /d/53T1D1JHko71n1W///FlhuEJkcAMnxl3AFSgEH5KApoJLOa+fRwdIoMNEntxW22wI
-         STXvn4+Y/6fN1G6u+b5N0JoR/Ma8YgKj5ARkZIFMDAc2axweIIq+/Itu19I8AozjeJtg
-         vNIhHTBduWs4XTVNzaTTpTfqA/GEPqd9zhRK+R6fmM1emOE1JMUSlT6D67smMdVJ4t8S
-         y01ox5tx2Adv0q/sVEuEPYFr8J9dc2U/3ohGyDA10envt/7avFr+g510XUfIRfFzdpj2
-         rqhw==
+        b=IO0YGIbL6ele2H3h/wUBd/4Hicw7yuRAimGW2coe8MFsD76OUGeitizPkCwL7ndsoP
+         j1yCzaJnjD4JHKMBq+AX8Q7U2lZTjC6Oie8j20DyDJ8I7+7wATClfjnBWaNu1EbXenKS
+         35Fw0QgS25651WmTNRK+W2taKoKDev8pUMf0RQUXBlTPHDd15xg1zEEoNaqsJXIx6IaJ
+         FiqW9AEHF6o6YmvqpwE9zF6NGaXCXCwjch616LZskJog1Pc4+2p4J7xNPJJO3DY/wvAh
+         ZjBPR9+VA1BOwUyz606PN2Z411jJwt+nAhdKICfTkt0SNScskZLfuPoNbBkWtSZPPRgx
+         DbYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=H5WuB63RbKuGXGsDIh2uCohEIF6sWSpalpafrYB0BRA=;
-        fh=VdU5gFM07Cs8y99HGSsLmhYI/5cZ9qdaTaHpuicGlzw=;
-        b=n5648ugVnMw9KGX/KZUCbFIMizbaUjxhjVhFrWaB3N+f7Oz1tvyyr71gD+ndmQW2xx
-         caoKtDYzjteNL0PA+XPYUsox9HH1lG9tdoFR/SlZ0ffrNFUL7RHAxzzqvledY+dqnlmy
-         vK1+pmjYg1yXF1H/296AUCfMUSXCaBpQj4EGdVeHYp+rB106IC66ASemuKJgbMg7E16Y
-         Y5uIuBCayjApOvIln+yVcZ/i0e9TgjBbxWyh7HYNsO/2ECktlSUXwoXJOqnSwyX8UQOr
-         xmJ6XX44J255wWkM8wqqxWH3KkA2YI6ECFeEbBSJ/2316cb15/O0+QOiieD5XEqjOQOO
-         EWKg==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ve+KgfwCf7WAv7Osnu4Dp5X81+V4g7CuHLm8wADOA7c=;
+        fh=I+zaFPfiNcAs3lkb882PXQzZmYnFwFUoHtvaBheaoJ0=;
+        b=DiZfWLIGwKRIizT0J8u9srO2vvD55G3n2g8F096Ktf22iJUMhXN8YjiT1Dqdl3yXVu
+         y4HcPyfyUEVminQWp3eAnshTRmjW/5T8cex9y8SpMLtJ13uF74RhGQBMVTtWpnW7nRot
+         S7N4+GKuvpAXHPCQHMp2Ntz0IIV+atwNx2Cx9CYBZkt5fGSujrA1tJXQs2lpzPDknBWq
+         9EgfTsMiXRlULnDZt2typLfCj9qQghVZbLZNSEyBPq6HXw2SYuHN03+awmOCZcOi9od9
+         g3ZknjIgnrao79VpN2OrYoxCinyUDu0BqLQKFQrFq31jBNPRkyXjP1QDDjuC/l611di3
+         sM8w==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783728520; x=1784333320; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=H5WuB63RbKuGXGsDIh2uCohEIF6sWSpalpafrYB0BRA=;
-        b=qFwslczf58/ip59yfPexdPUR3JEnR4p4NTTGuzDU/YbIgVZF/CKM0NXvQngCviAOh+
-         lNOW1XzobOk5NQMdp39b3Vn7JOAw9UzTjpD3NiIjOBH+hxST2LmhjUq+XudmxL1QEK+m
-         +toMyhQsx9y3OfBdr8FkX008JHaFfsgMLa4w7LfFkNrnn1MJSPWG6PVNnNnvQPhEedqO
-         rOOSTiRy58Dzr6tm1gS+05P8Q9/IDdRwDpx2PblarNqmUcKdvAYUg8/sd/sSTISSyuSh
-         l7tX6IRYOVBSMRyZIcFutm9gjp6v1U7e0puHLp+uVxxSijYwSkBEDuq89pnMEbEh3dHs
-         4xpw==
+        d=gmail.com; s=20251104; t=1783737679; x=1784342479; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=ve+KgfwCf7WAv7Osnu4Dp5X81+V4g7CuHLm8wADOA7c=;
+        b=UjtOnAthHxR/pfchgH8Dpo3CsiPkaIxHFdKrvcYLXBpZTqTh7DVUB/3pgSsQSTEf8j
+         M0H9hmqMHRvyCo7csOXaKMOMy3WceWPg6FsQEKfPGSuhoJZBs7PuK1LkR8VKB0ezHX3E
+         QhYN94ocvRBI6YWeqkONPOhZhPN4Urt1ofthzzl3dKAN22E+qeVFS5K6hQs3bFeIv+QA
+         RWZajqpzlmWAbLQBJZ6vZRSv8wGYOtQqjRiUw0Jl5eSYhs/5MPFPtE3CMPaG6sCHphcp
+         CziEZ0fIIIPw8TL4rXrmhs0vrvQFWYU4m7Ikc3ZABx4a6IDfzr23POmrndPn3CioKmx+
+         JOKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783728520; x=1784333320;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=H5WuB63RbKuGXGsDIh2uCohEIF6sWSpalpafrYB0BRA=;
-        b=dhnP4zURBhngH/VRlhpaCstYRsFU+Ls78Pgp3hwxe5OtIdGbKdrnamegR+O7hK++cy
-         Bu3VMuS5PY7C86Lc+MfFWjWGAN/MJ8BtxN5bwXFBRBw0WjAnrMHiqUnvPUaMdD1aO9B+
-         bbgOg0eL2tfiI089vpAflvJGicqf+8XE6iVpBbpgiML0Zitjm49PsFFNhDsI83QJ2L5I
-         xtHOWwmf2JbGhZYa3XSSrmzx3EtW6kXqmMick0zipdpZx7T9aOnF49mipYe2VUiIq8aL
-         pNP6wHUUo9Ty/SAUzWyWiAC4uN7Hzitedp0xzOcfgjDsyiGcOkHww3nT17uNSs4q/uuK
-         yNfQ==
-X-Forwarded-Encrypted: i=1; AHgh+RpiP4pOHC8CsSsgn52xWmqfczzWR810Pddg7PX4+Rgko6yQ5slWf58ec7ufao7breTlm50VcI1sfWOMtRR8fw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyKUUhacuykzikbI21+PCjoTmKlO6yDy03tdq6wJYtWmGBUNBAw
-	bpZhZquK5O9rphwdsZScfL07mwS/vOxWmv8SE+Aum7k1II2giEenE+QMUWc2OJDjBX72Axr58tT
-	Xn902QueAK4jK0ooWC7F3DACv9qLJkSE=
-X-Gm-Gg: AfdE7cmZDfzTA5f8mDHBM0VFm+Y7b8zrhT32EnVvjcGv13kzncFKPsq7B/IcdOAHb+V
-	96O5vV44WhcbJz6/MgzVLt1DtYYFWm66JfYKz00D2wmDx75KsyiQoFwOzAkBF+FqpQzgLqzOEW5
-	b37dJzdcMwC4Q4VYIDvpjpUsSwSFQVqWYRA5ODJDFIadyWEhx5yWCB1LHPhrkX/SRoyjL6jq4fK
-	IzOtaEfdPZ5yW66XV4ldOp8riOgYQVET+19Ukb4PPhotFkRjCbiYUdKwCfxkkAs8qtpWBBxtgTj
-	RkstTuYxpRnH7jnjevZ5PEtXUAgoLLNKqT55ORPvJczh/dgfntSmXwXjRs4WbXL8KcX5ME3f
-X-Received: by 2002:a05:6a00:cc1:b0:847:9e62:24b with SMTP id
- d2e1a72fcca58-8488961c11emr1089390b3a.9.1783728519714; Fri, 10 Jul 2026
- 17:08:39 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1783737679; x=1784342479;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=ve+KgfwCf7WAv7Osnu4Dp5X81+V4g7CuHLm8wADOA7c=;
+        b=NxLQ4xxyB8Ak4TKuZP8SnshFF152Pwaa2pWLzgWNrFQnG/va1QTA2LHntDyLd3agpm
+         OYsEnhYf4Pt+Z2s5uPa4hhtwgI14hPPj/s9F/i6sIMEzOug3WbGzX5sEcPpC7DeZH52C
+         N38uuzJx3Zn5143yJClctzLXa7LUnxvJgSw6c2LkwEpp0bFFRt6U5F6aD1VziAlVVsOr
+         mvA5peyDfyMUXFaEX8MprdXe6uFQm1i3BGgsPaDQLczhOsVXvGDJW+mZGFJ1zTJIygjV
+         AxbMvMBuJSZl+5YnhMcYe/0yQS7PKi+3MDrKPNvNA4tDuxODsZLpJ0jfWru2//oxZ91a
+         jDRA==
+X-Forwarded-Encrypted: i=1; AHgh+RpZKllnE6498jrsFGBVx+yKp6sYIC9owcebtEMDW8/vixIMtql7KMYwVo7xa5ES9NSrx3xcnmKGv7RG1BdMUw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyfQ3oNGVvdAbpnkkmtFKU14XLrNrsJTsmgA6gXEtcr8kiYC4Bq
+	lWVLwdVK1sISQZPQmZspCUtzvHMdGFdJJlKHTrc6eS0xkdGmC7GmQXCcn04Yhp/+f6uVWH5YKLz
+	A6vLT8HW2/VvgITgoqP4rbvkQjWZ79sU=
+X-Gm-Gg: AfdE7cmyetrVUBxTSjktu/KgOPPJWO3UuBVZ03eh2flpUJoLD5EsmyYCh7oc7YIrkg2
+	wPp0FDE4Ti1bdwyTNvKfpVmio52oavyDWh07VauqIUJ1edDMX6MRtMiobmQreEj9dhCdSFewrPK
+	69wEzjYRb5GfgIJ3PBu5x6UexxXL1h4lOJ3WctnT3unv51mRJjOvK7lSJmrfjKITcrU9SRLBNmh
+	TUEiE8i4/zJcfIQNrtgmgP0hMjqTVhV1wHh73J5+RvSBFACmOz4Wv4RCbNMXduOCSeZkTlp
+X-Received: by 2002:a05:690e:43d0:b0:667:b2c3:f047 with SMTP id
+ 956f58d0204a3-667d7aa0516mr1048576d50.9.1783737678571; Fri, 10 Jul 2026
+ 19:41:18 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260709045902.498848-1-phucduc.bui@gmail.com>
- <20260710050511.14439-1-phucduc.bui@gmail.com> <20260710050511.14439-23-phucduc.bui@gmail.com>
- <95f5d6ec-ecc5-4090-ac04-27cdcdc21b8a@sirena.org.uk> <CAABR9nHUc3KvC4t=hJ9osyw93aXa+kEL07G1posnYJdLvjHEkA@mail.gmail.com>
-In-Reply-To: <CAABR9nHUc3KvC4t=hJ9osyw93aXa+kEL07G1posnYJdLvjHEkA@mail.gmail.com>
-From: Bui Duc Phuc <phucduc.bui@gmail.com>
-Date: Sat, 11 Jul 2026 07:08:28 +0700
-X-Gm-Features: AVVi8Cfyiwxnu7eGIzA6KyPzlQ6PObhKgfr4WFgILFEbEKhBTf8y3pJA57dwTdg
-Message-ID: <CAABR9nEQWYzvxDduP=+9qYEJNzXVbu587Aq9eGR7Tyo-K-u1GQ@mail.gmail.com>
-Subject: Re: [PATCH v3 25/27] ASoC: codecs: rt712: Use guard() for mutex locks
-To: Mark Brown <broonie@kernel.org>
-Cc: Takashi Iwai <tiwai@suse.com>, Nick Li <nick.li@foursemi.com>, 
-	Herve Codina <herve.codina@bootlin.com>, 
-	Support Opensource <support.opensource@diasemi.com>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Jaroslav Kysela <perex@perex.cz>, Srinivas Kandagatla <srini@kernel.org>, 
-	Charles Keepax <ckeepax@opensource.cirrus.com>, 
-	Richard Fitzgerald <rf@opensource.cirrus.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>, Baojun Xu <baojun.xu@ti.com>, 
-	Sen Wang <sen@ti.com>, Oder Chiou <oder_chiou@realtek.com>, Linus Walleij <linusw@kernel.org>, 
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, u.kleine-koenig@baylibre.com, 
-	Zhang Yi <zhangyi@everest-semi.com>, Marco Crivellari <marco.crivellari@suse.com>, 
-	Kees Cook <kees@kernel.org>, HyeongJun An <sammiee5311@gmail.com>, Arnd Bergmann <arnd@arndb.de>, 
-	Qianfeng Rong <rongqianfeng@vivo.com>, linux-sound@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, patches@opensource.cirrus.com, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
+References: <20260710-btmtk-first-block-bool-v1-1-3602688ec523@gmail.com>
+In-Reply-To: <20260710-btmtk-first-block-bool-v1-1-3602688ec523@gmail.com>
+From: Miles Krause <mileskrause5200@gmail.com>
+Date: Fri, 10 Jul 2026 22:41:07 -0400
+X-Gm-Features: AUfX_mzQwDtg2H8ctSQPFDjQKF1EMJLy3qdwid6_YX5jZy6Z9FBBhv1W9Y4YqwM
+Message-ID: <CAA6QAMJBJ11YcKKdXxuQ7MZidtta-VAw5EJd-N5_Y-tQDA0FLg@mail.gmail.com>
+Subject: Re: [PATCH] Bluetooth: btmtk: use bool for first_block
+To: mileskrause5200@gmail.com
+Cc: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, 
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	linux-bluetooth@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260710_170840_748011_4234612D 
-X-CRM114-Status: GOOD (  12.81  )
+X-CRM114-CacheID: sfid-20260710_194119_926468_D254BCCF 
+X-CRM114-Status: GOOD (  19.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,50 +118,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mark,
+Please disregard the duplicate submission. It was sent
+unintentionally. I am sorry if I am doing anything wrong. This is one
+of my first patches.
 
-One more note on this:
-
-> It seems this goto block was added recently, and I missed it after rebasing.
-> Sorry for the inconvenience.
-> However, looking at the goto path, it seems we might need to unwind the
-> states more completely. What do you think about rewriting it like this?
+On Fri, Jul 10, 2026 at 1:16=E2=80=AFAM Miles Krause via B4 Relay
+<devnull+mileskrause5200.gmail.com@kernel.org> wrote:
 >
-> ------------------
-> regcache_cache_only(rt712->regmap, false);
->     ret = regcache_sync(rt712->regmap);
->     if (ret) {
->         regcache_cache_only(rt712->regmap, true);
->         regcache_mark_dirty(rt712->regmap);
->         return ret;
->     }
+> From: Miles Krause <mileskrause5200@gmail.com>
 >
->     regcache_cache_only(rt712->mbq_regmap, false);
->     ret = regcache_sync(rt712->mbq_regmap);
->     if (ret) {
->         regcache_cache_only(rt712->regmap, true);
->         regcache_cache_only(rt712->mbq_regmap, true);
->         regcache_mark_dirty(rt712->mbq_regmap);
->         return ret;
->     }
+> first_block is reset for each firmware section and is never used outside
+> the section loop. Declare it as a bool inside the loop to limit its scope
+> and make its two-state purpose explicit.
 >
->     return 0;
-> --------------------
+> No functional change.
 >
-
-Since regmap was already synced successfully, marking it dirty again
-would be redundant and could cause the next regcache_sync() to
-needlessly rewrite cached registers that are already known to be in sync.
-
-Also, in my understanding, any register write that happens afterwards
-while cache_only=true should automatically set cache_dirty=true again
-(see _regmap_write(), _regmap_raw_write_impl(),
-regmap_noinc_readwrite(), and _regmap_multi_reg_write() in regmap.c),
-so there may be no need to defensively mark it dirty here in case of
-a later write. Reads aren't a concern here, since a read never
-changes any state - it's only writes that can make the cache diverge
-from the hardware while cache_only is set.
- Please correct me if I'm missing something here.
-Best regards,
-Phuc
+> Signed-off-by: Miles Krause <mileskrause5200@gmail.com>
+> ---
+> Compile-tested on x86_64 with:
+>
+>   make O=3Dout allmodconfig
+>   make O=3Dout W=3D1 drivers/bluetooth/btmtk.o
+>
+> Sparse-tested with:
+>
+>   make O=3Dout-sparse allmodconfig
+>   make O=3Dout-sparse C=3D1 CHECK=3Dsparse drivers/bluetooth/btmtk.o
+> ---
+>  drivers/bluetooth/btmtk.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+> index 809762d64fc6..b809eb82fc73 100644
+> --- a/drivers/bluetooth/btmtk.c
+> +++ b/drivers/bluetooth/btmtk.c
+> @@ -63,7 +63,7 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, con=
+st char *fwname,
+>         const u8 *fw_ptr;
+>         const u8 *fw_bin_ptr;
+>         int err, dlen, i, status;
+> -       u8 flag, first_block, retry;
+> +       u8 flag, retry;
+>         u32 section_num, dl_size, section_offset;
+>         u8 cmd[64];
+>
+> @@ -79,7 +79,7 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, con=
+st char *fwname,
+>         section_num =3D le32_to_cpu(globaldesc->section_num);
+>
+>         for (i =3D 0; i < section_num; i++) {
+> -               first_block =3D 1;
+> +               bool first_block =3D true;
+>                 fw_ptr =3D fw_bin_ptr;
+>                 sectionmap =3D (struct btmtk_section_map *)(fw_ptr + MTK_=
+FW_ROM_PATCH_HEADER_SIZE +
+>                               MTK_FW_ROM_PATCH_GD_SIZE + MTK_FW_ROM_PATCH=
+_SEC_MAP_SIZE * i);
+> @@ -132,9 +132,9 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, c=
+onst char *fwname,
+>
+>                         while (dl_size > 0) {
+>                                 dlen =3D min_t(int, 250, dl_size);
+> -                               if (first_block =3D=3D 1) {
+> +                               if (first_block) {
+>                                         flag =3D 1;
+> -                                       first_block =3D 0;
+> +                                       first_block =3D false;
+>                                 } else if (dl_size - dlen <=3D 0) {
+>                                         flag =3D 3;
+>                                 } else {
+>
+> ---
+> base-commit: 64b5c4c8e79c131fe8f135bab5e5dfaa245c5776
+> change-id: 20260710-btmtk-first-block-bool-bd047b970821
+>
+> Best regards,
+> --
+> Miles Krause <mileskrause5200@gmail.com>
+>
+>
 
