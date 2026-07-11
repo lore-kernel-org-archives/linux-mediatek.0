@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F1F5C43458
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jul 2026 15:08:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19144C44506
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jul 2026 15:08:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m35O9uD/U+TaQ848Y04SAAFcQbtyJ5oGcy3AMnA+LCM=; b=oTBzgK82Vv3UntGnkxjr30JkCp
-	cuK2CtEaUqIjppCxzSlkvtlSnAaznR6H931IdynQ8X/gmUaTqzxWz5I+gOhkgMz0DAY3kHFoxxSZG
-	vr+LLnSnqe02QIWg6I1QYjQ8saoR9b0sBrDlHHGIETpxmB7Trx9dJHpn12aA873bls+eErtGjm9Hf
-	V77IC+1jgXHZCpzRB7QhfsA0FprbuBSYxvQgmvRlRF6un2HB61d0tJgdVMR9uS7mj+DVMYmStt0sv
-	v8GstVFq2KVoYwm0tTi2EFIvHPq0c9WCKcT0PD88nb5Tb2isrmZIXKn3tAMIdHGB9Vyh617jt9Xrv
-	cnMzywKA==;
+	bh=RO0MF0UO52N/BtTir7O87MyPoM0YbxI8BeP9WMXMBa8=; b=0luIeEHEG+m7imL3L2evx9gczM
+	o9y9j54OCEHAyLLO9qlJduqXP9a9GZoJ94RbWz+k7LgvKb7xKVHj0Uk7BdhU3fb6sOrNqu6P2Lt6Q
+	EBKx0dl8BTkazh1RHl6k+b4U9Ntir/01Ai1hXQJ/wTZdmHcEJQvzBPIHTvf/DamMonxQevxWMBnq0
+	pCHnNWnInB47FgWRJQNIxBk2s9FYjIej028O4xdTL9b2LQF3zNbRRWlLMpS+voaKYd5SfxA9v7Mzw
+	x+Hf7EWqOpeVti/t4eZgF2NG4jVUTgGDivA+STOcLL70uZSYkoQUjnt+AwtGo9pNLkwN/XdmvQWdL
+	ucyCKLPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiZJP-00000006dKC-3Ahe;
-	Sat, 11 Jul 2026 15:08:15 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wiZJg-00000006dNt-3uIn;
+	Sat, 11 Jul 2026 15:08:32 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiZJO-00000006dJx-0MvN;
-	Sat, 11 Jul 2026 15:08:14 +0000
+	id 1wiZJf-00000006dN9-2VNg;
+	Sat, 11 Jul 2026 15:08:31 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id D347660052;
-	Sat, 11 Jul 2026 15:08:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99C2F1F000E9;
-	Sat, 11 Jul 2026 15:08:11 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id DF480411F8;
+	Sat, 11 Jul 2026 15:08:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 050AA1F000E9;
+	Sat, 11 Jul 2026 15:08:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783782492;
-	bh=m35O9uD/U+TaQ848Y04SAAFcQbtyJ5oGcy3AMnA+LCM=;
+	s=k20260515; t=1783782510;
+	bh=RO0MF0UO52N/BtTir7O87MyPoM0YbxI8BeP9WMXMBa8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=RogktxIt1oUimSNaB2eJ/JBshJZ6HswdELFaAY6mRo5VtRBA/1zIn0NHfYbFlvIYU
-	 M4WsYVO+2jR8QPbpk8703X4cr8YImO3/UUWKPfjiPcd6rtyZDjlvcFxEg6hgJJVUlu
-	 vDJweMWJC007cT5r06hSgpIfYJpxhRk03UePx02tzusX9ZYcE0qCSS+CMtOCUYpDDA
-	 Bx27+bhosBrBkShgSzHTZiGwUaoljoN8R98iifTzUVpFVEJNyqQZa7QaNKIYKxgoCG
-	 TMD2sic22TDce/JT0kHNLi7Ni0XzQ+LyPGpfH/EwHn/R4xMW/kjDBJBsk1hEpzvhJP
-	 WuKkKlUTj5bIQ==
-Date: Sat, 11 Jul 2026 17:08:08 +0200
+	b=l2W6jO7GmyST4ZStZowKVuylMTRzj91JHzDKY1Bw8IYsi5tftBTA9nh7/2B1/Zzby
+	 x4cErQwpyvltwy0553zx620THvjKjhoD8PEjb/uxzWchNnBt4CQRD3A8q9Inq+Jyqp
+	 bHl9bKksHNU3y3/jBPD79OEgcEKEbI3Wy3f4x6YLKKyav5VszCO+YoswItWCm4H29e
+	 pkKd90f/bQCtAvUrYnPLZ5mzgC93SEtGhtwJ5iVkag+vOuvra8Lu32rojl9EWnDG/e
+	 ZUukR2eamLdZil3lfBWS3EHnx7Qo5ilnAuyHaVYzOisU9DQgS+iCex3PabUEq1X9Ev
+	 GjO+bTlT7weUw==
+Date: Sat, 11 Jul 2026 17:08:27 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
@@ -52,15 +52,15 @@ Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
 	amergnat@baylibre.com, justin.yeh@mediatek.com, jason-jh.lin@mediatek.com, 
 	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v4 01/12] dt-bindings: display: mediatek: dp: Deprecate
- nvmem efuse data
-Message-ID: <20260711-heavy-neat-armadillo-c0f493@quoll>
+Subject: Re: [PATCH v4 02/12] dt-bindings: display: mediatek: dp: Add
+ compatible for MT8196 eDP
+Message-ID: <20260711-chital-of-incredible-gaiety-b390c7@quoll>
 References: <20260709113148.49090-1-angelogioacchino.delregno@collabora.com>
- <20260709113148.49090-2-angelogioacchino.delregno@collabora.com>
+ <20260709113148.49090-3-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260709113148.49090-2-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260709113148.49090-3-angelogioacchino.delregno@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,19 +75,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 09, 2026 at 01:31:37PM +0200, AngeloGioacchino Del Regno wrote:
-> Deprecate nvmem-cells and nvmem-cell-names and clarify their
-> purpose, as those are for PHY calibration data, not for the DP
-> IP itself, and that data shall go in the PHY binding instead.
+On Thu, Jul 09, 2026 at 01:31:38PM +0200, AngeloGioacchino Del Regno wrote:
+> Add a new compatible for the Embedded DisplayPort IP found in the
+> MT8196 SoC.
+> 
+> This IP is compatible with the previous ones, but not fully.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../devicetree/bindings/display/mediatek/mediatek,dp.yaml     | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->
-
-That phy binding should be posted somewhere and maybe even squashed
-here, so we do not end up with deprecated property alone.
+>  .../devicetree/bindings/display/mediatek/mediatek,dp.yaml        | 1 +
+>  1 file changed, 1 insertion(+)
 
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
