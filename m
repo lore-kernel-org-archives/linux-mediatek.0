@@ -4,106 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C60EC43458
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jul 2026 02:41:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7536BC43458
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Jul 2026 10:35:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ve+KgfwCf7WAv7Osnu4Dp5X81+V4g7CuHLm8wADOA7c=; b=vkU+LDtJprdDmWVSTNHUAY89Yx
-	wDOq/09/b/IJaO2JaOZ0n1kPQORJkDT65+KUNJr5nZJKIhUYXb+/+9PGv1TU7jt62fiQaM+9+r6oY
-	IQxM4gl9mjZCqxQrAQy8pUaMn7IvRcl5ECuPBZWEcuxqp9cA4+MFi51qRGDV66LZ9L5nAUBzMGD23
-	XxUxrmBR0O6V8DGWvC2hyRXFVAiY7bkuJsmTln3b760+9yRfKipPsH3qdIvIlcF0YWk6p1rKytzDa
-	0Kilv/4kqD434MgYbXEhfgHLZX1RVWOJ2X4epX22O9UgBXKDCLLqezdrIdyLq5mQ6VlELdUV5tLfh
-	KlKvhwMg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MZ21+ULxWWWa78TMpiPCWtby85XexI0p5YBNOEvmK5s=; b=RFk9It5yw1B2I5eNSdrrN+AuwN
+	EvYJX0bbA0YZqpL7ki6gDIfGiDtkLytn2ZnYSJcrvkaef42wu6hJcvzu2fDCLI6a9+Qy3/UlVrwO+
+	3OTGwQ6kgFpFFFi0rEeKVAYJEfR8/WxANOf085xp4KgSzu7GctVotKbC57V73FxrT5gYpSzMc0zBw
+	ZeM7oUdX7M+YzKFekKX2KRwHbbmTTcya/hKST40vnDHAD/3u7QKDybOZ2igTUWDB3oQq3f17t1dje
+	NjVHL8dCZhho9tvTRvq6MEsYANnArORRn+SvoO203nK2EvEgCl+qXQXD13US6xj7rhz258T4oO/ie
+	6VQo2hyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiNec-000000069CQ-3c0i;
-	Sat, 11 Jul 2026 02:41:22 +0000
-Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
+	id 1wiV3h-00000006Sup-0REN;
+	Sat, 11 Jul 2026 10:35:45 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiNeZ-000000069BZ-3ZzW
-	for linux-mediatek@lists.infradead.org;
-	Sat, 11 Jul 2026 02:41:21 +0000
-Received: by mail-yx1-xb12d.google.com with SMTP id 956f58d0204a3-6679d88abdcso2393612d50.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 10 Jul 2026 19:41:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783737679; cv=none;
-        d=google.com; s=arc-20260327;
-        b=IO0YGIbL6ele2H3h/wUBd/4Hicw7yuRAimGW2coe8MFsD76OUGeitizPkCwL7ndsoP
-         j1yCzaJnjD4JHKMBq+AX8Q7U2lZTjC6Oie8j20DyDJ8I7+7wATClfjnBWaNu1EbXenKS
-         35Fw0QgS25651WmTNRK+W2taKoKDev8pUMf0RQUXBlTPHDd15xg1zEEoNaqsJXIx6IaJ
-         FiqW9AEHF6o6YmvqpwE9zF6NGaXCXCwjch616LZskJog1Pc4+2p4J7xNPJJO3DY/wvAh
-         ZjBPR9+VA1BOwUyz606PN2Z411jJwt+nAhdKICfTkt0SNScskZLfuPoNbBkWtSZPPRgx
-         DbYA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ve+KgfwCf7WAv7Osnu4Dp5X81+V4g7CuHLm8wADOA7c=;
-        fh=I+zaFPfiNcAs3lkb882PXQzZmYnFwFUoHtvaBheaoJ0=;
-        b=DiZfWLIGwKRIizT0J8u9srO2vvD55G3n2g8F096Ktf22iJUMhXN8YjiT1Dqdl3yXVu
-         y4HcPyfyUEVminQWp3eAnshTRmjW/5T8cex9y8SpMLtJ13uF74RhGQBMVTtWpnW7nRot
-         S7N4+GKuvpAXHPCQHMp2Ntz0IIV+atwNx2Cx9CYBZkt5fGSujrA1tJXQs2lpzPDknBWq
-         9EgfTsMiXRlULnDZt2typLfCj9qQghVZbLZNSEyBPq6HXw2SYuHN03+awmOCZcOi9od9
-         g3ZknjIgnrao79VpN2OrYoxCinyUDu0BqLQKFQrFq31jBNPRkyXjP1QDDjuC/l611di3
-         sM8w==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783737679; x=1784342479; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=ve+KgfwCf7WAv7Osnu4Dp5X81+V4g7CuHLm8wADOA7c=;
-        b=UjtOnAthHxR/pfchgH8Dpo3CsiPkaIxHFdKrvcYLXBpZTqTh7DVUB/3pgSsQSTEf8j
-         M0H9hmqMHRvyCo7csOXaKMOMy3WceWPg6FsQEKfPGSuhoJZBs7PuK1LkR8VKB0ezHX3E
-         QhYN94ocvRBI6YWeqkONPOhZhPN4Urt1ofthzzl3dKAN22E+qeVFS5K6hQs3bFeIv+QA
-         RWZajqpzlmWAbLQBJZ6vZRSv8wGYOtQqjRiUw0Jl5eSYhs/5MPFPtE3CMPaG6sCHphcp
-         CziEZ0fIIIPw8TL4rXrmhs0vrvQFWYU4m7Ikc3ZABx4a6IDfzr23POmrndPn3CioKmx+
-         JOKg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783737679; x=1784342479;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=ve+KgfwCf7WAv7Osnu4Dp5X81+V4g7CuHLm8wADOA7c=;
-        b=NxLQ4xxyB8Ak4TKuZP8SnshFF152Pwaa2pWLzgWNrFQnG/va1QTA2LHntDyLd3agpm
-         OYsEnhYf4Pt+Z2s5uPa4hhtwgI14hPPj/s9F/i6sIMEzOug3WbGzX5sEcPpC7DeZH52C
-         N38uuzJx3Zn5143yJClctzLXa7LUnxvJgSw6c2LkwEpp0bFFRt6U5F6aD1VziAlVVsOr
-         mvA5peyDfyMUXFaEX8MprdXe6uFQm1i3BGgsPaDQLczhOsVXvGDJW+mZGFJ1zTJIygjV
-         AxbMvMBuJSZl+5YnhMcYe/0yQS7PKi+3MDrKPNvNA4tDuxODsZLpJ0jfWru2//oxZ91a
-         jDRA==
-X-Forwarded-Encrypted: i=1; AHgh+RpZKllnE6498jrsFGBVx+yKp6sYIC9owcebtEMDW8/vixIMtql7KMYwVo7xa5ES9NSrx3xcnmKGv7RG1BdMUw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyfQ3oNGVvdAbpnkkmtFKU14XLrNrsJTsmgA6gXEtcr8kiYC4Bq
-	lWVLwdVK1sISQZPQmZspCUtzvHMdGFdJJlKHTrc6eS0xkdGmC7GmQXCcn04Yhp/+f6uVWH5YKLz
-	A6vLT8HW2/VvgITgoqP4rbvkQjWZ79sU=
-X-Gm-Gg: AfdE7cmyetrVUBxTSjktu/KgOPPJWO3UuBVZ03eh2flpUJoLD5EsmyYCh7oc7YIrkg2
-	wPp0FDE4Ti1bdwyTNvKfpVmio52oavyDWh07VauqIUJ1edDMX6MRtMiobmQreEj9dhCdSFewrPK
-	69wEzjYRb5GfgIJ3PBu5x6UexxXL1h4lOJ3WctnT3unv51mRJjOvK7lSJmrfjKITcrU9SRLBNmh
-	TUEiE8i4/zJcfIQNrtgmgP0hMjqTVhV1wHh73J5+RvSBFACmOz4Wv4RCbNMXduOCSeZkTlp
-X-Received: by 2002:a05:690e:43d0:b0:667:b2c3:f047 with SMTP id
- 956f58d0204a3-667d7aa0516mr1048576d50.9.1783737678571; Fri, 10 Jul 2026
- 19:41:18 -0700 (PDT)
+	id 1wiV3f-00000006SuW-33SO;
+	Sat, 11 Jul 2026 10:35:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id D18ED60051;
+	Sat, 11 Jul 2026 10:35:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 7AD7DC2BCB9;
+	Sat, 11 Jul 2026 10:35:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1783766142;
+	bh=CjoIXjZYksPuoJo9b5b48NUa04niQPUqRQBlzbU9cfk=;
+	h=From:Date:Subject:To:Cc:Reply-To:From;
+	b=AwssXW6wAdd41wYEQZXUyoNlDi9QHh5D57tVqOFiT/3EW9iBmDn4jIP0Qy7i+A/gz
+	 0FgrlRmIvWOJh9Wf/EykZIrxctrJndDodPst/JnfCIL5sZnCyfcq/eH4wdppveH927
+	 KUn0Pgw+EzvWeUjV2+wHt9hlJepHi+TRNVZ4Bff9j/mRTp+8XN7VNW5Ghyxx4J8/ww
+	 cEppUTztmRwiXb0XA93TQvz4xnJg8KxGFX2+nKj35P2/QJX+Kf4uD+Mu3ufLklMthW
+	 jIYJ7SifvdduuwSkOSSa3ARMSHZv8zaW+MpicdEcDZgQjz+Kxo7IqvSS4ygTQcBPdx
+	 t9UjVM2ha5QvQ==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 57D05C43458;
+	Sat, 11 Jul 2026 10:35:42 +0000 (UTC)
+From: Nikolai Burov via B4 Relay <devnull+nikolai.burov.jolla.com@kernel.org>
+Date: Sat, 11 Jul 2026 13:34:46 +0300
+Subject: [PATCH] phy: mediatek: xsphy: clear U2 DTM0 force bits during init
 MIME-Version: 1.0
-References: <20260710-btmtk-first-block-bool-v1-1-3602688ec523@gmail.com>
-In-Reply-To: <20260710-btmtk-first-block-bool-v1-1-3602688ec523@gmail.com>
-From: Miles Krause <mileskrause5200@gmail.com>
-Date: Fri, 10 Jul 2026 22:41:07 -0400
-X-Gm-Features: AUfX_mzQwDtg2H8ctSQPFDjQKF1EMJLy3qdwid6_YX5jZy6Z9FBBhv1W9Y4YqwM
-Message-ID: <CAA6QAMJBJ11YcKKdXxuQ7MZidtta-VAw5EJd-N5_Y-tQDA0FLg@mail.gmail.com>
-Subject: Re: [PATCH] Bluetooth: btmtk: use bool for first_block
-To: mileskrause5200@gmail.com
-Cc: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, 
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	linux-bluetooth@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260710_194119_926468_D254BCCF 
-X-CRM114-Status: GOOD (  19.06  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260711-mt6858-xsphy-poweron-v1-1-dee2fb71c7d5@jolla.com>
+X-B4-Tracking: v=1; b=H4sIAEYcUmoC/yXMQQ6CMBBA0auQWTtJaRTRqxgX7TjIkNA2HVQM4
+ e5WWL7F/wsoZ2GFa7VA5reoxFBQHyqg3oUnozyKwRrbmHNtcJya9tTirKn/YoofzjEgkeu8Mxd
+ /JAslTZk7mbft7b5bX35gmv4vWNcfgYXly3gAAAA=
+X-Change-ID: 20260710-mt6858-xsphy-poweron-ccafba09b4c2
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, 
+ Nikolai Burov <nikolai.burov+review@abscue.de>, 
+ Nikolai Burov <nikolai.burov@jolla.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783766141; l=1733;
+ i=nikolai.burov@jolla.com; s=20260707; h=from:subject:message-id;
+ bh=JAVmiLYc4qL5R032CUvK9+ze4/IqmRRFbWXmWnyY5tU=;
+ b=T0DPUN3D5Y3CUdetCWkVyJ8WU48VXB/UEznv/4kjGDWgJZk/mqULDgRof1/ZH+idGNPgKT1a6
+ pFaBDtZ/Hb3D6lHiIqqboDwvOCv8CCaBmwx/OkrHgkfRfuPuhtGdoaN
+X-Developer-Key: i=nikolai.burov@jolla.com; a=ed25519;
+ pk=yzpa+PD+ovHUFMIOBA9o2QqGwI110jM6hdGHLc7jtoQ=
+X-Endpoint-Received: by B4 Relay for nikolai.burov@jolla.com/20260707 with
+ auth_id=859
+X-Original-From: Nikolai Burov <nikolai.burov@jolla.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,86 +86,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: nikolai.burov@jolla.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Please disregard the duplicate submission. It was sent
-unintentionally. I am sorry if I am doing anything wrong. This is one
-of my first patches.
+From: Nikolai Burov <nikolai.burov@jolla.com>
 
-On Fri, Jul 10, 2026 at 1:16=E2=80=AFAM Miles Krause via B4 Relay
-<devnull+mileskrause5200.gmail.com@kernel.org> wrote:
->
-> From: Miles Krause <mileskrause5200@gmail.com>
->
-> first_block is reset for each firmware section and is never used outside
-> the section loop. Declare it as a bool inside the loop to limit its scope
-> and make its two-state purpose explicit.
->
-> No functional change.
->
-> Signed-off-by: Miles Krause <mileskrause5200@gmail.com>
-> ---
-> Compile-tested on x86_64 with:
->
->   make O=3Dout allmodconfig
->   make O=3Dout W=3D1 drivers/bluetooth/btmtk.o
->
-> Sparse-tested with:
->
->   make O=3Dout-sparse allmodconfig
->   make O=3Dout-sparse C=3D1 CHECK=3Dsparse drivers/bluetooth/btmtk.o
-> ---
->  drivers/bluetooth/btmtk.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-> index 809762d64fc6..b809eb82fc73 100644
-> --- a/drivers/bluetooth/btmtk.c
-> +++ b/drivers/bluetooth/btmtk.c
-> @@ -63,7 +63,7 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, con=
-st char *fwname,
->         const u8 *fw_ptr;
->         const u8 *fw_bin_ptr;
->         int err, dlen, i, status;
-> -       u8 flag, first_block, retry;
-> +       u8 flag, retry;
->         u32 section_num, dl_size, section_offset;
->         u8 cmd[64];
->
-> @@ -79,7 +79,7 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, con=
-st char *fwname,
->         section_num =3D le32_to_cpu(globaldesc->section_num);
->
->         for (i =3D 0; i < section_num; i++) {
-> -               first_block =3D 1;
-> +               bool first_block =3D true;
->                 fw_ptr =3D fw_bin_ptr;
->                 sectionmap =3D (struct btmtk_section_map *)(fw_ptr + MTK_=
-FW_ROM_PATCH_HEADER_SIZE +
->                               MTK_FW_ROM_PATCH_GD_SIZE + MTK_FW_ROM_PATCH=
-_SEC_MAP_SIZE * i);
-> @@ -132,9 +132,9 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, c=
-onst char *fwname,
->
->                         while (dl_size > 0) {
->                                 dlen =3D min_t(int, 250, dl_size);
-> -                               if (first_block =3D=3D 1) {
-> +                               if (first_block) {
->                                         flag =3D 1;
-> -                                       first_block =3D 0;
-> +                                       first_block =3D false;
->                                 } else if (dl_size - dlen <=3D 0) {
->                                         flag =3D 3;
->                                 } else {
->
-> ---
-> base-commit: 64b5c4c8e79c131fe8f135bab5e5dfaa245c5776
-> change-id: 20260710-btmtk-first-block-bool-bd047b970821
->
-> Best regards,
-> --
-> Miles Krause <mileskrause5200@gmail.com>
->
->
+On mobile SoCs, the USB PHY is completely powered off during bootup.
+As a result, various bits in the DTM0 register are set that prevent
+the USB 2.0 PHY from functioning. Clear them as part of the
+initialization sequence.
+
+Signed-off-by: Nikolai Burov <nikolai.burov@jolla.com>
+---
+ drivers/phy/mediatek/phy-mtk-xsphy.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/drivers/phy/mediatek/phy-mtk-xsphy.c b/drivers/phy/mediatek/phy-mtk-xsphy.c
+index cc1d66954212..b29220bc5592 100644
+--- a/drivers/phy/mediatek/phy-mtk-xsphy.c
++++ b/drivers/phy/mediatek/phy-mtk-xsphy.c
+@@ -62,6 +62,14 @@
+ #define P2A6_RG_BC11_SW_EN	BIT(23)
+ #define P2A6_RG_OTG_VBUSCMP_EN	BIT(20)
+ 
++#define XSP_U2PHYDTM0		((SSUSB_SIFSLV_U2PHY_COM) + 0x068)
++#define P2D_FORCE_DATAIN	BIT(23)
++#define P2D_FORCE_DM_PULLDOWN	BIT(21)
++#define P2D_FORCE_DP_PULLDOWN	BIT(20)
++#define P2D_FORCE_XCVRSEL	BIT(19)
++#define P2D_FORCE_SUSPENDM	BIT(18)
++#define P2D_FORCE_TERMSEL	BIT(17)
++
+ #define XSP_U2PHYDTM1		((SSUSB_SIFSLV_U2PHY_COM) + 0x06C)
+ #define P2D_FORCE_IDDIG		BIT(9)
+ #define P2D_RG_VBUSVALID	BIT(5)
+@@ -181,6 +189,11 @@ static void u2_phy_instance_init(struct mtk_xsphy *xsphy,
+ {
+ 	void __iomem *pbase = inst->port_base;
+ 
++	mtk_phy_clear_bits(pbase + XSP_U2PHYDTM0,
++			   P2D_FORCE_DATAIN | P2D_FORCE_DM_PULLDOWN |
++			   P2D_FORCE_DP_PULLDOWN | P2D_FORCE_XCVRSEL |
++			   P2D_FORCE_SUSPENDM | P2D_FORCE_TERMSEL);
++
+ 	/* DP/DM BC1.1 path Disable */
+ 	mtk_phy_clear_bits(pbase + XSP_USBPHYACR6, P2A6_RG_BC11_SW_EN);
+ 
+
+---
+base-commit: bee763d5f341b99cf472afeb508d4988f62a6ca1
+change-id: 20260710-mt6858-xsphy-poweron-ccafba09b4c2
+
+Best regards,
+--  
+Nikolai Burov <nikolai.burov@jolla.com>
+
+
 
