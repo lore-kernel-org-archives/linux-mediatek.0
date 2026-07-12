@@ -4,63 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 319B2C43458
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jul 2026 13:31:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E500C43458
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jul 2026 14:37:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BWtX0G9rA5gU31Xzh6zT4Wr9r0sxd40ARRXx7TIt5oU=; b=jC/II7xJP0DmRy0mp6FfMHqbBm
-	XenlLwIBVuo36unbtImkRe+Nr6gbSDYU8JarXSmttf2J4jh4AYuG55t5sjSHwHi/xFQj2nqMlY3sM
-	VfJWP+F4jXpPp70ahxtxBUFVRK8/PGdrRiVqSQ4bwZffYm+kKX0KzZ81KMKxiQ7hg52cmlx5FOYjj
-	5xSsceIyFkPj3MCAV0INwHGkxD6o+H6Q8mf8w5QBTkv4q4StEKoXPCZwRTmW1kkIogt2pzDl5jfNy
-	6d9EKu888M9vo6H3FVYlY+Ow64ghMYdM3S4YUPzoK2EftQpChAo8AaT77aQ0aTVXA4Lk86oOTC/n3
-	OEIz6O8A==;
+	bh=pmSC34Df9sJwJgpBvXLUH1wyBX5cNGCOC9TM/UI+Np4=; b=1UFVexI+D18mtuKphSa/h0OJM4
+	yA7n7u5/iGrGaBbFjMwPYT53Hml/7YVBX/wWXEm5TEXWTDWlMDv/lSZraYPEW6CKzXOid0PUW9/wR
+	fhbuPOKD9o8x8lM3J+zjaiQYcYVtUhmru80ubBLBbmZkUXjIhMRPXxVcwHIhqRs3uT8oj+byNOwfl
+	fYp1oKItgGImmYKJkTJUSPXib+5MGxLXGMD0jglXNjHIAQiuvZWMmT1NESffw54409AD4FtydDRdS
+	jqMBHq0FxDBqyf6F3scBY/BtfX/8yqFDWg4HAbxjH8czvV6LVH4cpJDfjD/8O4T9EDVGK1lTL386Q
+	adnBkvnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiuHB-00000007Tjp-3UW1;
-	Sun, 12 Jul 2026 13:31:21 +0000
-Received: from out-182.mta0.migadu.com ([2001:41d0:1004:224b::b6])
+	id 1wivIl-00000007WY7-07zN;
+	Sun, 12 Jul 2026 14:37:03 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wiuH9-00000007TjQ-0sid
-	for linux-mediatek@lists.infradead.org;
-	Sun, 12 Jul 2026 13:31:20 +0000
-Message-ID: <367f53c5d06e85be5b858dabecc9dd308ae14e20.camel@linux.dev>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1783863072;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=BWtX0G9rA5gU31Xzh6zT4Wr9r0sxd40ARRXx7TIt5oU=;
-	b=EFTUW65KHO70xVBUsXGkidjcZzIdXSzogJ5kePGpNMzQSh0MSWhd+Wgrh1unDZcJcR+QV3
-	VJ4sv347lyxnXtEwoYFMSg/IU6KQsos2vEGhI8A2kE3LnOs7hlTCMbZWfUQhvUsnTdEtlO
-	PAHIDewT0tmLHW0WdD/HoHqyQK3Z/E8=
-Subject: Re: [PATCH] iio: adc: mt6323: remove unused header
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Siratul Islam <siratul.islam@linux.dev>
-To: rva333@protonmail.com
-Cc: Jonathan Cameron <jic23@kernel.org>, David Lechner
- <dlechner@baylibre.com>,  Nuno =?ISO-8859-1?Q?S=E1?=	 <nuno.sa@analog.com>,
- Andy Shevchenko <andy@kernel.org>, Matthias Brugger	
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>, Uwe
- =?ISO-8859-1?Q?Kleine-K=F6nig?=	 <u.kleine-koenig@baylibre.com>,
- linux-iio@vger.kernel.org, 	linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, 	linux-mediatek@lists.infradead.org
-Date: Sun, 12 Jul 2026 19:31:02 +0600
-In-Reply-To: <20260712-mt6323-adc-rm-header-v1-1-d96395d1a323@protonmail.com>
-References: <20260712-mt6323-adc-rm-header-v1-1-d96395d1a323@protonmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+	id 1wivIk-00000007WXb-063m;
+	Sun, 12 Jul 2026 14:37:02 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 5404041713;
+	Sun, 12 Jul 2026 14:37:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 389BD1F000E9;
+	Sun, 12 Jul 2026 14:37:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783867021;
+	bh=pmSC34Df9sJwJgpBvXLUH1wyBX5cNGCOC9TM/UI+Np4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Li45TgA1la4VR8WDqwbcAj0SQ5f4lweEms7CnWe3laFL93TiZ5RXcogkxFVgPrty4
+	 Kw5+PmjOq0Ot7YLkvUXW4aGOKGLAK8/2y9UJEU09fkVO46mZaDaRrUKmLhhQcdwaYl
+	 Ooc1WQWcparey8ZxSRyvu505PmhPOcE+alU9ANihp0w0C0+nRuVsyeDLstBFc658cL
+	 /WD/7PM+xXxIQ87PzDlQurkduAexHnBLOqZER7EEPjMBRzhigeRmRnHjqHc1jNMlV8
+	 UnxG0i+8p6qO1XbdB0uCZjRQQfSWcqyoBkQTjIAwsjZwdeRsrKbHCmfmH9rlPwkDct
+	 PuT3uDhw3s/dA==
+Date: Sun, 12 Jul 2026 16:36:57 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Ahmed Naseef <naseefkm@gmail.com>
+Cc: netdev@vger.kernel.org, 
+	=?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, "Chester A. Unal" <chester.a.unal@arinc9.com>, 
+	"David S. Miller" <davem@davemloft.net>, Andrew Lunn <andrew@lunn.ch>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Conor Dooley <conor+dt@kernel.org>, 
+	DENG Qingfang <dqfext@gmail.com>, Daniel Golle <daniel@makrotopia.org>, 
+	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Landen Chao <Landen.Chao@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
+	Russell King <linux@armlinux.org.uk>, Sean Wang <sean.wang@mediatek.com>, 
+	Vladimir Oltean <olteanv@gmail.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next v2 1/2] dt-bindings: net: dsa: mediatek,mt7530:
+ add econet,en7528-switch
+Message-ID: <20260712-hysterical-thistle-prawn-9c81b5@quoll>
+References: <cover.1783770059.git.naseefkm@gmail.com>
+ <2133035bb22eacc8a0e21f86c0c800a45023ee01.1783770059.git.naseefkm@gmail.com>
 MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260712_063119_582989_A502AC0E 
-X-CRM114-Status: UNSURE (   4.24  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <2133035bb22eacc8a0e21f86c0c800a45023ee01.1783770059.git.naseefkm@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,16 +78,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 2026-07-12 at 09:26 +0300, Roman Vivchar via B4 Relay wrote:
-> From: Roman Vivchar <rva333@protonmail.com>
->=20
-> Remove unused mod_devicetable.h header.
->=20
-LGTM.
+On Sat, Jul 11, 2026 at 03:41:00PM +0400, Ahmed Naseef wrote:
+> The EcoNet EN7528 MIPS SoC integrates an MT7530 Gigabit switch,
+> memory-mapped in the SoC register space like the built-in switches of
+> the MediaTek MT7988 and Airoha EN7581/AN7583 SoCs. Its four user ports
+> are connected to integrated Gigabit PHYs and its CPU port is connected
+> internally to the SoC Ethernet MAC.
+> 
+> Those three switches are MT7531-based, whereas the EN7528 has a genuine
+> MT7530 switch core (its chip revision register reads 0x7530). The two
+> generations differ in their register programming - for example the CPU
+> port is selected through the MT7530-style MFC register rather than the
+> MT7531 CFC register - so the EN7528 is not compatible with the existing
+> switch compatibles and cannot fall back to one of them.
+> 
+> Add the econet,en7528-switch compatible, with the same constraints as
+> the other built-in switches.
+> 
 
-Reviewed-by: Siratul Islam <siratul.islam@linux.dev>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
---
 Best regards,
-Sirat
+Krzysztof
+
 
