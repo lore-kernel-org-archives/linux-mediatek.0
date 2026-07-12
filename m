@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 087BFC44506
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jul 2026 14:58:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D66CC44501
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jul 2026 14:58:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cYlrCYAk24mXMLq9q2GfdwKY9UjeWZbbcT39tHA3VgU=; b=BA+gqh061NPGDE2Je9l2p1+Jt6
-	OBkjWZM6BTmLCDMehwW8fB7cwSqDtycUUjJRju/OD5mfAgA46okbv6qw8NaNqivU5U7nVycm4q+FD
-	zvfwDElvUgLoaYjCVaQKwpPLMd0/eDcxuEGWiP3Bfc5ZLFVIM9Wpn/EyTVnxVFVPfZ18Mgz9g5OCF
-	Rrox6YiWcukA6C8vhQxqlutcZjRLurHfXHU4akhx+mYJrGSfDx4oTu41si9ky9e8dJ19XMqKprlcP
-	eM8hpeNo/M9SqF3mQQMaR+aAFfm/J/HNdpYUCE+mYc8ph1ZoaWFWuwnaStYlHJt+XixZYi3UV7wEw
-	DpkHENcw==;
+	bh=9trnwHXFljnlbXmvCavvXySgGPUlwMTdfQV4Sx3JwFI=; b=DXYet66H/g+AGFoKw3YlUjbBey
+	GhOCy5myZ86JaQQrfCNezFi2x+/HOcy4kCQPEDVyw+6eFycatLr8GR39WqisPzGyzwl1spUcaDeES
+	3AqiY2SDejqjAlO3K/Ap6WAdMx+z88EOkLoY9Uz8hH6/d1wGDcQbhSukVCn2sf1/HqvFZxq61D7qv
+	GPw4isIwFvWSFQH4qYSJ9AUBoWZfUoMqDgNbXyNM4Vh3namcb7+zrWG0cfgFv14KpdkrZ8CFkNhw3
+	y1bnQ3j0YXdTNM3w3sxNjrCnweuLM5RavgiovH2JvOm5xauFtX82traAa62sE2HG6WCoumxzS3MIT
+	1B6LvQ9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wivd9-00000007XxX-3eA2;
-	Sun, 12 Jul 2026 14:58:07 +0000
+	id 1wivdf-00000007Y6y-0Wxe;
+	Sun, 12 Jul 2026 14:58:39 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wivd8-00000007XxB-3zaI;
-	Sun, 12 Jul 2026 14:58:06 +0000
+	id 1wivdd-00000007Y6H-3Hvy;
+	Sun, 12 Jul 2026 14:58:37 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5D7CC41452;
-	Sun, 12 Jul 2026 14:58:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 474981F000E9;
-	Sun, 12 Jul 2026 14:58:05 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7FEC741452;
+	Sun, 12 Jul 2026 14:58:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 670B11F000E9;
+	Sun, 12 Jul 2026 14:58:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783868286;
-	bh=cYlrCYAk24mXMLq9q2GfdwKY9UjeWZbbcT39tHA3VgU=;
+	s=k20260515; t=1783868317;
+	bh=9trnwHXFljnlbXmvCavvXySgGPUlwMTdfQV4Sx3JwFI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=NF6HSxKpblUsmxb46pVdmmngRPByG+2D5w8fQIWWKziA+oqgrnsCwLSWW7tnZNJtN
-	 Cv1B60rpWrsJup0ONxK9VM+liWOKr4H0EHBqy23w/4w3JHsM853UB8bnB5as4bhh1a
-	 07BvC5WvGUbXGHHzpq+zOT8Be1t5MM6BCjQjGlCfC48rSIbRdkyOm90JtEeg/7gUyF
-	 dB/pnGf+gCdFQjSVHzEdaNTm2JJwsV+495i/ma4GssOjawUEhT+y2jHEjPlXXGEpMC
-	 yO+gQD5+cvrJZGRr96FFweVZlj8e949xV1sJyokFzOsk6haiShuKSACHoF4m8Ma29Q
-	 Y/SQBu1vX6JFQ==
-Date: Sun, 12 Jul 2026 16:58:02 +0200
+	b=fuzKfWnKArXWqfKU/m0sahnW9IZ3PzNKwQb745Y+T8JyjkBzq9ddSbPm1S6EdOlIW
+	 +v6RS8iq8otPP7tL439h+uMO073tcFnAZUQ2+9CfqEXhllk9Gz+gDdl/+L36a3WJC+
+	 obNEfalnZD6hKrWgFR9a/XXO+rkNwEFjVKqcKH7ZxG8xbq2gupA4+wXfq4g8arSwtr
+	 4lQ02aFoIDcJpeQums0owh9JY1uBNoWUxOWxIAvjOnIbMWu+FkTpMXDDySVDz6ufan
+	 Qgidcodq4B3gyx8t4uUERGix3gP84fHW3uSsjix+ja5y3+SG4E4WCBI6W1tCuEKj3y
+	 W5zXMdBc02e0w==
+Date: Sun, 12 Jul 2026 16:58:33 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, 
@@ -51,15 +51,15 @@ Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
 	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, kernel@collabora.com, justin.yeh@mediatek.com, 
 	jason-jh.lin@mediatek.com
-Subject: Re: [PATCH 03/10] dt-bindings: display: mediatek: dsi: Document
- MT8189 and MT8196
-Message-ID: <20260712-beryl-rooster-of-agreement-cdaee8@quoll>
+Subject: Re: [PATCH 09/10] dt-bindings: display: mediatek: wdma: Add
+ compatibles for more SoCs
+Message-ID: <20260712-mottled-prodigious-hummingbird-a7b72e@quoll>
 References: <20260701121950.19454-1-angelogioacchino.delregno@collabora.com>
- <20260701121950.19454-4-angelogioacchino.delregno@collabora.com>
+ <20260701121950.19454-10-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260701121950.19454-4-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260701121950.19454-10-angelogioacchino.delregno@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,15 +74,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 01, 2026 at 02:19:43PM +0200, AngeloGioacchino Del Regno wrote:
-> Add compatible strings for MT8189 and MT8196 SoCs.
-> These are compatible with the DSI IPs found in the MT8188/95 and
-> others, but with differences making them not fully compatible.
+On Wed, Jul 01, 2026 at 02:19:49PM +0200, AngeloGioacchino Del Regno wrote:
+> Multiple MediaTek SoCs have the Write DMA hardware in their Display
+> Controller: add the missing compatibles for Dimensity 1200 (MT6893)
+> and for Kompanio 500/520/820/1200 (MT8183/MT8186/MT8192/MT8195).
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../devicetree/bindings/display/mediatek/mediatek,dsi.yaml      | 2 ++
->  1 file changed, 2 insertions(+)
+>  .../devicetree/bindings/display/mediatek/mediatek,wdma.yaml  | 5 +++++
+>  1 file changed, 5 insertions(+)
 
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
