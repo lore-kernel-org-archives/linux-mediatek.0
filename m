@@ -4,66 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E500C43458
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jul 2026 14:37:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 087BFC44506
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jul 2026 14:58:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pmSC34Df9sJwJgpBvXLUH1wyBX5cNGCOC9TM/UI+Np4=; b=1UFVexI+D18mtuKphSa/h0OJM4
-	yA7n7u5/iGrGaBbFjMwPYT53Hml/7YVBX/wWXEm5TEXWTDWlMDv/lSZraYPEW6CKzXOid0PUW9/wR
-	fhbuPOKD9o8x8lM3J+zjaiQYcYVtUhmru80ubBLBbmZkUXjIhMRPXxVcwHIhqRs3uT8oj+byNOwfl
-	fYp1oKItgGImmYKJkTJUSPXib+5MGxLXGMD0jglXNjHIAQiuvZWMmT1NESffw54409AD4FtydDRdS
-	jqMBHq0FxDBqyf6F3scBY/BtfX/8yqFDWg4HAbxjH8czvV6LVH4cpJDfjD/8O4T9EDVGK1lTL386Q
-	adnBkvnQ==;
+	bh=cYlrCYAk24mXMLq9q2GfdwKY9UjeWZbbcT39tHA3VgU=; b=BA+gqh061NPGDE2Je9l2p1+Jt6
+	OBkjWZM6BTmLCDMehwW8fB7cwSqDtycUUjJRju/OD5mfAgA46okbv6qw8NaNqivU5U7nVycm4q+FD
+	zvfwDElvUgLoaYjCVaQKwpPLMd0/eDcxuEGWiP3Bfc5ZLFVIM9Wpn/EyTVnxVFVPfZ18Mgz9g5OCF
+	Rrox6YiWcukA6C8vhQxqlutcZjRLurHfXHU4akhx+mYJrGSfDx4oTu41si9ky9e8dJ19XMqKprlcP
+	eM8hpeNo/M9SqF3mQQMaR+aAFfm/J/HNdpYUCE+mYc8ph1ZoaWFWuwnaStYlHJt+XixZYi3UV7wEw
+	DpkHENcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wivIl-00000007WY7-07zN;
-	Sun, 12 Jul 2026 14:37:03 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wivd9-00000007XxX-3eA2;
+	Sun, 12 Jul 2026 14:58:07 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wivIk-00000007WXb-063m;
-	Sun, 12 Jul 2026 14:37:02 +0000
+	id 1wivd8-00000007XxB-3zaI;
+	Sun, 12 Jul 2026 14:58:06 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5404041713;
-	Sun, 12 Jul 2026 14:37:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 389BD1F000E9;
-	Sun, 12 Jul 2026 14:37:00 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 5D7CC41452;
+	Sun, 12 Jul 2026 14:58:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 474981F000E9;
+	Sun, 12 Jul 2026 14:58:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783867021;
-	bh=pmSC34Df9sJwJgpBvXLUH1wyBX5cNGCOC9TM/UI+Np4=;
+	s=k20260515; t=1783868286;
+	bh=cYlrCYAk24mXMLq9q2GfdwKY9UjeWZbbcT39tHA3VgU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Li45TgA1la4VR8WDqwbcAj0SQ5f4lweEms7CnWe3laFL93TiZ5RXcogkxFVgPrty4
-	 Kw5+PmjOq0Ot7YLkvUXW4aGOKGLAK8/2y9UJEU09fkVO46mZaDaRrUKmLhhQcdwaYl
-	 Ooc1WQWcparey8ZxSRyvu505PmhPOcE+alU9ANihp0w0C0+nRuVsyeDLstBFc658cL
-	 /WD/7PM+xXxIQ87PzDlQurkduAexHnBLOqZER7EEPjMBRzhigeRmRnHjqHc1jNMlV8
-	 UnxG0i+8p6qO1XbdB0uCZjRQQfSWcqyoBkQTjIAwsjZwdeRsrKbHCmfmH9rlPwkDct
-	 PuT3uDhw3s/dA==
-Date: Sun, 12 Jul 2026 16:36:57 +0200
+	b=NF6HSxKpblUsmxb46pVdmmngRPByG+2D5w8fQIWWKziA+oqgrnsCwLSWW7tnZNJtN
+	 Cv1B60rpWrsJup0ONxK9VM+liWOKr4H0EHBqy23w/4w3JHsM853UB8bnB5as4bhh1a
+	 07BvC5WvGUbXGHHzpq+zOT8Be1t5MM6BCjQjGlCfC48rSIbRdkyOm90JtEeg/7gUyF
+	 dB/pnGf+gCdFQjSVHzEdaNTm2JJwsV+495i/ma4GssOjawUEhT+y2jHEjPlXXGEpMC
+	 yO+gQD5+cvrJZGRr96FFweVZlj8e949xV1sJyokFzOsk6haiShuKSACHoF4m8Ma29Q
+	 Y/SQBu1vX6JFQ==
+Date: Sun, 12 Jul 2026 16:58:02 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Ahmed Naseef <naseefkm@gmail.com>
-Cc: netdev@vger.kernel.org, 
-	=?utf-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, "Chester A. Unal" <chester.a.unal@arinc9.com>, 
-	"David S. Miller" <davem@davemloft.net>, Andrew Lunn <andrew@lunn.ch>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Conor Dooley <conor+dt@kernel.org>, 
-	DENG Qingfang <dqfext@gmail.com>, Daniel Golle <daniel@makrotopia.org>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Landen Chao <Landen.Chao@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
-	Russell King <linux@armlinux.org.uk>, Sean Wang <sean.wang@mediatek.com>, 
-	Vladimir Oltean <olteanv@gmail.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v2 1/2] dt-bindings: net: dsa: mediatek,mt7530:
- add econet,en7528-switch
-Message-ID: <20260712-hysterical-thistle-prawn-9c81b5@quoll>
-References: <cover.1783770059.git.naseefkm@gmail.com>
- <2133035bb22eacc8a0e21f86c0c800a45023ee01.1783770059.git.naseefkm@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, 
+	maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, 
+	simona@ffwll.ch, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	matthias.bgg@gmail.com, jitao.shi@mediatek.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com, justin.yeh@mediatek.com, 
+	jason-jh.lin@mediatek.com
+Subject: Re: [PATCH 03/10] dt-bindings: display: mediatek: dsi: Document
+ MT8189 and MT8196
+Message-ID: <20260712-beryl-rooster-of-agreement-cdaee8@quoll>
+References: <20260701121950.19454-1-angelogioacchino.delregno@collabora.com>
+ <20260701121950.19454-4-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <2133035bb22eacc8a0e21f86c0c800a45023ee01.1783770059.git.naseefkm@gmail.com>
+In-Reply-To: <20260701121950.19454-4-angelogioacchino.delregno@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,23 +74,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 11, 2026 at 03:41:00PM +0400, Ahmed Naseef wrote:
-> The EcoNet EN7528 MIPS SoC integrates an MT7530 Gigabit switch,
-> memory-mapped in the SoC register space like the built-in switches of
-> the MediaTek MT7988 and Airoha EN7581/AN7583 SoCs. Its four user ports
-> are connected to integrated Gigabit PHYs and its CPU port is connected
-> internally to the SoC Ethernet MAC.
+On Wed, Jul 01, 2026 at 02:19:43PM +0200, AngeloGioacchino Del Regno wrote:
+> Add compatible strings for MT8189 and MT8196 SoCs.
+> These are compatible with the DSI IPs found in the MT8188/95 and
+> others, but with differences making them not fully compatible.
 > 
-> Those three switches are MT7531-based, whereas the EN7528 has a genuine
-> MT7530 switch core (its chip revision register reads 0x7530). The two
-> generations differ in their register programming - for example the CPU
-> port is selected through the MT7530-style MFC register rather than the
-> MT7531 CFC register - so the EN7528 is not compatible with the existing
-> switch compatibles and cannot fall back to one of them.
-> 
-> Add the econet,en7528-switch compatible, with the same constraints as
-> the other built-in switches.
-> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../devicetree/bindings/display/mediatek/mediatek,dsi.yaml      | 2 ++
+>  1 file changed, 2 insertions(+)
 
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
