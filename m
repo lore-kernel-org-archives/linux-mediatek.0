@@ -4,181 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1219CC43458
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jul 2026 19:59:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E3CAC43458
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jul 2026 22:14:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Date:References:Message-ID:In-Reply-To:From:Subject:Cc:To:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RzvEb3xQvZ5ouSbjKJE+l6cHE3Z0t4CYenmxj1WRSO8=; b=TUXrvTil+B79C+ksZXqFxaciQb
-	amAAHhoVvjoPYe1yQC9PO7u4sLsR/3iNVB1LHrMHuXPBL0tElxb51JHnJiTVVVN26Gd+s7KSUdrkI
-	SGELO1SG5Idlnh4TAAnNI+UqgpT5Y2nhffuodst0U56+viJpfUESfXgEqnRopLdJKC33L0YecLgzX
-	N8+cs7Dq8xM1FgyIManeC3qRt1a3sKRPAOrXYKSPHRYX7f/mI69BaAvPewsJz31xMM/pqMPKVqeR3
-	dl+N2LWKNdvuvcelQf2Ux4Mp8uA3rBhw9vPFWVgexOYIs3SPjGysswGX83QGjE1XhDvz99RXQLiXa
-	TTgCPzRQ==;
+	bh=zL9CTPzN1W+fRigYMQva5W+av5/6jMQUnYv7czVB80s=; b=HbAHM1LfoeF/f8H9HRp6Yy9eU9
+	SOi2/bgTWtFfNAj3y4OiU99o6AW30KQW7V04pxeKOz33D7Wv/FwtUna519diJUivc72SFkzi2rj1d
+	FXv0Kib3CNtPiWFDoPnDUfOq+MH/HqkuBnwscgsPOQOF1Qe0C+7Fqe25izFXHkI47KBBSda6+3bQw
+	uIJbwiBqdcqEvMh4ec2LtPW+azxlyTK+lcg/gmOKTUCn5fSfGZTClQ3uO4+2oyXCvlvLjmKQ7UAJK
+	U0fWuV9Qm6PDnT6LFAQ2m14KlJwF3kMt73qIRi7emWYrYRY4E+OWA+9NO7bomqyCCTMSqHxq8SE0b
+	mfWOs8QA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wj0L0-00000007iPL-3S92;
-	Sun, 12 Jul 2026 19:59:42 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1wj2Ru-00000007o7C-32gd;
+	Sun, 12 Jul 2026 22:14:58 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wj0Ky-00000007iP2-012q
+	id 1wj2Rr-00000007o5k-1SBK
 	for linux-mediatek@lists.infradead.org;
-	Sun, 12 Jul 2026 19:59:41 +0000
-Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 66CJXB0R3865089;
-	Sun, 12 Jul 2026 19:59:34 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=corp-2025-04-25; bh=RzvEb3xQvZ5ouSbjKJ
-	E+l6cHE3Z0t4CYenmxj1WRSO8=; b=bt63TlH4amkTPZlsHnYiRjByaZ9vwPySIU
-	LAWegd8pwRXa3+qeMhb9aTup/LrE2RXdXTvjtA395l8/lUpJn5lt25eStiAZ2xAc
-	thOgsmFubboJa7V6fZ1z/l82VlwquYNieMNxMtMokMUSqz2sMXSigylQ8YTzUv3s
-	rz1nXIn16tj9p63ZdXyFEBmsx6zhaay/5VC9ZLER8H8hHbLxOur8iYp+D2oa6kux
-	pKrfr6LTEkLe1Y7FLQtejO6kIBj2V6BiekpQpqDiiN+Xqo1m0AHID4VPcVOmFU4M
-	gDIZvjrNYn2ZfPSKXGZ9NtvNC1L0DLv8QolpJCAOBN4dXS3f1eEg==
-Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4fbep316vu-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Sun, 12 Jul 2026 19:59:34 +0000 (GMT)
-Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.7/8.18.1.7) with ESMTP id 66CJwU6H005579;
-	Sun, 12 Jul 2026 19:59:33 GMT
-Received: from ch5pr02cu005.outbound.protection.outlook.com (mail-northcentralusazon11012060.outbound.protection.outlook.com [40.107.200.60])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 4fbc9pmvnb-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Sun, 12 Jul 2026 19:59:33 +0000 (GMT)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=L3fef5afu2XGJCNcmdaER1W+HfDG3laWwgViLtWCeBeN/LdVQy4LqHWxtaKmrO3GP18MtbMmXUSCUhqTaO9n34Q7q/+uxHNmaJznmwZp2PhPm7aW3bksegWDHCJXCts+CvH46Kx6UWq26RXmVCgdocXo7sKJeI9A/g0hZulIGALLC9L8gBGHFXs5SF4ldcCmgYxEUqdF8K9rFZvbLkICPCHZbAPVmCM58DnZK5nZmeGa/O0QKPlmZRfhb6PXASRcSGOqTVwUpAK+BeOvdiqzyRpw0PGpIv+ggiqA/4Vtl+EE4lMhllI5/MNY2HXGpP0OorrSVYZDCB4q67CTdK1bsA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=RzvEb3xQvZ5ouSbjKJE+l6cHE3Z0t4CYenmxj1WRSO8=;
- b=BYu2Ccqsj/oww/LFc1QCiumaazZdR7GG+Yg4jIeyBZQhi3vaHu1wNL5LKng3o9xE8V0SrbKBjLm7vsND2i5ulkgVmPuVVs+LuSCckcxC+YttAuOFH+fdLHe2RqBOJnLK9Jr5VmlgfDZ4JFeBkSyIWRitphT/KEfmbG+25YdDll4ye3VgMOAUHQIkmc+jL0fj4tXadab6Jfwcdu5kzyoIIi343E088C6iqfm8NrKlkGRGbIOjDkeWDHpJ3AgCtluwhiFU35wC3MCaTZBvCE0M9d4Jtu03nSxDNE1RIWxcsDOiZexr1b4tlYgyatb0MVvAKMvo9Fndi9YpMeaPREekoA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+	Sun, 12 Jul 2026 22:14:57 +0000
+Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-476a130c138so3084494f8f.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 12 Jul 2026 15:14:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=RzvEb3xQvZ5ouSbjKJE+l6cHE3Z0t4CYenmxj1WRSO8=;
- b=hj0/mLN6dwpoRXyGyF1t3m+4Y/uWxYOy9Iq1hxVpCyEKCbwVY/HxKRd04Ta9/cYzLtrVr2HOPqbIbhiYfrkgUa/Wjplyy06MANzWnpWW/lhAtb3ex25qx2GktdnduBxk+TxqvYAu5xGjiW2bvlmnqQTlrHPOaPEQF4RQLQZTPxo=
-Received: from CH0PR10MB5338.namprd10.prod.outlook.com (2603:10b6:610:cb::8)
- by SJ2PR10MB6989.namprd10.prod.outlook.com (2603:10b6:a03:4cf::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.23; Sun, 12 Jul
- 2026 19:59:30 +0000
-Received: from CH0PR10MB5338.namprd10.prod.outlook.com
- ([fe80::e525:dd71:b002:6ad5]) by CH0PR10MB5338.namprd10.prod.outlook.com
- ([fe80::e525:dd71:b002:6ad5%6]) with mapi id 15.21.0181.014; Sun, 12 Jul 2026
- 19:59:30 +0000
-To: <peter.wang@mediatek.com>
-Cc: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
-        <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
-        <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-        <chun-hung.wu@mediatek.com>, <alice.chao@mediatek.com>,
-        <cc.chou@mediatek.com>, <chaotian.jing@mediatek.com>,
-        <tun-yu.yu@mediatek.com>, <eddie.huang@mediatek.com>,
-        <naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>, <bvanassche@acm.org>
-Subject: Re: [PATCH v1] ufs: core: Remove unnecessary block I/O quiesce for
- clock scaling
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-In-Reply-To: <20260604133503.2049288-1-peter.wang@mediatek.com> (peter wang's
-	message of "Thu, 4 Jun 2026 21:33:58 +0800")
-Message-ID: <yq1zezwc73p.fsf@ca-mkp.ca.oracle.com>
-References: <20260604133503.2049288-1-peter.wang@mediatek.com>
-Date: Sun, 12 Jul 2026 15:59:28 -0400
-Content-Type: text/plain
-X-ClientProxiedBy: YQBPR01CA0159.CANPRD01.PROD.OUTLOOK.COM
- (2603:10b6:c01:7e::19) To CH0PR10MB5338.namprd10.prod.outlook.com
- (2603:10b6:610:cb::8)
+        d=baylibre.com; s=google; t=1783894493; x=1784499293; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=zL9CTPzN1W+fRigYMQva5W+av5/6jMQUnYv7czVB80s=;
+        b=SB0x3YV5ztMz7LxpWYKmTRc3JFiwsbj5U/bk3TE474JrShF++GHS2Ku54WlHX/Mkac
+         u5IRvyCR/vHKCS67QyWM2gnzz0N5MFgl7jdywBJIhhWQtZ0bkK/uB0KTDVL/I5YbsnCm
+         ArnfTMt5ngszKbVGpob2eouukmVWjRY9YBxl7fnyqqjfsZhBhPbNvpKS24k6PzaQu2jW
+         Pcy+kYEPU8KOOK1K7hXKmul6lj2EBSmen26kQugT4TOc9/eeNKXzPXlP8LECiV1cmsN3
+         GRSrN8lfHgxpAPnycYbX6waIiaWJBP0SGer4PsRy2PAloZt39enReM6uXdBdl+E5g+P5
+         Fqiw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783894493; x=1784499293;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=zL9CTPzN1W+fRigYMQva5W+av5/6jMQUnYv7czVB80s=;
+        b=hAzkrhT/toaHkQhFwgNW7dSPoUHg+VrEGBCXbae/AR9i8/MExdyPhdcrpB9bPlMIZ8
+         E84vCB0cMWwzpXy/GWYat1DjbrbaNHaBCvIsoV2AOvTthN1txyZQhvX5yzrQ7cANL3Mf
+         au10k15b9FXGcKyvJ2Snu/9r2nsAF1B1Gs5N+jU9JGPpHLTz8cZRzEdbs7RCKFTSZxqv
+         6mzuOQYQgh9rCh8SIsOjRMSAnUlWm6+0dCDj+RmPUw/XPwnvZ0b50g73Kqgz+lsVdTcu
+         IAUwizcI5IkwUmaZwQDDG0OmXE2jc/SAbDbU0hFNiw87fTCX573bg0GYIpkvIUA9TAJc
+         LSGg==
+X-Forwarded-Encrypted: i=1; AHgh+Rp9oDwozF+htRjIgr4vrqOcjDyHufrLWzA8eMORCoPfDc+2kfmz3iQxZ7eC4P1mUNgZsh2QGy82swyCOERFfw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz5j75XmX1SJcoxw1AnKt3it6GE79Ij7RsqiE0rdN+wrEESIloe
+	2g7OyeOQ7+i67JcqVwcpp0C1vlloh+oKhNv5PhTGwJgaYA4n2cilvl9cGpbKu8vMycI=
+X-Gm-Gg: AfdE7ckgLCfmt8M7F8HjzEnNCShH25C0rprMT1irPz6QboTdF9+8rJZOTMw724BybZn
+	sBDCe3uS3uMWJGKq8J3zYgETKo9oqs1sC0koMDTsWENpZwdF23iprdM9Fy06GVhw59LeTrFuXW2
+	krdfb8wEfyFRus69bvH7iZ7XoK9+pSliaY41OOJ0+XNKtdH1mk3HqDiAv+6WkYP+dxb4dMWSfbD
+	tJqHeXoxj4pM97o3rZvge6R/ALEduaX2n1MaukVs6ktI9UoelDfirZC07N9KASf5j8QGZbnyVbW
+	vhvrV0lnmnP6+/BO5XF2Np5sx/J+WzXOCBAyENTp8ZcyKzmXUz7GyqOVXIbtmovdaXcKKYkcW6V
+	op885/uMxgeQZiA+U6Ls9QrZKkTTjAcSpzW8Oyhee5Fd+6RC3J3vsS/2DQHbpkK2QO5xcZciuNw
+	XH6f30glAnZJ/rHtO3Og==
+X-Received: by 2002:a05:6000:310d:b0:478:19e7:22a2 with SMTP id ffacd0b85a97d-47f2dcebce6mr7408847f8f.25.1783894492402;
+        Sun, 12 Jul 2026 15:14:52 -0700 (PDT)
+Received: from localhost ([2a02:8071:56d1:2de0:1d24:d58d:2b65:c291])
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-47aa039afacsm74519074f8f.19.2026.07.12.15.14.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 12 Jul 2026 15:14:51 -0700 (PDT)
+Date: Mon, 13 Jul 2026 00:14:45 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+To: rva333@protonmail.com
+Cc: Jonathan Cameron <jic23@kernel.org>, 
+	David Lechner <dlechner@baylibre.com>, Nuno =?utf-8?B?U8Oh?= <nuno.sa@analog.com>, 
+	Andy Shevchenko <andy@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] iio: adc: mt6323: remove unused header
+Message-ID: <alQRYcO5grXoEk39@monoceros>
+References: <20260712-mt6323-adc-rm-header-v1-1-d96395d1a323@protonmail.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH0PR10MB5338:EE_|SJ2PR10MB6989:EE_
-X-MS-Office365-Filtering-Correlation-Id: e429a384-ca59-4942-d291-08dee05015b5
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|7416014|376014|1800799024|366016|56012099006|18002099003|22082099003;
-X-Microsoft-Antispam-Message-Info: d6hAEHD4eb14IZ1QI6NgT7ls9kFWqlrHseTyZiM7nfP4pPVKLUY8CD7/3hpehMnk/8qxdhlFurwEN0ZfFOvqTiR7CAABFWB0T9GZPlrgDVOgMJtKpZSjaUlFgZa/KdT0rmzo4j8/rjyb6Pxne0vHIMFVZOELmA2pxvldu0Uw36CwaQODlXfIzNtGZUbgfwnVHR4W8mKAvoK9bi1qQCWQzRhuK6uVI67fjsArx8nOGBSIHF46P9rAEXN9M+/6aiK1zO0UCSzLnpL0KHU1zuOOjonc/lTQYhpuk5jpyCkYNOaIKa2lVn7RkPqxarP+VDPNxtvoHPrUSPCQQRxLBrQ7GnQNOunuyy13/ACLtD50zimgdSzJEZlIKJITAcj+JKgRsqz41NDUC7xTX+yZT0Wrchj+/1PhLXBCPB3EQVizUYdGX4jewl6MQd6pcWzWAxt4ipIBy6X3GxFo1EqJftRB7oFQYUTY4WTgQkDKTTxduAFtRBwxrWf7b9ZUfR4qS17Izu6OfRmIla3QkxVF23itjxG5FHsQNwPWNN6YK4qTr8TYzSKI2Zt28BWGcAeE8dHH/w7cQAiK7/AXxkV5NsfbnS5y6ls+1+crtzuvh3Bj1tslBq0MO+LSLyJCz69jpFbHdnuwEXxhTpys6/54ZNe8eA05X0I8qYdDYAe2KU0A/TI=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH0PR10MB5338.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(7416014)(376014)(1800799024)(366016)(56012099006)(18002099003)(22082099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?SrNy8y831+UiWV37Q8mEYgGkq4Vcg9qe5T1d/cLVnb2pCFMNcPY/m0xwKoHb?=
- =?us-ascii?Q?CBO7CIJJkreLakit2NmRHXNgbHRR5GW5c9udkLGoh8sxv5mkHKWk1dBS4T9e?=
- =?us-ascii?Q?a/W5rq0bWVyBwfdYy8c6CsjA9+GXvWWA21Oxwu6p8454m1UsGPacV6+3ld1f?=
- =?us-ascii?Q?r4PVmB9MHvYzdGQ0py75HD/VACII3I5iiF4Ako/S733LH7MuXXf6tutr+7Ye?=
- =?us-ascii?Q?Nlri0eg8W+riw7O/tsNBcAAVAIcufN1jDIxAjgUkKGy87tmR5wqxpLcznOvH?=
- =?us-ascii?Q?Zg4XGCMSDpApf2Z6dlLz6Xu2s8AWMiYS5sHIIunXPna8Ff9hqPikQ7UenHjL?=
- =?us-ascii?Q?pti3zFk+zGJ885eb2LLcARBN4Ler2o0CMOnbWqnJ04TgsfB7EwoGheeExuos?=
- =?us-ascii?Q?Aj/RP519KUKcxfmMUJqt/D/qt3yfKTesCmTu7yL9eBqz8yC6yL233MfKP8EW?=
- =?us-ascii?Q?fEtHlenweSRsANfumC6QNWDJcclWnJ3lv7UY7bQpQvT3hT+w+29ivkUFUkLx?=
- =?us-ascii?Q?I0zbxH+pE/ifBhUTAlZ/zjnDawiqBm6gjf3tO4iQ6hbynlIHY3paSkR07J1x?=
- =?us-ascii?Q?l1+zwlQQFZ6nhmbPHtULKL6+wwSittCguhegnOXy4aEwrdQs4IIfZKnN1v6b?=
- =?us-ascii?Q?5qgKtpixtWUjh8HgwfH76/OEJkxb9sh0c/34CTZ/CzDk8Y96iR/1wlGCkr+L?=
- =?us-ascii?Q?e0X5jUEKchHP+D2Tbi7IU6qmM4qyATG8/g0Mh0VmUchIOKIw6T66HRPBFVqf?=
- =?us-ascii?Q?ThFFvkpBpd0QAXidjNFM5u5hXq2BrYM2OQ4jz9y+YJ3qRLL/RZ76zWGeYNtX?=
- =?us-ascii?Q?yXfCwH0S8PYCZIxjPqO7v9r9+wiFq1bpjFcG2Zk95dqS9o6ammMvJtQG6oxH?=
- =?us-ascii?Q?GXFNiRFwZPozAmI8age3zX9WtY16LjF/xGZuqilziIgvZ9eucIN96juGc5KT?=
- =?us-ascii?Q?VaTmGr+9bQj41jS5Gu8/wabJw/8YReNoQ+YDahS9HHKK1STLmP5JeTZmSAhL?=
- =?us-ascii?Q?M5I0Hka2p5y2ZwLwY3zDsu8Jva9lepMZM3ppgEVO1Awy4dDld4Pilt4LjL6M?=
- =?us-ascii?Q?57JsIXK3Dd/rccIr1SXIhSMrvdUyNGU9y84LrZnotiqmtOcAsC+aXjZsiH0s?=
- =?us-ascii?Q?JlJBt52RDY/jfwphTLLEMFH5P2D4EYYc+Eze3QKgre6CziRZGxoRwkuPYpI6?=
- =?us-ascii?Q?btunkJuAEa+MoATvNXVa760bToajes8UH04z/Ml8SJ/98bMYxEBI50UYFbbC?=
- =?us-ascii?Q?ZpiwoAwP8Kd6wMG51CRDVZ0QlENrofmdCLsxljX0pTMGPNSa2bf3YekAb51n?=
- =?us-ascii?Q?qH9joMqjyVmDqVHkVlE7jlfSSyatWM1scSr/TDDexSINvJ8moeszPkNXy32F?=
- =?us-ascii?Q?fqCh/iI4Obw4nNU14i2zHd7c+nw+UGBHp0WPLvae9v+1UgCJDTEA95rEldcm?=
- =?us-ascii?Q?lDrqQOrjDWR6lTX+3S6EZpE/U0m15Sdy816JuIc978TfO58jDgk8LS3b3ZPs?=
- =?us-ascii?Q?pDJOJix9cUnmiikqbH9OpoiCr8YXJtGD32nbjttgIM4jzexuUyif5qJU/04B?=
- =?us-ascii?Q?A/pvtcj3C0PorR9jajsNL/wLDk980R+ci7Q1ovdXSMzBpGVS7CydXi4uL63q?=
- =?us-ascii?Q?JUTTMsjz8dAaBBUfCh0hs7e3gV5ATMt8Gik8WU55KyGO+WflTxUHtYeHmBKw?=
- =?us-ascii?Q?QjYBIE7VS7DpT+7E0LWUFm+qQmrL9qGDNSnID5CJweLq6paf8jNiHhkROeTW?=
- =?us-ascii?Q?TBedclncrYjPv/CiYfGRnpD4nPg27xk=3D?=
-X-Exchange-RoutingPolicyChecked: UWgL729CGW9ppaG1hadZnH1K6uV70h2+KNEZFF4w/KmnaWBtDrhGnGlWMXq9uvsu0Sk/5jctqUnCPyyZIc35REwZ8EQUVIzjQHeB2awcnubZh0l8eDzNCjVHtCX5RFUBImwgPJ2Uslrd1/7/GeLn3MKudaWH9R6tPiZbpUR5V6vLyQ7FIoE9avtfgT63pwlV9/n3+MUKpbB3E8AEnUvo684myn/w6oLo5FmATfVRI1w32k4ii9lCj9Q0DFHmWJWvU3IBBuUFfjap4ly45PvraAz9O42Uk5DEMauvcMtqiU+e3WLjU4T3DTDpE9g003KIRaIw709N0eYyv7DiW4U0hA==
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: BXa2vIwkLRfPlQ1+5eepsLKKPGpU8lnTV2kDUg4wMPYInGjrGEDDlMJY6wbKvjzRjAaBxUtF8YsLMHyfm9ukPPeWJkwpSZFCQiVDTV6s3kklOrzRCJXd6BBerZoBhjxqUGEuYENfL/jcMEIeXDJVB1tu8ii1sOPzkghOXs3ZBFK/ygVXXje4Oxd4bfpOILrgYI/D9Y5L/hXDQBf18tbElkegAl0v1abn2TFZWd2j97WVA/5IoRFvEldVOf1IOXw4Y8qfnNOgMwpUs6/JyB4CpdshCKpw/DoPE/7HAMME2SekiZRUTt0+e20c9JhngtyMCqhPDEevUSGpo18SIbhfvnaD4+dO30Z49Kwe0sWoJSL01UNdU0OoKiJiVPt9gkavCoK/+mUJONq7d/n8XimZPzBqzPjxEvGd2plUAFeh06zGl0jHuwvzNNzuM1WujMRkI6IQfgrQKVSV6MWCX7J9OrUFKtHNKIOKzeaZNcD2LVvh4fMvjrShN8uaRq02i6wAZ16vU2kbygqROc1I0G5PCcxkmH+nv24ISFERTkmJ4dcxpKkad1ASDh0oAA+wLnvofH2FMtePuyqKcxEEs2tF+IEglX+Kf3SYZFZlsmrsQGU=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e429a384-ca59-4942-d291-08dee05015b5
-X-MS-Exchange-CrossTenant-AuthSource: CH0PR10MB5338.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jul 2026 19:59:30.0369
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: XRYvkhY8R7Hczpxgrx+2RkbFvpUpo83mdyYxbQVTEihu9G/Y1BoUD2lwp0ZuWZrL0CA3w8Ka2W4wA72/RLrPlRpwLh2MtE6SumZfHgOsNyM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR10MB6989
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-12_06,2026-07-10_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- spamscore=0 bulkscore=0 phishscore=0 lowpriorityscore=0 mlxlogscore=935
- suspectscore=0 malwarescore=0 adultscore=0 classifier=spam adjust=0
- reason=mlx scancount=1 engine=8.19.0-2606160000 definitions=main-2607120215
-X-Proofpoint-GUID: z4tSeCasHyF7TWxyRTVxyClCXVGJNt3Z
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzEyMDIxNSBTYWx0ZWRfXyzmnmdsH0NBW
- LiJ86mQp6kYXSLkomz6jAf4uTYv4PeckU8sBMsmkXJ8kyWsAQP8NfLHGQHQ5uhNCRdolLkjo2U6
- NWHIlTL7Y+DZUaQanMPy8D1TQvd/t6TkdNItB+hyTlHPkxk8lvGA
-X-Proofpoint-ORIG-GUID: z4tSeCasHyF7TWxyRTVxyClCXVGJNt3Z
-X-Authority-Analysis: v=2.4 cv=dYawG3Xe c=1 sm=1 tr=0 ts=6a53f226 b=1 cx=c_pps
- a=qoll8+KPOyaMroiJ2sR5sw==:117 a=qoll8+KPOyaMroiJ2sR5sw==:17
- a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
- a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19 a=xqWC_Br6kY4A:10 a=RAioF0-LDSMA:10
- a=GoEa3M9JfhUA:10 a=VkNPw1HP01LnGYTKEx00:22 a=jiCTI4zE5U7BLdzWsZGv:22
- a=3I1J8UUJPc9JN9BFgKH3:22 a=8A10pE_Sxmjy0SfMbowA:9 a=5yU3S35YU4bGjq-dph-N:22
- a=Bho9c0fBagfJEIQBS7DQ:22 cc=ntf awl=host:12222
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzEyMDIxNSBTYWx0ZWRfX49e6qYUW17Ug
- OiQIKOMqTG02e48R7+xnKL3KLKrNTC5NriGFdIhvZxcDCnqKE/cnUlWNFivSssJHxBfd4WDmLRv
- FnhDQFsLtg61dt8ROpO38jo/+Ab265aPK0ms89HDXc29sNF2OaLNdPSE8AkXEDTi/eXkIbSGXXp
- R2N12Ejlm4XO/uA6xeQO9uLG4RALNcsKhUgktbPng4RwiUG1otmWD5cAOPOdZLJUkquqQNIXXzc
- qPh016Mnzh3u7FuGkavTo9DmMbai1S/Eb+RJ5L7RKK0A6DZ9yLcJcJzrCcgjUMO2slX83550Gab
- 2eYwWTYLirE64zbWf3nK2zlKxfnT4uM1ZY+C5hGiBxc0LqULJn/hP/fIBh0TSCOC1dXxbz5uWZl
- ktPSbpWrhfmTIjmPXDv/T//1sTJkY9MeZqXVDkMHRMUxm4ry0zDsuqVdJqhfm/pXaa/JMaMExse
- vtufpMwPo9tuh7ltVrPDfbwVlIaTyTVgt6lN0l38=
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="o43h3f7zpw65y6ht"
+Content-Disposition: inline
+In-Reply-To: <20260712-mt6323-adc-rm-header-v1-1-d96395d1a323@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260712_125940_178080_AE32B657 
-X-CRM114-Status: UNSURE (   7.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260712_151455_403079_234C79CE 
+X-CRM114-Status: GOOD (  11.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -194,13 +104,47 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-Peter,
+--o43h3f7zpw65y6ht
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH] iio: adc: mt6323: remove unused header
+MIME-Version: 1.0
 
-> Hence, it is not necessary to stop I/O during a power mode change, and
-> this step can be removed.
+On Sun, Jul 12, 2026 at 09:26:36AM +0300, Roman Vivchar via B4 Relay wrote:
+> From: Roman Vivchar <rva333@protonmail.com>
+>=20
+> Remove unused mod_devicetable.h header.
+>=20
+> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+> ---
+> A small cleanup for mt6323 auxadc driver.
+>=20
+> This patch is based on top of iio/togreg branch.
 
-Applied to 7.3/scsi-staging, thanks!
+The only device-id struct used in this driver is of_device_id and this
+is ensured to be available by (e.g.) <linux/platform_device.h>. So:
 
--- 
-Martin K. Petersen
+Acked-by: Uwe Kleine-K=F6nig (The Capable Hub) <u.kleine-koenig@baylibre.co=
+m>
+
+Thanks for supporting the effort to get rid of that header,
+Uwe
+
+--o43h3f7zpw65y6ht
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmpUEdIACgkQj4D7WH0S
+/k6EWwf+JU+Xlhg3mTVFtgHxRhXyUFEZ/eNALPq36VofXr9hBEjKS9koXNFoSJYi
+cBT87TumeE/ZTkywvoVgMl30uhh4jJPQphc1gC+HtJQ6maKVM/oYe7LEiYLP6rhj
+sVZBLT9HeeQy2+F+bV8hU72ZdZD8Md1tEUX4NgYeDyk6/2RJgfbVvkGjnGbfsgkt
+/HseMZuPsts+4wgnmMfEEfZKAP9phGc0QlIMSR7/pnBlykd6Jvu9AheSD6SmVM3I
+VBIHs+2/parSkTSXBvZ8E8tbEbh+pmintZ3pydhXzzBLq3VEKgus3uvZf6XFqNU0
+PuiejVzWydHXlYkI11do565DXsq55g==
+=vgse
+-----END PGP SIGNATURE-----
+
+--o43h3f7zpw65y6ht--
 
