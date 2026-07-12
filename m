@@ -4,69 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 043BDC43458
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jul 2026 01:41:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2775EC43458
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Jul 2026 06:27:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2WRc5d7D7WzeJTab5qtDY3JXeaqsh7qoDA26O08VMAY=; b=sQCxuKexcyWit0Y9jvEPgE+x70
-	b2HxOzXQ4/58xPROLRcF0OAbaY+HGj2AjaecGQ4Wwhfgi72gxvFflLFsMLnRUxa4Hyb60IgAc5Sz5
-	Melk1rpSF9aqs+SmzM8lZCFMGdJStJlE7G028zbBD5cCe+ZEgcdmBQ+HzYbpM/L620fD0HsicEBJj
-	Q3PrYh6UZWfDggzC4vsFAEgOi5DX7pplviNx/KIGsjmG6viRk7UOqDgiqpCpbbqqB3yj3LylQ8ltN
-	4TVGuRgXjqgOrEMsQKJZU6Xbni+7XK3Xi6qB2cegzMilpIo0ccBz4w6sIHQOMyEJUP1jAdsj/Abkm
-	TnwJm4jw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=LAQ6Z6EwAvfbHLN69Pjt5N3KgdNTZvyqg+Ui5xtL1j0=; b=w8TlzEPuXYLUhRwzzUgKOIpC4e
+	Z8655oituUJW0TuCoUUCeKZi6GF+8gAvgeBfyYqHol18UVaTyisFVhvRYoYFaZRx3dIhvEtqm7iR3
+	nKDi1A1kqV5OEoQ7mN+QQ7x4ecApFkoRRP2xSvYpLYSKLvsdinZIjwooCl4OT/NCoH5+eCxfcw1Hy
+	xXdS//J1jVodx6GyknF32zGZtKFIhDpLttkZzyaGhRfhq3/2yVpLMnoqTgfC29BTMItL54ARajere
+	OIwRf09yfuKJ34en1oiUmA4P5urjJRsACEedZyRAkYIVz/dR3ltyWCKk5JaDYBTWGuiOLCQMO1o9n
+	IwMI44wQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wijCP-00000006zDJ-1C0k;
-	Sun, 12 Jul 2026 01:41:41 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wineV-00000007CDi-2jia;
+	Sun, 12 Jul 2026 06:26:59 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wijCN-00000006zD4-1r9U;
-	Sun, 12 Jul 2026 01:41:39 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 058D26136B;
-	Sun, 12 Jul 2026 01:41:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE4261F00A3E;
-	Sun, 12 Jul 2026 01:41:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783820496;
-	bh=2WRc5d7D7WzeJTab5qtDY3JXeaqsh7qoDA26O08VMAY=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=jxgYtHZqNyIRqvp8Azf5ZzQ/j85EvfVRxpfCT9gHYCyvD6EqicsLtqllsbMSy1tXY
-	 rpm7WgMUji4Ffjrmz642e21b1r7+yeQKwcsyj6NN79oYqy+lqo+qF/BA+J6E83HBwV
-	 +0tT7mkuaoJ6R73ew8hj4zR5ayt5fo5TXWTO/0Em0RVzs83DJ8ITt8569KH4PsFwT4
-	 s60EzCaVlOdiLS/D7UOD8ZFKHe6wICiWLYrwJSRyVdk9ssPn22mUPW9vyLKiVS4Zra
-	 F4cmwulAKwNIKaGl+DyoT6nbaEFUJ7gSF+oBfsCH0chWCu7Xpez/Wjnr/NILTMIvgx
-	 6He8SSpQAnmxw==
-Date: Sun, 12 Jul 2026 02:41:30 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Roman Vivchar <rva333@protonmail.com>
-Cc: Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <u.kleine-koenig@baylibre.com>,
- David Lechner <dlechner@baylibre.com>, Nuno =?UTF-8?B?U8Oh?=
- <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lee
- Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Ben Grisdale <bengris32@protonmail.ch>, Andy Shevchenko
- <andriy.shevchenko@intel.com>
-Subject: Re: [PATCH v5 2/4] iio: adc: mt6323-auxadc: add mt6323 PMIC AUXADC
- driver
-Message-ID: <20260712024130.7a087d35@jic23-huawei>
-In-Reply-To: <KnchjScV7RNnhDi3rI7qqdZSgivkk8WJiQEGWYifNJJjMzzJrEFfZGEuPWSrQisnh_JDj15_CLSLtO2HEjUFe6Jr4wgramAhYwmJjHy6aiw=@protonmail.com>
-References: <20260709-mt6323-adc-v5-0-d11b8332a735@protonmail.com>
-	<20260709-mt6323-adc-v5-2-d11b8332a735@protonmail.com>
-	<alChi9oG0-2XUFXK@monoceros>
-	<KnchjScV7RNnhDi3rI7qqdZSgivkk8WJiQEGWYifNJJjMzzJrEFfZGEuPWSrQisnh_JDj15_CLSLtO2HEjUFe6Jr4wgramAhYwmJjHy6aiw=@protonmail.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+	id 1wineT-00000007CDR-3mQB;
+	Sun, 12 Jul 2026 06:26:57 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 5779042B1D;
+	Sun, 12 Jul 2026 06:26:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 2985EC2BCB7;
+	Sun, 12 Jul 2026 06:26:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1783837617;
+	bh=Vr4HVuUefqZoMgR1OZYG2aJ1KU03OvqZFMVAlXZ3S3Q=;
+	h=From:Date:Subject:To:Cc:Reply-To:From;
+	b=UlNP0AXpR0W3oNYqEsa74thYYwjIS8sI7Vq6nfANp7C55AJgAvdDQnYFT/FsL0Rac
+	 gmaQ6a0lY7oOy4/54YhSI8Xerj8S4wz/W/NJbOoH3K26iNVGp5P+zUNavJUvMPPlbE
+	 x3fYu16933LYIcD8ibxwvSiaN6DodGgLQEs0MbI6uWgJUfQnOskd1GPdIT873JkKmD
+	 6QQznvWV5xyK2haicsllKNg1Kf9VqpbnGs66mXeKXiZaZI4xmoMobLbnitWT4H3jC6
+	 VGvaonBKeXkVqo7SEd6wq3lq+x/fAf922XfByd18wHiSXnqljMVBClUn+dwd0qSbIh
+	 CatX7sL+VI+fQ==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ECEF5C43458;
+	Sun, 12 Jul 2026 06:26:56 +0000 (UTC)
+From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
+Date: Sun, 12 Jul 2026 09:26:36 +0300
+Subject: [PATCH] iio: adc: mt6323: remove unused header
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260712-mt6323-adc-rm-header-v1-1-d96395d1a323@protonmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQ6CMBBG4auQWTsJTLUYr2JYlPZHxgQ0UzQkh
+ Ltbdfkt3tsowxSZLtVGhrdmfcwFzaGiOIb5BtZUTFKLr9tGeFq8E8chRbaJR4QEY39yaAecj5I
+ ilfRpGHT9ba/d3/nV3xGX74v2/QMdiVPweAAAAA==
+X-Change-ID: 20260712-mt6323-adc-rm-header-653e7fe842dc
+To: Jonathan Cameron <jic23@kernel.org>, 
+ David Lechner <dlechner@baylibre.com>, 
+ =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
+ Andy Shevchenko <andy@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>, 
+ linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Roman Vivchar <rva333@protonmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1783837615; l=887;
+ i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
+ bh=4AfmdH97pxmA7NGkEcbGJbdXmNTkYLKIx6MU+gfb9S8=;
+ b=bb5KN3ABVq20sUCeCrgmAdVq9DUtWjUEDn0Z/GsgayOaPBYwEcqAUNghEqJiXpdx/neq9Zy3B
+ gnnMxpawH8IDS8mtOv9ueHAQjFbRTGkbZY597sUts0aFjDyxrO6tuko
+X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
+ pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
+X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
+ auth_id=777
+X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,36 +87,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 10 Jul 2026 10:06:05 +0000
-Roman Vivchar <rva333@protonmail.com> wrote:
+From: Roman Vivchar <rva333@protonmail.com>
 
-> Hi Uwe,
->=20
-> On Friday, July 10th, 2026 at 10:39 AM, Uwe Kleine-K=C3=B6nig <u.kleine-k=
-oenig@baylibre.com> wrote:
->=20
-> > Hello,
-> >
-> > On Thu, Jul 09, 2026 at 01:52:48PM +0300, Roman Vivchar via B4 Relay wr=
-ote: =20
-> > > +#include <linux/mod_devicetable.h> =20
-> >
-> > Please don't add new users for this header file. Only use those
-> > <linux/device-id/*.h> that you actually need (if any).
-> > =20
->=20
-> Jonathan, since you've already picked up the driver to the iio testing
-> tree, would you prefer v6 or a separate patch on top of iio tree?
-Yes please.  That will be one less for Uwe or me to do.
+Remove unused mod_devicetable.h header.
 
-J
->=20
-> In any case, I will drop the header since it's not needed.
->=20
-> Best regards,
-> Roman
+Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+---
+A small cleanup for mt6323 auxadc driver.
+
+This patch is based on top of iio/togreg branch.
+---
+ drivers/iio/adc/mt6323-auxadc.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/iio/adc/mt6323-auxadc.c b/drivers/iio/adc/mt6323-auxadc.c
+index c450fb6f09cb..4f73ac42abb7 100644
+--- a/drivers/iio/adc/mt6323-auxadc.c
++++ b/drivers/iio/adc/mt6323-auxadc.c
+@@ -11,7 +11,6 @@
+ #include <linux/cleanup.h>
+ #include <linux/delay.h>
+ #include <linux/iio/iio.h>
+-#include <linux/mod_devicetable.h>
+ #include <linux/module.h>
+ #include <linux/mutex.h>
+ #include <linux/platform_device.h>
+
+---
+base-commit: 2e2f2de7532cbbc2269de8be20ec709606c6e79b
+change-id: 20260712-mt6323-adc-rm-header-653e7fe842dc
+
+Best regards,
+--  
+Roman Vivchar <rva333@protonmail.com>
+
 
 
