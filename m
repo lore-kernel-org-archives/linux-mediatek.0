@@ -4,73 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BFC3C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 08:11:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F93CC43458
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 08:38:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dzuuxmp72NuhJEhbTzDtqUQgRFFTEExkan/H+uaUpHI=; b=00s/ks935SZxNNIK032tUsuT3z
-	txmK8ubHVo3ACqy7RTTe54sa1J/eBhGhTdknxJtIRa3DLQk+DYZOpU20j8fH/8ytpmorDczIr4uQp
-	0Qqrb7Lh7LW1jsbt3f/ZELYJGDW5y/ASOkRtCpeV8ZyyfXedN73PI3xWlQ+vJpNgd9yCQy624upcN
-	J7J5wiw4etVtZUEzUD2br5HfpkfMgorFRSw60PNMPiHV+SbZilmnu5MeIBTITr9w18hNVcrowZ1Bk
-	OZjyVNCYJvrDG+je+W9LCHAY9x5MBAvnHEQWK1551ONconm1BBpE3HzXcpdfA5DtvNOTTMvof8LuR
-	DfJ/+ebQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=N1W2wqKCJbOZw8CgB2iZJKooo+2PL+bi2PCu+HXC33g=; b=CW0/0dTqOvgP/zeRRrlaAlFf3H
+	A41rgACu5EE/vrN7ijIwCyzeDX+D69Y8cm22x49BE94z5n8hfZPEmytyOCVAdg8iVRvz+BGCfh8w7
+	i5pTp21ZZrrdvN+XyBoB0nAtNiHSELfaciuLXpkXLrtY5LwzRH4JBPmDB2+zk1a/rsUamRPiR0Bdy
+	TB8n5oTRn3gV93EgtkZ9ZvSJMAr6xYi8SXPuQdU2KKbzyg/j1htrXacH/vaJPU9IjWB8MPaIyLmyQ
+	D6FSZIEm0N3X68vV+bStSG78yJ/RXuRMrj6s1QdJIan2fclHXQWHkub6p6STPhcUUwYQkeeWUKyB4
+	6ck1mOHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjBlU-00000008XZV-3goQ;
-	Mon, 13 Jul 2026 08:11:48 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wjCBG-00000008bq2-1Y6S;
+	Mon, 13 Jul 2026 08:38:26 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjBlR-00000008XXb-3Z7g;
-	Mon, 13 Jul 2026 08:11:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783930302;
-	bh=nekH3c8fOVjXzri9HMJDZCZ+Cs7MULnXoNr/TShtOno=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Zons0NaZRFePVu2AFie0jHRJDaSl8nVZRnppWW3K5rXuujeJq89RNEwiLr+W4Ez1n
-	 XqNQ9w7ETzBiN4jiaaKGFgK2J05DcFbj1EsTEnklxVGNSnDxjIwODNoCiu5eeib+eP
-	 iBEnixp/SEl43F90hI/BEJoKIiKEk2YrZjiPEKZMHcH9c/Ts2Rv5AQD6hIbA1vRRDY
-	 AKeCIlt+n9ubbCUY9L1rCtwStMnkfmU8+2OsMTAqcG+ZZIY6mebedYjlWgaDwHygf1
-	 1rrT+Qq0g2UhQleHWRQI7hCZT8ZruH9g6YS35nhGmJuV99XAluti273G0joQA26vBQ
-	 XbymhUnq3Ec7g==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3C6B317E07AA;
-	Mon, 13 Jul 2026 10:11:42 +0200 (CEST)
-Message-ID: <c11705b1-fc46-440b-a27e-0cc38f3b2d69@collabora.com>
-Date: Mon, 13 Jul 2026 10:11:41 +0200
+	id 1wjCBE-00000008bnY-1Ltv;
+	Mon, 13 Jul 2026 08:38:25 +0000
+X-UUID: 3198c5187e9611f1afed4741b24580c9-20260713
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=N1W2wqKCJbOZw8CgB2iZJKooo+2PL+bi2PCu+HXC33g=;
+	b=LVC+5JVDCUzA2BQfNfIeWORxxu28em41kZ5DZSIFpi0EkUpwzOItaHN1GLOpeACrpEfPaVFib+yR0r+M/PPBqsXHJEIJb2OtVJZh7Fh8szMnNsIAEtVogsuWjhYvGaUYSawcpANmiCXNLbhrSRj57Srgx29GqPT+fylePiKif6Y=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.17,REQID:6638ec8a-510f-453f-98d9-fad562967c7c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:d497b38,CLOUDID:dc6d2ea3-cbf3-42d8-b8d4-e61b75802b6d,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
+	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
+	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 3198c5187e9611f1afed4741b24580c9-20260713
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
+	(envelope-from <justin.yeh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 275800504; Mon, 13 Jul 2026 01:38:16 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 13 Jul 2026 16:38:13 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 13 Jul 2026 16:38:14 +0800
+From: Justin Yeh <justin.yeh@mediatek.com>
+To: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linusw@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	Justin Yeh <justin.yeh@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
+Subject: [PATCH v6 4/5] pinctrl: mediatek: mt7986: register both platform drivers from a single initcall
+Date: Mon, 13 Jul 2026 16:37:56 +0800
+Message-ID: <20260713083808.168957-5-justin.yeh@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20260713083808.168957-1-justin.yeh@mediatek.com>
+References: <20260713083808.168957-1-justin.yeh@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 0/4] AUXADC driver for the MediaTek mt6323 PMIC
-To: Jonathan Cameron <jic23@kernel.org>
-Cc: rva333@protonmail.com, David Lechner <dlechner@baylibre.com>,
- =?UTF-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>,
- Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Ben Grisdale <bengris32@protonmail.ch>,
- Conor Dooley <conor.dooley@microchip.com>,
- Andy Shevchenko <andriy.shevchenko@intel.com>
-References: <20260709-mt6323-adc-v5-0-d11b8332a735@protonmail.com>
- <f2d5801c-1d12-4a61-ac23-aa24dfd0ee5c@collabora.com>
- <20260710005424.5c559b5a@jic23-huawei>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260710005424.5c559b5a@jic23-huawei>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_011146_045099_EB548C5B 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20260713_013824_373405_56031D99 
+X-CRM114-Status: GOOD (  12.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,44 +89,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/10/26 01:54, Jonathan Cameron wrote:
-> On Thu, 9 Jul 2026 13:33:46 +0200
-> AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
-> 
->> On 7/9/26 12:52, Roman Vivchar via B4 Relay wrote:
->>> This series adds support for the 15-bit AUXADC hardware block found on
->>> the MediaTek mt6323 PMIC.
->>>
->>> The previous version of the series for all AUXADC, EFUSE and thermal
->>> drivers was split after Krzysztof's comment [1].
->>>
->>> Tested on the MediaTek mt6572 and mt8163 SoCs (Ben), both paired with a
->>> mt6323.
->>>
->>> [1]: https://lore.kernel.org/linux-mediatek/20260504-mt6323-v1-0-799b58b355ff@protonmail.com/T/#med30fad67a090be35f549231336b2dec295233f6
->>>
->>> Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
->>> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
->>
->> Whole series is
->>
->> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>
->> Cheers,
->> Angelo
-> 
-> As noted on discussion of previous version. I picked up the IIO side of things already
-> so I'm assuming nothing else for me to do here.  Shout if not!
-> 
+The MT7986 driver registers two separate platform drivers (mt7986a and
+mt7986b) and used to call arch_initcall() twice, once for each.
 
-You're assuming right. I should've replied with R-b only to the last two patches as
-it's too late for this on IIO - it's fine! :-)
+This is fine while the driver is built-in, but a single translation unit
+can only provide one module_init(). Since arch_initcall() expands to
+module_init() when built as a module, having two of them would break the
+module build with a redefinition of init_module()/__inittest().
 
-Cheers,
-Angelo
+Fold both platform drivers into a single driver array and register them
+from one initcall using platform_register_drivers(), matching the shape of
+the other MediaTek pinctrl SoC drivers. platform_register_drivers() also
+rolls back the first registration if the second one fails.
 
-> Thanks,
-> 
-> Jonathan
-> 
+No functional change for built-in builds; this is a preparatory cleanup
+for enabling module builds.
+
+Signed-off-by: Justin Yeh <justin.yeh@mediatek.com>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ drivers/pinctrl/mediatek/pinctrl-mt7986.c | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7986.c b/drivers/pinctrl/mediatek/pinctrl-mt7986.c
+index ca468115765b..d7c7591ed231 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt7986.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt7986.c
+@@ -997,17 +997,16 @@ static struct platform_driver mt7986b_pinctrl_driver = {
+ 	.probe = mt7986b_pinctrl_probe,
+ };
+ 
+-static int __init mt7986a_pinctrl_init(void)
+-{
+-	return platform_driver_register(&mt7986a_pinctrl_driver);
+-}
++static struct platform_driver * const mt7986_pinctrl_drivers[] = {
++	&mt7986a_pinctrl_driver,
++	&mt7986b_pinctrl_driver,
++};
+ 
+-static int __init mt7986b_pinctrl_init(void)
++static int __init mt7986_pinctrl_init(void)
+ {
+-	return platform_driver_register(&mt7986b_pinctrl_driver);
++	return platform_register_drivers(mt7986_pinctrl_drivers,
++					 ARRAY_SIZE(mt7986_pinctrl_drivers));
+ }
+-
+-arch_initcall(mt7986a_pinctrl_init);
+-arch_initcall(mt7986b_pinctrl_init);
++arch_initcall(mt7986_pinctrl_init);
+ 
+ MODULE_IMPORT_NS("MTK_PINCTRL");
+-- 
+2.45.2
+
 
