@@ -4,75 +4,156 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 826B3C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 10:38:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36B74C43458
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 11:06:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mboklT8issAdMyxLCgPRn865Zm6l8/ZAFQfIU5If29Q=; b=dqDwAMfH52ipdU2GdoDeW1OoqK
-	viUpDDpc1NGzhvGW0R60bCJLLA4kfw+Cz9lGEUJyUPNoGhh6YV9S4n1coeGHp/nRxQYwIDlLPQUt4
-	kZr2jzzj65/CONnsbWLOesw+ZMu6PoLNcVVpVRa+JTFkTT4NXrILrtdUQ/k/iyZ+RFwpoFp2Y7Ut4
-	jEHc6h879dxjv8zcU8nkNirN4/oZYQuBNzTsfMVFtrWVZeBfL2USJoeDwVeHDl5ET3mKl8J1bgt3V
-	HQlTTShJzly4aQkHeM1P3mhEDJLMYihV5SkcuaySqXQvoIXlbdaQoQXiS5M7lvWv9FalQSN+aSEnj
-	SSkuGJ9g==;
+	bh=2l0IvC+7wRYIHM8yNvt5mCgju1bnSM1YrVh4Np4UJRI=; b=12herpqxXA4e4ZOyhJyOhP3nzi
+	YzpUGUf8poEHUic5vmIhoq/bx4Gw8SPqKEgb8MIazmfLI5/ywmqIkRXB0CQ3nhZEzKx/ZwMPD5VxU
+	x7nPSzgikUZeKFe56jSJNmg8JtYPnn6wp2MBX3GtqojjFDBOXPAjZewWGqCCApqT6m7lCbVaBUqOj
+	h38CQQ1Cj3iNmLP7mUinNlcMOpXCX70bqAPnXmQLfvPy4+FT/+eToOhk7W7V33HJai16FOVg5etyo
+	ZwClPsH5GUnr60iHOXDhxNfHLwWg9xBJ5f4ng8WCv3vTvx2Sm9kJ1enhRq0waTifMOJfjzWXidFsj
+	1obaEeNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjE3J-00000008ubT-21Mn;
-	Mon, 13 Jul 2026 10:38:21 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wjEUc-00000008y0F-02Jd;
+	Mon, 13 Jul 2026 11:06:34 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjE3E-00000008uWf-2lL7;
-	Mon, 13 Jul 2026 10:38:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783939094;
-	bh=vSaLwTxwvF2SlDcyfPwVEj3OClsBegI8OCTI30PtJQw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=jiZj5bf1OJWHue23ld6e8uzXr9/nKOPbupVih+j/auQ3Oa2xhuVEa1bflkrrrWd97
-	 w4oii8VWHwdCk4FqLNzQVZowUFcoNg2yyXgUAhXZ0BmJrzkOMfPw+O4aO3vp8AKy+P
-	 NwJ8hC3qa3RuzeFeeKB8+/rjaNhfNiaA1mJmC5jMh3F3DxNM0JzedK1T5W0j00u6w6
-	 lZHDThd+99U5d+HW50hJxsEBW48m3JVS2w35sHOvJ2YUBCIJPB4eFShjMvCD3m1T1q
-	 8yOeBmjQDxpcHkt9ryCF1vG7ftpxhW+8Yzgd1YAuTJjp2/Qa1qbT96mC2qiMM2T+je
-	 AxbbswI7YlGfw==
-Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5EE9F17E0E1C;
-	Mon, 13 Jul 2026 12:38:13 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunfeng.yun@mediatek.com
-Cc: vkoul@kernel.org,
-	neil.armstrong@linaro.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	justin.yeh@mediatek.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	kernel@collabora.com
-Subject: [PATCH v3 2/2] phy: mediatek: Add support for MT8196 MIPI DSI PHY
-Date: Mon, 13 Jul 2026 12:38:05 +0200
-Message-ID: <20260713103805.23030-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260713103805.23030-1-angelogioacchino.delregno@collabora.com>
-References: <20260713103805.23030-1-angelogioacchino.delregno@collabora.com>
+	id 1wjEUX-00000008xx6-2Y7w
+	for linux-mediatek@lists.infradead.org;
+	Mon, 13 Jul 2026 11:06:33 +0000
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 66D7KZJL774572
+	for <linux-mediatek@lists.infradead.org>; Mon, 13 Jul 2026 11:06:28 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	2l0IvC+7wRYIHM8yNvt5mCgju1bnSM1YrVh4Np4UJRI=; b=POfeYPT3dzNfdjee
+	A84jGjN1sVyE60R9docOEG6CKA+i3aSsV77vJ/HjIvIqPcI3KRtTELpLtLxBya+h
+	J9kr0fQEwu7cPqSZuD8Ikr6/hFeIamQbz4JHT7LAGVOMDgsQ31bxIette34iVllm
+	zNYnHppxsoibB0HRoUz9cKB2NEAtwiRaIz4S3jXQFDztfHhI3j6rwopYoeV2ZRFw
+	8ug7p+nTWUL+XXKtpHLkGlrEWUbXP6/JU2GGjYzONYud58dbEWYT3ckYPxWsC1V9
+	q2cSReK66b5Jr3AOjE5ZDfCYhoUYTy+KjFkbFForQVrW3a4miLY+eD6GyUkhO/R7
+	jDoGrw==
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com [209.85.160.199])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fcuj00ubf-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Mon, 13 Jul 2026 11:06:28 +0000 (GMT)
+Received: by mail-qt1-f199.google.com with SMTP id d75a77b69052e-517e054fe07so60553191cf.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 13 Jul 2026 04:06:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783940788; cv=none;
+        d=google.com; s=arc-20260327;
+        b=q83Z+wKeKFq9CD+xIL36n5HCsoM7Q1Bpq+cGgDG2XzwSUcZAxRS0rkTB3Q+oRKY6hI
+         +OajgQrwoZUz+vME1+Z9oawOgR2LrbkPMoWQKdJ0J7Q7jBtKRoK8lldG9VNKklNUQ5Pf
+         v+0/DRpbVFs/pubBY1f7INorqXCCV3h0pS8x+cnkGvalwL7R2bftkeBKU0XVtIN6Pt0l
+         91Tc6n8U8DaqWB0N+LF4sp782vYnxAxJpznnJPNup6j4wsSk8a7NDiSXRSnVAiVvYSIH
+         OtuehNf+jUpMKKUXZ9+BNJezrY/hxvg2P12lHfzsvRc23KiOPRq4xNtZNSxuMguvbu+N
+         PdhQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=2l0IvC+7wRYIHM8yNvt5mCgju1bnSM1YrVh4Np4UJRI=;
+        fh=tjk/Y4Gk6n9By/Xwk5Rw6fzU7qq+BCnVH/lwBSsrGtY=;
+        b=CFpaaw2QIQkJl58NYee6SbZgp8oJUhBAgruDce0yffI0N/xre93yGoQV2GZXse/tiM
+         KTOUsuS8diS5BJzC+XxrD/aCbkQDhI39ovAMM+Fo+Chpa2kdPQ6dQrP9L6cucjxAdmj3
+         BWgr/XLnuyMYyYvklb8+CRiaFxjs8J3DHW0fVv3iyhz0bzIlC8D+/5kjI3p/7mPtRjZ/
+         1I5nt8QAYNKTpzwGgyCl/nxLp3lR+FA5jPm4lwBVrI39Xi3GKg2cbXhU3gBeNRpy7AsP
+         pfWuEWIEsUkoRlcz/Qt1gf/JASMIAvG8SzYkVFwGwemJ/0cx/YQ1GAaAkjNDoucIbJm4
+         lTCg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1783940788; x=1784545588; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=2l0IvC+7wRYIHM8yNvt5mCgju1bnSM1YrVh4Np4UJRI=;
+        b=B3aY13NIn8YcNrOp6QJGu3Vdg4HOnCWmeyBnj5SA9W+VBbUtiGVQ6/EAGgf+sySpai
+         ZbYXUu9b2+GMQtjScpLo/Bcc1ZbwCYKne6qpn0Ca3v2ifELHDtayJw4RgP0NPFay2RUV
+         gG7xzlP5NgLPfX4u958bWIneynYw6fLFvBYTig2fMVyFqIzlAuqAxpyLyHWRATHH2E2B
+         P4oCrVGvq/UL1tZfShjK3woxTIGKInmgW3d9AWlQLADft9RJpFRsd4YrrUMr0gkLW0Su
+         fHB+D4CcelG4yXR73PiZx06nmcPzp35C/QxY69d8M9kjw6nGaAKpgiQp1yEkDINjsJOj
+         pVFA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783940788; x=1784545588;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=2l0IvC+7wRYIHM8yNvt5mCgju1bnSM1YrVh4Np4UJRI=;
+        b=VhiBlNkKOEWhWilajxVV4iRfyiUac8nd3sOQX+6REtQJ1BO6H/IJFNkCzEWNzUtrXV
+         TKCOPQChgh+g9Lc/dOMgzcYBwjPnVlHJ6C81CLri9GYM/lPJxwzFG3Y/5JxmRxJv8aY1
+         SGxAI5a9AKWs+EyKu9oCOJ6wi/kfEOtJhRxHpy+mkDgiKqqouy53huOoZXahxI7zVD7m
+         U83VlCozgUxAB6fvUZsMl09HgLLBXDnvKI/9OLqFXllAYfk/B/BBChwI0C81PNjJrX2l
+         Tsp4DwFlZ1Y3Thvqm0Ej3LmC+HZMKutGgE6MRWDfki2HkXGnH+zKmsr7qixvlvelndk5
+         /oQw==
+X-Forwarded-Encrypted: i=1; AHgh+RpBbIKkwTADdkjDOyScn94iDFWq1IRXhPFq2Uo2jqp5TrE3tzMcx4rUQ8gZVGS79DrlG5eRusHuEw5OrI9Eqg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzn5SBjgO968BzP4wzwk408orhtO6tAAhXim2RgegCuwMlutXDW
+	jRDoAouPO+R6wDK+DPg14q5MNoZ/W1PeMmtmdaS+0AVAyYFJwSfB4th0OnjxqiRpAyeXyulJ6Mu
+	Edq2UrKDWjeJk8EtaUW3ey7AtB+dCAtGUv8TYsGOb9koBvOf90Brzq7DPgcRdZMlrOX266VNxjt
+	uU6uk0CyVpDD6O6fsqfU4aY3Jgn3nc58be93jBZz3CNVMc1+OEjg==
+X-Gm-Gg: AfdE7cniO1Kjd20rK2xN9DL0qrCF8GbS4dT7iooHoc8Sv48ALCkhEmPQJDQ1HfBQleF
+	K0BvYnQ93pIAwzqUJ8Z2dyIjHBb8+pQrem5+Bxo/02xjv0W0drHT5t/wHZnxCI89c6bRiw97TWh
+	zsXKI/xKcj6V74k1EykITEDrfrl7vatTxAYYn+QgCmngGQK4R8+Z2B4oKtZGVsZe1O+mMx
+X-Received: by 2002:a05:622a:a587:b0:51a:8c9a:8fa9 with SMTP id d75a77b69052e-51cbf2ce4bfmr86919921cf.58.1783940788032;
+        Mon, 13 Jul 2026 04:06:28 -0700 (PDT)
+X-Received: by 2002:a05:622a:a587:b0:51a:8c9a:8fa9 with SMTP id
+ d75a77b69052e-51cbf2ce4bfmr86919621cf.58.1783940787515; Mon, 13 Jul 2026
+ 04:06:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20260709084635.24912-1-angelogioacchino.delregno@collabora.com> <20260709084635.24912-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260709084635.24912-3-angelogioacchino.delregno@collabora.com>
+From: Ulf Hansson <ulf.hansson@oss.qualcomm.com>
+Date: Mon, 13 Jul 2026 13:06:16 +0200
+X-Gm-Features: AUfX_mxflP0lESSPqjO-mD1cf2nnww1_fwPNQR52YPdL25avy66WeDOCLfhgEZ4
+Message-ID: <CAPx+jO_CAWoNtW88OBroUxTWCXz0SKH3c0uPM2vJYSR65xdMKA@mail.gmail.com>
+Subject: Re: [PATCH v3 2/5] pmdomain: mediatek: Fix possible nullptr KP in HWV cleanup/on-check
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: ulfh@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+        matthias.bgg@gmail.com, nfraprado@collabora.com,
+        irving-ch.lin@mediatek.com, macpaul.lin@mediatek.com,
+        aford173@gmail.com, mbrugger@suse.com, devicetree@vger.kernel.org,
+        linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org, justin.yeh@mediatek.com,
+        kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzEzMDExNSBTYWx0ZWRfX9nm4sdhnrdPN
+ 3c6v4RFqlkIYTSehIiDVSslofj6BJcPjFq17nNV0aQLQ9GQoHqMGe92728fc2ah2rmM4d2aW063
+ jNrBR9lQrydvZurXIi1Sk5U45QLSq54=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzEzMDExNSBTYWx0ZWRfXyKUhtComgrOm
+ PhANrOkgSUQfKwgPpDX15TN3TbYWWGoQA6FwqGg8oDtwVkRbJYXBBGEYwJJD9/iBBODyy6m+1Bs
+ 0Vinum098q/scIFe4WB0rBu06DiZcacoD2MviZ/cYyl6Tld5GOW2oLJ721b/LfaxR63j1q+rSAq
+ Z97BmxFFFLbEz+upYVtmiCHl2AHqSgeG8LSi+Z2Vv44522tmuK7uOlMSSLaNVliS94bUB7PWApl
+ 41y2tv0Obu8Et8rvDsK0YoW38FyHUn+loB+KulsvJdFRU5JbwJ98S0eno62vH2qjSmgT6utL8a+
+ 32hKM7tNnoc79bZdmwliTFkYg5Sm3b7ShJ8AHc6hEBWnWal/4VCzjBM3B8Bk67OkgPhjIjpRL/v
+ +/QoyQ6KlkrWJvKpU07q0F8AbVuOi0t3nFM0YdRBmzQV1PpAmcrKPAjlpTbIz4KKu94au7zdh6x
+ 9En7kEUMeL5gBxzX78Q==
+X-Proofpoint-ORIG-GUID: lQ_8QdY7-2NUR8pK8t1SCmMwz3LnJ08p
+X-Authority-Analysis: v=2.4 cv=DbcnbPtW c=1 sm=1 tr=0 ts=6a54c6b4 cx=c_pps
+ a=WeENfcodrlLV9YRTxbY/uA==:117 a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10
+ a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
+ a=gowsoOTTUOVcmtlkKump:22 a=QX4gbG5DAAAA:8 a=Z1TsUI5AZlo4e0OQKm0A:9
+ a=QEXdDO2ut3YA:10 a=kacYvNCVWA4VmyqE58fU:22 a=AbAUZ8qAyYyZVLSsDulk:22
+X-Proofpoint-GUID: lQ_8QdY7-2NUR8pK8t1SCmMwz3LnJ08p
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-13_02,2026-07-10_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0 impostorscore=0 malwarescore=0 priorityscore=1501
+ phishscore=0 suspectscore=0 bulkscore=0 adultscore=0 spamscore=0
+ clxscore=1015 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2607130115
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_033816_852385_361BD41F 
-X-CRM114-Status: GOOD (  22.12  )
+X-CRM114-CacheID: sfid-20260713_040629_769089_443981EC 
+X-CRM114-Status: GOOD (  31.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,267 +168,162 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the MIPI DSI PHY found in the MediaTek MT8196 SoC
-and its variants.
-This PHY has a different register layout and provides support for
-more hardware features compared to the previous generation.
+On Thu, Jul 9, 2026 at 10:46=E2=80=AFAM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Should probe fail for HW_VOTER type power domains, this driver was
+> unconditionally trying to perform cleanup for DIRECT_CTL domains,
+> but only after checking if the target domain is powered on... with
+> the DIRECT_CTL scpsys_domain_is_on() code again.
+>
+> And there's more: the scpsys_domain_is_on() function is also being
+> unconditionally used in the probe path, for any power domain that
+> has flag MTK_SCPD_KEEP_DEFAULT_OFF!
+>
+> This bug was never experienced by anyone because the HWV domains
+> never failed probe, and because none of those is declared with the
+> aforementioned flag - but it's still something critical.
+>
+> In order to fix this, add a check for MTCMOS Type and, based on
+> that, call the correct functions for an "is on" check, and also
+> do the same for the cleanup path, calling the correct functions
+> for the "power off" action.
+>
+> For the latter, since there's a call to pm_genpd_remove() right
+> before calling power_off, be cautious and add a variation of the
+> power off functions (with a _internal suffix) for those to get a
+> pointer to scpsys_domain instead of one to generic_pm_domain as,
+> even if that's still working, this is way too much fragile and
+> would break at some point.
+>
+> Fixes: 88914db077b6 ("pmdomain: mediatek: Add support for Hardware Voter =
+power domains")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 
-This initial driver only adds support for basic functionality that
-is necessary to drive MIPI DSI displays as a D-PHY.
+Applied for fixes and by adding a stable tag, thanks!
 
-Feature additions like lane-swap, DPHY/CPHY switching, dual-port,
-and others, may be done in the future.
+Kind regards
+Uffe
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/phy/mediatek/Makefile                 |   1 +
- .../phy/mediatek/phy-mtk-mipi-dsi-mt8196.c    | 201 ++++++++++++++++++
- drivers/phy/mediatek/phy-mtk-mipi-dsi.c       |   1 +
- drivers/phy/mediatek/phy-mtk-mipi-dsi.h       |   2 +-
- 4 files changed, 204 insertions(+), 1 deletion(-)
- create mode 100644 drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8196.c
 
-diff --git a/drivers/phy/mediatek/Makefile b/drivers/phy/mediatek/Makefile
-index 1b8088df71e8..ed0da708759b 100644
---- a/drivers/phy/mediatek/Makefile
-+++ b/drivers/phy/mediatek/Makefile
-@@ -21,4 +21,5 @@ obj-$(CONFIG_PHY_MTK_MIPI_CSI_0_5)	+= phy-mtk-mipi-csi-0-5.o
- phy-mtk-mipi-dsi-drv-y			:= phy-mtk-mipi-dsi.o
- phy-mtk-mipi-dsi-drv-y			+= phy-mtk-mipi-dsi-mt8173.o
- phy-mtk-mipi-dsi-drv-y			+= phy-mtk-mipi-dsi-mt8183.o
-+phy-mtk-mipi-dsi-drv-y			+= phy-mtk-mipi-dsi-mt8196.o
- obj-$(CONFIG_PHY_MTK_MIPI_DSI)		+= phy-mtk-mipi-dsi-drv.o
-diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8196.c b/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8196.c
-new file mode 100644
-index 000000000000..eac3db9922db
---- /dev/null
-+++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8196.c
-@@ -0,0 +1,201 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2019 MediaTek Inc.
-+ * Author: jitao.shi <jitao.shi@mediatek.com>
-+ *
-+ * Copyright (c) 2026 Collabora Ltd.
-+ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
-+
-+#include "phy-mtk-io.h"
-+#include "phy-mtk-mipi-dsi.h"
-+
-+#define MIPITX_LANE_CON		0x0004
-+#define RG_DSI_CPHY_T1DRV_EN		BIT(0)
-+#define RG_DSI_ANA_CK_SEL		BIT(1)
-+#define RG_DSI_PHY_CK_SEL		BIT(2)
-+#define RG_DSI_CPHY_EN			BIT(3)
-+#define RG_DSI_PHYCK_INV_EN		BIT(4)
-+#define RG_DSI_PWR04_EN			BIT(5)
-+#define RG_DSI_BG_LPF_EN		BIT(6)
-+#define RG_DSI_BG_CORE_EN		BIT(7)
-+#define RG_DSI_PAD_TIEL_SEL		BIT(8)
-+
-+#define MIPITX_VOLTAGE_SEL	0x0008
-+#define RG_DSI_HSTX_LDO_REF_SEL		GENMASK(9, 6)
-+#define RG_DSI_PRD_REF_SEL		GENMASK(5, 0)
-+#define RG_DSI_PRD_REF_MINI		0
-+#define RG_DSI_PRD_REF_DEF		4
-+#define RG_DSI_PRD_REF_MAX		7
-+
-+#define MIPITX_PRESERVED	0x000c
-+#define MIPITX_PRESERVED_DEF		0xffff0040
-+#define MIPITX_PRESERVED_MINI		0xffff00f0
-+
-+#define MIPITX_PLL_PWR		0x0028
-+#define AD_DSI_PLL_SDM_PWR_ON		BIT(0)
-+#define AD_DSI_PLL_SDM_ISO_EN		BIT(1)
-+#define MIPITX_PLL_CON0		0x002c
-+#define MIPITX_PLL_CON1		0x0030
-+#define RG_DSI_PLL_EN			BIT(0)
-+#define RG_DSI_PLL_POSDIV		GENMASK(10, 8)
-+#define MIPITX_PLL_CON2		0x0034
-+#define MIPITX_PLL_CON3		0x0038
-+#define MIPITX_PLL_CON4		0x003c
-+#define RG_DSI_PLL_IBIAS		GENMASK(11, 10)
-+
-+#define MIPITX_D2_SW_CTL_EN	0x015c
-+#define MIPITX_D0_SW_CTL_EN	0x025c
-+#define MIPITX_CK_CKMODE_EN	0x0320
-+#define DSI_CK_CKMODE_EN		BIT(0)
-+#define MIPITX_CK_SW_CTL_EN	0x035c
-+#define MIPITX_D1_SW_CTL_EN	0x045c
-+#define MIPITX_D3_SW_CTL_EN	0x055c
-+#define DSI_SW_CTL_EN			BIT(0)
-+
-+#define DSI_PHY_XTAL_CLK_HZ		26000000
-+#define DSI_PHY_PLL_MIN_RATE_HZ		125000000
-+#define DSI_PHY_PLL_MAX_RATE_HZ		2000000000
-+
-+static int mtk_mipi_tx_pll_enable(struct clk_hw *hw)
-+{
-+	struct mtk_mipi_tx *mipi_tx = mtk_mipi_tx_from_clk_hw(hw);
-+	void __iomem *base = mipi_tx->regs;
-+	u32 voltage = RG_DSI_PRD_REF_MINI;
-+	u32 pres = MIPITX_PRESERVED_MINI;
-+	unsigned long long pcw_calc;
-+	unsigned int txdiv, txdiv0;
-+	u32 pcw;
-+
-+	dev_dbg(mipi_tx->dev, "enable: %u bps\n", mipi_tx->data_rate);
-+
-+	if (mipi_tx->data_rate >= DSI_PHY_PLL_MAX_RATE_HZ) {
-+		/* Select higher signaling voltage for fast data rates */
-+		voltage = RG_DSI_PRD_REF_DEF;
-+		pres = MIPITX_PRESERVED_DEF;
-+		txdiv = 1;
-+		txdiv0 = 0;
-+	} else if (mipi_tx->data_rate >= 1000000000) {
-+		txdiv = 2;
-+		txdiv0 = 1;
-+	} else if (mipi_tx->data_rate >= 500000000) {
-+		txdiv = 4;
-+		txdiv0 = 2;
-+	} else if (mipi_tx->data_rate > 250000000) {
-+		txdiv = 8;
-+		txdiv0 = 3;
-+	} else if (mipi_tx->data_rate >= 125000000) {
-+		txdiv = 16;
-+		txdiv0 = 4;
-+	} else {
-+		return -EINVAL;
-+	}
-+
-+	pcw_calc = ((u64)(mipi_tx->data_rate / 2) * txdiv) << 24;
-+	pcw_calc = div_u64(pcw_calc, DSI_PHY_XTAL_CLK_HZ);
-+
-+	if (pcw_calc > U32_MAX) {
-+		dev_err(mipi_tx->dev, "Calculated PCW=%llu overflow!\n", pcw_calc);
-+		return -EINVAL;
-+	}
-+	pcw = (u32)pcw_calc;
-+
-+	mtk_phy_update_field(base + MIPITX_VOLTAGE_SEL, RG_DSI_PRD_REF_SEL, voltage);
-+	writel(pres, base + MIPITX_PRESERVED);
-+
-+	/* Enable the SDM and wait for power to stabilize */
-+	mtk_phy_set_bits(base + MIPITX_PLL_PWR, AD_DSI_PLL_SDM_PWR_ON);
-+	mtk_phy_clear_bits(base + MIPITX_PLL_CON1, RG_DSI_PLL_EN);
-+	udelay(30);
-+
-+	/* Disable isolation and program PLL's PCW and dividers */
-+	mtk_phy_clear_bits(base + MIPITX_PLL_PWR, AD_DSI_PLL_SDM_ISO_EN);
-+	writel(pcw, base + MIPITX_PLL_CON0);
-+	mtk_phy_update_field(base + MIPITX_PLL_CON1, RG_DSI_PLL_POSDIV, txdiv0);
-+
-+	/* Enable the PLL and wait for the clock output to stabilize */
-+	mtk_phy_set_bits(base + MIPITX_PLL_CON1, RG_DSI_PLL_EN);
-+	udelay(30);
-+
-+	return 0;
-+}
-+
-+static void mtk_mipi_tx_pll_disable(struct clk_hw *hw)
-+{
-+	struct mtk_mipi_tx *mipi_tx = mtk_mipi_tx_from_clk_hw(hw);
-+	void __iomem *base = mipi_tx->regs;
-+
-+	mtk_phy_clear_bits(base + MIPITX_PLL_CON1, RG_DSI_PLL_EN);
-+
-+	mtk_phy_set_bits(base + MIPITX_PLL_PWR, AD_DSI_PLL_SDM_ISO_EN);
-+	mtk_phy_clear_bits(base + MIPITX_PLL_PWR, AD_DSI_PLL_SDM_PWR_ON);
-+}
-+
-+static int mtk_mipi_tx_pll_determine_rate(struct clk_hw *hw,
-+					  struct clk_rate_request *req)
-+{
-+	req->rate = clamp_val(req->rate,
-+			      DSI_PHY_PLL_MIN_RATE_HZ, DSI_PHY_PLL_MAX_RATE_HZ);
-+
-+	return 0;
-+}
-+
-+static const struct clk_ops mtk_mipi_tx_pll_ops = {
-+	.enable = mtk_mipi_tx_pll_enable,
-+	.disable = mtk_mipi_tx_pll_disable,
-+	.determine_rate = mtk_mipi_tx_pll_determine_rate,
-+	.set_rate = mtk_mipi_tx_pll_set_rate,
-+	.recalc_rate = mtk_mipi_tx_pll_recalc_rate,
-+};
-+
-+static void mtk_mipi_tx_power_on_signal(struct phy *phy)
-+{
-+	struct mtk_mipi_tx *mipi_tx = phy_get_drvdata(phy);
-+	void __iomem *base = mipi_tx->regs;
-+
-+	/* BG_LPF_EN / BG_CORE_EN */
-+	writel(RG_DSI_PAD_TIEL_SEL | RG_DSI_BG_CORE_EN, base + MIPITX_LANE_CON);
-+	/* Wait for MIPI core to enable */
-+	usleep_range(30, 100);
-+	writel(RG_DSI_BG_CORE_EN | RG_DSI_BG_LPF_EN, base + MIPITX_LANE_CON);
-+
-+	/* Switch OFF each Lane */
-+	mtk_phy_clear_bits(base + MIPITX_D0_SW_CTL_EN, DSI_SW_CTL_EN);
-+	mtk_phy_clear_bits(base + MIPITX_D1_SW_CTL_EN, DSI_SW_CTL_EN);
-+	mtk_phy_clear_bits(base + MIPITX_D2_SW_CTL_EN, DSI_SW_CTL_EN);
-+	mtk_phy_clear_bits(base + MIPITX_D3_SW_CTL_EN, DSI_SW_CTL_EN);
-+	mtk_phy_clear_bits(base + MIPITX_CK_SW_CTL_EN, DSI_SW_CTL_EN);
-+
-+	/*
-+	 * The MIPI TX drive strength is in the range of 3000 ~ 6000 microamps:
-+	 * RG_DSI_HSTX_LDO_REF_SEL expresses an offset from the minimum drive
-+	 * strength (3000uA) and can add a maximum offset of 3000uA, reaching a
-+	 * maximum drive strength of 3000+3000=6000uA.
-+	 */
-+	mtk_phy_update_field(base + MIPITX_VOLTAGE_SEL, RG_DSI_HSTX_LDO_REF_SEL,
-+			     (mipi_tx->mipitx_drive - 3000) / 200);
-+
-+	mtk_phy_set_bits(base + MIPITX_CK_CKMODE_EN, DSI_CK_CKMODE_EN);
-+}
-+
-+static void mtk_mipi_tx_power_off_signal(struct phy *phy)
-+{
-+	struct mtk_mipi_tx *mipi_tx = phy_get_drvdata(phy);
-+	void __iomem *base = mipi_tx->regs;
-+
-+	/* Switch ON each lane one by one */
-+	mtk_phy_set_bits(base + MIPITX_D0_SW_CTL_EN, DSI_SW_CTL_EN);
-+	mtk_phy_set_bits(base + MIPITX_D1_SW_CTL_EN, DSI_SW_CTL_EN);
-+	mtk_phy_set_bits(base + MIPITX_D2_SW_CTL_EN, DSI_SW_CTL_EN);
-+	mtk_phy_set_bits(base + MIPITX_D3_SW_CTL_EN, DSI_SW_CTL_EN);
-+	mtk_phy_set_bits(base + MIPITX_CK_SW_CTL_EN, DSI_SW_CTL_EN);
-+
-+	writel(RG_DSI_PAD_TIEL_SEL | RG_DSI_BG_CORE_EN, base + MIPITX_LANE_CON);
-+	writel(RG_DSI_PAD_TIEL_SEL, base + MIPITX_LANE_CON);
-+}
-+
-+const struct mtk_mipitx_data mt8196_mipitx_data = {
-+	.mipi_tx_clk_ops = &mtk_mipi_tx_pll_ops,
-+	.mipi_tx_enable_signal = mtk_mipi_tx_power_on_signal,
-+	.mipi_tx_disable_signal = mtk_mipi_tx_power_off_signal,
-+};
-diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-index 065ea626093a..46f0cb3ac096 100644
---- a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-+++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-@@ -183,6 +183,7 @@ static const struct of_device_id mtk_mipi_tx_match[] = {
- 	{ .compatible = "mediatek,mt2701-mipi-tx", .data = &mt2701_mipitx_data },
- 	{ .compatible = "mediatek,mt8173-mipi-tx", .data = &mt8173_mipitx_data },
- 	{ .compatible = "mediatek,mt8183-mipi-tx", .data = &mt8183_mipitx_data },
-+	{ .compatible = "mediatek,mt8196-mipi-tx", .data = &mt8196_mipitx_data },
- 	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, mtk_mipi_tx_match);
-diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi.h b/drivers/phy/mediatek/phy-mtk-mipi-dsi.h
-index 5d4876f1dc95..e6f967078e3b 100644
---- a/drivers/phy/mediatek/phy-mtk-mipi-dsi.h
-+++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi.h
-@@ -42,5 +42,5 @@ unsigned long mtk_mipi_tx_pll_recalc_rate(struct clk_hw *hw,
- extern const struct mtk_mipitx_data mt2701_mipitx_data;
- extern const struct mtk_mipitx_data mt8173_mipitx_data;
- extern const struct mtk_mipitx_data mt8183_mipitx_data;
--
-+extern const struct mtk_mipitx_data mt8196_mipitx_data;
- #endif
--- 
-2.54.0
-
+> ---
+>  drivers/pmdomain/mediatek/mtk-pm-domains.c | 40 ++++++++++++++++++----
+>  1 file changed, 33 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomai=
+n/mediatek/mtk-pm-domains.c
+> index e1cfd4223473..f0a6339affd7 100644
+> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> @@ -393,9 +393,8 @@ static int scpsys_hwv_power_on(struct generic_pm_doma=
+in *genpd)
+>         return ret;
+>  };
+>
+> -static int scpsys_hwv_power_off(struct generic_pm_domain *genpd)
+> +static int scpsys_hwv_power_off_internal(struct scpsys_domain *pd)
+>  {
+> -       struct scpsys_domain *pd =3D container_of(genpd, struct scpsys_do=
+main, genpd);
+>         const struct scpsys_hwv_domain_data *hwv =3D pd->hwv_data;
+>         struct scpsys *scpsys =3D pd->scpsys;
+>         u32 val;
+> @@ -464,6 +463,13 @@ static int scpsys_hwv_power_off(struct generic_pm_do=
+main *genpd)
+>         return ret;
+>  };
+>
+> +static int scpsys_hwv_power_off(struct generic_pm_domain *genpd)
+> +{
+> +       struct scpsys_domain *pd =3D container_of(genpd, struct scpsys_do=
+main, genpd);
+> +
+> +       return scpsys_hwv_power_off_internal(pd);
+> +}
+> +
+>  static int scpsys_ctl_pwrseq_on(struct scpsys_domain *pd)
+>  {
+>         struct scpsys *scpsys =3D pd->scpsys;
+> @@ -694,9 +700,8 @@ static int scpsys_power_on(struct generic_pm_domain *=
+genpd)
+>         return ret;
+>  }
+>
+> -static int scpsys_power_off(struct generic_pm_domain *genpd)
+> +static int scpsys_power_off_internal(struct scpsys_domain *pd)
+>  {
+> -       struct scpsys_domain *pd =3D container_of(genpd, struct scpsys_do=
+main, genpd);
+>         struct scpsys *scpsys =3D pd->scpsys;
+>         bool tmp;
+>         int ret;
+> @@ -737,6 +742,13 @@ static int scpsys_power_off(struct generic_pm_domain=
+ *genpd)
+>         return 0;
+>  }
+>
+> +static int scpsys_power_off(struct generic_pm_domain *genpd)
+> +{
+> +       struct scpsys_domain *pd =3D container_of(genpd, struct scpsys_do=
+main, genpd);
+> +
+> +       return scpsys_power_off_internal(pd);
+> +}
+> +
+>  static struct
+>  generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct d=
+evice_node *node)
+>  {
+> @@ -884,7 +896,14 @@ generic_pm_domain *scpsys_add_one_domain(struct scps=
+ys *scpsys, struct device_no
+>          * late_init time.
+>          */
+>         if (MTK_SCPD_CAPS(pd, MTK_SCPD_KEEP_DEFAULT_OFF)) {
+> -               if (scpsys_domain_is_on(pd))
+> +               bool domain_is_on;
+> +
+> +               if (scpsys->soc_data->type =3D=3D SCPSYS_MTCMOS_TYPE_HW_V=
+OTER)
+> +                       domain_is_on =3D scpsys_hwv_domain_is_enable_done=
+(pd);
+> +               else
+> +                       domain_is_on =3D scpsys_domain_is_on(pd);
+> +
+> +               if (domain_is_on)
+>                         dev_warn(scpsys->dev,
+>                                  "%pOF: A default off power domain has be=
+en ON\n", node);
+>         } else {
+> @@ -973,6 +992,7 @@ static int scpsys_add_subdomain(struct scpsys *scpsys=
+, struct device_node *paren
+>
+>  static void scpsys_remove_one_domain(struct scpsys_domain *pd)
+>  {
+> +       struct scpsys *scpsys =3D pd->scpsys;
+>         int ret;
+>
+>         /*
+> @@ -984,8 +1004,14 @@ static void scpsys_remove_one_domain(struct scpsys_=
+domain *pd)
+>                 dev_err(pd->scpsys->dev,
+>                         "failed to remove domain '%s' : %d - state may be=
+ inconsistent\n",
+>                         pd->genpd.name, ret);
+> -       if (scpsys_domain_is_on(pd))
+> -               scpsys_power_off(&pd->genpd);
+> +
+> +       if (scpsys->soc_data->type =3D=3D SCPSYS_MTCMOS_TYPE_HW_VOTER) {
+> +               if (scpsys_hwv_domain_is_enable_done(pd))
+> +                       scpsys_hwv_power_off_internal(pd);
+> +       } else {
+> +               if (scpsys_domain_is_on(pd))
+> +                       scpsys_power_off_internal(pd);
+> +       }
+>
+>         clk_bulk_put(pd->num_clks, pd->clks);
+>         clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
+> --
+> 2.54.0
+>
 
