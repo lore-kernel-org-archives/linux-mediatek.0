@@ -4,115 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36B74C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 11:06:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C064BC44507
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 11:06:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2l0IvC+7wRYIHM8yNvt5mCgju1bnSM1YrVh4Np4UJRI=; b=12herpqxXA4e4ZOyhJyOhP3nzi
-	YzpUGUf8poEHUic5vmIhoq/bx4Gw8SPqKEgb8MIazmfLI5/ywmqIkRXB0CQ3nhZEzKx/ZwMPD5VxU
-	x7nPSzgikUZeKFe56jSJNmg8JtYPnn6wp2MBX3GtqojjFDBOXPAjZewWGqCCApqT6m7lCbVaBUqOj
-	h38CQQ1Cj3iNmLP7mUinNlcMOpXCX70bqAPnXmQLfvPy4+FT/+eToOhk7W7V33HJai16FOVg5etyo
-	ZwClPsH5GUnr60iHOXDhxNfHLwWg9xBJ5f4ng8WCv3vTvx2Sm9kJ1enhRq0waTifMOJfjzWXidFsj
-	1obaEeNw==;
+	bh=U9tA3tFtTdnt2OcqRFhofQ3tr91DLiJW+I+IyBckjI8=; b=1OH7OpaQ7W2TGXAd3ae3JkUeFN
+	tpSc862mDGEj5C9fbePPsufMO1kq04tZFmnFUeuux948YE1zO9P7vq7RHkIeRACxcHfXUPyRpBLCV
+	3ET910iLw7QZHwGf5pZAZzI7r2kjjfX0Tr7Qy70Nk146WR0vJKHNoK++Uvv+2QjOU+wLA4QpcPb+z
+	H29TjtT7p7nrGzLtLgJSwElZCFTfDBzZOEeKyahqVwD/+z0hUZkuMJjL0zyrV952//te5UWZc8wmU
+	KAS98TGOGHR9Twu311PAkr2oBokuL3HBPE0CisrlWIBHFH0XnIoRQ8O6tGAoO63N3k1zFlGc1C2QH
+	+6DlGXEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjEUc-00000008y0F-02Jd;
-	Mon, 13 Jul 2026 11:06:34 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1wjEUe-00000008y3S-3lTl;
+	Mon, 13 Jul 2026 11:06:36 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjEUX-00000008xx6-2Y7w
+	id 1wjEUb-00000008xzI-1QUk
 	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Jul 2026 11:06:33 +0000
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 66D7KZJL774572
-	for <linux-mediatek@lists.infradead.org>; Mon, 13 Jul 2026 11:06:28 GMT
+	Mon, 13 Jul 2026 11:06:35 +0000
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 66D9M1GG1090406
+	for <linux-mediatek@lists.infradead.org>; Mon, 13 Jul 2026 11:06:33 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	2l0IvC+7wRYIHM8yNvt5mCgju1bnSM1YrVh4Np4UJRI=; b=POfeYPT3dzNfdjee
-	A84jGjN1sVyE60R9docOEG6CKA+i3aSsV77vJ/HjIvIqPcI3KRtTELpLtLxBya+h
-	J9kr0fQEwu7cPqSZuD8Ikr6/hFeIamQbz4JHT7LAGVOMDgsQ31bxIette34iVllm
-	zNYnHppxsoibB0HRoUz9cKB2NEAtwiRaIz4S3jXQFDztfHhI3j6rwopYoeV2ZRFw
-	8ug7p+nTWUL+XXKtpHLkGlrEWUbXP6/JU2GGjYzONYud58dbEWYT3ckYPxWsC1V9
-	q2cSReK66b5Jr3AOjE5ZDfCYhoUYTy+KjFkbFForQVrW3a4miLY+eD6GyUkhO/R7
-	jDoGrw==
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com [209.85.160.199])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fcuj00ubf-1
+	U9tA3tFtTdnt2OcqRFhofQ3tr91DLiJW+I+IyBckjI8=; b=DI8Z8pG3wdQMwjdq
+	NgShZmtTxQEhxFPIhHzG7Y4XzDgWQeVTDEJ8TOU+sxTGh15y8yWG8xKeHQ49dJj1
+	e1p0ChIPIxcRutKhsC56jX3fZi9FPHm94PFL2LzrkVexJq/LKYNIMZkY2kKYcSM4
+	3SnKeDl8psgTv6f77tztLtl44Iq0WYPTON+OJaMaolB0PJeRapF/1xLuUCtLfzpH
+	k7E/XBBdkNABekqxi15zBOSFJJHU/dWX9lSnwoR6piA+mZOqBdO9SRmCmGIEZTod
+	aqUbXvFwWjULYAw2EBIt8TtjflJc4IFAv7Sx01pCYRWASjnU3XysIrGW1Z+sCxVP
+	RECV1A==
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com [209.85.222.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fcwavrc24-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Mon, 13 Jul 2026 11:06:28 +0000 (GMT)
-Received: by mail-qt1-f199.google.com with SMTP id d75a77b69052e-517e054fe07so60553191cf.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 13 Jul 2026 04:06:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1783940788; cv=none;
+	for <linux-mediatek@lists.infradead.org>; Mon, 13 Jul 2026 11:06:32 +0000 (GMT)
+Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-92d1cae5939so427025485a.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 13 Jul 2026 04:06:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783940792; cv=none;
         d=google.com; s=arc-20260327;
-        b=q83Z+wKeKFq9CD+xIL36n5HCsoM7Q1Bpq+cGgDG2XzwSUcZAxRS0rkTB3Q+oRKY6hI
-         +OajgQrwoZUz+vME1+Z9oawOgR2LrbkPMoWQKdJ0J7Q7jBtKRoK8lldG9VNKklNUQ5Pf
-         v+0/DRpbVFs/pubBY1f7INorqXCCV3h0pS8x+cnkGvalwL7R2bftkeBKU0XVtIN6Pt0l
-         91Tc6n8U8DaqWB0N+LF4sp782vYnxAxJpznnJPNup6j4wsSk8a7NDiSXRSnVAiVvYSIH
-         OtuehNf+jUpMKKUXZ9+BNJezrY/hxvg2P12lHfzsvRc23KiOPRq4xNtZNSxuMguvbu+N
-         PdhQ==
+        b=G8eQ+Bcbcb+vjIRqT5R0y9aEZ1VdaSr5rPiCS469UbSHMBrb8OGXRLjL8ovKuJCjGv
+         HgHsyRbGIS7iYziQylgHk2A/mZ9QU24EmNdpvFZTcSKbRO4Ded/g9jyd89qjr7DoXF+l
+         p+o2s1NTZTViwksi0oz9+1bW6jOExCcyImeYo9N0bvKKZ8UACmHZyzgoFxxaieU6Z6JM
+         OuG5xbGXD/2UQS7gHuBCH6lq5MxGlWt65bHxdu4qBsoWctUzxce4SdrB25righdORDnL
+         rB8EqjXz+aSNy8eYaSYkAFdx+VmqSHyrVcuVzFyYC5cUY1qtK+9Ddbv70HXDVYFpAB7P
+         E2Nw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=2l0IvC+7wRYIHM8yNvt5mCgju1bnSM1YrVh4Np4UJRI=;
-        fh=tjk/Y4Gk6n9By/Xwk5Rw6fzU7qq+BCnVH/lwBSsrGtY=;
-        b=CFpaaw2QIQkJl58NYee6SbZgp8oJUhBAgruDce0yffI0N/xre93yGoQV2GZXse/tiM
-         KTOUsuS8diS5BJzC+XxrD/aCbkQDhI39ovAMM+Fo+Chpa2kdPQ6dQrP9L6cucjxAdmj3
-         BWgr/XLnuyMYyYvklb8+CRiaFxjs8J3DHW0fVv3iyhz0bzIlC8D+/5kjI3p/7mPtRjZ/
-         1I5nt8QAYNKTpzwGgyCl/nxLp3lR+FA5jPm4lwBVrI39Xi3GKg2cbXhU3gBeNRpy7AsP
-         pfWuEWIEsUkoRlcz/Qt1gf/JASMIAvG8SzYkVFwGwemJ/0cx/YQ1GAaAkjNDoucIbJm4
-         lTCg==;
+        bh=U9tA3tFtTdnt2OcqRFhofQ3tr91DLiJW+I+IyBckjI8=;
+        fh=US4ylNwsuKyQhKUDLn0vRMJSedSmMdy1qJgHNd9qoK0=;
+        b=cmhWfIGgHzdHnn+AojA8h7Z+gFHFO9AVOMnrbbHji4ns1TUT68GKnZrrgFYVQ07kLz
+         fbqzoyWUh/HcinWSTVKG7eHg0EKRFn6HrfRfanOxiOc2fYy8k76reqeYRmidjNCIZVCA
+         2KuyWB5db9SyG/m6OfUFbdSDRcK6N8tsxbPphFE9KnPJ4NEiVGC6buB3drnAlBb+P6eE
+         pTGXSuvZV2J7PXs+X6qL1gQwa4Zijgjc6cY+zxlZvHusCtTr1jyvaAwCtucEZ3hZUL51
+         LEwsGIytvDFm6ZDZOQwwh1H/G6P/tYGrNN+Vba52ZfySAYHEzUdQCd6oe+pCxdVDG2RM
+         G85g==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1783940788; x=1784545588; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1783940792; x=1784545592; darn=lists.infradead.org;
         h=content-transfer-encoding:content-type:cc:to:subject:message-id
          :date:from:in-reply-to:references:mime-version:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=2l0IvC+7wRYIHM8yNvt5mCgju1bnSM1YrVh4Np4UJRI=;
-        b=B3aY13NIn8YcNrOp6QJGu3Vdg4HOnCWmeyBnj5SA9W+VBbUtiGVQ6/EAGgf+sySpai
-         ZbYXUu9b2+GMQtjScpLo/Bcc1ZbwCYKne6qpn0Ca3v2ifELHDtayJw4RgP0NPFay2RUV
-         gG7xzlP5NgLPfX4u958bWIneynYw6fLFvBYTig2fMVyFqIzlAuqAxpyLyHWRATHH2E2B
-         P4oCrVGvq/UL1tZfShjK3woxTIGKInmgW3d9AWlQLADft9RJpFRsd4YrrUMr0gkLW0Su
-         fHB+D4CcelG4yXR73PiZx06nmcPzp35C/QxY69d8M9kjw6nGaAKpgiQp1yEkDINjsJOj
-         pVFA==
+        bh=U9tA3tFtTdnt2OcqRFhofQ3tr91DLiJW+I+IyBckjI8=;
+        b=Gh8pqIMPqto6uxvE7Rpyod+XJ7uM9IsxyuKB2HJUxtoRc0ZQLAwJsZSPot151Kdwtd
+         BWqo1umFFjtT4jqkXOl7DjJPwTnoBjLHOgx0WVEIF1M2/g0PuglI2eEM5MiDO81/gYLp
+         5cQNopBjlPnAQSxK107gyLi6aHEyhsXH6fqz9X0ZkiYH44LfSO50jhXzgSghOjhljfzq
+         HOSKpa/E40s/XuaUt4/S1ulS39Hk3ECLcfvcVWCi/cdxYAKV750awbmbJM2NjL1/GLaE
+         MfUICI7Q8/hU866F+59V9wiZVvivjjY33EQ4o00i7qG4Z50itniFSgwJeUu2dR/cBKXZ
+         0urw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783940788; x=1784545588;
+        d=1e100.net; s=20251104; t=1783940792; x=1784545592;
         h=content-transfer-encoding:content-type:cc:to:subject:message-id
          :date:from:in-reply-to:references:mime-version:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=2l0IvC+7wRYIHM8yNvt5mCgju1bnSM1YrVh4Np4UJRI=;
-        b=VhiBlNkKOEWhWilajxVV4iRfyiUac8nd3sOQX+6REtQJ1BO6H/IJFNkCzEWNzUtrXV
-         TKCOPQChgh+g9Lc/dOMgzcYBwjPnVlHJ6C81CLri9GYM/lPJxwzFG3Y/5JxmRxJv8aY1
-         SGxAI5a9AKWs+EyKu9oCOJ6wi/kfEOtJhRxHpy+mkDgiKqqouy53huOoZXahxI7zVD7m
-         U83VlCozgUxAB6fvUZsMl09HgLLBXDnvKI/9OLqFXllAYfk/B/BBChwI0C81PNjJrX2l
-         Tsp4DwFlZ1Y3Thvqm0Ej3LmC+HZMKutGgE6MRWDfki2HkXGnH+zKmsr7qixvlvelndk5
-         /oQw==
-X-Forwarded-Encrypted: i=1; AHgh+RpBbIKkwTADdkjDOyScn94iDFWq1IRXhPFq2Uo2jqp5TrE3tzMcx4rUQ8gZVGS79DrlG5eRusHuEw5OrI9Eqg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzn5SBjgO968BzP4wzwk408orhtO6tAAhXim2RgegCuwMlutXDW
-	jRDoAouPO+R6wDK+DPg14q5MNoZ/W1PeMmtmdaS+0AVAyYFJwSfB4th0OnjxqiRpAyeXyulJ6Mu
-	Edq2UrKDWjeJk8EtaUW3ey7AtB+dCAtGUv8TYsGOb9koBvOf90Brzq7DPgcRdZMlrOX266VNxjt
-	uU6uk0CyVpDD6O6fsqfU4aY3Jgn3nc58be93jBZz3CNVMc1+OEjg==
-X-Gm-Gg: AfdE7cniO1Kjd20rK2xN9DL0qrCF8GbS4dT7iooHoc8Sv48ALCkhEmPQJDQ1HfBQleF
-	K0BvYnQ93pIAwzqUJ8Z2dyIjHBb8+pQrem5+Bxo/02xjv0W0drHT5t/wHZnxCI89c6bRiw97TWh
-	zsXKI/xKcj6V74k1EykITEDrfrl7vatTxAYYn+QgCmngGQK4R8+Z2B4oKtZGVsZe1O+mMx
-X-Received: by 2002:a05:622a:a587:b0:51a:8c9a:8fa9 with SMTP id d75a77b69052e-51cbf2ce4bfmr86919921cf.58.1783940788032;
-        Mon, 13 Jul 2026 04:06:28 -0700 (PDT)
-X-Received: by 2002:a05:622a:a587:b0:51a:8c9a:8fa9 with SMTP id
- d75a77b69052e-51cbf2ce4bfmr86919621cf.58.1783940787515; Mon, 13 Jul 2026
- 04:06:27 -0700 (PDT)
+        bh=U9tA3tFtTdnt2OcqRFhofQ3tr91DLiJW+I+IyBckjI8=;
+        b=hkyoZgJ0M6Sd/ijHDBUSngaK09/OpqQiLk2gIiPEYpV1cDlC6864gm04VWucax71wc
+         yjHs4ENsM7yAg/nx4Td0WrVzKLfFzeau1xrc+V6GmS41/z780QwMh4FH4H4pbAPQUYWQ
+         W/WEn0cYYdaQpkUMJGKC+vBX5lr+e5jw/jU34KFUkNIzP+oEWwZ1QHB0IpbNuBCEkprr
+         cX7BKujmadQHfEMVKcXVZQ0TueOYpdrPsBKt8FBdzUFB2sO/A4v1LUPWgOFnaqZ9xL5B
+         5n0hww+DNsDvPG9yBQoWiySh7li8ttQ8UT453kX7ekbbjwPkHutMsuXh1mzG69pFJk7i
+         eiww==
+X-Forwarded-Encrypted: i=1; AHgh+RpRgyl2ecUu3Yv4djvKPOVK/b2/bEUaHPmIqDgcfa9RR9snT9840+4IQ4tRru225YOOZQigr2llQq5XM33Qcg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx8MXW+61xkcO7bupZuzq0aFz9RDmtQy4vqzEjUuN/yPX6EyBI3
+	J5P292Srl26EJnEG4xXnoINPyPrHTSvkmTopTLzJfTot6ap18WBWsAhK8E9CCxo29tjiVeXIAdn
+	KUEH1xv1CQ+E+9E7wcKsD9yYm79N1uWvb4yk8JXLN9manzNQZEFL/kjocC9nyF9lIUqWXNNG6Em
+	4GVcLvGm59QUyzyTzt2JGoKO5Yd/u4KIA1KooD0zSdFsnUA+QqSA==
+X-Gm-Gg: AfdE7clj93WGzmfrEzzKuOA4SUNJtlHLp0k5/XxSvvOd9vf+LlsaaXhvMXE4rQcXMWm
+	gFgnZCyf0S0CgzgQm/QmW6Lj3OnDy0eSEXJz7m8LzfXeRwZU31dpLHGsQw1qDzw9OjuFbyeKYaw
+	9TSPjofIqkEutWVzDz0QrvPaIvZiQw5V5IQgYZIjo9kJf/e31Vm82uBKcTzmQo6671sbGZ
+X-Received: by 2002:a05:620a:2950:b0:92e:cd78:9244 with SMTP id af79cd13be357-92ef2e26c76mr815024485a.84.1783940791831;
+        Mon, 13 Jul 2026 04:06:31 -0700 (PDT)
+X-Received: by 2002:a05:620a:2950:b0:92e:cd78:9244 with SMTP id
+ af79cd13be357-92ef2e26c76mr815022285a.84.1783940791449; Mon, 13 Jul 2026
+ 04:06:31 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260709084635.24912-1-angelogioacchino.delregno@collabora.com> <20260709084635.24912-3-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20260709084635.24912-3-angelogioacchino.delregno@collabora.com>
+References: <20260709084635.24912-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260709084635.24912-1-angelogioacchino.delregno@collabora.com>
 From: Ulf Hansson <ulf.hansson@oss.qualcomm.com>
-Date: Mon, 13 Jul 2026 13:06:16 +0200
-X-Gm-Features: AUfX_mxflP0lESSPqjO-mD1cf2nnww1_fwPNQR52YPdL25avy66WeDOCLfhgEZ4
-Message-ID: <CAPx+jO_CAWoNtW88OBroUxTWCXz0SKH3c0uPM2vJYSR65xdMKA@mail.gmail.com>
-Subject: Re: [PATCH v3 2/5] pmdomain: mediatek: Fix possible nullptr KP in HWV cleanup/on-check
+Date: Mon, 13 Jul 2026 13:06:20 +0200
+X-Gm-Features: AUfX_myTjQitf9mLWKDNP_7823p7zFAcgW6QTMG2dOgcyWT7UVSwFMCpk7KVrgU
+Message-ID: <CAPx+jO-_KLM1Rhu0G=hOx0aLr+XT6X9w9gLui=aHjSBgDkLMoQ@mail.gmail.com>
+Subject: Re: [PATCH v3 0/5] pmdomains: Fixes and add support for HFRP Direct
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: ulfh@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
         matthias.bgg@gmail.com, nfraprado@collabora.com,
@@ -124,36 +124,35 @@ Cc: ulfh@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
         kernel@collabora.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzEzMDExNSBTYWx0ZWRfX9nm4sdhnrdPN
- 3c6v4RFqlkIYTSehIiDVSslofj6BJcPjFq17nNV0aQLQ9GQoHqMGe92728fc2ah2rmM4d2aW063
- jNrBR9lQrydvZurXIi1Sk5U45QLSq54=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzEzMDExNSBTYWx0ZWRfXyKUhtComgrOm
- PhANrOkgSUQfKwgPpDX15TN3TbYWWGoQA6FwqGg8oDtwVkRbJYXBBGEYwJJD9/iBBODyy6m+1Bs
- 0Vinum098q/scIFe4WB0rBu06DiZcacoD2MviZ/cYyl6Tld5GOW2oLJ721b/LfaxR63j1q+rSAq
- Z97BmxFFFLbEz+upYVtmiCHl2AHqSgeG8LSi+Z2Vv44522tmuK7uOlMSSLaNVliS94bUB7PWApl
- 41y2tv0Obu8Et8rvDsK0YoW38FyHUn+loB+KulsvJdFRU5JbwJ98S0eno62vH2qjSmgT6utL8a+
- 32hKM7tNnoc79bZdmwliTFkYg5Sm3b7ShJ8AHc6hEBWnWal/4VCzjBM3B8Bk67OkgPhjIjpRL/v
- +/QoyQ6KlkrWJvKpU07q0F8AbVuOi0t3nFM0YdRBmzQV1PpAmcrKPAjlpTbIz4KKu94au7zdh6x
- 9En7kEUMeL5gBxzX78Q==
-X-Proofpoint-ORIG-GUID: lQ_8QdY7-2NUR8pK8t1SCmMwz3LnJ08p
-X-Authority-Analysis: v=2.4 cv=DbcnbPtW c=1 sm=1 tr=0 ts=6a54c6b4 cx=c_pps
- a=WeENfcodrlLV9YRTxbY/uA==:117 a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10
+X-Proofpoint-GUID: cG63NgG6sgx_jwS22ASVmPJ0hfedj-vi
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzEzMDExNSBTYWx0ZWRfX45juT7R8lOTC
+ cZqZA3PzvLMZzCH9n4k2l/8FmgwTZu5tAH5SD4hmHmLCsqzH4ZQleIygq9dy0kypwrzxy9rgtzU
+ inIGZfP+giuBlA9AD55o7PxSY5GrS9SfW3oFIeLk4tEVSsFXRegyLOk88xIjs385RyXmoyXVqGA
+ ey7rYLugT60UiZKwe3A/bdrtsw0NtJ7SSAd3UFxU7payXnyysi/3m9CRofwJumzR5ei1P0ZTuXP
+ XUGV+DjV4Ynir9ZBiUpZfUdniuZCD+OlMEq3zfQ0XIfYJYomKNC/5p3eKvda8hTrFKMOT6p6z9D
+ zh0VxmYRAWXqhYXJxMaJ04JTrwvM5fX0E2mOrDpgJZg6FfdGA9Jd5COpwfZjKtSPDezXuaLYaCP
+ 2kEEIxKe+u9HY0lspdzilM3dXuPJtb2IEiFZLY5+g1bmUVXLF4+2adHyGHDBjOzOthZ+RIlwPZp
+ RWtVSFLIEDohuh3Jiaw==
+X-Proofpoint-ORIG-GUID: cG63NgG6sgx_jwS22ASVmPJ0hfedj-vi
+X-Authority-Analysis: v=2.4 cv=dZSwG3Xe c=1 sm=1 tr=0 ts=6a54c6b8 cx=c_pps
+ a=50t2pK5VMbmlHzFWWp8p/g==:117 a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10
  a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
- a=gowsoOTTUOVcmtlkKump:22 a=QX4gbG5DAAAA:8 a=Z1TsUI5AZlo4e0OQKm0A:9
- a=QEXdDO2ut3YA:10 a=kacYvNCVWA4VmyqE58fU:22 a=AbAUZ8qAyYyZVLSsDulk:22
-X-Proofpoint-GUID: lQ_8QdY7-2NUR8pK8t1SCmMwz3LnJ08p
+ a=eoimf2acIAo5FJnRuUoq:22 a=QX4gbG5DAAAA:8 a=1sG5g2DzjvmgYBam1ucA:9
+ a=QEXdDO2ut3YA:10 a=IoWCM6iH3mJn3m4BftBB:22 a=AbAUZ8qAyYyZVLSsDulk:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzEzMDExNSBTYWx0ZWRfX6O2mQdEJ4skq
+ VxETQpjI2k2gKWwdxtcJW9ghsAgtMdsfoeqNfvOff24G9dNN6Ar2131mmqUeR4/dietsGUVabb7
+ D2b95PYkfZO6lo3gYAo4t2NechrqD6k=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-07-13_02,2026-07-10_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0 impostorscore=0 malwarescore=0 priorityscore=1501
- phishscore=0 suspectscore=0 bulkscore=0 adultscore=0 spamscore=0
- clxscore=1015 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2607130115
+ bulkscore=0 priorityscore=1501 adultscore=0 malwarescore=0 spamscore=0
+ phishscore=0 impostorscore=0 lowpriorityscore=0 clxscore=1015 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607130115
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_040629_769089_443981EC 
-X-CRM114-Status: GOOD (  31.63  )
+X-CRM114-CacheID: sfid-20260713_040633_408903_0D1AACAF 
+X-CRM114-Status: GOOD (  19.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -171,159 +170,48 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Thu, Jul 9, 2026 at 10:46=E2=80=AFAM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> Should probe fail for HW_VOTER type power domains, this driver was
-> unconditionally trying to perform cleanup for DIRECT_CTL domains,
-> but only after checking if the target domain is powered on... with
-> the DIRECT_CTL scpsys_domain_is_on() code again.
+> Changes in v3:
+>  - Added new Fixes commit for possible null pointer kp during cleanup
+>    of internal on-check
+>  - Added proper error state cleanup support for SIMPLE_PWRSEQ domains
 >
-> And there's more: the scpsys_domain_is_on() function is also being
-> unconditionally used in the probe path, for any power domain that
-> has flag MTK_SCPD_KEEP_DEFAULT_OFF!
+> Changes in v2:
+>  - Fixed return value checking in power off path
 >
-> This bug was never experienced by anyone because the HWV domains
-> never failed probe, and because none of those is declared with the
-> aforementioned flag - but it's still something critical.
+> This series adds support for the DirectCTL HFRPSYS power domains found
+> on the MT8196 SoC (the ones without HW Voter support) and also adds a
+> fix to respect the power domain relationships during error cleanup,
+> which avoids HW lockups in case probe deferrals in the specific case
+> of "almost fully probed" power domains (where most of them probed and
+> got set up but a probe deferral happened almost at the end), behavior
+> seen on the MT8189 SoC during bringup (but honestly I have no idea how
+> are the current ones working fine without this fix...!).
 >
-> In order to fix this, add a check for MTCMOS Type and, based on
-> that, call the correct functions for an "is on" check, and also
-> do the same for the cleanup path, calling the correct functions
-> for the "power off" action.
+> This was tested on MT8173, MT8186, MT8188, MT8189, MT8192, MT8195 and
+> also on MT8196, over months of development, both manually and over CI,
+> with no regressions detected.
 >
-> For the latter, since there's a call to pm_genpd_remove() right
-> before calling power_off, be cautious and add a variation of the
-> power off functions (with a _internal suffix) for those to get a
-> pointer to scpsys_domain instead of one to generic_pm_domain as,
-> even if that's still working, this is way too much fragile and
-> would break at some point.
 >
-> Fixes: 88914db077b6 ("pmdomain: mediatek: Add support for Hardware Voter =
-power domains")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-
-Applied for fixes and by adding a stable tag, thanks!
-
-Kind regards
-Uffe
-
-
-> ---
->  drivers/pmdomain/mediatek/mtk-pm-domains.c | 40 ++++++++++++++++++----
->  1 file changed, 33 insertions(+), 7 deletions(-)
+> AngeloGioacchino Del Regno (5):
+>   dt-bindings: power: mediatek: Add support for MT8196 direct HFRP
+>   pmdomain: mediatek: Fix possible nullptr KP in HWV cleanup/on-check
+>   pmdomain: mediatek: Respect PD relationships during error cleanup
+>   pmdomain: mediatek: Add support for Direct CTL simple power sequence
+>   pmdomain: mediatek: Add support for MT8196 HFRP DirectCTL domains
 >
-> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomai=
-n/mediatek/mtk-pm-domains.c
-> index e1cfd4223473..f0a6339affd7 100644
-> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> @@ -393,9 +393,8 @@ static int scpsys_hwv_power_on(struct generic_pm_doma=
-in *genpd)
->         return ret;
->  };
+>  .../power/mediatek,power-controller.yaml      |   1 +
+>  drivers/pmdomain/mediatek/mt8196-pm-domains.h |  27 +++
+>  drivers/pmdomain/mediatek/mtk-pm-domains.c    | 184 ++++++++++++++----
+>  drivers/pmdomain/mediatek/mtk-pm-domains.h    |   1 +
+>  .../dt-bindings/power/mediatek,mt8196-power.h |   4 +
+>  5 files changed, 184 insertions(+), 33 deletions(-)
 >
-> -static int scpsys_hwv_power_off(struct generic_pm_domain *genpd)
-> +static int scpsys_hwv_power_off_internal(struct scpsys_domain *pd)
->  {
-> -       struct scpsys_domain *pd =3D container_of(genpd, struct scpsys_do=
-main, genpd);
->         const struct scpsys_hwv_domain_data *hwv =3D pd->hwv_data;
->         struct scpsys *scpsys =3D pd->scpsys;
->         u32 val;
-> @@ -464,6 +463,13 @@ static int scpsys_hwv_power_off(struct generic_pm_do=
-main *genpd)
->         return ret;
->  };
->
-> +static int scpsys_hwv_power_off(struct generic_pm_domain *genpd)
-> +{
-> +       struct scpsys_domain *pd =3D container_of(genpd, struct scpsys_do=
-main, genpd);
-> +
-> +       return scpsys_hwv_power_off_internal(pd);
-> +}
-> +
->  static int scpsys_ctl_pwrseq_on(struct scpsys_domain *pd)
->  {
->         struct scpsys *scpsys =3D pd->scpsys;
-> @@ -694,9 +700,8 @@ static int scpsys_power_on(struct generic_pm_domain *=
-genpd)
->         return ret;
->  }
->
-> -static int scpsys_power_off(struct generic_pm_domain *genpd)
-> +static int scpsys_power_off_internal(struct scpsys_domain *pd)
->  {
-> -       struct scpsys_domain *pd =3D container_of(genpd, struct scpsys_do=
-main, genpd);
->         struct scpsys *scpsys =3D pd->scpsys;
->         bool tmp;
->         int ret;
-> @@ -737,6 +742,13 @@ static int scpsys_power_off(struct generic_pm_domain=
- *genpd)
->         return 0;
->  }
->
-> +static int scpsys_power_off(struct generic_pm_domain *genpd)
-> +{
-> +       struct scpsys_domain *pd =3D container_of(genpd, struct scpsys_do=
-main, genpd);
-> +
-> +       return scpsys_power_off_internal(pd);
-> +}
-> +
->  static struct
->  generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct d=
-evice_node *node)
->  {
-> @@ -884,7 +896,14 @@ generic_pm_domain *scpsys_add_one_domain(struct scps=
-ys *scpsys, struct device_no
->          * late_init time.
->          */
->         if (MTK_SCPD_CAPS(pd, MTK_SCPD_KEEP_DEFAULT_OFF)) {
-> -               if (scpsys_domain_is_on(pd))
-> +               bool domain_is_on;
-> +
-> +               if (scpsys->soc_data->type =3D=3D SCPSYS_MTCMOS_TYPE_HW_V=
-OTER)
-> +                       domain_is_on =3D scpsys_hwv_domain_is_enable_done=
-(pd);
-> +               else
-> +                       domain_is_on =3D scpsys_domain_is_on(pd);
-> +
-> +               if (domain_is_on)
->                         dev_warn(scpsys->dev,
->                                  "%pOF: A default off power domain has be=
-en ON\n", node);
->         } else {
-> @@ -973,6 +992,7 @@ static int scpsys_add_subdomain(struct scpsys *scpsys=
-, struct device_node *paren
->
->  static void scpsys_remove_one_domain(struct scpsys_domain *pd)
->  {
-> +       struct scpsys *scpsys =3D pd->scpsys;
->         int ret;
->
->         /*
-> @@ -984,8 +1004,14 @@ static void scpsys_remove_one_domain(struct scpsys_=
-domain *pd)
->                 dev_err(pd->scpsys->dev,
->                         "failed to remove domain '%s' : %d - state may be=
- inconsistent\n",
->                         pd->genpd.name, ret);
-> -       if (scpsys_domain_is_on(pd))
-> -               scpsys_power_off(&pd->genpd);
-> +
-> +       if (scpsys->soc_data->type =3D=3D SCPSYS_MTCMOS_TYPE_HW_VOTER) {
-> +               if (scpsys_hwv_domain_is_enable_done(pd))
-> +                       scpsys_hwv_power_off_internal(pd);
-> +       } else {
-> +               if (scpsys_domain_is_on(pd))
-> +                       scpsys_power_off_internal(pd);
-> +       }
->
->         clk_bulk_put(pd->num_clks, pd->clks);
->         clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
 > --
 > 2.54.0
 >
+
+The v3 series applied for next, thanks!
+
+Kind regards
+Uffe
 
