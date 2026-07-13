@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A2CAC43458
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 08:01:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C37D3C44501
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 08:08:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tK4Sfl1ArDWMMCYL9061aC3e4WaC2LZQ9aUOAi5ns5Y=; b=lzD0NleMb955wcrcSQaChIe3pB
-	Rr6VcGY9qKA6S0KdR2DC++GoYC49meUCfo/GCIxH1jMpB3jRfsudvL7r/ZCiQVbkwSwUuNZ2wD0LM
-	5ojcw70/102PDx4cy46t1wT33W3V9B6mnoZjlg3YlN75oQGL3oDXiWwEKojXgWpyrU9qza7knsmq8
-	y5LxXhpqi1MdhjN3ppilMxZfsP+lgg3PKS6/dYTZ7X0BjgTJvLYu98/Yxqgc30Txrvd99fBBV+l1C
-	mF/r4ny4YU0OgMyTQfbM/0nvbrG/j/RskAJGATLQtX2lEg0rqVR2bqYK9VFaqFLk3D9fthahhi+KO
-	QeZFjKqg==;
+	bh=MEeeYFyr6eqQ/yT6VFmPtdxuuTe5rnxsXWSzOBfUurk=; b=zclqhPoGCAfST6MSSersQ7EpEo
+	RQPjcLagBJDDh7Gkf0cItnXQuR1pkY4LugObtwrxRV3ZM6z90P3XeLmChJga9XVjwewLKNwKc2tme
+	sEc7IpL2aAnDeHm6O43rj5uoHeeOv5T+J09fk/D/8um+KwlT2u2ljyWOQllPLzn3supSq6g4UAokG
+	KmiQOCCFmbtk4z2I4R8i/f+7DnEv/O9176HqIJLvCX+fyyXtRqgvFI8x1OWOmOXfFC179XGdbkppj
+	zJS+H9kDRSv8Hx5ZE1cCrlCDil3WyFzJ8DUxtRM2CpiCLlcYani42BYekbdyaIsLTojwkEvEeGf8g
+	becGoRzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjBbV-00000008W6L-23Ae;
-	Mon, 13 Jul 2026 08:01:29 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wjBi8-00000008WqV-33PT;
+	Mon, 13 Jul 2026 08:08:20 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjBbN-00000008W5Z-1dM8;
-	Mon, 13 Jul 2026 08:01:22 +0000
+	id 1wjBi5-00000008Woj-1Bvi;
+	Mon, 13 Jul 2026 08:08:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783929673;
-	bh=boNSAPHabbNMFLaiiOKh1JEp4/UvbPj3aYE4dAGKnec=;
+	s=mail; t=1783930094;
+	bh=5Gulp6YHmUD9b3fvimUkpa5ZWbQVBzBtsKiZATPO1D4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Q538i5cPbR+VD5oXM9u2/HO4AYtcZbmWXBWp2sJP5DYFBOSs1c+RrY7rGas1U62E2
-	 19IIHLUCTX8j383cf49dCNpXO2Wtcn4EJVBz+kXwIoxfY9+OdAbK5hWINPUGOvoI3e
-	 epL1LuZ0xzTaMlUej9MhdY//HuKv8eI6rzPvPwnIUekhywc8pabFr/5eKKzM7DK4va
-	 1ifDhoeFyP2qTb6jfPGLMD1t3XDuUqRPfe6ayK4idDeXNKEQFjzxjg6J8Qb2ouz8Kl
-	 8kywXXpZbUGAS9jqzVsJHKET8vqVQBJ6lrQL9TUXAWAEzNRgzHkFX9FpEZq+yePQCk
-	 wlIeQnkC2e01w==
+	b=Ks9TfYWcOMNtwHAMq9y2TshVKSqsPnTrzZLVu1MdLLeTHQhN2SD9OQ7jRtkwzMYO2
+	 ernmPMaCIpBClv0WD5UNggmoRK7FkNXXJSchLPQpH2DVZiu+4mMjpUFaMWH9P2O4Kz
+	 emLNvqkYYieQCrXPug3DIaeZhnS3R8AuE573trGH7vwjMepbGKeSCAz8EZB3oOM6Fy
+	 HwVsqquKTuYgSi/RxKQxdMIBOmm3tq91tlxQ7RY/YnOjVDjF6n8kqRNoH+POANw3F/
+	 2EF3WXoaiNyxJqi6PCQ/8kNw/sE2OoQznhXOg8MWWgjtoAJ+rld37FnZNB3APQjA4B
+	 qAZq2iyUALtHQ==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B31E717E0076;
-	Mon, 13 Jul 2026 10:01:12 +0200 (CEST)
-Message-ID: <89e4eb3d-a61c-410e-8ad5-e845b07f8029@collabora.com>
-Date: Mon, 13 Jul 2026 10:01:12 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 722CE17E05D3;
+	Mon, 13 Jul 2026 10:08:13 +0200 (CEST)
+Message-ID: <91800497-a452-40fb-9520-a9926b437eed@collabora.com>
+Date: Mon, 13 Jul 2026 10:08:12 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] pinctrl: mediatek: Add driver for MT6858
+Subject: Re: [PATCH 1/3] dt-bindings: pinctrl: mediatek: Add MT6858
 To: nikolai.burov@jolla.com, Linus Walleij <linusw@kernel.org>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
@@ -57,15 +57,15 @@ Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org,
  Nikolai Burov <nikolai.burov+review@abscue.de>
 References: <20260710-mt6858-pinctrl-v1-0-f75ab558f0df@jolla.com>
- <20260710-mt6858-pinctrl-v1-2-f75ab558f0df@jolla.com>
+ <20260710-mt6858-pinctrl-v1-1-f75ab558f0df@jolla.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260710-mt6858-pinctrl-v1-2-f75ab558f0df@jolla.com>
+In-Reply-To: <20260710-mt6858-pinctrl-v1-1-f75ab558f0df@jolla.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_010121_634251_01883530 
-X-CRM114-Status: GOOD (  26.27  )
+X-CRM114-CacheID: sfid-20260713_010817_488941_A827BA52 
+X-CRM114-Status: GOOD (  18.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,237 +83,234 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 7/10/26 17:00, Nikolai Burov via B4 Relay wrote:
 > From: Nikolai Burov <nikolai.burov@jolla.com>
 > 
-> Add a pinctrl driver for the MT6858 (MediaTek Dimensity 7100) SoC.
+> Add new DT bindings for the pin controller found in the MT6858
+> (MediaTek Dimensity 7100) SoC.
 > 
 > Signed-off-by: Nikolai Burov <nikolai.burov@jolla.com>
-
-Thanks for the patch!
-
-However, there are a few things to improve; check below.
-
 > ---
->   drivers/pinctrl/mediatek/Kconfig              |   10 +
->   drivers/pinctrl/mediatek/Makefile             |    1 +
->   drivers/pinctrl/mediatek/pinctrl-mt6858.c     | 1408 +++++++++++++++
->   drivers/pinctrl/mediatek/pinctrl-mtk-mt6858.h | 2301 +++++++++++++++++++++++++
->   4 files changed, 3720 insertions(+)
+>   .../bindings/pinctrl/mediatek,mt6858-pinctrl.yaml  | 190 +++++++++++++++++++++
+>   1 file changed, 190 insertions(+)
 > 
-> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-> index 97980cc28b9c..95c5250150d7 100644
-> --- a/drivers/pinctrl/mediatek/Kconfig
-> +++ b/drivers/pinctrl/mediatek/Kconfig
-> @@ -166,6 +166,16 @@ config PINCTRL_MT6797
->   	default ARM64 && ARCH_MEDIATEK
->   	select PINCTRL_MTK_PARIS
->   
-> +config PINCTRL_MT6858
-> +	bool "MediaTek MT6858 pin control"
-> +	depends on OF
-> +	depends on ARM64 || COMPILE_TEST
-> +	default ARM64 && ARCH_MEDIATEK
-> +	select PINCTRL_MTK_PARIS
-> +	help
-> +	  Say yes here to support pin controller and gpio driver
-> +	  on the MediaTek MT6858 SoC.
-> +
->   config PINCTRL_MT6878
->   	bool "MediaTek MT6878 pin control"
->   	depends on OF
-> diff --git a/drivers/pinctrl/mediatek/Makefile b/drivers/pinctrl/mediatek/Makefile
-> index 6dc17b0c23f9..6ee3833dc6e2 100644
-> --- a/drivers/pinctrl/mediatek/Makefile
-> +++ b/drivers/pinctrl/mediatek/Makefile
-> @@ -22,6 +22,7 @@ obj-$(CONFIG_PINCTRL_MT6765)		+= pinctrl-mt6765.o
->   obj-$(CONFIG_PINCTRL_MT6779)		+= pinctrl-mt6779.o
->   obj-$(CONFIG_PINCTRL_MT6795)		+= pinctrl-mt6795.o
->   obj-$(CONFIG_PINCTRL_MT6797)		+= pinctrl-mt6797.o
-> +obj-$(CONFIG_PINCTRL_MT6858)		+= pinctrl-mt6858.o
->   obj-$(CONFIG_PINCTRL_MT6878)		+= pinctrl-mt6878.o
->   obj-$(CONFIG_PINCTRL_MT6893)		+= pinctrl-mt6893.o
->   obj-$(CONFIG_PINCTRL_MT7622)		+= pinctrl-mt7622.o
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6858.c b/drivers/pinctrl/mediatek/pinctrl-mt6858.c
+> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6858-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6858-pinctrl.yaml
 > new file mode 100644
-> index 000000000000..eeb4a6bbc0fe
+> index 000000000000..263830a6e9db
 > --- /dev/null
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mt6858.c
-> @@ -0,0 +1,1408 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Copyright (c) 2025 MediaTek Inc.
-> + *               Alice Chao <alice.chao@mediatek.com>
-> + * Copyright (c) 2026 Jolla Mobile Ltd
-> + *               Nikolai Burov <nikolai.burov@jolla.com>
-> + */
+> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6858-pinctrl.yaml
+> @@ -0,0 +1,190 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/pinctrl/mediatek,mt6858-pinctrl.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +#include <linux/module.h>
-> +#include "pinctrl-mtk-mt6858.h"
-> +#include "pinctrl-paris.h"
+> +title: MediaTek MT6858 Pin Controller
 > +
-
-..snip..
-
-> +static const struct mtk_pin_reg_calc mt6858_reg_cals[PINCTRL_PIN_REG_MAX] = {
-> +	[PINCTRL_PIN_REG_MODE] = MTK_RANGE(mt6858_pin_mode_range),
-> +	[PINCTRL_PIN_REG_DIR] = MTK_RANGE(mt6858_pin_dir_range),
-> +	[PINCTRL_PIN_REG_DI] = MTK_RANGE(mt6858_pin_di_range),
-> +	[PINCTRL_PIN_REG_DO] = MTK_RANGE(mt6858_pin_do_range),
-> +	[PINCTRL_PIN_REG_SR] = MTK_RANGE(mt6858_pin_dir_range),
-
-This is Slew Rate, not Direction... And I think this is wrong.
-
-If you don't know where the slew rate registers are, or if that is an unsupported
-operation, just omit PINCTRL_PIN_REG_SR.
-
-> +	[PINCTRL_PIN_REG_SMT] = MTK_RANGE(mt6858_pin_smt_range),
-> +	[PINCTRL_PIN_REG_IES] = MTK_RANGE(mt6858_pin_ies_range),
-> +	[PINCTRL_PIN_REG_PU] = MTK_RANGE(mt6858_pin_pu_range),
-> +	[PINCTRL_PIN_REG_PD] = MTK_RANGE(mt6858_pin_pd_range),
-> +	[PINCTRL_PIN_REG_DRV] = MTK_RANGE(mt6858_pin_drv_range),
-> +	[PINCTRL_PIN_REG_PUPD] = MTK_RANGE(mt6858_pin_pupd_range),
-> +	[PINCTRL_PIN_REG_R0] = MTK_RANGE(mt6858_pin_r0_range),
-> +	[PINCTRL_PIN_REG_R1] = MTK_RANGE(mt6858_pin_r1_range),
-> +	[PINCTRL_PIN_REG_DRV_ADV] = MTK_RANGE(mt6858_pin_drv_adv_range),
-> +	[PINCTRL_PIN_REG_RSEL] = MTK_RANGE(mt6858_pin_rsel_range),
-> +};
+> +maintainers:
+> +  - Nikolai Burov <nikolai.burov@jolla.com>
 > +
-> +static const char * const mt6858_pinctrl_register_base_names[] = {
-> +	"base", "lm", "rb", "bm2", "bm", "bm1", "lt", "lt1", "rt", "rt1",
+> +description:
+> +  The MediaTek's MT6858 Pin controller is used to control SoC pins.
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt6858-pinctrl
+> +
+> +  reg:
+> +    items:
+> +      - description: gpio base
+> +      - description: lm group IO
+> +      - description: rb group IO
+> +      - description: bm2 group IO
+> +      - description: bm group IO
+> +      - description: bm1 group IO
 
-Fix ordering:
+bm group io
+bm1 group io
+bm2 group io
 
-"base", "lm", "rb", "bm", "bm1", "bm2", "lt", "lt1", "rt", "rt1",
+> +      - description: lt group IO
+> +      - description: lt1 group IO
+> +      - description: rt group IO
+> +      - description: rt1 group IO
+> +      - description: eint-s group IO
+> +      - description: eint-w group IO
+> +      - description: eint-e group IO
+> +      - description: eint-c group IO
 
-> +};
-> +
-> +static const struct mtk_eint_hw mt6858_eint_hw = {
-> +	.port_mask = 0xf,
-> +	.ports     = 3,
-> +	.ap_num    = 217,
-> +	.db_cnt    = 36,
-> +	.db_time   = debounce_time_mt6878,
-> +};
-> +
-> +static const struct mtk_pin_soc mt6858_data = {
-> +	.reg_cal = mt6858_reg_cals,
-> +	.pins = mtk_pins_mt6858,
-> +	.npins = ARRAY_SIZE(mtk_pins_mt6858),
-> +	.ngrps = ARRAY_SIZE(mtk_pins_mt6858),
-> +	.eint_hw = &mt6858_eint_hw,
-> +	.eint_pin = eint_pins_mt6858,
-> +	.nfuncs = 16,
-> +	.gpio_m = 0,
-> +	.base_names = mt6858_pinctrl_register_base_names,
-> +	.nbase_names = ARRAY_SIZE(mt6858_pinctrl_register_base_names),
-> +	.pull_type = mt6858_pull_type,
-> +	.bias_set_combo = mtk_pinconf_bias_set_combo,
-> +	.bias_get_combo = mtk_pinconf_bias_get_combo,
-> +	.drive_set = mtk_pinconf_drive_set_rev1,
-> +	.drive_get = mtk_pinconf_drive_get_rev1,
-> +	.adv_drive_get = mtk_pinconf_adv_drive_get_raw,
-> +	.adv_drive_set = mtk_pinconf_adv_drive_set_raw,
-> +};
-> +
-> +static const struct of_device_id mt6858_pinctrl_of_match[] = {
-> +	{ .compatible = "mediatek,mt6858-pinctrl", .data = &mt6858_data },
-> +	{ }
-
-	{ /* sentinel */ }
-
-> +};
-> +
-> +static struct platform_driver mt6858_pinctrl_driver = {
-> +	.driver = {
-> +		.name = "mt6858-pinctrl",
-> +		.of_match_table = mt6858_pinctrl_of_match,
-> +		.pm = &mtk_paris_pinctrl_pm_ops,
-
-.pm = pm_sleep_ptr(&mtk_paris_pinctrl_pm_ops),
-
-> +	},
-> +	.probe = mtk_paris_pinctrl_probe,
-> +};
-> +
-> +static int __init mt6858_pinctrl_init(void)
-> +{
-> +	return platform_driver_register(&mt6858_pinctrl_driver);
-> +}
-> +arch_initcall(mt6858_pinctrl_init);
-> +
-> +MODULE_DESCRIPTION("MediaTek MT6858 Pinctrl Driver");
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-mt6858.h b/drivers/pinctrl/mediatek/pinctrl-mtk-mt6858.h
-> new file mode 100644
-> index 000000000000..f6d2ae2fd07e
-> --- /dev/null
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-mt6858.h
-> @@ -0,0 +1,2301 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/*
-> + * Copyright (c) 2025 MediaTek Inc.
-> + *               Alice Chao <alice.chao@mediatek.com>
-> + * Copyright (c) 2026 Jolla Mobile Ltd
-> + *               Nikolai Burov <nikolai.burov@jolla.com>
-> + */
-> +
-> +#ifndef __PINCTRL_MTK_MT6858_H
-> +#define __PINCTRL_MTK_MT6858_H
-> +
-> +#include "pinctrl-paris.h"
-> +
-> +#define MTK_PIN_VEINT(_number)			\
-> +	MTK_PIN(				\
-> +		_number, "veint" #_number,	\
-> +		MTK_EINT_FUNCTION(0, _number),	\
-> +		DRV_GRP4,			\
-> +		MTK_FUNCTION(0, NULL)		\
-> +	)
-> +
-> +static const struct mtk_pin_desc mtk_pins_mt6858[] = {
-
-..snip..
+description: eint-south group io
+eint-west
+eint-east
+eint-center
 
 > +
-> +static struct mtk_eint_pin eint_pins_mt6858[] = {
+> +  reg-names:
+> +    items:
+> +      - const: base
+> +      - const: lm
+> +      - const: rb
+> +      - const: bm2
+> +      - const: bm
+> +      - const: bm1
 
-..snip..
+Obviously, same comment applies here.
 
-> +	MTK_EINT_PIN(119, 0, 72, 0),
-> +	MTK_EINT_PIN(120, 0, 73, 0),
-> +	MTK_EINT_PIN(121, 0, 74, 0),
+> +      - const: lt
+> +      - const: lt1
+> +      - const: rt
+> +      - const: rt1
+> +      - const: eint-s
+> +      - const: eint-w
+> +      - const: eint-e
+> +      - const: eint-c
 
-Looks like you're missing ~70 pins here?
+eint0
+eint1
+eint2
+eint3
 
-If those have no EINT support, you can declare them as
-
-	MTK_EINT_PIN(122, EINT_INVALID_BASE, 0, 0),
-
-...or you can add a macro to add a (sequential) range of pins with no EINT support.
+P.S.: Don't forget to update the example too!
 
 Cheers,
 Angelo
 
-> +	MTK_EINT_PIN(197, 3, 0, 0),
-> +	MTK_EINT_PIN(198, 3, 1, 0),
-> +	MTK_EINT_PIN(199, 3, 2, 0),
-> +	MTK_EINT_PIN(200, 3, 3, 0),
-> +	MTK_EINT_PIN(201, 3, 4, 0),
-> +	MTK_EINT_PIN(202, 3, 5, 0),
-> +	MTK_EINT_PIN(203, 3, 6, 0),
-> +	MTK_EINT_PIN(204, 3, 7, 0),
-> +	MTK_EINT_PIN(205, 3, 8, 0),
-> +	MTK_EINT_PIN(206, 3, 9, 0),
-> +	MTK_EINT_PIN(207, 3, 10, 0),
-> +	MTK_EINT_PIN(208, 3, 11, 0),
-> +	MTK_EINT_PIN(209, 3, 12, 0),
-> +	MTK_EINT_PIN(210, 3, 13, 0),
-> +	MTK_EINT_PIN(211, 3, 14, 0),
-> +	MTK_EINT_PIN(212, 3, 15, 0),
-> +	MTK_EINT_PIN(213, 3, 16, 0),
-> +	MTK_EINT_PIN(214, 3, 17, 0),
-> +	MTK_EINT_PIN(215, 3, 18, 0),
-> +	MTK_EINT_PIN(216, 3, 19, 0),
-> +};
 > +
-> +#endif /* __PINCTRL_MTK_MT6858_H */
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  interrupt-controller: true
+> +
+> +  '#interrupt-cells':
+> +    const: 2
+> +
+> +  gpio-controller: true
+> +
+> +  '#gpio-cells':
+> +    const: 2
+> +
+> +  gpio-ranges:
+> +    maxItems: 1
+> +
+> +  gpio-line-names: true
+> +
+> +# PIN CONFIGURATION NODES
+> +patternProperties:
+> +  '-pins$':
+> +    type: object
+> +    additionalProperties: false
+> +
+> +    patternProperties:
+> +      '^pins':
+> +        type: object
+> +        $ref: /schemas/pinctrl/pincfg-node.yaml
+> +        additionalProperties: false
+> +        description:
+> +          A pinctrl node should contain at least one subnodes representing the
+> +          pinctrl groups available on the machine. Each subnode will list the
+> +          pins it needs, and how they should be configured, with regard to muxer
+> +          configuration, pullups, drive strength, input enable/disable and input
+> +          schmitt.
+> +
+> +        properties:
+> +          pinmux:
+> +            description:
+> +              Integer array, represents gpio pin number and mux setting.
+> +              Supported pin number and mux varies for different SoCs, and are
+> +              defined as macros in arch/arm64/boot/dts/mediatek/mt6858-pinfunc.h
+> +              for this SoC.
+> +
+> +          drive-strength:
+> +            enum: [2, 4, 6, 8, 10, 12, 14, 16]
+> +
+> +          bias-pull-down:
+> +            oneOf:
+> +              - type: boolean
+> +                description: normal pull down.
+> +              - enum: [100, 101, 102, 103]
+> +                description: PUPD/R1/R0 pull down type. See MTK_PUPD_SET_R1R0_
+> +                  defines in dt-bindings/pinctrl/mt65xx.h.
+> +              - enum: [200, 201, 202, 203]
+> +                description: RSEL pull down type. See MTK_PULL_SET_RSEL_ defines
+> +                  in dt-bindings/pinctrl/mt65xx.h.
+> +
+> +          bias-pull-up:
+> +            oneOf:
+> +              - type: boolean
+> +                description: normal pull up.
+> +              - enum: [100, 101, 102, 103]
+> +                description: PUPD/R1/R0 pull up type. See MTK_PUPD_SET_R1R0_
+> +                  defines in dt-bindings/pinctrl/mt65xx.h.
+> +              - enum: [200, 201, 202, 203]
+> +                description: RSEL pull up type. See MTK_PULL_SET_RSEL_ defines
+> +                  in dt-bindings/pinctrl/mt65xx.h.
+> +
+> +          bias-disable: true
+> +
+> +          output-high: true
+> +
+> +          output-low: true
+> +
+> +          input-enable: true
+> +
+> +          input-disable: true
+> +
+> +          input-schmitt-enable: true
+> +
+> +          input-schmitt-disable: true
+> +
+> +        required:
+> +          - pinmux
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - interrupt-controller
+> +  - '#interrupt-cells'
+> +  - gpio-controller
+> +  - '#gpio-cells'
+> +  - gpio-ranges
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/pinctrl/mt65xx.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #define PINMUX_GPIO149__FUNC_SCL5 (MTK_PIN_NO(149) | 1)
+> +    #define PINMUX_GPIO150__FUNC_SDA5 (MTK_PIN_NO(150) | 1)
+> +
+> +    pio: pinctrl@10005000 {
+> +        compatible = "mediatek,mt6858-pinctrl";
+> +        reg = <0x10005000 0x1000>,
+> +              <0x11b20000 0x1000>,
+> +              <0x11c10000 0x1000>,
+> +              <0x11d10000 0x1000>,
+> +              <0x11d30000 0x1000>,
+> +              <0x11d40000 0x1000>,
+> +              <0x11e20000 0x1000>,
+> +              <0x11e30000 0x1000>,
+> +              <0x11ed0000 0x1000>,
+> +              <0x11ee0000 0x1000>,
+> +              <0x11b00000 0x1000>,
+> +              <0x11e60000 0x1000>,
+> +              <0x11e80000 0x1000>,
+> +              <0x1c01e000 0x1000>;
+> +        reg-names = "base", "lm", "rb", "bm2", "bm", "bm1", "lt", "lt1",
+> +                    "rt", "rt1", "eint-s", "eint-w", "eint-e", "eint-c";
+> +        gpio-controller;
+> +        #gpio-cells = <2>;
+> +        gpio-ranges = <&pio 0 0 197>;
+> +        interrupt-controller;
+> +        interrupts = <GIC_SPI 239 IRQ_TYPE_LEVEL_HIGH 0>;
+> +        #interrupt-cells = <2>;
+> +
+> +        i2c5-pins {
+> +            pins {
+> +                pinmux = <PINMUX_GPIO149__FUNC_SCL5>,
+> +                         <PINMUX_GPIO150__FUNC_SDA5>;
+> +                bias-disable;
+> +            };
+> +        };
+> +    };
 > 
-
 
