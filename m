@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93CC8C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 19:58:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB6CDC43458
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 20:26:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
 	References:In-Reply-To:Date:To:From:Subject:Message-ID:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CJJJUb+0KXyvnArO5JZGKcENFf9sIlMFz2vTfW+st+A=; b=d6G4XSCUqItnV2pEsHxexvt7rj
-	IICKGD5avN2jeZ+pjEZdChqWwSDvArsm0/NVI6sKTgRqkCD4g4rRCSZd6OmG6pLXJYGzkq10K9RF+
-	ECpclBQUSwYAW2X7O+rEorCyvuEtclvcLpJsgvc1umHLl+PKoi5ViIEqqU1K0Tex6f9OYQ2Jp+++D
-	OacV4cm/x5hk6ZQEsSIbGfirPkA7LDtwCLWcgCQnw1htfv6AOMCOIhG0Hv9Tmhkl5UTtqApYhQvoH
-	mx3a0kTJU7PBqc0nzBV7nl7pQai0hTfDij9MxFZRMr/NVa3N5X9neXvSEgcShubVoDRdxjq+u5fIE
-	8BQqUA1A==;
+	bh=en6i9rQnKxSjXYUiFYKBBZmYxCjty6UKB+7+YcGtULk=; b=B+0hL2cVMg83nOoXPFsg3RGMSp
+	Ng4z/O5f5+b4/IW20wg/qwS5XcXQ/UBBMmj+t/kabT9tlmfI6bPbBTelmS+pbYbsn7/TlFFduXmWj
+	5E0NmAeo2xHxASG4JdFco/omNMHbk/wiYHdz5CICVGKb5NLejtXYArnBGZRlT84t3neEq6BENIOm4
+	RQ35krhEzL8rO+wHaWFtQne6QjCA0ZHm+p0DUzTA4+cs/CoTwFyPIy2iV9jCKJxpg6z8/Tb7+rXZx
+	YPT2gu81rMGDfyGrebDXWnQdCx+vcTcgQ8oBxXZCCGfPZfv274slQ44ZH6xaX2NA11G34uConREKW
+	Cr9R67jA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjMnC-0000000AKjD-2KqA;
-	Mon, 13 Jul 2026 19:58:18 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wjNEV-0000000AMQH-3wbD;
+	Mon, 13 Jul 2026 20:26:31 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjMn9-0000000AKi6-01jV;
-	Mon, 13 Jul 2026 19:58:16 +0000
+	id 1wjNET-0000000AMPi-0XMo;
+	Mon, 13 Jul 2026 20:26:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783972692;
-	bh=YWJDCyT186dHX81KVVE+O5xBOZa9fYqrWM9YYEL3dk0=;
+	s=mail; t=1783974385;
+	bh=rb6mPYklYuYVHSZpGzru92M8ezjoY2NpIOKtf3TKwQY=;
 	h=Subject:From:To:Date:In-Reply-To:References:From;
-	b=O6etSBjVtAmdzcSxXi/mkCykAKcecNb3kPZtUgRfa628X6uT+6uvaZgXFuH8uu6PG
-	 954tufeuMi5vJz9jl9JO/gFQoVA2TzGIC5AgLbP76FqcMcrRlOCQ+0s1PcqczhnoSs
-	 bzRbAq4l79Ok8eVXa3MeOwm4+zN9SEV8BfciT3r/SnBPsBe5e5ikoirtEqjM4RKcfS
-	 5M2kInrA5nur0gRlcipsacU2af7FZcjzVZ3JBkNntiE16ZSencGlgn8JZfVbZl3Z1t
-	 kmaR6xjeJcIBgzwLXL0Y4V/RjV8apS0rzchDnws3KIVrUdP09MJ1EdyvSY/0m3zvMP
-	 rGPQ7RT3uDoTw==
+	b=Ukp+njbZqtrisGCjs0oI4f/B+7gVLnS4w0sfAsVar8euI9r+Oq8JpFbM2/BMdqQxS
+	 dzjrD9ioHa8hE4SXzuN8aEybwx2l5RvzLEbmvdeHuqdic0j3k1ZG3AIBF7RbnwN916
+	 zBUiKQr3a9S6Jdc2uKgs4z7C3IcwkoLXNcKINq2gMFGwU3La09SP2biOTgOy/eEZrJ
+	 5jpNuv7cPIyxJe3ZveweXtro1gckv2B5buD9cfrPNntD7p/7KtBrVr3AjsnCxiE33I
+	 yvj7Mo9RK7caTpiXZLpytiTyBlOZHoats214PWtv0AW6AUO/dCRkvwKMtpZu2YYa81
+	 jMrjcJbn1a8JQ==
 Received: from [100.64.0.214] (unknown [100.64.0.214])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 94AB017E02BA;
-	Mon, 13 Jul 2026 21:58:10 +0200 (CEST)
-Message-ID: <cf949589ca13c1206724c5dbaaa441bed4e163e9.camel@collabora.com>
-Subject: Re: [PATCH v15 06/12] media: mediatek: jpeg: fix decoding buffer
- number setting timing issue
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8C9E617E095B;
+	Mon, 13 Jul 2026 22:26:23 +0200 (CEST)
+Message-ID: <1812cb35e3f3bf459201b2d7830b0877fd5520a6.camel@collabora.com>
+Subject: Re: [PATCH v15 07/12] media: mediatek: jpeg: fix resolution change
+ event handling in decoder
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 To: Kyrie Wu <kyrie.wu@mediatek.com>, Hans Verkuil
  <hverkuil-cisco@xs4all.nl>,  Mauro Carvalho Chehab	 <mchehab@kernel.org>,
@@ -55,10 +55,10 @@ To: Kyrie Wu <kyrie.wu@mediatek.com>, Hans Verkuil
  <angelogioacchino.delregno@collabora.com>, linux-media@vger.kernel.org, 
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Date: Mon, 13 Jul 2026 15:58:08 -0400
-In-Reply-To: <20260702072614.10373-7-kyrie.wu@mediatek.com>
+Date: Mon, 13 Jul 2026 16:26:21 -0400
+In-Reply-To: <20260702072614.10373-8-kyrie.wu@mediatek.com>
 References: <20260702072614.10373-1-kyrie.wu@mediatek.com>
-	 <20260702072614.10373-7-kyrie.wu@mediatek.com>
+	 <20260702072614.10373-8-kyrie.wu@mediatek.com>
 Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -74,12 +74,12 @@ Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
 Organization: Collabora Canada
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-+eCo3b9gsBb1UHx9JQhS"
+	protocol="application/pgp-signature"; boundary="=-2pGwts7IlWDue0rFiGli"
 User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_125815_205586_4AB794A5 
-X-CRM114-Status: GOOD (  17.59  )
+X-CRM114-CacheID: sfid-20260713_132629_325233_32C939BA 
+X-CRM114-Status: GOOD (  17.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,123 +95,67 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---=-+eCo3b9gsBb1UHx9JQhS
+--=-2pGwts7IlWDue0rFiGli
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 Le jeudi 02 juillet 2026 =C3=A0 15:26 +0800, Kyrie Wu a =C3=A9crit=C2=A0:
-> The src buffer doesn't need set information and dst buf parameters
-> only need to set when the power set succussed and protect the
-
-Can you rework this, I'm not sure I understand what you are trying to say.
-
-> setting by spinlock ensuring that any later operations acting
-> on this buffer reflect accurate state and frame data.
+> This patch refines the handling of resolution change events within
+> JPEG decoder worker. The `mtk_jpeg_set_queue_data` function is now
+> called to set up queue data before signaling a source change through
+> `mtk_jpeg_queue_src_chg_event`. By reorganizing these calls, the
+> patch ensures that necessary queue information is updated prior to
+> transitioning the context state to `MTK_JPEG_SOURCE_CHANGE`.
+> A condition is added to exit early if the context is already in the
+> `MTK_JPEG_SOURCE_CHANGE` state, preventing redundant operations and
+> improving processing efficiency.
 >=20
 > Fixes: dedc21500334 ("media: mtk-jpegdec: add jpeg decode worker interfac=
 e")
 > Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-> ---
-> =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c=C2=A0=C2=A0 | =
-9 +++------
-> =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c | 1 +
-> =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c | 1 +
-> =C2=A03 files changed, 5 insertions(+), 6 deletions(-)
->=20
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drive=
-rs/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> index 89048aba8dca..4dc574e03bd5 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> @@ -1734,7 +1734,6 @@ static void mtk_jpegdec_worker(struct work_struct *=
-work)
-> =C2=A0
-> =C2=A0	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf);
-> =C2=A0	jpeg_src_buf =3D mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
-> -	jpeg_dst_buf =3D mtk_jpeg_vb2_to_srcbuf(&dst_buf->vb2_buf);
-> =C2=A0
-> =C2=A0	if (mtk_jpeg_check_resolution_change(ctx,
-> =C2=A0					=C2=A0=C2=A0=C2=A0=C2=A0 &jpeg_src_buf->dec_param)) {
-> @@ -1743,11 +1742,6 @@ static void mtk_jpegdec_worker(struct work_struct =
-*work)
-> =C2=A0		goto getbuf_fail;
-> =C2=A0	}
-> =C2=A0
-> -	jpeg_src_buf->curr_ctx =3D ctx;
-> -	jpeg_src_buf->frame_num =3D ctx->total_frame_num;
-> -	jpeg_dst_buf->curr_ctx =3D ctx;
-> -	jpeg_dst_buf->frame_num =3D ctx->total_frame_num;
-> -
-> =C2=A0	mtk_jpegdec_set_hw_param(ctx, hw_id, src_buf, dst_buf);
-> =C2=A0	ret =3D pm_runtime_resume_and_get(comp_jpeg[hw_id]->dev);
-> =C2=A0	if (ret < 0) {
-> @@ -1772,6 +1766,9 @@ static void mtk_jpegdec_worker(struct work_struct *=
-work)
-> =C2=A0			=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 msecs_to_jiffies(MTK_JPEG_HW_TIME=
-OUT_MSEC));
-> =C2=A0
-> =C2=A0	spin_lock_irqsave(&comp_jpeg[hw_id]->hw_lock, flags);
-
-I didn't dig very deep, but in extreme case, the timeout worker (hidden abo=
-ve)
-could be called concurrently to the remaining of this code, which gives me =
-the
-impression everything would be left in a unstable state since that spinlock=
- is
-not being held by the timeout worker. Perhaps something to improve further =
-?
-
-This is a step in the right direction for sure, so for this patch:
 
 Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
-> +	jpeg_dst_buf =3D mtk_jpeg_vb2_to_srcbuf(&dst_buf->vb2_buf);
-> +	jpeg_dst_buf->curr_ctx =3D ctx;
-> +	jpeg_dst_buf->frame_num =3D ctx->total_frame_num;
-> =C2=A0	ctx->total_frame_num++;
-> =C2=A0	mtk_jpeg_dec_reset(comp_jpeg[hw_id]->reg_base);
-> =C2=A0	mtk_jpeg_dec_set_config(comp_jpeg[hw_id]->reg_base,
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/dri=
-vers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-> index 9a8dbca6af00..e4d2c5d4ec73 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-> @@ -513,6 +513,7 @@ static void mtk_jpegdec_put_buf(struct mtk_jpegdec_co=
-mp_dev *jpeg)
-> =C2=A0				v4l2_m2m_buf_done(&tmp_dst_done_buf->b,
-> =C2=A0						=C2=A0 VB2_BUF_STATE_DONE);
-> =C2=A0				ctx->last_done_frame_num++;
-> +				break;
-> =C2=A0			}
-> =C2=A0		}
+> ---
+> =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 6 +++++-
+> =C2=A01 file changed, 5 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drive=
+rs/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> index 4dc574e03bd5..02efaed198b8 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> @@ -1737,11 +1737,15 @@ static void mtk_jpegdec_worker(struct work_struct=
+ *work)
+> =C2=A0
+> =C2=A0	if (mtk_jpeg_check_resolution_change(ctx,
+> =C2=A0					=C2=A0=C2=A0=C2=A0=C2=A0 &jpeg_src_buf->dec_param)) {
+> -		mtk_jpeg_queue_src_chg_event(ctx);
+> +		mtk_jpeg_set_queue_data(ctx, &jpeg_src_buf->dec_param);
+> =C2=A0		ctx->state =3D MTK_JPEG_SOURCE_CHANGE;
+> +		mtk_jpeg_queue_src_chg_event(ctx);
+> =C2=A0		goto getbuf_fail;
 > =C2=A0	}
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/dri=
-vers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-> index 5d1c217fea0f..2adea3aca50b 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-> @@ -242,6 +242,7 @@ static void mtk_jpegenc_put_buf(struct mtk_jpegenc_co=
-mp_dev *jpeg)
-> =C2=A0				v4l2_m2m_buf_done(&tmp_dst_done_buf->b,
-> =C2=A0						=C2=A0 VB2_BUF_STATE_DONE);
-> =C2=A0				ctx->last_done_frame_num++;
-> +				break;
-> =C2=A0			}
-> =C2=A0		}
-> =C2=A0	}
+> =C2=A0
+> +	if (ctx->state =3D=3D MTK_JPEG_SOURCE_CHANGE)
+> +		goto getbuf_fail;
+> +
+> =C2=A0	mtk_jpegdec_set_hw_param(ctx, hw_id, src_buf, dst_buf);
+> =C2=A0	ret =3D pm_runtime_resume_and_get(comp_jpeg[hw_id]->dev);
+> =C2=A0	if (ret < 0) {
 
---=-+eCo3b9gsBb1UHx9JQhS
+--=-2pGwts7IlWDue0rFiGli
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCalVDUAAKCRDZQZRRKWBy
-9ErRAQCeOKVNMHSoVQWdtAOdSHr7nFSY8kQ3qswexzAWQS4Y+gD9GGe9PN7D0YKg
-lSbELCzmu3axHR6kr7PSTY6wQqhezAg=
-=PL/X
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCalVJ7QAKCRDZQZRRKWBy
+9PUpAP9e8+xCQMSWuQo7VpP4zwepSnhUzH75b78q1mxYH9dD+gD/Yu05bs8tffuv
+QBNLFn3oWQTj7UBCWdc/BvI+ghLxnQg=
+=gtQ+
 -----END PGP SIGNATURE-----
 
---=-+eCo3b9gsBb1UHx9JQhS--
+--=-2pGwts7IlWDue0rFiGli--
 
