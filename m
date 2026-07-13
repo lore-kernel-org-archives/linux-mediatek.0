@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5351EC4450A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3937DC44509
 	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 10:38:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ywWneQPOewpgKZndebLLY5mTtcbALfAJJu5RYI8s/QI=; b=bnVT3muUyetCAd4XpW0RdgiAuC
-	Hv2+k1P6WMlmwaVKP2bIIP/gwTeAw5p/dgTjDRrGzBFFN4hi4RSiIW0BBL2Q4mL5WKx7OM3NnyNf7
-	CLszQUje6n+/jPVzN4uiKx1lKv1j2AB7mORwMsTZ2ZAFFFIVIVQKvlkzpTz7OiU09s7k729xbwq7r
-	wgkY0mGKI7t2cW0ey3fUSz6AfxNnVoY87Eyn4oca3j+ZylTjvlcn9r243ohtIQa60uvnHMC9NTzbi
-	Snzxf3rjyVXZbwvlLo5B1SzI9gsxK4ZAw6czPix/58u771MX6cqd8X05Gu6eGDWp10KuanISAcorB
-	2nZm4t7w==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SQvBefV5ea23m3tM/+a/o3JweSM477tUzEENUJjykEI=; b=stOiwPEjdiaNrCJu/SWDJ5I/c+
+	j0eyfABi5WWfLqE6kSNsuDogyuBCdEhJuo7E2Ssu5vlhMur8OAyvzKvFUlOb1cjmTSiZCcl/Q5cZT
+	Pnx7+bBag6VeD4sC41jm8yrF2qiioKkaU2mBuMqH5FI6Jryz1YQCiQXmb0wa04r11BLM15k4jjc2M
+	J/eu+FaEz2ns1/baOxJiOc/yGg2X93hDDJjIXNetXjyQqeDmfIwkL2QfkDT2xloGJP0aMONfYjIh6
+	Ql3A7lgOiKvrdnKAb9I75B1zMtlxXsZL8XSCLBLUM2w5gmrHGr6aYzu0Op25a4D8AK5jirsuVUPX0
+	MPDLQYnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjE3G-00000008uXn-0GHu;
+	id 1wjE3G-00000008uYV-1C3W;
 	Mon, 13 Jul 2026 10:38:18 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjE3D-00000008uWb-0nLs;
+	id 1wjE3D-00000008uWc-2iTM;
 	Mon, 13 Jul 2026 10:38:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783939092;
-	bh=4E+jdeyxHU72SDz0s7k3Q69ptccQSHWPz/W0Q42mOCY=;
-	h=From:To:Cc:Subject:Date:From;
-	b=XADnlWxANguGJN7bl+NRzpLu1SRZZIU6um8d4jvJq6Sneksd0SUAmz1YhyvMqRHyQ
-	 zdQ1JI1iP8aENu2q1GsS/WT+qfgENxK9OqH6JWjxV1Dt67+K8FZS2NGILxc+achbDr
-	 oUjdJPxqi2sSjjGI8b3LuLsaPTt50zTDkMw+bFacMZ+ddJZpKWuPy9VPATLICGk1DU
-	 hwR0nRXdzZfAfD4xu9/DaAziNJAiJRfBEG9anUTUZ72k0kFXz5hW2FRSMw6KY5YGpa
-	 J8xTL9cjtVX4/v/VKG6FkbHwbatsWOWCE8XB4c2m59OQbrlEA788KXpEWErRRmCq+Q
-	 fGByR+Cx9fpVQ==
+	s=mail; t=1783939093;
+	bh=j5lGbsuNrMuX2/MBNskiphqCbXX2IsyCVQqLudRvkx8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=ip+OlFxPewx/MeOw5CRAZNfD9gBfEHDjiwiVUpBB3PKns7El48CnNmZxaus4X4+o4
+	 PCq3cX9/B2rqMulQCnSO4OCfMKHzS/RmmsyVRrSRPLhyh9B8OTvijFfswPkUagItYU
+	 ne/Ua18idlN1Fw0eMM34xzJDEQVhn0dvS8jeK9TNp7cXB+gghStUGyUKRJSUiv6cY0
+	 DPj+I+shzwA/iPYwY1i+GSl/EF6HE5IWI4og+XSwz918rzaeQKHAMdo4A3kPzzXGev
+	 hy1krySs+UafcBXjN6RSFhPLwmEHb7HxadC8le1YHvL10eoLoG+LT0fAnJaHT5XJoN
+	 9OJaZe0gzNH9A==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A900C17E05D3;
-	Mon, 13 Jul 2026 12:38:11 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 810B517E0DE6;
+	Mon, 13 Jul 2026 12:38:12 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunfeng.yun@mediatek.com
 Cc: vkoul@kernel.org,
@@ -61,16 +61,20 @@ Cc: vkoul@kernel.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	dri-devel@lists.freedesktop.org,
-	kernel@collabora.com
-Subject: [PATCH v3 0/2] PHY: Add support for MT8196 DSI PHY
-Date: Mon, 13 Jul 2026 12:38:03 +0200
-Message-ID: <20260713103805.23030-1-angelogioacchino.delregno@collabora.com>
+	kernel@collabora.com,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: [PATCH v3 1/2] dt-bindings: phy: mediatek,dsi-phy: Add support for MT8196
+Date: Mon, 13 Jul 2026 12:38:04 +0200
+Message-ID: <20260713103805.23030-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260713103805.23030-1-angelogioacchino.delregno@collabora.com>
+References: <20260713103805.23030-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_033815_385228_195610DC 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20260713_033815_824299_2DBE20BE 
+X-CRM114-Status: UNSURE (   8.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,31 +89,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v3:
- - Actually sent the correct patch series (sorry, I had messed up v2)
- - Added definitions for minimum and maximum PLL rates
+Add support for the MediaTek Kompanio Ultra (MT8196) SoC: this
+chip features a DSI PHY that is similar to the one found in the
+MT8183 SoC, but is a new (incremental) revision with a different
+register layout.
 
-Changes in v2:
- - Added a few comments and fix scheduling while atomic issue in clk
-   enable ops by waiting with udelay() instead
- - Removed one unnecessary delay after clk/pwr isolation disablement
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-This series adds support for the DSI PHY found in the newer MediaTek
-Dimensity 9400 (MT6991), Genio Pro 5100 (MT8894) and Kompanio Ultra
-(MT8196) SoCs.
-
-AngeloGioacchino Del Regno (2):
-  dt-bindings: phy: mediatek,dsi-phy: Add support for MT8196
-  phy: mediatek: Add support for MT8196 MIPI DSI PHY
-
- .../bindings/phy/mediatek,dsi-phy.yaml        |   1 +
- drivers/phy/mediatek/Makefile                 |   1 +
- .../phy/mediatek/phy-mtk-mipi-dsi-mt8196.c    | 201 ++++++++++++++++++
- drivers/phy/mediatek/phy-mtk-mipi-dsi.c       |   1 +
- drivers/phy/mediatek/phy-mtk-mipi-dsi.h       |   2 +-
- 5 files changed, 205 insertions(+), 1 deletion(-)
- create mode 100644 drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8196.c
-
+diff --git a/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
+index c6d0bbdbe0e2..9df1dbe1253b 100644
+--- a/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
++++ b/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
+@@ -39,6 +39,7 @@ properties:
+       - const: mediatek,mt2701-mipi-tx
+       - const: mediatek,mt8173-mipi-tx
+       - const: mediatek,mt8183-mipi-tx
++      - const: mediatek,mt8196-mipi-tx
+ 
+   reg:
+     maxItems: 1
 -- 
 2.54.0
 
