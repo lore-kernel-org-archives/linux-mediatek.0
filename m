@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4706C44507
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 13:01:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CDE3C4450A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 13:01:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TkQwyENXzaKb9g4unEqUba2zxBzd/KOZxUNMxyeuURE=; b=RgtHybMCpwsrIwUQKCH39lhVsE
-	48dKTN/Isx1qugzihJVToe9BFwUV+Gssmw+6hsxjKst0OztPPnVJbKchoak4aQb8okrE4suCcEKpl
-	IhD7ogeS7+gg6O9a9xZKIoxo1BGYNih3QurWsjEfJULmafBkOt205ykIqdvvSYImi/oIobt1gxGL6
-	ECY978alqcC39/tZ7QLuts/qVTZN3H72hh4OFEEnWocsni0iBsg2Fe/tK7M00TjgM3HcPUZo9r5oP
-	3qrMjPdbCF73ev3BWdTS4hDckrgnZC1pknyzM6MX+qjJ1c0HvI0s560QwihFFrqUskEi5JqQXuVfA
-	13JDtUDg==;
+	bh=UikB0+f3AEvkwaUk12B1uof+3zztlXCcNDQflpNn9OU=; b=SrzHzzq/2I5r2Jo4ssqkONyS5q
+	nXadImFaud/Kqz1yIsUMCK5hrMWA2+shuxY7vbfyyJOAqE4pnaZfF7Y2joH72M1/VUCemayKuhw4v
+	VAmsuM2mYpiwkHmmM9ZGIfXAHgHYQGGItkBbua18qmz3Uy/vQ0uHBWxDaPYXh9DBWDjTboMzfPSrB
+	CWcXu1r8TUTiZ6X8iASP0EsGQ8Yw6qXZ3eSLKlNUFmEwPnlTuQ7gssOM/TuvCtt7U4hjU4Bhd9CPZ
+	LA7D2633RBuTLAF8h/yKIrwrCh+fofhxiwZSsfUZ+ywbaxUGPcy1mQx1xhRTjhHiTOEzoEpBDRuuM
+	Kw5gyHQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjGHu-00000009HLw-2BNC;
-	Mon, 13 Jul 2026 13:01:34 +0000
+	id 1wjGHx-00000009HPo-0SW7;
+	Mon, 13 Jul 2026 13:01:37 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjGHg-00000009H6a-45ri;
-	Mon, 13 Jul 2026 13:01:22 +0000
+	id 1wjGHi-00000009H9C-43ij;
+	Mon, 13 Jul 2026 13:01:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783947678;
-	bh=7bHZOMotc13fjB40f9f2SHrOMuF4AIMBtQ4dvCif8tI=;
+	s=mail; t=1783947680;
+	bh=S6xslIlneoYrBpHES1PffEa3DuBeUqp8ucbfNtHNZwQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=c/yX4zG4aGbMacGsfFVVnher1sk4ZiIg4ZNoX/0EAqhwZznCXGYDtEMp2pIbwvHct
-	 byUh0v/J60h0mLfPM2cM+F2Ais/xKlKFk0hitCSaZQQ1Xz1/E7FNlY7MXCxM6QSIje
-	 PzS8Kmt3GlkNm480F7nd4xaIJ00dSudZPonP3Hry3095oSfrZYn0u6031jkpJSkQYQ
-	 jlIUldBWW6DKbpNuUufxdfpSR3LTjDSH1cx2VuQJ2GNQIj9MNdoFFNeBBB3mUjxYBR
-	 hglEtPejvqgQCKXbmq+wQsd23oNspqCrw0R8KtH78YSJKcjktj5ZRozV6AKi8n2jJO
-	 CqpRgNGWHqrBw==
+	b=BPcY8tNgQQx3xzIMWU4n4gcAv3gJdv011/CRBVjdsSPo7Cwcf3ajOScDve3OSPmGN
+	 LytSFX3UX2vT1T84cDdFWO+XWxzsuoGrhLme/BqSPs/SMB5Zbx+1SoEN3+pXYPcuM/
+	 sNZBFU8VNC/jmG90ZGsyVoKX2rdsL+EhAB8WniUZH7qwmH7c1R0+WMWe+Bb+6ZcAer
+	 BvwhllNjay5p6mMDAJBB15ioRdk1chxByWq7F1c8wCHu9Mgt1vR6e0hPG0W1KaTsLl
+	 7HS1/5gYagDYbpYbg8htPn6FfnjNJzSckDaBy8N/JEOqI0va9Nfo85zLeCAsTyI4d2
+	 C9pn45h8Ln3gw==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9C3FA17E0076;
-	Mon, 13 Jul 2026 15:01:17 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2137017E0E6C;
+	Mon, 13 Jul 2026 15:01:20 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -65,17 +65,17 @@ Cc: p.zabel@pengutronix.de,
 	kernel@collabora.com,
 	justin.yeh@mediatek.com,
 	jason-jh.lin@mediatek.com
-Subject: [PATCH v3 06/10] drm/mediatek: mtk_dsi: Add support for MT8189
-Date: Mon, 13 Jul 2026 15:00:59 +0200
-Message-ID: <20260713130103.34654-7-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v3 08/10] drm/mediatek: mtk_dsi: Enable PM Runtime on probe
+Date: Mon, 13 Jul 2026 15:01:01 +0200
+Message-ID: <20260713130103.34654-9-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260713130103.34654-1-angelogioacchino.delregno@collabora.com>
 References: <20260713130103.34654-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_060121_214073_75C66E7F 
-X-CRM114-Status: GOOD (  17.62  )
+X-CRM114-CacheID: sfid-20260713_060123_167029_79328702 
+X-CRM114-Status: GOOD (  11.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,126 +90,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the DSI IP found in the MT8189 SoC: this one is
-similar to the IPs found in the most recent already supported SoCs
-with the only difference being that it supports a higher link rate
-of 2.5Gbps instead of 1.5Gbps.
+Enable PM Runtime at the end of mtk_dsi_probe() so that the
+mediatek-drm mtk_ddp_comp_power_on() function is able to do
+pm_runtime_resume_and_get() and, analogously, the function
+mtk_ddp_comp_power_off() to pm_runtime_put() for the DSI
+device.
 
-To support the higher rate, add a new "max_link_rate_mbps" member
-to the mtk_dsi_driver_data, assign the correct one to all of the
-supported SoCs, other than to the newly introduced MT8189, and
-use it in the .mode_valid() callback in place of the hardcoded
-1.5Gbps value.
-
-Since .mode_valid() is supposed to run just for resolution changes
-the link rate was expressed in Mbps and gets multiplied on the fly
-to save some bits.
-
-As a note, starting with MT8189, higher maximum pixel clock rates
-are achievable: while at it, also make sure that calculations are
-not overflowing by casting to u64 where needed.
+This makes sure that the power domains for the DSI IP are
+turned on and off when necessary.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dsi.c | 29 +++++++++++++++++++++++++++--
- 1 file changed, 27 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 4c05af78516c..d1fe1ce11391 100644
+index 89264d8705c1..23934daa45b3 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -235,6 +235,8 @@ struct mtk_dsi_driver_data {
- 	const u16 *reg_main;
- 	const u16 *reg_adv;
+@@ -1716,6 +1716,10 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		return dev_err_probe(&pdev->dev, ret, "Failed to request DSI irq\n");
  
-+	const u16 max_link_rate_mbps;
++	ret = devm_pm_runtime_enable(dev);
++	if (ret)
++		return ret;
 +
- 	bool has_size_ctl;
- 	bool cmdq_long_packet_ctl;
- 	bool support_per_frame_lp;
-@@ -924,7 +926,7 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
- 	}
- 	bit_per_pixel = ret;
- 
--	dsi->data_rate = DIV_ROUND_UP_ULL(dsi->vm.pixelclock * bit_per_pixel,
-+	dsi->data_rate = DIV_ROUND_UP_ULL((u64)dsi->vm.pixelclock * bit_per_pixel,
- 					  dsi->lanes);
- 
- 	ret = clk_set_rate(dsi->hs_clk, dsi->data_rate);
-@@ -1099,13 +1101,21 @@ mtk_dsi_bridge_mode_valid(struct drm_bridge *bridge,
- 			  const struct drm_display_mode *mode)
- {
- 	struct mtk_dsi *dsi = bridge_to_dsi(bridge);
-+	const struct mtk_dsi_driver_data *data = dsi->driver_data;
-+	u64 wanted_link_rate, max_link_rate;
- 	int bpp;
- 
- 	bpp = mipi_dsi_pixel_format_to_bpp(dsi->format);
- 	if (bpp < 0)
- 		return MODE_ERROR;
- 
--	if (mode->clock * bpp / dsi->lanes > 1500000)
-+	wanted_link_rate = mode->clock;
-+	wanted_link_rate *= bpp;
-+	max_link_rate = data->max_link_rate_mbps;
-+	max_link_rate *= dsi->lanes;
-+	max_link_rate *= KILO;
-+
-+	if (wanted_link_rate > max_link_rate)
- 		return MODE_CLOCK_HIGH;
- 
- 	if (dsi->dsc) {
-@@ -1542,28 +1552,42 @@ static void mtk_dsi_remove(struct platform_device *pdev)
- static const struct mtk_dsi_driver_data mt8173_dsi_driver_data = {
- 	.reg_main = mtk_dsi_regs_main_v1,
- 	.reg_adv = mtk_dsi_regs_mt8173,
-+	.max_link_rate_mbps = 1500,
- };
- 
- static const struct mtk_dsi_driver_data mt2701_dsi_driver_data = {
- 	.reg_main = mtk_dsi_regs_main_v1,
- 	.reg_adv = mtk_dsi_regs_mt2701,
-+	.max_link_rate_mbps = 1500,
- };
- 
- static const struct mtk_dsi_driver_data mt8183_dsi_driver_data = {
- 	.reg_main = mtk_dsi_regs_main_v1,
- 	.reg_adv = mtk_dsi_regs_mt8183,
-+	.max_link_rate_mbps = 1500,
- 	.has_size_ctl = true,
- };
- 
- static const struct mtk_dsi_driver_data mt8186_dsi_driver_data = {
- 	.reg_main = mtk_dsi_regs_main_v1,
- 	.reg_adv = mtk_dsi_regs_mt8186,
-+	.max_link_rate_mbps = 1500,
- 	.has_size_ctl = true,
- };
- 
- static const struct mtk_dsi_driver_data mt8188_dsi_driver_data = {
- 	.reg_main = mtk_dsi_regs_main_v1,
- 	.reg_adv = mtk_dsi_regs_mt8186,
-+	.max_link_rate_mbps = 1500,
-+	.has_size_ctl = true,
-+	.cmdq_long_packet_ctl = true,
-+	.support_per_frame_lp = true,
-+};
-+
-+static const struct mtk_dsi_driver_data mt8189_dsi_driver_data = {
-+	.reg_main = mtk_dsi_regs_main_v1,
-+	.reg_adv = mtk_dsi_regs_mt8186,
-+	.max_link_rate_mbps = 2500,
- 	.has_size_ctl = true,
- 	.cmdq_long_packet_ctl = true,
- 	.support_per_frame_lp = true,
-@@ -1576,6 +1600,7 @@ static const struct of_device_id mtk_dsi_of_match[] = {
- 	{ .compatible = "mediatek,mt8183-dsi", .data = &mt8183_dsi_driver_data },
- 	{ .compatible = "mediatek,mt8186-dsi", .data = &mt8186_dsi_driver_data },
- 	{ .compatible = "mediatek,mt8188-dsi", .data = &mt8188_dsi_driver_data },
-+	{ .compatible = "mediatek,mt8189-dsi", .data = &mt8189_dsi_driver_data },
- 	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, mtk_dsi_of_match);
+ 	ret = mipi_dsi_host_register(&dsi->host);
+ 	if (ret < 0)
+ 		return dev_err_probe(dev, ret, "Failed to register DSI host\n");
 -- 
 2.54.0
 
