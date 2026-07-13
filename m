@@ -4,59 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76186C4450A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 14:28:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C250C44508
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 14:28:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/oALa+s42LWwLDIJ0bjpmdNshONmC9kcc4OdaS5OFYs=; b=LBwH/yOpoZdipW1eQ+rPLCr721
-	psWcRdVGXRMKVtsj/oZnwcTSxgCdluBgz82FPwkOo1LIgOQU5EZa4NGCZ03rfx+JsPbA0vtUwszcA
-	wgpmZxf4IaD66Ui/Q1ZuIN/3sW5VGMLbjvwBVnPscaBPPCirsNqSx+QNEe6GJS1Q7tJUCdFAOI0sK
-	N+KnoifLDEarVnhHYN978DQLlc6A+FWYVSUYDt4SGv+5zSBJ8KUexM2yDopHo+KxqE2ARnGf4cS48
-	TnMgk2RmWLBWAgKcZ0OMyeJuH+OoIDnw+CdJ9OsQdpwiVDtCZOHYNzQYseKgBRD7ELLXLuU69E9oY
-	nGFlTm1Q==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ljEQ4LOR4Xd9S8LL02kmM9Gojh/CKdfE0JYd1HSWZRQ=; b=hvZgn8KED1QUDYBQOZGNq7XLQ8
+	1ekgXGR+7W7hliAoD2jKLfFrCFDLl4W2eg296f9h2H5MbNGOWbffgCZl9TqAcJNUnv2UCw0KFcvWf
+	h0hQy4QKZG9qU7mbCTlTH/QDFKrZbiVaXs5zfdY0TmBFu00zL4+m32ACox0yzG0B/6NyusHt9j6i9
+	cUcZO/yn9Z34aLnoKPw9nmVOVXp5IXUglVT0YFS5y/Lxd94TrnMO8jOelVDs0mva1fTWYWqtGJYxa
+	bUqUiqFuNQgXck4lR7/uIn6/b6P/oKEQzJE/tLYrhVI56Bgm4uujO13/nrYixXddQkXN7dAHNMoMR
+	Q1DmYOvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjHdi-00000009adw-1Qo7;
-	Mon, 13 Jul 2026 14:28:10 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjHda-00000009aUd-1ogt;
-	Mon, 13 Jul 2026 14:28:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=/oALa+s42LWwLDIJ0bjpmdNshONmC9kcc4OdaS5OFYs=; b=aoi3k8b2qWfgGx6ik3uj5zkv4O
-	5pbMCl+DaxuqpknKlEgQ8Uo5FJ3s29qt8qr3VyJ7ZhxBbvJ4D3cikojw9oB6fEQgCtdm29uIp9T/c
-	xlZ92ie1fl+S3QmFndbwtH45jvyRw340FAsmVyFS5kebiGeqot3rfkPdVK1ur9n1mfc7Ek/t52TIi
-	H4DGb/8rrP/O+qoMGYtj4Rmu8GpUpzI79VEuZBFvC0FMzEEwioe0e6clWljDaMRE02qOYraiKs7Bt
-	dtCrV870CShlTI0Qr4vXsUgMqhkUj765DwiPVHd5B5n/gRkHVriIP5Op7qH8w5IAbbwIWEkO7HDht
-	iAyR5Ybg==;
+	id 1wjHdm-00000009ait-2BcU;
+	Mon, 13 Jul 2026 14:28:14 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wjHdW-0000000BiB6-1aL4;
-	Mon, 13 Jul 2026 14:28:01 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wjHdZ-00000009aTy-3ON5;
+	Mon, 13 Jul 2026 14:28:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783952872;
-	bh=Npx/orxONC+U2Qw/Hg1SfG0cpM+DWzLfcxEEfKhRItg=;
-	h=From:To:Cc:Subject:Date:From;
-	b=P4Z0zQDwSXxmOZsF+TNClXAbZ0zdXsLSsdMGMf/PkCt/szRXD303nMZ7xJGH7KHJi
-	 6yRyHTH0FuU28D+GSP6DtQXpICYcxhpsAkSru4DWkx+MUetfi0IkJFNB/f1zNWd0jF
-	 EEcNDGT+6us8jOdSJG8LlESPQdLcyfHveLfUjn6auTfscebtcEwIItSpxdLqAvSwE/
-	 g95TrxpAYVd/30dIvg/cibHDgf8maMeP2nW5IhpuAs8eK/ghuJcOKmE9Keq0K2EBQl
-	 pMbUyWR/CDa8XT2ZFfATKU68ZV4oCpjlxCp9mDvass8ljwpy7bz8FBbaASvddpGlZx
-	 A+FIdRQdmqzXg==
+	s=mail; t=1783952879;
+	bh=Ab0g+AdLDPDhJQF4EPueCCeNwXVBNJyQiVjWDTX24EQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=B31I/bHUKzAEPwOcpIcF7FNiG1bJrWZaIy3tGZ2ssh1hATkJsDIoMqn1i/2wyVeHk
+	 d8RG534Qk3aIjf77ymlM4+OX8yYg6MWDNw5f5XWZg+MrgbnPb7KUpJDY0kJSma+BCy
+	 3+8CkHvbAuWmrkPPlhTAjraVM61o6rshD/yqwlIue5Can80o8HlGYQLFeNWZB5BrSS
+	 TTI2DuBkec28269jv3qlkkIT59NIxsej832nVt+GHBz90/SYlbZCtylaBVBD6KkPml
+	 TsKZY7r1HO9p7rVxXL6GxDfKOOcqlCo9HyXfqFWsIujNBrKvnLnTukHbv8fUxBlr2h
+	 NRA7JvQ+yu8Qg==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E03E217E0720;
-	Mon, 13 Jul 2026 16:27:51 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C1CED17E0DE9;
+	Mon, 13 Jul 2026 16:27:57 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -79,15 +65,17 @@ Cc: p.zabel@pengutronix.de,
 	kernel@collabora.com,
 	justin.yeh@mediatek.com,
 	jason-jh.lin@mediatek.com
-Subject: [PATCH v4 00/10] drm/mediatek: Add DSC, WDMA, MT8189/96 DSI support
-Date: Mon, 13 Jul 2026 16:27:36 +0200
-Message-ID: <20260713142746.40259-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v4 05/10] drm/mediatek: mtk_dsi: Transfer register offsets to per-SoC const
+Date: Mon, 13 Jul 2026 16:27:41 +0200
+Message-ID: <20260713142746.40259-6-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260713142746.40259-1-angelogioacchino.delregno@collabora.com>
+References: <20260713142746.40259-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_152758_593628_D241E0C6 
-X-CRM114-Status: GOOD (  15.47  )
+X-CRM114-CacheID: sfid-20260713_072802_161516_3A3AADE7 
+X-CRM114-Status: GOOD (  18.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,78 +90,779 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v4:
- - WDMA: Delete the .remove() callback from WDMA as not needed anymore
- - WDMA: Add comments explaining no bus errors will happen if writing
-   to INT_ENABLE, INT_STATUS registers while unpowered or unclocked
- - Return error in mtk_wdma_wb_atomic_check() error conditions, oops!
- - DSC: Fix dsc_pad_num calculation (missing parenthesis...)
- - DSI: Change dsc slice check error to dev_dbg instead to avoid spam
- - DSI: Correctly cleanup dsi->dsc upon component_add failure
- - DSI: Make sure the CKTX_CKL_WC register is correctly programmed in
-   DSI w/DSC case
+As of now, the all of the supported SoCs have small differences in
+the register offsets for their version of the DSI IP, at least for
+the VM_CMD_CON, SHADOW_DEBUG and CMDQ offsets.
 
-Changes in v3:
- - Changed mtk_dsi DSC implementation to use a different DSI_PS
-   setting function for compressed or uncompressed, as the dsc one
-   is way simpler than the regular one and becomes way shorter
- - DSC: Fixed missing PPS 19 register write
- - DSI: Anticipated call to devm_pm_runtime_enable() to before
-   registering the DSI Host interface
- - DSI: Anticipated installing IRQ handler before registering the
-   dsi host interface, which wasn't a problem before, but now it
-   would be one because the interrupt is being enabled when binding!
- - DSI: Fixed some possible calculation overflows that may happen in
-   MT8189 and MT8196 because of the higher supported resolutions
- - WDMA: Use devm variant of pm_runtime_enable()
- - Change WDMA interrupt handler to allow signaling WB complete even
-   if there is no specific vblank callback installed to avoid very
-   long timeouts (in any case, WB is complete for real even if there
-   is no vblank_cb, just a bit useless without, but still complete)
- - Fixed WDMA register writes as register id was in function signature
-   for mtk_wdma_ddp_write_dst_addr() but the function itself never
-   used it in DISP_REG_WDMA_DST_ADDRX() macro
+As a preparation for introducing support for newer generation DSI
+IPs, having even more differences in the register offsets (but not
+in the layout of their fields, nor in the actual programming), as
+found on Dimensity 9400 MT6991, Kompanio Ultra MT8196 and Genio
+Pro 5100 MT8894, transfer all the register offsets to two const
+arrays, splitting the DSI IP version specific registers from the
+SoC specific ones (as those depend on interfacing with CMDQ and
+other IPs external to DSI, but internal to the SoC, and embedded
+in DSI).
 
-Changes in v2:
- - Rebased on next-20260706
+This change brings no functional difference, as it only changes
+how the register offsets are retrieved and nothing else.
 
-This series adds support for:
- - Display Stream Compression (DSC) for DSI and DisplayPort for both
-   legacy (8188/92/95 and others) and for Kompanio Ultra MT8196 SoCs
- - Write DMA (WDMA) Engine (for legacy only at this time) as a step
-   to enable Writeback support (coming later with a restructuring of
-   the entire mediatek-drm driver)
- - Newer MIPI DSI IP revisions, found in MT8189 and MT8196 SoCs
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 378 +++++++++++++++++++----------
+ 1 file changed, 253 insertions(+), 125 deletions(-)
 
-AngeloGioacchino Del Regno (10):
-  dt-bindings: display: mediatek: dsc: Add MT8196 compatible
-  drm/mediatek: Implement Display Stream Compression support
-  dt-bindings: display: mediatek: dsi: Document MT8189 and MT8196
-  drm/mediatek: mtk_dsi: Enable interrupt at component bind time
-  drm/mediatek: mtk_dsi: Transfer register offsets to per-SoC const
-  drm/mediatek: mtk_dsi: Add support for MT8189
-  drm/mediatek: mtk_dsi: Add support for MT8196
-  drm/mediatek: mtk_dsi: Enable PM Runtime on probe
-  dt-bindings: display: mediatek: wdma: Add compatibles for more SoCs
-  drm/mediatek: Add Write DMA (WDMA) Engine for Writeback support
-
- .../display/mediatek/mediatek,dsc.yaml        |   4 +-
- .../display/mediatek/mediatek,dsi.yaml        |   2 +
- .../display/mediatek/mediatek,wdma.yaml       |   5 +
- drivers/gpu/drm/mediatek/Makefile             |   2 +
- drivers/gpu/drm/mediatek/mtk_crtc.c           |  21 +
- drivers/gpu/drm/mediatek/mtk_ddp_comp.c       |  64 +-
- drivers/gpu/drm/mediatek/mtk_ddp_comp.h       |   9 +
- drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  29 +
- drivers/gpu/drm/mediatek/mtk_disp_dsc.c       | 455 ++++++++++
- drivers/gpu/drm/mediatek/mtk_disp_wdma.c      | 622 ++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        |   8 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   2 +
- drivers/gpu/drm/mediatek/mtk_dsi.c            | 799 ++++++++++++++----
- 13 files changed, 1832 insertions(+), 190 deletions(-)
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_dsc.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_wdma.c
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index e24e7b91a361..bfb640f3f5b1 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -1,6 +1,8 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ /*
+  * Copyright (c) 2015 MediaTek Inc.
++ * Copyright (c) 2026 Collabora Ltd.
++ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+  */
+ 
+ #include <linux/bitfield.h>
+@@ -34,11 +36,11 @@
+ #include "mtk_disp_drv.h"
+ #include "mtk_drm_drv.h"
+ 
+-#define DSI_START		0x00
++/* DSI_START */
+ 
+-#define DSI_INTEN		0x08
++/* DSI_INTEN */
+ 
+-#define DSI_INTSTA		0x0c
++/* DSI_INTSTA */
+ #define LPRX_RD_RDY_INT_FLAG		BIT(0)
+ #define CMD_DONE_INT_FLAG		BIT(1)
+ #define TE_RDY_INT_FLAG			BIT(2)
+@@ -46,12 +48,13 @@
+ #define EXT_TE_RDY_INT_FLAG		BIT(4)
+ #define DSI_BUSY			BIT(31)
+ 
+-#define DSI_CON_CTRL		0x10
++/* DSI_CON_CTRL */
+ #define DSI_RESET			BIT(0)
+ #define DSI_EN				BIT(1)
+ #define DPHY_RESET			BIT(2)
++#define CMDMODE_WAIT_DATA_EVERY_LINE_EN	BIT(24)
+ 
+-#define DSI_MODE_CTRL		0x14
++/* DSI_MODE_CTRL */
+ #define MODE				(3)
+ #define CMD_MODE			0
+ #define SYNC_PULSE_MODE			1
+@@ -60,7 +63,7 @@
+ #define FRM_MODE			BIT(16)
+ #define MIX_MODE			BIT(17)
+ 
+-#define DSI_TXRX_CTRL		0x18
++/* DSI_TXRX_CTRL */
+ #define VC_NUM				BIT(1)
+ #define LANE_NUM			GENMASK(5, 2)
+ #define DIS_EOT				BIT(6)
+@@ -71,7 +74,7 @@
+ #define MAX_RTN_SIZE			GENMASK(15, 12)
+ #define HSTX_CKLP_EN			BIT(16)
+ 
+-#define DSI_PSCTRL		0x1c
++/* DSI_PSCTRL */
+ #define DSI_PS_WC			GENMASK(13, 0)
+ #define DSI_PS_SEL			GENMASK(19, 16)
+ #define PACKED_PS_16BIT_RGB565		0
+@@ -80,64 +83,64 @@
+ #define PACKED_PS_24BIT_RGB888		3
+ #define COMPRESSED_PS_DSC		5
+ 
+-#define DSI_VSA_NL		0x20
+-#define DSI_VBP_NL		0x24
+-#define DSI_VFP_NL		0x28
+-#define DSI_VACT_NL		0x2C
++/* DSI_VSA_NL */
++/* DSI_VBP_NL */
++/* DSI_VFP_NL */
++/* DSI_VACT_NL */
+ #define VACT_NL				GENMASK(14, 0)
+-#define DSI_SIZE_CON		0x38
+-#define DSI_HEIGHT				GENMASK(30, 16)
+-#define DSI_WIDTH				GENMASK(14, 0)
+-#define DSI_HSA_WC		0x50
+-#define DSI_HBP_WC		0x54
+-#define DSI_HFP_WC		0x58
+-#define HFP_HS_VB_PS_WC		GENMASK(30, 16)
++/* DSI_SIZE_CON */
++#define DSI_HEIGHT			GENMASK(30, 16)
++#define DSI_WIDTH			GENMASK(14, 0)
++/* DSI_HSA_WC */
++/* DSI_HBP_WC */
++/* DSI_HFP_WC */
++#define HFP_HS_VB_PS_WC			GENMASK(30, 16)
+ #define HFP_HS_EN			BIT(31)
+ 
+-#define DSI_CMDQ_SIZE		0x60
++/* DSI_CMDQ_SIZE */
+ #define CMDQ_SIZE			0x3f
+-#define CMDQ_SIZE_SEL		BIT(15)
++#define CMDQ_SIZE_SEL			BIT(15)
+ 
+-#define DSI_HSTX_CKL_WC		0x64
++/* DSI_HSTX_CKL_WC */
+ #define HSTX_CKL_WC			GENMASK(15, 2)
+ 
+-#define DSI_RX_DATA0		0x74
+-#define DSI_RX_DATA1		0x78
+-#define DSI_RX_DATA2		0x7c
+-#define DSI_RX_DATA3		0x80
++/* DSI_RX_DATA0 */
++/* DSI_RX_DATA1 */
++/* DSI_RX_DATA2 */
++/* DSI_RX_DATA3 */
+ 
+-#define DSI_RACK		0x84
++/* DSI_RACK */
+ #define RACK				BIT(0)
+ 
+-#define DSI_PHY_LCCON		0x104
++/* DSI_PHY_LCCON */
+ #define LC_HS_TX_EN			BIT(0)
+ #define LC_ULPM_EN			BIT(1)
+ #define LC_WAKEUP_EN			BIT(2)
+ 
+-#define DSI_PHY_LD0CON		0x108
++/* DSI_PHY_LD0CON */
+ #define LD0_HS_TX_EN			BIT(0)
+ #define LD0_ULPM_EN			BIT(1)
+ #define LD0_WAKEUP_EN			BIT(2)
+ 
+-#define DSI_PHY_TIMECON0	0x110
++/* DSI_PHY_TIMECON0 */
+ #define LPX				GENMASK(7, 0)
+ #define HS_PREP				GENMASK(15, 8)
+ #define HS_ZERO				GENMASK(23, 16)
+ #define HS_TRAIL			GENMASK(31, 24)
+ 
+-#define DSI_PHY_TIMECON1	0x114
++/* DSI_PHY_TIMECON1 */
+ #define TA_GO				GENMASK(7, 0)
+ #define TA_SURE				GENMASK(15, 8)
+ #define TA_GET				GENMASK(23, 16)
+ #define DA_HS_EXIT			GENMASK(31, 24)
+ 
+-#define DSI_PHY_TIMECON2	0x118
++/* DSI_PHY_TIMECON2 */
+ #define CONT_DET			GENMASK(7, 0)
+ #define DA_HS_SYNC			GENMASK(15, 8)
+ #define CLK_ZERO			GENMASK(23, 16)
+ #define CLK_TRAIL			GENMASK(31, 24)
+ 
+-#define DSI_PHY_TIMECON3	0x11c
++/* DSI_PHY_TIMECON3 */
+ #define CLK_HS_PREP			GENMASK(7, 0)
+ #define CLK_HS_POST			GENMASK(15, 8)
+ #define CLK_HS_EXIT			GENMASK(23, 16)
+@@ -168,6 +171,45 @@
+ 	(type == MIPI_DSI_GENERIC_READ_REQUEST_2_PARAM) || \
+ 	(type == MIPI_DSI_DCS_READ))
+ 
++enum mtk_dsi_main_regidx {
++	DSI_START,
++	DSI_INTEN,
++	DSI_INTSTA,
++	DSI_CON_CTRL,
++	DSI_MODE_CTRL,
++	DSI_TXRX_CTRL,
++	DSI_PSCTRL,
++	DSI_VSA_NL,
++	DSI_VBP_NL,
++	DSI_VFP_NL,
++	DSI_VACT_NL,
++	DSI_SIZE_CON,
++	DSI_HSA_WC,
++	DSI_HBP_WC,
++	DSI_HFP_WC,
++	DSI_CMDQ_SIZE,
++	DSI_HSTX_CKL_WC,
++	DSI_RX_DATA0,
++	DSI_RX_DATA1,
++	DSI_RX_DATA2,
++	DSI_RX_DATA3,
++	DSI_RACK,
++	DSI_PHY_LCCON,
++	DSI_PHY_LD0CON,
++	DSI_PHY_TIMECON0,
++	DSI_PHY_TIMECON1,
++	DSI_PHY_TIMECON2,
++	DSI_PHY_TIMECON3,
++	DSI_MAIN_REG_MAX
++};
++
++enum mtk_dsi_adv_regidx {
++	DSI_VM_CMD_CON,
++	DSI_SHADOW_DEBUG,
++	DSI_CMDQ,
++	DSI_ADV_REG_MAX
++};
++
+ struct mtk_phy_timing {
+ 	u32 lpx;
+ 	u32 da_hs_prepare;
+@@ -190,10 +232,9 @@ struct mtk_phy_timing {
+ struct phy;
+ 
+ struct mtk_dsi_driver_data {
+-	const u32 reg_cmdq_off;
+-	const u32 reg_vm_cmd_off;
+-	const u32 reg_shadow_dbg_off;
+-	bool has_shadow_ctl;
++	const u16 *reg_main;
++	const u16 *reg_adv;
++
+ 	bool has_size_ctl;
+ 	bool cmdq_long_packet_ctl;
+ 	bool support_per_frame_lp;
+@@ -231,6 +272,61 @@ struct mtk_dsi {
+ 	const struct mtk_dsi_driver_data *driver_data;
+ };
+ 
++static const u16 mtk_dsi_regs_main_v1[DSI_MAIN_REG_MAX] = {
++	[DSI_START] = 0x00,
++	[DSI_INTEN] = 0x08,
++	[DSI_INTSTA] = 0x0c,
++	[DSI_CON_CTRL] = 0x10,
++	[DSI_MODE_CTRL] = 0x14,
++	[DSI_TXRX_CTRL] = 0x18,
++	[DSI_PSCTRL] = 0x1c,
++	[DSI_VSA_NL] = 0x20,
++	[DSI_VBP_NL] = 0x24,
++	[DSI_VFP_NL] = 0x28,
++	[DSI_VACT_NL] = 0x2c,
++	[DSI_SIZE_CON] = 0x38,
++	[DSI_HSA_WC] = 0x50,
++	[DSI_HBP_WC] = 0x54,
++	[DSI_HFP_WC] = 0x58,
++	[DSI_CMDQ_SIZE] = 0x60,
++	[DSI_HSTX_CKL_WC] = 0x64,
++	[DSI_RX_DATA0] = 0x74,
++	[DSI_RX_DATA1] = 0x78,
++	[DSI_RX_DATA2] = 0x7c,
++	[DSI_RX_DATA3] = 0x80,
++	[DSI_RACK] = 0x84,
++	[DSI_PHY_LCCON] = 0x104,
++	[DSI_PHY_LD0CON] = 0x108,
++	[DSI_PHY_TIMECON0] = 0x110,
++	[DSI_PHY_TIMECON1] = 0x114,
++	[DSI_PHY_TIMECON2] = 0x118,
++	[DSI_PHY_TIMECON3] = 0x11c,
++};
++
++static const u16 mtk_dsi_regs_mt2701[DSI_ADV_REG_MAX] = {
++	[DSI_VM_CMD_CON] = 0x130,
++	[DSI_SHADOW_DEBUG] = 0,
++	[DSI_CMDQ] = 0x180,
++};
++
++static const u16 mtk_dsi_regs_mt8173[DSI_ADV_REG_MAX] = {
++	[DSI_VM_CMD_CON] = 0x130,
++	[DSI_SHADOW_DEBUG] = 0,
++	[DSI_CMDQ] = 0x200,
++};
++
++static const u16 mtk_dsi_regs_mt8183[DSI_ADV_REG_MAX] = {
++	[DSI_VM_CMD_CON] = 0x130,
++	[DSI_SHADOW_DEBUG] = 0x190,
++	[DSI_CMDQ] = 0x200,
++};
++
++static const u16 mtk_dsi_regs_mt8186[DSI_ADV_REG_MAX] = {
++	[DSI_VM_CMD_CON] = 0x200,
++	[DSI_SHADOW_DEBUG] = 0xc00,
++	[DSI_CMDQ] = 0xd00,
++};
++
+ static inline struct mtk_dsi *bridge_to_dsi(struct drm_bridge *b)
+ {
+ 	return container_of(b, struct mtk_dsi, bridge);
+@@ -253,6 +349,7 @@ static void mtk_dsi_phy_timconfig(struct mtk_dsi *dsi)
+ 	u32 timcon0, timcon1, timcon2, timcon3;
+ 	u32 data_rate_mhz = DIV_ROUND_UP(dsi->data_rate, HZ_PER_MHZ);
+ 	struct mtk_phy_timing *timing = &dsi->phy_timing;
++	const u16 *reg_main = dsi->driver_data->reg_main;
+ 
+ 	timing->lpx = (60 * data_rate_mhz / (8 * 1000)) + 1;
+ 	timing->da_hs_prepare = (80 * data_rate_mhz + 4 * 1000) / 8000;
+@@ -289,76 +386,97 @@ static void mtk_dsi_phy_timconfig(struct mtk_dsi *dsi)
+ 		  FIELD_PREP(CLK_HS_POST, timing->clk_hs_post) |
+ 		  FIELD_PREP(CLK_HS_EXIT, timing->clk_hs_exit);
+ 
+-	writel(timcon0, dsi->regs + DSI_PHY_TIMECON0);
+-	writel(timcon1, dsi->regs + DSI_PHY_TIMECON1);
+-	writel(timcon2, dsi->regs + DSI_PHY_TIMECON2);
+-	writel(timcon3, dsi->regs + DSI_PHY_TIMECON3);
++	writel(timcon0, dsi->regs + reg_main[DSI_PHY_TIMECON0]);
++	writel(timcon1, dsi->regs + reg_main[DSI_PHY_TIMECON1]);
++	writel(timcon2, dsi->regs + reg_main[DSI_PHY_TIMECON2]);
++	writel(timcon3, dsi->regs + reg_main[DSI_PHY_TIMECON3]);
+ }
+ 
+ static void mtk_dsi_enable(struct mtk_dsi *dsi)
+ {
+-	mtk_dsi_mask(dsi, DSI_CON_CTRL, DSI_EN, DSI_EN);
++	const u16 *reg_main = dsi->driver_data->reg_main;
++
++	mtk_dsi_mask(dsi, reg_main[DSI_CON_CTRL], DSI_EN, DSI_EN);
+ }
+ 
+ static void mtk_dsi_disable(struct mtk_dsi *dsi)
+ {
+-	mtk_dsi_mask(dsi, DSI_CON_CTRL, DSI_EN, 0);
++	const u16 *reg_main = dsi->driver_data->reg_main;
++
++	mtk_dsi_mask(dsi, reg_main[DSI_CON_CTRL], DSI_EN, 0);
+ }
+ 
+ static void mtk_dsi_reset_engine(struct mtk_dsi *dsi)
+ {
+-	mtk_dsi_mask(dsi, DSI_CON_CTRL, DSI_RESET, DSI_RESET);
+-	mtk_dsi_mask(dsi, DSI_CON_CTRL, DSI_RESET, 0);
++	const u16 *reg_main = dsi->driver_data->reg_main;
++
++	mtk_dsi_mask(dsi, reg_main[DSI_CON_CTRL], DSI_RESET, DSI_RESET);
++	mtk_dsi_mask(dsi, reg_main[DSI_CON_CTRL], DSI_RESET, 0);
+ }
+ 
+ static void mtk_dsi_reset_dphy(struct mtk_dsi *dsi)
+ {
+-	mtk_dsi_mask(dsi, DSI_CON_CTRL, DPHY_RESET, DPHY_RESET);
+-	mtk_dsi_mask(dsi, DSI_CON_CTRL, DPHY_RESET, 0);
++	const u16 *reg_main = dsi->driver_data->reg_main;
++
++	mtk_dsi_mask(dsi, reg_main[DSI_CON_CTRL], DPHY_RESET, DPHY_RESET);
++	mtk_dsi_mask(dsi, reg_main[DSI_CON_CTRL], DPHY_RESET, 0);
+ }
+ 
+ static void mtk_dsi_clk_ulp_mode_enter(struct mtk_dsi *dsi)
+ {
+-	mtk_dsi_mask(dsi, DSI_PHY_LCCON, LC_HS_TX_EN, 0);
+-	mtk_dsi_mask(dsi, DSI_PHY_LCCON, LC_ULPM_EN, 0);
++	const u16 *reg_main = dsi->driver_data->reg_main;
++
++	mtk_dsi_mask(dsi, reg_main[DSI_PHY_LCCON], LC_HS_TX_EN, 0);
++	mtk_dsi_mask(dsi, reg_main[DSI_PHY_LCCON], LC_ULPM_EN, 0);
+ }
+ 
+ static void mtk_dsi_clk_ulp_mode_leave(struct mtk_dsi *dsi)
+ {
+-	mtk_dsi_mask(dsi, DSI_PHY_LCCON, LC_ULPM_EN, 0);
+-	mtk_dsi_mask(dsi, DSI_PHY_LCCON, LC_WAKEUP_EN, LC_WAKEUP_EN);
+-	mtk_dsi_mask(dsi, DSI_PHY_LCCON, LC_WAKEUP_EN, 0);
++	const u16 *reg_main = dsi->driver_data->reg_main;
++
++	mtk_dsi_mask(dsi, reg_main[DSI_PHY_LCCON], LC_ULPM_EN, 0);
++	mtk_dsi_mask(dsi, reg_main[DSI_PHY_LCCON], LC_WAKEUP_EN, LC_WAKEUP_EN);
++	mtk_dsi_mask(dsi, reg_main[DSI_PHY_LCCON], LC_WAKEUP_EN, 0);
+ }
+ 
+ static void mtk_dsi_lane0_ulp_mode_enter(struct mtk_dsi *dsi)
+ {
+-	mtk_dsi_mask(dsi, DSI_PHY_LD0CON, LD0_HS_TX_EN, 0);
+-	mtk_dsi_mask(dsi, DSI_PHY_LD0CON, LD0_ULPM_EN, 0);
++	const u16 *reg_main = dsi->driver_data->reg_main;
++
++	mtk_dsi_mask(dsi, reg_main[DSI_PHY_LD0CON], LD0_HS_TX_EN, 0);
++	mtk_dsi_mask(dsi, reg_main[DSI_PHY_LD0CON], LD0_ULPM_EN, 0);
+ }
+ 
+ static void mtk_dsi_lane0_ulp_mode_leave(struct mtk_dsi *dsi)
+ {
+-	mtk_dsi_mask(dsi, DSI_PHY_LD0CON, LD0_ULPM_EN, 0);
+-	mtk_dsi_mask(dsi, DSI_PHY_LD0CON, LD0_WAKEUP_EN, LD0_WAKEUP_EN);
+-	mtk_dsi_mask(dsi, DSI_PHY_LD0CON, LD0_WAKEUP_EN, 0);
++	const u16 *reg_main = dsi->driver_data->reg_main;
++
++	mtk_dsi_mask(dsi, reg_main[DSI_PHY_LD0CON], LD0_ULPM_EN, 0);
++	mtk_dsi_mask(dsi, reg_main[DSI_PHY_LD0CON], LD0_WAKEUP_EN, LD0_WAKEUP_EN);
++	mtk_dsi_mask(dsi, reg_main[DSI_PHY_LD0CON], LD0_WAKEUP_EN, 0);
+ }
+ 
+ static bool mtk_dsi_clk_hs_state(struct mtk_dsi *dsi)
+ {
+-	return readl(dsi->regs + DSI_PHY_LCCON) & LC_HS_TX_EN;
++	const u16 *regoff = dsi->driver_data->reg_main;
++
++	return readl(dsi->regs + regoff[DSI_PHY_LCCON]) & LC_HS_TX_EN;
+ }
+ 
+ static void mtk_dsi_clk_hs_mode(struct mtk_dsi *dsi, bool enter)
+ {
++	const u16 *reg_main = dsi->driver_data->reg_main;
++
+ 	if (enter && !mtk_dsi_clk_hs_state(dsi))
+-		mtk_dsi_mask(dsi, DSI_PHY_LCCON, LC_HS_TX_EN, LC_HS_TX_EN);
++		mtk_dsi_mask(dsi, reg_main[DSI_PHY_LCCON], LC_HS_TX_EN, LC_HS_TX_EN);
+ 	else if (!enter && mtk_dsi_clk_hs_state(dsi))
+-		mtk_dsi_mask(dsi, DSI_PHY_LCCON, LC_HS_TX_EN, 0);
++		mtk_dsi_mask(dsi, reg_main[DSI_PHY_LCCON], LC_HS_TX_EN, 0);
+ }
+ 
+ static void mtk_dsi_set_mode(struct mtk_dsi *dsi)
+ {
+-	u32 vid_mode = CMD_MODE;
++	const u16 *reg_main = dsi->driver_data->reg_main;
++	u32 vid_mode;
+ 
+ 	if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO) {
+ 		if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST)
+@@ -367,19 +485,24 @@ static void mtk_dsi_set_mode(struct mtk_dsi *dsi)
+ 			vid_mode = SYNC_PULSE_MODE;
+ 		else
+ 			vid_mode = SYNC_EVENT_MODE;
++	} else {
++		vid_mode = CMD_MODE;
+ 	}
+ 
+-	writel(vid_mode, dsi->regs + DSI_MODE_CTRL);
++	writel(vid_mode, dsi->regs + reg_main[DSI_MODE_CTRL]);
+ }
+ 
+ static void mtk_dsi_set_vm_cmd(struct mtk_dsi *dsi)
+ {
+-	mtk_dsi_mask(dsi, dsi->driver_data->reg_vm_cmd_off, VM_CMD_EN, VM_CMD_EN);
+-	mtk_dsi_mask(dsi, dsi->driver_data->reg_vm_cmd_off, TS_VFP_EN, TS_VFP_EN);
++	const u16 *reg_adv = dsi->driver_data->reg_adv;
++
++	mtk_dsi_mask(dsi, reg_adv[DSI_VM_CMD_CON], VM_CMD_EN, VM_CMD_EN);
++	mtk_dsi_mask(dsi, reg_adv[DSI_VM_CMD_CON], TS_VFP_EN, TS_VFP_EN);
+ }
+ 
+ static void mtk_dsi_rxtx_control(struct mtk_dsi *dsi)
+ {
++	const u16 *reg_main = dsi->driver_data->reg_main;
+ 	u32 regval, tmp_reg = 0;
+ 	u8 i;
+ 
+@@ -395,7 +518,7 @@ static void mtk_dsi_rxtx_control(struct mtk_dsi *dsi)
+ 	if (dsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET)
+ 		regval |= DIS_EOT;
+ 
+-	writel(regval, dsi->regs + DSI_TXRX_CTRL);
++	writel(regval, dsi->regs + reg_main[DSI_TXRX_CTRL]);
+ }
+ 
+ static void mtk_dsi_ps_control_dsc(struct mtk_dsi *dsi, bool config_vact)
+@@ -426,6 +549,8 @@ static void mtk_dsi_ps_control_dsc(struct mtk_dsi *dsi, bool config_vact)
+ 
+ static void mtk_dsi_ps_control_uncompressed(struct mtk_dsi *dsi, bool config_vact)
+ {
++	const struct mtk_dsi_driver_data *data = dsi->driver_data;
++	const u16 *reg_main = dsi->driver_data->reg_main;
+ 	u32 dsi_buf_bpp, ps_val, ps_wc, size_val, vact_nl;
+ 
+ 	if (dsi->format == MIPI_DSI_FMT_RGB565)
+@@ -457,16 +582,16 @@ static void mtk_dsi_ps_control_uncompressed(struct mtk_dsi *dsi, bool config_vac
+ 
+ 	if (config_vact) {
+ 		vact_nl = FIELD_PREP(VACT_NL, dsi->vm.vactive);
+-		writel(vact_nl, dsi->regs + DSI_VACT_NL);
+-		writel(ps_wc, dsi->regs + DSI_HSTX_CKL_WC);
++		writel(vact_nl, dsi->regs + reg_main[DSI_VACT_NL]);
++		writel(ps_wc, dsi->regs + reg_main[DSI_HSTX_CKL_WC]);
+ 	}
+-	writel(ps_val, dsi->regs + DSI_PSCTRL);
++	writel(ps_val, dsi->regs + reg_main[DSI_PSCTRL]);
+ 
+-	if (dsi->driver_data->has_size_ctl) {
++	if (data->has_size_ctl) {
+ 		size_val = FIELD_PREP(DSI_HEIGHT, dsi->vm.vactive);
+ 		size_val |= FIELD_PREP(DSI_WIDTH, dsi->vm.hactive);
+ 
+-		writel(size_val, dsi->regs + DSI_SIZE_CON);
++		writel(size_val, dsi->regs + reg_main[DSI_SIZE_CON]);
+ 	}
+ }
+ 
+@@ -480,6 +605,7 @@ static void mtk_dsi_ps_control(struct mtk_dsi *dsi, bool config_vact)
+ 
+ static void mtk_dsi_config_vdo_timing_per_frame_lp(struct mtk_dsi *dsi)
+ {
++	const u16 *reg_main = dsi->driver_data->reg_main;
+ 	u32 horizontal_sync_active_byte;
+ 	u32 horizontal_backporch_byte;
+ 	u32 horizontal_frontporch_byte;
+@@ -534,20 +660,21 @@ static void mtk_dsi_config_vdo_timing_per_frame_lp(struct mtk_dsi *dsi)
+ 			   ps_wc), dsi->lanes) + da_hs_trail + 1) * dsi->lanes / 6 - 1;
+ 
+ 	hstx_cklp_wc = FIELD_PREP(HSTX_CKL_WC, (hstx_cklp_wc_min + hstx_cklp_wc_max) / 2);
+-	writel(hstx_cklp_wc, dsi->regs + DSI_HSTX_CKL_WC);
++	writel(hstx_cklp_wc, dsi->regs + reg_main[DSI_HSTX_CKL_WC]);
+ 
+ 	hs_vb_ps_wc = ps_wc - (dsi->phy_timing.lpx + dsi->phy_timing.da_hs_exit +
+ 		      dsi->phy_timing.da_hs_prepare + dsi->phy_timing.da_hs_zero + 2) * dsi->lanes;
+ 	horizontal_frontporch_byte |= FIELD_PREP(HFP_HS_EN, 1) |
+ 				      FIELD_PREP(HFP_HS_VB_PS_WC, hs_vb_ps_wc);
+ 
+-	writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
+-	writel(horizontal_backporch_byte, dsi->regs + DSI_HBP_WC);
+-	writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
++	writel(horizontal_sync_active_byte, dsi->regs + reg_main[DSI_HSA_WC]);
++	writel(horizontal_backporch_byte, dsi->regs + reg_main[DSI_HBP_WC]);
++	writel(horizontal_frontporch_byte, dsi->regs + reg_main[DSI_HFP_WC]);
+ }
+ 
+ static void mtk_dsi_config_vdo_timing_per_line_lp(struct mtk_dsi *dsi)
+ {
++	const u16 *reg_main = dsi->driver_data->reg_main;
+ 	u32 horizontal_sync_active_byte;
+ 	u32 horizontal_backporch_byte;
+ 	u32 horizontal_frontporch_byte;
+@@ -606,9 +733,9 @@ static void mtk_dsi_config_vdo_timing_per_line_lp(struct mtk_dsi *dsi)
+ 			(vm->hactive * dsi_tmp_buf_bpp + 2) % dsi->lanes;
+ 	}
+ 
+-	writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
+-	writel(horizontal_backporch_byte, dsi->regs + DSI_HBP_WC);
+-	writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
++	writel(horizontal_sync_active_byte, dsi->regs + reg_main[DSI_HSA_WC]);
++	writel(horizontal_backporch_byte, dsi->regs + reg_main[DSI_HBP_WC]);
++	writel(horizontal_frontporch_byte, dsi->regs + reg_main[DSI_HFP_WC]);
+ }
+ 
+ static int mtk_dsi_set_dsc_params(struct mtk_dsi *dsi)
+@@ -649,15 +776,17 @@ static int mtk_dsi_set_dsc_params(struct mtk_dsi *dsi)
+ 
+ static int mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+ {
++	const struct mtk_dsi_driver_data *data = dsi->driver_data;
++	const u16 *reg_main = data->reg_main;
+ 	struct videomode *vm = &dsi->vm;
+ 	int ret;
+ 
+-	writel(vm->vsync_len, dsi->regs + DSI_VSA_NL);
+-	writel(vm->vback_porch, dsi->regs + DSI_VBP_NL);
+-	writel(vm->vfront_porch, dsi->regs + DSI_VFP_NL);
+-	writel(vm->vactive, dsi->regs + DSI_VACT_NL);
++	writel(vm->vsync_len, dsi->regs + reg_main[DSI_VSA_NL]);
++	writel(vm->vback_porch, dsi->regs + reg_main[DSI_VBP_NL]);
++	writel(vm->vfront_porch, dsi->regs + reg_main[DSI_VFP_NL]);
++	writel(vm->vactive, dsi->regs + reg_main[DSI_VACT_NL]);
+ 
+-	if (dsi->driver_data->support_per_frame_lp)
++	if (data->support_per_frame_lp)
+ 		mtk_dsi_config_vdo_timing_per_frame_lp(dsi);
+ 	else
+ 		mtk_dsi_config_vdo_timing_per_line_lp(dsi);
+@@ -677,25 +806,25 @@ static int mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+ 
+ static void mtk_dsi_start(struct mtk_dsi *dsi)
+ {
+-	writel(0, dsi->regs + DSI_START);
+-	writel(1, dsi->regs + DSI_START);
++	writel(0, dsi->regs + dsi->driver_data->reg_main[DSI_START]);
++	writel(1, dsi->regs + dsi->driver_data->reg_main[DSI_START]);
+ }
+ 
+ static void mtk_dsi_stop(struct mtk_dsi *dsi)
+ {
+-	writel(0, dsi->regs + DSI_START);
++	writel(0, dsi->regs + dsi->driver_data->reg_main[DSI_START]);
+ }
+ 
+ static void mtk_dsi_set_cmd_mode(struct mtk_dsi *dsi)
+ {
+-	writel(CMD_MODE, dsi->regs + DSI_MODE_CTRL);
++	writel(CMD_MODE, dsi->regs + dsi->driver_data->reg_main[DSI_MODE_CTRL]);
+ }
+ 
+ static void mtk_dsi_set_interrupt_enable(struct mtk_dsi *dsi)
+ {
+ 	u32 inten = LPRX_RD_RDY_INT_FLAG | CMD_DONE_INT_FLAG | VM_DONE_INT_FLAG;
+ 
+-	writel(inten, dsi->regs + DSI_INTEN);
++	writel(inten, dsi->regs + dsi->driver_data->reg_main[DSI_INTEN]);
+ }
+ 
+ static void mtk_dsi_irq_data_set(struct mtk_dsi *dsi, u32 irq_bit)
+@@ -730,19 +859,20 @@ static s32 mtk_dsi_wait_for_irq_done(struct mtk_dsi *dsi, u32 irq_flag,
+ 
+ static irqreturn_t mtk_dsi_irq(int irq, void *dev_id)
+ {
+-	struct mtk_dsi *dsi = dev_id;
+ 	u32 status, tmp;
+-	u32 flag = LPRX_RD_RDY_INT_FLAG | CMD_DONE_INT_FLAG | VM_DONE_INT_FLAG;
++	struct mtk_dsi *dsi = dev_id;
++	const u16 *reg_main = dsi->driver_data->reg_main;
++	const u32 flag = LPRX_RD_RDY_INT_FLAG | CMD_DONE_INT_FLAG | VM_DONE_INT_FLAG;
+ 
+-	status = readl(dsi->regs + DSI_INTSTA) & flag;
++	status = readl(dsi->regs + dsi->driver_data->reg_main[DSI_INTSTA]) & flag;
+ 
+ 	if (status) {
+ 		do {
+-			mtk_dsi_mask(dsi, DSI_RACK, RACK, RACK);
+-			tmp = readl(dsi->regs + DSI_INTSTA);
++			mtk_dsi_mask(dsi, reg_main[DSI_RACK], RACK, RACK);
++			tmp = readl(dsi->regs + reg_main[DSI_INTSTA]);
+ 		} while (tmp & DSI_BUSY);
+ 
+-		mtk_dsi_mask(dsi, DSI_INTSTA, status, 0);
++		mtk_dsi_mask(dsi, reg_main[DSI_INTSTA], status, 0);
+ 		mtk_dsi_irq_data_set(dsi, status);
+ 		wake_up_interruptible(&dsi->irq_wait_queue);
+ 	}
+@@ -781,9 +911,10 @@ static void mtk_dsi_lane_ready(struct mtk_dsi *dsi)
+ 
+ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ {
++	const struct mtk_dsi_driver_data *data = dsi->driver_data;
+ 	struct device *dev = dsi->host.dev;
+-	int ret;
+ 	u32 bit_per_pixel;
++	int ret;
+ 
+ 	if (++dsi->refcount != 1)
+ 		return 0;
+@@ -820,9 +951,10 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ 
+ 	mtk_dsi_enable(dsi);
+ 
+-	if (dsi->driver_data->has_shadow_ctl)
++	/* Bypass shadow and force commit only if the register is present */
++	if (data->reg_adv[DSI_SHADOW_DEBUG])
+ 		writel(FORCE_COMMIT | BYPASS_SHADOW,
+-		       dsi->regs + dsi->driver_data->reg_shadow_dbg_off);
++		       dsi->regs + data->reg_adv[DSI_SHADOW_DEBUG]);
+ 
+ 	mtk_dsi_reset_engine(dsi);
+ 	mtk_dsi_phy_timconfig(dsi);
+@@ -873,7 +1005,7 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
+ 	mtk_dsi_lane0_ulp_mode_enter(dsi);
+ 	mtk_dsi_clk_ulp_mode_enter(dsi);
+ 	/* set the lane number as 0 to pull down mipi */
+-	writel(0, dsi->regs + DSI_TXRX_CTRL);
++	writel(0, dsi->regs + dsi->driver_data->reg_main[DSI_TXRX_CTRL]);
+ 
+ 	mtk_dsi_disable(dsi);
+ 
+@@ -1171,9 +1303,10 @@ static void mtk_dsi_wait_for_idle(struct mtk_dsi *dsi)
+ 	int ret;
+ 	u32 val;
+ 	struct drm_device *drm = dsi->bridge.dev;
++	const struct mtk_dsi_driver_data *data = dsi->driver_data;
+ 
+-	ret = readl_poll_timeout(dsi->regs + DSI_INTSTA, val, !(val & DSI_BUSY),
+-				 4, 2000000);
++	ret = readl_poll_timeout(dsi->regs + data->reg_main[DSI_INTSTA],
++				 val, !(val & DSI_BUSY), 4, 2000000);
+ 	if (ret) {
+ 		drm_warn(drm, "polling dsi wait not busy timeout!\n");
+ 
+@@ -1207,10 +1340,12 @@ static u32 mtk_dsi_recv_cnt(u8 type, u8 *read_data)
+ 
+ static void mtk_dsi_cmdq(struct mtk_dsi *dsi, const struct mipi_dsi_msg *msg)
+ {
++	const struct mtk_dsi_driver_data *data = dsi->driver_data;
+ 	const char *tx_buf = msg->tx_buf;
+-	u8 config, cmdq_size, cmdq_off, type = msg->type;
++	const u8 type = msg->type;
+ 	u32 reg_val, cmdq_mask, i;
+-	u32 reg_cmdq_off = dsi->driver_data->reg_cmdq_off;
++	u8 cmdq_size, cmdq_off;
++	u8 config;
+ 
+ 	if (MTK_DSI_HOST_IS_READ(type))
+ 		config = BTA;
+@@ -1233,15 +1368,15 @@ static void mtk_dsi_cmdq(struct mtk_dsi *dsi, const struct mipi_dsi_msg *msg)
+ 	}
+ 
+ 	for (i = 0; i < msg->tx_len; i++)
+-		mtk_dsi_mask(dsi, (reg_cmdq_off + cmdq_off + i) & (~0x3U),
++		mtk_dsi_mask(dsi, (data->reg_adv[DSI_CMDQ] + cmdq_off + i) & (~0x3U),
+ 			     (0xffUL << (((i + cmdq_off) & 3U) * 8U)),
+ 			     tx_buf[i] << (((i + cmdq_off) & 3U) * 8U));
+ 
+-	mtk_dsi_mask(dsi, reg_cmdq_off, cmdq_mask, reg_val);
+-	mtk_dsi_mask(dsi, DSI_CMDQ_SIZE, CMDQ_SIZE, cmdq_size);
+-	if (dsi->driver_data->cmdq_long_packet_ctl) {
++	mtk_dsi_mask(dsi, data->reg_adv[DSI_CMDQ], cmdq_mask, reg_val);
++	mtk_dsi_mask(dsi, data->reg_main[DSI_CMDQ_SIZE], CMDQ_SIZE, cmdq_size);
++	if (data->cmdq_long_packet_ctl) {
+ 		/* Disable setting cmdq_size automatically for long packets */
+-		mtk_dsi_mask(dsi, DSI_CMDQ_SIZE, CMDQ_SIZE_SEL, CMDQ_SIZE_SEL);
++		mtk_dsi_mask(dsi, data->reg_main[DSI_CMDQ_SIZE], CMDQ_SIZE_SEL, CMDQ_SIZE_SEL);
+ 	}
+ }
+ 
+@@ -1271,7 +1406,7 @@ static ssize_t mtk_dsi_host_transfer(struct mipi_dsi_host *host,
+ 	u32 dsi_mode;
+ 	int ret, i;
+ 
+-	dsi_mode = readl(dsi->regs + DSI_MODE_CTRL);
++	dsi_mode = readl(dsi->regs + dsi->driver_data->reg_main[DSI_MODE_CTRL]);
+ 	if (dsi_mode & MODE) {
+ 		mtk_dsi_stop(dsi);
+ 		ret = mtk_dsi_switch_to_cmd_mode(dsi, VM_DONE_INT_FLAG, 500);
+@@ -1300,7 +1435,8 @@ static ssize_t mtk_dsi_host_transfer(struct mipi_dsi_host *host,
+ 	}
+ 
+ 	for (i = 0; i < 16; i++)
+-		*(read_data + i) = readb(dsi->regs + DSI_RX_DATA0 + i);
++		*(read_data + i) = readb(dsi->regs +
++					 dsi->driver_data->reg_main[DSI_RX_DATA0] + i);
+ 
+ 	recv_cnt = mtk_dsi_recv_cnt(read_data[0], read_data);
+ 
+@@ -1407,38 +1543,30 @@ static void mtk_dsi_remove(struct platform_device *pdev)
+ }
+ 
+ static const struct mtk_dsi_driver_data mt8173_dsi_driver_data = {
+-	.reg_cmdq_off = 0x200,
+-	.reg_vm_cmd_off = 0x130,
+-	.reg_shadow_dbg_off = 0x190
++	.reg_main = mtk_dsi_regs_main_v1,
++	.reg_adv = mtk_dsi_regs_mt8173,
+ };
+ 
+ static const struct mtk_dsi_driver_data mt2701_dsi_driver_data = {
+-	.reg_cmdq_off = 0x180,
+-	.reg_vm_cmd_off = 0x130,
+-	.reg_shadow_dbg_off = 0x190
++	.reg_main = mtk_dsi_regs_main_v1,
++	.reg_adv = mtk_dsi_regs_mt2701,
+ };
+ 
+ static const struct mtk_dsi_driver_data mt8183_dsi_driver_data = {
+-	.reg_cmdq_off = 0x200,
+-	.reg_vm_cmd_off = 0x130,
+-	.reg_shadow_dbg_off = 0x190,
+-	.has_shadow_ctl = true,
++	.reg_main = mtk_dsi_regs_main_v1,
++	.reg_adv = mtk_dsi_regs_mt8183,
+ 	.has_size_ctl = true,
+ };
+ 
+ static const struct mtk_dsi_driver_data mt8186_dsi_driver_data = {
+-	.reg_cmdq_off = 0xd00,
+-	.reg_vm_cmd_off = 0x200,
+-	.reg_shadow_dbg_off = 0xc00,
+-	.has_shadow_ctl = true,
++	.reg_main = mtk_dsi_regs_main_v1,
++	.reg_adv = mtk_dsi_regs_mt8186,
+ 	.has_size_ctl = true,
+ };
+ 
+ static const struct mtk_dsi_driver_data mt8188_dsi_driver_data = {
+-	.reg_cmdq_off = 0xd00,
+-	.reg_vm_cmd_off = 0x200,
+-	.reg_shadow_dbg_off = 0xc00,
+-	.has_shadow_ctl = true,
++	.reg_main = mtk_dsi_regs_main_v1,
++	.reg_adv = mtk_dsi_regs_mt8186,
+ 	.has_size_ctl = true,
+ 	.cmdq_long_packet_ctl = true,
+ 	.support_per_frame_lp = true,
 -- 
 2.54.0
 
