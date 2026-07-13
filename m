@@ -4,72 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36511C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 14:41:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71860C44501
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 14:46:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=hrWmk776oESUEsQioPTzXcFQ2IdNzgMCGceqsLeJHeQ=; b=zGBP6IFBR0iTpTosoYZiJQCbDK
-	UqeTV+IvSTsIM2rh5T6LPdKsyoWTYVUBWUgTgReocWHHFPKcFwutx7OAGicJLN9EZ3GImybI+WABM
-	1KD4jDVpK8UK8EbPsTkNEOcRP9Idfq4FOxG4cr2EseZ2jjlkiipG8256ToLczKfgcS7Brf6dfYtUq
-	NGs1EqWvp8EMVJlA4G3lg3mCx6bNK4EgPEj8/aiRCGjddIoSuR907KFeuhB5m3XYTzscKOsXt+nCW
-	NWcdkd2GGhPatCG8A96qdzfxcWIH324OZl+kVo7lcApKqJnxAGNxls8o8VyJvkN7nRe44JkmeFB1Z
-	CInj/UDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	References:In-Reply-To:Date:To:From:Subject:Message-ID:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yaOMlOkRAwrFIGmDlhCshTCWQ5yfBP7eJ8bFkeqHcP8=; b=LoIYGk9EXvkcRV9iijo5WCWWvQ
+	HkkLK7U884T1LxbpK0ErsY4sTxYC1113pqL3TOycOJh7+28Zo1Xl6qgXNtJxFCdOekLiWH6FFtjhf
+	lA2xvzHj64lMZ+mXwgz0QNxJiceERqdtzt6Ju3LHPgw87XnCTWlBdsE9kNXVkYpvAcbyWQhGobEj9
+	Pijtnz0+2YZ/9nWGDfa033MMHiSvsw2GuDlL6scJJSmc7f5M/RgMVBdlh4JynAPdC6+F9xiUsQKsI
+	6UQdvzl87latDdIuMCGk9ECOgRP8L81SfU9qeNa5odrc8+ikhcHWKMEcdq0zvkuB/Dci+zK7OF6Gv
+	sh4FkABg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjHqw-00000009cvq-0ZP5;
-	Mon, 13 Jul 2026 14:41:50 +0000
-Received: from mout-p-103.mailbox.org ([80.241.56.161])
+	id 1wjHvK-00000009dZM-23Ra;
+	Mon, 13 Jul 2026 14:46:22 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjHqq-00000009csO-2p63;
-	Mon, 13 Jul 2026 14:41:47 +0000
-Received: from smtp2.mailbox.org (smtp2.mailbox.org [10.196.197.2])
+	id 1wjHvC-00000009dXl-1vh7;
+	Mon, 13 Jul 2026 14:46:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783953971;
+	bh=eQUa3ScWb0Cgwwi0JeC1XpMNMA9za5OuFxAcERineVo=;
+	h=Subject:From:To:Date:In-Reply-To:References:From;
+	b=lqrv2tURjdpv5DtV/mhSJkvyjNW9vl10v6DGJaKmDq4AMiuQBCEUW54mwswZrQbk+
+	 9fAu83E+uENPnV3OxskKg7FnC+TgmA5F4dSp0XgGWHZGOHchaROTu+bRifaJbYWEMv
+	 yEk9LG7P+V8YFOxMGr5lgIuPnT5eRiyLH7NMuHrFCEYBBshyQDNnWMCyA65m1JORHn
+	 A+WLFcI7wC2sq7fcMvl5gq1fQKrxMeACTOFCr8r+rL54bfO1NyrsejL6e+opguZQl+
+	 Ov+HacxyiA4F6dsDcKUPHmly6r00Jcm15LVhHhp/LJhVUfVLbL9nRd5otxkz8G20am
+	 JmPzR1z2n3eHg==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA512)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mout-p-103.mailbox.org (Postfix) with ESMTPS id 4gzQ9s3gXmzKm5r;
-	Mon, 13 Jul 2026 16:41:37 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mavick.dev; s=MBO0001;
-	t=1783953697;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=hrWmk776oESUEsQioPTzXcFQ2IdNzgMCGceqsLeJHeQ=;
-	b=OzGXM3Kh57bn2zBdFrS3jRL9eNtUSFcliK+5wPeIe+X49PN33uvrWx1rQ5iRT8QBOJI44O
-	hqYS17MHVSU9DLmrKcOluiaYCLV5LzRMzo0kIa8Q4bvTmx1UBbf2/yfVARN6Dr1ZhBKRBa
-	9E03HX6zo38dsqvco3OFewq9FoILjocExubivpIrnSfQRqH7S/8VQCPrqOkosGotEyNsRZ
-	2vh/HjTUqt9bdRZB0InFuDfwpHSHol++AIVWncNR+fPJokv4p7e/OkWApfX3eiMobY5h9d
-	aqbOja3P2ECtkfAr/u44RzRkFUJQf4dqfFR9awoA58edav5QpJylhoknjB2Phg==
-From: Eugene Mavick <m@mavick.dev>
-Date: Mon, 13 Jul 2026 22:41:06 +0800
-Subject: [PATCH] MAINTAINERS: fix stale file entries
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 30D2217E07A2;
+	Mon, 13 Jul 2026 16:46:10 +0200 (CEST)
+Message-ID: <e90e392c6c9257f0383c8cbdfee0707ea6147237.camel@collabora.com>
+Subject: Re: [PATCH v15 01/12] media: mediatek: jpeg: fix jpeg cores'
+ amounts setting
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Kyrie Wu =?UTF-8?Q?=28=E5=90=B4=E6=99=97=29?= <Kyrie.Wu@mediatek.com>, 
+ "linux-media@vger.kernel.org"	 <linux-media@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org"	 <linux-mediatek@lists.infradead.org>,
+ AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>,
+ "robh@kernel.org" <robh@kernel.org>,  "linux-kernel@vger.kernel.org"	
+ <linux-kernel@vger.kernel.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, 
+ "linux-arm-kernel@lists.infradead.org"	
+ <linux-arm-kernel@lists.infradead.org>, "mchehab@kernel.org"	
+ <mchehab@kernel.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+ "hverkuil-cisco@xs4all.nl"	 <hverkuil-cisco@xs4all.nl>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,  "devicetree@vger.kernel.org"	
+ <devicetree@vger.kernel.org>
+Date: Mon, 13 Jul 2026 10:46:08 -0400
+In-Reply-To: <05928d76a6cb103e1f4cafc38fd4ad4013b87c05.camel@mediatek.com>
+References: <20260702072614.10373-1-kyrie.wu@mediatek.com>
+		 <20260702072614.10373-2-kyrie.wu@mediatek.com>
+		 <29b98aee357ea1ff49939c47eaca3cb4a01c8d72.camel@collabora.com>
+	 <05928d76a6cb103e1f4cafc38fd4ad4013b87c05.camel@mediatek.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-a58HJVnWn+9zXOppBSIh"
+User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260713-fix-maintainers-entries-v1-1-800c6ad14201@mavick.dev>
-X-B4-Tracking: v=1; b=H4sIAAH5VGoC/x2MQQqAIBBFrxKzbkBNCrtKtJCcahZZaEQg3b2px
- V88+O8VyJSYMvRVgUQXZ96jgK4rmFYfF0IOwmCUaVWnG5z5xs1zPGWUMlI8vwDamawKXjsTHIh
- 9JJLrXx7G53kBe2njW2kAAAA=
-X-Change-ID: 20260713-fix-maintainers-entries-4fe40da192d9
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Eugene Mavick <m@mavick.dev>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3878; i=m@mavick.dev;
- h=from:subject:message-id; bh=stq7W8uHONdsqMrB0hfJn0vxpzHny9ZEmO4mAvarUPY=;
- b=owGbwMvMwCU2V/5U3e1aE3/G02pJDFkhP9nuWj+e8s707gN31unuz+d85zhqxDxJgG/huUPpV
- wx/9eg7dZSyMIhxMciKKbLUZCW4Z6yclWh8dFIPzBxWJpAhDFycAjCRHBVGhk8ixUv36+a9s5Wd
- /6R0g4df8p6mmadja3lLFBdcXHbjxDtGhoVMX1ZU/tluxPfH+Pad434xT68ukld8etv2WJBve3Z
- iIBcA
-X-Developer-Key: i=m@mavick.dev; a=openpgp;
- fpr=7C6A604768A99A6133C5928C9D1FCA7EDB7D344F
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_074145_485193_CDE41BFB 
-X-CRM114-Status: UNSURE (   9.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260713_074614_675998_4D6ADDE6 
+X-CRM114-Status: GOOD (  34.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,108 +100,220 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix file entry references to nonexistent files, by either changing them
-to the new renamed file or removing them if they were removed or never
-existed.
 
-Info on each entry change('R:' means removed):
+--=-a58HJVnWn+9zXOppBSIh
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-arch/arm/mach-ep93xx/ts72xx.c
--R: commit e5ef574dda70 ("ARM: ep93xx: delete all boardfiles")
-include/linux/dma-buf/
--R: commit 25bd73562941 ("dma: contiguous:
- Turn heap registration logic around")
-include/linux/fs_types.h:
--commit 0485a18d9141 ("fs: rename fs_types.h to fs_dirent.h")
-arch/powerpc/crypto/aes.c
--R: commit 7cf2082e74ce ("lib/crypto: powerpc/aes: Migrate POWER8
-optimized code into library")
-drivers/gpu/drm/ci/xfails/powervr*
--Never existed, entry added in:
- commit d7683c49638c
- ("drm/ci: mediatek: add tests for powervr gpu driver")
-Documentation/devicetree/bindings/display/bridge/megachips-stdpxxxx-ge-b850v3-fw.txt
--commit 74459b0dacce ("dt-bindings: display: bridge:
- convert megachips-stdpxxxx-ge-b850v3-fw.txt to yaml")
- include/dt-bindings/media/*qcom*
--Never existed, entry added in commit bfdfbdf469b4
- ("MAINTAINERS: Add a media/platform/qcom MAINTAINERS entry")
+Hi,
 
----
-Signed-off-by: Eugene Mavick <m@mavick.dev>
----
- MAINTAINERS | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+Le lundi 13 juillet 2026 =C3=A0 03:30 +0000, Kyrie Wu (=E5=90=B4=E6=99=97) =
+a =C3=A9crit=C2=A0:
+> On Sat, 2026-07-11 at 17:43 -0400, Nicolas Dufresne wrote:
+> > Hi,
+> >=20
+> > Le jeudi 02 juillet 2026 =C3=A0 15:26 +0800, Kyrie Wu a =C3=A9crit=C2=
+=A0:
+> > > Different ICs have different amounts of cores,
+> > > use a variable to set the cores' amounts.
+> > >=20
+> > > Fixes: 934e8bccac95 ("mtk-jpegenc: support jpegenc multi-hardware")
+> > > Fixes: 0fa49df4222f ("media: mtk-jpegdec: support jpegdec multi-
+> > > hardware")
+> > > Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+> > > Reviewed-by: AngeloGioacchino Del Regno
+> > > <angelogioacchino.delregno@collabora.com>
+> > > ---
+> > > =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c=C2=A0=C2=
+=A0 | 8 ++++---
+> > > -
+> > > =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h=C2=A0=C2=
+=A0 | 2 ++
+> > > =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c | 1 +
+> > > =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c | 1 +
+> > > =C2=A04 files changed, 8 insertions(+), 4 deletions(-)
+> > >=20
+> > > diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> > > b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> > > index d147ec483081..1e014fd698ae 100644
+> > > --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> > > +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> > > @@ -1462,7 +1462,7 @@ static int mtk_jpegenc_get_hw(struct
+> > > mtk_jpeg_ctx *ctx)
+> > > =C2=A0	int i;
+> > > =C2=A0
+> > > =C2=A0	spin_lock_irqsave(&jpeg->hw_lock, flags);
+> > > -	for (i =3D 0; i < MTK_JPEGENC_HW_MAX; i++) {
+> > > +	for (i =3D 0; i < jpeg->max_hw_count; i++) {
+> > > =C2=A0		comp_jpeg =3D jpeg->enc_hw_dev[i];
+> > > =C2=A0		if (comp_jpeg->hw_state =3D=3D MTK_JPEG_HW_IDLE) {
+> > > =C2=A0			hw_id =3D i;
+> > > @@ -1509,7 +1509,7 @@ static int mtk_jpegdec_get_hw(struct
+> > > mtk_jpeg_ctx *ctx)
+> > > =C2=A0	int i;
+> > > =C2=A0
+> > > =C2=A0	spin_lock_irqsave(&jpeg->hw_lock, flags);
+> > > -	for (i =3D 0; i < MTK_JPEGDEC_HW_MAX; i++) {
+> > > +	for (i =3D 0; i < jpeg->max_hw_count; i++) {
+> > > =C2=A0		comp_jpeg =3D jpeg->dec_hw_dev[i];
+> > > =C2=A0		if (comp_jpeg->hw_state =3D=3D MTK_JPEG_HW_IDLE) {
+> > > =C2=A0			hw_id =3D i;
+> > > @@ -1592,7 +1592,7 @@ static void mtk_jpegenc_worker(struct
+> > > work_struct *work)
+> > > =C2=A0		jpeg_work);
+> > > =C2=A0	struct mtk_jpeg_dev *jpeg =3D ctx->jpeg;
+> > > =C2=A0
+> > > -	for (i =3D 0; i < MTK_JPEGENC_HW_MAX; i++)
+> > > +	for (i =3D 0; i < jpeg->max_hw_count; i++)
+> > > =C2=A0		comp_jpeg[i] =3D jpeg->enc_hw_dev[i];
+> > > =C2=A0	i =3D 0;
+> > > =C2=A0
+> > > @@ -1687,7 +1687,7 @@ static void mtk_jpegdec_worker(struct
+> > > work_struct *work)
+> > > =C2=A0	struct mtk_jpeg_fb fb;
+> > > =C2=A0	unsigned long flags;
+> > > =C2=A0
+> > > -	for (i =3D 0; i < MTK_JPEGDEC_HW_MAX; i++)
+> > > +	for (i =3D 0; i < jpeg->max_hw_count; i++)
+> > > =C2=A0		comp_jpeg[i] =3D jpeg->dec_hw_dev[i];
+> > > =C2=A0	i =3D 0;
+> > > =C2=A0
+> > > diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+> > > b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+> > > index 02ed0ed5b736..6be5cf30dea1 100644
+> > > --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+> > > +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+> > > @@ -212,6 +212,7 @@ struct mtk_jpegdec_comp_dev {
+> > > =C2=A0 * @reg_decbase:	jpg decode register base addr
+> > > =C2=A0 * @dec_hw_dev:	jpg decode hardware device
+> > > =C2=A0 * @hw_index:		jpg hw index
+> > > + * @max_hw_count:	jpeg hw-core count
+> > > =C2=A0 */
+> > > =C2=A0struct mtk_jpeg_dev {
+> > > =C2=A0	struct mutex		lock;
+> > > @@ -234,6 +235,7 @@ struct mtk_jpeg_dev {
+> > > =C2=A0	void __iomem *reg_decbase[MTK_JPEGDEC_HW_MAX];
+> > > =C2=A0	struct mtk_jpegdec_comp_dev
+> > > *dec_hw_dev[MTK_JPEGDEC_HW_MAX];
+> > > =C2=A0	atomic_t hw_index;
+> > > +	u32 max_hw_count;
+> > > =C2=A0};
+> > > =C2=A0
+> > > =C2=A0/**
+> > > diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+> > > b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+> > > index 32372781daf5..4534caeb104f 100644
+> > > --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+> > > +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+> > > @@ -664,6 +664,7 @@ static int mtk_jpegdec_hw_probe(struct
+> > > platform_device *pdev)
+> > > =C2=A0	master_dev->dec_hw_dev[i] =3D dev;
+> > > =C2=A0	master_dev->reg_decbase[i] =3D dev->reg_base;
+> > > =C2=A0	dev->master_dev =3D master_dev;
+> > > +	master_dev->max_hw_count++;
+> >=20
+> > Just one question, can the mtk_jpegenc_worker() starts before all
+> > cores have
+> > been probed ?
+> >=20
+> > Nicolas
+>=20
+> Dear Nicolas,
+>=20
+> Thanks for the question.
+>=20
+> mtk_jpegenc_worker() is not started from the probe path. For the
+> multicore encoder, the worker is only initialized when userspace
+> opens the video node:
+> =C2=A0=C2=A0=C2=A0 mtk_jpeg_open()
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 INIT_WORK(&ctx->jpeg_work, jpeg->variant->=
+jpeg_worker)
+>=20
+> It is then queued only through the V4L2 mem2mem run path:
+> =C2=A0=C2=A0=C2=A0 userspace QBUF/STREAMON
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -> v4l2_m2m_try_schedule()
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -> .device_run =3D mtk_jpeg_multicore_enc_=
+device_run()
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -> queue_work(jpeg->workqueue, &ctx->jpeg_=
+work)
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -> mtk_jpegenc_worker()
+>=20
+> So the worker can run only after the video device has been registered=C2=
+=A0
+> and after a userspace application opens the device and starts
+> streaming buffers.
+>=20
+> The JPEG hw core probe is part of the platform device probe flow during
+> system boot. The userspace open/streaming path happens later, after the
+> system has booted and the video node is available. Therefore we do not
+> have a case where mtk_jpegenc_worker() starts before the JPEG hw probe
+> has completed.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e035a3be797c..143f28a38c97 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2684,7 +2684,6 @@ ARM/CIRRUS LOGIC BK3 MACHINE SUPPORT
- M:	Lukasz Majewski <lukma@denx.de>
- L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
- S:	Maintained
--F:	arch/arm/mach-ep93xx/ts72xx.c
- 
- ARM/CIRRUS LOGIC EP93XX ARM ARCHITECTURE
- M:	Hartley Sweeten <hsweeten@visionengravers.com>
-@@ -7546,7 +7545,6 @@ F:	Documentation/userspace-api/dma-buf-alloc-exchange.rst
- F:	drivers/dma-buf/
- F:	include/linux/*fence.h
- F:	include/linux/dma-buf.h
--F:	include/linux/dma-buf/
- F:	include/linux/dma-resv.h
- F:	rust/helpers/dma-resv.c
- K:	\bdma_(?:buf|fence|resv)\b
-@@ -9895,7 +9893,7 @@ S:	Maintained
- T:	git https://git.kernel.org/pub/scm/linux/kernel/git/vfs/vfs.git
- F:	fs/*
- F:	include/linux/fs.h
--F:	include/linux/fs_types.h
-+F:	include/linux/fs_dirent.h
- F:	include/uapi/linux/fs.h
- F:	include/uapi/linux/openat2.h
- F:	rust/kernel/fs.rs
-@@ -12350,7 +12348,6 @@ L:	linux-crypto@vger.kernel.org
- S:	Supported
- F:	arch/powerpc/crypto/Kconfig
- F:	arch/powerpc/crypto/Makefile
--F:	arch/powerpc/crypto/aes.c
- F:	arch/powerpc/crypto/aes_cbc.c
- F:	arch/powerpc/crypto/aes_ctr.c
- F:	arch/powerpc/crypto/aes_xts.c
-@@ -12560,7 +12557,6 @@ T:	git https://gitlab.freedesktop.org/drm/misc/kernel.git
- F:	Documentation/devicetree/bindings/gpu/img,powervr-rogue.yaml
- F:	Documentation/devicetree/bindings/gpu/img,powervr-sgx.yaml
- F:	Documentation/gpu/imagination/
--F:	drivers/gpu/drm/ci/xfails/powervr*
- F:	drivers/gpu/drm/imagination/
- F:	include/uapi/drm/pvr_drm.h
- 
-@@ -16510,7 +16506,7 @@ M:	Peter Senna Tschudin <peter.senna@gmail.com>
- M:	Ian Ray <ian.ray@gehealthcare.com>
- M:	Martyn Welch <martyn.welch@collabora.co.uk>
- S:	Maintained
--F:	Documentation/devicetree/bindings/display/bridge/megachips-stdpxxxx-ge-b850v3-fw.txt
-+F:	Documentation/devicetree/bindings/display/bridge/megachips,stdp2690-ge-b850v3-fw.yaml
- F:	drivers/gpu/drm/bridge/megachips-stdpxxxx-ge-b850v3-fw.c
- 
- MEGARAID SCSI/SAS DRIVERS
-@@ -22055,7 +22051,6 @@ Q:	https://patchwork.linuxtv.org/project/linux-media/list
- T:	git https://gitlab.freedesktop.org/linux-media/media-committers.git
- F:	Documentation/devicetree/bindings/media/*qcom*
- F:	drivers/media/platform/qcom
--F:	include/dt-bindings/media/*qcom*
- 
- QUALCOMM SMB CHARGER DRIVER
- M:	Casey Connolly <casey.connolly@linaro.org>
+When I check the core implementation though, the video device is registered=
+ and
+ready to open before childs driver, so even if small, there is gap where yo=
+u
+could race between probes and open.
 
----
-base-commit: 979c294509f9248fe1e7c358d582fb37dd5ca12d
-change-id: 20260713-fix-maintainers-entries-4fe40da192d9
+I think I'd like to suggest a different approach, which to me is easier to
+understand (and so should make it easier to maintain). In mtk_jpeg_probe(),=
+ we
+already compute num_child. We could immediately set max_hw_count to its exp=
+ected
+value. That would replace this patch entirely. We should add some bug on if=
+ that
+number is bigger then MTK_JPEGDEC_HW_MAX (bound checks, see shashiko report=
+).
 
-Best regards,
--- 
-Eugene Mavick <m@mavick.dev>
+Then, in follow up patch, to fix the minor race I mention, we could avoid
+setting hw_rdy counter to num_child immediately, and increment that at chil=
+d
+probe time (where you increase max_hw_count in this patch). The worker will=
+ then
+wait properly for child driver to have probed (instead of spinning the
+device_run() by calling v4l2_m2m_job_finish() when the max retry is reached=
+.).
 
+hope this make sense, at least to me, having a max value that cannot increa=
+se
+sounds more logical.
+
+Nicolas
+
+>=20
+> Regards,
+> Kyrie.
+> >=20
+> > > =C2=A0
+> > > =C2=A0	platform_set_drvdata(pdev, dev);
+> > > =C2=A0	pm_runtime_enable(&pdev->dev);
+> > > diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+> > > b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+> > > index b6f5b2249f1f..2765dafab4ad 100644
+> > > --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+> > > +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+> > > @@ -386,6 +386,7 @@ static int mtk_jpegenc_hw_probe(struct
+> > > platform_device *pdev)
+> > > =C2=A0	master_dev->enc_hw_dev[i] =3D dev;
+> > > =C2=A0	master_dev->reg_encbase[i] =3D dev->reg_base;
+> > > =C2=A0	dev->master_dev =3D master_dev;
+> > > +	master_dev->max_hw_count++;
+> > > =C2=A0
+> > > =C2=A0	platform_set_drvdata(pdev, dev);
+> > > =C2=A0	pm_runtime_enable(&pdev->dev);
+
+--=-a58HJVnWn+9zXOppBSIh
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCalT6MAAKCRDZQZRRKWBy
+9JrbAQDLveH/jDrTKFuENiA349uauGr7XFkZYH3C9wMQTpDY6AD+IFk+ErD8G+WM
+Asj99DiTkwEAuORoQvEGwyqWB8+uqwg=
+=raLb
+-----END PGP SIGNATURE-----
+
+--=-a58HJVnWn+9zXOppBSIh--
 
