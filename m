@@ -4,70 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCA23C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 08:08:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BFC3C43458
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 08:11:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Qth+j747jBoq5VBoP8yma7YMe69CaY8iHA5fYyTB/Zc=; b=poX4NFIQfRmWFzQidU2dvHxph8
-	jF9qYcS6J3vjKHavL8SnwUaSg7EPvafk1em0N+inXdthDaORyghjsEcVX3o7IPfJL8ERgFXfpGlFY
-	NDhHXXGF1n1GLBQZJhKYT498L/+is1Em83kxb7N9x7vNw/TZDOr0/58zN4+g9u/o7jRAFTZm0cJPW
-	YzNZ+8iEfAoszIvo2h9xqRLPYUlXjtTPwAXQBPvauN8ox8/VVJtf5WE7SvYMJbwY3qNpp+bLQ733+
-	WynZ5Yn1pBLvMnGH4BJ0xzpH1heZzyKTD98ShxzgunjixcbtGb/6sF5Y0T35zaZmX0aW+ooILjKjb
-	vBs1mreQ==;
+	bh=dzuuxmp72NuhJEhbTzDtqUQgRFFTEExkan/H+uaUpHI=; b=00s/ks935SZxNNIK032tUsuT3z
+	txmK8ubHVo3ACqy7RTTe54sa1J/eBhGhTdknxJtIRa3DLQk+DYZOpU20j8fH/8ytpmorDczIr4uQp
+	0Qqrb7Lh7LW1jsbt3f/ZELYJGDW5y/ASOkRtCpeV8ZyyfXedN73PI3xWlQ+vJpNgd9yCQy624upcN
+	J7J5wiw4etVtZUEzUD2br5HfpkfMgorFRSw60PNMPiHV+SbZilmnu5MeIBTITr9w18hNVcrowZ1Bk
+	OZjyVNCYJvrDG+je+W9LCHAY9x5MBAvnHEQWK1551ONconm1BBpE3HzXcpdfA5DtvNOTTMvof8LuR
+	DfJ/+ebQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjBiX-00000008X08-0S0i;
-	Mon, 13 Jul 2026 08:08:45 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wjBlU-00000008XZV-3goQ;
+	Mon, 13 Jul 2026 08:11:48 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjBiT-00000008Wy2-3Ep5;
-	Mon, 13 Jul 2026 08:08:43 +0000
+	id 1wjBlR-00000008XXb-3Z7g;
+	Mon, 13 Jul 2026 08:11:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783930119;
-	bh=iMeBkq+BFehTOuRVhF7MS22BjrjNDLvRuZ8Ypb/TMeI=;
+	s=mail; t=1783930302;
+	bh=nekH3c8fOVjXzri9HMJDZCZ+Cs7MULnXoNr/TShtOno=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=pXmO8CRaLIihv6hY/BZTjo7vZcXaY/tWdrZ/3b8oREJ8Gt9k1fggi+RXp6XoakMpL
-	 qZbygS3xz1g4ueiqNIbnS3pF1Wc/JEr3wXGMeyjGzCj73TgAsdK2EhwSlCiciFnJRo
-	 orR8QFit8rcCDOWFFsxzWxjotryLavtET+O24MdtEN5dQHxDy3yYQkQO2fP8RGJ6Cf
-	 ZAz/m7rOCgYjMhNfaxandd45al7JH3FkRT/wJQXkz4NHGidAH4awQq6rwytkzrmtbv
-	 UtlaTeKiz83H2eZW1tgCGwtXJ4BDi+0Ay5R5xQT8dJbwKqRXatXbR0m8pxrhCqcC3O
-	 qU/4aIIVFCjmQ==
+	b=Zons0NaZRFePVu2AFie0jHRJDaSl8nVZRnppWW3K5rXuujeJq89RNEwiLr+W4Ez1n
+	 XqNQ9w7ETzBiN4jiaaKGFgK2J05DcFbj1EsTEnklxVGNSnDxjIwODNoCiu5eeib+eP
+	 iBEnixp/SEl43F90hI/BEJoKIiKEk2YrZjiPEKZMHcH9c/Ts2Rv5AQD6hIbA1vRRDY
+	 AKeCIlt+n9ubbCUY9L1rCtwStMnkfmU8+2OsMTAqcG+ZZIY6mebedYjlWgaDwHygf1
+	 1rrT+Qq0g2UhQleHWRQI7hCZT8ZruH9g6YS35nhGmJuV99XAluti273G0joQA26vBQ
+	 XbymhUnq3Ec7g==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 975F617E00F6;
-	Mon, 13 Jul 2026 10:08:38 +0200 (CEST)
-Message-ID: <e28ceff1-a75e-4b51-bb79-1d92daa0cada@collabora.com>
-Date: Mon, 13 Jul 2026 10:08:38 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3C6B317E07AA;
+	Mon, 13 Jul 2026 10:11:42 +0200 (CEST)
+Message-ID: <c11705b1-fc46-440b-a27e-0cc38f3b2d69@collabora.com>
+Date: Mon, 13 Jul 2026 10:11:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] arm64: dts: mediatek: mt6858: Add pinmux macro header
- file
-To: nikolai.burov@jolla.com, Linus Walleij <linusw@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>
-Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Nikolai Burov <nikolai.burov+review@abscue.de>
-References: <20260710-mt6858-pinctrl-v1-0-f75ab558f0df@jolla.com>
- <20260710-mt6858-pinctrl-v1-3-f75ab558f0df@jolla.com>
+Subject: Re: [PATCH v5 0/4] AUXADC driver for the MediaTek mt6323 PMIC
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: rva333@protonmail.com, David Lechner <dlechner@baylibre.com>,
+ =?UTF-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>,
+ Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Ben Grisdale <bengris32@protonmail.ch>,
+ Conor Dooley <conor.dooley@microchip.com>,
+ Andy Shevchenko <andriy.shevchenko@intel.com>
+References: <20260709-mt6323-adc-v5-0-d11b8332a735@protonmail.com>
+ <f2d5801c-1d12-4a61-ac23-aa24dfd0ee5c@collabora.com>
+ <20260710005424.5c559b5a@jic23-huawei>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260710-mt6858-pinctrl-v1-3-f75ab558f0df@jolla.com>
+In-Reply-To: <20260710005424.5c559b5a@jic23-huawei>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_010842_081322_8A69D579 
-X-CRM114-Status: UNSURE (   6.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260713_011146_045099_EB548C5B 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,15 +85,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/10/26 17:00, Nikolai Burov via B4 Relay wrote:
-> From: Nikolai Burov <nikolai.burov@jolla.com>
+On 7/10/26 01:54, Jonathan Cameron wrote:
+> On Thu, 9 Jul 2026 13:33:46 +0200
+> AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
 > 
-> Add a header file providing macros needed for specifying MT6858 pin
-> functions in device tree files.
+>> On 7/9/26 12:52, Roman Vivchar via B4 Relay wrote:
+>>> This series adds support for the 15-bit AUXADC hardware block found on
+>>> the MediaTek mt6323 PMIC.
+>>>
+>>> The previous version of the series for all AUXADC, EFUSE and thermal
+>>> drivers was split after Krzysztof's comment [1].
+>>>
+>>> Tested on the MediaTek mt6572 and mt8163 SoCs (Ben), both paired with a
+>>> mt6323.
+>>>
+>>> [1]: https://lore.kernel.org/linux-mediatek/20260504-mt6323-v1-0-799b58b355ff@protonmail.com/T/#med30fad67a090be35f549231336b2dec295233f6
+>>>
+>>> Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
+>>> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+>>
+>> Whole series is
+>>
+>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>
+>> Cheers,
+>> Angelo
 > 
-> Signed-off-by: Nikolai Burov <nikolai.burov@jolla.com>
+> As noted on discussion of previous version. I picked up the IIO side of things already
+> so I'm assuming nothing else for me to do here.  Shout if not!
+> 
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+You're assuming right. I should've replied with R-b only to the last two patches as
+it's too late for this on IIO - it's fine! :-)
 
-> ---
+Cheers,
+Angelo
+
+> Thanks,
+> 
+> Jonathan
+> 
 
