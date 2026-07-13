@@ -4,111 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6EFAC43458
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 11:21:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B1B4C43458
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 11:32:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rXjKjfUdtUpUpxQLZictrbLi5QqdrHTWXpkAbCAsH1M=; b=pnljhlEmwi9x+qKnVZt027XlUW
-	T6M/z8yEHiKt1Ou5uU3Age2nV9l2Zum04Y/4Hlz8sKkDuNQ46xMaL2eL6M0NV4HOySz+GFxCIyyRh
-	+8BMQv2THHLkIB4tXQskl5rqK8BHCoogMm7nfTIZ9b9JJZFbWcgYgyHTeAJ96vCScxi2T57fsdg7A
-	X9M157Qf9J1lC6PvyC9/fXSOSgQO17goSYyVenqbXLVUReSvKaKKgt03+cccU8ZCPmqWQ2JXOkSNb
-	M1V8FBDobe23f1kTuYtqoLHhPz8SETuXVmWEr97Da+neS1sPjDXo9wjZfArHD8zm7HARooWtZ6Cvw
-	sDn5poYg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bQ5YkObDJn3q5yEXBMbpydhpxp/loGCG/PfQF+sLSPI=; b=vajRWlP3p5ydz5dDGzyhjfP6wd
+	QGqbEJKn7HDZ0RrxwRj7GsIVxGkt4RRqHfEJUfT5s0yAh6A4sSuE8ijYyNnIr/zGzDkFvN3syxDV+
+	ZxnaqG5Ctz8t8d3oX1dvCO2C3pjhU5wKLlincrstRtZ64JTiWQ2XWbR5BYqPtkWBkV+w7jUBc8g7Z
+	SQnsF7dXYtQD/SdpYbjO20vPNGk4eHfaFLNPyVVZZPA2fpholM5hHkhzQJ5WDbYyiVEw16ni0ItIY
+	26GPrPhRxUwi/80czGs4cORgLYQhJUsO/zRLCYXnGfIfe9jtfonANGcHoFIoayVoCm1V17AjIKMNi
+	WXhfeIbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjEjD-00000008zgZ-2igX;
-	Mon, 13 Jul 2026 11:21:39 +0000
-Received: from mgamail.intel.com ([192.198.163.12])
+	id 1wjEtZ-000000090Zr-0Bm1;
+	Mon, 13 Jul 2026 11:32:21 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjEjA-00000008zfq-3YV8;
-	Mon, 13 Jul 2026 11:21:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1783941697; x=1815477697;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=qjNurRQVSwJBiieOW9ThoUFB9rqOdoEiG35XLbhQwBc=;
-  b=Lj2kwDTD1DSvIdonGO5OCt93nUtDibfaatcwOJEym0fG4r+9rzFnI1gg
-   6roiuoqZckcE5Si4zbonp2GT/nSv94QhQd+0ifbKp1sPt1SXj/M/95mnv
-   n/LIyxqmYwHTij7pFp1t+CvTyFTRl8R0ztc1CsuwpUE06wXnLyAE1ATch
-   Ve13NtG8b+rKtShcqwcAsilAkCcBUmunsVoF3Mc9v91jRnTlaKxL8DLNC
-   udQOIZ/iZQqp1CI10CfeGs3So/O9fFk6C+q3SqesXM/NLJU4gYhPrdEv1
-   M3lsyvx+jFJZrozcvkU2fF+3ESGsITR/Tqa7ArAj0UyadUU6nvb7EAaEh
-   g==;
-X-CSE-ConnectionGUID: aIhuYTU5SNm+AeT4+cpzrg==
-X-CSE-MsgGUID: T7ITvJZ9Qxe13+Y3Yxwxdg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11841"; a="88372068"
-X-IronPort-AV: E=Sophos;i="6.25,154,1779174000"; 
-   d="scan'208";a="88372068"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Jul 2026 04:21:35 -0700
-X-CSE-ConnectionGUID: FC1GeEyzSPKWMBYtZ/N88w==
-X-CSE-MsgGUID: 3GNUYWrFTM6f6PsT20OzmA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,154,1779174000"; 
-   d="scan'208";a="253788205"
-Received: from ijarvine-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.88])
-  by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Jul 2026 04:21:26 -0700
-Date: Mon, 13 Jul 2026 14:21:24 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Tony Lindgren <tony.lindgren@linux.intel.com>
-Cc: Tony Lindgren <tony@atomide.com>,
-	Praveen Talari <praveen.talari@oss.qualcomm.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jiri Slaby <jirislaby@kernel.org>,
-	Ilpo =?iso-8859-1?Q?J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>,
+	id 1wjEtW-000000090ZB-0DdE
+	for linux-mediatek@lists.infradead.org;
+	Mon, 13 Jul 2026 11:32:19 +0000
+Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-8454160043aso2913046b3a.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 13 Jul 2026 04:32:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1783942337; x=1784547137; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=bQ5YkObDJn3q5yEXBMbpydhpxp/loGCG/PfQF+sLSPI=;
+        b=XoXAP9Ntowznpe6WxQvPMaPQJcSGDsvSa17ghPQ+KfLM5YC54GJZAge9yV3Ys+ROUo
+         gjC262otb7IQ3lcfKd7Z7v+p9fpv1PVyY+rNl41BeXAN22nFBO5COTG09wZ7fCa8P8UV
+         1B3nyucpo/EaQ4f6a+uvejFSxkOgTeW3vN/4iCj+3UpoKUWhZ9gvv+J+32G4Rfy04dyb
+         swTHn+gJpOXmd8fwKW4gLLUAwtHATAirVGW6a98lrjB7bnRj0TMEaS5G2gsQSp+yk1fI
+         vH2extFkBRhlRHRkGo/+7sS9nRtmaG7oi2eq3FzwsJT/XpnrLl4hMZ1wXjbNWsImD8vA
+         uWuA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1783942337; x=1784547137;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=bQ5YkObDJn3q5yEXBMbpydhpxp/loGCG/PfQF+sLSPI=;
+        b=HL+dzVlMaLMgo040uls200CH2MYsQjYQ/latFf7O6Jh9oUvZXKT3zr5B0bsww3F3Vv
+         Arsb2xTJfXNEoFe+e1MrrazcfyG/RUkvR1/n/z7HmC8kLPsdqZBA+uwTxtPbihF9TJT3
+         khCeXGO1So+fs6yJ5ZwFj2fk4NJaT/U3BOPo/gUCbFAbVmPhRkgeGE7bNncGYgr5e1cz
+         PRTr9Ifwao/5JgkXUQmUUu9nDA4myC7Gl8CApOomJ56TdIo/aePuTh1W4flgSeHwI2dZ
+         i1Ou8AGtuj084KwSRmbaMbR4a7+WeAQ5KQ/qDKZdeofaluoyAVtWsxLeN8kDu+9veNeZ
+         SGaA==
+X-Forwarded-Encrypted: i=1; AHgh+Ro1HTHw0/1+XT0OCIWZx5w02Q+Y4P34ZPgsA3Kg8U9nJSZiNm9vvLWuPqbmjSwfPKuz8wRCboPqfHel49hqeA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwyRumiBnaryTSQLJJWiCZQtYInvs7vBfHWwhTEWpdOgILVykaR
+	3Eu/nUlOsC9IVqvqZunRMDaZCgbsZ+/02hXzq62sxfDesXJ4rJ2YbReN
+X-Gm-Gg: AfdE7clsLQCrGLhSMtkZiC73J1izCXnneLwl17uKzFC3qnzFKLhVH7ZyPnb/kfga8bv
+	flS15azz1POiXZXpOjWl/PZwGLiiwimgZrb7C7Uso8bFhCYYUcRdjOCzfecUdKNu5ltTnlYtoFn
+	MPd1atk8OlSY9K97wl3KKCsyVfSdEctdo8KUy+nxHKCQKgaiY7d4i/PDpSDnK9OVTmCFC6p6ZU6
+	I/htsj1VtlhP/EURhWuxkzCor16Gf55s50vYHLV73TQMstpppP1z6tmVeqHn3DN+jmwPiA62U3Y
+	Fx6p0p8uRTc0bSrWhN6IaZVvUO5n+iV8cDssBKcTd+9bfRPpXAo/JGout0uXP8EJCmwGWHhY+IR
+	5GbcbE2PrLW1wEfH2na21A3SCAygbgHrI9jY01etys8Ow1KkbUkgHudqr4j7rsitWcHh0jZs=
+X-Received: by 2002:a05:6a00:18aa:b0:845:d286:1fa8 with SMTP id d2e1a72fcca58-84889768958mr8641367b3a.55.1783942336528;
+        Mon, 13 Jul 2026 04:32:16 -0700 (PDT)
+Received: from lgs.. ([2001:250:5800:1000::f280])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84880a4abf1sm4318802b3a.16.2026.07.13.04.32.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 13 Jul 2026 04:32:16 -0700 (PDT)
+From: Guangshuo Li <lgs201920130244@gmail.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Richard Genoud <richard.genoud@bootlin.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Peter Griffin <peter.griffin@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Peter Korsgaard <jacmet@sunsite.dk>,
-	Michal Simek <michal.simek@amd.com>,
-	Aaro Koskinen <aaro.koskinen@iki.fi>,
-	Janusz Krzysztofik <jmkrzyszt@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	bjorn.andersson@oss.qualcomm.com,
-	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
-	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-omap@vger.kernel.org, linux-mips@vger.kernel.org,
-	Mukesh Kumar Savaliya <mukesh.savaliya@oss.qualcomm.com>,
-	aniket.randive@oss.qualcomm.com,
-	chandana.chiluveru@oss.qualcomm.com
-Subject: Re: [PATCH 0/6] tty: serial: propagate errors from uart_ops.pm
- callback
-Message-ID: <alTKNEk97jkVGfML@ashevche-desk.local>
-References: <20260709-add_return_check_for_uart_change_pm-v1-0-e85c6ffa8ec4@oss.qualcomm.com>
- <ak9OPNcVAhkfxHvZ@ashevche-desk.local>
- <20260710043746.GM30058@atomide.com>
- <alSv8BPCOiyKvOI2@tlindgre-MOBL1>
+	CK Hu <ck.hu@mediatek.com>,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Cc: Johan Hovold <johan@kernel.org>,
+	Guangshuo Li <lgs201920130244@gmail.com>,
+	stable@vger.kernel.org
+Subject: [PATCH v3] drm/mediatek: mtk_hdmi: Fix DDC adapter double put in v2
+Date: Mon, 13 Jul 2026 19:29:57 +0800
+Message-ID: <20260713112957.884640-1-lgs201920130244@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alSv8BPCOiyKvOI2@tlindgre-MOBL1>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_042136_921395_D6AADD5A 
-X-CRM114-Status: GOOD (  19.61  )
+X-CRM114-CacheID: sfid-20260713_043218_090812_6C1FA20A 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,34 +106,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 13, 2026 at 12:29:20PM +0300, Tony Lindgren wrote:
-> On Fri, Jul 10, 2026 at 07:37:46AM +0300, Tony Lindgren wrote:
-> > * Andy Shevchenko <andriy.shevchenko@linux.intel.com> [260709 10:38]:
-> > > Note, that Tony (you have him in the Cc list) did a lot for some corner cases
-> > > with that and we still have them IIRC. Tony, do you know what is the state of
-> > > affairs with runtime PM for UART?
-> > 
-> > The RX side of things should work for hardware that can wake up to an incoming
-> > event. Linux for sure needs more work to properly handle the various corner case
-> > TX wake-up of a PM runtime idled UART. I'm mostly offline until Monday though,
-> > will check my notes for more details next week.
-> 
-> For the TX side handling, my understanding is that at least uart_update_mctrl()
-> needs to call PM runtime resume and put autosuspend. And we should assume
-> uart_update_mctrl() can sleep to resume the PM runtime suspended serial port.
-> 
-> For drivers, the callers of uport->ops->get/set_mctrl() should be updated
-> to use uart_update_mctrl() where possible. And the remaining ones that cannot
-> sleep should be fixed so they can sleep or have PM runtime disabled.
-> 
-> Anybody have better ideas?
+mtk_hdmi_common_probe() gets the DDC adapter with
+of_find_i2c_adapter_by_node() and registers a devm action to release the
+adapter device reference with put_device().
 
-I don't, but the above sounds like a plan. Is it a big task? I can help with
-something in that area, perhaps Ilpo also would be able to participate.
+The HDMI v2 remove callback also calls i2c_put_adapter() on the same DDC
+adapter. This is not paired with of_find_i2c_adapter_by_node(): it drops
+the adapter device reference before the devm action drops it again, and
+it also puts a module reference that was never taken.
 
+Remove the extra i2c_put_adapter() call and drop the now-empty HDMI v2
+remove callback. The common devm action releases the adapter device
+reference.
+
+Fixes: 8d0f79886273 ("drm/mediatek: Introduce HDMI/DDC v2 for MT8195/MT8188")
+Cc: stable@vger.kernel.org
+Reviewed-by: Johan Hovold <johan@kernel.org>
+Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+---
+v3:
+  - Add Reviewed-by tag from Johan Hovold.
+  - No code changes.
+
+v2:
+  - Drop the empty remove callback, as suggested by Johan Hovold.
+  - Mention that i2c_put_adapter() also drops a module reference that was
+    never taken.
+  - Fix the Fixes tag.
+  - Add Cc stable.
+
+ drivers/gpu/drm/mediatek/mtk_hdmi_v2.c | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c b/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
+index 7bbf463056c9..ffe456238a2b 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
+@@ -1499,13 +1499,6 @@ static int mtk_hdmi_v2_probe(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-static void mtk_hdmi_v2_remove(struct platform_device *pdev)
+-{
+-	struct mtk_hdmi *hdmi = platform_get_drvdata(pdev);
+-
+-	i2c_put_adapter(hdmi->ddc_adpt);
+-}
+-
+ static const struct of_device_id mtk_drm_hdmi_v2_of_ids[] = {
+ 	{ .compatible = "mediatek,mt8188-hdmi-tx", .data = &mtk_hdmi_conf_mt8188 },
+ 	{ .compatible = "mediatek,mt8195-hdmi-tx", .data = &mtk_hdmi_conf_mt8195 },
+@@ -1515,7 +1508,6 @@ MODULE_DEVICE_TABLE(of, mtk_drm_hdmi_v2_of_ids);
+ 
+ static struct platform_driver mtk_hdmi_v2_driver = {
+ 	.probe = mtk_hdmi_v2_probe,
+-	.remove = mtk_hdmi_v2_remove,
+ 	.driver = {
+ 		.name = "mediatek-drm-hdmi-v2",
+ 		.of_match_table = mtk_drm_hdmi_v2_of_ids,
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.43.0
 
 
