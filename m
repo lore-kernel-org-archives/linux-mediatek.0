@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28AE7C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 13:11:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C44BC44507
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 13:56:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wOvNkyIo5Cons7sdeDRn7jngMiw5iribY5STlVP9ZTk=; b=x8/BvG3rHSA2oS5pcPHqySbRfr
-	oLTSOXc/BvUuecvitu1JQRR/kt11I1+ef2o8a+HPuCo59iiiP+MkmPiwKRmE/YyzFAbR2Ls8gYq8m
-	Q4BWd5o75uIr1EocV9zB/HWmXwF5wsWPcW9AIzW6vxawJO2egg2+qhFhCOmcfGfbSNCq3c4GeJ4vK
-	A19+OpcTpkQl/aTt77vbNt7cf9MSwJ+MISjqvxAkuadK32+4OWhE6mTC43Gd1OAq2wwALjntbsYSG
-	BbUAybNYPl6moe5g4QtQJvCTR91HNDMNEgmYxxQYrNkzwFioBPDI5ALywDQjmTPgoMQy303ZppNhW
-	n+rZDTqg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jN2Uqyqlk4BlB1zGW5Bw3R7JyKk82NVHi1lz3053mrA=; b=Lpom5/T+8X2TFnDyrHOCJGDszm
+	dxyJYJmZPuAfWEGu+jVtPepsdo+ym9vc6LqjENsvBgkP4qMJ7F8GLlg4q8Nneszknb2Kj3I03+7cF
+	tJgwhur6Y6UU60Y4ofOtqRa2MGGJ+41uTCvhCmhRm/7n5/jp+DhJo8jVxJropHf0mjNm2/6SDzPPg
+	VSbNoQuBFI2ihUaNaiJ7JWmOJ/5CtmPll7IVkD2qQF1fCJhcZXwilMVzHOOyYoFEoEgteKc/2X/6y
+	rR8BZRUBP+m2oX98etJNwO5Gf3SAK+29VXhGE2ZpsDJcH5frARp8+N1DhH7S6Y8nsbzrdzZfv8eHu
+	EiLphp+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjGRm-00000009KuZ-3kTN;
-	Mon, 13 Jul 2026 13:11:47 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wjH8x-00000009So6-0WwW;
+	Mon, 13 Jul 2026 13:56:23 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjGRi-00000009Kt9-020L;
-	Mon, 13 Jul 2026 13:11:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783948299;
-	bh=794YbEXyzIorMyKoNEFQ6cQ/F/QQjKG1DMjHHg8ga20=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nvas8LQIvvJDhQizpfs1AArtRbGcWBZKnvqebRXJGr7BQPAl0DYTfd5ENLJO5pyvU
-	 CU/OqUGLCIP1aGEd3AXR7wW6Dhz4O4uLvRgBYgZa3KrQYgEOovc9JTBxF6b9N+l9Yg
-	 zmr0436PoWjX7UK/l0zyurnom0LzXsVPtNKQGvYCKCv7YK32yOevPz6ICGHkAfx3vA
-	 rsYkuFU2jISdeVsummOH2689WSoDlW1uQn6Wgbu+V22iySHQRczPi/L6qVwmEjnpgN
-	 xCx5uPXADO/d/o7rwvHWjvbauMvZIpkxGdZVM9REwO1eAi/j4G2wedNOIF87vbSdaH
-	 5IFXzjbC0F5KA==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 40E1D17E010F;
-	Mon, 13 Jul 2026 15:11:39 +0200 (CEST)
-Message-ID: <298f5835-d607-41d7-b8da-7b19b8e8abdc@collabora.com>
-Date: Mon, 13 Jul 2026 15:11:38 +0200
+	id 1wjH8w-00000009Snr-0akg;
+	Mon, 13 Jul 2026 13:56:22 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 91FED6004E;
+	Mon, 13 Jul 2026 13:56:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 47F661F00A3A;
+	Mon, 13 Jul 2026 13:56:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783950981;
+	bh=jN2Uqyqlk4BlB1zGW5Bw3R7JyKk82NVHi1lz3053mrA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=FzJ62VPZgdUAUQmiLBMA+9B94QtywjBJVEiCmeTsr5MglH2TgGMUQpuPtxjxtwlbH
+	 9MQA6kk33gFAdx2LG8KWQAQcjMWaLnqHI370mEp0J44O6UaKFLSyrpJkp9AhHPMKvu
+	 vFt27QaijnH6K66ijOMHSS7oqiA0xDP+HJJ/RAGLx5I6mz0zLQUZ+jc9TroeaU/GxY
+	 KuiFHu9WqX95/NNMxDqB1uZA/7RIuuUotFj6rAQVAwwraZpkl7acyV1RYmbl8zmmRH
+	 znCPiEDJVsQ/nklC2VsRzVjPUBc6meF1hdkWmCB58n8Dmw+2MZWZNOoPfEc4uNTZ8R
+	 OPAra+BHvl9sw==
+Received: from johan by xi.lan with local (Exim 4.99.4)
+	(envelope-from <johan@kernel.org>)
+	id 1wjH8t-0000000527P-02yL;
+	Mon, 13 Jul 2026 15:56:19 +0200
+Date: Mon, 13 Jul 2026 15:56:19 +0200
+From: Johan Hovold <johan@kernel.org>
+To: Guangshuo Li <lgs201920130244@gmail.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	CK Hu <ck.hu@mediatek.com>,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	stable@vger.kernel.org
+Subject: Re: [PATCH v3] drm/mediatek: mtk_hdmi: Fix DDC adapter double put in
+ v2
+Message-ID: <alTugxmHG_s4kY4E@hovoldconsulting.com>
+References: <20260713112957.884640-1-lgs201920130244@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] pinctrl: mediatek: Add driver for MT6858
-To: Nikolai Burov <nikolai.burov+review@abscue.de>
-Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, nikolai.burov@jolla.com,
- Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@kernel.org>
-References: <20260710-mt6858-pinctrl-v1-0-f75ab558f0df@jolla.com>
- <20260710-mt6858-pinctrl-v1-2-f75ab558f0df@jolla.com>
- <89e4eb3d-a61c-410e-8ad5-e845b07f8029@collabora.com>
- <2d34c3f6-5f66-4b60-b9a2-180163964552@abscue.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <2d34c3f6-5f66-4b60-b9a2-180163964552@abscue.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_061142_303473_DBA905D2 
-X-CRM114-Status: GOOD (  26.05  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260713112957.884640-1-lgs201920130244@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,105 +80,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/13/26 14:51, Nikolai Burov wrote:
-> On 7/13/26 10:01 AM, AngeloGioacchino Del Regno wrote:
-> [...]
->>> +    [PINCTRL_PIN_REG_MODE] = MTK_RANGE(mt6858_pin_mode_range),
->>> +    [PINCTRL_PIN_REG_DIR] = MTK_RANGE(mt6858_pin_dir_range),
->>> +    [PINCTRL_PIN_REG_DI] = MTK_RANGE(mt6858_pin_di_range),
->>> +    [PINCTRL_PIN_REG_DO] = MTK_RANGE(mt6858_pin_do_range),
->>> +    [PINCTRL_PIN_REG_SR] = MTK_RANGE(mt6858_pin_dir_range),
->>
->> This is Slew Rate, not Direction... And I think this is wrong.
->>
->> If you don't know where the slew rate registers are, or if that is an unsupported 
->> operation, just omit PINCTRL_PIN_REG_SR.
+On Mon, Jul 13, 2026 at 07:29:57PM +0800, Guangshuo Li wrote:
+> mtk_hdmi_common_probe() gets the DDC adapter with
+> of_find_i2c_adapter_by_node() and registers a devm action to release the
+> adapter device reference with put_device().
 > 
-> Thanks for noticing this! This seems to be a mistake in the downstream driver that 
-> I unintentionally copied over. I will remove the slew rate.
+> The HDMI v2 remove callback also calls i2c_put_adapter() on the same DDC
+> adapter. This is not paired with of_find_i2c_adapter_by_node(): it drops
+> the adapter device reference before the devm action drops it again, and
+> it also puts a module reference that was never taken.
 > 
-
-No worries, it happens.
-
->>
->>> +    [PINCTRL_PIN_REG_SMT] = MTK_RANGE(mt6858_pin_smt_range),
->>> +    [PINCTRL_PIN_REG_IES] = MTK_RANGE(mt6858_pin_ies_range),
->>> +    [PINCTRL_PIN_REG_PU] = MTK_RANGE(mt6858_pin_pu_range),
->>> +    [PINCTRL_PIN_REG_PD] = MTK_RANGE(mt6858_pin_pd_range),
->>> +    [PINCTRL_PIN_REG_DRV] = MTK_RANGE(mt6858_pin_drv_range),
->>> +    [PINCTRL_PIN_REG_PUPD] = MTK_RANGE(mt6858_pin_pupd_range),
->>> +    [PINCTRL_PIN_REG_R0] = MTK_RANGE(mt6858_pin_r0_range),
->>> +    [PINCTRL_PIN_REG_R1] = MTK_RANGE(mt6858_pin_r1_range),
->>> +    [PINCTRL_PIN_REG_DRV_ADV] = MTK_RANGE(mt6858_pin_drv_adv_range),
->>> +    [PINCTRL_PIN_REG_RSEL] = MTK_RANGE(mt6858_pin_rsel_range),
->>> +};
->>> +
->>> +static const char * const mt6858_pinctrl_register_base_names[] = {
->>> +    "base", "lm", "rb", "bm2", "bm", "bm1", "lt", "lt1", "rt", "rt1",
->>
->> Fix ordering:
->>
->> "base", "lm", "rb", "bm", "bm1", "bm2", "lt", "lt1", "rt", "rt1",
+> Remove the extra i2c_put_adapter() call and drop the now-empty HDMI v2
+> remove callback. The common devm action releases the adapter device
+> reference.
 > 
-> The bases are already in ascending address order. I don't know what the 1 and 2 
-> suffixes in the names of the iocfg regions mean, they may just be a historical 
-> leftover. Are the names more important than the addresses here?
-> 
+> Fixes: 8d0f79886273 ("drm/mediatek: Introduce HDMI/DDC v2 for MT8195/MT8188")
+> Cc: stable@vger.kernel.org
+> Reviewed-by: Johan Hovold <johan@kernel.org>
+> Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+> ---
+> v3:
+>   - Add Reviewed-by tag from Johan Hovold.
+>   - No code changes.
 
-Eh, fair point. I guess it's fine then.
+No need to resend just to add a tag. It will be added when the patch is
+applied.
 
-For the numbers, that's because the registers for the same region of the chip
-(meaning physical region, really) are scattered all around... but bm2, bm, bm1
-refer to the same physical region (again, really physical, look at the bga array).
-
-> [...]
->>> +static const struct of_device_id mt6858_pinctrl_of_match[] = {
->>> +    { .compatible = "mediatek,mt6858-pinctrl", .data = &mt6858_data },
->>> +    { }
->>
->>      { /* sentinel */ }
-> 
-> Thanks!
-> 
-> [...]
->>> +    MTK_EINT_PIN(119, 0, 72, 0),
->>> +    MTK_EINT_PIN(120, 0, 73, 0),
->>> +    MTK_EINT_PIN(121, 0, 74, 0),
->>
->> Looks like you're missing ~70 pins here?
->>
->> If those have no EINT support, you can declare them as
->>
->>      MTK_EINT_PIN(122, EINT_INVALID_BASE, 0, 0),
->>
->> ...or you can add a macro to add a (sequential) range of pins with no EINT support.
-> 
-> Adding a variable number of mtk_eint_pin structs (with a different pin number 
-> inside each struct) doesn't seem possible using a single macro, so I'll just 
-> manually add all of them to the list.
-> 
-> While writing this, I was looking at the mt6878 driver, which also omits a range of 
-> pins. Should that be fixed as well?
-> 
-
-If there are holes in between, yes, that wouldn't work.
-
-Honestly though, this is starting to be a problem - as in - up until now,
-practically all SoCs had EINTs for each pin, or no holes in between... but
-I can see that this is changing, as MT6991, MT6993 and now MT6858 all have
-those holes.
-
-This is a note and I'm not asking you to do this but, at some point, we should
-really add some logic to the mtk-eint driver so that it doesn't forcefully (and
-at this point in time, even stupidly) map/expect pin data at the same array
-index as the pin number.
-
-That's probably more important than fixing mt6878, but well, I understand that
-this stuff would take a bit more time than adding just a few entries in arrays
-right now, and I also understand that time may be lacking, so I am definitely
-not blocking the addition of 6858 for this (of course, as long as you fill up
-the holes there)
-
-Cheers,
-Angelo
+Johan
 
