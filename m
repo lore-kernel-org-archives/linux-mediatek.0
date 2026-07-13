@@ -4,95 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DABA8C43458
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 11:41:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C302C44501
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 12:46:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Bjup8tkbZReyLVbx7owWNWJpf0WRCU5BarQCoUzbWwU=; b=Tm8z8ZVzKMVf8HQu9iYJNGbTLx
-	8OCMAvQFNLhD6ciDeYoFz3dWrSaFmxKw1SvSv753RJTl+8TCv97J+3Knq9bxCPF+9DDC76LzBz4vZ
-	CWn4r1P/PQF3+vuZ0/b2JTfqAxcdgmcVh4qtiERQcGAAQUdvGhHR+ujNMPbptOz/8QTu5uGxXOKf5
-	qj3SCzg0hCWeL9IffIdfit9vVApUh8HLkny0AKJjbIgiSnGmrovR4naXHDJJWU9YOc3r0LEoQvgtH
-	hC1a290CxgrwCUesuTI9KbFWmBQH47f1bZR+YkY4kQonKVlCav9agdiq3U0NxRvw58ucSgOVZy0UW
-	dV+KDqwg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ELuP+JlstmobvcR8nFgZQhy9eTzAwZCD1GxbQQU5DDk=; b=jGsbWtveHM1ZHu
+	bj3Yfk58zOyfZPwgPlRutYiOjVqp6CBHm3mrB10D5UbkXUCL7XQoy286TOfMjIxhc7ChE6upaucOp
+	eA6KwwHCb01EuRvhuIOeaIYmiGxzqbJLYuScsWbsnWfZ4Nt5ZUobeXnxCd2zKEQCGHZUmQ+OF3Ed7
+	KrywzjSZKKOyo6EY9xpTK7ymrVGPC+8hd95Jm68pNw6+zXVgfbSTxlFYhKr8Y7J/Blq2ggXQdY44o
+	/gKHhXSSKmW6K9nvfUqZMqtB/lnF+cmvT8FOAHpxVnMQXYcx3j+OHrL1IBs/9WId1iMKVAqdt1UkK
+	yzXBwwB7LY0C8/GlrP2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjF2E-0000000931g-1YeS;
-	Mon, 13 Jul 2026 11:41:18 +0000
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+	id 1wjG3Y-00000009EFB-3QFq;
+	Mon, 13 Jul 2026 12:46:44 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjF2B-0000000930A-0DEV
-	for linux-mediatek@lists.infradead.org;
-	Mon, 13 Jul 2026 11:41:16 +0000
-Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-2cc6dd436c6so37123305ad.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 13 Jul 2026 04:41:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1783942874; x=1784547674; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=Bjup8tkbZReyLVbx7owWNWJpf0WRCU5BarQCoUzbWwU=;
-        b=DF7/NLo7eCCAwTHBtHDclQd07+MtzpVE5c2n+juqBXjdfsWiW2xmjxzIwLnJHMlfoX
-         jBXgHKXURU743MXWa2yqDxUch042uUExxWyyHEyIdBZN1SNP9V5twJf46r5orV+PSAs1
-         uE748cySf3lmPtGafR8ArDWDcVQT8KKK3wq6KfndJD1tdC1p/2IMMbFR78g80O6D/g7s
-         ER6UEG1AazM2Uqa3Gn21Xh5NW6i1SJ0zTMkC51w/NmL0DL5hm/tZYXzKRseL+tuupeQI
-         MwJHs+oJsqWw/A1w/3EDK3tyGVc9XjmLWn16AKNKGKlNLOhUZvzaTqLi3t65dX3ZQZ94
-         eE+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1783942874; x=1784547674;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=Bjup8tkbZReyLVbx7owWNWJpf0WRCU5BarQCoUzbWwU=;
-        b=UYrL/yoSurN6t1uokHacFLb3RGeq/5I62yzvUlFGuPkvnfr+6IY5IjkYVDTBYpxTw0
-         YYcL8X0Qzvorm+VUkIyho2Rz1FoTVP38vd9uVw1heVdwqzFe314MJk1S02N73d0arO/U
-         DnzT1N9RIBhfMhtUhqjP1LgpSEsiT2wU1bULe4M3DC3YjY8ikUQsa3E2mo43srT2nkoO
-         y9k8vNJ/Y01eRFZ980XpWaTRubb5khjPthGKZVbf9AhllMLDAv+pRAbndq3XAgBSNDCb
-         SS0HAdB/SqPalt5jlTwM037wtpk0bzfnjQ5ckwQ4Dn/eCeI9UmXcY9ADOnjler8n3zui
-         kgjA==
-X-Forwarded-Encrypted: i=1; AHgh+RqZzD4NEE9XfsG5VRAMpi41ekB5eL4RngxZoRUQ9YbHtto0CIFK7ULnPB8nilqNvFOHX3T3/ifzuBuW6C08JQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzphMW6PTfXaVVt0jM6cTYklylcVFhKreTD5WyBrH12X1UnqadM
-	obv93ndYqEMYkXtEz5xrJvXeTxUo19YiSC3+P6cZmnGGMjntFW0Ner3Aob+2mhtUtQE=
-X-Gm-Gg: AfdE7cma4/yoPV66/gARN5KRVU3QLCU6qDpr3bRPujeP3AKzh8TbfSvMShKY6HHCHdZ
-	Epxcqzlt5SzCmRRY095E1rWmwD+LReTjBvG4xfsE0EJZz0HFOBjlPyN8ErDFm3RwKKQhRbKcWu4
-	m64ryMeAjw1uj961z0aBSezsXZByVTtfMfo5m9dl2oK5b+dIp0/4uhRek5i6sNRTrzSdqhdO8Fp
-	2seiHq47j9wA8iJp9xLKKfeugEYNja6mvslxZ5JfepMpYaWa++Qs8zYjhY50GChUldvDoV0pcrF
-	gFyBBSz3A88YwHIeOTL1BrUfnPm7Gq/IjUn9MGVoZ900q2jqff4v7nOHufhkFSVX1ijOaWzFBQk
-	U5SUYrIz7jPn+dEKg3VSlXc4trY2tKtoOkd5tP4t2BvnGc2NGfz+pkeAotuE5nS7bg3V4iGs1Mz
-	XmMVcppw==
-X-Received: by 2002:a17:902:ea03:b0:2c0:e2ea:6b0c with SMTP id d9443c01a7336-2ce9ed181f6mr81660085ad.21.1783942873961;
-        Mon, 13 Jul 2026 04:41:13 -0700 (PDT)
-Received: from lgs.. ([2001:250:5800:1000::f280])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ccc9d59e33sm95978515ad.74.2026.07.13.04.41.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Jul 2026 04:41:13 -0700 (PDT)
-From: Guangshuo Li <lgs201920130244@gmail.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hans Verkuil <hverkuil+cisco@kernel.org>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Johan Hovold <johan@kernel.org>,
-	Kees Cook <kees@kernel.org>,
-	Guangshuo Li <lgs201920130244@gmail.com>,
-	=?UTF-8?q?Thomas=20Wei=C3=9Fschuh?= <thomas.weissschuh@linutronix.de>,
-	Marco Crivellari <marco.crivellari@suse.com>,
-	linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: stable@vger.kernel.org
-Subject: [PATCH v2] media: platform: mtk-mdp3: Fix SCP device refcounting
-Date: Mon, 13 Jul 2026 19:38:59 +0800
-Message-ID: <20260713113859.921358-1-lgs201920130244@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1wjG3W-00000009EEt-45IO;
+	Mon, 13 Jul 2026 12:46:43 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 548296004E;
+	Mon, 13 Jul 2026 12:46:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86B001F000E9;
+	Mon, 13 Jul 2026 12:46:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1783946802;
+	bh=ELuP+JlstmobvcR8nFgZQhy9eTzAwZCD1GxbQQU5DDk=;
+	h=From:Subject:Date:To:Cc;
+	b=Jy3/LEc2ASJAPC7O0145GxG1rBT5NuM4BR2cL2E5+LR27kRFZViXGf/Q4buygkV7z
+	 aYDpRIYl/wG8r2HIZzQa109+oMkukZEj6hFjkSZjVoBc5CcAA990h0bIKU8Au9KHGa
+	 nyYbKfvDq8HZ1sqfKy4HvlxQNIOquxqUSoS/qGBHR9imO6piXaxqa2PQe6aIZPTzrs
+	 LPj+mIz9Oc/64mr85zjEG/y1Wwg1G9r5HT1osSoDe3S4X7hAdEQUsoFjXDH++iiqoz
+	 RXR99vqwp1NmZELpzOy7lBBicQ94SWdQzT3YhG8/UienZE0ngwBbBf2O7QkARlz6RP
+	 lYga6LXF42BmQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH nf-next v6 0/6] Add IPv4 over IPv6 and SIT flowtable SW
+ acceleration
+Date: Mon, 13 Jul 2026 14:46:17 +0200
+Message-Id: <20260713-b4-flowtable-sw-accel-ip6ip-v6-0-33f0155fc658@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_044115_088885_59A10174 
-X-CRM114-Status: GOOD (  11.21  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/43QTWrDMBAF4KsErasijf676j1KF7I8SkSNbCTjp
+ ATfvcKbuhhMl48H3xvmSSqWhJW8XZ6k4JJqGnML+uVCws3nK9LUt0yAgWaKKdpJGofxPvtuQFr
+ v1IeAA02TThM1nHEmZOi5NKQJU8GYHpv+QXKkGR8z+WzFLdV5LN/b6sK3+l8DC6eMOh+ECyE49
+ O79C0vG4XUs1w1eYI/pcwwaJoWLvQRjQOMBEztM8HNMNExpDxZ0FGCOl8lfzDBxjsmGMSacba8
+ EYeGAqT3mzjHVMAs2oI9Wdb77g63r+gPOv/GPBAIAAA==
+X-Change-ID: 20260505-b4-flowtable-sw-accel-ip6ip-7101034cd147
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Felix Fietkau <nbd@nbd.name>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Simon Horman <horms@kernel.org>, David Ahern <dsahern@kernel.org>, 
+ Ido Schimmel <idosch@nvidia.com>, Pablo Neira Ayuso <pablo@netfilter.org>, 
+ Florian Westphal <fw@strlen.de>, Phil Sutter <phil@nwl.cc>, 
+ Shuah Khan <shuah@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ netfilter-devel@vger.kernel.org, coreteam@netfilter.org, 
+ linux-kselftest@vger.kernel.org
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,47 +83,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mdp_probe() first tries to get the SCP handle with scp_get(). When that
-fails, it falls back to looking up the SCP platform device with
-__get_pdev_by_id() and then reads its driver data.
+Similar to IPIP and IP6I6 tunnels, introduce sw acceleration for IPv4 over
+IPv6 and SIT tunnels in the netfilter flowtable infrastructure.
 
-The fallback lookup returns the platform device with a reference, just
-like scp_get() does. However, the fallback path currently drops that
-reference immediately after platform_get_drvdata(). The driver later
-still calls scp_put(mdp->scp) unconditionally from the probe error path
-and from mdp_video_device_release(), which drops the SCP device
-reference again.
-
-Keep the fallback reference until the existing scp_put() call, so that
-the fallback path follows the same ownership rules as the scp_get()
-path.
-
-Fixes: 8f6f3aa21517 ("media: platform: mtk-mdp3: fix device leaks at probe")
-Cc: stable@vger.kernel.org
-Reviewed-by: Johan Hovold <johan@kernel.org>
-Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
 ---
-v2:
-  - Add Cc stable.
-  - Add Reviewed-by tag from Johan Hovold.
-  - No code changes.
+Changes in v6:
+- Rebase on top of nf-next and fixed conflicts.
+- Fix the case when both ingress and egress interfaces are IP tunnels.
+- Link to v5: https://lore.kernel.org/r/20260709-b4-flowtable-sw-accel-ip6ip-v5-0-828ceaf85bab@kernel.org
 
- drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 1 -
- 1 file changed, 1 deletion(-)
+Changes in v5:
+- Fix ipip6_tunnel_fill_forward_path() to take into account not only
+  IPv6 packet since SIT tunnels can encapsulate even IPv4/MPLS traffic.
+- Return an error in ipip6_tunnel_fill_forward_path() if tunnel daddr is
+  not set since NBMA tunnels are not supported yet.
+- Return an error in ipip6_tunnel_fill_forward_path() if encap.type is
+  not TUNNEL_ENCAP_NONE
+- cosmetics
+- Link to v4: https://lore.kernel.org/r/20260703-b4-flowtable-sw-accel-ip6ip-v4-0-00398cd12382@kernel.org
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-index 8f4da4cf55d2..121b1006ffdc 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-@@ -294,7 +294,6 @@ static int mdp_probe(struct platform_device *pdev)
- 			goto err_destroy_clock_wq;
- 		}
- 		mdp->scp = platform_get_drvdata(mm_pdev);
--		put_device(&mm_pdev->dev);
- 	}
- 
- 	mdp->rproc_handle = scp_get_rproc(mdp->scp);
+Changes in v4:
+- Rebase on top of nf-next and fixed conflicts.
+- Link to v3: https://lore.kernel.org/r/20260531-b4-flowtable-sw-accel-ip6ip-v3-0-56a2826f3279@kernel.org
+
+Changes in v3:
+- Drop nf_flow_tunnel_v4_push and nf_flow_tunnel_v6_push routines
+- Rebase on top of net-next tree.
+- Link to v2: https://lore.kernel.org/r/20260506-b4-flowtable-sw-accel-ip6ip-v2-0-439fd427726e@kernel.org
+
+Changes in v2:
+- Fix MTU check in nf_flow_offload_forward() and in
+  nf_flow_offload_ipv6_forward()
+- Add SIT sw acceleration support
+- Link to v1: https://lore.kernel.org/r/20260505-b4-flowtable-sw-accel-ip6ip-v1-0-9ac39ccc9ea9@kernel.org
+
+---
+Lorenzo Bianconi (6):
+      net: netfilter: add ether_type to net_device_path_ctx
+      net: netfilter: add encap_proto to flow_offload_tunnel
+      net: netfilter: add IPv4 over IPv6 tunnel flowtable acceleration
+      selftests: netfilter: nft_flowtable.sh: add IPv4 over IPv6 flowtable selftest
+      net: netfilter: add SIT tunnel flowtable acceleration
+      selftests: netfilter: nft_flowtable.sh: add SIT flowtable selftest
+
+ drivers/net/ethernet/airoha/airoha_ppe.c           |  13 +-
+ drivers/net/ethernet/mediatek/mtk_ppe_offload.c    |  13 +-
+ include/linux/netdevice.h                          |   5 +-
+ include/net/netfilter/nf_flow_table.h              |   1 +
+ net/core/dev.c                                     |   6 +-
+ net/ipv4/ipip.c                                    |   1 +
+ net/ipv6/ip6_tunnel.c                              |   6 +-
+ net/ipv6/sit.c                                     |  60 +++
+ net/netfilter/nf_flow_table_core.c                 |  19 +-
+ net/netfilter/nf_flow_table_ip.c                   | 424 +++++++++++++--------
+ net/netfilter/nf_flow_table_path.c                 |  20 +-
+ tools/testing/selftests/net/netfilter/config       |   1 +
+ .../selftests/net/netfilter/nft_flowtable.sh       |  86 ++++-
+ 13 files changed, 461 insertions(+), 194 deletions(-)
+---
+base-commit: 0150128b9506b5869d8d2000c6e71bef0719d6ce
+change-id: 20260505-b4-flowtable-sw-accel-ip6ip-7101034cd147
+
+Best regards,
 -- 
-2.43.0
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
