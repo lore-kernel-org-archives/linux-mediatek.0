@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63156C44507
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4B3BC44508
 	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 09:58:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,37 +12,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PE8/8YtuOPgj9pMNH9XGnTLtmBUjbOoTXE4EDoXN8o8=; b=tQni4pi0YAYC3gklJjbm6zd1hf
-	2XrSk4GJJ/xaA0paC+YNgBUmpBFoIbgYYvDfioNcqkCtEHbJzi+js7kWan83NHmEAJ8aIA0O6JNpG
-	LWIWhaWiNA/5UPLsYjqoUldgHBtRt2LVoyRiVNu2zaNPMdw75kR1dFi7/WjJFTUEZsclkQBwU7g98
-	wg+mrAz7gMbmc1Cwc82DqLF3J6IMpvGyxYjEnYDyb716gst6V1gRvI0lMeqKn+HPKgOWfjh7uy4wR
-	A5sEqvfWi6zIHcVSxbR4Gi9mISynvgJ7EcoQgsWg796gyjXkTmxGfnlbhkc3dg1WkEtfIaV8Lt0ni
-	lj3zGZdw==;
+	bh=5ttvjkpYG2EgA4b+eJSx9daKAVkZ1lAQZawcKPAdoeA=; b=uXDkbuM1ApTX6TO8rj0JvakRrp
+	E++srJU2B/lLCnanGnI9GSa9lDYWMeiaV053bcNtTv/8agaMaa+GoTzD090hhUXfTHjcbinUSaWYG
+	prMn+X6+hVCTBBMrPYHL+Huw1YCRdbaFIhMoPMM5cVAp8gLPyI496GzjIUc34Tje3nrAhgRK18KdZ
+	oN7hxkJ/I6nCaffTEOsXWEVjaraHB3tl709QjWPxmQeWkLbGIBvk+AW6GLk6ArpGzFqLbRBpfYTeM
+	rdxCxHnXpqTMGaotny3Hr91HeB6REaXAm1bYGK+f9wSX9dJ45JqaDV7N64Mv0MMeV87dZ4oqgGIGR
+	K0YmZ2CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjDRB-00000008nmq-0hgV;
+	id 1wjDRB-00000008nnZ-25sx;
 	Mon, 13 Jul 2026 09:58:57 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjDR2-00000008ne1-3Ffm;
-	Mon, 13 Jul 2026 09:58:50 +0000
+	id 1wjDR3-00000008nee-2tIF;
+	Mon, 13 Jul 2026 09:58:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783936726;
-	bh=xUmbeuNXP/vmDishEba9WwlN8rEC1bG4DX5W2fr1jPI=;
+	s=mail; t=1783936727;
+	bh=NLaDGBnk8HWg7KYoptuEdIwI2f5ffWONznw0X1pdVYM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=MC1sbQ6SSTPjGiZQ2lqHm+GGPQA+35rRh0X1GQyNILe5VWyGJ6qypAOvsr4Rff9Og
-	 Itf8KRLfcJHWPN9XwbtRPcaZX+oeQpycfZvjrTVgP16cyZfhaudSI3E8AB3eOOUWzz
-	 47EgEW+XkN6486SsT1ykgHYpwM/CLRzSSZVTUZ/sBCCwVP4sIdlBRJHda6bIwJyOJr
-	 0qra65lCvWSiBBvzYOLSKRN1GjE0oOwSmgy9YAlfYKQVtK7W/9f6reEJpDQ/oFvc3M
-	 Oylup+hbU1acaU1d55SkPsjuWHAOIEqHjUeg2OrkpyGxmh4A+IBox/FAOBtfk3Op/R
-	 q9RwNwrcxlI1g==
+	b=QMbAE5pvyLRXvZ/Xg7A46iMxkv7YSmw1bsGPTz9cTCtHz93Hl5vym0F2yIOqdFUwi
+	 7Jn1szkE7WBnjAtduwDAUedK94dOU7nN/BqCIr6xZ6Wvleull6trzg6sf92SQ+L/kO
+	 +rgUS6hwF44my2d+k52L88B0tiQS8IM4kG8BpO+B14SMA1VCULMYdteuXtab3fzHZl
+	 4peautu3I+K8hzJJ10k7qbDAsMhkkrO5CkyY1okhdgMolfow0vr5CiRhkMPxM7MU+R
+	 EJdjiZ+LHVMwp/YKCqkX6CD6JEKlGmbCKhlDii9IRZ/AI2Xl+aVu4jHKRBMWPSrWzK
+	 VEGy6KUkRqN3w==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E56F517E0DE6;
-	Mon, 13 Jul 2026 11:58:45 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D6EC917E0DE9;
+	Mon, 13 Jul 2026 11:58:46 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -64,20 +64,18 @@ Cc: p.zabel@pengutronix.de,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com,
 	justin.yeh@mediatek.com,
-	jason-jh.lin@mediatek.com,
-	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Subject: [PATCH v2 03/10] dt-bindings: display: mediatek: dsi: Document MT8189 and MT8196
-Date: Mon, 13 Jul 2026 11:58:30 +0200
-Message-ID: <20260713095837.16590-4-angelogioacchino.delregno@collabora.com>
+	jason-jh.lin@mediatek.com
+Subject: [PATCH v2 04/10] drm/mediatek: mtk_dsi: Enable interrupt at component bind time
+Date: Mon, 13 Jul 2026 11:58:31 +0200
+Message-ID: <20260713095837.16590-5-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260713095837.16590-1-angelogioacchino.delregno@collabora.com>
 References: <20260713095837.16590-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_025849_036100_A0C1CDBD 
-X-CRM114-Status: UNSURE (   8.03  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260713_025849_897158_39980561 
+X-CRM114-Status: GOOD (  18.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,29 +90,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible strings for MT8189 and MT8196 SoCs.
-These are compatible with the DSI IPs found in the MT8188/95 and
-others, but with differences making them not fully compatible.
+Having the DSI interrupt enabled before actually binding the DSI
+component to the display controller driver is both useless and
+dangerous: the main purpose of this interrupt is to signal CMD
+done, LP RX data ready, or VideoMode done, or to reset the HW
+engine if this doesn't come.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Should this interrupt come too late (during probe), the HW will
+be reset only at the next occurrence of a timeout, which slows
+down boot and may render artifacts to the DSI display.
+
+Moreover, clearing the DSI interrupt while the display controller
+is not ready yet, may result in an interrupt storm.
+
+In order to prevent this from happening, request the interrupt
+with IRQF_NO_AUTOEN, and enable it only when binding DSI to its
+display controller component master.
+
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../devicetree/bindings/display/mediatek/mediatek,dsi.yaml      | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 22 +++++++++++++++-------
+ 1 file changed, 15 insertions(+), 7 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
-index 27ffbccc2a08..b5cdfe0eaca4 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
-@@ -30,6 +30,8 @@ properties:
-           - mediatek,mt8183-dsi
-           - mediatek,mt8186-dsi
-           - mediatek,mt8188-dsi
-+          - mediatek,mt8189-dsi
-+          - mediatek,mt8196-dsi
-       - items:
-           - enum:
-               - mediatek,mt6795-dsi
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 3e22553ca990..284dae372c7c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -225,6 +225,7 @@ struct mtk_dsi {
+ 	int refcount;
+ 	bool enabled;
+ 	bool lanes_ready;
++	int irq;
+ 	u32 irq_data;
+ 	wait_queue_head_t irq_wait_queue;
+ 	const struct mtk_dsi_driver_data *driver_data;
+@@ -1052,7 +1053,13 @@ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
+ 	if (ret)
+ 		return ret;
+ 
+-	return device_reset_optional(dev);
++	ret = device_reset_optional(dev);
++	if (ret)
++		return ret;
++
++	enable_irq(dsi->irq);
++
++	return 0;
+ }
+ 
+ static void mtk_dsi_unbind(struct device *dev, struct device *master,
+@@ -1060,6 +1067,8 @@ static void mtk_dsi_unbind(struct device *dev, struct device *master,
+ {
+ 	struct mtk_dsi *dsi = dev_get_drvdata(dev);
+ 
++	disable_irq(dsi->irq);
++
+ 	drm_encoder_cleanup(&dsi->encoder);
+ }
+ 
+@@ -1290,7 +1299,6 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_dsi *dsi;
+ 	struct device *dev = &pdev->dev;
+-	int irq_num;
+ 	int ret;
+ 
+ 	dsi = devm_drm_bridge_alloc(dev, struct mtk_dsi, bridge,
+@@ -1323,9 +1331,9 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+ 	if (IS_ERR(dsi->phy))
+ 		return dev_err_probe(dev, PTR_ERR(dsi->phy), "Failed to get MIPI-DPHY\n");
+ 
+-	irq_num = platform_get_irq(pdev, 0);
+-	if (irq_num < 0)
+-		return irq_num;
++	dsi->irq = platform_get_irq(pdev, 0);
++	if (dsi->irq < 0)
++		return dsi->irq;
+ 
+ 	dsi->host.ops = &mtk_dsi_ops;
+ 	dsi->host.dev = dev;
+@@ -1338,8 +1346,8 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+ 	if (ret < 0)
+ 		return dev_err_probe(dev, ret, "Failed to register DSI host\n");
+ 
+-	ret = devm_request_irq(&pdev->dev, irq_num, mtk_dsi_irq,
+-			       IRQF_TRIGGER_NONE, dev_name(&pdev->dev), dsi);
++	ret = devm_request_irq(&pdev->dev, dsi->irq, mtk_dsi_irq,
++			       IRQF_NO_AUTOEN, dev_name(&pdev->dev), dsi);
+ 	if (ret) {
+ 		mipi_dsi_host_unregister(&dsi->host);
+ 		return dev_err_probe(&pdev->dev, ret, "Failed to request DSI irq\n");
 -- 
 2.54.0
 
