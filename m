@@ -4,82 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E71BEC44508
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 10:12:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9E0AC44507
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 10:23:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=aV0ZhDy8tdfWbmkKXhZjbTAz8dmEmYRDemHpP5d81kM=; b=l3Y79tPso1APtg/a3XTKFpmpje
-	/qCAJIjYe+5zeJAl0CW0Up26rOz1xxjfrtAEicawGPfbDImn+3j6Ld31zdSnINlfgWxEkYGYAOz0D
-	GCmeMJ0ReDzBtgfJmesNm0PqQGCU/f3jCXnyNUZT2CaCXJcWTAbC0H4wnhfEQ5x/WOLY/uQjgpVMm
-	XqyIlvu9qWoxHSvjsk/5YLRvZZtrVR6qg59N9Ovfhd+mTiPUjSAEHW/HWqGmi89XRtJzbOu9a7TwW
-	kE84sGq1H9NVy+4cbxzdFNQfo1QuTmk3hpn4zUdt8q/aXd0Rh/VSRg2NpQDg4uMFLobURH9EM4rXZ
-	kkd5aOtQ==;
+	bh=Y1+AjvCf4YtgjrxqGnsoKGhRIPzds/HLlN/fECOdYX8=; b=3xquMxT5KgTybHmouZq2zvg7rN
+	x8ZHoyRjJO8jsSgcdLxmy9YUGhB7PKRqizBSem04MKAQPAyv2zWU7D4/PXHzoAfATRsH5E8Y/DIi7
+	XVpFtL3fyqjwnwInv0HRE1V/vgtytxtI7wCdg7Zlhg+HVJLfXoy0y4aYkm/JocTaczVTVRzdKBwkx
+	0avMRzSo63DoQtaGFPKYEngiQu5HaIoUUtDfQHpc2OsXR61Uafzw9X2XUtHIozxzwZNb459RG6bKc
+	GzCTuwnFeDRq8VgdjLflL8uzbmEEuerD9+pojcKtvqB4BLTkBwxaGPaVGoaSZHMqnQLOJW6efuEIP
+	SGSVvc2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjDds-00000008qBx-3RXn;
-	Mon, 13 Jul 2026 10:12:04 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wjDow-00000008sHJ-2ZXF;
+	Mon, 13 Jul 2026 10:23:30 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjDdj-00000008q26-39Zi;
-	Mon, 13 Jul 2026 10:11:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E254F6004E;
-	Mon, 13 Jul 2026 10:11:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 84281C2BCB8;
-	Mon, 13 Jul 2026 10:11:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1783937514;
-	bh=IH90joJ4tnRLkJPNr03igPwq+iiAzvjOkx7FuVR2LQo=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=jPs2CPfwNKnT/QK3kmF3AknCV+qOfFfTKyeZQiIdECp0FVnfQsWLllpPfQox/FqEY
-	 i+E1OpjXy0wvVs8XTa5Rzs+9uhFpFBfhfh10r96sjjiJGnDI3nwZXE+klNcfyNW1dS
-	 o4NYb1ARoaJF6oFix7S3zAPZEDXG+WXjtpGgn6Qp8FKIuRsrina4EsATbwhy5WuunS
-	 umD/EJgCpdPo7kv5DfKEnFdpBemG9G4aD6TlHZWsgV00jUIS5JPsf0KxnUB0WMX4UI
-	 NaQ03RiIU+au+EassF5XJ9DYfXZ3SZ6ZiTUYV/B0AyjoHblIamDSeWT46HkR7wK0EL
-	 0dTtq0qdz60eA==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5F353C44506;
-	Mon, 13 Jul 2026 10:11:54 +0000 (UTC)
-From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Subject: [PATCH v3 0/3] nvmem: add support for the MediaTek mt6323 PMIC
-Date: Mon, 13 Jul 2026 13:11:34 +0300
-Message-Id: <20260713-mt6323-nvmem-v3-0-205c39267a24@protonmail.com>
+	id 1wjDou-00000008sE5-1DLQ;
+	Mon, 13 Jul 2026 10:23:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1783938205;
+	bh=pDB4tIY6cikfoUnxZqLxi35idMy2BXFdDsk3DDVWEFA=;
+	h=From:To:Cc:Subject:Date:From;
+	b=HwTOMOvFU/+iSsbdg5+K9Tx/pjZ3EIONv9GUzjfFCRIBJG4G8RM5JJOPZg/cLg4cg
+	 JhRC5Zbzt56Zn73ugcVYcf/E7AA+EOey74+bg05tvotVbs70X3hhvVT2oPQQaNgxGM
+	 BCCDeg9Zm7DCPDPHUxo+3qQVfRxEpyNoXtsVE5SfRV6KocBq2PAjrxzTRIHaPLBPR0
+	 RVM9BMShK/QWarTpMPV4FgwqKK/4HUzm5HpdL9Br+fApYOWS3XAeXCJzlO55PQgXZr
+	 nYVWXVfLEkyduFNPCvmcgo/k691+F3SDKI5L1EzKp79T/KzIOgS3bE7WNyJcvuXu4z
+	 rH6nKeJdk1hvQ==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0755E17E013E;
+	Mon, 13 Jul 2026 12:23:24 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunfeng.yun@mediatek.com
+Cc: vkoul@kernel.org,
+	neil.armstrong@linaro.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	justin.yeh@mediatek.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	kernel@collabora.com
+Subject: [PATCH v2 0/2] PHY: Add support for MT8196 DSI PHY
+Date: Mon, 13 Jul 2026 12:23:20 +0200
+Message-ID: <20260713102322.21782-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3XOTQ7CIBAF4Ks0rMXw02LqynsYFxQHixFoAImm6
- d2FujEaly95872ZUYRgIKJ9M6MA2UTjXQl80yA1SncBbM4lI0aYIIJSbJPgjGOXLVhMVNdKopm
- WvUblZAqgzWPljqd3jvfhCipVozZGE5MPz3Uv09r7Q2eKCR46oEOvoKOaHabgk3dWmttWeYuqn
- 9mnsPsSWBFazQlwIcuX7Y+wLMsLAjaZiQEBAAA=
-X-Change-ID: 20260611-mt6323-nvmem-0c54a0f2fa9f
-To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Srinivas Kandagatla <srini@kernel.org>, 
- Roman Vivchar <rva333@protonmail.com>
-Cc: Andy Shevchenko <andy@kernel.org>, linux-pm@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Ben Grisdale <bengris32@protonmail.ch>, 
- Conor Dooley <conor.dooley@microchip.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1783937511; l=2150;
- i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=IH90joJ4tnRLkJPNr03igPwq+iiAzvjOkx7FuVR2LQo=;
- b=e72h5C0iNaVmwv4Y/8ukUwlKHV0J3jGG7YwkrI9fJAY3hbFhInt4LTTzIWRwBD+eA4nrrKCyJ
- v4b+mBvQsnSDumEwaC9CVp4OBK+J2/pJ3PklK3CCHhJJnfOQ8aMtO3S
-X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
- pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
-X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
- auth_id=777
-X-Original-From: Roman Vivchar <rva333@protonmail.com>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260713_032328_475083_553ED746 
+X-CRM114-Status: UNSURE (   9.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,62 +83,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series adds support for the EFUSE found on the MediaTek mt6323 PMIC.
-
-The previous version of the series for all AUXADC, EFUSE and thermal
-drivers was split after Krzysztof's comment [1].
-    
-Tested on the MediaTek mt6572 and mt8163 SoCs (Ben), both paired with a
-mt6323.
-
-[1]: https://lore.kernel.org/linux-mediatek/20260504-mt6323-v1-0-799b58b355ff@protonmail.com/T/#med30fad67a090be35f549231336b2dec295233f6
-
-Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
-Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-
----
-Changes in v3:
-- Rebase onto next-20260708
-- EFUSE driver: Replace 'mod_devicetable.h' with explicit 'device-id/of.h'
-- Drop MFD patch since it's applied
-- Link to v2: https://patch.msgid.link/20260617-mt6323-nvmem-v2-0-4f30e36aa0f4@protonmail.com
-
 Changes in v2:
-- EFUSE driver: Sort variables in the mt6323_efuse_read (Andy)
-- Link to v1: https://patch.msgid.link/20260611-mt6323-nvmem-v1-0-b5e1b9ce51f2@protonmail.com
+ - Added a few comments and fix scheduling while atomic issue in clk
+   enable ops by waiting with udelay() instead
+ - Removed one unnecessary delay after clk/pwr isolation disablement
 
-Changes after split:
-- EFUSE driver:
-    - Remove 'linux/errno.h' header (Andy)
-    - Remove explicit cast to u16 in the 'mt6323_efuse_read' (Andy)
-    - Reword comment in the 'mt6323_efuse_read'
-    - Capitalize MediaTek in the module description
-- Link to a previous series: https://patch.msgid.link/20260512-mt6323-v2-0-3efcba579e88@protonmail.com
+This series adds support for the DSI PHY found in the newer MediaTek
+Dimensity 9400 (MT6991), Genio Pro 5100 (MT8894) and Kompanio Ultra
+(MT8196) SoCs.
 
----
-Roman Vivchar (3):
-      dt-bindings: mfd: mediatek: mt6397: add mt6323 PMIC EFUSE
-      nvmem: add mt6323 PMIC EFUSE driver
-      ARM: dts: mediatek: mt6323: add EFUSE support
+AngeloGioacchino Del Regno (2):
+  dt-bindings: phy: mediatek,dsi-phy: Add support for MT8196
+  phy: mediatek: Add support for MT8196 MIPI DSI PHY
 
- .../devicetree/bindings/mfd/mediatek,mt6397.yaml   | 21 ++++++
- MAINTAINERS                                        |  5 ++
- arch/arm/boot/dts/mediatek/mt6323.dtsi             |  4 +
- drivers/nvmem/Kconfig                              | 11 +++
- drivers/nvmem/Makefile                             |  2 +
- drivers/nvmem/mt6323-efuse.c                       | 85 ++++++++++++++++++++++
- 6 files changed, 128 insertions(+)
----
-base-commit: b9810cd75b9fb56a3425d391cba3f608502bd474
-change-id: 20260611-mt6323-nvmem-0c54a0f2fa9f
+ .../bindings/phy/mediatek,dsi-phy.yaml        |   1 +
+ drivers/phy/mediatek/Makefile                 |   1 +
+ .../phy/mediatek/phy-mtk-mipi-dsi-mt8196.c    | 196 ++++++++++++++++++
+ drivers/phy/mediatek/phy-mtk-mipi-dsi.c       |   1 +
+ drivers/phy/mediatek/phy-mtk-mipi-dsi.h       |   2 +-
+ 5 files changed, 200 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8196.c
 
-Best regards,
---  
-Roman Vivchar <rva333@protonmail.com>
-
+-- 
+2.54.0
 
 
