@@ -4,67 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18F3CC44508
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 12:47:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7017FC43458
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 12:52:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qhSKO1TlOOgIkh5ph4Qqy3ckZiD3wlWr/B0sEX/B/4k=; b=02s+pxQxGoHP06DVdqN90jjqMN
-	vPy/ti+HRl15NYL5U47Sb/mZHwIaw1Z1FMewYPBuGNdPpVcPI2zwz0SI6UefYSFTaxVBNsIScFTKk
-	mys8GjUlfYoX0AYwWkC98gVoxFVyj2Z4mA3v3ZJqLIFXAnA82DbKV8IMPoK2q56JddElWE91/H8c4
-	PcpM6bpMO5HwxurihZABe/cevlgTWrvls+IT6DywngBGEEzl/i/0nsKLOcMunK5aiKXkdY8hPnpxV
-	Jxr4NwbVdF1zAYG9Cny0OWTDCw1EsM/MiHGC87OCS90sy0hJZhj6ffVHqvSSMHJ2j/fq+1fw/O0v8
-	MRaoUdHg==;
+	bh=jzVe8atkrU+j+S9mStRrtWyJtCiaN5tTvQ4xvIGKY4g=; b=y5HqCRdmK5SgYI6/0IRvXJLIxu
+	1Yx/9tNlXWKfSaoO3EqjNNM0h74cSv4K1zZ/TY69wHywIVoXOe9SqW39dP0UJS58MYGs0gEidO2GP
+	NhDYqxdMRlWbzIKvFaWNJu7g5mnxwDdRYHwsV5INOTVMtnQiZK00BzH82N3a46ykq2LK1FRBZ7KU/
+	326CKI6Ua0NIMHbF/eaVWuBRw04bVYvEq/3glqnGrrK/rfvNkJe4Q3c8i009mAr+HdIPsI9wj6KxY
+	a/SZ/wYg80vfeBQKc0kT5EbO4U9wP0dRv8vzG2eVylDwb9UtlGNwAgvdw1dI4ACzF3BtwrK+TeqwD
+	D68cD2rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjG3s-00000009EXh-0j9M;
-	Mon, 13 Jul 2026 12:47:04 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wjG8g-00000009FUT-1T1q;
+	Mon, 13 Jul 2026 12:52:02 +0000
+Received: from abscue.de ([89.58.28.240] helo=srv01.abscue.de)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjG3l-00000009EQs-481p;
-	Mon, 13 Jul 2026 12:46:58 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6936B60120;
-	Mon, 13 Jul 2026 12:46:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A7F21F00A3A;
-	Mon, 13 Jul 2026 12:46:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1783946817;
-	bh=qhSKO1TlOOgIkh5ph4Qqy3ckZiD3wlWr/B0sEX/B/4k=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=cwx391WJDCkC6PST+9lD0BmWmBrunYda9r3NVBgyoDgOqQoGbTr7zYNqHfyQQQqKb
-	 IPTnJ8PdU803ASNppjpRx2tJx8erw/nox28Syb/s7rlHM9PNxWExfOriWS1yrbY2+i
-	 coKW8nNMjnFlxDzxBMO0fcGO71pUWeJXH0Y0g3OnTXM4QV4FQhxE+x4oqTQRTRs8wP
-	 UQCyCdF9zhHMbgnt2/lhlGHydfnHBLXDeaQaGXZWTAvvM50UbUWOmm83bh6iJz0MA1
-	 jAOSEdImg2YOFGGP90eMR1Ls4eKfzylog1jULVnJE9iiiaw6bwJYk6P3Fdz0YzC9CD
-	 4DNfEXtfdrKtg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 13 Jul 2026 14:46:23 +0200
-Subject: [PATCH nf-next v6 6/6] selftests: netfilter: nft_flowtable.sh: add
- SIT flowtable selftest
+	id 1wjG8c-00000009FSs-3r8n;
+	Mon, 13 Jul 2026 12:52:00 +0000
+Message-ID: <2d34c3f6-5f66-4b60-b9a2-180163964552@abscue.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=abscue.de; s=dkim;
+	t=1783947103;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=jzVe8atkrU+j+S9mStRrtWyJtCiaN5tTvQ4xvIGKY4g=;
+	b=TfnRqYCjfBvrXj255IPTjN/a+2WqhfzYlNYRwwgkTzsAZghsBX+j+IFD3Sm0Jm1J253j8C
+	LIFgZHSnhERrtO5gD1FtHfosFOl217I05vxwWIjmR1ereLDLyLq2rgkdVDF1r2Pc1WoaXS
+	8phx60lWlBl8U7HmgzV9b0HzZVB3Tdv8GdzHwWF5YcFXkGAB/CN4vVLFLcKtvPCi63Uq50
+	KqcmE/hMF05vOd3Fqm81umPnyewCDTJTxAqukIiOJ06c2wE8KaAaxb16H5qYQ/tQR+CLth
+	1SzGtzdImvS/B2sG8uANcSpQsk0UK1nvZ4hTlKjA/b1foUCa8SiPjQCL0LhOTQ==
+Date: Mon, 13 Jul 2026 14:51:40 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260713-b4-flowtable-sw-accel-ip6ip-v6-6-33f0155fc658@kernel.org>
-References: <20260713-b4-flowtable-sw-accel-ip6ip-v6-0-33f0155fc658@kernel.org>
-In-Reply-To: <20260713-b4-flowtable-sw-accel-ip6ip-v6-0-33f0155fc658@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Felix Fietkau <nbd@nbd.name>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Simon Horman <horms@kernel.org>, David Ahern <dsahern@kernel.org>, 
- Ido Schimmel <idosch@nvidia.com>, Pablo Neira Ayuso <pablo@netfilter.org>, 
- Florian Westphal <fw@strlen.de>, Phil Sutter <phil@nwl.cc>, 
- Shuah Khan <shuah@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- netfilter-devel@vger.kernel.org, coreteam@netfilter.org, 
- linux-kselftest@vger.kernel.org
-X-Mailer: b4 0.14.3
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/3] pinctrl: mediatek: Add driver for MT6858
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, nikolai.burov@jolla.com,
+ Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@kernel.org>
+References: <20260710-mt6858-pinctrl-v1-0-f75ab558f0df@jolla.com>
+ <20260710-mt6858-pinctrl-v1-2-f75ab558f0df@jolla.com>
+ <89e4eb3d-a61c-410e-8ad5-e845b07f8029@collabora.com>
+Content-Language: en-US
+From: Nikolai Burov <nikolai.burov+review@abscue.de>
+In-Reply-To: <89e4eb3d-a61c-410e-8ad5-e845b07f8029@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260713_055159_409340_321BD0CC 
+X-CRM114-Status: GOOD (  16.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,145 +76,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Similar to IPIP, IP6IP6 and IPv4 over IPv6, introduce specific selftest
-for SIT flowtable sw acceleration in nft_flowtable.sh.
+On 7/13/26 10:01 AM, AngeloGioacchino Del Regno wrote:
+[...]
+>> +	[PINCTRL_PIN_REG_MODE] = MTK_RANGE(mt6858_pin_mode_range),
+>> +	[PINCTRL_PIN_REG_DIR] = MTK_RANGE(mt6858_pin_dir_range),
+>> +	[PINCTRL_PIN_REG_DI] = MTK_RANGE(mt6858_pin_di_range),
+>> +	[PINCTRL_PIN_REG_DO] = MTK_RANGE(mt6858_pin_do_range),
+>> +	[PINCTRL_PIN_REG_SR] = MTK_RANGE(mt6858_pin_dir_range),
+> 
+> This is Slew Rate, not Direction... And I think this is wrong.
+> 
+> If you don't know where the slew rate registers are, or if that is an 
+> unsupported operation, just omit PINCTRL_PIN_REG_SR.
 
-Also add tunnel-specific flow-add rules for sit1 and sit1.10 so that
-check_counters() properly verifies offload occurred, and restore IPv6
-default routes at cleanup to prevent tunnel routes leaking to subsequent
-tests (e.g. IPsec).
+Thanks for noticing this! This seems to be a mistake in the downstream 
+driver that I unintentionally copied over. I will remove the slew rate.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- tools/testing/selftests/net/netfilter/config       |  1 +
- .../selftests/net/netfilter/nft_flowtable.sh       | 53 ++++++++++++++++++++++
- 2 files changed, 54 insertions(+)
+> 
+>> +	[PINCTRL_PIN_REG_SMT] = MTK_RANGE(mt6858_pin_smt_range),
+>> +	[PINCTRL_PIN_REG_IES] = MTK_RANGE(mt6858_pin_ies_range),
+>> +	[PINCTRL_PIN_REG_PU] = MTK_RANGE(mt6858_pin_pu_range),
+>> +	[PINCTRL_PIN_REG_PD] = MTK_RANGE(mt6858_pin_pd_range),
+>> +	[PINCTRL_PIN_REG_DRV] = MTK_RANGE(mt6858_pin_drv_range),
+>> +	[PINCTRL_PIN_REG_PUPD] = MTK_RANGE(mt6858_pin_pupd_range),
+>> +	[PINCTRL_PIN_REG_R0] = MTK_RANGE(mt6858_pin_r0_range),
+>> +	[PINCTRL_PIN_REG_R1] = MTK_RANGE(mt6858_pin_r1_range),
+>> +	[PINCTRL_PIN_REG_DRV_ADV] = MTK_RANGE(mt6858_pin_drv_adv_range),
+>> +	[PINCTRL_PIN_REG_RSEL] = MTK_RANGE(mt6858_pin_rsel_range),
+>> +};
+>> +
+>> +static const char * const mt6858_pinctrl_register_base_names[] = {
+>> +	"base", "lm", "rb", "bm2", "bm", "bm1", "lt", "lt1", "rt", "rt1",
+> 
+> Fix ordering:
+> 
+> "base", "lm", "rb", "bm", "bm1", "bm2", "lt", "lt1", "rt", "rt1",
 
-diff --git a/tools/testing/selftests/net/netfilter/config b/tools/testing/selftests/net/netfilter/config
-index c3c121b6f300..a212b9edbcd9 100644
---- a/tools/testing/selftests/net/netfilter/config
-+++ b/tools/testing/selftests/net/netfilter/config
-@@ -35,6 +35,7 @@ CONFIG_IP_SCTP=m
- CONFIG_IPV6=y
- CONFIG_IPV6_MULTIPLE_TABLES=y
- CONFIG_IPV6_TUNNEL=m
-+CONFIG_IPV6_SIT=m
- CONFIG_IP_VS=m
- CONFIG_IP_VS_PROTO_TCP=y
- CONFIG_IP_VS_RR=m
-diff --git a/tools/testing/selftests/net/netfilter/nft_flowtable.sh b/tools/testing/selftests/net/netfilter/nft_flowtable.sh
-index 1cb5c65351b7..cda68070cd00 100755
---- a/tools/testing/selftests/net/netfilter/nft_flowtable.sh
-+++ b/tools/testing/selftests/net/netfilter/nft_flowtable.sh
-@@ -597,6 +597,10 @@ ip -net "$nsr1" addr add 192.168.210.1/24 dev tun6
- ip -net "$nsr1" addr add fee1:3::1/64 dev tun6 nodad
- ip netns exec "$nsr1" sysctl net.ipv4.conf.tun6.forwarding=1 > /dev/null
- 
-+ip -net "$nsr1" link add name sit1 type sit local 192.168.10.1 remote 192.168.10.2 ttl 255
-+ip -net "$nsr1" link set sit1 up
-+ip -net "$nsr1" addr add fe01:3::1/64 dev sit1 nodad
-+
- ip -net "$nsr2" link add name tun0 type ipip local 192.168.10.2 remote 192.168.10.1
- ip -net "$nsr2" link set tun0 up
- ip -net "$nsr2" addr add 192.168.100.2/24 dev tun0
-@@ -608,6 +612,10 @@ ip -net "$nsr2" addr add 192.168.210.2/24 dev tun6
- ip -net "$nsr2" addr add fee1:3::2/64 dev tun6 nodad
- ip netns exec "$nsr2" sysctl net.ipv4.conf.tun6.forwarding=1 > /dev/null
- 
-+ip -net "$nsr2" link add name sit1 type sit local 192.168.10.2 remote 192.168.10.1 ttl 255
-+ip -net "$nsr2" link set sit1 up
-+ip -net "$nsr2" addr add fe01:3::2/64 dev sit1 nodad
-+
- ip -net "$nsr1" route change default via 192.168.100.2
- ip -net "$nsr2" route change default via 192.168.100.1
- 
-@@ -626,6 +634,9 @@ ip netns exec "$nsr1" nft -a insert rule inet filter forward 'meta oif tun0 acce
- ip netns exec "$nsr1" nft -a insert rule inet filter forward \
- 	'meta oif tun6 tcp dport 12345 ct mark set 1 flow add @f1 counter name routed_orig accept'
- ip netns exec "$nsr1" nft -a insert rule inet filter forward 'meta oif tun6 accept'
-+ip netns exec "$nsr1" nft -a insert rule inet filter forward \
-+	'meta oif sit1 tcp dport 12345 ct mark set 1 flow add @f1 counter name routed_orig accept'
-+ip netns exec "$nsr1" nft -a insert rule inet filter forward 'meta oif sit1 accept'
- ip netns exec "$nsr1" nft -a insert rule inet filter forward \
- 	'meta oif "veth0" tcp sport 12345 ct mark set 1 flow add @f1 counter name routed_repl accept'
- 
-@@ -652,6 +663,19 @@ if ! test_tcp_forwarding_nat "$ns1" "$ns2" 1 "IP4IP6 tunnel"; then
- 	ret=1
- fi
- 
-+ip -6 -net "$nsr1" route delete default
-+ip -6 -net "$nsr1" route add default via fe01:3::2
-+ip -6 -net "$nsr2" route delete default
-+ip -6 -net "$nsr2" route add default via fe01:3::1
-+
-+if test_tcp_forwarding "$ns1" "$ns2" 1 6 "[dead:2::99]" 12345; then
-+	check_counters "flow offload for ns1/ns2 SIT tunnel"
-+else
-+	echo "FAIL: flow offload for ns1/ns2 with SIT tunnel" 1>&2
-+	ip netns exec "$nsr1" nft list ruleset
-+	ret=1
-+fi
-+
- # Create vlan tagged devices for IPIP traffic.
- ip -net "$nsr1" link add link veth1 name veth1.10 type vlan id 10
- ip -net "$nsr1" link set veth1.10 up
-@@ -682,6 +706,13 @@ ip netns exec "$nsr1" nft -a insert rule inet filter forward \
- 	'meta oif tun6.10 tcp dport 12345 ct mark set 1 flow add @f1 counter name routed_orig accept'
- ip netns exec "$nsr1" nft -a insert rule inet filter forward 'meta oif tun6.10 accept'
- 
-+ip -net "$nsr1" link add name sit1.10 type sit local 192.168.20.1 remote 192.168.20.2 ttl 255
-+ip -net "$nsr1" link set sit1.10 up
-+ip -net "$nsr1" addr add fe01:5::1/64 dev sit1.10 nodad
-+ip netns exec "$nsr1" nft -a insert rule inet filter forward \
-+	'meta oif sit1.10 tcp dport 12345 ct mark set 1 flow add @f1 counter name routed_orig accept'
-+ip netns exec "$nsr1" nft -a insert rule inet filter forward 'meta oif sit1.10 accept'
-+
- ip -net "$nsr2" link add link veth0 name veth0.10 type vlan id 10
- ip -net "$nsr2" link set veth0.10 up
- ip -net "$nsr2" addr add 192.168.20.2/24 dev veth0.10
-@@ -699,6 +730,11 @@ ip -net "$nsr2" link set tun6.10 up
- ip -net "$nsr2" addr add 192.168.220.2/24 dev tun6.10
- ip -net "$nsr2" addr add fee1:5::2/64 dev tun6.10 nodad
- ip netns exec "$nsr2" sysctl net.ipv4.conf.tun6/10.forwarding=1 > /dev/null
-+
-+ip -net "$nsr2" link add name sit1.10 type sit local 192.168.20.2 remote 192.168.20.1 ttl 255
-+ip -net "$nsr2" link set sit1.10 up
-+ip -net "$nsr2" addr add fe01:5::2/64 dev sit1.10 nodad
-+
- ip -6 -net "$nsr2" route delete default
- ip -6 -net "$nsr2" route add default via fee1:5::1
- 
-@@ -725,11 +761,28 @@ if ! test_tcp_forwarding_nat "$ns1" "$ns2" 1 "IP4IP6 tunnel over vlan"; then
- 	ret=1
- fi
- 
-+ip -6 -net "$nsr1" route delete default
-+ip -6 -net "$nsr1" route add default via fe01:5::2
-+ip -6 -net "$nsr2" route delete default
-+ip -6 -net "$nsr2" route add default via fe01:5::1
-+
-+if test_tcp_forwarding "$ns1" "$ns2" 1 6 "[dead:2::99]" 12345; then
-+	check_counters "flow offload for ns1/ns2 SIT tunnel over vlan"
-+else
-+	echo "FAIL: flow offload for ns1/ns2 with SIT tunnel over vlan" 1>&2
-+	ip netns exec "$nsr1" nft list ruleset
-+	ret=1
-+fi
-+
- # Restore the previous configuration
- ip -net "$nsr1" route change default via 192.168.10.2
- ip -net "$nsr2" route change default via 192.168.10.1
- ip -net "$ns2" route del default via 10.0.2.1
- ip -6 -net "$ns2" route del default via dead:2::1
-+ip -6 -net "$nsr1" route delete default
-+ip -6 -net "$nsr1" route add default via fee1:2::2
-+ip -6 -net "$nsr2" route delete default
-+ip -6 -net "$nsr2" route add default via fee1:2::1
- }
- 
- # Another test:
+The bases are already in ascending address order. I don't know what the 
+1 and 2 suffixes in the names of the iocfg regions mean, they may just 
+be a historical leftover. Are the names more important than the 
+addresses here?
+
+[...]
+>> +static const struct of_device_id mt6858_pinctrl_of_match[] = {
+>> +	{ .compatible = "mediatek,mt6858-pinctrl", .data = &mt6858_data },
+>> +	{ }
+> 
+>      { /* sentinel */ }
+
+Thanks!
+
+[...]
+>> +	MTK_EINT_PIN(119, 0, 72, 0),
+>> +	MTK_EINT_PIN(120, 0, 73, 0),
+>> +	MTK_EINT_PIN(121, 0, 74, 0),
+> 
+> Looks like you're missing ~70 pins here?
+> 
+> If those have no EINT support, you can declare them as
+> 
+>      MTK_EINT_PIN(122, EINT_INVALID_BASE, 0, 0),
+> 
+> ...or you can add a macro to add a (sequential) range of pins with no 
+> EINT support.
+
+Adding a variable number of mtk_eint_pin structs (with a different pin 
+number inside each struct) doesn't seem possible using a single macro, 
+so I'll just manually add all of them to the list.
+
+While writing this, I was looking at the mt6878 driver, which also omits 
+a range of pins. Should that be fixed as well?
 
 -- 
-2.55.0
-
+Best regards,
+Nikolai
 
