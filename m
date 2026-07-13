@@ -4,88 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71860C44501
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 14:46:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2281C44501
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jul 2026 15:07:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	References:In-Reply-To:Date:To:From:Subject:Message-ID:Reply-To:Cc:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yaOMlOkRAwrFIGmDlhCshTCWQ5yfBP7eJ8bFkeqHcP8=; b=LoIYGk9EXvkcRV9iijo5WCWWvQ
-	HkkLK7U884T1LxbpK0ErsY4sTxYC1113pqL3TOycOJh7+28Zo1Xl6qgXNtJxFCdOekLiWH6FFtjhf
-	lA2xvzHj64lMZ+mXwgz0QNxJiceERqdtzt6Ju3LHPgw87XnCTWlBdsE9kNXVkYpvAcbyWQhGobEj9
-	Pijtnz0+2YZ/9nWGDfa033MMHiSvsw2GuDlL6scJJSmc7f5M/RgMVBdlh4JynAPdC6+F9xiUsQKsI
-	6UQdvzl87latDdIuMCGk9ECOgRP8L81SfU9qeNa5odrc8+ikhcHWKMEcdq0zvkuB/Dci+zK7OF6Gv
-	sh4FkABg==;
+	bh=fXxhFfbYr3w5rbgwzN2JGMTwJIyyfVDjWt5wyNfuQ7k=; b=Z7vxnqYXIMuWZC42GpEluI/KuS
+	PXUx5mbuH4CQz9AZ4wLwubWO1xpIV7SnP5uBbY6ohnT+VsyPP4wGVVETGYnRVWB/A+rHzzTHVq501
+	t+kHUFDrTyr+Gh2O4qXnmDdjjESucNDy4503zWJKGyqjvIQ7xFGZmdR0V3wc0d18BOr9R4Sl8N2RY
+	B26NTKLKpcg4mODQj2dEmspcPg+Z15/hAtpg9GJWVNb/QLe9NKbmU5yI/M1nEvsTDt9nnNS9iKdlx
+	XwiQEJ14FYWqhTHrvCgtkgwHpzGpy0xA/mGQqNqCtCPDjDOmeDLOnQEEPd+AQ6BZlWodsxyH4KOQB
+	s0bwAtvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjHvK-00000009dZM-23Ra;
-	Mon, 13 Jul 2026 14:46:22 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wjIFW-00000009jLa-2LMi;
+	Mon, 13 Jul 2026 15:07:14 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjHvC-00000009dXl-1vh7;
-	Mon, 13 Jul 2026 14:46:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1783953971;
-	bh=eQUa3ScWb0Cgwwi0JeC1XpMNMA9za5OuFxAcERineVo=;
-	h=Subject:From:To:Date:In-Reply-To:References:From;
-	b=lqrv2tURjdpv5DtV/mhSJkvyjNW9vl10v6DGJaKmDq4AMiuQBCEUW54mwswZrQbk+
-	 9fAu83E+uENPnV3OxskKg7FnC+TgmA5F4dSp0XgGWHZGOHchaROTu+bRifaJbYWEMv
-	 yEk9LG7P+V8YFOxMGr5lgIuPnT5eRiyLH7NMuHrFCEYBBshyQDNnWMCyA65m1JORHn
-	 A+WLFcI7wC2sq7fcMvl5gq1fQKrxMeACTOFCr8r+rL54bfO1NyrsejL6e+opguZQl+
-	 Ov+HacxyiA4F6dsDcKUPHmly6r00Jcm15LVhHhp/LJhVUfVLbL9nRd5otxkz8G20am
-	 JmPzR1z2n3eHg==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 30D2217E07A2;
-	Mon, 13 Jul 2026 16:46:10 +0200 (CEST)
-Message-ID: <e90e392c6c9257f0383c8cbdfee0707ea6147237.camel@collabora.com>
-Subject: Re: [PATCH v15 01/12] media: mediatek: jpeg: fix jpeg cores'
- amounts setting
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Kyrie Wu =?UTF-8?Q?=28=E5=90=B4=E6=99=97=29?= <Kyrie.Wu@mediatek.com>, 
- "linux-media@vger.kernel.org"	 <linux-media@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org"	 <linux-mediatek@lists.infradead.org>,
- AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>,
- "robh@kernel.org" <robh@kernel.org>,  "linux-kernel@vger.kernel.org"	
- <linux-kernel@vger.kernel.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, 
- "linux-arm-kernel@lists.infradead.org"	
- <linux-arm-kernel@lists.infradead.org>, "mchehab@kernel.org"	
- <mchehab@kernel.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
- "hverkuil-cisco@xs4all.nl"	 <hverkuil-cisco@xs4all.nl>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,  "devicetree@vger.kernel.org"	
- <devicetree@vger.kernel.org>
-Date: Mon, 13 Jul 2026 10:46:08 -0400
-In-Reply-To: <05928d76a6cb103e1f4cafc38fd4ad4013b87c05.camel@mediatek.com>
-References: <20260702072614.10373-1-kyrie.wu@mediatek.com>
-		 <20260702072614.10373-2-kyrie.wu@mediatek.com>
-		 <29b98aee357ea1ff49939c47eaca3cb4a01c8d72.camel@collabora.com>
-	 <05928d76a6cb103e1f4cafc38fd4ad4013b87c05.camel@mediatek.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-a58HJVnWn+9zXOppBSIh"
-User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
+	id 1wjIFU-00000009jIZ-3JvQ;
+	Mon, 13 Jul 2026 15:07:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=fXxhFfbYr3w5rbgwzN2JGMTwJIyyfVDjWt5wyNfuQ7k=; b=JHRGqnzCkd4s6GfTqCEeDK5hJn
+	N+UIWu6lk6yQc+DpVPh8o+YQLvHZPh07qWiKspW3cWv4PGcZrxpvjbychn37ZXMrIKQhJQs5Ep143
+	rx232ZeSiudWm8QLgYpRbRRk4OmICqRWpyaPpvkMb6A/PvSfyFtk5wTSwxIe+w4+XQ9Mqxu0YmnQX
+	+Py05974BfZyT0NkkFrETh/3Nz2PXeEp1DaLDo/yNScoTzWYED1dUh6nb/+N7IOifxx90vhckBQDS
+	fY4BBe6zOosVwC7gDLt4ouQh3FxOO6jQfTxejtPukdAmpQwbPCkckAc8dOuDS4UYVdcXXPsaljvEp
+	NOMzezqw==;
+Received: from mail.johnrowley.me ([195.201.26.17])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1wjIFR-0000000Bkyh-0NSI;
+	Mon, 13 Jul 2026 15:07:11 +0000
+Date: Mon, 13 Jul 2026 16:06:56 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=johnrowley.me;
+	s=2025; t=1783955218;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=fXxhFfbYr3w5rbgwzN2JGMTwJIyyfVDjWt5wyNfuQ7k=;
+	b=dJ+Bi7b1OSx056zO9okB04asZHpEcQf0OM/37R+tZ/MYu0BqwblHA4FRT8RGzb74cel35N
+	9agc8yXIDPZ2WhTvO4pIvlm+2NQpOEFnSUNC5A3gj7+Lr0YogBSoJnNXtGvaYB11l1JvR/
+	Y+klw4EeSbxl6vnd30n4JJHxyA4IZRBylxkvfCb8fg3WbhkKU0A9Vuk4OIzqx56/RHjNbw
+	ZDpZbD0qwiXsg1kk3Qp5bstoBhYk/NdtdD7Fo4h0agYY1Yq8Xo3ZiOlSOLi5aJHc9LDYwG
+	K4zQKl//kNl2lrr185xzeYa5RhogGFah3dRrKxowv7HaOBBKiaYhvl1MYftCqw==
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=user smtp.mailfrom=hey@johnrowley.me
+ARC-Seal: i=1; a=rsa-sha256; d=johnrowley.me; s=2025; cv=none; t=1783955218;
+	b=A9P0hWGcbbmS4+dTyIoBAku6p/DuINfKFYKpIqSsfwkGet7qQS7mHtxv0JTGEzrIjH58+y
+	FZZGiLyYSEoh8ADjRHZQrrXmCMSFfZIWxRJ13StjEFkEciKyI98nDHsXkkZjHF7aPUoL/d
+	fVBGwkH5A9rPbd+5p+SzwN87EHbn2nn8mG/lFE7BhVgBTUUkD61ghc7iinMklAqXG/p8O+
+	3jARppBXpL6weHuipFVp0+03MPpeM9IcpDuuSnfN068OjJ2Asif6dB1z2mLMup9pSD9ZSz
+	K/6Y1XnOUC7h/SzhrbGY5fi5D0gCGOLhzpWw1+6Z0wLdGYjtzfm7DhqbkkbNzg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=johnrowley.me;
+	s=2025; t=1783955218;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=fXxhFfbYr3w5rbgwzN2JGMTwJIyyfVDjWt5wyNfuQ7k=;
+	b=eUvLFgfyiIngKqwdIy7oQeU/jDQJk6CYMsal9ZHBr6IzFaL48qYy5+UxJm9uqyp52UUG8q
+	XstxYYS3DTndj+gyu7mbmKkcp+aRHaYnu6nC2TejuOIWVjPDE+0K0cc7itSVC65i1dWDFM
+	NWNcPfuxM9Qa0C9vFAv2EUO8VbM9qryxWEHoYcWsKSHENPlEGBt6ZtvvbopGTKces9ZijG
+	X2aWLyTgnn7o/yQQkRz1IIdhWQlNgGklpdcaQs8zj9Q0ttxQM91nOmx4CfEPtVmSuEz6rM
+	qdhnpOQWDLTM6WPr4PoF6OhJ2gNH3AaJcSVyg15dRATXpZLPJ0ioWWkWd1kS4A==
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=user smtp.mailfrom=hey@johnrowley.me
+From: John Rowley <hey@johnrowley.me>
+To: Rong Zhang <i@rong.moe>
+Cc: Marcel Holtmann <marcel@holtmann.org>, 
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Luiz Augusto von Dentz <luiz.von.dentz@intel.com>, 
+	Chris Lu =?utf-8?B?KOmZuOeomuazkyk=?= <Chris.Lu@mediatek.com>, 
+	Will-CY Lee =?utf-8?B?KOadjuaUv+epjik=?= <Will-CY.Lee@mediatek.com>, SS Wu =?utf-8?B?KOW3q+aGsuasoyk=?= <ss.wu@mediatek.com>, 
+	linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2] Bluetooth: Properly disable remote wakeup for
+ MT7922/MT7925 on Ryzen platform
+Message-ID: <alT767DjNf3bD5V0@localhost.localdomain>
+References: <20260701-btmtk-ryzen-remote-wakeup-v2-1-767ac7907472@rong.moe>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260701-btmtk-ryzen-remote-wakeup-v2-1-767ac7907472@rong.moe>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_074614_675998_4D6ADDE6 
-X-CRM114-Status: GOOD (  34.39  )
+X-CRM114-CacheID: sfid-20260713_160709_308037_AB7074C4 
+X-CRM114-Status: GOOD (  47.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,220 +108,243 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, Jul 01, 2026 at 11:43:01PM +0800, Rong Zhang wrote:
+> It is reported that a remote wakeup could cause MT7922/MT7925's btusb
+> interface completely unresponsive. Resetting the xHCI root hub doesn't
+> help at all, and recovering from such a state needs a power cycle.
+> 
+> All reports seen to be relevant to Ryzen-based laptops. These NICs are
+> usually used as OEM components thanks to some sort of reference designs.
+> Their popularity on other platforms is unclear. While there is still a
+> chance that the quirk may exist on other platforms, be cautious and only
+> apply the quirk to direct children of Ryzen platforms's root hubs for
+> the time being. In most cases the root hub is on the SoC or PCH, which
+> needs the quirk. Unfortunately, this can't distinguish root hubs on PCIe
+> add-in cards. Such roughness should be acceptable, as PCIe USB
+> controller add-in cards are less commonly used nowadays. On the other
+> hand, applying the quirk doesn't hurt any functionalities either, as the
+> device can still be used as a wakeup source if desired. Theoretically,
+> we could retrieve the root hub's PCI vendor ID with some hierarchy
+> magic, but that's too intrusive...
+> 
+> Meanwhile, though device_set_wakeup_capable(false) is the correct fix
+> for other NICs with fake remote wakeup capabilities, doing so for
+> MT7922/MT7925 effectively prevents it from being used as wakeup
+> sources as per userspace requests. Hence, return -EBUSY on runtime
+> suspend to prevent the interface from being autosuspended while it's
+> still opened, which has the same effect as
+> device_set_wakeup_capable(false), since disabling remote wakeup simply
+> causes the USB core to gate runtime autosuspend as well due to
+> needs_remote_wakeup == 1. The interface can be safely autosuspended as
+> long as remote wakeup is disabled, i.e., after closing the HCI device.
+> 
+> Specifically, the interface may still take the advantage of remote
+> wakeup in order to wake up the system from sleep if userspace has
+> enabled it as a wakeup source.
 
---=-a58HJVnWn+9zXOppBSIh
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Hi Rong,
 
-Hi,
+I'm experiencing xHCI hub freezing issues when bringing my AMD Framework
+13 laptop out of suspend mode. Sometimes, the wifi controller will
+freeze up, and dmesg will show:
 
-Le lundi 13 juillet 2026 =C3=A0 03:30 +0000, Kyrie Wu (=E5=90=B4=E6=99=97) =
-a =C3=A9crit=C2=A0:
-> On Sat, 2026-07-11 at 17:43 -0400, Nicolas Dufresne wrote:
-> > Hi,
-> >=20
-> > Le jeudi 02 juillet 2026 =C3=A0 15:26 +0800, Kyrie Wu a =C3=A9crit=C2=
-=A0:
-> > > Different ICs have different amounts of cores,
-> > > use a variable to set the cores' amounts.
-> > >=20
-> > > Fixes: 934e8bccac95 ("mtk-jpegenc: support jpegenc multi-hardware")
-> > > Fixes: 0fa49df4222f ("media: mtk-jpegdec: support jpegdec multi-
-> > > hardware")
-> > > Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-> > > Reviewed-by: AngeloGioacchino Del Regno
-> > > <angelogioacchino.delregno@collabora.com>
-> > > ---
-> > > =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c=C2=A0=C2=
-=A0 | 8 ++++---
-> > > -
-> > > =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h=C2=A0=C2=
-=A0 | 2 ++
-> > > =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c | 1 +
-> > > =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c | 1 +
-> > > =C2=A04 files changed, 8 insertions(+), 4 deletions(-)
-> > >=20
-> > > diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> > > b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> > > index d147ec483081..1e014fd698ae 100644
-> > > --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> > > +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> > > @@ -1462,7 +1462,7 @@ static int mtk_jpegenc_get_hw(struct
-> > > mtk_jpeg_ctx *ctx)
-> > > =C2=A0	int i;
-> > > =C2=A0
-> > > =C2=A0	spin_lock_irqsave(&jpeg->hw_lock, flags);
-> > > -	for (i =3D 0; i < MTK_JPEGENC_HW_MAX; i++) {
-> > > +	for (i =3D 0; i < jpeg->max_hw_count; i++) {
-> > > =C2=A0		comp_jpeg =3D jpeg->enc_hw_dev[i];
-> > > =C2=A0		if (comp_jpeg->hw_state =3D=3D MTK_JPEG_HW_IDLE) {
-> > > =C2=A0			hw_id =3D i;
-> > > @@ -1509,7 +1509,7 @@ static int mtk_jpegdec_get_hw(struct
-> > > mtk_jpeg_ctx *ctx)
-> > > =C2=A0	int i;
-> > > =C2=A0
-> > > =C2=A0	spin_lock_irqsave(&jpeg->hw_lock, flags);
-> > > -	for (i =3D 0; i < MTK_JPEGDEC_HW_MAX; i++) {
-> > > +	for (i =3D 0; i < jpeg->max_hw_count; i++) {
-> > > =C2=A0		comp_jpeg =3D jpeg->dec_hw_dev[i];
-> > > =C2=A0		if (comp_jpeg->hw_state =3D=3D MTK_JPEG_HW_IDLE) {
-> > > =C2=A0			hw_id =3D i;
-> > > @@ -1592,7 +1592,7 @@ static void mtk_jpegenc_worker(struct
-> > > work_struct *work)
-> > > =C2=A0		jpeg_work);
-> > > =C2=A0	struct mtk_jpeg_dev *jpeg =3D ctx->jpeg;
-> > > =C2=A0
-> > > -	for (i =3D 0; i < MTK_JPEGENC_HW_MAX; i++)
-> > > +	for (i =3D 0; i < jpeg->max_hw_count; i++)
-> > > =C2=A0		comp_jpeg[i] =3D jpeg->enc_hw_dev[i];
-> > > =C2=A0	i =3D 0;
-> > > =C2=A0
-> > > @@ -1687,7 +1687,7 @@ static void mtk_jpegdec_worker(struct
-> > > work_struct *work)
-> > > =C2=A0	struct mtk_jpeg_fb fb;
-> > > =C2=A0	unsigned long flags;
-> > > =C2=A0
-> > > -	for (i =3D 0; i < MTK_JPEGDEC_HW_MAX; i++)
-> > > +	for (i =3D 0; i < jpeg->max_hw_count; i++)
-> > > =C2=A0		comp_jpeg[i] =3D jpeg->dec_hw_dev[i];
-> > > =C2=A0	i =3D 0;
-> > > =C2=A0
-> > > diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-> > > b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-> > > index 02ed0ed5b736..6be5cf30dea1 100644
-> > > --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-> > > +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-> > > @@ -212,6 +212,7 @@ struct mtk_jpegdec_comp_dev {
-> > > =C2=A0 * @reg_decbase:	jpg decode register base addr
-> > > =C2=A0 * @dec_hw_dev:	jpg decode hardware device
-> > > =C2=A0 * @hw_index:		jpg hw index
-> > > + * @max_hw_count:	jpeg hw-core count
-> > > =C2=A0 */
-> > > =C2=A0struct mtk_jpeg_dev {
-> > > =C2=A0	struct mutex		lock;
-> > > @@ -234,6 +235,7 @@ struct mtk_jpeg_dev {
-> > > =C2=A0	void __iomem *reg_decbase[MTK_JPEGDEC_HW_MAX];
-> > > =C2=A0	struct mtk_jpegdec_comp_dev
-> > > *dec_hw_dev[MTK_JPEGDEC_HW_MAX];
-> > > =C2=A0	atomic_t hw_index;
-> > > +	u32 max_hw_count;
-> > > =C2=A0};
-> > > =C2=A0
-> > > =C2=A0/**
-> > > diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-> > > b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-> > > index 32372781daf5..4534caeb104f 100644
-> > > --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-> > > +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-> > > @@ -664,6 +664,7 @@ static int mtk_jpegdec_hw_probe(struct
-> > > platform_device *pdev)
-> > > =C2=A0	master_dev->dec_hw_dev[i] =3D dev;
-> > > =C2=A0	master_dev->reg_decbase[i] =3D dev->reg_base;
-> > > =C2=A0	dev->master_dev =3D master_dev;
-> > > +	master_dev->max_hw_count++;
-> >=20
-> > Just one question, can the mtk_jpegenc_worker() starts before all
-> > cores have
-> > been probed ?
-> >=20
-> > Nicolas
->=20
-> Dear Nicolas,
->=20
-> Thanks for the question.
->=20
-> mtk_jpegenc_worker() is not started from the probe path. For the
-> multicore encoder, the worker is only initialized when userspace
-> opens the video node:
-> =C2=A0=C2=A0=C2=A0 mtk_jpeg_open()
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 INIT_WORK(&ctx->jpeg_work, jpeg->variant->=
-jpeg_worker)
->=20
-> It is then queued only through the V4L2 mem2mem run path:
-> =C2=A0=C2=A0=C2=A0 userspace QBUF/STREAMON
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -> v4l2_m2m_try_schedule()
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -> .device_run =3D mtk_jpeg_multicore_enc_=
-device_run()
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -> queue_work(jpeg->workqueue, &ctx->jpeg_=
-work)
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -> mtk_jpegenc_worker()
->=20
-> So the worker can run only after the video device has been registered=C2=
-=A0
-> and after a userspace application opens the device and starts
-> streaming buffers.
->=20
-> The JPEG hw core probe is part of the platform device probe flow during
-> system boot. The userspace open/streaming path happens later, after the
-> system has booted and the video node is available. Therefore we do not
-> have a case where mtk_jpegenc_worker() starts before the JPEG hw probe
-> has completed.
+[ 7238.147897] PM: suspend exit
+[ 7239.423823] usb 1-4: reset full-speed USB device number 3 using xhci_hcd
+[ 7239.692328] usb 1-4: reset full-speed USB device number 3 using xhci_hcd
+...and so on...
 
-When I check the core implementation though, the video device is registered=
- and
-ready to open before childs driver, so even if small, there is gap where yo=
-u
-could race between probes and open.
+Any attempt to access the wireless interface, e.g. `ip addr show`, will
+hang the system. Only a power cycle fixes it.
 
-I think I'd like to suggest a different approach, which to me is easier to
-understand (and so should make it easier to maintain). In mtk_jpeg_probe(),=
- we
-already compute num_child. We could immediately set max_hw_count to its exp=
-ected
-value. That would replace this patch entirely. We should add some bug on if=
- that
-number is bigger then MTK_JPEGDEC_HW_MAX (bound checks, see shashiko report=
-).
+This has only started since 7.2-rc1. Here's my USB bus tree (1- only):
 
-Then, in follow up patch, to fix the minor race I mention, we could avoid
-setting hw_rdy counter to num_child immediately, and increment that at chil=
-d
-probe time (where you increase max_hw_count in this patch). The worker will=
- then
-wait properly for child driver to have probed (instead of spinning the
-device_run() by calling v4l2_m2m_job_finish() when the max retry is reached=
-.).
+/:  Bus 001.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/5p, 480M
+    ID 1d6b:0002 Linux Foundation 2.0 root hub
+    |__ Port 001: Dev 002, 12M
+        ID 32ac:0002  
+    |__ Port 004: Dev 003, If 0, Class=Vendor Specific Class, Driver=[none], 12M
+        ID 27c6:609c Shenzhen Goodix Technology Co.,Ltd. 
+    |__ Port 005: Dev 004, If 0, Class=Wireless, Driver=[none], 480M
+        ID 0e8d:e616 MediaTek Inc. 
+    |__ Port 005: Dev 004, If 1, Class=Wireless, Driver=[none], 480M
+        ID 0e8d:e616 MediaTek Inc. 
+    |__ Port 005: Dev 004, If 2, Class=Wireless, Driver=[none], 480M
+        ID 0e8d:e616 MediaTek Inc.
 
-hope this make sense, at least to me, having a max value that cannot increa=
-se
-sounds more logical.
+Seeing as I have a MT7922 that is providing both wireless and Bluetooth
+functionality, I'm wondering if I'm hitting this bug also? Perhaps it's
+my fingerprint reader that's the problem, but your description above
+sounds very similar to what I'm seeing.
 
-Nicolas
+I have applied your patch, which I thought had fixed the problem, but I
+had a freeze again earlier today after resuming my machine fron standby.
 
->=20
-> Regards,
-> Kyrie.
-> >=20
-> > > =C2=A0
-> > > =C2=A0	platform_set_drvdata(pdev, dev);
-> > > =C2=A0	pm_runtime_enable(&pdev->dev);
-> > > diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-> > > b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-> > > index b6f5b2249f1f..2765dafab4ad 100644
-> > > --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-> > > +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-> > > @@ -386,6 +386,7 @@ static int mtk_jpegenc_hw_probe(struct
-> > > platform_device *pdev)
-> > > =C2=A0	master_dev->enc_hw_dev[i] =3D dev;
-> > > =C2=A0	master_dev->reg_encbase[i] =3D dev->reg_base;
-> > > =C2=A0	dev->master_dev =3D master_dev;
-> > > +	master_dev->max_hw_count++;
-> > > =C2=A0
-> > > =C2=A0	platform_set_drvdata(pdev, dev);
-> > > =C2=A0	pm_runtime_enable(&pdev->dev);
+I keep the bluetooth/btusb/bt* modules blacklisted, but that apparently
+hasn't made a difference.
 
---=-a58HJVnWn+9zXOppBSIh
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCalT6MAAKCRDZQZRRKWBy
-9JrbAQDLveH/jDrTKFuENiA349uauGr7XFkZYH3C9wMQTpDY6AD+IFk+ErD8G+WM
-Asj99DiTkwEAuORoQvEGwyqWB8+uqwg=
-=raLb
------END PGP SIGNATURE-----
-
---=-a58HJVnWn+9zXOppBSIh--
+> 
+> Fixes: e31d761628ad ("Bluetooth: btmtk: Disable remote wakeup for MT7922/MT7925")
+> Signed-off-by: Rong Zhang <i@rong.moe>
+> ---
+> Changes in v2:
+> - Only apply the quirk to to direct children of Ryzen platforms's root
+>   hubs
+>   - Theoretically, we could retrieve the root hub's PCI vendor ID with
+>     some hierarchy magic to further limit the range down to only root
+>     hubs on the SoC or PCH, but that's too intrusive -- the hierarchy
+>     magic really made me nervous once I saw what I have wrote, so I gave
+>     it up
+> - Link to v1: https://patch.msgid.link/20260629-btmtk-ryzen-remote-wakeup-v1-1-1d2f1cee6d22@rong.moe
+> ---
+>  drivers/bluetooth/btmtk.c | 10 -------
+>  drivers/bluetooth/btusb.c | 73 ++++++++++++++++++++++++++++++++++++++++++++---
+>  2 files changed, 69 insertions(+), 14 deletions(-)
+> 
+> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+> index 02a96342e964..4614434dd57b 100644
+> --- a/drivers/bluetooth/btmtk.c
+> +++ b/drivers/bluetooth/btmtk.c
+> @@ -1381,16 +1381,6 @@ int btmtk_usb_setup(struct hci_dev *hdev)
+>  		break;
+>  	case 0x7922:
+>  	case 0x7925:
+> -		/*
+> -		 * A remote wakeup could cause the device completely unresponsive, and
+> -		 * recovering from such a state needs a power cycle.
+> -		 *
+> -		 * Since the remote wakeup capability is super broken, just disable it
+> -		 * to get rid of the troubles. The device can still be autosuspended
+> -		 * when the bluetooth interface is closed.
+> -		 */
+> -		device_set_wakeup_capable(&btmtk_data->udev->dev, false);
+> -		fallthrough;
+>  	case 0x7961:
+>  	case 0x7902:
+>  	case 0x6639:
+> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+> index 08c0a99a62c5..eef6e3b43bf9 100644
+> --- a/drivers/bluetooth/btusb.c
+> +++ b/drivers/bluetooth/btusb.c
+> @@ -6,6 +6,7 @@
+>   *  Copyright (C) 2005-2008  Marcel Holtmann <marcel@holtmann.org>
+>   */
+>  
+> +#include <linux/cpufeature.h>
+>  #include <linux/dmi.h>
+>  #include <linux/module.h>
+>  #include <linux/usb.h>
+> @@ -957,6 +958,7 @@ struct qca_dump_info {
+>  #define BTUSB_USE_ALT3_FOR_WBS	15
+>  #define BTUSB_ALT6_CONTINUOUS_TX	16
+>  #define BTUSB_HW_SSR_ACTIVE	17
+> +#define BTUSB_WAKEUP_BROKEN	18
+>  
+>  struct btusb_data {
+>  	struct hci_dev       *hdev;
+> @@ -2936,10 +2938,25 @@ static int btusb_send_frame_mtk(struct hci_dev *hdev, struct sk_buff *skb)
+>  	}
+>  }
+>  
+> +static inline bool platform_is_ryzen(void)
+> +{
+> +#ifdef CONFIG_X86
+> +	return boot_cpu_has(X86_FEATURE_ZEN);
+> +#else
+> +	return false;
+> +#endif
+> +}
+> +
+> +static inline bool is_direct_child_of_root_hub(struct usb_device *udev)
+> +{
+> +	return udev->parent == udev->bus->root_hub;
+> +}
+> +
+>  static int btusb_mtk_setup(struct hci_dev *hdev)
+>  {
+>  	struct btusb_data *data = hci_get_drvdata(hdev);
+>  	struct btmtk_data *btmtk_data = hci_get_priv(hdev);
+> +	int err;
+>  
+>  	/* MediaTek WMT vendor cmd requiring below USB resources to
+>  	 * complete the handshake.
+> @@ -2956,7 +2973,40 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
+>  		btusb_mtk_claim_iso_intf(data);
+>  	}
+>  
+> -	return btmtk_usb_setup(hdev);
+> +	err = btmtk_usb_setup(hdev);
+> +	if (err)
+> +		return err;
+> +
+> +	switch (btmtk_data->dev_id) {
+> +	case 0x7922:
+> +	case 0x7925:
+> +		/*
+> +		 * All reports seen to be relevant to Ryzen-based laptops. These
+> +		 * NICs are usually used as OEM components thanks to some sort
+> +		 * of reference designs.
+> +		 *
+> +		 * Their popularity on other platforms is unclear. While there
+> +		 * is still a chance that the quirk may exist on other
+> +		 * platforms, be cautious and only apply the quirk to direct
+> +		 * children of Ryzen platforms's root hubs for the time being.
+> +		 *
+> +		 * In most cases the root hub is on the SoC or PCH, which needs
+> +		 * the quirk. Unfortunately, this can't distinguish root hubs on
+> +		 * PCIe add-in cards. Such roughness should be acceptable, as
+> +		 * PCIe USB controller add-in cards are less commonly used
+> +		 * nowadays. On the other hand, applying the quirk doesn't hurt
+> +		 * any functionalities either, as the device can still be used
+> +		 * as a wakeup source if desired.
+> +		 *
+> +		 * Theoretically, we could retrieve the root hub's PCI vendor ID
+> +		 * with some hierarchy magic, but that's too intrusive...
+> +		 */
+> +		if (platform_is_ryzen() && is_direct_child_of_root_hub(data->udev))
+> +			set_bit(BTUSB_WAKEUP_BROKEN, &data->flags);
+> +		break;
+> +	}
+> +
+> +	return 0;
+>  }
+>  
+>  static int btusb_mtk_shutdown(struct hci_dev *hdev)
+> @@ -4532,11 +4582,26 @@ static int btusb_suspend(struct usb_interface *intf, pm_message_t message)
+>  
+>  	BT_DBG("intf %p", intf);
+>  
+> -	/* Don't auto-suspend if there are connections or discovery in
+> -	 * progress; external suspend calls shall never fail.
+> +	/*
+> +	 * It is reported that remote wakeup events could sometimes cause some
+> +	 * adapters completely unresponsive. Resetting the xHCI root hub doesn't
+> +	 * help at all, and recovering from such a state needs a power cycle.
+> +	 * Since disabling remote wakeup simply causes the USB core to gate
+> +	 * runtime autosuspend as well due to needs_remote_wakeup == 1, let's do
+> +	 * this ourselves to make our life easier. The interface can be safely
+> +	 * autosuspended as long as remote wakeup is disabled, i.e., after
+> +	 * closing the HCI device.
+> +	 *
+> +	 * Don't auto-suspend if there are connections or discovery in progress.
+> +	 *
+> +	 * External suspend calls shall never fail. Specifically, a device with
+> +	 * broken remote wakeup may still take the advantage of remote wakeup in
+> +	 * order to wake up the system from sleep if userspace has enabled it as
+> +	 * a wakeup source.
+>  	 */
+>  	if (PMSG_IS_AUTO(message) &&
+> -	    (hci_conn_count(data->hdev) || hci_discovery_active(data->hdev)))
+> +	    ((test_bit(BTUSB_WAKEUP_BROKEN, &data->flags) && data->intf->needs_remote_wakeup) ||
+> +	     hci_conn_count(data->hdev) || hci_discovery_active(data->hdev)))
+>  		return -EBUSY;
+>  
+>  	if (data->suspend_count++)
+> 
+> ---
+> base-commit: dc59e4fea9d83f03bad6bddf3fa2e52491777482
+> change-id: 230ba8c9-btmtk-ryzen-remote-wakeup-055a407682ef
+> 
+> Thanks,
+> Rong
+> 
 
