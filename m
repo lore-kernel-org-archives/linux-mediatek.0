@@ -4,181 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CBCFC43458
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 01:21:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DD83C43458
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 02:45:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XRQumwOyK0lM6tWA6qr7to22f6Vd8Ql61Ig4Z8VLl8c=; b=dI5HtTYmIXRrlQQQAneOhHa47l
-	/js+7ARxIwRHVXzNHDSEK5iqS8H52kaZUVrY3N6YI2Tpgz2oR8WBbq8szjACZdLgfwQ4vFoFKlw5Q
-	wg67DbjzYf3b4pdFGN+S0nho5m074XX5icXxTnaramqFkb5jrXFeFVWVEmG9T7Qz2elS3TCxwrYfe
-	BJgXHjXnz93bHwNglAjJwDZo0j1cuv1Lspunh30AP+Sttx1TPaU9TQUv4bYTGUzDNBwR7/Y+Kli8/
-	H0JIQRZA4K2yXOp76dMJK05MkBKTgLVYrh5VJ6IJCf00Avj7LXW+1mrnxFDBG2aJTZmNgCrvKCJh0
-	vHVV40LQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=RMQXnFeO5BMpwcl0jMYZT6qAkgOxYonmNUcoDCtOyA8=; b=km/tq5riuq2f0gdqtoB1aPmOS+
+	Zk3ShXjHO7Mvs5toSB95gXlNz+8kU2AcczqkMty1NGP4yni9u7EK/IMu6sGnot2RVkX/M8F7Nb0mW
+	yN+mJtnZO+p1L112ZJvbPUHChuIrsVI6w6vTtrb0hHJNfG4701Vfy9Gwgtj8XLBs0ZV9weXhY2AqR
+	fETiiHhHvlfp9mBHfDmrLtLKP0est95CB3lAlRh2gMM52zrgu4hkspiV6MeKl5J4egpG8zuj2GBLn
+	tub9pT+toePsxjLRnLunyeQJPM/NGblwN9OiKS+TaA3sVwINgPKG6AhSuCgA6Y+UUkIOqW8AWCGGN
+	RVEem59g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjRqG-0000000AfBn-1qxd;
-	Tue, 14 Jul 2026 01:21:48 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wjT9T-0000000Am9X-05O4;
+	Tue, 14 Jul 2026 02:45:43 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjRqD-0000000AfB1-1qbZ
+	id 1wjT9Q-0000000Am8B-2Zkx
 	for linux-mediatek@lists.infradead.org;
-	Tue, 14 Jul 2026 01:21:46 +0000
-X-UUID: 5ce5642e7f2211f1afed4741b24580c9-20260713
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=XRQumwOyK0lM6tWA6qr7to22f6Vd8Ql61Ig4Z8VLl8c=;
-	b=AKCGYNZ8u30qSN1T8mNZKNdVZV5mT1y/7RMyJzXHYAbfpSdMAIvFTlFbqkZywCnX3SmSec/q9I90+o8JGlPdOTPB5TfPvgH1QatsYi6x4Ufm79+6zmjgJkKuu6cGX7axBDvcyuOE2rNRntZWw0e4OR+ZOuOKtKhOTHH8Eb0VmEY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.17,REQID:82b36647-f6fa-4581-82c1-cd1ce60aacd6,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:d497b38,CLOUDID:09ea1619-ab14-4403-9336-76696324c5a8,B
-	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|110|111|136|836|865|888|898,TC
-	:-5,Content:0|15|50|99,EDM:-3|-100,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,
-	QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,
-	ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 5ce5642e7f2211f1afed4741b24580c9-20260713
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <eason.lai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 882466715; Mon, 13 Jul 2026 18:21:38 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Tue, 14 Jul 2026 09:21:36 +0800
-Received: from SG2PR04CU009.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Tue, 14 Jul 2026 09:21:36 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=vWGvT1BjWbYIZDP8QGyeiKuOeNw/rFVshf9j9NwgNxBMVBn5XWkrPb2K9TYgI7kjcNrc4vVfMWn/BYzT3OURgfnyvJOa9wRl0YP3p2NDb5L1bJ2jx0lawnGln9QtDj6C1CpB9vU3xsHo3NCFbS+k/o82myBBesKLP1WoLqnYo1LG6fCZVfgs2hxHntPXUzOaNhvq0K/QLv/jaYJcy+NfgOwXtlvQm+r9OT3PQOhhwMWqBIPeBvuWV3biKsC1oOBFx8MLkz97GC3I1RL48kzld7ePqTCGZG80cXEByg80u0YDImw01AmUBN1jo0XjExhfUBiQ+ubRjF53mS81kXA45w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=XRQumwOyK0lM6tWA6qr7to22f6Vd8Ql61Ig4Z8VLl8c=;
- b=J0RU8o0P3KeetfTc7OJVaIc7/dANm5MGCrQiorF17ptxm1X6vug6X5Z7TicTwy+FrmAgq+DVjEQ0+Aaps1+rE2SOxm8PRAGFnN0NtiAQbC58NmTudPCSei5zpMSNmls2pVh4e18JfmJq1HAKqwnei23TcX2KrU9sV6EZs4uZ1GIBhH0vIBrea/YN7ZihWp6HiJ0TdA7Sgjy5QFxjT2U8kkTJcmd2tBWcX+Tt/Oe13HEDp1trb5ziSMgTZ3jfarxKi/b52CW/2/ztgx4wuRgAsZHTD/PPGd7hyGuL+9595jL2chvJt2Awt085MVzRhwybu+hmjsR0/+veuw/DJ2GaWA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=XRQumwOyK0lM6tWA6qr7to22f6Vd8Ql61Ig4Z8VLl8c=;
- b=eOTkMPdpKZqksKa4xseq98qDLjiE8QoOEcSp3S92oT3yUyGnJejhVGPelYe8d51UU6DEpMV/izYfrAWd5R8amPqe+81lrpy2mlx64MtkRzVyZbpFwAn6loQNfstKE4YOElfzmAFeZg/oMntQBmDfWsS960bTYzoWMuTNlz+A2f0=
-Received: from KL1PR03MB7079.apcprd03.prod.outlook.com (2603:1096:820:d5::5)
- by KL1PR03MB8072.apcprd03.prod.outlook.com (2603:1096:820:f5::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.19; Tue, 14 Jul
- 2026 01:21:34 +0000
-Received: from KL1PR03MB7079.apcprd03.prod.outlook.com
- ([fe80::9bd3:f66a:efd4:f6af]) by KL1PR03MB7079.apcprd03.prod.outlook.com
- ([fe80::9bd3:f66a:efd4:f6af%4]) with mapi id 15.21.0202.018; Tue, 14 Jul 2026
- 01:21:33 +0000
-From: =?utf-8?B?RWFzb24gTGFpICjos7TmmJPogZYp?= <Eason.Lai@mediatek.com>
-To: "nbd@nbd.name" <nbd@nbd.name>, "lorenzo@kernel.org" <lorenzo@kernel.org>,
-	"johannes@sipsolutions.net" <johannes@sipsolutions.net>,
-	=?utf-8?B?TWluZ3llbiBIc2llaCAo6Kyd5piO6Ku6KQ==?= <Mingyen.Hsieh@mediatek.com>
-CC: =?utf-8?B?QWxsYW4gV2FuZyAo546L5a625YGJKQ==?= <Allan.Wang@mediatek.com>,
-	=?utf-8?B?RXJpYy1TWSBDaGFuZyAo5by15pu45rqQKQ==?=
-	<Eric-SY.Chang@mediatek.com>, =?utf-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?=
-	<Deren.Wu@mediatek.com>, Ryder Lee <Ryder.Lee@mediatek.com>,
-	=?utf-8?B?UXVhbiBaaG91ICjlkajlhagp?= <Quan.Zhou@mediatek.com>,
-	"Michael.Lo@mediatek.com" <Michael.Lo@mediatek.com>,
-	=?utf-8?B?U2hheW5lIENoZW4gKOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>,
-	"Sean Wang" <Sean.Wang@mediatek.com>,
-	=?utf-8?B?TGVvbiBZZW4gKOmhj+iJr+WEkik=?= <Leon.Yen@mediatek.com>,
-	=?utf-8?B?S00gTGluICjmnpfmmIbmsJEp?= <km.lin@mediatek.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>
-Subject: Re: [PATCH v2] wifi: mt76: mt7921: Add PCIe AER handler support to
- prevent system crash
-Thread-Topic: [PATCH v2] wifi: mt76: mt7921: Add PCIe AER handler support to
- prevent system crash
-Thread-Index: AQHdEy0mSupRDbp3xE2QhiHUZjOow7ZsN9oA
-Date: Tue, 14 Jul 2026 01:21:33 +0000
-Message-ID: <14b59de82b480725e920452e941f4ab6efacae21.camel@mediatek.com>
-References: <20251008085916.1626952-1-mingyen.hsieh@mediatek.com>
-	 <d7eb196b01003a1de70456d5a31d9b4a37d555bd.camel@sipsolutions.net>
-In-Reply-To: <d7eb196b01003a1de70456d5a31d9b4a37d555bd.camel@sipsolutions.net>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: KL1PR03MB7079:EE_|KL1PR03MB8072:EE_
-x-ms-office365-filtering-correlation-id: e86b35b5-aa5c-42ed-91d3-08dee1463e0f
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|366016|23010399003|376014|56012099006|11063799006|4143699003|18002099003|22082099003|38070700021;
-x-microsoft-antispam-message-info: 9hLCnrHfsIjVcQFJEYGZ0doKSwe8GtwiJM0WvGRwMIJacZ6IWqb0zv9XT0Tmmgdd4lMCv0JLbMCDty+RV0ooQX+uh/4d8J32gNx+ytzyycnpBIJ7SWL2LpHEJWx16Q/6NQVnva1waWKVDJn1YkwIu6eo7THlNPCohj5hIeDjHjpwK1uiekuHpK96/VLKv5o5cHaGUa5qRTRbTwR8mD2CSwxVbv0lNxg+BpK7vIaACBQr0w9TdraObb+FCMQwo4VfX48GWfpVAdiRXSJiZyPElBaWrnc0LCg110Ie19MnvDEEj5B3coLe2Pr+rH0xHdXNEUiPFBEOCXr6R3vDcz0DVCPw2/2jbYZTbLvOf8PCMFeo/0VxD1rdKijr6EAQzmydTAFewRJjc0EEuVyj6TNXT0/cdCPSN56G1R+FmH28OoAp1uGeZvYHmW0AAGnDANfnQP2tEFl+5QZhYcn7apdJyWm1NQVQzukoXw56+U+33SNiS+QLMnT0qaG74eBrvekzITap9HSATQ7a+ifrE9K2eoAA/p0wkpj/AaG9V1LOCA49d4/3kx1h3pITEaNsZcys8AKbVAs8qEmnZ4yPSIokixNNpB5kM7emM2groeD+wSHXlEqNlaf0BbNCOfODeKT8ZcJeAnyt06YrtnavPvlkeP/8PL/QvmSIy1xWKlUjrAZUrNCXXJwd/NZp5gLnpPc0CKSxIlL6qDnoVIZ9sOWgrXJ9dyzOvaiCNxKyBHVorzE=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:KL1PR03MB7079.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(23010399003)(376014)(56012099006)(11063799006)(4143699003)(18002099003)(22082099003)(38070700021);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?dm54aXl4VXEveTlwVW1MVHhKd3FpOHcvMXdJRTdsL1UxTE8zM2NKdWo5NFkw?=
- =?utf-8?B?TjV2U2l6aUwrVXkvNm1PRTZVR3I1c0VhVEx4NThiV1p2bW9kSElvM0tyeFpr?=
- =?utf-8?B?c29PeEhwRHR3SkMxOU10RSszTHl4RWp4bWVtZTlaTEszb2RDTXlIMnFKQXF2?=
- =?utf-8?B?RDVpRmd2aGxjeCtJTEpTOENRU211YkhsSTZuMUhTd2pjNUw0anRXNll3ZDZ1?=
- =?utf-8?B?ZnptZXM5cnBjK0tobHJ1ODZ0R29QZmZlbklhSEg1WnU1b1BaaU5uc1pmWCt0?=
- =?utf-8?B?YmFUZ2M1ZDVKblRJZGZtWjZvTG9VSEJxYTh2Q1FKcytXWHhTdCt3RHg1d3pO?=
- =?utf-8?B?dzN4d2dPYmN2RjFlZ1dzMWRTaXFVTFNpU0hMZTZuSkJFUTFwUUpuSHJnam1z?=
- =?utf-8?B?WTl0eHNqZlpwQzNENnp3SmhRcTYwbnZ4YVVrSmluc1ByYWQwTXJuSXRNWkU0?=
- =?utf-8?B?d2s3UnZ0VjlyMXdwWEZsT3ZPUVBscFo2ZzVRTnpHZkRJcWJZVzFqcGs1R09F?=
- =?utf-8?B?TmdDUlNPTnExZ1lGNzdpaEw3d0ltUGtUSFBEd2w3aFdiazNuaFVMelZINGRu?=
- =?utf-8?B?VGIvZU8vTEIwd3Z5eE5jQlA3czhNTDQ2Q2FDbEo3RDkzNS9wcElHSTUwRFlz?=
- =?utf-8?B?eGlZWHhFQlpPWlJJZWZtZGZaeTBjaUJhenF0eUVaMTNONnlZWWpRUWdDdExo?=
- =?utf-8?B?ZFRQMWxDSTl4azhiTzZiL0F3UHlaYm1uNlZmNmNSM3NJa09JRzU4bTY5dEdi?=
- =?utf-8?B?WUhDbS94SXhGeFZxUnFXcTh0bW9QVEhrdVNidEprMHpXZmRkcWliMmRSM0V6?=
- =?utf-8?B?TnhsZXY2VllCTVRhSTBjbTE5NkREa254K250QTdJeDY5SGNvWHJKczgwcU94?=
- =?utf-8?B?S1JSZHpzeW04S2tJUFFHK28wOE50TDZvdmdDWGZjd2grQVpEaFVoRTcyR2Np?=
- =?utf-8?B?QzZUMllBVkFrWStaVHNhN1dZRWZtWGhhYy81QUZSOVMzV2VaSmg3bHhIRmV3?=
- =?utf-8?B?dkw5cVFTTEtUWWRWZmF3ek8zdzYwakE5NXoyNkFZTlRSVlJSdWxPOSswMXB2?=
- =?utf-8?B?Z2F0Q3J4SlFSeDk0YjluREI4VGx1UTBsS2VlYkpiazR2SXkrbE1TMlFBYnAx?=
- =?utf-8?B?YUlsK3VyelhQOFBYczdad0hlN0tyZzZJTmkxQmpraGJ1SVFyNUpEL0V3eVNO?=
- =?utf-8?B?RG83RTBHQ1dRR3VOdHM5UUJKcm1PR2d5Z3FRQlZYWVdSaTI2Y3NZRG04TCtl?=
- =?utf-8?B?bHJqOUNlVEt6dGgwMDNKSkhxY1hxTjVBMnRDdWpnd3pxNEdkK1lxWGcvYVZa?=
- =?utf-8?B?eFlnOWNKeXRnd1FIRlNmYUl1bHk5ejhXQk9raWhVYzhhdlFJZTZDRWc5VG94?=
- =?utf-8?B?WTJQZE1pek12QnlHaTNqKzV5M0lxa25PVkpVS1ArdEVTVnF0OUxDanFjSWV0?=
- =?utf-8?B?S3lNZEFZVE5LVjZjZzl4SzJvU0tMZFpLZm1YbytsYys0TEhlTElBMTBxV1JM?=
- =?utf-8?B?ZFp3eXFDVGVUaDV5YTVoM1oxaS9UVUdYZmJIYWNYMm1qUDBVSDRha292WTFQ?=
- =?utf-8?B?bUMzQSsxcmRQOExqNE8zd0ttSDJ0OFk0QURyOHRkbzY0L1BpYW5wZXNLaEU4?=
- =?utf-8?B?U3NkTlc3ZmVpcGIvT3dCalhoVWE2MTdjNHJ4aS9GMUF4cmUxeFg5TEVuMHJi?=
- =?utf-8?B?QXdad0RKTWQ4Qzl0S09kSWJCTWtob0NpN1dldHhTWUNReUlyYUJPN01WTjV3?=
- =?utf-8?B?cnBxdHp3S0NtbWU5QUxTT28zTlNiT2R1Q0R2RGZmbHl2R1JSN0VoNTByN2Vm?=
- =?utf-8?B?V3JYYjd3N242VlYvR3FRS1AvekFLc0xoQU5lTFlMOFRyclI3YkJVdmNSVDVB?=
- =?utf-8?B?a2JjK2FiWURaZG5hakJQQ3haOGZrejlwbEdHWGwwS2dFTkVJSHpmVytRUXBp?=
- =?utf-8?B?MnFYck53aytRa0NkdDVlWU1lT2UxRlZ0R0hjaVEybkVoSTAwVWNwTDQ0SzMy?=
- =?utf-8?B?SXl0RTdtVnJlWEgxOGwzTWV3QUZKSFhiblUxU2hBYVNPM0RrZzhrN3Q0L2Qv?=
- =?utf-8?B?bTlkcExEMlVoLzZhOCtkOXN0QWxOZ1NjTHM4Yko1VWlDNC9uVWo2NnA0b3hh?=
- =?utf-8?B?b1ZoaWwrNThxWFdTQVFPeXJsZUJTT1FFc090Sk1wR3N1OHMrZ3RBelhEaFJm?=
- =?utf-8?B?Vm5UeWdMb0dWUWZmZ2hkM3doNGdHWGk2WUNzbmExQ3hmeGJHTk1Pak1MRy9Z?=
- =?utf-8?B?TE1rWVZxRG9scGZtTkdXcjdkRmJzOVlNdnV3WldpbFlJUlNCbHZhaHhIdFlQ?=
- =?utf-8?B?WU96QmtacVhXOUpMejM5Q0c1UjF3Q3BDMW1GYjNRa0xHTWhoWS90QlNtTndM?=
- =?utf-8?Q?eMUPSSiKdszHns3k=3D?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <C5DFA3D1639A1244A77E42393614641B@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	Tue, 14 Jul 2026 02:45:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=RM
+	QXnFeO5BMpwcl0jMYZT6qAkgOxYonmNUcoDCtOyA8=; b=kPycrThSJcoDXjRPEa
+	LedGeX52oznxE6nB5ExRoHdLkLkA/0b0FlgovVaxwMIfGtIVjDme3SLoqqILkZFs
+	EnLZ/iF8/p+hFF2JSw+KOrx9n28AASJamEPGgQKPhrp0DrBbqM7wodi12DynmYLX
+	XhJKtRe5mE5N5ZPB6qVxWOqNU=
+Received: from xwm-TianYi510Pro-14IMB.. (unknown [])
+	by gzga-smtp-mtada-g1-3 (Coremail) with SMTP id _____wCnI12_olVqESc_IQ--.47824S2;
+	Tue, 14 Jul 2026 10:45:22 +0800 (CST)
+From: weimin xiong <15927021679@163.com>
+To: iommu@lists.linux.dev
+Cc: yong.wu@mediatek.com,
+	joro@8bytes.org,
+	will@kernel.org,
+	robin.murphy@arm.com,
+	linux-mediatek@lists.infradead.org,
+	xiongweimin <xiongweimin@kylinos.cn>
+Subject: [PATCH] iommu/mtk: fix spelling of correspondence in comment
+Date: Tue, 14 Jul 2026 10:45:19 +0800
+Message-ID: <20260714024519.188603-1-15927021679@163.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: IiT16nCygDiZnrADrQPf8Qkv35pav4UYO/DQljuC1DefXytQm+c7bpxx8Zi04oNS2GlN1iQVF5/VdCtdV1t8j+RYbE4otMRDVs85u6k55dCMvmFFiTR0PHgDtzfMxpYy7OPsvltj0VrdOcRHsmBtdvifC7NBWWgN0idsFRshhUiYFp+MGg8f4f0yGiMWpvd1W10wNBuQwQnmKRgmsJY4aGiVPm/HARM05zKsTSX/pRgVmuj3rmUaB3FIDi/ntHEDb3sqbOHlvMCgpMFdg9lzm7DeDpSNORHhAE5dRyIBU3c/RSuusv1u307QJb4rm7W0/sXK6FOM3CllC1OYmCq7qA==
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: KL1PR03MB7079.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e86b35b5-aa5c-42ed-91d3-08dee1463e0f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Jul 2026 01:21:33.8336
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 3u2+Ib3vobE53Y2Cr+kuUEkkNQ9gb0ggaJYTYv2gtvtN/oyDaUzEBb1tZ+zERT05008D8EFeKK6ccr3WBAhXiw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR03MB8072
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wCnI12_olVqESc_IQ--.47824S2
+X-Coremail-Antispam: 1Uf129KBjvdXoWrtrWkJF4xGr1fJw1DJr4fKrg_yoWfGFc_Gw
+	18X34kJr1jyF4akFn7KF1S9rWYkw1q9Fs3Cr95Kr45XwsrXr1UWFWvvrWUAa1DuF47AF98
+	tr1Fk3W3ArW3KjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU8NAw3UUUUU==
+X-Originating-IP: [116.128.244.169]
+X-CM-SenderInfo: jprvmjixqsilmxzbiqqrwthudrp/xtbC8wLIUWpVosLCVAAA3h
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260713_182145_502578_8FE938DA 
-X-CRM114-Status: GOOD (  17.59  )
+X-CRM114-CacheID: sfid-20260713_194540_984479_5CE61507 
+X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -193,28 +75,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCAyMDI1LTEwLTA4IGF0IDExOjEyICswMjAwLCBKb2hhbm5lcyBCZXJnIHdyb3RlOg0K
-PiBIaSwNCj4gDQo+IFNvIC4uLiB5ZWFoIGl0J3MgeW91ciBkcml2ZXIsIGFuZCB5ZXMgaXQncyBh
-bHJlYWR5IGF0IHYyLCBidXQgLi4uDQo+IHRoaXMNCj4gc3RpbGwgc2VlbXMgdmVyeSBtdWNoIHBh
-cGVyaW5nIG92ZXIgYSBwcm9ibGVtPw0KPiANCj4gT24gV2VkLCAyMDI1LTEwLTA4IGF0IDE2OjU5
-ICswODAwLCBNaW5neWVuIEhzaWVoIHdyb3RlOg0KPiA+IA0KPiA+IFVuYWJsZSB0byBoYW5kbGUg
-a2VybmVsIHBhZ2luZyByZXF1ZXN0IGF0IHZpcnR1YWwgYWRkcmVzcw0KPiA+IGZmZmZmZmMwMTA5
-OWVhYzANCj4gPiBwYyA6IG10NzZfZG1hX2FkZF9idWYrMHgxMjQvMHgxODggW210NzZdDQo+IA0K
-PiBXaHkgZG9lcyBpdCBldmVuIGNyYXNoIHRoZXJlPw0KPiANCg0KSXQncyBhbiBvdXQtb2YtcmFu
-Z2UgYWNjZXNzOiB0aGUgSFcgcmV0dXJuZWQgYW4gdW5leHBlY3RlZCB2YWx1ZSB0aGF0DQp3YXNu
-J3QgdmFsaWRhdGVkIGJlZm9yZSB1c2UuDQoNCnYzIHBvc3RlZCBoZXJlOg0KaHR0cHM6Ly9sb3Jl
-Lmtlcm5lbC5vcmcvbGludXgtd2lyZWxlc3MvMjAyNjA1MDYwNzA0NTguMzA5NjE4MC0xLWpiLnRz
-YWlAbWVkaWF0ZWsuY29tLw0KDQpUaGFua3MsDQpFYXNvbg0KDQo+ID4gKysrIGIvZHJpdmVycy9u
-ZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9hZ2ctcnguYw0KPiA+IEBAIC05Niw2ICs5Niw5IEBA
-IG10NzZfcnhfYWdncl9yZW9yZGVyX3dvcmsoc3RydWN0IHdvcmtfc3RydWN0DQo+ID4gKndvcmsp
-DQo+ID4gwqAJc3RydWN0IHNrX2J1ZmZfaGVhZCBmcmFtZXM7DQo+ID4gwqAJaW50IG5mcmFtZXM7
-DQo+ID4gwqANCj4gPiArCWlmIChhdG9taWNfcmVhZCgmZGV2LT5idXNfaHVuZykgPT0gMSkNCj4g
-PiArCQlyZXR1cm47DQo+IA0KPiBBbmQgaG93IGRvZXMgc3ByaW5rbGluZyB0aGlzICJtYWdpYyBk
-dXN0IiBhbGwgb3ZlciBldmVuIGRvIGFueXRoaW5nPw0KPiANCj4gDQo+IFRoaXMgc291bmRzIGEg
-Yml0IGxpa2UgdGhlIGRyaXZlciBpc24ndCBhYmxlIHRvIGRlYWwgd2l0aCBzdXJwcmlzZQ0KPiBy
-ZW1vdmFsLCB3aGF0IGhhcHBlbnMgaWYgeW91IGUuZy4gcm1tb2QgaXQgd2hpbGUgcnVubmluZyB0
-cmFmZmljPyBJDQo+IGJlbGlldmUgdGhlIGVmZmVjdCBvZiB0aGUgZXJyb3IgcmVjb3Zlcnkgd291
-bGQgYmUgc2ltaWxhciwgaWYgeW91DQo+IGRvbid0DQo+IGhhbmRsZSBpdCwgc28gYXJlIHlvdSBz
-dXJlIHRoZXJlJ3Mgbm90IGEgY29tcGxldGVseSBkaWZmZXJlbnQNCj4gdW5kZXJseWluZw0KPiBi
-dWc/DQo+IA0KPiBqb2hhbm5lcw0KDQoNCg0K
+From: xiongweimin <xiongweimin@kylinos.cn>
+
+Correct "correspondance" to "correspondence".
+
+Signed-off-by: xiongweimin <xiongweimin@kylinos.cn>
+---
+ drivers/iommu/mtk_iommu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 2be990c10..b52e16b06 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -220,7 +220,7 @@ struct mtk_iommu_plat_data {
+ 		unsigned int	iova_region_nr;
+ 		const struct mtk_iommu_iova_region	*iova_region;
+ 		/*
+-		 * Indicate the correspondance between larbs, ports and regions.
++		 * Indicate the correspondence between larbs, ports and regions.
+ 		 *
+ 		 * The index is the same as iova_region and larb port numbers are
+ 		 * described as bit positions.
+-- 
+2.43.0
+
+
+No virus found
+		Checked by Hillstone Network AntiVirus
+
 
