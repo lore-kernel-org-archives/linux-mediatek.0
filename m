@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BABF7C43458
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 11:44:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AAEEC44501
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 11:44:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=gAfEByseGfR0SE/tVoH4dbOO2mu/B4r3Xj2o8PY/YIc=; b=Q/xU+9HOPtM6KU0PspWlDs/Ga5
-	/OLC79Sc38b2x5fxYKrFt9A6IQBuqm+WM0NQ7DuV7qoK197/6axSl/eL4N2c7tBchzWuFXxhaDoUz
-	ov11Fzu+vsnJ/lP9qRvJ5IjWEDhbhF2mUfvgEeWxqWiLxUO95edLqlaZcJskE+IpCuW4yHIPemBak
-	6pxXcXRzDoAvguFLOfKmsS05mdtZJgfGlpaYpIi7I3B6nhGi3nE1eQO6QLc8wMMDO/Jidtf9d0IRI
-	7V8qz7viZmEMkLE+J1yzW+4dtwjx/YZPrA2NrMQIK/vOPxFwFyg0iSeiDFBbJ4cgQQqcZO3riSQfV
-	F7wFOrKg==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jiF9YYW1bQFINH2mgKeQ/xNHVfEtSNAdHUTfi7427yQ=; b=1zhbznId0AwupFH+wwm6Wufco5
+	kayfeyaDapj7qkyGL4s9MnI3VyPx2oJEGZU/ujUw1GLh8id6hx/XLf2901wYbtfMz8M48bOl467JH
+	SreVvGQ/CAgt6fak0iE9U5ywgUvIwBdTf+MzqD4DUY7PeI6j2hsUCbXMgjWWGfq9MPlXTIHDXcJzm
+	V/d0scEkEmC8URGnukS7uDtgIvszlplz94bRVvduqdWoe+DyRsGjDyAuCNXMB8D8kFiXCrAlNkkxM
+	lLNoEKJq6I8gxuOPKHvNhhGgRFkF/C9FGI0D7BU1gR5Xx1Hzy/pkJhRFMAlnTnFMAZgmayj8YUpbj
+	N2IIlA3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjbZ4-0000000BiHe-22KU;
-	Tue, 14 Jul 2026 11:44:42 +0000
+	id 1wjbZ5-0000000BiJt-0sCe;
+	Tue, 14 Jul 2026 11:44:43 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjbYv-0000000BiB0-3bxR;
-	Tue, 14 Jul 2026 11:44:35 +0000
+	id 1wjbYy-0000000BiBk-2MeR;
+	Tue, 14 Jul 2026 11:44:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784029470;
-	bh=sg/qb5PkGX7tR09vyvKceTb/h4QIBy2j/DQj8rCSgng=;
-	h=From:To:Cc:Subject:Date:From;
-	b=DLUzoYrNAKC/8cgUMk33HmyTIYiZs70WrjKpWlSJgRji9ApyCuR45+IIfHPuUX7h3
-	 G3Vdk10o0fB6RygAcaA2QGgCcUqyAPWVZgyrFENao0nSuD8nnxRUXBEoSM2z+q87kg
-	 dOLWw3glTaNtPE2KRo6dPiC9z+QiSgSEDnLCpRVp6/p5B2YGnFTwuw6AR+LRU6fN4k
-	 iJ0OClf82yoxucnf3nxsxITit2NYqKlDEDZ5zSYjIGfblH6L6RGeo8gmUBotawtKG8
-	 2ouBpFXKNKnXrClKnKC+cllzAVepgAiPTy/0EJpaoyEJs3dlr3d3pz3haq49Ttsy6g
-	 C78rc5zgsvt2A==
+	s=mail; t=1784029474;
+	bh=Ip0z0Dqm9bUaaMp/etGb29cMeapZRLGllSD+m34VwVA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=j16Uz93hCM00fKmLqkfKyUHd+O3FtxoL9CNdPoleCVNsfb5em7W+NNiIxnt/KmX8i
+	 0KRQozPXAnTxiMkZbEnryV0X79Ulqgw71OhzZObmUpsHDGTHebWzQhJzie0s9cBM5l
+	 HO7391y4q3uIo7xqtB8q/WbzBYUF4A4U8/wn1ZR2o+RyXC8hLd/3VoMp3ub8vW5OBv
+	 DavFbTLvSjtv9LmMFyZm2VNaFR1/Agy6PynLQaEAQtFH2MJKH1Eviuqe5hHKN6ZMj9
+	 GvlZm7wcwmlQPYz4DJ7GAx91lWnHdGrnLjDVof4kqQtLQIANdx4irbEjNt9/A7HG4R
+	 s1bM3pLnpfIrg==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CA5C917E0076;
-	Tue, 14 Jul 2026 13:44:28 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E777517E0DE9;
+	Tue, 14 Jul 2026 13:44:33 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -64,15 +64,18 @@ Cc: p.zabel@pengutronix.de,
 	justin.yeh@mediatek.com,
 	jason-jh.lin@mediatek.com,
 	kernel@collabora.com
-Subject: [PATCH v2 00/46] drm/mediatek: The Huge Restructuring and MT8196 support
-Date: Tue, 14 Jul 2026 13:43:28 +0200
-Message-ID: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 04/46] drm/mediatek: Move mtk_ddp_comp_type enumeration to mtk-mmsys.h
+Date: Tue, 14 Jul 2026 13:43:32 +0200
+Message-ID: <20260714114414.184512-5-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com>
+References: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260714_044434_213136_3EAF9502 
-X-CRM114-Status: GOOD (  31.91  )
+X-CRM114-CacheID: sfid-20260714_044437_170634_1E5CA701 
+X-CRM114-Status: UNSURE (   9.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,306 +90,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-NOTE:
- This series depends on and will not apply without the following series:
- drm/mediatek: Add DSC, WDMA, MT8189/96 DSI support [1]
- [1]: https://lore.kernel.org/r/20260713142746.40259-1-angelogioacchino.delregno@collabora.com
+In preparation for a major refactoring of MMSYS, MUTEX and of
+mediatek-drm, move the mtk_ddp_comp_type enumeration to the
+mtk-mmsys.h header, as this will be shared between multiple
+MediaTek multimedia related drivers.
 
-Changes in v2:
- - Rebased on next-20260713
- - Changed DVO to use atomic_create_state
- - Fixed partial RSZ addition in wrong patch
- - Transferred bindings and mutex commits from soc series to this
-   one, as those require some changes from this series in order to
-   even compile
- - Fixed indentation in patch 1
- - Fixed using blend_mode in patch 2
- - Fixed whitespace issues (oops) in various patches
- - Fixed binding errors for blender, exdma, outproc, tdshp, resizer
- - Changed commit moving mtk_ddp_comp_type enumeration to mtk-mmsys.h
-   to actually only move the enumeration
- - Added commit that introduces the missing component types in the
-   mtk_ddp_comp_type enumeration
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h | 25 ---------------------
+ include/linux/soc/mediatek/mtk-mmsys.h  | 29 +++++++++++++++++++++++++
+ 2 files changed, 29 insertions(+), 25 deletions(-)
 
-
-Okay, yes, this is very big. :-)
-
-This series "only" does two things:
- 1. Restructures mediatek-drm to optimize components discovery,
-    pipeline building, changes components relationship, and to
-    make use new-style trigger-sources for MuteX, other than
-    paving the way for *easily* adding support for up to 31
-    concurrent display outputs (of which, 6-8 are realistic now
-    with newer SoCs); and
- 2. Adds support for the new DirectLink architecture and for most
-    of the new Display Controller components found in newer gen
-    SoCs, like MT8196.
-
-Note that, mixed in all this, there are some changes to the mediatek
-MMSYS driver: those *cannot* be performed separately, and *must* land
-in the same moment as the other changes, as otherwise it's all going
-to break.
-That was unavoidable, unless adding another ~10 (big) commits to keep
-support for old code while introducing the new (not devicetree, just
-code, mind you!) which is, at this point, completely unnecessary and
-just big noise for no reason.
-
-The two soc/mediatek commits already have my Acked-by tag for them to
-be picked by a drm maintainer instead.
-
-Important summary done, let's go deeper!
-
-(from mtk-mmsys new-style series, important context)
-As of now, all of the components in MediaTek DRM, hence also in the
-MMSYS driver, are thrown in a catch-all enumeration that does not
-make any distinction between Type-Instance relationship, and it is
-like so (mock-up names ahead):
-
-DISPLAY_DITHER0
-DISPLAY_DITHER1
-DISPLAY_DSI0
-DISPLAY_DSI1
-
-... and so on.
-
-Since the number of components is now becoming uncontrollably large,
-the catch-all enumeration poses a big issue as the mediatek-drm driver
-is allocating a huge array that will be only half full (optimistically,
-because usually it's way less than half full) and with repeated ops
-assignment for each and every instance of the very same Sub-IP,
-effectively treating every instance of a Sub-IP like it is completely
-different from one another (for example, like DSI0 and DSI1 are as
-different as DITHER0 and DSI1).
-
-This has to change. It had to change months ago, but now it has become
-not only a maintenance burden, but also a... (sorry) big mess.
-
-And well, that... especially looking forward to add support for newer
-SoCs, using even more components in one pipeline, and using different
-and newer components (of new types...), making the catch-all enum to
-grow of another ~20 entries or more.
-(end of context paste)
-
-This is the reason why the mediatek-drm driver now structures the HW
-components in a different way, and specifically, it now makes a clear
-distinction between HARDWARE TYPE and HARDWARE INSTANCE ID.
-
-With this distinction is done, it also made sense to change the highly
-unoptimized array search with a hashtable, making the entire components
-discovery process faster (with or without MT8196 support), while using
-less memory (compared to if this driver had MT8196 support without the
-restructured code).
-
-Moreover, the mediatek-drm driver now supports dynamic selection of the
-DMA device, the VBLANK component and of the CONFIG component, necessary
-for Multi-Controller Display Path (with DirectLink) architecture of new
-SoCs (like MT8196), and also makes it possible for slightly older ones
-to use multi-controller paths (though very restrictive due to the actual
-hardware support).
-
-Moving on to the MT8196 specific support...
-
-This adds knowledge to mediatek-drm and hence introduces support for
-the new concept of "Layer Stages", seen in MT6991/93, MT8196/8894 and
-other new SoCs, where each (one) full layer is now composed of multiple
-different hardware IPs and where, depending on the usecase (which is
-BOARD specific!!!), can be set to have less, or more, capabilities in
-terms of number of Blending stages, number of DMA stages, etc, so that
-one board may choose to have up to 6-8 display outputs featuring lower
-resolution displays, or 2-3 outputs supporting high resolution with high
-framerates (like 4k120, 8k60 etc).
-
-This also restructures the MediaTek DPI driver to be split in a common
-library and HW version specific drivers, and on the base of this, adds
-support for the new MediaTek Display Video Output (DVO) hardware, being
-a revised and extended version of the previous DPI one.
-
-Moreover, adds support for the Extended DMA (exDMA), Blender and Output
-Processor engines, providing single stages of layers and forming one
-layer when chained together.
-
-More new-gen components include the 2D Sharpness Processor (TDSHP) and
-the Display Image Resizer (effectively, a Scaler engine).
-
-This also adds support for the Asynchronous DirectLink Controller, or
-"DL_ASYNC", responsible for internally connecting different display
-controllers to finally form one (or multiple) display path(s), which
-may include a relatively infinite (real, and full) display controller
-jumps or even intertwining (where jumps are fully supported in this
-version of the driver, but intertwining is only partially supported).
-
-In the case of paths using multiple display controllers, this is now
-automatically calculating the order of those, important not only for
-power management, but also for actually setting them up.
-
-There's more to say, but this cover letter is already way too long now
-so, well, if you want to know more about this, please the description
-in the relevant commit from this series and feel free to ask for any
-clarification.
-
-
-All of this was manually tested on multiple MediaTek boards, both the
-reference ones and partner boards, and that includes:
-Acer Chromebook Elm (MT8173)
-Acer Chromebook Corsola Steelix (MT8186)
-Acer Chromebook Asurada (MT8192)
-Acer Chromebook Cherry Tomato (MT8195)
-Acer Chromebook Rauru Hylia (MT8196)
-
-MediaTek Genio 510 EVK (MT8370)
-MediaTek Genio 700 EVK (MT8390)
-MediaTek Genio 1200 EVK (MT8395)
-Radxa NIO-12L (MT8395)
-
-Note: with this series, MT8196 support reaches a 95% done state for
-DSI or eDP outputs, but needs some more code to work; the test that
-was performed on the Hylia Chromebook had the rest of the required
-code in place: said code is not perfectly clean yet and was not sent
-for this exact reason. Cleanups to the remaining MT8196 code will
-not change anything of what is introduced with this patch series.
-
-
-AngeloGioacchino Del Regno (43):
-  drm/mediatek: Move mtk_ddp_comp_type enumeration to mtk-mmsys.h
-  drm/mediatek: Add missing component types in mtk_ddp_comp_type
-  drm/mediatek: Rename all display component type to have DISP_ prefix
-  drm/mediatek: Use hashtable for components discovery and registration
-  drm/mediatek: ddp_comp: Move internal component register in function
-  drm/mediatek: De-duplicate internal component checks
-  drm/mediatek: Introduce and use path/comp definition structures
-  drm/mediatek: Create new mtk_drm_legacy and move deprecated code
-  dt-bindings: soc: mediatek: mutex: Allow #trigger-source-cells
-  dt-bindings: display: mediatek: Allow trigger-sources on relevant HW
-  drm/mediatek: Add support for MuteX trigger-sources parsing
-  drm/mediatek: ovl_adaptor: Add special MERGE component check
-  drm/mediatek: mtk_hdmi_v2: Don't warn on RPM active during detach
-  drm/mediatek: Add support for hardware multi-stage layers
-  drm/mediatek: mtk_crtc: Complete documentation for struct mtk_crtc
-  drm/mediatek: mtk_crtc: Minimize spinlocked time in cmdq callback
-  drm/mediatek: mtk_crtc: Dynamically find vblank/cfg component indices
-  soc: mediatek: mtk-mutex: Add new functions to add/remove triggers
-  soc: mediatek: mtk-mmsys: Migrate to new Multimedia DDP HW indexing
-  drm/mediatek: Fully migrate to new Display Controller HW indexing
-  drm/mediatek: mtk_dpi: Pass parameters with new mtk_dpi_sync structure
-  drm/mediatek: mtk_dpi: Fully separate HW setup from common code
-  drm/mediatek: Create new mtk_dpi_common lib and move mtk_dpi code
-  dt-bindings: display: mediatek: Introduce Digital Video Output HW
-  drm/mediatek: Add support for MediaTek Digital Video Output (DVO)
-  drm/mediatek: Pass mtk_ddp_comp in clk and config callbacks
-  dt-bindings: display: mediatek: Introduce MT8196 Layer Blender
-  drm/mediatek: Add support for Display Layer Blender component
-  dt-bindings: display: mediatek: Introduce MT8196 extended DMA Engine
-  drm/mediatek: Add support for Display Controller exDMA component
-  dt-bindings: display: mediatek: Introduce MT8196 Output Processor
-  drm/mediatek: Add support for Display Output Processor component
-  drm/mediatek: mtk_crtc: Dynamically find suitable CRTC DMA device
-  drm/mediatek: Prepare path builder for multi-controller architecture
-  drm/mediatek: Enable bring-up of multi-controller CRTC paths
-  drm/mediatek: Introduce MediaTek Asynchronous DirectLink Controller
-  drm/mediatek: Support registering disp controller device subnodes
-  soc: mediatek: mtk-mmsys: Populate multimedia subsystem subdevices
-  dt-bindings: display: mediatek: Introduce MT8196 2D Sharpness
-    Processor
-  drm/mediatek: Add Two-Dimension Sharpness Processor (TDSHP) driver
-  dt-bindings: display: mediatek: Introduce MT8196 Image Resizer
-  drm/mediatek: Add support for Display Image Resizer (Scaler)
-  drm/mediatek: mtk_drm_drv: Fail init only if all paths are invalid
-
-Nancy Lin (1):
-  drm/mediatek: Export OVL formats definitions and format conversion API
-
-Paul-pl Chen (2):
-  drm/mediatek: Rename OVL format naming
-  drm/mediatek: Export OVL Blend function
-
- .../display/mediatek/mediatek,aal.yaml        |    3 +
- .../display/mediatek/mediatek,ccorr.yaml      |    3 +
- .../display/mediatek/mediatek,color.yaml      |    3 +
- .../display/mediatek/mediatek,dither.yaml     |    3 +
- .../display/mediatek/mediatek,dp.yaml         |    3 +
- .../display/mediatek/mediatek,dpi.yaml        |    3 +
- .../display/mediatek/mediatek,dsc.yaml        |    3 +
- .../display/mediatek/mediatek,dsi.yaml        |    3 +
- .../display/mediatek/mediatek,ethdr.yaml      |    3 +
- .../display/mediatek/mediatek,gamma.yaml      |    3 +
- .../display/mediatek/mediatek,merge.yaml      |    3 +
- .../mediatek/mediatek,mt8196-blender.yaml     |   97 ++
- .../display/mediatek/mediatek,mt8196-dvo.yaml |  143 +++
- .../mediatek/mediatek,mt8196-exdma.yaml       |  104 ++
- .../mediatek/mediatek,mt8196-outproc.yaml     |  107 ++
- .../display/mediatek/mediatek,mt8196-rsz.yaml |   97 ++
- .../mediatek/mediatek,mt8196-tdshp.yaml       |   98 ++
- .../display/mediatek/mediatek,od.yaml         |    3 +
- .../display/mediatek/mediatek,ovl-2l.yaml     |    3 +
- .../display/mediatek/mediatek,ovl.yaml        |    3 +
- .../display/mediatek/mediatek,padding.yaml    |    3 +
- .../display/mediatek/mediatek,postmask.yaml   |    3 +
- .../display/mediatek/mediatek,rdma.yaml       |    3 +
- .../display/mediatek/mediatek,split.yaml      |    3 +
- .../display/mediatek/mediatek,ufoe.yaml       |    3 +
- .../display/mediatek/mediatek,wdma.yaml       |    3 +
- .../bindings/soc/mediatek/mediatek,mutex.yaml |    4 +
- drivers/gpu/drm/mediatek/Makefile             |    8 +
- drivers/gpu/drm/mediatek/mtk_crtc.c           |  973 ++++++++++----
- drivers/gpu/drm/mediatek/mtk_crtc.h           |    4 +-
- drivers/gpu/drm/mediatek/mtk_ddp_comp.c       |  457 ++++---
- drivers/gpu/drm/mediatek/mtk_ddp_comp.h       |  145 ++-
- drivers/gpu/drm/mediatek/mtk_disp_aal.c       |   12 +-
- drivers/gpu/drm/mediatek/mtk_disp_blender.c   |  318 +++++
- drivers/gpu/drm/mediatek/mtk_disp_ccorr.c     |   12 +-
- drivers/gpu/drm/mediatek/mtk_disp_color.c     |   12 +-
- .../gpu/drm/mediatek/mtk_disp_directlink.c    |  434 +++++++
- drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  158 ++-
- drivers/gpu/drm/mediatek/mtk_disp_dsc.c       |    8 +-
- drivers/gpu/drm/mediatek/mtk_disp_exdma.c     |  344 +++++
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c     |   12 +-
- drivers/gpu/drm/mediatek/mtk_disp_merge.c     |   18 +-
- drivers/gpu/drm/mediatek/mtk_disp_outproc.c   |  247 ++++
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c       |  269 ++--
- drivers/gpu/drm/mediatek/mtk_disp_ovl.h       |   27 +
- .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   |  182 ++-
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c      |   21 +-
- drivers/gpu/drm/mediatek/mtk_disp_tdshp.c     |  167 +++
- drivers/gpu/drm/mediatek/mtk_disp_wdma.c      |   14 +-
- drivers/gpu/drm/mediatek/mtk_dpi.c            |  762 +----------
- drivers/gpu/drm/mediatek/mtk_dpi_common.c     |  477 +++++++
- drivers/gpu/drm/mediatek/mtk_dpi_common.h     |  299 +++++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 1141 ++++++++++-------
- drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   34 +-
- drivers/gpu/drm/mediatek/mtk_drm_legacy.c     |  879 +++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_legacy.h     |   37 +
- drivers/gpu/drm/mediatek/mtk_dvo.c            |  677 ++++++++++
- drivers/gpu/drm/mediatek/mtk_dvo_regs.h       |  192 +++
- drivers/gpu/drm/mediatek/mtk_ethdr.c          |   10 +-
- drivers/gpu/drm/mediatek/mtk_ethdr.h          |    4 +-
- drivers/gpu/drm/mediatek/mtk_hdmi_v2.c        |    2 -
- drivers/gpu/drm/mediatek/mtk_mdp_rdma.c       |    8 +-
- drivers/gpu/drm/mediatek/mtk_padding.c        |    8 +-
- drivers/soc/mediatek/mtk-mmsys.c              |  107 +-
- drivers/soc/mediatek/mtk-mmsys.h              |   15 +-
- drivers/soc/mediatek/mtk-mutex.c              |   60 +
- include/linux/soc/mediatek/mtk-mmsys.h        |   56 +-
- include/linux/soc/mediatek/mtk-mutex.h        |    6 +
- 68 files changed, 7411 insertions(+), 1915 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-blender.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-dvo.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-exdma.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-outproc.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-rsz.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-tdshp.yaml
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_blender.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_directlink.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_exdma.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_outproc.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_ovl.h
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_tdshp.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_dpi_common.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_dpi_common.h
- create mode 100644 drivers/gpu/drm/mediatek/mtk_drm_legacy.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_drm_legacy.h
- create mode 100644 drivers/gpu/drm/mediatek/mtk_dvo.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_dvo_regs.h
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
+index 99bf1e1015da..bbc66072fe6b 100644
+--- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
+@@ -22,31 +22,6 @@ struct mtk_plane_state;
+ struct drm_crtc_state;
+ struct drm_dsc_config;
+ 
+-enum mtk_ddp_comp_type {
+-	MTK_DISP_AAL,
+-	MTK_DISP_BLS,
+-	MTK_DISP_CCORR,
+-	MTK_DISP_COLOR,
+-	MTK_DISP_DITHER,
+-	MTK_DISP_DSC,
+-	MTK_DISP_GAMMA,
+-	MTK_DISP_MERGE,
+-	MTK_DISP_MUTEX,
+-	MTK_DISP_OD,
+-	MTK_DISP_OVL,
+-	MTK_DISP_OVL_2L,
+-	MTK_DISP_OVL_ADAPTOR,
+-	MTK_DISP_POSTMASK,
+-	MTK_DISP_PWM,
+-	MTK_DISP_RDMA,
+-	MTK_DISP_UFOE,
+-	MTK_DISP_WDMA,
+-	MTK_DPI,
+-	MTK_DP_INTF,
+-	MTK_DSI,
+-	MTK_DDP_COMP_TYPE_MAX,
+-};
+-
+ struct mtk_ddp_comp;
+ struct cmdq_pkt;
+ struct mtk_ddp_comp_funcs {
+diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
+index 4885b065b849..fb88202d100a 100644
+--- a/include/linux/soc/mediatek/mtk-mmsys.h
++++ b/include/linux/soc/mediatek/mtk-mmsys.h
+@@ -84,6 +84,35 @@ enum mtk_ddp_comp_id {
+ 	DDP_COMPONENT_ID_MAX,
+ };
+ 
++enum mtk_ddp_comp_type {
++	/* DISP Components */
++	MTK_DISP_AAL,
++	MTK_DISP_BLS,
++	MTK_DISP_CCORR,
++	MTK_DISP_COLOR,
++	MTK_DISP_DITHER,
++	MTK_DISP_DSC,
++	MTK_DISP_GAMMA,
++	MTK_DISP_MERGE,
++	MTK_DISP_MUTEX,
++	MTK_DISP_OD,
++	MTK_DISP_OVL,
++	MTK_DISP_OVL_2L,
++	MTK_DISP_OVL_ADAPTOR,
++	MTK_DISP_POSTMASK,
++	MTK_DISP_PWM,
++	MTK_DISP_RDMA,
++	MTK_DISP_UFOE,
++	MTK_DISP_WDMA,
++
++	/* Keep Display outputs at the end for readability */
++	MTK_DPI,
++	MTK_DP_INTF,
++	MTK_DSI,
++
++	MTK_DDP_COMP_TYPE_MAX
++};
++
+ void mtk_mmsys_ddp_connect(struct device *dev,
+ 			   enum mtk_ddp_comp_id cur,
+ 			   enum mtk_ddp_comp_id next);
 -- 
 2.54.0
 
