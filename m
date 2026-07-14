@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2966C44501
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 11:45:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD489C4450B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 11:45:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e8T1WU+N+UVK2ypjZyD1mVG+d2/Jt0bYjiBghbwV6kI=; b=o2/O8EsS9NtRLOm3HnxbFU9tC1
-	SsEQKBUwpxDvYVIYWXDl5A/T5fEz2cTCOqHGgXlYDh4TSkM+a4lTyn2FalrMqLLkxEnk6TX6Eujh8
-	SdOoPxVEJhqnzwkXfqhu9UVK12WscCe9MYk/s+/m7oc5wgJw+vJIgjxpRhVriTxU4wIut/FZF1brS
-	+QB9UBQICslF+6/W1pSrWwTiSalONxSn8HjN8illAWlOMRQciggf/dFgke/6XsaCmpMnooCY3Bhp7
-	vIdFvv3cAVFmGU321DGxJYOQEfz5rWp9+a3+WG8lPncqT93Dfe0+Wz1RHPjkCIceiKE+GLwvk4O27
-	xllZ/xKQ==;
+	bh=EBr7NsoBFAAxbInNHLtGStk0R8iehk4GROfFyr6Ijrg=; b=alaDsONS7hg0W9qwCgjskgf1P7
+	+QYUZTdgZoxVEQkLn5cR1RozIs3JVxU/99YKYMDKgLV5pjfqaLvz74DInDpKkQl3Su+BxqkoElrQL
+	cy1C+zfNxodwcv+o5Hh/662ZSpqxSfK/VvqyjZUuSUFti5O4kiHp3mN4WlGr5nJ49UKebVfHLQG3n
+	2RZ1uUGir656WmqENzr6GKlvyBP4nYFwu3ac8j7CHbxKE3bdRXbDMOso0vuE7A2Tj0XYpktLuTQwA
+	nFhoT1Okdmlsb9cTTyX6/hDawd3wVmLzwmdAv/cpucJF+OlWE+IfSteJRer3rKSxTTP/c3uvuwvk2
+	R+cvLZYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjba4-0000000Bjz8-1Bfi;
-	Tue, 14 Jul 2026 11:45:44 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wjba5-0000000Bk0n-0Z9L;
+	Tue, 14 Jul 2026 11:45:45 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjbZK-0000000BimU-0YdX;
-	Tue, 14 Jul 2026 11:45:05 +0000
+	id 1wjbZT-0000000Bj3F-1UHE;
+	Tue, 14 Jul 2026 11:45:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=EBr7NsoBFAAxbInNHLtGStk0R8iehk4GROfFyr6Ijrg=; b=DZiOOblDnCjHtQfz0OEzYWQE7W
+	6h2zvwqamW5uBGmDX6Q94TzVz1OvCUixb+gRx7JZTF68paMwiOa3xH4nINJNt0jpDYqUpvA6E4Dso
+	HDdjW3CHTnLjKBjriVGpHxViXLFl/zSq2aHrGlCtEAsO7/ETxKO5V8NxuIltQjFBdZBv08eaCAH7y
+	4+w6mGXJUayiUMhWd58LUszeED8zrHMuHMGZp52EDXjV2thi9UG81boXnCAo8Pm2mS/GDlMbReOsP
+	EeUVZOixRdIQdgCEQTQ9fIvgzN1wjWAVqHYziOzoiuBB+cirTTMOrwFh5W9Ry1ssNFtedtCvSXGQh
+	Dwvgbv+g==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1wjbZQ-0000000CQiZ-094v;
+	Tue, 14 Jul 2026 11:45:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784029496;
-	bh=jcngV4jbMINzejAf1lptWsag8jNh6HhdqeoK3tR+i4c=;
+	s=mail; t=1784029501;
+	bh=5D+Qf4Et20xghm98yfTvt8wO500Jdq69jIvqY26Bkww=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=PpdSU78fFrjz5e/YoupjYtMYR/PWqmDeSDe+vDIfM4MYz+9/ykykdTnTN+8ZBeUkx
-	 RL1gQP+fukVokP8LvaRDxNspCsUjTOmMwrjigELVsRB7IE50RsGXxSNrBst0vF98HJ
-	 rAX8hOs70QmqEZDZhAoSGvL32Lh3rtNJctRagu0r9LWdX+W4w8I095n/fGH+gypGxv
-	 +817llF8tyKQPC/fYbiTwPc5GRig3CycSOPdiZUpEWSUoS7yQsMt9d51kBzyGkKvCH
-	 qhRFVGFDMpUHHNixLkS2K3q7kva1qo8Fw9VlMpIPyHTUTn5B7AGl2nKbIbndB667y6
-	 /QPETGQNo4LFA==
+	b=LlyhAQnq5GRWIE5GTPTnQ7IyXKZJjgozxZGTGAxckNonc1Ad5XoBbnHEeAvTylG18
+	 azfayW4fGoNvMr6zcO5CMb7UMyMMGzvGvJP5cRq13LKDRL+AO0mFDuMi7rZEpScGhJ
+	 IL/qRn70yaXnE1VKswMXwuBjQips5s7FgeCFt7waf9qZ9bocD2QRioTqUj3SKHYL2s
+	 1wNFqwJLGL6PCrrifHsUiVw1hn/mnyd5TAgVpqPH3rGNlF369h3PxIK/ktqxgQQ8os
+	 fDeMTd6E2q2NFnDjoAjRF7W7AUHVlddfj39yQVhCu2JLCod7smy84GnF/siobwIkwp
+	 pbzmswLg7gcRg==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 540B817E0FD2;
-	Tue, 14 Jul 2026 13:44:55 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D01A917E0956;
+	Tue, 14 Jul 2026 13:45:00 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -64,17 +78,17 @@ Cc: p.zabel@pengutronix.de,
 	justin.yeh@mediatek.com,
 	jason-jh.lin@mediatek.com,
 	kernel@collabora.com
-Subject: [PATCH v2 22/46] soc: mediatek: mtk-mmsys: Migrate to new Multimedia DDP HW indexing
-Date: Tue, 14 Jul 2026 13:43:50 +0200
-Message-ID: <20260714114414.184512-23-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 25/46] drm/mediatek: mtk_dpi: Fully separate HW setup from common code
+Date: Tue, 14 Jul 2026 13:43:53 +0200
+Message-ID: <20260714114414.184512-26-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com>
 References: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260714_044458_390011_416F1124 
-X-CRM114-Status: GOOD (  22.17  )
+X-CRM114-CacheID: sfid-20260714_124504_366039_3F1AA49D 
+X-CRM114-Status: GOOD (  17.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,240 +103,307 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mediatek-drm driver is ready to switch to the new Multimedia
-Subsystem Display Controller HW indexing.
+As a preparation step for adding support for DVO and creating a
+mtk_dpi_common library, fully separate all of the register writing
+mechanisms from commonizable hardware setup functions.
 
-Perform the switch by:
- - Adding new "from_comp_inst" and "to_comp_inst" members in the
-   Multimedia Subsystem HW Routes structure (mtk_mmsys_routes);
- - Changing the MMSYS_ROUTE() macro to use those, which performs
-   the migration of all SoCs in one go (as all of them use this
-   macro to declare their route entries);
- - Adding new mtk_mmsys_hw_connect() and mtk_mmsys_hw_disconnect()
-   functions, making use of the new HW Component Type-Instance
-   indexing.
+While at it, also perform some spare code style cleanups and also
+remove the mtk_dpi_config_vsync_{l,r}{odd,even}() functions and
+open-code the single line found in each of those, as now all of
+the parameters are clearly labeled and won't have any meaningful
+impact on human readability.
 
-Unfortunately, this change needs to go along with the related one
-in the mediatek-drm driver, otherwise functionality of the Display
-Controller will regress.
+This change brings no functional differences.
 
-The only way to make this possible in two steps is to duplicate
-all of the routes structure arrays for all of the SoCs, which
-would result in a total of around ~1200 lines changed twice, and
-that ignores the big increase in size for this driver during the
-migration process so, in order to avoid useless bloat, I opted
-for an inter-dependency between the two changes: mediatek-drm
-and mtk-mmsys.
-
-Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/soc/mediatek/mtk-mmsys.c       | 99 ++++++++++++++++++++------
- drivers/soc/mediatek/mtk-mmsys.h       | 15 ++--
- include/linux/soc/mediatek/mtk-mmsys.h | 16 ++---
- 3 files changed, 90 insertions(+), 40 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 172 ++++++++++++++---------------
+ 1 file changed, 86 insertions(+), 86 deletions(-)
 
-diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-index 2f3e0778bb17..f501a29a7697 100644
---- a/drivers/soc/mediatek/mtk-mmsys.c
-+++ b/drivers/soc/mediatek/mtk-mmsys.c
-@@ -1,7 +1,10 @@
- // SPDX-License-Identifier: GPL-2.0-only
- /*
-  * Copyright (c) 2014 MediaTek Inc.
-- * Author: James Liao <jamesjj.liao@mediatek.com>
-+ *                    James Liao <jamesjj.liao@mediatek.com>
-+ *
-+ * Copyrignt (c) 2026 Collabora Ltd.
-+ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-  */
- 
- #include <linux/delay.h>
-@@ -182,38 +185,90 @@ static void mtk_mmsys_update_bits(struct mtk_mmsys *mmsys, u32 offset, u32 mask,
- 	writel_relaxed(tmp, mmsys->regs + offset);
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index f1200d5f926a..c39e0b064b6f 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -246,33 +246,6 @@ static void mtk_dpi_config_vsync(struct mtk_dpi *dpi,
+ 		     dpi->conf->dimension_mask << VSYNC_FRONT_PORCH_SHIFT);
  }
  
--void mtk_mmsys_ddp_connect(struct device *dev,
--			   enum mtk_ddp_comp_id cur,
--			   enum mtk_ddp_comp_id next)
-+/**
-+ * mtk_mmsys_hw_connect - Connect MultiMedia Subsystem (MMSYS) Hardware IPs
-+ * @dev:            Device pointer
-+ * @src_type:       Type of the Source IP
-+ * @src_hw_inst_id: Hardware instance of the Source IP
-+ * @dst_type:       Type of the Destination IP
-+ * @dst_hw_inst_id: Hardware instance of the Destination IP
-+ *
-+ * This function connects one MultiMedia Subsystem (MMSYS) related hardware
-+ * to another (in the same subsystem), depending on supported connections.
-+ * In short, this connects "Source" to "Destination", as in, enables sending
-+ * data from a Source IP to a Destination IP.
-+ *
-+ * As a final note - depending on the SoC and on the specific IPs, it may
-+ * also be possible to connect multiple Sources to a single Destination.
-+ *
-+ * Examples below follow this format to explain hardware components:
-+ *      [Source Type][Instance ID] -> [Destination Type] [Instance ID]
-+ *
-+ * Example 1 - Single Source to Destination
-+ *                         GAMMA 0 -> DITHER 0
-+ *
-+ * Example 2 - Multiple Sources to Single Destination
-+ *                 MDP_RDMA 0 -----\
-+ *                                  |
-+ *                                  v
-+ *                 MDP_RDMA 1 ---> MERGE 1 \
-+ *                 MDP_RDMA 2 ---> MERGE 2 -\
-+ *                                           >> ETHDR_MIXER 0
-+ *                 (other 1)  ---> MERGE 3 -/
-+ *                 (other 2)  ---> MERGE 4 /
-+ *
-+ * Note that in Example 2, some components are not chained together, but
-+ * connected in parallel to a destination.
-+ */
-+void mtk_mmsys_hw_connect(struct device *dev,
-+			  enum mtk_ddp_comp_type src_type, u8 src_hw_inst_id,
-+			  enum mtk_ddp_comp_type dst_type, u8 dst_hw_inst_id)
- {
- 	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
- 	const struct mtk_mmsys_routes *routes = mmsys->data->routes;
--	int i;
- 
--	for (i = 0; i < mmsys->data->num_routes; i++)
--		if (cur == routes[i].from_comp && next == routes[i].to_comp)
--			mtk_mmsys_update_bits(mmsys, routes[i].addr, routes[i].mask,
--					      routes[i].val, NULL);
-+	for (int i = 0; i < mmsys->data->num_routes; i++) {
-+		if (src_type != routes[i].from_comp_type ||
-+		    src_hw_inst_id != routes[i].from_comp_inst ||
-+		    dst_type != routes[i].to_comp_type ||
-+		    dst_hw_inst_id != routes[i].to_comp_inst)
-+			continue;
- 
--	if (mmsys->data->vsync_len)
--		mtk_mmsys_update_bits(mmsys, MT8188_VDO1_MIXER_VSYNC_LEN, GENMASK(31, 0),
--				      mmsys->data->vsync_len, NULL);
-+		mtk_mmsys_update_bits(mmsys, routes[i].addr, routes[i].mask, routes[i].val, NULL);
-+		dev_dbg(dev, "Connected %u-%u to %u-%u\n",
-+			src_type, src_hw_inst_id, dst_type, dst_hw_inst_id);
-+	}
- }
--EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_connect);
+-static void mtk_dpi_config_vsync_lodd(struct mtk_dpi *dpi,
+-				      struct mtk_dpi_sync_param *sync)
+-{
+-	mtk_dpi_config_vsync(dpi, sync, DPI_TGEN_VWIDTH, DPI_TGEN_VPORCH);
+-}
 -
--void mtk_mmsys_ddp_disconnect(struct device *dev,
--			      enum mtk_ddp_comp_id cur,
--			      enum mtk_ddp_comp_id next)
-+EXPORT_SYMBOL_NS_GPL(mtk_mmsys_hw_connect, "MTK_MMSYS");
-+
-+/**
-+ * mtk_mmsys_hw_disconnect - Disconnect MultiMedia Subsystem (MMSYS) Hardware IPs
-+ * @dev:            Device pointer
-+ * @src_type:       Type of the Source IP
-+ * @src_hw_inst_id: Hardware instance of the Source IP
-+ * @dst_type:       Type of the Destination IP
-+ * @dst_hw_inst_id: Hardware instance of the Destination IP
-+ */
-+void mtk_mmsys_hw_disconnect(struct device *dev,
-+			     enum mtk_ddp_comp_type src_type, u8 src_hw_inst_id,
-+			     enum mtk_ddp_comp_type dst_type, u8 dst_hw_inst_id)
- {
- 	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
- 	const struct mtk_mmsys_routes *routes = mmsys->data->routes;
--	int i;
- 
--	for (i = 0; i < mmsys->data->num_routes; i++)
--		if (cur == routes[i].from_comp && next == routes[i].to_comp)
--			mtk_mmsys_update_bits(mmsys, routes[i].addr, routes[i].mask, 0, NULL);
-+	for (int i = 0; i < mmsys->data->num_routes; i++) {
-+		if (src_type != routes[i].from_comp_type ||
-+		    src_hw_inst_id != routes[i].from_comp_inst ||
-+		    dst_type != routes[i].to_comp_type ||
-+		    dst_hw_inst_id != routes[i].to_comp_inst)
-+			continue;
-+
-+		mtk_mmsys_update_bits(mmsys, routes[i].addr, routes[i].mask, 0, NULL);
-+		dev_dbg(dev, "Disconnected %u-%u from %u-%u\n",
-+			src_type, src_hw_inst_id, dst_type, dst_hw_inst_id);
-+	}
- }
--EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_disconnect);
-+EXPORT_SYMBOL_NS_GPL(mtk_mmsys_hw_disconnect, "MTK_MMSYS");
- 
- void mtk_mmsys_merge_async_config(struct device *dev, int idx, int width, int height,
- 				  struct cmdq_pkt *cmdq_pkt)
-diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
-index c51a5e334e29..5c9319f3a2bb 100644
---- a/drivers/soc/mediatek/mtk-mmsys.h
-+++ b/drivers/soc/mediatek/mtk-mmsys.h
-@@ -80,20 +80,13 @@
- 
- #define MMSYS_RST_NR(bank, bit) (((bank) * 32) + (bit))
- 
--/* Temporary compatibility definitions */
--#define DDP_COMPONENT_BLS0		DDP_COMPONENT_BLS
--#define DDP_COMPONENT_CCORR0		DDP_COMPONENT_CCORR
--#define DDP_COMPONENT_UFOE0		DDP_COMPONENT_UFOE
--#define DDP_COMPONENT_GAMMA0		DDP_COMPONENT_GAMMA
--#define DDP_COMPONENT_ETHDR_MIXER0	DDP_COMPONENT_ETHDR_MIXER
+-static void mtk_dpi_config_vsync_leven(struct mtk_dpi *dpi,
+-				       struct mtk_dpi_sync_param *sync)
+-{
+-	mtk_dpi_config_vsync(dpi, sync, DPI_TGEN_VWIDTH_LEVEN,
+-			     DPI_TGEN_VPORCH_LEVEN);
+-}
 -
- /*
-  * This macro adds a compile time check to make sure that the in/out
-  * selection bit(s) fit in the register mask, similar to bitfield
-  * macros, but this does not transform the value.
-  */
- #define MMSYS_ROUTE(from, fsid, to, tsid, reg_addr, reg_mask, selection)	\
--	{ DDP_COMPONENT_##from##fsid, DDP_COMPONENT_##to##tsid, reg_addr, reg_mask,	\
-+	{ MTK_DISP_##from, fsid, MTK_DISP_##to, tsid, reg_addr, reg_mask,	\
- 	  (__BUILD_BUG_ON_ZERO_MSG((reg_mask) == 0, "Invalid mask") +		\
- 	   __BUILD_BUG_ON_ZERO_MSG(~(reg_mask) & (selection),			\
- 				   #selection " does not fit in "		\
-@@ -102,8 +95,10 @@
+-static void mtk_dpi_config_vsync_rodd(struct mtk_dpi *dpi,
+-				      struct mtk_dpi_sync_param *sync)
+-{
+-	mtk_dpi_config_vsync(dpi, sync, DPI_TGEN_VWIDTH_RODD,
+-			     DPI_TGEN_VPORCH_RODD);
+-}
+-
+-static void mtk_dpi_config_vsync_reven(struct mtk_dpi *dpi,
+-				       struct mtk_dpi_sync_param *sync)
+-{
+-	mtk_dpi_config_vsync(dpi, sync, DPI_TGEN_VWIDTH_REVEN,
+-			     DPI_TGEN_VPORCH_REVEN);
+-}
+-
+ static void mtk_dpi_config_pol(struct mtk_dpi *dpi,
+ 			       struct mtk_dpi_polarities *dpi_pol)
+ {
+@@ -311,30 +284,15 @@ static void mtk_dpi_config_fb_size(struct mtk_dpi *dpi, u32 width, u32 height)
+ 		     dpi->conf->hvsize_mask << VSIZE);
+ }
+ 
+-static void mtk_dpi_config_channel_limit(struct mtk_dpi *dpi)
++static void mtk_dpi_config_channel_limit(struct mtk_dpi *dpi, struct mtk_dpi_yc_limit *limit)
+ {
+-	struct mtk_dpi_yc_limit limit;
+-
+-	if (drm_default_rgb_quant_range(&dpi->mode) ==
+-	    HDMI_QUANTIZATION_RANGE_LIMITED) {
+-		limit.y_bottom = 0x10;
+-		limit.y_top = 0xfe0;
+-		limit.c_bottom = 0x10;
+-		limit.c_top = 0xfe0;
+-	} else {
+-		limit.y_bottom = 0;
+-		limit.y_top = 0xfff;
+-		limit.c_bottom = 0;
+-		limit.c_top = 0xfff;
+-	}
+-
+-	mtk_dpi_mask(dpi, DPI_Y_LIMIT, limit.y_bottom << Y_LIMINT_BOT,
++	mtk_dpi_mask(dpi, DPI_Y_LIMIT, limit->y_bottom << Y_LIMINT_BOT,
+ 		     Y_LIMINT_BOT_MASK);
+-	mtk_dpi_mask(dpi, DPI_Y_LIMIT, limit.y_top << Y_LIMINT_TOP,
++	mtk_dpi_mask(dpi, DPI_Y_LIMIT, limit->y_top << Y_LIMINT_TOP,
+ 		     Y_LIMINT_TOP_MASK);
+-	mtk_dpi_mask(dpi, DPI_C_LIMIT, limit.c_bottom << C_LIMIT_BOT,
++	mtk_dpi_mask(dpi, DPI_C_LIMIT, limit->c_bottom << C_LIMIT_BOT,
+ 		     C_LIMIT_BOT_MASK);
+-	mtk_dpi_mask(dpi, DPI_C_LIMIT, limit.c_top << C_LIMIT_TOP,
++	mtk_dpi_mask(dpi, DPI_C_LIMIT, limit->c_top << C_LIMIT_TOP,
+ 		     C_LIMIT_TOP_MASK);
+ }
+ 
+@@ -516,7 +474,6 @@ static void mtk_dpi_power_off(struct mtk_dpi *dpi)
+ 	if (--dpi->refcount != 0)
+ 		return;
+ 
+-	mtk_dpi_disable(dpi);
+ 	clk_disable_unprepare(dpi->pixel_clk);
+ 	clk_disable_unprepare(dpi->tvd_clk);
+ 	clk_disable_unprepare(dpi->engine_clk);
+@@ -607,40 +564,40 @@ static void mtk_dpi_set_pixel_clk(struct mtk_dpi *dpi, struct videomode *vm, int
+ 		pll_rate, vm->pixelclock);
+ }
+ 
+-static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
++static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi, struct videomode *vm,
+ 				    struct mtk_dpi_sync *sync,
+-				    struct drm_display_mode *mode)
++				    struct mtk_dpi_polarities *dpi_pol,
++				    struct mtk_dpi_yc_limit *limit)
+ {
+-	struct mtk_dpi_polarities dpi_pol;
+-	struct videomode vm = { 0 };
++	struct drm_display_mode *mode = &dpi->mode;
+ 
+-	drm_display_mode_to_videomode(mode, &vm);
++	drm_display_mode_to_videomode(mode, vm);
+ 
+ 	if (!dpi->conf->clocked_by_hdmi)
+-		mtk_dpi_set_pixel_clk(dpi, &vm, mode->clock);
++		mtk_dpi_set_pixel_clk(dpi, vm, mode->clock);
+ 
+-	dpi_pol.ck_pol = MTK_DPI_POLARITY_FALLING;
+-	dpi_pol.de_pol = MTK_DPI_POLARITY_RISING;
+-	dpi_pol.hsync_pol = vm.flags & DISPLAY_FLAGS_HSYNC_HIGH ?
++	dpi_pol->ck_pol = MTK_DPI_POLARITY_FALLING;
++	dpi_pol->de_pol = MTK_DPI_POLARITY_RISING;
++	dpi_pol->hsync_pol = vm->flags & DISPLAY_FLAGS_HSYNC_HIGH ?
+ 			    MTK_DPI_POLARITY_FALLING : MTK_DPI_POLARITY_RISING;
+-	dpi_pol.vsync_pol = vm.flags & DISPLAY_FLAGS_VSYNC_HIGH ?
++	dpi_pol->vsync_pol = vm->flags & DISPLAY_FLAGS_VSYNC_HIGH ?
+ 			    MTK_DPI_POLARITY_FALLING : MTK_DPI_POLARITY_RISING;
+ 
+ 	/*
+ 	 * Depending on the IP version, we may output a different amount of
+ 	 * pixels for each iteration: adjust the display porches accordingly.
+ 	 */
+-	sync->hsync.sync_width = vm.hsync_len / dpi->conf->pixels_per_iter;
+-	sync->hsync.back_porch = vm.hback_porch / dpi->conf->pixels_per_iter;
+-	sync->hsync.front_porch = vm.hfront_porch / dpi->conf->pixels_per_iter;
++	sync->hsync.sync_width = vm->hsync_len / dpi->conf->pixels_per_iter;
++	sync->hsync.back_porch = vm->hback_porch / dpi->conf->pixels_per_iter;
++	sync->hsync.front_porch = vm->hfront_porch / dpi->conf->pixels_per_iter;
+ 	sync->hsync.shift_half_line = false;
+ 
+-	sync->vsync_l_odd.sync_width = vm.vsync_len;
+-	sync->vsync_l_odd.back_porch = vm.vback_porch;
+-	sync->vsync_l_odd.front_porch = vm.vfront_porch;
++	sync->vsync_l_odd.sync_width = vm->vsync_len;
++	sync->vsync_l_odd.back_porch = vm->vback_porch;
++	sync->vsync_l_odd.front_porch = vm->vfront_porch;
+ 	sync->vsync_l_odd.shift_half_line = false;
+ 
+-	if (vm.flags & DISPLAY_FLAGS_INTERLACED) {
++	if (vm->flags & DISPLAY_FLAGS_INTERLACED) {
+ 		sync->vsync_l_even = sync->vsync_l_odd;
+ 		sync->vsync_l_even.shift_half_line = true;
+ 
+@@ -653,27 +610,55 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+ 		sync->vsync_r_odd = sync->vsync_l_odd;
  	}
  
- struct mtk_mmsys_routes {
--	u32 from_comp;
--	u32 to_comp;
-+	u8 from_comp_type;
-+	u8 from_comp_inst;
-+	u8 to_comp_type;
-+	u8 to_comp_inst;
- 	u32 addr;
- 	u32 mask;
- 	u32 val;
-diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
-index bbdd0b01927d..f67f21d04163 100644
---- a/include/linux/soc/mediatek/mtk-mmsys.h
-+++ b/include/linux/soc/mediatek/mtk-mmsys.h
-@@ -118,14 +118,6 @@ enum mtk_ddp_comp_type {
- 	MTK_DDP_COMP_TYPE_MAX
- };
- 
--void mtk_mmsys_ddp_connect(struct device *dev,
--			   enum mtk_ddp_comp_id cur,
--			   enum mtk_ddp_comp_id next);
--
--void mtk_mmsys_ddp_disconnect(struct device *dev,
--			      enum mtk_ddp_comp_id cur,
--			      enum mtk_ddp_comp_id next);
--
- void mtk_mmsys_ddp_dpi_fmt_config(struct device *dev, u32 val);
- 
- void mtk_mmsys_merge_async_config(struct device *dev, int idx, int width,
-@@ -134,6 +126,14 @@ void mtk_mmsys_merge_async_config(struct device *dev, int idx, int width,
- void mtk_mmsys_hdr_config(struct device *dev, int be_width, int be_height,
- 			  struct cmdq_pkt *cmdq_pkt);
- 
-+void mtk_mmsys_hw_connect(struct device *dev,
-+			  enum mtk_ddp_comp_type src_type, u8 src_hw_inst_id,
-+			  enum mtk_ddp_comp_type dst_type, u8 dst_hw_inst_id);
++	if (drm_default_rgb_quant_range(&dpi->mode) == HDMI_QUANTIZATION_RANGE_LIMITED) {
++		limit->y_bottom = 0x10;
++		limit->y_top = 0xfe0;
++		limit->c_bottom = 0x10;
++		limit->c_top = 0xfe0;
++	} else {
++		limit->y_bottom = 0;
++		limit->y_top = 0xfff;
++		limit->c_bottom = 0;
++		limit->c_top = 0xfff;
++	}
 +
-+void mtk_mmsys_hw_disconnect(struct device *dev,
-+			     enum mtk_ddp_comp_type src_type, u8 src_hw_inst_id,
-+			     enum mtk_ddp_comp_type dst_type, u8 dst_hw_inst_id);
++	return 0;
++}
 +
- void mtk_mmsys_mixer_in_config(struct device *dev, int idx, bool alpha_sel, u16 alpha,
- 			       u8 mode, u32 biwidth, struct cmdq_pkt *cmdq_pkt);
++static void mtk_dpi_config_hw(struct mtk_dpi *dpi,
++			      struct videomode *vm, struct mtk_dpi_sync *sync,
++			      struct mtk_dpi_polarities *dpi_pol,
++			      struct mtk_dpi_yc_limit *limit)
++{
++	struct drm_display_mode *mode = &dpi->mode;
++	u32 vactive = vm->vactive;
++
+ 	mtk_dpi_sw_reset(dpi, true);
+-	mtk_dpi_config_pol(dpi, &dpi_pol);
++	mtk_dpi_config_pol(dpi, dpi_pol);
  
+ 	mtk_dpi_config_hsync(dpi, &sync->hsync);
+-	mtk_dpi_config_vsync_lodd(dpi, &sync->vsync_l_odd);
+-	mtk_dpi_config_vsync_rodd(dpi, &sync->vsync_r_odd);
+-	mtk_dpi_config_vsync_leven(dpi, &sync->vsync_l_even);
+-	mtk_dpi_config_vsync_reven(dpi, &sync->vsync_r_even);
++
++	mtk_dpi_config_vsync(dpi, &sync->vsync_l_odd,
++			     DPI_TGEN_VWIDTH, DPI_TGEN_VPORCH);
++	mtk_dpi_config_vsync(dpi, &sync->vsync_r_odd,
++			     DPI_TGEN_VWIDTH_RODD, DPI_TGEN_VPORCH_RODD);
++	mtk_dpi_config_vsync(dpi, &sync->vsync_l_even,
++			     DPI_TGEN_VWIDTH_LEVEN, DPI_TGEN_VPORCH_LEVEN);
++	mtk_dpi_config_vsync(dpi, &sync->vsync_r_even,
++			     DPI_TGEN_VWIDTH_REVEN, DPI_TGEN_VPORCH_REVEN);
+ 
+ 	mtk_dpi_config_3d(dpi, !!(mode->flags & DRM_MODE_FLAG_3D_MASK));
+-	mtk_dpi_config_interface(dpi, !!(vm.flags &
+-					 DISPLAY_FLAGS_INTERLACED));
+-	if (vm.flags & DISPLAY_FLAGS_INTERLACED)
+-		mtk_dpi_config_fb_size(dpi, vm.hactive, vm.vactive >> 1);
+-	else
+-		mtk_dpi_config_fb_size(dpi, vm.hactive, vm.vactive);
++	mtk_dpi_config_interface(dpi, !!(vm->flags & DISPLAY_FLAGS_INTERLACED));
++
++	if (vm->flags & DISPLAY_FLAGS_INTERLACED)
++		vactive >>= 1;
+ 
+-	mtk_dpi_config_channel_limit(dpi);
++	mtk_dpi_config_fb_size(dpi, vm->hactive, vactive);
++	mtk_dpi_config_channel_limit(dpi, limit);
+ 	mtk_dpi_config_bit_num(dpi, dpi->bit_num);
+ 	mtk_dpi_config_channel_swap(dpi, dpi->channel_swap);
+ 	mtk_dpi_config_color_format(dpi, dpi->color_format);
++
+ 	if (dpi->conf->support_direct_pin) {
+ 		mtk_dpi_config_yc_map(dpi, dpi->yc_map);
+ 		mtk_dpi_config_2n_h_fre(dpi);
+@@ -686,13 +671,13 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+ 
+ 		mtk_dpi_config_disable_edge(dpi);
+ 	}
+-	if (dpi->conf->input_2p_en_bit) {
++
++	if (dpi->conf->input_2p_en_bit)
+ 		mtk_dpi_mask(dpi, DPI_CON, dpi->conf->input_2p_en_bit,
+ 			     dpi->conf->input_2p_en_bit);
+-	}
+-	mtk_dpi_sw_reset(dpi, false);
+ 
+-	return 0;
++	mtk_dpi_sw_reset(dpi, false);
++	return;
+ }
+ 
+ static u32 *mtk_dpi_bridge_atomic_get_output_bus_fmts(struct drm_bridge *bridge,
+@@ -855,6 +840,7 @@ static void mtk_dpi_bridge_disable(struct drm_bridge *bridge)
+ {
+ 	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
+ 
++	mtk_dpi_disable(dpi);
+ 	mtk_dpi_power_off(dpi);
+ 
+ 	if (dpi->pinctrl && dpi->pins_gpio)
+@@ -864,13 +850,22 @@ static void mtk_dpi_bridge_disable(struct drm_bridge *bridge)
+ static void mtk_dpi_bridge_enable(struct drm_bridge *bridge)
+ {
+ 	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
++	struct mtk_dpi_polarities dpi_pol;
+ 	struct mtk_dpi_sync sync = { 0 };
++	struct mtk_dpi_yc_limit limit;
++	struct videomode vm;
+ 
+ 	if (dpi->pinctrl && dpi->pins_dpi)
+ 		pinctrl_select_state(dpi->pinctrl, dpi->pins_dpi);
+ 
+ 	mtk_dpi_power_on(dpi);
+-	mtk_dpi_set_display_mode(dpi, &sync, &dpi->mode);
++
++	/* Set pixel clock and initialize parameters to send to the HW */
++	mtk_dpi_set_display_mode(dpi, &vm, &sync, &dpi_pol, &limit);
++
++	/* Format and send the parameters to the HW */
++	mtk_dpi_config_hw(dpi, &vm, &sync, &dpi_pol, &limit);
++
+ 	mtk_dpi_enable(dpi);
+ }
+ 
+@@ -1003,16 +998,21 @@ void mtk_dpi_start(struct device *dev)
+ {
+ 	struct mtk_dpi *dpi = dev_get_drvdata(dev);
+ 
+-	if (!dpi->conf->clocked_by_hdmi)
+-		mtk_dpi_power_on(dpi);
++	if (dpi->conf->clocked_by_hdmi)
++		return;
++
++	mtk_dpi_power_on(dpi);
+ }
+ 
+ void mtk_dpi_stop(struct device *dev)
+ {
+ 	struct mtk_dpi *dpi = dev_get_drvdata(dev);
+ 
+-	if (!dpi->conf->clocked_by_hdmi)
+-		mtk_dpi_power_off(dpi);
++	if (dpi->conf->clocked_by_hdmi)
++		return;
++
++	mtk_dpi_disable(dpi);
++	mtk_dpi_power_off(dpi);
+ }
+ 
+ unsigned int mtk_dpi_encoder_index(struct device *dev)
 -- 
 2.54.0
 
