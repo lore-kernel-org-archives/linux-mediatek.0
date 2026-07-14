@@ -4,107 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B0CDC43458
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 12:06:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAE27C43458
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 12:33:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zXjAh2537yo9G5vWAgQyYke6ki6Lnw1UTZmZWsxbjhc=; b=Oq1UF0eDgk7gBY2XAgdxD64w5y
-	jqcS6D3FSuevnSORExWq46Z1yhnF+ziaKkZx+EEImb8ySsl8Qww/3A2he6QLm5rypFIz1yj1ZeNQb
-	bgAMKdofp/TXovjluWTRRmfD0gccDws4ZSOlVgR8xRsYhKQVKR4KdmbXkCXXFC2fjpVZrqJETQ1qQ
-	ACZpyJ42vYl3h0XvR2oLTYxBB2dBO7hWmQWpGCvXfKDTxfBoJXFWT7933AeHDzpdWr49yhUDM4Fow
-	lhgm0C59glRzw+9zUYDDgATnADInO/R3H1CPBnkLVIxi3KTxe1/CNcOiBPGz2WfeQ9aH3TUmTGvlF
-	+A5rXQpg==;
+	bh=06jzXmWyrPOrkABaEWPVVx+A/MarDT9Aq0Bgk0yLqzE=; b=QzlWbXM16gvb3C1oca8tC+r7K+
+	VNRAj0uRs7JymSUig6REnQvBBWCnjjmp0YQAuuJ4YyWcV4Wv/zeSsNzquLAKg0mwRBqJUd2rl3cMX
+	vIYmlbeaAxlu2dZTqKvgt+0K/yGn4H8HHLKJOC7QX5NzRkQpVdyGD1duUBk7vEhZST2zJOohtYiBC
+	6/eZ4ly91sLr5+U3EeNlxcSQowXfrpdTEYFMldHLRcSLTwbgU0Kiox47o3Zx7h8kHM1s10mb6yt61
+	T845Fppv8qV+gPuG8PobitcbJ00f/ojTbCdUaINJLU6rjxYMeP06+wMe0KsvU7rfgG8uKKxNiU0Hu
+	AjVonxOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjbu0-0000000Br4s-2WLe;
-	Tue, 14 Jul 2026 12:06:20 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wjcKG-0000000Bwzu-3Odp;
+	Tue, 14 Jul 2026 12:33:28 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjbtz-0000000Br4B-0wxy;
-	Tue, 14 Jul 2026 12:06:19 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A0A8B411D9;
-	Tue, 14 Jul 2026 12:06:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 985521F000E9;
-	Tue, 14 Jul 2026 12:06:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784030778;
-	bh=zXjAh2537yo9G5vWAgQyYke6ki6Lnw1UTZmZWsxbjhc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=JALI0fxfqvUbwOcumUkWMdf9+m8l9v/z9X4lZj/ehsLJwp7ooqiwniR8gwMwjlGX4
-	 KQm5hPhANenPfd2Bwl7Lw10CTxhcLtoJlVyhmsg2A4CH0cM2OlgloQDORZXOtineLC
-	 LSXy7jBY23Sl0ZuCS3XZeGNWqADdOIypDvJINA7+5rlsAPvHLK4n6INGqXPYHq43z0
-	 TChJyIoFjVyZF6bcTAaSLXrQYMnVCU5gag1jLCsHntMDSLG6NIQt9Oy31Q263sVXSw
-	 1vNiRk46Ol5RAtKDAakIkefOUYXtHCPa0UXek/BlAs8NXTFuLNcB3vZN6MkZkKKMuD
-	 FpfTkmjJaiaEg==
-Date: Tue, 14 Jul 2026 17:36:14 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Wolfram Sang <wsa+renesas@sang-engineering.com>
-Cc: Pan Chuang <panchuang@vivo.com>, Frank Li <Frank.Li@nxp.com>,
-	Keguang Zhang <keguang.zhang@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Daniel Mack <daniel@zonque.org>,
-	Haojian Zhuang <haojian.zhuang@gmail.com>,
-	Robert Jarzmik <robert.jarzmik@free.fr>,
-	Paul Walmsley <pjw@kernel.org>,
-	Samuel Holland <samuel.holland@sifive.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	=?iso-8859-1?Q?Am=E9lie?= Delaunay <amelie.delaunay@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Chen-Yu Tsai <wens@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Laxman Dewangan <ldewangan@nvidia.com>,
-	Jon Hunter <jonathanh@nvidia.com>,
-	Thierry Reding <thierry.reding@kernel.org>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Icenowy Zheng <zhengxingda@iscas.ac.cn>,
-	Kees Cook <kees@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
-	Miaoqian Lin <linmq006@gmail.com>,
-	Jyothi Kumar Seerapu <quic_jseerapu@quicinc.com>,
-	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
-	Biju Das <biju.das.jz@bp.renesas.com>,
-	Cosmin Tanislav <cosmin-gabriel.tanislav.xa@renesas.com>,
-	John Madieu <john.madieu.xa@bp.renesas.com>,
-	Thomas Andreatta <thomasandreatta2000@gmail.com>,
-	"open list:FREESCALE eDMA DRIVER" <imx@lists.linux.dev>,
-	"open list:FREESCALE eDMA DRIVER" <dmaengine@vger.kernel.org>,
-	open list <linux-kernel@vger.kernel.org>,
-	"open list:MIPS/LOONGSON1 ARCHITECTURE" <linux-mips@vger.kernel.org>,
-	"moderated list:MEDIATEK DMA DRIVER" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:MEDIATEK DMA DRIVER" <linux-mediatek@lists.infradead.org>,
-	"moderated list:ARM/ACTIONS SEMI ARCHITECTURE" <linux-actions@lists.infradead.org>,
-	"open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
-	"open list:SIFIVE DRIVERS" <linux-riscv@lists.infradead.org>,
-	"open list:ARM/RISC-V/RENESAS ARCHITECTURE" <linux-renesas-soc@vger.kernel.org>,
-	"moderated list:STM32 DMA DRIVERS" <linux-stm32@st-md-mailman.stormreply.com>,
-	"open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>,
-	"open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>
-Subject: Re: [PATCH 00/26] dmaengine: Remove redundant error messages on IRQ
- request failure
-Message-ID: <alYmNl--mxMK1-86@vaman>
-References: <20260709135846.97972-1-panchuang@vivo.com>
- <ak-vkQ8g_ePdY15f@shikoro>
+	id 1wjcKD-0000000Bwwc-2ZTf
+	for linux-mediatek@lists.infradead.org;
+	Tue, 14 Jul 2026 12:33:27 +0000
+X-UUID: 316512a07f8011f1acbe4559397dec65-20260714
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=06jzXmWyrPOrkABaEWPVVx+A/MarDT9Aq0Bgk0yLqzE=;
+	b=PtaQ6JHJznHuZ974Wci30bJbn4TSTJbK41XrG6gc7+TKv748erR52p10zVgC7tskxOl5CRgCqd+G6TBtVRTzf8g8bSyXhgVjv2StrrJrRhbcCSlw/5fYKU0UT6Hz7K5YQDebYcN2M5a6txSfqkjiCs7Nr+zuMG6Kmski8RiaJUE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.17,REQID:6979afae-0549-4fb6-bc43-078e224a0657,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:d497b38,CLOUDID:108d1c19-ab14-4403-9336-76696324c5a8,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
+	0|99|200|213,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:
+	0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 316512a07f8011f1acbe4559397dec65-20260714
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1911225175; Tue, 14 Jul 2026 05:33:18 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 14 Jul 2026 20:33:15 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 14 Jul 2026 20:33:15 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
+	SS Wu <ss.wu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>, Paul Menzel
+	<pmenzel@molgen.mpg.de>, linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+	linux-kernel <linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH v10 3/7] Bluetooth: btmtksdio: Remove redundant firmware filename override
+Date: Tue, 14 Jul 2026 20:33:09 +0800
+Message-ID: <20260714123314.814333-4-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20260714123314.814333-1-chris.lu@mediatek.com>
+References: <20260714123314.814333-1-chris.lu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ak-vkQ8g_ePdY15f@shikoro>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260714_053325_829626_2F53D443 
+X-CRM114-Status: UNSURE (   8.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,59 +90,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09-07-26, 16:26, Wolfram Sang wrote:
-> On Thu, Jul 09, 2026 at 09:58:04PM +0800, Pan Chuang wrote:
-> > Commit 55b48e23f5c4b6f5ca9b7ab09599b17dcf501c10 ("genirq/devres: Add
-> > error handling in devm_request_*_irq()") added automatic error logging
-> > to devm_request_threaded_irq() and devm_request_any_context_irq() via
-> > the new devm_request_result() helper. The helper prints device name,
-> > IRQ number, handler functions, and error code on failure.
-> > 
-> > Since devm_request_irq() is a static inline wrapper around
-> > devm_request_threaded_irq(), it also benefits from this automatic
-> > logging.
-> > 
-> > This series removes the now-redundant dev_err() and dev_err_probe() calls
-> > in dmaengine drivers that follow these devm_request_*_irq() functions,
-> > as the core now provides more detailed diagnostic information on failure.
-> > 
-> > Pan Chuang (26):
-> >   dmaengine: fsl-edma-main: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: fsl-qdma: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: loongson-loongson1-apb-dma: Remove redundant
-> >     dev_err()/dev_err_probe()
-> >   dmaengine: mediatek-mtk-cqdma: Remove redundant
-> >     dev_err()/dev_err_probe()
-> >   dmaengine: mediatek-mtk-hsdma: Remove redundant
-> >     dev_err()/dev_err_probe()
-> >   dmaengine: mmp_pdma: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: moxart-dma: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: owl-dma: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: pxa_dma: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: qcom-gpi: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: sf-pdma-sf-pdma: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: sh-rcar-dmac: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: sh-rz-dmac: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: sh-shdmac: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: sh-usb-dmac: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: sprd-dma: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: st_fdma: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: stm32-stm32-dma: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: stm32-stm32-dma3: Remove redundant
-> >     dev_err()/dev_err_probe()
-> >   dmaengine: stm32-stm32-mdma: Remove redundant
-> >     dev_err()/dev_err_probe()
-> >   dmaengine: sun4i-dma: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: sun6i-dma: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: tegra20-apb-dma: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: ti-edma: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: uniphier-xdmac: Remove redundant dev_err()/dev_err_probe()
-> >   dmaengine: xgene-dma: Remove redundant dev_err()/dev_err_probe()
-> 
-> One patch per subsystem for such trivial changes, please.
+btmtksdio_setup() calls btmtk_fw_get_filename() to generate the correct
+firmware filename based on chip ID, then immediately overwrites it with
+snprintf() using a generic legacy format. This causes newer chips that
+require chip-specific firmware paths (MT6639, MT7925, MT7928) to request
+incorrect legacy filenames, leading to firmware load failures.
 
-Yes pretty please
+The USB driver (btmtkusb.c) correctly uses btmtk_fw_get_filename()
+without overriding the result. Match that behavior by removing the
+redundant snprintf() call.
 
+Fixes: 7f935b21bee4 ("Bluetooth: btmtk: apply the common btmtk_fw_get_filename")
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+---
+ drivers/bluetooth/btmtksdio.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index a21edefaca99..1d9bf9928c6d 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -1162,9 +1162,6 @@ static int btmtksdio_setup(struct hci_dev *hdev)
+ 		btmtk_fw_get_filename(fwname, sizeof(fwname), dev_id,
+ 				      fw_version, 0);
+ 
+-		snprintf(fwname, sizeof(fwname),
+-			 "mediatek/BT_RAM_CODE_MT%04x_1_%x_hdr.bin",
+-			 dev_id & 0xffff, (fw_version & 0xff) + 1);
+ 		err = mt79xx_setup(hdev, fwname);
+ 		if (err < 0)
+ 			return err;
 -- 
-~Vinod
+2.45.2
+
 
