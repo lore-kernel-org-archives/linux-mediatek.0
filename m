@@ -4,68 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 284A8C43458
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 08:23:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AC96C43458
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 08:46:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NKAwPN8QoyYVPc1mqDXv8X9IJQl60p9JrQkdmKBvfok=; b=jtX70UJQn+FPQpvZp5ErN8qrF/
-	g+7+pbdCgTpeL3MN8KoOx4nUut5pcFrImTSKGldPhWmk+Kd7tneqsV6F1rt4sGRwU3quNRPk4Vkb9
-	3oFM8z6q/wuRvPE/2uC9KZi86hLvP+x9/bA5iDLfh0zeXnPxIc18ir61+qin6zO6UNfc/tAAhXc4N
-	JpOqOZDR9P1RMtbbsYBWx2ABc4NDlpHpjM38C8Kq5HvssME7obfNT04GkzADulIHQxn0Pzad5wSVf
-	nc848rR0DiKXgm1aa8Wc/eYG8vxuNHHaTN8+tzcchI2Mpgk0tYT4z+ORfZupMkEFJU78g2VIiGljD
-	ucF+XnUw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FKc9E8mHgmIZ99K/Yl8Ib+dj1S9dXObzgLEVLXXcaLg=; b=neZgGdWlabgfrWSj919MQ7p+vy
+	2S1fAVZbUGevVO/35gqJKmmr2Teay7CBPa0wAM43Fmycq7Mm9lZKqB1z8BX1jrRcJbWn9WKjXrjsK
+	j0LYZnuZcBr/E/rZNOCNaDNRKHL1t20jekbIk3R1cWuNFEGXEjgsb0krpcVYdXURfs+O/xwdiGLj2
+	sjgXDQsbWJaaf5X9dfO4LD8XqNkkEljOlO4EIPN1v4m45KOUe5fw8HGFfH9x0miEJwaT0ofVLihn3
+	4idPVIqQyPiYzpUK5KAI6wI+EN28hHykaOLDcjbISKOvagCFP3/fXak/9R+j88o1BBSlxaOImAY97
+	tTQE57Vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjYQl-0000000BINK-4Apo;
-	Tue, 14 Jul 2026 08:23:55 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wjYmB-0000000BLed-1v65;
+	Tue, 14 Jul 2026 08:46:03 +0000
+Received: from mgamail.intel.com ([192.198.163.12])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjYQi-0000000BIM2-2MN1;
-	Tue, 14 Jul 2026 08:23:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784017429;
-	bh=oFRTq4b5voEJqxJgna9sANZNAoovJN0WoH/xes8V0Kc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=St5oIaUhZcFpc4P3NLXsjrMgq49P8PiKUtjQ7t6YdtDl4YkxNBA/Dd/QIKZM5DLoj
-	 1ABY+6QaJP3jupVTbAwDTNulrDya9AKCJBDkBQOZRhUZMae0bJ74ftxF5N4RDI9ySG
-	 EHzW+gwDxJVFrrclWEFuAl5Iw1tCdJuo6vl7G55WGP8nYfegFGpy43yWww7onOdIQd
-	 9tMj4mk7CzkwKyOPbp2T9KhhPz5hs058cU9yRvQbADigZnWfz5OOacqWHKdLLu+xli
-	 /y8KwgPBV62Cd3leuq3iQYY2oNuB0hcE9d4kuwrREQGjHgpMUmIG+RZiNaI7TeOv0E
-	 cyk/GjYqDxejA==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A354F17E010F;
-	Tue, 14 Jul 2026 10:23:48 +0200 (CEST)
-Message-ID: <0cd526b9-aff5-40e6-b209-750f83fa0fd0@collabora.com>
-Date: Tue, 14 Jul 2026 10:23:48 +0200
+	id 1wjYm9-0000000BLdy-0aA5;
+	Tue, 14 Jul 2026 08:46:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1784018761; x=1815554761;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=xxJuEvZ2G5Kbr3szIgk1JdoMkjjna6X5BPLRDG4VrrU=;
+  b=ZqPFgdhDtxtjWk8ULljLi5ki6ANd9h7Gulx3fwAEH0WeVm/5hlqPh6ll
+   VfjZFthKRNypar6OhE5oT1ZpROmbDi5arAW4TBodNzFf847rz/ZxsbYpk
+   DJKAr06+xGZin90zdjrqml1RVoufjBDwrtAq6uAcYokJnTxOcK/Rh/JOf
+   zxW8Vrf/beQg6xiSLLn6V2BMi3DwGOMUecbSGv2lf6FPAsjZMIgOCaoe1
+   1PjxAS5JsRk12XSc0lKwh/cXluCWvQAIktrGh8MrsCANEuNt80Z0SvoJP
+   01lhE9b3DItyzABPOa1q3rT5AQa500MbyCkB75sn+bZp/fjZhDZTRaZO/
+   w==;
+X-CSE-ConnectionGUID: pXMf/2PpQQ6QIqpos9CEsw==
+X-CSE-MsgGUID: FNSFJosrQImE87PszjlQhg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11846"; a="88458779"
+X-IronPort-AV: E=Sophos;i="6.25,163,1779174000"; 
+   d="scan'208";a="88458779"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jul 2026 01:45:55 -0700
+X-CSE-ConnectionGUID: qtQ7RAR0TAGtJe+16mkeLA==
+X-CSE-MsgGUID: yJiBbxipTXeGeysSoUXSEw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.25,163,1779174000"; 
+   d="scan'208";a="259370157"
+Received: from kniemiec-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.189])
+  by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jul 2026 01:45:52 -0700
+Date: Tue, 14 Jul 2026 11:45:48 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Daniel Golle <daniel@makrotopia.org>
+Subject: Re: [PATCH] gpiolib: tolerate gpio-hogs lacking a hogging state
+Message-ID: <alX3PLGgoKTgSy_-@ashevche-desk.local>
+References: <4c67cf0839ccf57db35a826df6d8fc779531509a.1783974733.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/3] pinctrl: mediatek: Add MT6858 support
-To: nikolai.burov@jolla.com, Linus Walleij <linusw@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>
-Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Nikolai Burov <nikolai.burov+review@abscue.de>,
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-References: <20260713-mt6858-pinctrl-v2-0-1bd072e3206c@jolla.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260713-mt6858-pinctrl-v2-0-1bd072e3206c@jolla.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <4c67cf0839ccf57db35a826df6d8fc779531509a.1783974733.git.daniel@makrotopia.org>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260714_012352_768829_E0BE8FB7 
-X-CRM114-Status: GOOD (  14.19  )
+X-CRM114-CacheID: sfid-20260714_014601_193064_0B5E870A 
+X-CRM114-Status: GOOD (  20.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,72 +79,84 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Linus Walleij <linusw@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Mika Westerberg <mika.westerberg@linux.intel.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/13/26 17:06, Nikolai Burov via B4 Relay wrote:
-> Add support for GPIO and pin configuration on the MT6858 (MediaTek
-> Dimensity 7100) SoC.
+On Tue, Jul 14, 2026 at 12:30:53AM +0100, Daniel Golle wrote:
+> Commit d1d564ec4992 ("gpio: move hogs into GPIO core") made
+> gpiochip_add_hog() return -EINVAL for hog nodes lacking any of the
+> 'input', 'output-low' or 'output-high' properties. The error is
+> propagated by gpiochip_hog_lines() and fails registration of the
+> whole GPIO chip.
 > 
-> Signed-off-by: Nikolai Burov <nikolai.burov@jolla.com>
-
-Whole series is
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Cheers,
-Angelo
-
-> ---
-> Changes in v2:
-> - dt-bindings: Change reg-names and descriptions as suggested by Angelo
-> - Remove incorrect slew rate field from register table
-> - Fix hole in the EINT table by including pins without EINT support
-> - Add missing pm_sleep_ptr() and /* sentinel */ comment
-> - Link to v1: https://patch.msgid.link/20260710-mt6858-pinctrl-v1-0-f75ab558f0df@jolla.com
+> The previous OF-specific implementation tolerated such nodes:
+> of_parse_own_gpio() warned "no hogging state specified, bailing out"
+> and of_gpiochip_add_hog() stopped processing the node without failing
+> chip registration.
 > 
-> To: Linus Walleij <linusw@kernel.org>
-> To: Rob Herring <robh@kernel.org>
+> Some boards deliberately ship hog nodes without a hogging state in
+> their base devicetree and supply the state via overlay, e.g. the PCIe
+> slot key selection hogs on the BananaPi R4 Pro added in
+> commit e309fa232d12 ("arm64: dts: mediatek: mt7988a-bpi-r4pro: rework
+> pcie gpio-hog handling"), as the polarity set in the base devicetree
+> could not be overridden from an overlay.
+> 
+> Booting such a board without an overlay applied now fails to register
+> the gpiochip. On the BananaPi R4 Pro this means the MT7988A pinctrl
+> device fails to probe, all peripherals including the console UART
+> defer forever, and the board finally hangs when clk_disable_unused()
+> gates the clocks of the UART still in use by earlycon:
+> 
+>   gpiochip_add_data_with_key: GPIOs 512..595 (pinctrl_moore) failed to register, -22
+>   mt7988-pinctrl 1001f000.pinctrl: error -EINVAL: Failed to add gpio_chip
+>   ...
+>   clk: Disabling unused clocks
+>   (hangs)
+> 
+> Restore the previous behaviour by warning about hog nodes lacking a
+> hogging state and skipping them instead of failing the registration
+> of the whole GPIO chip.
+
+Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+
+...
+
+> -	if (fwnode_property_present(fwnode, "input"))
+> +	if (fwnode_property_present(fwnode, "input")) {
+>  		dflags |= GPIOD_IN;
+> -	else if (fwnode_property_present(fwnode, "output-low"))
+> +	} else if (fwnode_property_present(fwnode, "output-low")) {
+>  		dflags |= GPIOD_OUT_LOW;
+> -	else if (fwnode_property_present(fwnode, "output-high"))
+> +	} else if (fwnode_property_present(fwnode, "output-high")) {
+>  		dflags |= GPIOD_OUT_HIGH;
+
+For a fix I would make it less invasive and yes, break the style, by just
+replacing
+
+> -	else
+> -		return -EINVAL;
+
+with
+
+	else {
+		gpiochip_warn(gc, "%pfwP: no hogging state specified, bailing out\n",
+			      fwnode);
+		return 0;
+	}
+
+> +	} else {
+> +		gpiochip_warn(gc, "%pfwP: no hogging state specified, bailing out\n",
+> +			      fwnode);
+> +		return 0;
+> +	}
+
+This leads patch directly to the point. The style can be modified later on.
 
 -- 
-AngeloGioacchino Del Regno
-Senior Software Engineer
+With Best Regards,
+Andy Shevchenko
 
-Collabora Ltd.
-Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
-Registered in England & Wales, no. 5513718
-> To: Krzysztof Kozlowski <krzk+dt@kernel.org>
-> To: Conor Dooley <conor+dt@kernel.org>
-> To: Matthias Brugger <matthias.bgg@gmail.com>
-> To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> To: Nikolai Burov <nikolai.burov@jolla.com>
-> To: Sean Wang <sean.wang@kernel.org>
-> Cc: linux-gpio@vger.kernel.org
-> Cc: devicetree@vger.kernel.org
-> Cc: linux-kernel@vger.kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-mediatek@lists.infradead.org
-> 
-> ---
-> Nikolai Burov (3):
->        dt-bindings: pinctrl: mediatek: Add MT6858
->        pinctrl: mediatek: Add driver for MT6858
->        arm64: dts: mediatek: mt6858: Add pinmux macro header file
-> 
->   .../bindings/pinctrl/mediatek,mt6858-pinctrl.yaml  |  190 ++
->   arch/arm64/boot/dts/mediatek/mt6858-pinfunc.h      | 1335 +++++++++++
->   drivers/pinctrl/mediatek/Kconfig                   |   10 +
->   drivers/pinctrl/mediatek/Makefile                  |    1 +
->   drivers/pinctrl/mediatek/pinctrl-mt6858.c          | 1407 ++++++++++++
->   drivers/pinctrl/mediatek/pinctrl-mtk-mt6858.h      | 2378 ++++++++++++++++++++
->   6 files changed, 5321 insertions(+)
-> ---
-> base-commit: bee763d5f341b99cf472afeb508d4988f62a6ca1
-> change-id: 20260708-mt6858-pinctrl-917ad9097023
-> 
-> Best regards,
-> --
-> Nikolai Burov <nikolai.burov@jolla.com>
-> 
-> 
+
 
