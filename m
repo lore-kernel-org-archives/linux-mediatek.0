@@ -4,74 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0CA7C44508
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 12:45:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E598DC44501
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 13:43:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8fFYNB9rc1RmQTyJ7Z39u9kdzVWMmH8HYMbiH5EvoSs=; b=HPmMXDFhAID6Elw5TsCTFuguVY
-	7hHXiGiuItiNEHadRWPuCjtBJthhINbDavlHmAFWMurroyWW/Nj4bOTv15WG36cEgvAzB1dB13QTO
-	cHTh0FBpslL1XGu2bpaC8FIL1zYTJbM3ui3HcdzYkXCDz25BqCrKalmYYpgX8IgTNByS0Bzm6OO7I
-	tcREOHgr+vXTiaE5ukqIJs+lKzerZgT6MdN4g8wZz2eU9XbobTmVQg2YgF84nNdVp3ksor/Z6DwgZ
-	VhUtQee/8+3QY0KuhfyiEQVHcgYwwBJoGnIN+5Roax7aI0gZpvzXaMlyTRny0CAzWBedH7T4VSWBf
-	ru/IzQxw==;
+	bh=EhWIX7B1R4cOvx5cdVC/S0OVLB1kk4ciW9AOQYcQ/QA=; b=3NCMtWP6d7Pbtd7GypKlOVtdov
+	6TlhQIuRAQsu5k2WlFE4XHkoJq6burNqKlozjE+4InOJB2NQ1clTtI3iGNA867rMOeiPV3lalPG70
+	eoMfvNnCJloYNnGe90FBjo4K42vES830DOrefGJLJQD9AxgKI4cbydJ+EFGlbySLaulhgJnaOFoFY
+	HlmNbm4jwnrY7N2XVl3zHD+uSXsdj8kpa7ubaHjaEnG683NAc0mTOlShuTQESWG/2Dohpw1clQp44
+	tTHz2hXn/Lkd8CGA2mnuJMWRBn3KjuHoFas3U8AuAzXrYLVnsOG/2jdrLKH11FECtCutqk4IwqguV
+	68Btgs3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjcVb-0000000Bz2Z-2PkO;
-	Tue, 14 Jul 2026 12:45:11 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wjdQB-0000000CDc0-0qwh;
+	Tue, 14 Jul 2026 13:43:39 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjcVS-0000000ByxP-0mYd;
-	Tue, 14 Jul 2026 12:45:02 +0000
+	id 1wjdQ7-0000000CDZO-274M;
+	Tue, 14 Jul 2026 13:43:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2682F418AD;
-	Tue, 14 Jul 2026 12:45:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id D45CAC2BCF5;
-	Tue, 14 Jul 2026 12:44:59 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 176A54196F;
+	Tue, 14 Jul 2026 13:43:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id D3EB8C2BCB9;
+	Tue, 14 Jul 2026 13:43:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1784033099;
-	bh=yrxMhmCYOUKee/WHlWAg1e5dG7auoKfuHFKPci2Li+c=;
+	s=k20201202; t=1784036614;
+	bh=SHIbWagXhjHefFW/nJiQqeo1gHIjjPE8NBQw6Hnwm7Q=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=sNvPHRLxhxDr/Tbzq2T1zG+NviZ4GJlCvmhPF9olSMCOiFkSGXCtyiFE3hFbWYI/w
-	 +cGhStojrujikZaXxHraP+GrXrxPPbdqCoCg9EhK0PFv69SGsXDe4odEe12zjTkH8e
-	 7Is3mGLGNT6SxwIeuxuJ8ao4mR+GxTj7bc3ImKnBggfh/0TckJxqRWU628T25UdmoP
-	 ruMtqgBQCszpWGcBS00HhkIS6zmr4j7jMBhWlT0zzWRdJr8x35/tnCBvkocQGEJmt7
-	 O5ps6ep3QTJp71UCSnsLXcG12vnkYGEkOqLOZcONK9JTk6UJdVq0nlwGkHluvqfaKz
-	 /d3jcVY0kFYoA==
+	b=M6Yi12Zy4NTMyZT8xbjw6cyGPfquhCKfIvwm5eooh2odgcp50T/uBPKv4vSli2Pn3
+	 wvtZFXheIiWCGjGMQH4hWJElhR0hZPPUK3n3pSOOmuocRNAsfIx/YXoMHoT6lDXisW
+	 HWt9GcbgVlBX6oicg08EQLXCVbpxxwHMg9n+b50R1GGQUw3ISIxSwm2pAbrHtB5Dlx
+	 Eru1BjIH29p/dSjfnvOV2/p+CZHBkRcii5Q8h+iuIhtqF9I6M0L2fzqRHDMcFwjp6W
+	 897ru0cH7UZqEykdjdZYI7OFM9WL/cWwffv/jZxthupDgfFWpWsX4jebMEiOO+GZkZ
+	 Qi0DJpFatGLUQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B565FC4450B;
-	Tue, 14 Jul 2026 12:44:59 +0000 (UTC)
-From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Tue, 14 Jul 2026 15:42:05 +0300
-Subject: [PATCH 3/3] soc: mediatek: pwrap: add mt6572 support
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B15F9C44508;
+	Tue, 14 Jul 2026 13:43:34 +0000 (UTC)
+From: Nikolai Burov via B4 Relay <devnull+nikolai.burov.jolla.com@kernel.org>
+Date: Tue, 14 Jul 2026 16:43:07 +0300
+Subject: [PATCH 2/3] pmdomain: mediatek: Add support for secure modem power
+ domain control
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260714-6572-pwrap-v1-3-d8e5a39cf7ef@protonmail.com>
-References: <20260714-6572-pwrap-v1-0-d8e5a39cf7ef@protonmail.com>
-In-Reply-To: <20260714-6572-pwrap-v1-0-d8e5a39cf7ef@protonmail.com>
+Message-Id: <20260714-mt6858-pmdomain-v1-2-4f09bbb822e0@jolla.com>
+References: <20260714-mt6858-pmdomain-v1-0-4f09bbb822e0@jolla.com>
+In-Reply-To: <20260714-mt6858-pmdomain-v1-0-4f09bbb822e0@jolla.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Flora Fu <flora.fu@mediatek.com>, Alexandre Mergnat <amergnat@baylibre.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Roman Vivchar <rva333@protonmail.com>
+ Ulf Hansson <ulfh@kernel.org>
+Cc: Matthias Brugger <mbrugger@suse.com>, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, 
+ Nikolai Burov <nikolai.burov@jolla.com>, 
+ Nikolai Burov <nikolai.burov+review@abscue.de>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1784033096; l=5555;
- i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=MPPYOgzDqoNCcN6F5iF2Dxp5T0TD89ZEJks3TwVCRQY=;
- b=JF16gx8q+zpMiZXOKBwHA9fCCmx8KQ+k5V9GLIDoEui8/ctpGb81KmpUv+9n/RaAHUe/WHlfA
- DFv2NlPy7FlDEzIeLKfKg/GWwJgWy46OfbSmDfWLY+pK6HsLwpeK0Ez
-X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
- pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
-X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
- auth_id=777
-X-Original-From: Roman Vivchar <rva333@protonmail.com>
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1784036613; l=4888;
+ i=nikolai.burov@jolla.com; s=20260707; h=from:subject:message-id;
+ bh=1+93q0f7FYb7U5pyCHE+Hk+doOkxlT1CgjB2s3NJEZo=;
+ b=Kt2f4UxAhTkEWKy8TwHBPDQBaoAR8542if7mrL+9y1tgfNNiz4idVdmZFYHj4/0i+d73tCrtd
+ e/s1KRx7k9qCnQQ8nIpZQgnbHOdtqzWjEk7C+l9s9djdSvyaKFkWTIb
+X-Developer-Key: i=nikolai.burov@jolla.com; a=ed25519;
+ pk=yzpa+PD+ovHUFMIOBA9o2QqGwI110jM6hdGHLc7jtoQ=
+X-Endpoint-Received: by B4 Relay for nikolai.burov@jolla.com/20260707 with
+ auth_id=859
+X-Original-From: Nikolai Burov <nikolai.burov@jolla.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,178 +86,148 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: rva333@protonmail.com
+Reply-To: nikolai.burov@jolla.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Roman Vivchar <rva333@protonmail.com>
+From: Nikolai Burov <nikolai.burov@jolla.com>
 
-Add mt6572 registers and platform data for the pmic wrapper.
-The mt2701 SoC-specific initialization function is used because they
-share the same GPS_INTF settings.
+On recent MediaTek SoCs such as MT6858, the kernel is required to use
+a secure monitor call (SMC) to enable or disable the modem power domain.
+The power domain control register can be read, but firmware prevents it
+from being modified directly. Other parts of the power sequence, such as
+setting the ext_buck_iso register, still need to be performed on the
+kernel side.
 
-Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+In preparation for modem support, add a flag to enable this new power
+sequence for SoCs that need it.
+
+Signed-off-by: Nikolai Burov <nikolai.burov@jolla.com>
 ---
- drivers/soc/mediatek/mtk-pmic-wrap.c | 111 +++++++++++++++++++++++++++++++++++
- 1 file changed, 111 insertions(+)
+ drivers/pmdomain/mediatek/mtk-pm-domains.c | 54 +++++++++++++++++++++++++++---
+ drivers/pmdomain/mediatek/mtk-pm-domains.h |  1 +
+ include/linux/soc/mediatek/mtk_sip_svc.h   |  3 ++
+ 3 files changed, 53 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index a4b10b0a97cb..4b8a5dc80a36 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -569,6 +569,96 @@ static const int mt2701_regs[] = {
- 	[PWRAP_ADC_RDATA_ADDR2] =	0x154,
- };
+diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+index e1cfd4223473..56437b32b252 100644
+--- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
++++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+@@ -57,6 +57,12 @@
  
-+static const int mt6572_regs[] = {
-+	[PWRAP_MUX_SEL] =		0x0,
-+	[PWRAP_WRAP_EN] =		0x4,
-+	[PWRAP_DIO_EN] =		0x8,
-+	[PWRAP_SIDLY] =			0xc,
-+	[PWRAP_OP_TYPE] =		0x10,
-+	[PWRAP_MSB_FIRST] =		0x14,
-+	[PWRAP_RDDMY] =			0x18,
-+	[PWRAP_SI_CK_CON] =		0x1c,
-+	[PWRAP_CSHEXT_WRITE] =		0x20,
-+	[PWRAP_CSHEXT_READ] =		0x24,
-+	[PWRAP_CSLEXT_START] =		0x28,
-+	[PWRAP_CSLEXT_END] =		0x2c,
-+	[PWRAP_STAUPD_PRD] =		0x30,
-+	[PWRAP_STAUPD_GRPEN] =		0x34,
-+	[PWRAP_STAUPD_MAN_TRIG] =	0x38,
-+	[PWRAP_STAUPD_STA] =		0x3c,
-+	[PWRAP_GPS_STA] =		0x40,
-+	[PWRAP_WRAP_STA] =		0x44,
-+	[PWRAP_HARB_INIT] =		0x48,
-+	[PWRAP_HARB_HPRIO] =		0x4c,
-+	[PWRAP_HIPRIO_ARB_EN] =		0x50,
-+	[PWRAP_HARB_STA0] =		0x54,
-+	[PWRAP_HARB_STA1] =		0x58,
-+	[PWRAP_MAN_EN] =		0x5c,
-+	[PWRAP_MAN_CMD] =		0x60,
-+	[PWRAP_MAN_RDATA] =		0x64,
-+	[PWRAP_MAN_VLDCLR] =		0x68,
-+	[PWRAP_WACS0_EN] =		0x6c,
-+	[PWRAP_INIT_DONE0] =		0x70,
-+	[PWRAP_WACS0_CMD] =		0x74,
-+	[PWRAP_WACS0_RDATA] =		0x78,
-+	[PWRAP_WACS0_VLDCLR] =		0x7c,
-+	[PWRAP_WACS1_EN] =		0x80,
-+	[PWRAP_INIT_DONE1] =		0x84,
-+	[PWRAP_WACS1_CMD] =		0x88,
-+	[PWRAP_WACS1_RDATA] =		0x8c,
-+	[PWRAP_WACS1_VLDCLR] =		0x90,
-+	[PWRAP_WACS2_EN] =		0x94,
-+	[PWRAP_INIT_DONE2] =		0x98,
-+	[PWRAP_WACS2_CMD] =		0x9c,
-+	[PWRAP_WACS2_RDATA] =		0xa0,
-+	[PWRAP_WACS2_VLDCLR] =		0xa4,
-+	[PWRAP_INT_EN] =		0xa8,
-+	[PWRAP_INT_FLG_RAW] =		0xac,
-+	[PWRAP_INT_FLG] =		0xb0,
-+	[PWRAP_INT_CLR] =		0xb4,
-+	[PWRAP_SIG_ADR] =		0xb8,
-+	[PWRAP_SIG_MODE] =		0xbc,
-+	[PWRAP_SIG_VALUE] =		0xc0,
-+	[PWRAP_SIG_ERRVAL] =		0xc4,
-+	[PWRAP_CRC_EN] =		0xc8,
-+	[PWRAP_TIMER_EN] =		0xcc,
-+	[PWRAP_TIMER_STA] =		0xd0,
-+	[PWRAP_WDT_UNIT] =		0xd4,
-+	[PWRAP_WDT_SRC_EN] =		0xd8,
-+	[PWRAP_WDT_FLG] =		0xdc,
-+	[PWRAP_DEBUG_INT_SEL] =		0xe0,
-+	[PWRAP_DVFS_ADR0] =		0xe4,
-+	[PWRAP_DVFS_WDATA0] =		0xe8,
-+	[PWRAP_DVFS_ADR1] =		0xec,
-+	[PWRAP_DVFS_WDATA1] =		0xf0,
-+	[PWRAP_DVFS_ADR2] =		0xf4,
-+	[PWRAP_DVFS_WDATA2] =		0xf8,
-+	[PWRAP_DVFS_ADR3] =		0xfc,
-+	[PWRAP_DVFS_WDATA3] =		0x100,
-+	[PWRAP_DVFS_ADR4] =		0x104,
-+	[PWRAP_DVFS_WDATA4] =		0x108,
-+	[PWRAP_DVFS_ADR5] =		0x10c,
-+	[PWRAP_DVFS_WDATA5] =		0x110,
-+	[PWRAP_DVFS_ADR6] =		0x114,
-+	[PWRAP_DVFS_WDATA6] =		0x118,
-+	[PWRAP_DVFS_ADR7] =		0x11c,
-+	[PWRAP_DVFS_WDATA7] =		0x120,
-+	[PWRAP_CIPHER_KEY_SEL] =	0x124,
-+	[PWRAP_CIPHER_IV_SEL] =		0x128,
-+	[PWRAP_CIPHER_EN] =		0x12c,
-+	[PWRAP_CIPHER_RDY] =		0x130,
-+	[PWRAP_CIPHER_MODE] =		0x134,
-+	[PWRAP_CIPHER_SWRST] =		0x138,
-+	[PWRAP_DCM_EN] =		0x13c,
-+	[PWRAP_DCM_DBC_PRD] =		0x140,
-+	[PWRAP_ADC_CMD_ADDR] =		0x144,
-+	[PWRAP_PWRAP_ADC_CMD] =		0x148,
-+	[PWRAP_ADC_RDY_ADDR] =		0x14c,
-+	[PWRAP_ADC_RDATA_ADDR1] =	0x150,
-+	[PWRAP_ADC_RDATA_ADDR2] =	0x154,
-+	[PWRAP_SW_RST] =		0x180,
+ #define MTK_SIP_KERNEL_HWCCF_CONTROL	MTK_SIP_SMC_CMD(0x540)
+ 
++/* Power domain commands for MTK_SIP_KERNEL_CCCI_CONTROL */
++enum {
++	MTK_MD_MTCMOS_ENABLE = 18,
++	MTK_MD_MTCMOS_DISABLE = 19,
 +};
 +
- static const int mt6765_regs[] = {
- 	[PWRAP_MUX_SEL] =		0x0,
- 	[PWRAP_WRAP_EN] =		0x4,
-@@ -1314,6 +1404,7 @@ enum pmic_type {
+ struct scpsys_domain {
+ 	struct generic_pm_domain genpd;
+ 	const struct scpsys_domain_data *data;
+@@ -615,6 +621,34 @@ static void scpsys_modem_pwrseq_off(struct scpsys_domain *pd)
+ 		regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
+ }
  
- enum pwrap_type {
- 	PWRAP_MT2701,
-+	PWRAP_MT6572,
- 	PWRAP_MT6765,
- 	PWRAP_MT6779,
- 	PWRAP_MT6795,
-@@ -1733,6 +1824,11 @@ static void pwrap_init_chip_select_ext(struct pmic_wrapper *wrp, u8 hext_write,
- static int pwrap_common_init_reg_clock(struct pmic_wrapper *wrp)
++static bool scpsys_modem_sec_poll(unsigned long cmd)
++{
++	struct arm_smccc_res res;
++
++	arm_smccc_smc(MTK_SIP_KERNEL_CCCI_CONTROL, cmd, 1, 0, 0, 0, 0, 0, &res);
++
++	return res.a0 == 0;
++}
++
++static int scpsys_modem_sec_power_on(bool on)
++{
++	struct arm_smccc_res res;
++	unsigned long cmd = on ? MTK_MD_MTCMOS_ENABLE : MTK_MD_MTCMOS_DISABLE;
++	bool tmp;
++	int ret;
++
++	arm_smccc_smc(MTK_SIP_KERNEL_CCCI_CONTROL, cmd, 0, 0, 0, 0, 0, 0, &res);
++	if (res.a0 == 0)
++		return 0;
++
++	ret = readx_poll_timeout(scpsys_modem_sec_poll, cmd, tmp, tmp,
++				 MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
++	if (ret < 0)
++		return ret;
++
++	return 0;
++}
++
+ static int scpsys_power_on(struct generic_pm_domain *genpd)
  {
- 	switch (wrp->master->type) {
-+	case PWRAP_MT6572:
-+		pwrap_writel(wrp, 0x8, PWRAP_RDDMY);
-+		pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_RDDMY_NO], 0x8);
-+		pwrap_init_chip_select_ext(wrp, 5, 0, 0, 0);
-+		break;
- 	case PWRAP_MT6795:
- 		if (wrp->slave->type == PMIC_MT6331) {
- 			const u32 *dew_regs = wrp->slave->dew_regs;
-@@ -1839,6 +1935,7 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
- 		pwrap_writel(wrp, 1, PWRAP_CIPHER_START);
- 		break;
- 	case PWRAP_MT2701:
-+	case PWRAP_MT6572:
- 	case PWRAP_MT6765:
- 	case PWRAP_MT6779:
- 	case PWRAP_MT6795:
-@@ -2277,6 +2374,19 @@ static const struct pmic_wrapper_type pwrap_mt2701 = {
- 	.init_soc_specific = pwrap_mt2701_init_soc_specific,
- };
+ 	struct scpsys_domain *pd = container_of(genpd, struct scpsys_domain, genpd);
+@@ -633,7 +667,9 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ 		regmap_clear_bits(scpsys->base, pd->data->ext_buck_iso_offs,
+ 				  pd->data->ext_buck_iso_mask);
  
-+static const struct pmic_wrapper_type pwrap_mt6572 = {
-+	.regs = mt6572_regs,
-+	.type = PWRAP_MT6572,
-+	.arb_en_all = 0x1ff,
-+	.int_en_all = 0x7ffffffd,
-+	.int1_en_all = 0,
-+	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
-+	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
-+	.caps = PWRAP_CAP_RESET | PWRAP_CAP_DCM,
-+	.init_reg_clock = pwrap_common_init_reg_clock,
-+	.init_soc_specific = pwrap_mt2701_init_soc_specific,
-+};
+-	if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_PWRSEQ))
++	if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_SECURE))
++		ret = scpsys_modem_sec_power_on(true);
++	else if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_PWRSEQ))
+ 		ret = scpsys_modem_pwrseq_on(pd);
+ 	else
+ 		ret = scpsys_ctl_pwrseq_on(pd);
+@@ -709,6 +745,12 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+ 	if (ret < 0)
+ 		return ret;
+ 
++	if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_SECURE)) {
++		ret = scpsys_modem_sec_power_on(false);
++		if (ret)
++			return ret;
++	}
 +
- static const struct pmic_wrapper_type pwrap_mt6765 = {
- 	.regs = mt6765_regs,
- 	.type = PWRAP_MT6765,
-@@ -2446,6 +2556,7 @@ static const struct pmic_wrapper_type pwrap_mt8186 = {
+ 	if (pd->data->ext_buck_iso_offs && MTK_SCPD_CAPS(pd, MTK_SCPD_EXT_BUCK_ISO))
+ 		regmap_set_bits(scpsys->base, pd->data->ext_buck_iso_offs,
+ 				pd->data->ext_buck_iso_mask);
+@@ -719,10 +761,12 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+ 	if (ret < 0)
+ 		return ret;
  
- static const struct of_device_id of_pwrap_match_tbl[] = {
- 	{ .compatible = "mediatek,mt2701-pwrap", .data = &pwrap_mt2701 },
-+	{ .compatible = "mediatek,mt6572-pwrap", .data = &pwrap_mt6572 },
- 	{ .compatible = "mediatek,mt6765-pwrap", .data = &pwrap_mt6765 },
- 	{ .compatible = "mediatek,mt6779-pwrap", .data = &pwrap_mt6779 },
- 	{ .compatible = "mediatek,mt6795-pwrap", .data = &pwrap_mt6795 },
+-	if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_PWRSEQ))
+-		scpsys_modem_pwrseq_off(pd);
+-	else
+-		scpsys_ctl_pwrseq_off(pd);
++	if (!MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_SECURE)) {
++		if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_PWRSEQ))
++			scpsys_modem_pwrseq_off(pd);
++		else
++			scpsys_ctl_pwrseq_off(pd);
++	}
+ 
+ 	/* wait until PWR_ACK = 0 */
+ 	ret = readx_poll_timeout(scpsys_domain_is_on, pd, tmp, !tmp, MTK_POLL_DELAY_US,
+diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.h b/drivers/pmdomain/mediatek/mtk-pm-domains.h
+index a5dca24cbc2f..b1a3d54a7b01 100644
+--- a/drivers/pmdomain/mediatek/mtk-pm-domains.h
++++ b/drivers/pmdomain/mediatek/mtk-pm-domains.h
+@@ -17,6 +17,7 @@
+ #define MTK_SCPD_MODEM_PWRSEQ		BIT(10)
+ #define MTK_SCPD_SKIP_RESET_B		BIT(11)
+ #define MTK_SCPD_INFRA_PWR_CTL		BIT(12)
++#define MTK_SCPD_MODEM_SECURE		BIT(13)
+ #define MTK_SCPD_CAPS(_scpd, _x)	((_scpd)->data ?		\
+ 					 (_scpd)->data->caps & (_x) :	\
+ 					 (_scpd)->hwv_data->caps & (_x))
+diff --git a/include/linux/soc/mediatek/mtk_sip_svc.h b/include/linux/soc/mediatek/mtk_sip_svc.h
+index abe24a73ee19..6c95a29b79fa 100644
+--- a/include/linux/soc/mediatek/mtk_sip_svc.h
++++ b/include/linux/soc/mediatek/mtk_sip_svc.h
+@@ -22,6 +22,9 @@
+ 	ARM_SMCCC_CALL_VAL(ARM_SMCCC_FAST_CALL, MTK_SIP_SMC_CONVENTION, \
+ 			   ARM_SMCCC_OWNER_SIP, fn_id)
+ 
++/* Modem related SMC call */
++#define MTK_SIP_KERNEL_CCCI_CONTROL	MTK_SIP_SMC_CMD(0x505)
++
+ /* DVFSRC SMC calls */
+ #define MTK_SIP_DVFSRC_VCOREFS_CONTROL	MTK_SIP_SMC_CMD(0x506)
+ 
 
 -- 
 2.54.0
