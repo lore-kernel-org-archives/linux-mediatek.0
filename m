@@ -4,83 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01817C43458
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 11:30:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D87DC44507
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 11:44:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EGNR6tra01UR7FO6vXzl/2T3zRf5CxTwlKO6Du47FdM=; b=fVmK76UR9Pn9K2PjS1bBDyrZNI
-	fHGeC6g+wDmvwLdSgfueVTRuVqKOk2nmgJCFmtknYzq14EJqNRBDDQ06MB1f0CpEzOVmqXqMqyJx/
-	c+M3TWUkHH/hbZexXnohFQZtX6NkvT5kKZ5muUS1v2mWIJ4SMYhLsBq/ANL7FgH32rxIxyeqOQjkk
-	KhUasn4CH9K5ABy66bgDmYApfrfPsdciuAuOOMB/EeY8eGxbrcZ27fTkz1gRUZmzm4TWasbhZkZ2V
-	FmGGWd6YKYP63Vp6KDP10g8U4w+eZ5RIjLcS5e8mHVf8JHGWTFoyBs/zpOvF3Wn9qTN7S8Jps8353
-	C9td/sNA==;
+	bh=5qD/wREh3H+P6MSCoo/G7xQet8FqnT0KgFDaRwRPOO0=; b=Cimtzpgyqoe5zklZOfV3U2bQcA
+	FaTtY/wT12ydh5vaI/a2jgagzL3KR4fjMRp0C4y8CP5NEjIgdM3hQbyOPEpueBGK4m8ng594up3o2
+	ZVwlcVDbrTZsbcTtpzY0mkv90djvzk7UzDc+HpaPE8gIQgrlgwNLdbvXA8XTWlPEByE4KjgOXXZYX
+	1PpwuN6eTIsg2DKjP0mtwJx/7aEwaC5Qz5HM0iPtLX7JgVWs6nDG8WyVeW4f7YbYNqI9Fi3hzsLNz
+	T9V6ZKfPFLsxKH4KTfn6fbnxw1hi6w2YPvWYFgeBsQ04LmkUGF56QLf/PpzOXnSuQcBjqyvCFJZpE
+	4HTIPf7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjbL5-0000000BgUD-3WCC;
-	Tue, 14 Jul 2026 11:30:15 +0000
+	id 1wjbYz-0000000BiD9-17Xu;
+	Tue, 14 Jul 2026 11:44:37 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjbL2-0000000BgSi-1l10;
-	Tue, 14 Jul 2026 11:30:13 +0000
+	id 1wjbYw-0000000BiB3-0j59;
+	Tue, 14 Jul 2026 11:44:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784028608;
-	bh=waq8VNJgFB3A36U/4yF+C9LFLMZXFtLcZD4Rdi3vW0g=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=MEOj3oSDyNmyy/GypNt45JfGP7JIaCnJTwCrLbfTwKLTp3sduf5RrEgoiK8Srmta3
-	 4M5zNKV9H21OauxA08+FzweV5Hd4GEKAoYS0GMPqIY1Zq/EWol8gZAbIrywicI5dDz
-	 Lw2D0RdT3DxCV8j3X65fNLRLrL1HsGxYF067NU2PM41u4tvlaqeXhCPNyZJQh7im3M
-	 ph0St825k7qUgqKJ6DqH1QprJfvn9K9Sh3ebpQuzeCfGelCLFZlHXYZW41olbI0cFU
-	 QtrhXtf2RhBd/e2xtotYObWxuZeFTj2JWSlNcXkCKOwTZ5wL5MlqZ5+XFp0SnNu3dA
-	 hJIllBFjVt/eg==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1784029471;
+	bh=Syavb1TDB0/uFM5ETGFncFvguzPZylk13cGK8Z1yBaw=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=l8OQgMMvekJOD5M0cFCl7g2xbCTK9sXKF1133smdV7nBPQ4wyy4e14WGdrG3zEZMz
+	 yEbFrb6GlKbowv2rXJ7gJy4i1M5SFYnndy6WspkoGRewMOO5OGsEf42Z/JhrKcmabQ
+	 4MLxTNGIyU+knh0iehU0ZxwTWRCgOYbrdb+x+osKdhf+DKC2TCsUPCbbYvdhzwHEb8
+	 eJUcs1CMMkberPHZPktjGpQEJ4+WGao72I6q904YiQe6DehbWCDB3D3ZE+Mro62pGI
+	 TAnfJOMOi0Zq3b/FeS6nQez8Vu+j7a4ztU18AzFSX9kZe2k+Szox3mhcIRHcFBfcFO
+	 6lJpNga3dlyvg==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 90D9717E07A2;
-	Tue, 14 Jul 2026 13:30:07 +0200 (CEST)
-Message-ID: <c5afe7db-d753-4202-b368-1680195cbd2f@collabora.com>
-Date: Tue, 14 Jul 2026 13:30:07 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 06/42] drm/mediatek: Use hashtable for components
- discovery and registration
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3446E17E010F;
+	Tue, 14 Jul 2026 13:44:30 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "robh@kernel.org" <robh@kernel.org>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
- <mripard@kernel.org>, "kernel@collabora.com" <kernel@collabora.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "airlied@gmail.com" <airlied@gmail.com>,
- =?UTF-8?B?SnVzdGluIFllaCAo6JGJ6Iux6IyCKQ==?= <Justin.Yeh@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
-References: <20260701122057.19648-1-angelogioacchino.delregno@collabora.com>
- <20260701122057.19648-7-angelogioacchino.delregno@collabora.com>
- <79f44c827c78fd823300509c22058f2b6f3600b6.camel@mediatek.com>
- <16980e9f-c183-41c4-8001-ac7807cc087b@collabora.com>
-Content-Language: en-US
-In-Reply-To: <16980e9f-c183-41c4-8001-ac7807cc087b@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	justin.yeh@mediatek.com,
+	jason-jh.lin@mediatek.com,
+	kernel@collabora.com,
+	Paul-pl Chen <paul-pl.chen@mediatek.com>,
+	CK Hu <ck.hu@mediatek.com>
+Subject: [PATCH v2 01/46] drm/mediatek: Rename OVL format naming
+Date: Tue, 14 Jul 2026 13:43:29 +0200
+Message-ID: <20260714114414.184512-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com>
+References: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260714_043012_771699_DDB50CDD 
-X-CRM114-Status: GOOD (  49.19  )
+X-CRM114-CacheID: sfid-20260714_044434_371787_1A49917E 
+X-CRM114-Status: GOOD (  10.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,259 +91,151 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/7/26 13:56, AngeloGioacchino Del Regno wrote:
-> On 7/6/26 09:02, CK Hu (胡俊光) wrote:
->> On Wed, 2026-07-01 at 14:20 +0200, AngeloGioacchino Del Regno wrote:
->>> As a preparation for refactoring the concept of hardware component
->>> identification, search, and final usage, remove the ddp_comp array
->>> of components and replace it with a hashtable, indexed by ID.
->>>
->>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>> ---
->>>   drivers/gpu/drm/mediatek/mtk_crtc.c     | 44 ++++++++++++++++-------
->>>   drivers/gpu/drm/mediatek/mtk_ddp_comp.c | 48 ++++++++++++++++++-------
->>>   drivers/gpu/drm/mediatek/mtk_ddp_comp.h | 23 +++++++++++-
->>>   drivers/gpu/drm/mediatek/mtk_drm_drv.c  |  7 ++--
->>>   drivers/gpu/drm/mediatek/mtk_drm_drv.h  |  2 +-
->>>   5 files changed, 94 insertions(+), 30 deletions(-)
->>>
->>> diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/ 
->>> mtk_crtc.c
->>> index f39f197057a7..3f4d6ab1bfc2 100644
->>> --- a/drivers/gpu/drm/mediatek/mtk_crtc.c
->>> +++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
->>> @@ -725,8 +725,12 @@ static void mtk_crtc_update_output(struct drm_crtc *crtc,
->>>           crtc_state->connectors_changed, encoder_mask, crtc_index);
->>>       for (i = 0; i < mtk_crtc->num_conn_routes; i++) {
->>> -        unsigned int comp_id = mtk_crtc->conn_routes[i].route_ddp;
->>> -        struct mtk_ddp_comp *comp = &priv->ddp_comp[comp_id];
->>> +        const struct mtk_drm_route *conn_route = &mtk_crtc->conn_routes[i];
->>> +        struct mtk_ddp_comp *comp;
->>> +
->>> +        comp = mtk_ddp_comp_find_by_id(&priv->hlist, conn_route->route_ddp);
->>
->> I don't know why you invent conn_route? Keep comp_id use it here looks the same.
->>
-> 
-> I'm not inventing conn_route, that's something that was already there as a dynamic
-> replacement of the last component in a stack of possible outputs for a single
-> full-fledged display pipeline.
-> 
-> The change here is about changing the search/retrieval of a `route_ddp` from a
-> number that comes from an enumeration, to a full component structure instead....
-> 
->>> +        if (!comp)
->>> +            continue;
->>
->> In original code, it never check comp is null or not.
->> I think it base on an assumption that it would not be null.
->> If it's null here, print error message and it's not necessary to do the rest thing.
->>
-> 
-> .... and the component structure, with the new code, has to be *initialized*: this
-> is because we cannot assume that a component that was not registered will actually
-> be registered later (which was a broken behavior of mediatek-drm!).
-> 
-> 
-> 
-> ----> IMPORTANT PART: <-----
-> Note that, at this point, "comp" is *not* pointing to a *statically* initialized
-> array of components, but to a *dynamically* initialized one: while before this the
-> comp pointer was guaranteed to be *always* a valid pointer to a comp structure, now
-> it is *not guaranteed anymore*, because again - it's *dynamically* allocated, so
-> we NEED to check for comp != NULL, or we're exposing ourselves to a possible NULL
-> pointer kernel panic (or worse)!
-> 
-> 
-> 
-> If the component is not initialized at this point, it simply means that it cannot
-> be - in any way - used by mediatek-drm, so.. if !comp -> continue means effectively
-> "if the component is not registered, we cannot use it, hence don't try to evaluate
-> the possibility of using it".
-> 
-> Is it clear now?
-> 
->>>           if (comp->encoder_index >= 0 &&
->>>               (encoder_mask & BIT(comp->encoder_index))) {
->>> @@ -1028,10 +1032,11 @@ int mtk_crtc_create(struct drm_device *drm_dev, const 
->>> unsigned int *path,
->>>   {
->>>       struct mtk_drm_private *priv = drm_dev->dev_private;
->>>       struct device *dev = drm_dev->dev;
->>> +    struct mtk_ddp_comp *dma_comp;
->>>       struct mtk_crtc *mtk_crtc;
->>>       unsigned int num_comp_planes = 0;
->>>       int ret;
->>> -    int i;
->>> +    int i, j;
->>>       bool has_ctm = false;
->>>       uint gamma_lut_size = 0;
->>>       struct drm_crtc *tmp;
->>> @@ -1051,7 +1056,7 @@ int mtk_crtc_create(struct drm_device *drm_dev, const 
->>> unsigned int *path,
->>>           struct mtk_ddp_comp *comp;
->>>           node = priv->comp_node[comp_id];
->>> -        comp = &priv->ddp_comp[comp_id];
->>> +        comp = mtk_ddp_comp_find_by_id(&priv->hlist, comp_id);
->>>           /* Not all drm components have a DTS device node, such as ovl_adaptor,
->>>            * which is the drm bring up sub driver
->>> @@ -1063,7 +1068,7 @@ int mtk_crtc_create(struct drm_device *drm_dev, const 
->>> unsigned int *path,
->>>               return 0;
->>>           }
->>> -        if (!comp->dev) {
->>> +        if (!comp || !comp->dev) {
->>>               dev_err(dev, "Component %pOF not initialized\n", node);
->>
->> I think you should print other error message and return other value for !comp.
->>
-> 
-> In mtk_crtc_create, at this point, the component (which always has a node, pointed
-> by node = priv->comp_node[comp_id]) has to be initialized by mtk_ddp_comp.
-> 
-> Keeping in mind that the component is actually a device, if the component itself
-> was not initialized at this point, this means that there is NO DEVice associated
-> with it.
-> 
-> This is why -ENODEV.
-> 
-> Also, we're printing %pOF (like before) because this gives hints about precisely
-> which one was not registered at this point.
-> 
->>>               return -ENODEV;
->>>           }
->>> @@ -1089,12 +1094,17 @@ int mtk_crtc_create(struct drm_device *drm_dev, const 
->>> unsigned int *path,
->>>           return ret;
->>>       }
->>> -    for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
->>> +    for (i = 0, j = 0; i < mtk_crtc->ddp_comp_nr; i++, j++) {
->>>           unsigned int comp_id = path[i];
->>>           struct mtk_ddp_comp *comp;
->>> -        comp = &priv->ddp_comp[comp_id];
->>> -        mtk_crtc->ddp_comp[i] = comp;
->>> +        comp = mtk_ddp_comp_find_by_id(&priv->hlist, comp_id);
->>> +        if (!comp) {
->>
->> In original code, it never check comp is null or not.
->> I think it base on an assumption that it would not be null.
->> If it's null here, print error message and it's not necessary to do the rest thing.
->>
-> 
-> The iterator here tries to still setup a display pipeline in case a component is
-> missing, and this actually works in a couple of corner cases, which were not
-> possible before the restructuring of mediatek-drm.
-> 
-> In later commits, this case will be handled differently: the problem here is rather
-> that the code readability is not the best at this point in time (of the series),
-> but this will make a lot more sense when going forward in this exact series.
-> 
-> The main issue here is that mediatek-drm's complexity is very, very high, and the
-> maintainability suffers a lot: doing each and every change as a perfectly clean
-> (and perfectly readable) diff means adding another ~4k thousand lines of changes
-> that are simply addition and removal of the same lines over and over again.
-> 
->>> +            j--;
->>> +            dev_dbg(dev, "Cannot find component %d.\n", comp_id);
->>> +            continue;
->>> +        }
->>> +        mtk_crtc->ddp_comp[j] = comp;
->>>           if (comp->funcs) {
->>>               if (comp->funcs->gamma_set && comp->funcs->gamma_get_lut_size) {
->>> @@ -1131,7 +1141,14 @@ int mtk_crtc_create(struct drm_device *drm_dev, const 
->>> unsigned int *path,
->>>        * In the case of ovl_adaptor sub driver, it needs to use the
->>>        * dma_dev_get function to get representative dma dev.
->>>        */
->>> -    mtk_crtc->dma_dev = mtk_ddp_comp_dma_dev_get(&priv->ddp_comp[path[0]]);
->>> +    dma_comp = mtk_ddp_comp_find_by_id(&priv->hlist, path[0]);
->>> +    if (dma_comp == NULL) {
->>
->> if (!dma_comp) is more simple.
->>
-> 
-> Yeah, I agree. If you're really worried about seeing this instead of !dma_comp I
-> can change it here... but if you can ignore that, in later commits this will be
-> removed and completely changed so that it becomes
-> 
->      ret = mtk_crtc_find_suitable_dma_dev(mtk_crtc);
->      if (ret) {
->          dev_err(dev, "Could not find appropriate DMA device!\n");
->          return -EINVAL;
->      }
->      dev_dbg(dev, "Using DMA device %pOF\n", mtk_crtc->dma_dev->of_node);
-> 
-> Note that if I change this simple line here, I'll have to fix other patches as
-> they won't apply anymore because of the changed line... so again, if we could
-> ignore that it would be great...
-> 
->>> +        dev_err(dev, "Could not find appropriate DMA device!\n");
->>> +        return -EINVAL;
->>> +    }
->>> +
->>> +    mtk_crtc->dma_dev = mtk_ddp_comp_dma_dev_get(dma_comp);
->>> +    dev_dbg(dev, "Using DMA device %pOF\n", mtk_crtc->dma_dev->of_node);
->>>       ret = mtk_crtc_init(drm_dev, mtk_crtc, crtc_i);
->>>       if (ret < 0)
->>> @@ -1188,17 +1205,18 @@ int mtk_crtc_create(struct drm_device *drm_dev, const 
->>> unsigned int *path,
->>>           for (i = 0; i < num_conn_routes; i++) {
->>>               unsigned int comp_id = conn_routes[i].route_ddp;
->>>               struct device_node *node = priv->comp_node[comp_id];
->>> -            struct mtk_ddp_comp *comp = &priv->ddp_comp[comp_id];
->>> +            struct mtk_ddp_comp *comp = mtk_ddp_comp_find_by_id(&priv->hlist, 
->>> comp_id);
->>> -            if (!comp->dev) {
->>> +            if (!comp || !comp->dev) {
->>
->> In original code, it never check comp is null or not.
->> I think it base on an assumption that it would not be null.
->> If it's null here, print error message and it's not necessary to do the rest thing.
->>
-> 
-> Already explained why we need comp to be checked for NULL.
-> 
->>>                   dev_dbg(dev, "comp_id:%d, Component %pOF not initialized\n",
->>>                       comp_id, node);
->>>                   /* mark encoder_index to -1, if route comp device is not 
->>> enabled */
->>> -                comp->encoder_index = -1;
->>> +                if (comp)
->>> +                    comp->encoder_index = -1;
->>>                   continue;
->>>               }
->>> -            mtk_ddp_comp_encoder_index_set(&priv->ddp_comp[comp_id]);
->>> +            mtk_ddp_comp_encoder_index_set(comp);
->>>
->>
->> [snip]
->>
->>>         }
->>>   @@ -1116,8 +1118,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
->>>                                   PLATFORM_DEVID_AUTO,
->>>                                   (void *)private->mmsys_dev,
->>>                                   sizeof(*private->mmsys_dev));
->>> -        private->ddp_comp[DDP_COMPONENT_DRM_OVL_ADAPTOR].dev = &ovl_adaptor->dev;
->>> -        mtk_ddp_comp_init(dev, NULL, &private- 
->>> >ddp_comp[DDP_COMPONENT_DRM_OVL_ADAPTOR],
->>> +        mtk_ddp_comp_init(&ovl_adaptor->dev, NULL, &private->hlist,
->>
->> mtk_ddp_comp_init(dev, NULL, &private->hlist,
->>
-> 
-> That was only done for readability purposes. This will be entirely moved out of
-> here in a later commit.
+From: Paul-pl Chen <paul-pl.chen@mediatek.com>
 
-Actually, no, I gave the wrong information here.
+Rename format arrays from mt8173_formats[] to mt8173_ovl_formats[]
+to explicitly indicate that these format definitions are specific
+to OVL (Overlay) components.
 
-Registering with mtk_ddp_comp_init(dev, xxxx ...) will make the called function to
-assign a pointer to mediatek-drm's device, but since the mtk_ddp_comp_init function
-changed, this needs to pass a pointer to the OVL ADAPTOR's device, not to the main
-mediatek-drm device.
+This naming improvement is necessary because MT8196 introduces new
+display components (EXDMA, BLENDER, OUTPROC) that support different
+format capabilities than OVL. Without clear naming, it becomes
+ambiguous which formats apply to which component type.
 
-So this has to be mtk_ddp_comp_init(&ovl_adaptor->dev, ...) otherwise this will not
-work as intended.
+Examples of format differences between components:
+- EXDMA supports 10-bit RGB formats that some OVL variants don't
+- BLENDER has different YUV handling requirements
+- Component-specific format conversion capabilities vary
 
-Cheers,
-Angelo
+The explicit naming:
+- Prevents confusion when debugging format-related issues
+- Makes it immediately clear which component a format array belongs to
+- Improves code searchability (grep for "ovl_formats")
+- Follows consistent naming convention for component-specific definitions
+- Prepares for adding exdma_formats[], blender_formats[] arrays
+
+This is a preparatory patch for MT8196 component support, which
+requires clear distinction between OVL formats and EXDMA/BLENDER
+formats to avoid applying incorrect format configurations.
+
+Signed-off-by: Paul-pl Chen <paul-pl.chen@mediatek.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 36 ++++++++++++-------------
+ 1 file changed, 18 insertions(+), 18 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index 97a899e4bd99..135bf5fedc8a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -101,7 +101,7 @@ static inline bool is_10bit_rgb(u32 fmt)
+ 	return false;
+ }
+ 
+-static const u32 mt8173_formats[] = {
++static const u32 mt8173_ovl_formats[] = {
+ 	DRM_FORMAT_XRGB8888,
+ 	DRM_FORMAT_ARGB8888,
+ 	DRM_FORMAT_BGRX8888,
+@@ -115,7 +115,7 @@ static const u32 mt8173_formats[] = {
+ 	DRM_FORMAT_YUYV,
+ };
+ 
+-static const u32 mt8195_formats[] = {
++static const u32 mt8195_ovl_formats[] = {
+ 	DRM_FORMAT_XRGB8888,
+ 	DRM_FORMAT_ARGB8888,
+ 	DRM_FORMAT_XRGB2101010,
+@@ -667,8 +667,8 @@ static const struct mtk_disp_ovl_data mt2701_ovl_driver_data = {
+ 	.gmc_bits = 8,
+ 	.layer_nr = 4,
+ 	.fmt_rgb565_is_0 = false,
+-	.formats = mt8173_formats,
+-	.num_formats = ARRAY_SIZE(mt8173_formats),
++	.formats = mt8173_ovl_formats,
++	.num_formats = ARRAY_SIZE(mt8173_ovl_formats),
+ };
+ 
+ static const struct mtk_disp_ovl_data mt8167_ovl_driver_data = {
+@@ -677,8 +677,8 @@ static const struct mtk_disp_ovl_data mt8167_ovl_driver_data = {
+ 	.layer_nr = 4,
+ 	.fmt_rgb565_is_0 = true,
+ 	.smi_id_en = true,
+-	.formats = mt8173_formats,
+-	.num_formats = ARRAY_SIZE(mt8173_formats),
++	.formats = mt8173_ovl_formats,
++	.num_formats = ARRAY_SIZE(mt8173_ovl_formats),
+ };
+ 
+ static const struct mtk_disp_ovl_data mt8173_ovl_driver_data = {
+@@ -686,8 +686,8 @@ static const struct mtk_disp_ovl_data mt8173_ovl_driver_data = {
+ 	.gmc_bits = 8,
+ 	.layer_nr = 4,
+ 	.fmt_rgb565_is_0 = true,
+-	.formats = mt8173_formats,
+-	.num_formats = ARRAY_SIZE(mt8173_formats),
++	.formats = mt8173_ovl_formats,
++	.num_formats = ARRAY_SIZE(mt8173_ovl_formats),
+ };
+ 
+ static const struct mtk_disp_ovl_data mt8183_ovl_driver_data = {
+@@ -695,8 +695,8 @@ static const struct mtk_disp_ovl_data mt8183_ovl_driver_data = {
+ 	.gmc_bits = 10,
+ 	.layer_nr = 4,
+ 	.fmt_rgb565_is_0 = true,
+-	.formats = mt8173_formats,
+-	.num_formats = ARRAY_SIZE(mt8173_formats),
++	.formats = mt8173_ovl_formats,
++	.num_formats = ARRAY_SIZE(mt8173_ovl_formats),
+ };
+ 
+ static const struct mtk_disp_ovl_data mt8183_ovl_2l_driver_data = {
+@@ -704,8 +704,8 @@ static const struct mtk_disp_ovl_data mt8183_ovl_2l_driver_data = {
+ 	.gmc_bits = 10,
+ 	.layer_nr = 2,
+ 	.fmt_rgb565_is_0 = true,
+-	.formats = mt8173_formats,
+-	.num_formats = ARRAY_SIZE(mt8173_formats),
++	.formats = mt8173_ovl_formats,
++	.num_formats = ARRAY_SIZE(mt8173_ovl_formats),
+ };
+ 
+ static const struct mtk_disp_ovl_data mt8192_ovl_driver_data = {
+@@ -717,8 +717,8 @@ static const struct mtk_disp_ovl_data mt8192_ovl_driver_data = {
+ 	.blend_modes = BIT(DRM_MODE_BLEND_PREMULTI) |
+ 		       BIT(DRM_MODE_BLEND_COVERAGE) |
+ 		       BIT(DRM_MODE_BLEND_PIXEL_NONE),
+-	.formats = mt8173_formats,
+-	.num_formats = ARRAY_SIZE(mt8173_formats),
++	.formats = mt8173_ovl_formats,
++	.num_formats = ARRAY_SIZE(mt8173_ovl_formats),
+ };
+ 
+ static const struct mtk_disp_ovl_data mt8192_ovl_2l_driver_data = {
+@@ -730,8 +730,8 @@ static const struct mtk_disp_ovl_data mt8192_ovl_2l_driver_data = {
+ 	.blend_modes = BIT(DRM_MODE_BLEND_PREMULTI) |
+ 		       BIT(DRM_MODE_BLEND_COVERAGE) |
+ 		       BIT(DRM_MODE_BLEND_PIXEL_NONE),
+-	.formats = mt8173_formats,
+-	.num_formats = ARRAY_SIZE(mt8173_formats),
++	.formats = mt8173_ovl_formats,
++	.num_formats = ARRAY_SIZE(mt8173_ovl_formats),
+ };
+ 
+ static const struct mtk_disp_ovl_data mt8195_ovl_driver_data = {
+@@ -744,8 +744,8 @@ static const struct mtk_disp_ovl_data mt8195_ovl_driver_data = {
+ 	.blend_modes = BIT(DRM_MODE_BLEND_PREMULTI) |
+ 		       BIT(DRM_MODE_BLEND_COVERAGE) |
+ 		       BIT(DRM_MODE_BLEND_PIXEL_NONE),
+-	.formats = mt8195_formats,
+-	.num_formats = ARRAY_SIZE(mt8195_formats),
++	.formats = mt8195_ovl_formats,
++	.num_formats = ARRAY_SIZE(mt8195_ovl_formats),
+ 	.supports_clrfmt_ext = true,
+ };
+ 
+-- 
+2.54.0
+
 
