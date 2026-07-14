@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95C66C44509
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C34FC44501
 	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 10:26:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,64 +12,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sHT/WwMTvMyhNG0R1GTeh0JBDqIUGamHWFNRSDi1Fw4=; b=0LCzKpqzf9Nu2bD7QVr52YQqi8
-	pE7Vo1N7n5Ej+VoStr16pmFFAbPU58Iz3sJzjvRtR2LeW6eCncdYoAQHZ4cY95Y6W+2W10s1m3/9k
-	Ov/FiSByk0YGm5npUxzfnDBeRYqoK38rQQ8APhahVulERNO5Eb6tCX9uIdK7hsQ/Vv3t5caGvu4CE
-	ZxJCXcbk0esgf/NAS88hGBqoJapZFEzcdJZTw+qDw/QoKQItA5RHqO9Sb2OgfUtDi4f/XNctcfaIg
-	EZAXU6QnsdEOIXR7RabtNfpE1GOkPbhi7LSDvzfYzNdCUjfr3eiNkZAPZBOI5TrDBCejCtBdWyDSZ
-	j08lbMNA==;
+	bh=cBDMwG9/ky6ssL+TbdSqxt4N2oK3lmPKFilDE6MIEWE=; b=yuhunbOE/0qZBbN3t1XZxsz6ym
+	kfm+3fjFUs/brU0x4brLu/16CsSYmfNQMgxWNjwvm4sxMRPHX3yRRn2/vunAFPyVvzY6SeIp/u69D
+	H1TPJtQxxN/joejbxAMLd8ivAOTt9vZ5UbwoDBXCrkiGJIX8ldAL8US1as7vtSPlHX563iB5pR/95
+	81Wn5D5vsP/oHiVpkUkTM9EaTwA5ksa9mRdr2RUF0HZqP6XJHhqHIVGSZzRrYtdioHtcB4/XIxNcs
+	vntVcayw1+2tp77LX/k04n9qlbD4H6kzspOpJ3smarfK0RI6ljcd1IABpnFlUR237cy5x3BNrg5SR
+	mERn5IoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjaLM-0000000BYwx-1tnh;
+	id 1wjaLM-0000000BYx7-2AkO;
 	Tue, 14 Jul 2026 10:26:28 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjaLG-0000000BYs4-01WR
+	id 1wjaLH-0000000BYsk-0Xjz
 	for linux-mediatek@lists.infradead.org;
 	Tue, 14 Jul 2026 10:26:24 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-47ddf7b09e5so763269f8f.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 14 Jul 2026 03:26:21 -0700 (PDT)
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-47c2b362ee2so3646091f8f.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 14 Jul 2026 03:26:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784024780; x=1784629580; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1784024781; x=1784629581; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=sHT/WwMTvMyhNG0R1GTeh0JBDqIUGamHWFNRSDi1Fw4=;
-        b=WNhPwIcEC/3puA6YnC9HCk/4fdJzn0wkdl9sN5+OWP+tLB4AUcqfAz0PLz5pleiicR
-         Gsgyat3htMM1Hi8YyAJHfG4rQzlP80HOsXSxMNFoBBjuiQlZkZfPBBonFxK/1VdVBcf1
-         VSlbNp+DzTv+smZ7MM0VhzLNR3EqtNpYOZsCrX5feR8rkdqfe8tE7m5kcnz0aesmo8sP
-         YVLRM9Hzt+zR0TTuxSirVV4vdBNJaeVw4xMT/A91DIadKZqoIz7U92z9odVjL0BEGnkf
-         h6oUygWcMPnIfZu9CBUb4NqYKfwrLI0lMt1pJaK982FtDKEx0zGDUp8Yim9At0L2Otha
-         JUbg==
+        bh=cBDMwG9/ky6ssL+TbdSqxt4N2oK3lmPKFilDE6MIEWE=;
+        b=XZdV4G7PX8dfaWWnLaBZJmOgddqP8n8XhV+lNR7sDqXcv1OkIW+Ot9qwSy13YQx8mw
+         fZduMgRdFuuRQkMfF7jkEPDm8MPGGzjUf5zYAKALwJNI+ducL2TVtj7BA7vIyOWA26va
+         18rFvR074OlkE0aqpy8RaTAHE8u/Uw5j3wiP2WgK2S+VLQ6bp19M6ZUqA6NXpHTqEnYx
+         cPNkVwWEUZ1wYCepH6d9xpMy9eQ/xSCv2KpkTkSJxvQWZDEGdRmvKR06J3Cpasn6Kgya
+         rcA/X/xsFAlI2mwxRe4qtk7hZI1Qg0/UwERsX04dF5cKKpWS3v7tnmxEyl+WKZs5yuix
+         WIrQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784024780; x=1784629580;
+        d=1e100.net; s=20251104; t=1784024781; x=1784629581;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=sHT/WwMTvMyhNG0R1GTeh0JBDqIUGamHWFNRSDi1Fw4=;
-        b=TCah1CfO/X6ZWvIFQq0p91F5sfoCO5Fl3ZnPJaspvI0gvS9btP6nqZ9HAK0+4YYAMA
-         /GHdScgWaT9Vi2EfZXNdML9G/k9FJaQWNlFo4WYwhdyrpJiEdINn4X+7ewaZsyakaIRt
-         o4tSaMe5sXMZ24++i3wvb9cTBASHDkXf/XWoI9vy+OcZ1d6ze2yC+RKhIEfDLvEpKQAc
-         lyL/K2QHwTibgsMadiM4xo74bx/L97xcrpH9bpOKlkFUHeWG/H3WNwd09pc6rfypy9sZ
-         BQup5cbWBoGnZ923hGdKsPVf/Uhyu5WuhGclOy+RotJ2etD7mzr1QhddBG4CO61mqgnu
-         gHRg==
-X-Forwarded-Encrypted: i=1; AHgh+RpH+gCQ7H+bmXqRNiQUXGFKPMgmXzEh7kOtbOxl41fzsa+SWRNxcASwM9i+H0ykYLxWVbWv7nJekSsIOqgtWQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyYKG2CWZ3ijZzZEcNEua8cAr/bRCT4SW5dzZ6boESwClckMTFc
-	IyQRmKavw3fd7yl6Mx3FrZUBBkstj7bCrh/I77rZPc+fIDgz265qsWHGZtmlmDQz
-X-Gm-Gg: AfdE7cn9D/BR3KyZ49BikcqXybsSWRE1oClsWALYcqb43/ilr/KYBI29VpuHD4d8NPx
-	ZEo8cId5Gaj0aVI77JXLPbDRIv0l7wXXaiZiJEWkwYjtMvgBnFzb8oknyLSsFRSF47jA4/hSjiM
-	Fqt13ZyS5VTePU6T4E6+HqN41Ah2rHr4dXYVuOT+XvU+FyWXXoNYaNfsoGqPHXS0z6+b1hIv9kR
-	xLSCYdWeUP0av1O8wu47HnS9jDDyUKe3+O23zuFY2LF3zqyizyQYowphsf5IfErckZbufF2/W0f
-	1y5ZJTUerVG3MAlCwQEMtTHUUBGIlUWVD0gVl/BIp6ZN/rZP03DFkpnzjN+ViKY9ZUyOUv/p+N0
-	Jo0SN48YghhEScYE2nEipEsanOs9boMxFapGRA5TmVym1A1pDPbV9SYOzkahRiPYgN9fBj5cfp/
-	UFoqkxshF/KbrWn8SwGdPIGQCys18iL7MLqTl2fMxXXb/mfG8uuVs1CqJTTWEPl+nOu2ymSob1n
-	w1iWDM=
-X-Received: by 2002:a05:6000:26c9:b0:475:f100:35f3 with SMTP id ffacd0b85a97d-47f2dd2ef0dmr14426836f8f.48.1784024780086;
-        Tue, 14 Jul 2026 03:26:20 -0700 (PDT)
+        bh=cBDMwG9/ky6ssL+TbdSqxt4N2oK3lmPKFilDE6MIEWE=;
+        b=Q+gTaaiEJNyexi9JeQF0C+8rMqdIhc3sSs4DMKJ+wnckSzq4Lao3IIgL13HY5HMhvi
+         42eBBVQxHYtjJDOLM3AXi3d3BhSQopxn6pt2O+LkWWpBz/BJNVhlFvkt6jh24GfVjtUj
+         LgrweBonYYD9SYReCk02a3wmUqSn2a6P9Eynq0n6BY4FEHz/sT2Lne9DpCWd8Tc/Fi8u
+         z5eMpet90T3rmTlp915SbO/+4H5Jh/ZXecFgVYTnD1titFDXAAaq6aZCSH0FVk2bES2o
+         2IIdXFvyBl4P/gO38TRCCdjfZwgYbyRbzkRicprRDfSZWB93Gf1TgQh86BuKfVTkvpCj
+         hkLw==
+X-Forwarded-Encrypted: i=1; AHgh+RpgpHdMwqFIxXayB3ZmSXr3sOg6vpS5Ne8tQLTsSjmcUQuUs3YokguJzrnZXnqrAY3QI48SF16e6i7rNnacJA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwlB+Uh61LV6E2f2bOMksXC/NE2ZAfQS+wvyDK56fILioA0pSkE
+	L8GsTj6zN6MipvjIHBCfnN0L7xj1dWIiZuDeP6yp6Qzp3Biksftd4Sge
+X-Gm-Gg: AfdE7cl0NTB0leDTfHQoaMtqH3M00/h3V60uqw9b606wppypvxPZ7LVAuOB1S4hP2fh
+	hxZ2bjsy8CkkdyqpBuM5eT4Dwv6DQBT1MM5s9MWCOLkIhjQ9y9oR00iYKb34UnfhmAPoo4ru0oe
+	OHrrarcCbxthmKiAL6sGcSzev0tGgW5eqARbO2yMpoyZdBjbqA0570B5sI78ISTbzxxJKH9bd0/
+	L3Ju5cbMmz5w3deWtJWiUMRYZ3k3JsFlBFmiqAtE0S0DCrC9me86ri6UK8XwZtdt4Eiq11DDIZ7
+	2EnNbx5wbijePxYKbN2K+WDFm86rkX7aQwOfeYra/xbOkmIUHCBQ1PE3dxq5m107P9SVox26VBB
+	2dYL+7Q5aLPFzRp8K6tslE8CYsW+24/lFjuQFk2S+ug1p4bwIesvec7s9Y9J88TyxgT3AaHwotu
+	fdMeUi7jl0P3If9juW9z7mKFkjW+rty84KL1TImXW0jhwXXw+uvKONoRbV7T7VIcDyhlCxUGQuX
+	PLXM9A=
+X-Received: by 2002:a5d:5d0c:0:b0:473:987f:c0ec with SMTP id ffacd0b85a97d-47f2dce7e1amr13941311f8f.36.1784024781255;
+        Tue, 14 Jul 2026 03:26:21 -0700 (PDT)
 Received: from localhost.localdomain (ip-89-176-136-191.bb.vodafone.cz. [89.176.136.191])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47f464c1f84sm7251991f8f.29.2026.07.14.03.26.18
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47f464c1f84sm7251991f8f.29.2026.07.14.03.26.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Jul 2026 03:26:19 -0700 (PDT)
+        Tue, 14 Jul 2026 03:26:20 -0700 (PDT)
 From: Petr Wozniak <petr.wozniak@gmail.com>
 To: nbd@nbd.name,
 	lorenzo@kernel.org,
@@ -83,17 +83,17 @@ Cc: shayne.chen@mediatek.com,
 	angelogioacchino.delregno@collabora.com,
 	linux-arm-kernel@lists.infradead.org,
 	Petr Wozniak <petr.wozniak@gmail.com>
-Subject: [PATCH wireless-next v2 1/2] wifi: mt76: share the throughput LED trigger across bands
-Date: Tue, 14 Jul 2026 12:26:14 +0200
-Message-ID: <20260714102615.2943-2-petr.wozniak@gmail.com>
+Subject: [PATCH wireless-next v2 2/2] wifi: mt76: mt7996: register a LED classdev for every band
+Date: Tue, 14 Jul 2026 12:26:15 +0200
+Message-ID: <20260714102615.2943-3-petr.wozniak@gmail.com>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260714102615.2943-1-petr.wozniak@gmail.com>
 References: <20260714102615.2943-1-petr.wozniak@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260714_032622_059820_7BF5C004 
-X-CRM114-Status: GOOD (  13.06  )
+X-CRM114-CacheID: sfid-20260714_032623_190546_A254C5B9 
+X-CRM114-Status: GOOD (  12.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,49 +108,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-ieee80211_create_tpt_led_trigger() creates one trigger per ieee80211_hw
-and returns NULL with a WARN_ON() if called again for the same hw.
+The per-band LED callbacks (brightness_set/blink_set) were only assigned
+to the primary PHY (dev->mphy) in mt7996_init_wiphy(). The 5/6 GHz bands
+are brought up later through mt7996_register_phy() ->
+mt7996_init_wiphy_band(), which never set those callbacks, so
+mt76_led_init() bailed out early for them and only the 2.4 GHz LED was
+ever registered.
 
-Under the single-wiphy MLO model each band registers its own LED classdev
-for the same hw, and the bands can be initialised in any order. Create the
-trigger on the first mt76_led_init() call, stash it on the primary phy's
-classdev and let the other bands reuse it. This avoids the WARN_ON() splat
-and gives every band the same throughput trigger regardless of init order.
+The hardware path is already per band: mt7996_led_set_config() indexes
+MT_LED_EN()/MT_LED_CTRL()/MT_LED_TX_BLINK() by mphy->band_idx, so per-band
+hardware TX-blink works as soon as the classdev exists.
+
+Move the callback assignment into mt7996_init_wiphy_band(), which runs for
+every band, so a LED classdev is registered for each band.
 
 Signed-off-by: Petr Wozniak <petr.wozniak@gmail.com>
 ---
- drivers/net/wireless/mediatek/mt76/mac80211.c | 18 +++++++++++++-----
- 1 file changed, 13 insertions(+), 5 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7996/init.c   | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index 13c4e8abe..0c6641050 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -228,11 +228,19 @@ static int mt76_led_init(struct mt76_phy *phy)
- 		 wiphy_name(hw->wiphy));
- 
- 	phy->leds.cdev.name = phy->leds.name;
--	phy->leds.cdev.default_trigger =
--		ieee80211_create_tpt_led_trigger(hw,
--					IEEE80211_TPT_LEDTRIG_FL_RADIO,
--					mt76_tpt_blink,
--					ARRAY_SIZE(mt76_tpt_blink));
-+	/* The throughput trigger is created once per ieee80211_hw. Under
-+	 * single-wiphy MLO every band registers its own LED classdev for the
-+	 * same hw and the bands can come up in any order, so create the trigger
-+	 * on the first call, stash it on the primary phy and let other bands
-+	 * reuse it; calling it again would trip a WARN_ON().
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+index d6f9aa1ab..b77b85654 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+@@ -472,6 +472,18 @@ mt7996_init_wiphy_band(struct ieee80211_hw *hw, struct mt7996_phy *phy)
+ 	mt7996_set_stream_vht_txbf_caps(phy);
+ 	mt7996_set_stream_he_eht_caps(phy);
+ 	mt7996_init_txpower(phy);
++
++	/* Register a LED classdev for every band, not just the primary one.
++	 * Under single-wiphy MLO the 5/6 GHz bands are brought up through
++	 * mt7996_register_phy(); without these callbacks mt76_led_init() skips
++	 * them and only the 2.4 GHz LED is exposed. The hardware TX-blink path
++	 * is already indexed by band_idx, so per-band blink works once the
++	 * classdev exists.
 +	 */
-+	if (!dev->phy.leds.cdev.default_trigger)
-+		dev->phy.leds.cdev.default_trigger =
-+			ieee80211_create_tpt_led_trigger(hw,
-+				IEEE80211_TPT_LEDTRIG_FL_RADIO,
-+				mt76_tpt_blink,
-+				ARRAY_SIZE(mt76_tpt_blink));
-+	phy->leds.cdev.default_trigger = dev->phy.leds.cdev.default_trigger;
++	if (IS_ENABLED(CONFIG_MT76_LEDS)) {
++		phy->mt76->leds.cdev.brightness_set = mt7996_led_set_brightness;
++		phy->mt76->leds.cdev.blink_set = mt7996_led_set_blink;
++	}
+ }
  
- 	dev_info(dev->dev,
- 		"registering led '%s'\n", phy->leds.name);
+ static void
+@@ -542,12 +554,6 @@ mt7996_init_wiphy(struct ieee80211_hw *hw, struct mtk_wed_device *wed)
+ 	hw->max_tx_fragments = 4;
+ 	wiphy->txq_memory_limit = 32 << 20; /* 32 MiB */
+ 
+-	/* init led callbacks */
+-	if (IS_ENABLED(CONFIG_MT76_LEDS)) {
+-		dev->mphy.leds.cdev.brightness_set = mt7996_led_set_brightness;
+-		dev->mphy.leds.cdev.blink_set = mt7996_led_set_blink;
+-	}
+-
+ 	wiphy->max_scan_ssids = 4;
+ 	wiphy->max_scan_ie_len = IEEE80211_MAX_DATA_LEN;
+ 
 -- 
 2.51.0
 
