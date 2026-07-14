@@ -4,106 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58A92C44507
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 11:59:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B0CDC43458
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 12:06:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
-	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2dz/Y1HrLufnbLtLUTRWz4L3ORozmQ9Ewma4qta/N4k=; b=Xg0qGbKSD8AB4ZRfaDDChOsqJi
-	oxV3FxT2Q9qJTmlLakAPgXCVEY/IVLS4ozWXkEQePc3JusdZ8mWAJmX2LLC76kjRjctqjqxufWyEE
-	aTJP5QSLErA7trNBZvT1wFJtt7mbI+4JUOL4Xw/cw27bQ+KTDjHryqtlnkoB/vTYvwjDyYtpGo+Qi
-	OOJoBdt2nMo7qo8nBTwGL8gqe6OTTQvkVUb/pjcBqDRsGyFDanuSvTT4KftHfr2/qcTqyliUIJIBX
-	AmvHSfLS8G/ZNsXWzaIaEQ9zpZgwqnJzoGWAXpTOhK8m3upoAN1wAw/XDIYFx6tRfE0DonPaljAHY
-	TU01uQ+w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zXjAh2537yo9G5vWAgQyYke6ki6Lnw1UTZmZWsxbjhc=; b=Oq1UF0eDgk7gBY2XAgdxD64w5y
+	jqcS6D3FSuevnSORExWq46Z1yhnF+ziaKkZx+EEImb8ySsl8Qww/3A2he6QLm5rypFIz1yj1ZeNQb
+	bgAMKdofp/TXovjluWTRRmfD0gccDws4ZSOlVgR8xRsYhKQVKR4KdmbXkCXXFC2fjpVZrqJETQ1qQ
+	ACZpyJ42vYl3h0XvR2oLTYxBB2dBO7hWmQWpGCvXfKDTxfBoJXFWT7933AeHDzpdWr49yhUDM4Fow
+	lhgm0C59glRzw+9zUYDDgATnADInO/R3H1CPBnkLVIxi3KTxe1/CNcOiBPGz2WfeQ9aH3TUmTGvlF
+	+A5rXQpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjbnE-0000000BpAF-1SKd;
-	Tue, 14 Jul 2026 11:59:20 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1wjbu0-0000000Br4s-2WLe;
+	Tue, 14 Jul 2026 12:06:20 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjbmz-0000000Bove-3V0K
-	for linux-mediatek@lists.infradead.org;
-	Tue, 14 Jul 2026 11:59:08 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-493bfe9f886so22894295e9.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 14 Jul 2026 04:59:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784030344; x=1784635144; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=2dz/Y1HrLufnbLtLUTRWz4L3ORozmQ9Ewma4qta/N4k=;
-        b=EOdTjPIHndOjMiNCHwnm325lAZ9XsZUmurchn2l06PhC4cQ93TskIToWc7G3PjJFuX
-         SJ9QI0eam+DQvRfoN4iJ2PDY9Efz7uPTqd04/dkW5f6jvZ5NUDUUsyRDeO7X82NpTgIj
-         cFfB0Ou7G21Si2PJI4JQt+SDqpInc4GgwQPSJQTVpPgi1UaFn+0El8w+JG4JIJR2DXhP
-         cRf++36O1DYbNpo/UOpVmTJRC16bZJwJoheAfWv6LVXEv7Tt6s4HNawYgZQMSGzxWrgv
-         PgQmdADRLnBSZ1vqIB/0vo+CyhaHUI+pBuPCLPyo8bcVrrKJrxcbQ3KbviXBs4Wu4JI2
-         hZdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784030344; x=1784635144;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=2dz/Y1HrLufnbLtLUTRWz4L3ORozmQ9Ewma4qta/N4k=;
-        b=jEGHqU3+neoeIIbbfW6Mm2FwvxjCgHaSzSHlDVXksLoLb4G7bZADVWtDJC8XVPHKwf
-         oRvOX4rx7A9kDMyC2Ccvvz+ATbsjzSDOKjlEZkWvlcPhIh4tR1eNDTogNHt4vvOJCdLs
-         V6HkSYfSF//g+qyVyo8PMgCFhIJR4aEL5IuB9lsIsG5Zx6Tk7ztnf00ZhDddpHzVm2wO
-         i12gVMNg1Ed4ClzajVceNUrmnsK94WY3QLmaEJyK2QQpbvEdPO6lnCsLdxC9Muql8rVL
-         OOyLOJF6MtympFbyjKdcie0BK2w6jiPMOM/S7g/cplXXuKXhwoSCvop1q3bxbPUY+No7
-         Llfg==
-X-Forwarded-Encrypted: i=1; AHgh+RrX1l4rbImUKsEfeT0QvSogcPRQIMxC7NvOsCA8ZlsVz4SHIy6w4IjVAz8GJhNd6kSRbMh6lct1yvbDldp9SA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwO1hLL5EPac9kj2hS5BK7OtWLWP4g90IjavmB2qG2D1ftSkq6h
-	ehE7u2CRzGF0bmiXeiULjxDlLlg1y3wQYVYq7kpXQpBLs8H7zt5wpM7NnABrn7qM
-X-Gm-Gg: AfdE7clXaukPS4Z61ilFHT7mLqdb9KIew+ZX6R5Cpb2HD2U2tkDUxuzmg8Lc1NKauEb
-	UHR3eVQdkpQaB362p7i929br/0so4rgVQOZVrOZHLORUp55REq0Fo5GYFIGf3uLqIKkpaAHyrQ0
-	sTRE3I+kx+SY4kaJ+tnjFuiw6o0tUCIDUPp/Ccwd7R6xW/PZf+kyXrQK1QFhjm5IdEB7yFy3c7n
-	K18CW9SRzMjACcOueqH7vdaqkrSWGkL7sOVE6b+sORx4K0LK5HzC9nuLp1ppYMLibToqJXl2Tkv
-	vqKnI+mTy6Q/sH44y/ntWDIkTNwcNtB5YZ9nV8s7VmOtbyofmYyBtI0vryZ9xKgv9nyfpRkK0VQ
-	sgrT890QPmDjvRZumeXfoOBe5v1EyaDPhGJXCk3ynYK6UgHOL3RcLHSs94S2HOF627m/p0mU99u
-	6C3MEMKdf48UPkct6SXivQxUrQdNsDIM+yHQjO1ANpYkxyHV+d+LwZrbi4lvN0T18fuYF6Lc4ie
-	xuNTttp
-X-Received: by 2002:a05:600c:993:b0:490:e5c1:b8bf with SMTP id 5b1f17b1804b1-493f87ea615mr89680695e9.13.1784030344127;
-        Tue, 14 Jul 2026 04:59:04 -0700 (PDT)
-Received: from Ansuel-XPS24.localdomain (host-95-248-227-210.retail.telecomitalia.it. [95.248.227.210])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-493fd3ccfd4sm180531655e9.2.2026.07.14.04.59.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Jul 2026 04:59:02 -0700 (PDT)
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Brian Masney <bmasney@redhat.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
+	id 1wjbtz-0000000Br4B-0wxy;
+	Tue, 14 Jul 2026 12:06:19 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id A0A8B411D9;
+	Tue, 14 Jul 2026 12:06:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 985521F000E9;
+	Tue, 14 Jul 2026 12:06:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784030778;
+	bh=zXjAh2537yo9G5vWAgQyYke6ki6Lnw1UTZmZWsxbjhc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=JALI0fxfqvUbwOcumUkWMdf9+m8l9v/z9X4lZj/ehsLJwp7ooqiwniR8gwMwjlGX4
+	 KQm5hPhANenPfd2Bwl7Lw10CTxhcLtoJlVyhmsg2A4CH0cM2OlgloQDORZXOtineLC
+	 LSXy7jBY23Sl0ZuCS3XZeGNWqADdOIypDvJINA7+5rlsAPvHLK4n6INGqXPYHq43z0
+	 TChJyIoFjVyZF6bcTAaSLXrQYMnVCU5gag1jLCsHntMDSLG6NIQt9Oy31Q263sVXSw
+	 1vNiRk46Ol5RAtKDAakIkefOUYXtHCPa0UXek/BlAs8NXTFuLNcB3vZN6MkZkKKMuD
+	 FpfTkmjJaiaEg==
+Date: Tue, 14 Jul 2026 17:36:14 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Wolfram Sang <wsa+renesas@sang-engineering.com>
+Cc: Pan Chuang <panchuang@vivo.com>, Frank Li <Frank.Li@nxp.com>,
+	Keguang Zhang <keguang.zhang@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	linux-pci@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v4 4/4] PCI: mediatek-gen3: Add 2-lanes mode support for Airoha AN7581
-Date: Tue, 14 Jul 2026 13:58:46 +0200
-Message-ID: <20260714115848.8537-5-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260714115848.8537-1-ansuelsmth@gmail.com>
-References: <20260714115848.8537-1-ansuelsmth@gmail.com>
+	Andreas =?iso-8859-1?Q?F=E4rber?= <afaerber@suse.de>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Daniel Mack <daniel@zonque.org>,
+	Haojian Zhuang <haojian.zhuang@gmail.com>,
+	Robert Jarzmik <robert.jarzmik@free.fr>,
+	Paul Walmsley <pjw@kernel.org>,
+	Samuel Holland <samuel.holland@sifive.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	=?iso-8859-1?Q?Am=E9lie?= Delaunay <amelie.delaunay@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Laxman Dewangan <ldewangan@nvidia.com>,
+	Jon Hunter <jonathanh@nvidia.com>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	Icenowy Zheng <zhengxingda@iscas.ac.cn>,
+	Kees Cook <kees@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+	Miaoqian Lin <linmq006@gmail.com>,
+	Jyothi Kumar Seerapu <quic_jseerapu@quicinc.com>,
+	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
+	Biju Das <biju.das.jz@bp.renesas.com>,
+	Cosmin Tanislav <cosmin-gabriel.tanislav.xa@renesas.com>,
+	John Madieu <john.madieu.xa@bp.renesas.com>,
+	Thomas Andreatta <thomasandreatta2000@gmail.com>,
+	"open list:FREESCALE eDMA DRIVER" <imx@lists.linux.dev>,
+	"open list:FREESCALE eDMA DRIVER" <dmaengine@vger.kernel.org>,
+	open list <linux-kernel@vger.kernel.org>,
+	"open list:MIPS/LOONGSON1 ARCHITECTURE" <linux-mips@vger.kernel.org>,
+	"moderated list:MEDIATEK DMA DRIVER" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:MEDIATEK DMA DRIVER" <linux-mediatek@lists.infradead.org>,
+	"moderated list:ARM/ACTIONS SEMI ARCHITECTURE" <linux-actions@lists.infradead.org>,
+	"open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
+	"open list:SIFIVE DRIVERS" <linux-riscv@lists.infradead.org>,
+	"open list:ARM/RISC-V/RENESAS ARCHITECTURE" <linux-renesas-soc@vger.kernel.org>,
+	"moderated list:STM32 DMA DRIVERS" <linux-stm32@st-md-mailman.stormreply.com>,
+	"open list:ARM/Allwinner sunXi SoC support" <linux-sunxi@lists.linux.dev>,
+	"open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>
+Subject: Re: [PATCH 00/26] dmaengine: Remove redundant error messages on IRQ
+ request failure
+Message-ID: <alYmNl--mxMK1-86@vaman>
+References: <20260709135846.97972-1-panchuang@vivo.com>
+ <ak-vkQ8g_ePdY15f@shikoro>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260714_045905_960130_4677D4BF 
-X-CRM114-Status: GOOD (  26.17  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ak-vkQ8g_ePdY15f@shikoro>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,221 +119,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Airoha AN7581 SoC supports configuring the first PCIe0 lane to 2-lanes
-mode (2x link) by bonding it with the second PCIe lane (PCIe1). This is
-done by configuring the PCIe MUX in the SCU register.
+On 09-07-26, 16:26, Wolfram Sang wrote:
+> On Thu, Jul 09, 2026 at 09:58:04PM +0800, Pan Chuang wrote:
+> > Commit 55b48e23f5c4b6f5ca9b7ab09599b17dcf501c10 ("genirq/devres: Add
+> > error handling in devm_request_*_irq()") added automatic error logging
+> > to devm_request_threaded_irq() and devm_request_any_context_irq() via
+> > the new devm_request_result() helper. The helper prints device name,
+> > IRQ number, handler functions, and error code on failure.
+> > 
+> > Since devm_request_irq() is a static inline wrapper around
+> > devm_request_threaded_irq(), it also benefits from this automatic
+> > logging.
+> > 
+> > This series removes the now-redundant dev_err() and dev_err_probe() calls
+> > in dmaengine drivers that follow these devm_request_*_irq() functions,
+> > as the core now provides more detailed diagnostic information on failure.
+> > 
+> > Pan Chuang (26):
+> >   dmaengine: fsl-edma-main: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: fsl-qdma: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: loongson-loongson1-apb-dma: Remove redundant
+> >     dev_err()/dev_err_probe()
+> >   dmaengine: mediatek-mtk-cqdma: Remove redundant
+> >     dev_err()/dev_err_probe()
+> >   dmaengine: mediatek-mtk-hsdma: Remove redundant
+> >     dev_err()/dev_err_probe()
+> >   dmaengine: mmp_pdma: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: moxart-dma: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: owl-dma: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: pxa_dma: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: qcom-gpi: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: sf-pdma-sf-pdma: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: sh-rcar-dmac: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: sh-rz-dmac: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: sh-shdmac: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: sh-usb-dmac: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: sprd-dma: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: st_fdma: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: stm32-stm32-dma: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: stm32-stm32-dma3: Remove redundant
+> >     dev_err()/dev_err_probe()
+> >   dmaengine: stm32-stm32-mdma: Remove redundant
+> >     dev_err()/dev_err_probe()
+> >   dmaengine: sun4i-dma: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: sun6i-dma: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: tegra20-apb-dma: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: ti-edma: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: uniphier-xdmac: Remove redundant dev_err()/dev_err_probe()
+> >   dmaengine: xgene-dma: Remove redundant dev_err()/dev_err_probe()
+> 
+> One patch per subsystem for such trivial changes, please.
 
-To correctly configure PCIe0 in 2x link, define in DT the following
-additional property:
-- additional reg, 'sec-pcie-mac' for the secondary PCIe.
-- PERSTOUT reset for both main and secondary PCIE0, called 'perstout' and
-  'sec-perstout'
-- airoha,scu property to correctly configure the SCU register for the PCIe
-  MUX
-- 'num-lanes' set to '2' to enable PCIe0 in 2x link
+Yes pretty please
 
-In such configuration the EQ preset are configured to the same values.
-
-To permit correct configuration of the PCIe line, additional logic is added
-to assert and deassert the PERSTOUT resets.
-
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
----
- drivers/pci/controller/pcie-mediatek-gen3.c | 106 ++++++++++++++++----
- 1 file changed, 89 insertions(+), 17 deletions(-)
-
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index b0accd828589..764974045340 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -32,6 +32,11 @@
- 
- #include "../pci.h"
- 
-+/* AN7581 SCU register */
-+#define SCU_PCIC			0x88
-+#define SCU_PCIC_PCIE_CTRL		GENMASK(7, 0)
-+
-+/* PCIe register */
- #define PCIE_BASE_CFG_REG		0x14
- #define PCIE_BASE_CFG_SPEED		GENMASK(15, 8)
- 
-@@ -131,6 +136,7 @@
- #define PCIE_ATR_TLP_TYPE_IO		PCIE_ATR_TLP_TYPE(2)
- 
- #define MAX_NUM_PHY_RESETS		3
-+#define MAX_NUM_PERSTOUT_RESETS		2
- 
- #define PCIE_MTK_RESET_TIME_US		10
- 
-@@ -203,9 +209,11 @@ struct mtk_msi_set {
- struct mtk_gen3_pcie {
- 	struct device *dev;
- 	void __iomem *base;
-+	void __iomem *sec_base;
- 	phys_addr_t reg_base;
- 	struct reset_control *mac_reset;
- 	struct reset_control_bulk_data phy_resets[MAX_NUM_PHY_RESETS];
-+	struct reset_control_bulk_data perstout_resets[MAX_NUM_PERSTOUT_RESETS];
- 	struct phy *phy;
- 	struct clk_bulk_data *clks;
- 	int num_clks;
-@@ -928,6 +936,14 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
- 	if (ret)
- 		return dev_err_probe(dev, ret, "failed to get PHY bulk reset\n");
- 
-+	pcie->perstout_resets[0].id = "perstout";
-+	pcie->perstout_resets[1].id = "sec-perstout";
-+
-+	ret = devm_reset_control_bulk_get_optional_exclusive(dev, MAX_NUM_PERSTOUT_RESETS,
-+							     pcie->perstout_resets);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to get PERSTOUT bulk reset\n");
-+
- 	pcie->mac_reset = devm_reset_control_get_optional_exclusive(dev, "mac");
- 	if (IS_ERR(pcie->mac_reset))
- 		return dev_err_probe(dev, PTR_ERR(pcie->mac_reset), "failed to get MAC reset\n");
-@@ -949,18 +965,38 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
- 			pcie->num_lanes = num_lanes;
- 	}
- 
-+	/* Map secondary PCIe for 2-lanes mode for EN7581 */
-+	if (pcie->num_lanes == 2 && device_is_compatible(dev, "airoha,en7581-pcie")) {
-+		regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sec-pcie-mac");
-+		if (!regs)
-+			return -EINVAL;
-+		pcie->sec_base = devm_ioremap_resource(dev, regs);
-+		if (IS_ERR(pcie->sec_base))
-+			return dev_err_probe(dev, PTR_ERR(pcie->sec_base), "failed to map secondary register base\n");
-+	}
-+
- 	return 0;
- }
- 
- static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- {
- 	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
-+	unsigned int num_lanes = max(1, pcie->num_lanes);
-+	struct regmap *pbus_regmap, *scu;
- 	struct device *dev = pcie->dev;
- 	struct resource_entry *entry;
--	struct regmap *pbus_regmap;
- 	u32 val, args[2], size;
- 	resource_size_t addr;
--	int err;
-+	int i, err;
-+
-+	if (num_lanes > 2)
-+		return dev_err_probe(dev, -EINVAL, "unsupported num-lanes, maximum 2 lanes supported\n");
-+
-+	if (num_lanes == 2) {
-+		scu = syscon_regmap_lookup_by_phandle(dev->of_node, "airoha,scu");
-+		if (IS_ERR(scu))
-+			return dev_err_probe(dev, PTR_ERR(scu), "failed to map SCU regmap\n");
-+	}
- 
- 	/*
- 	 * The controller may have been left out of reset by the bootloader
-@@ -992,6 +1028,19 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- 	size = lower_32_bits(resource_size(entry->res));
- 	regmap_write(pbus_regmap, args[1], GENMASK(31, __fls(size)));
- 
-+	/* Assert PERSTOUT for all relevant lines */
-+	err = reset_control_bulk_assert(MAX_NUM_PERSTOUT_RESETS,
-+					pcie->perstout_resets);
-+	if (err) {
-+		dev_err(dev, "failed to assert PERSTOUTs\n");
-+		return err;
-+	}
-+
-+	/* Configure SCU MUX to disable PCIE1 for 2 lines mode */
-+	if (num_lanes == 2)
-+		regmap_update_bits(scu, SCU_PCIC, SCU_PCIC_PCIE_CTRL,
-+				   FIELD_PREP(SCU_PCIC_PCIE_CTRL, BIT(1)));
-+
- 	/*
- 	 * Unlike the other MediaTek Gen3 controllers, the Airoha EN7581
- 	 * requires PHY initialization and power-on before PHY reset deassert.
-@@ -1024,18 +1073,6 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- 	pm_runtime_enable(dev);
- 	pm_runtime_get_sync(dev);
- 
--	val = FIELD_PREP(PCIE_VAL_LN0_DOWNSTREAM, 0x47) |
--	      FIELD_PREP(PCIE_VAL_LN1_DOWNSTREAM, 0x47) |
--	      FIELD_PREP(PCIE_VAL_LN0_UPSTREAM, 0x41) |
--	      FIELD_PREP(PCIE_VAL_LN1_UPSTREAM, 0x41);
--	writel_relaxed(val, pcie->base + PCIE_EQ_PRESET_01_REG);
--
--	val = PCIE_K_PHYPARAM_QUERY | PCIE_K_QUERY_TIMEOUT |
--	      FIELD_PREP(PCIE_K_PRESET_TO_USE_16G, 0x80) |
--	      FIELD_PREP(PCIE_K_PRESET_TO_USE, 0x2) |
--	      FIELD_PREP(PCIE_K_FINETUNE_MAX, 0xf);
--	writel_relaxed(val, pcie->base + PCIE_PIPE4_PIE8_REG);
--
- 	err = clk_bulk_prepare_enable(pcie->num_clks, pcie->clks);
- 	if (err) {
- 		dev_err(dev, "failed to prepare clock\n");
-@@ -1043,14 +1080,47 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- 	}
- 
- 	/*
--	 * Airoha EN7581 performs PCIe reset via clk callbacks since it has a
--	 * hw issue with PCIE_PE_RSTB signal. Add wait for the time needed to
--	 * complete the PCIe reset.
-+	 * Old Airoha EN7581 clock driver performed PCIe reset via
-+	 * clk callbacks since it has a hw issue with PCIE_PE_RSTB signal.
-+	 * This is now handled by dedicated PERSTOUT resets with clk
-+	 * driver only enabling the refclk.
-+	 *
-+	 * Wait is still needed for refclk to stabilize
- 	 */
- 	msleep(PCIE_T_PVPERL_MS);
- 
-+	/* Configure all the lines to the same EQ config */
-+	for (i = 0; i < num_lanes; i++) {
-+		void __iomem *base = pcie->base;
-+
-+		if (i == 1)
-+			base = pcie->sec_base;
-+
-+		val = FIELD_PREP(PCIE_VAL_LN0_DOWNSTREAM, 0x47) |
-+			FIELD_PREP(PCIE_VAL_LN1_DOWNSTREAM, 0x47) |
-+			FIELD_PREP(PCIE_VAL_LN0_UPSTREAM, 0x41) |
-+			FIELD_PREP(PCIE_VAL_LN1_UPSTREAM, 0x41);
-+		writel_relaxed(val, base + PCIE_EQ_PRESET_01_REG);
-+
-+		val = PCIE_K_PHYPARAM_QUERY | PCIE_K_QUERY_TIMEOUT |
-+			FIELD_PREP(PCIE_K_PRESET_TO_USE_16G, 0x80) |
-+			FIELD_PREP(PCIE_K_PRESET_TO_USE, 0x2) |
-+			FIELD_PREP(PCIE_K_FINETUNE_MAX, 0xf);
-+		writel_relaxed(val, base + PCIE_PIPE4_PIE8_REG);
-+	}
-+
-+	/* Deassert PERSTOUT for all relevant lines */
-+	err = reset_control_bulk_deassert(MAX_NUM_PERSTOUT_RESETS,
-+					  pcie->perstout_resets);
-+	if (err) {
-+		dev_err(dev, "failed to deassert PERSTOUTs\n");
-+		goto err_perstout_deassert;
-+	}
-+
- 	return 0;
- 
-+err_perstout_deassert:
-+	clk_bulk_disable_unprepare(pcie->num_clks, pcie->clks);
- err_clk_prepare_enable:
- 	pm_runtime_put_sync(dev);
- 	pm_runtime_disable(dev);
-@@ -1136,6 +1206,8 @@ static void mtk_pcie_power_down(struct mtk_gen3_pcie *pcie)
- 
- 	phy_power_off(pcie->phy);
- 	phy_exit(pcie->phy);
-+	reset_control_bulk_assert(MAX_NUM_PERSTOUT_RESETS,
-+				  pcie->perstout_resets);
- 	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets,
- 				  pcie->phy_resets);
- }
 -- 
-2.53.0
-
+~Vinod
 
