@@ -4,61 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E76BBC44501
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 16:42:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4426AC43458
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 22:26:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k61jezHC3k/RbNT9F3tzR3+tjmPaHQC3k1irVJlQASY=; b=kxcYprnRefNzwfRzUDL9SFqxeS
-	NT0NSaA12HYJ3C66zXr1bSpIPSrviV73xg4vkGbm4biUtepG4qh8rta7TUoJv3G/SYRtPyKxw78EN
-	c9x7gRWGYHfudO5mfq5geCxHQavNVi4XHG7TdnUiCDXOPUkfE5lXj4QybwMvqXwsdTNUssB+8JrVo
-	NwfRtNV468s7yxlIZO0OZrm6lUUHJleULyYgcCUAGAFRRuWv6oV7HUDAi9ZWl5mNW4c2o2j5AbvcL
-	f4k1T+L6fxascdvVMVHK0Mvf/42N5EiNJ3aVyFxI3ej34MBKTK5IS/qbM1BbHVbP8pBxkPj1Axe44
-	OKysmgKw==;
+	bh=FnY3zyFinC3+lm72vnzw/gDx1kFOPSh6nzQxKUrgSKM=; b=oCukPvLnoeJJHg+ZNcNtdNtlBh
+	mvUz+74CVzZ8u4Pw1qhalbBOcD8jw4R0+5x6eceSD1q79ZQS42QwKvGSTaDRQTgNNauhDxF3JxlCO
+	cwHX+LJ+tnTA922ETEuIjL2R5zpI1Vm2JPJ1RkzQ2o848OBZzdmsJxc2pKIuwMXbpCdKr5Ys7dogT
+	U4F9Ry56swZrec/g+Lpdh5K09JTr0R7lbUSWkepnNwIy1n/kp1/8K/iQqcipYjKA5zn8pkCGDQPPs
+	MudgfnXzpILFm6ENYnbeEr+kE2HpnAsfhwNenO6qmaDTkTeFk1Vi9VJs/ScFyz2DuGwv75AqISgwN
+	NdZRdAFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjgCv-0000000Cfoi-2hGV;
-	Tue, 14 Jul 2026 16:42:09 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wjlZd-0000000DPB2-2U49;
+	Tue, 14 Jul 2026 22:25:57 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjgCu-0000000CfoL-1tbs;
-	Tue, 14 Jul 2026 16:42:08 +0000
+	id 1wjlZc-0000000DPAV-1gYT;
+	Tue, 14 Jul 2026 22:25:56 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id CA34B405FF;
-	Tue, 14 Jul 2026 16:42:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1ED61F000E9;
-	Tue, 14 Jul 2026 16:42:06 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id CF230601ED;
+	Tue, 14 Jul 2026 22:25:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4F831F000E9;
+	Tue, 14 Jul 2026 22:25:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784047327;
-	bh=k61jezHC3k/RbNT9F3tzR3+tjmPaHQC3k1irVJlQASY=;
+	s=k20260515; t=1784067955;
+	bh=FnY3zyFinC3+lm72vnzw/gDx1kFOPSh6nzQxKUrgSKM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Jz+9CzekUY1eftq3OxsUOGnOISpZqtktT0tAgq7mvu+rrHDWAkEdGbOVs0K8Gg3QC
-	 b5aaXIH/ZMAaxTXSgPmRJqRvDW2TKxz1OXFgI66JwZPhI7E4nr+T0JEfJjGiT5P27W
-	 nJImc7zIO3QScevDh3Bkkz17U2GppED6C15BmEe325W5AnfsRjWNhz8FlZoH8eFoH8
-	 03LENgZV+8yKzGCIQtxrpu+0sH4uPslR8zAbEOOUAW1aDopUrBInyka1ERI8Z621Wk
-	 Pi91ocPthGdpsrOaWaL12/IlkoTc6fJOtnfw8o0xojHG/3Jmuv8bCKbkudvZPuJf3U
-	 DwGKZI6sr/25Q==
-Date: Tue, 14 Jul 2026 22:12:03 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunfeng.yun@mediatek.com, neil.armstrong@linaro.org, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de, matthias.bgg@gmail.com,
-	justin.yeh@mediatek.com, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org, kernel@collabora.com
-Subject: Re: [PATCH v3 2/2] phy: mediatek: Add support for MT8196 MIPI DSI PHY
-Message-ID: <alZm25Ro_WdKigPd@vaman>
-References: <20260713103805.23030-1-angelogioacchino.delregno@collabora.com>
- <20260713103805.23030-3-angelogioacchino.delregno@collabora.com>
+	b=N98NbSqpiwClF1AgURNZpLcV2roeim3qj6ofCisOzrlaFw2JSk5FNtXl6hVOyIrpk
+	 uN5nJInB316XY56tbnTv0qZIdDtETMWtXsxiDrGANR3eETeX5R/R666jWhgkf+XJa8
+	 pkQ+JS1G7lcRGalcFWyN3OJ3Xs1xcgf0tCzTcFO332gW65eSVlptxeSmo8wME+curv
+	 A1JJZuDNOVVkUBZTUVDKkKa620F4Mya3ECF7JSiyM8AhOGRx8EsJMLPHr131yrqG/h
+	 67+L/NdfLDGvUvoDJUXg5+H1k6LilDwJTMK3V+EMOZ/GxiKrlXKBd942W+EtvH2nmK
+	 k4IoUrixnUi3Q==
+Date: Wed, 15 Jul 2026 00:25:52 +0200
+From: Andi Shyti <andi.shyti@kernel.org>
+To: rva333@protonmail.com
+Cc: Qii Wang <qii.wang@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, stable@vger.kernel.org
+Subject: Re: [PATCH v2] i2c: mediatek: fix WRRD for SoCs without auto_restart
+ option
+Message-ID: <ala3XZ1Jw_M8sZlt@zenone.zhora.eu>
+References: <20260709-6572-6595-i2c-v2-1-b2fb8510d1d3@protonmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260713103805.23030-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260709-6572-6595-i2c-v2-1-b2fb8510d1d3@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,22 +70,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13-07-26, 12:38, AngeloGioacchino Del Regno wrote:
-> Add support for the MIPI DSI PHY found in the MediaTek MT8196 SoC
-> and its variants.
-> This PHY has a different register layout and provides support for
-> more hardware features compared to the previous generation.
+Hi Roman,
+
+On Thu, Jul 09, 2026 at 04:31:29PM +0300, Roman Vivchar via B4 Relay wrote:
+> From: Roman Vivchar <rva333@protonmail.com>
 > 
-> This initial driver only adds support for basic functionality that
-> is necessary to drive MIPI DSI displays as a D-PHY.
+> MediaTek mt65xx family SoCs have no auto restart, however, they still
+> support the WRRD mode in the hardware. Because auto_restart is set to 0,
+> the WRRD mode will be never enabled, leading to read errors.
 > 
-> Feature additions like lane-swap, DPHY/CPHY switching, dual-port,
-> and others, may be done in the future.
+> Fix this by removing auto_restart check from the WRRD enable path.
+> 
+> Fixes: b49218365280 ("i2c: mediatek: fix potential incorrect use of I2C_MASTER_WRRD")
+> Cc: stable@vger.kernel.org
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 
-This seems to fail to build
+merged to i2c/i2c-fixes.
 
-https://patchwork.kernel.org/project/linux-phy/patch/20260713103805.23030-2-angelogioacchino.delregno@collabora.com/
-
--- 
-~Vinod
+Thanks,
+Andi
 
