@@ -4,70 +4,226 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AC96C43458
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 08:46:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C065C44501
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jul 2026 09:34:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FKc9E8mHgmIZ99K/Yl8Ib+dj1S9dXObzgLEVLXXcaLg=; b=neZgGdWlabgfrWSj919MQ7p+vy
-	2S1fAVZbUGevVO/35gqJKmmr2Teay7CBPa0wAM43Fmycq7Mm9lZKqB1z8BX1jrRcJbWn9WKjXrjsK
-	j0LYZnuZcBr/E/rZNOCNaDNRKHL1t20jekbIk3R1cWuNFEGXEjgsb0krpcVYdXURfs+O/xwdiGLj2
-	sjgXDQsbWJaaf5X9dfO4LD8XqNkkEljOlO4EIPN1v4m45KOUe5fw8HGFfH9x0miEJwaT0ofVLihn3
-	4idPVIqQyPiYzpUK5KAI6wI+EN28hHykaOLDcjbISKOvagCFP3/fXak/9R+j88o1BBSlxaOImAY97
-	tTQE57Vg==;
+	bh=6bzcUh0NeTVNFO0dsN2oH13jNagu/WW2Eke4TUjbiss=; b=ws6fVwtxst9NUslu1RCcNaXDM6
+	UJzsYa8uS8B8CujqloSUm8Nb1mu/g6q9NByoPOCCz0XDavHXbb4LeL+0eM39xmkVdNpq6jIDffUJa
+	NA+ZNFwfXJrGVNEnPlEbhEpKpmnFEYI3tyYRvowZwJaBsyYunlIm2rlvd4KvwM+AC095Cu02dyxw3
+	q1ZmucUuNGcTrGf/coaZxYpGz1SngEP6jtm90bFNbBgC3ZYw2TnlwED9mfrWfdBapKNOIEzwKH3X9
+	b0PJRDvwur7JBG981qL7B/TGe259v93MP9cZD3zFKN5O2ACUTMPkRgGdYd9iub+TFO9LX33tBSr2N
+	wX8qazUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjYmB-0000000BLed-1v65;
-	Tue, 14 Jul 2026 08:46:03 +0000
-Received: from mgamail.intel.com ([192.198.163.12])
+	id 1wjZWa-0000000BSxd-2Yjm;
+	Tue, 14 Jul 2026 09:34:00 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjYm9-0000000BLdy-0aA5;
-	Tue, 14 Jul 2026 08:46:02 +0000
+	id 1wjZWX-0000000BSwW-3AfB;
+	Tue, 14 Jul 2026 09:33:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1784018761; x=1815554761;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=xxJuEvZ2G5Kbr3szIgk1JdoMkjjna6X5BPLRDG4VrrU=;
-  b=ZqPFgdhDtxtjWk8ULljLi5ki6ANd9h7Gulx3fwAEH0WeVm/5hlqPh6ll
-   VfjZFthKRNypar6OhE5oT1ZpROmbDi5arAW4TBodNzFf847rz/ZxsbYpk
-   DJKAr06+xGZin90zdjrqml1RVoufjBDwrtAq6uAcYokJnTxOcK/Rh/JOf
-   zxW8Vrf/beQg6xiSLLn6V2BMi3DwGOMUecbSGv2lf6FPAsjZMIgOCaoe1
-   1PjxAS5JsRk12XSc0lKwh/cXluCWvQAIktrGh8MrsCANEuNt80Z0SvoJP
-   01lhE9b3DItyzABPOa1q3rT5AQa500MbyCkB75sn+bZp/fjZhDZTRaZO/
-   w==;
-X-CSE-ConnectionGUID: pXMf/2PpQQ6QIqpos9CEsw==
-X-CSE-MsgGUID: FNSFJosrQImE87PszjlQhg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11846"; a="88458779"
+  t=1784021638; x=1815557638;
+  h=message-id:date:subject:to:cc:references:from:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=83KHyJ/b2FtbERA6/65ngMJebElt5Qh4alz8bB5cPN0=;
+  b=UyQbOSLUUiHfEmCx4z6oDAFZ9CXcLFarToqJM1I0zB/XRsIxEY0vc7dB
+   FWvMN676n6A8Wm4FPIYZSpEDSH2mRH16xFoe6XkNUklU57fx1YhvgbwH2
+   8wSPIXNQZmkyWglO4bofa8Lp6+rdM5/ATNhcPbhSQkyU0SLt/DBCRfJIU
+   /ehqKw6sVJXylUxP12N5es7h/lQ/Zn+7S2MVm5mSbDokhMN1gqftAZR41
+   krC9+pmlfyHFT7xRF+sha8kqABe6kM2sTFDyjHEzOWo/qrauJB/FKQmUG
+   Dt3CDSqPuRj1tSWlEn/EX8gyOW9Pot3YUrojHceWIiqqsW4gWCb+LJBSn
+   A==;
+X-CSE-ConnectionGUID: cZAH5CncSyK49R8GhwdWjg==
+X-CSE-MsgGUID: stcBfQpkTMed8gr4H+Zd+Q==
+X-IronPort-AV: E=McAfee;i="6800,10657,11846"; a="84661523"
 X-IronPort-AV: E=Sophos;i="6.25,163,1779174000"; 
-   d="scan'208";a="88458779"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jul 2026 01:45:55 -0700
-X-CSE-ConnectionGUID: qtQ7RAR0TAGtJe+16mkeLA==
-X-CSE-MsgGUID: yJiBbxipTXeGeysSoUXSEw==
+   d="scan'208";a="84661523"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jul 2026 02:33:56 -0700
+X-CSE-ConnectionGUID: gNS4ltISRpWvhIvYooZwgg==
+X-CSE-MsgGUID: o9FhYcdkQJm9A4g8pPc3rQ==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.25,163,1779174000"; 
-   d="scan'208";a="259370157"
-Received: from kniemiec-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.189])
-  by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jul 2026 01:45:52 -0700
-Date: Tue, 14 Jul 2026 11:45:48 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Daniel Golle <daniel@makrotopia.org>
-Subject: Re: [PATCH] gpiolib: tolerate gpio-hogs lacking a hogging state
-Message-ID: <alX3PLGgoKTgSy_-@ashevche-desk.local>
-References: <4c67cf0839ccf57db35a826df6d8fc779531509a.1783974733.git.daniel@makrotopia.org>
+   d="scan'208";a="279079121"
+Received: from fmsmsx902.amr.corp.intel.com ([10.18.126.91])
+  by fmviesa002.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jul 2026 02:33:56 -0700
+Received: from FMSMSX903.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.43; Tue, 14 Jul 2026 02:33:55 -0700
+Received: from fmsedg903.ED.cps.intel.com (10.1.192.145) by
+ FMSMSX903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.43 via Frontend Transport; Tue, 14 Jul 2026 02:33:55 -0700
+Received: from CY7PR03CU001.outbound.protection.outlook.com (40.93.198.35) by
+ edgegateway.intel.com (192.55.55.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.43; Tue, 14 Jul 2026 02:33:55 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=D1vZ1Adz8a1F+PtsoBOLAyB8osC+xY4wsqooIVejyGIZFPwGXyMFMIR3+1xo1ZpNhVHGnVWwO+coOFEhiJ6AaaULT7igKAnbSj2gH6w6oVBt1dQDsba7YrJ7xjYbrbC0+ZZNhh/8vbzzhhxPTe1IVwYHe3CgU9Y02TspenTGXfrA434O7tf2fXC89BUPd+iJq8BdvMffPhF8qtdGIFhdLpoXGG3qzG+5dKI3fICe2g/EhXX9653sKCJMfAX9lUo5iOjFc5XRtu6oj/SgkoeCdf111TFOa5i0+v4olpSV263JV6JGrJnG+CY40PCfOIJq7U5BBsA5TcuqugFf01xFSg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=6bzcUh0NeTVNFO0dsN2oH13jNagu/WW2Eke4TUjbiss=;
+ b=BR/NLzKhy8VGsgKjuSF8u/q12LiaD9GV9V0R+RzViv5QmBpyjG8tafkPd4oCD0P01r7hqi2bZP8NLp3eiNazd+S+L8FzEAY8/3aF8aiegvXCRhOsXxYPu5jfxWkFDjJXIeV7IbRazP3mIYNLdhxmIEX2bWZw3EaBU+N6eC7fCna4ycJjWRr7WT7TerkyyB9mN+r807IsINS5L2r0F4ESKROd7WCk4juP9U4mnmVSxLYeoOh/RYd8Yf5tV8sXe/RmQ1QrVH5gSyV9UJTRhDtpaJXI0STQe8mtbsf6VMWz3XX9MeXr0gTKY5rbInkl0/lf6NOCCpkOZ8SqtGrtC/Dtaw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from IA1PR11MB7198.namprd11.prod.outlook.com (2603:10b6:208:419::15)
+ by SA1PR11MB5948.namprd11.prod.outlook.com (2603:10b6:806:23c::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.223.9; Tue, 14 Jul
+ 2026 09:33:51 +0000
+Received: from IA1PR11MB7198.namprd11.prod.outlook.com
+ ([fe80::2c4e:e92a:4fa:a456]) by IA1PR11MB7198.namprd11.prod.outlook.com
+ ([fe80::2c4e:e92a:4fa:a456%3]) with mapi id 15.21.0181.019; Tue, 14 Jul 2026
+ 09:33:51 +0000
+Message-ID: <a822ae4b-1bc3-4b55-b65b-9503dad39c20@intel.com>
+Date: Tue, 14 Jul 2026 12:33:31 +0300
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 23/42] mmc: sdhci-of-bst: Use
+ devm_of_reserved_mem_device_init_by_idx()
+To: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>, Bjorn Andersson
+	<andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, Liviu Dudau
+	<liviu.dudau@arm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, "Joel
+ Stanley" <joel@jms.id.au>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+	"Paul Cercueil" <paul@crapouillou.net>, Anitha Chrisanthus
+	<anitha.chrisanthus@intel.com>, Paul Kocialkowski <paulk@sys-base.io>, "Linus
+ Walleij" <linusw@kernel.org>, Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec
+	<jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, "Alexey
+ Brodkin" <abrodkin@synopsys.com>, Laurent Pinchart
+	<laurent.pinchart@ideasonboard.com>, Tomi Valkeinen
+	<tomi.valkeinen@ideasonboard.com>, Michal Simek <michal.simek@amd.com>,
+	Daniel Scally <dan.scally@ideasonboard.com>, Jacopo Mondi
+	<jacopo.mondi@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Eddie James <eajames@linux.ibm.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Yunfei Dong
+	<yunfei.dong@mediatek.com>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+	Houlong Wei <houlong.wei@mediatek.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Joseph Liu <kwliu@nuvoton.com>,
+	Marvin Lin <kflin@nuvoton.com>, Dmitry Osipenko
+	<dmitry.osipenko@collabora.com>, Krzysztof Kozlowski <krzk@kernel.org>,
+	Thierry Reding <thierry.reding@kernel.org>, Jonathan Hunter
+	<jonathanh@nvidia.com>, Srinivas Kandagatla <srini@kernel.org>, Arnd Bergmann
+	<arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Ge Gordon
+	<gordon.ge@bst.ai>, Ulf Hansson <ulfh@kernel.org>, Rob Herring
+	<robh@kernel.org>, Saravana Kannan <saravanak@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
+	<tiwai@suse.com>, Shengjiu Wang <shengjiu.wang@gmail.com>, Xiubo Li
+	<Xiubo.Lee@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
+	<broonie@kernel.org>, Frank Li <Frank.Li@nxp.com>, Sascha Hauer
+	<s.hauer@pengutronix.de>, Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+	Bard Liao <yung-chuan.liao@linux.intel.com>, Daniel Baluta
+	<daniel.baluta@nxp.com>, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+	<baolin.wang@linux.alibaba.com>, Peter Chen <peter.chen@cixtech.com>, "Fugang
+ Duan" <fugang.duan@cixtech.com>
+CC: Ekansh Gupta <ekansh.gupta@oss.qualcomm.com>, "BST Linux Kernel Upstream
+ Group" <bst-upstream@bstai.top>, Fabio Estevam <festevam@gmail.com>, "Nicolin
+ Chen" <nicoleotsuka@gmail.com>, Pengutronix Kernel Team
+	<kernel@pengutronix.de>, Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, Vijendar Mukunda
+	<Vijendar.Mukunda@amd.com>, Chunyan Zhang <zhang.lyra@gmail.com>, "CIX Linux
+ Kernel Upstream Group" <cix-kernel-upstream@cixtech.com>,
+	<linux-arm-msm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<dri-devel@lists.freedesktop.org>, <linux-aspeed@lists.ozlabs.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mips@vger.kernel.org>,
+	<linux-sunxi@lists.linux.dev>, <linux-media@vger.kernel.org>,
+	<openbmc@lists.ozlabs.org>, <linux-mediatek@lists.infradead.org>,
+	<kernel@collabora.com>, <linux-tegra@vger.kernel.org>,
+	<linux-mmc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-remoteproc@vger.kernel.org>, <linux-staging@lists.linux.dev>,
+	<linux-sound@vger.kernel.org>, <linuxppc-dev@lists.ozlabs.org>,
+	<imx@lists.linux.dev>, <sound-open-firmware@alsa-project.org>
+References: <20260703193855.110619-1-mukesh.ojha@oss.qualcomm.com>
+ <20260703193855.110619-24-mukesh.ojha@oss.qualcomm.com>
+Content-Language: en-US
+From: Adrian Hunter <adrian.hunter@intel.com>
+Organization: Intel Finland Oy, Registered Address: c/o Alberga Business Park,
+ 6 krs, Bertel Jungin Aukio 5, 02600 Espoo, Business Identity Code: 0357606 -
+ 4, Domiciled in Helsinki
+In-Reply-To: <20260703193855.110619-24-mukesh.ojha@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: DB9PR06CA0007.eurprd06.prod.outlook.com
+ (2603:10a6:10:1db::12) To IA1PR11MB7198.namprd11.prod.outlook.com
+ (2603:10b6:208:419::15)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <4c67cf0839ccf57db35a826df6d8fc779531509a.1783974733.git.daniel@makrotopia.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: IA1PR11MB7198:EE_|SA1PR11MB5948:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4325f7c8-c50c-4021-36f4-08dee18b0373
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024|23010399003|921020|18002099003|22082099003|4143699003|56012099006|11063799006;
+X-Microsoft-Antispam-Message-Info: mLuVenHFAgU3xwyWjzjD/YkQsDks53sEakK/j3atPYHwWC9pPNfyeZGUBnOLsPz//XhTpmSxVONdMl917Of0tfRP9Ls0NyFm/5g98gdhaS47FT8jUzyWIDtm5/yYJI7/RHvKPJyX9DXQBA4iTa1Uaz/uwE1DsDMTDoNnSR6qhNeRaSK1HymNamWNi2OLTTkobBvTD/X1qK7Qc9rau78ODgKxhkLtV/ERKMUX7trUXsRi1QBtskZpa/OwFV3F0O56wAwSG462jE3M9TD7QhLX98eqYfIkGXVDuJMbkTFTcXeSeOX0bhWkGD2Xj4pHvDsl1SS2yBHVvYoemB12CMvHpAEwtStFIbowdtnAaFjIAGMws0kzhorWD4xY/Y8sUiqxs1VYCkmY0XdMZtiaCjO6dVFrPqIB4GxS5puTGnXfI0TuH6G1gnfsq53fc3HkCXLL7bshKujEQRnpYn2CGH/ewXM5qpE7LF/KhcK9cwQeT8IGro4fjPpR9eD343AlIlkGl36th/FwgGk8CylJIb9OZbITPbLHb7MbXVmCC0prjHLCX7499iy9y9UUH8BZeIPkpSxL7rbm3bkJjPYNZhXP9jOYvcNx08bPqMPa2z583yP9co6/R2c9eI8A5HPSZB2joQQqE7nbuW44VCGgPinWT1Zd1CcVnmPIQeMmGtf/+a2GVTgAvXaXIaqLsWjBLo3np00nN8UMwZLoPBEGZAsAqA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:IA1PR11MB7198.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(366016)(1800799024)(23010399003)(921020)(18002099003)(22082099003)(4143699003)(56012099006)(11063799006);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?eThXd0ZPZHJvdkZRb05GL1llck1zZGZ1eUxuOTNvc0N6a0U2dzRPclZMbFAv?=
+ =?utf-8?B?ajJ6S2V1OWpmamt2L1A5TG9xcDRHNTc2YS9GcmIzNi9iRWliVEpsZzV2bmdW?=
+ =?utf-8?B?TDhyUHBEUnJ3NE9ENDlGdjc3eVp4MHc3Tk9hWlVVL2MzKytQcDRNQWhVYmxE?=
+ =?utf-8?B?eTRsa2s0cmNZMlJXcE5JQ2tVTnUyQ0ZTUWpaekJpOGw4VGhFOEpRLzRTeTY5?=
+ =?utf-8?B?Zkd1ay8wR2JURy9Ba1RSWi9hVUg0UXFrUnEvaHFLTDMzZVN3Z0xFS1RDaWRt?=
+ =?utf-8?B?VVFVSlk0MFVXVm9xakZpdWtkRVZJU1dxc09hVWV6MWZHVmpoSTBDWllBMms5?=
+ =?utf-8?B?bytER2pLZFZRWlIweHpLY2FmZVJIOWl0VzB0b0ZLRDVrL1EybmZ2d0RwdlRR?=
+ =?utf-8?B?L3dCK2NENHpmaG1XOElzTmN5U0k3bXhNQllEVVpkY1ptbGM2Z3FFSzdEc3V2?=
+ =?utf-8?B?S0cydzU4Z0RUQ1dSUDdmRll5dDRWWXpqQlNDSkdCTlVLb29Udis2a2ZZemt1?=
+ =?utf-8?B?RU1SeWxZZDZYeWhORldIYnViLzU0eVVTYkFkTXZWb0RQWkdGMTlZV0FWdTVU?=
+ =?utf-8?B?RnR1MHRwTWlobWNTUHhlekxtcEltZUpQcmtUTHR4NGhtMGtNSnFhNldLK0hB?=
+ =?utf-8?B?anovQzFCWEs3S2ptMGlNajFsZFNQaHA2SXZ5Ti9YTUc1S282cHEzeGE5UGho?=
+ =?utf-8?B?LysyMzlSZkh6eGVvclZnNjF2OUMzRXI4N3Rnc1A1cHEzQTQyTldrUnlDVjN2?=
+ =?utf-8?B?NzNPNERrZW43TU9xeXFYbzZuMDRQMGQ5MTFweFk1aTJnNUVvRjljdlFiSTVN?=
+ =?utf-8?B?MGpCN3U2TFREYm9tODNBVjZPdS84dkJQUmlIM2xIUVJqbE03NmJrNWx6ak5w?=
+ =?utf-8?B?a0tUTGhJc0FlTlVoQTBzaEkvT1dORFM2MlUzZ0NNV2IrNnFVeVVsMk5Ra0Iz?=
+ =?utf-8?B?R1pGMHhnL2UwZ2hWZnFkK0Rrdk00RFpKT1dNVkxkYkViVFB2WjBGcnNEazV4?=
+ =?utf-8?B?U0I5K0FHK1lmOEVDSGZyUnJ5aEYzcVFNSFI5N0N2Zy9MQkpyTEphTmRLeGhu?=
+ =?utf-8?B?L3Z4NHNUYVRGckxPSk5BN0lwZmlRMEhVZkovWnpINU9jdjVqN3lsT2RmUFY5?=
+ =?utf-8?B?S1k2RkJmR3oyUjlYcU5OMENCa0lnMGNjNU1JM0JFU0RPT1pCcWpXMExTOEVK?=
+ =?utf-8?B?TjhXQzFrdE5mMjZPeVVsV3pWSDZLMXNzUDMzZWF1bEV1SUJycVd3ajhkOEpn?=
+ =?utf-8?B?RmxzdnhKNTBBdjZyVWltclhScnoxQ3ZHWjdramU4SFFKZ0tKUFZQekthcGFS?=
+ =?utf-8?B?QnI1VU5tV3NZUEFINmRIWEFYdVBieStrdHgxNDdTS05KaG92MjFCd2ZsbExQ?=
+ =?utf-8?B?OW12Um1YV1o2TjQ1Q3U3TytMYUtWa0Y1TjdlU3pzcVMvMDcraW9acU51S1Vh?=
+ =?utf-8?B?ejFEUG10UnhTaHczUWZqYjJ4YWFCNFZCb3U2UW9yWGZQdzhpUElDaVFicFFa?=
+ =?utf-8?B?UEhYamVMUldUeUZzbUlBNXlpN1E0SFRwUkhuSHp5Y0FLdU1heG5HNG0wU1g0?=
+ =?utf-8?B?T3lTQnFlWWJtYldkM2RrOWV2OGJUUnlaTGhlL3kxNnlQcGJFNFc3Sjl1ekhH?=
+ =?utf-8?B?M09nbkpZSXNnTHI2d1FZWjl0NlB6MTVzSlVPc0ExWFVaWGxONnFndDBZMWQ4?=
+ =?utf-8?B?eFJPa1JTZVZsaFVKZ2NZL25qV2pmSEhFa1hmSGZkQ0ppQXJyQzVaQnpmZE10?=
+ =?utf-8?B?RC9WUFJkNS9ZdzA1aVJaZUVzY2xFYUxCUzErM2R4QVU2RzhzUGVjaUcyUW44?=
+ =?utf-8?B?YTdZRjZmbXJXVGRROVRsVXNYdXFNaHlnQWNjZUhXS0dFOEY2M244V3dlNHow?=
+ =?utf-8?B?TEdyMDJ5T21OR0VoZzVVNXAyN2xEZXBrSU9vTG41Vkw1OEE3QU1TczZNQ3Rz?=
+ =?utf-8?B?NjNNYnlGZ2JvRFhWSEN3bkNCTWRqR1Fxb1B1ZUxKVzcxd2VzYmVUTUxYbm1W?=
+ =?utf-8?B?QTBFazV4WU5GWjZaVms3aDRkcGg4aW5jM2hiM2FRaW9vZjVVVXU4eXBjc2hm?=
+ =?utf-8?B?T1VXTzl4Ym9DdGhyMlViSFRyMWU4czBlbldUZzFiTGxxMzJQMkZYUHlqSVkz?=
+ =?utf-8?B?SlNlZ1hTZDJxQ0N3SzNhS3E1QkhBL2xXNEN2Zm53S2dlUGx5TUN2anlad3Ry?=
+ =?utf-8?B?QVBTWVVrWmlzbVR3djVaVXpPaVYzdk0vNnlJelAwWDlZNWRuUi9Ubk1ZSzd6?=
+ =?utf-8?B?WVN1VG5kdnpoNloyT01LaHdLN3B6YVlGM0M5M3Nndy9Sd3RodFJnaE5ySDRv?=
+ =?utf-8?B?Y0FIczlTZ21iNUJmK1B2OGs3WXdVVm1jdXNJL0RQTHBlR3dNUElwMHFUcWRt?=
+ =?utf-8?Q?S05dAGM5QphIvG+0=3D?=
+X-Exchange-RoutingPolicyChecked: ASmWy+HYE36u6olMgt3DDWeHRYL3ZzYuoOK5jiEJNw0KXCgIC2CgzRbNHmVQWVFvUELyVMzdDFABIJcaU4osYFWoCuguMBdWXzD/Tkx5sjxWLLhfzRKiEqQri37eH2IyHrcn/s6+E8K41gecT7tV9qtHi/BwXmHVDI8qlG+bfXGpUghJVkvrwfZhED+f+CjqpsVzEynrnG4LmCnbgf89zUn4xUJQNKmVwh812tcJ4leXueNeDru3MdJ4wUknGyikV2G07qgVvSqU4hMZh+C0muXZ/84kk3cnNXYsk1RnIbaWsq60wkwJl9p9Awixkhhrhacv8NTX4NB4c381IsxzEQ==
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4325f7c8-c50c-4021-36f4-08dee18b0373
+X-MS-Exchange-CrossTenant-AuthSource: IA1PR11MB7198.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Jul 2026 09:33:50.9994
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 2da2RgD5tAjivEP34EyjeABap+LOcNWNDA6RCPTE/2Li5U9RbM1HKE1FIod7RhbXSALmevsJClPAYrwAHBG5ew==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB5948
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260714_014601_193064_0B5E870A 
-X-CRM114-Status: GOOD (  20.42  )
+X-CRM114-CacheID: sfid-20260714_023357_867259_5617130B 
+X-CRM114-Status: GOOD (  16.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,84 +235,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Linus Walleij <linusw@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Mika Westerberg <mika.westerberg@linux.intel.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 14, 2026 at 12:30:53AM +0100, Daniel Golle wrote:
-> Commit d1d564ec4992 ("gpio: move hogs into GPIO core") made
-> gpiochip_add_hog() return -EINVAL for hog nodes lacking any of the
-> 'input', 'output-low' or 'output-high' properties. The error is
-> propagated by gpiochip_hog_lines() and fails registration of the
-> whole GPIO chip.
+On 03/07/2026 22:38, Mukesh Ojha wrote:
+> Use the devres-managed devm_of_reserved_mem_device_init_by_idx() instead
+> of the manual of_reserved_mem_device_init_by_idx()/
+> of_reserved_mem_device_release() pair, letting the device resource
+> manager handle cleanup automatically.
 > 
-> The previous OF-specific implementation tolerated such nodes:
-> of_parse_own_gpio() warned "no hogging state specified, bailing out"
-> and of_gpiochip_add_hog() stopped processing the node without failing
-> chip registration.
+> Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
+
+Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+
+> ---
+>  drivers/mmc/host/sdhci-of-bst.c | 7 ++-----
+>  1 file changed, 2 insertions(+), 5 deletions(-)
 > 
-> Some boards deliberately ship hog nodes without a hogging state in
-> their base devicetree and supply the state via overlay, e.g. the PCIe
-> slot key selection hogs on the BananaPi R4 Pro added in
-> commit e309fa232d12 ("arm64: dts: mediatek: mt7988a-bpi-r4pro: rework
-> pcie gpio-hog handling"), as the polarity set in the base devicetree
-> could not be overridden from an overlay.
-> 
-> Booting such a board without an overlay applied now fails to register
-> the gpiochip. On the BananaPi R4 Pro this means the MT7988A pinctrl
-> device fails to probe, all peripherals including the console UART
-> defer forever, and the board finally hangs when clk_disable_unused()
-> gates the clocks of the UART still in use by earlycon:
-> 
->   gpiochip_add_data_with_key: GPIOs 512..595 (pinctrl_moore) failed to register, -22
->   mt7988-pinctrl 1001f000.pinctrl: error -EINVAL: Failed to add gpio_chip
->   ...
->   clk: Disabling unused clocks
->   (hangs)
-> 
-> Restore the previous behaviour by warning about hog nodes lacking a
-> hogging state and skipping them instead of failing the registration
-> of the whole GPIO chip.
-
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-
-...
-
-> -	if (fwnode_property_present(fwnode, "input"))
-> +	if (fwnode_property_present(fwnode, "input")) {
->  		dflags |= GPIOD_IN;
-> -	else if (fwnode_property_present(fwnode, "output-low"))
-> +	} else if (fwnode_property_present(fwnode, "output-low")) {
->  		dflags |= GPIOD_OUT_LOW;
-> -	else if (fwnode_property_present(fwnode, "output-high"))
-> +	} else if (fwnode_property_present(fwnode, "output-high")) {
->  		dflags |= GPIOD_OUT_HIGH;
-
-For a fix I would make it less invasive and yes, break the style, by just
-replacing
-
-> -	else
-> -		return -EINVAL;
-
-with
-
-	else {
-		gpiochip_warn(gc, "%pfwP: no hogging state specified, bailing out\n",
-			      fwnode);
-		return 0;
-	}
-
-> +	} else {
-> +		gpiochip_warn(gc, "%pfwP: no hogging state specified, bailing out\n",
-> +			      fwnode);
-> +		return 0;
-> +	}
-
-This leads patch directly to the point. The style can be modified later on.
-
--- 
-With Best Regards,
-Andy Shevchenko
-
+> diff --git a/drivers/mmc/host/sdhci-of-bst.c b/drivers/mmc/host/sdhci-of-bst.c
+> index f8d3df715e1a..304554ced690 100644
+> --- a/drivers/mmc/host/sdhci-of-bst.c
+> +++ b/drivers/mmc/host/sdhci-of-bst.c
+> @@ -405,7 +405,6 @@ static void sdhci_bst_free_bounce_buffer(struct sdhci_host *host)
+>  				  host->bounce_buffer, host->bounce_addr);
+>  		host->bounce_buffer = NULL;
+>  	}
+> -	of_reserved_mem_device_release(mmc_dev(host->mmc));
+>  }
+>  
+>  static int sdhci_bst_alloc_bounce_buffer(struct sdhci_host *host)
+> @@ -417,7 +416,7 @@ static int sdhci_bst_alloc_bounce_buffer(struct sdhci_host *host)
+>  	/* Fixed SRAM bounce size to 32KB: verified config under 32-bit DMA addressing limit */
+>  	bounce_size = SZ_32K;
+>  
+> -	ret = of_reserved_mem_device_init_by_idx(mmc_dev(mmc), mmc_dev(mmc)->of_node, 0);
+> +	ret = devm_of_reserved_mem_device_init_by_idx(mmc_dev(mmc), mmc_dev(mmc)->of_node, 0);
+>  	if (ret) {
+>  		dev_err(mmc_dev(mmc), "Failed to initialize reserved memory\n");
+>  		return ret;
+> @@ -425,10 +424,8 @@ static int sdhci_bst_alloc_bounce_buffer(struct sdhci_host *host)
+>  
+>  	host->bounce_buffer = dma_alloc_coherent(mmc_dev(mmc), bounce_size,
+>  						 &host->bounce_addr, GFP_KERNEL);
+> -	if (!host->bounce_buffer) {
+> -		of_reserved_mem_device_release(mmc_dev(mmc));
+> +	if (!host->bounce_buffer)
+>  		return -ENOMEM;
+> -	}
+>  
+>  	host->bounce_buffer_size = bounce_size;
+>  
 
 
