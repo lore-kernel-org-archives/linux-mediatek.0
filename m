@@ -4,64 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD728C44508
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 07:00:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38A02C44501
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 07:46:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FfUYi4vhDG/NZ5E8zOJ0EWvbRSsTlwPws5qEyE9Tnqk=; b=ExgE2hnaBclL1jsPq7nwq1R2Ri
-	vdjc8vOKFLgFE1DWiQHe9pWEh5H/jUhARprUzBJvRs3tsubo2nHvu66sHfToh+a/HKuCOp7JlLUA5
-	rx+pFrUN6G838p5j/LLDeN8P0DFGuXnfpaFcjC5kO8Jg7KSTJc7zIJsN5dS4lhfTMdFvHC+IeNr1Z
-	3CJ5OvVzwIAbjSjmEkpYwDO8UO+BWHKEQ7SsD4pZYuyGgACEY47gaPz0sX14+a+abc4z6zB6FwxMv
-	ckkZeA5cYGt1RV497WrrNHe6vhdVH0/l1HaYeeVumeCtfuCmOinrVDytEDjKNeTf/EQHfHqtiZDd8
-	OUxYJJUA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0LP7Al6rRiZBE1h+Cea0iWGHs8CXC0LyVHJxEu9jR3U=; b=bcEMUrVryQbCmLa4p0DiPsrOEE
+	PdV3mlBm1NOapbgJM1KBRLE2X/HdnV27FHY+jz88xXHDpcUeA0nOM+HQT/rTVOrt66OuVmtJMSYEA
+	Y2xgLyBWMvHwfLVyImFcL2VRKsbdmS1dP+Ixayz4eMHsArn5/R0svggEYvfDXNQqzlTdQuHOWF4lp
+	oQqGJqKldRP/UaEUTCQUfOnTkhRWB7edDfBLLqtBmGiUJZ7vUcgeoSmp0epacSysT/fRlCBVK+6EH
+	ctARlPlJxm/Qo6BP0SoFcBkG/D2Df26LWkAUb+tJ4KZ+MjGZ9vTnIduRB66H4rvcVrie6T0CIl8rW
+	28RvCWoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjtbe-0000000Dxhx-2HwB;
-	Wed, 15 Jul 2026 07:00:34 +0000
-Received: from mail-m49198.qiye.163.com ([45.254.49.198])
+	id 1wjuJv-0000000E4Jr-32ch;
+	Wed, 15 Jul 2026 07:46:19 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjtba-0000000DxgH-1VIF;
-	Wed, 15 Jul 2026 07:00:32 +0000
-Received: from Vostro-3710.. (unknown [113.80.141.85])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 463f9b657;
-	Wed, 15 Jul 2026 15:00:16 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: lorenzo@kernel.org
-Cc: Bo.Jiao@mediatek.com,
-	angelogioacchino.delregno@collabora.com,
+	id 1wjuJt-0000000E4J7-3HGr;
+	Wed, 15 Jul 2026 07:46:18 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id A7F1C600BB;
+	Wed, 15 Jul 2026 07:46:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3B3F1F000E9;
+	Wed, 15 Jul 2026 07:46:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784101576;
+	bh=0LP7Al6rRiZBE1h+Cea0iWGHs8CXC0LyVHJxEu9jR3U=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Y2/XD/XOX5eKeWY1GlQ1ajpPHkVXxIb9qN8e904DmQF333rz8PgtOHNSpJSTY1Cix
+	 alrG2EVN5wCvxrBxUTo8+yl8DbExDTfuVxbKndPkyKvCCso0ogYzAeqEqI13btR+fH
+	 FW1QrM0T9xUAC3ZYsNjiFuGNuJwvDrUxzmfL4Yy25t7NbbkLVx7uWlnadFDLItSEcN
+	 jOLEPZc2WNULDwN3zJj5DKbhX5w3JEBs7EqktwSxcvyiJ06OpkmBip5jqi3HnlaT2Z
+	 FkjGbEluVmzjm6uEiU2c2+904jgu9xiH9muhvl+Q6utmOjHsyrqtnAPmHR2DtWccVH
+	 rEVmCXsu+URcQ==
+Date: Wed, 15 Jul 2026 09:46:14 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Chukun Pan <amadeus@jmu.edu.cn>
+Cc: Bo.Jiao@mediatek.com, angelogioacchino.delregno@collabora.com,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-wireless@vger.kernel.org,
-	matthias.bgg@gmail.com,
-	nbd@nbd.name,
-	rex.lu@mediatek.com,
-	ryder.lee@mediatek.com,
-	sean.wang@mediatek.com,
-	shayne.chen@mediatek.com,
-	sujuan.chen@mediatek.com,
-	Chukun Pan <amadeus@jmu.edu.cn>
-Subject: Re: [PATCH mt76 v5 16/16] wifi: mt76: mt7996: Add SW path for HW-RRO v3.1
-Date: Wed, 15 Jul 2026 15:00:01 +0800
-Message-Id: <20260715070001.1503928-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250909-mt7996-rro-rework-v5-16-7d66f6eb7795@kernel.org>
+	linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org,
+	matthias.bgg@gmail.com, nbd@nbd.name, rex.lu@mediatek.com,
+	ryder.lee@mediatek.com, sean.wang@mediatek.com,
+	shayne.chen@mediatek.com, sujuan.chen@mediatek.com
+Subject: Re: [PATCH mt76 v5 16/16] wifi: mt76: mt7996: Add SW path for HW-RRO
+ v3.1
+Message-ID: <alc6xTe4uPIJHQy8@lore-desk>
 References: <20250909-mt7996-rro-rework-v5-16-7d66f6eb7795@kernel.org>
+ <20260715070001.1503928-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-HM-Tid: 0a9f64937fd903a2kunm1a12fe196dbc0
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaHkJKVhlOGR5ISRlNTU0aT1YeHw
-	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlKSkhVQ0tVSk9KVUNOWVdZFhoPEhUdFFlBWUtVS1VLVUtZBg
-	++
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260715_000030_599732_2C2E752C 
-X-CRM114-Status: UNSURE (   5.11  )
-X-CRM114-Notice: Please train this message.
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Yv6XrpQKV6uL3VLP"
+Content-Disposition: inline
+In-Reply-To: <20260715070001.1503928-1-amadeus@jmu.edu.cn>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,23 +74,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+--Yv6XrpQKV6uL3VLP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> +	if (dev->mt76.hwrro_mode == MT76_HWRRO_V3_1) {
-> +		/* rxdmad_c */
-> +		mdev->q_rx[MT_RXQ_RRO_RXDMAD_C].flags = MT_WED_RRO_Q_RXDMAD_C;
+> Hi,
 
-This introduces the RRO_Q_RXDMAD_C flag for the MT7992 chipset.
-However, the mt76_wed_dma_setup function lacks handling for
-MT76_WED_RRO_Q_RXDMAD_C, causing it to return -EINVAL:
+Hi Chukun,
 
-[   20.049167] mt7996e 0000:01:00.0: attaching wed device 0 version 3
-[   20.114412] platform 15010000.wed: MTK WED WO Firmware Version: ..
-[   20.123728] platform 15010000.wed: MTK WED WO Chip ID 00 Region 2
-[   20.965401] mt7996e 0000:01:00.0: probe with driver mt7996e failed with error -22
+>=20
+> > +	if (dev->mt76.hwrro_mode =3D=3D MT76_HWRRO_V3_1) {
+> > +		/* rxdmad_c */
+> > +		mdev->q_rx[MT_RXQ_RRO_RXDMAD_C].flags =3D MT_WED_RRO_Q_RXDMAD_C;
+>=20
+> This introduces the RRO_Q_RXDMAD_C flag for the MT7992 chipset.
+> However, the mt76_wed_dma_setup function lacks handling for
+> MT76_WED_RRO_Q_RXDMAD_C, causing it to return -EINVAL:
+>=20
+> [   20.049167] mt7996e 0000:01:00.0: attaching wed device 0 version 3
+> [   20.114412] platform 15010000.wed: MTK WED WO Firmware Version: ..
+> [   20.123728] platform 15010000.wed: MTK WED WO Chip ID 00 Region 2
+> [   20.965401] mt7996e 0000:01:00.0: probe with driver mt7996e failed wit=
+h error -22
+>=20
+> Can you fix this?
 
-Can you fix this?
+IIRC WED is not supported for HW RRO3.1 at the moment, it is not just a mat=
+ter of
+fixing mt76_wed_dma_setup().
 
-Thanks,
-Chukun
+Regards,
+Lorenzo
+
+>=20
+> Thanks,
+> Chukun
+
+--Yv6XrpQKV6uL3VLP
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCalc6xQAKCRA6cBh0uS2t
+rC90AQDqX1Zbse6nv0qogKELf1Vmvsehu3y+Et4oi05aX+ax1gEApd5Ck5/LaW1y
+ger643vFlirl8/9c4Ntal6wPZEuVGAc=
+=WbzV
+-----END PGP SIGNATURE-----
+
+--Yv6XrpQKV6uL3VLP--
 
