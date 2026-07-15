@@ -4,77 +4,176 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA4BC44508
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 04:45:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D839C44508
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 06:45:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=JWW74AmImRLmdesZdoy1+m1+TdvbqosVmdq9Fea4fTA=; b=XunZ2RivIX/MYIxmllpo1yhm6Y
-	2KF68V6Sstd7l+xiZFCyODTSSUvcepi7rcQN6zRhkqDARFsgvhp1JdtEAd1r9Mkz0e+XxrD2BtyvR
-	ybD2Tx2iY8zS+QEeEa6C3tJ7C+d7AGCKS7F1w2eXbZYWdvUYxWMhkucRWC8VhK1AYrrULPQQ8K9fw
-	OWDpQCM78oL4H868xUTNaiNF3FW0O+92oElHSi7rSnTwu0vmW8WRnulq5VvXiL2XuYvWgTyQ5R0cF
-	1X3oWDfxTYHlnb5KfhQfc9eNyCXykcSldErZwF2gBjccMzimO4WFBWcOwTz/3675u8MrV9f4x9una
-	qVNpXeQQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/YFeYk5xw3Boy/uxWkTtMdNPJjZVZwbmeuLoGuj3ujw=; b=ZGMS0gcigNPWaD0mqQb3i4JFS+
+	3K3jpsARfh6XynWc2/wSkCCMeE17xrIN3kLVS3htf0n3sv5C5Th7/DQYqBe0ETT7F56QoxAGUdnwP
+	DyPFSdaJGVN/9r0kq02SLT+s7SjMcYLILbnmOaJExewsjVcs/FwZ5A0MtSh9NUSXF+43eo57LDBLP
+	qfHCYvfDl4UJXhP55RlcyXdDfOe9DbOguMJCdbxBTB/FNbb/b8jxBdA9LoQxuSnpS5IxsT5lc/lfd
+	DiiDhF/LSOdOsgydwo8QalRXGyYqv6TM8sZEo/agkYGeIFR0oXPVRB8UzAzEgmmG1dU64AMsnrvTs
+	A2QwdfYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjrUw-0000000DkW3-0DL5;
-	Wed, 15 Jul 2026 04:45:30 +0000
-Received: from mail-yx1-f49.google.com ([74.125.224.49])
+	id 1wjtMi-0000000Dw5k-1gJN;
+	Wed, 15 Jul 2026 06:45:08 +0000
+Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjrUt-0000000DkVe-2jqh
-	for linux-mediatek@lists.infradead.org;
-	Wed, 15 Jul 2026 04:45:28 +0000
-Received: by mail-yx1-f49.google.com with SMTP id 956f58d0204a3-66810946e63so828524d50.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 14 Jul 2026 21:45:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784090726; x=1784695526;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=JWW74AmImRLmdesZdoy1+m1+TdvbqosVmdq9Fea4fTA=;
-        b=ny3MXYC4Bt/6bisKL7DoyOG7jgbedvKCd+AS0al3u47M6o91DdL1bXoxXP3Hyq9udv
-         OZGGaAVLVjfDD28zkS97k9UO62BvT520K5O5OSb91FvqAOzyEuysVUMbYwEPLykwuI17
-         9PCFdGF6MWTzD6ilm26ryYuelx6QAGx0/FAc6PzZIPDmJGkqU5IGqiVUTtxhPuKi/85W
-         MQw9lIAwY9iUNAu8pDRPlsvWPCZb64y+nUwUiCqIGgISIw/7OzMpQYQBF6zFpJC0SdhX
-         8BuO/gSeXDD5zQ5RMye8vXP0vCQJ3M37s9fWRlNAWxLrKAqe/WvKDik7ffA74XCmEHi3
-         IVfw==
-X-Forwarded-Encrypted: i=1; AHgh+Rp93G4+MJTBbNtM0nV2JDJw56TlMkM2ywCLA1Uhh/3h0ys3UlNr+Cr9o6mHPg5wyLrDBGwJnMgHwOAB9kZuOA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxJYvErr2TA1ZVWCCHeP6f9n9h11gqim0lvaPq3ISpoluNkAxnf
-	s1Yl28WCMRspfIJr/uBoSNSmfgCBTp5sOcF067xr8/VZYeHRfFR20E4i
-X-Gm-Gg: AfdE7cllmtyksFuSVj26sfl2aAhxL8p9ILIsqI2dysGGkhLosNSaFtp8xmGN6sWtao5
-	RcgdRzilgEZRLi2k6FX+j8CSXRPAaRv1SqjNQZ166n+i+r1Qv/mn9H5YUxbns+Jib7MmHtapqKD
-	7eiHzvZ7DhFvzFhtV+LHkm/dQEzoV29g6rozGuoEdAnKea5ZgYlV1NW1xLPq6T5tNH2qCsB1FX9
-	woEqbVGSYYdWmixrKRXmZPe0vX0bXbuLclqP2YxMxXNf4fSLWHI2EHA8pDZT5+QSpyUaPiIoIVI
-	yvlUg/0T3FUQYJlaLImA8hqhSHw6Vy9+CA08/bV7P5BC38a2MZmeRVeaeJHJleuJY++JLSm4W5J
-	DB+SBGWTlYmoS3AdXRxzoL9QMzYbaA2pzG35XFw478RnuHAuS+400Wb9D9lMosp2gqTEBoueln7
-	tau1GKKzC2vEzuCD4=
-X-Received: by 2002:a05:690e:440c:b0:660:a41d:d180 with SMTP id 956f58d0204a3-668029bb4c1mr3288750d50.21.1784090725993;
-        Tue, 14 Jul 2026 21:45:25 -0700 (PDT)
-Received: from Mateus-Laptop ([2804:7f3:4a10:896d:88ce:72d6:47ee:a87d])
-        by smtp.gmail.com with ESMTPSA id 956f58d0204a3-667874c2d15sm17941180d50.0.2026.07.14.21.45.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Jul 2026 21:45:25 -0700 (PDT)
-From: "Mateus B. Cassiano" <mbc07@live.com>
-To: nbd@nbd.name
-Cc: lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	linux-wireless@vger.kernel.org,
+	id 1wjtMf-0000000Dw4z-3DgK;
+	Wed, 15 Jul 2026 06:45:07 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=n1/6Z3VoJIXc/UuF229/0tDEru66wok/Fr/6Q2rXXK4pBiOaoBKfBMqyLUTvQ5j0g8+HRXsM34lOfUAZ/9KOhgBo+YvNRrq2PEI72XSu5kwo1DYNYo2VLxMTMQYEAUjHzn/X2+uWASk0vtADuoOsUoGoNxCJSuI+5qvm5mSZ3e4FnLQX3fU4ds7LLXx+M3o/3Uxsc0htT9mxvsM2rxd0EZtx8uoXkR93EBYHLbty0Cs4A5DrcrX9PBlJyxFg+6B05BefFr4vzYvfEmd305VDBBBBQKm+QIqWZApgdzB++dj5r106rt8Cof20Cpz7FcwJupQGpH6Rs03x0ty3szrMJA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=/YFeYk5xw3Boy/uxWkTtMdNPJjZVZwbmeuLoGuj3ujw=;
+ b=L9+LsQFgZ8u0XGwgOlt6saJwJQFM5aLMgY0Hk8XlrQWNV2Ce/1bfwXRD0xuGO1A2OXLSilAsIRSIrPhdnDvX37Y9DJSw2NsJ7a+dLhK2nnJ7Xt+vqBaNEFK6OPw/4pSAHzg88FVXs5JOKnWiwemJEZqghfXu07GhtrrBScLvA4wmT3hG8Uq94MoZtJzpYRZMiR0Q3cGngHcicH7Y+MkE91Tww62rZAl2tdybG2+2DJ3r8eFJMk5oCtTE6jcTIn07+6qQi56A0UZtoUmgbHHYDzGlcXTz38DZpw9HCXMeW9s4m0nqI4F0sUSlb2QokyLWf3LYaSkAQwX1VfEwwT68ow==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=/YFeYk5xw3Boy/uxWkTtMdNPJjZVZwbmeuLoGuj3ujw=;
+ b=h34pInHaiepLDLqZECA43/EhYdisi8vD/eFRPLK5buu6hFdhlR0GZ6++DYoCSokJalHJZeGJqLlek0f/J7m7CYnlJT5tDG5XgubvFGQ//Q6tL4kB3dMHZOH3/GOrfAoXFi4gy41sYI1QEEMoACM7tjG0caDFw7eFdHD/qMcsAMbZ65x64MG1KqhmciPibRinXIyxuvxI6yEazaQI1coQrPvuMuoCFgaKg5+4PfBWHKrU81Vt+ELdOVewv064uDpPOs0EDvqlQMqeNdSXwHWum1eORpDq9AcU2oLpudfi6NcdAmFQg+e01MHUh4yykWX7Wrz/Hxvs4yvn3NlSKh51HA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Received: from SEZPR06MB5832.apcprd06.prod.outlook.com (2603:1096:101:c8::12)
+ by KUZPR06MB8991.apcprd06.prod.outlook.com (2603:1096:d10:88::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.223.11; Wed, 15 Jul
+ 2026 06:44:58 +0000
+Received: from SEZPR06MB5832.apcprd06.prod.outlook.com
+ ([fe80::f98:5e32:4ccb:d07b]) by SEZPR06MB5832.apcprd06.prod.outlook.com
+ ([fe80::f98:5e32:4ccb:d07b%6]) with mapi id 15.21.0223.008; Wed, 15 Jul 2026
+ 06:44:58 +0000
+From: Pan Chuang <panchuang@vivo.com>
+To: vkoul@kernel.org
+Cc: Frank.Li@nxp.com,
+	afaerber@suse.de,
+	alexandre.torgue@foss.st.com,
+	amelie.delaunay@foss.st.com,
+	andersson@kernel.org,
+	angelogioacchino.delregno@collabora.com,
+	baolin.wang@linux.alibaba.com,
+	biju.das.jz@bp.renesas.com,
+	claudiu.beznea.uj@bp.renesas.com,
+	cosmin-gabriel.tanislav.xa@renesas.com,
+	daniel@zonque.org,
+	dmaengine@vger.kernel.org,
+	dmitry.baryshkov@oss.qualcomm.com,
+	geert+renesas@glider.be,
+	haojian.zhuang@gmail.com,
+	hayashi.kunihiko@socionext.com,
+	imx@lists.linux.dev,
+	jernej.skrabec@gmail.com,
+	john.madieu.xa@bp.renesas.com,
+	jonathanh@nvidia.com,
+	kees@kernel.org,
+	keguang.zhang@gmail.com,
+	ldewangan@nvidia.com,
+	linmq006@gmail.com,
+	linux-actions@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	"Mateus B. Cassiano" <mbc07@live.com>
-Subject: [PATCH] wifi: mt76: pass LED define via ccflags-y in driver submodules
-Date: Wed, 15 Jul 2026 00:44:32 -0400
-Message-ID: <20260715044431.1207-2-mbc07@live.com>
-X-Mailer: git-send-email 2.55.0.windows.2
-MIME-Version: 1.0
+	linux-mips@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	magnus.damm@gmail.com,
+	mani@kernel.org,
+	matthias.bgg@gmail.com,
+	mcoquelin.stm32@gmail.com,
+	mhiramat@kernel.org,
+	orsonzhai@gmail.com,
+	panchuang@vivo.com,
+	patrice.chotard@foss.st.com,
+	pjw@kernel.org,
+	quic_jseerapu@quicinc.com,
+	robert.jarzmik@free.fr,
+	samuel.holland@sifive.com,
+	sean.wang@mediatek.com,
+	thierry.reding@kernel.org,
+	thomasandreatta2000@gmail.com,
+	vigneshr@ti.com,
+	wens@kernel.org,
+	wsa+renesas@sang-engineering.com,
+	zhang.lyra@gmail.com,
+	zhengxingda@iscas.ac.cn
+Subject: Re: [PATCH 00/26] dmaengine: Remove redundant dev_err()/dev_err_probe() calls
+Date: Wed, 15 Jul 2026 14:44:43 +0800
+Message-Id: <20260715064443.525836-1-panchuang@vivo.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <alYmNl--mxMK1-86@vaman>
+References: <alYmNl--mxMK1-86@vaman>
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: TPYP295CA0042.TWNP295.PROD.OUTLOOK.COM
+ (2603:1096:7d0:7::20) To SEZPR06MB5832.apcprd06.prod.outlook.com
+ (2603:1096:101:c8::12)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SEZPR06MB5832:EE_|KUZPR06MB8991:EE_
+X-MS-Office365-Filtering-Correlation-Id: fbc5fe82-180b-4eea-939c-08dee23c9625
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|7416014|376014|52116014|1800799024|366016|38350700014|6133799003|56012099006|11063799006|22082099003|18002099003|41080700001;
+X-Microsoft-Antispam-Message-Info: WYVFUGViK+AT6BFkkPqTRL8TgunUVYUvcmKa9R1UGcC8OuYQ/2Z1OdZS+tH9DVdv/a489oc9t9gx65if2FHp03cWAZWw6BgDnsMdMCGbi03vIU4bbFDzGktwFv0U6q5If/nmQUTBLlMpavxqgpfZ6bX6Z0KIQqiLTsCsioATcQ0Yp5v4M0iTRggz/jlGgvV4OPdfkVXnxbw3lEuwCHHU1J+1GN0Rg2zRslEqQeC0mwKNYv/fuqgKWOcVy4Dvkgrv5R0Xsfa9d6bPlT85TGm0WEvUQCKCbPgwwXRVT3EKjP6svoLlIDIGkISK5h2g9JZ8xzMOP74uSElmvkS/r+6HRqgceVTg8E5bC2S7z2fRdp41vX9eCYBPZh2slybArkvO8Bn0YQxraCSO+HwpQVPhVBQzmh4OF87dCV8pJKyvARhQCzKtUKjx5lkZE/cK8lpxDNzWsX0Gq0H6+nguZlZx1IMJb/OYLMFBoVDmSR1zf1GhCC2G3eRYxIW3VsSf6yZps7evsXVnywmBercgifvUK42Jd8GlrjZo1E89+BDf3/VP//HEV5w/K1BEtvaI9MKMQ6pPzd2c9Fsd6wHbZFFEDOHzSYG3Fgf/zihBT3qAaWtFGp6kfBEbTeUcVFq63EnqlkQCkGFm37Xq6AcQW9TuHvPRyHzjOQUNKFj3XHtpBIWndx9N6m/laiDR6mhg4R1XXj8WFSZHFnKTFUozQ/rpy/48o0ivaSmOItRC/9KvN//HnB2OSOpsJfRUGn7AQeTN
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SEZPR06MB5832.apcprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(7416014)(376014)(52116014)(1800799024)(366016)(38350700014)(6133799003)(56012099006)(11063799006)(22082099003)(18002099003)(41080700001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?XX7d341lm0+hgQrKIp9/x9htYftyMTv5vZIOSom1XPuqtAw0vS6LILbpzaoV?=
+ =?us-ascii?Q?j4In7qk7HasidjUHtvwZo/Ou8ZzMM7ibeXM8U5Lyv2GmrSEFNF6wZjgFRinj?=
+ =?us-ascii?Q?xHPoJn/EenXJ4TmqsjmDPje4Vu3Es3Nv4HlYoTZ7UH0JyddTqx7aKjnGN9iR?=
+ =?us-ascii?Q?Od8XCMoxR8/m7X/jTSf49L1j6lO/RBGPVRLNNWWJ57HWcYS6u8DO+71KXeoS?=
+ =?us-ascii?Q?Kxchz1CEvP1f3qP+EMHVpzutKIkk1AVcXoqSy6+yG8sNl+GInBheb0xQhoL/?=
+ =?us-ascii?Q?FXTl0BGHVTpjgpK2WyllcJIyC4yhw6ArgW+g6c7rkN3UgGaGxuBn3N/wThvO?=
+ =?us-ascii?Q?JMTK3mIB11/Stjs2tswxFIAApbHKHZkAoLV4e39FJSxiCf5Y2fvkvmEhXmLG?=
+ =?us-ascii?Q?MNnOAJd/DLT2B7QpvGETM6T9YtHTWgTP4tKLNKvlfR4/rPcL8lsZoA3RgFWI?=
+ =?us-ascii?Q?70mg1q8ZEjoCQmn4ub5lalvXtSKiRtHAR5CQmGb9mqJ6tVvGOG+APEh/fETn?=
+ =?us-ascii?Q?vlFAk2Y2tdDrm4zw0xtYgDOZuaq1M3Dw6BayVQ2w4AF7JFay6gdhAv7PsiT7?=
+ =?us-ascii?Q?rkz+gWgSLaLvX9El3bSiQKdNoCTqVkU8ZQIO2Z1Po5fHZ6yzE0MTGgyNpgq8?=
+ =?us-ascii?Q?FHyerwpCCE9KafITNVU8BE+xVceZ+bF1wFbBHmshWBKqfMm2GwhDiRXrN+nw?=
+ =?us-ascii?Q?rLPcK8aM5MzwJoFeti17wXxwsgl0QmQt3sYaK/kaYu2N0dXNJ9fYZQRHYwF4?=
+ =?us-ascii?Q?nfIhVT+0xyvvwUEQYc/WCavQnIEDX7h4kTuOV4UKQQrC04qvvsgY+/VP49bT?=
+ =?us-ascii?Q?cEyy0s55/xt79oU2QWrind8HNcMd54szhis+YJh2vwhnsd2eTMDnUfG18MUN?=
+ =?us-ascii?Q?oP6kBCDBk4E+v/+5v2p3w1SGCu2G0DF5JEXP1X02oCyDw0DBvqO6aZXakU6V?=
+ =?us-ascii?Q?fJTkAqXI1Irh/ZMK80CIY1zHQRuxZHc2xNvMZ4MNJFXLFZnPqUmypaSboPfj?=
+ =?us-ascii?Q?6ln0a4ZXeewlC5ZJtpvJ49WDCQ/sBZz9cLlPWl6Yjwu0ULUMjv2UlZHaBfCu?=
+ =?us-ascii?Q?HrFcdl/4bQLSLB+A8BXLPYUGAKPamCctDPHG4UhtRA1FYtaO13V/kzDQfJkn?=
+ =?us-ascii?Q?842rolaL/OSM7d6GrKHXPSyTgTBWbQgt11rlMba75ZXLACmoWnfrDuSKKUZE?=
+ =?us-ascii?Q?VG0lBxMwRwnNNi6/5pVTsb5YGhbEx3cycv3S4W/boQeI1TZgReKWzZwFPzeD?=
+ =?us-ascii?Q?G96r4CYgl1NMzoIBfc7ybzMGUuEbOmyslbcH1sofvF51jgV7R11DGCjK/zz1?=
+ =?us-ascii?Q?3ve6NtsfCceGHs9FogujGBu7OLt7MLx33CeNA/U0OgTA4KAMDRR37zSJJaY4?=
+ =?us-ascii?Q?7keYajo57njgq2VmXLWiz+DnJBrFgyFABSOVMpWzIXmrrSf3jvH19eu3UXzS?=
+ =?us-ascii?Q?ul70UHnw9GA22eduMlZUsjB5W3qUU8/6rKupBQqGQzqz3po53sfw9Bais+/u?=
+ =?us-ascii?Q?5fn9TGd437kGQmR5bi+RDtOZ+5aJyDCCjYCRQcS1O9rmJxtNuxFxY9yFjvTX?=
+ =?us-ascii?Q?C0M3Fja+a6Nd3iMNUOikfV+lRrXxwtb4hGtJL6npZEtD81JwPLcJItYgxOj8?=
+ =?us-ascii?Q?lM/8sTUpGnj/agT6ggU2XliFj419UFcRsM45JYAp7YZ9XSurQb6eiTZAlduM?=
+ =?us-ascii?Q?AguyDZePmuxAG/z35nfDTGiXW5hTvQI2jMErqDU87ux9aOEiSs5D5iPtJaV+?=
+ =?us-ascii?Q?UsvLz0J13g=3D=3D?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: fbc5fe82-180b-4eea-939c-08dee23c9625
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB5832.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jul 2026 06:44:58.0134
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: IV1eCzCAFMOqLCkkSyOqdg4aBiGm3bqN16cYaZK3pY2/atV4o+JJKB2hQqnKR7xOETHjwRL0kbbzqvHpOlo6yw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KUZPR06MB8991
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260714_214527_703319_727EB0E9 
-X-CRM114-Status: GOOD (  17.38  )
+X-CRM114-CacheID: sfid-20260714_234505_825040_9C6DE8BF 
+X-CRM114-Status: UNSURE (   7.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,109 +188,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Commit d2b01fbc329b ("mt76: pass LED define via ccflags-y")
-converted the top-level Makefile from the deprecated EXTRA_CFLAGS
-to ccflags-y so that -DCONFIG_MT76_LEDS keeps working now that
-kbuild no longer honours EXTRA_CFLAGS.
+On 2026-07-14 20:06, Vinod Koul wrote:
+> On 09-07-26, 16:26, Wolfram Sang wrote:
+>> On Thu, Jul 09, 2026 at 09:58:04PM +0800, Pan Chuang wrote:
+>>> Commit 55b48e23f5c4b6f5ca9b7ab09599b17dcf501c10 ("genirq/devres: Add
+>>> error handling in devm_request_*_irq()") added automatic error logging
+>>> to devm_request_threaded_irq() and devm_request_any_context_irq() via
+>>> the new devm_request_result() helper. The helper prints device name,
+>>> IRQ number, handler functions, and error code on failure.
+>>>
+>>> Since devm_request_irq() is a static inline wrapper around
+>>> devm_request_threaded_irq(), it also benefits from this automatic
+>>> logging.
+>>>
+>>> This series removes the now-redundant dev_err() and dev_err_probe() calls
+>>> in dmaengine drivers that follow these devm_request_*_irq() functions,
+>>> as the core now provides more detailed diagnostic information on failure.
+>>>
+>>> Pan Chuang (26):
+>>>   dmaengine: fsl-edma-main: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: fsl-qdma: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: loongson-loongson1-apb-dma: Remove redundant
+>>>     dev_err()/dev_err_probe()
+>>>   dmaengine: mediatek-mtk-cqdma: Remove redundant
+>>>     dev_err()/dev_err_probe()
+>>>   dmaengine: mediatek-mtk-hsdma: Remove redundant
+>>>     dev_err()/dev_err_probe()
+>>>   dmaengine: mmp_pdma: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: moxart-dma: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: owl-dma: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: pxa_dma: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: qcom-gpi: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: sf-pdma-sf-pdma: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: sh-rcar-dmac: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: sh-rz-dmac: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: sh-shdmac: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: sh-usb-dmac: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: sprd-dma: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: st_fdma: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: stm32-stm32-dma: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: stm32-stm32-dma3: Remove redundant
+>>>     dev_err()/dev_err_probe()
+>>>   dmaengine: stm32-stm32-mdma: Remove redundant
+>>>     dev_err()/dev_err_probe()
+>>>   dmaengine: sun4i-dma: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: sun6i-dma: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: tegra20-apb-dma: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: ti-edma: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: uniphier-xdmac: Remove redundant dev_err()/dev_err_probe()
+>>>   dmaengine: xgene-dma: Remove redundant dev_err()/dev_err_probe()
+>>
+>> One patch per subsystem for such trivial changes, please.
+>
+> Yes pretty please
+>
+Thanks, I'll merge them in v2.
 
-However, ccflags-y (like EXTRA_CFLAGS before it) only applies to
-the kbuild makefile it is set in and is not inherited by
-subdirectories pulled in via obj-y/obj-m. The mt7603, mt7615 and
-mt7915 driver subdirectories each set their own
-"EXTRA_CFLAGS += ... -DCONFIG_MT76_LEDS", which is now a silent
-no-op. As a result, CONFIG_MT76_LEDS is undefined when building
-mt7603/init.c, mt7615/init.c, mt7615/pci_init.c and mt7915/init.c,
-the IS_ENABLED(CONFIG_MT76_LEDS) blocks are compiled out, and the
-mt76-* LED class devices are never registered for these drivers.
-
-Convert these subdirectory Makefiles to ccflags-y as well.
-
-mt7996/Makefile never carried the define at all, even though
-mt7996/init.c has the same IS_ENABLED(CONFIG_MT76_LEDS) checks for
-its LED callbacks and GPIO mux setup. Add ccflags-y there too so
-mt7996 LED support is enabled consistently with the other drivers.
-
-mt76x0, mt76x2, mt7921 and mt7925 contain no CONFIG_MT76_LEDS
-references and are left untouched.
-
-Fixes: d2b01fbc329b ("mt76: pass LED define via ccflags-y")
-Link: https://github.com/openwrt/mt76/issues/1077
-Signed-off-by: Mateus B. Cassiano <mbc07@live.com>
----
-Notes for reviewers (not for the commit message):
-
-Previously submitted as https://github.com/openwrt/mt76/pull/1090
-before I noticed that PRs on the GitHub mirror don't seem to be
-reviewed.
-
-Tested on a D-Link DIR-882 A1 (dual MT7615 radios) by building
-OpenWrt at commit e4c35c2eec66 with this change applied to the mt76
-package: the mt76-* LED class devices appeared again under
-/sys/class/leds. The same result was reported on different MT7615
-hardware in
-https://github.com/openwrt/mt76/issues/1077#issuecomment-4557037203
-
-The mt7603 and mt7915 hunks are the same fix applied for consistency,
-but I don't have that hardware to test.
-
-mt7996 in particular enables IS_ENABLED(CONFIG_MT76_LEDS) code paths
-that appear to have never been built with the define before, so it
-would be good if someone with mt7996 hardware could confirm nothing
-regresses. I'm happy to drop the mt7996 hunk and keep only the others
-if preferred.
- mt7603/Makefile | 2 +-
- mt7615/Makefile | 2 +-
- mt7915/Makefile | 2 +-
- mt7996/Makefile | 1 +
- 4 files changed, 4 insertions(+), 3 deletions(-)
-
-diff --git a/mt7603/Makefile b/mt7603/Makefile
-index 57d28591..5e7ab30f 100644
---- a/mt7603/Makefile
-+++ b/mt7603/Makefile
-@@ -1,5 +1,5 @@
- # SPDX-License-Identifier: BSD-3-Clause-Clear
--EXTRA_CFLAGS += -Werror -DCONFIG_MT76_LEDS
-+ccflags-y += -Werror -DCONFIG_MT76_LEDS
- obj-m += mt7603e.o
- 
- mt7603e-y := \
-diff --git a/mt7615/Makefile b/mt7615/Makefile
-index 9274c006..8b8eff3f 100644
---- a/mt7615/Makefile
-+++ b/mt7615/Makefile
-@@ -1,6 +1,6 @@
- # SPDX-License-Identifier: BSD-3-Clause-Clear
- 
--EXTRA_CFLAGS += -DCONFIG_MT76_LEDS
-+ccflags-y += -DCONFIG_MT76_LEDS
- obj-$(CONFIG_MT7615_COMMON) += mt7615-common.o
- obj-$(CONFIG_MT7615E) += mt7615e.o
- obj-$(CONFIG_MT7663_USB_SDIO_COMMON) += mt7663-usb-sdio-common.o
-diff --git a/mt7915/Makefile b/mt7915/Makefile
-index 6b0058ca..7ea5b05c 100644
---- a/mt7915/Makefile
-+++ b/mt7915/Makefile
-@@ -1,6 +1,6 @@
- # SPDX-License-Identifier: BSD-3-Clause-Clear
- 
--EXTRA_CFLAGS += -DCONFIG_MT76_LEDS
-+ccflags-y += -DCONFIG_MT76_LEDS
- obj-$(CONFIG_MT7915E) += mt7915e.o
- 
- mt7915e-y := pci.o init.o dma.o eeprom.o main.o mcu.o mac.o \
-diff --git a/mt7996/Makefile b/mt7996/Makefile
-index 69d2d4bb..28ecee3c 100644
---- a/mt7996/Makefile
-+++ b/mt7996/Makefile
-@@ -1,5 +1,6 @@
- # SPDX-License-Identifier: BSD-3-Clause-Clear
- 
-+ccflags-y += -DCONFIG_MT76_LEDS
- obj-$(CONFIG_MT7996E) += mt7996e.o
- 
- mt7996e-y := pci.o init.o dma.o eeprom.o main.o mcu.o mac.o \
--- 
-2.43.0
-
+Best Regards,
+PanChuang
 
