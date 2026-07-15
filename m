@@ -4,66 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7632CC4450C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 10:21:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B810CC4450C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 11:21:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8IHTFZJw7vLfk2PuR2YgR6mnbrGr/9fxMESJU6P9vmQ=; b=s6PZKMRC/Ftot6NJREcNla3dFH
-	/Mt6JkYiR4s4PC3alDYqfKSGX2lLhSF9dunDXNTkuNLZC/bLQAyFAcypJl0ZxBCgNlyDDCVUPumWW
-	KXpILksmb6ZqChtW/BaJbY1OLPitWVj1/kjgrGS2PbIxYzaJtCBNWPh/VmXwJGoP4eLEy4023Uo5o
-	N3Ni7frIBu38V0yq+EdrJVUru2HbFMF65d5iXHaistBwFJUM3wOCTEPoaJakCrTa/VI2CVg1lReH2
-	8Y6xw6SxwCNPUeSNp216um9z10rr1CkWeU9gedXMxhRaYRLjIqtz8lrK5yha5/8ojnMHzPNHNeGmD
-	LzB5Gwyw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NrLmXw2+grSg8BDLzNZP31Z2rCqGp6CpomTh+kmD5Sk=; b=4POxoVHsyM/JqDIrjptnHVGKrz
+	U0Nqx5pnwk5mWGb5lto+2v3QDInfyCU8iyf0G3aLDBCaB0koEJFnlNm9SSjVzAXabptgFXvcuf8dq
+	BV+R/1RsB3XaubMGfaM4Uw0LesAfeSyxUVe5hgNx6XOoEr8oQJViRebVHjx1WMbSuvu7Efm2uOIud
+	DB+A+BIKGUwqLF/ZV4E5bjyVAJG7vaS455qozTHx/zCqT1Ug+z3CBc3/3/1YWWVY6iPECebI1hQLI
+	71BoOXwJu0qhpRd5D3gPYnsWUqLr8dJTUlwJ+Q9FyVM0gG82INDzfZ96pdY7E7ToLsd95egTs8CRt
+	Q5QF2aKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjwjq-0000000EQk6-1MXf;
-	Wed, 15 Jul 2026 10:21:14 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wjxfi-0000000EYag-17W7;
+	Wed, 15 Jul 2026 11:21:02 +0000
+Received: from [216.200.240.184] (helo=mailgw01.mediatek.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjwje-0000000EQcW-0Oa3;
-	Wed, 15 Jul 2026 10:21:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784110860;
-	bh=Hw/BoCYnl7wzuitRGrv0kSxyi3kjki5TkxoSffkFoww=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fUr14yiSa6FFzkPn+YUF/aMiGely837G3oAjArMTBVXya3O6JaNgT5TrL2pQD/+xi
-	 cbpw85ZbDCU+qi0SF+EPMtD9Nt2//HMa6CzVCu0NkyHvT7oVl8j8eOpxUyDl+aMJuU
-	 woVcdUiNGIID5hzBObl8AwNtqEmzpVcne3maSR8oGhzEWP3U4/Zdn8LRLwscT9Qi3c
-	 GPSeAThCLcLUg5Q/vQpK9ZYRxmiCIp24oEOd+hHjXtCfYNV6Y+BoNAk0AZRwbe+jzT
-	 3VqAkjuJwKM+6CX/R4SywaihEVGUDqrr24A4d7da9uVAuWefnHE2bHGBy3/eUprtE8
-	 Uj9LgqujeH5cQ==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8C6E317E0DFB;
-	Wed, 15 Jul 2026 12:20:59 +0200 (CEST)
-Message-ID: <3c112acd-5709-4144-9cab-54e0a51eefc9@collabora.com>
-Date: Wed, 15 Jul 2026 12:20:59 +0200
+	id 1wjxfd-0000000EYWi-47aq
+	for linux-mediatek@lists.infradead.org;
+	Wed, 15 Jul 2026 11:21:00 +0000
+X-UUID: 3d3a9388803f11f1afed4741b24580c9-20260715
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=NrLmXw2+grSg8BDLzNZP31Z2rCqGp6CpomTh+kmD5Sk=;
+	b=IssQoFP3YLZgqCfeHPJQ8a0PKcg8bbasb4FxK8Sf6OLpPm/rGSqqnRANoJfG2bFQOirF1RV9une3J7vGl/utSzdel6glcP0YcK8zjDgw+PHq1xhl9iqgE4pGp2iR6P5Lv6K9udann+G7vEYGbv3CSjWLmE/OhwZeF23izyAa0+s=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.17,REQID:810ef5ff-06bf-4db9-ade9-017d6f36ccf1,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:d497b38,CLOUDID:86f42619-ab14-4403-9336-76696324c5a8,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
+	0|99|200|213,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:
+	0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 3d3a9388803f11f1afed4741b24580c9-20260715
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 221257207; Wed, 15 Jul 2026 04:20:52 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Wed, 15 Jul 2026 19:20:49 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 15 Jul 2026 19:20:49 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
+	SS Wu <ss.wu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>, Paul Menzel
+	<pmenzel@molgen.mpg.de>, linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+	linux-kernel <linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH v11 2/7] Bluetooth: btmtk: Add firmware size validation in btmtk_setup_firmware_79xx()
+Date: Wed, 15 Jul 2026 19:20:42 +0800
+Message-ID: <20260715112048.1448868-3-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20260715112048.1448868-1-chris.lu@mediatek.com>
+References: <20260715112048.1448868-1-chris.lu@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] soc: mediatek: pwrap: add mt6572 support
-To: rva333@protonmail.com, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Flora Fu <flora.fu@mediatek.com>, Alexandre Mergnat <amergnat@baylibre.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20260714-6572-pwrap-v1-0-d8e5a39cf7ef@protonmail.com>
- <20260714-6572-pwrap-v1-3-d8e5a39cf7ef@protonmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260714-6572-pwrap-v1-3-d8e5a39cf7ef@protonmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260715_032102_297105_5990B69B 
-X-CRM114-Status: GOOD (  16.14  )
+X-CRM114-CacheID: sfid-20260715_042058_075794_1670FECA 
+X-CRM114-Status: GOOD (  11.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,79 +89,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/14/26 14:42, Roman Vivchar via B4 Relay wrote:
-> From: Roman Vivchar <rva333@protonmail.com>
-> 
-> Add mt6572 registers and platform data for the pmic wrapper.
-> The mt2701 SoC-specific initialization function is used because they
-> share the same GPS_INTF settings.
-> 
+Add firmware size validation to prevent out-of-bounds access when loading
+truncated or malicious firmware files.
 
+Add three levels of validation:
+1. Minimum size check for header and global descriptor
+2. Section map bounds check with integer overflow protection using
+   check_mul_overflow() and check_add_overflow()
+3. Section data bounds check before accessing each section
 
-> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-> ---
->   drivers/soc/mediatek/mtk-pmic-wrap.c | 111 +++++++++++++++++++++++++++++++++++
->   1 file changed, 111 insertions(+)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> index a4b10b0a97cb..4b8a5dc80a36 100644
-> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> @@ -569,6 +569,96 @@ static const int mt2701_regs[] = {
->   	[PWRAP_ADC_RDATA_ADDR2] =	0x154,
->   };
->   
+This matches the validation approach used in btmtk_load_cbmcu_firmware().
 
-..snip..
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+Assisted-by: Claude:Sonnet-4.5
+---
+ drivers/bluetooth/btmtk.c | 39 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
 
->   
-> +static const struct pmic_wrapper_type pwrap_mt6572 = {
-> +	.regs = mt6572_regs,
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 02a96342e964..3491060b3ae9 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -145,6 +145,7 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
+ 	int err, dlen, i, status;
+ 	u8 flag, first_block, retry;
+ 	u32 section_num, dl_size, section_offset;
++	size_t expected_size;
+ 	u8 cmd[64];
+ 
+ 	err = request_firmware(&fw, fwname, &hdev->dev);
+@@ -153,12 +154,40 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
+ 		return err;
+ 	}
+ 
++	/* Validate minimum firmware size for header and global descriptor */
++	if (fw->size < MTK_FW_ROM_PATCH_HEADER_SIZE + MTK_FW_ROM_PATCH_GD_SIZE) {
++		bt_dev_err(hdev, "Firmware file too small: size=%zu, expected at least %u bytes",
++			   fw->size, MTK_FW_ROM_PATCH_HEADER_SIZE + MTK_FW_ROM_PATCH_GD_SIZE);
++		err = -EINVAL;
++		goto err_release_fw;
++	}
++
+ 	fw_ptr = fw->data;
+ 	fw_bin_ptr = fw_ptr;
+ 	hdr = (struct btmtk_patch_header *)fw_ptr;
+ 	globaldesc = (struct btmtk_global_desc *)(fw_ptr + MTK_FW_ROM_PATCH_HEADER_SIZE);
+ 	section_num = le32_to_cpu(globaldesc->section_num);
+ 
++	/* Check for potential integer overflow in size calculation */
++	if (check_mul_overflow((size_t)MTK_FW_ROM_PATCH_SEC_MAP_SIZE,
++			       (size_t)section_num, &expected_size) ||
++	    check_add_overflow(expected_size,
++			       (size_t)(MTK_FW_ROM_PATCH_HEADER_SIZE +
++					MTK_FW_ROM_PATCH_GD_SIZE),
++			       &expected_size)) {
++		bt_dev_err(hdev, "Firmware size calculation overflow (section_num=%u)",
++			   section_num);
++		err = -EINVAL;
++		goto err_release_fw;
++	}
++
++	if (fw->size < expected_size) {
++		bt_dev_err(hdev, "Firmware truncated: size=%zu, expected=%zu (section_num=%u)",
++			   fw->size, expected_size, section_num);
++		err = -EINVAL;
++		goto err_release_fw;
++	}
++
+ 	bt_dev_info(hdev, "HW/SW Version: 0x%04x%04x, Build Time: %s",
+ 		    le16_to_cpu(hdr->hwver), le16_to_cpu(hdr->swver), hdr->datetime);
+ 
+@@ -171,6 +200,16 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
+ 		section_offset = le32_to_cpu(sectionmap->secoffset);
+ 		dl_size = le32_to_cpu(sectionmap->bin_info_spec.dlsize);
+ 
++		/* Validate section boundaries to prevent out-of-bounds access */
++		if (dl_size > 0 &&
++		    (section_offset > fw->size ||
++		     dl_size > fw->size - section_offset)) {
++			bt_dev_err(hdev, "Section %d out of bounds: offset=%u, size=%u, fw_size=%zu",
++				   i, section_offset, dl_size, fw->size);
++			err = -EINVAL;
++			goto err_release_fw;
++		}
++
+ 		/* MT6639: only download sections where dlmode byte0 == 0x01,
+ 		 * matching the Windows driver behavior which skips WiFi/other
+ 		 * sections that would cause the chip to hang.
+-- 
+2.45.2
 
-MT6572 only has PWRAP_OP_TYPE, PWRAP_MSB_FIRST, PWRAP_GPS_STA additional registers
-compared to MT2701, and the three are currently unused.
-
-Instead of adding yet one more huge array for 3 more registers, since I'm mostly
-sure that those will never be used anyway (happy if you prove me wrong!), you can
-at this point just use mt2701_regs for mt6572.
-
-Perhaps, add a comment saying that MT6572 does indeed have those additional regs
-but were omitted because currently unused.
-
-So, something like
-
-/*
-  * MT6572 has additional registers OP_TYPE (0x10), MSB_FIRST (0x14), GPS_STA (0x40)
-  * which were omitted as they're currently unused in this driver.
-  * Apart from that, the register map matches the one from MT2701.
-  */
-static const struct pmic_wrapper_type pwrap_mt6572 = {
-	.regs = mt2701_regs,
-
-Cheers,
-Angelo
-
-> +	.type = PWRAP_MT6572,
-> +	.arb_en_all = 0x1ff,
-> +	.int_en_all = 0x7ffffffd,
-> +	.int1_en_all = 0,
-> +	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
-> +	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
-> +	.caps = PWRAP_CAP_RESET | PWRAP_CAP_DCM,
-> +	.init_reg_clock = pwrap_common_init_reg_clock,
-> +	.init_soc_specific = pwrap_mt2701_init_soc_specific,
-> +};
-> +
->   static const struct pmic_wrapper_type pwrap_mt6765 = {
->   	.regs = mt6765_regs,
->   	.type = PWRAP_MT6765,
-> @@ -2446,6 +2556,7 @@ static const struct pmic_wrapper_type pwrap_mt8186 = {
->   
->   static const struct of_device_id of_pwrap_match_tbl[] = {
->   	{ .compatible = "mediatek,mt2701-pwrap", .data = &pwrap_mt2701 },
-> +	{ .compatible = "mediatek,mt6572-pwrap", .data = &pwrap_mt6572 },
->   	{ .compatible = "mediatek,mt6765-pwrap", .data = &pwrap_mt6765 },
->   	{ .compatible = "mediatek,mt6779-pwrap", .data = &pwrap_mt6779 },
->   	{ .compatible = "mediatek,mt6795-pwrap", .data = &pwrap_mt6795 },
-> 
 
