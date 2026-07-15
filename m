@@ -4,74 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E73FC44508
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 12:27:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7657EC44508
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 12:53:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jwko2hrncYt53zZGnXY8IXUD28MaawCDLpcYVtsjjOo=; b=GlyDOO2I2+xiN12iwsM4PX7Cu7
-	zIatEpaqmJ3xVvw8zF7ZZkzJ5YkPjaewBDvLiEIVbthrnQ7VFZoesCczzFHXeACV5+VB8+j3lltAg
-	K1GthdzY5cp0126D3WxZAomXce+NdRfVzDcfCk3JHUAXFK9U88rB1TVRDpT7+Z1S0QTettufaPVWq
-	oGQCuq8c1v3lzpqIloQm72uVGF0v6bkuWYkHCUQCSyokUqzeehsj2ljpBpDBMrs5d82Z3sp7qfJLI
-	6IbWomEn+24BoQFzu6omAWuG5JVt17Ge9SS1DcSOH14OOFZy0r5O63a5brI3m/d25WNbAqFDwDKN0
-	pNqkWQRg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xEwViipQaJZVXM9xLdF3SH6nxkka6iIr7lgTdrGkvYI=; b=e+E2eAOHF3UtnF9HjtATv4vixj
+	SawykxLXlImEeEgGN9AfAJCO+T/HbCpfYnbaYTyRmIPteHfStSfwAaTP2JR+blbmt95LTu1HaRqQL
+	NdDKi8BtdhPN5PvQiXuTh1NrXNR0wRssFpXWnCyxLheDV9uPp1qqab722p7Ry7kMO9lYr4W2c4JSB
+	V4GZCRTVlBgsYtWaf50rOEZK1IHV0D8z/F01yEwTADqaGFzp6CexbR6qVJGDraWbvr0Lqcc7K/7GF
+	xeluwelL03QlCv3P759zX/6QMkaE9qYxS7obMfV3JEcoaKbGn9//9O709WopuuiyUfONvXYfOTL8Q
+	xqLq7+mQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjyi3-0000000EmQY-3SaM;
-	Wed, 15 Jul 2026 12:27:31 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wjz7A-0000000EraI-1PgZ;
+	Wed, 15 Jul 2026 12:53:28 +0000
+Received: from mail-43172.protonmail.ch ([185.70.43.172])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjyi1-0000000EmOS-1hUe;
-	Wed, 15 Jul 2026 12:27:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E6CB840418;
-	Wed, 15 Jul 2026 12:27:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id BFC0BC2BCF4;
-	Wed, 15 Jul 2026 12:27:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1784118448;
-	bh=Ixh7QjHO8Sw6SkBbzsHgSMI9ywDCBo9qAZr4szmg7DI=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=hREBKbQVHNYnpvpLjDiEOykL6cAFnIvFiE/HunwP11FOkUXdxtePz2K3ib4wrYzA4
-	 orbMl3R9hbpe26G6LY5QJU2Nn5mrQ7l+0jTqqBQ50W4J64sb31oTuj9qyQLPO8zFRc
-	 Q+ELrKz9aQyVf7b0H3JCTptagx25vgSrdXHRtQkX1sWYmIOzJWt2cAkiZnbnMU9tcu
-	 MdbZTxHRpdMVAzB1HgAhTovk9jhe6p8SudYsSq+SfP9emLb70rWIeOTQVDrnLzyhiM
-	 E1hC8U4ebAl05RvfdJPYqgSIV8SsABvL1QCzkNy9W/YxS2yjHsHjDRFJW1CT+8jUgL
-	 sMxS3ze9H7yng==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A3936C44507;
-	Wed, 15 Jul 2026 12:27:28 +0000 (UTC)
-From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Wed, 15 Jul 2026 15:26:40 +0300
-Subject: [PATCH v2 3/3] soc: mediatek: pwrap: add mt6572 support
+	id 1wjz77-0000000ErYh-1pQ7;
+	Wed, 15 Jul 2026 12:53:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=geanix.com;
+	s=protonmail3; t=1784119998; x=1784379198;
+	bh=xEwViipQaJZVXM9xLdF3SH6nxkka6iIr7lgTdrGkvYI=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:From:To:
+	 Cc:Date:Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=Oxj58E8W3hKQZu0gvkYqCUZNpfUbBQ78VVenN6g9RIw4JHwjrEft/SGwCNV63zM7a
+	 2Q7xDkapC/pwRDIyAOJX+qhgp7mkaYQ1WRaknqg0zER/f8uics62usPnCFmLtM++hz
+	 chlq7llvfrhyONj4ef/FcqTEwPVbOJEW8CHgUmMXqrRzQU9CN4tVdvulv/1XxFgLSu
+	 fY64gkXv2/1oav9kvx/MgaFCP/rf2z7oobqsuuBKCEb5kUSI63K81kkyuM6Wggw/H6
+	 /+5ORu5ZuFxMRgJD7ayok7sl81etN/EQmzfVHek4fpQ7OP3pU+uq+23iCpjeLRS4kv
+	 CMe7pHG2/1yQA==
+X-Pm-Submission-Id: 4h0bgw0Q0rz1DFTS
+From: Esben Haabendal <esben@geanix.com>
+To: Gary Bisson <bisson.gary@gmail.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,  Philipp Zabel
+ <p.zabel@pengutronix.de>,  David Airlie <airlied@gmail.com>,  Simona
+ Vetter <simona@ffwll.ch>,  Matthias Brugger <matthias.bgg@gmail.com>,
+  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+  dri-devel@lists.freedesktop.org,  linux-mediatek@lists.infradead.org,
+  linux-kernel@vger.kernel.org,  linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] drm/mediatek: mtk_dsi: enable hs clock during pre-enable
+In-Reply-To: <20260120-mtkdsi-v1-1-b0f4094f3ac3@gmail.com> (Gary Bisson's
+	message of "Tue, 20 Jan 2026 12:36:59 +0100")
+References: <20260120-mtkdsi-v1-1-b0f4094f3ac3@gmail.com>
+Date: Wed, 15 Jul 2026 14:53:15 +0200
+Message-ID: <8733xko1ms.fsf@geanix.com>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260715-6572-pwrap-v2-3-bea1d801c81b@protonmail.com>
-References: <20260715-6572-pwrap-v2-0-bea1d801c81b@protonmail.com>
-In-Reply-To: <20260715-6572-pwrap-v2-0-bea1d801c81b@protonmail.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Flora Fu <flora.fu@mediatek.com>, Alexandre Mergnat <amergnat@baylibre.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Roman Vivchar <rva333@protonmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1784118429; l=3053;
- i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=734OeVA8OVJF9zkD8y++4eBar+yDgtHe1s1/kC7/Zxk=;
- b=DHzyEVHfr1jchQ2eMIJvIUXEpktNqNFiQGh7LMUnb35+vD/3R+cuXsTBdugL4SGiL0gbHPFa2
- rM7wXhvcZ/VD/JGoEUvtlFqLb5G2V1rzlLb2Sj/aVOaQXvh2Tax15Yw
-X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
- pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
-X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
- auth_id=777
-X-Original-From: Roman Vivchar <rva333@protonmail.com>
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260715_055325_625268_279264F0 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,94 +69,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Roman Vivchar <rva333@protonmail.com>
+Gary Bisson <bisson.gary@gmail.com> writes:
 
-Add mt6572 registers and platform data for the pmic wrapper.
+> Some bridges, such as the TI SN65DSI83, require the HS clock to be
+> running in order to lock its PLL during its own pre-enable function.
+>
+> Without this change, the bridge gives the following error:
+> sn65dsi83 14-002c: failed to lock PLL, ret=-110
+> sn65dsi83 14-002c: Unexpected link status 0x01
+> sn65dsi83 14-002c: reset the pipe
+>
+> Move the necessary functions from enable to pre-enable.
+>
+> Signed-off-by: Gary Bisson <bisson.gary@gmail.com>
 
-While vendor kernel source code suggests that mt6572 can be paired with
-the mt6320 PMIC, no such devices have been found yet. Hence, registers
-that not included in the mt2701 array are omitted.
+Hi
 
-The mt2701 SoC-specific initialization function is used because they
-share the same GPS_INTF settings.
+I have run into the same problem, but in combination with another
+pipeline. I am seeing same problem with an i.MX8 using the nwl-dsi
+bridge and the dcss driver.
 
-Signed-off-by: Roman Vivchar <rva333@protonmail.com>
----
- drivers/soc/mediatek/mtk-pmic-wrap.c | 26 ++++++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
+I have submitted a fix that adresses the problem in the ti-sn65dsi83
+driver instead. With a bit of luck, it can replace the fix proposed in
+this thread.
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index a4b10b0a97cb..3f05fc724e15 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -1314,6 +1314,7 @@ enum pmic_type {
- 
- enum pwrap_type {
- 	PWRAP_MT2701,
-+	PWRAP_MT6572,
- 	PWRAP_MT6765,
- 	PWRAP_MT6779,
- 	PWRAP_MT6795,
-@@ -1733,6 +1734,11 @@ static void pwrap_init_chip_select_ext(struct pmic_wrapper *wrp, u8 hext_write,
- static int pwrap_common_init_reg_clock(struct pmic_wrapper *wrp)
- {
- 	switch (wrp->master->type) {
-+	case PWRAP_MT6572:
-+		pwrap_writel(wrp, 0x8, PWRAP_RDDMY);
-+		pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_RDDMY_NO], 0x8);
-+		pwrap_init_chip_select_ext(wrp, 5, 0, 0, 0);
-+		break;
- 	case PWRAP_MT6795:
- 		if (wrp->slave->type == PMIC_MT6331) {
- 			const u32 *dew_regs = wrp->slave->dew_regs;
-@@ -1839,6 +1845,7 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
- 		pwrap_writel(wrp, 1, PWRAP_CIPHER_START);
- 		break;
- 	case PWRAP_MT2701:
-+	case PWRAP_MT6572:
- 	case PWRAP_MT6765:
- 	case PWRAP_MT6779:
- 	case PWRAP_MT6795:
-@@ -2277,6 +2284,24 @@ static const struct pmic_wrapper_type pwrap_mt2701 = {
- 	.init_soc_specific = pwrap_mt2701_init_soc_specific,
- };
- 
-+/*
-+ * MT6572 register map is a superset of the MT2701. It has additional registers
-+ * OP_TYPE (0x10), MSB_FIRST (0x14), GPS_STA (0x40) and SW_RST (0x180),
-+ * which were omitted because the driver doesn't use them.
-+ */
-+static const struct pmic_wrapper_type pwrap_mt6572 = {
-+	.regs = mt2701_regs,
-+	.type = PWRAP_MT6572,
-+	.arb_en_all = 0x1ff,
-+	.int_en_all = 0x7ffffffd,
-+	.int1_en_all = 0,
-+	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
-+	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
-+	.caps = PWRAP_CAP_RESET | PWRAP_CAP_DCM,
-+	.init_reg_clock = pwrap_common_init_reg_clock,
-+	.init_soc_specific = pwrap_mt2701_init_soc_specific,
-+};
-+
- static const struct pmic_wrapper_type pwrap_mt6765 = {
- 	.regs = mt6765_regs,
- 	.type = PWRAP_MT6765,
-@@ -2446,6 +2471,7 @@ static const struct pmic_wrapper_type pwrap_mt8186 = {
- 
- static const struct of_device_id of_pwrap_match_tbl[] = {
- 	{ .compatible = "mediatek,mt2701-pwrap", .data = &pwrap_mt2701 },
-+	{ .compatible = "mediatek,mt6572-pwrap", .data = &pwrap_mt6572 },
- 	{ .compatible = "mediatek,mt6765-pwrap", .data = &pwrap_mt6765 },
- 	{ .compatible = "mediatek,mt6779-pwrap", .data = &pwrap_mt6779 },
- 	{ .compatible = "mediatek,mt6795-pwrap", .data = &pwrap_mt6795 },
+See https://lore.kernel.org/all/20260711-ti-sn65dsi83-fixes-v1-2-d85eb5342b98@geanix.com/
 
--- 
-2.54.0
-
-
+/Esben
 
