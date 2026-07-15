@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B7B0C44508
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 13:48:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0648C44508
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 13:52:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MYWtrnA64enkyD1F8B0IP3sVx0898upZSmCQffKhadQ=; b=TsQ/7W8p+qdFQrvghmcPvaeN/O
-	XxqY1b99yqqpRaCsQIA3wTe9vihTbZaZMe4utnz48Y/ZVtVLkPJkJNlVv5JzsOehx6rE2E4F0NEH7
-	4ueO/uTbkrvltNBItGsjjng2Fhn2tACqY9WHIWLU7RJNSV7ZCtxha2veQcnpHLANBrPYWcqYq818p
-	GCpNBXGfytiL5Ne0TVB3z+lVJJKFzMcTgNebePW2erwDRjQZRM5QfkkBXn1ozmXB7kZZSHsf3lq6x
-	oU44pvreSlFCpjO/gGXL75bL9Bo0I5yZNiE6c8NiPf1Id8cM2YAXojARyQCA3r4LewUx2vkuZFn3M
-	bDCzDGgA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UDCxRirisfN6uyLux6/NztFWSmSCbhNLIdUjj9NMzD4=; b=D54Rsu6r9V0J2PI65wCG534cgY
+	hBg5Q99gkgoVpPuV1AHsmOHi6rsL3tAay6ZfwnkqtYp2fxz/ZgcxYq4H2wntQ6pD7wIb1Qu8VJKh9
+	ggI9ku9T4acsA+ysSnXbpW5jZfryAvjPVn0IjTgCXaOGFvgrgH8Ly/iixqJe1M89EW3VdKRNTjUAy
+	lMM/uvdAVglJ5m4MbivBIDEVZbZKPb9eFXRqcWEW4qV1ffKHlty+ZEFyVC58Bl0O68lueo1OgHuiJ
+	pIMnE4SJkOignQoHdtd1AQafiwbgrklW/ZqV+PXWY1JpMzcZ/3V5/01XVNE4C9vMAkX1PVHKwojio
+	qvm8IgkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjzxy-0000000EzGe-0BPs;
-	Wed, 15 Jul 2026 13:48:02 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wk025-0000000F05C-0QUd;
+	Wed, 15 Jul 2026 13:52:17 +0000
+Received: from mail-43170.protonmail.ch ([185.70.43.170])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjzxv-0000000EzFe-3fjy;
-	Wed, 15 Jul 2026 13:47:59 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 107A16136E;
-	Wed, 15 Jul 2026 13:47:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1ED7B1F000E9;
-	Wed, 15 Jul 2026 13:47:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784123278;
-	bh=MYWtrnA64enkyD1F8B0IP3sVx0898upZSmCQffKhadQ=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=ZxMpGCtZKRsLLteM57AhHKYnvv3wsGbatlI39VfYS+QGO4jl6EmU0Qt1yNac7NalV
-	 92DZJFdnOxQYDoN6OWn3sD0wlQKZipykkuFR0R6kHKUpK2qosdZtNa68MLm+D2CD3O
-	 KVTM38+ghTLnda2PxQqNWby+Ap8Y0kbEaH3Zb7K4QqtNQdJZ4aZ0ex4soEolyfcY3F
-	 ns6uwl/COnAN+MXf2wrO7YTMrezPbAv7c3tC+jtHXH9myxA1ycdVGA6e0URYttyBXd
-	 Q2Ou1rHTd6HmWdBeCvFPYYu6RmS5F10ao9FdmVBg1/rEpnJziqOctuf08zc/TfgNJN
-	 b65g6+HbAVPuQ==
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Ryder Lee <ryder.lee@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Jianjun Wang <jianjun.wang@mediatek.com>, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: kernel@collabora.com, linux-pci@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20260701-mt8189-dt-bindings-pcie-v1-1-7c7a65087654@collabora.com>
-References: <20260701-mt8189-dt-bindings-pcie-v1-1-7c7a65087654@collabora.com>
-Subject: Re: [PATCH] dt-bindings: PCI: mediatek-gen3: Add support for
- MT8189 SoC
-Message-Id: <178412327376.143779.2537053670483422088.b4-ty@b4>
-Date: Wed, 15 Jul 2026 15:47:53 +0200
+	id 1wk01z-0000000F02q-1XI4
+	for linux-mediatek@lists.infradead.org;
+	Wed, 15 Jul 2026 13:52:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=geanix.com;
+	s=protonmail3; t=1784123528; x=1784382728;
+	bh=UDCxRirisfN6uyLux6/NztFWSmSCbhNLIdUjj9NMzD4=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:From:To:
+	 Cc:Date:Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=a0Bkiclvw7YtsGdiNjijqEeosPqVmlBJqkPRQOPVjRIcWdpBc5/QHRK6DQJprrq+t
+	 IfvVn2dizCjb17bdJFwICujNj8H6+pvdUjbsWcadr3arvnYa46wdSmqXScdp2Ki9Va
+	 Todt33JafTXncgGHC7VTBIY2pY+XfoMh7SZi4GmxyzJKjEpI5E+igZp837cHzF7U8Q
+	 mJpF3MPRFuxliBSQwWyzwUi9GCbyFfrfu/9Y/+1EQcHFMFBzZ+dC+8kIk5yXU0PYcx
+	 4PouPhkKWaSEpPYvHTCfQNyZ4pIxTrrwiztTovh8S1cscxjYwpmzjtxHP6FUohyo+3
+	 2V1fw1pkrQYUA==
+X-Pm-Submission-Id: 4h0czp2zL3z2ScqH
+From: Esben Haabendal <esben@geanix.com>
+To: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>
+Cc: "Gary Bisson" <bisson.gary@gmail.com>,  "Chun-Kuang Hu"
+ <chunkuang.hu@kernel.org>,  "Philipp Zabel" <p.zabel@pengutronix.de>,
+  "David Airlie" <airlied@gmail.com>,  "Simona Vetter" <simona@ffwll.ch>,
+  "Matthias Brugger" <matthias.bgg@gmail.com>,
+  <dri-devel@lists.freedesktop.org>,  <linux-mediatek@lists.infradead.org>,
+  <linux-kernel@vger.kernel.org>,  <linux-arm-kernel@lists.infradead.org>,
+  "Adam Thiede" <me@adamthiede.com>,  "Thorsten Leemhuis"
+ <regressions@leemhuis.info>
+Subject: Re: [PATCH] drm/mediatek: mtk_dsi: enable hs clock during pre-enable
+In-Reply-To: <65558ccc-4f2c-492d-8c74-627d27dce864@collabora.com>
+	(AngeloGioacchino Del Regno's message of "Wed, 15 Jul 2026 15:40:37
+	+0200")
+References: <20260120-mtkdsi-v1-1-b0f4094f3ac3@gmail.com>
+	<8733xko1ms.fsf@geanix.com>
+	<0f719c00-3cf5-4403-afbf-713b07255981@collabora.com>
+	<aleM9Wy9otpd6Je3@owl5>
+	<aRN3_2FHX8XmTcwduTAPwz4UFde4B0tbB09ajyeUg5qZxiIYMmbvMkG7CPoNTl4iySYMZawbLMWijO47R22gkg==@protonmail.internalid>
+	<65558ccc-4f2c-492d-8c74-627d27dce864@collabora.com>
+Date: Wed, 15 Jul 2026 15:52:05 +0200
+Message-ID: <87h5m0mkca.fsf@geanix.com>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.15.2
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260715_065211_566859_E22BF17B 
+X-CRM114-Status: GOOD (  13.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,19 +81,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+"AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>
+writes:
 
-On Wed, 01 Jul 2026 17:27:36 +0200, Louis-Alexis Eyraud wrote:
-> Add compatible for MT8189 PCIe Gen3 controller, that is compatible with
-> the one found MT8192.
+> On 7/15/26 15:36, Gary Bisson wrote:
+>> Hi,
+>>
+>> On Wed, Jul 15, 2026 at 03:25:11PM +0200, AngeloGioacchino Del Regno wrote:
+>>> On 7/15/26 14:53, Esben Haabendal wrote:
+>>>> Gary Bisson <bisson.gary@gmail.com> writes:
+>>>>
+>>>>> Some bridges, such as the TI SN65DSI83, require the HS clock to be
+>>>>> running in order to lock its PLL during its own pre-enable function.
+>>>>>
+>>>>> Without this change, the bridge gives the following error:
+>>>>> sn65dsi83 14-002c: failed to lock PLL, ret=-110
+>>>>> sn65dsi83 14-002c: Unexpected link status 0x01
+>>>>> sn65dsi83 14-002c: reset the pipe
+>>>>>
+>>>>> Move the necessary functions from enable to pre-enable.
+>>>>>
+>>>>> Signed-off-by: Gary Bisson <bisson.gary@gmail.com>
+>>>>
+>>>> Hi
+>>>>
+>>>> I have run into the same problem, but in combination with another
+>>>> pipeline. I am seeing same problem with an i.MX8 using the nwl-dsi
+>>>> bridge and the dcss driver.
+>>>>
+>>>> I have submitted a fix that adresses the problem in the ti-sn65dsi83
+>>>> driver instead. With a bit of luck, it can replace the fix proposed in
+>>>> this thread.
+>>>>
+>>>> See https://lore.kernel.org/all/20260711-ti-sn65dsi83-fixes-v1-2-d85eb5342b98@geanix.com/
+>>
+>> Thanks, just tried it on 7.2-rc3 with my patch reverted and confirm that
+>> it works too. My assumption was that the SN65DSI83 was locking the PLL
+>> earlier for some specific reason and therefore was reluctant to change
+>> it.
+>>
+>>>> /Esben
+>>>
+>>> That clarifies a lot of things.
+>>>
+>>> The patch on mtk_dsi shall be reverted then.
+>>
+>> Angelo, do you want me to offer the revert patch? Should I wait to see
+>> how the other thread goes?
+>>
+>
+> Gary, yes please, send a revert and make sure to explain the reason why
+> we're reverting this in the commit description :-)
 
-Applied, thanks!
+Maybe test if my fix actually solves the problem with the mtk_dsi driver
+also ;)
 
-[1/1] dt-bindings: PCI: mediatek-gen3: Add support for MT8189 SoC
-      commit: 068601b547da091d9f56131cbb25e40ad40f4825
-
-Best regards,
--- 
-மணிவண்ணன் சதாசிவம்
-
-
+/Esben
 
