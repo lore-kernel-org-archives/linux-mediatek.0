@@ -4,60 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7657EC44508
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 12:53:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E553C44508
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 13:23:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xEwViipQaJZVXM9xLdF3SH6nxkka6iIr7lgTdrGkvYI=; b=e+E2eAOHF3UtnF9HjtATv4vixj
-	SawykxLXlImEeEgGN9AfAJCO+T/HbCpfYnbaYTyRmIPteHfStSfwAaTP2JR+blbmt95LTu1HaRqQL
-	NdDKi8BtdhPN5PvQiXuTh1NrXNR0wRssFpXWnCyxLheDV9uPp1qqab722p7Ry7kMO9lYr4W2c4JSB
-	V4GZCRTVlBgsYtWaf50rOEZK1IHV0D8z/F01yEwTADqaGFzp6CexbR6qVJGDraWbvr0Lqcc7K/7GF
-	xeluwelL03QlCv3P759zX/6QMkaE9qYxS7obMfV3JEcoaKbGn9//9O709WopuuiyUfONvXYfOTL8Q
-	xqLq7+mQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=H/u2TwMdyZJXSdkDNLccl9+Doreu0rUkfQD81CavD5s=; b=WjJwYYTQaZ3FYrpd23cZOF407q
+	np0gOiwT/ix0FmEyY0XJgTdXkSyHlV9v2bzuibLRg6XGis9IgyIKbJXJd8oDiMlv8dxgT0aAtH+1L
+	0n7+/GHzllNVIyJjVLb5+2QznDAQN8xiW2s5mUgOgwXuY0JCz9JEtWHR+0xO1SAJsDBlaQIY0LMN6
+	cGXbR+YgOvGEYRSRhobE58eoJJ3/iitQFdExJggnmkHwrX5KrJ+FRmNS5jPgd0Jyg1g4Z6Sl6xaYW
+	dddyz4jfuzGbS9WnvLUAZGkC1SwvvaToXf1kRejyH/ZaFgG04vWwTvpyH09NtWTk8w5XHYCq4L5XC
+	Q2LiEl5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjz7A-0000000EraI-1PgZ;
-	Wed, 15 Jul 2026 12:53:28 +0000
-Received: from mail-43172.protonmail.ch ([185.70.43.172])
+	id 1wjzZk-0000000EvvW-2bOj;
+	Wed, 15 Jul 2026 13:23:00 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjz77-0000000ErYh-1pQ7;
-	Wed, 15 Jul 2026 12:53:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=geanix.com;
-	s=protonmail3; t=1784119998; x=1784379198;
-	bh=xEwViipQaJZVXM9xLdF3SH6nxkka6iIr7lgTdrGkvYI=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:From:To:
-	 Cc:Date:Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
-	b=Oxj58E8W3hKQZu0gvkYqCUZNpfUbBQ78VVenN6g9RIw4JHwjrEft/SGwCNV63zM7a
-	 2Q7xDkapC/pwRDIyAOJX+qhgp7mkaYQ1WRaknqg0zER/f8uics62usPnCFmLtM++hz
-	 chlq7llvfrhyONj4ef/FcqTEwPVbOJEW8CHgUmMXqrRzQU9CN4tVdvulv/1XxFgLSu
-	 fY64gkXv2/1oav9kvx/MgaFCP/rf2z7oobqsuuBKCEb5kUSI63K81kkyuM6Wggw/H6
-	 /+5ORu5ZuFxMRgJD7ayok7sl81etN/EQmzfVHek4fpQ7OP3pU+uq+23iCpjeLRS4kv
-	 CMe7pHG2/1yQA==
-X-Pm-Submission-Id: 4h0bgw0Q0rz1DFTS
-From: Esben Haabendal <esben@geanix.com>
-To: Gary Bisson <bisson.gary@gmail.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,  Philipp Zabel
- <p.zabel@pengutronix.de>,  David Airlie <airlied@gmail.com>,  Simona
- Vetter <simona@ffwll.ch>,  Matthias Brugger <matthias.bgg@gmail.com>,
-  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-  dri-devel@lists.freedesktop.org,  linux-mediatek@lists.infradead.org,
-  linux-kernel@vger.kernel.org,  linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] drm/mediatek: mtk_dsi: enable hs clock during pre-enable
-In-Reply-To: <20260120-mtkdsi-v1-1-b0f4094f3ac3@gmail.com> (Gary Bisson's
-	message of "Tue, 20 Jan 2026 12:36:59 +0100")
-References: <20260120-mtkdsi-v1-1-b0f4094f3ac3@gmail.com>
-Date: Wed, 15 Jul 2026 14:53:15 +0200
-Message-ID: <8733xko1ms.fsf@geanix.com>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+	id 1wjzZi-0000000Evus-39Ad;
+	Wed, 15 Jul 2026 13:23:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1784121775;
+	bh=QGeId7QbdbyNXJlEshfDBfuKlWj13X9gty+DTIBYyvg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=H6sfsOHecJOH1qsCOye4YBEyzTcwh0L+dnI/SsZoHhKtYrJcrTJvMVy1ET70Y/DWP
+	 qlAt9R+2VVZIvw4YHYNiiqENRoWbE84Xi8lcEhXkGbnbU6vQX2kUIo/e2CraO6A1B3
+	 EBsB8y9oz5w7ARv1K5el3B3bzW9OZb5SBxduzX+5lRwOviqW79hwkODFDMxocj9Pdq
+	 hz88MH+4wr838XBLGZIf79xADM0ifFRYjNrI3mL7uj/in9eLtd7Po8fcpSOGoR0gSN
+	 SgNxlqFBOG/h1nU9PeH5AFSKDfgeKW+jCNzHHJbemHYXv6glJHFkod+YPR4PnWZGdW
+	 LMUEEOh9m681A==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 854B717E07AA;
+	Wed, 15 Jul 2026 15:22:55 +0200 (CEST)
+Message-ID: <27cdcc55-b9b1-49ad-82f3-25e38e3e0e50@collabora.com>
+Date: Wed, 15 Jul 2026 15:22:55 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/3] soc: mediatek: pwrap: add mt6572 support
+To: rva333@protonmail.com, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Flora Fu <flora.fu@mediatek.com>, Alexandre Mergnat <amergnat@baylibre.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260715-6572-pwrap-v2-0-bea1d801c81b@protonmail.com>
+ <20260715-6572-pwrap-v2-3-bea1d801c81b@protonmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260715-6572-pwrap-v2-3-bea1d801c81b@protonmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260715_055325_625268_279264F0 
-X-CRM114-Status: GOOD (  10.36  )
+X-CRM114-CacheID: sfid-20260715_062258_945159_680DE3CE 
+X-CRM114-Status: UNSURE (   8.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,31 +79,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Gary Bisson <bisson.gary@gmail.com> writes:
+On 7/15/26 14:26, Roman Vivchar via B4 Relay wrote:
+> From: Roman Vivchar <rva333@protonmail.com>
+> 
+> Add mt6572 registers and platform data for the pmic wrapper.
+> 
+> While vendor kernel source code suggests that mt6572 can be paired with
+> the mt6320 PMIC, no such devices have been found yet. Hence, registers
+> that not included in the mt2701 array are omitted.
+> 
+> The mt2701 SoC-specific initialization function is used because they
+> share the same GPS_INTF settings.
+> 
+> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 
-> Some bridges, such as the TI SN65DSI83, require the HS clock to be
-> running in order to lock its PLL during its own pre-enable function.
->
-> Without this change, the bridge gives the following error:
-> sn65dsi83 14-002c: failed to lock PLL, ret=-110
-> sn65dsi83 14-002c: Unexpected link status 0x01
-> sn65dsi83 14-002c: reset the pipe
->
-> Move the necessary functions from enable to pre-enable.
->
-> Signed-off-by: Gary Bisson <bisson.gary@gmail.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Hi
-
-I have run into the same problem, but in combination with another
-pipeline. I am seeing same problem with an i.MX8 using the nwl-dsi
-bridge and the dcss driver.
-
-I have submitted a fix that adresses the problem in the ti-sn65dsi83
-driver instead. With a bit of luck, it can replace the fix proposed in
-this thread.
-
-See https://lore.kernel.org/all/20260711-ti-sn65dsi83-fixes-v1-2-d85eb5342b98@geanix.com/
-
-/Esben
 
