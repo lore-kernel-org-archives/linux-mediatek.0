@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 508D5C44507
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 09:29:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68253C44501
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 09:31:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/mY2zSWg1aNRjDRgnHgWnHyOuWTG9nVHKJK+qD70fIw=; b=TYs2BnJsC2YyRCrM9I77jNevy+
-	Q9mByzZW24WfA2c33YGdFDeDUyJ/piadPhTv0XfAkIpb0GLx/nUmffGUs4GvUYh3waOc8ewt2L2tJ
-	mWngbI1+Gq0IlsKne3Hj0/Azqrr0M4ZQqcomtX2CvyFsJUFjf6uFhtuEIAPCdPXdLI5397eEIo9aY
-	5Sg+GVnb4B97ljTZL1ySxEm42EIAsPvFQ3Ge13//OZlRb5Xx6NEsmPWZ5exAAYaDsN5+hGMrbGS3a
-	DPWR696fApUrZOuL2CpC8Okb8vJkyzMGBouc973FtHViHMJExfpTiULTbCqUx0IJxd1ubD4VR7m1Y
-	LjpFfCSQ==;
+	bh=4SG0ZVUMFVgj5Gf4mc8He5lD30q/TXKbKL6CBMa//iA=; b=tTG2TYMv4USJiyXuW5lgd+fRN5
+	X1IF0abUjiRfzTxV1c+HHr0TuFf2fhPue1902Tu/SQL8u7ePLuFZGHwphcYYq1Eox7VySRT0waETw
+	C4Lw3UmzWoyGsgubT1Y4e8xC5/6I4vyn0WZP3KdAlE8fhfD5BTEOn3hjzXzFzbqYK6cVkkxK8c9du
+	BOObKBm59op5NqwZ90oDGR/zAG/fJJ+bB/IT2/BWyfLA0THiJ8Zdh7WeQK28Ysq8R6hM4hVQA1CmA
+	6MFo4UUWPFFFwlcA7pfTRvlSfxnBSXAtRttdaHzK1k2O5FRcn9HJMHaV/bAwACeRiAhiJA1qxXXX1
+	K3GuiCCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjvvW-0000000EKCX-0Kaj;
-	Wed, 15 Jul 2026 09:29:14 +0000
-Received: from mgamail.intel.com ([198.175.65.18])
+	id 1wjvxk-0000000EKYr-0NPb;
+	Wed, 15 Jul 2026 09:31:32 +0000
+Received: from mgamail.intel.com ([192.198.163.17])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjvvS-0000000EKBE-3Mc3;
-	Wed, 15 Jul 2026 09:29:12 +0000
+	id 1wjvxh-0000000EKYI-0ngq;
+	Wed, 15 Jul 2026 09:31:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1784107751; x=1815643751;
+  t=1784107889; x=1815643889;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=/5aaAsVdQN0eiTG/66eGgXteBugptKLohzhJXhN02NU=;
-  b=CRbNMu8MLuQAJaO5Qbuu56DDzuGxvLsLdYU4lFELL6MtRKomF+nGrc3p
-   x5/mAUbIQWdoEAcVD0e1ngfV+irN8bMe9B0mronc0TMXvfLRgpp83PUmi
-   vF/gUTE2LMA6rqpRbSkolkdkFwEHIQUO5K5WUQCjtWb9vrpmuLCBy2frQ
-   I0Cg8gKfHaFV7q/eSLVmC/3FE7riJVoI4zEbV3VFAyshkxBxnp4XrgBe+
-   cjeTn2CYkKDzS0QP/NWLUbnFKvFn1WEoIUOhdoziILcfznu4Ct9LtGWmz
-   jydulsHPtpXhgrOmuqxdtmA2na4BZ2daXUxyT3wMidYQgabJhGp7WT0U0
-   g==;
-X-CSE-ConnectionGUID: lpA1cZWtTcO2xp4/TcPYPA==
-X-CSE-MsgGUID: MZw2L4hsRzmE3H5aGOQ+4w==
-X-IronPort-AV: E=McAfee;i="6800,10657,11847"; a="84830141"
+  bh=k4Mxr2b2uXcaPiH3l9mMz8keQUEPR+TLeMo54YK8SQg=;
+  b=QXDixnB7ZmLcTwlsRqgC5uk5FBZbZ38YGCX/lWlIs90nRV+ZEJrYhQfK
+   Z9e9rNt8u/ujJZWzU8Ep16ta0Z/3FE3qLoQ8Qh64UlZP9YAmPxtiil3//
+   4P1U89YKv0x61/tXmPIJTnO3vMgDXsGuxFBNZ11KjaImW6UOj99l9Kk26
+   pD/z3wjp3yC6pvJvfSVTwZpS3XJUztl16Gq6CIsxANvPrvPNnRiknmnnI
+   i+1G4VUdBbFi/Bsh0f88jj62Ib3+vHkRdXOPDq6AjUFPRbTECXTeNPVO8
+   k+GQYEvDbzgddicwIB1SBzYQJa69nZnBpHlok48aXpc96cMf3oz/rmTju
+   A==;
+X-CSE-ConnectionGUID: GploUfJDTc+2KNWL6m80yg==
+X-CSE-MsgGUID: TKJLZ2KPRQaPhg2ObzJTUw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11847"; a="84621804"
 X-IronPort-AV: E=Sophos;i="6.25,165,1779174000"; 
-   d="scan'208";a="84830141"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jul 2026 02:29:10 -0700
-X-CSE-ConnectionGUID: t3nl7JS5TxCiXiLKm/nhqQ==
-X-CSE-MsgGUID: BfWSW46GSw+l5U7M4cVNLg==
+   d="scan'208";a="84621804"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jul 2026 02:31:27 -0700
+X-CSE-ConnectionGUID: C6gWwrZiQoSdjr4Qi+bgqQ==
+X-CSE-MsgGUID: rexS2BC5TTm8ipg2rVuMgA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.25,165,1779174000"; 
-   d="scan'208";a="286203001"
+   d="scan'208";a="255007837"
 Received: from mkosciow-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.129])
-  by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jul 2026 02:29:05 -0700
-Date: Wed, 15 Jul 2026 12:29:02 +0300
+  by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jul 2026 02:31:22 -0700
+Date: Wed, 15 Jul 2026 12:31:19 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Bartosz Golaszewski <brgl@kernel.org>,
@@ -75,19 +75,20 @@ Cc: Bartosz Golaszewski <brgl@kernel.org>,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Alan Stern <stern@rowland.harvard.edu>,
 	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: Re: [PATCH v5 03/16] power: sequencing: Add pwrseq_power_is_on()
-Message-ID: <aldS3qTympJuVXYj@ashevche-desk.local>
+Subject: Re: [PATCH v5 07/16] usb: core: Move struct usb_port and related
+ APIs to port.h
+Message-ID: <aldTZ3ni4Uk3eTO8@ashevche-desk.local>
 References: <20260715085348.3457359-1-wenst@chromium.org>
- <20260715085348.3457359-4-wenst@chromium.org>
+ <20260715085348.3457359-8-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260715085348.3457359-4-wenst@chromium.org>
+In-Reply-To: <20260715085348.3457359-8-wenst@chromium.org>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260715_022910_887379_57CA56EB 
-X-CRM114-Status: GOOD (  12.25  )
+X-CRM114-CacheID: sfid-20260715_023129_242036_D0283FFB 
+X-CRM114-Status: GOOD (  15.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,35 +103,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 15, 2026 at 04:53:33PM +0800, Chen-Yu Tsai wrote:
-> The power sequencing consumer API already does power on state tracking
-> internally. Expose the state to consumers through pwrseq_power_is_on()
-> so that they don't have to reimplement it locally.
-
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+On Wed, Jul 15, 2026 at 04:53:37PM +0800, Chen-Yu Tsai wrote:
+> |struct usb_port| and its matching container_of() macro should live in
+> its own port.h, matching the split we have for .c files.
+> 
+> Move them as described. Also move usb_port_is_power_on(), since in the
+> next change its |struct usb_hub *| parameter will be changed to
+> |struct usb_port *|, and becomes a non-static function that only
+> references |struct usb_port|.
+> 
+> port.h is only included from hub.h, as a subsequent patch will directly
+> use fields from |struct usb_port| in a static inline helper in hub.h.
+> The USB internal headers don't have header guards to help with this.
+> 
+> Also drop 'extern' from the header declaration of usb_port_is_power_on().
+> This is not needed in modern C.
 
 ...
 
-> +/**
-> + * pwrseq_power_is_on() - Queries the last requested state of the power sequencer.
-> + * @desc: Descriptor referencing the power sequencer.
-> + *
-> + * This returns the last requested state of the power sequencer.
-> + *
-> + * Returns:
-> + * On success, 1 for on or desc is NULL (optional) and 0 for off;
-> + * negative error number on failure.
+> +struct usb_port {
+> +	struct usb_device *child;
+> +	struct device dev;
+> +	struct usb_dev_state *port_owner;
+> +	struct usb_port *peer;
+> +	struct typec_connector *connector;
+> +	struct dev_pm_qos_request *req;
+> +	enum usb_port_connect_type connect_type;
+> +	enum usb_device_state state;
+> +	struct kernfs_node *state_kn;
+> +	usb_port_location_t location;
+> +	struct mutex status_lock;
+> +	u32 over_current_count;
+> +	u8 portnum;
+> +	u32 quirks;
+> +	unsigned int early_stop:1;
+> +	unsigned int ignore_event:1;
+> +	unsigned int is_superspeed:1;
+> +	unsigned int usb3_lpm_u1_permit:1;
+> +	unsigned int usb3_lpm_u2_permit:1;
+> +};
 
-I would rephrase it a bit.
-
- * On success, 1 for on and 0 for off; negative error number on failure.
- * If desc is NULL (means optional) return 1.
-
-And this rises a question: why 1? Shouldn't it be some "unknown" state?
-(But since Bart Acked this, this doesn't prevent the patch to go, you
- got my tag above.)
-
-> + */
+A side note for the future development (no need to change anything here
+right now). It might be that the layout is suboptimal and `pahole` might
+propose a better one.
 
 -- 
 With Best Regards,
