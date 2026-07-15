@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 544D6C44501
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 09:20:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 508D5C44507
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 09:29:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+AEWs80x8QhCvqs69tA//G/NjwkGCn+l1v3SgTSIaCM=; b=dEVzgZAdvseSx817HA/PSdMabE
-	fOhlmv/nq4FqBXdlqwfNdQhKONH1UbsoyPPOwhOFi3Q+gWzq8Q7CA9MfRY2I4S0CAQF9syDkNO4vY
-	8qK3hPOBv4AZy7T74HdyQTRa9jqqkSMZFfkn9E3/eJhQbsXQIxAJ4ghQcyM/nY/n5ZlwI87UcIdjs
-	F3TWn0sy4RyhSemPvv9NU/qPLhtGKxqFhY9x/C5R5FLzPRzyJuXiAeNzYEUhY2RydL8VihcvhZ2Fd
-	9RGBJPGE6tdklIzpkTK9Te2DsZWrgcmUyngEiSBI0FhGGOXh0VaY1pCmfAf3K1V8uKj5Qo5B/owj+
-	VgIl2f2Q==;
+	bh=/mY2zSWg1aNRjDRgnHgWnHyOuWTG9nVHKJK+qD70fIw=; b=TYs2BnJsC2YyRCrM9I77jNevy+
+	Q9mByzZW24WfA2c33YGdFDeDUyJ/piadPhTv0XfAkIpb0GLx/nUmffGUs4GvUYh3waOc8ewt2L2tJ
+	mWngbI1+Gq0IlsKne3Hj0/Azqrr0M4ZQqcomtX2CvyFsJUFjf6uFhtuEIAPCdPXdLI5397eEIo9aY
+	5Sg+GVnb4B97ljTZL1ySxEm42EIAsPvFQ3Ge13//OZlRb5Xx6NEsmPWZ5exAAYaDsN5+hGMrbGS3a
+	DPWR696fApUrZOuL2CpC8Okb8vJkyzMGBouc973FtHViHMJExfpTiULTbCqUx0IJxd1ubD4VR7m1Y
+	LjpFfCSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjvnN-0000000EJ6O-0ksS;
-	Wed, 15 Jul 2026 09:20:49 +0000
-Received: from mgamail.intel.com ([192.198.163.14])
+	id 1wjvvW-0000000EKCX-0Kaj;
+	Wed, 15 Jul 2026 09:29:14 +0000
+Received: from mgamail.intel.com ([198.175.65.18])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjvnK-0000000EJ5v-1oeG;
-	Wed, 15 Jul 2026 09:20:47 +0000
+	id 1wjvvS-0000000EKBE-3Mc3;
+	Wed, 15 Jul 2026 09:29:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1784107246; x=1815643246;
+  t=1784107751; x=1815643751;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=GNwWwlwKmSHKcifYCWTeyGH5lZcsn6dd0tzvoKNoxb4=;
-  b=E8TyQTIYYYg4cyJUmvc3yuZvV/tST6cuhnR969CBzTbePw/gk78+ioHU
-   6t2S45LucpjHSUf5n508TxKDlQ4wvx6G4DKQE/9/ACdDptJ8/9WGw7xL3
-   ZOcuA/n8nAppf/wdSYfgEvVI5R449xb20KWwfi+VSM1iXf84SVQBe2c0V
-   SyWdVjtDnTGmxSA+GP0rOl08+Pr2BwsG6IFqtBejyF5ApmX/iXqs3BjDq
-   CspMyxonqJS02cfPtHxBNh/XHXDMjGpyhyBdUy/SFu2KiEWCcoTAKhh6T
-   VGyRR3ofry3nb1kDp907joAnTB8UcyXI+hlalu9GdnlCpdi5uB3hjOMiX
-   w==;
-X-CSE-ConnectionGUID: DVyZYLoeRtKJmXYBbO2DXA==
-X-CSE-MsgGUID: eQNdrcdKQ++zLDU6WdDoBg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11847"; a="84781015"
+  bh=/5aaAsVdQN0eiTG/66eGgXteBugptKLohzhJXhN02NU=;
+  b=CRbNMu8MLuQAJaO5Qbuu56DDzuGxvLsLdYU4lFELL6MtRKomF+nGrc3p
+   x5/mAUbIQWdoEAcVD0e1ngfV+irN8bMe9B0mronc0TMXvfLRgpp83PUmi
+   vF/gUTE2LMA6rqpRbSkolkdkFwEHIQUO5K5WUQCjtWb9vrpmuLCBy2frQ
+   I0Cg8gKfHaFV7q/eSLVmC/3FE7riJVoI4zEbV3VFAyshkxBxnp4XrgBe+
+   cjeTn2CYkKDzS0QP/NWLUbnFKvFn1WEoIUOhdoziILcfznu4Ct9LtGWmz
+   jydulsHPtpXhgrOmuqxdtmA2na4BZ2daXUxyT3wMidYQgabJhGp7WT0U0
+   g==;
+X-CSE-ConnectionGUID: lpA1cZWtTcO2xp4/TcPYPA==
+X-CSE-MsgGUID: MZw2L4hsRzmE3H5aGOQ+4w==
+X-IronPort-AV: E=McAfee;i="6800,10657,11847"; a="84830141"
 X-IronPort-AV: E=Sophos;i="6.25,165,1779174000"; 
-   d="scan'208";a="84781015"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jul 2026 02:20:45 -0700
-X-CSE-ConnectionGUID: rohPZ6YPTZinj6UTJQYdjw==
-X-CSE-MsgGUID: Nj0Y0ejIQuSWjXGPb/1fOg==
+   d="scan'208";a="84830141"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jul 2026 02:29:10 -0700
+X-CSE-ConnectionGUID: t3nl7JS5TxCiXiLKm/nhqQ==
+X-CSE-MsgGUID: BfWSW46GSw+l5U7M4cVNLg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.25,165,1779174000"; 
-   d="scan'208";a="254379157"
+   d="scan'208";a="286203001"
 Received: from mkosciow-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.129])
-  by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jul 2026 02:20:40 -0700
-Date: Wed, 15 Jul 2026 12:20:38 +0300
+  by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jul 2026 02:29:05 -0700
+Date: Wed, 15 Jul 2026 12:29:02 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Bartosz Golaszewski <brgl@kernel.org>,
@@ -75,20 +75,19 @@ Cc: Bartosz Golaszewski <brgl@kernel.org>,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Alan Stern <stern@rowland.harvard.edu>,
 	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: Re: [PATCH v5 06/16] usb: hub: Associate port@ fwnode with USB port
- device
-Message-ID: <aldQ5odptfmK5aCw@ashevche-desk.local>
+Subject: Re: [PATCH v5 03/16] power: sequencing: Add pwrseq_power_is_on()
+Message-ID: <aldS3qTympJuVXYj@ashevche-desk.local>
 References: <20260715085348.3457359-1-wenst@chromium.org>
- <20260715085348.3457359-7-wenst@chromium.org>
+ <20260715085348.3457359-4-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260715085348.3457359-7-wenst@chromium.org>
+In-Reply-To: <20260715085348.3457359-4-wenst@chromium.org>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260715_022046_494139_B8D82B6C 
-X-CRM114-Status: GOOD (  16.12  )
+X-CRM114-CacheID: sfid-20260715_022910_887379_57CA56EB 
+X-CRM114-Status: GOOD (  12.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,52 +102,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 15, 2026 at 04:53:36PM +0800, Chen-Yu Tsai wrote:
-> When a USB hub port is connected to a connector in a firmware node
-> graph, the port itself has a node in the graph.
-> 
-> Associate the port's firmware node with the USB port's device,
-> usb_port::dev. This is used in later changes for the M.2 slot power
-> sequencing provider to match against the requesting port.
-> 
-> To avoid potential conflicts with ACPI firmware nodes and then causing
-> power management issues, only assign the firmware node if the hub's
-> firmware node is not an ACPI firmware node.
+On Wed, Jul 15, 2026 at 04:53:33PM +0800, Chen-Yu Tsai wrote:
+> The power sequencing consumer API already does power on state tracking
+> internally. Expose the state to consumers through pwrseq_power_is_on()
+> so that they don't have to reimplement it locally.
+
+Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
 ...
 
-> int usb_hub_create_port_device(struct usb_hub *hub, int port1)
+> +/**
+> + * pwrseq_power_is_on() - Queries the last requested state of the power sequencer.
+> + * @desc: Descriptor referencing the power sequencer.
+> + *
+> + * This returns the last requested state of the power sequencer.
+> + *
+> + * Returns:
+> + * On success, 1 for on or desc is NULL (optional) and 0 for off;
+> + * negative error number on failure.
 
-What about adding
+I would rephrase it a bit.
 
-	struct fwnode_handle *fwnode = dev_fwnode(&hdev->dev);
+ * On success, 1 for on and 0 for off; negative error number on failure.
+ * If desc is NULL (means optional) return 1.
 
-to the top of the function, and...
+And this rises a question: why 1? Shouldn't it be some "unknown" state?
+(But since Bart Acked this, this doesn't prevent the patch to go, you
+ got my tag above.)
 
->  	port_dev->dev.driver = &usb_port_driver;
->  	dev_set_name(&port_dev->dev, "%s-port%d", dev_name(&hub->hdev->dev),
->  			port1);
-> +	/*
-> +	 * ACPI FW nodes are associated later when device_register() happens.
-> +	 * Skip assigning one here to avoid potential conflicts.
-> +	 */
-> +	if (!is_acpi_node(dev_fwnode(&hdev->dev)))
-> +		device_set_node(&port_dev->dev,
-> +				fwnode_graph_get_port_by_id(dev_fwnode(&hdev->dev), port1,
-> +							    FWNODE_GRAPH_DEVICE_DISABLED));
-
-...shorten this a bit to
-
-	if (!is_acpi_node(fwnode)) {
-		struct fwnode_handle *ep;
-
-		ep = fwnode_graph_get_port_by_id(fwnode, port1, FWNODE_GRAPH_DEVICE_DISABLED);
-
-// Is NULL or error pointer is fine here to be set as fwnode in port device?
-// Perhaps add a comment?
-
-		device_set_node(&port_dev->dev, ep);
-	}
+> + */
 
 -- 
 With Best Regards,
