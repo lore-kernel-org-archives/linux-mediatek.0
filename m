@@ -4,91 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68253C44501
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 09:31:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A45B4C44507
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 09:57:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4SG0ZVUMFVgj5Gf4mc8He5lD30q/TXKbKL6CBMa//iA=; b=tTG2TYMv4USJiyXuW5lgd+fRN5
-	X1IF0abUjiRfzTxV1c+HHr0TuFf2fhPue1902Tu/SQL8u7ePLuFZGHwphcYYq1Eox7VySRT0waETw
-	C4Lw3UmzWoyGsgubT1Y4e8xC5/6I4vyn0WZP3KdAlE8fhfD5BTEOn3hjzXzFzbqYK6cVkkxK8c9du
-	BOObKBm59op5NqwZ90oDGR/zAG/fJJ+bB/IT2/BWyfLA0THiJ8Zdh7WeQK28Ysq8R6hM4hVQA1CmA
-	6MFo4UUWPFFFwlcA7pfTRvlSfxnBSXAtRttdaHzK1k2O5FRcn9HJMHaV/bAwACeRiAhiJA1qxXXX1
-	K3GuiCCg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pTQZtSZsImuh28B/PWdyPolkI0kn1x4XYolpmTXuqi8=; b=uc0oFjcX1tLuJg2aeBv/M0IO/X
+	6ZyNAksJY5oEW1N50zZVRp27zPH2bwD3Q8fHi8BifQ2J+UQn5BckYx5HJxw2GSYRUhpS4Ej4I257W
+	O98KyLt4Ha3MrFcMyKIVnJdQxBtrLwY9TbCLEHTEPtj+tdzr3dZLrgxp6BNALUjNCQ9oKzcRSQwAQ
+	mAskGYdWkMjeMOEuS0y7cLABcxXf4tilcqBiV8NrGVLHMjxphMPsvWHQMYGiL7BvmZTxKvXa5JuFF
+	XN4mVRYRm02c0B02i93mLmxKKsphRp5CT+4xNh6dafrD5KPMrtge16qpd0rvK3YfEv91H20eUB7XG
+	Aty0ve6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjvxk-0000000EKYr-0NPb;
-	Wed, 15 Jul 2026 09:31:32 +0000
-Received: from mgamail.intel.com ([192.198.163.17])
+	id 1wjwMX-0000000EOHc-2RV2;
+	Wed, 15 Jul 2026 09:57:09 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjvxh-0000000EKYI-0ngq;
-	Wed, 15 Jul 2026 09:31:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1784107889; x=1815643889;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=k4Mxr2b2uXcaPiH3l9mMz8keQUEPR+TLeMo54YK8SQg=;
-  b=QXDixnB7ZmLcTwlsRqgC5uk5FBZbZ38YGCX/lWlIs90nRV+ZEJrYhQfK
-   Z9e9rNt8u/ujJZWzU8Ep16ta0Z/3FE3qLoQ8Qh64UlZP9YAmPxtiil3//
-   4P1U89YKv0x61/tXmPIJTnO3vMgDXsGuxFBNZ11KjaImW6UOj99l9Kk26
-   pD/z3wjp3yC6pvJvfSVTwZpS3XJUztl16Gq6CIsxANvPrvPNnRiknmnnI
-   i+1G4VUdBbFi/Bsh0f88jj62Ib3+vHkRdXOPDq6AjUFPRbTECXTeNPVO8
-   k+GQYEvDbzgddicwIB1SBzYQJa69nZnBpHlok48aXpc96cMf3oz/rmTju
-   A==;
-X-CSE-ConnectionGUID: GploUfJDTc+2KNWL6m80yg==
-X-CSE-MsgGUID: TKJLZ2KPRQaPhg2ObzJTUw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11847"; a="84621804"
-X-IronPort-AV: E=Sophos;i="6.25,165,1779174000"; 
-   d="scan'208";a="84621804"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
-  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jul 2026 02:31:27 -0700
-X-CSE-ConnectionGUID: C6gWwrZiQoSdjr4Qi+bgqQ==
-X-CSE-MsgGUID: rexS2BC5TTm8ipg2rVuMgA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,165,1779174000"; 
-   d="scan'208";a="255007837"
-Received: from mkosciow-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.129])
-  by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Jul 2026 02:31:22 -0700
-Date: Wed, 15 Jul 2026 12:31:19 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Bartosz Golaszewski <brgl@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Daniel Scally <djrscally@gmail.com>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wei Deng <wei.deng@oss.qualcomm.com>, linux-acpi@vger.kernel.org,
-	driver-core@lists.linux.dev, linux-pm@vger.kernel.org,
-	linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Alan Stern <stern@rowland.harvard.edu>,
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: Re: [PATCH v5 07/16] usb: core: Move struct usb_port and related
- APIs to port.h
-Message-ID: <aldTZ3ni4Uk3eTO8@ashevche-desk.local>
-References: <20260715085348.3457359-1-wenst@chromium.org>
- <20260715085348.3457359-8-wenst@chromium.org>
+	id 1wjwMR-0000000EOF3-2XEN;
+	Wed, 15 Jul 2026 09:57:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1784109419;
+	bh=fMk8TJrSHrg6OY4D5Lfg29sg5QIvU+Iw5yawJ5eEN4U=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ZJyRj3VCdfBxCbwpp7+xQIDgt1xgR91GtJ8NyjWtcKjyOHTUfGHVw3hO/qdXKo7Fa
+	 lQE4+KDd4bxXaJwHmL0eeq3dQXdYxORkYJdz86zGFp0FfnmAIh4RDX6ICwVsPM8wQF
+	 mQQ+8mNwTvUM1dWtKs9HOzHPQD87ctVgEkn3DFMfexjDDP5o0g9aAGMwSWLqKTmE2q
+	 TKILYi1uDWmnwB7fuQH4QbFi5mCGBIvwY5iHh81CFYE1nUi38NskPQbFO37q4yS8dL
+	 MfKQWXaxj2q9W0Xp539h6Kk+4zZ39BJj6nKHILbcznD5/upKfjZptnGKxnKafVYC1k
+	 Ndz4yUL7sixNA==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0F9E517E00F6;
+	Wed, 15 Jul 2026 11:56:59 +0200 (CEST)
+Message-ID: <0040e5e9-d219-4758-b402-c5e5b90ff667@collabora.com>
+Date: Wed, 15 Jul 2026 11:56:58 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260715085348.3457359-8-wenst@chromium.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/3] pmdomain: mediatek: Add support for secure modem
+ power domain control
+To: nikolai.burov@jolla.com, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Ulf Hansson <ulfh@kernel.org>
+Cc: Matthias Brugger <mbrugger@suse.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
+ Nikolai Burov <nikolai.burov+review@abscue.de>
+References: <20260714-mt6858-pmdomain-v1-0-4f09bbb822e0@jolla.com>
+ <20260714-mt6858-pmdomain-v1-2-4f09bbb822e0@jolla.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260714-mt6858-pmdomain-v1-2-4f09bbb822e0@jolla.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260715_023129_242036_D0283FFB 
-X-CRM114-Status: GOOD (  15.63  )
+X-CRM114-CacheID: sfid-20260715_025703_810649_29FE0941 
+X-CRM114-Status: GOOD (  31.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,53 +81,157 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 15, 2026 at 04:53:37PM +0800, Chen-Yu Tsai wrote:
-> |struct usb_port| and its matching container_of() macro should live in
-> its own port.h, matching the split we have for .c files.
+On 7/14/26 15:43, Nikolai Burov via B4 Relay wrote:
+> From: Nikolai Burov <nikolai.burov@jolla.com>
 > 
-> Move them as described. Also move usb_port_is_power_on(), since in the
-> next change its |struct usb_hub *| parameter will be changed to
-> |struct usb_port *|, and becomes a non-static function that only
-> references |struct usb_port|.
+> On recent MediaTek SoCs such as MT6858, the kernel is required to use
+> a secure monitor call (SMC) to enable or disable the modem power domain.
+> The power domain control register can be read, but firmware prevents it
+> from being modified directly. Other parts of the power sequence, such as
+> setting the ext_buck_iso register, still need to be performed on the
+> kernel side.
 > 
-> port.h is only included from hub.h, as a subsequent patch will directly
-> use fields from |struct usb_port| in a static inline helper in hub.h.
-> The USB internal headers don't have header guards to help with this.
+> In preparation for modem support, add a flag to enable this new power
+> sequence for SoCs that need it.
 > 
-> Also drop 'extern' from the header declaration of usb_port_is_power_on().
-> This is not needed in modern C.
-
-...
-
-> +struct usb_port {
-> +	struct usb_device *child;
-> +	struct device dev;
-> +	struct usb_dev_state *port_owner;
-> +	struct usb_port *peer;
-> +	struct typec_connector *connector;
-> +	struct dev_pm_qos_request *req;
-> +	enum usb_port_connect_type connect_type;
-> +	enum usb_device_state state;
-> +	struct kernfs_node *state_kn;
-> +	usb_port_location_t location;
-> +	struct mutex status_lock;
-> +	u32 over_current_count;
-> +	u8 portnum;
-> +	u32 quirks;
-> +	unsigned int early_stop:1;
-> +	unsigned int ignore_event:1;
-> +	unsigned int is_superspeed:1;
-> +	unsigned int usb3_lpm_u1_permit:1;
-> +	unsigned int usb3_lpm_u2_permit:1;
+> Signed-off-by: Nikolai Burov <nikolai.burov@jolla.com>
+> ---
+>   drivers/pmdomain/mediatek/mtk-pm-domains.c | 54 +++++++++++++++++++++++++++---
+>   drivers/pmdomain/mediatek/mtk-pm-domains.h |  1 +
+>   include/linux/soc/mediatek/mtk_sip_svc.h   |  3 ++
+>   3 files changed, 53 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> index e1cfd4223473..56437b32b252 100644
+> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> @@ -57,6 +57,12 @@
+>   
+>   #define MTK_SIP_KERNEL_HWCCF_CONTROL	MTK_SIP_SMC_CMD(0x540)
+>   
+> +/* Power domain commands for MTK_SIP_KERNEL_CCCI_CONTROL */
+> +enum {
+> +	MTK_MD_MTCMOS_ENABLE = 18,
+> +	MTK_MD_MTCMOS_DISABLE = 19,
 > +};
 
-A side note for the future development (no need to change anything here
-right now). It might be that the layout is suboptimal and `pahole` might
-propose a better one.
+I know in TZ firmware this is an enumeration, but makes little sense here, unless
+it's put in some place which only purpose is to do all CCCI communication.... but
+that's not a good idea for now. I can see that coming later though.
 
--- 
-With Best Regards,
-Andy Shevchenko
+For now, just do:
 
+/* Secure MTCMOS for modem subsystem */
+#define MTK_CCCI_MD_MTCMOS_ENABLE	18
+#define MTK_CCCI_MD_MTCMOS_ENABLE	19
+
+> +
+>   struct scpsys_domain {
+>   	struct generic_pm_domain genpd;
+>   	const struct scpsys_domain_data *data;
+> @@ -615,6 +621,34 @@ static void scpsys_modem_pwrseq_off(struct scpsys_domain *pd)
+>   		regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
+>   }
+>   
+> +static bool scpsys_modem_sec_poll(unsigned long cmd)
+> +{
+> +	struct arm_smccc_res res;
+> +
+> +	arm_smccc_smc(MTK_SIP_KERNEL_CCCI_CONTROL, cmd, 1, 0, 0, 0, 0, 0, &res);
+> +
+> +	return res.a0 == 0;
+> +}
+> +
+> +static int scpsys_modem_sec_power_on(bool on)
+> +{
+> +	struct arm_smccc_res res;
+> +	unsigned long cmd = on ? MTK_MD_MTCMOS_ENABLE : MTK_MD_MTCMOS_DISABLE;
+> +	bool tmp;
+> +	int ret;
+> +
+> +	arm_smccc_smc(MTK_SIP_KERNEL_CCCI_CONTROL, cmd, 0, 0, 0, 0, 0, 0, &res);
+> +	if (res.a0 == 0)
+> +		return 0;
+> +
+> +	ret = readx_poll_timeout(scpsys_modem_sec_poll, cmd, tmp, tmp,
+> +				 MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	return 0;
+> +}
+> +
+>   static int scpsys_power_on(struct generic_pm_domain *genpd)
+>   {
+>   	struct scpsys_domain *pd = container_of(genpd, struct scpsys_domain, genpd);
+> @@ -633,7 +667,9 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+>   		regmap_clear_bits(scpsys->base, pd->data->ext_buck_iso_offs,
+>   				  pd->data->ext_buck_iso_mask);
+>   
+> -	if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_PWRSEQ))
+> +	if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_SECURE))
+> +		ret = scpsys_modem_sec_power_on(true);
+> +	else if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_PWRSEQ))
+>   		ret = scpsys_modem_pwrseq_on(pd);
+>   	else
+>   		ret = scpsys_ctl_pwrseq_on(pd);
+> @@ -709,6 +745,12 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+>   	if (ret < 0)
+>   		return ret;
+>   
+> +	if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_SECURE)) {
+> +		ret = scpsys_modem_sec_power_on(false);
+> +		if (ret)
+> +			return ret;
+> +	}
+> +
+>   	if (pd->data->ext_buck_iso_offs && MTK_SCPD_CAPS(pd, MTK_SCPD_EXT_BUCK_ISO))
+>   		regmap_set_bits(scpsys->base, pd->data->ext_buck_iso_offs,
+>   				pd->data->ext_buck_iso_mask);
+> @@ -719,10 +761,12 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+>   	if (ret < 0)
+>   		return ret;
+>   
+> -	if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_PWRSEQ))
+> -		scpsys_modem_pwrseq_off(pd);
+> -	else
+> -		scpsys_ctl_pwrseq_off(pd);
+> +	if (!MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_SECURE)) {
+> +		if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_PWRSEQ))
+> +			scpsys_modem_pwrseq_off(pd);
+> +		else
+> +			scpsys_ctl_pwrseq_off(pd);
+> +	}
+
+	if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_PWRSEQ))
+		scpsys_modem_pwrseq_off(pd);
+	else if (!MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_SECURE_PWRSEQ))
+		scpsys_ctl_pwrseq_off(pd);
+
+Less indent, looks a bit less messy... I still don't like it but I don't think that
+there's any other solution that doesn't imply adding one more power domain type, as
+in SCPSYS_MTCMOS_TYPE_SECURE.
+
+I think more will come, so perhaps let's wait for that to happen as to understand
+how to actually define the new type.
+
+
+>   
+>   	/* wait until PWR_ACK = 0 */
+>   	ret = readx_poll_timeout(scpsys_domain_is_on, pd, tmp, !tmp, MTK_POLL_DELAY_US,
+> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.h b/drivers/pmdomain/mediatek/mtk-pm-domains.h
+> index a5dca24cbc2f..b1a3d54a7b01 100644
+> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.h
+> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.h
+> @@ -17,6 +17,7 @@
+>   #define MTK_SCPD_MODEM_PWRSEQ		BIT(10)
+>   #define MTK_SCPD_SKIP_RESET_B		BIT(11)
+>   #define MTK_SCPD_INFRA_PWR_CTL		BIT(12)
+> +#define MTK_SCPD_MODEM_SECURE		BIT(13)
+
+MTK_SCPD_MODEM_SECURE_PWRSEQ
+
+Cheers,
+Angelo
 
 
