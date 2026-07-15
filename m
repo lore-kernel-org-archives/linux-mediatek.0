@@ -4,62 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38A02C44501
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 07:46:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2C7DC44501
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 07:51:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0LP7Al6rRiZBE1h+Cea0iWGHs8CXC0LyVHJxEu9jR3U=; b=bcEMUrVryQbCmLa4p0DiPsrOEE
-	PdV3mlBm1NOapbgJM1KBRLE2X/HdnV27FHY+jz88xXHDpcUeA0nOM+HQT/rTVOrt66OuVmtJMSYEA
-	Y2xgLyBWMvHwfLVyImFcL2VRKsbdmS1dP+Ixayz4eMHsArn5/R0svggEYvfDXNQqzlTdQuHOWF4lp
-	oQqGJqKldRP/UaEUTCQUfOnTkhRWB7edDfBLLqtBmGiUJZ7vUcgeoSmp0epacSysT/fRlCBVK+6EH
-	ctARlPlJxm/Qo6BP0SoFcBkG/D2Df26LWkAUb+tJ4KZ+MjGZ9vTnIduRB66H4rvcVrie6T0CIl8rW
-	28RvCWoQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=u2xNjQMKnxOxV+YIQMMgbHvL77Gl204HIj3OPEzRzsM=; b=BiddvuVeyX8hRT0bVaXRI19SpS
+	r+pjcGOKdl8IYyehxI766IfR4YPe/V0RbW8xgw1H33UjL1hhpvFFTM8DFLDPs/AZB4USNh1C+AhUk
+	YiwXi+MaaBgEqxbQorEMzvg7PnS1DehE0ArH7uYbNx/g0zaJ4lqtf54jsxZOzQHKk5VKPRJQC9mzG
+	yUYzaDl1CQtVh8U9AyWJs2IlID03C9XAXyS784qnoCVCYyJJNRuUNT7/1jdt02WqjO/chUDTwhIlt
+	jdNxIs8OxZPDDkf4vQpQ/7TdnxxIqRosPvMcihXT1soG2Ns07DWTSzXJSM6dTOAYDJ+YzUydBzsLF
+	/jj5eVWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjuJv-0000000E4Jr-32ch;
-	Wed, 15 Jul 2026 07:46:19 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wjuOW-0000000E4m9-2KZU;
+	Wed, 15 Jul 2026 07:51:06 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjuJt-0000000E4J7-3HGr;
-	Wed, 15 Jul 2026 07:46:18 +0000
+	id 1wjuOU-0000000E4lj-27Br;
+	Wed, 15 Jul 2026 07:51:02 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id A7F1C600BB;
-	Wed, 15 Jul 2026 07:46:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3B3F1F000E9;
-	Wed, 15 Jul 2026 07:46:15 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id F076841B1E;
+	Wed, 15 Jul 2026 07:51:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4233D1F000E9;
+	Wed, 15 Jul 2026 07:51:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784101576;
-	bh=0LP7Al6rRiZBE1h+Cea0iWGHs8CXC0LyVHJxEu9jR3U=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Y2/XD/XOX5eKeWY1GlQ1ajpPHkVXxIb9qN8e904DmQF333rz8PgtOHNSpJSTY1Cix
-	 alrG2EVN5wCvxrBxUTo8+yl8DbExDTfuVxbKndPkyKvCCso0ogYzAeqEqI13btR+fH
-	 FW1QrM0T9xUAC3ZYsNjiFuGNuJwvDrUxzmfL4Yy25t7NbbkLVx7uWlnadFDLItSEcN
-	 jOLEPZc2WNULDwN3zJj5DKbhX5w3JEBs7EqktwSxcvyiJ06OpkmBip5jqi3HnlaT2Z
-	 FkjGbEluVmzjm6uEiU2c2+904jgu9xiH9muhvl+Q6utmOjHsyrqtnAPmHR2DtWccVH
-	 rEVmCXsu+URcQ==
-Date: Wed, 15 Jul 2026 09:46:14 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Bo.Jiao@mediatek.com, angelogioacchino.delregno@collabora.com,
+	s=k20260515; t=1784101861;
+	bh=u2xNjQMKnxOxV+YIQMMgbHvL77Gl204HIj3OPEzRzsM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=JWLtEZZ2CK+RaDqDe5EsHoQ92youKV2BQAAQlaGJgphg5k/mzjYpg36OjbHXCF0LU
+	 L1Y44OGtN3iW7cGAZcdkABWxxSsSwNIe3J3HXLSrVDLhkRNVKlPGhmxsW8VJ0LYZVe
+	 kuckzsBquT8Bg2aTLWGuvbRhdskKXfpn7/pV1xKmwLlVXUd8Ljp99hWyXa42uCk1xj
+	 Xe1MeTI6c87qN6VIFN1C+xvlYYR1qGRhb2UfBhXWGb97BoTWYYsncELSaIdmxEfRfg
+	 L6+E8kZKPgscKW1i2KjiaCKSpPWZ1MnI3ZWyRobQz5dHLOfBNRAxRQbPL+POzb/nGz
+	 j+pPTVb/xOArQ==
+From: Maxime Ripard <mripard@kernel.org>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Maxime Ripard <mripard@kernel.org>
+Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	dri-devel@lists.freedesktop.org,
+	Joshua Peisach <jpeisach@ubuntu.com>,
+	Sasha Finkelstein <k@chaosmail.tech>,
+	Janne Grunau <j@jannau.net>,
+	asahi@lists.linux.dev,
+	Benson Leung <bleung@chromium.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	chrome-platform@lists.linux.dev,
+	Francesco Dolcini <francesco.dolcini@toradex.com>,
+	Francesco Dolcini <francesco@dolcini.it>,
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+	Ian Ray <ian.ray@gehealthcare.com>,
+	Peter Senna Tschudin <peter.senna@gmail.com>,
+	Martyn Welch <martyn.welch@collabora.co.uk>,
+	Manikandan Muralidharan <manikandan.m@microchip.com>,
+	Dharma Balasubiramani <dharma.b@microchip.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Inki Dae <inki.dae@samsung.com>,
+	Seung-Woo Kim <sw0312.kim@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org,
-	matthias.bgg@gmail.com, nbd@nbd.name, rex.lu@mediatek.com,
-	ryder.lee@mediatek.com, sean.wang@mediatek.com,
-	shayne.chen@mediatek.com, sujuan.chen@mediatek.com
-Subject: Re: [PATCH mt76 v5 16/16] wifi: mt76: mt7996: Add SW path for HW-RRO
- v3.1
-Message-ID: <alc6xTe4uPIJHQy8@lore-desk>
-References: <20250909-mt7996-rro-rework-v5-16-7d66f6eb7795@kernel.org>
- <20260715070001.1503928-1-amadeus@jmu.edu.cn>
+	linux-samsung-soc@vger.kernel.org,
+	Linus Walleij <linusw@kernel.org>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org,
+	Rob Clark <robin.clark@oss.qualcomm.com>,
+	Dmitry Baryshkov <lumag@kernel.org>,
+	Abhinav Kumar <abhinav.kumar@linux.dev>,
+	Jessica Zhang <jesszhan0024@gmail.com>,
+	Sean Paul <sean@poorly.run>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	freedreno@lists.freedesktop.org,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Raphael Gallais-Pou <rgallaispou@gmail.com>
+Subject: Re: [PATCH v2 00/37] drm/bridge: Convert all bridges to atomic
+Date: Wed, 15 Jul 2026 09:50:57 +0200
+Message-ID: <178410185255.27166.12276953519235775875.b4-ty@kernel.org>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260707-drm-all-atomic-bridges-v2-0-21d03cbca446@kernel.org>
+References: <20260707-drm-all-atomic-bridges-v2-0-21d03cbca446@kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Yv6XrpQKV6uL3VLP"
-Content-Disposition: inline
-In-Reply-To: <20260715070001.1503928-1-amadeus@jmu.edu.cn>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,53 +117,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---Yv6XrpQKV6uL3VLP
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Tue, 07 Jul 2026 17:11:07 +0200, Maxime Ripard wrote:
+> Over the years, most of the bridges have been converted to atomic
+> modesetting and hooks, but not all of them. This forces us to maintain
+> two different code path in quite a few places, which is pretty
+> bothersome. The switch to atomic modesetting for legacy bridges though
+> is pretty trivial, and we don't have a lot of drivers still using the
+> legacy path.
+> 
+> [...]
 
-> Hi,
+Applied to misc/kernel.git (drm-misc-next).
 
-Hi Chukun,
-
->=20
-> > +	if (dev->mt76.hwrro_mode =3D=3D MT76_HWRRO_V3_1) {
-> > +		/* rxdmad_c */
-> > +		mdev->q_rx[MT_RXQ_RRO_RXDMAD_C].flags =3D MT_WED_RRO_Q_RXDMAD_C;
->=20
-> This introduces the RRO_Q_RXDMAD_C flag for the MT7992 chipset.
-> However, the mt76_wed_dma_setup function lacks handling for
-> MT76_WED_RRO_Q_RXDMAD_C, causing it to return -EINVAL:
->=20
-> [   20.049167] mt7996e 0000:01:00.0: attaching wed device 0 version 3
-> [   20.114412] platform 15010000.wed: MTK WED WO Firmware Version: ..
-> [   20.123728] platform 15010000.wed: MTK WED WO Chip ID 00 Region 2
-> [   20.965401] mt7996e 0000:01:00.0: probe with driver mt7996e failed wit=
-h error -22
->=20
-> Can you fix this?
-
-IIRC WED is not supported for HW RRO3.1 at the moment, it is not just a mat=
-ter of
-fixing mt76_wed_dma_setup().
-
-Regards,
-Lorenzo
-
->=20
-> Thanks,
-> Chukun
-
---Yv6XrpQKV6uL3VLP
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCalc6xQAKCRA6cBh0uS2t
-rC90AQDqX1Zbse6nv0qogKELf1Vmvsehu3y+Et4oi05aX+ax1gEApd5Ck5/LaW1y
-ger643vFlirl8/9c4Ntal6wPZEuVGAc=
-=WbzV
------END PGP SIGNATURE-----
-
---Yv6XrpQKV6uL3VLP--
+Thanks!
+Maxime
 
