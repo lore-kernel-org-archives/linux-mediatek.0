@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D73CDC44501
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3F17C44507
 	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 12:27:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
@@ -12,45 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KKZmVnk3+DtSWK9hPhyNsOqbTmr3aNYxU7XwAwrYS8k=; b=Bv+3q5wbPmGE4sMyKG/dbs2x7Q
-	xx7m59SdwBIaSqhDwVC/NOvyvSMgx+m6yhpeRYs2k0wUAcDa+NYSBjzDUWZPtCEfcGAUyacs+c6q0
-	zjQcIbwEsUDlTabKNK4mlQ23Uj+GtEEhsv/x6GHpNILMJ8aq1wj0k1dUXyba5Dn+5q92sxfvCSYZ9
-	Cn3oRod0oK61cQ9LfJ2lDbl4BHRzO0hsWIz/pa+2HVQwyi1pavtkk/7N1Rg18sxkIc5kLG1E9CPDi
-	2ErFSEw4lFvodWXM9XIraeK5Mcq4AtPMWYmJUA5TfWK5kdUWvHSUtYWg3nqaYfXF1IBkcvTQPOzE7
-	WXeTTJqg==;
+	bh=M1Of5fecQGPajpl0iRrkMmpy8qIdzb3PjY+uyb26WfI=; b=1Miv0miuAQ0sYFs3Vt5sl9r+UP
+	UAuMlx8uXBGHzHFcz7er1A2GTOJontMv/IaDOIlJQi53V2g+bRYJmfe60VVONYuoB2ZJRW8gc+6xj
+	vOGXbf79J640neMCTDpoRuZhppOtVsJVq7TOSY04tY/ytvM6YE9HYfYqkp8FQw2YIbEcb68ymQR7y
+	mTsVK7NYLMy6rv+NiN+13DNWd+nk45Vd5Lbz34ddlHFMbFgqRSJO1kpkwSAwlbsh7g/G8zWIvujPG
+	QueCDTZK7bpu1lxBuR8zpHghDQFRGgABgITYPIJTclyfGUDeMEan0vEJBkXdxdnrcWlu8hsdlFFI2
+	4+tT07kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjyi3-0000000EmQP-31j9;
+	id 1wjyi3-0000000EmQJ-2Ykr;
 	Wed, 15 Jul 2026 12:27:31 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjyi1-0000000EmOQ-1Nt9;
+	id 1wjyi1-0000000EmOR-1Nwl;
 	Wed, 15 Jul 2026 12:27:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id CB65B40398;
+	by sea.source.kernel.org (Postfix) with ESMTP id D3EF0403BB;
 	Wed, 15 Jul 2026 12:27:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 9F514C2BCC7;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id AE557C2BCF5;
 	Wed, 15 Jul 2026 12:27:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1784118448;
-	bh=/nmX94i7woECD9G9H99n5Oh/yeRI8rxdP01LoG01IWw=;
+	bh=Z/jxhE/I9puJCOpHIh3gXSESQsB/BEzTqhANjKLklE4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=l+n8mhFOetzl2nKeUetNMTzOi5aYzNWl3tgKFTocZaVcix4tFDRRbqkYRGJ0O23B+
-	 lPWG7ldKNddpFDS5GuOm2sxFZLGFTDKRRZBlu09WzJBJQn8SqsmECF75aQK6X9efVC
-	 ks7r+b+hPWr5AG/+yiuKo3fMqHOM3A73pKzWDxdmgaSkeQfJCNbqMLKjAWv66aacyk
-	 7Vrotr4fyDCu6fN90YCSkNLH9jVRRGDQlQsrWy8bpJF7hNCdv8p4hv/u36nEptKDzL
-	 15ESboduNfoZ7hEHIl5XAqxo/ywYJCOM62r/johkVvBYq+ZgEma4i+FeXn/2DNjE44
-	 VQdcGJOzEvqlQ==
+	b=WLnhyI6BCkZlPDScqSoqTpjOy0ARYfWvGtkOTGv65QIIhfeADpG0Qn1LfbUPm6F7f
+	 H2cf47woCN3kSPOjw7cSKN3nDoyY4La6eejstq2i4oCurJp+VEVKGK0zGWh52MEseR
+	 T+q2EygbItcIty/T8TxRN05idxFz6kH5l+iFlTHU88ITmiVf7pV3y5uz+VpZsDZtii
+	 hqxN7a/iUJ/ylKFMnd0fYT6jmk5HioG7qzo9b6dKZHIavrBd9YOzjjnBJ6McXkwNjw
+	 Mz8f0bgYKkLrLiaxiPiieySpm4PfqEvt+UkgfL0Yhpb4aAgLbsiyNPasTZC28UlsQG
+	 ANxvyghELwqrA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 81DD2C44501;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8F7CDC4450F;
 	Wed, 15 Jul 2026 12:27:28 +0000 (UTC)
 From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Wed, 15 Jul 2026 15:26:38 +0300
-Subject: [PATCH v2 1/3] dt-bindings: soc: mediatek: pwrap: add mt6572
+Date: Wed, 15 Jul 2026 15:26:39 +0300
+Subject: [PATCH v2 2/3] soc: mediatek: pwrap: use correct log level
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260715-6572-pwrap-v2-1-bea1d801c81b@protonmail.com>
+Message-Id: <20260715-6572-pwrap-v2-2-bea1d801c81b@protonmail.com>
 References: <20260715-6572-pwrap-v2-0-bea1d801c81b@protonmail.com>
 In-Reply-To: <20260715-6572-pwrap-v2-0-bea1d801c81b@protonmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -62,11 +62,11 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Roman Vivchar <rva333@protonmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1784118429; l=921;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1784118429; l=3556;
  i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=BAi8UFC2xpwSSj8K8iWAUOKHGK6fMGisfalQqsjZVDM=;
- b=WZdjeLkVUX6/WzHVac1moHYvdUlfq8YtMBTKrlphWNkwB/sQKTS1sIKN6tHhAPcVYKBS39muA
- vqk0wnpsY1aCy9osGHkYge5/3c8C9PHm9ZDOVY/Pkr1RsT9nAlyVy+3
+ bh=UdQUgW/G6p2IpzSIEwNhInH074hFbLPSHyDOpyct7NU=;
+ b=3PKmCgYuJeYKDpULkW3pduxfpJ17XnjHjTmHi1ZlIIW5JOClS4b7MjXGbv5otf6OjNqIBtG0p
+ JkKcrPGiRNhCrFv6lm29Qq77VFIHcIEv3XtUXlM27BM8CmWeqSh5keN
 X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
  pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
 X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
@@ -89,26 +89,107 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Roman Vivchar <rva333@protonmail.com>
 
-Add a compatible string for the mt6572 SoC.
+Error paths should be dev_err, not dev_dbg. Replace all dev_dbg in error
+branches to have the correct log level. Also simplify dev_err and return
+with dev_err_probe.
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
- Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/soc/mediatek/mtk-pmic-wrap.c | 45 ++++++++++++++----------------------
+ 1 file changed, 17 insertions(+), 28 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
-index e7c4a3984c60..a3cf11153fba 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml
-@@ -31,6 +31,7 @@ properties:
-       - items:
-           - enum:
-               - mediatek,mt2701-pwrap
-+              - mediatek,mt6572-pwrap
-               - mediatek,mt6765-pwrap
-               - mediatek,mt6779-pwrap
-               - mediatek,mt6795-pwrap
+diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+index 0bcd85826375..a4b10b0a97cb 100644
+--- a/drivers/soc/mediatek/mtk-pmic-wrap.c
++++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+@@ -2475,10 +2475,9 @@ static int pwrap_probe(struct platform_device *pdev)
+ 	if (np->child)
+ 		of_slave_id = of_match_node(of_slave_match_tbl, np->child);
+ 
+-	if (!of_slave_id) {
+-		dev_dbg(&pdev->dev, "slave pmic should be defined in dts\n");
+-		return -EINVAL;
+-	}
++	if (!of_slave_id)
++		return dev_err_probe(&pdev->dev, -EINVAL,
++				     "slave pmic should be defined in dts\n");
+ 
+ 	wrp = devm_kzalloc(&pdev->dev, sizeof(*wrp), GFP_KERNEL);
+ 	if (!wrp)
+@@ -2496,11 +2495,9 @@ static int pwrap_probe(struct platform_device *pdev)
+ 
+ 	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_RESET)) {
+ 		wrp->rstc = devm_reset_control_get(wrp->dev, "pwrap");
+-		if (IS_ERR(wrp->rstc)) {
+-			ret = PTR_ERR(wrp->rstc);
+-			dev_dbg(wrp->dev, "cannot get pwrap reset: %d\n", ret);
+-			return ret;
+-		}
++		if (IS_ERR(wrp->rstc))
++			return dev_err_probe(wrp->dev, PTR_ERR(wrp->rstc),
++					     "cannot get pwrap reset\n");
+ 	}
+ 
+ 	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_BRIDGE)) {
+@@ -2510,12 +2507,9 @@ static int pwrap_probe(struct platform_device *pdev)
+ 
+ 		wrp->rstc_bridge = devm_reset_control_get(wrp->dev,
+ 							  "pwrap-bridge");
+-		if (IS_ERR(wrp->rstc_bridge)) {
+-			ret = PTR_ERR(wrp->rstc_bridge);
+-			dev_dbg(wrp->dev,
+-				"cannot get pwrap-bridge reset: %d\n", ret);
+-			return ret;
+-		}
++		if (IS_ERR(wrp->rstc_bridge))
++			return dev_err_probe(wrp->dev, PTR_ERR(wrp->rstc_bridge),
++					     "cannot get pwrap-bridge reset\n");
+ 	}
+ 
+ 	ret = devm_clk_bulk_get_all_enabled(wrp->dev, &clk);
+@@ -2535,10 +2529,8 @@ static int pwrap_probe(struct platform_device *pdev)
+ 	 */
+ 	if (!pwrap_readl(wrp, PWRAP_INIT_DONE2)) {
+ 		ret = pwrap_init(wrp);
+-		if (ret) {
+-			dev_dbg(wrp->dev, "init failed with %d\n", ret);
+-			return ret;
+-		}
++		if (ret)
++			return dev_err_probe(wrp->dev, ret, "init failed\n");
+ 	}
+ 
+ 	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
+@@ -2548,10 +2540,9 @@ static int pwrap_probe(struct platform_device *pdev)
+ 	else
+ 		mask_done = PWRAP_STATE_INIT_DONE0;
+ 
+-	if (!(pwrap_readl(wrp, PWRAP_WACS2_RDATA) & mask_done)) {
+-		dev_dbg(wrp->dev, "initialization isn't finished\n");
+-		return -ENODEV;
+-	}
++	if (!(pwrap_readl(wrp, PWRAP_WACS2_RDATA) & mask_done))
++		return dev_err_probe(wrp->dev, -ENODEV,
++				     "initialization isn't finished\n");
+ 
+ 	/* Initialize watchdog, may not be done by the bootloader */
+ 	if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
+@@ -2593,11 +2584,9 @@ static int pwrap_probe(struct platform_device *pdev)
+ 		return PTR_ERR(wrp->regmap);
+ 
+ 	ret = of_platform_populate(np, NULL, NULL, wrp->dev);
+-	if (ret) {
+-		dev_dbg(wrp->dev, "failed to create child devices at %pOF\n",
+-				np);
+-		return ret;
+-	}
++	if (ret)
++		return dev_err_probe(wrp->dev, ret,
++				     "failed to create child devices at %pOF\n", np);
+ 
+ 	return 0;
+ }
 
 -- 
 2.54.0
