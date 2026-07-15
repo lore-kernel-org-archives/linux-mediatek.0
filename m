@@ -4,69 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D16CCC44507
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 09:59:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23E38C44501
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 10:21:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/F0m5YSoTE5fSuE6te1ou9Js3r688ZIYywnzlXzkVyg=; b=H7Tdx8ymfzkTJkMledilATlu9l
-	QeKsRj1aJaJY3MWiEKtxR56UKlVr7Qp5rMvqm0QW+yU5VEE8A5D+gRworo47e1VV0Yq85z5U3zST9
-	cmg8hiFejYom6wP28QmIq3soImmXyVXjZzDvFxuhZe73y3ZK6xvVlPOiJqSDCFL7jvB4CVD6+Ms9z
-	IOzTIbiOXlSa1pZ34Y74am3H+G2tc4iAolzxPom8/dCUaAiDpwc8g7ul4lwxfjWhAflTkgx5mFta+
-	LsFiAG6scTBD2Yw7wP/FJs9+5FyvL/QqbT2c9HSGs6/rzq/WZOQUKkfwKprjmdJR6WYXNtq27ijzN
-	4FqyrOTA==;
+	bh=AcIRfrbuvvEOy1EVAdQ0GdATJLshKcgOJCqDWzfbhjA=; b=v+tjYl5twPwsUvDgsCfBO7HCXF
+	4ohB46mEis2SPHRmG/g9x+6T5z/8nBub2bdGI/F4XNYFDnIQ7ID6JBUQpxtVEc/gceHbTkaGkqdez
+	7ab1FrWwLaxnpQOdYXx78QjEkNJYAuwXAvozTfSUVTtIY7UR/ASaUYetqgYaL4u3FHRGaAOe30jH7
+	vFTWZMrhjbi+46SwQhA8V1dVxbYW5qkKHyKwiRlzhBdSV/VgP9dH02Nir1pryJyjzb4IuJW7Pnmyf
+	qxSafT5j8LAVIoQ9JyuPeUU8AhIq5PcgrDuNrZ217TznSiFaDQgLXblCkZRaXRTyI69u22coV46LC
+	3tsSWrTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjwOP-0000000EOav-3dNi;
-	Wed, 15 Jul 2026 09:59:05 +0000
+	id 1wjwje-0000000EQdk-43hD;
+	Wed, 15 Jul 2026 10:21:02 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjwOM-0000000EOaD-1PEg;
-	Wed, 15 Jul 2026 09:59:03 +0000
+	id 1wjwjc-0000000EQcJ-3wWj;
+	Wed, 15 Jul 2026 10:21:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784109540;
-	bh=A0P83uQz8I3cpMmpwBvFRnuqr2Xe0F0qmqvYylHFg6o=;
+	s=mail; t=1784110858;
+	bh=y+ynGkCaYoXRDmgB014d4Ad6Wj5i1LOY4L9jyC5DNh0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=IRPqg0sA1xSsSZQ8f7VHmUKzJdLsuS1PyKjMse96nXIdRp+/5rkSL+JYaLUXUNnOs
-	 7dJ0EhAafV594ZrIYCgF7rwy/jnpcWA1i2FG0rb6DLrb6LWMpi2Zy5qQdughkMSeZr
-	 NoLGP/uNCYzTkgIHVQZbiWaLIHqWPClFPfr6T8gwslmJZPtiERX+xWflsmSAAKAAfr
-	 RyLoS5Hx0J1YysadOlI/tWOOCIygUIBMxrLiuGCsYw8L/xrgdoqDbWpwNOjNSXOZcw
-	 v7UbfSfz9sLztcOqAmc8oRFXVZUwOdoTMISVyBk+RGsrHo3Siwu+VX4NVyAADujK6e
-	 aEY11kbp7bgQQ==
+	b=YJfVJDzNldvpTUS5ABBvAnFhP6Vnzwp+yH2e3DTFWYOwgB0Q3VP1YHf6rvLm1lHwj
+	 /3J/fXZAoEC8Kf1shil5y3lnP/tFvantshMIHagW6+zcctJ99IYkVKfjWm/LfWwsHt
+	 ke1tXGJu1eANIyj2XclkQ+6be8j3POLtQI7cQFmTQ9kCL2HqbC/k3Q8lmtS5mvgo1t
+	 qeHjH10VKhMROLXBvov2e2lbL4Qz6m3hNj32fptiBdq2Syrd/GTAtz2cFSLed1L/z/
+	 HQolHnFHd/YWOR5y25nxtbr7x0G4n/EZlwzTwsz6eRA10QZjnFKUySHY26UfQTHmgX
+	 sBzYr8njRAE8g==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 834EF17E0928;
-	Wed, 15 Jul 2026 11:58:59 +0200 (CEST)
-Message-ID: <d3932209-04cc-40bc-9bb1-f31c365e93ca@collabora.com>
-Date: Wed, 15 Jul 2026 11:58:59 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5D15117E0720;
+	Wed, 15 Jul 2026 12:20:58 +0200 (CEST)
+Message-ID: <f9e34c90-5f9f-4a51-9968-0fb3467a782b@collabora.com>
+Date: Wed, 15 Jul 2026 12:20:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] dt-bindings: power: Add MediaTek MT6858 power domain
- controller
-To: nikolai.burov@jolla.com, Rob Herring <robh@kernel.org>,
+Subject: Re: [PATCH 2/3] soc: mediatek: pwrap: use correct log level
+To: rva333@protonmail.com, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Ulf Hansson <ulfh@kernel.org>
-Cc: Matthias Brugger <mbrugger@suse.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
- Nikolai Burov <nikolai.burov+review@abscue.de>
-References: <20260714-mt6858-pmdomain-v1-0-4f09bbb822e0@jolla.com>
- <20260714-mt6858-pmdomain-v1-1-4f09bbb822e0@jolla.com>
+ Flora Fu <flora.fu@mediatek.com>, Alexandre Mergnat <amergnat@baylibre.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260714-6572-pwrap-v1-0-d8e5a39cf7ef@protonmail.com>
+ <20260714-6572-pwrap-v1-2-d8e5a39cf7ef@protonmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260714-mt6858-pmdomain-v1-1-4f09bbb822e0@jolla.com>
+In-Reply-To: <20260714-6572-pwrap-v1-2-d8e5a39cf7ef@protonmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260715_025902_534689_8A4F69FA 
-X-CRM114-Status: UNSURE (   7.11  )
+X-CRM114-CacheID: sfid-20260715_032101_138052_0F3CFA00 
+X-CRM114-Status: UNSURE (   8.91  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,14 +79,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/14/26 15:43, Nikolai Burov via B4 Relay wrote:
-> From: Nikolai Burov <nikolai.burov@jolla.com>
+On 7/14/26 14:42, Roman Vivchar via B4 Relay wrote:
+> From: Roman Vivchar <rva333@protonmail.com>
 > 
-> Add a new compatible and document bindings for the power domain
-> controller of the MT6858 SoC.
+> Errors paths should be dev_err, not dev_dbg. Replace all dev_dbg in error
+> branches to have the correct log level. Also simplify dev_err and return
+> with dev_err_probe.
 > 
-> Signed-off-by: Nikolai Burov <nikolai.burov@jolla.com>
+> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+
+
+Yeah.... I agree.
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
+> ---
+>   drivers/soc/mediatek/mtk-pmic-wrap.c | 45 ++++++++++++++----------------------
+>   1 file changed, 17 insertions(+), 28 deletions(-)
+> 
 
