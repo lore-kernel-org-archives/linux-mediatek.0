@@ -4,69 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEDDDC44507
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 12:01:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B2EEC44507
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 12:10:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=haP8DysK+ZsJJoO4m4ZHaZ32DNWkpdGhZARS0zG7P1s=; b=rm9kzLgiuJkIDTwwr3DV5sOHba
-	SvwA75f4ylCOjuVzHYrbEohbwVHOj2sq3FKl9grtFfD5SmIgh6GuwR3MuKXeTdRkEzunckgfJHJjg
-	oRZV/qXen49j5LsV0memv2BxOhTerd9WJ/mDuIuBfzDEJFDZ7KBboZCVuoC8BqpfBFQEKPzmuj7AP
-	aNBIbMOquLw/ugArsFrb7WNjZlQqhT1/kbf9/s1xhFZcTtWnlRDhVEqW7EWKmwE/+rlasD9rymW9v
-	OgniXqnquRPA3NS6kwsS/v/GtNaaoEs5tdfhYQewjxK0ym1qqvnKrtma93Z/4X7Z7+C9juyNffxRH
-	VQ6suzKw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:References:MIME-Version:In-Reply-To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DMCjy06zEXDnbWum2gCuxx6nJG7pOKzGSJuwH+iOivg=; b=gE01P6uimNqItFfYeC5GFl0//g
+	+t/fSCGmVs5kfuyE8INhi86zxh/XuvUUpjStump4MJgyyzanKXuIyLais2JL7hWxFGCA2Svu1N4d1
+	IwM7LXiCFLpjTYVw4Sr1Ff7o96pRy+W4LnWeprs8t1PFPWXIaZKX3OH+nej5u+W6SJL43HZo79o8Y
+	7/s2NkMXB2E+B33orey0iIppiDe1EvcbTaVKH1qooJeQwd4ZRoLL9hDP83L+c4yFbB+YPTh8iO66C
+	Yjdw1R0XyN8kTqWe7f5R0IL0vnJpbXTOq8yhISISohD+6ueYDvV3aI2rX9P+eqBq6iqFGu93yUXPN
+	Zqp8taKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjyIl-0000000Eh6k-30pb;
-	Wed, 15 Jul 2026 12:01:23 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wjyRi-0000000EjLq-0s6D;
+	Wed, 15 Jul 2026 12:10:38 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjyIS-0000000Egt2-06g0;
-	Wed, 15 Jul 2026 12:01:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784116861;
-	bh=YxDIJjLunXFjPXYlZNPG+F+TXz5f9JYTX8dKFMJ8Fto=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Ok9cbby4QZVRUcodeY8oSolFWZTcfJ7iK51/Ee0ySsKd+QnXmsYI3pzz5d0kuPV1D
-	 cSL7S1oug0X02dy5wpsKsszBYaWLh4ASC3kUMDFAVEqN/q+BdWN3h176zGYXdJCGZj
-	 H5iEG7QuP/IQsKN58oOQzBCsXpd7mDm3vwrDROHMdup1W0hgnSqhQpxvra0/9a32BD
-	 EvnHeeYgROk6AYUCeMrxyA/UTnJsCwecIYnj05jtTMpN6rVTUnDux356ldgaP46iqG
-	 PpspMKxeYFVp5kiBUkENLAPmuK+9rqY5uEnl3B7gWwqHq9XHb1Rdr40CautHTWctM0
-	 tAbqEYZKppXyQ==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 41F0717E071A;
-	Wed, 15 Jul 2026 14:01:01 +0200 (CEST)
-Message-ID: <d2a9089f-9c86-4c92-8f6c-e85952ab8502@collabora.com>
-Date: Wed, 15 Jul 2026 14:01:00 +0200
+	id 1wjyRa-0000000EjHP-0oQQ
+	for linux-mediatek@lists.infradead.org;
+	Wed, 15 Jul 2026 12:10:30 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id BDB4A4109A
+	for <linux-mediatek@lists.infradead.org>; Wed, 15 Jul 2026 12:10:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A37841F00A3F
+	for <linux-mediatek@lists.infradead.org>; Wed, 15 Jul 2026 12:10:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784117429;
+	bh=DMCjy06zEXDnbWum2gCuxx6nJG7pOKzGSJuwH+iOivg=;
+	h=From:In-Reply-To:References:Date:Subject:To:Cc;
+	b=Q84hagRT5mPR6Sg5DtuRlLw+qHQbfE0zv769VXXV9fdXQpiVBljonlJJa72YMpf7y
+	 iYZKdHDeOLn8CpItSXEjn1bhf/D4qCsfnSPEa7/PTcNChMqAhAqIRMVv6IPYnjTWNf
+	 f6fX48BpqcIK+ON+887Wu4FNF344byUQrM0B06tKW0vZac2Mc7MOJY+3WBJGIbOU+Y
+	 s+XfEqlz2dR3TJcJ/wfD5eHKBMjk+CX2g65Qv7jgY9vFpJ/lCvVHcRqKIqgqNj8AG2
+	 O0InDdM9pynSkxccpuvAM61EcsTe+9yFBOyTSh9Ps6BNkic3e+7+aR0leWcj1IPoJc
+	 1hyWYWU7Tv3Eg==
+Received: by mail-lf1-f43.google.com with SMTP id 2adb3069b0e04-5aeae771c49so6208434e87.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Jul 2026 05:10:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+RoC7sy0z+lUCyh5mtsCX/DjqB+srBpCT0utr0YDR7lQitjevFQ6QD+79EzR02mT8CLIvKUtPSQ4EM+LIMpmAw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxBRNqF22yDOhgfgmmDw2NEz/9AEDNDu78EIZDFBnXK1ux6LFDr
+	hi5OEden4UcIFeWCZrrUHb/bd7Fion3HrMa4qbbqxVaJ6pphoLyf3Pt41LA/aLGiMt8NbvyUbh7
+	TH5KKvqSnbWJ6ag9DF+KG/OA16nuDf7ZYDVTVyR3i+A==
+X-Received: by 2002:a05:6512:2507:b0:5ae:bcf8:e7d0 with SMTP id
+ 2adb3069b0e04-5b15d7baf00mr578542e87.55.1784117428284; Wed, 15 Jul 2026
+ 05:10:28 -0700 (PDT)
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Wed, 15 Jul 2026 12:10:26 +0000
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Wed, 15 Jul 2026 12:10:26 +0000
+From: Bartosz Golaszewski <brgl@kernel.org>
+In-Reply-To: <aldS3qTympJuVXYj@ashevche-desk.local>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] soc: mediatek: pwrap: add mt6572 support
-To: Roman Vivchar <rva333@protonmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Flora Fu <flora.fu@mediatek.com>,
- Alexandre Mergnat <amergnat@baylibre.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20260714-6572-pwrap-v1-0-d8e5a39cf7ef@protonmail.com>
- <20260714-6572-pwrap-v1-3-d8e5a39cf7ef@protonmail.com>
- <3c112acd-5709-4144-9cab-54e0a51eefc9@collabora.com>
- <4W-fQkS-fQ5Wxua-0vkMZoLw98eklcnIN_ivaYjpWLIVX7qfCBjHGRJq8xQ59PTTIUNbzdT3EqkCsVqz_smuozi0Q3kq4antn54-rPXdmdI=@protonmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <4W-fQkS-fQ5Wxua-0vkMZoLw98eklcnIN_ivaYjpWLIVX7qfCBjHGRJq8xQ59PTTIUNbzdT3EqkCsVqz_smuozi0Q3kq4antn54-rPXdmdI=@protonmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260715_050104_281960_9AB06679 
-X-CRM114-Status: GOOD (  17.19  )
+References: <20260715085348.3457359-1-wenst@chromium.org> <20260715085348.3457359-4-wenst@chromium.org>
+ <aldS3qTympJuVXYj@ashevche-desk.local>
+Date: Wed, 15 Jul 2026 12:10:26 +0000
+X-Gmail-Original-Message-ID: <CAMRc=MfHmejks83bPfe3fKzAzFySGXk2GHMA9oZdMQj0f44eTA@mail.gmail.com>
+X-Gm-Features: AUfX_mxpntQH8Qnw3cJ2vX6VfUBu9N4HciM9BCR-9eipAChzpXbQ2rXlvYEnYl8
+Message-ID: <CAMRc=MfHmejks83bPfe3fKzAzFySGXk2GHMA9oZdMQj0f44eTA@mail.gmail.com>
+Subject: Re: [PATCH v5 03/16] power: sequencing: Add pwrseq_power_is_on()
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Bartosz Golaszewski <brgl@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Daniel Scally <djrscally@gmail.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Wei Deng <wei.deng@oss.qualcomm.com>, linux-acpi@vger.kernel.org, 
+	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>, 
+	Alan Stern <stern@rowland.harvard.edu>, 
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>, Chen-Yu Tsai <wenst@chromium.org>
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,68 +95,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/15/26 13:24, Roman Vivchar wrote:
-> Hi AngeloGioacchino,
-> 
-> On Wednesday, July 15th, 2026 at 1:21 PM, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
-> 
->> On 7/14/26 14:42, Roman Vivchar via B4 Relay wrote:
-> 
+On Wed, 15 Jul 2026 11:29:02 +0200, Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> said:
+> On Wed, Jul 15, 2026 at 04:53:33PM +0800, Chen-Yu Tsai wrote:
+>> The power sequencing consumer API already does power on state tracking
+>> internally. Expose the state to consumers through pwrseq_power_is_on()
+>> so that they don't have to reimplement it locally.
+>
+> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+>
 > ...
->   
->>>
->>> +static const struct pmic_wrapper_type pwrap_mt6572 = {
->>> +	.regs = mt6572_regs,
->>
->> MT6572 only has PWRAP_OP_TYPE, PWRAP_MSB_FIRST, PWRAP_GPS_STA additional registers
->> compared to MT2701, and the three are currently unused.
-> 
-> GPS_STA is indeed unused. As for others, downstream kernel includes mt6320 path.
-> 
-> //###############################
-> //Enable 6320 option
-> //###############################
-> #ifdef SLV_6320
-> WRAP_WR32(PMIC_WRAP_OP_TYPE ,OP_TYPE_CSL);
-> WRAP_WR32(PMIC_WRAP_MSB_FIRST , LSB);
-> #endif
-> 
-> Though I haven't seen any mt6572 device with the mt6320 so far, as well as
-> pwrap_init_chip_select_ext is configured for the mt6323.
-> 
->> Instead of adding yet one more huge array for 3 more registers, since I'm mostly
->> sure that those will never be used anyway (happy if you prove me wrong!), you can
->> at this point just use mt2701_regs for mt6572.
->>
->> Perhaps, add a comment saying that MT6572 does indeed have those additional regs
->> but were omitted because currently unused.
->>
->> So, something like
->>
->> /*
->>    * MT6572 has additional registers OP_TYPE (0x10), MSB_FIRST (0x14), GPS_STA (0x40)
->>    * which were omitted as they're currently unused in this driver.
->>    * Apart from that, the register map matches the one from MT2701.
->>    */
->> static const struct pmic_wrapper_type pwrap_mt6572 = {
->> 	.regs = mt2701_regs,
->>
-> 
-> I'm not a big fan of dead code, but at some point the mt6572+mt6320 may exist.
-> Would you suggest keeping mt6572 array or drop it until some mt6320
-> device appears?
-> 
+>
+>> +/**
+>> + * pwrseq_power_is_on() - Queries the last requested state of the power sequencer.
+>> + * @desc: Descriptor referencing the power sequencer.
+>> + *
+>> + * This returns the last requested state of the power sequencer.
+>> + *
+>> + * Returns:
+>> + * On success, 1 for on or desc is NULL (optional) and 0 for off;
+>> + * negative error number on failure.
+>
+> I would rephrase it a bit.
+>
+>  * On success, 1 for on and 0 for off; negative error number on failure.
+>  * If desc is NULL (means optional) return 1.
+>
+> And this rises a question: why 1? Shouldn't it be some "unknown" state?
+> (But since Bart Acked this, this doesn't prevent the patch to go, you
+>  got my tag above.)
+>
 
-Nah, please, drop it until some MT6320 device appears.
+No, this is good feedback. Maybe we should prefer an enum like so:
 
-Besides, you also said that you haven't seen any MT6572 w/6320 so far, so it's
-even more unlikely that we'll ever see one.
+enum pwrseq_state {
+	PWRSEQ_POWER_UNKNOWN,
+	PWRSEQ_POWER_ON,
+	PWRSEQ_POWER_OFF
+};
 
-While at it, could you please also add the information about MT6320 cases in
-the commit description?
-Something like "blahblah additional registers blahblah omitted, those seem to
-be used only when the MT6572 is paired with a MT6320 PMIC blahblah" :-)
-
-Cheers,
-Angelo
+Bart
 
