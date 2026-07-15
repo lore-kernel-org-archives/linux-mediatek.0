@@ -4,57 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69430C44501
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 11:24:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DC25C44507
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 11:49:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PxtjKv+2SnHab8NdId+Ikuc9e+vZqDya1Cxu37a/MYI=; b=PfmjLcDL/gnYo7SRNBfL1NMrrK
-	sFOGAUrJ1UwGTY+5mh4NCsjEZDicyN1cycYmXF+GflvvLE26vx8tbtX7S4xzOnXH06yLGjtcs5i8v
-	hXJcP0QOfTvNh96PbsQ87ft+sZgiZ7SyDXXF+rjVGrnkfBY8vytNvabNgA+H9dzIH3/KAQVT7BKWT
-	ykp5JY8Uy39jg5G3/QtKwKMgiLqwGB3EoGsqoe11nHOl3fWRnLu33tG17RhvxcAymhikewg1v2yq2
-	RLhhkldZ1121iuPO+jr23p5yxS5vqTGvw0ko70DiD120VsT4VnzIQ45J8RL9M4QVdRLKBXT12wX0z
-	67oqRp8Q==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=JkG3rqinE1MlyoBhNe7HC5z+Mru7Bjw+6xVEam57Rg8=; b=B62rICRNra6LOGMzkhtUNhESaO
+	R/dBRg35r4s8mafzY/MM3lNnmKAp1swnXDXEgziq+xh0EB9X6Owlzvi4GuibzPEDFO+yOdcbWJ4YH
+	BKyvHSvBUNHRJznGQdTHaQ+iil2/JI3RTMsoJyeiDkBzITUJ7GqG6eybkBOzHBinQFhRnYflJeAzl
+	1aTdxLdc+QaeJ8rda4u8VgXHeuL41H5wCB8w9+k4sz85J1KOKaqjOeU8GcPNH8o/EQDHYck5U/Roi
+	VToES4bWEdiYFUgWFNRVoGN3G/DqL77Kw8UqkntHPn+1fH3IZqhSNaTTBSUUf/lRSN72PYPPVs60m
+	1TJDzJfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjxio-0000000EZAW-0kKx;
-	Wed, 15 Jul 2026 11:24:14 +0000
-Received: from mail-24424.protonmail.ch ([109.224.244.24])
+	id 1wjy7J-0000000EccV-0dwi;
+	Wed, 15 Jul 2026 11:49:33 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjxij-0000000EZ9V-3xEJ
-	for linux-mediatek@lists.infradead.org;
-	Wed, 15 Jul 2026 11:24:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1784114644; x=1784373844;
-	bh=PxtjKv+2SnHab8NdId+Ikuc9e+vZqDya1Cxu37a/MYI=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=AJQ64IFb+wZg1UcO1F8kJDYzxXv2K7/Vt6LShqfFRAPAS6xB2zbrikxMDWkc0KNSr
-	 aUPB7EzLb9R/qQFSqy1NFfLVD7kRkGyV+/iqixtd5i8v3i0v2VEIDFOgKibbo7JaSu
-	 eN5DKzjIIblGt4QMvpedk2Z4t170LWzvAEw49EplrdNEc639qt08UNBqZKDrjTV6HC
-	 nydcx9S7FwIpaTpWnpIQMzipWrjpcE8+Low0fGw1Nmz1oqwghNsGEBNdaYqWxlmzdA
-	 PDC/IX/FikRE8/xSn1xpk7hAsns9Y+0h/LdPfFOZqC3Gt3jLjf61Ka/F7JjPOdUfLD
-	 wK28K7Vzftz3w==
-Date: Wed, 15 Jul 2026 11:24:00 +0000
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-From: Roman Vivchar <rva333@protonmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Flora Fu <flora.fu@mediatek.com>, Alexandre Mergnat <amergnat@baylibre.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 3/3] soc: mediatek: pwrap: add mt6572 support
-Message-ID: <4W-fQkS-fQ5Wxua-0vkMZoLw98eklcnIN_ivaYjpWLIVX7qfCBjHGRJq8xQ59PTTIUNbzdT3EqkCsVqz_smuozi0Q3kq4antn54-rPXdmdI=@protonmail.com>
-In-Reply-To: <3c112acd-5709-4144-9cab-54e0a51eefc9@collabora.com>
-References: <20260714-6572-pwrap-v1-0-d8e5a39cf7ef@protonmail.com> <20260714-6572-pwrap-v1-3-d8e5a39cf7ef@protonmail.com> <3c112acd-5709-4144-9cab-54e0a51eefc9@collabora.com>
-Feedback-ID: 173184497:user:proton
-X-Pm-Message-ID: 6d1eaa28517f782a5a5cc50cea787bbc1eb84bc7
+	id 1wjy7G-0000000Ecaj-1anT;
+	Wed, 15 Jul 2026 11:49:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1784116166;
+	bh=htXBBYCCGNWLqgJjvvXUTq2WTxMjS9aKGJ0yCk36khU=;
+	h=From:To:Cc:Subject:Date:From;
+	b=dypUvvxj+mWvebpf3uOAl9NHcaAf9zVbsY+DdcqpbyNO0xX5Ey9rvP74bfWcvT++u
+	 if0qSIWdWNbQ5oTPBgAzooSD/VSNuYvgLzr7RVqJmZVw2Bu7yF6IxMgmQj6/94dwlL
+	 NCkxkmu6CDZn6hmI0dGy1nLtA8/EYYM52ojklXfwMyQNFBFO4ZWodbFi91oMCUSP4J
+	 qeiYDXeJVf8Jx1gpy1fIL4P/K24qhJJuFYRL6BhEjdVLWeDXuujHSsyJx7IZK6Tdtq
+	 Z6+WysfgKca+F3i4rr41PkwGwMQSrsQ7lhtc5Mifnq/uwph+RZzcHlr9fqjFq8ZX0t
+	 ViXTzAZ/vgcjA==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C146717E00F6;
+	Wed, 15 Jul 2026 13:49:25 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	jitao.shi@mediatek.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com,
+	justin.yeh@mediatek.com,
+	jason-jh.lin@mediatek.com
+Subject: [PATCH v5 00/11] drm/mediatek: Add DSC, WDMA, MT8189/96 DSI support
+Date: Wed, 15 Jul 2026 13:49:05 +0200
+Message-ID: <20260715114916.19690-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260715_042410_145941_B2ADFD25 
-X-CRM114-Status: GOOD (  12.48  )
+X-CRM114-CacheID: sfid-20260715_044930_606241_839ADA48 
+X-CRM114-Status: GOOD (  16.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,64 +88,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+Changes in v5:
+ - Clarified commit description for WDMA binding compatibles addition
+   explaining why Dimensity 1200 is not compatible with MT8173
+ - Added missing mediatek,mt8189-dsi compatible in mtk_drm_drv.c
+ - Added fix in mtk_dsi for failing device_reset_optional() producing
+   a possible use-after-free issue
 
-On Wednesday, July 15th, 2026 at 1:21 PM, AngeloGioacchino Del Regno <angel=
-ogioacchino.delregno@collabora.com> wrote:
+Changes in v4:
+ - WDMA: Delete the .remove() callback from WDMA as not needed anymore
+ - WDMA: Add comments explaining no bus errors will happen if writing
+   to INT_ENABLE, INT_STATUS registers while unpowered or unclocked
+ - Return error in mtk_wdma_wb_atomic_check() error conditions, oops!
+ - DSC: Fix dsc_pad_num calculation (missing parenthesis...)
+ - DSI: Change dsc slice check error to dev_dbg instead to avoid spam
+ - DSI: Correctly cleanup dsi->dsc upon component_add failure
+ - DSI: Make sure the CKTX_CKL_WC register is correctly programmed in
+   DSI w/DSC case
 
-> On 7/14/26 14:42, Roman Vivchar via B4 Relay wrote:
+Changes in v3:
+ - Changed mtk_dsi DSC implementation to use a different DSI_PS
+   setting function for compressed or uncompressed, as the dsc one
+   is way simpler than the regular one and becomes way shorter
+ - DSC: Fixed missing PPS 19 register write
+ - DSI: Anticipated call to devm_pm_runtime_enable() to before
+   registering the DSI Host interface
+ - DSI: Anticipated installing IRQ handler before registering the
+   dsi host interface, which wasn't a problem before, but now it
+   would be one because the interrupt is being enabled when binding!
+ - DSI: Fixed some possible calculation overflows that may happen in
+   MT8189 and MT8196 because of the higher supported resolutions
+ - WDMA: Use devm variant of pm_runtime_enable()
+ - Change WDMA interrupt handler to allow signaling WB complete even
+   if there is no specific vblank callback installed to avoid very
+   long timeouts (in any case, WB is complete for real even if there
+   is no vblank_cb, just a bit useless without, but still complete)
+ - Fixed WDMA register writes as register id was in function signature
+   for mtk_wdma_ddp_write_dst_addr() but the function itself never
+   used it in DISP_REG_WDMA_DST_ADDRX() macro
 
-...
-=20
-> >
-> > +static const struct pmic_wrapper_type pwrap_mt6572 =3D {
-> > +=09.regs =3D mt6572_regs,
->=20
-> MT6572 only has PWRAP_OP_TYPE, PWRAP_MSB_FIRST, PWRAP_GPS_STA additional =
-registers
-> compared to MT2701, and the three are currently unused.
+Changes in v2:
+ - Rebased on next-20260706
 
-GPS_STA is indeed unused. As for others, downstream kernel includes mt6320 =
-path.
+This series adds support for:
+ - Display Stream Compression (DSC) for DSI and DisplayPort for both
+   legacy (8188/92/95 and others) and for Kompanio Ultra MT8196 SoCs
+ - Write DMA (WDMA) Engine (for legacy only at this time) as a step
+   to enable Writeback support (coming later with a restructuring of
+   the entire mediatek-drm driver)
+ - Newer MIPI DSI IP revisions, found in MT8189 and MT8196 SoCs
 
-//###############################
-//Enable 6320 option
-//###############################
-#ifdef SLV_6320
-WRAP_WR32(PMIC_WRAP_OP_TYPE ,OP_TYPE_CSL);
-WRAP_WR32(PMIC_WRAP_MSB_FIRST , LSB);
-#endif
 
-Though I haven't seen any mt6572 device with the mt6320 so far, as well as
-pwrap_init_chip_select_ext is configured for the mt6323.
+AngeloGioacchino Del Regno (11):
+  dt-bindings: display: mediatek: dsc: Add MT8196 compatible
+  drm/mediatek: Implement Display Stream Compression support
+  dt-bindings: display: mediatek: dsi: Document MT8189 and MT8196
+  drm/mediatek: mtk_dsi: Cleanup encoder if reset fails during bind
+  drm/mediatek: mtk_dsi: Enable interrupt at component bind time
+  drm/mediatek: mtk_dsi: Transfer register offsets to per-SoC const
+  drm/mediatek: mtk_dsi: Add support for MT8189
+  drm/mediatek: mtk_dsi: Add support for MT8196
+  drm/mediatek: mtk_dsi: Enable PM Runtime on probe
+  dt-bindings: display: mediatek: wdma: Add compatibles for more SoCs
+  drm/mediatek: Add Write DMA (WDMA) Engine for Writeback support
 
-> Instead of adding yet one more huge array for 3 more registers, since I'm=
- mostly
-> sure that those will never be used anyway (happy if you prove me wrong!),=
- you can
-> at this point just use mt2701_regs for mt6572.
->=20
-> Perhaps, add a comment saying that MT6572 does indeed have those addition=
-al regs
-> but were omitted because currently unused.
->=20
-> So, something like
->=20
-> /*
->   * MT6572 has additional registers OP_TYPE (0x10), MSB_FIRST (0x14), GPS=
-_STA (0x40)
->   * which were omitted as they're currently unused in this driver.
->   * Apart from that, the register map matches the one from MT2701.
->   */
-> static const struct pmic_wrapper_type pwrap_mt6572 =3D {
-> =09.regs =3D mt2701_regs,
->
+ .../display/mediatek/mediatek,dsc.yaml        |   4 +-
+ .../display/mediatek/mediatek,dsi.yaml        |   2 +
+ .../display/mediatek/mediatek,wdma.yaml       |   5 +
+ drivers/gpu/drm/mediatek/Makefile             |   2 +
+ drivers/gpu/drm/mediatek/mtk_crtc.c           |  21 +
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c       |  64 +-
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h       |   9 +
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  29 +
+ drivers/gpu/drm/mediatek/mtk_disp_dsc.c       | 455 ++++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_wdma.c      | 628 ++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  10 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   2 +
+ drivers/gpu/drm/mediatek/mtk_dsi.c            | 801 ++++++++++++++----
+ 13 files changed, 1842 insertions(+), 190 deletions(-)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_dsc.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_wdma.c
 
-I'm not a big fan of dead code, but at some point the mt6572+mt6320 may exi=
-st.
-Would you suggest keeping mt6572 array or drop it until some mt6320
-device appears?
+-- 
+2.54.0
 
-Best regards,
-Roman
 
