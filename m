@@ -4,53 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3A54C44508
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC851C4450E
 	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 11:21:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/IM7jFgWDB5um+8imm8nQeI3msVAkY93k29B0Q5JTfY=; b=gNuYG1Y/Ltcm2F7eGCEVF/3/cY
-	ESCeBw1ESZtHohJY3ceM7tbw0rYDlUCQHg3N6w5wpUTjqmds2t0CFu1pbwyHylKcRMPm33LbiNbRV
-	Dx+KoKlMwhspjM1Ckhm4VLuMvuxbVlQ9CXxBH44jByR+Wl/nko4Co0KceTJ14WSjvM5u64sU7hKuM
-	BZKdeUi2HMVtaU3NO2VksbJlzryD4325TIPKBVSX94CWiOdemvQ4WZ9CO3FvtQq1d68TIxLKFcEkZ
-	t5PMwjseSJxiwktosMGH9cAU9U4+v+hOyiqwWTQ263MS3pA7nY4zWaOz+ICyx98tvazd6/jU7FMN6
-	BIGcN70g==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FH1zPI4XK0KFGvrVm9AbaQMRRKWSN4Ihv2jsnFAkNts=; b=oiYt8pRUA8VKHv4ZkysNXIMfsE
+	DB9p++TGBgru56mfqodu4FIynTR6pFBHgY+YcmfeNj0uk4QLBfK25yGdWTxfh18YmB+EEBQSc776G
+	FhjjDOYCUhl3CREQVe43prmlEFV6XBB5Yut36Cju58vUQFSrsrpuIRf93JBkQcmcdkbam0PTqfSuy
+	X0g5qB4arVy6o6sJn12zzdYEhfh+wIF5vUfpgANh5ny18PAHr56LExESvkTbK82107b3qEFVBrII+
+	1jbnMt2eF5lqnJiaBCZT+qexFoZ+9eHiz4Bg4Whu0JxfARuJZ5ZtPyzj/+enZA0o/Gf+470ocHqaa
+	EvrtEwDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjxfg-0000000EYZE-2W9b;
-	Wed, 15 Jul 2026 11:21:00 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wjxfi-0000000EYab-0t4r;
+	Wed, 15 Jul 2026 11:21:02 +0000
+Received: from [216.200.240.184] (helo=mailgw01.mediatek.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wjxfd-0000000EYWb-2Z1W
+	id 1wjxfd-0000000EYWX-47Zi
 	for linux-mediatek@lists.infradead.org;
-	Wed, 15 Jul 2026 11:20:58 +0000
-X-UUID: 3d0b3eda803f11f1acbe4559397dec65-20260715
+	Wed, 15 Jul 2026 11:20:59 +0000
+X-UUID: 3d548d10803f11f1afed4741b24580c9-20260715
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=/IM7jFgWDB5um+8imm8nQeI3msVAkY93k29B0Q5JTfY=;
-	b=L2nnAhZKMuRYTsfWml19Lnzx89+SK9oIisFP9e/UqdyFADu38r7SOOLgStQ9mGKPUF0KGD8rmh2beTnzCAY6s2mprJ3HdeJqQO9hbO01UajvmXZsxkpRVKcCfPBVwk/qAhflL0eAfKBbdZt46ViL/b5/YPhY/c4TtIPdM5EQoew=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FH1zPI4XK0KFGvrVm9AbaQMRRKWSN4Ihv2jsnFAkNts=;
+	b=nVbN+k/QWXsIY8GAegbxPv1nr2tYkv+bGLTV1FmxPjmracU8kVK8FCKFsqNdQ+wwhgNZPKExrpK5gKTOU5f73GO4LYgowCFkn6gfLCP0Xm8wvT5Sj+/wdGvQIFgGRfHOu2TXJDzcAfLGkOGKYxPU0UyXdVhC+l2qrki8ZZF745Y=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.17,REQID:9e92b08d-f64c-4bea-9822-bb508ff5f2b4,IP:0,U
+X-CID-O-INFO: VERSION:1.3.17,REQID:1291ca9f-a906-4bc0-b9f2-df2045df4d22,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:d497b38,CLOUDID:06c8b937-7759-43a9-ae06-f4df9d53bea1,B
-	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|50|
-	99|100|102|156|200|213,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:
-	nil,BEC:-1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC
-	:0
+X-CID-META: VersionHash:d497b38,CLOUDID:85f42619-ab14-4403-9336-76696324c5a8,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
+	0|99|200|213,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:
+	0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 3d0b3eda803f11f1acbe4559397dec65-20260715
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+X-UUID: 3d548d10803f11f1afed4741b24580c9-20260715
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
 	(envelope-from <chris.lu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1931071587; Wed, 15 Jul 2026 04:20:52 -0700
+	with ESMTP id 2053176129; Wed, 15 Jul 2026 04:20:52 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.2562.29; Wed, 15 Jul 2026 19:20:49 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
@@ -64,16 +63,18 @@ CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
 	<pmenzel@molgen.mpg.de>, linux-bluetooth <linux-bluetooth@vger.kernel.org>,
 	linux-kernel <linux-kernel@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v11 0/7] Bluetooth: btmtk: Add MT7928 support
-Date: Wed, 15 Jul 2026 19:20:40 +0800
-Message-ID: <20260715112048.1448868-1-chris.lu@mediatek.com>
+Subject: [PATCH v11 3/7] Bluetooth: btmtk: Improve BT firmware logging
+Date: Wed, 15 Jul 2026 19:20:43 +0800
+Message-ID: <20260715112048.1448868-4-chris.lu@mediatek.com>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20260715112048.1448868-1-chris.lu@mediatek.com>
+References: <20260715112048.1448868-1-chris.lu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260715_042057_662712_54302F7F 
-X-CRM114-Status: GOOD (  14.75  )
+X-CRM114-CacheID: sfid-20260715_042058_072928_92C6F16A 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,134 +89,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch series adds support for MT7928 (device ID 0x7935) to the
-btmtk driver, which requires a new two-stage firmware loading process
-with CBMCU firmware.
+Improve firmware loading log messages to provide more useful information:
 
-The series is organized to fix existing issues first, then improve code
-quality, and finally add new functionality. Patches have been reordered
-in v11 to ensure each commit is independently compilable and functional
-(bisectable).
+- Add firmware filename before loading to help identify which file
+  is being loaded
+- Display chip ID (dev_id) as HW version instead of firmware's hwver
+  field, which provides more meaningful hardware identification
+- Use %.16s format specifier for hdr->datetime field to prevent
+  potential buffer over-read, as the field is a 16-byte array that
+  may not be null-terminated
 
-Patch 1 fixes a DMA out-of-bounds access in btmtksdio_tx_packet() where
-round_up() alignment causes DMA to read beyond the skb buffer, potentially
-leaking kernel memory or triggering IOMMU faults. Also fixes a use-after-free
-bug where sdio_hdr pointer becomes invalid after pskb_expand_head() reallocation.
+log output with MT7922
+[  212.878783] Bluetooth: hci1: Loading BT firmware: mediatek/BT_RAM_CODE_MT7922_1_1_hdr.bin
+[  212.889614] Bluetooth: hci1: BT HW ver: 0x7922, SW ver: 0x008a, Build Time: 20260224103448
+[  216.048877] Bluetooth: hci1: Device setup in 3096530 usecs
+[  216.048890] Bluetooth: hci1: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
+[  216.114179] Bluetooth: hci1: AOSP extensions version v1.00
+[  216.114220] Bluetooth: hci1: AOSP quality report is supported
+[  216.116782] Bluetooth: MGMT ver 1.23
 
-Patch 2 fixes a pre-existing security issue in btmtk_setup_firmware_79xx()
-by adding comprehensive firmware size validation to prevent out-of-bounds
-memory access with truncated or malicious firmware files.
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+Assisted-by: Claude:Sonnet-4.5
+---
+ drivers/bluetooth/btmtk.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-Patch 3 improves BT firmware logging to provide more useful information
-for debugging: adds firmware filename before loading, displays chip ID
-as HW version instead of firmware's hwver field, and uses %.16s format
-specifier to prevent buffer over-read of the 16-byte datetime field.
-
-Patch 4 fixes a regression introduced in commit 28b7c5a6db74
-("Bluetooth: btmtk: Add MT6639 (MT7927) Bluetooth support") where
-SDIO devices would incorrectly log "BT HW ver: 0x0000" due to
-hardcoded dev_id=0. This also prevents potential MT6639 hardware hangs.
-
-Patch 5 fixes a pre-existing bug in btmtksdio_setup() where
-btmtk_fw_get_filename() generates the correct firmware path but is
-immediately overwritten by snprintf() with a generic legacy format,
-causing newer chips to request incorrect filenames. This patch depends
-on Patch 4's dev_id fix.
-
-Patch 6 refactors existing firmware download code by replacing magic
-numbers with a descriptive BTMTK_WMT_PKT_* enum, making the packet
-sequencing logic clearer.
-
-Patch 7 implements MT7928 firmware download flow, which requires loading
-CBMCU firmware before Bluetooth firmware. The CBMCU firmware uses a
-two-phase download sequence: Phase 1 downloads the section containing
-global descriptor and signature data, Phase 2 downloads the remaining
-firmware sections.
-
-Tested on MT7928 hardware with successful firmware loading and
-Bluetooth functionality verification.
-
-Changes in v11:
-- Patch 1: Fix use-after-free vulnerability in btmtksdio_tx_packet()
-  After pskb_expand_head() reallocates the skb buffer, sdio_hdr pointer
-  becomes invalid. Fix by reassigning sdio_hdr after reallocation.
-  Reported by AI review (Sashiko/Gemini).
-- Reorder patches for bisectability:
-  * Move Patch 6->3 (firmware logging improvement) to prevent introducing
-    buffer over-read risk in intermediate commits
-  * Move Patch 3->5 and Patch 4->3 to ensure dev_id fix is applied before
-    removing redundant filename override, preventing potential MT6639 hangs
-
-Changes in v10:
-- Add Patch 1 to fix DMA out-of-bounds access in btmtksdio_tx_packet()
-  Discovered during v9 review - round_up() alignment can cause DMA to read
-  beyond skb buffer, potentially leaking kernel memory or triggering IOMMU
-  faults. Fix by expanding skb tailroom and zero-filling padding.
-
-Changes in v9:
-- Reorder patches to group SDIO fixes together (Patch 3-4)
-- Patch 2 (was Patch 1 in v8): Fix firmware size validation in
-  btmtk_setup_firmware_79xx()
-- Patch 3 (was Patch 1, new in v9): Fix firmware filename override in
-  btmtksdio_setup() where btmtk_fw_get_filename() result was incorrectly
-  overwritten by snprintf()
-- Patch 4 (was Patch 2 in v8): Fix SDIO device logging regression
-  SDIO devices were passing hardcoded 0, causing "BT HW ver: 0x0000" log
-
-Changes in v8:
-- Add Patch 2 to fix firmware size validation in btmtk_setup_firmware_79xx()
-- Add Patch 3 to fix SDIO device logging regression
-  SDIO devices were passing hardcoded 0, causing "BT HW ver: 0x0000" log
-
-Changes in v7:
-- Patch 6 (was Patch 2): Extend magic number refactoring to
-  btmtk_setup_firmware() in addition to btmtk_setup_firmware_79xx() for
-  consistency
-- Patch 3 (was Patch 2): Fix potential buffer over-read by
-  using %.16s format specifier for hdr->datetime which is a 16-byte
-  array that may not be null-terminated
-- Patch 7 (was Patch 3): Apply same %.16s fix to CBMCU firmware logging
-
-Changes in v6:
-- Fix timeout handling in btmtk_cbmcu_patch_status() to return -ETIMEDOUT
-  instead of success when polling exhausts retry count
-- Add integer overflow protection in btmtk_load_cbmcu_firmware() using
-  check_mul_overflow() and check_add_overflow()
-
-Changes in v5:
-- Split into three patches: refactoring, logging improvement, and
-  new feature
-- Add Patch 3 to improve BT firmware logging independently
-- Apply same logging improvements to CBMCU firmware in Patch 7
-
-Changes in v4:
-- Split into two patches: refactoring and new feature
-- Add BTMTK_WMT_PKT_* enum to improve code readability
-- Replace magic numbers (0xF0, 0xF1) with descriptive macros
-
-Changes in v3:
-- Add firmware size validation with bounds checking
-- Improve error messages with context information
-
-Changes in v2:
-- Simplified enum usage by consolidating status definitions
-
-Chris Lu (7):
-  Bluetooth: btmtksdio: Fix DMA out-of-bounds access in TX path
-  Bluetooth: btmtk: Add firmware size validation in
-    btmtk_setup_firmware_79xx()
-  Bluetooth: btmtk: Improve BT firmware logging
-  Bluetooth: btmtksdio: Pass hardware dev_id to mt79xx_setup()
-  Bluetooth: btmtksdio: Remove redundant firmware filename override
-  Bluetooth: btmtk: Replace magic numbers with WMT packet flag enum
-  Bluetooth: btmtk: Add MT7928 support
-
- drivers/bluetooth/btmtk.c     | 427 +++++++++++++++++++++++++++++++++-
- drivers/bluetooth/btmtk.h     |   9 +
- drivers/bluetooth/btmtksdio.c |  42 +++-
- 3 files changed, 459 insertions(+), 19 deletions(-)
-
---
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 3491060b3ae9..595e346accc3 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -148,6 +148,8 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
+ 	size_t expected_size;
+ 	u8 cmd[64];
+ 
++	bt_dev_info(hdev, "Loading BT firmware: %s", fwname);
++
+ 	err = request_firmware(&fw, fwname, &hdev->dev);
+ 	if (err < 0) {
+ 		bt_dev_err(hdev, "Failed to load firmware file (%d)", err);
+@@ -188,8 +190,8 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
+ 		goto err_release_fw;
+ 	}
+ 
+-	bt_dev_info(hdev, "HW/SW Version: 0x%04x%04x, Build Time: %s",
+-		    le16_to_cpu(hdr->hwver), le16_to_cpu(hdr->swver), hdr->datetime);
++	bt_dev_info(hdev, "BT HW ver: 0x%04x, SW ver: 0x%04x, Build Time: %.16s",
++		    dev_id & 0xffff, le16_to_cpu(hdr->swver), hdr->datetime);
+ 
+ 	for (i = 0; i < section_num; i++) {
+ 		first_block = 1;
+-- 
 2.45.2
 
 
