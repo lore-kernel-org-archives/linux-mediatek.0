@@ -4,79 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB7A6C4450E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 13:54:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DB15C44508
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jul 2026 13:56:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Fo3iB3JKtHwhmQCnW2/IfjfYmkTAV78D7jl5fOZ3yH4=; b=GD9fIq/98WKDeVKa+zGFOv5NaX
-	RJCS17eoqucmWP/FOp+/I5xaUSJO7Hvu4K2H8z+m2kv/szic7ZZhM0XxxCrzc1oXGgC01ArVyt0B+
-	Ix4+Ifotxi/SXJ7XOW24xAvwLH5+qkaPpo+689fgFQOEPAr48lib4pNzzyRaXkNxwU9y1shBsUooP
-	m5mdzq7uq14TgUg7qxu9zJtwVFhU4Fm8jOIWjFJcwGIVp+qqErHSifyfK7j3FkCTmGXaXFeeHIw96
-	glHLeZYBr3ZVRviUFC9sX6WyAqs24hAJ95J8wh6NlvxJJNTYYdyO1OISDaCnjJmd2gkG60PM7+w9M
-	gJIzjQqg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8kaSv4wtGCrlgRKnb7+XoZM8S1WHPmiPgEfak3MCbz8=; b=J7QEGVtDZisK1xvIVWVUqi7JXQ
+	zGLoPTB9fkd7Ji17p7v2BcPJQqa7zQz6sbdxxyM+fkoEWlDmZdPU9G2ogHhEQ0aRLl/i337rBzQSL
+	/zEx1QdTvCEg7fYwr6e6eHr9+LVRVhC39E1cCVdg9DEPF1Z/c7BRau3RCItOnvf61u5Ouv8pLMAu7
+	k4a8x0hjmVQFRIS+Y/d3DUyLymdZy4tHoysVo5rmpix5ryL78Y4iKS3/vx4iJjl/M1Yf1qAVQKL9o
+	e2snXkUwLoVK4S8ya60oMzPehD7Q/VnQo2/LUqyuSl2y9Eeyykq6eLRAlOEr/oUNyuXvLtKy0rsvV
+	7HQx1dlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wk03t-0000000F0NY-3edB;
-	Wed, 15 Jul 2026 13:54:09 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wk06X-0000000F1AM-046s;
+	Wed, 15 Jul 2026 13:56:53 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wk03r-0000000F0MF-3rWE;
-	Wed, 15 Jul 2026 13:54:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 89ADE43660;
-	Wed, 15 Jul 2026 13:54:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 61BACC19425;
-	Wed, 15 Jul 2026 13:54:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1784123647;
-	bh=SndKUrIl65Q0YHdMMBjkX5YO+fLIisdvVTIzp4QFMcA=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=BR5Wo6ZiKp7S8y5HOpKPJvYeTGChxEX1Y7GKLZygA1GthyCVs8eNpo5zzaHwRPRHS
-	 Zby4xb69AlUmkSW5XxQFgNduGi+ohIFGqEOZXGO8zacL0M3KLFmpy+qe3X6WB5zg9c
-	 6IfkyT+3og52omwTF0BfS6EODr3nRUMLNksXqHF47fAQhycot+uf8/rmhw3zXBg+Rm
-	 n3TSB+gx2Sld614vuVYF4svE5Nast1rfhb11LksjvSYJhqiPt0TrRlLb7TNIF7f6WL
-	 Vymi/IIu7azw4nwGFX+QHIplWBllQypQ/SF21qi1rGksTRiZMTPTq2Ovvz6E0dgZBR
-	 pgfoX/BnNHQEw==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E872C44508;
-	Wed, 15 Jul 2026 13:54:07 +0000 (UTC)
-From: Nikolai Burov via B4 Relay <devnull+nikolai.burov.jolla.com@kernel.org>
-Subject: [PATCH v2 0/3] pmdomain: mediatek: Add MT6858 support
-Date: Wed, 15 Jul 2026 16:54:04 +0300
-Message-Id: <20260715-mt6858-pmdomain-v2-0-6293e87fc093@jolla.com>
+	id 1wk06U-0000000F19P-3l6l
+	for linux-mediatek@lists.infradead.org;
+	Wed, 15 Jul 2026 13:56:52 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-493d92b7db3so16728535e9.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 15 Jul 2026 06:56:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1784123809; x=1784728609; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=8kaSv4wtGCrlgRKnb7+XoZM8S1WHPmiPgEfak3MCbz8=;
+        b=NXkurFVQkBi41I2ZHrGl/vvoqlDozDGFkrPmhSp3QCCPCm7cxXZau+Em2u7Sc8+0Kk
+         r4xnYLBGNv1DT6o109kHUyjd9eomEv+liUCjmSRFaD3DpLAkHqkjCxXd9k9gyxxaVswB
+         GbaUIp4f0d8zqeRf3l5iIEV4iWybvNYG4ps+5X6sKLpNClTcI3TIMqqeVNYAMACxmLZl
+         Y2iyArz7wPlOIcGoPaslAvG14eJwThgLE7z24RKBwArTve2TBR1SxsN5eWRSNCJ+Kk6u
+         OecPOXmySGmWnEuX7eGlSLs79/B9xlmjHgUp3uZd4bt+kbq5XmbGkK0dNg3JD2HAz3C7
+         w9pg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1784123809; x=1784728609;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=8kaSv4wtGCrlgRKnb7+XoZM8S1WHPmiPgEfak3MCbz8=;
+        b=BwuBw0pdVCLcwUg5Z34qO9I6k9gbk9/KWhQCzQC6evs66G2EfPccwpfy5NpUrIOM0h
+         hZXsc6rEicN53WwEZX5m+onq8P6yiLSfGGEmuPIVAcx/qanj3VVWEDhyQ7b5V44snkYM
+         K7ty8BXaSRCxGBmx7ICKNSUm83zrnf6/vWbwuHl7iFp/mZFLsN73zqlc3pbcs7eue6hX
+         gDKhl25WrIAdkRIQv9y5FWwLb7rvxA9YQk3h/fw5D66OlFJWfkq1MZvG/cy0A9ALT51H
+         ACJTZH9XwyFitkDlVXRNPwUcEoquEYiSAzOSFTHlrKtKCYc0oCSlZHE50u7ACJ46c7h1
+         MpVA==
+X-Forwarded-Encrypted: i=1; AHgh+RoHbE7XSnuUdpRm4SdRZIp/uQbdD18ZLgYqfcCU/TK1LRVo9cFin1ezVhAyYTD5UXXK7VROMuLdqCKGgW3/Vw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywh5fW8/ITjp3eJ94NUGyK/hDa7nXy20a19vUzS1QPxlL3NCf4g
+	TYhrrS0CFcMQ70XFz/VxnRUlfQm8ZtbexfbyL1MjTjpPcOvsoX/EDh/tSUSyozcJ
+X-Gm-Gg: AfdE7clyM5L7/KnX5UOUI4x0Okmfsu/e+vWibdvyX0OzXYVpITZZCMj+YrQnmLAP4ce
+	GXY3U3ioU0I5mz1s73SnMNIQtetMk5fpjYCfY2ccFB0Feka2uSsLb9k/Xjru7tTyVQox9HlEP7R
+	arNuzDM7TqcoaGuSHFHWfB+kXEQ2RKQ1YRCAImNrAaW8yceqKixI/sI9Afr/ZM+j/uLxUBm6qyH
+	YnriO24t0BowPlpo2TZi9+Xwgk0dfhU3EOn2mJyCAKrYBzk5cnlIWSRjHi0WBVoSr75c240J75u
+	wB4FUB1CtJtlvSVNWiih7+M/hctE/71NuWZj3LpZbCW4mWcLDfJzwqajPqfppZ8VqAE0bF64dMY
+	q61sxgHMkHd+8SBk0kXNt112jrsg0lp828NDf98Lu2HqDDz+pCStdWW3ZmdkBFjQD+tsb/6zkgU
+	TVFH+lDCNs
+X-Received: by 2002:a05:600c:e557:20b0:493:f822:ac5e with SMTP id 5b1f17b1804b1-493f8818052mr137073085e9.23.1784123808894;
+        Wed, 15 Jul 2026 06:56:48 -0700 (PDT)
+Received: from owl5 ([2001:861:3201:3d10:e682:163f:4878:db7e])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4950a32a2casm223373325e9.12.2026.07.15.06.56.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 15 Jul 2026 06:56:48 -0700 (PDT)
+Date: Wed, 15 Jul 2026 15:56:47 +0200
+From: Gary Bisson <bisson.gary@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] arm64: defconfig: Enable MT7921S support
+Message-ID: <aleRnyxN-xt82lKf@owl5>
+References: <20260310-mtkdefconfig-v1-1-717eb3e6eea7@gmail.com>
+ <177850089272.133673.2886390087848759794.b4-ty@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAPyQV2oC/2WNwQ6CMBAFf4Xs2Zq2gQKe+A/DgZZFllBKWiQaw
- r9bMJ48TjJv3gYBPWGAW7KBx5UCuSmCvCRg+mZ6IKM2MkguFc+FZHZRRVaw2bbONjQxLXSaKVM
- qlWcQV7PHjl5n8V5/OTz1gGY5MofRU1icf5+Xqzi8Xz39q6+CcZZ2vNRaF1IirwY3js3VOAv1v
- u8fY6KQ6MAAAAA=
-X-Change-ID: 20260712-mt6858-pmdomain-b1b456c96675
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Ulf Hansson <ulfh@kernel.org>
-Cc: Matthias Brugger <mbrugger@suse.com>, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, 
- Nikolai Burov <nikolai.burov@jolla.com>, 
- Nikolai Burov <nikolai.burov+review@abscue.de>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1784123646; l=2497;
- i=nikolai.burov@jolla.com; s=20260707; h=from:subject:message-id;
- bh=SndKUrIl65Q0YHdMMBjkX5YO+fLIisdvVTIzp4QFMcA=;
- b=GP/gTYWvBC55nTBI3qp/3X3jxAhhSE5tHraNPRtWw+Pvpd6bpDHywCmKpXmxFtlc5RfHtQU3j
- ZJbIYEtaSdLAaFVNRT2BydqF5rKQehTqAISiXoONr/HBuL4TFuHF+2w
-X-Developer-Key: i=nikolai.burov@jolla.com; a=ed25519;
- pk=yzpa+PD+ovHUFMIOBA9o2QqGwI110jM6hdGHLc7jtoQ=
-X-Endpoint-Received: by B4 Relay for nikolai.burov@jolla.com/20260707 with
- auth_id=859
-X-Original-From: Nikolai Burov <nikolai.burov@jolla.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <177850089272.133673.2886390087848759794.b4-ty@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260715_065650_943887_2B3BA2D7 
+X-CRM114-Status: GOOD (  11.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,72 +98,29 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: nikolai.burov@jolla.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add power domain driver support for the MediaTek Dimensity 7100 (MT6858)
-SoC. On this SoC, there are some new subsystem-specific bus protection
-blocks, which are listed here in ascending address order:
+Hi Angelo,
 
-- IMG_SUB0 at 0x1502f000
-- CAM_SUB1 at 0x1a00c000
-- CAM_SUB0 at 0x1a00d000
-- IPE_SUB0 at 0x1b00e000
+On Mon, May 11, 2026 at 02:01:32PM +0200, AngeloGioacchino Del Regno wrote:
+> On Tue, 10 Mar 2026 16:52:12 +0100, Gary Bisson wrote:
+> > Enable MT7921S which is the SDIO variant of the MT7921, also called
+> > Filogic 320 [1].
+> > This driver is now used by Tungsten510/700 platforms which are now
+> > included upstream.
+> > 
+> > [1] https://www.mediatek.com/products/broadband-wifi/mediatek-filogic-320
+> > 
+> > [...]
+> 
+> Applied to v7.1-next/defconfig, thanks!
+> 
+> [1/1] arm64: defconfig: Enable MT7921S support
+>       commit: f86e8870547299cb6ee5b8c29d7e35d942b4bc39
 
-The VLPCFG bus configuration registers at 0x1c00c000 are also new.
+Any idea when this one will be picked up?
 
-Additionally, implement the SMC-based power sequence required for
-enabling the modem power domain on this SoC.
-
-Signed-off-by: Nikolai Burov <nikolai.burov@jolla.com>
----
-Changes in v2:
-- Rebase
-- MTK_SCPD_MODEM_SECURE -> MTK_SCPD_MODEM_SECURE_PWRSEQ
-- Convert SMC command enum to defines
-- Based on the new SIMPLE_PWRSEQ changes, skip the sram_pdn stage for
-  MODEM_SECURE_PWRSEQ too since it wasn't intended to have an effect
-- Clarify that the SMC call also handles bus protection
-- Simply if/else code based on the assumption *_PWRSEQ are mutually
-  exclusive
-- Add comment explaining that PWR_STA_2ND is skipped for modem
-  (mentioned in Sashiko report)
-- Link to v1: https://patch.msgid.link/20260714-mt6858-pmdomain-v1-0-4f09bbb822e0@jolla.com
-
-To: Rob Herring <robh@kernel.org>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>
-To: Conor Dooley <conor+dt@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Ulf Hansson <ulfh@kernel.org>
-Cc: Matthias Brugger <mbrugger@suse.com>
-Cc: devicetree@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-pm@vger.kernel.org
-
----
-Nikolai Burov (3):
-      dt-bindings: power: Add MediaTek MT6858 power domain controller
-      pmdomain: mediatek: Add support for secure modem power domain control
-      pmdomain: mediatek: Add support for MT6858 SoC
-
- .../bindings/power/mediatek,power-controller.yaml  |  21 +-
- drivers/pmdomain/mediatek/mt6858-pm-domains.h      | 466 +++++++++++++++++++++
- drivers/pmdomain/mediatek/mtk-pm-domains.c         |  52 ++-
- drivers/pmdomain/mediatek/mtk-pm-domains.h         |   6 +
- include/dt-bindings/power/mediatek,mt6858-power.h  |  23 +
- include/linux/soc/mediatek/mtk_sip_svc.h           |   3 +
- 6 files changed, 566 insertions(+), 5 deletions(-)
----
-base-commit: cc2b5f627e8ccbae1188ef2d8be3e451d7f933a5
-change-id: 20260712-mt6858-pmdomain-b1b456c96675
-
-Best regards,
---  
-Nikolai Burov <nikolai.burov@jolla.com>
-
-
+Thanks,
+Gary
 
