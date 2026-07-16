@@ -4,70 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB032C4450E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 11:31:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0DA3C4450A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 11:42:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=XKhSlt0qsyEnD/G6yVUTv/NpNy9ZRLC+ZACUq8SGN4o=; b=kzllwqIqF5AytXe+qPCBhv33SX
-	WT4D89oNw+4ll1qaOZHtFcLKk3mL5kBp+65++cCm5barda14dznU5pb/HR3zQIoXcw1THR3m9dkEq
-	w+jMXpd0OpY09+tSWUYQszuFokzRu1bgZGX5agOYNUxB6s8eRSoQXe0rCp/ZnQU3s0vWzTY0vIkx7
-	0YkiEq4jFh1N7qHmTvur4GGPBJi3uv/2BI0Qo88eFTsW3UklVrYBdLkUsvvbO1uF0jE+ZIdoxdIWV
-	rJPXqh5YLAyk5a3n54aJftoXUIiiQhpV3CttRWchbb8LlFZw1t3+GsMfNtePZV2yh87o/xUHwpHU0
-	Tr/x5aWw==;
+	bh=BcE4MP3DMzpQ02s3zmeid9c8qa5MwekrIFi5BEUqWKE=; b=U0pVqzlrdEfj0C7Uzajy4GqxXf
+	Nm2ge479auf0pQ/vtMvzmjh4sR77U1A+NWmj8dip9nYJDne3HB0gKRdqeTsVrcLAoO/asLo7xUV6W
+	qSTuRTv0mvVq+oLjLf9Yy+xrofD7LUhfsouwUbMbUJPG6v32/8B6vVBlNwmQ5RfOrbmzrHgXL5MtA
+	jaLmS82BZweK8u155bQVMvDkY8u2Sbtr9WUChp3catQDTbsUvzh8JFfSVtgkBiSuveoczAs5i0XPR
+	TJiZvZtqAvmY0g8GqF7x1GZ10OT1QVNS6XrK/6S+4NfWJvZSt5djswIeDWViV/IP19bZE4bWqffzz
+	hA1Usoqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkKJl-0000000H8Up-2TIc;
-	Thu, 16 Jul 2026 11:31:53 +0000
+	id 1wkKUU-0000000HAG0-26uU;
+	Thu, 16 Jul 2026 11:42:58 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkKJh-0000000H8Ro-2nkU;
-	Thu, 16 Jul 2026 11:31:51 +0000
+	id 1wkKUQ-0000000HAED-0yfB;
+	Thu, 16 Jul 2026 11:42:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784201506;
-	bh=WM02DUzdy4HabgJXR75yvultM4DgXC9/b7Dv8gui5Ks=;
+	s=mail; t=1784202170;
+	bh=mDnKGAlL+LyE5R2P+uLw2Xcb/nVKH7esWgNaCjxqEXE=;
 	h=From:To:Cc:Subject:Date:From;
-	b=KJiRJ4JnoUuVCKAe8iph6AMfb4k42Y2/Tr17o3sLhSsjqvpZ3hVJG7p0m0kRmPccO
-	 1yJbo8RVSnIuw6RX5WAwuXt5NUo7DENh/HWbOnRTkrmeit5ekPofCNMwatnkLCa5L9
-	 QfMdfhFB+b7Eelg4vq2lWbssMKRupp2RDz4ZKs/jYT1ryagqKAPMZAZg+CR03fOTCQ
-	 hikKUkeIx6VbNX/2ZWJqdsLnNxKSTuEitcZJFgigQHSEWrtZkUyS5sSdkoriUAiGu9
-	 5PjuZKE5CeOytemEQQBjV+KI3MJsQhfvtlHKzg7ply88D7opevfawK5YZATPNDVJ+3
-	 eSK2CziPIye/A==
+	b=H5luRTYKA8DwTVT/KRQElee5w8BfA74MIde6ben8ccwdFKeqAuzIkjhsu6yILAFI7
+	 lInog16e69UDbCH1+uzEUBq2ujGgZF3REytxZwsvYFNbLP2bEoIFN9ZS6Uc3NY86Xj
+	 6wzD11eUVHrlHgUKyyhmNMTg+mi6/uWkOOIf2bwkxpYF6LKW439pHQiznRFlhyccYK
+	 J7rwET4l+FZoMhEpGZcd8jcxzaRZgoYDRbgPqz13YdAIUnfGDhWJGIKxItOsktrWgZ
+	 quM/qj383iDR3/aKyv/gz6n2Ynb5yuAauOl3WxN75/cCuG8iLDbVnvXZ549KS11wPE
+	 SHJlGJjQXT92Q==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9FC8E17E0177;
-	Thu, 16 Jul 2026 13:31:45 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EAE7817E019E;
+	Thu, 16 Jul 2026 13:42:49 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: linux-pci@vger.kernel.org
-Cc: ryder.lee@mediatek.com,
-	lpieralisi@kernel.org,
-	kwilczynski@kernel.org,
-	mani@kernel.org,
-	robh@kernel.org,
-	bhelgaas@google.com,
-	matthias.bgg@gmail.com,
+To: ulfh@kernel.org
+Cc: matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	bartosz.golaszewski@oss.qualcomm.com,
-	wenst@chromium.org,
-	linux-mediatek@lists.infradead.org,
+	nfraprado@collabora.com,
+	macpaul.lin@mediatek.com,
+	irving-ch.lin@mediatek.com,
+	linux-pm@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH] PCI: mediatek-gen3: Initialize all resources before installing ISR
-Date: Thu, 16 Jul 2026 13:31:42 +0200
-Message-ID: <20260716113142.46742-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] pmdomains: mediatek: Avoid setting RTFF's CLK_DIS before NRESTORE
+Date: Thu, 16 Jul 2026 13:42:47 +0200
+Message-ID: <20260716114247.49685-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260716_043149_969835_A52C7AFF 
-X-CRM114-Status: GOOD (  21.11  )
+X-CRM114-CacheID: sfid-20260716_044254_468404_8D71B5F9 
+X-CRM114-Status: GOOD (  11.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,210 +78,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If the bootloader leaves the PCI-Express MAC+PHY enabled before
-booting the kernel, an interrupt may be pending while probing
-this driver, which means that the chained interrupt handler is
-called as soon as the irq is enabled and handler is installed.
+For the PCIE_PHY (also called PEXTP_PHY) type of RTFF hardware,
+there is special handling setting CLK_DIS before performing the
+NRESTORE sequence for resetting the RTFF and start sequencing
+from a clean state.
 
-Since the mtk_gen3_pcie structure gets fully initialized only
-after installing the handler, that condition results in a NULL
-pointer kernel panic (mostly due to pcie->base being NULL, but
-other members will be uninitialized as well).
+That special handling, though, poses an issue in case the machine
+specific bootchain (bootloader in particular) ends up booting the
+kernel with both PCIe MAC and PHY enabled (not just power domains)
+as doing so will partially corrupt the PCIe MAC/PHY registers in
+an unpredictable manner, producing either an initialization fail
+in the PCI-Express drivers, or even a hard lockup!
 
-In order to resolve this, disgregate the mtk_pcie_setup_irq()
-function and partially do the same to mtk_pcie_setup(), so that
-all of the required resources are initialized before installing
-and enabling the interrupt handler.
+Resolve this by simply removing the special handling: in this case
+the bootchain, or remote processors, setting is getting honored by
+the later check for PWR_RTFF_SAVE_FLAG presence in the RTFF ctl
+register.
 
-Also, install the ISR after deasserting resets and powering up
-the PCI-Express MAC and PHY, by moving the call to the function
-irq_set_chained_handler_and_data() to the appropriate place in
-mtk_pcie_setup(), as hardware registers cannot be modified if
-the hardware is powered down and could result in a SError.
-
-This makes sure that all resources are actually available and
-hardware is powered on before any registers operation is done.
-
-Fixes: eddbac092e5f ("PCI: mediatek-gen3: Move mtk_pcie_setup_irq() out of mtk_pcie_setup()")
+Fixes: 9d02c94342b3 ("pmdomain: mediatek: Add support for RTFF Hardware in MT8196/MT6991")
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
+ drivers/pmdomain/mediatek/mtk-pm-domains.c | 8 --------
+ 1 file changed, 8 deletions(-)
 
-The real issue starts with commit eddbac092e5f but this still goes
-a bit further by reordering things a bit, enabling the interrupt
-after powerup and but before port startup, along with getting the
-irq in mtk_pcie_parse_port(), where a bunch of other devicetree
-resources retrieval is done, grouping them in one place.
-
-This actually resolves the following issue:
-
-<6>[    6.877824] mtk-pcie-gen3 16910000.pcie: host bridge /soc/pcie@16910000 ranges:
-<6>[    6.877854] mtk-pcie-gen3 16910000.pcie:      MEM 0x0050000000..0x0057ffffff -> 0x0050000000
-<1>[    6.877972] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000184
-<1>[    6.877978] Mem abort info:
-<1>[    6.877980]   ESR = 0x0000000096000004
-<1>[    6.877983]   EC = 0x25: DABT (current EL), IL = 32 bits
-<1>[    6.877988]   SET = 0, FnV = 0
-<1>[    6.877991]   EA = 0, S1PTW = 0
-<1>[    6.877993]   FSC = 0x04: level 0 translation fault
-<1>[    6.877996] Data abort info:
-<1>[    6.877998]   ISV = 0, ISS = 0x00000004, ISS2 = 0x00000000
-<1>[    6.878001]   CM = 0, WnR = 0, TnD = 0, TagAccess = 0
-<1>[    6.878005]   GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
-<1>[    6.878008] [0000000000000184] user address but active_mm is swapper
-<0>[    6.878012] Internal error: Oops: 0000000096000004 [#1]  SMP
-<4>[    6.878018] Modules linked in:
-<4>[    6.878027] CPU: 0 UID: 0 PID: 82 Comm: kworker/u32:3 Tainted: G        W           7.1.0-rc5-next-20260525+ #1700 PREEMPT(full) 
-<4>[    6.878037] Tainted: [W]=WARN
-<4>[    6.878040] Hardware name: Google Hylia SKU1/2/4/5 board (DT)
-<4>[    6.878044] Workqueue: async async_run_entry_fn
-<4>[    6.878060] pstate: 034000c9 (nzcv daIF +PAN -UAO +TCO +DIT -SSBS BTYPE=--)
-<4>[    6.878068] pc : mtk_pcie_irq_handler+0x40/0x1f0
-<4>[    6.878082] lr : handle_irq_desc+0x3c/0x68
-<4>[    6.878095] sp : ffff800080003f50
-<4>[    6.878098] x29: ffff800080003f50 x28: ffff000080b7d3c0 x27: 0000000000000000
-<4>[    6.878109] x26: ffffcc9bfd8ca990 x25: 0000000000000000 x24: ffff000080204a05
-<4>[    6.878117] x23: 0000000043400009 x22: ffffcc9bfb60793c x21: 0000000000000000
-<4>[    6.878125] x20: 0000000000000000 x19: 0000000000000184 x18: 00000000ffffffff
-<4>[    6.878133] x17: ffff3367f0734000 x16: ffff800080000000 x15: 00000000ffffffff
-<4>[    6.878140] x14: ffff000081866bd3 x13: ffff000081866bd5 x12: 0000000000000020
-<4>[    6.878147] x11: 0000000000000040 x10: ffff0000802136a8 x9 : ffffcc9bf9da34c4
-<4>[    6.878155] x8 : ffff000083149020 x7 : 0000000000000000 x6 : 0000000000000000
-<4>[    6.878162] x5 : ffff000083148ff8 x4 : ffff0000831491a8 x3 : 0000000000000000
-<4>[    6.878169] x2 : 0000000000000000 x1 : ffffcc9bfa594188 x0 : ffff000080b4c830
-<4>[    6.878177] Call trace:
-<4>[    6.878180]  mtk_pcie_irq_handler+0x40/0x1f0 (P)
-<4>[    6.878192]  handle_irq_desc+0x3c/0x68
-<4>[    6.878204]  generic_handle_domain_irq+0x20/0x40
-<4>[    6.878217]  gic_handle_irq+0x144/0x2c0
-<4>[    6.878224]  call_on_irq_stack+0x30/0x48
-<4>[    6.878231]  do_interrupt_handler+0x88/0x98
-<4>[    6.878239]  el1_interrupt+0x48/0xb0
-<4>[    6.878252]  el1h_64_irq_handler+0x18/0x28
-<4>[    6.878264]  el1h_64_irq+0x84/0x88
-<4>[    6.878271]  _raw_spin_unlock_irqrestore+0x14/0x68 (P)
-<4>[    6.878283]  irq_set_chained_handler_and_data+0xc8/0xe0
-<4>[    6.878294]  mtk_pcie_probe+0x98/0x4b0
-<4>[    6.878304]  platform_probe+0x64/0xc0
-<4>[    6.878317]  really_probe+0xc8/0x3f0
-<4>[    6.878327]  __driver_probe_device+0x168/0x1d8
-<4>[    6.878337]  driver_probe_device+0x44/0x128
-<4>[    6.878347]  __device_attach_driver+0xc4/0x198
-<4>[    6.878357]  bus_for_each_drv+0x8c/0xf8
-<4>[    6.878365]  __device_attach_async_helper+0xbc/0x148
-<4>[    6.878375]  async_run_entry_fn+0x3c/0x188
-<4>[    6.878385]  process_one_work+0x164/0x4f0
-<4>[    6.878391]  worker_thread+0x19c/0x320
-<4>[    6.878396]  kthread+0x138/0x150
-<4>[    6.878407]  ret_from_fork+0x10/0x20
-<0>[    6.878416] Code: 9100c000 f90037e0 f9400793 91061273 (b9400273) 
-<4>[    6.878421] ---[ end trace 0000000000000000 ]---
-<0>[    6.891047] Kernel panic - not syncing: Oops: Fatal exception in interrupt
-<2>[    6.891051] SMP: stopping secondary CPUs
-<0>[    6.893869] Kernel Offset: 0x4c9b79c00000 from 0xffff800080000000
-<0>[    6.893873] PHYS_OFFSET: 0x80000000
-<0>[    6.893874] CPU features: 0x08000000,003c018b,a6c605a1,357e7663
-<0>[    6.893879] Memory Limit: none
-<0>[    7.258223] ---[ end Kernel panic - not syncing: Oops: Fatal exception in interrupt ]---
-
-
- drivers/pci/controller/pcie-mediatek-gen3.c | 44 ++++++++-------------
- 1 file changed, 16 insertions(+), 28 deletions(-)
-
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index 66c33a09dd95..2c28b8e983c3 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -903,25 +903,6 @@ static void mtk_pcie_irq_handler(struct irq_desc *desc)
- 	chained_irq_exit(irqchip, desc);
- }
+diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+index f69cf69ba0f6..df8e93638e08 100644
+--- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
++++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+@@ -480,16 +480,8 @@ static int scpsys_ctl_pwrseq_on(struct scpsys_domain *pd)
+ 	if (ret < 0)
+ 		return ret;
  
--static int mtk_pcie_setup_irq(struct mtk_gen3_pcie *pcie)
--{
--	struct device *dev = pcie->dev;
--	struct platform_device *pdev = to_platform_device(dev);
--	int err;
+-	if (pd->data->rtff_type == SCPSYS_RTFF_TYPE_PCIE_PHY)
+-		regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_RTFF_CLK_DIS);
 -
--	pcie->irq = platform_get_irq(pdev, 0);
--	if (pcie->irq < 0)
--		return pcie->irq;
+ 	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_CLK_DIS_BIT);
+ 	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_ISO_BIT);
 -
--	err = mtk_pcie_init_irq_domains(pcie);
--	if (err)
--		return err;
+-	/* Wait for RTFF HW to sync buck isolation state if this is PCIe PHY RTFF */
+-	if (pd->data->rtff_type == SCPSYS_RTFF_TYPE_PCIE_PHY)
+-		udelay(5);
 -
--	irq_set_chained_handler_and_data(pcie->irq, mtk_pcie_irq_handler, pcie);
--
--	return 0;
--}
--
- static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
- {
- 	int i, ret, num_resets = pcie->soc->phy_resets.num_resets;
-@@ -939,6 +920,10 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
+ 	regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
  
- 	pcie->reg_base = regs->start;
- 
-+	pcie->irq = platform_get_irq(pdev, 0);
-+	if (pcie->irq < 0)
-+		return pcie->irq;
-+
- 	for (i = 0; i < num_resets; i++)
- 		pcie->phy_resets[i].id = pcie->soc->phy_resets.id[i];
- 
-@@ -1175,10 +1160,6 @@ static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
- {
- 	int err, max_speed;
- 
--	err = mtk_pcie_parse_port(pcie);
--	if (err)
--		return err;
--
  	/*
- 	 * Deassert the line in order to avoid unbalance in deassert_count
- 	 * counter since the bulk is shared.
-@@ -1205,6 +1186,9 @@ static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
- 		}
- 	}
- 
-+	/* All resources are now available: install the chained handler */
-+	irq_set_chained_handler_and_data(pcie->irq, mtk_pcie_irq_handler, pcie);
-+
- 	/* Try link up */
- 	err = mtk_pcie_startup_port(pcie);
- 	if (err)
-@@ -1233,9 +1217,12 @@ static int mtk_pcie_probe(struct platform_device *pdev)
- 
- 	pcie->dev = dev;
- 	pcie->soc = device_get_match_data(dev);
--	platform_set_drvdata(pdev, pcie);
- 
--	err = mtk_pcie_setup_irq(pcie);
-+	err = mtk_pcie_parse_port(pcie);
-+	if (err)
-+		return err;
-+
-+	err = mtk_pcie_init_irq_domains(pcie);
- 	if (err)
- 		return dev_err_probe(dev, err, "Failed to setup IRQ domains\n");
- 
-@@ -1245,13 +1232,14 @@ static int mtk_pcie_probe(struct platform_device *pdev)
- 		goto err_tear_down_irq;
- 	}
- 
-+	host->ops = &mtk_pcie_ops;
-+	host->sysdata = pcie;
-+	platform_set_drvdata(pdev, pcie);
-+
- 	err = mtk_pcie_setup(pcie);
- 	if (err)
- 		goto err_destroy_pwrctrl;
- 
--	host->ops = &mtk_pcie_ops;
--	host->sysdata = pcie;
--
- 	err = pci_host_probe(host);
- 	if (err)
- 		goto err_power_down_pcie;
 -- 
 2.54.0
 
