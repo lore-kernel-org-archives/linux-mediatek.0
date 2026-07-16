@@ -4,87 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F6B0C44501
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 08:14:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D8F8C4450A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 09:33:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:References:MIME-Version:
-	In-Reply-To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S6dzhBrZchW3iZvyn1hIvbsasMrCxNEsko6TeLvbddM=; b=wgpeUnCKrALqZ+mj7H+Iof3zxB
-	tVH14v2AhJ2SVnHpHVcdTeqX+7mWqBIkMKnpFqyLIH5hEjJvIacpf3TAyOyKO6E06lWj3pVnD5hii
-	RArfkK9kFPMGxdeGEPL91WDmA/s0+BeMXXZqgd9NeAEHpvURH5dAhr8l97Zp6zQMhQwEFSW16HuIt
-	BLWYwfH4GXfq40bUEh2Dq3flyCPndoX8FLdQNgFBJkx6Cj50GqfCConxfefoqYUeN/LarnYEvOLn2
-	r3JTTdWGqwHNVZQF3HLRhuh0HKVCobGYidah4NQXFQQp2wfIBSmB0kOGwstK4QDgzk1M4A6K2+m+a
-	TFnxyFpg==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vTo70EXcAY1AdpA01QmFv+nicuUPm+Q2XR6ayAS68A4=; b=dxWTDY+BqLo/yQe5qlDDFXtLzg
+	kM9mB74LwzbBwiqGp2ljFyOyLvYYEuFeasnRErBe2W3lBm/1Pif7xWmdRk7FtCixs4vsssgzgFAS1
+	pr1CWyWHArxDv63tFjyt5R8wL0YuJwiQiSE8uqpPkOVweW7FJR3uozGLWRtHFO9jawGomLKX83wVe
+	+VpBT87zpTPzAZYSZLPuKeZ4jb8BijXtHBAK1ZXyE3NzQ98WluoTZ49bEiEJwRSdQsGzSrU/WbErF
+	4Q7oS0WcLSuhnecR4paxwt5AiCiv5L4/iqkLURZZ/NcrLOFZpnlN/zgnt+6XKTTWAPMpa01fdO+TP
+	BslDW2pA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkHEx-0000000Gj2r-0pzi;
-	Thu, 16 Jul 2026 08:14:43 +0000
+	id 1wkITd-0000000Gsba-28On;
+	Thu, 16 Jul 2026 09:33:57 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkHEw-0000000Gj2e-0SpS
-	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Jul 2026 08:14:42 +0000
+	id 1wkITb-0000000Gsaf-1HQt;
+	Thu, 16 Jul 2026 09:33:55 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id C677843D00
-	for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 08:14:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A93ED1F0155B
-	for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 08:14:41 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 14B1D4368A;
+	Thu, 16 Jul 2026 09:33:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EDAFA1F00A3A;
+	Thu, 16 Jul 2026 09:33:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784189681;
-	bh=S6dzhBrZchW3iZvyn1hIvbsasMrCxNEsko6TeLvbddM=;
-	h=From:In-Reply-To:References:Date:Subject:To:Cc;
-	b=ILXJIECAsF50gCjzfPbo9WZ++uCuclPTHWsj/RRBjDVaQXiS3A7eKkrJVaM45nwRq
-	 vsR1AL39qNsL/TTa/+zhzhQr29o2VwZneXGkKEgx5yicEAaup/pXqZ68oTzSJneAyH
-	 a+FRUiiHHdUA7WHqKNVU/W60AN0scXOCedQyLqpc/HK4PgLeXxvTPVL1F0+L2EKQNX
-	 f4hTAs5bekpCWzp1JXckxrMcTSkYloomfCYNDgvEkzvxRIIhdGW7a4oZccDNG4fm3a
-	 JQ+dsMXn47utt2p1g69B6V/aJc5bjHuE9GewcW9IgwAZw4lT2SjDrlVI/EzTMYOlNM
-	 37zTJ6KOsRoOg==
-Received: by mail-lj1-f180.google.com with SMTP id 38308e7fff4ca-39ca0a30148so51660751fa.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 01:14:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+RrSluMMJHsyA0CLA5LxMYCmucrlIMIRzQ/fR0CdSRyETDzcJIlNzYe8TiReMm3n13Q21TGcYSp42oHPSNo0RQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz/6UyBtddvXfda6f5SBQb8R3f6/N+thacplnAvaDHbPGjc6N20
-	7KUBPB9rV/TfCK6sEAU4GJ+boIElCks/CXwO2Y0qP4Uriy1aEhQOcmF3lI0Klti/ghUbN41DGOy
-	jou+kDyDvz5djbfk+Z4Txk5/gYBwZEVo4UCZzv5dzsA==
-X-Received: by 2002:a2e:bc82:0:b0:393:6934:6104 with SMTP id
- 38308e7fff4ca-39db6c2a16fmr12970681fa.19.1784189680282; Thu, 16 Jul 2026
- 01:14:40 -0700 (PDT)
-Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Thu, 16 Jul 2026 01:14:39 -0700
-Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Thu, 16 Jul 2026 01:14:39 -0700
-From: Bartosz Golaszewski <brgl@kernel.org>
-In-Reply-To: <CAGXv+5HGjGTrqqzJrpiQhLrCn3C6H20LXq3niPnoujQLOwgqPw@mail.gmail.com>
+	s=k20260515; t=1784194435;
+	bh=vTo70EXcAY1AdpA01QmFv+nicuUPm+Q2XR6ayAS68A4=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=RABLBVjLTTg0ePG/TJZnC1JlezFxCtnstZFm2lTzX5gK3HkRsUWbHbGtgHnqOMrIZ
+	 J23d2B/jveCRRyCpm9VK29SrWFOpWXqxL877WgVs4pBcwts4/gDnI8ItE6cJ5wO4K4
+	 uSqENw+r/NFYD3sopEoaTntEXr5AnWLXfWg/Qxfclb6PRjXXqeq3i1QJT3weMgOdhl
+	 qWKynvHZjXxzYWH4n6GU599UuhaCHSc1DA1Ngjk/IJVctsgOEdgi4vAYhthFtBQ5vk
+	 pfJpTAqPj7+XAiRL9bchiusjNlmE8UfaleatP3pfcWoB8k2Y4DmW5tqbpbNTjGYafL
+	 bRKALuAK6ZUFw==
+From: Simon Horman <horms@kernel.org>
+To: jackbb_wu@compal.com
+Cc: Simon Horman <horms@kernel.org>,
+	loic.poulain@oss.qualcomm.com,
+	ryazanov.s.a@gmail.com,
+	johannes@sipsolutions.net,
+	andrew+netdev@lunn.ch,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	wen-zhi.huang@mediatek.com,
+	shi-wei.yeh@mediatek.com,
+	Minano.tseng@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	corbet@lwn.net,
+	skhan@linuxfoundation.org,
+	linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-doc@vger.kernel.org
+Subject: Re: [PATCH v4 1/7] net: wwan: t9xx: Add PCIe core
+Date: Thu, 16 Jul 2026 10:33:24 +0100
+Message-ID: <20260716093324.230974-1-horms@kernel.org>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260709-t9xx_driver_v1-v4-1-a8c009d509c5@compal.com>
+References: <20260709-t9xx_driver_v1-v4-1-a8c009d509c5@compal.com>
 MIME-Version: 1.0
-References: <20260715085348.3457359-1-wenst@chromium.org> <20260715085348.3457359-4-wenst@chromium.org>
- <aldS3qTympJuVXYj@ashevche-desk.local> <CAMRc=MfHmejks83bPfe3fKzAzFySGXk2GHMA9oZdMQj0f44eTA@mail.gmail.com>
- <CAGXv+5HGjGTrqqzJrpiQhLrCn3C6H20LXq3niPnoujQLOwgqPw@mail.gmail.com>
-Date: Thu, 16 Jul 2026 01:14:39 -0700
-X-Gmail-Original-Message-ID: <CAMRc=Mefxn81d0VUwmQgwFtffkL1=Er_1VQZCbC1Sa-Qph4t1w@mail.gmail.com>
-X-Gm-Features: AUfX_mxn6Bl7rEMqDoJ22rvXDaXvLC48Woi6Y6ypETbOrTpITKxwxCyFT1q8e60
-Message-ID: <CAMRc=Mefxn81d0VUwmQgwFtffkL1=Er_1VQZCbC1Sa-Qph4t1w@mail.gmail.com>
-Subject: Re: [PATCH v5 03/16] power: sequencing: Add pwrseq_power_is_on()
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Daniel Scally <djrscally@gmail.com>, 
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
-	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Wei Deng <wei.deng@oss.qualcomm.com>, linux-acpi@vger.kernel.org, 
-	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
-	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>, 
-	Alan Stern <stern@rowland.harvard.edu>, 
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>, 
-	Bartosz Golaszewski <brgl@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,106 +86,211 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 16 Jul 2026 06:59:01 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
-> On Wed, Jul 15, 2026 at 8:10=E2=80=AFPM Bartosz Golaszewski <brgl@kernel.=
-org> wrote:
->>
->> On Wed, 15 Jul 2026 11:29:02 +0200, Andy Shevchenko
->> <andriy.shevchenko@linux.intel.com> said:
->> > On Wed, Jul 15, 2026 at 04:53:33PM +0800, Chen-Yu Tsai wrote:
->> >> The power sequencing consumer API already does power on state trackin=
-g
->> >> internally. Expose the state to consumers through pwrseq_power_is_on(=
-)
->> >> so that they don't have to reimplement it locally.
->> >
->> > Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
->> >
->> > ...
->> >
->> >> +/**
->> >> + * pwrseq_power_is_on() - Queries the last requested state of the po=
-wer sequencer.
->> >> + * @desc: Descriptor referencing the power sequencer.
->> >> + *
->> >> + * This returns the last requested state of the power sequencer.
->> >> + *
->> >> + * Returns:
->> >> + * On success, 1 for on or desc is NULL (optional) and 0 for off;
->> >> + * negative error number on failure.
->> >
->> > I would rephrase it a bit.
->> >
->> >  * On success, 1 for on and 0 for off; negative error number on failur=
-e.
->> >  * If desc is NULL (means optional) return 1.
->> >
->> > And this rises a question: why 1? Shouldn't it be some "unknown" state=
-?
->> > (But since Bart Acked this, this doesn't prevent the patch to go, you
->> >  got my tag above.)
->> >
->>
->> No, this is good feedback. Maybe we should prefer an enum like so:
->>
->> enum pwrseq_state {
->>         PWRSEQ_POWER_UNKNOWN,
->>         PWRSEQ_POWER_ON,
->>         PWRSEQ_POWER_OFF
->> };
->
-> Well I think the crux of it is whether the API considers the descriptor
-> optional. The power on/off functions suggest that is the case.
->
+This is an AI-generated review of your patch. The human sending this
+email has considered the AI review valid, or at least plausible.
+Full review at: https://sashiko.dev
+---
+--- Patch [1]: [PATCH v4 1/7] net: wwan: t9xx: Add PCIe core ---
+commit 4564b6641dc4f4a3fb3d169ca45443e5d18c66b7
+Author: Jack Wu <jackbb_wu@compal.com>
 
-True. That may be an inconsistency of the API contract on my part. There's =
-no
-such thing as an optional variant of pwrseq_get() so perhaps pwrseq_power_o=
-n()
-and pwrseq_power_off() should be converted to returning -EINVAL on NULL
-descriptor.
+net: wwan: t9xx: Add PCIe core
 
-> I modeled this on reset_control_status(). I believe the rationale is that
-> if the reset control or pwrseq is optional, then either there is some
-> other mechanism to deal with the reset (GPIO) or pwrseq (GPIO + regulator=
-),
-> or it's always on and operational.
->
-> In such cases and the rare case where one has to query the state, the
-> queries are possibly chained together and I think it makes sense to
-> assume the "operational" state as the fallback.
->
-> If this returns an enum, then I think the previous approach of returning
-> an error value for an invalid descriptor is better. One doesn't need to
-> learn a new set of return values.
->
-> I'm fine either way. I would just move the checks over to the consumer
-> side. But I think the principles guiding the overall API design is
-> something you need to provide:
->
->   - Is the descriptor optional? What should the action functions
->     (power on / off , or query status) return when NULL is given?
->   - Is the subsystem optional? Should the stub functions besides
->     pwrseq_get() return 0 instead of -ENOSYS?
->
-> Right now the API feels like the descriptor is optional but the
-> subsystem is not. One has to add IS_ENABLED(CONFIG_POWER_SEQUENCING)
-> around the consumer API to make it an optional feature.
->
+Registers the T900 device driver with the kernel. Set up all
+the fundamental configurations for the device: PCIe layer,
+Modem Host Cross Core Interface (MHCCIF), Reset Generation
+Unit (RGU), modem common control operations and build
+infrastructure.
 
-There's one more use-case where the power state trully can be *unknown*.
-Please look at the proposed new function from Loic[1]. Here we deal with
-targets over which linux has no direct power control even though it may sti=
-ll
-control some of its dependencies. This is where an UNKNOWN state may make
-sense.
+> diff --git a/drivers/net/wwan/t9xx/pcie/mtk_pci.c b/drivers/net/wwan/t9xx/pcie/mtk_pci.c
+> index 0000000000000..72259bf1b6033
+> --- /dev/null
+> +++ b/drivers/net/wwan/t9xx/pcie/mtk_pci.c
+[ ... ]
+> +static irqreturn_t mtk_pci_irq_msix(int irq, void *data)
+> +{
+> +	struct mtk_pci_irq_desc *irq_desc = data;
+> +	struct mtk_md_dev *mdev = irq_desc->mdev;
+> +	struct mtk_pci_priv *priv;
+> +	u32 irq_state, irq_enable;
+> +
+> +	priv = mdev->hw_priv;
+> +	irq_state = mtk_pci_mac_read32(priv, REG_MSIX_ISTATUS_HOST_GRP0_0);
+> +	irq_enable = mtk_pci_mac_read32(priv, REG_IMASK_HOST_MSIX_GRP0_0);
+> +	irq_state &= irq_enable;
+> +
+> +	if (unlikely(!irq_state) ||
+> +	    unlikely(!((irq_state & GENMASK(priv->irq_cnt - 1, 0)) &
+> +		      irq_desc->msix_bits)))
+> +		return IRQ_NONE;
 
-This is where I also floated an idea of renaming pwrseq_power_on/off() to
-pwrseq_vote_on/off() for better clarity of their purpose.
+[Severity: High]
+Does this logic silently drop hardware interrupts when fewer than 32 vectors are
+allocated?
 
-Thanks,
-Bartosz
+Because hardware source bits map to fixed high bit positions (such as bit 28
+for MTK_IRQ_SRC_MHCCIF), systems that allocate fewer vectors will mask out
+these high bits with GENMASK(priv->irq_cnt - 1, 0).
 
-[1] https://lore.kernel.org/all/20260710-monza-wireless-v3-3-46253587af64@o=
-ss.qualcomm.com/
+Evaluating !(0 & msix_bits) as true returns IRQ_NONE, which may eventually
+disable the interrupt line.
+
+[ ... ]
+> +static int mtk_pci_request_irq_msix(struct mtk_md_dev *mdev,
+> +				    int irq_cnt_allocated)
+> +{
+> +	struct mtk_pci_priv *priv = mdev->hw_priv;
+> +	struct mtk_pci_irq_desc *irq_desc;
+> +	struct pci_dev *pdev;
+> +	int irq_cnt;
+> +	int ret, i;
+> +
+> +	/* calculate the nearest 2's power number */
+> +	irq_cnt = BIT(fls(irq_cnt_allocated) - 1);
+> +	pdev = to_pci_dev(mdev->dev);
+> +	irq_desc = priv->irq_desc;
+> +	for (i = 0; i < irq_cnt; i++) {
+> +		irq_desc[i].mdev = mdev;
+> +		irq_desc[i].msix_bits = BIT(i);
+> +		snprintf(irq_desc[i].name, MTK_IRQ_NAME_LEN, "msix%d-%s", i, mdev->dev_str);
+> +		ret = pci_request_irq(pdev, i, mtk_pci_irq_msix, NULL,
+> +				      &irq_desc[i], irq_desc[i].name);
+
+[Severity: Medium]
+Could this trigger a -Wformat-security compiler warning?
+
+Passing a dynamic string variable directly as the format string to
+pci_request_irq() can lead to format string vulnerabilities. Should this use
+"%s", irq_desc[i].name instead?
+
+[ ... ]
+> +static u32 mtk_pci_ext_h2d_evt_hw_bits(u32 chs)
+> +{
+> +	u32 hw_bits = 0;
+> +
+> +	SET_HW_BITS(hw_bits, chs, MHCCIF_RC2EP_EVT_DEVICE_RESET,
+> +		    DEV_EVT_H2D_DEVICE_RESET);
+> +	return LE32_TO_U32(cpu_to_le32(hw_bits));
+> +}
+
+[ ... ]
+
+> +int mtk_pci_send_ext_evt(struct mtk_md_dev *mdev, u32 ch)
+> +{
+> +	struct mtk_pci_priv *priv = mdev->hw_priv;
+> +	u32 rc_base, hw_bits;
+> +
+> +	rc_base = priv->cfg->mhccif_rc_base_addr;
+> +
+> +	/* Only allow one ch to be triggered at a time */
+> +	if (!is_power_of_2(ch)) {
+> +		dev_err(mdev->dev, "Unsupported ext evt ch=0x%08x\n", ch);
+> +		return -EINVAL;
+> +	}
+> +
+> +	hw_bits = mtk_pci_ext_h2d_evt_hw_bits(ch);
+> +	mtk_pci_write32(mdev, rc_base + MHCCIF_RC2EP_SW_BSY, hw_bits);
+> +	mtk_pci_write32(mdev, rc_base + MHCCIF_RC2EP_SW_TCHNUM, ffs(hw_bits) - 1);
+
+[Severity: Medium]
+Will this break channel index calculation on big-endian systems?
+
+If hw_bits has already been byte-swapped by cpu_to_le32() inside
+mtk_pci_ext_h2d_evt_hw_bits(), performing ffs(hw_bits) - 1 on the byte-swapped
+integer will result in a completely incorrect bit index.
+
+[Severity: Medium]
+What happens if the driver attempts to send an unmapped channel?
+
+If ch is not mapped in mtk_pci_ext_h2d_evt_hw_bits(), hw_bits will evaluate
+to 0. The calculation ffs(0) - 1 will then underflow to 0xFFFFFFFF. This
+value is written directly to the hardware and might hang or crash the device
+firmware.
+
+[ ... ]
+> +static int mtk_pci_bar_init(struct mtk_md_dev *mdev)
+> +{
+> +	struct pci_dev *pdev = to_pci_dev(mdev->dev);
+> +	struct mtk_pci_priv *priv = mdev->hw_priv;
+> +	u32 bar[MTK_PCI_BAR_NUM];
+> +	int i, ret;
+> +
+> +	for (i = 0; i < MTK_PCI_BAR_NUM; i++)
+> +		pci_read_config_dword(to_pci_dev(mdev->dev),
+> +				      PCI_BASE_ADDRESS_0 + (i << 2), bar + i);
+> +
+> +	ret = pcim_iomap_regions(pdev, MTK_REQUESTED_BARS, mdev->dev_str);
+> +	if (ret) {
+> +		dev_err(mdev->dev, "Failed to init MMIO. ret=%d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	/* get ioremapped memory */
+> +	priv->mac_reg_base = pcim_iomap_table(pdev)[MTK_BAR_0_1_IDX];
+> +	priv->bar23_addr = pcim_iomap_table(pdev)[MTK_BAR_2_3_IDX];
+> +	if (!priv->mac_reg_base || !priv->bar23_addr) {
+> +		dev_err(mdev->dev, "Failed to init BAR.\n");
+> +		return -EINVAL;
+> +	}
+> +	/* We use MD view base address "0" to observe registers */
+> +	priv->ext_reg_base = priv->bar23_addr - ATR_PCIE_REG_TRSL_ADDR;
+
+[Severity: Medium]
+Is it safe to store an out-of-bounds pointer?
+
+ATR_PCIE_REG_TRSL_ADDR is 0x10000000, and subtracting it here results in
+priv->ext_reg_base pointing well outside the allocated object. This invokes
+undefined behavior and might cause crashes or be optimized out by UBSAN.
+
+Could the correct offset be calculated at the time of access instead?
+
+[ ... ]
+> +static void mtk_pci_remove(struct pci_dev *pdev)
+> +{
+> +	struct mtk_md_dev *mdev = pci_get_drvdata(pdev);
+> +	struct mtk_pci_priv *priv = mdev->hw_priv;
+> +	struct device *dev = &pdev->dev;
+> +
+> +	mtk_pci_mask_irq(mdev, priv->mhccif_irq_id);
+> +
+> +	if (mtk_pci_pldr(mdev)) {
+> +		dev_warn(dev, "Failed to execute PLDR, try external event\n");
+> +		mtk_pci_reset(mdev, RESET_MHCCIF);
+> +	}
+> +
+> +	pci_clear_master(pdev);
+> +	mtk_pci_free_irq(mdev);
+> +	mtk_mhccif_exit(mdev);
+
+[Severity: High]
+Does this sequence result in the device being powered off before the OS
+interrupt handlers and workqueues are synchronized?
+
+Calling mtk_pci_pldr() executes the ACPI PXP._OFF method, cutting power.
+If mtk_mhccif_exit() (which calls cancel_work_sync(&priv->mhccif_work))
+or mtk_pci_free_irq() runs after this, a concurrently executing workqueue
+or interrupt handler might attempt to read MMIO registers from a powered-off
+device, causing bus errors and kernel panics.
+
+[ ... ]
+> +static pci_ers_result_t mtk_pci_error_detected(struct pci_dev *pdev,
+> +					       pci_channel_state_t state)
+> +{
+> +	struct mtk_md_dev *mdev = pci_get_drvdata(pdev);
+> +
+> +	dev_err(mdev->dev, "AER detected: pci_channel_state_t=%d\n", state);
+> +
+> +	/* Request a slot reset. */
+> +	return PCI_ERS_RESULT_CAN_RECOVER;
+> +}
+
+[Severity: Medium]
+Will returning PCI_ERS_RESULT_CAN_RECOVER actually abort the slot reset?
+
+The comment says "Request a slot reset", but CAN_RECOVER instructs the PCI
+core to skip the reset. Furthermore, since the driver provides no .resume or
+.mmio_enabled callbacks, the device remains in a corrupted state despite
+being marked as recovered.
+
+Shouldn't this return PCI_ERS_RESULT_NEED_RESET?
 
