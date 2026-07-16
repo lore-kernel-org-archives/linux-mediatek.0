@@ -4,60 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EE77C44501
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 08:07:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F6B0C44501
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 08:14:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:References:MIME-Version:
+	In-Reply-To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RE7IWzX9N9XG849xtFGuenm/AMqbNw2PFGwFboy/who=; b=oY5zRlc18yoL55w1J+PS0u+yz1
-	uR15Ah9r0f9r+6DRcRjMI3fM+rFP4/pTDiiVoqc+fMtmWJOGPor0b3t3JWpvWYpaQnwow32Kd74Wm
-	ioyKNFfyOI0lN/PPQYTvNyKbLEnx/pBegnnVUuWxwGTSg4L9NnrymItw+gYJfZ3LAqGp8RI9fy7CP
-	2d7GIIPAr98C6t4iFEnuxbChXPnBxIFLspXtCTQZpoigzmDzeDUh9MQMZ8kV0Sp7g9CiXz3EtCJ4x
-	h4Hy42QCquLzkVuC4riALhtsB6vVroOuyRuXWOzyoxKky619BTx9Zek5ZzE3qD/BfXm2n0z6mlllB
-	1jtHkGRg==;
+	bh=S6dzhBrZchW3iZvyn1hIvbsasMrCxNEsko6TeLvbddM=; b=wgpeUnCKrALqZ+mj7H+Iof3zxB
+	tVH14v2AhJ2SVnHpHVcdTeqX+7mWqBIkMKnpFqyLIH5hEjJvIacpf3TAyOyKO6E06lWj3pVnD5hii
+	RArfkK9kFPMGxdeGEPL91WDmA/s0+BeMXXZqgd9NeAEHpvURH5dAhr8l97Zp6zQMhQwEFSW16HuIt
+	BLWYwfH4GXfq40bUEh2Dq3flyCPndoX8FLdQNgFBJkx6Cj50GqfCConxfefoqYUeN/LarnYEvOLn2
+	r3JTTdWGqwHNVZQF3HLRhuh0HKVCobGYidah4NQXFQQp2wfIBSmB0kOGwstK4QDgzk1M4A6K2+m+a
+	TFnxyFpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkH8E-0000000GiF2-0TOk;
-	Thu, 16 Jul 2026 08:07:46 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wkHEx-0000000Gj2r-0pzi;
+	Thu, 16 Jul 2026 08:14:43 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkH8C-0000000GiEk-3Wnz;
-	Thu, 16 Jul 2026 08:07:44 +0000
+	id 1wkHEw-0000000Gj2e-0SpS
+	for linux-mediatek@lists.infradead.org;
+	Thu, 16 Jul 2026 08:14:42 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1B44641494;
-	Thu, 16 Jul 2026 08:07:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 647DD1F000E9;
-	Thu, 16 Jul 2026 08:07:43 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id C677843D00
+	for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 08:14:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A93ED1F0155B
+	for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 08:14:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784189264;
-	bh=RE7IWzX9N9XG849xtFGuenm/AMqbNw2PFGwFboy/who=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=T7edHqjNIaaihFmeEURYSbenTdZjHSttCpaHwBUcBw8832PMLr728bS6irLidzQ/t
-	 hIg5EmUCKhngv3g/rDSHuh8LAZ3xGNWfxfJy/5eVrqBYz6VSHVKUgfxbqMon6o6xiJ
-	 SqhqtSxSb2rndbvWfdvEGuz3njES8XWz1bteqOk0/NOdL0DUSt/noBFKyYF8zkmLOo
-	 VXjc5ZLBA8M703xW4RQ6TfVCHE57msVrCj94+eUpxjhs+u+oiO71NBqAZFolvah55t
-	 hMO2NgQIxasPMi2wqPGKS4UnOErYosRNV6JBJFMvOgrM5oR1k2o0DDPKvwM00UUUag
-	 2JBQStEL5TM3Q==
-Date: Thu, 16 Jul 2026 10:07:41 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Roman Vivchar <rva333@protonmail.com>
-Cc: Rob Herring <robh@kernel.org>, 
+	s=k20260515; t=1784189681;
+	bh=S6dzhBrZchW3iZvyn1hIvbsasMrCxNEsko6TeLvbddM=;
+	h=From:In-Reply-To:References:Date:Subject:To:Cc;
+	b=ILXJIECAsF50gCjzfPbo9WZ++uCuclPTHWsj/RRBjDVaQXiS3A7eKkrJVaM45nwRq
+	 vsR1AL39qNsL/TTa/+zhzhQr29o2VwZneXGkKEgx5yicEAaup/pXqZ68oTzSJneAyH
+	 a+FRUiiHHdUA7WHqKNVU/W60AN0scXOCedQyLqpc/HK4PgLeXxvTPVL1F0+L2EKQNX
+	 f4hTAs5bekpCWzp1JXckxrMcTSkYloomfCYNDgvEkzvxRIIhdGW7a4oZccDNG4fm3a
+	 JQ+dsMXn47utt2p1g69B6V/aJc5bjHuE9GewcW9IgwAZw4lT2SjDrlVI/EzTMYOlNM
+	 37zTJ6KOsRoOg==
+Received: by mail-lj1-f180.google.com with SMTP id 38308e7fff4ca-39ca0a30148so51660751fa.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 01:14:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+RrSluMMJHsyA0CLA5LxMYCmucrlIMIRzQ/fR0CdSRyETDzcJIlNzYe8TiReMm3n13Q21TGcYSp42oHPSNo0RQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz/6UyBtddvXfda6f5SBQb8R3f6/N+thacplnAvaDHbPGjc6N20
+	7KUBPB9rV/TfCK6sEAU4GJ+boIElCks/CXwO2Y0qP4Uriy1aEhQOcmF3lI0Klti/ghUbN41DGOy
+	jou+kDyDvz5djbfk+Z4Txk5/gYBwZEVo4UCZzv5dzsA==
+X-Received: by 2002:a2e:bc82:0:b0:393:6934:6104 with SMTP id
+ 38308e7fff4ca-39db6c2a16fmr12970681fa.19.1784189680282; Thu, 16 Jul 2026
+ 01:14:40 -0700 (PDT)
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Thu, 16 Jul 2026 01:14:39 -0700
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Thu, 16 Jul 2026 01:14:39 -0700
+From: Bartosz Golaszewski <brgl@kernel.org>
+In-Reply-To: <CAGXv+5HGjGTrqqzJrpiQhLrCn3C6H20LXq3niPnoujQLOwgqPw@mail.gmail.com>
+MIME-Version: 1.0
+References: <20260715085348.3457359-1-wenst@chromium.org> <20260715085348.3457359-4-wenst@chromium.org>
+ <aldS3qTympJuVXYj@ashevche-desk.local> <CAMRc=MfHmejks83bPfe3fKzAzFySGXk2GHMA9oZdMQj0f44eTA@mail.gmail.com>
+ <CAGXv+5HGjGTrqqzJrpiQhLrCn3C6H20LXq3niPnoujQLOwgqPw@mail.gmail.com>
+Date: Thu, 16 Jul 2026 01:14:39 -0700
+X-Gmail-Original-Message-ID: <CAMRc=Mefxn81d0VUwmQgwFtffkL1=Er_1VQZCbC1Sa-Qph4t1w@mail.gmail.com>
+X-Gm-Features: AUfX_mxn6Bl7rEMqDoJ22rvXDaXvLC48Woi6Y6ypETbOrTpITKxwxCyFT1q8e60
+Message-ID: <CAMRc=Mefxn81d0VUwmQgwFtffkL1=Er_1VQZCbC1Sa-Qph4t1w@mail.gmail.com>
+Subject: Re: [PATCH v5 03/16] power: sequencing: Add pwrseq_power_is_on()
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Daniel Scally <djrscally@gmail.com>, 
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Flora Fu <flora.fu@mediatek.com>, 
-	Alexandre Mergnat <amergnat@baylibre.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 1/3] dt-bindings: soc: mediatek: pwrap: add mt6572
-Message-ID: <20260716-elite-alchemical-locust-c510ef@quoll>
-References: <20260715-6572-pwrap-v2-0-bea1d801c81b@protonmail.com>
- <20260715-6572-pwrap-v2-1-bea1d801c81b@protonmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260715-6572-pwrap-v2-1-bea1d801c81b@protonmail.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Wei Deng <wei.deng@oss.qualcomm.com>, linux-acpi@vger.kernel.org, 
+	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>, 
+	Alan Stern <stern@rowland.harvard.edu>, 
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>, 
+	Bartosz Golaszewski <brgl@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,18 +99,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 15, 2026 at 03:26:38PM +0300, Roman Vivchar wrote:
-> Add a compatible string for the mt6572 SoC.
-> 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-> ---
->  Documentation/devicetree/bindings/soc/mediatek/mediatek,pwrap.yaml | 1 +
->  1 file changed, 1 insertion(+)
+On Thu, 16 Jul 2026 06:59:01 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
+> On Wed, Jul 15, 2026 at 8:10=E2=80=AFPM Bartosz Golaszewski <brgl@kernel.=
+org> wrote:
+>>
+>> On Wed, 15 Jul 2026 11:29:02 +0200, Andy Shevchenko
+>> <andriy.shevchenko@linux.intel.com> said:
+>> > On Wed, Jul 15, 2026 at 04:53:33PM +0800, Chen-Yu Tsai wrote:
+>> >> The power sequencing consumer API already does power on state trackin=
+g
+>> >> internally. Expose the state to consumers through pwrseq_power_is_on(=
+)
+>> >> so that they don't have to reimplement it locally.
+>> >
+>> > Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+>> >
+>> > ...
+>> >
+>> >> +/**
+>> >> + * pwrseq_power_is_on() - Queries the last requested state of the po=
+wer sequencer.
+>> >> + * @desc: Descriptor referencing the power sequencer.
+>> >> + *
+>> >> + * This returns the last requested state of the power sequencer.
+>> >> + *
+>> >> + * Returns:
+>> >> + * On success, 1 for on or desc is NULL (optional) and 0 for off;
+>> >> + * negative error number on failure.
+>> >
+>> > I would rephrase it a bit.
+>> >
+>> >  * On success, 1 for on and 0 for off; negative error number on failur=
+e.
+>> >  * If desc is NULL (means optional) return 1.
+>> >
+>> > And this rises a question: why 1? Shouldn't it be some "unknown" state=
+?
+>> > (But since Bart Acked this, this doesn't prevent the patch to go, you
+>> >  got my tag above.)
+>> >
+>>
+>> No, this is good feedback. Maybe we should prefer an enum like so:
+>>
+>> enum pwrseq_state {
+>>         PWRSEQ_POWER_UNKNOWN,
+>>         PWRSEQ_POWER_ON,
+>>         PWRSEQ_POWER_OFF
+>> };
+>
+> Well I think the crux of it is whether the API considers the descriptor
+> optional. The power on/off functions suggest that is the case.
+>
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+True. That may be an inconsistency of the API contract on my part. There's =
+no
+such thing as an optional variant of pwrseq_get() so perhaps pwrseq_power_o=
+n()
+and pwrseq_power_off() should be converted to returning -EINVAL on NULL
+descriptor.
 
-Best regards,
-Krzysztof
+> I modeled this on reset_control_status(). I believe the rationale is that
+> if the reset control or pwrseq is optional, then either there is some
+> other mechanism to deal with the reset (GPIO) or pwrseq (GPIO + regulator=
+),
+> or it's always on and operational.
+>
+> In such cases and the rare case where one has to query the state, the
+> queries are possibly chained together and I think it makes sense to
+> assume the "operational" state as the fallback.
+>
+> If this returns an enum, then I think the previous approach of returning
+> an error value for an invalid descriptor is better. One doesn't need to
+> learn a new set of return values.
+>
+> I'm fine either way. I would just move the checks over to the consumer
+> side. But I think the principles guiding the overall API design is
+> something you need to provide:
+>
+>   - Is the descriptor optional? What should the action functions
+>     (power on / off , or query status) return when NULL is given?
+>   - Is the subsystem optional? Should the stub functions besides
+>     pwrseq_get() return 0 instead of -ENOSYS?
+>
+> Right now the API feels like the descriptor is optional but the
+> subsystem is not. One has to add IS_ENABLED(CONFIG_POWER_SEQUENCING)
+> around the consumer API to make it an optional feature.
+>
 
+There's one more use-case where the power state trully can be *unknown*.
+Please look at the proposed new function from Loic[1]. Here we deal with
+targets over which linux has no direct power control even though it may sti=
+ll
+control some of its dependencies. This is where an UNKNOWN state may make
+sense.
+
+This is where I also floated an idea of renaming pwrseq_power_on/off() to
+pwrseq_vote_on/off() for better clarity of their purpose.
+
+Thanks,
+Bartosz
+
+[1] https://lore.kernel.org/all/20260710-monza-wireless-v3-3-46253587af64@o=
+ss.qualcomm.com/
 
