@@ -4,94 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27068C44512
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 17:34:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 240B8C44515
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 17:44:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q2L2wpVvjQnpFjcjvsMBn9WiAReQKULlZAY6h8Pahm0=; b=4BA0FK354MiMrtcQPIvcUCerqL
-	XBbXFYygoJ+bSAA7rtlwudvRylwWJ0xQmPBoKBEkNvI2RdRFEGSXYdfZ4gv0qz49O5AhhmyIqDzDA
-	wElxK7kud8PuyIfH805MN6ZhrasXDwUrXhjktkDzbiN3O6u7Gn8O5Va6h4yW5Wp+SmZnQ8k2Fnk9j
-	SQobNX8nyTFMjsgBuqIcRpDjeQ9OIXkqefuCH0ZN/b6xjSNFpJb4td4uTipjAWyANUHMwO1+LyEKD
-	9DD3eaZ4muNhfp1RRPjF7vlFunbRQlk0H8/wHi0XoyXu/5vxupEXB/ICEpyabSXJWmLUJwDVCKe1t
-	nbHUCG1A==;
+	bh=tVLdSx79+8Bzgir/Sc66ApOsik9GIIidNucjbg3PmSM=; b=O3kLVxT/HeIQpj0Ov1u0kj8OWW
+	SNzHYUfFg5HRbNTHZy9cEASFvCtTblKBsASy7fhTq0x3do1CUlK5UFLqeUi1cLV4hRjvzLhSrEpUv
+	7GOmKGSpyDpUPNfRk8KakS4U/6BxkWKv/Cwv1n9d7aYxvV+IW0KZv02+gIM3g0xRX+46urNuOmd6c
+	EEQF3dPtdz6kj/KODK0g57EJk5Xe+gBac32Lj+bQIM69Z1W90FfZ9Azae15EN9Ydg35VEl34dwyV/
+	C07euICCprpkm55j/VvS14EeFBiqxh7jo0lZb2QgLyXDXAgqjkViX20iAHR9Tybo0cHkPD+GA3XEg
+	FLuiUHkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkPyZ-00000000HwE-0Tvn;
-	Thu, 16 Jul 2026 17:34:23 +0000
-Received: from mgamail.intel.com ([192.198.163.15])
+	id 1wkQ8D-00000000Irt-38lT;
+	Thu, 16 Jul 2026 17:44:21 +0000
+Received: from mgamail.intel.com ([192.198.163.19])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkPyW-00000000Hve-3pjA;
-	Thu, 16 Jul 2026 17:34:22 +0000
+	id 1wkQ8A-00000000Ir7-1OeX;
+	Thu, 16 Jul 2026 17:44:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1784223261; x=1815759261;
+  t=1784223858; x=1815759858;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:content-transfer-encoding:in-reply-to;
-  bh=LdUVk/NYwiBLxejC3EguQWO9elJf87/PL/iYCAtTcfo=;
-  b=JpWcxAJKluwxyzE/qCDFc9p8umLSSvduD5GoIqQNBlwLZd8PgBTEdPmp
-   87ySbTmrQ7vo2G4IhPuO7/rHJvGQyCQQXiX4bOaIv56l2sg+s7VzCb681
-   rvL6XPZDO/zvue9CgqPcwavTThqxvmKnDb1Izy9GqBnXLhupS40zO7QMH
-   m+NqJb3oOyLPgrwX6LT24jGUJaKGUmVTFYsS1zKTVR9nPTmcIvOoglQf+
-   tep2EmM4VSd1GJelsHtLt3WZXwk1Dx+gnpR8I1Vjohd0PsJmbKPZQBYJL
-   q0IjhCkA4PNA2bHpOowfMMjoCJXfPNo8FVFLrUSPNoCq+ZAmgt4AJd1BE
-   g==;
-X-CSE-ConnectionGUID: 6xLsh8u8SxmVoau4XXKhwQ==
-X-CSE-MsgGUID: ZoH1ssypS/aJn/tLXqUJSQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11848"; a="85009574"
+  bh=jR5j9NUUUDWrKfOXsM73JV6fyT1VqUxtuhsCIIn6jKM=;
+  b=D7QnHeLRacmdz4Nd6pY6gn5fyUUkoaStawf1F89wB1NPlNT/z/Lu6zbA
+   tR2IpcQJsRaFTYSI8GLYWWzGO3or8flZccHQE7NZH8v3oF5mB3aZV0RYN
+   He6ZDjfnKdyhWW+Nyivi2hE2XTmPubxSuOwcANBNNFvHm9ityOdFFVQ6G
+   gMbeoR22Ajw7CQW5MyYaD1zcLfJa9D1qRIkvmeCk1j2f8bG0Jp+d6Hmsi
+   gIcKFye7Iw2gWoq0jZeYtyOCRluaN8ki1XiaF53SGmoGfTiouPQm/rbKr
+   umD9cm2zcdtiwMpdV3UzMmkER+LzIfkyjLGT6GMv5xulZKxZkTewVBK00
+   Q==;
+X-CSE-ConnectionGUID: S3Y5L6V2THiDiyuTc8jieA==
+X-CSE-MsgGUID: EEZoah43SxClRD5d0ZmeaA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11848"; a="83877246"
 X-IronPort-AV: E=Sophos;i="6.25,167,1779174000"; 
-   d="scan'208";a="85009574"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jul 2026 10:34:20 -0700
-X-CSE-ConnectionGUID: G088pS9JRWCNCTzsqTnKsA==
-X-CSE-MsgGUID: jHS8gdqYTkewW49IH6KeVQ==
+   d="scan'208";a="83877246"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jul 2026 10:44:15 -0700
+X-CSE-ConnectionGUID: aMxhVdAuQT2VWNRoxPa/nw==
+X-CSE-MsgGUID: NDeukz9TQ02LlIOQEavzaw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.25,167,1779174000"; 
-   d="scan'208";a="260157517"
+   d="scan'208";a="256023287"
 Received: from conormcd-mobl2.ger.corp.intel.com (HELO localhost) ([10.245.245.26])
-  by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jul 2026 10:34:14 -0700
-Date: Thu, 16 Jul 2026 20:34:11 +0300
+  by orviesa008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jul 2026 10:43:55 -0700
+Date: Thu, 16 Jul 2026 20:43:53 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Bartosz Golaszewski <brgl@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Daniel Scally <djrscally@gmail.com>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
+Cc: Linus Walleij <linusw@kernel.org>,
+	Bartosz Golaszewski <brgl@kernel.org>, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, Lixu Zhang <lixu.zhang@intel.com>,
 	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	Hans de Goede <hansg@kernel.org>, Andy Shevchenko <andy@kernel.org>,
+	Ray Jui <rjui@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
+	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>, Imre Kaloz <kaloz@openwrt.org>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Daniel Palmer <daniel@thingy.jp>,
+	Romain Perier <romain.perier@gmail.com>,
+	Robert Jarzmik <robert.jarzmik@free.fr>, imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	Hoan Tran <hoan@os.amperecomputing.com>,
+	Alan Borzeszkowski <alan.borzeszkowski@linux.intel.com>,
+	Mika Westerberg <westeri@kernel.org>,
+	"Enrico Weigelt, metux IT consult" <info@metux.net>,
+	Viresh Kumar <vireshk@kernel.org>, virtualization@lists.linux.dev,
+	Yinbo Zhu <zhuyinbo@loongson.cn>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>, linux-tegra@vger.kernel.org,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Alban Bedel <albeu@free.fr>,
+	James Cowgill <james.cowgill@blaize.com>,
+	Matt Redfearn <matt.redfearn@blaize.com>,
+	Neil Jones <neil.jones@blaize.com>,
+	Nikolaos Pasaloukos <nikolaos.pasaloukos@blaize.com>,
+	Doug Berger <opendmb@gmail.com>, Keerthy <j-keerthy@ti.com>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>,
+	Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
+	Neal Gompa <neal@gompa.dev>,
+	Mathieu Dubois-Briand <mathieu.dubois-briand@bootlin.com>,
+	=?iso-8859-1?Q?Andr=E9?= Draszik <andre.draszik@linaro.org>,
+	Bamvor Jian Zhang <bamv2005@gmail.com>,
+	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wei Deng <wei.deng@oss.qualcomm.com>, linux-acpi@vger.kernel.org,
-	driver-core@lists.linux.dev, linux-pm@vger.kernel.org,
-	linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
+	Benjamin Fair <benjaminfair@google.com>,
+	Santosh Shilimkar <ssantosh@kernel.org>,
+	Kevin Hilman <khilman@kernel.org>, Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Magnus Damm <magnus.damm@gmail.com>,
 	Manivannan Sadhasivam <mani@kernel.org>,
-	Alan Stern <stern@rowland.harvard.edu>,
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: Re: [PATCH v5 10/16] usb: hub: Power on connected M.2 E-key
- connectors with power sequencing API
-Message-ID: <alkWE-bQ9gGIXIJj@ashevche-desk.local>
-References: <20260715085348.3457359-1-wenst@chromium.org>
- <20260715085348.3457359-11-wenst@chromium.org>
- <aleKQKH2V-ck-SX6@ashevche-desk.local>
- <CAGXv+5Ed9Cn-NeHiXJ58er7NJs1P2ZUMrjqYac-gSky-TNV8Lw@mail.gmail.com>
+	Heiko Stuebner <heiko@sntech.de>,
+	Ludovic Desroches <ludovic.desroches@microchip.com>,
+	Paul Walmsley <pjw@kernel.org>,
+	Samuel Holland <samuel.holland@sifive.com>,
+	Michael Walle <mwalle@kernel.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>,
+	Shubhrajyoti Datta <shubhrajyoti.datta@amd.com>,
+	Srinivas Neeli <srinivas.neeli@amd.com>,
+	Michal Simek <michal.simek@amd.com>, linux-aspeed@lists.ozlabs.org,
+	asahi@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	openbmc@lists.ozlabs.org, linux-omap@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org, linux-unisoc@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Michael Buesch <m@bues.ch>, William Breathitt Gray <wbg@kernel.org>,
+	Robert Richter <rric@kernel.org>, linux-acpi@vger.kernel.org
+Subject: Re: [PATCH v2 00/21] gpio: Improvements around device-id arrays
+Message-ID: <alkYWcuMsfE5jkLR@ashevche-desk.local>
+References: <cover.1784133987.git.u.kleine-koenig@baylibre.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5Ed9Cn-NeHiXJ58er7NJs1P2ZUMrjqYac-gSky-TNV8Lw@mail.gmail.com>
+In-Reply-To: <cover.1784133987.git.u.kleine-koenig@baylibre.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260716_103420_961472_09336E91 
-X-CRM114-Status: GOOD (  23.90  )
+X-CRM114-CacheID: sfid-20260716_104418_416592_5F9E8B42 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,60 +159,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 16, 2026 at 06:02:38PM +0800, Chen-Yu Tsai wrote:
-> On Wed, Jul 15, 2026 at 9:25â€¯PM Andy Shevchenko
-> <andriy.shevchenko@linux.intel.com> wrote:
-> > On Wed, Jul 15, 2026 at 04:53:40PM +0800, Chen-Yu Tsai wrote:
-
-...
-
-
-> > >       fwnode_handle_put(dev_fwnode(dev));
-> > > +     /* usb_hub_create_port_device() could leave an error value */
-> > > +     if (!IS_ERR(port_dev->pwrseq))
-> > > +             pwrseq_put(port_dev->pwrseq);
-> >
-> > Hmm... I would rather make pwrseq_put() NULL and error pointer-aware, so
-> > it will be no-op in such cases. But I think Bart has his own opinion about
-> > this.
-> >
-> > >       kfree(port_dev->req);
-> > >       kfree(port_dev);
-> > >  }
-> >
-> > >               put_device(&port_dev->dev);
-> > > +             hub->ports[port1 - 1] = NULL;
-> > >               return retval;
-> > >       }
-
-...
-
-> > > int usb_hub_create_port_device(struct usb_hub *hub, int port1)
-> >
-> > > +     port_dev->pwrseq = usb_hub_port_pwrseq_get(port_dev);
-> > > +     if (IS_ERR(port_dev->pwrseq)) {
-> > > +             retval = dev_err_probe(&port_dev->dev, PTR_ERR(port_dev->pwrseq),
-> > > +                                    "failed to get power sequencing descriptor\n");
-> > > +             goto err_put_kn;
-> >
-> > OTOH, how pwrseq can be non-NULL and at the same time port be created?
+On Wed, Jul 15, 2026 at 06:55:05PM +0200, Uwe Kleine-König (The Capable Hub) wrote:
+> Hello,
 > 
-> I assume by non-NULL you mean returning an error?
+> as with v1 the original motivation for this series are the patches that
+> convert the arrays to use named initializers, see
+> https://lore.kernel.org/all/cover.1780048925.git.u.kleine-koenig@baylibre.com/
+> for the idea behind it. Then by not closing the eyes for small issues
+> spotted while working on that, this series grew a bit.
 > 
-> device_register(&port_dev->dev) is called some lines above this.
-> 
-> usb_port is weird in that usb_hub_create_port_device() does a bunch
-> of stuff that is normally done in a driver's probe function. However
-> usb_port's driver is just a stub driver add for userspace compatibility
-> reasons. See commit d99f6b4130877 ("usb: rename usb_port device objects").
-> 
-> So at this point the usb_port device has been added to the driver model.
-> Or we can just zero out port_dev->pwrseq instead? I guess that is cleaner
-> than having some weird check in the release function.
+> Changes since v1 (available at
+> https://lore.kernel.org/linux-kernel/cover.1784013063.git.u.kleine-koenig@baylibre.com):
 
-So, why do we need to assign the error pointer to the field directly then?
-Make a local variable and assign it if and only if there is no error pointer
-in it. Would it work?
+Sorry, but at first glance it seems this version is messed up.
+I'm not going to look into it deeply, waiting for *carefully*
+checked v3...
 
 -- 
 With Best Regards,
