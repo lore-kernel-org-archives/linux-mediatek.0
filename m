@@ -4,74 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCB3DC4450A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 09:34:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5C79C44501
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 09:39:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XXSHjxq91CcW9IwWl8dloQaOhno2LuxnJvN3+jcprls=; b=C8PFGXIKg/H4rQ5ENkimteU1YE
-	AfguYaqmpNWWBhnHCa2zdB/Ndna7zizlivmQZKHYUqs2F2wTIZ1AfYAdNQdAll6yW6BXN23Y3Gc9b
-	drPVoNN+GzOggiss4A1TzpRX0OC+wepSjWTeOWhsGYAMJFnjfRxmorAPKsIxPUHrEtpcURVwkRkcf
-	ZKIrGe9GBMZ5YEbLZVCHrvx04FZvHhpf2hTg2oNIJ7ZySAgFRBa/Iz449zRuk8b+Cotslpkr/CsTk
-	QSAQtyx5jijNFoky8RaYvJoCpGM5xVjzCbOqlY9RwGwVXhBL7FrprKzp17JZrY1m4IEFDxRpcmdY6
-	uNqNpJOw==;
+	bh=0CHRQwxG2g8NAYPuVqgPl5XkBCDxSDwrk5H6G4V1gVk=; b=EJq/M1mi/ze9W7jyVLxfzajEKZ
+	bxvkGyGTVO/n4LdW5dz5VllIkIfL4+oXo5VWJHa5aZJREczUq1rK+qZ3cbaNsYZPnc+MQAf9pIhDI
+	T6DUZ5jyYcWbc8dVfpSxBA4zaMoESnwJug3ySrfKjM26Nevrcf29bsU4+fDaqIQCUeSHgBnv1I+OE
+	/SGESbDW0LR3gbViGk4G1/zmSJhoqlg9eYqqBxYyeLKiMFdo9wy6dzPH+P5fm4E1Yzp5/QLSJMHCa
+	1CnT6bO/ezt1yAQmenSZYY9f/5AZiqIHC3JigEtrJjrREtNOY7hDVwNapqp3Y1UKZj12LW+P6diL/
+	dRgbRBsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkIUO-0000000Gt6G-2ng4;
-	Thu, 16 Jul 2026 09:34:44 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wkIZ5-0000000GuD2-3Asp;
+	Thu, 16 Jul 2026 09:39:35 +0000
+Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkIU9-0000000GsuX-3JIS;
-	Thu, 16 Jul 2026 09:34:29 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3CA016137F;
-	Thu, 16 Jul 2026 09:34:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E75EE1F000E9;
-	Thu, 16 Jul 2026 09:34:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784194468;
-	bh=XXSHjxq91CcW9IwWl8dloQaOhno2LuxnJvN3+jcprls=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=fpXG433rnfcNLScmNL5cL5X0tDpp8zpZ5AT7eSd8b8HbYjOozeIcvr1h7DjT7sBEf
-	 N0KvuXyDt/BRO/7SGuWnghULGcpGti8vqQNw3lCnW+0bh6oaCPJ1bdwzw4Wa55vQtm
-	 2azFIzVR/mQMgRxEKeM1lz3hkydhTSMykI3Wf4u6l9MRlmVN05cT7k32cic6JM7PZL
-	 eRE0HC/RQGrUBVaCwazKoTeJprDfEHR1jHrHukEm8QJ5A3ZiNVKsNsQshGUFzdUTdW
-	 dTwh6br5TQd/Z/7ExLHMo/c3SEHBQ6UnK2S66gPkKIidb9RG7W0jeQ1sbKNYLrZ8jU
-	 kJDXWO6xRKyMQ==
-From: Simon Horman <horms@kernel.org>
-To: jackbb_wu@compal.com
-Cc: Simon Horman <horms@kernel.org>,
-	loic.poulain@oss.qualcomm.com,
-	ryazanov.s.a@gmail.com,
-	johannes@sipsolutions.net,
-	andrew+netdev@lunn.ch,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	wen-zhi.huang@mediatek.com,
-	shi-wei.yeh@mediatek.com,
-	Minano.tseng@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	corbet@lwn.net,
-	skhan@linuxfoundation.org,
-	linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-doc@vger.kernel.org
-Subject: Re: [PATCH v4 5/7] net: wwan: t9xx: Add FSM thread
-Date: Thu, 16 Jul 2026 10:34:22 +0100
-Message-ID: <20260716093422.231112-1-horms@kernel.org>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260709-t9xx_driver_v1-v4-5-a8c009d509c5@compal.com>
-References: <20260709-t9xx_driver_v1-v4-5-a8c009d509c5@compal.com>
+	id 1wkIZ2-0000000GuBi-0glz
+	for linux-mediatek@lists.infradead.org;
+	Thu, 16 Jul 2026 09:39:33 +0000
+Received: by mail-yx1-xb129.google.com with SMTP id 956f58d0204a3-66804667af2so2663970d50.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 02:39:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1784194770; cv=none;
+        d=google.com; s=arc-20260327;
+        b=e/JXiF7u9FoBceqPt0dviYxoIdUO/TCogPEqkHg+wjM0yzmmp0iYHz70K6Tvw5OQEa
+         bSAe58a8fTCLY3aTtR0hpEFe5aARHP26NgW+bhxQjap/1bEgo+wUYjBlKFHvXrOEaEdH
+         H8PNnqlbE8FfQcz4qbaxBlxBY3eSbMvKftUq7bk5ykRsiGZmmfj4oAPlrvs7oqw6nnD0
+         U0CEoETSlrlPwuOUG1RmyVzQGYdxCJRrFRxMjLZeZ+MTqKmsQnjEvpZ4FajR7xUTycdZ
+         sWHTehSz383pqrguQaI21Wot3ZvtrRbaqQJZpFklJOvsxQTE/PsF0UrXonhaSvhogqt6
+         Nt8g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=0CHRQwxG2g8NAYPuVqgPl5XkBCDxSDwrk5H6G4V1gVk=;
+        fh=hJB7fyJi7GnyrFemzmcTfnljoPSMaGPnhB8j6HSxVnU=;
+        b=OcaTc7ME6PckkCXYKhXwfmx1GagVSM3YEZNmANPnuW/zloAGHFdLzFSx5z944AwI6/
+         03uxMTmt+/bP3eeto3vK62ML3xB+iD+9WFijocmiDnafHzWxv3LMG/wBJvMB8hOk8Yhn
+         AQU6zCVqafV/ENUzsvcZO6iP3/0VwvtMs1R+x0wONhJ89sap3kv9VC22tjVKkhGMM8fE
+         bHFwGvxx1/qZE4BwZB81zvgq7GWRqFUiYDBJpMWFxB2faIWjZMAwnLw1NRPSEHDQbSCD
+         AKv3vhIon3/fwnedUuJF9tMinSzVuxwhNqzj7WJFtSFwkbNZj57xI4kNtgK10tMS4XL2
+         XqgQ==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1784194770; x=1784799570; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=0CHRQwxG2g8NAYPuVqgPl5XkBCDxSDwrk5H6G4V1gVk=;
+        b=IpIVooidAb0YzfYdzQAGVQHAy9TSUXNzMmD9aJGpXRUHzePkhkm8bCPcOUgO+uqqzW
+         pbJmvuWSu5juEGScWIjXIw7sYqw+mMSPJv7FbvVlNJ+E9tAdjYlWyofPee6jwPZl5Ztp
+         M/9GgBaR+7bd+MgyIZWqiGYqJZh2xS6ANdt2s=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1784194770; x=1784799570;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=0CHRQwxG2g8NAYPuVqgPl5XkBCDxSDwrk5H6G4V1gVk=;
+        b=i//IfYOPqwAX2LM+ZxeH9vIuYvWB+57Cm3i8+C5vmRKLBWAGlZuVLZ95v+Sw0cnJRm
+         z42/Ydgiul7aMB1nln/nKyztP3kG/UeGu3jGX8V2c1qM6jBv2yM/i5WPnyYEyh/rVmuO
+         sP+SUAUQwBZHQ8kup9KWbwUZOLkcFfwwE/Dx9OOpRLTNSxtMMnIuU2jidgf6U/ZWWwf6
+         FYPrV1thR90j6U7QkqELQGVQ+et1jls8PcxNvCCnYOVxIVHBedTeRaBc78CQnEsA0jZl
+         ODOnrKwFrSr+BPU6h8PKXFYnsX4DkBGy/8A1JOTg3iaqbhr5VRNElvKsfnEUCn9MHzrS
+         eYyw==
+X-Forwarded-Encrypted: i=1; AHgh+RqODzrsPsczpia+gSkSUh8JI5RpFEwww9IVIcg3ofsJK6FFl0+cRhOZNIREj4a+wXNRaK9iLWLiN3dWCEsFTw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw3av/DzUuAtNVH2bF1rJFQxlrBR8OcFWMTpxyqFx9x48pdx8in
+	+0+bWaepuDuMFZOrcjYQMFeJ/iO97VoxQwoGshvv5dcQlC47qAsCPGCihtDrH54sWLTtMASxRvZ
+	cdIErBqgykF8xVmFCDKFXSPEL+KKkc7pgMnGxO6Dg
+X-Gm-Gg: AfdE7cnK/klZNpRHtAQ6T+Y41o2StNw67J+JjB1rfsb+A2D1xe8Kv7WLuH8uFpFeVT/
+	9p9JiZoGWxrU/FsDprE4H+Iiw7sHLeAovM94yfe7+8XhqWKo6a3oNGbTjQHwZazXyyWOl8w19CH
+	mXE6jxamnNVzS4WWsZz2bYdYk/x2eE7jq3APggANK9E667aNnP57r60u1zjdJHvI35IC8cyMW4U
+	FKJKpL++t3/N/x6h0E0yZqEk3IpilmwoHJtzVQAd8dXb+JqGbN2SoxMJJUj9TifJEp0iDLva10J
+	x1fio+gBosuVU9l1
+X-Received: by 2002:a53:c80e:0:b0:667:bb38:d969 with SMTP id
+ 956f58d0204a3-667d7b0060amr9599454d50.16.1784194770410; Thu, 16 Jul 2026
+ 02:39:30 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20260715085348.3457359-1-wenst@chromium.org> <20260715085348.3457359-4-wenst@chromium.org>
+ <aldS3qTympJuVXYj@ashevche-desk.local> <CAMRc=MfHmejks83bPfe3fKzAzFySGXk2GHMA9oZdMQj0f44eTA@mail.gmail.com>
+ <CAGXv+5HGjGTrqqzJrpiQhLrCn3C6H20LXq3niPnoujQLOwgqPw@mail.gmail.com> <CAMRc=Mefxn81d0VUwmQgwFtffkL1=Er_1VQZCbC1Sa-Qph4t1w@mail.gmail.com>
+In-Reply-To: <CAMRc=Mefxn81d0VUwmQgwFtffkL1=Er_1VQZCbC1Sa-Qph4t1w@mail.gmail.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 16 Jul 2026 17:39:19 +0800
+X-Gm-Features: AUfX_mzbe7WMgo0cPdR-Yi-m3qfqJETc7DH9Y1NWKQqSMqgCgHS_ReKsQ1v2DI0
+Message-ID: <CAGXv+5G0Ffrh-8UohJuGPQ0e7KGpy11=X7t1JtDYLTJ_tZgMCA@mail.gmail.com>
+Subject: Re: [PATCH v5 03/16] power: sequencing: Add pwrseq_power_is_on()
+To: Bartosz Golaszewski <brgl@kernel.org>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Daniel Scally <djrscally@gmail.com>, 
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Wei Deng <wei.deng@oss.qualcomm.com>, linux-acpi@vger.kernel.org, 
+	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>, 
+	Alan Stern <stern@rowland.harvard.edu>, 
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260716_023932_236240_0650D637 
+X-CRM114-Status: GOOD (  39.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,201 +129,124 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is an AI-generated review of your patch. The human sending this
-email has considered the AI review valid, or at least plausible.
-Full review at: https://sashiko.dev
----
---- Patch [5]: [PATCH v4 5/7] net: wwan: t9xx: Add FSM thread ---
-commit 8cf81b126e77414e72ef40886e0728c165b2e588
-Author: Jack Wu <jackbb_wu@compal.com>
+On Thu, Jul 16, 2026 at 4:14=E2=80=AFPM Bartosz Golaszewski <brgl@kernel.or=
+g> wrote:
+>
+> On Thu, 16 Jul 2026 06:59:01 +0200, Chen-Yu Tsai <wenst@chromium.org> sai=
+d:
+> > On Wed, Jul 15, 2026 at 8:10=E2=80=AFPM Bartosz Golaszewski <brgl@kerne=
+l.org> wrote:
+> >>
+> >> On Wed, 15 Jul 2026 11:29:02 +0200, Andy Shevchenko
+> >> <andriy.shevchenko@linux.intel.com> said:
+> >> > On Wed, Jul 15, 2026 at 04:53:33PM +0800, Chen-Yu Tsai wrote:
+> >> >> The power sequencing consumer API already does power on state track=
+ing
+> >> >> internally. Expose the state to consumers through pwrseq_power_is_o=
+n()
+> >> >> so that they don't have to reimplement it locally.
+> >> >
+> >> > Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> >> >
+> >> > ...
+> >> >
+> >> >> +/**
+> >> >> + * pwrseq_power_is_on() - Queries the last requested state of the =
+power sequencer.
+> >> >> + * @desc: Descriptor referencing the power sequencer.
+> >> >> + *
+> >> >> + * This returns the last requested state of the power sequencer.
+> >> >> + *
+> >> >> + * Returns:
+> >> >> + * On success, 1 for on or desc is NULL (optional) and 0 for off;
+> >> >> + * negative error number on failure.
+> >> >
+> >> > I would rephrase it a bit.
+> >> >
+> >> >  * On success, 1 for on and 0 for off; negative error number on fail=
+ure.
+> >> >  * If desc is NULL (means optional) return 1.
+> >> >
+> >> > And this rises a question: why 1? Shouldn't it be some "unknown" sta=
+te?
+> >> > (But since Bart Acked this, this doesn't prevent the patch to go, yo=
+u
+> >> >  got my tag above.)
+> >> >
+> >>
+> >> No, this is good feedback. Maybe we should prefer an enum like so:
+> >>
+> >> enum pwrseq_state {
+> >>         PWRSEQ_POWER_UNKNOWN,
+> >>         PWRSEQ_POWER_ON,
+> >>         PWRSEQ_POWER_OFF
+> >> };
+> >
+> > Well I think the crux of it is whether the API considers the descriptor
+> > optional. The power on/off functions suggest that is the case.
+> >
+>
+> True. That may be an inconsistency of the API contract on my part. There'=
+s no
+> such thing as an optional variant of pwrseq_get() so perhaps pwrseq_power=
+_on()
+> and pwrseq_power_off() should be converted to returning -EINVAL on NULL
+> descriptor.
 
-net: wwan: t9xx: Add FSM thread
+OK. I guess the other resource subsystems allowed it more as a convenience
+to consumers.
 
-This commit introduces a finite-state machine (FSM) thread for the MTK WWAN
-driver to synchronize module actions. It handles events sequentially from a
-queue and notifies other modules before and after state transitions.
+> > I modeled this on reset_control_status(). I believe the rationale is th=
+at
+> > if the reset control or pwrseq is optional, then either there is some
+> > other mechanism to deal with the reset (GPIO) or pwrseq (GPIO + regulat=
+or),
+> > or it's always on and operational.
+> >
+> > In such cases and the rare case where one has to query the state, the
+> > queries are possibly chained together and I think it makes sense to
+> > assume the "operational" state as the fallback.
+> >
+> > If this returns an enum, then I think the previous approach of returnin=
+g
+> > an error value for an invalid descriptor is better. One doesn't need to
+> > learn a new set of return values.
+> >
+> > I'm fine either way. I would just move the checks over to the consumer
+> > side. But I think the principles guiding the overall API design is
+> > something you need to provide:
+> >
+> >   - Is the descriptor optional? What should the action functions
+> >     (power on / off , or query status) return when NULL is given?
+> >   - Is the subsystem optional? Should the stub functions besides
+> >     pwrseq_get() return 0 instead of -ENOSYS?
+> >
+> > Right now the API feels like the descriptor is optional but the
+> > subsystem is not. One has to add IS_ENABLED(CONFIG_POWER_SEQUENCING)
+> > around the consumer API to make it an optional feature.
+> >
+>
+> There's one more use-case where the power state trully can be *unknown*.
+> Please look at the proposed new function from Loic[1]. Here we deal with
+> targets over which linux has no direct power control even though it may s=
+till
+> control some of its dependencies. This is where an UNKNOWN state may make
+> sense.
+>
+> This is where I also floated an idea of renaming pwrseq_power_on/off() to
+> pwrseq_vote_on/off() for better clarity of their purpose.
 
-> diff --git a/drivers/net/wwan/t9xx/mtk_fsm.c b/drivers/net/wwan/t9xx/mtk_fsm.c
-> new file mode 100644
-> index 0000000000000..daefb7581ce0f
-> --- /dev/null
-> +++ b/drivers/net/wwan/t9xx/mtk_fsm.c
-[ ... ]
-> +static int mtk_fsm_parse_hs2_msg(struct fsm_hs_info *hs_info)
-> +{
-> +	struct mtk_md_fsm *fsm = container_of(hs_info, struct mtk_md_fsm, hs_info[hs_info->id]);
-> +	char *rt_data = ((struct sk_buff *)hs_info->rt_data)->data;
+OK. Would it make sense to revert to returning -EINVAL if the descriptor
+is NULL now, and then add a different error return value if !controllable
+in the future?
 
-[Severity: High]
-Does this iterate over the SKB payload assuming the entire payload is linearly
-accessible? Networking core guidelines usually require checking boundaries
-using pskb_may_pull() before direct dereferencing, as packets might be
-fragmented.
 
-[ ... ]
-> +		if (cur_ft_spt == RTFT_TYPE_MUST_SUPPORT)
-> +			if (query_rtft_action[ft_id])
-> +				ret = query_rtft_action[ft_id](fsm->mdev, rtft_entry->data);
-> +		if (ret < 0)
-> +			break;
-> +
-> +		data_len = le32_to_cpu(rtft_entry->data_len);
-> +		if (data_len > hs_info->rt_data_len - offset - sizeof(*rtft_entry))
-> +			break;
+Thanks
+ChenYu
 
-[Severity: High]
-Is the rtft_entry->data passed to the action callback (like
-mtk_port_status_update) before data_len is checked against the remaining
-buffer bounds? This appears to allow an out-of-bounds heap read if a
-crafted message has a large port_cnt and truncated payload.
-
-[ ... ]
-> +static int mtk_fsm_send_hs3_msg(struct fsm_hs_info *hs_info)
-> +{
-> +	struct mtk_md_fsm *fsm = container_of(hs_info, struct mtk_md_fsm, hs_info[hs_info->id]);
-> +	unsigned int data_len, msg_size = 0;
-> +	struct ctrl_msg_header *ctrl_msg_h;
-> +	struct sk_buff *skb;
-> +	int ret;
-> +
-> +	skb = __dev_alloc_skb(RTFT_DATA_SIZE, GFP_KERNEL);
-> +	if (!skb)
-> +		return -ENOMEM;
-
-[Severity: High]
-Does this leak uninitialized kernel heap memory to the WWAN device?
-__dev_alloc_skb() does not zero the buffer, and when the structure is
-populated in mtk_fsm_append_rtft_entries(), the 2-byte reserved field
-(and potentially support_info if the switch falls through) appear to be
-left uninitialized.
-
-[ ... ]
-> +static int mtk_fsm_sap_ctrl_msg_handler(void *__fsm, struct sk_buff *skb)
-> +{
-> +	struct ctrl_msg_header *ctrl_msg_h;
-> +	struct mtk_md_fsm *fsm = __fsm;
-> +	struct fsm_hs_info *hs_info;
-> +	int ret;
-> +
-> +	if (skb->len < sizeof(*ctrl_msg_h)) {
-> +		dev_kfree_skb(skb);
-> +		return -EINVAL;
-> +	}
-> +
-> +	ctrl_msg_h = (struct ctrl_msg_header *)skb->data;
-> +	skb_pull(skb, sizeof(*ctrl_msg_h));
-
-[Severity: High]
-Can skb_pull() trigger a BUG() here if the SKB is fragmented? It seems the
-payload is directly accessed and pulled without calling pskb_may_pull()
-to guarantee the required bytes are in the linear data region.
-
-[ ... ]
-> +	hs_info = &fsm->hs_info[HS_ID_SAP];
-> +	if (le32_to_cpu(ctrl_msg_h->id) != CTRL_MSG_HS2) {
-> +		dev_kfree_skb(skb);
-> +		return -EPROTO;
-> +	}
-> +
-> +	hs_info->rt_data = skb;
-> +	hs_info->rt_data_len = skb->len;
-> +	ret = mtk_fsm_evt_submit(fsm->mdev, FSM_EVT_STARTUP,
-> +				 hs_info->fsm_flag_hs2, hs_info, sizeof(*hs_info), 0);
-> +	if (ret == FSM_EVT_RET_FAIL)
-> +		dev_kfree_skb(skb);
-
-[Severity: High]
-If mtk_fsm_evt_submit() fails, the SKB is freed, but hs_info->rt_data
-is not set to NULL. Could this dangling pointer cause a double-free later in
-the error path of mtk_fsm_startup_act()?
-
-Also, hs_info->rt_data is assigned without locking here. If consecutive
-messages arrive, could this overwrite the pointer and leak the previous SKB?
-When the FSM thread eventually parses the first event, it sets the pointer to
-NULL, which would cause subsequent queued events to dereference NULL in
-mtk_fsm_parse_hs2_msg().
-
-[ ... ]
-> +static void mtk_fsm_evt_cleanup(struct mtk_md_fsm *fsm, struct list_head *evtq)
-> +{
-> +	struct mtk_fsm_evt *event, *tmp;
-> +
-> +	list_for_each_entry_safe(event, tmp, evtq, entry) {
-> +		list_del(&event->entry);
-> +		mtk_fsm_evt_finish(fsm, event, FSM_EVT_RET_FAIL);
-> +	}
-> +}
-
-[Severity: Medium]
-When flushing the event queue on device removal, does this cleanup miss
-freeing the SKB currently stored in the shared fsm->hs_info[].rt_data if an
-HS2 message was pending?
-
-[ ... ]
-> +int mtk_fsm_notifier_register(struct mtk_md_dev *mdev, enum mtk_user_id id,
-> +			      void (*cb)(struct mtk_fsm_param *, void *data),
-> +			      void *data, enum mtk_fsm_prio prio, bool is_pre)
-> +{
-[ ... ]
-> +	if (is_pre)
-> +		mtk_fsm_notifier_insert(notifier, &fsm->pre_notifiers);
-> +	else
-> +		mtk_fsm_notifier_insert(notifier, &fsm->post_notifiers);
-
-[Severity: Medium]
-Is it safe to modify these notifier lists globally without spinlock or mutex
-protection? The FSM kthread traverses these lists in mtk_fsm_switch_state()
-and could race with registration or unregistration.
-
-[ ... ]
-> +int mtk_fsm_evt_submit(struct mtk_md_dev *mdev,
-> +		       enum mtk_fsm_evt_id id, enum mtk_fsm_flag flag,
-> +		       void *data, unsigned int len, unsigned char mode)
-> +{
-[ ... ]
-> +	spin_unlock_irqrestore(&fsm->evtq_lock, flags);
-> +
-> +	wake_up_process(fsm->fsm_handler);
-
-[Severity: High]
-Could a race condition occur here during teardown? If this thread is
-preempted right after releasing the lock, mtk_fsm_exit() could execute,
-stopping the kthread and setting fsm->fsm_handler = NULL. When this thread
-resumes, calling wake_up_process(NULL) would trigger a kernel panic.
-
-> diff --git a/drivers/net/wwan/t9xx/mtk_port.c b/drivers/net/wwan/t9xx/mtk_port.c
-> --- a/drivers/net/wwan/t9xx/mtk_port.c
-> +++ b/drivers/net/wwan/t9xx/mtk_port.c
-[ ... ]
->  int mtk_port_ch_disable(struct mtk_port *port)
->  {
-[ ... ]
->  start_wait:
->  	ret = wait_event_interruptible_timeout(port->trb_wq, trb->status <= 0,
->  					       MTK_DFLT_TRB_TIMEOUT);
->  	if (ret == -ERESTARTSYS)
->  		goto start_wait;
-
-[Severity: High]
-If a signal is pending (e.g., SIGKILL), wait_event_interruptible_timeout()
-immediately returns -ERESTARTSYS. Won't this retry loop cause an infinite
-busy loop (100% CPU lockup) because the signal remains pending without
-sleeping?
-
-[ ... ]
-> +static void mtk_port_disable(struct mtk_port_mngr *port_mngr)
-> +{
-> +	struct mtk_port **ports;
-> +	int tbl_type;
-> +	int ret, idx;
-> +
-> +	ports = kcalloc(port_mngr->port_cnt, sizeof(struct mtk_port *), GFP_KERNEL);
-> +	if (!ports)
-> +		return;
-
-[Severity: High]
-If kcalloc() fails under memory pressure, this aborts the disable sequence
-silently. Would this leave hardware channels active during device teardown
-and cause use-after-free crashes? It might be safer to iterate via
-radix_tree_for_each_slot() without dynamic allocation.
+> Thanks,
+> Bartosz
+>
+> [1] https://lore.kernel.org/all/20260710-monza-wireless-v3-3-46253587af64=
+@oss.qualcomm.com/
 
