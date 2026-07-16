@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79A19C44513
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C23BC44511
 	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 01:59:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,30 +12,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NrLmXw2+grSg8BDLzNZP31Z2rCqGp6CpomTh+kmD5Sk=; b=RMmqzRiULYCZCCeFFTDWRY4mCP
-	qL6469fSn1xvFJyfYoxy+NNEDFMSqrnWcTSu522DQG8gB6fG5gS5hK+gQW0CDjOLv8vx67aCqH63O
-	DaQ0eVNxYhgYWktY+htH1ns7res+1vAVwM7UYqepM7jWZeJLLZu4oTbySqKMQ5G/GnXIdUmJVD1N5
-	xmbHrQzuVf4C6Amc5AuZMq8ATjMtawMAxG1T/LKlTD69vyH1X1xCsWePpvphHLitr6Nb5BSxh2MgN
-	c4OmQ0w6I9VVqZZvafhripHivA8sAaBq0FjJf8pn2JmNrXy0eM1ZRRTm0nCs7/yPr1IZpQWkQ4F5G
-	nYuqA4vA==;
+	bh=AorHqhtqwV15STsrkbRcHwPgCy7RSx0CoHKVd3m/ihM=; b=0MAYjVXkfkiI/pb90uTOKLwQ/8
+	gNg9JPG2YvWF9Kal+wZGFuFphDFbrtavT9T47k9wPZJqKoiry/mx4tK7QBcfZh1CZc+WU6Gcr54yh
+	YiNVB/C82s5DThujyOTUpDzibtBYuq6ulxTagrQ1QBF1N3Ontxvn4P3pwoIXjvLs+5pRMAG1XGUZ9
+	EY2moPkkeEbrC2XzLiIrtS3lFULZl+vgqUSbIcWOV2S13sbT5YG7NfmhoMl4xF/LqLcgOoX70PeDi
+	S8vU28/ieTDOgE+CAnvDF+/AOiA3r9KBvY3/GtB8i3ViX5gKEK6qUSarAbnhc0akGvb+VH3utZffw
+	VotlOFJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkBNw-0000000GEdf-0Zux;
+	id 1wkBNw-0000000GEeF-22fp;
 	Thu, 16 Jul 2026 01:59:36 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkBNr-0000000GEZv-2DUG
+	id 1wkBNr-0000000GEZQ-2Crc
 	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Jul 2026 01:59:32 +0000
-X-UUID: f863f21a80b911f1afed4741b24580c9-20260715
+	Thu, 16 Jul 2026 01:59:33 +0000
+X-UUID: f7edfd5880b911f1afed4741b24580c9-20260715
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=NrLmXw2+grSg8BDLzNZP31Z2rCqGp6CpomTh+kmD5Sk=;
-	b=UWi9vfdnghw3GNv11YVBiruRpo0ECGCcPuflmwZKAopIb/JE7ZKPLm0pwrfk85IEa/+ITq3W12s74B8WKAE1nxHKJ5F1hOpNUYfXVUE+kKGcrG0o+qQmBbNYAT5radErzhooUX9Xb0lw7ussiwPnXtrZBatKoZS6jxfUHQ+t2TI=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=AorHqhtqwV15STsrkbRcHwPgCy7RSx0CoHKVd3m/ihM=;
+	b=Xf/9GvgJbgajWOwws1Qg9NZzNHVBzlB/GkQmAn14AWewzS4yK2fTO7408d0aO9dMNaJfIlm0Suyc5q7mMtR2B0Fezo8v4dnPD4xrVzSl5SH7Jm0aJv4DR0TbjaMsgefG+08RyFAv4y8+G3h+AHwXpDjsY5EbhB3hqXknEPfdUWc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.17,REQID:3ea9d615-e0fa-48e2-bce9-a94f66857a4b,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:d497b38,CLOUDID:41302d19-ab14-4403-9336-76696324c5a8,B
+X-CID-O-INFO: VERSION:1.3.17,REQID:a093faf5-f5b9-415d-8b13-1c0a114d8bed,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:d497b38,CLOUDID:3f302d19-ab14-4403-9336-76696324c5a8,B
 	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
 	0|99|200|213,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:
 	0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -43,11 +43,11 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: f863f21a80b911f1afed4741b24580c9-20260715
+X-UUID: f7edfd5880b911f1afed4741b24580c9-20260715
 Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
 	(envelope-from <chris.lu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 788106713; Wed, 15 Jul 2026 18:59:24 -0700
+	with ESMTP id 537290665; Wed, 15 Jul 2026 18:59:24 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  MTKMBS14N2.mediatek.inc (172.21.101.76) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
@@ -63,9 +63,9 @@ CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
 	<pmenzel@molgen.mpg.de>, linux-bluetooth <linux-bluetooth@vger.kernel.org>,
 	linux-kernel <linux-kernel@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v12 2/7] Bluetooth: btmtk: Add firmware size validation in btmtk_setup_firmware_79xx()
-Date: Thu, 16 Jul 2026 09:59:14 +0800
-Message-ID: <20260716015920.1886719-3-chris.lu@mediatek.com>
+Subject: [PATCH v12 1/7] Bluetooth: btmtksdio: Fix DMA out-of-bounds access in TX path
+Date: Thu, 16 Jul 2026 09:59:13 +0800
+Message-ID: <20260716015920.1886719-2-chris.lu@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20260716015920.1886719-1-chris.lu@mediatek.com>
 References: <20260716015920.1886719-1-chris.lu@mediatek.com>
@@ -73,8 +73,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260715_185931_587971_F3A104E8 
-X-CRM114-Status: GOOD (  11.44  )
+X-CRM114-CacheID: sfid-20260715_185931_586609_CC980D1E 
+X-CRM114-Status: GOOD (  15.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,93 +89,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add firmware size validation to prevent out-of-bounds access when loading
-truncated or malicious firmware files.
+btmtksdio_tx_packet() aligns transfer size to 256 bytes using
+round_up(), but does not ensure the skb buffer has sufficient space,
+causing DMA to read beyond the buffer.
 
-Add three levels of validation:
-1. Minimum size check for header and global descriptor
-2. Section map bounds check with integer overflow protection using
-   check_mul_overflow() and check_add_overflow()
-3. Section data bounds check before accessing each section
+Fix by expanding skb tailroom if needed and zero-filling the padding.
 
-This matches the validation approach used in btmtk_load_cbmcu_firmware().
-
+Fixes: 9aebfd4a2200 ("Bluetooth: mediatek: add support for MediaTek MT7663S and MT7668S SDIO devices")
 Signed-off-by: Chris Lu <chris.lu@mediatek.com>
-Assisted-by: Claude:Sonnet-4.5
 ---
- drivers/bluetooth/btmtk.c | 39 +++++++++++++++++++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
+ drivers/bluetooth/btmtksdio.c | 33 +++++++++++++++++++++++++++++----
+ 1 file changed, 29 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 02a96342e964..3491060b3ae9 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -145,6 +145,7 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
- 	int err, dlen, i, status;
- 	u8 flag, first_block, retry;
- 	u32 section_num, dl_size, section_offset;
-+	size_t expected_size;
- 	u8 cmd[64];
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index 5b0fab7b89b5..feda1ea8f256 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -272,6 +272,7 @@ static int btmtksdio_tx_packet(struct btmtksdio_dev *bdev,
+ 			       struct sk_buff *skb)
+ {
+ 	struct mtkbtsdio_hdr *sdio_hdr;
++	unsigned int padded_len, pad_len;
+ 	int err;
  
- 	err = request_firmware(&fw, fwname, &hdev->dev);
-@@ -153,12 +154,40 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
- 		return err;
- 	}
+ 	/* Make sure that there are enough rooms for SDIO header */
+@@ -290,18 +291,42 @@ static int btmtksdio_tx_packet(struct btmtksdio_dev *bdev,
+ 	sdio_hdr->reserved = cpu_to_le16(0);
+ 	sdio_hdr->bt_type = hci_skb_pkt_type(skb);
  
-+	/* Validate minimum firmware size for header and global descriptor */
-+	if (fw->size < MTK_FW_ROM_PATCH_HEADER_SIZE + MTK_FW_ROM_PATCH_GD_SIZE) {
-+		bt_dev_err(hdev, "Firmware file too small: size=%zu, expected at least %u bytes",
-+			   fw->size, MTK_FW_ROM_PATCH_HEADER_SIZE + MTK_FW_ROM_PATCH_GD_SIZE);
-+		err = -EINVAL;
-+		goto err_release_fw;
-+	}
++	/* Calculate padded length for block-aligned DMA transfer.
++	 * SDIO requires transfers to be block-aligned (MTK_SDIO_BLOCK_SIZE).
++	 * Pad with zeros to prevent DMA from reading beyond skb buffer.
++	 */
++	padded_len = round_up(skb->len, MTK_SDIO_BLOCK_SIZE);
++	pad_len = padded_len - skb->len;
 +
- 	fw_ptr = fw->data;
- 	fw_bin_ptr = fw_ptr;
- 	hdr = (struct btmtk_patch_header *)fw_ptr;
- 	globaldesc = (struct btmtk_global_desc *)(fw_ptr + MTK_FW_ROM_PATCH_HEADER_SIZE);
- 	section_num = le32_to_cpu(globaldesc->section_num);
- 
-+	/* Check for potential integer overflow in size calculation */
-+	if (check_mul_overflow((size_t)MTK_FW_ROM_PATCH_SEC_MAP_SIZE,
-+			       (size_t)section_num, &expected_size) ||
-+	    check_add_overflow(expected_size,
-+			       (size_t)(MTK_FW_ROM_PATCH_HEADER_SIZE +
-+					MTK_FW_ROM_PATCH_GD_SIZE),
-+			       &expected_size)) {
-+		bt_dev_err(hdev, "Firmware size calculation overflow (section_num=%u)",
-+			   section_num);
-+		err = -EINVAL;
-+		goto err_release_fw;
-+	}
-+
-+	if (fw->size < expected_size) {
-+		bt_dev_err(hdev, "Firmware truncated: size=%zu, expected=%zu (section_num=%u)",
-+			   fw->size, expected_size, section_num);
-+		err = -EINVAL;
-+		goto err_release_fw;
-+	}
-+
- 	bt_dev_info(hdev, "HW/SW Version: 0x%04x%04x, Build Time: %s",
- 		    le16_to_cpu(hdr->hwver), le16_to_cpu(hdr->swver), hdr->datetime);
- 
-@@ -171,6 +200,16 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
- 		section_offset = le32_to_cpu(sectionmap->secoffset);
- 		dl_size = le32_to_cpu(sectionmap->bin_info_spec.dlsize);
- 
-+		/* Validate section boundaries to prevent out-of-bounds access */
-+		if (dl_size > 0 &&
-+		    (section_offset > fw->size ||
-+		     dl_size > fw->size - section_offset)) {
-+			bt_dev_err(hdev, "Section %d out of bounds: offset=%u, size=%u, fw_size=%zu",
-+				   i, section_offset, dl_size, fw->size);
-+			err = -EINVAL;
-+			goto err_release_fw;
++	if (pad_len > 0) {
++		/* Ensure sufficient tailroom for padding */
++		if (unlikely(skb_tailroom(skb) < pad_len)) {
++			err = pskb_expand_head(skb, 0, pad_len, GFP_ATOMIC);
++			if (err < 0)
++				goto err_skb_pull;
++			/* Reassign sdio_hdr after buffer reallocation */
++			sdio_hdr = (void *)skb->data;
 +		}
 +
- 		/* MT6639: only download sections where dlmode byte0 == 0x01,
- 		 * matching the Windows driver behavior which skips WiFi/other
- 		 * sections that would cause the chip to hang.
++		/* Zero-fill padding to prevent information disclosure */
++		skb_put_zero(skb, pad_len);
++	}
++
+ 	clear_bit(BTMTKSDIO_HW_TX_READY, &bdev->tx_state);
+-	err = sdio_writesb(bdev->func, MTK_REG_CTDR, skb->data,
+-			   round_up(skb->len, MTK_SDIO_BLOCK_SIZE));
++	err = sdio_writesb(bdev->func, MTK_REG_CTDR, skb->data, padded_len);
+ 	if (err < 0)
+-		goto err_skb_pull;
++		goto err_skb_trim;
+ 
+-	bdev->hdev->stat.byte_tx += skb->len;
++	/* Record actual transmitted data (excluding padding) */
++	bdev->hdev->stat.byte_tx += le16_to_cpu(sdio_hdr->len);
+ 
+ 	kfree_skb(skb);
+ 
+ 	return 0;
+ 
++err_skb_trim:
++	if (pad_len > 0)
++		skb_trim(skb, skb->len - pad_len);
+ err_skb_pull:
+ 	skb_pull(skb, sizeof(*sdio_hdr));
+ 
 -- 
 2.45.2
 
