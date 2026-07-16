@@ -4,148 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AC38C44515
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 17:45:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 630CAC44512
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 18:35:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j7c4B+c5M1YCLKZUbglFnT73p8ZRNDReD6Xa3fF06Tw=; b=Q0i0CXg5+TLNeF1lkIRsd++kX7
-	dmlDEJYWFE0XYfKDJ6gjlXri3rLb3Xvc24n3olG9q47ETSJl8O+EbQ9m3/b9vkUrFQ6LqdTEK4Dgd
-	o3VDouhzLEcLwE50U5H6t7erVfavc0ys8dNBiDcuEiRZrFjceY6EcNYdadkAJzQXrKsIKJzK/i2ma
-	anbGXWFvKCvL9fpctIERT29r0Yo40eZvltS2WV7m0OU+jkHlMq4xymrfUp0DR50AVFJOqHePT6RzD
-	8Z0ulLSLcCwvx/y7PCysDUJ2dwnYWRtwBk7e8AP2x9Ix99WLW9eya5J0ZnbxXOtzcaOTzvTl3yO5S
-	f9k+SfAA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UJktQKwDINGWhgoCZrW13rzuESCYOEOcpy7Vb2JHQ8M=; b=m5lxEJ5wzpktW2taIa6o8meuO5
+	XG4LEcOfEq8+prAjnxDSH8A5YAwFs9dxfSsj/4wR+aPEC+R+JahbO/fRZRPieDf43sfezSyGmD657
+	YDbkB8WPUjYpYVPktrWpFS1dDpryrzN9vf0YUSgSuoY+lifQy0TOrxI/+AAJOq52R70u2He0iZjle
+	k43i9+5WGpFh2mGKocMFtd72hklCArCgE07UmDPebf2Xomm+KBeV/1sZ/o36MAZetEI1zyfQmjB8h
+	NkV2D2ZiXL901KYYBkHx0d0faKBNCbOO6NLfmADbdDiw0IGVJXwegSWl+7C8x5dgghjdkkH1ugfY3
+	r3JNCMQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkQ9H-00000000J5h-1DoT;
-	Thu, 16 Jul 2026 17:45:27 +0000
-Received: from mgamail.intel.com ([198.175.65.16])
+	id 1wkQvd-00000000P7T-3LxP;
+	Thu, 16 Jul 2026 18:35:25 +0000
+Received: from mail-10696.protonmail.ch ([79.135.106.96])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkQ9D-00000000J4i-1abO;
-	Thu, 16 Jul 2026 17:45:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1784223923; x=1815759923;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=zbVibP9aLTK8oNvSIhVNQ4AgGcuyaBeKvV56UEcTcpQ=;
-  b=fa1lntsR0KjstL+qAvyVKMc1vA2g4rw5JjZ+lcdVvSGiUTBrrAS6812V
-   f+uiFX9SR05hATboMM1i3aGrDUAbd1sqs7OinwzrKT2kz7C6cs1DGPJ5b
-   gtaCMcj8c98+KwyDGMce8L5l0U68UGIvmy8Pk1a3DBFNfRI9T5TdD1+xM
-   /bI9DrcPoO4EdDXvSqb3NIAUcWJd7ycc4GU4686JXRUHfeONjmPy+MDYZ
-   1foP+4QkdWzzDwkF9HugSBn2MIlGaq6YnQmJgOjXHQYrP3oABlqxS6nEI
-   uhqvDJPmzC8o1NwlL5ae6ajWoDhUgz+UgXo5u1Ii4Q9Nr6ngDaw/8c09D
-   w==;
-X-CSE-ConnectionGUID: yHdGRxANQ2OfYssfQgMqNw==
-X-CSE-MsgGUID: T/BpK44UTGGicYvt5N9+ww==
-X-IronPort-AV: E=McAfee;i="6800,10657,11848"; a="85090271"
-X-IronPort-AV: E=Sophos;i="6.25,167,1779174000"; 
-   d="scan'208";a="85090271"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
-  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jul 2026 10:45:22 -0700
-X-CSE-ConnectionGUID: tUarK1GxR1ydTColBfz7Rw==
-X-CSE-MsgGUID: kqVQX9ajR9KmsayDkRu5Zg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,167,1779174000"; 
-   d="scan'208";a="279834026"
-Received: from conormcd-mobl2.ger.corp.intel.com (HELO localhost) ([10.245.245.26])
-  by fmviesa002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jul 2026 10:45:03 -0700
-Date: Thu, 16 Jul 2026 20:45:01 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
-Cc: Linus Walleij <linusw@kernel.org>,
-	Bartosz Golaszewski <brgl@kernel.org>, linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, Lixu Zhang <lixu.zhang@intel.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Hans de Goede <hansg@kernel.org>, Andy Shevchenko <andy@kernel.org>,
-	Ray Jui <rjui@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
-	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>, Imre Kaloz <kaloz@openwrt.org>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	Daniel Palmer <daniel@thingy.jp>,
-	Romain Perier <romain.perier@gmail.com>,
-	Robert Jarzmik <robert.jarzmik@free.fr>, imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	Hoan Tran <hoan@os.amperecomputing.com>,
-	Alan Borzeszkowski <alan.borzeszkowski@linux.intel.com>,
-	Mika Westerberg <westeri@kernel.org>,
-	"Enrico Weigelt, metux IT consult" <info@metux.net>,
-	Viresh Kumar <vireshk@kernel.org>, virtualization@lists.linux.dev,
-	Yinbo Zhu <zhuyinbo@loongson.cn>,
-	Thierry Reding <thierry.reding@kernel.org>,
-	Jonathan Hunter <jonathanh@nvidia.com>, linux-tegra@vger.kernel.org,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Joel Stanley <joel@jms.id.au>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Alban Bedel <albeu@free.fr>,
-	James Cowgill <james.cowgill@blaize.com>,
-	Matt Redfearn <matt.redfearn@blaize.com>,
-	Neil Jones <neil.jones@blaize.com>,
-	Nikolaos Pasaloukos <nikolaos.pasaloukos@blaize.com>,
-	Doug Berger <opendmb@gmail.com>, Keerthy <j-keerthy@ti.com>,
-	Vladimir Zapolskiy <vz@mleia.com>,
-	Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>,
-	Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
-	Neal Gompa <neal@gompa.dev>,
-	Mathieu Dubois-Briand <mathieu.dubois-briand@bootlin.com>,
-	=?iso-8859-1?Q?Andr=E9?= Draszik <andre.draszik@linaro.org>,
-	Bamvor Jian Zhang <bamv2005@gmail.com>,
-	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Santosh Shilimkar <ssantosh@kernel.org>,
-	Kevin Hilman <khilman@kernel.org>, Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Ludovic Desroches <ludovic.desroches@microchip.com>,
-	Paul Walmsley <pjw@kernel.org>,
-	Samuel Holland <samuel.holland@sifive.com>,
-	Michael Walle <mwalle@kernel.org>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>,
-	Shubhrajyoti Datta <shubhrajyoti.datta@amd.com>,
-	Srinivas Neeli <srinivas.neeli@amd.com>,
-	Michal Simek <michal.simek@amd.com>, linux-aspeed@lists.ozlabs.org,
-	asahi@lists.linux.dev, linux-mediatek@lists.infradead.org,
-	openbmc@lists.ozlabs.org, linux-omap@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org, linux-unisoc@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Michael Buesch <m@bues.ch>, William Breathitt Gray <wbg@kernel.org>,
-	Robert Richter <rric@kernel.org>, linux-acpi@vger.kernel.org
-Subject: Re: [PATCH v2 00/21] gpio: Improvements around device-id arrays
-Message-ID: <alkYnQdzZlKf2bfB@ashevche-desk.local>
-References: <cover.1784133987.git.u.kleine-koenig@baylibre.com>
- <alkYWcuMsfE5jkLR@ashevche-desk.local>
+	id 1wkQvb-00000000P6G-2RW9
+	for linux-mediatek@lists.infradead.org;
+	Thu, 16 Jul 2026 18:35:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1784226919; x=1784486119;
+	bh=UJktQKwDINGWhgoCZrW13rzuESCYOEOcpy7Vb2JHQ8M=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=Bto5Xw4NMOSoVu7Klhcpu7jiy5R5ZJO4/gClmbLW+F3q+imQ7KMvR5Xs66IlVZZw7
+	 dArHX+iq55Yy5/QmEXBNK66asyqKaOsbvYd0Cg60VpJobgWJ9DZMMrqAsmE70uxmu/
+	 /G46OQ/5vQAfm1bu/VdYroQmZziKD2219agDu/o98gZr5s7xHxvHF4QIxEA1FRcxj7
+	 bMdYCOQjx1hIvIz0w/8/H+3sd+atWIQ8nbuaddVgOz2IR6Rb54tmf66L1oijWzfrhp
+	 khvt7Oed07SBDMsJq6Eshz8lkZv9//kNgEMFEQROQ2WayJR2d6OuxraPz4JlmFl8cY
+	 U1KSSKYfJZ1Pg==
+Date: Thu, 16 Jul 2026 18:35:11 +0000
+To: Akari Tsuyukusa <akkun11.open@gmail.com>
+From: Roman Vivchar <rva333@protonmail.com>
+Cc: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 3/7] arm/arm64: dts: mediatek: drop mt6589 fallback from watchdog
+Message-ID: <W7fWZU3pu6akI_HMTAWPGnnErv60QtTz-LaPb6OtGvU5Bx0Iekl4SxWB6mxBPx8cBo9q9Lg7t8dDzcyfti-5fTirEACcwCLhNAh8e5xoHus=@protonmail.com>
+In-Reply-To: <20260716161923.266315-4-akkun11.open@gmail.com>
+References: <20260716161923.266315-1-akkun11.open@gmail.com> <20260716161923.266315-4-akkun11.open@gmail.com>
+Feedback-ID: 173184497:user:proton
+X-Pm-Message-ID: 73c7f91ec5bf7bbb8e204416070046f2990eb4d0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <alkYWcuMsfE5jkLR@ashevche-desk.local>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260716_104523_462759_91D74D0A 
-X-CRM114-Status: GOOD (  14.80  )
+X-CRM114-CacheID: sfid-20260716_113523_787942_F39A9BD3 
+X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -160,29 +70,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 16, 2026 at 08:44:14PM +0300, Andy Shevchenko wrote:
-> On Wed, Jul 15, 2026 at 06:55:05PM +0200, Uwe Kleine-König (The Capable Hub) wrote:
-> > Hello,
-> > 
-> > as with v1 the original motivation for this series are the patches that
-> > convert the arrays to use named initializers, see
-> > https://lore.kernel.org/all/cover.1780048925.git.u.kleine-koenig@baylibre.com/
-> > for the idea behind it. Then by not closing the eyes for small issues
-> > spotted while working on that, this series grew a bit.
-> > 
-> > Changes since v1 (available at
-> > https://lore.kernel.org/linux-kernel/cover.1784013063.git.u.kleine-koenig@baylibre.com):
-> 
-> Sorry, but at first glance it seems this version is messed up.
-> I'm not going to look into it deeply, waiting for *carefully*
-> checked v3...
+Hi,
 
-And with the above being said, my tags against v2 are not valid
-(withdrawn).
+On Thursday, July 16th, 2026 at 7:19 PM, Akari Tsuyukusa <akkun11.open@gmai=
+l.com> wrote:
 
--- 
-With Best Regards,
-Andy Shevchenko
+> Remove the "mediatek,mt6589-wdt" fallback string from all in-tree
+> device trees. Use only the SoC-specific compatible.
+>
+> No functional change.
+> Affected SoCs: mt2701, mt6572, mt6582, mt6797, mt7622, mt7623,
+> mt7629, mt8173, mt8365, mt8516.
+>=20
+> Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
 
+...
 
+> diff --git a/arch/arm/boot/dts/mediatek/mt6572.dtsi b/arch/arm/boot/dts/m=
+ediatek/mt6572.dtsi
+> index ac70f266d698..5a6c9763bd6c 100644
+> --- a/arch/arm/boot/dts/mediatek/mt6572.dtsi
+> +++ b/arch/arm/boot/dts/mediatek/mt6572.dtsi
+> @@ -53,7 +53,7 @@ soc {
+>  =09=09ranges;
+>=20
+>  =09=09watchdog: watchdog@10007000 {
+> -=09=09=09compatible =3D "mediatek,mt6572-wdt", "mediatek,mt6589-wdt";
+> +=09=09=09compatible =3D "mediatek,mt6572-wdt";
+>  =09=09=09reg =3D <0x10007000 0x100>;
+>  =09=09=09interrupts =3D <GIC_SPI 126 IRQ_TYPE_LEVEL_LOW>;
+>  =09=09=09timeout-sec =3D <15>;
+
+mt6572 downstream kernel shows the same layout as 6589, but only
+pwrap, md lite and md are explicitly referenced and used.
+
+I tried poking some unused bits like DDR PHY or INFRA AO, though
+that appears to be no-op. Only MMSYS and APMIXED resets from
+the 6589 worked for me so far.
+
+=3D> mw.l 0x10007018 0x88000001 # infra
+=3D> mw.l 0x10007018 0x88000002 # mm
+* display died *=20
+=3D> mw.l 0x10007018 0x88000004 # mfg
+=3D> mw.l 0x10007018 0x88000040 # ddrphy
+=3D> mw.l 0x10007018 0x88000100 # infra_ao
+=3D> mw.l 0x10007018 0x88000400 # apmixed
+* hang *
+
+I assume others are reserved on mt6572, so
+
+Acked-by: Roman Vivchar <rva333@protonmail.com> # for mt6572
+
+Best regards,
+Roman
 
