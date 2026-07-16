@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F3E0C44519
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61016C4450E
 	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 11:24:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,30 +12,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FH1zPI4XK0KFGvrVm9AbaQMRRKWSN4Ihv2jsnFAkNts=; b=nzhyBSuck0oW41c73qzMigdLK1
-	SRifWM/olgfBKPGX6G1+7OXY/x2iCyYZVXj9Cai3LDu6juzV3f/fpHdEil3dFkeFYhvKVbW2l+qHo
-	UKUfodX1ieD2/Qh12daFK8NCDbYXouaKL4dD2w8jn0Ag3V+BesAkM1cZPC2t4Q7Gp94zXZWUAb3sp
-	H5/K4Y1LH4Zs+XCdmzfmxWpn+H9n8op5mN2McHJnJT2kHEqOkZjy5cGzx3Ku0F1zUqV+RvNLlM1c9
-	u4OHJcim8X6XF0W6Y6sm7Fte9UD6+DUHgfZalcL0Dn0lMv+KUr4JKNUDZoEKaT82pzsvLCMhjCrgV
-	Qd6/5a/g==;
+	bh=sxdUfGPBVa6Aw8luxjq4cHzkvDH6P8rvTLiY6Rrhyd8=; b=d75BlkLSqbbZmiHQzYSl/6Z23g
+	eGfrGmR8h4h5oqCNx1LvX71SSxBsBiEW4xXwwQC5mPgznU3hU48xcEcIoZxHDQvt33MIV4BW4f4lP
+	ppN8A0QqRIsllSgz0yFH9FnGLL6+14Ydql4RPRt5XLCsGMNvNTuf7q+d5zbD4VZeKEKgMi8Hwa+xp
+	iXEttl/2LtIGs8WgyYZx8ZoRZxnJzvNh1shsVs6rkOKOBRUjpP3Xz0sLydNrbXScrIJgsrP3qbFYO
+	1a1UBGbYb996SPywYeaAg2LixTX9or7OKuwwuncHT4wDyI2pFe3hE2z2XuGBy2O53XeY1j1uoAvo2
+	T+uXMKaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkKCI-0000000H7SJ-0n3D;
+	id 1wkKCI-0000000H7S5-09RD;
 	Thu, 16 Jul 2026 11:24:10 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkKCF-0000000H7OD-2Bwf
+	id 1wkKCF-0000000H7Or-2CDd
 	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Jul 2026 11:24:09 +0000
-X-UUID: d6c1983e810811f1afed4741b24580c9-20260716
+	Thu, 16 Jul 2026 11:24:08 +0000
+X-UUID: d69366c6810811f1afed4741b24580c9-20260716
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FH1zPI4XK0KFGvrVm9AbaQMRRKWSN4Ihv2jsnFAkNts=;
-	b=Cqj8orcIdPQf3qeMEhZy6CgNKKLyk36/AfIgSCA/vyOyHkYd8P68hG+rQ9Zt9+I9g1KNsUxoNOqGKcOT4o6AEFZh7SrJfc3seOllGe2zj+AC0fcYAb9D/swO7M7aO3oilTXIdU8+oMjSF9wlEksE2co8Z9Csp0NnWLDBhHTReX8=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=sxdUfGPBVa6Aw8luxjq4cHzkvDH6P8rvTLiY6Rrhyd8=;
+	b=NrMArxrTsOSTyLUTkPOrrKg03CXeP+XIncp8i3pbQ8u511i/RyCR28PCwyWIOtNCmNO0F1zk9ynaymu7hjvCifBtx3zSWSjY5fgfySrCyYRNy71/Kpqw8PZ5rjPfULro7EiqS6LVlxzbKqgHQRwoR1MzLxmKb1hbm+DbCqf1CJA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.18,REQID:e165d987-a92c-4ad9-a4ee-dc49be18b8b4,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:8a735a6,CLOUDID:201f3219-ab14-4403-9336-76696324c5a8,B
+X-CID-O-INFO: VERSION:1.3.18,REQID:6ca55751-57a9-4b27-8e47-ad77d77a7cfa,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:8a735a6,CLOUDID:221f3219-ab14-4403-9336-76696324c5a8,B
 	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
 	0|99|200|213,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:
 	0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -43,18 +43,18 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: d6c1983e810811f1afed4741b24580c9-20260716
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: d69366c6810811f1afed4741b24580c9-20260716
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
 	(envelope-from <chris.lu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 160773304; Thu, 16 Jul 2026 04:23:58 -0700
+	with ESMTP id 2072880642; Thu, 16 Jul 2026 04:23:58 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 16 Jul 2026 19:23:56 +0800
+ 15.2.2562.29; Thu, 16 Jul 2026 19:23:55 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Thu, 16 Jul 2026 19:23:56 +0800
+ 15.2.2562.29 via Frontend Transport; Thu, 16 Jul 2026 19:23:55 +0800
 From: Chris Lu <chris.lu@mediatek.com>
 To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
 	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
@@ -63,9 +63,9 @@ CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
 	<pmenzel@molgen.mpg.de>, linux-bluetooth <linux-bluetooth@vger.kernel.org>,
 	linux-kernel <linux-kernel@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v13 5/7] Bluetooth: btmtk: Improve BT firmware logging
-Date: Thu, 16 Jul 2026 19:23:50 +0800
-Message-ID: <20260716112353.2192865-6-chris.lu@mediatek.com>
+Subject: [PATCH v13 3/7] Bluetooth: btmtksdio: Pass hardware dev_id to mt79xx_setup()
+Date: Thu, 16 Jul 2026 19:23:48 +0800
+Message-ID: <20260716112353.2192865-4-chris.lu@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20260716112353.2192865-1-chris.lu@mediatek.com>
 References: <20260716112353.2192865-1-chris.lu@mediatek.com>
@@ -73,8 +73,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260716_042407_643745_1FCD96CF 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20260716_042407_624310_4784C348 
+X-CRM114-Status: GOOD (  11.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,55 +89,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Improve firmware loading log messages to provide more useful information:
+mt79xx_setup() hardcodes dev_id=0 when calling btmtk_setup_firmware_79xx(),
+causing SDIO devices to log incorrect chip ID "BT HW ver: 0x0000" instead
+of the actual hardware version read from register 0x70010200.
 
-- Add firmware filename before loading to help identify which file
-  is being loaded
-- Display chip ID (dev_id) as HW version instead of firmware's hwver
-  field, which provides more meaningful hardware identification
-- Use %.16s format specifier for hdr->datetime field to prevent
-  potential buffer over-read, as the field is a 16-byte array that
-  may not be null-terminated
+Pass the hardware dev_id to mt79xx_setup() and forward it to
+btmtk_setup_firmware_79xx() to match USB driver behavior and display
+correct chip identification.
 
-log output with MT7922
-[  212.878783] Bluetooth: hci1: Loading BT firmware: mediatek/BT_RAM_CODE_MT7922_1_1_hdr.bin
-[  212.889614] Bluetooth: hci1: BT HW ver: 0x7922, SW ver: 0x008a, Build Time: 20260224103448
-[  216.048877] Bluetooth: hci1: Device setup in 3096530 usecs
-[  216.048890] Bluetooth: hci1: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
-[  216.114179] Bluetooth: hci1: AOSP extensions version v1.00
-[  216.114220] Bluetooth: hci1: AOSP quality report is supported
-[  216.116782] Bluetooth: MGMT ver 1.23
-
+Fixes: 28b7c5a6db74 ("Bluetooth: btmtk: Add MT6639 (MT7927) Bluetooth support")
 Signed-off-by: Chris Lu <chris.lu@mediatek.com>
-Assisted-by: Claude:Sonnet-4.5
 ---
- drivers/bluetooth/btmtk.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ drivers/bluetooth/btmtksdio.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 3491060b3ae9..595e346accc3 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -148,6 +148,8 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
- 	size_t expected_size;
- 	u8 cmd[64];
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index feda1ea8f256..088fdfb56231 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -901,14 +901,14 @@ static int mt76xx_setup(struct hci_dev *hdev, const char *fwname)
+ 	return 0;
+ }
  
-+	bt_dev_info(hdev, "Loading BT firmware: %s", fwname);
-+
- 	err = request_firmware(&fw, fwname, &hdev->dev);
+-static int mt79xx_setup(struct hci_dev *hdev, const char *fwname)
++static int mt79xx_setup(struct hci_dev *hdev, const char *fwname, u32 dev_id)
+ {
+ 	struct btmtksdio_dev *bdev = hci_get_drvdata(hdev);
+ 	struct btmtk_hci_wmt_params wmt_params;
+ 	u8 param = 0x1;
+ 	int err;
+ 
+-	err = btmtk_setup_firmware_79xx(hdev, fwname, mtk_hci_wmt_sync, 0);
++	err = btmtk_setup_firmware_79xx(hdev, fwname, mtk_hci_wmt_sync, dev_id);
  	if (err < 0) {
- 		bt_dev_err(hdev, "Failed to load firmware file (%d)", err);
-@@ -188,8 +190,8 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
- 		goto err_release_fw;
- 	}
+ 		bt_dev_err(hdev, "Failed to setup 79xx firmware (%d)", err);
+ 		return err;
+@@ -1167,7 +1167,7 @@ static int btmtksdio_setup(struct hci_dev *hdev)
+ 		snprintf(fwname, sizeof(fwname),
+ 			 "mediatek/BT_RAM_CODE_MT%04x_1_%x_hdr.bin",
+ 			 dev_id & 0xffff, (fw_version & 0xff) + 1);
+-		err = mt79xx_setup(hdev, fwname);
++		err = mt79xx_setup(hdev, fwname, dev_id);
+ 		if (err < 0)
+ 			return err;
  
--	bt_dev_info(hdev, "HW/SW Version: 0x%04x%04x, Build Time: %s",
--		    le16_to_cpu(hdr->hwver), le16_to_cpu(hdr->swver), hdr->datetime);
-+	bt_dev_info(hdev, "BT HW ver: 0x%04x, SW ver: 0x%04x, Build Time: %.16s",
-+		    dev_id & 0xffff, le16_to_cpu(hdr->swver), hdr->datetime);
- 
- 	for (i = 0; i < section_num; i++) {
- 		first_block = 1;
 -- 
 2.45.2
 
