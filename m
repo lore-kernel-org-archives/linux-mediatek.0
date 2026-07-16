@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B83AC44515
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D38AC44511
 	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 16:20:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,63 +12,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yubyZWrL+JQMdwCEigycr7CQmraB7luNnkV3xuug/Lc=; b=PJ++TY75NoOZxvECaxB89UqLxr
-	1JSmFD3yGjqGQy9rnUngr3//D6lHL8wrzDFKuZZSp+6sfsslKMHXhGHILT20GeW6nfXHvvlNJUeOM
-	grSHEjojZn3E4SMMHygua+Xe2z4P5/J/jEgPc1g0AlHWtvv4vV1EkojboP4clBxAyyFzudjlgqH/N
-	ju5sLEOgv9AgEaL2DbUWlpAmLEVWAZBznLOAepnpbDf45yJumpjsTzHg5Pdk7aKDIUOTzy2qsjwjb
-	ws9MqzZ05PTFR4PrVfSWHRQ2yAA5FFteMKhUcYuRq3JLoKyDsqeKcy5UjWTnjekxHzi3v4MPt+P7+
-	wwBaYAyg==;
+	bh=kRF0ZOAvB4ErXLTfeB88x2r9MQSH6nK3/ZT9LGhKsEM=; b=mU1Vkdukt+GHoaYzGoeXjs5P07
+	pxZdujVHmcd8PHhnPmuIAcd17DVPg60ZPGKruDX1QqN5S1cNn5HWyqjX7CgAYMfxQCKOo29qBzIHx
+	vHX8cL3EGkPRjso929Xf0zYJCwcBUTlmDI3NS3fSHmWulBsFR+bN4SKO4cKBL2tOZJqKjx8N3Qt3o
+	XrbTMV1h9+MnCVNATHav3IicxePkt3friRkDpdYj33L2qKYH1eTPrw5QTlKfwVrKpsS+sVNLRPFsG
+	Vb0gpbHTvUOojXuh27PaSBvcL+57r1I52TA3Kxcl10W46zCCmGOTzJbQKURfIoUWeDz3pcA2sm0b8
+	z+Ri30Dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkOos-000000008NK-1fX9;
+	id 1wkOos-000000008Na-33CY;
 	Thu, 16 Jul 2026 16:20:18 +0000
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkOoa-0000000085e-3I1c
+	id 1wkOod-0000000089C-0dNv
 	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Jul 2026 16:20:01 +0000
-Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-8487b7b3fc8so6613875b3a.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 09:20:00 -0700 (PDT)
+	Thu, 16 Jul 2026 16:20:04 +0000
+Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-8487b7b4066so7052106b3a.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 09:20:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784218800; x=1784823600; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1784218802; x=1784823602; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=yubyZWrL+JQMdwCEigycr7CQmraB7luNnkV3xuug/Lc=;
-        b=poK8QhmkmfYVuwixY9Ia3scXOR6zUcAm3Uzxg9TWNqjLbSASduFMrnErzy+26lVvZZ
-         nK1GyEiayWN5yyPeP184cL59WudqFwGXlZoCMGyKKo70euNowwE3DwPycrdgSTG6a4lG
-         H3wx7S6U/sKqOoeRkOnmBt0DskBSKqMQk5vec1KMwnUil8pRKrdapD1KAY5FRulvL2MR
-         0CKQ4t37oIAH4x9F+OmVqU8LSrpTWcWyIGc/9F1xZt98fs3zH7y55Raf4RwU+zI8Jz9y
-         m8iO9/vrAQ0lQZGOa/xeqba7vo0S5ljGZYDE+7y+XnC0wi56kkBQy/GYa7lM6ZsctEyV
-         CXSQ==
+        bh=kRF0ZOAvB4ErXLTfeB88x2r9MQSH6nK3/ZT9LGhKsEM=;
+        b=aO8DUcxwyn6Ctbjd/G+8VTMtPmwut+8nsxlXRp1AM99gR6TKkLv0hCxQNZ0KVyJTuh
+         4AP/9ev7xlAz1O/EqochA3Gnw7OILRMkXdhHqWGCNOF2ux5Sr99yDQBEIKNy3dUU3x/F
+         FKVUkrOF4CxO5BwukFXq1Fu2Ibs5clrl4kXwwNTJCX3Zox0LDM1W6Umb3PdOPqcElf0r
+         2jN05Ji5ooILpV+heJ0IRDQJ6UGX6wB/j6KyJOnxPfy0J7qWexkHhgL3cem8ebjJLQD/
+         39peZQvbF2MomHh8VXcg6eNvwJPLMkxFinduwkd2tfCnIvpNY5+Tuwqeqk4HfGwplPby
+         qFFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784218800; x=1784823600;
+        d=1e100.net; s=20251104; t=1784218802; x=1784823602;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=yubyZWrL+JQMdwCEigycr7CQmraB7luNnkV3xuug/Lc=;
-        b=pNk2sbRYWAU4QyMMj5kEQ8r8FcP7H5csKTlUgxqAzK/zz/HT91rk5lbWFpzLNC3FfR
-         sOcHgcmZZlMTWGu2WYU3OA3pmAmVkkv4i7UpmqPMFGMtaFrCjkbyMBfvhz4RDBDQ+8S+
-         myHJ2h6XHCITv25EbKX3Py9yMzwiFHMNhcsvRd2toGL0zFvKBHwtIFGsdQKBl6cGVeep
-         f0xUP8cHI266nu4ZyZO/YKgsRZ2iX3bcxbPwIbWaooVas1xiltfFei9wiWEVt/FSrCBu
-         PfZda4AvKat5aoAu1dW0HdsT4z5yeCB4Y0V8C6cMQLf7ul5WRT67S9GnaxL7twzuICCc
-         JeJw==
-X-Forwarded-Encrypted: i=1; AHgh+Rruu3Asq8dO1I99/fXpXmYN6o81NdZxUgeGCCHnVCGFvzsyMfhysRPOymMp0XCd/tg1xI8AISAt+X4DbqtMiA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzwd90WJXh5VRkrPOXAUh2rGFLiUBwCD+ovyiPwwYS0yXxMXS0U
-	T02aXd9dtV7hdz4PZDwTjpjtd7O8/AvTD8+t7v1qW+ozx4jkn5hCExbg
-X-Gm-Gg: AfdE7cmjhV3luIRxr+5g6vsuf5nw6u3YPc7KXoaTbfVNqE+vSV5yNba5GzRnnqOK9wJ
-	rOYRnVNoItHTPmHB8T4Q5++FigCnUUnN1nNdg9mK6/Hp34TKSy2EFbCva9gFzAAsJY6zFemy4gu
-	v37lhJ/TyUGcHZb9zGVOY8qahOE+IDt2bqAITIi6DKmqwTf058812Nks6PDWsia1sxQCD0OaWTQ
-	VocLx1kiwV+eMH86jTaFkDHhUjeb6398FvKQKSB4EQ7szPoSVm9+IQPYJhZprvWInKXhi0a/Zw9
-	F3xKi/FX2xQXuhSLVeRjC5AcWNKuS6P7CPXRNYbwbL6Z5yNfyV4oxtmrFc5PrXPrx6ScPk2MZIK
-	lFKNUfGapWPb603qBcb7+XdCpaBndbxomuFPgkd73iMa+teDbKp8fSRJcKr8sjYBJRTgb2TSQfN
-	e5LZLAf4nAo7TmQxPkc+fXUG+IUjDo5crXzw==
-X-Received: by 2002:a05:6a00:b93:b0:848:5f4f:289a with SMTP id d2e1a72fcca58-84a516062c7mr12626941b3a.49.1784218799765;
-        Thu, 16 Jul 2026 09:19:59 -0700 (PDT)
+        bh=kRF0ZOAvB4ErXLTfeB88x2r9MQSH6nK3/ZT9LGhKsEM=;
+        b=V7j4pi+I+GIga+TRFNhCkqv/BrEnKR/Q5qNehdMIkMz0BULOdaUC+hmutHYVZnJuFy
+         iuSUhm2zlnvc1AS2Vjc+CIIp44ZLaxNtnCi76Yk87vgEbrig8wHu9gYZCKD40LTF7UkE
+         L0SyyPsbhvWDDSqA59vMrJaSf94E00W3kMDN6FX7xONifqBjzf350XUHVIc5TuTTxK5Q
+         noYkSMQEsyl050LdfNy7VHHCWHtV9jE7+0/kEJJqFGNiicC3zefq1b6ueCFvYuteQjmv
+         wqninqIybil5EIKAvCYw4cXwXS3cQPvPP2KGUmu+aUskbiM/NB3G6ln+uSGZwm5kmTW9
+         +gNw==
+X-Forwarded-Encrypted: i=1; AHgh+RqK3cdx1Xxe7b2/FFNfg+Alm2e1XA2l5dp9wn5mhnupAIyLcM9hftCemnJ8nR2tabzETYhlb90BYhZssm8R7A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzcqtE7HIK67mcftWtvvfJaLyO9ejNB9ySGkaOecOQywkV8daE+
+	Ux+f+fqDHYzIN4bEBV7RabB9FdoSnEOY5CgC4gZG8SBcAk35IHVm/DR4
+X-Gm-Gg: AfdE7clLcQEOmPZxxsjzfsEFuqSCZt4OKUiVqnsHZDumgEGXR+0yp6lyi3t1ZfFQTuR
+	6ifiLN4TvByKLyYHdxa+wbDBapSOAeYj+LnHiBzRraaeu0hQHpayXQpNd5BtfZI2O3Ke1PWu3ZQ
+	kv1bDHXJK3SkyjMTAMctv2ujg5hPKb+SRjDrDiZFrEdZFfNa/lQkfAXccB9U8i2up9OyNtgDnTN
+	EOiIS7FJINPSpnAKUqWL4RUktgA7t+ifrL+M9pYb8UBIAtgZcmK1l79N2iUZ/r02Y1xqa51byK8
+	pBeNW+vxt6EWPcbp7rYEeJV182ek9IeFJyoW/cC+EIeDVpXeFoQKXtgvuKbP/u5iE18eDe3PzWz
+	InVtpbVsEGn/aZzNvQCwaE3RppNH/TWLz0qy8lvQS67x8bBEftVVRO6xkgZ+KhDRRqY9xmeDWY9
+	mZ3tXJP/TxyOvYIu3VJ4nE3+RFTfbIc/odpw==
+X-Received: by 2002:a05:6a00:c83:b0:845:e8b9:347 with SMTP id d2e1a72fcca58-84a671da754mr7414224b3a.13.1784218802301;
+        Thu, 16 Jul 2026 09:20:02 -0700 (PDT)
 Received: from buffalo-ssd (M014013071096.v4.enabler.ne.jp. [14.13.71.96])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84a4f23a600sm5092661b3a.6.2026.07.16.09.19.57
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84a4f23a600sm5092661b3a.6.2026.07.16.09.20.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Jul 2026 09:19:59 -0700 (PDT)
+        Thu, 16 Jul 2026 09:20:02 -0700 (PDT)
 From: Akari Tsuyukusa <akkun11.open@gmail.com>
 To: Wim Van Sebroeck <wim@linux-watchdog.org>,
 	Guenter Roeck <linux@roeck-us.net>,
@@ -85,17 +85,18 @@ Cc: linux-watchdog@vger.kernel.org (open list:WATCHDOG DEVICE DRIVERS),
 	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
 	Roman Vivchar <rva333@protonmail.com>,
 	Akari Tsuyukusa <akkun11.open@gmail.com>
-Subject: [PATCH 6/7] watchdog: mtk_wdt: add reset controller support for MT6589
-Date: Fri, 17 Jul 2026 01:19:22 +0900
-Message-ID: <20260716161923.266315-7-akkun11.open@gmail.com>
+Subject: [PATCH 7/7] arm: dts: mediatek: mt6589: add reset support for wdt
+Date: Fri, 17 Jul 2026 01:19:23 +0900
+Message-ID: <20260716161923.266315-8-akkun11.open@gmail.com>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260716161923.266315-1-akkun11.open@gmail.com>
 References: <20260716161923.266315-1-akkun11.open@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260716_092000_831499_EFD7A4AB 
-X-CRM114-Status: GOOD (  11.50  )
+X-CRM114-CacheID: sfid-20260716_092003_191679_9895399B 
+X-CRM114-Status: UNSURE (   9.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,46 +111,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Now that no other SoC depends on the mt6589 fallback, it is safe to
-assign reset data to the mt6589 entry.
+Now the MediaTek watchdog driver supports MT6589 TOPRGU resets.
+Add #reset-cells = <1>; to enable it.
 
 Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
 ---
- drivers/watchdog/mtk_wdt.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ arch/arm/boot/dts/mediatek/mt6589.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index 345d2e89f414..c8ce45a59795 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -10,6 +10,7 @@
-  */
- 
- #include <dt-bindings/reset/mt2712-resets.h>
-+#include <dt-bindings/reset/mt6589-resets.h>
- #include <dt-bindings/reset/mediatek,mt6735-wdt.h>
- #include <dt-bindings/reset/mediatek,mt6795-resets.h>
- #include <dt-bindings/reset/mt7986-resets.h>
-@@ -88,6 +89,10 @@ static const struct mtk_wdt_data mt2712_data = {
- 	.toprgu_sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
+diff --git a/arch/arm/boot/dts/mediatek/mt6589.dtsi b/arch/arm/boot/dts/mediatek/mt6589.dtsi
+index 46dea445742b..2645054a4a61 100644
+--- a/arch/arm/boot/dts/mediatek/mt6589.dtsi
++++ b/arch/arm/boot/dts/mediatek/mt6589.dtsi
+@@ -147,6 +147,7 @@ uart3: serial@11009000 {
+ 		wdt: watchdog@10000000 {
+ 			compatible = "mediatek,mt6589-wdt";
+ 			reg = <0x10000000 0x44>;
++			#reset-cells = <1>;
+ 		};
+ 	};
  };
- 
-+static const struct mtk_wdt_data mt6589_data = {
-+	.toprgu_sw_rst_num = MT6589_TOPRGU_RST_NUM,
-+};
-+
- static const struct mtk_wdt_data mt6735_data = {
- 	.toprgu_sw_rst_num = MT6735_TOPRGU_RST_NUM,
- };
-@@ -496,7 +501,7 @@ static const struct of_device_id mtk_wdt_dt_ids[] = {
- 	{ .compatible = "mediatek,mt2712-wdt", .data = &mt2712_data },
- 	{ .compatible = "mediatek,mt6572-wdt" },
- 	{ .compatible = "mediatek,mt6582-wdt" },
--	{ .compatible = "mediatek,mt6589-wdt" },
-+	{ .compatible = "mediatek,mt6589-wdt", .data = &mt6589_data },
- 	{ .compatible = "mediatek,mt6735-wdt", .data = &mt6735_data },
- 	{ .compatible = "mediatek,mt6795-wdt", .data = &mt6795_data },
- 	{ .compatible = "mediatek,mt6797-wdt" },
 -- 
 2.54.0
 
