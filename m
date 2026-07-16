@@ -4,88 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 701ADC4450A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 12:40:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCE98C4450A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 13:21:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:References:MIME-Version:
-	In-Reply-To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OxlN32iU+dZZDeFlRrMUjrZz0IkcNsY0YbDQ0qDA3v0=; b=kovbH9uzA5/ac/C5LwHMPbuhkh
-	HoI5Ig8iQ8HiJFsk+m68t/SjUjlOVvxFCMWURPfIP8FaOIVSmJk4tCX4eY7e45/UDBhs+GxFscz+4
-	NNAnJai4jQxQnH/KVR4paTUh6ob3wNRronxf4+9n5JMZqy5EwYtMPCUNP+kSTEsRj3C6uV6o5oIAv
-	2Bzho9xjgDfu20DoMMUjJByGHIL9hgxFlmHX6xOiI+kFDt7iPSbJFelT3PzOhXVSAZyRLMpRAKMnD
-	eFJpK6Sgy3VO20AlCX+W4rgLHd6kFoBrEIc11Bh+PY7OMHoKePiWFxPgMkE2gCNZ/VAox1R9pKxF3
-	1aGBylsQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5+PTVvtbxISQHBh7RDfP9RhXJiuh9DQQG1Am4RdSHNo=; b=J5Zukl0u86XiOzJeXmBpqScXpN
+	yyG3ynwfjxYLNuKGLZIG8/nCx7CH4MdQ7yck6f4Idi73OjntLwaSa3o5hfve6KowwrV1OQ1jbtp29
+	rk5n6OWAkDYSfi1YEqm4tQFyUshoa9Jc6nAFvleQP7bSGAWiT2yI7NnMx8QamjGTnVBr91AfloJQ0
+	UtRA8ROdIDbDb+oGAQ0cJZUNDZG4P+tCGZEaQigCCUYFUB8FTcm6B1cOfCvAKc+Mz30pY8kVKWQt/
+	QMLTjagkDv80CWvQPJ8n5cQh5tEQehvGdYyT3AxbB/gZE/je6w/EdWA19ryrUMzFLND8IbI+/CqPH
+	JNRNcTbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkLNg-0000000HHL9-01GF;
-	Thu, 16 Jul 2026 12:40:00 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wkM1c-0000000HNEV-1QKW;
+	Thu, 16 Jul 2026 13:21:16 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkLNf-0000000HHKq-0wyj
+	id 1wkM1a-0000000HNEK-3Vrn
 	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Jul 2026 12:39:59 +0000
+	Thu, 16 Jul 2026 13:21:14 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id B3B9243A0E
-	for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 12:39:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92DB01F0155C
-	for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 12:39:58 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id DF435600AF;
+	Thu, 16 Jul 2026 13:21:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 94B151F00A3A;
+	Thu, 16 Jul 2026 13:21:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784205598;
-	bh=OxlN32iU+dZZDeFlRrMUjrZz0IkcNsY0YbDQ0qDA3v0=;
-	h=From:In-Reply-To:References:Date:Subject:To:Cc;
-	b=WqpCPouGxXPy6ueFZIiDKndTIcSseLdOW8zJnpgFBSNSoDdKIk/7PbT66hpvii8lF
-	 xpGFkHf70LHbzODC2JX/8bknW9AW6hST0M5fCOTn22Ej91WlStU4IXndhEeMkjZpiS
-	 FuzbYk7mi+RMgrPZJDIL+OOZfj6dhWIPtZW/Bw3DIguFX3YILXjlr/Om6RgxEe0+5g
-	 OvRqs4AzBAP4e4J4WGePbTy/doO1ETuJXTc3TJDSwkcxYHhoOYotCja1Rjwwj2npSn
-	 eieU4XXRFGXQiZnP2TA5NVDbGO824HC76MjX7lmsIRls38P0dfhkCaGZfjVgAgftPm
-	 g6IOG5Nv4SVbw==
-Received: by mail-lj1-f174.google.com with SMTP id 38308e7fff4ca-39ca300db70so44543881fa.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 05:39:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+Rp/LqEqzf+kK5O9o8DU44eVtHfQOrhqU7dQkrHJ3moralrpxXC3IVIMNd/IADdiYVwlqsg+RWZ9adxFwrIywg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyTTdN8H/hCqLwqV/tCD0c4X8/GeYZ/1GRzixxXOOe23iEdj6vB
-	MNqKe/tta1bnka7iry3eBJ5lCEE3vR+VovBTbpO70AaPj24w8nMYwF0+ArRNeztxwRgL9dcrRH5
-	7LbZNfAI3ZCOwGSp1pKR0O/5olmRd+6M1w0GwWY1DHQ==
-X-Received: by 2002:a05:6512:4045:20b0:5b0:2176:69f6 with SMTP id
- 2adb3069b0e04-5b15d7a50b0mr1154487e87.37.1784205597254; Thu, 16 Jul 2026
- 05:39:57 -0700 (PDT)
-Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Thu, 16 Jul 2026 05:39:55 -0700
-Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Thu, 16 Jul 2026 05:39:55 -0700
-From: Bartosz Golaszewski <brgl@kernel.org>
-In-Reply-To: <CAGXv+5G0Ffrh-8UohJuGPQ0e7KGpy11=X7t1JtDYLTJ_tZgMCA@mail.gmail.com>
+	s=k20260515; t=1784208073;
+	bh=5+PTVvtbxISQHBh7RDfP9RhXJiuh9DQQG1Am4RdSHNo=;
+	h=From:To:Cc:Subject:Date;
+	b=VWzDH6HKO66dhqFPwZt4Mw2z+IwI9naF9ychftoED8XY5nqveyqmvIIE1OxYfYjiC
+	 zIveTkz/zovHhdcc/Ze9mz6hxbhVM6jcHPyYzU/9YkdfciE+1KS63V9mJX1qkrIrFr
+	 g/bMeNYFs62QI2x9erMnZ6toFGpV418L/v3umUf4ngDuelbgYVeP1R7hzGZv+IP3IH
+	 3AF+ReY6nlu3H2KM3bm/WSVBWpQ5/vRCahO4KgcXtdL/bFWNzMkZSQQ7D7/n0u5oc3
+	 v5FHeD/PhQWpi9YWNel+OP3lyV3q2qvqrF5y9PTdOQR/d+A8XtY29Rw7pXTVACUx0D
+	 1u3Vt0daJz5pg==
+Received: from johan by xi.lan with local (Exim 4.99.4)
+	(envelope-from <johan@kernel.org>)
+	id 1wkM1X-00000006Z8A-22kw;
+	Thu, 16 Jul 2026 15:21:11 +0200
+From: Johan Hovold <johan@kernel.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Johan Hovold <johan@kernel.org>
+Subject: [PATCH] drm/mediatek: mtk_hdmi_common: take i2c adapter module reference
+Date: Thu, 16 Jul 2026 15:21:03 +0200
+Message-ID: <20260716132103.1564995-1-johan@kernel.org>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
-References: <20260715085348.3457359-1-wenst@chromium.org> <20260715085348.3457359-4-wenst@chromium.org>
- <aldS3qTympJuVXYj@ashevche-desk.local> <CAMRc=MfHmejks83bPfe3fKzAzFySGXk2GHMA9oZdMQj0f44eTA@mail.gmail.com>
- <CAGXv+5HGjGTrqqzJrpiQhLrCn3C6H20LXq3niPnoujQLOwgqPw@mail.gmail.com>
- <CAMRc=Mefxn81d0VUwmQgwFtffkL1=Er_1VQZCbC1Sa-Qph4t1w@mail.gmail.com> <CAGXv+5G0Ffrh-8UohJuGPQ0e7KGpy11=X7t1JtDYLTJ_tZgMCA@mail.gmail.com>
-Date: Thu, 16 Jul 2026 05:39:55 -0700
-X-Gmail-Original-Message-ID: <CAMRc=Mcpu+k-zbY0bDf8q3_9o3qNsrt6uNCao5j3qQLnbjHYAQ@mail.gmail.com>
-X-Gm-Features: AUfX_mzb6SG6AJl8tXyuIguJLZaf_DB4m_xujG-Tq3VPuMJuPnQWayz1ClA2bP8
-Message-ID: <CAMRc=Mcpu+k-zbY0bDf8q3_9o3qNsrt6uNCao5j3qQLnbjHYAQ@mail.gmail.com>
-Subject: Re: [PATCH v5 03/16] power: sequencing: Add pwrseq_power_is_on()
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Daniel Scally <djrscally@gmail.com>, 
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
-	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Wei Deng <wei.deng@oss.qualcomm.com>, linux-acpi@vger.kernel.org, 
-	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
-	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>, 
-	Alan Stern <stern@rowland.harvard.edu>, 
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>, 
-	Bartosz Golaszewski <brgl@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,36 +77,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 16 Jul 2026 11:39:19 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
-> On Thu, Jul 16, 2026 at 4:14=E2=80=AFPM Bartosz Golaszewski <brgl@kernel.=
-org> wrote:
->>
+The i2c subsystem currently blocks during adapter deregistration
+whenever there are consumers holding a reference.
 
-...
+Switch to using of_get_i2c_adapter_by_node() which also takes a
+reference to the adapter module so that an attempt to unload the module
+while in use fails gracefully instead of blocking uninterruptibly.
 
->>
->> There's one more use-case where the power state trully can be *unknown*.
->> Please look at the proposed new function from Loic[1]. Here we deal with
->> targets over which linux has no direct power control even though it may =
-still
->> control some of its dependencies. This is where an UNKNOWN state may mak=
-e
->> sense.
->>
->> This is where I also floated an idea of renaming pwrseq_power_on/off() t=
-o
->> pwrseq_vote_on/off() for better clarity of their purpose.
->
-> OK. Would it make sense to revert to returning -EINVAL if the descriptor
-> is NULL now, and then add a different error return value if !controllable
-> in the future?
->
+Signed-off-by: Johan Hovold <johan@kernel.org>
+---
+ drivers/gpu/drm/mediatek/mtk_hdmi_common.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
 
-I don't think the latter part is needed. A non-controllable pwrseq descript=
-or
-is still a valid object and has an address pointing to it. Returning -EINVA=
-L
-on NULL descriptors is probably all we need.
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
+index a049489daa2d..042b98e5a519 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi_common.c
+@@ -290,6 +290,13 @@ static int mtk_hdmi_get_cec_dev(struct mtk_hdmi *hdmi, struct device *dev, struc
+ 	return 0;
+ }
+ 
++static void mtk_hdmi_put_adapter(void *_adap)
++{
++	struct i2c_adapter *adap = _adap;
++
++	i2c_put_adapter(adap);
++}
++
+ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi, struct platform_device *pdev,
+ 				   const char * const *clk_names, size_t num_clocks)
+ {
+@@ -328,12 +335,12 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi, struct platform_device
+ 	if (!i2c_np)
+ 		return dev_err_probe(dev, -EINVAL, "No ddc-i2c-bus in connector\n");
+ 
+-	hdmi->ddc_adpt = of_find_i2c_adapter_by_node(i2c_np);
++	hdmi->ddc_adpt = of_get_i2c_adapter_by_node(i2c_np);
+ 	of_node_put(i2c_np);
+ 	if (!hdmi->ddc_adpt)
+ 		return dev_err_probe(dev, -EPROBE_DEFER, "Failed to get ddc i2c adapter by node\n");
+ 
+-	ret = devm_add_action_or_reset(dev, mtk_hdmi_put_device, &hdmi->ddc_adpt->dev);
++	ret = devm_add_action_or_reset(dev, mtk_hdmi_put_adapter, hdmi->ddc_adpt);
+ 	if (ret)
+ 		return ret;
+ 
+-- 
+2.54.0
 
-Bart
 
