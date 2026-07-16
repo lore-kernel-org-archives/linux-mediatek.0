@@ -4,101 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2CD2C44512
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 17:18:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27068C44512
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 17:34:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HFJ+p81BjdB00DrwvkVTq99s5PhB9C18F6cOkBhmFnM=; b=s8AV3m60NadN9wfXz72R2f5iD4
-	6aICQbO4dM7BKIFRpeOnC2dfN7NDqWKSh9JT7caxWlNTFBHnXTp93AOsIbn/5EOg3DTmO3/bc50Bl
-	ixyM5wafXjQ3a/sgDFC/1cs6OdNkLt6XTKEpKHpas2B+Ru02/w6BNFKrpl0Ocvwr6KZnP3hGOGPlH
-	Idc/UWvdrODCsMLZU1kdRi1jeiJXtwu0rqcEif8LEQgaTI+E9w9MafnYvvftGqj7SgPDQ5ltMkNzh
-	jLEhQS4gALZKcIWKhSEHNHTPvch5e+0NcRWZSXn5TFJWnBMsIUSkXkJfxx0a0tJ/oTM1Lr/zp8ERF
-	/oKrTsgA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=q2L2wpVvjQnpFjcjvsMBn9WiAReQKULlZAY6h8Pahm0=; b=4BA0FK354MiMrtcQPIvcUCerqL
+	XBbXFYygoJ+bSAA7rtlwudvRylwWJ0xQmPBoKBEkNvI2RdRFEGSXYdfZ4gv0qz49O5AhhmyIqDzDA
+	wElxK7kud8PuyIfH805MN6ZhrasXDwUrXhjktkDzbiN3O6u7Gn8O5Va6h4yW5Wp+SmZnQ8k2Fnk9j
+	SQobNX8nyTFMjsgBuqIcRpDjeQ9OIXkqefuCH0ZN/b6xjSNFpJb4td4uTipjAWyANUHMwO1+LyEKD
+	9DD3eaZ4muNhfp1RRPjF7vlFunbRQlk0H8/wHi0XoyXu/5vxupEXB/ICEpyabSXJWmLUJwDVCKe1t
+	nbHUCG1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkPil-00000000FyZ-49uo;
-	Thu, 16 Jul 2026 17:18:03 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1wkPyZ-00000000HwE-0Tvn;
+	Thu, 16 Jul 2026 17:34:23 +0000
+Received: from mgamail.intel.com ([192.198.163.15])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkPij-00000000FwE-10A8
-	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Jul 2026 17:18:02 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2ceb096e675so63703375ad.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 10:18:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784222281; x=1784827081; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=HFJ+p81BjdB00DrwvkVTq99s5PhB9C18F6cOkBhmFnM=;
-        b=VNp0o+P4hv12Rp0Kjo66BV4hzXl3lTgXEO0Yr4WFC9O2uUpt8wFyoSkUvEVEnEDH6p
-         Ni9ePCaGf6EHLZyn/OzkpZx+Gyn94Gqc+oyGj+e16rLOLAQ/oDwxtUIr/O1XhpA6Zrj5
-         bH5M+fxyvKhEkquqPIJ0DRTxOzgTZWMmKwuzlNZfRKDITrkYW+r0WoGoWpvF4PPlu/F0
-         23SEvDYO7LiAc5Z1nxYIfuvPXN5ofA9rZNQyspg5nKxaTecNvsUAk0+Q3igY376MQ6CJ
-         98LTmX3ZIlsDSXe2OaRqDZgeabzqDsChj7BzqggU1Zxs0QaYIlJNylfPbY2rU6qUWWvX
-         WcDA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784222281; x=1784827081;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=HFJ+p81BjdB00DrwvkVTq99s5PhB9C18F6cOkBhmFnM=;
-        b=rvcNywJk05RNoUz1yx/vstX3lTpHyGhzPLLe02Tav4bH244zM9K2/56NBIEZTRaOWu
-         VxHpzeQNwzsSD7ZUMf8mRRTFKutWN5uqvaCRkbgtPxFbB7zzHWtD/Sng4HwMgI9VFH2B
-         TrDLbftTzYgIoOMEKOuWJhkwaATzcmvxJSKkar+kJpwnnhzcRJiOHyzMNYjGyPZiYTfh
-         kIx4CLi7sCHPWtnhM64oCsI1MhoEVqxNNWZlOVCxcPqibeuOLDQ7E5hUmBr1NCOaPRxi
-         Z4V0BMUFESi6DVses89uuqp3rUENNfV28vokYvq4Z430ejk2/eckf/d7X6V5gOzbdzf4
-         qKow==
-X-Forwarded-Encrypted: i=1; AHgh+RoJ+pp3dzHbI9U6dstdjXi2ybUwIgSjZhmq5ngpi+UAU3RoXNLWHP6NZLAo1imllfeGx20yNu0Y4ejYffWuYQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzHyg0Frz0n2jsbAA7XoEhXyIav6r/79iKQH2AbHJy4mupSyZnS
-	NCsh2JE5WkCbi0IuFdAg64cj1hwj9Cbw+GnJrZXEIbBMBW2ThTAhtHYf
-X-Gm-Gg: AfdE7clRn0WQwYmnMQJXxqisG4OcRe7Sz/qMpO6kzE0JItl8Hodlx3l4UQeCnuiSIRV
-	Ufioxu1LtY2o1AJU7ZU7yK2vK5sdbQ1KojR3RY0xzysxHbnaXMYCkm/tJRlS3ZNZV4dMlWtTG5n
-	kID+r6LMYCD2CnLB1Wjmlb7kSikmIOrjQfkTu6IUuVABQD7VwX9zbsn5pLthvjPlhoh5QU74a7n
-	p61SkySJQ6l4ANbhnnaomUHoBqJVdbuJeq6z5eDRqj92i0XbRv8iyKfJ52m0cH3B1yUl6HOmwic
-	Fr5IkWmA8c9tTZUtASt/VnZwYomdomD5or6u2lt3JagloFJJVP2T1G8C6MvjkMg7GgXfyjmmMUx
-	WLnYI0JADTEoZQAXrWBb+HNCFob/SQhD1C4yhY/iafiqdZW4B72JMev8N0UQYtd88KwTZZhgItE
-	3poz9HvdGBnzPXftEb99oUriS5LgLHyPTw9Q==
-X-Received: by 2002:a17:903:19ec:b0:2c2:be43:39bc with SMTP id d9443c01a7336-2cf03cef84dmr84481775ad.22.1784222280297;
-        Thu, 16 Jul 2026 10:18:00 -0700 (PDT)
-Received: from buffalo-ssd (M014013071096.v4.enabler.ne.jp. [14.13.71.96])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cf1055de44sm22917255ad.51.2026.07.16.10.17.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Jul 2026 10:17:59 -0700 (PDT)
-From: Akari Tsuyukusa <akkun11.open@gmail.com>
-To: Sen Chu <sen.chu@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	Lee Jones <lee@kernel.org>,
-	Rob Herring <robh@kernel.org>,
+	id 1wkPyW-00000000Hve-3pjA;
+	Thu, 16 Jul 2026 17:34:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1784223261; x=1815759261;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=LdUVk/NYwiBLxejC3EguQWO9elJf87/PL/iYCAtTcfo=;
+  b=JpWcxAJKluwxyzE/qCDFc9p8umLSSvduD5GoIqQNBlwLZd8PgBTEdPmp
+   87ySbTmrQ7vo2G4IhPuO7/rHJvGQyCQQXiX4bOaIv56l2sg+s7VzCb681
+   rvL6XPZDO/zvue9CgqPcwavTThqxvmKnDb1Izy9GqBnXLhupS40zO7QMH
+   m+NqJb3oOyLPgrwX6LT24jGUJaKGUmVTFYsS1zKTVR9nPTmcIvOoglQf+
+   tep2EmM4VSd1GJelsHtLt3WZXwk1Dx+gnpR8I1Vjohd0PsJmbKPZQBYJL
+   q0IjhCkA4PNA2bHpOowfMMjoCJXfPNo8FVFLrUSPNoCq+ZAmgt4AJd1BE
+   g==;
+X-CSE-ConnectionGUID: 6xLsh8u8SxmVoau4XXKhwQ==
+X-CSE-MsgGUID: ZoH1ssypS/aJn/tLXqUJSQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11848"; a="85009574"
+X-IronPort-AV: E=Sophos;i="6.25,167,1779174000"; 
+   d="scan'208";a="85009574"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jul 2026 10:34:20 -0700
+X-CSE-ConnectionGUID: G088pS9JRWCNCTzsqTnKsA==
+X-CSE-MsgGUID: jHS8gdqYTkewW49IH6KeVQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.25,167,1779174000"; 
+   d="scan'208";a="260157517"
+Received: from conormcd-mobl2.ger.corp.intel.com (HELO localhost) ([10.245.245.26])
+  by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jul 2026 10:34:14 -0700
+Date: Thu, 16 Jul 2026 20:34:11 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Bartosz Golaszewski <brgl@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Daniel Scally <djrscally@gmail.com>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Akari Tsuyukusa <akkun11.open@gmail.com>,
-	Flora Fu <flora.fu@mediatek.com>,
-	Alexandre Mergnat <amergnat@baylibre.com>
-Cc: linux-pm@vger.kernel.org (open list:MEDIATEK BOARD LEVEL SHUTDOWN DRIVERS),
-	mfd@lists.linux.dev (open list:MULTIFUNCTION DEVICES (MFD)),
-	devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS),
-	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCH 3/3] soc: mediatek: pwrap: add MT6589 PWARP and MT6320 PMIC support
-Date: Fri, 17 Jul 2026 02:17:33 +0900
-Message-ID: <20260716171733.300885-4-akkun11.open@gmail.com>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260716171733.300885-1-akkun11.open@gmail.com>
-References: <20260716171733.300885-1-akkun11.open@gmail.com>
+	Wei Deng <wei.deng@oss.qualcomm.com>, linux-acpi@vger.kernel.org,
+	driver-core@lists.linux.dev, linux-pm@vger.kernel.org,
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Alan Stern <stern@rowland.harvard.edu>,
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Subject: Re: [PATCH v5 10/16] usb: hub: Power on connected M.2 E-key
+ connectors with power sequencing API
+Message-ID: <alkWE-bQ9gGIXIJj@ashevche-desk.local>
+References: <20260715085348.3457359-1-wenst@chromium.org>
+ <20260715085348.3457359-11-wenst@chromium.org>
+ <aleKQKH2V-ck-SX6@ashevche-desk.local>
+ <CAGXv+5Ed9Cn-NeHiXJ58er7NJs1P2ZUMrjqYac-gSky-TNV8Lw@mail.gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAGXv+5Ed9Cn-NeHiXJ58er7NJs1P2ZUMrjqYac-gSky-TNV8Lw@mail.gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260716_101801_334603_C601CCB8 
-X-CRM114-Status: GOOD (  14.77  )
+X-CRM114-CacheID: sfid-20260716_103420_961472_09336E91 
+X-CRM114-Status: GOOD (  23.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,455 +106,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for MediaTek MT6589 PWRAP and MT6320 PMIC which are used
-together.
+On Thu, Jul 16, 2026 at 06:02:38PM +0800, Chen-Yu Tsai wrote:
+> On Wed, Jul 15, 2026 at 9:25 PM Andy Shevchenko
+> <andriy.shevchenko@linux.intel.com> wrote:
+> > On Wed, Jul 15, 2026 at 04:53:40PM +0800, Chen-Yu Tsai wrote:
 
-Since the PWRAP Bridge hardware on MT6589 is identical to the one on
-MT8135, refactor the existing register definitions:
-- Rename the MT8135-specific "PWRAP_MT8135_BRIDGE_" prefix to a generic
-  "PWRAP_BRIDGE_" prefix to reflect that they are shared across SoCs.
-- Add the full set of PWRAP Bridge registers to match the hardware
-  specification, rather than defining only a subset of them.
+...
 
-Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
----
- drivers/soc/mediatek/mtk-pmic-wrap.c | 292 +++++++++++++++++++++------
- 1 file changed, 235 insertions(+), 57 deletions(-)
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index 0bcd85826375..3a5b007d60f5 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -17,15 +17,31 @@
- #define PWRAP_POLL_DELAY_US	10
- #define PWRAP_POLL_TIMEOUT_US	10000
- 
--#define PWRAP_MT8135_BRIDGE_IORD_ARB_EN		0x4
--#define PWRAP_MT8135_BRIDGE_WACS3_EN		0x10
--#define PWRAP_MT8135_BRIDGE_INIT_DONE3		0x14
--#define PWRAP_MT8135_BRIDGE_WACS4_EN		0x24
--#define PWRAP_MT8135_BRIDGE_INIT_DONE4		0x28
--#define PWRAP_MT8135_BRIDGE_INT_EN		0x38
--#define PWRAP_MT8135_BRIDGE_TIMER_EN		0x48
--#define PWRAP_MT8135_BRIDGE_WDT_UNIT		0x50
--#define PWRAP_MT8135_BRIDGE_WDT_SRC_EN		0x54
-+/* MT6589 and MT8135 specific PWARP Bridge registers */
-+#define PWRAP_BRIDGE_IARB_INIT		0x0
-+#define PWRAP_BRIDGE_IORD_ARB_EN	0x4
-+#define PWRAP_BRIDGE_IARB_STA0		0x8
-+#define PWRAP_BRIDGE_IARB_STA1		0xc
-+#define PWRAP_BRIDGE_WACS3_EN		0x10
-+#define PWRAP_BRIDGE_INIT_DONE3		0x14
-+#define PWRAP_BRIDGE_WACS3_CMD		0x18
-+#define PWRAP_BRIDGE_WACS3_RDATA	0x1c
-+#define PWRAP_BRIDGE_WACS3_VLDCLR	0x20
-+#define PWRAP_BRIDGE_WACS4_EN		0x24
-+#define PWRAP_BRIDGE_INIT_DONE4		0x28
-+#define PWRAP_BRIDGE_WACS4_CMD		0x2c
-+#define PWRAP_BRIDGE_WACS4_RDATA	0x30
-+#define PWRAP_BRIDGE_WACS4_VLDCLR	0x34
-+#define PWRAP_BRIDGE_INT_EN		0x38
-+#define PWRAP_BRIDGE_INT_FLG_RAW	0x3c
-+#define PWRAP_BRIDGE_INT_FLG		0x40
-+#define PWRAP_BRIDGE_INT_CLR		0x44
-+#define PWRAP_BRIDGE_TIMER_EN		0x48
-+#define PWRAP_BRIDGE_TIMER_STA		0x4c
-+#define PWRAP_BRIDGE_WDT_UNIT		0x50
-+#define PWRAP_BRIDGE_WDT_SRC_EN		0x54
-+#define PWRAP_BRIDGE_WDT_FLG		0x58
-+#define PWRAP_BRIDGE_DEBUG_INT_SEL	0x5c
- 
- /* macro for wrapper status */
- #define PWRAP_GET_WACS_RDATA(x)		(((x) >> 0) & 0x0000ffff)
-@@ -100,6 +116,24 @@ enum dew_regs {
- 	PWRAP_DEW_CIPHER_MODE,
- 	PWRAP_DEW_CIPHER_SWRST,
- 
-+	/* MT6320 only regs */
-+	PWRAP_DEW_CIPHER_IV0,
-+	PWRAP_DEW_CIPHER_IV1,
-+	PWRAP_DEW_CIPHER_IV2,
-+	PWRAP_DEW_CIPHER_IV3,
-+	PWRAP_DEW_CIPHER_IV4,
-+	PWRAP_DEW_CIPHER_IV5,
-+
-+	/* MT6320 and MT6397 only regs */
-+	PWRAP_DEW_EVENT_OUT_EN,
-+	PWRAP_DEW_EVENT_SRC_EN,
-+	PWRAP_DEW_EVENT_SRC,
-+	PWRAP_DEW_EVENT_FLAG,
-+	PWRAP_DEW_MON_FLAG_SEL,
-+	PWRAP_DEW_EVENT_TEST,
-+	PWRAP_DEW_CIPHER_LOAD,
-+	PWRAP_DEW_CIPHER_START,
-+
- 	/* MT6323 only regs */
- 	PWRAP_DEW_CIPHER_EN,
- 	PWRAP_DEW_RDDMY_NO,
-@@ -142,16 +176,34 @@ enum dew_regs {
- 	PWRAP_DEW_RG_WDATA_MASK,
- 	PWRAP_DEW_RG_SPI_RECORD_CLR,
- 	PWRAP_DEW_RG_CMD_ALERT_CLR,
-+};
- 
--	/* MT6397 only regs */
--	PWRAP_DEW_EVENT_OUT_EN,
--	PWRAP_DEW_EVENT_SRC_EN,
--	PWRAP_DEW_EVENT_SRC,
--	PWRAP_DEW_EVENT_FLAG,
--	PWRAP_DEW_MON_FLAG_SEL,
--	PWRAP_DEW_EVENT_TEST,
--	PWRAP_DEW_CIPHER_LOAD,
--	PWRAP_DEW_CIPHER_START,
-+static const u32 mt6320_regs[] = {
-+	[PWRAP_DEW_EVENT_OUT_EN] =	0x0000,
-+	[PWRAP_DEW_DIO_EN] =		0x0002,
-+	[PWRAP_DEW_EVENT_SRC_EN] =	0x0004,
-+	[PWRAP_DEW_EVENT_SRC] =		0x0006,
-+	[PWRAP_DEW_EVENT_FLAG] =	0x0008,
-+	[PWRAP_DEW_READ_TEST] =		0x000a,
-+	[PWRAP_DEW_WRITE_TEST] =	0x000c,
-+	[PWRAP_DEW_CRC_EN] =		0x000e,
-+	[PWRAP_DEW_CRC_VAL] =		0x0010,
-+	[PWRAP_DEW_MON_GRP_SEL] =	0x0012,
-+	[PWRAP_DEW_MON_FLAG_SEL] =	0x0014,
-+	[PWRAP_DEW_EVENT_TEST] =	0x0016,
-+	[PWRAP_DEW_CIPHER_KEY_SEL] =	0x0018,
-+	[PWRAP_DEW_CIPHER_IV_SEL] =	0x001a,
-+	[PWRAP_DEW_CIPHER_LOAD] =	0x001c,
-+	[PWRAP_DEW_CIPHER_START] =	0x001e,
-+	[PWRAP_DEW_CIPHER_RDY] =	0x0020,
-+	[PWRAP_DEW_CIPHER_MODE] =	0x0022,
-+	[PWRAP_DEW_CIPHER_SWRST] =	0x0024,
-+	[PWRAP_DEW_CIPHER_IV0] =	0x0026,
-+	[PWRAP_DEW_CIPHER_IV1] =	0x0028,
-+	[PWRAP_DEW_CIPHER_IV2] =	0x002a,
-+	[PWRAP_DEW_CIPHER_IV3] =	0x002c,
-+	[PWRAP_DEW_CIPHER_IV4] =	0x002e,
-+	[PWRAP_DEW_CIPHER_IV5] =	0x0030,
- };
- 
- static const u32 mt6323_regs[] = {
-@@ -386,6 +438,22 @@ enum pwrap_regs {
- 	PWRAP_EINT_STA1_ADR,
- 	PWRAP_SWINF_2_WDATA_31_0,
- 	PWRAP_SWINF_2_RDATA_31_0,
-+	PWRAP_DVFS_ADR0,
-+	PWRAP_DVFS_WDATA0,
-+	PWRAP_DVFS_ADR1,
-+	PWRAP_DVFS_WDATA1,
-+	PWRAP_DVFS_ADR2,
-+	PWRAP_DVFS_WDATA2,
-+	PWRAP_DVFS_ADR3,
-+	PWRAP_DVFS_WDATA3,
-+	PWRAP_DVFS_ADR4,
-+	PWRAP_DVFS_WDATA4,
-+	PWRAP_DVFS_ADR5,
-+	PWRAP_DVFS_WDATA5,
-+	PWRAP_DVFS_ADR6,
-+	PWRAP_DVFS_WDATA6,
-+	PWRAP_DVFS_ADR7,
-+	PWRAP_DVFS_WDATA7,
- 
- 	/* MT2701 only regs */
- 	PWRAP_ADC_CMD_ADDR,
-@@ -394,6 +462,24 @@ enum pwrap_regs {
- 	PWRAP_ADC_RDATA_ADDR1,
- 	PWRAP_ADC_RDATA_ADDR2,
- 
-+	/* MT6589 only regs */
-+	PWRAP_CIPHER_IV0,
-+	PWRAP_CIPHER_IV1,
-+	PWRAP_CIPHER_IV2,
-+
-+	/* MT6589 and MT8135 only regs */
-+	PWRAP_CSHEXT,
-+	PWRAP_EVENT_IN_EN,
-+	PWRAP_EVENT_DST_EN,
-+	PWRAP_RRARB_INIT,
-+	PWRAP_RRARB_EN,
-+	PWRAP_RRARB_STA0,
-+	PWRAP_RRARB_STA1,
-+	PWRAP_EVENT_STA,
-+	PWRAP_EVENT_STACLR,
-+	PWRAP_CIPHER_LOAD,
-+	PWRAP_CIPHER_START,
-+
- 	/* MT7622 only regs */
- 	PWRAP_STA,
- 	PWRAP_CLR,
-@@ -422,38 +508,9 @@ enum pwrap_regs {
- 	PWRAP_DVFS_STEP_CTRL2,
- 	PWRAP_SPI2_CTRL,
- 
--	/* MT8135 only regs */
--	PWRAP_CSHEXT,
--	PWRAP_EVENT_IN_EN,
--	PWRAP_EVENT_DST_EN,
--	PWRAP_RRARB_INIT,
--	PWRAP_RRARB_EN,
--	PWRAP_RRARB_STA0,
--	PWRAP_RRARB_STA1,
--	PWRAP_EVENT_STA,
--	PWRAP_EVENT_STACLR,
--	PWRAP_CIPHER_LOAD,
--	PWRAP_CIPHER_START,
--
- 	/* MT8173 only regs */
- 	PWRAP_RDDMY,
- 	PWRAP_SI_CK_CON,
--	PWRAP_DVFS_ADR0,
--	PWRAP_DVFS_WDATA0,
--	PWRAP_DVFS_ADR1,
--	PWRAP_DVFS_WDATA1,
--	PWRAP_DVFS_ADR2,
--	PWRAP_DVFS_WDATA2,
--	PWRAP_DVFS_ADR3,
--	PWRAP_DVFS_WDATA3,
--	PWRAP_DVFS_ADR4,
--	PWRAP_DVFS_WDATA4,
--	PWRAP_DVFS_ADR5,
--	PWRAP_DVFS_WDATA5,
--	PWRAP_DVFS_ADR6,
--	PWRAP_DVFS_WDATA6,
--	PWRAP_DVFS_ADR7,
--	PWRAP_DVFS_WDATA7,
- 	PWRAP_SPMINF_STA,
- 	PWRAP_CIPHER_EN,
- 
-@@ -569,6 +626,98 @@ static const int mt2701_regs[] = {
- 	[PWRAP_ADC_RDATA_ADDR2] =	0x154,
- };
- 
-+static const int mt6589_regs[] = {
-+	[PWRAP_MUX_SEL] =		0x0,
-+	[PWRAP_WRAP_EN] =		0x4,
-+	[PWRAP_DIO_EN] =		0x8,
-+	[PWRAP_SIDLY] =			0xc,
-+	[PWRAP_CSHEXT] =		0x10,
-+	[PWRAP_CSHEXT_WRITE] =		0x14,
-+	[PWRAP_CSHEXT_READ] =		0x18,
-+	[PWRAP_CSLEXT_START] =		0x1c,
-+	[PWRAP_CSLEXT_END] =		0x20,
-+	[PWRAP_STAUPD_PRD] =		0x24,
-+	[PWRAP_STAUPD_GRPEN] =		0x28,
-+	[PWRAP_STAUPD_MAN_TRIG] =	0x2c,
-+	[PWRAP_STAUPD_STA] =		0x30,
-+	[PWRAP_EVENT_IN_EN] =		0x34,
-+	[PWRAP_EVENT_DST_EN] =		0x38,
-+	[PWRAP_WRAP_STA] =		0x3c,
-+	[PWRAP_RRARB_INIT] =		0x40,
-+	[PWRAP_RRARB_EN] =		0x44,
-+	[PWRAP_RRARB_STA0] =		0x48,
-+	[PWRAP_RRARB_STA1] =		0x4c,
-+	[PWRAP_HARB_INIT] =		0x50,
-+	[PWRAP_HARB_HPRIO] =		0x54,
-+	[PWRAP_HIPRIO_ARB_EN] =		0x58,
-+	[PWRAP_HARB_STA0] =		0x5c,
-+	[PWRAP_HARB_STA1] =		0x60,
-+	[PWRAP_MAN_EN] =		0x64,
-+	[PWRAP_MAN_CMD] =		0x68,
-+	[PWRAP_MAN_RDATA] =		0x6c,
-+	[PWRAP_MAN_VLDCLR] =		0x70,
-+	[PWRAP_WACS0_EN] =		0x74,
-+	[PWRAP_INIT_DONE0] =		0x78,
-+	[PWRAP_WACS0_CMD] =		0x7c,
-+	[PWRAP_WACS0_RDATA] =		0x80,
-+	[PWRAP_WACS0_VLDCLR] =		0x84,
-+	[PWRAP_WACS1_EN] =		0x88,
-+	[PWRAP_INIT_DONE1] =		0x8c,
-+	[PWRAP_WACS1_CMD] =		0x90,
-+	[PWRAP_WACS1_RDATA] =		0x94,
-+	[PWRAP_WACS1_VLDCLR] =		0x98,
-+	[PWRAP_WACS2_EN] =		0x9c,
-+	[PWRAP_INIT_DONE2] =		0xa0,
-+	[PWRAP_WACS2_CMD] =		0xa4,
-+	[PWRAP_WACS2_RDATA] =		0xa8,
-+	[PWRAP_WACS2_VLDCLR] =		0xac,
-+	[PWRAP_INT_EN] =		0xb0,
-+	[PWRAP_INT_FLG_RAW] =		0xb4,
-+	[PWRAP_INT_FLG] =		0xb8,
-+	[PWRAP_INT_CLR] =		0xbc,
-+	[PWRAP_SIG_ADR] =		0xc0,
-+	[PWRAP_SIG_MODE] =		0xc4,
-+	[PWRAP_SIG_VALUE] =		0xc8,
-+	[PWRAP_SIG_ERRVAL] =		0xcc,
-+	[PWRAP_CRC_EN] =		0xd0,
-+	[PWRAP_EVENT_STA] =		0xd4,
-+	[PWRAP_EVENT_STACLR] =		0xd8,
-+	[PWRAP_TIMER_EN] =		0xdc,
-+	[PWRAP_TIMER_STA] =		0xe0,
-+	[PWRAP_WDT_UNIT] =		0xe4,
-+	[PWRAP_WDT_SRC_EN] =		0xe8,
-+	[PWRAP_WDT_FLG] =		0xec,
-+	[PWRAP_DEBUG_INT_SEL] =		0xf0,
-+	[PWRAP_DVFS_ADR0] =		0xf4,
-+	[PWRAP_DVFS_WDATA0] =		0xf8,
-+	[PWRAP_DVFS_ADR1] =		0xfc,
-+	[PWRAP_DVFS_WDATA1] =		0x100,
-+	[PWRAP_DVFS_ADR2] =		0x104,
-+	[PWRAP_DVFS_WDATA2] =		0x108,
-+	[PWRAP_DVFS_ADR3] =		0x10c,
-+	[PWRAP_DVFS_WDATA3] =		0x110,
-+	[PWRAP_DVFS_ADR4] =		0x114,
-+	[PWRAP_DVFS_WDATA4] =		0x118,
-+	[PWRAP_DVFS_ADR5] =		0x11c,
-+	[PWRAP_DVFS_WDATA5] =		0x120,
-+	[PWRAP_DVFS_ADR6] =		0x124,
-+	[PWRAP_DVFS_WDATA6] =		0x128,
-+	[PWRAP_DVFS_ADR7] =		0x12c,
-+	[PWRAP_DVFS_WDATA7] =		0x130,
-+	[PWRAP_CIPHER_KEY_SEL] =	0x134,
-+	[PWRAP_CIPHER_IV_SEL] =		0x138,
-+	[PWRAP_CIPHER_LOAD] =		0x13c,
-+	[PWRAP_CIPHER_START] =		0x140,
-+	[PWRAP_CIPHER_RDY] =		0x144,
-+	[PWRAP_CIPHER_MODE] =		0x148,
-+	[PWRAP_CIPHER_SWRST] =		0x14c,
-+	[PWRAP_CIPHER_IV0] =		0x150,
-+	[PWRAP_CIPHER_IV1] =		0x154,
-+	[PWRAP_CIPHER_IV2] =		0x158,
-+	[PWRAP_DCM_EN] =		0x15c,
-+	[PWRAP_DCM_DBC_PRD] =		0x160,
-+};
-+
- static const int mt6765_regs[] = {
- 	[PWRAP_MUX_SEL] =		0x0,
- 	[PWRAP_WRAP_EN] =		0x4,
-@@ -1301,6 +1450,7 @@ static const int mt8186_regs[] = {
- };
- 
- enum pmic_type {
-+	PMIC_MT6320,
- 	PMIC_MT6323,
- 	PMIC_MT6331,
- 	PMIC_MT6332,
-@@ -1314,6 +1464,7 @@ enum pmic_type {
- 
- enum pwrap_type {
- 	PWRAP_MT2701,
-+	PWRAP_MT6589,
- 	PWRAP_MT6765,
- 	PWRAP_MT6779,
- 	PWRAP_MT6795,
-@@ -1750,6 +1901,7 @@ static int pwrap_common_init_reg_clock(struct pmic_wrapper *wrp)
- 	case PWRAP_MT8173:
- 		pwrap_init_chip_select_ext(wrp, 0, 4, 2, 2);
- 		break;
-+	case PWRAP_MT6589:
- 	case PWRAP_MT8135:
- 		pwrap_writel(wrp, 0x4, PWRAP_CSHEXT);
- 		pwrap_init_chip_select_ext(wrp, 0, 4, 0, 0);
-@@ -1834,6 +1986,7 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
- 	pwrap_writel(wrp, 0x2, PWRAP_CIPHER_IV_SEL);
- 
- 	switch (wrp->master->type) {
-+	case PWRAP_MT6589:
- 	case PWRAP_MT8135:
- 		pwrap_writel(wrp, 1, PWRAP_CIPHER_LOAD);
- 		pwrap_writel(wrp, 1, PWRAP_CIPHER_START);
-@@ -1866,6 +2019,7 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
- 		pwrap_config_cipher(wrp, wrp->slave->comp_dew_regs);
- 
- 	switch (wrp->slave->type) {
-+	case PMIC_MT6320:
- 	case PMIC_MT6397:
- 		pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_CIPHER_LOAD],
- 			    0x1);
-@@ -1960,13 +2114,13 @@ static int pwrap_mt8135_init_soc_specific(struct pmic_wrapper *wrp)
- 	/* enable pwrap events and pwrap bridge in AP side */
- 	pwrap_writel(wrp, 0x1, PWRAP_EVENT_IN_EN);
- 	pwrap_writel(wrp, 0xffff, PWRAP_EVENT_DST_EN);
--	writel(0x7f, wrp->bridge_base + PWRAP_MT8135_BRIDGE_IORD_ARB_EN);
--	writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WACS3_EN);
--	writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WACS4_EN);
--	writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WDT_UNIT);
--	writel(0xffff, wrp->bridge_base + PWRAP_MT8135_BRIDGE_WDT_SRC_EN);
--	writel(0x1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_TIMER_EN);
--	writel(0x7ff, wrp->bridge_base + PWRAP_MT8135_BRIDGE_INT_EN);
-+	writel(0x7f, wrp->bridge_base + PWRAP_BRIDGE_IORD_ARB_EN);
-+	writel(0x1, wrp->bridge_base + PWRAP_BRIDGE_WACS3_EN);
-+	writel(0x1, wrp->bridge_base + PWRAP_BRIDGE_WACS4_EN);
-+	writel(0x1, wrp->bridge_base + PWRAP_BRIDGE_WDT_UNIT);
-+	writel(0xffff, wrp->bridge_base + PWRAP_BRIDGE_WDT_SRC_EN);
-+	writel(0x1, wrp->bridge_base + PWRAP_BRIDGE_TIMER_EN);
-+	writel(0x7ff, wrp->bridge_base + PWRAP_BRIDGE_INT_EN);
- 
- 	/* enable PMIC event out and sources */
- 	if (pwrap_write(wrp, wrp->slave->dew_regs[PWRAP_DEW_EVENT_OUT_EN],
-@@ -2110,7 +2264,8 @@ static int pwrap_init(struct pmic_wrapper *wrp)
- 			return ret;
- 	}
- 
--	if (wrp->master->type == PWRAP_MT8135)
-+	if (wrp->master->type == PWRAP_MT8135 ||
-+		wrp->master->type == PWRAP_MT6589)
- 		pwrap_writel(wrp, 0x7, PWRAP_RRARB_EN);
- 
- 	pwrap_writel(wrp, 0x1, PWRAP_WACS0_EN);
-@@ -2131,8 +2286,8 @@ static int pwrap_init(struct pmic_wrapper *wrp)
- 	pwrap_writel(wrp, 1, PWRAP_INIT_DONE1);
- 
- 	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_BRIDGE)) {
--		writel(1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_INIT_DONE3);
--		writel(1, wrp->bridge_base + PWRAP_MT8135_BRIDGE_INIT_DONE4);
-+		writel(1, wrp->bridge_base + PWRAP_BRIDGE_INIT_DONE3);
-+		writel(1, wrp->bridge_base + PWRAP_BRIDGE_INIT_DONE4);
- 	}
- 
- 	return 0;
-@@ -2186,6 +2341,14 @@ static const struct pwrap_slv_regops pwrap_regops32 = {
- 	.regmap = &pwrap_regmap_config32,
- };
- 
-+static const struct pwrap_slv_type pmic_mt6320 = {
-+	.dew_regs = mt6320_regs,
-+	.type = PMIC_MT6320,
-+	.regops = &pwrap_regops16,
-+	.caps = PWRAP_SLV_CAP_SPI | PWRAP_DEW_DIO_EN |
-+		PWRAP_SLV_CAP_SECURITY,
-+};
-+
- static const struct pwrap_slv_type pmic_mt6323 = {
- 	.dew_regs = mt6323_regs,
- 	.type = PMIC_MT6323,
-@@ -2248,6 +2411,7 @@ static const struct pwrap_slv_type pmic_mt6397 = {
- };
- 
- static const struct of_device_id of_slave_match_tbl[] = {
-+	{ .compatible = "mediatek,mt6320", .data = &pmic_mt6320 },
- 	{ .compatible = "mediatek,mt6323", .data = &pmic_mt6323 },
- 	{ .compatible = "mediatek,mt6331", .data = &pmic_mt6331 },
- 	{ .compatible = "mediatek,mt6351", .data = &pmic_mt6351 },
-@@ -2277,6 +2441,19 @@ static const struct pmic_wrapper_type pwrap_mt2701 = {
- 	.init_soc_specific = pwrap_mt2701_init_soc_specific,
- };
- 
-+static const struct pmic_wrapper_type pwrap_mt6589 = {
-+	.regs = mt6589_regs,
-+	.type = PWRAP_MT6589,
-+	.arb_en_all = 0x1ff,
-+	.int_en_all = 0x7ffffffd,
-+	.int1_en_all = 0,
-+	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
-+	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
-+	.caps = PWRAP_CAP_BRIDGE | PWRAP_CAP_RESET | PWRAP_CAP_DCM,
-+	.init_reg_clock = pwrap_common_init_reg_clock,
-+	.init_soc_specific = pwrap_mt8135_init_soc_specific,
-+};
-+
- static const struct pmic_wrapper_type pwrap_mt6765 = {
- 	.regs = mt6765_regs,
- 	.type = PWRAP_MT6765,
-@@ -2446,6 +2623,7 @@ static const struct pmic_wrapper_type pwrap_mt8186 = {
- 
- static const struct of_device_id of_pwrap_match_tbl[] = {
- 	{ .compatible = "mediatek,mt2701-pwrap", .data = &pwrap_mt2701 },
-+	{ .compatible = "mediatek,mt6589-pwrap", .data = &pwrap_mt6589 },
- 	{ .compatible = "mediatek,mt6765-pwrap", .data = &pwrap_mt6765 },
- 	{ .compatible = "mediatek,mt6779-pwrap", .data = &pwrap_mt6779 },
- 	{ .compatible = "mediatek,mt6795-pwrap", .data = &pwrap_mt6795 },
+> > >       fwnode_handle_put(dev_fwnode(dev));
+> > > +     /* usb_hub_create_port_device() could leave an error value */
+> > > +     if (!IS_ERR(port_dev->pwrseq))
+> > > +             pwrseq_put(port_dev->pwrseq);
+> >
+> > Hmm... I would rather make pwrseq_put() NULL and error pointer-aware, so
+> > it will be no-op in such cases. But I think Bart has his own opinion about
+> > this.
+> >
+> > >       kfree(port_dev->req);
+> > >       kfree(port_dev);
+> > >  }
+> >
+> > >               put_device(&port_dev->dev);
+> > > +             hub->ports[port1 - 1] = NULL;
+> > >               return retval;
+> > >       }
+
+...
+
+> > > int usb_hub_create_port_device(struct usb_hub *hub, int port1)
+> >
+> > > +     port_dev->pwrseq = usb_hub_port_pwrseq_get(port_dev);
+> > > +     if (IS_ERR(port_dev->pwrseq)) {
+> > > +             retval = dev_err_probe(&port_dev->dev, PTR_ERR(port_dev->pwrseq),
+> > > +                                    "failed to get power sequencing descriptor\n");
+> > > +             goto err_put_kn;
+> >
+> > OTOH, how pwrseq can be non-NULL and at the same time port be created?
+> 
+> I assume by non-NULL you mean returning an error?
+> 
+> device_register(&port_dev->dev) is called some lines above this.
+> 
+> usb_port is weird in that usb_hub_create_port_device() does a bunch
+> of stuff that is normally done in a driver's probe function. However
+> usb_port's driver is just a stub driver add for userspace compatibility
+> reasons. See commit d99f6b4130877 ("usb: rename usb_port device objects").
+> 
+> So at this point the usb_port device has been added to the driver model.
+> Or we can just zero out port_dev->pwrseq instead? I guess that is cleaner
+> than having some weird check in the release function.
+
+So, why do we need to assign the error pointer to the field directly then?
+Make a local variable and assign it if and only if there is no error pointer
+in it. Would it work?
+
 -- 
-2.54.0
+With Best Regards,
+Andy Shevchenko
+
 
 
