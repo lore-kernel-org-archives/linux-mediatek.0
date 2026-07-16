@@ -4,114 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E56AC44512
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 16:25:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8003DC44515
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 17:17:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7QjVN0B7Sf4bom6cy6/CS1jzJRC2l2ZaheSobQTYPio=; b=ol8n9qGb5tHRUzcYFiht3WOoVi
-	lw243ldlExCqTFwXLWo1fiZZvsNAA8Py67ymUpS3fycIheGnIOw0EbZVHUa9SwIhbasVShySVSUay
-	LGlge/l/l1741Hp7Iq3MMyen6bk65N1ZJfHf00EBg7tRtkdoiGmab4XKeiUJDgDmVNVXUy0zOZpkL
-	vpMDEYHwFRqm3OjfMV6v2KgAPP7WVkC9WcCsM5Qu/NFWZUfY3O5vS6ZvPbd6bwPh7SLLuIn5WoTCF
-	1nSh617S9Ahzn9TrpU+bdle+BdZDHPJ33zz0wMmaA6P7n2EtVHc2zPgfq1iLK5UNTYBnhfOm1Vn6d
-	C3Tfbysg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GrO9yku15Nd4atEWaEXkVKcrXj8oZipRV1TYhFxDaxE=; b=I+wAykxsB6iDlxPDEFrEkvRiCg
+	onIbQI2VNqPdJrBWChYO0HtPkaJq6MriUGVAZjAIfNxxaJkZoloDCW+wclYg5H/7kXTbWkBiVKKtk
+	79LsQ2Gw0Vn9AZW6i1/d+3mTfOMvLNXz8UYx818d4ib+NOvlyexbj2ovufyfxaVIpqa5ppEAtW898
+	eOBuFz3M68nArNLb6asMFk7gb9grrFlfLtLGjmQB7qBoOlJkePVJU2wrWl183KMuJSA6uQ4AnGLCO
+	6g8qt6XyzijsjJZ1x3+Y4Pmk6hEnOkrml3tg4hCLYsdWkp+MoS8+sbt79UjEKC7lUGGky8/d4cmXd
+	LvHqWXiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkOtr-000000009OZ-1PR2;
-	Thu, 16 Jul 2026 16:25:27 +0000
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+	id 1wkPib-00000000Fp9-0pVQ;
+	Thu, 16 Jul 2026 17:17:53 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkOtn-000000009N0-0UhP
+	id 1wkPiZ-00000000Fnr-0SQd
 	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Jul 2026 16:25:25 +0000
-Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-3856d6fbcb3so3277313a91.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 09:25:22 -0700 (PDT)
+	Thu, 16 Jul 2026 17:17:52 +0000
+Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-2cee9b74ee1so34694145ad.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 10:17:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784219122; x=1784823922; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=7QjVN0B7Sf4bom6cy6/CS1jzJRC2l2ZaheSobQTYPio=;
-        b=g2lpZzkmjLh0H3rAPEi4DlaeoG0ovp4bz9mp0luwRoQeEKvMg/s3fsSypur1qenC70
-         j1j7vTvfghUdHyrhqHCncmwReag6gy1Ybg9pErUw7q0e4uND2rj3kFNWtr0H3l7IarYD
-         IRobhbC97WMFAoW1zOuDuqzDiKfByh9KY4Gd8EuU1+ykL+TOfKa8UZykrFW6ubXdDYBF
-         JtuhR1GHGsGR85VfBSlKyODe2DNOpWM90Ww41HG9sdgTY81nPvUptnjsepat0prUV728
-         ZviBS98aWlHlmxanHoVnvGTLghfxhdL4RcF8P9uPMfjYa/GFv0ZZjq4PgGFREMlBRwZV
-         bX6g==
+        d=gmail.com; s=20251104; t=1784222270; x=1784827070; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=GrO9yku15Nd4atEWaEXkVKcrXj8oZipRV1TYhFxDaxE=;
+        b=aFeEaCywu75bGxOmllWBLcG0ADeZS2+bFDtaD1K57W6vqPZSQ94zU8GvBLBYDhuyy4
+         /5hV1I2eN90/eA8zdCKaKgtx4usaL5YuGZ0YRoharXWFNWfbXVGBadSIQYG2ITw3BARm
+         2DlAOcJFcdEwwPZiZCtqGwpbtNiIswb9CASBTNoILellyDzVuAmAFQH8nOfjvefE0aLg
+         6SBdwICDEuRFzopFv2sK8Lz1gdMF02Te+0RWEnZ4Q9rFKGXrCxCF8jdmtrsqsp3yW1eJ
+         LNS5ghFwwhCG0m9j96SJ99/z57inXWm6XvWiK4zUzrWe/N1KKCD8cjZbvbdax7eRIb0X
+         1LSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784219122; x=1784823922;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=7QjVN0B7Sf4bom6cy6/CS1jzJRC2l2ZaheSobQTYPio=;
-        b=jtnCdAyf+fN+5EG8C+5qvhUuCJPEVorILyYaqUH35/Uyx3nRRlmxzev7GmF6ztDsqx
-         7qVSTuj0eE3kUHt6b0/Rthu+/kvP6pF4l4S435UinOTRdbaG9WGzO8Ket8lVRVAkbuII
-         /pLEkVcyBL/pqNRz8C/1U9O7txkT1xIebBz5NARdDyA4tyRQY8hC1GTCxCIOeDMfS7y9
-         kPVvPvjuvkC6J+4RMNtbYC9JGO/7C5LRny4npNSW1asxSEmr3MloMlrmjuI0fhZXRmIe
-         GpRCXWlkWzeHLiafpwsJApPmaiiOkPpOSQV89Po79NCstiA1bY2cfIbrbBehHDbqQ5e5
-         f+DA==
-X-Forwarded-Encrypted: i=1; AHgh+RrV4yKLRzRx/qhZv+69GuIpOcfJC3qjqQNIeBKKv7r1HMc6jJI6uLNoJm1tt+vRYBDzpeJyavMzO/kLvG8eOQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwKtqTtPbbLOcw+5/6tQ7zRcJNvSPa2H6mAHR7EbEHHpzAJwvv0
-	sI4k6A91ByNTb3kyf8DLQBaAU9pwfdUFybbeNRqqm7D7RJZEqEWShLGB
-X-Gm-Gg: AfdE7cnoA8fLV7ha7wBhaLYC9RAEE+bzkKx7m/sLNMtI6dPzzfvxp/JmUacftzFsUDV
-	LODJJGw17TLD5Ee71+4MzPT7HPs3FVbUEZF9PuGZFuI4JYirxDOQJhZd628mVK0vX1owDO0Ef75
-	h45d7nE106dFsKPCB8IhBiY+ZAI5aRebW9nAoE6gHuu4BzCCrYKJSmvX9jVinnzmcyCMN5cE3eo
-	0VToxG6Y0zNJWohQ8AkJ6AXfSn8PMuAk3+oGQCp0IIDFGFuCEGRU4Q+RMg+dlEuZwhsIrpcWsjk
-	ekewdDK3T9e3/V7FCfu9/YOKRhsQiFNWSsSuijzcA67iY7PtnhqsNTJgB8uWvghxUd0WcuTgrxz
-	JIJaPlSeHx5ZVAAlWPMaS8VPhsnvz/n3lDKZGYMNveeDAXS3PCv40ktLZxj5B+Gf65s/zzLcUSk
-	c67G6uAAMH5oylIiHFXxnPsC7ysWBjGdr4sI99KY3ICaIOplcJo4ed2brYHhpm1HpjqprqpcTt5
-	GISL5jHvsQ=
-X-Received: by 2002:a17:90b:268a:b0:38d:e442:901e with SMTP id 98e67ed59e1d1-38e4676edcemr252375a91.27.1784219121817;
-        Thu, 16 Jul 2026 09:25:21 -0700 (PDT)
-Received: from [192.168.1.45] ([45.64.226.73])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3140e6f0fcdsm13401269eec.30.2026.07.16.09.25.16
+        d=1e100.net; s=20251104; t=1784222270; x=1784827070;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=GrO9yku15Nd4atEWaEXkVKcrXj8oZipRV1TYhFxDaxE=;
+        b=RcGDS62Yvz2ea9mQitkpv8K+IpFyTv4znPW4f8A9mBL+T0EJM4rCLh7dm2ituq8oOI
+         0a8I+ziRBPIzRP1uowbgrFQ4C5AXKmi0vX06sbSVhmnorVCVyNuUfppusNnvsADbm5yQ
+         Y8ZA82FRni9krGo192AdXfgtZ7R6M8z2tTvfObx2i3fm5nieFvxKaPH1+vOYbLPIcxV5
+         7waloejVAW4UDSfIvdlFBRnyQ2Wrn7OfK1dupoS5EHx28bvDVcZz+TI/nWKZ7rmuIHgK
+         Xn/4gkgh+aeX1rMXs+B+u8jEH7NMwrBc2ICSCa8Sx47AblgZHbvsc3MMcI6sIWUtCzyA
+         0Mng==
+X-Forwarded-Encrypted: i=1; AHgh+Rq+d0VseCBZQfzLR0EUzXwB4CeuHGnSVMsInRoh5Ha3Ztzct+JHMECSqrSN4VLnArhkJJEMhX2GljsVnNMT8w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxhVHASqF4wQjKryPFBHxCLQtcNlDArQxQcyhNd7JECMpTJN8OF
+	xUcfPjb/zuS9+FpBI5nmhDxbg1I7r7BW6MGTcWT9ExkQSAfCFqGoFBwT
+X-Gm-Gg: AfdE7clF3TSYNJfGGGs6Nv3b3e6dLzQLFqWwZNID6tLyq+j+LS0IqnjLMqGmW95kX3h
+	fG6/2CctmvOLW1zgO2SvRa5I6BNaSP848+km95V+EHZa7SXvUFTEMwSmmzuYBGyoU310A4VPn7A
+	fWbLxW8/PwcdmgEofMa/W8PXiACtzXfMayTWIu24q90CDLNmeNzASS54Zq2bNZCRQR5fvQvpdAE
+	hc58Yctn5P/GdvhkcDr0O/chnHyOsVOI1OC/I6cOuOiTOPErFKQIlzIsQLKp7YjkR1tE7b1xYer
+	+JEZjuJ5NquY38nhYuci8sS4g0W2wFO4+FYXGjKIYydHyqISw+05h6t0FLHhexM6ZsEC2S73HVo
+	jcH4UkOzhNEtB2YIsbyQmais4cbLbwLyAoIARHPOKucDQaQgj45sqKVD8Z2/IyNjX3bC6P05rPh
+	3F6vC2ClxMXTOifFNSAlYQjFSAvgSEsIaV7A==
+X-Received: by 2002:a17:903:2ec5:b0:2ca:17e2:2acc with SMTP id d9443c01a7336-2cf03cef19amr85530865ad.21.1784222270259;
+        Thu, 16 Jul 2026 10:17:50 -0700 (PDT)
+Received: from buffalo-ssd (M014013071096.v4.enabler.ne.jp. [14.13.71.96])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cf1055de44sm22917255ad.51.2026.07.16.10.17.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Jul 2026 09:25:21 -0700 (PDT)
-From: Prashant Rahul <prashantrahul23@gmail.com>
-Date: Thu, 16 Jul 2026 21:55:10 +0530
-Subject: [PATCH] wifi: mt76: mt7921: fix memory leak when skb_linearize
- fails in mcu rx event
+        Thu, 16 Jul 2026 10:17:49 -0700 (PDT)
+From: Akari Tsuyukusa <akkun11.open@gmail.com>
+To: Sen Chu <sen.chu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>,
+	Lee Jones <lee@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Akari Tsuyukusa <akkun11.open@gmail.com>,
+	Flora Fu <flora.fu@mediatek.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>
+Cc: linux-pm@vger.kernel.org (open list:MEDIATEK BOARD LEVEL SHUTDOWN DRIVERS),
+	mfd@lists.linux.dev (open list:MULTIFUNCTION DEVICES (MFD)),
+	devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS),
+	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH 0/3] soc: mediatek: pwrap: MT6589 + MT6320 support
+Date: Fri, 17 Jul 2026 02:17:30 +0900
+Message-ID: <20260716171733.300885-1-akkun11.open@gmail.com>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260716-mt7921-mem-leak-v1-1-6e9c0ea19f63@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MQQ5AMBBA0avIrE3SqURxFbGoGkwo0opIxN01l
- m/x/wORg3CEJnsg8CVR9i2B8gzcbLeJUYZk0EqXylCJ/jS1JvTscWW7oC0q1zsaKio0pOoIPMr
- 9H9vufT+KAS/7YQAAAA==
-X-Change-ID: 20260716-mt7921-mem-leak-a38cbc1d8132
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
- Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Shuah Khan <shuah@kernel.org>, linux-wireless@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Prashant Rahul <prashantrahul23@gmail.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1673;
- i=prashantrahul23@gmail.com; h=from:subject:message-id;
- bh=4CPW5b7K7pWIDEETkd1lpdofQroaGErs1xlq/gmjxWI=;
- b=owEBbQKS/ZANAwAKAWw+kajX8DhtAcsmYgBqWQXsV/w68cO9EKUlxqIpVZZtXkCX80D6dDxmD
- aGf8enZNumJAjMEAAEKAB0WIQRS5esR6MP3hQs0SsxsPpGo1/A4bQUCalkF7AAKCRBsPpGo1/A4
- bdceD/9HRbFIUqlRohA+MNVpogcl2J0qVq6PkEnpD+GkH7o7uXwvTr5omWzmRqdNb33V5b4Fe2K
- c7OJF/5NoVkMxl6Qpc35kmyjgwc6XTpUewiJRb79q3tPiZV0GG8QuRVtllKz831mDYmPk+Redck
- 4H5KTYrsr8LIf9Xso8dlfOJN0ERKdNUzEwDPcyLSuH+m/xuIDs3ez5Y5IKNCanUcpVK5onVkMFk
- 0hudLISYFa8W/s9wIKM6pSuqHZ5JqWA5SYbsh6Wvq8H9DLcMa9uYgDbd7cN1rUF9ZfOWg7BLDXY
- z616o9dBYz8yUev0+lQAM2omnXDbaKRnEOoF+FKv21HScW3bH8AGZJLoAPJgoeMGHIysFEtpdEI
- +85iKhG2ybdPp5FL+I+AteyRTxrnH+O1mpS5AoFksYcv/qEQaIM2R8LePjvtSwTPk13dGVwdm3P
- 3MY/2bz9TLpgdi51R4hn89CJiCZ48nVMUKABUTky/G80vg4b/pyYsa6jNuT5wEhVgYOFXqz3qko
- GfYjZThToIzvU+crLj4s49Zh7/ceI//3hrH84W6MAL3FM2jjNXBihLDv077WFmv4/AXOEWbVsHs
- qtnO5CTz3MKT9+K0Dq36YNx07UYI1d6sNTiBka3HlCEkxRXgRR3zbIId2eZH3SiKscIsUTumMjr
- pli4IGgKPuxzQxA==
-X-Developer-Key: i=prashantrahul23@gmail.com; a=openpgp;
- fpr=52E5EB11E8C3F7850B344ACC6C3E91A8D7F0386D
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260716_092523_166615_92E0CA14 
-X-CRM114-Status: GOOD (  12.24  )
+X-CRM114-CacheID: sfid-20260716_101751_147336_CF8C2D82 
+X-CRM114-Status: UNSURE (   8.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,52 +111,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The ownership of sk_buff skb is passed to mt7921_queue_rx_skb, each
-path inside it under the switch case handles cleaning of skb and it
-is true for mt7921_mcu_rx_event as well.
+This patch series adds support for MediaTek MT6589 PWRAP and MT6320
+PMIC which are used together.
+It also adds minimum compatibility string for MT6320.
 
-mt7921_mcu_rx_event, on a success path, either queues skb via
-mt76_mcu_rx_event or cleans it immediately inside
-mt7921_mcu_uni_rx_unsolicited_event.
+Tested on Lenovo YOGA Tablet 10 Wi-Fi model.
 
-However inside mt7921_mcu_rx_event, if skb_linearize fails, the function
-returns immediately and never bothers cleaning skb which leaks skb.
+Akari Tsuyukusa (3):
+  dt-bindings: soc: mediatek: pwrap: Add compatible for MT6589 SoC
+  dt-bindings: mfd: mediatek: mt6397: add MT6320 compatible string
+  soc: mediatek: pwrap: add MT6589 PWARP and MT6320 PMIC support
 
-Since skb is fully owned at this point, it is safe to call
-dev_kfree_skb which fixes the leak.
+ .../bindings/mfd/mediatek,mt6397.yaml         |   1 +
+ .../bindings/soc/mediatek/mediatek,pwrap.yaml |   5 +-
+ drivers/soc/mediatek/mtk-pmic-wrap.c          | 292 ++++++++++++++----
+ 3 files changed, 239 insertions(+), 59 deletions(-)
 
-Granted, the skb_linearize failure is rare as it can only fail under
-heavy memory usage, but at the same time, leaking memory under heavy
-memory usage can worsen the OOM condition.
-
-Signed-off-by: Prashant Rahul <prashantrahul23@gmail.com>
----
- drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index 25b9437250f7b..fb18d3b4e27ba 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -351,8 +351,10 @@ void mt7921_mcu_rx_event(struct mt792x_dev *dev, struct sk_buff *skb)
- {
- 	struct mt76_connac2_mcu_rxd *rxd;
- 
--	if (skb_linearize(skb))
-+	if (skb_linearize(skb)) {
-+		dev_kfree_skb(skb);
- 		return;
-+	}
- 
- 	rxd = (struct mt76_connac2_mcu_rxd *)skb->data;
- 
-
----
-base-commit: b8809969e1d7a591e0f49dd464a5d04b3cf02ab1
-change-id: 20260716-mt7921-mem-leak-a38cbc1d8132
-
-Best regards,
 -- 
-Prashant Rahul <prashantrahul23@gmail.com>
+2.54.0
 
 
