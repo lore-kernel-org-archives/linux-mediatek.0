@@ -4,66 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0DA3C4450A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 11:42:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 701ADC4450A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 12:40:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=BcE4MP3DMzpQ02s3zmeid9c8qa5MwekrIFi5BEUqWKE=; b=U0pVqzlrdEfj0C7Uzajy4GqxXf
-	Nm2ge479auf0pQ/vtMvzmjh4sR77U1A+NWmj8dip9nYJDne3HB0gKRdqeTsVrcLAoO/asLo7xUV6W
-	qSTuRTv0mvVq+oLjLf9Yy+xrofD7LUhfsouwUbMbUJPG6v32/8B6vVBlNwmQ5RfOrbmzrHgXL5MtA
-	jaLmS82BZweK8u155bQVMvDkY8u2Sbtr9WUChp3catQDTbsUvzh8JFfSVtgkBiSuveoczAs5i0XPR
-	TJiZvZtqAvmY0g8GqF7x1GZ10OT1QVNS6XrK/6S+4NfWJvZSt5djswIeDWViV/IP19bZE4bWqffzz
-	hA1Usoqg==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:References:MIME-Version:
+	In-Reply-To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OxlN32iU+dZZDeFlRrMUjrZz0IkcNsY0YbDQ0qDA3v0=; b=kovbH9uzA5/ac/C5LwHMPbuhkh
+	HoI5Ig8iQ8HiJFsk+m68t/SjUjlOVvxFCMWURPfIP8FaOIVSmJk4tCX4eY7e45/UDBhs+GxFscz+4
+	NNAnJai4jQxQnH/KVR4paTUh6ob3wNRronxf4+9n5JMZqy5EwYtMPCUNP+kSTEsRj3C6uV6o5oIAv
+	2Bzho9xjgDfu20DoMMUjJByGHIL9hgxFlmHX6xOiI+kFDt7iPSbJFelT3PzOhXVSAZyRLMpRAKMnD
+	eFJpK6Sgy3VO20AlCX+W4rgLHd6kFoBrEIc11Bh+PY7OMHoKePiWFxPgMkE2gCNZ/VAox1R9pKxF3
+	1aGBylsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkKUU-0000000HAG0-26uU;
-	Thu, 16 Jul 2026 11:42:58 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wkLNg-0000000HHL9-01GF;
+	Thu, 16 Jul 2026 12:40:00 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkKUQ-0000000HAED-0yfB;
-	Thu, 16 Jul 2026 11:42:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784202170;
-	bh=mDnKGAlL+LyE5R2P+uLw2Xcb/nVKH7esWgNaCjxqEXE=;
-	h=From:To:Cc:Subject:Date:From;
-	b=H5luRTYKA8DwTVT/KRQElee5w8BfA74MIde6ben8ccwdFKeqAuzIkjhsu6yILAFI7
-	 lInog16e69UDbCH1+uzEUBq2ujGgZF3REytxZwsvYFNbLP2bEoIFN9ZS6Uc3NY86Xj
-	 6wzD11eUVHrlHgUKyyhmNMTg+mi6/uWkOOIf2bwkxpYF6LKW439pHQiznRFlhyccYK
-	 J7rwET4l+FZoMhEpGZcd8jcxzaRZgoYDRbgPqz13YdAIUnfGDhWJGIKxItOsktrWgZ
-	 quM/qj383iDR3/aKyv/gz6n2Ynb5yuAauOl3WxN75/cCuG8iLDbVnvXZ549KS11wPE
-	 SHJlGJjQXT92Q==
-Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EAE7817E019E;
-	Thu, 16 Jul 2026 13:42:49 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: ulfh@kernel.org
-Cc: matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	nfraprado@collabora.com,
-	macpaul.lin@mediatek.com,
-	irving-ch.lin@mediatek.com,
-	linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH] pmdomains: mediatek: Avoid setting RTFF's CLK_DIS before NRESTORE
-Date: Thu, 16 Jul 2026 13:42:47 +0200
-Message-ID: <20260716114247.49685-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.54.0
+	id 1wkLNf-0000000HHKq-0wyj
+	for linux-mediatek@lists.infradead.org;
+	Thu, 16 Jul 2026 12:39:59 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id B3B9243A0E
+	for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 12:39:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92DB01F0155C
+	for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 12:39:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784205598;
+	bh=OxlN32iU+dZZDeFlRrMUjrZz0IkcNsY0YbDQ0qDA3v0=;
+	h=From:In-Reply-To:References:Date:Subject:To:Cc;
+	b=WqpCPouGxXPy6ueFZIiDKndTIcSseLdOW8zJnpgFBSNSoDdKIk/7PbT66hpvii8lF
+	 xpGFkHf70LHbzODC2JX/8bknW9AW6hST0M5fCOTn22Ej91WlStU4IXndhEeMkjZpiS
+	 FuzbYk7mi+RMgrPZJDIL+OOZfj6dhWIPtZW/Bw3DIguFX3YILXjlr/Om6RgxEe0+5g
+	 OvRqs4AzBAP4e4J4WGePbTy/doO1ETuJXTc3TJDSwkcxYHhoOYotCja1Rjwwj2npSn
+	 eieU4XXRFGXQiZnP2TA5NVDbGO824HC76MjX7lmsIRls38P0dfhkCaGZfjVgAgftPm
+	 g6IOG5Nv4SVbw==
+Received: by mail-lj1-f174.google.com with SMTP id 38308e7fff4ca-39ca300db70so44543881fa.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 05:39:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+Rp/LqEqzf+kK5O9o8DU44eVtHfQOrhqU7dQkrHJ3moralrpxXC3IVIMNd/IADdiYVwlqsg+RWZ9adxFwrIywg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyTTdN8H/hCqLwqV/tCD0c4X8/GeYZ/1GRzixxXOOe23iEdj6vB
+	MNqKe/tta1bnka7iry3eBJ5lCEE3vR+VovBTbpO70AaPj24w8nMYwF0+ArRNeztxwRgL9dcrRH5
+	7LbZNfAI3ZCOwGSp1pKR0O/5olmRd+6M1w0GwWY1DHQ==
+X-Received: by 2002:a05:6512:4045:20b0:5b0:2176:69f6 with SMTP id
+ 2adb3069b0e04-5b15d7a50b0mr1154487e87.37.1784205597254; Thu, 16 Jul 2026
+ 05:39:57 -0700 (PDT)
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Thu, 16 Jul 2026 05:39:55 -0700
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Thu, 16 Jul 2026 05:39:55 -0700
+From: Bartosz Golaszewski <brgl@kernel.org>
+In-Reply-To: <CAGXv+5G0Ffrh-8UohJuGPQ0e7KGpy11=X7t1JtDYLTJ_tZgMCA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260716_044254_468404_8D71B5F9 
-X-CRM114-Status: GOOD (  11.08  )
+References: <20260715085348.3457359-1-wenst@chromium.org> <20260715085348.3457359-4-wenst@chromium.org>
+ <aldS3qTympJuVXYj@ashevche-desk.local> <CAMRc=MfHmejks83bPfe3fKzAzFySGXk2GHMA9oZdMQj0f44eTA@mail.gmail.com>
+ <CAGXv+5HGjGTrqqzJrpiQhLrCn3C6H20LXq3niPnoujQLOwgqPw@mail.gmail.com>
+ <CAMRc=Mefxn81d0VUwmQgwFtffkL1=Er_1VQZCbC1Sa-Qph4t1w@mail.gmail.com> <CAGXv+5G0Ffrh-8UohJuGPQ0e7KGpy11=X7t1JtDYLTJ_tZgMCA@mail.gmail.com>
+Date: Thu, 16 Jul 2026 05:39:55 -0700
+X-Gmail-Original-Message-ID: <CAMRc=Mcpu+k-zbY0bDf8q3_9o3qNsrt6uNCao5j3qQLnbjHYAQ@mail.gmail.com>
+X-Gm-Features: AUfX_mzb6SG6AJl8tXyuIguJLZaf_DB4m_xujG-Tq3VPuMJuPnQWayz1ClA2bP8
+Message-ID: <CAMRc=Mcpu+k-zbY0bDf8q3_9o3qNsrt6uNCao5j3qQLnbjHYAQ@mail.gmail.com>
+Subject: Re: [PATCH v5 03/16] power: sequencing: Add pwrseq_power_is_on()
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Daniel Scally <djrscally@gmail.com>, 
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Wei Deng <wei.deng@oss.qualcomm.com>, linux-acpi@vger.kernel.org, 
+	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>, 
+	Alan Stern <stern@rowland.harvard.edu>, 
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>, 
+	Bartosz Golaszewski <brgl@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,51 +100,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For the PCIE_PHY (also called PEXTP_PHY) type of RTFF hardware,
-there is special handling setting CLK_DIS before performing the
-NRESTORE sequence for resetting the RTFF and start sequencing
-from a clean state.
+On Thu, 16 Jul 2026 11:39:19 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
+> On Thu, Jul 16, 2026 at 4:14=E2=80=AFPM Bartosz Golaszewski <brgl@kernel.=
+org> wrote:
+>>
 
-That special handling, though, poses an issue in case the machine
-specific bootchain (bootloader in particular) ends up booting the
-kernel with both PCIe MAC and PHY enabled (not just power domains)
-as doing so will partially corrupt the PCIe MAC/PHY registers in
-an unpredictable manner, producing either an initialization fail
-in the PCI-Express drivers, or even a hard lockup!
+...
 
-Resolve this by simply removing the special handling: in this case
-the bootchain, or remote processors, setting is getting honored by
-the later check for PWR_RTFF_SAVE_FLAG presence in the RTFF ctl
-register.
+>>
+>> There's one more use-case where the power state trully can be *unknown*.
+>> Please look at the proposed new function from Loic[1]. Here we deal with
+>> targets over which linux has no direct power control even though it may =
+still
+>> control some of its dependencies. This is where an UNKNOWN state may mak=
+e
+>> sense.
+>>
+>> This is where I also floated an idea of renaming pwrseq_power_on/off() t=
+o
+>> pwrseq_vote_on/off() for better clarity of their purpose.
+>
+> OK. Would it make sense to revert to returning -EINVAL if the descriptor
+> is NULL now, and then add a different error return value if !controllable
+> in the future?
+>
 
-Fixes: 9d02c94342b3 ("pmdomain: mediatek: Add support for RTFF Hardware in MT8196/MT6991")
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/pmdomain/mediatek/mtk-pm-domains.c | 8 --------
- 1 file changed, 8 deletions(-)
+I don't think the latter part is needed. A non-controllable pwrseq descript=
+or
+is still a valid object and has an address pointing to it. Returning -EINVA=
+L
+on NULL descriptors is probably all we need.
 
-diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-index f69cf69ba0f6..df8e93638e08 100644
---- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-+++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-@@ -480,16 +480,8 @@ static int scpsys_ctl_pwrseq_on(struct scpsys_domain *pd)
- 	if (ret < 0)
- 		return ret;
- 
--	if (pd->data->rtff_type == SCPSYS_RTFF_TYPE_PCIE_PHY)
--		regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_RTFF_CLK_DIS);
--
- 	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_CLK_DIS_BIT);
- 	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_ISO_BIT);
--
--	/* Wait for RTFF HW to sync buck isolation state if this is PCIe PHY RTFF */
--	if (pd->data->rtff_type == SCPSYS_RTFF_TYPE_PCIE_PHY)
--		udelay(5);
--
- 	regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
- 
- 	/*
--- 
-2.54.0
-
+Bart
 
