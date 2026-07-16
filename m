@@ -4,114 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02DE0C44512
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 18:48:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB5C3C44514
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 20:00:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k90VREcyUMcR/OGuKj3U3g7OaZ/zXu0WG1tLumtRQ8E=; b=2wOxTBq3ZLChMo8dUP1EvvKJpX
-	ST7Ox+/01Ndx1GV+Yl++O5TXcc1Cl9XNlgv/zKziL4RG+s0Hrm2M6hazJ07oRaKa+rFbwsehycpms
-	lGPfbLKx84PguHPeT0rR+l9TOPtOdWdK3TuzBjLCCp2higmk8HS+IEXAJEVhHRgwxafTNBKuyGqRs
-	n1Hi2Yh6CO0W2Ef2kz6XehwpKyrC+tO07ihy0HKSOp2k4YPZCQow4yE8+nnNZi5WPrFOMkNWiyh8G
-	IpkR1EuUVkkMJsBvxLoo7ubORqEppvvQsu8PTm9J6I/A2vXSniDEr4Q7XNljw148HIMLGfsyuwmng
-	mUuXWQ4Q==;
+	bh=SkbdCLvPFiAZcCyqV3OjTuTi5o9qsDoHdIygT4AGL4s=; b=NpWGmT1Vr6cStcQvxD3mBhhWuQ
+	l2XV/qH10TuowbifwBXFwCOBhgm9odPkeGVHSoOOHm7Upz91Un89zgfUGdvX9gbKztFiF2lbMc41m
+	Wc9nlLW43VuKPQebinXSVZo6xUoDpLn548cFE3wrlDui27C+wlZxnvBEu5rnA0fr+wstx173uIBUR
+	CTsZXat40KK9uQLwZMMi0eHww7XwUWmsOsh+7a3II397wtnpSAYHAl+7odbm7vp+cOWLyLX1w+r0F
+	4wFfew+4jhG3hfdTWJJQLzbK0QoUJgPh9dAIVUhfXwL9/A2nl11tnRigmhHnMMu5UiVb/fnKvcMc9
+	AdUoeYOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkR8Y-00000000QVm-2eo4;
-	Thu, 16 Jul 2026 18:48:46 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1wkSGK-00000000UgF-29WZ;
+	Thu, 16 Jul 2026 20:00:52 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkR8V-00000000QUj-3PNN
-	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Jul 2026 18:48:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1784227722;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=k90VREcyUMcR/OGuKj3U3g7OaZ/zXu0WG1tLumtRQ8E=;
-	b=WxuWjJ0G4EKXtHEM0S5925dJEeneFsNy/EEreYYwAQGpXRbQURY6V7kpBMk/8Ya6KbBSo2
-	ZS3L7snwivR8vadnHX3BZkIiCyEVFBLyGQA9UTnqrC3NkbcV2kKcpzqHeyknQYAaLNtSm7
-	uRqTfPggtBLRjXylHgCjZ2g27+BQlfQ=
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-423-J0QwiIU9PruN2U7SiybkxA-1; Thu, 16 Jul 2026 14:48:41 -0400
-X-MC-Unique: J0QwiIU9PruN2U7SiybkxA-1
-X-Mimecast-MFC-AGG-ID: J0QwiIU9PruN2U7SiybkxA_1784227720
-Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-92e623b0e95so879668685a.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 16 Jul 2026 11:48:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784227720; x=1784832520;
-        h=user-agent:in-reply-to:content-disposition:content-type
-         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=k90VREcyUMcR/OGuKj3U3g7OaZ/zXu0WG1tLumtRQ8E=;
-        b=nXSD1Kvnc71RNRo7aVZJtoNP6N5L3B+yYKDQN/UDKeiiQHZ05NR8kQpZ1MVDTuV1Lv
-         niS9KhwueEhjo13452dLrKZCScMaYC2amozM/qJftKuDWKEhoZAWe0I0n3rtocvkrX6s
-         jOp+P6COOeRDyJUCgPeHjRU3R+Gy2quv8XlZGExKX5V6zMTdtXvfSLz8bFURl2zQe38g
-         Dyx+x3A8RjC9P+wrFK/eeAsYLACzA+cuKQiXIvVnFyeZIHtvSz/IsBT1Ubtw2LZQT8yn
-         la6yDd9DNiwhqWdQhafWrNrbSpxWbrc6sAjD2AtXsfGje7fAaAbUoXHk/PBedvEbwXw9
-         Xoyg==
-X-Forwarded-Encrypted: i=1; AHgh+RrKCNFcEWPQWdhQlMd7P0c7oD01f9Dwe2epehE5M5VhbYF0/9ArqeNMRIJqGtWhNTDD8kcbxkhleKfhx3mMkA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy6A7PsQEStWfF7+t0UWZ3KoWkPbLqFV0idSFfTDXVAKlZJ9coB
-	tUd4vWnYO5xGfJno1Z0EJ1B0ZT5mfApoJ1owJloQsQFH7HCKgCTo+IdqvIK5Hfkpfa0R3B+yFe9
-	2mnm0x0nW/JQqF94pY+5Ea8LrXBeR8VYNrc5FWbgI5BfSspPwjay0ZJTzld8f4L+2qyppGXAHEw
-	==
-X-Gm-Gg: AfdE7cn/L1hRMxy4bUefRNn40VdA1xC7NudN7F8v+KalI/8cwstTmEU79wvVdnMU3te
-	njDWmywZGylrnbhuw7vDlFL1lf9hErqMv842JyHoURyL4clVZExQOnKUkUML97s2QKNShp2apGb
-	hhYS43saCM3dFw9yBkZh2mRRAWrGcyQ55nX/wkC+vXD+nSMx/Px6RTyKXXWP2D1S9fQ/ip9yYx5
-	M/DsRR4ac1P03TBC8KDNqDiMZybmrHqdnDaaker2/aXh5DMKEnXSzeT1JKJGYybg8BG7YPPKUV3
-	FjkCuP0wscn79BfqXuWGdKOSOKESLsBRtVFNGHx0l5rQzImo+UTylU/3aZ6hKv4+V8Nt8Baq8Xe
-	hvBtoyals1Gq4kZ5/qiFisqHRTu34cJcWXto=
-X-Received: by 2002:a05:620a:1a14:b0:92e:e569:dc20 with SMTP id af79cd13be357-930962abddbmr924061085a.78.1784227720190;
-        Thu, 16 Jul 2026 11:48:40 -0700 (PDT)
-X-Received: by 2002:a05:620a:1a14:b0:92e:e569:dc20 with SMTP id af79cd13be357-930962abddbmr924057085a.78.1784227719524;
-        Thu, 16 Jul 2026 11:48:39 -0700 (PDT)
-Received: from redhat.com (c-73-183-53-213.hsd1.pa.comcast.net. [73.183.53.213])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-92ee5cf9d9bsm2074490485a.28.2026.07.16.11.48.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Jul 2026 11:48:38 -0700 (PDT)
-Date: Thu, 16 Jul 2026 14:48:35 -0400
-From: Brian Masney <bmasney@redhat.com>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
+	id 1wkSGJ-00000000Ug4-0phc;
+	Thu, 16 Jul 2026 20:00:51 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 8C69460A5E;
+	Thu, 16 Jul 2026 20:00:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B5241F000E9;
+	Thu, 16 Jul 2026 20:00:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784232049;
+	bh=SkbdCLvPFiAZcCyqV3OjTuTi5o9qsDoHdIygT4AGL4s=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=a5qGtpAkwNEV9jsxYeN/Q7n89zdNsN11G1zMfSI/etA7Yi8LAH8wgTwX8UoL8G6L3
+	 QtafStp+dmSt5fFR0M7Ai+HhZRfgGrSBdmRSVU1fjHDIuAp1dKdasuz9jt0aJrxD3/
+	 m0tYK1IMkzPighZh3SmtIb3LTdl0mWbQQGJdURYx9sNiNa31kAqFcPx603ZWrA8Z5J
+	 JfUlu+YJIGtuoeaFb2374D//LRjheitSmsxEZ9JXEZaPg3WYZES56yqM6EQ9jdxYlv
+	 mgAQgo5RIr1XNkCB+v1k0eQV6pruyKIOj7Rs+S8wE73+oNZNKsm6QaBr6/beqAO5pH
+	 tJpkEALlcnrlg==
+Date: Thu, 16 Jul 2026 15:00:48 -0500
+From: Rob Herring <robh@kernel.org>
+To: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konradybcio@kernel.org>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
+	Paul Kocialkowski <paulk@sys-base.io>,
+	Linus Walleij <linusw@kernel.org>, Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Alexey Brodkin <abrodkin@synopsys.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Daniel Scally <dan.scally@ideasonboard.com>,
+	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Eddie James <eajames@linux.ibm.com>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+	Houlong Wei <houlong.wei@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>, linux-pci@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v4 2/4] clk: en7523: add support for dedicated PCIe
- PERSTOUT reset
-Message-ID: <alkng6IIkInZjxqA@redhat.com>
-References: <20260714115848.8537-1-ansuelsmth@gmail.com>
- <20260714115848.8537-3-ansuelsmth@gmail.com>
+	Joseph Liu <kwliu@nuvoton.com>, Marvin Lin <kflin@nuvoton.com>,
+	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Ge Gordon <gordon.ge@bst.ai>,
+	Adrian Hunter <adrian.hunter@intel.com>,
+	Ulf Hansson <ulfh@kernel.org>,
+	Saravana Kannan <saravanak@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Shengjiu Wang <shengjiu.wang@gmail.com>,
+	Xiubo Li <Xiubo.Lee@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>, Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+	Bard Liao <yung-chuan.liao@linux.intel.com>,
+	Daniel Baluta <daniel.baluta@nxp.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Peter Chen <peter.chen@cixtech.com>,
+	Fugang Duan <fugang.duan@cixtech.com>,
+	Ekansh Gupta <ekansh.gupta@oss.qualcomm.com>,
+	BST Linux Kernel Upstream Group <bst-upstream@bstai.top>,
+	Fabio Estevam <festevam@gmail.com>,
+	Nicolin Chen <nicoleotsuka@gmail.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
+	Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	CIX Linux Kernel Upstream Group <cix-kernel-upstream@cixtech.com>,
+	linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, linux-aspeed@lists.ozlabs.org,
+	linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+	linux-sunxi@lists.linux.dev, linux-media@vger.kernel.org,
+	openbmc@lists.ozlabs.org, linux-mediatek@lists.infradead.org,
+	kernel@collabora.com, linux-tegra@vger.kernel.org,
+	linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-remoteproc@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-sound@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+	imx@lists.linux.dev, sound-open-firmware@alsa-project.org,
+	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Subject: Re: [PATCH 01/42] of: reserved_mem: Introduce devres-managed
+ initialization functions
+Message-ID: <20260716200048.GA1183026-robh@kernel.org>
+References: <20260703193855.110619-1-mukesh.ojha@oss.qualcomm.com>
+ <20260703193855.110619-2-mukesh.ojha@oss.qualcomm.com>
 MIME-Version: 1.0
-In-Reply-To: <20260714115848.8537-3-ansuelsmth@gmail.com>
-User-Agent: Mutt/2.4.0 (2026-06-19)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: nIYwdLcn4gfcJNIJimYKPAB6WHMuwjF_RCepi356elY_1784227720
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260716_114843_926237_9B4C32CA 
-X-CRM114-Status: GOOD (  25.08  )
+In-Reply-To: <20260703193855.110619-2-mukesh.ojha@oss.qualcomm.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,127 +143,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Christian,
-
-On Tue, Jul 14, 2026 at 01:58:44PM +0200, Christian Marangi wrote:
-> Add support for resetting the PCIe lines with the PERSTOUT reset. These
-> special reset are controlled by the PCIC register and are specific to each
-> of the 3 PCIe lines.
+On Sat, Jul 04, 2026 at 01:08:14AM +0530, Mukesh Ojha wrote:
+> From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
 > 
-> Notice that reset logic is inverted for these bit where 0 is assert and 1
-> deassert. This is intenrally handled in the reset function.
-
-s/intenrally/internally/
-
-The "these bit" above is awkward as well. Sorry I don't have a
-suggestion offhand, but I see what you mean below based on the code.
-
+> Introduce devres-based helpers for of_reserved_mem_device_init(_by_idx)
+> to help fight dangling references and ever so slightly reduce the
+> number of boilerplate deinitialization calls.
 > 
-> PCI enable/disable are updated to drop PERSTOUT bits in favor dedicated
-> reset handling.
-> 
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> Signed-off-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+> Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
 > ---
->  drivers/clk/clk-en7523.c | 39 ++++++++++++++++++++++++++++-----------
->  1 file changed, 28 insertions(+), 11 deletions(-)
+>  drivers/of/of_reserved_mem.c    | 41 +++++++++++++++++++++++++++++++++
+>  include/linux/of_reserved_mem.h | 25 ++++++++++++++++++++
+>  2 files changed, 66 insertions(+)
 > 
-> diff --git a/drivers/clk/clk-en7523.c b/drivers/clk/clk-en7523.c
-> index 1ab0e2eca5d3..c9b21d9bf2f3 100644
-> --- a/drivers/clk/clk-en7523.c
-> +++ b/drivers/clk/clk-en7523.c
-> @@ -338,6 +338,7 @@ static const struct en_clk_desc en7581_base_clks[] = {
->  static const u16 en7581_rst_ofs[] = {
->  	REG_RST_CTRL2,
->  	REG_RST_CTRL1,
-> +	REG_NP_SCU_PCIC,
->  };
+> diff --git a/drivers/of/of_reserved_mem.c b/drivers/of/of_reserved_mem.c
+> index 82222bd45ac6..b35541e9fbe8 100644
+> --- a/drivers/of/of_reserved_mem.c
+> +++ b/drivers/of/of_reserved_mem.c
+> @@ -787,6 +787,47 @@ void of_reserved_mem_device_release(struct device *dev)
+>  }
+>  EXPORT_SYMBOL_GPL(of_reserved_mem_device_release);
 >  
->  static const u16 en751221_rst_ofs[] = {
-> @@ -450,6 +451,11 @@ static const u16 en7581_rst_map[] = {
->  	[EN7581_CPU_TIMER_RST]		= RST_NR_PER_BANK + 28,
->  	[EN7581_PCIE_HB_RST]		= RST_NR_PER_BANK + 29,
->  	[EN7581_XPON_MAC_RST]		= RST_NR_PER_BANK + 31,
+> +static void devm_of_reserved_mem_device_release(struct device *dev, void *res)
+> +{
+> +	of_reserved_mem_device_release(*(struct device **)res);
+> +}
 > +
-> +	/* RST_PCIC */
-> +	[EN7581_PCIC_PERSTOUT0_RST]	= 2 * RST_NR_PER_BANK + 29,
-> +	[EN7581_PCIC_PERSTOUT1_RST]	= 2 * RST_NR_PER_BANK + 26,
-> +	[EN7581_PCIC_PERSTOUT2_RST]	= 2 * RST_NR_PER_BANK + 16,
->  };
->  
->  static const u16 en751221_rst_map[] = {
-> @@ -635,9 +641,7 @@ static int en7581_pci_enable(struct clk_hw *hw)
->  	void __iomem *np_base = cg->base;
->  	u32 val, mask;
->  
-> -	mask = REG_PCI_CONTROL_REFCLK_EN0 | REG_PCI_CONTROL_REFCLK_EN1 |
-> -	       REG_PCI_CONTROL_PERSTOUT1 | REG_PCI_CONTROL_PERSTOUT2 |
-> -	       REG_PCI_CONTROL_PERSTOUT;
-> +	mask = REG_PCI_CONTROL_REFCLK_EN0 | REG_PCI_CONTROL_REFCLK_EN1;
->  	val = readl(np_base + REG_PCI_CONTROL);
->  	writel(val | mask, np_base + REG_PCI_CONTROL);
->  
-> @@ -650,9 +654,7 @@ static void en7581_pci_disable(struct clk_hw *hw)
->  	void __iomem *np_base = cg->base;
->  	u32 val, mask;
->  
-> -	mask = REG_PCI_CONTROL_REFCLK_EN0 | REG_PCI_CONTROL_REFCLK_EN1 |
-> -	       REG_PCI_CONTROL_PERSTOUT1 | REG_PCI_CONTROL_PERSTOUT2 |
-> -	       REG_PCI_CONTROL_PERSTOUT;
-> +	mask = REG_PCI_CONTROL_REFCLK_EN0 | REG_PCI_CONTROL_REFCLK_EN1;
->  	val = readl(np_base + REG_PCI_CONTROL);
->  	writel(val & ~mask, np_base + REG_PCI_CONTROL);
->  	usleep_range(1000, 2000);
-> @@ -754,14 +756,21 @@ static int en7523_reset_update(struct reset_controller_dev *rcdev,
->  			       unsigned long id, bool assert)
->  {
->  	struct en_rst_data *rst_data = container_of(rcdev, struct en_rst_data, rcdev);
-> -	void __iomem *addr = rst_data->base + rst_data->bank_ofs[id / RST_NR_PER_BANK];
-> +	u32 offset = rst_data->bank_ofs[id / RST_NR_PER_BANK];
-> +	void __iomem *addr = rst_data->base + offset;
-> +	bool inverted = false;
->  	u32 val;
->  
-> +	/* For PCIC reset logic is inverted, 0:assert 1:deassert*/
+> +/**
+> + * devm_of_reserved_mem_device_init_by_idx() - Resource managed of_reserved_mem_device_init_by_idx()
+> + * @dev: Pointer to the device to configure
+> + * @np: Pointer to the device node with 'memory-region' property
+> + * @idx: Index of selected region
+> + *
+> + * This is a resource managed version of of_reserved_mem_device_init_by_idx().
+> + * The reserved memory region will be released automatically when the device
+> + * is unbound.
+> + *
+> + * Returns: Negative errno on failure or zero on success.
+> + */
+> +int devm_of_reserved_mem_device_init_by_idx(struct device *dev,
+> +					    struct device_node *np, int idx)
 
-Add space before end of comment.
+It looks to me like the only 2? users of this could be converted to 
+devm_of_reserved_mem_device_init() instead. The mmc one obviously can. 
+The imx one depends if np is dev->of_node. I'm not a fan of APIs with 
+only a few users.
 
-> +	if (offset == REG_NP_SCU_PCIC)
-> +		inverted = true;
-> +
->  	val = readl(addr);
-> +	val &= ~BIT(id % RST_NR_PER_BANK);
->  	if (assert)
-> -		val |= BIT(id % RST_NR_PER_BANK);
-> +		val |= inverted ? 0 : BIT(id % RST_NR_PER_BANK);
->  	else
-> -		val &= ~BIT(id % RST_NR_PER_BANK);
-> +		val |= inverted ? BIT(id % RST_NR_PER_BANK) : 0;
-
-Could you do:
-
-    if (assert ^ inverted)
-
-Then keep the existing logic for val inside the if/else?
-
-
-
->  	writel(val, addr);
->  
->  	return 0;
-> @@ -783,9 +792,17 @@ static int en7523_reset_status(struct reset_controller_dev *rcdev,
->  			       unsigned long id)
->  {
->  	struct en_rst_data *rst_data = container_of(rcdev, struct en_rst_data, rcdev);
-> -	void __iomem *addr = rst_data->base + rst_data->bank_ofs[id / RST_NR_PER_BANK];
-> +	u32 offset = rst_data->bank_ofs[id / RST_NR_PER_BANK];
-> +	void __iomem *addr = rst_data->base + offset;
-> +	bool inverted = false;
-> +	u32 val;
-> +
-> +	/* For PCIC reset logic is inverted, 0:assert 1:deassert*/
-
-Add space before */
-
-Brian
-
+Rob
 
