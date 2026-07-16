@@ -4,64 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65459C4450A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 13:50:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA1CFC44515
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jul 2026 15:13:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sQXyXktmRwdV28xpGceshEF/JNFts0ziqizCyo4+KEI=; b=QnE6IMgmReFUyujPVrUTGrgLnl
-	2rEwblRjyuALUqYWW608mzFe8RBAKJ0fPD1xq1R4L5GOcHXyuos9ABhqBUXOx/kUwtDoUTAk6eYV4
-	Xdo7PCLphHMb0aQDz5DjyadaoCsux8iLjzSn/76AQD3rUZLE9HoOm9WGmxUKqPqMCy7X+gQlTKUDb
-	OKaKatmlTsTklR7JPA8gY4wrUZjJPiHOql7zWeGGAj0ZUqj9L877DTHtP4IJY3uGOZrG3eY82gTSY
-	xKMjugk5BEfGTFOZKsQWY1FnR2cORswujK7XwzIPMjIqLhjv9PH60ULd1K0mAbLubUsYLc0k6h0w+
-	12S7f6Xg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mw4IKlTLDLTYJ/8UMvJLk4PX5CzB7qqlfRmpSquJq4M=; b=n9mYYGnZDG08mCHRU03cfTFlEb
+	ZXgVixfdRKlIYJCaUfWxkaroKkHTxN1tT5ccbf6TmI+LADlfZChW4+yJsm3LGeuQlIk4zrnORlcXk
+	IDF5RTqPW4c/JR5NRBX3CrSuFrAVr0TGpge4LAuPbNRrjQkclASUpD9u4JScQm25e90JaIBKp04I5
+	nlzvqMZdGB71KxPcPxyix4yUbxtJUxTe/2cJbYVQVNkHpL2thI5xF46eZOh+q9g7iaOjiWnQ9k+NU
+	i1KHyyiKvoVqaEXFIXxlBjuRWoczO2OuznjalD5J7uhAl7sb9vqWiR9zs7RtDZOntsqVaNOHXRHdl
+	u5SAZqvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkMUF-0000000HPjb-0hQR;
-	Thu, 16 Jul 2026 13:50:51 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wkNmS-000000000n9-0eLm;
+	Thu, 16 Jul 2026 15:13:44 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkMUD-0000000HPjI-43E8
-	for linux-mediatek@lists.infradead.org;
-	Thu, 16 Jul 2026 13:50:50 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 79C97432BD;
-	Thu, 16 Jul 2026 13:50:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E35751F00A3A;
-	Thu, 16 Jul 2026 13:50:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linuxfoundation.org;
-	s=korg; t=1784209849;
-	bh=sQXyXktmRwdV28xpGceshEF/JNFts0ziqizCyo4+KEI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=cHRF9DY7OUMbIUxRihEmpqEfoiWBHuUGaQ43J8L0+mMJWNihEwvSpPVR7ZW74AWrQ
-	 QSb2JWtDXAqc9IzHoUr67567XT4qREwC+l4Wxfaxemfv1AOoYwHQgre1xEbDR5dUm9
-	 RRzPAbVGMRqWtWuC+PdaUHv4a7T1abVA1KnwtN0o=
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: stable@vger.kernel.org
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	patches@lists.linux.dev,
-	Bongani Hlope <developer@hlope.org.za>,
-	Arjan van de Ven <arjan@linux.intel.com>,
-	linux-wireless@vger.kernel.org,
+	id 1wkNmN-000000000kn-2UFC;
+	Thu, 16 Jul 2026 15:13:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1784214816;
+	bh=WCsEdz3e/tDXo5idZqflDrn9zYtlEy5a7rslTNiT7aQ=;
+	h=From:To:Cc:Subject:Date:From;
+	b=QR/UOqfEaPJqDP1UJPvVWwBnnFFGKG+kkqtMpnj2El9OXIdqrdcT/wVAKtTaVL2pb
+	 0ygekyKOqalX8HszyBp9AXNI+gI1M0xOaRK0bMUKK3TW7V1x43FZwcWLfRxHvXjMas
+	 b7+UVWK3D8JV/RhNY5pzkceN3tS8mX8e7jEl9U6YBvMuNUedznJwMBHqDpnqUuEh1p
+	 PtwK0bDf8O0BDT3tvFS9FalwsyYu5nzde6tBy2+9izb1FDIz1eQF7Uw0/sXNi5cEvo
+	 OF3eS2pU4Xd4CCym8YSIgRoVF9cNVY3Ac9dUuBvuu2ZvkXp4soU+XxV6WQoshDGDzL
+	 +N+Cb+0tpHN0Q==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1259B17E0E08;
+	Thu, 16 Jul 2026 17:13:36 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunfeng.yun@mediatek.com
+Cc: vkoul@kernel.org,
+	neil.armstrong@linaro.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Sasha Levin <sashal@kernel.org>
-Subject: [PATCH 7.1 341/518] wifi: mt76: mt7921/mt7925: fix NULL dereference in CSA beacon
-Date: Thu, 16 Jul 2026 15:30:09 +0200
-Message-ID: <20260716133055.277340106@linuxfoundation.org>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260716133047.772246337@linuxfoundation.org>
-References: <20260716133047.772246337@linuxfoundation.org>
-User-Agent: quilt/0.69
-X-stable: review
-X-Patchwork-Hint: ignore
+	linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com
+Subject: [PATCH 0/2] PHY: Add MediaTek PCI-Express Gen4 S-PHY Driver
+Date: Thu, 16 Jul 2026 17:13:31 +0200
+Message-ID: <20260716151333.77254-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260716_081339_784732_2BA501CB 
+X-CRM114-Status: UNSURE (   8.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,88 +82,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-7.1-stable review patch.  If anyone has any objections, please let me know.
+This adds a driver for the PCI-Express Gen4 "S-PHY" found in the
+Genio MT8894, Kompanio MT8196, Dimensity MT6991 SoCs (which are
+all variants of the same chip).
 
-------------------
+This was successfully tested on MT8894 and MT8196.
 
-From: Arjan van de Ven <arjan@linux.intel.com>
+AngeloGioacchino Del Regno (2):
+  dt-bindings: phy: Document MT8196 MediaTek PCI-Express Gen4 S-PHY
+  phy: mediatek: Add support for PCI-Express Gen4 S-PHY
 
-[ Upstream commit 351dd7d2c80d23e56dcce6faa4e62bea5b0877c7 ]
+ .../phy/mediatek,mt8196-pcie-sphy.yaml        |  91 +++
+ drivers/phy/mediatek/Kconfig                  |   9 +
+ drivers/phy/mediatek/Makefile                 |   1 +
+ drivers/phy/mediatek/phy-mtk-pcie-sphy.c      | 560 ++++++++++++++++++
+ 4 files changed, 661 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/mediatek,mt8196-pcie-sphy.yaml
+ create mode 100644 drivers/phy/mediatek/phy-mtk-pcie-sphy.c
 
-This patch is based on a BUG as reported by Bongani Hlope at
-https://lore.kernel.org/all/20260502125824.425d7159@bongani-mini.home.org.za/
-
-When a channel-switch announcement (CSA) beacon is received,
-cfg80211 queues a wiphy work item that eventually calls
-mt7921_channel_switch_rx_beacon(). If the station disconnects
-(or the channel context is otherwise torn down) between the
-time the work is queued and the time it runs, the driver's
-dev->new_ctx pointer can already have been cleared to NULL.
-mt7921_channel_switch_rx_beacon() then dereferences new_ctx
-unconditionally, triggering a NULL pointer dereference at
-address 0x0:
-
-  BUG: kernel NULL pointer dereference, address: 0000000000000000
-  RIP: 0010:mt7921_channel_switch_rx_beacon+0x1f/0x100 [mt7921_common]
-
-The same missing guard exists in mt7925_channel_switch_rx_beacon(),
-which shares the same code pattern introduced by the same commit.
-
-Add an early-return NULL check for dev->new_ctx in both
-mt7921_channel_switch_rx_beacon() and
-mt7925_channel_switch_rx_beacon(). When new_ctx is NULL there is
-no pending channel switch to process, so returning immediately is
-the correct and safe action.
-
-Fixes: 8aa2f59260eb ("wifi: mt76: mt7921: introduce CSA support")
-Reported-by: Bongani Hlope <developer@hlope.org.za>
-Oops-Analysis: http://oops.fenrus.org/reports/lkml/20260502125824.425d7159@bongani-mini.home.org.za/report.html
-Link: https://lore.kernel.org/all/20260502125824.425d7159@bongani-mini.home.org.za/
-Signed-off-by: Arjan van de Ven <arjan@linux.intel.com>
-Cc: linux-wireless@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: Felix Fietkau <nbd@nbd.name>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>
-Link: https://patch.msgid.link/20260504145107.1329197-1-arjan@linux.intel.com
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7921/main.c | 3 +++
- drivers/net/wireless/mediatek/mt76/mt7925/main.c | 3 +++
- 2 files changed, 6 insertions(+)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 3d74fabe74085e..a326f4c95c7c86 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -1508,6 +1508,9 @@ static void mt7921_channel_switch_rx_beacon(struct ieee80211_hw *hw,
- 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
- 	u16 beacon_interval = vif->bss_conf.beacon_int;
- 
-+	if (!dev->new_ctx)
-+		return;
-+
- 	if (cfg80211_chandef_identical(&chsw->chandef,
- 				       &dev->new_ctx->def) &&
- 				       chsw->count) {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 79cc30a3b29efc..9dc5ee51eb9f96 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -2403,6 +2403,9 @@ static void mt7925_channel_switch_rx_beacon(struct ieee80211_hw *hw,
- 	if (ieee80211_vif_is_mld(vif))
- 		return;
- 
-+	if (!dev->new_ctx)
-+		return;
-+
- 	beacon_interval = vif->bss_conf.beacon_int;
- 
- 	if (cfg80211_chandef_identical(&chsw->chandef,
 -- 
-2.53.0
-
-
+2.54.0
 
 
