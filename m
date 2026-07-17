@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EF1EC44507
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2026 09:17:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 825E6C44514
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2026 09:17:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SBBlU9d4X3MqXqNZ20P0uxNAlPU3+Ek5OXUU+9cPVUQ=; b=m2zEp5voHj2YxHKZ6Cvf0U46IQ
-	tmDyPlDlAr+P9L6H21s52uXiyDji+I8uoz5ExeU8QexTCXrECbfbOIzd1jBNtksjAnTB8p6h3rdsg
-	nJPmclRUO1JvB3WUcF41Ad5MiFNZYSKxUJZl5uAtGPSg71+KWOs6RrQ1uBckn2aDhCBDn2OvVSsHv
-	E0rjMz3Yrhrb8yjrBcAvngrZ4BMfBbVSGBuLK3zcTpi4nEwlslWatXP6eTeAIKcWYggt9XmK0Sy0i
-	6480e0JW4XVM7FQSlpgvrydrOZ0BZG5ZNjj1iwplW4MPMOwPFF8MmyrULcO6d9EFeYl1IVQkYdrPF
-	c8PAcC4A==;
+	bh=WsqS/RENXKBaiPcJVoqlvqE5VI6ff8i4YR1XPG/1jws=; b=gvXf+TyAGUA0sqjSO9B7j3A78L
+	Dk/5DgCH9tM3QXdJSy/ZzG08v7WJQSzRO5bynBA5RQPoiAOVOTewwRRgLmEfit65SptKBOr3kiYU3
+	TSqrPkl9m1O5G3BcRRD6M1plTuvsXM6ex+BlTd+S+cR2cIcHUpNB5nHntwzaXgLN1ZuS+EFD3wPTl
+	4x5qVfB9widVIir73D+ZkEsQb2uw3XmEp+Y3CoE2HBnAUjXSklAyeJ9BiD09HHMjXTtQxokz1ptjF
+	W5CWPVmNYpYL24m7xL0vrpL24HNzGX1CB+jy5clzCIGMhFJFO4pwYQqwNv4d6OGPDrmoR66ybggOe
+	g2L0EzvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkego-00000001oIK-151N;
-	Fri, 17 Jul 2026 09:17:02 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wkehF-00000001oSP-2U3J;
+	Fri, 17 Jul 2026 09:17:29 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkegn-00000001oHs-0CxH;
-	Fri, 17 Jul 2026 09:17:01 +0000
+	id 1wkehE-00000001oRR-15cO;
+	Fri, 17 Jul 2026 09:17:28 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4A42060204;
-	Fri, 17 Jul 2026 09:17:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF8921F000E9;
-	Fri, 17 Jul 2026 09:16:58 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B301A60204;
+	Fri, 17 Jul 2026 09:17:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E19E1F000E9;
+	Fri, 17 Jul 2026 09:17:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784279820;
-	bh=SBBlU9d4X3MqXqNZ20P0uxNAlPU3+Ek5OXUU+9cPVUQ=;
+	s=k20260515; t=1784279847;
+	bh=WsqS/RENXKBaiPcJVoqlvqE5VI6ff8i4YR1XPG/1jws=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=jDWNpb+mktS7vC051liZ6JnIm+pNHzYDenLFHlwwn7vY+ETqyn78DC72GAofKC4ZG
-	 Je5uuzj+g0ZoeH/x5T9RNiPgNaavYvx1TGhjIEJjB/yZhrCZT4SYeTc2I/UAlQgirb
-	 3FdYzaOw4PLqSlQVJv+yPfPZzX3M+/tjLf/5jGnGRtNhGrkCYb81NZy5nm/shlnFwL
-	 TzEuP58+3DdRsXtDD3B0Wku+7BCcKjtAPYv4pBilGp49smoKmDog7Abve0Lrfpcc52
-	 r0UPN6sBZj+2zvYlWY9EuH4Nj7CwQmPQeqBjon34TYWmL96oZR+QLBMqIwRV4Q6hIF
-	 Vw4LUVUCjkY5w==
-Date: Fri, 17 Jul 2026 11:16:56 +0200
+	b=m5HakIZ0OPmQfxWfVzz83Zk5vj5X4xylgQw5lZEic4qN12nSEtvzPt1akW7R3aG7I
+	 BIDW7MNUu9XuwovXeZfEVuowJb+pmjYjaBtAwb6s9qo80wJ+e4R+D7cwCFSF5d9nMy
+	 4glZQ0q2Xh4igofwJdYWFu1MiHT4nfstnSwWd1LEG/TF4Tzz3fcMmA+wk4T0d1iR6s
+	 +x4V4/DBH6xRzJ+GgJOGTDa6lXoghO6AmfINorr8Emj2Vp9lvZylRbetpr8HhUZBbS
+	 1tdZuHf1ZiVX+winVpJrqY0bF8ICBaN4jPHiziMBfXJH7k1B2kXXTpEratoxQorgFG
+	 8nHgLbNmzWVnA==
+Date: Fri, 17 Jul 2026 11:17:23 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Akari Tsuyukusa <akkun11.open@gmail.com>
 Cc: Wim Van Sebroeck <wim@linux-watchdog.org>, 
@@ -54,15 +54,15 @@ Cc: Wim Van Sebroeck <wim@linux-watchdog.org>,
 	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
 	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
 	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, Roman Vivchar <rva333@protonmail.com>
-Subject: Re: [PATCH 4/7] dt-bindings: watchdog: mediatek,mtk-wdt: remove
- mt6589 fallback items
-Message-ID: <20260717-turquoise-sponge-of-effort-bdec7e@quoll>
+Subject: Re: [PATCH 1/7] watchdog: mtk_wdt: add explicit compatibles for SoCs
+ using mt6589 fallback
+Message-ID: <20260717-unbeatable-strict-heron-fd1741@quoll>
 References: <20260716161923.266315-1-akkun11.open@gmail.com>
- <20260716161923.266315-5-akkun11.open@gmail.com>
+ <20260716161923.266315-2-akkun11.open@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260716161923.266315-5-akkun11.open@gmail.com>
+In-Reply-To: <20260716161923.266315-2-akkun11.open@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,15 +77,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 17, 2026 at 01:19:20AM +0900, Akari Tsuyukusa wrote:
-> All DTS have been converted to standalone compatibles.
-> Remove the items block that allowed the "mediatek,mt6589-wdt" fallback,
-> keeping only the flat enum.
+On Fri, Jul 17, 2026 at 01:19:17AM +0900, Akari Tsuyukusa wrote:
+> Several SoCs currently rely on matching "mediatek,mt6589-wdt" via the
+> fallback compatible. Add dedicated of_device_id entries for each of
+> them so that the driver can match directly on the SoC-specific string.
 
-1. This is not a separate commit.
-2. This lacks explanation WHY you are doing.
-
-NAK.
+This makes no sense, NAK.
 
 Best regards,
 Krzysztof
