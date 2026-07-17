@@ -4,125 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBBB1C44507
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2026 10:53:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D5A8C44516
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2026 10:56:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7d4qJ+T8ver1Wxgr9oYxe2ulrXqphYcvsiqipcUS47g=; b=G+axMlXaGGnINV0iAHTSyuBhP/
-	Vu9phHyyHnsaVMWevaGTawNTsRQVdADnzxypV5sI0pIZ/508rTzU+iiSU8ta/mHIatp3xjStbH03e
-	HjA1ky+5s2HpH5KQLRXRnEKHk+KJjLTupLL3W3M9Je3toJklk4OuW3BLre0/cEI3QjwtLeExipn/a
-	Yn15myj5ZTvQcHpyR4leSsNFJr8OZwZVFaOFNNdt/caIwV+7w//9M+2ZwUB1pzaegDU97uUy6xUDT
-	d8Qi5/4ybEBJdyhX7FfTt/xcHuH+h5El9rR70AI1f7/6HBsTE3/MD7QK/LVblHsOiUBzXaPtxitrs
-	Ayg8OB0A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pkNNPMc+4Y/lU1Tqxe5npoC2NL+iAxIPrmi/UsZfjSo=; b=SRZcxQ/JZsgAa4ENvBx8IWXz+T
+	VRkYE/J2iGeNjEyv4TtZ5T/gvJOPwnicpeVbqF+V9qAqxL2uYLYsfILpUgrt9Oa4rD9kXoJGngOwy
+	lHCBC8YVUKoY6HoO3KHpMS/caeB4JSG7ZEfFu8TvibanJ07DWA7LHcF15korSQhvMMIwfXAFijnxU
+	6Xp+NvDaQ9/+gxAQy7VnK2FjU8OUoffjXFUfHTUWET7W9HXqoVtl7vdQCSfpSMLa3fMxFJBYwBHqu
+	K/SQxN1ZsAvOIfluP34D001+qZ9Qu4mpqumwZD4UsBYxWLLWqumkZgwhpFFYcTLjNf+3jgDlaYOjR
+	qDkMiRWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkgCZ-000000023Sa-3SwB;
-	Fri, 17 Jul 2026 10:53:55 +0000
-Received: from exmail3.compal.com ([59.120.207.196] helo=tpecef22.compal.com)
+	id 1wkgEh-0000000248W-02vk;
+	Fri, 17 Jul 2026 10:56:07 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkgCW-000000023RU-29gN;
-	Fri, 17 Jul 2026 10:53:54 +0000
-X-UUID: c7b693ec81cd11f1a87c2323a98e90a4-20260717
+	id 1wkgEd-0000000240x-3AFE
+	for linux-mediatek@lists.infradead.org;
+	Fri, 17 Jul 2026 10:56:05 +0000
+X-UUID: 15af5e3a81ce11f1acbe4559397dec65-20260717
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=pkNNPMc+4Y/lU1Tqxe5npoC2NL+iAxIPrmi/UsZfjSo=;
+	b=M5vN/rBiIkC5EzRrLaCRvgmT1T96atFqks3vMFppCQfJ5HdBdHALV3fY7dxPRDKaFjha7SdKyktgj29MwpPrXrG3o+X8VkevSrgmi2tMQBAE/HY9VXXvoX11MKTx+hwxG68JYS/3zUqEvejwTWtXnw3ddqDV0UAIHJZCHCFbSps=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.17,REQID:391a7171-17cc-4888-ad05-e57d16321c59,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:d497b38,CLOUDID:f1f83c19-ab14-4403-9336-76696324c5a8,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|83|102|110|111|836|865|888|898,TC:-5,Con
-	tent:0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,
-	COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.18,REQID:65e07ea9-da57-488a-bae6-5cf99d22c8ee,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:8a735a6,CLOUDID:ce3d613f-46cf-453a-bd84-ad9fc7cb0e8c,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: c7b693ec81cd11f1a87c2323a98e90a4-20260717
-Received: from sdmg12.sdbg.compal.com [(10.113.168.10)] by tpecef22.compal.com
-	(envelope-from <jackbb_wu@compal.com>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 1917883768; Fri, 17 Jul 2026 18:53:44 +0800
-X-UUID: c4e776ea81cd11f1a9f9c99e036204b4-20260717
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.15,REQID:8f60a7f5-c765-41cc-8bf9-c82a64e37990,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:e276073,CLOUDID:bbf83c19-ab14-4403-9336-76696324c5a8,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|83|102|110|111|836|865|888|898
-	,TC:-5,Content:0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:ni
-	l,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:
-	0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: c4e776ea81cd11f1a9f9c99e036204b4-20260717
-Received: from sdbmbx11.tpe.compalcomm.com [(10.113.2.135)] by sdmg12.sdbg.compal.com
-	(envelope-from <jackbb_wu@compal.com>)
-	(Compal Mail Service with TLSv1.2 ECDHE-RSA-AES128-SHA 128/128)
-	with ESMTP id 393036499; Fri, 17 Jul 2026 18:53:39 +0800
-Received: from SDBMBX13.tpe.compalcomm.com (10.113.2.137) by
- SDBMBX11.tpe.compalcomm.com (10.113.2.135) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Fri, 17 Jul 2026 18:53:37 +0800
-Received: from SDBMBX13.tpe.compalcomm.com ([fe80::2b98:6c2c:37df:2a86]) by
- SDBMBX13.tpe.compalcomm.com ([fe80::2b98:6c2c:37df:2a86%11]) with mapi id
- 15.02.2562.043; Fri, 17 Jul 2026 18:53:37 +0800
-From: "Wu. JackBB (GSM)" <JackBB_Wu@compal.com>
-To: Simon Horman <horms@kernel.org>
-CC: "loic.poulain@oss.qualcomm.com" <loic.poulain@oss.qualcomm.com>,
-	"ryazanov.s.a@gmail.com" <ryazanov.s.a@gmail.com>,
-	"johannes@sipsolutions.net" <johannes@sipsolutions.net>,
-	"andrew+netdev@lunn.ch" <andrew+netdev@lunn.ch>, "davem@davemloft.net"
-	<davem@davemloft.net>, "edumazet@google.com" <edumazet@google.com>,
-	"kuba@kernel.org" <kuba@kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>,
-	"wen-zhi.huang@mediatek.com" <wen-zhi.huang@mediatek.com>,
-	"shi-wei.yeh@mediatek.com" <shi-wei.yeh@mediatek.com>,
-	"Minano.tseng@mediatek.com" <Minano.tseng@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "corbet@lwn.net" <corbet@lwn.net>,
-	"skhan@linuxfoundation.org" <skhan@linuxfoundation.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-doc@vger.kernel.org"
-	<linux-doc@vger.kernel.org>
-Subject: RE: [External Mail] Re: [PATCH v4 2/7] net: wwan: t9xx: Add control
- plane transaction layer
-Thread-Topic: [External Mail] Re: [PATCH v4 2/7] net: wwan: t9xx: Add control
- plane transaction layer
-Thread-Index: AQHdFQZLXFhkpHGHwk+0HowAeOhgTrZxQAIhgABKmI8=
-Date: Fri, 17 Jul 2026 10:53:36 +0000
-Message-ID: <e4c414ee18a0428f8388ee8c847b3ad5@compal.com>
-References: <20260709-t9xx_driver_v1-v4-2-a8c009d509c5@compal.com>,<20260716093355.231047-1-horms@kernel.org>,<47002e869f5b4f0985316669d2769c19@compal.com>
-In-Reply-To: <47002e869f5b4f0985316669d2769c19@compal.com>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.113.2.241]
-x-tm-as-product-ver: SMEX-14.0.0.3239-9.1.2019-30074.006
-x-tm-as-result: No-10--6.899800-8.000000
-x-tmase-matchedrid: T+XxcFniPGwuv++HU7VXryRFbfQbCufdN0X64jGy2dZJTOxleK2tZnw0
-	UcwaiWo2Fz8NwhmlWx4y7EpJodRIQMz74oElhNRBJfg23t68rFm+UXZnp3CKAPQOK2Gf/k+ts/y
-	bVOXU6piLzhmh6kfDWhg0mD5ur2qoJGhCEy7RQMEk+VN5SeE/Ck04j7+oEbb9WjsaYI4lh3U7nR
-	P0DvgcK7YURQHAp3zKSNJOcVup57cdMK1D9OMWjF3tbFMDIsdT+t7DQ0cGcYxMJBDuBaOWuw==
-x-tm-as-user-approved-sender: No
-x-tm-as-user-blocked-sender: No
-x-tmase-result: 10--6.899800-8.000000
-x-tmase-version: SMEX-14.0.0.3239-9.1.2019-30074.006
-x-tm-snts-smtp: D535A7E008353EB58D5883760F67864E65A4896D13E2587800F8A8BFB77112F32000:8
-Content-Type: text/plain; charset="big5"
-Content-Transfer-Encoding: base64
+X-UUID: 15af5e3a81ce11f1acbe4559397dec65-20260717
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
+	(envelope-from <shayne.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 67837553; Fri, 17 Jul 2026 03:55:55 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Fri, 17 Jul 2026 18:55:52 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Fri, 17 Jul 2026 18:55:52 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>, Shayne Chen
+	<shayne.chen@mediatek.com>, Rex Lu <rex.lu@mediatek.com>
+Subject: [PATCH mt76] wifi: mt76: fix handling channel context with different bands in mt76_switch_vif_chanctx()
+Date: Fri, 17 Jul 2026 18:54:58 +0800
+Message-ID: <20260717105458.3005812-1-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260717_035352_898253_6FF382A5 
-X-CRM114-Status: UNSURE (   5.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260717_035603_850508_BFA5C2C4 
+X-CRM114-Status: GOOD (  14.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,14 +87,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-DQpIaSBTaW1vbiwNCg0KQWZ0ZXIgZnVydGhlciBpbnRlcm5hbCByZXZpZXcsIHdlIGFncmVlIHRo
-aXMgbmVlZHMgdG8gYmUgZml4ZWQuDQoNCk9uIEphY2sgV3Ugd3JvdGU6DQoNCj4+IFtTZXZlcml0
-eTogSGlnaF0NCj4+IERvZXMgdGhpcyBjb2RlIGFwcGx5IGEgZG91YmxlIGJ5dGUtc3dhcCBvbiBi
-aWctZW5kaWFuIGFyY2hpdGVjdHVyZXM/DQoNCj5UOVhYIGN1cnJlbnRseSBvbmx5IHRhcmdldHMg
-eDg2IChsaXR0bGUtZW5kaWFuKSBwbGF0Zm9ybXMgd2hlcmUNCj5jcHVfdG9fbGUzMigpIGlzIGEg
-bm8tb3AuIFRoZSBLY29uZmlnIGVuZm9yY2VzICJkZXBlbmRzIG9uIFBDSSAmJg0KDQpJbiB2NSB3
-ZSB3aWxsIHJlbW92ZSBMRTMyX1RPX1UzMihjcHVfdG9fbGUzMiguLi4pKSBhbmQgcmV0dXJuDQpo
-d19iaXRzIGRpcmVjdGx5IGluIGJvdGggbXRrX3BjaV9leHRfZDJoX2V2dF9od19iaXRzKCkgYW5k
-DQptdGtfcGNpX2V4dF9oMmRfZXZ0X2h3X2JpdHMoKS4gVGhlIGN1c3RvbSBMRTMyX1RPX1UzMiBt
-YWNybw0Kd2lsbCBhbHNvIGJlIHJlbW92ZWQuDQoNClRoYW5rcy4NCg0KSmFjayBXdQ0K
+When performing channel switches on different radios within a short
+timeframe, channel contexts with different bands can be carried for
+each struct ieee80211_vif_chanctx_switch.
+
+Rework mt76_switch_vif_chanctx() to properly handle this scenario.
+
+Fixes: 82334623af0c ("wifi: mt76: add chanctx functions for multi-channel phy support")
+Co-developed-by: Rex Lu <rex.lu@mediatek.com>
+Signed-off-by: Rex Lu <rex.lu@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/channel.c | 93 ++++++++++----------
+ 1 file changed, 48 insertions(+), 45 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/channel.c b/drivers/net/wireless/mediatek/mt76/channel.c
+index 6edcb3b8f279..37894b78fd08 100644
+--- a/drivers/net/wireless/mediatek/mt76/channel.c
++++ b/drivers/net/wireless/mediatek/mt76/channel.c
+@@ -186,68 +186,71 @@ int mt76_switch_vif_chanctx(struct ieee80211_hw *hw,
+ 			    int n_vifs,
+ 			    enum ieee80211_chanctx_switch_mode mode)
+ {
+-	struct mt76_chanctx *old_ctx = (struct mt76_chanctx *)vifs->old_ctx->drv_priv;
+-	struct mt76_chanctx *new_ctx = (struct mt76_chanctx *)vifs->new_ctx->drv_priv;
+-	struct ieee80211_chanctx_conf *conf = vifs->new_ctx;
+-	struct mt76_phy *old_phy = old_ctx->phy;
+-	struct mt76_phy *phy = hw->priv;
++	struct ieee80211_vif_chanctx_switch *v;
++	struct mt76_chanctx *old_ctx, *new_ctx;
++	struct mt76_phy *old_phy, *phy = hw->priv;
+ 	struct mt76_dev *dev = phy->dev;
+ 	struct mt76_vif_link *mlink;
+-	bool update_chan;
++	bool need_update[__MT_MAX_BAND] = {};
+ 	int i, ret = 0;
+ 
+-	if (mode == CHANCTX_SWMODE_SWAP_CONTEXTS)
+-		phy = new_ctx->phy = dev->band_phys[conf->def.chan->band];
+-	else
+-		phy = new_ctx->phy;
+-	if (!phy)
+-		return -EINVAL;
+-
+-	update_chan = phy->chanctx != new_ctx;
+-	if (update_chan) {
+-		if (dev->scan.phy == phy)
+-			mt76_abort_scan(dev);
+-
+-		cancel_delayed_work_sync(&phy->mac_work);
++	for (i = 0; i < n_vifs; i++) {
++		v = &vifs[i];
++		new_ctx = (struct mt76_chanctx *)v->new_ctx->drv_priv;
++		if (mode == CHANCTX_SWMODE_SWAP_CONTEXTS)
++			phy = new_ctx->phy = dev->band_phys[v->new_ctx->def.chan->band];
++		else
++			phy = new_ctx->phy;
++
++		if (!phy)
++			return -EINVAL;
++
++		if (phy->chanctx != new_ctx) {
++			if (dev->scan.phy == phy)
++				mt76_abort_scan(dev);
++
++			cancel_delayed_work_sync(&phy->mac_work);
++			need_update[phy->band_idx] = true;
++		}
+ 	}
+ 
+ 	mutex_lock(&dev->mutex);
+ 
+-	if (mode == CHANCTX_SWMODE_SWAP_CONTEXTS &&
+-	    phy != old_phy && old_phy->chanctx == old_ctx)
+-		old_phy->chanctx = NULL;
++	for (i = 0; i < n_vifs; i++) {
++		v = &vifs[i];
++		old_ctx = (struct mt76_chanctx *)v->old_ctx->drv_priv;
++		old_phy = old_ctx->phy;
+ 
+-	if (update_chan)
+-		ret = mt76_phy_update_channel(phy, vifs->new_ctx);
++		new_ctx = (struct mt76_chanctx *)v->new_ctx->drv_priv;
++		phy = new_ctx->phy;
+ 
+-	if (ret)
+-		goto out;
++		if (mode == CHANCTX_SWMODE_SWAP_CONTEXTS && old_phy->chanctx &&
++		    old_phy->chanctx == old_ctx && phy != old_phy)
++			old_phy->chanctx = NULL;
+ 
+-	if (old_phy == phy)
+-		goto skip_link_replace;
++		if (need_update[phy->band_idx]) {
++			ret = mt76_phy_update_channel(phy, v->new_ctx);
++			if (ret)
++				goto out;
+ 
+-	for (i = 0; i < n_vifs; i++) {
+-		mlink = mt76_vif_conf_link(dev, vifs[i].vif, vifs[i].link_conf);
++			need_update[phy->band_idx] = false;
++		}
++
++		mlink = mt76_vif_conf_link(dev, v->vif, v->link_conf);
+ 		if (!mlink)
+ 			continue;
+ 
+-		dev->drv->vif_link_remove(old_phy, vifs[i].vif,
+-					  vifs[i].link_conf, mlink);
++		if (old_phy != phy) {
++			dev->drv->vif_link_remove(old_phy, v->vif, v->link_conf,
++						  mlink);
+ 
+-		ret = dev->drv->vif_link_add(phy, vifs[i].vif,
+-					     vifs[i].link_conf, mlink);
+-		if (ret)
+-			goto out;
+-
+-	}
+-
+-skip_link_replace:
+-	for (i = 0; i < n_vifs; i++) {
+-		mlink = mt76_vif_conf_link(dev, vifs[i].vif, vifs[i].link_conf);
+-		if (!mlink)
+-			continue;
++			ret = dev->drv->vif_link_add(phy, v->vif, v->link_conf,
++						     mlink);
++			if (ret)
++				goto out;
++		}
+ 
+-		mlink->ctx = vifs->new_ctx;
++		mlink->ctx = v->new_ctx;
+ 		if (mlink->beacon_mon_interval)
+ 			WRITE_ONCE(mlink->beacon_mon_last, jiffies);
+ 	}
+-- 
+2.51.0
+
 
