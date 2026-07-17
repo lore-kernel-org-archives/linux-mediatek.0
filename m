@@ -4,103 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 436CAC4451B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2026 15:07:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D915DC4451C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2026 15:15:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:MIME-Version:Reply-To:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VlbLFjMrzmDXpu8ToEIqn/yuI50jhB/xC+OsMYiXBH8=; b=OnShD0lkaKas9xxaQY0hQqyfx2
-	OkbC1GBz0iwkYHfbSMW3bBhwez7UDM5BuzzLV5J9utCB9zVwt0jOD90K9SVJ+Pdcljhrkp8cXNN0g
-	gKsz6cYa3IsQ0qnufMe8cPiGiHc2t4pLCRd28hiFSXCoP5XjfqZDHZTlCNqTJr7lXriroUZhE03JV
-	wALRGOs7uOCtjcYR8EQDEykVSOrIOt7Z9jnG8dlviP5fS4jquCi1nwA0OV6zIIxBpoQQGmBnNXGnB
-	85TiX4iVHg89HnavocyRXW/2PuibsN1A9fClS5tOFlv5aTnc9WoTosbrxc7mLgC4Lig1fMzSajiVU
-	tOm8U5Lg==;
+	bh=4iCdgU2Mi1ltlF6Zu07ake4LF21lMQp6/uBwdAs/1H8=; b=aWK7cQ/GkYJUMmMQXIk91N4Smc
+	lNdfWvDCVUJCWrrKpzmNNjaL000A1mbpiljBKTaq//rmBN8tBggQ6LCngvMT857FOtbSVLtgSzkD2
+	oGUO2WGoBjfvU0T3gQZs8B9iECIbUuuiq8DVDk8uLiFnIcs0NN3NsHkiQA+usQxSKdJCIsoN/1qp+
+	NQyBF0vYf76Lzn/knJ6g6TvmFgNB0l1JpceGVPDwHWV2tyuxt2d2l0KWYgA2Zgyl+P8nKx26mwCbQ
+	rQyZi/AaE+C/y2p3Qnmk1BXYa+0nOi0v+SZ3K5xGAvMGIfDCYqdBGaEFm16ljWG7EKi2BSskMjhlM
+	r4OuAD7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkk9s-00000002Z3E-3z6H;
-	Fri, 17 Jul 2026 15:07:24 +0000
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+	id 1wkkHE-00000002ZZU-3AI3;
+	Fri, 17 Jul 2026 15:15:00 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkk9q-00000002Z2g-2bzO
+	id 1wkkHC-00000002ZXf-155n
 	for linux-mediatek@lists.infradead.org;
-	Fri, 17 Jul 2026 15:07:23 +0000
-Received: by mail-yw1-x1130.google.com with SMTP id 00721157ae682-81e69a2db34so28460487b3.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 17 Jul 2026 08:07:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1784300841; cv=none;
-        d=google.com; s=arc-20260327;
-        b=f4B2pA6XyzoO27pOfuTjEqrpxreHGCNFW4M0Sw8QTTg+ZU4HDU8BOiiuHYmxwzLqrY
-         f50ApA4tyJDr2fB0eqYLWzhS5hja2YEKWjR7SAIuDZcTB5s4R6n8mbRS1Ko+XpBtqgnI
-         B7zGYaxUpTyJio2qU8wabssJ25aGrdT0w4xJui+ykshvuJIineop4ugyI/0Zxx/sSozk
-         MUjs6Inx1xGT/RtMOrEcyIR01dUZd+UtMCguuHK1C+oeBwtxUBf6oCdrxEF+1wx05EQe
-         0gWwTQmprc3voFvFFd8X4OQwsQmzp+31Glu2zOZhLE/MfnpSbafZwT6aMu3VwFrQQTDC
-         qgZQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=VlbLFjMrzmDXpu8ToEIqn/yuI50jhB/xC+OsMYiXBH8=;
-        fh=S7ZA6pTGLswuYf5TcUlM0cqU+JZ7xeieL5ww0VwyxSg=;
-        b=G3NITCSUP/fesdT8hkZIaWozK8JzlBsmHulQvuzCUCtVeWDnRwg1G/KH59rVO7No7C
-         v4SgUmdORuOcfubF2ZrYB1UYj0tOqA5LD45iXLnZU2+a3CSdKyh199JbyGwGQegHadMF
-         aVZkAtTrcPlcxIKQ5cb1JSGr0mBP7VzOzGPDPePHVhTuxAFjIRCDsN5yyqSP+SS1PNMY
-         ZnixYGzkg757ULY8BmsLnObSMYqHmGEleboSh6lLPJgmoHJ1qa4qfk3Ygs6Ml0IkHo2x
-         EgV5GRrFgeeEHmx38Kx4qNQglp9E6JamZBWW40K/DRK5dah63n0aoa2kNmIOI6sie3S8
-         WyIA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Fri, 17 Jul 2026 15:14:59 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-699fbcd23ccso11288167a12.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 17 Jul 2026 08:14:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784300841; x=1784905641; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=VlbLFjMrzmDXpu8ToEIqn/yuI50jhB/xC+OsMYiXBH8=;
-        b=NRONywuKNcwSJM/jeJGeKWsrGYmInjm6xYZQVlobGgwXaapLvT+iVIF5ladiCFstIB
-         4L93gsGzu5lLHa1NDEAx92YuRl/ZE/yyzEMYGHDAAheKXOonDM7Ly+LunH/F3VKtNML+
-         C/xeX/HoJqefAkQqk/j0p11nnUzI7HlCm7hzGT2DXTxFOcGik4/M0fkEvWwQ68jf3Rxr
-         gslWpABreizutC2NBmH53oji9CIZv63s9Mft/jnQceYNvEssY2xIw/rgMPJn8JmV1yu/
-         RhmN5NUDThjBpz9CwbN4Eihk22juMUZNA6hNmUTRsRasg9VHLXRBvoL5L3/sh48K+BjO
-         ZONA==
+        d=gmail.com; s=20251104; t=1784301296; x=1784906096; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=4iCdgU2Mi1ltlF6Zu07ake4LF21lMQp6/uBwdAs/1H8=;
+        b=IcRn2yI8EQSRTkJGcnI1Fnc6j1X2hE6MC6VJIxKqa6hB0TNVQnbR1n1M6nFqOFdc3m
+         j0NedH63Jqm54noZzolQZkUokvQP15T5DrzmaePj3/OexDHzVUMvU5SVjJKAwwHvO3D5
+         oDR2WB3syFejHa5msNsM6BhaGx2bqHlalF9+sE/oQN+wHY8mJa8GNVnx4e5SuPRwLwnh
+         6D6TlgvZZxnJMYzy4bLLY4ZFT4c8NnraUWKADRTgfmx8DbP9C9/xtawdoaC+8kYFJdFD
+         tufbYMRjog0vIe8ARA2C088Yu188LK2D0N//sui+jCQAiSfkxbr1fPeIt3Ukf9Cw8oSH
+         WFQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784300841; x=1784905641;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=VlbLFjMrzmDXpu8ToEIqn/yuI50jhB/xC+OsMYiXBH8=;
-        b=fR8g5iVerukoQurkVg28xU6MRsl1Orv59Fjr6as43GpzEk+x6DdRp2EP0v6muhem4S
-         d6aBwC/ziB6FZ4SPZgW0bABNgE2axm9AeMijZE0Wtgn1Sld3TDp+SJG7WcQ1OLyke9dl
-         D/w7XHdW9nGZkfnyts+88fCH6DTHp4iLxWtjE+FcU244hpXs3jU4koOtZM1AtacFPczV
-         72Kk+XmP0VJSr2DEhpoC5LXsg3EYVSGfEdSUzL9pJoU/JpBXgckw1gHDwRiMtStlOwqB
-         /vsJQKwJbVvnovoKe0tLg31rsWhjhmYgPEfSo8YyhciA8lDXwZt9hE8fOWmmmgq8rWN7
-         5Eww==
-X-Forwarded-Encrypted: i=1; AHgh+RpDRZENBoe7fIAAvuX4eI0Ca3LHfpX6qUA7VBhCFSUDEGKWegy90EdgorURFlSQAqYfe8imwEYrzB9VQicbKg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxI2BVg65mlO0vA6AZt5ntUB0jS/3Dl+gkvkmfsAbATBzZNtXWW
-	EZn/ioUp22W57ghCOjjNzwYjb6LUYBhonx60iXL3FT2VrvFbknS/VhUdtl/On6bOHszu+jw2xUn
-	KLczkfUMBom3lqVGGd0O6X5uxrt6t3/c=
-X-Gm-Gg: AfdE7clYk4q5JAhLmtAFRYciAgI2rpxcQRSgBkq+gek1ZGP+e8YxB6I10u6PAMpXzDF
-	bOx/frh1ZiR9EB/CF3poCHO1QwVxVIrUzD8ldgfaBHR6MqatQ5YCfaQyRIuP7W39DsyFd0vEF3I
-	5N625iHlMEpiEP3IW5kO1hSxM60498B6Zx0myrwpY3Qc1d+5RLw/qRhqzyFbbklHXziEgE8kFr+
-	ejCVMTff0HWFhRpl+WkKUJSB2/vBsvoun04AGZScBo4HTpyCCsr4SQPBZCc9lw=
-X-Received: by 2002:a05:690e:484e:b0:668:2343:f9a9 with SMTP id
- 956f58d0204a3-6683bda79f9mr625965d50.93.1784300841058; Fri, 17 Jul 2026
- 08:07:21 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1784301296; x=1784906096;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=4iCdgU2Mi1ltlF6Zu07ake4LF21lMQp6/uBwdAs/1H8=;
+        b=bV4HPtLW8U0TJqhPpkYH7BUcLrnpID20oMCrWKwpXUwEqsHD6o61k4bVZgUvg1On5o
+         hZnzZuT6etC06gxteDlbhh9TsWrBx4oE2KKPvbuWRTNShW2Mh6W7VnRHAKVAoa3cHxLW
+         qWHAyzrNjmq4AfXUGsb1iRqWjSIEDBMsCQPj4acfhmIsG5t3v8wxYL8hYbb6LM3B7I5w
+         Gd48CA5YP95iZfUpOX1wMgDTSrNnB8e+VkwUgVu6y2r01a4nO0VfmwkscUa7sfknO2MY
+         Q0BbZgGZcZ8R/yzZ4pHIjPXFYz1l57SZ1MWxZzSEUVYBxUIR0Fc4dOC18E62ligZQQ12
+         W5NQ==
+X-Gm-Message-State: AOJu0YwQIZo1/MiW4VaaCiZ160dnD0UYPAe3qvSh4j11EMeZZKId6Uk8
+	xZZfzavkHeGsTPhU/2t+ELs7zaH+iCDjlrAdcaXBZpxwp8go6ehs2xG7pB9pUz+f
+X-Gm-Gg: AfdE7ckZmk2ICQwXHpiJsmA1x9vlow7VJTKQnWhugbnIEnQclaxwqW+eOuVpRPEkV6E
+	YBW1+T4H3GytdgbgAp45yoExVWOcHWlS8VkxN8c6gbOnaOzvfCOs6lMGEXCn9DZq4egTau719T5
+	GEbE7Od35SKfMyTUW1yxiSd96PgRjUUJN8PyAHvcJUwcvRYOdJZIju5UtXEcouXICBodsj4TQjO
+	z281bh+OLrK8Jcd6o33yP+yNk8gqP21RVq65swAlNZEcupo9k0SLTqla+RK1z17FKVnFq8/l24x
+	1BgSq6Pi1qi+EuP200uubrbjXN1goPOfTyztBX4q/2DXUgVhi5eQpOqCxWCezpwKPwfGrMyb3hW
+	DvNw7bhzub7rVbVTLB7Ymse8AxJHsCwR0W13f8LuYbucPcHy5ujzrWXbIQ+0gdvqXlzfQtwx8IQ
+	==
+X-Received: by 2002:a05:6402:4555:b0:698:6620:d988 with SMTP id 4fb4d7f45d1cf-69e6528189bmr963155a12.15.1784301295646;
+        Fri, 17 Jul 2026 08:14:55 -0700 (PDT)
+Received: from luca-vm.. ([109.52.116.145])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-69e6ffbab34sm931684a12.14.2026.07.17.08.14.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 17 Jul 2026 08:14:55 -0700 (PDT)
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+To: linux-mediatek@lists.infradead.org
+Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	linux-watchdog@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH 0/7] Properly describe mt8167 watchdog and mmsys resets
+Date: Fri, 17 Jul 2026 17:11:07 +0200
+Message-ID: <20260717151134.678839-1-l.scorcia@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-From: =?UTF-8?Q?Micha=C5=82_Wi=C5=9Bniewski?= <wisniam86@gmail.com>
-Date: Fri, 17 Jul 2026 17:07:09 +0200
-X-Gm-Features: AUfX_mzKtUXcRdD_-KWVL1IZ8Cly2QJri0IN_TFmoPdTiMdfWRdDS6lr-7E6FYQ
-Message-ID: <CABcniwq7R7=gvCdCrV+1mtJhKhhee5ovN9RqNCO9ySoaBcoiCQ@mail.gmail.com>
-Subject: [BUG] mt7925e: MT7927 stuck in D3 after VFIO guest reboot
-To: linux-wireless@vger.kernel.org
-Cc: nbd@nbd.name, lorenzo@kernel.org, shayne.chen@mediatek.com, 
-	deren.wu@mediatek.com, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260717_080722_677976_EE2E2C70 
-X-CRM114-Status: UNSURE (   4.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260717_081458_304253_E51109BE 
+X-CRM114-Status: GOOD (  13.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,43 +105,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
-I have a MediaTek MT7927 passed through with VFIO to a Kali Linux VM.
-The card works normally after starting the VM, but running systemctl
-reboot inside Kali causes the VM to hang and the physical MT7927 to
-stop responding.
+Currently mt8167 inherits its watchdog from the included mt8516 dtsi,
+which in turn falls back on mt6589-wdt. However according to the data
+sheet mt8167 has 15 sw resets instead of 12, and the reset bits are
+different from mt6589.
 
-After the failure:
-PCI configuration space reads as all ff;
-lspci reports Unknown header type 7f;
-FLR and secondary bus reset do not recover the card;
-QEMU remains in D state even after SIGKILL;
-only fully disconnecting AC power from the host restores the card.
+In the first two patches we improve the description of the resets for
+mt6589 with values obtained from Android sources.
 
-The main host messages are:
-kvm: vfio: Unable to power on device, stuck in D3
-pcieport 0000:00:1c.0: retraining failed
-vfio-pci 0000:02:00.0: not ready 65535ms after FLR; giving up
-pcieport 0000:00:1c.0: Data Link Layer Link Active not set in 100 msec
+Then we introduce a dedicated mediatek,mt8167-wdt compatible for the
+watchdog driver that describes correctly this SoC's resets. Also while
+we're touching the bindings reset header, we add constants for the MMSYS
+resets.
 
-Hardware:
-MediaTek MT7927
-PCI ID: 14c3:7927
-subsystem ID: 105b:e104
+In the 6th patch we add a node for the mt8167 watchdog referring to the
+new compatible in the SoC dtsi.
 
-Guest:
-Kali Linux 2026.2
-driver: mt7925e
-linux-next tag: next-20260716
-commit: 1a1757b76427f6201bfe0bf1bea9f7574f332a93
-uname -r: 7.2.0-rc3-next-20260716-mt7927-test
+In the last patch, we define the mmsys reset table for the SoC. According
+to the datasheet, there are 28 mmsys reset bits divided across two
+adjacent registers.
 
-Host:
-Proxmox VE 9.2.4
-kernel: 7.0.14-5-pve
-QEMU: 11.0.2
-driver: vfio-pci
+Luca Leonardo Scorcia (7):
+  dt-bindings: reset: Add MT6589 toprgu reset IDs
+  watchdog: mediatek: Add wdt/toprgu resets for MT6589
+  dt-bindings: watchdog: Add compatible for MediaTek mt8167
+  dt-bindings: reset: Add reset controller constants for mt8167
+  watchdog: mediatek: Add support for mt8167 TOPRGU/WDT
+  arm64: dts: mt8167: Properly describe the SoC watchdog
+  soc: mediatek: mtk-mmsys: Add resets for mt8167
 
-Regards,
-Micha=C5=82 Wi=C5=9Bniewski
+ .../bindings/watchdog/mediatek,mtk-wdt.yaml   |  1 +
+ arch/arm64/boot/dts/mediatek/mt8167.dtsi      |  7 +++
+ drivers/soc/mediatek/mt8167-mmsys.h           | 40 ++++++++++++++
+ drivers/soc/mediatek/mtk-mmsys.c              |  3 ++
+ drivers/watchdog/mtk_wdt.c                    | 13 ++++-
+ .../reset/mediatek,mt6589-resets.h            | 24 +++++++++
+ .../reset/mediatek,mt8167-resets.h            | 53 +++++++++++++++++++
+ 7 files changed, 140 insertions(+), 1 deletion(-)
+ create mode 100644 include/dt-bindings/reset/mediatek,mt6589-resets.h
+ create mode 100644 include/dt-bindings/reset/mediatek,mt8167-resets.h
+
+-- 
+2.43.0
+
 
