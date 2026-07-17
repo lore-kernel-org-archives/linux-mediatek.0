@@ -4,126 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B40CEC44515
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2026 07:26:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29353C44514
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2026 07:37:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vpf7Ez7EdE1Vq+sym35CgM4C5nXj0FZvUFGxud5ge6Q=; b=ZZvDEMxk4Pdtb0EOe/Weed4wEs
-	pgQ3X0Ghpqn/JNzHqi3xYnWke39ZZhgyP6gSVPDNjqcU4QGjsfRe4FGYtvWmHjPQPUgsO7JZ88Q+X
-	TFA2IiLR9dw4MPJ0sMKzGRHKHfgXW3uaf+aTDK/jCYGmOUVYeZsjsXs6Ap2lN8QxuIUvT2LI4LbFG
-	eUY7SEgUBbgT73BOrrhC7C+K3ZACxl7ECdkU/4liAIDZMDrvBn7ZmibbhTUB860Z6csQ2qc4Yy1mO
-	kzdAfHWBOOMUvMm6MVgbFkndzJ7g3R3Um1M4K3eQ82WxHjMRFh19R4jsWymeFVWEvhN9NpIMipGpi
-	Mxih8e9Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:
+	References:In-Reply-To:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=Cdb0RCCdG1Y5r/It8CwrJzVJ0JbWRfQ0sD99bdj9c+M=; b=nOdu+XiH/+4+osWaAU84Me3y/R
+	EoJdDKEXasPYBGzt2pXM8ep0vApsWr/x3pfXGb5Mi2novyfU4GY44dBJ/dZYKqYLRitFVwUhmUhQU
+	vvUAEGIijg5B5S+lOcbivNg8uOU/dDrzNNprxS/tTYdeAiBs5vLS/AHwausQ+6YMkfmYmrL0Tn0c8
+	y3+eF0cMX2RNFCd0NTBvviOdgb7vEcMeTNUfYDJw3uvK3wE7aFvJnAzPTFJqVZ8/F4/aacMGSD06W
+	8PZydNCd/2TPIzG5wmGV8yGfigXaPwLwz8YpOpj++vlVgmEtgEE2TGuD/KDR6vbzhw+gRgegY11ug
+	Y8Ql0Tyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkcyC-00000001RIQ-007i;
-	Fri, 17 Jul 2026 07:26:52 +0000
-Received: from exmail3.compal.com ([59.120.207.196] helo=tpecef21.compal.com)
+	id 1wkd8i-00000001Tlo-1iRN;
+	Fri, 17 Jul 2026 07:37:44 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkcy7-00000001RF0-2fQE;
-	Fri, 17 Jul 2026 07:26:50 +0000
-X-UUID: dad18f4481b011f1b2470fb4f881575f-20260717
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.17,REQID:111355a2-2480-4131-8d44-035b674b9e32,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:d497b38,CLOUDID:ab293b19-ab14-4403-9336-76696324c5a8,B
-	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|110|111|836|865|888|898,TC:-5,
-	Content:0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:n
-	il,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: dad18f4481b011f1b2470fb4f881575f-20260717
-Received: from sdmg12.sdbg.compal.com [(10.113.168.10)] by tpecef21.compal.com
-	(envelope-from <jackbb_wu@compal.com>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 1926054230; Fri, 17 Jul 2026 15:26:41 +0800
-X-UUID: d8b4070081b011f1a9f9c99e036204b4-20260717
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.15,REQID:68120410-0751-41c4-ae7e-f9a985aa4f58,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e276073,CLOUDID:94ca12d7-d84b-4e52-b801-314e13fb1691,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|865|888|
-	898,TC:-5,Content:0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS
-	:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,A
-	RC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: d8b4070081b011f1a9f9c99e036204b4-20260717
-Received: from sdbmbx11.tpe.compalcomm.com [(10.113.2.135)] by sdmg12.sdbg.compal.com
-	(envelope-from <jackbb_wu@compal.com>)
-	(Compal Mail Service with TLSv1.2 ECDHE-RSA-AES128-SHA 128/128)
-	with ESMTP id 847746305; Fri, 17 Jul 2026 15:26:37 +0800
-Received: from SDBMBX13.tpe.compalcomm.com (10.113.2.137) by
- SDBMBX11.tpe.compalcomm.com (10.113.2.135) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Fri, 17 Jul 2026 15:26:35 +0800
-Received: from SDBMBX13.tpe.compalcomm.com ([fe80::2b98:6c2c:37df:2a86]) by
- SDBMBX13.tpe.compalcomm.com ([fe80::2b98:6c2c:37df:2a86%11]) with mapi id
- 15.02.2562.043; Fri, 17 Jul 2026 15:26:35 +0800
-From: "Wu. JackBB (GSM)" <JackBB_Wu@compal.com>
-To: Simon Horman <horms@kernel.org>
-CC: "loic.poulain@oss.qualcomm.com" <loic.poulain@oss.qualcomm.com>,
-	"ryazanov.s.a@gmail.com" <ryazanov.s.a@gmail.com>,
-	"johannes@sipsolutions.net" <johannes@sipsolutions.net>,
-	"andrew+netdev@lunn.ch" <andrew+netdev@lunn.ch>, "davem@davemloft.net"
-	<davem@davemloft.net>, "edumazet@google.com" <edumazet@google.com>,
-	"kuba@kernel.org" <kuba@kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>,
-	"wen-zhi.huang@mediatek.com" <wen-zhi.huang@mediatek.com>,
-	"shi-wei.yeh@mediatek.com" <shi-wei.yeh@mediatek.com>,
-	"Minano.tseng@mediatek.com" <Minano.tseng@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "corbet@lwn.net" <corbet@lwn.net>,
-	"skhan@linuxfoundation.org" <skhan@linuxfoundation.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-doc@vger.kernel.org"
-	<linux-doc@vger.kernel.org>
-Subject: RE: [External Mail] Re: [PATCH v4 6/7] net: wwan: t9xx: Add AT & MBIM
- WWAN ports
-Thread-Topic: [External Mail] Re: [PATCH v4 6/7] net: wwan: t9xx: Add AT &
- MBIM WWAN ports
-Thread-Index: AQHdFQZbJYK1bUK1WEaDXhVMUHB9n7ZxULXN
-Date: Fri, 17 Jul 2026 07:26:35 +0000
-Message-ID: <7348d8ecabef42f892503ae6910c0e75@compal.com>
-References: <20260709-t9xx_driver_v1-v4-6-a8c009d509c5@compal.com>,<20260716093429.231132-1-horms@kernel.org>
-In-Reply-To: <20260716093429.231132-1-horms@kernel.org>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.113.2.241]
-x-tm-as-product-ver: SMEX-14.0.0.3239-9.1.2019-30074.005
-x-tm-as-result: No-10--10.227100-8.000000
-x-tmase-matchedrid: k7uoLACGqMouv++HU7VXryRFbfQbCufdN0X64jGy2dZAvBJVRgtcsjny
-	lHiK0ou/0wNjG7j2lpdbGNsZDOUGQtDVjrCAjJafJfg23t68rFm+UXZnp3CKAKMhPVMnoUqMFZF
-	fhayav43p+gp7hDwK8qIWjMM1LlCVlP8tEM0fMQ95JTDogbV4hPJDp0CY93MSHyNEnetUnYKO9o
-	XZJdq+a1LCyrCU73d8bZ0ZmXZM5yZ4KjjH0UCbNQ53Bh+4sUi8wBLtKYu8bEtpbszOEp41ydil2
-	pkoOjM8c7UkjmkQhyoNh194vDCrLCRoQhMu0UDBJPlTeUnhPwo58Sarp97J8xfqd/DJ3Zya7rEb
-	Qf2fdE7jTz65t1IJFMi17oTzQKhWJZ8EOwoK47yY3+hmZP9IU931j9zwRXOC
-x-tm-as-user-approved-sender: No
-x-tm-as-user-blocked-sender: No
-x-tmase-result: 10--10.227100-8.000000
-x-tmase-version: SMEX-14.0.0.3239-9.1.2019-30074.005
-x-tm-snts-smtp: 03905B1A35D55303C1E0973AC004C0DEE4B03304099A1CAEE825BBD116093C1A2000:8
-Content-Type: text/plain; charset="big5"
-Content-Transfer-Encoding: base64
+	id 1wkd8e-00000001Tk9-01xS;
+	Fri, 17 Jul 2026 07:37:42 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-02.galae.net (Postfix) with ESMTPS id D5F761A103B;
+	Fri, 17 Jul 2026 07:37:34 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 943D660361;
+	Fri, 17 Jul 2026 07:37:34 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id DC0A611BD3D44;
+	Fri, 17 Jul 2026 09:37:18 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1784273852; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=Cdb0RCCdG1Y5r/It8CwrJzVJ0JbWRfQ0sD99bdj9c+M=;
+	b=kon2YfH/dOK4tDt53OBaDo5FFMl+LDNwDVUop5ds1NRI/Wg1uSfOdRPoX//xppPkYw4F4k
+	i7WIsxXBl1un2FVxbtH0z+MNg/Pxf/kDZFkkmQMF7GWX2KDvfCGfcNPlsGE/XeWd6UWU5+
+	GU0KvK2Qz5NhcKTqLYeMaoODnDSsLW8zaf8j7HAZsl2HX2a+q1UNwnNfj8/t2YSHY0CoOJ
+	iuHvYWwy+oF8TF5SvX8WUIAoCWzZZkD3fHymApMwuHuo/Ci0SwMn3oduihoRjpk8TrJJuw
+	dKfxpFRA4xRbQoh0VoLeExcl0443IzDaZd45c4NSu8UobUALaKN9EhlqiiNUTA==
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Pan Chuang <panchuang@vivo.com>
+Subject: Re: [PATCH v2] thermal/drivers: Remove redundant error messages on
+ IRQ request failure
+In-Reply-To: <20260717024733.374913-1-panchuang@vivo.com> (Pan Chuang's
+	message of "Fri, 17 Jul 2026 10:47:10 +0800")
+References: <20260717024733.374913-1-panchuang@vivo.com>
+User-Agent: mu4e 1.12.7; emacs 30.2
+Date: Fri, 17 Jul 2026 09:37:18 +0200
+Message-ID: <87v7aekqxd.fsf@bootlin.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260717_002648_027123_FF881C34 
-X-CRM114-Status: GOOD (  13.11  )
+X-CRM114-CacheID: sfid-20260717_003740_173759_DA384F3D 
+X-CRM114-Status: UNSURE (   5.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,41 +73,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: "open list:ARM/FREESCALE IMX / MXC ARM
+ ARCHITECTURE" <imx@lists.linux.dev>, Heiko Stuebner <heiko@sntech.de>, Bartlomiej Zolnierkiewicz <bzolnier@gmail.com>, "Rafael J. Wysocki" <rafael@kernel.org>, Amit Kucheria <amitk@kernel.org>, Frank Li <Frank.Li@nxp.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Mikko Perttunen <mperttunen@nvidia.com>, linux-tegra@vger.kernel.org, Laura Nao <laura.nao@collabora.com>, Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>, Fabio Estevam <festevam@gmail.com>, linux-stm32@st-md-mailman.stormreply.com, Peter Griffin <peter.griffin@linaro.org>, Thierry Reding <thierry.reding@kernel.org>, "open
+ list:SAMSUNG THERMAL DRIVER" <linux-samsung-soc@vger.kernel.org>, Geert Uytterhoeven <geert+renesas@glider.be>, Florian Fainelli <florian.fainelli@broadcom.com>, Magnus Damm <magnus.damm@gmail.com>, Yinbo Zhu <zhuyinbo@loongson.cn>, Jonathan Hunter <jonathanh@nvidia.com>, John Madieu <john.madieu.xa@bp.renesas.com>, "open
+ list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Chen-Yu Tsai <wenst@chromium.org>, Zhang Rui <rui.zhang@intel.com>, Thara Gopinath <thara.gopinath@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Jiapeng Chong <jiapeng.chong@linux.alibaba.com>, "open list:ARM/QUALCOMM
+ MAILING LIST" <linux-arm-msm@vger.kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, "moderated list:ARM/Mediatek SoC
+ support:Keyword:mediatek" <linux-mediatek@lists.infradead.org>, Markus Mayer <mmayer@broadcom.com>, Daniel Lezcano <daniel.lezcano@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, "moderated list:BROADCOM BCM7XXX ARM
+ ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Niklas S?derlund <niklas.soderlund+renesas@ragnatech.se>, zhanghongchen <zhanghongchen@loongson.cn>, "open
+ list:THERMAL" <linux-pm@vger.kernel.org>, Svyatoslav Ryhel <clamor95@gmail.com>, open list <linux-kernel@vger.kernel.org>, "open list:RENESAS R-CAR
+ THERMAL DRIVERS" <linux-renesas-soc@vger.kernel.org>, Pengutronix Kernel Team <kernel@pengutronix.de>, Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, Lukasz Luba <lukasz.luba@arm.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgU2ltb24sDQoNCk9uIC4uLiBzYXNoaWtvIHdyb3RlOg0KPiA+ICtzdGF0aWMgaW50IG10a19w
-b3J0X3d3YW5fd3JpdGUoLi4uKQ0KPiA+ICsJaWYgKHJldCA8IDApDQo+ID4gKwkJcmV0dXJuIHJl
-dDsNCj4gPiArDQo+ID4gKwljb25zdW1lX3NrYihza2IpOw0KPiA+ICsJcmV0dXJuIDA7DQo+DQo+
-IFtTZXZlcml0eTogSGlnaF0NCj4gSWYgbXRrX3BvcnRfY29tbW9uX3dyaXRlKCkgc3VjY2Vzc2Z1
-bGx5IHNlbmRzIHRoZSBmaXJzdCBmZXcgZnJhZ21lbnRzDQo+IGJ1dCBmYWlscyBvbiBzdWJzZXF1
-ZW50IG9uZXMgLi4uIGRvZXMgdGhpcyBjb2RlIHNpbGVudGx5IGRyb3AgdGhlDQo+IHJlbWFpbmlu
-ZyBkYXRhPw0KDQpUaGlzIGlzIGEgZGVzaWduIGxpbWl0YXRpb24gb2YgdGhlIFdXQU4gcG9ydCBB
-UEk6DQp3d2FuX3BvcnRfb3BfdHggcmV0dXJucyAwIGZvciBzdWNjZXNzIG9yIG5lZ2F0aXZlIGZv
-ciBlcnJvciChWA0KdGhlcmUgaXMgbm8gbWVjaGFuaXNtIHRvIHJlcG9ydCBwYXJ0aWFsIHdyaXRl
-cyBiYWNrIHRvIHRoZSBXV0FODQpjb3JlLiBUaGUgYWxyZWFkeS1zdWJtaXR0ZWQgZnJhZ21lbnRz
-IGNhbm5vdCBiZSByZWNhbGxlZCBmcm9tDQp0aGUgRE1BIGVuZ2luZS4gRm9yIHRoZSBBVC9NQklN
-IGNvbnRyb2wgcG9ydHMsIG1lc3NhZ2VzIGFyZQ0Kc21hbGwgKHR5cGljYWxseSB1bmRlciAxS0Is
-IHdpdGhpbiBhIHNpbmdsZSBNVFUpLiBUaGUNCm11bHRpLWZyYWdtZW50IHBhdGggaXMgcmFyZWx5
-IGV4ZXJjaXNlZCBmb3IgY29udHJvbCBwbGFuZQ0KdHJhZmZpYy4NCg0KPiA+ICtzdGF0aWMgaW50
-IG10a19wb3J0X3d3YW5fd3JpdGVfYmxvY2tpbmcoLi4uKQ0KPiA+ICsJaWYgKHJldCA8IDApDQo+
-ID4gKwkJcmV0dXJuIHJldDsNCj4gPiArDQo+ID4gKwljb25zdW1lX3NrYihza2IpOw0KPiA+ICsJ
-cmV0dXJuIDA7DQo+DQo+IFtTZXZlcml0eTogSGlnaF0NCj4gQ2FuIHRoZSBzYW1lIHNpbGVudCBk
-cm9wIG9mIHBhcnRpYWxseSB3cml0dGVuIFNLQnMgaGFwcGVuIGhlcmU/DQoNClNhbWUgcmVhc29u
-aW5nIGFzIGFib3ZlLiBUaGUgV1dBTiBwb3J0IEFQSSBkb2VzIG5vdCBzdXBwb3J0DQpwYXJ0aWFs
-IHdyaXRlIHJlcG9ydGluZywgYW5kIGNvbnRyb2wgcGxhbmUgbWVzc2FnZXMgYXJlDQp0eXBpY2Fs
-bHkgd2l0aGluIGEgc2luZ2xlIE1UVS4NCg0KPiA+ICtzdGF0aWMgaW50IG10a19wb3J0X3d3YW5f
-ZW5hYmxlKC4uLikNCj4gPiArCXBvcnQtPndfcHJpdi53X3BvcnQgPSB3d2FuX2NyZWF0ZV9wb3J0
-KC4uLik7DQo+ID4gKwlpZiAoSVNfRVJSKHBvcnQtPndfcHJpdi53X3BvcnQpKSB7DQo+DQo+IFtT
-ZXZlcml0eTogSGlnaF0NCj4gQ2FuIGEgcmFjZSBjb25kaXRpb24gb2NjdXIgaGVyZSBpZiB3d2Fu
-X2NyZWF0ZV9wb3J0KCkgZmFpbHM/DQoNCm10a19wb3J0X3d3YW5fZW5hYmxlKCkgaXMgY2FsbGVk
-IGZyb20gdGhlIEZTTSB0aHJlYWQgZHVyaW5nDQp0aGUgaGFuZHNoYWtlIHNlcXVlbmNlLCBiZWZv
-cmUgdGhlIHBvcnQgc3RhcnRzIHJlY2VpdmluZyBkYXRhLg0KVGhlIENMRE1BIFJYIHF1ZXVlIGZv
-ciB0aGlzIHBvcnQgaGFzIG5vdCBiZWVuIG9wZW5lZCBhdCB0aGlzDQpwb2ludCChWCBSWCBkYXRh
-IG9ubHkgYXJyaXZlcyBhZnRlciB0aGUgbW9kZW0gY29tcGxldGVzIGl0cw0KaGFuZHNoYWtlLiBU
-aGUgUlggcGF0aCBjYW5ub3Qgb2JzZXJ2ZSB0aGUgZXJyb3IgcG9pbnRlci4NCg0KRHVyaW5nIHRl
-YXJkb3duLCBtdGtfcG9ydF93d2FuX2Rpc2FibGUoKSBob2xkcyB3X2xvY2sgd2hlbg0KY2xlYXJp
-bmcgd19wb3J0LCBhbmQgbXRrX3BvcnRfd3dhbl9yZWN2KCkgY2hlY2tzIHdfcG9ydCB1bmRlcg0K
-dGhlIHNhbWUgbG9jaywgc28gdGhlIFJYIHBhdGggaXMgcHJvcGVybHkgc3luY2hyb25pemVkLg0K
-DQpUaGFua3MuDQoNCkphY2sgV3U=
+On 17/07/2026 at 10:47:10 +08, Pan Chuang <panchuang@vivo.com> wrote:
+
+> Since commit 55b48e23f5c4 ("genirq/devres: Add error handling in
+> devm_request_*_irq()"), devm_request_irq() and devm_request_threaded_irq()
+> automatically log detailed error messages on failure. Remove the
+> now-redundant driver-specific dev_err() and dev_err_probe() calls.
+>
+> Signed-off-by: Pan Chuang <panchuang@vivo.com>
+> Reviewed-by: Frank Li <Frank.Li@nxp.com>
+> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> Reviewed-by: Niklas S?derlund <niklas.soderlund+renesas@ragnatech.se>
+
+                       ^
+There is an encoding issue here
+
+>  drivers/thermal/armada_thermal.c                          | 5 +----
+
+Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com>
+
+Thanks,
+Miqu=C3=A8l
+
 
