@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E33CC44523
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2026 15:15:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ABDBC4451B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2026 15:15:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YQl5PVCGH7sIQlsUqjynV5DnMRSCC9HSJ3vmRORytzI=; b=Tu69c49wsrIvLNAw4K1MvpUevT
-	luvBYCtnBEIPETU3vGbRikS530FfwH1u6LmhQwPuzecwxMufC71/+oaa2+tejNh6E9ygRX10neKgY
-	A2JyScOeuZDUxm4PopY0wv7VbrQJhuGNBj3TPRdONfIkLUguYFJPnRdgHQBvDd5GkdrFY9+snotEy
-	FeW91zoB1fB71YsYZCiOJLFpXn1kjwV36K1beqFWsQgbDjyqJjdQDnVZGgCvo99g8TOq+NthsYEnh
-	sQlWWAeQoGI5rDdQGUCdFwZwWuU0Y1tiS7enz4slIy2dvBM+3TufXsbMG/0htGDd14j1QjqLszVdY
-	sjizftlw==;
+	bh=kCSbtpTfn0tjI5mWiKnAehObxNB5ridQJcKUxITI8TU=; b=xS14R9Axe/F+JBBqnW6mdXWyyP
+	OupnmWaznAtvf7O0j2Sik/Np8mZpL4ZGsVvro0uvKpmJuBYxxb18JcJiMsziYuxiCA5dgu1Ybm2a4
+	CazRjbN9ivFrsHfS5DOrUCLAjDWzrNduCj9P6Lj43wHplDRB+uAdSYRuQZa+2aM2mioaglNMGLUU5
+	++ze5VPmFHDUUQKfSz8Pg1k3kVG/tA9b5Y9m76AzHBvK6JS85WtkTRcDhRlV08IGLO2XgJ1s1F7ja
+	D+ym/wEb+RVsfK0GpiQFaJBNQKu4bvMtlY004RxQAU+w7BIx9qXVQwBdYN7nbY2Nde9Y9De9M6nnC
+	fvTkqxew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkkHM-00000002Zfr-0che;
-	Fri, 17 Jul 2026 15:15:08 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1wkkHQ-00000002ZjW-2ZqZ;
+	Fri, 17 Jul 2026 15:15:12 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkkHH-00000002Zb1-3qHV
+	id 1wkkHK-00000002ZdW-1Ruf
 	for linux-mediatek@lists.infradead.org;
-	Fri, 17 Jul 2026 15:15:05 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-699fbcd23ccso11288311a12.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 17 Jul 2026 08:15:03 -0700 (PDT)
+	Fri, 17 Jul 2026 15:15:07 +0000
+Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-69a50b818c8so13118355a12.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 17 Jul 2026 08:15:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784301302; x=1784906102; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1784301305; x=1784906105; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=YQl5PVCGH7sIQlsUqjynV5DnMRSCC9HSJ3vmRORytzI=;
-        b=YQO4hh2jiqSNnGC2Ozb02J02NGcWmXubpDS4SjS48CO3A1PXjfZzXc9jmiLc9/I8a5
-         POvWgkOOzzVKsF4pbbd7BiPtZSdAmo/cofUtT/jOqgXq8Nz1RGONiAOq2FlbLa7y+miR
-         5iHROuK14Zk3UIK/4cZoS4L7HMex+JwD1wjbiT2XXE2yLXXB4K8bwMTPaSnVrxG96kiN
-         FUAR0dUvVKNE+UxYvoulag2jRAsnAmu5/yFiycUb9NHLuSpmvyCFTjN7APguMbaNwEVW
-         lwXUmaJ+fVKXMJtvDCIJzhl9UiR0sNwRNB3j8mPMRyTqFjhJ+eg7VTtaZ1xY6d0dKusA
-         Djow==
+        bh=kCSbtpTfn0tjI5mWiKnAehObxNB5ridQJcKUxITI8TU=;
+        b=nFcrlOjfV4MNGzMihmh2fFG2GHMzk+W+ih3GuBNfZEpUNvBma3kBZprwFezjXJVD5x
+         0vwtTDorRdyAHSZIM1PNM2TXkDiTbedPPhTWDifsSVqY7BfgvEL5+MwJZQSluy3QIvez
+         VUx+kIFpq0gFGrfQ6jmIRU+mIuS3XGFsO9oaZlsoWeNa9Wjx9ip8mZ3jkcXol4fXJ1ck
+         JDKCJf0JyV/HbaE1gOMUFVFSfzMXiGiOP5vU0TDmk+e/QLJ1BSGCjniXKg/wD+62Wmb2
+         xc+WSN2G/uXZlnoi1RBKeD12WFzbJR92IuSzcu5d9XH+aBnq81zQz+ewzEGjfDsIXpov
+         ywdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784301302; x=1784906102;
+        d=1e100.net; s=20251104; t=1784301305; x=1784906105;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=YQl5PVCGH7sIQlsUqjynV5DnMRSCC9HSJ3vmRORytzI=;
-        b=ByG5cPujfauriJLAluOwxjtqAlwwd5ocPMJL36YQqj21E3f9cSf4EPf/BWf0xM9n7Q
-         sSjJfzQESweq/A0VECeOoeCn8I8LLv8goTD4EP2mNHyB5RyCxycLNw84c009y3GT6aPz
-         kktZRWP/iQ/KiZQf/OsIMmcHn5I89kEVKRnonmUTbCGYW9vf06nszCWzHVbNoN8Ku2lj
-         tfHQNZify1M2oUIUnVvZ2Y3d1S5U+ElhwsZ/aVdqsDTUxn05lVHjyoYoguIKIrNKXGA9
-         c2ZPrVeD60dg2M5NYKoFfmVzac7iqdqx7FcSTHKNsvvtjVKHHmjL1m4FGbL0gYXrG7hz
-         v2AA==
-X-Gm-Message-State: AOJu0YxbRbldzNCP2J547icLml3ERk7zz6jZ987LauATgCxflYgDRr4I
-	iyyZW8uJQe5absCEcCy9k+KtioBzhrw4pcKmpoWh6VoocDoae0iSC2VnhoBU9vmM
-X-Gm-Gg: AfdE7cl5TOocJTAFG1fAj6lhKk2BOiSylOqVFWsjzFTP4HATUP2SdzrkHmpDlXrkrRn
-	DC/HWzxYlCxQy48g24YQiryqSQMQ1oEhO8bK540fz1NycnkVIKUoAJfY+fc9j7bsKh+S4uO8onQ
-	++p59ppBexJTHrj2K6iOU1i8A9j4ivI4jJgfKUWR4fMfFMwx2eWMYZPdyShYoo6FHbrAhjyN89K
-	gSGbBC/rurWHpGQjTf9n2zlTsoKuO/NFFx8Z9A+JYhErqJ+c/7MfjiSN0Hek+XWPuYAFLELjlHn
-	vykfDJqt2CWM2uvZGCV10MLpxbTcLBsM2qkLDBKVUmchts1JYtCjp29AX5ZpE0QMhAonhT5wBZX
-	juRO02lCDwCgLrOar1TMiFfUKrMU7uWiXvHIHlrcSvAvM1aAgHcYyig53bgGUs6XQ2kd0tXmzag
+        bh=kCSbtpTfn0tjI5mWiKnAehObxNB5ridQJcKUxITI8TU=;
+        b=IhwZjqPSHCNB2rrfqlbacwsBtt4A/60qxIqcTEqg5ZweDmNttnGbZoeFoFqQo/7pRe
+         mAhEC+zG/ZvqXMFYA4KgQAvF7xBCSyfCvEJ1PEsktIAsutW/NOt45u5t5SZJTitRc3Gb
+         9RyeQN4WiddamRr4X5u0FJyK8qYD70hwHDD54DuELRVA2mWq2ml8l1jmVXzdfOCmYCvP
+         h3glO8Z8AlZoMU1at8wAxl2zOWIn4qZm2F758z6Se2fWfytKF9hFyH6raUZa4drkr2vx
+         r++e+Au4gQZJVEyWWnnWzbrZ0hzf8qGo5fZW+YNdiuzWQ4XsIlTRXSS+l85fqeto2oHJ
+         sOSA==
+X-Gm-Message-State: AOJu0Yy9HoJEMokYQ+3kATu2JviXxgfT+f+xR9T35wdAWgTB5szhTwOu
+	+8J2YvzCXToTKumCxcumC8l2zTDpmRsgJKrb9QZ5kfoWhgRa8qKHOy66fgYqFaxr
+X-Gm-Gg: AfdE7ckeKXACisHFJSDwkFZpa53Cm39URsRGxRmBR4UiXP83keSZMp6LDNi8DClETmS
+	kipp+ZNm4hYvOW1tR93CvvmmHfc7Vlw4f1zHnNUot21oQTXGd4zK0BaOWLiy2V0qa90JwQ4eUDb
+	knkwCst6Fh7KiavJl6SoRAHnOPmuN4+JWWbfMjogpf3osBVyk8WK5WGccS4RsTCyUx1WAdXRJzY
+	UcDPiFEbSQkTRbUng+CaQHeKgNJECmaZSfHHjGEqXOJiR/orbTYVmvWKutqlX+A5yboTCJ6qmGJ
+	2GOXXz0WnJKEumK3EPZIgD0D4kr7UAzeymLASiEqY5ARb1DSBkAbQ6C4sI8uf4RJ5q4P6w83k9Y
+	3Kr8+DMkr/PM30Ya+Hyplv438T7PF1IZZBUn0RFOaJvAXSY61L1MkaGWYgDLRSu8c6oONlyBnjA
 	==
-X-Received: by 2002:a05:6402:504f:b0:698:e614:e4bf with SMTP id 4fb4d7f45d1cf-69e6516b4abmr1042998a12.0.1784301301694;
-        Fri, 17 Jul 2026 08:15:01 -0700 (PDT)
+X-Received: by 2002:a05:6402:388c:b0:698:81d7:b822 with SMTP id 4fb4d7f45d1cf-69e652ed680mr1129854a12.22.1784301304599;
+        Fri, 17 Jul 2026 08:15:04 -0700 (PDT)
 Received: from luca-vm.. ([109.52.116.145])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-69e6ffbab34sm931684a12.14.2026.07.17.08.15.00
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-69e6ffbab34sm931684a12.14.2026.07.17.08.15.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Jul 2026 08:15:01 -0700 (PDT)
+        Fri, 17 Jul 2026 08:15:04 -0700 (PDT)
 From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 To: linux-mediatek@lists.infradead.org
 Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
@@ -83,17 +83,18 @@ Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 2/7] watchdog: mediatek: Add wdt/toprgu resets for MT6589
-Date: Fri, 17 Jul 2026 17:11:09 +0200
-Message-ID: <20260717151134.678839-3-l.scorcia@gmail.com>
+Subject: [PATCH 3/7] dt-bindings: watchdog: Add compatible for MediaTek mt8167
+Date: Fri, 17 Jul 2026 17:11:10 +0200
+Message-ID: <20260717151134.678839-4-l.scorcia@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260717151134.678839-1-l.scorcia@gmail.com>
 References: <20260717151134.678839-1-l.scorcia@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260717_081504_009569_C671442B 
-X-CRM114-Status: GOOD (  11.80  )
+X-CRM114-CacheID: sfid-20260717_081506_401259_869BB86C 
+X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,47 +109,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-According to Android sources, MT6589 has 12 reset bits in the
-WDT_SWSYSRST register. Populate toprgu_sw_rst_num to allow toprgu resets
-in device trees of the many compatible devices.
+Currently mt8167 inherits its watchdog from the included mt8516 dtsi,
+which in turn falls back on mt6589-wdt. However according to the data
+sheet mt8167 has 15 sw resets instead of 12, and their order is different
+from mt6589. Update the wdt binding to add a dedicated compatible for
+mt8167.
 
 Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 ---
- drivers/watchdog/mtk_wdt.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index 91d110646e16..e61f6ae74327 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -10,6 +10,7 @@
-  */
- 
- #include <dt-bindings/reset/mt2712-resets.h>
-+#include <dt-bindings/reset/mediatek,mt6589-resets.h>
- #include <dt-bindings/reset/mediatek,mt6735-wdt.h>
- #include <dt-bindings/reset/mediatek,mt6795-resets.h>
- #include <dt-bindings/reset/mt7986-resets.h>
-@@ -88,6 +89,10 @@ static const struct mtk_wdt_data mt2712_data = {
- 	.toprgu_sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
- };
- 
-+static const struct mtk_wdt_data mt6589_data = {
-+	.toprgu_sw_rst_num = MT6589_TOPRGU_SW_RST_NUM,
-+};
-+
- static const struct mtk_wdt_data mt6735_data = {
- 	.toprgu_sw_rst_num = MT6735_TOPRGU_RST_NUM,
- };
-@@ -493,7 +498,7 @@ static int mtk_wdt_resume(struct device *dev)
- 
- static const struct of_device_id mtk_wdt_dt_ids[] = {
- 	{ .compatible = "mediatek,mt2712-wdt", .data = &mt2712_data },
--	{ .compatible = "mediatek,mt6589-wdt" },
-+	{ .compatible = "mediatek,mt6589-wdt", .data = &mt6589_data },
- 	{ .compatible = "mediatek,mt6735-wdt", .data = &mt6735_data },
- 	{ .compatible = "mediatek,mt6795-wdt", .data = &mt6795_data },
- 	{ .compatible = "mediatek,mt7986-wdt", .data = &mt7986_data },
+diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+index 953629cb9558..f514be8a5851 100644
+--- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
++++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+@@ -26,6 +26,7 @@ properties:
+           - mediatek,mt6795-wdt
+           - mediatek,mt7986-wdt
+           - mediatek,mt7988-wdt
++          - mediatek,mt8167-wdt
+           - mediatek,mt8183-wdt
+           - mediatek,mt8186-wdt
+           - mediatek,mt8188-wdt
 -- 
 2.43.0
 
