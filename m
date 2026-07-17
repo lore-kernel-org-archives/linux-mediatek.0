@@ -4,75 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D5A8C44516
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2026 10:56:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5601C44507
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2026 10:57:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pkNNPMc+4Y/lU1Tqxe5npoC2NL+iAxIPrmi/UsZfjSo=; b=SRZcxQ/JZsgAa4ENvBx8IWXz+T
-	VRkYE/J2iGeNjEyv4TtZ5T/gvJOPwnicpeVbqF+V9qAqxL2uYLYsfILpUgrt9Oa4rD9kXoJGngOwy
-	lHCBC8YVUKoY6HoO3KHpMS/caeB4JSG7ZEfFu8TvibanJ07DWA7LHcF15korSQhvMMIwfXAFijnxU
-	6Xp+NvDaQ9/+gxAQy7VnK2FjU8OUoffjXFUfHTUWET7W9HXqoVtl7vdQCSfpSMLa3fMxFJBYwBHqu
-	K/SQxN1ZsAvOIfluP34D001+qZ9Qu4mpqumwZD4UsBYxWLLWqumkZgwhpFFYcTLjNf+3jgDlaYOjR
-	qDkMiRWw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hoRvErgqkfs5jpMpYRE1GV/40OpQ4sJSKnHa56qmmB4=; b=4cxtmwfRaKN+pnJB+ErBb3Zy9t
+	/kcluOBl518TzpgYACkQNR2TtTTJpi1CVkL/02BVc1o6Cx8L7Y95J0hfxrOqdG9sTolxBgR2o0FJ3
+	xXhykVcrK63cUvqjkDP1NZBLYpjLbOnHI9ulGK9IpI4cHvb2NQDDrJ6jp7XfuUmOOO4fcgmUb2xGU
+	tE5LnyKnG2RHAf8QFtdZOJzyOZToPn0J9PvB+rgHNxEEWYsnLTiYAgp8nTaJzcmqsyy66MsZHDdTb
+	zcDhZzzeXGfPBsBpP7h62lm1APqMHOwDYv8YCJX3JJ56rFNVM8SneFXXmGaVPwSX3W6zkcIlFlj+R
+	BUw0neag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkgEh-0000000248W-02vk;
-	Fri, 17 Jul 2026 10:56:07 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wkgFr-000000024Xp-321I;
+	Fri, 17 Jul 2026 10:57:19 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkgEd-0000000240x-3AFE
-	for linux-mediatek@lists.infradead.org;
-	Fri, 17 Jul 2026 10:56:05 +0000
-X-UUID: 15af5e3a81ce11f1acbe4559397dec65-20260717
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=pkNNPMc+4Y/lU1Tqxe5npoC2NL+iAxIPrmi/UsZfjSo=;
-	b=M5vN/rBiIkC5EzRrLaCRvgmT1T96atFqks3vMFppCQfJ5HdBdHALV3fY7dxPRDKaFjha7SdKyktgj29MwpPrXrG3o+X8VkevSrgmi2tMQBAE/HY9VXXvoX11MKTx+hwxG68JYS/3zUqEvejwTWtXnw3ddqDV0UAIHJZCHCFbSps=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.18,REQID:65e07ea9-da57-488a-bae6-5cf99d22c8ee,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:8a735a6,CLOUDID:ce3d613f-46cf-453a-bd84-ad9fc7cb0e8c,B
-	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
-	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 15af5e3a81ce11f1acbe4559397dec65-20260717
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
-	(envelope-from <shayne.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 67837553; Fri, 17 Jul 2026 03:55:55 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 17 Jul 2026 18:55:52 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 17 Jul 2026 18:55:52 +0800
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
-	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>, Shayne Chen
-	<shayne.chen@mediatek.com>, Rex Lu <rex.lu@mediatek.com>
-Subject: [PATCH mt76] wifi: mt76: fix handling channel context with different bands in mt76_switch_vif_chanctx()
-Date: Fri, 17 Jul 2026 18:54:58 +0800
-Message-ID: <20260717105458.3005812-1-shayne.chen@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1wkgFq-000000024XH-0JlC;
+	Fri, 17 Jul 2026 10:57:18 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 4891160204;
+	Fri, 17 Jul 2026 10:57:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F23D91F00A3A;
+	Fri, 17 Jul 2026 10:57:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784285837;
+	bh=hoRvErgqkfs5jpMpYRE1GV/40OpQ4sJSKnHa56qmmB4=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=SZUViPnd9pHd4zqdlwnHFih9y3wXrPDnTCkc4rSWaNNFw6f8YubW8bTmLYf2jTG/s
+	 mle7+6wvxwy5mCJ10kg72UZEJFTmCOhyrH+Zbq6XBThPmCaUpjpFTVfYGrofR2BXXV
+	 8nw0HOeSVadkmOkKm58jbk89PDDpUcxnQ2QqWoOaiP+/0n4+GB3aprsm1MttKAAsg+
+	 QolvZ3JCqDIB5mbkPmvjVpkdENcCFFvlqC2WCPZC7Xu4jMODB9LQH/CVlM3wCGcAuB
+	 CO+dqyQF78ayl8yTiCBTQ4bCH5nDmwinN7sXX/eosRaxcVhyHw0ePBpeOTSNxWzXnf
+	 JynaALHjZu3pA==
+From: Simon Horman <horms@kernel.org>
+To: hujy652@gmail.com
+Cc: Simon Horman <horms@kernel.org>,
+	nbd@nbd.name,
+	lorenzo@kernel.org,
+	andrew+netdev@lunn.ch,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	sujuan.chen@mediatek.com,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net v2] net:ethernet: mtk_wed: setup WDMA_RING_TX(0) for non-DBDC MT7986
+Date: Fri, 17 Jul 2026 11:55:28 +0100
+Message-ID: <20260717105527.435610-2-horms@kernel.org>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260711112128.971-1-hujy652@gmail.com>
+References: <20260711112128.971-1-hujy652@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260717_035603_850508_BFA5C2C4 
-X-CRM114-Status: GOOD (  14.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,142 +80,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When performing channel switches on different radios within a short
-timeframe, channel contexts with different bands can be carried for
-each struct ieee80211_vif_chanctx_switch.
-
-Rework mt76_switch_vif_chanctx() to properly handle this scenario.
-
-Fixes: 82334623af0c ("wifi: mt76: add chanctx functions for multi-channel phy support")
-Co-developed-by: Rex Lu <rex.lu@mediatek.com>
-Signed-off-by: Rex Lu <rex.lu@mediatek.com>
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+This is an AI-generated review of your patch. The human sending this
+email has considered the AI review valid, or at least plausible.
+https://sashiko.dev/#/patchset/20260711112128.971-1-hujy652@gmail.com?part=1
 ---
- drivers/net/wireless/mediatek/mt76/channel.c | 93 ++++++++++----------
- 1 file changed, 48 insertions(+), 45 deletions(-)
+--- Patch [1]: [PATCH net v2] net:ethernet: mtk_wed: setup WDMA_RING_TX(0) for non-DBDC MT7986 ---
+commit d478e0562d6cafb9be212cb1356ac8344230386e
+Author: Zhi-Jun You <hujy652@gmail.com>
 
-diff --git a/drivers/net/wireless/mediatek/mt76/channel.c b/drivers/net/wireless/mediatek/mt76/channel.c
-index 6edcb3b8f279..37894b78fd08 100644
---- a/drivers/net/wireless/mediatek/mt76/channel.c
-+++ b/drivers/net/wireless/mediatek/mt76/channel.c
-@@ -186,68 +186,71 @@ int mt76_switch_vif_chanctx(struct ieee80211_hw *hw,
- 			    int n_vifs,
- 			    enum ieee80211_chanctx_switch_mode mode)
- {
--	struct mt76_chanctx *old_ctx = (struct mt76_chanctx *)vifs->old_ctx->drv_priv;
--	struct mt76_chanctx *new_ctx = (struct mt76_chanctx *)vifs->new_ctx->drv_priv;
--	struct ieee80211_chanctx_conf *conf = vifs->new_ctx;
--	struct mt76_phy *old_phy = old_ctx->phy;
--	struct mt76_phy *phy = hw->priv;
-+	struct ieee80211_vif_chanctx_switch *v;
-+	struct mt76_chanctx *old_ctx, *new_ctx;
-+	struct mt76_phy *old_phy, *phy = hw->priv;
- 	struct mt76_dev *dev = phy->dev;
- 	struct mt76_vif_link *mlink;
--	bool update_chan;
-+	bool need_update[__MT_MAX_BAND] = {};
- 	int i, ret = 0;
- 
--	if (mode == CHANCTX_SWMODE_SWAP_CONTEXTS)
--		phy = new_ctx->phy = dev->band_phys[conf->def.chan->band];
--	else
--		phy = new_ctx->phy;
--	if (!phy)
--		return -EINVAL;
--
--	update_chan = phy->chanctx != new_ctx;
--	if (update_chan) {
--		if (dev->scan.phy == phy)
--			mt76_abort_scan(dev);
--
--		cancel_delayed_work_sync(&phy->mac_work);
-+	for (i = 0; i < n_vifs; i++) {
-+		v = &vifs[i];
-+		new_ctx = (struct mt76_chanctx *)v->new_ctx->drv_priv;
-+		if (mode == CHANCTX_SWMODE_SWAP_CONTEXTS)
-+			phy = new_ctx->phy = dev->band_phys[v->new_ctx->def.chan->band];
-+		else
-+			phy = new_ctx->phy;
-+
-+		if (!phy)
-+			return -EINVAL;
-+
-+		if (phy->chanctx != new_ctx) {
-+			if (dev->scan.phy == phy)
-+				mt76_abort_scan(dev);
-+
-+			cancel_delayed_work_sync(&phy->mac_work);
-+			need_update[phy->band_idx] = true;
-+		}
- 	}
- 
- 	mutex_lock(&dev->mutex);
- 
--	if (mode == CHANCTX_SWMODE_SWAP_CONTEXTS &&
--	    phy != old_phy && old_phy->chanctx == old_ctx)
--		old_phy->chanctx = NULL;
-+	for (i = 0; i < n_vifs; i++) {
-+		v = &vifs[i];
-+		old_ctx = (struct mt76_chanctx *)v->old_ctx->drv_priv;
-+		old_phy = old_ctx->phy;
- 
--	if (update_chan)
--		ret = mt76_phy_update_channel(phy, vifs->new_ctx);
-+		new_ctx = (struct mt76_chanctx *)v->new_ctx->drv_priv;
-+		phy = new_ctx->phy;
- 
--	if (ret)
--		goto out;
-+		if (mode == CHANCTX_SWMODE_SWAP_CONTEXTS && old_phy->chanctx &&
-+		    old_phy->chanctx == old_ctx && phy != old_phy)
-+			old_phy->chanctx = NULL;
- 
--	if (old_phy == phy)
--		goto skip_link_replace;
-+		if (need_update[phy->band_idx]) {
-+			ret = mt76_phy_update_channel(phy, v->new_ctx);
-+			if (ret)
-+				goto out;
- 
--	for (i = 0; i < n_vifs; i++) {
--		mlink = mt76_vif_conf_link(dev, vifs[i].vif, vifs[i].link_conf);
-+			need_update[phy->band_idx] = false;
-+		}
-+
-+		mlink = mt76_vif_conf_link(dev, v->vif, v->link_conf);
- 		if (!mlink)
- 			continue;
- 
--		dev->drv->vif_link_remove(old_phy, vifs[i].vif,
--					  vifs[i].link_conf, mlink);
-+		if (old_phy != phy) {
-+			dev->drv->vif_link_remove(old_phy, v->vif, v->link_conf,
-+						  mlink);
- 
--		ret = dev->drv->vif_link_add(phy, vifs[i].vif,
--					     vifs[i].link_conf, mlink);
--		if (ret)
--			goto out;
--
--	}
--
--skip_link_replace:
--	for (i = 0; i < n_vifs; i++) {
--		mlink = mt76_vif_conf_link(dev, vifs[i].vif, vifs[i].link_conf);
--		if (!mlink)
--			continue;
-+			ret = dev->drv->vif_link_add(phy, v->vif, v->link_conf,
-+						     mlink);
-+			if (ret)
-+				goto out;
-+		}
- 
--		mlink->ctx = vifs->new_ctx;
-+		mlink->ctx = v->new_ctx;
- 		if (mlink->beacon_mon_interval)
- 			WRITE_ONCE(mlink->beacon_mon_last, jiffies);
- 	}
--- 
-2.51.0
+net:ethernet: mtk_wed: setup WDMA_RING_TX(0) for non-DBDC MT7986
+    
+WDMA_RING_TX(0) is required to set MTK_WED_WDMA_RING_TX for WED RX but on a
+non-DBDC MT7986 it is never setup because idx is 1. Fix this by calling
+mtk_wed_wdma_tx_ring_setup if wed is v2 and rx_ring[0] is not allocated.
 
+Link: https://lore.kernel.org/netdev/20260630144831.1109-1-hujy652@gmail.com/
+
+> diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
+> --- a/drivers/net/ethernet/mediatek/mtk_wed.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+> @@ -2334,6 +2334,13 @@ mtk_wed_start(struct mtk_wed_device *dev, u32 irq_mask)
+>  		if (!dev->rx_wdma[i].desc)
+>  			mtk_wed_wdma_rx_ring_setup(dev, i, 16, false);
+>  
+> +	/*
+> +	 * non-DBDC MT7986 allocates only rx_ring[1] and tx_wdma[1] during setup
+> +	 * but tx_wdma[0] is also needed for WED to function.
+> +	 */
+> +	if (mtk_wed_is_v2(dev->hw) && !dev->rx_ring[0].desc)
+> +		mtk_wed_wdma_tx_ring_setup(dev, 0, MTK_WED_WDMA_RING_SIZE, !!dev->tx_wdma[0].desc);
+
+[Severity: High]
+Is it safe to ignore the return value of mtk_wed_wdma_tx_ring_setup() here?
+
+If mtk_wed_ring_alloc() fails under memory pressure, it returns -ENOMEM:
+
+mtk_wed_wdma_tx_ring_setup() {
+    ...
+    if (!reset && mtk_wed_ring_alloc(dev, wdma, MTK_WED_WDMA_RING_SIZE,
+                                     dev->hw->soc->wdma_desc_size, true))
+        return -ENOMEM;
+    ...
+}
+
+Could this result in the hardware being enabled with uninitialized or
+zeroed base addresses, potentially leading to DMA faults or system crashes?
+
+Since mtk_wed_start() has the ability to return early on allocation
+failure (as seen with mtk_wed_rx_buffer_alloc()), should it abort the
+start sequence when this ring setup fails?
+
+
+[Severity: High]
+This isn't a bug introduced by this patch, but when this setup function
+is called with reset evaluating to true on v3 hardware, does
+mtk_wed_ring_reset() corrupt the v3-specific descriptor initialization?
+
+In mtk_wed_wdma_tx_ring_setup(), v3 hardware initializes desc->info:
+
+mtk_wed_wdma_tx_ring_setup() {
+    ...
+    if (mtk_wed_is_v3_or_greater(dev->hw)) {
+        for (i = 0; i < MTK_WED_WDMA_RING_SIZE; i++) {
+            ...
+            desc->info = cpu_to_le32(MTK_WDMA_TXD0_DESC_INFO_DMA_DONE);
+            ...
+        }
+    }
+    ...
+    if (reset)
+        mtk_wed_ring_reset(wdma, MTK_WED_WDMA_RING_SIZE, true);
+    ...
+}
+
+However, mtk_wed_ring_reset() loops over the ring and unconditionally
+clears desc->info:
+
+mtk_wed_ring_reset() {
+    ...
+    desc->info = 0;
+    ...
+}
+
+Could this wipe out the configured v3-specific state and lead to a DMA
+stall or faults on v3 hardware?
+
+> +
+>  	if (dev->wlan.hw_rro) {
+>  		for (i = 0; i < MTK_WED_RX_PAGE_QUEUES; i++) {
+>  			u32 addr = MTK_WED_RRO_MSDU_PG_CTRL0(i) +
 
