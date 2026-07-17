@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF890C44514
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2026 11:00:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D85A7C44507
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2026 11:00:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Date:Content-Transfer-Encoding:Message-ID:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ByvrWCOoDCuW2xShmWncu3Ao4WbmrmEikOWXs5gyHJU=; b=Km6WOkmF3NyaC4U1CG/ZxEPnAV
-	TJGMJ9E0QQaYzWLMWdEMvy8BX8Rh0sW///1crZ0u6dQEYRsmxHpc6QgzO71DvJkwizlcmgcQT9Rbd
-	l70bSAwzs4jkUj8lyQ96NWtWqj0kVU095F7etTbj5CMg5RAwy4mSVBKlxyFzzhSR2EnOWgf6iTaAx
-	wa1nsMlKoL9j3erzAxzuJ/+PJmE+PU80mUuM9SSRJxJyJ2Dq4/xr1LH+Y5hXZTWepXg0umjzJjA21
-	jzhOTPEa/hgIuN96tCeQb9tTCbvJUIDcFhZJZ0z16qgArte6YGuC2J/jcWegNHiAlmoTXE3ZpuC5Q
-	0svabP+Q==;
+	bh=FQto5Z8Uhf4eXqdGlAl8y9PBSAdtQt5TSd/Tz46JS3g=; b=aY3eVPZ+5dDGJ2XvyD1rmTggX4
+	I0XVcUOzc4Ekmur7uiW5Qcz4b5dc+ZBNCI+p5loqEgoWBOJ+keWdKBE3JdwlNf9byIPc/fYbEDk3d
+	wNJsKkeDiOMLihnPE4si3642lF0Tg47oL+JoEK94Qfabw28Jdg4N0qMl9xTHn5clzOG5ScK9Bguyb
+	g/ngHXJE/Noaw3ZCDiody0wCLfXv+xJXVoNJFqyI7WAIjJD/BE2Iz3UG1yk6g4Wg9bjmxEDZ0qIsj
+	HznkamW7KVImwurIk0GrlTEfpcgLfvbFHz992nHPyKgX+iSzpFSbd8iMh6jiWwcD5BNWWEg+4S/JJ
+	Y/2yvTng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkgIn-000000025Lp-1opy;
-	Fri, 17 Jul 2026 11:00:21 +0000
-Received: from e234-50.smtp-out.ap-northeast-1.amazonses.com ([23.251.234.50])
+	id 1wkgIw-000000025Qr-2y5M;
+	Fri, 17 Jul 2026 11:00:30 +0000
+Received: from e234-56.smtp-out.ap-northeast-1.amazonses.com ([23.251.234.56])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkgIl-000000025Ji-1xlb;
-	Fri, 17 Jul 2026 11:00:20 +0000
+	id 1wkgIm-000000025KQ-3lb2;
+	Fri, 17 Jul 2026 11:00:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=resend;
-	d=clipsneko.cc; t=1784286012;
+	d=clipsneko.cc; t=1784286017;
 	h=In-Reply-To:References:From:To:Cc:Subject:Message-ID:Content-Transfer-Encoding:Date:MIME-Version:Content-Type;
-	bh=Q1FN4qnshm5xeIy75yKaGL9RQWH6W+NxPoppYKpNsKg=;
-	b=T+wrfrQb5jFNFoJ/y/FNt2E0l6mDiEsfUNvsCxHKkfrxvPST86TOmDANJPMPL03W
-	IkEA9GKJ+y1IOV20n8vc5AHkPaUL6XjLJ3NFCXoqRIb6Zahm2Yo+KwLVCfzZAnJWjRh
-	PRDrLze8dV+wibMbDWH1rQc62qShwh6JVJm8Blp4=
+	bh=xWCYjiYbaynh1mEZgNMgNviDRlvyEcEP7+Xg/gNItPE=;
+	b=WD9sNtxxEl4X+9vKGMX31nqo5ZolFzPGMU9i4UR2ltWo4U2tq30tBMuSzh3WqJcv
+	9kLzvjvZF2F5CTWzYtDqK7CqlYabWwSL283M2FGbFFuCGNTt03hgUuFDzizWHkeU6se
+	iok7EJ9IBgTgCG5wTfmkaknHKGidALHnzFJeSB1Q=
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
-	s=zh4gjftm6etwoq6afzugpky45synznly; d=amazonses.com; t=1784286012;
+	s=zh4gjftm6etwoq6afzugpky45synznly; d=amazonses.com; t=1784286017;
 	h=In-Reply-To:References:From:To:Cc:Subject:Message-ID:Content-Transfer-Encoding:Date:MIME-Version:Content-Type:Feedback-ID;
-	bh=Q1FN4qnshm5xeIy75yKaGL9RQWH6W+NxPoppYKpNsKg=;
-	b=Rmq9WJ+dijdpmG4PdMdlNzw9I86Zr/ZkJHftl+H+exEC4tMZZrqSHSSj3tKrYD0g
-	L/s77NJ6S5syBOfngDnmk297hqIt2pJpb/AwcYQxW0NZ/Drf3o91zLFHGQCImard4YP
-	mQH3WeK9v9uZwTyZrZmUjMcNg9GaNbqXDfUDOhdg=
+	bh=xWCYjiYbaynh1mEZgNMgNviDRlvyEcEP7+Xg/gNItPE=;
+	b=RNzRRxh/bxIUUueL1JTdNNb7T/lCpLH/ytpUo2YgIixQGs8rb41DTd2/VMmY8yYE
+	9nio3tT4YqkZ2xBkshVm0ndO95pv2a1AkWuCFgVQJlWjnoktZUCPw4XHHcI1bZbvvSb
+	2myVBShVaL84jbwp6GDuccSmvL0jsWwh1AlJ8fSw=
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260717105748.1194693-1-goliath.zhu@clipsneko.cc>
 References: <20260717105748.1194693-1-goliath.zhu@clipsneko.cc>
@@ -51,17 +51,17 @@ Cc: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org, goliath.zhu@clipsneko.cc, 
 	stable@vger.kernel.org
-Subject: [PATCH 1/2] wifi: mt76: mt7996: disable RX NAPI on driver removal
-Message-ID: <0106019f6fbbe2e1-f7f219fb-cd73-428b-922b-a73849e36569-000000@ap-northeast-1.amazonses.com>
+Subject: [PATCH 2/2] wifi: mt76: skip NAPI deletion for WED RRO queues
+Message-ID: <0106019f6fbbf57d-e08cf023-2c26-4186-81c7-f5f09f3ecc40-000000@ap-northeast-1.amazonses.com>
 Content-Transfer-Encoding: quoted-printable
-Date: Fri, 17 Jul 2026 11:00:12 +0000
+Date: Fri, 17 Jul 2026 11:00:16 +0000
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Feedback-ID: :1.ap-northeast-1.T/9jWCDXa31y4gauYStyPOpWTrkJmzALuy1iq6HUX1VjlgPUmzq7ZFI3EvLLZ39jJzv+2I2PP/uhCYcS7tWi4X9gcnDJGZZVVULSu7C54EK8m7rG19VNcAtmWQSUeF+Ydw79jCgmJ2QuxiKzKA17O4fInWrH2kml2UpMwmQGC6+Ow2RWdTIMP19sAecDaYp3:1.ap-northeast-1.tL27A1JIpKR2Y51a8BkHZBekDcSR82jwOhKrSwgRw2U=:AmazonSES
-X-SES-Outgoing: 2026.07.17-23.251.234.50
+X-SES-Outgoing: 2026.07.17-23.251.234.56
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260717_040019_618682_E506CE38 
-X-CRM114-Status: UNSURE (   7.52  )
+X-CRM114-CacheID: sfid-20260717_040021_049136_09D573D6 
+X-CRM114-Status: UNSURE (   7.64  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,68 +77,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Commit 9dd05df8403b ("net: warn if NAPI instance wasn't shut down")
-made the NAPI teardown ordering explicit. An instance must be disabled
-first, then netif_napi_del() removes it.
+Commit 6b470f36616e ("wifi: mt76: Fix memory leak destroying device")
+made mt76_dma_cleanup() visit WED RRO queues so that their page pools
+are destroyed during device removal.
 
-mt7996_unregister_device() leaves=
- the RX NAPI instances enabled and
-eventually calls mt76_dma_cleanup(), =
-which deletes them. This triggers
-the warning in __netif_napi_del_locked() =
-during device removal.
+When WED is active, mt76 does not =
+register NAPI for these queues.
+Calling netif_napi_del() on their =
+uninitialized napi_struct can
+dereference a NULL napi->dev.
 
-Disable every RX NAPI instance owned by mt76 after =
-unregistering the
-device and before releasing the DMA resources. Skip WED =
-RRO queues
-because WED owns them and mt76 never registers NAPI for those =
-queues.
+Keep cleaning the RX queue and destroying its page pool, only call
+netif_napi_del() for queues which have an mt76 NAPI instance.
 
-Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek =
-Wi-Fi 7 (802.11be) devices")
+Fixes: 6b470f36616e ("wifi: mt76: Fix memory leak destroying device")
 Cc: stable@vger.kernel.org
-Signed-off-by: Goliath Zhu <goliath.zhu@clipsneko.cc>
+Signed-off-by: Goliath Zhu <goliath.=
+zhu@clipsneko.cc>
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/init.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ drivers/net/wireless/mediatek/mt76/dma.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediat=
-ek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index d6f9aa1ab..73559c60f 100644
---- a/drivers/net/wireless/mediatek/mt76/=
-mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -1797,6 +1797,8 @@ error:
+diff --git =
+a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/=
+mt76/dma.c
+index f8c2fe5f2..ddcfb9e46 100644
+--- a/drivers/net/wireless/med=
+iatek/mt76/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/dma.c
+@@ -1189,7 +1189,9 @@ void mt76_dma_cleanup(struct mt76_dev *dev)
+ 	mt76_for_each_q_rx(dev, i) {
+ 		struct mt76_queue *q =3D &dev->q_rx[i];
 =20
- void mt7996_unregister_device(struct =
-mt7996_dev *dev)
- {
-+	int i;
-+
- 	cancel_work_sync(&dev->dump_work);
- 	cancel_work_sync(&dev->wed_rro.work);
- 	mt7996_unregister_phy(mt7996_phy3=
-(dev));
-@@ -1804,6 +1806,15 @@ void mt7996_unregister_device(struct =
-mt7996_dev *dev)
- 	mt7996_unregister_thermal(&dev->phy);
- 	mt7996_coredump_unregister(dev);
- 	mt76_unregister_device(&dev->mt76);
-+	mt76_for_each_q_rx(&dev->mt76, i) {
-+		struct mt76_queue *q =3D =
-&dev->mt76.q_rx[i];
-+
-+		if (mtk_wed_device_active(&dev->mt76.mmio.wed) &&
-+		    mt76_queue_is_wed_rro(q))
-+			continue;
-+
-+		napi_disable(&dev->mt76=
-.napi[i]);
-+	}
- 	mt7996_wed_rro_free(dev);
- 	mt7996_mcu_exit(dev);
- 	mt7996_tx_token_put(dev);
+-		netif_napi_del(&dev->napi[i]);
++		if (!mtk_wed_device_active(&dev->m=
+mio.wed) ||
++		    !mt76_queue_is_wed_rro(q))
++			netif_napi_del(&dev->napi=
+[i]);
+ 		mt76_dma_rx_cleanup(dev, q);
+=20
+ 		page_pool_destroy(q->page_pool=
+);
 --=20
 2.55.0
 
