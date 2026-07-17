@@ -4,127 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DCC3C44507
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2026 11:02:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07269C44514
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jul 2026 11:20:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mBBc8/lv7ph7coB1xS4ADIWd930ymdFgmRJa/Bi/MZQ=; b=tPrP0KNRHDjpMNWekB1QgVFjze
-	oPiei91dGYDVhjkYajxM8GPbrTnNECgFwYdB2p2/Ufzd58IvFpNGsSg37Ow9d8WIfRoEtGlySxscy
-	fjH/ZlCi9nGx0MFvV0CI1RJLz5FpVuwcX/qT9JE5mJpIHViEeUtD/AoMgEIUvPVRGrMWatuprTXmz
-	R8e1wPJmwdDMnHaARhYZefCoOdlwQHMsRa2/ncEw8koE+gl+iMbluFmwzINVAjxSVFIYueCuoKKHY
-	Ardpedkqs1THyhzgIDnK/kzL/SUQpnRil8bFIfmtwbtEqsY4DlqzOD/AhKXLKdzC8TAfRAC7q3vLh
-	2/A7a6xA==;
+	bh=tELoBG5OKG9/+DOeMkHZuGsmy1n3mciJef9SVNvGdLk=; b=p0+GI+och0d5ALEqN3DyCzneFS
+	NGpxO5Sc5II2w/4yhpxxE6alTxVFeoszsDoOB3dNI2pDs5AG0UL6xjkMUpCdOrvUC8Cz52aQEEO05
+	iXMtrrru+w7yWKEYYIk5VoTh6K3vHfk4yBF8fd9ITOHrbbqfwNL60VBxfoV5+amAfVf7vg0vOBJ7X
+	RF24UYI2OLMocvUO6A7n8CLu397cNCCL/r56j6Al1OwYkhdmDoWvaQA3o6PhwvomkASRu12NIjmGQ
+	sgeA0DneY7L9Z0o1YyrpVi4PB28Re1tAPsUSJ1XdkfY0UQ+Mceh5yBTvTA+O2teQyFzL+ZxYRXXSp
+	U7mX2KAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkgKw-000000026do-2Er1;
-	Fri, 17 Jul 2026 11:02:34 +0000
-Received: from exmail3.compal.com ([59.120.207.196] helo=tpecef22.compal.com)
+	id 1wkgcC-000000028TE-1mrL;
+	Fri, 17 Jul 2026 11:20:24 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkgKr-000000026bO-0afT;
-	Fri, 17 Jul 2026 11:02:33 +0000
-X-UUID: fd020bf281ce11f1a87c2323a98e90a4-20260717
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.17,REQID:60def11f-3981-409e-9062-941ce254e319,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:d497b38,CLOUDID:34fd975f-762a-4584-baab-4eebe609beea,B
-	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|110|111|836|865|888|898,TC:-5,
-	Content:0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:n
-	il,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: fd020bf281ce11f1a87c2323a98e90a4-20260717
-Received: from sdmg11.sdbg.compal.com [(10.113.168.9)] by tpecef22.compal.com
-	(envelope-from <jackbb_wu@compal.com>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 464511047; Fri, 17 Jul 2026 19:02:23 +0800
-X-UUID: f9923c8a81ce11f1b328fd8a884f4420-20260717
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.15,REQID:7215ff62-c96b-4b85-98c8-feeadfe71d4c,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e276073,CLOUDID:26daf88c-879e-4a06-a1b9-fbfe288700dc,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|865|888|
-	898,TC:-5,Content:0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS
-	:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,A
-	RC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: f9923c8a81ce11f1b328fd8a884f4420-20260717
-Received: from sdbmbx12.tpe.compalcomm.com [(10.113.2.136)] by sdmg11.sdbg.compal.com
-	(envelope-from <jackbb_wu@compal.com>)
-	(Compal Mail Service with TLSv1.2 ECDHE-RSA-AES256-SHA 256/256)
-	with ESMTP id 953992257; Fri, 17 Jul 2026 19:02:17 +0800
-Received: from SDBMBX13.tpe.compalcomm.com (10.113.2.137) by
- SDBMBX12.tpe.compalcomm.com (10.113.2.136) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id 15.2.2562.43;
- Fri, 17 Jul 2026 19:02:16 +0800
-Received: from SDBMBX13.tpe.compalcomm.com ([fe80::2b98:6c2c:37df:2a86]) by
- SDBMBX13.tpe.compalcomm.com ([fe80::2b98:6c2c:37df:2a86%11]) with mapi id
- 15.02.2562.043; Fri, 17 Jul 2026 19:02:16 +0800
-From: "Wu. JackBB (GSM)" <JackBB_Wu@compal.com>
-To: Simon Horman <horms@kernel.org>
-CC: "loic.poulain@oss.qualcomm.com" <loic.poulain@oss.qualcomm.com>,
-	"ryazanov.s.a@gmail.com" <ryazanov.s.a@gmail.com>,
-	"johannes@sipsolutions.net" <johannes@sipsolutions.net>,
-	"andrew+netdev@lunn.ch" <andrew+netdev@lunn.ch>, "davem@davemloft.net"
-	<davem@davemloft.net>, "edumazet@google.com" <edumazet@google.com>,
-	"kuba@kernel.org" <kuba@kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>,
-	"wen-zhi.huang@mediatek.com" <wen-zhi.huang@mediatek.com>,
-	"shi-wei.yeh@mediatek.com" <shi-wei.yeh@mediatek.com>,
-	"Minano.tseng@mediatek.com" <Minano.tseng@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "corbet@lwn.net" <corbet@lwn.net>,
-	"skhan@linuxfoundation.org" <skhan@linuxfoundation.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-doc@vger.kernel.org"
-	<linux-doc@vger.kernel.org>
-Subject: RE: [External Mail] Re: [PATCH v4 5/7] net: wwan: t9xx: Add FSM
- thread
-Thread-Topic: [External Mail] Re: [PATCH v4 5/7] net: wwan: t9xx: Add FSM
- thread
-Thread-Index: AQHdFQZYY6Au0ymBcU6QRccOSxUFeLZxT48kgAA9QiQ=
-Date: Fri, 17 Jul 2026 11:02:16 +0000
-Message-ID: <b9b53e70a87648acb527a70f389ef823@compal.com>
-References: <20260709-t9xx_driver_v1-v4-5-a8c009d509c5@compal.com>,<20260716093422.231112-1-horms@kernel.org>,<cbd2ef0bba8e46efb19f692a2e114149@compal.com>
-In-Reply-To: <cbd2ef0bba8e46efb19f692a2e114149@compal.com>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.113.2.241]
-x-tm-as-product-ver: SMEX-14.0.0.3239-9.1.2019-30074.006
-x-tm-as-result: No-10--20.244000-8.000000
-x-tmase-matchedrid: QYUnrClngWYuv++HU7VXryRFbfQbCufdN0X64jGy2dZJTOxleK2tZpNz
-	D6YMRvgW4TxIMIx6VwqygWex5mZjoExpKNdX3ZAHGG92L3YEEC7+i5C4lXMwGvAGAj5s+iPSYts
-	GA1MBOo6tyHv92W7bO/ranYAb1hBlhIOMOnfndO/XIza/NEqjlZbTt2Vz36FFojKyNVmXOruKzg
-	hR2FMRuezIXYsPq2gCadWHkyQPE4zW2NgQcJOQ2p4p07KVSE/ZRXCUrhCu5WMcO9g0wIXVO78bu
-	2KvjRzVoJaYJ5BrgQI9DuOzNhKgnvFDN+Mc76F7iu6u4shZ+fGFCkPhi2xezb2L79/20sYbNlHN
-	CjMfVpFDElVyrzDzfhsu3/K0JNREbcSnmXCS46CRj0jujuSQmqODSWu0oxbKa1P8Ik1zBcXCWXL
-	d4w2EwNvIAMT/07OiB73xunbyKrpX9HM7P8GE6Q==
-x-tm-as-user-approved-sender: No
-x-tm-as-user-blocked-sender: No
-x-tmase-result: 10--20.244000-8.000000
-x-tmase-version: SMEX-14.0.0.3239-9.1.2019-30074.006
-x-tm-snts-smtp: 01F419E205422152DBCFDDCFF3421F264753989CA777A35C1E9D23CBE5D181DD2000:8
-Content-Type: text/plain; charset="big5"
-Content-Transfer-Encoding: base64
+	id 1wkgcA-000000028S6-2frN;
+	Fri, 17 Jul 2026 11:20:22 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 08C8F60A5E;
+	Fri, 17 Jul 2026 11:20:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 369621F000E9;
+	Fri, 17 Jul 2026 11:20:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784287220;
+	bh=tELoBG5OKG9/+DOeMkHZuGsmy1n3mciJef9SVNvGdLk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=PBTzIe6XHPA3q0htvADSHdg/xV35sBnEm5cfX8PJpp4u/8AFOZ4dU+KuHXg+JMbn1
+	 0+XPR+s6EvnS8ER3ga4BdPyEEQ+SbO2YtqP0eg8LtjoCj8+wLE0Sw2unFcbDTeFUlj
+	 VnPa8aYJCJlsxRvMTNJmBiW/EatEAlnY1O46ltfNguVpmoJhW7Om0w0uCEiL2gHUtZ
+	 BtXvwUe+nP/HNrkUjTj5dqEZecBpyR91vFSd0/ltlgnMBjF91bZRB56i+gOxvtIJuR
+	 QI1lHLAVRG9iX3mH7NiYwsvEJMXY9zQJ9rgEwxETaxK00SkSAl77YXINNqEUz65Utx
+	 DqXmRyvWgXzUw==
+Date: Fri, 17 Jul 2026 13:20:18 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: Simon Horman <horms@kernel.org>,
+	Alexander Lobakin <aleksander.lobakin@intel.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	Madhur Agrawal <madhur.agrawal@airoha.com>
+Subject: Re: [PATCH net-next v8 0/3] airoha: add the capability to configure
+ GDM3/GDM4 as WAN/LAN on demand
+Message-ID: <aloP8n-EVtAHnl-l@lore-desk>
+References: <20260703-airoha-ethtool-priv_flags-v8-0-015ba5ac89ee@kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260717_040229_523898_92DBF7B5 
-X-CRM114-Status: GOOD (  11.46  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="hz6h8/yWol2iBSX6"
+Content-Disposition: inline
+In-Reply-To: <20260703-airoha-ethtool-priv_flags-v8-0-015ba5ac89ee@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,44 +75,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgU2ltb24sDQoNCkFmdGVyIGZ1cnRoZXIgaW50ZXJuYWwgcmV2aWV3LCB3ZSBhcmUgY29ycmVj
-dGluZyBzZXZlcmFsDQpyZXNwb25zZXMgZnJvbSBvdXIgcHJldmlvdXMgcmVwbHkuIFRoZSBmb2xs
-b3dpbmcgaXRlbXMgd2lsbA0KYmUgZml4ZWQgaW4gdjUuDQoNCk9uIEphY2sgV3Ugd3JvdGU6DQoN
-Cj4+IFtTZXZlcml0eTogSGlnaF0NCj4+IEluZmluaXRlIGJ1c3kgbG9vcCBvbiBzaWduYWwgcGVu
-ZGluZy4NCg0KPiBUaGlzIGlzIGludGVudGlvbmFsLiBDaGFubmVsIGRpc2FibGUgbXVzdCBjb21w
-bGV0ZSBvciB0aW1lb3V0Lg0KPiBUaGUgbG9vcCBkb2VzIG5vdCBidXN5LXNwaW46IGVhY2ggaXRl
-cmF0aW9uIHNsZWVwcyBpbg0KPiB3YWl0X2V2ZW50X2ludGVycnVwdGlibGVfdGltZW91dCB1bnRp
-bCB0aGUgY29uZGl0aW9uIGlzIG1ldCBvcg0KPiB0aGUgdGltZW91dCBleHBpcmVzLg0KDQpXaWxs
-IGNoYW5nZSB3YWl0X2V2ZW50X2ludGVycnVwdGlibGVfdGltZW91dCB0bw0Kd2FpdF9ldmVudF90
-aW1lb3V0IGFuZCByZW1vdmUgdGhlIC1FUkVTVEFSVFNZUyAvIGdvdG8NCnN0YXJ0X3dhaXQgYmxv
-Y2suDQoNCj4+IFtTZXZlcml0eTogSGlnaF0NCj4+IFJhY2UgaW4gbXRrX2ZzbV9ldnRfc3VibWl0
-IKFYIGZzbV9oYW5kbGVyIE5VTEwgYWZ0ZXIgc3BpbmxvY2sNCj4+IHJlbGVhc2UuDQoNCj4gVGhl
-IEdBVEVDTE9TRUQgY2hlY2sgdW5kZXIgZXZ0cV9sb2NrIGVuc3VyZXMgZnNtX2hhbmRsZXIgaXMN
-Cj4gdmFsaWQuIEFmdGVyIHRoZSBjaGVjayBwYXNzZXMsIHRoZSBldmVudCBpcyBzdWJtaXR0ZWQg
-YW5kIHRoZQ0KPiBrdGhyZWFkIGlzIHdva2VuLg0KDQpXaWxsIG1vdmUgd2FrZV91cF9wcm9jZXNz
-IGluc2lkZSBldnRxX2xvY2sgaW4gZXZ0X3N1Ym1pdCwgYW5kDQpoYXZlIG10a19mc21fZXhpdCBj
-bGVhciBmc21faGFuZGxlciB1bmRlciBldnRxX2xvY2s6DQoNCiAgZXZ0X3N1Ym1pdDoNCiAgICB3
-YWtlX3VwX3Byb2Nlc3MoZnNtLT5mc21faGFuZGxlcik7DQogICAgc3Bpbl91bmxvY2tfaXJxcmVz
-dG9yZSgmZnNtLT5ldnRxX2xvY2ssIGZsYWdzKTsNCg0KICBtdGtfZnNtX2V4aXQ6DQogICAgc3Bp
-bl9sb2NrX2lycXNhdmUoJmZzbS0+ZXZ0cV9sb2NrLCBmbGFncyk7DQogICAgaGFuZGxlciA9IGZz
-bS0+ZnNtX2hhbmRsZXI7DQogICAgZnNtLT5mc21faGFuZGxlciA9IE5VTEw7DQogICAgc3Bpbl91
-bmxvY2tfaXJxcmVzdG9yZSgmZnNtLT5ldnRxX2xvY2ssIGZsYWdzKTsNCiAgICBpZiAoaGFuZGxl
-cikNCiAgICAgICAga3RocmVhZF9zdG9wKGhhbmRsZXIpOw0KDQo+PiBbU2V2ZXJpdHk6IEhpZ2hd
-DQo+PiBydGZ0X2VudHJ5LT5kYXRhIHBhc3NlZCB0byBhY3Rpb24gY2FsbGJhY2sgYmVmb3JlIGRh
-dGFfbGVuDQo+PiB2YWxpZGF0aW9uLg0KDQo+IFRoZSBhY3Rpb24gZnVuY3Rpb25zIG9ubHkgcmVh
-ZCBmaXhlZC1zaXplIGZpZWxkcy4gVGhlIG1vZGVtDQo+IGZpcm13YXJlIGlzIGEgdHJ1c3RlZCBz
-b3VyY2UuDQoNCldpbGwgbW92ZSBkYXRhX2xlbiB2YWxpZGF0aW9uIGJlZm9yZSB0aGUgY2FsbGJh
-Y2sgY2FsbCBpbg0KbXRrX2ZzbV9wYXJzZV9oczJfbXNnLCBhbmQgcGFzcyBkYXRhX2xlbiB0byB0
-aGUgY2FsbGJhY2suDQoNCj4+IFtTZXZlcml0eTogSGlnaF0NCj4+IFVuaW5pdGlhbGl6ZWQga2Vy
-bmVsIGhlYXAgbWVtb3J5IGluIG10a19mc21fc2VuZF9oczNfbXNnLg0KDQo+IFRoZSByZXNlcnZl
-ZFsyXSBmaWVsZCBpcyBzZW50IHRvIHRoZSBsb2NhbCBtb2RlbSBvdmVyIFBDSWUgRE1BLA0KPiBu
-b3QgZXhwb3NlZCB0byBleHRlcm5hbCBuZXR3b3Jrcy4NCg0KV2lsbCBhZGQgbWVtc2V0KHNrYi0+
-ZGF0YSwgMCwgUlRGVF9EQVRBX1NJWkUpIGFmdGVyDQpfX2Rldl9hbGxvY19za2IgaW4gbXRrX2Zz
-bV9zZW5kX2hzM19tc2cuDQoNCj4+IFtTZXZlcml0eTogSGlnaF0NCj4+IFNpbGVudCBrY2FsbG9j
-IGZhaWx1cmUgaW4gbXRrX3BvcnRfZGlzYWJsZS4NCg0KPiBBbGxvY2F0aW9uIGZhaWx1cmUgaXMg
-ZXh0cmVtZWx5IHVubGlrZWx5LiBIYXJkd2FyZSBoYXMgYWxyZWFkeQ0KPiBiZWVuIHBvd2VyLWN5
-Y2xlZCB2aWEgUExEUi4NCg0KV2lsbCByZXBsYWNlIHJhZGl4X3RyZWVfZ2FuZ19sb29rdXAgd2l0
-aCByYWRpeF90cmVlX2Zvcl9lYWNoX3Nsb3QsDQplbGltaW5hdGluZyB0aGUgdGVtcG9yYXJ5IGFy
-cmF5LiBTYW1lIHBhdHRlcm4gYXMNCm10a19wb3J0X3NlYXJjaF9ieV9uYW1lLg0KDQpUaGFua3Mu
-DQoNCkphY2sgV3U=
+--hz6h8/yWol2iBSX6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> Add the capability to configure GDM3/GDM4 as WAN/LAN on demand when QoS
+> offload is created or destroyed.
+> Make dev->qdma an RCU pointer so the TX path can safely dereference it
+> without holding RTNL.
+> Introduce airoha_qdma_start() and airoha_qdma_stop() helpers.
+>=20
+> ---
+> Changes in v8:
+> - Rebase on top of next-next to fix conflicts.
+> - Link to v7: https://lore.kernel.org/r/20260701-airoha-ethtool-priv_flag=
+s-v7-0-b4153bd44428@kernel.org
+>=20
+> Changes in v7:
+> - Fix ETS stats accounting in patch 2/3
+> - Reset ETS stats accounting in airoha_dev_set_qdma().
+> - Link to v6: https://lore.kernel.org/r/20260629-airoha-ethtool-priv_flag=
+s-v6-0-86bc600d31bc@kernel.org
+>=20
+> Changes in v6:
+> - Rebase on top of next-next
+> - Add patch 1/3: "rename airoha_priv_flags to airoha_dev_flags"
+> - Drop patch 2/3: "refactor QDMA start/stop into reusable helpers"
+> - Link to v5: https://lore.kernel.org/r/20260611-airoha-ethtool-priv_flag=
+s-v5-0-c11de08486d1@kernel.org
+>=20
+> Changes in v5:
+> - Add patch 1/3: use int instead of atomic_t for qdma users counter
+> - Protect dev->flags with flow_offload_mutex mutex.
+> - Introduce AIROHA_PRIV_F_QOS in order to handle better WAN/LAN
+>   switching.
+> - Link to v4: https://lore.kernel.org/r/20260610-airoha-ethtool-priv_flag=
+s-v4-0-60e89cf28fea@kernel.org
+>=20
+> Changes in v4:
+> - Move back QDMA TX/RX DMA enable to airoha_dev_open()/airoha_dev_stop().
+> - Configure GDM3/4 as WAN if GDM2 is not available in ndo_init()
+>   callback.
+> - Protect qdma pointer in airoha_gdm_dev struct using RCU.
+> - Rely on rtnl_dereference() to access qdma pointer in the control path.
+> - Add airoha_qdma_start() and airoha_qdma_stop() utility routines in
+>   patch 1/2
+> - Link to v3: https://lore.kernel.org/r/20260608-airoha-ethtool-priv_flag=
+s-v3-1-3e8e3dc3f715@kernel.org
+>=20
+> Changes in v3:
+> - Do not introduce ethtool private flags support to configure LAN/WAN
+>   for GDM3/4 and rely on tc qdisc offload for it instead.
+> - Set GDM3/4 ports as LAN by default.
+> - Move QDMA TX/RX DMA enable from airoha_dev_open() to airoha_probe()
+>   and the corresponding disable from airoha_dev_stop() to airoha_qdma_cle=
+anup().
+> - Link to v2: https://lore.kernel.org/r/20260607-airoha-ethtool-priv_flag=
+s-v2-1-742c7aa1e182@kernel.org
+>=20
+> Changes in v2:
+> - Rework airoha_dev_set_wan_flag routine
+> - Enable GDM_STRIP_CRC_MASK in airoha_disable_gdm2_loopback()
+> - Do not always reset REG_SRC_PORT_FC_MAP6 in
+>   airoha_disable_gdm2_loopback() but use the same condition used in
+>   airoha_enable_gdm2_loopback().
+> - Link to v1: https://lore.kernel.org/r/20260606-airoha-ethtool-priv_flag=
+s-v1-1-401b2c9fe9f1@kernel.org
+
+Hi all,
+
+I noticied this series, even if it is properly acked/reviewed, it is marked=
+ as
+'New, archived' in patchwork:
+
+https://patchwork.kernel.org/project/netdevbpf/cover/20260703-airoha-ethtoo=
+l-priv_flags-v8-0-015ba5ac89ee@kernel.org/
+
+I'm not entirely sure what the next steps should be for this series.
+Thanks in advance.
+
+Regards,
+Lorenzo
+
+>=20
+> ---
+> Lorenzo Bianconi (3):
+>       net: airoha: rename airoha_priv_flags to airoha_dev_flags
+>       net: airoha: fix ETS QoS stats counter underflow and cross-channel =
+corruption
+>       net: airoha: defer GDM3/GDM4 WAN mode and GDM2 loopback to QoS offl=
+oad
+>=20
+>  drivers/net/ethernet/airoha/airoha_eth.c  | 253 ++++++++++++++++++++++++=
+++----
+>  drivers/net/ethernet/airoha/airoha_eth.h  |  26 ++-
+>  drivers/net/ethernet/airoha/airoha_ppe.c  |   9 +-
+>  drivers/net/ethernet/airoha/airoha_regs.h |   1 +
+>  4 files changed, 246 insertions(+), 43 deletions(-)
+> ---
+> base-commit: 6fb33632323a396c9dc2bb9bea483e013e547d57
+> change-id: 20260606-airoha-ethtool-priv_flags-b6aa70caa780
+>=20
+> Best regards,
+> --=20
+> Lorenzo Bianconi <lorenzo@kernel.org>
+>=20
+
+--hz6h8/yWol2iBSX6
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaloP8gAKCRA6cBh0uS2t
+rChMAPoC66tsGBHWVimsBu9sMQxeBChbTqZ+vPnbOXG4zs8LlgEAtbkYzJAf+aMN
+h+MIIrI2xHh0XCfXdoIcj1xcuT0uXgA=
+=f9FL
+-----END PGP SIGNATURE-----
+
+--hz6h8/yWol2iBSX6--
 
