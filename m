@@ -4,52 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F442C4450A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Jul 2026 17:34:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80533C4450A
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Jul 2026 18:54:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6YMhhx6SFZqCgPSuG3unYR85mgfQTMBVDiqwJF5pJ7w=; b=F/5gwL6BT77foXjdsEyzr43X+w
-	8PFC1mA2dAhFSmU/ClZy+Vvn2mjMK6OklQaAk3YS8FRHcjHnD6qoN9tbHXzM8lCJvBQck35e7VA5k
-	l1mIV8lLvqVxQVazIkNSYOE1tvkshuTd4Reb+PRevqFOfnomBD8/mJHdi5jJOidb9P/xhGFtmPMrb
-	FFdSWUnIuEqwsJXDjDhu8BMn4FdY+3Bnyrv3u6Lo0fV5IiRoZBDZWMTyzP4gTsgFKlghFesLVzq0R
-	zwoWRpEpjsQlKyIpum8N9ZHne35+teZ614IgDgoo5yJAWixOfIC4g+DCrgMDAPxSG6p8ozdyDLX2m
-	fmRfLnNg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ivwRKrM7a+JQs2oGmLyCMI+T7Np32kctvJz0lG+G9iM=; b=uvNqPW6Wu8fk1ZzB0aT1U+BP0S
+	Ba8P5Fcqz6L/lSjsNLDqZuhElLnLklubcRQp+bG+1g911n6gVyt6KBY6l25KuSjugWe5KObbtDJ9I
+	6kJADfSpvjCQ2AZLi7OpeCc5XMOCFJfL0Fyc65chqCwBr6c4RRqZjz0zO9S58b4SSAeTcmncspytk
+	mzDJt4czJ3jIfJSE5Nanw1z14KRw7WvuwhQSBOTaQss8talgEIbt8amgmKidNBoMlslAxTBkZMGDm
+	vA92SdJvaPX3fE3agS8zs0s7HiGxuV6DU2w5qAZNgzVS4ua8yJmSX1cGVchQvqfecpK4ptJ0qzSZP
+	wmt2YEpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wl8wA-00000004Prl-1mUN;
-	Sat, 18 Jul 2026 17:34:54 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1wlAAl-00000004SP7-1ePo;
+	Sat, 18 Jul 2026 18:54:03 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wl8w7-00000004PrF-3tsQ;
-	Sat, 18 Jul 2026 17:34:53 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1wl8w2-0000000083K-0eK0;
-	Sat, 18 Jul 2026 17:34:46 +0000
-Date: Sat, 18 Jul 2026 18:34:42 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	id 1wlAAk-00000004SOr-2PYl;
+	Sat, 18 Jul 2026 18:54:02 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id C4FB360018;
+	Sat, 18 Jul 2026 18:54:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7882E1F000E9;
+	Sat, 18 Jul 2026 18:53:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784400841;
+	bh=ivwRKrM7a+JQs2oGmLyCMI+T7Np32kctvJz0lG+G9iM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=cka3VSZgKkuwDGTpdGiQF3TI0XEo1Mj8D0lH8oRPSIyIrLnr4aerN+RQcCFFIk9Hf
+	 5YoKbl+VHFbPo9hViMlrt4xeEQoaLfOmz6qiyBeuGu6EYGi6lJg5XWqXM9yZBt1bS5
+	 xhxruFBwLFPkmY7iSS+8WJAIV/JMHa+qt4IvOw5eRasTr552EXTbUz78uKLPr2px5a
+	 pGiJopjThdn1TKcDV/4bawTNF+Hr8J49tUH8tPBV4Ac4ofe4sZVC6QVw2SeQiIdYuo
+	 BQF+wqzxRDsGg59nTUFl2KLFc739fRRjRRBQPYtx7xX7ibgA0bLJdm+hd5PeCQe29Z
+	 hmtkjBJGg8byA==
+Date: Sat, 18 Jul 2026 19:53:56 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH] ASoC: topology: Guard against out-of-range mixer control
+Subject: Re: [PATCH] ASoC: topology: Guard against out-of-range mixer control
  shift
-Message-ID: <fb5d83513eda68578f0275b7fa274f172c08a0b1.1784395999.git.daniel@makrotopia.org>
+Message-ID: <a28a49fa-a8e6-44ac-9401-4ac0286fe620@sirena.org.uk>
+References: <fb5d83513eda68578f0275b7fa274f172c08a0b1.1784395999.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="W+7cZN/fsFiiASdA"
 Content-Disposition: inline
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260718_103452_256671_E4F3AECA 
-X-CRM114-Status: GOOD (  11.41  )
+In-Reply-To: <fb5d83513eda68578f0275b7fa274f172c08a0b1.1784395999.git.daniel@makrotopia.org>
+X-Cookie: Do not pick the flowers.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,57 +75,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-soc_tplg_control_dmixer_create() copies the per-channel "shift" field from
-the topology file verbatim into struct soc_mixer_control. That value is
-later used as a shift amount in soc_get_volsw() / soc_put_volsw() (e.g.
-"reg_val >> shift" and "mask << shift"). Topology data is loaded from an
-untrusted firmware file, and a shift >= 32 (the width of the register
-value) is undefined behaviour when applied.
 
-This is not hypothetical: mediatek/sof-tplg/sof-mt8186.tplg from
-linux-firmware contains a control whose channel shift is 0x01000000, so
-every read of that control (e.g. from alsamixer) emits:
+--W+7cZN/fsFiiASdA
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-  UBSAN: shift-out-of-bounds in sound/soc/soc-ops.c:117:21
-  shift exponent 16777216 is too large for 32-bit type 'unsigned int'
+On Sat, Jul 18, 2026 at 06:34:42PM +0100, Daniel Golle wrote:
+> soc_tplg_control_dmixer_create() copies the per-channel "shift" field from
+> the topology file verbatim into struct soc_mixer_control. That value is
+> later used as a shift amount in soc_get_volsw() / soc_put_volsw() (e.g.
 
-tplg_chan_get_shift() can also return -EINVAL when no matching channel is
-found, which becomes a large value once stored in the unsigned shift
-field; the same guard covers that case.
+>  	sm->shift =3D tplg_chan_get_shift(tplg, mc->channel, SNDRV_CHMAP_FL);
+>  	sm->rshift =3D tplg_chan_get_shift(tplg, mc->channel, SNDRV_CHMAP_FR);
+> =20
+> +	if (sm->shift >=3D 32 || sm->rshift >=3D 32) {
 
-Clamp an out-of-range shift to 0 and warn, so the rest of the card stays
-usable instead of failing the whole topology load.
+Won't this break for mono controls - the right shift lookup will return
+a negative error code?
 
-Fixes: 8a9782346dcc ("ASoC: topology: Add topology core")
-Cc: stable@vger.kernel.org
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- sound/soc/soc-topology.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+--W+7cZN/fsFiiASdA
+Content-Type: application/pgp-signature; name="signature.asc"
 
-diff --git a/sound/soc/soc-topology.c b/sound/soc/soc-topology.c
-index 35cbe29d2275..dd94eb9460d3 100644
---- a/sound/soc/soc-topology.c
-+++ b/sound/soc/soc-topology.c
-@@ -672,6 +672,16 @@ static int soc_tplg_control_dmixer_create(struct soc_tplg *tplg, struct snd_kcon
- 	sm->shift = tplg_chan_get_shift(tplg, mc->channel, SNDRV_CHMAP_FL);
- 	sm->rshift = tplg_chan_get_shift(tplg, mc->channel, SNDRV_CHMAP_FR);
- 
-+	if (sm->shift >= 32 || sm->rshift >= 32) {
-+		dev_warn(tplg->dev,
-+			 "ASoC: out-of-range shift for control %s, clamping to 0\n",
-+			 mc->hdr.name);
-+		if (sm->shift >= 32)
-+			sm->shift = 0;
-+		if (sm->rshift >= 32)
-+			sm->rshift = 0;
-+	}
-+
- 	sm->max = le32_to_cpu(mc->max);
- 	sm->min = le32_to_cpu(mc->min);
- 	sm->invert = le32_to_cpu(mc->invert);
+-----BEGIN PGP SIGNATURE-----
 
-base-commit: 0718283ab28bc3907e10b61a6b4be6fefa1cbb2f
--- 
-2.55.0
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmpby8QACgkQJNaLcl1U
+h9CWKAgAhFwX4gS+72WmY2yCfB3I/YS+ThcQGmD5qK/5tbNLIrLxiK5Q+ieX8m6b
+/LjYBogYwglN65Z52MSvIczTCKT3RWA+owm2Zls9Gf7FDhswD8UkLuD7X2PkhXJ9
+lAsb08wSpRbYNiAiUmsUk/3sWsYBy0ao3MB+jxXc+0aTsUQ9GKpYss9vzTgHDhgE
+a08lHuPe264xOVCnDbH/U8dF7LawK3q3gcKqnxC4idqsevACRCUcI2OuHGI9bhj3
+FxlC5fvOKpcFtS+gF36yUSuAqdox5Irqyiha1gd3fHFLwvJhX6t5zw/MzoCq/rK0
+MuyeUNZVOzSVorURGosYd3xJk/9NxQ==
+=oNWG
+-----END PGP SIGNATURE-----
+
+--W+7cZN/fsFiiASdA--
 
