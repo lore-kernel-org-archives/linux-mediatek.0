@@ -4,61 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42828C4451B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Jul 2026 01:16:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 142B2C4451C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Jul 2026 11:25:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
-	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sIm3a0T7/ynzR7ODSnAGypmAHLIsy+fWZ3JA8rdeA/k=; b=HfovtsVs+IwpiqZtAdgMcKJx59
-	Cf1H/Xl/pSoL9k6KtrCXZg26cSEPkGqiLhHQKV5XYbWQxhNVx7wFjQBZ1B8LXQyCehEfLkfy17MV7
-	Z6+SAa5L4317q1elyUc5ipCYVf89cB9yg/Bsqqu6v+bzrAVvwq0zFd6k6P2mNzx06gRcbXwP8WDWw
-	uWtVdZOjH/Hb42LZZSnu1RksE4WUN1o70pb4nY1kesE9Xb6/+mZDF6XHIkhPiT6WIqTqpXkShRXCP
-	cMeLGMsysgntNwnRVbRB22LZmK2zVhuylff7ntUcNidy4AARc2FwwLvSgXoJa0Wt7o0maPhNRJN+F
-	TCAZMqDg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KS2pWiQ23rjin5V97dhap/FGn+0uPlh0nCgHK2nY5mo=; b=vgb43WvSwY1xav+ft/zRTi6i+m
+	WZhOCmS7EBv2J3bcsyKvzmThkrV4l0L4GY7aJh6dMAfOhqYo5X/aWs+6gGgXK0MHKaLxbzTo5CCvz
+	oHZPZvyPz4UduGPcDomJmj68AVsLsJsk546PGQQDABiRJtWCT4sD4+fzKAawJ1CZhAu7xL/9qprQo
+	EI6itZ7EgmOdUKYkMVRYzUjH4Z6ROkrLnvOrxKN26/iuW4Idcjen2W8t23ZdC0yuoXnQY0o6z6GOv
+	IP8wu5Y3Ii80424tWAf7Di8dsBOQzPRT+VnMvpXf8DzvAXW4NAOjDFeFDHTI5ffRG4fbZA/e5Cb9P
+	rUuM0AHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wktes-00000003UYW-0QiE;
-	Sat, 18 Jul 2026 01:16:02 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wl3AJ-000000043OL-0ThD;
+	Sat, 18 Jul 2026 11:25:07 +0000
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wkteq-00000003UXv-0fgS;
-	Sat, 18 Jul 2026 01:16:00 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id B021B4380C;
-	Sat, 18 Jul 2026 01:15:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67B5E1F000E9;
-	Sat, 18 Jul 2026 01:15:58 +0000 (UTC)
-Received: by venus (Postfix, from userid 1000)
-	id 132EA181D34; Sat, 18 Jul 2026 03:15:56 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Sebastian Reichel <sre@kernel.org>, Linus Walleij <linusw@kernel.org>, 
- Chen-Yu Tsai <wens@kernel.org>, Hans de Goede <hansg@kernel.org>, 
- Support Opensource <support.opensource@diasemi.com>, 
- Amit Sunil Dhamne <amitsd@google.com>, 
- Saravanan Sekar <sravanhome@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Samuel Kayode <samkay014@gmail.com>, 
- Casey Connolly <casey.connolly@linaro.org>, 
- Orson Zhai <orsonzhai@gmail.com>, 
- Baolin Wang <baolin.wang@linux.alibaba.com>, 
- Chunyan Zhang <zhang.lyra@gmail.com>, linux-pm@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, imx@lists.linux.dev, 
- linux-arm-msm@vger.kernel.org, Pan Chuang <panchuang@vivo.com>
-In-Reply-To: <20260709033428.362970-1-panchuang@vivo.com>
-References: <20260709033428.362970-1-panchuang@vivo.com>
-Subject: Re: [PATCH 00/43] power: Remove redundant error messages on IRQ
- request failure
-Message-Id: <178433735604.414021.16202847796535992443.b4-ty@collabora.com>
-Date: Sat, 18 Jul 2026 03:15:56 +0200
+	id 1wl3AF-000000043Nf-3G5u
+	for linux-mediatek@lists.infradead.org;
+	Sat, 18 Jul 2026 11:25:04 +0000
+Received: by mail-pf1-x42e.google.com with SMTP id d2e1a72fcca58-8487214ad2bso7410632b3a.1
+        for <linux-mediatek@lists.infradead.org>; Sat, 18 Jul 2026 04:25:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1784373903; x=1784978703; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=KS2pWiQ23rjin5V97dhap/FGn+0uPlh0nCgHK2nY5mo=;
+        b=qBDrxnt7uM4sn+AWriedrCe3cxeqM5UE4h3N5ncBacI0iQsC6MGlyjlHMb+O/AJntv
+         NsCZCO1wiWhLIMEsZ60eKCI7YXbuDvnrFW/amCIJb8pcGRw4B7G8AHSaDYAhcur7DUUF
+         ncvFRoT9/bBTzgAdqDF/KpmUPDZmpLGBESCGBhHb3hQb+GiYSwG3vUBchMwIR5ERfJLH
+         38dcjQakaA65PE5ilvY0/+yNYsT/co4M/edOhygaZJwRqbXO/c7AdSTo1y81eCVYFyKn
+         G0Ax2hifkSzEx4JgpaDnsIwXt02YiSz176GPBDL5GkbhBYIKpeesmXHefBnx0kCiLvtj
+         Vhjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1784373903; x=1784978703;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=KS2pWiQ23rjin5V97dhap/FGn+0uPlh0nCgHK2nY5mo=;
+        b=AccASHVYuEdGES/6tpf6WBu3PamerMuznsG0Mlv48qAH61VG3PbhIplUpT/GsB9lx6
+         qzXsLwFwBfz8n1X+aQ7gA1oVMvXK+sx0E7E6/pJ8EHATG4P4wPtxeBEkGKjrYbdbSl0S
+         AN+mejtZfogw3A56MiDTiszZkfzgtTvOWAI9ebzeliZuliJtSpTZbLXspPXNBdV0MZoP
+         YCUAqSipJmV4TjiYQ/CwWhOnW0TApZ7a+xxnXnUt9+8XkTyEKFp2ckkaYVhoJ40lWhZV
+         V3JYXTgOlF7+iQ+PweajnFEqPvDi0FTR3ZbERe7X5bH2fQP8v5PW75AKb40YNo2yLAO0
+         agfA==
+X-Forwarded-Encrypted: i=1; AHgh+Rq44iOGfvKCPKW5cnzz4CATO9nITaDfSJBcqu8LIG6yw1Ir3vJAW0xx0U8b6edlNW4qUCqjeJtnzdByjGXp0w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxVjdG+fCgEpfUpj1Lfm6IP28kKxsp/oFsBPxN2W2f8voOHyQAb
+	e7cxJFk27l/qvlBTkJsD5csnQUpsVGW5CKpZi4knD51VGzgdgub++VBC
+X-Gm-Gg: AfdE7cmA5zuK26Wu/OxfZjopfMiYmNxBVaPTOHeWChL/qzczJsnGmWXead/I9loDkaP
+	XAMEuHedelQ0YKmI0rgo4YJYXoanzsYfqS9MgLnwlTig+uSM/+CpvmrCxLW2DGs8OXZpXxiv8ow
+	cvmP0x4/JINCryaxJTl2eV0JbxbPMcW7s0xDU1AfcEuWl2hIeqo+8u+ZZx1vfrfWK9iUSqX9WKN
+	8xIlJaCQZ9HE8sxwTZXiVzyBYJ5JtoWjJwm5I1j4YwYOq4hDErERiSZO7DJZPH1XqqACGaP+w6l
+	IPgUowIn/mcv1XHSEETz1zJVyAmtqaJ+zePFFIp3ibCD1E9nVKq068MMLcwNvsWlKJIkgnKhx/O
+	OslZD4N7QTbamuHeYrOcFJ9Jw7CyCc8CTO+oTDxsbMKmcIW6V01Dh10j/hs4x6AdkvrJO
+X-Received: by 2002:a05:6a00:1385:b0:848:80ec:5d2 with SMTP id d2e1a72fcca58-84c294fc343mr6613679b3a.51.1784373902792;
+        Sat, 18 Jul 2026 04:25:02 -0700 (PDT)
+Received: from lgs.. ([101.36.109.157])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84c2af30bd6sm2639355b3a.39.2026.07.18.04.24.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 18 Jul 2026 04:25:02 -0700 (PDT)
+From: Guangshuo Li <lgs201920130244@gmail.com>
+To: Bin Liu <bin.liu@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil+cisco@kernel.org>,
+	Fan Wu <fanwu01@zju.edu.cn>,
+	linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Guangshuo Li <lgs201920130244@gmail.com>
+Subject: [PATCH v2] media: mtk-jpeg: drain hardware completion before freeing context
+Date: Sat, 18 Jul 2026 19:24:48 +0800
+Message-ID: <20260718112448.3289122-1-lgs201920130244@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.3
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260718_042503_832395_0E4BBB3F 
+X-CRM114-Status: GOOD (  16.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,111 +103,273 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The change referenced by the Fixes tag cancels ctx->jpeg_work before
+freeing the JPEG context.
 
-On Thu, 09 Jul 2026 11:33:39 +0800, Pan Chuang wrote:
-> Commit 55b48e23f5c4b6f5ca9b7ab09599b17dcf501c10 ("genirq/devres: Add
-> error handling in devm_request_*_irq()") added automatic error logging
-> to devm_request_threaded_irq() and devm_request_any_context_irq() via
-> the new devm_request_result() helper. The helper prints device name,
-> IRQ number, handler functions, and error code on failure.
-> 
-> Since devm_request_irq() is a static inline wrapper around
-> devm_request_threaded_irq(), it also benefits from this automatic
-> logging.
-> 
-> [...]
+That prevents the worker itself from accessing the context after it has
+been freed. However, the multi-core workers return after programming a
+hardware instance. The IRQ handler or the per-hardware timeout work can
+then continue to access the context through hw_param.curr_ctx after the
+worker has completed.
 
-Applied, thanks!
+If userspace closes the file while a hardware job is still pending,
+cancel_work_sync() can return and mtk_jpeg_release() can free the
+context before the IRQ or timeout path has finished using it.
 
-[01/43] power: reset: pwr-mlxbf: Remove redundant dev_err()/dev_err_probe()
-        commit: e896e0d29ba30d462176c7611399c10297a6845f
-[02/43] power: supply: 88pm860x_battery: Remove redundant dev_err()/dev_err_probe()
-        commit: 098e2181f76fbcdd1592c1878a812bc9dbadc669
-[03/43] power: supply: 88pm860x_charger: Remove redundant dev_err()/dev_err_probe()
-        commit: a446886a5c112d6a7d019161cf520b1d6f10470f
-[04/43] power: supply: ab8500_btemp: Remove redundant dev_err()/dev_err_probe()
-        commit: 2865c7e80aee424a5266f8d089f7926394fe2d7c
-[05/43] power: supply: ab8500_charger: Remove redundant dev_err()/dev_err_probe()
-        commit: defdb28de9b3afb4811423a302ff11526595d098
-[06/43] power: supply: ab8500_fg: Remove redundant dev_err()/dev_err_probe()
-        commit: aa5f4decedfb4fc5cd0fe49ab256ad4304d192e4
-[07/43] power: supply: act8945a_charger: Remove redundant dev_err()/dev_err_probe()
-        commit: 88a66a3c93fe21f8fb6904a2ef95d53e637b355b
-[08/43] power: supply: axp20x_ac_power: Remove redundant dev_err()/dev_err_probe()
-        commit: daa60df947f41198defb37acef01b0c6cb819056
-[09/43] power: supply: axp20x_usb_power: Remove redundant dev_err()/dev_err_probe()
-        commit: d8b7f5b39c3487349f77676a78e44093ec42b7c4
-[10/43] power: supply: axp288_charger: Remove redundant dev_err()/dev_err_probe()
-        commit: 5ec359933b7cd110e35aa298438cc4beeff5cc4b
-[11/43] power: supply: axp288_fuel_gauge: Remove redundant dev_err()/dev_err_probe()
-        commit: dfb7997da1df482f29d19b18071bd9a18f35704c
-[12/43] power: supply: bq24190_charger: Remove redundant dev_err()/dev_err_probe()
-        commit: 6d5c4deea04580a08ad1ed3a13c11fac0dbefa7b
-[13/43] power: supply: bq24257_charger: Remove redundant dev_err()/dev_err_probe()
-        commit: 1fa348a2a1825a23ab7836671f067640c98174bd
-[14/43] power: supply: bq24735-charger: Remove redundant dev_err()/dev_err_probe()
-        commit: d77b6dd6903da71896aa20863ee51df7f54b9e7c
-[15/43] power: supply: bq256xx_charger: Remove redundant dev_err()/dev_err_probe()
-        commit: 4f22a6bd5130779014d19a9946bda07768325930
-[16/43] power: supply: bq257xx_charger: Remove redundant dev_err()/dev_err_probe()
-        commit: c1de2a3f1f4170105db56003be42c079dbc264dc
-[17/43] power: supply: cpcap-battery: Remove redundant dev_err()/dev_err_probe()
-        commit: fb5ce24c6e907165022a7df627bdf573d2c8fd1f
-[18/43] power: supply: cpcap-charger: Remove redundant dev_err()/dev_err_probe()
-        commit: 16447b9ef408768d94b9b15b589f287eb8ff2127
-[19/43] power: supply: da9150-fg: Remove redundant dev_err()/dev_err_probe()
-        commit: 79993fd38d1848c4cfc5d51b185c534cc4ed0b87
-[20/43] power: supply: generic-adc-battery: Remove redundant dev_err()/dev_err_probe()
-        commit: 9c6283da58db46a0cc747c87d187939fb53aa326
-[21/43] power: supply: max14656_charger_detector: Remove redundant dev_err()/dev_err_probe()
-        commit: 5fe1b9dfa5c3c51a9d4d68b407ad9c49096e4b3e
-[22/43] power: supply: max77759_charger: Remove redundant dev_err()/dev_err_probe()
-        commit: 05c9bf35a036944171344711e664e032bf518e08
-[23/43] power: supply: max8903_charger: Remove redundant dev_err()/dev_err_probe()
-        commit: 28b94b06c64a1b423e64357f4c2cf3256f3a35f7
-[24/43] power: supply: max8971_charger: Remove redundant dev_err()/dev_err_probe()
-        commit: 342b3ce23061ff9ad5c033596c60a663d15af116
-[25/43] power: supply: mp2629_charger: Remove redundant dev_err()/dev_err_probe()
-        commit: f73b8c7c3ee61e08819a688bef98c8c454b6d4d5
-[26/43] power: supply: mt6360_charger: Remove redundant dev_err()/dev_err_probe()
-        commit: 576014dbc39716304c7ee22dc5c0998222ae6676
-[27/43] power: supply: mt6370-charger: Remove redundant dev_err()/dev_err_probe()
-        commit: 1a3d312038e6e1d19b8fd9146fc544f09336c8bd
-[28/43] power: supply: pf1550-charger: Remove redundant dev_err()/dev_err_probe()
-        commit: 4fed9665ab09cb7c40f894506b8ee2730ed9f3e1
-[29/43] power: supply: qcom_smbb: Remove redundant dev_err()/dev_err_probe()
-        commit: cd05fa1ffae4e21c520b64e203f50b7d76d35a4f
-[30/43] power: supply: qcom_smbx: Remove redundant dev_err()/dev_err_probe()
-        commit: c01b2be3845ffae11a067cf93a7833ca840d7d1c
-[31/43] power: supply: rk817_charger: Remove redundant dev_err()/dev_err_probe()
-        commit: 6d5c18483f0cf12eb636dcf46be452054f3aef4f
-[32/43] power: supply: rn5t618_power: Remove redundant dev_err()/dev_err_probe()
-        commit: a69f6b1e30f72c5fdeab81319c378ebb6e539803
-[33/43] power: supply: rt9455_charger: Remove redundant dev_err()/dev_err_probe()
-        commit: 406b652bf9c47d6e784fd2ab723e6798d322ef47
-[34/43] power: supply: rt9467-charger: Remove redundant dev_err()/dev_err_probe()
-        commit: 1683815ef8892a56c2e07548b879f341bfda2952
-[35/43] power: supply: rt9471: Remove redundant dev_err()/dev_err_probe()
-        commit: 94f491a228bdde8982a3fd72cd1d46b12eef378e
-[36/43] power: supply: sbs-charger: Remove redundant dev_err()/dev_err_probe()
-        commit: bfae8c8ad5adc1796d7982feb2dd4a0bd947ba84
-[37/43] power: supply: sc27xx_fuel_gauge: Remove redundant dev_err()/dev_err_probe()
-        commit: 139c9e37448d215647d8c1a98974c0d8309af1de
-[38/43] power: supply: surface-rt-ec: Remove redundant dev_err()/dev_err_probe()
-        commit: 4e8ef72bbd3ef34e1137d365e7719399f45d5c0b
-[39/43] power: supply: tps65090-charger: Remove redundant dev_err()/dev_err_probe()
-        commit: ceaee7db26ffaeb78b64df9f21be4a1c7823793a
-[40/43] power: supply: tps65217_charger: Remove redundant dev_err()/dev_err_probe()
-        commit: abd5cd2d712cae2a7abc3852d9fbd05696d4b9eb
-[41/43] power: supply: twl4030_charger: Remove redundant dev_err()/dev_err_probe()
-        commit: ca5cb9488b800a5b39954391530244da41076f79
-[42/43] power: supply: twl6030_charger: Remove redundant dev_err()/dev_err_probe()
-        commit: c2d8a2b01bef42f4e50a87e5880f75401be1290c
-[43/43] power: supply: ucs1002_power: Remove redundant dev_err()/dev_err_probe()
-        commit: 5a6b9c36c56340812d49817524a5d96f7522c74d
+Track the number of in-flight hardware jobs for each context and wait
+for them to complete in mtk_jpeg_release().
 
-Best regards,
+Use a per-hardware active flag to ensure that only the IRQ handler or
+the timeout work completes each job. Clear hw_param.curr_ctx and drop
+the in-flight count only after the completion path has finished all
+accesses to the context.
+
+Fixes: 34c519feef3e ("media: mtk-jpeg: fix use-after-free in release path due to uncancelled work")
+Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+---
+v2:
+  - Replace the undefined mtk_jpeg_release_hw() call with per-context
+    in-flight hardware job tracking.
+  - Ensure that only the IRQ or timeout path completes each hardware job.
+  - Clear hw_param.curr_ctx after the completion path stops using the
+    context.
+  - Keep hardware instances busy until the timeout path has finished
+    accessing their saved context and buffers.
+
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 12 ++++++++-
+ .../platform/mediatek/jpeg/mtk_jpeg_core.h    | 14 +++++++++++
+ .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  | 25 +++++++++++++------
+ .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  | 25 +++++++++++++------
+ 4 files changed, 61 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index d147ec483081..d41c0e0516b9 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1161,6 +1161,8 @@ static int mtk_jpeg_open(struct file *file)
+ 	}
+ 
+ 	INIT_WORK(&ctx->jpeg_work, jpeg->variant->jpeg_worker);
++	atomic_set(&ctx->hw_jobs, 0);
++	init_waitqueue_head(&ctx->hw_jobs_wq);
+ 	INIT_LIST_HEAD(&ctx->dst_done_queue);
+ 	spin_lock_init(&ctx->done_queue_lock);
+ 	v4l2_fh_init(&ctx->fh, vfd);
+@@ -1202,8 +1204,12 @@ static int mtk_jpeg_release(struct file *file)
+ 	struct mtk_jpeg_dev *jpeg = video_drvdata(file);
+ 	struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
+ 
+-	if (jpeg->variant->jpeg_worker)
++	if (jpeg->variant->jpeg_worker) {
+ 		cancel_work_sync(&ctx->jpeg_work);
++		wait_event(ctx->hw_jobs_wq,
++			   atomic_read(&ctx->hw_jobs) == 0);
++	}
++
+ 	mutex_lock(&jpeg->lock);
+ 	v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
+ 	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
+@@ -1640,6 +1646,8 @@ static void mtk_jpegenc_worker(struct work_struct *work)
+ 	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+ 	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+ 
++	atomic_inc(&ctx->hw_jobs);
++	atomic_set_release(&comp_jpeg[hw_id]->hw_param.job_active, 1);
+ 	schedule_delayed_work(&comp_jpeg[hw_id]->job_timeout_work,
+ 			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
+ 
+@@ -1759,6 +1767,8 @@ static void mtk_jpegdec_worker(struct work_struct *work)
+ 		goto setdst_end;
+ 	}
+ 
++	atomic_inc(&ctx->hw_jobs);
++	atomic_set_release(&comp_jpeg[hw_id]->hw_param.job_active, 1);
+ 	schedule_delayed_work(&comp_jpeg[hw_id]->job_timeout_work,
+ 			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
+ 
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+index 02ed0ed5b736..be8ada60782a 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+@@ -103,6 +103,7 @@ struct mtk_jpeg_hw_param {
+ 	struct vb2_v4l2_buffer *src_buffer;
+ 	struct vb2_v4l2_buffer *dst_buffer;
+ 	struct mtk_jpeg_ctx *curr_ctx;
++	atomic_t job_active;
+ };
+ 
+ enum mtk_jpegenc_hw_id {
+@@ -282,6 +283,8 @@ struct mtk_jpeg_q_data {
+  * @restart_interval:		jpeg encoder restart interval
+  * @ctrl_hdl:			controls handler
+  * @jpeg_work:			jpeg encoder workqueue
++ * @hw_jobs:			number of hardware jobs still referencing this context
++ * @hw_jobs_wq:			wait queue for hardware job completion
+  * @total_frame_num:		encoded frame number
+  * @dst_done_queue:		encoded frame buffer queue
+  * @done_queue_lock:		encoded frame operation spinlock
+@@ -299,6 +302,8 @@ struct mtk_jpeg_ctx {
+ 	struct v4l2_ctrl_handler ctrl_hdl;
+ 
+ 	struct work_struct jpeg_work;
++	atomic_t hw_jobs;
++	wait_queue_head_t hw_jobs_wq;
+ 	u32 total_frame_num;
+ 	struct list_head dst_done_queue;
+ 	/* spinlock protecting the encode done buffer */
+@@ -306,4 +311,13 @@ struct mtk_jpeg_ctx {
+ 	u32 last_done_frame_num;
+ };
+ 
++static inline void
++mtk_jpeg_hw_job_done(struct mtk_jpeg_hw_param *hw_param,
++		     struct mtk_jpeg_ctx *ctx)
++{
++	WRITE_ONCE(hw_param->curr_ctx, NULL);
++	if (atomic_dec_and_test(&ctx->hw_jobs))
++		wake_up(&ctx->hw_jobs_wq);
++}
++
+ #endif /* _MTK_JPEG_CORE_H */
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+index 32372781daf5..c2d40653891a 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+@@ -527,7 +527,12 @@ static void mtk_jpegdec_timeout_work(struct work_struct *work)
+ 			     job_timeout_work.work);
+ 	struct mtk_jpeg_dev *master_jpeg = cjpeg->master_dev;
+ 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
++	struct mtk_jpeg_ctx *ctx;
++
++	if (atomic_cmpxchg(&cjpeg->hw_param.job_active, 1, 0) != 1)
++		return;
+ 
++	ctx = cjpeg->hw_param.curr_ctx;
+ 	src_buf = cjpeg->hw_param.src_buffer;
+ 	dst_buf = cjpeg->hw_param.dst_buffer;
+ 	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf);
+@@ -535,11 +540,13 @@ static void mtk_jpegdec_timeout_work(struct work_struct *work)
+ 	mtk_jpeg_dec_reset(cjpeg->reg_base);
+ 	clk_disable_unprepare(cjpeg->jdec_clk.clks->clk);
+ 	pm_runtime_put(cjpeg->dev);
++	v4l2_m2m_buf_done(src_buf, buf_state);
++	mtk_jpegdec_put_buf(cjpeg);
++	mtk_jpeg_hw_job_done(&cjpeg->hw_param, ctx);
++
+ 	cjpeg->hw_state = MTK_JPEG_HW_IDLE;
+ 	atomic_inc(&master_jpeg->hw_rdy);
+ 	wake_up(&master_jpeg->hw_wq);
+-	v4l2_m2m_buf_done(src_buf, buf_state);
+-	mtk_jpegdec_put_buf(cjpeg);
+ }
+ 
+ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
+@@ -555,12 +562,10 @@ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
+ 	struct mtk_jpegdec_comp_dev *jpeg = priv;
+ 	struct mtk_jpeg_dev *master_jpeg = jpeg->master_dev;
+ 
+-	cancel_delayed_work(&jpeg->job_timeout_work);
++	if (atomic_cmpxchg(&jpeg->hw_param.job_active, 1, 0) != 1)
++		return IRQ_HANDLED;
+ 
+-	ctx = jpeg->hw_param.curr_ctx;
+-	src_buf = jpeg->hw_param.src_buffer;
+-	dst_buf = jpeg->hw_param.dst_buffer;
+-	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf);
++	cancel_delayed_work(&jpeg->job_timeout_work);
+ 
+ 	irq_status = mtk_jpeg_dec_get_int_status(jpeg->reg_base);
+ 	dec_irq_ret = mtk_jpeg_dec_enum_result(irq_status);
+@@ -570,6 +575,11 @@ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
+ 	if (dec_irq_ret != MTK_JPEG_DEC_RESULT_EOF_DONE)
+ 		dev_warn(jpeg->dev, "Jpg Dec occurs unknown Err.");
+ 
++	ctx = jpeg->hw_param.curr_ctx;
++	src_buf = jpeg->hw_param.src_buffer;
++	dst_buf = jpeg->hw_param.dst_buffer;
++	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf);
++
+ 	jpeg_src_buf =
+ 		container_of(src_buf, struct mtk_jpeg_src_buf, b);
+ 
+@@ -582,6 +592,7 @@ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
+ 	mtk_jpegdec_put_buf(jpeg);
+ 	pm_runtime_put(ctx->jpeg->dev);
+ 	clk_disable_unprepare(jpeg->jdec_clk.clks->clk);
++	mtk_jpeg_hw_job_done(&jpeg->hw_param, ctx);
+ 
+ 	jpeg->hw_state = MTK_JPEG_HW_IDLE;
+ 	wake_up(&master_jpeg->hw_wq);
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+index b312a15d707b..b08f94845613 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+@@ -257,7 +257,12 @@ static void mtk_jpegenc_timeout_work(struct work_struct *work)
+ 	struct mtk_jpeg_dev *master_jpeg = cjpeg->master_dev;
+ 	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
+ 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
++	struct mtk_jpeg_ctx *ctx;
++
++	if (atomic_cmpxchg(&cjpeg->hw_param.job_active, 1, 0) != 1)
++		return;
+ 
++	ctx = cjpeg->hw_param.curr_ctx;
+ 	src_buf = cjpeg->hw_param.src_buffer;
+ 	dst_buf = cjpeg->hw_param.dst_buffer;
+ 	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf);
+@@ -265,11 +270,13 @@ static void mtk_jpegenc_timeout_work(struct work_struct *work)
+ 	mtk_jpeg_enc_reset(cjpeg->reg_base);
+ 	clk_disable_unprepare(cjpeg->venc_clk.clks->clk);
+ 	pm_runtime_put(cjpeg->dev);
++	v4l2_m2m_buf_done(src_buf, buf_state);
++	mtk_jpegenc_put_buf(cjpeg);
++	mtk_jpeg_hw_job_done(&cjpeg->hw_param, ctx);
++
+ 	cjpeg->hw_state = MTK_JPEG_HW_IDLE;
+ 	atomic_inc(&master_jpeg->hw_rdy);
+ 	wake_up(&master_jpeg->hw_wq);
+-	v4l2_m2m_buf_done(src_buf, buf_state);
+-	mtk_jpegenc_put_buf(cjpeg);
+ }
+ 
+ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
+@@ -283,12 +290,10 @@ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
+ 	struct mtk_jpegenc_comp_dev *jpeg = priv;
+ 	struct mtk_jpeg_dev *master_jpeg = jpeg->master_dev;
+ 
+-	cancel_delayed_work(&jpeg->job_timeout_work);
++	if (atomic_cmpxchg(&jpeg->hw_param.job_active, 1, 0) != 1)
++		return IRQ_HANDLED;
+ 
+-	ctx = jpeg->hw_param.curr_ctx;
+-	src_buf = jpeg->hw_param.src_buffer;
+-	dst_buf = jpeg->hw_param.dst_buffer;
+-	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf);
++	cancel_delayed_work(&jpeg->job_timeout_work);
+ 
+ 	irq_status = readl(jpeg->reg_base + JPEG_ENC_INT_STS) &
+ 		JPEG_ENC_INT_STATUS_MASK_ALLIRQ;
+@@ -297,6 +302,11 @@ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
+ 	if (!(irq_status & JPEG_ENC_INT_STATUS_DONE))
+ 		dev_warn(jpeg->dev, "Jpg Enc occurs unknown Err.");
+ 
++	ctx = jpeg->hw_param.curr_ctx;
++	src_buf = jpeg->hw_param.src_buffer;
++	dst_buf = jpeg->hw_param.dst_buffer;
++	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf);
++
+ 	result_size = mtk_jpeg_enc_get_file_size(jpeg->reg_base,
+ 						 ctx->jpeg->variant->support_34bit);
+ 	vb2_set_plane_payload(&dst_buf->vb2_buf, 0, result_size);
+@@ -305,6 +315,7 @@ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
+ 	mtk_jpegenc_put_buf(jpeg);
+ 	pm_runtime_put(ctx->jpeg->dev);
+ 	clk_disable_unprepare(jpeg->venc_clk.clks->clk);
++	mtk_jpeg_hw_job_done(&jpeg->hw_param, ctx);
+ 
+ 	jpeg->hw_state = MTK_JPEG_HW_IDLE;
+ 	wake_up(&master_jpeg->hw_wq);
 -- 
-Sebastian Reichel <sebastian.reichel@collabora.com>
+2.43.0
 
 
