@@ -4,93 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9297DC44512
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jul 2026 08:25:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1952C44512
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jul 2026 12:55:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Rxtd5Q/pDjtbfL0tvsekDL5RGMidpEpCQZcAeYntQgM=; b=iTqW0l78RHWwVqUobysZNuUhY+
-	8kSrHkpnHt9aglyqygPNZDo4ugRjFQxmld7vNEUjAgukhc+4xTeFB3zjjuti5aV5OyK8q7y7aAJpH
-	hLJxZA8lUX0DppEpW5V1QhBVAu6zvws+OBhznoGuCiD3YZnUCFLFFtkAMhU9N8GgPPIGxBUsyEIJe
-	QAmhgePVF330bD6J6YqcfttOfYcI2Y4wL/65iTd02fZpJbXRJD+FLiGkkT33YySglghN2T859SKtU
-	za2WrczjzaxSiQKpYallA5xn1f8kUs383pKNQfJ92EnLNz/WJA7GzJH5EWG/d5DodrYvyDilMaV6v
-	inKe+txw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=h3fVS+ECH09jWUFwptOLb/MWTOvFAf/GdBg0UMf3cmE=; b=cdHXONsnp9lKsGRBqejFlhvEt5
+	+dTc8KtHEqMuJoRBA73d40kmKCrFPwpq8voNSgpirNH53zsOeMQI5kmy+HsFFnq55FSosVcSZbVoy
+	PVRDy8EfTwMlH9IbLucexaWbqo/sfTJsQU3Vy9KWO+2sscf4Cxc7IUzCEmcbcjGNbYZIQczM9DEWX
+	Y24sMTcV/OKr91rDF7znklBBoHb9pA7I08sdALGWugJkY5nsvSKJCfPFgUxrLMw+Fitzc126Kwa68
+	YcUaevECS/JaGtlgFZ+psvesI/CC2H1sHw6Qcv3+gtbeYpmtb1ufI9dzDcWrrR7oJPLBSPwKvBAW/
+	5xQ7rS8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlMqL-00000004qgD-0vFY;
-	Sun, 19 Jul 2026 08:25:49 +0000
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
+	id 1wlR3D-000000050NL-1sSw;
+	Sun, 19 Jul 2026 12:55:23 +0000
+Received: from aposti.net ([185.119.170.32])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlMqI-00000004qf1-3Xhc
-	for linux-mediatek@lists.infradead.org;
-	Sun, 19 Jul 2026 08:25:48 +0000
-Received: by mail-pj1-x1032.google.com with SMTP id 98e67ed59e1d1-38deea72eebso7038882a91.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 19 Jul 2026 01:25:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784449545; x=1785054345; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=Rxtd5Q/pDjtbfL0tvsekDL5RGMidpEpCQZcAeYntQgM=;
-        b=daQW/PwyFlPZPtMQYVnzzqE/lS0OEzDzJGFGjjM1xFDteRJkyphdjl0y+LPwkxf921
-         7e5O3r8r2vak0gSAnURZ1CO44b2HSRbHG/PR1MGpXuDCr2ej8CZPf2AybjW3Fa0i6Xvt
-         BRvRdAgvnw6sDeF0sqioDnREOkL/mD2PRzv9v+MLy3FWnHuoqDY7ubL2s/EV4pYGoHID
-         EW6X4VcG/C3y+rfblqRDsUb2g/fpdt4/ve0MxlfPB8haNF9UnKqWlFzArv2vl/CGVyBp
-         a/ojFul1sXQsWOYELC3/A7dnz2OhuSqNqjSfJNxrF0TOhK48yPAyzE00r/hF0kfM69Fs
-         3qZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784449545; x=1785054345;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=Rxtd5Q/pDjtbfL0tvsekDL5RGMidpEpCQZcAeYntQgM=;
-        b=lOK08S/mOQWpSIAPqzvfuTixWT+iwV4cQOzqvhGFcURYOUejuFYgHZ1FPdQWbO4fS5
-         hHbrzppMF8Lwz8QztMMVxEpF8+DEc2AJbwV49aYsoaAvCnZgC2ISRcDr1czQm5E9ieKA
-         n+PXp6VVhwE6s8XnbDydf421r/JV7liagr7XK0O/CzIh3H6zehN5RxVfJ/hnCaincMJN
-         /uPrBo2C/igSCmuzIZlYz5olI5uPzLy7FMM8Zo3Yi9oCwC/3z9wiQ1X8sQyptwRz17T8
-         WLevrgpfUl5tX67bynAK3dOqm2vUqpigAXjF5HbZBXqzMCanqlUEImHi98wgLgbbZP9H
-         uoAA==
-X-Forwarded-Encrypted: i=1; AHgh+RqbqIAnKt6aXXvUoLZNjWmluCkINkcayPqUg6Kzrp2FVPctrh0wO8YxE45O0LQApglLz9xvXJ8LNb2ZawnkSw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz2mG19Fp08UwzcctXvZS1ugJofzDE6pfCv1JQdeqMoBxDdDRI2
-	1cvrZtHc0Te5SoY/PRDHErCFUmDR0aOI/FH2aJLhfZFlJMJDEv2oGlhg
-X-Gm-Gg: AfdE7cmwKZyYTnWbHi6iOh0SeATl/DV+TxsmF5z3Tvcj/DFJgs1Rk2jvwQYSbLHK76N
-	YJUAyRH1TJxHaPyKPWsh94aGwQutRO/oNeXRCgNmfFv2w+QKhwL866/1Hl1GdomWq7lCkIjcCm9
-	qAC2td8BSD3vk3ic7Idq+3XlVEY/Rm3NTuR5l6lYZLSNiJNKp/CfUaiqSJzsW/slt8BUjlqgKFa
-	0UDzRXU7PanGr9PSFKDk4CchgLd0NlEyYJe6r1Mgo+V8snicZyB4+RhoOV/WhJ2dAKmPqDzo0Ko
-	vLvOJZ+z5qsfbmJ1TSHTh02r4QL372GPNOFpJXUzaMPld6IznJwWxEGfvRGg15DLnLBp0rkkCjn
-	fY7BdKdh7229dYPhvz2k+O3gd/+/rH24S9s1B9Z1xpoCMM3shO6wb5B2DUPzUviWOrbrOlbDRTU
-	oS09CRKMS3CA==
-X-Received: by 2002:a17:90b:1d10:b0:38e:659b:f366 with SMTP id 98e67ed59e1d1-38e659bf4d8mr2833691a91.0.1784449545591;
-        Sun, 19 Jul 2026 01:25:45 -0700 (PDT)
-Received: from DESKTOP-TIT0J8O.dm.ae ([49.47.198.15])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-13ce29e340esm19585964c88.5.2026.07.19.01.25.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 19 Jul 2026 01:25:45 -0700 (PDT)
-From: Ahmed Naseef <naseefkm@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Ahmed Naseef <naseefkm@gmail.com>
-Subject: [PATCH mt76] wifi: mt76: mt7603: add 0x7592 EEPROM chip ID
-Date: Sun, 19 Jul 2026 12:25:30 +0400
-Message-Id: <20260719082530.3879831-1-naseefkm@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	id 1wlR3A-000000050Mm-0c3j;
+	Sun, 19 Jul 2026 12:55:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=crapouillou.net;
+	s=mail; t=1784465709;
+	bh=gEhWSVkmaiCRRHw/wZCbCrw1IuLU51WzeuYRKtzSQY4=;
+	h=Subject:From:To:Date:In-Reply-To:References:From;
+	b=z63wrtdRW4T1uLwNAZv5/g3vU404MEwJYWT09pHMfbx2DJaEOlmj7VspONMYXCsqI
+	 R8REf49NPFrMSzR/OvMiDVruqKaWbGSUB1ottcguFk+1m56L3Y6lDofIiE791ilBX1
+	 XVQPwBGP8UXIEgxTyAcFXsbd0BrMi37v97Pc/sgU=
+Message-ID: <0cb39a3e2f2fc0efeed2b1bd5847655f7c8edbcf.camel@crapouillou.net>
+Subject: Re: [PATCH] remoteproc: Remove redundant dev_err()/dev_err_probe()
+From: Paul Cercueil <paul@crapouillou.net>
+To: Pan Chuang <panchuang@vivo.com>, Bjorn Andersson <andersson@kernel.org>,
+  Mathieu Poirier <mathieu.poirier@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>,  Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, "open list:REMOTE PROCESSOR (REMOTEPROC)
+ SUBSYSTEM"	 <linux-remoteproc@vger.kernel.org>, open list
+ <linux-kernel@vger.kernel.org>,  "open list:INGENIC JZ47xx SoCs"	
+ <linux-mips@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"	
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "open list:ARM/QUALCOMM
+ MAILING LIST"	 <linux-arm-msm@vger.kernel.org>, "moderated list:ARM/STM32
+ ARCHITECTURE"	 <linux-stm32@st-md-mailman.stormreply.com>
+Date: Sun, 19 Jul 2026 14:55:05 +0200
+In-Reply-To: <20260717065224.600593-1-panchuang@vivo.com>
+References: <20260717065224.600593-1-panchuang@vivo.com>
+Autocrypt: addr=paul@crapouillou.net; prefer-encrypt=mutual;
+ keydata=mQENBF0KhcEBCADkfmrzdTOp/gFOMQX0QwKE2WgeCJiHPWkpEuPH81/HB2dpjPZNW03ZM
+ LQfECbbaEkdbN4YnPfXgcc1uBe5mwOAPV1MBlaZcEt4M67iYQwSNrP7maPS3IaQJ18ES8JJ5Uf5Uz
+ FZaUawgH+oipYGW+v31cX6L3k+dGsPRM0Pyo0sQt52fsopNPZ9iag0iY7dGNuKenaEqkYNjwEgTtN
+ z8dt6s3hMpHIKZFL3OhAGi88wF/21isv0zkF4J0wlf9gYUTEEY3Eulx80PTVqGIcHZzfavlWIdzhe
+ +rxHTDGVwseR2Y1WjgFGQ2F+vXetAB8NEeygXee+i9nY5qt9c07m8mzjABEBAAG0JFBhdWwgQ2VyY
+ 3VlaWwgPHBhdWxAY3JhcG91aWxsb3UubmV0PokBTgQTAQoAOBYhBNdHYd8OeCBwpMuVxnPua9InSr
+ 1BBQJdCoXBAhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEHPua9InSr1BgvIH/0kLyrI3V0f
+ 33a6D3BJwc1grbygPVYGuC5l5eMnAI+rDmLR19E2yvibRpgUc87NmPEQPpbbtAZt8On/2WZoE5OIP
+ dlId/AHNpdgAtGXo0ZX4LGeVPjxjdkbrKVHxbcdcnY+zzaFglpbVSvp76pxqgVg8PgxkAAeeJV+ET
+ 4t0823Gz2HzCL/6JZhvKAEtHVulOWoBh368SYdolp1TSfORWmHzvQiCCCA+j0cMkYVGzIQzEQhX7U
+ rf9N/nhU5/SGLFEi9DcBfXoGzhyQyLXflhJtKm3XGB1K/pPulbKaPcKAl6rIDWPuFpHkSbmZ9r4KF
+ lBwgAhlGy6nqP7O3u7q23hRU=
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260719_012546_890992_8E85A675 
-X-CRM114-Status: UNSURE (   8.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260719_055520_583783_0405AEC7 
+X-CRM114-Status: GOOD (  15.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,34 +85,267 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some EcoNet based routers ship an on-flash EEPROM whose chip-id is
-0x7592 instead of the expected 0x7603. The device probes as PCI
-14c3:7603 and the hardware MT_HW_CHIPID register reports 0x7603,
-independent of the EEPROM value.
+Hi,
 
-This is seen across multiple EcoNet EN751221 and EN7528 based devices
-(for example the Genexis Platinum 4410).
+Le vendredi 17 juillet 2026 =C3=A0 14:52 +0800, Pan Chuang a =C3=A9crit=C2=
+=A0:
+> Since commit 55b48e23f5c4 ("genirq/devres: Add error handling in
+> devm_request_*_irq()"), devm_request_irq() and
+> devm_request_threaded_irq()
+> automatically log detailed error messages on failure. Remove the
+> now-redundant driver-specific dev_err() and dev_err_probe() calls.
+>=20
+> Signed-off-by: Pan Chuang <panchuang@vivo.com>
 
-Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
----
- drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c | 1 +
- 1 file changed, 1 insertion(+)
+For Ingenic:
+Acked-by: Paul Cercueil <paul@crapouillou.net>
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c
-index b89db2db6573..05f7aaefaf89 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c
-@@ -142,6 +142,7 @@ static int mt7603_check_eeprom(struct mt76_dev *dev)
- 	case 0x7628:
- 	case 0x7603:
- 	case 0x7600:
-+	case 0x7592:
- 		return 0;
- 	default:
- 		return -EINVAL;
+Cheers,
+-Paul
 
-base-commit: 50a7f9f9d48eb50c0e95bef53358acb5af5cb3c6
--- 
-2.34.1
-
+> ---
+> =C2=A0drivers/remoteproc/da8xx_remoteproc.c=C2=A0=C2=A0=C2=A0 |=C2=A0 2 +=
+-
+> =C2=A0drivers/remoteproc/ingenic_rproc.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 |=C2=A0 4 +---
+> =C2=A0drivers/remoteproc/keystone_remoteproc.c |=C2=A0 4 ++--
+> =C2=A0drivers/remoteproc/mtk_scp.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 4 +---
+> =C2=A0drivers/remoteproc/qcom_q6v5.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 | 20 +++++---------------
+> =C2=A0drivers/remoteproc/qcom_sysmon.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 |=C2=A0 2 --
+> =C2=A0drivers/remoteproc/qcom_wcnss.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 |=C2=A0 4 +---
+> =C2=A0drivers/remoteproc/stm32_rproc.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 |=C2=A0 3 +--
+> =C2=A08 files changed, 12 insertions(+), 31 deletions(-)
+>=20
+> diff --git a/drivers/remoteproc/da8xx_remoteproc.c
+> b/drivers/remoteproc/da8xx_remoteproc.c
+> index 23fca7176539..006fa7b56727 100644
+> --- a/drivers/remoteproc/da8xx_remoteproc.c
+> +++ b/drivers/remoteproc/da8xx_remoteproc.c
+> @@ -298,7 +298,7 @@ static int da8xx_rproc_probe(struct
+> platform_device *pdev)
+> =C2=A0					handle_event, 0, "da8xx-
+> remoteproc",
+> =C2=A0					rproc);
+> =C2=A0	if (ret)
+> -		return dev_err_probe(dev, ret,
+> "devm_request_threaded_irq error\n");
+> +		return ret;
+> =C2=A0
+> =C2=A0	/*
+> =C2=A0	 * rproc_add() can end up enabling the DSP's clk with the
+> DSP
+> diff --git a/drivers/remoteproc/ingenic_rproc.c
+> b/drivers/remoteproc/ingenic_rproc.c
+> index 1b78d8ddeacf..252519f48964 100644
+> --- a/drivers/remoteproc/ingenic_rproc.c
+> +++ b/drivers/remoteproc/ingenic_rproc.c
+> @@ -219,10 +219,8 @@ static int ingenic_rproc_probe(struct
+> platform_device *pdev)
+> =C2=A0
+> =C2=A0	ret =3D devm_request_irq(dev, vpu->irq, vpu_interrupt,
+> IRQF_NO_AUTOEN,
+> =C2=A0			=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "VPU", rproc);
+> -	if (ret < 0) {
+> -		dev_err(dev, "Failed to request IRQ\n");
+> +	if (ret < 0)
+> =C2=A0		return ret;
+> -	}
+> =C2=A0
+> =C2=A0	ret =3D devm_rproc_add(dev, rproc);
+> =C2=A0	if (ret) {
+> diff --git a/drivers/remoteproc/keystone_remoteproc.c
+> b/drivers/remoteproc/keystone_remoteproc.c
+> index 83763d640c4e..407d6034f748 100644
+> --- a/drivers/remoteproc/keystone_remoteproc.c
+> +++ b/drivers/remoteproc/keystone_remoteproc.c
+> @@ -411,7 +411,7 @@ static int keystone_rproc_probe(struct
+> platform_device *pdev)
+> =C2=A0	ret =3D devm_request_irq(dev, ksproc->irq_ring,
+> keystone_rproc_vring_interrupt,
+> =C2=A0			=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 IRQF_NO_AUTOEN, dev_name(de=
+v),
+> ksproc);
+> =C2=A0	if (ret)
+> -		return dev_err_probe(dev, ret, "failed to request
+> vring interrupt\n");
+> +		return ret;
+> =C2=A0
+> =C2=A0	ksproc->irq_fault =3D platform_get_irq_byname(pdev,
+> "exception");
+> =C2=A0	if (ksproc->irq_fault < 0)
+> @@ -419,7 +419,7 @@ static int keystone_rproc_probe(struct
+> platform_device *pdev)
+> =C2=A0	ret =3D devm_request_irq(dev, ksproc->irq_fault,
+> keystone_rproc_exception_interrupt,
+> =C2=A0			=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 IRQF_NO_AUTOEN, dev_name(de=
+v),
+> ksproc);
+> =C2=A0	if (ret)
+> -		return dev_err_probe(dev, ret, "failed to enable
+> exception interrupt\n");
+> +		return ret;
+> =C2=A0
+> =C2=A0	ksproc->kick_gpio =3D devm_gpiod_get(dev, "kick", GPIOD_ASIS);
+> =C2=A0	ret =3D PTR_ERR_OR_ZERO(ksproc->kick_gpio);
+> diff --git a/drivers/remoteproc/mtk_scp.c
+> b/drivers/remoteproc/mtk_scp.c
+> index 436656bdfa8b..9751acc2bf83 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -1246,10 +1246,8 @@ static struct mtk_scp *scp_rproc_init(struct
+> platform_device *pdev,
+> =C2=A0					scp_irq_handler,
+> IRQF_ONESHOT,
+> =C2=A0					pdev->name, scp);
+> =C2=A0
+> -	if (ret) {
+> -		dev_err(dev, "failed to request irq\n");
+> +	if (ret)
+> =C2=A0		goto remove_subdev;
+> -	}
+> =C2=A0
+> =C2=A0	return scp;
+> =C2=A0
+> diff --git a/drivers/remoteproc/qcom_q6v5.c
+> b/drivers/remoteproc/qcom_q6v5.c
+> index 0206a4a19254..1075ef4027b7 100644
+> --- a/drivers/remoteproc/qcom_q6v5.c
+> +++ b/drivers/remoteproc/qcom_q6v5.c
+> @@ -302,10 +302,8 @@ int qcom_q6v5_init(struct qcom_q6v5 *q6v5,
+> struct platform_device *pdev,
+> =C2=A0					NULL, q6v5_wdog_interrupt,
+> =C2=A0					IRQF_TRIGGER_RISING |
+> IRQF_ONESHOT,
+> =C2=A0					"q6v5 wdog", q6v5);
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "failed to acquire wdog IRQ\n");
+> +	if (ret)
+> =C2=A0		return ret;
+> -	}
+> =C2=A0
+> =C2=A0	q6v5->fatal_irq =3D platform_get_irq_byname(pdev, "fatal");
+> =C2=A0	if (q6v5->fatal_irq < 0)
+> @@ -315,10 +313,8 @@ int qcom_q6v5_init(struct qcom_q6v5 *q6v5,
+> struct platform_device *pdev,
+> =C2=A0					NULL, q6v5_fatal_interrupt,
+> =C2=A0					IRQF_TRIGGER_RISING |
+> IRQF_ONESHOT,
+> =C2=A0					"q6v5 fatal", q6v5);
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "failed to acquire fatal
+> IRQ\n");
+> +	if (ret)
+> =C2=A0		return ret;
+> -	}
+> =C2=A0
+> =C2=A0	q6v5->ready_irq =3D platform_get_irq_byname(pdev, "ready");
+> =C2=A0	if (q6v5->ready_irq < 0)
+> @@ -328,10 +324,8 @@ int qcom_q6v5_init(struct qcom_q6v5 *q6v5,
+> struct platform_device *pdev,
+> =C2=A0					NULL, q6v5_ready_interrupt,
+> =C2=A0					IRQF_TRIGGER_RISING |
+> IRQF_ONESHOT,
+> =C2=A0					"q6v5 ready", q6v5);
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "failed to acquire ready
+> IRQ\n");
+> +	if (ret)
+> =C2=A0		return ret;
+> -	}
+> =C2=A0
+> =C2=A0	q6v5->handover_irq =3D platform_get_irq_byname(pdev,
+> "handover");
+> =C2=A0	if (q6v5->handover_irq < 0)
+> @@ -342,10 +336,8 @@ int qcom_q6v5_init(struct qcom_q6v5 *q6v5,
+> struct platform_device *pdev,
+> =C2=A0					IRQF_TRIGGER_RISING |
+> IRQF_ONESHOT |
+> =C2=A0					IRQF_NO_AUTOEN,
+> =C2=A0					"q6v5 handover", q6v5);
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "failed to acquire handover
+> IRQ\n");
+> +	if (ret)
+> =C2=A0		return ret;
+> -	}
+> =C2=A0
+> =C2=A0	q6v5->stop_irq =3D platform_get_irq_byname(pdev, "stop-ack");
+> =C2=A0	if (q6v5->stop_irq < 0)
+> @@ -355,10 +347,8 @@ int qcom_q6v5_init(struct qcom_q6v5 *q6v5,
+> struct platform_device *pdev,
+> =C2=A0					NULL, q6v5_stop_interrupt,
+> =C2=A0					IRQF_TRIGGER_RISING |
+> IRQF_ONESHOT,
+> =C2=A0					"q6v5 stop", q6v5);
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "failed to acquire stop-ack
+> IRQ\n");
+> +	if (ret)
+> =C2=A0		return ret;
+> -	}
+> =C2=A0
+> =C2=A0	q6v5->state =3D devm_qcom_smem_state_get(&pdev->dev, "stop",
+> &q6v5->stop_bit);
+> =C2=A0	if (IS_ERR(q6v5->state)) {
+> diff --git a/drivers/remoteproc/qcom_sysmon.c
+> b/drivers/remoteproc/qcom_sysmon.c
+> index a0830a48b1f4..61e1038328e8 100644
+> --- a/drivers/remoteproc/qcom_sysmon.c
+> +++ b/drivers/remoteproc/qcom_sysmon.c
+> @@ -662,8 +662,6 @@ struct qcom_sysmon *qcom_add_sysmon_subdev(struct
+> rproc *rproc,
+> =C2=A0						IRQF_TRIGGER_RISING
+> | IRQF_ONESHOT,
+> =C2=A0						"q6v5 shutdown-ack",
+> sysmon);
+> =C2=A0		if (ret) {
+> -			dev_err(sysmon->dev,
+> -				"failed to acquire shutdown-ack
+> IRQ\n");
+> =C2=A0			kfree(sysmon);
+> =C2=A0			return ERR_PTR(ret);
+> =C2=A0		}
+> diff --git a/drivers/remoteproc/qcom_wcnss.c
+> b/drivers/remoteproc/qcom_wcnss.c
+> index 3392c9380202..e9a00efe97f6 100644
+> --- a/drivers/remoteproc/qcom_wcnss.c
+> +++ b/drivers/remoteproc/qcom_wcnss.c
+> @@ -521,10 +521,8 @@ static int wcnss_request_irq(struct qcom_wcnss
+> *wcnss,
+> =C2=A0					NULL, thread_fn,
+> =C2=A0					IRQF_TRIGGER_RISING |
+> IRQF_ONESHOT,
+> =C2=A0					"wcnss", wcnss);
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "request %s IRQ failed\n",
+> name);
+> +	if (ret)
+> =C2=A0		return ret;
+> -	}
+> =C2=A0
+> =C2=A0	/* Return the IRQ number if the IRQ was successfully
+> acquired */
+> =C2=A0	return irq_number;
+> diff --git a/drivers/remoteproc/stm32_rproc.c
+> b/drivers/remoteproc/stm32_rproc.c
+> index 0e5d64fbe52c..1fe4cdc0a13a 100644
+> --- a/drivers/remoteproc/stm32_rproc.c
+> +++ b/drivers/remoteproc/stm32_rproc.c
+> @@ -682,8 +682,7 @@ static int stm32_rproc_parse_dt(struct
+> platform_device *pdev,
+> =C2=A0		err =3D devm_request_irq(dev, irq, stm32_rproc_wdg, 0,
+> =C2=A0				=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dev_name(dev), pdev);
+> =C2=A0		if (err)
+> -			return dev_err_probe(dev, err,
+> -					=C2=A0=C2=A0=C2=A0=C2=A0 "failed to request wdg
+> irq\n");
+> +			return err;
+> =C2=A0
+> =C2=A0		ddata->wdg_irq =3D irq;
+> =C2=A0
 
