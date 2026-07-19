@@ -4,128 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08539C44523
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Jul 2026 23:36:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2454C44521
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jul 2026 02:14:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=77r3PWO7yo5+W5LQS9FlqiYUpbSGXMMaR8d5GZmSOF4=; b=mqn5oJbIRSdTOT/Jdw/iSrdoLv
-	7ixKdQcY3vA0clnoyS4YRJBjAu22X6x/I7cp2BUxqGzuklQz+b+/zA//+PWNbmU/DCeA/gsV9RAlp
-	RrN7kAQMMChjrArXjoRQxikg8W+8dzZ7epLbY62voO6dcw+61hfY6rHtNHLiM13dYer/pQshB5BXW
-	NE60Qdq7rX4eiOC/zj/4fLy4sljxgp1Bmas9rcMJhp8hXJB8lBy4pGotEy9KS55+gXG+lzdimeqXa
-	FAhq9a0WT7N3hWFh2UmptNG+3QBB0gX5ie4OzfY/FdcJAY3oGVe59DL6GzHWaTKvO8LBPs9E+dHU/
-	aReJpz3w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:From:To:Date:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=yBjAaTvVK2MAeuR8nn6R746ihPtr83agaW7aplO+tzc=; b=gcgtKv3UHgP4ll8GcMbOrMT00H
+	EIHk9Z+IVrw/qXNtSJDTUGpy7dorVxBtrPbK6MywB5YqwNBb8VCfqX5MC2bYX8LHE5evsAvVPklOs
+	LJsHu5JsvDPJwBNbFi0Rlss+PRnIJ1DzDIA5Id+HqCsLfcaCKjYjUrEhmKfbYkH3MhvhF4dnYe2Ac
+	z1GSCAm167+xQfZz3zkjKuEnpuerhG/dV3LhDTPUJ09ifHlwYKlErFht9twDkG7H2+Ki/ZBcX52lQ
+	GvT3/NtD6scVTexJKUyVLhipds1w+QbSe0+Oq+2BG6HshPnVc49Bc/QnpjCj4K0asyg9d7YLrRUFI
+	T3iMIIiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlEaW-00000004cZb-0mSs;
-	Sat, 18 Jul 2026 23:36:56 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1wlH3N-00000004gqG-17CB;
+	Sun, 19 Jul 2026 02:14:53 +0000
+Received: from mail-43167.protonmail.ch ([185.70.43.167])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlEaR-00000004cTR-1wfh
+	id 1wlH34-00000004gpL-3IGc
 	for linux-mediatek@lists.infradead.org;
-	Sat, 18 Jul 2026 23:36:54 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-4954c0833b4so9390975e9.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 18 Jul 2026 16:36:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784417810; x=1785022610; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=77r3PWO7yo5+W5LQS9FlqiYUpbSGXMMaR8d5GZmSOF4=;
-        b=kBfwcd0xj4BOAQ8WHqSdypREsdJW2elx3EIym28PPkIK5tMekVhkxtPFho9EY0fcho
-         rJ2M1JC2JVYqmsx+kRnemyJAYx1wUjfOSQRbpYUuawcjtpnKVkngCXnm5uZzjOcnWnIZ
-         3/rxHWfOOnTVo9kTDLll3B3zssmbbX9Cidtw9bdSmoguQFaxB/AyReFwP7kXGunbroYE
-         hJa+X1jKjLdX5FX5Mo9dvaWiMJuEbA1aTyHwvMsSK8QPgrqV0s+yDMsOKFskN+vjpWvh
-         gWtMs1WMT952lOLUZ/Vp3oIiCwYqUmSVq4V+8I3ySRuyOohvT31eq6mEEFqg4y9bJWf0
-         xvWg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784417810; x=1785022610;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=77r3PWO7yo5+W5LQS9FlqiYUpbSGXMMaR8d5GZmSOF4=;
-        b=APU7xJYAtevWv5ym0Jx2oneieM9Fp5AQkE+YKRiD/zCdQ/5tydsSlollSvxMJ3FrWy
-         btpqYXCNxAyYafgc0BA3Ru94nIa4yeYbVUg77jAyV5gtVEUcWH+48l2xfkM0fGefnI/J
-         2lyomescSK4zGiI6k4eynAHe2ZZAvrt/fSTQ56q/fdvnD075PecXcFMQldXEqBxUScAc
-         83wz2Dophj+fkmL9EigvXoj9own/oQaD1yXClV1v/0K+TTrjd9t4k1kmDdNTyNhsCfzf
-         79vSUBSVFTAa2y/ZBBGYzPZvWGxjEH9uP0YNDmvAFMDVYbnwLPFrWwnIhNJP3IG/d51f
-         bKHw==
-X-Forwarded-Encrypted: i=1; AHgh+Rqirzg7JDaTZuqw7q42WCyL3BFSZXsVsvZU+XQHPg6wPCpX58/g9yKNSXjdnlixwdl39pz/rUC67v5SVT0Msw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw+ORtJbievvZmvyz2yyPKzBfXyzsWphWbIrJRNbBXmDReZdwbf
-	kvDDqvCKJMd8ikjwR4OosTWjAC4B4cQzpjDhrpUsSjuhrJHhFKEfVzry
-X-Gm-Gg: AfdE7cmcmvSqeL9SEu7YkoRI5FDaabk9sinlkZ3u6d2Weq6C4LR2OVQFuxUbZ8UUdLP
-	xKaF2SxoE/pCB5hAQk/A0waFb4g4JUyauSRIWN/rDDisRILnpensTQ3L0M1ljti1PLyVTAPB+6I
-	KPdikw3AE6lX26+agNxcRizPA90DEyyFTREfcBMs2+wargzSNNj5bCm2nOPZPjC5b6VapPkcz/B
-	rMPTuDk9+q2V/ZniGbddmE7CXwur9MuyRiuwX+I/5iJCZqux3z8+R/m7g82/gVwZYNSmiZKSbNr
-	n1riZTo21jzAv6H0MimFFoTppB35ain3re9Pgv2uHd6eV+N5XACEfAxmVd0VhQ9m8BZctRNwh90
-	bwPCNyUQAruAwCXNWMBJOVneoR4IbtoSQ1KxjD2DS8HrLisJsbcutmb89/3PPLHvAR0vrSFQLVj
-	6Jop23ygvaxg==
-X-Received: by 2002:a05:600c:3b28:b0:493:a623:d090 with SMTP id 5b1f17b1804b1-4954a3f36b6mr89247115e9.10.1784417809642;
-        Sat, 18 Jul 2026 16:36:49 -0700 (PDT)
-Received: from [127.0.0.2] ([2a01:14:111:ccf0:645b:9e5c:7fe3:c09f])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4954a2a24b6sm160964675e9.3.2026.07.18.16.36.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 18 Jul 2026 16:36:49 -0700 (PDT)
-From: Diogo Silva <diogompaissilva@gmail.com>
-Date: Sun, 19 Jul 2026 01:35:46 +0200
-Subject: [PATCH 15/15] Documentation/gpu: remove completed
- drm_simple_encoder_init() todo
+	Sun, 19 Jul 2026 02:14:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1784427269; x=1784686469;
+	bh=yBjAaTvVK2MAeuR8nn6R746ihPtr83agaW7aplO+tzc=;
+	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=p16gr+jg41+XZbVVxShV/guTrsEbRhkDMDpW48sod8U1WPgHibn8ZChXIIF/r2FZI
+	 z7HE/TtCFZk5bcvenMNQ24H6P8PLlrfx8MqWIa2hKRxl8yOSICOL6CUMsDVSdY+9NO
+	 rmxIL6tOtY5X+UArbnqq4OvehrJvCEMv6G6rQQWqd1XhDGCn66A2N7b+wuyjBm3LyN
+	 O228ctlf00+Rr2qd16XBsV2OQdZafytuOF8KixiRXEePhP2Y55/khcxA1UJ/fbAqRJ
+	 7ioe+TbgkFnxdlms2tJxpb3fiYPRGXvywQzkQvAFq9F/BoXEsxy9zusNmm4MrL/izi
+	 xiQqyfBGYJKkw==
+Date: Sun, 19 Jul 2026 02:14:19 +0000
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+From: Ryan Leung <untilscour@protonmail.com>
+Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryan Leung <untilscour@protonmail.com>
+Subject: [PATCH RESEND mt76 v2] wifi: mt76: mt7915: add thermal zone device registration
+Message-ID: <20260719-mt7915-thermal-zone-device-registration-v2-1-0eac68c2741e@protonmail.com>
+Feedback-ID: 184418679:user:proton
+X-Pm-Message-ID: 480d21824b61b802ac8d168e8bd15d29554584de
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260719-drm_simple_encoder_init-v1-15-a78c509e3062@gmail.com>
-References: <20260719-drm_simple_encoder_init-v1-0-a78c509e3062@gmail.com>
-In-Reply-To: <20260719-drm_simple_encoder_init-v1-0-a78c509e3062@gmail.com>
-To: Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, 
- Seung-Woo Kim <sw0312.kim@samsung.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, Krzysztof Kozlowski <krzk@kernel.org>, 
- Peter Griffin <peter.griffin@linaro.org>, 
- Alim Akhtar <alim.akhtar@samsung.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Michal Simek <michal.simek@amd.com>, 
- Thierry Reding <thierry.reding@kernel.org>, 
- Mikko Perttunen <mperttunen@nvidia.com>, 
- Jonathan Hunter <jonathanh@nvidia.com>, Stefan Agner <stefan@agner.ch>, 
- Alison Wang <alison.wang@nxp.com>, 
- Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
- David Airlie <airlied@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, 
- Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
- Gurchetan Singh <gurchetansingh@chromium.org>, 
- Chia-I Wu <olvaffe@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>, 
- Liu Ying <victor.liu@nxp.com>, Frank Li <Frank.Li@nxp.com>, 
- Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- Xinliang Liu <xinliang.liu@linaro.org>, 
- Sumit Semwal <sumit.semwal@linaro.org>, 
- Yongqin Liu <yongqin.liu@linaro.org>, John Stultz <jstultz@google.com>, 
- Liviu Dudau <liviu.dudau@arm.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
- Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
- linux-samsung-soc@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-tegra@vger.kernel.org, virtualization@lists.linux.dev, 
- imx@lists.linux.dev, linux-mediatek@lists.infradead.org, 
- linux-renesas-soc@vger.kernel.org, linux-amlogic@lists.infradead.org, 
- linux-doc@vger.kernel.org, Diogo Silva <diogompaissilva@gmail.com>
-X-Mailer: b4 0.15.2
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260718_163651_576841_246D79C7 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20260718_191434_992040_32880F59 
+X-CRM114-Status: UNSURE (   9.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,42 +67,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-All drm_simple_encoder_init() users have been removed, so drop the
-completed todo item.
+Register the mt7915 phy as a thermal zone sensor using
+devm_thermal_of_zone_register() so that device tree thermal-zones
+nodes can reference the Wi-Fi chip as a temperature source. This
+allows the kernel thermal governor to control external cooling
+devices such as PWM fans based on Wi-Fi chip temperature.
 
-Signed-off-by: Diogo Silva <diogompaissilva@gmail.com>
+Registration is non-fatal: -ENODEV is returned when no
+thermal-sensors DT property references this device, which is the
+expected case on platforms without a thermal zone configured.
+
+Signed-off-by: Ryan Leung <untilscour@protonmail.com>
 ---
- Documentation/gpu/todo.rst | 15 ---------------
- 1 file changed, 15 deletions(-)
+v2: Use phy->mt76->band_idx instead of hardcoded 0 as sensor ID
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/init.c   | 30 ++++++++++++++++++=
+++++
+ drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h |  1 +
+ 2 files changed, 31 insertions(+)
 
-diff --git a/Documentation/gpu/todo.rst b/Documentation/gpu/todo.rst
-index 14cf37590fc7..b7351467dc74 100644
---- a/Documentation/gpu/todo.rst
-+++ b/Documentation/gpu/todo.rst
-@@ -29,21 +29,6 @@ refactorings already and are an expert in the specific area
- Subsystem-wide refactorings
- ===========================
- 
--Open-code drm_simple_encoder_init()
-------------------------------------
--
--The helper drm_simple_encoder_init() was supposed to simplify encoder
--initialization. Instead it only added an intermediate layer between atomic
--modesetting and the DRM driver.
--
--The task here is to remove drm_simple_encoder_init(). Search for a driver
--that calls drm_simple_encoder_init() and inline the helper. The driver will
--also need its own instance of drm_encoder_funcs.
--
--Contact: Thomas Zimmermann, respective driver maintainer
--
--Level: Easy
--
- Replace struct drm_simple_display_pipe with regular atomic helpers
- ------------------------------------------------------------------
- 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net=
+/wireless/mediatek/mt76/mt7915/init.c
+index 250c2d2479b0..6568d7b6bc0a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -177,6 +177,25 @@ static const struct thermal_cooling_device_ops mt7915_=
+thermal_ops =3D {
+ =09.set_cur_state =3D mt7915_thermal_set_cur_throttle_state,
+ };
+=20
++static int mt7915_thermal_get_temp(struct thermal_zone_device *tz, int *te=
+mp)
++{
++=09struct mt7915_phy *phy =3D thermal_zone_device_priv(tz);
++=09int val;
++
++=09mutex_lock(&phy->dev->mt76.mutex);
++=09val =3D mt7915_mcu_get_temperature(phy);
++=09mutex_unlock(&phy->dev->mt76.mutex);
++=09if (val < 0)
++=09=09return val;
++
++=09*temp =3D val * 1000;
++=09return 0;
++}
++
++static const struct thermal_zone_device_ops mt7915_tz_ops =3D {
++=09.get_temp =3D mt7915_thermal_get_temp,
++};
++
+ static void mt7915_unregister_thermal(struct mt7915_phy *phy)
+ {
+ =09struct wiphy *wiphy =3D phy->mt76->hw->wiphy;
+@@ -213,6 +232,17 @@ static int mt7915_thermal_init(struct mt7915_phy *phy)
+ =09phy->throttle_temp[MT7915_CRIT_TEMP_IDX] =3D MT7915_CRIT_TEMP;
+ =09phy->throttle_temp[MT7915_MAX_TEMP_IDX] =3D MT7915_MAX_TEMP;
+=20
++=09phy->tzone =3D devm_thermal_of_zone_register(phy->dev->mt76.dev,
++=09=09=09=09=09=09   phy->mt76->band_idx, phy,
++=09=09=09=09=09=09   &mt7915_tz_ops);
++=09if (IS_ERR(phy->tzone)) {
++=09=09if (PTR_ERR(phy->tzone) !=3D -ENODEV)
++=09=09=09dev_warn(phy->dev->mt76.dev,
++=09=09=09=09 "failed to register thermal zone: %ld\n",
++=09=09=09=09 PTR_ERR(phy->tzone));
++=09=09phy->tzone =3D NULL;
++=09}
++
+ =09if (!IS_REACHABLE(CONFIG_HWMON))
+ =09=09return 0;
+=20
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/n=
+et/wireless/mediatek/mt76/mt7915/mt7915.h
+index bf1d915a3ca2..92e0f9f0169c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -205,6 +205,7 @@ struct mt7915_phy {
+=20
+ =09struct ieee80211_vif *monitor_vif;
+=20
++=09struct thermal_zone_device *tzone;
+ =09struct thermal_cooling_device *cdev;
+ =09u8 cdev_state;
+ =09u8 throttle_state;
 
--- 
-2.54.0
+---
+base-commit: ac798f757d6475dc6fee2ec899980d6740714596
+change-id: 20260718-mt7915-thermal-zone-device-registration-e6d7bdc80aa5
+
+Best regards,
+-- =20
+Ryan Leung <untilscour@protonmail.com>
+
 
 
