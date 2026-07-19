@@ -4,54 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2454C44521
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jul 2026 02:14:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9297DC44512
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jul 2026 08:25:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:From:To:Date:Reply-To:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yBjAaTvVK2MAeuR8nn6R746ihPtr83agaW7aplO+tzc=; b=gcgtKv3UHgP4ll8GcMbOrMT00H
-	EIHk9Z+IVrw/qXNtSJDTUGpy7dorVxBtrPbK6MywB5YqwNBb8VCfqX5MC2bYX8LHE5evsAvVPklOs
-	LJsHu5JsvDPJwBNbFi0Rlss+PRnIJ1DzDIA5Id+HqCsLfcaCKjYjUrEhmKfbYkH3MhvhF4dnYe2Ac
-	z1GSCAm167+xQfZz3zkjKuEnpuerhG/dV3LhDTPUJ09ifHlwYKlErFht9twDkG7H2+Ki/ZBcX52lQ
-	GvT3/NtD6scVTexJKUyVLhipds1w+QbSe0+Oq+2BG6HshPnVc49Bc/QnpjCj4K0asyg9d7YLrRUFI
-	T3iMIIiw==;
+	bh=Rxtd5Q/pDjtbfL0tvsekDL5RGMidpEpCQZcAeYntQgM=; b=iTqW0l78RHWwVqUobysZNuUhY+
+	8kSrHkpnHt9aglyqygPNZDo4ugRjFQxmld7vNEUjAgukhc+4xTeFB3zjjuti5aV5OyK8q7y7aAJpH
+	hLJxZA8lUX0DppEpW5V1QhBVAu6zvws+OBhznoGuCiD3YZnUCFLFFtkAMhU9N8GgPPIGxBUsyEIJe
+	QAmhgePVF330bD6J6YqcfttOfYcI2Y4wL/65iTd02fZpJbXRJD+FLiGkkT33YySglghN2T859SKtU
+	za2WrczjzaxSiQKpYallA5xn1f8kUs383pKNQfJ92EnLNz/WJA7GzJH5EWG/d5DodrYvyDilMaV6v
+	inKe+txw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlH3N-00000004gqG-17CB;
-	Sun, 19 Jul 2026 02:14:53 +0000
-Received: from mail-43167.protonmail.ch ([185.70.43.167])
+	id 1wlMqL-00000004qgD-0vFY;
+	Sun, 19 Jul 2026 08:25:49 +0000
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlH34-00000004gpL-3IGc
+	id 1wlMqI-00000004qf1-3Xhc
 	for linux-mediatek@lists.infradead.org;
-	Sun, 19 Jul 2026 02:14:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1784427269; x=1784686469;
-	bh=yBjAaTvVK2MAeuR8nn6R746ihPtr83agaW7aplO+tzc=;
-	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
-	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
-	b=p16gr+jg41+XZbVVxShV/guTrsEbRhkDMDpW48sod8U1WPgHibn8ZChXIIF/r2FZI
-	 z7HE/TtCFZk5bcvenMNQ24H6P8PLlrfx8MqWIa2hKRxl8yOSICOL6CUMsDVSdY+9NO
-	 rmxIL6tOtY5X+UArbnqq4OvehrJvCEMv6G6rQQWqd1XhDGCn66A2N7b+wuyjBm3LyN
-	 O228ctlf00+Rr2qd16XBsV2OQdZafytuOF8KixiRXEePhP2Y55/khcxA1UJ/fbAqRJ
-	 7ioe+TbgkFnxdlms2tJxpb3fiYPRGXvywQzkQvAFq9F/BoXEsxy9zusNmm4MrL/izi
-	 xiQqyfBGYJKkw==
-Date: Sun, 19 Jul 2026 02:14:19 +0000
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-From: Ryan Leung <untilscour@protonmail.com>
-Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryan Leung <untilscour@protonmail.com>
-Subject: [PATCH RESEND mt76 v2] wifi: mt76: mt7915: add thermal zone device registration
-Message-ID: <20260719-mt7915-thermal-zone-device-registration-v2-1-0eac68c2741e@protonmail.com>
-Feedback-ID: 184418679:user:proton
-X-Pm-Message-ID: 480d21824b61b802ac8d168e8bd15d29554584de
+	Sun, 19 Jul 2026 08:25:48 +0000
+Received: by mail-pj1-x1032.google.com with SMTP id 98e67ed59e1d1-38deea72eebso7038882a91.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 19 Jul 2026 01:25:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1784449545; x=1785054345; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=Rxtd5Q/pDjtbfL0tvsekDL5RGMidpEpCQZcAeYntQgM=;
+        b=daQW/PwyFlPZPtMQYVnzzqE/lS0OEzDzJGFGjjM1xFDteRJkyphdjl0y+LPwkxf921
+         7e5O3r8r2vak0gSAnURZ1CO44b2HSRbHG/PR1MGpXuDCr2ej8CZPf2AybjW3Fa0i6Xvt
+         BRvRdAgvnw6sDeF0sqioDnREOkL/mD2PRzv9v+MLy3FWnHuoqDY7ubL2s/EV4pYGoHID
+         EW6X4VcG/C3y+rfblqRDsUb2g/fpdt4/ve0MxlfPB8haNF9UnKqWlFzArv2vl/CGVyBp
+         a/ojFul1sXQsWOYELC3/A7dnz2OhuSqNqjSfJNxrF0TOhK48yPAyzE00r/hF0kfM69Fs
+         3qZg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1784449545; x=1785054345;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=Rxtd5Q/pDjtbfL0tvsekDL5RGMidpEpCQZcAeYntQgM=;
+        b=lOK08S/mOQWpSIAPqzvfuTixWT+iwV4cQOzqvhGFcURYOUejuFYgHZ1FPdQWbO4fS5
+         hHbrzppMF8Lwz8QztMMVxEpF8+DEc2AJbwV49aYsoaAvCnZgC2ISRcDr1czQm5E9ieKA
+         n+PXp6VVhwE6s8XnbDydf421r/JV7liagr7XK0O/CzIh3H6zehN5RxVfJ/hnCaincMJN
+         /uPrBo2C/igSCmuzIZlYz5olI5uPzLy7FMM8Zo3Yi9oCwC/3z9wiQ1X8sQyptwRz17T8
+         WLevrgpfUl5tX67bynAK3dOqm2vUqpigAXjF5HbZBXqzMCanqlUEImHi98wgLgbbZP9H
+         uoAA==
+X-Forwarded-Encrypted: i=1; AHgh+RqbqIAnKt6aXXvUoLZNjWmluCkINkcayPqUg6Kzrp2FVPctrh0wO8YxE45O0LQApglLz9xvXJ8LNb2ZawnkSw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz2mG19Fp08UwzcctXvZS1ugJofzDE6pfCv1JQdeqMoBxDdDRI2
+	1cvrZtHc0Te5SoY/PRDHErCFUmDR0aOI/FH2aJLhfZFlJMJDEv2oGlhg
+X-Gm-Gg: AfdE7cmwKZyYTnWbHi6iOh0SeATl/DV+TxsmF5z3Tvcj/DFJgs1Rk2jvwQYSbLHK76N
+	YJUAyRH1TJxHaPyKPWsh94aGwQutRO/oNeXRCgNmfFv2w+QKhwL866/1Hl1GdomWq7lCkIjcCm9
+	qAC2td8BSD3vk3ic7Idq+3XlVEY/Rm3NTuR5l6lYZLSNiJNKp/CfUaiqSJzsW/slt8BUjlqgKFa
+	0UDzRXU7PanGr9PSFKDk4CchgLd0NlEyYJe6r1Mgo+V8snicZyB4+RhoOV/WhJ2dAKmPqDzo0Ko
+	vLvOJZ+z5qsfbmJ1TSHTh02r4QL372GPNOFpJXUzaMPld6IznJwWxEGfvRGg15DLnLBp0rkkCjn
+	fY7BdKdh7229dYPhvz2k+O3gd/+/rH24S9s1B9Z1xpoCMM3shO6wb5B2DUPzUviWOrbrOlbDRTU
+	oS09CRKMS3CA==
+X-Received: by 2002:a17:90b:1d10:b0:38e:659b:f366 with SMTP id 98e67ed59e1d1-38e659bf4d8mr2833691a91.0.1784449545591;
+        Sun, 19 Jul 2026 01:25:45 -0700 (PDT)
+Received: from DESKTOP-TIT0J8O.dm.ae ([49.47.198.15])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-13ce29e340esm19585964c88.5.2026.07.19.01.25.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 19 Jul 2026 01:25:45 -0700 (PDT)
+From: Ahmed Naseef <naseefkm@gmail.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Ahmed Naseef <naseefkm@gmail.com>
+Subject: [PATCH mt76] wifi: mt76: mt7603: add 0x7592 EEPROM chip ID
+Date: Sun, 19 Jul 2026 12:25:30 +0400
+Message-Id: <20260719082530.3879831-1-naseefkm@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260718_191434_992040_32880F59 
-X-CRM114-Status: UNSURE (   9.58  )
+X-CRM114-CacheID: sfid-20260719_012546_890992_8E85A675 
+X-CRM114-Status: UNSURE (   8.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -67,97 +105,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Register the mt7915 phy as a thermal zone sensor using
-devm_thermal_of_zone_register() so that device tree thermal-zones
-nodes can reference the Wi-Fi chip as a temperature source. This
-allows the kernel thermal governor to control external cooling
-devices such as PWM fans based on Wi-Fi chip temperature.
+Some EcoNet based routers ship an on-flash EEPROM whose chip-id is
+0x7592 instead of the expected 0x7603. The device probes as PCI
+14c3:7603 and the hardware MT_HW_CHIPID register reports 0x7603,
+independent of the EEPROM value.
 
-Registration is non-fatal: -ENODEV is returned when no
-thermal-sensors DT property references this device, which is the
-expected case on platforms without a thermal zone configured.
+This is seen across multiple EcoNet EN751221 and EN7528 based devices
+(for example the Genexis Platinum 4410).
 
-Signed-off-by: Ryan Leung <untilscour@protonmail.com>
+Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
 ---
-v2: Use phy->mt76->band_idx instead of hardcoded 0 as sensor ID
----
- drivers/net/wireless/mediatek/mt76/mt7915/init.c   | 30 ++++++++++++++++++=
-++++
- drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h |  1 +
- 2 files changed, 31 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net=
-/wireless/mediatek/mt76/mt7915/init.c
-index 250c2d2479b0..6568d7b6bc0a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -177,6 +177,25 @@ static const struct thermal_cooling_device_ops mt7915_=
-thermal_ops =3D {
- =09.set_cur_state =3D mt7915_thermal_set_cur_throttle_state,
- };
-=20
-+static int mt7915_thermal_get_temp(struct thermal_zone_device *tz, int *te=
-mp)
-+{
-+=09struct mt7915_phy *phy =3D thermal_zone_device_priv(tz);
-+=09int val;
-+
-+=09mutex_lock(&phy->dev->mt76.mutex);
-+=09val =3D mt7915_mcu_get_temperature(phy);
-+=09mutex_unlock(&phy->dev->mt76.mutex);
-+=09if (val < 0)
-+=09=09return val;
-+
-+=09*temp =3D val * 1000;
-+=09return 0;
-+}
-+
-+static const struct thermal_zone_device_ops mt7915_tz_ops =3D {
-+=09.get_temp =3D mt7915_thermal_get_temp,
-+};
-+
- static void mt7915_unregister_thermal(struct mt7915_phy *phy)
- {
- =09struct wiphy *wiphy =3D phy->mt76->hw->wiphy;
-@@ -213,6 +232,17 @@ static int mt7915_thermal_init(struct mt7915_phy *phy)
- =09phy->throttle_temp[MT7915_CRIT_TEMP_IDX] =3D MT7915_CRIT_TEMP;
- =09phy->throttle_temp[MT7915_MAX_TEMP_IDX] =3D MT7915_MAX_TEMP;
-=20
-+=09phy->tzone =3D devm_thermal_of_zone_register(phy->dev->mt76.dev,
-+=09=09=09=09=09=09   phy->mt76->band_idx, phy,
-+=09=09=09=09=09=09   &mt7915_tz_ops);
-+=09if (IS_ERR(phy->tzone)) {
-+=09=09if (PTR_ERR(phy->tzone) !=3D -ENODEV)
-+=09=09=09dev_warn(phy->dev->mt76.dev,
-+=09=09=09=09 "failed to register thermal zone: %ld\n",
-+=09=09=09=09 PTR_ERR(phy->tzone));
-+=09=09phy->tzone =3D NULL;
-+=09}
-+
- =09if (!IS_REACHABLE(CONFIG_HWMON))
- =09=09return 0;
-=20
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/n=
-et/wireless/mediatek/mt76/mt7915/mt7915.h
-index bf1d915a3ca2..92e0f9f0169c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -205,6 +205,7 @@ struct mt7915_phy {
-=20
- =09struct ieee80211_vif *monitor_vif;
-=20
-+=09struct thermal_zone_device *tzone;
- =09struct thermal_cooling_device *cdev;
- =09u8 cdev_state;
- =09u8 throttle_state;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c
+index b89db2db6573..05f7aaefaf89 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/eeprom.c
+@@ -142,6 +142,7 @@ static int mt7603_check_eeprom(struct mt76_dev *dev)
+ 	case 0x7628:
+ 	case 0x7603:
+ 	case 0x7600:
++	case 0x7592:
+ 		return 0;
+ 	default:
+ 		return -EINVAL;
 
----
-base-commit: ac798f757d6475dc6fee2ec899980d6740714596
-change-id: 20260718-mt7915-thermal-zone-device-registration-e6d7bdc80aa5
-
-Best regards,
--- =20
-Ryan Leung <untilscour@protonmail.com>
-
+base-commit: 50a7f9f9d48eb50c0e95bef53358acb5af5cb3c6
+-- 
+2.34.1
 
 
