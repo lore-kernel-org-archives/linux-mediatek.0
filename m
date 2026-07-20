@@ -4,71 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C621CC44520
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 11:53:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01021C4452B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 12:48:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Content-Type:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fZfIR0xEAZOFXbzSMIDRPOwa8N9R3psoROjzWoX6L34=; b=BkaAZu222rRYqBi7KGslrKLXlm
-	iplK6C/6VNwjwrsa+vR7gHb3E33oBv2JxjZNMQQS2SaOFR//HpCS2IzFpuEuK0faPeEmIOpq8tJIr
-	g74EYuMzpHtZ7XbCy6N3igfxBQZMfnBvUwhfDSQxTBLCkbqf1jYXkfU1DQSw0OP7Xwrfm5XexCUBb
-	Dc2rzTme8ZAxrow6mfk4O3BgycPccGkM9NEzrchaKu/lqNgv1ck+YdlOulMgLTDEDNuhqHXCE6eDl
-	zYsOIbc5F/ETXroM/V9/cAhxmh0r6+q8Sk4ZOPAmWEdAnyjZ/iSqvRaVoxrHfyFURJ34oswtmbdkS
-	JAUwqpfQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Wz4mCSitBFP+RnOKOqgz5gk2SFQSHQ3nrjDSKRkJtBI=; b=VUE/g1vVairX0eXXPxj32ZM4Ir
+	CyjGKzaZo8BWFzHCp891jS8BI9tcdOfLCONRHv2GckII37X0crLoqgE/78YNl5ie6RCgyb5VQteMc
+	Sgvp5awimpBoT6P2ouXu7d1eXKhaUBeDoRAkbKVhHAa5e3y1e/MObKQgLz2shyNzgplLeQROm8Pdu
+	VeSmL5wFUAWyEruMlfmi2nVdWbFoXBtiuZBsDwBO7Q/PmR6o223g3ZVWtxSOPAN+B68Z1lJCVUEB1
+	DQZ0NmjTjcr2sypfYzEWyL4S2+5S7UwKRV67uzfQnV3S/6Ga516hwytLR0Nd6GmYsIsaMAVgQpWYB
+	9sY9EpEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlmYq-00000006duW-2eW1;
-	Mon, 20 Jul 2026 11:53:28 +0000
-Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
+	id 1wlnQF-00000006jRL-4AWH;
+	Mon, 20 Jul 2026 12:48:39 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlmYn-00000006dtd-1S8V;
-	Mon, 20 Jul 2026 11:53:27 +0000
-Received: from localhost.localdomain (unknown [111.196.245.140])
-	by APP-05 (Coremail) with SMTP id zQCowADHND8yDF5qtcmIAA--.52459S2;
-	Mon, 20 Jul 2026 19:53:22 +0800 (CST)
-From: Pengpeng Hou <pengpeng@iscas.ac.cn>
-To: Bin Liu <bin.liu@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: Nicolas Dufresne <nicolas@ndufresne.ca>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Pengpeng Hou <pengpeng@iscas.ac.cn>
-Subject: [PATCH v2] media: mediatek: jpeg: retry HW selection after successful wait
-Date: Mon, 20 Jul 2026 19:53:22 +0800
-Message-ID: <20260720115322.89784-1-pengpeng@iscas.ac.cn>
-X-Mailer: git-send-email 2.50.1
-Content-Type: text/plain; charset="utf-8"
+	id 1wlnQD-00000006jPv-3lkH;
+	Mon, 20 Jul 2026 12:48:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1784551714;
+	bh=2hDfOrYJlktV5w2l5biEDgpe6XsMNDJBGUXjbbiQxFM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ESIDM0rvHDDcwAxDcCbpsXoPCq0+/q0wjWcJXYsQ4KL443DgtNGZNEWxL6h7AOFtt
+	 7cmaNaaImDhIvTuZTalqlUE1zebrSYgZVw8exdYkiEIOz2p243HzVQb/7j/4EBAtAR
+	 wpdBNJRPDPlcg1U4HGsGGiaB7fVYH+60xmsO4Ih6+JVUNRi5NVlVYsz0CTGkZ8hmO+
+	 zTXDLoEmpLHViO5KZPkdflzESneuJrQ2wIuT0vMB5mmE7QbFKyxX382woxYygYZhvn
+	 zJxO0INrk+R5zzfY8qoBlfjs3UAUbrvg3TylnNorvqoLixjG/pDrXj4kCS5bXtSrkq
+	 x+a5xE3Y/RNPA==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3BD2617E0D53;
+	Mon, 20 Jul 2026 14:48:34 +0200 (CEST)
+Message-ID: <2aa16ed7-5d36-4e78-929e-84b9d6befe77@collabora.com>
+Date: Mon, 20 Jul 2026 14:48:33 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: zQCowADHND8yDF5qtcmIAA--.52459S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7Aw4rWFyftryxJF1fXFyftFb_yoW8ZFWxpr
-	W5K39IvrW8Gr4qgr48Aa1UAF15Gw1rCa1xWrnxZw48ArsIqF1Dt3WUta48tFyxAFy2ka45
-	JF1FvayfCrW2yFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUU9Y14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26r4j6ryUM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4j
-	6r4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxVW0oV
-	Cq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
-	I7IYx2IY67AKxVWUtVWrXwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r
-	4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628v
-	n2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7x
-	kEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E
-	67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUCVW8Jw
-	CI42IY6xIIjxv20xvEc7CjxVAFwI0_Cr0_Gr1UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWU
-	CwCI42IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCT
-	nIWIevJa73UjIFyTuYvjfUOuc_DUUUU
-X-Originating-IP: [111.196.245.140]
-X-CM-SenderInfo: pshqw1xhqjqxpvfd2hldfou0/
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/3] nvmem: mtk-efuse: add mt6572 support
+To: rva333@protonmail.com, Srinivas Kandagatla <srini@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Lala Lin <lala.lin@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260715-6572-nvmem-v1-0-9c13be99d077@protonmail.com>
+ <20260715-6572-nvmem-v1-3-9c13be99d077@protonmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260715-6572-nvmem-v1-3-9c13be99d077@protonmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260720_045325_751697_3418E75B 
-X-CRM114-Status: GOOD (  10.24  )
+X-CRM114-CacheID: sfid-20260720_054838_098712_4F8228CD 
+X-CRM114-Status: GOOD (  16.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,49 +79,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-wait_event_interruptible_timeout() returns a positive value when its
-condition becomes true before timeout. mtk_jpegdec_worker() treats every
-nonzero result as failure, so a normal decoder wakeup can finish the
-mem2mem job as though no hardware became available.
+On 7/15/26 16:27, Roman Vivchar via B4 Relay wrote:
+> From: Roman Vivchar <rva333@protonmail.com>
+> 
+> Add a platform data struct for the efuse controller.
+> 
+> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+> ---
+>   drivers/nvmem/mtk-efuse.c | 6 ++++++
+>   1 file changed, 6 insertions(+)
+> 
+> diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
+> index 1462f2760818..a79434608465 100644
+> --- a/drivers/nvmem/mtk-efuse.c
+> +++ b/drivers/nvmem/mtk-efuse.c
+> @@ -124,6 +124,11 @@ static int mtk_efuse_probe(struct platform_device *pdev)
+>   	return 0;
+>   }
+>   
+> +static const struct mtk_efuse_pdata mtk_mt6572_efuse_pdata = {
+> +	.uses_post_processing = false,
 
-Handle an interrupted wait and exhausted timeout retries separately, and
-retry hardware selection after a successful wakeup. The encoder uses
-wait_event_interruptible(), whose successful return is zero, so this change
-does not alter its separate no-timeout waiting policy.
+Are you sure this SoC (or any other compatible with it) doesn't have any GPU speed
+binning?
 
-Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
----
-Changes since v1: https://lore.kernel.org/all/20260625003142.99598-1-pengpeng@iscas.ac.cn/
-- split interrupted waits, timeout exhaustion and successful wakeups
-- use distinct diagnostics and explain why the encoder path is outside this
-  fix
-- rebase onto v7.2-rc4
+If you're really sure
 
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index d147ec483081..9634c95aaada 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1697,9 +1697,15 @@ static void mtk_jpegdec_worker(struct work_struct *work)
- 		ret = wait_event_interruptible_timeout(jpeg->hw_wq,
- 						       atomic_read(&jpeg->hw_rdy) > 0,
- 						       MTK_JPEG_HW_TIMEOUT_MSEC);
--		if (ret != 0 || (i++ > MTK_JPEG_MAX_RETRY_TIME)) {
--			dev_err(jpeg->dev, "%s : %d, all HW are busy\n",
--				__func__, __LINE__);
-+		if (ret < 0) {
-+			dev_err(jpeg->dev, "decoder HW wait interrupted: %d\n",
-+				ret);
-+			v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
-+			return;
-+		}
-+
-+		if (!ret && i++ > MTK_JPEG_MAX_RETRY_TIME) {
-+			dev_err(jpeg->dev, "all decoder HW are busy\n");
- 			v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
- 			return;
- 		}
-
+> +	.needs_aligned_read = true,
+> +};
+> +
+>   static const struct mtk_efuse_pdata mtk_mt8186_efuse_pdata = {
+>   	.uses_post_processing = true,
+>   	.needs_aligned_read = false,
+> @@ -135,6 +140,7 @@ static const struct mtk_efuse_pdata mtk_efuse_pdata = {
+>   };
+>   
+>   static const struct of_device_id mtk_efuse_of_match[] = {
+> +	{ .compatible = "mediatek,mt6572-efuse", .data = &mtk_mt6572_efuse_pdata },
+>   	{ .compatible = "mediatek,mt8173-efuse", .data = &mtk_efuse_pdata },
+>   	{ .compatible = "mediatek,mt8186-efuse", .data = &mtk_mt8186_efuse_pdata },
+>   	{ .compatible = "mediatek,efuse", .data = &mtk_efuse_pdata },
+> 
 
