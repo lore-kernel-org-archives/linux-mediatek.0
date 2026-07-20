@@ -4,85 +4,199 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4DDBC44515
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 15:27:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26340C44515
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 15:27:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f2jcU9lxt1tyEFtpFx78fCs2HLx+LgpS9wofGE1Rx3o=; b=FsqBSMxp5PH1b6m0smEyIwGS3+
-	zMPJcnt2hJaNCQTkLm4zrXFeedJR9of+YXelJJWLWvNALGj0WcYvUL74RxV+M0xERqBpsAuN+cbXd
-	lfQv73mLNoYrqR330BZg01m0L/i3cUO0PVP8HJLQ1mRJ/Pwc2uAHsLgrvDA4G8uNOjIiBX7ulCsBr
-	T/XI0lPoU/nrAX1F3BK+IekReBNWDhg6xSvgaGb/uGQd2EeCHLH1I3mM/k9gkDOy1396cH+aUO6ju
-	rUvMuyrq5UCdBvxES0v2VnRkJPuAF5i23K1bRo2V1Hs/VZsNAQjvjs511xn9AdEvWFdcjgfvKD5nU
-	v1hK7RNw==;
+	bh=kTyehpI+Frpde8vx4Y/usVDlefaVXjVPd9jl0F472DA=; b=hIuknsAZMsRg8HWP/Iro8lrnQl
+	nGBmBtqfWeUtREMzY+ff4OCUpBeI57zVZ5c2TcpiF7HzgHfVr6XeGtX94xwxWJiy1iOXjFE3eBKnu
+	eNHCtS8zYfHAnXw/K4x3+RoeUwCbvyDM+XC2MkhK8hv0RmifWb3Q/SV4zIymMLdQ1LiOXbHJCsA+y
+	fY/IHWK0/JD1GA/2MqKerVen+7GFd+EwPh/C/Wfyso7HoCw6rjwNnY40dY1h7zjSPG8230uPOMUJ3
+	CoWv77H7RBWJ9KjQNiWea01u0AVdjNp/PXrUfB+cvIP5vkrJQAOu+X7c6oSku/dd8srNRHhvYDfRn
+	418qNZPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlptp-00000007Ban-4C7N;
-	Mon, 20 Jul 2026 15:27:22 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wlpuB-00000007Bku-0fUq;
+	Mon, 20 Jul 2026 15:27:43 +0000
+Received: from smtp-out1.suse.de ([195.135.223.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlptf-00000007BSQ-2Qby;
-	Mon, 20 Jul 2026 15:27:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=f2jcU9lxt1tyEFtpFx78fCs2HLx+LgpS9wofGE1Rx3o=; b=irnTehM4MClzFUZ0CBJ3M6t/VM
-	3ycPOT+b+dbDDs3ujUTJN4fx9qtatZLNMuiFOCwj+omixxgUEYInUy7DQReQjW93QFT0OoxfI9WzN
-	56CBizXGKYIXH0z2QKaAl5fscI2kspI/39HqiTu7apuT3M8ELQGRtCJWkB/RzjmWhvi/QHQrVPGmm
-	sK9TjtZ7h5Lu7pf9U0w0OUROIApY2hKhoMJ7KXVD58hcGOatZgEugoKquCGjBz2y5u3/hHb8gCZmO
-	wDqxRU3SCpH4Yi09GwnB6K85RFH4xlX+j6JioQPBYRCZmlENg64z/r1VmR1v+an2PXtFswKBdvQJa
-	AagC4iGg==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wlptc-0000000GjSR-1HZ8;
-	Mon, 20 Jul 2026 15:27:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784561223;
-	bh=uy3S2EsDCUPQWDiWwzrUuwHOIhNHKPZerlwUBZHGjR8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=M4i2zlsdC56x4F8hCYmWZNqunkS5Gf+VwjAGr2Y2gJG3BG/Uoz9Ajutk3kgO1JY3S
-	 p287+xDY1Pnz4MLOOg3HzrE9hSt5HXBeuTL7X5RJfxXTORDEmUl/HtYGCVVzyjlzHz
-	 OHlE9QoJngr+TQOgXv2x0oS6oskQXMBaBK3wA2qCyJkiUEJKX/1qATdocnf7KAIVBN
-	 Spzu4yIDVdpUkzQHDAowelCxRVsDA3FzyZ8d3NtU1Pwbm1A7HLlGvF3VLxvoM6TVfN
-	 lfKucTTxf2NugTWtvbHFH2+l/D1usi0fAysyxJOYA1FyZVrHmt/gC/etK0VBvR1wOE
-	 ctFkU5lwS0K8w==
-Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	id 1wlpu7-00000007Bin-1Wag
+	for linux-mediatek@lists.infradead.org;
+	Mon, 20 Jul 2026 15:27:41 +0000
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EC66E17E071A;
-	Mon, 20 Jul 2026 17:27:02 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunfeng.yun@mediatek.com
-Cc: vkoul@kernel.org,
-	neil.armstrong@linaro.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com
-Subject: [PATCH v3 1/2] dt-bindings: phy: Document MT8196 MediaTek PCI-Express Gen4 S-PHY
-Date: Mon, 20 Jul 2026 17:26:53 +0200
-Message-ID: <20260720152654.92216-2-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260720152654.92216-1-angelogioacchino.delregno@collabora.com>
-References: <20260720152654.92216-1-angelogioacchino.delregno@collabora.com>
+	by smtp-out1.suse.de (Postfix) with ESMTPS id D6B0C7A027;
+	Mon, 20 Jul 2026 15:27:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1784561257; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=kTyehpI+Frpde8vx4Y/usVDlefaVXjVPd9jl0F472DA=;
+	b=rSvtzNjtQIY+oL+pZb9Z7HxTl+ceaV1jIAfd90ZAviR/KUdRbN4YOiCjyazpvR/PA8g13I
+	ip5sL7rxrk6wVoZAmzi5W+OJ21reUcDlrXqBqAlP21vQD/uy2TKtSNu0eD5pqwlCf2Cqco
+	gOhOjJhe8gZ/bQnsuYOvQXir2Yofj1o=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1784561257;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=kTyehpI+Frpde8vx4Y/usVDlefaVXjVPd9jl0F472DA=;
+	b=s8wRfVdc+ajxxOiSm5qAIaGfAxpSWN8FFiWUMl5Yc+Ptht+dAYpKm8TNx1SLbM9xPYbOfS
+	Cf52o18/LCbbAECQ==
+Authentication-Results: smtp-out1.suse.de;
+	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=FZxXkRq3;
+	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=Y8b71xct
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1784561256; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=kTyehpI+Frpde8vx4Y/usVDlefaVXjVPd9jl0F472DA=;
+	b=FZxXkRq3+XPfr7HNKL1iVxiYCbadfG59H8SS/f9s+AF23Ta/lCVqEMyoohir+bgO3Ke9Vd
+	JSl0eAlwz5EfzTdCiIMUWLNn646doRy/KWZdlfAumSJ/cFlSztw6LK3sQBX/brF7xhaspw
+	tXlSGTPQrGIB6//gEfBWfCy/G5kYSZ8=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1784561256;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=kTyehpI+Frpde8vx4Y/usVDlefaVXjVPd9jl0F472DA=;
+	b=Y8b71xctD+F7nWJ+3Jr4a4km6bsocJJhhQYVVlZpixDP72DjWw0E/dHkBsnpIKueaP1lzm
+	Ns4Kbl11JgHIHvAw==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 4F75C779AA;
+	Mon, 20 Jul 2026 15:27:35 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id BHEDEmc+XmrzCgAAD6G6ig
+	(envelope-from <tzimmermann@suse.de>); Mon, 20 Jul 2026 15:27:35 +0000
+Message-ID: <bde20e63-ec55-4ad4-872e-a7a983424100@suse.de>
+Date: Mon, 20 Jul 2026 17:27:34 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/15] drm/exynos: remove dependency on DRM simple helpers
+To: Diogo Silva <diogompaissilva@gmail.com>
+Cc: Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>,
+ Seung-Woo Kim <sw0312.kim@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Peter Griffin <peter.griffin@linaro.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Michal Simek <michal.simek@amd.com>,
+ Thierry Reding <thierry.reding@kernel.org>,
+ Mikko Perttunen <mperttunen@nvidia.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Stefan Agner <stefan@agner.ch>,
+ Alison Wang <alison.wang@nxp.com>,
+ Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
+ David Airlie <airlied@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ Gurchetan Singh <gurchetansingh@chromium.org>, Chia-I Wu
+ <olvaffe@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>,
+ Liu Ying <victor.liu@nxp.com>, Frank Li <Frank.Li@nxp.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Xinliang Liu <xinliang.liu@linaro.org>,
+ Sumit Semwal <sumit.semwal@linaro.org>, Yongqin Liu
+ <yongqin.liu@linaro.org>, John Stultz <jstultz@google.com>,
+ Liviu Dudau <liviu.dudau@arm.com>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>,
+ Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-tegra@vger.kernel.org, virtualization@lists.linux.dev,
+ imx@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, linux-amlogic@lists.infradead.org,
+ linux-doc@vger.kernel.org
+References: <20260719-drm_simple_encoder_init-v1-0-a78c509e3062@gmail.com>
+ <20260719-drm_simple_encoder_init-v1-1-a78c509e3062@gmail.com>
+ <4af254a4-beb7-4f77-830f-42d5bacb10a4@suse.de>
+ <CAJpoHp73S2_cavgV3aVwC5PS8H1GRqTdDV-Xu8n6nXavBnV2=g@mail.gmail.com>
+Content-Language: en-US
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Autocrypt: addr=tzimmermann@suse.de; keydata=
+ xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
+ XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
+ BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
+ hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
+ 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
+ AAHNJ1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPsLAjgQTAQgAOAIb
+ AwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftODH
+ AAoJEGgNwR1TC3ojx1wH/0hKGWugiqDgLNXLRD/4TfHBEKmxIrmfu9Z5t7vwUKfwhFL6hqvo
+ lXPJJKQpQ2z8+X2vZm/slsLn7J1yjrOsoJhKABDi+3QWWSGkaGwRJAdPVVyJMfJRNNNIKwVb
+ U6B1BkX2XDKDGffF4TxlOpSQzdtNI/9gleOoUA8+jy8knnDYzjBNOZqLG2FuTdicBXblz0Mf
+ vg41gd9kCwYXDnD91rJU8tzylXv03E75NCaTxTM+FBXPmsAVYQ4GYhhgFt8S2UWMoaaABLDe
+ 7l5FdnLdDEcbmd8uLU2CaG4W2cLrUaI4jz2XbkcPQkqTQ3EB67hYkjiEE6Zy3ggOitiQGcqp
+ j//OwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHUE9eosYb
+ T6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+qbU6
+ 3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWW
+ GKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lv
+ hFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsA
+ EQEAAcLAdgQYAQgAIAIbDBYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJftOH6AAoJEGgNwR1T
+ C3ojVSkIALpAPkIJPQoURPb1VWjh34l0HlglmYHvZszJWTXYwavHR8+k6Baa6H7ufXNQtThR
+ yIxJrQLW6rV5lm7TjhffEhxVCn37+cg0zZ3j7zIsSS0rx/aMwi6VhFJA5hfn3T0TtrijKP4A
+ SAQO9xD1Zk9/61JWk8OysuIh7MXkl0fxbRKWE93XeQBhIJHQfnc+YBLprdnxR446Sh8Wn/2D
+ Ya8cavuWf2zrB6cZurs048xe0UbSW5AOSo4V9M0jzYI4nZqTmPxYyXbm30Kvmz0rYVRaitYJ
+ 4kyYYMhuULvrJDMjZRvaNe52tkKAvMevcGdt38H4KSVXAylqyQOW5zvPc4/sq9c=
+In-Reply-To: <CAJpoHp73S2_cavgV3aVwC5PS8H1GRqTdDV-Xu8n6nXavBnV2=g@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-Rspamd-Action: no action
+X-Spamd-Result: default: False [-3.01 / 50.00];
+	BAYES_HAM(-3.00)[100.00%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	NEURAL_HAM_SHORT(-0.20)[-1.000];
+	MIME_GOOD(-0.10)[text/plain];
+	MX_GOOD(-0.01)[];
+	FREEMAIL_CC(0.00)[gmail.com,samsung.com,ffwll.ch,kernel.org,linaro.org,ideasonboard.com,linux.intel.com,amd.com,nvidia.com,agner.ch,nxp.com,intel.com,redhat.com,collabora.com,chromium.org,iki.fi,pengutronix.de,glider.be,google.com,arm.com,baylibre.com,googlemail.com,lwn.net,linuxfoundation.org,lists.freedesktop.org,lists.infradead.org,vger.kernel.org,lists.linux.dev];
+	FREEMAIL_ENVRCPT(0.00)[gmail.com];
+	FREEMAIL_TO(0.00)[gmail.com];
+	MIME_TRACE(0.00)[0:+];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	ARC_NA(0.00)[];
+	FUZZY_RATELIMITED(0.00)[rspamd.com];
+	RCVD_TLS_ALL(0.00)[];
+	R_RATELIMIT(0.00)[to_ip_from(RL5qdohruh175rhiw1bqi96ifb)];
+	TO_DN_SOME(0.00)[];
+	RCVD_COUNT_TWO(0.00)[2];
+	TO_MATCH_ENVRCPT_SOME(0.00)[];
+	FROM_EQ_ENVFROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	DKIM_TRACE(0.00)[suse.de:+];
+	RCPT_COUNT_GT_50(0.00)[59];
+	DWL_DNSWL_BLOCKED(0.00)[suse.de:dkim];
+	MID_RHS_MATCH_FROM(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	TAGGED_RCPT(0.00)[renesas];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid,suse.de:dkim,imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns,suse.com:url]
+X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
+X-Rspamd-Queue-Id: D6B0C7A027
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260720_162708_583510_F0D132A7 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20260720_082739_690808_F1C0472A 
+X-CRM114-Status: GOOD (  12.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,121 +211,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This adds bindings for the PCI-Express Gen4 S-PHY found in newer
-MediaTek SoCs, such as MT8196 and its variants.
+Hi
 
-In the current "revision 3", depending on the specific port, this
-S-PHY supports up to two lanes of PCI-Express Gen 4 and both EP
-and RC modes.
-It is not clear whether revisions/versions earlier than 3 have
-ever been shipped in any other MediaTek SoC.
+Am 20.07.26 um 17:15 schrieb Diogo Silva:
+> Hey,
+>
+>> Again, you rather want drm_err() with drm_dev here.
+>>
+>> I've briefly looked over the series and many patches seem affected.
+>> Please prefer drm_ logging functions and DRM devices over the plain
+>> device equivalents.
+> Thanks. I will submit a v2 with consistent usage of drm_err().
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../phy/mediatek,mt8196-pcie-sphy.yaml        | 93 +++++++++++++++++++
- 1 file changed, 93 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/phy/mediatek,mt8196-pcie-sphy.yaml
+Thanks
 
-diff --git a/Documentation/devicetree/bindings/phy/mediatek,mt8196-pcie-sphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,mt8196-pcie-sphy.yaml
-new file mode 100644
-index 000000000000..3fd1bfbc3822
---- /dev/null
-+++ b/Documentation/devicetree/bindings/phy/mediatek,mt8196-pcie-sphy.yaml
-@@ -0,0 +1,93 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/phy/mediatek,mt8196-pcie-sphy.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek PCI-Express Gen4 S-PHY
-+
-+maintainers:
-+  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+
-+description:
-+  The MediaTek PCI-Express Gen4 S-PHY is capable of data serialization
-+  and de-serialization with 8, 10, 128 or 130 bits (16GT/s) encoding
-+  and decoding, has analog buffers, elastic buffers and mechanisms for
-+  receiver detection.
-+  This PHY supports link rates of 2.5, 5.0, 8.0 and 16.0 GT/s per-lane
-+  in both Root Complex (RC) and End Point (EP) modes, depending on the
-+  chosen port.
-+  The Digital PHY (PHYD) part adheres to the Intel PIPE (PHY Interface
-+  for the PCIe) specification.
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt8196-pcie-sphy
-+
-+  reg:
-+    items:
-+      - description: System Interface (SIF) registers
-+      - description: Clock Management (CKM) registers
-+
-+  reg-names:
-+    items:
-+      - const: sif
-+      - const: ckm
-+
-+  "#phy-cells":
-+    const: 0
-+
-+  nvmem-cells:
-+    items:
-+      - description: Internal resistor selection of TX Bias Current
-+      - description: XTP Bias V2V voltage calibration
-+      - description: S-PLL CKTX Impedance Selection (P-MOSFET side)
-+      - description: S-PLL CKTX Impedance Selection (N-MOSFET side)
-+      - description: S-PLL CKTX Intermediate Transition Impedance
-+      - description: RX Front-End Return Loss Continuous Time Linear EQ
-+      - description: RX Front-End Return Loss Variable Gain Amplifier
-+      - description: RX Front-End Return Loss Decision Feedback EQ
-+      - description: RX Impedance Selection
-+      - description: TX Impedance Selection (P-MOSFET side)
-+      - description: TX Impedance Selection (N-MOSFET side)
-+      - description: TX Lane 0 Switch Resistance (RSWn)
-+      - description: TX Lane 1 Switch Resistance (RSWn)
-+      - description: eFuse calibration table version
-+
-+  nvmem-cell-names:
-+    items:
-+      - const: int-r
-+      - const: xtp-vtrim
-+      - const: cktx-pmos
-+      - const: cktx-nmos
-+      - const: cktx-r-mid
-+      - const: rxfe-lanes-rl-ctle
-+      - const: rxfe-lanes-rl-vga
-+      - const: rxfe-lanes-rl-dfe
-+      - const: rx-lanes-imp
-+      - const: tx-lanes-pmos
-+      - const: tx-lanes-nmos
-+      - const: tx-ln0-rswn
-+      - const: tx-ln1-rswn
-+      - const: cal-version
-+
-+  power-domains:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - reg-names
-+  - "#phy-cells"
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    phy@16900000 {
-+        compatible = "mediatek,mt8196-pcie-sphy";
-+        reg = <0x16900000 0x10000>, <0x16920000 0x10000>;
-+        reg-names = "sif", "ckm";
-+        power-domains = <&spm 10>;
-+        #phy-cells = <0>;
-+    };
+>
+> Also, is there any ongoing task or would it be useful to submit patches
+> changing the usage of DRM_DEV_* functions with drm_* equivalents?
+> Or from dev_* to drm_* when possible ?
+
+Possibly. DRM_DEV_ logging is supposed to be replaced with drm_ logging 
+helpers. That would be a simple follow-up series.  Whether to prefer 
+drm_ over dev_ logging depends on the context and the driver maintainer.
+
+Best regards
+Thomas
+
+
+>
+> BR,
+> Diogo
+
 -- 
-2.55.0
+--
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Frankenstr. 146, 90461 Nürnberg, Germany, www.suse.com
+GF: Jochen Jaser, Andrew McDonald, (HRB 36809, AG Nürnberg)
+
 
 
