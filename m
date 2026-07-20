@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83F29C4452B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 15:41:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFD39C44515
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 15:41:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ITwMWTyjPOpmiBS75ZF02CenxzeBHARaB0ED7f6Tp6A=; b=hpWSftDBtzkoM58DxxYxh0pdDS
-	9mT4dypACBJeguXOize9ikOwv+rWQdECqZCajlfiW4ZHraHKXH0cxs1i+3avIruI6/iFU14CCgTdK
-	3b2qQ8pRv8Q00XIrRf9SChFoerfJXE9TangvCefZuvwlUqyUGj5nk4QzdYJC/6nx/l34NxfjntGKz
-	dQCVzsc++b7LRfUu+MGcwgYThkGAI36c2JuNApLutDOwnYd6wqaTegLXOFnwjvJIlpX4ZlCH2pfgr
-	jWTF/jHmGApAbBioZk8NiJvKhg+dRKGJ/bbFQFsOD6BWs2ZQLy8JMmHNSDfthJT+RZJ8oqMYQbiAX
-	bbIP5Yww==;
+	bh=LYdVSEJYSxlpPRyHCi7r5tN2RJPa+UFv81a3Ufh1joM=; b=i+TYw580U9ZYDMDgCjP+offZwQ
+	dV4ENz5W0+apq0/67DAkFcL6oSjEjmWtYnOj9ZniHHQzj4W2jfjUct6tLsfjcUjLT+9JXcgx4odHb
+	2FnjyUBUvmWJK2z3qksWaLQ1zYJU865ZhxR9LG+pN+vU/4XB7HlraEFQQWZgvUzH3chdDujCzrQTQ
+	gHQ+kt788q89CQQbisn/gBKOJY5HWMFtDTkhncgsiHEipoZeT6lE9JY+DfoLRVKLTWlpr/VYA3tOu
+	6jOp4veWtPzVIWVnd9dW9AbASugbWkgDF24fa1igiuRZut+IhrY4JkrGre0VSnjuucvFtuuZXtog5
+	yWRMUR3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlq7h-00000007Eq6-2xwC;
-	Mon, 20 Jul 2026 15:41:41 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1wlq7l-00000007EuD-01vZ;
+	Mon, 20 Jul 2026 15:41:45 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlq7d-00000007EiC-1y14
+	id 1wlq7h-00000007EnK-1yRV
 	for linux-mediatek@lists.infradead.org;
-	Mon, 20 Jul 2026 15:41:39 +0000
-Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-4728c12ba97so5146073f8f.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 Jul 2026 08:41:37 -0700 (PDT)
+	Mon, 20 Jul 2026 15:41:43 +0000
+Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-47df43bfb07so2743634f8f.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Jul 2026 08:41:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784562096; x=1785166896; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1784562099; x=1785166899; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=ITwMWTyjPOpmiBS75ZF02CenxzeBHARaB0ED7f6Tp6A=;
-        b=IlE2BeVVzY7mGS9UZpG8DJr4ZIeBMSiTytKy8utatdvmRIaMfuuty1lXuh5cGuC3yM
-         wtm/2Vgk2oTvoiGbBIM332KS1mpxPF0sU4pHu/OF0VnR9mr6b6fDLubnnjBlqkdIde5H
-         gRcmPNhl0KKEosv079lPZljsk5Em9bHdo5RkKynRFjVLsGycjksuQcV503NkOBHh9sq5
-         jrs9jsInL+oYUWZdKSeKCsBcvl+Ux748J6lJ/hSubhw9/BW22iQaVNLhVJ7s1p5jAzP0
-         BrOoK++N9MY7MnRNz9wE7koJSq2HKgeqEgxQ+e9YfxpItAa+RCBbqu3W720knQF6SkGM
-         vkYg==
+        bh=LYdVSEJYSxlpPRyHCi7r5tN2RJPa+UFv81a3Ufh1joM=;
+        b=juqD8UmqBkmR0fv7rbk0u9DADPzrDf+9ZHWB87quLpbXfOOxu6losI77w9cXOAbPBR
+         QqjvUtzhQcjgs0O76RNf2Jf5kRMtsoQdjgeaOmloi1uKxOHraA8QHySsT5Xb0xPOxKNz
+         pr9nKC/tQdhetY1wLHCS/BEb1h2Ng42GmAtNMbEngGDgAcvzEHMwvmof4FbhpQqt2ftJ
+         WpoI8QpbLAz3XHpeYQmJxiW1NWOJJ9/b4CuXp5B6gBw/DwksrrL9hAzCqhaDE715ayG0
+         BqPBTBTnN653Gerrcv/VBsIflhuDyl5b9/4SgrUwB8wFd00wrfLQ4NwZE/aosQg2MKPm
+         3igQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784562096; x=1785166896;
+        d=1e100.net; s=20251104; t=1784562099; x=1785166899;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=ITwMWTyjPOpmiBS75ZF02CenxzeBHARaB0ED7f6Tp6A=;
-        b=aZ7oh3fOIO0OpzAmjh1YiVMlTFU1Sr6S1kWeOWBIZoiQRYQWD8P8AphAz+wAeIf1b/
-         HdAV++GqvPuHnKasspltLp0UYzM2CYeexB0Lwxq15RH/+jZHvIiEhsfj534ea+Elr4Cm
-         SB8sj1a6oK2ozfnh1X1tn9dvLCd5JYLGgjMktfUne3EBL9QUwu6Q6ScIrPJBeG52xPg3
-         fO2QxQVXS5vbMxe3swaNI366H2gNfG6ma02H0Uon/FXcEMy8XMCoPW2O0MPr3SyMh/MU
-         r+OGkc7R8XMO5gp3USCcOt1thDXd/RfGmU1Jza9pwGRVv+IPHyd6x/EbW+MCEuOWQaKw
-         bhZw==
-X-Forwarded-Encrypted: i=1; AHgh+Rrx2g9DfYRQ1vUiVS0VzP2ZpdRCsLFoqpmTvh91i6ela7/F4aXWpn6VVb/kW8wyMNyBqq9XN4JAoirRrfiiSg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzlneS+/FhcNBSSwbWCaFZ9TkCCap60gNcKeVrz6aT+6Efa9VnW
-	A07AR6xqkUUgo8sx4Dbzzo0JhdjYEmjbibwr+gXESULzO7ynkGZOy8eb
-X-Gm-Gg: AR+sD12r/rUQkKEQod8ssM4SyvoCjrAwaluKT70W3wVyaFwxkzUqSS5lejNTFs9GK3g
-	oNpiR+KIhimCDzM4Kz6/W8gWoQJuWRGuISt+qmcmibqIvbujvmc2vWdI3pP/avZ9WHFF7yqa8wT
-	Jy2BtsbKLM+oOXvSPV+1htpyGhT2oPhtxAZwN5Xs8DHHcwM/s4KFZX3CSodt+B8blFoLkUuU2vQ
-	0BlZYYJD/LEhAq5YZslKm9dBBjLm62FSL7vUADuTC5Jqq4IeGEtZ9q4arpvt0TwzsI/lhtiYuOr
-	u2MbILFw8y45K1AA8rykWzu2suPcSyroCxw2KlSjwxhlSRbHM5Vip0LwmIZDSJwCQ/dfEf5KiSD
-	KVWtHLtN0b1X0P9et8IzFS1krehaPEDC7emokQ4TD7711fjFBI3OEwG0QTlfI2xpqeSdA/+sEx7
-	mfr113+FLrBo5r1sybSMm5
-X-Received: by 2002:a05:6000:18a6:b0:47f:6f98:4993 with SMTP id ffacd0b85a97d-47f6f984b87mr10186539f8f.29.1784562095536;
-        Mon, 20 Jul 2026 08:41:35 -0700 (PDT)
+        bh=LYdVSEJYSxlpPRyHCi7r5tN2RJPa+UFv81a3Ufh1joM=;
+        b=C4rWO3+iIrUNzbfd+/jg+3c+CoeT8xtK57YzsNulPgt4BfifEbZi5s3+T0QKLu74Cc
+         YgjjJ9vKCbSLNJfLm2PEYyqnfazvo1lWKyLAjEJiJP+4fF81ds09gPtYtxWySf4Jyh2o
+         P06jL2FvmQJm94bkThrJWe1Gw+lcy/vUvzbLC923Ys+Uwtjw52vm6y9p7h1sneAga7bP
+         vq9ow2Pq2rD4prErD/Y/Cge8+PVmYx36G12lwe/uYFfMn7FvB12Ez4Srt352znMnLJeF
+         XcQBUKJBrChdPPBirbargX4ZQ73FPxsje0HFCe6JcSWL62wmDuU47yPfg928Hm19wab+
+         rgdQ==
+X-Forwarded-Encrypted: i=1; AHgh+Ro3s/Xsb93cb6awYvtPX/Az53TTE6d/Pe7tNGrpBq0PMHFWkJwBxSOvo8RM6eNVcNAPowqXKSW/znSpjy7mcA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwCzc3PBPW1n3Go6zqYHc/XG1QEGh7KOUrUmOgTFVLuSzIFHBlG
+	aYb9Dz8UIccJHSoeCtVJyAgLkq3sydBR5z9B0bwr5XKU4TaIFT5lJ/Ua
+X-Gm-Gg: AR+sD12PcZEAACcLGZ2+XhpeBrOHfNFO92STUexD2w6OFM54/kV0oovcikHUdHlarBo
+	s00O/SuSmGTTQo88Bk0yA2ydmv5dVGTPy4EOfNFkcVdgevZYhGlrU0iTa+GAESCcwAvw/1nMWqD
+	z9QNzanIX+sbG5+k5ozdw11DBUgeSdsE1trfuRCOpuoj9bJj4WNTyvDxfjCzwWlFmdZYluq1+4V
+	5vIuqrNxogFgHWK6fT4CfIeKk4qE6tv+z67veiVsJs29CL/u+lCGZzUdNdGXXFSlsV6VRTOyUCz
+	xm62QsHCDCFM8figtTQgMqqMR4higJ9X+37xzsx9A4AqR6z1NQ6jSIw6Cj6Ojnnu5RP1SQKxCI0
+	vTaFu9T88c5H73NsxLnd8cyGJJkx2BBn9E36XtQ559nYcz+Q2HU7JL2NHq4w4cCRV1puYRihHdu
+	ZbSggqhDMi8A==
+X-Received: by 2002:a5d:5f91:0:b0:46f:7d90:8121 with SMTP id ffacd0b85a97d-47f62305661mr18563371f8f.14.1784562099337;
+        Mon, 20 Jul 2026 08:41:39 -0700 (PDT)
 Received: from [127.0.0.2] ([2a01:14:111:ccf0:e9c1:2f80:10a9:c708])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47f67466e09sm32667936f8f.21.2026.07.20.08.41.31
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47f67466e09sm32667936f8f.21.2026.07.20.08.41.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Jul 2026 08:41:35 -0700 (PDT)
+        Mon, 20 Jul 2026 08:41:38 -0700 (PDT)
 From: Diogo Silva <diogompaissilva@gmail.com>
-Date: Mon, 20 Jul 2026 17:40:45 +0200
-Subject: [PATCH v2 13/15] drm/meson: remove dependency on DRM simple
- helpers
+Date: Mon, 20 Jul 2026 17:40:46 +0200
+Subject: [PATCH v2 14/15] drm/drm_simple: remove deprecated
+ drm_simple_encoder_init function
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260720-drm_simple_encoder_init-v2-13-5020b630668a@gmail.com>
+Message-Id: <20260720-drm_simple_encoder_init-v2-14-5020b630668a@gmail.com>
 References: <20260720-drm_simple_encoder_init-v2-0-5020b630668a@gmail.com>
 In-Reply-To: <20260720-drm_simple_encoder_init-v2-0-5020b630668a@gmail.com>
 To: Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, 
@@ -124,8 +124,8 @@ Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
  linux-doc@vger.kernel.org, Diogo Silva <diogompaissilva@gmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260720_084137_568467_138775FF 
-X-CRM114-Status: GOOD (  12.04  )
+X-CRM114-CacheID: sfid-20260720_084141_562876_5126E1AB 
+X-CRM114-Status: GOOD (  11.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,129 +143,62 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 The simple KMS helpers are deprecated because they only add an
 intermediate layer between drivers and atomic modesetting.
 
-Open-code drm_simple_encoder_init() by calling drm_encoder_init()
-directly and providing driver-local drm_encoder_funcs.
+All driver users of drm_simple_encoder_init() have been converted to
+drm_encoder_init(). Drop the helper and open-code its remaining internal
+use in drm_simple_display_pipe_init() to prevent new users.
 
 Signed-off-by: Diogo Silva <diogompaissilva@gmail.com>
 ---
- drivers/gpu/drm/meson/meson_encoder_cvbs.c | 11 ++++++++---
- drivers/gpu/drm/meson/meson_encoder_dsi.c  | 11 ++++++++---
- drivers/gpu/drm/meson/meson_encoder_hdmi.c | 11 ++++++++---
- 3 files changed, 24 insertions(+), 9 deletions(-)
+ drivers/gpu/drm/drm_simple_kms_helper.c | 13 ++-----------
+ include/drm/drm_simple_kms_helper.h     |  4 ----
+ 2 files changed, 2 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/gpu/drm/meson/meson_encoder_cvbs.c b/drivers/gpu/drm/meson/meson_encoder_cvbs.c
-index 22cacb1660c4..cdb84d2283f8 100644
---- a/drivers/gpu/drm/meson/meson_encoder_cvbs.c
-+++ b/drivers/gpu/drm/meson/meson_encoder_cvbs.c
-@@ -17,8 +17,8 @@
- #include <drm/drm_bridge_connector.h>
- #include <drm/drm_device.h>
- #include <drm/drm_edid.h>
-+#include <drm/drm_encoder.h>
- #include <drm/drm_probe_helper.h>
--#include <drm/drm_simple_kms_helper.h>
- 
- #include "meson_registers.h"
- #include "meson_vclk.h"
-@@ -218,6 +218,10 @@ static const struct drm_bridge_funcs meson_encoder_cvbs_bridge_funcs = {
- 	.atomic_create_state = drm_atomic_helper_bridge_create_state,
+diff --git a/drivers/gpu/drm/drm_simple_kms_helper.c b/drivers/gpu/drm/drm_simple_kms_helper.c
+index 8e1d07b9f1e3..7878b9d7d524 100644
+--- a/drivers/gpu/drm/drm_simple_kms_helper.c
++++ b/drivers/gpu/drm/drm_simple_kms_helper.c
+@@ -20,16 +20,6 @@ static const struct drm_encoder_funcs drm_simple_encoder_funcs_cleanup = {
+ 	.destroy = drm_encoder_cleanup,
  };
  
-+static const struct drm_encoder_funcs meson_encoder_cvbs_funcs = {
-+	.destroy = drm_encoder_cleanup,
-+};
-+
- int meson_encoder_cvbs_probe(struct meson_drm *priv)
+-int drm_simple_encoder_init(struct drm_device *dev,
+-			    struct drm_encoder *encoder,
+-			    int encoder_type)
+-{
+-	return drm_encoder_init(dev, encoder,
+-				&drm_simple_encoder_funcs_cleanup,
+-				encoder_type, NULL);
+-}
+-EXPORT_SYMBOL(drm_simple_encoder_init);
+-
+ void *__drmm_simple_encoder_alloc(struct drm_device *dev, size_t size,
+ 				  size_t offset, int encoder_type)
  {
- 	struct drm_device *drm = priv->drm;
-@@ -257,8 +261,9 @@ int meson_encoder_cvbs_probe(struct meson_drm *priv)
- 	meson_encoder_cvbs->priv = priv;
+@@ -363,7 +353,8 @@ int drm_simple_display_pipe_init(struct drm_device *dev,
+ 		return ret;
  
- 	/* Encoder */
--	ret = drm_simple_encoder_init(priv->drm, &meson_encoder_cvbs->encoder,
--				      DRM_MODE_ENCODER_TVDAC);
-+	ret = drm_encoder_init(priv->drm, &meson_encoder_cvbs->encoder,
-+			       &meson_encoder_cvbs_funcs,
-+			       DRM_MODE_ENCODER_TVDAC, NULL);
- 	if (ret)
- 		return dev_err_probe(priv->dev, ret,
- 				     "Failed to init CVBS encoder\n");
-diff --git a/drivers/gpu/drm/meson/meson_encoder_dsi.c b/drivers/gpu/drm/meson/meson_encoder_dsi.c
-index 3e422b612f74..faa309cb97a6 100644
---- a/drivers/gpu/drm/meson/meson_encoder_dsi.c
-+++ b/drivers/gpu/drm/meson/meson_encoder_dsi.c
-@@ -10,10 +10,10 @@
- #include <linux/of_graph.h>
+ 	encoder->possible_crtcs = drm_crtc_mask(crtc);
+-	ret = drm_simple_encoder_init(dev, encoder, DRM_MODE_ENCODER_NONE);
++	ret = drm_encoder_init(dev, encoder, &drm_simple_encoder_funcs_cleanup,
++			       DRM_MODE_ENCODER_NONE, NULL);
+ 	if (ret || !connector)
+ 		return ret;
  
- #include <drm/drm_atomic_helper.h>
--#include <drm/drm_simple_kms_helper.h>
- #include <drm/drm_bridge.h>
- #include <drm/drm_bridge_connector.h>
- #include <drm/drm_device.h>
-+#include <drm/drm_encoder.h>
- #include <drm/drm_probe_helper.h>
+diff --git a/include/drm/drm_simple_kms_helper.h b/include/drm/drm_simple_kms_helper.h
+index cb672ce0e856..c95f86ff355f 100644
+--- a/include/drm/drm_simple_kms_helper.h
++++ b/include/drm/drm_simple_kms_helper.h
+@@ -68,10 +68,6 @@ int drm_simple_display_pipe_init(struct drm_device *dev,
+ 			const uint64_t *format_modifiers,
+ 			struct drm_connector *connector);
  
- #include "meson_drv.h"
-@@ -99,6 +99,10 @@ static const struct drm_bridge_funcs meson_encoder_dsi_bridge_funcs = {
- 	.atomic_create_state = drm_atomic_helper_bridge_create_state,
- };
+-int drm_simple_encoder_init(struct drm_device *dev,
+-			    struct drm_encoder *encoder,
+-			    int encoder_type);
+-
+ void *__drmm_simple_encoder_alloc(struct drm_device *dev, size_t size,
+ 				  size_t offset, int encoder_type);
  
-+static const struct drm_encoder_funcs meson_encoder_dsi_funcs = {
-+	.destroy = drm_encoder_cleanup,
-+};
-+
- int meson_encoder_dsi_probe(struct meson_drm *priv)
- {
- 	struct meson_encoder_dsi *meson_encoder_dsi;
-@@ -133,8 +137,9 @@ int meson_encoder_dsi_probe(struct meson_drm *priv)
- 	meson_encoder_dsi->priv = priv;
- 
- 	/* Encoder */
--	ret = drm_simple_encoder_init(priv->drm, &meson_encoder_dsi->encoder,
--				      DRM_MODE_ENCODER_DSI);
-+	ret = drm_encoder_init(priv->drm, &meson_encoder_dsi->encoder,
-+			       &meson_encoder_dsi_funcs, DRM_MODE_ENCODER_DSI,
-+			       NULL);
- 	if (ret)
- 		return dev_err_probe(priv->dev, ret,
- 				     "Failed to init DSI encoder\n");
-diff --git a/drivers/gpu/drm/meson/meson_encoder_hdmi.c b/drivers/gpu/drm/meson/meson_encoder_hdmi.c
-index 0c7a72cb514a..c4355c5cc340 100644
---- a/drivers/gpu/drm/meson/meson_encoder_hdmi.c
-+++ b/drivers/gpu/drm/meson/meson_encoder_hdmi.c
-@@ -23,8 +23,8 @@
- #include <drm/drm_bridge_connector.h>
- #include <drm/drm_device.h>
- #include <drm/drm_edid.h>
-+#include <drm/drm_encoder.h>
- #include <drm/drm_probe_helper.h>
--#include <drm/drm_simple_kms_helper.h>
- 
- #include <linux/media-bus-format.h>
- #include <linux/videodev2.h>
-@@ -369,6 +369,10 @@ static const struct drm_bridge_funcs meson_encoder_hdmi_bridge_funcs = {
- 	.atomic_create_state = drm_atomic_helper_bridge_create_state,
- };
- 
-+static const struct drm_encoder_funcs meson_encoder_hdmi_funcs = {
-+	.destroy = drm_encoder_cleanup,
-+};
-+
- int meson_encoder_hdmi_probe(struct meson_drm *priv)
- {
- 	struct meson_encoder_hdmi *meson_encoder_hdmi;
-@@ -407,8 +411,9 @@ int meson_encoder_hdmi_probe(struct meson_drm *priv)
- 	meson_encoder_hdmi->priv = priv;
- 
- 	/* Encoder */
--	ret = drm_simple_encoder_init(priv->drm, &meson_encoder_hdmi->encoder,
--				      DRM_MODE_ENCODER_TMDS);
-+	ret = drm_encoder_init(priv->drm, &meson_encoder_hdmi->encoder,
-+			       &meson_encoder_hdmi_funcs,
-+			       DRM_MODE_ENCODER_TMDS, NULL);
- 	if (ret) {
- 		dev_err_probe(priv->dev, ret, "Failed to init HDMI encoder\n");
- 		goto err_put_node;
 
 -- 
 2.54.0
