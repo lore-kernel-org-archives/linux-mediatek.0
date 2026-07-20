@@ -4,64 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7A43C44515
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 15:44:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FE3CC44524
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 16:22:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pYYsEwOVQ0v1AVNZOQN5PzwCM48qQaF11OzC3DHeUNo=; b=gQvs8flDvxbPDrhGzpFGrcLjr6
-	Jx/MJdGXN+QziRYIpGHzgIGMBdbd3i0QrBVuuaA1rFZVA+MQC3qLw5qfB/SV1FwjZ/t5zgAhfRaF5
-	gHTiRMsJeT7LxbYZtOlTwmQC4HRClOj+t4UmasmcZMI3N547q+E0sd1UUIexPMIcy1v9K/4e3bv0I
-	e35tshXl1nf3aqnNL/GmUc+9G+SlbbRrjxsYP33YBdV0akjOelcbCHti1sO6c4jB/bQLg5T45D7P2
-	4Pra1ZalCFIt88b6ars56IxQ9KYba+GJ8IsLPQ1hHPCBxUz3i3Dl25MwKYmHrq7q3bABaAq0OH/Z/
-	pnkG6PjQ==;
+	bh=lwQUQLjTNbpBIphWUbMxPz0kEUt9B2K2jVWc6+WyxN8=; b=uSjC4CpupR3Hz2dFqenYXaI0xY
+	JvArvDilibKtklD18/EKzeBRdmVfg1QXwB5KxbHD5LWji+gq24mfU4Cye/j7dROICY+brVav8t6Z0
+	7U42kaOHQz6cVnmYztg4i2J9EScf98lHMepvzDkiuYtdUdJvA3E39bM+MUWS0sJns6scJnzOwgfvB
+	3FDATeSSvnkv7C3ZI/mlJUSYrpBcnpApui3+uzhlbFBKGt4SNsh8sn50AVXJFewehVcnYP6uNRhZA
+	Rml58CCpnNJ5vBWkqngiL8lbpyZciIHmEwqp6+bVXdHROwGaHxbbwI5KxzZm1S28olqBdW6WFGh3E
+	EmxdHbjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlqAL-00000007FhU-3264;
-	Mon, 20 Jul 2026 15:44:25 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1wlql2-00000007MpQ-2k7Y;
+	Mon, 20 Jul 2026 16:22:20 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlqAJ-00000007FfI-1MCx;
-	Mon, 20 Jul 2026 15:44:24 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1wlqAC-000000004GF-1w0u;
-	Mon, 20 Jul 2026 15:44:16 +0000
-Date: Mon, 20 Jul 2026 16:44:13 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hermes Wu <hermes.wu@ite.com.tw>,
-	Allen Chen <allen.chen@ite.com.tw>, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 2/2] drm/bridge: it6505: Don't reject audio hw_params
- without an encoder
-Message-ID: <11d86a39a66ad81f29bb6d9274419e993d58337a.1784561622.git.daniel@makrotopia.org>
-References: <cover.1784561622.git.daniel@makrotopia.org>
+	id 1wlql0-00000007MnR-1xJK;
+	Mon, 20 Jul 2026 16:22:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
+	:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=lwQUQLjTNbpBIphWUbMxPz0kEUt9B2K2jVWc6+WyxN8=; b=OGAFTaPnSsuNbcJyYdvg/tHAVa
+	kEZLxS9/i34qqdYRhSwv6o6JAoPT2qY/t7NQY21h61cdeDyN+VvFn3SfJqI8733Xm6UhIXpR7KH2E
+	B/NvibcZDqQkcFHR2NyzvfbhmyQW334HbUjC/PQi9qh+TdsvwVbzcMGBIWzjzcM9KKFiRubYCtsGL
+	TwEzXkWfRgbOTEVWbEzF20HOGE2FZ0YCqCEd+r1e9W4sfBZl2Lc5ccnlFzpXlL1FlrAynuOieJITi
+	EeBHQkg0EmDX9tdjM3bxi1bIdUqrqamHxM7Cmct4KqHAyv2kI2lRR8I8hTABRwgcO7/cqYIoZVcKP
+	SRfLZ93Q==;
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1wlqkw-0000000Gmx3-0Jtm;
+	Mon, 20 Jul 2026 16:22:17 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1784564506; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=bxjn/lrbz8f3iTEFS5kTXhb+Oce5wmwZVsNZpZpVrAPk/gfkafShCeRvZqOa+Zq3kXVVuenPYHLKExIs5Xo0qAmZUnkSUuIoOX6L21F8BK6f1+VvBoFBoVLvgTswcxRE52rWzL/ZJcSl7HeW6Ncm+lSOEWKg2CZATmy9/x/qR58=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1784564506; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=lwQUQLjTNbpBIphWUbMxPz0kEUt9B2K2jVWc6+WyxN8=; 
+	b=SlvxJxxp/5iBQsaXRs9MrqDK1tIW3rgLq1fugjNAg1Vvhl3kkDeWHWvEAU1K0UBFxhdHT3Pdr6QVg2in6/Zn7bNceMp3ftSuFVooCfo1lQryvLgiPYBYs1Lwu3UNbccPB9IsALnQFuE/HJVjRTfDsMFm2dSpIrBBl6kxQGucxtI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
+	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1784564506;
+	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=lwQUQLjTNbpBIphWUbMxPz0kEUt9B2K2jVWc6+WyxN8=;
+	b=VJrRY3yz8lpIcDRl3iNEsvOV4IRYjslWdQRks4JPFDKwSZQdxU8bfxTHK9u7L/OF
+	UtaA7Yw/Ta/nB9sudI+TFolVm+q1jEPy9q2YFCGhSQDhkNSiPj1By+DtOeve5/yb+Oj
+	sq/t5/LcTbN3LadhhydWdscV+ClVT5p4oFDNa0L8=
+Received: by mx.zohomail.com with SMTPS id 1784564496439685.8308189373028;
+	Mon, 20 Jul 2026 09:21:36 -0700 (PDT)
+Message-ID: <8b013876c591f80ec4af86d69bf2f38f9ac481ad.camel@collabora.com>
+Subject: Re: [PATCH v9 03/23] dt-bindings: ufs: mediatek,ufs: Add mt8196
+ variant
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+To: Rob Herring <robh@kernel.org>, Nicolas Frattaroli
+	 <nicolas.frattaroli@collabora.com>
+Cc: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman
+ <avri.altman@wdc.com>,  Bart Van Assche <bvanassche@acm.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,  Chunfeng Yun
+ <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, Kishon Vijay
+ Abraham I	 <kishon@kernel.org>, Peter Wang <peter.wang@mediatek.com>,
+ Stanley Jhu	 <chu.stanley@gmail.com>, "James E.J. Bottomley"	
+ <James.Bottomley@hansenpartnership.com>, "Martin K. Petersen"	
+ <martin.petersen@oracle.com>, Philipp Zabel <p.zabel@pengutronix.de>, Liam
+ Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Chaotian
+ Jing	 <Chaotian.Jing@mediatek.com>, Neil Armstrong
+ <neil.armstrong@linaro.org>, 	kernel@collabora.com,
+ linux-scsi@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, Conor
+ Dooley	 <conor.dooley@microchip.com>
+Date: Mon, 20 Jul 2026 18:21:28 +0200
+In-Reply-To: <CAL_Jsq+mF_Q7Ld8__ZTc5yDvWAT6uK5wxfBJM-YdFjOvdiDc-w@mail.gmail.com>
+References: <20260306-mt8196-ufs-v9-0-55b073f7a830@collabora.com>
+	 <20260306-mt8196-ufs-v9-3-55b073f7a830@collabora.com>
+	 <20260306163305.GA2680515-robh@kernel.org> <4089450.ElGaqSPkdT@workhorse>
+	 <CAL_Jsq+mF_Q7Ld8__ZTc5yDvWAT6uK5wxfBJM-YdFjOvdiDc-w@mail.gmail.com>
+Organization: Collabora Ltd
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1784561622.git.daniel@makrotopia.org>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260720_084423_364896_E937926D 
-X-CRM114-Status: GOOD (  12.40  )
+X-CRM114-CacheID: sfid-20260720_172214_594172_2DAD56AC 
+X-CRM114-Status: GOOD (  51.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,52 +112,201 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-it6505_audio_setup_hw_params() returns -ENODEV when the bridge is not
-attached to a DRM encoder. Now that it6505 registers an hdmi-audio-codec,
-this callback runs whenever a stream is configured on the I2S DAI it is
-wired to, including when that DAI is shared with another codec. On
-mt8186-corsola the speaker amplifier (rt1019) and it6505 share I2S3, so
-when the it6505 DP output has no display attached (bridge.encoder is
-NULL) the -ENODEV propagates up through dpcm_be_dai_hw_params() and tears
-down the whole backend, breaking speaker playback.
+Hi Rob,
 
-The check is harmful in its own right: the rest of the function only
-caches the stream parameters (channel count, rate, word length) in
-software, none of which needs an encoder. Returning early leaves
-it6505->audio.channel_count at 0, which would then index
-audio_info_ca[-1] in it6505_enable_audio_infoframe() should a display be
-hotplugged while a stream is running, and makes such a hotplug play with
-stale parameters.
+On Tue, 2026-03-10 at 13:10 -0500, Rob Herring wrote:
+> On Fri, Mar 6, 2026 at 12:37=E2=80=AFPM Nicolas Frattaroli
+> <nicolas.frattaroli@collabora.com> wrote:
+> >=20
+> > On Friday, 6 March 2026 17:33:05 Central European Standard Time Rob
+> > Herring wrote:
+> > > On Fri, Mar 06, 2026 at 02:24:44PM +0100, Nicolas Frattaroli
+> > > wrote:
+> > > > The MediaTek MT8196 SoC's UFS controller uses three additional
+> > > > clocks
+> > > > compared to the MT8195, and a different set of supplies. It is
+> > > > therefore
+> > > > not compatible with the MT8195.
+> > > >=20
+> > > > While it does have a AVDD09_UFS_1 pin in addition to the
+> > > > AVDD09_UFS pin,
+> > > > it appears that these two pins are commoned together, as the
+> > > > board
+> > > > schematic I have access to uses the same supply for both, and
+> > > > the
+> > > > downstream driver does not distinguish between the two supplies
+> > > > either.
+> > > >=20
+> > > > Add a compatible for it, and modify the binding
+> > > > correspondingly.
+> > > >=20
+> > > > Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+> > > > Acked-by: Vinod Koul <vkoul@kernel.org>
+> > > > Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> > > > Reviewed-by: AngeloGioacchino Del Regno
+> > > > <angelogioacchino.delregno@collabora.com>
+> > > > Signed-off-by: Nicolas Frattaroli
+> > > > <nicolas.frattaroli@collabora.com>
+> > > > ---
+> > > > =C2=A0.../devicetree/bindings/ufs/mediatek,ufs.yaml=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 | 58
+> > > > +++++++++++++++++++++-
+> > > > =C2=A01 file changed, 57 insertions(+), 1 deletion(-)
+> > > >=20
+> > > > diff --git
+> > > > a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+> > > > b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+> > > > index e0aef3e5f56b..a82119ecbfe8 100644
+> > > > --- a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+> > > > +++ b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+> > > > @@ -16,10 +16,11 @@ properties:
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - mediatek,mt8183-ufshci
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - mediatek,mt8192-ufshci
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - mediatek,mt8195-ufshci
+> > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - mediatek,mt8196-ufshci
+> > > >=20
+> > > > =C2=A0=C2=A0 clocks:
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0 minItems: 1
+> > > > -=C2=A0=C2=A0=C2=A0 maxItems: 13
+> > > > +=C2=A0=C2=A0=C2=A0 maxItems: 16
+> > > >=20
+> > > > =C2=A0=C2=A0 clock-names:
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0 minItems: 1
+> > > > @@ -37,6 +38,9 @@ properties:
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: crypt_perf
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: ufs_rx_symbol0
+> > > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: ufs_rx_symbol1
+> > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: ufs_sel
+> > >=20
+> > > "ufs" is redundant as all the clocks are for UFS. Same comment on
+> > > prior
+> > > patch.
+> >=20
+> > Is this naming a big enough concern to block this series with two
+> > explicit acks on this patch that fixes a wholly broken and useless
+> > binding?
+>=20
+> Shrug... Is changing it really that hard?
+>=20
+Since I'm currently working on rebasing this series and fixing its
+remaining open issues (compilation, dt-bindings warnings,...) to send a
+new revision, I've looked at the questions you raised.
 
-Drop the encoder check so the parameters are always cached; the actual
-audio output is already gated by it6505->powered.
+First, renaming those clocks and all the other starting with "ufs_"
+prefix (including the one that is simply named ufs) is indeed easy and
+needs just a little rework.=C2=A0
+Mostly, a driver patch, as it is currently explicitly using the name of
+the 3 ufs_sel clocks and devicetree patches to adapt to this change.
 
-Fixes: b5c84a9edcd4 ("drm/bridge: add it6505 driver")
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
-v2:
- * drop the encoder check entirely instead of returning 0 early, so
-   the stream parameters are always cached even while no display is
-   attached; rewrite the commit message to explain why the check is
-   harmful
+The next series revision will include the devicetree patches for MT8195
+SoC and the two boards that integrate this SoC and an UFS storage
+(Genio 1200 EVK UFS and Radxa NIO-12L), to fix the warnings that the
+dt-binding changes, done by patch 1 (additional clocks, freq-table-hz
+deprecation, additional power supplies) in the v9 revision, generate.
 
- drivers/gpu/drm/bridge/ite-it6505.c | 3 ---
- 1 file changed, 3 deletions(-)
+> > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: ufs_sel_min_src
+> > > > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: ufs_sel_max_src
+> > >=20
+> > > "src" sounds like a parent clock? If so, probably shouldn't be in
+> > > the
+> > > clocks list. 'assigned-clocks' is for dealing with parent clocks.
+> > >=20
+> >=20
+> > I don't know what it is, and I have no way to consult any
+> > documentation
+> > that would tell me what it is. I am trying to put out this dumpster
+> > fire
+> > of a downstream turd that made its way into mainline as the review
+> > process
+> > has been completely subverted, and is only getting worse with each
+> > passing
+> > month that MediaTek is allowed to block this series from
+> > progressing while
+> > sneaking further changes through.
+>=20
+> It's good Mediatek is active, then they can tell us what the clocks
+> are for. I would think the driver would give some clue.
+>=20
+Second, when searching in the driver code and the git history, it shows
+that ufs_sel is indeed a parent clock.
+The ufs_sel/ufs_sel_min_src/ufs_sel_max_src clock use in the driver
+code was introduced by the commit b7dbc686f60b ("scsi: ufs: ufs-
+mediatek: Support clk-scaling to optimize power consumption") to
+implement a dynamic clock scaling feature.
 
-diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
-index d84441926e8e..e20edbbb7c13 100644
---- a/drivers/gpu/drm/bridge/ite-it6505.c
-+++ b/drivers/gpu/drm/bridge/ite-it6505.c
-@@ -2979,9 +2979,6 @@ static int it6505_audio_setup_hw_params(struct it6505 *it6505,
- 			     params->sample_rate, params->sample_width,
- 			     params->cea.channels);
- 
--	if (!it6505->bridge.encoder)
--		return -ENODEV;
--
- 	if (params->cea.channels <= 1 || params->cea.channels > 8) {
- 		DRM_DEV_DEBUG_DRIVER(dev, "channel number: %d not support",
- 				     it6505->audio.channel_count);
--- 
-2.55.0
+ufs_sel is supposed to be the parent clock of the main clock ("ufs" in
+dt-bindings) and both ufs_sel_min_src/ufs_sel_max_src the parent of
+ufs_sel.
+The code switches conditionally the ufs_sel parent to modify the ufs
+clock rate (ufs_sel_max_src for maximum performance, ufs_sel_min_src
+otherwise).
+I've also looked at different downstream kernel trees, the assigned
+clocks values for those 3 clocks in the ufshci node in devicetree are
+consistent with the clock hierarchy in the MT8196 clock controllers
+drivers.
+
+This feature also seems to be linked to another one that added the
+clock scaling for the FDE clock (ufs_aes in dt-bindings).=C2=A0
+The commit that introduced it is 5e5976f5242d ("scsi: ufs: host:
+mediatek: Support FDE (AES) clock scaling") and it also added the 3
+undocumented clocks: ufs_fde, ufs_fde_min_src, ufs_fde_max_src.
+It is similar to the previous described one.
+
+The current driver code seems to require having the "ufs_fde" clock
+(supposed to be the ufs_aes parent clock) in the devicetree, so that
+the clock scaling feature for the "ufs_sel" clock is performed and I
+did not find why.=C2=A0
+So, with this current series dt-bindings patches, ufs clock scaling
+feature seems not completely described yet.
+
+There is also the crypto boost feature that make use of the
+crypt_mux/crypt_lp/crypt_perf clocks in a similar way.
+They were missing from dt-bindings, before this series patches made by
+Nicolas to documented them. Angelo also sent a patch two years ago in
+that regard ([1]) but did not get picked.
+The feature has been introduced by commit 590b0d2372fe ("scsi: ufs-
+mediatek: Support performance mode for inline encryption engine")
+The crypt_mux clock is also supposed to be the ufs_aes parent clock and
+its own parent is switched on need between crypt_lp (low power) and
+crypt_perf (performance).
+This feature is also depending two undocumented property:
+- dvfsrc-vcore-supply: Angelo sent [2] to add it and this current
+series forgot to add it too (to be done for v10 ?)
+- mediatek,ufs-boost-crypt: vendor specific property to enable this
+feature. Angelo sent [3] to remove its need but got reject back then
+
+Note that crypto boost and FDE clock scaling features seem not to be
+supposed to be enabled at the same time.
+
+Again, this crypto boost feature seems not completely described yet.
+
+Sorry for the wall of text but I felt it was better to add extra
+details regarding all those features and how they relate to each other
+to have a more complete answer regarding ufs_sel.
+
+[1]
+https://lore.kernel.org/linux-mediatek/20240612074309.50278-8-angelogioacch=
+ino.delregno@collabora.com/
+[2]
+https://lore.kernel.org/linux-mediatek/20240612074309.50278-9-angelogioacch=
+ino.delregno@collabora.com/
+[3]
+https://lore.kernel.org/linux-mediatek/20240612074309.50278-4-angelogioacch=
+ino.delregno@collabora.com/
+
+> I don't see how accepting sub-par bindings or not fixes the issues
+> here.
+
+So, since all these features rely heavily on optional parent clocks,
+that were not documented before being used in driver code, what should
+be done to make progress and fix these dt-bindings?
+
+What would you recommend to do in order to resolve those topics?
+I'm open for ideas, please.
+
+Best regards,
+Louis-Alexis
+
+>=20
+> Rob
 
