@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51260C4452C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 670A4C4452D
 	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 13:54:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=erbWLFzguWC5h/HOWJNB8D81QDIsuPVj0c0A6+NSYaI=; b=W2Ppr61BeiTeq446shPiczRIn1
-	9lrICHrBZlyY5CtlUDCe4D60FL2SWx5BU6uf2WcKTZ/uanypyRFMuLGncMpR6wkYzdpJiIntXdxrR
-	GaaIL9T35W8vx8YNiHLaMfiqyWmk9dkeF3E2jG99Fwwzkp+IHrb0xobld2NyKMjK2Y0SDe6Uqorwk
-	7ueP1Uxu78868BsbOko1LRGUmhhah4Uo/d29y9MhbqyvDQCeNemPN2lCGYVFXx1tF9PwSv+HpAIJm
-	XkuoElYCS1o7KRCcBOj2uXxDgBnXHbwl2eY7iUXZrFKcRRzQb9rzy0OKeblRFuhVTvvVaRhJ/w54d
-	jvcTGAtg==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TDOxlk2eWb0qA6YfFa4vQvTGxrL3LFjLoCTPXZQoPDE=; b=0gP7vslpzqQmsp81bMIlmNqA2g
+	S7oiNHeeXAjAIYFp77/cLwD6OTuGzgLP5CAf1GJIAXx4PiCVJjzpe4iGylRCQMFvjsV0bLOKqmoXC
+	Fi02Ep+q35uIiM0ORzPBNwriM2KduXO2Nhoa14YAVY7+XosVd8vW99RU14clYxSJVNN0XHKDR80yx
+	adyFOCNQ26+eqJgW2s9Um4dOch8uAvnbWFk4IdEyyHg4iGe1gEt2bVy/SnYlx4DvrmJDPlz7CzWz+
+	xr8YfKpC0TBmFkSXUOGXzO9glRm8yGB5T+lnqGnEQBTFgH+nneIoQaejfcq21m1Ha6Udvt1VJPrA9
+	2L0J7LGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wloRr-00000006sjy-0b6R;
+	id 1wloRr-00000006sk6-0oSm;
 	Mon, 20 Jul 2026 13:54:23 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wloRn-00000006siB-3Zbd;
+	id 1wloRn-00000006siA-2WFb;
 	Mon, 20 Jul 2026 13:54:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1784555656;
-	bh=ib28vJDYiKmHcDyK/UpURzcfp8BRW36RPjln12pow78=;
-	h=From:To:Cc:Subject:Date:From;
-	b=J/Em3Klb1iVFK4yuQPbJePEhaSge583cobLXXAxfGmeoq4x26911sIgTnVLecHUy8
-	 6y2Iu1cMOsp3qyanETBz3oyBw0+DH9YUpmCycAidxJnyxzJ+DKAM/XW0ozaWnf+2mI
-	 ZxgFJfpjIYZqPCpwNkHis8/I/kJylvE0ljCbg/ZmeC8JNFIsbFAWdUpi7bev2YwoCy
-	 BU3yCpBqJsHelJtEFGaGhf/GEGKIo0ggnGvRsoBxHlOOh0sphuMIAvRYsClig6P2W4
-	 nR3Tdj87qLYPfyyhuNkdTNRh4CG7oQ4w1fli9KLE0Fzx8L2noxbOpAW4yIaI1bwNam
-	 cvOn2wEJzhCaQ==
+	bh=p+IHXAGkZYBnXP0KK3KUxT6ZWI3a3RuaN/BGaUcuR3w=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=BNqXhUeltySqygbcC0Y+CCd9z/CmMt1k4Jw9EKJOs89GG0N4AGsmBMJQ4N0C2bpa1
+	 9liq+pkIpRG7vTYb6eMYG93GG0pHFtRa6WsOfuiqZuwhO9SlSNyaDUqGsbJCplryd7
+	 hHzG6SpGfqlkjScoSPQBQe5HlfbsJo0I7lqcxhlEL0blXFzsJWk2Ir6ZVwrGXVaDV7
+	 VwjWmEvXosLiFhmudXGtYPQMfMPIVdzaHQiSDtVR/nZpMKBvAjlVli3qR0brPbkCs2
+	 e34PocyTGIR2dsdjDPMpSq1cCy7xgZv4V7nsqBJKjOuAxif+XSN6Fx9h6zAKQ2pF3Q
+	 7D6igRoJ8BNbA==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9A82417E0910;
-	Mon, 20 Jul 2026 15:54:15 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5042317E0974;
+	Mon, 20 Jul 2026 15:54:16 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunfeng.yun@mediatek.com
 Cc: vkoul@kernel.org,
@@ -58,15 +58,17 @@ Cc: vkoul@kernel.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH v2 0/2] PHY: Add MediaTek PCI-Express Gen4 S-PHY Driver
-Date: Mon, 20 Jul 2026 15:53:42 +0200
-Message-ID: <20260720135344.84183-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 1/2] dt-bindings: phy: Document MT8196 MediaTek PCI-Express Gen4 S-PHY
+Date: Mon, 20 Jul 2026 15:53:43 +0200
+Message-ID: <20260720135344.84183-2-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260720135344.84183-1-angelogioacchino.delregno@collabora.com>
+References: <20260720135344.84183-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260720_065420_041288_72CB7F12 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20260720_065419_803850_8600B9A3 
+X-CRM114-Status: GOOD (  12.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,37 +83,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v2:
- - Added items/description to reg in binding
- - Added missing pm_runtime.h inclusion
- - Moved pm_runtime_enable call to before registering PHY
- - Fixed pmos/nmos variable size for 5 bits calibration values
- - Fixed calibration for single-lane PCIe, as in, the ln1 rswn
-   calibration nvmem value is ignored in code if it's single
-   lane and will not return an error; this is due to the fact
-   that, effectively, single-lane may have a zero calibration
-   in tx-ln1-rswn which is fine, as that'd be anyway unused
- - Changed calibration data errors to dev_err_probe and changed
-   the "no calibration for ..." message to dev_info instead
+This adds bindings for the PCI-Express Gen4 S-PHY found in newer
+MediaTek SoCs, such as MT8196 and its variants.
 
-This adds a driver for the PCI-Express Gen4 "S-PHY" found in the
-Genio MT8894, Kompanio MT8196, Dimensity MT6991 SoCs (which are
-all variants of the same chip).
+In the current "revision 3", depending on the specific port, this
+S-PHY supports up to two lanes of PCI-Express Gen 4 and both EP
+and RC modes.
+It is not clear whether revisions/versions earlier than 3 have
+ever been shipped in any other MediaTek SoC.
 
-This was successfully tested on MT8894 and MT8196.
-
-AngeloGioacchino Del Regno (2):
-  dt-bindings: phy: Document MT8196 MediaTek PCI-Express Gen4 S-PHY
-  phy: mediatek: Add support for PCI-Express Gen4 S-PHY
-
- .../phy/mediatek,mt8196-pcie-sphy.yaml        |  93 +++
- drivers/phy/mediatek/Kconfig                  |   9 +
- drivers/phy/mediatek/Makefile                 |   1 +
- drivers/phy/mediatek/phy-mtk-pcie-sphy.c      | 561 ++++++++++++++++++
- 4 files changed, 664 insertions(+)
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../phy/mediatek,mt8196-pcie-sphy.yaml        | 93 +++++++++++++++++++
+ 1 file changed, 93 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/phy/mediatek,mt8196-pcie-sphy.yaml
- create mode 100644 drivers/phy/mediatek/phy-mtk-pcie-sphy.c
 
+diff --git a/Documentation/devicetree/bindings/phy/mediatek,mt8196-pcie-sphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,mt8196-pcie-sphy.yaml
+new file mode 100644
+index 000000000000..c24871f7e0e5
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/mediatek,mt8196-pcie-sphy.yaml
+@@ -0,0 +1,93 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/phy/mediatek,mt8196-pcie-sphy.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek PCI-Express Gen4 S-PHY
++
++maintainers:
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++
++description:
++  The MediaTek PCI-Express Gen4 S-PHY is capable of data serialization
++  and de-serialization with 8, 10, 128 or 130 bits (16GT/s) encoding
++  and decoding, has analog buffers, elastic buffers and mechanisms for
++  receiver detection.
++  This PHY supports link rates of 2.5, 5.0, 6.0 and 16.0 GT/s per-lane
++  in both Root Complex (RC) and End Point (EP) modes, depending on the
++  chosen port.
++  The Digital PHY (PHYD) part adheres to the Intel PIPE (PHY Interface
++  for the PCIe) specification.
++
++properties:
++  compatible:
++    const: mediatek,mt8196-pcie-sphy
++
++  reg:
++    items:
++      - description: System Interface (SIF) registers
++      - description: Clock Management (CKM) registers
++
++  reg-names:
++    items:
++      - const: sif
++      - const: ckm
++
++  "#phy-cells":
++    const: 0
++
++  nvmem-cells:
++    items:
++      - description: Internal resistor selection of TX Bias Current
++      - description: XTP Bias V2V voltage calibration
++      - description: S-PLL CKTX Impedance Selection (P-MOSFET side)
++      - description: S-PLL CKTX Impedance Selection (N-MOSFET side)
++      - description: S-PLL CKTX Intermediate Transition Impedance
++      - description: RX Front-End Return Loss Continuous Time Linear EQ
++      - description: RX Front-End Return Loss Variable Gain Amplifier
++      - description: RX Front-End Return Loss Decision Feedback EQ
++      - description: RX Impedance Selection
++      - description: TX Impedance Selection (P-MOSFET side)
++      - description: TX Impedance Selection (N-MOSFET side)
++      - description: TX Lane 0 Switch Resistance (RSWn)
++      - description: TX Lane 1 Switch Resistance (RSWn)
++      - description: eFuse calibration table version
++
++  nvmem-cell-names:
++    items:
++      - const: int-r
++      - const: xtp-vtrim
++      - const: cktx-pmos
++      - const: cktx-nmos
++      - const: cktx-r-mid
++      - const: rxfe-lanes-rl-ctle
++      - const: rxfe-lanes-rl-vga
++      - const: rxfe-lanes-rl-dfe
++      - const: rx-lanes-imp
++      - const: tx-lanes-pmos
++      - const: tx-lanes-nmos
++      - const: tx-ln0-rswn
++      - const: tx-ln1-rswn
++      - const: cal-version
++
++  power-domains:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - reg-names
++  - "#phy-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    phy@16900000 {
++        compatible = "mediatek,mt8196-pcie-sphy";
++        reg = <0x16900000 0x10000>, <0x16920000 0x10000>;
++        reg-names = "sif", "ckm";
++        power-domains = <&spm 10>;
++        #phy-cells = <0>;
++    };
 -- 
 2.55.0
 
