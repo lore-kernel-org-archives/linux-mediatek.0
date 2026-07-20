@@ -4,57 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92511C4451B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 01:21:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD42DC44523
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 01:21:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4FjZd+7YQSfLoIr7uUTI6uz693s6U2ThrLtVy9x4Ymw=; b=lX2C3nV3DV6nHl8O07MRRK1ap1
-	mNHG0VEdnstI0e/awKd5aOTjiIuupve0swRxH4zG+qjpwQpchKKUTa4rv1zAjjOIT59xSXYUBW5kj
-	MW9rv8/bUkFQMU1Gw4AXxHfy1E0ALATG/KDMqex3gpy7EKaUd0w9CJT8gjIW/u1bJSwgl8suOJ4pH
-	CK1c6HCQsD4fyayGVcYlatkkdqBKbHqdCbZqGDTxbMkKOY3i/I4nLYiEZ3zFCswhQWvnFYo8QWo7X
-	crkxAoK/OH9t2j690LkmKzkC0qSlpElTrqEL0TnFREDBFrIThD/GKs15pOSBfdQ4BfvMfGsZ9QDCn
-	wuvm3KRg==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=z140eWKa2HwjV3Nbd4LpFHKrosh3VChx7ErRvNeIOIc=; b=s/yeY8oaZtvh/NZmQc6Isk3MHe
+	5vo2oQNqjJ2VGzsgJHR/qO/Zz4JI3wPDqnedxtMwMEyoesmC7Z5KM7Tk6rbNHb/IU2icq0iJ83pCL
+	ImAUgpDnvqzYEGnBf+VjTf1SaN1cq0mJS74gk9kpnhsVqK5lksnI3GH7DC4D6DHyxOfTQijn8XO3z
+	oJZEseJFBtp9YsamSoJGmqppOpNa8wQs2NtRTWlK+w9vyM3RCDB8SOxu1wcX6ZLSY9C2Ge5WDeWrA
+	Bmbu18yM4DieY6GrfAS7d7RXrrmBwgN1h4RLGCtAWllKdvXtnqtIfi5kgfge47xeC2kPQTBSru25x
+	IDlgxcFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlch2-00000005agJ-1ksD;
-	Mon, 20 Jul 2026 01:21:16 +0000
+	id 1wlch9-00000005akB-3u0c;
+	Mon, 20 Jul 2026 01:21:23 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlcgy-00000005adA-1zIq;
-	Mon, 20 Jul 2026 01:21:13 +0000
-X-UUID: 48d66e1883d911f1acbe4559397dec65-20260719
+	id 1wlcgy-00000005ad3-1zN7;
+	Mon, 20 Jul 2026 01:21:14 +0000
+X-UUID: 45eab48e83d911f1acbe4559397dec65-20260719
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=4FjZd+7YQSfLoIr7uUTI6uz693s6U2ThrLtVy9x4Ymw=;
-	b=FZgyHwoO+CoKEQ02pQNSkd7QVgeFUJZWmLRFk84WUj/dBt0mEs7H9RPw/VkYq/1Qknf+7hdpSBetiHo+BPnz3+jz12frJTAWqlRe1tsZF4kXbZxc6TJYh8io/NwQa42rKPuT315eQ/3mm4T54j33dKQr3M0KJjpE3EOtOClQacQ=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=z140eWKa2HwjV3Nbd4LpFHKrosh3VChx7ErRvNeIOIc=;
+	b=pKi/fEP5m7eMsXreeQXlY3NfdJZJxtA6rW41J76ryfwtMwEPpOoS5+DaMjLLYk9DA+cq3xEz3B1vt9B6LxpuXY7/1cHGEmDs2HSQowicfcSh4XjAy4hK2lvtlETVm981xFBGyjrPwnys0H/sqsJnd9Utq9U7g794F7MDfo4x8EA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.18,REQID:ae041ec9-7811-4885-9f4b-f834b982a22c,IP:0,U
+X-CID-O-INFO: VERSION:1.3.18,REQID:84f2a463-9f5b-497b-b919-e541d4a01c88,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:8a735a6,CLOUDID:9e515219-ab14-4403-9336-76696324c5a8,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|136|836|865|888|898,TC:-5,Content:0|
-	15|50|99|100|102|152|156,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,Q
-	S:nil,BEC:-1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,A
-	RC:0
+X-CID-META: VersionHash:8a735a6,CLOUDID:8ce8f99b-75c7-410a-a98f-13895d3131d4,B
+	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|50|
+	99,EDM:-3|-100,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,
+	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 48d66e1883d911f1acbe4559397dec65-20260719
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-UUID: 45eab48e83d911f1acbe4559397dec65-20260719
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
 	(envelope-from <kyrie.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1502425600; Sun, 19 Jul 2026 18:21:07 -0700
+	with ESMTP id 712716410; Sun, 19 Jul 2026 18:21:02 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 20 Jul 2026 09:21:05 +0800
+ 15.2.2562.29; Mon, 20 Jul 2026 09:21:00 +0800
 Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 20 Jul 2026 09:21:03 +0800
+ 15.2.2562.29 via Frontend Transport; Mon, 20 Jul 2026 09:20:58 +0800
 From: Kyrie Wu <kyrie.wu@mediatek.com>
 To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
 	<andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Mauro
@@ -76,19 +75,17 @@ To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>
 CC: Sakari Ailus <sakari.ailus@linux.intel.com>
-Subject: [PATCH v6 03/14] media: mediatek: vcodec: add driver to support vcp encoder
-Date: Mon, 20 Jul 2026 09:20:45 +0800
-Message-ID: <20260720012056.1026551-4-kyrie.wu@mediatek.com>
+Subject: [PATCH v6 00/14] media: mediatek: vcodec: support video decoder in mt8196
+Date: Mon, 20 Jul 2026 09:20:42 +0800
+Message-ID: <20260720012056.1026551-1-kyrie.wu@mediatek.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260720012056.1026551-1-kyrie.wu@mediatek.com>
-References: <20260720012056.1026551-1-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260719_182112_519667_8A5BBD1B 
-X-CRM114-Status: GOOD (  18.23  )
+X-CRM114-CacheID: sfid-20260719_182112_522768_B7E0A338 
+X-CRM114-Status: GOOD (  19.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,153 +100,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Encoder also need to call vcp interface to communicate with vcp,
-add driver to support encoder.
+This patch set adds support for the video decoder on the MediaTek MT8196
+platform, leveraging the VCP microprocessor for enhanced performance. It
+introduces new firmware interfaces for kernel-side communication with VCP,
+adds MT8196 compatible, codec levels/profiles, and private data. Rewrites
+the AV1 driver to support extended VSI structures, then change irq table
+and cdf table size.
 
-Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
----
- .../vcodec/common/mtk_vcodec_fw_vcp.c         | 52 ++++++++++++++++---
- .../vcodec/common/mtk_vcodec_fw_vcp.h         |  1 +
- .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  |  1 -
- .../mediatek/vcodec/encoder/mtk_vcodec_enc.h  |  2 +
- 4 files changed, 47 insertions(+), 9 deletions(-)
+This patch set depends on "Add MediaTek VCP remoteproc driver support"[1]
 
-diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vcp.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vcp.c
-index 150d842c7..ece4e3e87 100644
---- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vcp.c
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vcp.c
-@@ -13,6 +13,8 @@
- 
- #include "../decoder/mtk_vcodec_dec_drv.h"
- #include "../decoder/vdec_ipi_msg.h"
-+#include "../encoder/mtk_vcodec_enc.h"
-+#include "../encoder/mtk_vcodec_enc_drv.h"
- #include "mtk_vcodec_fw_priv.h"
- 
- #define IPI_SEND_TIMEOUT_MS  100U
-@@ -223,8 +225,13 @@ static int mtk_vcodec_vcp_msg_ipi_send(struct mtk_vcodec_fw *fw, int id, void *b
- 	}
- 
- 	mutex_lock(&vcp->ipi_mutex);
--	feature_id = VDEC_FEATURE_ID;
--	mailbox_id = IPI_OUT_VDEC_1;
-+	if (fw->fw_use == ENCODER) {
-+		feature_id = VENC_FEATURE_ID;
-+		mailbox_id = IPI_OUT_VENC_0;
-+	} else {
-+		feature_id = VDEC_FEATURE_ID;
-+		mailbox_id = IPI_OUT_VDEC_1;
-+	}
- 
- 	timeout_jiffies = jiffies + msecs_to_jiffies(VCP_SYNC_TIMEOUT_MS);
- 	while (!vcp_device->ops->vcp_is_ready(vcp_device, feature_id)) {
-@@ -348,7 +355,7 @@ static void mtk_vcodec_vcp_put_device(struct mtk_vcodec_fw *fw)
- static int mtk_vcodec_vcp_load_firmware(struct mtk_vcodec_fw *fw)
- {
- 	struct mtk_vcp_device *vcp_device;
--	int ret, feature_id, mem_id, mailbox_id, ipi_id;
-+	int ret, feature_id, mem_id, mailbox_id;
- 	int i;
- 
- 	if (fw->vcp->is_init_done) {
-@@ -363,10 +370,15 @@ static int mtk_vcodec_vcp_load_firmware(struct mtk_vcodec_fw *fw)
- 
- 	vcp_device = fw->vcp->vcp_device;
- 
--	feature_id = VDEC_FEATURE_ID;
--	mem_id = VDEC_MEM_ID;
--	mailbox_id = IPI_IN_VDEC_1;
--	ipi_id = VCP_IPI_LAT_DECODER;
-+	if (fw->fw_use == ENCODER) {
-+		feature_id = VENC_FEATURE_ID;
-+		mem_id = VENC_MEM_ID;
-+		mailbox_id = IPI_IN_VENC_0;
-+	} else {
-+		feature_id = VDEC_FEATURE_ID;
-+		mem_id = VDEC_MEM_ID;
-+		mailbox_id = IPI_IN_VDEC_1;
-+	}
- 
- 	ret = mtk_vcp_mbox_ipc_register(vcp_get_ipidev(vcp_device), mailbox_id,
- 					mtk_vcodec_vcp_msg_ack_isr, fw, &fw->vcp->share_data);
-@@ -402,6 +414,26 @@ static int mtk_vcodec_vcp_load_firmware(struct mtk_vcodec_fw *fw)
- 		mutex_init(&fw->vcp->ipi_desc[i].lock);
- 	mutex_init(&fw->vcp->ipi_mutex);
- 
-+	if (fw->fw_use == ENCODER) {
-+		init_waitqueue_head(&fw->vcp->msg_wq[VCP_IPI_ENCODER]);
-+		fw->vcp->msg_thread =
-+			kthread_run(mtk_vcodec_vcp_msg_process_thread, fw, "vcp_enc_msq_thread");
-+		if (IS_ERR(fw->vcp->msg_thread)) {
-+			ret = PTR_ERR(fw->vcp->msg_thread);
-+			fw->vcp->msg_thread = NULL;
-+			goto err_deregister_feature;
-+		}
-+
-+		fw->vcp->vsi_addr = vcp_device->ops->get_mem_virt(vcp_device, mem_id);
-+		fw->vcp->vsi_size = vcp_device->ops->get_mem_size(vcp_device, mem_id);
-+		fw->vcp->iova_addr = vcp_device->ops->get_mem_iova(vcp_device, mem_id);
-+
-+		dev_dbg(&fw->pdev->dev, "enc vcp init done => va: %p size:0x%x iova:%pad.\n",
-+			fw->vcp->vsi_addr, fw->vcp->vsi_size, &fw->vcp->iova_addr);
-+
-+		return 0;
-+	}
-+
- 	init_waitqueue_head(&fw->vcp->msg_wq[VCP_IPI_LAT_DECODER]);
- 	init_waitqueue_head(&fw->vcp->msg_wq[VCP_IPI_CORE_DECODER]);
- 	fw->vcp->msg_thread =
-@@ -530,7 +562,11 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_vcp_init(void *priv, enum mtk_vcodec_fw_use
- 	struct mtk_vcodec_fw *fw;
- 	int i;
- 
--	if (fw_use == DECODER) {
-+	if (fw_use == ENCODER) {
-+		struct mtk_vcodec_enc_dev *enc_dev = priv;
-+
-+		plat_dev = enc_dev->plat_dev;
-+	} else if (fw_use == DECODER) {
- 		struct mtk_vcodec_dec_dev *dec_dev = priv;
- 
- 		plat_dev = dec_dev->plat_dev;
-diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vcp.h b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vcp.h
-index 83742096e..97ba642dc 100644
---- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vcp.h
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vcp.h
-@@ -16,6 +16,7 @@ typedef void (*vcp_ipi_handler_t) (void *data, unsigned int len, void *priv);
- 
- /* enum mtk_vcp_ipi_index - index used to separate different hardware */
- enum mtk_vcp_ipi_index {
-+	VCP_IPI_ENCODER,
- 	VCP_IPI_LAT_DECODER,
- 	VCP_IPI_CORE_DECODER,
- 	VCP_IPI_MAX,
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-index 0d4e94463..48cb5dded 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-@@ -26,7 +26,6 @@
- 
- #define MTK_DEFAULT_FRAMERATE_NUM 1001
- #define MTK_DEFAULT_FRAMERATE_DENOM 30000
--#define MTK_VENC_4K_CAPABILITY_ENABLE BIT(0)
- 
- static void mtk_venc_worker(struct work_struct *work);
- 
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.h b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.h
-index 908d8179b..84156c102 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.h
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.h
-@@ -23,6 +23,8 @@
- #define MTK_VENC_IRQ_STATUS_OFFSET	0x05C
- #define MTK_VENC_IRQ_ACK_OFFSET	0x060
- 
-+#define MTK_VENC_4K_CAPABILITY_ENABLE BIT(0)
-+
- /**
-  * struct mtk_video_enc_buf - Private data related to each VB2 buffer.
-  * @m2m_buf:	M2M buffer
+[1] https://patchwork.kernel.org/project/linux-mediatek/cover/20260427111446.22955-1-xiangzhi.tang@mediatek.com/
+
+Compliance Test Result:
+- v4l2-compliance: 48/49 tests passed, 1 failed (known issue)
+- fail: v4l2-test-controls.cpp(981): ret (got 13)
+-        test VIDIOC_G/S/TRY_EXT_CTRLS: FAIL
+
+Fluster Test Result:
+- H264:
+- Ran 95/135 tests successfully   in 73.540 secs
+- H265:
+- Ran 142/147 tests successfully  in 100.168 secs
+- VP9:
+- Ran 276/305 tests successfully  in 106.804 secs
+- AV1:
+- Ran 240/242 tests successfully  in 23.991 secs
+
+Changed in v6:
+- Rebase to latest codebase
+- Change patch authors and Signed-off-by trailers to Kyrie Wu
+- Use safer firmware selection flow for decoder and encoder initialization
+- Add VCP IPI id validation and keep invalid messages from stopping the
+  message processing thread
+- Fix VCP ACK state handling, stale ACK handling, and interruptible ACK wait
+  retry handling
+- Stop the VCP message thread, unregister callbacks, and release the VCP
+  remoteproc reference during cleanup
+- Replace VCP readiness busy-wait polling with sleepable polling
+- Add VCP encoder capability callback
+- Fix MT2110R debug output string
+- Update the MT8196 decoder binding commit message according to review
+- Keep MT8196 compatible definition before patches that use it
+- Fill AV1 reference C plane buffer size
+
+Changed in v5:
+- Rebase to latest codebase
+- Move vcp init method to driver pdata structures
+- change decoder dt-bindings patch's commit message
+- MT8189 base on MT8196 patch set
+
+Changed in v4:
+- Rebase to latest codebase
+- Move dt-bindings and compatible to the after of vcp driver ready
+- MT8189 base on MT8196 patch set
+
+Changed in v3:
+- Depends on change no update
+- Add Compliance and Fluster test result
+- Re-write the commit message for patch 12
+- Change the patches according to review suggestion for patch: 3/4/5/6/14
+
+Changed in v2:
+- re-write the commit message for patch 1
+
+Kyrie Wu (14):
+  media: mediatek: vcodec: support vcp architecture
+  media: mediatek: vcodec: add driver to support vcp
+  media: mediatek: vcodec: add driver to support vcp encoder
+  media: mediatek: vcodec: get different firmware ipi id
+  media: mediatek: vcodec: get share memory address
+  media: mediatek: vcodec: add debug information
+  media: mediatek: vcodec: send share memory address to vcp
+  dt-bindings: media: mediatek: vcodec: add decoder dt-bindings for
+    mt8196
+  media: mediatek: vcodec: add decoder compatible to support mt8196
+  media: mediatek: vcodec: define MT8196 vcodec levels.
+  media: mediatek: vcodec: support 36bit iova address
+  media: mediatek: vcodec: clean xpc status
+  media: mediatek: decoder: fill av1 buffer size with picinfo
+  media: mediatek: decoder: support av1 extend vsi
+
+ .../media/mediatek,vcodec-subdev-decoder.yaml |   1 +
+ .../media/platform/mediatek/vcodec/Kconfig    |   4 +
+ .../platform/mediatek/vcodec/common/Makefile  |   4 +
+ .../mediatek/vcodec/common/mtk_vcodec_dbgfs.c |  21 +-
+ .../mediatek/vcodec/common/mtk_vcodec_fw.c    |  33 +-
+ .../mediatek/vcodec/common/mtk_vcodec_fw.h    |   8 +-
+ .../vcodec/common/mtk_vcodec_fw_priv.h        |  12 +
+ .../vcodec/common/mtk_vcodec_fw_scp.c         |   1 +
+ .../vcodec/common/mtk_vcodec_fw_vcp.c         | 631 ++++++++++++++++++
+ .../vcodec/common/mtk_vcodec_fw_vcp.h         | 166 +++++
+ .../vcodec/common/mtk_vcodec_fw_vpu.c         |   1 +
+ .../vcodec/decoder/mtk_vcodec_dec_drv.c       |  21 +-
+ .../vcodec/decoder/mtk_vcodec_dec_drv.h       |   3 +
+ .../vcodec/decoder/mtk_vcodec_dec_hw.c        |  31 +
+ .../vcodec/decoder/mtk_vcodec_dec_hw.h        |  13 +-
+ .../vcodec/decoder/mtk_vcodec_dec_stateless.c |   6 +
+ .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c | 114 +++-
+ .../decoder/vdec/vdec_h264_req_multi_if.c     |  11 +-
+ .../decoder/vdec/vdec_hevc_req_multi_if.c     |  12 +-
+ .../vcodec/decoder/vdec/vdec_vp8_req_if.c     |   5 +-
+ .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c |  27 +-
+ .../mediatek/vcodec/decoder/vdec_ipi_msg.h    |   2 +
+ .../mediatek/vcodec/decoder/vdec_vpu_if.c     |  12 +-
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  |   1 -
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.h  |   2 +
+ .../vcodec/encoder/mtk_vcodec_enc_drv.c       |   4 +-
+ .../vcodec/encoder/mtk_vcodec_enc_drv.h       |   2 +
+ 27 files changed, 1093 insertions(+), 55 deletions(-)
+ create mode 100644 drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vcp.c
+ create mode 100644 drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vcp.h
+
 -- 
 2.51.0.windows.2
-
 
