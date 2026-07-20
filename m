@@ -4,78 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DA3AC4451B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 06:29:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33B43C44524
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 06:30:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y33sl6LlKQwmsMxpToD1qauD4dOYyjLtnlR4y1Y+rgA=; b=LeLliyW6EE2Wtx9bgEQAPv8GjV
-	Qo07hVJNVR+q4MT4TU0zPbeJG+JiDmUfjMcPVbw48ronIgxW8rMsIYAmoNn0LAzdfJD46Jckfo/J0
-	l1ugcpNn+KykEMjuRvVfOSbwcSh+BJOqjYXUjlWp2TuxfjRYCNqW7/2/SRKrGwQu1ckAPh3/OiqE9
-	gcNLW43BV8ZM+XtQj8g6n7vq7BkZiTyVRTFWJLTZ4UE8g896nxBxxNZF6TEqRPLWDGkuXo2bmmzQ8
-	RRrA1xEA4JoKDhMn3nkDnmi+2g1O1B9Soq5Py6NaSCdFU4d7oIPKrZSWTk/BhKv7j5vz0FlwQhBRg
-	ph20ukyg==;
+	bh=OXitATJsY8BgpfJq75nn2osjYyBgvb24SDjAaK1q/mo=; b=SyW2rID2N3uU+I9EGkfpOjfvb9
+	8hcppz7Icl3TwJI+9BCGYAxNdjshQdQT8v3AOhm5//tHCfs2CRBlpDfrzeY//Ac8JsesKSXVq9PFp
+	Vpjc485zwe58sNqp5CpdZowxb5lQnhnIP3Q1ED847Grr9eu6vkOwpMye88lFTaOFN/ZgxAKiuGIRe
+	j10LkLoZq5dm6gOxLWSf3vL4Htqm0+G6dtqW8EuxLlfWEEloqJEEFckrBAjrOh2rzrrg8VRWiylgE
+	FfNo+Slz3tiJdJo/Y6wO2AQvdhvksQUuSML80xGa7oMK1qW6wWuSDmytExtu3JzD92RnA296iJFvv
+	U1bsoZMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlhV2-00000005xWn-1AyM;
-	Mon, 20 Jul 2026 06:29:12 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wlhWP-00000005yAP-21Nv;
+	Mon, 20 Jul 2026 06:30:37 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlhUp-00000005xO5-463q;
-	Mon, 20 Jul 2026 06:29:01 +0000
-X-UUID: 4909e2ae840411f1afed4741b24580c9-20260719
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=y33sl6LlKQwmsMxpToD1qauD4dOYyjLtnlR4y1Y+rgA=;
-	b=bTYu7sw3bnAtkdvgPbdVWXiAnc2VVeSK8znfGcrVeZHrvExH6jMxQLQheF8YvW3WSTwTeRq/8wdN0qVchLnoBsa5Jds5bSK9qWzlXbdI5bjSH+HmvcAGZWE2khrP94neThhvfayMzUpZy7zC24xmmHwPJMj++SvnOhN/syxyhgc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.18,REQID:b3e1a74e-1255-4b2a-b232-abac1b84036f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:8a735a6,CLOUDID:7b94cf13-9783-4648-a7c6-8d1b40365792,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
-	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
-	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 4909e2ae840411f1afed4741b24580c9-20260719
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <jianhua.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1015415630; Sun, 19 Jul 2026 23:28:56 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 20 Jul 2026 14:28:53 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 20 Jul 2026 14:28:52 +0800
-From: Jianhua Lin <jianhua.lin@mediatek.com>
-To: <nicolas@ndufresne.ca>, <mchehab@kernel.org>, <robh@kernel.org>,
-	<krzk+dt@kernel.org>, <conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
-	<jh.hsu@mediatek.com>, Jianhua Lin <jianhua.lin@mediatek.com>
-Subject: [PATCH v10 3/3] media: mediatek: jpeg: add compatible for MT8189 SoC
-Date: Mon, 20 Jul 2026 14:28:29 +0800
-Message-ID: <20260720062829.7343-4-jianhua.lin@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20260720062829.7343-1-jianhua.lin@mediatek.com>
-References: <20260720062829.7343-1-jianhua.lin@mediatek.com>
+	id 1wlhWO-00000005y9q-0uVZ;
+	Mon, 20 Jul 2026 06:30:36 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 9C619404FC;
+	Mon, 20 Jul 2026 06:30:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4CDDE1F00A3F;
+	Mon, 20 Jul 2026 06:30:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784529035;
+	bh=OXitATJsY8BgpfJq75nn2osjYyBgvb24SDjAaK1q/mo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=AN/hPycRKmYYZ4fB3Ovk1WuhT+00HOSwbACoLd+io1ObBH6pzFJoyA6LF4Lx/shZS
+	 oHFIqdIUgqKdQuRYEoBgGskZrt/Xr2XUr510kF4fOnFKmCWU7vsJrg6nbMcpRINhCH
+	 CA8YmePU5HVhv4n9W8WAh/mTIEmyUKrldsxjl8Q706pQf2WteX7OXLV/yvxq+69NNA
+	 DNKISipFLm5IU2CzC+4yueIdxX5VQ8i+SyHxXqjojdLKDVp8wtKNX5VXkxUtZ1mvPW
+	 ceQG+paOL1RuRlEhIQHrfZv+/hwBLvMS+z8Pq2wERYmSt3X0H7UwWON7w0eZAdV5Pw
+	 5GCi2EjX7gosA==
+Date: Mon, 20 Jul 2026 08:30:31 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, 
+	Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2 7/7] soc: mediatek: mtk-mmsys: Add resets for mt8167
+Message-ID: <20260720-elegant-flawless-vole-aa3c1f@quoll>
+References: <20260717163959.714561-1-l.scorcia@gmail.com>
+ <20260717163959.714561-8-l.scorcia@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260719_232900_019321_95013C4D 
-X-CRM114-Status: GOOD (  10.69  )
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20260717163959.714561-8-l.scorcia@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,88 +73,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Compared to the previous generation ICs, the MT8189 uses a 34-bit IOVA
-address space (16GB) and requires a single clock configuration.
+On Fri, Jul 17, 2026 at 06:39:18PM +0200, Luca Leonardo Scorcia wrote:
+> The mt8167 SoC has 64 MMSYS resets, split in two contiguous 32-bits
+> registers, MMSYS_SW0_RST_B (0x140) and MMSYS_SW1_RST_B (0x144), as
+> also stated in the downstream kernel for the Lenovo Smart Clock
+> in the ddp_reg.h header.
+> 
+> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+> ---
+>  drivers/soc/mediatek/mt8167-mmsys.h | 41 +++++++++++++++++++++++++++++
+>  drivers/soc/mediatek/mtk-mmsys.c    |  3 +++
+>  2 files changed, 44 insertions(+)
+> 
+> diff --git a/drivers/soc/mediatek/mt8167-mmsys.h b/drivers/soc/mediatek/mt8167-mmsys.h
+> index eef14083c47b..dc3e882a9893 100644
+> --- a/drivers/soc/mediatek/mt8167-mmsys.h
+> +++ b/drivers/soc/mediatek/mt8167-mmsys.h
+> @@ -3,6 +3,47 @@
+>  #ifndef __SOC_MEDIATEK_MT8167_MMSYS_H
+>  #define __SOC_MEDIATEK_MT8167_MMSYS_H
+>  
+> +#include <linux/soc/mediatek/mtk-mmsys.h>
+> +#include <dt-bindings/reset/mediatek,mt8167-resets.h>
+> +
+> +#define MT8167_MMSYS_SW0_RST_B				0x140
+> +#define MT8167_MMSYS_SW1_RST_B				0x144
+> +
+> +/* MMSYS resets */
+> +static const u8 mmsys_mt8167_rst_tb[] = {
 
-Therefore, add new compatible strings ("mediatek,mt8189-jpgenc" and
-"mediatek,mt8189-jpgdec") along with their specific driver data to
-support the JPEG encoder and decoder of the MT8189 SoC.
+No, data structures NEVER go to the headers because it leads easily to
+duplicated data.
 
-Signed-off-by: Jianhua Lin <jianhua.lin@mediatek.com>
----
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 44 +++++++++++++++++++
- 1 file changed, 44 insertions(+)
-
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index d147ec483081..14f2991a4053 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1868,6 +1868,10 @@ static struct clk_bulk_data mt8173_jpeg_dec_clocks[] = {
- 	{ .id = "jpgdec" },
- };
- 
-+static struct clk_bulk_data mtk_jpeg_dec_clocks[] = {
-+	{ .id = "jpgdec" },
-+};
-+
- static const struct mtk_jpeg_variant mt8173_jpeg_drvdata = {
- 	.clks = mt8173_jpeg_dec_clocks,
- 	.num_clks = ARRAY_SIZE(mt8173_jpeg_dec_clocks),
-@@ -1899,6 +1903,38 @@ static const struct mtk_jpeg_variant mtk_jpeg_drvdata = {
- 	.multi_core = false,
- };
- 
-+static const struct mtk_jpeg_variant mtk8189_jpegenc_drvdata = {
-+	.clks = mtk_jpeg_clocks,
-+	.num_clks = ARRAY_SIZE(mtk_jpeg_clocks),
-+	.formats = mtk_jpeg_enc_formats,
-+	.num_formats = MTK_JPEG_ENC_NUM_FORMATS,
-+	.qops = &mtk_jpeg_enc_qops,
-+	.irq_handler = mtk_jpeg_enc_irq,
-+	.hw_reset = mtk_jpeg_enc_reset,
-+	.m2m_ops = &mtk_jpeg_enc_m2m_ops,
-+	.dev_name = "mtk-jpeg-enc",
-+	.ioctl_ops = &mtk_jpeg_enc_ioctl_ops,
-+	.out_q_default_fourcc = V4L2_PIX_FMT_YUYV,
-+	.cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
-+	.support_34bit = true,
-+};
-+
-+static const struct mtk_jpeg_variant mtk8189_jpegdec_drvdata = {
-+	.clks = mtk_jpeg_dec_clocks,
-+	.num_clks = ARRAY_SIZE(mtk_jpeg_dec_clocks),
-+	.formats = mtk_jpeg_dec_formats,
-+	.num_formats = MTK_JPEG_DEC_NUM_FORMATS,
-+	.qops = &mtk_jpeg_dec_qops,
-+	.irq_handler = mtk_jpeg_dec_irq,
-+	.hw_reset = mtk_jpeg_dec_reset,
-+	.m2m_ops = &mtk_jpeg_dec_m2m_ops,
-+	.dev_name = "mtk-jpeg-dec",
-+	.ioctl_ops = &mtk_jpeg_dec_ioctl_ops,
-+	.out_q_default_fourcc = V4L2_PIX_FMT_JPEG,
-+	.cap_q_default_fourcc = V4L2_PIX_FMT_YUV420M,
-+	.support_34bit = true,
-+};
-+
- static struct mtk_jpeg_variant mtk8195_jpegenc_drvdata = {
- 	.formats = mtk_jpeg_enc_formats,
- 	.num_formats = MTK_JPEG_ENC_NUM_FORMATS,
-@@ -1938,6 +1974,14 @@ static const struct of_device_id mtk_jpeg_match[] = {
- 		.compatible = "mediatek,mtk-jpgenc",
- 		.data = &mtk_jpeg_drvdata,
- 	},
-+	{
-+		.compatible = "mediatek,mt8189-jpgenc",
-+		.data = &mtk8189_jpegenc_drvdata,
-+	},
-+	{
-+		.compatible = "mediatek,mt8189-jpgdec",
-+		.data = &mtk8189_jpegdec_drvdata,
-+	},
- 	{
- 		.compatible = "mediatek,mt8195-jpgenc",
- 		.data = &mtk8195_jpegenc_drvdata,
--- 
-2.45.2
+Best regards,
+Krzysztof
 
 
