@@ -4,98 +4,174 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F34EC44520
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 17:34:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF423C44529
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 17:50:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3c5exW3/ZWNcrrRMB2dz5lEAeo0oJMzDXuXV4sscBRQ=; b=LAMDR31T/ZwYctNe0biuEH44Lf
-	oZti7vu8EMAq2HIUr7kH/tk4twoN/gPHlq7kHhW65UmMaDIubz6YQf07jVBlUCuf9PTNOGHV4oqyz
-	mzZUp6H1pgU6cFd4WDDfWm7Y+jUUCNSN2Y76uChR6XecdnZCad19ZRWZIwtVVbRtWe27WRDJyOtT2
-	o9DcFWVbP6K2G3afzgdiSCnNzqbqdPr//5mNJo4nw41veqmOF2F7xTH+0MmcWB0haVLa4nTLZcnjK
-	zD48joFHyrl4Q2eIf7WvsbMyfK4f3pdS/urrhxorZbLhXwejeai1aIlorE46Kqj+jHcZbc1wysaEQ
-	Gqa3HSVg==;
+	bh=o39wuaCrLqxFExrN5GxONTRjd88b+OhZ+T2Cm0ji7BA=; b=DvFCzddFqzIM3FXv954ZtO6rK4
+	QUAJxepqIEVL6rnSqctNe/VywIf1nXFyg7THty0C4lw7Fz1p7gVh/jYYJQvE7GERYXQPn41BahxZn
+	Ke2osK7TsEB66ksQ9ZZ+XzuYafmVN9hMqiNbSS3ThTwaK1M8/WzurKeFrOSeLb0NV5EJP2J4gLYCU
+	V0en8TTOkpPbi0uo5L+LS1mtVrwbt8mwJ5B/tXt364/auTN1eHj6iAf0gS/I0czMeE0bWyEtLghjF
+	x2lRG4abWWM7jxrv1KqcPaAkTN6+wkOIdaWjG0ZYK6fYA56zfgog2XDf3uO2UuUs3mJoOz9idXo3i
+	M1Zy7qDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlrsT-00000007Y9j-09rW;
-	Mon, 20 Jul 2026 17:34:05 +0000
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+	id 1wls8I-00000007a1t-1qQO;
+	Mon, 20 Jul 2026 17:50:26 +0000
+Received: from mail-westus2azon11010052.outbound.protection.outlook.com ([52.101.46.52] helo=CO1PR03CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlrsP-00000007Y8P-1Xcl
-	for linux-mediatek@lists.infradead.org;
-	Mon, 20 Jul 2026 17:34:03 +0000
-Received: by mail-pf1-x435.google.com with SMTP id d2e1a72fcca58-848882fdb18so7658202b3a.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 Jul 2026 10:34:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1784568840; x=1785173640; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=3c5exW3/ZWNcrrRMB2dz5lEAeo0oJMzDXuXV4sscBRQ=;
-        b=x9WMIOYveotXQKz3XeU84QUVW7EiXaSE65ClKptCaJk6vUZcUYNzl39RDvqfjSm6Jl
-         nICf0DkQmRen4CuGfG5ucZAFpC5al3sfZCHNETqnCEVWgWK8EgXWsmgdopPyVdPTCWEv
-         Q/o1lVpNSL+ByDHrBfhuekICN6/sHs+F9jx1k084QxqayMSfV6Oa2ltl/6a+CjIahEJ1
-         xgd/91eDJVTg9wFKlEolI+yJIw7qhuD6XrC8wgwJ6qjoSeUBUMKy4F594jphozl8cWFI
-         S0tPlF3tKfM3BysXJeEOIYbkZn5oPvPmSNuRVwYWrX5JEXU4pGytVelf7mxOrRfkEYtp
-         evuQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784568840; x=1785173640;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=3c5exW3/ZWNcrrRMB2dz5lEAeo0oJMzDXuXV4sscBRQ=;
-        b=Ev/SPtN8GkvjyXK5Knqj72mn2ks3lSyeFjPddSf+R2q+dZFIPseELn9cVE7rcuu1IY
-         2KhQhaMINosOMQtZw7zWldEVxvPW8eo8Wk5cwCagL7YztBqtvwfs59pCGPDR1i6T6ynt
-         fBpEdxM8jE73yg4p8e3IqM441iJhbPEOScYX4UW9i4MU92qeKuAN53rAE+N+70eEFN+C
-         E4G6OuyqrvZryy8A02iX4anJmqJmlfJ2xXsvFjP/xbE0O3UxgRQCM+6yM+7HO+X5gSKF
-         zDsDvUHAZ9e6M2H+GsgON7LGNx46L6n2Yvp8zNWITrwEVSEtZPgvW6jq05qt+NAoYdi6
-         ypOw==
-X-Forwarded-Encrypted: i=1; AHgh+RofQDF2KvIjPPCflx1DwPYmK4/HW3c4wA7KnfITrr+KeyBJb2InAjxSFUO7FZrFPT5uXruqCFz5ZzJ00egB4w==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzg4j67VMymNqojLQmpQVqF3XL8OdgoZIanc//I/67ai8wjxEGH
-	5Ph5XQzHnBhbqbF5fHgWrpekEhKJTt22CMHW9etuqovXBwP7JXRqAaU30eL0cts7HAo=
-X-Gm-Gg: AfdE7cmqWkfB8S26Yx2FRTNy1Yhr+Goegu9cc8KmPQ78eaSjz0OzO6u+UMfSYnQIYVY
-	NI+M8apyIeO/waspoWUn4Tw1NK99O2TEsn+JD7g/xR61tvjfOxEdx7/m2M4fv5uFq96XUQCqg5Q
-	CRguwbZmtCusJ5ObOR5KNaMMM5dRRk7sG5INS2qtb3CqhSIhIqBEZux2oHeFHztqjcmMNgnEmuF
-	MAy46i0PDlyfr5kefuuiiv1o/cTt0KjNKmEnwKYg8aM2IjVL3wXtLCTaahSuH0tbt+btXjsbUnI
-	cKMwEVGt5qcIXkem3pJj/4K+yLf/ECrKUiQXWFYk+M7V2isLELSP3arGshsYCWkHX4Q3c6i/Yok
-	5wSrWS/WXRNdpqbrIpaJsdj1BO/Q2KvQ/qUY2rM5lOhabAmpWU8PgF9TdQ7SmBnaerg2QvKlbac
-	IxuCNr
-X-Received: by 2002:a05:6a00:3391:b0:841:dca1:8b69 with SMTP id d2e1a72fcca58-84c2923d63amr16490697b3a.5.1784568839837;
-        Mon, 20 Jul 2026 10:33:59 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:966a:e23:19e7:951a])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84c2af9af7esm5713606b3a.52.2026.07.20.10.33.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Jul 2026 10:33:59 -0700 (PDT)
-Date: Mon, 20 Jul 2026 11:33:56 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Pan Chuang <panchuang@vivo.com>
-Cc: Bjorn Andersson <andersson@kernel.org>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	"open list:REMOTE PROCESSOR (REMOTEPROC) SUBSYSTEM" <linux-remoteproc@vger.kernel.org>,
-	open list <linux-kernel@vger.kernel.org>,
-	"open list:INGENIC JZ47xx SoCs" <linux-mips@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	"open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
-	"moderated list:ARM/STM32 ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>
-Subject: Re: [PATCH] remoteproc: Remove redundant dev_err()/dev_err_probe()
-Message-ID: <al5cBMO91BeFghCz@p14s>
-References: <20260717065224.600593-1-panchuang@vivo.com>
+	id 1wls8E-00000007a0x-0fkf;
+	Mon, 20 Jul 2026 17:50:24 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=fJ4o9L2DV7cQV3Bxf9lj/wBaanczPU9uZfx7QrusVc+Ptz5xWI2q/StW43vYFkSWzHxHN37eRC5xt1mmfiMBCHKXbZh5v8fvNt4FlE5h5A7XOMJZa8FTr2p9DvLgoXBmntONruMvRg1jNUpuC9Rdi46lYaA3WI7fRbm7H5Anurj1tS86/ce+JdVize7R45gGIRknrBSFDPAiNP3uWs01WWN5fduCATwB4lo4pYaT/+J0mL32jSlBJteLFSPkKgq8LEyMLpamfE1DhIiozTJjQtes4yerZvAbPk9333A/6GR+XwsbIq1nOYWNctHU0gMqtEg0AQmwe6jK4TDNcL/Slw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=o39wuaCrLqxFExrN5GxONTRjd88b+OhZ+T2Cm0ji7BA=;
+ b=sYCya6L1AD4Kc5c/CajOLgRx2LdFzSmn9aJrHrKI1FbpQeMGLEoxb8WWjidVFFXsKj5QyhbyQ27Di4owzDJYsrA5/Vb5p2gR5soR/9WsnVCDU03r8+lYvtaGnyQFMLm/AmDe6jaSjClx+JjVbCCA53lq4BYxoSQWetaUsI7LXs0+nfBZGEJXRiBJJLJv37b7zn0mu78DQJhxSKTADvgYA7yWk8owT3LReuDZJpqbtIqLUHnt4mcdAQZ4CpzJRiLjf6ydXwgJi3XZsYNOHvk6NsHiW0TV4NGQdq0EzZ3PhxOZzuKjnWXITHIdCIOo8baFIk2NikF/pxWZHpD4v/2seQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=o39wuaCrLqxFExrN5GxONTRjd88b+OhZ+T2Cm0ji7BA=;
+ b=w3mbZiwhxmccFxnBd8d0V9LArpfonHuzprHlfSzTTI6z4bXpgOI+WF4nefowotzVLOp1DOlZoChjsfep4nbxI/OOYo6zfS4+GQ7FRetjgYs0tRsZ/R9tlKtaSf74dQp6CVdui5aYL8FDoY1inL8+WwheKgFP0eBpp1F2fpj9Crk=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Received: from CY1PR12MB9697.namprd12.prod.outlook.com (2603:10b6:930:107::6)
+ by PH0PR12MB7932.namprd12.prod.outlook.com (2603:10b6:510:280::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.223.18; Mon, 20 Jul
+ 2026 17:50:04 +0000
+Received: from CY1PR12MB9697.namprd12.prod.outlook.com
+ ([fe80::3a41:55a0:8203:596d]) by CY1PR12MB9697.namprd12.prod.outlook.com
+ ([fe80::3a41:55a0:8203:596d%6]) with mapi id 15.21.0223.017; Mon, 20 Jul 2026
+ 17:50:03 +0000
+Message-ID: <37bafd27-7adc-4e15-bbf6-7afdbb0b8f22@amd.com>
+Date: Mon, 20 Jul 2026 23:19:41 +0530
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 02/15] drm/xlnx/zynqmp_dpsub: remove dependency on DRM
+ simple helpers
+To: Diogo Silva <diogompaissilva@gmail.com>, Jingoo Han
+ <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>,
+ Seung-Woo Kim <sw0312.kim@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Peter Griffin <peter.griffin@linaro.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Michal Simek <michal.simek@amd.com>,
+ Thierry Reding <thierry.reding@kernel.org>,
+ Mikko Perttunen <mperttunen@nvidia.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Stefan Agner <stefan@agner.ch>,
+ Alison Wang <alison.wang@nxp.com>,
+ Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
+ David Airlie <airlied@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ Gurchetan Singh <gurchetansingh@chromium.org>, Chia-I Wu
+ <olvaffe@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>,
+ Liu Ying <victor.liu@nxp.com>, Frank Li <Frank.Li@nxp.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Xinliang Liu <xinliang.liu@linaro.org>,
+ Sumit Semwal <sumit.semwal@linaro.org>, Yongqin Liu
+ <yongqin.liu@linaro.org>, John Stultz <jstultz@google.com>,
+ Liviu Dudau <liviu.dudau@arm.com>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>,
+ Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-tegra@vger.kernel.org, virtualization@lists.linux.dev,
+ imx@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, linux-amlogic@lists.infradead.org,
+ linux-doc@vger.kernel.org
+References: <20260720-drm_simple_encoder_init-v2-0-5020b630668a@gmail.com>
+ <20260720-drm_simple_encoder_init-v2-2-5020b630668a@gmail.com>
+Content-Language: en-US
+From: "Pandey, Radhey Shyam" <radheys@amd.com>
+In-Reply-To: <20260720-drm_simple_encoder_init-v2-2-5020b630668a@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: PN4P287CA0040.INDP287.PROD.OUTLOOK.COM
+ (2603:1096:c01:271::11) To CY1PR12MB9697.namprd12.prod.outlook.com
+ (2603:10b6:930:107::6)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260717065224.600593-1-panchuang@vivo.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY1PR12MB9697:EE_|PH0PR12MB7932:EE_
+X-MS-Office365-Filtering-Correlation-Id: faa4ed02-1be4-4d62-1cb7-08dee6875401
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|7416014|376014|23010399003|366016|921020|18002099003|22082099003|56012099006|4143699003|11063799006|10067099003;
+X-Microsoft-Antispam-Message-Info: pmmbjoQR4MBCH0s5XGIXXUKTsAFm1jsHQ87haKRvxsgt1K+EnbVBQLdRf+SwI96/Y7fvpFGZlYF/30dBzWOz3/4iM/1zsCmquJUOJ1YJrM0jLMfuV3CjnfHp3OUYY1slMRaOkoDoaI2vV/hgs+ikXNwaaAZ/KFJWb7+7LrRRJ2hwhJNIpNO4tvaNztfzlUIFC750CFmyVWYDTrFrexEF5P7SqS8zUQS1Q696iPA9s/LNzpc38gq57MkCTW9HrBptmQBgkWxMxa34kvyfRmAYXWoLAnTnnkx4K/j3y8gn1Tx5fgEF/D8zdkV0kkbZRP0pMQ9YQbwpYYqi223s1i/iCRLISlFJ/ARPv9yykS+PJDLy5Dz8ZM8rZn8gP05lJoEFdRwpfRQJArI0D5GZ29gzH28vrTK6FL8BIAlVK58vgjxsX027rBO345wpUPwjW2GP7XfpLtZomtoSJnbBB4B3xtfLxYfk8a6Q2VkwAZRzy8tgkmrHZ4hvwmo7YClmOsSjjbyw7wbWHmcopQXD/DrJGI0Ta2y7Y2htmk7j9/j3qinOrQKbgKCXZ3TPpBtoZzhg8WMZbwMeJhJ7qNwyxLH/oC/5AsbS7ft551HghIdBtEZlltW28UH61tcnRLafmxMgzr8DfCvpjovyo3nFYQ1CCk8RkOov3Nz34wh5J0XZ7TSCVebWLs1DpVOHWXRJxDQBXhAdbiLzSUbBSuDMMVhGtg==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY1PR12MB9697.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(376014)(23010399003)(366016)(921020)(18002099003)(22082099003)(56012099006)(4143699003)(11063799006)(10067099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?dXZYMDBxdDBNSGk0RUZiS3BBenpMRVRGeUVsdDZNcWhEOEVQVHgxNU45VnpO?=
+ =?utf-8?B?Ujl2NFNqS0xPMDZsbjFtYWhQZngrZEVNSEJMdCtlWHJzR0c1L2RUcUpwUHow?=
+ =?utf-8?B?RkwxQ3F2akphSWdNeGtkNzRBbFBKTnp6UE5sdUlBeUdKb0NqQ0xsbm5xMEJV?=
+ =?utf-8?B?MS9TTTV4SG0vejI2RmNMK0N0V0xoUEJDYTNmcnBmZzZjSmMwaXJpUUxmdElL?=
+ =?utf-8?B?NmtYTjdTbDBndnFmdzNTbWdudlEvMG52WWhYOWRBQ3NQREMwNEcybTU0Tm03?=
+ =?utf-8?B?M3UxZ3JIR0t0UGhIeGpIMVI5QlkvWkszZ00zWHFxS0pwUmpndnBodkcwbWF2?=
+ =?utf-8?B?S0dGclR2eEJMN2lPcGFDTnIvbXFMMlB3SnVJbzh3NnFVSjBsZVF6ZVZZT1hk?=
+ =?utf-8?B?NjNYd08xcERHbjVDbGRjSjVuU1QzS0YzU2pxN1lNcEFHMTcveSt2d2JTNGdv?=
+ =?utf-8?B?cmpGanZGNTlFRXMwSC9UTEcwZ2ttWUVmQkZiRi9ybGNQVTNSeXBpK1pScXlR?=
+ =?utf-8?B?SFJReVVFTW00cHpNeGU0WFVJQ2NYNlpKV3EyT29YR0MvaFFGV1Y0bWpwbHhv?=
+ =?utf-8?B?UmFFOGViZGtkL3Q5SjhlSzFiYW5BNHkvd2R1NjNPR1dabmZxU3l4SEZiNDVt?=
+ =?utf-8?B?QnZacVFLMEJRVG9HNXJsYmNxVHZnTkluS2ZhVlk5U0JabmRNNXFha0YyaGpP?=
+ =?utf-8?B?Umo1Zmk2K092SSs4RktuY3krY0Q4b1I0dlRjQjN2TElkVS9yWVBRMzkrUGRa?=
+ =?utf-8?B?M2RuRnJjS1NzTGZDMWFUb2F4a3RZRTBNenhrajlwcllqY2RodDMzQW1pZ0lh?=
+ =?utf-8?B?MDBSVFVNU0lyUnJ2UWpqTkRsT3BqRkJBZzhta3NkcHFreUZBaS8vZ1R0eDVY?=
+ =?utf-8?B?NjJ3ckE0Z3BDY2RrOTdqcTdvSDRrZlRSK1dXekFnZXJDOWU4em1NZmR4dUIy?=
+ =?utf-8?B?UGxFYzEyUjFpT2dJU3RZV0pSZDZpUDN1SmVtOGFQUFhxL0d5aGhxN1gxZDl2?=
+ =?utf-8?B?eGhNZ0FYaTFQTGRIbFB1K2pycHhMVTF3c2dJQldLMTBpalZXM0xhRXpSbi80?=
+ =?utf-8?B?d25qU01US1RiajZtZnQ3bkdBTndHcjRlVmd3Tm92T3lob2FPRlNaWmJ0TVRK?=
+ =?utf-8?B?bWJEUGhQNGIzbDRZdjhOL3BzT05SdGUrdXVYZ2x1d2VVdzhTUDlaSDJ4REdM?=
+ =?utf-8?B?OUtiZXZjeGhHY1l3NmpjLzJJL1dmNmFkL3ZXSWc2NkNVazZ2TjhnR1VDUmNO?=
+ =?utf-8?B?L21KM1pURG9vcGhpTWRwWUt1MC9mVDFTMHdmZkpOR21nR1k5ZkVYd25KOVpu?=
+ =?utf-8?B?dGJaYnozQ1hDZDRrcS9xdTJ3ZlkwRm1sMUdncDI2UzByS0MwMyt0TjJMTnNI?=
+ =?utf-8?B?Q05tSzhyTDJiVDQ4ZjRZeTRiQmp5L3Brd1BBOVJRbU0rRlBpWVdPaFl6OE1F?=
+ =?utf-8?B?L3ZXQnRySWNnc2o1V0djTnV5OHpPdG1yWDkvYzJrYWRTc0hyTC81Zi9sYmRN?=
+ =?utf-8?B?OWw3ZjZVUHRHeGRvbGdPMGF2QTNldVJjd3MzR3lPTk02WldybnhKaFN5QytV?=
+ =?utf-8?B?NTRSMlBqTXpabmZVTG9OekdoNUVLUmR1eVo4eG51VStxam1mY1BiVWxMSW9w?=
+ =?utf-8?B?ay8xenhQM1Q3bzhDV3laQUdvRmdvZzRXNmNTVW1lZjlKZXY4MG9XM3pQRU1M?=
+ =?utf-8?B?M1JnQ2JwajYwRldSOE52Vy9JaHpmN0RHbGNjdnhGalI4djIvTitFdVZLcm1y?=
+ =?utf-8?B?WHpvNlI1d3hSZHJINmI0cE1Ca3FudXh3MnR4RWMxWnFuMDVUOXhxMGd6Zk9j?=
+ =?utf-8?B?VVJ6RzUySHcwZCtadW1lWTNQZ2svMklrbTBZb004UzhQVDA1SFZWajlWdTkw?=
+ =?utf-8?B?YzZLNHhOSDVVL3R1SGNnSVZRcTZTeWQrMSs0WEdNSVUvRGRnTnQ0MUNvOGlZ?=
+ =?utf-8?B?c1p0VDhSMml2QTFhMVN2NDRLbDRQeHVLM3hwQjN3SU1CZGhRa2tPblBlNlI1?=
+ =?utf-8?B?T3lFd3J1VjZpYWpudFNKeSs3cnN4SzZ0amswYjVsRzMxb1lpWm9PSlRJVUlw?=
+ =?utf-8?B?MUp0Z3RzNjN1YkVYZVJPeENnS1FpUjBRR0Z3T2VJMjhOR1FzaFdDVlBjaGhQ?=
+ =?utf-8?B?WDhmV2Ira2FxK2NWR1MwRUtoaWRPTWpZdmh2VU5WMm9odmJXWE9zdnRFM1Bh?=
+ =?utf-8?B?R2h2MFU0WUNqYTJNOHA4dTBaTEFDcHlsWWc1RXFZU1BrWmtiYURYb3NHWC8r?=
+ =?utf-8?B?dUptaTJ1SlBkVVpkYThpdVVsSUFMbUxPRzFkczM3YXhFdC8zc0ZaMXhIS0Fy?=
+ =?utf-8?B?Tmt1ZzVrdWFvbkZibW9oQVdsRHFocDlaRExzL00vOGs4TE1jUGZqdz09?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: faa4ed02-1be4-4d62-1cb7-08dee6875401
+X-MS-Exchange-CrossTenant-AuthSource: CY1PR12MB9697.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jul 2026 17:50:03.8455
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: cmEWwMXOfUaEzA7+4Onrv7NOl6vyngB6R4tmpEHMKSOHEv+IOnvdtKrMzMu6CRpd
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR12MB7932
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260720_103401_449601_6D34E6F6 
-X-CRM114-Status: GOOD (  19.91  )
+X-CRM114-CacheID: sfid-20260720_105022_344064_F6648CF9 
+X-CRM114-Status: GOOD (  18.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,205 +186,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 17, 2026 at 02:52:23PM +0800, Pan Chuang wrote:
-> Since commit 55b48e23f5c4 ("genirq/devres: Add error handling in
-> devm_request_*_irq()"), devm_request_irq() and devm_request_threaded_irq()
-> automatically log detailed error messages on failure. Remove the
-> now-redundant driver-specific dev_err() and dev_err_probe() calls.
+On 7/20/2026 9:10 PM, Diogo Silva wrote:
+> The simple KMS helpers are deprecated because they only add an
+> intermediate layer between drivers and atomic modesetting.
 > 
-> Signed-off-by: Pan Chuang <panchuang@vivo.com>
+> Open-code drm_simple_encoder_init() by calling drm_encoder_init()
+> directly and providing driver-local drm_encoder_funcs.
+> Also check the return value from drm_encoder_init() to avoid silent
+> failures.
+> 
+> Signed-off-by: Diogo Silva <diogompaissilva@gmail.com>
+
+Reviewed-by: Radhey Shyam Pandey <radhey.shyam.pandey@amd.com>
+Thanks!
 > ---
->  drivers/remoteproc/da8xx_remoteproc.c    |  2 +-
->  drivers/remoteproc/ingenic_rproc.c       |  4 +---
->  drivers/remoteproc/keystone_remoteproc.c |  4 ++--
->  drivers/remoteproc/mtk_scp.c             |  4 +---
->  drivers/remoteproc/qcom_q6v5.c           | 20 +++++---------------
->  drivers/remoteproc/qcom_sysmon.c         |  2 --
->  drivers/remoteproc/qcom_wcnss.c          |  4 +---
->  drivers/remoteproc/stm32_rproc.c         |  3 +--
->  8 files changed, 12 insertions(+), 31 deletions(-)
->
-
-Applied.
-
-Thanks,
-Mathieu
- 
-> diff --git a/drivers/remoteproc/da8xx_remoteproc.c b/drivers/remoteproc/da8xx_remoteproc.c
-> index 23fca7176539..006fa7b56727 100644
-> --- a/drivers/remoteproc/da8xx_remoteproc.c
-> +++ b/drivers/remoteproc/da8xx_remoteproc.c
-> @@ -298,7 +298,7 @@ static int da8xx_rproc_probe(struct platform_device *pdev)
->  					handle_event, 0, "da8xx-remoteproc",
->  					rproc);
->  	if (ret)
-> -		return dev_err_probe(dev, ret, "devm_request_threaded_irq error\n");
-> +		return ret;
->  
->  	/*
->  	 * rproc_add() can end up enabling the DSP's clk with the DSP
-> diff --git a/drivers/remoteproc/ingenic_rproc.c b/drivers/remoteproc/ingenic_rproc.c
-> index 1b78d8ddeacf..252519f48964 100644
-> --- a/drivers/remoteproc/ingenic_rproc.c
-> +++ b/drivers/remoteproc/ingenic_rproc.c
-> @@ -219,10 +219,8 @@ static int ingenic_rproc_probe(struct platform_device *pdev)
->  
->  	ret = devm_request_irq(dev, vpu->irq, vpu_interrupt, IRQF_NO_AUTOEN,
->  			       "VPU", rproc);
-> -	if (ret < 0) {
-> -		dev_err(dev, "Failed to request IRQ\n");
-> +	if (ret < 0)
->  		return ret;
-> -	}
->  
->  	ret = devm_rproc_add(dev, rproc);
->  	if (ret) {
-> diff --git a/drivers/remoteproc/keystone_remoteproc.c b/drivers/remoteproc/keystone_remoteproc.c
-> index 83763d640c4e..407d6034f748 100644
-> --- a/drivers/remoteproc/keystone_remoteproc.c
-> +++ b/drivers/remoteproc/keystone_remoteproc.c
-> @@ -411,7 +411,7 @@ static int keystone_rproc_probe(struct platform_device *pdev)
->  	ret = devm_request_irq(dev, ksproc->irq_ring, keystone_rproc_vring_interrupt,
->  			       IRQF_NO_AUTOEN, dev_name(dev), ksproc);
->  	if (ret)
-> -		return dev_err_probe(dev, ret, "failed to request vring interrupt\n");
-> +		return ret;
->  
->  	ksproc->irq_fault = platform_get_irq_byname(pdev, "exception");
->  	if (ksproc->irq_fault < 0)
-> @@ -419,7 +419,7 @@ static int keystone_rproc_probe(struct platform_device *pdev)
->  	ret = devm_request_irq(dev, ksproc->irq_fault, keystone_rproc_exception_interrupt,
->  			       IRQF_NO_AUTOEN, dev_name(dev), ksproc);
->  	if (ret)
-> -		return dev_err_probe(dev, ret, "failed to enable exception interrupt\n");
-> +		return ret;
->  
->  	ksproc->kick_gpio = devm_gpiod_get(dev, "kick", GPIOD_ASIS);
->  	ret = PTR_ERR_OR_ZERO(ksproc->kick_gpio);
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index 436656bdfa8b..9751acc2bf83 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -1246,10 +1246,8 @@ static struct mtk_scp *scp_rproc_init(struct platform_device *pdev,
->  					scp_irq_handler, IRQF_ONESHOT,
->  					pdev->name, scp);
->  
-> -	if (ret) {
-> -		dev_err(dev, "failed to request irq\n");
-> +	if (ret)
->  		goto remove_subdev;
-> -	}
->  
->  	return scp;
->  
-> diff --git a/drivers/remoteproc/qcom_q6v5.c b/drivers/remoteproc/qcom_q6v5.c
-> index 0206a4a19254..1075ef4027b7 100644
-> --- a/drivers/remoteproc/qcom_q6v5.c
-> +++ b/drivers/remoteproc/qcom_q6v5.c
-> @@ -302,10 +302,8 @@ int qcom_q6v5_init(struct qcom_q6v5 *q6v5, struct platform_device *pdev,
->  					NULL, q6v5_wdog_interrupt,
->  					IRQF_TRIGGER_RISING | IRQF_ONESHOT,
->  					"q6v5 wdog", q6v5);
-> -	if (ret) {
-> -		dev_err(&pdev->dev, "failed to acquire wdog IRQ\n");
-> +	if (ret)
->  		return ret;
-> -	}
->  
->  	q6v5->fatal_irq = platform_get_irq_byname(pdev, "fatal");
->  	if (q6v5->fatal_irq < 0)
-> @@ -315,10 +313,8 @@ int qcom_q6v5_init(struct qcom_q6v5 *q6v5, struct platform_device *pdev,
->  					NULL, q6v5_fatal_interrupt,
->  					IRQF_TRIGGER_RISING | IRQF_ONESHOT,
->  					"q6v5 fatal", q6v5);
-> -	if (ret) {
-> -		dev_err(&pdev->dev, "failed to acquire fatal IRQ\n");
-> +	if (ret)
->  		return ret;
-> -	}
->  
->  	q6v5->ready_irq = platform_get_irq_byname(pdev, "ready");
->  	if (q6v5->ready_irq < 0)
-> @@ -328,10 +324,8 @@ int qcom_q6v5_init(struct qcom_q6v5 *q6v5, struct platform_device *pdev,
->  					NULL, q6v5_ready_interrupt,
->  					IRQF_TRIGGER_RISING | IRQF_ONESHOT,
->  					"q6v5 ready", q6v5);
-> -	if (ret) {
-> -		dev_err(&pdev->dev, "failed to acquire ready IRQ\n");
-> +	if (ret)
->  		return ret;
-> -	}
->  
->  	q6v5->handover_irq = platform_get_irq_byname(pdev, "handover");
->  	if (q6v5->handover_irq < 0)
-> @@ -342,10 +336,8 @@ int qcom_q6v5_init(struct qcom_q6v5 *q6v5, struct platform_device *pdev,
->  					IRQF_TRIGGER_RISING | IRQF_ONESHOT |
->  					IRQF_NO_AUTOEN,
->  					"q6v5 handover", q6v5);
-> -	if (ret) {
-> -		dev_err(&pdev->dev, "failed to acquire handover IRQ\n");
-> +	if (ret)
->  		return ret;
-> -	}
->  
->  	q6v5->stop_irq = platform_get_irq_byname(pdev, "stop-ack");
->  	if (q6v5->stop_irq < 0)
-> @@ -355,10 +347,8 @@ int qcom_q6v5_init(struct qcom_q6v5 *q6v5, struct platform_device *pdev,
->  					NULL, q6v5_stop_interrupt,
->  					IRQF_TRIGGER_RISING | IRQF_ONESHOT,
->  					"q6v5 stop", q6v5);
-> -	if (ret) {
-> -		dev_err(&pdev->dev, "failed to acquire stop-ack IRQ\n");
-> +	if (ret)
->  		return ret;
-> -	}
->  
->  	q6v5->state = devm_qcom_smem_state_get(&pdev->dev, "stop", &q6v5->stop_bit);
->  	if (IS_ERR(q6v5->state)) {
-> diff --git a/drivers/remoteproc/qcom_sysmon.c b/drivers/remoteproc/qcom_sysmon.c
-> index a0830a48b1f4..61e1038328e8 100644
-> --- a/drivers/remoteproc/qcom_sysmon.c
-> +++ b/drivers/remoteproc/qcom_sysmon.c
-> @@ -662,8 +662,6 @@ struct qcom_sysmon *qcom_add_sysmon_subdev(struct rproc *rproc,
->  						IRQF_TRIGGER_RISING | IRQF_ONESHOT,
->  						"q6v5 shutdown-ack", sysmon);
->  		if (ret) {
-> -			dev_err(sysmon->dev,
-> -				"failed to acquire shutdown-ack IRQ\n");
->  			kfree(sysmon);
->  			return ERR_PTR(ret);
->  		}
-> diff --git a/drivers/remoteproc/qcom_wcnss.c b/drivers/remoteproc/qcom_wcnss.c
-> index 3392c9380202..e9a00efe97f6 100644
-> --- a/drivers/remoteproc/qcom_wcnss.c
-> +++ b/drivers/remoteproc/qcom_wcnss.c
-> @@ -521,10 +521,8 @@ static int wcnss_request_irq(struct qcom_wcnss *wcnss,
->  					NULL, thread_fn,
->  					IRQF_TRIGGER_RISING | IRQF_ONESHOT,
->  					"wcnss", wcnss);
-> -	if (ret) {
-> -		dev_err(&pdev->dev, "request %s IRQ failed\n", name);
-> +	if (ret)
->  		return ret;
-> -	}
->  
->  	/* Return the IRQ number if the IRQ was successfully acquired */
->  	return irq_number;
-> diff --git a/drivers/remoteproc/stm32_rproc.c b/drivers/remoteproc/stm32_rproc.c
-> index 0e5d64fbe52c..1fe4cdc0a13a 100644
-> --- a/drivers/remoteproc/stm32_rproc.c
-> +++ b/drivers/remoteproc/stm32_rproc.c
-> @@ -682,8 +682,7 @@ static int stm32_rproc_parse_dt(struct platform_device *pdev,
->  		err = devm_request_irq(dev, irq, stm32_rproc_wdg, 0,
->  				       dev_name(dev), pdev);
->  		if (err)
-> -			return dev_err_probe(dev, err,
-> -					     "failed to request wdg irq\n");
-> +			return err;
->  
->  		ddata->wdg_irq = irq;
->  
-> -- 
-> 2.34.1
+>   drivers/gpu/drm/xlnx/zynqmp_kms.c | 14 ++++++++++++--
+>   1 file changed, 12 insertions(+), 2 deletions(-)
 > 
+> diff --git a/drivers/gpu/drm/xlnx/zynqmp_kms.c b/drivers/gpu/drm/xlnx/zynqmp_kms.c
+> index d5f922450565..ac9197e026af 100644
+> --- a/drivers/gpu/drm/xlnx/zynqmp_kms.c
+> +++ b/drivers/gpu/drm/xlnx/zynqmp_kms.c
+> @@ -29,8 +29,8 @@
+>   #include <drm/drm_managed.h>
+>   #include <drm/drm_mode_config.h>
+>   #include <drm/drm_plane.h>
+> +#include <drm/drm_print.h>
+>   #include <drm/drm_probe_helper.h>
+> -#include <drm/drm_simple_kms_helper.h>
+>   #include <drm/drm_vblank.h>
+>   
+>   #include <linux/clk.h>
+> @@ -417,6 +417,10 @@ static const struct drm_driver zynqmp_dpsub_drm_driver = {
+>   	.minor				= 0,
+>   };
+>   
+> +static const struct drm_encoder_funcs zynqmp_dpsub_encoder_funcs = {
+> +	.destroy = drm_encoder_cleanup,
+> +};
+> +
+>   static int zynqmp_dpsub_kms_init(struct zynqmp_dpsub *dpsub)
+>   {
+>   	struct drm_encoder *encoder = &dpsub->drm->encoder;
+> @@ -436,7 +440,13 @@ static int zynqmp_dpsub_kms_init(struct zynqmp_dpsub *dpsub)
+>   
+>   	/* Create the encoder and attach the bridge. */
+>   	encoder->possible_crtcs |= drm_crtc_mask(&dpsub->drm->crtc);
+> -	drm_simple_encoder_init(&dpsub->drm->dev, encoder, DRM_MODE_ENCODER_NONE);
+> +	ret = drm_encoder_init(&dpsub->drm->dev, encoder,
+> +			       &zynqmp_dpsub_encoder_funcs,
+> +			       DRM_MODE_ENCODER_NONE, NULL);
+> +	if (ret) {
+> +		drm_err(&dpsub->drm->dev, "failed to initialize encoder\n");
+> +		return ret;
+> +	}
+>   
+>   	ret = drm_bridge_attach(encoder, dpsub->bridge, NULL,
+>   				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
+> 
+
 
