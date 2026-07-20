@@ -4,83 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84B53C44532
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 13:52:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 647B1C44532
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 13:55:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NKvncxxjNvP8s9qJUZ7ZaBggAfFkch++xpbcsCwtXAk=; b=tSfJ3U3p7mBI95bVhw01hymO7L
-	6muSMbzvlBjxLie+APFN8HY87cQRR7C4vmjIXzw4KNXNyMDS2mEFLfOdsPkCLDpFDNeyIxfl9QBD+
-	wAMmWsM2am7ZrPp6Hz4yM1uV4rjqPQsUpaXV/bJrdl6BQlob1yYrbc1XFDXcmw6bFgDfU4hpWpSs4
-	l4FhWpychD8kRU/Q/FWdtgovwvhzT++wOF5Ryy4/3WL75/k6EGGjyeIos0MnuJANq21prgqQ636Iq
-	V+12lFR4obWufKHWSNANHkaoZIMQguIrbdc3XsmBamu9iiZUrdpHw2uSbAs7FeIn6Usu+4g95b52s
-	jyxmEu8Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SmUuTxTQ6Y4XVw5VWbgQDC5BocSiUMXxazc3MH9NSJY=; b=sxTGgPYYPXltGTJJXp6WTn2Nuw
+	gvxc5fpF04amS2VTq7Wp616iynCq3tePUmKE+MEgiKnXIy1FjaR/kNVpd4+U2UZR0hPnX+mlRZo4w
+	7qjou6UvUWY/c0zcwdphGfkPPlWH5l4iAnkdy8GBoMkyrqdJa1kLODXtf6fpkHML1rwu73gYOc+KE
+	B5o6mpNqijYKZMBcuaULK/zKuEooNe2FhzimZByzWhdkmNPzrl/RZcBwsk63vjrNwqhGU9ORWktoq
+	UaVt3Gmm0yQ9/M9a0WBelvPMgObg9l/0YmQHdwlo5VqAEYIMirlUBJxaH/uu8MYWtkBTrxvo8Qe01
+	Gtdt/2Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmAtc-00000009aID-010L;
-	Tue, 21 Jul 2026 13:52:32 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wmAw0-00000009acQ-1myR;
+	Tue, 21 Jul 2026 13:55:00 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmAtY-00000009aHU-2WiE;
-	Tue, 21 Jul 2026 13:52:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784641944;
-	bh=NKvncxxjNvP8s9qJUZ7ZaBggAfFkch++xpbcsCwtXAk=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=L+/3uuQQ8QfCezdIBcVinSmPPCz0yqpEpP/Yt3GEokyRDcgcBLRXh34/5dSeLic0s
-	 tannY+pHKtCZOGwEkbkXxLfS9Xi6YEQUsvG7eOAckt/3bGLFeDpFpKDx0KXVTKwzk1
-	 abRn0NctIDYBUz5bk7COunuGF4PtfUGwc0ARd1YHJhRFQdHl/rxZTBWClEdvwWr1cB
-	 +uu6yYdcw8SdmTfVso+PsxU8WfiC8njIXgxHWQg9cJ2E3JtYXRynDnXrdZ7GuDXxwX
-	 j6YN6rpXcR4z9aTX2Wsv4Y5K3YvaJyBbAcoeXYqBkH79fS4bFpPFN5jBo7Nbn9QxuZ
-	 RtWYeqJEufYMQ==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 28B9517E0177;
-	Tue, 21 Jul 2026 15:52:23 +0200 (CEST)
-Message-ID: <da269781a5e4643745635b51c8ca95c22a7a5baf.camel@collabora.com>
-Subject: Re: [PATCH v2] media: mtk-jpeg: drain hardware completion before
- freeing context
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Guangshuo Li <lgs201920130244@gmail.com>, Sven
- =?ISO-8859-1?Q?P=FCschel?=	 <s.pueschel@pengutronix.de>
-Cc: Bin Liu <bin.liu@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>,  Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,  Hans
- Verkuil <hverkuil+cisco@kernel.org>, Fan Wu <fanwu01@zju.edu.cn>,
- linux-media@vger.kernel.org, 	linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, 	linux-mediatek@lists.infradead.org
-Date: Tue, 21 Jul 2026 09:52:21 -0400
-In-Reply-To: <CANUHTR-0-_zOegBf74bmAFqLgUUgjzqz5B7ydO9+Zyj=XSJ2CA@mail.gmail.com>
-References: <20260718112448.3289122-1-lgs201920130244@gmail.com>
-	 <f60f255b81db1db310276a1acdca412f6070a28b.camel@collabora.com>
-	 <CANUHTR-0-_zOegBf74bmAFqLgUUgjzqz5B7ydO9+Zyj=XSJ2CA@mail.gmail.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-M2rH9JyOzH9+/KPhomek"
-User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
+	id 1wmAvz-00000009abw-09tS;
+	Tue, 21 Jul 2026 13:54:59 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 6BC03419D0;
+	Tue, 21 Jul 2026 13:54:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B10F11F00A3A;
+	Tue, 21 Jul 2026 13:54:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784642098;
+	bh=SmUuTxTQ6Y4XVw5VWbgQDC5BocSiUMXxazc3MH9NSJY=;
+	h=From:To:In-Reply-To:References:Subject:Date;
+	b=MxUbEjvi+S1gmu8+SyRME2gqUdoDm9BlB09MsFm6rJY/CkFAA94CSVST6iCy1hkQf
+	 0552ovL5e+xg1ILWMu6AisXcN7swIJpmrFZjlQtakW91UZIcMghsPrAxVxDDEYF6cN
+	 AzXSBsNG+T0zucJkbEyYarpGLBiww+H5aKIgFy0qzJEDlJiKYee8QEFPlHNQMuSLF6
+	 D6rI2n0IIYl9F5/h5XY0aeEmxo7/UZXGTQiSuf3Sq3l09e3MU1w7ZoHjbpxohxisxN
+	 laxZPhd1m6reeyrtqojBJrXmMezjSSqIFbfmHzJnpex5iTk8+TrWgtxb/7DL1bVcSH
+	 3pGMwmkVmXYmw==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>, Lee Jones <lee@kernel.org>, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>
+In-Reply-To: <dcd98d81dede338c9bbb9700a9613c848b702e49.1784336005.git.daniel@makrotopia.org>
+References: <dcd98d81dede338c9bbb9700a9613c848b702e49.1784336005.git.daniel@makrotopia.org>
+Subject: Re: [PATCH] regulator: mt6358: use regmap helper to read fixed LDO
+ calibration
+Message-Id: <178456524716.8049.7739435878902568090.b4-ty@b4>
+Date: Mon, 20 Jul 2026 17:34:07 +0100
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_065228_797179_B52B51CA 
-X-CRM114-Status: GOOD (  14.44  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.16-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1158; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=Or27C09noim0hBLB6vCJhxX5YJBbBMC0apcidh5QXv4=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqX3ovGKOmPkSlI5KgbeLNPrHdhSz1U0ye319qu
+ t8aj7xPFVOJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCal96LwAKCRAk1otyXVSH
+ 0AZ1B/9ARDcqVWB+vNQ9WKXIDU2LWWO5yfd31xuJmaU/3qWJKcEQXczXC4li19OL8EZo1MPXf6Q
+ aRd7vkMgtzv+RBXTnIip/KCFIKW4S8TfSzBom2eAsWw+xzyyoVl2KmpHyNM28r+J2Sra/Ve3nlz
+ eaeR9oc6gVOwjUNMFNjPkKKJKinc4owaoSsH4xq7BoB3c7Dm/FB1Y2lvkz442Li945KwXmgcEWV
+ G810gmroVW1GN7hoVPY8VmCKCHy9Fi8fg/eiOi2+IxnnA6dhsAD+PSi0DZcvh0ufd1uW7foNvah
+ muBEIkem2qoik0jWsiTFHiJXN3uG574qFGE1VH3ZL48/LNCu
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,74 +83,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Sat, 18 Jul 2026 02:05:59 +0100, Daniel Golle wrote:
+> regulator: mt6358: use regmap helper to read fixed LDO calibration
 
---=-M2rH9JyOzH9+/KPhomek
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Applied to
 
-Hi,
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-7.2
 
-Le mardi 21 juillet 2026 =C3=A0 17:15 +0800, Guangshuo Li a =C3=A9crit=C2=
-=A0:
-> Would you prefer a correctness-first change that moves job_finish() to
-> the hardware completion paths, accepting that serialization, or is
-> there an existing v4l2-m2m mechanism for representing several
-> concurrent hardware jobs that I have missed?
+Thanks!
 
-This one predates me as a maintainer, so I'm a bit in catchup mode. I think=
- your
-work shows how much problems/complexity this method introduce. I'm currentl=
-y
-tracking two proposal, an RKVDEC and an RGA2 proposal. I think the second m=
-ethod
-is worth looking into. The first one might have had the same issue as this =
-one,
-as it called job_finish() immediatly in device_run() (which is equivalent o=
-f
-doing it in a worker like MTK codecs do in general**.=20
+[1/1] regulator: mt6358: use regmap helper to read fixed LDO calibration
+      https://git.kernel.org/broonie/regulator/c/1d26f125501f
 
-https://lore.kernel.org/all/20260606-spu-rga3multicore-v1-0-3ec2b15675f7@pe=
-ngutronix.de/
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-And you'll find the patch:
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-[PATCH 05/17] media: v4l2-mem2mem: support running multiple jobs in paralle=
-l
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-That adds parallel job in the mem2mem, so that you can have a single m2m co=
-ntext
-for multiple cores, handling multiple jobs, and the tear down is happening =
-on
-all cores. Now, I'm not forcing you to do that path, but I think its a bett=
-er
-solution long term, as open coding custom tear down is error prone. Let me =
-know
-your thought, of course I'd like if you could work with Sven on a common
-solution.
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-Nicolas
+Thanks,
+Mark
 
-
-** Most of MTK codecs worker are not needed, since the m2m framework alread=
-y has
-a worker and is re-entrent safe for triggering the next job. But MTK code u=
-ses a
-lot of condition wait, turning async operation into synchronous, and once m=
-ulti-
-core, it just break apart.
-
---=-M2rH9JyOzH9+/KPhomek
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCal95lQAKCRDZQZRRKWBy
-9N7TAQCbjR0A6T7HbDRxSk17zQqfY5E7SUwkbbXmxf5iwXhsYgD/X514Y0Jl9eql
-56dJ1F+qySkpOeItyxeg3Oz4q2gi6wk=
-=2P1k
------END PGP SIGNATURE-----
-
---=-M2rH9JyOzH9+/KPhomek--
 
