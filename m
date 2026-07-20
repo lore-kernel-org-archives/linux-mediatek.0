@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AF45C44515
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 14:02:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE791C4452A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 14:42:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rIUH7Om9TP2+of2IvSjo/klnvZLvL7VmTwo2Br+NlKo=; b=R/U1QTIv11fUILWhJBv8LZrJhY
-	XR82h0dnUy/zC/6C/atOzedR+H/OQuohR3vNnSsOoh6LHv8Mgjt48VB/iOQNpIa/KL2kF2OFiWu8Q
-	JmQn+O2xUenfU2ylZvj7ggDOueReon8DqwUMipTf6w4ZqUcIebwy55bCk9r7BP1+L3ELnCS4D6qMB
-	7CgMjq2q5RVAmT5UUXO33VjEQGsCsoNYFf6llcDm9uls56LB+AbFm0I59Pw34AyW3B+dxtg8Yk8F2
-	ICPw243RLKFGS1j1JeQeuyBtrFC45Jswb1rApj6KKFC8J5f/Wtw9LJkFEja8ov9K9IUHhKuxOuD2W
-	yAgrB2Vg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ezz3OzivXlfRA5hYqb0/3stPtbj7bwr93TcU9UBMb+Q=; b=fuXVQIVGtFN8/A
+	sKt9raG5p3OfMVgame7dR/ExsacbnqpZpDzxP1nhiFQLoVtBKsVeeQCi8OUp09ZVy0DoeP3MoM42g
+	clgq90OF2uyT6eu58UjSN2L3532cVGAQnPzQIqv7UMDmcTfUV9BTof+J9oroGoiprOf812HdtWZJM
+	PUSPZI8olQpPjKm7BISOdRapwGOkhzRQ3NOwQXsqiqIhSJEVZs3XULXLQ0iPFXJjgiNwlFsguJ/zy
+	vteqhdi8IUi5Pf34jSiGEUzIuS+n8IhWZDSGcz4BjWlugKp2UizgpOG27A2nFvaY6wGUOYsXaU+/4
+	V3Lbvtq3PwrhEme1fD7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wloZn-00000006tmG-0eK3;
-	Mon, 20 Jul 2026 14:02:35 +0000
-Received: from mail-106101.protonmail.ch ([79.135.106.101])
+	id 1wlpCn-0000000714L-3Tpn;
+	Mon, 20 Jul 2026 14:42:53 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wloZe-00000006tiE-2Zj0;
-	Mon, 20 Jul 2026 14:02:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1784556142; x=1784815342;
-	bh=rIUH7Om9TP2+of2IvSjo/klnvZLvL7VmTwo2Br+NlKo=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=hwEE0MCsp7FnCerQellLJy8FpDFGVQXkX4vQTSxjrPXlncsc5q2SalY289x8k9coU
-	 Sq985az+qLP64nhKhah3CKZh9bXBpJDtWHq448LfjvW/WbVaJ4xa4csjupjS0lF6N+
-	 J3SFsgpUrxrXmew/xT7y17M3+3IuN08/YK/FDOKjtbf8p6R6/hEIWk6JiKEsxFK8YC
-	 F8yWwhZFM8CAn8W2N7+eN3ld7FbRZQLi9RgUbpAayiocNUIgD4zUfMVXgm2Wa99bNn
-	 +lcRzSk/gvxeOETXA7oAkzqBSTyae8bRZqDfxbPBB1dXl18A36/p6tK8IBpEQnEXit
-	 m0R/6BqSv5uzg==
-Date: Mon, 20 Jul 2026 14:02:16 +0000
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-From: Roman Vivchar <rva333@protonmail.com>
-Cc: Srinivas Kandagatla <srini@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Lala Lin <lala.lin@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/3] nvmem: mtk-efuse: add support for 32-bit aligned reads
-Message-ID: <fjbTxmhINpeE9M-4eyCFuhueFEH1J4fJBRN90DeIFMEfvxbwx8XeTLnkLsSDq2nchJJFFZxUe_SUNQuGWUDiB4taXJ5lRkLUhT1C_i3L8Rw=@protonmail.com>
-In-Reply-To: <c2b85740-4372-4609-a9fa-930010f5296a@collabora.com>
-References: <20260715-6572-nvmem-v1-0-9c13be99d077@protonmail.com> <20260715-6572-nvmem-v1-2-9c13be99d077@protonmail.com> <c2b85740-4372-4609-a9fa-930010f5296a@collabora.com>
-Feedback-ID: 173184497:user:proton
-X-Pm-Message-ID: 3ea465e119018711fb21346ca626e34fdfdfec16
+	id 1wlpCl-0000000713G-1bvu;
+	Mon, 20 Jul 2026 14:42:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1784558568;
+	bh=rGBw9sMpTr+wuKH0VkSwGrsToToyYGvf8ggG4l32bF8=;
+	h=From:To:Cc:Subject:Date:From;
+	b=O1AIoBlZ7+PqHadhmpd3v8rrXrW3BUvY76RgJxvEpgULv6oG7oNAeC7lEN9nuhw8M
+	 Rpc38jleGfySsypICCj68/NXYZrVAOUr3FgvHq7zp+n9Q6+uwFHPQ9G8cYZ/gdlf5O
+	 sy+k45gQ+s9jT+SqkxxgOtl6sUCVduNgu6W+75iA1eYRy8wKAVpI8pixX6EeUubWj1
+	 EVuQV0w8LoitoOrN7aQ9H881I4jdof4hg5/atHr9iNWsb7Jt8dRd+7jmYT8hDJiR2n
+	 Kbzsqql+CA2HaPpg+nHC8KkaN4phTBjkvz319iYbBFFch8jEdsf/ljSv+GC4AFEgpX
+	 SnyREwZRMxB3g==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0843517E003B;
+	Mon, 20 Jul 2026 16:42:47 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: rafael@kernel.org
+Subject: [PATCH] thermal/drivers/mediatek/lvts_thermal: Make reset optional for MT8196
+Date: Mon, 20 Jul 2026 16:42:44 +0200
+Message-ID: <20260720144244.88877-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260720_070226_813521_C9D09304 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20260720_074251_577080_60584E28 
+X-CRM114-Status: GOOD (  18.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,46 +65,96 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: jiapeng.chong@linux.alibaba.com, linux-pm@vger.kernel.org, wenst@chromium.org, linux-kernel@vger.kernel.org, laura.nao@collabora.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, p.zabel@pengutronix.de, daniel.lezcano@kernel.org, matthias.bgg@gmail.com, rui.zhang@intel.com, kernel@collabora.com, lukasz.luba@arm.com, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Monday, July 20th, 2026 at 3:48 PM, AngeloGioacchino Del Regno <angelogi=
-oacchino.delregno@collabora.com> wrote:
+Depending on the SoC+Firmware combination, the LVTS hardware may be
+may be actively used by one or even multiple concurrent MCUs!
+In this case, resetting it may produce either a severe slowdown of
+the entire system, or even a thermal protection AP reset, as some
+MCU(s) may be reading a very high or very low temperature while the
+LVTS is being reset.
 
-> On 7/15/26 16:27, Roman Vivchar via B4 Relay wrote:
+On those, don't fail if no reset is found as that may be omitted on
+purpose, but still check if there's one, because some board(s) may
+be running on a different bootchain with reduced firmwares or using
+firmwares with reduced functionality.
 
-...
-=20
-> it's easier at this point if you simply do
->=20
-> =09if (pdata->needs_aligned_read) {
-> =09=09econfig.stride =3D 4;
-> =09=09econfig.reg_read =3D mtk_reg_read_aligned;
-> =09} else {
-> =09=09econfig.stride =3D 1;
-> =09=09econfig.reg_read =3D mtk_reg_read;
-> =09}
->=20
-> and you avoid touching mtk_reg_read entirely.
+Add a new "optional_reset" member to lvts_data and use it to check
+whether the resets should be mandatory or not.
 
-stride =3D 4 means we can't do something like reg =3D <0x1 0x1>;
-For example, CPU speedbin is sitting at 0x181, but we can model that as
-0x180.
-cpu_speedbin: cpu-speedbin@180 {
-    /* This is technically reg =3D <0x181 0x1> and bits =3D <0 2> */
-    reg =3D <0x180 0x4>;
-    bits =3D <8 2>;
-};
+Also, while at it, since devm_reset_control_get_by_index() is now
+deprecated, change the probe function to instead call function
+devm_reset_control_get_exclusive_by_index(), which does the same.
 
-I'm not sure what are mediatek preferences in the devicetree since
-things change quite frequently... Downstream never triggers this hw bug
-because it uses readl everywhere for each efuse.
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/thermal/mediatek/lvts_thermal.c | 29 ++++++++++++++++++++++---
+ 1 file changed, 26 insertions(+), 3 deletions(-)
 
-I would keep the stride =3D 1 so we don't need workarounds in the DT, but
-the reg_read indeed sounds better :)
+diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+index 92711896ce24..6670b5458f2c 100644
+--- a/drivers/thermal/mediatek/lvts_thermal.c
++++ b/drivers/thermal/mediatek/lvts_thermal.c
+@@ -160,6 +160,7 @@ struct lvts_data {
+ 	int gt_calib_bit_offset;
+ 	unsigned int def_calibration;
+ 	u16 msr_offset;
++	bool optional_reset;
+ };
+ 
+ struct lvts_sensor {
+@@ -1473,9 +1474,29 @@ static int lvts_probe(struct platform_device *pdev)
+ 	if (IS_ERR(lvts_td->base))
+ 		return dev_err_probe(dev, PTR_ERR(lvts_td->base), "Failed to map io resource\n");
+ 
+-	lvts_td->reset = devm_reset_control_get_by_index(dev, 0);
+-	if (IS_ERR(lvts_td->reset))
+-		return dev_err_probe(dev, PTR_ERR(lvts_td->reset), "Failed to get reset control\n");
++	/*
++	 * Depending on the SoC+Firmware combination, the LVTS hardware may be
++	 * may be actively used by one or even multiple concurrent MCUs!
++	 * In this case, resetting it may produce either a severe slowdown of
++	 * the entire system, or even a thermal protection AP reset, as some
++	 * MCU(s) may be reading a very high or very low temperature while the
++	 * LVTS is being reset.
++	 *
++	 * On those, don't fail if no reset is found as that may be omitted on
++	 * purpose, but still check if there's one, because some board(s) may
++	 * be running on a different bootchain with reduced firmwares or using
++	 * firmwares with reduced functionality.
++	 */
++	lvts_td->reset = devm_reset_control_get_exclusive_by_index(dev, 0);
++	if (IS_ERR(lvts_td->reset)) {
++		if (lvts_data->optional_reset) {
++			dev_dbg(dev, "No reset found. LVTS may be used by firmware.\n");
++			lvts_td->reset = NULL;
++		} else {
++			return dev_err_probe(dev, PTR_ERR(lvts_td->reset),
++					     "Failed to get reset control\n");
++		}
++	}
+ 
+ 	irq = platform_get_irq(pdev, 0);
+ 	if (irq < 0)
+@@ -2163,6 +2184,7 @@ static const struct lvts_data mt8196_lvts_mcu_data = {
+ 	.num_cal_offsets = LVTS_NUM_CAL_OFFSETS_MT8196,
+ 	.msr_offset = LVTS_MSR_OFFSET_MT8196,
+ 	.ops = &lvts_platform_ops_mt8196,
++	.optional_reset = true,
+ };
+ 
+ static const struct lvts_data mt8196_lvts_ap_data = {
+@@ -2175,6 +2197,7 @@ static const struct lvts_data mt8196_lvts_ap_data = {
+ 	.num_cal_offsets = LVTS_NUM_CAL_OFFSETS_MT8196,
+ 	.msr_offset = LVTS_MSR_OFFSET_MT8196,
+ 	.ops = &lvts_platform_ops_mt8196,
++	.optional_reset = true,
+ };
+ 
+ static const struct of_device_id lvts_of_match[] = {
+-- 
+2.55.0
 
-Let me know if you have any objections.
-
-Best regards,
-Roman
 
