@@ -4,103 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11D26C44515
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 08:58:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66430C4451B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 09:01:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
-	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RUKJxr+1tIy/FI363caVVmoJTRInNyqm1ZI8xlDvLAU=; b=MFsu8dg/PMmjBQun6iGM8eWNiI
-	RGa9IvqnVIm+DP0J47H2tC5w0zTLkPabbe8zQIgWz/dIrpHNKwRRA2EO+Gm/PMp8J+kiRSnoF6yCW
-	nQtesTMPGEukwIolRCE94pGeK+YbTKkel1H80sHS4nY2dhGytfL1WR6SQrbFgQhmAQ0fVoN7p4FW5
-	iC8eolmGYBPO4mQRK1FH6VFJe+2L9+/qQG0Xd+3LzOJb2+0oFwVPXLzrUM5hDsXGQXbSeDOCsCfIS
-	AydzeYnbM5B/1su7aP2I07o74BBC93LqD/xTDS2+zFWmeXJJThHcyERAsVAyMDwlBGR7rBB6qBItR
-	pBcqorww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=SCLhNCoAB2PalqKjb5jY9rfLDLC28fnCEChZsD820lc=; b=wl1WBH9NuGUgsVhkct1QpkHVdw
+	m68wgU8l690mNV76LBydGPBgosND2wQ+ogqJHCbB398+rk++4xHJP2EBXVHzFgU9ErINRVIVFahu0
+	ULihCEDv7yM9JP+F1siTZqlQykcCiNY+pnOijS2r/qkfHG20c4xlfjAoWUiDKSlOmn5Abj5YfFzom
+	P/7/R3YvVLNY45czQBxb6xm0P6gHg1/opkJhrZ8DMfVyuGWwN4VjBraor4SdEIHoHiSyciG/6ysQt
+	oyxjoMTVxp9IHSlb4Z6urOlzlYGxnRKNkFMWd3S2mHLlMF3R5uiZRLweh9BX3zxE7upysqHX2CC4X
+	T8mEr6FQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wljpl-00000006G0k-1Zig;
-	Mon, 20 Jul 2026 08:58:45 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1wljsc-00000006GKd-3PLY;
+	Mon, 20 Jul 2026 09:01:42 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wljpj-00000006FyS-1PTi
+	id 1wljsa-00000006GKB-0e7Y
 	for linux-mediatek@lists.infradead.org;
-	Mon, 20 Jul 2026 08:58:44 +0000
-Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-848882fdb18so7019232b3a.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 Jul 2026 01:58:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784537922; x=1785142722; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=RUKJxr+1tIy/FI363caVVmoJTRInNyqm1ZI8xlDvLAU=;
-        b=kcgJNcX4MPEaKum8phnD3iXK7obGARykhjalw18w9ZNLDW6QN7Kh+TUkEv5hJssDB7
-         6jG+Pyc9HRYsxumOlr+02Zt8QKcHbdRgCdAUC7GP6t75XUKbfBqhDFh6UaVORhJi2/nI
-         3dkWJVeNtd2fmtSoAM5ts+RzVbnnNFHkki2RxhI1Jdz1nE9CmdLq7KXx4u1XdRBIJGs1
-         cCo0He846Sbi2TxRG5L+x/m61Cc9/w7dhDBYFPvfoG1R/Mp9wfJ6BGNghN4UZ3YoVXuW
-         DpASuHgyb5dVAKDmxrQNaJlPxXy0rqpUQ1EdMYZNwBaXUOW4NpSrnObT+KWdx3csLXU1
-         e6cg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784537922; x=1785142722;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=RUKJxr+1tIy/FI363caVVmoJTRInNyqm1ZI8xlDvLAU=;
-        b=r7TlWURvTKhTzbHlOjEEYXLBEvyUbgEMmFL/66aBv+uoWXx0A5CQtmXIXEYdwjsu12
-         OSLaYnigeJlmOuN4KS4J8m3AfdpdRtzwvBVszAP6jKKM12pGaKTpD+oKJ9z4RvG5nZPg
-         zv7GHZqGloIyORFjSwTkg+PKU+q87LPAqfB0CLYbf0uvBtNE6DogAyOXF4fKxvzb5XSX
-         blrnstFNzNdex2K5aIpMytNoRfOsTbYUGXkkSk6UTomn/bcA/pG95y0O89XAUJVTJyzt
-         LzIbeUKEunjvXP9MYG28RvByc9SpeEguf5LtrbGYCQ1agLQWZgXGZt30+k68IIoUrHlP
-         899A==
-X-Forwarded-Encrypted: i=1; AHgh+Rr9JwbapOh5ZpeUxcDWQeDPu1hdW+PtjcgkVMOa2loxUfPBI+ujkOW4RF/zL4sUQwI1OGMbOLnQoqzHmI+99Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyCTtw0ALYaabvaYZUkl+hMUTK3spIqKW/rNTGieusI8qVxjLiL
-	MV5LyveA9NxBmCnrkvyGuxvRaYKi9CwhoEgfNsqWWO2dT6JGpbqJ+WRD
-X-Gm-Gg: AfdE7cl+ShoJumWcj6kHGcZ1O2LJwYBzajJbS8fA4hqkNyHaoLPL7FNWosKPvhnFZM7
-	pqtSZYVIx/JfN0ykLsW6wJQ3llHc6PirBsMH/nGbOhaBVEEtlwbtHHZewnZGdu4Ba+3Id/DB6J9
-	ctC+2+a54746jHnmT1qWZT+hbP3zMVGv4dZ+m9TCDa7LQhKr66iLr8h5MdHTmadIl495/3RQez3
-	m2GCgt574fgmICQLBgpH5JR8tgiaOtqLiBubE1IIxXbtWiC18GeWLzM7se+MLOsVK3j81aNpnlD
-	4E1n6+KT150QghlhF1zbxE7bujmZ3Pd9K95tr7Hqk/d84a1Zn8jA8fxvnGJvJdTLir/1IeJnAu8
-	E9yJTiibw0NmC8SKsZTehQ1wx4aeJwy6qqq9P0KnDOH7B12j6KAYgJNFXewp40qQLmRs=
-X-Received: by 2002:a05:6a00:14d1:b0:848:6c37:cd74 with SMTP id d2e1a72fcca58-84c29288282mr13097826b3a.22.1784537922386;
-        Mon, 20 Jul 2026 01:58:42 -0700 (PDT)
-Received: from lgs.. ([118.193.39.55])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84c2adcc78asm5247901b3a.23.2026.07.20.01.58.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Jul 2026 01:58:41 -0700 (PDT)
-From: Guangshuo Li <lgs201920130244@gmail.com>
-To: Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-	Houlong Wei <houlong.wei@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Hans Verkuil <hverkuil+cisco@kernel.org>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Fei Shao <fshao@chromium.org>,
-	Tomasz Figa <tfiga@chromium.org>,
-	Guangshuo Li <lgs201920130244@gmail.com>,
-	Haoxiang Li <haoxiang_li2024@163.com>,
-	Eizan Miyamoto <eizan@chromium.org>,
-	Enric Balletbo i Serra <eballetbo@kernel.org>,
-	linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 3/3] media: mtk-mdp: unregister VPU watchdog handler
-Date: Mon, 20 Jul 2026 16:57:56 +0800
-Message-ID: <20260720085756.465667-4-lgs201920130244@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260720085756.465667-1-lgs201920130244@gmail.com>
-References: <20260720085756.465667-1-lgs201920130244@gmail.com>
+	Mon, 20 Jul 2026 09:01:41 +0000
+X-UUID: 9b0f0bb4841911f1acbe4559397dec65-20260720
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=SCLhNCoAB2PalqKjb5jY9rfLDLC28fnCEChZsD820lc=;
+	b=Z1ihBfMARzsWS32r77iXGImS+JK8ieyuJB9IJ3JZWid5YP11KIAOihegTroH8CLWemAXeg2SRK7//Wgw9eyulF9ZI/L+6bIQEx+0c5UWGCx+MOo4/p1ahg1Y7GallZTU//osiERpfO7zGoo6gA9c7pujv43V7UApnKbc5QXuiU4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.18,REQID:71495c58-257d-47f7-9734-e9b304086a07,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:8a735a6,CLOUDID:5fa97a3f-46cf-453a-bd84-ad9fc7cb0e8c,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 9b0f0bb4841911f1acbe4559397dec65-20260720
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
+	(envelope-from <shayne.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1262020273; Mon, 20 Jul 2026 02:01:33 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 20 Jul 2026 17:01:31 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 20 Jul 2026 17:01:31 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>, Shayne Chen
+	<shayne.chen@mediatek.com>, Rex Lu <rex.lu@mediatek.com>
+Subject: [PATCH mt76 v2] wifi: mt76: fix handling channel context with different bands in mt76_switch_vif_chanctx()
+Date: Mon, 20 Jul 2026 17:01:02 +0800
+Message-ID: <20260720090102.190729-1-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260720_015843_378411_32BDD380 
-X-CRM114-Status: GOOD (  12.97  )
+X-CRM114-CacheID: sfid-20260720_020140_215553_CE1BA094 
+X-CRM114-Status: GOOD (  14.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,47 +87,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_mdp_probe() registers the MDP reset handler with the VPU watchdog
-code and passes the MDP device as the private data.
+When performing channel switches on different radios within a short
+timeframe, channel contexts with different bands can be carried for
+each struct ieee80211_vif_chanctx_switch.
 
-The handler is stored in the VPU device and can outlive the MDP probe or
-remove path. If probe fails after the handler has been registered, or if
-the MDP device is removed, the watchdog table can retain a pointer to an
-MDP object that is about to be released. A later VPU watchdog reset can
-then call mtk_mdp_reset_handler() with a stale pointer and dereference
-freed memory while queuing the MDP watchdog work.
+Rework mt76_switch_vif_chanctx() to properly handle this scenario.
 
-Unregister the watchdog handler in the probe error path and in the
-remove path before dropping the VPU device reference.
-
-Fixes: ee18fc7b0b95 ("media: mtk-mdp: handle vpu_wdt_reg_handler() errors during probe")
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+Fixes: 82334623af0c ("wifi: mt76: add chanctx functions for multi-channel phy support")
+Co-developed-by: Rex Lu <rex.lu@mediatek.com>
+Signed-off-by: Rex Lu <rex.lu@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- drivers/media/platform/mediatek/mdp/mtk_mdp_core.c | 2 ++
- 1 file changed, 2 insertions(+)
+v2:
+  - prevent from doing duplicated works if need_update[band] is marked
+---
+ drivers/net/wireless/mediatek/mt76/channel.c | 92 +++++++++++---------
+ 1 file changed, 49 insertions(+), 43 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-index 8432833814f3..5ccb7aa925d9 100644
---- a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-+++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-@@ -221,6 +221,7 @@ static int mtk_mdp_probe(struct platform_device *pdev)
- 	return 0;
+diff --git a/drivers/net/wireless/mediatek/mt76/channel.c b/drivers/net/wireless/mediatek/mt76/channel.c
+index 6edcb3b8f279..28ad7bcaffd4 100644
+--- a/drivers/net/wireless/mediatek/mt76/channel.c
++++ b/drivers/net/wireless/mediatek/mt76/channel.c
+@@ -186,68 +186,74 @@ int mt76_switch_vif_chanctx(struct ieee80211_hw *hw,
+ 			    int n_vifs,
+ 			    enum ieee80211_chanctx_switch_mode mode)
+ {
+-	struct mt76_chanctx *old_ctx = (struct mt76_chanctx *)vifs->old_ctx->drv_priv;
+-	struct mt76_chanctx *new_ctx = (struct mt76_chanctx *)vifs->new_ctx->drv_priv;
+-	struct ieee80211_chanctx_conf *conf = vifs->new_ctx;
+-	struct mt76_phy *old_phy = old_ctx->phy;
+-	struct mt76_phy *phy = hw->priv;
++	struct ieee80211_vif_chanctx_switch *v;
++	struct mt76_chanctx *old_ctx, *new_ctx;
++	struct mt76_phy *old_phy, *phy = hw->priv;
+ 	struct mt76_dev *dev = phy->dev;
+ 	struct mt76_vif_link *mlink;
+-	bool update_chan;
++	bool need_update[__MT_MAX_BAND] = {};
+ 	int i, ret = 0;
  
- err_reg_handler:
-+	vpu_wdt_unreg_handler(mdp->vpu_dev, VPU_RST_MDP);
- 	platform_device_put(mdp->vpu_dev);
+-	if (mode == CHANCTX_SWMODE_SWAP_CONTEXTS)
+-		phy = new_ctx->phy = dev->band_phys[conf->def.chan->band];
+-	else
+-		phy = new_ctx->phy;
+-	if (!phy)
+-		return -EINVAL;
++	for (i = 0; i < n_vifs; i++) {
++		v = &vifs[i];
++		new_ctx = (struct mt76_chanctx *)v->new_ctx->drv_priv;
++		if (mode == CHANCTX_SWMODE_SWAP_CONTEXTS)
++			phy = new_ctx->phy = dev->band_phys[v->new_ctx->def.chan->band];
++		else
++			phy = new_ctx->phy;
  
- err_vpu_get_dev:
-@@ -254,6 +255,7 @@ static void mtk_mdp_remove(struct platform_device *pdev)
+-	update_chan = phy->chanctx != new_ctx;
+-	if (update_chan) {
+-		if (dev->scan.phy == phy)
+-			mt76_abort_scan(dev);
++		if (!phy)
++			return -EINVAL;
  
- 	pm_runtime_disable(&pdev->dev);
- 	vb2_dma_contig_clear_max_seg_size(&pdev->dev);
-+	vpu_wdt_unreg_handler(mdp->vpu_dev, VPU_RST_MDP);
- 	platform_device_put(mdp->vpu_dev);
- 	mtk_mdp_unregister_m2m_device(mdp);
- 	v4l2_device_unregister(&mdp->v4l2_dev);
+-		cancel_delayed_work_sync(&phy->mac_work);
++		if (need_update[phy->band_idx])
++			continue;
++
++		if (phy->chanctx != new_ctx) {
++			if (dev->scan.phy == phy)
++				mt76_abort_scan(dev);
++
++			cancel_delayed_work_sync(&phy->mac_work);
++			need_update[phy->band_idx] = true;
++		}
+ 	}
+ 
+ 	mutex_lock(&dev->mutex);
+ 
+-	if (mode == CHANCTX_SWMODE_SWAP_CONTEXTS &&
+-	    phy != old_phy && old_phy->chanctx == old_ctx)
+-		old_phy->chanctx = NULL;
++	for (i = 0; i < n_vifs; i++) {
++		v = &vifs[i];
++		old_ctx = (struct mt76_chanctx *)v->old_ctx->drv_priv;
++		old_phy = old_ctx->phy;
++
++		new_ctx = (struct mt76_chanctx *)v->new_ctx->drv_priv;
++		phy = new_ctx->phy;
+ 
+-	if (update_chan)
+-		ret = mt76_phy_update_channel(phy, vifs->new_ctx);
++		if (mode == CHANCTX_SWMODE_SWAP_CONTEXTS && old_phy->chanctx &&
++		    old_phy->chanctx == old_ctx && phy != old_phy)
++			old_phy->chanctx = NULL;
+ 
+-	if (ret)
+-		goto out;
++		if (need_update[phy->band_idx]) {
++			ret = mt76_phy_update_channel(phy, v->new_ctx);
++			if (ret)
++				goto out;
+ 
+-	if (old_phy == phy)
+-		goto skip_link_replace;
++			need_update[phy->band_idx] = false;
++		}
+ 
+-	for (i = 0; i < n_vifs; i++) {
+-		mlink = mt76_vif_conf_link(dev, vifs[i].vif, vifs[i].link_conf);
++		mlink = mt76_vif_conf_link(dev, v->vif, v->link_conf);
+ 		if (!mlink)
+ 			continue;
+ 
+-		dev->drv->vif_link_remove(old_phy, vifs[i].vif,
+-					  vifs[i].link_conf, mlink);
+-
+-		ret = dev->drv->vif_link_add(phy, vifs[i].vif,
+-					     vifs[i].link_conf, mlink);
+-		if (ret)
+-			goto out;
+-
+-	}
++		if (old_phy != phy) {
++			dev->drv->vif_link_remove(old_phy, v->vif, v->link_conf,
++						  mlink);
+ 
+-skip_link_replace:
+-	for (i = 0; i < n_vifs; i++) {
+-		mlink = mt76_vif_conf_link(dev, vifs[i].vif, vifs[i].link_conf);
+-		if (!mlink)
+-			continue;
++			ret = dev->drv->vif_link_add(phy, v->vif, v->link_conf,
++						     mlink);
++			if (ret)
++				goto out;
++		}
+ 
+-		mlink->ctx = vifs->new_ctx;
++		mlink->ctx = v->new_ctx;
+ 		if (mlink->beacon_mon_interval)
+ 			WRITE_ONCE(mlink->beacon_mon_last, jiffies);
+ 	}
 -- 
-2.43.0
+2.51.0
 
 
