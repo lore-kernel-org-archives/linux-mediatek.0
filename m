@@ -4,58 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F464C44520
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 21:48:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BAB6C44520
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 21:49:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vsqCLPan+/wNGpTkf7z9LhaHDgvbDsbIV+JINchj7hQ=; b=Y21vWkbwUwqugbe/sLyHAX2t4+
-	29X9qChmEF6+S34yVS0CZJYLXa8ph+vOHsjAbJSmXkfehRvM8zTAedldQULqKf19wCQUxS2YQiqIx
-	YDTObWgA3HoHMGYUcpNXalo4kRsr+fcg9Hkf0WlVZDYk2xShZFQ5l1WczoXrRx9uBIplCnmoa2N5s
-	7K4mSR0RatpMpW66da1rfG+1eoi+cENwtn9ukn3c43wVitVGzExblLsxdBO8wXRKrREpqBscJFzAH
-	/KwTrDqqLJnlDGZ7HLY7unwETVkByHh1ILUMkEi622uzlkatfmhT6zQ3o8rV6/xnc6jpy4wLIMKlG
-	UFq4yn0w==;
+	bh=a305+/dqeGqdMetl9gdzRzOZIEZNcEFzXc13nYcj1B8=; b=MA1zFp2QhsBkDfU8E8jQlpNbj8
+	NLjljkkhiZR0rb1n/EigyfhRAKEiVxNlkcc7Wv2/YcaWIK+gS3sFOLr6FyRCxYcY8aJtpeaM5yUhQ
+	s9A0WCBa8yENJp977ZKKPn7VnFwUDoPRnwNxTO/x0gCnqFdwzHqZ5iOrl0ZMZe11yP3E0WcOZfVgG
+	pMHN0xIyPoVVd/EScXcaWjse0NvkLkXi/jPm2jwAAKKUdnnHEG8itQ/ZWSV1+ABDpEgPoKxWiCgzW
+	+6Fee6XK3HGDavmN3j6oxQon4HRn2FH9o+wxmaNuNdjJS7novRwGZlWugu14A8rgok7e8+3nu9G+U
+	s+6Qfzow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlvqV-00000007ygY-3ZFr;
-	Mon, 20 Jul 2026 21:48:19 +0000
+	id 1wlvru-00000007ypB-0YUn;
+	Mon, 20 Jul 2026 21:49:46 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlvqU-00000007ygA-1KJK;
-	Mon, 20 Jul 2026 21:48:18 +0000
+	id 1wlvrs-00000007yox-2Nqt;
+	Mon, 20 Jul 2026 21:49:44 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id B314B43726;
-	Mon, 20 Jul 2026 21:48:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 361AF1F000E9;
-	Mon, 20 Jul 2026 21:48:17 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 550CE438BE;
+	Mon, 20 Jul 2026 21:49:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E21371F000E9;
+	Mon, 20 Jul 2026 21:49:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784584097;
-	bh=vsqCLPan+/wNGpTkf7z9LhaHDgvbDsbIV+JINchj7hQ=;
+	s=k20260515; t=1784584184;
+	bh=a305+/dqeGqdMetl9gdzRzOZIEZNcEFzXc13nYcj1B8=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=fEwtl3ikdnwq7ANP9ITcthGzt7EaCg7gjT+NTRtJpe0A+BMU55d9tEfJeh2jLjyVB
-	 mg8e5cxFlRRyWx7S4T7dE+33+qs6H3iPeHxUNeEKafLTSwhDSt7dqtlvuq3jYLAXK/
-	 mbM5RXuIhPCMWu79pMX6d2aQvvW59RqECqPHDgexpOjXx7B73FEJkppTeQm46SmMh/
-	 osVkwjyydU9mAl3hBB4q+quKyCG5zB9cp9tz9zbvpz2Saakt88ieKKy/ZdW1Lw8nwE
-	 5ocNGkgBrp0r5KHMR5tkAE9igmUxYiHzFgb67zKztUKFNPRupwA9gZYJcMy+tDLYJW
-	 hvTNF7o3dxzKA==
-Date: Mon, 20 Jul 2026 14:48:16 -0700
+	b=g0SEFFG2bQOVF5ay6vR8eSQj8SMppWEK4zQEg54fA4wKQQL2UaNittn7FN3d1vLSv
+	 yHWCyDWlKR9HYzjhqR/r6L3y+nhip8g7ojU6WYgF12ueFPCWEh0u1kLaOz70Tznwxe
+	 Lvz+eZ4YgUxHwqJvWCNWxJDSd4WFK7cZw4v7z8gXnCtUG9i5dP2dPU7pPvV/9i3VXn
+	 Aqu69a/YPyv1baqJO11m27b2tcEk97vSWJtuwGRvnMFkV6efT7hOUzezdaNpiIEQ6T
+	 H+2/DAk7I8W2/9+v83SWkZZCzn0L4mJRPwWJxt2Nd4foa6WRO2d9t+wvhIKk+77hvw
+	 qvIh1TWpgkVlw==
+Date: Mon, 20 Jul 2026 14:49:43 -0700
 From: Jakub Kicinski <kuba@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
- <pabeni@redhat.com>, Simon Horman <horms@kernel.org>, Alexander Lobakin
- <aleksander.lobakin@intel.com>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, Madhur Agrawal
- <madhur.agrawal@airoha.com>
-Subject: Re: [PATCH net-next v8 0/3] airoha: add the capability to configure
- GDM3/GDM4 as WAN/LAN on demand
-Message-ID: <20260720144816.4d32909b@kernel.org>
-In-Reply-To: <aloP8n-EVtAHnl-l@lore-desk>
-References: <20260703-airoha-ethtool-priv_flags-v8-0-015ba5ac89ee@kernel.org>
-	<aloP8n-EVtAHnl-l@lore-desk>
+Cc: Wayen Yan <win847@gmail.com>, netdev@vger.kernel.org, horms@kernel.org,
+ pabeni@redhat.com, edumazet@google.com, andrew+netdev@lunn.ch,
+ angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net] net: airoha: fix HTB class modification offload
+Message-ID: <20260720144943.0f4d1771@kernel.org>
+In-Reply-To: <akthM-O5eea52MN6@lore-desk>
+References: <178332096675.2250671.599544331813347302@gmail.com>
+	<akthM-O5eea52MN6@lore-desk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
@@ -73,10 +70,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 17 Jul 2026 13:20:18 +0200 Lorenzo Bianconi wrote:
-> I'm not entirely sure what the next steps should be for this series.
-> Thanks in advance.
+On Mon, 6 Jul 2026 10:02:59 +0200 Lorenzo Bianconi wrote:
+> > HTB core does not populate parent_classid for TC_HTB_NODE_MODIFY.
+> > Airoha currently checks parent_classid against TC_HTB_CLASSID_ROOT
+> > in a helper shared by both TC_HTB_LEAF_ALLOC_QUEUE and
+> > TC_HTB_NODE_MODIFY. Since the modify path leaves parent_classid as
+> > zero, the check always fails and changing parameters of an already
+> > offloaded HTB class is rejected with -EINVAL.
+> > 
+> > Move the root-parent check into the allocation path and validate
+> > modify requests using the per-netdev QoS channel bitmap, consistent
+> > with the delete and query paths.
+> > 
+> > Fixes: ef1ca9271313 ("net: airoha: Add sched HTB offload support")
+> > Signed-off-by: Wayen Yan <win847@gmail.com>  
+> 
+> Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-You have to repost, once a patch is 2 weeks old korg patchwork bots
-insist on marking it as archived.
+ditto, please repost
 
