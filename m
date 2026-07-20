@@ -4,58 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 017F5C44512
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jul 2026 17:54:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43A9EC4451B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 01:21:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OMwyEpvTCMSqVnZ066Kn80OgxZkh8Ia4TjlRDQe6tRI=; b=R/jw31YNWyas+JlcOXXOFkEI70
-	6Zeqk9YWh3O4euZv3uPcWxdFwSBqyWNiVbQC4cKMLvBAOWYZ8eH+e+73sNJ8UCE4ZOvlQ9zzcQf0T
-	VKcLjT6csCqPbsRF4Zvf+r0/9ZcAKzPkKjW+J2TSTLRkLMth/PqItELZtEmBAh7HcYmunTvAZIpzR
-	ZWXI7PqOYZD+U6wMe8/gqvMKM8Pd9b1fMqmneQFLeRcb7NbsePQoJm9W7ZG/YWoNSY5Dkb/bQK7Zp
-	RC1sJVm6D4nsdThXyU3clWSE7PZebqyEY+09vAbrIr3gchVa/wCXjvQajExCCbsTelf4yQhnYtiX7
-	HP9rqKEw==;
+	bh=jiRmxrVCjtma/TiMMsUv4OSDpKz2DrsaQ0JhzrRisyw=; b=Bx+gCHDEe/NP6yyQH3fCYstg7q
+	eQp2p/Jz3e6VWQTMAqILrVSguru7Jpdr0c4/xe4WfK51zJ7Kth0btMp9888xLkIaCeNNfGDMw1I6O
+	YIUkFJvvlADxkjaSp+9P7rFycC0yjV3ATamysMomg/QW0wQal2mw8yRIhqcR9lQCA79R9Iz5T1K3u
+	U3pL5YUu+gD+tTVtNNrLqc67GJT9p7sqnTrsy+TMiRrPFGtkW0sK4WYmHf7ceVnicVcB3NtLzI337
+	UqPepyGVtcveDQ4z1iEvZFkTEd+d2VORsdpieUOJWOPp0CxVGZG3Wm+tTeOh3NmwWAUDp1xSBqOeA
+	qd1dE32A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlVii-00000005Ec3-0KXU;
-	Sun, 19 Jul 2026 17:54:33 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1wlcgz-00000005aeN-0rJT;
+	Mon, 20 Jul 2026 01:21:13 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlVif-00000005EYm-16dH;
-	Sun, 19 Jul 2026 17:54:30 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1wlViZ-000000004s5-3kv4;
-	Sun, 19 Jul 2026 17:54:23 +0000
-Date: Sun, 19 Jul 2026 18:54:21 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v4 8/8] net: dsa: mt7530: implement
- port_change_conduit op
-Message-ID: <14cd517349c7aa84138150bb496e079ec2291c28.1784481922.git.daniel@makrotopia.org>
-References: <cover.1784481922.git.daniel@makrotopia.org>
+	id 1wlcgx-00000005ad9-2Qbf;
+	Mon, 20 Jul 2026 01:21:12 +0000
+X-UUID: 46f64fd283d911f1afed4741b24580c9-20260719
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=jiRmxrVCjtma/TiMMsUv4OSDpKz2DrsaQ0JhzrRisyw=;
+	b=L7s2CnInEt/9fKnSMPtEBnnahNZ1nclrVv10u21I1iTRowddc3l+lLfArPNMH2ekzaX+ZaoD5GO8oH1pnMmWm81KgWnbX9C3t1TSj9tKApPSHTkZmoSDer8y0JJkaBACqnSpjVTvomtDDELEk8IL1Q5Zm1ulrXpr8yMTtLVcsbc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.18,REQID:36987c7c-ea38-49ea-8aba-6ea9df19fc94,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:8a735a6,CLOUDID:fc56d2fa-f958-43c4-854f-eb42fbf32dd1,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|136|836|865|888|898,TC:-5,Content:0|
+	15|50|99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL
+	:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 46f64fd283d911f1afed4741b24580c9-20260719
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <kyrie.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1228035357; Sun, 19 Jul 2026 18:21:04 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 20 Jul 2026 09:21:01 +0800
+Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 20 Jul 2026 09:21:00 +0800
+From: Kyrie Wu <kyrie.wu@mediatek.com>
+To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
+	<andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Mauro
+ Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Ricardo Ribalda
+	<ribalda@chromium.org>, Kees Cook <kees@kernel.org>, Hans Verkuil
+	<hverkuil+cisco@kernel.org>, Fei Shao <fshao@chromium.org>, Haoxiang Li
+	<haoxiang_li2024@163.com>, Chen-Yu Tsai <wenst@chromium.org>, Laurent
+ Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Tomasz Figa
+	<tfiga@chromium.org>, Sebastian Fricke <sebastian.fricke@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Qianfeng Rong <rongqianfeng@vivo.com>,
+	Irui Wang <irui.wang@mediatek.com>, Jacopo Mondi
+	<jacopo.mondi@ideasonboard.com>, Fan Wu <fanwu01@zju.edu.cn>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+CC: Sakari Ailus <sakari.ailus@linux.intel.com>
+Subject: [PATCH v6 01/14] media: mediatek: vcodec: support vcp architecture
+Date: Mon, 20 Jul 2026 09:20:43 +0800
+Message-ID: <20260720012056.1026551-2-kyrie.wu@mediatek.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260720012056.1026551-1-kyrie.wu@mediatek.com>
+References: <20260720012056.1026551-1-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1784481922.git.daniel@makrotopia.org>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260719_105429_304319_5CF70B51 
-X-CRM114-Status: GOOD (  18.34  )
+X-CRM114-CacheID: sfid-20260719_182111_658637_2948489E 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,100 +102,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Allow changing the CPU port affinity of user ports at runtime via the
-IFLA_DSA_CONDUIT netlink attribute. This updates the port matrix to
-forward to the new CPU port instead of the old one.
+Some platforms expose the video codec through the VCP coprocessor.
+Use the VCP architecture when the VCP coprocessor is found.
 
-Limit the operation to MT7531. There, trapped link-local frames follow
-the per-port affinity, as the MT7531_CPU_PMAP destination mask is
-further restricted by the port matrix. A conduit change is hence fully
-honoured by the hardware, for regular traffic as well as for trapped
-frames.
-
-The MT7530 switch, including the variant embedded in the MT7621 SoC,
-instead traps frames to the single CPU port set in the CPU_PORT field
-of the MFC register, regardless of the affinity of the inbound user
-port. With user ports affine to different CPU ports there is no
-correct value for that field, so per-port CPU affinity cannot be fully
-implemented for trapped frames. Routing a WAN port via the second SoC
-GMAC is conventionally covered by the PHY muxing feature on these
-switches, which bypasses the switch fabric and does not involve a CPU
-port at all.
-
-The switches on the MT7988, EN7581 and AN7583 SoCs only have a
-single CPU port, leaving no other conduit to change to.
-
-As the op lives in the shared mt7530_switch_ops, populate the extack
-when rejecting the unsupported variants instead of returning a bare
--EOPNOTSUPP. Also reject a conduit that belongs to a different switch
-in the tree, whose port index has no meaning in the local port matrix.
-
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Acked-by: Chester A. Unal <chester.a.unal@arinc9.com>
+Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
-v3:
- * populate the netlink extack on rejection
- * refuse a conduit that lives on a different switch
+ drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h  | 1 +
+ .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c      | 3 +++
+ 2 files changed, 4 insertions(+)
 
- drivers/net/dsa/mt7530.c | 38 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 38 insertions(+)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 52b549d7ee22..6fe6783dfe3f 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -3213,6 +3213,43 @@ static int mt753x_set_mac_eee(struct dsa_switch *ds, int port,
- 	return 0;
- }
+diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h
+index 300363a40..c1642fb09 100644
+--- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h
++++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h
+@@ -14,6 +14,7 @@ struct mtk_vcodec_enc_dev;
+ enum mtk_vcodec_fw_type {
+ 	VPU,
+ 	SCP,
++	VCP,
+ };
  
-+static int
-+mt753x_port_change_conduit(struct dsa_switch *ds, int port,
-+			   struct net_device *conduit,
-+			   struct netlink_ext_ack *extack)
-+{
-+	struct dsa_port *new_cpu_dp = conduit->dsa_ptr;
-+	struct dsa_port *dp = dsa_to_port(ds, port);
-+	struct mt7530_priv *priv = ds->priv;
-+
-+	if (priv->id != ID_MT7531) {
-+		NL_SET_ERR_MSG_MOD(extack,
-+				   "Changing DSA conduit is only supported on MT7531");
-+		return -EOPNOTSUPP;
-+	}
-+
-+	if (new_cpu_dp->ds != ds) {
-+		NL_SET_ERR_MSG_MOD(extack,
-+				   "Cannot assign a conduit on a different switch");
-+		return -EOPNOTSUPP;
-+	}
-+
-+	mutex_lock(&priv->reg_mutex);
-+
-+	/* dp->cpu_dp still points to the old CPU port */
-+	priv->ports[port].pm &= ~PCR_MATRIX(BIT(dp->cpu_dp->index));
-+	priv->ports[port].pm |= PCR_MATRIX(BIT(new_cpu_dp->index));
-+	if (priv->ports[port].enable)
-+		regmap_update_bits(priv->regmap, MT7530_PCR_P(port),
-+				   PCR_MATRIX_MASK, priv->ports[port].pm);
-+
-+	mutex_unlock(&priv->reg_mutex);
-+
-+	mt7530_port_fast_age(ds, port);
-+
-+	return 0;
-+}
-+
- static void
- mt753x_conduit_state_change(struct dsa_switch *ds,
- 			    const struct net_device *conduit,
-@@ -3324,6 +3361,7 @@ static const struct dsa_switch_ops mt7530_switch_ops = {
- 	.setup			= mt753x_setup,
- 	.teardown		= mt753x_teardown,
- 	.preferred_default_local_cpu_port = mt753x_preferred_default_local_cpu_port,
-+	.port_change_conduit	= mt753x_port_change_conduit,
- 	.get_strings		= mt7530_get_strings,
- 	.get_ethtool_stats	= mt7530_get_ethtool_stats,
- 	.get_sset_count		= mt7530_get_sset_count,
+ enum mtk_vcodec_fw_use {
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+index e936ed8df..d220b645e 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+@@ -379,6 +379,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 	} else if (!of_property_read_u32(pdev->dev.of_node, "mediatek,scp",
+ 					 &rproc_phandle)) {
+ 		fw_type = SCP;
++	} else if (!of_property_read_u32(pdev->dev.of_node, "mediatek,vcp",
++					 &rproc_phandle)) {
++		fw_type = VCP;
+ 	} else {
+ 		dev_dbg(&pdev->dev, "Could not get vdec IPI device");
+ 		return -ENODEV;
 -- 
-2.55.0
+2.51.0.windows.2
+
 
