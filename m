@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFC60C4451B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 06:24:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7ED6C44524
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 06:24:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=G/H3laF11WeRlQ2NHJchQO+2MbI7YG6ixP9fYh5lWUc=; b=ziJfJw2o5yakArdniUbl/z0Kum
-	rTpyhqjwkQzzgE3mUgWNdFPs1a1rOJxl7d0tBKhX+MQr7JivKD6NVuLtinaZpKCDI48Py5YSQUA94
-	eNi5WFnV9IK0X+ooUPT7SIjmbxixQatv/JCXo9NFVRCq7j6l95/GCk/dRy3hNwWWRWPDuvcUs+O7v
-	tlNd3Kq75F77Ru+tDGiPJG00p+88IhT/nSwnCdpaIiK/OPkILa6PYVfzPxWwOCzVwNnDmt6FRpau0
-	Bd8BZaN9/lhkELNZ5wccMmDKlqe6Marx1N9amH7nE5+S2YDnkaHlDeyYQfgqg5sSLmCDBsoM+PJf5
-	siPFv+oA==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LjslSMaLxzrkUem1WFJqu5PdOsbgvYRCxR6KR5IC8og=; b=4yPXyWxwr7QfUD5rMc/JQfoMuw
+	3c5CMtggl+8c7Mcv/XJ0brvnbCHbW9mXGKKr2iNhJmrHMTG43sZuDLNypTsOPv1g02oY0OgOLbQvm
+	xMMHv6Y2bVhw+qV8WkwBSnnai2/7UdxrLXRcXVD81sAW8yQ6s6rYJZWojL3Mnt9N6iC0I4mSv3ej8
+	y3/MJ/ah1zylsLHQ3RPTTxwlOIwWZ9xxGt+cwFmfGZETznQOjZvTU74ccSUgnjGNvI8Dr/wTqg+zv
+	9ltwWBv6P6mLDjS/pFvzA1RSHcTqHcaQE02CXIJ1ETaYvpsIt7xZspm/Y/4B9Z4PPFTf/a7nvSvkT
+	DM7U6r4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlhQE-00000005wCx-1xV1;
-	Mon, 20 Jul 2026 06:24:14 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1wlhQH-00000005wEu-2nCw;
+	Mon, 20 Jul 2026 06:24:17 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlhQA-00000005wBD-3fh0
+	id 1wlhQB-00000005wBL-3yfp
 	for linux-mediatek@lists.infradead.org;
-	Mon, 20 Jul 2026 06:24:12 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-47f64ca1c2dso385575f8f.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 19 Jul 2026 23:24:09 -0700 (PDT)
+	Mon, 20 Jul 2026 06:24:13 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-49554ebb87dso13443065e9.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 19 Jul 2026 23:24:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1784528649; x=1785133449; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:message-id:date
-         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=G/H3laF11WeRlQ2NHJchQO+2MbI7YG6ixP9fYh5lWUc=;
-        b=fLO9Bn+noAyLjAmYcC4qdOXxspBID98RP6Jsnc6RMHQBmNIpybs1Nkkb1WqYgpyOQ/
-         IB+ezSDhjtve+1OiASIxgDElmHDfDZpwZd/tbH3x2xi5qzNJrrAeQBe/2BMt6idmWpsw
-         kycIIb6nfbpGrTmdpHDAi95MmjkApLBNPEbFNKYfho4y3XU1Ag1odEd3Wug/3H7P8Q5F
-         sDdASCZLqni7oO8t/uKhskyeJTVOlUe9JjRUgveX6kJXoblZhDgnFJEr/n0IdCA/uGo5
-         fB8yRpkaoJCHKuMWiOiWhnp5uPqxU24p+tmSOjzGotDW1bMQSrFPEGJZEueVLwJYVhlH
-         FJZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784528649; x=1785133449;
-        h=content-transfer-encoding:content-type:mime-version:message-id:date
-         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+        d=baylibre.com; s=google; t=1784528650; x=1785133450; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:references
+         :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=G/H3laF11WeRlQ2NHJchQO+2MbI7YG6ixP9fYh5lWUc=;
-        b=W4Tm/Y4BGvwsW/ECYyigjz2ylrIx7NCAMpc3fApTB0AsoFAAt3SJO4XuoRWgbzw123
-         Dm5Hc7p033qz9A0zOxY1kv7xcNynVxVj5GzNe/yq2oZbrhR1besMpDJnbzOmkxHK5E6H
-         0b57gbaEiCFYmVBXTk/si0iSjy6hufCSMRJHOMWk7K+VRvIQDXx2A5ITWTL6An1KW0ZW
-         aiPmfJKHpFyb3OaF1SkNsY2OA+k+ZZvJSN6XhhCVnRTP7wL2GCUweuxl/TplPsc27qHL
-         90SzFc+IaMwCckzW0C81LOsOKvxJnxZlsym7hveEi3Thx8Q3VJHg9CRmgFmO8qY29Vxw
-         bQBA==
-X-Forwarded-Encrypted: i=1; AHgh+Ro23CwtD/qRzATvTLg4qP1tbb/KCw5kTOjjGp3Io0JJn8oLi021svBGU1iOJ+H7hcvgRqlUXOVsNOlOhNXsIg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz6bHpnHEoCqKN+I3PaHr/LY2PQxuRd0Oq9EKyl9uDeUq+QtMmc
-	PAUTCMsTdfK9RGpY9oo1QFmbevwZf7evK6ddwydFWh1dFwHrQlcDpFrWtDE9WX/Iimg=
-X-Gm-Gg: AfdE7cm3+RlHYwTOCvjtKu4ncgsKjasAK+VM2dNKTJX2r6xNKw7G27e6H6ehj+Jl1pD
-	MArqM8jNM7/sTBTXzRA8/AMr/pJWntGJqdRhaD/ARE2aYlVP4eY4iPJppeF/Ci6s5ktWodeWmMH
-	oZX+uHqtimyk6VkONAOAyXFYKzAfBr43NYp0bqQuJ/FgL2tNToLIWehwJm3MGlgTiqLpL0MOjc9
-	+8aMJ2bkMFhTvivpGCGbDIO2kLhh5ZcSKvHu735Pypr1GkwycqlqvsELaCzayFmZ3VAq76eHntU
-	UE1gqkzEHUWHfye7wUlnMil2gJ9w1owRHc4tVkq06QZ9f+vYaU86vrh0KgUZUjfevcshdw82wF5
-	TLn+GsC8njRbgsysLEyEmbafZrIQzj5CQUOsOSGyZhtPkafWrrjbrEOC7TK2nhMjSH48IfFJ0Dw
-	cjxmqmJf8f8xzN9Ht8dFkJ7iyEBU6I
-X-Received: by 2002:a05:600c:6a08:b0:493:bcba:46a4 with SMTP id 5b1f17b1804b1-4954a404528mr88685635e9.20.1784528648411;
-        Sun, 19 Jul 2026 23:24:08 -0700 (PDT)
+        bh=LjslSMaLxzrkUem1WFJqu5PdOsbgvYRCxR6KR5IC8og=;
+        b=S0OBhEGDZWMXk9OG8TA4F3+dU6nkUQzj1cQGYspNq70nMqo6miF8lK+GsalB/N3ccE
+         bFB8PkFdQhAHecoPX6LYarN9cLjmlp65paZRKh8eoTJRaasQEYn74PKaKonh+6YrgLYY
+         90oJnoKb8ZUEM7g0cOu7fbZUZmPZogGvU9LSbxw+yUg1aPRcm36bqhEB+oWGaKviZT7I
+         UIEbpIyhnxGNwDGPKyqxoJNe9UPMEMf7uP22qiAOygeCIHwlxX/PIiH3bj9VqWCT8uFq
+         AM8qTSvvi1ODR97AivSzMph+/CAMktA8fAOxF5pt8MCLCvbqFPkhzrqCwxnmOD51TaeN
+         IkKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1784528650; x=1785133450;
+        h=content-transfer-encoding:content-type:mime-version:references
+         :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=LjslSMaLxzrkUem1WFJqu5PdOsbgvYRCxR6KR5IC8og=;
+        b=OUZ9DaIY79QZCVjyCSlyW5LDQ8lC4AYjg5MhO+8rRyIzXDfjelMAcb/4JkBtC6tgpK
+         /X66TOfzxfzLQDnHF9tT5WTeT8DqowWZoucNaji4A2UCRdoLMLJF6rYLtSSlVWgG9CUX
+         Y+6X2d8N6nKA4scTVZ9AhKuBEL9xT2jPpxmuXVM6xlSBnJHYdoDLvZWHV11BEpcIuuWi
+         rc2A/LlNCTxf+U7K7TQzrgTlsT6PtKMFEelqn9R5+zESBFDZgoPZbGeIlsFXNrW/DZer
+         eiH8P0zfo9SrWT3MU/aDRpUyIX1uYCtY/tWCON3htkIcq9RzQG65y0ofnWMeGHWGnkAj
+         /QfA==
+X-Forwarded-Encrypted: i=1; AHgh+Rpg0F9VS+o3K9iW7fCDbiJ6gcvESzLENL+lmpWrqHAwUvg6llp1Hu0ulHtomb6DPryQAiASniSeAE0cN9UNKg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzDD7SKF2gpE/NBlzM0remud80ZHyou3zAU9wRRg8M50sKmknSa
+	DKGyvF3vlgZb3H1iJGjabcdOhYp2J0ynVdNPmEiLFgmBVoP2IUJ0Qo3zGKVGP3PhKzI=
+X-Gm-Gg: AfdE7cnQPC1VqeSQfu4bkA1Q7bhQG5K8LlZ/ERJHmYLuCc49HTpk+JLV6D1bGttyIrc
+	2c0OEk95evhkhBvTOyIC0SXECDIWFOR0k0+GYl2qDh1reZ60FCNlrMiXv2o9Ic75YFSjOUZpSkv
+	dpbyK7Ayma/vKIjxo9D4XOLhnMkoHkhbu1aTE9dXNaQku4URZuRJJ7Wt6xE4vB1lbrfJZQgm+hV
+	ND0n+WqqD9i8NgsOBFmKJEniixu/NY0xpS3yd4UACBm9CqrGRpRqipzr7QvYLnjnkQxwt1X9h1R
+	2rBe6FD1aMex0tiClINGdiY40i3U7eWc8BJYB9Ee6G7nCOwKv8ElUzmW52vgLpjtz1QIsGmdFME
+	XEFA4tcWUQJ7TI9CNzO6wmvZR3WaF1n4VmKoYY11RhPC6Hy9GzmVF/N/bEbN5JteWhD8OMz5om9
+	kysZO0AsQ=
+X-Received: by 2002:a05:600c:3b9e:b0:493:c1bc:79bd with SMTP id 5b1f17b1804b1-4954a41150fmr139665125e9.20.1784528650076;
+        Sun, 19 Jul 2026 23:24:10 -0700 (PDT)
 Received: from localhost ([2a02:8071:56d1:2de0:1d24:d58d:2b65:c291])
-        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-4954a2e83ddsm243760905e9.10.2026.07.19.23.24.07
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-47f63ed1911sm28677377f8f.22.2026.07.19.23.24.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 19 Jul 2026 23:24:07 -0700 (PDT)
+        Sun, 19 Jul 2026 23:24:09 -0700 (PDT)
 From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig=20=28The=20Capable=20Hub=29?= <u.kleine-koenig@baylibre.com>
 To: Liam Girdwood <lgirdwood@gmail.com>,
 	Mark Brown <broonie@kernel.org>
@@ -81,60 +82,21 @@ Cc: Jaroslav Kysela <perex@perex.cz>,
 	linux-sound@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
-	Venkata Prasad Potturu <venkataprasad.potturu@amd.com>,
-	Bard Liao <yung-chuan.liao@linux.intel.com>,
-	Syed Saba Kareem <Syed.SabaKareem@amd.com>,
-	Aaron Ma <aaron.ma@canonical.com>,
-	Mark Pearson <mpearson-lenovo@squebb.ca>,
-	Hasun Park <hasunpark@gmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
-	Kees Cook <kees@kernel.org>,
-	Cezary Rojewski <cezary.rojewski@intel.com>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
-	Mario Limonciello <mario.limonciello@amd.com>,
-	"Guilherme G. Piccoli" <gpiccoli@igalia.com>,
-	James Ogletree <jogletre@opensource.cirrus.com>,
-	Fred Treven <fred.treven@cirrus.com>,
-	Ben Bright <ben.bright@cirrus.com>,
-	David Rhodes <david.rhodes@cirrus.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
-	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
-	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
-	Maciej Strozek <mstrozek@opensource.cirrus.com>,
-	Mac Chiang <mac.chiang@intel.com>,
-	Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
-	patches@opensource.cirrus.com,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	=?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>,
-	Srinivas Kandagatla <srini@kernel.org>,
-	Shengjiu Wang <shengjiu.wang@gmail.com>,
-	Xiubo Li <Xiubo.Lee@gmail.com>,
-	Fabio Estevam <festevam@gmail.com>,
-	Nicolin Chen <nicoleotsuka@gmail.com>,
-	Frank Li <Frank.Li@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	=?utf-8?q?Amadeusz_S=C5=82awi=C5=84ski?= <amadeuszx.slawinski@linux.intel.com>,
-	linux-arm-msm@vger.kernel.org,
-	linuxppc-dev@lists.ozlabs.org,
-	imx@lists.linux.dev
-Subject: [PATCH v2 0/6] ASoC: Use named initializers for platform_device_id arrays
-Date: Mon, 20 Jul 2026 08:23:44 +0200
-Message-ID: <cover.1784528081.git.u.kleine-koenig@baylibre.com>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 1/6] ASoC: codecs: mt6357: Drop unused assignment of platform_device_id driver data
+Date: Mon, 20 Jul 2026 08:23:45 +0200
+Message-ID: <724af6f60ed9420d5513724d126d70f22e319c91.1784528081.git.u.kleine-koenig@baylibre.com>
 X-Mailer: git-send-email 2.55.0.11.g153666a7d9bb
+In-Reply-To: <cover.1784528081.git.u.kleine-koenig@baylibre.com>
+References: <cover.1784528081.git.u.kleine-koenig@baylibre.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3614; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=4tB+67YMPAYA+Fp7hKThmFDs4EE5gnppfw4oTodipEM=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBqXb7wZqEDAgS99aNcA7ppupT1jNl9C2tgs/w94 zfkKA6R2EeJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCal2+8AAKCRCPgPtYfRL+ TkJUCACIvjuWjtW0zv6qwyWNZ4eR11ChZWhjx4507jdswfBcqPRWzrztk9x5ZcJAFrtD89Hy1O3 dIQROoiGwIt6/ZT0XrIIuG6ch21Ra870AZs5MZLjQlFKaIK8Ax0Vlhfjs3HuLGrkGESBlhEcUJ7 bb0eoRYQIqpt1vO10ZxC/wn0B3HhG+8aRkBuumyMvo2JoZ2uUuIdxEM38BlZbb61zBzcB/V2Pnp 55oCYIi6Fq8nNZpLZM9cPX7FOwbZDzmX7kNiAY9S+Ewa2h/SCetXD2vMA0WFQcRZ5DGh3zqawwa 3wR1GjDeaQaO5rHw1kluRx9mB4APLagFmV3CpMXKfxK28zan
+X-Developer-Signature: v=1; a=openpgp-sha256; l=996; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=vAKMmJnHPuZMbQlF7pMCnwvdxfkdQbAQi3GO0Glrn7k=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBqXb7zvzrc7TRHECpePNkMrYEielNWjuww1fVDr ZBkweZo62OJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCal2+8wAKCRCPgPtYfRL+ TiVRB/9pxg+lmyYWuCSLbYSK9sf7vzngD6LucEFTmTPJICBCB4vNZ3/XUHrJlM1DESz4TIzE2Fh 1fwPQsqTHoPspzc+0uTxTmt68ghGm5Xr1drI9zNF9bbji6fWZhpXSlmMSbvfctD7OBsqTDg/wF0 6PyxjnmLlOlSo42BTI1Qq1qTrxRpLWs7GU+C+KW098GhMah3AUzkFe6oKPDwgkYVhIUCCHvq4bl lI2gUj9DrJCts6IznbFJQi34G3AgS59Jkd+AsDET5IuL8q23tuscpT1HNsDs8SJgBrkQxLfIczg Dn9ZzmUSYacJgaE0Dz12vY3llnccIhHPDDHlun34OYeksTb8
 X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260719_232410_944010_227CFDAB 
-X-CRM114-Status: GOOD (  14.26  )
+X-CRM114-CacheID: sfid-20260719_232411_995222_55DD53BF 
+X-CRM114-Status: GOOD (  14.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,85 +111,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+The driver explicitly sets the .driver_data member of struct
+platform_device_id to zero without relying on that value. Drop this
+unused assignment.
 
-the objective of this series is still to prepare making struct
-platform_device_id::driver_data an anonymous union. See
-https://lore.kernel.org/all/cover.1780048925.git.u.kleine-koenig@baylibre.com/
-for the details about that.
+While touching this array unify spacing, use a named initializer for
+.name and drop a trailing comma after the list terminator.
 
-If you consider the last patch mostly churn, just drop it.
+Signed-off-by: Uwe Kleine-König (The Capable Hub) <u.kleine-koenig@baylibre.com>
+---
+ sound/soc/codecs/mt6357.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-v1 of this series can be found at
-https://lore.kernel.org/linux-sound/cover.1779958164.git.u.kleine-koenig@baylibre.com.
-
-Changes since then:
-
- - Rebase to current next
- - Some grammar improvements in the commit log for patch #1
- - Split the changes to sound/soc/amd/acp in separate changes.
- - The 2nd patch used to be "ASoC: renesas: fsi: Simplify driver_data
-   handling" which removed fsi_id_table[0].driver_data, but with commit
-   38d3273075d6 ("ASoC: renesas: fsi: remove platform data style
-   support") that needed to change.
- - The last patch now touches a few more files. (I didn't check if these
-   are new offenders or if I failed to catch them in v1.) I didn't add
-   Cezary Rojewski's ack because of that.
-
-If splitting off the amd/acp changes was requested because they go in
-via a separate tree: That's possible, in fact each file is touched only
-once, so the patches can be reordered freely and applied via different
-trees if needed.
-
-Best regards
-Uwe
-
-Uwe Kleine-König (The Capable Hub) (6):
-  ASoC: codecs: mt6357: Drop unused assignment of platform_device_id
-    driver data
-  ASoC: renesas: fsi: Drop platform probing metadata
-  ASoC: amd: acp: Use named initializers for platform_device_id arrays
-  ASoC: amd: acp: Unify code style for platform_device_id array
-  ASoC: Use named initializers for platform_device_id arrays
-  ASOC: Unify code style for platform_device_id arrays
-
- sound/soc/amd/acp/acp-sdw-legacy-mach.c |  4 ++--
- sound/soc/amd/acp/acp-sdw-sof-mach.c    |  4 ++--
- sound/soc/amd/acp/acp-sof-mach.c        | 14 +++++++-------
- sound/soc/au1x/db1200.c                 |  2 +-
- sound/soc/codecs/adau7118-hw.c          |  2 +-
- sound/soc/codecs/bt-sco.c               | 10 +++-------
- sound/soc/codecs/cs40l50-codec.c        |  4 ++--
- sound/soc/codecs/cs42l43.c              |  4 ++--
- sound/soc/codecs/mt6357.c               |  4 ++--
- sound/soc/codecs/wcd934x.c              |  6 ++----
- sound/soc/fsl/imx-pcm-rpmsg.c           |  6 +++---
- sound/soc/intel/avs/boards/da7219.c     |  6 ++----
- sound/soc/intel/avs/boards/dmic.c       |  6 ++----
- sound/soc/intel/avs/boards/es8336.c     |  6 ++----
- sound/soc/intel/avs/boards/hdaudio.c    |  6 ++----
- sound/soc/intel/avs/boards/i2s_test.c   |  6 ++----
- sound/soc/intel/avs/boards/max98357a.c  |  6 ++----
- sound/soc/intel/avs/boards/max98373.c   |  6 ++----
- sound/soc/intel/avs/boards/max98927.c   |  6 ++----
- sound/soc/intel/avs/boards/nau8825.c    |  6 ++----
- sound/soc/intel/avs/boards/pcm3168a.c   |  6 ++----
- sound/soc/intel/avs/boards/probe.c      |  2 +-
- sound/soc/intel/avs/boards/rt274.c      |  2 +-
- sound/soc/intel/avs/boards/rt286.c      |  2 +-
- sound/soc/intel/avs/boards/rt298.c      |  2 +-
- sound/soc/intel/avs/boards/rt5514.c     |  2 +-
- sound/soc/intel/avs/boards/rt5640.c     |  2 +-
- sound/soc/intel/avs/boards/rt5663.c     |  2 +-
- sound/soc/intel/avs/boards/rt5682.c     |  2 +-
- sound/soc/intel/avs/boards/ssm4567.c    |  2 +-
- sound/soc/intel/boards/sof_sdw.c        |  4 ++--
- sound/soc/renesas/fsi.c                 |  4 ++--
- sound/soc/samsung/i2s.c                 |  2 +-
- 33 files changed, 61 insertions(+), 87 deletions(-)
-
-
-base-commit: 0718283ab28bc3907e10b61a6b4be6fefa1cbb2f
+diff --git a/sound/soc/codecs/mt6357.c b/sound/soc/codecs/mt6357.c
+index 674cf7df9df4..3b07087e1cab 100644
+--- a/sound/soc/codecs/mt6357.c
++++ b/sound/soc/codecs/mt6357.c
+@@ -1834,8 +1834,8 @@ static int mt6357_platform_driver_probe(struct platform_device *pdev)
+ }
+ 
+ static const struct platform_device_id mt6357_platform_ids[] = {
+-	{"mt6357-sound", 0},
+-	{ /* sentinel */ },
++	{ .name = "mt6357-sound" },
++	{ /* sentinel */ }
+ };
+ MODULE_DEVICE_TABLE(platform, mt6357_platform_ids);
+ 
 -- 
 2.55.0.11.g153666a7d9bb
 
