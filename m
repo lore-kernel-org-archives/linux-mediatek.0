@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFD39C44515
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 15:41:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34835C44515
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 15:41:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LYdVSEJYSxlpPRyHCi7r5tN2RJPa+UFv81a3Ufh1joM=; b=i+TYw580U9ZYDMDgCjP+offZwQ
-	dV4ENz5W0+apq0/67DAkFcL6oSjEjmWtYnOj9ZniHHQzj4W2jfjUct6tLsfjcUjLT+9JXcgx4odHb
-	2FnjyUBUvmWJK2z3qksWaLQ1zYJU865ZhxR9LG+pN+vU/4XB7HlraEFQQWZgvUzH3chdDujCzrQTQ
-	gHQ+kt788q89CQQbisn/gBKOJY5HWMFtDTkhncgsiHEipoZeT6lE9JY+DfoLRVKLTWlpr/VYA3tOu
-	6jOp4veWtPzVIWVnd9dW9AbASugbWkgDF24fa1igiuRZut+IhrY4JkrGre0VSnjuucvFtuuZXtog5
-	yWRMUR3w==;
+	bh=77r3PWO7yo5+W5LQS9FlqiYUpbSGXMMaR8d5GZmSOF4=; b=wucPtFF+hRSCmSLffvD6CuXO5l
+	0ecpwEc4HQoz0qfxE6/2ZAcPGJKEhPUCcY5eKDs0H4tUzolg0IF9w51YRazfzeFO9dd2tAvlegQ0V
+	Bob+pFXstkrAuTGYGBeBTC1pFG9b5wiRt2tnrymeDVkw2AemxsF01J5yiHyJAxaHhjqkYwmlc3ycw
+	oxAkdddK2Ud8PzNYUBrI9+ULncHMqWnhBiRhtMKuZTiTjkA697RLOVeGX8WjCNSSxVdmYCl//OItv
+	MaAuHw1nJU3NwJFM8FSQ7ZIEeu+xPQM4TZrR8FnC7ipCgoNP95TCVKKXoNoiWxcvE9hoav5uBLcUL
+	2/JF5bbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlq7l-00000007EuD-01vZ;
-	Mon, 20 Jul 2026 15:41:45 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1wlq7o-00000007Eyq-152a;
+	Mon, 20 Jul 2026 15:41:48 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlq7h-00000007EnK-1yRV
+	id 1wlq7l-00000007EtX-2HBa
 	for linux-mediatek@lists.infradead.org;
-	Mon, 20 Jul 2026 15:41:43 +0000
-Received: by mail-wr1-x434.google.com with SMTP id ffacd0b85a97d-47df43bfb07so2743634f8f.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 Jul 2026 08:41:40 -0700 (PDT)
+	Mon, 20 Jul 2026 15:41:47 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-47f633e6058so2900810f8f.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Jul 2026 08:41:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784562099; x=1785166899; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1784562104; x=1785166904; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=LYdVSEJYSxlpPRyHCi7r5tN2RJPa+UFv81a3Ufh1joM=;
-        b=juqD8UmqBkmR0fv7rbk0u9DADPzrDf+9ZHWB87quLpbXfOOxu6losI77w9cXOAbPBR
-         QqjvUtzhQcjgs0O76RNf2Jf5kRMtsoQdjgeaOmloi1uKxOHraA8QHySsT5Xb0xPOxKNz
-         pr9nKC/tQdhetY1wLHCS/BEb1h2Ng42GmAtNMbEngGDgAcvzEHMwvmof4FbhpQqt2ftJ
-         WpoI8QpbLAz3XHpeYQmJxiW1NWOJJ9/b4CuXp5B6gBw/DwksrrL9hAzCqhaDE715ayG0
-         BqPBTBTnN653Gerrcv/VBsIflhuDyl5b9/4SgrUwB8wFd00wrfLQ4NwZE/aosQg2MKPm
-         3igQ==
+        bh=77r3PWO7yo5+W5LQS9FlqiYUpbSGXMMaR8d5GZmSOF4=;
+        b=aCk6ZUh2mJXXOxDLaPTOgB0Y9SFkYM1dtrRXUBMwuLc+W+1rAHeKNx6AOblpsmx7M6
+         4NyuIBSaCEf/Wu0kB2Ae/by//DIA+AMkJ8tE0r94FLfbX6jR6j7wzDgXb8WKKOFfl5F0
+         t/WCxifJzQj3I58Hd/0fYw7bDL1/bMeWNd1Nb6olJJ0Z8NTXBviuQlOtJV9FCH//8a+z
+         IksSh75ofMVdc0Q5gCUQV3JVp7mZcjCziQCEA3fqKQmH+9emNkhjycIUpUDY2Us3/V5Q
+         +sQnzapjMmAoNnYnUCN9nU55T8tprn5xnMyYdWtU/9tj8Vl5IdCv1tvtKYF5R7+FAdRi
+         Rs1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784562099; x=1785166899;
+        d=1e100.net; s=20251104; t=1784562104; x=1785166904;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=LYdVSEJYSxlpPRyHCi7r5tN2RJPa+UFv81a3Ufh1joM=;
-        b=C4rWO3+iIrUNzbfd+/jg+3c+CoeT8xtK57YzsNulPgt4BfifEbZi5s3+T0QKLu74Cc
-         YgjjJ9vKCbSLNJfLm2PEYyqnfazvo1lWKyLAjEJiJP+4fF81ds09gPtYtxWySf4Jyh2o
-         P06jL2FvmQJm94bkThrJWe1Gw+lcy/vUvzbLC923Ys+Uwtjw52vm6y9p7h1sneAga7bP
-         vq9ow2Pq2rD4prErD/Y/Cge8+PVmYx36G12lwe/uYFfMn7FvB12Ez4Srt352znMnLJeF
-         XcQBUKJBrChdPPBirbargX4ZQ73FPxsje0HFCe6JcSWL62wmDuU47yPfg928Hm19wab+
-         rgdQ==
-X-Forwarded-Encrypted: i=1; AHgh+Ro3s/Xsb93cb6awYvtPX/Az53TTE6d/Pe7tNGrpBq0PMHFWkJwBxSOvo8RM6eNVcNAPowqXKSW/znSpjy7mcA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwCzc3PBPW1n3Go6zqYHc/XG1QEGh7KOUrUmOgTFVLuSzIFHBlG
-	aYb9Dz8UIccJHSoeCtVJyAgLkq3sydBR5z9B0bwr5XKU4TaIFT5lJ/Ua
-X-Gm-Gg: AR+sD12PcZEAACcLGZ2+XhpeBrOHfNFO92STUexD2w6OFM54/kV0oovcikHUdHlarBo
-	s00O/SuSmGTTQo88Bk0yA2ydmv5dVGTPy4EOfNFkcVdgevZYhGlrU0iTa+GAESCcwAvw/1nMWqD
-	z9QNzanIX+sbG5+k5ozdw11DBUgeSdsE1trfuRCOpuoj9bJj4WNTyvDxfjCzwWlFmdZYluq1+4V
-	5vIuqrNxogFgHWK6fT4CfIeKk4qE6tv+z67veiVsJs29CL/u+lCGZzUdNdGXXFSlsV6VRTOyUCz
-	xm62QsHCDCFM8figtTQgMqqMR4higJ9X+37xzsx9A4AqR6z1NQ6jSIw6Cj6Ojnnu5RP1SQKxCI0
-	vTaFu9T88c5H73NsxLnd8cyGJJkx2BBn9E36XtQ559nYcz+Q2HU7JL2NHq4w4cCRV1puYRihHdu
-	ZbSggqhDMi8A==
-X-Received: by 2002:a5d:5f91:0:b0:46f:7d90:8121 with SMTP id ffacd0b85a97d-47f62305661mr18563371f8f.14.1784562099337;
-        Mon, 20 Jul 2026 08:41:39 -0700 (PDT)
+        bh=77r3PWO7yo5+W5LQS9FlqiYUpbSGXMMaR8d5GZmSOF4=;
+        b=YnUK3pbSG0stq41gqtaZ/b2HpyKVpbjGfI+bS75herCV2O2PT6LhmCiuVqlCdNU6ov
+         fBYmsGQua+gIfnaexb0nR0h0dn5xFz8Yh/2VEgpcbpRpt9/Kgi32iW05cubD7juicx5p
+         /mGecDe6guZVuisxaJNf2At70GiIXpUNhkKhSNErn0rIGxALl4chIn3WRvBRYqaJY8sI
+         ngdQ2rvR4OwhBqdgMsT9Bb2XnCvH+/gH6wcnGoxbQw3IWZsrfv1Z7WiwKrmRPnbQFCEu
+         TbbrQFVOaC541DSIzuHNLlTuyuIsJR2WC0x2NQ0T886RgNk6Ni29SDIQZuGB2CVeDgf2
+         J3LA==
+X-Forwarded-Encrypted: i=1; AHgh+RqZrBGCV68lM36KlToLyMUfyy+Lv0TrM9h66kp37xkR6unTQEAmCKNDydW59E3TFI5BVckOwgkM34cH4v03fg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyLKzECOn0VBjGdiio3/fVOoYoRkRjrTb3wVyqESZa1qGvTIT+j
+	v2bDC+I3MYTp6tCQQH/tz5Um7ZqXFOtQASIC9Anz6YLFJWUWDQ/5VGmc
+X-Gm-Gg: AR+sD13zP/S2poUaDYHj05OfjBnXvPXBKhbOr76Xl9oKcKugTYBTM0AjjJxxdPlM47B
+	Ij656zIJ1GibdOKfBFNVjWzT/+7chNN8n4hiF6kfEzmEVn5dOSFx/Sb2C7JinDSsFmXgMivmMB5
+	rtacPc0i69+7LIRVhZPhd0RXZzXO5I2IdPGm8z8LUELCLyGUbhOSaUPHFRL6nLF5op2UyqCJuec
+	r6p3PMSXvw0iluj2Qkn7UvNYowAo7cA0l7+bDvtju80TW5/vKjqIm+0ODeeivjw5kvBc5EJWuY1
+	nrR3gRDKGwTwXkyxj2CowHCwkO/eLT5c4nfIC/mO7ZD6KQT+XclKGysOj1DMXyTBMLuZ+vgMO2G
+	IQITpLyDL1UEDW1ZEGbtpaRomO2emHhWYrR3z0gihzKrrtKLZVE5/NpywD6RDW1Nxzt21ZfQCgJ
+	vId+QMyB6IbA==
+X-Received: by 2002:a5d:584f:0:b0:47f:6d57:5a93 with SMTP id ffacd0b85a97d-47f6d575ccbmr10955450f8f.38.1784562103442;
+        Mon, 20 Jul 2026 08:41:43 -0700 (PDT)
 Received: from [127.0.0.2] ([2a01:14:111:ccf0:e9c1:2f80:10a9:c708])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47f67466e09sm32667936f8f.21.2026.07.20.08.41.35
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47f67466e09sm32667936f8f.21.2026.07.20.08.41.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Jul 2026 08:41:38 -0700 (PDT)
+        Mon, 20 Jul 2026 08:41:42 -0700 (PDT)
 From: Diogo Silva <diogompaissilva@gmail.com>
-Date: Mon, 20 Jul 2026 17:40:46 +0200
-Subject: [PATCH v2 14/15] drm/drm_simple: remove deprecated
- drm_simple_encoder_init function
+Date: Mon, 20 Jul 2026 17:40:47 +0200
+Subject: [PATCH v2 15/15] Documentation/gpu: remove completed
+ drm_simple_encoder_init() todo
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260720-drm_simple_encoder_init-v2-14-5020b630668a@gmail.com>
+Message-Id: <20260720-drm_simple_encoder_init-v2-15-5020b630668a@gmail.com>
 References: <20260720-drm_simple_encoder_init-v2-0-5020b630668a@gmail.com>
 In-Reply-To: <20260720-drm_simple_encoder_init-v2-0-5020b630668a@gmail.com>
 To: Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, 
@@ -124,8 +124,8 @@ Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
  linux-doc@vger.kernel.org, Diogo Silva <diogompaissilva@gmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260720_084141_562876_5126E1AB 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20260720_084145_601817_519BDFD1 
+X-CRM114-Status: GOOD (  10.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,64 +140,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The simple KMS helpers are deprecated because they only add an
-intermediate layer between drivers and atomic modesetting.
-
-All driver users of drm_simple_encoder_init() have been converted to
-drm_encoder_init(). Drop the helper and open-code its remaining internal
-use in drm_simple_display_pipe_init() to prevent new users.
+All drm_simple_encoder_init() users have been removed, so drop the
+completed todo item.
 
 Signed-off-by: Diogo Silva <diogompaissilva@gmail.com>
 ---
- drivers/gpu/drm/drm_simple_kms_helper.c | 13 ++-----------
- include/drm/drm_simple_kms_helper.h     |  4 ----
- 2 files changed, 2 insertions(+), 15 deletions(-)
+ Documentation/gpu/todo.rst | 15 ---------------
+ 1 file changed, 15 deletions(-)
 
-diff --git a/drivers/gpu/drm/drm_simple_kms_helper.c b/drivers/gpu/drm/drm_simple_kms_helper.c
-index 8e1d07b9f1e3..7878b9d7d524 100644
---- a/drivers/gpu/drm/drm_simple_kms_helper.c
-+++ b/drivers/gpu/drm/drm_simple_kms_helper.c
-@@ -20,16 +20,6 @@ static const struct drm_encoder_funcs drm_simple_encoder_funcs_cleanup = {
- 	.destroy = drm_encoder_cleanup,
- };
+diff --git a/Documentation/gpu/todo.rst b/Documentation/gpu/todo.rst
+index 14cf37590fc7..b7351467dc74 100644
+--- a/Documentation/gpu/todo.rst
++++ b/Documentation/gpu/todo.rst
+@@ -29,21 +29,6 @@ refactorings already and are an expert in the specific area
+ Subsystem-wide refactorings
+ ===========================
  
--int drm_simple_encoder_init(struct drm_device *dev,
--			    struct drm_encoder *encoder,
--			    int encoder_type)
--{
--	return drm_encoder_init(dev, encoder,
--				&drm_simple_encoder_funcs_cleanup,
--				encoder_type, NULL);
--}
--EXPORT_SYMBOL(drm_simple_encoder_init);
+-Open-code drm_simple_encoder_init()
+------------------------------------
 -
- void *__drmm_simple_encoder_alloc(struct drm_device *dev, size_t size,
- 				  size_t offset, int encoder_type)
- {
-@@ -363,7 +353,8 @@ int drm_simple_display_pipe_init(struct drm_device *dev,
- 		return ret;
- 
- 	encoder->possible_crtcs = drm_crtc_mask(crtc);
--	ret = drm_simple_encoder_init(dev, encoder, DRM_MODE_ENCODER_NONE);
-+	ret = drm_encoder_init(dev, encoder, &drm_simple_encoder_funcs_cleanup,
-+			       DRM_MODE_ENCODER_NONE, NULL);
- 	if (ret || !connector)
- 		return ret;
- 
-diff --git a/include/drm/drm_simple_kms_helper.h b/include/drm/drm_simple_kms_helper.h
-index cb672ce0e856..c95f86ff355f 100644
---- a/include/drm/drm_simple_kms_helper.h
-+++ b/include/drm/drm_simple_kms_helper.h
-@@ -68,10 +68,6 @@ int drm_simple_display_pipe_init(struct drm_device *dev,
- 			const uint64_t *format_modifiers,
- 			struct drm_connector *connector);
- 
--int drm_simple_encoder_init(struct drm_device *dev,
--			    struct drm_encoder *encoder,
--			    int encoder_type);
+-The helper drm_simple_encoder_init() was supposed to simplify encoder
+-initialization. Instead it only added an intermediate layer between atomic
+-modesetting and the DRM driver.
 -
- void *__drmm_simple_encoder_alloc(struct drm_device *dev, size_t size,
- 				  size_t offset, int encoder_type);
+-The task here is to remove drm_simple_encoder_init(). Search for a driver
+-that calls drm_simple_encoder_init() and inline the helper. The driver will
+-also need its own instance of drm_encoder_funcs.
+-
+-Contact: Thomas Zimmermann, respective driver maintainer
+-
+-Level: Easy
+-
+ Replace struct drm_simple_display_pipe with regular atomic helpers
+ ------------------------------------------------------------------
  
 
 -- 
