@@ -4,71 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6A80C4451C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 10:27:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12820C44529
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 10:27:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hzI+xvr6p88cYg+8jImYn6yoqZyRq117x6xc2+j9GZs=; b=eU5JrtY9wz7zv0OJ8ENf3hULd2
-	rybWok5+/jHf5X3fOedXNv9PicYAxPqtPukjmWi/0zqc1ww/4s3wLtVNuNvOH6rSuK7uqch6bz+ae
-	qz1RtbkPFbPkOUD8xycq9e+J0n6oei4nZktMCRI40KAsWs0SUHRBUEW0YxHjrXC3BtM5Gdz5oqiyz
-	8YOkM15S+q74K04crsPx+efbKP6b9PWpjnLzd/UH6VUesdCAAGuCt9Vh8gnwI+veahYcP8+Ous8/v
-	Nz2VAs1vfC5JqlLZ2H3mf+Usqfevch8zAv0d/LxPDk0RwD/oLIAYDf/60/DUYDOeGXADK1GdyDhRc
-	pvh+6a1A==;
+	bh=gjBdDL8q0TXPbaumSZVEGnGR8oe3cQ900YMwBCNq4N4=; b=e2h8OB7p5nymn0qqOc2Vgc9uBG
+	vUDd5tyHE+Wwtr+iyDTjyEVjOGb2S+NckInQY9NK+fCs2sRGFYYa0ge0p8LPIGDcSFZrFiILN11ht
+	qnJRqH/yG1ptKOCIzlAu+Rg/y4tQl+uBRVNttYnvNjFBIT3ZorHuD7GOO8SRSfI5VXlJFn5aKaYGt
+	Cls3+JBYtT5wFUqyj57KV5bEng/4+yLOyEO3MKWEBfPhL7hg6QAB99d6gDBfLZNYhPswVe6ABxSwP
+	dBvDvPC9OahM4e3Aegm/mq/tps5HJbcNIJJtQTPdqiowuRBS2bFadlQZiN4vnCh4+0/2z/KyPvl/0
+	1rO0BgMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm7go-000000098Im-22lM;
-	Tue, 21 Jul 2026 10:27:06 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1wm7gx-000000098PR-0fgM;
+	Tue, 21 Jul 2026 10:27:15 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm7gj-000000098F2-2Mul
+	id 1wm7gv-000000098O8-3W47
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 21 Jul 2026 10:27:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=gjBdDL8q0TXPbaumSZVEGnGR8oe3cQ900YMwBCNq4N4=; b=e9UZZnMavZzumPoZaSc8aVTGdQ
+	XwXhu2r9cj4bSEeRbXDDyYkKcdf3mTw9e2U7FKOVHr8kf9i2uttqkre5bA0M2eXGvGIV8fAF+r9w1
+	VSwG5/6dAr4BC7FPY6oxu/cQc+pwRf4+k2xNFRkkZkp57t9LdOLs4aedUFm2u0Q4p/5470h/Tp6uv
+	9GEbYqrPJj6rgoYWFGS81v2nbARbz9BeWd1BPLizHtVHFKbgZZ3ZFTV01Nt9kqqtFSyu1h1M08fUV
+	D+4PFRX4HGOdF0wHW+IeeEWoe0QtCI3UHyT0vW6my83TQ6ZOZGgAKfXzuQxBKarbkh2Wn++z4CwEb
+	u6+l7fjg==;
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1wm7gt-0000000HRX3-05YS
 	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Jul 2026 10:27:05 +0000
-Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-2ce98cb8165so49944145ad.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2026 03:27:01 -0700 (PDT)
+	Tue, 21 Jul 2026 10:27:12 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-2caed617615so123130695ad.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2026 03:27:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784629620; x=1785234420; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1784629628; x=1785234428; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=hzI+xvr6p88cYg+8jImYn6yoqZyRq117x6xc2+j9GZs=;
-        b=ryiGuuEnXslQ/c4oLm4c+JeIGhKDoHFsqNf/WUMrXVeeXOs/rg3zm1x5UV47VcFFtO
-         o+aJoCbKOY08ZvhdECUqaivYaXTf/M3CtHNus7Jh06pectt4hQS7NY+4ZCA77bmw15HF
-         TYK3qpRIYLOZdIulPNkpgQnziduO6sLguOZJKMjsYKelow8P8PQqZ5iZgpUad7CqYPTf
-         YWH/p+lzW9p3g+jrHQ/+iGKXbawjDP1UvJLOEwRXn9p3kMw5GwMmoxPsjpnS8jbgD+Mh
-         7Hrq5ABcaYnfA+KCvZL6f3o6ldo2lH7q4svr0hicjOUYCy7wU6cWcD9QZND6nkxOMM1P
-         +7kw==
+        bh=gjBdDL8q0TXPbaumSZVEGnGR8oe3cQ900YMwBCNq4N4=;
+        b=gTDW0bt+8nHIJ2E93DIReGsmTRzbZXYT0ajwZO9zYWaSUgortUGEYLuWWsAa0hn68C
+         AFOS9gFcimbmvd6DSMH+pR7R4nhJQPL0MqotmmfRMup5iL4FgsjdbKWrzQWlaAERqIhl
+         rJNlm7H2NpORWlRlzalz5Ruu9z+ZH9IuPoWvbKopXn9YHegen0S0I8BNaPgR2YaxFaRx
+         eJPPqBiF6Ueg3zaTILdCKQO5mVbw8tjd34Cp6VjkiH2lys88V8dn9xHknXcgpgLMIgSw
+         L6JI4adWNgSJCLlVD1YJQDsv7YPT4ab/0YiiY7H7PCfTZJ7IJ5vSZFH5N4evCiUh13+D
+         1RDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784629620; x=1785234420;
+        d=1e100.net; s=20251104; t=1784629628; x=1785234428;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=hzI+xvr6p88cYg+8jImYn6yoqZyRq117x6xc2+j9GZs=;
-        b=MEaZRoIJW7rSwAkPxkDnJDd3jHkikiSamgOmLoz+MqFzU1XD12dLUopcZnpJ7hd8wm
-         hLi0uIJDnaj+PZ4Yue6fRjtKdJycXwGoBcyF1VxdBjWIXaxWIIv1+NR6StfnT5TW6hxT
-         XfLI146ExzNNyoknsVLcQN4lBdbh8uj7rh2QMqNeHxRr2aW25imZYWysRdh/Zl7vwWgc
-         E3FZvfM7n6FU7V3ETarVug0ykvcqdoicNw9mCm+DUmnCcFXrfqHw5qefPJIda2bO4lgo
-         ZXnVH7gXPBj0jImDwFGsI5Nx8K3y483rmHuBBIuvuanUupHfsuAzMtThPnV7tmwgqg+g
-         pL+A==
-X-Forwarded-Encrypted: i=1; AHgh+RqvxyRoap83q3u0Aivlr7t3zt3vbX89jcYiya2S2RXBhLccNP+o5pbGaLRxFPIj8wNFxubiRoA+bgWh6K91xQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw4ynZ1pv3VQXxYeBDHb69OXc/UMlj5mAySTKu789lLIwPl8Lvg
-	7CWWm78GpG1KZvtnkXeoJ6NzcyMalnKvWHChZEPfLLN0pMT6uTKlfv4V
-X-Gm-Gg: AR+sD13WrBmK+nL9AY4x3ODL8au/lEoDEvMU+ry1UODLRIhT2GM8JUmt7WyYG+pgeSE
-	0ABzs4FVSNU3uy1x+hUISE9gNpA616TOtWz0EGcqgybx15HJweIv53i4xp1Vl1LeG4Ixo4GQX9X
-	xP9h7fWudcDaoomVWLYCaRIo6ukQ2EKbfLnH2pJDXIQwVzouU5OeBOgl3M68g+w8uqBkl4dyYdu
-	ZIHOnZDfb4BhyIZJssNako5jrQQHx8JhlVeFRVUHj/ZE5L0EOIEr2PGqV6dLpW8gsz4+CxzZYKj
-	Nh+MtHRjQ2Gyfw33xahnjyl+NX3GL+lL0HUVakeWyJF23UxAUsrwwxuaqxGvnOJ2A+AVo36+oE0
-	NUj6JrL5ADvNtJIDmQokLeVSzrau/BcSk/5FmUVoGSChW/ODy+hY/MdPfG8HrXwWeOeuWKZBhpY
-	Nbh1h0ahJ/yctV6u6uUu0TlpeqwrNoEi/MBCRg
-X-Received: by 2002:a17:902:fc43:b0:2cf:41ba:96c2 with SMTP id d9443c01a7336-2cf41bab3cdmr143685015ad.12.1784629620455;
-        Tue, 21 Jul 2026 03:27:00 -0700 (PDT)
+        bh=gjBdDL8q0TXPbaumSZVEGnGR8oe3cQ900YMwBCNq4N4=;
+        b=GWnsLoH6WMux1UtyxwaOjB4pckNa9SiqTihREtzY8hsRQtFAFUIjJqUPgg0J87h4Dc
+         8wVzARTatQ7x6HiE1FsNcPZcYQ7ueKbEXTl1O2arTyghjM4XociWZq3Dpftd3PFDWGOa
+         hLnb9olSPNIkvoM7eNis+F0NNzKrYRJHF9XzY4yGjTMFn9umR8iiBO6YGUFrP1PdRQ77
+         jQQxeeZEw/ftQN2Ce/70UwsOCcTNQwVVy1iok+f/bnLLLUHpm0xpFRLlZEvd+n52W3C4
+         VhOwzbhEfcyX5SQocuIFipKR+jgazf2J/B9v87u5kyBZmEHZblIykc/7jxwXcXFa1QJZ
+         ELMQ==
+X-Forwarded-Encrypted: i=1; AHgh+RoayDWGRMEZRMS2WZPBwYsQAOfrfzQnXmZB4sgeGIfH9zOwE1XG7EmPNyNatRatuW9kiiiM+A+tZK+TSXFx+Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxRO6pEWSR1HWwEV6JcM43HlbVvVVOYQuMuWuJFYOGSeli2Xhsw
+	9hKzZy9sVeD9s8A+qFQI09XfmMFf0z2hqAbQuX1ZteX4EDRFhiq3YNEA
+X-Gm-Gg: AR+sD11fkuRNbe2o12sUVHKg7RmoHqp9054qao4Ek/5NoOM4eh+qVHJrI4M8FH0Qa5a
+	9EgB0Kc6F2+Kd7KzFnPfg++9XEdhsjiv5lIkE0g+3+uQFcxL6rDxB8KFWuHm5OX9anJ9QtxDXEf
+	bO/GErujqq09fzuVX28zR5VPEe16s7aaAO3IhlV+J7EZgjIJYnDR072Vrjy9fBFmW9+7dLRa3YA
+	ydloBDCvYIskEp/wn9M3855PjnEZ9nh5yuImIJNgZiMwjZsDn/FDLRWyRaFxXpB55wXGkqXGk+y
+	ZVg5CJhvo/sk9+GCOSjNwZbJfLMK7RDxAIfObGc36mUb7l9Z9JLAPJdrBIU+kLlZdeRnbSq/XnB
+	g97MnPeAj0aYUlJM4E4ACvRN0zQjdFca0CsEIOEYTEbh2qQgZY4yYXmt9WHCRy5so7BQgB6aI+o
+	EFN2g75yX8RGDUpoL+30pvxXmVI9wvgB4oh26h
+X-Received: by 2002:a17:902:c950:b0:2cf:7e56:22c4 with SMTP id d9443c01a7336-2cf7e56274emr38581895ad.30.1784629628416;
+        Tue, 21 Jul 2026 03:27:08 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cf3448dac2sm73581365ad.3.2026.07.21.03.26.53
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cf3448dac2sm73581365ad.3.2026.07.21.03.27.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Jul 2026 03:27:00 -0700 (PDT)
+        Tue, 21 Jul 2026 03:27:08 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>,
 	Takashi Iwai <tiwai@suse.com>,
@@ -103,17 +118,17 @@ Cc: Support Opensource <support.opensource@diasemi.com>,
 	linux-arm-msm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH v4 05/29] ASoC: codecs: es9356: Use guard() for mutex locks
-Date: Tue, 21 Jul 2026 17:25:36 +0700
-Message-ID: <20260721102600.523199-6-phucduc.bui@gmail.com>
+Subject: [PATCH v4 06/29] ASoC: codecs: fs210x: Use guard() for mutex locks
+Date: Tue, 21 Jul 2026 17:25:37 +0700
+Message-ID: <20260721102600.523199-7-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260721102600.523199-1-phucduc.bui@gmail.com>
 References: <20260721102600.523199-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_032701_607857_31814EA0 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20260721_112711_202639_6484FCEB 
+X-CRM114-Status: GOOD (  16.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,63 +150,239 @@ Merely code refactoring, and no behavior change.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/codecs/es9356.c | 29 ++++++++++++++++-------------
- 1 file changed, 16 insertions(+), 13 deletions(-)
+ sound/soc/codecs/fs210x.c | 89 ++++++++++++++-------------------------
+ 1 file changed, 31 insertions(+), 58 deletions(-)
 
-diff --git a/sound/soc/codecs/es9356.c b/sound/soc/codecs/es9356.c
-index f574b3d6cb3c..a9863900bf70 100644
---- a/sound/soc/codecs/es9356.c
-+++ b/sound/soc/codecs/es9356.c
-@@ -6,6 +6,7 @@
+diff --git a/sound/soc/codecs/fs210x.c b/sound/soc/codecs/fs210x.c
+index d794ff918b6f..510cbeea5b62 100644
+--- a/sound/soc/codecs/fs210x.c
++++ b/sound/soc/codecs/fs210x.c
+@@ -4,6 +4,7 @@
  //
- //
+ // Copyright (C) 2016-2025 Shanghai FourSemi Semiconductor Co.,Ltd.
  
 +#include <linux/cleanup.h>
- #include <linux/device.h>
- #include <linux/module.h>
- #include <linux/soundwire/sdw.h>
-@@ -500,16 +501,19 @@ static int es9356_power_state(struct snd_soc_dai *dai, unsigned char ps, unsigne
+ #include <linux/clk.h>
+ #include <linux/delay.h>
+ #include <linux/i2c.h>
+@@ -771,9 +772,8 @@ static int fs210x_dai_hw_params(struct snd_pcm_substream *substream,
+ 	if (fs210x->devid == FS2105S_DEVICE_ID && fs210x->srate == 16000)
+ 		return -EOPNOTSUPP;
+ 
+-	mutex_lock(&fs210x->lock);
+-	ret = fs210x_set_hw_params(fs210x);
+-	mutex_unlock(&fs210x->lock);
++	scoped_guard(mutex, &fs210x->lock)
++		ret = fs210x_set_hw_params(fs210x);
+ 	if (ret)
+ 		dev_err(fs210x->dev, "Failed to set hw params: %d\n", ret);
+ 
+@@ -790,15 +790,11 @@ static int fs210x_dai_mute(struct snd_soc_dai *dai, int mute, int stream)
+ 
+ 	fs210x = snd_soc_component_get_drvdata(dai->component);
+ 
+-	mutex_lock(&fs210x->lock);
+-
+-	if (!fs210x->is_inited || fs210x->is_suspended) {
+-		mutex_unlock(&fs210x->lock);
+-		return 0;
++	scoped_guard(mutex, &fs210x->lock) {
++		if (!fs210x->is_inited || fs210x->is_suspended)
++			return 0;
  	}
  
- 	/* power state changes are not independent across functions */
--	mutex_lock(&es9356->pde_lock);
--	ret = es9356_pde_transition_delay(es9356, func, pde_entity, ps?ps0:ps3);
--	if (ret) {
--		regmap_write(es9356->regmap,
--			SDW_SDCA_CTL(func, pde_entity, ES9356_SDCA_CTL_REQ_POWER_STATE, 0), ps?ps3:ps0);
--		es9356_pde_transition_delay(es9356, func, pde_entity, ps?ps3:ps0);
--	} else
--		dev_dbg(component->dev, "%s PDE is already %d\n", __func__, ps?ps0:ps3);
+-	mutex_unlock(&fs210x->lock);
 -
--	mutex_unlock(&es9356->pde_lock);
-+	scoped_guard(mutex, &es9356->pde_lock) {
-+		ret = es9356_pde_transition_delay(es9356, func, pde_entity, ps ? ps0 : ps3);
-+		if (ret) {
-+			regmap_write(es9356->regmap,
-+				     SDW_SDCA_CTL(func, pde_entity,
-+						  ES9356_SDCA_CTL_REQ_POWER_STATE, 0),
-+				     ps ? ps3 : ps0);
-+			es9356_pde_transition_delay(es9356, func, pde_entity, ps ? ps3 : ps0);
-+		} else {
-+			dev_dbg(component->dev, "%s PDE is already %d\n", __func__,
-+				ps ? ps0 : ps3);
-+		}
+ 	if (mute) {
+ 		cancel_delayed_work_sync(&fs210x->fault_check_work);
+ 		cancel_delayed_work_sync(&fs210x->start_work);
+@@ -817,15 +813,11 @@ static int fs210x_dai_trigger(struct snd_pcm_substream *substream,
+ 
+ 	fs210x = snd_soc_component_get_drvdata(dai->component);
+ 
+-	mutex_lock(&fs210x->lock);
+-
+-	if (!fs210x->is_inited || fs210x->is_suspended || fs210x->is_playing) {
+-		mutex_unlock(&fs210x->lock);
+-		return 0;
++	scoped_guard(mutex, &fs210x->lock) {
++		if (!fs210x->is_inited || fs210x->is_suspended || fs210x->is_playing)
++			return 0;
+ 	}
+ 
+-	mutex_unlock(&fs210x->lock);
+-
+ 	switch (cmd) {
+ 	case SNDRV_PCM_TRIGGER_START:
+ 	case SNDRV_PCM_TRIGGER_RESUME:
+@@ -853,13 +845,11 @@ static void fs210x_start_work(struct work_struct *work)
+ 
+ 	fs210x = container_of(work, struct fs210x_priv, start_work.work);
+ 
+-	mutex_lock(&fs210x->lock);
++	guard(mutex)(&fs210x->lock);
+ 
+ 	ret = fs210x_dev_play(fs210x);
+ 	if (ret)
+ 		dev_err(fs210x->dev, "Failed to start playing: %d\n", ret);
+-
+-	mutex_unlock(&fs210x->lock);
+ }
+ 
+ static void fs210x_fault_check_work(struct work_struct *work)
+@@ -870,15 +860,13 @@ static void fs210x_fault_check_work(struct work_struct *work)
+ 
+ 	fs210x = container_of(work, struct fs210x_priv, fault_check_work.work);
+ 
+-	mutex_lock(&fs210x->lock);
++	scoped_guard(mutex, &fs210x->lock) {
++		if (!fs210x->is_inited || fs210x->is_suspended || !fs210x->is_playing)
++			return;
+ 
+-	if (!fs210x->is_inited || fs210x->is_suspended || !fs210x->is_playing) {
+-		mutex_unlock(&fs210x->lock);
+-		return;
++		ret = fs210x_reg_read(fs210x, FS210X_05H_ANASTAT, &status);
+ 	}
+ 
+-	ret = fs210x_reg_read(fs210x, FS210X_05H_ANASTAT, &status);
+-	mutex_unlock(&fs210x->lock);
+ 	if (ret)
+ 		return;
+ 
+@@ -991,7 +979,7 @@ static int fs210x_effect_scene_get(struct snd_kcontrol *kcontrol,
+ 	if (fs210x->scene_id < 1)
+ 		return -EINVAL;
+ 
+-	mutex_lock(&fs210x->lock);
++	guard(mutex)(&fs210x->lock);
+ 	/*
+ 	 * FS210x has scene(s) as below:
+ 	 * init scene: id = 0
+@@ -1000,7 +988,6 @@ static int fs210x_effect_scene_get(struct snd_kcontrol *kcontrol,
+ 	 */
+ 	index = fs210x->scene_id - 1;
+ 	ucontrol->value.integer.value[0] = index;
+-	mutex_unlock(&fs210x->lock);
+ 
+ 	return 0;
+ }
+@@ -1019,7 +1006,7 @@ static int fs210x_effect_scene_put(struct snd_kcontrol *kcontrol,
+ 		return -EINVAL;
+ 	}
+ 
+-	mutex_lock(&fs210x->lock);
++	guard(mutex)(&fs210x->lock);
+ 
+ 	/*
+ 	 * FS210x has scene(s) as below:
+@@ -1029,17 +1016,14 @@ static int fs210x_effect_scene_put(struct snd_kcontrol *kcontrol,
+ 	 */
+ 	scene_id = ucontrol->value.integer.value[0] + 1;
+ 	scene_count = fs210x->amp_lib.scene_count - 1; /* Skip init scene */
+-	if (scene_id < 1 || scene_id > scene_count) {
+-		mutex_unlock(&fs210x->lock);
++	if (scene_id < 1 || scene_id > scene_count)
+ 		return -ERANGE;
+-	}
+ 
+ 	if (scene_id != fs210x->scene_id)
+ 		is_changed = true;
+ 
+ 	if (fs210x->is_suspended) {
+ 		fs210x->scene_id = scene_id;
+-		mutex_unlock(&fs210x->lock);
+ 		return is_changed;
+ 	}
+ 
+@@ -1047,8 +1031,6 @@ static int fs210x_effect_scene_put(struct snd_kcontrol *kcontrol,
+ 	if (ret)
+ 		dev_err(fs210x->dev, "Failed to set scene: %d\n", ret);
+ 
+-	mutex_unlock(&fs210x->lock);
+-
+ 	if (!ret && is_changed)
+ 		return 1;
+ 
+@@ -1062,12 +1044,10 @@ static int fs210x_playback_event(struct snd_soc_dapm_widget *w,
+ 	struct fs210x_priv *fs210x = snd_soc_component_get_drvdata(cmpnt);
+ 	int ret = 0;
+ 
+-	mutex_lock(&fs210x->lock);
++	guard(mutex)(&fs210x->lock);
+ 
+-	if (fs210x->is_suspended) {
+-		mutex_unlock(&fs210x->lock);
++	if (fs210x->is_suspended)
+ 		return 0;
+-	}
+ 
+ 	switch (event) {
+ 	case SND_SOC_DAPM_PRE_PMU:
+@@ -1088,8 +1068,6 @@ static int fs210x_playback_event(struct snd_soc_dapm_widget *w,
+ 		break;
+ 	}
+ 
+-	mutex_unlock(&fs210x->lock);
+-
+ 	return ret;
+ }
+ 
+@@ -1220,11 +1198,9 @@ static int fs210x_probe(struct snd_soc_component *cmpnt)
+ 	if (ret)
+ 		return ret;
+ 
+-	mutex_lock(&fs210x->lock);
+-	ret = fs210x_init_chip(fs210x);
+-	mutex_unlock(&fs210x->lock);
++	guard(mutex)(&fs210x->lock);
+ 
+-	return ret;
++	return fs210x_init_chip(fs210x);
+ }
+ 
+ static void fs210x_remove(struct snd_soc_component *cmpnt)
+@@ -1251,15 +1227,15 @@ static int fs210x_suspend(struct snd_soc_component *cmpnt)
+ 
+ 	regcache_cache_only(fs210x->regmap, true);
+ 
+-	mutex_lock(&fs210x->lock);
+-	fs210x->cur_scene = NULL;
+-	fs210x->is_inited = false;
+-	fs210x->is_playing = false;
+-	fs210x->is_suspended = true;
++	scoped_guard(mutex, &fs210x->lock) {
++		fs210x->cur_scene = NULL;
++		fs210x->is_inited = false;
++		fs210x->is_playing = false;
++		fs210x->is_suspended = true;
+ 
+-	gpiod_set_value_cansleep(fs210x->gpio_sdz, 1); /* Active */
+-	fsleep(30000); /* >= 30ms */
+-	mutex_unlock(&fs210x->lock);
++		gpiod_set_value_cansleep(fs210x->gpio_sdz, 1); /* Active */
++		fsleep(30000); /* >= 30ms */
 +	}
  
- 	if (rate)
- 		regmap_write(es9356->regmap,
-@@ -1091,9 +1095,8 @@ static int es9356_sdca_dev_system_suspend(struct device *dev)
- {
- 	struct es9356_sdw_priv *es9356 = dev_get_drvdata(dev);
+ 	cancel_delayed_work_sync(&fs210x->start_work);
+ 	cancel_delayed_work_sync(&fs210x->fault_check_work);
+@@ -1288,14 +1264,11 @@ static int fs210x_resume(struct snd_soc_component *cmpnt)
+ 		return ret;
+ 	}
  
--	mutex_lock(&es9356->disable_irq_lock);
--	es9356->disable_irq = true;
--	mutex_unlock(&es9356->disable_irq_lock);
-+	scoped_guard(mutex, &es9356->disable_irq_lock)
-+		es9356->disable_irq = true;
+-	mutex_lock(&fs210x->lock);
++	guard(mutex)(&fs210x->lock);
  
- 	return es9356_sdca_dev_suspend(dev);
+ 	fs210x->is_suspended = false;
+-	ret = fs210x_init_chip(fs210x);
+ 
+-	mutex_unlock(&fs210x->lock);
+-
+-	return ret;
++	return fs210x_init_chip(fs210x);
  }
+ #else
+ #define fs210x_suspend NULL
 -- 
 2.43.0
 
