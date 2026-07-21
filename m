@@ -4,58 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00F85C44529
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 07:53:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C922C4451C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 07:54:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6xFrz9+Xh7oWc2E882wc3WdDbfJk8+9Kb0ZZS36Ln2c=; b=hFPjtQqX/l5DMuUEdfhfWSbhVz
-	GGGJEXuKvQRTktNgbND1FDNxx4urf7QiQuivU1L8deTqZs4BqMqzI3UZ3MPa5NnpSSa6Wi8gCg4VC
-	cQProXBexs4nD9jWNaFAzXwUlPaGlb79mJP1/ISPf3whVqJ2URORysc6GpWWQA891FnhOJOApYNUH
-	eMUbEuutdoxzc8HfHGP6nyaaL9PxBPtVMtN4nAU0paEW84U5LEeOiyPBOO7FP8ECa2cghP4mWXJTZ
-	OLam3b97n39pQzfM6UFLJhMQa7ypwEzKoB4phmpwIl1P7kfnSKXvYTQlA+V9OpH/ef7hCDMkJ7W2b
-	FrAM+E1A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1UfUXCr53MVmAxCgEvl6p7BqmYW2167OMSThHKBq4o8=; b=RCuAeiiJtODHwquy6ay5a3HmVT
+	nic1r+6w19QEiEz3RLefrd71qABhzI86rbxELUHTv7qFpuyYay9bS2wao4g/JiXbFV41CqpxRKH0w
+	zW791NuAKyU3AVH6BWbuQ94oBxRiGnx5oney0n6jWVJOKlK2EFIbIuhnMWa6zpqnSQWEPGGF2QX01
+	o5IMxck5NAjTRmdc2cSCr2Zvc+CV6vyZRuszi+ifGvhLJ/F8hyf/oqqrYdFFyEJBCn1WMMN5Hq3L1
+	GzvUgLwwbSXK4eqCT84QykkVHQF3JxgvmGSdW10CQj2ceFcVpqQXyewhV/8TM85YypbK6Fu+n+Yjt
+	An8JMaVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm5IU-00000008hcP-3jc0;
-	Tue, 21 Jul 2026 07:53:50 +0000
-Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
+	id 1wm5Ij-00000008hh5-0AkN;
+	Tue, 21 Jul 2026 07:54:05 +0000
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm5IS-00000008hbZ-0xrp;
-	Tue, 21 Jul 2026 07:53:50 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de (drehscheibe.grey.stw.pengutronix.de [IPv6:2a0a:edc0:0:c01:1d::a2])
-	(Authenticated sender: relay-from-drehscheibe.grey.stw.pengutronix.de)
-	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 88AB42028EE;
-	Tue, 21 Jul 2026 09:53:43 +0200 (CEST)
-Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1wm5IN-000XJf-1W;
-	Tue, 21 Jul 2026 09:53:43 +0200
-Received: from pza by lupine with local (Exim 4.98.2)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1wm5IN-000000002rJ-1YNa;
-	Tue, 21 Jul 2026 09:53:43 +0200
-Message-ID: <16651472d6a782bdef63e1c9742444de08c59f1e.camel@pengutronix.de>
-Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: Make reset
- optional for MT8196
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	rafael@kernel.org
-Date: Tue, 21 Jul 2026 09:53:43 +0200
-In-Reply-To: <20260720144244.88877-1-angelogioacchino.delregno@collabora.com>
-References: <20260720144244.88877-1-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2-0+deb13u1 
+	id 1wm5Ig-00000008hg2-30qR
+	for linux-mediatek@lists.infradead.org;
+	Tue, 21 Jul 2026 07:54:04 +0000
+Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-2caed617615so121813815ad.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2026 00:54:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1784620442; x=1785225242; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=1UfUXCr53MVmAxCgEvl6p7BqmYW2167OMSThHKBq4o8=;
+        b=EaXgd6l22vPpa7zpxRAWGGZqAWHQ0vh1jjNxk7xlCvIFGEURXa21u0A2Qm6oIvKzfh
+         5wEkXG2IvKzmjZkagkT1ifFTmLgiZbR6lpaqZsP3AwF4CoJMVV94a6OL2564TDk/XKBl
+         tlTUXpH8Efr/AHDxhw3jhCu6F4GVaXzIB91Go=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1784620442; x=1785225242;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=1UfUXCr53MVmAxCgEvl6p7BqmYW2167OMSThHKBq4o8=;
+        b=D2Df80ElAlSml7pNDaHxxRkzGvzf0SptTJFdAqqVIAdqkNdGugl9KUk+Resyz+xQLf
+         aB9TldtIfgTfhtgwz2rkY4jhT/rbBw444v1IHsWtZDcUsm6c0/Tsb0MLh8N3vfXOChHG
+         N8Rr0EXIPwe7KeW2nYqRHY1Lpd/nIvXWLAccbQlaqXdqr25qXp11DxamVAYnS2HiGZx4
+         7MnInAvV6zhqXGP8u4FaTTE292qRaOqGrOsjVi5EIHoSHgRFKGWd+StcNp9rkVxVHv0a
+         I06LDtYMMQTUaF/Y5xlNUjzlFuP2XPpW5JDAxVcKUtJEPuMcuksubjt1l6NHAw+ioN2j
+         7FwQ==
+X-Forwarded-Encrypted: i=1; AHgh+Ro4yl+JIhS/R08URlTBHxsMUk7gM9KWG86OFgDYVmw8VcxEuKH2/K3r5i4GtmDeiKVdFw1pYWNK4wzUQbRa7Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyGx2JfGB3kDmPsyrqvSRGKY9GSLuW67HIXtypKwQu9CB0CyLdc
+	bV7D938TwpdgvdYp9ikyOBwWy1hZ3CFfaewRpkAOoidJdW3lTkMyzY+zp5Pu6R4ErQ==
+X-Gm-Gg: AR+sD10oCoDQon0he24U6awaXauVH2oV9yjTM1ggsHDMPTWcKrbNWFgaSDNsLFPu0/x
+	PDj3XNIwTI8sIXXeIgyfpDlHfq5NNa0tlxwO4jIqKYWrgzYrI8kaugnrylzJGyrFInUL5vtvYjv
+	Vg/0v2U9sJC5tXhfrekICJIdZhsSC2J1/85m74yvFSN/5KKAZumx8iK9Hzi8dReb6itEILxrwRO
+	3VpFQNGmeJsqeyj/pxGFuseifDjGDyFUghGhLD15MeY/gieYSMcdeZf3h3F51YBDFUQ1yaHrZLC
+	dFWucMjnOwolbrCkig7HE5/eMa4knc0bffhHVQ8mmK1EzZPxnqz38TDNRE4aPPsPEm4LKxjl5Pb
+	kPDVRDXDWl116rwaKPtcSg7+GMShx1PlZLb1q/4/u+y8OrZFEqOXI+2stBiQ3xjr0dSTp5DP1wS
+	nz7wzcmDUGxd6AQynn8RsKBpUV/wxyguSUrHpESfwny1T4A+nLuuYdQZZeuOU=
+X-Received: by 2002:a17:903:3c44:b0:2ca:ed41:d331 with SMTP id d9443c01a7336-2cf34a3f5c3mr188180995ad.45.1784620442019;
+        Tue, 21 Jul 2026 00:54:02 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:3916:f048:32c3:931f])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cf3448f705sm70724175ad.15.2026.07.21.00.53.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 21 Jul 2026 00:54:01 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Jiri Kosina <jikos@kernel.org>,
+	Andi Shyti <andi.shyti@kernel.org>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	chrome-platform@lists.linux.dev,
+	linux-input@vger.kernel.org,
+	linux-i2c@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v3 0/9] arm64: mediatek: Chromebook trackpad supply fixes
+Date: Tue, 21 Jul 2026 15:52:14 +0800
+Message-ID: <20260721075226.2347933-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.55.0.229.g6434b31f56-goog
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_005348_447929_3FFF632E 
-X-CRM114-Status: GOOD (  31.78  )
+X-CRM114-CacheID: sfid-20260721_005402_793746_CF58D193 
+X-CRM114-Status: GOOD (  24.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,128 +102,109 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: jiapeng.chong@linux.alibaba.com, linux-pm@vger.kernel.org, wenst@chromium.org, linux-kernel@vger.kernel.org, laura.nao@collabora.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, daniel.lezcano@kernel.org, matthias.bgg@gmail.com, rui.zhang@intel.com, kernel@collabora.com, lukasz.luba@arm.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mo, 2026-07-20 at 16:42 +0200, AngeloGioacchino Del Regno wrote:
-> Depending on the SoC+Firmware combination, the LVTS hardware may be
-> may be actively used by one or even multiple concurrent MCUs!
-> In this case, resetting it may produce either a severe slowdown of
-> the entire system, or even a thermal protection AP reset, as some
-> MCU(s) may be reading a very high or very low temperature while the
-> LVTS is being reset.
->=20
-> On those, don't fail if no reset is found as that may be omitted on
-> purpose, but still check if there's one, because some board(s) may
-> be running on a different bootchain with reduced firmwares or using
-> firmwares with reduced functionality.
->=20
-> Add a new "optional_reset" member to lvts_data and use it to check
-> whether the resets should be mandatory or not.
->=20
-> Also, while at it, since devm_reset_control_get_by_index() is now
-> deprecated, change the probe function to instead call function
-> devm_reset_control_get_exclusive_by_index(), which does the same.
+Hi everyone,
 
-Why is this using _by_index() at all? mediatek,lvts-thermal.yaml
-specifies a single reset, so the driver should just
-devm_reset_control_get_exclusive(dev, NULL).
+This is v3 of my Chromebook trackpad supply fixes and optimization
+series.
 
->=20
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> ---
->  drivers/thermal/mediatek/lvts_thermal.c | 29 ++++++++++++++++++++++---
->  1 file changed, 26 insertions(+), 3 deletions(-)
->=20
-> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/me=
-diatek/lvts_thermal.c
-> index 92711896ce24..6670b5458f2c 100644
-> --- a/drivers/thermal/mediatek/lvts_thermal.c
-> +++ b/drivers/thermal/mediatek/lvts_thermal.c
-> @@ -160,6 +160,7 @@ struct lvts_data {
->  	int gt_calib_bit_offset;
->  	unsigned int def_calibration;
->  	u16 msr_offset;
-> +	bool optional_reset;
+Changes since v2:
+- Added new regulator "enable and wait" functions that wait until at
+  least the given amount of time has passed since the regulator was
+  last enabled.
+- Converted patches to use the new functions
+- New header inclusion cleanup patch for elan_i2c driver
 
-No need to complicate things. It's not the driver's business to check
-device tree correctness. Just make the reset optional, as the commit
-message says.
+This series fixes the trackpad descriptions on some MediaTek-based
+Chromebooks: either the trackpad's supply was set as always-on to
+workaround missing delays in the driver, or the delay and supply
+are missing from the trackpad's device node.
 
->  };
-> =20
->  struct lvts_sensor {
-> @@ -1473,9 +1474,29 @@ static int lvts_probe(struct platform_device *pdev=
-)
->  	if (IS_ERR(lvts_td->base))
->  		return dev_err_probe(dev, PTR_ERR(lvts_td->base), "Failed to map io re=
-source\n");
-> =20
-> -	lvts_td->reset =3D devm_reset_control_get_by_index(dev, 0);
-> -	if (IS_ERR(lvts_td->reset))
-> -		return dev_err_probe(dev, PTR_ERR(lvts_td->reset), "Failed to get rese=
-t control\n");
-> +	/*
-> +	 * Depending on the SoC+Firmware combination, the LVTS hardware may be
-> +	 * may be actively used by one or even multiple concurrent MCUs!
-> +	 * In this case, resetting it may produce either a severe slowdown of
-> +	 * the entire system, or even a thermal protection AP reset, as some
-> +	 * MCU(s) may be reading a very high or very low temperature while the
-> +	 * LVTS is being reset.
-> +	 *
-> +	 * On those, don't fail if no reset is found as that may be omitted on
-> +	 * purpose, but still check if there's one, because some board(s) may
-> +	 * be running on a different bootchain with reduced firmwares or using
-> +	 * firmwares with reduced functionality.
-> +	 */
-> +	lvts_td->reset =3D devm_reset_control_get_exclusive_by_index(dev, 0);
+v1 was just the first patch [1]. It has since grown to cover multiple
+drivers and devices.
 
-So this should be:
 
-	lvts_td->reset =3D devm_reset_control_get_optional_exclusive(dev, NULL);
+Patch 1 adds new "enable and wait" functions for single and bulk
+regulator enable.
 
-> +	if (IS_ERR(lvts_td->reset)) {
-> +		if (lvts_data->optional_reset) {
-> +			dev_dbg(dev, "No reset found. LVTS may be used by firmware.\n");
-> +			lvts_td->reset =3D NULL;
+Patch 2 cleans up header inclusion for elan_i2c driver.
 
-This is not necessary then.
+Patch 3 adds the correct enable delay after enabling the supply regulator
+for the Elan trackpad to initialize. This uses the new "enable and wait"
+regulator enable function.
 
-> +		} else {
-> +			return dev_err_probe(dev, PTR_ERR(lvts_td->reset),
-> +					     "Failed to get reset control\n");
-> +		}
+Patch 4 applies the same logic of skipping the power on delay to the
+i2c-hid-of driver.
 
-And this part could be kept as before.
+Patch 5 applies the same logic of skipping the power on delay to the
+i2c OF component prober library.
 
-> +	}
-> =20
->  	irq =3D platform_get_irq(pdev, 0);
->  	if (irq < 0)
-> @@ -2163,6 +2184,7 @@ static const struct lvts_data mt8196_lvts_mcu_data =
-=3D {
->  	.num_cal_offsets =3D LVTS_NUM_CAL_OFFSETS_MT8196,
->  	.msr_offset =3D LVTS_MSR_OFFSET_MT8196,
->  	.ops =3D &lvts_platform_ops_mt8196,
-> +	.optional_reset =3D true,
+Patch 6 adds a delay between when the device node found is enabled and
+when regulator_disable() is called. This gives an asynchronously probing
+driver some time to increment the enable count of their regulator
+reference, thus keeping the device operational and allowing the driver
+to skip the initialization delay.
 
-But mediatek,lvts-thermal.yaml still specifies the reset as required
-for mediatek,mt8196-lvts-ap. That should be changed instead.
+Patch 7 adds the correct delay for probing trackpads for Hana devices
+to the ChromeOS OF component prober.
 
->  };
-> =20
->  static const struct lvts_data mt8196_lvts_ap_data =3D {
-> @@ -2175,6 +2197,7 @@ static const struct lvts_data mt8196_lvts_ap_data =
-=3D {
->  	.num_cal_offsets =3D LVTS_NUM_CAL_OFFSETS_MT8196,
->  	.msr_offset =3D LVTS_MSR_OFFSET_MT8196,
->  	.ops =3D &lvts_platform_ops_mt8196,
-> +	.optional_reset =3D true,
+Patch 8 removes the "always-on" setting from the trackpad supply for
+Elm / Hana and adds the correct delay to the second source trackpad.
+This corrects the hardware description.
 
-Same as above, but for mediatek,mt8196-lvts-mcu.
+Patch 9 adds the supply and power on delay properties to the Synaptics
+trackpad on the Spherion device. Combined with previous driver changes
+this should cause no actual functional changes or delays.
 
-regards
-Philipp
+
+Please take a look. Patches 3, 4, and 5 have build time dependencies
+on patch 1. I suggest placing patch 1 on a separate immutable branch
+or tag for the other maintainers to pull in. The three patches all have
+different maintainers.
+
+The DT changes must go in after all the driver changes land, especially
+patch 3 that adds delays to the Elan trackpad driver. Otherwise the user
+could potentially end up with a non-functional trackpad on the device.
+
+
+Thanks
+ChenYu
+
+[1] https://lore.kernel.org/all/20241001093815.2481899-1-wenst@chromium.org/
+
+
+Chen-Yu Tsai (9):
+  regulator: core: Add "enable and wait" functions
+  Input: elan_i2c - sort include statements
+  Input: elan_i2c - Wait for initialization after enabling regulator
+    supply
+  HID: i2c-hid-of: skip post-power-on delay if powered on sufficiently
+    long
+  i2c: of-prober: skip post-power-on delay if powered on sufficiently
+    long
+  i2c: of-prober: Defer regulator_disable() on successful probe in
+    simple helper
+  platform/chrome: of_hw_prober: Add delay for hana trackpads
+  arm64: dts: mediatek: mt8173-elm-hana: Unmark trackpad supply as
+    always-on
+  arm64: dts: mediatek: mt8192-asurada-spherion: Add Synaptics
+    trackpad's supply
+
+ .../boot/dts/mediatek/mt8173-elm-hana.dtsi    |  8 +--
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi  |  1 -
+ .../mediatek/mt8192-asurada-spherion-r0.dts   |  2 +
+ drivers/hid/i2c-hid/i2c-hid-of.c              |  9 ++--
+ drivers/i2c/i2c-core-of-prober.c              | 25 ++++++---
+ drivers/input/mouse/elan_i2c_core.c           | 23 ++++----
+ .../platform/chrome/chromeos_of_hw_prober.c   |  4 +-
+ drivers/regulator/core.c                      | 53 ++++++++++++++-----
+ include/linux/regulator/consumer.h            | 21 +++++---
+ include/linux/regulator/driver.h              |  2 +
+ 10 files changed, 96 insertions(+), 52 deletions(-)
+
+-- 
+2.55.0.229.g6434b31f56-goog
+
 
