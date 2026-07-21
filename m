@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3140C4451C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 10:20:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA54FC44529
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 10:24:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mb0tIdmPk9Fq8CRLkem1lUekwQ0REImkzyM8RgoOvOY=; b=IIqPgoCO+GCQDY3/QooFHz8+pV
-	iv6M6w1TR+dYfR2WIlb1cOVIZmJkHXTFBs0cSOA7P2b+IVWIkX4/t+3Y9sluUejNy0gXrbaz7ztP6
-	ytXdJc3wJcGzaF2NZS2xlFX1gp34mi9XbNY3X/kMIQ+dVP9aCOWUkg/K6KHgFUxdm8OU23HGG6SfB
-	VdFWh07evHZCCSjYO5v8EAnsg67jSXMhgjkTRtcBNbnwPn0nGWz8SvXh8rs7txo689vKp4vcFV2mG
-	+mj1takxoVzoJDdGAaYkd8m4ccQKXhX025abmAJK+sfVKRoOuNbyu3Ps1XJSJoiR65io8Tm8drzig
-	8wyok/Qg==;
+	bh=OU/pIBsRvbIkQ1OV1rvDNcbOpmPOvf+Ap8wDnEvNDs8=; b=Qh+G81yym9e+YrTYMwL2NrxNju
+	h4VUsKlTxesnWHfIBccnSRYgHRMSSAymF9EOsLmxevA+N2J8StFN4wEzX/29XG+uJ+bObFEYo6Coz
+	74+gEQWFPt/8VwOgEKNYvuHzKB4/ac0Awpp9JFXGBK25QVt6GX4KeOlTXi67hjrK2HKU6wVp3KNbi
+	Bpty9zkZ+pjsRtabwA5vcdcjavDjFoaFtsalVgWhKO9wStwuzjRBiMiUbLEl6QVydcnpmYE2u1KVI
+	bARRmoqsTVcyT3fo34oHBlES0xHytOK02HFBLpaIW/vLhhCxWc3kdH6lHpRDLnKc3LnRYE2139tU7
+	MmWjMoDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm7ag-000000096X0-34yT;
-	Tue, 21 Jul 2026 10:20:46 +0000
-Received: from mgamail.intel.com ([192.198.163.16])
+	id 1wm7dy-000000097DN-3YdT;
+	Tue, 21 Jul 2026 10:24:10 +0000
+Received: from mgamail.intel.com ([192.198.163.14])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm7ae-000000096WL-3yXh;
-	Tue, 21 Jul 2026 10:20:46 +0000
+	id 1wm7dw-000000097CT-1VPk;
+	Tue, 21 Jul 2026 10:24:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1784629245; x=1816165245;
+  t=1784629448; x=1816165448;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=BuikVx7La/9chV7s1hxXnMG7wdWI9UN7BDknLSFwfoA=;
-  b=klVErddC1PjfrsptqTnbGGK9EjiDmwDAb05TIdYDZRiBZkYwyDg9MLY0
-   BQBEf1/ioFsqq9FqOSUfaffkuZtgVc63uMMb2BLX3ZvkAbWsF9o0DtlZY
-   GQGl2y0F2ybfWuDQQQRteILaB1gg81v7c4OD9s3CNoe/AL+M/k7/QGLlS
-   VNVEM594NQWRk9Gdkb052X//OUtQ/U0KR9yZv0ZCpNwyN6Z05gZnb+r3k
-   ExYunKpNUrVCHBqofQejxbLI57vpVCGo8OTM2THW2lz2KSg7WCsLlg72C
-   iKCv6C+sukT2y63jihDYyluoA+HiVZENvXSvBKZqW/LFzKQXYoTuLVg2e
-   Q==;
-X-CSE-ConnectionGUID: PnxoBa0aSwGjPJ6vtrx/vQ==
-X-CSE-MsgGUID: vseq8GkNT7yOw2Vq2WFWHQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11852"; a="72760706"
+  bh=VMK1c+/vKVbSVeoy8U+5qlX4JI006aD0Z1nIkGcjxis=;
+  b=Ygq7rvjSiZpKuk+uGBRQykJJVUkm7roajMqO7JECC27rA6I0ABT3PVHz
+   kNc0i1pNMQkOIToQ5hmW+PLTss/QR7YC12ua7+0DvTFCMn4tfXVKpRXdx
+   mE7fcVF0tNAtohRs/zNfXKE6OVC71tJ0WWyM94oTpAlTGqzd/c3M91k6l
+   kMLi5xJBj5LvosZ8O2VzCTj6YI3HEavWe9fMIyKZWyzawHpqo7/kfsKUW
+   gcWKPiNPapL62gjobDzOBLnRLRNOtXWxxlWPA1GVjqw5MJEYMdkuzQbOs
+   hhnV8dH1U7RTZSSBzJPBhw0OQoaQY4yPIJB899BfUlj54BEN1kfCLJESH
+   A==;
+X-CSE-ConnectionGUID: 7nnrONyHRjylOmoJl2lVFw==
+X-CSE-MsgGUID: LY4r4S+nRPqA3PYGSjKSyQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11852"; a="85263563"
 X-IronPort-AV: E=Sophos;i="6.25,176,1779174000"; 
-   d="scan'208";a="72760706"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Jul 2026 03:20:44 -0700
-X-CSE-ConnectionGUID: emV8fJJ2RYaoLii1C2v5Wg==
-X-CSE-MsgGUID: 735o4J9fS5Kac9BFspqMGw==
+   d="scan'208";a="85263563"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Jul 2026 03:24:06 -0700
+X-CSE-ConnectionGUID: /9LtnjzdQa6SVnzQ5fbYLQ==
+X-CSE-MsgGUID: Zn8wz1zZSvOS4lf+f8rYAA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.25,176,1779174000"; 
-   d="scan'208";a="257793437"
+   d="scan'208";a="262662523"
 Received: from ncintean-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.67])
-  by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Jul 2026 03:20:41 -0700
-Date: Tue, 21 Jul 2026 13:20:38 +0300
+  by fmviesa005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Jul 2026 03:24:03 -0700
+Date: Tue, 21 Jul 2026 13:24:01 +0300
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>,
@@ -66,20 +66,20 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	chrome-platform@lists.linux.dev, linux-input@vger.kernel.org,
 	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 2/9] Input: elan_i2c - sort include statements
-Message-ID: <al9H9rn7Y2qtIJ80@ashevche-desk.local>
+Subject: Re: [PATCH v3 6/9] i2c: of-prober: Defer regulator_disable() on
+ successful probe in simple helper
+Message-ID: <al9IwVR7Whw2DiXU@ashevche-desk.local>
 References: <20260721075226.2347933-1-wenst@chromium.org>
- <20260721075226.2347933-3-wenst@chromium.org>
+ <20260721075226.2347933-7-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260721075226.2347933-3-wenst@chromium.org>
+In-Reply-To: <20260721075226.2347933-7-wenst@chromium.org>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_032044_998411_96DFEBC6 
-X-CRM114-Status: UNSURE (   8.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260721_032408_416809_B597488A 
+X-CRM114-Status: GOOD (  23.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,10 +94,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 21, 2026 at 03:52:16PM +0800, Chen-Yu Tsai wrote:
-> Sort the include statements before adding new ones in the next change.
+On Tue, Jul 21, 2026 at 03:52:20PM +0800, Chen-Yu Tsai wrote:
+> When a I2C component is found, it's device node is immediately enabled.
+> This triggers device creation and driver binding. The prober will hold
+> the regulator enable reference across this part. If the driver probes
+> synchronously, then it happens within this window. On the other hand,
+> if the driver probes asynchronously, there is high chance that it
+> happens after the prober's cleanup function was called, in which case
+> the regulator would have been disabled when the driver's probe function
+> is called. This would then require the driver to wait 100 ms for the
+> hardware to reinitialize, even if the probe function was just a split
+> second late and the regulator was disabled a few milliseconds ago.
+> 
+> Recently, some of the drivers for the component that are targeted by the
+> I2C OF component prober gained the ability to skip waiting for hardware
+> initialization if the regulator was left enabled. This happens when the
+> PMIC has them on by default, or if the component prober left them on
+> after probing the component.
+> 
+> Wait a bit of time before dropping the enable refcount on our end so
+> that the actual driver has the opportunity to catch and increase the
+> refcount on their end. The 100 ms delay was arbitrarily chosen.
 
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+...
+
+> +	/*
+> +	 * Wait a bit of time for async drivers to probe and increase the
+> +	 * regulator enable count. This allows the drivers to check and
+> +	 * skip waiting for re-initialization.
+> +	 */
+> +	if (defer_disable) {
+> +		dev_dbg(dev, "Deferring regulator disable\n");
+> +		msleep(100);
+
+How was this value chosen?
+
+> +	}
 
 -- 
 With Best Regards,
