@@ -4,81 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9155EC4451C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 09:54:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06487C4451C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 10:02:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L4/6vPu3SjwsxhFKaBWF80NiqUTDyqmZUdfA0vJNbVw=; b=N8jO0lAKQj8T9tqiubYX3mw5QN
-	7fj6dq22wU6r+koAcrwOp9Mt3kpD3QPEddeQCU2m+9TkRj7nc5zMpKRDJpmaFwaCjRwxtOQTsL7xr
-	bhbblv6DrFiChQQknMqRvF+ABJRw9i5VLkHilo7cl98rj/pLpy/AC+f26fa6E8rmmxlp6uBCJuL4G
-	/tHmKAW7xMnuePFcqOktKCNEvWnykPYOsWdrxGhYhvpuOFCZZqE99NvI9hJxHIFxDUDYkSG0QG9CV
-	9R7b2qYfFNtD9Mmd0tTvMIaqkCJzTMhYKLzb1grfNSfQSguUlVyf0kmI1RLslUTmEEs9+IhTJxohC
-	amBDsk5Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FDdpB6ZYwZIlR+moMdqHy53xNfFlVy927sGzMiz2qu8=; b=utfH//1oy71WPSl/feLzCZInUb
+	noK4YK/0v6S/aRpHi/BP4UdUAjNtOvUpWY9xd1XcRyqCvc5YWDc2csfg+yBPMvBhzFo4dUV+FB0P2
+	IXRUnvVukVQ6UlLfsW9pH0rApIOfYWtpP57WD9fHyngHFqu95zhCgLG2LA88LHlH7Cph81TcKoHbn
+	Fd4a0vGaHVb+wu3Xi/YHk8A+djIHHGc37E4BfL6sYRvuIESAo2QYIs6wUEzsxdHVxrEc790vUvT70
+	D5uNc+xQ+N9dQ/0vFUOPZhLqjtCXJQqchyilj+XM2/R9gM6yhH9UmRtvA94vOwzqcWB6cS0xPT0RB
+	zW2oUEHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm7B3-0000000922a-0w4x;
-	Tue, 21 Jul 2026 09:54:17 +0000
-Received: from mgamail.intel.com ([192.198.163.9])
+	id 1wm7JP-000000093At-2yUd;
+	Tue, 21 Jul 2026 10:02:55 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm7B1-00000009226-1Cb0;
-	Tue, 21 Jul 2026 09:54:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1784627655; x=1816163655;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=kRHPnnFh2X+21LPOizKSZmusrUu78ngN/jBigWFpw5M=;
-  b=aoFtPsKdSC1A00Zte9BZSlssen3TpX4zTuT6l3skiAf3vmGmmV4eQ5tx
-   tx1kc3fnv/zUiIPARn/weSXd/94UJ7bHd8TGo8XmhFtEyjsVuzCEmGzHi
-   VLLjvHpCfVwqK+97Nk//loZLALro56Xa3RS0E1bcJxrIdj8akP7T8woyj
-   yjPWjxee4HJFdTlIURn1pnJ1QutFnCCrSLkperH9XsxyEaDLDlFBOt/KX
-   4MIenozATdRJdZFhYfl0lvwY3nKFVU/2xa9dqSbKrOfYh5n2Y3WSozC+8
-   6xBdLREH1Sd5IA75t3oD4cfC09zI03rl7bG0HexS8wa1kjTLSXXox6Gkh
-   Q==;
-X-CSE-ConnectionGUID: UZSv9T6RT7GBz2q1/W07tA==
-X-CSE-MsgGUID: mvFgVhPNRzWKooq8nO57Tw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11852"; a="95873440"
-X-IronPort-AV: E=Sophos;i="6.25,176,1779174000"; 
-   d="scan'208";a="95873440"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Jul 2026 02:54:14 -0700
-X-CSE-ConnectionGUID: r9OCG1FcRO6fqxsy8OJs+A==
-X-CSE-MsgGUID: H9avTQT6S+at69QN4ALNdg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,176,1779174000"; 
-   d="scan'208";a="295924390"
-Received: from ncintean-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.67])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Jul 2026 02:54:10 -0700
-Date: Tue, 21 Jul 2026 12:54:08 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Jiri Kosina <jikos@kernel.org>, Andi Shyti <andi.shyti@kernel.org>,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	chrome-platform@lists.linux.dev, linux-input@vger.kernel.org,
-	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 1/9] regulator: core: Add "enable and wait" functions
-Message-ID: <al9BwHbG5IX0mIem@ashevche-desk.local>
-References: <20260721075226.2347933-1-wenst@chromium.org>
- <20260721075226.2347933-2-wenst@chromium.org>
+	id 1wm7JN-000000093AG-1A68
+	for linux-mediatek@lists.infradead.org;
+	Tue, 21 Jul 2026 10:02:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1784628172;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=FDdpB6ZYwZIlR+moMdqHy53xNfFlVy927sGzMiz2qu8=;
+	b=Fy40yyLXiSyK8FdCLzP7qSELmxhKlTKj5BvhDpUH7wQFdYskwzXfxJyLnAYDOoj6+rclzN
+	m1OvxA9fFUDx6oJz/YEJsW6CM+RiO33r3p39sGkWs0nTALkRMfn4/rsoQggKMrVmtiM982
+	YDWO74QLE0cqHk7JZF0q9fqsSsas6J4=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-641--too-ZfbNmatSNPBHkF_Nw-1; Tue, 21 Jul 2026 06:02:50 -0400
+X-MC-Unique: -too-ZfbNmatSNPBHkF_Nw-1
+X-Mimecast-MFC-AGG-ID: -too-ZfbNmatSNPBHkF_Nw_1784628169
+Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-47f7039fa59so1997028f8f.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2026 03:02:50 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1784628169; x=1785232969;
+        h=content-transfer-encoding:content-type:in-reply-to:content-language
+         :from:references:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=FDdpB6ZYwZIlR+moMdqHy53xNfFlVy927sGzMiz2qu8=;
+        b=Fth9TUGBuZXj/AcEFbpLZ+Ti/HqTvwWyJi/ypjIHpNx8ZxHdaFO4fMMGqZf02VCcMm
+         Ybv4dRT8C5XFfwuvb0JStcPt4/+3qaLeDE9MN/Q1hISg0xoKkWrgv8/sNT1P9efZvL1+
+         aXRaKkRq16oLvboiZz6PXA3dO7gYs1frbJFnRr4E3PbDY7be3gggVqP1ZsFQhNHdtC0O
+         ApQg2Cr1dbrl6M2GAX8Z3WJl+kkTd9xGa/iXFmSajG9dlc4aEye49uWtyHbH7sOmws7c
+         e1HHpYerV65ac/z80zagrQJ9h/EbY7NrMLasGaSybogEr6spCrS8GZr2i3ejdmW6jeGT
+         g8tA==
+X-Forwarded-Encrypted: i=1; AHgh+RqDDC1WOuY5f4A9VqgJCkjdHB2VHRqnnPnP0q6fLn406THP/96XyRxdqX5yOApAiYSHQ3LOwPI/POFyIz8meg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzzBFduAbt9TyY5jYr5Ud+eLppVDeksWhwWCY1vhp8zE6Mo9FVe
+	3zTsGiHCsj/Uo2AUg3RHpNlMXHs/Y3B40xRlQ6bXGh3y3mtfoO/tn+BainVT0nr/B36vpfXAGj0
+	Qlko76M2JHi0DUF8KAc+VcuXd/skq1iRsxFtoBLAeEkRAF16Qlf3iMZsD8G91hA2e60boBT7TCg
+	==
+X-Gm-Gg: AR+sD11/+utCr1DoeFRoUoRsFfHhRtpv/IIDPtMPYOvQ7NUrdk2eBRvwq/uiViQXaNQ
+	7lNGpUPQb72EHUP+1F5ZTGkAIM0WImCDpl17RhiHjvemChTAB0LPSiBgWenDOfEXp274fsn+Vha
+	YGo/tXNxNwWR3fHt8GHGRddqbaRH1JOfG51fFRg+6D3Zl79wjC5cO6/xDPs4UepA2KCP/6ctmA1
+	yXaEuPnC1qF4Jmtoe8lD4+n9l+SRie0fTTCzIab+x7HRam7iikkR+/ByK08B+MKwqLIRMCr6uVB
+	jE+H22IDgcbqAwb+7VdCebBmJYE1hjDLY/dx3SJYSzHA6MOBhP/tvVl3/VKcBwyE5eTCYIfQWb1
+	vTGsr3Jj72+dUcv2HizgNId53b/KZHivw9rOEURM8KhtfsNckQoy8rgXCOUQv9WQfiruzQNw5A3
+	ouAQ==
+X-Received: by 2002:a5d:5848:0:b0:47f:71a6:79c5 with SMTP id ffacd0b85a97d-47f71a67a5amr12529381f8f.12.1784628169117;
+        Tue, 21 Jul 2026 03:02:49 -0700 (PDT)
+X-Received: by 2002:a5d:5848:0:b0:47f:71a6:79c5 with SMTP id ffacd0b85a97d-47f71a67a5amr12529309f8f.12.1784628168390;
+        Tue, 21 Jul 2026 03:02:48 -0700 (PDT)
+Received: from ?IPV6:2a0d:3344:5521:6b10:58fd:68f:7756:389d? ([2a0d:3344:5521:6b10:58fd:68f:7756:389d])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47f63e49ce4sm38099290f8f.8.2026.07.21.03.02.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 21 Jul 2026 03:02:47 -0700 (PDT)
+Message-ID: <7e12f83c-2449-4618-bf43-acc533df3a36@redhat.com>
+Date: Tue, 21 Jul 2026 12:02:46 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260721075226.2347933-2-wenst@chromium.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next 4/5] net: phy: mediatek: add calibration logic
+ for AN7581
+To: Christian Marangi <ansuelsmth@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Russell King
+ <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Daniel Golle <daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>,
+ SkyLake Huang <SkyLake.Huang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260708102341.53919-1-ansuelsmth@gmail.com>
+ <20260708102341.53919-5-ansuelsmth@gmail.com>
+From: Paolo Abeni <pabeni@redhat.com>
+In-Reply-To: <20260708102341.53919-5-ansuelsmth@gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: p5wfuuqcw6b8ErgDb-jl3H5neEmRuJu-bih39Jt-lZ4_1784628169
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_025415_344693_C540876A 
-X-CRM114-Status: GOOD (  21.71  )
+X-CRM114-CacheID: sfid-20260721_030253_416459_CF5DF38E 
+X-CRM114-Status: UNSURE (   7.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,76 +122,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 21, 2026 at 03:52:15PM +0800, Chen-Yu Tsai wrote:
-> In device power sequencing and initialization use cases, it is common
-> for the driver to enable the regulator and then wait for a certain
-> period of time to pass before continuing.
-> 
-> In cases where the regulator supply is always on, or has been turned on
-> or left on by another consumer, the driver could shorten the delay or
-> skip it altogether, provided that enough time has already passed since
-> the regulator was _actually_ turned on.
-> 
-> Tracking this requires support from the regulator core. Introduce a
-> "last turned on" timestamp field to the regulator device, and "enable
-> and wait" functions to the single and bulk regulator consumer APIs.
-> The existing "enable without wait" functions are then converted to
-> macros that expand to the new functions.
-> 
-> One case in particular is not optimized yet: a regulator left on either
-> by hardware reset default or by the bootloader, but does not have the
-> "regulator-boot-on" property set. As the enable timestamp only gets
-> updated when enabled by a consumer or by the core, the first enablement
-> always needs to wait.
-
-...
-
-> -/* locks held by regulator_enable() */
-> -static int _regulator_enable(struct regulator *regulator)
-> +/* locks held by regulator_enable_and_wait() */
-> +static int _regulator_enable_and_wait(struct regulator *regulator, unsigned int wait_us)
-
-Hmm...
-This comment a bit confusing, perhaps adding some lockdep annotations help?
-
-...
-
-> +	if (wait_us) {
-> +		ktime_t end = ktime_add_us(rdev->last_on, wait_us);
-> +		s64 remaining = ktime_us_delta(end, ktime_get_boottime());
+On 7/8/26 12:23 PM, Christian Marangi wrote:
+> +static int airoha_cal_cycle(struct phy_device *phydev, int devad,
+> +			    u32 regnum, u16 mask, u16 cal_val)
+> +{
+> +	struct airoha_socphy_shared *shared = phy_package_get_priv(phydev);
+> +	struct phy_device *phydev_p0;
+> +	int ret;
 > +
-> +		if (remaining > 0)
-> +			fsleep(remaining);
+> +	phydev_p0 = shared->phydev_p0;
+> +
+> +	phy_modify_mmd(phydev, devad, regnum, mask, cal_val);
+> +
+> +	ret = mtk_cal_cycle_wait(phydev_p0);
 
-This style is discouraged as it makes maintenance harder. Better
+The above call causes a builder error at link time in allmodyes config:
 
-		s64 remaining;
+ERROR: modpost: "mtk_cal_cycle_wait"
+[drivers/net/phy/mediatek/airoha-ge-soc.ko] undefined!
 
-		remaining = ktime_us_delta(end, ktime_get_boottime());
-		if (remaining > 0)
-			fsleep(remaining);
+Also sashiko gemini has a few points:
 
-> +	}
+https://sashiko.dev/#/patchset/20260708102341.53919-1-ansuelsmth%40gmail.com
 
-...
-
->  	/* private: Internal use */
->  	int ret;
-> +	unsigned int wait_us;
-
-If you want to make it more private (the above is only for kernel-doc) add
-__private annotation that will affect how sparse will check this.
-
-...
-
-> -int __must_check regulator_enable(struct regulator *regulator);
-> +int __must_check regulator_enable_and_wait(struct regulator *regulator, unsigned int ms);
-
-ms or us? Please, double check all units.
-
--- 
-With Best Regards,
-Andy Shevchenko
-
+/P
 
 
