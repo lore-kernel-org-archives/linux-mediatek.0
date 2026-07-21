@@ -4,71 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 647B1C44532
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 13:55:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A365DC44532
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 14:45:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
-	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:References:
+	In-Reply-To:Cc:To:From:Subject:Content-Transfer-Encoding:Content-Type:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SmUuTxTQ6Y4XVw5VWbgQDC5BocSiUMXxazc3MH9NSJY=; b=sxTGgPYYPXltGTJJXp6WTn2Nuw
-	gvxc5fpF04amS2VTq7Wp616iynCq3tePUmKE+MEgiKnXIy1FjaR/kNVpd4+U2UZR0hPnX+mlRZo4w
-	7qjou6UvUWY/c0zcwdphGfkPPlWH5l4iAnkdy8GBoMkyrqdJa1kLODXtf6fpkHML1rwu73gYOc+KE
-	B5o6mpNqijYKZMBcuaULK/zKuEooNe2FhzimZByzWhdkmNPzrl/RZcBwsk63vjrNwqhGU9ORWktoq
-	UaVt3Gmm0yQ9/M9a0WBelvPMgObg9l/0YmQHdwlo5VqAEYIMirlUBJxaH/uu8MYWtkBTrxvo8Qe01
-	Gtdt/2Rw==;
+	bh=FeaBZAZ3XwgmgcJDisBPYHpbOCqquZSuzqf7qxis4Kw=; b=Khl2QtbJ+i/oUmoS2d0bpKtidN
+	Witu08rhk7fozEfM9leMdTVi4QuagT3HKHQZ8OS0xk/wiZNW54geWdgmp9CmSiky1u5wTDvtMCsvD
+	ZEJEjT5Ckve0ihQncxXDMWoFJfyP1DQz2r/0btolfmpV8BGA5uCWeuEHT1Y33dFklP9XRmlR0t76e
+	D4aKDsDCDhlbwmJiqfNFttKTkXcQpprWTodp0XxZGDUJDkrlG34tfNWQeUlGSqZ2ow2RSBda+KmKS
+	IDURCucw7u1gnzEJBs/J0sOH56oQHZRASSmGXyZWQAlmQAFZBVS0lIoc0kqVUbL93LD/lZ15B28aD
+	YwGoiGJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmAw0-00000009acQ-1myR;
-	Tue, 21 Jul 2026 13:55:00 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wmBii-00000009gln-0Zgy;
+	Tue, 21 Jul 2026 14:45:20 +0000
+Received: from smtp-out2.suse.de ([195.135.223.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmAvz-00000009abw-09tS;
-	Tue, 21 Jul 2026 13:54:59 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6BC03419D0;
-	Tue, 21 Jul 2026 13:54:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B10F11F00A3A;
-	Tue, 21 Jul 2026 13:54:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784642098;
-	bh=SmUuTxTQ6Y4XVw5VWbgQDC5BocSiUMXxazc3MH9NSJY=;
-	h=From:To:In-Reply-To:References:Subject:Date;
-	b=MxUbEjvi+S1gmu8+SyRME2gqUdoDm9BlB09MsFm6rJY/CkFAA94CSVST6iCy1hkQf
-	 0552ovL5e+xg1ILWMu6AisXcN7swIJpmrFZjlQtakW91UZIcMghsPrAxVxDDEYF6cN
-	 AzXSBsNG+T0zucJkbEyYarpGLBiww+H5aKIgFy0qzJEDlJiKYee8QEFPlHNQMuSLF6
-	 D6rI2n0IIYl9F5/h5XY0aeEmxo7/UZXGTQiSuf3Sq3l09e3MU1w7ZoHjbpxohxisxN
-	 laxZPhd1m6reeyrtqojBJrXmMezjSSqIFbfmHzJnpex5iTk8+TrWgtxb/7DL1bVcSH
-	 3pGMwmkVmXYmw==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chen-Yu Tsai <wenst@chromium.org>, Lee Jones <lee@kernel.org>, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>
-In-Reply-To: <dcd98d81dede338c9bbb9700a9613c848b702e49.1784336005.git.daniel@makrotopia.org>
-References: <dcd98d81dede338c9bbb9700a9613c848b702e49.1784336005.git.daniel@makrotopia.org>
-Subject: Re: [PATCH] regulator: mt6358: use regmap helper to read fixed LDO
- calibration
-Message-Id: <178456524716.8049.7739435878902568090.b4-ty@b4>
-Date: Mon, 20 Jul 2026 17:34:07 +0100
+	id 1wmBie-00000009gkZ-3IBR
+	for linux-mediatek@lists.infradead.org;
+	Tue, 21 Jul 2026 14:45:18 +0000
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 40F4E3E1D;
+	Tue, 21 Jul 2026 14:45:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1784645113; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=FeaBZAZ3XwgmgcJDisBPYHpbOCqquZSuzqf7qxis4Kw=;
+	b=c9Jw0g0TZkfySuKCj2U33TM8FXBGScBtw1xoGpqFShIO/BuyZvcO6H0pIdXY8/ELe2WJJ+
+	N3Bigi5I4UuJv056XH9Ef3ndC+AwqUqWdT8FTRthveJnguRiMDhPwrQpkXrcW3GdU6DfIe
+	Epinx83cIHoFrrZv81pklPAS02bX5Hc=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1784645113;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=FeaBZAZ3XwgmgcJDisBPYHpbOCqquZSuzqf7qxis4Kw=;
+	b=sIj9WOHchd19KoKMkMTtq+/JFOFyBQ6lZ6priggYD0P+KENK9n2CanudG5+gM+OArynhSi
+	/Gaw7jN0vX4qC0Cg==
+Authentication-Results: smtp-out2.suse.de;
+	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=c9Jw0g0T;
+	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=sIj9WOHc
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1784645113; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=FeaBZAZ3XwgmgcJDisBPYHpbOCqquZSuzqf7qxis4Kw=;
+	b=c9Jw0g0TZkfySuKCj2U33TM8FXBGScBtw1xoGpqFShIO/BuyZvcO6H0pIdXY8/ELe2WJJ+
+	N3Bigi5I4UuJv056XH9Ef3ndC+AwqUqWdT8FTRthveJnguRiMDhPwrQpkXrcW3GdU6DfIe
+	Epinx83cIHoFrrZv81pklPAS02bX5Hc=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1784645113;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=FeaBZAZ3XwgmgcJDisBPYHpbOCqquZSuzqf7qxis4Kw=;
+	b=sIj9WOHchd19KoKMkMTtq+/JFOFyBQ6lZ6priggYD0P+KENK9n2CanudG5+gM+OArynhSi
+	/Gaw7jN0vX4qC0Cg==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 94BC2779AA;
+	Tue, 21 Jul 2026 14:45:12 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id FIt+IfiFX2oXWAAAD6G6ig
+	(envelope-from <fmancera@suse.de>); Tue, 21 Jul 2026 14:45:12 +0000
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Subject: Re: [PATCH net-next] ipv6: initialize ipcm6_cookie before parsing
+ control messages
+From: Fernando Fernandez Mancera <fmancera@suse.de>
+To: Wayen Yan <win847@gmail.com>
+Cc: netdev@vger.kernel.org, lorenzo@kernel.org, horms@kernel.org, 
+ pabeni@redhat.com, kuba@kernel.org, edumazet@google.com, 
+ andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com, 
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <178358611790.128118.11036367713019213946@gmail.com>
+References: <178358611790.128118.11036367713019213946@gmail.com>
+Date: Tue, 21 Jul 2026 16:45:05 +0200
+Message-Id: <178464510579.7763.6518393222506443032.b4-review@b4>
 X-Mailer: b4 0.16-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1158; i=broonie@kernel.org;
- h=from:subject:message-id; bh=Or27C09noim0hBLB6vCJhxX5YJBbBMC0apcidh5QXv4=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqX3ovGKOmPkSlI5KgbeLNPrHdhSz1U0ye319qu
- t8aj7xPFVOJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCal96LwAKCRAk1otyXVSH
- 0AZ1B/9ARDcqVWB+vNQ9WKXIDU2LWWO5yfd31xuJmaU/3qWJKcEQXczXC4li19OL8EZo1MPXf6Q
- aRd7vkMgtzv+RBXTnIip/KCFIKW4S8TfSzBom2eAsWw+xzyyoVl2KmpHyNM28r+J2Sra/Ve3nlz
- eaeR9oc6gVOwjUNMFNjPkKKJKinc4owaoSsH4xq7BoB3c7Dm/FB1Y2lvkz442Li945KwXmgcEWV
- G810gmroVW1GN7hoVPY8VmCKCHy9Fi8fg/eiOi2+IxnnA6dhsAD+PSi0DZcvh0ufd1uW7foNvah
- muBEIkem2qoik0jWsiTFHiJXN3uG574qFGE1VH3ZL48/LNCu
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+X-Rspamd-Action: no action
+X-Rspamd-Queue-Id: 40F4E3E1D
+X-Spamd-Result: default: False [-2.51 / 50.00];
+	BAYES_HAM(-3.00)[99.99%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	MID_RHS_NOT_FQDN(0.50)[];
+	NEURAL_HAM_SHORT(-0.20)[-1.000];
+	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	MIME_GOOD(-0.10)[text/plain];
+	MX_GOOD(-0.01)[];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from];
+	FUZZY_RATELIMITED(0.00)[rspamd.com];
+	RCPT_COUNT_TWELVE(0.00)[12];
+	FREEMAIL_TO(0.00)[gmail.com];
+	MIME_TRACE(0.00)[0:+];
+	ARC_NA(0.00)[];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	FREEMAIL_ENVRCPT(0.00)[gmail.com];
+	FREEMAIL_CC(0.00)[vger.kernel.org,kernel.org,redhat.com,google.com,lunn.ch,collabora.com,gmail.com,lists.infradead.org];
+	RCVD_COUNT_TWO(0.00)[2];
+	FROM_EQ_ENVFROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	TO_DN_SOME(0.00)[];
+	RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	TAGGED_RCPT(0.00)[netdev];
+	RCVD_TLS_ALL(0.00)[];
+	DKIM_TRACE(0.00)[suse.de:+];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:email,suse.de:dkim]
+X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260721_074516_985079_42436EAC 
+X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,35 +149,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 18 Jul 2026 02:05:59 +0100, Daniel Golle wrote:
-> regulator: mt6358: use regmap helper to read fixed LDO calibration
+On Thu, 09 Jul 2026 16:32:30 +0800, Wayen Yan <win847@gmail.com> wrote:
+> ip6_datagram_send_ctl() parses both SOL_IPV6 and SOL_SOCKET control
+> messages. For SOL_SOCKET messages it passes ipc6->sockc to
+> __sock_cmsg_send(), which updates fields such as tsflags with
+> read-modify-write operations.
+> 
+> The IPV6_2292PKTOPTIONS and flowlabel option paths only set ipc6.opt
+> before calling ip6_datagram_send_ctl(). If a SOL_SOCKET control message
+> such as SO_TIMESTAMPING_* or SCM_TS_OPT_ID is present, this can read
+> uninitialized sockc state.
+> 
+> Initialize the ipcm6_cookie with ipcm6_init_sk(), as the normal IPv6
+> sendmsg paths do, before overriding ->opt with the temporary option
+> buffer.
+> 
+> Signed-off-by: Wayen Yan <win847@gmail.com>
+>
 
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-7.2
+Reviewed-by: Fernando Fernandez Mancera <fmancera@suse.de>
 
 Thanks!
-
-[1/1] regulator: mt6358: use regmap helper to read fixed LDO calibration
-      https://git.kernel.org/broonie/regulator/c/1d26f125501f
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
 
