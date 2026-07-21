@@ -4,139 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E94DC4451C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 10:05:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDCFFC44529
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 10:10:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+MvCJoNx6P8JyO2gQ+de8z3mTHIzAT8UjKxCOt5SwOI=; b=m7Zn0sAiaRipsACbQATS/geBsG
-	nBNKpE7Sno2i1td/zsskfUyVVEY+4g7oYrrwOjtOfaMWZIhvpbWVYeDGcuBgVNmXvQD5yWxid01op
-	VwzqEd1AjAky+EtjqsK8Tp+kbzMqw+X/tIxuG9t4WaS65RtmuANeRzbRzjpSIrSqDf2Zd0T8otdTM
-	pKGgvPXN58VNtHSnniWRMkHQh6sn9g7XH3tL1Gubj+9ODfMDSpbzFoP3bjTRmIeI0A/a9p83gxJWZ
-	bNCNs1f1Lv+wdYTxM0xUXoPUszQEMtQnt4SlxF/kOSm3qDvWWrZP804EdrDb1vPQq7l8B+awk9Bmb
-	lBtfjmSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bFpA8mGHRTE8JTXE+qz4bQYtYnCWzIRNd4TREiK6hjo=; b=fxIO1pwVP1w0aIQpH4TrHgJYcQ
+	5YEt69nQsn4qua/lvsOk6n6p39KqhmLqkb2O4jdtk/U3EYbp4wqtFn7DBvg+YSPjd831suAnjlGSw
+	oQaf50QA0dQxy7Ur6BUOxJN+woHPvjHwcpQY/ZYA8Qbt5O7WGuhBB0zrwIFQet1iIsrXr52ZvRq4E
+	fVAzytmIMJXJrsmpSB1x59pGJV44TUF4K3m44iPuduVoV+JYwWqqVUxzaht//gRoAJs3yIThim3p8
+	j2g1gXpB0SazLq8/pHQKmc9u8X54iyScDQSc4aPL7MOqawebThRUKXfxVb6hTjFGqa0DrBwo52Zaf
+	yvgeMZ9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm7LS-000000093TL-27SQ;
-	Tue, 21 Jul 2026 10:05:02 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1wm7Qi-000000094Yv-2XYk;
+	Tue, 21 Jul 2026 10:10:28 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm7LP-000000093R8-0hyb
-	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Jul 2026 10:05:01 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-49548e01d02so18504285e9.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2026 03:04:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=suse.com; s=google; t=1784628297; x=1785233097; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=+MvCJoNx6P8JyO2gQ+de8z3mTHIzAT8UjKxCOt5SwOI=;
-        b=ej5j4soO+8GXvnqlfVNhQeyIy3sslqXCTLjWhhrvNaE2ScwZapfXWYxN2aynuzN/XQ
-         nf/yMtvgZVhmOhgzxLjypyam/6PJ2kkLf6XFPG/wigzSzbHvuxAZdDpU9S9f5qal+jRW
-         /s4xZRZ6MKQYCJX9MWsrFqGc19ng4isgo3SUUIYW6lYS85edM1sBf1n+pBDSZEQQfqJN
-         tWTpjWAp5SeySV/KbyIKzC6JDyBfzuFq1sXKOOQx/eiJZfuY9/pcQP+ZFHR28MUXTzSk
-         pOsSxujTJAXH2Um2dWsVxlxANIi8o2/1QxWv0VABm0ZQhVWlnKFcCTzBdytwSuOagCi2
-         n2GQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784628297; x=1785233097;
-        h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=+MvCJoNx6P8JyO2gQ+de8z3mTHIzAT8UjKxCOt5SwOI=;
-        b=GrJoPf/FvR32//RJk/Js9eJAhUTETGCdEY8ViFG2Ac0LUFfteSBp8PVPTxRSEiZk7B
-         8mCQm6KrpgiXcBHMz3KGQNVUxQ+vNm2n8oeKkAA7DDiJ5XT35uEC/UkOivnDwG2L94nl
-         uxfWbfDzVxj84DC7Bv37+KlWoGr7Ep+EJ6ZOzXRAI98DL1OWshjWLPb10bQuPeFKDJUs
-         dUCoa1z+bBY2pn8JLrYk8bjksiMNcq1WW4XxxugfgbfoAKp3tCFvIGqpYvLTrUuxCpG9
-         2nisu39f7Frv8WY4Igob9RbejWWds/9a7zm0BT3uw8GCp/9IZn5W0+6vf+edzjXWYEkD
-         vrpQ==
-X-Forwarded-Encrypted: i=1; AHgh+RqBASe9BkvqXqMvZOjKeU9ZO8VrAh5v/jRYrDdfKOF6K/Vu2Qdf7T2HisJeVIMMgmyxNGlJp5bIUyZkIL4/Xg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyVVTQNGfTAJMnMOBU6bHRZU/97rk3JHSGlDhC9S+NQ4DQsJTPt
-	BToEz8GpGlly1jVJvByc5Mk+VlpLzWHZH20bAndE6syFeYQR/cFpu8TaPsJcTCLetQs=
-X-Gm-Gg: AfdE7ck0Oxqlz0RnvEEFyxkHWRKPDLMP3QzCThntYkEnkdcpmizQDYhg1Ktvo/2WOBM
-	VdlKEZgNfbDWyZEVjIJDXSG4zuMGsA2mxfGn8W085n8tk2gGcjwsJxVGiSSd3tVazC452B3HnmS
-	Cqrn338juvgY0ErCD9NUKl2WDaFizT0ktblVmSFrUXbGVt39AjpMGi9S5YkITZjoMvW1X7KhvDs
-	Vwa/f+XRgNDLz91pWGOE6VDxGPwMTrsbHAvsY06WS5ybBMxy9vmWP2BIcCPwZ5rmLqkcEyUiZjC
-	pQEyFBeQjJfh5pi/xPKzcE8uZoYfPnnNGq1ATvkStu597dkxiTZ2JZl5yoK4r8NmUmGa1kHK21y
-	pY3bOxKKVcGWkb+XXRNsOOceHTitZRuuLShol6gjjjSGCFhPXLG4b23J/UXs7N+lC/Z5P+L7sNv
-	VqOoIUa9fSqzmH6qzLxKtepUxUEZyrfrtPCgXOMB0L2cF7zamRc158voXNCEoP
-X-Received: by 2002:a05:600c:19c7:b0:495:5e3d:15e1 with SMTP id 5b1f17b1804b1-4955e3d1937mr95248675e9.16.1784628297079;
-        Tue, 21 Jul 2026 03:04:57 -0700 (PDT)
-Received: from [192.168.2.177] (48.85-85-171.dynamic.clientes.euskaltel.es. [85.85.171.48])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4956547323bsm58981695e9.4.2026.07.21.03.04.55
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 21 Jul 2026 03:04:56 -0700 (PDT)
-Message-ID: <73f21476-7416-4d28-8d8d-e80d951ebd3a@suse.com>
-Date: Tue, 21 Jul 2026 12:04:54 +0200
+	id 1wm7Qg-000000094XA-1UrS;
+	Tue, 21 Jul 2026 10:10:26 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1F029418F3;
+	Tue, 21 Jul 2026 10:10:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7C8171F00A3F;
+	Tue, 21 Jul 2026 10:10:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784628626;
+	bh=bFpA8mGHRTE8JTXE+qz4bQYtYnCWzIRNd4TREiK6hjo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=UMzX5sZK6PYDDfd9Og4lDRpgMFFNMXmFHVnUx+34JwuLQI9WDTjDMlpbkEUrRmBBp
+	 zeyzXAWyeJl204aw9gALvKJ6A92+uhAqs4dl6PnoOb/OGFX3NcgYQqZNfSozFM059y
+	 QGDRMyA1jBLwTOYsWbOG5eGkk+pm1BqRDI6GBrakpmP/eR3kkptfEEfpr08S/bQ3iR
+	 LWBQuL/QoIGjTs8hZ+Twh2JkE4z8jYG8YyKCCpQ6xIuav5Uv/cutUT6YSWJ/55m4yg
+	 PINC1FWgHu8LHsioLDySGgfPQYGDfrIsz7fPN9AgK/uDbx6uFzJO//iRQdUdNJSjht
+	 gCsZ9+gU9D06A==
+Date: Tue, 21 Jul 2026 12:10:23 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Shuah Khan <skhan@linuxfoundation.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Saravana Kannan <saravanak@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>
+Subject: Re: [PATCH net-next v9 12/12] net: airoha: add phylink support
+Message-ID: <al9Fj-dbbhnKUQMo@lore-desk>
+References: <20260717065448.1498335-1-ansuelsmth@gmail.com>
+ <20260717065448.1498335-13-ansuelsmth@gmail.com>
+ <al5AVLxWRhnpGzJ1@lore-desk>
+ <6a5e421d.9099b29d.2f0302.1cf4@mx.google.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/3] pmdomain: mediatek: Add support for MT6858 SoC
-To: nikolai.burov@jolla.com, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Ulf Hansson <ulfh@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org, Nikolai Burov <nikolai.burov+review@abscue.de>
-References: <20260720-mt6858-pmdomain-v3-0-8966d8de93c8@jolla.com>
- <20260720-mt6858-pmdomain-v3-3-8966d8de93c8@jolla.com>
-Content-Language: en-US, ca-ES, es-ES
-From: Matthias Brugger <mbrugger@suse.com>
-Autocrypt: addr=mbrugger@suse.com; keydata=
- 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
- PVrr2NoUqi/bxI8fFQJD1jVj8K0=
-In-Reply-To: <20260720-mt6858-pmdomain-v3-3-8966d8de93c8@jolla.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_030459_416766_507279A2 
-X-CRM114-Status: GOOD (  17.62  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="ld12OxyQIEnfIjS2"
+Content-Disposition: inline
+In-Reply-To: <6a5e421d.9099b29d.2f0302.1cf4@mx.google.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,535 +86,446 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+--ld12OxyQIEnfIjS2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+> On Mon, Jul 20, 2026 at 05:35:48PM +0200, Lorenzo Bianconi wrote:
+> > > Add phylink support for each GDM port. For GDM1 add the internal inte=
+rface
+> > > mode as the only supported mode. For GDM2/3/4 add the required
+> > > configuration of the PCS to make the external PHY or attached SFP cage
+> > > work.
+> > >=20
+> > > These needs to be defined in the GDM port node using the pcs-handle
+> > > property.
+> > >=20
+> > > Update and provide a .get/set_link_ksettings function that use phylink
+> > > for ethtool OPs now that we fully support phylink.
+> > >=20
+> > > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> > > ---
+> > >  drivers/net/ethernet/airoha/Kconfig       |   1 +
+> > >  drivers/net/ethernet/airoha/airoha_eth.c  | 194 ++++++++++++++++++++=
++-
+> > >  drivers/net/ethernet/airoha/airoha_eth.h  |   7 +-
+> > >  drivers/net/ethernet/airoha/airoha_regs.h |  12 ++
+> > >  4 files changed, 207 insertions(+), 7 deletions(-)
+> > >=20
+> > > diff --git a/drivers/net/ethernet/airoha/Kconfig b/drivers/net/ethern=
+et/airoha/Kconfig
+> > > index 1f6640a15fc9..789906516bf8 100644
+> > > --- a/drivers/net/ethernet/airoha/Kconfig
+> > > +++ b/drivers/net/ethernet/airoha/Kconfig
+> > > @@ -20,6 +20,7 @@ config NET_AIROHA
+> > >  	depends on NET_DSA || !NET_DSA
+> > >  	select NET_AIROHA_NPU
+> > >  	select PAGE_POOL
+> > > +	select PHYLINK
+> > >  	help
+> > >  	  This driver supports the gigabit ethernet MACs in the
+> > >  	  Airoha SoC family.
+> > > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/e=
+thernet/airoha/airoha_eth.c
+> > > index 59001fd4b6f7..ed1ac032f337 100644
+> > > --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> > > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> > > @@ -8,6 +8,7 @@
+> > >  #include <linux/of_reserved_mem.h>
+> > >  #include <linux/platform_device.h>
+> > >  #include <linux/tcp.h>
+> > > +#include <linux/pcs/pcs.h>
+> > >  #include <linux/u64_stats_sync.h>
+> > >  #include <net/dst_metadata.h>
+> > >  #include <net/page_pool/helpers.h>
+> > > @@ -1837,7 +1838,7 @@ static void airoha_update_hw_stats(struct airoh=
+a_gdm_dev *dev)
+> > >  	struct airoha_gdm_port *port =3D dev->port;
+> > >  	int i;
+> > > =20
+> > > -	spin_lock(&port->stats_lock);
+> > > +	spin_lock(&port->lock);
+> >=20
+> > Hi Christian,
+> >=20
+> > as pointed out in a previous email, I do not like the approach of reusi=
+ng this
+> > spin_lock for airoha_mac_link_up(). Can we use rtl_lock() (when necessa=
+ry) as
+> > pointed out before?
+> >=20
+>=20
+> For context, quoting from the previous series, the suggestion is to use
+> rtnl_is_locked() and then lock accordingly but I didn't find other usage =
+of
+> that in other driver (aside from core net) and I don't like the use of
+> is_locked. I can already see the BOT saying that in the timeframe of
+> is_locked and writing the register another interface goes up causing a
+> race.
 
-On 20/07/2026 22:46, Nikolai Burov via B4 Relay wrote:
-> From: Nikolai Burov <nikolai.burov@jolla.com>
-> 
-> Add support for the power domains found in the MediaTek MT6858 SoC.
-> 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Nikolai Burov <nikolai.burov@jolla.com>
+Can you please explain what is the problem of using rtnl_is_locked()?
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+>=20
+> Guess I will add a simple mutex for this case and the other.
 
-> ---
->   drivers/pmdomain/mediatek/mt6858-pm-domains.h | 466 ++++++++++++++++++++++++++
->   drivers/pmdomain/mediatek/mtk-pm-domains.c    |   5 +
->   drivers/pmdomain/mediatek/mtk-pm-domains.h    |   5 +
->   3 files changed, 476 insertions(+)
-> 
-> diff --git a/drivers/pmdomain/mediatek/mt6858-pm-domains.h b/drivers/pmdomain/mediatek/mt6858-pm-domains.h
-> new file mode 100644
-> index 000000000000..177b2e86ab1e
-> --- /dev/null
-> +++ b/drivers/pmdomain/mediatek/mt6858-pm-domains.h
-> @@ -0,0 +1,466 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +/*
-> + * Copyright (c) 2025 MediaTek Inc.
-> + *                    KY Liu <ky.liu@mediatek.com>
-> + * Copyright (c) 2026 Jolla Mobile Ltd
-> + *                    Nikolai Burov <nikolai.burov@jolla.com>
-> + */
-> +
-> +#ifndef __SOC_MEDIATEK_MT6858_PM_DOMAINS_H
-> +#define __SOC_MEDIATEK_MT6858_PM_DOMAINS_H
-> +
-> +#include "mtk-pm-domains.h"
-> +#include <dt-bindings/power/mediatek,mt6858-power.h>
-> +
-> +/* TOP_AXI registers */
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_SET		0x0c14
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_CLR		0x0c18
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_RDY		0x0c1c
-> +
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_DIS0		(BIT(0) | BIT(1) | BIT(18))
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_ISP_IPE	BIT(2)
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_ISP_IMG1	BIT(3)
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_VEN0		BIT(12)
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_VDE0		BIT(20)
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_CAM_MAIN	(BIT(30) | BIT(31))
-> +
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_SET		0x0c24
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_CLR		0x0c28
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_RDY		0x0c2c
-> +
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_ISP_IMG1	BIT(7)
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_ISP_IPE	BIT(8)
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_CAM_MAIN	(BIT(9) | BIT(10))
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_VEN0		BIT(12)
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_VDE0		BIT(13)
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_MM_INFRA	(GENMASK(3, 1) | BIT(6))
-> +#define MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_MM_INFRA_2ND	(BIT(0) | BIT(5) | GENMASK(15, 7))
-> +
-> +#define MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_0_SET	0x0c44
-> +#define MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_0_CLR	0x0c48
-> +#define MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_0_RDY	0x0c4c
-> +
-> +#define MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_0_CONN	BIT(8)
-> +#define MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_0_MM_INFRA	BIT(16)
-> +
-> +#define MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_1_SET	0x0c54
-> +#define MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_1_CLR	0x0c58
-> +#define MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_1_RDY	0x0c5c
-> +
-> +#define MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_1_MM_INFRA	BIT(11)
-> +#define MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_1_CONN	BIT(12)
-> +
-> +#define MT6858_TOP_AXI_PROT_EN_EMISYS_STA_0_SET		0x0c64
-> +#define MT6858_TOP_AXI_PROT_EN_EMISYS_STA_0_CLR		0x0c68
-> +#define MT6858_TOP_AXI_PROT_EN_EMISYS_STA_0_RDY		0x0c6c
-> +
-> +#define MT6858_TOP_AXI_PROT_EN_EMISYS_STA_0_MM_INFRA	(BIT(20) | BIT(21))
-> +
-> +#define MT6858_TOP_AXI_PROT_EN_PERISYS_STA_0_SET	0x0c84
-> +#define MT6858_TOP_AXI_PROT_EN_PERISYS_STA_0_CLR	0x0c88
-> +#define MT6858_TOP_AXI_PROT_EN_PERISYS_STA_0_RDY	0x0c8c
-> +
-> +#define MT6858_TOP_AXI_PROT_EN_PERISYS_STA_0_AUDIO	BIT(6)
-> +#define MT6858_TOP_AXI_PROT_EN_PERISYS_STA_0_SSUSB	BIT(7)
-> +
-> +#define MT6858_TOP_AXI_PROT_EN_MCU_STA_0_SET		0x0c94
-> +#define MT6858_TOP_AXI_PROT_EN_MCU_STA_0_CLR		0x0c98
-> +#define MT6858_TOP_AXI_PROT_EN_MCU_STA_0_RDY		0x0c9c
-> +
-> +#define MT6858_TOP_AXI_PROT_EN_MCU_STA_0_CONN		BIT(1)
-> +#define MT6858_TOP_AXI_PROT_EN_MCU_STA_0_CONN_2ND	BIT(0)
-> +
-> +/* {IMG,IPE,CAM}_SUBx registers */
-> +#define MT6858_SUBx_PROT_EN_SET				0x03c4
-> +#define MT6858_SUBx_PROT_EN_CLR				0x03c8
-> +#define MT6858_SUBx_PROT_EN_STA				0x03cc
-> +
-> +#define MT6858_IMG_SUB0_PROT_EN_SMI_ISP_IMG1		(BIT(0) | BIT(1))
-> +
-> +#define MT6858_IPE_SUB0_PROT_EN_SMI_ISP_IPE		(BIT(0) | BIT(1))
-> +
-> +#define MT6858_CAM_SUB0_PROT_EN_SMI_CAM_MAIN		BIT(0)
-> +#define MT6858_CAM_SUB0_PROT_EN_SMI_CAM_SUBB		BIT(1)
-> +
-> +#define MT6858_CAM_SUB1_PROT_EN_SMI_CAM_MAIN		BIT(0)
-> +#define MT6858_CAM_SUB1_PROT_EN_SMI_CAM_SUBA		BIT(1)
-> +
-> +/* VLP_AXI registers */
-> +#define MT6858_VLP_AXI_PROT_EN_SET			0x0214
-> +#define MT6858_VLP_AXI_PROT_EN_CLR			0x0218
-> +#define MT6858_VLP_AXI_PROT_EN_STA			0x021c
-> +
-> +#define MT6858_VLP_AXI_PROT_EN_MM_PROC			BIT(8)
-> +#define MT6858_VLP_AXI_PROT_EN_MM_PROC_2ND		(BIT(9) | BIT(10))
-> +
-> +/* PWR_CON registers */
-> +#define MT6858_PWR_ACK					BIT(30)
-> +#define MT6858_PWR_ACK_2ND				BIT(31)
-> +
-> +static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt6858[] = {
-> +	BUS_PROT_BLOCK_INFRA,
-> +	BUS_PROT_BLOCK_IMG_SUB0,
-> +	BUS_PROT_BLOCK_CAM_SUB1,
-> +	BUS_PROT_BLOCK_CAM_SUB0,
-> +	BUS_PROT_BLOCK_IPE_SUB0,
-> +	BUS_PROT_BLOCK_VLP,
-> +};
-> +
-> +static const struct scpsys_domain_data scpsys_domain_data_mt6858[] = {
-> +	[MT6858_POWER_DOMAIN_MD] = {
-> +		.name = "md",
-> +		/*
-> +		 * Note: the PWR_ACK_2ND bit is not used for the modem domain.
-> +		 * Skip it and fall back to checking the 1st bit twice.
-> +		 */
-> +		.sta_mask = MT6858_PWR_ACK,
-> +		.ctl_offs = 0xe00,
-> +		.pwr_sta_offs = 0xe00,
-> +		.pwr_sta2nd_offs = 0xe00,
-> +		.ext_buck_iso_offs = 0xf20,
-> +		.ext_buck_iso_mask = GENMASK(1, 0),
-> +		.caps = MTK_SCPD_MODEM_SECURE_PWRSEQ | MTK_SCPD_EXT_BUCK_ISO |
-> +			MTK_SCPD_KEEP_DEFAULT_OFF,
-> +	},
-> +	[MT6858_POWER_DOMAIN_CONN] = {
-> +		.name = "conn",
-> +		.sta_mask = MT6858_PWR_ACK,
-> +		.sta2nd_mask = MT6858_PWR_ACK_2ND,
-> +		.ctl_offs = 0xe04,
-> +		.pwr_sta_offs = 0xe04,
-> +		.pwr_sta2nd_offs = 0xe04,
-> +		.bp_cfg = {
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_MCU_STA_0_CONN,
-> +					MT6858_TOP_AXI_PROT_EN_MCU_STA_0_SET,
-> +					MT6858_TOP_AXI_PROT_EN_MCU_STA_0_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_MCU_STA_0_RDY),
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_1_CONN,
-> +					MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_1_SET,
-> +					MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_1_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_1_RDY),
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_MCU_STA_0_CONN_2ND,
-> +					MT6858_TOP_AXI_PROT_EN_MCU_STA_0_SET,
-> +					MT6858_TOP_AXI_PROT_EN_MCU_STA_0_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_MCU_STA_0_RDY),
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_0_CONN,
-> +					MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_0_SET,
-> +					MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_0_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_0_RDY),
-> +		},
-> +		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-> +	},
-> +	[MT6858_POWER_DOMAIN_AUDIO] = {
-> +		.name = "audio",
-> +		.sta_mask = MT6858_PWR_ACK,
-> +		.sta2nd_mask = MT6858_PWR_ACK_2ND,
-> +		.ctl_offs = 0xe18,
-> +		.pwr_sta_offs = 0xe18,
-> +		.pwr_sta2nd_offs = 0xe18,
-> +		.sram_pdn_bits = BIT(8),
-> +		.sram_pdn_ack_bits = BIT(12),
-> +		.bp_cfg = {
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_PERISYS_STA_0_AUDIO,
-> +					MT6858_TOP_AXI_PROT_EN_PERISYS_STA_0_SET,
-> +					MT6858_TOP_AXI_PROT_EN_PERISYS_STA_0_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_PERISYS_STA_0_RDY),
-> +		},
-> +	},
-> +	[MT6858_POWER_DOMAIN_ISP_IMG1] = {
-> +		.name = "isp-img1",
-> +		.sta_mask = MT6858_PWR_ACK,
-> +		.sta2nd_mask = MT6858_PWR_ACK_2ND,
-> +		.ctl_offs = 0xe28,
-> +		.pwr_sta_offs = 0xe28,
-> +		.pwr_sta2nd_offs = 0xe28,
-> +		.sram_pdn_bits = BIT(8),
-> +		.sram_pdn_ack_bits = BIT(12),
-> +		.bp_cfg = {
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_ISP_IMG1,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_SET,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_RDY),
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_ISP_IMG1,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_SET,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_RDY),
-> +			BUS_PROT_WR_IGN(IMG_SUB0,
-> +					MT6858_IMG_SUB0_PROT_EN_SMI_ISP_IMG1,
-> +					MT6858_SUBx_PROT_EN_SET,
-> +					MT6858_SUBx_PROT_EN_CLR,
-> +					MT6858_SUBx_PROT_EN_STA),
-> +		},
-> +		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-> +	},
-> +	[MT6858_POWER_DOMAIN_ISP_IMG2] = {
-> +		.name = "isp-img2",
-> +		.sta_mask = MT6858_PWR_ACK,
-> +		.sta2nd_mask = MT6858_PWR_ACK_2ND,
-> +		.ctl_offs = 0xe2c,
-> +		.pwr_sta_offs = 0xe2c,
-> +		.pwr_sta2nd_offs = 0xe2c,
-> +		.sram_pdn_bits = BIT(8),
-> +		.sram_pdn_ack_bits = BIT(12),
-> +		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-> +	},
-> +	[MT6858_POWER_DOMAIN_ISP_IPE] = {
-> +		.name = "isp-ipe",
-> +		.sta_mask = MT6858_PWR_ACK,
-> +		.sta2nd_mask = MT6858_PWR_ACK_2ND,
-> +		.ctl_offs = 0xe30,
-> +		.pwr_sta_offs = 0xe30,
-> +		.pwr_sta2nd_offs = 0xe30,
-> +		.sram_pdn_bits = BIT(8),
-> +		.sram_pdn_ack_bits = BIT(12),
-> +		.bp_cfg = {
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_ISP_IPE,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_SET,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_RDY),
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_ISP_IPE,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_SET,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_RDY),
-> +			BUS_PROT_WR_IGN(IPE_SUB0,
-> +					MT6858_IPE_SUB0_PROT_EN_SMI_ISP_IPE,
-> +					MT6858_SUBx_PROT_EN_SET,
-> +					MT6858_SUBx_PROT_EN_CLR,
-> +					MT6858_SUBx_PROT_EN_STA),
-> +		},
-> +		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-> +	},
-> +	[MT6858_POWER_DOMAIN_VDE0] = {
-> +		.name = "vde0",
-> +		.sta_mask = MT6858_PWR_ACK,
-> +		.sta2nd_mask = MT6858_PWR_ACK_2ND,
-> +		.ctl_offs = 0xe34,
-> +		.pwr_sta_offs = 0xe34,
-> +		.pwr_sta2nd_offs = 0xe34,
-> +		.sram_pdn_bits = BIT(8),
-> +		.sram_pdn_ack_bits = BIT(12),
-> +		.bp_cfg = {
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_VDE0,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_SET,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_RDY),
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_VDE0,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_SET,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_RDY),
-> +		},
-> +	},
-> +	[MT6858_POWER_DOMAIN_VEN0] = {
-> +		.name = "ven0",
-> +		.sta_mask = MT6858_PWR_ACK,
-> +		.sta2nd_mask = MT6858_PWR_ACK_2ND,
-> +		.ctl_offs = 0xe3c,
-> +		.pwr_sta_offs = 0xe3c,
-> +		.pwr_sta2nd_offs = 0xe3c,
-> +		.sram_pdn_bits = BIT(8),
-> +		.sram_pdn_ack_bits = BIT(12),
-> +		.bp_cfg = {
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_VEN0,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_SET,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_RDY),
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_VEN0,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_SET,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_RDY),
-> +		},
-> +	},
-> +	[MT6858_POWER_DOMAIN_CAM_MAIN] = {
-> +		.name = "cam-main",
-> +		.sta_mask = MT6858_PWR_ACK,
-> +		.sta2nd_mask = MT6858_PWR_ACK_2ND,
-> +		.ctl_offs = 0xe44,
-> +		.pwr_sta_offs = 0xe44,
-> +		.pwr_sta2nd_offs = 0xe44,
-> +		.sram_pdn_bits = BIT(8),
-> +		.sram_pdn_ack_bits = BIT(12),
-> +		.bp_cfg = {
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_CAM_MAIN,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_SET,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_RDY),
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_CAM_MAIN,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_SET,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_RDY),
-> +			BUS_PROT_WR_IGN(CAM_SUB0,
-> +					MT6858_CAM_SUB0_PROT_EN_SMI_CAM_MAIN,
-> +					MT6858_SUBx_PROT_EN_SET,
-> +					MT6858_SUBx_PROT_EN_CLR,
-> +					MT6858_SUBx_PROT_EN_STA),
-> +			BUS_PROT_WR_IGN(CAM_SUB1,
-> +					MT6858_CAM_SUB1_PROT_EN_SMI_CAM_MAIN,
-> +					MT6858_SUBx_PROT_EN_SET,
-> +					MT6858_SUBx_PROT_EN_CLR,
-> +					MT6858_SUBx_PROT_EN_STA),
-> +		},
-> +		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-> +	},
-> +	[MT6858_POWER_DOMAIN_CAM_SUBA] = {
-> +		.name = "cam-suba",
-> +		.sta_mask = MT6858_PWR_ACK,
-> +		.sta2nd_mask = MT6858_PWR_ACK_2ND,
-> +		.ctl_offs = 0xe4c,
-> +		.pwr_sta_offs = 0xe4c,
-> +		.pwr_sta2nd_offs = 0xe4c,
-> +		.sram_pdn_bits = BIT(8),
-> +		.sram_pdn_ack_bits = BIT(12),
-> +		.bp_cfg = {
-> +			BUS_PROT_WR_IGN(CAM_SUB1,
-> +					MT6858_CAM_SUB1_PROT_EN_SMI_CAM_SUBA,
-> +					MT6858_SUBx_PROT_EN_SET,
-> +					MT6858_SUBx_PROT_EN_CLR,
-> +					MT6858_SUBx_PROT_EN_STA),
-> +		},
-> +		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-> +	},
-> +	[MT6858_POWER_DOMAIN_CAM_SUBB] = {
-> +		.name = "cam-subb",
-> +		.sta_mask = MT6858_PWR_ACK,
-> +		.sta2nd_mask = MT6858_PWR_ACK_2ND,
-> +		.ctl_offs = 0xe50,
-> +		.pwr_sta_offs = 0xe50,
-> +		.pwr_sta2nd_offs = 0xe50,
-> +		.sram_pdn_bits = BIT(8),
-> +		.sram_pdn_ack_bits = BIT(12),
-> +		.bp_cfg = {
-> +			BUS_PROT_WR_IGN(CAM_SUB0,
-> +					MT6858_CAM_SUB0_PROT_EN_SMI_CAM_SUBB,
-> +					MT6858_SUBx_PROT_EN_SET,
-> +					MT6858_SUBx_PROT_EN_CLR,
-> +					MT6858_SUBx_PROT_EN_STA),
-> +		},
-> +		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-> +	},
-> +	[MT6858_POWER_DOMAIN_DIS0] = {
-> +		.name = "dis0",
-> +		.sta_mask = MT6858_PWR_ACK,
-> +		.sta2nd_mask = MT6858_PWR_ACK_2ND,
-> +		.ctl_offs = 0xe6c,
-> +		.pwr_sta_offs = 0xe6c,
-> +		.pwr_sta2nd_offs = 0xe6c,
-> +		.sram_pdn_bits = BIT(8),
-> +		.sram_pdn_ack_bits = BIT(12),
-> +		.bp_cfg = {
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_DIS0,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_SET,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_0_RDY),
-> +		},
-> +	},
-> +	[MT6858_POWER_DOMAIN_MM_INFRA] = {
-> +		.name = "mm-infra",
-> +		.sta_mask = MT6858_PWR_ACK,
-> +		.sta2nd_mask = MT6858_PWR_ACK_2ND,
-> +		.ctl_offs = 0xe74,
-> +		.pwr_sta_offs = 0xe74,
-> +		.pwr_sta2nd_offs = 0xe74,
-> +		.sram_pdn_bits = BIT(8),
-> +		.sram_pdn_ack_bits = BIT(12),
-> +		.bp_cfg = {
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_MM_INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_SET,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_RDY),
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_1_MM_INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_1_SET,
-> +					MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_1_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_1_RDY),
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_MM_INFRA_2ND,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_SET,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_MMSYS_STA_1_RDY),
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_0_MM_INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_0_SET,
-> +					MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_0_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_INFRASYS_STA_0_RDY),
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_EMISYS_STA_0_MM_INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_EMISYS_STA_0_SET,
-> +					MT6858_TOP_AXI_PROT_EN_EMISYS_STA_0_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_EMISYS_STA_0_RDY),
-> +		},
-> +	},
-> +	[MT6858_POWER_DOMAIN_MM_PROC_DORMANT] = {
-> +		.name = "mm-proc-dormant",
-> +		.sta_mask = MT6858_PWR_ACK,
-> +		.sta2nd_mask = MT6858_PWR_ACK_2ND,
-> +		.ctl_offs = 0xe78,
-> +		.pwr_sta_offs = 0xe78,
-> +		.pwr_sta2nd_offs = 0xe78,
-> +		.sram_pdn_bits = BIT(9),
-> +		.sram_pdn_ack_bits = BIT(13),
-> +		.bp_cfg = {
-> +			BUS_PROT_WR_IGN(VLP,
-> +					MT6858_VLP_AXI_PROT_EN_MM_PROC,
-> +					MT6858_VLP_AXI_PROT_EN_SET,
-> +					MT6858_VLP_AXI_PROT_EN_CLR,
-> +					MT6858_VLP_AXI_PROT_EN_STA),
-> +			BUS_PROT_WR_IGN(VLP,
-> +					MT6858_VLP_AXI_PROT_EN_MM_PROC_2ND,
-> +					MT6858_VLP_AXI_PROT_EN_SET,
-> +					MT6858_VLP_AXI_PROT_EN_CLR,
-> +					MT6858_VLP_AXI_PROT_EN_STA),
-> +		},
-> +		.caps = MTK_SCPD_SRAM_ISO | MTK_SCPD_SRAM_PDN_INVERTED,
-> +	},
-> +	[MT6858_POWER_DOMAIN_CSI_RX] = {
-> +		.name = "csi-rx",
-> +		.sta_mask = MT6858_PWR_ACK,
-> +		.sta2nd_mask = MT6858_PWR_ACK_2ND,
-> +		.ctl_offs = 0xe98,
-> +		.pwr_sta_offs = 0xe98,
-> +		.pwr_sta2nd_offs = 0xe98,
-> +		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-> +	},
-> +	[MT6858_POWER_DOMAIN_SSUSB] = {
-> +		.name = "ssusb",
-> +		.sta_mask = MT6858_PWR_ACK,
-> +		.sta2nd_mask = MT6858_PWR_ACK_2ND,
-> +		.ctl_offs = 0xea4,
-> +		.pwr_sta_offs = 0xea4,
-> +		.pwr_sta2nd_offs = 0xea4,
-> +		.sram_pdn_bits = BIT(8),
-> +		.sram_pdn_ack_bits = BIT(12),
-> +		.bp_cfg = {
-> +			BUS_PROT_WR_IGN(INFRA,
-> +					MT6858_TOP_AXI_PROT_EN_PERISYS_STA_0_SSUSB,
-> +					MT6858_TOP_AXI_PROT_EN_PERISYS_STA_0_SET,
-> +					MT6858_TOP_AXI_PROT_EN_PERISYS_STA_0_CLR,
-> +					MT6858_TOP_AXI_PROT_EN_PERISYS_STA_0_RDY),
-> +		},
-> +	},
-> +};
-> +
-> +static const struct scpsys_soc_data mt6858_scpsys_data = {
-> +	.domains_data = scpsys_domain_data_mt6858,
-> +	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt6858),
-> +	.bus_prot_blocks = scpsys_bus_prot_blocks_mt6858,
-> +	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt6858),
-> +	.type = SCPSYS_MTCMOS_TYPE_DIRECT_CTL,
-> +};
-> +
-> +#endif /* __SOC_MEDIATEK_MT6858_PM_DOMAINS_H */
-> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> index 5b4d860318a4..b43f8b4a6a01 100644
-> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> @@ -20,6 +20,7 @@
->   
->   #include "mt6735-pm-domains.h"
->   #include "mt6795-pm-domains.h"
-> +#include "mt6858-pm-domains.h"
->   #include "mt6893-pm-domains.h"
->   #include "mt8167-pm-domains.h"
->   #include "mt8173-pm-domains.h"
-> @@ -1288,6 +1289,10 @@ static const struct of_device_id scpsys_of_match[] = {
->   		.compatible = "mediatek,mt6795-power-controller",
->   		.data = &mt6795_scpsys_data,
->   	},
-> +	{
-> +		.compatible = "mediatek,mt6858-power-controller",
-> +		.data = &mt6858_scpsys_data,
-> +	},
->   	{
->   		.compatible = "mediatek,mt6893-power-controller",
->   		.data = &mt6893_scpsys_data,
-> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.h b/drivers/pmdomain/mediatek/mtk-pm-domains.h
-> index 8690690335ad..45da83e9d649 100644
-> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.h
-> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.h
-> @@ -66,6 +66,11 @@ enum scpsys_bus_prot_block {
->   	BUS_PROT_BLOCK_INFRA_NAO,
->   	BUS_PROT_BLOCK_SMI,
->   	BUS_PROT_BLOCK_SPM,
-> +	BUS_PROT_BLOCK_IMG_SUB0,
-> +	BUS_PROT_BLOCK_CAM_SUB1,
-> +	BUS_PROT_BLOCK_CAM_SUB0,
-> +	BUS_PROT_BLOCK_IPE_SUB0,
-> +	BUS_PROT_BLOCK_VLP,
->   	BUS_PROT_BLOCK_COUNT,
->   };
->   
-> 
+I do not have a strong opinion on it. I guess it is ok if you are
+planning to use it for future usage, otherwise I guess it is fine
+to rely on rtnl lock.
 
+Regards,
+Lorenzo
+
+>=20
+> > > =20
+> > >  	for (i =3D 0; i < ARRAY_SIZE(port->devs); i++) {
+> > >  		if (port->devs[i])
+> > > @@ -1848,7 +1849,7 @@ static void airoha_update_hw_stats(struct airoh=
+a_gdm_dev *dev)
+> > >  	airoha_fe_set(dev->eth, REG_FE_GDM_MIB_CLEAR(port->id),
+> > >  		      FE_GDM_MIB_RX_CLEAR_MASK | FE_GDM_MIB_TX_CLEAR_MASK);
+> > > =20
+> > > -	spin_unlock(&port->stats_lock);
+> > > +	spin_unlock(&port->lock);
+> > >  }
+> > > =20
+> > >  static void airoha_dev_set_xmit_frame_size(struct net_device *netdev)
+> > > @@ -1870,6 +1871,14 @@ static int airoha_dev_open(struct net_device *=
+netdev)
+> > >  	u32 pse_port =3D FE_PSE_PORT_PPE1;
+> > >  	int err;
+> > > =20
+> > > +	err =3D phylink_of_phy_connect(dev->phylink, netdev->dev.of_node, 0=
+);
+> > > +	if (err) {
+> > > +		netdev_err(netdev, "could not attach PHY: %d\n", err);
+> > > +		return err;
+> > > +	}
+> > > +
+> > > +	phylink_start(dev->phylink);
+> > > +
+> > >  	netif_tx_start_all_queues(netdev);
+> > >  	err =3D airoha_set_vip_for_gdm_port(dev, true);
+> > >  	if (err)
+> > > @@ -1909,6 +1918,10 @@ static int airoha_dev_stop(struct net_device *=
+netdev)
+> > >  		airoha_set_gdm_port_fwd_cfg(qdma->eth,
+> > >  					    REG_GDM_FWD_CFG(port->id),
+> > >  					    FE_PSE_PORT_DROP);
+> > > +
+> > > +	phylink_stop(dev->phylink);
+> > > +	phylink_disconnect_phy(dev->phylink);
+> > > +
+> > >  	return 0;
+> > >  }
+> > > =20
+> > > @@ -2389,6 +2402,24 @@ airoha_ethtool_get_rmon_stats(struct net_devic=
+e *netdev,
+> > >  	} while (u64_stats_fetch_retry(&dev->stats.syncp, start));
+> > >  }
+> > > =20
+> > > +static int
+> > > +airoha_ethtool_get_link_ksettings(struct net_device *netdev,
+> > > +				  struct ethtool_link_ksettings *cmd)
+> > > +{
+> > > +	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+> > > +
+> > > +	return phylink_ethtool_ksettings_get(dev->phylink, cmd);
+> > > +}
+> > > +
+> > > +static int
+> > > +airoha_ethtool_set_link_ksettings(struct net_device *netdev,
+> > > +				  const struct ethtool_link_ksettings *cmd)
+> > > +{
+> > > +	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+> > > +
+> > > +	return phylink_ethtool_ksettings_set(dev->phylink, cmd);
+> > > +}
+> > > +
+> > >  static int airoha_qdma_set_chan_tx_sched(struct net_device *netdev,
+> > >  					 int channel, enum tx_sched_mode mode,
+> > >  					 const u16 *weights, u8 n_weights)
+> > > @@ -3120,7 +3151,8 @@ static const struct ethtool_ops airoha_ethtool_=
+ops =3D {
+> > >  	.get_drvinfo		=3D airoha_ethtool_get_drvinfo,
+> > >  	.get_eth_mac_stats      =3D airoha_ethtool_get_mac_stats,
+> > >  	.get_rmon_stats		=3D airoha_ethtool_get_rmon_stats,
+> > > -	.get_link_ksettings	=3D phy_ethtool_get_link_ksettings,
+> > > +	.get_link_ksettings	=3D airoha_ethtool_get_link_ksettings,
+> > > +	.set_link_ksettings	=3D airoha_ethtool_set_link_ksettings,
+> > >  	.get_link		=3D ethtool_op_get_link,
+> > >  };
+> > > =20
+> > > @@ -3176,6 +3208,155 @@ bool airoha_is_valid_gdm_dev(struct airoha_et=
+h *eth,
+> > >  	return false;
+> > >  }
+> > > =20
+> > > +/* Nothing to do in MAC, everything is handled in PCS */
+> > > +static void airoha_mac_config(struct phylink_config *config, unsigne=
+d int mode,
+> > > +			      const struct phylink_link_state *state)
+> > > +{
+> > > +}
+> > > +
+> > > +static void airoha_mac_link_up(struct phylink_config *config, struct=
+ phy_device *phy,
+> > > +			       unsigned int mode, phy_interface_t interface,
+> > > +			       int speed, int duplex, bool tx_pause, bool rx_pause)
+> > > +{
+> > > +	struct airoha_gdm_dev *dev =3D container_of(config, struct airoha_g=
+dm_dev,
+> > > +						  phylink_config);
+> > > +	struct airoha_gdm_port *port =3D dev->port;
+> > > +	struct airoha_eth *eth =3D dev->eth;
+> > > +	u32 frag_size_tx, frag_size_rx;
+> > > +	u32 mask, val;
+> > > +
+> > > +	/* TX/RX frag is configured only for GDM4 */
+> > > +	if (port->id !=3D AIROHA_GDM4_IDX)
+> > > +		return;
+> > > +
+> > > +	switch (speed) {
+> > > +	case SPEED_10000:
+> > > +	case SPEED_5000:
+> > > +		frag_size_tx =3D 8;
+> > > +		frag_size_rx =3D 8;
+> > > +		break;
+> > > +	case SPEED_2500:
+> > > +		frag_size_tx =3D 2;
+> > > +		frag_size_rx =3D 1;
+> > > +		break;
+> > > +	default:
+> > > +		frag_size_tx =3D 1;
+> > > +		frag_size_rx =3D 0;
+> > > +	}
+> > > +
+> > > +	spin_lock(&port->lock);
+> > > +
+> > > +	/* Configure TX/RX frag based on speed */
+> > > +	if (dev->nbq =3D=3D 1) {
+> > > +		mask =3D GDM4_SGMII1_TX_FRAG_SIZE_MASK;
+> > > +		val =3D FIELD_PREP(GDM4_SGMII1_TX_FRAG_SIZE_MASK,
+> > > +				 frag_size_tx);
+> > > +	}  else {
+> > > +		mask =3D GDM4_SGMII0_TX_FRAG_SIZE_MASK;
+> > > +		val =3D FIELD_PREP(GDM4_SGMII0_TX_FRAG_SIZE_MASK,
+> > > +				 frag_size_tx);
+> > > +	}
+> > > +	airoha_fe_rmw(eth, REG_FE_GDM4_TMBI_FRAG, mask, val);
+> > > +
+> > > +	if (dev->nbq =3D=3D 1) {
+> > > +		mask =3D GDM4_SGMII1_RX_FRAG_SIZE_MASK;
+> > > +		val =3D FIELD_PREP(GDM4_SGMII1_RX_FRAG_SIZE_MASK,
+> > > +				 frag_size_rx);
+> > > +	} else {
+> > > +		mask =3D GDM4_SGMII0_RX_FRAG_SIZE_MASK;
+> > > +		val =3D FIELD_PREP(GDM4_SGMII0_RX_FRAG_SIZE_MASK,
+> > > +				 frag_size_rx);
+> > > +	}
+> > > +	airoha_fe_rmw(eth, REG_FE_GDM4_RMBI_FRAG, mask, val);
+> > > +
+> > > +	spin_unlock(&port->lock);
+> > > +}
+> > > +
+> > > +/* Nothing to do in MAC, everything is handled in PCS */
+> > > +static void airoha_mac_link_down(struct phylink_config *config, unsi=
+gned int mode,
+> > > +				 phy_interface_t interface)
+> > > +{
+> > > +}
+> > > +
+> > > +static const struct phylink_mac_ops airoha_phylink_ops =3D {
+> > > +	.mac_config =3D airoha_mac_config,
+> > > +	.mac_link_up =3D airoha_mac_link_up,
+> > > +	.mac_link_down =3D airoha_mac_link_down,
+> > > +};
+> > > +
+> > > +static int airoha_fill_available_pcs(struct phylink_config *config,
+> > > +				     struct phylink_pcs **available_pcs,
+> > > +				     unsigned int num_possible_pcs)
+> > > +{
+> > > +	struct device *dev =3D config->dev;
+> > > +
+> > > +	return fwnode_phylink_pcs_parse(dev_fwnode(dev), available_pcs,
+> > > +					num_possible_pcs);
+> > > +}
+> > > +
+> > > +static int airoha_setup_phylink(struct net_device *netdev)
+> > > +{
+> > > +	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+> > > +	struct device_node *np =3D netdev->dev.of_node;
+> > > +	struct airoha_gdm_port *port =3D dev->port;
+> > > +	struct phylink_config *config;
+> > > +	phy_interface_t phy_mode;
+> > > +	struct phylink *phylink;
+> > > +	int err;
+> > > +
+> > > +	err =3D of_get_phy_mode(np, &phy_mode);
+> > > +	if (err) {
+> > > +		dev_err(&netdev->dev, "incorrect phy-mode\n");
+> > > +		return err;
+> > > +	}
+> > > +
+> > > +	config =3D &dev->phylink_config;
+> > > +	config->dev =3D &netdev->dev;
+> > > +	config->type =3D PHYLINK_NETDEV;
+> > > +
+> > > +	/*
+> > > +	 * GDM1 only supports internal for Embedded Switch
+> > > +	 * and doesn't require a PCS.
+> > > +	 */
+> > > +	if (port->id =3D=3D AIROHA_GDM1_IDX) {
+> > > +		config->mac_capabilities =3D MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
+> > > +					   MAC_10000FD;
+> > > +
+> > > +		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
+> > > +			  config->supported_interfaces);
+> > > +	} else {
+> > > +		config->mac_capabilities =3D MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
+> > > +					   MAC_10 | MAC_100 | MAC_1000 |
+> > > +					   MAC_2500FD | MAC_5000FD | MAC_10000FD;
+> > > +
+> > > +		config->num_possible_pcs =3D fwnode_phylink_pcs_count(dev_fwnode(c=
+onfig->dev));
+> > > +		config->fill_available_pcs =3D airoha_fill_available_pcs;
+> > > +
+> > > +		__set_bit(PHY_INTERFACE_MODE_SGMII,
+> > > +			  config->supported_interfaces);
+> > > +		__set_bit(PHY_INTERFACE_MODE_1000BASEX,
+> > > +			  config->supported_interfaces);
+> > > +		__set_bit(PHY_INTERFACE_MODE_2500BASEX,
+> > > +			  config->supported_interfaces);
+> > > +		__set_bit(PHY_INTERFACE_MODE_10GBASER,
+> > > +			  config->supported_interfaces);
+> > > +		__set_bit(PHY_INTERFACE_MODE_USXGMII,
+> > > +			  config->supported_interfaces);
+> > > +
+> > > +		phy_interface_copy(config->pcs_interfaces,
+> > > +				   config->supported_interfaces);
+> > > +	}
+> > > +
+> > > +	phylink =3D phylink_create(config, of_fwnode_handle(np),
+> > > +				 phy_mode, &airoha_phylink_ops);
+> > > +	if (IS_ERR(phylink))
+> > > +		return PTR_ERR(phylink);
+> > > +
+> > > +	dev->phylink =3D phylink;
+> > > +
+> > > +	return 0;
+> > > +}
+> > > +
+> > >  static int airoha_alloc_gdm_device(struct airoha_eth *eth,
+> > >  				   struct airoha_gdm_port *port,
+> > >  				   int nbq, struct device_node *np)
+> > > @@ -3239,7 +3420,7 @@ static int airoha_alloc_gdm_device(struct airoh=
+a_eth *eth,
+> > >  	dev->nbq =3D nbq;
+> > >  	port->devs[index] =3D dev;
+> > > =20
+> > > -	return 0;
+> > > +	return airoha_setup_phylink(netdev);
+> > >  }
+> > > =20
+> > >  static int airoha_alloc_gdm_port(struct airoha_eth *eth,
+> > > @@ -3274,7 +3455,7 @@ static int airoha_alloc_gdm_port(struct airoha_=
+eth *eth,
+> > >  		return -ENOMEM;
+> > > =20
+> > >  	port->id =3D id;
+> > > -	spin_lock_init(&port->stats_lock);
+> > > +	spin_lock_init(&port->lock);
+> > >  	eth->ports[p] =3D port;
+> > > =20
+> > >  	err =3D airoha_metadata_dst_alloc(port);
+> > > @@ -3471,6 +3652,8 @@ static int airoha_probe(struct platform_device =
+*pdev)
+> > >  			netdev =3D netdev_from_priv(dev);
+> > >  			if (netdev->reg_state =3D=3D NETREG_REGISTERED)
+> > >  				unregister_netdev(netdev);
+> > > +			if (dev->phylink)
+> > > +				phylink_destroy(dev->phylink);
+> > >  			of_node_put(netdev->dev.of_node);
+> > >  		}
+> > >  		airoha_metadata_dst_free(port);
+> > > @@ -3509,6 +3692,7 @@ static void airoha_remove(struct platform_devic=
+e *pdev)
+> > > =20
+> > >  			netdev =3D netdev_from_priv(dev);
+> > >  			unregister_netdev(netdev);
+> > > +			phylink_destroy(dev->phylink);
+> > >  			of_node_put(netdev->dev.of_node);
+> > >  		}
+> > >  		airoha_metadata_dst_free(port);
+> > > diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/e=
+thernet/airoha/airoha_eth.h
+> > > index f6d01a8e8da1..b49fc5304b3a 100644
+> > > --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> > > +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> > > @@ -561,6 +561,9 @@ struct airoha_gdm_dev {
+> > >  	int nbq;
+> > > =20
+> > >  	struct airoha_hw_stats stats;
+> > > +
+> > > +	struct phylink *phylink;
+> > > +	struct phylink_config phylink_config;
+> > >  };
+> > > =20
+> > >  struct airoha_gdm_port {
+> > > @@ -568,8 +571,8 @@ struct airoha_gdm_port {
+> > >  	int id;
+> > >  	int users;
+> > > =20
+> > > -	/* protect concurrent hw_stats accesses */
+> > > -	spinlock_t stats_lock;
+> > > +	/* protect concurrent hw_stats and frag register accesses */
+> > > +	spinlock_t lock;
+> > > =20
+> > >  	struct metadata_dst *dsa_meta[AIROHA_MAX_DSA_PORTS];
+> > >  };
+> > > diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/=
+ethernet/airoha/airoha_regs.h
+> > > index 6fed63d013b4..8df02f51211c 100644
+> > > --- a/drivers/net/ethernet/airoha/airoha_regs.h
+> > > +++ b/drivers/net/ethernet/airoha/airoha_regs.h
+> > > @@ -357,6 +357,18 @@
+> > >  #define IP_FRAGMENT_PORT_MASK		GENMASK(8, 5)
+> > >  #define IP_FRAGMENT_NBQ_MASK		GENMASK(4, 0)
+> > > =20
+> > > +#define REG_FE_GDM4_TMBI_FRAG		0x2028
+> > > +#define GDM4_SGMII1_TX_WEIGHT_MASK	GENMASK(31, 26)
+> > > +#define GDM4_SGMII1_TX_FRAG_SIZE_MASK	GENMASK(25, 16)
+> > > +#define GDM4_SGMII0_TX_WEIGHT_MASK	GENMASK(15, 10)
+> > > +#define GDM4_SGMII0_TX_FRAG_SIZE_MASK	GENMASK(9, 0)
+> > > +
+> > > +#define REG_FE_GDM4_RMBI_FRAG		0x202c
+> > > +#define GDM4_SGMII1_RX_WEIGHT_MASK	GENMASK(31, 26)
+> > > +#define GDM4_SGMII1_RX_FRAG_SIZE_MASK	GENMASK(25, 16)
+> > > +#define GDM4_SGMII0_RX_WEIGHT_MASK	GENMASK(15, 10)
+> > > +#define GDM4_SGMII0_RX_FRAG_SIZE_MASK	GENMASK(9, 0)
+> > > +
+> > >  #define REG_MC_VLAN_EN			0x2100
+> > >  #define MC_VLAN_EN_MASK			BIT(0)
+> > > =20
+> > > --=20
+> > > 2.53.0
+> > >=20
+>=20
+>=20
+>=20
+> --=20
+> 	Ansuel
+
+--ld12OxyQIEnfIjS2
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCal9FjwAKCRA6cBh0uS2t
+rPMWAP4yZE/0HKGgCARs9gAmYeuT1goEWpj4ZOlp0SGn2kJd1wD+NMg4Am4T/3D6
+Lzwg+yVHms4HuZdFX60BhZ3ZvptKbAw=
+=VNTa
+-----END PGP SIGNATURE-----
+
+--ld12OxyQIEnfIjS2--
 
