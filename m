@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05CABC4451C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31765C44529
 	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 06:56:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,60 +12,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FPhOqCEBzv3eJgxR2FHq6mhzbCgxaYl9KnF0Ou483ms=; b=Cr9c1GdnxOj1AiuBQuop8oWE3N
-	m5RwKgR1G8B4ST7CGfLvHklO/KNabEbjsreK6Jt3SJKNgUFdIUTGkPUfTD5NtAJTE3PBKzXrh65XB
-	jEYNY/StyHRet5Xttul5JTf0MpKZUyH3LTWzHSGYR9MqrXlNjFHWV1C4SgCl+X3hDS1IJEU2P2SrF
-	VJYd+WslOn7nECgi02TQbq8JVMVEVxN3xW9r+lkuPX9K4WxEN+NZ/+MoBPtabHB2pl+26Aw9bk7ET
-	JBWw8g9ikh9eZ8k1imvxOFZ4dMYAHxZj3hXcTyH3zBrUgLDfSRfpv5WWgONIUBBf6zM3tggTumtEr
-	aKL7iUsQ==;
+	bh=qpPVT8Dc4rsd7+Cy/PRWiKisx//FM/DZEFs1R+jF/Vo=; b=G9kT14qri/7YWUGqb3ryAEpanT
+	k3AADtq6Ldi4us0DIr2x1NK4NEciHBhHc3lObuV3sjuDfPt+aZjHgIa4iF0alHMgYfX715zCv0IoI
+	IhxqvnJyU/pvzPtGjSDhW98zmoLXKI5TOateylmo0XFNz7T0TMP+jKvSJ0gWjjY3El4D180ynHNkh
+	6FzbWXGObb7YPShnbsxtovJ2e5uK3NSBJSF2R++0OhuKFJHxllwscEsgRkqy9BLmyhqnKa7+xua3W
+	MglxX4cpTdknJ1B6XyqC8JJXseuZRYJL/sKKR2Ko0ax1z8aLuKF7qkEXer5uNvurw9OeCFdz7NVDu
+	nXbOWJCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm4Oe-00000008bNe-0e8G;
+	id 1wm4Oe-00000008bNr-10vy;
 	Tue, 21 Jul 2026 06:56:08 +0000
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm4OE-00000008az9-3QW1
+	id 1wm4OJ-00000008b3Z-04av
 	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Jul 2026 06:55:51 +0000
-Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-2cca0c5799eso86502795ad.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 Jul 2026 23:55:42 -0700 (PDT)
+	Tue, 21 Jul 2026 06:55:53 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-2cf52d15d88so25297365ad.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Jul 2026 23:55:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1784616942; x=1785221742; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1784616946; x=1785221746; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=FPhOqCEBzv3eJgxR2FHq6mhzbCgxaYl9KnF0Ou483ms=;
-        b=VqWcy+Kwc8equCylbyqIo9Nx3IefOboKmt4wf7JciImC4+/Dwnu1KSWWmfsrEItu8/
-         6ZEJ43S7rQAc340IRD8Lkg0iZAI+6exBxPEXk85x1vzJS84rlcDqlnZjfB0mSpZ+TrfX
-         V8Db8pUclihW1T4UDWnB23A9icpHSoLCXmnjk=
+        bh=qpPVT8Dc4rsd7+Cy/PRWiKisx//FM/DZEFs1R+jF/Vo=;
+        b=KtAOL3dAx7IJjACb08uukp04Ak+ohhr3bYNJqTqjeB4rKZJVUTFZ00ig/jIUEfVxbd
+         zdq0V3R+cIY6EnQyOs+Bf7XfbEP7oTrmwK9pCUi8pD1A5NlOUm0UE3WoBusW81obD2wO
+         GGzfuPr/ZHcT44obnnMqiBxQwYYziUOxZI/d8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784616942; x=1785221742;
+        d=1e100.net; s=20251104; t=1784616946; x=1785221746;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=FPhOqCEBzv3eJgxR2FHq6mhzbCgxaYl9KnF0Ou483ms=;
-        b=T5P1OnazOGj0MO6l6elFcJkQ98/BNNMVR8xGvpxCddxJEVNfWVjlQiAruu/MBcFx00
-         kH4SJhMmUimXEy6WtkIbDTNrK5V/lF33sReGpUpb6LqnfcgBgllj8DDzc+x7BYkdTS98
-         xBWXtnOUs3h8HaNhTSdHFJbUIDoLy8GaCAs/UnNmD5vPYUTG6PWEkWYuIaZXsHENjz0a
-         Sx90po4zR/hfS0oZrlRMV6EJX2BV3D+VEAvttAV8KV8d6dZEyOR+clBARylJeFbn7vHc
-         WZYgauFRXadXh3snz71dqmlCw8HMtDOqU+6F39NQLuFNGP8paHFknlMHBHbspDA91yyJ
-         EHzw==
-X-Forwarded-Encrypted: i=1; AHgh+RqfwkDopSR8vfOm9Xg+Xz5J5BhIQ9c2eOgc/GVHSUICHkRY9eUX/ik3ULXdE5ksiT1/EsIv3IFIEiHsLEASrA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YykvHDq/BFhcGTps2TT7gBvqptzRgfHufBdT0fkFISWqXiWiJNI
-	qOu6JEQhSjrRh2tgPnGKVQAa4gE80wdhqW+QlM5LU+N2pNe6qU8xI7UK4jLPASKpJA==
-X-Gm-Gg: AfdE7ckZiepoqOy6MKORtse3QaHeuT9AktGaP1ctIvqpamRZI88OD58Lba0Lllbpscs
-	V5o8lEFHSbkM+FGFCV68ZNTuxMk0k4Aken9Rwipv7OBhGcISu1uJZ4D0q9/HiThpMYqiFXX0Qkd
-	/A9I/mp31p5/GY31ysVjSKF7DJF4UZDP09sK6bxWShslyhtdPDdj9uPgxdKqrGPMPDjxyyr3Bik
-	YbdPzmdnJ5niqxECX16aQqKr0eP4KN4INoeCHUYnaYASRRFE3vzk0LKQKEdsxiSaUAbgJPZGWo/
-	X4N79pMGUUiu4Vzui3ThHOX/xETO3g5nHepFJev8XQebeqLJlqMOGBQ9l+4tcgc1N2s3XWpfE4L
-	TZtdfEDlVD0n+cVc73dKGjwNoDVw4STfsIzlxQN86sG5MkXOx1GeZMhZmZUF9LPCh+XInmvgNM+
-	aB8RTPYkM32ND10Xzr0nrAqvj2G2/8tbPAxN2kQJEVGlTnsM4pNupDTCB79tkFiyHZDvf+sQ==
-X-Received: by 2002:a17:903:3550:b0:2c9:97a8:aff1 with SMTP id d9443c01a7336-2cf349f76b7mr179989295ad.42.1784616941867;
-        Mon, 20 Jul 2026 23:55:41 -0700 (PDT)
+        bh=qpPVT8Dc4rsd7+Cy/PRWiKisx//FM/DZEFs1R+jF/Vo=;
+        b=fHxIkobMbeu7Qty6e8wAaFzrmGst3nms04oNCr+5NbC8wwIkumnKDSUp58O04C+BbR
+         rx19yO4EVVP+zlWrXfvSK+LJ900rdZ41Zk5u56tc1e7KQWo3UZm4o4HR3kbwtzVBxAYB
+         a/dbgDwnyupwpSi5Cwa8I3ZdVtn0Mhn1AEqVL7RZold6YvvdsWlRlMyZBD1wSTSV2/po
+         gG0W2vOUREIZPIqEyeJTH6XOmIdLXSmrlv9VZ1vWtM+Jlb0D6o8LF625tAvp1rhK/1Ui
+         jzM8qpHdGneqVRdICIMvy4P5x0DA4tRS20UhSq9qlRb5ymqPYKOCDsnS0uhSljrIWdfP
+         OU4w==
+X-Forwarded-Encrypted: i=1; AHgh+RrbpQR7L7Ttb+YznI0e3oi0uy2M9oxYYjptfPEb79zmofZ/urZd14Qs6AZjQtKT4Yy37+RfjbxyzvUkJocUYQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz7v24Q69iMzZlEkn5vwcaW8GCf3tiNS0ctW4CAEgi9eA16nhWK
+	/8QPhOj76g3KREyAUgR4GWMGz8s3l+T6DM+lyizhqjun9V27wQ30T3HQj8YaTxl4sLVEJh7u8Mv
+	CF1Y=
+X-Gm-Gg: AR+sD13/28WT69JyW9OJn0/L5GV1z5/4+uM6flI1yOZZQzSRsWtiegMUTj8eaWhiiUg
+	uQZyLXf8R+ZB00aePkyPJ4EeQJYDEE8R0PrEbJIqn9jUB34SELOt9XBwrTiuLuOgBFZIhQV9kjl
+	GvwfwbcZz1zgfarijO7Ja7orq5WZrlXpUPpwBRHznOrJ56RweKvEEMz7A6VcYoGOsW9m5h4pKL3
+	pCuNsmnYWUd3QjhQan1F8sqgKrvjlZA6wSGDLiFQlz09alsVpG3u8PIOgRb18MMGjaxBZpbQTl9
+	DUPYdkJv+8SN1IS0C6sFQK9Lkj22CFOuhks858J1SmD/gyJyXXN9vSRnxuQZowAE02PZni3oGLY
+	NQMOYif1WydCsbMQjr/jWwscCS97TQijoNUCAIypV64Xph9qzkGo85ZKHpi9OQK87T0BOh3OqE3
+	h2tHvlqJ68UB0W+AwaFl3OU7ax6YEgKV3m3hHHhUrdM/ljCvZYQnafLzCxVbjP/Gd4STHbmw==
+X-Received: by 2002:a17:902:d581:b0:2ce:d34a:5963 with SMTP id d9443c01a7336-2cf3496c380mr178033695ad.24.1784616946307;
+        Mon, 20 Jul 2026 23:55:46 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:3916:f048:32c3:931f])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cf3448ee77sm69716005ad.4.2026.07.20.23.55.37
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cf3448ee77sm69716005ad.4.2026.07.20.23.55.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Jul 2026 23:55:41 -0700 (PDT)
+        Mon, 20 Jul 2026 23:55:45 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Bartosz Golaszewski <brgl@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -90,19 +91,18 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Manivannan Sadhasivam <mani@kernel.org>,
-	Alan Stern <stern@rowland.harvard.edu>,
-	Wei Deng <wei.deng@oss.qualcomm.com>
-Subject: [PATCH v6 14/16] power: sequencing: pcie-m2: Split Bluetooth unit based on interface
-Date: Tue, 21 Jul 2026 14:54:09 +0800
-Message-ID: <20260721065413.2306137-15-wenst@chromium.org>
+	Alan Stern <stern@rowland.harvard.edu>
+Subject: [PATCH v6 15/16] arm64: dts: mediatek: mt8195-cherry: Add M.2 E-key slot
+Date: Tue, 21 Jul 2026 14:54:10 +0800
+Message-ID: <20260721065413.2306137-16-wenst@chromium.org>
 X-Mailer: git-send-email 2.55.0.229.g6434b31f56-goog
 In-Reply-To: <20260721065413.2306137-1-wenst@chromium.org>
 References: <20260721065413.2306137-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260720_235542_869723_0063F582 
-X-CRM114-Status: GOOD (  22.67  )
+X-CRM114-CacheID: sfid-20260720_235547_095849_C88753DD 
+X-CRM114-Status: GOOD (  14.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,92 +117,133 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some UART / serdev based Bluetooth drivers need to be able to reset the
-hardware during initialization or recovery. This is not possible with
-the current power sequencing API if a unit is shared between USB and
-UART interfaces.
+The Mt8195 Cherry design features an M.2 E-key slot for WiFi/BT combo
+cards. Only PCIe and USB are wired from the SoC to the slot, along with
+some auxiliary signals.
 
-For now, split the Bluetooth unit into two, one for each interface.
-This allows either interface to independently toggle the power, with
-the last action prevailing, thereby unbreaking the Qualcomm Bluetooth
-serdev driver. This is also needed for the Realtek Bluetooth serdev
-driver (hci_h5).
+Add the proper representation for it, replacing the PCIe wifi node and
+vpcie3v3-supply property under the PCIe controller, and the vbus-supply
+property under the xhci3 node.
 
-Having independent control from either interface unfortunately means
-that userspace is able to shut down the controller from sysfs using
-the USB port's "disable" setting without the serdev driver knowing
-about it. On the USB side, independent control is also desired, as it
-allows the USB core to power cycle the port/device during faults, and
-for userspace to initiate reset and recovery using the aforementioned
-"disable" setting. However when USB is used, a serdev device is not
-created, and there is no conflicting usage, which allows the power
-sequencing to work even without the split unit.
-
-Suggested-by: Wei Deng <wei.deng@oss.qualcomm.com>
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
-Changes since v4:
-- New patch
-
-This patch is _not_ squashed into the previous to provide clear context
-on the change, and the less than perfect nature of it.
-
-I think what we need in this case is some sort of lockout. The serdev
-consumer would want "exclusive" access, locking out the USB consumer,
-which can tolerate "shared" access.
-
-Something similar would be needed for the WiFi if we ever add support
-for SDIO for toggling the state of W_DISABLE#1. At least the SDIO and
-PCIe reset signals are separate.
+Changes since v2:
+- Drop default GPIO output state from kill pins pinconfig
 ---
- drivers/power/sequencing/pwrseq-pcie-m2.c | 22 ++++++++++++++++++----
- 1 file changed, 18 insertions(+), 4 deletions(-)
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      | 73 +++++++++++++++++--
+ 1 file changed, 68 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/power/sequencing/pwrseq-pcie-m2.c b/drivers/power/sequencing/pwrseq-pcie-m2.c
-index 693b0d33f8cf..56e4f40e0480 100644
---- a/drivers/power/sequencing/pwrseq-pcie-m2.c
-+++ b/drivers/power/sequencing/pwrseq-pcie-m2.c
-@@ -83,8 +83,22 @@ static int pwrseq_pci_m2_e_bt_disable(struct pwrseq_device *pwrseq)
- 	return gpiod_set_value_cansleep(ctx->w_disable2_gpio, 1);
- }
- 
--static const struct pwrseq_unit_data pwrseq_pcie_m2_e_bt_unit_data = {
--	.name = "bt-enable",
-+/*
-+ * XXX There are two Bluetooth units to allow either one to be able to power
-+ * off and thus reset the controller. In practice only one of the interfaces
-+ * is used, so there is no conflict. However userspace could power off the
-+ * USB unit by disabling the associated USB port, without the UART unit or
-+ * its consumer ever knowing.
-+ */
-+static const struct pwrseq_unit_data pwrseq_pcie_m2_e_bt_uart_unit_data = {
-+	.name = "bt-uart-enable",
-+	.deps = pwrseq_pcie_m2_unit_deps,
-+	.enable = pwrseq_pci_m2_e_bt_enable,
-+	.disable = pwrseq_pci_m2_e_bt_disable,
-+};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+index ef7afc436aef..8d4cc30d91e4 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+@@ -266,6 +266,47 @@ tboard_thermistor2: thermal-sensor-t2 {
+ 						120000 51
+ 						125000 44>;
+ 	};
 +
-+static const struct pwrseq_unit_data pwrseq_pcie_m2_e_bt_usb_unit_data = {
-+	.name = "bt-usb-enable",
- 	.deps = pwrseq_pcie_m2_unit_deps,
- 	.enable = pwrseq_pci_m2_e_bt_enable,
- 	.disable = pwrseq_pci_m2_e_bt_disable,
-@@ -130,13 +144,13 @@ static int pwrseq_pcie_m2_e_pwup_delay(struct pwrseq_device *pwrseq)
- 
- static const struct pwrseq_target_data pwrseq_pcie_m2_e_uart_target_data = {
- 	.name = "uart",
--	.unit = &pwrseq_pcie_m2_e_bt_unit_data,
-+	.unit = &pwrseq_pcie_m2_e_bt_uart_unit_data,
- 	.post_enable = pwrseq_pcie_m2_e_pwup_delay,
++	wifi-bt-connector {
++		compatible = "pcie-m2-e-connector";
++		pinctrl-names = "default";
++		pinctrl-0 = <&m2_e_key_kill_pins>;
++		vpcie3v3-supply = <&pp3300_wlan>;
++		w-disable1-gpios = <&pio 61 GPIO_ACTIVE_LOW>;
++		w-disable2-gpios = <&pio 59 GPIO_ACTIVE_LOW>;
++		/* PCIe auxiliary signals wired to controller. */
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			/* PCIe for WiFi */
++			port@0 {
++				reg = <0>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				wifi_ep: endpoint@0 {
++					reg = <0>;
++					remote-endpoint = <&pcie1_ep>;
++				};
++			};
++
++			/* USB for Bluetooth */
++			port@2 {
++				reg = <2>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				bt_ep: endpoint@0 {
++					reg = <0>;
++					remote-endpoint = <&usb3_ep>;
++				};
++			};
++
++			/* SDIO, UART and I2S not implemented */
++		};
++	};
  };
  
- static const struct pwrseq_target_data pwrseq_pcie_m2_e_usb_target_data = {
- 	.name = "usb",
--	.unit = &pwrseq_pcie_m2_e_bt_unit_data,
-+	.unit = &pwrseq_pcie_m2_e_bt_usb_unit_data,
+ &adsp {
+@@ -791,14 +832,14 @@ pcie@0 {
+ 		reg = <0 0 0 0 0>;
+ 		device_type = "pci";
+ 		num-lanes = <1>;
+-		vpcie3v3-supply = <&pp3300_wlan>;
+ 		#address-cells = <3>;
+ 		#size-cells = <2>;
+ 		ranges;
+ 
+-		wifi@0 {
+-			reg = <0 0 0 0 0>;
+-			wakeup-source;
++		port {
++			pcie1_ep: endpoint {
++				remote-endpoint = <&wifi_ep>;
++			};
+ 		};
+ 	};
+ };
+@@ -1085,6 +1126,13 @@ pins-bus {
+ 		};
+ 	};
+ 
++	m2_e_key_kill_pins: m2-e-key-kill-pins {
++		pins-kill {
++			pinmux = <PINMUX_GPIO61__FUNC_GPIO61>,
++				 <PINMUX_GPIO59__FUNC_GPIO59>;
++		};
++	};
++
+ 	mmc0_pins_default: mmc0-default-pins {
+ 		pins-cmd-dat {
+ 			pinmux = <PINMUX_GPIO126__FUNC_MSDC0_DAT0>,
+@@ -1637,9 +1685,24 @@ &xhci2 {
+ &xhci3 {
+ 	/* MT7921's USB Bluetooth has issues with USB2 LPM */
+ 	usb2-lpm-disable;
+-	vbus-supply = <&pp3300_wlan>;
+ 	vusb33-supply = <&mt6359_vusb_ldo_reg>;
+ 	status = "okay";
++
++	ports {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		port@1 {
++			reg = <1>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			usb3_ep: endpoint@0 {
++				reg = <0>;
++				remote-endpoint = <&bt_ep>;
++			};
++		};
++	};
  };
  
- static const struct pwrseq_target_data pwrseq_pcie_m2_e_pcie_target_data = {
+ #include <arm/cros-ec-keyboard.dtsi>
 -- 
 2.55.0.229.g6434b31f56-goog
 
