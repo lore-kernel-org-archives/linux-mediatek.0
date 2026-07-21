@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EDE0C4452B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 06:55:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D1C5C4451C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 06:55:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xc02KBsQrd1xdK8Ho0VEf5G63Rz5XQrKjQwFcbcQ37E=; b=1mp4dJUY4nsmrsoRey/5RSsBSC
-	TWFFvyfIOoUvqGwtlivUEstImYEcgG0tymNeE07gVvHWWaAxw97LyATn7NRzA+nsFoUftTsXy0puQ
-	f9PFCBuUMaipuNVY47QkF6vtHulfWyX/njw+euvY5RG8Bkk6qoxs6u+3o/QxvR58Lobv/sPoNPNZj
-	O8pkgTCHgH94f5FiIv43sA7SF2j60jiCQIvzgJ4lGOZjR/Jjrmz/r99yp72RuId/K9vIn2ihaTuyi
-	7dvIbImDCTejyVzabS3+Rvu//8MvQvtbqMlEk32BWnRsqT+rhmGVhx/kRLjC2mqQw1a1YUshP8i3L
-	hDir7rxg==;
+	bh=qjG3+Srh1l1zMMK/k1OHJ2IZC5GaA1LItCzYqUBfaa0=; b=ZP3SWpkwKpqULB/oS6lVJ/iTrl
+	GPjafFzUmYLe8jr/VTA4A0v8zkH+HkB2WxDI++HvSBvXWryRIn5R1jutf5C5Oq0QRX8rWY4ilVx6k
+	o6GKHR+8EIdaCNZlc+IPo7gdtv1o+Q553qopvNakCX8IMP8cQua9DuP0INzr7r87OkZ0Azv8az50C
+	B+rrZOCzRgbVFs9Sep2siEG4A4GSYlG89NA/ZRwhz8/ETK5K+heBj6cdLt4LFKHbx7sk04+MKPiwL
+	b2PcD2Lrg3fkDFTi+dKAkXTIR1nBhyPliwFrPxt25AC0BN7dcWTXp7VtJzIOWqFNWVRU5rL2vKlf4
+	153/l+MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm4NX-00000008a9P-3txn;
-	Tue, 21 Jul 2026 06:54:59 +0000
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+	id 1wm4Nb-00000008aEN-0gvZ;
+	Tue, 21 Jul 2026 06:55:03 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm4NU-00000008a54-1HbX
+	id 1wm4NY-00000008aAN-2ESA
 	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Jul 2026 06:54:57 +0000
-Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-2cf6d65d8a7so22146035ad.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 Jul 2026 23:54:55 -0700 (PDT)
+	Tue, 21 Jul 2026 06:55:01 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2ceae1ed204so89263915ad.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Jul 2026 23:55:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1784616895; x=1785221695; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1784616900; x=1785221700; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=Xc02KBsQrd1xdK8Ho0VEf5G63Rz5XQrKjQwFcbcQ37E=;
-        b=E+mkBftsiU7Rs9hAgcfN+Oqdvf9H685WvkxlVtHCu0xZMPoLzuh0Ug9ALpywfnE3Cc
-         Hx5STbHLDePUQDljPBTczH289ByODgWjLgTgKF9OHaxm6PmtkhvuesAKCzSNUeh9pUQe
-         ctB1JfhaquS2rR0koJYHq1oF4tK9xRo3De24Q=
+        bh=qjG3+Srh1l1zMMK/k1OHJ2IZC5GaA1LItCzYqUBfaa0=;
+        b=CPSlwAHEnwCH2TZmzjvDm/D+iSPSxHarSeWlPl74XPxk66Z6SW/NwxXQeWItbpW3iH
+         NhmcS3JfZRXWO6IzfZiEQVwhBz/YwDC4m/gFiAhGWL2oYlhsSc4ywgfQz0V1r/V6EZ/7
+         8iLJGcIdRSXuzgMOQ7Fkt7sx1DoI9mtalBbDU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784616895; x=1785221695;
+        d=1e100.net; s=20251104; t=1784616900; x=1785221700;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=Xc02KBsQrd1xdK8Ho0VEf5G63Rz5XQrKjQwFcbcQ37E=;
-        b=bo5+3y/bYeT1it59BkAnBylIRVvZZO30QiQk7A97kd4AIBUOEJ6/vv2dURtr58LEzR
-         ShpY1r+FCOGZuBmKsWTp0x6GFFXQ8+Q1qMDcQcZ3n4ObrlM5+vc+2HDVKIcxQINQhbnl
-         KIfHItq7X2PWhxfaC3hZe6Srvve6Ynpi8gkHCElivT7VFKQ3sBzAHfbL+/HCNKMQ8uEp
-         qyNt5yTlDw8SvWKXHXEMFeJdn3IN9Y3nZmd+Imm18XQBVgdepeWog84bp6GRNfwLmyRp
-         UURK+eqwNKzUsTw3c5n/voMIwz0Z4p8ffmq0zeQscOJDkDJ2PLBwrlhz9ZUgNBxEG+lW
-         WKfw==
-X-Forwarded-Encrypted: i=1; AHgh+RoQsfPNirez+2QXPomfkrqWluqRkDH1OrspMGZ+0vYzTbxpR8cj6uc+8SUvxKrQTxubVFi1og2tSh7LD4FrNA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyVtqGn3kq2zuq84R+o+OK/AQUlLWY9v+fkXEroAI0LqM0avfzS
-	FNXFJ020QrAh5Wo3wuNnGnDoW/L9BUXa7FtSVIsLVREnUC0faucJHkeMUwWpqGOZIw==
-X-Gm-Gg: AR+sD13u8wJp4YzMBm+vNoM67kQFIgE7y2FDIw0LFGg0ukx1p/glLe4hd048/K5HyMB
-	MB7FVJstoId7Aj5jpxMnxHnSE33/89Q36JeBoJU5GRZP6uMvg2g+BucSX0PaPfkjbHEg77+7cqR
-	68O3SpT80vbUhVq57mPsXva4euR9guvJGhhQiYm3+4XT7Xe2FWQS/GrO8PKsy7GlhLEcRF3inJ9
-	t6nIYmwXrZnC3MftPpnYSvGkjMXsJtwX/EVa9VLzYHRuKJyEPODwlPEJwBu2tvUKPeq3kRHe38w
-	c5nsLUKTpmkDWM4xZxMHaaRIfXn3XQymI/YuhodzF5yOEMEJjxfa5sQNXDs9HK8bNVkYLn5vylM
-	qILSy4DdN4N+my4UaKYurxy5o1y4/e4L4AQLjQap/HIFvg8Q3oXNNmiAWyKEtT6XMrqBz2Gd+71
-	RXg31I+R/aDhX01oVVo6bqY1qQRXOrWg6Gu8POm87Wel38Y0eQDL7cHi/Tk9c=
-X-Received: by 2002:a17:903:41c3:b0:2c7:1200:bd7e with SMTP id d9443c01a7336-2cf3486b0b1mr185750155ad.18.1784616895361;
-        Mon, 20 Jul 2026 23:54:55 -0700 (PDT)
+        bh=qjG3+Srh1l1zMMK/k1OHJ2IZC5GaA1LItCzYqUBfaa0=;
+        b=C3t4gFhabQLx6FpUhLXDz1Nr4XUQx7cu92zm6STz+34sOYfn2nBrO+4NWvgEKvPsPM
+         sMBMM5VF0kDyPAh0mnG3Z/itbZ/FI9LyKeFIoiWQ4zoI4rQdr1IkOwTx+hxrXGevT8Bx
+         ONEQBvsadBE+QEPzY0wUv7vp1u7p95lpZJw8U77/N+Bc4Su2gKN6gLx8cjuTkD5/ledw
+         AYQbXNgBzJW6RzTNEPzOFG/Zv9cNyx/rF69jdd4Q4B1D1PHk74+scfN/Rk+n63niAfGo
+         tWSDh2fRk3w1NOMcNzCxBskWevN4070Pen5R3t8fvWpP4hHQWPIciRwnhSxYk7OsoEU7
+         ecoA==
+X-Forwarded-Encrypted: i=1; AHgh+RpbHWfj4i0ePSKQ+2ga4ozEgJwC5L1Hk7c0AJAyAuvdDa3z/FC5v/kCgKpxel5XPZMRcqfbAqvGwBHFsukL7Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxV6vr4SXZBmRo0PaTBHUr/SSzalER3kyksvW50x5CQRbnpi1ho
+	hJo0NOC33qxK77Mtqp3cqcxwHYYHVq26jlgLB2bKJbnOD42u56WbBlBCr1wDul289w==
+X-Gm-Gg: AfdE7ckg9w7Acci1qzQp4t2gh8M24wO6dv9lLnnXLSA+Xj47S9CFX45FV7g741s9MfK
+	XbblpiTiMdTkJMUn+jmSTWFi0CtM8bX/hT/Hm4YlkMUydUIK4RQ0BK0MBLSSnOYkkHvGa7A277f
+	Nb0m4HUgmtfxoEEX/S2ZFpD1+2qUBfZdWfZcNwkvnWol6e0ktYp8VXktXmr6b4PK0rGaG0ROf0H
+	o5ZZwwglvWy9B7UZ3R/G2aJ5PTTz8rKv4jE/v4cgM1gsVwbpOOWuyqHey9JvEQSmrEBP2PLU8Tu
+	7p4RnoK0zS22ghtiB5NwAoRvC8r/H9Lv8iAPc8cAUTFb4h7Ksa4WJwj614UsdmzQLlSH1sUHJEs
+	TSuIawRV8hQRkmtY1v5w82ljFP+WoM/1bh5MfNq98W9fWEHJ2/JDj6HQZ/h2rm2b1ET18d1O75W
+	KSGUmnPPcLLTV5GtYsT42t5m0NPm7+6yyKAtrfsEhlg8FZ7KPSPubronlFuHc=
+X-Received: by 2002:a17:903:1a90:b0:2cc:6b7a:dfcb with SMTP id d9443c01a7336-2cf349cc789mr186191295ad.33.1784616899938;
+        Mon, 20 Jul 2026 23:54:59 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:3916:f048:32c3:931f])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cf3448ee77sm69716005ad.4.2026.07.20.23.54.51
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cf3448ee77sm69716005ad.4.2026.07.20.23.54.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Jul 2026 23:54:54 -0700 (PDT)
+        Mon, 20 Jul 2026 23:54:59 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Bartosz Golaszewski <brgl@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -90,18 +90,19 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Manivannan Sadhasivam <mani@kernel.org>,
-	Alan Stern <stern@rowland.harvard.edu>
-Subject: [PATCH v6 04/16] usb: hub: Use assign_bit() in usb_hub_set_port_power()
-Date: Tue, 21 Jul 2026 14:53:59 +0800
-Message-ID: <20260721065413.2306137-5-wenst@chromium.org>
+	Alan Stern <stern@rowland.harvard.edu>,
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Subject: [PATCH v6 05/16] usb: hub: Return actual error from hub_configure() in hub_probe()
+Date: Tue, 21 Jul 2026 14:54:00 +0800
+Message-ID: <20260721065413.2306137-6-wenst@chromium.org>
 X-Mailer: git-send-email 2.55.0.229.g6434b31f56-goog
 In-Reply-To: <20260721065413.2306137-1-wenst@chromium.org>
 References: <20260721065413.2306137-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260720_235456_358005_F98A971B 
-X-CRM114-Status: GOOD (  12.34  )
+X-CRM114-CacheID: sfid-20260720_235500_586808_70490C6C 
+X-CRM114-Status: GOOD (  15.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,50 +117,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-usb_hub_set_port_power() open-codes assign_bit(). Just use the
-assign_bit() macro instead. This makes subsequent additions to
-usb_hub_set_port_power() easier to read.
+The addition of power sequencing descriptor handling in the USB hub code
+requires dealing with deferred probing from pwrseq_get(). The power
+sequencing provider may not yet be available when the USB hub probes.
 
-This change does not introduce any functional changes.
+Return the actual error code from hub_configure() when it fails, so that
+the driver core can notice the deferred probe request.
 
-Suggested-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Also rewrite this section into the standard error handling pattern:
+
+    if (error) {
+        # handle error
+        return error;
+    }
+
+    # do more work
+    return 0;
+
+Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
 Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
-Attributing suggestion to Andy, since the change was originally
-requested as part of a review.
+Changes since v2:
+- Rewrite into standard error handling pattern
 
-Changes since v4:
-- New patch (split out from "usb: hub: Power on connected M.2 E-key
-  connectors with power sequencing API") (Andy)
+Changes since v1:
+- Moved "int ret" declaration in hub_configure() over here from the next
+  patch
 ---
- drivers/usb/core/hub.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ drivers/usb/core/hub.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/usb/core/hub.c b/drivers/usb/core/hub.c
-index 2cfe09a141d8..715f26f05a31 100644
+index 715f26f05a31..8f8624a0d36a 100644
 --- a/drivers/usb/core/hub.c
 +++ b/drivers/usb/core/hub.c
-@@ -10,6 +10,7 @@
-  * Released under the GPLv2 only.
-  */
+@@ -1875,6 +1875,7 @@ static int hub_probe(struct usb_interface *intf, const struct usb_device_id *id)
+ 	struct usb_host_interface *desc;
+ 	struct usb_device *hdev;
+ 	struct usb_hub *hub;
++	int ret;
  
-+#include <linux/bitops.h>
- #include <linux/kernel.h>
- #include <linux/errno.h>
- #include <linux/module.h>
-@@ -899,10 +900,7 @@ int usb_hub_set_port_power(struct usb_device *hdev, struct usb_hub *hub,
- 	if (ret)
- 		return ret;
+ 	desc = intf->cur_altsetting;
+ 	hdev = interface_to_usbdev(intf);
+@@ -2006,14 +2007,15 @@ static int hub_probe(struct usb_interface *intf, const struct usb_device_id *id)
+ 		usb_set_interface(hdev, 0, 0);
+ 	}
  
--	if (set)
--		set_bit(port1, hub->power_bits);
--	else
--		clear_bit(port1, hub->power_bits);
-+	assign_bit(port1, hub->power_bits, set);
- 	return 0;
+-	if (hub_configure(hub, &desc->endpoint[0].desc) >= 0) {
+-		onboard_dev_create_pdevs(hdev, &hub->onboard_devs);
+-
+-		return 0;
++	ret = hub_configure(hub, &desc->endpoint[0].desc);
++	if (ret < 0) {
++		hub_disconnect(intf);
++		return ret;
+ 	}
+ 
+-	hub_disconnect(intf);
+-	return -ENODEV;
++	onboard_dev_create_pdevs(hdev, &hub->onboard_devs);
++
++	return 0;
  }
  
+ static int
 -- 
 2.55.0.229.g6434b31f56-goog
 
