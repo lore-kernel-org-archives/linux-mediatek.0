@@ -4,63 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0FA8C44529
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 07:50:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00F85C44529
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 07:53:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U7pmL1JiCQuKcTU9dY6vrebiTYaqi3TIxs//E0Ypwtc=; b=W9BNTaZCWEh213Fbx0nb3BYBvn
-	EUHhSvAfvsdNERaMSGJz+ZklC1fVRp7Lh8y+tkJGw0ak+wlOpdFts10j8tIPejKNwynLkwutAY5MA
-	TAYd37x2k3jVk0jF9Zl3Yrf8/0Gp7d+O/2FbTN1h4qLsj85mPtBztWebAtuKmmckFkplULH60Pu0r
-	MWEdm70EAen5bV/6kAYy/9w85VMprpBu3pion6pnUh9Ic8TX/i1QsCSAtOfK9TGUW3tsIPhirMVdl
-	ZonxghcYvpM2lZrQYYHbPn216hsdON2/sJwH0pA3IFkBYQeR6ohG8yFi17U8rAcUiNfgOqrNsvuMA
-	JR5h0T/g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6xFrz9+Xh7oWc2E882wc3WdDbfJk8+9Kb0ZZS36Ln2c=; b=hFPjtQqX/l5DMuUEdfhfWSbhVz
+	GGGJEXuKvQRTktNgbND1FDNxx4urf7QiQuivU1L8deTqZs4BqMqzI3UZ3MPa5NnpSSa6Wi8gCg4VC
+	cQProXBexs4nD9jWNaFAzXwUlPaGlb79mJP1/ISPf3whVqJ2URORysc6GpWWQA891FnhOJOApYNUH
+	eMUbEuutdoxzc8HfHGP6nyaaL9PxBPtVMtN4nAU0paEW84U5LEeOiyPBOO7FP8ECa2cghP4mWXJTZ
+	OLam3b97n39pQzfM6UFLJhMQa7ypwEzKoB4phmpwIl1P7kfnSKXvYTQlA+V9OpH/ef7hCDMkJ7W2b
+	FrAM+E1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm5FO-00000008gyv-2Sxc;
-	Tue, 21 Jul 2026 07:50:38 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wm5IU-00000008hcP-3jc0;
+	Tue, 21 Jul 2026 07:53:50 +0000
+Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm5FN-00000008gxw-0apU;
-	Tue, 21 Jul 2026 07:50:37 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9495A60A9E;
-	Tue, 21 Jul 2026 07:50:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48F901F000E9;
-	Tue, 21 Jul 2026 07:50:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784620236;
-	bh=U7pmL1JiCQuKcTU9dY6vrebiTYaqi3TIxs//E0Ypwtc=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=Oh0FPs+FTlYST2EQ72ESSOHdE2ntqhwRfq/XQSw70OssMZE62IQl7xFQwLD271Ehp
-	 z7ibL7COJwD08Ai+Q0G2cBJZlcj3gk7KXdlGyQ+vZ0nQy7YR6SS0Xqfhpam7+/GI2B
-	 5uHACu5/47GrhzTEkDlkJDyylniDm7CzcL+MaKxDpcEaI1lB5sjIwn/H+z9YrpkX71
-	 31TXn+rSX0vEmE66z9tSdpl7yfhTKZd0q+r16sarWiejQVH6krpUlbxpTSpznXyQQs
-	 qH+UeY4SIwauJ1FewfBa3BB5mYla601RwVUp1J/AwNKj1kTklPHPe7QE+PSTrFbjOC
-	 5wogdagyX8gjg==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 568FD3924A28;
-	Tue, 21 Jul 2026 07:50:07 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1wm5IS-00000008hbZ-0xrp;
+	Tue, 21 Jul 2026 07:53:50 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de (drehscheibe.grey.stw.pengutronix.de [IPv6:2a0a:edc0:0:c01:1d::a2])
+	(Authenticated sender: relay-from-drehscheibe.grey.stw.pengutronix.de)
+	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 88AB42028EE;
+	Tue, 21 Jul 2026 09:53:43 +0200 (CEST)
+Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1wm5IN-000XJf-1W;
+	Tue, 21 Jul 2026 09:53:43 +0200
+Received: from pza by lupine with local (Exim 4.98.2)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1wm5IN-000000002rJ-1YNa;
+	Tue, 21 Jul 2026 09:53:43 +0200
+Message-ID: <16651472d6a782bdef63e1c9742444de08c59f1e.camel@pengutronix.de>
+Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: Make reset
+ optional for MT8196
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	rafael@kernel.org
+Date: Tue, 21 Jul 2026 09:53:43 +0200
+In-Reply-To: <20260720144244.88877-1-angelogioacchino.delregno@collabora.com>
+References: <20260720144244.88877-1-angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2-0+deb13u1 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net v5] net: airoha: fix MIB stats collection to be
- lossless
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178462020592.138517.6199339592479066921.git-patchwork-notify@kernel.org>
-Date: Tue, 21 Jul 2026 07:50:05 +0000
-References: <20260707152639.105628-1-aniket.negi03@gmail.com>
-In-Reply-To: <20260707152639.105628-1-aniket.negi03@gmail.com>
-To: Aniket Negi <aniket.negi03@gmail.com>
-Cc: netdev@vger.kernel.org, lorenzo@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, aniket.negi@airoha.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, horms@kernel.org, ansuelsmth@gmail.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260721_005348_447929_3FFF632E 
+X-CRM114-Status: GOOD (  31.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,35 +67,128 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: jiapeng.chong@linux.alibaba.com, linux-pm@vger.kernel.org, wenst@chromium.org, linux-kernel@vger.kernel.org, laura.nao@collabora.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, daniel.lezcano@kernel.org, matthias.bgg@gmail.com, rui.zhang@intel.com, kernel@collabora.com, lukasz.luba@arm.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+On Mo, 2026-07-20 at 16:42 +0200, AngeloGioacchino Del Regno wrote:
+> Depending on the SoC+Firmware combination, the LVTS hardware may be
+> may be actively used by one or even multiple concurrent MCUs!
+> In this case, resetting it may produce either a severe slowdown of
+> the entire system, or even a thermal protection AP reset, as some
+> MCU(s) may be reading a very high or very low temperature while the
+> LVTS is being reset.
+>=20
+> On those, don't fail if no reset is found as that may be omitted on
+> purpose, but still check if there's one, because some board(s) may
+> be running on a different bootchain with reduced firmwares or using
+> firmwares with reduced functionality.
+>=20
+> Add a new "optional_reset" member to lvts_data and use it to check
+> whether the resets should be mandatory or not.
+>=20
+> Also, while at it, since devm_reset_control_get_by_index() is now
+> deprecated, change the probe function to instead call function
+> devm_reset_control_get_exclusive_by_index(), which does the same.
 
-This patch was applied to netdev/net.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
+Why is this using _by_index() at all? mediatek,lvts-thermal.yaml
+specifies a single reset, so the driver should just
+devm_reset_control_get_exclusive(dev, NULL).
 
-On Tue,  7 Jul 2026 20:56:39 +0530 you wrote:
-> REG_FE_GDM_MIB_CLEAR after every read creates a race window where
-> packets arriving between read and clear are lost from statistics.
-> 
-> Switch to a delta-based approach instead:
-> 
-> - 64-bit H+L registers (ok pkts/bytes, E64..L1023): read absolute
->   hardware total directly into a local variable; clamp with max(new, old)
->   to prevent torn-read regression when the counter carries between the
->   two reads.
-> 
-> [...]
+>=20
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
+>  drivers/thermal/mediatek/lvts_thermal.c | 29 ++++++++++++++++++++++---
+>  1 file changed, 26 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/me=
+diatek/lvts_thermal.c
+> index 92711896ce24..6670b5458f2c 100644
+> --- a/drivers/thermal/mediatek/lvts_thermal.c
+> +++ b/drivers/thermal/mediatek/lvts_thermal.c
+> @@ -160,6 +160,7 @@ struct lvts_data {
+>  	int gt_calib_bit_offset;
+>  	unsigned int def_calibration;
+>  	u16 msr_offset;
+> +	bool optional_reset;
 
-Here is the summary with links:
-  - [net,v5] net: airoha: fix MIB stats collection to be lossless
-    https://git.kernel.org/netdev/net/c/d163725af84a
+No need to complicate things. It's not the driver's business to check
+device tree correctness. Just make the reset optional, as the commit
+message says.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+>  };
+> =20
+>  struct lvts_sensor {
+> @@ -1473,9 +1474,29 @@ static int lvts_probe(struct platform_device *pdev=
+)
+>  	if (IS_ERR(lvts_td->base))
+>  		return dev_err_probe(dev, PTR_ERR(lvts_td->base), "Failed to map io re=
+source\n");
+> =20
+> -	lvts_td->reset =3D devm_reset_control_get_by_index(dev, 0);
+> -	if (IS_ERR(lvts_td->reset))
+> -		return dev_err_probe(dev, PTR_ERR(lvts_td->reset), "Failed to get rese=
+t control\n");
+> +	/*
+> +	 * Depending on the SoC+Firmware combination, the LVTS hardware may be
+> +	 * may be actively used by one or even multiple concurrent MCUs!
+> +	 * In this case, resetting it may produce either a severe slowdown of
+> +	 * the entire system, or even a thermal protection AP reset, as some
+> +	 * MCU(s) may be reading a very high or very low temperature while the
+> +	 * LVTS is being reset.
+> +	 *
+> +	 * On those, don't fail if no reset is found as that may be omitted on
+> +	 * purpose, but still check if there's one, because some board(s) may
+> +	 * be running on a different bootchain with reduced firmwares or using
+> +	 * firmwares with reduced functionality.
+> +	 */
+> +	lvts_td->reset =3D devm_reset_control_get_exclusive_by_index(dev, 0);
 
+So this should be:
 
+	lvts_td->reset =3D devm_reset_control_get_optional_exclusive(dev, NULL);
+
+> +	if (IS_ERR(lvts_td->reset)) {
+> +		if (lvts_data->optional_reset) {
+> +			dev_dbg(dev, "No reset found. LVTS may be used by firmware.\n");
+> +			lvts_td->reset =3D NULL;
+
+This is not necessary then.
+
+> +		} else {
+> +			return dev_err_probe(dev, PTR_ERR(lvts_td->reset),
+> +					     "Failed to get reset control\n");
+> +		}
+
+And this part could be kept as before.
+
+> +	}
+> =20
+>  	irq =3D platform_get_irq(pdev, 0);
+>  	if (irq < 0)
+> @@ -2163,6 +2184,7 @@ static const struct lvts_data mt8196_lvts_mcu_data =
+=3D {
+>  	.num_cal_offsets =3D LVTS_NUM_CAL_OFFSETS_MT8196,
+>  	.msr_offset =3D LVTS_MSR_OFFSET_MT8196,
+>  	.ops =3D &lvts_platform_ops_mt8196,
+> +	.optional_reset =3D true,
+
+But mediatek,lvts-thermal.yaml still specifies the reset as required
+for mediatek,mt8196-lvts-ap. That should be changed instead.
+
+>  };
+> =20
+>  static const struct lvts_data mt8196_lvts_ap_data =3D {
+> @@ -2175,6 +2197,7 @@ static const struct lvts_data mt8196_lvts_ap_data =
+=3D {
+>  	.num_cal_offsets =3D LVTS_NUM_CAL_OFFSETS_MT8196,
+>  	.msr_offset =3D LVTS_MSR_OFFSET_MT8196,
+>  	.ops =3D &lvts_platform_ops_mt8196,
+> +	.optional_reset =3D true,
+
+Same as above, but for mediatek,mt8196-lvts-mcu.
+
+regards
+Philipp
 
