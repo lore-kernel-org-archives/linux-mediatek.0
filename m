@@ -4,96 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B7F2C4451C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 08:00:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13769C4452B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 09:08:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VCTZhhsDkQDmv6W2lFgIQm5lul/8HcQoqcagpiQUCv4=; b=haUHTlZaIb91UEwQOF7DLWacwY
-	wowvcQk6lws8qAiGjHbLHMdL/VzBXsizlnlvnlWaoSPe23BPXRCY7PnYWNEZEtCMkNq2wZ3aetnq+
-	XzKRA7tZbmapy2Leu/A97znaYyS7BcZh9jMg/VK45GKpFKAENmTBSTDLAQmQ3vIgpZtClSCM6Xujy
-	mfJLFzxgwUUFBiHJs+lKGpVzIuXNLsuUJ1/UDMBJHeQh402fLJ6TKLEM/g1v7n4/JYJTrKYVvBS5P
-	TUPld6i/A3a8/+qJtWgrsvgyMi7PnIUPb7sZmykLrtLyHSghp+w7lff7Oj1sgkzsfC5Y9ra/3KbSu
-	M9g2AFkQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:References:MIME-Version:In-Reply-To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3xqu6DOCRis3ts8JU1eK1hQauNPqKuaV4g+S3+L3WS0=; b=2kwwnBXyg7y2k8ynesFetz6Kch
+	Ci/fsFf5rqTTJpi2iklaUtiYAgQyRcp7L1jCLfjP5Z5ynYkcD8rOEo7nLeGnzckBLiBDnp5tdRiAO
+	0edeVTkLgxGOJEdkDUAEM5RCD1KbXrtmRiRtHnKhilIq+daaRPPTfdxJmyjgrCnCFAaQmvHqj4Sf5
+	7Z77icwZWiqsT7mlMkFzoriEY736QtaCKDAAy3AVBw6qOhCvbt2+5B2k55EtJpYErxBmUWtitmGBI
+	y3SFIGBOJypVtm9MmY7eK542TW9RQ7eITlwutWgSm0CN5KetBh7Nd24l6Jl/nt3E0Qg2kyWiUxOHU
+	1Wbuoi7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm5P6-00000008jjl-3juK;
-	Tue, 21 Jul 2026 08:00:40 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1wm6T6-00000008vOq-0a6r;
+	Tue, 21 Jul 2026 09:08:52 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm5P3-00000008jik-3aGT
+	id 1wm6T4-00000008vOb-3gPN
 	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Jul 2026 08:00:39 +0000
-Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-c1c24ec9525so29532666b.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2026 01:00:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1784620835; x=1785225635; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=VCTZhhsDkQDmv6W2lFgIQm5lul/8HcQoqcagpiQUCv4=;
-        b=LFSqyJvDl7pEoDa8eBlkLzj9n19ypvOGSc+0GVSTOjXOgZvxlDtwrUXY+2JsOvIcR0
-         rcg+AxnrYnFVUA7VLo5xfn2ECe+Gm5MMA0Jb3joQr1yGdQPGgS+NYxe0BbBWFO+y6+Ol
-         tD2HKXb03g+ROx5Gb1HflaATPRwyfmhv/qO0jLjoslgdafrr/DtDDmYmu0acp3oGfnmJ
-         l2xvwXQm43apZAin557ZhyhRU762YfwZbnnnKH4OByM1RTxHZZlb8JpUNhwJi+XM5GH6
-         7xa48sJgAGvO98FZMW2pEYxfzEDN4pc8PXThncQPvTGtZM8qMNMunVMmhZ0HxerSLDK+
-         vn+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784620836; x=1785225636;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=VCTZhhsDkQDmv6W2lFgIQm5lul/8HcQoqcagpiQUCv4=;
-        b=awTRrtPmK6dfVI+u0UQSFWBdPIsDg1/XIeOfUBiH2u27t50lBdB+ZzIVBL1SAfbWsp
-         cMQV0q7mxroo+hpgke20JMMq9JXpv6689NGhuMLoaIaBzBiaeWX+UodAemQ4htAfjlxC
-         /8OnIiW6QEn6tk9iifbaoiOzHXuFYC7MvOJINVAzozIYwsd8JRBhxyG8/P3dfEnRk/AS
-         TnW7x2xxGb1CGwnJGc7m757rRyhWeSM9fl97PPXAbrFnvZW8Pa3yfAyeR4gOF4p2HFI7
-         Y9H75mxtarrVKjzpcNjekh47e3y7LdYl5t1R1dcMyngCVtaQA1ZUP4lvUI2RZP3eZ2wS
-         suLQ==
-X-Forwarded-Encrypted: i=1; AHgh+Rpo4ov/3GnR7YKfyq3mdrtanruznHVVml+quqNYnghPyL6p/tH+s6PLQOABxLJDTyhgq5qaw1jx2TOfuqPeEg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzUrawXyrw2819sapwKbQwZynhnmLJS3WscKFUALkLpgfQvqFKw
-	pr/TVT9LZdk+y7zaM6DC8zO4HqERdogJR7W75jTh0MXRilRr4+NGV1S0cZCJiXeM5Pk=
-X-Gm-Gg: AfdE7cmZNmHSSJpKIrK5OVj2YQnPXez+JxSxyftbTpmfCTXG01WgaZJ8wi/iCkLWueq
-	rNzlKc6GBhzr9h174MgJlvIqfNTwrM+MtxBhMStRiwKDloZjf8dfME8nXGCAfF2+Ts6QSivHznk
-	9lYWSkDGkl9P4uy7oCaTChFShKyJayTPsNyf3tBhkiQ/NWejY2Q3ifjHDCvL0zbSI9Kv81EFkkD
-	8NW0qYpFkQeu16gOA1IDQFYfwr1dg//B9yKtrA0aKEd1TNE/lqFuYzXNSrZPukhruD7RujyQulA
-	bWtkeK5OjlC6Ru1udgwhXvVVvVYdmnnHrrpW/rHLRXyChZdxJRbMQtX3F2qfmfkaCa7WyJZJZw0
-	iOPnVtXIH36AmJnPMrHZIvHSU3nbgzaDlWWOPB36H20RW1Y3h9oZM7r9/96QEO3IxtoIi2FE3xh
-	O6HlZptWqJa82ttuzpvKuzH9Xnuzd+wjzxQle8JCrhlZFX1iJ9nsL/PoLVQQUz6p6+yBXnCA==
-X-Received: by 2002:a17:907:d09:b0:c15:e04e:aed4 with SMTP id a640c23a62f3a-c16b47e6906mr747823566b.42.1784620835539;
-        Tue, 21 Jul 2026 01:00:35 -0700 (PDT)
-Received: from [127.0.0.1] (host-87-0-90-136.retail.telecomitalia.it. [87.0.90.136])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c1734b1918asm541895566b.43.2026.07.21.01.00.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Jul 2026 01:00:35 -0700 (PDT)
-From: Carlo Caione <ccaione@baylibre.com>
-Date: Tue, 21 Jul 2026 10:00:28 +0200
-Subject: [PATCH] dt-bindings: usb: mtu3: Add MT8512
+	Tue, 21 Jul 2026 09:08:50 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 6C67D43C44
+	for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2026 09:08:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 182081F00A3E
+	for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2026 09:08:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784624930;
+	bh=3xqu6DOCRis3ts8JU1eK1hQauNPqKuaV4g+S3+L3WS0=;
+	h=From:In-Reply-To:References:Date:Subject:To:Cc;
+	b=e2rKA2QoRAl6qUhMs9hQ1Eem9usUIBCUP4Q+OaZ3u0if2/XZI9Lioxy0NBFyDPryy
+	 S8S5SeBLBgooqyplAkD00YNDXDjVV+kqgYF2g6JJ+ha+i2RCLuhpwfV3XAeBSd1O4s
+	 Wj69Gm1/Wspw95I89hylmpns/qCqzELkR7ali+NjMd9pFZVuih/FtDIx7FM8NSfDNx
+	 CvCxQDoIXGcegrKfYENKCPGlVIVdYtx6oNm2uYMuQ1r19juAwtZMVopvj1P7F3aZB5
+	 hvGRxrcmxIt7Lf8kVkizYLhw+9XVTVP0ATFPuzHD+p6CxSpaXideDHYmVvzmyrzD/W
+	 dDjs7PUlOlGAg==
+Received: by mail-lf1-f47.google.com with SMTP id 2adb3069b0e04-5aeba09900bso5761276e87.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2026 02:08:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+RrLODYl+BMqpT/gZ33gkr5oobAkHIdOU9L/hzwU6L1ZWBWJtXJwnE3m4udqdFFpnjGtLmP9NSus7enh7O18qg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxkOhqUHBTo3HDPScVrP5ol89hPn/npDxCMWbGFsyetixp+JH8H
+	/BNWjyjRSBgR+5R968gBK/GfPQJ6wvsKahLGS7cELe6TCLFX0RhDPf4loTpdquQj0Mh4nfoVk5b
+	50TdCHGZJ8RTvhaFvTZYenpZKCltoci+G0DtTBxImZw==
+X-Received: by 2002:a05:6512:239e:b0:5ad:58c8:5de8 with SMTP id
+ 2adb3069b0e04-5b28f854e5amr3537391e87.1.1784624928719; Tue, 21 Jul 2026
+ 02:08:48 -0700 (PDT)
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Tue, 21 Jul 2026 09:08:45 +0000
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Tue, 21 Jul 2026 09:08:45 +0000
+From: Bartosz Golaszewski <brgl@kernel.org>
+In-Reply-To: <20260721065413.2306137-4-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260721-ccaione-upstream-mt8512-mtu3-binding-v1-1-2f229c39f121@baylibre.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yWNywqDMBBFf0Vm3YFMSjT0V0oXSRztFEwlDymI/
- 960ri4HLufskDkJZ7h1OyTeJMs7NqBLB+Hp4swoY2PQSvdq0IQhuHZhrGsuid2CS7GGdJt6RS9
- xlDijUdQbb4OlgaCp1sSTfP6Z++PkXP2LQ/m54Ti+6Uvzw4gAAAA=
-X-Change-ID: 20260721-ccaione-upstream-mt8512-mtu3-binding-50165b8c8171
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, David Lechner <dlechner@baylibre.com>, 
- Julien Stephan <jstephan@baylibre.com>, Carlo Caione <ccaione@baylibre.com>
-X-Mailer: b4 0.15.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_010037_900587_28A90DA7 
-X-CRM114-Status: GOOD (  10.03  )
+References: <20260721065413.2306137-1-wenst@chromium.org> <20260721065413.2306137-4-wenst@chromium.org>
+Date: Tue, 21 Jul 2026 09:08:45 +0000
+X-Gmail-Original-Message-ID: <CAMRc=McsCRBxXMj0xC8H0cgdZZ=Z9_4u_DS9b2z0pLE0=gZr+g@mail.gmail.com>
+X-Gm-Features: AUfX_mzwzLN239CObNW1gLp59KRlXCiikBTT40SGbitpk5WIVatni_t3viiU0PQ
+Message-ID: <CAMRc=McsCRBxXMj0xC8H0cgdZZ=Z9_4u_DS9b2z0pLE0=gZr+g@mail.gmail.com>
+Subject: Re: [PATCH v6 03/16] power: sequencing: Add pwrseq_power_is_on()
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: linux-acpi@vger.kernel.org, driver-core@lists.linux.dev, 
+	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Manivannan Sadhasivam <mani@kernel.org>, Alan Stern <stern@rowland.harvard.edu>, 
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>, 
+	Bartosz Golaszewski <brgl@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Daniel Scally <djrscally@gmail.com>, 
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,38 +94,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8512 USB controller uses the standard MTU3 device MAC and IPPC
-register layout and is handled by the generic mediatek,mtu3 driver. Add
-the SoC-specific compatible so the controller can be described without a
-legacy split node.
+On Tue, 21 Jul 2026 08:53:58 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
+> The power sequencing consumer API already does power on state tracking
+> internally. Expose the state to consumers through pwrseq_power_is_on()
+> so that they don't have to reimplement it locally.
+>
+> Acked-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+> Changes since v5:
+> - Reverted back to returning -EINVAL if descriptor is NULL
+>
+> Changes since v4:
+> - Make pwrseq_power_is_on() return 1 if descriptor is NULL, i.e. if
+>   the descriptor is optional, matching the other pwrseq consumer APIs
+>
+> Changes since v3:
+> - Added missing stub function for !POWER_SEQUENCING
+>
+> Changes since v2:
+> - New patch
+>
+> Needs to go in with "usb: hub: Power on connected M.2 E-key connectors"
+> as it is a build time dependency. Bartosz wants the change on an
+> immutable branch to pull into the pwrseq tree.
+> ---
+>  drivers/power/sequencing/core.c | 18 ++++++++++++++++++
+>  include/linux/pwrseq/consumer.h |  6 ++++++
+>  2 files changed, 24 insertions(+)
+>
+> diff --git a/drivers/power/sequencing/core.c b/drivers/power/sequencing/core.c
+> index 02f42da91598..72b96d36920e 100644
+> --- a/drivers/power/sequencing/core.c
+> +++ b/drivers/power/sequencing/core.c
+> @@ -968,6 +968,24 @@ int pwrseq_power_off(struct pwrseq_desc *desc)
+>  }
+>  EXPORT_SYMBOL_GPL(pwrseq_power_off);
+>
+> +/**
+> + * pwrseq_power_is_on() - Queries the last requested state of the power sequencer.
+> + * @desc: Descriptor referencing the power sequencer.
+> + *
+> + * This returns the last requested state of the power sequencer.
+> + *
+> + * Returns:
+> + * On success, 1 for on and 0 for off; negative error number on failure.
+> + */
+> +int pwrseq_power_is_on(struct pwrseq_desc *desc)
+> +{
+> +	if (!desc)
+> +		return -EINVAL;
+> +
+> +	return desc->powered_on;
+> +}
+> +EXPORT_SYMBOL_GPL(pwrseq_power_is_on);
+> +
 
-For now the only user of this is on the U-Boot side but we want to keep
-bindings in sync.
+Didn't we agree on introducing an enum to make it future-proof for when we
+also pull in pwrseq_is_controllable() from Loic?
 
-Signed-off-by: Carlo Caione <ccaione@baylibre.com>
----
- Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml | 1 +
- 1 file changed, 1 insertion(+)
+I think this should work like so:
 
-diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-index 21fc6bbe954f..42da2c6dfba1 100644
---- a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-+++ b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
-@@ -29,6 +29,7 @@ properties:
-           - mediatek,mt8192-mtu3
-           - mediatek,mt8195-mtu3
-           - mediatek,mt8365-mtu3
-+          - mediatek,mt8512-mtu3
-       - const: mediatek,mtu3
- 
-   reg:
+enum {
+	PWRSEQ_STATE_UNKNOWN,
+	PWRSEQ_STATE_ON,
+	PWRSEQ_STATE_OFF,
+};
 
----
-base-commit: b95f03f04d475aa6719d15a636ddf32222d55657
-change-id: 20260721-ccaione-upstream-mt8512-mtu3-binding-50165b8c8171
+int pwrseq_get_state(struct pwrseq_desc *desc)
+{
+	/* Only once this is upstream. */
+	if (!pwrseq_is_controllable(desc))
+		return PWRSEQ_STATE_UNKNOWN;
 
-Best regards,
---  
-Carlo Caione <ccaione@baylibre.com>
+	return desc->powred_on ? PWRSEQ_STATE_ON : PWRSEQ_STATE_OFF;
+}
 
+Bart
 
