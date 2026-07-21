@@ -4,175 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 341C0C44515
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jul 2026 22:48:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD001C44520
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 02:26:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m14BpINJb623SiKHt8/tkPmWnRcVuET3vcWE52jiJ9w=; b=LJpZJqT3MyHFv7fA9DMADeOg7R
-	LU4YOAGBxF5BCllvhOs6DUi7Te6XedgpOlDLWOZ+xXX8njudYukKhawNtC6hMPSvq4LMHR0r8lxDS
-	LIfcBjQOtJlUH8YmgyqAX3Bqz5YXUYFM/qo2dG1Rvt6fI87/DKI2uft9fw+nrcLN1JWqGTAi2uZH7
-	sYETrKlvhoZQijPLXja4OeT8bwZ/O3CPZv7SQYAUDyzsyUbons5vhTqwX13vcV5+EY8ODLUbfMgmB
-	mQdZnLCwderEJ63voYELBQawARh0ygR86jqSSs0rWwEQRADvIrwZxyCYSBtBBQcAHcnjip2DIcNlC
-	inJ3AoPA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ehQyL3yVbLuittsORgFXc0Ov1t74Yv3YeCmk2zqSXrM=; b=TEeI+HiV7gjr+hUZCcMIb60C0Q
+	D/oLwjAiQKVK3jCG7u9CwCDfmIOpUtv14axhurnyjx6c3PErj2K6QkTs0FMTWvvx1kzjwz8T7gaIf
+	HrxC3qJauI1+grJ78/KHMwM6d5vQjjnMT1wcBdOD3w/3CdtbWaomQuuVhYhFWkcb8mkdOTSnq8LVA
+	7plLqOdmq4I2poLQMxzYaIRUDo9mGSFUeFnxnfl/10YWbpQGFauFkdJqrTzomjzBOgvjfsfQgKFk/
+	L/9twiOASCOP2cKmW0NyIO3EKpSWQ4X5ggnPisJ3jV4uRNmmOVl1bH0dVXzAYBqM7YemyocRfdXTt
+	YMuIlGSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlwmc-000000083W4-2UWo;
-	Mon, 20 Jul 2026 22:48:22 +0000
-Received: from mgamail.intel.com ([198.175.65.17])
+	id 1wm0Bk-00000008FY1-1kBK;
+	Tue, 21 Jul 2026 02:26:32 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wlwmZ-000000083VH-1OYN;
-	Mon, 20 Jul 2026 22:48:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1784587700; x=1816123700;
-  h=message-id:date:subject:to:cc:references:from:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=ZeY3c0JMwXEyjiu5MJLEcoOgcKc6NEPAkAX46apFAAY=;
-  b=QN4OgmQbKOnv3m3lrCJRXxbskpgjoJSKRkvL1c6zAA0n3Y1mJROGbMF7
-   c6EnE0iuDGsB9hkeY+Oh8kckfj3EmOnhASyGBVR1diiNhjJvEOHgoIG42
-   KIecuU3Jzpzmph5U98suGui/CTihbyLTPC7f8FLXGOWrk8Iy43jDsmUA8
-   iyW+aZy1P+IxWTrfw8BNgkSpwF+Vo+KW6kum85m1rxUQ91XItq5lllfbT
-   1S5GxjNGwFOYCqX6msNiQ0RSTPJK6y/wfG17K4Ir0MXOyBWBdZdGOBgyg
-   gksjYSWw4lh/mS21lYYHEZd6Ll42qXAVhmI5BwwzDyYmPEp2Zy2skcTEH
-   Q==;
-X-CSE-ConnectionGUID: Wpl9yljuSOuyiDw/adC2ag==
-X-CSE-MsgGUID: HfvJXUS0SxCnJeC08cEpyg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11852"; a="85201429"
-X-IronPort-AV: E=Sophos;i="6.25,175,1779174000"; 
-   d="scan'208";a="85201429"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Jul 2026 15:48:19 -0700
-X-CSE-ConnectionGUID: tFjQZQGjT4+BOvVXDOZJ0Q==
-X-CSE-MsgGUID: MZiSv/JYTCK3R4U0qiZDuw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,175,1779174000"; 
-   d="scan'208";a="259570393"
-Received: from fmsmsx903.amr.corp.intel.com ([10.18.126.92])
-  by fmviesa004.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Jul 2026 15:48:18 -0700
-Received: from FMSMSX902.amr.corp.intel.com (10.18.126.91) by
- fmsmsx903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.43; Mon, 20 Jul 2026 15:48:18 -0700
-Received: from fmsedg902.ED.cps.intel.com (10.1.192.144) by
- FMSMSX902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.43 via Frontend Transport; Mon, 20 Jul 2026 15:48:18 -0700
-Received: from SN4PR0501CU005.outbound.protection.outlook.com (40.93.194.12)
- by edgegateway.intel.com (192.55.55.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.43; Mon, 20 Jul 2026 15:48:17 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=im1HAtV93YDq0TfjYvhtMuG3xxcoHnOG6mlvwxqq6YmrWHT6EFmfOAftxDsOCqPnaOXrwZIKsynBYTgv6rDjJZ/9214EmuKgf73igS5MOFJea28Faf2GE/iQ513FjdMQfEtz01FocQdbEQ3q7AXoansdvs8fGDOnT3qrNj/C+VZ5i+3h3s3KLEtrCwYOMDE7IuES5SrYE3hgF3FjBQTtRgaEuXreeZ9ldgT5AQx65FJOKBMWE6aqLUwJ2dUgVXh6pK+dpLZhjSfEDZfIAuuQCCZeSLwNVKdr+0d/MLRnQxdu8+YPlY+F/0HkAksqfkxHYtRIcK/fJh6QupcoIt5M2w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=m14BpINJb623SiKHt8/tkPmWnRcVuET3vcWE52jiJ9w=;
- b=VGt2kTt0uGkna/dyDEUdAcBkguRsItgHuBX3vlB1GtxwMv712cUx3Xkw2xNIVIyboiqtXEHXBTb244zgMv5Boc4FJuh4Jnhwn/l0V2ykSjuNAuaxiKSDyx13RRg4biGJzOs4FCERG1Rm4q+fP6/jwKNxrlM3pUvrZnaX4K5s5NE5095IHZy8R4XfQZ3q1OeS5MwcivXCywH2COwIBGcZopyg8XAPBChlWEL/mChsuZo2ol/zLjmnXlyadbiP3pPNxWfh0Vh+Cm6TmnRJCsCjuoWLzPlUX6JK8z92GZber08qkVJ1yRhwwQ9Bli4hz4MGCJieKWgJe6hKz5T/Upp9EQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from DS0PR11MB7381.namprd11.prod.outlook.com (2603:10b6:8:134::14)
- by SJ0PR11MB8296.namprd11.prod.outlook.com (2603:10b6:a03:47a::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.223.18; Mon, 20 Jul
- 2026 22:48:15 +0000
-Received: from DS0PR11MB7381.namprd11.prod.outlook.com
- ([fe80::4c39:dfe6:d6dc:6f58]) by DS0PR11MB7381.namprd11.prod.outlook.com
- ([fe80::4c39:dfe6:d6dc:6f58%6]) with mapi id 15.21.0223.017; Mon, 20 Jul 2026
- 22:48:14 +0000
-Message-ID: <5e0444bf-b258-4a6b-a1dc-fecc3419ebad@intel.com>
-Date: Mon, 20 Jul 2026 15:48:12 -0700
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v9 3/3] net: airoha: defer GDM3/GDM4 WAN mode and
- GDM2 loopback to QoS offload
-To: Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn
-	<andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, "Eric
- Dumazet" <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
-	<pabeni@redhat.com>
-CC: Simon Horman <horms@kernel.org>, Alexander Lobakin
-	<aleksander.lobakin@intel.com>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <netdev@vger.kernel.org>, "Madhur
- Agrawal" <madhur.agrawal@airoha.com>
-References: <20260721-airoha-ethtool-priv_flags-v9-0-9c15d8b71a56@kernel.org>
- <20260721-airoha-ethtool-priv_flags-v9-3-9c15d8b71a56@kernel.org>
-From: Jacob Keller <jacob.e.keller@intel.com>
-Content-Language: en-US
-In-Reply-To: <20260721-airoha-ethtool-priv_flags-v9-3-9c15d8b71a56@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MW4PR03CA0337.namprd03.prod.outlook.com
- (2603:10b6:303:dc::12) To DS0PR11MB7381.namprd11.prod.outlook.com
- (2603:10b6:8:134::14)
+	id 1wm0Bh-00000008FUm-1G1b;
+	Tue, 21 Jul 2026 02:26:31 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.99)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1wm0BL-000000000Cr-1a0z;
+	Tue, 21 Jul 2026 02:26:07 +0000
+Date: Tue, 21 Jul 2026 03:26:04 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Allen Chen <allen.chen@ite.com.tw>,
+	Hermes Wu <hermes.wu@ite.com.tw>, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v3 0/4] drm/bridge: it6505: DP audio support + shared-DAI
+ hw_params fix
+Message-ID: <cover.1784600387.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS0PR11MB7381:EE_|SJ0PR11MB8296:EE_
-X-MS-Office365-Filtering-Correlation-Id: 805b59f1-7e53-4164-0650-08dee6b0fbe0
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|376014|7416014|366016|1800799024|6133799003|11063799006|10067099003|4143699003|56012099006|18002099003|22082099003;
-X-Microsoft-Antispam-Message-Info: dtwKjaE/jYxq/n5eLKxjT8MCp9BuHXhvDGaVs5Hm4sk/ZCmlg3QBb9GrDTH69waUrmZrI/K33DF5Fw+ke1ow30PvQ3CRk8CPpOxFNTiecoGQI+fbBzTw4pIiGHpyROvvoJpGXyc8s60l48fUTTZVGZbSCQv49+SJ1xf6hkT/0PZG+/UZCsPa+iYUD9ViTt2eBkxO//jcb6GsLbIZJCNG9lpHR02p0YrHMKMTYZ0APTIwAG1kHwJCuwhe8ks8GoEo1P8RLb+E/XxXFo11PCx0GXfGpgCZUYH8BsrXGNZ0BGxRQGsYaeoogR+pHG4fWOQKWgj4MSs5b8V14UO9vn0FMV9r1AEQYNNC5Q2sGF9azmhu5S27XnYiINOtcbI02uVJUSnJovm+qMK/O8s7fT9TZPw4lKqe4MYAWKtX1Fdqj1BWDLLeYSjS7yhZRDw5a9T7G1NgVhSHAeDfGzMcDmid1pwRbKL0hSndzcVHnINaclArV+ze7l2lwO8aibOR8OVj6KHaeD6h585lYxFF9jaym8VpDHCMQCtE/jJBOQ7nPdsKIx18T7W5sjwNuFMMJG7JK/CEApI9IP4JshNpfv7MQ95AAQjMbCYeDU1euM+gjE7fYA1zW8JG5MGe69SUGCxc1DXhepMUHAaRtdxSEs1aIr68oWvq3M8lTE5mhph2KJU=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DS0PR11MB7381.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(376014)(7416014)(366016)(1800799024)(6133799003)(11063799006)(10067099003)(4143699003)(56012099006)(18002099003)(22082099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?SHVIaTE2RzBocWFMUGFTak9pUm5MdGJXUHZVV1FKcGl1cHNBaHhTcERzM213?=
- =?utf-8?B?eHpOcVdWUHBTdnplKzJodUpBS3J4bmlId0lSbXJUeGN3OXBCL1VGbzBQV0k4?=
- =?utf-8?B?QmJtNit5MmQ0T2JyNUQzbDMyc1dmK2h2U3czeHROZWVRcElzZ3Q0cHRtSzVP?=
- =?utf-8?B?UE94ZjBRWjJGWmZZN0lHS2FsYWVLcnpYbGtlVDBMRGhyM1lkdWo2NGFlenp5?=
- =?utf-8?B?bEZnRFVMZVZZbnlFR0hyN1ZzaHd3NHJHQWVhcDhVU0hsaStqZW5haDAyVmpp?=
- =?utf-8?B?S00ydXRCKzVTUlJGaUNFcWJzZXcxcE5kOXdpQ1J4MmRhczRiZ0xpRktQZVV5?=
- =?utf-8?B?dDlBc29DeUF2UHBPektqeW40YkdPem1lcW5UM1J0NCtOeGNDVkJ5b1NGZEZ3?=
- =?utf-8?B?NVlOYjVUdnM0YkZDeVBqRXJseitCemJUQndvRVordzFUSVRWUExWN0ZnNkN2?=
- =?utf-8?B?dmtyN0JoaWdzeTFnMloyWHpnZ2IxQzU5N1VkMkh2QVpMZVRoSDBOY0dVOWxC?=
- =?utf-8?B?RkhjNElIMVZ3NFRQSW9yNG1wNnJPNzRmUi9LckxpM2lJTmxuM250SHhvSTc0?=
- =?utf-8?B?VkQ5ZE1Zd2lYUWMzdGk3WVQvRzRIQXBzcjhCdXdVWlJncW45NXZHYUhwVzNV?=
- =?utf-8?B?Wis5VXBibVpZMlh2d3RJZ0xwelhXaXNUd0pMWjBRcFJQVk1jZWxrb3Ixalo5?=
- =?utf-8?B?N2Y5dTV4QVNMQmVaekhKQk9sa05hdXZKYmJlRWxULzEzRnNIWGptMzlBOFdm?=
- =?utf-8?B?b2hPQU1xdU1pMTFDbDNjak5mMHl4bkNtbnBac1BCeDgwM1dXYzRUWm5IRFFN?=
- =?utf-8?B?aXEySHovbysvMzIrT0FUMjE5OFFZQWdOUDNYd28wMTBMaFdyNWF0K3FDdUpw?=
- =?utf-8?B?aVpWZmdFTmNmVlBFaU5uVGZDb3RxSEVvR3VNTEhzY3ovQ3hRYWlmVEdkZ2ds?=
- =?utf-8?B?bnRqRlhZVHlDUFRnK3BXOEVvWER1cG5NZDdDOWtlL2Y5Z2M5MnQwNTl4MndB?=
- =?utf-8?B?SXRWaDB2eU9RWHp5dkxBNVhWamQwbG5vOUN2Vklta2pjTzBFZE5Ld2xwSHhi?=
- =?utf-8?B?SmYrb3J3ZGhBaTA1SnJkMW0xTFVFdVBGbndUS2hDNUg1dHgrNTArODJwamov?=
- =?utf-8?B?WWdHczlhNnJ6Z0pLS0JaK2k5bTQxTlg4ZC9wNFE2M1p1VzBPaGFQTlBFNHBj?=
- =?utf-8?B?czVaMW1sT0Q3N3hiWXpSdTlmMTV3ODVHVDk4NkhaNTNVNTQ5bmpjTEF2czA3?=
- =?utf-8?B?bzNXalRVL0ZWSThjTWtzZTFJWmRIdFZ4WmhHNmNyNVpkVHEvMEFFNnpPV1lm?=
- =?utf-8?B?ajNUMFkrZ3N3d0F0VVVFRmlEYW1tYUtQQi9XZ3VhT3U4SFBjVDZoVXN1WG9i?=
- =?utf-8?B?REtYOUtkaUJ6amV2VUN5WUR1VTIxMFd2MEY5bGx6Y0VHZ1NMOGxYWVZOZUc5?=
- =?utf-8?B?RVovVjdpMnJJa1pNSWVGTWtOVkJQNHI0aW5sMVVSQWtzbk5NL25tQ0Q5dm81?=
- =?utf-8?B?QWlpRGlkLzV2VzZQd2E1NTNRSTl0UDRTcmNmRUFnRUZlTktSVVN0VG9DRWlI?=
- =?utf-8?B?SS9UbVRsY1NEaDE3M29FSEk4QzhDY2xuZHZlTGU4MzErMnBldW45eVNoTk8z?=
- =?utf-8?B?OWIyUjBPVG9xcHB1M1R1QVpkREVDVGNKMkh5Y0ZIampCMDgzL1VUempXZFVP?=
- =?utf-8?B?Vi9xcnZSN2xlZnkwU1N2WUM1MG9maS9McUtQWkJBWkJOeHI2YkZOWlFmZ2RO?=
- =?utf-8?B?KzU0V29QMkxkV2dYelRYU3lYd2JuekxMekg5bDV1MVJmYkRhU1hlVUpMQU5U?=
- =?utf-8?B?RDlEdU1lT09jemc4MTB2OHdBZVZYSWhDN2J6TEJBaFhNTnBYcUVCREtXZDR0?=
- =?utf-8?B?eGpwbU4wTC9lRXZCN0dFNnc4bXdBa0o4cFU4SWVBWlZMWWJjRFlYZ3Y0TGZS?=
- =?utf-8?B?bVczcWY1OTdkenFnWUpZWjVnM0Yxd2llV3VNakpUYjhvRzVVcUNLRHYyem1z?=
- =?utf-8?B?NmRzOVZiMDgySHBSMVora3Y3OFgvUWx5c21weWRhT2pFQjAvUk5XZEozU3JV?=
- =?utf-8?B?WkVvRzE3emRRTjRHVTVQUlZsSXR2akFUZGVvajZjay9zZ0NVZHVOWEszNWdz?=
- =?utf-8?B?R3piK1F5R2lQUEJlaGxYZy8vczN0dTk5SE5JaXE2aGZERDFsWmJEazFqM1hp?=
- =?utf-8?B?WHJwYnZqdGczUjh3S0JaYVdFVlhQSFkremdkL1M0ZGpPSEVZeGVQOWx4RzNX?=
- =?utf-8?B?dm1Lcmt6dEpmNXdFL3ZhcXQzYnNJcDJyT0orckNwblhGdGlISENhUnZQd3BJ?=
- =?utf-8?B?V2p0VU56dkRWRGxnSjZTY2lDaHJ5R1IrbXFNSmdoRDl1d3dLYUJsQT09?=
-X-Exchange-RoutingPolicyChecked: CNThRi8FWkLHLVa5oclAymolDAE+r32sPPECoyWqmGv2MqkCltMp3Kjeu5ZK8Lf3hhvMDKjsoQhkB4+KxZ7j6ReMLgDo8hcx6ZVj/Yk7hnS0GvIYjmgGURDp/hkJ5k08ODiYYvwTmvl+EmTs+EkvlUCFQo83BLBC/wNPzYr6lz9BoaQOIWgTW7SrtxeJ2r3iH9UKjRict4sd1xBYCJc8XoA9T8m75KKj9t6YQ+jVtwYCKmchwJDpqTeWG8zQrARYIjd1+xRnuUdfMoRT5JR6ehEJLmG//UAaNcALUX4QLDVQaf3m44SySDptyEI6BuNK3vKm5geQaGaV2wCTsFnYIg==
-X-MS-Exchange-CrossTenant-Network-Message-Id: 805b59f1-7e53-4164-0650-08dee6b0fbe0
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7381.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jul 2026 22:48:14.9156
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: UPkY18lL1qyyZUK30HTRwLMKdeNR04Wah4/WvDZXzF1qB5TP/XSwX2sUV9WMyL3KYjR1awN8Rl66dYJlvdDFVTOiBG07d9y67xOu5aMPyfk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB8296
-X-OriginatorOrg: intel.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260720_154819_446650_DFC55BBD 
-X-CRM114-Status: GOOD (  15.40  )
+X-CRM114-CacheID: sfid-20260720_192629_336873_38205FBC 
+X-CRM114-Status: GOOD (  16.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -187,44 +74,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/20/2026 3:03 PM, Lorenzo Bianconi wrote:
-> GDM3 and GDM4 ports require GDM2 loopback to be enabled for hardware
-> QoS offload to function. Without it, HTB and ETS offload on these ports
-> do not work.
-> Previously, GDM3/GDM4 ports were automatically configured as WAN with
-> GDM2 loopback enabled during ndo_init(). Add the capability to configure
-> GDM3/GDM4 as WAN/LAN on demand when QoS offload is created or destroyed.
-> Hook airoha_enable_qos_for_gdm34() into TC_HTB_CREATE so that requesting
-> HTB offload on a GDM3/GDM4 LAN port switches it to WAN mode and enables
-> GDM2 loopback, with proper rollback on failure. Introduce the
-> AIROHA_DEV_F_QOS flag to track whether a device has an active HTB
-> qdisc; clear it on TC_HTB_DESTROY. The device keeps its WAN role after
-> qdisc teardown so that its configuration is preserved until another
-> device explicitly needs the WAN role for QoS offload.
-> If another GDM3/GDM4 device already holds the WAN role without an active
-> QoS qdisc, demote it to LAN before promoting the requesting device. Skip
-> the demotion when the requesting device is itself already the WAN device.
-> Since airoha_dev_set_qdma() can now be called on a running device to
-> migrate between QDMA blocks, make dev->qdma an RCU pointer so the TX
-> path can safely dereference it without holding RTNL.
-> Hold flow_offload_mutex in airoha_enable_qos_for_gdm34() and
-> airoha_disable_qos_for_gdm34() around the dev->flags update,
-> airoha_dev_set_qdma() and GDM2 loopback configuration, serializing
-> against concurrent airoha_ppe_hw_init() in the TC_SETUP_CLSFLOWER
-> offload path.
-> Introduce airoha_qdma_deref() helper that wraps rcu_dereference_protected()
-> with a lockdep condition accepting either rtnl_lock or flow_offload_mutex,
-> and use it across all control-path dereferences of the RCU-protected
-> dev->qdma pointer.
-> Add airoha_disable_gdm2_loopback() to disable GDM2 hw loopback.
-> 
+This series revives HDMI/DP audio support for the ITE IT6505 DP
+bridge, originally posted by Jiaxin Yu [1], rebased onto current
+-next and with the v3 review feedback addressed: the stale
+&client->dev usages reported by AngeloGioacchino Del Regno [2] are
+gone (the driver meanwhile gained it6505->dev), and the
+"#sound-dai-cells" binding property requested by Chen-Yu Tsai [3] has
+since been added by commit 325af1bef5b9 ("dt-bindings: display:
+bridge: it6505: Add #sound-dai-cells").
 
-A minor nit which may just be my personal preference/style:
-I had trouble following this commit message since it goes through a lot
-of detail about various problems with dereferencing and other changes
-related to allowing the defered configuration of WAN mode.
+Patch 1 fixes a pre-existing use-after-free in the driver's remove()
+path: none of link_works, hdcp_wait_ksv_list or hdcp_work were ever
+cancelled before devres frees the it6505 struct, unless DRM core
+happened to call the bridge's .detach() first. It is needed before
+patch 3 so that wiring up the new hdmi-audio-codec platform_device
+does not add another caller into an already-broken teardown path.
 
-I do appreciate this detail as it helps understand the changes and
-motivations. However.. It might benefit from some additional line breaks
-for spacing to help readability.
+Patch 2 fixes a second pre-existing bug: it6505->audio.channel_count
+is zero until either DP link training or a valid ALSA hw_params call
+has run, but it6505_enable_audio_infoframe() indexes an 8-entry table
+with channel_count - 1 unconditionally, which is an out-of-bounds
+stack read if the audio-FIFO-error IRQ fires first. It also fixes a
+debug print that logged the previous channel count instead of the
+rejected one. Needed before patch 3 for the same reason as patch 1:
+that patch starts exercising the audio-FIFO-error IRQ path in a
+configuration (shared I2S bus) where it is actually likely to fire
+before any display has ever been hotplugged.
+
+Patch 3 wires up the previously-unused it6505 audio helpers via
+hdmi_codec_ops, which unblocks the mt8186-mt6366 sound card that
+references it6505 as the I2S3 codec.
+
+Patch 4 is a follow-up fix so that audio hw_params are accepted even
+when the it6505 DP output has no display (and thus no encoder)
+attached. This is needed when the it6505 shares its I2S bus with
+another codec, as on the MediaTek MT8186 "steelix" Chromebooks, where
+the shared I2S3 must keep working for the speaker path regardless of
+the it6505 link state.
+
+Tested on a MediaTek MT8186 (google,steelix) Chromebook.
+Actual HDMI/DP audio output could not be tested lacking the USB-C
+adapter cable. However, making the it6505 at least probe and fixing
+the obviously missing things makes the sound card on the Chromebook
+come up and internal speakers and microphone as well as the headset
+mini-jack work as expected (both tested).
+
+[1] https://lore.kernel.org/all/20230730180803.22570-4-jiaxin.yu@mediatek.com/
+[2] https://lore.kernel.org/all/c35ef2d8-ab40-484b-9a4c-38f2f3e7d99c@collabora.com/
+[3] https://lore.kernel.org/all/CAGXv+5G2tP9i8VrUc6-xs2d72_nL9XH9iSCeixzA2AM7X5fXOQ@mail.gmail.com/
+---
+v3:
+ * new patch 1: cancel link_works, hdcp_wait_ksv_list and hdcp_work in
+   it6505_i2c_remove(), fixing a pre-existing use-after-free flagged
+   by automated review of v2
+ * new patch 2: guard it6505_enable_audio_infoframe() against
+   channel_count == 0 and fix a debug log printing the wrong channel
+   count, both pre-existing bugs flagged by automated review of v2
+ * patch 3 (formerly patch 1): serialise it6505_enable_audio() /
+   it6505_disable_audio() with a new audio_lock mutex, resolving the
+   "input welcome on whether a lock is warranted" note in the commit
+   message; track explicit mute state so the audio-FIFO-error IRQ
+   no longer re-enables audio out from under an ALSA-requested mute,
+   both issues flagged by automated review of v2
+ * patch 4 (formerly patch 2): no changes
+
+v2: https://lore.kernel.org/all/cover.1784561622.git.daniel@makrotopia.org/
+ * it6505: store the hdmi-codec platform_device and unregister it on
+   i2c remove, fixing a resource leak / use-after-free
+ * it6505: initialise the delayed audio work before registering the
+   codec device
+ * it6505: synchronously cancel the delayed audio work on audio
+   shutdown and on driver remove (cancel_delayed_work_sync)
+ * it6505: rework the mute path to cancel pending work synchronously
+   and disable audio immediately when muting, removing a race
+ * patch 2: drop the encoder check entirely instead of returning 0
+   early, so the stream parameters are always cached; rewrite the
+   commit message accordingly
+
+v1: https://lore.kernel.org/all/cover.1784393979.git.daniel@makrotopia.org/
+
+Daniel Golle (3):
+  drm/bridge: it6505: cancel outstanding work before teardown in
+    remove()
+  drm/bridge: it6505: guard against zero channel count in audio
+    infoframe
+  drm/bridge: it6505: Don't reject audio hw_params without an encoder
+
+Jiaxin Yu (1):
+  drm/bridge: it6505: Add audio support
+
+ drivers/gpu/drm/bridge/ite-it6505.c | 138 +++++++++++++++++++++++-----
+ 1 file changed, 116 insertions(+), 22 deletions(-)
+
+
+base-commit: 0718283ab28bc3907e10b61a6b4be6fefa1cbb2f
+-- 
+2.55.0
 
