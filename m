@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAC81C4451C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 10:30:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 770BEC44529
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 10:43:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Uqe8psFDIQlKSUFJ5GIbpCPkfIxTBiYWBpCteC7DREQ=; b=1avL/dF4KLWg5KUTOLSbTT4giu
-	n5DE0fbJQ0vbPaxv8ssXl99IT/Bm+nDttZ2oD2HEc+sk7gMybzFPaItjVR5XtAIimT1yrt9jKv3br
-	yh/qBHTMm7Q0heJ9om7iElcFh6yF2S/HguXyNFYuK8N4OYe7sl/iKRhTBJam+EFv81KiOrK7mg3tX
-	+9604kiIpSKODBA+YcxzgwMhdZ8zhtQe9lMetur1xar8lJgDDmBBnCuYeVbFSbOMRIS+NAl+EAlca
-	bwqSsgZA4maoRVcJy5Rh7ggr2yQ1cv6JTE5H/lFQ1Omnvyx8Ni6F0MGRgQxZlKvu4PqK2/8eltYFd
-	TssggMTw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fk+3zU33sCqoZlV6B6qSYZSBg88kLSXJJ3oAr4lA5vU=; b=X9SC+GOgHtWQ9c
+	zjaxBkvx7wSkewAVJBoJ1tR4TPrQ+mM6Pp+CSp/VWu9y5oJgBmX0G7QryWLF0v/rU/3dAEkvPENI4
+	M15BigXFJKiDoXLgCbwuZxYtcLa+Kajfn5RADX6GFr6/kzsSo7A2FXV/gLdZtq8lECOskLH7vJKEW
+	ecVd4f+aRFU6KuD3AVLi36fuBcAVQdh4G0GhyuHj13D+PXeIk4f/+RHCV9RF4at2WFuwX7teQ/S8U
+	cfgE6AsdgRkxpMoa/YQhRdskNYlUNk8E5RwSS4i6ZQGOoX6ZIf2FSygkg2BdyaPPrXS9iKex7wpQF
+	Z9tytGvfoaZjkwzk0ZGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm7kY-00000009BmO-3Hjv;
-	Tue, 21 Jul 2026 10:30:58 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wm7wT-00000009Ehk-1nr3;
+	Tue, 21 Jul 2026 10:43:17 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm7kL-00000009BfV-1PuW;
-	Tue, 21 Jul 2026 10:30:45 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id B913B438C3;
-	Tue, 21 Jul 2026 10:30:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99CA61F000E9;
-	Tue, 21 Jul 2026 10:30:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784629844;
-	bh=Uqe8psFDIQlKSUFJ5GIbpCPkfIxTBiYWBpCteC7DREQ=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=j22OvqY8Pbif3S+luzLHYveGbmXuvmMd/W97S/Z2LHy7m9XE4t6B1gGUDf0xDXQrY
-	 KkikLafF1h1CYj/WnR8bVBhShcOEY1+XzT30ftghVIjhhE7GOqSGTiGiQINnrZDpGq
-	 Tf+1RUSTNCEvZxorT/lXoij9XiBLIorLbXnduLp5KoGzJIRdy4L36tycL3Afr7hBC+
-	 1uqnYL4G5zTHJ/7/pZ+dHAv1d+O71Kxo/PXToxnxHsWqf4T0Fi4ZEK8y9JpchA23Lh
-	 2k4ITc37CZhBX3iNMXaNKgF+yL6Z92ZQ/9w2mCW2A2piT3V17QF6Q6FqcT18wO5kjp
-	 RKhZ3Az5WQPKw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 93A203924A64;
-	Tue, 21 Jul 2026 10:30:15 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1wm7wQ-00000009EhA-0YVw;
+	Tue, 21 Jul 2026 10:43:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1784630591;
+	bh=ArAK5eqqqsAwRJw9a12ekL0SmbGFQuXBHELKAchUZ2A=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=crWUlhcAh3AbBhIOV9712HCInJrmYECt0XPRLkQQ+8axoEOnwGU8Czco2MEe3Ppyj
+	 e9ewF0Fo/mfM8ZYrrw6fLbFlU2cp/RZoxQWEqAMRqNauF2Sr1pmL0GvQwO1x034ied
+	 OJn4Zwq42CDE59ECSzH9BLRRGgr4UWQ9wW8KM4/8yfHpTFipYX2eBFjVQz7S0GuUQz
+	 Apf+6IDXSjsWXOchI/oRA5XHNBsPMYW7m+cehXIUirM3505ACZ+IAlXcnzN/idpwzw
+	 HV9tnVP0+7nRfF3RelmhW4RtzxCxOXtHpoODUNPl2jKyvdmGczykkEGWztpD10330N
+	 Wbtzf8PT6ufrQ==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 02E4117E0018;
+	Tue, 21 Jul 2026 12:43:10 +0200 (CEST)
+Message-ID: <8a9aed82-5f0c-4ad8-91c5-1e1ac169781d@collabora.com>
+Date: Tue, 21 Jul 2026 12:43:10 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net] net: airoha: Fix DMA direction for NPU mailbox buffer
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178462981413.215603.10774821203949448313.git-patchwork-notify@kernel.org>
-Date: Tue, 21 Jul 2026 10:30:14 +0000
-References: <178351055214.98729.11403147818632027428@gmail.com>
-In-Reply-To: <178351055214.98729.11403147818632027428@gmail.com>
-To: Wayen Yan <win847@gmail.com>
-Cc: netdev@vger.kernel.org, lorenzo@kernel.org, horms@kernel.org,
- pabeni@redhat.com, kuba@kernel.org, edumazet@google.com,
- andrew+netdev@lunn.ch, angelogioacchino.delregno@collabora.com,
- matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] thermal/drivers/mediatek/lvts_thermal: Make reset
+ optional for MT8196
+To: Philipp Zabel <p.zabel@pengutronix.de>, rafael@kernel.org
+References: <20260720144244.88877-1-angelogioacchino.delregno@collabora.com>
+ <16651472d6a782bdef63e1c9742444de08c59f1e.camel@pengutronix.de>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <16651472d6a782bdef63e1c9742444de08c59f1e.camel@pengutronix.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260721_034314_338139_D9387B4D 
+X-CRM114-Status: GOOD (  29.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,34 +71,125 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: jiapeng.chong@linux.alibaba.com, linux-pm@vger.kernel.org, wenst@chromium.org, linux-kernel@vger.kernel.org, laura.nao@collabora.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, daniel.lezcano@kernel.org, matthias.bgg@gmail.com, rui.zhang@intel.com, kernel@collabora.com, lukasz.luba@arm.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This patch was applied to netdev/net.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
-
-On Wed, 8 Jul 2026 19:35:29 +0800 you wrote:
-> airoha_npu_send_msg() always maps the mailbox buffer with DMA_TO_DEVICE,
-> but some callers expect the NPU to write response data back into the
-> same buffer:
+On 7/21/26 09:53, Philipp Zabel wrote:
+> On Mo, 2026-07-20 at 16:42 +0200, AngeloGioacchino Del Regno wrote:
+>> Depending on the SoC+Firmware combination, the LVTS hardware may be
+>> may be actively used by one or even multiple concurrent MCUs!
+>> In this case, resetting it may produce either a severe slowdown of
+>> the entire system, or even a thermal protection AP reset, as some
+>> MCU(s) may be reading a very high or very low temperature while the
+>> LVTS is being reset.
+>>
+>> On those, don't fail if no reset is found as that may be omitted on
+>> purpose, but still check if there's one, because some board(s) may
+>> be running on a different bootchain with reduced firmwares or using
+>> firmwares with reduced functionality.
+>>
+>> Add a new "optional_reset" member to lvts_data and use it to check
+>> whether the resets should be mandatory or not.
+>>
+>> Also, while at it, since devm_reset_control_get_by_index() is now
+>> deprecated, change the probe function to instead call function
+>> devm_reset_control_get_exclusive_by_index(), which does the same.
 > 
-> - airoha_npu_wlan_msg_get() (NPU_OP_GET): NPU writes response into
->   the buffer, then the caller reads it via memcpy()
-> - airoha_npu_ppe_stats_setup() (NPU_OP_SET): NPU writes back
->   npu_stats_addr field in the response
+> Why is this using _by_index() at all? mediatek,lvts-thermal.yaml
+> specifies a single reset, so the driver should just
+> devm_reset_control_get_exclusive(dev, NULL).
 > 
-> [...]
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/thermal/mediatek/lvts_thermal.c | 29 ++++++++++++++++++++++---
+>>   1 file changed, 26 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+>> index 92711896ce24..6670b5458f2c 100644
+>> --- a/drivers/thermal/mediatek/lvts_thermal.c
+>> +++ b/drivers/thermal/mediatek/lvts_thermal.c
+>> @@ -160,6 +160,7 @@ struct lvts_data {
+>>   	int gt_calib_bit_offset;
+>>   	unsigned int def_calibration;
+>>   	u16 msr_offset;
+>> +	bool optional_reset;
+> 
+> No need to complicate things. It's not the driver's business to check
+> device tree correctness. Just make the reset optional, as the commit
+> message says.
+> 
+>>   };
+>>   
+>>   struct lvts_sensor {
+>> @@ -1473,9 +1474,29 @@ static int lvts_probe(struct platform_device *pdev)
+>>   	if (IS_ERR(lvts_td->base))
+>>   		return dev_err_probe(dev, PTR_ERR(lvts_td->base), "Failed to map io resource\n");
+>>   
+>> -	lvts_td->reset = devm_reset_control_get_by_index(dev, 0);
+>> -	if (IS_ERR(lvts_td->reset))
+>> -		return dev_err_probe(dev, PTR_ERR(lvts_td->reset), "Failed to get reset control\n");
+>> +	/*
+>> +	 * Depending on the SoC+Firmware combination, the LVTS hardware may be
+>> +	 * may be actively used by one or even multiple concurrent MCUs!
+>> +	 * In this case, resetting it may produce either a severe slowdown of
+>> +	 * the entire system, or even a thermal protection AP reset, as some
+>> +	 * MCU(s) may be reading a very high or very low temperature while the
+>> +	 * LVTS is being reset.
+>> +	 *
+>> +	 * On those, don't fail if no reset is found as that may be omitted on
+>> +	 * purpose, but still check if there's one, because some board(s) may
+>> +	 * be running on a different bootchain with reduced firmwares or using
+>> +	 * firmwares with reduced functionality.
+>> +	 */
+>> +	lvts_td->reset = devm_reset_control_get_exclusive_by_index(dev, 0);
+> 
+> So this should be:
+> 
+> 	lvts_td->reset = devm_reset_control_get_optional_exclusive(dev, NULL);
+> 
+>> +	if (IS_ERR(lvts_td->reset)) {
+>> +		if (lvts_data->optional_reset) {
+>> +			dev_dbg(dev, "No reset found. LVTS may be used by firmware.\n");
+>> +			lvts_td->reset = NULL;
+> 
+> This is not necessary then.
+> 
+>> +		} else {
+>> +			return dev_err_probe(dev, PTR_ERR(lvts_td->reset),
+>> +					     "Failed to get reset control\n");
+>> +		}
+> 
+> And this part could be kept as before.
+> 
+>> +	}
+>>   
+>>   	irq = platform_get_irq(pdev, 0);
+>>   	if (irq < 0)
+>> @@ -2163,6 +2184,7 @@ static const struct lvts_data mt8196_lvts_mcu_data = {
+>>   	.num_cal_offsets = LVTS_NUM_CAL_OFFSETS_MT8196,
+>>   	.msr_offset = LVTS_MSR_OFFSET_MT8196,
+>>   	.ops = &lvts_platform_ops_mt8196,
+>> +	.optional_reset = true,
+> 
+> But mediatek,lvts-thermal.yaml still specifies the reset as required
+> for mediatek,mt8196-lvts-ap. That should be changed instead.
+> 
+>>   };
+>>   
+>>   static const struct lvts_data mt8196_lvts_ap_data = {
+>> @@ -2175,6 +2197,7 @@ static const struct lvts_data mt8196_lvts_ap_data = {
+>>   	.num_cal_offsets = LVTS_NUM_CAL_OFFSETS_MT8196,
+>>   	.msr_offset = LVTS_MSR_OFFSET_MT8196,
+>>   	.ops = &lvts_platform_ops_mt8196,
+>> +	.optional_reset = true,
+> 
+> Same as above, but for mediatek,mt8196-lvts-mcu.
+> 
 
-Here is the summary with links:
-  - [net] net: airoha: Fix DMA direction for NPU mailbox buffer
-    https://git.kernel.org/netdev/net/c/6f884eb87a79
+Ack. Will send a v2 shortly.
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+Thanks,
+Angelo
 
