@@ -4,83 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB1A2C44529
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 06:55:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBF16C4451C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 06:55:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=52TzlozFyu8oOUFzVHVO43WIZLgCMoBqx/sMPHBx7bQ=; b=Qwpdm5JpA+by4uQq4iV7Iz+ipu
-	Hw7QoH9ilDBFtW4tgtw97KiSXGBhDFEF5IT5hvvcIg2w6ZH6WS8cHOcT9m2sVNJGJ0EmQgrZ6FuqR
-	/ktYHUni3Rs1+fyV6xZccq6hIC7Fe5aoLUVSoWyuA1pqcOorxU6JWgAxrYTB1Q+ewqWXhusT5WM6B
-	COPGBYXlzQp+82S7jhEaDegSK5+ziNCcgoLOc/hvvdjRx07d0nhcNGVE5pbM63ElMU+61HKAP6AX7
-	Kgx0LvhPcxIhvfxtVHjPSctQ52hNUevbuuGNcAdy+ISoXZ6qQ7lZN20LQdxMot+Wg1jJZ6n/Akrpb
-	NiZCAd/Q==;
+	bh=8fMs6AV1DB1/anefBW7A0r/4RRc6OeCs0ioieSwLEU0=; b=KeM7BjSLm7Itzt2oXrfcwTZHJf
+	0Nflz/ihCIiGGUnPeNPBtrC1uUwhY2g3YWlveZml/lWOOuM2OC7s58TwV9uyfwwOgne0xKBqbPxKK
+	HX59WR5i60myA8mGHfXqhueh/bZsoZdvorIeZEb9/62qiW1Gka43SCw1LpGy3zKXJ1QkXZEPWNpcO
+	UlWFCNJOf0vm+L3yS4exIsA0a7Z3AlUyNGRYK+EKhbKtJQjjF9kUduDXqdmttL35ySY7j78YQgAfI
+	zZ0Ii+eZQC+egKJNpYrDwDQZIkBbGRbSeQwb4XEreTn8YieDrfogl4w8jKsftUxX8WDGFKlsi75ye
+	BiDbC+5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm4OL-00000008b66-3zuy;
-	Tue, 21 Jul 2026 06:55:49 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wm4OS-00000008bCy-2Ja0;
+	Tue, 21 Jul 2026 06:55:56 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm4O9-00000008asv-3edk
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 21 Jul 2026 06:55:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=52TzlozFyu8oOUFzVHVO43WIZLgCMoBqx/sMPHBx7bQ=; b=NtfITr5f1+oDqC0uCiSX5KuiSz
-	y8azvxZ4T2I2W+19AzsxP4vWTDy8zLj7Gon1DLPtHasbijCbU58RDwTuCGvFuv656Q1oQfmMlosYY
-	82DytE+QxWoAjgqVtgklLmQgnO+7uUq2F6rDyevYE7C0cVsYeKjqOqAzIQ4KDf9HodirTptCICG0d
-	RV4Z46Hyg7biyyuZ9w6W2ohXriZEpKnacCsEz1DlCeeetdx1i8hKYFn4HtM9FElqnRxQHOBzOwyUl
-	rekL9Af6GJmfkxOrAu49AYLvVCP17X4QPKPobYuZY6bdB2/KnDbIkRBYJNo6ZJ13n20PG4NT0z6iN
-	jTlMfLiw==;
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wm4O6-0000000HGXs-3Rcq
+	id 1wm4O9-00000008atO-3htR
 	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Jul 2026 06:55:36 +0000
-Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-2cca0c5799eso86501345ad.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 20 Jul 2026 23:55:33 -0700 (PDT)
+	Tue, 21 Jul 2026 06:55:48 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2cc97653887so119532295ad.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 20 Jul 2026 23:55:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1784616932; x=1785221732; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1784616937; x=1785221737; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=52TzlozFyu8oOUFzVHVO43WIZLgCMoBqx/sMPHBx7bQ=;
-        b=FJlPbw8s+BVMTJhomgykXnhbuih1GoTR8MSxacoAUvDSZ0obpTwmQZEgEIiCbboU8m
-         BEwLHUll02/PYO3vmqyLXuIaQx+lti2fZOSxqirp2jUG07AvpMPtx3OFzHPUug72PoAK
-         IJeNaBJ0jWWFE9IIOeeh9/4bKv23RAckoSvrA=
+        bh=8fMs6AV1DB1/anefBW7A0r/4RRc6OeCs0ioieSwLEU0=;
+        b=YRCG3CIzjg5fPWN4VnykzNgSRow8xtxaMTJ/RPuKpMnun3gl2qEoBh7Nm3Sfp0S2xS
+         YICBZGEwJSNeVmA/cuYsg3PXrMgDUG+j0N656dVNkhnt5CLADovRvuGkXpqMTqAgQk/h
+         +gsT3ehn5L9dLNOwGafOTEwKNeZ0Tg3LN6mqc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784616932; x=1785221732;
+        d=1e100.net; s=20251104; t=1784616937; x=1785221737;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=52TzlozFyu8oOUFzVHVO43WIZLgCMoBqx/sMPHBx7bQ=;
-        b=kxps4ykSTQdmRSJHdPmOZTb9ZeSd98ZzaSg+Y6/uexi7t6rjRIFPpM2bQ2+0dGdlfG
-         86AgEbMS2kWRhNh5C6crp5w7xPQWOwtIM/X/9PC6JvpYoYLo/b+/x15lW2vBjVc1WGii
-         sgj7hcp9/QtwyX9M3i2yvq0LwNyJwFdnvBuvqzr27/Qhx/Y7XfzeQa4bf6FMYFJj/zFh
-         CT1xf0D8n6+GIN6vj2WszFYcDgkWX4qNU3sEIuKEinP4FrYPCntJcs+64+qiWxnTJT6Q
-         +E3j/jE0zdkHuamlATdkoMRRTdB/2hi3rh5R9Hwqh1ua8LhgJx6YtN7ONQWXvCcZKL47
-         fNNw==
-X-Forwarded-Encrypted: i=1; AHgh+RqK5KodGLe5t/gZZ1xN0thICGBOogpsYCKgcSmk1pIRxilmpUC6VIUaIjVYXYeNdsfgFpJIbpwJus8N0OIlyg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzVYxvmd8Jwa8MUitWNejUQdw3ch7LD/Z6N3LjDmlR13TEHyBtL
-	X53y9DwCCUmhlNKLxEfPuMIrWc258hLmSDKYUpjosN0sidhMSOMgmfUHX1tNITsR5w==
-X-Gm-Gg: AR+sD110EWM2omTvzz+C6LYIo/AjgNNeIrgl9fa4fqHEs+MqT/xvlmJt+WnQx9BspOK
-	+eF9hj7pfz8/hP1M8Lu+UpOCSFfHm6cOq2328iHTbQ6F+XiRVZHmabyQa7YoWWFbscB/vEpTHHm
-	Yssx5DF54FYBiC5ls3MDUtfmqtwzTBCDNQS9/dUn02zW2+iz1FL7fvTa5/tXV3OAUpemSbhbJ0S
-	umvR+44FCx3jaDLQMQ/lFNNuXfprhxEKGTQTbGIzEFvS326jtk2Kdvu82tlu0yy4z3lIHGXdorx
-	n469CVi8ok4K7M8lmk0KzujGzsZuLLE8PKgvjToHKiOgJZSp1qFUgPIspvQoYuBwb9saX6gQuPR
-	ynyf9eiYK7ipKLh+G9vvlbfabXthD3rXTfNe1mYiehhcBDa6HHp6q/gyKDgQvjY/OYqWPDrj5f8
-	yLHwOE8gHLGkF/YQf9HgIP/Mwcgr4oq9oiHgoLW/O2buWKuoYrDUE0jgDbYoc=
-X-Received: by 2002:a17:903:2287:b0:2c9:c517:d070 with SMTP id d9443c01a7336-2cf348366bfmr176522085ad.3.1784616932321;
-        Mon, 20 Jul 2026 23:55:32 -0700 (PDT)
+        bh=8fMs6AV1DB1/anefBW7A0r/4RRc6OeCs0ioieSwLEU0=;
+        b=rXNu6kj4vmcKa2lOunffvAhUL1Lc2gZlw/sbnRSfBN5pTiliiQZUnADSDzm2wGKV/j
+         QHU90T9YOEaWjjXE/15MsbF2NV288FrNmArJ6zRJqQ3gogoaEXVeMfo4t53u7sDjFbNc
+         65PD4ONrrjuxBhBi0Qi8Tv07j7VjluqDeRSX+wJRZDFNf1l75qLzCB1+hdfmGoFaHVdU
+         ucrte/q/umJShKXWexFHWFowEu5810YG65yhRn9py/9Y4aCAUHl17NTbN/EZxZ1kt5hf
+         lWGPIwgspd1PyzMRQdjU870L9QALc5mk0Zl78GRlZZf9Vk5G4QtL0Cea29EH6gJK16re
+         OiFQ==
+X-Forwarded-Encrypted: i=1; AHgh+RrEGX1pqhYvNRQtYa2va3yD0B1YSvx/ZHW4TRHxFo9CE4SZuORAmFR4NHHVZx2C1NsCCqYrMnOSp0utNl3UjA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwuJri/hGWLpwAhGhNXbxMLJfKc4w11kJBuWbzYXI74/pCNzg+F
+	+HZvalz05w5O9doYdecjk3kmZP9flPqtVUwbFkE5YeFj3RD5eBRHPt7mutITvDhG9aShsgXofvA
+	gHJw=
+X-Gm-Gg: AR+sD12zQyz2iu0Ik9wN0Cp68nDxy0A1P2UOxjSK6ur0qPNTPwMeIRbmyvX0Rn3uV7Z
+	BcnhucEKaa55RXjlcfzM50KhxAP1zXFR8wah6FFhtD5lXzeJO2Acm4ZYGkTStrDDKgdSuQuBKMb
+	TMFpNR7GmxEqtUUkH+mfBS54YTgruuXToy1mFCGHDVUNDXtBaxbJdQ+y4zQAe4DPmREyXnb5CNR
+	ZqVFodIpqE67mdsgQsRc+w9UpofJbhw9mgH0geirHBTbOdWoPuwuxZ4z27zSq9nvseo68037Qs9
+	pJ6Nl0w1pwgoTzzMm5Qp8nIfvU/6thFdHBRoGS7nzFaOe2wMSAWnfIn43i+Y6BovDODUTl5Co2B
+	2jubP0Qm1zO3ZemI7WqPbt/EryExvveYFLXbn1lx5pDrupfC7JgRwYXm67gjWaY9XRYiinlREf4
+	0nwLWDisdI5wxbLwE4oKYHMtsf73GszL+RtOiExladgZesTxa5Sv+iIDpdCX8=
+X-Received: by 2002:a17:903:2c50:b0:2cf:47c4:3d1a with SMTP id d9443c01a7336-2cf47c463camr154543805ad.3.1784616937260;
+        Mon, 20 Jul 2026 23:55:37 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:3916:f048:32c3:931f])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cf3448ee77sm69716005ad.4.2026.07.20.23.55.28
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cf3448ee77sm69716005ad.4.2026.07.20.23.55.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Jul 2026 23:55:31 -0700 (PDT)
+        Mon, 20 Jul 2026 23:55:36 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Bartosz Golaszewski <brgl@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -106,17 +92,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-kernel@vger.kernel.org,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Alan Stern <stern@rowland.harvard.edu>
-Subject: [PATCH v6 12/16] power: sequencing: pcie-m2: support matching on remote "port" node
-Date: Tue, 21 Jul 2026 14:54:07 +0800
-Message-ID: <20260721065413.2306137-13-wenst@chromium.org>
+Subject: [PATCH v6 13/16] power: sequencing: pcie-m2: Add usb and sdio targets for E-key connector
+Date: Tue, 21 Jul 2026 14:54:08 +0800
+Message-ID: <20260721065413.2306137-14-wenst@chromium.org>
 X-Mailer: git-send-email 2.55.0.229.g6434b31f56-goog
 In-Reply-To: <20260721065413.2306137-1-wenst@chromium.org>
 References: <20260721065413.2306137-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_075535_074848_5AC110B4 
-X-CRM114-Status: GOOD (  15.17  )
+X-CRM114-CacheID: sfid-20260720_235537_963611_5CF1D761 
+X-CRM114-Status: GOOD (  15.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,52 +117,130 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A USB hub can have multiple ports, and this driver needs to
-differentiate which port is being matched to. The USB hub driver now
-associates the "port" node with the usb_port device, so here we can
-use the remote "port" node to check for a match. Then fall back to
-the remote device node for the other connection types.
+The M.2 E-key connector allows either PCIe or SDIO for WiFi and USB or
+UART for BT. Currently the driver only supports PCIe and UART.
 
-Also rewrite the existing "remote == dev_of_node(dev)" with
-device_match_of_node() for consistency.
+Add power sequencing targets for SDIO and USB. To avoid adding a
+complicated dependency tree, rename the existing power sequencing units
+"pcie" and "uart" to "wifi" and "bt". The existing target names are left
+untouched. The new "sdio" and "usb" targets just point to the renamed
+"wifi" and "bt" units.
+
+The "unit" names are internal to the power sequencing framework, and
+should be confined to a single provider. The names are only
+informational. Dependencies are tracked with pointers to other units.
+
+The "target" names are the strings that the consumer uses to acquire a
+descriptor with. As these remain the same, existing users will continue
+to work.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
-Changes since v4:
-- Dropped blank line between __free() variable declaration and
-  subsequent use of the variable in conditional
-
-Changes since v3:
-- Drop redundant device node validity check; device_match_of_node()
-  does it internally
-
 Changes since v2:
-- Use device_match_of_node()
+- Expand commit message
 ---
- drivers/power/sequencing/pwrseq-pcie-m2.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+ drivers/power/sequencing/pwrseq-pcie-m2.c | 41 +++++++++++++++--------
+ 1 file changed, 27 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/power/sequencing/pwrseq-pcie-m2.c b/drivers/power/sequencing/pwrseq-pcie-m2.c
-index 83fe6a1396bc..691cad0a6dd0 100644
+index 691cad0a6dd0..693b0d33f8cf 100644
 --- a/drivers/power/sequencing/pwrseq-pcie-m2.c
 +++ b/drivers/power/sequencing/pwrseq-pcie-m2.c
-@@ -175,9 +175,16 @@ static int pwrseq_pcie_m2_match(struct pwrseq_device *pwrseq,
- 	 * parent matches the OF node of 'dev'.
- 	 */
- 	for_each_endpoint_of_node(ctx->of_node, endpoint) {
-+		/* USB port devices are tied to the port nodes. */
-+		struct device_node *remote_port __free(device_node) =
-+				of_graph_get_remote_port(endpoint);
-+		if (device_match_of_node(dev, remote_port))
-+			return PWRSEQ_MATCH_OK;
+@@ -69,46 +69,46 @@ static const struct pwrseq_unit_data *pwrseq_pcie_m2_unit_deps[] = {
+ 	NULL
+ };
+ 
+-static int pwrseq_pci_m2_e_uart_enable(struct pwrseq_device *pwrseq)
++static int pwrseq_pci_m2_e_bt_enable(struct pwrseq_device *pwrseq)
+ {
+ 	struct pwrseq_pcie_m2_ctx *ctx = pwrseq_device_get_drvdata(pwrseq);
+ 
+ 	return gpiod_set_value_cansleep(ctx->w_disable2_gpio, 0);
+ }
+ 
+-static int pwrseq_pci_m2_e_uart_disable(struct pwrseq_device *pwrseq)
++static int pwrseq_pci_m2_e_bt_disable(struct pwrseq_device *pwrseq)
+ {
+ 	struct pwrseq_pcie_m2_ctx *ctx = pwrseq_device_get_drvdata(pwrseq);
+ 
+ 	return gpiod_set_value_cansleep(ctx->w_disable2_gpio, 1);
+ }
+ 
+-static const struct pwrseq_unit_data pwrseq_pcie_m2_e_uart_unit_data = {
+-	.name = "uart-enable",
++static const struct pwrseq_unit_data pwrseq_pcie_m2_e_bt_unit_data = {
++	.name = "bt-enable",
+ 	.deps = pwrseq_pcie_m2_unit_deps,
+-	.enable = pwrseq_pci_m2_e_uart_enable,
+-	.disable = pwrseq_pci_m2_e_uart_disable,
++	.enable = pwrseq_pci_m2_e_bt_enable,
++	.disable = pwrseq_pci_m2_e_bt_disable,
+ };
+ 
+-static int pwrseq_pci_m2_e_pcie_enable(struct pwrseq_device *pwrseq)
++static int pwrseq_pci_m2_e_wifi_enable(struct pwrseq_device *pwrseq)
+ {
+ 	struct pwrseq_pcie_m2_ctx *ctx = pwrseq_device_get_drvdata(pwrseq);
+ 
+ 	return gpiod_set_value_cansleep(ctx->w_disable1_gpio, 0);
+ }
+ 
+-static int pwrseq_pci_m2_e_pcie_disable(struct pwrseq_device *pwrseq)
++static int pwrseq_pci_m2_e_wifi_disable(struct pwrseq_device *pwrseq)
+ {
+ 	struct pwrseq_pcie_m2_ctx *ctx = pwrseq_device_get_drvdata(pwrseq);
+ 
+ 	return gpiod_set_value_cansleep(ctx->w_disable1_gpio, 1);
+ }
+ 
+-static const struct pwrseq_unit_data pwrseq_pcie_m2_e_pcie_unit_data = {
+-	.name = "pcie-enable",
++static const struct pwrseq_unit_data pwrseq_pcie_m2_e_wifi_unit_data = {
++	.name = "wifi-enable",
+ 	.deps = pwrseq_pcie_m2_unit_deps,
+-	.enable = pwrseq_pci_m2_e_pcie_enable,
+-	.disable = pwrseq_pci_m2_e_pcie_disable,
++	.enable = pwrseq_pci_m2_e_wifi_enable,
++	.disable = pwrseq_pci_m2_e_wifi_disable,
+ };
+ 
+ static const struct pwrseq_unit_data pwrseq_pcie_m2_m_pcie_unit_data = {
+@@ -130,13 +130,24 @@ static int pwrseq_pcie_m2_e_pwup_delay(struct pwrseq_device *pwrseq)
+ 
+ static const struct pwrseq_target_data pwrseq_pcie_m2_e_uart_target_data = {
+ 	.name = "uart",
+-	.unit = &pwrseq_pcie_m2_e_uart_unit_data,
++	.unit = &pwrseq_pcie_m2_e_bt_unit_data,
+ 	.post_enable = pwrseq_pcie_m2_e_pwup_delay,
+ };
+ 
++static const struct pwrseq_target_data pwrseq_pcie_m2_e_usb_target_data = {
++	.name = "usb",
++	.unit = &pwrseq_pcie_m2_e_bt_unit_data,
++};
 +
-+		/* Try the remote port parent for other types. */
- 		struct device_node *remote __free(device_node) =
- 				of_graph_get_remote_port_parent(endpoint);
--		if (remote && (remote == dev_of_node(dev)))
-+		if (device_match_of_node(dev, remote))
- 			return PWRSEQ_MATCH_OK;
- 	}
+ static const struct pwrseq_target_data pwrseq_pcie_m2_e_pcie_target_data = {
+ 	.name = "pcie",
+-	.unit = &pwrseq_pcie_m2_e_pcie_unit_data,
++	.unit = &pwrseq_pcie_m2_e_wifi_unit_data,
++	.post_enable = pwrseq_pcie_m2_e_pwup_delay,
++};
++
++static const struct pwrseq_target_data pwrseq_pcie_m2_e_sdio_target_data = {
++	.name = "sdio",
++	.unit = &pwrseq_pcie_m2_e_wifi_unit_data,
+ 	.post_enable = pwrseq_pcie_m2_e_pwup_delay,
+ };
+ 
+@@ -147,7 +158,9 @@ static const struct pwrseq_target_data pwrseq_pcie_m2_m_pcie_target_data = {
+ 
+ static const struct pwrseq_target_data *pwrseq_pcie_m2_e_targets[] = {
+ 	&pwrseq_pcie_m2_e_pcie_target_data,
++	&pwrseq_pcie_m2_e_sdio_target_data,
+ 	&pwrseq_pcie_m2_e_uart_target_data,
++	&pwrseq_pcie_m2_e_usb_target_data,
+ 	NULL
+ };
  
 -- 
 2.55.0.229.g6434b31f56-goog
