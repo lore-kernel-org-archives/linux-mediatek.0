@@ -4,58 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EA1AC4451C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 10:52:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACB0CC44529
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 11:58:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=slwBi5KP6OQ3DnlZedyezBb4ItPHq8e3XVUJisai6M0=; b=NQCqXMBPeeWxd4
-	36irUtmJhJ7oVqazdxmUmKzH+048DtNiFTc8ioxBLD7expUuHrR1dnuNa4p6VdBrrNfKOl/cNMiZA
-	P3jNf98LJJO5sJKd1xxJEen6EAx21rBkJkyRtVpB7n4Wt0lEPUpgwAwq0cc6zZtHADYzFYGMw8Z6B
-	MEM0QWLJ8+743mU3ZcEW5UuP52Pihw3kEipqlHgExm8+k8fHbFp8Yj2lHYkuWHFY+Qs0ob0qdL91n
-	t8lX+0A4qOJIaesP1fpuBy7CCOD2ZqeGJpg4mLc/xvTZ1kzmz7LfO5UX8wiHFVXW7tlAw+5Xnsr3/
-	0PS7s/ITuQMziFsurdAw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TbRt66DWq0Kax2nWpkRuQuxuobx/m8rLkvG747KBwKg=; b=SvGSdcatEizL/65lvtuEPSTqpF
+	b8Nx52yLIEqOipP1b6aFCBlKUveq/BBbECM03ypvXB/Mc8ok68g84rQadDgP+RyKsupftuA1vAmzS
+	2euFGcvKzBWqTakQqs6RStH49QPvkhxGuLF/s+Ypq/9YXCWxzqjXiDIaigS6/TWNqfPqPGm6FHXh8
+	T/B5R/V1yBMZEVZFZ0Uz5kyNnpzHYpMqJdEC3Cxosllp9VBOQEP6RvoBRkHbYhzDDkgOMufB0JvNe
+	qM6jIGHLxovBN2H60yXKmQTQmqnG93xmmAERm7GlcY14aOIP6qdfocoX7wgqbU4tFLlHo9oro0MBK
+	p5VQnrIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm85o-00000009G45-047w;
-	Tue, 21 Jul 2026 10:52:56 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wm97Q-00000009Mat-0sLG;
+	Tue, 21 Jul 2026 11:58:40 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm85a-00000009Ftn-3m36;
-	Tue, 21 Jul 2026 10:52:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784631160;
-	bh=YiA5DltXNq9O0aocs7NhApObemt4it0eOdh1BVE1948=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=CrUB0g5R0gNqQ1XeAxlQBuDcN2qdwJuJPNk1NNojT/f4bWop5OSCidwv+3lZeY+wB
-	 sgtMu7s3erMIqYmrsHMHkBC3Y0n2r3DXdwQmiXQbFf4p/7lI56sZULil1t4PXmBkI9
-	 x4plD8PgM/2fQRBpQXw3zyFuRTI9wAZlv/BeZMucysFzfbra6HLXdVvHS51uauurMm
-	 ZwlyZA6Aucd4E9falGuBsNJOn7fLBR6TbeUAzNt/n63f+zgUGNdEpU3w0cnrre7Pig
-	 MIC2Gj14tK4DYRRjVrX5mr1dZ+c+rDD3a1VTkVgf0+NnSCjkl/zIqdSF0jm7u34Esr
-	 fE6TJIXL96enw==
-Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C45E717E1066;
-	Tue, 21 Jul 2026 12:52:39 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: rafael@kernel.org
-Subject: [PATCH v2 2/2] thermal/drivers/mediatek/lvts_thermal: Make reset optional for MT8196
-Date: Tue, 21 Jul 2026 12:52:30 +0200
-Message-ID: <20260721105230.101906-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260721105230.101906-1-angelogioacchino.delregno@collabora.com>
-References: <20260721105230.101906-1-angelogioacchino.delregno@collabora.com>
+	id 1wm97N-00000009MaN-1aYm;
+	Tue, 21 Jul 2026 11:58:39 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 9A9EE1A1135;
+	Tue, 21 Jul 2026 11:58:31 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 68D4C60368;
+	Tue, 21 Jul 2026 11:58:31 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 6790111BD3CB9;
+	Tue, 21 Jul 2026 13:58:22 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1784635109; h=from:subject:date:message-id:to:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=TbRt66DWq0Kax2nWpkRuQuxuobx/m8rLkvG747KBwKg=;
+	b=LQFHapx21KVFtPunsPbh+HHXqTk1H7GVbBNTj7tQjCBFkZbuNXa967ZK8eUxdtYBo+awP3
+	QXd4UWnXD46kGwqbUHlhPj2/GTNi5lY9gj+1WMyRJ6ASd87VIJJXnUlPRyBvunJYEW4YgY
+	oNxQwhW+Av+BRKabgld4w+XGCtMfcuBvx359GEiIZDZzgpac9nuUN3an5DK6tiULWiIU6H
+	mBBuCWZOi1jv+l9G1EvfYp+S2QT4V/AfPWB4a9S4zLk7a4aKpA8QNsU9WE/pF0ltSo7R49
+	KNpoBclpoH7lUte+kjPQrQOqsflW2GjfRSugiD7l2FFCHCdicNGzq0hEt6SOUQ==
+Message-ID: <b8f26ddd-4c95-44a2-b93f-ef198702c838@bootlin.com>
+Date: Tue, 21 Jul 2026 13:58:21 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v9 00/12] net: pcs: Introduce support for fwnode
+ PCS
+To: Christian Marangi <ansuelsmth@gmail.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
+ Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Heiner Kallweit
+ <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>,
+ Saravana Kannan <saravanak@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20260717065448.1498335-1-ansuelsmth@gmail.com>
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Content-Language: en-US
+In-Reply-To: <20260717065448.1498335-1-ansuelsmth@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_035243_093810_A93C3ED7 
-X-CRM114-Status: GOOD (  13.55  )
+X-CRM114-CacheID: sfid-20260721_045837_601876_BA56D4B6 
+X-CRM114-Status: GOOD (  25.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,58 +84,257 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, kernel@collabora.com, devicetree@vger.kernel.org, linux-pm@vger.kernel.org, wenst@chromium.org, linux-kernel@vger.kernel.org, jiapeng.chong@linux.alibaba.com, laura.nao@collabora.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, p.zabel@pengutronix.de, daniel.lezcano@kernel.org, matthias.bgg@gmail.com, rui.zhang@intel.com, bchihi@baylibre.com, krzk+dt@kernel.org, lukasz.luba@arm.com, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Depending on the SoC+Firmware combination, the LVTS hardware may be
-may be actively used by one or even multiple concurrent MCUs!
-In this case, resetting it may produce either a severe slowdown of
-the entire system, or even a thermal protection AP reset, as some
-MCU(s) may be reading a very high or very low temperature while the
-LVTS is being reset.
+Hi Christian,
 
-On those, don't fail if no reset is found as that may be omitted on
-purpose, but still check if there's one, because some board(s) may
-be running on a different bootchain with reduced firmwares or using
-firmwares with reduced functionality.
+On 7/17/26 08:54, Christian Marangi wrote:
+> This series introduce a most awaited feature that is correctly
+> provide PCS with fwnode without having to use specific export symbol
+> and additional handling of PCS in phylink.
+I was finally able to spend a bit of time digging deeper, I ported the
+mvpp2 driver to your new API to test that dynamic PCS selection for
+internal PCSs still works, and it's all good :)
 
-So, use devm_reset_control_get_optional_exclusive() instead, as the
-LVTS controller always had only one reset and retrieving that by
-index, specifically, always made little sense anyway.
+Congrats on that work !
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+This didn't exercise all code paths, especially with the fwnode API but
+you've tested that enough on your side :)
+
+Maxime
+
+The patch I used for testing if you're curious :
+
+(I'll send that once this series land, or you can include it but I don't
+want to delay your work in case the patch goes through rounds of reviews...)
+
+--- 8>< -----------------------------------------------------------------
+
+From 38ad94b1e62bf3523097983dfb515f59b1634477 Mon Sep 17 00:00:00 2001
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Date: Tue, 21 Jul 2026 13:52:57 +0200
+Subject: [PATCH] net: marvell: mvpp2: Convert to the new PCS API
+
+Following the introduction of the PCS framework, port mvpp2 to the new
+PCS API.
+
+Signed-off-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
 ---
- drivers/thermal/mediatek/lvts_thermal.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
+ .../net/ethernet/marvell/mvpp2/mvpp2_main.c   | 161 +++++++++++-------
+ 1 file changed, 95 insertions(+), 66 deletions(-)
 
-diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index 92711896ce24..8b779fc5e970 100644
---- a/drivers/thermal/mediatek/lvts_thermal.c
-+++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -1473,7 +1473,20 @@ static int lvts_probe(struct platform_device *pdev)
- 	if (IS_ERR(lvts_td->base))
- 		return dev_err_probe(dev, PTR_ERR(lvts_td->base), "Failed to map io resource\n");
+diff --git a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+index ccc24a1301f2..8d9663c7a023 100644
+--- a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
++++ b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+@@ -6499,21 +6499,6 @@ static void mvpp2_gmac_config(struct mvpp2_port *port, unsigned int mode,
+ 		writel(ctrl4, port->base + MVPP22_GMAC_CTRL_4_REG);
+ }
  
--	lvts_td->reset = devm_reset_control_get_by_index(dev, 0);
-+	/*
-+	 * Depending on the SoC+Firmware combination, the LVTS hardware may be
-+	 * may be actively used by one or even multiple concurrent MCUs!
-+	 * In this case, resetting it may produce either a severe slowdown of
-+	 * the entire system, or even a thermal protection AP reset, as some
-+	 * MCU(s) may be reading a very high or very low temperature while the
-+	 * LVTS is being reset.
-+	 *
-+	 * On those, don't fail if no reset is found as that may be omitted on
-+	 * purpose, but still check if there's one, because some board(s) may
-+	 * be running on a different bootchain with reduced firmwares or using
-+	 * firmwares with reduced functionality.
-+	 */
-+	lvts_td->reset = devm_reset_control_get_optional_exclusive(dev, NULL);
- 	if (IS_ERR(lvts_td->reset))
- 		return dev_err_probe(dev, PTR_ERR(lvts_td->reset), "Failed to get reset control\n");
+-static struct phylink_pcs *mvpp2_select_pcs(struct phylink_config *config,
+-					    phy_interface_t interface)
+-{
+-	struct mvpp2_port *port = mvpp2_phylink_to_port(config);
+-
+-	/* Select the appropriate PCS operations depending on the
+-	 * configured interface mode. We will only switch to a mode
+-	 * that the validate() checks have already passed.
+-	 */
+-	if (mvpp2_is_xlg(interface))
+-		return &port->pcs_xlg;
+-	else
+-		return &port->pcs_gmac;
+-}
+-
+ static int mvpp2_mac_prepare(struct phylink_config *config, unsigned int mode,
+ 			     phy_interface_t interface)
+ {
+@@ -6786,7 +6771,6 @@ static int mvpp2_mac_enable_tx_lpi(struct phylink_config *config, u32 timer,
+ }
  
+ static const struct phylink_mac_ops mvpp2_phylink_ops = {
+-	.mac_select_pcs = mvpp2_select_pcs,
+ 	.mac_prepare = mvpp2_mac_prepare,
+ 	.mac_config = mvpp2_mac_config,
+ 	.mac_finish = mvpp2_mac_finish,
+@@ -6808,7 +6792,10 @@ static void mvpp2_acpi_start(struct mvpp2_port *port)
+ 	};
+ 	struct phylink_pcs *pcs;
+ 
+-	pcs = mvpp2_select_pcs(&port->phylink_config, port->phy_interface);
++	if (mvpp2_is_xlg(port->phy_interface))
++		pcs = &port->pcs_xlg;
++	else
++		pcs = &port->pcs_gmac;
+ 
+ 	mvpp2_mac_prepare(&port->phylink_config, MLO_AN_INBAND,
+ 			  port->phy_interface);
+@@ -6823,6 +6810,78 @@ static void mvpp2_acpi_start(struct mvpp2_port *port)
+ 			  SPEED_UNKNOWN, DUPLEX_UNKNOWN, false, false);
+ }
+ 
++static int mvpp2_port_fill_pcs(struct phylink_config *config,
++			       struct phylink_pcs **available_pcs,
++			       unsigned int num_possible_pcs)
++{
++	struct mvpp2_port *port = mvpp2_phylink_to_port(config);
++
++	available_pcs[0] = &port->pcs_gmac;
++
++	if (mvpp2_port_supports_xlg(port)) {
++		if (num_possible_pcs < 2)
++			return -EINVAL;
++
++		available_pcs[1] = &port->pcs_xlg;
++	}
++
++	return 0;
++}
++
++static void mvpp2_port_init_pcs_xlg(struct phylink_pcs *pcs, bool has_comphy,
++				    phy_interface_t phy_mode)
++{
++	if (has_comphy) {
++		__set_bit(PHY_INTERFACE_MODE_5GBASER,
++			  pcs->supported_interfaces);
++		__set_bit(PHY_INTERFACE_MODE_10GBASER,
++			  pcs->supported_interfaces);
++		__set_bit(PHY_INTERFACE_MODE_XAUI,
++			  pcs->supported_interfaces);
++	} else if (phy_mode == PHY_INTERFACE_MODE_5GBASER) {
++		__set_bit(PHY_INTERFACE_MODE_5GBASER,
++			  pcs->supported_interfaces);
++	} else if (phy_mode == PHY_INTERFACE_MODE_10GBASER) {
++		__set_bit(PHY_INTERFACE_MODE_10GBASER,
++			  pcs->supported_interfaces);
++	} else if (phy_mode == PHY_INTERFACE_MODE_XAUI) {
++		__set_bit(PHY_INTERFACE_MODE_XAUI,
++			  pcs->supported_interfaces);
++	}
++}
++
++static void mvpp2_port_init_pcs_gmac(struct phylink_pcs *pcs, bool has_comphy,
++				     phy_interface_t phy_mode)
++{
++	if (has_comphy) {
++		/* If a COMPHY is present, we can support any of the
++		 * serdes modes and switch between them.
++		 */
++		__set_bit(PHY_INTERFACE_MODE_SGMII,
++			  pcs->supported_interfaces);
++		__set_bit(PHY_INTERFACE_MODE_1000BASEX,
++			  pcs->supported_interfaces);
++		__set_bit(PHY_INTERFACE_MODE_2500BASEX,
++			  pcs->supported_interfaces);
++	} else if (phy_mode == PHY_INTERFACE_MODE_2500BASEX) {
++		/* No COMPHY, with only 2500BASE-X mode supported */
++		__set_bit(PHY_INTERFACE_MODE_2500BASEX,
++			  pcs->supported_interfaces);
++	} else if (phy_mode == PHY_INTERFACE_MODE_1000BASEX ||
++		   phy_mode == PHY_INTERFACE_MODE_SGMII) {
++		/* No COMPHY, we can switch between 1000BASE-X and SGMII
++		 */
++		__set_bit(PHY_INTERFACE_MODE_1000BASEX,
++			  pcs->supported_interfaces);
++		__set_bit(PHY_INTERFACE_MODE_SGMII,
++			  pcs->supported_interfaces);
++	}
++
++	/* RGMII and MII are still routed through the gmac PCS */
++	phy_interface_set_rgmii(pcs->supported_interfaces);
++	__set_bit(PHY_INTERFACE_MODE_MII, pcs->supported_interfaces);
++}
++
+ /* In order to ensure backward compatibility for ACPI, check if the port
+  * firmware node comprises the necessary description allowing to use phylink.
+  */
+@@ -7082,28 +7141,17 @@ static int mvpp2_port_probe(struct platform_device *pdev,
+ 			port->phylink_config.mac_capabilities |=
+ 				MAC_SYM_PAUSE | MAC_ASYM_PAUSE;
+ 
+-		if (mvpp2_port_supports_xlg(port)) {
+-			/* If a COMPHY is present, we can support any of
+-			 * the serdes modes and switch between them.
+-			 */
+-			if (comphy) {
+-				__set_bit(PHY_INTERFACE_MODE_5GBASER,
+-					  port->phylink_config.supported_interfaces);
+-				__set_bit(PHY_INTERFACE_MODE_10GBASER,
+-					  port->phylink_config.supported_interfaces);
+-				__set_bit(PHY_INTERFACE_MODE_XAUI,
+-					  port->phylink_config.supported_interfaces);
+-			} else if (phy_mode == PHY_INTERFACE_MODE_5GBASER) {
+-				__set_bit(PHY_INTERFACE_MODE_5GBASER,
+-					  port->phylink_config.supported_interfaces);
+-			} else if (phy_mode == PHY_INTERFACE_MODE_10GBASER) {
+-				__set_bit(PHY_INTERFACE_MODE_10GBASER,
+-					  port->phylink_config.supported_interfaces);
+-			} else if (phy_mode == PHY_INTERFACE_MODE_XAUI) {
+-				__set_bit(PHY_INTERFACE_MODE_XAUI,
+-					  port->phylink_config.supported_interfaces);
+-			}
++		if (!mvpp2_port_supports_xlg(port))
++			port->phylink_config.num_possible_pcs = 1;
++		else
++			port->phylink_config.num_possible_pcs = 2;
++
++		port->phylink_config.fill_available_pcs = mvpp2_port_fill_pcs;
+ 
++		mvpp2_port_init_pcs_xlg(&port->pcs_xlg, comphy, phy_mode);
++		mvpp2_port_init_pcs_gmac(&port->pcs_gmac, comphy, phy_mode);
++
++		if (mvpp2_port_supports_xlg(port)) {
+ 			if (comphy)
+ 				port->phylink_config.mac_capabilities |=
+ 					MAC_10000FD | MAC_5000FD;
+@@ -7115,35 +7163,16 @@ static int mvpp2_port_probe(struct platform_device *pdev,
+ 					MAC_10000FD;
+ 		}
+ 
+-		if (mvpp2_port_supports_rgmii(port)) {
+-			phy_interface_set_rgmii(port->phylink_config.supported_interfaces);
+-			__set_bit(PHY_INTERFACE_MODE_MII,
+-				  port->phylink_config.supported_interfaces);
+-		}
++		phy_interface_copy(port->phylink_config.pcs_interfaces,
++				   port->pcs_gmac.supported_interfaces);
+ 
+-		if (comphy) {
+-			/* If a COMPHY is present, we can support any of the
+-			 * serdes modes and switch between them.
+-			 */
+-			__set_bit(PHY_INTERFACE_MODE_SGMII,
+-				  port->phylink_config.supported_interfaces);
+-			__set_bit(PHY_INTERFACE_MODE_1000BASEX,
+-				  port->phylink_config.supported_interfaces);
+-			__set_bit(PHY_INTERFACE_MODE_2500BASEX,
+-				  port->phylink_config.supported_interfaces);
+-		} else if (phy_mode == PHY_INTERFACE_MODE_2500BASEX) {
+-			/* No COMPHY, with only 2500BASE-X mode supported */
+-			__set_bit(PHY_INTERFACE_MODE_2500BASEX,
+-				  port->phylink_config.supported_interfaces);
+-		} else if (phy_mode == PHY_INTERFACE_MODE_1000BASEX ||
+-			   phy_mode == PHY_INTERFACE_MODE_SGMII) {
+-			/* No COMPHY, we can switch between 1000BASE-X and SGMII
+-			 */
+-			__set_bit(PHY_INTERFACE_MODE_1000BASEX,
+-				  port->phylink_config.supported_interfaces);
+-			__set_bit(PHY_INTERFACE_MODE_SGMII,
+-				  port->phylink_config.supported_interfaces);
+-		}
++		if (mvpp2_port_supports_xlg(port))
++			phy_interface_or(port->phylink_config.pcs_interfaces,
++					 port->phylink_config.pcs_interfaces,
++					 port->pcs_xlg.supported_interfaces);
++
++		phy_interface_copy(port->phylink_config.supported_interfaces,
++				   port->phylink_config.pcs_interfaces);
+ 
+ 		phylink = phylink_create(&port->phylink_config, port_fwnode,
+ 					 phy_mode, &mvpp2_phylink_ops);
 -- 
 2.55.0
+
 
 
