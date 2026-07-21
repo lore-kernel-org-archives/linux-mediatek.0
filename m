@@ -4,137 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24B92C44532
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 14:47:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40C74C44529
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 15:23:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:References:
-	In-Reply-To:Cc:To:From:Subject:Content-Transfer-Encoding:Content-Type:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gJXNLBrjGs3w38rvWKID3ZJzYdlQSoHtFbkc9JdtFMI=; b=WvlhMXPxm67sdg00Q2hIx3BYyN
-	nB6mLxn/CqrEO7tyoaw8IzQtKdpRHL9ss9bq/BndUFAaspDegNGnYwTWH1wpcKSVInW89Jp7l4GoJ
-	iMdZb71QKPCyGxcQoRRudBItsUR8J3KASyjheUGyMlpHznlH0pKlwWTUftX47ZysK4ulscpp7sLxE
-	Dj6vQsIOEKpnc+SWJ7JYysQYprFGKjrFkpMLTm5B8MECfGCzUI3mNg5NdQe3uqKoVhY3BqSYImmiQ
-	AQkdlerKDFji5+h4/pS0ZtV4RWSrxZa92Om8npHhySpuazAQU1Bx/snmXfEgNXJZmc1PhwjUicLns
-	tDZ8X2Rg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9eXHmL2FrSSPACEJW/ZdN2+RZSdHtJBbjO91JeCFP0A=; b=SYDuH8EpfCqEVNvOczurc7vT3b
+	YnezwWi8Yjtr9O6cqmL3jAQp/rvputhBY5loMyckHuzyq0JPVCGuyWWqGfyT4mulGxAv6nw0HSgo7
+	weKSvHaU8steaLZ9fWn0iNepcIsjw65tt7ocwrzyqpTUk/njMrWcU49/ovxN66dRLUfXy5JBcMsgo
+	c4AS8lkCu+53f6UVss0UvO13jnTrreKPhzO/qDEl1oHCP24f7qYUpzdWYR0p8b/5hiLO1ZEKUVxJQ
+	erQBZp+LqgZqI5RauWOg/W+J0Q3F23+kvHXiATvM32n11wITmhGWaNKyZJ0/+XKrZIbpSYc+UbN6B
+	Szi36FZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmBki-00000009hA9-445w;
-	Tue, 21 Jul 2026 14:47:24 +0000
-Received: from smtp-out1.suse.de ([195.135.223.130])
+	id 1wmCJF-00000009nEF-0G4V;
+	Tue, 21 Jul 2026 15:23:05 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmBkg-00000009h9A-10Hk
+	id 1wmCJ8-00000009nBM-29N7
 	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Jul 2026 14:47:23 +0000
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id D2CB87A589;
-	Tue, 21 Jul 2026 14:47:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1784645240; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=gJXNLBrjGs3w38rvWKID3ZJzYdlQSoHtFbkc9JdtFMI=;
-	b=P8FRlMlDac5iN22KQqA/gavT+JbhpBqhQRp/fiNb921FHISnzkc7ocyWMA82Xgfq90Gvt3
-	9ePDs3LjNaISHrzN5oOzauKviKgpmImMcgVmITSBUfvP/CUG/Yb5ILSc94I+Gp3oQCGYay
-	VuJOSZ6ec1zYhTGxp0bM7HhB9hxsKCU=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1784645240;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=gJXNLBrjGs3w38rvWKID3ZJzYdlQSoHtFbkc9JdtFMI=;
-	b=UrXAtgZVmS9EpvpRitLYluILvnZsfeD8WQdwKi08F8EwWf+bVbstDxlPEZpGGJByCJJS0I
-	LXe7gyuO/E1CSvCQ==
-Authentication-Results: smtp-out1.suse.de;
-	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=PbLahHS+;
-	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=2Pta8MOd
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1784645239; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=gJXNLBrjGs3w38rvWKID3ZJzYdlQSoHtFbkc9JdtFMI=;
-	b=PbLahHS+JIO8FFxa55ftRMTbrK2zhuzVmvk2UH67pEtKqxkcvAv4TbTUAmSWPw5reD0tY4
-	EvHbED2SgCee7lqkkmO+VB9ZQKYZHJz2NGZrnAIG6HPJf1ZySKRnrLX6WNJ1KVa++pT4aJ
-	YXQ2nnEHK3l8kbsag/P9Zrq5p8MSOdc=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1784645239;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=gJXNLBrjGs3w38rvWKID3ZJzYdlQSoHtFbkc9JdtFMI=;
-	b=2Pta8MOdCouLA0Pp3RERt7gVtSf83LKuwPyE1sdqbU3dckLmpZLUD9cjGoEotS8j8PMIIb
-	MBOik6gSdB2p+hAg==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 2BB28779AA;
-	Tue, 21 Jul 2026 14:47:19 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id +0XiB3eGX2pEWgAAD6G6ig
-	(envelope-from <fmancera@suse.de>); Tue, 21 Jul 2026 14:47:19 +0000
+	Tue, 21 Jul 2026 15:23:00 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-2caf228a910so90662265ad.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2026 08:22:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1784647372; x=1785252172; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=9eXHmL2FrSSPACEJW/ZdN2+RZSdHtJBbjO91JeCFP0A=;
+        b=ZwE1sRgr2O/d6uPNTKtXgpcEXOAdFxv1jtQdJr9g62D8h+KonH2XJgOE9/xJJSPyUz
+         dBPJhTKFjBiKZmRZsPnMImZ1ls4MigCFPRXjStKV2t1IMYw8VGWDXp1kxK2xRY5oqK2G
+         BB5f7zerxFmMI0xXhPLI5GIq10JvBApS6wL/yB6FWmOgNR0ukon+VMaFD1IakBeON/3h
+         s2A2N+BcRtJOkkvTyN+P3rTS35zYGDAC9xDUkF9DHeqgg03ZTqhKB9s9RlLLJTR9oO5n
+         3VgsNFf+KXN+hSN3wLKRoC+fGqX2CIRIfFV3Brz5tvnPxEcfBcIbDdKnh+zBoeWFzGV5
+         lcUw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1784647372; x=1785252172;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=9eXHmL2FrSSPACEJW/ZdN2+RZSdHtJBbjO91JeCFP0A=;
+        b=GTK5Jfyhqswf6U74W+011a7Ny6WMpI/7OVLC6Gu0JaDsgp83FuwqGKbG6bBfR6MSY4
+         2/9CWaOoeEm7CCIOu4rYoOtTxvBaiuJEwwDTDET7aBuasP+LKGVZU5ggnsx3VLD8zFtY
+         1DQpb/BIZq47KHOugP2MVur9KfBvTND4qTj2Glg7CTeCuincIU8z7r/w5Gpq7ZiY6awg
+         e0IUQvU0Bg3VO7ZrY1fUBjv4TALnJdqsxTnIm7wWGQu8gx7X9C34Du7ASAmo//CHsRBZ
+         3+vfsrC/I3qKsha6r8gv/w7Y7+WARXUxNb27r/GFtQD/voMH4IQ4EOuRlLSbmaynIEH9
+         Iqzw==
+X-Forwarded-Encrypted: i=1; AHgh+RqVMCWZmKQgzZfnNLl3clGADqlY1LW4IXC7we8o2SFCNgP1N6eiAA8BG6dnmNgXR08Xo/zML6GnAtEy5gA08w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzBvPt53otDAd5NaikxcIEFw94kUG0ZYGlKA1H6ipbUeiyhAmE0
+	yZ9CzUBkA/fOJbWxRzD0zDCPpqP0Jc9e5T/c7V+rQY5xrK8TezmcBVY=
+X-Gm-Gg: AR+sD134OTIUtRDFJy+mXRtm0A+WqH+Kr9JTBV3EjqfYH/F1GakeFF+HAJcR5J+tZ0e
+	mD8yGjwnDP098Gjon4J730L5RGuAqIjv3rR9mpy3fNEE/BC365RwD4Q5k4J5So9enQG3jh/aHS7
+	pUgEvNqqw5paXxi9fbtUx8Ku1GKXQBVFIhfBoANiTCVPibdTjWIjxzKXjlCMNMRjiLVx1CRkGED
+	SRE4szRQtAyOeBvf3NVzyYjUA5rPKQ/sa/76ykT900JWXSsAWAjFI88S8yX9kRejHHr4Qt4u+2c
+	M+i95hMtShX3ICx1lsTgA4AyzNSiSu58S+JVwr8qfOWB1YB1ZOw585rtIwS/hYgRTitn6mb9DPb
+	+TY1ddQGnUfWK6UaEbWQw0kFayQLHLpG2dToTjZ/vjwqkJbAzVQRHt8aODZiPJIyctFcWa/LAjx
+	FZeWYaDFM/NZ4dlMPkUmxhw1Whp1jioZYuE7UjseR3AbxhCBhi6Ia53hLxpisvC71q9H+8qUUSx
+	aLQzYNvZdOn6jghKls8gL+lsljECJhAvHDBVdI6
+X-Received: by 2002:a17:90b:1c02:b0:38e:2aa8:60d0 with SMTP id 98e67ed59e1d1-38e4b586067mr20371153a91.37.1784647371935;
+        Tue, 21 Jul 2026 08:22:51 -0700 (PDT)
+Received: from localhost.localdomain ([14.5.152.27])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-38e60cc2ad5sm1402904a91.4.2026.07.21.08.22.47
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Tue, 21 Jul 2026 08:22:51 -0700 (PDT)
+From: Myeonghun Pak <mhun512@gmail.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org,
+	Myeonghun Pak <mhun512@gmail.com>,
+	Ijae Kim <ae878000@gmail.com>
+Subject: [PATCH] drm/mediatek: ovl_adaptor: balance component registrations
+Date: Wed, 22 Jul 2026 00:22:42 +0900
+Message-Id: <20260721152242.47138-1-mhun512@gmail.com>
+X-Mailer: git-send-email 2.39.5 (Apple Git-154)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Subject: Re: [PATCH net-next] ipv6: initialize ipcm6_cookie before parsing
- control messages
-From: Fernando Fernandez Mancera <fmancera@suse.de>
-To: Fernando Fernandez Mancera <fmancera@suse.de>
-Cc: Wayen Yan <win847@gmail.com>, netdev@vger.kernel.org, 
- lorenzo@kernel.org, horms@kernel.org, pabeni@redhat.com, kuba@kernel.org, 
- edumazet@google.com, andrew+netdev@lunn.ch, 
- angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <178464510579.7763.6518393222506443032.b4-review@b4>
-References: <178358611790.128118.11036367713019213946@gmail.com>
- <178464510579.7763.6518393222506443032.b4-review@b4>
-Date: Tue, 21 Jul 2026 16:47:13 +0200
-Message-Id: <178464523384.7942.1381538265158230893.b4-reply@b4>
-X-Mailer: b4 0.16-dev
-X-Rspamd-Action: no action
-X-Spamd-Result: default: False [-2.51 / 50.00];
-	BAYES_HAM(-3.00)[99.99%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	MID_RHS_NOT_FQDN(0.50)[];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	MIME_GOOD(-0.10)[text/plain];
-	MX_GOOD(-0.01)[];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FUZZY_RATELIMITED(0.00)[rspamd.com];
-	ARC_NA(0.00)[];
-	RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	RCPT_COUNT_TWELVE(0.00)[13];
-	MIME_TRACE(0.00)[0:+];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	FREEMAIL_CC(0.00)[gmail.com,vger.kernel.org,kernel.org,redhat.com,google.com,lunn.ch,collabora.com,lists.infradead.org];
-	RCVD_TLS_ALL(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	FROM_EQ_ENVFROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	TO_DN_SOME(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:email,suse.de:dkim];
-	TAGGED_RCPT(0.00)[netdev];
-	RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
-	DKIM_TRACE(0.00)[suse.de:+];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from]
-X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
-X-Rspamd-Queue-Id: D2CB87A589
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_074722_575063_9A77920A 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20260721_082259_188549_3E4E9D56 
+X-CRM114-Status: GOOD (  14.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,31 +106,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2026-07-21 16:45 +0200, Fernando Fernandez Mancera wrote:
-> On Thu, 09 Jul 2026 16:32:30 +0800, Wayen Yan <win847@gmail.com> wrote:
-> > ip6_datagram_send_ctl() parses both SOL_IPV6 and SOL_SOCKET control
-> > messages. For SOL_SOCKET messages it passes ipc6->sockc to
-> > __sock_cmsg_send(), which updates fields such as tsflags with
-> > read-modify-write operations.
-> > 
-> > The IPV6_2292PKTOPTIONS and flowlabel option paths only set ipc6.opt
-> > before calling ip6_datagram_send_ctl(). If a SOL_SOCKET control message
-> > such as SO_TIMESTAMPING_* or SCM_TS_OPT_ID is present, this can read
-> > uninitialized sockc state.
-> > 
-> > Initialize the ipcm6_cookie with ipcm6_init_sk(), as the normal IPv6
-> > sendmsg paths do, before overriding ->opt with the temporary option
-> > buffer.
-> > 
-> > Signed-off-by: Wayen Yan <win847@gmail.com>
-> >
-> 
-> Reviewed-by: Fernando Fernandez Mancera <fmancera@suse.de>
-> 
-> Thanks!
+The OVL adaptor registers both an aggregate driver for its child devices
+and a component for the main DRM aggregate. Probe currently ignores an
+error from registering the child aggregate and leaves that aggregate
+registered if registering the DRM component fails. The remove callback
+also leaves the DRM component registered.
 
-Now that I think about it, shouldn't this go to net tree with a proper
-fixes tag?
+These imbalances can leave component framework entries referring to a
+device whose probe failed or whose driver has been detached. The aggregate
+unbind callback also fails to undo component_bind_all(), leaving its child
+components marked as bound when the aggregate is removed.
 
+Check the aggregate registration result, unwind it when the component
+registration fails, and unregister the component before the aggregate on
+remove. Keep runtime PM enabled until both framework registrations have
+been removed, and unbind all child components from the aggregate unbind
+callback.
 
+Fixes: 453c3364632a ("drm/mediatek: Add ovl_adaptor support for MT8195")
+Cc: stable@vger.kernel.org # 6.4+
+Co-developed-by: Ijae Kim <ae878000@gmail.com>
+Signed-off-by: Ijae Kim <ae878000@gmail.com>
+Signed-off-by: Myeonghun Pak <mhun512@gmail.com>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+index c0af3e3b5..6a259872b 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+@@ -625,6 +625,7 @@ static void mtk_disp_ovl_adaptor_master_unbind(struct device *dev)
+ 	struct mtk_disp_ovl_adaptor *priv = dev_get_drvdata(dev);
+ 
+ 	priv->children_bound = false;
++	component_unbind_all(dev, priv->mmsys_dev);
+ }
+ 
+ static const struct component_master_ops mtk_disp_ovl_adaptor_master_ops = {
+@@ -651,12 +652,15 @@ static int mtk_disp_ovl_adaptor_probe(struct platform_device *pdev)
+ 
+ 	priv->mmsys_dev = pdev->dev.platform_data;
+ 
+-	component_master_add_with_match(dev, &mtk_disp_ovl_adaptor_master_ops, match);
++	ret = component_master_add_with_match(dev, &mtk_disp_ovl_adaptor_master_ops, match);
++	if (ret)
++		return dev_err_probe(dev, ret, "Failed to add component master\n");
+ 
+ 	pm_runtime_enable(dev);
+ 
+ 	ret = component_add(dev, &mtk_disp_ovl_adaptor_comp_ops);
+ 	if (ret != 0) {
++		component_master_del(dev, &mtk_disp_ovl_adaptor_master_ops);
+ 		pm_runtime_disable(dev);
+ 		return dev_err_probe(dev, ret, "Failed to add component\n");
+ 	}
+@@ -666,6 +670,7 @@ static int mtk_disp_ovl_adaptor_probe(struct platform_device *pdev)
+ 
+ static void mtk_disp_ovl_adaptor_remove(struct platform_device *pdev)
+ {
++	component_del(&pdev->dev, &mtk_disp_ovl_adaptor_comp_ops);
+ 	component_master_del(&pdev->dev, &mtk_disp_ovl_adaptor_master_ops);
+ 	pm_runtime_disable(&pdev->dev);
+ }
+-- 
+2.51.0
 
