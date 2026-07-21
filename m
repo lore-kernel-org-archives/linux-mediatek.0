@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25D78C4451C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 09:09:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3A20C4452B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 09:09:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:References:MIME-Version:In-Reply-To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jJAWY5I+EE7ypsQMmGeF7ePDs3+5/nc9dm1EvLwWSd8=; b=byJD55pauv2ktm7jjaPrLKovsP
-	SVNsIL6cvVpXAdFTfhUiWH8wDi8eaH8Y91cwrDicUycDLNMEMKQkKUgBZCydiLt8PUhJDIOoylzEu
-	D+2xZjC7cSQVFnCC+x+61+PGY7Ns7S3UP83DRwtlQUj0FPYf1ifshin0nPw9oIxfsO9C9nhVBmr0i
-	1GyVFUtcsTvl9ZWX0A87eSh576I40KHIf593zRpFT38l2KpPudsC3l4MG3elasKVt5MYJeIZyoOLX
-	fleQ1sBuWa4v6R0yCnGpcdFFUiY97JhpBeBnfCe/6fIZ8QA0dyS/Li1IZs0HLzVdl2+dBaza0E281
-	XVNBSuVQ==;
+	bh=4wB31opfSJxQGOyhrpE5g1SMhfmWmHTES3FuDZOGSPA=; b=M/Fu9EO2YtIOtgkA4d8Dugxw7G
+	nMVPH25+4FK5AFd6hImMJu5iPjJCy+5UNBCFKEE/Z7tBFR0gctTW1Drg9+kCcXINgIO+ZoNXuLUHm
+	KfmziNebupKWLWEav9bM4bxHZIGwPF08CbjEBlR/8NJ+tz628yrbJpwIi7ulCjqCYOtlEALNY5dh8
+	1muwuG6EdD6RdQJDFygpHZX4N68h6CwEaV/7Yx8rExo0tSKfkYTDzKTo3ZTo2sMMv3gwYNIQ1N+pM
+	ZxZa43j1Zs2sOKdkZtjznngwCKLHlZPkQfSkBo+lkST0LYMA/6I9QBkjK/lhvEQu3aKtY8SMctGzb
+	X+ZRokYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm6TQ-00000008vVA-1Mbu;
-	Tue, 21 Jul 2026 09:09:12 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wm6Te-00000008vdx-2Tfu;
+	Tue, 21 Jul 2026 09:09:26 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm6TP-00000008vUb-3bu9
+	id 1wm6Td-00000008vdQ-3nvW
 	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Jul 2026 09:09:11 +0000
+	Tue, 21 Jul 2026 09:09:25 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 740C343B10
-	for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2026 09:09:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 508A11F0155A
-	for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2026 09:09:11 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A873143B10
+	for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2026 09:09:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 880481F0155F
+	for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2026 09:09:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784624951;
-	bh=jJAWY5I+EE7ypsQMmGeF7ePDs3+5/nc9dm1EvLwWSd8=;
+	s=k20260515; t=1784624965;
+	bh=4wB31opfSJxQGOyhrpE5g1SMhfmWmHTES3FuDZOGSPA=;
 	h=From:In-Reply-To:References:Date:Subject:To:Cc;
-	b=foJLZx2IuPGexbJUlKxQfk3MNY2hO2lFMjD0RSceNM8RULTHr4+o/wqsxvk6DIN9y
-	 5EMoJIi9qFWUvo6eCQ3RU2QKmGxty1nssDEOUVW0NBDgP0tEZqitllWU92bL+ol5j+
-	 jg/daGT6XERjIfctGw1bMlNIDh9Mc/4sNP7F+qXWBlV2hVazImQqf1PsZwSGzOT9rh
-	 09JLrururGcpRhAvU5e5XfPEjErnhW3JGm8U+MLPaNPzh/BcSiyUYXbB+gHnLbQsKQ
-	 553dfAT1SWrjh3e506iY1pDNGi53cfxNlXn9WsG6QFJR4zwbN7BHj5beils/2Cvioj
-	 x4nQMUNJBKHuQ==
-Received: by mail-lf1-f51.google.com with SMTP id 2adb3069b0e04-5b0f19bea2fso6980766e87.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2026 02:09:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+Rpt6o34sLcv7HRm1kQyUblh/kCkXDcVTo7HWOu0bpA+9SSXul9mWMOSHiTGpTlWhLCk2C1VbmFsbMneY/9cOQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxwB/PxDE02pU4hQC0Z72ojr28KHSmbWgLSl8JKqdql84hqMyR/
-	azl8EY3QyOKBED3OqyO6VcSE+hRoEXbcT9JU3fU7wmUnaz3vx7HZussSfg1so39GbJs2gMjklgr
-	l33P/Nk6kNOegHUpgcyQihki/V2yDA37w8eGIE/glLA==
-X-Received: by 2002:a05:6512:8054:b0:5b0:d25:fa6b with SMTP id
- 2adb3069b0e04-5b28f9aa2acmr2799921e87.33.1784624950061; Tue, 21 Jul 2026
- 02:09:10 -0700 (PDT)
+	b=IC701rNZje+dgfTqbLnJ30zaA30NDt/Xo4YfQs5LzmrHX9HZyeYyKzyUX2HvEPF97
+	 1u4VvvvWC38WaQa274nSGTyUrcyKsap2cHKcgCYFePScep8erTz1dw5qfrFDKomFZn
+	 dxFq+CVi3oKPHbY7xwFOFO38JVrztihw1pXlx7pbJOzO035qZw8vWmiYdourkFBo0U
+	 okYvfFTI0oetvbPPM+HdJfbKD8rfTpQplzEcPEEF6w0l4wzzNgOjYGxRifx3uNrh1B
+	 l1zWF7sG1v2LTDfKq78JBivVrcm9XKWD+bI1GzHNk3frZd6RQelOQNwbDInWQy+Fsr
+	 SkkgFzrv/BznQ==
+Received: by mail-lf1-f53.google.com with SMTP id 2adb3069b0e04-5b15dcaca31so7961981e87.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2026 02:09:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+RpuzzEU0CZ20T48FZ+cCWCcM+Hxrpvi9jRYmgdMZVyIiw4TFfE1+D1nB8BB1U6nQojTgg1CrSMdOguyoeBzyw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzUMa6kkOzYLxA2Mm9Fk3+pTh2zg+ShEGwcehlabHZ7/6tdz5Sg
+	2EZPT2P8hPGj1nC+aCUbNDPEeyF1sqzX87+/i3c5OK66x13TT9cAd7cvt0u2YmoIPLDMhhsr2r3
+	tIz3D+abuyiuqS0JGJYLAdckfnI4HIOT781c2/4bIIw==
+X-Received: by 2002:ac2:4846:0:b0:5b2:8ad7:93b7 with SMTP id
+ 2adb3069b0e04-5b28fabf50cmr2774646e87.53.1784624964271; Tue, 21 Jul 2026
+ 02:09:24 -0700 (PDT)
 Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Tue, 21 Jul 2026 09:09:09 +0000
+ HTTPREST; Tue, 21 Jul 2026 02:09:22 -0700
 Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Tue, 21 Jul 2026 09:09:09 +0000
+ HTTPREST; Tue, 21 Jul 2026 02:09:22 -0700
 From: Bartosz Golaszewski <brgl@kernel.org>
-In-Reply-To: <20260721065413.2306137-17-wenst@chromium.org>
+In-Reply-To: <20260721065413.2306137-16-wenst@chromium.org>
 MIME-Version: 1.0
-References: <20260721065413.2306137-1-wenst@chromium.org> <20260721065413.2306137-17-wenst@chromium.org>
-Date: Tue, 21 Jul 2026 09:09:09 +0000
-X-Gmail-Original-Message-ID: <CAMRc=Mfv7P74+cpvmHaF=aSYLO=RtFbxenJHMrCjgOMoHuLvQQ@mail.gmail.com>
-X-Gm-Features: AUfX_myi0Upu0FA2vAaH9dLIsivFKjcILpMP1JD9Wz9GpUGoO5swX9n-_RCCXGU
-Message-ID: <CAMRc=Mfv7P74+cpvmHaF=aSYLO=RtFbxenJHMrCjgOMoHuLvQQ@mail.gmail.com>
-Subject: Re: [PATCH v6 16/16] arm64: dts: mediatek: mt8188-geralt: Add WiFi/BT
- as M.2 E-key slot
+References: <20260721065413.2306137-1-wenst@chromium.org> <20260721065413.2306137-16-wenst@chromium.org>
+Date: Tue, 21 Jul 2026 02:09:22 -0700
+X-Gmail-Original-Message-ID: <CAMRc=MedLNu+xzDW=L6_EhVMQphkWEp020HC9hpmDcueN1R6_Q@mail.gmail.com>
+X-Gm-Features: AUfX_mx6IxoN9pFtIb0B19rivB9mMh-kCXBeeOUX0vuwCx66Zlnj8MCY6QcZGPk
+Message-ID: <CAMRc=MedLNu+xzDW=L6_EhVMQphkWEp020HC9hpmDcueN1R6_Q@mail.gmail.com>
+Subject: Re: [PATCH v6 15/16] arm64: dts: mediatek: mt8195-cherry: Add M.2
+ E-key slot
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: linux-acpi@vger.kernel.org, driver-core@lists.linux.dev, 
 	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org, 
@@ -94,23 +94,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 21 Jul 2026 08:54:11 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
-> The MT8188 Geralt design features a chip-on-board WiFi/BT solution. This
-> is a M.2 E-key WiFi/BT board layout directly inserted into the mainboard
-> design. The connections to the rest of the board are almost the same as
-> if it were a separate M.2 card. The only addition is the PMU_EN pin on
-> the chip; on M.2 cards this would be tied to the primary power source.
+On Tue, 21 Jul 2026 08:54:10 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
+> The Mt8195 Cherry design features an M.2 E-key slot for WiFi/BT combo
+> cards. Only PCIe and USB are wired from the SoC to the slot, along with
+> some auxiliary signals.
 >
-> Model the chip-on-board WiFi/BT solution as a M.2 E-key slot with PCIe,
-> USB and auxiliary signals. The PMU_EN pin, which enables the internal
-> power controls and regulators, is modeled as a regulator fed by the
-> pp3300_wlan regulator. Since power sequencing is now correctly modeled
-> using the M.2 E-key slot, drop the "regulator-always-on" property one
-> pp3300_wlan regulator. Also drop the comment in xhci2 saying "MT7921's
-> power is controlled by PCIe".
->
-> Also drop the voltage range on the pp3300_wlan regulator. This
-> "regulator" is just a load switch and does not provide any regulation.
+> Add the proper representation for it, replacing the PCIe wifi node and
+> vpcie3v3-supply property under the PCIe controller, and the vbus-supply
+> property under the xhci3 node.
 >
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 > ---
