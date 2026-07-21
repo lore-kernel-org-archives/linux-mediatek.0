@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26199C44529
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 10:29:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDE9EC4451C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jul 2026 10:29:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jcQ5JWQsS2P0sxTuodtPBzE3B+AxVvQ7Jj0tVbKvuKE=; b=q5DcRNHrFfyYz1kvoedGpYYQZt
-	VhPcs2sKRVpdZLzqzwGVyNnA1mAo6CwMcWySoVfyBNQ+AFGAuDImlBATxihytb62g1X9CmofWpjEU
-	/GDkWMeXRbpGNXRJWxEHLkAc1jpkK23mTgIJDnFJJzCO3XeN+C5vvLCV0uRsrEUoK8mb4Uym4FqhH
-	D3dkI3nt8AaJKb1LlaXlvC8tQ9VoguEAeZR3MRkIw9NsqmU9TsI6PE/wINql3QqZSvp+oXdWlMir/
-	QH6m5M49AlpcC3GMt2Y/dsLNp1ZaNamhmx3ofbhUY1ORlRQBxx9z6KASCykFte9rvtugm+/xVs9wc
-	CiBEbhKQ==;
+	bh=lO6f51j8XQ2LkBzH9pjltC7krTy+qWIB9damC+nLnm8=; b=yitgnU+EJjWTjgQ/e2/E34ZdHH
+	ZG5nXLOUouTHBezfPYrk90tZdiUs13DCjEQOKQhg3Lvw4uqEAYvr2jrk6DpFcXwjBC+oMGjKRzaNd
+	cC2450q2ebCZ7b3VFcvlYLCBCFzGMbkKOYT3vZIPnaCE5QqhIqoJF0XuCe+4s1zVeAXwjtUyMyPyD
+	/00EIIgJmO2NNIuGIxEuhwbEBWLLN4LKvBmP82i54Rt+d0acXi4DoLxpR+Klop3pBLSOR7DhQZlx4
+	KX275Tc9Jgzmagu+JEz5MOQEC0m1GPhhAfGmtDgxtNTdxUguvkPbvbifJIeRakuQ5rnEbCGq68SUt
+	fn9DTSDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm7jM-00000009AuY-0Hpd;
-	Tue, 21 Jul 2026 10:29:44 +0000
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+	id 1wm7jV-00000009B2d-3Z6v;
+	Tue, 21 Jul 2026 10:29:53 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wm7jG-00000009Aq6-49bk
+	id 1wm7jQ-00000009AyC-1KAU
 	for linux-mediatek@lists.infradead.org;
-	Tue, 21 Jul 2026 10:29:40 +0000
-Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-2ceae1ed204so91193055ad.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2026 03:29:38 -0700 (PDT)
+	Tue, 21 Jul 2026 10:29:52 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2cf41bab353so49365605ad.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 21 Jul 2026 03:29:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784629778; x=1785234578; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1784629787; x=1785234587; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=jcQ5JWQsS2P0sxTuodtPBzE3B+AxVvQ7Jj0tVbKvuKE=;
-        b=pWkREWab84LZVFp1C8JoSUSjnzZHZC2tJi6p5aHcrtOdJFp1tIvVryKtqvLEz76+9H
-         NdSQdNg8WzhJOkVQMVab2le7lRXAHb7pbKz0eXYkRYe5+90eilKwvaeM97SLS/ewg+BV
-         cUbdbo1OPQkcBgYW5e/Ch+18Ytv5ls3RgBf0nN63vO5xiqskmHZpFWnCbuQYsrYY4czx
-         Biz+JemZrCAcRtWWgyR5XBJHx0uqhjkWuW+b1gVtf3Z18Vr3HKbBajhHMFa2egUOMBZf
-         iOT1tz4ZwPSg0iE2VZCEm1Ob2qAnIrb8aUgkchzJkWKZ1cUc2vcn0sBLX1mLk443nngR
-         O7jQ==
+        bh=lO6f51j8XQ2LkBzH9pjltC7krTy+qWIB9damC+nLnm8=;
+        b=AqAZUCPnQcgVBO+fAK+z/AFRybzxmXa56hy1mKBcEwIIXQ0C02dJp/Gz478fS+GSRm
+         5Cg/Im0vtHYUH6d1kZhOmuJ9L9wPSHhIElqmmaTAF98lW0wOXt1aZn9alvrXSF/N2SQQ
+         qiMu2FY3zjosqtsRlPJXydjSXgcBO0OoomdE077HfD58AP/HGheAAUs2kvjuXKCo/Ud4
+         hITJFFRCnXZ9j3NpbYZH2GacCYTp0T2RMont4bUJBRq1655ThMyrupEYm2lCzwk0UF8h
+         Awl95qB4Ur4W7cKugiKAGEOukA5KX/jyQmllyMlJJrtlKozMvrA2rfFkU1WmztZPLn3h
+         VY1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784629778; x=1785234578;
+        d=1e100.net; s=20251104; t=1784629787; x=1785234587;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=jcQ5JWQsS2P0sxTuodtPBzE3B+AxVvQ7Jj0tVbKvuKE=;
-        b=rqwtOb7zkKituA4PD5JvBLMrLlicRJHL4aO+KaJOg4mOwTDuar5AUNfielF+MLAoyV
-         N5qQEbpXd6rll9WKyj9TIbBxJqle2Dju9Y35bsUHNPfPQcL8AxRwVNoz6hr+Z6FX0k65
-         imuFR1cIR3u5/dHCh60uTsNWQL3IIQ7itZn+wYintL/4phW9JOOB5FGSBga5R4BE4iKX
-         +Yfs0JS2EQ0+grNkQoxiJERBl/cWfAtwQdd3HpeQERLfo+KCrjCFpRP5n2kLc14TdMh0
-         CxnX3m7diINdmg3Xl/MtCNVaKi6i6JsbSqvRcfIO82yPUNvXBXBILfrnJGVjIZ7ZSRCI
-         J+9g==
-X-Forwarded-Encrypted: i=1; AHgh+Ro+FqxhLwUAef/n8Via3r2VocRd37uEWZRAY7GAbfLpBSoQ5CnaZLGeXww+pNBxz4jRdKAjMz6m/A10j6E7Aw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywmkdzc+FBEylVbWXAr4iJph4UQWJ2JSyIYoL6CtnSGrTtxuC0H
-	LFfAUS6ERtnDT+fdz3uLYrcVif8fa1jPJYjDFoMFIw0GjGQZGHWT8MEk
-X-Gm-Gg: AR+sD11cINrstCw31ct/L/2tNi4hdiqp4es7cWlBfglQ9cX2qrFPMUeJi8FLPMR6cuy
-	yrvc8fXG/HGwsLd/+14LrAb6IJQnJANWkflg61vGWARWescM9XbkZeJraxw3OJz8jHDxHjxjOzP
-	fHdlm06QP0WtNy00nhxis5uW/n/ZKXAps1+C4PHqgelnPAmvU5nvekVHQunaUwt2jA8IG0qYCSb
-	8K3FsDCwC0AjKcCizlyuvW6PcuA6doUprlt/K9vWeq0pycxFe9j4n3y/p5hMiXlE+Kgbjxh91Cf
-	9YiZELd0lm6b7wVbkqDgeu7Y3EJDTUWCCpRQRQR5a7eKXAf/Bq9mohSOOh5B03HeVbn8UZqKXv8
-	Mq6nnKFiucbzczteTpYh0RQjeRDM+1B7Q/E+PUZhRyaJu6/dkI7SJa2/0EnHbIMQnAQ77z2bDnH
-	kgHrhvuj7nwwWBIMPkOQQLvob3EHDemCU2dPu+
-X-Received: by 2002:a17:903:2acc:b0:2cf:7ffb:82aa with SMTP id d9443c01a7336-2cf7ffb8d74mr33781705ad.45.1784629778363;
-        Tue, 21 Jul 2026 03:29:38 -0700 (PDT)
+        bh=lO6f51j8XQ2LkBzH9pjltC7krTy+qWIB9damC+nLnm8=;
+        b=maJvBx67pkE5IBCTACtQ8l6q5pZj58Jrf3500eyrJUj5K4lwVcyGTGjAkS05nxddX9
+         I+JRhRl8nByeRnBUgv++yN2wffEw3mivvY5kYtbLMEyKgIAS/YppZFAHX+e30iw3q3M6
+         kCL7fJRv+djKGkt6Zo/hfWXdis3tNGpCL+UpgCJZ1z5QAAinZRQjtFldByor3fg0+aNl
+         BrmNARzdC+PD8IoUpT90iezzQsg7DAJ/Dw+a7kDEsQ/cSMmEa1FzozZqXV4Qe4e9Enkj
+         A10c+RNCDUc6L5j0vuqAnHOfF2ekvjiFATEkmf2IGjRstzwtqSG7yBQ2O1ngC2pjlQhO
+         7hFg==
+X-Forwarded-Encrypted: i=1; AHgh+Rpy3i10273jkHH39kmdcWZO8JqgRUvzVeUPJQ1omEGrChdPGwxBSFO95zuy4b0ZxYMcPYkLzS0flASPycvw3Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxaLZLp0ryooPK/zNpBfJ+UNQ+L8s4sL2Fs6LdNnngr/6G1MX2w
+	6GP8gBtNJ8g54NMXbD7ta3XayVHVoQowEmzMKEeGwpbbeGdUNnzj7yFz
+X-Gm-Gg: AR+sD101KYKjxrYjnouL6+si6gQEzuIPA/JeURZDoPDIA2IRhrOwsXAp97poikAIsEP
+	h+9v8QuvxFDruLpFB57WARpYYEEmnR5TM6cb5P3px8wgMR5o50vYL02o51wLISiX+GfkMQemXcQ
+	DOpPXpyqYwhgjXtBJ6RPLU10bzG+n2frYwrRA39tSlkUClDEYAJLxI4e72A+b/zOLBp7nfH5nLP
+	6DVdsUo5bLWVvBzFdWZmrI8+Pk9YK5d+MFsW7BCEwyuDEGNAS5dWHtU0ZlJHjf7xHIjuql/5KKM
+	TYwKjt4AUSOMSxrxRdQqF2azCDNz18b2bILLX4p9b463ZFGpZJrg0F5qGueR7tQLQYycdT5iaJZ
+	AcSXTEYBW6S/la9vJvz+Wp91kdu4jo87GMTGqQ2lwba4R3QmZiE36uwWNMKiYRqDzAWMg1DJ2qR
+	79JGcUD34gwVPc+0n3iVH8g529PhSwutbq1JWF
+X-Received: by 2002:a17:903:3d0e:b0:2cf:6dba:b294 with SMTP id d9443c01a7336-2cf6dbab68emr73742545ad.22.1784629787546;
+        Tue, 21 Jul 2026 03:29:47 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cf3448dac2sm73581365ad.3.2026.07.21.03.29.31
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2cf3448dac2sm73581365ad.3.2026.07.21.03.29.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Jul 2026 03:29:37 -0700 (PDT)
+        Tue, 21 Jul 2026 03:29:47 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>,
 	Takashi Iwai <tiwai@suse.com>,
@@ -103,17 +103,17 @@ Cc: Support Opensource <support.opensource@diasemi.com>,
 	linux-arm-msm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH v4 25/29] ASoC: codecs: rt712-sdca-sdw: Simplify regcache error handling in resume
-Date: Tue, 21 Jul 2026 17:25:56 +0700
-Message-ID: <20260721102600.523199-26-phucduc.bui@gmail.com>
+Subject: [PATCH v4 26/29] ASoC: codecs: rt712: Use guard() for mutex locks
+Date: Tue, 21 Jul 2026 17:25:57 +0700
+Message-ID: <20260721102600.523199-27-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260721102600.523199-1-phucduc.bui@gmail.com>
 References: <20260721102600.523199-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_032939_114851_B4E7939A 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20260721_032948_392673_584AB144 
+X-CRM114-Status: GOOD (  13.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,54 +130,101 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: bui duc phuc <phucduc.bui@gmail.com>
 
-Calling regcache_mark_dirty() on error is redundant as regcache_sync()
-retains dirty state on failure, and any write in cache_only mode marks
-the cache dirty anyway.
-Restore cache_only directly on error for active regmaps and drop the
-redundant regcache_mark_dirty() calls. This also removes goto labels
-to prepare for guard cleanup.
+Clean up the code using guard() for mutex locks.
+Merely code refactoring, and no behavior change.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/codecs/rt712-sdca-sdw.c | 20 +++++++++-----------
- 1 file changed, 9 insertions(+), 11 deletions(-)
+ sound/soc/codecs/rt712-sdca-sdw.c | 30 ++++++++++++++++--------------
+ sound/soc/codecs/rt712-sdca.c     |  5 ++---
+ 2 files changed, 18 insertions(+), 17 deletions(-)
 
 diff --git a/sound/soc/codecs/rt712-sdca-sdw.c b/sound/soc/codecs/rt712-sdca-sdw.c
-index ebdf7b308331..e23501ed87a7 100644
+index e23501ed87a7..c50e74e20a88 100644
 --- a/sound/soc/codecs/rt712-sdca-sdw.c
 +++ b/sound/soc/codecs/rt712-sdca-sdw.c
-@@ -473,22 +473,20 @@ static int rt712_sdca_dev_resume(struct device *dev)
+@@ -6,6 +6,7 @@
+ //
+ //
  
- 	regcache_cache_only(rt712->regmap, false);
- 	ret = regcache_sync(rt712->regmap);
--	if (ret)
--		goto err_sync;
-+	if (ret) {
-+		regcache_cache_only(rt712->regmap, true);
-+		return ret;
++#include <linux/cleanup.h>
+ #include <linux/delay.h>
+ #include <linux/device.h>
+ #include <linux/module.h>
+@@ -427,13 +428,13 @@ static int rt712_sdca_dev_system_suspend(struct device *dev)
+ 	 * deferred work completes and before the parent disables
+ 	 * interrupts on the link
+ 	 */
+-	mutex_lock(&rt712_sdca->disable_irq_lock);
+-	rt712_sdca->disable_irq = true;
+-	ret1 = sdw_update_no_pm(slave, SDW_SCP_SDCA_INTMASK1,
+-				SDW_SCP_SDCA_INTMASK_SDCA_0, 0);
+-	ret2 = sdw_update_no_pm(slave, SDW_SCP_SDCA_INTMASK2,
+-				SDW_SCP_SDCA_INTMASK_SDCA_8, 0);
+-	mutex_unlock(&rt712_sdca->disable_irq_lock);
++	scoped_guard(mutex, &rt712_sdca->disable_irq_lock) {
++		rt712_sdca->disable_irq = true;
++		ret1 = sdw_update_no_pm(slave, SDW_SCP_SDCA_INTMASK1,
++					SDW_SCP_SDCA_INTMASK_SDCA_0, 0);
++		ret2 = sdw_update_no_pm(slave, SDW_SCP_SDCA_INTMASK2,
++					SDW_SCP_SDCA_INTMASK_SDCA_8, 0);
 +	}
  
- 	regcache_cache_only(rt712->mbq_regmap, false);
- 	ret = regcache_sync(rt712->mbq_regmap);
--	if (ret)
--		goto err_sync;
-+	if (ret) {
-+		regcache_cache_only(rt712->mbq_regmap, true);
-+		regcache_cache_only(rt712->regmap, true);
-+		return ret;
-+	}
+ 	if (ret1 < 0 || ret2 < 0) {
+ 		/* log but don't prevent suspend from happening */
+@@ -455,14 +456,15 @@ static int rt712_sdca_dev_resume(struct device *dev)
+ 		return 0;
  
- 	return 0;
+ 	if (!slave->unattach_request) {
+-		mutex_lock(&rt712->disable_irq_lock);
+-		if (rt712->disable_irq == true) {
 -
--err_sync:
--	regcache_cache_only(rt712->regmap, true);
--	regcache_cache_only(rt712->mbq_regmap, true);
--	regcache_mark_dirty(rt712->regmap);
--	regcache_mark_dirty(rt712->mbq_regmap);
--	return ret;
+-			sdw_write_no_pm(slave, SDW_SCP_SDCA_INTMASK1, SDW_SCP_SDCA_INTMASK_SDCA_0);
+-			sdw_write_no_pm(slave, SDW_SCP_SDCA_INTMASK2, SDW_SCP_SDCA_INTMASK_SDCA_8);
+-			rt712->disable_irq = false;
++		scoped_guard(mutex, &rt712->disable_irq_lock) {
++			if (rt712->disable_irq) {
++				sdw_write_no_pm(slave, SDW_SCP_SDCA_INTMASK1,
++						SDW_SCP_SDCA_INTMASK_SDCA_0);
++				sdw_write_no_pm(slave, SDW_SCP_SDCA_INTMASK2,
++						SDW_SCP_SDCA_INTMASK_SDCA_8);
++				rt712->disable_irq = false;
++			}
+ 		}
+-		mutex_unlock(&rt712->disable_irq_lock);
+ 	}
+ 
+ 	ret = sdw_slave_wait_for_init(slave, RT712_PROBE_TIMEOUT);
+diff --git a/sound/soc/codecs/rt712-sdca.c b/sound/soc/codecs/rt712-sdca.c
+index d6353af07380..2218f9918ae3 100644
+--- a/sound/soc/codecs/rt712-sdca.c
++++ b/sound/soc/codecs/rt712-sdca.c
+@@ -7,6 +7,7 @@
+ //
+ 
+ #include <linux/bitops.h>
++#include <linux/cleanup.h>
+ #include <sound/core.h>
+ #include <linux/delay.h>
+ #include <linux/init.h>
+@@ -403,7 +404,7 @@ static void rt712_sdca_btn_check_handler(struct work_struct *work)
+ 
+ static void rt712_sdca_jack_init(struct rt712_sdca_priv *rt712)
+ {
+-	mutex_lock(&rt712->calibrate_mutex);
++	guard(mutex)(&rt712->calibrate_mutex);
+ 
+ 	if (rt712->hs_jack) {
+ 		/* Enable HID1 event & set button RTC mode */
+@@ -450,8 +451,6 @@ static void rt712_sdca_jack_init(struct rt712_sdca_priv *rt712)
+ 
+ 		dev_dbg(&rt712->slave->dev, "in %s disable\n", __func__);
+ 	}
+-
+-	mutex_unlock(&rt712->calibrate_mutex);
  }
  
- static const struct dev_pm_ops rt712_sdca_pm = {
+ static int rt712_sdca_set_jack_detect(struct snd_soc_component *component,
 -- 
 2.43.0
 
