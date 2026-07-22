@@ -4,53 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF35FC4452D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 03:52:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6968AC44512
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 04:14:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:From:To:Date:Reply-To:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=T9UUSEVoX23+teHyHVc4XnhVE7Bddxb84RHflEA9fy0=; b=ZOZPhrOBewjHhvKUWa3u4m50BK
-	xhjS9wrFXhYD8mullWyNPYLJe8VhJK6PNCmqfmSwpTKS4EUAtiRVvl+C+54uSPoLRPfI3KdDzBO/0
-	yXjjP4qhI8v3kMJmVT7Qebs5ayIWvwvQVKYeLWKBtzGXkJWO3IAzPQm5ITqdTH4xCc1oM/OQZWM+K
-	LVQE4ZW74xkgjPo2/DmPDhY0NDC/vNBQ/cWyeMWehDdkRFWPTI5NKtVH0gIxaxyQMYXPtwToZjSWI
-	GQlBGaf9YenAlI6Hmu32H3tlxchu2jGP9nEctsAv4QIdXc+tuMKF72WdhbkbjU5mGaQlUExaMDhPq
-	imdKZVpA==;
+	bh=g8GKCTdhzyHicpm2s9IeJEalCatvuSkOlVRtNie8L7Q=; b=L6AxkoCp+nCTcT8kLFKBGUSbyy
+	o/QFJrCl3DIuf3oyvjbbas+PtwJkiAA7P8RaXGfXM4rDHAhCI+2LaGqcdn776PoOt71LKWymYWioR
+	a0q3S8VtOMuCG++rbqb6W4FPn8nENYnqVg0UpKi4oChHHpapgaggb3FFdtKVS3m1i4cIii5l14nWS
+	tsZcKMEcbcPhtiWhG+7KmtPly/eDGi2V6f4zrjLyDWaeFhrC3O4alb+bpdyJsl9606HUJrVROS7rH
+	d/V1hcpDA34QflaM04yApbEjoPxm8LCSsXylfiRRoMtmvuu/UxqsPbSAXDe06m9gIOjlrmaMzajhc
+	f3RU8c4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmO04-0000000Aqaq-2csc;
-	Wed, 22 Jul 2026 03:52:04 +0000
-Received: from mail-4319.protonmail.ch ([185.70.43.19])
+	id 1wmOM5-0000000AreQ-2xNL;
+	Wed, 22 Jul 2026 04:14:49 +0000
+Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmO00-0000000AqZA-1pjg;
-	Wed, 22 Jul 2026 03:52:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1784692314; x=1784951514;
-	bh=T9UUSEVoX23+teHyHVc4XnhVE7Bddxb84RHflEA9fy0=;
-	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
-	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
-	b=narpR5eI5Dv7nRg39pOtG91KL4+Z/eaWBUeoCzoR5r0rRoFgA/4E2GItrEfmdKLF3
-	 JAx6yzJdT2aswrUNP6GQ7b0I1h7AFjcwDDwXDS2DPt28CYyi4eRS+Ageu6lz3Q29Ok
-	 xWw2hMYMWh961eHo5f83WjQJepZSZAmktjML6bvLl7edMoriJGWsY+F6gG6K7DfWw1
-	 9FUuLR9Fe0i4U+aDpsLTMR0nB2iVb/TzwDJW6D2YTevx2O3vT2b1m8by5WdyNQwOl6
-	 ZKzZZ6spVIOHGOTEWWKN9p3TrKMHxNu9Pltsk4sm33yofS+YdAVS1SMM2Stle5AKwb
-	 s6EVEw234BUfA==
-Date: Wed, 22 Jul 2026 03:51:50 +0000
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-From: Ryan Leung <untilscour@protonmail.com>
-Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryan Leung <untilscour@protonmail.com>
-Subject: [PATCH] wifi: mt76: mt7996: add thermal zone device registration
-Message-ID: <20260722-mt7996-thermal-zone-v1-1-88896e6e9985@protonmail.com>
-Feedback-ID: 184418679:user:proton
-X-Pm-Message-ID: 9e14f46cfdb4bf39a41e6629e5d0f893ba5c57c3
+	id 1wmOM2-0000000Ardy-3BdR;
+	Wed, 22 Jul 2026 04:14:48 +0000
+Received: from localhost.localdomain (unknown [111.196.245.140])
+	by APP-05 (Coremail) with SMTP id zQCowAC3JD+0Q2BqaCa7AA--.23602S2;
+	Wed, 22 Jul 2026 12:14:44 +0800 (CST)
+From: Pengpeng Hou <pengpeng@iscas.ac.cn>
+To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Cc: Daniel Palmer <daniel@thingy.jp>,
+	Thomas Gleixner <tglx@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Pengpeng Hou <pengpeng@iscas.ac.cn>
+Subject: [PATCH] irqchip/mst-intc: reject ranges beyond saved state capacity
+Date: Wed, 22 Jul 2026 12:14:43 +0800
+Message-ID: <20260722041443.10020-1-pengpeng@iscas.ac.cn>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: zQCowAC3JD+0Q2BqaCa7AA--.23602S2
+X-Coremail-Antispam: 1UD129KBjvdXoWrury3Jw48Cw48Wry7WryrtFb_yoWDArX_u3
+	W5uan7Gr1rKFn5JF97tr17Zry0yF9ruF4qgwnYv3W3JryfW3WrGF1UX3sYya1xuF4Fyr1x
+	CryYvrW0kr9FkjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUIcSsGvfJTRUUUb4AFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
+	6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
+	A2z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Cr0_
+	Gr1UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2z280aVCY1x0267AKxVWxJr
+	0_GcWle2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E
+	2Ix0cI8IcVAFwI0_JF0_Jw1lYx0Ex4A2jsIE14v26r1j6r4UMcvjeVCFs4IE7xkEbVWUJV
+	W8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lc7CjxVAaw2AFwI0_
+	Jw0_GFyl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67
+	AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r1q6r43MIIY
+	rxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_JFI_Gr1lIxAIcVC0I7IYx2IY6xkF7I0E14
+	v26F4j6r4UJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_
+	Gr1lIxAIcVC2z280aVCY1x0267AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7VUbtxhJ
+	UUUUU==
+X-Originating-IP: [111.196.245.140]
+X-CM-SenderInfo: pshqw1xhqjqxpvfd2hldfou0/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260721_205200_711449_2CF5DE23 
-X-CRM114-Status: GOOD (  10.92  )
+X-CRM114-CacheID: sfid-20260721_211447_163685_CEE8F87A 
+X-CRM114-Status: UNSURE (   8.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,107 +82,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Register the mt7996 phy as a thermal zone sensor using
-devm_thermal_of_zone_register() so that device tree thermal-zones
-nodes can reference the Wi-Fi chip as a temperature source. This
-allows the kernel thermal governor to control external cooling
-devices such as PWM fans based on Wi-Fi chip temperature.
+The inclusive Device Tree IRQ range determines nr_irqs. Suspend and
+resume then use nr_irqs to walk the fixed saved_status array, which has
+MST_INTC_MAX_IRQS entries. A descending range underflows the unsigned
+subtraction, while a range wider than 64 entries exceeds that array.
 
-Registration is non-fatal: -ENODEV is returned when no
-thermal-sensors DT property references this device, which is the
-expected case on platforms without a thermal zone configured.
+Reject both forms before deriving nr_irqs.
 
-Signed-off-by: Ryan Leung <untilscour@protonmail.com>
+Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
 ---
-This is essentially the same as the previous patch for mt7915 [1] but calls
-mt7996_mcu_get_temperature without mutex, consistent with the existing hwmo=
-n
-mt7996_thermal_temp_show callback.
+ drivers/irqchip/irq-mst-intc.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-I don't know if mt7996 also needs mutex locks such as those in commit
-e733647566ec ("wifi: mt76: mt7915: hold dev->mutex while interacting with t=
-he thermal state") [2]
-
-[1] https://patch.msgid.link/20260719-mt7915-thermal-zone-device-registrati=
-on-v2-1-0eac68c2741e@protonmail.com
-[2] https://patch.msgid.link/20241230194202.95065-10-nbd@nbd.name
----
- drivers/net/wireless/mediatek/mt76/mt7996/init.c   | 28 ++++++++++++++++++=
-++++
- drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  1 +
- 2 files changed, 29 insertions(+)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net=
-/wireless/mediatek/mt76/mt7996/init.c
-index d6f9aa1ab52d..115145f993d0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -236,6 +236,23 @@ static const struct thermal_cooling_device_ops mt7996_=
-thermal_ops =3D {
- =09.set_cur_state =3D mt7996_thermal_set_cur_throttle_state,
- };
-=20
-+static int mt7996_thermal_get_temp(struct thermal_zone_device *tz, int *te=
-mp)
-+{
-+=09struct mt7996_phy *phy =3D thermal_zone_device_priv(tz);
-+=09int val;
+diff --git a/drivers/irqchip/irq-mst-intc.c b/drivers/irqchip/irq-mst-intc.c
+index b5335f6fd6d6..1475335d668d 100644
+--- a/drivers/irqchip/irq-mst-intc.c
++++ b/drivers/irqchip/irq-mst-intc.c
+@@ -263,6 +263,10 @@ static int __init mst_intc_of_init(struct device_node *dn,
+ 	    of_property_read_u32_index(dn, "mstar,irqs-map-range", 1, &irq_end))
+ 		return -EINVAL;
+ 
++	if (irq_end < irq_start ||
++	    irq_end - irq_start >= MST_INTC_MAX_IRQS)
++		return -EINVAL;
 +
-+=09val =3D mt7996_mcu_get_temperature(phy);
-+=09if (val < 0)
-+=09=09return val;
-+
-+=09*temp =3D val * 1000;
-+=09return 0;
-+}
-+
-+static const struct thermal_zone_device_ops mt7996_tz_ops =3D {
-+=09.get_temp =3D mt7996_thermal_get_temp,
-+};
-+
- static void mt7996_unregister_thermal(struct mt7996_phy *phy)
- {
- =09struct wiphy *wiphy =3D phy->mt76->hw->wiphy;
-@@ -277,6 +294,17 @@ static int mt7996_thermal_init(struct mt7996_phy *phy)
- =09phy->throttle_temp[MT7996_CRIT_TEMP_IDX] =3D MT7996_CRIT_TEMP;
- =09phy->throttle_temp[MT7996_MAX_TEMP_IDX] =3D MT7996_MAX_TEMP;
-=20
-+=09phy->tzone =3D devm_thermal_of_zone_register(phy->dev->mt76.dev,
-+=09=09=09=09=09=09   phy->mt76->band_idx, phy,
-+=09=09=09=09=09=09   &mt7996_tz_ops);
-+=09if (IS_ERR(phy->tzone)) {
-+=09=09if (PTR_ERR(phy->tzone) !=3D -ENODEV)
-+=09=09=09dev_warn(phy->dev->mt76.dev,
-+=09=09=09=09 "failed to register thermal zone%d: %ld\n",
-+=09=09=09=09 phy->mt76->band_idx, PTR_ERR(phy->tzone));
-+=09=09phy->tzone =3D NULL;
-+=09}
-+
- =09if (!IS_REACHABLE(CONFIG_HWMON))
- =09=09return 0;
-=20
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/n=
-et/wireless/mediatek/mt76/mt7996/mt7996.h
-index 0d6488522ba7..1207b5c7e98b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -372,6 +372,7 @@ struct mt7996_phy {
-=20
- =09struct ieee80211_sband_iftype_data iftype[NUM_NL80211_BANDS][NUM_NL8021=
-1_IFTYPES];
-=20
-+=09struct thermal_zone_device *tzone;
- =09struct thermal_cooling_device *cdev;
- =09u8 cdev_state;
- =09u8 throttle_state;
-
----
-base-commit: 69bd85e933c617a84fa54fcc80e628e98afdc45d
-change-id: 20260722-mt7996-thermal-zone-a1de7cb1d728
-
-Best regards,
--- =20
-Ryan Leung <untilscour@protonmail.com>
-
+ 	cd = kzalloc_obj(*cd);
+ 	if (!cd)
+ 		return -ENOMEM;
+-- 
+2.43.0
 
 
