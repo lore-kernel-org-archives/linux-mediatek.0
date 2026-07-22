@@ -4,65 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9B19C4452D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 08:32:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79DC3C44533
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 08:34:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=homWq+S4D1nNuu+NtfzR+49sxpUzkLg5taBipS4WfAw=; b=fgy4oQX8x5YPyGvbL2GPIDwqpB
-	LGn0EDXPaWHv6a7VmDr98Sxfg9luSWUdY01NukUil6eNsKcZKh49QR3K2UtpuhUro6I1ru3kk+006
-	tAbiemruFV9+d2snREOYjkZ6xgFbKfRE7gRdMC1tbHogTCBuLgQd6mR1fwUXGIAjaMt0mQsDX3cUv
-	buIODwLVm81jT3JrmrIpR+B8BzfpRyK1mXboOI8fjFJh6YHcgIfuZyHwjOOoIfSBi5Yg0QWD1UVaN
-	7wsWLVO4n8NydNyhHHdYd4UYQlGeX53BUiKKDOSx089KaheHg3iSg+rOcX9frTvp8h8bGEa5LeGFy
-	zy1f7VlQ==;
+	bh=mo8WgYh25ldjyX8DCM5vtgvNxtGzO4105EDC10m83EQ=; b=UccSY3zXbB92dTfpgMKgzD/JUT
+	CHGK851E3gLBunG6gvAr2jNCUBp7h8LqbHC0gGsymlr2BqbRi6phcfC68RR7JmuVjWMiWdJpF9gYm
+	fkL7GuTM5m6t1Cl0AYe8vUU15wLHvkIoI8uhAi9LPEXzR8voL8aM89CxC0O8zR7znAUFlufhfde5P
+	SofAe/VRdPJw8T+gb5mLPtUMVyvFq/oOKJvGpokV79jyZ993nLAEzQBICA/fEv6OwlwTr3leavD+e
+	mO8EHjXhMs+E5FwaMhCvmfriE06Ly4zDnXN9CTqURXsWy561fJJy2ayoOdgczmuzhodBaItoshlHc
+	xcFIatJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmSNX-0000000BGDk-2aGW;
-	Wed, 22 Jul 2026 08:32:35 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wmSPO-0000000BGjs-1upP;
+	Wed, 22 Jul 2026 08:34:30 +0000
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmSNT-0000000BGCx-3HnE;
-	Wed, 22 Jul 2026 08:32:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784709149;
-	bh=4FQG/3+PCJnRx6AG47GAfXdpziU9nwJtfPlED+L0aX4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=h+rOqmhMZRj+4zyyfjXhCZeF0HGWVVXAYkiC2/cPAUtTlHEMIBach5jj1K8xgK46V
-	 kDkL/8w/kbJ0EfFJabNgK6Lk6iOIp0o4OEMb9CGFx8ZBOgclYnY0XxVszS9EggTf/b
-	 QW0FYpqGNIRUaoG9J58rwWu7y1ZJlc37zX7tJ9NSM75Z8qsHxwK0HVrmwZQN9AWSZD
-	 CQmq4bXDiKO6sP5ZQxrLLaLWcEQH/s2S1g6iiQ5qumjvyZ8/hqYIFRcejkd9m8fBD5
-	 04xvO57R6EiJHDv2EkqYgwnpCchgQ3f900jqSClQ0LLgIuiST40SzF9DY9Cfai2DvE
-	 d4x0a5Yld0O6w==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2693917E0177;
-	Wed, 22 Jul 2026 10:32:29 +0200 (CEST)
-Message-ID: <a642b843-b828-4bb0-96d9-0f0d7466e29d@collabora.com>
-Date: Wed, 22 Jul 2026 10:32:28 +0200
+	id 1wmSPM-0000000BGiF-0Oqt
+	for linux-mediatek@lists.infradead.org;
+	Wed, 22 Jul 2026 08:34:29 +0000
+Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-81f3b227a4aso2354317b3.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 22 Jul 2026 01:34:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1784709267; cv=none;
+        d=google.com; s=arc-20260327;
+        b=PBNpxvbkAnaR5d0mZQ9TGrJigvmuvLVet0Ltu0DfNX5gt0glyzdyAQb0iyl6Vfnary
+         JKdpLz7+s80u8n/SkktSzHq7E0biLztda1VOplaIvNReizbtJMcgrQw/r9WcPL7m4IIk
+         eWDubDogT8U08yTBXIQfSdt1slHh9nl3IzT972V6WhFmatVhxfQooZHBIqlDux4+U/W1
+         MbxsQZ222lMkSYkioOedBmL4Hl0lUo91rG+7xGXIqsG64+xGwrqo2/lnQ4rjbTAfiysM
+         huisotOcXaCw23DSr5HreQKc/uCFijUjzgmiys97MQJhV/C2vQf1QK8McPcMakChPUF6
+         BbNA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=mo8WgYh25ldjyX8DCM5vtgvNxtGzO4105EDC10m83EQ=;
+        fh=c+7tDcjeYEcJXAIdolkj/9+LIS+3YQWi0Qzu6XfGU60=;
+        b=XSlcTnylVRWe/PFFIJSc7WpzvxOKtac8RZ6i8yTo5P9mQR43avMfBgpzoFeVkq4PMR
+         CFFSWBhggFwoZUO5svJvgfvsRQrL7w01B7Bxotht13wkkDPzwApujEwgzNJNUWqudIX9
+         c/ceHAmZp44LoIeuk6pvlFiBRB2pDKPe4lmYAnDseUQ0pTPc2qWgqJRmUjyWQCTqH12d
+         /PnfIalp9MtX6R1BZx57E+zFR0PuD0zht/g57zLrEL978ppUt7T7FmmwotUmDxWkzH5j
+         Fl0zUPE+oU3U4KrfvT+A2EWgUr5f4MQzDLM5X8RqYZseRphVdOEiTxo/LrtsjPQ7Pw11
+         mq3w==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1784709267; x=1785314067; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=mo8WgYh25ldjyX8DCM5vtgvNxtGzO4105EDC10m83EQ=;
+        b=Ln4XIcr+YTJjIoG9XQKSJnhhBR0mzrDhDyaCJAJqWubqZHEoN/numh3VjB2dsAtOSe
+         CC2ch5F++K1mMrB49qJty5FY7K5xdZdewDNu0/Y74yhf1x4fpMl+Q+iRQx/zujw3nbWX
+         2VOHMyegnTgDeTIawnVfXE0MPKEkcTGUiTUOQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1784709267; x=1785314067;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=mo8WgYh25ldjyX8DCM5vtgvNxtGzO4105EDC10m83EQ=;
+        b=UQTe+6rCt7GtV/4+qnU5KY8I1omzeLr55mSwNWF3faCL+KHlAxguVK9sDODnxd9qj3
+         DpxYHMHAIS+288HXjb0cb3Xiw4rXsqJlDvDPb8W72/eN2j7Dm/9uJmuywZgbxZ8+zbQO
+         IxW7AOZpPXGsrbDquVCeyHobOV7764E8Qd4Em/ejIJdFq4DX+F94YJpjrZSEaBVPK0P/
+         s8FXXhx+yUiXI5AbQZrXF0tdNBfRG0bY1E8kinFYm0wKoUVdHKPRLSHuvZl86qVNEeOV
+         dM8yxkZ7o+mvR9AV1TSsR3FYPBXRrbV4ZRvQ8utkH+r8GmW2VcEN7sMbSQeR5G++NBIZ
+         JGjw==
+X-Forwarded-Encrypted: i=1; AHgh+RqiN3HmWxSuGomfvjbMLju5Y4jmpiT+aCc5rR9LOl3QwQ8wxCrbcQ8lyZsotoA3BdT9fT2/eyaCtDyBleEPCw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxPWNKLZKLE/IVFRka4wHYYvpaGzyGc09qepxI+5nwmtx/FKfpe
+	Ro71gG4KDJscF9DNsBvdsmEBCd9WqLwOsdI2zhncroOHTioSZUoCq9opDOlNcKCe6zIpdUxClOg
+	DNiin+JoinuSrHFB3EoS4/yoIZjoLLS9XFZqT0cVC
+X-Gm-Gg: AR+sD11VkCFQ+IXE+mBZn52ZbrJDppY7nkWQYSER39tazYL8vk6z61h+VzZE+gMZRgK
+	zjwuPjORw1U97YpKEl9/WX9XQ0acTUi29kI5QRSjnjEHRwf0cARGtzCOx4WaPT05uSaDABDsj+w
+	eRyL0F2WQXaXdhvY43bwP1iwS+QocrqOcLpEk42T2X/cY0ZY7QPxCeYeWmr+oukJqzAhaq1Vv6E
+	p81jrMBPvE2mIvwbG9+RjYJ9j8lQkWQbipANJXHx1cSBPDvh0Ga5OKYqpNWpEUAQdQNBBSafo9K
+	uWnvx52CcZwIIdah
+X-Received: by 2002:a05:690c:c453:b0:81e:bf0e:55da with SMTP id
+ 00721157ae682-81ef260c885mr66446937b3.48.1784709266701; Wed, 22 Jul 2026
+ 01:34:26 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 2/5] pinctrl: mediatek: free EINT resources on unbind
-To: Justin Yeh <justin.yeh@mediatek.com>, Sean Wang <sean.wang@kernel.org>,
- Linus Walleij <linusw@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20260713083808.168957-1-justin.yeh@mediatek.com>
- <20260713083808.168957-3-justin.yeh@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260713083808.168957-3-justin.yeh@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20260721075226.2347933-1-wenst@chromium.org> <20260721075226.2347933-7-wenst@chromium.org>
+ <al9IwVR7Whw2DiXU@ashevche-desk.local>
+In-Reply-To: <al9IwVR7Whw2DiXU@ashevche-desk.local>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 22 Jul 2026 16:34:15 +0800
+X-Gm-Features: AUfX_myMObbdQM6Uou8RDo9wMrLkt0Z3Ce7LljI10q7k1rjjaXzvygc1Ey8OWtE
+Message-ID: <CAGXv+5EkcASZ__Cyp4PnwemPd2xAe+WL-ics9jqHLuxWjWyT7w@mail.gmail.com>
+Subject: Re: [PATCH v3 6/9] i2c: of-prober: Defer regulator_disable() on
+ successful probe in simple helper
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>, Jiri Kosina <jikos@kernel.org>, 
+	Andi Shyti <andi.shyti@kernel.org>, linux-mediatek@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	chrome-platform@lists.linux.dev, linux-input@vger.kernel.org, 
+	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_013231_980292_A05234A7 
-X-CRM114-Status: GOOD (  23.75  )
+X-CRM114-CacheID: sfid-20260722_013428_176113_129E6413 
+X-CRM114-Status: GOOD (  29.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,83 +122,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/13/26 10:37, Justin Yeh wrote:
-> mtk_eint_do_init() creates an IRQ domain, populates it with a mapping for
-> every EINT line and installs a chained handler on the parent interrupt,
-> but none of these are ever released. This was harmless while the drivers
-> were built-in, but now that they can be built as modules and
-> unbound/rmmod'd it leaves behind a dangling IRQ domain, interrupt mappings
-> whose chip data points at freed memory, and a chained handler that keeps
-> firing into that freed data.
-> 
-> The plain allocations in mtk_eint_do_init() already use the device-managed
-> devm_*() helpers, so tear the remaining resources down the same way:
-> register a devm action that detaches the chained handler, disposes of the
-> per-line mappings and removes the IRQ domain. This mirrors the
-> device-managed lifecycle adopted for the GPIO chip and keeps the whole
-> EINT setup self-cleaning on unbind.
-> 
-> Fixes: e46df235b4e6 ("pinctrl: mediatek: refactor EINT related code for all MediaTek pinctrl can fit")
-> Signed-off-by: Justin Yeh <justin.yeh@mediatek.com>
-> ---
->   drivers/pinctrl/mediatek/mtk-eint.c | 21 ++++++++++++++++++++-
->   1 file changed, 20 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
-> index 47ac92ea98c2..7cd4c4a9fc77 100644
-> --- a/drivers/pinctrl/mediatek/mtk-eint.c
-> +++ b/drivers/pinctrl/mediatek/mtk-eint.c
-> @@ -12,6 +12,7 @@
->    */
->   
->   #include <linux/delay.h>
-> +#include <linux/device.h>
->   #include <linux/err.h>
->   #include <linux/gpio/driver.h>
->   #include <linux/io.h>
-> @@ -509,6 +510,24 @@ int mtk_eint_find_irq(struct mtk_eint *eint, unsigned long eint_n)
->   }
->   EXPORT_SYMBOL_GPL(mtk_eint_find_irq);
->   
-> +static void mtk_eint_teardown(void *data)
-> +{
-> +	struct mtk_eint *eint = data;
-> +	unsigned int i, virq;
-> +
-> +	/* Detach the demux handler so it can no longer reference freed data. */
-> +	irq_set_chained_handler_and_data(eint->irq, NULL, NULL);
+On Tue, Jul 21, 2026 at 6:24=E2=80=AFPM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+>
+> On Tue, Jul 21, 2026 at 03:52:20PM +0800, Chen-Yu Tsai wrote:
+> > When a I2C component is found, it's device node is immediately enabled.
+> > This triggers device creation and driver binding. The prober will hold
+> > the regulator enable reference across this part. If the driver probes
+> > synchronously, then it happens within this window. On the other hand,
+> > if the driver probes asynchronously, there is high chance that it
+> > happens after the prober's cleanup function was called, in which case
+> > the regulator would have been disabled when the driver's probe function
+> > is called. This would then require the driver to wait 100 ms for the
+> > hardware to reinitialize, even if the probe function was just a split
+> > second late and the regulator was disabled a few milliseconds ago.
+> >
+> > Recently, some of the drivers for the component that are targeted by th=
+e
+> > I2C OF component prober gained the ability to skip waiting for hardware
+> > initialization if the regulator was left enabled. This happens when the
+> > PMIC has them on by default, or if the component prober left them on
+> > after probing the component.
+> >
+> > Wait a bit of time before dropping the enable refcount on our end so
+> > that the actual driver has the opportunity to catch and increase the
+> > refcount on their end. The 100 ms delay was arbitrarily chosen.
+>
+> ...
+>
+> > +     /*
+> > +      * Wait a bit of time for async drivers to probe and increase the
+> > +      * regulator enable count. This allows the drivers to check and
+> > +      * skip waiting for re-initialization.
+> > +      */
+> > +     if (defer_disable) {
+> > +             dev_dbg(dev, "Deferring regulator disable\n");
+> > +             msleep(100);
+>
+> How was this value chosen?
 
-add here:
+I just chose an arbitrary round value.
 
-synchronize_irq(eint->irq);
+If both the prober and the driver for the probed device (trackpad in
+this example) are builtin, the time between enabling the node and the
+driver asynchronously probing is between 5 ms and 30 ms, but could
+also see outliers exceeding 100 ms.
 
-...so that we don't risk race conditions when tearing down.
+If you're worried the value won't suit every user, I could make it a
+parameter of the simple helpers? And the user itself could be made to
+probe asynchronously to not block the main code path.
 
-after which:
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> +
-> +	/* Dispose of all child mappings before the domain is removed. */
-> +	for (i = 0; i < eint->hw->ap_num; i++) {
-> +		virq = irq_find_mapping(eint->domain, i);
-> +		if (virq)
-> +			irq_dispose_mapping(virq);
-> +	}
-> +
-> +	irq_domain_remove(eint->domain);
-> +}
-> +
->   int mtk_eint_do_init(struct mtk_eint *eint, struct mtk_eint_pin *eint_pin)
->   {
->   	unsigned int size, i, port, virq, inst = 0;
-> @@ -601,7 +620,7 @@ int mtk_eint_do_init(struct mtk_eint *eint, struct mtk_eint_pin *eint_pin)
->   	irq_set_chained_handler_and_data(eint->irq, mtk_eint_irq_handler,
->   					 eint);
->   
-> -	return 0;
-> +	return devm_add_action_or_reset(eint->dev, mtk_eint_teardown, eint);
->   
->   err_eint:
->   	for (i = 0; i < eint->nbase; i++) {
-
+ChenYu
 
