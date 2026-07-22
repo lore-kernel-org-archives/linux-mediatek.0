@@ -4,85 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93054C44539
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 10:03:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00C36C44539
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 12:06:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:References:MIME-Version:
-	In-Reply-To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v2nl4VWueEk9cKUhbw+kqvh7s/L/Uh+km+tAT2bP7fg=; b=JoNQQk3iwbTiLMXQvt22rVCm9v
-	IzyyCXRi2HUyp/G3pnYxBn3WarTe895MOQja+I25eo4KtxCKdvf4DVy4WiD9x6zNh08FXxpkdAUj/
-	ON1TqWmq+Q0Kby+8NI8YwlBsN+vTAHbJD8FnSoScEKQSz87kmX4yIyVlFDIQzeWDUteHzxmoAa0Hv
-	uYxaahH+gL2mV6t/3EY4Utb0aIDnZ793g5jt7BBRhjP4HEAQ3Z6vVU4tReJg2qRlTA7nxjmPahxRH
-	Sd512zpVDQUqiBqU94S3OzGiLTSv9YbrzwNKpktU87eWW0dd4nqBsXpYRsV7kRxfyWRR9MY6RdK7G
-	6EUDwnXA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/L0EEWlD/DcdfcxCfCAtHF82jai0TGxC5F+nIJ0vii4=; b=P2OdD4b2J+nZcN1XPEyZ8LTJ3a
+	x9gbf4+806h/wl9Q0hY1Nlm/n/xgGbhN9WIAIxdrSSDfft1A2uzfajYvo5MWz6WZr+tdG9TW01Hud
+	413GGSH0T8RGkpKKqzAHOfO9JOdEGPE0pr5WHM3jm4WgWW6Z8N56MIF6/tGdxnnnizCf4oSjrVtLU
+	fgTQ9Lv+YkwJ4YJM0Pt4YsakhwjLl5543n+B7OEKMprhNonic9OnFgq0akd+M+eX3Udz2LdmLpYiy
+	Y1o6nk932hZBo7JhN3git79UdMkoCcJt47QQjq9/T6qCJfSxBo3FwmPgyiux/YLVYGBO3iT40TK1t
+	RyU2Ujig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmTnJ-0000000BUTh-1KN4;
-	Wed, 22 Jul 2026 10:03:17 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wmVij-0000000Bha5-3FCa;
+	Wed, 22 Jul 2026 12:06:41 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmTnH-0000000BUTE-2UB6
-	for linux-mediatek@lists.infradead.org;
-	Wed, 22 Jul 2026 10:03:15 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id B65E360A7A
-	for <linux-mediatek@lists.infradead.org>; Wed, 22 Jul 2026 10:03:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 63CB51F0155C
-	for <linux-mediatek@lists.infradead.org>; Wed, 22 Jul 2026 10:03:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784714594;
-	bh=v2nl4VWueEk9cKUhbw+kqvh7s/L/Uh+km+tAT2bP7fg=;
-	h=From:In-Reply-To:References:Date:Subject:To:Cc;
-	b=aGMuUyLHguxVRr1lFjeEqsXxI5a3BDv/DaaV4zoODVdfUElN6OPq6bkx5ATub1s7X
-	 NqCOBztx6noD+QfHAvSgTWe7vgJnIbtFqRfBncNwEd8MZhJAPkwQ6o1PmCErDh2eSF
-	 54ujH4MI/X8WrSdzSMvJdDCh0pZpi+hUqSU2T1bUPAGLbQO4yixldnti713LXPNkci
-	 YythZGNmbpNbSYX0SZ1YxdtUM26wau81e41aUGstklcHdYCONGNwfqBX6p8ICowp/6
-	 g9HicL6hWe6OdIC4YCD4+8eDDyuWsnOkh3GMzOh/RFUuABV1W9tcDEy8Izwff+b8ok
-	 dcHRMOjcvphAQ==
-Received: by mail-lf1-f54.google.com with SMTP id 2adb3069b0e04-5b2aab18795so599959e87.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 22 Jul 2026 03:03:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+RroIoh2wYpozvP+m77ybJGpXOVKMo8hSlmCuiKySjdNGdF4pNXtUWRHc9WiihL62x8vJJ5rQFYAysCQhQkmaQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YytfVixQ0ab1sGby3UxD1KzdHU10Ww8Ppz/0qv7HqFJgidzTERB
-	d9OZqOmoN4DjoFW1hww+jYB2jA/7WwTSFfub3oGw36P2VSHWDWi23SCQ1mVdxLdbRQAG46mEcfS
-	UIuwWus+y3VDm2cInOf/rJViG8/sAgyeEvMiZGHAETQ==
-X-Received: by 2002:a05:6512:3185:b0:5ae:b2e3:fc24 with SMTP id
- 2adb3069b0e04-5b28fabb0afmr5670333e87.60.1784714593132; Wed, 22 Jul 2026
- 03:03:13 -0700 (PDT)
-Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Wed, 22 Jul 2026 03:03:08 -0700
-Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Wed, 22 Jul 2026 03:03:08 -0700
-From: Bartosz Golaszewski <brgl@kernel.org>
-In-Reply-To: <CAGXv+5H_V+J0cvrYjMFdKAQVrPKxPdtimXMc+hwHenwxhb9mDQ@mail.gmail.com>
+	id 1wmVii-0000000BhZG-1Q4G;
+	Wed, 22 Jul 2026 12:06:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id BF67D4063B;
+	Wed, 22 Jul 2026 12:06:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 93AC5C19425;
+	Wed, 22 Jul 2026 12:06:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1784721999;
+	bh=7xNjyyJHcIIbAta7PdSl/iTJSUHe53qhyhTm8L5BFTs=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=AuentVCr/r/SuaHPqtKgzC+DSfosg88U9BwS7Y+bUA7HrZMwtdk5NvbPzigP752Z/
+	 kK6Fd7S3XWv3AE6EjHBl4PW/ij0QbehSj6CWPDf5zv9hDyzVPMXq+9c9P2UMtvkJaS
+	 aFNeVuQPxw3ZguNkJvoTwUOJW9+Wz6wzdUw9d05w38Ney8b5XXef5yHfnYLgVELNuW
+	 LeH/jyN0YmcaivgmMjEahEqhGlxCOeLhYrQrrzOvqDnj+52eQTNAZn4pSOS3lupvQ3
+	 gS1wjgubhMu+Rxed6TL78OubHqGl3FX7/i1sWosKUXiIC67bWlecgXjOc3vDY5riZq
+	 wFLwNd5ehOiNg==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 62875C44532;
+	Wed, 22 Jul 2026 12:06:39 +0000 (UTC)
+From: Congcong Yao via B4 Relay <devnull+congcong.yao.mediatek.com@kernel.org>
+Subject: [PATCH RESEND v3 0/2] memory: mtk-smi: add MT8189 SMI support
+Date: Wed, 22 Jul 2026 20:02:42 +0800
+Message-Id: <20260722-8189-smi-support-v3-0-ae00e13deeac@mediatek.com>
 MIME-Version: 1.0
-References: <20260721065413.2306137-1-wenst@chromium.org> <20260721065413.2306137-4-wenst@chromium.org>
- <CAMRc=McsCRBxXMj0xC8H0cgdZZ=Z9_4u_DS9b2z0pLE0=gZr+g@mail.gmail.com> <CAGXv+5H_V+J0cvrYjMFdKAQVrPKxPdtimXMc+hwHenwxhb9mDQ@mail.gmail.com>
-Date: Wed, 22 Jul 2026 03:03:08 -0700
-X-Gmail-Original-Message-ID: <CAMRc=MfZ1Yk6OJaCGphTYToMVfe_UU4dhOGmGVCbwqBV9S-a2g@mail.gmail.com>
-X-Gm-Features: AUfX_mz93U1zn17dWP9tyqRdXvFYbDQgxlYVyw0vjRryfcxfP9O2fsTk4G3zrhY
-Message-ID: <CAMRc=MfZ1Yk6OJaCGphTYToMVfe_UU4dhOGmGVCbwqBV9S-a2g@mail.gmail.com>
-Subject: Re: [PATCH v6 03/16] power: sequencing: Add pwrseq_power_is_on()
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: linux-acpi@vger.kernel.org, driver-core@lists.linux.dev, 
-	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Manivannan Sadhasivam <mani@kernel.org>, Alan Stern <stern@rowland.harvard.edu>, 
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Daniel Scally <djrscally@gmail.com>, 
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
-	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Bartosz Golaszewski <brgl@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAGKxYGoC/3WNPQ+CMBRF/4p5szVt/WhxcpDVQUfDAO1DngZK2
+ kI0hP8u4Ox4b849d4CAnjDAcTWAx54CuWYK2/UKTJU3D2RkpwySywNXUjItdMJCTSx0bet8ZCi
+ lTRQiV6KAadZ6LOm9KO9wTW/p5QzZrw9d8UQTZ99MVhSi85/luxcL//+mF4yzYi91viutVtqca
+ rSUR3xtjKshG8fxC6I+Cx7NAAAA
+X-Change-ID: 20260722-8189-smi-support-e22d97ee071b
+To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
+ Congcong Yao <congcong.yao@mediatek.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1784721998; l=1151;
+ i=congcong.yao@mediatek.com; s=20260722; h=from:subject:message-id;
+ bh=7xNjyyJHcIIbAta7PdSl/iTJSUHe53qhyhTm8L5BFTs=;
+ b=/yVGxiVm7c2FmPvaazWIztBy3My9KyhM7cYO1UDfHIEDmzDJQ/bPMGCZwfwTJ/S/f9GmXlNv5
+ EkECw5hf+gHB1gxrvgkg+gD4cJwU26G0jqenaHLd5OT3V1kGXNkXTb9
+X-Developer-Key: i=congcong.yao@mediatek.com; a=ed25519;
+ pk=tIrmGxKQQxnfyb48iCCd19063tppPj89U3nupGYAIxg=
+X-Endpoint-Received: by B4 Relay for congcong.yao@mediatek.com/20260722
+ with auth_id=889
+X-Original-From: Congcong Yao <congcong.yao@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,64 +85,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: congcong.yao@mediatek.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 22 Jul 2026 11:01:20 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
-> On Tue, Jul 21, 2026 at 5:08=E2=80=AFPM Bartosz Golaszewski <brgl@kernel.=
-org> wrote:
->>
->> >
->> > +/**
->> > + * pwrseq_power_is_on() - Queries the last requested state of the pow=
-er sequencer.
->> > + * @desc: Descriptor referencing the power sequencer.
->> > + *
->> > + * This returns the last requested state of the power sequencer.
->> > + *
->> > + * Returns:
->> > + * On success, 1 for on and 0 for off; negative error number on failu=
-re.
->> > + */
->> > +int pwrseq_power_is_on(struct pwrseq_desc *desc)
->> > +{
->> > +     if (!desc)
->> > +             return -EINVAL;
->> > +
->> > +     return desc->powered_on;
->> > +}
->> > +EXPORT_SYMBOL_GPL(pwrseq_power_is_on);
->> > +
->>
->> Didn't we agree on introducing an enum to make it future-proof for when =
-we
->> also pull in pwrseq_is_controllable() from Loic?
->
-> My bad. I misunderstood and thought it wasn't needed yet.
+Based on tag: next-20260629, linux-next/master
 
-It's not technically needed *yet* but since we know where we're going, it
-makes sense to be proactive.
+This patchset adds MT8189 SMI support.
 
->
->> I think this should work like so:
->>
->> enum {
->>         PWRSEQ_STATE_UNKNOWN,
->>         PWRSEQ_STATE_ON,
->>         PWRSEQ_STATE_OFF,
->> };
->>
->> int pwrseq_get_state(struct pwrseq_desc *desc)
->> {
->
-> I think you still want this here?
->
->           if (!desc)
->                     return -EINVAL;
->
->
+The series updates the MediaTek SMI bindings for MT8189 and adds the
+corresponding SMI common and larb support in the mtk-smi driver.
 
-Yes.
+This is a resend of v3 because the previous submission was sent with the
+wrong version number. No code changes.
 
-Bart
+Changes in v3:
+- Change the minimum clock number of smi-sub-common to 3.
+- Link to v2:
+  https://lore.kernel.org/linux-mediatek/20260427070444.20247-1-zhengnan.chen@mediatek.com/
+
+Signed-off-by: Congcong Yao <congcong.yao@mediatek.com>
+---
+Congcong Yao (2):
+      memory: mtk-smi: Add mt8189 support
+      dt-bindings: memory-controllers: mtk-smi: Add support for mt8189
+
+ .../memory-controllers/mediatek,smi-common.yaml    | 18 +++++++++
+ .../memory-controllers/mediatek,smi-larb.yaml      |  3 ++
+ drivers/memory/mtk-smi.c                           | 44 ++++++++++++++++++++++
+ 3 files changed, 65 insertions(+)
+---
+base-commit: 290aaf24a551d5a0dce037e3fab30820f9113a10
+change-id: 20260722-8189-smi-support-e22d97ee071b
+
+Best regards,
+--  
+Congcong Yao <congcong.yao@mediatek.com>
+
+
 
