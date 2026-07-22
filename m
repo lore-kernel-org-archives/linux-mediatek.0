@@ -4,94 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A61E2C44512
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 07:04:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70A0EC4451C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 07:33:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8bdrG0QFqxIH5pXZGRRRAY6FI2BH/CW3w4wZSetZqPY=; b=kNo2APcO2YCvtpfmii5oi4h3zs
-	9IYofaTPXKBFu01/pE0GHf9+Aj3TJ24+PdhK5tZDU3AgoVqm4AgcqmIDFBXGklI6e4IYPG+QFejOC
-	4NFng2DwdT0a4YvvIKvOupTZ925LAb195Ec3dC1gwIBL85LyIrIZqTE2xYNL8iepG4MYkgZQt79l6
-	G+q10M+R+0z8KWGtGvdMe5xsey44UEOWQsDHg3Zjxk1bt1U6+Rt/g21Ujev15bq4en0NWhP24hmAy
-	pQ9YZWQzy/fFNHForrhV3S2XGOFAcgAXENXCgx1ROrwHPoOZjT4dTluPalUAy/XwgiiIQPTsm+/U4
-	gPpG0djw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cXRr0vMJv2NEmYtLVWvskxehewcxKuQFa+zT3/TfT3g=; b=XEKghJgGwM158T4cElWVo7VpHN
+	o7vXG78+fai+mX4fxW5XC6YnhZg0zZBthpu2lRicwH1cZ/fm//dsKsI58RTySpkGu7k0WxjiXOkAe
+	mSATdA26V0OteGN/OVASl4k2q4iwDaJn9anpqAY1fL9RXJrZx4XSN+215VWlLp6EjChwry3dVXSkf
+	0EpfKK/Ucskvwf793EgGFXbUpPN6OhBHMIyx6DyU122scNB3zPrZHdUHxyczr8pAxjoe90cjBG4HY
+	cPY5b1ta4XNfKRwGOL6LlHbrOEkVxPBUR6r4lMY+WxW5jj3CoUcW4ougeEApCcYU6sKeoLgNyUd1N
+	s+WuZH1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmR04-0000000B1Vl-1JOO;
-	Wed, 22 Jul 2026 07:04:16 +0000
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+	id 1wmRSe-0000000B4Ub-08LP;
+	Wed, 22 Jul 2026 07:33:48 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmR01-0000000B1Uc-26LK
-	for linux-mediatek@lists.infradead.org;
-	Wed, 22 Jul 2026 07:04:14 +0000
-Received: by mail-pj1-x102c.google.com with SMTP id 98e67ed59e1d1-383cb94f742so11370237a91.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 22 Jul 2026 00:04:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784703852; x=1785308652; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=8bdrG0QFqxIH5pXZGRRRAY6FI2BH/CW3w4wZSetZqPY=;
-        b=CstAp+3gqi8Bo4n/XHTOczUreVYtE9xEvaGUhw/oK033C9p97Ty2r5qPLYsmvyFerH
-         5muaQ7l7BcsWjt6PNtyjXBGzzWhtfy35DUe8z0b4+DM0GY/jgDUn0PSp+z7d0a/RqzJk
-         8uanW0EVHUR2CLoRAsloiAzU5J6mzWmw6P8XPtK3nOuhd1iUgJKsQBj61u2TtkHMqglR
-         1dT/ieziWYEI6Nwr/kFVGUgHjLEPHK/uS5iGHsrT3YVXiGes+AITLPJ/NHEQwZIsQ2w2
-         t8luuuMYNMmJuwX2FbeI2XJA8pMFw5sM9EcRDQOWTuhGYFln+Je+O7TzHmVLOarTdwBN
-         S9JA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784703852; x=1785308652;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=8bdrG0QFqxIH5pXZGRRRAY6FI2BH/CW3w4wZSetZqPY=;
-        b=N3yF8wIF229cbG/nGNkEcc0wKDPCo02wgmeSAWWJupd18T1OpJjDhqCKCE1jKubbGc
-         q4WNgiSGW9KmvcFHR4j400V03EFCDb0WdPveFc2oIX9lYkz85qbtEGJCFSGDrRk1Ag7N
-         6lb3bhHbQCCPYFPimAxkd/t/82wkox0jTdvKldnLLZgLdhTAmfZgH4Bvoj/WyGQ+zgQp
-         gzU9QSrbIRcD6rRLYMvyY/EIgaey7t7Pz2Cg91PvxZBvwKlDoN6XlFDWz04o6Y2rNWZL
-         bIqMweZn4bUnUsYIteeZLrOvaQwoTO4LvP5uLhn9SItr7Gwom2NS0sZNq7aO83lbf2O6
-         Ve8g==
-X-Forwarded-Encrypted: i=1; AHgh+Rq/gj+fAh9etVbg++1GuLUgfFZfyjUrFFxkJtmQXP4KM+5IGKTQWgJ1Gp33a+oY1QWI7yIS3Ec4v8/EG21KNg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyFjrz+KjEXhI1EPv2zACzI2maV6aoZ7H+tE5e7B+wZ5C3FqxhC
-	MHe/9d61yvlcz0+snNl0uS11UlVnHNijKganPX3YIBIQ5TzeHon3vSB6
-X-Gm-Gg: AR+sD1155O6vYK2WVapNsq7jMSZPOnB0MD12GOMc0AmECZzmgPh6N3m/1miTA9MOLDC
-	EosKnyGkJhauqgEA5DUd0Up6YleOhB6s4J07HXoM96ybGHdbePzU3nsIlCXAbqcKmwFlC/FgRjs
-	MOK03yc6hH7gu1JY1qitTuhGIxleH/xabiWh1Si1TN897b7fBaJ68UgjpXRHi6a1MsC6xmjoFGj
-	FWT85DYvfSonsonkvyDMKISHBE1catVVF/6nENDNLE9x7N5bT8vcYRXix1lmOZ7nAJu8tLfItKy
-	4cTrrE8C/dm3rWbZp67MQBS4apo2jTQmMs7KBa8cwEclpbJwjaQbffaB3t4EsPdXjHQHW4szK1z
-	Z8Ul5Gj+vh6lrPiy9UwnBmNn1E4OtQw/LVdPJQ2K+eC1pHp6RYWQkTlGMzpXQCJfMoCuHC7oY3E
-	miO+KnocTR9uKusVY4WDq3U9z1nFhs0Thr+tcbP4Vd47NdXSHIqWTemgyJcUI1iU/So2OZXHbJn
-	tf8XgHhClCdxIsOzQblGeg=
-X-Received: by 2002:a17:90b:2e90:b0:368:ed26:15b2 with SMTP id 98e67ed59e1d1-38e4b43c408mr21798100a91.8.1784703851941;
-        Wed, 22 Jul 2026 00:04:11 -0700 (PDT)
-Received: from localhost.localdomain ([101.251.7.10])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-13d130a8421sm3203259c88.10.2026.07.22.00.04.06
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Wed, 22 Jul 2026 00:04:11 -0700 (PDT)
-From: Laxman Acharya Padhya <acharyalaxman8848@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>
-Cc: Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1wmRSa-0000000B4Te-320W;
+	Wed, 22 Jul 2026 07:33:45 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id D329460A64;
+	Wed, 22 Jul 2026 07:33:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 09CC01F000E9;
+	Wed, 22 Jul 2026 07:33:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784705623;
+	bh=cXRr0vMJv2NEmYtLVWvskxehewcxKuQFa+zT3/TfT3g=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=ctqulXM+zEU87cc9+q+bk/CJSsTVSm27SbrgR2ocn6ckhVEIeLviYX4/su7ah3ZJd
+	 nr9qOrNRWbTohPRKJkepB1Xovpz/ylJOO+DmxDb4zLqDWU7/cnve6XdTnnINdfEIk4
+	 D1A5fjVFJoPTqwZMk14ylxpCtJJMvfhtGyWpu7drcozQBhUoPszIFXWGiJ051BzUVU
+	 sl2Zyu47JYuGKLMhgO7Jx7H1vzmES3VWmN6U+fG2LMmX+kSX9sxl8I9S2apg2UqEWn
+	 S3YYSTcZVrJ3L4J/2Paf6o2K7M5AIMH3g2KP3h67t4YY4+KATJI7sMt1ajHyaiAPsj
+	 RqFfj9DwyEK7A==
+Date: Wed, 22 Jul 2026 09:33:41 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: Simon Horman <horms@kernel.org>,
+	Alexander Lobakin <aleksander.lobakin@intel.com>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	stable@vger.kernel.org,
-	Laxman Acharya Padhya <acharyalaxman8848@gmail.com>
-Subject: [PATCH] wifi: mt76: mt7925: validate CLC firmware records
-Date: Wed, 22 Jul 2026 12:49:02 +0545
-Message-ID: <20260722070402.45328-1-acharyalaxman8848@gmail.com>
-X-Mailer: git-send-email 2.51.2
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next v9 2/3] net: airoha: fix ETS QoS stats counter
+ underflow and cross-channel corruption
+Message-ID: <amByVU4m8YuCphO2@lore-desk>
+References: <20260721-airoha-ethtool-priv_flags-v9-0-9c15d8b71a56@kernel.org>
+ <20260721-airoha-ethtool-priv_flags-v9-2-9c15d8b71a56@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_000413_533042_4FF9F029 
-X-CRM114-Status: GOOD (  14.94  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="2rgjgGmCcATn9c72"
+Content-Disposition: inline
+In-Reply-To: <20260721-airoha-ethtool-priv_flags-v9-2-9c15d8b71a56@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,92 +75,129 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The CLC region is supplied by firmware, but the loader trusts the region
-count and each record length. A malformed image can make the region table
-pointer precede the firmware buffer, make the record loop fail to advance,
-or index phy->clc past its end. Validate the table and record bounds
-before dereferencing or copying.
+--2rgjgGmCcATn9c72
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
-Cc: stable@vger.kernel.org
-Signed-off-by: Laxman Acharya Padhya <acharyalaxman8848@gmail.com>
----
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 32 ++++++++++++++-----
- 1 file changed, 24 insertions(+), 8 deletions(-)
+> airoha_qdma_get_tx_ets_stats() has two bugs:
+> - The hardware counters read via airoha_qdma_rr() are 32-bit values
+>   but are stored in u64 locals and subtracted from u64 baselines. When
+>   a 32-bit hardware counter wraps around, the subtraction produces a
+>   large underflow value passed to _bstats_update().
+> - The baseline counters (cpu_tx_packets, fwd_tx_packets) are stored as
+>   single per-device fields, but airoha_qdma_get_tx_ets_stats() is
+>   called with different channel values (0-3). Each call reads a
+>   different channel's hardware counter but overwrites the same
+>   baseline, corrupting the delta computation for other channels.
+>=20
+> Fix both by:
+> - Narrowing the counter locals and baselines to u32 so that 32-bit
+>   unsigned subtraction handles wrap-around naturally.
+> - Grouping the baselines into a per-channel qos_stats array so each
+>   channel tracks its own previous counter value independently.
+> - Splitting the delta addition into two statements so the first u32
+>   delta is widened to u64 on assignment and the second is added in
+>   u64 arithmetic, preventing overflow when both deltas are large.
+>=20
+> Fixes: 20bf7d07c956 ("net: airoha: Add sched ETS offload support")
+> Reviewed-by: Simon Horman <horms@kernel.org>
+> Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c | 18 +++++++++++-------
+>  drivers/net/ethernet/airoha/airoha_eth.h |  7 ++++---
+>  2 files changed, 15 insertions(+), 10 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
+net/airoha/airoha_eth.c
+> index 41c1a0ffbdd8..aaf2a4717d12 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -2482,16 +2482,20 @@ static int airoha_qdma_get_tx_ets_stats(struct ne=
+t_device *netdev, int channel,
+>  {
+>  	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+>  	struct airoha_qdma *qdma =3D dev->qdma;
+> +	u32 cpu_tx_packets, fwd_tx_packets;
+> +	u64 tx_packets;
+> =20
+> -	u64 cpu_tx_packets =3D airoha_qdma_rr(qdma, REG_CNTR_VAL(channel << 1));
+> -	u64 fwd_tx_packets =3D airoha_qdma_rr(qdma,
+> -					    REG_CNTR_VAL((channel << 1) + 1));
+> -	u64 tx_packets =3D (cpu_tx_packets - dev->cpu_tx_packets) +
+> -			 (fwd_tx_packets - dev->fwd_tx_packets);
+> +	cpu_tx_packets =3D airoha_qdma_rr(qdma, REG_CNTR_VAL(channel << 1));
+> +	fwd_tx_packets =3D airoha_qdma_rr(qdma,
+> +					REG_CNTR_VAL((channel << 1) + 1));
+> +	tx_packets =3D (u32)(cpu_tx_packets -
+> +			   dev->qos_stats[channel].cpu_tx_packets);
+> +	tx_packets +=3D (u32)(fwd_tx_packets -
+> +			    dev->qos_stats[channel].fwd_tx_packets);
+> =20
+>  	_bstats_update(opt->stats.bstats, 0, tx_packets);
+> -	dev->cpu_tx_packets =3D cpu_tx_packets;
+> -	dev->fwd_tx_packets =3D fwd_tx_packets;
+> +	dev->qos_stats[channel].cpu_tx_packets =3D cpu_tx_packets;
+> +	dev->qos_stats[channel].fwd_tx_packets =3D fwd_tx_packets;
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index e94fa544ff20..76e30bf4ce0f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -803,8 +803,9 @@ static int mt7925_load_clc(struct mt792x_dev *dev, const char *fw_name)
- 	struct mt76_dev *mdev = &dev->mt76;
- 	struct mt792x_phy *phy = &dev->phy;
- 	const struct firmware *fw;
-+	size_t clc_len, fw_data_len, len, offset = 0;
- 	u8 *clc_base = NULL, hw_encap = 0;
--	int ret, i, len, offset = 0;
-+	int ret, i;
- 
- 	dev->phy.clc_chan_conf = 0xff;
- 	dev->regd_user = false;
-@@ -829,13 +830,21 @@ static int mt7925_load_clc(struct mt792x_dev *dev, const char *fw_name)
- 	}
- 
- 	hdr = (const void *)(fw->data + fw->size - sizeof(*hdr));
-+	if (hdr->n_region > (fw->size - sizeof(*hdr)) / sizeof(*region)) {
-+		dev_err(mdev->dev, "Invalid firmware region table\n");
-+		ret = -EINVAL;
-+		goto out;
-+	}
-+	fw_data_len = fw->size - sizeof(*hdr) -
-+		      hdr->n_region * sizeof(*region);
-+
- 	for (i = 0; i < hdr->n_region; i++) {
- 		region = (const void *)((const u8 *)hdr -
- 					(hdr->n_region - i) * sizeof(*region));
- 		len = le32_to_cpu(region->len);
- 
- 		/* check if we have valid buffer size */
--		if (offset + len > fw->size) {
-+		if (len > fw_data_len - offset) {
- 			dev_err(mdev->dev, "Invalid firmware region\n");
- 			ret = -EINVAL;
- 			goto out;
-@@ -852,11 +861,19 @@ static int mt7925_load_clc(struct mt792x_dev *dev, const char *fw_name)
- 	if (!clc_base)
- 		goto out;
- 
--	for (offset = 0; offset < len; offset += le32_to_cpu(clc->len)) {
--		clc = (const struct mt7925_clc *)(clc_base + offset);
-+	for (offset = 0; offset < len; offset += clc_len) {
-+		if (len - offset < sizeof(*clc)) {
-+			ret = -EINVAL;
-+			goto out;
-+		}
- 
--		if (clc->idx >= ARRAY_SIZE(phy->clc))
--			break;
-+		clc = (const struct mt7925_clc *)(clc_base + offset);
-+		clc_len = le32_to_cpu(clc->len);
-+		if (clc_len < sizeof(*clc) || clc_len > len - offset ||
-+		    clc->idx >= ARRAY_SIZE(phy->clc)) {
-+			ret = -EINVAL;
-+			goto out;
-+		}
- 
- 		/* do not init buf again if chip reset triggered */
- 		if (phy->clc[clc->idx])
-@@ -869,8 +886,7 @@ static int mt7925_load_clc(struct mt792x_dev *dev, const char *fw_name)
- 			continue;
- 
- 		phy->clc[clc->idx] = devm_kmemdup(mdev->dev, clc,
--						  le32_to_cpu(clc->len),
--						  GFP_KERNEL);
-+						  clc_len, GFP_KERNEL);
- 
- 		if (!phy->clc[clc->idx]) {
- 			ret = -ENOMEM;
--- 
-2.51.2
+commenting on sashiko's report:
+https://sashiko.dev/#/patchset/20260721-airoha-ethtool-priv_flags-v9-0-9c15=
+d8b71a56%40kernel.org
+- This is a pre-existing issue, but does calling _bstats_update() here from
+  the netlink dump path (process context) without holding qdisc_lock() or
+  disabling bottom-halves risk a seqcount deadlock?
+  On 32-bit platforms, _bstats_update() uses a seqcount_t write lock via
+  u64_stats_update_begin(). If this path is preempted by a softirq on the s=
+ame
+  CPU that updates the same shared opt->stats.bstats (e.g., during a softwa=
+re
+  packet dequeue), will the softirq spin forever attempting to acquire the
+  same seqcount lock?
+  - As pointed out by sashiko, this issue has not been introduced by this
+    patch. Moreover, since airoha_eth is available just on 64bit system, I
+    guess this is not a real issue.
 
+Regards,
+Lorenzo
+
+> =20
+>  	return 0;
+>  }
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
+net/airoha/airoha_eth.h
+> index bf1c249255bd..bf44be9f0954 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> @@ -553,9 +553,10 @@ struct airoha_gdm_dev {
+>  	struct airoha_eth *eth;
+> =20
+>  	DECLARE_BITMAP(qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS);
+> -	/* qos stats counters */
+> -	u64 cpu_tx_packets;
+> -	u64 fwd_tx_packets;
+> +	struct {
+> +		u32 cpu_tx_packets;
+> +		u32 fwd_tx_packets;
+> +	} qos_stats[AIROHA_NUM_QOS_CHANNELS];
+> =20
+>  	u32 flags;
+>  	int nbq;
+>=20
+> --=20
+> 2.55.0
+>=20
+
+--2rgjgGmCcATn9c72
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCamByVQAKCRA6cBh0uS2t
+rEeCAP9oauJEsmnW2DxM567A3ateWe95l4O9RA67X8/ppn06vwEAhEQQijbawDmV
+M+opV8dtSOGZsMLViinpM3cZiPy5sA0=
+=d7yO
+-----END PGP SIGNATURE-----
+
+--2rgjgGmCcATn9c72--
 
