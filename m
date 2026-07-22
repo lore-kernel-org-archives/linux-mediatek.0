@@ -4,81 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC7C8C44536
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 15:48:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38CF1C4453C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 16:40:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A3kJI25oA+cp5YVXJRoeWprSuLu5yW0g3ExXC1p8Ri4=; b=K9BJKeUh4unxqCtviPawOZI8uy
-	zHaNGn7bjbjvfMdWQUnfPA80SMhJi6itVgQpodpBZAgcpJ8s2l/4dEUbvzwHmYkj8v/I3CXoWSGF5
-	xcSD6Ii7E7Sw2/ksbsrti/uKCGS6aU+yzZv3TBIV/UBTnODC9yqJ79Nf8f7pztBmMUSl73MXULAwa
-	MWQNyKPhuHLzWUJ3Q20wEaKbOSJ5A53ByAeu/4mzC4rBlyZPH6tLN1OaCiU7/4gCil0hYvAhN2zS2
-	+1ZmW8UJ7zPYl1PkXcS56yzXqn2glNGthSy70XX6XzA0TzImPeao5YNdU9QvDKizq/9NZMeI0YRzl
-	S/ssccTA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6AsHAr9oPrWe3NWtzRC9dMApr39B7DUnNgZYW87mems=; b=QTuBEZrJcS6byxW27JD2qlUh5I
+	+pLW5MiPSeqhTmlETDFL9m4/PAAW76YFo42/EDPHcOybxhdlLLzngHywVBhAk8ZgnKsxkKcH+SM9K
+	4vvb/fAQEAYQSluCd5VPdbhOJteGRAFBqW6LkhOd6oDmTrGAMwR/TrYHMOot376EMqO0Tx/vpA6yA
+	+GN/STXv7PF8SguJPARBOAneCwQXCupIbSLrIj37RhMGBg2McTT81zVjBtUZN5UVzNIRstVJUr0jV
+	PS9A7FocIRkj/0C1bsByElPLS6/gFYMDoSKS7wUwxlCdH7oSGzctHHyZ8ggAC61cYTuThJDStZxpg
+	OIsC4m6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmZAt-0000000CFT8-3Mxc;
-	Wed, 22 Jul 2026 15:47:59 +0000
+	id 1wmZzJ-0000000CN1U-47gh;
+	Wed, 22 Jul 2026 16:40:06 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmZAs-0000000CFSL-1OIG;
-	Wed, 22 Jul 2026 15:47:58 +0000
+	id 1wmZzI-0000000CN10-3Jz6;
+	Wed, 22 Jul 2026 16:40:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=A3kJI25oA+cp5YVXJRoeWprSuLu5yW0g3ExXC1p8Ri4=; b=nTjNREVoraYTdoGn5DJt/9/iDO
-	6vEPzUt9ZAA4qOMY4VdF4SCjKIZcwIPRmwVApYbRNLcdhEDpuzqpX+L8P2vsJrowgCzfkAXNkpn+6
-	OKhk99NAEGPIdGUmTkHhFwHMCoZiq1J8NgVxLxB2ZxmMpCWvpPAOvTsXTIwqN/BsgWeMS2pHnw4X/
-	pgp7StnZ9UuD0dZ2fwmcWNSWmCBdsygGXXCA/zoHDuIWF4erc09BR87w4hDMf1VY+fOKk+uk4TNYu
-	kCk+tHRw2F8Xk8a8g61J7kgoT+lpxF6vfOkFCJlrWGDaCcPrcu1QgRySKQSepofzRa+m25zdSsiVk
-	7hEcnOAg==;
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=6AsHAr9oPrWe3NWtzRC9dMApr39B7DUnNgZYW87mems=; b=Jc/iWb5HcJexu9hdspySO5b5c/
+	xek98aawfV+cr2daiYEs71qoWESBVuWdRGlMkTReTUNzrh/lh39mYDroobMZRZqIbODkvte4iwGJO
+	B57nwK+qZ1EV86Myye+U2l1lmpSbIJiQqAasNjVPKUcKKu/PouSoFruawjkPXZnkmebpng+AIT1I/
+	6evafC+x1KWALko6dPHEQ6ZOIdCMBsSl0ZSB0FicjYwCGNU6EgDEb4uxg2XCBW861YMIf/jZnKSZm
+	mzcuyYOmrSjpVkwTLTeaag0Ml1dvxqZ5pmHQisQGVBekHQ8lW+bGSawMhrdd4Q79JgErA0YHE404K
+	dWkn7mew==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wmZAp-00000000yOx-29Ds;
-	Wed, 22 Jul 2026 15:47:57 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1wmZAj-000000006jd-0Q9G;
-	Wed, 22 Jul 2026 15:47:49 +0000
-Date: Wed, 22 Jul 2026 16:47:45 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hermes Wu <hermes.wu@ite.com.tw>,
-	Allen Chen <allen.chen@ite.com.tw>,
-	Pin-yen Lin <treapking@chromium.org>,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Chen-Yu Tsai <wenst@chromium.org>
-Subject: [PATCH v5 11/11] drm/bridge: it6505: Don't reject audio hw_params
- without an encoder
-Message-ID: <b7e959e44dfb517297f3449bac8fed53671c505e.1784717129.git.daniel@makrotopia.org>
-References: <cover.1784717129.git.daniel@makrotopia.org>
+	id 1wmZzF-000000012DG-3AmB;
+	Wed, 22 Jul 2026 16:40:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1784738396;
+	bh=IxuY5Yy2+bxQ50G6EPCluh37NLO448od94aJA4UYTJY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=eHXd4ulJMx0crFk7Dr3i+pMm/cnivYbupFgA0CnfYAqtWh85kRODN1K3eKwN5vJJE
+	 6JY5bMmRGFE/9Llcc3mZ4qHUjFU7Q3mCb57+NC+imT7ZK/n2NJxfri3DhdVK3GchE7
+	 oL5n3NsOY8go2mCSmv+99myb2WIt5x754QJe9ZrRH8/NBs655zRUy91m5v5niCkYLQ
+	 5f6CGeScCfNN+dLZl+yhJVoOXvpKN/l21HJ6UQSqmFCRBDaz4fORGrDunqKKp+W8fb
+	 ZiCqpfCUTTvXxvotIqLGD4xmnhrfaCzHtru7NBoEeXmxMeRrtacLJCckRBAp8Rzsm/
+	 59oNtmWDFzvLA==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 09F9717E04AE;
+	Wed, 22 Jul 2026 18:39:56 +0200 (CEST)
+Message-ID: <2949748a-2a37-46f9-996b-8e2438c8f8f8@collabora.com>
+Date: Wed, 22 Jul 2026 18:39:55 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1784717129.git.daniel@makrotopia.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 12/46] dt-bindings: soc: mediatek: mutex: Allow
+ #trigger-source-cells
+To: Rob Herring <robh@kernel.org>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
+ simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ tzimmermann@suse.de, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ justin.yeh@mediatek.com, jason-jh.lin@mediatek.com, kernel@collabora.com
+References: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com>
+ <20260714114414.184512-13-angelogioacchino.delregno@collabora.com>
+ <20260722154500.GA988735-robh@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260722154500.GA988735-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_164755_714356_065E460A 
-X-CRM114-Status: GOOD (  10.21  )
+X-CRM114-CacheID: sfid-20260722_174001_978787_60A261B4 
+X-CRM114-Status: GOOD (  11.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,81 +96,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-it6505_audio_setup_hw_params() returns -ENODEV when no encoder is
-attached. With it6505 registering an hdmi-audio-codec this runs for
-every stream on the I2S DAI, and on mt8186-corsola, where the rt1019
-speaker amplifier shares I2S3, the error tears down the whole DPCM
-backend and breaks speaker playback whenever no display is attached.
+On 7/22/26 17:45, Rob Herring wrote:
+> On Tue, Jul 14, 2026 at 01:43:40PM +0200, AngeloGioacchino Del Regno wrote:
+>> This hardware controls trigger sources, and there's even a generic
+>> binding just for that: allow #trigger-source-cells in MuteX, so
+>> that this is allowed to provide triggers to external HW.
+>>
+>> Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> 
+> You ack-ed your own patch?
+> 
 
-The function only caches stream parameters, which needs no encoder.
-Drop the check, and apply the audio defaults once at probe instead of
-in it6505_variable_config(), which would clobber the cached
-parameters again on every hotplug. Actual audio output remains gated
-by it6505->powered.
+Mysterious things happen in my workflow... :facepalm:
 
-Fixes: b5c84a9edcd4 ("drm/bridge: add it6505 driver")
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
-v5: no changes
-
-v4: apply audio defaults at probe time instead of in
-    it6505_variable_config()
-
-v3: no changes
-
-v2: drop the encoder check entirely instead of returning 0 early
-
- drivers/gpu/drm/bridge/ite-it6505.c | 23 ++++++++++-------------
- 1 file changed, 10 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
-index 75b287cda801..ba8db1e36ff6 100644
---- a/drivers/gpu/drm/bridge/ite-it6505.c
-+++ b/drivers/gpu/drm/bridge/ite-it6505.c
-@@ -1370,16 +1370,6 @@ static void it6505_variable_config(struct it6505 *it6505)
- 	it6505->link_state = LINK_IDLE;
- 	it6505->hdcp_desired = HDCP_DESIRED;
- 	it6505->auto_train_retry = AUTO_TRAIN_RETRY;
--	it6505->audio.select = AUDIO_SELECT;
--	it6505->audio.sample_rate = AUDIO_SAMPLE_RATE;
--	it6505->audio.channel_count = AUDIO_CHANNEL_COUNT;
--	it6505->audio.type = AUDIO_TYPE;
--	it6505->audio.i2s_input_format = I2S_INPUT_FORMAT;
--	it6505->audio.i2s_justified = I2S_JUSTIFIED;
--	it6505->audio.i2s_data_delay = I2S_DATA_DELAY;
--	it6505->audio.i2s_ws_channel = I2S_WS_CHANNEL;
--	it6505->audio.i2s_data_sequence = I2S_DATA_SEQUENCE;
--	it6505->audio.word_length = AUDIO_WORD_LENGTH;
- 	memset(it6505->sha1_input, 0, sizeof(it6505->sha1_input));
- 	memset(it6505->bksvs, 0, sizeof(it6505->bksvs));
- }
-@@ -3020,9 +3010,6 @@ static int it6505_audio_setup_hw_params(struct it6505 *it6505,
- 			     params->sample_rate, params->sample_width,
- 			     params->cea.channels);
- 
--	if (!it6505->bridge.encoder)
--		return -ENODEV;
--
- 	if (params->cea.channels <= 1 || params->cea.channels > 8) {
- 		DRM_DEV_DEBUG_DRIVER(dev, "channel number: %d not support",
- 				     params->cea.channels);
-@@ -3154,6 +3141,16 @@ static int it6505_register_audio_driver(struct device *dev)
- 	};
- 	struct platform_device *pdev;
- 
-+	it6505->audio.select = AUDIO_SELECT;
-+	it6505->audio.sample_rate = AUDIO_SAMPLE_RATE;
-+	it6505->audio.channel_count = AUDIO_CHANNEL_COUNT;
-+	it6505->audio.type = AUDIO_TYPE;
-+	it6505->audio.i2s_input_format = I2S_INPUT_FORMAT;
-+	it6505->audio.i2s_justified = I2S_JUSTIFIED;
-+	it6505->audio.i2s_data_delay = I2S_DATA_DELAY;
-+	it6505->audio.i2s_ws_channel = I2S_WS_CHANNEL;
-+	it6505->audio.i2s_data_sequence = I2S_DATA_SEQUENCE;
-+	it6505->audio.word_length = AUDIO_WORD_LENGTH;
- 	it6505->audio.mute = true;
- 	INIT_DELAYED_WORK(&it6505->delayed_audio, it6505_delayed_audio);
- 
--- 
-2.55.0
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   .../devicetree/bindings/soc/mediatek/mediatek,mutex.yaml      | 4 ++++
+>>   1 file changed, 4 insertions(+)
+>>
+>> diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+>> index 5267cfe92572..886e6f904b78 100644
+>> --- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+>> +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+>> @@ -54,6 +54,9 @@ properties:
+>>       items:
+>>         - description: MUTEX Clock
+>>   
+>> +  '#trigger-source-cells':
+>> +    const: 1
+>> +
+>>     mediatek,gce-events:
+>>       description:
+>>         The event id which is mapping to the specific hardware event signal
+>> @@ -116,6 +119,7 @@ examples:
+>>               interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_LOW>;
+>>               power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+>>               clocks = <&mmsys CLK_MM_MUTEX_32K>;
+>> +            #trigger-source-cells = <1>;
+>>               mediatek,gce-events = <CMDQ_EVENT_MUTEX0_STREAM_EOF>,
+>>                                     <CMDQ_EVENT_MUTEX1_STREAM_EOF>;
+>>           };
+>> -- 
+>> 2.54.0
+>>
 
