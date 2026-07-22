@@ -4,73 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53CEEC4453D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 09:23:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93054C44539
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 10:03:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XbpBLZ5jvU7rp2mx0iV4N8UNs9+pHH6WsvQY181Dteg=; b=UJ8eLifSIB5j5ch6lP/qf9CR1S
-	jzKUJvpQZHIARMDU4oW9QqufemTliNTmh0B3LqMgZ2L8GFkVxZGAViuPeAWSsSXqW8/T1wN+4HhJI
-	BmcYC5LmpazEJU6/2b1P5DM88voLpSdec64jenf08549V+eoVD06roMVE2zB4bxPk9hi/MPS6cgFB
-	bZpN9IjNyk471RXeBQ5JukbaPDBFr3WasIr3yQDZRX4U/ilyyNY0rxLdEcHXZIqUBc/LxZRoPPF3A
-	moREAy25IxIM78oBs+UsS23xNMjxMLiDVNmV+6sVExToHWkDb3OVc+KFerFw1Z8QwnxgiXijDtxIM
-	WBfcrGPg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:References:MIME-Version:
+	In-Reply-To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=v2nl4VWueEk9cKUhbw+kqvh7s/L/Uh+km+tAT2bP7fg=; b=JoNQQk3iwbTiLMXQvt22rVCm9v
+	IzyyCXRi2HUyp/G3pnYxBn3WarTe895MOQja+I25eo4KtxCKdvf4DVy4WiD9x6zNh08FXxpkdAUj/
+	ON1TqWmq+Q0Kby+8NI8YwlBsN+vTAHbJD8FnSoScEKQSz87kmX4yIyVlFDIQzeWDUteHzxmoAa0Hv
+	uYxaahH+gL2mV6t/3EY4Utb0aIDnZ793g5jt7BBRhjP4HEAQ3Z6vVU4tReJg2qRlTA7nxjmPahxRH
+	Sd512zpVDQUqiBqU94S3OzGiLTSv9YbrzwNKpktU87eWW0dd4nqBsXpYRsV7kRxfyWRR9MY6RdK7G
+	6EUDwnXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmTAl-0000000BONd-0OTg;
-	Wed, 22 Jul 2026 09:23:27 +0000
+	id 1wmTnJ-0000000BUTh-1KN4;
+	Wed, 22 Jul 2026 10:03:17 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmTAj-0000000BOLe-1mRy;
-	Wed, 22 Jul 2026 09:23:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 97FB760A69;
-	Wed, 22 Jul 2026 09:23:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 4BFF6C2BCF7;
-	Wed, 22 Jul 2026 09:23:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1784712204;
-	bh=EV7iUo1NsjFqcITJtzVqmOKRWQ1ecKxaV381yInG0ho=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=Iw8u0HnX5Gf/mwUmnYHLH8TLpVK0B4khS4FKzf/ovgkGeM+ghGYlLKUlNywirhyM3
-	 dURNxP9D5SqNuWnRKXiNllru6RCaVMuQJBkmYHpQN/BwQWONkk4y3cADUcElvCpWID
-	 cgcA4oni9X2wHgzd+A2jV0N5ZC2muPYM/O8uGS2EjPd5FGVVG4OS7FQZf8PkvpPJwK
-	 dhfJaL9XWlBXK753GvZKYqxPZML+tNC3yD3hXf2TUxRHB2z+6NEvc2h6G7cuD/HWTI
-	 ggvTguf+/10o1HHyZEK+6F6WXyDiDDh8m8k6AFNgYooCMzsv9mfXJ6+uQFEVF+GbnV
-	 fV3CMfQRNG9Sw==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0341AC4453A;
-	Wed, 22 Jul 2026 09:23:24 +0000 (UTC)
-From: Congcong Yao via B4 Relay <devnull+congcong.yao.mediatek.com@kernel.org>
-Date: Wed, 22 Jul 2026 17:21:57 +0800
-Subject: [PATCH RESEND 1/2] memory: mtk-smi: Add mt8189 support
+	id 1wmTnH-0000000BUTE-2UB6
+	for linux-mediatek@lists.infradead.org;
+	Wed, 22 Jul 2026 10:03:15 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id B65E360A7A
+	for <linux-mediatek@lists.infradead.org>; Wed, 22 Jul 2026 10:03:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 63CB51F0155C
+	for <linux-mediatek@lists.infradead.org>; Wed, 22 Jul 2026 10:03:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784714594;
+	bh=v2nl4VWueEk9cKUhbw+kqvh7s/L/Uh+km+tAT2bP7fg=;
+	h=From:In-Reply-To:References:Date:Subject:To:Cc;
+	b=aGMuUyLHguxVRr1lFjeEqsXxI5a3BDv/DaaV4zoODVdfUElN6OPq6bkx5ATub1s7X
+	 NqCOBztx6noD+QfHAvSgTWe7vgJnIbtFqRfBncNwEd8MZhJAPkwQ6o1PmCErDh2eSF
+	 54ujH4MI/X8WrSdzSMvJdDCh0pZpi+hUqSU2T1bUPAGLbQO4yixldnti713LXPNkci
+	 YythZGNmbpNbSYX0SZ1YxdtUM26wau81e41aUGstklcHdYCONGNwfqBX6p8ICowp/6
+	 g9HicL6hWe6OdIC4YCD4+8eDDyuWsnOkh3GMzOh/RFUuABV1W9tcDEy8Izwff+b8ok
+	 dcHRMOjcvphAQ==
+Received: by mail-lf1-f54.google.com with SMTP id 2adb3069b0e04-5b2aab18795so599959e87.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 22 Jul 2026 03:03:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+RroIoh2wYpozvP+m77ybJGpXOVKMo8hSlmCuiKySjdNGdF4pNXtUWRHc9WiihL62x8vJJ5rQFYAysCQhQkmaQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YytfVixQ0ab1sGby3UxD1KzdHU10Ww8Ppz/0qv7HqFJgidzTERB
+	d9OZqOmoN4DjoFW1hww+jYB2jA/7WwTSFfub3oGw36P2VSHWDWi23SCQ1mVdxLdbRQAG46mEcfS
+	UIuwWus+y3VDm2cInOf/rJViG8/sAgyeEvMiZGHAETQ==
+X-Received: by 2002:a05:6512:3185:b0:5ae:b2e3:fc24 with SMTP id
+ 2adb3069b0e04-5b28fabb0afmr5670333e87.60.1784714593132; Wed, 22 Jul 2026
+ 03:03:13 -0700 (PDT)
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Wed, 22 Jul 2026 03:03:08 -0700
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Wed, 22 Jul 2026 03:03:08 -0700
+From: Bartosz Golaszewski <brgl@kernel.org>
+In-Reply-To: <CAGXv+5H_V+J0cvrYjMFdKAQVrPKxPdtimXMc+hwHenwxhb9mDQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260722-8189-smi-support-v1-1-b528a4fd878c@mediatek.com>
-References: <20260722-8189-smi-support-v1-0-b528a4fd878c@mediatek.com>
-In-Reply-To: <20260722-8189-smi-support-v1-0-b528a4fd878c@mediatek.com>
-To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
- Congcong Yao <congcong.yao@mediatek.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1784712202; l=4625;
- i=congcong.yao@mediatek.com; s=20260722; h=from:subject:message-id;
- bh=wS9TOb8YOqNWavcXHnJhOL4NUnuoZhgp5xywhpZ31s8=;
- b=j9Byvd1wUksLvcO9bocy+R/VXlkiWPdsepniqnCsMAV3g11lCTvRYsTAXyhNKDgJ7CGl6kOWC
- CE+9KbgbgtsC/f0DZKln/9i36EPzqyH2lmDndwTLaGDbOCnay/7ir3D
-X-Developer-Key: i=congcong.yao@mediatek.com; a=ed25519;
- pk=tIrmGxKQQxnfyb48iCCd19063tppPj89U3nupGYAIxg=
-X-Endpoint-Received: by B4 Relay for congcong.yao@mediatek.com/20260722
- with auth_id=889
-X-Original-From: Congcong Yao <congcong.yao@mediatek.com>
+References: <20260721065413.2306137-1-wenst@chromium.org> <20260721065413.2306137-4-wenst@chromium.org>
+ <CAMRc=McsCRBxXMj0xC8H0cgdZZ=Z9_4u_DS9b2z0pLE0=gZr+g@mail.gmail.com> <CAGXv+5H_V+J0cvrYjMFdKAQVrPKxPdtimXMc+hwHenwxhb9mDQ@mail.gmail.com>
+Date: Wed, 22 Jul 2026 03:03:08 -0700
+X-Gmail-Original-Message-ID: <CAMRc=MfZ1Yk6OJaCGphTYToMVfe_UU4dhOGmGVCbwqBV9S-a2g@mail.gmail.com>
+X-Gm-Features: AUfX_mz93U1zn17dWP9tyqRdXvFYbDQgxlYVyw0vjRryfcxfP9O2fsTk4G3zrhY
+Message-ID: <CAMRc=MfZ1Yk6OJaCGphTYToMVfe_UU4dhOGmGVCbwqBV9S-a2g@mail.gmail.com>
+Subject: Re: [PATCH v6 03/16] power: sequencing: Add pwrseq_power_is_on()
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: linux-acpi@vger.kernel.org, driver-core@lists.linux.dev, 
+	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Manivannan Sadhasivam <mani@kernel.org>, Alan Stern <stern@rowland.harvard.edu>, 
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Daniel Scally <djrscally@gmail.com>, 
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Bartosz Golaszewski <brgl@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,108 +94,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: congcong.yao@mediatek.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Congcong Yao <congcong.yao@mediatek.com>
+On Wed, 22 Jul 2026 11:01:20 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
+> On Tue, Jul 21, 2026 at 5:08=E2=80=AFPM Bartosz Golaszewski <brgl@kernel.=
+org> wrote:
+>>
+>> >
+>> > +/**
+>> > + * pwrseq_power_is_on() - Queries the last requested state of the pow=
+er sequencer.
+>> > + * @desc: Descriptor referencing the power sequencer.
+>> > + *
+>> > + * This returns the last requested state of the power sequencer.
+>> > + *
+>> > + * Returns:
+>> > + * On success, 1 for on and 0 for off; negative error number on failu=
+re.
+>> > + */
+>> > +int pwrseq_power_is_on(struct pwrseq_desc *desc)
+>> > +{
+>> > +     if (!desc)
+>> > +             return -EINVAL;
+>> > +
+>> > +     return desc->powered_on;
+>> > +}
+>> > +EXPORT_SYMBOL_GPL(pwrseq_power_is_on);
+>> > +
+>>
+>> Didn't we agree on introducing an enum to make it future-proof for when =
+we
+>> also pull in pwrseq_is_controllable() from Loic?
+>
+> My bad. I misunderstood and thought it wasn't needed yet.
 
-Add the necessary platform data and ostdl setting to enable support
-for mt8189 smi.
+It's not technically needed *yet* but since we know where we're going, it
+makes sense to be proactive.
 
-Signed-off-by: Congcong Yao <congcong.yao@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Yong Wu <yong.wu@mediatek.com>
----
- drivers/memory/mtk-smi.c | 44 ++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 44 insertions(+)
+>
+>> I think this should work like so:
+>>
+>> enum {
+>>         PWRSEQ_STATE_UNKNOWN,
+>>         PWRSEQ_STATE_ON,
+>>         PWRSEQ_STATE_OFF,
+>> };
+>>
+>> int pwrseq_get_state(struct pwrseq_desc *desc)
+>> {
+>
+> I think you still want this here?
+>
+>           if (!desc)
+>                     return -EINVAL;
+>
+>
 
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index aaeba8ab211e..f2d5462af681 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -401,6 +401,30 @@ static const u8 mtk_smi_larb_mt8188_ostd[][SMI_LARB_PORT_NR_MAX] = {
- 	[25] = {0x01},
- };
- 
-+static const u8 mtk_smi_larb_mt8189_ostd[][SMI_LARB_PORT_NR_MAX] = {
-+	[0] = {0x8, 0x20, 0x20, 0x20, 0x20, 0x20, 0x10, 0x0,},
-+	[1] = {0x8, 0x20, 0x20, 0x20, 0x20, 0x20, 0x10, 0x0,},
-+	[2] = {0x7, 0x7, 0x4, 0x4, 0x0, 0x0, 0x2, 0x2, 0x7, 0x7, 0x0,},
-+	[4] = {0x2F, 0x1E, 0x9, 0x1, 0x1, 0x1, 0x1, 0x2, 0x2, 0x5, 0x1, 0x17,},
-+	[7] = {0x20, 0x2, 0x1, 0x1, 0x1, 0x4, 0x2, 0x1, 0x1, 0x2, 0x3, 0x2,
-+	       0xA, 0xF, 0x4, 0x6, 0x5, 0x1,},
-+	[9] = {0x6, 0x3, 0xC, 0x6, 0x1, 0x4, 0x3, 0x1, 0x2, 0x4, 0x5, 0x2,
-+	       0x4, 0x2, 0x3, 0xB, 0x1, 0x4, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1,
-+	       0x1, 0x1,},
-+	[11] = {0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1,
-+		0x1, 0x1, 0x1, 0xB, 0x1, 0x4, 0x6, 0x5, 0x6, 0x1, 0x5, 0x2,
-+		0x9, 0x5,},
-+	[13] = {0x2, 0x8, 0x8, 0x8, 0x4, 0x4, 0x4, 0x4, 0x4, 0xE, 0x4, 0x1,
-+		0x6, 0x6, 0x2,},
-+	[14] = {0x1, 0x1, 0x1, 0x20, 0xE, 0x4, 0x8, 0x8, 0x6, 0x4,},
-+	[16] = {0x1E, 0xC, 0x2, 0x8, 0xE, 0x2, 0x1E, 0x10, 0x4, 0x2, 0x2, 0x2,
-+		0x2, 0x2, 0x4, 0x2, 0x4,},
-+	[17] = {0x1E, 0xC, 0x2, 0x8, 0xE, 0x2, 0x1E, 0x10, 0x4, 0x2, 0x2, 0x2,
-+		0x2, 0x2, 0x4, 0x2, 0x4,},
-+	[19] = {0x2, 0x1, 0x3, 0x1,},
-+	[20] = {0x7, 0x7, 0x3, 0x3, 0x1, 0x1,},
-+};
-+
- static const u8 mtk_smi_larb_mt8192_ostd[][SMI_LARB_PORT_NR_MAX] = {
- 	[0] = {0x2, 0x2, 0x28, 0xa, 0xc, 0x28,},
- 	[1] = {0x2, 0x2, 0x18, 0x18, 0x18, 0xa, 0xc, 0x28,},
-@@ -533,6 +557,13 @@ static const struct mtk_smi_larb_gen mtk_smi_larb_mt8188 = {
- 	.ostd		            = mtk_smi_larb_mt8188_ostd,
- };
- 
-+static const struct mtk_smi_larb_gen mtk_smi_larb_mt8189 = {
-+	.config_port                = mtk_smi_larb_config_port_gen2_general,
-+	.flags_general	            = MTK_SMI_FLAG_THRT_UPDATE | MTK_SMI_FLAG_SW_FLAG |
-+				      MTK_SMI_FLAG_SLEEP_CTL | MTK_SMI_FLAG_CFG_PORT_SEC_CTL,
-+	.ostd		            = mtk_smi_larb_mt8189_ostd,
-+};
-+
- static const struct mtk_smi_larb_gen mtk_smi_larb_mt8192 = {
- 	.config_port                = mtk_smi_larb_config_port_gen2_general,
- 	.ostd			    = mtk_smi_larb_mt8192_ostd,
-@@ -556,6 +587,7 @@ static const struct of_device_id mtk_smi_larb_of_ids[] = {
- 	{.compatible = "mediatek,mt8183-smi-larb", .data = &mtk_smi_larb_mt8183},
- 	{.compatible = "mediatek,mt8186-smi-larb", .data = &mtk_smi_larb_mt8186},
- 	{.compatible = "mediatek,mt8188-smi-larb", .data = &mtk_smi_larb_mt8188},
-+	{.compatible = "mediatek,mt8189-smi-larb", .data = &mtk_smi_larb_mt8189},
- 	{.compatible = "mediatek,mt8192-smi-larb", .data = &mtk_smi_larb_mt8192},
- 	{.compatible = "mediatek,mt8195-smi-larb", .data = &mtk_smi_larb_mt8195},
- 	{}
-@@ -808,6 +840,16 @@ static const struct mtk_smi_common_plat mtk_smi_common_mt8188_vpp = {
- 	.init     = mtk_smi_common_mt8195_init,
- };
- 
-+static const struct mtk_smi_common_plat mtk_smi_common_mt8189 = {
-+	.type     = MTK_SMI_GEN2,
-+	.bus_sel  = F_MMU1_LARB(1) | F_MMU1_LARB(3) | F_MMU1_LARB(5) |
-+		    F_MMU1_LARB(7),
-+};
-+
-+static const struct mtk_smi_common_plat mtk_smi_sub_common_mt8189 = {
-+	.type     = MTK_SMI_GEN2_SUB_COMM,
-+};
-+
- static const struct mtk_smi_common_plat mtk_smi_common_mt8192 = {
- 	.type     = MTK_SMI_GEN2,
- 	.has_gals = true,
-@@ -852,6 +894,8 @@ static const struct of_device_id mtk_smi_common_of_ids[] = {
- 	{.compatible = "mediatek,mt8186-smi-common", .data = &mtk_smi_common_mt8186},
- 	{.compatible = "mediatek,mt8188-smi-common-vdo", .data = &mtk_smi_common_mt8188_vdo},
- 	{.compatible = "mediatek,mt8188-smi-common-vpp", .data = &mtk_smi_common_mt8188_vpp},
-+	{.compatible = "mediatek,mt8189-smi-common", .data = &mtk_smi_common_mt8189},
-+	{.compatible = "mediatek,mt8189-smi-sub-common", .data = &mtk_smi_sub_common_mt8189},
- 	{.compatible = "mediatek,mt8192-smi-common", .data = &mtk_smi_common_mt8192},
- 	{.compatible = "mediatek,mt8195-smi-common-vdo", .data = &mtk_smi_common_mt8195_vdo},
- 	{.compatible = "mediatek,mt8195-smi-common-vpp", .data = &mtk_smi_common_mt8195_vpp},
+Yes.
 
--- 
-2.43.0
-
-
+Bart
 
