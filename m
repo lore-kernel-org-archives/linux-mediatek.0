@@ -4,62 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90026C4453F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 20:44:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2D5FC44536
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 21:03:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hi61mDjaFFGA7jutUZXTiHDuccr2E2lD0FKGjiIEpSg=; b=LfB+oU/awHVp6/O4HIGssy/pJS
-	z9Oz1WbHx4mnEzZS9PAF2/L0WS6jPWFcJEKdd/hoTr2icwS8Iu41iA1G2fLfnfyiRN/sISCmSsUqB
-	dHtvG1G4l6ud1naqE8NgBREQPG1LRIeRVMipOXAFP2qa5pkYdjtaAGSQb/AMgBtegSqrv5V5utUtJ
-	iB4kQ/FPJjc2fANSczsiDkMjfHThQRJh/ssLd6D+5TQWz7TB0bVAdgPnO50cWzzUjuAVAJehqDqr7
-	s658TardZCivzvqNp8mie7jvTu1sneoAOvcvOJal6Kgn5tektANRJWEscvW2/nBKFlYagBjtSvsbG
-	aaY/RwRA==;
+	bh=iDk9GJaFBzM0ar9MYB8RB/ZFgtMZjf2y1b5NLaLr2MU=; b=ObTVTepsXZvnpA4volc9tHTE3j
+	NT+c8lmLDFE9n3kYVQJAvmylHBk6YRiMWFDY1D//CJhlXntCFX3LAiJVyTpskQ3o1DBRSq2i3s/B2
+	0T6UzJ6+LbWkJyfGuZgTd7v4qEq1/ut7h9CRPBKMc07ZRH3Z7B0mHHVj2eSTa8MZnUBtubq5HN3kp
+	pOGqQVIxsWBcPGmqNU/IPh2mT1MT2ZjJC06mlxrZBNNpI7/N7NzVS2dRzOlgObeYxwOVfRDKloBJp
+	+zXisN7s0fS7bdIc0LRBX/v5Z8ycbkx/BQXD9NdammfMK31qHDoegHzQgH4pgV9Q7cUPctLZpeiqF
+	LGNDi1EA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmdns-0000000Cksd-48DP;
-	Wed, 22 Jul 2026 20:44:32 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wme6X-0000000Cmai-2llP;
+	Wed, 22 Jul 2026 21:03:49 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmdno-0000000Ckns-391o;
-	Wed, 22 Jul 2026 20:44:28 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id B7775600B0;
-	Wed, 22 Jul 2026 20:44:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E324A1F00ACA;
-	Wed, 22 Jul 2026 20:44:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784753067;
-	bh=hi61mDjaFFGA7jutUZXTiHDuccr2E2lD0FKGjiIEpSg=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=QkOyqGsxjUXPVtTG4eheRLWkx/UlZHWHBBvZi9eUgq9rXZ9/3My3EuFQjZ9Bb3R+Y
-	 JA3CrRN9vIBU8zTI4Xoeyfj+hBiKkJMIxejgvs3G7A85vFFfobdU8trWKaNC5GzNTH
-	 DMd4yucL+qL9MJftdcapCD9sWiL84MXACrOXX4k4JYwdoq3sMwAX15T8AlHcVyOK+g
-	 pXStxYfXZP+tvUu8GPYlp1gauPLU0OQyKcQbuSX9v+NfB5rW7+u20Go/EKYI4AahGc
-	 ywDmn6h9ftOFawQ57jzkKSfwmsy9HQV4Y7/hqdXaPNQZV7TfKeVrajqDkPDDze7Knk
-	 F9GJtmrGUkopA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 22 Jul 2026 22:44:02 +0200
-Subject: [PATCH net-next v10 3/3] net: airoha: defer GDM3/GDM4 WAN mode and
- GDM2 loopback to QoS offload
+	id 1wme6U-0000000CmZx-216U
+	for linux-mediatek@lists.infradead.org;
+	Wed, 22 Jul 2026 21:03:48 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-c1c52d920b8so533566b.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 22 Jul 2026 14:03:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1784754224; cv=none;
+        d=google.com; s=arc-20260327;
+        b=WhAoWGayhV1GtFoqf22WJNPGqUfXcSbiQniTBh9o0JB6V+juysQlehKiAMeptsux38
+         6oUYbf/pKW5zzuzMB0hHvGDd552D5+cwLDfAc0AXXXDKCpRTfPIWMPG4H1jbEHh2/NGQ
+         OGyLdM3JR4vMVwhZAjLjPk7k08uWqLD3bdR6IrlSPcodLD+K1jyptmLzwi7fXo5i8ITs
+         Gxd0e5m4nBcXf17AjUCximAEYGvqDQbF3g3OWQuEGQzAIHiu+KMbvWB7LzFdo+QXxuSh
+         +RfKOTAdrwIgEX2o98gbdM2JlncfyOCorZjRFGB5kZKq6jcYznfaUf3vtupbmBUC0s3z
+         RUpQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=iDk9GJaFBzM0ar9MYB8RB/ZFgtMZjf2y1b5NLaLr2MU=;
+        fh=8ZgdePB6SqwY10naiB43E2+dX0JqSEqUk6o/iYJ2qKU=;
+        b=cBIFCRPAfHeNeXNFCeJYCA6/hZeUvVDQnK9nDYZNE9vdkKfN70xwCQn6zSK9MLmmV1
+         5lVTT0K3iq1DnYwdZ6Sxr2qh0eIbiPRMkwLQThV/kj5Wc7amsCzyXfvpkpsym/KErAlj
+         k1WH3cYGe4X+MYICtTqvuN5o4kIZRb4Yi0RI9W+DVFZI/MegPop2+aZb1WxGvlZOmOg+
+         Or5spcv+n8axIsmKmHakPQ0ozcvGS3EvGLhteD4522dCMUx6iP/PhqgBb4Lt1lurVe9W
+         MHxWJcrDlG3UoEIM+m7hPiUA7MyTu2HokhY8RVODEGe/Ahi/qAy+vliGcjv5EYhzrf6C
+         2KIg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20251104; t=1784754224; x=1785359024; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=iDk9GJaFBzM0ar9MYB8RB/ZFgtMZjf2y1b5NLaLr2MU=;
+        b=eBWvMy6p2zKtVu897tOS7lTObMGCr2RdrordCXHBQC3Ri7yi/7YT17FNP2It9H7VC9
+         SrxukzmINcJGClw2LgerKd31pDs7oUlnRAx2bzoLEGGOVYpjzZZSNGk2kS63lf6i6+aI
+         eex8uamwuAUrq9wWu8A2Rk7Kl1x2WZednoE4hORXaaiv82ZROFExrcupCt30dR4nbWgp
+         TLK3vdCPjoXLWPpH+rI5kJ0BHVy2ZtP2+gsAqr+L5ELyIaKnnfl0wD2jamkyVn+2+LbA
+         /2NQOmh1aNtgeWojqCzTZ5xdvf81zmz43zDR9G60zsYm06ZnKI9gYPhzy8Mgt73FySvl
+         /X/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1784754224; x=1785359024;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=iDk9GJaFBzM0ar9MYB8RB/ZFgtMZjf2y1b5NLaLr2MU=;
+        b=hZ4F8PAH/D+phfmUviC884zaIL3aLS4dRVsaA1Vic+6siZLjENzujBfQ6taWPIdT00
+         1yvSs4iLIhy5LODWFf/00EvTZ5a5lsw/ttC87tIq/3qPlXfRTIOcO6xG7UEcF5rxqOzQ
+         2BdSF0bOzCaoxu+3jQPApMcyzIo7BlYUVy5/FK7uxy28nMbJWZ6mfmSFKG9MIBCg5eYk
+         gT9Acmibblzhm33qk1knbf/X3HMn7+jgdpmI9m+A43pWU8vJ6aQBm6eXe2E8/h9VY842
+         ROTot/ztHPbqXZDhRHXEbi3gBUhj9iSEw6OnlxaM2r+dmSu0LeAmtxkRHLax5TSTqDNM
+         v/nQ==
+X-Forwarded-Encrypted: i=1; AHgh+Rqgik9XiMRu2fOZ3wrK4dI+sZlLDQfGtK2dVKGJnpvJia6H6kEgH83KTldueKNP+tGDbJE4OZ/pNoLuXVuYww==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxXL/CDXSIiHZQURHc6uLJYA0lyFeeqn+LXc86wBpYfTLadOg67
+	zJPGnePkYUjuZKo8xGJ29bc1Mefc69bv7SsC/3vY4XyH1BeFgLDMh5nT07SBJevAqWkpuOnu4Zy
+	D5UgLSVWuOXpALYlcy4jjB+Is6XjBCWQ3K5p56Wqz
+X-Gm-Gg: AR+sD13uH2Osuo7PwgJbpl67YfF/kZ/KCTnaeBuBtjnQD/VKFPnQB/7mneWGpCPXNMC
+	55sF8L1kpzRB+RO4g2fPRE5RDKJTLm9CsZD2Yh6bORvHcccHZ0zhmJ/z0kPEzCuFloVoymMX607
+	eHV6wUnTp+x/qLkI0sIXDgG6REHc7+tp8/6Tx7rEefqdX+hFYld2RxJPSGssh5sFMxkSpt+QI3y
+	XEdX2tgXdXhBo+6C3zHpQ3BvDqHpabMPZSzdVdu8TuKDIs8zJdZfew6Zu+H7F1H7SvyKF0xPQdW
+	liEbD1Mq7+qTjultIOnPW+HjaIV1d/yKMt6izP6cU+eD4SQW39yh0cvB+e0pDDnnym8HM50=
+X-Received: by 2002:a17:907:7245:b0:c12:b227:614b with SMTP id
+ a640c23a62f3a-c1c507c5992mr22090766b.27.1784754223030; Wed, 22 Jul 2026
+ 14:03:43 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260722-airoha-ethtool-priv_flags-v10-3-d2562c5dd942@kernel.org>
-References: <20260722-airoha-ethtool-priv_flags-v10-0-d2562c5dd942@kernel.org>
-In-Reply-To: <20260722-airoha-ethtool-priv_flags-v10-0-d2562c5dd942@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Simon Horman <horms@kernel.org>, 
- Alexander Lobakin <aleksander.lobakin@intel.com>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- netdev@vger.kernel.org, Madhur Agrawal <madhur.agrawal@airoha.com>
-X-Mailer: b4 0.14.3
+References: <20260722172443.534251-1-akkun11.open@gmail.com>
+In-Reply-To: <20260722172443.534251-1-akkun11.open@gmail.com>
+From: Nick Desaulniers <ndesaulniers@google.com>
+Date: Wed, 22 Jul 2026 14:03:31 -0700
+X-Gm-Features: AUfX_mzKunA_ErzQZrqRUgnl5wCMQPxyOcP43n29TIvcYdToB-p2ggVGLa6Vk7o
+Message-ID: <CAKwvOdnbPKoTy72EvfpKtT9Ne-r+O0j99KFX8OvjGk8ZxsuEGw@mail.gmail.com>
+Subject: Re: [PATCH] arm: mediatek: fix secondary CPU boot on Thumb-2 kernels
+ with Clang
+To: Akari Tsuyukusa <akkun11.open@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Russell King <linux@armlinux.org.uk>, Nathan Chancellor <nathan@kernel.org>, 
+	Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>, 
+	Yingjoe Chen <yingjoe.chen@mediatek.com>, 
+	"moderated list:ARM SUB-ARCHITECTURES" <linux-arm-kernel@lists.infradead.org>, 
+	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	"open list:CLANG/LLVM BUILD SUPPORT:Keyword:b(?i:clang|llvm)b" <llvm@lists.linux.dev>, stable@vger.kernel.org, 
+	Arnd Bergmann <arnd@kernel.org>, Ard Biesheuvel <ardb@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260722_140346_539278_83CD4D95 
+X-CRM114-Status: GOOD (  26.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,590 +126,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-GDM3 and GDM4 ports require GDM2 loopback to be enabled for hardware
-QoS offload to function. Without it, HTB and ETS offload on these ports
-do not work.
-Previously, GDM3/GDM4 ports were automatically configured as WAN with
-GDM2 loopback enabled during ndo_init().
-Add the capability to configure GDM3/GDM4 as WAN/LAN on demand when QoS
-offload is created or destroyed.
-Hook airoha_enable_qos_for_gdm34() into TC_HTB_CREATE so that requesting
-HTB offload on a GDM3/GDM4 LAN port switches it to WAN mode and enables
-GDM2 loopback.
-Introduce the AIROHA_DEV_F_TX_QOS flag to track whether a device has an
-active TX qdisc (HTB/ETS); clear it on TC_HTB_DESTROY. The device keeps
-its WAN role after qdisc teardown so that its configuration is preserved
-until another device explicitly needs the WAN role for QoS offload.
-If another GDM3/GDM4 device already holds the WAN role without an active
-TX qdisc, demote it to LAN before promoting the requesting device. Skip
-the demotion when the requesting device is itself already the WAN device.
-Since airoha_dev_set_qdma() can now be called on a running device to
-migrate between QDMA blocks, make dev->qdma an RCU pointer so the TX path
-can safely dereference it without holding RTNL.
-When migrating between QDMA blocks, stop TX queues and synchronize RCU
-before swapping the pointer to ensure no in-flight ndo_start_xmit holds
-the old pointer. After the swap, mask TX completion interrupts on the
-old QDMA and call napi_synchronize() to drain any remaining completions
-before waking TX on the new QDMA. This prevents concurrent calls to
-dql_completed() from two independent NAPI instances on the same netdev
-TX queues.
-Hold flow_offload_mutex in airoha_enable_qos_for_gdm34() and
-airoha_disable_qos_for_gdm34() around the dev->flags update,
-airoha_dev_set_qdma() and GDM2 loopback configuration, serializing
-against concurrent airoha_ppe_hw_init() in the TC_SETUP_CLSFLOWER
-offload path.
-Introduce airoha_qdma_deref() helper that wraps rcu_dereference_protected()
-with a lockdep condition accepting either rtnl_lock or flow_offload_mutex,
-and use it across all control-path dereferences of the RCU-protected
-dev->qdma pointer.
-Add airoha_disable_gdm2_loopback() to disable GDM2 hw loopback.
+On Wed, Jul 22, 2026 at 10:25=E2=80=AFAM Akari Tsuyukusa <akkun11.open@gmai=
+l.com> wrote:
+>
+> When building with CONFIG_THUMB2_KERNEL=3Dy and Clang, secondary CPUs
 
-Tested-by: Madhur Agrawal <madhur.agrawal@airoha.com>
-Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
-Reviewed-by: Simon Horman <horms@kernel.org>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c  | 248 +++++++++++++++++++++++++++---
- drivers/net/ethernet/airoha/airoha_eth.h  |  15 +-
- drivers/net/ethernet/airoha/airoha_ppe.c  |   9 +-
- drivers/net/ethernet/airoha/airoha_regs.h |   1 +
- 4 files changed, 243 insertions(+), 30 deletions(-)
+Specifically, was LLVM=3D1 or CC=3Dclang or something else used?
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index aaf2a4717d12..06f866d7137e 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -934,7 +934,7 @@ static void airoha_qdma_wake_netdev_txqs(struct airoha_queue *q)
- 			if (!dev)
- 				continue;
- 
--			if (dev->qdma != qdma)
-+			if (rcu_access_pointer(dev->qdma) != qdma)
- 				continue;
- 
- 			netdev = netdev_from_priv(dev);
-@@ -1866,8 +1866,8 @@ static int airoha_dev_open(struct net_device *netdev)
- {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
- 	struct airoha_gdm_port *port = dev->port;
--	struct airoha_qdma *qdma = dev->qdma;
- 	u32 pse_port = FE_PSE_PORT_PPE1;
-+	struct airoha_qdma *qdma;
- 	int err;
- 
- 	netif_tx_start_all_queues(netdev);
-@@ -1875,6 +1875,7 @@ static int airoha_dev_open(struct net_device *netdev)
- 	if (err)
- 		return err;
- 
-+	qdma = airoha_qdma_deref(dev);
- 	if (netdev_uses_dsa(netdev))
- 		airoha_fe_set(qdma->eth, REG_GDM_INGRESS_CFG(port->id),
- 			      GDM_STAG_EN_MASK);
-@@ -1898,7 +1899,6 @@ static int airoha_dev_stop(struct net_device *netdev)
- {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
- 	struct airoha_gdm_port *port = dev->port;
--	struct airoha_qdma *qdma = dev->qdma;
- 
- 	netif_tx_disable(netdev);
- 	airoha_set_vip_for_gdm_port(dev, false);
-@@ -1906,7 +1906,7 @@ static int airoha_dev_stop(struct net_device *netdev)
- 	if (--port->users)
- 		airoha_ppe_set_xmit_frame_size(dev);
- 	else
--		airoha_set_gdm_port_fwd_cfg(qdma->eth,
-+		airoha_set_gdm_port_fwd_cfg(dev->eth,
- 					    REG_GDM_FWD_CFG(port->id),
- 					    FE_PSE_PORT_DROP);
- 	return 0;
-@@ -1989,6 +1989,53 @@ static int airoha_enable_gdm2_loopback(struct airoha_gdm_dev *dev)
- 	return 0;
- }
- 
-+static int airoha_disable_gdm2_loopback(struct airoha_gdm_dev *dev)
-+{
-+	struct airoha_gdm_port *port = dev->port;
-+	struct airoha_eth *eth = dev->eth;
-+	int i, src_port;
-+	u32 pse_port;
-+
-+	src_port = eth->soc->ops.get_sport(dev->port, dev->nbq);
-+	if (src_port < 0)
-+		return src_port;
-+
-+	airoha_fe_clear(eth,
-+			REG_SP_DFT_CPORT(src_port >> fls(SP_CPORT_DFT_MASK)),
-+			SP_CPORT_MASK(src_port & SP_CPORT_DFT_MASK));
-+
-+	airoha_fe_set(eth, REG_GDM_FWD_CFG(AIROHA_GDM2_IDX),
-+		      GDM_STRIP_CRC_MASK);
-+	airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(AIROHA_GDM2_IDX),
-+				    FE_PSE_PORT_DROP);
-+	airoha_fe_clear(eth, REG_GDM_LPBK_CFG(AIROHA_GDM2_IDX),
-+			LPBK_CHAN_MASK | LPBK_MODE_MASK | LPBK_EN_MASK);
-+	pse_port = airoha_ppe_is_enabled(eth, 1) ? FE_PSE_PORT_PPE2
-+						 : FE_PSE_PORT_PPE1;
-+	airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(AIROHA_GDM2_IDX),
-+				    pse_port);
-+
-+	airoha_fe_rmw(eth, REG_FE_WAN_PORT, WAN0_MASK,
-+		      FIELD_PREP(WAN0_MASK, AIROHA_GDM2_IDX));
-+
-+	for (i = 0; i < eth->soc->num_ppe; i++)
-+		airoha_fe_clear(eth, REG_PPE_DFT_CPORT(i, AIROHA_GDM2_IDX),
-+				DFT_CPORT_MASK(AIROHA_GDM2_IDX));
-+
-+	/* Enable VIP and IFC for GDM2 */
-+	airoha_fe_set(eth, REG_FE_VIP_PORT_EN, BIT(AIROHA_GDM2_IDX));
-+	airoha_fe_set(eth, REG_FE_IFC_PORT_EN, BIT(AIROHA_GDM2_IDX));
-+
-+	if (port->id == AIROHA_GDM4_IDX && airoha_is_7581(eth)) {
-+		u32 mask = FC_ID_OF_SRC_PORT_MASK(dev->nbq);
-+
-+		airoha_fe_rmw(eth, REG_SRC_PORT_FC_MAP6, mask,
-+			      FC_MAP6_DEF_VALUE & mask);
-+	}
-+
-+	return 0;
-+}
-+
- static struct airoha_gdm_dev *
- airoha_get_wan_gdm_dev(struct airoha_eth *eth)
- {
-@@ -2015,15 +2062,50 @@ airoha_get_wan_gdm_dev(struct airoha_eth *eth)
- static void airoha_dev_set_qdma(struct airoha_gdm_dev *dev)
- {
- 	struct net_device *netdev = netdev_from_priv(dev);
-+	struct airoha_qdma *cur_qdma, *qdma;
- 	struct airoha_eth *eth = dev->eth;
--	int ppe_id;
-+	int i, ppe_id;
- 
- 	/* QDMA0 is used for lan ports while QDMA1 is used for WAN ports */
--	dev->qdma = &eth->qdma[!airoha_is_lan_gdm_dev(dev)];
--	netdev->irq = dev->qdma->irq_banks[0].irq;
-+	qdma = &eth->qdma[!airoha_is_lan_gdm_dev(dev)];
-+	cur_qdma = airoha_qdma_deref(dev);
-+
-+	if (cur_qdma) {
-+		/* Ensure any in-flight packets for the old QDMA in the TX path
-+		 * has completed before swapping the QDMA pointer.
-+		 */
-+		netif_tx_stop_all_queues(netdev);
-+		synchronize_rcu();
-+	}
-+
-+	rcu_assign_pointer(dev->qdma, qdma);
-+	netdev->irq = qdma->irq_banks[0].irq;
- 
- 	ppe_id = !airoha_is_lan_gdm_dev(dev) && airoha_ppe_is_enabled(eth, 1);
- 	airoha_ppe_set_cpu_port(dev, ppe_id, airoha_get_fe_port(dev));
-+
-+	/* Seed qos_stats baselines with the new QDMA block's current
-+	 * counter values to avoid a spurious spike on the first stats
-+	 * query after init or migration.
-+	 */
-+	for (i = 0; i < ARRAY_SIZE(dev->qos_stats); i++) {
-+		dev->qos_stats[i].cpu_tx_packets =
-+			airoha_qdma_rr(qdma, REG_CNTR_VAL(i << 1));
-+		dev->qos_stats[i].fwd_tx_packets =
-+			airoha_qdma_rr(qdma, REG_CNTR_VAL((i << 1) + 1));
-+	}
-+
-+	if (cur_qdma) {
-+		/* Wait for the pending TX completion on the old QDMA */
-+		airoha_qdma_irq_disable(&cur_qdma->irq_banks[0],
-+					QDMA_INT_REG_IDX0, INT_TX_MASK);
-+		for (i = 0; i < ARRAY_SIZE(cur_qdma->q_tx_irq); i++)
-+			napi_synchronize(&cur_qdma->q_tx_irq[i].napi);
-+
-+		airoha_qdma_irq_enable(&cur_qdma->irq_banks[0],
-+				       QDMA_INT_REG_IDX0, INT_TX_MASK);
-+		netif_tx_wake_all_queues(netdev);
-+	}
- }
- 
- static int airoha_dev_init(struct net_device *netdev)
-@@ -2178,9 +2260,9 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 				   struct net_device *netdev)
- {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
--	struct airoha_qdma *qdma = dev->qdma;
- 	u32 nr_frags, tag, msg0, msg1, len;
- 	struct airoha_queue_entry *e;
-+	struct airoha_qdma *qdma;
- 	struct netdev_queue *txq;
- 	struct airoha_queue *q;
- 	LIST_HEAD(tx_list);
-@@ -2189,6 +2271,8 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 	u16 index;
- 	u8 fport;
- 
-+	rcu_read_lock();
-+	qdma = rcu_dereference(dev->qdma);
- 	qid = airoha_qdma_get_txq(qdma, skb_get_queue_mapping(skb));
- 	tag = airoha_get_dsa_tag(skb, netdev);
- 
-@@ -2238,6 +2322,8 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 		netif_tx_stop_queue(txq);
- 		q->txq_stopped = true;
- 		spin_unlock_bh(&q->lock);
-+		rcu_read_unlock();
-+
- 		return NETDEV_TX_BUSY;
- 	}
- 
-@@ -2303,6 +2389,7 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- 				FIELD_PREP(TX_RING_CPU_IDX_MASK, index));
- 
- 	spin_unlock_bh(&q->lock);
-+	rcu_read_unlock();
- 
- 	return NETDEV_TX_OK;
- 
-@@ -2315,6 +2402,7 @@ static netdev_tx_t airoha_dev_xmit(struct sk_buff *skb,
- error:
- 	dev_kfree_skb_any(skb);
- 	netdev->stats.tx_dropped++;
-+	rcu_read_unlock();
- 
- 	return NETDEV_TX_OK;
- }
-@@ -2394,17 +2482,19 @@ static int airoha_qdma_set_chan_tx_sched(struct net_device *netdev,
- 					 const u16 *weights, u8 n_weights)
- {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
-+	struct airoha_qdma *qdma;
- 	int i;
- 
-+	qdma = airoha_qdma_deref(dev);
- 	for (i = 0; i < AIROHA_NUM_QOS_QUEUES; i++)
--		airoha_qdma_clear(dev->qdma, REG_QUEUE_CLOSE_CFG(channel),
-+		airoha_qdma_clear(qdma, REG_QUEUE_CLOSE_CFG(channel),
- 				  TXQ_DISABLE_CHAN_QUEUE_MASK(channel, i));
- 
- 	for (i = 0; i < n_weights; i++) {
- 		u32 status;
- 		int err;
- 
--		airoha_qdma_wr(dev->qdma, REG_TXWRR_WEIGHT_CFG,
-+		airoha_qdma_wr(qdma, REG_TXWRR_WEIGHT_CFG,
- 			       TWRR_RW_CMD_MASK |
- 			       FIELD_PREP(TWRR_CHAN_IDX_MASK, channel) |
- 			       FIELD_PREP(TWRR_QUEUE_IDX_MASK, i) |
-@@ -2412,12 +2502,12 @@ static int airoha_qdma_set_chan_tx_sched(struct net_device *netdev,
- 		err = read_poll_timeout(airoha_qdma_rr, status,
- 					status & TWRR_RW_CMD_DONE,
- 					USEC_PER_MSEC, 10 * USEC_PER_MSEC,
--					true, dev->qdma, REG_TXWRR_WEIGHT_CFG);
-+					true, qdma, REG_TXWRR_WEIGHT_CFG);
- 		if (err)
- 			return err;
- 	}
- 
--	airoha_qdma_rmw(dev->qdma, REG_CHAN_QOS_MODE(channel >> 3),
-+	airoha_qdma_rmw(qdma, REG_CHAN_QOS_MODE(channel >> 3),
- 			CHAN_QOS_MODE_MASK(channel),
- 			__field_prep(CHAN_QOS_MODE_MASK(channel), mode));
- 
-@@ -2481,10 +2571,11 @@ static int airoha_qdma_get_tx_ets_stats(struct net_device *netdev, int channel,
- 					struct tc_ets_qopt_offload *opt)
- {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
--	struct airoha_qdma *qdma = dev->qdma;
- 	u32 cpu_tx_packets, fwd_tx_packets;
-+	struct airoha_qdma *qdma;
- 	u64 tx_packets;
- 
-+	qdma = airoha_qdma_deref(dev);
- 	cpu_tx_packets = airoha_qdma_rr(qdma, REG_CNTR_VAL(channel << 1));
- 	fwd_tx_packets = airoha_qdma_rr(qdma,
- 					REG_CNTR_VAL((channel << 1) + 1));
-@@ -2751,16 +2842,18 @@ static int airoha_qdma_set_tx_rate_limit(struct net_device *netdev,
- 					 u32 bucket_size)
- {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
-+	struct airoha_qdma *qdma;
- 	int i, err;
- 
-+	qdma = airoha_qdma_deref(dev);
- 	for (i = 0; i <= TRTCM_PEAK_MODE; i++) {
--		err = airoha_qdma_set_trtcm_config(dev->qdma, channel,
-+		err = airoha_qdma_set_trtcm_config(qdma, channel,
- 						   REG_EGRESS_TRTCM_CFG, i,
- 						   !!rate, TRTCM_METER_MODE);
- 		if (err)
- 			return err;
- 
--		err = airoha_qdma_set_trtcm_token_bucket(dev->qdma, channel,
-+		err = airoha_qdma_set_trtcm_token_bucket(qdma, channel,
- 							 REG_EGRESS_TRTCM_CFG,
- 							 i, rate, bucket_size);
- 		if (err)
-@@ -2796,11 +2889,12 @@ static int airoha_tc_htb_alloc_leaf_queue(struct net_device *netdev,
- 	u32 channel = TC_H_MIN(opt->classid) % AIROHA_NUM_QOS_CHANNELS;
- 	int err, num_tx_queues = AIROHA_NUM_TX_RING + channel + 1;
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
--	struct airoha_qdma *qdma = dev->qdma;
-+	struct airoha_qdma *qdma;
- 
- 	/* Here we need to check the requested QDMA channel is not already
- 	 * in use by another net_device running on the same QDMA block.
- 	 */
-+	qdma = airoha_qdma_deref(dev);
- 	if (test_and_set_bit(channel, qdma->qos_channel_map)) {
- 		NL_SET_ERR_MSG_MOD(opt->extack,
- 				   "qdma qos channel already in use");
-@@ -2836,7 +2930,7 @@ static int airoha_qdma_set_rx_meter(struct airoha_gdm_dev *dev,
- 				    u32 rate, u32 bucket_size,
- 				    enum trtcm_unit_type unit_type)
- {
--	struct airoha_qdma *qdma = dev->qdma;
-+	struct airoha_qdma *qdma = airoha_qdma_deref(dev);
- 	int i;
- 
- 	for (i = 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
-@@ -3011,10 +3105,11 @@ static void airoha_tc_remove_htb_queue(struct net_device *netdev, int queue)
- {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
- 	int num_tx_queues = AIROHA_NUM_TX_RING;
--	struct airoha_qdma *qdma = dev->qdma;
-+	struct airoha_qdma *qdma;
- 
- 	airoha_qdma_set_tx_rate_limit(netdev, queue, 0, 0);
- 
-+	qdma = airoha_qdma_deref(dev);
- 	clear_bit(queue, qdma->qos_channel_map);
- 	clear_bit(queue, dev->qos_sq_bmap);
- 
-@@ -3040,6 +3135,98 @@ static int airoha_tc_htb_delete_leaf_queue(struct net_device *netdev,
- 	return 0;
- }
- 
-+static void airoha_disable_qos_for_gdm34(struct net_device *netdev)
-+{
-+	struct airoha_gdm_dev *dev = netdev_priv(netdev);
-+	struct airoha_gdm_port *port = dev->port;
-+	int err;
-+
-+	if (port->id != AIROHA_GDM3_IDX &&
-+	    port->id != AIROHA_GDM4_IDX)
-+		return;
-+
-+	err = airoha_disable_gdm2_loopback(dev);
-+	if (err)
-+		netdev_warn(netdev,
-+			    "failed disabling GDM2 loopback: %d\n", err);
-+
-+	dev->flags &= ~AIROHA_DEV_F_WAN;
-+	airoha_dev_set_qdma(dev);
-+
-+	airoha_set_macaddr(dev, netdev->dev_addr);
-+	airoha_ppe_set_xmit_frame_size(dev);
-+
-+	if (netif_running(netdev))
-+		airoha_set_gdm_port_fwd_cfg(dev->eth,
-+					    REG_GDM_FWD_CFG(port->id),
-+					    FE_PSE_PORT_PPE1);
-+}
-+
-+static int airoha_enable_qos_for_gdm34(struct net_device *netdev,
-+				       struct netlink_ext_ack *extack)
-+{
-+	struct airoha_gdm_dev *wan_dev, *dev = netdev_priv(netdev);
-+	struct airoha_gdm_port *port = dev->port;
-+	struct airoha_eth *eth = dev->eth;
-+	int err = -EBUSY;
-+
-+	if (port->id != AIROHA_GDM3_IDX &&
-+	    port->id != AIROHA_GDM4_IDX) {
-+		/* HW QoS is always supported by GDM1 and GDM2 */
-+		return 0;
-+	}
-+
-+	if (!airoha_is_lan_gdm_dev(dev)) /* Already enabled */
-+		return 0;
-+
-+	mutex_lock(&flow_offload_mutex);
-+
-+	wan_dev = airoha_get_wan_gdm_dev(eth);
-+	if (wan_dev) {
-+		if ((wan_dev->flags & AIROHA_DEV_F_TX_QOS) ||
-+		    wan_dev->port->id == AIROHA_GDM2_IDX) {
-+			NL_SET_ERR_MSG_MOD(extack,
-+					   "QoS configured for WAN device");
-+			goto error_unlock;
-+		}
-+		airoha_disable_qos_for_gdm34(netdev_from_priv(wan_dev));
-+	}
-+
-+	dev->flags |= AIROHA_DEV_F_WAN;
-+	airoha_dev_set_qdma(dev);
-+	err = airoha_enable_gdm2_loopback(dev);
-+	if (err)
-+		goto error_disable_wan;
-+
-+	err = airoha_set_macaddr(dev, netdev->dev_addr);
-+	if (err)
-+		goto error_disable_loopback;
-+
-+	airoha_dev_set_xmit_frame_size(netdev);
-+	if (netif_running(netdev)) {
-+		u32 pse_port;
-+
-+		pse_port = airoha_ppe_is_enabled(eth, 1) ? FE_PSE_PORT_PPE2
-+							 : FE_PSE_PORT_PPE1;
-+		airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(port->id),
-+					    pse_port);
-+	}
-+
-+	mutex_unlock(&flow_offload_mutex);
-+
-+	return 0;
-+
-+error_disable_loopback:
-+	airoha_disable_gdm2_loopback(dev);
-+error_disable_wan:
-+	dev->flags &= ~AIROHA_DEV_F_WAN;
-+	airoha_dev_set_qdma(dev);
-+error_unlock:
-+	mutex_unlock(&flow_offload_mutex);
-+
-+	return err;
-+}
-+
- static int airoha_tc_htb_destroy(struct net_device *netdev)
- {
- 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
-@@ -3048,6 +3235,8 @@ static int airoha_tc_htb_destroy(struct net_device *netdev)
- 	for_each_set_bit(q, dev->qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS)
- 		airoha_tc_remove_htb_queue(netdev, q);
- 
-+	dev->flags &= ~AIROHA_DEV_F_TX_QOS;
-+
- 	return 0;
- }
- 
-@@ -3067,24 +3256,33 @@ static int airoha_tc_get_htb_get_leaf_queue(struct net_device *netdev,
- 	return 0;
- }
- 
--static int airoha_tc_setup_qdisc_htb(struct net_device *dev,
-+static int airoha_tc_setup_qdisc_htb(struct net_device *netdev,
- 				     struct tc_htb_qopt_offload *opt)
- {
- 	switch (opt->command) {
--	case TC_HTB_CREATE:
-+	case TC_HTB_CREATE: {
-+		struct airoha_gdm_dev *dev = netdev_priv(netdev);
-+		int err;
-+
-+		err = airoha_enable_qos_for_gdm34(netdev, opt->extack);
-+		if (err)
-+			return err;
-+
-+		dev->flags |= AIROHA_DEV_F_TX_QOS;
- 		break;
-+	}
- 	case TC_HTB_DESTROY:
--		return airoha_tc_htb_destroy(dev);
-+		return airoha_tc_htb_destroy(netdev);
- 	case TC_HTB_NODE_MODIFY:
--		return airoha_tc_htb_modify_queue(dev, opt);
-+		return airoha_tc_htb_modify_queue(netdev, opt);
- 	case TC_HTB_LEAF_ALLOC_QUEUE:
--		return airoha_tc_htb_alloc_leaf_queue(dev, opt);
-+		return airoha_tc_htb_alloc_leaf_queue(netdev, opt);
- 	case TC_HTB_LEAF_DEL:
- 	case TC_HTB_LEAF_DEL_LAST:
- 	case TC_HTB_LEAF_DEL_LAST_FORCE:
--		return airoha_tc_htb_delete_leaf_queue(dev, opt);
-+		return airoha_tc_htb_delete_leaf_queue(netdev, opt);
- 	case TC_HTB_LEAF_QUERY_QUEUE:
--		return airoha_tc_get_htb_get_leaf_queue(dev, opt);
-+		return airoha_tc_get_htb_get_leaf_queue(netdev, opt);
- 	default:
- 		return -EOPNOTSUPP;
- 	}
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index bf44be9f0954..b43a08e93795 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -544,12 +544,13 @@ struct airoha_qdma {
- };
- 
- enum airoha_dev_flags {
--	AIROHA_DEV_F_WAN = BIT(0),
-+	AIROHA_DEV_F_WAN	= BIT(0),
-+	AIROHA_DEV_F_TX_QOS	= BIT(1),
- };
- 
- struct airoha_gdm_dev {
-+	struct airoha_qdma __rcu *qdma;
- 	struct airoha_gdm_port *port;
--	struct airoha_qdma *qdma;
- 	struct airoha_eth *eth;
- 
- 	DECLARE_BITMAP(qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS);
-@@ -685,6 +686,16 @@ int airoha_get_fe_port(struct airoha_gdm_dev *dev);
- bool airoha_is_valid_gdm_dev(struct airoha_eth *eth,
- 			     struct airoha_gdm_dev *dev);
- 
-+extern struct mutex flow_offload_mutex;
-+
-+static inline struct airoha_qdma *
-+airoha_qdma_deref(struct airoha_gdm_dev *dev)
-+{
-+	return rcu_dereference_protected(dev->qdma,
-+					 lockdep_rtnl_is_held() ||
-+					 lockdep_is_held(&flow_offload_mutex));
-+}
-+
- void airoha_ppe_set_xmit_frame_size(struct airoha_gdm_dev *dev);
- void airoha_ppe_set_cpu_port(struct airoha_gdm_dev *dev, u8 ppe_id, u8 fport);
- bool airoha_ppe_is_enabled(struct airoha_eth *eth, int index);
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index fdb973fc779c..3ccdf9fccb4a 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -15,7 +15,10 @@
- #include "airoha_regs.h"
- #include "airoha_eth.h"
- 
--static DEFINE_MUTEX(flow_offload_mutex);
-+/* Serialize airoha_gdm_dev flags, QDMA pointer and PPE CPU port
-+ * configuration.
-+ */
-+DEFINE_MUTEX(flow_offload_mutex);
- static DEFINE_SPINLOCK(ppe_lock);
- 
- static const struct rhashtable_params airoha_flow_table_params = {
-@@ -86,8 +89,8 @@ static u32 airoha_ppe_get_timestamp(struct airoha_ppe *ppe)
- 
- void airoha_ppe_set_cpu_port(struct airoha_gdm_dev *dev, u8 ppe_id, u8 fport)
- {
--	struct airoha_qdma *qdma = dev->qdma;
--	struct airoha_eth *eth = qdma->eth;
-+	struct airoha_qdma *qdma = airoha_qdma_deref(dev);
-+	struct airoha_eth *eth = dev->eth;
- 	u8 qdma_id = qdma - &eth->qdma[0];
- 	u32 fe_cpu_port;
- 
-diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethernet/airoha/airoha_regs.h
-index 6fed63d013b4..442b48c9b991 100644
---- a/drivers/net/ethernet/airoha/airoha_regs.h
-+++ b/drivers/net/ethernet/airoha/airoha_regs.h
-@@ -375,6 +375,7 @@
- 
- #define REG_SRC_PORT_FC_MAP6		0x2298
- #define FC_ID_OF_SRC_PORT_MASK(_n)	GENMASK(4 + ((_n) << 3), ((_n) << 3))
-+#define FC_MAP6_DEF_VALUE		0x1b1a1918
- 
- #define REG_WAN_MTU0			0x2300
- #define WAN_MTU1_MASK			GENMASK(29, 16)
+> fail to come online with "CPU1: failed to come online". The address
+> written to the jump register has bit 0 set, causing the secondary CPU
+> to start in Thumb mode.
 
--- 
-2.55.0
+Ah, yeah missing those is going to be a noticeable perf hit!
 
+>
+> secondary_startup_arm is ARM-mode code (.arm) and, on a Thumb-2 kernel,
+> expects to be entered in ARM mode in order to switch to Thumb via the
+> standard sequence at that label. Starting in Thumb mode causes the CPU
+> to execute ARM instructions as Thumb, resulting in an immediate crash.
+>
+> Clear bit 0 of the entry address so the CPU always starts in ARM mode.
+
+Thanks for the patch. Any idea why this isn't an issue for
+GCC+GAS+BFD? Perhaps there's a difference in the LLVM tools that we
+need to address?
+
+There's definitely some difference between clang and GAS here.
+https://github.com/llvm/llvm-project/issues/211376
+
+I wonder if perhaps a better machine-agnostic assembler-agnostic
+assembler-version-agnostic patch would be something like:
+
+```
+diff --git a/arch/arm/kernel/head.S b/arch/arm/kernel/head.S
+index f22c50d4bd41..687ee7063a73 100644
+--- a/arch/arm/kernel/head.S
++++ b/arch/arm/kernel/head.S
+@@ -383,6 +383,7 @@ ENDPROC(__create_page_tables)
+ ENTRY(secondary_startup_arm)
+  THUMB(        badr    r9, 1f          )       @ Kernel is entered in ARM.
+  THUMB(        bx      r9              )       @ If this is a Thumb-2 kern=
+el,
++ENDPROC(secondary_startup_arm)
+  THUMB(        .thumb                  )       @ switch to Thumb now.
+  THUMB(1:                      )
+ ENTRY(secondary_startup)
+@@ -429,7 +430,6 @@ ARM_BE8(eor r4, r4, r5)                     @
+without using a temp reg.
+                                                @ (return control reg)
+        ret     r12
+ ENDPROC(secondary_startup)
+-ENDPROC(secondary_startup_arm)
+
+ ENTRY(__secondary_switched)
+ #if defined(CONFIG_VMAP_STACK) && !defined(CONFIG_ARM_LPAE)
+
+```
+
+Can you perhaps help test/verify that Akari?
+
+
+>
+> Tested on Lenovo YOGA Tablet 10 (Wi-Fi).
+>
+> Fixes: 0cda07001a94 ("ARM: mediatek: add smp bringup code")
+> Assisted-by: DeepSeek:deepseek-v4-pro
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
+> ---
+>  arch/arm/mach-mediatek/platsmp.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/arch/arm/mach-mediatek/platsmp.c b/arch/arm/mach-mediatek/pl=
+atsmp.c
+> index 6b0943d95555..9a7c65fc3ae1 100644
+> --- a/arch/arm/mach-mediatek/platsmp.c
+> +++ b/arch/arm/mach-mediatek/platsmp.c
+> @@ -124,7 +124,7 @@ static void __init __mtk_smp_prepare_cpus(unsigned in=
+t max_cpus, int trustzone)
+>          * write the address of slave startup address into the system-wid=
+e
+>          * jump register
+>          */
+> -       writel_relaxed(__pa_symbol(secondary_startup_arm),
+> +       writel_relaxed(__pa_symbol(secondary_startup_arm) & ~1,
+>                         mtk_smp_base + mtk_smp_info->jump_reg);
+>  }
+>
+> --
+> 2.54.0
+>
+
+
+--=20
+Thanks,
+~Nick Desaulniers
 
