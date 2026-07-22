@@ -4,53 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1A35C44536
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 15:27:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33543C4453C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 15:45:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dhUVTQj42y//P1Vg6BUOQL8RosJqKNOqghEIqM4Zenw=; b=Ej4cBLuyRFdu1cc/PYnvxJU17a
-	ouNISbKIT+09JxsqKMxivShZ7lTnHQiWJmrKtrBzKAoWNclL5uveq0R9SDCubEYLvGnjYl72OWBRK
-	nuoMSCa79kGeXbdaCest2ID9xHvLd5EMSFq9jreG5CdDM5LCxDLM/6zDtfVlcKMv9rCC0vsD0zo/V
-	1OqKq5TUhT562zN5edG9Fa5OMhSaTaLHZqTXnhYyTwRpS/LiE8NZhhgp2Y0DG9t4MiEUE6IaCm9bO
-	LNoYHPFHPWKJoT0ACoSRUnQ+8XhbS4glSDEpDXsShZ088vtH20aPrdJ82aVb82AX3dQ7Rx339IAam
-	wSJLCQNQ==;
+	bh=/OsIhPpVYT3n9diLVUiR7498vs3ZnyRvw7xjAByzCgA=; b=yiBCiPsiufutZPNN41Rm5DNa95
+	SQZTmLwZCBIqx0O/Wf7mbrqIpGqIrMvab3zCCE2uygwH0s9vtWFE3vK4r0Q5gswYx0dOdEaOMvnQa
+	4KbZGCLOI8ZnAHAGrvFoDUcM1l5sCPeH7B3TO1au7S6ee+ie7sRyp8xFmACyRz2Apwo+/+BYJCY0n
+	rmEyE6UKTGzXwKAMY8cOzyI7RUY+F8SIm9jQft44POpKSWoOhelBUgtODtdXTtDiPFwjT3AiSOyex
+	6Vu6gQgSCAjcI2BJ2jbNmIG/e/OkvK35lo8Jk1oi05tFsSxrA3PQOb5n++JwS4Bv0zPgcJ9lN9Ny1
+	HeYP1hTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmYr7-0000000C9Lp-2YFX;
-	Wed, 22 Jul 2026 15:27:33 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wmZ87-0000000CE28-08KZ;
+	Wed, 22 Jul 2026 15:45:07 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmYqt-0000000C9Hd-1YH6;
-	Wed, 22 Jul 2026 15:27:21 +0000
+	id 1wmZ84-0000000CE1l-3aZC;
+	Wed, 22 Jul 2026 15:45:04 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 37780600AB;
-	Wed, 22 Jul 2026 15:27:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 912391F000E9;
-	Wed, 22 Jul 2026 15:27:17 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id EC188600AB;
+	Wed, 22 Jul 2026 15:45:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4C0DB1F000E9;
+	Wed, 22 Jul 2026 15:45:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784734037;
-	bh=dhUVTQj42y//P1Vg6BUOQL8RosJqKNOqghEIqM4Zenw=;
+	s=k20260515; t=1784735103;
+	bh=/OsIhPpVYT3n9diLVUiR7498vs3ZnyRvw7xjAByzCgA=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=mQWM+KEEeV7Yvns05CC8tUwnqtwyIjIKVg1JkyYxYIqcZ8yV4pAfLmIn98RUgufR9
-	 fHrs4zyb/4/q6nBbHsuqYQrI+USsAKtwAVfpx2p2EUOd8o5cUEHsFLwDwrAxGYsFOj
-	 1am8Z/4enG952QU8/IemkYoeta9oaymVlmBaoW5S4B4UVEe2LbHML2jcOc+f2Bw351
-	 3ZUOYu5DWJi+ExAqRWo2cdl/qJlLL4k+o9ObKvQPMiWIsa4zis9Vhc7ZI3GY/fzhOn
-	 GFMBkOqvMWWr6vUC0nb1JhKl8XgRpHvTelHe/1Rf2DN7sEZM4qh5qxbLbN4+XcRtg8
-	 xFQkA5cHbkBnw==
-Date: Wed, 22 Jul 2026 10:27:15 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Chen-Yu Yeh <chenyou910331@gmail.com>
-Subject: Re: [PATCH] dt-bindings: pinctrl: mt7622: allow gpio-hogs
-Message-ID: <178473403449.962632.12615541678335814089.robh@kernel.org>
-References: <20260709193927.108105-1-chenyou910331@gmail.com>
+	b=bsjF49+nysB5MqTTiGuxAQwzjtDFeEXvEIeCB6m6+CUqR0A4ru9FDJnUOaO+B2oWX
+	 CXKTsoDKJpLBZqdvHYPZKXFivbA9Evrf0q16oC30RCW2bWRo3xgJ+o/sgzpeqJxFC6
+	 zeA6A8HTmsLYWxeTsgohoG59Jyh0Zzfhcvlq5eTYrGNktN2q2HnZXiY1RqqTbo4rOz
+	 pGGrI/YEV2oPbWC3at+oO0C/RmKf99VgeV4n6lhbl7wvASpXOmx/N8pIs24iVVDifV
+	 pbmV4IyCdHwB2eCKbaUF3kM0fdzeWs7JX3SAGiBkMiyV5z9PBSCTdpp6JsflIU2QJC
+	 z/Qee/jv9Ki+w==
+Date: Wed, 22 Jul 2026 10:45:00 -0500
+From: Rob Herring <robh@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
+	simona@ffwll.ch, maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org, tzimmermann@suse.de, krzk+dt@kernel.org,
+	conor+dt@kernel.org, matthias.bgg@gmail.com,
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, justin.yeh@mediatek.com,
+	jason-jh.lin@mediatek.com, kernel@collabora.com
+Subject: Re: [PATCH v2 12/46] dt-bindings: soc: mediatek: mutex: Allow
+ #trigger-source-cells
+Message-ID: <20260722154500.GA988735-robh@kernel.org>
+References: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com>
+ <20260714114414.184512-13-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260709193927.108105-1-chenyou910331@gmail.com>
+In-Reply-To: <20260714114414.184512-13-angelogioacchino.delregno@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,32 +72,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Linus Walleij <linusw@kernel.org>, Sean Wang <sean.wang@kernel.org>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Jul 14, 2026 at 01:43:40PM +0200, AngeloGioacchino Del Regno wrote:
+> This hardware controls trigger sources, and there's even a generic
+> binding just for that: allow #trigger-source-cells in MuteX, so
+> that this is allowed to provide triggers to external HW.
+> 
+> Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-On Fri, 10 Jul 2026 03:39:27 +0800, Chen-Yu Yeh wrote:
-> Commit 6e3b067d3c5e ("arm64: dts: mediatek: mt7622: Align GPIO hog
-> name with bindings") renamed the asm_sel GPIO hog to asm-sel-hog to
-> follow the GPIO hog naming convention, but the mt7622 pinctrl binding
-> only allows child nodes matching '-pins(-[a-z]+)?$', causing a
-> dtbs_check warning:
-> 
->   mt7622-bananapi-bpi-r64.dtb: pinctrl@10211000 (mediatek,mt7622-pinctrl):
->   'asm-sel-hog' does not match any of the regexes:
->   '-pins(-[a-z]+)?$', '^pinctrl-[0-9]+$'
-> 
-> Allow gpio-hog nodes in the pinctrl node, following the same pattern
-> as commit 9322da935c9a ("dt-bindings: pinctrl: mt7988: allow
-> gpio-hogs").
-> 
-> Signed-off-by: Chen-Yu Yeh <chenyou910331@gmail.com>
+You ack-ed your own patch?
+
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
+>  .../devicetree/bindings/soc/mediatek/mediatek,mutex.yaml      | 4 ++++
+>  1 file changed, 4 insertions(+)
 > 
-
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-
+> diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+> index 5267cfe92572..886e6f904b78 100644
+> --- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+> +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+> @@ -54,6 +54,9 @@ properties:
+>      items:
+>        - description: MUTEX Clock
+>  
+> +  '#trigger-source-cells':
+> +    const: 1
+> +
+>    mediatek,gce-events:
+>      description:
+>        The event id which is mapping to the specific hardware event signal
+> @@ -116,6 +119,7 @@ examples:
+>              interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_LOW>;
+>              power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+>              clocks = <&mmsys CLK_MM_MUTEX_32K>;
+> +            #trigger-source-cells = <1>;
+>              mediatek,gce-events = <CMDQ_EVENT_MUTEX0_STREAM_EOF>,
+>                                    <CMDQ_EVENT_MUTEX1_STREAM_EOF>;
+>          };
+> -- 
+> 2.54.0
+> 
 
