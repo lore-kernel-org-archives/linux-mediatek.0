@@ -4,66 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59178C44539
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 13:28:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 465F1C44536
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 14:31:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6Eu1BsE+rTW0N75H/qUvuzJ34PWMjXXH1yhZ74i5vdw=; b=K7Urk4e7eHypgdmVnYbBvhc8Qp
-	gjPTyMGjupZEK3qgrZ3OM9nQMRi2xfnwlX1FTA+e6sAomJxB9UljTBGVGpqHggx5utxH1Dq18PmYH
-	Gzhm0zSgL3Rbd17kUCn0coJ07fHEmJ58+4P/oD8o+v1KNbk287683PSd28QoNMl4/maNcQcNt2Okk
-	EVD+wKSY07zBCYYoHfrOhW99R75b41UQCJ+FK637hDW5aHsRFWbSoZLhHKGwtrkV0aDI1h4leRla+
-	AImkDitAyddwbg5T+KGmSNz5mc8+hZiW2ePzspX/ZBKD5pHedd2OgXVZDxwDudrXOBfRuD4GajyK5
-	8HxfEFbg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1T255FBAVRpsE3tq9z/FW5Ond2TyHbYpvN4C1oqBhzE=; b=yXgu5Q7zWo6XwttFlljMYpiCE4
+	4olgKQMRgSOjahOMVQDNmVOOb2tsnU0GTzF/K2TyjrrTD2UpXnDr3Q9QgYwkKd9NgTXnVs2U8L2bU
+	wPpLljW5a1LAsVsQug0pP7gppzqoLa9irF2NCQoZywjeINNYb5c2oNbXeB/nQpvg1/ruNb0ODzNEP
+	Qp/f/IPEixdr+zaFCQEg6ooweBe2UlPEEgvM1KHDw/pu7ZY7xZfLUarXEJ+haKBzfUU84HZLBNz1l
+	tdQLXPZ4NU656CwdF/yy0mHbW8VxQRX/JdxRTktc4PPQZ5840LtcAogeTR/iSoOIIIfCI8cHNaLw7
+	ba8X6TSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmWzm-0000000BuPW-0sxr;
-	Wed, 22 Jul 2026 13:28:22 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1wmXyl-0000000C2Pb-1Bt1;
+	Wed, 22 Jul 2026 14:31:23 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmWzj-0000000BuOK-3P4B;
-	Wed, 22 Jul 2026 13:28:20 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1784726897; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=JsH11sfaEpvPdeSAnNZMv+HGKpSuWf+97/sRVY2CJCPYRUfuEyLNQj7wUYdoVRRoX18/aC2eHxmqVJfwsqi/o+2CZY+dkMBYYfTzwYomc2OWacm1wlcRh6jr1ZmKX9YwUQt6ptD9GuCe+coOJcIeIfKWsxQQCgfNivZ1lwA5jC8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1784726897; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=6Eu1BsE+rTW0N75H/qUvuzJ34PWMjXXH1yhZ74i5vdw=; 
-	b=MAF8QjXYBukouXwbLnSXoOi8aoiS3ZPq+F6ylyHxQ/b8Uu2yaR4apJwpo6M+lJAoukp/+nz++n5DwBVwLqJWhnmKkp3C/r1pNmx2Co7sihcOLEdxO7LV935bPd9mBbgWbJHlKRqSsGaD94+n/6wGb7/q/xn5TonOuDdqKRFfzqo=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
-	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1784726897;
-	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=6Eu1BsE+rTW0N75H/qUvuzJ34PWMjXXH1yhZ74i5vdw=;
-	b=JBWoBTorBSeVHxp5DLZcdf0RnZcYzV7gcspjiE/oUmFO3SLus+wmywiresnFmgfN
-	xBkxYzODqPSmeNfWJHzOxdFwKLo7A+JKAZTjF38XXKlE9nV2TcjAb7ycUm7s56ogwyl
-	oSTXzP7cPhVGnhGDg+u/BIxJL6EgrHlNVvP8nZu8=
-Received: by mx.zohomail.com with SMTPS id 17847268956531017.741593921343;
-	Wed, 22 Jul 2026 06:28:15 -0700 (PDT)
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-To: Ulf Hansson <ulfh@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v1] pmdomain: mediatek: Fix MT8183 hang on boot
-Date: Wed, 22 Jul 2026 16:27:29 +0300
-Message-ID: <20260722132729.302067-1-dmitry.osipenko@collabora.com>
-X-Mailer: git-send-email 2.54.0
+	id 1wmXyh-0000000C2OL-2ggb;
+	Wed, 22 Jul 2026 14:31:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1784730676;
+	bh=Xy3tAVt5E7mi3XkBjs6KrEBelylsYHGiFrUqKz9Q8DQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=WmTjGMWk9WtTkZLaRbY+SYDd9kDvymiWfkBTTg0DaReP6qlQWDho8rQo6cjQnW8s2
+	 firq1bdfIvJYJcR82j3j/KGHxRKRvr2rfQ/yks/wXPHbazcn3vKQsDMuZp0/BuQpIk
+	 REkG+DUjS33EryikB2yy5zARTD/e7pirB4kE6k4AZ/DZYnCSC1Svmjy4KwUyZJgnMv
+	 sQ8UtcfR0rgqJrLbRAbAEZhtODn5i917tWCgG+rO12GGGA7ASQwIItT9/YnvzST1Y1
+	 no+kl2yZpfEqAyqU++1ZFr8LYVunH9D13TzWjhEs5OeVHAyNBNzEPI0q02y1Q32Ksj
+	 G0tGfjf46lOmg==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 44AB317E023C;
+	Wed, 22 Jul 2026 16:31:16 +0200 (CEST)
+Message-ID: <84149703-21aa-4432-87e0-eeab49e0fa24@collabora.com>
+Date: Wed, 22 Jul 2026 16:31:15 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1] pmdomain: mediatek: Fix MT8183 hang on boot
+To: Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ Ulf Hansson <ulfh@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260722132729.302067-1-dmitry.osipenko@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260722132729.302067-1-dmitry.osipenko@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_062819_904634_C4DA49A9 
-X-CRM114-Status: GOOD (  14.36  )
+X-CRM114-CacheID: sfid-20260722_073120_159433_02061CD1 
+X-CRM114-Status: GOOD (  12.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,76 +75,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Depending on firmware, part of the MFG domains may be left ON at boot
-leaving only some MFG cores powered, to let the ACP to prefetch the GPU
-region when the display controller is brought up. This doesn't play well
-with an eventual delay in probing Panfrost when the display controller is
-fully set up, as that would make genpd's sync_state() to power off the
-domain while ACP tries to prefetch: this is causing an AXI stall,
-effectively freezing the AP indefinitely. In order to prevent this from
-happening, the sync_state() functionality must be obliterated on all of
-the MFG domains: while this guarantees a power leakage if the bootloader
-boots the kernel with MFG PDs partially powered on, this is the only way
-to ensure stable operation of the SoC during boot on devices with such
-firmware because, of course, those will never officially receive a
-firmware update.
+On 7/22/26 15:27, Dmitry Osipenko wrote:
+> Depending on firmware, part of the MFG domains may be left ON at boot
+> leaving only some MFG cores powered, to let the ACP to prefetch the GPU
+> region when the display controller is brought up. This doesn't play well
+> with an eventual delay in probing Panfrost when the display controller is
+> fully set up, as that would make genpd's sync_state() to power off the
+> domain while ACP tries to prefetch: this is causing an AXI stall,
+> effectively freezing the AP indefinitely. In order to prevent this from
+> happening, the sync_state() functionality must be obliterated on all of
+> the MFG domains: while this guarantees a power leakage if the bootloader
+> boots the kernel with MFG PDs partially powered on, this is the only way
+> to ensure stable operation of the SoC during boot on devices with such
+> firmware because, of course, those will never officially receive a
+> firmware update.
+> 
+> Fixes Kappa Chromebook hanging during system boot.
+> 
+> Fixes: 0e789b491ba0 ("pmdomain: core: Leave powered-on genpds on until sync_state")
+> Fixes: 13a4b7fb6260 ("pmdomain: core: Leave powered-on genpds on until late_initcall_sync")
+> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 
-Fixes Kappa Chromebook hanging during system boot.
-
-Fixes: 0e789b491ba0 ("pmdomain: core: Leave powered-on genpds on until sync_state")
-Fixes: 13a4b7fb6260 ("pmdomain: core: Leave powered-on genpds on until late_initcall_sync")
-Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
----
- drivers/pmdomain/mediatek/mt8183-pm-domains.h | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/pmdomain/mediatek/mt8183-pm-domains.h b/drivers/pmdomain/mediatek/mt8183-pm-domains.h
-index 3742782a2702..5e33b8628e85 100644
---- a/drivers/pmdomain/mediatek/mt8183-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mt8183-pm-domains.h
-@@ -47,7 +47,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
- 		.pwr_sta2nd_offs = 0x0184,
- 		.sram_pdn_bits = 0,
- 		.sram_pdn_ack_bits = 0,
--		.caps = MTK_SCPD_DOMAIN_SUPPLY,
-+		.caps = MTK_SCPD_DOMAIN_SUPPLY | MTK_SCPD_KEEP_DEFAULT_OFF,
- 	},
- 	[MT8183_POWER_DOMAIN_MFG] = {
- 		.name = "mfg",
-@@ -57,7 +57,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
- 		.pwr_sta2nd_offs = 0x0184,
- 		.sram_pdn_bits = GENMASK(8, 8),
- 		.sram_pdn_ack_bits = GENMASK(12, 12),
--		.caps = MTK_SCPD_DOMAIN_SUPPLY,
-+		.caps = MTK_SCPD_DOMAIN_SUPPLY | MTK_SCPD_KEEP_DEFAULT_OFF,
- 	},
- 	[MT8183_POWER_DOMAIN_MFG_CORE0] = {
- 		.name = "mfg_core0",
-@@ -67,6 +67,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
- 		.pwr_sta2nd_offs = 0x0184,
- 		.sram_pdn_bits = GENMASK(8, 8),
- 		.sram_pdn_ack_bits = GENMASK(12, 12),
-+		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
- 	},
- 	[MT8183_POWER_DOMAIN_MFG_CORE1] = {
- 		.name = "mfg_core1",
-@@ -76,6 +77,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
- 		.pwr_sta2nd_offs = 0x0184,
- 		.sram_pdn_bits = GENMASK(8, 8),
- 		.sram_pdn_ack_bits = GENMASK(12, 12),
-+		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
- 	},
- 	[MT8183_POWER_DOMAIN_MFG_2D] = {
- 		.name = "mfg_2d",
-@@ -85,6 +87,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
- 		.pwr_sta2nd_offs = 0x0184,
- 		.sram_pdn_bits = GENMASK(8, 8),
- 		.sram_pdn_ack_bits = GENMASK(12, 12),
-+		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
- 		.bp_cfg = {
- 			BUS_PROT_WR(INFRA,
- 				    MT8183_TOP_AXI_PROT_EN_1_MFG,
--- 
-2.54.0
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
