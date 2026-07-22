@@ -4,115 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCC20C4453B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 09:01:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8A39C4453A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 09:06:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BVQ32j56Dr60NJMwmM+X8AwJaAcbdmT9panK+KSnLpY=; b=G29oR7A7rVwZPe7k01b624jjXv
-	a6km5A5nkJW2THpqcb0omWl3IQ6ZygjKnKiU3MumA0cPuZE524u9w3jA3xQtTOSjUhOObe70+9XUl
-	GlOZTwG7SJ5l2t/KFQChjES57Ue+G8ENW8WKsht1VRdwp0UrYAVtDH+XI47sNYe+FnvuCYXN1ttd3
-	2MD725uwe2BNm2WJ7tUBQCGXTGEHUVCyq55qtgevQPRwfFkcdm5X6th7KslnlJER/SFMuIhdllWxT
-	7MTcVBkJ6NdbO45xwADa+5Hek0+03JCD0AwtQ99NzpXstOKnpC32HV6P5A2/xWxvmAjQunZsWxHJo
-	uCbLBg2w==;
+	bh=Fzc7jLJOwKFZM50nrRR9HIoeoA67mID89Z/e+R2bL4o=; b=uqmNPOHhZ47mjQ6WpGQ7LYBxV1
+	edDx+vpZ9VoNFay0aEyt12s3yZayU+js4iEm52PSMbsMvbhqqOIypRiJvbt6E/xG9SyJC4/1SqCrd
+	FYM795E54aj/0lb5G3C/nXkRsnGobpJ7m3e8Zr3QDEgUngeJqwLVwSkaQdEdukE97MYOnD9baREZr
+	50PSGfgflwWfPUtFJOvR9HXkaoPz+v3bKjwy2uNrPNexbKcBMUJYZycJWeGsuliWHKhXDIG4CeZSo
+	MPB3sPCkP/vcvDgk95IMs2nbNfbhpcCAv656f3DbMGNavQfUvP86b8oyZ8fyecMfJWjBw3RkBYcdl
+	kACVPj5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmSpb-0000000BJyk-2XFU;
-	Wed, 22 Jul 2026 09:01:35 +0000
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+	id 1wmSuD-0000000BKx8-2PFt;
+	Wed, 22 Jul 2026 09:06:21 +0000
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmSpY-0000000BJxG-24Yj
+	id 1wmSuA-0000000BKvK-1IYf
 	for linux-mediatek@lists.infradead.org;
-	Wed, 22 Jul 2026 09:01:34 +0000
-Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-81e69a2db34so74316967b3.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 22 Jul 2026 02:01:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1784710891; cv=none;
+	Wed, 22 Jul 2026 09:06:20 +0000
+Received: by mail-yw1-x112f.google.com with SMTP id 00721157ae682-81ecf499af9so89707577b3.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 22 Jul 2026 02:06:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1784711177; cv=none;
         d=google.com; s=arc-20260327;
-        b=avcccZjrH0FhrlhOuK2lSq0hRKz4kEziQ4B7sS/aqoUPuZ775YtLyL+GQALrn6R2YP
-         Oo8u27V/14yu0gxl2G+an6sMqs0v+33Uzv5pY5fx9gzZhFoEzIJiUBnNrxUrk1SrfqrU
-         CbBF6qhyqGJscbl1NuOelZUtum+WqLo0/uHUnc4N9sunzHqmaoqZW7oA0NMOODSdGzh4
-         mfwbnyBQ1QHdFOV4yWuwgVGs5FWj1iGS4beb9rLXGD633xpA/KqVu+D2el+TJ4f6p71p
-         GX68qReQi5wM1ikPUvSWqsuZkPAS+BZhUUFzMR6XtjVhv70Uc2mToqpN7yXdQSGez9p+
-         1CUA==
+        b=GqKGtqmL2XnVjD2fNKybZRrk228kK4xWOw8ETlO+qxJv0MUnKmRb8X6o7BGwHxKj/x
+         F/wf5Tv7dFVSJyniOFoKUXoIEbVrw70vBTPmCFu2b+kribpeNImAmYetGRBrSRe8lmbe
+         GqhUm/Kcqh7yNkoCjIQ38rVMYecvS3Byd0jfuMyNBORIJpjiUJgFUfenIJMkVk1XctyB
+         aGaTY2zV+944HW4WzIfH+/le8sbjdwwncT1W+FtrVkPsmF2P9rZnxtw9C836VNxjmwfd
+         0hubahjxXIJvKivbxzwrzdIki/TiwiZ4vaCmWRaHNtFDvM5Sn3iVHQbRpCWmMywJeh8P
+         r7TQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=BVQ32j56Dr60NJMwmM+X8AwJaAcbdmT9panK+KSnLpY=;
-        fh=9ECiyQ1slo4sLrqGQueSnXBiDLpvWGUISzO2SHI5/Qg=;
-        b=FA0L2XHl2BDfpoVo6VkrB0Uj7/HsrNhbTg5rZM5h9C8z5rZjgkYtqPE1kokKyd+OOt
-         UpOS3MzdASzmUAG5wEg2T1s18PaADlMVoSpAeWof6hPCoxQPlVBKoIfcdQWRtYkLGDeN
-         5jO3a6W/Q8VDOwMeIcwKKQNBs+d/iAZdE4m0ZOcDESmPmoVqMf73gx//g60SAV/d3utU
-         GtL+9yAmOTXsIxTQiJubxcWUtp3AobaYysw+WHm41bdJY+Tdx5+u3QqBLKodICxHiUFq
-         aaF8IGrBKop2d1vXeh9sae0jfjZ2hu+l66GGEizaj+t6vXUlL1hqrxqODhmQ+9Wqr+sm
-         9UpA==;
+        bh=Fzc7jLJOwKFZM50nrRR9HIoeoA67mID89Z/e+R2bL4o=;
+        fh=9Ltvc9fyp8VUMPGUO07wKEY70EeVEuQNTG+mz7xXYNc=;
+        b=U4f78kQoylvUsSN6jwC3XS7KhrQjDaPeuIuJuXKw+/4bE1NqZ9BSQLt+Gkr++hd13T
+         bjOhNfc50yD+mWvz7ExknwaRWKFbjc0uV76GQ2zq77rmmlxW6SmnHQpeUTuHo4e5oCJY
+         2+md6+OqDfE4JASrbNMuJ9ZZndXNyRsvSJqQdERHQGNbc+yR1h/bIS2iVAC2yqlkKiyz
+         NLhM+1JxIgCcxIsp7ORck3iHlAw9Zc3+BVzWOZvg7yIaJnJ927bGil7SjYSaIg2aADth
+         B/jwWYPyfBqU3bum+E3xiOMgpOW10GPrgtWQVcV2XV22Q0JUB5r6zEX4e4DM/EsMYHX/
+         iDzg==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1784710891; x=1785315691; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1784711177; x=1785315977; darn=lists.infradead.org;
         h=content-transfer-encoding:content-type:cc:to:subject:message-id
          :date:from:in-reply-to:references:mime-version:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=BVQ32j56Dr60NJMwmM+X8AwJaAcbdmT9panK+KSnLpY=;
-        b=lMgIcdugTHq9h1WJCJQU/0QfLyNwdKhrZmYjHs4eVhgJmZTXlVPcwmxasgYBhbnosc
-         Lgd4bGUm54Si8DRV6kNr5yCGqCGYr+uaFFGzxg+7N9g/LT3f1/J8T+YhGChjN5lxbkeS
-         7KExPyS2MFWU/nxOZVnHvgv1qu6F9+aP6ImAw=
+        bh=Fzc7jLJOwKFZM50nrRR9HIoeoA67mID89Z/e+R2bL4o=;
+        b=DmPbVlCbzcbMkl+ge8OusYFCLCoztYqGQoy+fQ4C+P3LJ3qoCjVMoF1L+O5HJvgnPA
+         n9OxKN502zjLruuyM90O2Bf2VhUU123TLcuzgKFnqS3xpa/SlTtzKCP8oGqiO/HS3HIa
+         SkTz+2OqJqduumyr/GZL9CxL3tH/2umz5eB1w=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784710891; x=1785315691;
+        d=1e100.net; s=20251104; t=1784711177; x=1785315977;
         h=content-transfer-encoding:content-type:cc:to:subject:message-id
          :date:from:in-reply-to:references:mime-version:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=BVQ32j56Dr60NJMwmM+X8AwJaAcbdmT9panK+KSnLpY=;
-        b=eeWsd3dayDtBhzYij7KrxDiOvQrZ2RHaDCMfIhHS8+P/GFZBtS0STFVYmFmhe8O3No
-         WuWfMIlQFNDtGs3hPHCnp/1V/fVw0gZQJ9i73BNYlHrtiyodt7xyu2XXAp4B3LYMRGJw
-         hpXOHhO+UcIb8kGEmhteBxJNCwpC9ovN0vkG51wWj/N+JlPz+rp+wbIc87J3blz5Na8C
-         b/0Hegew/e4jm92sqhduhz9JspG665NlxUms2L5td1a0GUnpjTmQq1bFy3c4n0rNdDVu
-         tGbGTLe/BS1liO4IbNejArVUqDHUbVNs3BNRBb3N6mRI44IdUc3tKlJ164UaVbgnDF84
-         Vsmw==
-X-Forwarded-Encrypted: i=1; AHgh+RoMQv25SdKOt8S1mBF7bNHJ8PRVz4yS3xLmGaL4bilm3lF0XX9YFZGHZzOn+XnN4l55ZDtO7BVtNA3Rs7VhaA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywsg6zEvMNjtiO4h/ZXR5eslL30L0+yqVI1+Ug7WsRPEW56KnHo
-	RkLaT7GJmsVAKTHHFXpXe7pw1RpP/mPKUgI2ce3qHqa+U8RIBoAC16NWvH4HmCTJYJiNCJIHuu/
-	7vKCYQbNIbpV13MQ1pZfbUKRKssL445JR38kq9qR3
-X-Gm-Gg: AR+sD13qIUjr6+Gz/0RlIGehTJoDDIOhUaQ3aWj5I6qdvKhsPkV7aeLggQUyECF5hnS
-	lN1xZsrZLtFsHacxjidG2QTOZVN1bqCXBQXr4PEBpqzhjXg+mzx5j4jMQW0CcjnbNtl3acxKEjx
-	ddXqSNRRvbp53BAbLGlEQMEfNSmUunietdDz0/2I5LDi65vMyC2nbM5dlX5QlY8AAR9ABjEU6yz
-	/quNPuYwZdoqcr0uPJMu+hJiW4fXww8Zj+sxwLLDLDIzsv96l/w9GGJk2cLVORd1Z6xsKOTuATz
-	xRfIrTe9Ny9UhBJg
-X-Received: by 2002:a05:690c:e0c:b0:81e:6a1c:e30b with SMTP id
- 00721157ae682-81ef28da7b0mr69266347b3.67.1784710891191; Wed, 22 Jul 2026
- 02:01:31 -0700 (PDT)
+        bh=Fzc7jLJOwKFZM50nrRR9HIoeoA67mID89Z/e+R2bL4o=;
+        b=Lqhr/4TZId3VggnLL+yO01pjBXTGLuBZSEl17oz4lRgCQ+qTZLgIbMbxb5Ssurb92t
+         7B7if0xXcPNgl6BSxEGz2zBhO3SALD8pEili+fgPo1eJXn9hEcOST7/aukGCofey9BiG
+         PKCoD+21rDtMABO24FNjRzlxaZVUXeZQNbzr73CumtAiwhwlxmKZXRrPUuXfL2HGjt/6
+         ezjdQoeiZAbyHEigjCXsSFZ40psSkuF7VJE8TmY+OD7BcmQzqlcc4Wp2JjabyWwu3TnE
+         CedZAg8rp8PK0+jOHyY2MTOd1oOdTT6ylyIRNCmYfLLlRkCrOxzKeW/Zlc5eQlPKR9uc
+         DiUg==
+X-Forwarded-Encrypted: i=1; AHgh+RpTwr9nAGDXkHZUbbFrT3p7rIyiPGECA0tWHtj6jV6gfvGFYHgpP2TaC4MPjbr4/wSuqAHXQIzZw+E5LUopCg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YziDfIg3N0GoHb0xG/AZmir6SFUoK+jIpKHAOjzDsfxw5RLj+u4
+	J+sh51zQPHhs98hCrfuO3VMTEKMVogqbc4nx0a8dRr2wT6rNlPb1C4KPfgorD2clEt0GLVZruV0
+	q3UOwzMRyNpAPBKx9G2iv4JFkiEjB4w+iZZcZRksc
+X-Gm-Gg: AR+sD123nQu/e9EREcP7D6TFDzXabj4EP3OnkCludACEcO1BP/DCY7EPkQIedNQmEs7
+	WvQhxV8xLEL845P8LHSStR9cB2CrGOh6lfuHQ9DUpEJomV1FEXve2SV0C35VpbmOPhcTQShsVau
+	vgHLpSy+xtpFOAwwHM1qCWWiRhdXAqSh5Hqi33Ly918V44yeLCVVEXfMd1fOP1ecuGYR6etAZEJ
+	5ejQfpVfXwov7BEHizCmgwOUiB08EksxnTuXfIgtITHvxoRNkKkC+EQlZswzJgAKH9RgGMGVCFQ
+	IWIndQ8kapMBXMYS
+X-Received: by 2002:a05:690c:6c8d:b0:81e:6d03:40cf with SMTP id
+ 00721157ae682-81ef26ae40bmr73897997b3.54.1784711177267; Wed, 22 Jul 2026
+ 02:06:17 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260721065413.2306137-1-wenst@chromium.org> <20260721065413.2306137-4-wenst@chromium.org>
- <CAMRc=McsCRBxXMj0xC8H0cgdZZ=Z9_4u_DS9b2z0pLE0=gZr+g@mail.gmail.com>
-In-Reply-To: <CAMRc=McsCRBxXMj0xC8H0cgdZZ=Z9_4u_DS9b2z0pLE0=gZr+g@mail.gmail.com>
+References: <20260721075226.2347933-1-wenst@chromium.org> <20260721075226.2347933-2-wenst@chromium.org>
+ <al9BwHbG5IX0mIem@ashevche-desk.local>
+In-Reply-To: <al9BwHbG5IX0mIem@ashevche-desk.local>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 22 Jul 2026 17:01:20 +0800
-X-Gm-Features: AUfX_mzymMOrnzz3ZSisQQjvbDECVUbqfaXF7TwtpwvIT3XYymwiPHVmpWvFgt8
-Message-ID: <CAGXv+5H_V+J0cvrYjMFdKAQVrPKxPdtimXMc+hwHenwxhb9mDQ@mail.gmail.com>
-Subject: Re: [PATCH v6 03/16] power: sequencing: Add pwrseq_power_is_on()
-To: Bartosz Golaszewski <brgl@kernel.org>
-Cc: linux-acpi@vger.kernel.org, driver-core@lists.linux.dev, 
-	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Manivannan Sadhasivam <mani@kernel.org>, Alan Stern <stern@rowland.harvard.edu>, 
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Daniel Scally <djrscally@gmail.com>, 
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
-	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Date: Wed, 22 Jul 2026 17:06:06 +0800
+X-Gm-Features: AUfX_mw54F9BihKerjVbrM-HX0v6EAfSTuk3G7vvEfoFi_SJki_3pQoN0j1OPTM
+Message-ID: <CAGXv+5HXtSovddkws58oUfUcucC3GKqTt-GgvXs27ALFjyFRrw@mail.gmail.com>
+Subject: Re: [PATCH v3 1/9] regulator: core: Add "enable and wait" functions
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>, Jiri Kosina <jikos@kernel.org>, 
+	Andi Shyti <andi.shyti@kernel.org>, linux-mediatek@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	chrome-platform@lists.linux.dev, linux-input@vger.kernel.org, 
+	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_020132_579190_22EE45FF 
-X-CRM114-Status: GOOD (  26.20  )
+X-CRM114-CacheID: sfid-20260722_020618_357225_C3095EE8 
+X-CRM114-Status: GOOD (  27.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,100 +121,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 21, 2026 at 5:08=E2=80=AFPM Bartosz Golaszewski <brgl@kernel.or=
-g> wrote:
+On Tue, Jul 21, 2026 at 5:54=E2=80=AFPM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
 >
-> On Tue, 21 Jul 2026 08:53:58 +0200, Chen-Yu Tsai <wenst@chromium.org> sai=
-d:
-> > The power sequencing consumer API already does power on state tracking
-> > internally. Expose the state to consumers through pwrseq_power_is_on()
-> > so that they don't have to reimplement it locally.
+> On Tue, Jul 21, 2026 at 03:52:15PM +0800, Chen-Yu Tsai wrote:
+> > In device power sequencing and initialization use cases, it is common
+> > for the driver to enable the regulator and then wait for a certain
+> > period of time to pass before continuing.
 > >
-> > Acked-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > ---
-> > Changes since v5:
-> > - Reverted back to returning -EINVAL if descriptor is NULL
+> > In cases where the regulator supply is always on, or has been turned on
+> > or left on by another consumer, the driver could shorten the delay or
+> > skip it altogether, provided that enough time has already passed since
+> > the regulator was _actually_ turned on.
 > >
-> > Changes since v4:
-> > - Make pwrseq_power_is_on() return 1 if descriptor is NULL, i.e. if
-> >   the descriptor is optional, matching the other pwrseq consumer APIs
+> > Tracking this requires support from the regulator core. Introduce a
+> > "last turned on" timestamp field to the regulator device, and "enable
+> > and wait" functions to the single and bulk regulator consumer APIs.
+> > The existing "enable without wait" functions are then converted to
+> > macros that expand to the new functions.
 > >
-> > Changes since v3:
-> > - Added missing stub function for !POWER_SEQUENCING
-> >
-> > Changes since v2:
-> > - New patch
-> >
-> > Needs to go in with "usb: hub: Power on connected M.2 E-key connectors"
-> > as it is a build time dependency. Bartosz wants the change on an
-> > immutable branch to pull into the pwrseq tree.
-> > ---
-> >  drivers/power/sequencing/core.c | 18 ++++++++++++++++++
-> >  include/linux/pwrseq/consumer.h |  6 ++++++
-> >  2 files changed, 24 insertions(+)
-> >
-> > diff --git a/drivers/power/sequencing/core.c b/drivers/power/sequencing=
-/core.c
-> > index 02f42da91598..72b96d36920e 100644
-> > --- a/drivers/power/sequencing/core.c
-> > +++ b/drivers/power/sequencing/core.c
-> > @@ -968,6 +968,24 @@ int pwrseq_power_off(struct pwrseq_desc *desc)
-> >  }
-> >  EXPORT_SYMBOL_GPL(pwrseq_power_off);
-> >
-> > +/**
-> > + * pwrseq_power_is_on() - Queries the last requested state of the powe=
-r sequencer.
-> > + * @desc: Descriptor referencing the power sequencer.
-> > + *
-> > + * This returns the last requested state of the power sequencer.
-> > + *
-> > + * Returns:
-> > + * On success, 1 for on and 0 for off; negative error number on failur=
-e.
-> > + */
-> > +int pwrseq_power_is_on(struct pwrseq_desc *desc)
-> > +{
-> > +     if (!desc)
-> > +             return -EINVAL;
+> > One case in particular is not optimized yet: a regulator left on either
+> > by hardware reset default or by the bootloader, but does not have the
+> > "regulator-boot-on" property set. As the enable timestamp only gets
+> > updated when enabled by a consumer or by the core, the first enablement
+> > always needs to wait.
+>
+> ...
+>
+> > -/* locks held by regulator_enable() */
+> > -static int _regulator_enable(struct regulator *regulator)
+> > +/* locks held by regulator_enable_and_wait() */
+> > +static int _regulator_enable_and_wait(struct regulator *regulator, uns=
+igned int wait_us)
+>
+> Hmm...
+> This comment a bit confusing, perhaps adding some lockdep annotations hel=
+p?
+>
+> ...
+
+It's already there, just outside the diff context, the first line after
+the variable declarations:
+
+        lockdep_assert_held_once(&rdev->mutex.base);
+
+> > +     if (wait_us) {
+> > +             ktime_t end =3D ktime_add_us(rdev->last_on, wait_us);
+> > +             s64 remaining =3D ktime_us_delta(end, ktime_get_boottime(=
+));
 > > +
-> > +     return desc->powered_on;
-> > +}
-> > +EXPORT_SYMBOL_GPL(pwrseq_power_is_on);
-> > +
+> > +             if (remaining > 0)
+> > +                     fsleep(remaining);
 >
-> Didn't we agree on introducing an enum to make it future-proof for when w=
-e
-> also pull in pwrseq_is_controllable() from Loic?
-
-My bad. I misunderstood and thought it wasn't needed yet.
-
-> I think this should work like so:
+> This style is discouraged as it makes maintenance harder. Better
 >
-> enum {
->         PWRSEQ_STATE_UNKNOWN,
->         PWRSEQ_STATE_ON,
->         PWRSEQ_STATE_OFF,
-> };
+>                 s64 remaining;
 >
-> int pwrseq_get_state(struct pwrseq_desc *desc)
-> {
+>                 remaining =3D ktime_us_delta(end, ktime_get_boottime());
+>                 if (remaining > 0)
+>                         fsleep(remaining);
 
-I think you still want this here?
+Ack. FYI this will be rewritten based on concerns from Sashiko. The
+wait will be pushed over to regulator_enable(), i.e. outside the scope
+of the lock.
 
-          if (!desc)
-                    return -EINVAL;
-
-
->         /* Only once this is upstream. */
->         if (!pwrseq_is_controllable(desc))
->                 return PWRSEQ_STATE_UNKNOWN;
+> > +     }
 >
->         return desc->powred_on ? PWRSEQ_STATE_ON : PWRSEQ_STATE_OFF;
-> }
+> ...
 >
-> Bart
+> >       /* private: Internal use */
+> >       int ret;
+> > +     unsigned int wait_us;
+>
+> If you want to make it more private (the above is only for kernel-doc) ad=
+d
+> __private annotation that will affect how sparse will check this.
+
+Nice. Will add that.
+
+> ...
+>
+> > -int __must_check regulator_enable(struct regulator *regulator);
+> > +int __must_check regulator_enable_and_wait(struct regulator *regulator=
+, unsigned int ms);
+>
+> ms or us? Please, double check all units.
+
+Yeah this should be us.
 
 
 Thanks
