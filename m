@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1718CC44539
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 15:46:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AC7BC4453E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 15:46:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9Lw89QRJYUOqvxTzd8ZewXC/b7dBIb5O6ww8mYUMBfU=; b=ls/R7UwoPAAm2LTdnPtfvq2X0W
-	SFGWUilR9tDSzhURIvqrwX+d8Zj/nv3Gzp3yovaqEVz7RHXdllS6NR+ysl2HQ/HITO1CcSLxJhEPz
-	38zwNJdIYJPtNSlTIrqbfiZrJVQXh/IAAvNDu7uZVvhwy4VoM4OWVXW10Lf9IAMetnbcBr1ExQmza
-	pVsG1jocG9oYh7y6/D3tcO2LZnBfRvaOFaQR35Lj4oisBP2y+uQUj4odXPHpJqUd3rd1RL7QSTLlK
-	wBhxHIsq6axouZwKUyC6tjSCAPaMeQ7/heNDDfBA8x/YpvyFfZxxMItFZiN3TKsmxWQd5J9RB4fsh
-	pP2ppq4w==;
+	bh=fzTkG29Uf+SUDVkKH7ArUr40CtRaEAKUn1kiXD+IH68=; b=mJowM9Qc2TtxhmC0EWzqtZ2Oyc
+	eVQ8iFQHW4yq0CaHSDprR8yrcP+R3PiJebYQceD8K01SA/RF3g4gHYERxU4hZrMpYH7r40m4rRWBb
+	ftmyNd7vMSVKGIZw7JBZbTeC6WXmogr8IridQjIHL9aEVtJ2O7vE9nJ1THOxCVgb0XWcNrc9icKb5
+	xH+SFbVoNcCBBUrZimy0i9EP3grfqlKo7WZfIZaKbj+OzEO/GAA6jY9/tjRouBy9zjtgTw7T3lTPq
+	R4kJ515p441waktQSAP5QOSSGNw26Izm4eKSct9U2jnfA4k9R4b9bew/7YyKeJutv8zeeBhl9kqlP
+	gbHR68Uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmZ9L-0000000CEWc-2IS4;
-	Wed, 22 Jul 2026 15:46:23 +0000
+	id 1wmZ9T-0000000CEdD-1Kj6;
+	Wed, 22 Jul 2026 15:46:31 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmZ9J-0000000CEV2-3hWq;
-	Wed, 22 Jul 2026 15:46:21 +0000
+	id 1wmZ9R-0000000CEai-2wQQ;
+	Wed, 22 Jul 2026 15:46:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=9Lw89QRJYUOqvxTzd8ZewXC/b7dBIb5O6ww8mYUMBfU=; b=k5WUj2ycORug0O4tqpvSw+UsOP
-	jdkO4tuJcUa1zglDgRFEuXkhib24Mrz29n5LhtUaVB9WQBQtSHpydog2Wq9I0TDm0gCwO4RhXqFUX
-	s41lPC+klQqVQvfqrdebJTbXtQZ74GKvS0UYFMKyX0qpEzReTJF2Is25fbyD6Q4R2sfX4KDugAnju
-	PVrJKywIwkv+Bo1fT75EQM++wKOy1WGlQoSoUz2+13svw66sVSkdB5P6S3bwNPOkk9ajDxOKxhAtJ
-	eaSdI1xqR7Vz1dt8ib2W1Uo9Bb9RQnhGt7Y93fj4XjIo6fTFAVBo19sepqJWXZViwr5hjjAy+kvz7
-	4EZJi89A==;
+	bh=fzTkG29Uf+SUDVkKH7ArUr40CtRaEAKUn1kiXD+IH68=; b=Qyit+WmLIg7rfaGIdVYMER69TK
+	jS112q60Zz2TidSp3JO24yX9bmoiCNVMgNCVZbpsSGkxM8sWd5V3skzqrvdu+sbx7zKpEiRrR6+F/
+	+2gK/O0UAFt30rj25275JXek6Nb6zAGsbc20cC5YXldgXLtz41jvaidi4PjeCjSwyliVcgiNIk517
+	LtbgvsM1vMnxOSJxIKbDYJ1ZU1fVWwIn6HTo/z6VEPbqH5SBYpKZKJn9AAI9xTycxgR8pFfdgbUoM
+	nJE0ZvYiKAaz2dfyGSSPmzIRhmdVmo9cM+FyQbsG0GMcCf0Dm9ECMi0+dSHu1oodghEem/UX/FUKh
+	bndNdMKQ==;
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wmZ9H-00000000y8s-0Yju;
-	Wed, 22 Jul 2026 15:46:20 +0000
+	id 1wmZ9O-00000000y9o-3ghm;
+	Wed, 22 Jul 2026 15:46:28 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.99)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1wmZ9B-000000006dY-2SFN;
-	Wed, 22 Jul 2026 15:46:13 +0000
-Date: Wed, 22 Jul 2026 16:46:10 +0100
+	id 1wmZ9J-000000006e0-2uhX;
+	Wed, 22 Jul 2026 15:46:21 +0000
+Date: Wed, 22 Jul 2026 16:46:18 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -68,17 +68,17 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
 Cc: Chen-Yu Tsai <wenst@chromium.org>
-Subject: [PATCH v5 04/11] drm/bridge: it6505: complete poweroff even if
- disabling regulators fails
-Message-ID: <51bec6ff870eb67415408268a798a934dcad6a6c.1784717129.git.daniel@makrotopia.org>
+Subject: [PATCH v5 05/11] drm/bridge: it6505: bail out of the IRQ handler
+ when status reads fail
+Message-ID: <d4e609224548d57520e8d1b24152d48d610ba101.1784717129.git.daniel@makrotopia.org>
 References: <cover.1784717129.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1784717129.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_164619_277714_2BF09B5A 
-X-CRM114-Status: GOOD (  11.03  )
+X-CRM114-CacheID: sfid-20260722_164627_138958_E75FBBE0 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,42 +93,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-it6505_poweroff() returns early when regulator_disable() fails,
-leaving it6505->powered set with the IRQ already disabled. The next
-it6505_poweron() then takes its early return and never re-enables the
-IRQ, leaving the bridge deaf to hotplug and link training interrupts.
-Log the error and complete the power-off state transition instead.
+When reading the interrupt status registers fails, the negative error
+codes end up in int_status[], where it6505_test_bit() sees almost all
+bits set: every interrupt sub-handler runs on garbage and the error
+values are even written back to the status registers. Return IRQ_NONE
+instead.
 
 Fixes: b5c84a9edcd4 ("drm/bridge: add it6505 driver")
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
 v5: new patch
 
- drivers/gpu/drm/bridge/ite-it6505.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/bridge/ite-it6505.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
-index ff6471d3ef7a..0f79ddfd1501 100644
+index 0f79ddfd1501..0e141310ed3c 100644
 --- a/drivers/gpu/drm/bridge/ite-it6505.c
 +++ b/drivers/gpu/drm/bridge/ite-it6505.c
-@@ -2810,13 +2810,15 @@ static int it6505_poweroff(struct it6505 *it6505)
- 	if (pdata->pwr18) {
- 		err = regulator_disable(pdata->pwr18);
- 		if (err)
--			return err;
-+			dev_err(dev, "cannot disable pwr18 regulator: %d",
-+				err);
- 	}
+@@ -2713,6 +2713,11 @@ static irqreturn_t it6505_int_threaded_handler(int unused, void *data)
+ 	int_status[1] = it6505_read(it6505, INT_STATUS_02);
+ 	int_status[2] = it6505_read(it6505, INT_STATUS_03);
  
- 	if (pdata->ovdd) {
- 		err = regulator_disable(pdata->ovdd);
- 		if (err)
--			return err;
-+			dev_err(dev, "cannot disable ovdd regulator: %d",
-+				err);
- 	}
- 
- 	it6505->powered = false;
++	if (int_status[0] < 0 || int_status[1] < 0 || int_status[2] < 0) {
++		pm_runtime_put_sync(dev);
++		return IRQ_NONE;
++	}
++
+ 	it6505_write(it6505, INT_STATUS_01, int_status[0]);
+ 	it6505_write(it6505, INT_STATUS_02, int_status[1]);
+ 	it6505_write(it6505, INT_STATUS_03, int_status[2]);
 -- 
 2.55.0
 
