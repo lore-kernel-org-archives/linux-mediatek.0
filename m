@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1948C4452D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 08:17:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9B19C4452D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 08:32:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QaRcpLEUdF6IoGbFgJIRkWkgaVhzZCRkbBhXpj4gKLw=; b=A8/EO+pyUG1iNk+e/MaWFcnuf0
-	KyFGIcWJTd5oivNPMSqcxP2XEye/Da130Uue7MKZKw9hg5uNz0nsS6DYmk3CGZXqs8hEPd7kdo8Gg
-	ZxKdyxhwCbdme84iRBpeOeBfvQsxzIjDD8eV/X7i3joBea4l4GCQKhC7q5OHVV74vHkSqfsaPL/34
-	8UtpUmG4KAaR9aChvwdXyTSPEOF9wcCJiwn7Ol+vSjyjB/pPTIWjskwR7KqKRVeFuYffy1D6aKcwO
-	TcSu2Na43e1gjYl6yGvz3zA8Rc3ofi0LXfAdcRjjDckL5W0SA0waUSpmNypQyt0yvV4UiGU0Yvn0x
-	wGLSf8rQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=homWq+S4D1nNuu+NtfzR+49sxpUzkLg5taBipS4WfAw=; b=fgy4oQX8x5YPyGvbL2GPIDwqpB
+	LGn0EDXPaWHv6a7VmDr98Sxfg9luSWUdY01NukUil6eNsKcZKh49QR3K2UtpuhUro6I1ru3kk+006
+	tAbiemruFV9+d2snREOYjkZ6xgFbKfRE7gRdMC1tbHogTCBuLgQd6mR1fwUXGIAjaMt0mQsDX3cUv
+	buIODwLVm81jT3JrmrIpR+B8BzfpRyK1mXboOI8fjFJh6YHcgIfuZyHwjOOoIfSBi5Yg0QWD1UVaN
+	7wsWLVO4n8NydNyhHHdYd4UYQlGeX53BUiKKDOSx089KaheHg3iSg+rOcX9frTvp8h8bGEa5LeGFy
+	zy1f7VlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmS9E-0000000BDn0-1tCC;
-	Wed, 22 Jul 2026 08:17:48 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wmSNX-0000000BGDk-2aGW;
+	Wed, 22 Jul 2026 08:32:35 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmS9D-0000000BDmi-0jUw;
-	Wed, 22 Jul 2026 08:17:47 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id BD24340837;
-	Wed, 22 Jul 2026 08:17:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D11471F000E9;
-	Wed, 22 Jul 2026 08:17:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784708266;
-	bh=QaRcpLEUdF6IoGbFgJIRkWkgaVhzZCRkbBhXpj4gKLw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Zi3uxyFuFk1JS+9CA2TDVFJ8FSsPVn4G9xnAj31FoaUTCqyrTO9NWUYWyKo4jeYx5
-	 dTEN3jFNGR1qstghZrZxhkPmKwsea283HCJe//Zz5GDFLQN25YDSpIvp/oIE+mT18R
-	 Ony7bnRVFfIrWl1CI88b+WM9mQLd8z2TqV6P0QBq8lwDiKMZxIbABKZMTiIBFYibN5
-	 uHa+zZpv0erx8bAHUfyXRLsMZ95H3HQDY95uy5K/3KfbHAP5PxGkYUtwDKJikdwbmS
-	 W3QiKzpkhnzpHCavN9fFp+67kZVigjPVd3HXJ3iE/hl53jDlviMABhqHpNYJK3jmJo
-	 MVwvvBOrikW6A==
-Date: Wed, 22 Jul 2026 10:17:43 +0200
-From: Antoine Tenart <atenart@kernel.org>
-To: zhaoping.shu@mediatek.com
-Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org, 
-	pabeni@redhat.com, horms@kernel.org, ncardwell@google.com, kuniyu@google.com, 
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, willemb@google.com, 
-	alice@isovalent.com, sd@queasysnail.net, eilaimemedsnaimel@gmail.com, 
-	imv4bel@gmail.com, hw.he@mediatek.com, netdev@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, haijun.liu@mediatek.com, xiayu.zhang@mediatek.com, 
-	lambert.wang@mediatek.com
-Subject: Re: [PATCH net v1] net: gro: avoid nesting GSO skbs in
- skb_gro_receive_list()
-Message-ID: <amB7wb1A2Oo2dv5d@kwain>
-References: <20260722024214.24845-1-zhaoping.shu@mediatek.com>
+	id 1wmSNT-0000000BGCx-3HnE;
+	Wed, 22 Jul 2026 08:32:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1784709149;
+	bh=4FQG/3+PCJnRx6AG47GAfXdpziU9nwJtfPlED+L0aX4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=h+rOqmhMZRj+4zyyfjXhCZeF0HGWVVXAYkiC2/cPAUtTlHEMIBach5jj1K8xgK46V
+	 kDkL/8w/kbJ0EfFJabNgK6Lk6iOIp0o4OEMb9CGFx8ZBOgclYnY0XxVszS9EggTf/b
+	 QW0FYpqGNIRUaoG9J58rwWu7y1ZJlc37zX7tJ9NSM75Z8qsHxwK0HVrmwZQN9AWSZD
+	 CQmq4bXDiKO6sP5ZQxrLLaLWcEQH/s2S1g6iiQ5qumjvyZ8/hqYIFRcejkd9m8fBD5
+	 04xvO57R6EiJHDv2EkqYgwnpCchgQ3f900jqSClQ0LLgIuiST40SzF9DY9Cfai2DvE
+	 d4x0a5Yld0O6w==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2693917E0177;
+	Wed, 22 Jul 2026 10:32:29 +0200 (CEST)
+Message-ID: <a642b843-b828-4bb0-96d9-0f0d7466e29d@collabora.com>
+Date: Wed, 22 Jul 2026 10:32:28 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260722024214.24845-1-zhaoping.shu@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 2/5] pinctrl: mediatek: free EINT resources on unbind
+To: Justin Yeh <justin.yeh@mediatek.com>, Sean Wang <sean.wang@kernel.org>,
+ Linus Walleij <linusw@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20260713083808.168957-1-justin.yeh@mediatek.com>
+ <20260713083808.168957-3-justin.yeh@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260713083808.168957-3-justin.yeh@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260722_013231_980292_A05234A7 
+X-CRM114-Status: GOOD (  23.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,68 +77,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 22, 2026 at 10:42:14AM +0800, zhaoping.shu@mediatek.com wrote:
-> From: HW He <hw.he@mediatek.com>
+On 7/13/26 10:37, Justin Yeh wrote:
+> mtk_eint_do_init() creates an IRQ domain, populates it with a mapping for
+> every EINT line and installs a chained handler on the parent interrupt,
+> but none of these are ever released. This was harmless while the drivers
+> were built-in, but now that they can be built as modules and
+> unbound/rmmod'd it leaves behind a dangling IRQ domain, interrupt mappings
+> whose chip data points at freed memory, and a chained handler that keeps
+> firing into that freed data.
 > 
-> On devices that support both NETIF_F_GRO_HW and NETIF_F_GRO_FRAGLIST,
-> the hardware or driver may deliver packets that have already been
-> aggregated into a GSO skb, either with frags[] or frag_list. GRO may
-> then
-> aggregate the skb again in skb_gro_receive_list().
+> The plain allocations in mtk_eint_do_init() already use the device-managed
+> devm_*() helpers, so tear the remaining resources down the same way:
+> register a devm action that detaches the chained handler, disposes of the
+> per-line mappings and removes the IRQ domain. This mirrors the
+> device-managed lifecycle adopted for the GPIO chip and keeps the whole
+> EINT setup self-cleaning on unbind.
 > 
-> This can create a nested GSO skb, which is not handled correctly by the
-> later GSO segmentation paths. When the skb is segmented by
-> skb_segment_list(), it not be fully restored to the original packets.
-> 
-> If the skb is marked with SKB_GSO_DODGY before segmentation, for example
-> after a protocol change from IPv6 to IPv4, the nested GSO skb is
-> segmented
-> by skb_segment(), which may hit a NULL pointer dereference when the skb
-> contains a nested frag_list.
-> 
-> Avoid this by setting NAPI_GRO_CB(skb)->flush for GSO skbs before
-> aggregation and by checking the flush flag in skb_gro_receive_list(),
-> following the existing logic in skb_gro_receive().
-> 
-> Signed-off-by: HW He <hw.he@mediatek.com>
-> Signed-off-by: Zhaoping Shu <zhaoping.shu@mediatek.com>
+> Fixes: e46df235b4e6 ("pinctrl: mediatek: refactor EINT related code for all MediaTek pinctrl can fit")
+> Signed-off-by: Justin Yeh <justin.yeh@mediatek.com>
 > ---
->  net/core/gro.c         | 2 +-
->  net/ipv4/tcp_offload.c | 1 +
->  2 files changed, 2 insertions(+), 1 deletion(-)
+>   drivers/pinctrl/mediatek/mtk-eint.c | 21 ++++++++++++++++++++-
+>   1 file changed, 20 insertions(+), 1 deletion(-)
 > 
-> diff --git a/net/core/gro.c b/net/core/gro.c
-> index 35f2f708f010..27c9813495f3 100644
-> --- a/net/core/gro.c
-> +++ b/net/core/gro.c
-> @@ -229,7 +229,7 @@ int skb_gro_receive(struct sk_buff *p, struct sk_buff *skb)
->  
->  int skb_gro_receive_list(struct sk_buff *p, struct sk_buff *skb)
->  {
-> -	if (unlikely(p->len + skb->len >= 65536))
-> +	if (unlikely(p->len + skb->len >= 65536 || NAPI_GRO_CB(skb)->flush))
->  		return -E2BIG;
+> diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
+> index 47ac92ea98c2..7cd4c4a9fc77 100644
+> --- a/drivers/pinctrl/mediatek/mtk-eint.c
+> +++ b/drivers/pinctrl/mediatek/mtk-eint.c
+> @@ -12,6 +12,7 @@
+>    */
+>   
+>   #include <linux/delay.h>
+> +#include <linux/device.h>
+>   #include <linux/err.h>
+>   #include <linux/gpio/driver.h>
+>   #include <linux/io.h>
+> @@ -509,6 +510,24 @@ int mtk_eint_find_irq(struct mtk_eint *eint, unsigned long eint_n)
+>   }
+>   EXPORT_SYMBOL_GPL(mtk_eint_find_irq);
+>   
+> +static void mtk_eint_teardown(void *data)
+> +{
+> +	struct mtk_eint *eint = data;
+> +	unsigned int i, virq;
+> +
+> +	/* Detach the demux handler so it can no longer reference freed data. */
+> +	irq_set_chained_handler_and_data(eint->irq, NULL, NULL);
 
-This was already fixed in e751256486d0 ("net: gro: fix double
-aggregation of flush-marked skbs").
->  
->  	if (!pskb_may_pull(skb, skb_gro_offset(skb))) {
-> diff --git a/net/ipv4/tcp_offload.c b/net/ipv4/tcp_offload.c
-> index 3b1fdcd3cb29..c363434a5646 100644
-> --- a/net/ipv4/tcp_offload.c
-> +++ b/net/ipv4/tcp_offload.c
-> @@ -332,6 +332,7 @@ struct sk_buff *tcp_gro_receive(struct list_head *head, struct sk_buff *skb,
->  		flush |= skb->ip_summed != p->ip_summed;
->  		flush |= skb->csum_level != p->csum_level;
->  		flush |= NAPI_GRO_CB(p)->count >= 64;
-> +		NAPI_GRO_CB(skb)->flush |= skb_is_gso(skb);
->  		skb_set_network_header(skb, skb_gro_receive_network_offset(skb));
->  
->  		if (flush || skb_gro_receive_list(p, skb))
+add here:
 
-I haven't looked closely but this looks like a second issue and would
-need its own patch with a proper description.
+synchronize_irq(eint->irq);
 
-Thanks,
-Antoine
+...so that we don't risk race conditions when tearing down.
+
+after which:
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+> +
+> +	/* Dispose of all child mappings before the domain is removed. */
+> +	for (i = 0; i < eint->hw->ap_num; i++) {
+> +		virq = irq_find_mapping(eint->domain, i);
+> +		if (virq)
+> +			irq_dispose_mapping(virq);
+> +	}
+> +
+> +	irq_domain_remove(eint->domain);
+> +}
+> +
+>   int mtk_eint_do_init(struct mtk_eint *eint, struct mtk_eint_pin *eint_pin)
+>   {
+>   	unsigned int size, i, port, virq, inst = 0;
+> @@ -601,7 +620,7 @@ int mtk_eint_do_init(struct mtk_eint *eint, struct mtk_eint_pin *eint_pin)
+>   	irq_set_chained_handler_and_data(eint->irq, mtk_eint_irq_handler,
+>   					 eint);
+>   
+> -	return 0;
+> +	return devm_add_action_or_reset(eint->dev, mtk_eint_teardown, eint);
+>   
+>   err_eint:
+>   	for (i = 0; i < eint->nbase; i++) {
+
 
