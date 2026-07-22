@@ -4,63 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73138C4453C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 16:45:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 875EAC44532
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 16:52:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2D+aH8WuHklyK0noK4NoQdLqwMi37J+55Pzl8huO7f8=; b=E8DQcuAzc8jsR5CrP+9iekejXN
-	S7E3SUCwn75JcwqDIK75s6P/mcvY6xrpede+mDhkvUUJh2xN2iiud1MZI690r9AG8gREa2ZgNWegi
-	S72yfKACwUqLmtuZwI+/n4I7YlFHhH2xfSX7620NFnBc44q875GlQ5E8cFh0R81/9VlcLT8zaCCut
-	qBHen2R1C2C7+XfHRvP63u5MxYrmG1o/A0WgGUo4Ht3x6pLBuDtY3qLw3nf0YHYPBktuD7XeHFzMC
-	q6Nbsz6JRnTRFYJoXAsja0TlSEXM4jxkkXZ5zcTcqMyg7htYXxjUVFTcN0a2WrI1T6Q9Tc9wWfVQw
-	G6K4nx2g==;
+	bh=GL2pSyfUqjuPmverPU2rNkWROn+3SQ8dGrBCAoNYays=; b=OabAV3VkBFZF11KY9GSE6kChGS
+	yrThPohMTjKL7X9kbo1drtE6I3ihvbHlqt6kMsRXK3qLeN8MPEscejLSKbrGGgvb0UJD+iwabb43h
+	NTejeha6hdBb8gEvkj1gWJIq8VowpnYJUSDsym9r0Pz3KaW5qm1+PuzlW+q1dMEeKs7FRZ6DxgrFT
+	S9Emd/s0MbFR0Hc9B0bQWZxFtLFCghyA/ZnQwhjZEQVwhD79vQIwgTmZ7HF1/Y3CiLfNKSQ0sov0+
+	WwBXxvqREPPuMIjr3aYRMOp9/n8iSv3wMHVvwWXeEhJ+tWbSM0i0c1ag3u/RCKd+HHhy67H5ydwp6
+	1TqttEug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wma4x-0000000CNrL-0qjH;
-	Wed, 22 Jul 2026 16:45:55 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wmaBE-0000000COSc-0UDH;
+	Wed, 22 Jul 2026 16:52:24 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wma4v-0000000CNqh-3foF;
-	Wed, 22 Jul 2026 16:45:53 +0000
+	id 1wmaBD-0000000COSC-0bnU;
+	Wed, 22 Jul 2026 16:52:23 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9E68340C52;
-	Wed, 22 Jul 2026 16:45:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2C95B1F000E9;
-	Wed, 22 Jul 2026 16:45:53 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 1BF0A600C3;
+	Wed, 22 Jul 2026 16:52:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75D851F000E9;
+	Wed, 22 Jul 2026 16:52:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784738753;
-	bh=2D+aH8WuHklyK0noK4NoQdLqwMi37J+55Pzl8huO7f8=;
+	s=k20260515; t=1784739141;
+	bh=GL2pSyfUqjuPmverPU2rNkWROn+3SQ8dGrBCAoNYays=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=fhOjfDnEANtN4cA7JZRnGj6Ny3KPd0RQnhcaM3BFHt/Q0OGYZdbjYJ2ooAAyfpE2Y
-	 mXXl+Ur6e738u5fFX7IAbVXlEjDSa07/7OD2byumLtEEq3a+2TkLbLJvQQO6yVukgq
-	 KFIJiwhJjazkUHT8PT8KXQRZTPP+4ixr+vElC5s19MFbh4wmi4J68i9Zy9nJwh3P4T
-	 q0WTb0e353E2uM1ewNzU8UdKRRFY+N4DEecY3SApW1nVl/u12Nn7HPKrmmeHlEJxj3
-	 R4XbVw5zKGh2VtORI4CKw/CQEtMZ4FQSCA2FPaIl4/9APzwnkZR1cEjTz79hA5uXrx
-	 oafSQ8cvtYpBg==
-Date: Wed, 22 Jul 2026 11:45:51 -0500
-From: Rob Herring <robh@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
-	simona@ffwll.ch, maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org, tzimmermann@suse.de, krzk+dt@kernel.org,
-	conor+dt@kernel.org, matthias.bgg@gmail.com,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, justin.yeh@mediatek.com,
-	jason-jh.lin@mediatek.com, kernel@collabora.com
-Subject: Re: [PATCH v2 34/46] dt-bindings: display: mediatek: Introduce
- MT8196 Output Processor
-Message-ID: <20260722164551.GA1079705-robh@kernel.org>
-References: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com>
- <20260714114414.184512-35-angelogioacchino.delregno@collabora.com>
+	b=DpFHoyV0VFzABFLUPR7icr9hWT7ghJ6g3aNli0e/diFud0wL7Cm3kFotmEPSNYqHj
+	 4WmkKbR8kP0jQFRPjeO5JmcDEGYx08WsaNe55rJZ/lx/OlHO/4TAIH32OMch3eu0+r
+	 hEBY031rVJByEP4q9/pdc9MbqGiWu2j0dCeHvz7d1G6W76sT4KNnywdZUSc/kHDvRi
+	 IRmUVnCUp6x1vGfZv71ZPpQjS9FRzGlNsbOCwUAvmMs0urk3vjTxkoz6Umm1NG9EAI
+	 bS2umLIzRe5jJQx0+q784VYxhZON5JEwdkrw4Y4CE9ERy9LT+tZkN6uZfW4KAi/IpD
+	 I9OoC79v7RBZw==
+Date: Wed, 22 Jul 2026 11:52:19 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-kernel@vger.kernel.org,
+	Michael Turquette <mturquette@baylibre.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	linux-clk@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
+	linux-pci@vger.kernel.org, Brian Masney <bmasney@redhat.com>,
+	devicetree@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>,
+	linux-mediatek@lists.infradead.org,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v4 3/4] dt-bindings: PCI: mediatek-gen3: Split Airoha
+ schema and document 2-lanes
+Message-ID: <178473913929.1097113.176772633054348550.robh@kernel.org>
+References: <20260714115848.8537-1-ansuelsmth@gmail.com>
+ <20260714115848.8537-4-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260714114414.184512-35-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260714115848.8537-4-ansuelsmth@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,89 +84,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 14, 2026 at 01:44:02PM +0200, AngeloGioacchino Del Regno wrote:
-> Add documentation for the Overlay Output Processor IP found in
-> the newer Generation SoCs like MT8196, MT8894, MT6991, and their
-> variants.
+
+On Tue, 14 Jul 2026 13:58:45 +0200, Christian Marangi wrote:
+> To permit proper documentation of required property to support PCIe
+> configured for 2-lanes mode, split the Airoha schema part from the
+> mediatek-gen3 schema to a dedicated schema.
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> A PCIe configured for 2-lanes mode require an additional reg for the
+> secondary PCIe to be configured and the airoha,scu phandle to correctly
+> configure the PCIe MUX.
+> 
+> Rework the mediatek-gen3 schema to drop any redundant constraint previsouly
+> introduced for Airoha PCIe properties.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 > ---
->  .../mediatek/mediatek,mt8196-outproc.yaml     | 107 ++++++++++++++++++
->  1 file changed, 107 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-outproc.yaml
+>  .../bindings/pci/airoha,en7581-pcie.yaml      | 244 ++++++++++++++++++
+>  .../bindings/pci/mediatek-pcie-gen3.yaml      |  77 +-----
+>  2 files changed, 249 insertions(+), 72 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/pci/airoha,en7581-pcie.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-outproc.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-outproc.yaml
-> new file mode 100644
-> index 000000000000..7deffba46404
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-outproc.yaml
-> @@ -0,0 +1,107 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/display/mediatek/mediatek,mt8196-outproc.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek Display Overlay Output Processor
-> +
-> +maintainers:
-> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> +
-> +description:
-> +  The MediaTek Display Overlay Output Processor hardware handles the
-> +  post-stage of pixel processing in the layer overlaying process and
-> +  is also capable of performing gamma correction, ensuring that the
-> +  per-pixel values are within the expected luma range.
-> +  If an instance of this hardware is configured as last stage, it is
-> +  also capable of generating VBlank (Frame Done) events which can be
-> +  then dispatched either via an interrupt (to the CPU) or through a
-> +  Global Command Engine (GCE) Event, internally sent to programmable
-> +  Command Queue (CMDQ) Engine(s) for offloading purposes.
-> +
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt8196-disp-outproc
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    description: Optional VBlank event interrupt
-> +    maxItems: 1
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  ports:
-> +    $ref: /schemas/graph.yaml#/properties/ports
-> +
-> +    properties:
-> +      port@0:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +
-> +      port@1:
-> +        $ref: /schemas/graph.yaml#/properties/port
-> +
-> +    required:
-> +      - port@0
-> +      - port@1
-> +
-> +  trigger-sources:
-> +    maxItems: 1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +  - clock-names
 
-Not a defined property. You should have gotten a schema warning on the 
-example.
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
-Same problems as the other patches that I raised.
-
-Rob
 
