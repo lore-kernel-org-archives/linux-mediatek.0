@@ -4,63 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 465F1C44536
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 14:31:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1A35C44536
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jul 2026 15:27:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1T255FBAVRpsE3tq9z/FW5Ond2TyHbYpvN4C1oqBhzE=; b=yXgu5Q7zWo6XwttFlljMYpiCE4
-	4olgKQMRgSOjahOMVQDNmVOOb2tsnU0GTzF/K2TyjrrTD2UpXnDr3Q9QgYwkKd9NgTXnVs2U8L2bU
-	wPpLljW5a1LAsVsQug0pP7gppzqoLa9irF2NCQoZywjeINNYb5c2oNbXeB/nQpvg1/ruNb0ODzNEP
-	Qp/f/IPEixdr+zaFCQEg6ooweBe2UlPEEgvM1KHDw/pu7ZY7xZfLUarXEJ+haKBzfUU84HZLBNz1l
-	tdQLXPZ4NU656CwdF/yy0mHbW8VxQRX/JdxRTktc4PPQZ5840LtcAogeTR/iSoOIIIfCI8cHNaLw7
-	ba8X6TSg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dhUVTQj42y//P1Vg6BUOQL8RosJqKNOqghEIqM4Zenw=; b=Ej4cBLuyRFdu1cc/PYnvxJU17a
+	ouNISbKIT+09JxsqKMxivShZ7lTnHQiWJmrKtrBzKAoWNclL5uveq0R9SDCubEYLvGnjYl72OWBRK
+	nuoMSCa79kGeXbdaCest2ID9xHvLd5EMSFq9jreG5CdDM5LCxDLM/6zDtfVlcKMv9rCC0vsD0zo/V
+	1OqKq5TUhT562zN5edG9Fa5OMhSaTaLHZqTXnhYyTwRpS/LiE8NZhhgp2Y0DG9t4MiEUE6IaCm9bO
+	LNoYHPFHPWKJoT0ACoSRUnQ+8XhbS4glSDEpDXsShZ088vtH20aPrdJ82aVb82AX3dQ7Rx339IAam
+	wSJLCQNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmXyl-0000000C2Pb-1Bt1;
-	Wed, 22 Jul 2026 14:31:23 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wmYr7-0000000C9Lp-2YFX;
+	Wed, 22 Jul 2026 15:27:33 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmXyh-0000000C2OL-2ggb;
-	Wed, 22 Jul 2026 14:31:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784730676;
-	bh=Xy3tAVt5E7mi3XkBjs6KrEBelylsYHGiFrUqKz9Q8DQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=WmTjGMWk9WtTkZLaRbY+SYDd9kDvymiWfkBTTg0DaReP6qlQWDho8rQo6cjQnW8s2
-	 firq1bdfIvJYJcR82j3j/KGHxRKRvr2rfQ/yks/wXPHbazcn3vKQsDMuZp0/BuQpIk
-	 REkG+DUjS33EryikB2yy5zARTD/e7pirB4kE6k4AZ/DZYnCSC1Svmjy4KwUyZJgnMv
-	 sQ8UtcfR0rgqJrLbRAbAEZhtODn5i917tWCgG+rO12GGGA7ASQwIItT9/YnvzST1Y1
-	 no+kl2yZpfEqAyqU++1ZFr8LYVunH9D13TzWjhEs5OeVHAyNBNzEPI0q02y1Q32Ksj
-	 G0tGfjf46lOmg==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 44AB317E023C;
-	Wed, 22 Jul 2026 16:31:16 +0200 (CEST)
-Message-ID: <84149703-21aa-4432-87e0-eeab49e0fa24@collabora.com>
-Date: Wed, 22 Jul 2026 16:31:15 +0200
+	id 1wmYqt-0000000C9Hd-1YH6;
+	Wed, 22 Jul 2026 15:27:21 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 37780600AB;
+	Wed, 22 Jul 2026 15:27:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 912391F000E9;
+	Wed, 22 Jul 2026 15:27:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784734037;
+	bh=dhUVTQj42y//P1Vg6BUOQL8RosJqKNOqghEIqM4Zenw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=mQWM+KEEeV7Yvns05CC8tUwnqtwyIjIKVg1JkyYxYIqcZ8yV4pAfLmIn98RUgufR9
+	 fHrs4zyb/4/q6nBbHsuqYQrI+USsAKtwAVfpx2p2EUOd8o5cUEHsFLwDwrAxGYsFOj
+	 1am8Z/4enG952QU8/IemkYoeta9oaymVlmBaoW5S4B4UVEe2LbHML2jcOc+f2Bw351
+	 3ZUOYu5DWJi+ExAqRWo2cdl/qJlLL4k+o9ObKvQPMiWIsa4zis9Vhc7ZI3GY/fzhOn
+	 GFMBkOqvMWWr6vUC0nb1JhKl8XgRpHvTelHe/1Rf2DN7sEZM4qh5qxbLbN4+XcRtg8
+	 xFQkA5cHbkBnw==
+Date: Wed, 22 Jul 2026 10:27:15 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Chen-Yu Yeh <chenyou910331@gmail.com>
+Subject: Re: [PATCH] dt-bindings: pinctrl: mt7622: allow gpio-hogs
+Message-ID: <178473403449.962632.12615541678335814089.robh@kernel.org>
+References: <20260709193927.108105-1-chenyou910331@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] pmdomain: mediatek: Fix MT8183 hang on boot
-To: Dmitry Osipenko <dmitry.osipenko@collabora.com>,
- Ulf Hansson <ulfh@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20260722132729.302067-1-dmitry.osipenko@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260722132729.302067-1-dmitry.osipenko@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_073120_159433_02061CD1 
-X-CRM114-Status: GOOD (  12.67  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260709193927.108105-1-chenyou910331@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,30 +62,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Linus Walleij <linusw@kernel.org>, Sean Wang <sean.wang@kernel.org>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/22/26 15:27, Dmitry Osipenko wrote:
-> Depending on firmware, part of the MFG domains may be left ON at boot
-> leaving only some MFG cores powered, to let the ACP to prefetch the GPU
-> region when the display controller is brought up. This doesn't play well
-> with an eventual delay in probing Panfrost when the display controller is
-> fully set up, as that would make genpd's sync_state() to power off the
-> domain while ACP tries to prefetch: this is causing an AXI stall,
-> effectively freezing the AP indefinitely. In order to prevent this from
-> happening, the sync_state() functionality must be obliterated on all of
-> the MFG domains: while this guarantees a power leakage if the bootloader
-> boots the kernel with MFG PDs partially powered on, this is the only way
-> to ensure stable operation of the SoC during boot on devices with such
-> firmware because, of course, those will never officially receive a
-> firmware update.
-> 
-> Fixes Kappa Chromebook hanging during system boot.
-> 
-> Fixes: 0e789b491ba0 ("pmdomain: core: Leave powered-on genpds on until sync_state")
-> Fixes: 13a4b7fb6260 ("pmdomain: core: Leave powered-on genpds on until late_initcall_sync")
-> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On Fri, 10 Jul 2026 03:39:27 +0800, Chen-Yu Yeh wrote:
+> Commit 6e3b067d3c5e ("arm64: dts: mediatek: mt7622: Align GPIO hog
+> name with bindings") renamed the asm_sel GPIO hog to asm-sel-hog to
+> follow the GPIO hog naming convention, but the mt7622 pinctrl binding
+> only allows child nodes matching '-pins(-[a-z]+)?$', causing a
+> dtbs_check warning:
+> 
+>   mt7622-bananapi-bpi-r64.dtb: pinctrl@10211000 (mediatek,mt7622-pinctrl):
+>   'asm-sel-hog' does not match any of the regexes:
+>   '-pins(-[a-z]+)?$', '^pinctrl-[0-9]+$'
+> 
+> Allow gpio-hog nodes in the pinctrl node, following the same pattern
+> as commit 9322da935c9a ("dt-bindings: pinctrl: mt7988: allow
+> gpio-hogs").
+> 
+> Signed-off-by: Chen-Yu Yeh <chenyou910331@gmail.com>
+> ---
+>  .../devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 
