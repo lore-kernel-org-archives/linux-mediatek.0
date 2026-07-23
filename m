@@ -4,59 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B00EFC531F7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2026 16:01:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B155DC531F7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2026 16:16:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PDRKfVv1qWyvVa1COFLzJ7BEn2acoJlNWoIveDyamYA=; b=SxRnESCMd9/2Serxvlk9I2aJoH
-	/KibFRi0fhOZPhJfJVwJTRUIq5AO65uHcTcs5/e3yOdRQqBfQRBysvC+YwJYoWOZJA8LkzIjib5nU
-	pD/pZUAT0LaCxsrtfvxPzxaLUsPDU64O2Ngc0hOqpW+e8MTqc9CeaknVbcP2+dcWPxpI/BoSYVmm/
-	W0Cp+gTmNkEKNi+KD7NQC7JFQMCNd/iwkKVsgG/784N7RRShreQWr/jUgel47pYv31s2hGz4Wq5Hx
-	aVidYILGLnpYx7YFoEHm9xuVCtNE676txqr5UoSgewW8rchbePWtwwUt8tHH/z3QDnnh4EZzMgJgW
-	uMhEJZMA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lHj2JaKn6I/rJijt+vIp+5NEvZ+qxwlBgSIZwX/C1FU=; b=SEtzxG6fUBo9UAjNqKv+G4na6X
+	onVvcuYFr75esmYjPr5RrShdW7A78HL9EphD0LU6B3OmIp+FH/D8NilXNSMEZsxQBndtfqJaDWZS6
+	xIkzhP2dGiLJ/JbY8xpS/+1WX127HvMK3u4Eef28Jb6O5dSQ64u7ws97ucIhU3N6UQLntMXPaxSQ9
+	fWah/IeGM5lJX9EkpBRKwZLfPtkZGEU70IjWgVXfku+/bMGyrAHIZTuMytCqgGdp09HDFLpb18pT6
+	Llqz/dYd9BXVuPcEUd2kJtGFm1niJJ523VGXKBOUwCxdk0h7wA5BxSMJfn8Pb1kO2ivsjEcX1mvGz
+	ksvBhcYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmvrB-0000000Efbm-3f8L;
-	Thu, 23 Jul 2026 16:01:09 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wmw6B-0000000EhNr-1YZ7;
+	Thu, 23 Jul 2026 16:16:39 +0000
+Received: from mail-10696.protonmail.ch ([79.135.106.96])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmvrA-0000000Efb1-1olf;
-	Thu, 23 Jul 2026 16:01:08 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D84264037F;
-	Thu, 23 Jul 2026 16:01:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F0A21F000E9;
-	Thu, 23 Jul 2026 16:01:04 +0000 (UTC)
-Date: Thu, 23 Jul 2026 17:00:59 +0100
-From: Lee Jones <lee@kernel.org>
-To: rva333@protonmail.com
-Cc: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Srinivas Kandagatla <srini@kernel.org>,
-	Andy Shevchenko <andy@kernel.org>, linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Ben Grisdale <bengris32@protonmail.ch>,
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: Re: [PATCH v3 1/3] dt-bindings: mfd: mediatek: mt6397: add mt6323
- PMIC EFUSE
-Message-ID: <20260723160059.GB3526803@google.com>
-References: <20260713-mt6323-nvmem-v3-0-205c39267a24@protonmail.com>
- <20260713-mt6323-nvmem-v3-1-205c39267a24@protonmail.com>
+	id 1wmw67-0000000EhMq-3nH0
+	for linux-mediatek@lists.infradead.org;
+	Thu, 23 Jul 2026 16:16:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1784823392; x=1785082592;
+	bh=lHj2JaKn6I/rJijt+vIp+5NEvZ+qxwlBgSIZwX/C1FU=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=xlNYzpBieqQuUSccbe6VE+8q6ZS1yleTG5agbdXP6hhaIWGPxJ07RGkAQukayfpiv
+	 BEGrE/J0I5mpcDeDRYHa56Dc3m6URjULGPV+4K6pZMM9xUC22iSZ00c1ZFmJ1JwF/x
+	 xUNisBiFtg1WIUiLbsixtqWYBGpu3eyC3tnWqRzQONnTMG/Rp8T5wbq9oRlntbGFn/
+	 bYkBwh8RwRAKffdSITgRtvSxrVvY3bmdLZtPnmQ2gnP/VMCqCrfyRqh/syYaVjmHK3
+	 QuxUf453uyasa4YaClzO1aoC4i4UlBpqD17MJEyrsC2EyY47Vy/lR3+vlDdwRqzxxf
+	 Cv28wlJOzyiNw==
+Date: Thu, 23 Jul 2026 16:16:24 +0000
+To: Lee Jones <lee@kernel.org>
+From: Roman Vivchar <rva333@protonmail.com>
+Cc: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Srinivas Kandagatla <srini@kernel.org>, Andy Shevchenko <andy@kernel.org>, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ben Grisdale <bengris32@protonmail.ch>, Conor Dooley <conor.dooley@microchip.com>
+Subject: Re: [PATCH v3 1/3] dt-bindings: mfd: mediatek: mt6397: add mt6323 PMIC EFUSE
+Message-ID: <ZNHaOI0ufFpvkyR3fCOd7I-CO8x9-adM0bJfk2U_TGsQrUGvhUV_8oXVnGWaS3bt9AuhxjXfcJGVtFFFg2X7FOWVcMf1sLK6OpRbtYe9BlQ=@protonmail.com>
+In-Reply-To: <20260723160059.GB3526803@google.com>
+References: <20260713-mt6323-nvmem-v3-0-205c39267a24@protonmail.com> <20260713-mt6323-nvmem-v3-1-205c39267a24@protonmail.com> <20260723160059.GB3526803@google.com>
+Feedback-ID: 173184497:user:proton
+X-Pm-Message-ID: e13033346bb107811f977e1b6967b3e0e4fc03a8
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260713-mt6323-nvmem-v3-1-205c39267a24@protonmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260723_091636_125399_35731518 
+X-CRM114-Status: UNSURE (   6.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,72 +70,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 13 Jul 2026, Roman Vivchar via B4 Relay wrote:
+Hi Lee,
 
-> From: Roman Vivchar <rva333@protonmail.com>
-> 
-> The MediaTek mt6323 PMIC includes an EFUSE used for storing calibration
-> data.
-> 
-> Add the devicetree binding documentation for the MediaTek mt6323 EFUSE.
-> 
-> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-> Acked-by: Conor Dooley <conor.dooley@microchip.com>
-> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-> ---
->  .../devicetree/bindings/mfd/mediatek,mt6397.yaml    | 21 +++++++++++++++++++++
->  1 file changed, 21 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-> index 3cbc0dc12c31..d2de227ae7a6 100644
-> --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-> @@ -159,6 +159,23 @@ properties:
->      required:
->        - compatible
->  
-> +  efuse:
-> +    type: object
-> +    unevaluatedProperties: false
-> +    description:
-> +      The efuse is responsible for storing calibration data, such as thermal
-> +      sensor calibration.
-> +
-> +    properties:
-> +      compatible:
-> +        const: mediatek,mt6323-efuse
-> +
-> +      nvmem-layout:
-> +        $ref: /schemas/nvmem/layouts/nvmem-layout.yaml#
-> +
-> +    required:
-> +      - compatible
-> +
->    leds:
->      type: object
->      additionalProperties: false
-> @@ -307,6 +324,10 @@ examples:
->          interrupt-controller;
->          #interrupt-cells = <2>;
->  
-> +        efuse {
-> +          compatible = "mediatek,mt6323-efuse";
+On Thursday, July 23rd, 2026 at 7:01 PM, Lee Jones <lee@kernel.org> wrote:
 
-Nit: This tabbing looks off to me.
+> On Mon, 13 Jul 2026, Roman Vivchar via B4 Relay wrote:
 
-The example below uses 4-spaces, this uses 2.
+...
 
-> +        };
-> +
->          leds {
->              compatible = "mediatek,mt6323-led";
->              #address-cells = <1>;
-> 
-> -- 
-> 2.54.0
-> 
-> 
+> > +        efuse {
+> > +          compatible =3D "mediatek,mt6323-efuse";
+>=20
+> Nit: This tabbing looks off to me.
+>=20
+> The example below uses 4-spaces, this uses 2.
 
--- 
-Lee Jones
+Oops, you're right... Good catch :)
+
+We had some troubles with driver merge, so it was dropped from the nvmem
+tree for now. I will resend it with fixes (and spacing) when dependencies
+arrive.
+
+Best regards,
+Roman
 
