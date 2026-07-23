@@ -4,64 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15906C44524
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2026 05:57:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B059C531CD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2026 08:34:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=KGWaV3dBS1OYfyiBm+OHVmrMntuT7QMC6qkZgu/DlKE=; b=PjP9cb/CwtzFiakJLT4GbzKtmQ
-	NBcxfXjWUBzL/MxBijhGL0ye+Xaq4jujGokjk2QpqOsd4in4d94yMdi09WNKxRMvvX0YD7xcRbgaJ
-	uBUMM55T3fAcNJcNoJOz1kFzEr+/aC9MEjh2PuBsj8KzyHoKo6ff3JooqzPA8fW6M4LpoSNOBU+5m
-	0RPDMf6D0p9HHiU6LOzl1VcxMA5K7iTGcpfDquz/Qvlyo0Mfm/1GAHFn0GIWS8Gv9HOcjDVeFPKwT
-	kw9lnP8Fm/DCqeT2lAwk/w8v1N02ijqb4eWpzsxeY/ooNdB9TCRXV1bNX4UH2M7buET6NT2WxUbvf
-	YMC97gew==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yyA6pTdROK7oOw43x5RcJFWUhsn9wzYhJLCDR0x/Kb4=; b=3rvabfW9M1jB0uFFNKDzNNWGFG
+	YR9Q0WsjO866J0icWTz/lwVEbKl2Xs7zPsCBz2dCyQasXHxbP09MUraBMhLgcO6ATyb2cC4JQdl8x
+	od8UxW1hfyXDtXrJ3GVFxaX8CyAvgGSsesBvJaxWdnvfeCmdwvmUDYpdTc5AeKrA/nHsVevdmXLcu
+	PmGMEOZwYm3/jXM8T0pOYSnwQAtszEAhFSgsQbCizVuTcZqr3hwWeTInqLFT2VIduoFcsFmCgUMyl
+	Znq7T9xcmIY2qK5RRebG7DREqYPSN6eBUg7GjYuGr1wSUklpVzne5jjhV+WgiwsR7Gp77Y3VPfj+j
+	aFFrwYqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmmRK-0000000DVjc-15OE;
-	Thu, 23 Jul 2026 05:57:50 +0000
-Received: from out-188.mta0.migadu.com ([91.218.175.188])
+	id 1wmot8-0000000Dk8W-302j;
+	Thu, 23 Jul 2026 08:34:42 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmmRH-0000000DViu-2YpE
-	for linux-mediatek@lists.infradead.org;
-	Thu, 23 Jul 2026 05:57:49 +0000
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1784786262;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=KGWaV3dBS1OYfyiBm+OHVmrMntuT7QMC6qkZgu/DlKE=;
-	b=Ijq8RnNvwAKCSaJzfobED/7AlZAT1eEUQCDBDgr6TYebg5Llioy5bWqfOz5GuZV94yihdQ
-	0vGURIWVn64ini6ikFARXy162dFFrqks37HUhP1j0wX9df8kQ46mjRT8vp0E5WUx1cHDMb
-	FV42d1m6i8ivOOuLWOVew+hAsiOu+Rw=
-From: Chenguang Zhao <chenguang.zhao@linux.dev>
-To: nbd@nbd.name,
-	lorenzo@kernel.org,
-	andrew+netdev@lunn.ch,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: netdev@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	chenguang.zhao@linux.dev,
-	Chenguang Zhao <zhaochenguang@kylinos.cn>
-Subject: [PATCH net v2] net: ethernet: mtk_eth_soc: pass eth to mtk_handle_irq_rx in poll_controller
-Date: Thu, 23 Jul 2026 13:57:35 +0800
-Message-Id: <20260723055735.885112-1-chenguang.zhao@linux.dev>
+	id 1wmot6-0000000Dk6E-1RiH;
+	Thu, 23 Jul 2026 08:34:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id A751E43C95;
+	Thu, 23 Jul 2026 08:34:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 7F8FAC2BCFA;
+	Thu, 23 Jul 2026 08:34:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1784795679;
+	bh=fWF94StvkaAIOTPUF07PNk7mIydr+bpFXjsyFWbTsv8=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=tiQhnYPBxyFf5KkdQwjeu6VRcTNlTPo7MyA3AxIAUvZCBts9lBLRojKnfmmnQXHGp
+	 PzgsqZtF17QDeyhI2nECHpx+CvRFWtt7zxzexSpJ/Zyu4mAGPTeLN6cmuPGQXZDMlx
+	 OV/YNEHTaIRk6r9NwHfkiqmHoT69F+a7DKikx1gC5Zh6Wuybs/NyKbIoWTY8CDpcof
+	 1gHluoYQsoSw8l8yV6vtcALTHSp4Fdz8e0rcmskeHOSFwjw9qf4kA12rhXKDj70v5L
+	 N9fHVY+htdn3HnYpJ8DKK8yvMPLVaTVrC5q6OxEn45YEUWTSkDEUvs3YtTdSet90m1
+	 WakWcwc+MchbQ==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6AA46C531C7;
+	Thu, 23 Jul 2026 08:34:39 +0000 (UTC)
+From: Jack Wu via B4 Relay <devnull+jackbb_wu.compal.com@kernel.org>
+Date: Thu, 23 Jul 2026 16:34:27 +0800
+Subject: [PATCH v5 2/7] net: wwan: t9xx: Add control plane transaction
+ layer
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Migadu-Flow: FLOW_OUT
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_225747_952837_8E51CCCA 
-X-CRM114-Status: UNSURE (   7.05  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260723-t9xx_driver_v1-v5-2-b27afb99ccbb@compal.com>
+References: <20260723-t9xx_driver_v1-v5-0-b27afb99ccbb@compal.com>
+In-Reply-To: <20260723-t9xx_driver_v1-v5-0-b27afb99ccbb@compal.com>
+To: Loic Poulain <loic.poulain@oss.qualcomm.com>, 
+ Sergey Ryazanov <ryazanov.s.a@gmail.com>, 
+ Johannes Berg <johannes@sipsolutions.net>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Jack Wu <jackbb_wu@compal.com>, Wen-Zhi Huang <wen-zhi.huang@mediatek.com>, 
+ Shi-Wei Yeh <shi-wei.yeh@mediatek.com>, 
+ Minano Tseng <Minano.tseng@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Simon Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
+ Shuah Khan <skhan@linuxfoundation.org>, Robert Yu <robert_yu@compal.com>, 
+ Jeff Chang <Jeff_Chang@compal.com>
+Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-doc@vger.kernel.org
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1784795676; l=6635;
+ i=jackbb_wu@compal.com; s=20260526; h=from:subject:message-id;
+ bh=rt3HsiDaAoMlFyfypNp+LPtigsjc1Lac/V3mvOuxxMg=;
+ b=rn7hql4+YtoW1FwOQRtejxaEsg1U4sapyFpz0swcxRmi+s/A30y+wq9sGqKTqPbpRRb9+6gv+
+ gkq8qY8CQiPCKkoyWtxvuToIS1nSEAN9hK2veHl7q/LWgaELZ3aWxw6
+X-Developer-Key: i=jackbb_wu@compal.com; a=ed25519;
+ pk=VH1prTWixNl8OEUPPSfII3p46MzJpQN8J3+ecE1tZXg=
+X-Endpoint-Received: by B4 Relay for jackbb_wu@compal.com/20260526 with
+ auth_id=793
+X-Original-From: Jack Wu <jackbb_wu@compal.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,42 +93,247 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: jackbb_wu@compal.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Chenguang Zhao <zhaochenguang@kylinos.cn>
+From: Jack Wu <jackbb_wu@compal.com>
 
-mtk_handle_irq_rx expects a struct mtk_eth * (matching the request_irq
-cookie), but mtk_poll_controller incorrectly passed the net_device *.
-Calling ndo_poll_controller with CONFIG_NET_POLL_CONTROLLER enabled
-would then crash.
+Introduce the control plane and transaction layer framework
+for the T9XX WWAN driver. This patch adds the core data
+structures (mtk_ctrl_blk, mtk_ctrl_trans) and initialization
+entry points that subsequent patches build upon.
 
-Fixes: 8186f6e382d8 ("net-next: mediatek: fix compile error inside mtk_poll_controller()")
-Signed-off-by: Chenguang Zhao <zhaochenguang@kylinos.cn>
+The control plane block (ctrl_blk) serves as the central
+context for managing the transaction layer, port layer, and
+FSM interactions. The actual DMA engine and TX/RX service
+implementations are added in subsequent patches.
+
+Signed-off-by: Jack Wu <jackbb_wu@compal.com>
 ---
-v2:
- - Add SOB and Fixes tag.
+ drivers/net/wwan/Kconfig                    |  5 ++++
+ drivers/net/wwan/t9xx/Makefile              |  5 ++--
+ drivers/net/wwan/t9xx/mtk_ctrl_plane.c      | 45 +++++++++++++++++++++++++++++
+ drivers/net/wwan/t9xx/mtk_ctrl_plane.h      | 22 ++++++++++++++
+ drivers/net/wwan/t9xx/mtk_dev.c             | 11 +++++++
+ drivers/net/wwan/t9xx/mtk_dev.h             |  2 ++
+ drivers/net/wwan/t9xx/pcie/Makefile         | 10 +++++++
+ drivers/net/wwan/t9xx/pcie/mtk_pci.c        |  1 +
+ drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.h | 21 ++++++++++++++
+ 9 files changed, 120 insertions(+), 2 deletions(-)
 
-v1:
- https://lore.kernel.org/all/20260717022339.301914-1-chenguang.zhao@linux.dev/
-
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 5d291e50a47b..351444fb4871 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -3467,7 +3467,7 @@ static void mtk_poll_controller(struct net_device *dev)
+diff --git a/drivers/net/wwan/Kconfig b/drivers/net/wwan/Kconfig
+index 18bd40b3b8d2..a2ffed346acc 100644
+--- a/drivers/net/wwan/Kconfig
++++ b/drivers/net/wwan/Kconfig
+@@ -124,6 +124,7 @@ config MTK_T7XX
+ config MTK_T9XX
+ 	tristate "MediaTek PCIe 5G WWAN modem T9xx device"
+ 	depends on PCI && ACPI
++	select MTK_T9XX_PCI
+ 	select NET_DEVLINK
+ 	help
+ 	  Enables MediaTek PCIe based 5G WWAN modem (T9xx series) device.
+@@ -133,6 +134,10 @@ config MTK_T9XX
  
- 	mtk_tx_irq_disable(eth, MTK_TX_DONE_INT);
- 	mtk_rx_irq_disable(eth, eth->soc->rx.irq_done_mask);
--	mtk_handle_irq_rx(eth->irq[MTK_FE_IRQ_RX], dev);
-+	mtk_handle_irq_rx(eth->irq[MTK_FE_IRQ_RX], eth);
- 	mtk_tx_irq_enable(eth, MTK_TX_DONE_INT);
- 	mtk_rx_irq_enable(eth, eth->soc->rx.irq_done_mask);
- }
+ 	  If unsure, say N.
+ 
++config MTK_T9XX_PCI
++	tristate
++	depends on PCI
++
+ endif # WWAN
+ 
+ endmenu
+diff --git a/drivers/net/wwan/t9xx/Makefile b/drivers/net/wwan/t9xx/Makefile
+index 6f2dd3f91454..ae9d6f2344ab 100644
+--- a/drivers/net/wwan/t9xx/Makefile
++++ b/drivers/net/wwan/t9xx/Makefile
+@@ -4,7 +4,8 @@ ccflags-y += -I$(src)/pcie
+ ccflags-y += -I$(src)
+ 
+ obj-$(CONFIG_MTK_T9XX) += mtk_t9xx.o
++obj-$(CONFIG_MTK_T9XX_PCI) += pcie/
+ 
+ mtk_t9xx-y := \
+-	pcie/mtk_pci.o \
+-	pcie/mtk_pci_drv_m9xx.o
++	mtk_dev.o \
++	mtk_ctrl_plane.o
+diff --git a/drivers/net/wwan/t9xx/mtk_ctrl_plane.c b/drivers/net/wwan/t9xx/mtk_ctrl_plane.c
+new file mode 100644
+index 000000000000..cf6079218e1c
+--- /dev/null
++++ b/drivers/net/wwan/t9xx/mtk_ctrl_plane.c
+@@ -0,0 +1,45 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Copyright (c) 2022, MediaTek Inc.
++ * Copyright (c) 2022-2023, Intel Corporation.
++ */
++
++#include <linux/device.h>
++
++#include "mtk_ctrl_plane.h"
++
++/**
++ * mtk_ctrl_init() - Initialize the control plane block.
++ * @mdev: Pointer to the MTK modem device.
++ *
++ * Allocates and initializes the control plane block
++ * associated with @mdev.
++ *
++ * Return: 0 on success, -ENOMEM on allocation failure.
++ */
++int mtk_ctrl_init(struct mtk_md_dev *mdev)
++{
++	struct mtk_ctrl_blk *ctrl_blk;
++
++	ctrl_blk = devm_kzalloc(mdev->dev, sizeof(*ctrl_blk), GFP_KERNEL);
++	if (!ctrl_blk)
++		return -ENOMEM;
++
++	ctrl_blk->mdev = mdev;
++	mdev->ctrl_blk = ctrl_blk;
++
++	return 0;
++}
++EXPORT_SYMBOL(mtk_ctrl_init);
++
++/**
++ * mtk_ctrl_exit() - Clean up the control plane block.
++ * @mdev: Pointer to the MTK modem device.
++ *
++ * Frees the control plane block associated with @mdev.
++ */
++void mtk_ctrl_exit(struct mtk_md_dev *mdev)
++{
++	mdev->ctrl_blk = NULL;
++}
++EXPORT_SYMBOL(mtk_ctrl_exit);
+diff --git a/drivers/net/wwan/t9xx/mtk_ctrl_plane.h b/drivers/net/wwan/t9xx/mtk_ctrl_plane.h
+new file mode 100644
+index 000000000000..c141876ef95d
+--- /dev/null
++++ b/drivers/net/wwan/t9xx/mtk_ctrl_plane.h
+@@ -0,0 +1,22 @@
++/* SPDX-License-Identifier: GPL-2.0-only
++ *
++ * Copyright (c) 2022, MediaTek Inc.
++ */
++
++#ifndef __MTK_CTRL_PLANE_H__
++#define __MTK_CTRL_PLANE_H__
++
++#include <linux/kref.h>
++#include <linux/skbuff.h>
++
++#include "mtk_dev.h"
++
++struct mtk_ctrl_blk {
++	struct mtk_md_dev *mdev;
++	struct mtk_ctrl_trans *trans;
++};
++
++int mtk_ctrl_init(struct mtk_md_dev *mdev);
++void mtk_ctrl_exit(struct mtk_md_dev *mdev);
++
++#endif /* __MTK_CTRL_PLANE_H__ */
+diff --git a/drivers/net/wwan/t9xx/mtk_dev.c b/drivers/net/wwan/t9xx/mtk_dev.c
+new file mode 100644
+index 000000000000..50f77d5a210c
+--- /dev/null
++++ b/drivers/net/wwan/t9xx/mtk_dev.c
+@@ -0,0 +1,11 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Copyright (c) 2022, MediaTek Inc.
++ */
++
++#include <linux/module.h>
++
++#include "mtk_dev.h"
++
++MODULE_DESCRIPTION("MediaTek T9xx PCIe WWAN driver");
++MODULE_LICENSE("GPL");
+diff --git a/drivers/net/wwan/t9xx/mtk_dev.h b/drivers/net/wwan/t9xx/mtk_dev.h
+index 8278a0e2875e..9843171fe2ae 100644
+--- a/drivers/net/wwan/t9xx/mtk_dev.h
++++ b/drivers/net/wwan/t9xx/mtk_dev.h
+@@ -36,6 +36,7 @@ enum mtk_dev_evt_d2h {
+ };
+ 
+ struct mtk_md_dev;
++struct mtk_ctrl_blk;
+ 
+ struct mtk_dev_ops {
+ 	u32 (*get_dev_state)(struct mtk_md_dev *mdev);
+@@ -57,6 +58,7 @@ struct mtk_md_dev {
+ 	void *hw_priv;
+ 	u32 hw_ver;
+ 	char dev_str[MTK_DEV_STR_LEN];
++	struct mtk_ctrl_blk *ctrl_blk;
+ };
+ 
+ static inline u32 mtk_dev_get_dev_state(struct mtk_md_dev *mdev)
+diff --git a/drivers/net/wwan/t9xx/pcie/Makefile b/drivers/net/wwan/t9xx/pcie/Makefile
+new file mode 100644
+index 000000000000..7410d1796d27
+--- /dev/null
++++ b/drivers/net/wwan/t9xx/pcie/Makefile
+@@ -0,0 +1,10 @@
++# SPDX-License-Identifier: GPL-2.0-only
++
++ccflags-y += -I$(src)
++ccflags-y += -I$(src)/..
++
++obj-$(CONFIG_MTK_T9XX_PCI) += mtk_t9xx_pcie.o
++
++mtk_t9xx_pcie-y := \
++	mtk_pci_drv_m9xx.o \
++	mtk_pci.o
+diff --git a/drivers/net/wwan/t9xx/pcie/mtk_pci.c b/drivers/net/wwan/t9xx/pcie/mtk_pci.c
+index 1f6cca70b74c..9588635fab3d 100644
+--- a/drivers/net/wwan/t9xx/pcie/mtk_pci.c
++++ b/drivers/net/wwan/t9xx/pcie/mtk_pci.c
+@@ -14,6 +14,7 @@
+ #include <linux/module.h>
+ 
+ #include "mtk_dev.h"
++#include "mtk_trans_ctrl.h"
+ #include "mtk_pci.h"
+ #include "mtk_pci_reg.h"
+ 
+diff --git a/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.h b/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.h
+new file mode 100644
+index 000000000000..d6de4c43b529
+--- /dev/null
++++ b/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.h
+@@ -0,0 +1,21 @@
++/* SPDX-License-Identifier: GPL-2.0-only
++ *
++ * Copyright (c) 2022, MediaTek Inc.
++ */
++
++#ifndef __MTK_TRANS_CTRL_H__
++#define __MTK_TRANS_CTRL_H__
++
++#include <linux/kref.h>
++#include <linux/list.h>
++#include <linux/skbuff.h>
++#include <linux/types.h>
++
++#include "mtk_dev.h"
++
++struct mtk_ctrl_trans {
++	struct mtk_ctrl_blk *ctrl_blk;
++	struct mtk_md_dev *mdev;
++};
++
++#endif
+
 -- 
-2.25.1
+2.34.1
+
 
 
