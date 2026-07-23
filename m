@@ -4,70 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3CFCC531D0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2026 19:49:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79297C531D0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2026 21:20:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=hd35ezz/qRRzqlESySsTjZX8Na6y63xNvZlfn93+y/A=; b=uZhsg4yz3SIkmb
-	OFGcgYeorBT3oXtxUFQBBn4lWm3CXs00WF923NKIupi/IpkjiPTQE/Oa9aTB2+P/b0yPKMVC1+PIX
-	1zlharfRQg1JCKIb4+W0SaIFm3IOLSNXKQpoxJwBEOEkMjupNkd7j+SDDmnaf3skCWSo3qPZ2EHU4
-	jV59f+XOlFxv6qk1Ujs/WEhrHBVbCvgEfzyIXnsHKCDb2NK6XnTbF0YOjvuS0CEBh33TsorDknj1c
-	L9A/vq39/RriBECXQ3i2GYbzMVgqQ65o2uJicoh3nur7AKB+JdnWmB00o+g9cxPC1j0EqIIte12oY
-	BzF6n344U+k1PALJ9YrA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rVHu1MArjutVseh/LgffkBjd4eU14JPypbLOkT1+yw8=; b=ssFxZS/8kBF7jSoKjEOmlEENIS
+	zXuILmJ3g1G0rKOjCcZeOJWWgSSHnJ/NhMJP93C2MOZ418n3RzRjh1duz6Bz0ewgc5faigbnvCLqn
+	o42uOlTtT/3FabqSBmIIVzA1DIW1NvIYb79ZZlteHsHkVtdAkroorcLBRvHh1IyQtjpBabCZ9i64y
+	6o/eV+vMIh+R1GSFbcYk5faZgZqd48Ohi2hiF74kQzEh5sCZbjpszuNkBsFtOYpR5Q7pJ8cERD7Cv
+	bzCtSQG3ituKkuifcnwk5QpYY9JLIvePDZJCciUGI6bAFJPL4o1yD1hKPVRbea4qGLcKnGi8zFySx
+	De11ZYeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmzQP-0000000F0Gw-3b8j;
-	Thu, 23 Jul 2026 19:49:45 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wn0qc-0000000F6m8-06BE;
+	Thu, 23 Jul 2026 21:20:54 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmzQO-0000000F0Gh-2sax;
-	Thu, 23 Jul 2026 19:49:44 +0000
+	id 1wn0qa-0000000F6lt-3hYi
+	for linux-mediatek@lists.infradead.org;
+	Thu, 23 Jul 2026 21:20:52 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 92CB7600AD;
-	Thu, 23 Jul 2026 19:49:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B5B61F000E9;
-	Thu, 23 Jul 2026 19:49:43 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 4BDA543F63
+	for <linux-mediatek@lists.infradead.org>; Thu, 23 Jul 2026 21:20:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 310491F00ADF
+	for <linux-mediatek@lists.infradead.org>; Thu, 23 Jul 2026 21:20:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784836183;
-	bh=hd35ezz/qRRzqlESySsTjZX8Na6y63xNvZlfn93+y/A=;
-	h=Date:From:To:Cc:Subject:In-Reply-To;
-	b=oHEyfqKs+qIAGhNg8ku1g8HLye7HRNceaQR5nVhVORDSMRPvDk5wJbiNVYoltP0ef
-	 q3c3c1LUZJ0v0v+iHt0YGC0IV/s+1w4CjvF4V+/r69vHOuUCPc1o2j7dIx45ovP4xy
-	 Zv3WOK1re0ATDkbTpUQuM+l86aabi0dJ7acys2+7UqhnEKVF9BbNxxw1M4at8UNbjl
-	 KSRO8OKGHbwWChQdq2B67fHz9S0nS0SJM5B4gk8tL39wDX1Aq97vhVxFsRJaeIkLkQ
-	 nsDUoDR+e2QFZPQwFHXcuSJdBgdaMZNZlzHv5E49nuHfHWmtJnE7uC+mqmfWrL0KD7
-	 eh4AIHVTo9MKg==
-Date: Thu, 23 Jul 2026 14:49:41 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>, linux-pci@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v4 4/4] PCI: mediatek-gen3: Add 2-lanes mode support for
- Airoha AN7581
-Message-ID: <20260723194941.GA850329@bhelgaas>
+	s=k20260515; t=1784841652;
+	bh=rVHu1MArjutVseh/LgffkBjd4eU14JPypbLOkT1+yw8=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=AC80BQrM+mZEuEbTRDeEHKTd2K4o1FtgzmYWxV7lFZxddMJeWQLw5Ab3v4hiTou/o
+	 s28xK1btB33mEEfpyG25JwMO47nrPvi2YZ9+69pJMqNJPP8haW6HKvRoG5iZqvrGOE
+	 9ha61SfHC/ByikyByFo0UHvfTi+lEZyNhkqiJ5vx5q9UocAKfJN9VdlaX8OSZAtssH
+	 2R2WECm7Adb7964k06xnaI+o8ZblKV7HUoVJQ3nyrAsOGlfL1Na/48HEidHR6jvb5f
+	 h0abdo29MjZh/P+ZznC+W0nfYgZcOhzVOV2UAL+9YA2dMPcDvdLeHt0169TanoAPKt
+	 ++HkyQhy7LFkw==
+Received: by mail-lf1-f47.google.com with SMTP id 2adb3069b0e04-5b011edaf7dso1116365e87.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 23 Jul 2026 14:20:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+RqyrbwZqDaFvftzrGRPS7rfdgjpSW7pz3083dV2tnA0RlvH69mJflqb+5EUSbt5zS2SH+tvS5mD95ublbFczA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzNyzp7U0j4IPVsV0JVBzgtJMKvTfx6Kd5KFYuWWuZkhE7emJyk
+	o8h+3b/oQ0ybXyN24rKatLpomGU54bzfoTPmHPsDb0Spfw5dyqnPjfxv95YySwQ6UCRiu+7iaAv
+	CFU+WtgvadUhbocdjZ+XleUs2u7ykSng=
+X-Received: by 2002:a05:6512:40c1:10b0:5ae:c34c:aecb with SMTP id
+ 2adb3069b0e04-5b2b2f71273mr663306e87.41.1784841650927; Thu, 23 Jul 2026
+ 14:20:50 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <6a626006.4d70c427.b2b96.c939@mx.google.com>
+References: <20260713-mt6858-pinctrl-v2-0-1bd072e3206c@jolla.com>
+In-Reply-To: <20260713-mt6858-pinctrl-v2-0-1bd072e3206c@jolla.com>
+From: Linus Walleij <linusw@kernel.org>
+Date: Thu, 23 Jul 2026 23:20:37 +0200
+X-Gmail-Original-Message-ID: <CAD++jLnP-f85taVv_Qus31Fmx453FL1dXuCzgV2_34YOyk6wcA@mail.gmail.com>
+X-Gm-Features: AUfX_mzO1IFYAAzmWCaGdgClCyXt3fIPpy3GNEwr6OblEvy3QOAx8n-oSARvnK0
+Message-ID: <CAD++jLnP-f85taVv_Qus31Fmx453FL1dXuCzgV2_34YOyk6wcA@mail.gmail.com>
+Subject: Re: [PATCH v2 0/3] pinctrl: mediatek: Add MT6858 support
+To: nikolai.burov@jolla.com
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@kernel.org>, 
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, 
+	Nikolai Burov <nikolai.burov+review@abscue.de>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,39 +85,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 23, 2026 at 08:40:03PM +0200, Christian Marangi wrote:
-> On Wed, Jul 22, 2026 at 12:40:10PM -0500, Bjorn Helgaas wrote:
-> > On Tue, Jul 14, 2026 at 01:58:46PM +0200, Christian Marangi wrote:
-> > > The Airoha AN7581 SoC supports configuring the first PCIe0 lane to 2-lanes
-> > > mode (2x link) by bonding it with the second PCIe lane (PCIe1). This is
-> > > done by configuring the PCIe MUX in the SCU register.
-> ...
+On Mon, Jul 13, 2026 at 5:07=E2=80=AFPM Nikolai Burov via B4 Relay
+<devnull+nikolai.burov.jolla.com@kernel.org> wrote:
 
-> > > -	 * Airoha EN7581 performs PCIe reset via clk callbacks since it has a
-> > > -	 * hw issue with PCIE_PE_RSTB signal. Add wait for the time needed to
-> > > -	 * complete the PCIe reset.
-> > > +	 * Old Airoha EN7581 clock driver performed PCIe reset via
-> > > +	 * clk callbacks since it has a hw issue with PCIE_PE_RSTB signal.
-> > > +	 * This is now handled by dedicated PERSTOUT resets with clk
-> > > +	 * driver only enabling the refclk.
-> > 
-> > This reference to the "old Airoha EN7581 clock driver" makes me think
-> > there's a dependency between a EN7581 clock driver change and this
-> > PERSTOUT change.  If so, please mention the commit SHA1 for the EN7581
-> > clock driver change so they're connected and people backporting to
-> > older kernels know to be careful to get both of them.
-> > 
-> > It sounds like this PERSTOUT change might be independent of the x2
-> > configuration support.  If so, it should be done in a separate patch.
-> 
-> thanks for the review. The clock change can go on a separate patch but
-> since the hash will change when it will get merged what should I use as
-> reference? Also any hint on the tag to use or the format?
+> Add support for GPIO and pin configuration on the MT6858 (MediaTek
+> Dimensity 7100) SoC.
+>
+> Signed-off-by: Nikolai Burov <nikolai.burov@jolla.com>
 
-Where is the clock change?  Is it the one in this series ([PATCH v4
-2/4] clk: en7523: add support for dedicated PCIe PERSTOUT reset)?
+Patches applied, so we get some rotation in linux-next.
 
-If so, perhaps this PERSTOUT change and the clk-en7523.c PERSTOUT
-change could be in the same patch?  It would just require an ack from
-the clk folks and then we could merge it via PCI.
+Check the Sashiko moanings on the driver and address with
+follow-up patches if necessary!
+
+Yours,
+Linus Walleij
 
