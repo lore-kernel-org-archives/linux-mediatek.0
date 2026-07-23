@@ -4,70 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8335C531D0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2026 00:10:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD668C531CC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2026 00:58:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LjacPsdtNV1p4l/sQfaVOtYLfOgONtMJVT+kTLVOtKI=; b=pw8wat1+BbAi2qSzjyk6S4TLgx
-	MYSrICxYqJW5N1YGwu9cRK8Hnwgn5aY81APbfY70XearHjI+k639H008eSTaW2KOJyK5cw5xgQwpD
-	/2oo6espRXZgyeY3h/TVQ8FiaakrkxgGCdtqJnzHxRomkrBKPHHcNt3Hut164zJPsFkJlXUnbvPmn
-	z3RULpA5Q+HYYPuYpmqMIUxe/m07gcJdTOCgB5XycPHaBi2x+anykBfmnzZf38YtzkxuTxCOIRftu
-	ofrBIUPO6S4PvoVt1ErJDKCDXXeEUDitewTx7t/ADRkYaLYhcB093Wm9LCS1CrzaoGa2dJEHoUqXp
-	3h6Q+d+A==;
+	bh=d+rccmQha0mpuPngPslpwm9IlHn7y2fRy92hIecwpwU=; b=R1sOzjgHyzAI7zkzUodLeW7fo+
+	cZUmwP+Z1rtLp/uOxh7yQqUK6A3SU5Fu3LqOuBJMYKk6/1zU8CkA4mB/ATcxPTHetV50nGofmZfHD
+	yW+Ot1aGzPPrqlXrnVWp8/Zl7Vdj5Pp0WkUD2bOX/xwDod9crJNqn/xTzAEmJgcR5y4gKLfltf5Cp
+	5ntpC8cSDqTsO1LZhX9XTf8hsJwEZ6QPUgo+yejDAodNRCwoObQmusWkPo3hI13V8gWbglUoI1l3K
+	OtJzz64Bs6GhfmbHFP+EGgUZpTvvUXGQPzF3vHuGLOhmc+o7Ez++NMZJfNpB5fn9nI9cfIysgB2wy
+	xvfbRLBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wn3V3-0000000FHep-1Blp;
-	Fri, 24 Jul 2026 00:10:49 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wn4FK-0000000FJTf-1hRd;
+	Fri, 24 Jul 2026 00:58:38 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wn3V2-0000000FHeg-11j3
-	for linux-mediatek@lists.infradead.org;
-	Fri, 24 Jul 2026 00:10:48 +0000
+	id 1wn4FJ-0000000FJTP-1ufm;
+	Fri, 24 Jul 2026 00:58:37 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id B456A43DC8
-	for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2026 00:10:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98C241F00ADB
-	for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2026 00:10:47 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id E0E75600AA;
+	Fri, 24 Jul 2026 00:58:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5600F1F000E9;
+	Fri, 24 Jul 2026 00:58:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784851847;
-	bh=LjacPsdtNV1p4l/sQfaVOtYLfOgONtMJVT+kTLVOtKI=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=dGJ9B1HGGr9MTYXoXXfILTJqaNWoaeaD6lEYSc1YBjJvZ6yLjbxkSHOpxrnvf8OVZ
-	 aWWICcJ9JNVuXbLTVL1Xnkz05JKqxTFpWdIgociO3UZTOX3G6INvnh2CPaBDh7z2hY
-	 0BKOrbqqPlkLRqgU/ssukTWRdWc9wPFVW+7N69pblRtxf6u7ct7fLM9UmqMKl1QTPq
-	 pbAxq04PLyG454o0qSi7RPqT+LrcmxmTqYckUQ9M/J6OVxy1DoBHJImXz4PvsG72yR
-	 NXpQ4p1uhqnik1c5FV/Nn21nNDs+C00R7MGtPgNapsd9BodOAfrHNdWX6nGPCp4ldU
-	 sO1OLLEIKs8AA==
-Received: by mail-pj1-f42.google.com with SMTP id 98e67ed59e1d1-383cb94f742so1204458a91.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 Jul 2026 17:10:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+Rr0RiG+sKbVk7tuzJGnso41BFyGVKO9ZLnX9c0XWG9Jg44tBBjvOW8KXwQ3wpQ8v/HPa2iiyuMhCb3Ue7WX/w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzBCBezYcba11DRZ16jyFp7R8Ot6fyUEGei3ZfJfE4s0E3z6CAE
-	EMAVWXZHHcYn/nLX2rABpuOt8EUYUk9LF3QC5xNLG5G3ZO+3PnsmfxVLw24pR1QPYsDRWPq/lNX
-	q50gVFfaWOb3BHESUUH0NguMkSnIbRw==
-X-Received: by 2002:a17:90b:1642:b0:37f:f4ae:5f25 with SMTP id
- 98e67ed59e1d1-38ec6a51c61mr4741746a91.20.1784851847244; Thu, 23 Jul 2026
- 17:10:47 -0700 (PDT)
+	s=k20260515; t=1784854716;
+	bh=d+rccmQha0mpuPngPslpwm9IlHn7y2fRy92hIecwpwU=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=mshJbWy0j0QQWNkkG8gXmWO6ppIV0IlAJcYk9boidTMNFrC/1KqMNNLDHoM22uWc0
+	 Ms407o5SLpJCWf22jjPNcjG0d4OBrZ0Uey5P4XJ34HEFy5Rn1h5857cpPzCZXnPtJ5
+	 Z+3WO2F3a9ffbGWBkCubKGByTRDm/2fDq/qcHby6x8f+CccB+AN6RPouE+O1NxgVR6
+	 MiN5WV16JA19a/CpVleoVKkKsuxO5jdLcrCGxVL0ZAiA8igjtsPiIlItkjNmlns4cG
+	 7hUrA7UrUrb3WIXJo3XjugVt/Zrq/Wi2ehsDO/zo7P2603TxYPlDkU56HoWZ9uZlw9
+	 ytgX++hb3wYpA==
+From: Mark Brown <broonie@kernel.org>
+To: Takashi Iwai <tiwai@suse.com>, Nick Li <nick.li@foursemi.com>, 
+ Herve Codina <herve.codina@bootlin.com>, phucduc.bui@gmail.com
+Cc: Support Opensource <support.opensource@diasemi.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Srinivas Kandagatla <srini@kernel.org>, 
+ Charles Keepax <ckeepax@opensource.cirrus.com>, 
+ Richard Fitzgerald <rf@opensource.cirrus.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>, 
+ Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>, 
+ Oder Chiou <oder_chiou@realtek.com>, Linus Walleij <linusw@kernel.org>, 
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
+ u.kleine-koenig@baylibre.com, Zhang Yi <zhangyi@everest-semi.com>, 
+ Marco Crivellari <marco.crivellari@suse.com>, Kees Cook <kees@kernel.org>, 
+ HyeongJun An <sammiee5311@gmail.com>, Arnd Bergmann <arnd@arndb.de>, 
+ Qianfeng Rong <rongqianfeng@vivo.com>, linux-sound@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, patches@opensource.cirrus.com, 
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20260721102600.523199-1-phucduc.bui@gmail.com>
+References: <20260721102600.523199-1-phucduc.bui@gmail.com>
+Subject: Re: [PATCH v4 00/29] ASoC: codecs: Use guard() for mutex & spin
+ locks - part 2
+Message-Id: <178482419886.53486.18432313898881224470.b4-ty@b4>
+Date: Thu, 23 Jul 2026 17:29:58 +0100
 MIME-Version: 1.0
-References: <20260716132103.1564995-1-johan@kernel.org>
-In-Reply-To: <20260716132103.1564995-1-johan@kernel.org>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Fri, 24 Jul 2026 00:10:34 +0000
-X-Gmail-Original-Message-ID: <CAAOTY_8+u-yswp+Gsj1ZnaJWh3fZ6Ndxd=JeUie7ZVG1pBYyeA@mail.gmail.com>
-X-Gm-Features: AUfX_mwvrzL8b4TzBdDrdHDueSyF33BvYJFwjoUH9n9UYcfPUact2O614SD6X6A
-Message-ID: <CAAOTY_8+u-yswp+Gsj1ZnaJWh3fZ6Ndxd=JeUie7ZVG1pBYyeA@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: mtk_hdmi_common: take i2c adapter module reference
-To: Johan Hovold <johan@kernel.org>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.16-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4775; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=jaCu5qL9mMDjt299UAYjuj7jDb/QtbuwtHVWE2JfdRw=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqYri2ZaFghhN04vjJsl7C/an/f7uE0vwP69/DC
+ cZ0ZNCAWYqJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCamK4tgAKCRAk1otyXVSH
+ 0M2mB/4tFJE1SWmELrjSsFmKq6ErAzAYZrhQOIMLdUDmKljimPjS+14gXIYcfD79sT8/ntCHUi4
+ WALB7CaiTwKk9EPaqkmF/YOLj5E55t1pb3I7sCEq0RI7lfbMg3DwTalR5RJKNmsoioPGvZVx9bO
+ K4iV+g/CSmsiHC4E/ot6h06VZOJ4Tutj4FGP7eJC8rSaGSbG/6uUDPJDbqmQJNXrVQ/gLH6Rh4L
+ F0C0CsoVxdh13hRH7GVggW01+NVjR0bzM2ImRwDaf+/H5xYzu9LOqQL7r8yqNeUViRKbZCfRPRf
+ yScDFBM+dU0uBnv0zCOOc16CXsH3usDKRnFBRrp6fRqe+KGo
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,25 +97,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Johan Hovold <johan@kernel.org> =E6=96=BC 2026=E5=B9=B47=E6=9C=8816=E6=97=
-=A5=E9=80=B1=E5=9B=9B =E4=B8=8B=E5=8D=881:21=E5=AF=AB=E9=81=93=EF=BC=9A
->
-> The i2c subsystem currently blocks during adapter deregistration
-> whenever there are consumers holding a reference.
->
-> Switch to using of_get_i2c_adapter_by_node() which also takes a
-> reference to the adapter module so that an attempt to unload the module
-> while in use fails gracefully instead of blocking uninterruptibly.
+On Tue, 21 Jul 2026 17:25:31 +0700, phucduc.bui@gmail.com wrote:
+> ASoC: codecs: Use guard() for mutex & spin locks - part 2
+> 
+> From: bui duc phuc <phucduc.bui@gmail.com>
+> 
+> Hi all,
+> 
+> This series converts mutex and spinlock handling in ASoC codec drivers
+> to use the guard() and scoped_guard() helpers.
+> 
+> [...]
 
-Applied to mediatek-drm-fixes [1], thanks.
+Applied to
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
-log/?h=3Dmediatek-drm-fixes
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.3
 
-Regards,
-Chun-Kuang.
+Thanks!
 
->
-> Signed-off-by: Johan Hovold <johan@kernel.org>
-> ---
+[01/29] ASoC: codecs: da7213: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/847b7114df54
+[02/29] ASoC: codecs: da7219: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/47f85aa98bb2
+[03/29] ASoC: codecs: es8316: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/357d20c73de6
+[04/29] ASoC: codecs: es8326: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/61bc0010fafa
+[05/29] ASoC: codecs: es9356: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/17b1563aad1f
+[06/29] ASoC: codecs: fs210x: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/db044108a54a
+[07/29] ASoC: codecs: hdac_hdmi: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/51aac9ed7c0e
+[08/29] ASoC: codecs: hdmi-codec: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/9c61998c9c85
+[09/29] ASoC: codecs: idt821034: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/e199ec211b53
+[10/29] ASoC: codecs: lpass-macro: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/9296b430502c
+[11/29] ASoC: codecs: madera: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/5dabb2549c89
+[12/29] ASoC: codecs: max98095: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/750c61b2920f
+[13/29] ASoC: codecs: mt6359-accdet: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/3ec678539a9f
+[14/29] ASoC: codecs: pcm512x: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/b812b16661e8
+[15/29] ASoC: codecs: pcm6240: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/f3da3b7f6ed2
+[16/29] ASoC: codecs: peb2466: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/f7a116261d6b
+[17/29] ASoC: codecs: rt5514-spi: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/ed2e18138f18
+[18/29] ASoC: codecs: rt5645: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/1937a1e0969e
+[19/29] ASoC: codecs: rt5665: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/f1c58069475c
+[20/29] ASoC: codecs: rt5668: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/c745a4e595c5
+[21/29] ASoC: codecs: rt5677: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/be03bd5c4c34
+[22/29] ASoC: codecs: rt5682: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/97ed7ddb98d6
+[23/29] ASoC: codecs: rt700: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/5d649ea1d053
+[24/29] ASoC: codecs: rt711: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/f8e861f73b90
+[25/29] ASoC: codecs: rt712-sdca-sdw: Simplify regcache error handling in resume
+        https://git.kernel.org/broonie/sound/c/cd1c99ff8cf7
+[26/29] ASoC: codecs: rt712: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/32ac6377cec1
+[27/29] ASoC: codecs: rt721-sdca-sdw: Simplify regcache error handling in resume
+        https://git.kernel.org/broonie/sound/c/2df329044c61
+[28/29] ASoC: codecs: rt721: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/219fbaa1b6d1
+[29/29] ASoC: codecs: rt722: Use guard() for mutex locks
+        https://git.kernel.org/broonie/sound/c/cce043d552cd
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
