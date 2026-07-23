@@ -4,77 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33B8AC531CA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2026 03:58:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32D2FC4452B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2026 04:45:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y+cUuVqLUnQQTcUYJalAo2eqKUUDtOgA4uSawG8klWY=; b=Pvfva/F6j+DLxkKdyzjlOD6tAQ
-	iVRrORu2jjLZOFhhkUENGr8JOTRd1tatD9mgvA3uNI6VnsTe+tYr99IcH2iWMPBfr3d83uhWV2WUE
-	wnkoRcaWckipZtvsdqPRaYYdPrjKvfBnXyPdaVoJv32OzZHGMmj5aASIlAJNDm+RvBnrzWO9F7Tqy
-	XYqTEN/+lqCZfvKUWSTEco481Nm3Z0COn9TghCmZ1BxNUhdJJbqzK2H2Tn3mIjkphNc8cluZokp0C
-	r1S+bOOh+Zv2wW1w+RvrviFsBDDq4kno1rnNbK6Bc1rUv2CRNExbJhEozFh0RZd6w6EYVzmGuClrv
-	VubDdL0g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wW/CKYwNeSuhKW06GZTjMezL5yo1gpQGxj+dlS5GDO4=; b=CcBNucFtwxrw+8niJ+dYZxlTRw
+	sKmWPdxVK2wDW6yfAtje1ihY0EZGhk2p98ce7Pns+FKsoHPwFYAHI6cVITail52Y6PJkNsbky4G2v
+	klMumrwns44vsZ3xDtfWo3byC6JfL/GfrFYZB6yH7Yd1wmHCBoXdkMI5CslaFWJdzNSLjJKNBULsL
+	HKKTjZPkkOVOvj4AjvPgFMKVKnYpJcQ/OtCkIQoYghHJJhNKwnfrqS1MsovaBEvPsbJrA/RCZcXDw
+	z/NDqUnhMhgnRLZ1qZlRvyRcoFR5HnlnHlbvnTE76oriTtjmv9JszAKSyN9UMPuuqP8Zh98Sun7te
+	eZMUR4lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmka4-0000000DMHx-077m;
-	Thu, 23 Jul 2026 03:58:44 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wmlJE-0000000DQTL-3Yc1;
+	Thu, 23 Jul 2026 04:45:24 +0000
+Received: from mail-4319.protonmail.ch ([185.70.43.19])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmkZt-0000000DM8P-1Ky8;
-	Thu, 23 Jul 2026 03:58:35 +0000
-X-UUID: c3474b90864a11f1afed4741b24580c9-20260722
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=y+cUuVqLUnQQTcUYJalAo2eqKUUDtOgA4uSawG8klWY=;
-	b=Y29t5kJUGP+jN2c4sf+elnJUP0Th5VkSlmTFgHRCmSzgb0S88ooat6g4y06snojfeIHn1mMLuJ4cRD3RGsKcoFl7XgpU1Zu/weQaFc5y6i/Thn5drzBD3U8digGLoYshxfiB4/ptYwJlO3Xrq/3MOL3VZOp7DxwyhRHtbJiFTNw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.18,REQID:4d403e2f-cdd6-4fd0-a827-ad0f695c1394,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:8a735a6,CLOUDID:667537d6-1078-4cd9-8e6f-a9a3d1715936,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|136|836|865|888|898,TC:-5,Content:0|
-	15|50|99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL
-	:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: c3474b90864a11f1afed4741b24580c9-20260722
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <justin.yeh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 645864912; Wed, 22 Jul 2026 20:58:28 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 23 Jul 2026 11:58:26 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Thu, 23 Jul 2026 11:58:26 +0800
-From: Justin Yeh <justin.yeh@mediatek.com>
-To: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linusw@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	Justin Yeh <justin.yeh@mediatek.com>
-Subject: [PATCH v7 5/5] pinctrl: mediatek: enable module build support for all SoC drivers
-Date: Thu, 23 Jul 2026 11:58:16 +0800
-Message-ID: <20260723035823.2041832-6-justin.yeh@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260723035823.2041832-1-justin.yeh@mediatek.com>
-References: <20260723035823.2041832-1-justin.yeh@mediatek.com>
+	id 1wmlJA-0000000DQPu-3VFw
+	for linux-mediatek@lists.infradead.org;
+	Thu, 23 Jul 2026 04:45:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1784781914; x=1785041114;
+	bh=wW/CKYwNeSuhKW06GZTjMezL5yo1gpQGxj+dlS5GDO4=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=TJmJcQFzfig88fQdwdXhrD2pWD5RTQe/PystMHu0gbgv5QqStm81WNo43i606ISod
+	 RkCdxWY/DPLkbTE19tNcmEjMxP8qLUt+rpef/TwR3XGXrvXE0MkNrPRrHQoJpMYj1D
+	 hzeZKpVRfEiu6cOceVBbnWUH93pSKLqr7Vsdd917vWKvxwejxosFKVxZ+XjMuff9ZV
+	 5IRe1or+xlP8e3a30gCs/1bT3Np22wUxwNF8frKWeXC38Trvxp+3jZxnHHuEwaKTN1
+	 TuPFy4i0XJgUZ2OEshG8OIThQLjaYt1tR+9mJFMHJaRexoUNFbdbwOypWgMtUOw9pq
+	 F1K69BGbpEjJQ==
+Date: Thu, 23 Jul 2026 04:45:09 +0000
+To: Nick Desaulniers <ndesaulniers@google.com>
+From: Roman Vivchar <rva333@protonmail.com>
+Cc: Akari Tsuyukusa <akkun11.open@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Russell King <linux@armlinux.org.uk>, Nathan Chancellor <nathan@kernel.org>, Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, "moderated list:ARM SUB-ARCHITECTURES" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "open list:CLANG/LLVM BUILD SUPPORT:Keyword:b(?i:clang|llvm)b" <llvm@lists.linux.dev>, stable@vger.kernel.org, Arnd Bergmann <arnd@kernel.org>, Ard Biesheuvel <ardb@google.com>
+Subject: Re: [PATCH] arm: mediatek: fix secondary CPU boot on Thumb-2 kernels with Clang
+Message-ID: <zo4Pc8hOijXVSfn0yb52lWWjOU22jy29zRsEh6SBnxdXnpeGNep29fgUzygelrmDDRCioUAggBOSG1qy_38Ex_Lmb08n7eGCyucd3j_VIbU=@protonmail.com>
+In-Reply-To: <CAKwvOdnbPKoTy72EvfpKtT9Ne-r+O0j99KFX8OvjGk8ZxsuEGw@mail.gmail.com>
+References: <20260722172443.534251-1-akkun11.open@gmail.com> <CAKwvOdnbPKoTy72EvfpKtT9Ne-r+O0j99KFX8OvjGk8ZxsuEGw@mail.gmail.com>
+Feedback-ID: 173184497:user:proton
+X-Pm-Message-ID: c09dfc0e9422886d7f682f6a654403b5b201dbbd
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260722_205833_380344_738E7F10 
-X-CRM114-Status: GOOD (  12.46  )
+X-CRM114-CacheID: sfid-20260722_214521_044567_38CF8C3C 
+X-CRM114-Status: GOOD (  16.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,845 +69,248 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert the Kconfig option of every MediaTek pinctrl SoC driver from bool
-to tristate and add MODULE_DESCRIPTION()/MODULE_LICENSE() so that they can
-be built as loadable kernel modules.
+Hi Nick,
 
-This is required for Android GKI + vendor_dlkm deployments, where
-vendor-specific drivers must be kept separate from the GKI vmlinux and
-loaded as modules from the vendor partition.
+On Thursday, July 23rd, 2026 at 12:03 AM, Nick Desaulniers <ndesaulniers@go=
+ogle.com> wrote:
 
-Signed-off-by: Justin Yeh <justin.yeh@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/pinctrl/mediatek/Kconfig          | 64 +++++++++++------------
- drivers/pinctrl/mediatek/pinctrl-mt2701.c |  2 +
- drivers/pinctrl/mediatek/pinctrl-mt2712.c |  2 +
- drivers/pinctrl/mediatek/pinctrl-mt6397.c |  3 ++
- drivers/pinctrl/mediatek/pinctrl-mt6795.c |  4 ++
- drivers/pinctrl/mediatek/pinctrl-mt6797.c |  4 ++
- drivers/pinctrl/mediatek/pinctrl-mt6878.c |  2 +
- drivers/pinctrl/mediatek/pinctrl-mt6893.c |  2 +
- drivers/pinctrl/mediatek/pinctrl-mt7620.c |  2 +
- drivers/pinctrl/mediatek/pinctrl-mt7621.c |  2 +
- drivers/pinctrl/mediatek/pinctrl-mt7622.c |  3 ++
- drivers/pinctrl/mediatek/pinctrl-mt7623.c |  3 ++
- drivers/pinctrl/mediatek/pinctrl-mt7629.c |  3 ++
- drivers/pinctrl/mediatek/pinctrl-mt76x8.c |  2 +
- drivers/pinctrl/mediatek/pinctrl-mt7981.c |  3 ++
- drivers/pinctrl/mediatek/pinctrl-mt7986.c |  4 ++
- drivers/pinctrl/mediatek/pinctrl-mt7988.c |  3 ++
- drivers/pinctrl/mediatek/pinctrl-mt8127.c |  3 ++
- drivers/pinctrl/mediatek/pinctrl-mt8135.c |  3 ++
- drivers/pinctrl/mediatek/pinctrl-mt8167.c |  2 +
- drivers/pinctrl/mediatek/pinctrl-mt8173.c |  3 ++
- drivers/pinctrl/mediatek/pinctrl-mt8183.c |  4 ++
- drivers/pinctrl/mediatek/pinctrl-mt8186.c |  4 ++
- drivers/pinctrl/mediatek/pinctrl-mt8188.c |  2 +
- drivers/pinctrl/mediatek/pinctrl-mt8189.c |  2 +
- drivers/pinctrl/mediatek/pinctrl-mt8192.c |  2 +
- drivers/pinctrl/mediatek/pinctrl-mt8195.c |  4 ++
- drivers/pinctrl/mediatek/pinctrl-mt8196.c |  2 +
- drivers/pinctrl/mediatek/pinctrl-mt8365.c |  2 +
- drivers/pinctrl/mediatek/pinctrl-mt8516.c |  2 +
- drivers/pinctrl/mediatek/pinctrl-rt2880.c |  2 +
- drivers/pinctrl/mediatek/pinctrl-rt305x.c |  2 +
- drivers/pinctrl/mediatek/pinctrl-rt3883.c |  2 +
- 33 files changed, 117 insertions(+), 32 deletions(-)
+> On Wed, Jul 22, 2026 at 10:25=E2=80=AFAM Akari Tsuyukusa <akkun11.open@gm=
+ail.com> wrote:
 
-diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-index 864e7ffc6044..611ca57ecefa 100644
---- a/drivers/pinctrl/mediatek/Kconfig
-+++ b/drivers/pinctrl/mediatek/Kconfig
-@@ -48,42 +48,42 @@ config PINCTRL_MTK_PARIS
- 
- # For MIPS SoCs
- config PINCTRL_MT7620
--	bool "MediaTek MT7620 pin control"
-+	tristate "MediaTek MT7620 pin control"
- 	depends on SOC_MT7620 || COMPILE_TEST
- 	depends on RALINK
- 	default SOC_MT7620
- 	select PINCTRL_MTK_MTMIPS
- 
- config PINCTRL_MT7621
--	bool "MediaTek MT7621 pin control"
-+	tristate "MediaTek MT7621 pin control"
- 	depends on SOC_MT7621 || COMPILE_TEST
- 	depends on RALINK
- 	default SOC_MT7621
- 	select PINCTRL_MTK_MTMIPS
- 
- config PINCTRL_MT76X8
--	bool "MediaTek MT76X8 pin control"
-+	tristate "MediaTek MT76X8 pin control"
- 	depends on SOC_MT7620 || COMPILE_TEST
- 	depends on RALINK
- 	default SOC_MT7620
- 	select PINCTRL_MTK_MTMIPS
- 
- config PINCTRL_RT2880
--	bool "Ralink RT2880 pin control"
-+	tristate "Ralink RT2880 pin control"
- 	depends on SOC_RT288X || COMPILE_TEST
- 	depends on RALINK
- 	default SOC_RT288X
- 	select PINCTRL_MTK_MTMIPS
- 
- config PINCTRL_RT305X
--	bool "Ralink RT305X pin control"
-+	tristate "Ralink RT305X pin control"
- 	depends on SOC_RT305X || COMPILE_TEST
- 	depends on RALINK
- 	default SOC_RT305X
- 	select PINCTRL_MTK_MTMIPS
- 
- config PINCTRL_RT3883
--	bool "Ralink RT3883 pin control"
-+	tristate "Ralink RT3883 pin control"
- 	depends on SOC_RT3883 || COMPILE_TEST
- 	depends on RALINK
- 	default SOC_RT3883
-@@ -91,35 +91,35 @@ config PINCTRL_RT3883
- 
- # For ARMv7 SoCs
- config PINCTRL_MT2701
--	bool "MediaTek MT2701 pin control"
-+	tristate "MediaTek MT2701 pin control"
- 	depends on MACH_MT7623 || MACH_MT2701 || COMPILE_TEST
- 	depends on OF
- 	default MACH_MT2701
- 	select PINCTRL_MTK
- 
- config PINCTRL_MT7623
--	bool "MediaTek MT7623 pin control with generic binding"
-+	tristate "MediaTek MT7623 pin control with generic binding"
- 	depends on MACH_MT7623 || COMPILE_TEST
- 	depends on OF
- 	default MACH_MT7623
- 	select PINCTRL_MTK_MOORE
- 
- config PINCTRL_MT7629
--	bool "MediaTek MT7629 pin control"
-+	tristate "MediaTek MT7629 pin control"
- 	depends on MACH_MT7629 || COMPILE_TEST
- 	depends on OF
- 	default MACH_MT7629
- 	select PINCTRL_MTK_MOORE
- 
- config PINCTRL_MT8135
--	bool "MediaTek MT8135 pin control"
-+	tristate "MediaTek MT8135 pin control"
- 	depends on MACH_MT8135 || COMPILE_TEST
- 	depends on OF
- 	default MACH_MT8135
- 	select PINCTRL_MTK
- 
- config PINCTRL_MT8127
--	bool "MediaTek MT8127 pin control"
-+	tristate "MediaTek MT8127 pin control"
- 	depends on MACH_MT8127 || COMPILE_TEST
- 	depends on OF
- 	default MACH_MT8127
-@@ -127,7 +127,7 @@ config PINCTRL_MT8127
- 
- # For ARMv8 SoCs
- config PINCTRL_MT2712
--	bool "MediaTek MT2712 pin control"
-+	tristate "MediaTek MT2712 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
-@@ -153,21 +153,21 @@ config PINCTRL_MT6779
- 	  map specific eint which doesn't have real gpio pin.
- 
- config PINCTRL_MT6795
--	bool "MediaTek MT6795 pin control"
-+	tristate "MediaTek MT6795 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
- 	select PINCTRL_MTK_PARIS
- 
- config PINCTRL_MT6797
--	bool "MediaTek MT6797 pin control"
-+	tristate "MediaTek MT6797 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
- 	select PINCTRL_MTK_PARIS
- 
- config PINCTRL_MT6878
--	bool "MediaTek MT6878 pin control"
-+	tristate "MediaTek MT6878 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
-@@ -177,7 +177,7 @@ config PINCTRL_MT6878
- 	  on the MediaTek MT6878 SoC.
- 
- config PINCTRL_MT6893
--	bool "MediaTek Dimensity MT6893 pin control"
-+	tristate "MediaTek Dimensity MT6893 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
-@@ -187,63 +187,63 @@ config PINCTRL_MT6893
- 	  on the MediaTek Dimensity 1200 MT6893 Smartphone SoC.
- 
- config PINCTRL_MT7622
--	bool "MediaTek MT7622 pin control"
-+	tristate "MediaTek MT7622 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
- 	select PINCTRL_MTK_MOORE
- 
- config PINCTRL_MT7981
--	bool "MediaTek MT7981 pin control"
-+	tristate "MediaTek MT7981 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
- 	select PINCTRL_MTK_MOORE
- 
- config PINCTRL_MT7986
--	bool "MediaTek MT7986 pin control"
-+	tristate "MediaTek MT7986 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
- 	select PINCTRL_MTK_MOORE
- 
- config PINCTRL_MT7988
--	bool "Mediatek MT7988 pin control"
-+	tristate "Mediatek MT7988 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
- 	select PINCTRL_MTK_MOORE
- 
- config PINCTRL_MT8167
--	bool "MediaTek MT8167 pin control"
-+	tristate "MediaTek MT8167 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
- 	select PINCTRL_MTK
- 
- config PINCTRL_MT8173
--	bool "MediaTek MT8173 pin control"
-+	tristate "MediaTek MT8173 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
- 	select PINCTRL_MTK
- 
- config PINCTRL_MT8183
--	bool "MediaTek MT8183 pin control"
-+	tristate "MediaTek MT8183 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
- 	select PINCTRL_MTK_PARIS
- 
- config PINCTRL_MT8186
--	bool "MediaTek MT8186 pin control"
-+	tristate "MediaTek MT8186 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
- 	select PINCTRL_MTK_PARIS
- 
- config PINCTRL_MT8188
--	bool "MediaTek MT8188 pin control"
-+	tristate "MediaTek MT8188 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
-@@ -255,7 +255,7 @@ config PINCTRL_MT8188
- 	  map specific eint which doesn't have real gpio pin.
- 
- config PINCTRL_MT8189
--        bool "MediaTek MT8189 pin control"
-+        tristate "MediaTek MT8189 pin control"
-         depends on OF
-         depends on ARM64 || COMPILE_TEST
-         default ARM64 && ARCH_MEDIATEK
-@@ -267,21 +267,21 @@ config PINCTRL_MT8189
-           map specific eint which doesn't have real gpio pin.
- 
- config PINCTRL_MT8192
--	bool "MediaTek MT8192 pin control"
-+	tristate "MediaTek MT8192 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
- 	select PINCTRL_MTK_PARIS
- 
- config PINCTRL_MT8195
--	bool "MediaTek MT8195 pin control"
-+	tristate "MediaTek MT8195 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
- 	select PINCTRL_MTK_PARIS
- 
- config PINCTRL_MT8196
--	bool "MediaTek MT8196 pin control"
-+	tristate "MediaTek MT8196 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
-@@ -293,14 +293,14 @@ config PINCTRL_MT8196
- 	  map specific eint which doesn't have real gpio pin.
- 
- config PINCTRL_MT8365
--	bool "MediaTek MT8365 pin control"
-+	tristate "MediaTek MT8365 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
- 	select PINCTRL_MTK
- 
- config PINCTRL_MT8516
--	bool "MediaTek MT8516 pin control"
-+	tristate "MediaTek MT8516 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
-@@ -308,7 +308,7 @@ config PINCTRL_MT8516
- 
- # For PMIC
- config PINCTRL_MT6397
--	bool "MediaTek MT6397 pin control"
-+	tristate "MediaTek MT6397 pin control"
- 	depends on MFD_MT6397 || COMPILE_TEST
- 	depends on OF
- 	default MFD_MT6397
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt2701.c b/drivers/pinctrl/mediatek/pinctrl-mt2701.c
-index d262f810e40b..9e04f5b7cbba 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt2701.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt2701.c
-@@ -543,4 +543,6 @@ static int __init mtk_pinctrl_init(void)
- }
- arch_initcall(mtk_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek MT2701 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt2712.c b/drivers/pinctrl/mediatek/pinctrl-mt2712.c
-index aa8f9650c157..c7df168c314d 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt2712.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt2712.c
-@@ -592,4 +592,6 @@ static int __init mtk_pinctrl_init(void)
- 
- arch_initcall(mtk_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek MT2712 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6397.c b/drivers/pinctrl/mediatek/pinctrl-mt6397.c
-index be691edf3e65..13cee2a209c2 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt6397.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt6397.c
-@@ -49,6 +49,7 @@ static const struct of_device_id mt6397_pctrl_match[] = {
- 	{ .compatible = "mediatek,mt6397-pinctrl", },
- 	{ }
- };
-+MODULE_DEVICE_TABLE(of, mt6397_pctrl_match);
- 
- static struct platform_driver mtk_pinctrl_driver = {
- 	.probe = mt6397_pinctrl_probe,
-@@ -60,4 +61,6 @@ static struct platform_driver mtk_pinctrl_driver = {
- 
- builtin_platform_driver(mtk_pinctrl_driver);
- 
-+MODULE_DESCRIPTION("MediaTek MT6397 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6795.c b/drivers/pinctrl/mediatek/pinctrl-mt6795.c
-index ee3ae3d2fa7e..82df5cafc3d3 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt6795.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt6795.c
-@@ -607,6 +607,7 @@ static const struct of_device_id mt6795_pctrl_match[] = {
- 	{ .compatible = "mediatek,mt6795-pinctrl", .data = &mt6795_data },
- 	{ }
- };
-+MODULE_DEVICE_TABLE(of, mt6795_pctrl_match);
- 
- static struct platform_driver mt6795_pinctrl_driver = {
- 	.driver = {
-@@ -622,3 +623,6 @@ static int __init mtk_pinctrl_init(void)
- 	return platform_driver_register(&mt6795_pinctrl_driver);
- }
- arch_initcall(mtk_pinctrl_init);
-+
-+MODULE_DESCRIPTION("MediaTek MT6795 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6797.c b/drivers/pinctrl/mediatek/pinctrl-mt6797.c
-index 53f240491259..6d4a5b16035f 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt6797.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt6797.c
-@@ -61,6 +61,7 @@ static const struct of_device_id mt6797_pinctrl_of_match[] = {
- 	{ .compatible = "mediatek,mt6797-pinctrl", .data = &mt6797_data },
- 	{ }
- };
-+MODULE_DEVICE_TABLE(of, mt6797_pinctrl_of_match);
- 
- static struct platform_driver mt6797_pinctrl_driver = {
- 	.driver = {
-@@ -75,3 +76,6 @@ static int __init mt6797_pinctrl_init(void)
- 	return platform_driver_register(&mt6797_pinctrl_driver);
- }
- arch_initcall(mt6797_pinctrl_init);
-+
-+MODULE_DESCRIPTION("MediaTek MT6797 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6878.c b/drivers/pinctrl/mediatek/pinctrl-mt6878.c
-index b59ae089128a..7b5a15f4aba1 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt6878.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt6878.c
-@@ -1459,6 +1459,7 @@ static const struct of_device_id mt6878_pinctrl_of_match[] = {
- 	{ .compatible = "mediatek,mt6878-pinctrl", .data = &mt6878_data },
- 	{ }
- };
-+MODULE_DEVICE_TABLE(of, mt6878_pinctrl_of_match);
- 
- static struct platform_driver mt6878_pinctrl_driver = {
- 	.driver = {
-@@ -1476,3 +1477,4 @@ static int __init mt6878_pinctrl_init(void)
- arch_initcall(mt6878_pinctrl_init);
- 
- MODULE_DESCRIPTION("MediaTek MT6878 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6893.c b/drivers/pinctrl/mediatek/pinctrl-mt6893.c
-index 468ce0109b07..5ff1e7722889 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt6893.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt6893.c
-@@ -859,6 +859,7 @@ static const struct of_device_id mt6893_pinctrl_of_match[] = {
- 	{ .compatible = "mediatek,mt6893-pinctrl", .data = &mt6893_data },
- 	{ /* sentinel */ }
- };
-+MODULE_DEVICE_TABLE(of, mt6893_pinctrl_of_match);
- 
- static struct platform_driver mt6893_pinctrl_driver = {
- 	.driver = {
-@@ -877,3 +878,4 @@ static int __init mt6893_pinctrl_init(void)
- arch_initcall(mt6893_pinctrl_init);
- 
- MODULE_DESCRIPTION("MediaTek MT6893 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7620.c b/drivers/pinctrl/mediatek/pinctrl-mt7620.c
-index e5d368530247..7bfa6a8a3ce3 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt7620.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7620.c
-@@ -136,4 +136,6 @@ static int __init mt7620_pinctrl_init(void)
- }
- core_initcall_sync(mt7620_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek MT7620 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7621.c b/drivers/pinctrl/mediatek/pinctrl-mt7621.c
-index b337936e5c18..5a893d8505a3 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt7621.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7621.c
-@@ -116,4 +116,6 @@ static int __init mt7621_pinctrl_init(void)
- }
- core_initcall_sync(mt7621_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek MT7621 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7622.c b/drivers/pinctrl/mediatek/pinctrl-mt7622.c
-index 38830f6dc5fd..36a9a9f302ca 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt7622.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7622.c
-@@ -874,6 +874,7 @@ static const struct of_device_id mt7622_pinctrl_of_match[] = {
- 	{ .compatible = "mediatek,mt7622-pinctrl", },
- 	{ }
- };
-+MODULE_DEVICE_TABLE(of, mt7622_pinctrl_of_match);
- 
- static int mt7622_pinctrl_probe(struct platform_device *pdev)
- {
-@@ -894,4 +895,6 @@ static int __init mt7622_pinctrl_init(void)
- }
- arch_initcall(mt7622_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek MT7622 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7623.c b/drivers/pinctrl/mediatek/pinctrl-mt7623.c
-index a36124036daa..26fa489db13c 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt7623.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7623.c
-@@ -1413,6 +1413,7 @@ static const struct of_device_id mt7623_pctrl_match[] = {
- 	{ .compatible = "mediatek,mt7623-moore-pinctrl", },
- 	{}
- };
-+MODULE_DEVICE_TABLE(of, mt7623_pctrl_match);
- 
- static int mt7623_pinctrl_probe(struct platform_device *pdev)
- {
-@@ -1441,4 +1442,6 @@ static int __init mtk_pinctrl_init(void)
- }
- arch_initcall(mtk_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek MT7623 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7629.c b/drivers/pinctrl/mediatek/pinctrl-mt7629.c
-index 57868f73fce2..385d66b8e3fb 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt7629.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7629.c
-@@ -430,6 +430,7 @@ static const struct of_device_id mt7629_pinctrl_of_match[] = {
- 	{ .compatible = "mediatek,mt7629-pinctrl", },
- 	{}
- };
-+MODULE_DEVICE_TABLE(of, mt7629_pinctrl_of_match);
- 
- static int mt7629_pinctrl_probe(struct platform_device *pdev)
- {
-@@ -450,4 +451,6 @@ static int __init mt7629_pinctrl_init(void)
- }
- arch_initcall(mt7629_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek MT7629 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt76x8.c b/drivers/pinctrl/mediatek/pinctrl-mt76x8.c
-index 9c064bf94935..336d4e36e884 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt76x8.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt76x8.c
-@@ -248,4 +248,6 @@ static int __init mt76x8_pinctrl_init(void)
- }
- core_initcall_sync(mt76x8_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek MT76X8 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7981.c b/drivers/pinctrl/mediatek/pinctrl-mt7981.c
-index 69b16b01b4b3..2325cc8b9345 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt7981.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7981.c
-@@ -1039,6 +1039,7 @@ static const struct of_device_id mt7981_pinctrl_of_match[] = {
- 	{ .compatible = "mediatek,mt7981-pinctrl", },
- 	{}
- };
-+MODULE_DEVICE_TABLE(of, mt7981_pinctrl_of_match);
- 
- static int mt7981_pinctrl_probe(struct platform_device *pdev)
- {
-@@ -1059,4 +1060,6 @@ static int __init mt7981_pinctrl_init(void)
- }
- arch_initcall(mt7981_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek MT7981 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7986.c b/drivers/pinctrl/mediatek/pinctrl-mt7986.c
-index d7c7591ed231..6cbf90879eb5 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt7986.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7986.c
-@@ -965,11 +965,13 @@ static const struct of_device_id mt7986a_pinctrl_of_match[] = {
- 	{.compatible = "mediatek,mt7986a-pinctrl",},
- 	{}
- };
-+MODULE_DEVICE_TABLE(of, mt7986a_pinctrl_of_match);
- 
- static const struct of_device_id mt7986b_pinctrl_of_match[] = {
- 	{.compatible = "mediatek,mt7986b-pinctrl",},
- 	{}
- };
-+MODULE_DEVICE_TABLE(of, mt7986b_pinctrl_of_match);
- 
- static int mt7986a_pinctrl_probe(struct platform_device *pdev)
- {
-@@ -1009,4 +1011,6 @@ static int __init mt7986_pinctrl_init(void)
- }
- arch_initcall(mt7986_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek MT7986 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7988.c b/drivers/pinctrl/mediatek/pinctrl-mt7988.c
-index d90456c55c0b..14b5f4b695a2 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt7988.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7988.c
-@@ -1525,6 +1525,7 @@ static const struct of_device_id mt7988_pinctrl_of_match[] = {
- 	{ .compatible = "mediatek,mt7988-pinctrl" },
- 	{}
- };
-+MODULE_DEVICE_TABLE(of, mt7988_pinctrl_of_match);
- 
- static int mt7988_pinctrl_probe(struct platform_device *pdev)
- {
-@@ -1545,4 +1546,6 @@ static int __init mt7988_pinctrl_init(void)
- }
- arch_initcall(mt7988_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek MT7988 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8127.c b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
-index 34d840c1cc6a..296eed43c10a 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8127.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
-@@ -293,6 +293,7 @@ static const struct of_device_id mt8127_pctrl_match[] = {
- 	{ .compatible = "mediatek,mt8127-pinctrl", .data = &mt8127_pinctrl_data },
- 	{ }
- };
-+MODULE_DEVICE_TABLE(of, mt8127_pctrl_match);
- 
- static struct platform_driver mtk_pinctrl_driver = {
- 	.probe = mtk_pctrl_common_probe,
-@@ -308,4 +309,6 @@ static int __init mtk_pinctrl_init(void)
- }
- arch_initcall(mtk_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek MT8127 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8135.c b/drivers/pinctrl/mediatek/pinctrl-mt8135.c
-index 635048f9d1f2..713b362832db 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8135.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8135.c
-@@ -322,6 +322,7 @@ static const struct of_device_id mt8135_pctrl_match[] = {
- 	{ .compatible = "mediatek,mt8135-pinctrl", .data = &mt8135_pinctrl_data },
- 	{ }
- };
-+MODULE_DEVICE_TABLE(of, mt8135_pctrl_match);
- 
- static struct platform_driver mtk_pinctrl_driver = {
- 	.probe = mtk_pctrl_common_probe,
-@@ -337,4 +338,6 @@ static int __init mtk_pinctrl_init(void)
- }
- arch_initcall(mtk_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek MT8135 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8167.c b/drivers/pinctrl/mediatek/pinctrl-mt8167.c
-index 3bd8288795e4..cc45b0954009 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8167.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8167.c
-@@ -344,4 +344,6 @@ static int __init mtk_pinctrl_init(void)
- }
- arch_initcall(mtk_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek MT8167 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-index 20dd324eb152..fbb92a1b9d2c 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
-@@ -341,6 +341,7 @@ static const struct of_device_id mt8173_pctrl_match[] = {
- 	},
- 	{ }
- };
-+MODULE_DEVICE_TABLE(of, mt8173_pctrl_match);
- 
- static struct platform_driver mtk_pinctrl_driver = {
- 	.probe = mt8173_pinctrl_probe,
-@@ -357,4 +358,6 @@ static int __init mtk_pinctrl_init(void)
- }
- arch_initcall(mtk_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek MT8173 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8183.c b/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-index 93e482c6b5fd..edc68f998d8c 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8183.c
-@@ -571,6 +571,7 @@ static const struct of_device_id mt8183_pinctrl_of_match[] = {
- 	{ .compatible = "mediatek,mt8183-pinctrl", .data = &mt8183_data },
- 	{ }
- };
-+MODULE_DEVICE_TABLE(of, mt8183_pinctrl_of_match);
- 
- static struct platform_driver mt8183_pinctrl_driver = {
- 	.driver = {
-@@ -586,3 +587,6 @@ static int __init mt8183_pinctrl_init(void)
- 	return platform_driver_register(&mt8183_pinctrl_driver);
- }
- arch_initcall(mt8183_pinctrl_init);
-+
-+MODULE_DESCRIPTION("MediaTek MT8183 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8186.c b/drivers/pinctrl/mediatek/pinctrl-mt8186.c
-index dd19e74856a9..d4817838c531 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8186.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8186.c
-@@ -1249,6 +1249,7 @@ static const struct of_device_id mt8186_pinctrl_of_match[] = {
- 	{ .compatible = "mediatek,mt8186-pinctrl", .data = &mt8186_data },
- 	{ }
- };
-+MODULE_DEVICE_TABLE(of, mt8186_pinctrl_of_match);
- 
- static struct platform_driver mt8186_pinctrl_driver = {
- 	.driver = {
-@@ -1265,3 +1266,6 @@ static int __init mt8186_pinctrl_init(void)
- }
- 
- arch_initcall(mt8186_pinctrl_init);
-+
-+MODULE_DESCRIPTION("MediaTek MT8186 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8188.c b/drivers/pinctrl/mediatek/pinctrl-mt8188.c
-index 3975e99d9cf4..35dde16ab449 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8188.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8188.c
-@@ -1653,6 +1653,7 @@ static const struct of_device_id mt8188_pinctrl_of_match[] = {
- 	{ .compatible = "mediatek,mt8188-pinctrl", .data = &mt8188_data },
- 	{ }
- };
-+MODULE_DEVICE_TABLE(of, mt8188_pinctrl_of_match);
- 
- static struct platform_driver mt8188_pinctrl_driver = {
- 	.driver = {
-@@ -1671,3 +1672,4 @@ static int __init mt8188_pinctrl_init(void)
- arch_initcall(mt8188_pinctrl_init);
- 
- MODULE_DESCRIPTION("MediaTek MT8188 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8189.c b/drivers/pinctrl/mediatek/pinctrl-mt8189.c
-index cd4cdff309a1..1b1f9b4b6ad1 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8189.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8189.c
-@@ -1679,6 +1679,7 @@ static const struct of_device_id mt8189_pinctrl_of_match[] = {
- 	{ .compatible = "mediatek,mt8189-pinctrl", .data = &mt8189_data },
- 	{ /* sentinel */ }
- };
-+MODULE_DEVICE_TABLE(of, mt8189_pinctrl_of_match);
- 
- static struct platform_driver mt8189_pinctrl_driver = {
- 	.driver = {
-@@ -1696,3 +1697,4 @@ static int __init mt8189_pinctrl_init(void)
- arch_initcall(mt8189_pinctrl_init);
- 
- MODULE_DESCRIPTION("MediaTek MT8189 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8192.c b/drivers/pinctrl/mediatek/pinctrl-mt8192.c
-index 3f8a9dbcb704..b2ae3a62418d 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8192.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8192.c
-@@ -1414,6 +1414,7 @@ static const struct of_device_id mt8192_pinctrl_of_match[] = {
- 	{ .compatible = "mediatek,mt8192-pinctrl", .data = &mt8192_data },
- 	{ }
- };
-+MODULE_DEVICE_TABLE(of, mt8192_pinctrl_of_match);
- 
- static struct platform_driver mt8192_pinctrl_driver = {
- 	.driver = {
-@@ -1431,3 +1432,4 @@ static int __init mt8192_pinctrl_init(void)
- arch_initcall(mt8192_pinctrl_init);
- 
- MODULE_DESCRIPTION("MediaTek MT8192 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8195.c b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-index 83345c52b2fa..3a9912c0c095 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-@@ -963,6 +963,7 @@ static const struct of_device_id mt8195_pinctrl_of_match[] = {
- 	{ .compatible = "mediatek,mt8195-pinctrl", .data = &mt8195_data },
- 	{ }
- };
-+MODULE_DEVICE_TABLE(of, mt8195_pinctrl_of_match);
- 
- static struct platform_driver mt8195_pinctrl_driver = {
- 	.driver = {
-@@ -978,3 +979,6 @@ static int __init mt8195_pinctrl_init(void)
- 	return platform_driver_register(&mt8195_pinctrl_driver);
- }
- arch_initcall(mt8195_pinctrl_init);
-+
-+MODULE_DESCRIPTION("MediaTek MT8195 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8196.c b/drivers/pinctrl/mediatek/pinctrl-mt8196.c
-index dec957c1724b..2e36bf3c45eb 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8196.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8196.c
-@@ -1839,6 +1839,7 @@ static const struct of_device_id mt8196_pinctrl_of_match[] = {
- 	{ .compatible = "mediatek,mt8196-pinctrl", .data = &mt8196_data },
- 	{ /* sentinel */ }
- };
-+MODULE_DEVICE_TABLE(of, mt8196_pinctrl_of_match);
- 
- static struct platform_driver mt8196_pinctrl_driver = {
- 	.driver = {
-@@ -1856,3 +1857,4 @@ static int __init mt8196_pinctrl_init(void)
- arch_initcall(mt8196_pinctrl_init);
- 
- MODULE_DESCRIPTION("MediaTek MT8196 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8365.c b/drivers/pinctrl/mediatek/pinctrl-mt8365.c
-index 73849ae569c9..564227f7ca2d 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8365.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8365.c
-@@ -477,6 +477,7 @@ static const struct of_device_id mt8365_pctrl_match[] = {
- 	{ .compatible = "mediatek,mt8365-pinctrl", .data = &mt8365_pinctrl_data },
- 	{}
- };
-+MODULE_DEVICE_TABLE(of, mt8365_pctrl_match);
- 
- static struct platform_driver mtk_pinctrl_driver = {
- 	.probe = mtk_pctrl_common_probe,
-@@ -494,5 +495,6 @@ static int __init mtk_pinctrl_init(void)
- arch_initcall(mtk_pinctrl_init);
- 
- MODULE_DESCRIPTION("MediaTek MT8365 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_AUTHOR("Zhiyong Tao <zhiyong.tao@mediatek.com>");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8516.c b/drivers/pinctrl/mediatek/pinctrl-mt8516.c
-index 62084d0cc4c9..d4f0a0bc5438 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8516.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8516.c
-@@ -344,4 +344,6 @@ static int __init mtk_pinctrl_init(void)
- }
- arch_initcall(mtk_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek MT8516 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-rt2880.c b/drivers/pinctrl/mediatek/pinctrl-rt2880.c
-index a9c4acdc6766..e7099325c5ef 100644
---- a/drivers/pinctrl/mediatek/pinctrl-rt2880.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-rt2880.c
-@@ -60,4 +60,6 @@ static int __init rt2880_pinctrl_init(void)
- }
- core_initcall_sync(rt2880_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek RT2880 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-rt305x.c b/drivers/pinctrl/mediatek/pinctrl-rt305x.c
-index 93788ec49ed0..fa6407e86f79 100644
---- a/drivers/pinctrl/mediatek/pinctrl-rt305x.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-rt305x.c
-@@ -139,4 +139,6 @@ static int __init rt305x_pinctrl_init(void)
- }
- core_initcall_sync(rt305x_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek RT305X Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-rt3883.c b/drivers/pinctrl/mediatek/pinctrl-rt3883.c
-index afe705a0ddf6..838bf811cd0c 100644
---- a/drivers/pinctrl/mediatek/pinctrl-rt3883.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-rt3883.c
-@@ -107,4 +107,6 @@ static int __init rt3883_pinctrl_init(void)
- }
- core_initcall_sync(rt3883_pinctrl_init);
- 
-+MODULE_DESCRIPTION("MediaTek RT3883 Pinctrl Driver");
-+MODULE_LICENSE("GPL v2");
- MODULE_IMPORT_NS("MTK_PINCTRL");
--- 
-2.45.2
+...
 
+> There's definitely some difference between clang and GAS here.
+> https://github.com/llvm/llvm-project/issues/211376
+>
+> I wonder if perhaps a better machine-agnostic assembler-agnostic
+> assembler-version-agnostic patch would be something like:
+>
+> ```
+> diff --git a/arch/arm/kernel/head.S b/arch/arm/kernel/head.S
+> index f22c50d4bd41..687ee7063a73 100644
+> --- a/arch/arm/kernel/head.S
+> +++ b/arch/arm/kernel/head.S
+> @@ -383,6 +383,7 @@ ENDPROC(__create_page_tables)
+>  ENTRY(secondary_startup_arm)
+>   THUMB(        badr    r9, 1f          )       @ Kernel is entered in AR=
+M.
+>   THUMB(        bx      r9              )       @ If this is a Thumb-2 ke=
+rnel,
+> +ENDPROC(secondary_startup_arm)
+>   THUMB(        .thumb                  )       @ switch to Thumb now.
+>   THUMB(1:                      )
+>  ENTRY(secondary_startup)
+> @@ -429,7 +430,6 @@ ARM_BE8(eor r4, r4, r5)                     @
+> without using a temp reg.
+>                                                 @ (return control reg)
+>         ret     r12
+>  ENDPROC(secondary_startup)
+> -ENDPROC(secondary_startup_arm)
+>
+>  ENTRY(__secondary_switched)
+>  #if defined(CONFIG_VMAP_STACK) && !defined(CONFIG_ARM_LPAE)
+>
+> ```
+
+I'd like to join conversation because Thumb2 kernel with LLVM seems to
+be quite buggy.
+
+I can confirm the proposed fix works for clang, if you're going to send
+this patch, feel free to add
+
+Tested-by: Roman Vivchar <rva333@protonmail.com> # mt6572
+
+Leftover from IOMMU debugging shows there's another bug with ftrace.
+This probably needs separate thread though...
+
+[    0.193285] Starting tracer 'function_graph'
+[    0.210474] ------------[ cut here ]------------
+[    0.211120] WARNING: kernel/trace/fgraph.c:761 at ftrace_return_to_handl=
+er+0x1c5/0x228, CPU#0: swapper/0/1
+[    0.212437] Bad frame pointer: expected c6229ee0, received c132b33b
+[    0.212437]   from func iommu_init return to c13011cd
+[    0.213962] CPU: 0 UID: 0 PID: 1 Comm: swapper/0 Tainted: G     U       =
+       7.2.0-rc4-next-20260721-00134-g49e0d56c7cde-dirty #939 VOLUNTARY
+[    0.213980] Tainted: [U]=3DUSER
+[    0.213984] Hardware name: Mediatek Cortex-A7 (Device Tree)
+[    0.213991] Call trace:
+[    0.214000]  unwind_backtrace from show_stack+0x19/0x1a
+[    0.214024]  show_stack from dump_stack_lvl+0x37/0x40
+[    0.214044]  dump_stack_lvl from __warn+0xbb/0x1f0
+[    0.214061]  __warn from warn_slowpath_fmt+0xd1/0x11e
+[    0.214078]  warn_slowpath_fmt from ftrace_return_to_handler+0x1c5/0x228
+[    0.214099]  ftrace_return_to_handler from return_to_handler+0x17/0x24
+[    0.214121] ---[ end trace 0000000000000000 ]---
+[    0.222449] ------------[ cut here ]------------
+[    0.223075] WARNING: kernel/trace/fgraph.c:826 at ftrace_return_to_handl=
+er+0x1e5/0x228, CPU#0: swapper/0/1
+[    0.224385] CPU: 0 UID: 0 PID: 1 Comm: swapper/0 Tainted: G     U  W    =
+       7.2.0-rc4-next-20260721-00134-g49e0d56c7cde-dirty #939 VOLUNTARY
+[    0.224401] Tainted: [U]=3DUSER, [W]=3DWARN
+[    0.224405] Hardware name: Mediatek Cortex-A7 (Device Tree)
+[    0.224411] Call trace:
+[    0.224417]  unwind_backtrace from show_stack+0x19/0x1a
+[    0.224435]  show_stack from dump_stack_lvl+0x37/0x40
+[    0.224452]  dump_stack_lvl from __warn+0xbb/0x1f0
+[    0.224469]  __warn from warn_slowpath_fmt+0x83/0x11e
+[    0.224485]  warn_slowpath_fmt from ftrace_return_to_handler+0x1e5/0x228
+[    0.224505]  ftrace_return_to_handler from return_to_handler+0x17/0x24
+[    0.224526] ---[ end trace 0000000000000000 ]---
+[    0.232957] 8<--- cut here ---
+[    0.233378] Unable to handle kernel NULL pointer dereference at virtual =
+address 00000000 when read
+[    0.234580] [00000000] *pgd=3D00000000
+[    0.235082] Internal error: Oops: 5 [#1] SMP THUMB2
+[    0.235748] CPU: 0 UID: 0 PID: 1 Comm: swapper/0 Tainted: G     U  W    =
+       7.2.0-rc4-next-20260721-00134-g49e0d56c7cde-dirty #939 VOLUNTARY
+[    0.237485] Tainted: [U]=3DUSER, [W]=3DWARN
+[    0.238006] Hardware name: Mediatek Cortex-A7 (Device Tree)
+[    0.238756] PC is at vsnprintf+0x32/0x34e
+[    0.239309] LR is at vscnprintf+0x11/0x18
+[    0.239859] pc : [<c0bedbe6>]    lr : [<c0beec7f>]    psr: 800000b3
+[    0.240703] sp : c6229e48  ip : 00000000  fp : 00000000
+[    0.241409] r10: c6229ed4  r9 : 00000000  r8 : c30ecc24
+[    0.242116] r7 : c6229eb8  r6 : c30ed024  r5 : c6250000  r4 : 00000400
+[    0.242995] r3 : c6229ed4  r2 : 00000000  r1 : 00000400  r0 : c30ecc24
+[    0.243875] Flags: Nzcv  IRQs off  FIQs on  Mode SVC_32  ISA Thumb  Segm=
+ent none
+[    0.244874] Control: 50c5387d  Table: 8000406a  DAC: 00000051
+[    0.245649] Register r0 information: non-slab/vmalloc memory
+[    0.246422] Register r1 information: non-paged memory
+[    0.247111] Register r2 information: NULL pointer
+[    0.247753] Register r3 information: non-slab/vmalloc memory
+[    0.248522] Register r4 information: non-paged memory
+[    0.249210] Register r5 information: slab task_struct start c6250000 poi=
+nter offset 0 size 2432
+[    0.250412] Register r6 information: non-slab/vmalloc memory
+[    0.251181] Register r7 information: non-slab/vmalloc memory
+[    0.251949] Register r8 information: non-slab/vmalloc memory
+[    0.252717] Register r9 information: NULL pointer
+[    0.253360] Register r10 information: non-slab/vmalloc memory
+[    0.254140] Register r11 information: NULL pointer
+[    0.254794] Register r12 information: NULL pointer
+[    0.255447] Process swapper/0 (pid: 1, stack limit =3D 0x(ptrval))
+[    0.256259] Stack: (0xc6229e48 to 0xc622a000)
+[    0.256857] 9e40:                   c132b340 c13011cd 00000400 00000008 =
+c938c2cc 00000000
+[    0.257961] 9e60: 00000000 00000000 429c4c89 00000400 c6250000 c30ecc24 =
+c6229eb8 c2f0c8a4
+[    0.259065] 9e80: 00000000 c6229ed4 c2f0c8a0 c0beec7f 00000000 c0101f63 =
+00000000 c6250000
+[    0.260168] 9ea0: 00000000 c132b33b 00000000 00000000 c1390844 c61d6800 =
+c6229ecc c0101e45
+[    0.261271] 9ec0: c6229ed4 c6229ee8 c61d6800 c6229f48 c0101e23 c3128eec =
+00000000 00000000
+[    0.262374] 9ee0: 00000000 00000000 00000000 00000000 00000000 00000000 =
+00000000 00000000
+[    0.263476] 9f00: 00000000 00000000 00000000 00000000 00000000 00000000 =
+00000000 00000000
+[    0.264579] 9f20: 00000000 00000000 429c4c89 00000000 00000000 00000000 =
+00000000 c139088c
+[    0.265683] 9f40: c1390844 c61d6800 c6229f70 c1301953 00000001 00000001 =
+00000000 c13019e1
+[    0.266786] 9f60: 00000000 c61d6800 00000001 c11e8fd0 c6229f88 c13018a1 =
+00000000 c618cc00
+[    0.267890] 9f80: c0bf5ee9 00000000 c6229f98 c1301725 00000000 00000000 =
+c6229fa8 c0bf5f07
+[    0.268993] 9fa0: 00000000 00000000 00000000 c0100151 00000000 00000000 =
+00000000 00000000
+[    0.270096] 9fc0: 00000000 00000000 00000000 00000000 00000000 00000000 =
+00000000 00000000
+[    0.271198] 9fe0: 00000000 00000000 00000000 00000000 00000013 00000000 =
+00000000 00000000
+[    0.272296] Call trace:
+[    0.272306]  vsnprintf from vscnprintf+0x11/0x18
+[    0.273284]  vscnprintf from vpanic+0x11f/0x442
+[    0.273911]  vpanic from vpanic+0x1/0x442
+[    0.274472] Code: f04f 36ff 43c1 9102 (f89b) 1000
+[    0.275129] ---[ end trace 0000000000000000 ]---
+[    0.275755] note: swapper/0[1] exited with irqs disabled
+[    0.276557] Kernel panic - not syncing: Attempted to kill init! exitcode=
+=3D0x0000000b
+[    0.277644] ---[ end Kernel panic - not syncing: Attempted to kill init!=
+ exitcode=3D0x0000000b ]---
+
+Command line: ftrace=3Dfunction_graph ftrace_filter=3D*iommu* trace_buf_siz=
+e=3D40M trace_options=3Dfuncgraph-retval
+
+Config:
+$ grep -E "trac|thumb" .config -i
+CONFIG_CONTEXT_TRACKING=3Dy
+CONFIG_CONTEXT_TRACKING_IDLE=3Dy
+CONFIG_TASKS_TRACE_RCU=3Dy
+CONFIG_TRACEPOINTS=3Dy
+CONFIG_STACKTRACE_SUPPORT=3Dy
+CONFIG_CPU_THUMB_CAPABLE=3Dy
+CONFIG_ARM_THUMB=3Dy
+CONFIG_ARM_THUMBEE=3Dy
+CONFIG_THUMB2_KERNEL=3Dy
+CONFIG_CMDLINE=3D"..."
+CONFIG_TRACE_IRQFLAGS_SUPPORT=3Dy
+CONFIG_HAVE_ARCH_TRACEHOOK=3Dy
+CONFIG_HAVE_CONTEXT_TRACKING_USER=3Dy
+# CONFIG_IDLE_PAGE_TRACKING is not set
+# CONFIG_DMA_FENCE_TRACE is not set
+CONFIG_MOUSE_PS2_TRACKPOINT=3Dy
+CONFIG_TRACE_GPU_MEM=3Dy
+# HW tracing support
+# end of HW tracing support
+CONFIG_PSTORE_FTRACE=3Dy
+# CONFIG_PROC_MEM_FORCE_PTRACE is not set
+CONFIG_XZ_DEC_ARMTHUMB=3Dy
+# CONFIG_STACKTRACE_BUILD_ID is not set
+# CONFIG_NET_DEV_REFCNT_TRACKER is not set
+# CONFIG_NET_NS_REFCNT_TRACKER is not set
+CONFIG_STACKTRACE=3Dy
+CONFIG_RCU_TRACE=3Dy
+CONFIG_NOP_TRACER=3Dy
+CONFIG_HAVE_FUNCTION_TRACER=3Dy
+CONFIG_HAVE_FUNCTION_GRAPH_TRACER=3Dy
+CONFIG_HAVE_DYNAMIC_FTRACE=3Dy
+CONFIG_HAVE_DYNAMIC_FTRACE_WITH_REGS=3Dy
+CONFIG_HAVE_EXTRA_IPI_TRACEPOINTS=3Dy
+CONFIG_HAVE_SYSCALL_TRACEPOINTS=3Dy
+CONFIG_TRACE_CLOCK=3Dy
+CONFIG_EVENT_TRACING=3Dy
+CONFIG_CONTEXT_SWITCH_TRACER=3Dy
+CONFIG_TRACING=3Dy
+CONFIG_GENERIC_TRACER=3Dy
+CONFIG_TRACING_SUPPORT=3Dy
+CONFIG_FTRACE=3Dy
+CONFIG_TRACEFS_AUTOMOUNT_DEPRECATED=3Dy
+CONFIG_BOOTTIME_TRACING=3Dy
+CONFIG_FUNCTION_TRACER=3Dy
+CONFIG_FUNCTION_GRAPH_TRACER=3Dy
+CONFIG_DYNAMIC_FTRACE=3Dy
+CONFIG_DYNAMIC_FTRACE_WITH_REGS=3Dy
+CONFIG_FUNCTION_SELF_TRACING=3Dy
+# CONFIG_STACK_TRACER is not set
+# CONFIG_IRQSOFF_TRACER is not set
+# CONFIG_SCHED_TRACER is not set
+# CONFIG_HWLAT_TRACER is not set
+# CONFIG_OSNOISE_TRACER is not set
+# CONFIG_TIMERLAT_TRACER is not set
+# CONFIG_FTRACE_SYSCALLS is not set
+# CONFIG_TRACER_SNAPSHOT is not set
+# CONFIG_BLK_DEV_IO_TRACE is not set
+# CONFIG_KPROBE_EVENTS_ON_NOTRACE is not set
+CONFIG_FTRACE_MCOUNT_USE_RECORDMCOUNT=3Dy
+# CONFIG_TRACE_EVENT_INJECT is not set
+# CONFIG_TRACEPOINT_BENCHMARK is not set
+# CONFIG_TRACE_EVAL_MAP_FILE is not set
+CONFIG_FTRACE_RECORD_RECURSION=3Dy
+CONFIG_FTRACE_RECORD_RECURSION_SIZE=3D128
+# CONFIG_FTRACE_STARTUP_TEST is not set
+# CONFIG_FTRACE_SORT_STARTUP_TEST is not set
+# CONFIG_TRACE_REMOTE_TEST is not set
+# CONFIG_BACKTRACE_VERBOSE is not set
+# CONFIG_BACKTRACE_SELF_TEST is not set
+# CONFIG_TEST_REF_TRACKER is not set
+
+Clang:
+ClangBuiltLinux clang version 22.1.5 (https://github.com/llvm/llvm-project.=
+git 5ea218a153f4d2f815b8244eab3e4b4ba5e00e6c)
+
+Best regards,
+Roman
 
