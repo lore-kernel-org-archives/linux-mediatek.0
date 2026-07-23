@@ -4,107 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01961C531C7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2026 09:35:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB7C4C531CB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2026 09:53:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	Content-Type:Subject:References:In-Reply-To:Message-Id:Cc:To:From:Date:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QV/e0D4Cq+kXxk7foQFF5xP6EyKiu45j2ziUGVbkQko=; b=nQW53WNHhOBxjzg4NG+Ek4ON7+
-	jfwuCKdCDaVAXUuUR24B68kiboDpBwZ5uS7+EYFeR8ci7yYuPNfgW3uZgXrgQmCtxocEOAhF5gcqK
-	v3ThDYxit3d0OBmn2/ujP6Y5neXd2IZyczcR7fIBGP5qZJn1sc3CxF4kDQMMtqNzapztXqml41V6E
-	4RFtTBKbL040vO7EyO833vVRzGhPuT09Uxe81IRqYWdK8cR/84rwi8Wz+qEHKiaUZtjlDgIh21vzF
-	zRJ4evsZS0SRpKGjP3s8fqD8QzMfgTV4/er2BxLS84rK59gUkO3s7T+qjeL50PvWL5GbztQ4PGjF4
-	J7RMaK3w==;
+	bh=I2M839mlvciwjP3qRllak7mRBXp2uaYGUn4kNGJ6a2w=; b=4lQjO+hC5kzt6r2fM8M40HDGTx
+	5/23k1qMaiD/I76XlSgIluwApIhgc2lm93U3o0WTMe25rRfseJE+LZ2s8PysCiQXG40Bk0RvkoGZ9
+	kE2nbhEUvS/HKWo0rDAo+CuiJ6I4+qSYGlqYuc8MddbtURwGZAtvJJbz93uU6+yQRlqdZKX9nxd8Z
+	hpAzbjm+WR4Yq6dhBraZ0xje7kEwknM0P4d0076xivGHfqLjYG9aiN9ZbBFGm35uUse9wEqsaz+Ly
+	8yp1Tm6rYVbHeomVdXtJMpzQGeTs8kOjeExVMskCdcPtxcg24iTRMZk1Qf/iX5dK6OAuy8GHWBOj2
+	yXEazM4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmppm-0000000DrUR-09tb;
-	Thu, 23 Jul 2026 09:35:18 +0000
-Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
+	id 1wmq7b-0000000Dwwx-3ErY;
+	Thu, 23 Jul 2026 09:53:43 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmppj-0000000DrTX-3dQF
-	for linux-mediatek@lists.infradead.org;
-	Thu, 23 Jul 2026 09:35:17 +0000
-Received: by mail-qk1-x730.google.com with SMTP id af79cd13be357-930f618435cso42999585a.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 23 Jul 2026 02:35:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1784799314; cv=none;
-        d=google.com; s=arc-20260327;
-        b=SlPrQP/J/Mva3QMXzkcYjqWudxWPoy0dPp/TFl1+WWymtozBs6g39jJOdvq1tFV/Ag
-         v2w9ki/POpTLIokYRf0kma5OKVpN7dFLxkFR3ER8zMmIq0jfdb41VwfCj6dcUHZMZrGv
-         81R+Fmic7CuUEv7Dhk/zhdGcORO2f8LYAAOxay17H8NvIZbUOzY8ik6i5lByZvkf6lZc
-         rtRlOkAzNUdh4p6zTu9PknTal8g0ngS3AeJFnXi9dltM4ei6S6OEkbnuz2nrHOdos5C4
-         XsGPAa1bjU4LFWUKLxEwL8iM/oZIzngFVfDkA/2+i6Fh6wDLLu9LBaL9u5OgnLE9RsS8
-         W48g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=QV/e0D4Cq+kXxk7foQFF5xP6EyKiu45j2ziUGVbkQko=;
-        fh=LxMU/n10uHM7jMaC3om6lCr7phO5IALuBI+qHinrVgU=;
-        b=BPkbMo0tv2HhxYw3GYEnHDO8+b8ObWNEUcjflmfjejL2/hXolPef9l//cwStykTp36
-         z1KaKAfORCq495xVrtZGkR6Ju9dgui2mnenVDF7R/GoBMggAZYa8S5k/hr7Bofn79z1d
-         MmkEoRXcNmQWlB72zwuZxSm0hAANo5S7dTCcGGlVm45oQz8nMOnq+hzJfNN0vkQ3Zqdg
-         dJAUAm+aLlWZNYi+l9FjNCLgMXOg1cQFtoEG8M/8szRHes5HBfqTf004hVqU3xJLcAN7
-         rRkCRkc+bIA0NLPkC5nO0ZdVJ1wgLnBBH3h8vKIqo8TsicahQira9b+bub0usa1As5Vr
-         tSfA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784799314; x=1785404114; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=QV/e0D4Cq+kXxk7foQFF5xP6EyKiu45j2ziUGVbkQko=;
-        b=aFQVe/nuRs2awH9f4SJGYOQGEP4o6H63ZpzuzJ74OFrkcOrOgtIjOoPpuxDZESxKSW
-         dB0DZGlD2xLRAPsVcI+QhFiwY8s/3iYkgmAAiOycm6EKxikfuiDQnRWhto4149MOLROa
-         zVbWs48/FB2h608/BP9tcsnD/aWWyv9fdhCS9D7q576cOs2yxirzRjbhVbt9XDvVA8r3
-         46zJonrrRdVwwlRO1lVC7CyuJorG/VY80verAY5GhAi4VtOE5HkbMKUoa9CMtsMahvGe
-         VfY02VBCJ6XGU8WynohcF5c3fr41bN/wS2jyN2LcexY8KE/1IyDrbSuZjd44aJOOu3Sl
-         mbVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784799314; x=1785404114;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=QV/e0D4Cq+kXxk7foQFF5xP6EyKiu45j2ziUGVbkQko=;
-        b=KR4DUQAzZ3jXX6PMT19OOw0V5bk0fdGnWk5Ngmgi18qfL95lGL7mfk1OSnU00A5F9E
-         JfiZRDhqwt+Gzw7HYcqh+LKUfX2GJnF5ppM1cFZvTNp6nhFTqpLbvlKt1vFmTP2FM31t
-         hyDGQTkpmaXVM7ObwTckblGWVcdyznScsOARWPxlWVdTNciAed+p1e9n3rGQjvaZhB6/
-         BSLxgP68cT1MngA8Q5VIQwVfjDFZhQXR+dLdauORuzgeobbPYrLrMjnGuBKvpntpNes0
-         RZZyU7Mp3EV+jw32izmf5XZ3eJC4mQNZhOXnYkby4nUwRzGGQX9enGbNrZM1f400GNZM
-         GD6g==
-X-Forwarded-Encrypted: i=1; AHgh+Ro2Flr47tzIZfNNHFpFvYXoLGOGD3Fp0uBV15XFCzk0l4zDeQm4iVd3jNSXXwpW+1zLZ8DKjfwjpQIXr915Mg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxTtVSgw9UVPluBGZ7Vyo8b8qS+jgp1CIr8M0cMrggYeMcIdfIx
-	Nu38uu9v8+uHXspoMotf1Ai4VfN7wVsUs2mSuq2rD8PVpVL4KbQZ7OsmsT6xq4DkiaqN3gLuFSr
-	u5OJ5T6RGbkJc+5BnBBaAbXNtmJOw63w=
-X-Gm-Gg: AR+sD11u/Kieym18V6ScM37M/F3pxzadarp09DZtERgr8bI0LgTqs++2qwFUJk6+RZJ
-	4NBTsL79HjBFQWhN598/DfmMlDDTgqj4Ujg3cZe6Q8F3bApz5FlAlmAoBgcTQlB/uBEmKk8l5IW
-	kz7QNj8TYeV9tnO5RgoKXyR4gt6nmr1qQm6AVi3K1u1m+jHjPq3KamQMHyH5NcmDdSil54if62j
-	NUVWmWONO9+6itXe5sNadF1k2B88pyHdipyBsiluhnKmmfQNPKs58njgaFq7tdPU0leoo/Zrnwm
-	j2o=
-X-Received: by 2002:a05:620a:7002:b0:92b:c6cd:7f6c with SMTP id
- af79cd13be357-931038a842cmr237751885a.34.1784799314332; Thu, 23 Jul 2026
- 02:35:14 -0700 (PDT)
+	id 1wmq7Z-0000000Dwwh-3sjn;
+	Thu, 23 Jul 2026 09:53:42 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 56BC240681;
+	Thu, 23 Jul 2026 09:53:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E26EE1F000E9;
+	Thu, 23 Jul 2026 09:53:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784800421;
+	bh=I2M839mlvciwjP3qRllak7mRBXp2uaYGUn4kNGJ6a2w=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject;
+	b=BQ09LaC0y2QDWFrL55/EejQ8lEXeYXrsPw9st3DpkbxnDeT+Q7wpIHzRGXeuE1Yzq
+	 QNFrUkKQMMYaBkgoOPY168b8EfZQ0QyAs3ZgnZ5SOn9M3KO008luzFHN45PJR99m5F
+	 fB3eZ0z1qpdPbgcZSzm/iDVi+voAGMU8I+bdr5rInwO7E5EoOHH5sbWV00lVUbuRY4
+	 /1yLedEhnI+Q/C6CfO2xd0ffm+qgNHiR1rm1guNj00Nf4Lco+c5VQ5SxtNBENis5GF
+	 0jfT1DkWcQLkUYGoA6iO5c5AKT6HV1FpIRVYqqZnp6yHjE3QrRpTzFrg4ser2ubKpe
+	 ovwPsW2gYjLCw==
+Received: from phl-compute-04.internal (phl-compute-04.internal [10.202.2.44])
+	by mailfauth.phl.internal (Postfix) with ESMTP id 7DD64F40078;
+	Thu, 23 Jul 2026 05:53:34 -0400 (EDT)
+Received: from phl-imap-05 ([10.202.2.95])
+  by phl-compute-04.internal (MEProxy); Thu, 23 Jul 2026 05:53:34 -0400
+X-ME-Sender: <xms:nuRhal_UUsYSu4hxoIcW5tkU-5QAVkwhKGmuPhrqXHUqHqd3MPAc3w>
+    <xme:nuRhakiaNOH2-kPOG7c1H2gGgQNNQE97r4PO8ILsr6FZbWMN-UTb8yV3V8gn-P-vp
+    c1wzifr_EvqlYL63cZkSgQcI1RA-UDaRrBK9XdLeLELBHP6v-UVFQ>
+X-ME-Proxy-Cause: dmFkZTFHZDEhc6/KMefjmMp4uMeeE3Zcb9mfs+V06mdxw3F5PEChH3KemwCyws3jce4Mqz
+    r9y+127SMPJFdIWF1YwFK9JBClNfqxmhNrJQ3CTMT06b4ew2B6pnn1U7m2heye/pLt0t33
+    yIacOoENbTlAHndzSlpi6MA6leuJWy0j4LK2nHoja1f+q81tI8AzboB88nxK/WQLxrC6II
+    wdKaz7tgJFFljSrLD8ubTOg9ZnJu+g/yY7wxQzbg3uTDao4HSUgCTrKn6rM9DHR9mOFcXu
+    9oB0yPjJUSpsqYCYYpyoxeyeJgzFa8aH18z40rAf2NyB80rrQzkBKeftHAn0RRwmQzYiUp
+    nSsATbUjtnrbeX0DKpAklEn+h8bq5gK81uRfyV2eG7TgOHlvvj8nciPN9J8hQNFWPSqW+m
+    F3ac8sjnNFwFwgu65VWvkX0UXJ32WuN5dY4Mwm8Nfk4HHHapIRnpX5ZbFHiTEr3c0NsYER
+    38ffc/JDfh6MpEmr8ErH03NX+zrTWRKc3vIYZFiKwQCIknFJJd8bnV08Upe7NSZERj3G3p
+    f4pBuNI/Xyjz04xloT4DpUf5IjYgnua5CY6zHjzCdcdRHBh0Zo+H4aciIU9j5cFve8MqLO
+    vjmcxg5CpjW5NfFt3SQ8vyh+xCSkBzgbhDOPT7WrrpIg1zBA1o+tm0rgzVfw
+X-ME-Proxy: <xmx:nuRhappbi0LEylwvyeq7Fkf4xAQ2NmUUkiC-dXydIGLJAgko6bvC-Q>
+    <xmx:nuRhaqKaIGcfq-QXhiZ5ZrzcnzkDtJdUsBACQPgT0KeLVLAwAuUmrA>
+    <xmx:nuRhatB-I7MJ0d0hafgvQ8lqdp_DVCZMdEDBYalBDjwFkbihmG63MQ>
+    <xmx:nuRhak4qMkNrazX96NHh14lR3Nklsy3n_xbXQxTLI1j-ZwJ3-nkl_g>
+    <xmx:nuRhahFVRSK-nkqJFeDnSEuTyJjTntoREXzbHJk_FIdsarhAhew9yYMX>
+Feedback-ID: i36794607:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+	id 610A3182007E; Thu, 23 Jul 2026 05:53:34 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
 MIME-Version: 1.0
-References: <20260629122246.148696-1-akkun11.open@gmail.com>
-In-Reply-To: <20260629122246.148696-1-akkun11.open@gmail.com>
-From: Akari Tsuyukusa <akkun11.open@gmail.com>
-Date: Thu, 23 Jul 2026 18:35:01 +0900
-X-Gm-Features: AUfX_myChBNOL8FDaggU_KSOgeBeezCWC3VAKALkyLtMuEBpjgaCigCdcfIYHDY
-Message-ID: <CAKr_iV4nwatQ-8NTEkJOaP6fzrmg_-_AZ+1eWBKpRcJq=1SMXA@mail.gmail.com>
-Subject: Re: [PATCH] arm: dts: mediatek: mt6589: Fix timer interrupt trigger type
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+X-ThreadId: ADJgN6ak6HcB
+Date: Thu, 23 Jul 2026 11:53:14 +0200
+From: "Arnd Bergmann" <arnd@kernel.org>
+To: "Akari Tsuyukusa" <akkun11.open@gmail.com>,
+ "Nick Desaulniers" <ndesaulniers@google.com>
+Cc: "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ "Russell King" <linux@armlinux.org.uk>,
+ "Nathan Chancellor" <nathan@kernel.org>, "Bill Wendling" <morbo@google.com>,
+ "Justin Stitt" <justinstitt@google.com>,
+ "Yingjoe Chen" <yingjoe.chen@mediatek.com>,
+ "moderated list:ARM SUB-ARCHITECTURES" <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "open list:CLANG/LLVM BUILD SUPPORT:Keyword:b(?i:clang|llvm)b" <llvm@lists.linux.dev>,
+ stable@vger.kernel.org, "Ard Biesheuvel" <ardb@google.com>
+Message-Id: <ef007a23-46bd-41d6-83ff-264831341093@app.fastmail.com>
+In-Reply-To: <amHYO1c-5vzqSekt@buffalo-ssd>
+References: <20260722172443.534251-1-akkun11.open@gmail.com>
+ <CAKwvOdnbPKoTy72EvfpKtT9Ne-r+O0j99KFX8OvjGk8ZxsuEGw@mail.gmail.com>
+ <amHYO1c-5vzqSekt@buffalo-ssd>
+Subject: Re: [PATCH] arm: mediatek: fix secondary CPU boot on Thumb-2 kernels with
+ Clang
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260723_023515_911097_58B7E9BB 
-X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,24 +108,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear maintainers,
+On Thu, Jul 23, 2026, at 11:15, Akari Tsuyukusa wrote:
+> On Wed, Jul 22, 2026 at 02:03:31PM -0700, Nick Desaulniers wrote:
+>> On Wed, Jul 22, 2026 at 10:25=E2=80=AFAM Akari Tsuyukusa <akkun11.ope=
+n@gmail.com> wrote:
 
-On Mon, Jun 29, 2026 at 9:23=E2=80=AFPM Akari Tsuyukusa <akkun11.open@gmail=
-.com> wrote:
+>> Can you perhaps help test/verify that Akari?
 >
-> MT6589 uses IRQ_TYPE_LEVEL_LOW for arch timer, but I sent a patch using
-> IRQ_TYPE_LEVEL_HIGH.
-> The timer worked correctly regardless of whether IRQ_TYPE_LEVEL_LOW or
-> IRQ_TYPE_LEVEL_HIGH was used in the Device Tree, therefore, there is no
-> actual impact. However, this is not a correct description of the hardware
-> so correct it.
+> I tested your suggested patch and confirmed that it fixes the issue.
 >
-> Fixes: 2a5d54507c68 ("arm: dts: mediatek: mt6589: Add Arm Generic Timer n=
-ode")
-> Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
+> Device: Lenovo YOGA Tablet 10 (Wi-Fi) (MT8125)
+> Toolchain: Clang/LLVM 22.1.8-2 (cachyos-v3)
+>
+> Tested-by: Akari Tsuyukusa <akkun11.open@gmail.com>
+>
+> Can you send your fix as PATCH?
+> I think your approach is better than mine.
 
-Could you please apply this patch?
+I think we should wait for the llvm issue to be resolved first, to
+document whether this is considered a bug in the kernel or the
+assembler, and to see if any other kernel code may be affected
+by the same thing.
 
-Best Regards,
-Akari
+Looking around other .S files, I see the same
+pattern in stext(), cpu_resume_arm(), mcpm_entry_point(),
+all of which start in arm mode but end in thumb.
+
+     Arnd=20
 
