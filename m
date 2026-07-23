@@ -4,62 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A16DC531D2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2026 14:22:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B00EFC531F7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2026 16:01:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Haqz07phCsQulWOsfiCTcP3PlPXZY1BtboMO1C7ijf4=; b=U6vqyu37rlN942LbMsDI21tnt4
-	GqROE6wPwMbdt9YqBwzlMgj8iPxKDszdu5tjnvTgLqNn0SZYLQ2ihu/Xpt6H0Eqk3MX2Jsjou2uNR
-	2aDjtq+ylpg1yXpL6Eub66+R5auGFbFyeQmca+7vWiNYLuQwABlWqUaggy4qDqetN4FZZTQH+fQgC
-	ovpjfsodWCAsVqnpmfpuaRfAtDLEbhqk/RPmd9Egwyk/or6R5BBY98oA4kFdNX0JyQsErj9ih6yLC
-	SnxsdDkm8VjmUGPnL6o5AOaQzE7uLIC5lyUyX5K/vA+SMBVOw3qy5LXyCioHviAfNm28RGEyWalY0
-	WLPYyveA==;
+	bh=PDRKfVv1qWyvVa1COFLzJ7BEn2acoJlNWoIveDyamYA=; b=SxRnESCMd9/2Serxvlk9I2aJoH
+	/KibFRi0fhOZPhJfJVwJTRUIq5AO65uHcTcs5/e3yOdRQqBfQRBysvC+YwJYoWOZJA8LkzIjib5nU
+	pD/pZUAT0LaCxsrtfvxPzxaLUsPDU64O2Ngc0hOqpW+e8MTqc9CeaknVbcP2+dcWPxpI/BoSYVmm/
+	W0Cp+gTmNkEKNi+KD7NQC7JFQMCNd/iwkKVsgG/784N7RRShreQWr/jUgel47pYv31s2hGz4Wq5Hx
+	aVidYILGLnpYx7YFoEHm9xuVCtNE676txqr5UoSgewW8rchbePWtwwUt8tHH/z3QDnnh4EZzMgJgW
+	uMhEJZMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmuJo-0000000EUTq-49VB;
-	Thu, 23 Jul 2026 14:22:36 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wmvrB-0000000Efbm-3f8L;
+	Thu, 23 Jul 2026 16:01:09 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmuJo-0000000EUTe-1Lyv
-	for linux-mediatek@lists.infradead.org;
-	Thu, 23 Jul 2026 14:22:36 +0000
+	id 1wmvrA-0000000Efb1-1olf;
+	Thu, 23 Jul 2026 16:01:08 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id AC76E41265;
-	Thu, 23 Jul 2026 14:22:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 306C11F000E9;
-	Thu, 23 Jul 2026 14:22:29 +0000 (UTC)
-Date: Thu, 23 Jul 2026 16:22:25 +0200
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Peter Wang =?utf-8?B?KOeOi+S/oeWPiyk=?= <peter.wang@mediatek.com>
-Cc: "shengchao.guo@oss.qualcomm.com" <shengchao.guo@oss.qualcomm.com>, 
-	CC Chou =?utf-8?B?KOWRqOW/l+adsCk=?= <cc.chou@mediatek.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>, 
-	"bvanassche@acm.org" <bvanassche@acm.org>, "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>, 
-	Eddie Huang =?utf-8?B?KOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	Chaotian Jing =?utf-8?B?KOS6leacneWkqSk=?= <Chaotian.Jing@mediatek.com>, "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, 
-	Naomi Chu =?utf-8?B?KOacseipoOeUsCk=?= <Naomi.Chu@mediatek.com>, 
-	Alice Chao =?utf-8?B?KOi2meePruWdhyk=?= <Alice.Chao@mediatek.com>, Ed Tsai =?utf-8?B?KOiUoeWul+i7kik=?= <Ed.Tsai@mediatek.com>, 
-	wsd_upstream <wsd_upstream@mediatek.com>, "avri.altman@wdc.com" <avri.altman@wdc.com>, 
-	"martin.petersen@oracle.com" <martin.petersen@oracle.com>, 
-	Chun-Hung Wu =?utf-8?B?KOW3q+mnv+Wujyk=?= <Chun-hung.Wu@mediatek.com>, Tun-yu Yu =?utf-8?B?KOa4uOaVpuiBvyk=?= <Tun-yu.Yu@mediatek.com>
-Subject: Re: [PATCH v1] ufs: core: Remove unnecessary block I/O quiesce for
- clock scaling
-Message-ID: <l22o4flil6pumsqbuxas37e2vn5rtmljrnp2elz7ucqffzxmus@wrvez3ufip45>
-References: <20260604133503.2049288-1-peter.wang@mediatek.com>
- <al8YkXydXJQZrl_Y@QCOM-aGQu4IUr3Y>
- <29b5f4368a63847b84b87e36a1e358f5991b694c.camel@mediatek.com>
- <amAqHFOgPQQY-3rI@QCOM-aGQu4IUr3Y>
- <yyocxatyi7bitvehm2fgltxpayomt3d6r5zyr2ugbehkvsowcz@cg4if4zdqgbu>
- <7c55a405dcc3a0a80931263bf1807c815e78efea.camel@mediatek.com>
+	by sea.source.kernel.org (Postfix) with ESMTP id D84264037F;
+	Thu, 23 Jul 2026 16:01:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F0A21F000E9;
+	Thu, 23 Jul 2026 16:01:04 +0000 (UTC)
+Date: Thu, 23 Jul 2026 17:00:59 +0100
+From: Lee Jones <lee@kernel.org>
+To: rva333@protonmail.com
+Cc: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	Andy Shevchenko <andy@kernel.org>, linux-pm@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Ben Grisdale <bengris32@protonmail.ch>,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: Re: [PATCH v3 1/3] dt-bindings: mfd: mediatek: mt6397: add mt6323
+ PMIC EFUSE
+Message-ID: <20260723160059.GB3526803@google.com>
+References: <20260713-mt6323-nvmem-v3-0-205c39267a24@protonmail.com>
+ <20260713-mt6323-nvmem-v3-1-205c39267a24@protonmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <7c55a405dcc3a0a80931263bf1807c815e78efea.camel@mediatek.com>
+In-Reply-To: <20260713-mt6323-nvmem-v3-1-205c39267a24@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,38 +71,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 23, 2026 at 01:22:57PM +0000, Peter Wang (王信友) wrote:
-> On Thu, 2026-07-23 at 14:39 +0200, Manivannan Sadhasivam wrote:
-> > Qcom Host Controllers doesn't support scaling clocks when the traffic
-> > is
-> > ongoing. So this patch certainly cannot work on our platforms.
-> > 
-> > If you want to pursue, you should limit this change to MediaTek
-> > platforms. But
-> > nevertheless, this patch should be reverted as it breaks UFS on all
-> > Qcom
-> > platforms.
-> > 
-> > - Mani
-> > 
-> 
-> Hi Mani,
-> 
-> This patch is based on the JEDEC specification. As all SoCs 
-> should follow this spec, I have not applied it solely to 
-> MediaTek's platform. However, I think reverting it is okay. 
-> I will consider how to revise it later.
-> 
+On Mon, 13 Jul 2026, Roman Vivchar via B4 Relay wrote:
 
-JEDEC spec mandates that the power mode changes (gear, lane, etc...) can
-happen while the traffic is on-going. But clock scaling done by the ufshcd
-driver involves not just power mode change, but also scaling the vendor HCI
-clocks as well. And that is what causing issues on Qcom platforms, as our UFS
-controller doesn't support scaling HCI clocks during live traffic. I'm not sure
-about other vendors here.
+> From: Roman Vivchar <rva333@protonmail.com>
+> 
+> The MediaTek mt6323 PMIC includes an EFUSE used for storing calibration
+> data.
+> 
+> Add the devicetree binding documentation for the MediaTek mt6323 EFUSE.
+> 
+> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+> ---
+>  .../devicetree/bindings/mfd/mediatek,mt6397.yaml    | 21 +++++++++++++++++++++
+>  1 file changed, 21 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> index 3cbc0dc12c31..d2de227ae7a6 100644
+> --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+> @@ -159,6 +159,23 @@ properties:
+>      required:
+>        - compatible
+>  
+> +  efuse:
+> +    type: object
+> +    unevaluatedProperties: false
+> +    description:
+> +      The efuse is responsible for storing calibration data, such as thermal
+> +      sensor calibration.
+> +
+> +    properties:
+> +      compatible:
+> +        const: mediatek,mt6323-efuse
+> +
+> +      nvmem-layout:
+> +        $ref: /schemas/nvmem/layouts/nvmem-layout.yaml#
+> +
+> +    required:
+> +      - compatible
+> +
+>    leds:
+>      type: object
+>      additionalProperties: false
+> @@ -307,6 +324,10 @@ examples:
+>          interrupt-controller;
+>          #interrupt-cells = <2>;
+>  
+> +        efuse {
+> +          compatible = "mediatek,mt6323-efuse";
 
-- Mani
+Nit: This tabbing looks off to me.
+
+The example below uses 4-spaces, this uses 2.
+
+> +        };
+> +
+>          leds {
+>              compatible = "mediatek,mt6323-led";
+>              #address-cells = <1>;
+> 
+> -- 
+> 2.54.0
+> 
+> 
 
 -- 
-மணிவண்ணன் சதாசிவம்
+Lee Jones
 
