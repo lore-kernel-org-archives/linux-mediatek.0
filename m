@@ -4,78 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C9BBC531C7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2026 09:16:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01961C531C7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Jul 2026 09:35:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=FF3CQzDN2xFla8uEGiPnMoAn7bZknuWf8Lkei7xVdww=; b=ENZ/rEK9fFj1cTLwMsmF2pz5xs
-	K1erJkesb7L+Z4k1hfbZVw7BM+PrUHo6dsNBq67Y1Ru9qo8fF0iKu0V7KKyoi03Smq6tA9g+ybkd3
-	2Zdm4RaTnki9mTtX8/rAS1t2v7HbSdAed+C7S+jqyD7Ch99pW9VmQn9yRz5gsT/wbF01sqGVvDuXk
-	1eBvSsbmNjy7f3DE2QbTN+aTRy0ftvfR7in/nSncSvpEjj0ShPL4qTeiJWV4TiAysR6S1u7IjOAYI
-	sRTeKdswKoq7lajYFPgEnXAW249omtatRnJfKuViUfL2CNoPXJwVXsE32m27BhX2Fz50CMqjePWWv
-	umieWr5Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QV/e0D4Cq+kXxk7foQFF5xP6EyKiu45j2ziUGVbkQko=; b=nQW53WNHhOBxjzg4NG+Ek4ON7+
+	jfwuCKdCDaVAXUuUR24B68kiboDpBwZ5uS7+EYFeR8ci7yYuPNfgW3uZgXrgQmCtxocEOAhF5gcqK
+	v3ThDYxit3d0OBmn2/ujP6Y5neXd2IZyczcR7fIBGP5qZJn1sc3CxF4kDQMMtqNzapztXqml41V6E
+	4RFtTBKbL040vO7EyO833vVRzGhPuT09Uxe81IRqYWdK8cR/84rwi8Wz+qEHKiaUZtjlDgIh21vzF
+	zRJ4evsZS0SRpKGjP3s8fqD8QzMfgTV4/er2BxLS84rK59gUkO3s7T+qjeL50PvWL5GbztQ4PGjF4
+	J7RMaK3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmpXN-0000000DpRp-44PM;
-	Thu, 23 Jul 2026 09:16:17 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wmppm-0000000DrUR-09tb;
+	Thu, 23 Jul 2026 09:35:18 +0000
+Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wmpXL-0000000DpQU-1KRJ;
-	Thu, 23 Jul 2026 09:16:16 +0000
-X-UUID: 23db11cc867711f1acbe4559397dec65-20260723
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=FF3CQzDN2xFla8uEGiPnMoAn7bZknuWf8Lkei7xVdww=;
-	b=rJRf+0q3Wg7NVFVGhL5r+U2UFGGdy4CAWJKBVXNU+COj2vLdPvVruSoJ1mRsUm6z8xYIKkPaZAfCIPAt47STz4TDovz5GRp2LPJ1LTrCRg+IoBT9Pfi4y3lSvScpl3OHTaESPKX30lHuTKqW4u6Zb2lSCIcqwQ8Ls7RmEaFiDck=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.18,REQID:370618f0-8a66-43a6-8de7-eb915bedca5e,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:8a735a6,CLOUDID:164d3754-ba59-46c6-b844-86065e9edbd3,B
-	ulkID:nil,BulkQuantity:0,SF:102|123|836|865|888|898,TC:-5,Content:0|15|50|
-	99|100|101|123,EDM:-3,IP:nil,URL:1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,CO
-	L:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 23db11cc867711f1acbe4559397dec65-20260723
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <zhaoping.shu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 43664947; Thu, 23 Jul 2026 02:16:08 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 23 Jul 2026 17:16:06 +0800
-Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Thu, 23 Jul 2026 17:16:04 +0800
-From: <zhaoping.shu@mediatek.com>
-To: <davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>,
-	<pabeni@redhat.com>, <horms@kernel.org>, <ncardwell@google.com>,
-	<kuniyu@google.com>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <willemb@google.com>,
-	<alice@isovalent.com>, <sd@queasysnail.net>, <eilaimemedsnaimel@gmail.com>,
-	<imv4bel@gmail.com>, <hw.he@mediatek.com>, <netdev@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-CC: <haijun.liu@mediatek.com>, <xiayu.zhang@mediatek.com>,
-	<lambert.wang@mediatek.com>, <Iven.Yang@mediatek.com>, Zhaoping Shu
-	<zhaoping.shu@mediatek.com>
-Subject: [PATCH net v2] net: gro: avoid nesting TCP GSO skbs in skb_gro_receive_list()
-Date: Thu, 23 Jul 2026 17:16:01 +0800
-Message-ID: <20260723091601.72103-1-zhaoping.shu@mediatek.com>
-X-Mailer: git-send-email 2.17.0
+	id 1wmppj-0000000DrTX-3dQF
+	for linux-mediatek@lists.infradead.org;
+	Thu, 23 Jul 2026 09:35:17 +0000
+Received: by mail-qk1-x730.google.com with SMTP id af79cd13be357-930f618435cso42999585a.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 23 Jul 2026 02:35:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1784799314; cv=none;
+        d=google.com; s=arc-20260327;
+        b=SlPrQP/J/Mva3QMXzkcYjqWudxWPoy0dPp/TFl1+WWymtozBs6g39jJOdvq1tFV/Ag
+         v2w9ki/POpTLIokYRf0kma5OKVpN7dFLxkFR3ER8zMmIq0jfdb41VwfCj6dcUHZMZrGv
+         81R+Fmic7CuUEv7Dhk/zhdGcORO2f8LYAAOxay17H8NvIZbUOzY8ik6i5lByZvkf6lZc
+         rtRlOkAzNUdh4p6zTu9PknTal8g0ngS3AeJFnXi9dltM4ei6S6OEkbnuz2nrHOdos5C4
+         XsGPAa1bjU4LFWUKLxEwL8iM/oZIzngFVfDkA/2+i6Fh6wDLLu9LBaL9u5OgnLE9RsS8
+         W48g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=QV/e0D4Cq+kXxk7foQFF5xP6EyKiu45j2ziUGVbkQko=;
+        fh=LxMU/n10uHM7jMaC3om6lCr7phO5IALuBI+qHinrVgU=;
+        b=BPkbMo0tv2HhxYw3GYEnHDO8+b8ObWNEUcjflmfjejL2/hXolPef9l//cwStykTp36
+         z1KaKAfORCq495xVrtZGkR6Ju9dgui2mnenVDF7R/GoBMggAZYa8S5k/hr7Bofn79z1d
+         MmkEoRXcNmQWlB72zwuZxSm0hAANo5S7dTCcGGlVm45oQz8nMOnq+hzJfNN0vkQ3Zqdg
+         dJAUAm+aLlWZNYi+l9FjNCLgMXOg1cQFtoEG8M/8szRHes5HBfqTf004hVqU3xJLcAN7
+         rRkCRkc+bIA0NLPkC5nO0ZdVJ1wgLnBBH3h8vKIqo8TsicahQira9b+bub0usa1As5Vr
+         tSfA==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1784799314; x=1785404114; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=QV/e0D4Cq+kXxk7foQFF5xP6EyKiu45j2ziUGVbkQko=;
+        b=aFQVe/nuRs2awH9f4SJGYOQGEP4o6H63ZpzuzJ74OFrkcOrOgtIjOoPpuxDZESxKSW
+         dB0DZGlD2xLRAPsVcI+QhFiwY8s/3iYkgmAAiOycm6EKxikfuiDQnRWhto4149MOLROa
+         zVbWs48/FB2h608/BP9tcsnD/aWWyv9fdhCS9D7q576cOs2yxirzRjbhVbt9XDvVA8r3
+         46zJonrrRdVwwlRO1lVC7CyuJorG/VY80verAY5GhAi4VtOE5HkbMKUoa9CMtsMahvGe
+         VfY02VBCJ6XGU8WynohcF5c3fr41bN/wS2jyN2LcexY8KE/1IyDrbSuZjd44aJOOu3Sl
+         mbVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1784799314; x=1785404114;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=QV/e0D4Cq+kXxk7foQFF5xP6EyKiu45j2ziUGVbkQko=;
+        b=KR4DUQAzZ3jXX6PMT19OOw0V5bk0fdGnWk5Ngmgi18qfL95lGL7mfk1OSnU00A5F9E
+         JfiZRDhqwt+Gzw7HYcqh+LKUfX2GJnF5ppM1cFZvTNp6nhFTqpLbvlKt1vFmTP2FM31t
+         hyDGQTkpmaXVM7ObwTckblGWVcdyznScsOARWPxlWVdTNciAed+p1e9n3rGQjvaZhB6/
+         BSLxgP68cT1MngA8Q5VIQwVfjDFZhQXR+dLdauORuzgeobbPYrLrMjnGuBKvpntpNes0
+         RZZyU7Mp3EV+jw32izmf5XZ3eJC4mQNZhOXnYkby4nUwRzGGQX9enGbNrZM1f400GNZM
+         GD6g==
+X-Forwarded-Encrypted: i=1; AHgh+Ro2Flr47tzIZfNNHFpFvYXoLGOGD3Fp0uBV15XFCzk0l4zDeQm4iVd3jNSXXwpW+1zLZ8DKjfwjpQIXr915Mg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxTtVSgw9UVPluBGZ7Vyo8b8qS+jgp1CIr8M0cMrggYeMcIdfIx
+	Nu38uu9v8+uHXspoMotf1Ai4VfN7wVsUs2mSuq2rD8PVpVL4KbQZ7OsmsT6xq4DkiaqN3gLuFSr
+	u5OJ5T6RGbkJc+5BnBBaAbXNtmJOw63w=
+X-Gm-Gg: AR+sD11u/Kieym18V6ScM37M/F3pxzadarp09DZtERgr8bI0LgTqs++2qwFUJk6+RZJ
+	4NBTsL79HjBFQWhN598/DfmMlDDTgqj4Ujg3cZe6Q8F3bApz5FlAlmAoBgcTQlB/uBEmKk8l5IW
+	kz7QNj8TYeV9tnO5RgoKXyR4gt6nmr1qQm6AVi3K1u1m+jHjPq3KamQMHyH5NcmDdSil54if62j
+	NUVWmWONO9+6itXe5sNadF1k2B88pyHdipyBsiluhnKmmfQNPKs58njgaFq7tdPU0leoo/Zrnwm
+	j2o=
+X-Received: by 2002:a05:620a:7002:b0:92b:c6cd:7f6c with SMTP id
+ af79cd13be357-931038a842cmr237751885a.34.1784799314332; Thu, 23 Jul 2026
+ 02:35:14 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+References: <20260629122246.148696-1-akkun11.open@gmail.com>
+In-Reply-To: <20260629122246.148696-1-akkun11.open@gmail.com>
+From: Akari Tsuyukusa <akkun11.open@gmail.com>
+Date: Thu, 23 Jul 2026 18:35:01 +0900
+X-Gm-Features: AUfX_myChBNOL8FDaggU_KSOgeBeezCWC3VAKALkyLtMuEBpjgaCigCdcfIYHDY
+Message-ID: <CAKr_iV4nwatQ-8NTEkJOaP6fzrmg_-_AZ+1eWBKpRcJq=1SMXA@mail.gmail.com>
+Subject: Re: [PATCH] arm: dts: mediatek: mt6589: Fix timer interrupt trigger type
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260723_021615_381094_40EE8BDF 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20260723_023515_911097_58B7E9BB 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,42 +119,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: HW He <hw.he@mediatek.com>
+Dear maintainers,
 
-On devices that support both NETIF_F_GRO_HW and NETIF_F_GRO_FRAGLIST,
-the hardware or driver may deliver packets that have already been
-aggregated into a TCP GSO skb with frags[]. GRO may then
-aggregate the skb again in skb_gro_receive_list().
+On Mon, Jun 29, 2026 at 9:23=E2=80=AFPM Akari Tsuyukusa <akkun11.open@gmail=
+.com> wrote:
+>
+> MT6589 uses IRQ_TYPE_LEVEL_LOW for arch timer, but I sent a patch using
+> IRQ_TYPE_LEVEL_HIGH.
+> The timer worked correctly regardless of whether IRQ_TYPE_LEVEL_LOW or
+> IRQ_TYPE_LEVEL_HIGH was used in the Device Tree, therefore, there is no
+> actual impact. However, this is not a correct description of the hardware
+> so correct it.
+>
+> Fixes: 2a5d54507c68 ("arm: dts: mediatek: mt6589: Add Arm Generic Timer n=
+ode")
+> Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
 
-This can create a nested GSO skb, which is not handled correctly by the
-later GSO segmentation paths. When the skb is segmented by
-skb_segment_list(), it not be fully restored to the original packets.
+Could you please apply this patch?
 
-Avoid this by setting NAPI_GRO_CB(skb)->flush for GSO skbs before
-aggregation.
-
-Signed-off-by: HW He <hw.he@mediatek.com>
-Signed-off-by: Zhaoping Shu <zhaoping.shu@mediatek.com>
----
-v2: Take Antoine Tenart's suggestion
-v1: https://lore.kernel.org/netdev/amB7wb1A2Oo2dv5d@kwain/
----
- net/ipv4/tcp_offload.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/net/ipv4/tcp_offload.c b/net/ipv4/tcp_offload.c
-index 3b1fdcd3cb29..c363434a5646 100644
---- a/net/ipv4/tcp_offload.c
-+++ b/net/ipv4/tcp_offload.c
-@@ -332,6 +332,7 @@ struct sk_buff *tcp_gro_receive(struct list_head *head, struct sk_buff *skb,
- 		flush |= skb->ip_summed != p->ip_summed;
- 		flush |= skb->csum_level != p->csum_level;
- 		flush |= NAPI_GRO_CB(p)->count >= 64;
-+		NAPI_GRO_CB(skb)->flush |= skb_is_gso(skb);
- 		skb_set_network_header(skb, skb_gro_receive_network_offset(skb));
- 
- 		if (flush || skb_gro_receive_list(p, skb))
--- 
-2.17.0
-
+Best Regards,
+Akari
 
