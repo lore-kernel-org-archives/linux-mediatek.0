@@ -4,67 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDAE7C531C9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2026 12:25:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C928C531F9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2026 13:14:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fOkjz0VFKTW//o0rl/Ahee9CbHyMt3wp+wGrHgrtVsg=; b=hh7+PEHcC8LSM5GKmn6dCAfUDp
-	cyBUSYQCARQajmjBwbZGMOjSfv4ShQpI1JGc52K/8kdgmElIPldu8lgo1OWMTeo3P+4nAczlCPAzG
-	KdBra3o2lP/qX1uQXwaCgV3oidUvwccH2QTr9+SWO6UQ/0JMKcm+PtV8R4x5ydfO41D/O4ie73kUf
-	N1KrNJoT/7jlVPT4Umxi4Ds5wKje0GeSz5Aj1pe4PtL36ckaD6EAGDAsURWshUGZwTUbzyUpW+E3n
-	kZwxzg0NkOC54nk+RmuhqCyUtfPObj/KCWaKd2hj0C7M3+YfNFTQHF9LpWhSpFBscqf6aXYRKkzCr
-	yyLSxOiw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TPIBLMkyqCCRU9BiXFydTEUTOZadVywM+LAhxWqzrUk=; b=CDjDLRyKQr5pGvmZOpbP1oVDzT
+	4snV4mqucTYdlrpBPunb/djJ/E0oKAMSMoM9/3Jf1LKT7Dh0fae27HTZmkHOdEkC6AnB0TRav0WZp
+	aV5s8iGIrVeJdpfxt6k2iHd/k5ZvQKeeYjz+BV/V4j1j4LZmw8W8/h+DrrfkNqEW3SHWx6YVJvjLI
+	3/BKI6hoeGA58gduwj1MG/q0LvknTLGSsr/144KaHs+TCG/Oc2O2nQHjeeVKoaEvXblNzkdIIorGA
+	fTb4wudHQuS0+KqHXQ2xDJeuux7H+HCnti7Izfe8KGjkwqzaxvxQra0Qn2DXMAf3ZA8OT6tA/dOTE
+	KqDlRsfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnExY-0000000GMpn-3zpt;
-	Fri, 24 Jul 2026 12:25:00 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wnFjf-0000000GSlo-3WGj;
+	Fri, 24 Jul 2026 13:14:43 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnExW-0000000GMoE-3lkp;
-	Fri, 24 Jul 2026 12:25:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1784895895;
-	bh=bS1CDh+2Qn5hpHQnRIoCnLbebTACj8iP+9ZHQacVIxY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=EEYeAO7g6EJLonaF6x+qTb/XkpP3ggmZpsC3zmaR9d2oGLsa238Sv1iF7CSF1WzLV
-	 chjxd/j+bbM1awMByBaLk9/Xpk4sVljL4+s/iiXZxxGvV/s0dkA26BhM0j2lrxE5OJ
-	 fGrXoF851gyF2Os0C6sUF7nqZyCwQfRaBR1jlp9JTeBXnbaGKDCzoBzvMYImAD23ks
-	 BpghihiPfSQgKlXjTRg0XOdVD6zQ/WsS3Wm4A28h9Zz+h3rQbwv7Duh1Lg7+5iSEDu
-	 v/g0VFPIDZSyEb2Lc56QcMtoK32Tt2J3yJHShc6qWrFjOweYZTGYOm6dGcbAy7Vp4O
-	 GUXvxYXgwcziQ==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6855417E00E9;
-	Fri, 24 Jul 2026 14:24:55 +0200 (CEST)
-Message-ID: <8088ac34-4f1e-4c87-8718-77d4e6e6e9b6@collabora.com>
-Date: Fri, 24 Jul 2026 14:24:55 +0200
+	id 1wnFje-0000000GSlS-1WS9;
+	Fri, 24 Jul 2026 13:14:42 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id BE807416A2;
+	Fri, 24 Jul 2026 13:14:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 243721F000E9;
+	Fri, 24 Jul 2026 13:14:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784898881;
+	bh=TPIBLMkyqCCRU9BiXFydTEUTOZadVywM+LAhxWqzrUk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=a8GTXkdaCG6aamySV2K94kqMSRvGlz2FGy5pds62TNBmEnmnkbM+GRZuA9Xh2YbGS
+	 ihOm7ba4ONO8ML9BXyNEYUn4RgQAFtVFBq5NK8CUTf9DhibNQGltyOXzT66cQoXyHn
+	 sUJ/9usKWAutf+EY9e/bhXm1s5i+D/Kb1xj9u8cz+8jBvAouG6AATEm18/E6SRWzp6
+	 zXw3A3VRLS0CI7dHhK9lmG2nWc90HUj5uSvE4/gWvi8A3fTs/f7fCYQR1kT4GpWFzp
+	 k1V6qJqtHE3KNWJdetgOsfYlScOvOo+pbA0aefj7fw02kX0hJPQ5JZu2odjkG5bZdo
+	 f/kn/1q+idv2g==
+Date: Fri, 24 Jul 2026 15:14:39 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: Simon Horman <horms@kernel.org>,
+	Alexander Lobakin <aleksander.lobakin@intel.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	Jacob Keller <jacob.e.keller@intel.com>,
+	Madhur Agrawal <madhur.agrawal@airoha.com>
+Subject: Re: [PATCH net-next v10 0/3] airoha: add the capability to configure
+ GDM3/GDM4 as WAN/LAN on demand
+Message-ID: <amNlP37tMJYp-Hdp@lore-desk>
+References: <20260722-airoha-ethtool-priv_flags-v10-0-d2562c5dd942@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 4/5] pinctrl: mediatek: mt7986: register both platform
- drivers from a single initcall
-To: Justin Yeh <justin.yeh@mediatek.com>, Sean Wang <sean.wang@kernel.org>,
- Linus Walleij <linusw@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>
-References: <20260723035823.2041832-1-justin.yeh@mediatek.com>
- <20260723035823.2041832-5-justin.yeh@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260723035823.2041832-5-justin.yeh@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260724_052459_096308_AAA7DDB7 
-X-CRM114-Status: GOOD (  11.46  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="KEhLaGquhBZth/a3"
+Content-Disposition: inline
+In-Reply-To: <20260722-airoha-ethtool-priv_flags-v10-0-d2562c5dd942@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,26 +76,126 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/23/26 05:58, Justin Yeh wrote:
-> The MT7986 driver registers two separate platform drivers (mt7986a and
-> mt7986b) and used to call arch_initcall() twice, once for each.
-> 
-> This is fine while the driver is built-in, but a single translation unit
-> can only provide one module_init(). Since arch_initcall() expands to
-> module_init() when built as a module, having two of them would break the
-> module build with a redefinition of init_module()/__inittest().
-> 
-> Fold both platform drivers into a single driver array and register them
-> from one initcall using platform_register_drivers(), matching the shape of
-> the other MediaTek pinctrl SoC drivers. platform_register_drivers() also
-> rolls back the first registration if the second one fails.
-> 
-> No functional change for built-in builds; this is a preparatory cleanup
-> for enabling module builds.
-> 
-> Signed-off-by: Justin Yeh <justin.yeh@mediatek.com>
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+--KEhLaGquhBZth/a3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Add the capability to configure GDM3/GDM4 as WAN/LAN on demand when QoS
+> offload is created or destroyed.
+> Make dev->qdma an RCU pointer so the TX path can safely dereference it
+> without holding RTNL.
+> Introduce airoha_qdma_start() and airoha_qdma_stop() helpers.
 
+please drop this series, I will post a new one to address sashiko's comment=
+s.
+
+Regards,
+Lorenzo
+
+>=20
+> ---
+> Changes in v10:
+> - Fix a theoretical race condition between tx completion NAPIs moving the
+>   net_device between different QDMA.
+> - Rebase on top of next-next main branch
+> - Link to v9: https://lore.kernel.org/r/20260721-airoha-ethtool-priv_flag=
+s-v9-0-9c15d8b71a56@kernel.org
+>=20
+> Changes in v9:
+> - Rebase on top of next-next main branch
+> - Link to v8: https://lore.kernel.org/r/20260703-airoha-ethtool-priv_flag=
+s-v8-0-015ba5ac89ee@kernel.org
+>=20
+> Changes in v8:
+> - Rebase on top of next-next to fix conflicts.
+> - Link to v7: https://lore.kernel.org/r/20260701-airoha-ethtool-priv_flag=
+s-v7-0-b4153bd44428@kernel.org
+>=20
+> Changes in v7:
+> - Fix ETS stats accounting in patch 2/3
+> - Reset ETS stats accounting in airoha_dev_set_qdma().
+> - Link to v6: https://lore.kernel.org/r/20260629-airoha-ethtool-priv_flag=
+s-v6-0-86bc600d31bc@kernel.org
+>=20
+> Changes in v6:
+> - Rebase on top of next-next
+> - Add patch 1/3: "rename airoha_priv_flags to airoha_dev_flags"
+> - Drop patch 2/3: "refactor QDMA start/stop into reusable helpers"
+> - Link to v5: https://lore.kernel.org/r/20260611-airoha-ethtool-priv_flag=
+s-v5-0-c11de08486d1@kernel.org
+>=20
+> Changes in v5:
+> - Add patch 1/3: use int instead of atomic_t for qdma users counter
+> - Protect dev->flags with flow_offload_mutex mutex.
+> - Introduce AIROHA_PRIV_F_QOS in order to handle better WAN/LAN
+>   switching.
+> - Link to v4: https://lore.kernel.org/r/20260610-airoha-ethtool-priv_flag=
+s-v4-0-60e89cf28fea@kernel.org
+>=20
+> Changes in v4:
+> - Move back QDMA TX/RX DMA enable to airoha_dev_open()/airoha_dev_stop().
+> - Configure GDM3/4 as WAN if GDM2 is not available in ndo_init()
+>   callback.
+> - Protect qdma pointer in airoha_gdm_dev struct using RCU.
+> - Rely on rtnl_dereference() to access qdma pointer in the control path.
+> - Add airoha_qdma_start() and airoha_qdma_stop() utility routines in
+>   patch 1/2
+> - Link to v3: https://lore.kernel.org/r/20260608-airoha-ethtool-priv_flag=
+s-v3-1-3e8e3dc3f715@kernel.org
+>=20
+> Changes in v3:
+> - Do not introduce ethtool private flags support to configure LAN/WAN
+>   for GDM3/4 and rely on tc qdisc offload for it instead.
+> - Set GDM3/4 ports as LAN by default.
+> - Move QDMA TX/RX DMA enable from airoha_dev_open() to airoha_probe()
+>   and the corresponding disable from airoha_dev_stop() to airoha_qdma_cle=
+anup().
+> - Link to v2: https://lore.kernel.org/r/20260607-airoha-ethtool-priv_flag=
+s-v2-1-742c7aa1e182@kernel.org
+>=20
+> Changes in v2:
+> - Rework airoha_dev_set_wan_flag routine
+> - Enable GDM_STRIP_CRC_MASK in airoha_disable_gdm2_loopback()
+> - Do not always reset REG_SRC_PORT_FC_MAP6 in
+>   airoha_disable_gdm2_loopback() but use the same condition used in
+>   airoha_enable_gdm2_loopback().
+> - Link to v1: https://lore.kernel.org/r/20260606-airoha-ethtool-priv_flag=
+s-v1-1-401b2c9fe9f1@kernel.org
+>=20
+> ---
+> Lorenzo Bianconi (3):
+>       net: airoha: rename airoha_priv_flags to airoha_dev_flags
+>       net: airoha: fix ETS QoS stats counter underflow and cross-channel =
+corruption
+>       net: airoha: defer GDM3/GDM4 WAN mode and GDM2 loopback to QoS offl=
+oad
+>=20
+>  drivers/net/ethernet/airoha/airoha_eth.c  | 268 ++++++++++++++++++++++++=
+++----
+>  drivers/net/ethernet/airoha/airoha_eth.h  |  26 ++-
+>  drivers/net/ethernet/airoha/airoha_ppe.c  |   9 +-
+>  drivers/net/ethernet/airoha/airoha_regs.h |   1 +
+>  4 files changed, 261 insertions(+), 43 deletions(-)
+> ---
+> base-commit: 88f380ef2304db4c68bc4bf14fc6c1604f6dd15c
+> change-id: 20260606-airoha-ethtool-priv_flags-b6aa70caa780
+>=20
+> Best regards,
+> --=20
+> Lorenzo Bianconi <lorenzo@kernel.org>
+>=20
+
+--KEhLaGquhBZth/a3
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCamNlPwAKCRA6cBh0uS2t
+rEbXAP9TBPic+WUY6BAE3Sm9oho1WMIYlT3puIgnWd3RElBQ/gD+Jdf77Dl8gaTl
+VrsmBh/aVrCEQ668SmmVAkE08mphpwo=
+=+Bwn
+-----END PGP SIGNATURE-----
+
+--KEhLaGquhBZth/a3--
 
