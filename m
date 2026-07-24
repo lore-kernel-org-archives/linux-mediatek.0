@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38326C531C9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2026 14:19:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD807C53200
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2026 14:19:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qEwXosTLOaG24TJ4Dcs3EuCGM4emZSACTBVJ5HxidrE=; b=mOpo2G3ZuHf3m0XfPGiNJEMkxd
-	jQLx+U/+wbP5iu3CBVIrXpM6jh61KxbFo3BbXJhQ0YHznDdYazHRVn30jQX94I/Nc/GE+M/fazRYs
-	YRrinXHfm4TmfZe91rcvPfgF/Zz+fQsDPTaVfGaD4W4vKe8XmypEX4/pHLUwdpQKBqhylK3X+u85T
-	AKvnLR+HC+qB3nYcxQeD8fdkXACOMGXuU7YmmbEjQV7CRciWCR3DinhFCz8V+E8ghLewEkO4PpYDb
-	qSHP09SLedNIdX9gqZ1NRZp6rHnrkQpK5eFVE05wnOthiLj6jselEWZNLxoU4zjcQE0EHL4bt4lnR
-	YT9KRYQg==;
+	bh=2d95gBKRLIRPk46z3u1WxiEdY2SddpLr9a2RJusilXQ=; b=jh1wfGCiDE5kzudNM3L8FhlbQA
+	NCtsOTXWRq4+zlEOYMFSJiMG4qJeXEBqZvVzpNl7JS2TJCYwJolgeQivunvCWXWee7/g+FNPY6PT7
+	lEU1gM+2Y1zkdG35viTa4DAvivnTGy4cdz+vm2La0Mrw/dcfDNBJDjzZnu4TCig6wb2ucOJ+Jfzcr
+	1IV0x64aBIdPzOV0IkWPdIvplnSSUjIEuWKuKX+nobkUXIhzB/uHtpLzI3BJWopya4JdzK03txXb8
+	KPWrXEzPZ7WLFvH7fHp//rTfpNdESPgsVdpasIgFOI/Q7C8FsJ0OuICBjxZArOucRA+AKrtmE4SSt
+	07DZINwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnGkC-0000000GY1H-0Jp6;
-	Fri, 24 Jul 2026 14:19:20 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wnGkJ-0000000GY4B-118Q;
+	Fri, 24 Jul 2026 14:19:27 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnGk3-0000000GXxN-1oL6;
-	Fri, 24 Jul 2026 14:19:11 +0000
+	id 1wnGk6-0000000GXyX-1BCd;
+	Fri, 24 Jul 2026 14:19:14 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id CC0FA600AF;
-	Fri, 24 Jul 2026 14:19:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02A731F000E9;
-	Fri, 24 Jul 2026 14:19:09 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 5B36C600AF;
+	Fri, 24 Jul 2026 14:19:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 877E81F000E9;
+	Fri, 24 Jul 2026 14:19:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784902750;
-	bh=qEwXosTLOaG24TJ4Dcs3EuCGM4emZSACTBVJ5HxidrE=;
+	s=k20260515; t=1784902753;
+	bh=2d95gBKRLIRPk46z3u1WxiEdY2SddpLr9a2RJusilXQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=evAnYCzPHtJcd6LD59TB/ElmLQSdZMO4EIZX69jYVLUrHafscgJPIDKLCbzhJ4sPn
-	 acrU7foKIrsr2LcDXwyWmH7zq6U+khqHOmrFl/zybOFe1xY/vg4hennAgQuL2HTEow
-	 dNZOysEcsr6SMFCBY2kx9Pop80stUib4uy0cop9C/wLUfFGmH8XVExL3VV83kgbWAQ
-	 BJKnSc84BB7PBcTOuPOoakJXlTcIYJRvgwAM/gS4CdITlZC1yX0JPcqps0Ls86SGJy
-	 6BL5oQmbX9bazRpG0sm9UccEX2YY1B+rl9310H11KTKf4ysjjIMLaN0fIYU92PmVCn
-	 VdNlST8UO27Gg==
+	b=KMoMFut+T+LCM0cz8EhklSgmEcWwA+8XxPD4JMHcpKsJfJX81zqHsPyfqAkzr0RWG
+	 SE7cJ5aTK5bvw2/hoQI+OrAgefiOLPHgRk+4zBKyT4UCnMc0XrYLczepVcewCMLL4K
+	 FL2QQIRhyBgasrHrPUb2mri30MJGeZL9+y0RBl3bBJMY0S2rzEHPTbp3XM90AkZF76
+	 U5SLMDfJwDpMOekbwHGH99sMe/aTa+fzg74C2+xc3RxB25JCvB/J/7eUc2FG2hibD0
+	 AnokW8PXXZTUCAV8gkQaKQmLXX0Xbojj6vnuKz0WbIroaPOIQNmx2rgk8tgQm9LXL+
+	 kO1B4XuWJ0reA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 24 Jul 2026 16:18:56 +0200
-Subject: [PATCH net-next v11 1/3] net: airoha: rename airoha_priv_flags to
- airoha_dev_flags
+Date: Fri, 24 Jul 2026 16:18:57 +0200
+Subject: [PATCH net-next v11 2/3] net: airoha: fix ETS QoS stats counter
+ underflow and cross-channel corruption
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260724-airoha-ethtool-priv_flags-v11-1-686dea300a40@kernel.org>
+Message-Id: <20260724-airoha-ethtool-priv_flags-v11-2-686dea300a40@kernel.org>
 References: <20260724-airoha-ethtool-priv_flags-v11-0-686dea300a40@kernel.org>
 In-Reply-To: <20260724-airoha-ethtool-priv_flags-v11-0-686dea300a40@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -74,72 +74,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Rename the airoha_priv_flags enum to airoha_dev_flags and the
-AIROHA_PRIV_F_WAN flag to AIROHA_DEV_F_WAN. The "priv_flags" naming
-dates back to an earlier design that used ethtool private flags; since
-this series switched to tc qdisc offload for LAN/WAN configuration,
-align the naming to reflect that these are per-device flags rather than
-ethtool private flags.
+airoha_qdma_get_tx_ets_stats() has two bugs:
+- The hardware counters read via airoha_qdma_rr() are 32-bit values
+  but are stored in u64 locals and subtracted from u64 baselines. When
+  a 32-bit hardware counter wraps around, the subtraction produces a
+  large underflow value passed to _bstats_update().
+- The baseline counters (cpu_tx_packets, fwd_tx_packets) are stored as
+  single per-device fields, but airoha_qdma_get_tx_ets_stats() is
+  called with different channel values (0-3). Each call reads a
+  different channel's hardware counter but overwrites the same
+  baseline, corrupting the delta computation for other channels.
 
-While at it, switch to test_bit()/set_bit()/clear_bit() APIs and
-convert the flags field from u32 to unsigned long to make flags
-manipulation atomic.
+Fix both by:
+- Narrowing the counter locals and baselines to u32 so that 32-bit
+  unsigned subtraction handles wrap-around naturally.
+- Grouping the baselines into a per-channel qos_stats array so each
+  channel tracks its own previous counter value independently.
+- Splitting the delta addition into two statements so the first u32
+  delta is widened to u64 on assignment and the second is added in
+  u64 arithmetic, preventing overflow when both deltas are large.
 
+Fixes: 20bf7d07c956 ("net: airoha: Add sched ETS offload support")
 Reviewed-by: Simon Horman <horms@kernel.org>
 Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/airoha/airoha_eth.c | 2 +-
- drivers/net/ethernet/airoha/airoha_eth.h | 8 ++++----
- 2 files changed, 5 insertions(+), 5 deletions(-)
+ drivers/net/ethernet/airoha/airoha_eth.c | 18 +++++++++++-------
+ drivers/net/ethernet/airoha/airoha_eth.h |  7 ++++---
+ 2 files changed, 15 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 79418e682f71..d9a44a11d8db 100644
+index d9a44a11d8db..8165084daaf5 100644
 --- a/drivers/net/ethernet/airoha/airoha_eth.c
 +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -2078,7 +2078,7 @@ static int airoha_dev_init(struct net_device *netdev)
- 		fallthrough;
- 	case AIROHA_GDM2_IDX:
- 		/* GDM2 is always used as wan */
--		dev->flags |= AIROHA_PRIV_F_WAN;
-+		set_bit(AIROHA_DEV_F_WAN, &dev->flags);
- 		break;
- 	default:
- 		break;
+@@ -2521,16 +2521,20 @@ static int airoha_qdma_get_tx_ets_stats(struct net_device *netdev, int channel,
+ {
+ 	struct airoha_gdm_dev *dev = netdev_priv(netdev);
+ 	struct airoha_qdma *qdma = dev->qdma;
++	u32 cpu_tx_packets, fwd_tx_packets;
++	u64 tx_packets;
+ 
+-	u64 cpu_tx_packets = airoha_qdma_rr(qdma, REG_CNTR_VAL(channel << 1));
+-	u64 fwd_tx_packets = airoha_qdma_rr(qdma,
+-					    REG_CNTR_VAL((channel << 1) + 1));
+-	u64 tx_packets = (cpu_tx_packets - dev->cpu_tx_packets) +
+-			 (fwd_tx_packets - dev->fwd_tx_packets);
++	cpu_tx_packets = airoha_qdma_rr(qdma, REG_CNTR_VAL(channel << 1));
++	fwd_tx_packets = airoha_qdma_rr(qdma,
++					REG_CNTR_VAL((channel << 1) + 1));
++	tx_packets = (u32)(cpu_tx_packets -
++			   dev->qos_stats[channel].cpu_tx_packets);
++	tx_packets += (u32)(fwd_tx_packets -
++			    dev->qos_stats[channel].fwd_tx_packets);
+ 
+ 	_bstats_update(opt->stats.bstats, 0, tx_packets);
+-	dev->cpu_tx_packets = cpu_tx_packets;
+-	dev->fwd_tx_packets = fwd_tx_packets;
++	dev->qos_stats[channel].cpu_tx_packets = cpu_tx_packets;
++	dev->qos_stats[channel].fwd_tx_packets = fwd_tx_packets;
+ 
+ 	return 0;
+ }
 diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index fe934f9ffe8a..24dd16fc509a 100644
+index 24dd16fc509a..447a5a9552bb 100644
 --- a/drivers/net/ethernet/airoha/airoha_eth.h
 +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -570,8 +570,8 @@ struct airoha_qdma {
- 	DECLARE_BITMAP(qos_channel_map, AIROHA_NUM_QOS_CHANNELS);
- };
+@@ -580,9 +580,10 @@ struct airoha_gdm_dev {
+ 	struct airoha_eth *eth;
  
--enum airoha_priv_flags {
--	AIROHA_PRIV_F_WAN = BIT(0),
-+enum airoha_dev_flags {
-+	AIROHA_DEV_F_WAN,
- };
+ 	DECLARE_BITMAP(qos_sq_bmap, AIROHA_NUM_QOS_CHANNELS);
+-	/* qos stats counters */
+-	u64 cpu_tx_packets;
+-	u64 fwd_tx_packets;
++	struct {
++		u32 cpu_tx_packets;
++		u32 fwd_tx_packets;
++	} qos_stats[AIROHA_NUM_QOS_CHANNELS];
  
- struct airoha_gdm_dev {
-@@ -584,7 +584,7 @@ struct airoha_gdm_dev {
- 	u64 cpu_tx_packets;
- 	u64 fwd_tx_packets;
- 
--	u32 flags;
-+	unsigned long flags;
+ 	unsigned long flags;
  	int nbq;
- 
- 	struct airoha_hw_stats stats;
-@@ -694,7 +694,7 @@ static inline u16 airoha_qdma_get_txq(struct airoha_qdma *qdma, u16 qid)
- 
- static inline bool airoha_is_lan_gdm_dev(struct airoha_gdm_dev *dev)
- {
--	return !(dev->flags & AIROHA_PRIV_F_WAN);
-+	return !test_bit(AIROHA_DEV_F_WAN, &dev->flags);
- }
- 
- static inline bool airoha_is_7581(struct airoha_eth *eth)
 
 -- 
 2.55.0
