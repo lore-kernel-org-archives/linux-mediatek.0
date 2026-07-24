@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 513C9C531FC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2026 08:44:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D20C1C531F9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2026 08:44:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fHUpdIaIyIIyz0xHiffTwBnjBb2ySQuUos1Tr0diNj4=; b=NjqO5Zv5TthgY2+MXk5NQeT+I5
-	eJfTjNDCkgdz2iNrGjM8nClRJsfV1/tzKmtqVpmc5R5Qtm93JjOCcC0BA0I/fSdvGkv0vtftDnMrx
-	qukInd3W6tn3bX34rAd0eoXj7R9IT7lXgKpjfcKagd+o6SL+9D07qPkJSvBJRqVPFRghzOlvjQFr+
-	qcFn2m3fypH7DBCzIJNiU+VvLOgLs3MrUPa+A46FGwK2+AmXRiDUrhY5i0w9mX3YUWX/h5xLMs+xB
-	heB+pUGTwHWYa+FYkvUlEeRnI5giSDvIWLjJV9bfR7g5IqvUrpjjlKyQH7tTJ85ZWbp/d7GbQ23nq
-	nxfWLs3w==;
+	bh=rURTZ+6KnrNnBGX3zC7u+30dtH0N63AaHeGxXuU8P7M=; b=QbvVyXm2xyN1zIirwfM9lhLddF
+	ZckfZn1PzZ6QEa3S/jU/DQb2DdOBIYPg8Qpze7Pcq5ACCuB7Evg0b7urB3gWzIt/v3EKMvUEUIbZb
+	+NDDfwHeOjT4bSrCKHJDiuTjgBSTY7m5bqGkwt0WOLOJpHXZOi8b9MQvIbIZ9+CyK12hR7LwyvJyQ
+	c+ntM+fDf/b07/LsAGoo6neReI8RdKkyUzqgfBRar28JKxsqlgt9DFXqgKcf6dLBgPqMxUMH23FmY
+	P+oY1ygnJbqSd3vOEJ9yKquW+tWti0B8L8XSR7lQA0ZWrGG3z2SFJoUZrFjxMfx43LqaSJkKV9+Kk
+	7Y5OfLmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnBWO-0000000Fqpn-0PQb;
-	Fri, 24 Jul 2026 08:44:44 +0000
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+	id 1wnBWV-0000000FqxA-2pa1;
+	Fri, 24 Jul 2026 08:44:51 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnBWF-0000000Fqiq-11WX
+	id 1wnBWP-0000000FqrV-3fUF
 	for linux-mediatek@lists.infradead.org;
-	Fri, 24 Jul 2026 08:44:36 +0000
-Received: by mail-pj1-x1031.google.com with SMTP id 98e67ed59e1d1-383b4a3755fso134437a91.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2026 01:44:35 -0700 (PDT)
+	Fri, 24 Jul 2026 08:44:47 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id 98e67ed59e1d1-38e07ebd263so94640a91.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2026 01:44:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1784882674; x=1785487474; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1784882685; x=1785487485; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=fHUpdIaIyIIyz0xHiffTwBnjBb2ySQuUos1Tr0diNj4=;
-        b=H/b92TFwxUHLafOMvxys1EQPBCAGk5DdUJRSHYBbnkGJ4YoXF1OWzYj6kkdxQ+BzMo
-         3tJEg30G3bm3vJzmLpeqOgvkmGK9dWpmN78VQ95GaiCjrO5BYhZi+pKkWubjvlRB7j1T
-         9KjZIoZIz9Pmy6vmL3BwUoaanIsXgp27JfWgQ=
+        bh=rURTZ+6KnrNnBGX3zC7u+30dtH0N63AaHeGxXuU8P7M=;
+        b=EljaJyFp1e1RM68T8qpu2aUZCva2g/42q/1uElChM6nQoTqyW7DoP/YgUmDo5AKTxJ
+         QywHInZX3B4Ky1EJJy6QUmMuYhV7VwUUjPfEKWp8HToJkSETdqvtpWwDAgXakQbcdpNG
+         hdS8um167yVkZdZXYTtyQwPCFJImvQm/OR5Yg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784882674; x=1785487474;
+        d=1e100.net; s=20251104; t=1784882685; x=1785487485;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=fHUpdIaIyIIyz0xHiffTwBnjBb2ySQuUos1Tr0diNj4=;
-        b=TvYbO4cQxEeo1aerI8e8nlFmiS3aLzOvy3VvtMVZmrj7LSnvCbjI0sBO5lz8zrAnxd
-         A0p2C4bu/gETKMcfB9IKyk2RYbtj2TypmBrOVUAyifShPbvA0p8TB/9RnPl+yaxvMOws
-         gE5oAB8dCJCWg5Gtq0py4rgSZBnTVGCy4+Sen5MFsOMfhEQldzAxeUT85txGeb/nlDf+
-         UfdtrK66pTOjdQpsSv1ZMHsUjnVyTz6rwKlzjy9raNrsXKZeMO3DyBPdcYwj9RLfqKuE
-         9Q83qAIv2oWkVT0UOwP68UkQXIky0oWIhfbyJ89SdcaB6Hj2QojQGR+YAmsXy14G6ORp
-         PDwg==
-X-Forwarded-Encrypted: i=1; AHgh+Rqyw8vciLaJExyASZGdeNnWj36MInrLhBYlrvvn7k46teZo5WrOj9q3VVlURWiKxE7rK+CkM7RV8fdOAB0fHg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzL9mjoj06xvrUgdbr/wcY7elFOYaEABsZlvH6NgeieVQB1oYzr
-	jkVgxaZgL1jf6fTu1qLFI82tlsjy137p7XWmweTBuZmFuLlGWCAFAVJIVQ/ftO0JDQ==
-X-Gm-Gg: AR+sD11IdF29b+7vDR6UJ66WrzG8KpXeLaAX+vsKWlrCWP4fG5hjVgD/VrkYLtV+P+t
-	yVNul5jNQVyY/LZXyjyXYq1TsdaYx3xbIyxd+kGeCH66PqFo7RciOaBwbjcDB5+w2LZr27P11At
-	fVYruUpXcVOQN0XzPg/olwHe8kj/uPKjPxl/3IVoLGVs1f/lcERCgnKuq2Tk+mfcLgeQWf2Vvvw
-	3w0uU6i9+pNzpwAJK24uzhVTSfFBkrgTMUkctzvWhQG5++4zATwsPd5szeZW7f7RAmHQMaLrVNB
-	vqB8M7vDpf4q7tRuVFFxSppcBNMKrKG+8Zb9xqFSS4FtPD7zv5+ENQRTM/Nfod4WN/S+aw2CBY8
-	kOu9OfMOh5hRJ2njb6mv+H8DdELI7Z1w2Gm1ZqxIRYCNU6UgcrAO/TlkUT2R2UZDlqnykzGERSf
-	qMKojdwc9VDoIwJ8OS9ys7TbA+2yIu9GNgR3I/cQlV7DmThIlnleVndnps2lQ=
-X-Received: by 2002:a17:90b:5407:b0:38e:64b0:8bce with SMTP id 98e67ed59e1d1-38ec6650435mr6482024a91.20.1784882674612;
-        Fri, 24 Jul 2026 01:44:34 -0700 (PDT)
+        bh=rURTZ+6KnrNnBGX3zC7u+30dtH0N63AaHeGxXuU8P7M=;
+        b=sMo3O5EMDHOKyJDjHU4C/TkkM6t/rkxmV2ghyiOU2IIC9XA+kkA1nACTDC+GpQlI7q
+         KUqvGloWyOaPe9KAr8MMpXY77SXM8rEDn+/9L8J3AaKxOYX0aLfXHB5hr9hb3uen26Y5
+         TT8j3jdL77yyyYRCGZGJCdw3hJsFmgAAPAeMReLFrIIqU9HCBNyUlo2cvVlvGOuRGSLB
+         Be7+xMmH2rC8lAMubPkVHt/3CxsfuVje7WvcUrTYlaToQL7QB27skMRiXSnZKdUfhqGI
+         Urxch1zqj7Ctp1EWHUXIHT76RDsokvBapJ/KvYsd0La6kFqEYc+/whyKqM40KMN1r+a9
+         MMgQ==
+X-Forwarded-Encrypted: i=1; AHgh+Rrqwe/8G3TubPi2ZOFQvG5dnHqwhcKO7FUquXTjxSSwsaT6xNPTS9R75m8u25iFDvW1/HQksLMoAlCMYH8BPw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx+YPYSpRLb27FYwLt0aKxEPALytuhb7Ik31vCXRswA+BqWub0n
+	fPIU5t1Ngq3hvOcDj06Ienth+W3GkhU2dItZbkw4JF0rWhChgizp9zdcMK2G7jqIgw==
+X-Gm-Gg: AR+sD10S8bFQ1WuZq5qQd1pXS0juupWsWhmAoUAxq4DNmPvkUU3Bw70d6QLhY+EpcvC
+	8Yik0YfljcYIKeZqubNhzUnEgA+WHrSfW6m85JsHXVqdNIk5H9LWbY4gfmsIfXce2VyNuqbvctl
+	lDH5iZ3kIS+pqYVuFALfQzZ2bIClK8LIOTwSh2rEr0c7l5cAEwVGXQDd/8n66ZJSv1kEYpfx41L
+	KziOAQCvlSJNeNDOSUxlM9h67CizO9FFEa1BWGOMF3sGJS/srL0uobC65WTxtGcjGSly+H22Mrt
+	9Be3ZhmE/sUsrsf0yHpRpyWv8eKkXoK88GkRaki8NRMLULv2vfD2hvpDCbpXEVU2gsNgH4YXYsG
+	AUTi8t+rQIlgcK/a6cn0tw/Hb/rFxW9fXQ8sD6yeS5lvpMN86YLHzFLQjvQAWaaBBQ/29Vf3s09
+	I6FqkWMxEmEiNbePLICjy1zCZQA8jj1YJrTm6w0S9mUd+YuRu/ftFDLP/lqLA=
+X-Received: by 2002:a17:90b:1c01:b0:38e:6ba9:5203 with SMTP id 98e67ed59e1d1-38ec658e6bcmr6608480a91.22.1784882685067;
+        Fri, 24 Jul 2026 01:44:45 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:f131:86cc:5858:7325])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-38f089ac6d8sm434546a91.2.2026.07.24.01.44.29
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-38f089ac6d8sm434546a91.2.2026.07.24.01.44.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Jul 2026 01:44:33 -0700 (PDT)
+        Fri, 24 Jul 2026 01:44:44 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Bartosz Golaszewski <brgl@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -93,17 +93,17 @@ Cc: Wei Deng <wei.deng@oss.qualcomm.com>,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Alan Stern <stern@rowland.harvard.edu>,
 	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: [PATCH v7 06/16] usb: hub: Associate port@ fwnode with USB port device
-Date: Fri, 24 Jul 2026 16:43:15 +0800
-Message-ID: <20260724084328.3943997-7-wenst@chromium.org>
+Subject: [PATCH v7 08/16] usb: hub: Pass |struct usb_port*| to usb_port_is_power_on()
+Date: Fri, 24 Jul 2026 16:43:17 +0800
+Message-ID: <20260724084328.3943997-9-wenst@chromium.org>
 X-Mailer: git-send-email 2.55.0.229.g6434b31f56-goog
 In-Reply-To: <20260724084328.3943997-1-wenst@chromium.org>
 References: <20260724084328.3943997-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260724_014435_301123_C3D18FE5 
-X-CRM114-Status: GOOD (  17.74  )
+X-CRM114-CacheID: sfid-20260724_014445_921315_CB03E2F5 
+X-CRM114-Status: GOOD (  17.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,99 +118,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When a USB hub port is connected to a connector in a firmware node
-graph, the port itself has a node in the graph.
+usb_port_is_power_on() currently takes |struct usb_hub*|, but only needs
+it to tell if the hub/port is SuperSpeed or not.
 
-Associate the port's firmware node with the USB port's device,
-usb_port::dev. This is used in later changes for the M.2 slot power
-sequencing provider to match against the requesting port.
+In a subsequent change, usb_port_is_power_on() needs access to a pwrseq
+state tracking field in |struct usb_port|. Either structure can be used
+to identify whether a port/hub is SuperSpeed or not, as the field in
+|struct usb_port| is inherited from the hub:
 
-To avoid potential conflicts with ACPI firmware nodes and then causing
-power management issues, only assign the firmware node if the hub's
-firmware node is not an ACPI firmware node.
+    port->is_superspeed = hub_is_superspeed(hub)
 
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Replace usb_port_is_power_on()'s |struct usb_hub*| parameter with
+|struct usb_port*| so a subsequent change can use it.
+
 Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
-Changes since v5:
-- Added extra |struct fwnode_handle *| local variables to shorten lines
-  (Andy)
-- Added comment about passing fwnode_graph_get_port_by_id() return value
-  directly to device_set_node() (Andy)
-
-Changes since v4:
-- Dropped unused |hdev| variable
-- Added flags for fwnode_graph_get_port_by_id() with
-  FWNODE_GRAPH_DEVICE_DISABLED so that even incomplete
-  ports can be connected
-
 Changes since v3:
-- Added missing fwnode_handle_put()
-
-Changes since v2:
-- Skip assignment if hub firmware node is ACPI node
+- Adapted to move of usb_port_is_power_on() to port.c and port.h
 ---
- drivers/usb/core/port.c | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
+ drivers/usb/core/hub.c  | 7 ++++---
+ drivers/usb/core/port.c | 6 +++---
+ drivers/usb/core/port.h | 4 +---
+ 3 files changed, 8 insertions(+), 9 deletions(-)
 
+diff --git a/drivers/usb/core/hub.c b/drivers/usb/core/hub.c
+index a6c4e4c0368a..6671b5e45191 100644
+--- a/drivers/usb/core/hub.c
++++ b/drivers/usb/core/hub.c
+@@ -3291,7 +3291,7 @@ static int check_port_resume_type(struct usb_device *udev,
+ 	}
+ 	/* Is the device still present? */
+ 	else if (status || port_is_suspended(hub, portstatus) ||
+-			!usb_port_is_power_on(hub, portstatus)) {
++			!usb_port_is_power_on(port_dev, portstatus)) {
+ 		if (status >= 0)
+ 			status = -ENODEV;
+ 	} else if (!(portstatus & USB_PORT_STAT_CONNECTION)) {
+@@ -3733,12 +3733,13 @@ static int wait_for_connected(struct usb_device *udev,
+ 		struct usb_hub *hub, int port1,
+ 		u16 *portchange, u16 *portstatus)
+ {
++	struct usb_port *port_dev = hub->ports[port1 - 1];
+ 	int status = 0, delay_ms = 0;
+ 
+ 	while (delay_ms < 2000) {
+ 		if (status || *portstatus & USB_PORT_STAT_CONNECTION)
+ 			break;
+-		if (!usb_port_is_power_on(hub, *portstatus)) {
++		if (!usb_port_is_power_on(port_dev, *portstatus)) {
+ 			status = -ENODEV;
+ 			break;
+ 		}
+@@ -5434,7 +5435,7 @@ static void hub_port_connect(struct usb_hub *hub, int port1, u16 portstatus,
+ 		 * but only if the port isn't owned by someone else.
+ 		 */
+ 		if (hub_is_port_power_switchable(hub)
+-				&& !usb_port_is_power_on(hub, portstatus)
++				&& !usb_port_is_power_on(port_dev, portstatus)
+ 				&& !port_dev->port_owner)
+ 			set_port_feature(hdev, port1, USB_PORT_FEAT_POWER);
+ 
 diff --git a/drivers/usb/core/port.c b/drivers/usb/core/port.c
-index b4452b665f59..c0a51d9b06a6 100644
+index b2e953f137f8..8d686d43e996 100644
 --- a/drivers/usb/core/port.c
 +++ b/drivers/usb/core/port.c
-@@ -7,6 +7,7 @@
-  * Author: Lan Tianyu <tianyu.lan@intel.com>
-  */
+@@ -23,11 +23,11 @@ static int usb_port_block_power_off;
+ static const struct attribute_group *port_dev_group[];
  
-+#include <linux/acpi.h>
- #include <linux/kstrtox.h>
- #include <linux/slab.h>
- #include <linux/string_choices.h>
-@@ -358,6 +359,11 @@ static void usb_port_device_release(struct device *dev)
+ /* Check if a port is power on */
+-int usb_port_is_power_on(struct usb_hub *hub, unsigned int portstatus)
++int usb_port_is_power_on(struct usb_port *port, unsigned int portstatus)
  {
- 	struct usb_port *port_dev = to_usb_port(dev);
+ 	int ret = 0;
  
-+	/*
-+	 * At this point ACPI nodes and swnodes have been removed by
-+	 * device_platform_notify_remove() in device_del().
-+	 */
-+	fwnode_handle_put(dev_fwnode(dev));
- 	kfree(port_dev->req);
- 	kfree(port_dev);
- }
-@@ -754,6 +760,7 @@ int usb_hub_create_port_device(struct usb_hub *hub, int port1)
- {
- 	struct usb_port *port_dev;
- 	struct usb_device *hdev = hub->hdev;
-+	struct fwnode_handle *fwnode = dev_fwnode(&hdev->dev);
- 	int retval;
+-	if (hub_is_superspeed(hub->hdev)) {
++	if (port->is_superspeed) {
+ 		if (portstatus & USB_SS_PORT_STAT_POWER)
+ 			ret = 1;
+ 	} else {
+@@ -114,7 +114,7 @@ static ssize_t disable_show(struct device *dev,
+ 	}
  
- 	port_dev = kzalloc_obj(*port_dev);
-@@ -782,6 +789,24 @@ int usb_hub_create_port_device(struct usb_hub *hub, int port1)
- 	port_dev->dev.driver = &usb_port_driver;
- 	dev_set_name(&port_dev->dev, "%s-port%d", dev_name(&hub->hdev->dev),
- 			port1);
-+
-+	/*
-+	 * ACPI FW nodes are associated later when device_register() happens.
-+	 * Skip assigning one here to avoid potential conflicts.
-+	 */
-+	if (!is_acpi_node(fwnode)) {
-+		struct fwnode_handle *port;
-+
-+		/*
-+		 * fwnode_graph_get_port_by_id() returns either a valid fwnode handle
-+		 * or NULL. Passing NULL to device_set_node() clears any associated
-+		 * fwnode. It is effectively a no-op here, since no fwnode has been
-+		 * assigned to the newly created device yet.
-+		 */
-+		port = fwnode_graph_get_port_by_id(fwnode, port1, FWNODE_GRAPH_DEVICE_DISABLED);
-+		device_set_node(&port_dev->dev, port);
-+	}
-+
- 	mutex_init(&port_dev->status_lock);
- 	retval = device_register(&port_dev->dev);
- 	if (retval) {
+ 	usb_hub_port_status(hub, port1, &portstatus, &unused);
+-	disabled = !usb_port_is_power_on(hub, portstatus);
++	disabled = !usb_port_is_power_on(port_dev, portstatus);
+ 
+  out_hdev_lock:
+ 	usb_unlock_device(hdev);
+diff --git a/drivers/usb/core/port.h b/drivers/usb/core/port.h
+index 00f7500af336..2f4349b3ce6b 100644
+--- a/drivers/usb/core/port.h
++++ b/drivers/usb/core/port.h
+@@ -63,6 +63,4 @@ struct usb_port {
+ #define to_usb_port(_dev) \
+ 	container_of(_dev, struct usb_port, dev)
+ 
+-struct usb_hub;
+-
+-int usb_port_is_power_on(struct usb_hub *hub, unsigned int portstatus);
++int usb_port_is_power_on(struct usb_port *port, unsigned int portstatus);
 -- 
 2.55.0.229.g6434b31f56-goog
 
