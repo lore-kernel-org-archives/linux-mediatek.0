@@ -4,83 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BC2BC53200
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2026 12:17:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE6C2C531F9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2026 12:24:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:References:MIME-Version:In-Reply-To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GQ+KH6/Owg7d0XhCktRva+QCZoo/0HA00/3GV4nmC8s=; b=rxn4T+2b22l0SeB4ToM7bjclfn
-	dSORlPywi7JP4jjPLU1CaSL1GLUp1V3858UPOEGO52EfGYBRSQpwFAEeI2jLA9yIS6wg/LcDnejXg
-	QAm08u1haZh3LZ3/f+z9qtBZuB3FA+8pQYNN6FNvzK+XKXeF4iEe2KL/j2LWarNL5b3L7iC6Scgdi
-	aN9WikdYCVYfLgrQaFhN3/HUiD7KqAxeTlBgROPMIUF/ofrdZTe4N3cM5/duThIN10vkD6wHGMDNI
-	ex8IwGb45PMXe+TbS1yClXGsf4wuN30v7oJA8aAnlK0J/nlUGvlXwDroeXlq1E/syGResyZOZzTDT
-	1aUInhfg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ayoSzH5fd0Q0ofHM9FCbQbrCBnyBn12MJyDO97wV3bQ=; b=Fe42xw1BfkIWoHnum9tQslvgO/
+	qVBAfHJHuLP+JNiFRHSbz92062JvezKoI26GqLoR3LeouiLfGEyeKBMnIIeT/eQDQ6ZNnWB0e/Fl9
+	Fsh/JGF8UEBeNUOZ8RHKtOH0HKre2bd3B2iZOjM5Hv+BbJteYA9fK/x4C7FwLJQwH89ao+uN9y7J6
+	M+vOyQcE8gPz3f+2oAlyB4fovEIYEsy+1zKdNvUTD+skkNdHe9rMylDIwzkYTw7X3rGJrZDf87zaq
+	S0U5Lx51pjMfJSSA2zNqv7/gWaNjgTuR35gz04IFo4IQWA/CHAK1boVzVDObUJGtv4T+b88bAYdEe
+	AGgWf2SA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnDuY-0000000GGx8-3Qf3;
-	Fri, 24 Jul 2026 11:17:50 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wnExG-0000000GMjl-2UJM;
+	Fri, 24 Jul 2026 12:24:42 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnDuX-0000000GGwM-1GGr
-	for linux-mediatek@lists.infradead.org;
-	Fri, 24 Jul 2026 11:17:49 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 879BC4512D
-	for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2026 11:17:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 519131F031FE
-	for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2026 11:09:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784891393;
-	bh=GQ+KH6/Owg7d0XhCktRva+QCZoo/0HA00/3GV4nmC8s=;
-	h=From:In-Reply-To:References:Date:Subject:To:Cc;
-	b=UJJUlWLOVXOeCmcSW84m67zYdnKUKmMGfrnvqHp6qCvbxBiU2+49GTxixI96xOQA/
-	 7N7iXlEMvS1O21GL50BBPAUXELLhcHdlMPE/VW6acs9kKTZnru4L1PxgfXPPsm39cR
-	 QGjXvaNelrxzx7zOfioXWqNoowXej7DrJuCCc04inumEFN41WrcJMVoecS6rH2BNdK
-	 MExrX/jRqM3/3tThzO+OjhfVBEXq2DZDjrfCl/Z2slG6/mpyuVTV54kaAI7/lqjupN
-	 zh15uOXFKEHriV0V27rcfzSI2LuAekkPlHpEBVjunfc0j6oAlly44wywe+pS1FDDLA
-	 PxT35lP7eLoDA==
-Received: by mail-lf1-f50.google.com with SMTP id 2adb3069b0e04-5aeb59d54b1so322602e87.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2026 04:09:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+RrGIZeH5GE/L8YIlxBfhQZR6zTpxHq6BeWb9XrWZ198AzOmhWAjJL14m9F1znTpXNgmLc2fQn1E2I0uD0xaEQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwOoTtSjMZAPJUCmpMr/XLSY2whsmBYgH15DomHOmJ4apcN6SqA
-	kYI3dZ6PZ/M3KlKz7Uj9QelCJigp0kpH2JafB94fpR+/wblKEqNqHVyZZCz1RjMUSRkyGwP68XH
-	gUWX+ADn6/0TYjzKcwrA9J/HFBNSraAJFe30wASahOw==
-X-Received: by 2002:a05:6512:128a:b0:5b0:e14:777c with SMTP id
- 2adb3069b0e04-5b2b2f667a1mr1625122e87.22.1784891391963; Fri, 24 Jul 2026
- 04:09:51 -0700 (PDT)
-Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Fri, 24 Jul 2026 04:09:50 -0700
-Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Fri, 24 Jul 2026 04:09:50 -0700
-From: Bartosz Golaszewski <brgl@kernel.org>
-In-Reply-To: <20260724084328.3943997-4-wenst@chromium.org>
+	id 1wnExD-0000000GMie-0Mv4;
+	Fri, 24 Jul 2026 12:24:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1784895875;
+	bh=dEDWWpyR8FmNBGJdtP04CKQ0RFI848qzfOTxhCXPXPo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=AzYEbfQx6krtRQHaNAIOwFk8nhKzsYLxt3JEXX/vkaLkm2QFcLK/o8X3b5CU0TWrQ
+	 Uotuap2mpYT5nj0Fgm0nBk19VwUQR8/TLCjh3x5FsROOnOZyQY9LYki18XcVlFEGeW
+	 CzCiLxrMU/l8N0OkKKiIwT57qvSfYNfFEgI9/qcnBqiczfP63hcPDmzXyBb19s7HRA
+	 eEfhw21kQsrabt/b9VRgiHFOGsi6xFk9AtQQP+EK4BBoWxNoZJIQuZaRoDXftY9uKa
+	 tfG7GGbmeZoVovVTjtdVAMsMhKIK0b8/zcJ5j7g1n88am5+OuFv9F+L2vGVyrHh4oo
+	 ySdV2xiNvbtIA==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AA37C17E00E9;
+	Fri, 24 Jul 2026 14:24:34 +0200 (CEST)
+Message-ID: <cc5348d5-3bda-42be-915a-476635708165@collabora.com>
+Date: Fri, 24 Jul 2026 14:24:34 +0200
 MIME-Version: 1.0
-References: <20260724084328.3943997-1-wenst@chromium.org> <20260724084328.3943997-4-wenst@chromium.org>
-Date: Fri, 24 Jul 2026 04:09:50 -0700
-X-Gmail-Original-Message-ID: <CAMRc=MfV7SeG-jJ8YdS=aRabCUvP0PV5=8QL=AdCCsnzyKq1QA@mail.gmail.com>
-X-Gm-Features: AUfX_mwiB4kLYEiWsY_exPz74ryChUmU7NeF3R9wpx0QdX4G4TNw4501T3DhVLY
-Message-ID: <CAMRc=MfV7SeG-jJ8YdS=aRabCUvP0PV5=8QL=AdCCsnzyKq1QA@mail.gmail.com>
-Subject: Re: [PATCH v7 03/16] power: sequencing: Add pwrseq_get_state()
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Wei Deng <wei.deng@oss.qualcomm.com>, linux-acpi@vger.kernel.org, 
-	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
-	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>, 
-	Alan Stern <stern@rowland.harvard.edu>, 
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>, 
-	Bartosz Golaszewski <brgl@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Daniel Scally <djrscally@gmail.com>, 
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
-	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 3/5] pinctrl: mediatek: allow common drivers to be
+ built as modules
+To: Justin Yeh <justin.yeh@mediatek.com>, Sean Wang <sean.wang@kernel.org>,
+ Linus Walleij <linusw@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20260723035823.2041832-1-justin.yeh@mediatek.com>
+ <20260723035823.2041832-4-justin.yeh@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260723035823.2041832-4-justin.yeh@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260724_052439_290695_286F12A4 
+X-CRM114-Status: GOOD (  13.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,21 +78,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 24 Jul 2026 10:43:12 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
-> The power sequencing consumer API already does power on state tracking
-> internally. Expose the state to consumers through pwrseq_get_state()
-> so that they don't have to reimplement it locally.
->
-> Instead of just on/off and error codes, the function can also return
-> "unknown" state. This is in anticipation for "uncontrollable" power
-> sequencers (such as GPIOs left unconnected).
->
-> Acked-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
+On 7/23/26 05:58, Justin Yeh wrote:
+> The MediaTek SoC pinctrl drivers link against the shared implementations
+> in pinctrl-mtk-common.c (v1), pinctrl-moore.c and pinctrl-mtmips.c. These
+> were built-in only: their Kconfig symbols were bool, they did not export
+> their entry points and they carried no MODULE_LICENSE().
+> 
+> To let the individual SoC drivers be built as loadable modules (required
+> for Android GKI + vendor_dlkm, where vendor drivers must live outside the
+> GKI vmlinux), the shared code they depend on has to be modular too.
+> Otherwise selecting a SoC driver as =m forces the common symbol to =y and
+> the resulting module fails to link against the unexported common entry
+> points.
+> 
+> Convert PINCTRL_MTK, PINCTRL_MTK_MOORE and PINCTRL_MTK_MTMIPS to
+> tristate, export the entry points used by the SoC drivers, and add
+> MODULE_DESCRIPTION()/MODULE_LICENSE() to the three common files.
+> 
+> The v2 common code (PINCTRL_MTK_V2) is already modular, but mtk_rmw() was
+> never exported. It is called directly by SoC drivers such as mt7623, so
+> export it as well to keep those drivers linking once they are modular.
+> 
+> Rather than exporting these shared symbols into the global namespace,
+> export them in the "MTK_PINCTRL" symbol namespace with
+> EXPORT_SYMBOL_NS_GPL() so they are only visible to drivers that opt in.
+> Each SoC driver that uses them therefore declares
+> MODULE_IMPORT_NS("MTK_PINCTRL").
+> 
+> Signed-off-by: Justin Yeh <justin.yeh@mediatek.com>
 
-I'd have dropped my Ack with a change that significant but it looks good now
-so:
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Acked-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
 
