@@ -4,98 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D2F7C531F9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2026 17:21:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7346C531C9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2026 19:08:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8CxrX6ndLjkzVoOvx8ReLw2F27C6sP51HDWvrcv3raA=; b=1Jugx1hRG915c0naVaWs0uKDI+
-	TKS2zMJPWWP1skxC+Af8B96S51PCQRHZs50L84AzbuS6AqeaIyClS7j6LaAKQzXeUPZxR3qutHdqY
-	ybX++K2RElq8O/ZIgwcu9chvgIUFDxLc12kuquSbUGUve1GavQijb7h+l0KWjN/znmVcDIbL4k1PP
-	GpCQIUuyb68xWwwuKZroZqonwR/cmbGHEIvhWlneuhT01eKg0J15wO8Qr8TyGLJA3BvSbMM1GzuBE
-	/iY54PBGsiqivlhPgcwXQuZuCvNTVKW5iL1ZoxVOg3wpAmEQmc9wv15zGFRSj/VwFcKS5jcxNXi9g
-	DbpO3X0g==;
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=U+htnAATywGPyMXFWmN2bw/5HJemt0qcsoVWYOwwS40=; b=WjzTCCYHk5gfGnl04tbhBH/zIx
+	HQwFccfRHixFhyTBe2JDTRkX4IrX/wmfBV1wpVwcqDI9U8YAWm3ZfOicHEF5j3v/1OXEXS6R959+C
+	I4pIWRmFAmYuMj/WzWt9AwUfsvO7n6SuASTUCTqqZ47Qx9oR75GCvmYFXSvw6CO3FZdkhjVHDkTYA
+	xQpRF9yjJZSX+WSlI/9tNQMzO/xdNmbz39w4jpW3Y9asSxf6ehGpSOHjgcgtUh9VIGAJWdrc+Wq59
+	LXaGFwaZLmremi7UcHEUMIfntjn/0Jp1FHMfzdqwgLb2p+x9uazlH8khSNvtl/RtRUsVRbbxrfClj
+	XGcO+4pA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnJaM-0000000Gw6S-0Hl8;
-	Fri, 24 Jul 2026 17:21:22 +0000
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+	id 1wnLG0-0000000H7bk-0hPf;
+	Fri, 24 Jul 2026 19:08:28 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnJaE-0000000Gw35-3PBa
+	id 1wnLFw-0000000H7Zx-2tgS
 	for linux-mediatek@lists.infradead.org;
-	Fri, 24 Jul 2026 17:21:17 +0000
-Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-38e3efab7e0so555566a91.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2026 10:21:14 -0700 (PDT)
+	Fri, 24 Jul 2026 19:08:26 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-49554ebb87dso7223615e9.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2026 12:08:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1784913674; x=1785518474; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=8CxrX6ndLjkzVoOvx8ReLw2F27C6sP51HDWvrcv3raA=;
-        b=ZdxhmTpw8VkSqOfdN4ml1IEL1xAXoKFaGX4QpfdfVYkQ7n5xrlQ9QXZMF1jw0KWypR
-         En6ZMpJcjsrWTjZG5o/2hvnrSF2vAOhTQq4Jdo98QkcTjOLFh4QoabJQvI7/HiXsa36Z
-         KFCfzMEyaqtekLlflPsob6CZi03D6i3Nm8RK45uR6GuqdMgM6KhcscBoY9byJhb6Q3Wv
-         u41O6UkArjzuM+TcXpNxErMGupNtKlpfiWFumk/WXkBaorMBFzCSauuP5PMgJEwXj1H2
-         wE/3O2ktzXu21afqtKsdqXZ82luBdSNMluoZtwVLJiBEZHIIH1m7uwLY8AIdqimpkTur
-         BVog==
+        d=gmail.com; s=20251104; t=1784920103; x=1785524903; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=U+htnAATywGPyMXFWmN2bw/5HJemt0qcsoVWYOwwS40=;
+        b=GEaPV6cS1WUutOC3oR3HY6+Wh6OsoV4T+IMviyCvwya+YAa6JEMPDcXpU9BulL9Nba
+         5MDUAHBneKRdstV/+rwZMNmM9/CXsHQkOjPUKdRbZ2uKGfNC8KrCU1RdJ/VBD/7UhJFg
+         M1BTPTXgrMlxnI7HqQjaHqOEH/gXiKFkV7FQ+cK0KxsEi4XWNZsYbXVSS8Z5T+iyL9u3
+         AbPs0AICdZnxwYoz9oJMd36UcXHG52uC8pxXGw7Y5j0yyqyK/m4lmjZ34wr7Tq1hZR1B
+         sXREqtPgfmeID+Kvmgzp2veTb5oh7QzhelyxnpvaKrhEH1/4qfFh+rjhyTFo7q5Wz2h2
+         GZAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784913674; x=1785518474;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=8CxrX6ndLjkzVoOvx8ReLw2F27C6sP51HDWvrcv3raA=;
-        b=rsXzNSSonnxVWMIYoThsLiW90ebEQ9bOdiILMgkPJNiZ61v39NTlgZ7nEKIj0I0JZg
-         8W14VYOFWU+K/DDPstJ9bTiXBc/jztoXyI2Y3NLgpv+gxUU+VkujvLmat0XSnSSL/hNd
-         bCBblB3+4Xuhw9y9spo/ljkKmtjFDJgpioU6Xos8pFeNtgxmCGzaHlqLGNG9EZN7IKXO
-         WYBBEb31ezN8OzpFAUUcshPcgDfuVQdYd3C9CCNlttfGGQZkgv0g5AyGPixZAOgT8JhA
-         7V7OuTM1jPBa8z82FQjjKScpaGEN133omigMtfEYGFVKYmI+ByGxFvMMrYXJib6JUwVg
-         kI/Q==
-X-Forwarded-Encrypted: i=1; AHgh+RoSZ/6zocYYt8OqQz2I7qHvfWV2nztY1G3oveJu951KIystFbA8yyUuKqV6l7jPbUlzCjRwiyMP8SAr1fMkrw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxr6QYczNjYFgYC01N8MsIQJl9M2fpTuKztx2uz9KUAU6LqRn10
-	m/9OcPnr4Ceu3ex3ef1JdBNF2JvLcfkka+EgKISYsOdh1htA/r7wrX/lmX7Xq/FN
-X-Gm-Gg: AR+sD13DhavBJR57yWnzWlSlBYjs7ASmhXv7l3KUX1w37/g8HoXDA2sCKp77xkR+y3R
-	oR9dlftkT96cuqclWyfiTZaB/uHsEpfe2XhBX6QjA4qhxIO33kGYcLysW5id4vaasGe5dVY6VH5
-	vsmoaTfMl54Zx8yVN4VJlC8idS2/hJLC6NA65ycMqUcbQksVpl1kpBeDKYy45el2xbzOjzYCuQU
-	jo0n2NkXCVbxP8NYTT8Tc790iF73qERXsjwjiw+crEnnAN2XwL/Lwun38N989k94h3VffwqTvl2
-	Wqh2oetc/Bv8TofhogXM2Wkf9dbrulLnL1uloYPxyIo/62vueylCJl6wcmBdDZkeZnCYoo9il9S
-	gsNAP62KMMoHpH05smPWY5lrK8y+LNw2ket//8imiE+rwfHqQlA/ESqs2Z4tIzAwb15HykZx5Mv
-	vNvk8bmlmtd39rnjjwDNwQdNTirolQFAKJwl3DwCVKQBU=
-X-Received: by 2002:a17:90b:55c7:b0:38e:c232:9d2c with SMTP id 98e67ed59e1d1-38f1f9406damr954371a91.2.1784913673756;
-        Fri, 24 Jul 2026 10:21:13 -0700 (PDT)
-Received: from DESKTOP-VNSSJ2S.lan (59-127-145-64.hinet-ip.hinet.net. [59.127.145.64])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-38f041d5f78sm1789907a91.17.2026.07.24.10.21.10
+        d=1e100.net; s=20251104; t=1784920103; x=1785524903;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=U+htnAATywGPyMXFWmN2bw/5HJemt0qcsoVWYOwwS40=;
+        b=i2HcJiXRHDp95IQVFOURTuZcY/BUSQEtCJ+U5fQanJRfyfZhY9Z3l94JBDgPYu7AKv
+         HtN8rXWb6S4mdrSlbPLAMyFYU1hGAa1D6r8b5FJwkEoaNhlRXSehP+2DHlC2VZ8rJdae
+         aImoMLxYj/mFLR6okwCxJGLI/Idpe0OFfnJFugxm4iH3yMhbqR6PthnWJdj6MLp+tch8
+         CKstP4vmn2ZJCxGHKtTmhva4Lmu7UwPUvrRgUAQGEgRW03/B2s6q1LPF9QXAaw5Y7lK1
+         uV5caI/mi7RYlJg2ZtjpCRSCAoaxEYNiytkJfeSSTBgA/iVaVCmLuzllroLTVRj6mIru
+         VU/w==
+X-Forwarded-Encrypted: i=1; AHgh+Rq+qxvLyOIKGBXMErcDmn323xQXRun0bZte86VvEn6nLDA+dcwS87LJWr/kWp7Ngnc1SQ4QDiw6YeVJvjXBTw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwgiisHic7LyojRp9qKDwNJ+L1GWtkFreZvK8qojcDDImNWk/I0
+	gSUZWw5cGJy9/Xk9G6ZBTnWU1nKabr5e0wrKEIvwlZzx1OvUSERK2tn1
+X-Gm-Gg: AR+sD11yAR8UHGpsG1Ibfku1xsHX/bPcKEPhP34qHI74EB2+6tCMLb6REydWPrq13VM
+	V7GxadGLgChN14vQzuf2ZPNUVV5IWr2atGe3v6vphx7fjBhCB/x18H1KU5rXkzlk1tb4gPX8FeG
+	l+AY/bpo7X6kNkaZFfh3cmRYyiY2mj8FGCbkXoynWSz49Dnyxjg+gIBe2e2Uy/WQzsEjyOSGfFj
+	8r8lq6SHrwGEOWkJJnEeNKwowZnAXLm48M1ds5J76sdmwc2KQRkTQHwjD1mCvP+onosGraD1tRC
+	rhrqdYMCqYirDaku7eMuPurXbcr83Cb+Lr9bRKyDRXmaanaedRu1rVq203h8nSY2j9ZM6wVzIUR
+	OOq9rcO9ZL4dcW7qlcYd0HPfF1ewkdzBi+AOJiXaLMuUfv7+KEWOvrtXm/oRcwO+GQQOlywG3az
+	trFrqbm2aL/jYGuD8tVeqmto0dMAlHYcZxbZd86NT2WhfmY+jDKKw0U1RDUmMcjw2r
+X-Received: by 2002:a05:600c:19c8:b0:495:5b4a:53b7 with SMTP id 5b1f17b1804b1-49573cffa23mr108734915e9.19.1784920102617;
+        Fri, 24 Jul 2026 12:08:22 -0700 (PDT)
+Received: from Ansuel-XPS24.localdomain (host-87-3-249-180.retail.telecomitalia.it. [87.3.249.180])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-496b4c8d6b5sm5893755e9.2.2026.07.24.12.08.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Jul 2026 10:21:13 -0700 (PDT)
-From: Zhi-Jun You <hujy652@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S . Miller" <davem@davemloft.net>,
+        Fri, 24 Jul 2026 12:08:22 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
 	Jakub Kicinski <kuba@kernel.org>,
 	Paolo Abeni <pabeni@redhat.com>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sujuan Chen <sujuan.chen@mediatek.com>,
-	netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Zhi-Jun You <hujy652@gmail.com>
-Subject: [PATCH net v3 2/2] net:ethernet: mtk_wed: setup WDMA_RING_TX(0) for non-DBDC MT7986
-Date: Sat, 25 Jul 2026 01:20:40 +0800
-Message-ID: <20260724172040.1653-2-hujy652@gmail.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260724172040.1653-1-hujy652@gmail.com>
-References: <20260724172040.1653-1-hujy652@gmail.com>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next v2 0/6] net: phy: mediatek: calibration for AN7581/3
+Date: Fri, 24 Jul 2026 21:08:03 +0200
+Message-ID: <20260724190811.198339-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260724_102114_858519_768B6669 
-X-CRM114-Status: GOOD (  12.27  )
+X-CRM114-CacheID: sfid-20260724_120824_749592_8DD4709F 
+X-CRM114-Status: GOOD (  14.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,51 +109,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-WDMA_RING_TX(0) is required to set MTK_WED_WDMA_RING_TX for WED RX
-but on a non-DBDC MT7986 it is never setup because idx is 1.
+This small series adds calibration support for Airoha AN7581 and
+AN7583 integrated PHYs.
 
-Setting MTK_WED_WDMA_RING_TX with WDMA_RING_TX(1) is not feasible because
-WED still tries to send through WDMA_RING_TX(0). This is verified with
-register dump.
+The calibration logic is quite big so I decided to split
+the driver from the mediatek one to keep things organized.
 
-Fix this by calling mtk_wed_wdma_tx_ring_setup if wed is v2 and
-rx_ring[0] is not allocated and reset tx_wdma[0] if it's already
-allocated.
+Minor change were needed and just additional symbol to use what
+is common between mediatek and airoha PHYs.
 
-Fixes: 4c5de09eb0d0 ("net: ethernet: mtk_wed: add configure wed wo support")
-Signed-off-by: Zhi-Jun You <hujy652@gmail.com>
----
-Changes in v3:
-- no change
-- Link to v2: https://lore.kernel.org/r/20260711112128.971-1-hujy652@gmail.com
-Changes in v2:
-- Address warm reset concern raised by AI review.
-- Return value concern is skipped until further comment from reviewers.
-- Added a comment to explain this special case.
-- Link to v1: https://lore.kernel.org/r/20260630144831.1109-1-hujy652@gmail.com
----
- drivers/net/ethernet/mediatek/mtk_wed.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+I followed the naming pattern of mtk by calling the new source
+airoha-ge-soc and related config.
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-index 7d2775a97fa0..b48abad995d7 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-@@ -2334,6 +2334,13 @@ mtk_wed_start(struct mtk_wed_device *dev, u32 irq_mask)
- 		if (!dev->rx_wdma[i].desc)
- 			mtk_wed_wdma_rx_ring_setup(dev, i, 16, false);
- 
-+	/*
-+	 * non-DBDC MT7986 allocates only rx_ring[1] and tx_wdma[1] during setup
-+	 * but tx_wdma[0] is also needed for WED to function.
-+	 */
-+	if (mtk_wed_is_v2(dev->hw) && !dev->rx_ring[0].desc)
-+		mtk_wed_wdma_tx_ring_setup(dev, 0, MTK_WED_WDMA_RING_SIZE, !!dev->tx_wdma[0].desc);
-+
- 	if (dev->wlan.hw_rro) {
- 		for (i = 0; i < MTK_WED_RX_PAGE_QUEUES; i++) {
- 			u32 addr = MTK_WED_RRO_MSDU_PG_CTRL0(i) +
+The calibration use lots of static table and software calibration
+at runtime instead of using efuse to calibrate.
+
+There is one pecularity where some register and calibration needs
+to be done on port0 first and then with the related port.
+
+This is O.K. as port0 presence is mandatory for the functionality
+of the integrated switch and it's assumed to be always present
+on the MDIO bus.
+
+MAINTAINERS is updated to reflect the changed code.
+
+(this was tested from a long time and also verified by Airoha for
+correct order of calibration)
+
+Changes v2:
+- Split header register patch from cal_cycle part
+- Fix missing EXPORT_SYMBOL_GPL
+
+Christian Marangi (6):
+  net: phy: mediatek: export __mtk_tr_write
+  net: phy: mediatek: move MTK GE SoC registers define to dedicated
+    header
+  net: phy: mediatek: generalize cal_cycle function for GE SoC
+  net: phy: mediatek: split Airoha code to dedicated source
+  net: phy: mediatek: add calibration logic for AN7581
+  net: phy: mediatek: add calibration logic for AN7583
+
+ MAINTAINERS                              |    9 +
+ drivers/net/phy/mediatek/Kconfig         |   16 +-
+ drivers/net/phy/mediatek/Makefile        |    1 +
+ drivers/net/phy/mediatek/airoha-ge-soc.c | 1812 ++++++++++++++++++++++
+ drivers/net/phy/mediatek/mtk-ge-soc.c    |  518 +------
+ drivers/net/phy/mediatek/mtk-ge-soc.h    |  364 +++++
+ drivers/net/phy/mediatek/mtk-phy-lib.c   |   77 +-
+ drivers/net/phy/mediatek/mtk.h           |   15 +
+ 8 files changed, 2312 insertions(+), 500 deletions(-)
+ create mode 100644 drivers/net/phy/mediatek/airoha-ge-soc.c
+ create mode 100644 drivers/net/phy/mediatek/mtk-ge-soc.h
+
 -- 
-2.47.3
+2.53.0
 
 
