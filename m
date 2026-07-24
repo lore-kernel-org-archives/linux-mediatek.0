@@ -4,152 +4,160 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0682C531C9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2026 15:01:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B28ABC531FA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2026 15:26:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uD+5izwod7lzNMQrYKeunGpTKt32Jca4KiCQa3SdMss=; b=cJr7/6pkbsLqN9diUMxVbaZs2T
-	vcmp5xEudo1hdFWnaYURuPdhjFD0OopMdwf1mbdJGscpPDLGGBtSPN5E0hDFgYT/0c+iNQd8jP+Rx
-	ymHVeUBoKpRju7YIdb5wXJpi4A6OvdQ/nH8NYNFhxN+njqT853ScYwKM4eWbpbhVdr1eemfvXqpyV
-	cxGZfmguqH6AqhjIgnFLOGzOke5F4yIVGpydRzuNLm42o0zgRBrF3ShGSTE8L1HaaRUf451VjcPuJ
-	MH7SoZGfKCRwY+/QYkhT4+yvTfiftzdnEwHtBxaDvPkltzCkvNPNQoX9fCV7kMiaUFdjDJoO7voEf
-	e03jJ0lQ==;
+	bh=gF/UkUqvrY1lcjLFHPeP744pWwMQJ7+CJ8FQ/U44hAw=; b=Dk7HDnyRKJp0Ip2b3EeaBiiDZU
+	dzpb4/2tI0kBeqKSfbDmVrYk803uJNwPdIBAr3nH0KzZyVLB9nOUAL9cglTRflTMnPCryeAQh9fxI
+	aR2ddHyvtzN1LpMCcw3dA30uIb7BRPVkWPkq+mYXVPjkdeNbtveIVFu3EHCGZmXO+3Bz0+r+zBJxi
+	tQN3HlNFRFn1C+aEIun2zJJ9ciPDyC/lWgd/mCfSb6gl6P/ULodnQVq+heZILJpjSZ2VmxJGbw3Tj
+	+HZDBUsIAQ00v5lHYV/VdIbJgkdHnBOHLD1EB5whk2XLjuetA2TK8Tx2+zkmeccHq6aJz7r2+v1V4
+	eWIUOJlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnHPK-0000000GdIx-169J;
-	Fri, 24 Jul 2026 15:01:50 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1wnHmo-0000000GhYK-46ye;
+	Fri, 24 Jul 2026 15:26:07 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnHPI-0000000GdHk-16AO
+	id 1wnHmS-0000000GhT2-2c4y
 	for linux-mediatek@lists.infradead.org;
-	Fri, 24 Jul 2026 15:01:49 +0000
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 66ODbtmJ3198184
-	for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2026 15:01:47 GMT
+	Fri, 24 Jul 2026 15:25:46 +0000
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 66ODbL8t151720
+	for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2026 15:25:44 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	uD+5izwod7lzNMQrYKeunGpTKt32Jca4KiCQa3SdMss=; b=Y4OGqcDoSP91mLoj
-	Ie/WNF1TbGYkZhheGKZuMX7DXMpAOzWGIEIkPV97Pilj/04TI6bPRTjT7cwbc/dR
-	mdNLx93Phh11sEc9a9uh+h9xGPWpE9wEVWkFPD62qsIkVp0ewA/IvuCopDh9xPRf
-	Odv/D+eUk8/HMyqxdQfGlARylz7WlM6PPSi/GE5GYO2d6LFBc/To4woo9XLp/W68
-	9pneAbBjBA33iRUWbUF3T/kqgkHKigWGA8ORqYjSPRELA8hvAma+vewxRqXomP1L
-	WjTEtCcONNzguVikCaGnqoQ6IeWIp8rj5XvTYrMOYYsbEC3tos5PNrNfYPTORVw4
-	UM4FZw==
-Received: from mail-yx1-f70.google.com (mail-yx1-f70.google.com [74.125.224.70])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fm0p52af0-1
+	gF/UkUqvrY1lcjLFHPeP744pWwMQJ7+CJ8FQ/U44hAw=; b=lUQ69t8r3RQ0hcwP
+	F3p3KZcjvfYHlLOc9loUKm351F5eve2wv3d4XMk+XrsMxRN7RlNpFYWE+yjRBWCO
+	q+6aOOoQX4zuDIoN4r4Xq65hVaMKtAN1iS8EE0uALs1dS/zO+b+qptb3kY+AGD9L
+	iEeHPlz880faD+3qbfF6MXEUko4W/KzCS/irSMbceWx1sGxIRO2sxzfNkhvxRqnu
+	FUKnBfB3UkLRGnNJRkm+bvOpHYxTW075adGj6sd51Y1m1QJRj2u1CTMmHGdFGKLx
+	PH0wHKNebbZgmaQDL3OiUq8Md+iAS5iGtjFrDWSqlLnnUVqKcYwRr+uWBrXqfcep
+	C18zWw==
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com [209.85.160.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fm8ck8jj0-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2026 15:01:46 +0000 (GMT)
-Received: by mail-yx1-f70.google.com with SMTP id 956f58d0204a3-667bb944299so529350d50.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2026 08:01:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1784905306; cv=none;
+	for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2026 15:25:43 +0000 (GMT)
+Received: by mail-qt1-f197.google.com with SMTP id d75a77b69052e-51c0199faafso8951061cf.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2026 08:25:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1784906743; cv=none;
         d=google.com; s=arc-20260327;
-        b=Z68qpe0XJuBGfZuf9wCczfKwQsscJup5oqFR4arE80KPDjEMDZA/Ax2qP3Obefu+uN
-         AGlq2SJVcpR+mEkQ11feikba7NUmQcJTCUnaooQNQheC31g0DR/I13khT3UAbKQLlTtl
-         AbDMCK7a2AYb8OwMaHohV9z54XOM1UiDsRRlmz2E4ZCnZytBQoiBCZbGBnNh4qtWvfhG
-         xf7Rkl2JsnMbwqJA2Px+zcsaVt+T8wE0Vi4d9BIo8KVmC4AxwEq1DY97u5bCTKKybDxm
-         v2flgKSyCuQ3BSkP1iGxpOdbnVo7KHhv6gaTswxOFz0lcsT9AqF1Pd1w3mX4xa7eT1Zh
-         Acfg==
+        b=Qykb3wgwXty4vHTniveEyxBlpBPz8V1zCfDoDrB4FLEVU00gUYS3yHHLgyE+YZ0VIL
+         gR4ZDcJsWjRQR8N15mu77sf3YNgB5Y/57eRX5Bhs+x62/3133HrloDUF/0aJG2fizxDF
+         s47h4lRsFhwA+dAi8Z2ugsVM+XU03EtMcwoNn9oVmpl+2Fvi7Jho72WUT3dI9EzKjRHY
+         ZRETrnM3BoFZWLxV0T271HYtutuY4JOgfGRDl39KfzNVzQ4vqYv1tMzP8X2G+aUW5Sc4
+         5Y3OB4mPJQDXiuyByj4OLLmSPmTFp+HaQ/1PStzXtgVIHG+gR4P2eG7pO8Idzm7yJA4n
+         rLjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=uD+5izwod7lzNMQrYKeunGpTKt32Jca4KiCQa3SdMss=;
-        fh=H1xiy5NJkLzjG9POooEyvbH69g/3iiXvJcJG5vFMmdA=;
-        b=ak+tbHhS9BtpK5/XM8EaBEkiKQUzxrBDyhHUboz3i2FxIWEQQ0q2zZ6zWpTBPL5BCf
-         pgNfeqJ+bslSeOwXQjOIgRuukoH58cmXw9k76i2UZCEVObDfqsBFHyb66y0kyR8Hrvsf
-         ihQ5Aby6CBFg+KmDkj0U0m+vBwxe4kMk8/A+dv7Zn/EttS89yTrP7g/ZFcZhpxLNf/D5
-         2Htyty6LFTQktEUPQP16hFiuKfO8bZiZlTArFtwfWq+r4Bb2iimz9Vuwa6xgRVUBnbbH
-         yXobgMGzkIAMh1v/AFZ8XxFWv1UeV4rgv0vGF+r1FzA84d4P7VbOQis8z9Wn1l/RP/YJ
-         NxtQ==;
+        bh=gF/UkUqvrY1lcjLFHPeP744pWwMQJ7+CJ8FQ/U44hAw=;
+        fh=eRDwFXbpFfxDF+8Ye6UT9E/eQMGmq7SJKg8WKwgbqlw=;
+        b=ToL2KnlVXR6RxSmoAdFXdSZg0VKPMqdGX5BXAsLvkjSDOcpWZ3VXlcWQ8JRZYIQWyi
+         LMQZROpvscHoLH963uGSDt8r+1rMOi7Dj3LvbM78idS3vLxJ9/p+RinqrHMonqPqSpJH
+         hR0MQKR4o4ruKuX0TgseoFk4bwHJBM5JjdiLtEiONZIEZwJERAN9fcozfvBIAVV6nKbH
+         PwOjokQ6aOIwNTAel/RkKZJOn4gUU8a44bKtih7jyQbnKrtELJTIAs0JnMmpKxyaqrfC
+         mxrfGSAQ2luHRFum+JBEw1cRv1YTh0NFD/bFqyOvofoW6yQrtvU3i5e29cwzksYceiRo
+         Drew==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1784905306; x=1785510106; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1784906743; x=1785511543; darn=lists.infradead.org;
         h=content-transfer-encoding:content-type:cc:to:subject:message-id
          :date:from:in-reply-to:references:mime-version:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=uD+5izwod7lzNMQrYKeunGpTKt32Jca4KiCQa3SdMss=;
-        b=QyBaXfaHi50uIKJQEQfteXTH+gbC9+q6z6vvPfLx0bzd1UiN0Y2RCD0ouHhKIBS6LJ
-         X+6yOJMkjyvDNluQzU/K3TpDTrdwgPlOWXZ//LO+e6iM3hEn9/RtPv9QUcmO8HThNI9q
-         5PL8ZUfsKcbB9M174n68KKdcgNMcYkcqpPHhO95T7sY6jDkgXss2GD3NSRKdL9dMOSNF
-         FE3omTxZ/hb84e/rO6Rd4l8TWPk0+JB/x19qyY9WwVU3h3Wc0ulhHq7LGOyeCWOoqmke
-         tZr3bTg1MQHS/nwHtuh5z4X17YYpJB5Axn2DIhtLxVKIipCz/O4cEpfEyu7FTJmuArEl
-         YCBw==
+        bh=gF/UkUqvrY1lcjLFHPeP744pWwMQJ7+CJ8FQ/U44hAw=;
+        b=HAag0UG1vfIiB6B+DwbfQxjcrt3S9NQQfq5xxk8No1iSnVQiPxum89gaBWzxnj+Tpo
+         AMPvFypr+PHqIfVJuWF+GqpIXfDOGErKTNnyT82jFZzPstNjkjCYIGjLQf5rZrKnIi47
+         JaurP3KC9j7ZWKfjcUsyPGkZ0qAq2tdQ4LkIq4KYyYkRMwf2w8jVwsoijtqz2gIvf6Mk
+         ztSLs85P6tDyVIiquc60sSEst8yqNNysFfg/dWg/pgMLofkCTZSGk2uikdoBDWCvsuCy
+         EwCIgzpZbVHiGWD/6QI5qdsPCuuUeD63qyaPiqsjCaXyz+7cN2wdD0NAVWV8U9tPrdLr
+         GDzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1784905306; x=1785510106;
+        d=1e100.net; s=20251104; t=1784906743; x=1785511543;
         h=content-transfer-encoding:content-type:cc:to:subject:message-id
          :date:from:in-reply-to:references:mime-version:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=uD+5izwod7lzNMQrYKeunGpTKt32Jca4KiCQa3SdMss=;
-        b=pkJxJWUpKAz+L9sYVDe/6Q4WN+UNaJBIH2aEp08ViG7gsKvfnh/376Pi6FK6oc3l1Z
-         +wid++bVmqFUA2PSU/5/lCXsxBSWMou2R1ZP6p3UpEC24OKeChDRpqAyHN2G+x9ihvK9
-         PxGR9WBvg2Y2CjjLfrSPvK6XamjMeRhB1hBSNAYxUrcTqJv7N664SpGxyorWG22Fvnl7
-         +E3LlOo0AfmDy1SizH53pXXizbb+52QT6nDYOq/nvBMefruIumbmBL1PiF/VVLvqfO3y
-         Ptt89L1YMBnV5W8bQoUw8Fr/X/hgt8gHi5PTc0DnjTrmbtlRwsliWbcYGAfN0y6/E6Qf
-         OrJg==
-X-Forwarded-Encrypted: i=1; AHgh+Rqc1VcOSDUoSQtZ+mnUa6gp9x/D13DVG1r/5oNq8QMlaN1UMN2LphnJ604xsMxR1xaQVkyiuxhZgqPhWJVLrw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yywg0zkmtEwUY7uKDsJ/DQ2p0kx2ZKf8OmWzppD0oNvEYZg93cH
-	W2SzTL0vfLdUXk+WrMvoDigWeQ9f37+0VfLAKL2j1utFVtfH6bQyvznJR9nSDw0orgRxBsZJcZ1
-	5hbUM8XySHfLb2UN2GomIL6N7wSTPPZRWdDafG8fVIvPuIYMKTEPMcb2bIohAPzSLOaR0TsiYGT
-	LaiwJurNPRrTktuqzFKSMol0FWasDWA4VExifk9/O933tCY+d/pA==
-X-Gm-Gg: AR+sD11yZpAT0ZfPJVJAYY6E/Ciaxt75V7YuL7fOkcKT0bXkWX1jJgqEte6NiqwIiyK
-	x7rQI5/ac1VBRkrnpNxp+RBVhz9jdDMbERdRJ3NpBhA7HYd6eplaxcv2IMHyh3bMnyMYmjdnmUv
-	0Hx9H/DkhIuhXr/VWtYOVUDCKtr4+g8CQxZr6/qtpnpJiLkgSCdkMTdEhgGQ==
-X-Received: by 2002:a05:690e:440d:b0:668:7e4:aeac with SMTP id 956f58d0204a3-668a504e648mr1538825d50.106.1784905306066;
-        Fri, 24 Jul 2026 08:01:46 -0700 (PDT)
-X-Received: by 2002:a05:690e:440d:b0:668:7e4:aeac with SMTP id
- 956f58d0204a3-668a504e648mr1538798d50.106.1784905305595; Fri, 24 Jul 2026
- 08:01:45 -0700 (PDT)
+        bh=gF/UkUqvrY1lcjLFHPeP744pWwMQJ7+CJ8FQ/U44hAw=;
+        b=WAOpnbECeTkIms/NpjdeqrR1EDmYVVn8mOVUqR0kky8bqAD3oghUTI1IIx2ekKW1Xq
+         e4UWQi8F7USWjj0MQOzMex0UOKMMhtY22VBZRgA8bgLWFhxIFEwZv0OIYrCfY31/8M9B
+         i+N6VBygEeTkbstMxxvbjnBbME9gl25KtjKqx++P6Qg/0wvEO1WVh2nOZG4LJoiEVofa
+         8WNS+KRTVjJl3T/lrncAZa2NCZGTYQbUfz2l6eylGw2MqZGW6Tpu/rodyuOdYWcLScfk
+         89d0egIl0nsmfjDTJyCKQCU85lIyXRFkeoskujNo3XwIO9hz/a36aJPDfawk7bbIaL1A
+         PWtQ==
+X-Forwarded-Encrypted: i=1; AHgh+RqZDTmLvqQIGam16huia9tu3VckmOlbnWxtGqncKYctKNS50D8uE4N8PIXXO4KGLfILZEROFsfHRZJCeTdyUQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy52YDu0hR5NPiCPICbHVDVY7uFxdLa5e5B6FbgNu8SsDGIGsJW
+	QQ/sI/15/SZjx6p9ug0/ongGHrvl6La9XkBkTP2elmePu+BPXdQE1iiJOLYepmuRyKk1j4CQcuW
+	1uX9rCuqhxMyWqL/83cT5KD8fD6WILOEDhCHC1zNFPlWYh0r5Bq3ATWvYP/AN1JrRZR0cU/mheI
+	ZcN6hC6/S9rStScTLQaNZ8nBuyPD0bRbjyGbo9F9SneDa3ztw4Hg==
+X-Gm-Gg: AR+sD10BNZ55H5VLQCDS1I5kra3L55iokZd8Yza0GftP8v3IKWJ9MWf9DUTCVlbYzZh
+	JTTreJf94HGwH5zXHJ6nmzI9ck1+9rqjigtUqVl8Z296wbCwxerHylvs19e/8ZbJmwT+mqZj08N
+	WXGxIYWywx+Ki4K8u7/nh0yA8KjMM8Hvc5hcpTmAYpchBsCuLCNNe1I2OetA==
+X-Received: by 2002:a05:622a:22c3:10b0:529:a2ed:bcd4 with SMTP id d75a77b69052e-529a2edced5mr2053171cf.50.1784906742967;
+        Fri, 24 Jul 2026 08:25:42 -0700 (PDT)
+X-Received: by 2002:a05:622a:22c3:10b0:529:a2ed:bcd4 with SMTP id
+ d75a77b69052e-529a2edced5mr2052841cf.50.1784906742426; Fri, 24 Jul 2026
+ 08:25:42 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260722132729.302067-1-dmitry.osipenko@collabora.com>
-In-Reply-To: <20260722132729.302067-1-dmitry.osipenko@collabora.com>
+References: <20260720-mt6858-pmdomain-v3-0-8966d8de93c8@jolla.com>
+In-Reply-To: <20260720-mt6858-pmdomain-v3-0-8966d8de93c8@jolla.com>
 From: Ulf Hansson <ulf.hansson@oss.qualcomm.com>
-Date: Fri, 24 Jul 2026 17:01:34 +0200
-X-Gm-Features: AUfX_mzjLOgOcCUz76_T9HJlbASNTyiIQVZ65cjhf0ZB5m8FWwTsm9XV6DD0K38
-Message-ID: <CAPx+jO-1_ZpYcnPtoYxRn5vv34tiP7TXnjKZ3SaWkEzdeTfXpA@mail.gmail.com>
-Subject: Re: [PATCH v1] pmdomain: mediatek: Fix MT8183 hang on boot
-To: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Cc: Ulf Hansson <ulfh@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+Date: Fri, 24 Jul 2026 17:25:31 +0200
+X-Gm-Features: AUfX_mz33HxJNiHzlKKDq7YYI97h7l3wukc4IVOHOz1B7cIf_lHzlGi_RyWl1W8
+Message-ID: <CAPx+jO8gRxfM=pxMjHrJNcexOzDRiHjauVVDbpGutPKaApghdQ@mail.gmail.com>
+Subject: Re: [PATCH v3 0/3] pmdomain: mediatek: Add MT6858 support
+To: nikolai.burov@jolla.com
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley <conor+dt@kernel.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
         AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+        Ulf Hansson <ulfh@kernel.org>, Matthias Brugger <mbrugger@suse.com>,
+        devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
         linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org
+        linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
+        Nikolai Burov <nikolai.burov+review@abscue.de>,
+        Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Authority-Analysis: v=2.4 cv=Pq6jqQM3 c=1 sm=1 tr=0 ts=6a637e5a cx=c_pps
- a=S/uc88zpIJVNbziUnJ6G4Q==:117 a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzI0MDEzOCBTYWx0ZWRfX90b1GGHLlF86
+ F7K/dG5FM/c6PfUVLyjwLqoh0+rPPwz34H/cDZDeebMCzAxvSOV48t7zAdNVe3xY4p5I9HAtnuK
+ 12/1mfkPmtKKQLvhlTLGcF7jmGGZ3Z4rk/uM+QOdFiJbb1VZDh7uqE8joxqg50B2AYWURR7Aebi
+ +pqiFv8WxQ5ELonb2wjABpHmLYeYhUVo8Muxwglum43muHpAjs/Dv2Gl3RRvuWXwK1LqNgo4AZe
+ Up/zanz7lAFfPNe+hMrXkA9NH2Tm3idQOByN20rA80dtyjgGscr56frRjNtWwU1Yx7+vaWo6GIT
+ 9OsvODw86HvFGWqplm6GaWjbFtCte1wnofyMkwNtH4foRGXddCS4EyQn5F6pHEpsM2yIS+ShPgy
+ 3fzVfZbTIFhxgkE/YU+/If93ii/tJq9nJa7LIMlSddoicE5dUojFd5imxRYwxq57PMJwwQ9CCUl
+ MvmnLj8gaKP/xU6kteg==
+X-Proofpoint-GUID: MQD-fVbtAPGo84R_uoZK1sRKLYFNG3XW
+X-Proofpoint-ORIG-GUID: MQD-fVbtAPGo84R_uoZK1sRKLYFNG3XW
+X-Authority-Analysis: v=2.4 cv=F79nsKhN c=1 sm=1 tr=0 ts=6a6383f7 cx=c_pps
+ a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10
  a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
- a=ZpdpYltYx_vBUK5n70dp:22 a=QX4gbG5DAAAA:8 a=W51c6IlItZHyHODVoFAA:9
- a=QEXdDO2ut3YA:10 a=nd2WpGr1bMy9NW-iytEl:22 a=AbAUZ8qAyYyZVLSsDulk:22
-X-Proofpoint-GUID: SKyyi4dUu3mZvmHgdFRHrMRUlkKYLFlF
-X-Proofpoint-ORIG-GUID: SKyyi4dUu3mZvmHgdFRHrMRUlkKYLFlF
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzI0MDEzNSBTYWx0ZWRfX6qVYnZ2z4DaP
- KfoNg5YwmGmSN9QqCxT58ZcyFR1btPizAy9hU6Sz2eAdcElIUPugHaOdKNMxKz60xV2COnpv72S
- Anr/TuoyFXbUAm3XkEVBPXQeZ+B2d8A=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzI0MDEzNSBTYWx0ZWRfXzFt3aCagOBW3
- lKWEe1Sw/z9DN0BNIhXaWtyWgM8Sae71z82t/GglLQuMlmQpYYuphhK6tXacRdOA1wUxHf3zetT
- xGUb+3wQ3c/XMXE/DGD2IP/H/bi/oZcZTeuY0N3a/FGPcG8yN2ayT8/AZHJmbPZkMV1AyT7F5SJ
- 311h8RsDFTcpMNT0XzYI8li8cHctbkBYzLpEkQbfLTed28Y0bAGA2stKQMf1sGY+p35yFxVKRuN
- iIljpWjlMA8T4qWZgVSFpBwNg3Mm76vQKnQZPzjJATTogLXKve0WdTU8ROVgKU78ruHZK6IAEHn
- le91y+Y4hzkGGGPjJCEvrJd6AKXml8+WYCmZRdChkbaa0E9Qgwi2zC+ec2LcRWVUnmzil1tSzLM
- umd+sxKTACs3ocv5mXBAQpyc6DpZ0RgGxrm7bkr5oTZ7PCr5GO+2Lx2sNhwOPhUhMRnw9mhDaLH
- edZCjW1q4yU/ieAvJUw==
+ a=eoimf2acIAo5FJnRuUoq:22 a=bC-a23v3AAAA:8 a=R3Y5_zZgAAAA:8 a=VwQbUJbxAAAA:8
+ a=pGLkceISAAAA:8 a=QX4gbG5DAAAA:8 a=iox4zFpeAAAA:8 a=JfrnYn6hAAAA:8
+ a=m8CDPgaNMIpP4pNAotQA:9 a=QEXdDO2ut3YA:10 a=a_PwQJl-kcHnX1M80qC6:22
+ a=FO4_E8m0qiDe52t0p3_H:22 a=chadc-dSXXc7PrnZVOv-:22 a=AbAUZ8qAyYyZVLSsDulk:22
+ a=WzC6qhA0u3u7Ye7llzcV:22 a=1CNFftbPRP8L7MoqJWF3:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzI0MDEzOCBTYWx0ZWRfX8LASYvnc8vGH
+ +2Dvi7pgBFXADPLFZrex0eBBhrCpC03Q8Vp0ru/aBfg1m1Tz31v6q0XeVlTk6uocjNa/Beq5jht
+ tKWJFc/uocaRGzqlaJRhcYPwtmeEeMo=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-07-24_03,2026-07-24_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 malwarescore=0 spamscore=0 lowpriorityscore=0 adultscore=0
- bulkscore=0 clxscore=1015 impostorscore=0 suspectscore=0 phishscore=0
+ priorityscore=1501 bulkscore=0 adultscore=0 clxscore=1015 lowpriorityscore=0
+ phishscore=0 suspectscore=0 spamscore=0 impostorscore=0 malwarescore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607240135
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607240138
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260724_080148_410022_53392BB8 
-X-CRM114-Status: GOOD (  25.60  )
+X-CRM114-CacheID: sfid-20260724_082544_668578_A2D83264 
+X-CRM114-Status: GOOD (  22.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -164,101 +172,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 22, 2026 at 3:28=E2=80=AFPM Dmitry Osipenko
-<dmitry.osipenko@collabora.com> wrote:
+On Mon, Jul 20, 2026 at 10:46=E2=80=AFPM Nikolai Burov via B4 Relay
+<devnull+nikolai.burov.jolla.com@kernel.org> wrote:
 >
-> Depending on firmware, part of the MFG domains may be left ON at boot
-> leaving only some MFG cores powered, to let the ACP to prefetch the GPU
-> region when the display controller is brought up. This doesn't play well
-> with an eventual delay in probing Panfrost when the display controller is
-> fully set up, as that would make genpd's sync_state() to power off the
-> domain while ACP tries to prefetch: this is causing an AXI stall,
-> effectively freezing the AP indefinitely. In order to prevent this from
-
-I haven't made any detailed investigation, but to me, it sounds like
-there is a missing consumer somewhere.
-
-Should the ACP/panfrost devices be a consumer of the MFG domains as
-well? Or perhaps, if the ACP/panfrost should rely on the display
-controller to be probed and powered-on, to be able to probe?
-
-> happening, the sync_state() functionality must be obliterated on all of
-> the MFG domains: while this guarantees a power leakage if the bootloader
-> boots the kernel with MFG PDs partially powered on, this is the only way
-> to ensure stable operation of the SoC during boot on devices with such
-> firmware because, of course, those will never officially receive a
-> firmware update.
+> Add power domain driver support for the MediaTek Dimensity 7100 (MT6858)
+> SoC. On this SoC, there are some new subsystem-specific bus protection
+> blocks, which are listed here in ascending address order:
 >
-> Fixes Kappa Chromebook hanging during system boot.
+> - IMG_SUB0 at 0x1502f000
+> - CAM_SUB1 at 0x1a00c000
+> - CAM_SUB0 at 0x1a00d000
+> - IPE_SUB0 at 0x1b00e000
 >
-> Fixes: 0e789b491ba0 ("pmdomain: core: Leave powered-on genpds on until sy=
-nc_state")
-> Fixes: 13a4b7fb6260 ("pmdomain: core: Leave powered-on genpds on until la=
-te_initcall_sync")
-> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+> The VLPCFG bus configuration registers at 0x1c00c000 are also new.
+>
+> Additionally, implement the SMC-based power sequence required for
+> enabling the modem power domain on this SoC.
+>
+> Signed-off-by: Nikolai Burov <nikolai.burov@jolla.com>
+> ---
+> Changes in v3:
+> - Fix error path to also skip sram_pdn for MODEM_SECURE_PWRSEQ
+>   (discovered in Sashiko report)
+> - Link to v2: https://patch.msgid.link/20260715-mt6858-pmdomain-v2-0-6293=
+e87fc093@jolla.com
+>
+> Changes in v2:
+> - Rebase
+> - MTK_SCPD_MODEM_SECURE -> MTK_SCPD_MODEM_SECURE_PWRSEQ
+> - Convert SMC command enum to defines
+> - Based on the new SIMPLE_PWRSEQ changes, skip the sram_pdn stage for
+>   MODEM_SECURE_PWRSEQ too since it wasn't intended to have an effect
+> - Clarify that the SMC call also handles bus protection
+> - Simply if/else code based on the assumption *_PWRSEQ are mutually
+>   exclusive
+> - Add comment explaining that PWR_STA_2ND is skipped for modem
+>   (mentioned in Sashiko report)
+> - Link to v1: https://patch.msgid.link/20260714-mt6858-pmdomain-v1-0-4f09=
+bbb822e0@jolla.com
+>
+> To: Rob Herring <robh@kernel.org>
+> To: Krzysztof Kozlowski <krzk+dt@kernel.org>
+> To: Conor Dooley <conor+dt@kernel.org>
+> To: Matthias Brugger <matthias.bgg@gmail.com>
+> To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> To: Ulf Hansson <ulfh@kernel.org>
+> Cc: Matthias Brugger <mbrugger@suse.com>
+> Cc: devicetree@vger.kernel.org
+> Cc: linux-kernel@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: linux-pm@vger.kernel.org
+>
+> ---
+> Nikolai Burov (3):
+>       dt-bindings: power: Add MediaTek MT6858 power domain controller
+>       pmdomain: mediatek: Add support for secure modem power domain contr=
+ol
+>       pmdomain: mediatek: Add support for MT6858 SoC
+>
+>  .../bindings/power/mediatek,power-controller.yaml  |  21 +-
+>  drivers/pmdomain/mediatek/mt6858-pm-domains.h      | 466 +++++++++++++++=
+++++++
+>  drivers/pmdomain/mediatek/mtk-pm-domains.c         |  55 ++-
+>  drivers/pmdomain/mediatek/mtk-pm-domains.h         |   6 +
+>  include/dt-bindings/power/mediatek,mt6858-power.h  |  23 +
+>  include/linux/soc/mediatek/mtk_sip_svc.h           |   3 +
+>  6 files changed, 568 insertions(+), 6 deletions(-)
+> ---
+> base-commit: 3fe08b9796f36ef437ab9328e7dd1e5ff2d66603
+> change-id: 20260712-mt6858-pmdomain-b1b456c96675
+>
+> Best regards,
+> --
+> Nikolai Burov <nikolai.burov@jolla.com>
+>
+>
+
+The v3 series applied for next, thanks!
 
 Kind regards
 Uffe
-
-> ---
->  drivers/pmdomain/mediatek/mt8183-pm-domains.h | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/pmdomain/mediatek/mt8183-pm-domains.h b/drivers/pmdo=
-main/mediatek/mt8183-pm-domains.h
-> index 3742782a2702..5e33b8628e85 100644
-> --- a/drivers/pmdomain/mediatek/mt8183-pm-domains.h
-> +++ b/drivers/pmdomain/mediatek/mt8183-pm-domains.h
-> @@ -47,7 +47,7 @@ static const struct scpsys_domain_data scpsys_domain_da=
-ta_mt8183[] =3D {
->                 .pwr_sta2nd_offs =3D 0x0184,
->                 .sram_pdn_bits =3D 0,
->                 .sram_pdn_ack_bits =3D 0,
-> -               .caps =3D MTK_SCPD_DOMAIN_SUPPLY,
-> +               .caps =3D MTK_SCPD_DOMAIN_SUPPLY | MTK_SCPD_KEEP_DEFAULT_=
-OFF,
->         },
->         [MT8183_POWER_DOMAIN_MFG] =3D {
->                 .name =3D "mfg",
-> @@ -57,7 +57,7 @@ static const struct scpsys_domain_data scpsys_domain_da=
-ta_mt8183[] =3D {
->                 .pwr_sta2nd_offs =3D 0x0184,
->                 .sram_pdn_bits =3D GENMASK(8, 8),
->                 .sram_pdn_ack_bits =3D GENMASK(12, 12),
-> -               .caps =3D MTK_SCPD_DOMAIN_SUPPLY,
-> +               .caps =3D MTK_SCPD_DOMAIN_SUPPLY | MTK_SCPD_KEEP_DEFAULT_=
-OFF,
->         },
->         [MT8183_POWER_DOMAIN_MFG_CORE0] =3D {
->                 .name =3D "mfg_core0",
-> @@ -67,6 +67,7 @@ static const struct scpsys_domain_data scpsys_domain_da=
-ta_mt8183[] =3D {
->                 .pwr_sta2nd_offs =3D 0x0184,
->                 .sram_pdn_bits =3D GENMASK(8, 8),
->                 .sram_pdn_ack_bits =3D GENMASK(12, 12),
-> +               .caps =3D MTK_SCPD_KEEP_DEFAULT_OFF,
->         },
->         [MT8183_POWER_DOMAIN_MFG_CORE1] =3D {
->                 .name =3D "mfg_core1",
-> @@ -76,6 +77,7 @@ static const struct scpsys_domain_data scpsys_domain_da=
-ta_mt8183[] =3D {
->                 .pwr_sta2nd_offs =3D 0x0184,
->                 .sram_pdn_bits =3D GENMASK(8, 8),
->                 .sram_pdn_ack_bits =3D GENMASK(12, 12),
-> +               .caps =3D MTK_SCPD_KEEP_DEFAULT_OFF,
->         },
->         [MT8183_POWER_DOMAIN_MFG_2D] =3D {
->                 .name =3D "mfg_2d",
-> @@ -85,6 +87,7 @@ static const struct scpsys_domain_data scpsys_domain_da=
-ta_mt8183[] =3D {
->                 .pwr_sta2nd_offs =3D 0x0184,
->                 .sram_pdn_bits =3D GENMASK(8, 8),
->                 .sram_pdn_ack_bits =3D GENMASK(12, 12),
-> +               .caps =3D MTK_SCPD_KEEP_DEFAULT_OFF,
->                 .bp_cfg =3D {
->                         BUS_PROT_WR(INFRA,
->                                     MT8183_TOP_AXI_PROT_EN_1_MFG,
-> --
-> 2.54.0
->
 
