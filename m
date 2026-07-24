@@ -4,77 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1B4BC531F9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2026 11:30:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BC2BC53200
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Jul 2026 12:17:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BQ3CZEvc59csGhSGtcEHAlqUrhIUJB9Ew3yzaCx7lbY=; b=W6WjyuH5yUDVMSCoxfu6zDsaQq
-	zhElIy5jt/1Wm2+DAeVPsI7WiozWoSnvt3rR/G2YupSENOYA5ZxbzFhKddw1O7Gk6D0rWofZgHJEn
-	+B4ZtRiGG4zwghugEdb7f0eZMjh9+IXOmFYPaAqY8RlsZmiRA0j/LKOjhl9j9CpzUKjBrKZ9+4F7e
-	DPZ3LqTSDGmd+DnCpFcMBXl2s1TatqpKQHlKRcsP6kE+BUJofgtuvVcWH/FIqdH0aKjHiNUTdklly
-	B1VOUMRUBa0E+vi+8CbxDNclDpxl4AYZt0xq7u8zVVy5AP5Sc45qLkUx3wNiArQ1eEfdQ3NJLJ84S
-	yKvP9hMA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:References:MIME-Version:In-Reply-To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GQ+KH6/Owg7d0XhCktRva+QCZoo/0HA00/3GV4nmC8s=; b=rxn4T+2b22l0SeB4ToM7bjclfn
+	dSORlPywi7JP4jjPLU1CaSL1GLUp1V3858UPOEGO52EfGYBRSQpwFAEeI2jLA9yIS6wg/LcDnejXg
+	QAm08u1haZh3LZ3/f+z9qtBZuB3FA+8pQYNN6FNvzK+XKXeF4iEe2KL/j2LWarNL5b3L7iC6Scgdi
+	aN9WikdYCVYfLgrQaFhN3/HUiD7KqAxeTlBgROPMIUF/ofrdZTe4N3cM5/duThIN10vkD6wHGMDNI
+	ex8IwGb45PMXe+TbS1yClXGsf4wuN30v7oJA8aAnlK0J/nlUGvlXwDroeXlq1E/syGResyZOZzTDT
+	1aUInhfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnE6J-0000000GILd-2mDu;
-	Fri, 24 Jul 2026 11:29:59 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wnDuY-0000000GGx8-3Qf3;
+	Fri, 24 Jul 2026 11:17:50 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnE6C-0000000GIIH-1gef;
-	Fri, 24 Jul 2026 11:29:52 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A9143600C3;
-	Fri, 24 Jul 2026 11:29:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 0FA91C2BCF7;
-	Fri, 24 Jul 2026 11:29:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1784892591;
-	bh=C8aXXQaFeWZmsrlMRRyh9TAsW3FMnEEDkAdARgX7WzM=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=IywIaAWdoc1GT6Us92RjWj9sQkc8PT7ppzysHqy8dqPiomNqe7PfyX1ZvYBVqbuQ7
-	 SglkxSJqYGMZrpSSakSxg8vMjoDDbc7FMjCC7KegwzecLWxWoczYyqrNlj/3zRo9ai
-	 40xNOBM/Jpcts0jQMLeYrsai0ZG4gI8WIe7eyzv1xGf44+bGS5DX6CxayVbQgoNocm
-	 jxfHMdAyDpPJf/UlbkIyM3pq4zWFeAN4/Mc4meFmt4dEnrDSyqXVzbE0FVw/7Wl/It
-	 Jfe95a4Ru7DThWtryqdhItSWvd/RBGZcl6ws0Hr68xE6ONxv46XSeBdiNly6NwComR
-	 BSA5mJNm1e0Mg==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DFF25C531FC;
-	Fri, 24 Jul 2026 11:29:50 +0000 (UTC)
-From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Fri, 24 Jul 2026 14:07:07 +0300
-Subject: [PATCH v2 2/3] nvmem: mtk-efuse: add support for 32-bit aligned
- reads
+	id 1wnDuX-0000000GGwM-1GGr
+	for linux-mediatek@lists.infradead.org;
+	Fri, 24 Jul 2026 11:17:49 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 879BC4512D
+	for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2026 11:17:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 519131F031FE
+	for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2026 11:09:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784891393;
+	bh=GQ+KH6/Owg7d0XhCktRva+QCZoo/0HA00/3GV4nmC8s=;
+	h=From:In-Reply-To:References:Date:Subject:To:Cc;
+	b=UJJUlWLOVXOeCmcSW84m67zYdnKUKmMGfrnvqHp6qCvbxBiU2+49GTxixI96xOQA/
+	 7N7iXlEMvS1O21GL50BBPAUXELLhcHdlMPE/VW6acs9kKTZnru4L1PxgfXPPsm39cR
+	 QGjXvaNelrxzx7zOfioXWqNoowXej7DrJuCCc04inumEFN41WrcJMVoecS6rH2BNdK
+	 MExrX/jRqM3/3tThzO+OjhfVBEXq2DZDjrfCl/Z2slG6/mpyuVTV54kaAI7/lqjupN
+	 zh15uOXFKEHriV0V27rcfzSI2LuAekkPlHpEBVjunfc0j6oAlly44wywe+pS1FDDLA
+	 PxT35lP7eLoDA==
+Received: by mail-lf1-f50.google.com with SMTP id 2adb3069b0e04-5aeb59d54b1so322602e87.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 24 Jul 2026 04:09:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+RrGIZeH5GE/L8YIlxBfhQZR6zTpxHq6BeWb9XrWZ198AzOmhWAjJL14m9F1znTpXNgmLc2fQn1E2I0uD0xaEQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwOoTtSjMZAPJUCmpMr/XLSY2whsmBYgH15DomHOmJ4apcN6SqA
+	kYI3dZ6PZ/M3KlKz7Uj9QelCJigp0kpH2JafB94fpR+/wblKEqNqHVyZZCz1RjMUSRkyGwP68XH
+	gUWX+ADn6/0TYjzKcwrA9J/HFBNSraAJFe30wASahOw==
+X-Received: by 2002:a05:6512:128a:b0:5b0:e14:777c with SMTP id
+ 2adb3069b0e04-5b2b2f667a1mr1625122e87.22.1784891391963; Fri, 24 Jul 2026
+ 04:09:51 -0700 (PDT)
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Fri, 24 Jul 2026 04:09:50 -0700
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Fri, 24 Jul 2026 04:09:50 -0700
+From: Bartosz Golaszewski <brgl@kernel.org>
+In-Reply-To: <20260724084328.3943997-4-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260724-6572-nvmem-v2-2-e58d16a29621@protonmail.com>
-References: <20260724-6572-nvmem-v2-0-e58d16a29621@protonmail.com>
-In-Reply-To: <20260724-6572-nvmem-v2-0-e58d16a29621@protonmail.com>
-To: Srinivas Kandagatla <srini@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
- Lala Lin <lala.lin@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Roman Vivchar <rva333@protonmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1784892588; l=2506;
- i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=ylH/IgEJCVkseD04fa7EwlxtvDcFp1eXUc9OswjHzzs=;
- b=/8VB81TrG8SjFb9w55sRRen2VjLM+hfW97QRD/CaBKXKSzGpXGhXDnsueEA8V3wSIRvkPK73X
- S1jMcqsdLFLAhCz05D9HEVfK5BBKrQv7ApW0EVDtZgNR1mivuqBywOe
-X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
- pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
-X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
- auth_id=777
-X-Original-From: Roman Vivchar <rva333@protonmail.com>
+References: <20260724084328.3943997-1-wenst@chromium.org> <20260724084328.3943997-4-wenst@chromium.org>
+Date: Fri, 24 Jul 2026 04:09:50 -0700
+X-Gmail-Original-Message-ID: <CAMRc=MfV7SeG-jJ8YdS=aRabCUvP0PV5=8QL=AdCCsnzyKq1QA@mail.gmail.com>
+X-Gm-Features: AUfX_mwiB4kLYEiWsY_exPz74ryChUmU7NeF3R9wpx0QdX4G4TNw4501T3DhVLY
+Message-ID: <CAMRc=MfV7SeG-jJ8YdS=aRabCUvP0PV5=8QL=AdCCsnzyKq1QA@mail.gmail.com>
+Subject: Re: [PATCH v7 03/16] power: sequencing: Add pwrseq_get_state()
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Wei Deng <wei.deng@oss.qualcomm.com>, linux-acpi@vger.kernel.org, 
+	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>, 
+	Alan Stern <stern@rowland.harvard.edu>, 
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>, 
+	Bartosz Golaszewski <brgl@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Daniel Scally <djrscally@gmail.com>, 
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,104 +92,24 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Roman Vivchar <rva333@protonmail.com>
+On Fri, 24 Jul 2026 10:43:12 +0200, Chen-Yu Tsai <wenst@chromium.org> said:
+> The power sequencing consumer API already does power on state tracking
+> internally. Expose the state to consumers through pwrseq_get_state()
+> so that they don't have to reimplement it locally.
+>
+> Instead of just on/off and error codes, the function can also return
+> "unknown" state. This is in anticipation for "uncontrollable" power
+> sequencers (such as GPIOs left unconnected).
+>
+> Acked-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
 
-Some MediaTek SoCs, such as mt6572, don't support 8-bit reads, leading
-to zeroes or garbage data. 32-bit aligned reads must be used instead.
+I'd have dropped my Ack with a change that significant but it looks good now
+so:
 
-Introduce a 'mtk_reg_read_aligned' helper to enforce 32-bit aligned
-register access. All reads will be performed by reading 4-byte words
-and masking them.
-
-Signed-off-by: Roman Vivchar <rva333@protonmail.com>
----
- drivers/nvmem/mtk-efuse.c | 35 ++++++++++++++++++++++++++++++++++-
- 1 file changed, 34 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
-index af953e1d9230..178b9d85f813 100644
---- a/drivers/nvmem/mtk-efuse.c
-+++ b/drivers/nvmem/mtk-efuse.c
-@@ -4,6 +4,7 @@
-  * Author: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-  */
- 
-+#include <linux/align.h>
- #include <linux/device.h>
- #include <linux/module.h>
- #include <linux/mod_devicetable.h>
-@@ -14,12 +15,37 @@
- 
- struct mtk_efuse_pdata {
- 	bool uses_post_processing;
-+	bool needs_aligned_read;
- };
- 
- struct mtk_efuse_priv {
- 	void __iomem *base;
- };
- 
-+static int mtk_reg_read_aligned(void *context,
-+				unsigned int reg, void *_val, size_t bytes)
-+{
-+	struct mtk_efuse_priv *priv = context;
-+	u8 *val = _val;
-+	u32 i, pos, shift, val32;
-+
-+	for (i = 0; i < bytes; i++, val++) {
-+		pos = reg + i;
-+
-+		/*
-+		 * Read on 32-bit word boundary or if it's the first
-+		 * iteration
-+		 */
-+		if (i == 0 || IS_ALIGNED(pos, 4))
-+			val32 = readl(priv->base + (pos & ~3));
-+
-+		shift = (pos & 3) * 8;
-+		*val = (val32 >> shift) & 0xff;
-+	}
-+
-+	return 0;
-+}
-+
- static int mtk_reg_read(void *context,
- 			unsigned int reg, void *_val, size_t bytes)
- {
-@@ -82,7 +108,12 @@ static int mtk_efuse_probe(struct platform_device *pdev)
- 	econfig.add_legacy_fixed_of_cells = true;
- 	econfig.stride = 1;
- 	econfig.word_size = 1;
--	econfig.reg_read = mtk_reg_read;
-+
-+	if (pdata->needs_aligned_read)
-+		econfig.reg_read = mtk_reg_read_aligned;
-+	else
-+		econfig.reg_read = mtk_reg_read;
-+
- 	econfig.size = resource_size(res);
- 	econfig.priv = priv;
- 	econfig.dev = dev;
-@@ -103,10 +134,12 @@ static int mtk_efuse_probe(struct platform_device *pdev)
- 
- static const struct mtk_efuse_pdata mtk_mt8186_efuse_pdata = {
- 	.uses_post_processing = true,
-+	.needs_aligned_read = false,
- };
- 
- static const struct mtk_efuse_pdata mtk_efuse_pdata = {
- 	.uses_post_processing = false,
-+	.needs_aligned_read = false,
- };
- 
- static const struct of_device_id mtk_efuse_of_match[] = {
-
--- 
-2.54.0
-
-
+Acked-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
 
