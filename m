@@ -4,68 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18C37C531C9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2026 03:01:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C3FCC531C9
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2026 03:55:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TLH2nGrCQyGxOdBuh+banvRAel0VhRthVfYzAz7JYEc=; b=KqwGJdmdq9PA73FpmwzeK5y5nD
-	3/X2b1FSfI7HasNZEVqZ4bB8q3Qj/PlIcA5i3ORjOJrygMbRqX8WD1Pres5hPVxZjvAIYs9Ea6vXM
-	DYOXP1eFIym6c+ak5OjiNgTMczpr9++WNWcwlYoQ+9Gpxm6ISimY1rDxyrD2k0MEhq85ORl67fdhz
-	HpRSeOoo3HMfMNU+Ji8N1PT72I8PtXAZ/wlgDTjuyuUzICcXXOa8H3VCNlVs3h3wryMGmS4L+PvIm
-	1Th0AIW91wAjeY78cxplMJp50GendcZelpHv7+8SwejmzBUWW+Cj/TTmGiIrRMVqMdsV7f2patdaK
-	E06T2Hzg==;
+	bh=m+T72mW7YUUA/jZSiblImFVSBF7Veno9Oyl6HqdmEiA=; b=Nmeb0Q07gKivznIGt6si1a7o5G
+	Hz/7fEoFCAob+lA8kx4Mp1fhee0Z78UfxASb0tJiUBIO6mxzZkrztBJ49YWe7jp3HuRbyXvxs6k6Q
+	ZBjlAUlah302hp3863VN63bX9hbkEDLVmH6jgFMAgSTS4umb6hNRUlsrJbxTHgVkRiA7KkeXiE3N0
+	Ql/dQ7JB7qQZkvAA4HqL6EkdErSBDa2SCBhAHXIx+BnGPG/B4YDNjSBMB/8L/Mgt//qyMYg00b1nK
+	G5zF9vU4mHltATFxInizGwEehA0/YlGrkHlUDwMEvdTDPMeEFwrSfsXhBYPDqlo6C5M42qQhjaiJA
+	RmS/z8FQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnSe8-0000000HWib-3Jxb;
-	Sat, 25 Jul 2026 03:01:53 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1wnTUL-0000000HZwq-3Rx0;
+	Sat, 25 Jul 2026 03:55:49 +0000
+Received: from mgamail.intel.com ([198.175.65.13])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnSe5-0000000HWgP-35nE;
-	Sat, 25 Jul 2026 03:01:50 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1wnSdz-00000000385-1ddo;
-	Sat, 25 Jul 2026 03:01:43 +0000
-Date: Sat, 25 Jul 2026 04:01:40 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Allen Chen <allen.chen@ite.com.tw>,
-	Hermes Wu <hermes.wu@ite.com.tw>,
-	Pin-yen Lin <treapking@chromium.org>,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Chen-Yu Tsai <wenst@chromium.org>
-Subject: [PATCH v6 13/13] drm/bridge: it6505: Don't reject audio hw_params
- without an encoder
-Message-ID: <3ff0cd53a0c585285f497ee0b5f63de4cee0c9eb.1784947240.git.daniel@makrotopia.org>
-References: <cover.1784947240.git.daniel@makrotopia.org>
+	id 1wnTUH-0000000HZwO-3P3g
+	for linux-mediatek@lists.infradead.org;
+	Sat, 25 Jul 2026 03:55:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1784951746; x=1816487746;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=a/8RwzmKLG7uwZieP9EWP8WEah6Qds0ZpbVQgqjvNhY=;
+  b=WR1b41KSnr0Ej6c8pPTLT8UPFV9Vi48gICKz14QZgqDCQn68jJhm4TAg
+   A8IWh1KZK/MIl3c+Spb4+/toTVkyQ4YnXNAeg8EkeAFNbLD/ZNGbo1nAb
+   amRPjqaQgX1UDUvvYhscXKQcOlCh+6D9g+93Dor6eeCsKbW4tv4y1PvHx
+   PiEtQk0JKJ9VHA7Ejn5x+vnP4P77IHbOhUb5mLPjI1XYel3ulV3jf699+
+   0BhduKKhYUEJSrX/ticbSMg7mPaBRokaqKl1/wNG6U1Bu8KYy957o8cFz
+   2ZfxmWR1QQSN9fPQBuVO0NP+8KiYvVpajCxltSKjMk9mcxG4b1apFchJv
+   Q==;
+X-CSE-ConnectionGUID: 4JJ8GY3/QQydZpY+/uvNEA==
+X-CSE-MsgGUID: EoQKr8L8T/WhmLfKiDY+2g==
+X-IronPort-AV: E=McAfee;i="6800,10657,11855"; a="96768689"
+X-IronPort-AV: E=Sophos;i="6.25,183,1779174000"; 
+   d="scan'208";a="96768689"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jul 2026 20:55:45 -0700
+X-CSE-ConnectionGUID: O/Gy6JJMTbGNFEXK9Dd95Q==
+X-CSE-MsgGUID: pPPnVE9DSSiy0os5Kk3LLg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.25,183,1779174000"; 
+   d="scan'208";a="256226623"
+Received: from igk-lkp-server01.igk.intel.com (HELO 3cba2a188a06) ([10.211.93.152])
+  by fmviesa008.fm.intel.com with ESMTP; 24 Jul 2026 20:55:41 -0700
+Received: from kbuild by 3cba2a188a06 with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1wnTUB-00000000162-2zlA;
+	Sat, 25 Jul 2026 03:55:39 +0000
+Date: Sat, 25 Jul 2026 05:54:43 +0200
+From: kernel test robot <lkp@intel.com>
+To: JB Tsai <jb.tsai@mediatek.com>, nbd@nbd.name, lorenzo@kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, Sean.Wang@mediatek.com,
+	Quan.Zhou@mediatek.com, Ryder.Lee@mediatek.com,
+	litien.chang@mediatek.com, Charlie-cy.Wu@mediatek.com,
+	jb.tsai@mediatek.com
+Subject: Re: [PATCH] wifi: mt76: connac3: refactor CLC header type validation
+ logic
+Message-ID: <202607250538.5NE4yF8u-lkp@intel.com>
+References: <20260724085124.3156143-1-jb.tsai@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1784947240.git.daniel@makrotopia.org>
+In-Reply-To: <20260724085124.3156143-1-jb.tsai@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260724_200149_782698_F494B8EE 
-X-CRM114-Status: UNSURE (   9.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260724_205545_924780_F8F16C20 
+X-CRM114-Status: GOOD (  17.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,83 +91,137 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-it6505_audio_setup_hw_params() returns -ENODEV when no encoder is
-attached. With it6505 registering an hdmi-audio-codec this runs for
-every stream on the I2S DAI, and on mt8186-corsola, where the rt1019
-speaker amplifier shares I2S3, the error tears down the whole DPCM
-backend and breaks speaker playback whenever no display is attached.
+Hi JB,
 
-The function only caches stream parameters, which needs no encoder.
-Drop the check, and apply the audio defaults once at probe instead of
-in it6505_variable_config(), which would clobber the cached
-parameters again on every hotplug. Actual audio output remains gated
-by it6505->powered.
+kernel test robot noticed the following build errors:
 
-Fixes: b5c84a9edcd4 ("drm/bridge: add it6505 driver")
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
-v6: no changes
+[auto build test ERROR on wireless-next/main]
+[also build test ERROR on wireless/main linus/master v7.2-rc4 next-20260723]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-v5: no changes
+url:    https://github.com/intel-lab-lkp/linux/commits/JB-Tsai/wifi-mt76-connac3-refactor-CLC-header-type-validation-logic/20260724-170015
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
+patch link:    https://lore.kernel.org/r/20260724085124.3156143-1-jb.tsai%40mediatek.com
+patch subject: [PATCH] wifi: mt76: connac3: refactor CLC header type validation logic
+config: x86_64-rhel-9.4-bpf (https://download.01.org/0day-ci/archive/20260725/202607250538.5NE4yF8u-lkp@intel.com/config)
+compiler: gcc-14 (Debian 14.2.0-19) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260725/202607250538.5NE4yF8u-lkp@intel.com/reproduce)
 
-v4: apply audio defaults at probe time instead of in
-    it6505_variable_config()
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202607250538.5NE4yF8u-lkp@intel.com/
 
-v3: no changes
+All errors (new ones prefixed by >>):
 
-v2: drop the encoder check entirely instead of returning 0 early
+   drivers/net/wireless/mediatek/mt76/mt7925/mcu.c: In function 'mt7925_load_clc':
+>> drivers/net/wireless/mediatek/mt76/mt7925/mcu.c:866:68: error: 'MT792x_CLC_REGD' undeclared (first use in this function); did you mean 'MT7925_CLC_CHAN'?
+     866 |                 if ((clc->idx == MT792x_CLC_BE_CTRL || clc->idx == MT792x_CLC_REGD) &&
+         |                                                                    ^~~~~~~~~~~~~~~
+         |                                                                    MT7925_CLC_CHAN
+   drivers/net/wireless/mediatek/mt76/mt7925/mcu.c:866:68: note: each undeclared identifier is reported only once for each function it appears in
 
- drivers/gpu/drm/bridge/ite-it6505.c | 23 ++++++++++-------------
- 1 file changed, 10 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
-index c560f1258f6d..0cb16be45d93 100644
---- a/drivers/gpu/drm/bridge/ite-it6505.c
-+++ b/drivers/gpu/drm/bridge/ite-it6505.c
-@@ -1371,16 +1371,6 @@ static void it6505_variable_config(struct it6505 *it6505)
- 	it6505->link_state = LINK_IDLE;
- 	it6505->hdcp_desired = HDCP_DESIRED;
- 	it6505->auto_train_retry = AUTO_TRAIN_RETRY;
--	it6505->audio.select = AUDIO_SELECT;
--	it6505->audio.sample_rate = AUDIO_SAMPLE_RATE;
--	it6505->audio.channel_count = AUDIO_CHANNEL_COUNT;
--	it6505->audio.type = AUDIO_TYPE;
--	it6505->audio.i2s_input_format = I2S_INPUT_FORMAT;
--	it6505->audio.i2s_justified = I2S_JUSTIFIED;
--	it6505->audio.i2s_data_delay = I2S_DATA_DELAY;
--	it6505->audio.i2s_ws_channel = I2S_WS_CHANNEL;
--	it6505->audio.i2s_data_sequence = I2S_DATA_SEQUENCE;
--	it6505->audio.word_length = AUDIO_WORD_LENGTH;
- 	memset(it6505->sha1_input, 0, sizeof(it6505->sha1_input));
- 	memset(it6505->bksvs, 0, sizeof(it6505->bksvs));
- }
-@@ -3025,9 +3015,6 @@ static int it6505_audio_setup_hw_params(struct it6505 *it6505,
- 			     params->sample_rate, params->sample_width,
- 			     params->cea.channels);
- 
--	if (!it6505->bridge.encoder)
--		return -ENODEV;
--
- 	if (params->cea.channels <= 1 || params->cea.channels > 8) {
- 		DRM_DEV_DEBUG_DRIVER(dev, "channel number: %d not support",
- 				     params->cea.channels);
-@@ -3159,6 +3146,16 @@ static int it6505_register_audio_driver(struct device *dev)
- 	};
- 	struct platform_device *pdev;
- 
-+	it6505->audio.select = AUDIO_SELECT;
-+	it6505->audio.sample_rate = AUDIO_SAMPLE_RATE;
-+	it6505->audio.channel_count = AUDIO_CHANNEL_COUNT;
-+	it6505->audio.type = AUDIO_TYPE;
-+	it6505->audio.i2s_input_format = I2S_INPUT_FORMAT;
-+	it6505->audio.i2s_justified = I2S_JUSTIFIED;
-+	it6505->audio.i2s_data_delay = I2S_DATA_DELAY;
-+	it6505->audio.i2s_ws_channel = I2S_WS_CHANNEL;
-+	it6505->audio.i2s_data_sequence = I2S_DATA_SEQUENCE;
-+	it6505->audio.word_length = AUDIO_WORD_LENGTH;
- 	it6505->audio.mute = true;
- 	INIT_DELAYED_WORK(&it6505->delayed_audio, it6505_delayed_audio);
- 
--- 
-2.55.0
+vim +866 drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+
+   797	
+   798	static int mt7925_load_clc(struct mt792x_dev *dev, const char *fw_name)
+   799	{
+   800		const struct mt76_connac2_fw_trailer *hdr;
+   801		const struct mt76_connac2_fw_region *region;
+   802		const struct mt7925_clc *clc;
+   803		struct mt76_dev *mdev = &dev->mt76;
+   804		struct mt792x_phy *phy = &dev->phy;
+   805		const struct firmware *fw;
+   806		u8 *clc_base = NULL, hw_encap = 0;
+   807		int ret, i, len, offset = 0;
+   808	
+   809		dev->phy.clc_chan_conf = 0xff;
+   810		dev->regd_user = false;
+   811		if (!mt7925_regd_clc_supported(dev))
+   812			return 0;
+   813	
+   814		if (mt76_is_mmio(&dev->mt76)) {
+   815			ret = mt7925_mcu_read_eeprom(dev, MT_EE_HW_TYPE, &hw_encap);
+   816			if (ret)
+   817				return ret;
+   818			hw_encap = u8_get_bits(hw_encap, MT_EE_HW_TYPE_ENCAP);
+   819		}
+   820	
+   821		ret = request_firmware(&fw, fw_name, mdev->dev);
+   822		if (ret)
+   823			return ret;
+   824	
+   825		if (!fw || !fw->data || fw->size < sizeof(*hdr)) {
+   826			dev_err(mdev->dev, "Invalid firmware\n");
+   827			ret = -EINVAL;
+   828			goto out;
+   829		}
+   830	
+   831		hdr = (const void *)(fw->data + fw->size - sizeof(*hdr));
+   832		for (i = 0; i < hdr->n_region; i++) {
+   833			region = (const void *)((const u8 *)hdr -
+   834						(hdr->n_region - i) * sizeof(*region));
+   835			len = le32_to_cpu(region->len);
+   836	
+   837			/* check if we have valid buffer size */
+   838			if (offset + len > fw->size) {
+   839				dev_err(mdev->dev, "Invalid firmware region\n");
+   840				ret = -EINVAL;
+   841				goto out;
+   842			}
+   843	
+   844			if ((region->feature_set & FW_FEATURE_NON_DL) &&
+   845			    region->type == FW_TYPE_CLC) {
+   846				clc_base = (u8 *)(fw->data + offset);
+   847				break;
+   848			}
+   849			offset += len;
+   850		}
+   851	
+   852		if (!clc_base)
+   853			goto out;
+   854	
+   855		for (offset = 0; offset < len; offset += le32_to_cpu(clc->len)) {
+   856			clc = (const struct mt7925_clc *)(clc_base + offset);
+   857	
+   858			if (clc->idx >= ARRAY_SIZE(phy->clc))
+   859				break;
+   860	
+   861			/* do not init buf again if chip reset triggered */
+   862			if (phy->clc[clc->idx])
+   863				continue;
+   864	
+   865			/* header content sanity */
+ > 866			if ((clc->idx == MT792x_CLC_BE_CTRL || clc->idx == MT792x_CLC_REGD) &&
+   867			    u8_get_bits(clc->t2.type, MT_EE_HW_TYPE_ENCAP) != hw_encap)
+   868				continue;
+   869	
+   870			if (clc->idx != MT792x_CLC_BE_CTRL && clc->idx != MT792x_CLC_REGD &&
+   871			    u8_get_bits(clc->t0.type, MT_EE_HW_TYPE_ENCAP) != hw_encap)
+   872				continue;
+   873	
+   874			phy->clc[clc->idx] = devm_kmemdup(mdev->dev, clc,
+   875							  le32_to_cpu(clc->len),
+   876							  GFP_KERNEL);
+   877	
+   878			if (!phy->clc[clc->idx]) {
+   879				ret = -ENOMEM;
+   880				goto out;
+   881			}
+   882		}
+   883	
+   884		ret = mt7925_regd_init(phy);
+   885	out:
+   886		release_firmware(fw);
+   887	
+   888		return ret;
+   889	}
+   890	
+
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
