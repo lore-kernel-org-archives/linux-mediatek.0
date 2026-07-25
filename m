@@ -4,71 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9177C531D0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2026 13:51:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFAF2C531D0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2026 15:36:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vbmSzYd2ryzojmmR5tmxApAUV88P2Dup5Q86ZV8c08M=; b=1dlcWPoB1uXLXuquhs3d1bhDt1
-	fMX+QiRg84UDV1TSQbuz49rDIoD7NAZSv0QjYM6lNbbkwPHctQA68u8Jno7MR2eVx278geJg/LNHs
-	xKj+/3dTP44AN07uIr5jY3tewYvHVNeEu72sIfXid/GoNnlI0P6ZYpghJShWc15JKQbtsQSZyN0ut
-	s7EXogxvSEO/GHdSsHYkwuOD80oJfysTKe1HB2c7cCngZjuNrtU4nNe4u6A66D3E1E3dAhjSKLTZi
-	5vuzNhmia/qakBH6qgJZruHWl4zduF0kIEuM6jy62F05NWygwptv/lkkdT3mpTo1iamVuNMJtJ1kW
-	xIFEu5vA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ij4llYX0IY1/Z2saSrJWqE8S/DUJX8rjYqL/9Jp3mvg=; b=qsx5OUFXXdkHOIyhxGIEThpmJY
+	jQvxVL6qVA0Iulj9c4X4bJD5M0WMTJAMkuip2pW4uEE+UFYeBQPTFBVXrOHugWom2M6wBTmMdjerW
+	aqFatObvJvdqgMVCCET4nPIuiIOySaH64shlz7u8Gj26wilPkHboUO/voF/BkTyKJVVvrspScfuFl
+	6DNQKo+STu+TCIiDVxKMHNdeEKiQYrhLd3YIFW4wzXq196jc0CPxoGPMMsglbGi0k0TygTWwQA/U+
+	GPf22e3y2gI5FIJC+rjz9mbWyk8T9ZfqY9gVfBVDI64ERIPsa2L58HOySb8Q2XFAUm/+UjJ4aRfiA
+	JIUmmGTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wncmL-00000000PQL-2Mw8;
-	Sat, 25 Jul 2026 13:51:01 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wneQr-00000000UTB-26RI;
+	Sat, 25 Jul 2026 15:36:57 +0000
+Received: from xs1.mindbit.ro ([80.86.107.70] helo=mail.mindbit.ro)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wncmJ-00000000PPg-42A0
-	for linux-mediatek@lists.infradead.org;
-	Sat, 25 Jul 2026 13:50:59 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5F40143D00
-	for <linux-mediatek@lists.infradead.org>; Sat, 25 Jul 2026 13:50:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2FB011F00A3F
-	for <linux-mediatek@lists.infradead.org>; Sat, 25 Jul 2026 13:50:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784987459;
-	bh=vbmSzYd2ryzojmmR5tmxApAUV88P2Dup5Q86ZV8c08M=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=ORLG+fWhZosGalSGWmyV3Kh++97/MDHrKaLPYfDJtWfoak36JOSML9k8SudIKrrp7
-	 wubLUe56gXM8COgYywev6qjsm9UZDTBYS277roo1SLeT6iNgjdN2Z+QKLcpkgZtkNW
-	 uHE0C8c3XpcS/RRzONKUC3CTxBZQm2g0V67rfNBAIjcsTEAdylfX/qIAaGoTV0TGtL
-	 Mdu0hdJm5RTpFNtErkG3HBY3G0u83xcEnbZEOdlXMMm8TFrmZh/7simaAEcqrmif9X
-	 kXaXnn0aBKcs2+twQpN7vZkPNcpI3zWOxZ+p8QRwnGqp80lqCRQqEeyq0rCDkLnzA9
-	 Am7RbQGbgE/XQ==
-Received: by mail-lf1-f45.google.com with SMTP id 2adb3069b0e04-5b0117d49dcso1103213e87.3
-        for <linux-mediatek@lists.infradead.org>; Sat, 25 Jul 2026 06:50:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+Rpq2Ypr4gwIymKd5xc9rXEI5of+KtQkgAKbWktMvAom/SeLxD8VLWGWmR4P/+wPB1Aw+R3AGZZ4Rjr40izwOw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxMZGAqpnCriXhCiTgH414OfXfznnBoZvjhB5qSRx2Ii2RmYZWG
-	Ybm16ZOvJ6ph3GBZfRS/jHcRp+CXV9XlL5Vh7eUE50CHOQCb69xzlgs4ZTIoGu0yoHo2PC4Deoi
-	RYuoxeYw0avQJi1nShsHh7tVnGU5JmFE=
-X-Received: by 2002:a05:6512:3c8e:b0:5ae:c239:f052 with SMTP id
- 2adb3069b0e04-5b2c1b569bfmr442527e87.62.1784987457975; Sat, 25 Jul 2026
- 06:50:57 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260723184538.3888637-1-ekffu200098@gmail.com> <20260723184538.3888637-25-ekffu200098@gmail.com>
-In-Reply-To: <20260723184538.3888637-25-ekffu200098@gmail.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Sat, 25 Jul 2026 15:50:45 +0200
-X-Gmail-Original-Message-ID: <CAD++jL=Zso=W-6hu56Jv_JPLLi09zXQVPdQnzDu+qjUNtai8zw@mail.gmail.com>
-X-Gm-Features: AUfX_mxl0SbySY5a9lGPh5hdtT44cpsgYcs6gRZ2aF1kuTPcG7UsdR_1xQAGZMQ
-Message-ID: <CAD++jL=Zso=W-6hu56Jv_JPLLi09zXQVPdQnzDu+qjUNtai8zw@mail.gmail.com>
-Subject: Re: [PATCH 24/36] pinctrl: mediatek: remove conditional return with
- no effect
-To: Sang-Heon Jeon <ekffu200098@gmail.com>
-Cc: Julia.Lawall@inria.fr, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, cocci@inria.fr, 
-	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+	id 1wneQo-00000000USe-0Kiv;
+	Sat, 25 Jul 2026 15:36:55 +0000
+Received: from dog.kanata.rendec.net (pool-174-112-193-187.cpe.net.cable.rogers.com [174.112.193.187])
+	by mail.mindbit.ro (Postfix) with ESMTPSA id 115E5C289F;
+	Sat, 25 Jul 2026 18:36:45 +0300 (EEST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.mindbit.ro 115E5C289F
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rendec.net;
+	s=default; t=1784993807;
+	bh=ij4llYX0IY1/Z2saSrJWqE8S/DUJX8rjYqL/9Jp3mvg=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=LQS3GQzsZQSkrjDmR3TcA+zLlZ/AuyxldNA6e7SmFZT3kU8wgZB5SAiu9B2uzD14r
+	 JS23kgRJtOxN/69zHEEeI9Tfnl8FteYTwKaeX1mZvpZTolyI34CoHFf12SKCHh3U3t
+	 t8NJsSA75Q0wzEiteM4011NVXj1/Br4k4JZKZQivlbo2ukTqGyvvVR2BdHm02V9Rvn
+	 Mi5suL/jCa8nXfXM2ZEAZFWoyVrVWaEfD+cABLkjdyDmlTq+0xpwh0JThmQHtpmEug
+	 vUbYVo6py9ZujBkyjXq8zy6KUYI+S6/HkbP6WEzarQb//ZJ4UVcL4IhxuC9lAFPELm
+	 OQ6liC8cOicjg==
+Message-ID: <d5d3706f14b8d1c6dfc0854b2ab7d5499c48ceca.camel@rendec.net>
+Subject: Re: [PATCH] irqchip/mst-intc: reject ranges beyond saved state
+ capacity
+From: Radu Rendec <radu@rendec.net>
+To: Pengpeng Hou <pengpeng@iscas.ac.cn>, Mark-PK Tsai
+	 <mark-pk.tsai@mediatek.com>
+Cc: Daniel Palmer <daniel@thingy.jp>, Thomas Gleixner <tglx@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, 	linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, 	linux-mediatek@lists.infradead.org
+Date: Sat, 25 Jul 2026 11:36:44 -0400
+In-Reply-To: <20260722041443.10020-1-pengpeng@iscas.ac.cn>
+References: <20260722041443.10020-1-pengpeng@iscas.ac.cn>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+MIME-Version: 1.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260725_083654_434437_3736CDD6 
+X-CRM114-Status: GOOD (  11.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,19 +74,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 23, 2026 at 8:47=E2=80=AFPM Sang-Heon Jeon <ekffu200098@gmail.c=
-om> wrote:
+On Wed, 2026-07-22 at 12:14 +0800, Pengpeng Hou wrote:
+> The inclusive Device Tree IRQ range determines nr_irqs. Suspend and
+> resume then use nr_irqs to walk the fixed saved_status array, which has
+> MST_INTC_MAX_IRQS entries. A descending range underflows the unsigned
+> subtraction, while a range wider than 64 entries exceeds that array.
+>=20
+> Reject both forms before deriving nr_irqs.
+>=20
+> Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
+> ---
+> =C2=A0drivers/irqchip/irq-mst-intc.c | 4 ++++
+> =C2=A01 file changed, 4 insertions(+)
+>=20
+> diff --git a/drivers/irqchip/irq-mst-intc.c b/drivers/irqchip/irq-mst-int=
+c.c
+> index b5335f6fd6d6..1475335d668d 100644
+> --- a/drivers/irqchip/irq-mst-intc.c
+> +++ b/drivers/irqchip/irq-mst-intc.c
+> @@ -263,6 +263,10 @@ static int __init mst_intc_of_init(struct device_nod=
+e *dn,
+> =C2=A0	=C2=A0=C2=A0=C2=A0 of_property_read_u32_index(dn, "mstar,irqs-map-=
+range", 1, &irq_end))
+> =C2=A0		return -EINVAL;
+> =C2=A0
+> +	if (irq_end < irq_start ||
+> +	=C2=A0=C2=A0=C2=A0 irq_end - irq_start >=3D MST_INTC_MAX_IRQS)
+> +		return -EINVAL;
+> +
+> =C2=A0	cd =3D kzalloc_obj(*cd);
+> =C2=A0	if (!cd)
+> =C2=A0		return -ENOMEM;
 
-> Both branches of the check return the same value, so the check has
-> no effect. Remove it and return the value directly.
->
-> This is the result of running the Coccinelle script from
-> scripts/coccinelle/misc/cond_return_no_effect.cocci.
->
-> Signed-off-by: Sang-Heon Jeon <ekffu200098@gmail.com>
-
-Patch applied!
-
-Yours,
-Linus Walleij
+Reviewed-by: Radu Rendec <radu@rendec.net>
 
