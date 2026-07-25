@@ -4,79 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C3FCC531C9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2026 03:55:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A515C531C9
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2026 05:11:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m+T72mW7YUUA/jZSiblImFVSBF7Veno9Oyl6HqdmEiA=; b=Nmeb0Q07gKivznIGt6si1a7o5G
-	Hz/7fEoFCAob+lA8kx4Mp1fhee0Z78UfxASb0tJiUBIO6mxzZkrztBJ49YWe7jp3HuRbyXvxs6k6Q
-	ZBjlAUlah302hp3863VN63bX9hbkEDLVmH6jgFMAgSTS4umb6hNRUlsrJbxTHgVkRiA7KkeXiE3N0
-	Ql/dQ7JB7qQZkvAA4HqL6EkdErSBDa2SCBhAHXIx+BnGPG/B4YDNjSBMB/8L/Mgt//qyMYg00b1nK
-	G5zF9vU4mHltATFxInizGwEehA0/YlGrkHlUDwMEvdTDPMeEFwrSfsXhBYPDqlo6C5M42qQhjaiJA
-	RmS/z8FQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LQ0vET0CaLia9gd+nvryYFD7dX3p2pL0OWBdS444Dvk=; b=jQUia+YHNcTTLGl1Xkqz6jcyEX
+	6N1lOmiiwXNaW+Xk1dX4yP0nTUMn5PWMZM+PPpcar36kKRN9LX7vvAZ32uNtfly3hz9oM+9zc2CnU
+	hN024VdJO8xE6QBsyFU8WuaL/w3wqxDcjft7quBZ19Uk6A3p3eJVH/bM3ld/gLRKIoSMOXsEOP6yF
+	B8d8VHd4nPvmHW4tIvuvjvCpN5SL56bcp7WS9U46GzDETqD5BDfF6RpC3VozbWEA/rxP4GF1lUoyD
+	otfwjWTlm05tvKTXx1hx8ClnKFuPEG4l/mUPia6828JrG41iIhoh2xCCXM28C7LpfVebAzXDCvrMc
+	zcY0VOBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnTUL-0000000HZwq-3Rx0;
-	Sat, 25 Jul 2026 03:55:49 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1wnUfi-000000003Kf-4A45;
+	Sat, 25 Jul 2026 05:11:38 +0000
+Received: from mail.mainlining.org ([5.75.144.95])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnTUH-0000000HZwO-3P3g
-	for linux-mediatek@lists.infradead.org;
-	Sat, 25 Jul 2026 03:55:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1784951746; x=1816487746;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=a/8RwzmKLG7uwZieP9EWP8WEah6Qds0ZpbVQgqjvNhY=;
-  b=WR1b41KSnr0Ej6c8pPTLT8UPFV9Vi48gICKz14QZgqDCQn68jJhm4TAg
-   A8IWh1KZK/MIl3c+Spb4+/toTVkyQ4YnXNAeg8EkeAFNbLD/ZNGbo1nAb
-   amRPjqaQgX1UDUvvYhscXKQcOlCh+6D9g+93Dor6eeCsKbW4tv4y1PvHx
-   PiEtQk0JKJ9VHA7Ejn5x+vnP4P77IHbOhUb5mLPjI1XYel3ulV3jf699+
-   0BhduKKhYUEJSrX/ticbSMg7mPaBRokaqKl1/wNG6U1Bu8KYy957o8cFz
-   2ZfxmWR1QQSN9fPQBuVO0NP+8KiYvVpajCxltSKjMk9mcxG4b1apFchJv
-   Q==;
-X-CSE-ConnectionGUID: 4JJ8GY3/QQydZpY+/uvNEA==
-X-CSE-MsgGUID: EoQKr8L8T/WhmLfKiDY+2g==
-X-IronPort-AV: E=McAfee;i="6800,10657,11855"; a="96768689"
-X-IronPort-AV: E=Sophos;i="6.25,183,1779174000"; 
-   d="scan'208";a="96768689"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jul 2026 20:55:45 -0700
-X-CSE-ConnectionGUID: O/Gy6JJMTbGNFEXK9Dd95Q==
-X-CSE-MsgGUID: pPPnVE9DSSiy0os5Kk3LLg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,183,1779174000"; 
-   d="scan'208";a="256226623"
-Received: from igk-lkp-server01.igk.intel.com (HELO 3cba2a188a06) ([10.211.93.152])
-  by fmviesa008.fm.intel.com with ESMTP; 24 Jul 2026 20:55:41 -0700
-Received: from kbuild by 3cba2a188a06 with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1wnTUB-00000000162-2zlA;
-	Sat, 25 Jul 2026 03:55:39 +0000
-Date: Sat, 25 Jul 2026 05:54:43 +0200
-From: kernel test robot <lkp@intel.com>
-To: JB Tsai <jb.tsai@mediatek.com>, nbd@nbd.name, lorenzo@kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, Sean.Wang@mediatek.com,
-	Quan.Zhou@mediatek.com, Ryder.Lee@mediatek.com,
-	litien.chang@mediatek.com, Charlie-cy.Wu@mediatek.com,
-	jb.tsai@mediatek.com
-Subject: Re: [PATCH] wifi: mt76: connac3: refactor CLC header type validation
- logic
-Message-ID: <202607250538.5NE4yF8u-lkp@intel.com>
-References: <20260724085124.3156143-1-jb.tsai@mediatek.com>
+	id 1wnUfg-000000003JX-1EvA;
+	Sat, 25 Jul 2026 05:11:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; s=202507r; d=mainlining.org; c=relaxed/relaxed;
+	h=From:To:Subject:Date:Message-ID; t=1784956270; bh=LQ0vET0CaLia9gd+nvryYFD
+	7dX3p2pL0OWBdS444Dvk=; b=L8KaAwyYcqh4o0P5of7bWiO6qvpTwJdJODzZMca1fHGK7+SHnP
+	90+TSUQZvaOfIMhdCYV3/AkYopDDM8SAcchdmt8brjzDewevYBc4MDK/YzbZBsRgEhu7Mvo1cje
+	jansOoVRKQU19H4rjyy/7UWxlpqequuva55ZvwstpHI7WOinIh4L/N41167b8A/I7PsD0TByZWf
+	OROkHnyPCTnu7w/QpywzgkG2wkEYhqqD2vAP3ExfljMRJ9Ncp8GzYCHpYDNLZyDPew/4dubCiX2
+	nJSkVku1TpndH7ufVfY9wIrt7Vp6mCn/IrDQaqUhF7w/JXsKVPey5nZIgVKZ+JJbb4A==;
+DKIM-Signature: v=1; a=ed25519-sha256; s=202507e; d=mainlining.org; c=relaxed/relaxed;
+	h=From:To:Subject:Date:Message-ID; t=1784956270; bh=LQ0vET0CaLia9gd+nvryYFD
+	7dX3p2pL0OWBdS444Dvk=; b=eGP4+POni7ZnQkrKwsV2A+5nml6A+0XXpyqrbBOycM6TUZEzBR
+	pxonJHdx7/VB+KdmIkIcB2JJ2pr1E8hnE/Bg==;
+Message-ID: <fe909054-5c9d-42f5-bbc1-66ca0ace72de@mainlining.org>
+Date: Sat, 25 Jul 2026 01:11:07 -0400
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260724085124.3156143-1-jb.tsai@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1] pmdomain: mediatek: Fix MT8183 hang on boot
+To: Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ Ulf Hansson <ulfh@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260722132729.302067-1-dmitry.osipenko@collabora.com>
+Content-Language: en-US
+From: Brady Norander <brady.norander@mainlining.org>
+In-Reply-To: <20260722132729.302067-1-dmitry.osipenko@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260724_205545_924780_F8F16C20 
-X-CRM114-Status: GOOD (  17.95  )
+X-CRM114-CacheID: sfid-20260724_221136_490198_64D00A98 
+X-CRM114-Status: GOOD (  14.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,137 +70,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi JB,
+On 7/22/26 09:27, Dmitry Osipenko wrote:
+> Depending on firmware, part of the MFG domains may be left ON at boot
+> leaving only some MFG cores powered, to let the ACP to prefetch the GPU
+> region when the display controller is brought up. This doesn't play well
+> with an eventual delay in probing Panfrost when the display controller is
+> fully set up, as that would make genpd's sync_state() to power off the
+> domain while ACP tries to prefetch: this is causing an AXI stall,
+> effectively freezing the AP indefinitely. In order to prevent this from
+> happening, the sync_state() functionality must be obliterated on all of
+> the MFG domains: while this guarantees a power leakage if the bootloader
+> boots the kernel with MFG PDs partially powered on, this is the only way
+> to ensure stable operation of the SoC during boot on devices with such
+> firmware because, of course, those will never officially receive a
+> firmware update.
+> 
+> Fixes Kappa Chromebook hanging during system boot.
 
-kernel test robot noticed the following build errors:
-
-[auto build test ERROR on wireless-next/main]
-[also build test ERROR on wireless/main linus/master v7.2-rc4 next-20260723]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/JB-Tsai/wifi-mt76-connac3-refactor-CLC-header-type-validation-logic/20260724-170015
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
-patch link:    https://lore.kernel.org/r/20260724085124.3156143-1-jb.tsai%40mediatek.com
-patch subject: [PATCH] wifi: mt76: connac3: refactor CLC header type validation logic
-config: x86_64-rhel-9.4-bpf (https://download.01.org/0day-ci/archive/20260725/202607250538.5NE4yF8u-lkp@intel.com/config)
-compiler: gcc-14 (Debian 14.2.0-19) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260725/202607250538.5NE4yF8u-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202607250538.5NE4yF8u-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   drivers/net/wireless/mediatek/mt76/mt7925/mcu.c: In function 'mt7925_load_clc':
->> drivers/net/wireless/mediatek/mt76/mt7925/mcu.c:866:68: error: 'MT792x_CLC_REGD' undeclared (first use in this function); did you mean 'MT7925_CLC_CHAN'?
-     866 |                 if ((clc->idx == MT792x_CLC_BE_CTRL || clc->idx == MT792x_CLC_REGD) &&
-         |                                                                    ^~~~~~~~~~~~~~~
-         |                                                                    MT7925_CLC_CHAN
-   drivers/net/wireless/mediatek/mt76/mt7925/mcu.c:866:68: note: each undeclared identifier is reported only once for each function it appears in
-
-
-vim +866 drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-
-   797	
-   798	static int mt7925_load_clc(struct mt792x_dev *dev, const char *fw_name)
-   799	{
-   800		const struct mt76_connac2_fw_trailer *hdr;
-   801		const struct mt76_connac2_fw_region *region;
-   802		const struct mt7925_clc *clc;
-   803		struct mt76_dev *mdev = &dev->mt76;
-   804		struct mt792x_phy *phy = &dev->phy;
-   805		const struct firmware *fw;
-   806		u8 *clc_base = NULL, hw_encap = 0;
-   807		int ret, i, len, offset = 0;
-   808	
-   809		dev->phy.clc_chan_conf = 0xff;
-   810		dev->regd_user = false;
-   811		if (!mt7925_regd_clc_supported(dev))
-   812			return 0;
-   813	
-   814		if (mt76_is_mmio(&dev->mt76)) {
-   815			ret = mt7925_mcu_read_eeprom(dev, MT_EE_HW_TYPE, &hw_encap);
-   816			if (ret)
-   817				return ret;
-   818			hw_encap = u8_get_bits(hw_encap, MT_EE_HW_TYPE_ENCAP);
-   819		}
-   820	
-   821		ret = request_firmware(&fw, fw_name, mdev->dev);
-   822		if (ret)
-   823			return ret;
-   824	
-   825		if (!fw || !fw->data || fw->size < sizeof(*hdr)) {
-   826			dev_err(mdev->dev, "Invalid firmware\n");
-   827			ret = -EINVAL;
-   828			goto out;
-   829		}
-   830	
-   831		hdr = (const void *)(fw->data + fw->size - sizeof(*hdr));
-   832		for (i = 0; i < hdr->n_region; i++) {
-   833			region = (const void *)((const u8 *)hdr -
-   834						(hdr->n_region - i) * sizeof(*region));
-   835			len = le32_to_cpu(region->len);
-   836	
-   837			/* check if we have valid buffer size */
-   838			if (offset + len > fw->size) {
-   839				dev_err(mdev->dev, "Invalid firmware region\n");
-   840				ret = -EINVAL;
-   841				goto out;
-   842			}
-   843	
-   844			if ((region->feature_set & FW_FEATURE_NON_DL) &&
-   845			    region->type == FW_TYPE_CLC) {
-   846				clc_base = (u8 *)(fw->data + offset);
-   847				break;
-   848			}
-   849			offset += len;
-   850		}
-   851	
-   852		if (!clc_base)
-   853			goto out;
-   854	
-   855		for (offset = 0; offset < len; offset += le32_to_cpu(clc->len)) {
-   856			clc = (const struct mt7925_clc *)(clc_base + offset);
-   857	
-   858			if (clc->idx >= ARRAY_SIZE(phy->clc))
-   859				break;
-   860	
-   861			/* do not init buf again if chip reset triggered */
-   862			if (phy->clc[clc->idx])
-   863				continue;
-   864	
-   865			/* header content sanity */
- > 866			if ((clc->idx == MT792x_CLC_BE_CTRL || clc->idx == MT792x_CLC_REGD) &&
-   867			    u8_get_bits(clc->t2.type, MT_EE_HW_TYPE_ENCAP) != hw_encap)
-   868				continue;
-   869	
-   870			if (clc->idx != MT792x_CLC_BE_CTRL && clc->idx != MT792x_CLC_REGD &&
-   871			    u8_get_bits(clc->t0.type, MT_EE_HW_TYPE_ENCAP) != hw_encap)
-   872				continue;
-   873	
-   874			phy->clc[clc->idx] = devm_kmemdup(mdev->dev, clc,
-   875							  le32_to_cpu(clc->len),
-   876							  GFP_KERNEL);
-   877	
-   878			if (!phy->clc[clc->idx]) {
-   879				ret = -ENOMEM;
-   880				goto out;
-   881			}
-   882		}
-   883	
-   884		ret = mt7925_regd_init(phy);
-   885	out:
-   886		release_firmware(fw);
-   887	
-   888		return ret;
-   889	}
-   890	
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+I also saw this same issue on my MT8192 Hayato Chromebook, and I also 
+saw an issue on my MT8183 and MT8186 Chromebooks where the audio was 
+broken. I fixed all of those issues by setting the GENPD_FLAG_NO_STAY_ON 
+flag on all domains. I held off from submitting that change as I was 
+unsure if it was the "correct" way to handle it, but perhaps it is. 
+Either way, this issue is not specific to only MT8183.
 
