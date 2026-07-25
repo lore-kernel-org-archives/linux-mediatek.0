@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DD22C531C9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2026 02:58:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEF45C531C9
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2026 02:59:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n3b8OYcJS3U4VwJHmsM3bWItJflpTlDBocS24RppZlM=; b=Unc2m+wZoY2Cuh1eKgagR1pVq3
-	GmJWs61nSU8/GZ0SKfqG+Km6mGLmPo/GtYukUVYHkb0e5GQovJM9YU7tL/FAVF0RBG9eSmiChnNxh
-	a3oM+cfuredjZworyn7M2NV6uUXZP4lYjfuSP6pQpixtSQxhGWu12vUGx6FynENuqtSYTADA3v8Vj
-	wsejvDqKNGPMv93oCxOeIx5EXwoXebbjsVRnRrmYSsGjLlA/6oDB08cxfH3hwfSWgAxrh4HjO/N/i
-	LXlByH4nBLoJ3yXFQdb7ewSzTTzkHWM1XBhwQ/i/njXPkxEBD6TcF3h4ZINo2dgCNGEL8OWaFIs2u
-	PEK8URjQ==;
+	bh=YLm4d/TVvuwb16r1sR8Shd6BupWV0jBF18YIlLBBXVw=; b=wNT8Krh+l2+wlVkkwDEqAls5tx
+	pjrfL+3+nKq57n6OmV6QrMA7gf/RKciVwid7jjefY4ptGdsS3lo5Xs7jukstZ/wzxsecLHb5YIsH/
+	7qOw3YCpOYCBMawmQmLx0h3T3qhBa6jM8dpBW5yiknX5HLy6R6AQ4lDXSi9WTyJaGQzhAaBi1AOfG
+	0RqfcEhlmQ/xUiwOhUgtXqd1JUbk7T0FRJIAoffcj8/0OvwhawkacdE3MbQWvjUTBUUL/MY/6NJrB
+	Z80unTH29dXlN/05zxymVqsdvqfmHRiRpZgVmJRWrICqHr1IF5wU1Ui0gxjcvjIaFPUpvnnG4unfR
+	V5JM6CrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnSbG-0000000HVWy-1r62;
-	Sat, 25 Jul 2026 02:58:54 +0000
+	id 1wnSbV-0000000HVfD-2e38;
+	Sat, 25 Jul 2026 02:59:09 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnSbE-0000000HVVP-2Fir;
-	Sat, 25 Jul 2026 02:58:53 +0000
+	id 1wnSbT-0000000HVch-0KNg;
+	Sat, 25 Jul 2026 02:59:08 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.99)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1wnSb7-0000000030c-32Ro;
-	Sat, 25 Jul 2026 02:58:45 +0000
-Date: Sat, 25 Jul 2026 03:58:42 +0100
+	id 1wnSbM-0000000031c-2iI1;
+	Sat, 25 Jul 2026 02:59:00 +0000
+Date: Sat, 25 Jul 2026 03:58:57 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -54,17 +54,17 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Chen-Yu Tsai <wenst@chromium.org>
-Subject: [PATCH v6 04/13] drm/bridge: it6505: complete poweroff even if
- disabling regulators fails
-Message-ID: <a5b76e4b0c348dc19595d918a14867b785e8af07.1784947240.git.daniel@makrotopia.org>
+Subject: [PATCH v6 05/13] drm/bridge: it6505: bail out of the IRQ handler
+ when status reads fail
+Message-ID: <9f33511464953754eee9a5df141a38936f26bd26.1784947240.git.daniel@makrotopia.org>
 References: <cover.1784947240.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1784947240.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260724_195852_609688_E7255602 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20260724_195907_115779_C8A308A9 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,47 +79,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-it6505_poweroff() returns early when regulator_disable() fails,
-leaving it6505->powered set with the IRQ already disabled. The next
-it6505_poweron() then takes its early return and never re-enables the
-IRQ, leaving the bridge deaf to hotplug and link training interrupts.
-The regulator core keeps the consumer's enable count on a failed
-disable either way, so bailing out only adds a wedged bridge on top of
-the leaked reference. Log the error and complete the power-off state
-transition instead.
+When reading the interrupt status registers fails, the negative error
+codes end up in int_status[], where it6505_test_bit() sees almost all
+bits set: every interrupt sub-handler runs on garbage and the error
+values are even written back to the status registers. Return IRQ_NONE
+instead.
 
 Fixes: b5c84a9edcd4 ("drm/bridge: add it6505 driver")
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
-v6: note that the regulator reference is leaked either way
+v6: no changes
 
 v5: new patch
 
- drivers/gpu/drm/bridge/ite-it6505.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/bridge/ite-it6505.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
-index c10cc6a786b5..fb6030a2c18c 100644
+index fb6030a2c18c..3806b0b96637 100644
 --- a/drivers/gpu/drm/bridge/ite-it6505.c
 +++ b/drivers/gpu/drm/bridge/ite-it6505.c
-@@ -2811,13 +2811,15 @@ static int it6505_poweroff(struct it6505 *it6505)
- 	if (pdata->pwr18) {
- 		err = regulator_disable(pdata->pwr18);
- 		if (err)
--			return err;
-+			dev_err(dev, "cannot disable pwr18 regulator: %d",
-+				err);
- 	}
+@@ -2714,6 +2714,11 @@ static irqreturn_t it6505_int_threaded_handler(int unused, void *data)
+ 	int_status[1] = it6505_read(it6505, INT_STATUS_02);
+ 	int_status[2] = it6505_read(it6505, INT_STATUS_03);
  
- 	if (pdata->ovdd) {
- 		err = regulator_disable(pdata->ovdd);
- 		if (err)
--			return err;
-+			dev_err(dev, "cannot disable ovdd regulator: %d",
-+				err);
- 	}
- 
- 	it6505->powered = false;
++	if (int_status[0] < 0 || int_status[1] < 0 || int_status[2] < 0) {
++		pm_runtime_put_sync(dev);
++		return IRQ_NONE;
++	}
++
+ 	it6505_write(it6505, INT_STATUS_01, int_status[0]);
+ 	it6505_write(it6505, INT_STATUS_02, int_status[1]);
+ 	it6505_write(it6505, INT_STATUS_03, int_status[2]);
 -- 
 2.55.0
 
