@@ -4,58 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A515C531C9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2026 05:11:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 411A6C531F9
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2026 09:15:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LQ0vET0CaLia9gd+nvryYFD7dX3p2pL0OWBdS444Dvk=; b=jQUia+YHNcTTLGl1Xkqz6jcyEX
-	6N1lOmiiwXNaW+Xk1dX4yP0nTUMn5PWMZM+PPpcar36kKRN9LX7vvAZ32uNtfly3hz9oM+9zc2CnU
-	hN024VdJO8xE6QBsyFU8WuaL/w3wqxDcjft7quBZ19Uk6A3p3eJVH/bM3ld/gLRKIoSMOXsEOP6yF
-	B8d8VHd4nPvmHW4tIvuvjvCpN5SL56bcp7WS9U46GzDETqD5BDfF6RpC3VozbWEA/rxP4GF1lUoyD
-	otfwjWTlm05tvKTXx1hx8ClnKFuPEG4l/mUPia6828JrG41iIhoh2xCCXM28C7LpfVebAzXDCvrMc
-	zcY0VOBA==;
+	bh=B8029mWw6fjtVVvwRbx9nUYW/Vr2qA8XHwwBIbWh63c=; b=Bc7Zc6QqC3RdMA83iG5bVzwHEY
+	Zr9KCMOa9nSQLp1Zz6KkR7bE8onL/fJfRoduLv2SrGbYqJ39avUcUviJajJD6gE1TQOsQ+oQC5FTA
+	/9aIE0NcoG1tHXnegb+zBYT4VuFJ8DpuW4Sfodou6qM+JjslCJPZSy1hQ74M0fRMFjlAtt9yERWDw
+	B8xm/XKEo5SUthtI3a0ztdoEhWw/kYZv48IYWBpyxaj0fgXR8kVBfnuRj4JJFKjqtCkGe/kzO4JOT
+	72q0XcWS6qqwBZTS8c7OzpTp7a+GGSUUcE9qhevBXGNvjMr3r83rCW7SIzitsyW/ENCf3U3rxqvqe
+	+iCBbqhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnUfi-000000003Kf-4A45;
-	Sat, 25 Jul 2026 05:11:38 +0000
-Received: from mail.mainlining.org ([5.75.144.95])
+	id 1wnYTN-00000000CZU-1DP3;
+	Sat, 25 Jul 2026 09:15:09 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnUfg-000000003JX-1EvA;
-	Sat, 25 Jul 2026 05:11:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; s=202507r; d=mainlining.org; c=relaxed/relaxed;
-	h=From:To:Subject:Date:Message-ID; t=1784956270; bh=LQ0vET0CaLia9gd+nvryYFD
-	7dX3p2pL0OWBdS444Dvk=; b=L8KaAwyYcqh4o0P5of7bWiO6qvpTwJdJODzZMca1fHGK7+SHnP
-	90+TSUQZvaOfIMhdCYV3/AkYopDDM8SAcchdmt8brjzDewevYBc4MDK/YzbZBsRgEhu7Mvo1cje
-	jansOoVRKQU19H4rjyy/7UWxlpqequuva55ZvwstpHI7WOinIh4L/N41167b8A/I7PsD0TByZWf
-	OROkHnyPCTnu7w/QpywzgkG2wkEYhqqD2vAP3ExfljMRJ9Ncp8GzYCHpYDNLZyDPew/4dubCiX2
-	nJSkVku1TpndH7ufVfY9wIrt7Vp6mCn/IrDQaqUhF7w/JXsKVPey5nZIgVKZ+JJbb4A==;
-DKIM-Signature: v=1; a=ed25519-sha256; s=202507e; d=mainlining.org; c=relaxed/relaxed;
-	h=From:To:Subject:Date:Message-ID; t=1784956270; bh=LQ0vET0CaLia9gd+nvryYFD
-	7dX3p2pL0OWBdS444Dvk=; b=eGP4+POni7ZnQkrKwsV2A+5nml6A+0XXpyqrbBOycM6TUZEzBR
-	pxonJHdx7/VB+KdmIkIcB2JJ2pr1E8hnE/Bg==;
-Message-ID: <fe909054-5c9d-42f5-bbc1-66ca0ace72de@mainlining.org>
-Date: Sat, 25 Jul 2026 01:11:07 -0400
+	id 1wnYTM-00000000CYL-2n5D
+	for linux-mediatek@lists.infradead.org;
+	Sat, 25 Jul 2026 09:15:08 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id D703643EDA
+	for <linux-mediatek@lists.infradead.org>; Sat, 25 Jul 2026 09:15:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B69C71F00A3F
+	for <linux-mediatek@lists.infradead.org>; Sat, 25 Jul 2026 09:15:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784970907;
+	bh=B8029mWw6fjtVVvwRbx9nUYW/Vr2qA8XHwwBIbWh63c=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=a10aFBj4NUY0UoNVLMkunTyB8DT51IWLM7ThAR+tK+e85ob8my52Jt9ARVSozVWQ0
+	 /xiq+r9/G0/FbIhMo4x+jMmmZeZB+WkOKwUolQmdKuDvN+L3YEKI6z8oCAbRdzSt/n
+	 eSmDZFRyA92WAiCjg9KB6EO4MdDjRT+fXu6r4uAG7Qs0a1MNABPsnJX54l+pwwe9jI
+	 /f7aUVobLQA2CtAREuHAaZGUrkxcgZnjDQpXzHbgTNPUiroIp+qh04ukHQ7gw1wehk
+	 O1HfdH0uih+U0zd65qe6CXymWDBbb3D2vGMwdvFfbvp2knmTQgqyVamUZikUbHQYvz
+	 OEJqrngvMJYuw==
+Received: by mail-lf1-f44.google.com with SMTP id 2adb3069b0e04-5aec6360133so1034728e87.1
+        for <linux-mediatek@lists.infradead.org>; Sat, 25 Jul 2026 02:15:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+RpOMRO5lVkjrjGJ3XqlU6RFGDPDviM7LI/qSJjJPkICUJtbw6Iou1rdrCarDAOH6HfJaJJbP7zitNrTkRooMg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyROKaHpsGQ5TdGrP19K6ktj5rlZe/KVNqqJHtyWue7dz07T2yS
+	88t3A75J7kuWVEvqSwxf+65+DO5nDa0pFGqHSso3yLiOi42eBrXnThjuphNTUfRtQIBerrjBb7D
+	81AC3hlBgdsv+C4gt6LC1YPOcc0B9qlk=
+X-Received: by 2002:a05:6512:6d4:b0:5b1:5d07:13bc with SMTP id
+ 2adb3069b0e04-5b2c1b59b35mr260489e87.61.1784970906334; Sat, 25 Jul 2026
+ 02:15:06 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] pmdomain: mediatek: Fix MT8183 hang on boot
-To: Dmitry Osipenko <dmitry.osipenko@collabora.com>,
- Ulf Hansson <ulfh@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20260722132729.302067-1-dmitry.osipenko@collabora.com>
-Content-Language: en-US
-From: Brady Norander <brady.norander@mainlining.org>
-In-Reply-To: <20260722132729.302067-1-dmitry.osipenko@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260724_221136_490198_64D00A98 
-X-CRM114-Status: GOOD (  14.72  )
+References: <20260717105847.131359-1-panchuang@vivo.com>
+In-Reply-To: <20260717105847.131359-1-panchuang@vivo.com>
+From: Linus Walleij <linusw@kernel.org>
+Date: Sat, 25 Jul 2026 11:14:54 +0200
+X-Gmail-Original-Message-ID: <CAD++jLn=aRZsP84bcygGYON1Vgm3TOqxrkDFi=OD7v0-+_2gkA@mail.gmail.com>
+X-Gm-Features: AUfX_my8JwvTIIgKU3n3CvruIp2CFzDYYelhaPZUZpJEgrhPtXpEkhfkCApkmrs
+Message-ID: <CAD++jLn=aRZsP84bcygGYON1Vgm3TOqxrkDFi=OD7v0-+_2gkA@mail.gmail.com>
+Subject: Re: [PATCH 0/4] pinctrl: Remove redundant error messages on IRQ
+ request failure
+To: Pan Chuang <panchuang@vivo.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+	Mika Westerberg <mika.westerberg@linux.intel.com>, Andy Shevchenko <andy@kernel.org>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	"moderated list:PIN CONTROLLER - AIROHA" <linux-mediatek@lists.infradead.org>, 
+	"open list:PIN CONTROL SUBSYSTEM" <linux-gpio@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, 
+	"moderated list:BROADCOM IPROC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/STM32 ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,27 +87,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/22/26 09:27, Dmitry Osipenko wrote:
-> Depending on firmware, part of the MFG domains may be left ON at boot
-> leaving only some MFG cores powered, to let the ACP to prefetch the GPU
-> region when the display controller is brought up. This doesn't play well
-> with an eventual delay in probing Panfrost when the display controller is
-> fully set up, as that would make genpd's sync_state() to power off the
-> domain while ACP tries to prefetch: this is causing an AXI stall,
-> effectively freezing the AP indefinitely. In order to prevent this from
-> happening, the sync_state() functionality must be obliterated on all of
-> the MFG domains: while this guarantees a power leakage if the bootloader
-> boots the kernel with MFG PDs partially powered on, this is the only way
-> to ensure stable operation of the SoC during boot on devices with such
-> firmware because, of course, those will never officially receive a
-> firmware update.
-> 
-> Fixes Kappa Chromebook hanging during system boot.
+On Fri, Jul 17, 2026 at 12:59=E2=80=AFPM Pan Chuang <panchuang@vivo.com> wr=
+ote:
 
-I also saw this same issue on my MT8192 Hayato Chromebook, and I also 
-saw an issue on my MT8183 and MT8186 Chromebooks where the audio was 
-broken. I fixed all of those issues by setting the GENPD_FLAG_NO_STAY_ON 
-flag on all domains. I held off from submitting that change as I was 
-unsure if it was the "correct" way to handle it, but perhaps it is. 
-Either way, this issue is not specific to only MT8183.
+> Pan Chuang (4):
+>   pinctrl: airoha: Remove redundant dev_err()
+>   pinctrl: bcm: Remove redundant dev_err()
+>   pinctrl: intel: Remove redundant dev_err_probe()
+>   pinctrl: Remove redundant dev_err()/dev_err_probe()
+
+Patches 1, 2 and 4 applied to the pinctrl tree. Andy already picked
+up patch 3!
+
+Yours,
+Linus Walleij
 
