@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEF45C531C9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2026 02:59:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEB6EC531FC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2026 02:59:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YLm4d/TVvuwb16r1sR8Shd6BupWV0jBF18YIlLBBXVw=; b=wNT8Krh+l2+wlVkkwDEqAls5tx
-	pjrfL+3+nKq57n6OmV6QrMA7gf/RKciVwid7jjefY4ptGdsS3lo5Xs7jukstZ/wzxsecLHb5YIsH/
-	7qOw3YCpOYCBMawmQmLx0h3T3qhBa6jM8dpBW5yiknX5HLy6R6AQ4lDXSi9WTyJaGQzhAaBi1AOfG
-	0RqfcEhlmQ/xUiwOhUgtXqd1JUbk7T0FRJIAoffcj8/0OvwhawkacdE3MbQWvjUTBUUL/MY/6NJrB
-	Z80unTH29dXlN/05zxymVqsdvqfmHRiRpZgVmJRWrICqHr1IF5wU1Ui0gxjcvjIaFPUpvnnG4unfR
-	V5JM6CrA==;
+	bh=BcLbD7rJ3HiOyl9l8N+1KjNuZIPj0rcXTuPHylZ9IHg=; b=wVk/2Lv7q6przjj07OCOnGyzuw
+	btN9iXOrJMWR/+uGuAUmfniKiFntfBZVVSAfa3cLe0T5gk1AaO+Ecz3AsnEIUvBNV6E++k247L5vL
+	lYq8q8HDKX9M+IZIAAL8xH7GgiiJFsTMlaFm7WGLyEwbJS75OttahIGWeLg7QzoX5gZOOG9qKfP2O
+	7EaE127l7Jie+heLXMdcxsbT3uZzFD1ry0r9TDQ0EJdZcwzCr6zhHXhKGAMEG7EBKUETGhBCoWUaT
+	sURccMZ/Y9qMtBhbQtlDD6ZpW3AxESnFv25ImueZbi9JZE2199LpHZl6p0/u67aiTM4OMcSdAwraR
+	R/CmZZWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnSbV-0000000HVfD-2e38;
-	Sat, 25 Jul 2026 02:59:09 +0000
+	id 1wnSby-0000000HVsY-3dIW;
+	Sat, 25 Jul 2026 02:59:38 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnSbT-0000000HVch-0KNg;
-	Sat, 25 Jul 2026 02:59:08 +0000
+	id 1wnSbw-0000000HVqn-1wGw;
+	Sat, 25 Jul 2026 02:59:37 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.99)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1wnSbM-0000000031c-2iI1;
-	Sat, 25 Jul 2026 02:59:00 +0000
-Date: Sat, 25 Jul 2026 03:58:57 +0100
+	id 1wnSbp-0000000032V-3ApD;
+	Sat, 25 Jul 2026 02:59:29 +0000
+Date: Sat, 25 Jul 2026 03:59:26 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -54,17 +54,17 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Chen-Yu Tsai <wenst@chromium.org>
-Subject: [PATCH v6 05/13] drm/bridge: it6505: bail out of the IRQ handler
- when status reads fail
-Message-ID: <9f33511464953754eee9a5df141a38936f26bd26.1784947240.git.daniel@makrotopia.org>
+Subject: [PATCH v6 06/13] drm/bridge: it6505: avoid division by zero in pixel
+ clock calculation
+Message-ID: <a9664c9ddd026a22cd246c0aac878d3c0e204d50.1784947240.git.daniel@makrotopia.org>
 References: <cover.1784947240.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1784947240.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260724_195907_115779_C8A308A9 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20260724_195936_502305_A8F65D4D 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,11 +79,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When reading the interrupt status registers fails, the negative error
-codes end up in int_status[], where it6505_test_bit() sees almost all
-bits set: every interrupt sub-handler runs on garbage and the error
-values are even written back to the status registers. Return IRQ_NONE
-instead.
+it6505_calc_video_info() checks the sum of the three pixel clock
+counter samples for zero before dividing it by 3, so sums of 1 or 2
+truncate to 0 and the following pixel clock calculation divides by
+zero. Divide first and check the result.
 
 Fixes: b5c84a9edcd4 ("drm/bridge: add it6505 driver")
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
@@ -92,25 +91,28 @@ v6: no changes
 
 v5: new patch
 
- drivers/gpu/drm/bridge/ite-it6505.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/gpu/drm/bridge/ite-it6505.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
-index fb6030a2c18c..3806b0b96637 100644
+index 3806b0b96637..b7eb746c8f8e 100644
 --- a/drivers/gpu/drm/bridge/ite-it6505.c
 +++ b/drivers/gpu/drm/bridge/ite-it6505.c
-@@ -2714,6 +2714,11 @@ static irqreturn_t it6505_int_threaded_handler(int unused, void *data)
- 	int_status[1] = it6505_read(it6505, INT_STATUS_02);
- 	int_status[2] = it6505_read(it6505, INT_STATUS_03);
+@@ -751,12 +751,13 @@ static void it6505_calc_video_info(struct it6505 *it6505)
+ 		sum += rddata;
+ 	}
  
-+	if (int_status[0] < 0 || int_status[1] < 0 || int_status[2] < 0) {
-+		pm_runtime_put_sync(dev);
-+		return IRQ_NONE;
-+	}
++	sum /= 3;
 +
- 	it6505_write(it6505, INT_STATUS_01, int_status[0]);
- 	it6505_write(it6505, INT_STATUS_02, int_status[1]);
- 	it6505_write(it6505, INT_STATUS_03, int_status[2]);
+ 	if (sum == 0) {
+ 		DRM_DEV_DEBUG_DRIVER(dev, "calc video timing error");
+ 		return;
+ 	}
+ 
+-	sum /= 3;
+ 	pclk = 13500 * 2048 / sum;
+ 	it6505->video_info.clock = pclk;
+ 	it6505->video_info.hdisplay = hdew;
 -- 
 2.55.0
 
