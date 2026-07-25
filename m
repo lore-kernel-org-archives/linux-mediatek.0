@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EC4EC531C9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2026 13:10:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9177C531D0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2026 13:51:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2GSUzCngCig5Gksii6QGO0WMCjtneUA3x53tYdJy33w=; b=ItS8eRgahG9O1Mj6mDqS0Qtqkx
-	TwdB0DsRemOQbvjH4ZxF9EsoNYMiJWidIum3WVczUweteZpk+31AIi8L2XSNQ9gPkxw0w1VnKPCID
-	JZPyqzoZw6hq2AWFEeKuNjBEtMpoSkI++qukKFzqq/iggLL8ZKXbrwcKK2EF36FIDY1nemhRnDQ5C
-	Ziy1R5CMvaWsCVQ2L36QGp0x64oilC8c64LGoYWePJ28D6cDjgNVJaeeTYqHmwBlVTtOIOtEVwqiB
-	svavSmf2YCxevjzhDp7KWcok3QauD9g5Ovj4q19NA+NVTMaJVgTbhWWG2ep88XVLmQgIgajiiUQp2
-	pzGOPEmg==;
+	bh=vbmSzYd2ryzojmmR5tmxApAUV88P2Dup5Q86ZV8c08M=; b=1dlcWPoB1uXLXuquhs3d1bhDt1
+	fMX+QiRg84UDV1TSQbuz49rDIoD7NAZSv0QjYM6lNbbkwPHctQA68u8Jno7MR2eVx278geJg/LNHs
+	xKj+/3dTP44AN07uIr5jY3tewYvHVNeEu72sIfXid/GoNnlI0P6ZYpghJShWc15JKQbtsQSZyN0ut
+	s7EXogxvSEO/GHdSsHYkwuOD80oJfysTKe1HB2c7cCngZjuNrtU4nNe4u6A66D3E1E3dAhjSKLTZi
+	5vuzNhmia/qakBH6qgJZruHWl4zduF0kIEuM6jy62F05NWygwptv/lkkdT3mpTo1iamVuNMJtJ1kW
+	xIFEu5vA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnc9X-00000000Me1-39oh;
-	Sat, 25 Jul 2026 13:10:55 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wncmL-00000000PQL-2Mw8;
+	Sat, 25 Jul 2026 13:51:01 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnc9W-00000000Mdd-27Mo
+	id 1wncmJ-00000000PPg-42A0
 	for linux-mediatek@lists.infradead.org;
-	Sat, 25 Jul 2026 13:10:54 +0000
+	Sat, 25 Jul 2026 13:50:59 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id D6435600AA
-	for <linux-mediatek@lists.infradead.org>; Sat, 25 Jul 2026 13:10:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8CDC41F00A3D
-	for <linux-mediatek@lists.infradead.org>; Sat, 25 Jul 2026 13:10:53 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 5F40143D00
+	for <linux-mediatek@lists.infradead.org>; Sat, 25 Jul 2026 13:50:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2FB011F00A3F
+	for <linux-mediatek@lists.infradead.org>; Sat, 25 Jul 2026 13:50:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784985053;
-	bh=2GSUzCngCig5Gksii6QGO0WMCjtneUA3x53tYdJy33w=;
+	s=k20260515; t=1784987459;
+	bh=vbmSzYd2ryzojmmR5tmxApAUV88P2Dup5Q86ZV8c08M=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=PCQf/d4e2SBtkCRjS9+QR955rdYcLLds7FzgQFrXmMiH4zGRCcFeBhVu/YzJElY88
-	 RRQsdRC3uEyRFCbry46WciKBWayGS4xKl4ny29jF0tnSH1FdG6YVVVuTEuzU/Cjoqy
-	 lz1uocc0Cn1PK99rFwVIM0IOyQ7CdCx4FMfv/n7sBiOwem4BznxZxo4PHRJ28DtzrI
-	 a+x49WTgY6r2/QdLBw+vsEff5n43nKb9imPw+IGE6zb1S3x3ho3feJESFQKK7sHJMr
-	 mcBG7kH2qmSjyYQEns+gP/FwYj9RhWO6uL7perCcdkzipvxLmpWTOzcI/yk/t86ljV
-	 HpNhVk3SVPOpA==
-Received: by mail-lf1-f49.google.com with SMTP id 2adb3069b0e04-5aeb59d54b1so1328202e87.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 25 Jul 2026 06:10:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+RqftComh/iY6zk0imSETXzkXReWXHBcBPLTp6Fk3h8RdN/2+/I/KzpCRK2HxcNMF1ZSxbqx75WIUMRXfhpZyw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxTd2EirIA6oVhqCaaP1Qe1ol70/WIgWTVLbMjSbfKa8htX3aqo
-	KX7k1Pbls0QxJo+6o3jBxsmiiwGGq7uNZmL+9v3Ak7ZQ+1cO7W8GXkn3A3be8Xu1mSkARYX7L2u
-	92nE62L8tl7VoBSQDjbWfK+i3H7RkPMw=
-X-Received: by 2002:a05:6512:1387:b0:5b0:12e1:486c with SMTP id
- 2adb3069b0e04-5b2c1b00ec2mr452374e87.24.1784985052312; Sat, 25 Jul 2026
- 06:10:52 -0700 (PDT)
+	b=ORLG+fWhZosGalSGWmyV3Kh++97/MDHrKaLPYfDJtWfoak36JOSML9k8SudIKrrp7
+	 wubLUe56gXM8COgYywev6qjsm9UZDTBYS277roo1SLeT6iNgjdN2Z+QKLcpkgZtkNW
+	 uHE0C8c3XpcS/RRzONKUC3CTxBZQm2g0V67rfNBAIjcsTEAdylfX/qIAaGoTV0TGtL
+	 Mdu0hdJm5RTpFNtErkG3HBY3G0u83xcEnbZEOdlXMMm8TFrmZh/7simaAEcqrmif9X
+	 kXaXnn0aBKcs2+twQpN7vZkPNcpI3zWOxZ+p8QRwnGqp80lqCRQqEeyq0rCDkLnzA9
+	 Am7RbQGbgE/XQ==
+Received: by mail-lf1-f45.google.com with SMTP id 2adb3069b0e04-5b0117d49dcso1103213e87.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 25 Jul 2026 06:50:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+Rpq2Ypr4gwIymKd5xc9rXEI5of+KtQkgAKbWktMvAom/SeLxD8VLWGWmR4P/+wPB1Aw+R3AGZZ4Rjr40izwOw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxMZGAqpnCriXhCiTgH414OfXfznnBoZvjhB5qSRx2Ii2RmYZWG
+	Ybm16ZOvJ6ph3GBZfRS/jHcRp+CXV9XlL5Vh7eUE50CHOQCb69xzlgs4ZTIoGu0yoHo2PC4Deoi
+	RYuoxeYw0avQJi1nShsHh7tVnGU5JmFE=
+X-Received: by 2002:a05:6512:3c8e:b0:5ae:c239:f052 with SMTP id
+ 2adb3069b0e04-5b2c1b569bfmr442527e87.62.1784987457975; Sat, 25 Jul 2026
+ 06:50:57 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260723035823.2041832-1-justin.yeh@mediatek.com> <CAD++jL=fy+0ZZhg_eH_BGLUZfpK69zCcOaTp_LQ93yvSxUiS3w@mail.gmail.com>
-In-Reply-To: <CAD++jL=fy+0ZZhg_eH_BGLUZfpK69zCcOaTp_LQ93yvSxUiS3w@mail.gmail.com>
+References: <20260723184538.3888637-1-ekffu200098@gmail.com> <20260723184538.3888637-25-ekffu200098@gmail.com>
+In-Reply-To: <20260723184538.3888637-25-ekffu200098@gmail.com>
 From: Linus Walleij <linusw@kernel.org>
-Date: Sat, 25 Jul 2026 15:10:39 +0200
-X-Gmail-Original-Message-ID: <CAD++jLmDKxCwSWZbKcpawjRotMgEFxaoCjcKiq8H87A39tnQqA@mail.gmail.com>
-X-Gm-Features: AUfX_myFdmYZ_1tkX_Vbvdyksfd_YwdB8gn7IvzQ4zVRblVSLK3XQPFPscUKun0
-Message-ID: <CAD++jLmDKxCwSWZbKcpawjRotMgEFxaoCjcKiq8H87A39tnQqA@mail.gmail.com>
-Subject: Re: [PATCH v7 0/5] pinctrl: mediatek: Enable module build support
-To: Justin Yeh <justin.yeh@mediatek.com>
-Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Date: Sat, 25 Jul 2026 15:50:45 +0200
+X-Gmail-Original-Message-ID: <CAD++jL=Zso=W-6hu56Jv_JPLLi09zXQVPdQnzDu+qjUNtai8zw@mail.gmail.com>
+X-Gm-Features: AUfX_mxl0SbySY5a9lGPh5hdtT44cpsgYcs6gRZ2aF1kuTPcG7UsdR_1xQAGZMQ
+Message-ID: <CAD++jL=Zso=W-6hu56Jv_JPLLi09zXQVPdQnzDu+qjUNtai8zw@mail.gmail.com>
+Subject: Re: [PATCH 24/36] pinctrl: mediatek: remove conditional return with
+ no effect
+To: Sang-Heon Jeon <ekffu200098@gmail.com>
+Cc: Julia.Lawall@inria.fr, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, cocci@inria.fr, 
+	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -82,13 +83,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 25, 2026 at 3:02=E2=80=AFPM Linus Walleij <linusw@kernel.org> w=
-rote:
+On Thu, Jul 23, 2026 at 8:47=E2=80=AFPM Sang-Heon Jeon <ekffu200098@gmail.c=
+om> wrote:
 
-> All patches applied, I had to rebase patch 5/5, please check the
-> result!
+> Both branches of the check return the same value, so the check has
+> no effect. Remove it and return the value directly.
+>
+> This is the result of running the Coccinelle script from
+> scripts/coccinelle/misc/cond_return_no_effect.cocci.
+>
+> Signed-off-by: Sang-Heon Jeon <ekffu200098@gmail.com>
 
-Notably I had to add some lines for MT6858.
+Patch applied!
 
 Yours,
 Linus Walleij
