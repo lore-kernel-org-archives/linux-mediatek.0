@@ -4,62 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFAF2C531D0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2026 15:36:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E2FBC531D0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2026 16:52:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ij4llYX0IY1/Z2saSrJWqE8S/DUJX8rjYqL/9Jp3mvg=; b=qsx5OUFXXdkHOIyhxGIEThpmJY
-	jQvxVL6qVA0Iulj9c4X4bJD5M0WMTJAMkuip2pW4uEE+UFYeBQPTFBVXrOHugWom2M6wBTmMdjerW
-	aqFatObvJvdqgMVCCET4nPIuiIOySaH64shlz7u8Gj26wilPkHboUO/voF/BkTyKJVVvrspScfuFl
-	6DNQKo+STu+TCIiDVxKMHNdeEKiQYrhLd3YIFW4wzXq196jc0CPxoGPMMsglbGi0k0TygTWwQA/U+
-	GPf22e3y2gI5FIJC+rjz9mbWyk8T9ZfqY9gVfBVDI64ERIPsa2L58HOySb8Q2XFAUm/+UjJ4aRfiA
-	JIUmmGTA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4oi+M1DASh9sr/5/9NIilXPuOVkktsUCJvsmJfqY6HY=; b=xvQnmtX5ovTvt87G79RS0hIu/F
+	OyzLxtgv81/k1+raD4OnH9qOHJksJxzaU9RE3XZomHDDudR8OslReCzwCQT+FHzSpure3p3qP/xMT
+	FgWyXvu+WXmKcJHFLOLIU2V+dRTIaFGZ8FXvDHuxTrT11uRu1yIH/6rEyEnBsXviKJhwt/5WdIJv5
+	ZjXGFIbg7k98VBc6lem7nVosOgmfo2etrhzsJmwGfjOfz4oVoM7v3F4VNV84L2VI6VvNj8JYN6cNB
+	8/A1KygcWk7oxrBKebFYX6jgWAHvb3qaBIp9KJRXxDN9EpY6v83Eev5qfPGGp/LfrRbRHtfrtG7dF
+	/R3r/ivw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wneQr-00000000UTB-26RI;
-	Sat, 25 Jul 2026 15:36:57 +0000
-Received: from xs1.mindbit.ro ([80.86.107.70] helo=mail.mindbit.ro)
+	id 1wnfc6-00000000YFi-32la;
+	Sat, 25 Jul 2026 16:52:38 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wneQo-00000000USe-0Kiv;
-	Sat, 25 Jul 2026 15:36:55 +0000
-Received: from dog.kanata.rendec.net (pool-174-112-193-187.cpe.net.cable.rogers.com [174.112.193.187])
-	by mail.mindbit.ro (Postfix) with ESMTPSA id 115E5C289F;
-	Sat, 25 Jul 2026 18:36:45 +0300 (EEST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.mindbit.ro 115E5C289F
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rendec.net;
-	s=default; t=1784993807;
-	bh=ij4llYX0IY1/Z2saSrJWqE8S/DUJX8rjYqL/9Jp3mvg=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=LQS3GQzsZQSkrjDmR3TcA+zLlZ/AuyxldNA6e7SmFZT3kU8wgZB5SAiu9B2uzD14r
-	 JS23kgRJtOxN/69zHEEeI9Tfnl8FteYTwKaeX1mZvpZTolyI34CoHFf12SKCHh3U3t
-	 t8NJsSA75Q0wzEiteM4011NVXj1/Br4k4JZKZQivlbo2ukTqGyvvVR2BdHm02V9Rvn
-	 Mi5suL/jCa8nXfXM2ZEAZFWoyVrVWaEfD+cABLkjdyDmlTq+0xpwh0JThmQHtpmEug
-	 vUbYVo6py9ZujBkyjXq8zy6KUYI+S6/HkbP6WEzarQb//ZJ4UVcL4IhxuC9lAFPELm
-	 OQ6liC8cOicjg==
-Message-ID: <d5d3706f14b8d1c6dfc0854b2ab7d5499c48ceca.camel@rendec.net>
-Subject: Re: [PATCH] irqchip/mst-intc: reject ranges beyond saved state
- capacity
-From: Radu Rendec <radu@rendec.net>
-To: Pengpeng Hou <pengpeng@iscas.ac.cn>, Mark-PK Tsai
-	 <mark-pk.tsai@mediatek.com>
-Cc: Daniel Palmer <daniel@thingy.jp>, Thomas Gleixner <tglx@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, 	linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, 	linux-mediatek@lists.infradead.org
-Date: Sat, 25 Jul 2026 11:36:44 -0400
-In-Reply-To: <20260722041443.10020-1-pengpeng@iscas.ac.cn>
-References: <20260722041443.10020-1-pengpeng@iscas.ac.cn>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+	id 1wnfc5-00000000YFG-0iKb;
+	Sat, 25 Jul 2026 16:52:37 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 1961A60A91;
+	Sat, 25 Jul 2026 16:52:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 863ED1F000E9;
+	Sat, 25 Jul 2026 16:52:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1784998354;
+	bh=4oi+M1DASh9sr/5/9NIilXPuOVkktsUCJvsmJfqY6HY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=QH+C+LHELslG0cAGc8E9FATQkLJ/oQNzf/glLSKkCiRCegd/ufmlOAMHlX1xVOngX
+	 yTV34xOOHaozmcLJ+/k5rB3OuYcqYRjMKUNTpamVSlaOQUDHqeC3qbpi6MUIE68+m/
+	 yLKhJESeGEV0P+bEyRSjFphzkco1yvAgbHgm3ySekEwovv+rz/fnm1EF12gc0TB2lB
+	 8DY5IOLd1URjjSQ7sgoY406B2DVeoFWE0Tw4zd0uowWpS6i22Hs0lURYmY0p6ty/75
+	 ciCOEcM7gBoWiI68P82mNlnLR8hjbw3RHAvJ49fbo1eKgptNlnrjatROXiJmmEPFvY
+	 Cz0DoqN6OkO5g==
+Message-ID: <49a2ee73-f9fa-483c-82fb-0e1471e7758e@kernel.org>
+Date: Sat, 25 Jul 2026 18:52:28 +0200
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260725_083654_434437_3736CDD6 
-X-CRM114-Status: GOOD (  11.31  )
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RESEND v3 2/2] dt-bindings: memory-controllers: mtk-smi:
+ Add support for mt8189
+To: congcong.yao@mediatek.com, Yong Wu <yong.wu@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+References: <20260722-8189-smi-support-v3-0-ae00e13deeac@mediatek.com>
+ <20260722-8189-smi-support-v3-2-ae00e13deeac@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGPBBMBCgA5AhsDBgsJCAcDAgYVCAIJCgsE
+ FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJp2mE8AAoJEBuTQ307QWKbeaIP
+ /ihHTkTW4KsN/DQ945JJbyu5tI0J80Wue7QyyLPglyKfhgb5cLLNPpOC8cCIJsc7+W3i2P38
+ s2c1cOH6CYGE7E9ur3Vfme8NW2S2I/Z8VC7bZnzyS23wT17LrsdS/qCpx4o8U+pt/xdXDKph
+ EGRYrIEmMpUWvyYzyYKGIe25FtaayIIKpq8eZYyFcp2f/sG5IkOW5uZzHPMPdcm87jU7fyuQ
+ rAU2vx9r+ulUfQ/q9Z2roC/ode3l7t2pN7BCBCsUDp6JCrUyZrtT1e7EbA0ZRP3aOBNk2P2E
+ DQOgJGjGdO5Yx2Y9LFtltu6JbsBJHi1syGRX3AtQYOMc4Y1WGoeZJmMlvKj2ZqqXNkcWi2DS
+ IQEWB0uW6CqFsBBIMGDa+6OzdaVO/uAVXWDWml02Men3CILdI1MbVjoh8ECqYUY7OQ+JJvNN
+ vnliuq5WM3Ghd3jg/LZZrxXjdIginRHFQCjIJYLKpLZWm1/iDFedcfzqRNYmTtqscdCNHW41
+ oT3Z7BmO9xwdjuwBS6nmS6JJwkbf5Ot2QR4pB/DRU7ZwjT1qHe+9r9gF32wXVQatHNGK/VVu
+ sfwOnkdxCWkp/qb2gdQRmZh+SedStWshigH6sNfuHBloF/q+hjMRc8b2m326OZdrbSHwY1Sz
+ vti8Hn7n8NjdHO9LKB7BIdjkA9DA5WsqOuVCzsFNBFVDXDQBEADNkrQYSREUL4D3Gws46JEo
+ Z9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLueMNsWLJBv
+ BaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6eiOMheesVS
+ 5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wAGldWsRxb
+ f3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA6z6lBZn0
+ WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9YegxWKvX
+ XHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt91pFzBSO
+ IpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gUBLHFTg2h
+ YnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/JoFzZ4B0
+ p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu4vXVFBYI
+ GmpyNPYzRm0QPwARAQABwsF2BBgBCgAgAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtBYpsFAmna
+ YUkACgkQG5NDfTtBYptX+BAApg32CkxwNucNEi8WfWA8oKkW0y8YDuY6ORMo9FWNGiT/OTy0
+ vyJrLocrpn86zwfjVp+eCrssPYh8eqJfnWqmYv6ACQtHPYzPZQ3mSo8H97Z01oUxITzCxpXm
+ ZkLgPIqtDPcC2E3dPM/fVxcyowM8XsaMA9wcsaUYrta8toOq2b9tKcjleKMfMrm0gQ9u7wUc
+ QbLkwj6TCLOwucb07GXzLTNF9PZmaDUpKAZjMjmrW+le+SFvQbhamx0rxLWPR0NWntXpbCn+
+ +ACch03p/JyTBVktxFsFyCt7pTPE1kEaeuXBTe/a2D9iQvRxRW19LvuO2e59/u1wYUiH/orz
+ wbIC2S4dBsPAPihL3ztOU1yE86GPyQtSE0kU+/7snnLt4QGi6PChf3t5gnNjAzjUUovO8rgI
+ c+5yN5heq5loYHgK6OQ9OlHzsPHO9e9MOQcKlFycs1pyijFGzDwdNUm/SchK8iWT2QApTx4A
+ K9bCVaboTA2T77QYkRcRJYSsO1alGX0ome/hMLD1daXlkrNUp1HWa3K4iytLRXjCSIorWiGs
+ n+q3krnpXu3TFkA8qtOFZMdnIiFuiq1yLT8hptsV5xh1TA2nsVvSYiaCr3q4s4BKjS/KrLDb
+ qoxzw8ISjdUp4pA85vb6YLCmb39NgidD+7PmAr65lBNveIFynTgsja1rRQ4=
+In-Reply-To: <20260722-8189-smi-support-v3-2-ae00e13deeac@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,37 +117,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2026-07-22 at 12:14 +0800, Pengpeng Hou wrote:
-> The inclusive Device Tree IRQ range determines nr_irqs. Suspend and
-> resume then use nr_irqs to walk the fixed saved_status array, which has
-> MST_INTC_MAX_IRQS entries. A descending range underflows the unsigned
-> subtraction, while a range wider than 64 entries exceeds that array.
->=20
-> Reject both forms before deriving nr_irqs.
->=20
-> Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
+On 22/07/2026 14:02, Congcong Yao via B4 Relay wrote:
+> From: Congcong Yao <congcong.yao@mediatek.com>
+> 
+> Add smi larb, common and sub-commom binding description for mt8189.
+> 
+> About what smi-sub-common is, please check the below diagram,
+> we add it in mediatek,smi-common.yaml file.
+> 
+> Signed-off-by: Congcong Yao <congcong.yao@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
-> =C2=A0drivers/irqchip/irq-mst-intc.c | 4 ++++
-> =C2=A01 file changed, 4 insertions(+)
->=20
-> diff --git a/drivers/irqchip/irq-mst-intc.c b/drivers/irqchip/irq-mst-int=
-c.c
-> index b5335f6fd6d6..1475335d668d 100644
-> --- a/drivers/irqchip/irq-mst-intc.c
-> +++ b/drivers/irqchip/irq-mst-intc.c
-> @@ -263,6 +263,10 @@ static int __init mst_intc_of_init(struct device_nod=
-e *dn,
-> =C2=A0	=C2=A0=C2=A0=C2=A0 of_property_read_u32_index(dn, "mstar,irqs-map-=
-range", 1, &irq_end))
-> =C2=A0		return -EINVAL;
-> =C2=A0
-> +	if (irq_end < irq_start ||
-> +	=C2=A0=C2=A0=C2=A0 irq_end - irq_start >=3D MST_INTC_MAX_IRQS)
-> +		return -EINVAL;
-> +
-> =C2=A0	cd =3D kzalloc_obj(*cd);
-> =C2=A0	if (!cd)
-> =C2=A0		return -ENOMEM;
+>  .../memory-controllers/mediatek,smi-common.yaml        | 18 ++++++++++++++++++
+>  .../bindings/memory-controllers/mediatek,smi-larb.yaml |  3 +++
 
-Reviewed-by: Radu Rendec <radu@rendec.net>
+Still incorrect order of patches. Please read submitting patches
+documents (both).
+
+Fixed it up while applying.
+
+Best regards,
+Krzysztof
 
