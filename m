@@ -4,106 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA6D9C531C9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2026 16:55:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1866FC531C9
+	for <linux-mediatek@archiver.kernel.org>; Sat, 25 Jul 2026 20:42:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HH3Qn8ZGhJMtOKJ137W0UtKqP8M0xUpzRjV/GWQV9Aw=; b=SDl6+VOaIHtJodbr7gGLNIi0yc
-	vg/1GDy8RAM513NavuIo6dtNgrDQ1PdAOkPmCs1QRaJIgKVigxMGjBzcn50hLGr2oOmG/T03fhauv
-	dJ9wqlfokaWmkFo7a8b9j1zb9aB6tclJVtN5qF5+tpdTIREtQGgGmnM+sGVlT9WC5kp1fAOw/kFJ1
-	BpTxdp1W/ogIYGeiKn9sS/rnlgxVZcooV+jjDUlix416jSsxBHXoPp8x9F/5svWhHCFJlMaT8PxFu
-	Qwr34R58pUT/z6FirFJSykQ/MX2duczJgvrrQcRHeSm0Kska1mOhZdhD7HRO1z+e6/sA7bkzxkRse
-	sYi/dzBQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8mADYrqjFd+vYjGmvCJ/2AAsFMgwtCupiq81UWlzduQ=; b=r+TUKhz+aZTEuA
+	5K4crnkJEwjWG5HT5kAP27ZyY4jIEa0Bwv4KpGot1b3QzaOpQJTQRy+ZbEWecEHlHqBPZycSodTYS
+	jJBPc1D8vG3tSXHyEtn8CflMf9KbiHls2IuVQnSraf03biWIIh6XUSkJavuidRNpZ1nnuQfs66vvE
+	D11q1iWjhaxY/3skC0QgktM3YFG2fg6QJfeCU/KQQjZaq7daX//tpZyKkumiB07lBvJUGNofX9dQQ
+	+o6h/zsgwDI3WlMEwxLzUDcQGvlZFN6wOBSQLbp8EjmtujHTvFHv+iWrCzqHeed5HjqIZW8s0LNC2
+	y4PmoNc/oXlulP5OiRGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnfeX-00000000YNF-18w1;
-	Sat, 25 Jul 2026 16:55:09 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wnjCC-00000000hOD-3a2p;
+	Sat, 25 Jul 2026 20:42:08 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wnfeV-00000000YN2-3fEw;
-	Sat, 25 Jul 2026 16:55:07 +0000
+	id 1wnjCB-00000000hNy-11gT;
+	Sat, 25 Jul 2026 20:42:07 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 71156434F4;
-	Sat, 25 Jul 2026 16:55:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA0251F000E9;
-	Sat, 25 Jul 2026 16:55:03 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 492DC60A6E;
+	Sat, 25 Jul 2026 20:42:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 685211F000E9;
+	Sat, 25 Jul 2026 20:42:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1784998507;
-	bh=HH3Qn8ZGhJMtOKJ137W0UtKqP8M0xUpzRjV/GWQV9Aw=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To;
-	b=FayGh3MsRt1J2r2J1k+Nk0rM4ARk1lur8T+iF1zbu8BitpMAh3H4Dyf2prfcR0icY
-	 6R19QHskly9lTPkPcBR9+k81kAvivD9H2XCPaoM2BuH9YkLA0DiiPn17p7cCeg28tw
-	 AbgDmudf6GMm/4rC4riwfRKhvmGhQShVdgNZjlbHlW4KjhpThh+zBBP9nquQ37n2x0
-	 qLe355ItiXQPe7DaL8eVsN4in/6GTK4dlwwaJZbspKlaRN54x+WKI3Uwj6RA6B94UZ
-	 S8QjE8xR18taq2cW3km52tGbwE3ZSlhR3nLxXPPLgK4feJEkVV3ucKjZTtZOS6qdmq
-	 Z33F05y6M8i3A==
-Message-ID: <664d409b-9db4-4b1b-8b8a-bd985ef727c6@kernel.org>
-Date: Sat, 25 Jul 2026 18:55:02 +0200
+	s=k20260515; t=1785012125;
+	bh=8mADYrqjFd+vYjGmvCJ/2AAsFMgwtCupiq81UWlzduQ=;
+	h=From:Subject:Date:To:Cc;
+	b=eHbGl3erWwK9qBlKucU2mVX8RqLkfNoj9mxESn1tSNQ1QjYod8EZEpneCuFFyrd1B
+	 JTOSw+wOgUcBu8Lt13AsJXrgIoo54IN57TcQgsxgBA8r137+vdy9Pwv8XMG1URwLHU
+	 LYsKDtI09O8btZ4EZu0wTPLBJ8eezzo6oovqtbhWCAmi/vB3dLB5DYqe+LfYEepWWH
+	 +/K+89KdQObq1Jw9R2o1KFuUMPNYhiLS7fHcnMZn9ydvMo/s/oLE90eQSWB6saToP9
+	 e3o4NccrXguwkAIxnC5JhfQnRDrn7/keQe7x8a19Gaw3E6rUI6vmOWJjqftFI5/uVH
+	 tDpihmstgXGgw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net-next v12 0/3] airoha: add the capability to configure
+ GDM3/GDM4 as WAN/LAN on demand
+Date: Sat, 25 Jul 2026 22:41:39 +0200
+Message-Id: <20260725-airoha-ethtool-priv_flags-v12-0-5136a30b2157@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RESEND v3 2/2] dt-bindings: memory-controllers: mtk-smi:
- Add support for mt8189
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: congcong.yao@mediatek.com, Yong Wu <yong.wu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
-References: <20260722-8189-smi-support-v3-0-ae00e13deeac@mediatek.com>
- <20260722-8189-smi-support-v3-2-ae00e13deeac@mediatek.com>
- <49a2ee73-f9fa-483c-82fb-0e1471e7758e@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <49a2ee73-f9fa-483c-82fb-0e1471e7758e@kernel.org>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/43S22rEIBAG4FdZcl3LjGd71fcopXiYbEKXZElC2
+ LLsu9fmphZBiiDo4OePzr1baRlp7V5O926hfVzHecoL5E+nLg5+OhMbU97oOHANeTA/LvPgGW3
+ DNs8Xdl3G/aO/+PPKgvbeQMyThS6fvy7Uj7cDf+sm2thEt617z5VhXLd5+Tpu3fGo/8PfkSGTg
+ IFH15Pr8fWTlokuz/NyPtidl5RpUTxTRvJovEdCyytKlJRtUSJTgiyJFEVvUFWULCiEFiUZMA1
+ kXey57clXlCopbFEqUxExEVhpdarfShcUdy1KZ8rqEDVAEhhiRZlfykAzlclUkKhESFJKbivKl
+ pRoUTZTgCp45aN1RBXlCoo3U7lMuYgq2WDQK11RCKXFmz2aU7HEleZRpeRk3VmIJSabGP40RP4
+ +8gLAS/iDPR6PbxUaaeXAAwAA
+X-Change-ID: 20260606-airoha-ethtool-priv_flags-b6aa70caa780
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Simon Horman <horms@kernel.org>, 
+ Alexander Lobakin <aleksander.lobakin@intel.com>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ netdev@vger.kernel.org, Jacob Keller <jacob.e.keller@intel.com>, 
+ Madhur Agarwal <madhur.agrawal@airoha.com>
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,39 +81,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 25/07/2026 18:52, Krzysztof Kozlowski wrote:
-> On 22/07/2026 14:02, Congcong Yao via B4 Relay wrote:
->> From: Congcong Yao <congcong.yao@mediatek.com>
->>
->> Add smi larb, common and sub-commom binding description for mt8189.
->>
->> About what smi-sub-common is, please check the below diagram,
->> we add it in mediatek,smi-common.yaml file.
->>
->> Signed-off-by: Congcong Yao <congcong.yao@mediatek.com>
->> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>  .../memory-controllers/mediatek,smi-common.yaml        | 18 ++++++++++++++++++
->>  .../bindings/memory-controllers/mediatek,smi-larb.yaml |  3 +++
-> 
-> Still incorrect order of patches. Please read submitting patches
-> documents (both).
-> 
-> Fixed it up while applying.
+Add the capability to configure GDM3/GDM4 as WAN/LAN on demand when QoS
+offload is created or destroyed.
+Make dev->qdma an RCU pointer so the TX path can safely dereference it
+without holding RTNL.
+Introduce airoha_qdma_start() and airoha_qdma_stop() helpers.
 
-And dropped. You did not respond to review of v3.
+---
+Changes in v12:
+- Introduce txq_lock array in order to serialize the access to
+  netdev_tx_completed_queue() in airoha_qdma_tx_napi_poll().
+- Set AIROHA_DEV_F_TX_QOS flags in airoha_tc_setup_qdisc_htb() and not
+  in airoha_enable_qos_for_gdm34().
+- Link to v11: https://lore.kernel.org/r/20260724-airoha-ethtool-priv_flags-v11-0-686dea300a40@kernel.org
 
-https://lore.kernel.org/all/20260701075246.C809E1F00AC4@smtp.kernel.org/
+Changes in v11:
+- Fix possible bql races moving the net_device between different QDMA.
+- Use atomic APIs for airoha_gdm_flags.
+- Link to v10: https://lore.kernel.org/r/20260722-airoha-ethtool-priv_flags-v10-0-d2562c5dd942@kernel.org
 
-I also do not understand how correct order of patches at v3 became
-incorrect at RESEND of v3.
+Changes in v10:
+- Fix a theoretical race condition between tx completion NAPIs moving the
+  net_device between different QDMA.
+- Rebase on top of next-next main branch
+- Link to v9: https://lore.kernel.org/r/20260721-airoha-ethtool-priv_flags-v9-0-9c15d8b71a56@kernel.org
 
-Really, pay attention on submitting process in Mediatek. I was
-complaining A LOT about quality of upstream submissions of Mediatek and
-have now - after 2-3 years of complains - close to zero patience for
-this company. Mediatek brought it on themselves by repeating same
-mistakes over and over.
+Changes in v9:
+- Rebase on top of next-next main branch
+- Link to v8: https://lore.kernel.org/r/20260703-airoha-ethtool-priv_flags-v8-0-015ba5ac89ee@kernel.org
+
+Changes in v8:
+- Rebase on top of next-next to fix conflicts.
+- Link to v7: https://lore.kernel.org/r/20260701-airoha-ethtool-priv_flags-v7-0-b4153bd44428@kernel.org
+
+Changes in v7:
+- Fix ETS stats accounting in patch 2/3
+- Reset ETS stats accounting in airoha_dev_set_qdma().
+- Link to v6: https://lore.kernel.org/r/20260629-airoha-ethtool-priv_flags-v6-0-86bc600d31bc@kernel.org
+
+Changes in v6:
+- Rebase on top of next-next
+- Add patch 1/3: "rename airoha_priv_flags to airoha_dev_flags"
+- Drop patch 2/3: "refactor QDMA start/stop into reusable helpers"
+- Link to v5: https://lore.kernel.org/r/20260611-airoha-ethtool-priv_flags-v5-0-c11de08486d1@kernel.org
+
+Changes in v5:
+- Add patch 1/3: use int instead of atomic_t for qdma users counter
+- Protect dev->flags with flow_offload_mutex mutex.
+- Introduce AIROHA_PRIV_F_QOS in order to handle better WAN/LAN
+  switching.
+- Link to v4: https://lore.kernel.org/r/20260610-airoha-ethtool-priv_flags-v4-0-60e89cf28fea@kernel.org
+
+Changes in v4:
+- Move back QDMA TX/RX DMA enable to airoha_dev_open()/airoha_dev_stop().
+- Configure GDM3/4 as WAN if GDM2 is not available in ndo_init()
+  callback.
+- Protect qdma pointer in airoha_gdm_dev struct using RCU.
+- Rely on rtnl_dereference() to access qdma pointer in the control path.
+- Add airoha_qdma_start() and airoha_qdma_stop() utility routines in
+  patch 1/2
+- Link to v3: https://lore.kernel.org/r/20260608-airoha-ethtool-priv_flags-v3-1-3e8e3dc3f715@kernel.org
+
+Changes in v3:
+- Do not introduce ethtool private flags support to configure LAN/WAN
+  for GDM3/4 and rely on tc qdisc offload for it instead.
+- Set GDM3/4 ports as LAN by default.
+- Move QDMA TX/RX DMA enable from airoha_dev_open() to airoha_probe()
+  and the corresponding disable from airoha_dev_stop() to airoha_qdma_cleanup().
+- Link to v2: https://lore.kernel.org/r/20260607-airoha-ethtool-priv_flags-v2-1-742c7aa1e182@kernel.org
+
+Changes in v2:
+- Rework airoha_dev_set_wan_flag routine
+- Enable GDM_STRIP_CRC_MASK in airoha_disable_gdm2_loopback()
+- Do not always reset REG_SRC_PORT_FC_MAP6 in
+  airoha_disable_gdm2_loopback() but use the same condition used in
+  airoha_enable_gdm2_loopback().
+- Link to v1: https://lore.kernel.org/r/20260606-airoha-ethtool-priv_flags-v1-1-401b2c9fe9f1@kernel.org
+
+---
+Lorenzo Bianconi (3):
+      net: airoha: rename airoha_priv_flags to airoha_dev_flags
+      net: airoha: fix ETS QoS stats counter underflow and cross-channel corruption
+      net: airoha: defer GDM3/GDM4 WAN mode and GDM2 loopback to QoS offload
+
+ drivers/net/ethernet/airoha/airoha_eth.c  | 265 ++++++++++++++++++++++++++----
+ drivers/net/ethernet/airoha/airoha_eth.h  |  33 +++-
+ drivers/net/ethernet/airoha/airoha_ppe.c  |   9 +-
+ drivers/net/ethernet/airoha/airoha_regs.h |   1 +
+ 4 files changed, 263 insertions(+), 45 deletions(-)
+---
+base-commit: 04026c998c24ac47eb76886b9790c5710b603eb4
+change-id: 20260606-airoha-ethtool-priv_flags-b6aa70caa780
 
 Best regards,
-Krzysztof
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
