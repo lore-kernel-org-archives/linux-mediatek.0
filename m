@@ -4,98 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C6C9C531CC
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Jul 2026 06:09:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FDE8C531CC
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Jul 2026 11:27:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7UFhWQOa/vwyik9QrUHaltpmfCg9gV5b8FYD7Vbdi7U=; b=SLABosSg1rZsnG8t66k5T6AJVL
-	ilAPcnMDUVeeu43WCxF9QWDfwRgywa8YXZKdUmTKrKi+OE0ZM5xYGsN61V7ue9QgXC7H3bAsVRxZ1
-	V9BwMVPGCvR/ld9Rs6MuNpHb8NuoUeZSAXtUzzQKTiGqvLol0zLmb9GEeQ95lBd6S+rlcEur887yw
-	b6iJGUb3ofKGykNPYH64nh8mafrkHuKTmf32YTshmHJdg8z83QA5yj9uAZTZSRpyFEDQgnRVzTkpa
-	pHtH7SS6HKQstopCyvykSktfqrlMK8tFR4uio+aAINXdSFQ5C6q+Qw1Qu5QzMitF9DObgNKXL9dS+
-	q/GnPyhg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BD67O4VxjpIvpQkBY4qU/I0nnLqaoQK18bmEHcUuNU4=; b=ejWamQ1h22JAcDPzDCS0sFK+ck
+	sYXcIDv/3EK2MNGQVV+whn29TD+rGkIBsWLzDCBlHsmy/a3rXSxt7H0NeyBxPr2SArScaHf9Iuum4
+	BT383/cZR+5kF54NRU5PXqr3rYGwXhygkQZXVaL4pV4HxK5cTlS/9fLxZGMyswd+mLMyAAN+g9Q7t
+	A6UPPqnxHyC2Yzw8IctQ2gYomoHAqcyIDOp/bjHVimenYHdwQnvFPG313wHGRRfbmyy9NrwR13wzF
+	KUnwBQOHO3pJQuDy+SFeaTyGBqtY3qxOgw0nnGH+Nqb+8/kGGVQj49WRPbF+vozZ7QOKXGr5xDBxx
+	wW5enVag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wns2s-00000000wXQ-1d7h;
-	Sun, 26 Jul 2026 06:09:06 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1wnx1F-000000016YO-1DoQ;
+	Sun, 26 Jul 2026 11:27:45 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wns2p-00000000wWe-408q
-	for linux-mediatek@lists.infradead.org;
-	Sun, 26 Jul 2026 06:09:05 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-84e0688b859so935305b3a.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 25 Jul 2026 23:09:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785046142; x=1785650942; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=7UFhWQOa/vwyik9QrUHaltpmfCg9gV5b8FYD7Vbdi7U=;
-        b=nnLpPo2TWSxE54lpBwrndzneVtNUZhvk7vOBczc8hrH+0bnlsGu1Z1Go9CdVEc0zo/
-         b8CYtUsnYvo/78LwWVyYsCpEkwtza4195lF77U9j7C3hiVw6gnR+Jwmk3UuYT9DR5EAT
-         eEjun23wSTT+uhJ3ySZ8h4idr06A+IOcVor8IoSCSAt35TyKPGcGLrU8tA7vaxFLoFxq
-         6hdUA2GvewMuPDUU0ZLptbB8B6cwT/pC9I2ccjjNp//P1ykFFA6XNcq2ZWVIuW6JklPc
-         jDBx3kQPRmWsgZw5CHHrSR0mnXDkUu4cKFoIRMK5Bqt4mCZ3OCfgghR1qg1gTz4MfH1V
-         wggA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785046142; x=1785650942;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=7UFhWQOa/vwyik9QrUHaltpmfCg9gV5b8FYD7Vbdi7U=;
-        b=UtDPLH6O4+KleccWgm0xYiPHFCzDB5Nywf0UCN5CbhcVmBe1mIkSSJdqOsPUBZr2JW
-         WfKz/DisjYn3iRCgi2N0xWIaIyX5vjKYbaBQeq11bTQej/gdr9govZXVZTNerjU8+e48
-         6qEDK1AYWF0ziyoN3esVEnZaDawb4ZYF/FuIG1UAH+3L8k0lLgq3Uiz/Zb7Bm0V5a4WV
-         +6GuNMBDJlRmunY/ACmof5PqEdsUp7I9jtwIdrIneAc8rFTh+C54dMm3g0F+VfxGsD/J
-         THJfnU7mZfiDfF1mDoK2dcfA7VjmPNCuK5D94y881Ok51HKQsG1r7Wm8i7VEKVtHieF3
-         4lHQ==
-X-Forwarded-Encrypted: i=1; AHgh+RrV5IpF9wVvciQ7BNRfztyucZzciM6KjDWNaI6k8hz9ForrSV8lrr7V/jIQuZgSlz3xxcvdPNZhnP+C3Q2AYg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyd//xu9xiaNoi1wSxNlA4/yW4EgXIjUThooYeS0A3/B4c3Yt38
-	Wh7JUYzcuFG5qs+drZdU4GUrpXYSplV71LP67GAn6RM31Uuco+qEGK9P
-X-Gm-Gg: AR+sD11a5m7VaOAGaQcxdwkfmxAY0zHIi91LePTQKQ6A0v2b8vLXtvIMWw0c4W7ROJO
-	vla8oXLP3eG5lBhFmnGc9aOvZajrQt8CJYlQ4H1jjZ4vG5pBCl0PlpYdSRM8HjzFnR70mglMiJy
-	NT+4DUkNAdrUYdUw/tOyPBXojL8Gh0dgKbxRMGPeZfIrXbm6hE/21isPRzPOMtB8Sde+RXStEdj
-	jGPRCpQ3QxMra9QtICA2D/6VJYuAHq1OV6HkRmDrn+plMBosp1JMWZbrt0KI6zooE0E3Rh2Fy1E
-	oQQNYPiVJMp6MAmmkcBQhuzIdBH2MkeAuNkXW2ZCIFqOuz+qx1VNic2QZ2tneJJuREtGyXeTj8H
-	JwX83IWm1xPjI1BsbJ7vvu5NpUw5Q9hBUn6tNFgWQ+kj8hBPNRik3kdzgYW7IZiwx+PORnmwz7t
-	R1ET/9W45D0gZrDKtp87Ad9Nt3VKAA0OgAnA==
-X-Received: by 2002:a05:6a00:390f:b0:847:8d54:f4f9 with SMTP id d2e1a72fcca58-84e595810c1mr3014064b3a.51.1785046142393;
-        Sat, 25 Jul 2026 23:09:02 -0700 (PDT)
-Received: from buffalo-ssd (M014013071096.v4.enabler.ne.jp. [14.13.71.96])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84e533d1644sm1609938b3a.37.2026.07.25.23.08.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 25 Jul 2026 23:09:01 -0700 (PDT)
-Date: Sun, 26 Jul 2026 15:08:57 +0900
-From: Akari Tsuyukusa <akkun11.open@gmail.com>
-To: Arnd Bergmann <arnd@kernel.org>
-Cc: Nick Desaulniers <ndesaulniers@google.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Russell King <linux@armlinux.org.uk>, 
-	Nathan Chancellor <nathan@kernel.org>, Bill Wendling <morbo@google.com>, 
-	Justin Stitt <justinstitt@google.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>, 
-	"moderated list:ARM SUB-ARCHITECTURES" <linux-arm-kernel@lists.infradead.org>, 
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	"open list:CLANG/LLVM BUILD SUPPORT:Keyword:b(?i:clang|llvm)b" <llvm@lists.linux.dev>, stable@vger.kernel.org, Ard Biesheuvel <ardb@google.com>
-Subject: Re: [PATCH] arm: mediatek: fix secondary CPU boot on Thumb-2 kernels
- with Clang
-Message-ID: <amWfjDyn0jrnIf63@buffalo-ssd>
-References: <20260722172443.534251-1-akkun11.open@gmail.com>
- <CAKwvOdnbPKoTy72EvfpKtT9Ne-r+O0j99KFX8OvjGk8ZxsuEGw@mail.gmail.com>
- <amHYO1c-5vzqSekt@buffalo-ssd>
- <ef007a23-46bd-41d6-83ff-264831341093@app.fastmail.com>
+	id 1wnx1D-000000016XW-1xHm;
+	Sun, 26 Jul 2026 11:27:43 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id A2AA960008;
+	Sun, 26 Jul 2026 11:27:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA52F1F00A3A;
+	Sun, 26 Jul 2026 11:27:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1785065260;
+	bh=BD67O4VxjpIvpQkBY4qU/I0nnLqaoQK18bmEHcUuNU4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=bFwthwBB+8VzKDqeSOeJBOabb7INmugR1qe4ekQkgIJOA/+Ppa2tP4rRvPj2QgNCi
+	 Oo3Dsk0hRS1W4QcIPaMj0J6naWVbWJdmyH2zzIvAeHT+Vm5v8+6ot2zwblI0R/9goJ
+	 LNp25GZYNPNOYMbyL/ftVh7onSraKfduBqZ0EkOEf8Srms6yIormtf1CqD6WVQPe1G
+	 dd4GoGG8VwQdbAkcXrYbx0ZWilTg9+5QHP/mRIJ9jUX48EosfJ+LIno6k7GrarbCgH
+	 iF5Waw6r8v/p1YVvAqEMjPN9TRJu1TQ0xdXnaMJBLWUx4Ugn9YH/A+m+aZwefLUo7j
+	 Nm/IWK1BHeIiQ==
+Message-ID: <6a6bfe58-2b9b-46f2-9f16-d0abebf6337a@kernel.org>
+Date: Sun, 26 Jul 2026 13:27:23 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ef007a23-46bd-41d6-83ff-264831341093@app.fastmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260725_230904_002596_ADE264CF 
-X-CRM114-Status: GOOD (  17.88  )
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH wireless-next] dt-bindings: net: wireless: mediatek,mt76:
+ fix 'spacial' spelling
+To: "shaikh.kamal" <shaikhkamal2012@gmail.com>, Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Johannes Berg <johannes@sipsolutions.net>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20260726053817.17409-1-shaikhkamal2012@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <20260726053817.17409-1-shaikhkamal2012@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,38 +120,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 23, 2026 at 11:53:14AM +0200, Arnd Bergmann wrote:
-> On Thu, Jul 23, 2026, at 11:15, Akari Tsuyukusa wrote:
-> > Can you send your fix as PATCH?
-> > I think your approach is better than mine.
+On 26/07/2026 07:38, shaikh.kamal wrote:
+> Fix spelling error reported by codespell: spacial -> spatial
+> (spatial reuse). No functional change.
 > 
-> I think we should wait for the llvm issue to be resolved first, to
-> document whether this is considered a bug in the kernel or the
-> assembler, and to see if any other kernel code may be affected
-> by the same thing.
+> Signed-off-by: shaikh.kamal <shaikhkamal2012@gmail.com>
+> ---
+>  .../bindings/net/wireless/mediatek,mt76.yaml           | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
 > 
-> Looking around other .S files, I see the same
-> pattern in stext(), cpu_resume_arm(), mcpm_entry_point(),
-> all of which start in arm mode but end in thumb.
 
-It's a LLVM bug.
-The LLVM assembler source code explicitly mentions this limitation:
+Slow down. Same comments.
 
-  ///
-  /// FIXME: there is a corner case where the state is changed in between the
-  /// label definition and the .type directive. This is not expected to occur
-  /// in practice, and handling it would require the backend to track IsThumb
-  /// for every label.
-  ///
-
-https://github.com/llvm/llvm-project/pull/211641/changes
-
-However, it will take some time for an LLVM release with this fix to
-become available. Since LLVM (>=15.0.0) is an officially supported
-toolchain, leaving the kernel with bug(s?) on supported LLVM versions
-isn't ideal.
-I think we should apply a workaround in the kernel for now.
-
-Best Regards,
-Akari
+Best regards,
+Krzysztof
 
