@@ -4,60 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8DD6C54F51
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2026 13:17:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99AE9C53200
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2026 13:32:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DevyNzk/0RjswZblIxZkdQSTJtX1K3UZCjo6NK2E/+s=; b=QuFdjd7hsfpSsZ5QzL72JyT6+q
-	X0NHYYCvoQbKdmlZtqErckN+oQ9SsvLDf1/S2di/jdaAIFSbQl/QhDaTB02SnVA5DVrO3oso1g5GS
-	VjwWPFaXOLOtka3JLE8rCdx/bJblvUcMKTKVNP30fHMQaAl8+XprQ40XDW0sA3yO0JboNiUI7ayYa
-	nK6y7qxUP3rGxgJw73N7iPj3JZb1sy9wHbgRGw7AsoPl5g2CTVvHo5XHsTCGeGXeoojqRQgxK7pyg
-	eu8Fu4zY8qiOTEZNoI0E3UFoUiSVQnZZdVQqPEbV/KpTg5Phhy0UdcmOiVC15gVCR6pgLDn7Nrp+H
-	3R08e7hQ==;
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yyFIEb9z3mB2PIPDau5MQ7dpD90tXnalh+HmIBwM0Nk=; b=G3HYnevi7NJQoI96zPg9b9hp9Q
+	aycnH9f6WuBT8IiEhZoGP805amSaGK5ewOObCbIDWY+xqC9zkYgzJATaIauG8eaJ/jhxVoaphblcD
+	a+vAjLa/hTwyaTv00xQezlyfuwgAZNqJRf+TACbbXUD8oJAoOkyZGXuyvNiFy5weZ2+91w6OPRTu7
+	gFNkiUZ7gZl1FESxD44AGs/esPaTCLnwlgpueadfzU6i40jVLgo4Rml6jl+rDDxArTJqsrk6pf19u
+	bT1AdKMS4gOp9oO/PeiSb/ZqEbkHwDhpC7uMCG/bcyg1oRFAchQeAeK7Gqc4621wewUeG95Ns3YAM
+	WHWLsDkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wp49j-000000083mD-2wBW;
-	Wed, 29 Jul 2026 13:17:07 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wp4OE-000000087C7-29Ob;
+	Wed, 29 Jul 2026 13:32:06 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wp49i-000000083ih-2P4C
-	for linux-mediatek@lists.infradead.org;
-	Wed, 29 Jul 2026 13:17:06 +0000
+	id 1wp4OC-000000087BJ-0Vm9;
+	Wed, 29 Jul 2026 13:32:04 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id AFB05600AB;
-	Wed, 29 Jul 2026 13:17:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A89C61F00A3A;
-	Wed, 29 Jul 2026 13:17:03 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7C97540460;
+	Wed, 29 Jul 2026 13:32:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 928501F000E9;
+	Wed, 29 Jul 2026 13:31:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785331025;
-	bh=DevyNzk/0RjswZblIxZkdQSTJtX1K3UZCjo6NK2E/+s=;
-	h=From:To:Subject:Date;
-	b=SwNmoM8aUcgyFWR0l88ZUxsNAMlOpQPXNs3hk1Yn3Tv4T4x1Gj3ArSDRP7CT30QaC
-	 XSMm0asu2UAK/LWZ84oxdvweio2dvsmS3JFKYUX3Ot89uI3uXyKQg8LIYeZcJ6T45d
-	 c5S3uUX9qSNi6+99kOWaqkCokPj71n3yWypNcOA1gKheYuvrvuy7ew9itiErlIfhcc
-	 wpr/zd+1wEgEuJ6THboY7zdJbXjPSKyO7uygC69XuGsAM3qoV4mc8YONCMtuTrCxK0
-	 tbBSdbcW8rHKjlO6U5kfw5c429KMAj9hFuZyzvq0ZN21F+F0ZkZmbPGFPUM2ArGi9W
-	 +LwRoWhGBiGwg==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: David Airlie <airlied@linux.ie>,
-	Simona Vetter <simona@ffwll.ch>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	Ruoyu Wang <ruoyuw560@gmail.com>,
-	Guangshuo Li <lgs201920130244@gmail.com>,
-	Johan Hovold <johan@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Myeonghun Pak <mhun512@gmail.com>
-Subject: [GIT PULL] mediatek drm fixes - 20260729
-Date: Wed, 29 Jul 2026 13:17:01 +0000
-Message-Id: <20260729131701.4158-1-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.34.1
+	s=k20260515; t=1785331923;
+	bh=yyFIEb9z3mB2PIPDau5MQ7dpD90tXnalh+HmIBwM0Nk=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=QhSnNi23aTMVPnBHd3PPmBrhLSc19heT9KYS0ZHTsC3ONVxgLBei98oe3pPj2dRHq
+	 2WVqe8B2JnPib4yRNsudUB/8/Wpekohz78IYCFU5vCylzyxT7VOsiWrQeBr3XHbovi
+	 xmfJUb/j8ai29LfxDihIR4MoVqA2XcfJc7OCImcuGqbA8/egFgOL13ap6IyeDuS7Sz
+	 cHquFS6CTfKI3TD0LHARonOrS9MT22QkmDkBaf9iUm+L/spe7XGNIguuQZ77w4EP/P
+	 HJf6wFNOEAw+GLcx5oYeEGYxOVt8roPGXi8bNGds3D9iCxAPb7rWaFsYysVWAqrXJL
+	 LkDjMjAvfO6oA==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, 
+ =?utf-8?q?Uwe_Kleine-K=C3=B6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
+Cc: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Charles Keepax <ckeepax@opensource.cirrus.com>, 
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
+ linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-renesas-soc@vger.kernel.org, 
+ Vijendar Mukunda <Vijendar.Mukunda@amd.com>, 
+ Venkata Prasad Potturu <venkataprasad.potturu@amd.com>, 
+ Bard Liao <yung-chuan.liao@linux.intel.com>, 
+ Syed Saba Kareem <Syed.SabaKareem@amd.com>, 
+ Aaron Ma <aaron.ma@canonical.com>, Mark Pearson <mpearson-lenovo@squebb.ca>, 
+ Hasun Park <hasunpark@gmail.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+ Kees Cook <kees@kernel.org>, Cezary Rojewski <cezary.rojewski@intel.com>, 
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, 
+ Mario Limonciello <mario.limonciello@amd.com>, 
+ "Guilherme G. Piccoli" <gpiccoli@igalia.com>, 
+ James Ogletree <jogletre@opensource.cirrus.com>, 
+ Fred Treven <fred.treven@cirrus.com>, Ben Bright <ben.bright@cirrus.com>, 
+ David Rhodes <david.rhodes@cirrus.com>, 
+ Richard Fitzgerald <rf@opensource.cirrus.com>, 
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, 
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>, 
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, 
+ Maciej Strozek <mstrozek@opensource.cirrus.com>, 
+ Mac Chiang <mac.chiang@intel.com>, 
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, 
+ patches@opensource.cirrus.com, Lars-Peter Clausen <lars@metafoo.de>, 
+ =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
+ Srinivas Kandagatla <srini@kernel.org>, 
+ Shengjiu Wang <shengjiu.wang@gmail.com>, Xiubo Li <Xiubo.Lee@gmail.com>, 
+ Fabio Estevam <festevam@gmail.com>, Nicolin Chen <nicoleotsuka@gmail.com>, 
+ Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Sylwester Nawrocki <s.nawrocki@samsung.com>, 
+ =?utf-8?q?Amadeusz_S=C5=82awi=C5=84ski?= <amadeuszx.slawinski@linux.intel.com>, 
+ linux-arm-msm@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, 
+ imx@lists.linux.dev
+In-Reply-To: <cover.1784528081.git.u.kleine-koenig@baylibre.com>
+References: <cover.1784528081.git.u.kleine-koenig@baylibre.com>
+Subject: Re: [PATCH v2 0/6] ASoC: Use named initializers for
+ platform_device_id arrays
+Message-Id: <178519395804.552178.14635881416240705752.b4-ty@b4>
+Date: Tue, 28 Jul 2026 00:12:38 +0100
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.16-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2070; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=U0oMIU8K8WmgeLPAyFV6bjpgnTi8C1w/LC1AdtgPXpw=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqagDJWXeDjd5kHwd16ukfCKKPN0qkrdOoGH0my
+ SlAtyFDD2+JATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCamoAyQAKCRAk1otyXVSH
+ 0CfkB/9FMb5uul97pj4GpuHcasO2XkfONSN4R0UJo6cou6C2FFmI8xWge1nLM+AqKOSumscn/Vn
+ Au2qfeSLhjcaKupnNJ75pHeM0y38rT7suCWzSLpXeQnFml/R5whX5H9mHp2V4htcPgRK1YFNak6
+ wYmqDa9+JWv+I97lnNIDba0EcUOfHzKtw5fpjvstHtZISkKTTX7rMRnUdgwAV3YPUaVH49Y7G/8
+ RKad+Se7bFLSn4vl1oXqboKS4pbWXZ8Vg1YSEOgTHEAAmX5tB49vzlkmGF83RwZrRldfTrzGkdS
+ rGzce5naN625a9ZxpW5A+2jRZ+WX6wGhL19C6+xi8sgQLUGN
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,59 +119,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dave & Sima:
+On Mon, 20 Jul 2026 08:23:44 +0200, Uwe Kleine-König (The Capable Hub) wrote:
+> ASoC: Use named initializers for platform_device_id arrays
+> 
+> Hello,
+> 
+> the objective of this series is still to prepare making struct
+> platform_device_id::driver_data an anonymous union. See
+> https://lore.kernel.org/all/cover.1780048925.git.u.kleine-koenig@baylibre.com/
+> for the details about that.
+> 
+> [...]
 
-This includes:
-1. Check CRTC state before freeing
-2. mtk_hdmi: Fix DDC adapter double put in v2
-3. mtk_hdmi_common: take i2c adapter module reference
-4. mtk_dsi: Enable HS clock only at pre-enable
-5. ovl_adaptor: balance component registrations
+Applied to
 
-Regards,
-Chun-Kuang.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.3
 
-The following changes since commit dc59e4fea9d83f03bad6bddf3fa2e52491777482:
+Thanks!
 
-  Linux 7.2-rc1 (2026-06-28 12:01:31 -0700)
+[1/6] ASoC: codecs: mt6357: Drop unused assignment of platform_device_id driver data
+      https://git.kernel.org/broonie/sound/c/c7a6909de856
+[2/6] ASoC: renesas: fsi: Drop platform probing metadata
+      https://git.kernel.org/broonie/sound/c/0ca8f65516a9
+[3/6] ASoC: amd: acp: Use named initializers for platform_device_id arrays
+      https://git.kernel.org/broonie/sound/c/2b26d06fd3d8
+[4/6] ASoC: amd: acp: Unify code style for platform_device_id array
+      https://git.kernel.org/broonie/sound/c/4bed1074db1e
+[5/6] ASoC: Use named initializers for platform_device_id arrays
+      https://git.kernel.org/broonie/sound/c/232725a0e386
+[6/6] ASOC: Unify code style for platform_device_id arrays
+      https://git.kernel.org/broonie/sound/c/e4dc03df1f71
 
-are available in the Git repository at:
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-fixes-20260729
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-for you to fetch changes up to 533e3469a57996905cdb95f178e7efe38c21aeb2:
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-  drm/mediatek: ovl_adaptor: balance component registrations (2026-07-29 12:52:16 +0000)
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-----------------------------------------------------------------
-Mediatek DRM Fixes - 20260729
+Thanks,
+Mark
 
-1. Check CRTC state before freeing
-2. mtk_hdmi: Fix DDC adapter double put in v2
-3. mtk_hdmi_common: take i2c adapter module reference
-4. mtk_dsi: Enable HS clock only at pre-enable
-5. ovl_adaptor: balance component registrations
-
-----------------------------------------------------------------
-AngeloGioacchino Del Regno (1):
-      drm/mediatek: mtk_dsi: Enable HS clock only at pre-enable
-
-Guangshuo Li (1):
-      drm/mediatek: mtk_hdmi: Fix DDC adapter double put in v2
-
-Johan Hovold (1):
-      drm/mediatek: mtk_hdmi_common: take i2c adapter module reference
-
-Myeonghun Pak (1):
-      drm/mediatek: ovl_adaptor: balance component registrations
-
-Ruoyu Wang (1):
-      drm/mediatek: Check CRTC state before freeing
-
- drivers/gpu/drm/mediatek/mtk_crtc.c             |  6 +++---
- drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c |  7 ++++++-
- drivers/gpu/drm/mediatek/mtk_dsi.c              |  5 +++--
- drivers/gpu/drm/mediatek/mtk_hdmi_common.c      | 11 +++++++++--
- drivers/gpu/drm/mediatek/mtk_hdmi_v2.c          |  8 --------
- 5 files changed, 21 insertions(+), 16 deletions(-)
 
