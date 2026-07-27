@@ -4,97 +4,138 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDD9AC531D0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 07:40:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC11BC5321C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 07:42:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LgqY24t2LnW9I+18Wnpp+SZS+jYp8rky2mYR1kjD0VM=; b=GzY6GeL8+2gbK+Bvu6S7TAhWgp
-	CwdTyR/J7aqOCuF+WxXE6FsohCQrxKK5QkI83dynQ5quf83HLX3VO/BfsWwW+WNCQ6xEFqP9CvYZ4
-	vaq322zcacVnI+Lq0JvFWaSS/FU5NuOBZbluMaLFnm114rdbNqA2h4n3ZLZwYIMqe6ds/MNQlJRCZ
-	M6q1zqE21jmKFllW1x16ibSiVMNAXJZr8cq1Cm7Z6oIIETx05plyZOH9WF8tBMNMgVJ0OK6VWq4KP
-	DewtuW7qob4pZ1ZjCfRCSMP0l/wvCVfyi8/Xn696NX6BJtSGtVa3JBX46DhbmGHyILJPOqG8e7zrs
-	QUHLYLxw==;
+	bh=3hpfM6C96tHD8pb0WjWpOz4fMIyvGJA9mOULxz9oP5o=; b=OqupUVq/141e/va1XolLc3V+kg
+	dfni1ew6wvllufcX1OoUJ31GQM6asXt57bcrr1FE7Qo3qw9/Qf1DRdueMXOUq3TSJYOSJe6A+gH++
+	ccJ/9KZjh/ybzIDIdRsmqTuJDtVx2we+dVSUYcfyNmUxBl5Lf9G+KHfpyUttEXdhk5jhedAkWbCk4
+	WSrhl5JDoU4XOtmi6LHYOH9Qvu4WWhQq9R1h4VjLlqzHyP+sanz0MyFQHrymYGNIaBnY/ziZp9xgx
+	I910X8mKg64mhhrmVFN7kVR6SExQtmWzQJ/v9/exyNlQJYkeC8YmCrGQvn89u9hUYaRP6/WhOY7BO
+	3s2de+Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woFx8-000000029DK-3A3n;
-	Mon, 27 Jul 2026 07:40:46 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1woFzC-000000029qP-49hx;
+	Mon, 27 Jul 2026 07:42:54 +0000
+Received: from mail-northeuropeazon11021117.outbound.protection.outlook.com ([52.101.65.117] helo=DU2PR03CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woFwy-0000000298C-2VSz
+	id 1woFzB-000000029nR-15AL
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Jul 2026 07:40:39 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-47f9ab7ee38so1036772f8f.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 00:40:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1785138035; x=1785742835; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=LgqY24t2LnW9I+18Wnpp+SZS+jYp8rky2mYR1kjD0VM=;
-        b=f47f5ugKXaP8Ho0t0SF/dE1srlXV6E9d9FE87AhkArMqi9i36xuioYipv9LvskNvp1
-         6Sp0cUxJRO9flitVVBUuzITcZ62BZGWP1kvFCae8tVsYUu4mIrc66aVZf4HEgvDbZUTM
-         r8N/cWtumzGp0+3SGzjVu2/x2PtjsR/UgbbN7SLZylaUoajXepzj09Sxl5aozrZLevMh
-         ktWDy9iXshbidjPrjTE3VwursJHTIgamTlDJq5YlVqTHeEiRyPUdPijmIQ5otgWKxy5L
-         9r7cdQgC/3D13s/XiXx8hbdyTW5P57QSnUMj+KEEFvL5NMh7ECdqYzYMXCQb+cu1Juic
-         unqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785138035; x=1785742835;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=LgqY24t2LnW9I+18Wnpp+SZS+jYp8rky2mYR1kjD0VM=;
-        b=PPLqaKskM/4TRtvdipfyBptq0A+e/oyoqi52Yq9ti74Q4HySI0oGsVFN1PsFM2FCw7
-         C2/K9Vlmr30MK3jaPQeOUcRLp6T8It4ZNEFdtKlW3dH6M8/MO07bV017mdn12HDKbswj
-         +UMvF8YC+klSQaxxgHC+GI4RAuEdRB+CaDtV6VQFGoUC1JsjrGwOuLxVxzzEsrprSDeV
-         +v/fhtIgTo8T6TKLQYhLdGeZRVO6Kh74qJJxlM5F/RFcTtcEqQ5ExOerkcftw/jIMrIR
-         /A4h8ZcFzP0moILwFyVeCkQ+a3qjwJY+P+b5fxwqqIT09G5tpxXWOKEGoA3xv67XECoW
-         obAQ==
-X-Forwarded-Encrypted: i=1; AHgh+RrNqboF/N6MbY/LUb+XQEIQOcJJZJ+FeDETtVWcTk7V1/qTdms8NMF6qpEafuOBWsE6PxxSBTOs6b9ElR40iw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxB+cYwEFmnV0m0vQ5wzWOmIs/QV7xQ+I5FCGeWIybMB7VZMgpE
-	ExF4MdFFB4DrDzMZzLi6gzboJqtMVR+1hvyHbozi7wzP8Jr6n6RC2HZOJ6ernY0taAU=
-X-Gm-Gg: AR+sD11oyAFXCKU/rHDTeoOStD62Qjp2MXY+uvnpaZqyFjid67Ov6mNnyIBhbqA0Qno
-	IvglmnzAfK7Rwjx3wIx0K/lZkLqxN6eLSRMnuHmnce6lR/+tq4RJJh++PtfECDH79s10mFIUWL3
-	CRQ1lube7N06ZG/Tghp6GbXpOl1kJk81pp2mGFTl6qPqcA8fqdBPfjrQc16DF7B9a215HSr/GCv
-	htRDDWBFQG6XRpzw2mreZPHyyBids3eaJQgweznPQTQ2qgtBP3/oUaDx9F3HQ63b/duZmfuk5Kh
-	TRsJpLLy8vaP9EOam4E9VWcRdQpBG3rfbHr36N7f2Jcp0nlzVRvUOD25Z3jgJkGANnOUHRxJgEE
-	pURkb40mtMs9fItg+LfVTqptk2LwmNPtD/FpYCgRFdOht51sdxHr5n32boVrLf1KvnB53G5O07h
-	eECKPEHTn4DOxyrxf4/JywNVGFniPsbBZCipa7h4UYPevALKb2AfuUd79LpD9VCFXyR02gjQN7Y
-	oghIhbJTrap1Lg=
-X-Received: by 2002:a05:6000:188e:b0:47f:7759:89df with SMTP id ffacd0b85a97d-47f9fc9d2d3mr9130842f8f.3.1785138034634;
-        Mon, 27 Jul 2026 00:40:34 -0700 (PDT)
-Received: from macbook.homenet.telecomitalia.it (host-87-0-90-136.retail.telecomitalia.it. [87.0.90.136])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47f85bb5127sm43677682f8f.10.2026.07.27.00.40.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Jul 2026 00:40:34 -0700 (PDT)
-From: Carlo Caione <ccaione@baylibre.com>
-Date: Mon, 27 Jul 2026 09:38:08 +0200
-Subject: [PATCH v2 1/2] arm64: dts: mediatek: alias all enabled serial
- ports
+	Mon, 27 Jul 2026 07:42:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=r39Zezlqgy5r47HTpuyVz2Bu6N+V63DWj2VUY6Sm+svBxKM7TfY4V8cq/KjKYV0CJpXxkCdW5NKdLtaqdMTaivTOEau2JnKIdcfinqvGwrtsw1WjKpaJzoPnwhMiRoLufz4dNhAEbXt8cCk8tA994L86l6fiNiPV0DF7toF3E1PoEWSSGqV6Dd4cotdpTy0JH7LXJd2Bn5b9aQjkbhT5fqX+2QwXycAadqsIFRcg73ISTeFn2wfEQ+LeCJYesXsYzq3OROS67aAWNQ5LDHqAbfvFYxd8dbai6iuJeiTsF7BhFPaNw+QHLcdal8PJptQvXjyUp3kxZ6tHbAsz4MzqjQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=3hpfM6C96tHD8pb0WjWpOz4fMIyvGJA9mOULxz9oP5o=;
+ b=MNlahmcN/J8QVXOvOHnlauPT5UfMmX1DjLkq3XplFutqeeVRv5n2xIJBG1WFhxD1vvwrIl/pkSFtgCfMvVqMBxyQdwOH+sJoY5R6nlBh9EU8NgyD/OoyonQAISs1PHGrkmwG+ygJW+00/UTLvbdoNXexCAE7Uu6ptDGJIp4w+1g8jrNneiGzzHUATHTwMA3C2oJS9NSYWCBVjynHfl2aW+twNQp9UmuBqD3p33WrZW8HYUHp0JNyZ2OfbBp6jBJY9Iadd4idCOVpkYes+DClpENtqr/a8rlIufOUUKbGXa5EIwX9SjIRS6d/nt7y+q82UKBM3EN7nCDTsSKVgwkdSw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
+ dkim=pass header.d=iopsys.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3hpfM6C96tHD8pb0WjWpOz4fMIyvGJA9mOULxz9oP5o=;
+ b=AQLFjD2S/Ju8ZAEBxDvm05T41EfTaw6823SGBMim8gB+oH7E1wchyxeH9FNz6DLQNKzCwwKfnPgzjg9ONs1TkunKhkEx1r2pBEB1EpJ+unhHHrSByH4SWLruJ6i6fojEdVduWLryp2GrfXTW4T8SNRU9U/PYXZBaOOA27u6u6A2QLhIYAWYiSPz1GWV5fbF+e4lbTP0qZi3o+lRMT07+DQ73L7L2GnDkaMNAkM2VguMHWjZsOdrK7s0LIOVj5zrXzcXwf0S4ISbcP+y0cim0lDt63L/PGRnRW9ooJIMO9FV5MmQDangB6qayZN5apsvbTwuF7cO5b7cX13a9xK6GfA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=iopsys.eu;
+Received: from DU2PR08MB10037.eurprd08.prod.outlook.com (2603:10a6:10:49a::20)
+ by PR3PR08MB5868.eurprd08.prod.outlook.com (2603:10a6:102:81::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.245.13; Mon, 27 Jul
+ 2026 07:42:45 +0000
+Received: from DU2PR08MB10037.eurprd08.prod.outlook.com
+ ([fe80::3c7:6d2e:8afe:e4dc]) by DU2PR08MB10037.eurprd08.prod.outlook.com
+ ([fe80::3c7:6d2e:8afe:e4dc%5]) with mapi id 15.21.0245.012; Mon, 27 Jul 2026
+ 07:42:45 +0000
+From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+To: Linus Walleij <linusw@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Bartosz Golaszewski <brgl@kernel.org>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Benjamin Larsson <benjamin.larsson@genexis.eu>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Markus Gothe <markus.gothe@genexis.eu>,
+	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
+Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Subject: [PATCH v7 01/34] dt-bindings: pinctrl: airoha: en7581: fix misprint in i2s function name
+Date: Mon, 27 Jul 2026 10:42:01 +0300
+Message-ID: <20260727074234.3761170-2-mikhail.kshevetskiy@iopsys.eu>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260727074234.3761170-1-mikhail.kshevetskiy@iopsys.eu>
+References: <20260727074234.3761170-1-mikhail.kshevetskiy@iopsys.eu>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: FR5P281CA0051.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:f0::20) To DU2PR08MB10037.eurprd08.prod.outlook.com
+ (2603:10a6:10:49a::20)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260727-ccaione-genio-serial-aliases-v2-1-0f2ae41a8e89@baylibre.com>
-References: <20260727-ccaione-genio-serial-aliases-v2-0-0f2ae41a8e89@baylibre.com>
-In-Reply-To: <20260727-ccaione-genio-serial-aliases-v2-0-0f2ae41a8e89@baylibre.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Jiri Slaby <jirislaby@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-serial@vger.kernel.org, dlechner@baylibre.com, jstephan@baylibre.com, 
- Carlo Caione <ccaione@baylibre.com>
-X-Mailer: b4 0.15.2
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU2PR08MB10037:EE_|PR3PR08MB5868:EE_
+X-MS-Office365-Filtering-Correlation-Id: 69f23587-11ea-4da1-979b-08deebb2a5f7
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|23010399003|376014|7416014|52116014|11063799006|56012099006|10067099003|18002099003|22082099003|38350700014|921020;
+X-Microsoft-Antispam-Message-Info: kXzpwyI2zb2DxEgqd6+5f5L/3qUEpMA8jb0dFNjdsXepoL7vPixWYlEhl7J80aRV5cHfHhG93pIHQG4FMnoQK+Du0dymQAmVGWPB6e1y+FeeAnzqKRlSWotUn7nWS2jNccAcW+fYURUClU+s2nwweF9vRWLTSHxKEaFnsafgCg98q3CkUo6e7HdbrYIjnMF0dkywaDkJXauHgkFX98xsKUVgpplLZDD72a8HGe6WNnXJhiCiWIh5uH5puzMTfy1Y+ZeRUaoxzcl7JIKFjTGuQwaVJ+FKMhu5vDxNCaLKn3g5D1zK8P+X1lW3dUM+v9ClmIBxbPuplulYx2D0OF7LLNvuvkGJVOK4Mc85CvXXSt3aN5UtplRV1Z0V1cdUMSkFY9TKB4qF5TSqFCtZC+VmbEEt8u0AwXh26siTGPMSHQQlFh3rzyT/iQim1/9a7483wh5jga7Ei+6JX91gJOxtoC+97BPe3XFlo3FwCTDB2Jhtai9iFyokuhLrxqrY9rbi4M6pTzMw5m3tFBSyWb/eUj++k/zSHfOq56TsO1Zr0NQXdtl98vbx1TBo22pFq+XP3YF0uaefU5JH1ZtAUhn4qTr2MVgePYj24wjXcQCnO77YMxB+GX6bRw6mSJUQlOtXq6IkQlbT2NWVuGNZRXnoBl0UT33ZaqeFBFD0cc+qGLXKA6tK4Tx1TBhWt+85eNLrMi1gePwYJo283aGwIvBT1yOEKu+rTHjP1mCsJnTF5MtA4fgCCo/8XB/bZw/kzfO8
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR08MB10037.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(23010399003)(376014)(7416014)(52116014)(11063799006)(56012099006)(10067099003)(18002099003)(22082099003)(38350700014)(921020);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?7if0DQtnq5VhRcOyW+LPukkoXYW1fgWHaL6wZYGRcgc0wDskeH+h/pHSxMlg?=
+ =?us-ascii?Q?+2JeyQPptte2sWToiDaYPwr1LAXUNbcm/tdN6GHsv2XFNoSsNDmbMqlWGdFk?=
+ =?us-ascii?Q?LhhzOCUQT9i7GWasLE64TosKJAYRq5IHPxgmPm/3tzgrQif4Y0iqpgOxFz/t?=
+ =?us-ascii?Q?M9Pw9xPoRk4C59okbqmGD6euVjYL2lqNMI8813NwjW9JuiMivndm4/rMx2IU?=
+ =?us-ascii?Q?qffMu39OyIVfnkqaFThAAnDQIZRwo59dNde2V0ONM0J0/tL2yCDpO0hkkEBP?=
+ =?us-ascii?Q?C9Pcwm/oSHlVWM4y9VQP7PPzAxsIR+8mFrFGCI4eoKOCiYVSgcPylzm4pYJ8?=
+ =?us-ascii?Q?gkdTJIeKkx3g9sh5ks3UON89uyOTLdsKCLyJwlN/0G/g4+YEYbXVWTqRj8jh?=
+ =?us-ascii?Q?O2olwmpzdPonEC6Jp9l32YNGPVDppecsPn6cVKrBGX2DRj4iBXoUP7NtAbrN?=
+ =?us-ascii?Q?6+dNuT7WYgkSr6x8Go/psN9xSH/Hx43kPicnBhrISHsc82Sw/Gw9qq0cvH1O?=
+ =?us-ascii?Q?NNhtMZ5pw2k1J/nr6Y8492WPoaR5OAp8selIRGl4bdjj7C9JeuPpNRLlzQi4?=
+ =?us-ascii?Q?GnqwpFel7JIHNfMOo7Lg0Ta9dpNyt3O4CJPsd3plQ7HNDu34yQai/zRc4x1/?=
+ =?us-ascii?Q?gVqEiEXWIXAfFB4Im4iHp7P7q25SUDwBXZKz6nrd7k5rVsyuIoCXwShwdhIM?=
+ =?us-ascii?Q?lAE/OuoJ9faZErArBOZ+E0c0SRJ4pSYFIeVqBxvjpmG96iE7S/vQQvxbKkxa?=
+ =?us-ascii?Q?h86/wWeF+S6iavVIp4+wEVjyjIz5iKaTqhKLi1MAs3bdl7J70DCUxAzBO68t?=
+ =?us-ascii?Q?1LrvlDeQGldlO4Pb11nICrfGrLihkNy80odO5o8nz8ZVBnbI2BE1eRxBptEW?=
+ =?us-ascii?Q?TedBtJd38AGzaxGswZHvfGYPklRxZqXPA9v05N7fioyx/DIG9DGYKMC6rC9n?=
+ =?us-ascii?Q?8ysNUViUn2iVtKymnRheVP8zMrFBncsXw1MZA+qjbpAUct6fCOKYDpMJbHN3?=
+ =?us-ascii?Q?BHaFer6nYPRoJYF4tnltc/Slk34lKxo6shCF5JFWWrBafZaty8iOjGtq0qBv?=
+ =?us-ascii?Q?qvVJZKHnXOB8bCkfdp9rVznrcL+49YS+KnhpkW/nq3aKQTaET65bCgfeVKwq?=
+ =?us-ascii?Q?LEhbJZH/P8h7c6CLQPCUxMKYcOPzFifDbH5RZ6yYU+RZ0kvsS2Vw4jIVHhTk?=
+ =?us-ascii?Q?yGceNr6f0RvusjGljF82OeYLWt1dnT79eOQ4ftjGfg3wBfBNqSa7bKxJvPEP?=
+ =?us-ascii?Q?wUFGHqyVcTnn8/OhHfJ3I4IL2U8Tbs7Bm5qATx/rgxiiE7hKt5CwADrooiIb?=
+ =?us-ascii?Q?EtJypvj/U3tHZp/ZX4LIU7eo6YpqVCoIC3SvdmDDOiQLZW7rt5Yq1djlTcbi?=
+ =?us-ascii?Q?SddxA58oHgi5x290Hy372bzRJzTPIGPUfIKtdF+qfqEHXqxetW9F3ZjtGM4K?=
+ =?us-ascii?Q?Dbz+p+K/DxF+uHNThJJ955Zt6dbPq5jCa5JeH/wE0QFIo2wf8kIj4d5QVOP0?=
+ =?us-ascii?Q?XQBRlMs40UMa39UrV89Wy+C+XHUWmfnZup11n58ZXklMWP3k6gYJPvkO2kCg?=
+ =?us-ascii?Q?IP5eLzoFFxCDBH9AV1vuNsL/mtJ/SkkOPs7oFTzYhMI/Jn73q8WxqGQTq1Bj?=
+ =?us-ascii?Q?SgVSfpTJSKCvQ38S6Nqcu3BRFqFnsTdN02KPhsMMZ1RWFpWRhxoH0ryxQemL?=
+ =?us-ascii?Q?R+o9SnkbKvYbbVoAETckr3DHM7xYeeZPeXIdUGo6w+X3LyrOEdS/BU4x4/at?=
+ =?us-ascii?Q?PLPztlxshipLFmZ7Nn031gF0Nla7zl8=3D?=
+X-OriginatorOrg: iopsys.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 69f23587-11ea-4da1-979b-08deebb2a5f7
+X-MS-Exchange-CrossTenant-AuthSource: DU2PR08MB10037.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jul 2026 07:42:45.5911
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: JCu/+5Dsd3o83HXUbLxusVGVviHjWGBQ7OihVSRkhqYKfm9pNKUTX6j2kO/Gn0zMXGaSikZRNF0TYUE9CNmx0VrXd7E/3A6PcT2hz+1AoTo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PR3PR08MB5868
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_004036_735617_6D494598 
-X-CRM114-Status: GOOD (  12.51  )
+X-CRM114-CacheID: sfid-20260727_004253_298932_0D85C897 
+X-CRM114-Status: UNSURE (   9.12  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,183 +150,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On most MediaTek boards only serial0 is aliased, so the remaining
-enabled uarts get first-free ttyS line numbers from the 8250 core in
-probe order. When the console uart defers on its clocks another uart can
-win line 0: console=ttyS0 then ends up on the wrong port and the boot
-looks like a hang on the serial console, depending on probe order.
+i2s pin-function is missed, instead i2c pin-function defined twice. The
+second of them operates with i2s pin-group.
 
-Signed-off-by: Carlo Caione <ccaione@baylibre.com>
+The patch fixes the misprint. It also match actual pinctrl driver.
+
+Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
 ---
- arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts    | 1 +
- arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts              | 1 +
- arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts  | 2 ++
- arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts              | 2 ++
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi            | 1 +
- arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts | 4 ++++
- arch/arm64/boot/dts/mediatek/mt8195-demo.dts              | 1 +
- arch/arm64/boot/dts/mediatek/mt8365-evk.dts               | 2 ++
- arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi     | 2 ++
- arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-sbc.dtsi  | 2 ++
- arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi   | 2 ++
- arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi     | 1 +
- 12 files changed, 21 insertions(+)
+ .../devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml      | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-index 0e086dd487d9..63659e240b1d 100644
---- a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-@@ -20,6 +20,7 @@ aliases {
- 		mmc2 = &mmc2;
- 		serial0 = &uart0;
- 		serial1 = &uart1;
-+		serial2 = &uart2;
- 	};
- 
- 	backlight_lcd0: backlight {
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-index 8c3e2e2578bc..7bccad118d24 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-@@ -20,6 +20,7 @@ / {
- 
- 	aliases {
- 		serial0 = &uart0;
-+		serial2 = &uart2;
- 	};
- 
- 	chosen {
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-index 19f538d160ab..637e5567c1e0 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-@@ -21,6 +21,8 @@ / {
- 
- 	aliases {
- 		serial0 = &uart0;
-+		serial1 = &uart1;
-+		serial2 = &uart2;
- 		ethernet0 = &gmac0;
- 		ethernet1 = &gmac1;
- 	};
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-index 5d8e3d3f6c20..9dfd882ca484 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-@@ -16,6 +16,8 @@ / {
- 
- 	aliases {
- 		serial0 = &uart0;
-+		serial1 = &uart1;
-+		serial2 = &uart2;
- 	};
- 
- 	chosen {
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index a8e257b21a88..ae957deac8df 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -13,6 +13,7 @@
- / {
- 	aliases {
- 		serial0 = &uart0;
-+		serial1 = &uart1;
- 		mmc0 = &mmc0;
- 		mmc1 = &mmc1;
- 	};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
-index ac2673e56fb8..233711cb4556 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts
-@@ -9,6 +9,10 @@ / {
- 	model = "Google Hayato rev1";
- 	chassis-type = "convertible";
- 	compatible = "google,hayato-rev1", "google,hayato", "mediatek,mt8192";
-+
-+	aliases {
-+		serial1 = &uart1;
-+	};
- };
- 
- &keyboard_controller {
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-index 1f59b5786b81..13132a35080f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-demo.dts
-@@ -19,6 +19,7 @@ / {
- 
- 	aliases {
- 		serial0 = &uart0;
-+		serial1 = &uart1;
- 	};
- 
- 	chosen {
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-index a30ee523b0b5..c535de34dfac 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-@@ -24,6 +24,8 @@ aliases {
- 		mmc0 = &mmc0;
- 		mmc1 = &mmc1;
- 		serial0 = &uart0;
-+		serial1 = &uart1;
-+		serial2 = &uart2;
- 	};
- 
- 	chosen {
-diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-index b0c97930a0e6..26e24431d467 100644
---- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-@@ -33,6 +33,8 @@ aliases {
- 		mmc0 = &mmc0;
- 		mmc1 = &mmc1;
- 		serial0 = &uart0;
-+		serial1 = &uart1;
-+		serial2 = &uart2;
- 	};
- 
- 	backlight_lcm1: backlight-lcm1 {
-diff --git a/arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-sbc.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-sbc.dtsi
-index 888248a75e93..51f12328a1d6 100644
---- a/arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-sbc.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-sbc.dtsi
-@@ -17,6 +17,8 @@ aliases {
- 		i2c5 = &i2c5;
- 		i2c6 = &i2c6;
- 		serial0 = &uart0;
-+		serial1 = &uart1;
-+		serial2 = &uart2;
- 	};
- 
- 	chosen {
-diff --git a/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi
-index 9f5a0ec563e8..668985428fc2 100644
---- a/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi
-@@ -31,6 +31,8 @@ aliases {
- 		rtc0 = &rv3028;
- 		rtc1 = &mt6359rtc;
- 		serial0 = &uart0;
-+		serial1 = &uart1;
-+		serial2 = &uart2;
- 	};
- 
- 	backlight_lcd0: backlight-lcd0 {
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
-index edc5539bebde..86e487fb1832 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
-@@ -22,6 +22,7 @@ aliases {
- 		mmc0 = &mmc0;
- 		mmc1 = &mmc1;
- 		serial0 = &uart0;
-+		serial1 = &uart1;
- 	};
- 
- 	chosen {
-
+diff --git a/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
+index 21fd4f1ba78b0..0c5a7eb6d563e 100644
+--- a/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
+@@ -166,7 +166,7 @@ patternProperties:
+           - if:
+               properties:
+                 function:
+-                  const: i2c
++                  const: i2s
+             then:
+               properties:
+                 groups:
 -- 
-2.55.0
+2.53.0
 
 
