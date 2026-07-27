@@ -4,95 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0E3FC53219
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 20:40:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0AD1C531D0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 20:50:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lvRh7gEOxJwccvH3DNdGEY4DK+vaLBlyojbNRUKtWDs=; b=OnaC8r8iwwYvBGbVMDVjLtdo/G
-	k4QEbrI3vGMu+IDjWlW9e/eZwAAq+IXauVRRQGMtxjUZQesAnDViOSzPElG2Q6LfcsQMZoQkIBJ0o
-	SWMT+3nptf36+QkS2DfTDJVzISUBFXfZxiC/t5VUQ/lG5EjMvtqy+aLlOhy/hSz7OcLfleYL8yfWr
-	8OVU5iqdIUr5vsGlnouJ2woTcbyQPXWlHeFZ2HIX8FLYh24it9d2uOJnL0gKQVyJmBRe1fTCRjdbT
-	19T1fOSvoBpcKuiDRKaBh/hvOTVA2yUondSkKUJGl+/JE9PwNEWlzVrSA7RzSw6zE5YuUvC2TMwO/
-	kw7guX8A==;
+	bh=Bek5K8MpSEcPq0n8AmlhIm0UXmOy9Y9eeNOvMKm/NIA=; b=in0bS9ChjML781GGi5eEbLA6h5
+	i4Y3sLDfkGpJr1rueqwEQKa/bjxEy1YuWIrhBP4ta7AktUxeCaYw4deTOG+NcmkqoahBF7dmMmg29
+	Ndlm5u77gzIOJzrgbXX5qFx4zYgu3O7kF8s2qJMiGleTYY4e02zh/GleQvWp28ot7ctSeB5PKwdLU
+	4W7kwTisDiTcAw/OM2J9TU9xS2Wwfd6OjgNnyZriA1xmLvHY6K1CvA+QmrTsFD21KIUKLNaq22G+w
+	kgLvinydnAv8LDndRKiQ8WZofpYltfBH6ia6rdE2tL8BfnTdDwOtebw5RcPlm0odCdvCOBzpZJToB
+	dZq7Mopg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woS7l-00000003riA-07Ag;
-	Mon, 27 Jul 2026 20:40:33 +0000
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+	id 1woSHc-00000003tt0-2tKV;
+	Mon, 27 Jul 2026 20:50:44 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woS7h-00000003rfP-3djK
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Jul 2026 20:40:31 +0000
-Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-84a2c90e383so262093b3a.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 13:40:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785184829; x=1785789629; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=lvRh7gEOxJwccvH3DNdGEY4DK+vaLBlyojbNRUKtWDs=;
-        b=g7ZLMZCEwXvu7iBBGPGZMVa1uhzfePCUx9XeMPlUBp0gkzfII2+QzZiS6qKyAlKRp5
-         cJMYVInUP/gLz7NLuEMaLgQgmCzZk5c8WnmlB/P+AX7sUKjsl9El85cSAhNsraUAvyFJ
-         Ab6J0A5G6OOV0x4axLJ5wHWt1ExGghCdrky2aezMVgMu6m1DxEGRfvca48QpyUCrvkrY
-         xa4pnp0rITFodv82lBWwJuttz7mPVJnjXvuQp4hPj4GGhycqkVjNaRMgrF/qQC6pazod
-         xjHFrr56PruwiXLZ9jN6Q0dt6XZ7j9Mk2zXxg7HyJGqvYAnLDXIyFJxihEtLLTUxThvH
-         7+kA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785184829; x=1785789629;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=lvRh7gEOxJwccvH3DNdGEY4DK+vaLBlyojbNRUKtWDs=;
-        b=QNmf7vxW3A9FPBlLe2BeRw8JSkPYB3KO+fwq5FDHk1AV+XN94SxNAUueihFagkfQ6K
-         2V3NBV41OypCQcljHsny/Ty66RLmFKntMSkWxtXAfpcvyPH1p1jf1qmaENVGXBOPygT0
-         sBtWhwS+KNoAkppXH9VwA/XHrDskQfoVLyyiA2arY0pMwviF6Wv2wCjjXe7qKNGOUwp+
-         /tsIyVuH9NMixfmu37975CoOCwyj4UF8XCBRDQl9Ymke/sQejpMiKs9a9/fcNef/o6yI
-         1A0gMzgWYMBR+01hDnLFWb+3cIfAk6z8TjoJn2JTP/5sk6738yXOfHfh9biGQ0aqsYag
-         iEEA==
-X-Forwarded-Encrypted: i=1; AHgh+RoS174Z4pUaVPxWwJle/S6fU71jGcadEmNHC46Hc4BuuzPi0Q6zbwzkojTyQrbG6MM9mdAAb68Wzj/vbe5/0g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxRaaAQRWoJ787pRyz6u6B6rai2uG2ssMd0yqFR8pgvMjIG1v31
-	vUSJYBNyEHUvkQCijXKF+ZdCenH1/vv43964hMTn2ULjtSGlf19QPI0P
-X-Gm-Gg: AR+sD13AHUu6PSqLHIN26M4dOVaD7YFnfaMOf1G5I+4BwZ3Sh6f8T6O0yBVBQI/z4Xn
-	P+wPTfawZqf0xLWeYlnE3Aljx46RwIAKJPjOXvj/0JB1vlwHrqMVOl/UXdZj2BEs45qMFHxqKCr
-	IBDGxWsAl1RXRVe0AG1RIALwZZGAERsD4RENt7cnXM9SBpv+ctadppPrgPgdwCG5popcl4urAfy
-	HSU8KhPQQ5WwFKvMmPGCy0QyP8NV6Ht5IJiy8dG+ViGxG0fFauQ3s9SSi+VrCURjc7DeYVx51bf
-	uG1o6aqcLVqkqmVzMMamveCbjPt7G3LynolH/6X4Dr8GzJXwQ4iFkaFpus/hoTdp4dB9+YXb6ai
-	Bb41Le+6LeelwmLqQuKD4cgsfZyfRwe4aJJyXERAdAjLQLlGpGRg0PjJaNgErWoayisgWujLkcY
-	FL7JPX
-X-Received: by 2002:a05:6a00:22ca:b0:84a:29af:a0eb with SMTP id d2e1a72fcca58-84e8fc09bafmr184669b3a.9.1785184829248;
-        Mon, 27 Jul 2026 13:40:29 -0700 (PDT)
-Received: from cryptic.lan ([2001:569:7fab:e200:3789:64f9:8855:c0af])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84e533d1351sm3583338b3a.39.2026.07.27.13.40.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Jul 2026 13:40:28 -0700 (PDT)
-From: Allen Pais <allen.lkml@gmail.com>
-To: Vinod Koul <vkoul@kernel.org>,
-	Frank Li <Frank.Li@kernel.org>
-Cc: Allen Pais <allen.lkml@gmail.com>,
-	dmaengine@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Arnd Bergmann <arnd@arndb.de>,
-	Kees Cook <kees@kernel.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 45/64] dmaengine: mtk-uart-apdma: kill vchan BH on teardown
-Date: Mon, 27 Jul 2026 13:39:07 -0700
-Message-ID: <dd94300feb7feaa826b8fb75e1f22c82a6f54bf4.1785183549.git.allen.lkml@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <cover.1785183549.git.allen.lkml@gmail.com>
-References: <20260108080332.2341725-1-allen.lkml@gmail.com> <cover.1785183549.git.allen.lkml@gmail.com>
+	id 1woSHb-00000003tsm-0zcU;
+	Mon, 27 Jul 2026 20:50:43 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id A7FCA42D7E;
+	Mon, 27 Jul 2026 20:50:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A76D1F000E9;
+	Mon, 27 Jul 2026 20:50:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1785185442;
+	bh=Bek5K8MpSEcPq0n8AmlhIm0UXmOy9Y9eeNOvMKm/NIA=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=ShaxVeCIX/P0dn6AI9xK7iIKca/wqChDH+NUl4TooKyBYyhFAmyHGDVMZ0DIWSNOi
+	 yZLbnn97y/OhzuLOtuKTnRSBwT7VYrfGRydZqEo/CM2t/0w2JlB9OZ7x3mJZWZHH5r
+	 q9sMBLRsRL+p6JbMDcnbRbFLOK2ROd9OWoJMpRKvY2vL2FrW+6SAfkKbez9GTPhB/b
+	 Vi7GYoaQmMR2xzWgGQXrhfeqg2hXP0jS1NwBfJvwwt+muYJHXRrTByagPL56Gw2Zfk
+	 ZLIwol5O9RqrXvP/pMnN5aks/sqi3G52UaLPzhOEmEYveikpjHpLsz6ndYeMD2cfX4
+	 c6qWmQsFXQn2w==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 19866380664D;
+	Mon, 27 Jul 2026 20:50:09 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_134030_614521_05B42F0A 
-X-CRM114-Status: GOOD (  10.83  )
+Subject: Re: [PATCH 0/3] Bluetooth: fix short read errors in usb_control_msg()
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <178518540763.1412337.1240855663216361705.git-patchwork-notify@kernel.org>
+Date: Mon, 27 Jul 2026 20:50:07 +0000
+References: <20260727-bt-ctrl-v1-0-2e8650e9df01@linuxfoundation.org>
+In-Reply-To: <20260727-bt-ctrl-v1-0-2e8650e9df01@linuxfoundation.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: marcel@holtmann.org, luiz.dentz@gmail.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, linux-bluetooth@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, stable@kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,36 +72,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use dma_chan_kill_bh() for virt-dma cleanup.
+Hello:
 
-Signed-off-by: Allen Pais <allen.lkml@gmail.com>
----
- drivers/dma/mediatek/mtk-uart-apdma.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+This series was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-diff --git a/drivers/dma/mediatek/mtk-uart-apdma.c b/drivers/dma/mediatek/mtk-uart-apdma.c
-index c269d84d7bd2..4d89927922f5 100644
---- a/drivers/dma/mediatek/mtk-uart-apdma.c
-+++ b/drivers/dma/mediatek/mtk-uart-apdma.c
-@@ -312,7 +312,7 @@ static void mtk_uart_apdma_free_chan_resources(struct dma_chan *chan)
- 
- 	free_irq(c->irq, chan);
- 
--	tasklet_kill(&c->vc.task);
-+	dma_chan_kill_bh(&c->vc.chan);
- 
- 	vchan_free_chan_resources(&c->vc);
- 
-@@ -463,7 +463,7 @@ static void mtk_uart_apdma_free(struct mtk_uart_apdmadev *mtkd)
- 			struct mtk_chan, vc.chan.device_node);
- 
- 		list_del(&c->vc.chan.device_node);
--		tasklet_kill(&c->vc.task);
-+		dma_chan_kill_bh(&c->vc.chan);
- 	}
- }
- 
+On Mon, 27 Jul 2026 17:57:31 +0200 you wrote:
+> There are two drivers in the bluetooth stack that suffer from possible
+> "short reads" when sending USB control messages.  Fix that error up in
+> them which allows the error handling to become even simpler.
+> 
+> Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> ---
+> Greg Kroah-Hartman (3):
+>       Bluetooth: btmtk: Fix short read errors in btmtk_usb_uhw_reg_read()
+>       Bluetooth: btmtk: Fix short read errors in btmtk_usb_reg_read()
+>       Bluetooth: btusb: Fix short read errors in btusb_qca_send_vendor_req()
+> 
+> [...]
+
+Here is the summary with links:
+  - [1/3] Bluetooth: btmtk: Fix short read errors in btmtk_usb_uhw_reg_read()
+    https://git.kernel.org/bluetooth/bluetooth-next/c/3501d7754c85
+  - [2/3] Bluetooth: btmtk: Fix short read errors in btmtk_usb_reg_read()
+    https://git.kernel.org/bluetooth/bluetooth-next/c/abcb881d99ad
+  - [3/3] Bluetooth: btusb: Fix short read errors in btusb_qca_send_vendor_req()
+    (no matching commit)
+
+You are awesome, thank you!
 -- 
-2.43.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
