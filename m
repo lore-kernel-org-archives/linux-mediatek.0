@@ -4,101 +4,153 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 741DCC531D0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 16:35:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DF22C531D0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 16:48:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kO0CRx78Juq8i70OvsJ65ekpU28ajV9WCXKuSv7yYuA=; b=ZKEjZHXg1O86niYa0hull+IC/g
-	5ahxwsM80IJFUAZCmkxH0ItewVNuTWagbOmMTsg3DZrDKrpHS1dRTO8lfH6aNVeYvQxlG38Uk5va0
-	qKadb9opJg9qZ69FzzFqSkWT5RMCITQ4hRhzA0LtBRDHJr4Vv7TfHhpNTff3Zc2BvzaUhmVWXEevG
-	BmlqThYlYdegVNVxStQTCZHe4LYifVqKTTsPk9jwZzPmO5EFQBxj2VOKUrTo/y1RO13yLCMHYJzZo
-	DB9qI0Ul7HdfPbxNQN7iwcm0nF/MC3bx2/AH8snn+fyKyvN54vzJvaG7PcVeA5lfvgc/TG+4th1gQ
-	aHW9URsQ==;
+	bh=d45tURx3XWs+kAyjHrk/klKfMYkvuvpPKIkNMmnC9Pk=; b=y+ZnLriR8j97fTg9OhNYOjeQlO
+	B65IcsZski1ynibhoqWcqDraKEe2Zev78DySVLecEK+JR8WfxpZ2HgCAmzL25ncDFHIvbQaQB0u6M
+	MU5wocfX4ANCRZOvfhJI9i0o22+vIZXntqRAMG3N7kOLPY1qRVbxCZ+sOQ3Jjnyng+zcQmVwkRmi3
+	Fusddrz8hGI4sk9i/66KFUY2NKK+NyDOko5ooRynlOexQu1zihPakEQW6gft650gtb6EflB9Aqlt4
+	Cq0DgKNw8jNsvK9IortTzllfyfvMrsnVxWCusBk6YtYurR6BDQBv44KrAyZBtcKI8ntaFN2h9WgU2
+	l8lJ2grw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woOIA-00000003MKJ-0zY5;
-	Mon, 27 Jul 2026 16:35:02 +0000
-Received: from mout-p-201.mailbox.org ([80.241.56.171])
+	id 1woOVD-00000003RDG-1cUX;
+	Mon, 27 Jul 2026 16:48:31 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woOHz-00000003MHl-3zIm;
-	Mon, 27 Jul 2026 16:34:53 +0000
-Received: from smtp1.mailbox.org (unknown [10.196.197.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mout-p-201.mailbox.org (Postfix) with ESMTPS id 4h841z4v4WzMlJ8;
-	Mon, 27 Jul 2026 18:34:47 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=adamthiede.com;
-	s=MBO0001; t=1785170087;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=kO0CRx78Juq8i70OvsJ65ekpU28ajV9WCXKuSv7yYuA=;
-	b=JwB7z/GgtbpAZgbjRhiyHgGQw+8bk/z7K6PVXDz4naudWDvb4OyZyUtOBCuJGJNLXLXk1i
-	zvRtB6AxTWt/CIIGPT2UYIs5hEWM3U7pXX+gHMOlXz9DIZRCrP0yfTotaXI1W+uD/olWOm
-	sPq9YmPD8C/QwH0MSJRSzukKs7SgxC6baJIsdKjaXNydj0hZRx662zd67ARiUBGgvKvfRv
-	8e+19PyxjZ+qxH/EjfOykwFn7/GZ+CrwLDRVNZy/Tnq77jVVZ86DM5ewPSBgXZXrL/BEwx
-	KTjgSvUvrhLZfklvtxd4tgPhVq68as3jEJXVzG+9+sdbvVuJ5YiL1b6yw7AW1Q==
-Message-ID: <806f042f-cf40-451a-8412-eb4a5e31963f@adamthiede.com>
-Date: Mon, 27 Jul 2026 11:34:40 -0500
+	id 1woOVA-00000003RC1-2mkP
+	for linux-mediatek@lists.infradead.org;
+	Mon, 27 Jul 2026 16:48:29 +0000
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 66RDlbDi855781
+	for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 16:48:28 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	d45tURx3XWs+kAyjHrk/klKfMYkvuvpPKIkNMmnC9Pk=; b=QwXc30K8UvMnTrI+
+	wYvzNBzzz6mmhTFlIJVxbpP1n+zDceDpbcl8AU/4CxteUn+Qj2krzqq6ts++mRT2
+	JzAt22YA10tB+FQbNEU0OW00pc2GOFJmjNik52NhF0fmP5o5FxhtQkmhFhJYjbKm
+	yAgqJeXmA0JFjRbEcHmzqkftWSlZoR7LFP0eaExFvA4PPkWXKCj67Yw7d21YnTGs
+	G/YN7dYPUr4iIdzKIHifrdqrDn5X0Muy+A479uT1stnrMcvTyny//I+LfsLB659H
+	cPWefnrowLmiISioa1brd9OtuH+FcEIUoSWdhGmM2Urg7u0wVUO95j6rYhkQKib4
+	KwyuwQ==
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com [209.85.160.200])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fny9wk5yd-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 16:48:28 +0000 (GMT)
+Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-51a8db414c7so43825451cf.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 09:48:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1785170907; cv=none;
+        d=google.com; s=arc-20260327;
+        b=iyXBHwh19v7qNiNOMLU4hZoNSk9IqHRD+KJHTYeWQa62cjmGZYKEpK0SR0iTaAOF/l
+         X3udmw9Kc6pBdkmV71bKdFxsiSXk5e2pwQI/2HpuZ3EVlg6v9R4CGJSqQBj+hcewvMih
+         A/hDLfYadaKbD/Wpdb9lOf6hYYp9WWjZ1MXuF/K0T5IjuL2YOqnOwAxVauaH9aA4x4dI
+         KxGVyUOXPkRE2OSalPYT6PrBrGQW16JZFP9j+pftH6xqkXjCXUcEIaL4Jec12sjJN4Ar
+         ovP8Eum3m/en/5k+6YX7lk7DSiO0Mfk5PHAo4qOSBzGxPByqrwK6gpb0U6ewYuIgCmec
+         lWtQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=d45tURx3XWs+kAyjHrk/klKfMYkvuvpPKIkNMmnC9Pk=;
+        fh=lXykE5NZh8+SsFJ/q3eMX66psgP7cCHSiLKguBuofUk=;
+        b=dctOZmYppxpGTzMZ6jtfxQpabEiAUjQMo5jArIlh5QPE7/VxcS3GYI0Kcg+K5rded4
+         N57/VY6CnhJvMlTSlaPlebXWdeCwYvgqyWMvgH2h6HblO+KsxmUdyqldA6lUjHWZw9Pt
+         NEGF/XF5mdmX8nJ9dM4GrgF5MUGiC39PAUIZrXewIFENgoxWcqW1GCvJ18wjbNw+NwmR
+         3Wgl/2ZFdNGcDu7X+XaJKUddiW7N7FdNKCibGJTWHoWwcrX32v/5a1KQnS58vCAJHeY+
+         2TfSWZN8xA7UQqQQLEM2QyUkI3wi1YyrQslGkbv35XKk1rweXikcsdkq93hu+Moxt0Nt
+         rN1g==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1785170907; x=1785775707; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=d45tURx3XWs+kAyjHrk/klKfMYkvuvpPKIkNMmnC9Pk=;
+        b=cZ7HodI1mPwJ3UYFEXnK7HiRFW3AOY9yErq2bCSCMwrjDWTOfOUCbWAF9EXvosbHOf
+         6LUNIwRQkz1A/psSvJx/is/Bgsmy8Vb16BTcFLwniynTENom+Bi2y7MR4OlhYYxPrima
+         3sEcqQp00tyS6O2hF2bAfyyGxVwcEbO6EtfvZ2wfZdOt1GYbxrpMH0FRrKDqtL0ycJkH
+         5MfhoO14Xfwy031WO64FHWj9cH2KJdon+gIUOlihIyylDuwHwUS1Ir+oUst3Wcq02Br/
+         rzGqFgFDR2eZDGgTMjgIID7B+rCaCKry2f663NBIAIJEndqT+Qe6IBa1FgPGBd7ZnqEh
+         2WFA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785170907; x=1785775707;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=d45tURx3XWs+kAyjHrk/klKfMYkvuvpPKIkNMmnC9Pk=;
+        b=Y0jzGvzG0FBggMYYYlh/f8VpSK6kAtQz692JvMBO9h41QRwl6CsiAFbfBigWyc3Gvk
+         yfqfRcoGqQOeu1nb9CejqxGzfdKC6/7/4z22uMAXlXk3BViCoQbydvOATVEu9SfBJSkj
+         Y97h92xUlpQuoiAgvZpvb+JeBSA4vPZ69eK8l2GGy7/fAay2uXyb/4NlWoQMpVt9mw88
+         0GKRscfwmMYhX1gHPh0FW9HJH1/DNw3Cjh2YwUgPZAykDgw43CwVFYIZuDAk6fa6mGDx
+         S790o4yeP/qk+/cnJ+ffbnEQRpO3Ijy9a70E99i8FlVs5LjifUuyI4IL1VuPuTWVDTPa
+         hBTA==
+X-Forwarded-Encrypted: i=1; AHgh+Rp31XEqL+uaT6d/wlnFCrWPSt/ouRFTopJugjIB0Z/ZxRMhIR1iY1gGryF12lhuoQ0oRu6Aetb5SMtJa/sBLw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyiNOfotFzs/4ZsF8VFuu+CbWdNoC+CouMXXq+aiaCz6Sf4lyOK
+	ojyXXGyHMV87K0U69DY9aquB+x3cKy21Lqa0Pu8+wiOkHaaWlSg6A6PUVqSRxnoVH7Mkjqws+TP
+	TIF67qcognPXyLsOPEQU7pDl9jVmcmyPB12NvMcajLN6JAS+qpcQ9UwkdsLbsjfp+zNm7xuICs0
+	85CjelLL/GC4f8bbuXISRf3nevUX5TGIHZ9hQy2il0scYsu6MxKA==
+X-Gm-Gg: AR+sD11AlwlchlPIEW9w5JWvr/kFD+08b0tb2MeHF1SPhpGARz1mTFQR6NrAKgVe8Jd
+	YADsDWjL1bHWn0ON3XKdEx4s4MitKluTvaqbBwrKt4r1xiUHxEXiK5Q4SOLv7+P4w1YNGQ2jmej
+	Dbvehc2Xxel1swtKgM2ake2z0QTSqz5P7bM+zoFVffbi3AUHd/+u5Vb1naxw==
+X-Received: by 2002:a05:622a:8b:b0:51a:8835:58cb with SMTP id d75a77b69052e-529a86b1bf3mr107887101cf.54.1785170907041;
+        Mon, 27 Jul 2026 09:48:27 -0700 (PDT)
+X-Received: by 2002:a05:622a:8b:b0:51a:8835:58cb with SMTP id
+ d75a77b69052e-529a86b1bf3mr107886821cf.54.1785170906641; Mon, 27 Jul 2026
+ 09:48:26 -0700 (PDT)
 MIME-Version: 1.0
-Subject: Re: [PATCH] drm/mediatek: mtk_dsi: enable hs clock during pre-enable
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Thorsten Leemhuis <regressions@leemhuis.info>,
- Gary Bisson <bisson.gary@gmail.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Esben Haabendal <esben@geanix.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Linux kernel regressions list <regressions@lists.linux.dev>
-References: <20260120-mtkdsi-v1-1-b0f4094f3ac3@gmail.com>
- <8733xko1ms.fsf@geanix.com>
- <0f719c00-3cf5-4403-afbf-713b07255981@collabora.com> <aleM9Wy9otpd6Je3@owl5>
- <aRN3_2FHX8XmTcwduTAPwz4UFde4B0tbB09ajyeUg5qZxiIYMmbvMkG7CPoNTl4iySYMZawbLMWijO47R22gkg==@protonmail.internalid>
- <65558ccc-4f2c-492d-8c74-627d27dce864@collabora.com>
- <87h5m0mkca.fsf@geanix.com> <alpTEPsy-SIQv_Oc@owl5>
- <b26a4890-12e9-4995-a71d-d0b7458b1570@leemhuis.info> <amdTnudq48tZUTG2@owl5>
- <1826ddd9-6edd-4481-a31d-6cbb083b3a56@leemhuis.info>
- <5c7e81e7-28e1-4993-ac4e-724ec7664ebf@collabora.com>
-Content-Language: en-US
-From: Adam Thiede <me@adamthiede.com>
-Autocrypt: addr=me@adamthiede.com; keydata=
- xsBNBF+n+90BCAC2ZRLVcvdXDgfY7EppN05eNor3U7/eeiNCCEIWZkYLhikUEP1ReLGBkXpK
- Pc70hfnKAKkCoth3IwhDty9WXMNU+iLNei4ieb2luW+UqluR6xIUIA+txahMU9YcjVaQTKf/
- yZWO4yl6pfBPCxC2UdPZKBAdGoi5NnE0ABFNbhBETQhhBic533lZn33ByupfI3acECnQdjgQ
- llCUpDbw4I+S/N1iFiEHcbMXH7ZB00e3IYNorZ1E9v7p++5rDY1fQ9gXpieg1vFKwSq1NJWo
- 9xx336YjaTUbX0EwrdKd9l8AktA3yRjckaK5TAcwSQaDtHvhpbl4ebvPhtwHh699MroXABEB
- AAHNH0FkYW0gVGhpZWRlIDxtZUBhZGFtdGhpZWRlLmNvbT7CwI4EEwEIADgCGwMFCwkIBwIG
- FQoJCAsCBBYCAwECHgECF4AWIQQtG9pGQ7sz3tf8M/kC7fV9o/vRzgUCZL1HxQAKCRAC7fV9
- o/vRzgyRB/wLqRCvvWhQCMgvzeKvru9wcXquhb77K8H/ByLbfiT8YBuP3lZFVh0IQhgO9Ylk
- fIoOJE4V+jjxyOnO2d9xjGbvAmmR6yT0gfLzSVWqrC4k+V9MWLv43nrNzxt41dvo5j824FAl
- X+zaiRZCdO8Jtxg5Elpiop2SKLi1utX1Z8i6YZh+ccJZlchUBAGUTk+D4UjK7vUcjLWT96ya
- CtdtTfXyw36CvGOPEWfc6++Kkl/5sgej1i7biPYzu/r0vssaQYTXKSrv6Cfa3Maa89ASiTtv
- q4qmhLnJeCrPxWlRAf6LEizeBEkOasYni2u8sp4wBezEq45Ozu45sfPkqLpPolG7zsBNBF+n
- +90BCADBRt+vrToRBEG580n77S99qSEkbKD+oJtCVyovnjMNkg0K9UG68LIeCX/ezngiV1M8
- JISvw5iFOuUFqGX/1hLl9wgt/YpuIrgWOp8XxkotavTCloLDvQmufJPO1L8bnnA+WgP2YgVZ
- 5MJTj/t4DI+yQgysEjsH8aurHO2uuqgJE+xK+2dy6Cl/wskuGxObksSPmmFH5PH0Joziwrtl
- 61ouLE2XwKbkMgIGEKkbFgbfwz3/QuLZGBni+OOtLzXeZ9wNTW/AHUPy6S9U4F+5z6/09fVT
- tTH0cvrgAGjbASlYx2VqGONXAsxCfjulq6ryJBFlPLp949c/JTTgOojukCSbABEBAAHCwHYE
- GAEIACACGwwWIQQtG9pGQ7sz3tf8M/kC7fV9o/vRzgUCZL1H0gAKCRAC7fV9o/vRzlamCACs
- vHw+0heTm+BfC3S8DUST6889gidIIwdqBep1ByzetCph7Bq8Y8BlT5YTX0u/bSKkxCzFgeTm
- vC341Q09ST2XjLAl1ZTdzGhH9gcgYyOw34pr5fPQRJLB392mPzD8YReRzciNbhWzj+DLgeVe
- ouyfGajd6jDjkf4FEq+trQLGZhpfsKn3JnDbzBUs945D50l/vz9q/QN3qZO+H4F6g8ZeMnqo
- FOEFN26xVtdEDr+0DNFsbgKmEzs675kdAY78ZZdbEetX/FSknxJ+FK1ZW3J7Yswwulj34AXP
- LB49Mk8Ot7fo6mdt0DkV11JS9LmKxKvpY+KTlrKG+i7pVCSZvVUx
-In-Reply-To: <5c7e81e7-28e1-4993-ac4e-724ec7664ebf@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20260722132729.302067-1-dmitry.osipenko@collabora.com>
+ <CAPx+jO-1_ZpYcnPtoYxRn5vv34tiP7TXnjKZ3SaWkEzdeTfXpA@mail.gmail.com> <3130633c-fbff-4b1a-a127-bd4eb678c3f6@collabora.com>
+In-Reply-To: <3130633c-fbff-4b1a-a127-bd4eb678c3f6@collabora.com>
+From: Ulf Hansson <ulf.hansson@oss.qualcomm.com>
+Date: Mon, 27 Jul 2026 18:48:14 +0200
+X-Gm-Features: AUfX_mwYyJK7opquw-Zgrx7ikepnD3P77x7E8vkOGtJWpCSQCzJtEQPkLeMKHN0
+Message-ID: <CAPx+jO9-b_XyhS_CtX1ZFiH96WMYjjcvOEcO6u6CLEZq61rpaw@mail.gmail.com>
+Subject: Re: [PATCH v1] pmdomain: mediatek: Fix MT8183 hang on boot
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+        Ulf Hansson <ulfh@kernel.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
+        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzI3MDE1NSBTYWx0ZWRfX5Bbl/tGyR6r1
+ DnIymr61mOa3JPHXlJrjKwQvsoZaZUE3ajqgMmwH4wxt8vQLot7bUI8QxsFxfPJGXbEWd9RZi/i
+ nmk1lnwumTYoWRlbEGclk7kOJODGlYj/QaC09wxjw1lPY2V/K1r8xx6nnrgQTt0Q6fB1PeUQkXi
+ 3S+9GKhEo+OvohIVjOvXQrRCWVLC5sybECuItcWtnrQs9/laIPmd26CW0x/jUCVymTa+eGHHyZB
+ 3cmsssX3tgNAYJ5hJZIVEBvBiUjFYIy/M/RQhNlsSTxin1W7kYjQMEiw8qxXkUzO7l01HxNhePO
+ 6l8w5/Y73R6lIw3Ssdf3QbQfDJvtH+4ZJnUfFjKaQl5UsRC4qkEzl16qdVypm5P3xMx+eC2d3mb
+ +SRE4LnT2F6LkKL9IlEvGwyXU2GftmjE4dzW1n52pIy6Azit6D5ZQQsLWRG5GHzSCB0Ld+z8c4h
+ mROaRhtpKfevscnFsXg==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzI3MDE1NSBTYWx0ZWRfX/MB7IiLZnEQE
+ 2dj99eIMkx6EH4zZWDhq576vUWmdlxjRIIb56eKKms6BL6e8aShIk1uyei8L8E875ffI7v2MANJ
+ SGl0incm+JVTbXMlRX9CoQGJluqoVAY=
+X-Proofpoint-ORIG-GUID: lr-wp0RZOULngGlE3rC554t16zlPzVf6
+X-Authority-Analysis: v=2.4 cv=E4b9Y6dl c=1 sm=1 tr=0 ts=6a678bdc cx=c_pps
+ a=JbAStetqSzwMeJznSMzCyw==:117 a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10
+ a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
+ a=eoimf2acIAo5FJnRuUoq:22 a=QX4gbG5DAAAA:8 a=gHq1O5mURKo0xi8WsWsA:9
+ a=QEXdDO2ut3YA:10 a=uxP6HrT_eTzRwkO_Te1X:22 a=AbAUZ8qAyYyZVLSsDulk:22
+X-Proofpoint-GUID: lr-wp0RZOULngGlE3rC554t16zlPzVf6
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-27_04,2026-07-24_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 clxscore=1015 priorityscore=1501 impostorscore=0 bulkscore=0
+ lowpriorityscore=0 adultscore=0 suspectscore=0 malwarescore=0 phishscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607270155
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_093452_151017_7CD6EF85 
-X-CRM114-Status: GOOD (  38.83  )
+X-CRM114-CacheID: sfid-20260727_094828_707582_0F845813 
+X-CRM114-Status: GOOD (  36.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,121 +165,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/27/26 10:54, AngeloGioacchino Del Regno wrote:
-> On 7/27/26 16:23, Thorsten Leemhuis wrote:
->> On 7/27/26 14:48, Gary Bisson wrote:
->>> On Mon, Jul 27, 2026 at 02:28:56PM +0200, Thorsten Leemhuis wrote:
->>>> [top-posting to facilitate]
->>>>
->>>> Gary, Angelo, what's the status here? It looks like this fell through
->>>> the cracks -- or was this issue fixed in between somehow? If yes: 
->>>> great!
->>>> If not: Would be good to finally resolve this, as we are long past "fix
->>>> within a week" rule of thumb from Linus:
->>>> https://www.kernel.org/doc/html/latest/process/handling- 
->>>> regressions.html#on-how-quickly-regressions-should-be-fixed
->>>
->>> Not much happened I'm afraid. The status as I see is:
->>> - this patch is necessary to have TI SN65DSI83 working
->>> - this patch also follows the DRM guidelines saying that HS clock must
->>>    be enabled during pre_enable (see previous answer / [1])
->>> - this patch has been successfully tested against MIPI-DSI panels (by
->>>    Angelo) and LVDS panels via TI bridge (by myself)
->>> - Adam reported an issue with another bridge (PS8640) where resume is
->>>    broken
->>> - Esben offered a patch to the TI bridge that would fix the issue we
->>>    were seeing in the first place.
->>>
->>> But for the last two points, I'm not sure this calls for a revert yet:
->>> - enabling HS clock in pre_enable still is what should be done [1]
->>> - maybe the issue Adam is facing is due to the bridge driver instead as
->>>    it could not be reproduced with another setup
->>> - Esben patch would break the SN65DSI83 init sequence, suggesting that
->>>    the culprit really is the MIPI bridge for not following the HS clock
->>>    requirement in pre_enable instead [2]
->> It's tricky, yes, but I suspect the right time for a revert was weeks
->> ago. What Linus afaics basically wants in situations like this (espe.
->> with two reporters) boils down to "something broke recently, no fix was
->> found within a week or maybe two, so we go back to the previous state to
->> restart from there -- and this is nothing bad, that's just done to buy
->> us time."
->>
->> If something is right by some hardware or DRM specs often doesn't matter
->> much. What makes this tricky is the fact that the revert might cause a
->> regression for those that relied on the functionally the change brought.
->> But I suspect even then Linus prefers a revert, as it's a recent change
->> that only went into 7.1. The quoted from Linus on this page cover this 
->> iirc:
->> https://www.kernel.org/doc/html/latest/process/handling- 
->> regressions.html#quotes-from-linus-about-regression
->>
->> If we can't agree on this, we maybe should ask Simona or Airlied for 
->> advice.
->>
->> Ciao, Thorsten
-> 
-> Thorsten,
-> I agree with you, and it's fine for me to get this commit reverted, for 
-> the sake
-> of following the rule (which is something I agree about: as a user, the 
-> last thing
-> that should happen is to be afraid of what breaks if I update my 
-> system!!!!),
-> even though reverting this actually breaks anything that is not PS8640.
-> 
-> ......though......
-> 
-> Everyone, please, look at how fundamentally broken PS8640 is... Qualcomm 
-> people had
-> the same issue as what is currently happening here.
-> 
-> They had to fix their DSI driver, as it was kind-of broken in a vagualy 
-> similar way
-> compared to MediaTek - and then they found out that they needed (and 
-> upstreamed) a
-> *hack* that had to be done specifically for the PS8640 Bridge [1]: their 
-> issue was
-> never really resolved, as then the same bridge started casually working 
-> for unknown
-> reasons (is it still working?), so they removed the hack [2] and called 
-> it a day.
-> 
-> [1]: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux- 
-> next.git/commit/drivers/gpu/drm/msm/dsi/dsi_manager.c? 
-> h=next-20260726&id=ec7981e6c614254937b37ce0af9eac09901c05c5
-> [2]: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux- 
-> next.git/commit/drivers/gpu/drm/msm/dsi/dsi_manager.c? 
-> h=next-20260726&id=9e15123eca7942caa8a3e1f58ec0df7d088df149
-> 
-> Especially in [2], the assmption from Dmitry sadly isn't correct, 
-> because this is
-> happening now on MediaTek, and here Runtime PM makes sure that the 
-> PS8640 is also
-> being enabled "a wee bit" earlier than DSI... but that doesn't seem to 
-> be enough.
-> 
-> 
-> Now, here I'm kind of shotgunning at the driver, but I wonder if anyone 
-> can try
-> the following patch before reverting this commit in mtk_dsi? Adam?
-> 
-> ---
->   drivers/gpu/drm/bridge/parade-ps8640.c | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/gpu/drm/bridge/parade-ps8640.c b/drivers/gpu/drm/ 
-> bridge/parade-ps8640.c
-> index 96332721cb69..54ebf2fc8d1c 100644
-> --- a/drivers/gpu/drm/bridge/parade-ps8640.c
-> +++ b/drivers/gpu/drm/bridge/parade-ps8640.c
-> @@ -665,6 +665,7 @@ static int ps8640_probe(struct i2c_client *client)
-> 
->       ps_bridge->bridge.of_node = dev->of_node;
->       ps_bridge->bridge.type = DRM_MODE_CONNECTOR_eDP;
-> +    ps_bridge->bridge.pre_enable_prev_first = true;
-> 
->       /*
->        * Get MIPI DSI resources early. These can return -EPROBE_DEFER so
-This does not fix the issue. I built 7.1.5 with this patch applied, and 
-without the revert.
+On Mon, Jul 27, 2026 at 1:04=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> On 7/24/26 17:01, Ulf Hansson wrote:
+> > On Wed, Jul 22, 2026 at 3:28=E2=80=AFPM Dmitry Osipenko
+> > <dmitry.osipenko@collabora.com> wrote:
+> >>
+> >> Depending on firmware, part of the MFG domains may be left ON at boot
+> >> leaving only some MFG cores powered, to let the ACP to prefetch the GP=
+U
+> >> region when the display controller is brought up. This doesn't play we=
+ll
+> >> with an eventual delay in probing Panfrost when the display controller=
+ is
+> >> fully set up, as that would make genpd's sync_state() to power off the
+> >> domain while ACP tries to prefetch: this is causing an AXI stall,
+> >> effectively freezing the AP indefinitely. In order to prevent this fro=
+m
+> >
+> > I haven't made any detailed investigation, but to me, it sounds like
+> > there is a missing consumer somewhere.
+> >
+> > Should the ACP/panfrost devices be a consumer of the MFG domains as
+> > well? Or perhaps, if the ACP/panfrost should rely on the display
+> > controller to be probed and powered-on, to be able to probe?
+> >
+>
+> This is about how the bootloader is leaving the display controller, the A=
+CP,
+> and the MFG registers before booting the kernel.
+
+Right.
+
+>
+> The kernel drivers themselves will reset this weird state when the HW get=
+s
+> to full probe so there won't be any more issue(s) from that point onwards=
+.
+>
+> Actually, there would be A LOT to say about this, but I'll be very brief.=
+..
+>
+> Basically, before booting the kernel, the bootloader is leaving a half-as=
+sed
+> setup to potentially support continuous splash functionality, but without=
+ it
+> being actually used on the device(s) that we're talking about here...
+
+So does that mean that the print in scpsys_add_one_domain() ("A
+default off power domain has been ON") gets printed for these PM
+domains?
+
+If so, perhaps it would be better to turn off the PM domains (if
+possible) before registering them with genpd?
+
+>
+> Again, I should put a remark on every word of that last paragraph, but th=
+is
+> is the gist of it.
+>
+> If you're curious or need more information, of course I can expand a bit,
+> there's no secret involved here, it's just that I'm avoiding to write a w=
+all
+> of text around that...
+>
+> P.S.: We've been discussing that internally and chasing this issue for mo=
+nths
+> before deciding to "solve" it like this.
+
+Huh, I see, thanks for sharing.
+
+I think it would be nice to clarify a little bit more in the commit
+message, as it all kind of indicates to me that there is a missing
+consumer or that a parent needs to be runtime resumed before a child
+is probed.
+
+Or another way of looking at it, that perhaps makes better sense.
+Based on your latest information, it seems like the PM domain isn't
+really fully powered-on by the bootloader, but still we are telling
+genpd that it is, leading to an inconsistent state and errors.
+
+[...]
+
+Kind regards
+Uffe
 
