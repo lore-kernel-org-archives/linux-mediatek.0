@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2334C53209
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 17:42:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0533BC531D0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 17:42:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
 	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7z/sKK8OBJpKiPbJasGwFBjOcUndOFnOOFn48Rv4NpM=; b=mGjOHmw95GR1X4wRakuOR0+EYg
-	T9QrzBXmaLbg0UwOsn7xAMRRnSBVSiq9f1CIEgNEqv5V0LbgP0VdTqGNODurxmqrx3/l17EsdFnCn
-	8RYaI4c5aeNewv7lPLTncDFL1IOG/ts2JV4y92qrhCQHXn7nPQnepNzMle+T8Tny769IQAo7e7uPS
-	aIbn8cuq0D47lwV0rlof40mrTCEQDyKclYt84VK03vqJmdG3efQQgALY1W8H9NAwNFfLTbH8Py/NV
-	4XTET0apY7KtFQaT3GTqUOrB8gT40OK9i9y5+6bvxS8oJQEi2o7QuaylkvefuS4Kt1MQFYtA6MyBy
-	NiWnId7w==;
+	bh=eIkLvgeAgG3KUMhj/xtTp3GiCPBPVXelvLJ+HuNCke0=; b=3fOKT+BAJ3uQ6KKswahOopybQk
+	fYr02CSgmh+lJv/nyYWUKDEqyrUd3suC3Q4CjFUwYXnwYK2V0dAjL6IAKdGh2rUshYAyniGH58/VE
+	bBSwo8GGVVuSbtqklFdOCO/SXhiDeMnZgIXHbKirfJfOnEaOa/1Sj+n3rCZOSH4iI0NH2unCxXkpy
+	o6StmmQsAMcvukpsHo/r2TiBSi3wC/AJWgFsW+K1kDHcR3P5WD8tVkTZOeGr/7FvzfwvN8Azggw6f
+	1pVPvuzbQoCQodXB2YjO83GupF8zoRD09EVtjJfv+GvAgxufG8FGOeVYNuXEoCMHxeZ2rBvVZ4o8z
+	NRxryytQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woPLU-00000003YS5-02Bz;
-	Mon, 27 Jul 2026 17:42:32 +0000
+	id 1woPLX-00000003YVq-10TB;
+	Mon, 27 Jul 2026 17:42:35 +0000
 Received: from mail-francecentralazon11023082.outbound.protection.outlook.com ([40.107.162.82] helo=PA4PR04CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woPLO-00000003Y2N-2zWT
+	id 1woPLU-00000003Y2N-1tj0
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Jul 2026 17:42:27 +0000
+	Mon, 27 Jul 2026 17:42:33 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=sITIVAk1VHT6UDYz+oSZD1q1+w0baSormYVZFQxDLhZc/ay2gnfdGxgNTTdM4f0KjJ2BDAvITKsaa4/DiLfnclmIeofFKBLU0PsW27lnSivXC1y37wPgZv9WxYTexGRzErLQTN9PXOnLR8kYZQ4jM7LlVbGHih/ftkYWoooaB+eufh88Twe28ekGcSlvANka2ddwNJ4vKH9O3r4EfPZbD1INiZG7Ggjq8pVNjkVHD2kOQT35zeoZ4HWQpwydFnwttcHcGt7vXiG1NW/O9SYxeHGkNVkOnn/Gr3MlvbQBgjxlJm/NtaT54Il5m8pcMaaOvfUHoJ5/a/XvUALJ7RjivQ==
+ b=uedB/4B3Rf+8I/nq/6MJWM0i9LO3tBpg0fRQrLdTusg6rpLXfhJ7qvicLc34bdH/b2NApSQXSHe52edyoF0szLpjsHntGPPPdBScFjhyhiJNk2SZe0oXjLXeMBW22UNqs1oo1/cP+cqyt6SY7dV6KhsHlCi6P2ADkvndyR6uYANPw9x2LzcKwPgLpfZ9eHQJsIipI5ZFQTOa7aTUkYkKWBZnRKvKVXiTwUwKGttVf6+ni/bKLaeqeluvnoU0xAc2Xo9RRKUSM/t41agYPKuR9RHH9oXT68S8Zlf55rAWcLL/d1oF+fJW1nMmR7rRonxXSlJuUkhNiyfRtdLs8wXQAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=7z/sKK8OBJpKiPbJasGwFBjOcUndOFnOOFn48Rv4NpM=;
- b=MG/HNry8wuouALN4mQAKrr5luLL9nMp2FGWEa+dNJrc69tvstIOfYsLq2v3/ctagmhvuiPzfENc3kVEnumukKNAY/lYeRGUssGIiCinG+AxLVplMtxcKQx8dp0+0EBWOta97md6h46oTpYZxglOzuTUAaSKBuAQGLo81GR2PaXWgCnX39p13nuZMa5wB1KcqUQ0RzUOzDGQKwKJ4YeD7Q8YiPHorqJ0g8uWKqFjeccIn8TK36fUTc7/yuQYCkpWwvQ1TRsEKfxT9Vkf/3SDANXWmWcmB2AwjgLl4n4NFsk+e38rgnkp/b43BkpPR7h2BqMrQuI/bqEKpmGEabzTygw==
+ bh=eIkLvgeAgG3KUMhj/xtTp3GiCPBPVXelvLJ+HuNCke0=;
+ b=GuzE7ub+wpXtsGfLj0oIZqBwYBcKAzbIauu7Tpf53ix1bCEKJC+o1gM26OomLDUBLLeOOzI+owhpvaOvDUnmnx3Xt9CLzXN3DTiVxLFueAweguL0wKc/fW5VS0AYoYPXQv2Eq2GRAzYinSXVhlwD9AFbMnaJxikhvhXbYYShC6C0e+JZW2D7GMeBx40LLzhcT4jQmiFlqOfYT+vjbA1DEG8vzWjYgu2SlFaM6pRDLNK4knWJaBoz0gwAPRksY1WeLmBpnoKIWh4iZ/4inMdvDYMVjS6b5PwwkGfPyI4auV7RFsWrzjYAeSqGqnuQkKySXh0g9Jwe91eW08aXT0c1lg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
  dkim=pass header.d=iopsys.eu; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7z/sKK8OBJpKiPbJasGwFBjOcUndOFnOOFn48Rv4NpM=;
- b=IbTe3+hXGMp9qz9BcKKXgxV1iM4+j6WJgL4C6uglKvSSGFP6qXGQ5LCpbYGhNEx8XD+55NNbxk1D3HfrAEVtR8Ri/k+sAyMpU+nYi2/IyNqTRt3usAkeh3LqfOuP2zFjScXZFQUd4m8Y0U/CzY42kUVawycPSc/6p0k8AT7DhjjLmdJy7ml27Urd9tk/9cA51kpxXGN8G/3VUHfjjY5ejRvlB/80SWZYg/L5jESfQQAE1icinOGgmg0vZFz7Di0tgSSKHz59axusiUf88larTda0FXVUc6+lgXN5CHuzBO5XcMY1EoGgAbVpXj9mQUzNjK2JgqgMl1+mEgTfNYUmPQ==
+ bh=eIkLvgeAgG3KUMhj/xtTp3GiCPBPVXelvLJ+HuNCke0=;
+ b=knAmmlWy3k4X4lhvE8RVy3oADDF7y5O1TQfB0LStWmlfi4uQW/eZsgmy6BBaiNrRRsxtgrQp+glpMMiveIeGdVpSaFc+o754yHLu1gy3dHDSJNIIMhTVKDsEaQ9Fg3Se1NcFcbPVZgoC6hj6kTBKyOEvo7JSpPX80qvSl6SMNGaKk6vMW7CFw49U24BqqSxzs2j9C7T+HQg15nOjMMePupjfYGPCpwou9FUlvOtlMp704nu82LZAk14hn3japQzcxVgnEGHA+ZlM8atPlDp0H/4WGD8bGWEjAkClpYWbea2CDvxHX4hABir5w4HJ0ug7SuBYqEP45UQiQknHyFhmNA==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=iopsys.eu;
 Received: from DU2PR08MB10037.eurprd08.prod.outlook.com (2603:10a6:10:49a::20)
  by PA4PR08MB5888.eurprd08.prod.outlook.com (2603:10a6:102:e8::13) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.245.13; Mon, 27 Jul
- 2026 17:42:18 +0000
+ 2026 17:42:23 +0000
 Received: from DU2PR08MB10037.eurprd08.prod.outlook.com
  ([fe80::3c7:6d2e:8afe:e4dc]) by DU2PR08MB10037.eurprd08.prod.outlook.com
  ([fe80::3c7:6d2e:8afe:e4dc%5]) with mapi id 15.21.0245.012; Mon, 27 Jul 2026
- 17:42:18 +0000
+ 17:42:23 +0000
 From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
 To: Linus Walleij <linusw@kernel.org>,
 	Rob Herring <robh@kernel.org>,
@@ -70,9 +70,9 @@ To: Linus Walleij <linusw@kernel.org>,
 	Markus Gothe <markus.gothe@genexis.eu>,
 	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
 Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Subject: [PATCH v8 15/35] pinctrl: airoha: fix getting gpiochip/pinctrl pointers in the IRQ handling code
-Date: Mon, 27 Jul 2026 20:41:21 +0300
-Message-ID: <20260727174141.664933-16-mikhail.kshevetskiy@iopsys.eu>
+Subject: [PATCH v8 18/35] pinctrl: airoha: fix edge-triggered interrupts handling
+Date: Mon, 27 Jul 2026 20:41:24 +0300
+Message-ID: <20260727174141.664933-19-mikhail.kshevetskiy@iopsys.eu>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260727174141.664933-1-mikhail.kshevetskiy@iopsys.eu>
 References: <20260727174141.664933-1-mikhail.kshevetskiy@iopsys.eu>
@@ -84,57 +84,57 @@ X-ClientProxiedBy: AS4P189CA0064.EURP189.PROD.OUTLOOK.COM
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: DU2PR08MB10037:EE_|PA4PR08MB5888:EE_
-X-MS-Office365-Filtering-Correlation-Id: 331930db-6b35-4089-cff5-08deec06676c
+X-MS-Office365-Filtering-Correlation-Id: 784cabf7-7eb0-448b-7a6c-08deec066a51
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|52116014|7416014|366016|23010399003|1800799024|921020|6133799003|38350700014|18002099003|22082099003|3023799007|56012099006|11063799006|10067099003;
-X-Microsoft-Antispam-Message-Info: pmMXJikl8c4I2VlM/J/YnW08VBRmFZWacunTvtY1Ji8igDXP0mO+0p+AfmBl3g8JpcaO+zi6GUuXeWREv9C9djr6u0otXh+wUt5fne0lZI4WqqWti8vYwuBWR3nZ9Ztvj0Kl+Sjb/+7uTzFEK50flOZUU0Vst6Pk/RL74p+h4nDHd0h3YjBKcvFwBCGybbesSGsF2a27JErRgwQ4WYQkLZTF8T2lbPuesHIyQyeHRTrkcN8LZ6MZ772gTXeAOu2xD3NleRXWEMy5GQ6xQmCfZfi1GLDdN5LEMLV0PDczkrvmTJ6eRvJQRzM13u+b/Ud4wK7pxvivoWicunmbu5DmY11bB5IaOSC5z8oQGAbkM9VsyUPmfxPDcAJ47iGGkPKgyfgQmpsSDb801ETTVAF6Uvx4WItcWpqhyf+C7fAb8IlTf5VUtGnqrdIQox8zbGbUypa9VtXq6/aEnC47FYs8WChlk/Pa6WF7+zVEkq7nzsQsCgSsI/Y4Q/9pZJf1yC0ajU5NBo1SR0CIEQQVRzmyyeQEOfxeXRD6IHkLzxHVDy/nKtPQUggiNtTdjCVdlCSHwIkb1rJWlOuHE6/Z5HqnpzSQOsaNyrGxgXTJq2cqIj+cgqZvyjxbCWSYAroVkFNapHvJZPybTdSfRUGhVlVnREDpDEcETUD71kVwu3BenEi/PeLa29L+ep+8nZSFXb/1CO4EEwbQLd7fLDYioqdxXFAn6qcr+OCzeKdkt1A9DSeslZwz7pY3LQers7EsqCtl
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR08MB10037.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(52116014)(7416014)(366016)(23010399003)(1800799024)(921020)(6133799003)(38350700014)(18002099003)(22082099003)(3023799007)(56012099006)(11063799006)(10067099003);DIR:OUT;SFP:1102;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|52116014|7416014|366016|23010399003|1800799024|921020|6133799003|38350700014|18002099003|22082099003|56012099006|11063799006|10067099003;
+X-Microsoft-Antispam-Message-Info: 3Wz93UJ3i+B5+4Ij0MX8KG4lm6sSOZ+RDaLaZQfE8stnBb48M7ZSoVRScBvddwL/qczixU30yvldNkFigpCirx1xnfKtaIc2ptgiTy2MqHHPAYJFekp9+KO0azKTqdD2R97R1R0lyIoy9pq5n5Vu+CWOa6AX1I/kEqXdbfl9cdEVuUc/i+iB91Tvs2yFbN1jVTZC76LI+YQONnKVcBecqFpHotujUg63Gi2TECptIim4AEn2WZuSF2jJkfvKgAXc7GN/aJ4Jl8n1tXPfRx1+BJqwT6gCFZJ/mOth5nTA6Li3Giq6YE9URnSqLA7Xdz2u/Xkpa5ygjNA7s5an5WrEYq64C2a4Ex1b2pwhGxRHDmUXrPzA9C3jVQiN+yUefQ0ofs1xSAdycY/GSq9RVYSnQL5QNtVCYDLYDvoFo5zdQJ1zJA7zHQK/IAT6shrjAyNuy7bsdW6EngrlVqErRHYx2RTfsXoLNeU4SZP46dFWm1ZQgzsjOqgp7k5JBzCVEOOFH16oYRPuqjbQc5qsxGVQSibEq/+qHZI+d6q5F3gW2UWEOjmGWBvJaBjpilDVQDpsGugk2Zg4YguH/3LYS+r1qEJ8RwF7EzJbPtlcay3HHg0ZGlC58evymCabZTIqK6P7tgK9RjSnXBgy7Ag+qZ3S7pVxS2ctQTmDtgcgqaOaw1luvQp7ygReZNuhPn2Vl2mrvRSqZe0HSSDKDo0zc3r8+qGJp/nwAfQdsqLwdDHEx1UIFX+8CIJjW2AiFXuDDSC6
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR08MB10037.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(52116014)(7416014)(366016)(23010399003)(1800799024)(921020)(6133799003)(38350700014)(18002099003)(22082099003)(56012099006)(11063799006)(10067099003);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Rs3FttbvjMMy2DNq170daMFKpWuV5rpOUpB9DQP+OVWc8QKdowoku89v4LbD?=
- =?us-ascii?Q?NYrFhlkke9JBVCtMqCWeoACZgltV0JugLlFb9h4qe4TqC5ygxacv3haSB2Y6?=
- =?us-ascii?Q?HBKxVCJOQdroNNjIJLGHWEh+u1vmQPktgQbigu6j21NJtGQUcobsMWKKrV8M?=
- =?us-ascii?Q?F2+vKENuhKSp9wy87KyuEu9GXEOXLhn0PLuVGtwkyARvKGgeBgb4V/XUAGTN?=
- =?us-ascii?Q?KXw8X6TyOBjaju9AEgZ24165pToUgndRTy4qokmi14fiqRD9VAmZkLgf+Gdk?=
- =?us-ascii?Q?26wXsKCezAT6DN4aj3eiwCl3FX8sokeKReBNgTVxpbJKtHW5vi+skZ577aKO?=
- =?us-ascii?Q?qGX+ld7C03r2SAumki8FxFH7CDjLOJyVBi8lxZ5/gA1XwtJ7UdvSkvdff7sY?=
- =?us-ascii?Q?/juMNsHURr2SvVe3+uQbJJOM62aYXtcY8zIiSFn4Qb/5oJsfZWG3va0OqSZ9?=
- =?us-ascii?Q?ywfDP7FEuVPCTrGxBEUQ+oY0ME841Zc55A1kIKYPrkh+lqk2ZAul8TP6F3Ey?=
- =?us-ascii?Q?+aNrxUF3qOD8nRJ/81BpjS5ZGhdl9LN/4buMhbLph8Pvx0MOqI3vM7lmfe5R?=
- =?us-ascii?Q?t3zobKus1SMWrgqpSTrlJzeLNb1kktkQIzIm9CHQcIGyzWgxESlE/C+o7o1L?=
- =?us-ascii?Q?Afue7KvfGdzkpe63v89fPtNkl3Exq3OsoursZLJ+bOnoVJRwHU/BkuZT/P3Q?=
- =?us-ascii?Q?G+UBeymIujTuqNuBEWhzuEVBdkXoXc9MiHhwTvitni8URvFYjptZPcM1IjGL?=
- =?us-ascii?Q?5dnucCQ5a8Ydiv/TQ9UBsryi7kGgTO3QshHwuZ+Sc4sMuEXdWYlWRQiugroK?=
- =?us-ascii?Q?6FWcUcgaHScSeY+KFENcdNaGBkMmrNnZl2PhhNxVMhM+fBxqkr/wzsoQbuJl?=
- =?us-ascii?Q?Xh/Wc/OlUK8p4Qv6GAZlL2uV83VtMHgjz5Iu0WmGfBxoVORNbYkHVSJ5G2br?=
- =?us-ascii?Q?sPGnGCSf1j1s2Tyi9PtghGAfb+rnStXu95Ra/7TAOIW1/naqp3akdBRdzXTy?=
- =?us-ascii?Q?PcgiXdDcIxqDIfbLDAgcHm4Mydpm6YotC3sgGURADl5jl2nf8Q9QmltjyPbr?=
- =?us-ascii?Q?lFG8Pddyw0PF3dgK6w0nmcs2QTmg8BC2HT5coSQJonjM3fYG2F7LBdZcbVlA?=
- =?us-ascii?Q?5MPDqIN5WwPUazudlgxIcc1lRaLW+I9iCJ7K3zzteANtPqaF735T2BEbt4IP?=
- =?us-ascii?Q?UXfN4etihbsLDtFoOHFjyoGVALHlw8S2aCwa6MXSwSMETH+/dKnjvZfhhaEg?=
- =?us-ascii?Q?DBBLGlvylIvTn6Ls+XciXS7AnlTYKLZMio5hCUFUFRJNqE4x6wngjzxxXt8a?=
- =?us-ascii?Q?hhO/MTpHo48DISo4YBuNocw7BjK8Yc2rLjFJdomEe5t4CinEefvnxP4zTLIl?=
- =?us-ascii?Q?ca67aTaQq3N0mJCgS6+v2prhV8JjUUGXEBom67OKdoJRyx5VXHuPDD9fgO7/?=
- =?us-ascii?Q?JvUW6iKyUFpidjR0WBIDK1yHuEPJ6ghOh1WeZy+8MRt+1epy3cEueTRSkndp?=
- =?us-ascii?Q?E3F5cefBwMD8c8f8Uj82XY4IF1RctxE8bSnhEcrw0MI36+8QAjpxBGPWEOzO?=
- =?us-ascii?Q?G7p92V7Gxj2fCt8d7/IrsZpc972oaOB9qSLO5e8yvfec3uq+TMoXaEgEPaN7?=
- =?us-ascii?Q?/t7U9BW+5Z0tbXCwnR/VfrGwJ8ZCMTMG1dd9d6AN9ClvLPnnmhVvHX/5W6h3?=
- =?us-ascii?Q?t6eBsjdrxznitlg3y3p5PhOX/Hm4dlk4AfwaD8/6Bi+pwTsVQertJ9Lklshd?=
- =?us-ascii?Q?+qGZtnqj0bp3Q7IMWk4O2wl7BP8rA1M=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?7Zvmapz/DfxiFnvO9QWRgeypW28B3+kIY43aN2eE1CBkGLt6UHd3/wAvfbLT?=
+ =?us-ascii?Q?erSfJPHy+4XzQbS8r+las7t797pegNcz6ZPyqmXjrRPvNL2H99hlM+KeOOEF?=
+ =?us-ascii?Q?LKQhkYAwcEjL93HUFP9/4tUJ0xYHBTzdweykjBxXjtiEASiPfzdLuw42Z5P4?=
+ =?us-ascii?Q?EF4m27TbFwRcHhQ6uG92vvgwMvkEl5FlZ8YdAFf7MNFGVp08lSVOlGrMQNfC?=
+ =?us-ascii?Q?4PUCZnPaVKvuOYGlayrB9Wgo2bADHBL5LS4OBKfvJPoq/bAdAGNWHt8LL/vj?=
+ =?us-ascii?Q?lMgpcbFffe8lVyJS1l3ApsJ8Yo3qu/Rr6wuCFCzCvETbtWvsh67YvG/LZEG4?=
+ =?us-ascii?Q?LDuzP0jnpLxUE7kp9O8URdyVce3Ijh5APtC0QxqLfRb1OQs5ZQOfqVm8k9jB?=
+ =?us-ascii?Q?djeD54mlVyvUgwYvzphAy3ZD1R2WyLy4bugov6WQMmCh0lTxjRwOjZRNxYDE?=
+ =?us-ascii?Q?kkNhIfpvxxDFGRtIyH1tx0DU603keXph+h+fK4rXWfVI/d01MZc81JNCf2xH?=
+ =?us-ascii?Q?PfmYxB8KkO4tkYN04TJCUo/l0E8dUJA3/EuCaSuKP5zytQ5hUzjyk7w5psC9?=
+ =?us-ascii?Q?DuwvAccQe4OIE/3YQLj8g/Ak7/lyNR2Kob/ucEqT5Atz91JHoHy3dEtHWhPC?=
+ =?us-ascii?Q?87LBh4HvX3qQ7LuP98awHCkSPttgOTUoLrY/fembccLwxnw7Da/F18O28JWx?=
+ =?us-ascii?Q?QkseSbIeBtQHGhKmTlPMlfqIPc1HhU5V4ArlPU7NCbAL+KELggV5MhIjGBwp?=
+ =?us-ascii?Q?RSiXS1thSylK38SP99nznfGeonLKX9+ThFo4wsien7bSWavqDi4ly141ouFo?=
+ =?us-ascii?Q?+mymitmSPIr+oo53RrMC7+RJP6HKjni2/KhmYnpiA+OPexgeJ/+kiEsKHziz?=
+ =?us-ascii?Q?/NpHdUf6d4vqWo7TsEpG0jMZZ56EvJ882G7Zg0j2VWxKZch/gawiHaev50a/?=
+ =?us-ascii?Q?+e2XHOPkbsyTdXZHmi1sSIivl+QEPynjJUXdrrO1GsLbVIq0/bOAkGe1xvtq?=
+ =?us-ascii?Q?fXxF/2a10IBhT/asiCGvbulFJGuFDPL35g7bB+rSN9v0lpBntBE/AA1Lfqy8?=
+ =?us-ascii?Q?79uwd0hgJOHQBj5u448hpvQ4m9D+WBOwZLBR2612qn5GFh31hec15lTZuM4O?=
+ =?us-ascii?Q?bJnt1kMSkni4S4Tatgiyl2/PC8fQz8v+n094JCVAuNZ7M4kfioZVxdsW3mpv?=
+ =?us-ascii?Q?fC9jkqHHdM8tUX17Tx+zvIbHiTFNRXqAVFKCAQkS9ixEdj7vclph+OHVBtHP?=
+ =?us-ascii?Q?j6v/f748cLG9QgqVeoXUZSX9pwQWpCX3w+qlrzD1YGFtl4J1AVK2d7yeLTb5?=
+ =?us-ascii?Q?6vsfNm8VFzh/5yuli9eSDV9PYVCOpkvP4FDBqCj97IsJDybfOM5tLncsHAT0?=
+ =?us-ascii?Q?OWaNH17/VkKeh9X3Q7H/Gv6gDJ5vbU0cgIa6RWcEXFB4lpVE/qjOGWa9GdrE?=
+ =?us-ascii?Q?oEgqvBYIuh+ZlH33/N9jrVHMUiZlD2bcORvSXtGWhZrqmP9quUnLZJohF4lx?=
+ =?us-ascii?Q?MQDrERMoONUAYj9HJJPNKC9ktUEaRhS5jAnP9yM9NP5Te96OuyouEJj8n1xd?=
+ =?us-ascii?Q?fHE+ci7RGjhN/ytU73eweWei0sPfTLMJaUZzHeZQYYUeYcd3355g33qKd/q4?=
+ =?us-ascii?Q?expRfiGQtxR5XIqTMJhUZbDC8cgDwgZci5sL/uwXq1e+Px/4V5wZzP9iUmBs?=
+ =?us-ascii?Q?YfGBTzwFtWdRKm2o1YhdFwiN20dPlIzgW6ylILjbrXcoBTSxBzaNZK/tgXot?=
+ =?us-ascii?Q?xbc8ZaDlTgywyuP2r/oY0nt5mYMKVZI=3D?=
 X-OriginatorOrg: iopsys.eu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 331930db-6b35-4089-cff5-08deec06676c
+X-MS-Exchange-CrossTenant-Network-Message-Id: 784cabf7-7eb0-448b-7a6c-08deec066a51
 X-MS-Exchange-CrossTenant-AuthSource: DU2PR08MB10037.eurprd08.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jul 2026 17:42:18.4049
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jul 2026 17:42:23.2266
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: J4MGPpBu0GvNLidD3XP/iXl0ea4s8I9NTJ7GhJ1q7itqvQQLCH77sOO2sIc3SAyXivUBjwN5mXBoE5IgX2dCcT3yD5/BLqeYofZm6AZQ7XY=
+X-MS-Exchange-CrossTenant-UserPrincipalName: 1J5GHfaOIl9HiG+3BpHHmxDBP6qrxWWgDguNaEPwjVh/cQ0ZRoDUNCVD+v1UsOV4132ab4oOtRMHBYcIili0dheYwleFnEDf1sjNfh6f1D8=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA4PR08MB5888
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_104226_764504_7B0611DE 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20260727_104232_502707_C3C96ECE 
+X-CRM114-Status: GOOD (  14.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,97 +149,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-airoha_irq_unmask(), airoha_irq_mask(), airoha_irq_type() functions
-impements brain damaged logic to retrieve gpiochip and pinctrl pointers.
+Edge-triggered interrupts are handled incorrectly because of
+ * no irq_ack() handler was defined,
+ * no handle_level_irq() handler was used,
 
-Details:
-
-    gpiochip = irq_data_get_irq_chip_data(data);
-
-will initialize gpiochip variable with data->chip_data value. This value
-initialized inside gpiochip_irq_map() function
-
-    static int gpiochip_irq_map(struct irq_domain *d, unsigned int irq,
-			        irq_hw_number_t hwirq)
-    {
-	struct gpio_chip *gc = d->host_data;
-        ...
-	irq_set_chip_data(irq, gc);
-	...
-    }
-
-Thus gpiochip variable of 'struct airoha_pinctrl_gpiochip *' type will be
-initialized with a pointer to a variable of 'struct gpio_chip' type.
-
-Luckily, gpio_chip is the first element of airoha_pinctrl_gpiochip, so
-gpiochip pointer will get a correct value.
-
-This patch implements correct logic of getting gpiochip and pinctrl
-pointers.
+This patch probably fixes an issue
 
 Fixes: 1c8ace2d0725 ("pinctrl: airoha: Add support for EN7581 SoC")
 Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/pinctrl/airoha/pinctrl-airoha.c | 20 +++++++++-----------
- 1 file changed, 9 insertions(+), 11 deletions(-)
+ drivers/pinctrl/airoha/pinctrl-airoha.c | 38 +++++++++++++++++++++----
+ 1 file changed, 33 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/pinctrl/airoha/pinctrl-airoha.c b/drivers/pinctrl/airoha/pinctrl-airoha.c
-index c432e9c13c207..a27a3188ca006 100644
+index 011a4d447e250..723407a59c05d 100644
 --- a/drivers/pinctrl/airoha/pinctrl-airoha.c
 +++ b/drivers/pinctrl/airoha/pinctrl-airoha.c
-@@ -2564,18 +2564,17 @@ static int airoha_gpio_direction_output(struct gpio_chip *chip,
- /* irq callbacks */
- static void airoha_irq_unmask(struct irq_data *data)
- {
-+	struct gpio_chip *gc = irq_data_get_irq_chip_data(data);
-+	struct airoha_pinctrl *pinctrl = gpiochip_get_data(gc);
-+	struct airoha_pinctrl_gpiochip *gpiochip = &pinctrl->gpiochip;
- 	u8 offset = data->hwirq % AIROHA_REG_GPIOCTRL_NUM_PIN;
+@@ -2608,11 +2608,28 @@ static void airoha_irq_mask(struct irq_data *data)
  	u8 index = data->hwirq / AIROHA_REG_GPIOCTRL_NUM_PIN;
  	u32 mask = GENMASK(2 * offset + 1, 2 * offset);
--	struct airoha_pinctrl_gpiochip *gpiochip;
--	struct airoha_pinctrl *pinctrl;
- 	u32 val = BIT(2 * offset);
  
--	gpiochip = irq_data_get_irq_chip_data(data);
- 	if (WARN_ON_ONCE(data->hwirq >= ARRAY_SIZE(gpiochip->irq_type)))
- 		return;
- 
--	pinctrl = container_of(gpiochip, struct airoha_pinctrl, gpiochip);
- 	switch (gpiochip->irq_type[data->hwirq]) {
- 	case IRQ_TYPE_LEVEL_LOW:
- 		val = val << 1;
-@@ -2601,14 +2600,12 @@ static void airoha_irq_unmask(struct irq_data *data)
- 
- static void airoha_irq_mask(struct irq_data *data)
- {
-+	struct gpio_chip *gc = irq_data_get_irq_chip_data(data);
-+	struct airoha_pinctrl *pinctrl = gpiochip_get_data(gc);
-+	struct airoha_pinctrl_gpiochip *gpiochip = &pinctrl->gpiochip;
- 	u8 offset = data->hwirq % AIROHA_REG_GPIOCTRL_NUM_PIN;
- 	u8 index = data->hwirq / AIROHA_REG_GPIOCTRL_NUM_PIN;
- 	u32 mask = GENMASK(2 * offset + 1, 2 * offset);
--	struct airoha_pinctrl_gpiochip *gpiochip;
--	struct airoha_pinctrl *pinctrl;
--
--	gpiochip = irq_data_get_irq_chip_data(data);
--	pinctrl = container_of(gpiochip, struct airoha_pinctrl, gpiochip);
- 
++	if (data->hwirq >= ARRAY_SIZE(gpiochip->irq_type))
++		return;
++
  	regmap_clear_bits(pinctrl->regmap, gpiochip->level[index], mask);
  	regmap_clear_bits(pinctrl->regmap, gpiochip->edge[index], mask);
-@@ -2616,9 +2613,10 @@ static void airoha_irq_mask(struct irq_data *data)
+ 	gpiochip_disable_irq(gc, irqd_to_hwirq(data));
+ }
  
- static int airoha_irq_type(struct irq_data *data, unsigned int type)
- {
--	struct airoha_pinctrl_gpiochip *gpiochip;
++static void airoha_irq_ack(struct irq_data *data)
++{
 +	struct gpio_chip *gc = irq_data_get_irq_chip_data(data);
 +	struct airoha_pinctrl *pinctrl = gpiochip_get_data(gc);
 +	struct airoha_pinctrl_gpiochip *gpiochip = &pinctrl->gpiochip;
- 
--	gpiochip = irq_data_get_irq_chip_data(data);
++	u8 offset = data->hwirq % AIROHA_PIN_BANK_SIZE;
++	u8 index = data->hwirq / AIROHA_PIN_BANK_SIZE;
++
++	if (data->hwirq >= ARRAY_SIZE(gpiochip->irq_type))
++		return;
++
++	regmap_write(pinctrl->regmap, gpiochip->status[index], BIT(offset));
++}
++
+ static int airoha_irq_type(struct irq_data *data, unsigned int type)
+ {
+ 	struct gpio_chip *gc = irq_data_get_irq_chip_data(data);
+@@ -2622,13 +2639,25 @@ static int airoha_irq_type(struct irq_data *data, unsigned int type)
  	if (data->hwirq >= ARRAY_SIZE(gpiochip->irq_type))
  		return -EINVAL;
  
++	if (type == IRQ_TYPE_NONE) {
++		gpiochip->irq_type[data->hwirq] = IRQ_TYPE_NONE;
++		irq_set_handler_locked(data, handle_bad_irq);
++
++		return 0;
++	}
++
+ 	if (type == IRQ_TYPE_PROBE) {
+ 		if (gpiochip->irq_type[data->hwirq])
+ 			return 0;
+ 
+-		type = IRQ_TYPE_EDGE_RISING | IRQ_TYPE_EDGE_FALLING;
++		type = IRQ_TYPE_EDGE_BOTH;
+ 	}
++
+ 	gpiochip->irq_type[data->hwirq] = type & IRQ_TYPE_SENSE_MASK;
++	if (type & IRQ_TYPE_EDGE_BOTH)
++		irq_set_handler_locked(data, handle_edge_irq);
++	else
++		irq_set_handler_locked(data, handle_level_irq);
+ 
+ 	return 0;
+ }
+@@ -2653,8 +2682,7 @@ static irqreturn_t airoha_irq_handler(int irq, void *data)
+ 		for_each_set_bit(irq, &status, AIROHA_PIN_BANK_SIZE) {
+ 			u32 offset = irq + i * AIROHA_PIN_BANK_SIZE;
+ 
+-			generic_handle_irq(irq_find_mapping(girq->domain,
+-							    offset));
++			generic_handle_domain_irq(girq->domain, offset);
+ 			regmap_write(pinctrl->regmap,
+ 				     pinctrl->gpiochip.status[i], BIT(irq));
+ 		}
+@@ -2668,7 +2696,7 @@ static const struct irq_chip airoha_gpio_irq_chip = {
+ 	.name = "airoha-gpio-irq",
+ 	.irq_unmask = airoha_irq_unmask,
+ 	.irq_mask = airoha_irq_mask,
+-	.irq_mask_ack = airoha_irq_mask,
++	.irq_ack = airoha_irq_ack,
+ 	.irq_set_type = airoha_irq_type,
+ 	.flags = IRQCHIP_SET_TYPE_MASKED | IRQCHIP_IMMUTABLE,
+ 	GPIOCHIP_IRQ_RESOURCE_HELPERS,
+@@ -2703,7 +2731,7 @@ static int airoha_pinctrl_add_gpiochip(struct airoha_pinctrl *pinctrl,
+ 	gc->ngpio = AIROHA_NUM_PINS;
+ 
+ 	girq->default_type = IRQ_TYPE_NONE;
+-	girq->handler = handle_simple_irq;
++	girq->handler = handle_bad_irq;
+ 	gpio_irq_chip_set_chip(girq, &airoha_gpio_irq_chip);
+ 
+ 	irq = platform_get_irq(pdev, 0);
 -- 
 2.53.0
 
