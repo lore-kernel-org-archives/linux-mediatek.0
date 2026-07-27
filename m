@@ -4,70 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47E8CC53219
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 09:46:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61E4BC5321C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 09:49:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FuTMUQfncog6oEeL4sOUF4Q0/WDrg0FJmGmDU/fm5Kw=; b=nBtEGW1ngpPTtil1+HgW/clerB
-	q0nW9y/vXbZQXpPqRHqYh/XHwTH6SlnSAyAKNEzVmOdN+genNH06/OLE7Bgky3Gk2gc0uBdScuDO4
-	sQIYHIl8PK0vMJ6NfVbb47CoVjrdIt2PH7y57AowbVadI5gFQisUT21THj/MuGqFY7kTgeKpTAHcI
-	qY7VvJqofJi50mFuh0V3PRg5fYMx0chRjqlDipRHK8ZHtN4spwnpIyupUc3PBZkdOSp57wgodDwcf
-	8J/9t7xqAPohca6ZrMVtoLQ9Bwhvb+GY2JfukI79cJhir88QPyrDuxDihIsSUersOMOCwOmI6uhJp
-	EUU2gqZg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=A9e/RTvQgyA1BXOguUTfpzmBu5ZmU5vPNlQN+p2nyUQ=; b=G4nyp5661BgN8p0glm3jIwqMGy
+	Nu8qwqUNxYHXbORv2ZEsgMQVMwU7rvAB3fYcXwmmUkEG0pKMu/whiZ3AcGk4nk02Q2JlrSfza87kg
+	vAvIMQk4jdXdS38Hn4clsXYReRfUjxWN39eQU6/Qnec3HNc/zl/D3RktEAbBtRdLvE2o1CXQNJN5k
+	B8jLu81MUZyx87gfmTethIiOa7Tm6jN0pgqox8RTVjp1vEftQXiLt+S3XEjiUCUYpoEZR4l2+cB3Y
+	OymCuwc9t0jv9ojBo8ndZHBvSJMavVSWRsQPSlp/q7K7igHlKwuc0hsqEfYPq6dSRtJrkQbll8GCs
+	dcIodZXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woHuh-00000002MqQ-0Mgj;
-	Mon, 27 Jul 2026 09:46:23 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1woHxe-00000002NQr-113R;
+	Mon, 27 Jul 2026 09:49:26 +0000
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woHuf-00000002MqF-0VYx
+	id 1woHxb-00000002NPs-2ah1
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Jul 2026 09:46:21 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6186160A6D;
-	Mon, 27 Jul 2026 09:46:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8BA451F000E9;
-	Mon, 27 Jul 2026 09:46:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785145580;
-	bh=FuTMUQfncog6oEeL4sOUF4Q0/WDrg0FJmGmDU/fm5Kw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=ReBOT0iK2nmQy71R6UmWb4fA7Q3xLwLpGCZ6QkA3OvPi1yglJY62O4LF6Oe+D/mRU
-	 pmV32El8fXRB/fTdZPXIuFGRAgfagVvxK6ruOQ7a4mF6E4XTKNZx9Lg55qCRKtVO8u
-	 Qgoytaize+B0mTHQZROUsf8rIljZqNKxUGDMnSESz5eJvMcJ90ZNwUDLBUcpTvCgV6
-	 yn+pjWHNOJj84TNBcMpPt3vQh+3HVBJq3gld0XG7jEI4PbYpReXQ30nva+jtGr/KiF
-	 luuot6CadMmn0VtRnxyo8Y0V5KQXyaCJ/dpBdJai5EN2eZpPcgRa56LhKYtUk5Wut3
-	 Dpsg8KMHV5l8Q==
-Date: Mon, 27 Jul 2026 11:46:17 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Bartosz Golaszewski <brgl@kernel.org>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Benjamin Larsson <benjamin.larsson@genexis.eu>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	Markus Gothe <markus.gothe@genexis.eu>,
-	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
-Subject: Re: [PATCH v7 12/34] pinctrl: airoha: add missed get_direction()
- function for gpio_chip
-Message-ID: <amco6Tz_pBEUXAvN@lore-desk>
-References: <20260727074234.3761170-1-mikhail.kshevetskiy@iopsys.eu>
- <20260727074234.3761170-13-mikhail.kshevetskiy@iopsys.eu>
- <amcRI3c0-1iWWX5M@lore-desk>
- <179fbc45-a43e-499f-bb54-58fee8c66df3@iopsys.eu>
+	Mon, 27 Jul 2026 09:49:24 +0000
+Received: by mail-yw1-x1133.google.com with SMTP id 00721157ae682-81f3b227a4aso29671687b3.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 02:49:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1785145762; cv=none;
+        d=google.com; s=arc-20260327;
+        b=HktohGX8punuwq5VaDw61814AJLzAjIEhSNj7BwUyXGtjOC6NDgHS5IJdxEYmFZeh5
+         TpZnI64U2BMibgupN8H6hlyDZjFT3CHF51r/xdb2iIKSGEbF09prwcUi0kxT92XSTAVk
+         vwDNwbZGi6AsdT+uLEyFYv/10ic1LyyM5wW62aUsM69OSXbN+GbFJwSrn1n/BsFIZ4E+
+         ePAXXZL800AAO301R2QAfdupQMZiaB1YvaAF9v4bbGmdQFOvS4ARKWuHChL/EiyrcCLm
+         4QBIUUkZBEb/dGSAT10HOkBHISYlFNwk/rmV/5qm0Hen6kZWir/gyoikaumVjIARuv5o
+         6ViA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=A9e/RTvQgyA1BXOguUTfpzmBu5ZmU5vPNlQN+p2nyUQ=;
+        fh=WSJqTY+2ihp+eEt+39xzdnhN6/mgv45aVweY4lAc/bQ=;
+        b=ot3WFkE+uQ8YK4qBQ5rFd8goE25lYus+RlLEA+crr4w7XwsWjtxuKtXlE9NA0E6rcX
+         NX6uqbMcZu+iWFz1YWMBF/BJUUHKFUySoSamCeEdd3Ub4YeT6/jVxEgE2EneJAzM/O6f
+         OLWzQ4r/xjGuN65pwqgX3m3kixvJIbSxyyXNcUTGvdAgQ504sUWtcStJNudVNqfcUrds
+         6Xd8Bc3nFNN+tgexUgtqmoHGCcuL/eetC18aKIONPVLz0BKLXY0t/AIseYCIUbJm0td0
+         Gmy8h+inpqQj9rUtQqKMB3wsT0no+iO4hE4SrGANf9usn8yB1vZqvY9WwJwFsoOTguJ5
+         d0gQ==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1785145762; x=1785750562; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=A9e/RTvQgyA1BXOguUTfpzmBu5ZmU5vPNlQN+p2nyUQ=;
+        b=TSI4/I2iRMdcuwUTBFMSoRqeRL2BjUL7H/1pWdLzcGg+wruqjJzCKhHVGBmSf6DSfr
+         JycaZiY8XtQ/TvArHQxglbz8zP105v182rgmHOvU+QheyFzC2YrbSProXEXmiwy2tP1T
+         EdtptHMo0BnXfONrZSrBrOHLKCSa4NYcwF+Mk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785145762; x=1785750562;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=A9e/RTvQgyA1BXOguUTfpzmBu5ZmU5vPNlQN+p2nyUQ=;
+        b=MEAQAsNksEbAAM5gC2JQTMhk3l5qeVygyOzUgVmmhauqsO7hhaU9LOZ4Z4D86JnKVO
+         cn7uuJuxAcaBcuEFot1Du64eizVrqVBxoiz+AKPZ94+wza/PmlbnfJ9WLDA6ECOjJVwl
+         GNebwAmSNSgPMqWjxGRgVJIRbeSkVv2ZdAOzEoRcPFR2MnKjO3d3AuaiISy1dRC3IZl7
+         c56DCzNEArDSAFC7eCCQ22h7t8x+HtYRtC9bHlExmEwCKhDtolgtNQCFPE38y3ry52RU
+         sOElbhgB8TbqO3fdT4dOWvNlIELEmgDhLlz2pT1oYxEpUX57gUUXXVkmTcIZN9H/LDiR
+         at2Q==
+X-Forwarded-Encrypted: i=1; AHgh+RqNdDQuIb2qpriIKrM3frsZuOyYS0onGUl5+/S97ObQWX4KydrUsWw5fGk3KtHBCa+owqsg5TPCuRupAkACOg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxG2RVPuZ+FI900YUk8lxN0VFULiooW+FOw6xeodmpCraKhv6FP
+	ZrGBS+Gn5/MtWQt/662LWIte4FJyuBGqNFKgy49E9XIybumPi5tOu0LVwzCLvwms+KFqNQ3oDq1
+	a90stzTY2oq5XfE3ELfEVzW+37xPb+q0YIDDO4HFK
+X-Gm-Gg: AR+sD13U608qMynlaMl3xpsW9dYou88Cv4w0/cg1uhscrRccogqmOiDnt/otGA0YJB2
+	NJvoalNXDJYxb/iqcnJKtAOxBpsfaCjpp2LlhHaFHq8LAFd1idrH486e7wW7StOTNeYw5zWxsEn
+	s/hOufLaSdd4G8f2Fm/VOyEm6PdPrEIf9aFvf5tEv775y+i+S8DNhZNUFGqkmqjNEUoVH6crHoj
+	dgpJWEXkrTJpidqUYkdWb2wbSrrQ5osWSuW2oyr9Iu710uJS8Y0I0HoyySmB8XaaUhJvmkC1UkX
+	WlRyH5Yvs+Zzhyo=
+X-Received: by 2002:a05:690c:3744:b0:80c:85c6:8982 with SMTP id
+ 00721157ae682-81f69e5c41fmr26771557b3.65.1785145762611; Mon, 27 Jul 2026
+ 02:49:22 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="riew4lijXiwXJkHL"
-Content-Disposition: inline
-In-Reply-To: <179fbc45-a43e-499f-bb54-58fee8c66df3@iopsys.eu>
+References: <20260727-ccaione-genio-serial-aliases-v2-0-0f2ae41a8e89@baylibre.com>
+ <20260727-ccaione-genio-serial-aliases-v2-1-0f2ae41a8e89@baylibre.com>
+In-Reply-To: <20260727-ccaione-genio-serial-aliases-v2-1-0f2ae41a8e89@baylibre.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 27 Jul 2026 17:49:10 +0800
+X-Gm-Features: AUfX_mymWG_ASKh7iZ4RJYyJ6_dUoLJGXydzUsgaPikOadmqrflcGR-sfKa6ifw
+Message-ID: <CAGXv+5EM5P-cY2VW9MXc_iSjwq=QY1-OaV-s6W8wD8YTUvFN0g@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] arm64: dts: mediatek: alias all enabled serial ports
+To: Carlo Caione <ccaione@baylibre.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-serial@vger.kernel.org, dlechner@baylibre.com, jstephan@baylibre.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260727_024923_691275_79B1885F 
+X-CRM114-Status: GOOD (  12.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,137 +120,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---riew4lijXiwXJkHL
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Mon, Jul 27, 2026 at 3:40=E2=80=AFPM Carlo Caione <ccaione@baylibre.com>=
+ wrote:
+>
+> On most MediaTek boards only serial0 is aliased, so the remaining
+> enabled uarts get first-free ttyS line numbers from the 8250 core in
+> probe order. When the console uart defers on its clocks another uart can
+> win line 0: console=3DttyS0 then ends up on the wrong port and the boot
+> looks like a hang on the serial console, depending on probe order.
+>
+> Signed-off-by: Carlo Caione <ccaione@baylibre.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts    | 1 +
+>  arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts              | 1 +
+>  arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts  | 2 ++
+>  arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts              | 2 ++
 
-On Jul 27, Mikhail Kshevetskiy wrote:
-> On 7/27/26 11:04, Lorenzo Bianconi wrote:
-> >> This patch adds missed get_direction() function for gpio_chip.
-> >> Also it reimplements pinconf's get_direction() function using
-> >> newly defined function.
-> >>
-> >> Fixes: 1c8ace2d0725 ("pinctrl: airoha: Add support for EN7581 SoC")
-> >> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-> >> ---
-> >>  drivers/pinctrl/airoha/pinctrl-airoha.c | 41 ++++++++++++++++++-------
-> >>  1 file changed, 30 insertions(+), 11 deletions(-)
-> >>
-> >> diff --git a/drivers/pinctrl/airoha/pinctrl-airoha.c b/drivers/pinctrl=
-/airoha/pinctrl-airoha.c
-> >> index 820b7b0443851..b52eb39c55ff3 100644
-> >> --- a/drivers/pinctrl/airoha/pinctrl-airoha.c
-> >> +++ b/drivers/pinctrl/airoha/pinctrl-airoha.c
-> >> @@ -2502,6 +2502,27 @@ static int airoha_gpio_get(struct gpio_chip *ch=
-ip, unsigned int gpio)
-> >>  	return err ? err : !!(val & BIT(pin));
-> >>  }
-> >> =20
-> >> +static int airoha_gpio_get_direction(struct gpio_chip *chip, unsigned=
- int gpio)
-> >> +{
-> >> +	struct airoha_pinctrl *pinctrl =3D gpiochip_get_data(chip);
-> >> +	u32 mask, index, val;
-> >> +	int err, field_shift;
-> >> +
-> >> +	field_shift =3D 2 * (gpio % AIROHA_REG_GPIOCTRL_NUM_PIN);
-> >> +	mask =3D GENMASK(field_shift + 1, field_shift);
-> > before we where checking just BIT(field_shift) as mask, while now we are
-> > checking two bits.=A0
-> As I know upper bits treated as reserved. I think we should not use gpio
-> operations if upper bit is not zero.
-> What is your opinion?
+>  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi            | 1 +
+>  arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts | 4 ++++
 
-I guess it is better to use a mask of just one bit here.
+These are the only two MediaTek-based Chromebook designs that use
+Bluetooth over UART and have a second UART enabled.
 
-Regards,
-Lorenzo
-
-> > =A0
-> >
-> >> +	index =3D gpio / AIROHA_REG_GPIOCTRL_NUM_PIN;
-> >> +
-> >> +	err =3D regmap_read(pinctrl->regmap,
-> >> +			  pinctrl->gpiochip.dir[index], &val);
-> >> +	if (err)
-> >> +		return err;
-> >> +
-> >> +	if ((val & mask) > BIT(field_shift))
-> >> +		return -EINVAL;
-> >> +
-> >> +	return (val & mask) ? GPIO_LINE_DIRECTION_OUT : GPIO_LINE_DIRECTION_=
-IN;
-> > nit: unnecessary brackets.
-> >
-> >> +}
-> >> +
-> >>  static int airoha_gpio_direction_output(struct gpio_chip *chip,
-> >>  					unsigned int gpio, int value)
-> >>  {
-> >> @@ -2648,6 +2669,7 @@ static int airoha_pinctrl_add_gpiochip(struct ai=
-roha_pinctrl *pinctrl,
-> >>  	gc->free =3D gpiochip_generic_free;
-> >>  	gc->direction_input =3D pinctrl_gpio_direction_input;
-> >>  	gc->direction_output =3D airoha_gpio_direction_output;
-> >> +	gc->get_direction =3D airoha_gpio_get_direction;
-> >>  	gc->set =3D airoha_gpio_set;
-> >>  	gc->get =3D airoha_gpio_get;
-> >>  	gc->base =3D -1;
-> >> @@ -2855,21 +2877,18 @@ static int airoha_pinctrl_set_conf(struct airo=
-ha_pinctrl *pinctrl,
-> >>  static int airoha_pinconf_get_direction(struct pinctrl_dev *pctrl_dev=
-, u32 p)
-> >>  {
-> >>  	struct airoha_pinctrl *pinctrl =3D pinctrl_dev_get_drvdata(pctrl_dev=
-);
-> >> -	u32 val, mask;
-> >> -	int err, pin;
-> >> -	u8 index;
-> >> +	int err, gpio;
-> >> =20
-> >> -	pin =3D airoha_convert_pin_to_reg_offset(pctrl_dev, NULL, p);
-> >> -	if (pin < 0)
-> >> -		return pin;
-> >> +	gpio =3D airoha_convert_pin_to_reg_offset(pctrl_dev, NULL, p);
-> > if you do not rename pin in gpio here the patch will be simpler.
-> >
-> > Regards,
-> > Lorenzo
-> >
-> >> +	if (gpio < 0)
-> >> +		return gpio;
-> >> =20
-> >> -	index =3D pin / AIROHA_REG_GPIOCTRL_NUM_PIN;
-> >> -	err =3D regmap_read(pinctrl->regmap, pinctrl->gpiochip.dir[index], &=
-val);
-> >> -	if (err)
-> >> +	err =3D airoha_gpio_get_direction(&pinctrl->gpiochip.chip, gpio);
-> >> +	if (err < 0)
-> >>  		return err;
-> >> =20
-> >> -	mask =3D BIT(2 * (pin % AIROHA_REG_GPIOCTRL_NUM_PIN));
-> >> -	return val & mask ? PIN_CONFIG_OUTPUT_ENABLE : PIN_CONFIG_INPUT_ENAB=
-LE;
-> >> +	return err =3D=3D GPIO_LINE_DIRECTION_OUT ?
-> >> +	       PIN_CONFIG_OUTPUT_ENABLE : PIN_CONFIG_INPUT_ENABLE;
-> >>  }
-> >> =20
-> >>  static int airoha_pinconf_get(struct pinctrl_dev *pctrl_dev,
-> >> --=20
-> >> 2.53.0
-> >>
-
---riew4lijXiwXJkHL
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCamco6QAKCRA6cBh0uS2t
-rPNsAPoCaxEq+cONCBlBmmzNPjirzkrL5V/UGCkZSCpeh6ibhgEAoAw4yQBOmS3T
-maQG7rrwfujQnLsjxTl8VA/gFk4PEAc=
-=Bvvv
------END PGP SIGNATURE-----
-
---riew4lijXiwXJkHL--
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org> # kukui & asurada-hayato
 
