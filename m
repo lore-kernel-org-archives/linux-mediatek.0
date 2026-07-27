@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA105C531FC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 07:43:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51A84C531D0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 07:43:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
 	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rtnmZVGONEFbK+NWOTldHnFOxVlaaQBwy27iFXAQxUA=; b=QfVnj6wFX8a34Piu2A0XYC0Yd0
-	uoIIoA0U1JaBi9hpgoZ0JMoQbcSoMqeH/tbcA3VCAGsvHrbcHwsEM99/XXrvmmdM5yYI6rF7ZoE/b
-	WhcGhtZ3XcKP4ZPoKcFtQLi2X7bG3lgD1yBXM5LBCnne51+R9aa79H4bogV5553ijgUsv3Ep3nKPR
-	OWR3j6JFEx+2O9WA1/1x0W8/AOSP2CBEwKQcbBSlz9u6L3w71XHFBvQvOp+p7U4+rWA46TDPE1SPp
-	RwTaHGHvn2UeGNlkqi/sfAnK10ID9G9P8W3bPlO6qgLhJ7YKsiuZWRC+jDC2m1+aWxv7eVoVG8L9M
-	HrWxTYFg==;
+	bh=1wmBgjtUx95LSs/nCTPOnFApPqxMC+nDPCDYIy5PTKM=; b=VkUZRLKFcet7WaSeq0w6iXot/e
+	KQLfBaOFof9Q7z5oEkJVUAR50WJSqQk6iRuSg+A2EXy1abXU2EiTyZr6Lrp+5BT3GhoOUJkR7LRDz
+	etw4hXV/C4GjAdcm1tVIm1RepPQSNyN4N58kk2EuGQaEJSQ/wIbns0TpOWjw76RGUPo7YBno7epjJ
+	seNkU+B6CE9jRbs9GRM1iANkFG/s2ft9iP+q+K4dzMq8oH30GNTtXEA0VUOEN0BzSzM5RCx6d6Tq2
+	9m45GqiWIVp2FFwrZPoXOLF3KOLcr6mxu0xVZUcD20BlPgXw12QZ9d28DtRia62oF17w/OZU4zAG/
+	eALU3CDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woFzh-00000002AN1-3gYe;
-	Mon, 27 Jul 2026 07:43:25 +0000
+	id 1woFzm-00000002AR9-0ToD;
+	Mon, 27 Jul 2026 07:43:30 +0000
 Received: from mail-swedencentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c202::7] helo=GVXPR05CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woFzd-00000002AB1-1inv
+	id 1woFzg-00000002AB1-3SsM
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Jul 2026 07:43:22 +0000
+	Mon, 27 Jul 2026 07:43:26 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=aY6TVvLK5vtAXornVeaBQz6kXZZKBqgcGvQkAr0kYW3AFy0enTUyfTAKsPiib5tbW66R4g6zNK5JbvJ7VlPc85EF+DN9IyAlaAvQHNyHejUMjMLSYmi4H817ImYeXcZ8JazrASqrqxpKYKleY0vjsGN4isjlahVqQxe35l26rkD3zD9YmUbuU51VTji/bBrHhdeHSVKae3/tziKLkLUGlOLglNpqGOpNzFgR1AObDTCHONDRXET9UKOl9t/S/AOnB1Ye3t3jlkzLhVLUpObOmrmunl/4KoLPiHWLpji8UVx0F5tw/exxGcr/7qyL95ltduswhaw9mAdloMnO7y9ZUA==
+ b=VqYA9/11vVff6i4NDxVnCIN18y0FUcZLbeNo9lpvxILc/hLcetsX/raqGz+psT2mMagZIfmCgOkSx775Pj73E2M8zTbc6U//iOgpyNR3HuTO1Suf40MUra7kgd2xiKTfaod6Rh9+6ZquwkW/EP+m3Sc0vqE0VWdJDfEVp1v89wfoybsbScHbvsMlMz2Vo9Lga22/Ra5iJ7m7R5z0YKvKU655rk821nxkF/fwUqXKGiGAYswZSBEMeZpWPJ34geOcx/BCyE1KCoKhnr6Jpr8dlQy+KSoC36ARNXbqyuJsvAF26+zPnjBopGTQ6W9YLVjfwj3N8zqojLAGg2EzHjM34Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=rtnmZVGONEFbK+NWOTldHnFOxVlaaQBwy27iFXAQxUA=;
- b=MniyGbL8AV1bvCNlQDlKg60wK7K5b8aqDamfa7o+yEEe+nf5K7LnFRJKW45XNph/wFWQp9c7i8MfTItMNv7SxODldPXh45oM5pbHAYj1hnoJEqbReI7llA9INr9PiLLNyKeKdh2BM+5J/xKPjDsFvvlJGRqZLkPnUJk2mdWLXKYY/WPHQQp6zau+mX1PxZXpz7jTxvL7/tjHjGagTBOR+7+kcviGGf7ZOMa++7ManvA0wVAjGpdvHg6qdGWXULVIWs0Ypqce5mU0Jx93h3Tbp2GscyFYuUFo4GfeYS11NpBKeWYLdmKNmYsB6CT9+VGGYVAxY86FfycoW7sqYYkx4w==
+ bh=1wmBgjtUx95LSs/nCTPOnFApPqxMC+nDPCDYIy5PTKM=;
+ b=j7qAWLEAtyguJP2J15syKudTJcTcTqyETyOG4LcNPWYApTPPglZzzXXZD6thrjPEdvYMWpEKeTBvbtdsNdKIAMwuqvaYtNqbOoEIJA3hiytupV0JvWUrAynaSX3g2w4s4AgZMTTldWw/o2RoJgB6MGbEgVh0L9isNpzRHNcMeEVokvVWXzSgyrpKePIEjNKC+O00W8jvvFnG9hQDQolec6tOxNwydlI325expCX9DKwP9rdVCwk+c55qRSnlUwBmDPivriMpt/RsEKf5J8VW5hPPxxrztwCeNl7mvpYOxoVNMHiWlmsiwUpFP/FYYl/d9bLFQ1mLlaI4Fyr6NU+eVA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
  dkim=pass header.d=iopsys.eu; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=rtnmZVGONEFbK+NWOTldHnFOxVlaaQBwy27iFXAQxUA=;
- b=BBgje8mrgz8GRUznSlafcVhpXB9DkbvmMI3En9pzZaA1mo8xNrsNCTu71zwpBifkSnm6ZBm9UGR6YMbTctV0QBV6joUQ8SB1yjpoUvKRyy0IlKq8f4XpqBkNQN7NvxSLghkAd++w4klV42r3PHgbY1FIeLT+c0DVRdRvey+ePN1wddn7yOyjabVAboChYbQjfc/wE9ttNI03TKpqA5d6jQTUyaOIHvDz0SyyVZvGXCDLWr5qCL+fSO24mYPWzXuL2rYE0zqUz3uTzPVi1sa23JHH4cg3RJ/gu4a/t46M/XLYQYouk8NPKFXS4/i/sCvS+24wFnCC+5jvVkkj87dSsA==
+ bh=1wmBgjtUx95LSs/nCTPOnFApPqxMC+nDPCDYIy5PTKM=;
+ b=FBbwHjYN5K7l4l/Fo7rY4ipieH83R/FYKPxYdCh/naOBbwPbgk5BfOEnE8YJUKA9E59LkThD2yP44DheSRV76kMFfxHMJVYBmWw5GUiXdP1VpQVdA8J33ICmc0umfxsaAJHwjrY4qmWw83ikBN+3djmSFGZLcGeCKt2lzkhe3jF4wXn38W+SFMTu6kNHX2ObIGprxxUPVe2LKDdfYY2yXuBhyIvadRYRKECRVR1Qb2grvyHNfBa5JHk5hmdA8ZcOJMJ+nOW5KQz8kgmH/EG9gnT/NCwrfdixRIy1/wgGDURLZvveOoKnu+Z/bToW5A4tncsnvJDM0OYqHQNNIEdKQQ==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=iopsys.eu;
 Received: from DU2PR08MB10037.eurprd08.prod.outlook.com (2603:10a6:10:49a::20)
  by VI1PR08MB5501.eurprd08.prod.outlook.com (2603:10a6:803:138::21) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.245.13; Mon, 27 Jul
- 2026 07:43:17 +0000
+ 2026 07:43:21 +0000
 Received: from DU2PR08MB10037.eurprd08.prod.outlook.com
  ([fe80::3c7:6d2e:8afe:e4dc]) by DU2PR08MB10037.eurprd08.prod.outlook.com
  ([fe80::3c7:6d2e:8afe:e4dc%5]) with mapi id 15.21.0245.012; Mon, 27 Jul 2026
- 07:43:17 +0000
+ 07:43:21 +0000
 From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
 To: Linus Walleij <linusw@kernel.org>,
 	Rob Herring <robh@kernel.org>,
@@ -70,9 +70,9 @@ To: Linus Walleij <linusw@kernel.org>,
 	Markus Gothe <markus.gothe@genexis.eu>,
 	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
 Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Subject: [PATCH v7 17/34] pinctrl: airoha: fix edge-triggered interrupts handling
-Date: Mon, 27 Jul 2026 10:42:17 +0300
-Message-ID: <20260727074234.3761170-18-mikhail.kshevetskiy@iopsys.eu>
+Subject: [PATCH v7 19/34] pinctrl: airoha: move common definitions to the separate header
+Date: Mon, 27 Jul 2026 10:42:19 +0300
+Message-ID: <20260727074234.3761170-20-mikhail.kshevetskiy@iopsys.eu>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260727074234.3761170-1-mikhail.kshevetskiy@iopsys.eu>
 References: <20260727074234.3761170-1-mikhail.kshevetskiy@iopsys.eu>
@@ -84,57 +84,57 @@ X-ClientProxiedBy: FR5P281CA0051.DEUP281.PROD.OUTLOOK.COM
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: DU2PR08MB10037:EE_|VI1PR08MB5501:EE_
-X-MS-Office365-Filtering-Correlation-Id: 307dc4d4-5c0c-4d54-044f-08deebb2b90c
+X-MS-Office365-Filtering-Correlation-Id: 73800267-74fb-4d26-f3eb-08deebb2bb6c
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|23010399003|7416014|366016|52116014|376014|18002099003|56012099006|10067099003|22082099003|11063799006|6133799003|921020|38350700014;
-X-Microsoft-Antispam-Message-Info: Eb6EDehIeEDLZy3kSrFW4Bm3LYilR9g7aBk4ThBNKknwSNiY/a3q4gCwQGxANop4i6tefx3v4NVcjew1PUcrgUTtdcCnL14aA+Kcx7wc09/2jhWe47pwqo4OXdvT2UUKlLiKrL8kfbjkImKFg2XW8Ce3CaDnucOwzTId2dsG8DE3wZPu0D+gqCNgfOeS9wb2b0hCtq4ha5y93oSqAfalV1dnwXa/t+KuxrH908YJhcKR07BW4LR6Ji73WLY53ganr6Vpycnp231lmGV1W/UlDNTmMkar3lC83UWzW1cN9lbAal1kE+mhRCFS51MVZk7uU0T3QRGQypJfzAqaKWPmBYd/TE061OtDnI3ymUh8fdw8B8CAY+MxtCCEIxZyaEumKtea5dIkm44A072wJkkQGEEu/whkmqEKv7V0jhKwAT3TQmK4lu1i7vU4iuzdbAMVnw8N/pluKiAyXIgrQhkSp4nCZtqt8AAQNHhIPs4ujcbp5cMRIb4BSnAMabua9Tf8iaQ7bQ4GKBPomDA5eetAE99r5weVtEtUc4/5knsQN9ybzPiBPOz3ngn4rO7Qtl1G33QiHGCVBQEbL+67QUk9FdrGN3MuRr53l1QRajFCHYTZ8ML+Oy5BJkcmL154ZBb8Vd9QpEtX8dT+QCW+EPuFhEhn+Paq2wLGXFJS1YOCSNv43jbu7JkGI4Ws1ZMCbXL+4dHetxuYySCZAhEfEmSck6WzQC0GzXtAoM0G1rh/PhM=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR08MB10037.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(23010399003)(7416014)(366016)(52116014)(376014)(18002099003)(56012099006)(10067099003)(22082099003)(11063799006)(6133799003)(921020)(38350700014);DIR:OUT;SFP:1102;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|23010399003|7416014|366016|52116014|376014|18002099003|56012099006|10067099003|22082099003|11063799006|921020|38350700014;
+X-Microsoft-Antispam-Message-Info: DxZXgCiI/mvTVUDylosTk7fGKdGotW+AOKSDHoTFSKlkrxxtDPSCVzyPJP/USyX5lM6T7yuMib+qyxrJngxHt8Z/9Qn87mNcYJh/uQM6WHd0B3oiH+KHFPVODqhknVuBufOcSvmXF6Bmoieu22nuwvjCN3dcFdCsg2AGl1bGT5Gc8+NWsR4+7xcFJG3g2DfCzbzhQt35Er9kQSz1rZA7blBq6xAWFW8lTiha8ntq8xEfxhOHI2Pb+p+O6mdfPP5To+wuyvKKYFRd+Ru6b9bQ/juf4fqP/2wRm1pc2Q4TJM5g+kGXlnd/PLnTQxqp7mzXWmlJUNm2kqFSympIcZhfzFmsa9uyrYaYHbyv7iqYhPyxjKk+mn0zMuZMaa3r3s7t2SfNrV8G7ho4QenJahEyZ3IToad50fCKaefxamKm6MgS7wS6orcu9keXUlnKEX2N41AVutr6tbO6AN3UF0p25s5++DHiHfPMeKKb3xfXNQxRLU0ChmAyLwUkj33t2CcdS/JlmbWjU/woL3X6abU/O4gM37nsHV2SEL+V8R/nwUaywi605HLpqkJwyKDc9IJxIZvnbDqdCQyWrwbf5sh5TEGXLdBXDkANuFVMARQKgwLkZCeagVbo9bboDIdRh3CODixXwHqP+fkz2TB2/N9yXxZ/As6ICrkC3M5UukAQvpUjIr3+u0NADfKTM5nuERryQzbxU+1G/q16gfc4PuGzhoJKR+3W+PZF01UK/HT9TII=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR08MB10037.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(23010399003)(7416014)(366016)(52116014)(376014)(18002099003)(56012099006)(10067099003)(22082099003)(11063799006)(921020)(38350700014);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?83j9ds8h04T8JTgjyzBEltLtXlZFePNbrK3ew3Nv7JOO9WjTS0GxR82kZlo6?=
- =?us-ascii?Q?dtfE2XFhbRsnOaNTgsTRzh783wl67YhYQFFrtqeFXFB27AwspPBfVNnKKdjb?=
- =?us-ascii?Q?T6jZxi0MjByT263fxyIEhSwDcCKdKhxC0U6eBDp4IQ6h7ljq3ZbU5puY7hnf?=
- =?us-ascii?Q?+UQEAbgbZRgcWgwCgonSRJnpUE4NGePTyiG6W1Y2e3HEYHhvgZ2ullsy5/x9?=
- =?us-ascii?Q?Aam366cC2pkF/t0N8mV3ZuYh+tpPGzO8/35+sdEHfqtidpqsH07tfXFqKrIZ?=
- =?us-ascii?Q?hKDAvt8KoQAMqKs+EUzPJdgWGr0cL7pbH/QMc3Y6+U+Shr5D96FyeyveJ/tP?=
- =?us-ascii?Q?1tLmNmsNg5TtIfBQvIkIu0dHzD9zUqJXUF7eE+JsvurSNjWlq6GTXglaXcIb?=
- =?us-ascii?Q?n0K33lHfksIIb8RcVKx3fUHUZ+83UvZIuv3bCVeItu66FSvTR26QK9/4WT/k?=
- =?us-ascii?Q?F29CaNIeNadPg7IjxJh5jKUAk5smZb0cpHnrLHTqGuDp8jQRd6WWnVVF5r94?=
- =?us-ascii?Q?Q7XJtHT1rhdhQnGhe1ThUkWEkgAkCym+q6qEn7Sup/FYed7jsDsQHKDppJfm?=
- =?us-ascii?Q?TjP2L/t3HouXjn8dM/jT6SG1m2Q3WYi/5nqlmwGZlhc2bzlSXtdhlYGdDt5V?=
- =?us-ascii?Q?6+FAOSh1je9L5taKnRona+nu0VghwuvApMGnSKLt8C7BMxiDBCfEqHmbLcB3?=
- =?us-ascii?Q?VR+NTdOYhIWlTuqIXlO9bEkCQROIbtgLXpO/+ffTghhrdQQv7sCw8Hz512v6?=
- =?us-ascii?Q?U+TpmCMFs1TZgOlaZfxwCJClmbP8wq5p0akscJFq5+7fEpoPzVa5lulGQv2R?=
- =?us-ascii?Q?44Nj+aAcAogWN110CmDm6Oyx0QapFxxTiSgua0qjEpiQh4FIaxf8NrK7aOES?=
- =?us-ascii?Q?kYdqLNMQc1nwqpqpxaSTIECrMcjnwSXBo0w28eA6NtrFwzWFbeHNGtvt/pBu?=
- =?us-ascii?Q?bGEPeITyw9IUG2t/nrcEFO4z0O0SzvByYpgdfNOw5X570HZtH6mVaQ/vEcDQ?=
- =?us-ascii?Q?r/Lg9O/CaZgVpqmUN1L6+GO+qxJsUokHacRGI6yiBYLiwD1MNWD1usuN80yi?=
- =?us-ascii?Q?lXF0NapRrGsuYsitAqYgDqXE7quYF9dsWkMYc5kYGfOT3/AL+OeNdN3ZTfg5?=
- =?us-ascii?Q?a1jwW3kLl0MTA2HD/pJNJ6sAyVWPeStTv/PYRjLcdl+C+c8Q9+4hNbqY2dOV?=
- =?us-ascii?Q?7VvbDqXl20uZ0kuHGGb9I//8LbU/NyHxOaZoq6NkfKxsWt4Npa8sXqfYaBVd?=
- =?us-ascii?Q?1BtFJDojtvxUean/+W5r3Clby7Q0V3XY5iAWaMbiSJ9BhSAD0kjYWRLrNuuC?=
- =?us-ascii?Q?YGK4hMP9SI9hIn/Mw755PmXDCRviYpAHT4IiUHSyiOjKS1jtYEooTB5paOej?=
- =?us-ascii?Q?wrtdiA7RAXpsFmeW/8fB98W+X7ja3ArkAhR7oK9c/zxxD9awXWdOl4jaTQwI?=
- =?us-ascii?Q?gYeCTJZPtzgeRUEcIZj9EvHR2ZMvFp1Qu84L7lAvySokZcZtXF9JNXfgXNng?=
- =?us-ascii?Q?55sBV5wWtW1rhMzkvWWkGQ2ygVl1nbQPI02xoNIf/I+czMX1qWBEHH9blGfp?=
- =?us-ascii?Q?dM15FEuAwMC+5XiSLT1yfFryLy5PD4WjFA+Azl3vHggkICNmEti1mwzTZ3aF?=
- =?us-ascii?Q?fxiP8h7uQRKw4EsJP7ukQy4sTNJWTIrW2qxAeEW9/Lc9i5RFd+3zOBgdeEna?=
- =?us-ascii?Q?2cGHKAMaHvVU9cns27IrMpoISdVzkQe4gBed0gVdAcr1tNg3WN5cfixOgCcX?=
- =?us-ascii?Q?juMCtTPH4WmavX+5T1yBOajdW4ZNjV4=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?wb6M6tqPZRSyLOCmB5RE2fx3r+UfsnNRZkJRCYm+YOXdypNTOUlU7qpV0OKP?=
+ =?us-ascii?Q?QE4R2gfIiRP1Hnm2jdNf4T5mLZVYcD83PuIzWhpUzQUuIq4p83E0OD+3lfZz?=
+ =?us-ascii?Q?Yo82FQA1bf6MVMBlgwCR7Ey0/kiiJvhhhdbo8105eThcQ50fTnAUDectnine?=
+ =?us-ascii?Q?4N9JdLMLU6nMjAvxQxSMTZGqRh5kU1ufM4ZLH8qketvCgkmonub5wZZwF+Xf?=
+ =?us-ascii?Q?S/eN3UOXfEUyGp4r77RvIBxchEApZFpomy2kRa4EnjOUYWhbxxTgWCPHlBp7?=
+ =?us-ascii?Q?D9lGqiMA/Gy81Mr/YqiUmSRMJmw87FE7WgrBK7lZXm7iQGUBwySvaFJq1+N9?=
+ =?us-ascii?Q?tVhL0I78RLmrqmm/jAkq8IVzxlHzFERCV5pyBfc1LbMDakSGFQzVIT0P3/P9?=
+ =?us-ascii?Q?+lIV0uNIyMEtopXd7bx+9HYA/IbE6001hlb4jfRtDC2j0cCvxyIdhZCS6IPT?=
+ =?us-ascii?Q?sSYOBOFO9B/mF7YA8erW3rgwawiYJ5tdgX5cgnqzCv7m4ONYWW3KKxAtfemA?=
+ =?us-ascii?Q?yF67g5TKQ/9q+wopXJDfSSDF2W9CZmBUUchdV3o8qVFqKjS4GOREVrouw74o?=
+ =?us-ascii?Q?HTqz0YERFA8+LtMmNxF/6tpXsfeuCpWkahma6E0L2XhK+Lj87619YVRfYFtu?=
+ =?us-ascii?Q?HSYZdxA+ZQEscmK5nPUtc1aMWy1rYPZe7eSQjWb7nveUPrw7PIZlKg1VKebx?=
+ =?us-ascii?Q?uAxFKrHIau1DDgDOeppVQ8c7LaeMz0Xx5pVNSPnSY+8eT+OBRd9O31Yq0T2q?=
+ =?us-ascii?Q?EacwaOILifvwmq1xKwZ45fX6+SIjQFcyCgHd+YCxbqpNhLXiFlSg5W3bbnKf?=
+ =?us-ascii?Q?4pOPafoYa1b4sV14DsKwtasVcCDTJHsI30sMPZXsmeKzsaeU/w3+9cA4jl2x?=
+ =?us-ascii?Q?5SlLT1wvjv8/3Uk7z4jp6ou0d7X+F1C3N3RtOWlX19JudvpZpcemCN22BP0l?=
+ =?us-ascii?Q?URqYpnSKu5o5lZ9qHhLfMmYh1gy22nmUSeR4U618b7EIbjxCPp2nNsjjIcEL?=
+ =?us-ascii?Q?H/zG7MqbNRBkratjTq6F8IgbbjxpCPQBoENCGMWVaA9W0HGWGXuBLqWQh1JO?=
+ =?us-ascii?Q?yT/HgwcGCWAcCIwPPZlhKRU4sUgFvFQOn/SH6XFSyNGZH7jLxRzweYFWgv99?=
+ =?us-ascii?Q?AS1FipkP+JfhFva+n6MF8GLZ1M8p85SD9zCny/u2uS8vIOs3d1W2SRpvBLve?=
+ =?us-ascii?Q?u/Mn2t97jbdMctiaXpNhXegi/Fy2n5Cly8h6/O2471NyzTaOhCZnlVWxaRw+?=
+ =?us-ascii?Q?RfnkH6FZlOxz4/6gJQyMdC2mGOoZ9GxfgXNXySqVyvPwIs/46EufNTXN8oBc?=
+ =?us-ascii?Q?6AUL02QcWB4qbHiHhMGKd/7DuOPATK3knsXChy2yruObHIRjmZgLNlZsKewg?=
+ =?us-ascii?Q?6Fa3JqJ+HmRusCe0mr8qldFDCqeVsavafIw/DU/zAlWYFfMKRwQD9UxMsp8Y?=
+ =?us-ascii?Q?ZYQDjDyvmrTi1BcsxEI8ZzDBHom42pZDZ1tH0zWzB/gre2xHpoixG91g9p0y?=
+ =?us-ascii?Q?gtw17Yq3OXIwZRNeuK4OVai/QO3L/jKkISp1zobVYY9b27OPAM8rPjxP24NF?=
+ =?us-ascii?Q?9FOnhnR5bjRqRCXUjGnK24GcNj7SmXDAiOFEmqusTjGWCmIJfYHPghR4db8n?=
+ =?us-ascii?Q?c0X//NyA9da+IMbAUAl9NWDHXx2kBmz5kxb1QPG+Gutfu+XOen9esZW7H84F?=
+ =?us-ascii?Q?TueLsF/1D7jiNIncWAwZe6ogkzIGZvMfYEkofqNAQm3DN23VEVCWKsV7S035?=
+ =?us-ascii?Q?vNm7wBLGnM+9HzQITxZBoBROVsEBnsI=3D?=
 X-OriginatorOrg: iopsys.eu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 307dc4d4-5c0c-4d54-044f-08deebb2b90c
+X-MS-Exchange-CrossTenant-Network-Message-Id: 73800267-74fb-4d26-f3eb-08deebb2bb6c
 X-MS-Exchange-CrossTenant-AuthSource: DU2PR08MB10037.eurprd08.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jul 2026 07:43:17.6728
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jul 2026 07:43:21.7774
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: hV6WaiNlgiNNFo+X0/3/hYlGVy3tooz9PlKQYV4q1e1uvIfNuw5G9Kf7zvSpkRAfEeoxXyfF1j2t7gmOJBu+3P2QvC5hdLl3PgNHqZ1KCzk=
+X-MS-Exchange-CrossTenant-UserPrincipalName: g9oJ/jhjIuwe2JF74lWAubl2TwtzeGYBFKv7Z/BbM+7uKre9hC+4GFZA6j+J0bIDJ3KaYU46HffWwzeJc7n6GrOmNEqXXWRxRjzpenM901g=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR08MB5501
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_004321_459289_0F45FFC9 
-X-CRM114-Status: GOOD (  14.78  )
+X-CRM114-CacheID: sfid-20260727_004324_898249_C94F0F2C 
+X-CRM114-Status: GOOD (  15.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,106 +149,677 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Edge-triggered interrupts are handled incorrectly because of
- * no irq_ack() handler was defined,
- * no handle_level_irq() handler was used,
+Let's move the SoC independent definitions and declarations of structures
+required for Airoha SoC-specific pinctrl drivers to a common header. Later
+we'll have several SoC-specific drivers, so this step is necessary.
 
-This patch probably fixes an issue
+Also move GPIO related register addresses. It's not changed across en7523/
+an7581/an7583 chips and will be used by common gpio code.
 
-Fixes: 1c8ace2d0725 ("pinctrl: airoha: Add support for EN7581 SoC")
+We will not move to the common header file other register addresses,
+register bitfields definitions and macroses that use SoC specific
+information. We will keep SoC specific definitions inside SoC specific
+files.
+
+No functional changes.
+
 Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
 ---
- drivers/pinctrl/airoha/pinctrl-airoha.c | 38 +++++++++++++++++++++----
- 1 file changed, 33 insertions(+), 5 deletions(-)
+ drivers/pinctrl/airoha/airoha-common.h  | 163 ++++++++++
+ drivers/pinctrl/airoha/pinctrl-airoha.c | 414 ++++++++----------------
+ 2 files changed, 305 insertions(+), 272 deletions(-)
+ create mode 100644 drivers/pinctrl/airoha/airoha-common.h
 
-diff --git a/drivers/pinctrl/airoha/pinctrl-airoha.c b/drivers/pinctrl/airoha/pinctrl-airoha.c
-index d218a1f01648b..df3a1d7c7b571 100644
---- a/drivers/pinctrl/airoha/pinctrl-airoha.c
-+++ b/drivers/pinctrl/airoha/pinctrl-airoha.c
-@@ -2613,11 +2613,28 @@ static void airoha_irq_mask(struct irq_data *data)
- 	u8 index = data->hwirq / AIROHA_REG_GPIOCTRL_NUM_PIN;
- 	u32 mask = GENMASK(2 * offset + 1, 2 * offset);
- 
-+	if (data->hwirq >= ARRAY_SIZE(gpiochip->irq_type))
-+		return;
+diff --git a/drivers/pinctrl/airoha/airoha-common.h b/drivers/pinctrl/airoha/airoha-common.h
+new file mode 100644
+index 0000000000000..40d7e515c09eb
+--- /dev/null
++++ b/drivers/pinctrl/airoha/airoha-common.h
+@@ -0,0 +1,163 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Author: Lorenzo Bianconi <lorenzo@kernel.org>
++ * Author: Benjamin Larsson <benjamin.larsson@genexis.eu>
++ * Author: Markus Gothe <markus.gothe@genexis.eu>
++ */
 +
- 	regmap_clear_bits(pinctrl->regmap, gpiochip->level[index], mask);
- 	regmap_clear_bits(pinctrl->regmap, gpiochip->edge[index], mask);
- 	gpiochip_disable_irq(gc, irqd_to_hwirq(data));
- }
- 
-+static void airoha_irq_ack(struct irq_data *data)
-+{
-+	struct gpio_chip *gc = irq_data_get_irq_chip_data(data);
-+	struct airoha_pinctrl *pinctrl = gpiochip_get_data(gc);
-+	struct airoha_pinctrl_gpiochip *gpiochip = &pinctrl->gpiochip;
-+	u8 offset = data->hwirq % AIROHA_PIN_BANK_SIZE;
-+	u8 index = data->hwirq / AIROHA_PIN_BANK_SIZE;
++#ifndef __AIROHA_COMMON_HEADER__
++#define __AIROHA_COMMON_HEADER__
 +
-+	if (data->hwirq >= ARRAY_SIZE(gpiochip->irq_type))
-+		return;
++#include <dt-bindings/pinctrl/mt65xx.h>
++#include <linux/bitfield.h>
++#include <linux/bits.h>
++#include <linux/cleanup.h>
++#include <linux/gpio/driver.h>
++#include <linux/interrupt.h>
++#include <linux/io.h>
++#include <linux/irq.h>
++#include <linux/irqdomain.h>
++#include <linux/mfd/syscon.h>
++#include <linux/of.h>
++#include <linux/of_irq.h>
++#include <linux/of_platform.h>
++#include <linux/pinctrl/consumer.h>
++#include <linux/pinctrl/pinctrl.h>
++#include <linux/pinctrl/pinconf.h>
++#include <linux/pinctrl/pinconf-generic.h>
++#include <linux/pinctrl/pinmux.h>
++#include <linux/platform_device.h>
++#include <linux/regmap.h>
++#include <linux/types.h>
 +
-+	regmap_write(pinctrl->regmap, gpiochip->status[index], BIT(offset));
-+}
++#include "../core.h"
++#include "../pinconf.h"
++#include "../pinmux.h"
 +
- static int airoha_irq_type(struct irq_data *data, unsigned int type)
- {
- 	struct gpio_chip *gc = irq_data_get_irq_chip_data(data);
-@@ -2627,13 +2644,25 @@ static int airoha_irq_type(struct irq_data *data, unsigned int type)
- 	if (data->hwirq >= ARRAY_SIZE(gpiochip->irq_type))
- 		return -EINVAL;
- 
-+	if (type == IRQ_TYPE_NONE) {
-+		gpiochip->irq_type[data->hwirq] = IRQ_TYPE_NONE;
-+		irq_set_handler_locked(data, handle_bad_irq);
++/* GPIOs */
++#define REG_GPIO_CTRL				0x0000
++#define REG_GPIO_DATA				0x0004
++#define REG_GPIO_INT				0x0008
++#define REG_GPIO_INT_EDGE			0x000c
++#define REG_GPIO_INT_LEVEL			0x0010
++#define REG_GPIO_OE				0x0014
++#define REG_GPIO_CTRL1				0x0020
++#define REG_GPIO_CTRL2				0x0060
++#define REG_GPIO_CTRL3				0x0064
++#define REG_GPIO_DATA1				0x0070
++#define REG_GPIO_OE1				0x0078
++#define REG_GPIO_INT1				0x007c
++#define REG_GPIO_INT_EDGE1			0x0080
++#define REG_GPIO_INT_EDGE2			0x0084
++#define REG_GPIO_INT_EDGE3			0x0088
++#define REG_GPIO_INT_LEVEL1			0x008c
++#define REG_GPIO_INT_LEVEL2			0x0090
++#define REG_GPIO_INT_LEVEL3			0x0094
 +
-+		return 0;
++#define AIROHA_NUM_PINS				64
++#define AIROHA_PIN_BANK_SIZE			(AIROHA_NUM_PINS / 2)
++#define AIROHA_REG_GPIOCTRL_NUM_PIN		(AIROHA_NUM_PINS / 4)
++
++#define PINCTRL_PIN_GROUP(id, table)					\
++	PINCTRL_PINGROUP(id, table##_pins, ARRAY_SIZE(table##_pins))
++
++#define PINCTRL_FUNC_DESC(id, table)					\
++	{								\
++		.desc = PINCTRL_PINFUNCTION(id, table##_groups,	\
++					    ARRAY_SIZE(table##_groups)),\
++		.groups = table##_func_group,				\
++		.group_size = ARRAY_SIZE(table##_func_group),		\
 +	}
 +
- 	if (type == IRQ_TYPE_PROBE) {
- 		if (gpiochip->irq_type[data->hwirq])
- 			return 0;
- 
--		type = IRQ_TYPE_EDGE_RISING | IRQ_TYPE_EDGE_FALLING;
-+		type = IRQ_TYPE_EDGE_BOTH;
- 	}
++#define PINCTRL_CONF_DESC(p, offset, mask)				\
++	{								\
++		.pin = p,						\
++		.reg = { offset, mask },				\
++	}
 +
- 	gpiochip->irq_type[data->hwirq] = type & IRQ_TYPE_SENSE_MASK;
-+	if (type & IRQ_TYPE_EDGE_BOTH)
-+		irq_set_handler_locked(data, handle_edge_irq);
-+	else
-+		irq_set_handler_locked(data, handle_level_irq);
++struct airoha_pinctrl_reg {
++	u32 offset;
++	u32 mask;
++};
++
++enum airoha_pinctrl_mux_func {
++	AIROHA_FUNC_MUX,
++	AIROHA_FUNC_PWM_MUX,
++	AIROHA_FUNC_PWM_EXT_MUX,
++};
++
++struct airoha_pinctrl_func_group {
++	const char *name;
++	struct {
++		enum airoha_pinctrl_mux_func mux;
++		u32 offset;
++		u32 mask;
++		u32 val;
++	} regmap[2];
++	int regmap_size;
++};
++
++struct airoha_pinctrl_func {
++	const struct pinfunction desc;
++	const struct airoha_pinctrl_func_group *groups;
++	u8 group_size;
++};
++
++struct airoha_pinctrl_conf {
++	u32 pin;
++	struct airoha_pinctrl_reg reg;
++};
++
++struct airoha_pinctrl_gpiochip {
++	struct gpio_chip chip;
++
++	/* gpio */
++	const u32 *data;
++	const u32 *dir;
++	const u32 *out;
++	/* irq */
++	const u32 *status;
++	const u32 *level;
++	const u32 *edge;
++};
++
++struct airoha_pinctrl_confs_info {
++	const struct airoha_pinctrl_conf *confs;
++	unsigned int num_confs;
++};
++
++enum airoha_pinctrl_confs_type {
++	AIROHA_PINCTRL_CONFS_PULLUP,
++	AIROHA_PINCTRL_CONFS_PULLDOWN,
++	AIROHA_PINCTRL_CONFS_DRIVE_E2,
++	AIROHA_PINCTRL_CONFS_DRIVE_E4,
++	AIROHA_PINCTRL_CONFS_PCIE_RST_OD,
++
++	AIROHA_PINCTRL_CONFS_MAX,
++};
++
++struct airoha_pinctrl {
++	struct pinctrl_dev *ctrl;
++
++	struct pinctrl_desc desc;
++	const struct pingroup *grps;
++	const struct airoha_pinctrl_func *funcs;
++	const struct airoha_pinctrl_confs_info *confs_info;
++
++	struct regmap *chip_scu;
++	struct regmap *regmap;
++
++	struct airoha_pinctrl_gpiochip gpiochip;
++};
++
++struct airoha_pinctrl_match_data {
++	const struct pinctrl_pin_desc *pins;
++	const unsigned int num_pins;
++	const struct pingroup *grps;
++	const unsigned int num_grps;
++	const struct airoha_pinctrl_func *funcs;
++	const unsigned int num_funcs;
++	const struct airoha_pinctrl_confs_info confs_info[AIROHA_PINCTRL_CONFS_MAX];
++};
++
++#endif
+diff --git a/drivers/pinctrl/airoha/pinctrl-airoha.c b/drivers/pinctrl/airoha/pinctrl-airoha.c
+index 65447d7e5965a..f42631afc05d3 100644
+--- a/drivers/pinctrl/airoha/pinctrl-airoha.c
++++ b/drivers/pinctrl/airoha/pinctrl-airoha.c
+@@ -5,47 +5,7 @@
+  * Author: Markus Gothe <markus.gothe@genexis.eu>
+  */
  
+-#include <dt-bindings/pinctrl/mt65xx.h>
+-#include <linux/bitfield.h>
+-#include <linux/bits.h>
+-#include <linux/cleanup.h>
+-#include <linux/gpio/driver.h>
+-#include <linux/interrupt.h>
+-#include <linux/io.h>
+-#include <linux/irq.h>
+-#include <linux/irqdomain.h>
+-#include <linux/mfd/syscon.h>
+-#include <linux/of.h>
+-#include <linux/of_irq.h>
+-#include <linux/of_platform.h>
+-#include <linux/pinctrl/consumer.h>
+-#include <linux/pinctrl/pinctrl.h>
+-#include <linux/pinctrl/pinconf.h>
+-#include <linux/pinctrl/pinconf-generic.h>
+-#include <linux/pinctrl/pinmux.h>
+-#include <linux/platform_device.h>
+-#include <linux/regmap.h>
+-
+-#include "../core.h"
+-#include "../pinconf.h"
+-#include "../pinmux.h"
+-
+-#define PINCTRL_PIN_GROUP(id, table)					\
+-	PINCTRL_PINGROUP(id, table##_pins, ARRAY_SIZE(table##_pins))
+-
+-#define PINCTRL_FUNC_DESC(id, table)					\
+-	{								\
+-		.desc = PINCTRL_PINFUNCTION(id, table##_groups,	\
+-					    ARRAY_SIZE(table##_groups)),\
+-		.groups = table##_func_group,				\
+-		.group_size = ARRAY_SIZE(table##_func_group),		\
+-	}
+-
+-#define PINCTRL_CONF_DESC(p, offset, mask)				\
+-	{								\
+-		.pin = p,						\
+-		.reg = { offset, mask },				\
+-	}
++#include "airoha-common.h"
+ 
+ /* MUX */
+ #define REG_GPIO_2ND_I2C_MODE			0x0214
+@@ -230,6 +190,8 @@
+ #define REG_GPIO_INT_LEVEL			0x0010
+ #define REG_GPIO_OE				0x0014
+ #define REG_GPIO_CTRL1				0x0020
++#define REG_GPIO_CTRL2				0x0060
++#define REG_GPIO_CTRL3				0x0064
+ 
+ /* PWM MODE CONF */
+ #define REG_GPIO_FLASH_MODE_CFG			0x0034
+@@ -250,9 +212,6 @@
+ #define GPIO1_FLASH_MODE_CFG			BIT(1)
+ #define GPIO0_FLASH_MODE_CFG			BIT(0)
+ 
+-#define REG_GPIO_CTRL2				0x0060
+-#define REG_GPIO_CTRL3				0x0064
+-
+ /* PWM MODE CONF EXT */
+ #define REG_GPIO_FLASH_MODE_CFG_EXT		0x0068
+ #define GPIO51_FLASH_MODE_CFG			BIT(31)
+@@ -298,9 +257,145 @@
+ #define REG_GPIO_INT_LEVEL2			0x0090
+ #define REG_GPIO_INT_LEVEL3			0x0094
+ 
+-#define AIROHA_NUM_PINS				64
+-#define AIROHA_PIN_BANK_SIZE			(AIROHA_NUM_PINS / 2)
+-#define AIROHA_REG_GPIOCTRL_NUM_PIN		(AIROHA_NUM_PINS / 4)
++#define AIROHA_PINCTRL_GPIO(gpio, mux_val)			\
++	{							\
++		.name = (gpio),					\
++		.regmap[0] = {					\
++			AIROHA_FUNC_MUX,			\
++			REG_GPIO_PON_MODE,			\
++			(mux_val),				\
++			(mux_val)				\
++		},						\
++		.regmap_size = 1,				\
++	}
++
++#define AIROHA_PINCTRL_GPIO_EXT(gpio, mux_val, smux_val)	\
++	{							\
++		.name = (gpio),					\
++		.regmap[0] = {					\
++			AIROHA_FUNC_PWM_EXT_MUX,		\
++			REG_GPIO_FLASH_MODE_CFG_EXT,		\
++			(mux_val),				\
++			0					\
++		},						\
++		.regmap[1] = {					\
++			AIROHA_FUNC_MUX,			\
++			REG_GPIO_PON_MODE,			\
++			(smux_val),				\
++			(smux_val)				\
++		},						\
++		.regmap_size = 2,				\
++	}
++
++/* PWM */
++#define AIROHA_PINCTRL_PWM(gpio, mux_val)		\
++	{						\
++		.name = (gpio),				\
++		.regmap[0] = {				\
++			AIROHA_FUNC_PWM_MUX,		\
++			REG_GPIO_FLASH_MODE_CFG,	\
++			(mux_val),			\
++			(mux_val)			\
++		},					\
++		.regmap_size = 1,			\
++	}
++
++#define AIROHA_PINCTRL_PWM_EXT(gpio, mux_val)		\
++	{						\
++		.name = (gpio),				\
++		.regmap[0] = {				\
++			AIROHA_FUNC_PWM_EXT_MUX,	\
++			REG_GPIO_FLASH_MODE_CFG_EXT,	\
++			(mux_val),			\
++			(mux_val)			\
++		},					\
++		.regmap_size = 1,			\
++	}
++
++#define AIROHA_PINCTRL_PWM_EXT_SEC(gpio, mux_val, smux_val)	\
++	{							\
++		.name = (gpio),					\
++		.regmap[0] = {					\
++			AIROHA_FUNC_PWM_EXT_MUX,		\
++			REG_GPIO_FLASH_MODE_CFG_EXT,		\
++			(mux_val),				\
++			(mux_val)				\
++		},						\
++		.regmap[1] = {					\
++			AIROHA_FUNC_MUX,			\
++			REG_GPIO_PON_MODE,			\
++			(smux_val),				\
++			(smux_val)				\
++		},						\
++		.regmap_size = 2,				\
++	}
++
++#define AIROHA_PINCTRL_PHY_LED0(gpio, mux_val, map_mask, map_val)	\
++	{								\
++		.name = (gpio),						\
++		.regmap[0] = {						\
++			AIROHA_FUNC_MUX,				\
++			REG_GPIO_2ND_I2C_MODE,				\
++			(mux_val),					\
++			(mux_val),					\
++		},							\
++		.regmap[1] = {						\
++			AIROHA_FUNC_MUX,				\
++			REG_LAN_LED0_MAPPING,				\
++			(map_mask),					\
++			(map_val),					\
++		},							\
++		.regmap_size = 2,					\
++	}
++
++#define AIROHA_PINCTRL_PHY_LED1(gpio, mux_val, map_mask, map_val)	\
++	{								\
++		.name = (gpio),						\
++		.regmap[0] = {						\
++			AIROHA_FUNC_MUX,				\
++			REG_GPIO_2ND_I2C_MODE,				\
++			(mux_val),					\
++			(mux_val),					\
++		},							\
++		.regmap[1] = {						\
++			AIROHA_FUNC_MUX,				\
++			REG_LAN_LED1_MAPPING,				\
++			(map_mask),					\
++			(map_val),					\
++		},							\
++		.regmap_size = 2,					\
++	}
++
++#define airoha_pinctrl_get_pullup_conf(pinctrl, pin, val)			\
++	airoha_pinctrl_get_conf((pinctrl), AIROHA_PINCTRL_CONFS_PULLUP,		\
++				(pin), (val))
++#define airoha_pinctrl_get_pulldown_conf(pinctrl, pin, val)			\
++	airoha_pinctrl_get_conf((pinctrl), AIROHA_PINCTRL_CONFS_PULLDOWN,	\
++				(pin), (val))
++#define airoha_pinctrl_get_drive_e2_conf(pinctrl, pin, val)			\
++	airoha_pinctrl_get_conf((pinctrl), AIROHA_PINCTRL_CONFS_DRIVE_E2,	\
++				(pin), (val))
++#define airoha_pinctrl_get_drive_e4_conf(pinctrl, pin, val)			\
++	airoha_pinctrl_get_conf((pinctrl), AIROHA_PINCTRL_CONFS_DRIVE_E4,	\
++				(pin), (val))
++#define airoha_pinctrl_get_pcie_rst_od_conf(pinctrl, pin, val)			\
++	airoha_pinctrl_get_conf((pinctrl), AIROHA_PINCTRL_CONFS_PCIE_RST_OD,	\
++				(pin), (val))
++#define airoha_pinctrl_set_pullup_conf(pinctrl, pin, val)			\
++	airoha_pinctrl_set_conf((pinctrl), AIROHA_PINCTRL_CONFS_PULLUP,		\
++				(pin), (val))
++#define airoha_pinctrl_set_pulldown_conf(pinctrl, pin, val)			\
++	airoha_pinctrl_set_conf((pinctrl), AIROHA_PINCTRL_CONFS_PULLDOWN,	\
++				(pin), (val))
++#define airoha_pinctrl_set_drive_e2_conf(pinctrl, pin, val)			\
++	airoha_pinctrl_set_conf((pinctrl), AIROHA_PINCTRL_CONFS_DRIVE_E2,	\
++				(pin), (val))
++#define airoha_pinctrl_set_drive_e4_conf(pinctrl, pin, val)			\
++	airoha_pinctrl_set_conf((pinctrl), AIROHA_PINCTRL_CONFS_DRIVE_E4,	\
++				(pin), (val))
++#define airoha_pinctrl_set_pcie_rst_od_conf(pinctrl, pin, val)			\
++	airoha_pinctrl_set_conf((pinctrl), AIROHA_PINCTRL_CONFS_PCIE_RST_OD,	\
++				(pin), (val))
+ 
+ static const u32 gpio_data_regs[] = {
+ 	REG_GPIO_DATA,
+@@ -338,91 +433,6 @@ static const u32 irq_edge_regs[] = {
+ 	REG_GPIO_INT_EDGE3
+ };
+ 
+-struct airoha_pinctrl_reg {
+-	u32 offset;
+-	u32 mask;
+-};
+-
+-enum airoha_pinctrl_mux_func {
+-	AIROHA_FUNC_MUX,
+-	AIROHA_FUNC_PWM_MUX,
+-	AIROHA_FUNC_PWM_EXT_MUX,
+-};
+-
+-struct airoha_pinctrl_func_group {
+-	const char *name;
+-	struct {
+-		enum airoha_pinctrl_mux_func mux;
+-		u32 offset;
+-		u32 mask;
+-		u32 val;
+-	} regmap[2];
+-	int regmap_size;
+-};
+-
+-struct airoha_pinctrl_func {
+-	const struct pinfunction desc;
+-	const struct airoha_pinctrl_func_group *groups;
+-	u8 group_size;
+-};
+-
+-struct airoha_pinctrl_conf {
+-	u32 pin;
+-	struct airoha_pinctrl_reg reg;
+-};
+-
+-struct airoha_pinctrl_gpiochip {
+-	struct gpio_chip chip;
+-
+-	/* gpio */
+-	const u32 *data;
+-	const u32 *dir;
+-	const u32 *out;
+-	/* irq */
+-	const u32 *status;
+-	const u32 *level;
+-	const u32 *edge;
+-};
+-
+-struct airoha_pinctrl_confs_info {
+-	const struct airoha_pinctrl_conf *confs;
+-	unsigned int num_confs;
+-};
+-
+-enum airoha_pinctrl_confs_type {
+-	AIROHA_PINCTRL_CONFS_PULLUP,
+-	AIROHA_PINCTRL_CONFS_PULLDOWN,
+-	AIROHA_PINCTRL_CONFS_DRIVE_E2,
+-	AIROHA_PINCTRL_CONFS_DRIVE_E4,
+-	AIROHA_PINCTRL_CONFS_PCIE_RST_OD,
+-
+-	AIROHA_PINCTRL_CONFS_MAX,
+-};
+-
+-struct airoha_pinctrl {
+-	struct pinctrl_dev *ctrl;
+-
+-	struct pinctrl_desc desc;
+-	const struct pingroup *grps;
+-	const struct airoha_pinctrl_func *funcs;
+-	const struct airoha_pinctrl_confs_info *confs_info;
+-
+-	struct regmap *chip_scu;
+-	struct regmap *regmap;
+-
+-	struct airoha_pinctrl_gpiochip gpiochip;
+-};
+-
+-struct airoha_pinctrl_match_data {
+-	const struct pinctrl_pin_desc *pins;
+-	const unsigned int num_pins;
+-	const struct pingroup *grps;
+-	const unsigned int num_grps;
+-	const struct airoha_pinctrl_func *funcs;
+-	const unsigned int num_funcs;
+-	const struct airoha_pinctrl_confs_info confs_info[AIROHA_PINCTRL_CONFS_MAX];
+-};
+-
+ static struct pinctrl_pin_desc en7581_pinctrl_pins[] = {
+ 	PINCTRL_PIN(0, "uart1_txd"),
+ 	PINCTRL_PIN(1, "uart1_rxd"),
+@@ -1437,36 +1447,6 @@ static const struct airoha_pinctrl_func_group pnand_func_group[] = {
+ 	},
+ };
+ 
+-#define AIROHA_PINCTRL_GPIO(gpio, mux_val)			\
+-	{							\
+-		.name = (gpio),					\
+-		.regmap[0] = {					\
+-			AIROHA_FUNC_MUX,			\
+-			REG_GPIO_PON_MODE,			\
+-			(mux_val),				\
+-			(mux_val)				\
+-		},						\
+-		.regmap_size = 1,				\
+-	}
+-
+-#define AIROHA_PINCTRL_GPIO_EXT(gpio, mux_val, smux_val)	\
+-	{							\
+-		.name = (gpio),					\
+-		.regmap[0] = {					\
+-			AIROHA_FUNC_PWM_EXT_MUX,		\
+-			REG_GPIO_FLASH_MODE_CFG_EXT,		\
+-			(mux_val),				\
+-			0					\
+-		},						\
+-		.regmap[1] = {					\
+-			AIROHA_FUNC_MUX,			\
+-			REG_GPIO_PON_MODE,			\
+-			(smux_val),				\
+-			(smux_val)				\
+-		},						\
+-		.regmap_size = 2,				\
+-	}
+-
+ static const struct airoha_pinctrl_func_group gpio_func_group[] = {
+ 	AIROHA_PINCTRL_GPIO_EXT("gpio47", GPIO47_FLASH_MODE_CFG,
+ 				GPIO_PCIE_RESET0_MASK),
+@@ -1559,49 +1539,6 @@ static const struct airoha_pinctrl_func_group an7583_pcie_reset_func_group[] = {
+ 	},
+ };
+ 
+-/* PWM */
+-#define AIROHA_PINCTRL_PWM(gpio, mux_val)		\
+-	{						\
+-		.name = (gpio),				\
+-		.regmap[0] = {				\
+-			AIROHA_FUNC_PWM_MUX,		\
+-			REG_GPIO_FLASH_MODE_CFG,	\
+-			(mux_val),			\
+-			(mux_val)			\
+-		},					\
+-		.regmap_size = 1,			\
+-	}						\
+-
+-#define AIROHA_PINCTRL_PWM_EXT(gpio, mux_val)		\
+-	{						\
+-		.name = (gpio),				\
+-		.regmap[0] = {				\
+-			AIROHA_FUNC_PWM_EXT_MUX,	\
+-			REG_GPIO_FLASH_MODE_CFG_EXT,	\
+-			(mux_val),			\
+-			(mux_val)			\
+-		},					\
+-		.regmap_size = 1,			\
+-	}						\
+-
+-#define AIROHA_PINCTRL_PWM_EXT_SEC(gpio, mux_val, smux_val)	\
+-	{							\
+-		.name = (gpio),					\
+-		.regmap[0] = {					\
+-			AIROHA_FUNC_PWM_EXT_MUX,		\
+-			REG_GPIO_FLASH_MODE_CFG_EXT,		\
+-			(mux_val),				\
+-			(mux_val)				\
+-		},						\
+-		.regmap[1] = {					\
+-			AIROHA_FUNC_MUX,			\
+-			REG_GPIO_PON_MODE,			\
+-			(smux_val),				\
+-			(smux_val)				\
+-		},						\
+-		.regmap_size = 2,				\
+-	}
+-
+ static const struct airoha_pinctrl_func_group pwm_func_group[] = {
+ 	AIROHA_PINCTRL_PWM("gpio0", GPIO0_FLASH_MODE_CFG),
+ 	AIROHA_PINCTRL_PWM("gpio1", GPIO1_FLASH_MODE_CFG),
+@@ -1718,42 +1655,6 @@ static const struct airoha_pinctrl_func_group an7583_pwm_func_group[] = {
+ 				   AN7583_MDC_0_GPIO_MODE_MASK),
+ };
+ 
+-#define AIROHA_PINCTRL_PHY_LED0(gpio, mux_val, map_mask, map_val)	\
+-	{								\
+-		.name = (gpio),						\
+-		.regmap[0] = {						\
+-			AIROHA_FUNC_MUX,				\
+-			REG_GPIO_2ND_I2C_MODE,				\
+-			(mux_val),					\
+-			(mux_val),					\
+-		},							\
+-		.regmap[1] = {						\
+-			AIROHA_FUNC_MUX,				\
+-			REG_LAN_LED0_MAPPING,				\
+-			(map_mask),					\
+-			(map_val),					\
+-		},							\
+-		.regmap_size = 2,					\
+-	}
+-
+-#define AIROHA_PINCTRL_PHY_LED1(gpio, mux_val, map_mask, map_val)	\
+-	{								\
+-		.name = (gpio),						\
+-		.regmap[0] = {						\
+-			AIROHA_FUNC_MUX,				\
+-			REG_GPIO_2ND_I2C_MODE,				\
+-			(mux_val),					\
+-			(mux_val),					\
+-		},							\
+-		.regmap[1] = {						\
+-			AIROHA_FUNC_MUX,				\
+-			REG_LAN_LED1_MAPPING,				\
+-			(map_mask),					\
+-			(map_val),					\
+-		},							\
+-		.regmap_size = 2,					\
+-	}
+-
+ static const struct airoha_pinctrl_func_group phy1_led0_func_group[] = {
+ 	AIROHA_PINCTRL_PHY_LED0("gpio33", GPIO_LAN0_LED0_MODE_MASK,
+ 				LAN0_LED_MAPPING_MASK, LAN0_PHY_LED_MAP(0)),
+@@ -2883,37 +2784,6 @@ static int airoha_pinctrl_set_conf(struct airoha_pinctrl *pinctrl,
  	return 0;
  }
-@@ -2658,8 +2687,7 @@ static irqreturn_t airoha_irq_handler(int irq, void *data)
- 		for_each_set_bit(irq, &status, AIROHA_PIN_BANK_SIZE) {
- 			u32 offset = irq + i * AIROHA_PIN_BANK_SIZE;
  
--			generic_handle_irq(irq_find_mapping(girq->domain,
--							    offset));
-+			generic_handle_domain_irq(girq->domain, offset);
- 			regmap_write(pinctrl->regmap,
- 				     pinctrl->gpiochip.status[i], BIT(irq));
- 		}
-@@ -2673,7 +2701,7 @@ static const struct irq_chip airoha_gpio_irq_chip = {
- 	.name = "airoha-gpio-irq",
- 	.irq_unmask = airoha_irq_unmask,
- 	.irq_mask = airoha_irq_mask,
--	.irq_mask_ack = airoha_irq_mask,
-+	.irq_ack = airoha_irq_ack,
- 	.irq_set_type = airoha_irq_type,
- 	.flags = IRQCHIP_SET_TYPE_MASKED | IRQCHIP_IMMUTABLE,
- 	GPIOCHIP_IRQ_RESOURCE_HELPERS,
-@@ -2708,7 +2736,7 @@ static int airoha_pinctrl_add_gpiochip(struct airoha_pinctrl *pinctrl,
- 	gc->ngpio = AIROHA_NUM_PINS;
- 
- 	girq->default_type = IRQ_TYPE_NONE;
--	girq->handler = handle_simple_irq;
-+	girq->handler = handle_bad_irq;
- 	gpio_irq_chip_set_chip(girq, &airoha_gpio_irq_chip);
- 
- 	irq = platform_get_irq(pdev, 0);
+-#define airoha_pinctrl_get_pullup_conf(pinctrl, pin, val)			\
+-	airoha_pinctrl_get_conf((pinctrl), AIROHA_PINCTRL_CONFS_PULLUP,		\
+-				(pin), (val))
+-#define airoha_pinctrl_get_pulldown_conf(pinctrl, pin, val)			\
+-	airoha_pinctrl_get_conf((pinctrl), AIROHA_PINCTRL_CONFS_PULLDOWN,	\
+-				(pin), (val))
+-#define airoha_pinctrl_get_drive_e2_conf(pinctrl, pin, val)			\
+-	airoha_pinctrl_get_conf((pinctrl), AIROHA_PINCTRL_CONFS_DRIVE_E2,	\
+-				(pin), (val))
+-#define airoha_pinctrl_get_drive_e4_conf(pinctrl, pin, val)			\
+-	airoha_pinctrl_get_conf((pinctrl), AIROHA_PINCTRL_CONFS_DRIVE_E4,	\
+-				(pin), (val))
+-#define airoha_pinctrl_get_pcie_rst_od_conf(pinctrl, pin, val)			\
+-	airoha_pinctrl_get_conf((pinctrl), AIROHA_PINCTRL_CONFS_PCIE_RST_OD,	\
+-				(pin), (val))
+-#define airoha_pinctrl_set_pullup_conf(pinctrl, pin, val)			\
+-	airoha_pinctrl_set_conf((pinctrl), AIROHA_PINCTRL_CONFS_PULLUP,		\
+-				(pin), (val))
+-#define airoha_pinctrl_set_pulldown_conf(pinctrl, pin, val)			\
+-	airoha_pinctrl_set_conf((pinctrl), AIROHA_PINCTRL_CONFS_PULLDOWN,	\
+-				(pin), (val))
+-#define airoha_pinctrl_set_drive_e2_conf(pinctrl, pin, val)			\
+-	airoha_pinctrl_set_conf((pinctrl), AIROHA_PINCTRL_CONFS_DRIVE_E2,	\
+-				(pin), (val))
+-#define airoha_pinctrl_set_drive_e4_conf(pinctrl, pin, val)			\
+-	airoha_pinctrl_set_conf((pinctrl), AIROHA_PINCTRL_CONFS_DRIVE_E4,	\
+-				(pin), (val))
+-#define airoha_pinctrl_set_pcie_rst_od_conf(pinctrl, pin, val)			\
+-	airoha_pinctrl_set_conf((pinctrl), AIROHA_PINCTRL_CONFS_PCIE_RST_OD,	\
+-				(pin), (val))
+-
+ static int airoha_pinconf_get_direction(struct pinctrl_dev *pctrl_dev, u32 p)
+ {
+ 	struct airoha_pinctrl *pinctrl = pinctrl_dev_get_drvdata(pctrl_dev);
 -- 
 2.53.0
 
