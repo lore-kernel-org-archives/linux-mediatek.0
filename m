@@ -4,113 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A3EFC531D0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 16:17:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 354ACC54F4D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 16:28:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QW8PobFLl9VuSJ+iyJKGdmgP3JvFIctsAQhl5gtsCFo=; b=unkLMcRidU05HyT06h4+QROSqv
-	2Hpw9Ge6Qp/KjUb5NORlptU6KEniy1b/eEMxNkDm0buwdgO7lOzb3iiKC5LXjfv+QyKB4wVItRjZC
-	mb2D0a52io6oqffCuv8GrJjPuJSP2NrOOkMbnMqLDx69rCB4Jb1dSpBn6gWK0pcCnDO97uFORIDQX
-	b6zrjyuLnOmKd5TfXpIxQdMuagH/3K79Hme4Syd7EWP6F9OPiMStWdyytzd69LjhUAgQR0CX8yhWV
-	RiZdxKDbMQ00eRrWl72qDG5G4F3Set5oShcdYwfhVXI73BnOMAvDjw9GEKP25IGhvE0ocQLw/rbfb
-	tMy2a07w==;
+	bh=CfLACjj/JtfamMOkw6Mhzssh5fvxLzMAEBMiHp1DPTo=; b=n92jX9P/verFN6t2cjOauypgHR
+	8cq4XLSitDZ+sMIW/ptWGnCbOLWZrvY9d5/TqvSmMABJVDS/5Pj13vmzKW4qTBg0okucfcf0hzVuc
+	U6QSSU/4PKGo/lVs9pH0OE9ADQhRlWuaVHs4Hx4L5Bh35DX5K5qoR5S1C7E3tthDzsCBxjw5Qp0W5
+	WU8RGtElKWp11Pa2sukpS/lC67nbiNyTYRxysZFiKBliok5Ju2sA4jcDRWsQSdaN94oiegpLEmwj2
+	VleO9sxQ2xviFJpy5syqqlkF1ZIWwQ+UupHKZEBTsR1QGX9+LID7KaKjDQp7sWDe5YQ2fvVdV+79y
+	oYPkXv5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woO0r-00000003HgB-25u5;
-	Mon, 27 Jul 2026 16:17:09 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1woOBc-00000003KAb-0VT1;
+	Mon, 27 Jul 2026 16:28:16 +0000
+Received: from mail-wm2-x0a.google.com ([2a00:1450:4864:31::a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woO0o-00000003HeE-0xF8
+	id 1woOBa-00000003K6x-19U5
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Jul 2026 16:17:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1785169023;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=QW8PobFLl9VuSJ+iyJKGdmgP3JvFIctsAQhl5gtsCFo=;
-	b=e9EgnTBFtwUBdOynoixpBPRQKMJaYNApHd+27Crx8WskuqjqK/7/WDTp3QTgLY3EO7Up6B
-	nCot9ONufQGsOtAsOrF/2GGLn7xUOK9LZhDAJgXQIX6alQo4RK89kAbYROJ94SkLzXoBZj
-	hyQCYry7SA8Psx6WZyWfmO9nU8yDYqw=
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-230--CJEszMDPFmFznbFkLxs-A-1; Mon, 27 Jul 2026 12:17:01 -0400
-X-MC-Unique: -CJEszMDPFmFznbFkLxs-A-1
-X-Mimecast-MFC-AGG-ID: -CJEszMDPFmFznbFkLxs-A_1785169021
-Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-92ec91dc265so255921785a.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 09:17:01 -0700 (PDT)
+	Mon, 27 Jul 2026 16:28:15 +0000
+Received: by mail-wm2-x0a.google.com with SMTP id 5b1f17b1804b1-495501e57beso9762265e9.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 09:28:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1785169692; x=1785774492; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=CfLACjj/JtfamMOkw6Mhzssh5fvxLzMAEBMiHp1DPTo=;
+        b=L0nwMCSFn9osLj6BAswd5SHTO9+Tk4z3nuil3NTy4gzLHpc/GfRz/RLOxEpuVSnyc8
+         mNxdk8wfC/A/kucxLcCDnvCB+KquAQbXf4Ra2n/JF8OuPW+j1DBe/VrDZDM/Is9yKp37
+         NVY22xPrfA+nC4/qAqAuoGuNOrIiA7RRyU0vpGiJ0Wso7D1z68j0ap+1OOaSP6hhmERL
+         Njc2z2gJXsZTV7JZSo0iHry4WVsBJT/zS9KU48AoL8EDS1S7QCDWltmvNdQIhYb801Du
+         S4Wk+4jxF0D8KRF41AmNA0RTtA6+Tccw/nygF997mzulURdtuqCm2T6ly9DFOo4+hNuV
+         kP8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785169021; x=1785773821;
-        h=user-agent:in-reply-to:content-disposition:content-type
-         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
+        d=1e100.net; s=20251104; t=1785169692; x=1785774492;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=QW8PobFLl9VuSJ+iyJKGdmgP3JvFIctsAQhl5gtsCFo=;
-        b=MJgG/BQINvF5S/u85Lg38s0+NwTF5rVg0NV89FkHJ9OF1W0pxMctbjpnBXpRpgZMBv
-         84ZdTxeGwEQ6voAd/33PY8qEc7m2YRBziV7L1sH6+yExZPJfVMKBzYYHtkLOWXyW7ctQ
-         P26nWkpk2M86YUvR3CgMrjyJNHOeBK+CWDfzDYPQEwqyNGcW8ZJbYrEWyANv6FbVcsxd
-         3L+MY8pJK+XVbK7ii0QWSI1m4zHciakeWikNN3y8p1XDZgZmrsw7D0w2Hi/r4bwjMTgd
-         teNjliCOL0gRFgTiBLUXCxq1Hjktv7JbIVxYDpfhuc+aQHWJI5WlKLwgw+RdDqMvm+Y9
-         KhWw==
-X-Forwarded-Encrypted: i=1; AHgh+Rqor3GFIl1uwS93tk1vagu3O0lM5ps9wibElRoUkTtfTs/h9kDC1tweJWvcmiLyMAI1AbK+M3Uaed5Iw5eyaw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzq3ycCbAlJIdD9lBjOhCIW2/CPGF11CNnneiF24JZNmG6xesRy
-	qRySLIglCF5/rREcc0MKehCjo+YYVdl5MrSJHD4xxDe2SNt7l/WVJ7fkVf1QdqXm2d7DN696PZp
-	GMqR1mcjGDmW+C6dShMgRfMuIWNQYVeWXYjtP7e25kbjC1xsdMS7k9NgtweL/bbraobRTUeELcg
-	==
-X-Gm-Gg: AR+sD12X8NfENxVLl2BmDtEf60/3hEDV/AG3GYMEXbgTr/2iZbg2DB0BgY6QXJavLOG
-	9ngPUAFrQ+kSRri29U71R3qkNI0b0Nv2mvBX/DCr0GMJevmUeaAQOElHcDLpvnDSbwike8QsCJD
-	P35HD8GR55+0Qmt8I7ePo37c94I32nUvHDc8q0h6vm1dRkqBNoYAwL7DE/l5bkSnYUbhl5FIRmt
-	MLcMUnZh7iqxXkdn8vr3p7zINXzxF8p7OHHMdJtvHgLKyl+nqPmo3DKlY1XhxlTQn+UK5IBX17f
-	ye4yPIylwFerMCgc/izwdHGu1mA+R78sdEuHNLmKWwsSBFra+gnzPvKqB5afByX6WMMGiVNmPBv
-	uArOrMGVIt19qy/GHcJQMRfy5+qQQD4ZB4L0=
-X-Received: by 2002:a05:620a:2691:b0:915:83fa:b3e0 with SMTP id af79cd13be357-932df627547mr956643185a.5.1785169020665;
-        Mon, 27 Jul 2026 09:17:00 -0700 (PDT)
-X-Received: by 2002:a05:620a:2691:b0:915:83fa:b3e0 with SMTP id af79cd13be357-932df627547mr956637785a.5.1785169020166;
-        Mon, 27 Jul 2026 09:17:00 -0700 (PDT)
-Received: from redhat.com (c-73-183-53-213.hsd1.pa.comcast.net. [73.183.53.213])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-932de6724a4sm641575585a.43.2026.07.27.09.16.56
+        bh=CfLACjj/JtfamMOkw6Mhzssh5fvxLzMAEBMiHp1DPTo=;
+        b=LbxkBHed6KeoF3Fmjql1FKb99j1BOaNo7kj/Jv8l3uIhq6FWX2136A/f+hd3Z5xBvM
+         DcFCBW0seNnToDMtbzxwRBdq0iKhCFc0ovJJAQk/zWJF2Wr5V2tGI0pYFrjDvnnap3UY
+         rVx59c05Y4lViluBZIfA6wh5VFdg5IZnFY723mhGmSJ0A1aqJ8v5A/4ACCZT9kvsJQRr
+         KA1IIuN2WKzhY6C2UREzGnAxuOTeOyvUIR9O4YjaVXvXO+KvCDaruL+xB1Y3fHj/ZhDS
+         dYzyzUGBbPQDiLhJlOIbKIgLAahyDIcxgXHd7IT87Jxwj4fgW+WE8w3AW9Yu3X0uGWGc
+         Zu5g==
+X-Forwarded-Encrypted: i=1; AHgh+RpoRqYHHh2mOIG+YKjy+s6zpoDj6TNJNjTB8hr0szkmvDNm09UK9GEW25P26ohG9h2bdf1rdZTk/bJXBVLF0A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz7VuRT4YEJ0ExjM4sq3Hcmy7ic/JRIwiBypaP4hUyvAtmLK971
+	DY8smJro5mKd06fm/8Tz1m96XWTg/TNqw3IZrhd60M9iVhk1TrDZpwho
+X-Gm-Gg: AR+sD10eVZDumF9+59mI+dc74vZuS/HA9OIUL8pO/yw3GTtayZfl8rTF65s4HWoUW73
+	XiI/mYerADSbyNLB+tMMWq7AjVNvOLRzhkgir/j2D/GrnsbUMF+yMThPd0OB82E/4k4/XD3qegR
+	DFBEtAhvxm5nnKOzjzKVJNws487O4/jMmLDxax/xnCBccbA/sGpvC9bmmg12Urwlgj9SiE0tC3S
+	Kj+Q9wFKlOR/Hir8g62Me0r5h4qR2E1vpOlKOvaQLt1oEHzxL00eaNI4vP2QJLOr28ymyaOQ9pB
+	IqaQGtrEaGTKzWIfHWF690dGukiY9nM9cDcMvaxtiD9AklSsk/t9tAd1COJ+HH9jmu+U111Tr0q
+	t237CjMQsXazIrH/wnmeY96b1/2aHo26U7o8BUuft1vV3CthfErVeXbt9ZLGLCV3E9+/RS9T3n3
+	ofosdFL5qgnKxjr2MZwLJg/xh4DpNsxFggsuX1BkA6eTSSBjDpJLweQMPni40Sn80i2jtTyH0=
+X-Received: by 2002:a05:600c:530c:b0:495:62bc:a022 with SMTP id 5b1f17b1804b1-496b56f99a7mr126331645e9.13.1785169691677;
+        Mon, 27 Jul 2026 09:28:11 -0700 (PDT)
+Received: from fedora.fritz.box (dynamic-adsl-84-220-246-20.clienti.tiscali.it. [84.220.246.20])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-496c44b84edsm5878205e9.5.2026.07.27.09.28.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Jul 2026 09:16:58 -0700 (PDT)
-Date: Mon, 27 Jul 2026 12:16:55 -0400
-From: Brian Masney <bmasney@redhat.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Stephen Boyd <sboyd@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Alessio Belle <alessio.belle@imgtec.com>,
-	Luigi Santivetti <luigi.santivetti@imgtec.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Dan Carpenter <dan.carpenter@linaro.org>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	imagination@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	Icenowy Zheng <zhengxingda@iscas.ac.cn>,
-	YoungJoon Lee <getfeus@gmail.com>
-Subject: Re: [PATCH v3 2/5] clk: mediatek: Add mt8173-mfgtop driver
-Message-ID: <ameEd76Flq7_eUMy@redhat.com>
-References: <20260727091555.1023910-1-wenst@chromium.org>
- <20260727091555.1023910-3-wenst@chromium.org>
+        Mon, 27 Jul 2026 09:28:10 -0700 (PDT)
+Date: Mon, 27 Jul 2026 18:27:53 +0200
+From: moosager <moosager90@gmail.com>
+To: Sean Wang <sean.wang@kernel.org>
+Cc: linux-wireless@vger.kernel.org, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Subject: Re: mt7921e: repeated driver own failures cause hanging
+Message-ID: <amd7c3Xk6NhBQr9x@fedora.fritz.box>
+References: <4870974.vXUDI8C0e8@fedora.fritz.box>
+ <CAGp9Lzp8NjVwkn2atNqT9x9-QTkWMLxK+Ntkb=3Z1fWcM6N=7A@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20260727091555.1023910-3-wenst@chromium.org>
-User-Agent: Mutt/2.4.0 (2026-06-19)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Knmk5MlIEl6cyTT9q4wOvirocx6UJmHSLc2_X7O-WRs_1785169021
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <CAGp9Lzp8NjVwkn2atNqT9x9-QTkWMLxK+Ntkb=3Z1fWcM6N=7A@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_091706_349888_5A359A1A 
-X-CRM114-Status: GOOD (  22.41  )
+X-CRM114-CacheID: sfid-20260727_092814_331932_7DD273AB 
+X-CRM114-Status: GOOD (  16.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,153 +100,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chen-Yu,
+Hello,
 
-On Mon, Jul 27, 2026 at 05:15:51PM +0800, Chen-Yu Tsai wrote:
-> The MFG (GPU) block on the MT8173 has a small glue layer, named MFG_TOP
-> in the datasheet, that contains clock gates, some power sequence signal
-> delays, and other unknown registers that get toggled when the GPU is
-> powered on.
-> 
-> The clock gates are exposed as clocks provided by a clock controller,
-> while the power sequencing bits are exposed as one singular power domain.
-> 
-> Tested-by: Icenowy Zheng <zhengxingda@iscas.ac.cn>
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
-> Changes since v2:
-> - Made COMMON_CLK_MT8173_MFGTOP depend on PM
->   - Needed since the driver implements PM domains using the generic PM
->     domain library, which also depends on PM
->   - Fixes build breakage (kernel test robot)
-> - Fixed "RST_DELAY_CNT" name (Brian)
-> - Dropped unused mfg_desc (Brian)
-> - Added check of clk_prepare_enable()'s return value in
->   clk_mt8173_mfgtop_power_on() (Brian)
-> - Saved error value for return in IS_ERR(data->clk_26m) branch
->   (Dan Carpenter / kernel test robot w/ smatch)
-> ---
+On Sat, Jan 3, 2026 at 8:10 AM Sean Wang <sean.wang@kernel.org> wrote:
+> Hi moosager90,
+>
+> Could you please share more details on how this issue can be
+> reproduced?
 
-[snip]
+I have found a (somewhat hacky) way to reliably reproduce the issue.
+Just run this script for 3-5 seconds:
 
-> +static int clk_mt8173_mfgtop_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct device_node *node = dev->of_node;
-> +	struct mt8173_mfgtop_data *data;
-> +	int ret;
-> +
-> +	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
-> +	if (!data)
-> +		return -ENOMEM;
-> +
-> +	platform_set_drvdata(pdev, data);
-> +
-> +	data->clk_data = mtk_devm_alloc_clk_data(dev, ARRAY_SIZE(mfg_clks));
-> +	if (!data->clk_data)
-> +		return -ENOMEM;
-> +
-> +	/* MTK clock gates also uses regmap */
-> +	data->regmap = device_node_to_regmap(node);
-> +	if (IS_ERR(data->regmap))
-> +		return dev_err_probe(dev, PTR_ERR(data->regmap), "Failed to get regmap\n");
-> +
-> +	data->child_pd.np = node;
-> +	data->child_pd.args_count = 0;
-> +	ret = of_parse_phandle_with_args(node, "power-domains", "#power-domain-cells", 0,
-> +					 &data->parent_pd);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "Failed to parse power domain\n");
-> +
-> +	devm_pm_runtime_enable(dev);
-> +	/*
-> +	 * Do a pm_runtime_resume_and_get() to workaround a possible
-> +	 * deadlock between clk_register() and the genpd framework.
-> +	 */
-> +	ret = pm_runtime_resume_and_get(dev);
-> +	if (ret) {
-> +		dev_err_probe(dev, ret, "Failed to runtime resume device\n");
-> +		goto put_of_node;
-> +	}
-> +
-> +	ret = mtk_clk_register_gates(dev, node, mfg_clks, ARRAY_SIZE(mfg_clks),
-> +				     data->clk_data);
-> +	if (ret) {
-> +		dev_err_probe(dev, ret, "Failed to register clock gates\n");
-> +		goto put_pm_runtime;
-> +	}
-> +
-> +	data->clk_26m = clk_hw_get_clk(data->clk_data->hws[CLK_MFG_26M], "26m");
-> +	if (IS_ERR(data->clk_26m)) {
-> +		ret = dev_err_probe(dev, PTR_ERR(data->clk_26m), "Failed to get 26 MHz clock\n");
-> +		goto unregister_clks;
-> +	}
-> +
-> +	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, data->clk_data);
-> +	if (ret) {
-> +		dev_err_probe(dev, ret, "Failed to add clk OF provider\n");
-> +		goto put_26m_clk;
-> +	}
-> +
-> +	data->genpd.name = "mfg-top";
-> +	data->genpd.power_on = clk_mt8173_mfgtop_power_on;
-> +	data->genpd.power_off = clk_mt8173_mfgtop_power_off;
-> +	ret = pm_genpd_init(&data->genpd, NULL, true);
-> +	if (ret) {
-> +		dev_err_probe(dev, ret, "Failed to add power domain\n");
-> +		goto del_clk_provider;
-> +	}
-> +
-> +	ret = of_genpd_add_provider_simple(node, &data->genpd);
-> +	if (ret) {
-> +		dev_err_probe(dev, ret, "Failed to add power domain OF provider\n");
-> +		goto remove_pd;
-> +	}
-> +
-> +	ret = of_genpd_add_subdomain(&data->parent_pd, &data->child_pd);
-> +	if (ret) {
-> +		dev_err_probe(dev, ret, "Failed to link PM domains\n");
-> +		goto del_pd_provider;
-> +	}
-> +
-> +	pm_runtime_put(dev);
-> +	return 0;
-> +
-> +del_pd_provider:
-> +	of_genpd_del_provider(node);
-> +remove_pd:
-> +	pm_genpd_remove(&data->genpd);
-> +del_clk_provider:
-> +	of_clk_del_provider(node);
-> +put_26m_clk:
-> +	clk_put(data->clk_26m);
-> +unregister_clks:
-> +	mtk_clk_unregister_gates(mfg_clks, ARRAY_SIZE(mfg_clks), data->clk_data);
-> +put_pm_runtime:
-> +	pm_runtime_put(dev);
-> +put_of_node:
-> +	of_node_put(data->parent_pd.np);
-> +	return ret;
-> +}
-> +
-> +static void clk_mt8173_mfgtop_remove(struct platform_device *pdev)
-> +{
-> +	struct mt8173_mfgtop_data *data = platform_get_drvdata(pdev);
-> +	struct device_node *node = pdev->dev.of_node;
-> +
-> +	of_genpd_remove_subdomain(&data->parent_pd, &data->child_pd);
-> +	of_genpd_del_provider(node);
-> +	pm_genpd_remove(&data->genpd);
-> +	of_clk_del_provider(node);
-> +	clk_put(data->clk_26m);
-> +	mtk_clk_unregister_gates(mfg_clks, ARRAY_SIZE(mfg_clks), data->clk_data);
+#!/bin/sh
+echo 0x7c060010 > /sys/kernel/debug/ieee80211/phy0/mt76/regidx
+while true; do echo 0xffffffff > /sys/kernel/debug/ieee80211/phy0/mt76/regval ; done
 
-Looking at the error labels in the probe, does the remove also need:
+Running this script results in the same "driver own failed" messages and system 
+slowdowns observed when the issue naturally occurs.
 
-    of_node_put(data->parent_pd.np);
+I have investigated the bug a little and found how it manifests in the driver 
+code:
 
-Otherwise this looks good. With that fixed:
+During normal usage, the function __mt792xe_mcu_drv_pmctrl writes to a register 
+like this:
+mt76_wr(dev, MT_CONN_ON_LPCTL, PCIE_LPCR_HOST_CLR_OWN);
 
-Reviewed-by: Brian Masney <bmasney@redhat.com>
+and it expects to find 0x00000004 (which is PCIE_LPCR_HOST_OWN_SYNC). Instead, 
+when the issue happens, it finds 0xffffffff, which does not change even after 
+the driver attempts to write to it.
 
+In essence, the above script recreates those conditions by writing 0xffffffff 
+to the MT_CONN_ON_LPCTL register (at address 0x7c060010).
+
+In addition, the failure of __mt792xe_mcu_drv_pmctrl returns -5 as an error 
+code; this is not checked by the caller, mt7921e_mac_reset, which calls 
+mt792xe_mcu_drv_pmctrl without checking its return value.
+
+This issue still happens and is still reproducible on my build of the vanilla 
+7.2.0-rc4 kernel, as it has been for every past kernel version.
+This is my best attempt at investigating it, but i believe it is ultimately 
+down to the firmware rather than the driver.
+
+> Also, please confirm which firmware version you are using.
+
+Here is the firmware version reported in dmesg:
+
+[   15.848101] mt7921e 0000:62:00.0: enabling device (0000 -> 0002)
+[   15.849369] mt7921e 0000:62:00.0: disabling ASPM  L1
+[   15.865381] mt7921e 0000:62:00.0: ASIC revision: 79220010
+[   15.958433] mt7921e 0000:62:00.0: HW/SW Version: 0x8a108a10, Build Time: 20260605203307a
+[   16.352504] mt7921e 0000:62:00.0: WM Firmware Version: ____000000, Build Time: 20260605203411
+
+> As a debugging step, could you also try disabling PCIe ASPM and check
+> whether the issue still occurs?
+
+The issue happens whether ASPM is on or off.
 
