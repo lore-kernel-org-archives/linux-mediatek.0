@@ -4,66 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C364C54F4C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 15:58:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A3EFC531D0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 16:17:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5J/lI+qKpb41LhO6P0bEinWE6eJQ7l4VbAa1CfSBN88=; b=utek8U2KZ8Zrkx6DSSR8maon1h
-	huDzXWN9A2la45CJ21spt/MgpGGpWPbbiyQhH7HCTrq4lVBO4sN7idSCKt4TEqfBPq1VN3fEvuNsH
-	m0u6z4LhpeUKeHo9fmNmY5jD3hYU9+DSo95PlcDdoCOzCRY6UNSiD9RHU1/hn0/+JH3WnMQsBUcgs
-	GIpj2p0f5yWUCJh3xzQ5iwu1zvdQuFS2vUh2oRPqbinaFRczUteje39Y69gage09+13UXQ/E2co6P
-	cR7QR0CW+gfiJt9H0M/58s6evoBvwfmMaVNx4cg4/ATN7bHpnM31wovokoZDQT8mEEltYHlwuAyY8
-	gynsLfKA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QW8PobFLl9VuSJ+iyJKGdmgP3JvFIctsAQhl5gtsCFo=; b=unkLMcRidU05HyT06h4+QROSqv
+	2Hpw9Ge6Qp/KjUb5NORlptU6KEniy1b/eEMxNkDm0buwdgO7lOzb3iiKC5LXjfv+QyKB4wVItRjZC
+	mb2D0a52io6oqffCuv8GrJjPuJSP2NrOOkMbnMqLDx69rCB4Jb1dSpBn6gWK0pcCnDO97uFORIDQX
+	b6zrjyuLnOmKd5TfXpIxQdMuagH/3K79Hme4Syd7EWP6F9OPiMStWdyytzd69LjhUAgQR0CX8yhWV
+	RiZdxKDbMQ00eRrWl72qDG5G4F3Set5oShcdYwfhVXI73BnOMAvDjw9GEKP25IGhvE0ocQLw/rbfb
+	tMy2a07w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woNiO-00000003Esw-00e6;
-	Mon, 27 Jul 2026 15:58:04 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1woO0r-00000003HgB-25u5;
+	Mon, 27 Jul 2026 16:17:09 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woNiL-00000003Eqp-2VVx;
-	Mon, 27 Jul 2026 15:58:01 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0F26D600C8;
-	Mon, 27 Jul 2026 15:58:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48ABA1F000E9;
-	Mon, 27 Jul 2026 15:58:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linuxfoundation.org;
-	s=korg; t=1785167880;
-	bh=5J/lI+qKpb41LhO6P0bEinWE6eJQ7l4VbAa1CfSBN88=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=i0lXoSmbJaa4b23UJKZu4c648gyjtRjADW29TxW2G0oGcqH0LVfNP6+A+7lDryhoc
-	 DJakAi8Pwn547CPJzaZxRZ0w9Rpn5nxcTxUbHuCZPAn2UKRhoVWvcGupJBG0BNtQOy
-	 XL/uF6p595xXYOGdznuXrMT8NVUckAgk+L+IVOLU=
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Date: Mon, 27 Jul 2026 17:57:34 +0200
-Subject: [PATCH 3/3] Bluetooth: btusb: Fix short read errors in
- btusb_qca_send_vendor_req()
+	id 1woO0o-00000003HeE-0xF8
+	for linux-mediatek@lists.infradead.org;
+	Mon, 27 Jul 2026 16:17:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1785169023;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=QW8PobFLl9VuSJ+iyJKGdmgP3JvFIctsAQhl5gtsCFo=;
+	b=e9EgnTBFtwUBdOynoixpBPRQKMJaYNApHd+27Crx8WskuqjqK/7/WDTp3QTgLY3EO7Up6B
+	nCot9ONufQGsOtAsOrF/2GGLn7xUOK9LZhDAJgXQIX6alQo4RK89kAbYROJ94SkLzXoBZj
+	hyQCYry7SA8Psx6WZyWfmO9nU8yDYqw=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-230--CJEszMDPFmFznbFkLxs-A-1; Mon, 27 Jul 2026 12:17:01 -0400
+X-MC-Unique: -CJEszMDPFmFznbFkLxs-A-1
+X-Mimecast-MFC-AGG-ID: -CJEszMDPFmFznbFkLxs-A_1785169021
+Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-92ec91dc265so255921785a.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 09:17:01 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785169021; x=1785773821;
+        h=user-agent:in-reply-to:content-disposition:content-type
+         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=QW8PobFLl9VuSJ+iyJKGdmgP3JvFIctsAQhl5gtsCFo=;
+        b=MJgG/BQINvF5S/u85Lg38s0+NwTF5rVg0NV89FkHJ9OF1W0pxMctbjpnBXpRpgZMBv
+         84ZdTxeGwEQ6voAd/33PY8qEc7m2YRBziV7L1sH6+yExZPJfVMKBzYYHtkLOWXyW7ctQ
+         P26nWkpk2M86YUvR3CgMrjyJNHOeBK+CWDfzDYPQEwqyNGcW8ZJbYrEWyANv6FbVcsxd
+         3L+MY8pJK+XVbK7ii0QWSI1m4zHciakeWikNN3y8p1XDZgZmrsw7D0w2Hi/r4bwjMTgd
+         teNjliCOL0gRFgTiBLUXCxq1Hjktv7JbIVxYDpfhuc+aQHWJI5WlKLwgw+RdDqMvm+Y9
+         KhWw==
+X-Forwarded-Encrypted: i=1; AHgh+Rqor3GFIl1uwS93tk1vagu3O0lM5ps9wibElRoUkTtfTs/h9kDC1tweJWvcmiLyMAI1AbK+M3Uaed5Iw5eyaw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzq3ycCbAlJIdD9lBjOhCIW2/CPGF11CNnneiF24JZNmG6xesRy
+	qRySLIglCF5/rREcc0MKehCjo+YYVdl5MrSJHD4xxDe2SNt7l/WVJ7fkVf1QdqXm2d7DN696PZp
+	GMqR1mcjGDmW+C6dShMgRfMuIWNQYVeWXYjtP7e25kbjC1xsdMS7k9NgtweL/bbraobRTUeELcg
+	==
+X-Gm-Gg: AR+sD12X8NfENxVLl2BmDtEf60/3hEDV/AG3GYMEXbgTr/2iZbg2DB0BgY6QXJavLOG
+	9ngPUAFrQ+kSRri29U71R3qkNI0b0Nv2mvBX/DCr0GMJevmUeaAQOElHcDLpvnDSbwike8QsCJD
+	P35HD8GR55+0Qmt8I7ePo37c94I32nUvHDc8q0h6vm1dRkqBNoYAwL7DE/l5bkSnYUbhl5FIRmt
+	MLcMUnZh7iqxXkdn8vr3p7zINXzxF8p7OHHMdJtvHgLKyl+nqPmo3DKlY1XhxlTQn+UK5IBX17f
+	ye4yPIylwFerMCgc/izwdHGu1mA+R78sdEuHNLmKWwsSBFra+gnzPvKqB5afByX6WMMGiVNmPBv
+	uArOrMGVIt19qy/GHcJQMRfy5+qQQD4ZB4L0=
+X-Received: by 2002:a05:620a:2691:b0:915:83fa:b3e0 with SMTP id af79cd13be357-932df627547mr956643185a.5.1785169020665;
+        Mon, 27 Jul 2026 09:17:00 -0700 (PDT)
+X-Received: by 2002:a05:620a:2691:b0:915:83fa:b3e0 with SMTP id af79cd13be357-932df627547mr956637785a.5.1785169020166;
+        Mon, 27 Jul 2026 09:17:00 -0700 (PDT)
+Received: from redhat.com (c-73-183-53-213.hsd1.pa.comcast.net. [73.183.53.213])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-932de6724a4sm641575585a.43.2026.07.27.09.16.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 27 Jul 2026 09:16:58 -0700 (PDT)
+Date: Mon, 27 Jul 2026 12:16:55 -0400
+From: Brian Masney <bmasney@redhat.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alessio Belle <alessio.belle@imgtec.com>,
+	Luigi Santivetti <luigi.santivetti@imgtec.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Dan Carpenter <dan.carpenter@linaro.org>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	imagination@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	Icenowy Zheng <zhengxingda@iscas.ac.cn>,
+	YoungJoon Lee <getfeus@gmail.com>
+Subject: Re: [PATCH v3 2/5] clk: mediatek: Add mt8173-mfgtop driver
+Message-ID: <ameEd76Flq7_eUMy@redhat.com>
+References: <20260727091555.1023910-1-wenst@chromium.org>
+ <20260727091555.1023910-3-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260727-bt-ctrl-v1-3-2e8650e9df01@linuxfoundation.org>
-References: <20260727-bt-ctrl-v1-0-2e8650e9df01@linuxfoundation.org>
-In-Reply-To: <20260727-bt-ctrl-v1-0-2e8650e9df01@linuxfoundation.org>
-To: Marcel Holtmann <marcel@holtmann.org>, 
- Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, stable <stable@kernel.org>
-X-Mailer: b4 0.16-dev-401aa
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2899;
- i=gregkh@linuxfoundation.org; h=from:subject:message-id;
- bh=pDUtJiZTQ+4/Vfe0oEjXwhbfECdLzuCVl2652OtoVtc=;
- b=owGbwMvMwCRo6H6F97bub03G02pJDFnp9V+CNHLuqodG7WH5rCcmU2fzI1gqfE/632PO2u+n/
- Q3/Wf62I5aFQZCJQVZMkeXLNp6j+ysOKXoZ2p6GmcPKBDKEgYtTACZi1MMwP5GZ9eibzyK/RVie
- Gn+8vyLo7FvnRoYFGzpSzWe3OjjVCnvb/W2JbPWL/pgCAA==
-X-Developer-Key: i=gregkh@linuxfoundation.org; a=openpgp;
- fpr=F4B60CC5BF78C2214A313DCB3147D40DDB2DFB29
+In-Reply-To: <20260727091555.1023910-3-wenst@chromium.org>
+User-Agent: Mutt/2.4.0 (2026-06-19)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Knmk5MlIEl6cyTT9q4wOvirocx6UJmHSLc2_X7O-WRs_1785169021
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260727_091706_349888_5A359A1A 
+X-CRM114-Status: GOOD (  22.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,96 +125,153 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If btusb_qca_send_vendor_req() gets a "short" read from a device, it
-will accidentally treat that as a "real" read and populate the returned
-value with some unknown and probably totally invalid data.
+Hi Chen-Yu,
 
-Fix this logic error up by calling usb_control_msg_recv() which
-guarantees a "full" read happens, and then simplify the error checking
-for when btusb_qca_send_vendor_req() is called.
+On Mon, Jul 27, 2026 at 05:15:51PM +0800, Chen-Yu Tsai wrote:
+> The MFG (GPU) block on the MT8173 has a small glue layer, named MFG_TOP
+> in the datasheet, that contains clock gates, some power sequence signal
+> delays, and other unknown registers that get toggled when the GPU is
+> powered on.
+> 
+> The clock gates are exposed as clocks provided by a clock controller,
+> while the power sequencing bits are exposed as one singular power domain.
+> 
+> Tested-by: Icenowy Zheng <zhengxingda@iscas.ac.cn>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+> Changes since v2:
+> - Made COMMON_CLK_MT8173_MFGTOP depend on PM
+>   - Needed since the driver implements PM domains using the generic PM
+>     domain library, which also depends on PM
+>   - Fixes build breakage (kernel test robot)
+> - Fixed "RST_DELAY_CNT" name (Brian)
+> - Dropped unused mfg_desc (Brian)
+> - Added check of clk_prepare_enable()'s return value in
+>   clk_mt8173_mfgtop_power_on() (Brian)
+> - Saved error value for return in IS_ERR(data->clk_26m) branch
+>   (Dan Carpenter / kernel test robot w/ smatch)
+> ---
 
-Cc: stable <stable@kernel.org>
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
----
- drivers/bluetooth/btusb.c | 30 +++++++++---------------------
- 1 file changed, 9 insertions(+), 21 deletions(-)
+[snip]
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 8f7ed469cac6..184e95c1625e 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -3424,28 +3424,16 @@ static const char *qca_get_fw_subdirectory(const struct qca_version *ver)
- static int btusb_qca_send_vendor_req(struct usb_device *udev, u8 request,
- 				     void *data, u16 size)
- {
--	int pipe, err;
--	u8 *buf;
--
--	buf = kmalloc(size, GFP_KERNEL);
--	if (!buf)
--		return -ENOMEM;
-+	int err;
- 
- 	/* Found some of USB hosts have IOT issues with ours so that we should
- 	 * not wait until HCI layer is ready.
- 	 */
--	pipe = usb_rcvctrlpipe(udev, 0);
--	err = usb_control_msg(udev, pipe, request, USB_TYPE_VENDOR | USB_DIR_IN,
--			      0, 0, buf, size, USB_CTRL_GET_TIMEOUT);
--	if (err < 0) {
-+	err = usb_control_msg_recv(udev, 0, request, USB_TYPE_VENDOR | USB_DIR_IN,
-+				   0, 0, data, size, USB_CTRL_GET_TIMEOUT,
-+				   GFP_KERNEL);
-+	if (err)
- 		dev_err(&udev->dev, "Failed to access otp area (%d)", err);
--		goto done;
--	}
--
--	memcpy(data, buf, size);
--
--done:
--	kfree(buf);
- 
- 	return err;
- }
-@@ -3652,7 +3640,7 @@ static bool btusb_qca_need_patch(struct usb_device *udev)
- 	struct qca_version ver;
- 
- 	if (btusb_qca_send_vendor_req(udev, QCA_GET_TARGET_VERSION, &ver,
--				      sizeof(ver)) < 0)
-+				      sizeof(ver)))
- 		return false;
- 	/* only low ROM versions need patches */
- 	return !(le32_to_cpu(ver.rom_version) & ~0xffffU);
-@@ -3670,7 +3658,7 @@ static int btusb_setup_qca(struct hci_dev *hdev)
- 
- 	err = btusb_qca_send_vendor_req(udev, QCA_GET_TARGET_VERSION, &ver,
- 					sizeof(ver));
--	if (err < 0)
-+	if (err)
- 		return err;
- 
- 	ver_rom = le32_to_cpu(ver.rom_version);
-@@ -3693,7 +3681,7 @@ static int btusb_setup_qca(struct hci_dev *hdev)
- 
- 	err = btusb_qca_send_vendor_req(udev, QCA_CHECK_STATUS, &status,
- 					sizeof(status));
--	if (err < 0)
-+	if (err)
- 		return err;
- 
- 	if (!(status & QCA_PATCH_UPDATED)) {
-@@ -3704,7 +3692,7 @@ static int btusb_setup_qca(struct hci_dev *hdev)
- 
- 	err = btusb_qca_send_vendor_req(udev, QCA_GET_TARGET_VERSION, &ver,
- 					sizeof(ver));
--	if (err < 0)
-+	if (err)
- 		return err;
- 
- 	btdata->qca_dump.fw_version = le32_to_cpu(ver.patch_version);
+> +static int clk_mt8173_mfgtop_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct device_node *node = dev->of_node;
+> +	struct mt8173_mfgtop_data *data;
+> +	int ret;
+> +
+> +	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
+> +	if (!data)
+> +		return -ENOMEM;
+> +
+> +	platform_set_drvdata(pdev, data);
+> +
+> +	data->clk_data = mtk_devm_alloc_clk_data(dev, ARRAY_SIZE(mfg_clks));
+> +	if (!data->clk_data)
+> +		return -ENOMEM;
+> +
+> +	/* MTK clock gates also uses regmap */
+> +	data->regmap = device_node_to_regmap(node);
+> +	if (IS_ERR(data->regmap))
+> +		return dev_err_probe(dev, PTR_ERR(data->regmap), "Failed to get regmap\n");
+> +
+> +	data->child_pd.np = node;
+> +	data->child_pd.args_count = 0;
+> +	ret = of_parse_phandle_with_args(node, "power-domains", "#power-domain-cells", 0,
+> +					 &data->parent_pd);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Failed to parse power domain\n");
+> +
+> +	devm_pm_runtime_enable(dev);
+> +	/*
+> +	 * Do a pm_runtime_resume_and_get() to workaround a possible
+> +	 * deadlock between clk_register() and the genpd framework.
+> +	 */
+> +	ret = pm_runtime_resume_and_get(dev);
+> +	if (ret) {
+> +		dev_err_probe(dev, ret, "Failed to runtime resume device\n");
+> +		goto put_of_node;
+> +	}
+> +
+> +	ret = mtk_clk_register_gates(dev, node, mfg_clks, ARRAY_SIZE(mfg_clks),
+> +				     data->clk_data);
+> +	if (ret) {
+> +		dev_err_probe(dev, ret, "Failed to register clock gates\n");
+> +		goto put_pm_runtime;
+> +	}
+> +
+> +	data->clk_26m = clk_hw_get_clk(data->clk_data->hws[CLK_MFG_26M], "26m");
+> +	if (IS_ERR(data->clk_26m)) {
+> +		ret = dev_err_probe(dev, PTR_ERR(data->clk_26m), "Failed to get 26 MHz clock\n");
+> +		goto unregister_clks;
+> +	}
+> +
+> +	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, data->clk_data);
+> +	if (ret) {
+> +		dev_err_probe(dev, ret, "Failed to add clk OF provider\n");
+> +		goto put_26m_clk;
+> +	}
+> +
+> +	data->genpd.name = "mfg-top";
+> +	data->genpd.power_on = clk_mt8173_mfgtop_power_on;
+> +	data->genpd.power_off = clk_mt8173_mfgtop_power_off;
+> +	ret = pm_genpd_init(&data->genpd, NULL, true);
+> +	if (ret) {
+> +		dev_err_probe(dev, ret, "Failed to add power domain\n");
+> +		goto del_clk_provider;
+> +	}
+> +
+> +	ret = of_genpd_add_provider_simple(node, &data->genpd);
+> +	if (ret) {
+> +		dev_err_probe(dev, ret, "Failed to add power domain OF provider\n");
+> +		goto remove_pd;
+> +	}
+> +
+> +	ret = of_genpd_add_subdomain(&data->parent_pd, &data->child_pd);
+> +	if (ret) {
+> +		dev_err_probe(dev, ret, "Failed to link PM domains\n");
+> +		goto del_pd_provider;
+> +	}
+> +
+> +	pm_runtime_put(dev);
+> +	return 0;
+> +
+> +del_pd_provider:
+> +	of_genpd_del_provider(node);
+> +remove_pd:
+> +	pm_genpd_remove(&data->genpd);
+> +del_clk_provider:
+> +	of_clk_del_provider(node);
+> +put_26m_clk:
+> +	clk_put(data->clk_26m);
+> +unregister_clks:
+> +	mtk_clk_unregister_gates(mfg_clks, ARRAY_SIZE(mfg_clks), data->clk_data);
+> +put_pm_runtime:
+> +	pm_runtime_put(dev);
+> +put_of_node:
+> +	of_node_put(data->parent_pd.np);
+> +	return ret;
+> +}
+> +
+> +static void clk_mt8173_mfgtop_remove(struct platform_device *pdev)
+> +{
+> +	struct mt8173_mfgtop_data *data = platform_get_drvdata(pdev);
+> +	struct device_node *node = pdev->dev.of_node;
+> +
+> +	of_genpd_remove_subdomain(&data->parent_pd, &data->child_pd);
+> +	of_genpd_del_provider(node);
+> +	pm_genpd_remove(&data->genpd);
+> +	of_clk_del_provider(node);
+> +	clk_put(data->clk_26m);
+> +	mtk_clk_unregister_gates(mfg_clks, ARRAY_SIZE(mfg_clks), data->clk_data);
 
--- 
-2.55.0
+Looking at the error labels in the probe, does the remove also need:
+
+    of_node_put(data->parent_pd.np);
+
+Otherwise this looks good. With that fixed:
+
+Reviewed-by: Brian Masney <bmasney@redhat.com>
 
 
