@@ -4,84 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99740C531FC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 07:40:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E91AC531FC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 07:40:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3ymwueSqv0BpYNpyWUdRv4xMRNQnOisJ/XLIc8X3z5E=; b=gU6co969wJNvjy
-	cqzOuH8gpq+qxbyzeB4XvlkGELYR1vJWmIyPzSAJGZ5HCaSK6jUqgxf8bWSgRQDd9z7xY3aRe3+zT
-	axIAj/uG+ax7R4e87jjLpcEx2Cgol8QeZ+nTwXoTFtSAODaW5gIfNyqBRrEsIYvZzrA2X3Ph9Ewk2
-	Iw464N3VQxuS7NPUFmSSnWdfkFsReAbr+J5WfhiptukVMcyDK13V2rhHLrjYFAsIvPp6/vkdsWVBV
-	WbZCFviCrEPkpEGlUvqCVs1GApL2VCdQCesyBGu7ue38te4myv3zWAxaYx8PI41WYGZdSdSVW5unv
-	ZBym7r3NNlPVYaL5y75A==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9h4E8fzpkUKefQYXbM+5aTJxB/wkrGJJdLAlPHgwa7A=; b=sjImIFn7c8vG02JmIMaZSQs45l
+	mcWggfCg88TxUXCrhDrjdxN96XIqgEmamk9LqRJYuComLEzpcBJE+bJuQKGYLEbeu+iSHEuH8fw7L
+	OnrMb/bXSa3sOAp1oRwjEx/HnBgy78Tn0sRqfoRlhqep4lAufl8ul7SlJ2fc3Y/wP1JaDNPcT6SE5
+	bZ9f5JJRaaL9rtdiwVCtmWN2a5pmKBIFIwJBLHog/NqyX0TNr9HZkPtlLTVEdriSaJRi5ZA+Ut+n9
+	ENkjXx2dZqBQVvkDDCYELX8owedttdX1tUV8tdBtp0vSN7NMmnNfSbDLATbh12zbnQbLulrlZ5W/B
+	1H97M48w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woFx1-000000029AU-2AcD;
-	Mon, 27 Jul 2026 07:40:39 +0000
-Received: from mail-wr2-x02.google.com ([2a00:1450:4864:30::2])
+	id 1woFx8-000000029DS-3OZG;
+	Mon, 27 Jul 2026 07:40:46 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woFwy-00000002981-0IEW
+	id 1woFwz-0000000298g-1mXs
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Jul 2026 07:40:38 +0000
-Received: by mail-wr2-x02.google.com with SMTP id ffacd0b85a97d-4784b41f3aeso691347f8f.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 00:40:35 -0700 (PDT)
+	Mon, 27 Jul 2026 07:40:39 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-47f904e80eeso1937063f8f.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 00:40:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1785138034; x=1785742834; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:content-type:mime-version
-         :message-id:date:subject:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=3ymwueSqv0BpYNpyWUdRv4xMRNQnOisJ/XLIc8X3z5E=;
-        b=TjsTG6GYwahk2IsXnEkPn40mWNAmpeWrGQ1xiBcqGwBp4phl9Js4j40vjp78SMesy+
-         Lr6+jki0DE3Hl5HNB4K96+hc9oDY/BbPA7yk82BmTBjrOJDN72VvgfuMsjORv4bn6agq
-         bckZG8aa768HTuWAwZPUor+nmvExt5aHnLMkXj2h0nZkzlmxs6NbF11m9IGanVanWxZc
-         d6xh+aP9RDexrSzVbLYh5Rkp62tPkrStirPoxMPP/r2bSm0QJAJ2+owXxS47/W9kzQ6g
-         PhNv+K7f9Nf+CSkiOB1MhcjLvuLLbKhUmKQ5tpN5fZ7TRFDzgWmll19yLKVS6oeZ07T3
-         ea0g==
+        d=baylibre.com; s=google; t=1785138036; x=1785742836; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=9h4E8fzpkUKefQYXbM+5aTJxB/wkrGJJdLAlPHgwa7A=;
+        b=PL2TV8REoHJ8IelVvZFJY5A2KFYAPHSVvxZ2vJ7G2A3+mvzQXaffJpQkAtV1+DRWwv
+         fN3qlDcwvOHSeQsauSW1lVO2GLp3VbyjW1pBA4MYIR97TLwlEpGeDzE7nt3Q3wayrDGQ
+         TCDe97UYd2V+Fcq/fKq07iuZEuD+pEQT29E0SRyNPZXVUqF4qVQHXcX8+Zt4AdaAi/vV
+         q3U7XMjX9FBAukFfqOw78WEZxf6Gu9qvsuc6Pw0ku62Co8vG/F9+D/wKT7C5xDhMkFcO
+         qvJoo2epFHd831ydzif7Pc5ul3NteDYFEZ29ojIzf5WJjMBWoXg/PFGsct/btpnOgBYU
+         hXSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785138034; x=1785742834;
-        h=cc:to:content-transfer-encoding:content-type:mime-version
-         :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=3ymwueSqv0BpYNpyWUdRv4xMRNQnOisJ/XLIc8X3z5E=;
-        b=kkSC4VD+dIHPBMA7E4XnGwBt0Ie0Y5qFijcQ+nGhYBcmbAGmXUv9RMuc8dJlJwzLpV
-         ndliSkvxGN5MKI4NnSvcZm1lasoh8Gbk4ao4Dg7k8WL2csWLoCW23HiGeKjEy/xLdB/J
-         ysvv0QDSYrjCa17rkWQyPKCqtTedOXY/bpFaYQQ7BBb2FzrbKfzaU15hHkFROQtKgueS
-         UCwoqRKVaVw5fc8e10hkhjxXaR4oks0qyckM1DH09xxARF6wN+8xFt7FhRkPzQquKTbh
-         pGP4RbEVIJGxfJBnw5gb91mQP20C4Ygqm7r8G0Aghfb1IbpvDj1U3QmRKVtBQu78jcRr
-         xgxw==
-X-Forwarded-Encrypted: i=1; AHgh+RrurbvPUwdDH5r6RLATE5SYKhDj7Q+oE+IgvtYOb15av3zmvOHwQ2sCu6bAWHqLag+KpTvOyOiISvorOoCUzw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyjgXdJDj1JCe92sq76cOd9dEcPb1S3tmFd5bdHFjEDctDUEEQ4
-	nm7xZSBLTq4YfIh6j8ws6SrQihYHfWIkbY2k5xe3u52xwJZkuWSkt3lxNybL22usDxc=
-X-Gm-Gg: AR+sD1294InPZwircQpduYUkAI1CInkRbnyki1PvAaP/sscaKxmZ5G8zpj3FDtfO60s
-	n790wZjF94N4bheFPT68yB5Oxl/5ng7F98skQjUcSb6IeI66Z6GnoYddQAks8wYxvLIPkm2i1Li
-	kt7rteDYZZ+UpwPJO/FG+ZuDANKcM95RElaQuTs1cdsBbaMjutt8VD+TLJ81gfnA8ZztI8vhg6d
-	BVQrGTv+UZdVm8yLZRCd78Dn6SKm1tlqbWpFPl95k7oW91/s2wvY33I/VOzFprcnqmgXZXrNsA/
-	6EH5+HCYaZqDKgZOd6ZozeO3UGcKwt75djI/VR1iNFw0bzrNBX9JPAFo1Ari5/zwXEf0cdBZtTz
-	zWj/SeNZIZPqyUpYDs8gv0xvMiYGtuLREy/piqXeitR/tRIne9RuEG3XzkO1VYkD0rC5dBtOJx9
-	3Rfj4gedOufWcGHPZfywbHAdHoYAtqszRJ0ww39A4vNm2ALRSpcQ9v8TVNSLRGpT/L6k00T+eAU
-	GkIGjfUVeO1pxA=
-X-Received: by 2002:a05:6000:310e:b0:47f:9425:1a2a with SMTP id ffacd0b85a97d-47f9fe97d8bmr9625606f8f.30.1785138033659;
-        Mon, 27 Jul 2026 00:40:33 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1785138036; x=1785742836;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :content-type:mime-version:subject:date:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=9h4E8fzpkUKefQYXbM+5aTJxB/wkrGJJdLAlPHgwa7A=;
+        b=Nv1KY31z8XZY5z8Ck2lSLsZhzh51t0EMNGpSmfRrO4jeqznrVzV/58i2TfChjXCeQM
+         krkbUh89e8NY7rpyo2HkEYAOyqttgD7V5tRcOVq2yODxFTUZB+7XL3uxWK4qyLxiOoIk
+         6VTSuayIpXuEhX2wpqZWYnn9H3cYmgpcghciI+fxA0oNrrHerJH1p0W0GzddyeLl6cej
+         iVkZGcW7T+ecEt/mRTpq8vfinsAUzhhBYSkTpkjntxZFRaVOnN9xMMnskwXEdiSbJPkw
+         c/DIj85v8Dkzivb8cipi9wEV6bmNTi0jmbcLPFHr4A+fQ8EZPl7c0JtLm499VAas5Gip
+         rvxw==
+X-Forwarded-Encrypted: i=1; AHgh+RodFh0Nh71bkxOnsDpMDj3DuGyW1LePC5CoLjRz2mWfBCa8JWpr++lQ8l41uLC2yoWrRCRsvyoBpy6E89313Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy/zd/LcvKopjYY7Qr0lmj29eoO/ykvigp2ai6ml5+UsdCZGFLH
+	4vbDOPM6Pe/nNZI+bWH0xCTWET2P2B1qRmGhCf3Kv2faTeAj4Jc3DN5hLiiN4wJdI4M=
+X-Gm-Gg: AR+sD12dyyAY+XStIsULy72w3uy/6aZHWBddsykqly9Y2v51wh81b9j4BdD2rkXtqRl
+	wew1C6TsEYud7Wvsb7e3a9IvsZHutEZQWIe+YILm7OqM/w1sXX4deLjYaTpdL9ZoDSyrvm99LWu
+	jXFxJ+YQM5GV0xjOuFsrb629PKGKPaVCMxSQcICQ6Zes8OhVpyWVTsBtaCglvDY/J2lEXb7QOup
+	VVvUPw5DmaC80JZL1bA0rwFv/LL5DF++rLyI9OBRBdbXr3SezLzO4AveZv4yfFvrmVfcd19k/3N
+	7ns0XN0zn/3yaFE3EQTvz+N36LWmumSK0ogZLs5EkyfNX/dJPO551HVWvHMzqAs9ypc39SaCd/l
+	mK5LN29nIgMsDJ+NCu1x8Y7RrVSmCWC/lfu8l/ueyZdiUWj/ditwLuzyFSrxw2kwlbUPTgWG5tN
+	f5UlRgC6cZBuDB15m6wQnfR5sc+IMSuGj4tX4yg3NMlG+RVdg2jBfBAnteI0YN+OhPGN4XGj1sD
+	gRaWTKsZpFgGmsbKUIRqSyZLw==
+X-Received: by 2002:a05:6000:4382:b0:47f:45fa:98e0 with SMTP id ffacd0b85a97d-47f9febc7e5mr8981992f8f.57.1785138035650;
+        Mon, 27 Jul 2026 00:40:35 -0700 (PDT)
 Received: from macbook.homenet.telecomitalia.it (host-87-0-90-136.retail.telecomitalia.it. [87.0.90.136])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47f85bb5127sm43677682f8f.10.2026.07.27.00.40.32
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47f85bb5127sm43677682f8f.10.2026.07.27.00.40.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Jul 2026 00:40:33 -0700 (PDT)
+        Mon, 27 Jul 2026 00:40:35 -0700 (PDT)
 From: Carlo Caione <ccaione@baylibre.com>
-Subject: [PATCH v2 0/2] Stabilize serial line numbers on MediaTek boards
-Date: Mon, 27 Jul 2026 09:38:07 +0200
-Message-Id: <20260727-ccaione-genio-serial-aliases-v2-0-0f2ae41a8e89@baylibre.com>
+Date: Mon, 27 Jul 2026 09:38:09 +0200
+Subject: [PATCH v2 2/2] serial: 8250_mtk: honor DT serial aliases
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/42NQQ6CMBBFr0Jm7ZhSAoIr72FYtHUKY5CSFomEc
- HdbvICze8mb9zcI5JkCXLMNPC0c2I0R5CkD06uxI+RHZJBCVuIiajRGRYWwo5Edpm81oBpYBQp
- IpZVG1rq0toKYmDxZ/hz5e/vj8NZPMnNqJqPnMDu/HvtLnrw/p5YcBWor4zXUFHVx02odWHs6G
- /eCdt/3L/oS1v3dAAAA
-X-Change-ID: 20260708-ccaione-genio-serial-aliases-e5f2c28b5ff6
+Message-Id: <20260727-ccaione-genio-serial-aliases-v2-2-0f2ae41a8e89@baylibre.com>
+References: <20260727-ccaione-genio-serial-aliases-v2-0-0f2ae41a8e89@baylibre.com>
+In-Reply-To: <20260727-ccaione-genio-serial-aliases-v2-0-0f2ae41a8e89@baylibre.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -94,8 +92,8 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  Carlo Caione <ccaione@baylibre.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_004036_138098_1091BD23 
-X-CRM114-Status: GOOD (  13.47  )
+X-CRM114-CacheID: sfid-20260727_004037_484625_80F17461 
+X-CRM114-Status: GOOD (  15.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,60 +108,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On MediaTek boards typically only serial0 is aliased, so the remaining
-enabled UARTs get first-free ttyS line numbers from the 8250 core at
-probe time. Line numbers are handed out in probe order, and probe order
-is not deterministic once a UART defers on its clocks, so the console
-UART can lose ttyS0 to another port.
+The Genio board DTs provide serial aliases for all enabled UARTs, but
+the MTK 8250 driver still registered every port with the default line
+number. If uart0 deferred and another UART probed first, the 8250 core
+could still assign ttyS0 to the wrong port despite the DT aliases.
 
-This was observed on the Genio 700 EVK running the Ubuntu 26.04 generic
-kernel: uart0 (the debug console) deferred waiting for its clocks while
-uart1 probed first and claimed ttyS0. With console=ttyS0 on the kernel
-command line the console then pointed at the wrong UART, and the boot
-looked like it had hung on the serial console. The failure is
-intermittent and depends purely on probe timing.
-
-Pin the line numbers explicitly instead:
-
-- Patch 1 aliases every enabled UART on the affected Mediatek boards, so
-  DT expresses the intended serial<N> -> ttyS<N> mapping.
-
-- Patch 2 makes the 8250_mtk driver read that alias with
-  of_alias_get_id() and seed uart.port.line before registering the
-  port, so the 8250 core reserves the requested ttyS slot instead of
-  falling back to first-free.
+Read the serial alias during OF probe and seed uart.port.line before
+registering the port so the 8250 core reserves the requested ttyS slot.
 
 Signed-off-by: Carlo Caione <ccaione@baylibre.com>
 ---
-Changes in v2:
-- Added some missing MTK boards
-- Link to v1: https://patch.msgid.link/20260708-ccaione-genio-serial-aliases-v1-0-bf22229e9383@baylibre.com
+ drivers/tty/serial/8250/8250_mtk.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
----
-Carlo Caione (2):
-      arm64: dts: mediatek: alias all enabled serial ports
-      serial: 8250_mtk: honor DT serial aliases
+diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+index e6a56cf54ae0..841d64f6a707 100644
+--- a/drivers/tty/serial/8250/8250_mtk.c
++++ b/drivers/tty/serial/8250/8250_mtk.c
+@@ -8,6 +8,7 @@
+ #include <linux/clk.h>
+ #include <linux/io.h>
+ #include <linux/module.h>
++#include <linux/of.h>
+ #include <linux/of_irq.h>
+ #include <linux/of_platform.h>
+ #include <linux/pinctrl/consumer.h>
+@@ -521,7 +522,7 @@ static int mtk8250_probe(struct platform_device *pdev)
+ 	struct uart_8250_port uart = {};
+ 	struct mtk8250_data *data;
+ 	struct resource *regs;
+-	int irq, err;
++	int irq, err, line;
+ 	struct fwnode_handle *fwnode = dev_fwnode(&pdev->dev);
+ 
+ 	irq = platform_get_irq(pdev, 0);
+@@ -575,6 +576,10 @@ static int mtk8250_probe(struct platform_device *pdev)
+ #endif
+ 
+ 	if (is_of_node(fwnode)) {
++		line = of_alias_get_id(pdev->dev.of_node, "serial");
++		if (line >= 0)
++			uart.port.line = line;
++
+ 		/* Disable Rate Fix function */
+ 		writel(0x0, uart.port.membase +
+ 			(MTK_UART_RATE_FIX << uart.port.regshift));
 
- arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts    | 1 +
- arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts              | 1 +
- arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts  | 2 ++
- arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts              | 2 ++
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi            | 1 +
- arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts | 4 ++++
- arch/arm64/boot/dts/mediatek/mt8195-demo.dts              | 1 +
- arch/arm64/boot/dts/mediatek/mt8365-evk.dts               | 2 ++
- arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi     | 2 ++
- arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-sbc.dtsi  | 2 ++
- arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi   | 2 ++
- arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi     | 1 +
- drivers/tty/serial/8250/8250_mtk.c                        | 7 ++++++-
- 13 files changed, 27 insertions(+), 1 deletion(-)
----
-base-commit: f5098b6bae761e346ebcd9da7f95622c04733cff
-change-id: 20260708-ccaione-genio-serial-aliases-e5f2c28b5ff6
-
-Best regards,
---  
-Carlo Caione <ccaione@baylibre.com>
+-- 
+2.55.0
 
 
