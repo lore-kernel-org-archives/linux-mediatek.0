@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEAE1C531D0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 08:02:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08CB5C531D0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 08:04:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sVSjfAUIt9PKCQrYkQQ+sZ/X6Y4rdmN3ivPK6kPvsmw=; b=U4+LAnSuX2+KiPE4IcY2UtR6uR
-	udgI3OeCP7KXQgGm7svxoNQRZgHJmzhPRX3lM5Llerej8eM3ITEG5Qje6g4XmACxij1D+HWAe3Rb4
-	3smo8sSzg2jnkBEv5s0rdngHN91ksLK9uM0T5bjGnFKts6q3ZfnxL6Nrie8o/n5PxBFpUN7Vq7C5y
-	+kyIbM0aq5DY3acR9DCgxen2HD9/tgAedz1+VssyW868atYUj00itGHJI/HeMBoFPfbRrXPvFGzMZ
-	n8jNQNknhQiyBuklMT3jaCC2R8BZRPfdZXCgTZuR7m5yLQkayqjdJ8v69cV1Bsno1Z9JxqXAexDbc
-	8ZsSK6fg==;
+	bh=JK6hcDea904zCAzfOvHH+R87EzL8G+f8U4g5JCbElmE=; b=Nj5EfO26V7H0di8la5Bzyk3cmk
+	m10hxH/wxvVvw2EL6KVJxq6OsgvhbTJ2oVCCUhLeRvj2rW7k3PT064oI2AZRNMp/l9PibDSz/H+Mr
+	zjV8wryCLf6JT0a4BtvUgcBaxnOMTPwMKFe+8ZiiglSfXNBYQz8hoYTxqw/e0CJjbGRhL76Gcr7pq
+	f9zwwUaEkL1MM9gzxYKvhJ9TJ08joDvZDGmfGXUvXHCpNMUIy+UwtM3KSL/V6I+2shY/8Sjl0ed0N
+	smX1x9Ax3Yq5MLYZxNXXOVuXwi869kmxlm7F/N+h0p+md0ZjWUTaanisUmpXrnSPXgIzpxnn/OM5t
+	9c8q0f9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woGIS-00000002C6z-30To;
-	Mon, 27 Jul 2026 08:02:48 +0000
-Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
+	id 1woGKW-00000002CIe-48G8;
+	Mon, 27 Jul 2026 08:04:56 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woGIO-00000002C6H-3w93;
-	Mon, 27 Jul 2026 08:02:46 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de (drehscheibe.grey.stw.pengutronix.de [IPv6:2a0a:edc0:0:c01:1d::a2])
-	(Authenticated sender: relay-from-drehscheibe.grey.stw.pengutronix.de)
-	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 88EAF202055;
-	Mon, 27 Jul 2026 10:02:42 +0200 (CEST)
-Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1woGIM-001VP2-1U;
-	Mon, 27 Jul 2026 10:02:42 +0200
-Received: from pza by lupine with local (Exim 4.98.2)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1woGIM-000000007n2-1U0y;
-	Mon, 27 Jul 2026 10:02:42 +0200
-Message-ID: <d19b673bba6cfb5c9634510ba742021a7135f6c0.camel@pengutronix.de>
-Subject: Re: [PATCH net-next v9 11/12] net: pcs: airoha: add PCS driver for
- Airoha AN7581 SoC
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Christian Marangi <ansuelsmth@gmail.com>, Andrew Lunn	
- <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet	 <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni	 <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski	 <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Simon
- Horman	 <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Shuah Khan	
- <skhan@linuxfoundation.org>, Lorenzo Bianconi <lorenzo@kernel.org>, Heiner
- Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>,
- Saravana Kannan	 <saravanak@kernel.org>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, 	linux-kernel@vger.kernel.org,
- linux-doc@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,  Maxime Chevallier
- <maxime.chevallier@bootlin.com>
-Date: Mon, 27 Jul 2026 10:02:42 +0200
-In-Reply-To: <20260717065448.1498335-12-ansuelsmth@gmail.com>
-References: <20260717065448.1498335-1-ansuelsmth@gmail.com>
-	 <20260717065448.1498335-12-ansuelsmth@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2-0+deb13u1 
+	id 1woGKV-00000002CIY-1wEI
+	for linux-mediatek@lists.infradead.org;
+	Mon, 27 Jul 2026 08:04:55 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 77E20601EC;
+	Mon, 27 Jul 2026 08:04:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A4C891F00A3A;
+	Mon, 27 Jul 2026 08:04:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1785139494;
+	bh=JK6hcDea904zCAzfOvHH+R87EzL8G+f8U4g5JCbElmE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=gMbZzfhzqqKrI8a4N/3DQKK14ELe3f3F4eTw9FPTBuBArbUoYGylXrxEive+RR6RH
+	 GlYSU9K8DsvzHDJP8/xAtx+5H2HOPVoyea/c/nVukkEueBKPeGyDeABbf3bM888M5c
+	 u3K6nGqXfl/AlxYU/7RD6GoDoIDDdBNXa4Okjyb7vsYev9FrLySXgvC3ha4B/CCT2g
+	 iuDlvR7iDiJpNWH2MnkbXQNY5rcQ8kGn2y2QngfKkJsswpALxmxo4FcsPjcgcr2ci0
+	 mfQHRw98XVjgI6HO3PLvwXD5+0Zfzcg1e4PJFLjrqV6i7Njsoucgn97ec33Ar5A4Jx
+	 mfiNlfk98yQeg==
+Date: Mon, 27 Jul 2026 10:04:51 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Bartosz Golaszewski <brgl@kernel.org>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Benjamin Larsson <benjamin.larsson@genexis.eu>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	Markus Gothe <markus.gothe@genexis.eu>,
+	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
+Subject: Re: [PATCH v7 12/34] pinctrl: airoha: add missed get_direction()
+ function for gpio_chip
+Message-ID: <amcRI3c0-1iWWX5M@lore-desk>
+References: <20260727074234.3761170-1-mikhail.kshevetskiy@iopsys.eu>
+ <20260727074234.3761170-13-mikhail.kshevetskiy@iopsys.eu>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_010245_137662_6C2938A1 
-X-CRM114-Status: GOOD (  19.25  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="8iQlrEnRGnlj5Pyn"
+Content-Disposition: inline
+In-Reply-To: <20260727074234.3761170-13-mikhail.kshevetskiy@iopsys.eu>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,79 +80,125 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fr, 2026-07-17 at 08:54 +0200, Christian Marangi wrote:
-> Add PCS driver for Airoha AN7581 SoC for Ethernet/PON/PCIe/USB SERDES
-> and permit usage of external PHY or connected SFP cage. Supported modes
-> are USXGMII, 10G-BASER, 2500BASE-X, 1000BASE-X and SGMII.
+--8iQlrEnRGnlj5Pyn
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> This patch adds missed get_direction() function for gpio_chip.
+> Also it reimplements pinconf's get_direction() function using
+> newly defined function.
 >=20
-> The driver probe and register the various needed registers and register a=
-s
-> a PCS provider for fwnode usage.
->=20
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> Fixes: 1c8ace2d0725 ("pinctrl: airoha: Add support for EN7581 SoC")
+> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
 > ---
->  drivers/net/pcs/Kconfig                    |    2 +
->  drivers/net/pcs/Makefile                   |    2 +
->  drivers/net/pcs/airoha/Kconfig             |   12 +
->  drivers/net/pcs/airoha/Makefile            |    7 +
->  drivers/net/pcs/airoha/pcs-airoha-common.c | 1324 +++++++++++++
->  drivers/net/pcs/airoha/pcs-airoha.h        | 1311 ++++++++++++
->  drivers/net/pcs/airoha/pcs-an7581.c        | 2093 ++++++++++++++++++++
->  7 files changed, 4751 insertions(+)
->  create mode 100644 drivers/net/pcs/airoha/Kconfig
->  create mode 100644 drivers/net/pcs/airoha/Makefile
->  create mode 100644 drivers/net/pcs/airoha/pcs-airoha-common.c
->  create mode 100644 drivers/net/pcs/airoha/pcs-airoha.h
->  create mode 100644 drivers/net/pcs/airoha/pcs-an7581.c
+>  drivers/pinctrl/airoha/pinctrl-airoha.c | 41 ++++++++++++++++++-------
+>  1 file changed, 30 insertions(+), 11 deletions(-)
 >=20
-[...]
-> diff --git a/drivers/net/pcs/airoha/pcs-airoha-common.c b/drivers/net/pcs=
-/airoha/pcs-airoha-common.c
-> new file mode 100644
-> index 000000000000..781f89adf3ab
-> --- /dev/null
-> +++ b/drivers/net/pcs/airoha/pcs-airoha-common.c
-> @@ -0,0 +1,1324 @@
-[...]
-> +static int airoha_pcs_setup_scu(struct airoha_pcs_priv *priv,
-> +				int index, phy_interface_t interface)
+> diff --git a/drivers/pinctrl/airoha/pinctrl-airoha.c b/drivers/pinctrl/ai=
+roha/pinctrl-airoha.c
+> index 820b7b0443851..b52eb39c55ff3 100644
+> --- a/drivers/pinctrl/airoha/pinctrl-airoha.c
+> +++ b/drivers/pinctrl/airoha/pinctrl-airoha.c
+> @@ -2502,6 +2502,27 @@ static int airoha_gpio_get(struct gpio_chip *chip,=
+ unsigned int gpio)
+>  	return err ? err : !!(val & BIT(pin));
+>  }
+> =20
+> +static int airoha_gpio_get_direction(struct gpio_chip *chip, unsigned in=
+t gpio)
 > +{
-> +	const struct airoha_pcs_match_data *data =3D priv->data;
-> +	int ret;
+> +	struct airoha_pinctrl *pinctrl =3D gpiochip_get_data(chip);
+> +	u32 mask, index, val;
+> +	int err, field_shift;
 > +
-> +	switch (data->port_type) {
-> +	case AIROHA_PCS_ETH:
-> +		airoha_pcs_setup_scu_eth(priv, interface);
-> +		break;
-> +	case AIROHA_PCS_PON:
-> +		airoha_pcs_setup_scu_pon(priv, interface);
-> +		break;
-> +	case AIROHA_PCS_PCIE:
-> +		airoha_pcs_setup_scu_pcie(priv, index, interface);
-> +		break;
-> +	case AIROHA_PCS_USB:
-> +		break;
-> +	}
-> +
-> +	/* TODO better handle reset from MAC */
+> +	field_shift =3D 2 * (gpio % AIROHA_REG_GPIOCTRL_NUM_PIN);
+> +	mask =3D GENMASK(field_shift + 1, field_shift);
 
-What does this mean? There's a "mac" and a "phy" control in rsts.
-Should the "mac" reset be handled differently? Or is there a separate
-reset line that is controlled by the MAC itself?
+before we where checking just BIT(field_shift) as mask, while now we are
+checking two bits.
 
-> +	ret =3D reset_control_bulk_assert(ARRAY_SIZE(priv->rsts),
-> +					priv->rsts);
-> +	if (ret)
-> +		return ret;
+> +	index =3D gpio / AIROHA_REG_GPIOCTRL_NUM_PIN;
 > +
-> +	ret =3D reset_control_bulk_deassert(ARRAY_SIZE(priv->rsts),
-> +					  priv->rsts);
-> +	if (ret)
-> +		return ret;
+> +	err =3D regmap_read(pinctrl->regmap,
+> +			  pinctrl->gpiochip.dir[index], &val);
+> +	if (err)
+> +		return err;
 > +
-> +	return 0;
+> +	if ((val & mask) > BIT(field_shift))
+> +		return -EINVAL;
+> +
+> +	return (val & mask) ? GPIO_LINE_DIRECTION_OUT : GPIO_LINE_DIRECTION_IN;
+
+nit: unnecessary brackets.
+
 > +}
+> +
+>  static int airoha_gpio_direction_output(struct gpio_chip *chip,
+>  					unsigned int gpio, int value)
+>  {
+> @@ -2648,6 +2669,7 @@ static int airoha_pinctrl_add_gpiochip(struct airoh=
+a_pinctrl *pinctrl,
+>  	gc->free =3D gpiochip_generic_free;
+>  	gc->direction_input =3D pinctrl_gpio_direction_input;
+>  	gc->direction_output =3D airoha_gpio_direction_output;
+> +	gc->get_direction =3D airoha_gpio_get_direction;
+>  	gc->set =3D airoha_gpio_set;
+>  	gc->get =3D airoha_gpio_get;
+>  	gc->base =3D -1;
+> @@ -2855,21 +2877,18 @@ static int airoha_pinctrl_set_conf(struct airoha_=
+pinctrl *pinctrl,
+>  static int airoha_pinconf_get_direction(struct pinctrl_dev *pctrl_dev, u=
+32 p)
+>  {
+>  	struct airoha_pinctrl *pinctrl =3D pinctrl_dev_get_drvdata(pctrl_dev);
+> -	u32 val, mask;
+> -	int err, pin;
+> -	u8 index;
+> +	int err, gpio;
+> =20
+> -	pin =3D airoha_convert_pin_to_reg_offset(pctrl_dev, NULL, p);
+> -	if (pin < 0)
+> -		return pin;
+> +	gpio =3D airoha_convert_pin_to_reg_offset(pctrl_dev, NULL, p);
 
-regards
-Philipp
+if you do not rename pin in gpio here the patch will be simpler.
+
+Regards,
+Lorenzo
+
+> +	if (gpio < 0)
+> +		return gpio;
+> =20
+> -	index =3D pin / AIROHA_REG_GPIOCTRL_NUM_PIN;
+> -	err =3D regmap_read(pinctrl->regmap, pinctrl->gpiochip.dir[index], &val=
+);
+> -	if (err)
+> +	err =3D airoha_gpio_get_direction(&pinctrl->gpiochip.chip, gpio);
+> +	if (err < 0)
+>  		return err;
+> =20
+> -	mask =3D BIT(2 * (pin % AIROHA_REG_GPIOCTRL_NUM_PIN));
+> -	return val & mask ? PIN_CONFIG_OUTPUT_ENABLE : PIN_CONFIG_INPUT_ENABLE;
+> +	return err =3D=3D GPIO_LINE_DIRECTION_OUT ?
+> +	       PIN_CONFIG_OUTPUT_ENABLE : PIN_CONFIG_INPUT_ENABLE;
+>  }
+> =20
+>  static int airoha_pinconf_get(struct pinctrl_dev *pctrl_dev,
+> --=20
+> 2.53.0
+>=20
+
+--8iQlrEnRGnlj5Pyn
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCamcRIwAKCRA6cBh0uS2t
+rIvRAP46t3ynpmSaQbfS9FRiJxVVb8IPe3lJTpXHNUdJ6JKXKwEAitJivdnbmcKb
+13q9RT2W9cpPRTQIRuoQiYljaIyMjw4=
+=wRoE
+-----END PGP SIGNATURE-----
+
+--8iQlrEnRGnlj5Pyn--
 
