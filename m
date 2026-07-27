@@ -4,156 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E170AC531D0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 10:01:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCF47C531D0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 10:57:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KmDiEXxACfljywIFz1W9JSRHmKR6p36Yja9EDW/O9BQ=; b=RDC1TFoITQtB98nUSRTiPQbfa4
-	J9JZGACEtYxivd67KRMMwKEdOeRXy8nddXvdgrqvJyfEhzDN6f8P0cWAd+31+fMpjjIKrt1tLlEf5
-	tI5B+GWgAuM4rt6zJEKOE4IqNeX6bFGW+rhQb24ue+bgat9MHx/HPRwD9CPL/FdplbKx4RvodfV/t
-	Lb3fnBZHoCjpccQ7dzeIg8MYs/XVukmwpmYg13Tz5zpOW+8KlMYP9xe2MCBfB7P6RsB9FZzPvRrrB
-	IOHixAi3ig3/35jjWRPvR8xDXLtylY8/lXpusQimZaXFEbpacLItp/jRYrXqaIqwdC5ZEGyvwpVKV
-	4V9yXOeg==;
+	bh=P9qRE0eLqMtz9rnfDFKuf3rnw9cbt+HdSl7w2HOjV+w=; b=JzU5MeH0OklyMVzCuAHqrXv1Nq
+	oi4SUBNJYLBVcFnmXbKGRshF/e+rwmrlOt6bWwtvvUrVe0jAjL58sAyrpceE3izGBiW0cB2MbOJvX
+	SQhg8ynK8XPVdNEWIX/TEfXw+w7tVe0MIfYqNoirthmJfTBrVrrVA1L32pRNVqjMSecgoM9r2Jok/
+	hUDoPHchJ48onYN/+MfF9uy/yuFsisK3F6VR+jENMKkJvJwPYCEPaSQ/ljAILFx9u8W4zWiX0vLyM
+	0DLW62txkAax9ck1oId0DDoy7XJ2OLnS90QdrF8ogE1I53qytaepZfVyBDpdfpFjwtxHULgOPvFMZ
+	7jc5+Mig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woI8z-00000002Q59-3VoK;
-	Mon, 27 Jul 2026 10:01:09 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1woJ1D-00000002XFU-2jNa;
+	Mon, 27 Jul 2026 10:57:11 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woI8w-00000002Q19-0eqx
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Jul 2026 10:01:08 +0000
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 66R9bVxk2846463
-	for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 10:01:05 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	KmDiEXxACfljywIFz1W9JSRHmKR6p36Yja9EDW/O9BQ=; b=chWU9KHW7HHUtuwi
-	ckvJe60dImllbKRrEXpmMbo43YJLOwI6raHkUQD+DgAlCs6stQKakPt8Ji7/+xt8
-	pUi9OZPOBY10f61PgprMwz3cRIxeWuad4Ip1Fell9knLu6U5KMIOnHDRV4XF8k+g
-	zDxgz0SvApLDoFIzh2s1jnhFj6oAyxjCfgQg+mf+sNcMy/SwGahJ7goATVTbU+8z
-	pKvxnxCtzHii4tkT3y//ITKDoMpqG35gjDeDwGh3hV6YvAXuAHwSDQLlRIntkgva
-	hmbzqaOitfFQg6cDCQTGQg/NJUuVhkRV/flLziRJBj2/AqVFm8u0DbGVKqIpbABQ
-	ooAPsg==
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com [209.85.219.72])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fp4v6836j-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 10:01:04 +0000 (GMT)
-Received: by mail-qv1-f72.google.com with SMTP id 6a1803df08f44-907c59bd65aso26671936d6.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 03:01:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785146464; cv=none;
-        d=google.com; s=arc-20260327;
-        b=DilKpSQD7foqfSFSeyBDIujIehbrUfUQl7fwmAopCAos85Z4hAWcyFt0qMmvlD2Bpo
-         qdIce+g2ynn0Dmimj4ns3S4f2WEPl87oEAnlwADnb278qWr8qWVdP8P8c7iy6GPn7uMY
-         y6Vtut5uCwWlapNMM/X5lHP4+TV+8c9T5Y7gK2d6+upTvvi/xfp1ZoukJ4KIvh5hTDDQ
-         0Oc4q3FAKcigQHd2S9FYdyNlBKKzPL7pAljWwLH9Z9V5gJa/n5Yb06xamlpwgALzyFfU
-         Bg+/7VKr58iLMAubVA2D6wcnvOe41EB3560tvYfTXr7qRjRt/7d488t4RlzNRlfL9qcm
-         2TCw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=KmDiEXxACfljywIFz1W9JSRHmKR6p36Yja9EDW/O9BQ=;
-        fh=4CIlIsI4DF0frS5xb2k/v57FNEyfs15dwF4K3HnGdas=;
-        b=jTEdZNYjNqWZnFm0+c+ijY+DIP6uGUPlaaLDB1XUUzcAhKQE3uREg33M3neF4rtcos
-         BbSmcjdxNBhw8Ihg6YwWuUaVzd2yJ96iROpp3Qb96iBt9c/frYl2aColu01iQ6Zyi75b
-         Ota2wpCB5g0C4nHzWKPiW/gps2F/DmkxTM3Hk+Q/o3PTvpIBf6uUdb4DzfZy13nhG83T
-         AfWpO0VaxGmXn6K0YizcGSHuSz07BFbO6rOiSOY38rbEWPMUDsKnkkL47tLgPD7ATxJ6
-         RD92ymnO6FSO3MO4mduuv8P7tefS7S06ggPxzn1QKLw6sC4s6hNiThgcSiVxPr6NC28y
-         r/yw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1785146464; x=1785751264; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=KmDiEXxACfljywIFz1W9JSRHmKR6p36Yja9EDW/O9BQ=;
-        b=aUMQQlaSl+DMOtFWaqnHerp8ssW03uZooD5KuLn2Rak1gEm2FQWFZvMg/sktsRA0Vb
-         YOMWrHiuQ9OeOeTRmr8H6UsB99Kr+716SUL00gX24narpCKUSaOmK8ZiIK+rskHCyH6I
-         wZzaQju6MjiDOrFzLbv6zXdLJPo+xzTuT1OkSnKv1o9SZn2zXnB9yGr5K7fdbKmC/GM9
-         /GppNqNY4/bL+F89K58w0cy0C2yevpc74jtVekY0fPj/lnBvdWP+7ipjW9kehPB+aUbs
-         0ajsB7IaxdZEfeVFZmRxxGVkDEFMayeoTgB76zTDuU34i4W3VeGE/FM/vCDT+pLCvjCn
-         CVQg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785146464; x=1785751264;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=KmDiEXxACfljywIFz1W9JSRHmKR6p36Yja9EDW/O9BQ=;
-        b=Qm+NRXhLyWTBnoiLN7Ie3O76YUZvXLiGHtagikMJKUnt9AkJ2EEHU8p+EeMBP4uVk+
-         iSEfOqQzrDTl3Cg1Wh+XeiMAq/ud4daAww4pxbi7M/ljQHN8cIiMYF3R/ac66q1qqBtZ
-         Mh5yMqvgZBCrq5nxFOD/IObzJkGmyLDADoh7jf1nr/PP3dSOUACSVb06G+AkZhtZPhoc
-         4Oan7pJ6Drhrj2uwBFozHUrhSIT3c1xbdw+DGRpzmX9osNp5b9CZZ6B2AXN1Na2d8y9K
-         zmRbfN9anRh1uR1idLJ2POCucfw4HYDNCxKwgVOjOFI5YCY3vJcw7Y881QSW4lVy0qhs
-         9zIw==
-X-Forwarded-Encrypted: i=1; AHgh+RrFRab5NJP4tvesP6NFjB5X0MyM27aA4b2C4+p2UN80PlN3ZZv8rBvPUcJxmrVIvqEJEOG3UofI0MvazSxFog==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzTGvRExENTOpDG0ajCpXn1az+l7TLzKohRo4AVFLd9nUPHtCVH
-	RSb5+ZyqP2tuWGF4ou4bVTz83mvyMDhqkklcChQXQJ89VrTZ/kUi1lvHsOWiLAdVOnhxzk2cHM2
-	asZQ4QDPsM/Ib/4L7ij6e/H8HiDbmI+n8ITNoA91tJPpRjIFuDWMwKNiwUgMn20kAGN9lSfpPkq
-	Lvd96lBdzT/LGfn6tiFJC6LbyAwrTaLJ4t/5ihiTUTt3A4dYN2Kg==
-X-Gm-Gg: AR+sD10up3FED7NObCnW3c5le27vQHLzfRgLJvy4g1uHEvfyYzT2rU662m5FkrdLYIK
-	MwUNIMzXZ00O3VYx1/jyaTsPucANzxwExxYoygHmbONT1+FR8jQAbjrTc97NSYpAoe50FO9yYT0
-	bysxaNvigc36977kB/U0Uo5cSBpD6mGxXdPvpGhB2l4OBdkd/sdM5+w+/p5A==
-X-Received: by 2002:a05:6214:5a09:b0:8e8:b302:8afb with SMTP id 6a1803df08f44-907ec5e5c77mr86121126d6.0.1785146463821;
-        Mon, 27 Jul 2026 03:01:03 -0700 (PDT)
-X-Received: by 2002:a05:6214:5a09:b0:8e8:b302:8afb with SMTP id
- 6a1803df08f44-907ec5e5c77mr86120416d6.0.1785146463265; Mon, 27 Jul 2026
- 03:01:03 -0700 (PDT)
+	id 1woJ1B-00000002XEZ-2AQD;
+	Mon, 27 Jul 2026 10:57:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1785149825;
+	bh=jQQ4etZmqiYuEsbm4/OMVb1AlonMQGwUbaT1/gx2CSQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=deJNRFHpubJ3qKa4IjLG3bGKg52YdaXIC8Kl4L14FKOSOVSO3EfKTZEkKbDn7FCaF
+	 hdpkfqLaI9+WDSpFLdTgfcmD5KTnPWxdz9WE+ppmY1ODOLP96ndh9jN+CH/8KlQq8o
+	 JyAc+m2k/JblZnwgPHF8r/TFcNqcbTeThA2wP2SyMpiVlqJR3hJbi/N/dY33Du2AuX
+	 rKJZ8HjVXuE9PlzJp1+0r1U2LhinBK9rOHv7asuUzHldDjx1dUmPxqASnIGkg5lPfg
+	 Bdr4F1D8nq97uhtvfhhT5EAm85Iaywb9ocq/GpyDR+GiuofzsmRT4xfR/9aiErHvew
+	 S4lfu/VbIwlZQ==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0E18917E015B;
+	Mon, 27 Jul 2026 12:57:05 +0200 (CEST)
+Message-ID: <dd1e30ae-46fd-4083-a306-98e2d23be120@collabora.com>
+Date: Mon, 27 Jul 2026 12:57:04 +0200
 MIME-Version: 1.0
-References: <20260708092038.741308-1-lgs201920130244@gmail.com>
-In-Reply-To: <20260708092038.741308-1-lgs201920130244@gmail.com>
-From: Ulf Hansson <ulf.hansson@oss.qualcomm.com>
-Date: Mon, 27 Jul 2026 12:00:49 +0200
-X-Gm-Features: AUfX_mxRMxe0tuzgdBvzQ99tJNh8MEcfgARzgUQyUvcrVWwi5yEYYKrgP-hzda4
-Message-ID: <CAPx+jO-fnCyJqKz6sZR=y4=-CWLicrT5gvw6xqoecJk_dimGMw@mail.gmail.com>
-Subject: Re: [PATCH] pmdomain: mediatek: fix remaining %pOF after of_node_put()
-To: Guangshuo Li <lgs201920130244@gmail.com>
-Cc: Ulf Hansson <ulfh@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
-        Irving-CH Lin <irving-ch.lin@mediatek.com>,
-        Macpaul Lin <macpaul.lin@mediatek.com>, Adam Ford <aford173@gmail.com>,
-        linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzI3MDA5NyBTYWx0ZWRfX45jdpEML+jsn
- fu5lUEb9GoNkWfdDcL749gwxCdc6kOlc55cqPIvfkwhqXPSH0IWPxuKvXBijlcXg67F0cfsLS82
- jzSFADH5TxQ2G7Agn0T3NU8fAzuuctc=
-X-Proofpoint-GUID: 2sIZtCv3N2S9EzNery-EJ2Qs6t0MnFNx
-X-Authority-Analysis: v=2.4 cv=ev3vCIpX c=1 sm=1 tr=0 ts=6a672c60 cx=c_pps
- a=7E5Bxpl4vBhpaufnMqZlrw==:117 a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10
- a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
- a=DJpcGTmdVt4CTyJn9g5Z:22 a=pGLkceISAAAA:8 a=R5A58VEcyW3-00s9QQ4A:9
- a=QEXdDO2ut3YA:10 a=pJ04lnu7RYOZP9TFuWaZ:22
-X-Proofpoint-ORIG-GUID: 2sIZtCv3N2S9EzNery-EJ2Qs6t0MnFNx
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzI3MDA5NyBTYWx0ZWRfX2DJETvH1GRJg
- a4K+eFyq/OBcyfjxwSEX03h0UBk8mTw56P/H1MWcd+qRer6g1UkUL/Y5mdIwpGfgGtDMfxOMQ3S
- LNlOCUDPfQk2ujAAj94OICryImIcIVSgRdH2jmquylobHrBzQLkdXqe3hvL0jhTsJbEWV7oU3RS
- 0ihK/QrSNZsbHDTTluhIGAMhocUTRyLd5RQiL+Y9NYTqH6hf/30qVg63vLsfuxfEkTLx/q/bA7A
- ruMZx3jz2xT30ULj19gpTmQX0CIQ8PzoqWVIRTRxlAiK5+ToVc+wMYqoJbrLpPvSap9qhSpOYLJ
- kyBWmarT2eizB76B/I2VnmZdn/O2cfjdmmKWqExUbtFTyevMfDmwBMzZmpUv9qhslDiFOvyOwxg
- Cot3NXTKD4Eb1D+H+E5gkG6Y4OKnhLfLHtrypib77SrQ3BoLRktjVt2uNM2tbUHlMQj2PGvz96b
- 4Ix9vC9JDi0HLJHqu6w==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-27_02,2026-07-24_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 phishscore=0 lowpriorityscore=0 priorityscore=1501
- suspectscore=0 clxscore=1015 impostorscore=0 bulkscore=0 malwarescore=0
- spamscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2607270097
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1] pmdomain: mediatek: Fix MT8183 hang on boot
+To: Brady Norander <brady.norander@mainlining.org>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ Ulf Hansson <ulfh@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260722132729.302067-1-dmitry.osipenko@collabora.com>
+ <fe909054-5c9d-42f5-bbc1-66ca0ace72de@mainlining.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <fe909054-5c9d-42f5-bbc1-66ca0ace72de@mainlining.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_030106_209686_50DA7DEB 
-X-CRM114-Status: GOOD (  21.78  )
+X-CRM114-CacheID: sfid-20260727_035709_740324_CE311549 
+X-CRM114-Status: GOOD (  17.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -168,92 +77,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 8, 2026 at 11:23=E2=80=AFAM Guangshuo Li <lgs201920130244@gmail=
-.com> wrote:
->
-> scpsys_get_bus_protection_legacy() looks up several legacy bus
-> protection regmaps from device-tree nodes.
->
-> Two error paths put the device node before checking whether the regmap
-> lookup failed, but still pass that node to dev_err_probe() with %pOF on
-> failure. If of_node_put() drops the last reference, the later %pOF
-> formatting can dereference a freed device node.
->
-> Keep the node reference until after the error message has been emitted in
-> the infracfg and SMI lookup paths. Also drop the SMI node before
-> returning when the SMI phandle is missing.
->
-> Fixes: c29345fa5f66 ("pmdomain: mediatek: Refactor bus protection regmaps=
- retrieval")
-> Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+On 7/25/26 07:11, Brady Norander wrote:
+> On 7/22/26 09:27, Dmitry Osipenko wrote:
+>> Depending on firmware, part of the MFG domains may be left ON at boot
+>> leaving only some MFG cores powered, to let the ACP to prefetch the GPU
+>> region when the display controller is brought up. This doesn't play well
+>> with an eventual delay in probing Panfrost when the display controller is
+>> fully set up, as that would make genpd's sync_state() to power off the
+>> domain while ACP tries to prefetch: this is causing an AXI stall,
+>> effectively freezing the AP indefinitely. In order to prevent this from
+>> happening, the sync_state() functionality must be obliterated on all of
+>> the MFG domains: while this guarantees a power leakage if the bootloader
+>> boots the kernel with MFG PDs partially powered on, this is the only way
+>> to ensure stable operation of the SoC during boot on devices with such
+>> firmware because, of course, those will never officially receive a
+>> firmware update.
+>>
+>> Fixes Kappa Chromebook hanging during system boot.
+> 
+> I also saw this same issue on my MT8192 Hayato Chromebook, and I also saw an issue 
+> on my MT8183 and MT8186 Chromebooks where the audio was broken. I fixed all of 
+> those issues by setting the GENPD_FLAG_NO_STAY_ON flag on all domains. I held off 
+> from submitting that change as I was unsure if it was the "correct" way to handle 
+> it, but perhaps it is. Either way, this issue is not specific to only MT8183.
 
-Applied for fixes and by adding a stable tag, thanks!
+Audio is something a bit different I believe.
 
-Kind regards
-Uffe
+For MFG on MT8183 specifically (and potentially same generation or even slightly
+older) there's an issue that is very specific and described in the description
+of this commit.
 
+So, specifically for audio, I think that there may be something else that is
+wrong if you're seeing such a behavior - as in, some dependencies may be missing
+from somewhere (some devicetree node), or something else.
 
-> ---
->  drivers/pmdomain/mediatek/mtk-pm-domains.c | 22 +++++++++++++++-------
->  1 file changed, 15 insertions(+), 7 deletions(-)
->
-> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomai=
-n/mediatek/mtk-pm-domains.c
-> index e1cfd4223473..f877d6694dd5 100644
-> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> @@ -1032,12 +1032,15 @@ static int scpsys_get_bus_protection_legacy(struc=
-t device *dev, struct scpsys *s
->         node =3D of_find_node_with_property(np, "mediatek,infracfg");
->         if (node) {
->                 regmap[0] =3D syscon_regmap_lookup_by_phandle(node, "medi=
-atek,infracfg");
-> -               of_node_put(node);
->                 num_regmaps++;
-> -               if (IS_ERR(regmap[0]))
-> -                       return dev_err_probe(dev, PTR_ERR(regmap[0]),
-> +               if (IS_ERR(regmap[0])) {
-> +                       ret =3D dev_err_probe(dev, PTR_ERR(regmap[0]),
->                                              "%pOF: failed to get infracf=
-g regmap\n",
->                                              node);
-> +                       of_node_put(node);
-> +                       return ret;
-> +               }
-> +               of_node_put(node);
->         } else {
->                 regmap[0] =3D NULL;
->         }
-> @@ -1046,17 +1049,22 @@ static int scpsys_get_bus_protection_legacy(struc=
-t device *dev, struct scpsys *s
->         node =3D of_find_node_with_property(np, "mediatek,smi");
->         if (node) {
->                 smi_np =3D of_parse_phandle(node, "mediatek,smi", 0);
-> -               of_node_put(node);
-> -               if (!smi_np)
-> +               if (!smi_np) {
-> +                       of_node_put(node);
->                         return -ENODEV;
-> +               }
->
->                 regmap[1] =3D device_node_to_regmap(smi_np);
->                 num_regmaps++;
->                 of_node_put(smi_np);
-> -               if (IS_ERR(regmap[1]))
-> -                       return dev_err_probe(dev, PTR_ERR(regmap[1]),
-> +               if (IS_ERR(regmap[1])) {
-> +                       ret =3D dev_err_probe(dev, PTR_ERR(regmap[1]),
->                                              "%pOF: failed to get SMI reg=
-map\n",
->                                              node);
-> +                       of_node_put(node);
-> +                       return ret;
-> +               }
-> +               of_node_put(node);
->         } else {
->                 regmap[1] =3D NULL;
->         }
-> --
-> 2.43.0
->
+In any case, I'm always open for discussion, of course.
 
