@@ -4,61 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E8C3C531D0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 12:52:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F050C531D0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 14:24:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PxswdzoAQvQGkPWUS0AeYk7qhI5OcIZi4EoyckriCiQ=; b=DPHjIAbARO3b2Ve6y/Y29eWKIu
-	8Z9MPbz5kvk+B0p+U8VM19vMP5wkFyKKVkrqZcAIXroK8hT7DLYX9pv3QgweAwrgWh/KZsZNj8gaw
-	IJs8+fPViz9AUVeYYv8XoB6chmcZbOuC7Qot3GOyExsxy/S/o+FnBR7RQT4S3vkKdhggdNLmEPWb0
-	sy3QIivsUci/dHpxw5PE+d9rzi/TXpfKtiNIYcIfwpqGrgoRzlVuW14fs6FGpRR7p3ey8qmmieMr3
-	z8fUbdS33UvwimX9fHmJlojkXZL3fNAOSa5j9Kwsskd+DO0RaSfnopnOcCwSphUQ3YRsDeVmDZByn
-	QJj/+IIw==;
+	bh=KfcU5H+Dkc55kRl5OSkSuyA//fHfe+3ucaRyL28Jci8=; b=R6NobKdc2mCSGrpaIiqn+Q1Gik
+	Cw5D5WoeWrKSxMYPVXYrmiWYfVz5e5IyDHuBFNgJ1ATLfRiiWR+eL6PvvtKNhAOOl82h/g8qidr1c
+	vvZOsg9NQrgIiX7VPB+UE7dqkF+LwvVtSqEm0OUoCh+hPVGfsrxetHUvXAhRr9ZN5bddRM9BXRgae
+	YLNgPup0NwPZ929ijfGVh4J333hoB7oKO0cZ6TpL6RtX8XbufGbAgh+5EwJYkTKHFcxrQvL7FzkcF
+	GejzX1lHHQpHwIqF8+3iDgsQJlTFh3OhaVE5nUCRNavqtaOxLYswXnMm7Ze7wiAIo+HiZOiD2sAgp
+	K+RHBKhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woKp8-00000002kYd-2aSy;
-	Mon, 27 Jul 2026 12:52:50 +0000
-Received: from mout-p-101.mailbox.org ([80.241.56.151])
+	id 1woMFP-00000002yg6-3DQu;
+	Mon, 27 Jul 2026 14:24:04 +0000
+Received: from relay.yourmailgateway.de ([46.38.247.119])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woKp5-00000002kXt-185S;
-	Mon, 27 Jul 2026 12:52:48 +0000
-Received: from smtp202.mailbox.org (smtp202.mailbox.org [IPv6:2001:67c:2050:b231:465::202])
+	id 1woMFM-00000002yep-2Grc;
+	Mon, 27 Jul 2026 14:24:02 +0000
+Received: from mors-relay-8404.netcup.net (localhost [127.0.0.1])
+	by mors-relay-8404.netcup.net (Postfix) with ESMTPS id 4h816M5wNBz8CwK;
+	Mon, 27 Jul 2026 16:23:23 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=leemhuis.info;
+	s=key2; t=1785162203;
+	bh=JBhZ+LwoQ70+qErV2cTCemtVryLVM0RxTuEG+2Y3/co=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=f2/2sxdFVhE94wwd/yWnIycOJh85rGDGpXQf71t2SYYDe4U+iSLNHJd8sUrzcZmaB
+	 HPIoqQvSKphfyTmKBJXpjXOBTYrYKmi7JsliX2RN8lwJUA/wl6rTMT1oXG8Drs8hKB
+	 rB3xT8wfUN2oOH9lSje2PQkTXmJngjvF5qrUxXM2cumLdwjWoViQWpwJtMCMiWnb0T
+	 wanxcSKA98IMuBPfNroyvvV/dD7Qp1GRQthFvDNiat7NqEw02qPj8YhcfUmLn10s96
+	 JIG8vb0OjwjevlH0ml8bPMHAydxfektsxPewXwXBbIzjLTp++CQgWc+zs7/XoKxHhZ
+	 w23KkSOKbfZSQ==
+Received: from policy02-mors.netcup.net (unknown [46.38.225.35])
+	by mors-relay-8404.netcup.net (Postfix) with ESMTPS id 4h816M5BSGz4xtW;
+	Mon, 27 Jul 2026 16:23:23 +0200 (CEST)
+Received: from mxe9fb.netcup.net (unknown [10.243.12.53])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mout-p-101.mailbox.org (Postfix) with ESMTPS id 4h7z5h4RMrz8tyC;
-	Mon, 27 Jul 2026 14:52:40 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=adamthiede.com;
-	s=MBO0001; t=1785156760;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=PxswdzoAQvQGkPWUS0AeYk7qhI5OcIZi4EoyckriCiQ=;
-	b=eyaQO3XoQJC0CJQ2LEoHk1Iumkqt80kZxvuK3C3ZuwmdLxQB9WwA+Tzfh+qJwzCDlDAI3c
-	V3L+ARVx77vsqLQ8HF2dn8oE0tsoYQWkr5ZUygs4zTLYMP5wDqolfgD5nhZBQpAELXxAWf
-	tFT5A6KHSkjN6rAJLUCwRDPxk6vtXssomCJKReiXjGWyzaHPAxMSC9sRldc51ffdUlkZ+o
-	txCBM5DUQ+QTwn4Goo5K+lRuyK4XonvfvsSk/kL3XrPfn850KMJpaTFtaiMH5bHC1wbGfk
-	Ob0CLVWlMD+6oAErfqD3w19bVCRg+mYHR5Ta+CMCJlWMtTCygbgGxGp9FyWGjg==
-Authentication-Results: outgoing_mbo_mout;
-	dkim=none;
-	spf=pass (outgoing_mbo_mout: domain of me@adamthiede.com designates 2001:67c:2050:b231:465::202 as permitted sender) smtp.mailfrom=me@adamthiede.com
-Message-ID: <e18e4d30-8c54-4b4e-9d32-cfb8bf974b9c@adamthiede.com>
-Date: Mon, 27 Jul 2026 07:52:31 -0500
+	by policy02-mors.netcup.net (Postfix) with ESMTPS id 4h816K0sHxz8svG;
+	Mon, 27 Jul 2026 16:23:21 +0200 (CEST)
+Received: from [IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f] (unknown [IPv6:2a02:8108:8984:1d00:a0cf:1912:4be:477f])
+	by mxe9fb.netcup.net (Postfix) with ESMTPSA id 1FA265FA76;
+	Mon, 27 Jul 2026 16:23:16 +0200 (CEST)
+Authentication-Results: mxe9fb;
+        spf=pass (sender IP is 2a02:8108:8984:1d00:a0cf:1912:4be:477f) smtp.mailfrom=regressions@leemhuis.info smtp.helo=[IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f]
+Received-SPF: pass (mxe9fb: connection is authenticated)
+Message-ID: <1826ddd9-6edd-4481-a31d-6cbb083b3a56@leemhuis.info>
+Date: Mon, 27 Jul 2026 16:23:15 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] drm/mediatek: mtk_dsi: enable hs clock during pre-enable
-To: Gary Bisson <bisson.gary@gmail.com>,
- Thorsten Leemhuis <regressions@leemhuis.info>
+To: Gary Bisson <bisson.gary@gmail.com>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Chun-Kuang Hu <chunkuang.hu@kernel.org>, Esben Haabendal <esben@geanix.com>,
  Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
  Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
  dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Adam Thiede <me@adamthiede.com>,
  Linux kernel regressions list <regressions@lists.linux.dev>
 References: <20260120-mtkdsi-v1-1-b0f4094f3ac3@gmail.com>
  <8733xko1ms.fsf@geanix.com>
@@ -67,39 +75,18 @@ References: <20260120-mtkdsi-v1-1-b0f4094f3ac3@gmail.com>
  <65558ccc-4f2c-492d-8c74-627d27dce864@collabora.com>
  <87h5m0mkca.fsf@geanix.com> <alpTEPsy-SIQv_Oc@owl5>
  <b26a4890-12e9-4995-a71d-d0b7458b1570@leemhuis.info> <amdTnudq48tZUTG2@owl5>
-Content-Language: en-US
-From: Adam Thiede <me@adamthiede.com>
-Autocrypt: addr=me@adamthiede.com; keydata=
- xsBNBF+n+90BCAC2ZRLVcvdXDgfY7EppN05eNor3U7/eeiNCCEIWZkYLhikUEP1ReLGBkXpK
- Pc70hfnKAKkCoth3IwhDty9WXMNU+iLNei4ieb2luW+UqluR6xIUIA+txahMU9YcjVaQTKf/
- yZWO4yl6pfBPCxC2UdPZKBAdGoi5NnE0ABFNbhBETQhhBic533lZn33ByupfI3acECnQdjgQ
- llCUpDbw4I+S/N1iFiEHcbMXH7ZB00e3IYNorZ1E9v7p++5rDY1fQ9gXpieg1vFKwSq1NJWo
- 9xx336YjaTUbX0EwrdKd9l8AktA3yRjckaK5TAcwSQaDtHvhpbl4ebvPhtwHh699MroXABEB
- AAHNH0FkYW0gVGhpZWRlIDxtZUBhZGFtdGhpZWRlLmNvbT7CwI4EEwEIADgCGwMFCwkIBwIG
- FQoJCAsCBBYCAwECHgECF4AWIQQtG9pGQ7sz3tf8M/kC7fV9o/vRzgUCZL1HxQAKCRAC7fV9
- o/vRzgyRB/wLqRCvvWhQCMgvzeKvru9wcXquhb77K8H/ByLbfiT8YBuP3lZFVh0IQhgO9Ylk
- fIoOJE4V+jjxyOnO2d9xjGbvAmmR6yT0gfLzSVWqrC4k+V9MWLv43nrNzxt41dvo5j824FAl
- X+zaiRZCdO8Jtxg5Elpiop2SKLi1utX1Z8i6YZh+ccJZlchUBAGUTk+D4UjK7vUcjLWT96ya
- CtdtTfXyw36CvGOPEWfc6++Kkl/5sgej1i7biPYzu/r0vssaQYTXKSrv6Cfa3Maa89ASiTtv
- q4qmhLnJeCrPxWlRAf6LEizeBEkOasYni2u8sp4wBezEq45Ozu45sfPkqLpPolG7zsBNBF+n
- +90BCADBRt+vrToRBEG580n77S99qSEkbKD+oJtCVyovnjMNkg0K9UG68LIeCX/ezngiV1M8
- JISvw5iFOuUFqGX/1hLl9wgt/YpuIrgWOp8XxkotavTCloLDvQmufJPO1L8bnnA+WgP2YgVZ
- 5MJTj/t4DI+yQgysEjsH8aurHO2uuqgJE+xK+2dy6Cl/wskuGxObksSPmmFH5PH0Joziwrtl
- 61ouLE2XwKbkMgIGEKkbFgbfwz3/QuLZGBni+OOtLzXeZ9wNTW/AHUPy6S9U4F+5z6/09fVT
- tTH0cvrgAGjbASlYx2VqGONXAsxCfjulq6ryJBFlPLp949c/JTTgOojukCSbABEBAAHCwHYE
- GAEIACACGwwWIQQtG9pGQ7sz3tf8M/kC7fV9o/vRzgUCZL1H0gAKCRAC7fV9o/vRzlamCACs
- vHw+0heTm+BfC3S8DUST6889gidIIwdqBep1ByzetCph7Bq8Y8BlT5YTX0u/bSKkxCzFgeTm
- vC341Q09ST2XjLAl1ZTdzGhH9gcgYyOw34pr5fPQRJLB392mPzD8YReRzciNbhWzj+DLgeVe
- ouyfGajd6jDjkf4FEq+trQLGZhpfsKn3JnDbzBUs945D50l/vz9q/QN3qZO+H4F6g8ZeMnqo
- FOEFN26xVtdEDr+0DNFsbgKmEzs675kdAY78ZZdbEetX/FSknxJ+FK1ZW3J7Yswwulj34AXP
- LB49Mk8Ot7fo6mdt0DkV11JS9LmKxKvpY+KTlrKG+i7pVCSZvVUx
+From: Thorsten Leemhuis <regressions@leemhuis.info>
+Content-Language: de-DE, en-US
 In-Reply-To: <amdTnudq48tZUTG2@owl5>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-Rspamd-Queue-Id: 4h7z5h4RMrz8tyC
+X-PPP-Message-ID: <178516219658.2742281.2869505277937587540@mxe9fb.netcup.net>
+X-Rspamd-Server: rspamd-worker-8404
+X-Rspamd-Queue-Id: 1FA265FA76
+X-NC-CID: 43uR6QNMyemn/nPkJoEiLbUEjzWk0VHzRbV5Th599RFa0TAAe38=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_055247_471860_AB7050D3 
-X-CRM114-Status: GOOD (  23.13  )
+X-CRM114-CacheID: sfid-20260727_072400_903394_9DBF86F7 
+X-CRM114-Status: GOOD (  23.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,9 +101,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/27/26 07:48, Gary Bisson wrote:
-> Hi Thorsten,
-> 
+On 7/27/26 14:48, Gary Bisson wrote:
 > On Mon, Jul 27, 2026 at 02:28:56PM +0200, Thorsten Leemhuis wrote:
 >> [top-posting to facilitate]
 >>
@@ -129,30 +114,36 @@ On 7/27/26 07:48, Gary Bisson wrote:
 > Not much happened I'm afraid. The status as I see is:
 > - this patch is necessary to have TI SN65DSI83 working
 > - this patch also follows the DRM guidelines saying that HS clock must
->    be enabled during pre_enable (see previous answer / [1])
+>   be enabled during pre_enable (see previous answer / [1])
 > - this patch has been successfully tested against MIPI-DSI panels (by
->    Angelo) and LVDS panels via TI bridge (by myself)
+>   Angelo) and LVDS panels via TI bridge (by myself)
 > - Adam reported an issue with another bridge (PS8640) where resume is
->    broken
+>   broken
 > - Esben offered a patch to the TI bridge that would fix the issue we
->    were seeing in the first place.
+>   were seeing in the first place.
 > 
 > But for the last two points, I'm not sure this calls for a revert yet:
 > - enabling HS clock in pre_enable still is what should be done [1]
 > - maybe the issue Adam is facing is due to the bridge driver instead as
->    it could not be reproduced with another setup
+>   it could not be reproduced with another setup
 > - Esben patch would break the SN65DSI83 init sequence, suggesting that
->    the culprit really is the MIPI bridge for not following the HS clock
->    requirement in pre_enable instead [2]
-> 
-> So if we agree on the fact that HS clock must be set during pre_enable
-> then I don't see a reason to revert that commit.
-> 
-> Regards,
-> Gary
-> 
-> [1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/gpu/drm/drm_bridge.c#n169
-> [2] https://patchwork.kernel.org/project/dri-devel/patch/20260711-ti-sn65dsi83-fixes-v1-2-d85eb5342b98@geanix.com/
-I'm also happy to try out any patches and report back, too! Just point 
-me to it and let me know which release/RC I should apply it to.
+>   the culprit really is the MIPI bridge for not following the HS clock
+>   requirement in pre_enable instead [2]
+It's tricky, yes, but I suspect the right time for a revert was weeks
+ago. What Linus afaics basically wants in situations like this (espe.
+with two reporters) boils down to "something broke recently, no fix was
+found within a week or maybe two, so we go back to the previous state to
+restart from there -- and this is nothing bad, that's just done to buy
+us time."
+
+If something is right by some hardware or DRM specs often doesn't matter
+much. What makes this tricky is the fact that the revert might cause a
+regression for those that relied on the functionally the change brought.
+But I suspect even then Linus prefers a revert, as it's a recent change
+that only went into 7.1. The quoted from Linus on this page cover this iirc:
+https://www.kernel.org/doc/html/latest/process/handling-regressions.html#quotes-from-linus-about-regression
+
+If we can't agree on this, we maybe should ask Simona or Airlied for advice.
+
+Ciao, Thorsten
 
