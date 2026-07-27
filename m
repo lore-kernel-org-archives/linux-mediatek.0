@@ -4,60 +4,138 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AD19C531D0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 17:39:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C97EC531D0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 17:42:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jlghdMSPRSKxNMLTzFWRIhkpB12QpHhqkaaliOsTKx0=; b=porfw5dYs/w/I2RI/MtcQDH2z4
-	mqqFdwfw7tunpmkay1sK4/3qkBJpwkVVMl1ioFJCCnzJqjRYPl2tQIGLv+a55oaRehymW3vJBOJ0M
-	jxpKzC2fGl8n8GXrnf31b65bJRx8XHL6wgHfjvOAO+55wE9c33HMrFbBbCoFBZxFrVBdmTNTIXKC4
-	DFQSGPXE/iM+vmvJ6a0koRi4+bv2+wS6vH8wUieZ4RQh+/LyE8tKcSyZeJ7we9k5+gGOlWZuG06lB
-	im5YK8xUBnwp2kF5MNxOrgAj13SVNHNNo5hJTZ6g3bcabXsWAh24dIw4bjxqU2izBi7xb+nh2O0Ai
-	F+/KiLsw==;
+	bh=pTv1/c/ULkVccQ7rasbwg2F2bj9G7I/irTLLjkewmT0=; b=5FrtHnAWh+pbIYJEsafpBl9DUu
+	sAn56NfWGNmVI+X/FxLXXnTaEQhZsIwK0Zi75kc0NDSgyJHvUnejW19501A1JnK/XUiwqfWIpz52c
+	rXQToNoixAI/rwAzxr1ZUlmnT9FQqybanyVcfd3Rec9yJUcasilwrKCnZXTncrOl5VOJ8oRKYS99c
+	wnByc6BVVA9235VZG6MT7XCSvcp3S0KKHfxCGW7+ulb/0YRmF3r6L8DkQgbktwQK4THjFRHvwfsaV
+	HAlIhW5eo7d85LQIE8btMJ9XP/I1k9cLzALP0M15A0RlZ/vzw6JJsufKIUmanuycXESXkBRX9fpeR
+	bAnQxUKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woPIG-00000003XXP-3Poz;
-	Mon, 27 Jul 2026 17:39:12 +0000
-Received: from mail.mainlining.org ([5.75.144.95])
+	id 1woPL1-00000003XyC-1qfv;
+	Mon, 27 Jul 2026 17:42:03 +0000
+Received: from mail-norwayeastazon11023072.outbound.protection.outlook.com ([40.107.159.72] helo=OSPPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woPID-00000003XVb-2WEW;
-	Mon, 27 Jul 2026 17:39:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; s=202507r; d=mainlining.org; c=relaxed/relaxed;
-	h=From:To:Subject:Date:Message-ID; t=1785173935; bh=jlghdMSPRSKxNMLTzFWRIhk
-	pB12QpHhqkaaliOsTKx0=; b=Ra5ittPi8dRSqrDpBF3Y/IHUbUD6X7UOQQe+mTo21LoI1XtlIS
-	5pfUJZNzDfFf4WXjmVfuDWrep2ikzdiRb6UbCU7E+1mfq+g3b6Q8RMg3lbAOZOXnGR8XHDlatee
-	Fy/Xh5UC8kXuJ1QpTlNH3sG3LTAOjcrow5XxC0x4sbMLJ5Db/MG52iQPlrnDS1mO/l1pOFH7mvl
-	dVZZXWy3V3jZc5bWF+B4ES9Fq3rklQ2MfFYvSl586zt5IKL783FZxUpK7Sz8ryUMQUzXXFiKToY
-	0LQztGcSVpMY0ncLU1L2ca1Wcon6Ykh9CX+uODer2vkVv1/6mCRmG5T9lx3KqrcblHA==;
-DKIM-Signature: v=1; a=ed25519-sha256; s=202507e; d=mainlining.org; c=relaxed/relaxed;
-	h=From:To:Subject:Date:Message-ID; t=1785173935; bh=jlghdMSPRSKxNMLTzFWRIhk
-	pB12QpHhqkaaliOsTKx0=; b=gA9BP3fVyhwXADcop3RZSAWLSz/Exti9QWx6M174+8nHqZRF8m
-	g/Db60xKwCO56OHgO4lfnDm2Bl35I4bS6TDQ==;
-Message-ID: <847c99d4-6fae-4984-b6d9-e1f8bf46b300@mainlining.org>
-Date: Mon, 27 Jul 2026 13:38:53 -0400
+	id 1woPKz-00000003XwJ-2OqB
+	for linux-mediatek@lists.infradead.org;
+	Mon, 27 Jul 2026 17:42:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=U74qM31LTmvWtSXI/fgwMmEEz45VhIxkyU4eRLtJk6Ab3xCogA11xzR+4fbWojk3Lp/q0k3NVZgq57RZeFF/NSXi1p1qxzRCQq7Py34+Daka928Aid2TlhVOX3QQaT4Ud7g569lPpjf3aUoHLG7sNeYJYXXawraZ7DDijfo82yspYNMVOQC9gNP43a/ugkAG2tZlchmkHds7TIvwzKpgGg71TH/WGlTx7/Uo7I0RbDnoi7noBGpG6Vlhv7B2iS3bDepYTH6cOf/+1ZE6dmAnjQI73j/thQFKqZKbwgX0FribaX276Pm2DCs7RRwiKaFWOX06SOD9OQRMgcYDThT7nQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=pTv1/c/ULkVccQ7rasbwg2F2bj9G7I/irTLLjkewmT0=;
+ b=aesejMNAlyj9ROQxmkJSU6XP9ZvcvdE/rQ+3wYeIvz8TdfNtDZ+Aj6Bwlk1yzqDZs3rEFK2UYSDPY477sKn6rb2Z/63V7wzY91DocbGcWIs5AD3VUWaZCcu4cygVMJxHX1JhljgkPQk2vLFWyvYpmdz6RaiFBqc0HFoc7w9IDI656hT4qK9oBJLQrMVh5QesYx/MbYamxnltth4MiC2o+o3LTRUEeI3AH+XlvLYJWEHakGHk1a3iwAIDrpDX4+ZvO2V5wIhAoLEYB/iVzUGWnR0C5lKJdqhRQ8N8omWRiUjah3IxL/BHcJO3/L+QqySwdmYF3ZA21IOBWmD7iH2CWA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
+ dkim=pass header.d=iopsys.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=pTv1/c/ULkVccQ7rasbwg2F2bj9G7I/irTLLjkewmT0=;
+ b=BtSKcNsBrOUiqpr3gen2Dd/n4y35ngpf/daPcuBz+mTdbifveV5mkkDPkc82bught1VHhs9l7nQr7NfRr6bWL4CPJH9RkONumYOF9I2y+yPqtmZRSxmCrvp5YnnSwV1nUxaZ5N6YRVqJb6z2Mnu3X5S1vk023NKbzurY//LBMaBEZe0kU5aByV3qig3OfX1uioJZUFYoAKBw723xFGPRUkD1Fl0HsltDIsEZScByIS/62bNN/N9iwwUTTwJJBTeFJhMg8TRm9d3VlV+if5i/X9dY5RXmPNP7RFCszFHVs9s0fwef9r6/UdwS9IAjLhYI/CzE/Cd98nlWMNqtKdqe8A==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=iopsys.eu;
+Received: from DU2PR08MB10037.eurprd08.prod.outlook.com (2603:10a6:10:49a::20)
+ by AS1PR08MB7537.eurprd08.prod.outlook.com (2603:10a6:20b:481::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.245.13; Mon, 27 Jul
+ 2026 17:41:56 +0000
+Received: from DU2PR08MB10037.eurprd08.prod.outlook.com
+ ([fe80::3c7:6d2e:8afe:e4dc]) by DU2PR08MB10037.eurprd08.prod.outlook.com
+ ([fe80::3c7:6d2e:8afe:e4dc%5]) with mapi id 15.21.0245.012; Mon, 27 Jul 2026
+ 17:41:56 +0000
+From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+To: Linus Walleij <linusw@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Bartosz Golaszewski <brgl@kernel.org>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Benjamin Larsson <benjamin.larsson@genexis.eu>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Markus Gothe <markus.gothe@genexis.eu>,
+	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
+Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Subject: [PATCH v8 01/35] dt-bindings: pinctrl: airoha: en7581: fix misprint in i2s function name
+Date: Mon, 27 Jul 2026 20:41:07 +0300
+Message-ID: <20260727174141.664933-2-mikhail.kshevetskiy@iopsys.eu>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260727174141.664933-1-mikhail.kshevetskiy@iopsys.eu>
+References: <20260727174141.664933-1-mikhail.kshevetskiy@iopsys.eu>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: AS4P189CA0064.EURP189.PROD.OUTLOOK.COM
+ (2603:10a6:20b:659::24) To DU2PR08MB10037.eurprd08.prod.outlook.com
+ (2603:10a6:10:49a::20)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] pmdomain: mediatek: Fix MT8183 hang on boot
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Dmitry Osipenko <dmitry.osipenko@collabora.com>,
- Ulf Hansson <ulfh@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20260722132729.302067-1-dmitry.osipenko@collabora.com>
- <fe909054-5c9d-42f5-bbc1-66ca0ace72de@mainlining.org>
- <dd1e30ae-46fd-4083-a306-98e2d23be120@collabora.com>
-Content-Language: en-US
-From: Brady Norander <brady.norander@mainlining.org>
-In-Reply-To: <dd1e30ae-46fd-4083-a306-98e2d23be120@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU2PR08MB10037:EE_|AS1PR08MB7537:EE_
+X-MS-Office365-Filtering-Correlation-Id: efc0520b-bd1f-4223-d385-08deec065a23
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|52116014|366016|23010399003|1800799024|38350700014|921020|56012099006|10067099003|11063799006|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: 5VNTz2SLyDTpUi+Gx/U3JyKzJ8bok9pswk66f0nn080XuC81ice9DXSj5USNa6dRXnBUp8y0HEVNox2B7RszyfSyDalBBHcEGv2wjT3IYDEVBk7mxuGaVE42WhRcnodiTZbANKWRH6cc4DNNNIMk96eHmgB2dN2FBs3tRYowGAqQy6xRNV4LAClf82aelpSOJYLZFxyvURsE70SZkOivDvsCwWx6OKLd5Sj1fyfOc5CRCBNDk60+o3SU2KPL/TnETzix6HAwi+u3fI8KqXuWWfUO+7MdeVuWOv1Ew4yFOaEm/55Nj3LSSXUPDdSziVHeScE9NcFTEEnQTrlzOT6WROdZdEkNtR3fcmZUII+IGy4zw11+WmIPPvj/OgIHIR2q5N72LV16AkIYze0Ds08GK783b/C/KPofyXR1PjasSVDMAhHJpRrj2yLtj2cVxWV5qXVOKSdiDDE/dO6o4iYw5TIoS8K7Uq4/BB0IuuzwKSyxUJf4h1ihjhvpqABNAfa8jfhOl7IKYUdtwcn/CuxM7Yl7N7zaWlEmB05BQXeCUM6Pnlc3JknBwuCixC+1OIpXSjrt12a49tfBblCx1EHnnNIL69EvzE0Q+sFfKfXXQwjEpmGtUXAeKXb5w+QDGR0P7EP+7VEIRWBNYdlwIUKMUzdg53bu3FS3RAEVzWrmgsNsqXLyB/i5om4Cl7puxuT7G/DGNhhjlkIUlHM0d7JFZ99w8aKLWj4HLLxotSsxeEjjIyuCxPz4mFGyaQEGpVw7
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR08MB10037.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(52116014)(366016)(23010399003)(1800799024)(38350700014)(921020)(56012099006)(10067099003)(11063799006)(18002099003)(22082099003);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?0hA+kbvwxNC8C/maMcljng0w6JOcz0021nt8oePh80Bqy/+KfqIHdGEuSANc?=
+ =?us-ascii?Q?PqALIQdkiGgp1YA/oK3EvqP0pFmAILFUXC9fCzxW0QouPurJ8Je3ktEg1lc6?=
+ =?us-ascii?Q?9gzblr+TjTHhasljGVWBRIZ+ad7na8hnclKBtAqN1/bTJY31TgSmu35BA8Y5?=
+ =?us-ascii?Q?xdLEbgOOMi10oMV3Yshkt0knIjF9+fAO/yiUk3jnfrfnOwFhlZZWsp39bt3I?=
+ =?us-ascii?Q?m1vy0gki7uDV31dqNEzGC/4vtz41HYE/z3IlzgczyuJcOo5DKCfIequvJhzi?=
+ =?us-ascii?Q?fNI+oJ53yXdEF7z5HgLxjH1lfkosO2oJ9lfQhBRI+V7n01JDzGwyJc1MZTBL?=
+ =?us-ascii?Q?ETMhkhVaLbsgz+XpK2atp3zwWjchwDrSw0hSyRxiyP/yp2u7iu4Ck9DVMtGV?=
+ =?us-ascii?Q?Ltv8HwccUxOlxcOFuOYsBnI6wuAYE3CVUF6SLbJwhWB3jtgQnXxVfzcKGvDC?=
+ =?us-ascii?Q?J01O4h1+WqNlcm0RYqgyMojmpNZ67ZVtPWmq/oO3zcEzh5MMZAVYp8C6dvdq?=
+ =?us-ascii?Q?wPvirjOWBW52px9TT1rRbGXhQztsqNOj8KVOAZFhNT69CZNUemezfWlW0gZM?=
+ =?us-ascii?Q?5aZXlEDxmQeUD+rDsKy71YxUo2QmDyGuPLfP54VUJkGWC/ImEOcIYnUXbrR5?=
+ =?us-ascii?Q?CF0+stnp61fhcNaFab/pWI6ICZEEWG1wOrviRf3db/KjAMS9611v4cZWBhdd?=
+ =?us-ascii?Q?cu/rMySXLkH6Y5YUqa1P6N1y0hKotzhaltZSqPKIdXKQUK2KoiSenK3X3BmR?=
+ =?us-ascii?Q?vAsG889rMzCVt39odIJFvEBgNJ4eUqZ1sEyjot/nYPHKUxwLpWSdn9QltBxk?=
+ =?us-ascii?Q?PanevyxsBXeCZD/caTB9l77Rc5dUh9G43tTWc+c4ECecoaZXUP0HfXCoqn+T?=
+ =?us-ascii?Q?BsLRhUcL0fpT9ZLV71ISpPzTDf/EDTmTSny6gadLe4vJl4ft/t1/0mRpTe1s?=
+ =?us-ascii?Q?8+G9XIjCIVv5Hy9RUMAa5VcbcV8Mn9Z6FUqTFhJG0JH7oEhcacaAD/Of3Qjn?=
+ =?us-ascii?Q?dby8z52fA2OQYsJeV8lQvi9AJMfqcpPOjALCj57o46C5c/POrGg2XMwh1erS?=
+ =?us-ascii?Q?bucRbNkk1vqF/IsQvMYiQMjoHvD3FdMoUR3cPzK4u0jE5I1SVGStl/mkhEum?=
+ =?us-ascii?Q?9wHCRRpIMOJscpon0yp574lL6LWD1fijwKcWh1claN/lTPGzmf0ANSfGECHf?=
+ =?us-ascii?Q?0o1yxE2XKRe4YswHKWaJ/2XD9eznS19HIDKNj8MBd2cPaxubepnXQs+JEbTQ?=
+ =?us-ascii?Q?Lmz2/KgxqWCUe9Oj091pvPZntKqDjhMSYFnt3mQo14dTw7NxisUbA56yU+yw?=
+ =?us-ascii?Q?zm0CEx23CjDjE1+FgNLGO5FgakIS5pN6G5leX7l1cwuVXON7u19drAdAZuRA?=
+ =?us-ascii?Q?YXnj4sHkbPW0Q4VURMhQVCOuG06v47HRThTLuSJ8/UOZ5DIY9TPNTqySZ//5?=
+ =?us-ascii?Q?qD6rtWdtoBkt5iyBxo3t8F9hBZ3Gd9q0aKxAU407q6qj76qH7+7y2E7siHMl?=
+ =?us-ascii?Q?sVToV06TxKEfGMq1ji5pIuMSe41HlpZV60mJyJAsTdeyRwYg5YYw4HVQKIPc?=
+ =?us-ascii?Q?8CMYEzyFcd5283jJi9vWKF2QJZD7fzNkYphKVTBp/uJA7xVIj0Z7Ae4Gog4h?=
+ =?us-ascii?Q?/8eCu1tXsV7ISI94CYCfQ+6L28/G8ynyskX2nAZLF+I5mCGpcGZ7Sc0MMkfD?=
+ =?us-ascii?Q?vwul8NDjBajTuoSblJiUjWmY4KOhUyXegDURM6c5d8S3gmbCxbUBXcViSUS5?=
+ =?us-ascii?Q?pMj7yzVba711xOZ1qiT+v9F/CeWkW2s=3D?=
+X-OriginatorOrg: iopsys.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: efc0520b-bd1f-4223-d385-08deec065a23
+X-MS-Exchange-CrossTenant-AuthSource: DU2PR08MB10037.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jul 2026 17:41:56.0992
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: m5xe7rfHqbnFdsBYJ13bHQy+3EFB2YH3kPGhV9Ou738CiFHQ5hBAmkMXrX23VUEVMmNjv//s8isbCW7lHzHWVdlaBcYmOdr4YXCqlR2yd6o=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS1PR08MB7537
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_103909_808269_CF8B3ACB 
-X-CRM114-Status: GOOD (  31.25  )
+X-CRM114-CacheID: sfid-20260727_104201_845784_B2FEBA61 
+X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,109 +150,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/27/26 06:57, AngeloGioacchino Del Regno wrote:
-> On 7/25/26 07:11, Brady Norander wrote:
->> On 7/22/26 09:27, Dmitry Osipenko wrote:
->>> Depending on firmware, part of the MFG domains may be left ON at boot
->>> leaving only some MFG cores powered, to let the ACP to prefetch the GPU
->>> region when the display controller is brought up. This doesn't play well
->>> with an eventual delay in probing Panfrost when the display 
->>> controller is
->>> fully set up, as that would make genpd's sync_state() to power off the
->>> domain while ACP tries to prefetch: this is causing an AXI stall,
->>> effectively freezing the AP indefinitely. In order to prevent this from
->>> happening, the sync_state() functionality must be obliterated on all of
->>> the MFG domains: while this guarantees a power leakage if the bootloader
->>> boots the kernel with MFG PDs partially powered on, this is the only way
->>> to ensure stable operation of the SoC during boot on devices with such
->>> firmware because, of course, those will never officially receive a
->>> firmware update.
->>>
->>> Fixes Kappa Chromebook hanging during system boot.
->>
->> I also saw this same issue on my MT8192 Hayato Chromebook, and I also 
->> saw an issue on my MT8183 and MT8186 Chromebooks where the audio was 
->> broken. I fixed all of those issues by setting the 
->> GENPD_FLAG_NO_STAY_ON flag on all domains. I held off from submitting 
->> that change as I was unsure if it was the "correct" way to handle it, 
->> but perhaps it is. Either way, this issue is not specific to only MT8183.
-> 
-> Audio is something a bit different I believe.
-> 
-> For MFG on MT8183 specifically (and potentially same generation or even 
-> slightly
-> older) there's an issue that is very specific and described in the 
-> description
-> of this commit.
-> 
+i2s pin-function is missed, instead i2c pin-function defined twice. The
+second of them operates with i2s pin-group.
 
-I do believe that the issue I'm seeing on MT8192 is very similar to the 
-issue described on MT8183. On my MT8192 Hayato, I get the following 
-sync_state warnings due to these two display components not having 
-drivers which bind to them:
+The patch fixes the misprint. It also match actual pinctrl driver.
 
-   [   25.828186] mtk-power-controller 10006000.syscon:power-controller: 
-sync_state() pending due to 1400d000.postmask
-   [   25.838380] mtk-power-controller 10006000.syscon:power-controller: 
-sync_state() pending due to 1400e000.dither
+Fixes: d0c15cb96b74 ("dt-bindings: pinctrl: airoha: Add EN7581 pinctrl")
+Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+---
+ .../devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml      | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-This device boots just fine up until I reach the point where my display 
-manager starts, where I get a full SoC hang. If I disable my display 
-manager from starting at boot, the device boots to a shell just fine. 
-While MT8192 doesn't have ACP to prefetch anything from the GPU, the 
-display manager (which uses 3D accel) still appears to trigger an AXI 
-stall (I don't know how to verify this is actually what happens, but it 
-seems likely) and I would assume the bootloader also leaves the MFG 
-domains partially enabled on MT8192 based on this behavior.
+diff --git a/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
+index 21fd4f1ba78b0..0c5a7eb6d563e 100644
+--- a/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
+@@ -166,7 +166,7 @@ patternProperties:
+           - if:
+               properties:
+                 function:
+-                  const: i2c
++                  const: i2s
+             then:
+               properties:
+                 groups:
+-- 
+2.53.0
 
-> So, specifically for audio, I think that there may be something else 
-> that is
-> wrong if you're seeing such a behavior - as in, some dependencies may be 
-> missing
-> from somewhere (some devicetree node), or something else.
-> 
-
-The audio issues I see on MT8183 and MT8186 also seem to have the same 
-root cause, the bootloader leaving domains partially enabled. On my 
-MT8183 krane I get these warnings:
-
-   [   21.705672] mtk-power-controller 10006000.syscon:power-controller: 
-sync_state() pending due to 14005000.dma-controller
-   [   21.705677] mtk-power-controller 10006000.syscon:power-controller: 
-sync_state() pending due to 14006000.mdp3-wdma
-   [   21.705688] mtk-power-controller 10006000.syscon:power-controller: 
-sync_state() pending due to 14012000.dither
-
-And I get this error when attempting to play audio:
-
-   [  217.282793] mt8183-audio 11220000.audio-controller:mt8183-afe-pcm: 
-mtk_afe_pcm_pointer hw_ptr err
-
-In both the MT8192 GPU case and the MT8183/8186 audio case, the issue 
-was fixed with the following diff to not use the sync_state system to 
-keep domains powered on:
-
-diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c 
-b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-index 9c9323c8c93a..b0868e24e241 100644
---- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-+++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-@@ -639,6 +639,7 @@ generic_pm_domain *scpsys_add_one_domain(struct 
-scpsys *scpsys, struct device_no
-
-  	pd->genpd.power_off = scpsys_power_off;
-  	pd->genpd.power_on = scpsys_power_on;
-+	pd->genpd.flags |= GENPD_FLAG_NO_STAY_ON;
-
-  	if (MTK_SCPD_CAPS(pd, MTK_SCPD_ACTIVE_WAKEUP))
-  		pd->genpd.flags |= GENPD_FLAG_ACTIVE_WAKEUP;
-
-What isn't clear to me is why leaving display domains powered on is 
-preventing audio from working. Maybe there is some dependency that isn't 
-clear to me? The other thing which isn't clear to me is why I never 
-experienced the boot hang on MT8183. Either way, I'm experiencing issues 
-on multiple SoCs which are fixed by allowing the domains to power off 
-and back on.
-
-> In any case, I'm always open for discussion, of course.
 
