@@ -4,69 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B93BC531D0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 11:30:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4FB7C53219
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 11:34:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z/wNY5epuKoFyNSG5irGOIpMV4A42H3f3RVJTI9wwd8=; b=BxEL4RclTImEKPvITZE4Id8tpn
-	pKhyvlBPE4yca+dKFMb+/XaOWg8c3nSJwjJ2XIlOWLQtyx9g01nbTUmMflGWsUO3ow97Xgp8LxQzY
-	Zn//d5kYuJbB02ciIQBnkkcWJPGf+l7ZoDRCZvwAY7qp+HluHRdh+g2IG+/rCfpErqSU14jFPVVzH
-	OqvThObwjjed51W1V4QtEykQ8aNQsUSZmsZO+DT+lqATeY4pBRPkDU9Qex2BJQMDAXF8H3h3x73Zx
-	uvBneSdvwxWh+aTOaIr21Wb1VB0S82Aoaszz+m/EezzVdRTUm0GsnEYz3LEaGG9/+lqJdbbmlaTJT
-	tF3PG4XQ==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uw+v6oGZww74N1CItB5AYg1IHmEGiC2o+mhgrfAjvlY=; b=ARK72HHNqr54pQGhFgyEr6ZH+N
+	baXI/F6pwS3Td2GgdQgwVjV51TNq02KaoroVu2dnxVG2mh4iNHwvkQkmBHzTtO5EPywEdmY98vsd1
+	sQuTAybLZUKCKCnIAWjpHrsKXRQxYtn7n6P+mXAJMJRyjgwPxGAN/1At1izenNaUVIrHGeTM0vZi9
+	QE5+FhcngAviHCR+P0W8Lrk+IHJC8HhZePvHtYxycL0FVEUqYWXKpnCRfKvXxlNZtdb5lU+dMTt/8
+	kzh7m/XqFbEx+4vrLpr4foCXu+bheLPne+u36B84kYkLQVv3YyVJ73lSXGOzwTFW1qFPMXXxX3g2A
+	HAgBLkjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woJXM-00000002ab4-4AUI;
-	Mon, 27 Jul 2026 11:30:24 +0000
+	id 1woJb9-00000002awx-3D94;
+	Mon, 27 Jul 2026 11:34:19 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woJXK-00000002aa9-154y;
-	Mon, 27 Jul 2026 11:30:23 +0000
+	id 1woJb6-00000002awF-2fmd;
+	Mon, 27 Jul 2026 11:34:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785151819;
-	bh=ZFIAFTwas2rhk3bEM2JyYbhvmHOR7sbABrYjwUVNLQM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=eluZNqzoifWatVLkxPgK7atnz3bqNuwlLsmhWgAt8gmaEw3yCwnr9qqvhW72bM3F1
-	 dEyCinGMU87TJAOYrWSecCipByGtNnu50ZUum9ecK1LFatVvoNMyICbnzYPWBGPXtL
-	 4tGvf/aNUyrSLd3RjFdSuPI7sye3GgjBl0VWX7BG8iiOjrUDveduub/xgLyftAa4Dz
-	 ZPTnb6wSz0nWLuknBGtjxbcIlIAZpe2fuHGeYe0QMkXF8jyf8FI7w2AIkLuuRJlg0R
-	 sudvXZUvXCgNWYKya2/4uVUATkq/7XrzQyWGxaaAw06YN2+1YIhRQegt6dtUR924IK
-	 Gx71BeqleSFiw==
+	s=mail; t=1785152054;
+	bh=+iJBMuno9bVBAG8bYN02sVbSR5W7cXRvCpNBSN3BtxM=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=UumtuF/cr/VymXvalz+kCivWKOGT1tz8HPGLzXXvwuO6/xjZetm5vSTaRXa2aUj1g
+	 HoWM1cv8b5SBuVInOeg+Oy01UZo8M0rfmeg9QdJQ1ujHCmNjSCvl4FaLS3qA5BGFFg
+	 dcq9knkYzYOaZnUZE5dLfTP6XnJI/yIQoNHrn3OpLwD8TOe8IZhWF0AxwWDnSM9Fus
+	 LzPDm5+MFIAbOQk66T2udryLf/Zbwl9xAthlZ2Ap4cRlkn9cZXM4ZEH7t/jN7x4K96
+	 xYy39zHkXyKO4KGDB0lg9c7BinN2yZ+0iU6UAiQ/4EZsXiGSc+Nrhg9H21nJJNxTBr
+	 u91sIVZrCTnkw==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1741017E0213;
-	Mon, 27 Jul 2026 13:30:19 +0200 (CEST)
-Message-ID: <a3298120-f5be-4a8a-bb71-1d6923a28d6c@collabora.com>
-Date: Mon, 27 Jul 2026 13:30:18 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6192E17E0213;
+	Mon, 27 Jul 2026 13:34:13 +0200 (CEST)
+Message-ID: <7eebbd9b-3a5e-4d95-bbbb-8ba3a7238383@collabora.com>
+Date: Mon, 27 Jul 2026 13:34:12 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] arm64: dts: mediatek: alias all enabled serial
- ports
-To: Carlo Caione <ccaione@baylibre.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jiri Slaby <jirislaby@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-serial@vger.kernel.org, dlechner@baylibre.com, jstephan@baylibre.com
-References: <20260727-ccaione-genio-serial-aliases-v2-0-0f2ae41a8e89@baylibre.com>
- <20260727-ccaione-genio-serial-aliases-v2-1-0f2ae41a8e89@baylibre.com>
+Subject: Re: [PATCH v6 00/13] drm/bridge: it6505: DP audio support +
+ shared-DAI hw_params fix
+To: Daniel Golle <daniel@makrotopia.org>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Allen Chen
+ <allen.chen@ite.com.tw>, Hermes Wu <hermes.wu@ite.com.tw>,
+ Pin-yen Lin <treapking@chromium.org>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Chen-Yu Tsai <wenst@chromium.org>
+References: <cover.1784947240.git.daniel@makrotopia.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260727-ccaione-genio-serial-aliases-v2-1-0f2ae41a8e89@baylibre.com>
+In-Reply-To: <cover.1784947240.git.daniel@makrotopia.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_043022_463965_1F8E4EA4 
-X-CRM114-Status: GOOD (  15.36  )
+X-CRM114-CacheID: sfid-20260727_043416_845595_77211B14 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,57 +86,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/27/26 09:38, Carlo Caione wrote:
-> On most MediaTek boards only serial0 is aliased, so the remaining
-> enabled uarts get first-free ttyS line numbers from the 8250 core in
-> probe order. When the console uart defers on its clocks another uart can
-> win line 0: console=ttyS0 then ends up on the wrong port and the boot
-> looks like a hang on the serial console, depending on probe order.
+On 7/25/26 04:57, Daniel Golle wrote:
+> Revive HDMI/DP audio support for the it6505, originally posted by
+> Jiaxin Yu [1], rebased onto current -next with the review feedback
+> addressed: &client->dev is gone (the driver gained it6505->dev) and
+> "#sound-dai-cells" has since been added by commit 325af1bef5b9
+> ("dt-bindings: display: bridge: it6505: Add #sound-dai-cells").
 > 
-> Signed-off-by: Carlo Caione <ccaione@baylibre.com>
-> ---
->   arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts    | 1 +
->   arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts              | 1 +
->   arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts  | 2 ++
->   arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts              | 2 ++
->   arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi            | 1 +
->   arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts | 4 ++++
->   arch/arm64/boot/dts/mediatek/mt8195-demo.dts              | 1 +
->   arch/arm64/boot/dts/mediatek/mt8365-evk.dts               | 2 ++
->   arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi     | 2 ++
->   arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-sbc.dtsi  | 2 ++
->   arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi   | 2 ++
->   arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi     | 1 +
->   12 files changed, 21 insertions(+)
+> Patches 1-11 fix pre-existing bugs found during review of earlier
+> versions of this series; they carry Fixes: tags and are ordered first
+> so stable trees can pick them.
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-> index 0e086dd487d9..63659e240b1d 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-> @@ -20,6 +20,7 @@ aliases {
->   		mmc2 = &mmc2;
->   		serial0 = &uart0;
->   		serial1 = &uart1;
-> +		serial2 = &uart2;
->   	};
->   
->   	backlight_lcd0: backlight {
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-> index 8c3e2e2578bc..7bccad118d24 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-> @@ -20,6 +20,7 @@ / {
->   
->   	aliases {
->   		serial0 = &uart0;
-> +		serial2 = &uart2;
+> Patch 12 wires up the it6505 audio helpers via hdmi_codec_ops,
+> unblocking the mt8186-mt6366 sound card which references it6505 as
+> the I2S3 codec. Patch 13 makes hw_params succeed with no display
+> attached, needed when the I2S bus is shared with another codec as on
+> MT8186 "steelix" Chromebooks, where the speaker path must keep
+> working regardless of the it6505 link state.
+> 
+> Tested on a MT8186 (google,steelix) Chromebook: the sound card comes
+> up, speakers, microphone and headset jack work. HDMI/DP audio output
+> itself could not be tested for lack of a suitable adapter cable.
+> 
 
-Why is that serial2 and not serial1 = &uart2?
+Whole series is
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Tested-by: AngeloGioachcino Del Regno <angelogioacchino.delregno@collabora.com> # 
+Steelix Chromebook
 
 Cheers,
 Angelo
 
->   	};
->   
->   	chosen {
+> [1] https://lore.kernel.org/all/20230730180803.22570-4-jiaxin.yu@mediatek.com/
 
