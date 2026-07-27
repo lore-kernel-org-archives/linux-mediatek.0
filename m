@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E3ADC53219
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 09:16:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5490C53219
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 09:16:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wN/kx/SBk8bE5KK0ql4+gLcojF8uiq2QeEJ40jwABjk=; b=k+AU2NTr5aecJUY8k5yFduQt6V
-	KLn4abrV1G2i+tsw6fVfAeRGDLx+3JLE/e+Cltbi7O/Cl1kgGXWh3XDIpl6/bUJk6s0LVJTKoB9Af
-	LrFbUOrlY0bcWpOgUU6RqQXvSbbRwgS0RIFJiCnMZxViBndxGP04rAy/fMDzd9haZFPfGBMB1BVBV
-	6oHtxQkaDykSVi2d3Vz0+QVI9tyje7nO02nusfT8beCASaKFENMmOjVuC6+wOimpwJsnctvJH5/d3
-	GqvS0kLxeJtGe9DI61RgHHyeZNgJ1D8qt2xX7p/86SzOupYkdndCSXygDM6G3XiJBXnUNY9I/hoh9
-	Cklxh3nQ==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eiS2cO5E4x0Awi3aXHlbjiWygQvLxKx4fGNRAdhWDNQ=; b=GoD/aTRdT4/I0NaGJHjkw41/mH
+	kmz/FmvT4WvcE7N+weSodBqrl2fORZbbLdx+MZET1RYoBKoqUobnVr3Oygedui2xXEh3S6QnFFESg
+	3rDZvp5uK/2vMFukmt1AErCDq4LXckVqL61EppN1qDSNYvwjCzs38Euu7ZHC8AdDDjyaGRyrEz4KR
+	9vtwpPSix8RTZJzDXFNu7uXPppo03ieAkRe/0Mw2P0kDHjd4FoQq2I1wo6Eonkqhd8PLi2ExD70zz
+	v6Rh2hBZfD5LvGxrOkXB2GPc9FMtsJk+ZnpoTrMCoi6RIJFgzu8umeyHHfa3ZWsYcuXhJFwa/Bmka
+	pDw4MFfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woHRm-00000002IoP-0jzn;
-	Mon, 27 Jul 2026 09:16:30 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1woHRu-00000002It2-230C;
+	Mon, 27 Jul 2026 09:16:38 +0000
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woHRj-00000002InR-0bZT
+	id 1woHRn-00000002Ios-14CK
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Jul 2026 09:16:28 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-3856d6fbcb3so1667455a91.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 02:16:26 -0700 (PDT)
+	Mon, 27 Jul 2026 09:16:32 +0000
+Received: by mail-pg1-x533.google.com with SMTP id 41be03b00d2f7-c9c26a5fb98so1691828a12.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 02:16:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1785143786; x=1785748586; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=wN/kx/SBk8bE5KK0ql4+gLcojF8uiq2QeEJ40jwABjk=;
-        b=Xau2sxNcavRGGbpLrb1wvWvLRdZK/Q64M7zxVD2Vam9BLmvm0oTjny9C3j2mxeooyQ
-         eBvz1WdhZlmDjAulk9nv0xZfKHrX1pSrF5UkxEmRFa04Joqob+MmXrMucZZGZQ3+ZFP8
-         hS97oTB9zyJ/p5osZDc/5wt/Soaxc8w0NboMI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785143786; x=1785748586;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=chromium.org; s=google; t=1785143790; x=1785748590; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=wN/kx/SBk8bE5KK0ql4+gLcojF8uiq2QeEJ40jwABjk=;
-        b=oSCMuJ+rEWq0xf2u73FZgi/jJ1qFRuCH8EEWS5njB6TsYrPM66KZWTrGLwo7GnlEj/
-         wwRUVhpyWHOv6oDdXjM82zNPr1PqgQpYxPa1N3cndlAC7HnZQhLDwuJsCCKsWD+jxUBm
-         yZwrHFTLprpcYBshIcjkYjLKAEIfBLaj9xaGu7gWzFee6Q0OqJqqgf+alPnFkeHEEJ1H
-         xyzpOxThInX8bG0o9fwL8zDys44PbDlWxWn/1fFM+91y9wDVV3oxAde+hUPH/JE+PnDV
-         roCEc+NOjzJM60ivfTojuyLxEgjwAo2jGtgV2D2yotAUTEbIT6Y0eFymYRbY9IUO2kAm
-         o5sw==
-X-Forwarded-Encrypted: i=1; AHgh+RpqKhg9vgU6cjNRtO5aKx549meVto3UnQJCBdkm32roSbxZm7+eT8QFFGKFDcY4R9gTW1tKPUsl7/0eXQxKGQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzzubdIEuOmBGYITeutrd4ZZ0AriMM4yxyAdtTqtSiDDU4+jYxt
-	OibpunJyCvDMh/QzSymO88r14MHWsw7k7g2wYa3eXeJu8CLG1Vv6SsM84qTZ89m8cA==
-X-Gm-Gg: AR+sD135DVR1hNcWJjyDimJdk6rnLRh8nRguG5vGpSvh6TTik4iHNNSE1qopBdLEKbY
-	XXuZhc1gTq+WFmPtj0XY2kvb9wtpUrvEr6mwNy4NB5YbzzwaYOCYtN5M+DIJoBMV6FfSIZkOfzt
-	vHMFoJO36sbijusDwop+Efy2jfm2SIK9QNkScMKUIFgvXMYVjjU/zzePKtaf/QqYi4od4dlAuNn
-	q1Jukz7pt/DcH/77016mjl/In4JY9tWxUMOqj6RDFd0n3Y0G/NjhIHpT0dd/9IMF2Ygu9BohLCC
-	Yp3vJwewFML2RfNBPAlAmiIJpLl8O8WMYhnM1YonoyFCYvbDPjBNGZbYFQ2Shzx+E8fse96P1M0
-	bDKmsNWXPn/mq+ue7Z2BXXRDgbzuKSI8QN0FguGBcdjtbfxeoB7H3UNiDCEu7XH3C04gYD+Mo3i
-	Fs3si9Vy10I9VAUEa83NNPmo+F97aYqtbcXtyitSc7gsARpswpm7YPHW1McA==
-X-Received: by 2002:a05:6a20:6a09:b0:3c3:b5db:cd93 with SMTP id adf61e73a8af0-3c67d9b3da3mr7135247637.13.1785143785620;
-        Mon, 27 Jul 2026 02:16:25 -0700 (PDT)
+        bh=eiS2cO5E4x0Awi3aXHlbjiWygQvLxKx4fGNRAdhWDNQ=;
+        b=QoPj4lTRnQuuWJ3E/0s6a6xSxwloOKglFaa7Sry4KYqINTd+zPOrInaVUbkdnRlopJ
+         SLjZR+QHdlnk5uLBDnvWgo9a6CboXMVEAEyCd3VsskjYVaDhC7xLpgYBcTJGcOws3itx
+         rpj9EgM7vA3ezFYgUyKr1P2zOxlZmhPIXe2LQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785143790; x=1785748590;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=eiS2cO5E4x0Awi3aXHlbjiWygQvLxKx4fGNRAdhWDNQ=;
+        b=cFYirve3QUPKGtHXAoJY9/LkNazEWdsVpCNxd64+33Yz5BBzjGP6OoAKiOjvKNlxiU
+         OqX9wKkpbpK4bz+vYDWxgQAp5ixW19xeuYTi6T2E8gVTpR4i9J24hbAIEi4yigu/8hdw
+         lYk4o5jlsANDuKutTVz0slw1WlZeuWMbFNrVAL+SdCqdiAqk35+kl5wy9kYqVV6O3Tiy
+         dn4WM87jYz5vrlR/uugmeYn/gzxYR7IVD5Mi7HjpCOuvA1K3G8ey1LTTd30Uu5tlWxLa
+         4Z6uaDU7RR7580VlkVFmHp4Si+wKApDNDgUwaK1Y0q8aPD+eQWxwMNgkKlVQAOfvIK+0
+         8Rwg==
+X-Forwarded-Encrypted: i=1; AHgh+RrsfMxUccuwI4HpOg8cuZvbqgv5jWWp7eVCH+AP1O5wdzkaz/anmui2Mde8ajXQa6vZO6b3BizAM1CTzZXKJg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzzuDpN63n4LBwD0FMFv4U7QAl2xhb89/UcBkBb5ctwGdHCJ12y
+	8pk9QkkyGjo9riPGErnPM/ipNmORCr0MkNm40c8Y2B8F9oJaoZnpCVCym1l0i6CubQ==
+X-Gm-Gg: AR+sD11UcqA3t7i1dm4hZIpzTOyBYhh61OKcbSQRo6oZi5c1ZDZuhvmUPgV9BdLRLcF
+	HWDycsOSnBIeK8pe9xQAkaLMEWGpIqx9wC6ZrDznBLsU7DnG/EimQ4lIQoeNSpwfjKMCXlqSdrF
+	e04jZpYzSXTqXwQ51wuhwSJtusnR1wkG9aW/IwURA1n0Q/WOfifEGamWdEQZ01S+pgacp6DNVW8
+	eOqZe+kYnEUwOkexYeVxc8gBcDRQYlOmvMTxZRGce/qdterovYkLtu5JHh9QLhU4zkdl3glXCyc
+	+vt0BMuiP0Shj6hDnX6aXb8R3ngO2bzKV2Dr+ByfifxbKrFY0+6C5n//48NGKBXSQJi/fel1k4p
+	QDIE7xVqnc6UrzWOKuET43vdwmU45ZMuzsN94LLOadNXkBZkYG7deNcl9glXaEhD7h0I5MHZ2fq
+	LFPffmqdAfuULN7jlCBbb7KW4tFfM0SI/Fkw3EmEUk/A7Tb6u0c3pZwR09EQ==
+X-Received: by 2002:a05:6a21:1644:b0:3bf:8de9:c64e with SMTP id adf61e73a8af0-3c67eecb1fbmr6693314637.2.1785143790405;
+        Mon, 27 Jul 2026 02:16:30 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:440:c713:a2b0:6f14])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-cbbb662329fsm2870049a12.9.2026.07.27.02.16.21
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-cbbb662329fsm2870049a12.9.2026.07.27.02.16.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Jul 2026 02:16:25 -0700 (PDT)
+        Mon, 27 Jul 2026 02:16:29 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Stephen Boyd <sboyd@kernel.org>,
 	Brian Masney <bmasney@redhat.com>,
@@ -87,16 +88,19 @@ Cc: Dan Carpenter <dan.carpenter@linaro.org>,
 	dri-devel@lists.freedesktop.org,
 	linux-kernel@vger.kernel.org,
 	Icenowy Zheng <zhengxingda@iscas.ac.cn>,
-	YoungJoon Lee <getfeus@gmail.com>
-Subject: [PATCH v3 0/5] powervr: MT8173 GPU support
-Date: Mon, 27 Jul 2026 17:15:49 +0800
-Message-ID: <20260727091555.1023910-1-wenst@chromium.org>
+	YoungJoon Lee <getfeus@gmail.com>,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v3 1/5] dt-bindings: clock: mediatek: Add mt8173 mfgtop
+Date: Mon, 27 Jul 2026 17:15:50 +0800
+Message-ID: <20260727091555.1023910-2-wenst@chromium.org>
 X-Mailer: git-send-email 2.55.0.229.g6434b31f56-goog
+In-Reply-To: <20260727091555.1023910-1-wenst@chromium.org>
+References: <20260727091555.1023910-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_021627_185028_270A0BD9 
-X-CRM114-Status: GOOD (  22.60  )
+X-CRM114-CacheID: sfid-20260727_021631_301134_FBF4BCF1 
+X-CRM114-Status: GOOD (  16.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,142 +115,116 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi everyone,
+The MFG (GPU) block on the MT8173 has a small glue layer, named MFG_TOP
+in the datasheet, that contains clock gates, some power sequence signal
+delays, and other unknown registers that get toggled when the GPU is
+powered on.
 
-This is v3 of my MT8173 PowerVR GPU support series.
+The clock gates are exposed as clocks provided by a clock controller,
+while the power sequencing bits are exposed as one singular power domain.
 
-I got another inquiry on the status of this patch series, so I thought
-I'd dig it out, fix all the issues and send another version.
-
-This time around Mesa was ready for basic testing, using both vulkanmark
-and glmark2-es2-drm (with Zink). Details below.
-
-Changes since v2 (all in the clk driver patch):
-- Made COMMON_CLK_MT8173_MFGTOP depend on PM
-  - Needed since the driver implements PM domains using the generic PM
-    domain library, which also depends on PM
-  - Fixes build breakage (kernel test robot)
-- Fixed "RST_DELAY_CNT" name (Brian)
-- Dropped unused mfg_desc (Brian)
-- Added check of clk_prepare_enable()'s return value in
-  clk_mt8173_mfgtop_power_on() (Brian)
-- Saved error value for return in IS_ERR(data->clk_26m) branch
-  (Dan Carpenter / kernel test robot w/ smatch)
-
-Changes since v1:
-- Adapted to changed DT bindings
-- Dropped driver change
-- Use same power domain for "a" and "b" GPU power domains
-
-
-This series enables the PowerVR GPU found in the MT8173 SoC, found in
-some Chromebooks.
-
-This version is different from the initial powervr driver submission [1]
-in that it splits out the GPU glue layer support out of the powervr
-driver and into a separate clock and power domain driver. The glue code
-is otherwise the same, and also the same as found in the ChromeOS
-kernels, with some extra comments and macro names added where possible.
-
-Patch 1 adds a binding for the glue layer, called mfgtop. The glue layer
-contains clock and power controls for the GPU.
-
-Patch 2 adds a driver for the glue layer, implemented as a clock driver
-that also provides power domains.
-
-Patch 3 adds an entry for the MT8173 GPU and 6XT series to the PowerVR
-binding.
-
-Patch 4 corrects the clock for the GPU (called MFG) power domain.
-
-Patch 5 adds device nodes for the GPU and glue layer to the MT8173 dtsi
-file.
-
-The kernel driver successfully probes the hardware and loads the
-"rogue_4.40.2.51_v1.fw" firmware provided by Imagination Technologies [2].
-The "exp_hw_support" module parameter needs to be set for the driver to
-probe successfully.
-
-This was tested with Mesa 26.1.5 from Debian Forky. With this version
-vkmark and glmark2-es2 (over Zink) both run fine. Mesa spits out a bunch
-of warnings since the GX6250 core is not officially supported.
-
-    # PVR_I_WANT_A_BROKEN_VULKAN_DRIVER=1 vkmark
-    WARNING: powervr is not a conformant Vulkan implementation, testing use only.
-    WARNING: powervr is not a conformant Vulkan implementation, testing use only.
-    MESA: warning: ../src/imagination/vulkan/pvr_arch_job_context.c:73: FINISHME: Missing reset support for brn51764
-    MESA: warning: ../src/imagination/vulkan/pvr_arch_job_context.c:76: FINISHME: Missing reset support for brn58839
-    MESA: warning: ../src/imagination/vulkan/pvr_arch_job_context.c:523: FINISHME: Missing support for brn62269
-    MESA: warning: ../src/imagination/vulkan/pvr_arch_border.c:244: FINISHME: Devices without tpu_border_colour_enhanced require entries for compressed formats to be stored in the table pre-compressed.
-    WARNING: powervr is not a conformant Vulkan implementation, testing use only.
-    =======================================================
-	vkmark 2025.01
-    =======================================================
-	Vendor ID:      0x1010
-	Device ID:      0x6250
-	Device Name:    PowerVR Rogue GX6250
-	Driver Version: 109056005
-	Device UUID:    d04cd6f3a25fd4900f89c151bccfdfcf
-    =======================================================
-    [vertex] device-local=true: FPS: 251 FrameTime: 3.984 ms
-    [vertex] device-local=false: FPS: 220 FrameTime: 4.545 ms
-    [texture] anisotropy=0:^C FPS: 223 FrameTime: 4.484 ms
-    =======================================================
-				       vkmark Score: 231
-    =======================================================
-
-    # PVR_I_WANT_A_BROKEN_VULKAN_DRIVER=1 glmark2-es2-drm
-    WARNING: powervr is not a conformant Vulkan implementation, testing use only.
-    MESA: warning: ../src/imagination/vulkan/pvr_arch_job_context.c:73: FINISHME: Missing reset support for brn51764
-    MESA: warning: ../src/imagination/vulkan/pvr_arch_job_context.c:76: FINISHME: Missing reset support for brn58839
-    MESA: warning: ../src/imagination/vulkan/pvr_arch_job_context.c:523: FINISHME: Missing support for brn62269
-    MESA: warning: ../src/imagination/vulkan/pvr_arch_border.c:244: FINISHME: Devices without tpu_border_colour_enhanced require entries for compressed formats to be stored in the table pre-compressed.
-    Warning: DRM_CAP_ASYNC_PAGE_FLIP not supported, falling back to 'mailbox' mode for SwapInterval(0).
-    =======================================================
-	glmark2 2023.01
-    =======================================================
-	OpenGL Information
-	GL_VENDOR:      Mesa
-	GL_RENDERER:    zink Vulkan 1.2(PowerVR Rogue GX6250 (IMAGINATION_OPEN_SOURCE_MESA))
-	GL_VERSION:     OpenGL ES 2.0 Mesa 26.1.5-1
-	Surface Config: buf=32 r=8 g=8 b=8 a=8 depth=24 stencil=0 samples=0
-	Surface Size:   1366x768 fullscreen
-    =======================================================
-    [build] use-vbo=false: FPS: 49 FrameTime: 20.473 ms
-    [build] use-vbo=true: FPS: 45 FrameTime: 22.660 ms
-    [texture] texture-filter=nearest: FPS: 45 FrameTime: 22.642 ms
-    [texture] texture-filter=linear:^C FPS: 50 FrameTime: 20.172 ms
-    =======================================================
-				      glmark2 Score: 46
-    =======================================================
-
-
-Please have a look.
-
-Thanks
-ChenYu
-
-[1] https://lore.kernel.org/dri-devel/20220815165156.118212-2-sarah.walker@imgtec.com/
-[2] https://gitlab.freedesktop.org/imagination/linux-firmware/-/tree/powervr
-
-Chen-Yu Tsai (5):
-  dt-bindings: clock: mediatek: Add mt8173 mfgtop
-  clk: mediatek: Add mt8173-mfgtop driver
-  dt-bindings: gpu: powervr-rogue: Add MediaTek MT8173 GPU
-  arm64: dts: mediatek: mt8173: Fix MFG_ASYNC power domain clock
-  arm64: dts: mediatek: mt8173: Add GPU device nodes
-
- .../clock/mediatek,mt8173-mfgtop.yaml         |  70 +++++
- .../bindings/gpu/img,powervr-rogue.yaml       |   1 +
- arch/arm64/boot/dts/mediatek/mt8173.dtsi      |  33 ++-
- drivers/clk/mediatek/Kconfig                  |  10 +
- drivers/clk/mediatek/Makefile                 |   1 +
- drivers/clk/mediatek/clk-mt8173-mfgtop.c      | 241 ++++++++++++++++++
- include/dt-bindings/clock/mt8173-clk.h        |   7 +
- 7 files changed, 362 insertions(+), 1 deletion(-)
+Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ .../clock/mediatek,mt8173-mfgtop.yaml         | 70 +++++++++++++++++++
+ include/dt-bindings/clock/mt8173-clk.h        |  7 ++
+ 2 files changed, 77 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt8173-mfgtop.yaml
- create mode 100644 drivers/clk/mediatek/clk-mt8173-mfgtop.c
 
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8173-mfgtop.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8173-mfgtop.yaml
+new file mode 100644
+index 000000000000..03db1ee9e594
+--- /dev/null
++++ b/Documentation/devicetree/bindings/clock/mediatek,mt8173-mfgtop.yaml
+@@ -0,0 +1,70 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++
++$id: http://devicetree.org/schemas/clock/mediatek,mt8173-mfgtop.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT8173 MFG TOP controller
++
++maintainers:
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++
++description:
++  The MFG TOP glue layer controls various signals going to the MFG (GPU)
++  block on the MT8173.
++
++properties:
++  compatible:
++    const: mediatek,mt8173-mfgtop
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    maxItems: 4
++
++  clock-names:
++    items:
++      - const: sys
++      - const: mem
++      - const: core
++      - const: clk26m
++
++  power-domains:
++    maxItems: 1
++
++  '#clock-cells':
++    const: 1
++
++  '#power-domain-cells':
++    const: 0
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - clock-names
++  - power-domains
++  - '#clock-cells'
++  - '#power-domain-cells'
++
++additionalProperties: false
++
++examples:
++  - |
++        #include <dt-bindings/clock/mt8173-clk.h>
++        #include <dt-bindings/power/mt8173-power.h>
++
++        clock-controller@13fff000 {
++            compatible = "mediatek,mt8173-mfgtop";
++            reg = <0x13fff000 0x1000>;
++            clocks = <&topckgen CLK_TOP_AXI_MFG_IN_SEL>,
++                     <&topckgen CLK_TOP_MEM_MFG_IN_SEL>,
++                     <&topckgen CLK_TOP_MFG_SEL>,
++                     <&clk26m>;
++            clock-names = "sys", "mem", "core", "clk26m";
++            power-domains = <&spm MT8173_POWER_DOMAIN_MFG>;
++            #clock-cells = <1>;
++            #power-domain-cells = <0>;
++        };
+diff --git a/include/dt-bindings/clock/mt8173-clk.h b/include/dt-bindings/clock/mt8173-clk.h
+index 3d00c98b9654..89e982f771db 100644
+--- a/include/dt-bindings/clock/mt8173-clk.h
++++ b/include/dt-bindings/clock/mt8173-clk.h
+@@ -243,6 +243,13 @@
+ #define CLK_IMG_FD			7
+ #define CLK_IMG_NR_CLK			8
+ 
++/* MFG_SYS */
++
++#define CLK_MFG_AXI			0
++#define CLK_MFG_MEM			1
++#define CLK_MFG_G3D			2
++#define CLK_MFG_26M			3
++
+ /* MM_SYS */
+ 
+ #define CLK_MM_SMI_COMMON		1
 -- 
 2.55.0.229.g6434b31f56-goog
 
