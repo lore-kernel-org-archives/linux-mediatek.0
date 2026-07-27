@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF7B9C531D0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 07:46:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC15EC53219
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 07:47:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nUU5RcEXjAmJ2/SyjDJhoIwk9S9Pp0S6+hdCM7CDcsQ=; b=Sj4N+bXJspcRxfx4wt6q70nPVt
-	/rkIYbhAX72rGDRcyjfBdiCjBagTPuZN1EPD/9d0xX+0bsrj9jcBEAd4layi2TfZo6y+5T/Fr6Y5r
-	KH7peax7mJb1Oq1SRwxsKWsLECC6Fa2/GHLoKEWgbEgV1TiOKz5cQjz+fJ5NMP0xDWoSl5+2X0iGz
-	yrQnWOpTKT35EGsAxZyVCq31blCupa9UK0XOSQm6aww/89zryTEEgwONJ7YCwPw0u4dWxCGFGvaoH
-	z0nmxftWi5F49pBJi/Y7TJWpByW0qkd4UUvGsuuTQexLIUBNNMcT3/NTtd5TzS5SnZ8Qtw/AAmDwL
-	EXZefIww==;
+	bh=yPyKb7BFsQjo4SS+XShKcyqwwsD2KQ/27NhoHTUy7eA=; b=0Wpcfz4pZ3r8fhxzv+r/HQh/Ju
+	sQJoMcNRjNcDU85P1xhOTBS6vxoOr7kcuWWc9yyLd+YeDHPSRMr6d902lx1Nk92ILdF9OkdClisvS
+	FqJJs6DJ4XV/ilwa8IGn9ytOukV7Grdl0+s7xRGOtqa0zOSLrYzOMJH7lzcUYJJqHlfgcW4jgCc0m
+	b+UOMYHTo303SrQRZnRnTVSRFQEG5ZfR1M9TfOEM4FVaFHlpSYxR60fiUQuO3mHVlD8MxGdBhU0vV
+	kNNtr3qgTBDbPS8H2n9DzoKptrFGnXhzyTzueNHNDOwvU/6+JwxHlkcpSB1/DitBTIGRpbswUOxot
+	L4Be+LYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woG2u-00000002BCO-2j6I;
-	Mon, 27 Jul 2026 07:46:44 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1woG3O-00000002BF2-32Pp;
+	Mon, 27 Jul 2026 07:47:14 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woG2u-00000002BCG-0k8n
+	id 1woG3N-00000002BEt-1G0J
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Jul 2026 07:46:44 +0000
+	Mon, 27 Jul 2026 07:47:13 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 37DEF601ED;
-	Mon, 27 Jul 2026 07:46:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 61A551F00ACA;
-	Mon, 27 Jul 2026 07:46:42 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id B703641645;
+	Mon, 27 Jul 2026 07:47:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CCED1F000E9;
+	Mon, 27 Jul 2026 07:47:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785138402;
-	bh=nUU5RcEXjAmJ2/SyjDJhoIwk9S9Pp0S6+hdCM7CDcsQ=;
+	s=k20260515; t=1785138432;
+	bh=yPyKb7BFsQjo4SS+XShKcyqwwsD2KQ/27NhoHTUy7eA=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=bia0mR1itz5OxQYNG/0tIN1+vnJ8dT5R1XybBLEohUY4mySxZBaOQuXbuFcbX7n0H
-	 8Uxw3+F3ucdsa4KIfWrPI0bSgN1e41jkJAQoNJitdl7ckfNutncydKX+iniNG8mqW0
-	 N90Jbsd2hV7m0NS9OmxJniK7/zgRLm83icok2U9Bcfsv6UOJSY9p9PQ+5pd6J23N/F
-	 KavmAMMXfjcYQcBt/9hDYgcSm9xV5Gxca9lHk1YlCNV7+dAc4YzWCDmuw2VKKUl5CM
-	 Gb9zFAOxxKt4G70C23wrlkOv/siAs5XehfFWfZSUTiLPICbJyS//QaxD+LNl2DlnA5
-	 0OrnT+hmleGHw==
-Date: Mon, 27 Jul 2026 09:46:40 +0200
+	b=MdwsFLT76HRon/wjSmQ9VlobV2YPXn86eDHf62h4wOlwTM0y9/1DGS7yZTMYJgC6k
+	 CphyOlFHYW96+uRBLRgHaDfSx9+ouwWyGTVQe/vPo7BUR2hU4UUj8W4tDUTv51bykl
+	 HSk6NnusiT4BvKxYOZkdc1QiArAQbPhlIO+4pC869USL0ciMo6UVJqFSASHNpzL3O8
+	 ipsLNLh/xFUKGlZ9Qf7qPoHWzXEJfPyycX64sFIQSLS2jDhGPvYbKKVmr9Pgg0nMAA
+	 ++3/We6U0EfPQe6GM9mDN34RJ6OTjEbcSuZ/6YfF8MxgK08fwEUd1i0QEHN+FX9DFg
+	 l3OQxhV6d1czA==
+Date: Mon, 27 Jul 2026 09:47:10 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
 Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>,
@@ -56,16 +56,16 @@ Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>,
 	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	Markus Gothe <markus.gothe@genexis.eu>,
 	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
-Subject: Re: [PATCH v7 01/34] dt-bindings: pinctrl: airoha: en7581: fix
- misprint in i2s function name
-Message-ID: <amcM4L8LMu0UID_g@lore-desk>
+Subject: Re: [PATCH v7 02/34] dt-bindings: pinctrl: airoha: en7581: fix pwm
+ pin-groups
+Message-ID: <amcM_m1-6Yryrlaw@lore-desk>
 References: <20260727074234.3761170-1-mikhail.kshevetskiy@iopsys.eu>
- <20260727074234.3761170-2-mikhail.kshevetskiy@iopsys.eu>
+ <20260727074234.3761170-3-mikhail.kshevetskiy@iopsys.eu>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="29sDINoIy+yZrchw"
+	protocol="application/pgp-signature"; boundary="68hmevubpc3NW3MB"
 Content-Disposition: inline
-In-Reply-To: <20260727074234.3761170-2-mikhail.kshevetskiy@iopsys.eu>
+In-Reply-To: <20260727074234.3761170-3-mikhail.kshevetskiy@iopsys.eu>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,17 +80,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---29sDINoIy+yZrchw
+--68hmevubpc3NW3MB
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> i2s pin-function is missed, instead i2c pin-function defined twice. The
-> second of them operates with i2s pin-group.
->=20
-> The patch fixes the misprint. It also match actual pinctrl driver.
+> According to commit 08a5af468e613b ("pinctrl: airoha: fix pwm pin function
+> for an7581 and an7583") there is no gpio47 pin-group, so device schema mu=
+st
+> be fixed.
 
-I guess you shold add a Fixes tag here.
+same here, missing Fixes tag.
 
 Regards,
 Lorenzo
@@ -104,32 +104,32 @@ Lorenzo
 > diff --git a/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinc=
 trl.yaml b/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.=
 yaml
-> index 21fd4f1ba78b0..0c5a7eb6d563e 100644
+> index 0c5a7eb6d563e..12dd85b5b4105 100644
 > --- a/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
 > +++ b/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
-> @@ -166,7 +166,7 @@ patternProperties:
+> @@ -208,7 +208,7 @@ patternProperties:
+>                           gpio20, gpio21, gpio22, gpio23, gpio24, gpio25,
+>                           gpio26, gpio27, gpio28, gpio29, gpio30, gpio31,
+>                           gpio36, gpio37, gpio38, gpio39, gpio40, gpio41,
+> -                         gpio42, gpio43, gpio44, gpio45, gpio46, gpio47]
+> +                         gpio42, gpio43, gpio44, gpio45, gpio46]
 >            - if:
 >                properties:
 >                  function:
-> -                  const: i2c
-> +                  const: i2s
->              then:
->                properties:
->                  groups:
 > --=20
 > 2.53.0
 >=20
 
---29sDINoIy+yZrchw
+--68hmevubpc3NW3MB
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCamcM4AAKCRA6cBh0uS2t
-rAfwAQC73qPOnX7i6PBGFXOyWks8gimPvWJJzpH3mzTDrU9SxgD+LnV3B4lgdjRj
-PzTRLyyWvRM69ourXgmlWbSawvX1Dgo=
-=r+k4
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCamcM/gAKCRA6cBh0uS2t
+rMYMAP9NbE0w4c3+D9LiCgsQAAjHepf9yd7vRp0bp/VwFb9DRQEAvS9IpGp7y6bB
+tThVcEzcwcLpe8zNBsnv6g32z7Cv5g0=
+=HFbe
 -----END PGP SIGNATURE-----
 
---29sDINoIy+yZrchw--
+--68hmevubpc3NW3MB--
 
