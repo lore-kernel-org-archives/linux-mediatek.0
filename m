@@ -4,108 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61E4BC5321C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 09:49:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4B97C53219
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 09:59:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A9e/RTvQgyA1BXOguUTfpzmBu5ZmU5vPNlQN+p2nyUQ=; b=G4nyp5661BgN8p0glm3jIwqMGy
-	Nu8qwqUNxYHXbORv2ZEsgMQVMwU7rvAB3fYcXwmmUkEG0pKMu/whiZ3AcGk4nk02Q2JlrSfza87kg
-	vAvIMQk4jdXdS38Hn4clsXYReRfUjxWN39eQU6/Qnec3HNc/zl/D3RktEAbBtRdLvE2o1CXQNJN5k
-	B8jLu81MUZyx87gfmTethIiOa7Tm6jN0pgqox8RTVjp1vEftQXiLt+S3XEjiUCUYpoEZR4l2+cB3Y
-	OymCuwc9t0jv9ojBo8ndZHBvSJMavVSWRsQPSlp/q7K7igHlKwuc0hsqEfYPq6dSRtJrkQbll8GCs
-	dcIodZXw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=exTJjX1MTtXFRxLb8sndeHN2JbCf3AH5l7nquElVlL8=; b=ZZr0ohoiR4Pvn7
+	/xtvgaZ0oxny+Mp0MFHUkXNtzWmOjOce+oPkGwxWOXKmyWEk2AE7tcTurU21LiP+N/7DlDT3gQtf3
+	/KKZZtlRD62EmzvHUBxDZSVaWYvr0hNLBA5O8k23XwlOxmL0IgHGZhWFCZm7lQkDIWRAjFdwv3/Vl
+	QmPKvwE9V7mDdiB5Zk9mYNX5Al1+s0P9BoQIEJ8yZxwHLDkGXGbDWyETOGK+gk2TE0u8T71FuLbn9
+	LhJ8Sc+Osv9Vo+DsFAPrOXIakCLTPnNS568ymQdmJn8tZD590xwsLD4ZaBcpC1dbnWgfrpxlR7IcW
+	WGlDI44hBJWTn3rO4mYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woHxe-00000002NQr-113R;
-	Mon, 27 Jul 2026 09:49:26 +0000
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+	id 1woI7e-00000002PFh-2S8i;
+	Mon, 27 Jul 2026 09:59:46 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woHxb-00000002NPs-2ah1
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Jul 2026 09:49:24 +0000
-Received: by mail-yw1-x1133.google.com with SMTP id 00721157ae682-81f3b227a4aso29671687b3.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 02:49:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785145762; cv=none;
-        d=google.com; s=arc-20260327;
-        b=HktohGX8punuwq5VaDw61814AJLzAjIEhSNj7BwUyXGtjOC6NDgHS5IJdxEYmFZeh5
-         TpZnI64U2BMibgupN8H6hlyDZjFT3CHF51r/xdb2iIKSGEbF09prwcUi0kxT92XSTAVk
-         vwDNwbZGi6AsdT+uLEyFYv/10ic1LyyM5wW62aUsM69OSXbN+GbFJwSrn1n/BsFIZ4E+
-         ePAXXZL800AAO301R2QAfdupQMZiaB1YvaAF9v4bbGmdQFOvS4ARKWuHChL/EiyrcCLm
-         4QBIUUkZBEb/dGSAT10HOkBHISYlFNwk/rmV/5qm0Hen6kZWir/gyoikaumVjIARuv5o
-         6ViA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=A9e/RTvQgyA1BXOguUTfpzmBu5ZmU5vPNlQN+p2nyUQ=;
-        fh=WSJqTY+2ihp+eEt+39xzdnhN6/mgv45aVweY4lAc/bQ=;
-        b=ot3WFkE+uQ8YK4qBQ5rFd8goE25lYus+RlLEA+crr4w7XwsWjtxuKtXlE9NA0E6rcX
-         NX6uqbMcZu+iWFz1YWMBF/BJUUHKFUySoSamCeEdd3Ub4YeT6/jVxEgE2EneJAzM/O6f
-         OLWzQ4r/xjGuN65pwqgX3m3kixvJIbSxyyXNcUTGvdAgQ504sUWtcStJNudVNqfcUrds
-         6Xd8Bc3nFNN+tgexUgtqmoHGCcuL/eetC18aKIONPVLz0BKLXY0t/AIseYCIUbJm0td0
-         Gmy8h+inpqQj9rUtQqKMB3wsT0no+iO4hE4SrGANf9usn8yB1vZqvY9WwJwFsoOTguJ5
-         d0gQ==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1785145762; x=1785750562; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=A9e/RTvQgyA1BXOguUTfpzmBu5ZmU5vPNlQN+p2nyUQ=;
-        b=TSI4/I2iRMdcuwUTBFMSoRqeRL2BjUL7H/1pWdLzcGg+wruqjJzCKhHVGBmSf6DSfr
-         JycaZiY8XtQ/TvArHQxglbz8zP105v182rgmHOvU+QheyFzC2YrbSProXEXmiwy2tP1T
-         EdtptHMo0BnXfONrZSrBrOHLKCSa4NYcwF+Mk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785145762; x=1785750562;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=A9e/RTvQgyA1BXOguUTfpzmBu5ZmU5vPNlQN+p2nyUQ=;
-        b=MEAQAsNksEbAAM5gC2JQTMhk3l5qeVygyOzUgVmmhauqsO7hhaU9LOZ4Z4D86JnKVO
-         cn7uuJuxAcaBcuEFot1Du64eizVrqVBxoiz+AKPZ94+wza/PmlbnfJ9WLDA6ECOjJVwl
-         GNebwAmSNSgPMqWjxGRgVJIRbeSkVv2ZdAOzEoRcPFR2MnKjO3d3AuaiISy1dRC3IZl7
-         c56DCzNEArDSAFC7eCCQ22h7t8x+HtYRtC9bHlExmEwCKhDtolgtNQCFPE38y3ry52RU
-         sOElbhgB8TbqO3fdT4dOWvNlIELEmgDhLlz2pT1oYxEpUX57gUUXXVkmTcIZN9H/LDiR
-         at2Q==
-X-Forwarded-Encrypted: i=1; AHgh+RqNdDQuIb2qpriIKrM3frsZuOyYS0onGUl5+/S97ObQWX4KydrUsWw5fGk3KtHBCa+owqsg5TPCuRupAkACOg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxG2RVPuZ+FI900YUk8lxN0VFULiooW+FOw6xeodmpCraKhv6FP
-	ZrGBS+Gn5/MtWQt/662LWIte4FJyuBGqNFKgy49E9XIybumPi5tOu0LVwzCLvwms+KFqNQ3oDq1
-	a90stzTY2oq5XfE3ELfEVzW+37xPb+q0YIDDO4HFK
-X-Gm-Gg: AR+sD13U608qMynlaMl3xpsW9dYou88Cv4w0/cg1uhscrRccogqmOiDnt/otGA0YJB2
-	NJvoalNXDJYxb/iqcnJKtAOxBpsfaCjpp2LlhHaFHq8LAFd1idrH486e7wW7StOTNeYw5zWxsEn
-	s/hOufLaSdd4G8f2Fm/VOyEm6PdPrEIf9aFvf5tEv775y+i+S8DNhZNUFGqkmqjNEUoVH6crHoj
-	dgpJWEXkrTJpidqUYkdWb2wbSrrQ5osWSuW2oyr9Iu710uJS8Y0I0HoyySmB8XaaUhJvmkC1UkX
-	WlRyH5Yvs+Zzhyo=
-X-Received: by 2002:a05:690c:3744:b0:80c:85c6:8982 with SMTP id
- 00721157ae682-81f69e5c41fmr26771557b3.65.1785145762611; Mon, 27 Jul 2026
- 02:49:22 -0700 (PDT)
+	id 1woI7d-00000002PF9-3IL7;
+	Mon, 27 Jul 2026 09:59:45 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 14F1D601ED;
+	Mon, 27 Jul 2026 09:59:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83ACC1F000E9;
+	Mon, 27 Jul 2026 09:59:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1785146384;
+	bh=exTJjX1MTtXFRxLb8sndeHN2JbCf3AH5l7nquElVlL8=;
+	h=From:Subject:Date:To:Cc;
+	b=lcNW6ROTK+ND9VfZpHkWL370jZ20wMWa3DG7NFUyvmM7rDLaHFcaAelprqbzyH2Zq
+	 /wxYaMLPrCeBGEnrj4w0VTE5C+o9GDE0kG/qBfN49z+Fpf5+9sC7EtQgo+T71W2Pju
+	 TUYVA7QqbXaZMOUYy5La4pX/ZC2RVklYdFKc4HJi8+J4oPv0kBWFFyA7QovkSsAE2B
+	 twxWbI3jY1F7mllX9Z8Wj6PfKHB4YX3o7o2uAZEdj83S1p1dWQlpv2WgdYH+HB8T5y
+	 r4kpTAOQph6UZG4o0/jIJvjCAC04DZj1YzOujSkf6Em2xhCFpgmm4YkUhs//9X4aJS
+	 2M/VPpHk0y9SA==
+From: Konrad Dybcio <konradybcio@kernel.org>
+Subject: [PATCH v5 0/3] Retrieve information about DDR from SMEM
+Date: Mon, 27 Jul 2026 11:59:26 +0200
+Message-Id: <20260727-topic-smem_dramc-v5-0-66188b3e338d@oss.qualcomm.com>
 MIME-Version: 1.0
-References: <20260727-ccaione-genio-serial-aliases-v2-0-0f2ae41a8e89@baylibre.com>
- <20260727-ccaione-genio-serial-aliases-v2-1-0f2ae41a8e89@baylibre.com>
-In-Reply-To: <20260727-ccaione-genio-serial-aliases-v2-1-0f2ae41a8e89@baylibre.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 27 Jul 2026 17:49:10 +0800
-X-Gm-Features: AUfX_mymWG_ASKh7iZ4RJYyJ6_dUoLJGXydzUsgaPikOadmqrflcGR-sfKa6ifw
-Message-ID: <CAGXv+5EM5P-cY2VW9MXc_iSjwq=QY1-OaV-s6W8wD8YTUvFN0g@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] arm64: dts: mediatek: alias all enabled serial ports
-To: Carlo Caione <ccaione@baylibre.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-serial@vger.kernel.org, dlechner@baylibre.com, jstephan@baylibre.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_024923_691275_79B1885F 
-X-CRM114-Status: GOOD (  12.39  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/33P3WoCMRAF4FeRXDcyk5389arvUaTEJFsDjbGJL
+ hXZdzcK0l6svRk4A+cb5sJarCk29rq6sBqn1FLZ9yBfVszv3P4z8hR6ZgKEBALLj+WQPG855o9
+ QXfZckdJotPNGSdZrhxrH9HMn3zc971I7lnq+X5jwtv0Hm5ADtxQkSB+ktMNbaW39fXJfvuS87
+ oPdzEn8cRAWHNGdEF1AKRRppCfO8HAUIJgFZ+iO2ioKozQOUD9x6NfRAhcc6o4mM1orhDZu6a9
+ 5nq9C3nnAjwEAAA==
+X-Change-ID: 20250409-topic-smem_dramc-6467187ac865
+To: Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konradybcio@kernel.org>, Kees Cook <kees@kernel.org>, 
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>, 
+ Rob Clark <robin.clark@oss.qualcomm.com>, Sean Paul <sean@poorly.run>, 
+ Akhil P Oommen <akhilpo@oss.qualcomm.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>, 
+ Abhinav Kumar <abhinav.kumar@linux.dev>, 
+ Jessica Zhang <jesszhan0024@gmail.com>, 
+ Marijn Suijten <marijn.suijten@somainline.org>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, 
+ Avri Altman <avri.altman@sandisk.com>, Bart Van Assche <bvanassche@acm.org>, 
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>, 
+ "Martin K. Petersen" <martin.petersen@oracle.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Suzuki K Poulose <suzuki.poulose@arm.com>, Mike Leach <mike.leach@arm.com>, 
+ James Clark <james.clark@linaro.org>, Leo Yan <leo.yan@arm.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Yuanfang Zhang <yuanfang.zhang@oss.qualcomm.com>, 
+ Mao Jinlong <jinlong.mao@oss.qualcomm.com>, 
+ Jie Gan <jie.gan@oss.qualcomm.com>, Paul Walmsley <pjw@kernel.org>, 
+ Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>, 
+ Alexandre Ghiti <alex@ghiti.fr>
+Cc: linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+ linux-hardening@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+ freedreno@lists.freedesktop.org, 
+ Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>, linux-scsi@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ coresight@lists.linaro.org, devicetree@vger.kernel.org, 
+ linux-riscv@lists.infradead.org
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1785146373; l=4321;
+ i=konrad.dybcio@oss.qualcomm.com; s=20230215; h=from:subject:message-id;
+ bh=bfyacnrkO+Us/h0qrnmz0o/JfoZswPjdZs21jlnlp+Y=;
+ b=k0ce6jaZZ8+A1zymxLM1fkILonljjaOOQpJjx9iMqEa84quikNZcCUTZnSqY7YUc35G18R9Ul
+ rUGS99vmJ1kCFSedj9A21OsZDVxS3Wk1t3CmaUkFdxEIA3/qn0w7QU6
+X-Developer-Key: i=konrad.dybcio@oss.qualcomm.com; a=ed25519;
+ pk=iclgkYvtl2w05SSXO5EjjSYlhFKsJ+5OSZBjOkQuEms=
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,27 +108,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 27, 2026 at 3:40=E2=80=AFPM Carlo Caione <ccaione@baylibre.com>=
- wrote:
->
-> On most MediaTek boards only serial0 is aliased, so the remaining
-> enabled uarts get first-free ttyS line numbers from the 8250 core in
-> probe order. When the console uart defers on its clocks another uart can
-> win line 0: console=3DttyS0 then ends up on the wrong port and the boot
-> looks like a hang on the serial console, depending on probe order.
->
-> Signed-off-by: Carlo Caione <ccaione@baylibre.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts    | 1 +
->  arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts              | 1 +
->  arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts  | 2 ++
->  arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts              | 2 ++
+SMEM allows the OS to retrieve information about the DDR memory.
+Among that information, is a semi-magic value called 'HBB', or Highest
+Bank address Bit, which multimedia drivers (for hardware like Adreno
+and MDSS) must retrieve in order to program the IP blocks correctly.
 
->  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi            | 1 +
->  arch/arm64/boot/dts/mediatek/mt8192-asurada-hayato-r1.dts | 4 ++++
+This series introduces an API to retrieve that value, uses it in the
+aforementioned programming sequences and exposes available DDR
+frequencies in debugfs (to e.g. pass to aoss_qmp debugfs). More
+information can be exposed in the future, as needed.
 
-These are the only two MediaTek-based Chromebook designs that use
-Bluetooth over UART and have a second UART enabled.
+Signed-off-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+---
+Changes in v5:
+- Parse DRAM data before publishing __smem
+- Add trivial patch 1 converting 'unsigned' to 'unsigned int' to make
+  checkpatch happy
+- Link to v4: https://patch.msgid.link/20260721-topic-smem_dramc-v4-0-748f992278a3@oss.qualcomm.com
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org> # kukui & asurada-hayato
+Changes in v4:
+- Rebase on top of Dmitry's cleanups to ubwc_config
+- Mark and consume the shared data as little-endian
+- Fix compiler optimizing out what it thinks is impossible (odd
+  v3_14freq case)
+- Rework qcom_ubwc_config_get_data() per discussion to not alter
+  hardcoded data
+- Remove some unnecessary comments and assignments
+- Return -ENODATA instead of -EINVAL for out-of-sensible-range HBB
+- Cosmetic/line wrapping fixups
+- Drop applied drm/msm patch
+- Link to v3: https://lore.kernel.org/r/20260108-topic-smem_dramc-v3-0-6b64df58a017@oss.qualcomm.com
+
+Changes in v3:
+- Support v6 and v7 DDRInfo (v7 is used on e.g. Hamoa)
+- Handle rare cases of DDRInfo v5 with additional trailing data
+- Rebase/adjust to SSoT UBWC
+- Expose hbb value in debugfs
+- cosmetic changes
+- Link to v2: https://lore.kernel.org/r/20250410-topic-smem_dramc-v2-0-dead15264714@oss.qualcomm.com
+
+Changes in v2:
+- Avoid checking for < 0 on unsigned types
+- Overwrite Adreno UBWC data to keep the data shared with userspace
+  coherent with what's programmed into the hardware
+- Call get_hbb() in msm_mdss_enable() instead of all UBWC setup
+  branches separately
+- Pick up Bjorn's rb on patch 1
+- Link to v1: https://lore.kernel.org/r/20250409-topic-smem_dramc-v1-0-94d505cd5593@oss.qualcomm.com
+
+To: Bjorn Andersson <andersson@kernel.org>
+To: Konrad Dybcio <konradybcio@kernel.org>
+To: Kees Cook <kees@kernel.org>
+To: "Gustavo A. R. Silva" <gustavoars@kernel.org>
+To: Alim Akhtar <alim.akhtar@samsung.com>
+To: Avri Altman <avri.altman@sandisk.com>
+To: Bart Van Assche <bvanassche@acm.org>
+To: "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>
+To: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Suzuki K Poulose <suzuki.poulose@arm.com>
+To: Mike Leach <mike.leach@arm.com>
+To: James Clark <james.clark@linaro.org>
+To: Leo Yan <leo.yan@arm.com>
+To: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>
+To: Conor Dooley <conor+dt@kernel.org>
+To: Yuanfang Zhang <yuanfang.zhang@oss.qualcomm.com>
+To: Mao Jinlong <jinlong.mao@oss.qualcomm.com>
+To: Jie Gan <jie.gan@oss.qualcomm.com>
+To: Paul Walmsley <pjw@kernel.org>
+To: Palmer Dabbelt <palmer@dabbelt.com>
+To: Albert Ou <aou@eecs.berkeley.edu>
+To: Alexandre Ghiti <alex@ghiti.fr>
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-arm-msm@vger.kernel.org
+Cc: linux-hardening@vger.kernel.org
+Cc: linux-scsi@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: coresight@lists.linaro.org
+Cc: devicetree@vger.kernel.org
+Cc: linux-riscv@lists.infradead.org
+
+---
+Konrad Dybcio (3):
+      soc: qcom: smem: Use 'unsigned int' instead of 'unsigned'
+      soc: qcom: smem: Expose DDR data from SMEM
+      soc: qcom: ubwc: Get HBB from SMEM
+
+ drivers/soc/qcom/Makefile      |   3 +-
+ drivers/soc/qcom/smem.c        |  80 +++++---
+ drivers/soc/qcom/smem.h        |  12 ++
+ drivers/soc/qcom/smem_dramc.c  | 430 +++++++++++++++++++++++++++++++++++++++++
+ drivers/soc/qcom/ubwc_config.c |  40 +++-
+ include/linux/soc/qcom/smem.h  |   2 +
+ 6 files changed, 533 insertions(+), 34 deletions(-)
+---
+base-commit: c5e32e86ca02b003f86e095d379b38148999293d
+change-id: 20250409-topic-smem_dramc-6467187ac865
+
+Best regards,
+--  
+Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+
 
