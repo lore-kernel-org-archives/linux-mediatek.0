@@ -4,88 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F64CC53209
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 20:00:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7632C53209
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 20:04:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:Subject:Cc:To:From:Date:Message-ID:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HtNOUytS7spqmKL8HBRjl5j9jbmXbkSAtWYLPzNGcyw=; b=PbcGdl3MK3Ri+TzfxrRs5E1Bfc
-	VX/YLsb/elUxSMp2+C0Z68XCJFUndF58hp0bzG4WoHg80yAG6B1VEVbNZYkxWmlxGOoePlsApwonx
-	EPayoyWS2uSaHSn8OLROQcTqL5x59DXoXdBFIkx2/8coQzMl6bR3ZWKjGWNQ84E1JbBZuoF60jHxE
-	QtFbWZWK1AP69DlhHPsSp8b1IxQpMePjA4pVTpEHNRQjKjsKnzkjlCG/klXRYWVzUEgq9N0J+Ayi/
-	viMPIQYBOY2sOl4uGdPnQXD0/XtJn99UP9hTb0ETGDAwVP7+xaWUpQubn2ovgNJz0zUqFmsFHv/z9
-	9w9Oiqnw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vDIac45RIuvLJRTWSXLnkBc2gzMGU15MkFTMnnrYVY0=; b=rN05R/kvbyJKUyOVFjVW8vDGT9
+	hl0rNHFgR15XYTlTOHGSRJ1gEApNTX72l2I9RbonMrpGxKk57/FdOPzKd1nzxy1M5GYPupwqZPxcr
+	hTx8fws+4FXbnXD7xB7kQptg269Tgm3XuhiEAECxPBv2ltgFiA5nc5/x5IEdAMearHzfzMtixFfhl
+	SCq3Snrma6WKEP1GO+74jOMM5EgcFO4L0mJUSjsRL8yreiGqB0Vb7uYY5TacJ7WD0BZirCbfYucr/
+	UUoap+PebvfixF9QuY6NZKL6glFZuSnjGUeKkQsk0navjsoo/jbdq7uTZUYpDBN1nnx9hrxTT9eA3
+	deXGwodg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woRUY-00000003ndU-3bMv;
-	Mon, 27 Jul 2026 20:00:02 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1woRZH-00000003nwv-2h8K;
+	Mon, 27 Jul 2026 20:04:55 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woRUW-00000003ncK-2Ioa
+	id 1woRZE-00000003nwJ-3nFy
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Jul 2026 20:00:01 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-49548aebcd8so23177635e9.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 12:59:59 -0700 (PDT)
+	Mon, 27 Jul 2026 20:04:53 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-4955de8797cso19457575e9.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 13:04:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785182398; x=1785787198; darn=lists.infradead.org;
-        h=mime-version:content-transfer-encoding:content-type:subject:cc:to
-         :from:date:message-id:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=HtNOUytS7spqmKL8HBRjl5j9jbmXbkSAtWYLPzNGcyw=;
-        b=WQbaJNr9TFncZx+h8Qz/z7sFevCiOTcDfFKwI4b3TwNrQHpt7cuWuCTP+egPerwkmr
-         80wicUDYGDn6vybeIyzDt9Oo7Uj1cti1CnR4f42wOU16xhwVeR7sNGp6SDMBAh+6c64V
-         Y57IZHdHo7CaGFGK1/IzlmVI1/i0F+jpENWsCGxCDMWcI2HNLlpwHS9G1cx8cTBFAVJb
-         lVDGnGETva4GxhrlZZ+B1RwttMLY5DZ2HY2jPqYymQR6lptSpgtRJkykD6n74odzQ/le
-         +wv2r0UioTrEkvSw2zIXMVi0a/IO+0w0VPEK/ZXycA1lSkAFlfHe769ckwVyM63xyv5g
-         Q2gA==
+        d=gmail.com; s=20251104; t=1785182690; x=1785787490; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=vDIac45RIuvLJRTWSXLnkBc2gzMGU15MkFTMnnrYVY0=;
+        b=NQxWA66gCGwXvbW4PZ7MTLItHKfHWXe6GFrOrKPeg2GlN7Esa8ZCL1WfAUq024OIhw
+         gjsnXp4Z2wVT791/GD5CZZPYMsf6rMl1eZI7u3DgReuMKdlOfA1/tRDnP2atyLQJQg6b
+         avPkZtfA1ugFQvugkb1nqvsdhR0Y2g7Hv0IK7UQg1bl0CxNQsuGmuTitGnO7FlDjaBN0
+         9w6HwNfAw+Sgw5q8KWrR87/Ugex95g+9wqPil3fSg7Qu7QDGctKmPHUaJ7Lfa+HOZDzB
+         Kk4Ph28Iq+ic/Pr/F9ME4RB8FFhOG4mi+TqZyCqJtVgwCmIMwwyBaOZ0uY+Hu23O2rli
+         CfAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785182398; x=1785787198;
-        h=mime-version:content-transfer-encoding:content-type:subject:cc:to
-         :from:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=HtNOUytS7spqmKL8HBRjl5j9jbmXbkSAtWYLPzNGcyw=;
-        b=hrhB6UFsM2LHzWt2Z3ykwHyITGrHHjVftBKa1/9Hvoa0ypZt+HDRKXJgeFFkb0gY7N
-         /I6oTku2tFuRmES1YUavlgJDDpDTev/4RXtdFZnUdmZ/hQQJAOqCgbns8dnn48WIoU3b
-         94J57ZTs6AehZbsoPnRNVYiDyHxXaLeWwaXHMSf1+OG2gdFU9QzvQh6kFXFCozFdklfE
-         IVO1iFoFWY7UZ12xu6BBpEomJs2y6jnBpc92n139Hq0HM+ApVt+NYWoYpl8+Q39auwuF
-         6Ax8P7Tgt7wJllO6CM910Qde1t2RVa10p7dMZz6RzmUorzKnHxwKDD2DqwdrlI421chs
-         8kLQ==
-X-Forwarded-Encrypted: i=1; AHgh+RoC+uJ+mSVMkBW5PT4+loY7S1nhmNYAh3MB/IfYG1MCwNa8r3LjgRrZ6eDRq9tbF3QkdUHXOnMB6WJgxIlzng==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzYuBiShrI5YOiGo1h9ExAZAwQezLbAzM23mE58gAHQsft1Nndg
-	sexB8FbokZQxK0fnitDzQzE7ic/30pmRBRo2ad2I8he056gqre5AhmP+
-X-Gm-Gg: AR+sD11ZanzWVT3YW0K/I0b5TWjBw7Kf85e00Ag3BYJ/km5xuGvOSXKpVQzDtVyIynB
-	BcHPJ0GbrMQO2v9tj0/D8SZuNQDTBcxjmakH4W8OenKWv7EeAOz+m/npRNMXXT97I73Ajnnr31u
-	hPWfO9O42+tVH6O+pN1mKuCVsySs+nWORoXw3UGgcmbEjWozdQAbUVTq65nUaVWzpAKgoVB9kFk
-	JC/nbq4ZrzvLOuQOkaDWLZ+CAhE5ABt6be9FR8yC5ycj8wVkt+k+0C5MZnpYYVD8OJ0NCyCySd0
-	tMrbAMhmi+MTnfpsXhi4YBM5EaE9ykwEQm98M25JzPOoZQv+UB9htwNoK9ejFUgJQg+ZKrU7Pgb
-	iPvYFLx9l0TYmOQlJuTMBJFbbplv3cCfW5SYcQPEmS431ix4BKXVfczcPs+jrySDf9OWkbaOMgO
-	2RtPniz+CqVIeKqQ5SJKRuz6TQv8BvAZpp+ztTHjlB5goQGjPey+NpzuQs5gLoWTjsvZx4mVx6H
-	bFbORRzhs0T
-X-Received: by 2002:a05:600c:c4a3:b0:495:7538:d4ea with SMTP id 5b1f17b1804b1-496b5670622mr127824895e9.0.1785182398165;
-        Mon, 27 Jul 2026 12:59:58 -0700 (PDT)
-Received: from mcp-gateway.lzampier.com (brnt-07-b2-v4wan-169820-cust69.vm7.cable.virginm.net. [81.102.32.70])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-496c46240c4sm17066885e9.12.2026.07.27.12.59.57
+        d=1e100.net; s=20251104; t=1785182690; x=1785787490;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=vDIac45RIuvLJRTWSXLnkBc2gzMGU15MkFTMnnrYVY0=;
+        b=Gbn4L0pXW1ec/u6JtoZRmxyEKmzgOlxxT7L7s90D+SwvUtIOQGkqs3H11RgFVAdYru
+         DuDmmWD8lcf+B5PcbmTnml++zN6CLMFcDAJ7PJ9R3KWp55y2szcpvVWSQ1ljSeEM2QNr
+         P+rd+jf+qCb0OYLP+feZXpCLpwgp6VLhfLR476vvwHRD2senA9lIYmYOhphWT6a7dCsJ
+         h6YmSzWSyUo//WjZ1H8ktnC7pC14RwFGuxeooHfjFBIT8R1jkmxfFkBLLzptJNTsQaYe
+         cPgv6tSyGAftuaRIwLJBVpsI9dEijHqX5r1fwpjMlc8esOVNIj/KSyosUCHnl/01xhY1
+         xx3Q==
+X-Forwarded-Encrypted: i=1; AHgh+Rrjrn8G07BT46JS8lWPgVJzX4bcVx8X/dt8a7mJbUS03RA+71VANbc/nePGqzFmcfNUvDuNMMPlSMZNl/ZrmA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwhzpzP4zkJAgIVxRTiETaU0rLDVgZlgCoQQvLB6wpPcfrawD1d
+	cCk2hCNEWgMniepoq5VBPoW8G+pGLm2g0P6S6N3EUwk70+kfDiD8CLWrcknhURfRdg==
+X-Gm-Gg: AR+sD11kytwC94sOaAisLXxSkJeqy1lrRvnTco8Nh1fsAYujcIJe0jflVrefSucN8M1
+	2tAq7T5ovn6LK4V1dJCR9yqykzXs/18sKSIO3ZFyWGMIDhpwUSjnZbMGENUEthzKx4r1zXl/nRO
+	UNz1/E4pR7A98z5VGOuh4IBd+BPD/fSf3Wuc+jl6jNU66KJLxmuh2Vb+6J9h1xQ06sO9nGQdLQ2
+	LUpu/d3294Ho8AosgnXm7F7kgr/U6GTpjoUujWtmvaHabE/3p5qJY9pF4oMvvPGTVuLuZ5ASB1t
+	npYc82XGeVt97iGNxHtiXu0y7LwJi6um3iudsS5GvGFBq2pGpeKRKPo38ICd87iPrnaMbECthuu
+	JEeRpDP3/6K5KvU6TtUcVeuDn2IrobbUhXxGZ8r04DNeTRtA6AP/b4/l8L8eN2r/d9JDEWUop5X
+	iCjJCAK4Igse8mRuBCdoDgcKDJqKxENsn7T1NQVJ5Ak+sZWoja5v7U/MHPDpOqowrZVFmCf9dqZ
+	RM3n6WYRXV+w7NsI6Y1JuID0sEY0+UyuZ59mdSIcD8Xs5YZX6y1EDZVq+VddVGiR5HWnwigz+EE
+	DNaFNYk0V2aCu9Bp4Jc=
+X-Received: by 2002:a05:600c:1d0d:b0:495:3de8:33a6 with SMTP id 5b1f17b1804b1-496b56ffdecmr132086755e9.16.1785182690188;
+        Mon, 27 Jul 2026 13:04:50 -0700 (PDT)
+Received: from dev-debian.lzampier.com (brnt-07-b2-v4wan-169820-cust69.vm7.cable.virginm.net. [81.102.32.70])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-496c46160dfsm18400985e9.10.2026.07.27.13.04.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Jul 2026 12:59:57 -0700 (PDT)
-Message-ID: <6a67b8bd.4bd67053.2727d8.1806@mx.google.com>
-Date: Mon, 27 Jul 2026 12:59:57 -0700 (PDT)
-From: bookmailer3000@gmail.com
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>
-Cc: Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
- stable@vger.kernel.org
-Subject: [PATCH] wifi: mt76: mt7915: keep the tx worker off the txq scheduler
- during hw restart
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+        Mon, 27 Jul 2026 13:04:49 -0700 (PDT)
+From: Lucas Zampieri <lcasmz54@gmail.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>
+Cc: Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	stable@vger.kernel.org
+Subject: [PATCH] wifi: mt76: mt7915: keep the tx worker off the txq scheduler during hw restart
+Date: Mon, 27 Jul 2026 17:04:48 -0300
+Message-ID: <20260727200448.978087-1-lcasmz54@gmail.com>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <6a67b8bd.4bd67053.2727d8.1806@mx.google.com>
+References: <6a67b8bd.4bd67053.2727d8.1806@mx.google.com>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_130000_622123_A1B8A9F2 
-X-CRM114-Status: GOOD (  13.52  )
+X-CRM114-CacheID: sfid-20260727_130452_969411_AB7CA341 
+X-CRM114-Status: GOOD (  13.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,6 +135,10 @@ Fixes: 8a55712d124f ("wifi: mt76: mt7915: enable full system reset support")
 Cc: stable@vger.kernel.org
 Signed-off-by: Lucas Zampieri <lcasmz54@gmail.com>
 ---
+
+Resent from my own address; please disregard the earlier copy of this
+patch sent from an unrelated account by mistake.
+
  mt76.h        | 2 ++
  mt7915/mac.c  | 3 +++
  mt7915/main.c | 5 +++++
@@ -195,4 +204,5 @@ index 4507fd15..e8e86e46 100644
  		phy = dev->phys[i];
 -- 
 2.47.3
+
 
