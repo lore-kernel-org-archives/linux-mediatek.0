@@ -4,65 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64099C531D0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 11:04:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65792C531D0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 11:26:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ef3lKA0rLNLP/xT8R6zae0u50qaptXQISSyjVmsZXKA=; b=nTWFCrKP7NB3NRTbqYx/NWMuCH
-	hWFmvUbEuyIq9pt9yFjaxlKigviLoEFcIpdCy9JfG8qQ3Gr7WFRkhHEfCYHXp2u3KZDH2t/ZUlVSh
-	JwNiWb39wdglOoZkusA9OiuiHhNCjAp9jTSpYhtQJ6VVGFhocwwNGSlMtNYKtvev/jfTHRQL858rT
-	sbVQQhIrkFCbtBSSFNmWmAxfB/+RmtIDCavNPuWqHga5X0GlaJMoyMgIZ/reNGQSdToubC73Vjv49
-	Ee+6hfL7xHglIH4xyd45wHjsjc8nh3jCIxO/hFUrH5ot7ZTwy5r5k7Bei7tMo8wYpLLWlsgiyuO82
-	r/O0pGzg==;
+	bh=kH9LdmUzfI8EUkeYsFPUuRBFRpzb8dsGcTvfnqSjFGM=; b=TTqNa6bXeBFfIHdS2Albge3rnv
+	E5PyphbLoPht7Jdg8yusAJA5SPfJfBtXlcSLHl7tjKqv0ZycXcuvcJPTAGbnBQrIo/lkViB8gzzNU
+	VosWwWntEmcsl30ho6PZh+a7NZMcRFmqBlUp338pF7Mz0fOx9ungjNpwckyvFvezWRFKn44ZpzATk
+	9rO26EyyymFGEGzBm44l8Hc6j1ALYXJnPbWuR6RJ6d1UVTAWi+aWrEekyrG+BB7+5zKz+grz438tR
+	d6m4CXisDIJB82CkzEg9Pv4DuMe1e2TAy45QMGkD3su/CJt5F8NzmU5nauUQEjBN4G/VG7/zyKI8B
+	fsd1nTkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woJ8V-00000002XrI-3kvg;
-	Mon, 27 Jul 2026 11:04:43 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1woJTq-00000002aBS-1B73;
+	Mon, 27 Jul 2026 11:26:46 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woJ8T-00000002XqE-4AEl;
-	Mon, 27 Jul 2026 11:04:43 +0000
+	id 1woJTm-00000002aAN-17kx;
+	Mon, 27 Jul 2026 11:26:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785150278;
-	bh=QM/K8aOc5Up2gdGT9i+OHNKgkTN1erLCWtsav788hrY=;
+	s=mail; t=1785151599;
+	bh=PxursN61kh6Aec8NWrNjqV1VnT3lTqwDy1MoMDvk4SY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Nx1sxHrM4Gt9yN4Ces1O83GaplTN8qv4vVmwOAKihOgOgmvoI8rPtVh4RuLuVfjnH
-	 VyWjXMbLiBzhZAukMWSSh+ZIhbufyfp3ODsIYNvJQCVmCGpV5gHNOuUt1jnJ1nmjcw
-	 LpojVlFqmmGlp6IBOulOA4c966bFCYfP0P9J58wSxQHMIhEF+F1AbbKFI9GEw+0jdW
-	 4eUX6JDZB6kOwMAzCeiTO2hJawrrgkDUjDLq5fQdoNdynszoEOS/CVSPnmGZXw0ThP
-	 k35BrqEGIinPrZ8jEZ2i3NyIs2AJUxT5NJ03QI0Pt5PckKDuUAQc/egjgcC8ak2XyV
-	 Fl1Ap1TqcbEBw==
+	b=Yql08sWyeQQpzOvqehN/AhCCx8GUyn/3e2cItgKWDOCGwZyAz79tgrmcMh7s0y1q+
+	 l1rlb72WY8w8xymDZgrNyr6fqz57A8iLy5W5Luv5XHdwmV63DXNOUfJRzAiY99vJ7E
+	 3qLRqYm60AW36mZIqnXwada+povnk8n0f8AoGrVcEQcf+Mt6I8wXSeZ3xlLzcYjvxF
+	 4r+Am2zCMLClkUmTRUErskbtjLOry427j+aHLlbo8UzZZfwpCnNdXTySFs9RwKvx0c
+	 gAx1nQRGmuETEX7wtH27S2O2jU4yLNaU08tg+P9JWJuuwCa9yCsu20IIwMsSmcsp2r
+	 SEApApOK4zDQQ==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A990C17E001F;
-	Mon, 27 Jul 2026 13:04:37 +0200 (CEST)
-Message-ID: <3130633c-fbff-4b1a-a127-bd4eb678c3f6@collabora.com>
-Date: Mon, 27 Jul 2026 13:04:37 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 534A817E0678;
+	Mon, 27 Jul 2026 13:26:38 +0200 (CEST)
+Message-ID: <6f91dfd9-16f4-44d4-be24-7abc89b9894b@collabora.com>
+Date: Mon, 27 Jul 2026 13:26:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] pmdomain: mediatek: Fix MT8183 hang on boot
-To: Ulf Hansson <ulf.hansson@oss.qualcomm.com>,
- Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Cc: Ulf Hansson <ulfh@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20260722132729.302067-1-dmitry.osipenko@collabora.com>
- <CAPx+jO-1_ZpYcnPtoYxRn5vv34tiP7TXnjKZ3SaWkEzdeTfXpA@mail.gmail.com>
+Subject: Re: [PATCH v3 1/5] dt-bindings: clock: mediatek: Add mt8173 mfgtop
+To: Chen-Yu Tsai <wenst@chromium.org>, Stephen Boyd <sboyd@kernel.org>,
+ Brian Masney <bmasney@redhat.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Alessio Belle <alessio.belle@imgtec.com>,
+ Luigi Santivetti <luigi.santivetti@imgtec.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>
+Cc: Dan Carpenter <dan.carpenter@linaro.org>, David Airlie
+ <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ imagination@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Icenowy Zheng <zhengxingda@iscas.ac.cn>,
+ YoungJoon Lee <getfeus@gmail.com>, Conor Dooley <conor.dooley@microchip.com>
+References: <20260727091555.1023910-1-wenst@chromium.org>
+ <20260727091555.1023910-2-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <CAPx+jO-1_ZpYcnPtoYxRn5vv34tiP7TXnjKZ3SaWkEzdeTfXpA@mail.gmail.com>
+In-Reply-To: <20260727091555.1023910-2-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_040442_186290_3A734B1B 
-X-CRM114-Status: GOOD (  28.32  )
+X-CRM114-CacheID: sfid-20260727_042642_490584_273685CA 
+X-CRM114-Status: UNSURE (   7.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,118 +86,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/24/26 17:01, Ulf Hansson wrote:
-> On Wed, Jul 22, 2026 at 3:28 PM Dmitry Osipenko
-> <dmitry.osipenko@collabora.com> wrote:
->>
->> Depending on firmware, part of the MFG domains may be left ON at boot
->> leaving only some MFG cores powered, to let the ACP to prefetch the GPU
->> region when the display controller is brought up. This doesn't play well
->> with an eventual delay in probing Panfrost when the display controller is
->> fully set up, as that would make genpd's sync_state() to power off the
->> domain while ACP tries to prefetch: this is causing an AXI stall,
->> effectively freezing the AP indefinitely. In order to prevent this from
+On 7/27/26 11:15, Chen-Yu Tsai wrote:
+> The MFG (GPU) block on the MT8173 has a small glue layer, named MFG_TOP
+> in the datasheet, that contains clock gates, some power sequence signal
+> delays, and other unknown registers that get toggled when the GPU is
+> powered on.
 > 
-> I haven't made any detailed investigation, but to me, it sounds like
-> there is a missing consumer somewhere.
+> The clock gates are exposed as clocks provided by a clock controller,
+> while the power sequencing bits are exposed as one singular power domain.
 > 
-> Should the ACP/panfrost devices be a consumer of the MFG domains as
-> well? Or perhaps, if the ACP/panfrost should rely on the display
-> controller to be probed and powered-on, to be able to probe?
-> 
+> Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-This is about how the bootloader is leaving the display controller, the ACP,
-and the MFG registers before booting the kernel.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-The kernel drivers themselves will reset this weird state when the HW gets
-to full probe so there won't be any more issue(s) from that point onwards.
-
-Actually, there would be A LOT to say about this, but I'll be very brief...
-
-Basically, before booting the kernel, the bootloader is leaving a half-assed
-setup to potentially support continuous splash functionality, but without it
-being actually used on the device(s) that we're talking about here...
-
-Again, I should put a remark on every word of that last paragraph, but this
-is the gist of it.
-
-If you're curious or need more information, of course I can expand a bit,
-there's no secret involved here, it's just that I'm avoiding to write a wall
-of text around that...
-
-P.S.: We've been discussing that internally and chasing this issue for months
-before deciding to "solve" it like this.
-
-Cheers,
-Angelo
-
->> happening, the sync_state() functionality must be obliterated on all of
->> the MFG domains: while this guarantees a power leakage if the bootloader
->> boots the kernel with MFG PDs partially powered on, this is the only way
->> to ensure stable operation of the SoC during boot on devices with such
->> firmware because, of course, those will never officially receive a
->> firmware update.
->>
->> Fixes Kappa Chromebook hanging during system boot.
->>
->> Fixes: 0e789b491ba0 ("pmdomain: core: Leave powered-on genpds on until sync_state")
->> Fixes: 13a4b7fb6260 ("pmdomain: core: Leave powered-on genpds on until late_initcall_sync")
->> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-> 
-> Kind regards
-> Uffe
-> 
->> ---
->>   drivers/pmdomain/mediatek/mt8183-pm-domains.h | 7 +++++--
->>   1 file changed, 5 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/pmdomain/mediatek/mt8183-pm-domains.h b/drivers/pmdomain/mediatek/mt8183-pm-domains.h
->> index 3742782a2702..5e33b8628e85 100644
->> --- a/drivers/pmdomain/mediatek/mt8183-pm-domains.h
->> +++ b/drivers/pmdomain/mediatek/mt8183-pm-domains.h
->> @@ -47,7 +47,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
->>                  .pwr_sta2nd_offs = 0x0184,
->>                  .sram_pdn_bits = 0,
->>                  .sram_pdn_ack_bits = 0,
->> -               .caps = MTK_SCPD_DOMAIN_SUPPLY,
->> +               .caps = MTK_SCPD_DOMAIN_SUPPLY | MTK_SCPD_KEEP_DEFAULT_OFF,
->>          },
->>          [MT8183_POWER_DOMAIN_MFG] = {
->>                  .name = "mfg",
->> @@ -57,7 +57,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
->>                  .pwr_sta2nd_offs = 0x0184,
->>                  .sram_pdn_bits = GENMASK(8, 8),
->>                  .sram_pdn_ack_bits = GENMASK(12, 12),
->> -               .caps = MTK_SCPD_DOMAIN_SUPPLY,
->> +               .caps = MTK_SCPD_DOMAIN_SUPPLY | MTK_SCPD_KEEP_DEFAULT_OFF,
->>          },
->>          [MT8183_POWER_DOMAIN_MFG_CORE0] = {
->>                  .name = "mfg_core0",
->> @@ -67,6 +67,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
->>                  .pwr_sta2nd_offs = 0x0184,
->>                  .sram_pdn_bits = GENMASK(8, 8),
->>                  .sram_pdn_ack_bits = GENMASK(12, 12),
->> +               .caps = MTK_SCPD_KEEP_DEFAULT_OFF,
->>          },
->>          [MT8183_POWER_DOMAIN_MFG_CORE1] = {
->>                  .name = "mfg_core1",
->> @@ -76,6 +77,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
->>                  .pwr_sta2nd_offs = 0x0184,
->>                  .sram_pdn_bits = GENMASK(8, 8),
->>                  .sram_pdn_ack_bits = GENMASK(12, 12),
->> +               .caps = MTK_SCPD_KEEP_DEFAULT_OFF,
->>          },
->>          [MT8183_POWER_DOMAIN_MFG_2D] = {
->>                  .name = "mfg_2d",
->> @@ -85,6 +87,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
->>                  .pwr_sta2nd_offs = 0x0184,
->>                  .sram_pdn_bits = GENMASK(8, 8),
->>                  .sram_pdn_ack_bits = GENMASK(12, 12),
->> +               .caps = MTK_SCPD_KEEP_DEFAULT_OFF,
->>                  .bp_cfg = {
->>                          BUS_PROT_WR(INFRA,
->>                                      MT8183_TOP_AXI_PROT_EN_1_MFG,
->> --
->> 2.54.0
->>
 
