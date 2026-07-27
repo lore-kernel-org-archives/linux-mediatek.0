@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8986CC531D0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 08:37:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D509C53219
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Jul 2026 09:01:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2ymQ69O58SmJxjBh9J1WtzowD3z4z2UMVP2Lc1OmFgM=; b=5Ccu4VO0Kh37dgTmDQB6JZzype
-	xEaVfy67+jQtk8vpaes6qyeFXER8I65hGqtG1ny1b2pprP3qBSjw5AztLWtRkzc3RrXH/dYvQNKyU
-	1DKraNf0PbHVwP+ZPKxkyxGw3t/GyAjMWB7ygxAsQfZ2x2rAoDVT+FmHLOnAgZCmp8bzfdTCgcQTo
-	x7q/MFhnwT3bOenZ+D1ITNFi2c92SheRAYpGt5Zc+QkNmb7GAivvVnCZvAXFbD/66qWkxMRH1VP8I
-	FGrEYtHw/hVb3a8RSTFKXzzanq0qi7U8t/RaUyh+WhRcgqiacR+anryr+vlXGlZaoqvNP16jFcmgH
-	dFu+B9Tg==;
+	bh=UHyFGUYnSCQpQej/5e3mYyZNiiqLlqafK+vz90QEer4=; b=l6mXy+rP2paA5Wy167OzgQ11jE
+	sktRYZcS6FsghQXnq20Pf7GSBQD3bHX2KzkGNUZLKNsNkaHin5NoAJPB6MWcnL9XH5lLOXdvy9vSH
+	tRnRsTq1R4FGxRoByoKCtb/XhqrxR/NxMlYNmFUXNTTlQjYqX9ubKEeprzDpiDiMZmP1qtJlLJUYA
+	kUH9EA7fW/Vu9Fmi58Bl1D1SKEfQGY/j6wHnhIkvoRcThIGl+/7HBjzNb7pBS36L683DYsd0l/jY3
+	A9QgW50Z7/TqOxduwGh7nWvg6TCXqVMLVPhhc7l9pwaY3IfwTv7sdQdYkcNmDl0Wh3dshqceEXM7a
+	j+C5XfVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woGpm-00000002FRV-0iFS;
-	Mon, 27 Jul 2026 08:37:14 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1woHD2-00000002HMr-19ZY;
+	Mon, 27 Jul 2026 09:01:16 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woGpk-00000002FRD-0zlc
+	id 1woHD1-00000002HMY-0lRR
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Jul 2026 08:37:12 +0000
+	Mon, 27 Jul 2026 09:01:15 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6199A60A59;
-	Mon, 27 Jul 2026 08:37:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 894BE1F000E9;
-	Mon, 27 Jul 2026 08:37:10 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 20B1043356;
+	Mon, 27 Jul 2026 09:01:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7A3BA1F000E9;
+	Mon, 27 Jul 2026 09:01:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785141431;
-	bh=2ymQ69O58SmJxjBh9J1WtzowD3z4z2UMVP2Lc1OmFgM=;
+	s=k20260515; t=1785142873;
+	bh=UHyFGUYnSCQpQej/5e3mYyZNiiqLlqafK+vz90QEer4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=k5tW9RBoshz389tVyBaXpXv+kl3+U/hYfpzdIG1n61TfM76XDpxuaywmU0+MkreLW
-	 nnhvZ/2f6HguyzQOHRnT+wMPgNwiiu+IIsb2GjNnD7xAdnuYEgxdIB/GkT2djlIED6
-	 NLJ4/wyugxC7xQpcgjqF5OBNkdkgXMpLyTZdqfATC5e2c9sZG208CxdrJBY6qQyxap
-	 sd+xIU27dfM9EaNIHhC517PCnt2jm8cUhCrZXDM5nDrWVTuIsSrDsUrqOnQvf9rUxu
-	 CrS45cC8GthF6nTLkdZnBvkZPA9jKwmlD6NRBo2teg8nDDi1pLNPMSFWgVc5uSudf1
-	 C6jrWj38QrU/g==
-Date: Mon, 27 Jul 2026 10:37:08 +0200
+	b=Re+JbrTuQA+QQtRaU8uJVMGICF8RHSgGoCa5aRlmYrU4wnGMLECYH6nO9irXPk9FD
+	 1bJjD1Al0ZWZBy8dCooPdhL5HeU+s8apwwxxuEBU+SgyTb1o0FHZzcj07qNoO7tVAn
+	 OcRDW9fz4bDXXlOFc5FDq+tZ1zqQfqzBY3Tl/b0G6uWIAtddbrX4Xaqc3pm2/d8SoZ
+	 3JkpK+gTEnveoGCfYTBvkJuPotd8oGnwbAKZN0QC1KhMXuaK/IRUm8TB9lXSGZ+qqY
+	 aM4liH5QuZm1Qb15s0h/ah7l1TXWa7VRLoa9q72E12BL2yavnAjxtyaegpUOyRLA8S
+	 Jiqs+S22OQ+lQ==
+Date: Mon, 27 Jul 2026 11:01:10 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
 Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>,
@@ -56,15 +56,16 @@ Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>,
 	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	Markus Gothe <markus.gothe@genexis.eu>,
 	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
-Subject: Re: [PATCH v7 15/34] pinctrl: airoha: fix IRQ mask/unmask code
-Message-ID: <amcYtIpIjyYclv4r@lore-desk>
+Subject: Re: [PATCH v7 17/34] pinctrl: airoha: fix edge-triggered interrupts
+ handling
+Message-ID: <amceVgvBMsfxrHSp@lore-desk>
 References: <20260727074234.3761170-1-mikhail.kshevetskiy@iopsys.eu>
- <20260727074234.3761170-16-mikhail.kshevetskiy@iopsys.eu>
+ <20260727074234.3761170-18-mikhail.kshevetskiy@iopsys.eu>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="mtbYkPphZS9xxI2V"
+	protocol="application/pgp-signature"; boundary="ud4ETSHTLuDstOy+"
 Content-Disposition: inline
-In-Reply-To: <20260727074234.3761170-16-mikhail.kshevetskiy@iopsys.eu>
+In-Reply-To: <20260727074234.3761170-18-mikhail.kshevetskiy@iopsys.eu>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,62 +80,133 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---mtbYkPphZS9xxI2V
+--ud4ETSHTLuDstOy+
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> When using IRQCHIP_IMMUTABLE, airoha_irq_unmask() must manually call
-> gpiochip_enable_irq() and airoha_irq_mask() must call
-> gpiochip_disable_irq(). Without these calls, gpiolib never sets the
-> GPIOD_FLAG_IRQ_IS_ENABLED bit. Because this bit is missing,
-> gpiod_direction_output() will not realize the pin is actively used
-> as an interrupt.
-
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
+> Edge-triggered interrupts are handled incorrectly because of
+>  * no irq_ack() handler was defined,
+>  * no handle_level_irq() handler was used,
+>=20
+> This patch probably fixes an issue
 >=20
 > Fixes: 1c8ace2d0725 ("pinctrl: airoha: Add support for EN7581 SoC")
 > Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+
 > ---
->  drivers/pinctrl/airoha/pinctrl-airoha.c | 2 ++
->  1 file changed, 2 insertions(+)
+>  drivers/pinctrl/airoha/pinctrl-airoha.c | 38 +++++++++++++++++++++----
+>  1 file changed, 33 insertions(+), 5 deletions(-)
 >=20
 > diff --git a/drivers/pinctrl/airoha/pinctrl-airoha.c b/drivers/pinctrl/ai=
 roha/pinctrl-airoha.c
-> index 6cf4ed5976fb0..f85941ccea560 100644
+> index d218a1f01648b..df3a1d7c7b571 100644
 > --- a/drivers/pinctrl/airoha/pinctrl-airoha.c
 > +++ b/drivers/pinctrl/airoha/pinctrl-airoha.c
-> @@ -2580,6 +2580,7 @@ static void airoha_irq_unmask(struct irq_data *data)
->  	if (WARN_ON_ONCE(data->hwirq >=3D ARRAY_SIZE(gpiochip->irq_type)))
->  		return;
+> @@ -2613,11 +2613,28 @@ static void airoha_irq_mask(struct irq_data *data)
+>  	u8 index =3D data->hwirq / AIROHA_REG_GPIOCTRL_NUM_PIN;
+>  	u32 mask =3D GENMASK(2 * offset + 1, 2 * offset);
 > =20
-> +	gpiochip_enable_irq(gc, irqd_to_hwirq(data));
->  	switch (gpiochip->irq_type[data->hwirq]) {
->  	case IRQ_TYPE_LEVEL_LOW:
->  		val =3D val << 1;
-> @@ -2614,6 +2615,7 @@ static void airoha_irq_mask(struct irq_data *data)
-> =20
+> +	if (data->hwirq >=3D ARRAY_SIZE(gpiochip->irq_type))
+> +		return;
+> +
 >  	regmap_clear_bits(pinctrl->regmap, gpiochip->level[index], mask);
 >  	regmap_clear_bits(pinctrl->regmap, gpiochip->edge[index], mask);
-> +	gpiochip_disable_irq(gc, irqd_to_hwirq(data));
+>  	gpiochip_disable_irq(gc, irqd_to_hwirq(data));
 >  }
 > =20
+> +static void airoha_irq_ack(struct irq_data *data)
+> +{
+> +	struct gpio_chip *gc =3D irq_data_get_irq_chip_data(data);
+> +	struct airoha_pinctrl *pinctrl =3D gpiochip_get_data(gc);
+> +	struct airoha_pinctrl_gpiochip *gpiochip =3D &pinctrl->gpiochip;
+> +	u8 offset =3D data->hwirq % AIROHA_PIN_BANK_SIZE;
+> +	u8 index =3D data->hwirq / AIROHA_PIN_BANK_SIZE;
+> +
+> +	if (data->hwirq >=3D ARRAY_SIZE(gpiochip->irq_type))
+> +		return;
+> +
+> +	regmap_write(pinctrl->regmap, gpiochip->status[index], BIT(offset));
+> +}
+> +
 >  static int airoha_irq_type(struct irq_data *data, unsigned int type)
+>  {
+>  	struct gpio_chip *gc =3D irq_data_get_irq_chip_data(data);
+> @@ -2627,13 +2644,25 @@ static int airoha_irq_type(struct irq_data *data,=
+ unsigned int type)
+>  	if (data->hwirq >=3D ARRAY_SIZE(gpiochip->irq_type))
+>  		return -EINVAL;
+> =20
+> +	if (type =3D=3D IRQ_TYPE_NONE) {
+> +		gpiochip->irq_type[data->hwirq] =3D IRQ_TYPE_NONE;
+> +		irq_set_handler_locked(data, handle_bad_irq);
+> +
+> +		return 0;
+> +	}
+> +
+>  	if (type =3D=3D IRQ_TYPE_PROBE) {
+>  		if (gpiochip->irq_type[data->hwirq])
+>  			return 0;
+> =20
+> -		type =3D IRQ_TYPE_EDGE_RISING | IRQ_TYPE_EDGE_FALLING;
+> +		type =3D IRQ_TYPE_EDGE_BOTH;
+>  	}
+> +
+>  	gpiochip->irq_type[data->hwirq] =3D type & IRQ_TYPE_SENSE_MASK;
+> +	if (type & IRQ_TYPE_EDGE_BOTH)
+> +		irq_set_handler_locked(data, handle_edge_irq);
+> +	else
+> +		irq_set_handler_locked(data, handle_level_irq);
+> =20
+>  	return 0;
+>  }
+> @@ -2658,8 +2687,7 @@ static irqreturn_t airoha_irq_handler(int irq, void=
+ *data)
+>  		for_each_set_bit(irq, &status, AIROHA_PIN_BANK_SIZE) {
+>  			u32 offset =3D irq + i * AIROHA_PIN_BANK_SIZE;
+> =20
+> -			generic_handle_irq(irq_find_mapping(girq->domain,
+> -							    offset));
+> +			generic_handle_domain_irq(girq->domain, offset);
+>  			regmap_write(pinctrl->regmap,
+>  				     pinctrl->gpiochip.status[i], BIT(irq));
+>  		}
+> @@ -2673,7 +2701,7 @@ static const struct irq_chip airoha_gpio_irq_chip =
+=3D {
+>  	.name =3D "airoha-gpio-irq",
+>  	.irq_unmask =3D airoha_irq_unmask,
+>  	.irq_mask =3D airoha_irq_mask,
+> -	.irq_mask_ack =3D airoha_irq_mask,
+> +	.irq_ack =3D airoha_irq_ack,
+>  	.irq_set_type =3D airoha_irq_type,
+>  	.flags =3D IRQCHIP_SET_TYPE_MASKED | IRQCHIP_IMMUTABLE,
+>  	GPIOCHIP_IRQ_RESOURCE_HELPERS,
+> @@ -2708,7 +2736,7 @@ static int airoha_pinctrl_add_gpiochip(struct airoh=
+a_pinctrl *pinctrl,
+>  	gc->ngpio =3D AIROHA_NUM_PINS;
+> =20
+>  	girq->default_type =3D IRQ_TYPE_NONE;
+> -	girq->handler =3D handle_simple_irq;
+> +	girq->handler =3D handle_bad_irq;
+>  	gpio_irq_chip_set_chip(girq, &airoha_gpio_irq_chip);
+> =20
+>  	irq =3D platform_get_irq(pdev, 0);
 > --=20
 > 2.53.0
 >=20
 
---mtbYkPphZS9xxI2V
+--ud4ETSHTLuDstOy+
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCamcYtAAKCRA6cBh0uS2t
-rDh8AQDf2K0ZyIVFOfiaFcb2upEDJTym5mn75+5yfuBUwIbDwQEAy6+xBXdeFA9a
-ODNHJGawn7QD/t8bsT580S0tfTCaUAE=
-=Yt6b
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCamceVgAKCRA6cBh0uS2t
+rHxFAP9YNZXRHGGFDBn1nVvA7IHffmmnrTRGAFiWxm/w9KMJjgEAp90QBV30X6TQ
+vklFC5qQv0dp+LgYrGbJAp/7xniWtAE=
+=6VL/
 -----END PGP SIGNATURE-----
 
---mtbYkPphZS9xxI2V--
+--ud4ETSHTLuDstOy+--
 
