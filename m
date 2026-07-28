@@ -4,76 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B67F9C53219
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 13:14:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1EEBC54F4C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 13:18:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HstpdYfbywLWh4CB6nynAIB64mnsBl07BDpNKOrgIFE=; b=OD1ewacM/khLK7
-	AHD3VJ7ZuJTXtYY3oHMzAeWGZEWzaPaLAhbZXbnPSzPIzlPtJR1UwH+Vc3dV2UDjg9Dd5RX0MCMoJ
-	Os81r/NhXJ+XOdFmDHZDyWdVAGpmdtVf2LHg9ksY+hImET0BpOPW+0vVSec0iFFzb40hJJR+DGNDW
-	d07AsjrICTEUdIiWFwgUkN5V2PrwQZetzSxSRQuVKCj/PDceqpyu8RZZnbJgXiFAGm+H8RkDMFtQM
-	zqch8+czVoKWlzF8PNyi+oZK++K020PVxIyBGHVx5OKxZjTjBikl5BXO6/exTioV5S7YYQwB23Thz
-	Aj281mxBSkuee5T36mgw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:
+	Content-Transfer-Encoding:Mime-Version:To:From:Cc:Subject:Message-Id:Date:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pyh+5zIYGxqp/78ZKPQYKhY1x7tgatZjFV3d8E4OiWk=; b=ujhhsy0KOaDzNd8IBaWzeBZ/Bp
+	iLaUPKeNyYzlbUdOK0iWY49RubB6WtN+xt7r+mwKwjz2kCKmpia/mMG5e39usHvJRzFvhJc4pN5qy
+	1DI5wcHvopcdMTQI5IPjmPNeJA9lrtU+rm5Dcqln4BlobXQ7P2zPz341wX8V7ZJvxm4uRk88Ha/dz
+	dRpZnZDZATeW27syerLPtqPPPXJYcU/6QReN3Lmikq7Kf6qhCBt9iKK0qZJ6Y1qW4w+OvcX4I/1TO
+	bjC5cX6coVviy/nKyA9lT/jqrAb/4Hjzjsfc6YNM3MTyzCQPWRTCoUG0H4XenJd/c2APYgtuAix/c
+	Fpud/lQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wohdG-00000005KF8-2Pes;
-	Tue, 28 Jul 2026 13:14:06 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wohhU-00000005KdZ-0sat;
+	Tue, 28 Jul 2026 13:18:28 +0000
+Received: from sendmail.purelymail.com ([34.202.193.197])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wohdE-00000005KEU-2Tth
+	id 1wohhR-00000005KcX-36Qf
 	for linux-mediatek@lists.infradead.org;
-	Tue, 28 Jul 2026 13:14:04 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 349ED43F75
-	for <linux-mediatek@lists.infradead.org>; Tue, 28 Jul 2026 13:14:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CFEF1F00ACF
-	for <linux-mediatek@lists.infradead.org>; Tue, 28 Jul 2026 13:14:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785244443;
-	bh=HstpdYfbywLWh4CB6nynAIB64mnsBl07BDpNKOrgIFE=;
-	h=References:In-Reply-To:Reply-To:From:Date:Subject:To:Cc;
-	b=cCaobtUEdzz6WRAUNsTL3Z2vgY+Co9DP4VkHm+Gsb7xa6sbxVRRo0eJmjA0z5lLco
-	 AEhqign9VQ1QldpFiba9OJX6QVUyv8VKT584kgql4jr0NllmZSJN+79lHqyIy2ug76
-	 AwNOw/8sBO2jiGYABfcfoAQ1qWvEgMdVR48oD8gN5wnNzvGn1KqXUEOXgplHORXW3Q
-	 R63ziezh8499ch4nkSEg/J2YWrYrfc+ktmsMa053XWGZamjCcJb2zyf2c7cOZOi8eB
-	 WOOy/DpYkNYX1/In6ThKJH/honitiwtyjASzpa/u0XJnE+PGssiBRxQaPRUxX3M56q
-	 xEXhTcDtCa+Aw==
-Received: by mail-oi1-f173.google.com with SMTP id 5614622812f47-49fa951b2c6so2101933b6e.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 28 Jul 2026 06:14:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+RoFOLbqEzyTf8QI4rNVqjB2LSFydWAzpe4uA0Sx+GFCOfd0oQx6rQUba1WZVY8RUdGG/oRJ+vOTtcRLctleJg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwdQ/gQXwq1s/25u+1HFb8mCaupFjCFK1JS6N4YrAHJdrantLxc
-	FigYciSIaAHzw3zSNUOa6BPfkSbCwbBVeQUvJPOFC8HI5AVG82TwDqpSTm47ipyE0GAUj/Mbl5U
-	W2B9vJR/6aDZjGjsfvMhZ6GZmcWSlTVk=
-X-Received: by 2002:a05:6808:d4b:b0:497:ce6a:c1e3 with SMTP id
- 5614622812f47-4ad5b9ee590mr1487519b6e.31.1785244442094; Tue, 28 Jul 2026
- 06:14:02 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260728091804.382753-1-wenst@chromium.org> <amiqKRkFItYwD6oL@redhat.com>
-In-Reply-To: <amiqKRkFItYwD6oL@redhat.com>
-From: Chen-Yu Tsai <wens@kernel.org>
-Date: Tue, 28 Jul 2026 21:13:46 +0800
-X-Gmail-Original-Message-ID: <CAGb2v64zUO-azpTuei6LCypad2noGFbg+EmaBC1iidoZ2stQzw@mail.gmail.com>
-X-Gm-Features: AUfX_myW1QhqVL6Ph24cCnrD1naOOoxnlCT_fOiXs5oLs21mzKAdeU9Y2nOIEvw
-Message-ID: <CAGb2v64zUO-azpTuei6LCypad2noGFbg+EmaBC1iidoZ2stQzw@mail.gmail.com>
-Subject: Re: [PATCH v4 0/5] powervr: MT8173 GPU support
-To: Brian Masney <bmasney@redhat.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Stephen Boyd <sboyd@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Alessio Belle <alessio.belle@imgtec.com>, Luigi Santivetti <luigi.santivetti@imgtec.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	imagination@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, Icenowy Zheng <zhengxingda@iscas.ac.cn>, 
-	YoungJoon Lee <getfeus@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+	Tue, 28 Jul 2026 13:18:27 +0000
+Authentication-Results: purelymail.com; auth=pass
+DKIM-Signature: a=rsa-sha256; b=dR9iiudjgExkdeow1Z6EoPkyeGEv5ki2UFYQ6JNfpjHbVS4LK4i2/HhO4o2ToS/Y25oTBtm8jOXp2hXsL15zNNjctUKebjMhp75ISz6dh7YEfy5XOcfbDm9ijIWgLY+pwHPv9aBDqBMWLw4WpFtnyh/o1A+ntiOqPvO2S/JbgLq3U/nAsiP5S1Pxgo377Xqibh1XsPBUYaJM/rPGz+5NCZbNltseSSSqexcpa1/xO5/WeR1IHM/IEHib7ylFWy4/kyWEU2UJ6o0uiQCAqJ/dp164dDnua9yCboD+vWp5Is8JGBfMTKTeV0/59gHhAAlnVvQ7kSAjlAntU2QE4nD/5A==; s=purelymail3; d=rcpassos.me; v=1; bh=k/0bgHTdGeiys2OlIJV0qG7DjpYC2Czq9ewKhCiKYM4=; h=Received:Date:Subject:From:To;
+DKIM-Signature: a=rsa-sha256; b=ilj05tAFxt5IMxAIfuiA7RFAd0BEWl7iUxIgnodeOcbqdnqqfM+heIZg5NVsrCpN8kdBEj2SpYiXQ9GGMrvRKc3d5BEAqDXT+uOf8/JKo32yCoFztQ0eHLjqyyreYCwldNs7ZjImRil3SZeJMFDsxGfQKhglve45S2yV+EqcrYYoJRXYuMBYuQGgX5vqQ/Gd6PMZyjAtEoVSIs/FLt2muHn3l4JmyJvkklSLeYdcqODZkWMHRQcWEIYtJ4B3aVoBdblPBUbBvU+uylJOt3kQ2ZwPPLJIdLdLaJGsLDj31CtwU6MuEVgyiVmsz0NJTJMnBhJkTfOwyTHmhXZj6VPbRA==; s=purelymail3; d=purelymail.com; v=1; bh=k/0bgHTdGeiys2OlIJV0qG7DjpYC2Czq9ewKhCiKYM4=; h=Feedback-ID:Received:Date:Subject:From:To;
+Feedback-ID: 45355:7809:null:purelymail
+X-Pm-Original-To: linux-mediatek@lists.infradead.org
+Received: by smtp.purelymail.com (Purelymail SMTP) with ESMTPSA id 1312514001;
+          (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
+          Tue, 28 Jul 2026 13:17:52 +0000 (UTC)
+Content-Type: text/plain; charset=UTF-8
+Date: Tue, 28 Jul 2026 10:17:49 -0300
+Message-Id: <DKA8F33O8HID.2UV2DWTLE6S48@rcpassos.me>
+Subject: Re: [PATCH v2] Bluetooth: Properly disable remote wakeup for
+ MT7922/MT7925 on Ryzen platform
+Cc: "Luiz Augusto von Dentz" <luiz.von.dentz@intel.com>,
+ =?utf-8?b?Q2hyaXMgTHUgKOmZuOeomuazkyk=?= <Chris.Lu@mediatek.com>,
+ =?utf-8?b?V2lsbC1DWSBMZWUgKOadjuaUv+epjik=?= <Will-CY.Lee@mediatek.com>,
+ =?utf-8?b?U1MgV3UgKOW3q+aGsuasoyk=?= <ss.wu@mediatek.com>,
+ <linux-bluetooth@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+From: "Rafael Passos" <rafael@rcpassos.me>
+To: "Rong Zhang" <i@rong.moe>, "Rafael Passos" <rafael@rcpassos.me>, "Marcel
+ Holtmann" <marcel@holtmann.org>, "Luiz Augusto von Dentz"
+ <luiz.dentz@gmail.com>, "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>
+Mime-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
+X-Mailer: aerc 0.21.0
+References: <20260701-btmtk-ryzen-remote-wakeup-v2-1-767ac7907472@rong.moe>
+ <DJRKO72HWZOI.QJYJUAC45QOJ@rcpassos.me>
+ <79D5F3E6-8F40-4422-BB2D-16691E377394@rong.moe>
+ <DJRP3YO7Y0WK.20KNRZIMX1CYK@rcpassos.me>
+ <F16A2A9A-A43F-45FE-8CC0-44A129360D47@rong.moe>
+In-Reply-To: <F16A2A9A-A43F-45FE-8CC0-44A129360D47@rong.moe>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260728_061825_837332_50694A1E 
+X-CRM114-Status: GOOD (  13.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,58 +75,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: wens@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 28, 2026 at 9:10=E2=80=AFPM Brian Masney <bmasney@redhat.com> w=
-rote:
+Hi again,
+
+On Mon Jul 6, 2026 at 4:39 PM -03, Rong Zhang wrote:
+> Hi Rafael,
 >
-> Hi Chen-Yu,
+> Hmm, interesting. My speculation is that it doesn't matter which options =
+are changed, but some changed options cause the BIOS to reinitialize someth=
+ing. Does resetting the BIOS settings to default help?
+
+I was unable to trigger the same issue again. It has been working fine
+(even when running without your patch). I believe the reset with bios
+config changes fixed it for good.
+
+
+> Could you provide more details about your device's USB and PCI topology? =
+Does the NIC's USB connect to one of the USB root hubs of the SoC (i.e., CP=
+U) or the chipset?
+
+I believe its a hub connected to the chipset.
+
+/:  Bus 001.Port 001: Dev 001, Class=3Droot_hub, Driver=3Dxhci_hcd/12p, 480=
+M
+    | ...
+    |__ Port 008: Dev 004, If 0, Class=3DWireless, Driver=3Dbtusb, 480M
+
+In the block diagram on the manual [1], Key "E" Wifi is tied
+to the AMD PROM21 CHipset.
+
+
+> And I guess your device runs into the issue without any precursor? Once b=
+oot, try running the script below to capture more clues into dmesg, and wai=
+t for the issue to appear.
 >
-> On Tue, Jul 28, 2026 at 05:17:58PM +0800, Chen-Yu Tsai wrote:
-> > Hi everyone,
-> >
-> > This is v4 of my MT8173 PowerVR GPU support series.
-> >
-> > This time around Mesa was ready for basic testing, using both vulkanmar=
-k
-> > and glmark2-es2-drm (with Zink). Details below.
-> >
-> > Changes since v3 (all in the clk driver patch):
-> > - Changed pm_runtime_put() to pm_runtime_put_sync()
-> > - Added missing of_node_put() in remove function
-> >
-> > Changes since v2 (all in the clk driver patch):
-> > - Made COMMON_CLK_MT8173_MFGTOP depend on PM
-> >   - Needed since the driver implements PM domains using the generic PM
-> >     domain library, which also depends on PM
-> >   - Fixes build breakage (kernel test robot)
-> > - Fixed "RST_DELAY_CNT" name (Brian)
-> > - Dropped unused mfg_desc (Brian)
-> > - Added check of clk_prepare_enable()'s return value in
-> >   clk_mt8173_mfgtop_power_on() (Brian)
-> > - Saved error value for return in IS_ERR(data->clk_26m) branch
-> >   (Dan Carpenter / kernel test robot w/ smatch)
-> >
-> > Changes since v1:
-> > - Adapted to changed DT bindings
-> > - Dropped driver change
-> > - Use same power domain for "a" and "b" GPU power domains
-> >
-> >
-> > This series enables the PowerVR GPU found in the MT8173 SoC, found in
-> > some Chromebooks.
+>     #!/bin/sh
 >
-> I'm making a pull for Stephen for the clk changes. Should patches 1,2,4
-> go through the clk tree? Patches 3,5 go through the DRM tree?
+>     ddcmd()
+>     {
+>         echo "$*" | sudo tee /proc/dynamic_debug/control;
+>     }
+>
+>     ddcmd file drivers/usb/core/hub.c +p
+>     ddcmd file drivers/usb/core/driver.c +p
+>     ddcmd func handle_tx_event +p
 
-Only patches 1 and 2 should go through the clock tree.
+Thanks for the script! I'm learning a bit with it!
 
-Patch 3, 4, 5 can all go through the soc tree if Angelo wants to pick up
-DT binding patches. Otherwise I can push patch 3 through drm-misc.
+> I would do the below experiments if I had a buggy device like that. Some =
+extra hardware is required though.
+>
+> Connect another NIC (w/ Bluetooth interface) to the same M.2 port after t=
+riggering the enumeration failure, and see if the enumeration failure persi=
+sts.
 
+It is integrated (soldered) to my motherboard.
 
-Thanks
-ChenYu
+[1] page 10 https://download.asrock.com/Manual/B850M%20Steel%20Legend%20WiF=
+i.pdf
+
+Thanks,
+Rafael Passos
+
 
