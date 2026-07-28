@@ -4,71 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15E3DC531F9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 16:09:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67D04C54F4D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 16:23:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:
-	Content-Transfer-Encoding:Mime-Version:To:From:Cc:Subject:Message-Id:Date:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nY/9cNDgunK0zPnBuyoaT1LrnFCnyLxA3wO1Cxxn2F8=; b=bobkEaGX9kaOE5FNy4nDUkomSE
-	U9ps7N1epc0D/cczMcVaw1bI8Mx77O0QBXBh5qX3p7gGR3Frm8yU46iXJT00HGGYcANMOwQa5jDXg
-	/oqFzn0IQ4Gh+VPMmL7qUuo1SEuHjGQGWS3wf+HX+VwTCjK1djS+vq1Ud/CFKpljb/836e8qylkbX
-	dDX6CqVK6jsFhS0YfA9TFTlHvs3I1EuiINFPTMYHL/vcrsuDzdp2vXpkIzKBJpjBhL2eUjn6+SI1p
-	51LUMbkTv/eLf3sxVmy+ukClBIxFa7naelmvRW9kuroRqwcG5VFBVpo09OBP8s8vrLxJqCTcdz0fk
-	8GaARn/A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=U0Iz8TThM6LbJccIvna4PYCj+25iDZgE4Lkbbj4Ba1Y=; b=rqrq/+8UiY/XxHXvnRiDAKSms0
+	jXcudT3dal/6NXqVpkyWe6zutAWhZUqZ+dDGg5bRQO0BxTRebd3wCnQuALE+f8zd6fMY5aVJ9/LXC
+	kd7tlkss8LcTSzQrH7PN3nDNIgI5kZZL/lq977z3jas7obIK2JVX+A7cUmdo8JayFlWAQFH6dKgJN
+	P4DX1sw5w0RnR1r/tMi92azJFFJ2u91v9V+7Qcx754/xl04EXAln4nlqWCWGRL119r3Ps+ZLi8izT
+	nBpKwfO19zAWME3D9wNdrodHoYiZNTug1ji2wUm4o15MLOquiVFWgmqNOVCfAwzSGqFkMLqI9URfC
+	6UeY02hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wokMb-00000005mrx-3yrY;
-	Tue, 28 Jul 2026 16:09:05 +0000
-Received: from sendmail.purelymail.com ([34.202.193.197])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wokMZ-00000005mqj-2VeJ
+	id 1wokaH-00000005ouV-1Dmx;
+	Tue, 28 Jul 2026 16:23:13 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wokaE-00000005otY-3ZDr
 	for linux-mediatek@lists.infradead.org;
-	Tue, 28 Jul 2026 16:09:04 +0000
-Authentication-Results: purelymail.com; auth=pass
-DKIM-Signature: a=rsa-sha256; b=l3F46aSmkFjbDMkvZyRLDqImJ+0Lly+fJpq91VYTlIdfGTGI3T3JkVCrm4zLtacaJjjm3Qu/8whd0mKQVnwORd58j/qc6fJxA5+XLExezed9tsmmD74uGbs+8OtTe+t0q3wivfKLXiatDHJgbxa5JQoUxIDX8dpwDmDOXF+isKhbzlj2HIZIrJOJF/tbZ1q4/1nHWo7D4sn9nT93M8k4AivQkUQbbpFjKXWeY/KQIuAzdK71t6NuE3+frkOZyt39DcRrolBf8tB9b847THB+RHxrOUIH9UmfOPMfDXKVITjgg7W6trM2L1zF5YTTn/F/S8L0c1t6SIyd8ogHdNpDjg==; s=purelymail3; d=rcpassos.me; v=1; bh=M5kzdAEoPc5rbNRA4KFaC+3yUnwETH5W42yryDQOE1E=; h=Received:Date:Subject:From:To;
-DKIM-Signature: a=rsa-sha256; b=P5zPGlB5yHHFcn3IccLp9PNbpyOLLiRLnkBkOfCwxBebxPWXMhDF824GmHB3kh0mYAKqnuUh2V2z1LNtYgjlm6GrzH/5awBF4ueoGX2ZdnGJ3AZ3KiPr+e0Zy3l1XjMtNBMe7vRNaKtdpK6mReb8hBbuJIreaUDAOQ9EWE0vIotUnSVj9R7YNm3HYKRwwX04c8YjB/utJpD8nrjkuaxIbsGixf2otmkbWYseXM4p+XB3d0GQrf4wbil3ET6/ORlMSfEE/jINnjGdUTMgXyRjJTpyJfiNt6Ft/xNzM6CVc0YvQRnda3Aw5uMwlTwlTsBl5dJCVc3XQIHWxr53q5q62A==; s=purelymail3; d=purelymail.com; v=1; bh=M5kzdAEoPc5rbNRA4KFaC+3yUnwETH5W42yryDQOE1E=; h=Feedback-ID:Received:Date:Subject:From:To;
-Feedback-ID: 45355:7809:null:purelymail
-X-Pm-Original-To: linux-mediatek@lists.infradead.org
-Received: by smtp.purelymail.com (Purelymail SMTP) with ESMTPSA id -1239418384;
-          (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
-          Tue, 28 Jul 2026 16:08:37 +0000 (UTC)
-Content-Type: text/plain; charset=UTF-8
-Date: Tue, 28 Jul 2026 13:08:33 -0300
-Message-Id: <DKAC1T7FWOBS.15ACCNTX4EOFA@rcpassos.me>
-Subject: Re: [PATCH v2] Bluetooth: Properly disable remote wakeup for
- MT7922/MT7925 on Ryzen platform
-Cc: "Luiz Augusto von Dentz" <luiz.von.dentz@intel.com>,
- =?utf-8?b?Q2hyaXMgTHUgKOmZuOeomuazkyk=?= <Chris.Lu@mediatek.com>,
- =?utf-8?b?V2lsbC1DWSBMZWUgKOadjuaUv+epjik=?= <Will-CY.Lee@mediatek.com>,
- =?utf-8?b?U1MgV3UgKOW3q+aGsuasoyk=?= <ss.wu@mediatek.com>,
- <linux-bluetooth@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-From: "Rafael Passos" <rafael@rcpassos.me>
-To: "Rong Zhang" <i@rong.moe>, "Rafael Passos" <rafael@rcpassos.me>, "Marcel
- Holtmann" <marcel@holtmann.org>, "Luiz Augusto von Dentz"
- <luiz.dentz@gmail.com>, "Matthias Brugger" <matthias.bgg@gmail.com>,
- "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-Mailer: aerc 0.21.0
-References: <20260701-btmtk-ryzen-remote-wakeup-v2-1-767ac7907472@rong.moe>
- <DJRKO72HWZOI.QJYJUAC45QOJ@rcpassos.me>
- <79D5F3E6-8F40-4422-BB2D-16691E377394@rong.moe>
- <DJRP3YO7Y0WK.20KNRZIMX1CYK@rcpassos.me>
- <F16A2A9A-A43F-45FE-8CC0-44A129360D47@rong.moe>
- <DKA8F33O8HID.2UV2DWTLE6S48@rcpassos.me>
- <133c4858657c55b31affd4bff1cbd68f812de5e1.camel@rong.moe>
- <DKAA9VN5E4DS.2U03T6V5HEAAE@rcpassos.me>
- <1ba1545c318214d988e899a95279b4b0f93bc24e.camel@rong.moe>
-In-Reply-To: <1ba1545c318214d988e899a95279b4b0f93bc24e.camel@rong.moe>
+	Tue, 28 Jul 2026 16:23:11 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 98319175D
+	for <linux-mediatek@lists.infradead.org>; Tue, 28 Jul 2026 09:23:05 -0700 (PDT)
+Received: from [10.2.11.34] (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 6E3E73F763
+	for <linux-mediatek@lists.infradead.org>; Tue, 28 Jul 2026 09:23:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
+	t=1785255789; bh=MuoYv/trvB+apkFilFU7ge8EmIYL0Cz7Mp4H5bYBY04=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=cGU/Wk3ZnH3c7owZWTV052yqd9zyhMAC6fYfpLKGgPGKyognDSo9cCj+3KdFRbWYU
+	 Ol/VxMawYLPWQj16JhPZQdaS6V651Bp2HifPtszr04EUQChIQWU2DZ8doFLu1eZZ6/
+	 CZwRV0CKBAWpQVG44esYQehYsgvS4ancS3hvKOyQ=
+Date: Tue, 28 Jul 2026 17:21:58 +0100
+From: Liviu Dudau <liviu.dudau@arm.com>
+To: Diogo Silva <diogompaissilva@gmail.com>
+Cc: Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>,
+	Seung-Woo Kim <sw0312.kim@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Michal Simek <michal.simek@amd.com>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Mikko Perttunen <mperttunen@nvidia.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@nxp.com>,
+	Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
+	David Airlie <airlied@redhat.com>,
+	Gerd Hoffmann <kraxel@redhat.com>,
+	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+	Gurchetan Singh <gurchetansingh@chromium.org>,
+	Chia-I Wu <olvaffe@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>,
+	Liu Ying <victor.liu@nxp.com>, Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Xinliang Liu <xinliang.liu@linaro.org>,
+	Sumit Semwal <sumit.semwal@linaro.org>,
+	Yongqin Liu <yongqin.liu@linaro.org>,
+	John Stultz <jstultz@google.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Shuah Khan <skhan@linuxfoundation.org>,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-tegra@vger.kernel.org, virtualization@lists.linux.dev,
+	imx@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-amlogic@lists.infradead.org, linux-doc@vger.kernel.org
+Subject: Re: [PATCH 12/15] drm/arm/komeda: remove dependency on DRM simple
+ helpers
+Message-ID: <amjXJrbgka00CQX2@e142607>
+References: <20260719-drm_simple_encoder_init-v1-0-a78c509e3062@gmail.com>
+ <20260719-drm_simple_encoder_init-v1-12-a78c509e3062@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20260719-drm_simple_encoder_init-v1-12-a78c509e3062@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_090903_698083_D6E60F53 
-X-CRM114-Status: UNSURE (   8.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260728_092310_975755_4851F4E3 
+X-CRM114-Status: GOOD (  18.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,44 +118,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rong,
-On Tue Jul 28, 2026 at 12:38 PM -03, Rong Zhang wrote:
-> You snipped too many lines. There should be a line similar to
->
->            |                               +-0c.0-[0d]----00.0  Advanced =
-Micro Devices, Inc. [AMD] XXXX [YYYY:ZZZZ]
->
-> which is the root hub.
+On Sun, Jul 19, 2026 at 01:35:43AM +0200, Diogo Silva wrote:
+> The simple KMS helpers are deprecated because they only add an
+> intermediate layer between drivers and atomic modesetting.
+> 
+> Open-code drm_simple_encoder_init() by calling drm_encoder_init()
+> directly and providing driver-local drm_encoder_funcs.
+> 
+> Signed-off-by: Diogo Silva <diogompaissilva@gmail.com>
 
-Indeed.
-+-02.1-[04-0e]----00.0-[05-0e]--+-00.0-[06]--
-|                               +-02.0-[07]----00.0  MEDIATEK Corp. MT7925 =
-(RZ717) Wi-Fi 7 160MHz [14c3:0717]
-|                               +-03.0-[08]----00.0  Realtek Semiconductor =
-Co., Ltd. RTL8125 2.5GbE Controller [10ec:8125]
-|                               +-04.0-[09]--
-|                               +-05.0-[0a]--
-|                               +-06.0-[0b]--
-|                               +-08.0-[0c]----00.0  Sandisk Corp SanDisk E=
-xtreme Pro / WD Black 2018/SN750/PC SN720 NVMe SSD [15b7:5002]
-|                               +-0c.0-[0d]----00.0  Advanced Micro Devices=
-, Inc. [AMD] 800 Series Chipset USB 3.x XHCI Controller [1022:43fc]
-|                               \-0d.0-[0e]----00.0  Advanced Micro Devices=
-, Inc. [AMD] 600 Series Chipset SATA Controller [1022:43f6]
+Reviewed-by: Liviu Dudau <liviu.dudau@arm.com>
 
-> In the foreseeable future I am not going to have a desktop platform ($$$)
-I was lucky to upgrade before prices went up.
-> so I can't easily debug the issue myself. Hence, it would be helpful if
-> you could reliably reproduce the issue, so that we can have an in-depth
-> debug. But let's forget it for the time being since your device works
-> fine now!
+Best regards,
+Liviu
 
-I wouldn't mind helping debug this.
-I will look into buying the M.2 a/e -> USB and the PCI -> M.2 a/e.
-The bug first happened when I switch from Arch do Debian, months ago...
-If I can reproduce it, I will reply to this thread.
+> ---
+>  drivers/gpu/drm/arm/display/komeda/komeda_crtc.c | 9 +++++++--
+>  1 file changed, 7 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/arm/display/komeda/komeda_crtc.c b/drivers/gpu/drm/arm/display/komeda/komeda_crtc.c
+> index e8cb782a6f8e..719568d9f7c2 100644
+> --- a/drivers/gpu/drm/arm/display/komeda/komeda_crtc.c
+> +++ b/drivers/gpu/drm/arm/display/komeda/komeda_crtc.c
+> @@ -11,9 +11,9 @@
+>  
+>  #include <drm/drm_atomic.h>
+>  #include <drm/drm_atomic_helper.h>
+> +#include <drm/drm_encoder.h>
+>  #include <drm/drm_print.h>
+>  #include <drm/drm_vblank.h>
+> -#include <drm/drm_simple_kms_helper.h>
+>  #include <drm/drm_bridge.h>
+>  
+>  #include "komeda_dev.h"
+> @@ -635,6 +635,10 @@ static int komeda_attach_bridge(struct device *dev,
+>  	return err;
+>  }
+>  
+> +static const struct drm_encoder_funcs komeda_encoder_funcs = {
+> +	.destroy = drm_encoder_cleanup,
+> +};
+> +
+>  static int komeda_crtc_add(struct komeda_kms_dev *kms,
+>  			   struct komeda_crtc *kcrtc)
+>  {
+> @@ -658,7 +662,8 @@ static int komeda_crtc_add(struct komeda_kms_dev *kms,
+>  	 * bridge
+>  	 */
+>  	kcrtc->encoder.possible_crtcs = drm_crtc_mask(crtc);
+> -	err = drm_simple_encoder_init(base, encoder, DRM_MODE_ENCODER_TMDS);
+> +	err = drm_encoder_init(base, encoder, &komeda_encoder_funcs,
+> +			       DRM_MODE_ENCODER_TMDS, NULL);
+>  	if (err)
+>  		return err;
+>  
+> 
+> -- 
+> 2.54.0
+> 
 
-Thanks,
-Rafael Passos
-
+-- 
+====================
+| I would like to |
+| fix the world,  |
+| but they're not |
+| giving me the   |
+ \ source code!  /
+  ---------------
+    ¯\_(ツ)_/¯
 
