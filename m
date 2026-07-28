@@ -4,106 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67D04C54F4D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 16:23:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36CBEC53219
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 17:03:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U0Iz8TThM6LbJccIvna4PYCj+25iDZgE4Lkbbj4Ba1Y=; b=rqrq/+8UiY/XxHXvnRiDAKSms0
-	jXcudT3dal/6NXqVpkyWe6zutAWhZUqZ+dDGg5bRQO0BxTRebd3wCnQuALE+f8zd6fMY5aVJ9/LXC
-	kd7tlkss8LcTSzQrH7PN3nDNIgI5kZZL/lq977z3jas7obIK2JVX+A7cUmdo8JayFlWAQFH6dKgJN
-	P4DX1sw5w0RnR1r/tMi92azJFFJ2u91v9V+7Qcx754/xl04EXAln4nlqWCWGRL119r3Ps+ZLi8izT
-	nBpKwfO19zAWME3D9wNdrodHoYiZNTug1ji2wUm4o15MLOquiVFWgmqNOVCfAwzSGqFkMLqI9URfC
-	6UeY02hw==;
+	bh=H9tbT3MmTWZadkFYtLmnXOyq2+XHjhkh1A8FrJjDKXM=; b=KxzZL1wgEu5Eq6xIyHEM92MSTs
+	kG5pr81or1Y7/tQS4BMwRVFlDbcLVa8QGaYSqQAF5eM0/2P0JaaDX/4c/WhSMMGOuAvOeAeiXSCak
+	QRkv3N7iLiy/OWzcmJntoU0MFh6SMvJNrDcISE5sZN3tfNcArfIxUueYcPUFBgNAF/Hb5uwA8yiTl
+	WlctX6QzAbH74ED+2HfLTXRhyc3jDTxT0awQgZDbGrrvtNBpXv7RAxRo4x/BaZWaVsXCCDgg8Lp9r
+	OhRNy0v5NziCgmHAVnPlsFbNzaVjmOWE43/ne3xB2FcpGQykTdK0xOfR+WKwrd2RGgbCvbojoStkL
+	aqfl3AJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wokaH-00000005ouV-1Dmx;
-	Tue, 28 Jul 2026 16:23:13 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wokaE-00000005otY-3ZDr
+	id 1wolCt-00000005tnd-34rw;
+	Tue, 28 Jul 2026 17:03:07 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wolCq-00000005tlX-2aum
 	for linux-mediatek@lists.infradead.org;
-	Tue, 28 Jul 2026 16:23:11 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 98319175D
-	for <linux-mediatek@lists.infradead.org>; Tue, 28 Jul 2026 09:23:05 -0700 (PDT)
-Received: from [10.2.11.34] (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 6E3E73F763
-	for <linux-mediatek@lists.infradead.org>; Tue, 28 Jul 2026 09:23:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
-	t=1785255789; bh=MuoYv/trvB+apkFilFU7ge8EmIYL0Cz7Mp4H5bYBY04=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cGU/Wk3ZnH3c7owZWTV052yqd9zyhMAC6fYfpLKGgPGKyognDSo9cCj+3KdFRbWYU
-	 Ol/VxMawYLPWQj16JhPZQdaS6V651Bp2HifPtszr04EUQChIQWU2DZ8doFLu1eZZ6/
-	 CZwRV0CKBAWpQVG44esYQehYsgvS4ancS3hvKOyQ=
-Date: Tue, 28 Jul 2026 17:21:58 +0100
-From: Liviu Dudau <liviu.dudau@arm.com>
-To: Diogo Silva <diogompaissilva@gmail.com>
-Cc: Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>,
-	Seung-Woo Kim <sw0312.kim@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Peter Griffin <peter.griffin@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Michal Simek <michal.simek@amd.com>,
-	Thierry Reding <thierry.reding@kernel.org>,
-	Mikko Perttunen <mperttunen@nvidia.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Stefan Agner <stefan@agner.ch>, Alison Wang <alison.wang@nxp.com>,
-	Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
-	David Airlie <airlied@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>,
-	Dmitry Osipenko <dmitry.osipenko@collabora.com>,
-	Gurchetan Singh <gurchetansingh@chromium.org>,
-	Chia-I Wu <olvaffe@gmail.com>, Jyri Sarha <jyri.sarha@iki.fi>,
-	Liu Ying <victor.liu@nxp.com>, Frank Li <Frank.Li@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Xinliang Liu <xinliang.liu@linaro.org>,
-	Sumit Semwal <sumit.semwal@linaro.org>,
-	Yongqin Liu <yongqin.liu@linaro.org>,
-	John Stultz <jstultz@google.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Shuah Khan <skhan@linuxfoundation.org>,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-tegra@vger.kernel.org, virtualization@lists.linux.dev,
-	imx@lists.linux.dev, linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-amlogic@lists.infradead.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH 12/15] drm/arm/komeda: remove dependency on DRM simple
- helpers
-Message-ID: <amjXJrbgka00CQX2@e142607>
-References: <20260719-drm_simple_encoder_init-v1-0-a78c509e3062@gmail.com>
- <20260719-drm_simple_encoder_init-v1-12-a78c509e3062@gmail.com>
+	Tue, 28 Jul 2026 17:03:05 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id 98e67ed59e1d1-38e3617ba36so58684a91.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 28 Jul 2026 10:03:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1785258183; x=1785862983; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :content-type:mime-version:references:message-id:subject:cc:to:from
+         :date:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=H9tbT3MmTWZadkFYtLmnXOyq2+XHjhkh1A8FrJjDKXM=;
+        b=WyNGMJeaGfXncq6ykdni6hNIQFM79d3ACxbjJKO78UP2Ei9DR0e7r4rEN+jipbNrj8
+         QEWlIvP+vsG7OrX57hRtRlK7+zu86ROtyNVXUEdszE7roprS/8+nZ/7KqzWyKY/R4h6s
+         KLCsFSbXQ64A9WXv/x0ICWsylNCxekaYYMiFJkrVBXZjztnaT7UZ5qaN/iCZSKPyUHm5
+         jdkGWxcpBYsZHhX8DR377THgVHowbU++jQdwGJfXc/DqHXJh8cgjn92+k4D0DfCqSf3G
+         gsbcY3F9V7xjS4lhw1fCH25lzZAfOKcO+d6AZCri8lZM653IB29Zc7u7jMLwxfKiRJxZ
+         R2Kg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785258183; x=1785862983;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :content-type:mime-version:references:message-id:subject:cc:to:from
+         :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=H9tbT3MmTWZadkFYtLmnXOyq2+XHjhkh1A8FrJjDKXM=;
+        b=AI5pkkyjQ0BJY2LNusyxyAGaAtMFOdl6LxuLpFMtEYgjAjKrxwEsDmrQGM/UD+jPCY
+         yfNmAWvkHoqgPRtE36l6zQ0iDuhAB/VRVYseR+D5NEhCEm4VnJPW+a9Dldy3T6tkneJ1
+         vhoC/Ivx4eR7NH5/olflb3/u8jN5HQpZ8u8vzRdvyy0SY7M3fpvvDpREWSR6nxN4v/50
+         GK/0E3pFtxBDGTAZ2G99ib2ZAqRA2oQNucNYcMrljMfo1WFbF8CcjvIITB+UNfukq3c0
+         hvd91u0/NukUDHGKPQPaydSqQyN5MPYBJbTVHorBhWsBVu9cghSBWIH6E4/qrTI7lQ5h
+         uiAA==
+X-Forwarded-Encrypted: i=1; AHgh+RrOP0QM5LaztohZg75HzaiJQ0MjD9vtdp2TAI+SLGu+BFuC2o3WvQypSBUNAyVsKaV4A12nFBaM9dHpIEWpmQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw/D4wgangAd3V6QyinSbguUkTV5glRcnyotKqqxLOOMSrtqJOo
+	iN+aMV2pXA07lxOLeaRO8hBX9gIDIOe4Vxf7EMVnQtNzeKJZxFgGxO2D
+X-Gm-Gg: AR+sD10loxeqns80dJxFFhTwAb27fpSWTYJJtwH80hCorEBkSVo61rxIQppo/55Wt5O
+	mQklN+rR5z6h5f4YgyURokPv3Tba5PsF5J+9BBN0gXottypm6XKaJ+gzZS5xoRtqXFfJP/CrrfZ
+	VIsWxyD36sU6IpVsIYFjbgzi8ror4troGWkDh+4H5oGYi5jrZWrgrkthRNupZdW7i22efSqMqyt
+	DEUBF0Oq/hOUTbH2pbNGYuZ9JN+a6ViK50RFxtmR+N8DmKWZgyg8tpIF2tbJudOD5Awm+3bWbVE
+	MDyUFgrO0K/gGAzCgqlMntt/IQn2bxfT7uUvLS7Qw2ZxSVpAWn4BuiyME2n7KyB9haoGwnQ66mi
+	aSX+rCpXlLsGE496ijDKhp4m6ElP7XKqGb/kunPm0xzh5NAJeo9ukZNbwdgKogeVaw70/9f2Z42
+	LFq9D+UeJ9Rnj7Uk4BhnSHHNDCvHwmd4U7oA==
+X-Received: by 2002:a17:90a:dfc7:b0:36d:9e0b:3801 with SMTP id 98e67ed59e1d1-38f6a33d8c3mr3853027a91.8.1785258183046;
+        Tue, 28 Jul 2026 10:03:03 -0700 (PDT)
+Received: from buffalo-ssd (M014013071096.v4.enabler.ne.jp. [14.13.71.96])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-38f64111441sm1667127a91.1.2026.07.28.10.03.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 28 Jul 2026 10:03:02 -0700 (PDT)
+Date: Wed, 29 Jul 2026 02:02:59 +0900
+From: Akari Tsuyukusa <akkun11.open@gmail.com>
+To: Brian Masney <bmasney@redhat.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, 
+	Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "open list:COMMON CLK FRAMEWORK" <linux-clk@vger.kernel.org>, 
+	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, stable@vger.kernel.org, Chen-Yu Tsai <wenst@chromium.org>, 
+	Miles Chen <miles.chen@mediatek.com>
+Subject: Re: [PATCH v2 5/6] clk: mediatek: mt8173: fix memory leak on module
+ removal
+Message-ID: <amja9vnEoRTstmGN@buffalo-ssd>
+References: <20260707074839.240676-1-akkun11.open@gmail.com>
+ <20260707074839.240676-6-akkun11.open@gmail.com>
+ <amjCTJguiANLY0vj@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260719-drm_simple_encoder_init-v1-12-a78c509e3062@gmail.com>
+In-Reply-To: <amjCTJguiANLY0vj@redhat.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_092310_975755_4851F4E3 
-X-CRM114-Status: GOOD (  18.00  )
+X-CRM114-CacheID: sfid-20260728_100304_659965_8DC4E609 
+X-CRM114-Status: GOOD (  25.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,72 +108,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jul 19, 2026 at 01:35:43AM +0200, Diogo Silva wrote:
-> The simple KMS helpers are deprecated because they only add an
-> intermediate layer between drivers and atomic modesetting.
-> 
-> Open-code drm_simple_encoder_init() by calling drm_encoder_init()
-> directly and providing driver-local drm_encoder_funcs.
-> 
-> Signed-off-by: Diogo Silva <diogompaissilva@gmail.com>
+Hi Brian,
 
-Reviewed-by: Liviu Dudau <liviu.dudau@arm.com>
-
-Best regards,
-Liviu
-
-> ---
->  drivers/gpu/drm/arm/display/komeda/komeda_crtc.c | 9 +++++++--
->  1 file changed, 7 insertions(+), 2 deletions(-)
+On Tue, Jul 28, 2026 at 10:53:00AM -0400, Brian Masney wrote:
+> On Tue, Jul 07, 2026 at 04:48:34PM +0900, Akari Tsuyukusa wrote:
+> > clk-mt8173-apmixedsys.c and clk-mt8173-infracfg.c do not call
+> > platform_set_drvdata() during their driver probe callback,
+> > but their remove callback calls platform_get_drvdata().
+> > This results in platform_get_drvdata() returning NULL,
+> > which leads to calling kfree(NULL) in mtk_free_clk_data(NULL).
+> > This leaves clk_data unreleased, causing a memory leak.
+> > 
+> > Fix this by calling platform_set_drvdata() during probe.
+> > 
+> > Fixes: 4c02c9af3cb9 ("clk: mediatek: mt8173: Break down clock drivers and allow module build")
+> > Cc: stable@vger.kernel.org
+> > Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
+> > ---
+> >  drivers/clk/mediatek/clk-mt8173-apmixedsys.c | 2 ++
+> >  drivers/clk/mediatek/clk-mt8173-infracfg.c   | 2 ++
+> >  2 files changed, 4 insertions(+)
+> > 
+> > diff --git a/drivers/clk/mediatek/clk-mt8173-apmixedsys.c b/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
+> > index d7d416172ab3..65dc4489a09c 100644
+> > --- a/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
+> > +++ b/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
+> > @@ -179,6 +179,8 @@ static int clk_mt8173_apmixed_probe(struct platform_device *pdev)
+> >  	if (r)
+> >  		goto unregister_ref2usb;
+> >  
+> > +	platform_set_drvdata(pdev, clk_data);
+> > +
+> >  	return 0;
+> >  
+> >  unregister_ref2usb:
+> > diff --git a/drivers/clk/mediatek/clk-mt8173-infracfg.c b/drivers/clk/mediatek/clk-mt8173-infracfg.c
+> > index fa2d1d557e04..8b69009e1965 100644
+> > --- a/drivers/clk/mediatek/clk-mt8173-infracfg.c
+> > +++ b/drivers/clk/mediatek/clk-mt8173-infracfg.c
+> > @@ -128,6 +128,8 @@ static int clk_mt8173_infracfg_probe(struct platform_device *pdev)
+> >  	if (r)
+> >  		goto unregister_clk_hw;
+> >  
+> > +	platform_set_drvdata(pdev, clk_data);
+> > +
 > 
-> diff --git a/drivers/gpu/drm/arm/display/komeda/komeda_crtc.c b/drivers/gpu/drm/arm/display/komeda/komeda_crtc.c
-> index e8cb782a6f8e..719568d9f7c2 100644
-> --- a/drivers/gpu/drm/arm/display/komeda/komeda_crtc.c
-> +++ b/drivers/gpu/drm/arm/display/komeda/komeda_crtc.c
-> @@ -11,9 +11,9 @@
->  
->  #include <drm/drm_atomic.h>
->  #include <drm/drm_atomic_helper.h>
-> +#include <drm/drm_encoder.h>
->  #include <drm/drm_print.h>
->  #include <drm/drm_vblank.h>
-> -#include <drm/drm_simple_kms_helper.h>
->  #include <drm/drm_bridge.h>
->  
->  #include "komeda_dev.h"
-> @@ -635,6 +635,10 @@ static int komeda_attach_bridge(struct device *dev,
->  	return err;
->  }
->  
-> +static const struct drm_encoder_funcs komeda_encoder_funcs = {
-> +	.destroy = drm_encoder_cleanup,
-> +};
-> +
->  static int komeda_crtc_add(struct komeda_kms_dev *kms,
->  			   struct komeda_crtc *kcrtc)
->  {
-> @@ -658,7 +662,8 @@ static int komeda_crtc_add(struct komeda_kms_dev *kms,
->  	 * bridge
->  	 */
->  	kcrtc->encoder.possible_crtcs = drm_crtc_mask(crtc);
-> -	err = drm_simple_encoder_init(base, encoder, DRM_MODE_ENCODER_TMDS);
-> +	err = drm_encoder_init(base, encoder, &komeda_encoder_funcs,
-> +			       DRM_MODE_ENCODER_TMDS, NULL);
->  	if (err)
->  		return err;
->  
+> This patch doesn't compile.
 > 
-> -- 
-> 2.54.0
-> 
+>     drivers/clk/mediatek/clk-mt8173-infracfg.c: In function ‘clk_mt8173_infracfg_probe’:
+>     drivers/clk/mediatek/clk-mt8173-infracfg.c:131:36: error: ‘clk_data’ undeclared (first use in this function); did you mean ‘clk_gate’?
 
--- 
-====================
-| I would like to |
-| fix the world,  |
-| but they're not |
-| giving me the   |
- \ source code!  /
-  ---------------
-    ¯\_(ツ)_/¯
+Sorry for sending you a broken patch.
+I accidentally built only with ARCH=arm and missed the build failure.
+
+While fixing this, I noticed that clk-mt8173-infracfg.c can be converted
+to use mtk_clk_simple_probe()/remove() instead of adding driver-specific
+drvdata handling.
+
+The helper currently lacks cpumux support, but I have a reviewed patch
+for it:
+https://lore.kernel.org/lkml/20260304181024.738391-2-akkun11.open@gmail.com/
+(Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>)
+
+Also, adding PLL support to the helper should allow more MediaTek clock
+drivers to use the common probe/remove path:
+https://github.com/TeamYogaBlade2/linux/commit/d991a61887ab76fd83708dffe8e48192e01023d5
+
+Would it be preferable to extend mtk_clk_simple_probe()/remove() with
+cpumux and PLL support and reorganize this series around it?
+or should I keep this series focused on the current simple fixes?
+
+Best Regards,
+Akari
 
