@@ -4,56 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82D01C54F4C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 16:00:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15E3DC531F9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 16:09:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:
+	Content-Transfer-Encoding:Mime-Version:To:From:Cc:Subject:Message-Id:Date:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O9u5qLEzN513Om7tTBxbIoKa911cL3ZjjhICsAk3Ta0=; b=AWOv+6TRF1IDdImcgFQJlwLyGJ
-	+AU8RZY+4N5i4TgKI1dh1lm/IMeSY9PS0k0FarbSm4O2hHk9Ob0JJrxbNpQWKsmgLPPWgqndWizga
-	EzmFz1zz3vwIdqPlGzFsI8jkuYqCo8FmVelMlFOgE4pINvV28gD3vDFa/gLJiO8qVjNeTkqWx9sxw
-	xqcZKUHQF84PbrruL7vZVm1wS2qLgvU9SmIhLZx97M/Y4kcSBi6YrXlFE4BUU9HkB2qqIbI2goap2
-	CPWzIVxgMRC637mgrTgvpdf8L88Ti0DjIMJHxYDCMbrf+5WdZGDaGRvBK+Hd5/nYhK8XmFhGCsOwm
-	xTWGXr2Q==;
+	bh=nY/9cNDgunK0zPnBuyoaT1LrnFCnyLxA3wO1Cxxn2F8=; b=bobkEaGX9kaOE5FNy4nDUkomSE
+	U9ps7N1epc0D/cczMcVaw1bI8Mx77O0QBXBh5qX3p7gGR3Frm8yU46iXJT00HGGYcANMOwQa5jDXg
+	/oqFzn0IQ4Gh+VPMmL7qUuo1SEuHjGQGWS3wf+HX+VwTCjK1djS+vq1Ud/CFKpljb/836e8qylkbX
+	dDX6CqVK6jsFhS0YfA9TFTlHvs3I1EuiINFPTMYHL/vcrsuDzdp2vXpkIzKBJpjBhL2eUjn6+SI1p
+	51LUMbkTv/eLf3sxVmy+ukClBIxFa7naelmvRW9kuroRqwcG5VFBVpo09OBP8s8vrLxJqCTcdz0fk
+	8GaARn/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wokEb-00000005lNi-1Ecy;
-	Tue, 28 Jul 2026 16:00:49 +0000
-Received: from mail-24431.protonmail.ch ([109.224.244.31])
+	id 1wokMb-00000005mrx-3yrY;
+	Tue, 28 Jul 2026 16:09:05 +0000
+Received: from sendmail.purelymail.com ([34.202.193.197])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wokEX-00000005lLF-42EN;
-	Tue, 28 Jul 2026 16:00:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1785254440; x=1785513640;
-	bh=O9u5qLEzN513Om7tTBxbIoKa911cL3ZjjhICsAk3Ta0=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=CFcuX9hDoRFEIdPhuObcBEVaVxjQWI2FiWrhf8l+pqg+uxDmxwZcVN1gyXFsJij51
-	 r1E4kexzupQ07ZmDLD6ODjXQjzzLbInQSPMi2B1hq+NsboyUlKWMU2/aeEKXaleY+K
-	 hvUy7AQCleteYc2evkNi7wtqAv0Jdb7lVN0fROaelqzVGbV/wNww8iBURfsUIagmk6
-	 052/kag9A760pV1ocsaHUnvEkh1JbVADPuW/d1DyqTdBU6eKrMnenC5W63V+yqO835
-	 WWZrH0J1M99h/djzSXClecv5MRdxuLpTF/aDVjf4x6BdXbz3kfNIujdhMXRwmvhUWs
-	 Wt+lTrSkvxYdg==
-Date: Tue, 28 Jul 2026 16:00:31 +0000
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-From: Roman Vivchar <rva333@protonmail.com>
-Cc: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Houlong Wei <houlong.wei@mediatek.com>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/3] soc: mediatek: cmdq-helper: add legacy GCE ISA support
-Message-ID: <4DqPgMQaTb-zCbBTf04csJMoranOuYdtkQxgWLAAMyshzMog89Cp2d2k8v5j2g3Jx04-pj5eij-a9VdmPqLDLE641ZyKuyciNUIC2lZ_sNc=@protonmail.com>
-In-Reply-To: <79379dbb-5e15-4e30-ab1d-136a40e77af0@collabora.com>
-References: <20260728-6572-gce-v1-0-750bba32689e@protonmail.com> <20260728-6572-gce-v1-2-750bba32689e@protonmail.com> <ebf419fc-24a8-472f-8996-a134ece69f21@collabora.com> <W3cNtJeiPe6gmMpfpNJOxa6NQtOyatXIFz6FyCh7pC8jkE90WX_1g3AgQwXadoba0BdHE3com-6cCkym5VCN5d-3sobraI8O4-TGwkqnWBA=@protonmail.com> <79379dbb-5e15-4e30-ab1d-136a40e77af0@collabora.com>
-Feedback-ID: 173184497:user:proton
-X-Pm-Message-ID: 779905ee24277d9a19628456e16ec17556306f92
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+	id 1wokMZ-00000005mqj-2VeJ
+	for linux-mediatek@lists.infradead.org;
+	Tue, 28 Jul 2026 16:09:04 +0000
+Authentication-Results: purelymail.com; auth=pass
+DKIM-Signature: a=rsa-sha256; b=l3F46aSmkFjbDMkvZyRLDqImJ+0Lly+fJpq91VYTlIdfGTGI3T3JkVCrm4zLtacaJjjm3Qu/8whd0mKQVnwORd58j/qc6fJxA5+XLExezed9tsmmD74uGbs+8OtTe+t0q3wivfKLXiatDHJgbxa5JQoUxIDX8dpwDmDOXF+isKhbzlj2HIZIrJOJF/tbZ1q4/1nHWo7D4sn9nT93M8k4AivQkUQbbpFjKXWeY/KQIuAzdK71t6NuE3+frkOZyt39DcRrolBf8tB9b847THB+RHxrOUIH9UmfOPMfDXKVITjgg7W6trM2L1zF5YTTn/F/S8L0c1t6SIyd8ogHdNpDjg==; s=purelymail3; d=rcpassos.me; v=1; bh=M5kzdAEoPc5rbNRA4KFaC+3yUnwETH5W42yryDQOE1E=; h=Received:Date:Subject:From:To;
+DKIM-Signature: a=rsa-sha256; b=P5zPGlB5yHHFcn3IccLp9PNbpyOLLiRLnkBkOfCwxBebxPWXMhDF824GmHB3kh0mYAKqnuUh2V2z1LNtYgjlm6GrzH/5awBF4ueoGX2ZdnGJ3AZ3KiPr+e0Zy3l1XjMtNBMe7vRNaKtdpK6mReb8hBbuJIreaUDAOQ9EWE0vIotUnSVj9R7YNm3HYKRwwX04c8YjB/utJpD8nrjkuaxIbsGixf2otmkbWYseXM4p+XB3d0GQrf4wbil3ET6/ORlMSfEE/jINnjGdUTMgXyRjJTpyJfiNt6Ft/xNzM6CVc0YvQRnda3Aw5uMwlTwlTsBl5dJCVc3XQIHWxr53q5q62A==; s=purelymail3; d=purelymail.com; v=1; bh=M5kzdAEoPc5rbNRA4KFaC+3yUnwETH5W42yryDQOE1E=; h=Feedback-ID:Received:Date:Subject:From:To;
+Feedback-ID: 45355:7809:null:purelymail
+X-Pm-Original-To: linux-mediatek@lists.infradead.org
+Received: by smtp.purelymail.com (Purelymail SMTP) with ESMTPSA id -1239418384;
+          (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
+          Tue, 28 Jul 2026 16:08:37 +0000 (UTC)
+Content-Type: text/plain; charset=UTF-8
+Date: Tue, 28 Jul 2026 13:08:33 -0300
+Message-Id: <DKAC1T7FWOBS.15ACCNTX4EOFA@rcpassos.me>
+Subject: Re: [PATCH v2] Bluetooth: Properly disable remote wakeup for
+ MT7922/MT7925 on Ryzen platform
+Cc: "Luiz Augusto von Dentz" <luiz.von.dentz@intel.com>,
+ =?utf-8?b?Q2hyaXMgTHUgKOmZuOeomuazkyk=?= <Chris.Lu@mediatek.com>,
+ =?utf-8?b?V2lsbC1DWSBMZWUgKOadjuaUv+epjik=?= <Will-CY.Lee@mediatek.com>,
+ =?utf-8?b?U1MgV3UgKOW3q+aGsuasoyk=?= <ss.wu@mediatek.com>,
+ <linux-bluetooth@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+From: "Rafael Passos" <rafael@rcpassos.me>
+To: "Rong Zhang" <i@rong.moe>, "Rafael Passos" <rafael@rcpassos.me>, "Marcel
+ Holtmann" <marcel@holtmann.org>, "Luiz Augusto von Dentz"
+ <luiz.dentz@gmail.com>, "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>
+Mime-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
+X-Mailer: aerc 0.21.0
+References: <20260701-btmtk-ryzen-remote-wakeup-v2-1-767ac7907472@rong.moe>
+ <DJRKO72HWZOI.QJYJUAC45QOJ@rcpassos.me>
+ <79D5F3E6-8F40-4422-BB2D-16691E377394@rong.moe>
+ <DJRP3YO7Y0WK.20KNRZIMX1CYK@rcpassos.me>
+ <F16A2A9A-A43F-45FE-8CC0-44A129360D47@rong.moe>
+ <DKA8F33O8HID.2UV2DWTLE6S48@rcpassos.me>
+ <133c4858657c55b31affd4bff1cbd68f812de5e1.camel@rong.moe>
+ <DKAA9VN5E4DS.2U03T6V5HEAAE@rcpassos.me>
+ <1ba1545c318214d988e899a95279b4b0f93bc24e.camel@rong.moe>
+In-Reply-To: <1ba1545c318214d988e899a95279b4b0f93bc24e.camel@rong.moe>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_090046_177257_C42C3879 
-X-CRM114-Status: GOOD (  26.46  )
+X-CRM114-CacheID: sfid-20260728_090903_698083_D6E60F53 
+X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,75 +83,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, July 28th, 2026 at 6:52 PM, AngeloGioacchino Del Regno <angelog=
-ioacchino.delregno@collabora.com> wrote:
+Hi Rong,
+On Tue Jul 28, 2026 at 12:38 PM -03, Rong Zhang wrote:
+> You snipped too many lines. There should be a line similar to
+>
+>            |                               +-0c.0-[0d]----00.0  Advanced =
+Micro Devices, Inc. [AMD] XXXX [YYYY:ZZZZ]
+>
+> which is the root hub.
 
-> On 7/28/26 17:47, Roman Vivchar wrote:
-> > Hi Angelo,
-> >
-> > On Tuesday, July 28th, 2026 at 6:08 PM, AngeloGioacchino Del Regno <ang=
-elogioacchino.delregno@collabora.com> wrote:
-> >
-> >> On 7/28/26 11:42, Roman Vivchar via B4 Relay wrote:
-> >>> From: Roman Vivchar <rva333@protonmail.com>
-> >>>
-> >>> Some SoCs, such as mt6572, have different WRITE and POLL instruction
-> >>> encoding. Instead of 16-bit offset and 8-bit subsystem ID, old GCEs h=
-ave
-> >>> 22-bit offset and 2-bit subsystem ID.
-> >>
-> >> What about poll_addr, mask, write_s, write_s_mask and others?
-> >
-> > These don't seem to exist in all 65xx except 6595. TL;DR - old GCEs are
-> > essentially dumb compared to newer ones. They have only basics like MAS=
-K (0x2),
-> > WRITE (0x4), POLL (0x8), JUMP (0x10), WFE (0x20) and EOC (0x40). All lo=
-gical
-> > operations as well as GPR/SPR don't seem to exist.
-> >
-> > cmdq_pkt_poll_addr, write_s, write_s_mask are not used by the DRM subsy=
-stem.
-> > mask is the same across all GCEs because it takes only u32 mask without
-> > address.
-> >
-> >> Not sure that this will actually work reliably (though I'm sure you're=
- not
-> >> creating any regression).
-> >
-> > I have tested this change (on top of out-of-tree mt6572 DRM) with some
-> > dd if=3D/dev/urandom of=3D/dev/null spam + modetest, as well as igt. Se=
-ems to
-> > work without issues...
-> >
-> > Best regards,
-> > Roman
->=20
-> Alright then - look, I'd really want to pick this one up, but it's a bit =
-late
-> in the cycle and I don't really have much time left for testing.
->=20
-> I'm sure that this is fine, but please understand me - I can't take this =
-now,
-> also because I'm going on holiday very soon and can't be here to take car=
-e of
-> sudden breakages.
->=20
-> I wonder if you could resend it in the next cycle, preferrably at the beg=
-inning?
+Indeed.
++-02.1-[04-0e]----00.0-[05-0e]--+-00.0-[06]--
+|                               +-02.0-[07]----00.0  MEDIATEK Corp. MT7925 =
+(RZ717) Wi-Fi 7 160MHz [14c3:0717]
+|                               +-03.0-[08]----00.0  Realtek Semiconductor =
+Co., Ltd. RTL8125 2.5GbE Controller [10ec:8125]
+|                               +-04.0-[09]--
+|                               +-05.0-[0a]--
+|                               +-06.0-[0b]--
+|                               +-08.0-[0c]----00.0  Sandisk Corp SanDisk E=
+xtreme Pro / WD Black 2018/SN750/PC SN720 NVMe SSD [15b7:5002]
+|                               +-0c.0-[0d]----00.0  Advanced Micro Devices=
+, Inc. [AMD] 800 Series Chipset USB 3.x XHCI Controller [1022:43fc]
+|                               \-0d.0-[0e]----00.0  Advanced Micro Devices=
+, Inc. [AMD] 600 Series Chipset SATA Controller [1022:43f6]
 
-Sure, no problem :)
+> In the foreseeable future I am not going to have a desktop platform ($$$)
+I was lucky to upgrade before prices went up.
+> so I can't easily debug the issue myself. Hence, it would be helpful if
+> you could reliably reproduce the issue, so that we can have an in-depth
+> debug. But let's forget it for the time being since your device works
+> fine now!
 
->=20
-> Meanwhile, I'll get this series on the Collabora trees so that it gets cy=
-cled by
-> the CI a bit (though, it's not enough, because that needs to be tested ma=
-nually).
+I wouldn't mind helping debug this.
+I will look into buying the M.2 a/e -> USB and the PCI -> M.2 a/e.
+The bug first happened when I switch from Arch do Debian, months ago...
+If I can reproduce it, I will reply to this thread.
 
-I don't know if this one can be tested with the upstream tree (if you mean
-legacy ISA)... Most likely you need some 65xx (besides 6577 and 6595) or
-81xx, but I don't know about 81xx GCE. There's some effort for 6582 and
-6589, but none has DRM (and so GCE) so far.
+Thanks,
+Rafael Passos
 
-Best regards,
-Roman
 
