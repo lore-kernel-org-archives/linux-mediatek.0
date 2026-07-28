@@ -4,75 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 405E5C54F4C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 09:44:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57AFDC531F9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 09:59:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=irkOxPEAYOTR+5YwZO+w9qlMMVucv2iMchYWL1WEcAY=; b=WURh3WOY8NT3XNbvvuLwyp6BMf
-	EQoTciOYlwZaZHj6hytJcr5P3rM6kyASQzsYojEkofCvyP0SjDPBmyYx6IyGN/6jJLBZW78uwFcT5
-	mOZn3lPB70+o3WEzYZrO9M7MSCyWVcwtjHY8bfnkEtFadhdmuGMGvoS8XvE+ZCNAqL5cQP1GzL2OS
-	9HyVEUN/D+sChHSt00X2zEwVSqvPvwoiUS2+Q4Zln94+/ZQTkluU2xf5NB4RDqMOVbkO78qg1yjSY
-	d1Ap4P1oXOJorM78UdqX8Y+eUXVSDfKvMeOWlzVCwFhP7q+RqjPvP+nBwVLsUlMLwVBAwJj9Sm3pF
-	uTPKsbsw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
+	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XcpGEwAi/2YnkfZAtIkUhwvZ4Xx1tA03i/JXF0Vvceg=; b=qgaMrbQ/ldng+y9ynEsOWRHwgN
+	GuNELtl8uIyAd45rbjEZ0GWdAg4AyavLMQ5O9jI5bQO/zbU97S86ebVlPvNRWN4CZ02fM0AKO4XAn
+	QXhWR2n7pwpmFUmTE+55ljp2KxCMDcSdcT48gG2qfPVMEMtX/ymSZJwjn1LOQ++Nzv4I4c29+Ic0d
+	4VcnobTnsw+pV8MKFBjy4n5CIc/W3FjwZwVhTgMIUJdsWdQ/SXtvKbn0bCd1XX3nNNLdTWnVXUqCj
+	GzarSJC+RJX9sL0ctJUBNoz45Dqyrp/BC6ujg76TJIyZgcHc8pBsmzCLPnFYDSFziRU2eaRRXNfe9
+	31+Am8LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woeMP-00000004rOi-3pEK;
-	Tue, 28 Jul 2026 09:44:29 +0000
+	id 1woeaw-00000004u8w-19OE;
+	Tue, 28 Jul 2026 09:59:30 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woeMO-00000004rMr-2BGh;
-	Tue, 28 Jul 2026 09:44:28 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C9C9243F13;
-	Tue, 28 Jul 2026 09:44:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id A9D93C2BCC6;
-	Tue, 28 Jul 2026 09:44:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1785231867;
-	bh=erZkFTXMOMihPG3tf2Kjcg3MRSbkrk4OZSGbmy7Rtk0=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=GK4sZQWwd6EKlsXaL2KUJVaWL0WXwXyisJn7I+B3cRt5Y3tyuUFvjgaP++A6fxp86
-	 KxA8UtbjYVvyP1l5C3iCfSsrs0RWDVEqVFuT9khMC32iYLoQAvJrUj1+5FRzIni6XY
-	 7MupKd+Ac7CJaL6girxeENPQLMt3UKMSqIyYaaqy2KPvifDQUH1ckQ31luBk4zVC7F
-	 ATy59phXUaiK+ZSQRB20h77sYcrT4dryVrVP2W4BL0xy0X/C9BvZdR0l9W+6rEKel7
-	 HI74XZdSHXeCRe3Tlm4oWKR4yj46eYMV3X3MmsEshqW/lmbjIg/KkRA7lHPNkv3ht8
-	 4LWtWZ7pDylEA==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 940FEC54F54;
-	Tue, 28 Jul 2026 09:44:27 +0000 (UTC)
-From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Tue, 28 Jul 2026 12:42:48 +0300
-Subject: [PATCH 3/3] mailbox: mtk-cmdq: add mt6572 support
+	id 1woeav-00000004u8d-0z9g;
+	Tue, 28 Jul 2026 09:59:29 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 8FCA44189F;
+	Tue, 28 Jul 2026 09:59:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 65DC41F000E9;
+	Tue, 28 Jul 2026 09:59:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1785232768;
+	bh=XcpGEwAi/2YnkfZAtIkUhwvZ4Xx1tA03i/JXF0Vvceg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=oNK++skCpKie7y91Mf4xhrJoE44OM2RCQgtjHIqx/mRp7w5oRQAJbeBu6uJ8wJNvV
+	 sws0lWio7Bsuzhib5NY5fINLM/avUsuRaWKp7xRMBrbe0/6NVv+dG2BQSE/k7DLZfO
+	 tPZlclunU96o0VdFCWsc2K0IdFmU/r0RtouWTm9dcLpnICdD7ynMyNl49e219kNwLv
+	 j3RxuQbMSGMinDMJKwK1b5T6FC2cXFpWg7KH5NiNTlzzSh05FgJb7ehTMxqiLesG55
+	 3vcQpTNxLOYb/moZIT3Y0m/pq8XlpUWeMPeStoldVzC5BmLrzLlWsJlXiHJPnqfN8E
+	 gCakxy4UWzaVg==
+Date: Tue, 28 Jul 2026 11:59:23 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: thermal: mediatek: Make resets
+ optional for MT8196
+Message-ID: <20260728-hopeful-phenomenal-stoat-3ec6e3@quoll>
+References: <20260721105230.101906-1-angelogioacchino.delregno@collabora.com>
+ <20260721105230.101906-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260728-6572-gce-v1-3-750bba32689e@protonmail.com>
-References: <20260728-6572-gce-v1-0-750bba32689e@protonmail.com>
-In-Reply-To: <20260728-6572-gce-v1-0-750bba32689e@protonmail.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Houlong Wei <houlong.wei@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Roman Vivchar <rva333@protonmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1785231864; l=1755;
- i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=wlNt8w4pK42NOY4pipdycMZ5TzX4r9IY7xlPIXoIXu4=;
- b=em8m3keAx8V+DEbFxfHYM9caC9+m2KxyazIAl9NkghlYodMVJLxPtOwvaJrzxthYwgXX8ILn6
- O2oPz0eD9uwAJe10xMRTPsdOBs/VuAToBRcn98foH/+ksODxndUn4dX
-X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
- pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
-X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
- auth_id=777
-X-Original-From: Roman Vivchar <rva333@protonmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20260721105230.101906-2-angelogioacchino.delregno@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,66 +64,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: rva333@protonmail.com
+Cc: robh@kernel.org, conor+dt@kernel.org, rafael@kernel.org, devicetree@vger.kernel.org, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, wenst@chromium.org, laura.nao@collabora.com, jiapeng.chong@linux.alibaba.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, p.zabel@pengutronix.de, daniel.lezcano@kernel.org, matthias.bgg@gmail.com, rui.zhang@intel.com, kernel@collabora.com, krzk+dt@kernel.org, lukasz.luba@arm.com, bchihi@baylibre.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Roman Vivchar <rva333@protonmail.com>
+On Tue, Jul 21, 2026 at 12:52:29PM +0200, AngeloGioacchino Del Regno wrote:
+> Both LVTS-AP and LVTS-MCU may be shared with SoC-internal MCUs
+> running some sort of firmware that checks thermals in order to
+> scale frequency, or to take action for critical SoC thermal
+> protection - and this is seen on most MT8196 boards.
+> 
+> Make resets optional, as doing a HW reset on such boards will
+> result in either an immediate thermal protect shutdown or in
+> a rather important and usually permanent system slowdown.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../bindings/thermal/mediatek,lvts-thermal.yaml     | 13 ++++++++++++-
+>  1 file changed, 12 insertions(+), 1 deletion(-)
 
-Add legacy_isa field forwarding to the cmdq helper and a platform data
-for the mt6572 GCE.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-Signed-off-by: Roman Vivchar <rva333@protonmail.com>
----
- drivers/mailbox/mtk-cmdq-mailbox.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
-
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index e523c84b4808..5e7bc52baaa1 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -99,6 +99,7 @@ struct gce_plat {
- 	bool control_by_sw;
- 	bool sw_ddr_en;
- 	bool gce_vm;
-+	bool legacy_isa;
- 	u32 gce_num;
- };
- 
-@@ -119,6 +120,7 @@ void cmdq_get_mbox_priv(struct mbox_chan *chan, struct cmdq_mbox_priv *priv)
- 	struct cmdq *cmdq = container_of(chan->mbox, struct cmdq, mbox);
- 
- 	priv->shift_pa = cmdq->pdata->shift;
-+	priv->legacy_isa = cmdq->pdata->legacy_isa;
- 	priv->mminfra_offset = cmdq->pdata->mminfra_offset;
- }
- EXPORT_SYMBOL(cmdq_get_mbox_priv);
-@@ -787,6 +789,14 @@ static const struct dev_pm_ops cmdq_pm_ops = {
- 			   cmdq_runtime_resume, NULL)
- };
- 
-+static const struct gce_plat gce_plat_mt6572 = {
-+	.thread_nr = 14,
-+	.shift = 0,
-+	.control_by_sw = false,
-+	.legacy_isa = true,
-+	.gce_num = 1
-+};
-+
- static const struct gce_plat gce_plat_mt6779 = {
- 	.thread_nr = 24,
- 	.shift = 3,
-@@ -848,6 +858,7 @@ static const struct gce_plat gce_plat_mt8196 = {
- };
- 
- static const struct of_device_id cmdq_of_ids[] = {
-+	{.compatible = "mediatek,mt6572-gce", .data = (void *)&gce_plat_mt6572},
- 	{.compatible = "mediatek,mt6779-gce", .data = (void *)&gce_plat_mt6779},
- 	{.compatible = "mediatek,mt8173-gce", .data = (void *)&gce_plat_mt8173},
- 	{.compatible = "mediatek,mt8183-gce", .data = (void *)&gce_plat_mt8183},
-
--- 
-2.54.0
-
+Best regards,
+Krzysztof
 
 
