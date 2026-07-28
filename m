@@ -4,93 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A11BBC53219
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 12:28:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 048C7C53219
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 13:10:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=BXD9NT1yZlFkaXVxjdMwL7vBIK75Ivf+FWUGyrR0g4o=; b=pZUU9b5LkBuRHni17GuFgrCB5p
-	qQ/faP1FYms5sCmsl29YKrmLiS6p92x8IHA9+Mqipz/n+HNnHWbDsDqNhhya8AtmKq5RhoIqeZPoh
-	Cpj40bBQ+1FYbKegdYqrJ0TzzPeGXloSLl9daNCCb9ax5NDjHuuVfVT1Y7cOMtd9whGIyjIg6zVWp
-	NZbUjqDU6+3MAvEGEe5CtZFPFJZNWmsJJqhZjh1zRlmbMt3g5lPNF42yc2zUyoqwPCRW2UN9r48w3
-	aGEMgq8/PAxhnuKknyMsXJXyIM4GIkuWU99sjjAaKzV9BBloywouCv648Oo5Pmx5TJIpt9RQllAHe
-	CUB+101Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vxbqXLAunmT2qGsW55SMRVrOQZR4H5ggveSMTVA7VUM=; b=10UtHwTLKydrJU3fgg3PLr3qQm
+	qQqfKV6WSqnv4ZqRxtMlqa3/f0Aemn6V3XJD7ZBw58wzOxGSLzNlpf4sX0n0mJMoTjGAi9zbqN4g8
+	7tOhUd5imPdqkE5EpdZ7HLfwFefmAyO1Mrpt5z+pkOJa3zytrhO1l96SX46jhGaGl1aXbdGTWDEym
+	cvZVMz/YaS1lDwDfaBZI3t7pfTR2rH+IHNmM+8W9Qq0uy+O8UH95B5Xw1SfKAGxlQBCT0/iKTPoI/
+	YZLXpoAw8/1J5SoJ/P8glP0xJH2Whtm4+tYNoHLhMXZFckdhRrqqzSDNGyBVJy84AkrhiNY0o/00H
+	FzwGM8TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wogvL-00000005FB5-2YX1;
-	Tue, 28 Jul 2026 12:28:43 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1wohZV-00000005Jl9-3PLq;
+	Tue, 28 Jul 2026 13:10:13 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wogvJ-00000005F9I-1Iq6
+	id 1wohZT-00000005Jk7-1MMY
 	for linux-mediatek@lists.infradead.org;
-	Tue, 28 Jul 2026 12:28:42 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-38ec1402b05so2979585a91.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 28 Jul 2026 05:28:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785241720; x=1785846520; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=BXD9NT1yZlFkaXVxjdMwL7vBIK75Ivf+FWUGyrR0g4o=;
-        b=mLlMt9GB6gYb7YzT7IZiwGTCUlETKWGLerUW4+XWTmnRbWEBLUL6JqBM8r7QUZdBhZ
-         EGUVA30t/FJ/7lTFjuk2oHvhPaK/ZPn5/plQMtrCsPwCxNfaJGbzrBSIzHZDrd6qG3sI
-         wV3THMf4zEzEjRASuzHe42xFh7m2RZ73/+r7Tn8PJBwswjG/nhhGh9asoEGM0FbBWEYQ
-         YutvPgYdd6RjAqNychmfy8yqps9pDKUv3ZX5usvDETuJaIaxb1olfK5SKsmTCuwK0en1
-         qsS3gBsYqyFC2Dr8MEnfy8IVEPky7Cokdojznrb8y/3cIWNy/hq2lvQdQHjzo8kymR61
-         rnAg==
+	Tue, 28 Jul 2026 13:10:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1785244210;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=vxbqXLAunmT2qGsW55SMRVrOQZR4H5ggveSMTVA7VUM=;
+	b=cniiXPkPq6JN6ScpGTbB0OvPQ1xbEi0Rkn+eajuY2s0cL9Z+UBaW5IOl9sbM2IO/lB5fwB
+	ANFaQXkrj5uahxQw8fzDAOJ1tvmjHTxAICIMnziB8ZVpcwNVwbUqXnKko8rgMvHA98wvoJ
+	HxkhV/WdqTG6OHXvXtS1GigQfncIgFk=
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-410-C9ggw1vWNT2c3mLdMudcKg-1; Tue, 28 Jul 2026 09:10:08 -0400
+X-MC-Unique: C9ggw1vWNT2c3mLdMudcKg-1
+X-Mimecast-MFC-AGG-ID: C9ggw1vWNT2c3mLdMudcKg_1785244208
+Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-92e4f27f49bso370899985a.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 28 Jul 2026 06:10:08 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785241720; x=1785846520;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=BXD9NT1yZlFkaXVxjdMwL7vBIK75Ivf+FWUGyrR0g4o=;
-        b=HAU4p/bphax7FbFvehDSipPIF016lJqK76SMdcq6Uq7BgzUKR3+6Z+Wbl9w2Mb6Hm3
-         QWIYDujb9nbiEldowNON/yE2huOZGmEYUKdYy1wJuf/7tRjCEmOwVdsy6U2BRI73ozR7
-         avBBn34SLCz0bPcbaAYC7dY39aOSMZ4ycZT3uUU+FvrxL0AShcpDnjCG7wvDuJFwQRn7
-         XZyyLwWfIekIjqgk+ksjAoV8BCeFHCrToBEOQUFYdQVQzulNAnDQGc0ioF0GYbKNUZJd
-         xz7FbQD3wnjLPHuRiYCwERZ7HxYip81NV95sIhXOgjwBqeK4LDMYfPAxHdIsJ/PqVUlv
-         bQmg==
-X-Forwarded-Encrypted: i=1; AHgh+Rp5Dg4bHcoVoanjgmfhsMuGuYGpF4eKasYF+0M/F29TRU0vPAl0ja8g4py7E8T507htRZ1DmQb8Znb/94uWAA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzKoMfcsNWETDcAbutewIfS5K3FnKAZOT8WTcXGYQtm2ct+1Dec
-	R0Ad4u7PeOTM5E+yzMemNjg5r0vsl79MfpVDXtrZDMDfa6JMlrAUhahp
-X-Gm-Gg: AR+sD12i+DmLulu/ChpIyz2WnhEp55LO+hxCefS/oG5Bv3DACPA1gb6BLjhxvIyTsMb
-	CLDnXdL71ZTGsJn5TZb4osaSjXAaR+k/WLaxjrVA4MLSIA4xAwdvaHRd0t8Jwq4bVo/4hHND76w
-	f13n3NfRItZR+H7IIfzbnd1mnYGoUWCuYJ+qHaqxGGGvCtmMi8Sd5jIOWkmERhGStHlDPm4tLnZ
-	FoiMdKQhOSUAMnXeNhaufuEQ2Afu7v1FrrANrJ+Gfb5B73R/5aKHnZs7Oqz7HOT3FDUZFvhioyA
-	6sbu+9xPLdqKjGT/eev7u7Nz9S9e8JDDIAHNx8/GgedZ/pyfPCpl21Bh3vzzbNTrBYXO/GXDfW1
-	sgvxAFtHLMHK5dY1hfeqFmrEspt+EUyu5IrT6jh3cG7xkri8aXuyO3RcANC4ILxDnYXuPWWX8gz
-	4IIHrB5J+KRJQnjZvSnKPf/Hud6d66RNJAR76P
-X-Received: by 2002:a05:6a21:748a:b0:3c3:a41f:ce83 with SMTP id adf61e73a8af0-3c8ba62e7e4mr2893948637.61.1785241720223;
-        Tue, 28 Jul 2026 05:28:40 -0700 (PDT)
-Received: from localhost.localdomain ([103.179.230.124])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-314bc3e1290sm43423129eec.1.2026.07.28.05.28.35
+        d=1e100.net; s=20251104; t=1785244208; x=1785849008;
+        h=user-agent:in-reply-to:content-disposition:content-type
+         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=vxbqXLAunmT2qGsW55SMRVrOQZR4H5ggveSMTVA7VUM=;
+        b=fvmRjz7KbLh1F/2PmGHkDCMIsxuOluG34jyDwNNWntOTI6hNd90BHBtEvATKwLXkms
+         Aoq88joymDB4ZJkrnQGaHfdVRegv+obQ2SOdBB5KZ1m5hTDICY8krnyyBEJwlwvcJNmn
+         e6B20JR6vX0u9Ioh+OgkI2QCMu1A+J4Z2lCWzG0AZX8fX7MLtfTddV5pV8Pl9gh60TWw
+         x0tx4SPWbj6dGhBzF1RmCUt5TQt2RqF7grMjwuYwyOp89F/TTkCicMAfhw6mgT0WzMId
+         6gzdpGsQzUSo4o2uXB2Fc7X/skK6OS7oXvCQTp0jCZ6iZOZZPsf9mU8D1GqBc0Nag1k8
+         x1Wg==
+X-Forwarded-Encrypted: i=1; AHgh+RpiqeknM3peE8iSgt3mMGi7YyRquATDtAn1faTKf9Vxz9/27X5JITvFEvR5OUfMbBCYdS9S2LRiYfqhMxdr4w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzlksVc3ogbJPugm7RKT5YnmWNbYGdypp8ogL/9BJDLLE/XQehZ
+	U4qdbf1DioaK8ZYKiGUMqB3ayjFgdnBqyUczCxmOfS09yO3ZRYHuDfyE4JeoFiK3AuM1Yrt398H
+	IbobzoIvnGIhZ6TtiydRqEnYIScZla/dUIYi/yyNpATDIUa9wXjIPm+oRgmggsaJxYj+XwQ6ydA
+	==
+X-Gm-Gg: AR+sD10NkywRDry5C7T/Rg5X3C1juJN406tbn1ojwz84cT+VcSCOFmZzg0fhbqL3uAs
+	Lvd3g/RSGiGaVrPPpquFhypRDtQLoLjCdWhl1BSpGOoab8mkMDmp1pCa9HbmzGlJYlJvgnswWw3
+	tJS5bIdurTNo3z9aBPVPq2zH1+Ac0DUXmg/yUv+R103kO6mGiTucO1rDXwB+0LRAwc+iXKxUzeM
+	AhW+Xp05kPIjqxYMYfQhaEWYSegMhfZK5YM+AYc56Xug1UGlchyV9/su9D7aAayPHXKJN+ACtgn
+	CbQhP+IaEvoVkSsKSotoPszMjwhGKI2CO7vVkZc9CmZnZihea2PVDZ/ZrrSvUWC+lY6x4KAx9sz
+	oElhMvKoOSLy6Jh4F/QXcXqFu9msNB9JIvNQ=
+X-Received: by 2002:a05:620a:4446:b0:92e:7a3c:add7 with SMTP id af79cd13be357-933025a4606mr215984985a.27.1785244206186;
+        Tue, 28 Jul 2026 06:10:06 -0700 (PDT)
+X-Received: by 2002:a05:620a:4446:b0:92e:7a3c:add7 with SMTP id af79cd13be357-933025a4606mr215965785a.27.1785244204887;
+        Tue, 28 Jul 2026 06:10:04 -0700 (PDT)
+Received: from redhat.com (c-73-183-53-213.hsd1.pa.comcast.net. [73.183.53.213])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-932de635f6csm831797885a.26.2026.07.28.06.10.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Jul 2026 05:28:39 -0700 (PDT)
-From: Sreeraj S Kurup <sreekuttan2156239@gmail.com>
-To: ryder.lee@mediatek.com,
-	lpieralisi@kernel.org,
-	kwilczynski@kernel.org,
-	mani@kernel.org,
-	bhelgaas@google.com
-Cc: robh@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-pci@vger.kernel.org,
+        Tue, 28 Jul 2026 06:10:03 -0700 (PDT)
+Date: Tue, 28 Jul 2026 09:10:01 -0400
+From: Brian Masney <bmasney@redhat.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alessio Belle <alessio.belle@imgtec.com>,
+	Luigi Santivetti <luigi.santivetti@imgtec.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
+	imagination@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
 	linux-kernel@vger.kernel.org,
-	Sreeraj S Kurup <sreekuttan2156239@gmail.com>
-Subject: [PATCH v3] PCI: mediatek-gen3: Fix 64-bit type truncation in mtk_pcie_set_trans_table()
-Date: Tue, 28 Jul 2026 12:28:10 +0000
-Message-ID: <20260728122810.3475-1-sreekuttan2156239@gmail.com>
-X-Mailer: git-send-email 2.54.0
+	Icenowy Zheng <zhengxingda@iscas.ac.cn>,
+	YoungJoon Lee <getfeus@gmail.com>
+Subject: Re: [PATCH v4 0/5] powervr: MT8173 GPU support
+Message-ID: <amiqKRkFItYwD6oL@redhat.com>
+References: <20260728091804.382753-1-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20260728091804.382753-1-wenst@chromium.org>
+User-Agent: Mutt/2.4.0 (2026-06-19)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: MtP3Cd8FmOJQh9q_tab70R0kSqv_GttATLYaPYuMw-w_1785244208
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_052841_376219_7FC9F1E5 
-X-CRM114-Status: GOOD (  12.91  )
+X-CRM114-CacheID: sfid-20260728_061011_464703_E3B53966 
+X-CRM114-Status: GOOD (  16.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,82 +123,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The variables cpu_addr, pci_addr, and remaining in
-mtk_pcie_set_trans_table() are of type resource_size_t, which is 64-bit
-on 64-bit architectures.
+Hi Chen-Yu,
 
-Using 32-bit helpers fls(), ffs(), and BIT() causes 64-bit integer
-truncation when computing window sizes and address alignments above 4GB.
+On Tue, Jul 28, 2026 at 05:17:58PM +0800, Chen-Yu Tsai wrote:
+> Hi everyone,
+> 
+> This is v4 of my MT8173 PowerVR GPU support series.
+> 
+> This time around Mesa was ready for basic testing, using both vulkanmark
+> and glmark2-es2-drm (with Zink). Details below.
+> 
+> Changes since v3 (all in the clk driver patch):
+> - Changed pm_runtime_put() to pm_runtime_put_sync()
+> - Added missing of_node_put() in remove function
+> 
+> Changes since v2 (all in the clk driver patch):
+> - Made COMMON_CLK_MT8173_MFGTOP depend on PM
+>   - Needed since the driver implements PM domains using the generic PM
+>     domain library, which also depends on PM
+>   - Fixes build breakage (kernel test robot)
+> - Fixed "RST_DELAY_CNT" name (Brian)
+> - Dropped unused mfg_desc (Brian)
+> - Added check of clk_prepare_enable()'s return value in
+>   clk_mt8173_mfgtop_power_on() (Brian)
+> - Saved error value for return in IS_ERR(data->clk_26m) branch
+>   (Dan Carpenter / kernel test robot w/ smatch)
+> 
+> Changes since v1:
+> - Adapted to changed DT bindings
+> - Dropped driver change
+> - Use same power domain for "a" and "b" GPU power domains
+> 
+> 
+> This series enables the PowerVR GPU found in the MT8173 SoC, found in
+> some Chromebooks.
 
-Fix this by switching to fls64(), __ffs64(), and BIT_ULL(). Note that
-__ffs64() uses 0-based indexing, so the '- 1' offset is removed.
-Additionally, return -ENOMEM when translation tables are exhausted to
-prevent silent failure.
+I'm making a pull for Stephen for the clk changes. Should patches 1,2,4
+go through the clk tree? Patches 3,5 go through the DRM tree?
 
-Signed-off-by: Sreeraj S Kurup <sreekuttan2156239@gmail.com>
----
-v3:
- - Reformatted commit message lines to under 75 charactere.
- - Aligned multi-line function call arguments according to checkpatch rules
-v2:
- - Replaced non-existent ffs64() with __ffs64().
- - Corrected 0-based indexing logic for __ffs64().
- - Returned -ENOMEM on translation table resource exhaustion.
----
- drivers/pci/controller/pcie-mediatek-gen3.c | 15 ++++++++++-----
- 1 file changed, 10 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index bcbd08c82a5c..e2fb6e372ede 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -7,6 +7,8 @@
-  */
- 
- #include <linux/bitfield.h>
-+#include <linux/bitops.h>
-+#include <linux/bits.h>
- #include <linux/clk.h>
- #include <linux/clk-provider.h>
- #include <linux/delay.h>
-@@ -334,10 +336,10 @@ static int mtk_pcie_set_trans_table(struct mtk_gen3_pcie *pcie,
- 
- 	while (remaining && (*num < PCIE_MAX_TRANS_TABLES)) {
- 		/* Table size needs to be a power of 2 */
--		table_size = BIT(fls(remaining) - 1);
-+		table_size = BIT_ULL(fls64(remaining) - 1);
- 
- 		if (cpu_addr > 0) {
--			addr_align = BIT(ffs(cpu_addr) - 1);
-+			addr_align = BIT_ULL(__ffs64(cpu_addr));
- 			table_size = min(table_size, addr_align);
- 		}
- 
-@@ -349,7 +351,8 @@ static int mtk_pcie_set_trans_table(struct mtk_gen3_pcie *pcie,
- 		}
- 
- 		table = pcie->base + PCIE_TRANS_TABLE_BASE_REG + *num * PCIE_ATR_TLB_SET_OFFSET;
--		writel_relaxed(lower_32_bits(cpu_addr) | PCIE_ATR_SIZE(fls(table_size) - 1), table);
-+		writel_relaxed(lower_32_bits(cpu_addr) |
-+		PCIE_ATR_SIZE(fls64(table_size) - 1), table);
- 		writel_relaxed(upper_32_bits(cpu_addr), table + PCIE_ATR_SRC_ADDR_MSB_OFFSET);
- 		writel_relaxed(lower_32_bits(pci_addr), table + PCIE_ATR_TRSL_ADDR_LSB_OFFSET);
- 		writel_relaxed(upper_32_bits(pci_addr), table + PCIE_ATR_TRSL_ADDR_MSB_OFFSET);
-@@ -375,9 +378,11 @@ static int mtk_pcie_set_trans_table(struct mtk_gen3_pcie *pcie,
- 		(*num)++;
- 	}
- 
--	if (remaining)
--		dev_warn(pcie->dev, "not enough translate table for addr: %#llx, limited to [%d]\n",
-+	if (remaining) {
-+		dev_err(pcie->dev, "not enough translate table for addr: %#llx, limited to [%d]\n",
- 			 (unsigned long long)cpu_addr, PCIE_MAX_TRANS_TABLES);
-+		return -ENOMEM;
-+	}
- 
- 	return 0;
- }
--- 
-2.54.0
+Brian
 
 
