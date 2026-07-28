@@ -4,68 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7222BC54F4C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 14:45:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 233B0C54F4C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 14:53:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:
-	Subject:To:From:Cc:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
-	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cc5wg12tqwTBOwJ67VWXEAgClJcA4TpX/SK+bdEQpI0=; b=lGX87qt4ZNwFVpI5XwcRPYQDtr
-	6I5emGTw0OhXt3BZKBcPptCzmZupib7QRIkvwAVCeZ8cvsIvottKfPfC0bE8uWEilFTO5TJY8x3wf
-	Ime+CJBca6w9VQUh3iEN/8FfAZHgZe6jIPol3+OO3Jpl9/N9pherhRwcEE6BYP8xQWjkTQUaLDicL
-	8NoKhqP73aR4yAJ14kS3fZiZnkjfFY/xds/IQf8ibQOd3tIe7V+w5KXGfsS5KOc1ydE2qt6W3MzBi
-	O7wkSMM6ng1Uqt/UQO8syry9sD806ZVWZuhMfnWM1MWDGFuuTZol4u6ajaumOK3Gi0BjxMO+3a8gc
-	yejYXupw==;
+	bh=vS5FrZdtVD7dlOeCODijrDZc+E5kS2K1TH7nZasBrgE=; b=Q5AdR9cMsig+CaoeY+nJWZBIfM
+	eRZiW4eoik1t6qeEOH35uHjwexdQ0OYW31QU49PiQMj88F2F/lUydVsF6/0N8oB/DDUO8OmDTWLNl
+	W0kGtfrpHkXduvAdn4xcBK/SkYxKGFg0NtXuuCGMS3cwVQl7IbG8XAYYJLlisexUepp8PxlSRTZIw
+	zkBdn/NMrpaMWe1h7IixpcxQ6rCVx0a2Br+fG2OUINAebmBz0Gc6O6UpBNelE333POqaKZRWMWzH/
+	ZOusx0Gj8eLAneelGOJl3yNQ8OHtnkMSj32dMmTKbgbkIeIET4Bhr7wJHpKF1SlOExzdH5YIf9rA9
+	M3uXOvPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woj3m-00000005Xee-0Q06;
-	Tue, 28 Jul 2026 14:45:34 +0000
-Received: from sendmail.purelymail.com ([34.202.193.197])
+	id 1wojB7-00000005YhD-30PM;
+	Tue, 28 Jul 2026 14:53:09 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woj3j-00000005Xcd-2GWm
+	id 1wojB4-00000005YgX-25Cx
 	for linux-mediatek@lists.infradead.org;
-	Tue, 28 Jul 2026 14:45:32 +0000
-Authentication-Results: purelymail.com; auth=pass
-DKIM-Signature: a=rsa-sha256; b=eZwInGNsa6ReMfcqs8CTGI43ZysY8pZMj1Sidd+d1AfcQ7BHSVl/733uR9lN06EUrJs6OV2z20wJ2ztqJ7S6/DoH0Q6VnZ5kxmwLAYkBzBBZPLmJHmLrsF8Ua3U7QqlZVlcq6K6jjdmK61xNhxjVj+qX0vDaWXclKwSf1QwAjEKSQJ/DwtJfTZgPn66hM8TA6o28Fc2NpLEPIzibPNU9KeLmf0yWpbWIQfxHr0kLkXmVPXVLm3f/DfNdvKSDQm9TR5eR0f3WuqmMJek7nCHnC/QsGQaFSBz7EGJfK2g1gfUCLoDOvqYFX9sXozjSIaCAXmo7FNToUUtrs36k3OhslA==; s=purelymail3; d=rcpassos.me; v=1; bh=O+EunIaQuvuAl6mYIdHtaHmtFznc9bUOIDoAFlXeg5s=; h=Received:Date:From:To:Subject;
-DKIM-Signature: a=rsa-sha256; b=jlzYklcQXD/DOKtZIA648V4a8hSY2EscTLMzkfsMWamDA0RNShxDdDla6ILuZtDLkOKwbpOICG2Ke06cQnEh/6/XIazK3s3jvqOfP99O8e4dxfE03zpzbQa16ay80R+iRI7YjX3FzvveUh0fpht2G7ik+Xrsh529fRvwvO23zT81AbajB4ARWAGWgzRACgSGs3swjrMkb/p+JURiSUrYaxunZB1h5lISQwCMm8eyfMsVBfew+PjvZgIOk2wYfRvMo55hloe/quKIl7c1odtb+P1zL3eeIu7W2Q4hGLLTAbfAlQQl5e3IFYBT8FdMBcUiyiDajzBnyKFQwbdnMHd0Nw==; s=purelymail3; d=purelymail.com; v=1; bh=O+EunIaQuvuAl6mYIdHtaHmtFznc9bUOIDoAFlXeg5s=; h=Feedback-ID:Received:Date:From:To:Subject;
-Feedback-ID: 45355:7809:null:purelymail
-X-Pm-Original-To: linux-mediatek@lists.infradead.org
-Received: by smtp.purelymail.com (Purelymail SMTP) with ESMTPSA id 2061556761;
-          (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
-          Tue, 28 Jul 2026 14:45:08 +0000 (UTC)
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-Date: Tue, 28 Jul 2026 11:45:03 -0300
-Message-Id: <DKAA9VN5E4DS.2U03T6V5HEAAE@rcpassos.me>
-Cc: "Luiz Augusto von Dentz" <luiz.von.dentz@intel.com>,
- =?utf-8?b?Q2hyaXMgTHUgKOmZuOeomuazkyk=?= <Chris.Lu@mediatek.com>,
- =?utf-8?b?V2lsbC1DWSBMZWUgKOadjuaUv+epjik=?= <Will-CY.Lee@mediatek.com>,
- =?utf-8?b?U1MgV3UgKOW3q+aGsuasoyk=?= <ss.wu@mediatek.com>,
- <linux-bluetooth@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-From: "Rafael Passos" <rafael@rcpassos.me>
-To: "Rong Zhang" <i@rong.moe>, "Rafael Passos" <rafael@rcpassos.me>, "Marcel
- Holtmann" <marcel@holtmann.org>, "Luiz Augusto von Dentz"
- <luiz.dentz@gmail.com>, "Matthias Brugger" <matthias.bgg@gmail.com>,
- "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v2] Bluetooth: Properly disable remote wakeup for
- MT7922/MT7925 on Ryzen platform
-X-Mailer: aerc 0.21.0
-References: <20260701-btmtk-ryzen-remote-wakeup-v2-1-767ac7907472@rong.moe>
- <DJRKO72HWZOI.QJYJUAC45QOJ@rcpassos.me>
- <79D5F3E6-8F40-4422-BB2D-16691E377394@rong.moe>
- <DJRP3YO7Y0WK.20KNRZIMX1CYK@rcpassos.me>
- <F16A2A9A-A43F-45FE-8CC0-44A129360D47@rong.moe>
- <DKA8F33O8HID.2UV2DWTLE6S48@rcpassos.me>
- <133c4858657c55b31affd4bff1cbd68f812de5e1.camel@rong.moe>
-In-Reply-To: <133c4858657c55b31affd4bff1cbd68f812de5e1.camel@rong.moe>
+	Tue, 28 Jul 2026 14:53:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1785250385;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=vS5FrZdtVD7dlOeCODijrDZc+E5kS2K1TH7nZasBrgE=;
+	b=bOOyT157e7hDv/jUXflhkbA6pj/lq9H9up/zs99z7BQvFjWF3i928eH1boEO4gR03qYupj
+	cu7g3n0mEgPHgYyZP7oXfRg3PR9cISIag3+4l6Nn50prT4F94hSwavrogVQ8PeDpnTzZ6e
+	E/wKPwujFJmnTfOeUvkCzyFEbR7d0WY=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-684-fLoqvE_UPQOmiYQlZ9lFMQ-1; Tue, 28 Jul 2026 10:53:04 -0400
+X-MC-Unique: fLoqvE_UPQOmiYQlZ9lFMQ-1
+X-Mimecast-MFC-AGG-ID: fLoqvE_UPQOmiYQlZ9lFMQ_1785250384
+Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-92ec91dc265so361239885a.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 28 Jul 2026 07:53:04 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785250384; x=1785855184;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:content-type:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=vS5FrZdtVD7dlOeCODijrDZc+E5kS2K1TH7nZasBrgE=;
+        b=M5ihsmGImcjQYcxcedvWXG1Xqc0Q0QJNv4/1LNjpUGHvdeaD8hCL6Bf3P48EvNqvOd
+         xcdAcgP/LmRHHam1zn9W7QdXDvj7/+/NA1xG/mpEVLBhinYmIPjyyz+/yT70b6I0hhUO
+         PAp4BQUhwbqy3CVuxNb/orBPhNB5SH4FcGFlVLhQ7ugu6NBfXkuXOak4fdUUBZ3M6KLh
+         /foHKbKgQl/nc1uQSVhycy+5OPcwNmE4ySkb+8oydAvvBCYI8ahSrsi1exIl69Rb1twc
+         gMkkj/vQQUm8zVdIrqZ71wDD9ZjzdQimMZnMu3LgGOQVKZR97LbrfcalSB2sXRUm/fak
+         Okdw==
+X-Forwarded-Encrypted: i=1; AHgh+RqiGYKitZI8nXf8SMFneImyzTMX89Oaq2Sqy8SVvCyreLL11Ui6TQqIRw9NHbuTIu4jywFXNa6yFWbQkUdd4Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzpnC+D+h05ElAvtWKmFtp5M95EkWwsgLupnEjDPqRL0nVGRnAE
+	8+Hc0SGJQiLqXT37jnWg7MR+dPBwLOA7ah5e50pwXubEZAfQaqUxrPj5aINSZXhFyTTfq912NbO
+	ptc5Q4bR+rPSpFgqHIswy/dVAw/RvZ2ZraLTkvr8W0QBPK+T1Vz0TfaxhLZZsuPG1xVVDp8EckQ
+	==
+X-Gm-Gg: AR+sD10NXcrTsL0l/6KLt/JTmFwTsbjYNf9sQNyP6tFCGkp60Vtra4lK6wOKgb1a5bh
+	8yB/WntTDZ6KEIR8zRhUkaEg6kODJL/MFDY9mF8voMyf4IspY9wT0wftT6tkGebht6Fw6nPsc1P
+	TWMd66HNi8bLAU6SuJmB3ITQheTzoM9ziMmzyqvhFhY3kP6GfKSf5+dNbuMaWgisNpwcLcTIS9C
+	BJKQuj0IyR3AFSe4oSUfgAji2Ilp/q70P8X7hnkByn9sm9xeKCO9ebWSeue6DBgijfKBKaBk4K1
+	XSg+mkPlc8hzgnO0vdaoBU/Oynfo726bDxIdsg8/3sDn+Oq0wX/pVtCMz3yEoNmKu89vXf9FRDd
+	qs1KH1kNarCTWr/ij8d466/CXuicSyj8Nivk=
+X-Received: by 2002:a05:620a:2781:b0:92e:8ad6:210f with SMTP id af79cd13be357-93302640d97mr253739685a.8.1785250383651;
+        Tue, 28 Jul 2026 07:53:03 -0700 (PDT)
+X-Received: by 2002:a05:620a:2781:b0:92e:8ad6:210f with SMTP id af79cd13be357-93302640d97mr253735385a.8.1785250383149;
+        Tue, 28 Jul 2026 07:53:03 -0700 (PDT)
+Received: from redhat.com (c-73-183-53-213.hsd1.pa.comcast.net. [73.183.53.213])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-932de541ac8sm864956085a.16.2026.07.28.07.53.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 28 Jul 2026 07:53:02 -0700 (PDT)
+Date: Tue, 28 Jul 2026 10:53:00 -0400
+From: Brian Masney <bmasney@redhat.com>
+To: Akari Tsuyukusa <akkun11.open@gmail.com>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"open list:COMMON CLK FRAMEWORK" <linux-clk@vger.kernel.org>,
+	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	stable@vger.kernel.org, Chen-Yu Tsai <wenst@chromium.org>,
+	Miles Chen <miles.chen@mediatek.com>
+Subject: Re: [PATCH v2 5/6] clk: mediatek: mt8173: fix memory leak on module
+ removal
+Message-ID: <amjCTJguiANLY0vj@redhat.com>
+References: <20260707074839.240676-1-akkun11.open@gmail.com>
+ <20260707074839.240676-6-akkun11.open@gmail.com>
+MIME-Version: 1.0
+In-Reply-To: <20260707074839.240676-6-akkun11.open@gmail.com>
+User-Agent: Mutt/2.4.0 (2026-06-19)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 20MJjq4NJVgfPXEU-NFT3abnvzhVboSNdvblFuxsX9Q_1785250384
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_074531_637820_A2B2910C 
-X-CRM114-Status: GOOD (  14.30  )
+X-CRM114-CacheID: sfid-20260728_075306_614495_0586858E 
+X-CRM114-Status: GOOD (  19.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,84 +121,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rong,
+Hi Akari,
 
-On Tue Jul 28, 2026 at 11:00 AM -03, Rong Zhang wrote:
->> I believe its a hub connected to the chipset.
->>=20
->> /:  Bus 001.Port 001: Dev 001, Class=3Droot_hub, Driver=3Dxhci_hcd/12p, =
-480M
->>     | ...
->>     |__ Port 008: Dev 004, If 0, Class=3DWireless, Driver=3Dbtusb, 480M
->>=20
->> In the block diagram on the manual [1], Key "E" Wifi is tied
->> to the AMD PROM21 CHipset.
->
-> Yes, and no.
->
-> The block diagram indicates that the NIC card's PCIe interface (note the
-> "x1") is connected to the chipset, without any mention of its USB
-> interface.
->
-> Based on the bus number (001), it's more likely a root hub of the SoC
-> instead of the chipset.
->
-> You can check the root hub's PCI path with
->
->    realpath /sys/bus/usb/devices/usb1
->
-> Then you can cross-check with the PCI topology, i.e., `lspci -tnnnvvv'.
+On Tue, Jul 07, 2026 at 04:48:34PM +0900, Akari Tsuyukusa wrote:
+> clk-mt8173-apmixedsys.c and clk-mt8173-infracfg.c do not call
+> platform_set_drvdata() during their driver probe callback,
+> but their remove callback calls platform_get_drvdata().
+> This results in platform_get_drvdata() returning NULL,
+> which leads to calling kfree(NULL) in mtk_free_clk_data(NULL).
+> This leaves clk_data unreleased, causing a memory leak.
+> 
+> Fix this by calling platform_set_drvdata() during probe.
+> 
+> Fixes: 4c02c9af3cb9 ("clk: mediatek: mt8173: Break down clock drivers and allow module build")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
+> ---
+>  drivers/clk/mediatek/clk-mt8173-apmixedsys.c | 2 ++
+>  drivers/clk/mediatek/clk-mt8173-infracfg.c   | 2 ++
+>  2 files changed, 4 insertions(+)
+> 
+> diff --git a/drivers/clk/mediatek/clk-mt8173-apmixedsys.c b/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
+> index d7d416172ab3..65dc4489a09c 100644
+> --- a/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
+> +++ b/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
+> @@ -179,6 +179,8 @@ static int clk_mt8173_apmixed_probe(struct platform_device *pdev)
+>  	if (r)
+>  		goto unregister_ref2usb;
+>  
+> +	platform_set_drvdata(pdev, clk_data);
+> +
+>  	return 0;
+>  
+>  unregister_ref2usb:
+> diff --git a/drivers/clk/mediatek/clk-mt8173-infracfg.c b/drivers/clk/mediatek/clk-mt8173-infracfg.c
+> index fa2d1d557e04..8b69009e1965 100644
+> --- a/drivers/clk/mediatek/clk-mt8173-infracfg.c
+> +++ b/drivers/clk/mediatek/clk-mt8173-infracfg.c
+> @@ -128,6 +128,8 @@ static int clk_mt8173_infracfg_probe(struct platform_device *pdev)
+>  	if (r)
+>  		goto unregister_clk_hw;
+>  
+> +	platform_set_drvdata(pdev, clk_data);
+> +
 
-Interesting!
+This patch doesn't compile.
 
-lspci -tnnnvvv
--[0000:00]-+-00.0  Advanced Micro Devices, Inc. [AMD] Raphael/Granite Ridge=
- Root Complex [1022:14d8]
-           +-00.2  Advanced Micro Devices, Inc. [AMD] Raphael/Granite Ridge=
- IOMMU [1022:14d9]
-           +-01.0  Advanced Micro Devices, Inc. [AMD] Raphael/Granite Ridge=
- Dummy Host Bridge [1022:14da]
-           +-01.1-[01-03]----00.0-[02-03]----00.0-[03]--+-00.0  Advanced Mi=
-cro Devices, Inc. [AMD/ATI] Navi 21 [Radeon RX 6800/6800 XT / 6900 XT] [100=
-2:73bf]
-           |                                            \-00.1  Advanced Mi=
-cro Devices, Inc. [AMD/ATI] Navi 21/23 HDMI/DP Audio Controller [1002:ab28]
-           +-02.0  Advanced Micro Devices, Inc. [AMD] Raphael/Granite Ridge=
- Dummy Host Bridge [1022:14da]
-           +-02.1-[04-0e]----00.0-[05-0e]--+-00.0-[06]--
-           |                               +-02.0-[07]----00.0  MEDIATEK Co=
-rp. MT7925 (RZ717) Wi-Fi 7 160MHz [14c3:0717]
-           |                               +-03.0-[08]----00.0  Realtek Sem=
-iconductor Co., Ltd. RTL8125 2.5GbE Controller [10ec:8125]
-           ...
+    drivers/clk/mediatek/clk-mt8173-infracfg.c: In function ‘clk_mt8173_infracfg_probe’:
+    drivers/clk/mediatek/clk-mt8173-infracfg.c:131:36: error: ‘clk_data’ undeclared (first use in this function); did you mean ‘clk_gate’?
 
-
-realpath /sys/bus/usb/devices/usb1
-/sys/devices/pci0000:00/0000:00:02.1/0000:04:00.0/0000:05:0c.0/0000:0d:00.0=
-/usb1
-                ------               --------------------
-                /                    |
-        This matches the             \--and this matches the chain before
-        root complex                    the MT7925.
-
-Am I on the right path ?
-
->> It is integrated (soldered) to my motherboard.
->
-> Huh? How can an M.2 "Key E WiFi" expansion card being soldered to a
-> "vertical M.2 socket"?
->
-> AFAIK, once the metal shield(s) are unscrewed, it should be replaceable,
-> see
-> https://www.techpowerup.com/review/asrock-b850-steel-legend-wi-fi/4.html
->
-> But it doesn't matter anyway since the issue has gone ;-)
-
-Oh ! Its vertical ! You nailed it!
-I assumed it was soldered because there was no space there for a
-horizontal layout (and I didnt try unscrewing it). Neat!
-
-Thanks,
-Rafael Passos
+Brian
 
 
