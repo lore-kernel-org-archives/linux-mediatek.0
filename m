@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8091FC53219
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 14:35:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40C7FC53219
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 14:42:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3/Q+4IfTspAd2Au/z24TH9Dq9iQ4DvV1SrEP1AYAt/Y=; b=K49uUevW4NXfOOq30WDXqnDC/z
-	vsOjNL66+a8znhP8j2mGIW8P/+wAOoymN7zN0Fk3Fx1/yYSVjpNBokszpmfOYGI/IKOuyDsA5mW/Y
-	hE682UX7ewMBY92A8Zqo7fnQiZkOoTq878zR4zNqhLa6GBAKW3kjuVwpICJbjY5meQNae1RGYkzxJ
-	JjbaYVnnAnXjASvK9chQWW5JxUzMgyod9hK4ZxqFXV19+Ij3bnZ1KwRoFqiePl4leIbGgWe4mLud0
-	dITyEfPuLMn5Huy+0Pu48v/LK7VnAru+2N+5lEjllDE1COj7BwNIS0jwkNFlRFKWm2/RagMUgm7Vu
-	5uN4WlKQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DFq1P2GXspIY/uUf473I92xb3+BXZvYdQ6tdZRmrmW0=; b=daTP07yswt6PuUU5sfyPR3xY/V
+	IuJ9fkhLrQwODEluEGsvlCc1SMjf5pCMDdat68ULH6H7OObxrdK5VMJFDECh8TjxYEZ5yBWyKXtMv
+	RgQ6zNq06lmTwp0ukYDaeveVRVTedrn9Hosev34VIV9gMLPNIOghIk9yWfDhqmBiZbYL7g5zf0U7a
+	QVkWJB32cTFwlN8uod9sDbJ5zDT7pBLxvW2db27YIRZ+XQYP3jbeTIBjAIU9biA02lBWQaArUK74C
+	zoM6I6PNRxJRA3xKyt66xYLCbxL5cECkr7bpYzRpkKZqD8HP6TpR9ZfbjeYbMA67IDvlP9z2hvBPc
+	SwLyg/dA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woitv-00000005WAu-2oDr;
-	Tue, 28 Jul 2026 14:35:23 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1woj0k-00000005XGm-1ONe;
+	Tue, 28 Jul 2026 14:42:26 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woitp-00000005W8v-4C5I;
-	Tue, 28 Jul 2026 14:35:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785249315;
-	bh=hi1tKX7EjWI5J4ogBRa8uDUOJpWIFZD5uMblt8+TA5k=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=DPK+/krdDGlW7ypWcXs70J7Jg8Jj6H0ImjrHo+kXM1WxxwL+PLT5nx/uEDQ37DF40
-	 1IH8wxxUKt6EI+kKy0MjO8C49AQVHXzDIDxFes5kCh1AjiAQ7W5U/bXJRgaX8tX5mN
-	 kZNmv4AhGPoy8l7KsfYTWg9ov0d/nOniJuBkXgTij2wQlUWUKYDYJG0s0WEJzQDsIA
-	 98CF5QL+cilwXgIa4ooFhHpv3CxgOf4Vwl9dJdZXog8W0mMKqUiE+fgRSvjmh3/QUe
-	 aq32xyjL9IrjIhUP3y6Qs9O6Xh2cidVT9N2W/uyLMBowLMlwJ8f3hQhz4oiKa9EF6/
-	 Ed/RZScjTs39A==
-Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7321417E019E;
-	Tue, 28 Jul 2026 16:35:14 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Alessio Belle <alessio.belle@imgtec.com>, 
- Luigi Santivetti <luigi.santivetti@imgtec.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- imagination@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
- linux-kernel@vger.kernel.org, Icenowy Zheng <zhengxingda@iscas.ac.cn>, 
- YoungJoon Lee <getfeus@gmail.com>
-In-Reply-To: <20260728091804.382753-1-wenst@chromium.org>
+	id 1woj0i-00000005XGG-0b0z;
+	Tue, 28 Jul 2026 14:42:24 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 92D2460A5E;
+	Tue, 28 Jul 2026 14:42:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E09B51F000E9;
+	Tue, 28 Jul 2026 14:42:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1785249743;
+	bh=DFq1P2GXspIY/uUf473I92xb3+BXZvYdQ6tdZRmrmW0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=GMtlsPzQy5J8mAtWTLBMWkpqF3++U7zJadHpafD5LQpT2QqDt6MZwZofaXMJ1ar3o
+	 StUGgkG8CC9tknhFNhF9Po6nTcJgOI+5i+NXpXaXe4NeRsO92PECw2SeSZU14BJzaP
+	 8HUYS0pxhvbyykNJvFcVbaw63O1leZ4U7cR56NbU/qsiK23Wk04yrAzdvj0nubusU+
+	 IpHzOd3jlYjG01r7oY46ZwsiJ5zXJW0Y8KNXbvMJ4CBupix0s18e1Ure5PJmkKh+qM
+	 JjBY2zqguDaVvzFpKYR5wFpCBgiFOgNbOSyWp9rC+MElVNIGmVmYJbc7Zyh3IeaPmN
+	 nUn4G34AAI8Fg==
+Date: Tue, 28 Jul 2026 09:42:20 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: linux-kernel@vger.kernel.org, Brian Masney <bmasney@redhat.com>,
+	Stephen Boyd <sboyd@kernel.org>, David Airlie <airlied@gmail.com>,
+	Luigi Santivetti <luigi.santivetti@imgtec.com>,
+	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+	imagination@lists.freedesktop.org,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Alessio Belle <alessio.belle@imgtec.com>,
+	YoungJoon Lee <getfeus@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org, Icenowy Zheng <zhengxingda@iscas.ac.cn>,
+	Simona Vetter <simona@ffwll.ch>
+Subject: Re: [PATCH v4 3/5] dt-bindings: gpu: powervr-rogue: Add MediaTek
+ MT8173 GPU
+Message-ID: <178524973916.2137541.17965482257032885131.robh@kernel.org>
 References: <20260728091804.382753-1-wenst@chromium.org>
-Subject: Re: (subset) [PATCH v4 0/5] powervr: MT8173 GPU support
-Message-Id: <178524931441.575499.11268846943253988242.b4-ty@b4>
-Date: Tue, 28 Jul 2026 16:35:14 +0200
+ <20260728091804.382753-4-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_073518_213839_E88400E6 
-X-CRM114-Status: UNSURE (   7.26  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260728091804.382753-4-wenst@chromium.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,27 +83,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 28 Jul 2026 17:17:58 +0800, Chen-Yu Tsai wrote:
-> This is v4 of my MT8173 PowerVR GPU support series.
+
+On Tue, 28 Jul 2026 17:18:01 +0800, Chen-Yu Tsai wrote:
+> The MediaTek MT8173 comes with a PowerVR Rogue GX6250, which is one
+> of the Series6XT GPUs, another sub-family of the Rogue family.
 > 
-> This time around Mesa was ready for basic testing, using both vulkanmark
-> and glmark2-es2-drm (with Zink). Details below.
+> This was part of the very first few versions of the PowerVR submission,
+> but was later dropped.
 > 
-> Changes since v3 (all in the clk driver patch):
-> - Changed pm_runtime_put() to pm_runtime_put_sync()
-> - Added missing of_node_put() in remove function
+> [1] https://lore.kernel.org/dri-devel/6eeccb26e09aad67fb30ffcd523c793a43c79c2a.camel@imgtec.com/
 > 
-> [...]
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+>  Documentation/devicetree/bindings/gpu/img,powervr-rogue.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
-Applied to v7.2-next/dts64, thanks!
-
-[4/5] arm64: dts: mediatek: mt8173: Fix MFG_ASYNC power domain clock
-      commit: 3549c85d4c0e942d3ac9972a6b35ce0078bd3550
-[5/5] arm64: dts: mediatek: mt8173: Add GPU device nodes
-      commit: 75bfd9e7cdae0ae04dbaaf8dfc487adb67b7680e
-
-Cheers,
-Angelo
-
+Applied, thanks!
 
 
