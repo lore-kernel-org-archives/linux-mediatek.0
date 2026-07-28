@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E847C54F51
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 04:52:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3493DC54F53
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 04:52:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MyHL1M+FyUFACebIlEgp1TCU21fxnyJgg6ZicQjKCjM=; b=NWL6ZLsqmdl+/9L2FvajkF6Tp5
-	hFWF4HwBAYLpB/KCjprfz4uJWnbbtxE9GFKp6ACSpe3Az8UpMhnIz0xlt1KI9Q+eaYfX6oLCiBk0J
-	c4G8Vz7FO6wPDOU8SELtwe4qedeV2TEiz+BF3IdY/xoNjh9OgaiLO2+FooMY8IcU+eDXPuw9g3opE
-	OAwClRvM1t5O6RiIY0JPf8/LNx42hWmJBq1p4BtA3s9S5WjI84wAWvpeLp3caoR9MgKPp5NbrrDQA
-	vV+3h4SU03W5hvv1w2gPYdEPLopwqplaEh/+pEKVhY9ru7vqFIwyVTDT9Q0hkEoXAtQ8I27ctxbKC
-	8xIp8o+Q==;
+	bh=YkSZGNAKERLw0r4rm5+mRvEPG1N+dAz2Bpo8RU1VFZk=; b=0v0BbHRjW7Fm4ngSqtbPBm/20J
+	FP/XTFHbcsfdLgvWp38+BapDFkLAfH8W/4HWx0wN7deBjbvnHPpyKzGBuLevOWpIGpM4wMfdG16Qc
+	+OjW8EbZJsMWxXvCX1vixZKqTeQrEd9/7F/LYqxb2teYJgi+Fb0qBbM+NXevyolYynJ9gfVoMddOz
+	YcWbuEiRdfYaucUCD+ladrQOFWeEKHO7V9J/OL8dHdqA6bQnte1CWTfRNrsVkDY/5bt0eBDtWivMW
+	s/D4GEPU71sRQuy04XSPI3V1T+OBR/7m2UqX3onn+t1gApT/PdNSlyc2PG4qOzxV9YEHVcY2+mr8a
+	+sOF/u2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woZnx-00000004PXD-05k5;
-	Tue, 28 Jul 2026 04:52:37 +0000
+	id 1woZo5-00000004Pbr-1KiZ;
+	Tue, 28 Jul 2026 04:52:45 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woZnq-00000004PT7-11g2;
-	Tue, 28 Jul 2026 04:52:31 +0000
+	id 1woZny-00000004PX7-0p04;
+	Tue, 28 Jul 2026 04:52:39 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.99)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1woZnk-000000004x0-2h8i;
-	Tue, 28 Jul 2026 04:52:24 +0000
-Date: Tue, 28 Jul 2026 05:52:21 +0100
+	id 1woZns-000000004xS-1W8y;
+	Tue, 28 Jul 2026 04:52:32 +0000
+Date: Tue, 28 Jul 2026 05:52:29 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
 	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
@@ -47,17 +47,17 @@ To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
 	Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net 2/3] net: dsa: mt7530: error out on failed reads in
- ATC/VTCR command polling
-Message-ID: <eea1d8f15c54375b3770c23e09fb3217df487169.1785213071.git.daniel@makrotopia.org>
+Subject: [PATCH net 3/3] net: dsa: mt7530: error out on failed reads in
+ MT7531 PHY polling
+Message-ID: <79e85d68d210cc37342978171aa6432aa2954333.1785213071.git.daniel@makrotopia.org>
 References: <cover.1785213071.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1785213071.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_215230_293306_DC878559 
-X-CRM114-Status: GOOD (  14.83  )
+X-CRM114-CacheID: sfid-20260727_215238_245118_CF7745D0 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,93 +72,181 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt7530_fdb_cmd() and mt7530_vlan_cmd() poll the command register
-through a helper which returns 0 when the underlying read fails. A
-failed bus transaction thus clears ATC_BUSY/VTCR_BUSY and is treated
-as successful command completion, and the subsequent ATC_INVALID and
-VTCR_INVALID checks are defeated the same way.
+The MT7531 indirect PHY access functions poll MT7531_PHY_IAC through
+a helper which returns 0 when the underlying read fails, so a failed
+bus transaction clears MT7531_PHY_ACS_ST and the access carries on,
+returning garbage PHY register data to phylib.
 
 Poll using regmap_read_poll_timeout(), which stops on read errors and
-propagates them, and check the completion status read as well. Take
-the MDIO bus lock across the sequence as the switch regmap is set up
-with locking disabled.
+propagates them. These functions hold the MDIO bus lock across the
+whole sequence, so the unlocked regmap accesses remain correct. Remove
+the now-unused _mt7530_unlocked_read().
 
-Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
-Fixes: 83163f7dca56 ("net: dsa: mediatek: add VLAN support for MT7530")
+Fixes: c288575f7810 ("net: dsa: mt7530: Add the support of MT7531 switch")
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
- drivers/net/dsa/mt7530.c | 28 ++++++++++++++++++----------
- 1 file changed, 18 insertions(+), 10 deletions(-)
+ drivers/net/dsa/mt7530.c | 58 ++++++++++++++--------------------------
+ 1 file changed, 20 insertions(+), 38 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 6c8ed00ee9e7..51555060b5eb 100644
+index 51555060b5eb..55131bfd11f6 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -248,15 +248,20 @@ mt7530_fdb_cmd(struct mt7530_priv *priv, enum mt7530_fdb_cmd cmd, u32 *rsp)
+@@ -191,12 +191,6 @@ mt7530_write(struct mt7530_priv *priv, u32 reg, u32 val)
+ 	mt7530_mutex_unlock(priv);
+ }
+ 
+-static u32
+-_mt7530_unlocked_read(struct mt7530_dummy_poll *p)
+-{
+-	return mt7530_mii_read(p->priv, p->reg);
+-}
+-
+ static u32
+ _mt7530_read(struct mt7530_dummy_poll *p)
  {
- 	u32 val;
- 	int ret;
--	struct mt7530_dummy_poll p;
- 
- 	/* Set the command operating upon the MAC address entries */
- 	val = ATC_BUSY | ATC_MAT(0) | cmd;
- 	mt7530_write(priv, MT7530_ATC, val);
- 
--	INIT_MT7530_DUMMY_POLL(&p, priv, MT7530_ATC);
--	ret = readx_poll_timeout(_mt7530_read, &p, val,
--				 !(val & ATC_BUSY), 20, 20000);
-+	mt7530_mutex_lock(priv);
-+
-+	ret = regmap_read_poll_timeout(priv->regmap, MT7530_ATC, val,
-+				       !(val & ATC_BUSY), 20, 20000);
-+	if (!ret)
-+		ret = regmap_read(priv->regmap, MT7530_ATC, &val);
-+
-+	mt7530_mutex_unlock(priv);
-+
- 	if (ret < 0) {
- 		dev_err(priv->dev, "reset timeout\n");
- 		return ret;
-@@ -265,7 +270,6 @@ mt7530_fdb_cmd(struct mt7530_priv *priv, enum mt7530_fdb_cmd cmd, u32 *rsp)
- 	/* Additional sanity for read command if the specified
- 	 * entry is invalid
- 	 */
--	val = mt7530_read(priv, MT7530_ATC);
- 	if ((cmd == MT7530_FDB_READ) && (val & ATC_INVALID))
- 		return -EINVAL;
- 
-@@ -1626,22 +1630,26 @@ mt7530_port_bridge_join(struct dsa_switch *ds, int port,
- static int
- mt7530_vlan_cmd(struct mt7530_priv *priv, enum mt7530_vlan_cmd cmd, u16 vid)
+@@ -553,16 +547,13 @@ static int
+ mt7531_ind_c45_phy_read(struct mt7530_priv *priv, int port, int devad,
+ 			int regnum)
  {
 -	struct mt7530_dummy_poll p;
- 	u32 val;
+ 	u32 reg, val;
  	int ret;
  
- 	val = VTCR_BUSY | VTCR_FUNC(cmd) | vid;
- 	mt7530_write(priv, MT7530_VTCR, val);
+-	INIT_MT7530_DUMMY_POLL(&p, priv, MT7531_PHY_IAC);
+-
+ 	mt7530_mutex_lock(priv);
  
--	INIT_MT7530_DUMMY_POLL(&p, priv, MT7530_VTCR);
--	ret = readx_poll_timeout(_mt7530_read, &p, val,
--				 !(val & VTCR_BUSY), 20, 20000);
-+	mt7530_mutex_lock(priv);
-+
-+	ret = regmap_read_poll_timeout(priv->regmap, MT7530_VTCR, val,
-+				       !(val & VTCR_BUSY), 20, 20000);
-+	if (!ret)
-+		ret = regmap_read(priv->regmap, MT7530_VTCR, &val);
-+
-+	mt7530_mutex_unlock(priv);
-+
+-	ret = readx_poll_timeout(_mt7530_unlocked_read, &p, val,
+-				 !(val & MT7531_PHY_ACS_ST), 20, 100000);
++	ret = regmap_read_poll_timeout(priv->regmap, MT7531_PHY_IAC, val,
++				       !(val & MT7531_PHY_ACS_ST), 20, 100000);
  	if (ret < 0) {
  		dev_err(priv->dev, "poll timeout\n");
- 		return ret;
- 	}
+ 		goto out;
+@@ -572,8 +563,8 @@ mt7531_ind_c45_phy_read(struct mt7530_priv *priv, int port, int devad,
+ 	      MT7531_MDIO_DEV_ADDR(devad) | regnum;
+ 	mt7530_mii_write(priv, MT7531_PHY_IAC, reg | MT7531_PHY_ACS_ST);
  
--	val = mt7530_read(priv, MT7530_VTCR);
- 	if (val & VTCR_INVALID) {
- 		dev_err(priv->dev, "read VTCR invalid\n");
- 		return -EINVAL;
+-	ret = readx_poll_timeout(_mt7530_unlocked_read, &p, val,
+-				 !(val & MT7531_PHY_ACS_ST), 20, 100000);
++	ret = regmap_read_poll_timeout(priv->regmap, MT7531_PHY_IAC, val,
++				       !(val & MT7531_PHY_ACS_ST), 20, 100000);
+ 	if (ret < 0) {
+ 		dev_err(priv->dev, "poll timeout\n");
+ 		goto out;
+@@ -583,8 +574,8 @@ mt7531_ind_c45_phy_read(struct mt7530_priv *priv, int port, int devad,
+ 	      MT7531_MDIO_DEV_ADDR(devad);
+ 	mt7530_mii_write(priv, MT7531_PHY_IAC, reg | MT7531_PHY_ACS_ST);
+ 
+-	ret = readx_poll_timeout(_mt7530_unlocked_read, &p, val,
+-				 !(val & MT7531_PHY_ACS_ST), 20, 100000);
++	ret = regmap_read_poll_timeout(priv->regmap, MT7531_PHY_IAC, val,
++				       !(val & MT7531_PHY_ACS_ST), 20, 100000);
+ 	if (ret < 0) {
+ 		dev_err(priv->dev, "poll timeout\n");
+ 		goto out;
+@@ -601,16 +592,13 @@ static int
+ mt7531_ind_c45_phy_write(struct mt7530_priv *priv, int port, int devad,
+ 			 int regnum, u16 data)
+ {
+-	struct mt7530_dummy_poll p;
+ 	u32 val, reg;
+ 	int ret;
+ 
+-	INIT_MT7530_DUMMY_POLL(&p, priv, MT7531_PHY_IAC);
+-
+ 	mt7530_mutex_lock(priv);
+ 
+-	ret = readx_poll_timeout(_mt7530_unlocked_read, &p, val,
+-				 !(val & MT7531_PHY_ACS_ST), 20, 100000);
++	ret = regmap_read_poll_timeout(priv->regmap, MT7531_PHY_IAC, val,
++				       !(val & MT7531_PHY_ACS_ST), 20, 100000);
+ 	if (ret < 0) {
+ 		dev_err(priv->dev, "poll timeout\n");
+ 		goto out;
+@@ -620,8 +608,8 @@ mt7531_ind_c45_phy_write(struct mt7530_priv *priv, int port, int devad,
+ 	      MT7531_MDIO_DEV_ADDR(devad) | regnum;
+ 	mt7530_mii_write(priv, MT7531_PHY_IAC, reg | MT7531_PHY_ACS_ST);
+ 
+-	ret = readx_poll_timeout(_mt7530_unlocked_read, &p, val,
+-				 !(val & MT7531_PHY_ACS_ST), 20, 100000);
++	ret = regmap_read_poll_timeout(priv->regmap, MT7531_PHY_IAC, val,
++				       !(val & MT7531_PHY_ACS_ST), 20, 100000);
+ 	if (ret < 0) {
+ 		dev_err(priv->dev, "poll timeout\n");
+ 		goto out;
+@@ -631,8 +619,8 @@ mt7531_ind_c45_phy_write(struct mt7530_priv *priv, int port, int devad,
+ 	      MT7531_MDIO_DEV_ADDR(devad) | data;
+ 	mt7530_mii_write(priv, MT7531_PHY_IAC, reg | MT7531_PHY_ACS_ST);
+ 
+-	ret = readx_poll_timeout(_mt7530_unlocked_read, &p, val,
+-				 !(val & MT7531_PHY_ACS_ST), 20, 100000);
++	ret = regmap_read_poll_timeout(priv->regmap, MT7531_PHY_IAC, val,
++				       !(val & MT7531_PHY_ACS_ST), 20, 100000);
+ 	if (ret < 0) {
+ 		dev_err(priv->dev, "poll timeout\n");
+ 		goto out;
+@@ -647,16 +635,13 @@ mt7531_ind_c45_phy_write(struct mt7530_priv *priv, int port, int devad,
+ static int
+ mt7531_ind_c22_phy_read(struct mt7530_priv *priv, int port, int regnum)
+ {
+-	struct mt7530_dummy_poll p;
+ 	int ret;
+ 	u32 val;
+ 
+-	INIT_MT7530_DUMMY_POLL(&p, priv, MT7531_PHY_IAC);
+-
+ 	mt7530_mutex_lock(priv);
+ 
+-	ret = readx_poll_timeout(_mt7530_unlocked_read, &p, val,
+-				 !(val & MT7531_PHY_ACS_ST), 20, 100000);
++	ret = regmap_read_poll_timeout(priv->regmap, MT7531_PHY_IAC, val,
++				       !(val & MT7531_PHY_ACS_ST), 20, 100000);
+ 	if (ret < 0) {
+ 		dev_err(priv->dev, "poll timeout\n");
+ 		goto out;
+@@ -667,8 +652,8 @@ mt7531_ind_c22_phy_read(struct mt7530_priv *priv, int port, int regnum)
+ 
+ 	mt7530_mii_write(priv, MT7531_PHY_IAC, val | MT7531_PHY_ACS_ST);
+ 
+-	ret = readx_poll_timeout(_mt7530_unlocked_read, &p, val,
+-				 !(val & MT7531_PHY_ACS_ST), 20, 100000);
++	ret = regmap_read_poll_timeout(priv->regmap, MT7531_PHY_IAC, val,
++				       !(val & MT7531_PHY_ACS_ST), 20, 100000);
+ 	if (ret < 0) {
+ 		dev_err(priv->dev, "poll timeout\n");
+ 		goto out;
+@@ -685,16 +670,13 @@ static int
+ mt7531_ind_c22_phy_write(struct mt7530_priv *priv, int port, int regnum,
+ 			 u16 data)
+ {
+-	struct mt7530_dummy_poll p;
+ 	int ret;
+ 	u32 reg;
+ 
+-	INIT_MT7530_DUMMY_POLL(&p, priv, MT7531_PHY_IAC);
+-
+ 	mt7530_mutex_lock(priv);
+ 
+-	ret = readx_poll_timeout(_mt7530_unlocked_read, &p, reg,
+-				 !(reg & MT7531_PHY_ACS_ST), 20, 100000);
++	ret = regmap_read_poll_timeout(priv->regmap, MT7531_PHY_IAC, reg,
++				       !(reg & MT7531_PHY_ACS_ST), 20, 100000);
+ 	if (ret < 0) {
+ 		dev_err(priv->dev, "poll timeout\n");
+ 		goto out;
+@@ -705,8 +687,8 @@ mt7531_ind_c22_phy_write(struct mt7530_priv *priv, int port, int regnum,
+ 
+ 	mt7530_mii_write(priv, MT7531_PHY_IAC, reg | MT7531_PHY_ACS_ST);
+ 
+-	ret = readx_poll_timeout(_mt7530_unlocked_read, &p, reg,
+-				 !(reg & MT7531_PHY_ACS_ST), 20, 100000);
++	ret = regmap_read_poll_timeout(priv->regmap, MT7531_PHY_IAC, reg,
++				       !(reg & MT7531_PHY_ACS_ST), 20, 100000);
+ 	if (ret < 0) {
+ 		dev_err(priv->dev, "poll timeout\n");
+ 		goto out;
 -- 
 2.55.0
 
