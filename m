@@ -4,98 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C85FC53219
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 06:29:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5223DC54F4C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 06:37:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xFX8bthatWsOvIJRpA2ZT87HmNwZf+toNO8iYTHN9Ec=; b=xltrYtyenblfPi1fvPHZy7+j0x
-	o8EqmurnZQYU5zkZgS6/Hq/9VYwpvosvoDq8L2r2shIXavTAbtXoNfS1H22i/Naen/3zFF7wqazj3
-	x52aRUmq31/VUS2s3x0eVaYnN/zV2U3Lrh3CDN7i+p4rbM8e470VQxjE+Uds9s0YquCoFBnbKlQfF
-	T1qNnfkUhEVHUCy+oIkHWZ/13PFOpalBS7GDcBfA6RRncQ8ttyv1HzHHh2xcer+viW0bVylzIi/hk
-	PpEsW/w8g4bXWmK1JxQ1524VY5W7Gg+Qv44JK/RgHCGkAPEuOBunIgRtRohoruIzusshTHwH3P/Bd
-	F1dVU1YQ==;
+	bh=iwoDhJK5JZbrMblzbHvyi1tLJRZPTflh+Yp8TazZZnk=; b=sX8zYoVpTw16rVLnAuiq77sfq1
+	Nuy6iOZRmkJADVdsezKryKwJrmJUYvEmAW7cyBlKUcOV4tcLDAvcc2Hn5RG8IBDDxVp2sQASK/f5K
+	vr/V0E/D/NQ+vKXqicORBRK5rz2eIs2o6lAseHw6mpIBYWrpNnm+ihtzYWutD2gXFM9S2vawJemys
+	W9KzWhx8t6D/hWtIPsy2wF+eP9NUZPBh1+VGHodIvpyrIWS94r8BNFc8F110z1T85jJjyjuFTxfpx
+	sMJvws9R1XrU8qnjSniMCzSoaMUxUHzUHk9aeTJCAjan0IQrTORV2uTw8LfbjyIob4is3U5y7180v
+	YpUqNzqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wobJj-00000004Xb2-05UL;
-	Tue, 28 Jul 2026 06:29:31 +0000
-Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
+	id 1wobRb-00000004YJY-0qxj;
+	Tue, 28 Jul 2026 06:37:39 +0000
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wobJg-00000004XaC-0wKU
+	id 1wobRW-00000004YII-3t7i
 	for linux-mediatek@lists.infradead.org;
-	Tue, 28 Jul 2026 06:29:29 +0000
-Received: by mail-ot1-x335.google.com with SMTP id 46e09a7af769-7eb42a2f5feso1540873a34.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 23:29:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785220167; cv=none;
+	Tue, 28 Jul 2026 06:37:37 +0000
+Received: by mail-yw1-x1133.google.com with SMTP id 00721157ae682-81eef95653fso27778007b3.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Jul 2026 23:37:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1785220654; cv=none;
         d=google.com; s=arc-20260327;
-        b=NWTz67TqX+6FOgvPiJVoEhivB/EJcaKBu4wOzYkpbZHoIWFerXWbKZJeZcexcX6ukg
-         1QpA6q5QC5mdVFzAF2OZwHbwlHsig+P7T1Oxx1zGa3799XnyHSghGPXHG4UkiXeO2jFA
-         Rk7gnmn9veKrZewoeNABMv5wXvCC+tYkP9NCzHP5BS5+BsdTnKeUOaK8HarXDONASqV0
-         jCV0zLgH6hup03VN10XkildNDvnQ7gKa4Ifh+0YrB9r8QxeV/EfLxUCBY/Vl+LiMGnm+
-         HtmL11Na6R3HCB1/75U0E1K3ce1gcCexN0Gr/+fCbxkGa9OcvW/T6xtl8QWv2sJJUQMD
-         UQcg==
+        b=PBLFiT/dFdftMP5/5ZVWHUiT8anjcSNDcjndf+VXOCA8m75ssE6A/KgHzGqlbblMer
+         hmt2eNMn66TpqwwYNGNPvf8m+ZdtPNUMrjsQcd33Vq7R6ETUvSIQcB5d4rr9dpkc2myW
+         ryUPidu00GYSIHF38rrg9exe6qRV4dFUwh4cOzigsA4VPPP2R2/2GhZjKVhoJcUxuZl5
+         Vv3jiE+sXC69b92LIWrjs8Dr3fwMqyxwtM3VvM9zmvUcSvZVdEnldAD+vmvAx+cPzFz1
+         7hn8Plm7qnrXN3TeAYUdIsiWEXC9W5k7Yw8sFrVEf3QYh9uEotAE6cX+7MPx6txDr1/E
+         Ub2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=xFX8bthatWsOvIJRpA2ZT87HmNwZf+toNO8iYTHN9Ec=;
-        fh=Mk+NiZLLsbiWo7uwgzxnyjWPvQLvCP7edyeT6nw82Dk=;
-        b=WHgF5/ADiytYVZF4cZkPKJ0e5EoqIGaLnUrJEi/LzPE7wf4F0y/fr6mLiMkR+VNj5G
-         8+8Ubfc6igLiIRFz8lHX6hSixWucY4r1e6upmaRJ0n3+Ww+NKmut7SQ6yfBEMgikusQZ
-         QA5ROhLF2SvfFOWpZiypfCHSCAusYi5vVclljklZy1aZ4TpwPl9UqaH1b20mHVvuezJl
-         Rzhu8BoQVN7nahVXeMTVGVHlovIrqHm/o6Hn52c+fX02cLL2UOT8vgsdXBsHlqQaD9ot
-         RGqd2wHiYay7sqfFt05t4X0rKDTtA3jmfJGZypCNUa/g+0eu+cIeVt8IL6atWh5z6m4t
-         DrMg==;
+        bh=iwoDhJK5JZbrMblzbHvyi1tLJRZPTflh+Yp8TazZZnk=;
+        fh=7/XEjeKUiXp7AvAS2tubupPM4zoGcfCyEaN4lSDStfM=;
+        b=Dql7l3SWqR6I8jd6XZxvG/vlVleRjc11lEFw1OyuMI5IjHkVoffe7gSsUs/fozE15D
+         bbX6jFbfm/XUsL0K/AxCTcL62rRm3ONcF7sQle41WK5yxj3HICaobjfj15UifcMU8PPI
+         lpVTSn5QO/+8dZzvE2bftpX1KENblsSA1zeZMscaTu+nioU4FO+QmdtzchssBGYpl0fp
+         A/q/raKrcqM81073rwyRUWrXDr6IzQ6ARGzvsY0cZWbxZYOz+ZtzdYi3woajGqoKB9qj
+         0XVNhF1iJZfL+YAd3DAfdTKbeSjOtQ8KqPe5dfl0qY8RETOPmIhT0kLqgAuChK2UlY8u
+         XEKQ==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785220167; x=1785824967; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1785220654; x=1785825454; darn=lists.infradead.org;
         h=content-transfer-encoding:content-type:cc:to:subject:message-id
          :date:from:in-reply-to:references:mime-version:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=xFX8bthatWsOvIJRpA2ZT87HmNwZf+toNO8iYTHN9Ec=;
-        b=IDNltfuyxc35GsKJIZWMRIY7r4DAF3BSBuSAIxCEO7QO8InueqaXnksaMv9xDhOIWu
-         evJDseih5zpHmDTB53PBV+bLvWNpp+KlWzBPCHM0RHCZvcfNRJweg2cg5+r1jqU7+CZk
-         cFuRDq19X2nBWlqiK2w/j17we6UJ1ts9S+YLfa2P0g8vPtji3dx/7/xVr3pOP2gZP7aD
-         nlKQfNwI05as/JaBbx44eJUSlhO3/wu2/t1mPPdr8nAkID5u3zbSyzx7ziRnFZPhAneA
-         3SnjV/ushOhMq/+08tMwdWfh97449I6ljfWKCvFWZipuKABMGxLOGwpjr/RWivzMIlMl
-         7Kag==
+        bh=iwoDhJK5JZbrMblzbHvyi1tLJRZPTflh+Yp8TazZZnk=;
+        b=Co1zrsEOx4juqJaB3iFOveAy+RWKwvI2p8hmCJKN2ly2QoNFV8VuYElsAGbtaFNcSp
+         7j0BOZlQeCLd4SH71fc3p1MGqhyObZtq3GYONatTwAX3CaKFGv1OBNyC003TEUeI6KDw
+         HsYwKCJGRtlcva/jTgb+2ykhZz0W9AiUNDF+I=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785220167; x=1785824967;
+        d=1e100.net; s=20251104; t=1785220654; x=1785825454;
         h=content-transfer-encoding:content-type:cc:to:subject:message-id
          :date:from:in-reply-to:references:mime-version:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=xFX8bthatWsOvIJRpA2ZT87HmNwZf+toNO8iYTHN9Ec=;
-        b=EMlSC2NANArCKRvhqGHfqMWpbLTegWQz5v0WWZuVf9n0eO7qmizApmklvzo3g0Y27d
-         SuwFkHezpnYPuv9NSffB3pu8hbiUuOvWTPCGbxon5UxEqRkxD8ajNYPkQ7e1mNzfggWk
-         2LK6JsESbDb/kn2Uoorfvt6BzWYJ2UEgwOyc+cioqgCCf1AF/qoFOMONzt4qr/Yn0hgY
-         /ACEBJeCtly/ScSXMvsJ13CBoDenpEPuV8Zu8qhlUAY6xx1sGaEfmqIRXIlYQqm1ME7P
-         ndkUO4bT7y3BlD0I3rU8jNC+JPWEMEes7LjPmJhlUvKc351dIeoAhgvkh9C419xL7y1e
-         zszg==
-X-Forwarded-Encrypted: i=1; AHgh+Rr3J65ootvWJs0zK5uSQfwLJSCaRmIgLQi1UiJVPEPwFn18v6l+K3FvsDWlcYidxg/vqi7ptlUSZrbW1biptQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxXPzU6lL38ulJsq2i56K266SbAQO+Y75Xiy4c7+2aMuLgCcRX2
-	76apOcNLPTqWJrltbwBlIlHjGgPQNGufQk+miqbsTtEkWx8vCEmWabf4uEke/CZRLjD8KUkBaWN
-	jKZlQqB7/VSp0CA1uHZX6Twx5KC9Pu80=
-X-Gm-Gg: AR+sD10bvPgtdMXF3uLQdsioTj26gIC3R0dc6wdxHycl/LU8F8L4uyxvKoNyMEuIUFf
-	4nkQmcxXG4m+3cYnOCe45PXnEozoyraAwEKUHJ0UdjdYwzaAdF3nUIiJ5ksQMkGn0BYryjuRx+z
-	lA4uhz8I2/8e1J76ZDUNgCx4KpE3bqoclw3hhyf9FzDoMF0gh2E1cvxFK2HUpc4GxwA/uud2Q4f
-	qyA9woBK9S1w9GoHNR/B2enkW0tEor+U03urwtCZtvhyy0NER1OoErQjh505zvKUpKQRDHffiAV
-	Sr11/dv95Go42AQhNYo=
-X-Received: by 2002:a05:6830:67d5:b0:7e9:b4cf:683a with SMTP id
- 46e09a7af769-7efff073fcamr714504a34.26.1785220166999; Mon, 27 Jul 2026
- 23:29:26 -0700 (PDT)
+        bh=iwoDhJK5JZbrMblzbHvyi1tLJRZPTflh+Yp8TazZZnk=;
+        b=CNM6I9j7DhsbNV8UGCXHWHGYUTCIivWofVTQqpbuf3Qmk5ahUR/Yzwv4KBD74uCN4L
+         +w7ykwwnJn/uuZt2IrEhG9LH8ju8hz963gcG3EAblWqEzzY94eNtXrtKE1idS67qy94f
+         FX204JZ1MQ6yM44Ryblc3xSx3qfMIgZW5SlgJXOxoXqfgitmYgOvspacogpcu/0uLahA
+         aEIqBYPHoXVXyUjoUTjJkQ41gy5qVqWEV4lHIwIHRlUsybAkJCqBzHXNCSMHgwJYc/qp
+         mREK5lihLm5VPr72fDsQuyX5gA/jyL+nH6HtA6ubCTkSO/JqNHDpmqCdPzAFGaufG6CZ
+         G6rA==
+X-Forwarded-Encrypted: i=1; AHgh+RoDZro/M9yJx6yjM/PvutrUb6+KCJw3S27Q+9H1GQsudL4dMXx4iXRh2jrHErirrHpIuAKQYNg6XD8Bl+Q7bg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwxdyuOW9hAQdgR/Z4jDevIbhJOLRW3c2n4sX02/RJ6UQYv/ELh
+	Zg7PNbh/kE3Tl1OXEizXCJEPD3P+m/c3WQsmIdqHJ3MV41R4PyGi6nDgA5UChvH/IY2Apq2khm1
+	uKW8Sy0VQ5+1AeNlwqf4X5UFmFjUhpufQZr72OX0u
+X-Gm-Gg: AR+sD12ebYHrgk2NRn/lo1NeuGJyR+v3AkE4aro6PRDLjb5Zz5maORN0AgK4by7DccL
+	fpkm/zdOE/ammUHse3si2D6eXvRLCRl5OnpLlUL2cQB+nF4nM0ArjYcTggAb3txr+cBRFzyKiCc
+	1P/1vGCm9nh+IuZZrTBjsOlNX4sXVSaZikvvldO8NhTvenu1tvnKNg+dTWbQ0idcm1nHC36+/B9
+	ONr5645PudYTkYsiRB5WrGt7rb55wzsl8MzfqB4LNYA8t/AJ3MUyny2rJalGrJeeaFrheaEGdzf
+	OAT6Qbm2XivMGgYO
+X-Received: by 2002:a05:690c:6513:b0:81e:6fd:93b4 with SMTP id
+ 00721157ae682-81f990e37e0mr5299807b3.19.1785220653618; Mon, 27 Jul 2026
+ 23:37:33 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260727091555.1023910-1-wenst@chromium.org> <CA+m4KrCkk_p213=JVVcuxjvO2tCREw7_mL596xu-RWJ0Dz3p5w@mail.gmail.com>
 In-Reply-To: <CA+m4KrCkk_p213=JVVcuxjvO2tCREw7_mL596xu-RWJ0Dz3p5w@mail.gmail.com>
-From: YoungJoon Lee <getfeus@gmail.com>
-Date: Tue, 28 Jul 2026 15:29:12 +0900
-X-Gm-Features: AUfX_mz3O1zrsPa-7WIfg6xlEr6_-GsvV0PXqP_1Vgrh1Mtk_4OUM3iE6QtlIxg
-Message-ID: <CA+m4KrDRARp+qA3cTQG8sb=GtksFMdSjzCKmw1467HakFdiHmg@mail.gmail.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 28 Jul 2026 14:37:22 +0800
+X-Gm-Features: AUfX_myB_DUT8i6FRV-3BSUxtj0ldOLM5BCdGMqxKm6_-hJ1ByrCEGHtFfO4OGY
+Message-ID: <CAGXv+5HXf9U6CdMudVkrWL_62jktW6jYQvtrjAFGc=+UnoKQXA@mail.gmail.com>
 Subject: Re: [PATCH v3 0/5] powervr: MT8173 GPU support
-To: Chen-Yu Tsai <wenst@chromium.org>
+To: YoungJoon Lee <getfeus@gmail.com>
 Cc: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
@@ -110,8 +107,8 @@ Cc: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260727_232928_367869_0362F398 
-X-CRM114-Status: GOOD (  42.25  )
+X-CRM114-CacheID: sfid-20260727_233735_053667_4C86923A 
+X-CRM114-Status: GOOD (  53.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,152 +123,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
-
-I am testing the upstream Mesa PowerVR Vulkan driver and Linux PowerVR
-DRM driver on a Google Elm Chromebook with a MediaTek MT8173 SoC and a
-PowerVR Rogue GX6250 GPU.
-
-I can reliably reproduce a GPU device loss and permanent process hang
-using vulkaninfo in a clean console-only environment, without GNOME,
-GDM, Mutter, or another graphics application running.
-
-System information:
-
-Device: Google Elm Chromebook
-SoC: MediaTek MT8173
-GPU: PowerVR Rogue GX6250
-Architecture: aarch64
-Distribution: Arch Linux ARM
-Kernel: Linux 7.1.3-stb-cbm-pvr-v3
-Mesa: 26.1.5
-Firmware: powervr/rogue_4.40.2.51_v1.fw
-Kernel parameter: powervr.exp_hw_support=3D1
-Vulkan ICD: /usr/share/vulkan/icd.d/powervr_mesa_icd.json
-Vulkan library: /usr/lib/libvulkan_powervr_mesa.so
-
-The kernel driver and firmware initially load successfully:
-
-powervr 13000000.gpu: [drm] Running on unknown hardware; expect issues.
-powervr 13000000.gpu: [drm] loaded firmware powervr/rogue_4.40.2.51_v1.fw
-powervr 13000000.gpu: [drm] FW version v1.0 (build 6476056 OS)
-[drm] Initialized powervr 1.0.0 for 13000000.gpu on minor 1
-
-I then run:
-
-env
-PVR_I_WANT_A_BROKEN_VULKAN_DRIVER=3D1
-VK_DRIVER_FILES=3D/usr/share/vulkan/icd.d/powervr_mesa_icd.json
-VK_LOADER_DEBUG=3Dall
-LD_BIND_NOW=3D1
-vulkaninfo --summary
-
-The Vulkan loader successfully detects the physical device:
-
-Original order:
-[0] PowerVR Rogue GX6250
-Sorted order:
-[0] PowerVR Rogue GX6250
-
-It then reaches the device-creation path:
-
-vkCreateDevice layer callstack setup to:
-<Application>
-||
-<Loader>
-||
-<Device>
-Using "PowerVR Rogue GX6250" with driver:
-"/usr/lib/libvulkan_powervr_mesa.so"
-
-Immediately afterward, Mesa prints:
-
-MESA: warning: pvr_arch_job_context.c:73:
-FINISHME: Missing reset support for brn51764
-
-MESA: warning: pvr_arch_job_context.c:76:
-FINISHME: Missing reset support for brn58839
-
-MESA: warning: pvr_arch_job_context.c:523:
-FINISHME: Missing support for brn62269
-
-MESA: warning: pvr_arch_border.c:244:
-FINISHME: Devices without tpu_border_colour_enhanced require entries
-for compressed formats to be stored in the table pre-compressed.
-
-Approximately two seconds after starting vulkaninfo, the kernel reports:
-
-powervr 13000000.gpu: [drm] ERROR GPU device lost
-
-vulkaninfo does not return. It remains in uninterruptible sleep:
-
-PID PPID STAT WCHAN CMD
-526 434 Dl+ synchronize_srcu vulkaninfo --summary
-
-/proc/526/status:
-State: D (disk sleep)
-
-/proc/526/wchan:
-__synchronize_srcu
-
-The current syscall is ioctl, and vulkaninfo is the only process
-holding /dev/dri/renderD128.
-
-The blocked process has this kernel stack:
-
-__synchronize_srcu
-synchronize_srcu
-drm_dev_unplug
-pvr_power_reset
-pvr_mmu_flush_exec
-pvr_mmu_op_context_destroy
-pvr_vm_bind_op_fini
-pvr_vm_unmap_obj_locked
-pvr_vm_unmap
-pvr_ioctl_vm_unmap
-drm_ioctl_kernel
-drm_ioctl
-__arm64_sys_ioctl
-invoke_syscall
-el0_svc_common
-do_el0_svc
-el0_svc
-
-The observed sequence is therefore:
-
-The PowerVR kernel driver and firmware initialize successfully.
-vkCreateInstance succeeds.
-Physical-device enumeration succeeds and reports the GX6250.
-Execution reaches vkCreateDevice.
-The kernel reports GPU device lost.
-The process enters the PVR VM-unmap/reset cleanup path.
-It hangs indefinitely in drm_dev_unplug -> synchronize_srcu.
-
-This appears to expose two related issues:
-
-GPU device loss during Vulkan device creation.
-A permanent kernel hang in the device-loss cleanup/reset path.
-
-I am not assuming that the FINISHME messages for brn51764, brn58839,
-brn62269, or the border-colour path are necessarily the direct cause.
-I included them because they are the final Mesa messages printed
-immediately before the failure.
-
-Could you please advise whether the GX6250 hardware revision used by
-MT8173 is expected to work with the current experimental driver, and
-whether this should primarily be reported against Mesa, the Linux
-PowerVR DRM driver, or both?
-
-I can provide the complete logs or run a minimal Vulkan reproducer
-that separately records vkCreateInstance, vkEnumeratePhysicalDevices,
-and vkCreateDevice if that would be useful.
-
-Best regards,
-
-YoungJoon Lee
-
-2026=E5=B9=B47=E6=9C=8828=E6=97=A5(=E7=81=AB) 0:48 YoungJoon Lee <getfeus@g=
-mail.com>:
+On Mon, Jul 27, 2026 at 11:49=E2=80=AFPM YoungJoon Lee <getfeus@gmail.com> =
+wrote:
 >
 > Hello,
 >
@@ -284,7 +137,10 @@ mail.com>:
 >
 > Kernel:
 >   Linux 7.1.3-stb-cbm-pvr-v3
->
+
+Please at least try linux-next. There's around 30 patches for powervr
+between v7.1 and next-20260727, 15 if you count from v7.1 to v7.2-rc1.
+
 > Relevant kernel configuration:
 >   CONFIG_DRM_POWERVR=3Dm
 >   CONFIG_COMMON_CLK_MT8173_MFGTOP=3Dy
@@ -340,7 +196,11 @@ mail.com>:
 > After the failure, regulator_summary reports:
 >
 >   vgpu  0  0  0  normal  1000mV  0mA  700mV  1350mV
->
+
+This is unrelated. This regulator output is _really_ unused. "vgpu" is
+just the default name on the PMIC.
+
+
 > This output was collected after the GPU had already been reported lost,
 > so I do not know whether the regulator state was different during probe
 > or immediately before the failure.
@@ -430,7 +290,13 @@ mail.com>:
 >
 > The remaining problem is that the GPU becomes lost approximately six
 > seconds after initialization.
->
+
+Sorry. I'm not seeing this on my device. I'm running the patches on
+top of next-20260727 this round.
+
+
+ChenYu
+
 > Could this be related to an interrupt not being delivered, firmware
 > heartbeat handling, reset sequencing, runtime PM, a missing regulator
 > consumer relationship, or another MT8173-specific power-domain
