@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C207C53219
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 20:57:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B6C2C54F51
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Jul 2026 20:59:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7pPCJpmxouqYb2+iO4LLS66Umd/QQeZr0uempkZHs5Y=; b=e8S2RmdPauCxC0sJ3bUaCjWRdy
-	Ykhdhtm8+F8F1vU0h3vcN0GIjQejGnMatHoahG3tOud2ye9g67oWgj3N2a1nI2sX1d+GtWpUvpncx
-	3JkowwPJ0O4jSvOTz9MEDFwGPtgddwejZZDt0tknlZgF1Qn4DRZxcNP8I13AV0QBWmDQtSEBhhulF
-	miDPDYuC5HDJ1m1SSMEQhUS/NWCKoKcr5T0yMtsqM5SJuld9BoWmYXPJFvXbFBRPiVB/kJwjHs6RK
-	sYMf4TlE60nsmY8H/KcDHgkllY2iZTRXt3oi3V8tVjSlcc2YXTJI7MODEXx5YptPjnr614Xyip643
-	FW8qabcg==;
+	bh=yqFpRE1TaLcYQTYUmiej5bLJgJn3ouN/OqeUA5dEOaw=; b=VlZLf55HiyeHD4ccHgTU+JRbfH
+	RXMEoXpbJT/78WGWbtGNtsSd0vl9tdq8Y7TMv7Y0l+pIZrEAnSuWvGVsu3tJmayVqas+mOsYezOZY
+	ssUC6US21/J/yJ+SdmxV3Y3euvhJ5xY7npxM1Zw9UC9aXzuTBXBTSyv1sWyg+W4P4r9SOMLRev4rX
+	0pOlzBtXrwMjzc0+Kp5VB9k9N2fhXG9X972mu+FL0gcTRmVy6ZWPTrMACMhYp3ShPY2zTCdyCyxP1
+	IgSiAUQl52QBWKPQtJXqN4A3fJUzXLRpZmvAli7doIDij+2EZxhciDPt2hhsq/2585CZees0tZPGe
+	EKW6WT6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woorm-00000006F3T-0Vvd;
-	Tue, 28 Jul 2026 20:57:34 +0000
+	id 1wootr-00000006FRU-48cB;
+	Tue, 28 Jul 2026 20:59:43 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1woorj-00000006F2o-1DqP;
-	Tue, 28 Jul 2026 20:57:32 +0000
+	id 1wootj-00000006FMY-2hgX;
+	Tue, 28 Jul 2026 20:59:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=7pPCJpmxouqYb2+iO4LLS66Umd/QQeZr0uempkZHs5Y=; b=pl+pnjYYiKYC++aDrkiufkaS/F
-	USyFANcNKazsHm1WMrEYn5mO7oKjGKBcNjVRUqNhd+SwqLrchSAaulh1Uibhbz9O8qAobeCdiZE2l
-	vQLAmQ831jly0vEkuK+ZkOV8MBPHKluBiOJqT59AUYcEGhpPQPk4QxeiewK7jqG1Rpak=;
+	bh=yqFpRE1TaLcYQTYUmiej5bLJgJn3ouN/OqeUA5dEOaw=; b=J4rTOcH7idYaNPYf9IxBN9iBK1
+	+pgSZX/JVqtfpxFdxcrnlkdTajLxcpWhUJTqpSdas8gQukLcT1Fh6EY8YRpiSEvXYz91uFzXI7DX1
+	93tHrRWfSU80vrl/md7l3WXvPqVHeZUQBaydmyLI9tyBSsI6v46mNngkXDaDaBjX1c2E=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1woorP-00EhKZ-F9; Tue, 28 Jul 2026 22:57:11 +0200
-Date: Tue, 28 Jul 2026 22:57:11 +0200
+	id 1wootT-00EhMm-LT; Tue, 28 Jul 2026 22:59:19 +0200
+Date: Tue, 28 Jul 2026 22:59:19 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Daniel Golle <daniel@makrotopia.org>
 Cc: "Chester A. Unal" <chester.a.unal@arinc9.com>,
@@ -52,18 +52,18 @@ Cc: "Chester A. Unal" <chester.a.unal@arinc9.com>,
 	Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net 1/3] net: dsa: mt7530: check bus->read() errors in
- the MDIO regmap backend
-Message-ID: <c2ad091c-e594-436d-a245-9b3abf17de94@lunn.ch>
+Subject: Re: [PATCH net 2/3] net: dsa: mt7530: error out on failed reads in
+ ATC/VTCR command polling
+Message-ID: <0c740a09-fd5f-4ca3-b940-9e034519304c@lunn.ch>
 References: <cover.1785213071.git.daniel@makrotopia.org>
- <3c628e48276c2e5522c8795a6be60d11c7a76a7d.1785213071.git.daniel@makrotopia.org>
+ <eea1d8f15c54375b3770c23e09fb3217df487169.1785213071.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <3c628e48276c2e5522c8795a6be60d11c7a76a7d.1785213071.git.daniel@makrotopia.org>
+In-Reply-To: <eea1d8f15c54375b3770c23e09fb3217df487169.1785213071.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_135731_336933_85CCC1CE 
-X-CRM114-Status: GOOD (  11.73  )
+X-CRM114-CacheID: sfid-20260728_135935_686616_04E5CC79 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,17 +78,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 28, 2026 at 05:52:14AM +0100, Daniel Golle wrote:
-> bus->read() returns a negative errno on failure, but
-> mt7530_regmap_read() assigns it to a u16, truncating e.g. -ETIMEDOUT
-> into 0xff92, and returns success. The garbage word is then consumed as
-> register data, and read-modify-write cycles write it back to the
-> switch. Check both reads and propagate their errors.
+On Tue, Jul 28, 2026 at 05:52:21AM +0100, Daniel Golle wrote:
+> mt7530_fdb_cmd() and mt7530_vlan_cmd() poll the command register
+> through a helper which returns 0 when the underlying read fails. A
+> failed bus transaction thus clears ATC_BUSY/VTCR_BUSY and is treated
+> as successful command completion, and the subsequent ATC_INVALID and
+> VTCR_INVALID checks are defeated the same way.
 > 
-> The same defect existed in mt7530_mii_read() since the driver was
-> introduced and moved into the regmap backend unchanged.
+> Poll using regmap_read_poll_timeout(), which stops on read errors and
+> propagates them, and check the completion status read as well. Take
+> the MDIO bus lock across the sequence as the switch regmap is set up
+> with locking disabled.
 > 
 > Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
+> Fixes: 83163f7dca56 ("net: dsa: mediatek: add VLAN support for MT7530")
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
 Reviewed-by: Andrew Lunn <andrew@lunn.ch>
