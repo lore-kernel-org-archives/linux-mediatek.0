@@ -4,106 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9872EC53219
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2026 02:55:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7446C53200
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2026 03:32:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Z0l4Bp+5+Y4yFZ5XasMMueRCytlXMKNfVRo7vlTlFys=; b=DBPPOIQXvwadBnybdKN5RbED/2
-	3Ai4ZNXPBGNpNZ9NzvVmcgIjV+2S8LS+oLEd5OEpjx7o3Oaj8D77nwMvuflJS06zYXqOmcteV7d3l
-	hdUwJoNAZUNQ0fOk5+x7Z6p70ZAaVQxjl1ThKF8aFwz6Ha3S6Dd9IuOJRCkmez2XE+4RfRAa3TQtV
-	UWh9G1mgA+S5A0KxAGdhdg9G2RROmk4dN2p2yTChV/0teGn8QLzO5UEVaGUgLZVFysc6BX2shPVZ8
-	+oEPnIbdQ4PIUhrFR9aq9Bj7JESIPAyX2EY1Nj63cT1Q6ax9CW3nanw5l8NuSdN9SCGB4+s4XCKxj
-	yXvSd1JQ==;
+	bh=YphEsPuwfO2GAZ8oScDaP5O5VSQEM8qtQtqlvFzmOwc=; b=Z5wEOOjMVLsSCa1I8ioqqnXKAP
+	8QNFBE8kIUQlgWAlEqUEYQR8AcK8Pzwa0QFHU/KSkmxp4ZRYyrI4nRfBUVqSeqtChOOBzdpzimLq8
+	D8b7E6KTaK4EgKE3mRy508jDQU19cqZF/eFVl1ksfb/brvUSMPebvExNk6SXPVhcBFTFHVz7LZjb+
+	xwGqJJUpGw3rP9aomH/sk71GHqR0w0M0BfquZTIW3UWWH6Hv0uG0GPbeJgrR/NGxhknE+qDs2Jz5W
+	HRQe+oWkF/q/hn7kgro+nb6PldFLX4BSZyhuA0LYp8/43SlQoxfaY26zxsMWp6Qpned1Y3kL2ugFk
+	qUlGHncw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wouS7-00000006izM-3gQy;
-	Wed, 29 Jul 2026 02:55:27 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1wov20-00000006lAG-1frL;
+	Wed, 29 Jul 2026 03:32:32 +0000
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wouS2-00000006iys-0p4r;
-	Wed, 29 Jul 2026 02:55:26 +0000
-Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 66SItqfk2091613;
-	Wed, 29 Jul 2026 02:55:15 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=
-	corp-2025-04-25; bh=Z0l4Bp+5+Y4yFZ5XasMMueRCytlXMKNfVRo7vlTlFys=; b=
-	Lf7kTEK0akjzIKseRwobzotSPLwF38iG8WLyF5wkg4H8qdbrBBSZUaFbVEbZrqO6
-	fk6tHcggIOyKHSu+fl9wMpoTdzwDDGD3FIc915P8GTLyJaV4PttBjBwurG74ogvE
-	Gi/tD6mER42AW5Q86RwWo1SoNkRzuceoIivnPE7Kl10/UagX4yJWXBX50LwKiE9q
-	MW1Q7P3uilD5/aGLeVkoXH3dHn0iOxq8umd1KOezupUQGdB6xlqRG+LQKp96rewt
-	OVxzPOeGlQQRFOGB7CNJNiOnNs/IiXKCSgsxK+Tldxp+XOBAqT020B2HoPRtSXWb
-	aTtNrH04sFjA80aCwybwUQ==
-Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.appoci.oracle.com [147.154.114.232])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4fmqyyd83q-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 29 Jul 2026 02:55:15 +0000 (GMT)
-Received: from pps.filterd (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.7/8.18.1.7) with ESMTP id 66T2o5NO001420;
-	Wed, 29 Jul 2026 02:55:14 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 4fnh87p0mm-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 29 Jul 2026 02:55:14 +0000 (GMT)
-Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.18.1.12/8.18.1.12) with ESMTP id 66T2t8jT012133;
-	Wed, 29 Jul 2026 02:55:13 GMT
-Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 4fnh87p0jb-5;
-	Wed, 29 Jul 2026 02:55:13 +0000 (GMT)
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: alim.akhtar@samsung.com, bvanassche@acm.org,
-        James.Bottomley@HansenPartnership.com, linux-scsi@vger.kernel.org,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Avri Altman <avri.altman@sandisk.com>, ed.tsai@mediatek.com
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
-        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com,
-        peter.wang@mediatek.com, alice.chao@mediatek.com,
-        naomi.chu@mediatek.com, chun-hung.wu@mediatek.com
-Subject: Re: [PATCH v3 0/3] ufs: Add callback for vendor-specific RTT capability
-Date: Tue, 28 Jul 2026 22:54:59 -0400
-Message-ID: <178508193507.4027291.7150424989200322423.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260615055802.105479-1-ed.tsai@mediatek.com>
-References: <20260615055802.105479-1-ed.tsai@mediatek.com>
+	id 1wov1w-00000006l96-2kP8
+	for linux-mediatek@lists.infradead.org;
+	Wed, 29 Jul 2026 03:32:30 +0000
+Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-81f52945098so10119647b3.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 28 Jul 2026 20:32:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1785295947; cv=none;
+        d=google.com; s=arc-20260327;
+        b=nlgLyv+AEwL8qYItHBfPj5cwBX47wD12IGLKqEMzZ2ScPFCyjRvLpLn+ZmZx5AXaz5
+         WPdGDDUKn3yackT1t6qDzOS29Fp5JBewYPn7oYiq400O7zkuudN38DcR7hpiL3+IiyaI
+         oQuhrCVRJCQzMrkxPeAixzEticS5VWrG2bLkO7WpzmG/XLjvnxP+CdVcJnb1p0m0zoAD
+         O15ovXisLXy3YCqM66E4eP9RhbB1iuzUy7v/y3mXcmsjeYw/Q5QGKiXDK1AIOWusZZDX
+         edcZtxcPz0sE+yTJbzJr0Cz6lAM9IFNcYM7blOLnfZs/qr0S7UMkMWWXNis+ZJWWMRUO
+         LUKw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=YphEsPuwfO2GAZ8oScDaP5O5VSQEM8qtQtqlvFzmOwc=;
+        fh=Dc3SAdiL7Tna8gLOgLyzFFPdUafjpP2J/IEMXhbrdOg=;
+        b=XQU+Y/T0DCK1WKGSLMx0HOwljVlfBT9sxvDNi+/INiPbl/gA8KNkHqY3c7ssbMtPcN
+         k6gpfHiBmbOKzBKLdCUH9y1JVHhQK3BHODoe+IWLTv/GLf1oPX3QuTjtzOuCbiEhoS9F
+         /MkCdGdzeR8oE0XHjQ+NsjLSTTjHwjkrbwaDGZwi4KJ423w5wvnDNiFYFP/wymtxlyIB
+         3gJNUTmo8uuENPNYweRFwXP8SewUeszWLWCv+c766+pFAO0bqWIql/fmmcIYmnBDmq3s
+         uy1tlbDosKQ46jL42Z+Sepzbb7aEnQ20nY9nbuxsRNdby9BVZJom01OGQqclJyPxiZt7
+         qGIw==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1785295947; x=1785900747; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=YphEsPuwfO2GAZ8oScDaP5O5VSQEM8qtQtqlvFzmOwc=;
+        b=GjLdz0FLvlV4B9bOP7KpB5gZ+bCia+WQk+ZuGWy5VNa+YvH20w2qL8TDHHa0lOi5eg
+         xAgCPDZTqxrnnzBYzZXiau/vlabIuNKUn2vwRBXZcCdNoVaq2F7NaDe42V0bBgeG+prl
+         eO9e6tloHad99NNeHwdRDgpQEOf4LVCtlP3gw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785295947; x=1785900747;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=YphEsPuwfO2GAZ8oScDaP5O5VSQEM8qtQtqlvFzmOwc=;
+        b=CLj6yiTYmi3hoXtqJaqqczr9yDDktr9nhI1IdoSbxXKCoP/SBRTFfJ3GlcGvJfy7PJ
+         9iAb5Vv+17QcGo+Lj2sp6Ri6mhYE5XoU9ZE8yPZw9i8pXHkKTm5V2ruwFGTbzYLkwm0g
+         MOt00hydYV4vm3hy8HRn9U49QqAmI4SZmtenZ3ryjv6bsrBQN4wCrFOm6m6XI0TI68yM
+         9FX1oZDWdeZCII3+OH1n1VF77Q4AgeTBjDsNNkFXzkaImZYV8PsT5McvIuXbqSke7thE
+         jxku2Zt5LgP5/di0bJbT+pqTlfCiEadrxiXuDS7qTsJ2gWZb2emVy23oxg0WJXYlmRqa
+         gRCw==
+X-Forwarded-Encrypted: i=1; AHgh+RpgjvmGVQL50kIR4IYuW4kVS84IReWYOx2H8u1sidJahOujF6ugw93439H4M0QaIMJMppyfI94f+q/E9OIL/w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxpQtLo+EBWgxlGLIjtFXg2PFXi/nACxTjOcUFFatMoSM9DHZbH
+	bxIJ4g11slaal1oD70PE+RHnS0a/Z6jugzmhBRq6Pv6bgOa6aEJETZAVpANEDGFTu7p0LLFodf7
+	3dUugtmukXoIG8w5x3n6KHjubXis/XADpAWB+OQAS
+X-Gm-Gg: AR+sD117ILXR4ucVi3+EcRen1HZo6p0a3QVud14Nbs9rCYlSq54UioV/vfzRPX89+Cz
+	8Im5+AQ+MWprHtiD7czmrYogxuOxfBYF6lfvNNcZxT/oXSyIKj78sGp2AglZKvDK7V4RaGxb61m
+	OtFhUgEENY8OHuk1PFbvqF8BpJoZV1iFkV4zlQ6lFO2NFZ+qlsCoD4nAYb3xvaSScyE6aZgBiJw
+	60ymTtnz688ilyUPFYNScklGeBfBIWZ7Aju+m9uPeVi7QqTWqYkPieI8SbV8Ojk5SssmJea+BMf
+	HGovqN0tjtXUofhGgJcZauelZ6A6r+aqQSjq0k3Z9I7pMly4ipwvkJrkvaqtYK7ZlT6lqWctb8s
+	=
+X-Received: by 2002:a05:690c:250a:b0:81d:455b:5fdc with SMTP id
+ 00721157ae682-81fa7a235edmr3133467b3.28.1785295947414; Tue, 28 Jul 2026
+ 20:32:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-29_01,2026-07-28_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- lowpriorityscore=0 mlxscore=0 suspectscore=0 adultscore=0 mlxlogscore=952
- bulkscore=0 phishscore=0 spamscore=0 malwarescore=0 classifier=spam adjust=0
- reason=mlx scancount=1 engine=8.19.0-2606160000 definitions=main-2607290021
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzI5MDAyMSBTYWx0ZWRfX8CIH5Lx9gjXp
- AjTPolwFrdrU2iIJa22IXKEzYmF+Vidr8tapzLtEcEGEzPfSNwFLHSckgs4WJkX6Kcn2u4dXMtX
- u+2GCnu1eCl1Rr8hn+MT1rO8VA1uDten1y6/VMFTxJQ/GyAHS20r
-X-Proofpoint-GUID: lrzFVhjw-w_ldy1upAbIsbKIMs9ldxqp
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzI5MDAyMSBTYWx0ZWRfXzd7THBL1SPuC
- xqgzgPB4q3znGF9RhyprQbaujWRZGlL4Jg9rvcaLcYTwKLLFZYz1mttQcLOeKljB+ejMbCndSJC
- Pzt4x4yY/B67WP0xwMC6cZFrhyJlOtxpvCRWtO2eMjCE0lypycFEUc/qjxfjj2enrqUAPd35pvU
- fY5ZzTo8ROH3ooVXTrPht65ZGWO3ntCZlOFOTUO5A8hM1KPEwLfOcFwDduCB5LLHe3UgdxYrXJi
- EPRy8CMm1RlNpGSbfLCHgFYcOVKboaYANT8qWNAVHOPl1DEWIk+cVIuqABbleNv2XD2J6nNCEpS
- Npui57bA2EaOg9GsJXar2Of8NRLrRIvVkBtvfpM0Y19ocja5bk/WJESbpKbahYIepJq1HSFsGlV
- 6WjefCyf4mHlRHD/zLIYBEiOWVNgPJ0Lvg6UORcXZFHAfTotaG3etE4D2R1sH1PudckOeIQfZyk
- D5W/qNQF+y5g93poGsA==
-X-Authority-Analysis: v=2.4 cv=HNnz0Itv c=1 sm=1 tr=0 ts=6a696b93 cx=c_pps
- a=OOZaFjgC48PWsiFpTAqLcw==:117 a=OOZaFjgC48PWsiFpTAqLcw==:17
- a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=jiCTI4zE5U7BLdzWsZGv:22 a=BqU2WV_vvsyTyxaotp0D:22 a=VwQbUJbxAAAA:8
- a=mpaa-ttXAAAA:8 a=AHtIWjdTHCXrM6kK-bEA:9 a=QEXdDO2ut3YA:10
-X-Proofpoint-ORIG-GUID: lrzFVhjw-w_ldy1upAbIsbKIMs9ldxqp
+References: <20260728091804.382753-1-wenst@chromium.org> <amiqKRkFItYwD6oL@redhat.com>
+ <CAGb2v64zUO-azpTuei6LCypad2noGFbg+EmaBC1iidoZ2stQzw@mail.gmail.com>
+ <c1048eae-72c5-4e2e-ac49-25e2c4297018@collabora.com> <CAGb2v67VRhy_xzkdwUAYhzM_sWzoXyfZ3rYSHYLYaxuve9H17w@mail.gmail.com>
+ <a0ae9525-9288-4d13-a080-9cb3d965d536@collabora.com> <CA+m4KrAvATV9qMMN9h+tKcPdrHRp7-jFJ0-Jq3DeCZLi3Z6RsA@mail.gmail.com>
+In-Reply-To: <CA+m4KrAvATV9qMMN9h+tKcPdrHRp7-jFJ0-Jq3DeCZLi3Z6RsA@mail.gmail.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 29 Jul 2026 11:32:16 +0800
+X-Gm-Features: AUfX_my7lXKe9Z2oOqmBCydrADFp6DxbpdPpz-KqJ25BL6ZYGxlwr20b-0pppV8
+Message-ID: <CAGXv+5G8zPGb3SUwnzuutCF_U=+NKB4VQBsu+the6nLUqM-RDg@mail.gmail.com>
+Subject: Re: [PATCH v4 0/5] powervr: MT8173 GPU support
+To: YoungJoon Lee <getfeus@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, wens@kernel.org, 
+	Brian Masney <bmasney@redhat.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Alessio Belle <alessio.belle@imgtec.com>, 
+	Luigi Santivetti <luigi.santivetti@imgtec.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	imagination@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
+	linux-kernel@vger.kernel.org, Icenowy Zheng <zhengxingda@iscas.ac.cn>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_195522_355950_7CB92BE5 
-X-CRM114-Status: GOOD (  12.10  )
+X-CRM114-CacheID: sfid-20260728_203228_775320_B267C357 
+X-CRM114-Status: GOOD (  43.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,28 +126,235 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 15 Jun 2026 13:57:14 +0800, ed.tsai@mediatek.com wrote:
+On Wed, Jul 29, 2026 at 8:08=E2=80=AFAM YoungJoon Lee <getfeus@gmail.com> w=
+rote:
+>
+> Hi Chen-Yu,
+>
+> Thank you for posting the v4 series.
+>
+> I tested the complete v4 series on my MT8173 Chromebook, but I am
+> seeing a GPU device loss as soon as Mesa initializes the Vulkan device.
+>
+> My current setup is:
+>
+>   Board: Google Elm / Acer Chromebook R13 (CB5-312T)
+>   Kernel:
+>     linux-next next-20260727
+>     commit: 33d6e5134c70446eddafbb3fd5ad088e848a7ad6
+>     (next-20260727-5-g33d6e5134c70)
+>
+>   Kernel release: 7.2.0-rc5-next-20260727-stb-cbm-next-pvr-v4+
+>
+>   Mesa: 26.1.5
+>   vulkan-powervr: 26.1.5
+>   Firmware:
+>     rogue_4.40.2.51_v1.fw
+>     SHA256:
+>     f44b7056992fb4057c987dcd7073468bec628aa56cb9815b1162f1cb7c1d73f2
 
-> The first patch adds the get_hba_nortt() callback to the UFS core layer,
-> allowing vendor drivers to provide dynamic, platform-specific RTT
-> capability handling.
-> 
-> The second patch implements this callback in the MediaTek UFS driver,
-> distinguishing between legacy platforms (which require the RTT to be
-> limited to 2) and newer MT6995 B0+ platforms (which can use the value
-> from the capability register directly).
-> 
-> [...]
+My firmware blob is different from yours:
 
-Applied to 7.3/scsi-queue, thanks!
+powervr 13000000.gpu: [drm] loaded firmware powervr/rogue_4.40.2.51_v1.fw
+powervr 13000000.gpu: [drm] FW version v1.0 (build 6503725 OS)
 
-[1/3] ufs: core: Add get_hba_nortt callback for vendor-specific RTT capability
-      https://git.kernel.org/mkp/scsi/c/e7896d02cb4d
-[2/3] ufs: mediatek: Implement get_hba_nortt callback for RTT capability
-      https://git.kernel.org/mkp/scsi/c/75f529a7bcd4
-[3/3] ufs: core: Remove max_num_rtt field from ufs_hba_variant_ops
-      https://git.kernel.org/mkp/scsi/c/7ebadbae3dd7
+SHA256: 1456504351bd041f0bf96667403ad32460fc7b807c09858df1f083e207323e4a
 
--- 
-Martin K. Petersen
+Funny thing is neither of ours match the official firmware blobs released
+by Imagination [1].
+
+The latest version is "FW version v1.1 (build 6976702 OS)" with
+SHA256: e6bf10aaf442798fd81df9b9122e7e85900aafe77fcbec34b426af435c2b1c44
+
+This version also works for me.
+
+The "initial version" is "FW version v1.0 (build 6734358 OS)" with
+SHA256: baa227de4f297b7c0928c6535d15affd80aa9c5f528d2d5dc4b764ad050d22f2
+
+And this version also works.
+
+It seems your firmware build is even older than mine. I suggest you
+update it and try again?
+
+[1] https://gitlab.freedesktop.org/imagination/linux-firmware/-/blob/powerv=
+r/powervr/rogue_4.40.2.51_v1.fw
+
+
+> All five patches applied cleanly. The PowerVR driver probes, loads the
+> firmware, and creates the DRM render node successfully.
+>
+> However, when I run the following from an SSH session without GDM or
+> another graphical session running:
+>
+>   PVR_I_WANT_A_BROKEN_VULKAN_DRIVER=3D1 vulkaninfo --summary
+>
+> Mesa prints the expected GX6250 warnings:
+>
+>   Missing reset support for brn51764
+>   Missing reset support for brn58839
+>   Missing support for brn62269
+>
+> The command then hangs, and the kernel reports:
+>
+>   powervr 13000000.gpu: [drm] *ERROR* GPU device lost
+>
+> There are no additional timeout, MMU fault, firmware, clock, or runtime
+> PM messages immediately before the device-lost message.
+>
+> I originally also observed the same failure when GDM started GNOME
+> Shell, but reproducing it with vulkaninfo from a non-graphical SSH
+> session indicates that this is not specific to Mutter or GNOME.
+>
+> Since your cover letter reports that vkmark and glmark2-es2-drm work
+> with Mesa 26.1.5, I suspect that there may be a difference in the
+> kernel configuration or another part of the test environment.
+>
+> Could you please share the following details from your working setup?
+>
+>   1. The exact Chromebook board/model used for testing
+
+The codename is "telesu", which is basically a hana in a different case.
+
+>   2. The exact kernel base commit
+
+I have a whole bunch of patches on top of next-20260727, but none
+that should affect this.
+
+>   3. The kernel configuration, or at least the relevant DRM, PM,
+>      generic power-domain, IOMMU, and MediaTek clock options
+
+All relevant options are built-in.
+
+>   4. Whether CONFIG_DRM_POWERVR was built-in or built as a module
+
+Module.
+
+>   5. The firmware SHA256
+
+See above.
+
+>   6. The kernel command line and bootloader used
+
+Chromebook's builtin bootloader.
+
+cmdline:
+
+    cros_secure root=3DPARTUUID=3D824526A4-24EE-344D-85A2-20630C42D31A
+    console=3Dtty0 console=3DttyS0,115200n8 earlycon ro text drm.debug=3D0x=
+106
+    panic=3D30 rootwait log_buf_len=3D1M no_console_suspend
+
+AFAICT nothing special.
+
+>   7. Whether `vulkaninfo --summary` also completes successfully
+>
+> My current relevant configuration includes:
+>
+> CONFIG_PM_SLEEP=3Dy
+> CONFIG_PM=3Dy
+> CONFIG_PM_GENERIC_DOMAINS=3Dy
+> CONFIG_MODULES=3Dy
+> CONFIG_DMA_SHARED_BUFFER=3Dy
+> CONFIG_DRM_POWERVR=3Dm
+> CONFIG_DRM_MEDIATEK=3Dy
+> CONFIG_SYNC_FILE=3Dy
+> CONFIG_COMMON_CLK_MT8173_MFGTOP=3Dy
+> CONFIG_IOMMU_SUPPORT=3Dy
+> CONFIG_ARM_SMMU=3Dy
+> CONFIG_MTK_IOMMU=3Dy
+>
+> I would be happy to test additional patches or provide any further
+> logs, kernel configuration, or debugging information if that would
+> help.
+
+As mentioned above, please try updating your firmware blob. Your
+version is even older than mine, and neither of ours is the "official"
+release.
+
+
+Thanks
+ChenYu
+
+
+> Thanks,
+> YoungJoon Lee
+>
+> 2026=E5=B9=B47=E6=9C=8829=E6=97=A5(=E6=B0=B4) 0:28 AngeloGioacchino Del R=
+egno
+> <angelogioacchino.delregno@collabora.com>:
+> >
+> > On 7/28/26 16:44, Chen-Yu Tsai wrote:
+> > > On Tue, Jul 28, 2026 at 10:33=E2=80=AFPM AngeloGioacchino Del Regno
+> > > <angelogioacchino.delregno@collabora.com> wrote:
+> > >>
+> > >> On 7/28/26 15:13, Chen-Yu Tsai wrote:
+> > >>> On Tue, Jul 28, 2026 at 9:10=E2=80=AFPM Brian Masney <bmasney@redha=
+t.com> wrote:
+> > >>>>
+> > >>>> Hi Chen-Yu,
+> > >>>>
+> > >>>> On Tue, Jul 28, 2026 at 05:17:58PM +0800, Chen-Yu Tsai wrote:
+> > >>>>> Hi everyone,
+> > >>>>>
+> > >>>>> This is v4 of my MT8173 PowerVR GPU support series.
+> > >>>>>
+> > >>>>> This time around Mesa was ready for basic testing, using both vul=
+kanmark
+> > >>>>> and glmark2-es2-drm (with Zink). Details below.
+> > >>>>>
+> > >>>>> Changes since v3 (all in the clk driver patch):
+> > >>>>> - Changed pm_runtime_put() to pm_runtime_put_sync()
+> > >>>>> - Added missing of_node_put() in remove function
+> > >>>>>
+> > >>>>> Changes since v2 (all in the clk driver patch):
+> > >>>>> - Made COMMON_CLK_MT8173_MFGTOP depend on PM
+> > >>>>>     - Needed since the driver implements PM domains using the gen=
+eric PM
+> > >>>>>       domain library, which also depends on PM
+> > >>>>>     - Fixes build breakage (kernel test robot)
+> > >>>>> - Fixed "RST_DELAY_CNT" name (Brian)
+> > >>>>> - Dropped unused mfg_desc (Brian)
+> > >>>>> - Added check of clk_prepare_enable()'s return value in
+> > >>>>>     clk_mt8173_mfgtop_power_on() (Brian)
+> > >>>>> - Saved error value for return in IS_ERR(data->clk_26m) branch
+> > >>>>>     (Dan Carpenter / kernel test robot w/ smatch)
+> > >>>>>
+> > >>>>> Changes since v1:
+> > >>>>> - Adapted to changed DT bindings
+> > >>>>> - Dropped driver change
+> > >>>>> - Use same power domain for "a" and "b" GPU power domains
+> > >>>>>
+> > >>>>>
+> > >>>>> This series enables the PowerVR GPU found in the MT8173 SoC, foun=
+d in
+> > >>>>> some Chromebooks.
+> > >>>>
+> > >>>> I'm making a pull for Stephen for the clk changes. Should patches =
+1,2,4
+> > >>>> go through the clk tree? Patches 3,5 go through the DRM tree?
+> > >>>
+> > >>> Only patches 1 and 2 should go through the clock tree.
+> > >>>
+> > >>> Patch 3, 4, 5 can all go through the soc tree if Angelo wants to pi=
+ck up
+> > >>> DT binding patches. Otherwise I can push patch 3 through drm-misc.
+> > >>>
+> > >>
+> > >> Not sure if I can really take the DRM bindings patch through soc.
+> > >>
+> > >> I will take the devicetree ones exactly right now, even though it's =
+going to
+> > >> give warnings.
+> > >>
+> > >> I trust that you'll make the binding get into linux-next before it's=
+ too late.
+> > >
+> > > Rob beat me to it. :D
+> >
+> > Love it!
+> >
+> > Thanks Rob :-D
+> >
+> > Cheers,
+> > Angelo
 
