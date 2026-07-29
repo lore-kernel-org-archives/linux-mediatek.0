@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4E63C53200
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2026 10:03:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B81CC54FD2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2026 10:03:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vO4GOKimmCeoHJk6I5wde47McqqGDfTgDplaCXUI+5Y=; b=Gut0NTZWSUbV4x1sto0Z1/MwKB
-	vyOmXrn1XATld2Dc4/suKVFx2206h7nvEfN1pn3bK2lznQyJ/Rka+nX5TQbBKV8US7lxgGBH6jkTF
-	NUa7IsooVD5vILvgU3XINqYgK0liAR/bqaWLftv5TTsjQMHLnLKzraolV1OGPueKHmzwqhbVqapnt
-	sHXdhaaNSNmI/HwTsP5gL+TDNnAwusfzF7N1dI89T0mLg15pW2NLsy+ac4AvU3bZr32U1BLTcPbei
-	ZM0Nr/Xp0CmxHdhaDul7YSvOHy4Xko+7PYZ3EWyDMu6JqpfKoRpZoqflGB/VmS5OdwO0xyMf5AMCG
-	hZVV3SXw==;
+	bh=im0ZvwPiIBY8zTi3HDj4CFP94iV1UVrmA4gmdCqobZs=; b=UIcQCa1spfpcNG89e3rn+KfzeH
+	xqjODPa6tSjhXVUnHYdT8aQZ1LG7b6zCw0UzPOEj9RM7TeIlrwQjxd1pTjbUI9EFxoZXWPA7dM2KA
+	VxHELf38xxsmct7cpWI8vVELIIsa5MYZ2syPpL/Ev1Y/89mtjtbJPMzUnQpd1lnx8YcuMi6AVujRd
+	xoW2GQOv+6nbSgk9fN2ZBhTllykxy5El/cV7WtTVLGlCwdhQ46OjQvsNmlo8VoAhvbZM5K3Y0uIra
+	Hby/KIolnBrKf+BK4Dl2BoxZa1UCZK4BpGVtV9UMXcLunVa7ZN7fIi9XwJSnV0WWDxRWlYicKPOzn
+	Lw1nIn4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wp18W-00000007SKJ-1UdY;
-	Wed, 29 Jul 2026 10:03:40 +0000
+	id 1wp18X-00000007SNo-3Gzp;
+	Wed, 29 Jul 2026 10:03:41 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wp18B-00000007S2o-2ztz;
-	Wed, 29 Jul 2026 10:03:21 +0000
+	id 1wp18E-00000007S3x-1rJW;
+	Wed, 29 Jul 2026 10:03:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785319397;
-	bh=QK/z2/OlU9f+haYluWVfeQDHy1ylay/b/2MI0HOuaVw=;
+	s=mail; t=1785319400;
+	bh=/oJY/lp7GPxMngsUs+sgToa+ZkeBA3vDXdxfmtcPW88=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=orQwrAQ2OuL7SWyh+YanvE7N9zQacw8hbAAnIAbb5MNbCgd3MG/wsJ+vsdgIUUYJT
-	 MLZmGbFmefC83hwOlHt28mAlhqxa8ODrzj0l13NL7YkeJ8hzFD5g5RgJYdDYiZUVqf
-	 TLCEGIuWmxKV0+OOkD6wXgGLC+a9HYEY33rS1JxazjpojJCkqKhl/yYMBbqvWtXKlU
-	 xGNYc65KMAq6bUOhaKCZsYruc8mMf9AJSVVlIpVdcfcgEyO3kvV8U4xx3LT+vdkhuQ
-	 nl5L0EMWSzGmQ2ETReva111ut/ZbwwDeuRyB8AvMCsB7XAJu66gtAcZPJ4tvy++mQs
-	 agXqX3E7LJyDQ==
+	b=TNlX1Lj3hyB0HQue63GkeX4QEMHZINDJxCsBmafJjbEx1nOYEm1cEfbu4fduC6Ng4
+	 kXa3ILzEEICpna6Aj8E0WzUuvMfD3dRmujppjZ+iIy2yHdsL+g3ZVGuHQe6VEuVf0p
+	 be5HrDv4PWXIzAkn1IiEiimGs78BAA6737oZfS/TdNaOp/mqKNuXW/fzbIKx4C81c5
+	 nOrWuoS7sc8PB1qfbvdPP1sGZ+4nypiecLfHIQgEx4Pxv4e5ZeSDQmFOMCfBW/ONpe
+	 XvnioPUNL+3M5oqhtTdniByxVo8r4UksYB/OJHBUVCgq3oaJLD1iG5CY9eS0/90YhF
+	 6qqrSAlWlsk2w==
 Received: from yukiji.home (unknown [100.64.0.131])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D119A17E08D9;
-	Wed, 29 Jul 2026 12:03:16 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6473817E08E1;
+	Wed, 29 Jul 2026 12:03:19 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Wed, 29 Jul 2026 12:02:51 +0200
-Subject: [PATCH v4 07/24] dt-bindings: clock: mediatek: regroup MT8195
- dt-bindings into MT8186
+Date: Wed, 29 Jul 2026 12:02:53 +0200
+Subject: [PATCH v4 09/24] clk: mediatek: Harmonize mtk_pll_fenc related
+ symbol names
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260729-mt8189-clocks-system-base-v4-7-e356b813a64c@collabora.com>
+Message-Id: <20260729-mt8189-clocks-system-base-v4-9-e356b813a64c@collabora.com>
 References: <20260729-mt8189-clocks-system-base-v4-0-e356b813a64c@collabora.com>
 In-Reply-To: <20260729-mt8189-clocks-system-base-v4-0-e356b813a64c@collabora.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -67,19 +67,19 @@ To: Michael Turquette <mturquette@baylibre.com>,
 Cc: kernel@collabora.com, linux-clk@vger.kernel.org, 
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- netdev@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>, 
+ netdev@vger.kernel.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1785319387; l=12317;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1785319387; l=3997;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=QK/z2/OlU9f+haYluWVfeQDHy1ylay/b/2MI0HOuaVw=;
- b=98svCEXIFPbC7MRJh605PR0jAYAytfoXYYtSYATFKUKqutniHcLhQZqwicQyA/skt9YVvLis+
- NSqcjgrpMB/BaxV/Nz5b3K76K5cHXBsbIXAK0OT1g8aRlb5sa0E5Dj8
+ bh=/oJY/lp7GPxMngsUs+sgToa+ZkeBA3vDXdxfmtcPW88=;
+ b=UheRs+gQ3h2Bo3rlh2tKZh8DUoG9jbL8fKClT6dN8ghFyBr1xeFEssyBZcsnGmVIW67362V0b
+ wE5mPKs0rxeCArnws2mi5oY/6NeWIND/qPNA7khUaBFKX1wtRCIV3OZ
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260729_030320_302604_6475DC05 
-X-CRM114-Status: GOOD (  11.79  )
+X-CRM114-CacheID: sfid-20260729_030322_648127_B458A122 
+X-CRM114-Status: GOOD (  13.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,400 +94,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Regroup the MT8195 clock and system clock dt-bindings into MT8186 ones
-to ease maintainability and have common files for several currently
-supported SoC or new future ones, that have the same kind of clock
-controller design.
+To prepare for the new clock ops set addition, with support for set/clr
+enable logic only, rename mtk_pll_fenc_setclr_ops and its callback names
+to harmonize the naming with the same suffix.
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- .../bindings/clock/mediatek,mt8186-clock.yaml      |  25 +++
- .../bindings/clock/mediatek,mt8186-sys-clock.yaml  |   4 +
- .../bindings/clock/mediatek,mt8195-clock.yaml      | 239 ---------------------
- .../bindings/clock/mediatek,mt8195-sys-clock.yaml  |  77 -------
- 4 files changed, 29 insertions(+), 316 deletions(-)
+ drivers/clk/mediatek/clk-mt8196-apmixedsys.c |  2 +-
+ drivers/clk/mediatek/clk-mt8196-vlpckgen.c   |  2 +-
+ drivers/clk/mediatek/clk-pll.c               | 16 ++++++++--------
+ drivers/clk/mediatek/clk-pll.h               |  2 +-
+ 4 files changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8186-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8186-clock.yaml
-index b5988d122e4d..ab9f8cb7dd6e 100644
---- a/Documentation/devicetree/bindings/clock/mediatek,mt8186-clock.yaml
-+++ b/Documentation/devicetree/bindings/clock/mediatek,mt8186-clock.yaml
-@@ -78,6 +78,31 @@ properties:
-           - mediatek,mt8192-vdecsys_soc
-           - mediatek,mt8192-vdecsys
-           - mediatek,mt8192-vencsys
-+          - mediatek,mt8195-apusys_pll
-+          - mediatek,mt8195-camsys
-+          - mediatek,mt8195-camsys_rawa
-+          - mediatek,mt8195-camsys_yuva
-+          - mediatek,mt8195-camsys_rawb
-+          - mediatek,mt8195-camsys_yuvb
-+          - mediatek,mt8195-camsys_mraw
-+          - mediatek,mt8195-ccusys
-+          - mediatek,mt8195-imgsys
-+          - mediatek,mt8195-imgsys1_dip_top
-+          - mediatek,mt8195-imgsys1_dip_nr
-+          - mediatek,mt8195-imgsys1_wpe
-+          - mediatek,mt8195-imp_iic_wrap_s
-+          - mediatek,mt8195-imp_iic_wrap_w
-+          - mediatek,mt8195-ipesys
-+          - mediatek,mt8195-mfgcfg
-+          - mediatek,mt8195-scp_adsp
-+          - mediatek,mt8195-vdecsys_soc
-+          - mediatek,mt8195-vdecsys
-+          - mediatek,mt8195-vdecsys_core1
-+          - mediatek,mt8195-vencsys
-+          - mediatek,mt8195-vencsys_core1
-+          - mediatek,mt8195-wpesys
-+          - mediatek,mt8195-wpesys_vpp0
-+          - mediatek,mt8195-wpesys_vpp1
+diff --git a/drivers/clk/mediatek/clk-mt8196-apmixedsys.c b/drivers/clk/mediatek/clk-mt8196-apmixedsys.c
+index c4ebb0170b82..41c5117b18f8 100644
+--- a/drivers/clk/mediatek/clk-mt8196-apmixedsys.c
++++ b/drivers/clk/mediatek/clk-mt8196-apmixedsys.c
+@@ -83,7 +83,7 @@
+ 		.en_set_reg = PLLEN_ALL_SET,			\
+ 		.en_clr_reg = PLLEN_ALL_CLR,			\
+ 		.pll_en_bit = _pll_en_bit,			\
+-		.ops = &mtk_pll_fenc_clr_set_ops,		\
++		.ops = &mtk_pll_fenc_setclr_ops,		\
+ }
  
-   reg:
-     maxItems: 1
-diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8186-sys-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8186-sys-clock.yaml
-index 41b8c61132e2..4a9d3eea4316 100644
---- a/Documentation/devicetree/bindings/clock/mediatek,mt8186-sys-clock.yaml
-+++ b/Documentation/devicetree/bindings/clock/mediatek,mt8186-sys-clock.yaml
-@@ -39,6 +39,10 @@ properties:
-           - mediatek,mt8192-infracfg
-           - mediatek,mt8192-pericfg
-           - mediatek,mt8192-topckgen
-+          - mediatek,mt8195-apmixedsys
-+          - mediatek,mt8195-infracfg_ao
-+          - mediatek,mt8195-pericfg_ao
-+          - mediatek,mt8195-topckgen
-       - const: syscon
+ struct mtk_pll_desc {
+diff --git a/drivers/clk/mediatek/clk-mt8196-vlpckgen.c b/drivers/clk/mediatek/clk-mt8196-vlpckgen.c
+index 7dcc164627c5..8a69f88e15a7 100644
+--- a/drivers/clk/mediatek/clk-mt8196-vlpckgen.c
++++ b/drivers/clk/mediatek/clk-mt8196-vlpckgen.c
+@@ -162,7 +162,7 @@
+ 		.en_set_reg = VLP_PLLEN_ALL_SET,		\
+ 		.en_clr_reg = VLP_PLLEN_ALL_CLR,		\
+ 		.pll_en_bit = _pll_en_bit,			\
+-		.ops = &mtk_pll_fenc_clr_set_ops,		\
++		.ops = &mtk_pll_fenc_setclr_ops,		\
+ }
  
-   reg:
-diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8195-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8195-clock.yaml
-deleted file mode 100644
-index 94dd29c2396c..000000000000
---- a/Documentation/devicetree/bindings/clock/mediatek,mt8195-clock.yaml
-+++ /dev/null
-@@ -1,239 +0,0 @@
--# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
--%YAML 1.2
-----
--$id: http://devicetree.org/schemas/clock/mediatek,mt8195-clock.yaml#
--$schema: http://devicetree.org/meta-schemas/core.yaml#
--
--title: MediaTek Functional Clock Controller for MT8195
--
--maintainers:
--  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
--
--description:
--  The clock architecture in Mediatek like below
--  PLLs -->
--          dividers -->
--                      muxes
--                           -->
--                              clock gate
--
--  The devices except apusys_pll provide clock gate control in different IP blocks.
--  The apusys_pll provides Plls which generated from SoC 26m for AI Processing Unit.
--
--properties:
--  compatible:
--    items:
--      - enum:
--          - mediatek,mt8195-scp_adsp
--          - mediatek,mt8195-imp_iic_wrap_s
--          - mediatek,mt8195-imp_iic_wrap_w
--          - mediatek,mt8195-mfgcfg
--          - mediatek,mt8195-wpesys
--          - mediatek,mt8195-wpesys_vpp0
--          - mediatek,mt8195-wpesys_vpp1
--          - mediatek,mt8195-imgsys
--          - mediatek,mt8195-imgsys1_dip_top
--          - mediatek,mt8195-imgsys1_dip_nr
--          - mediatek,mt8195-imgsys1_wpe
--          - mediatek,mt8195-ipesys
--          - mediatek,mt8195-camsys
--          - mediatek,mt8195-camsys_rawa
--          - mediatek,mt8195-camsys_yuva
--          - mediatek,mt8195-camsys_rawb
--          - mediatek,mt8195-camsys_yuvb
--          - mediatek,mt8195-camsys_mraw
--          - mediatek,mt8195-ccusys
--          - mediatek,mt8195-vdecsys_soc
--          - mediatek,mt8195-vdecsys
--          - mediatek,mt8195-vdecsys_core1
--          - mediatek,mt8195-vencsys
--          - mediatek,mt8195-vencsys_core1
--          - mediatek,mt8195-apusys_pll
--  reg:
--    maxItems: 1
--
--  '#clock-cells':
--    const: 1
--
--required:
--  - compatible
--  - reg
--  - '#clock-cells'
--
--additionalProperties: false
--
--examples:
--  - |
--    scp_adsp: clock-controller@10720000 {
--        compatible = "mediatek,mt8195-scp_adsp";
--        reg = <0x10720000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    imp_iic_wrap_s: clock-controller@11d03000 {
--        compatible = "mediatek,mt8195-imp_iic_wrap_s";
--        reg = <0x11d03000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    imp_iic_wrap_w: clock-controller@11e05000 {
--        compatible = "mediatek,mt8195-imp_iic_wrap_w";
--        reg = <0x11e05000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    mfgcfg: clock-controller@13fbf000 {
--        compatible = "mediatek,mt8195-mfgcfg";
--        reg = <0x13fbf000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    wpesys: clock-controller@14e00000 {
--        compatible = "mediatek,mt8195-wpesys";
--        reg = <0x14e00000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    wpesys_vpp0: clock-controller@14e02000 {
--        compatible = "mediatek,mt8195-wpesys_vpp0";
--        reg = <0x14e02000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    wpesys_vpp1: clock-controller@14e03000 {
--        compatible = "mediatek,mt8195-wpesys_vpp1";
--        reg = <0x14e03000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    imgsys: clock-controller@15000000 {
--        compatible = "mediatek,mt8195-imgsys";
--        reg = <0x15000000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    imgsys1_dip_top: clock-controller@15110000 {
--        compatible = "mediatek,mt8195-imgsys1_dip_top";
--        reg = <0x15110000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    imgsys1_dip_nr: clock-controller@15130000 {
--        compatible = "mediatek,mt8195-imgsys1_dip_nr";
--        reg = <0x15130000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    imgsys1_wpe: clock-controller@15220000 {
--        compatible = "mediatek,mt8195-imgsys1_wpe";
--        reg = <0x15220000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    ipesys: clock-controller@15330000 {
--        compatible = "mediatek,mt8195-ipesys";
--        reg = <0x15330000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    camsys: clock-controller@16000000 {
--        compatible = "mediatek,mt8195-camsys";
--        reg = <0x16000000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    camsys_rawa: clock-controller@1604f000 {
--        compatible = "mediatek,mt8195-camsys_rawa";
--        reg = <0x1604f000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    camsys_yuva: clock-controller@1606f000 {
--        compatible = "mediatek,mt8195-camsys_yuva";
--        reg = <0x1606f000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    camsys_rawb: clock-controller@1608f000 {
--        compatible = "mediatek,mt8195-camsys_rawb";
--        reg = <0x1608f000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    camsys_yuvb: clock-controller@160af000 {
--        compatible = "mediatek,mt8195-camsys_yuvb";
--        reg = <0x160af000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    camsys_mraw: clock-controller@16140000 {
--        compatible = "mediatek,mt8195-camsys_mraw";
--        reg = <0x16140000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    ccusys: clock-controller@17200000 {
--        compatible = "mediatek,mt8195-ccusys";
--        reg = <0x17200000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    vdecsys_soc: clock-controller@1800f000 {
--        compatible = "mediatek,mt8195-vdecsys_soc";
--        reg = <0x1800f000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    vdecsys: clock-controller@1802f000 {
--        compatible = "mediatek,mt8195-vdecsys";
--        reg = <0x1802f000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    vdecsys_core1: clock-controller@1803f000 {
--        compatible = "mediatek,mt8195-vdecsys_core1";
--        reg = <0x1803f000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    vencsys: clock-controller@1a000000 {
--        compatible = "mediatek,mt8195-vencsys";
--        reg = <0x1a000000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    vencsys_core1: clock-controller@1b000000 {
--        compatible = "mediatek,mt8195-vencsys_core1";
--        reg = <0x1b000000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    apusys_pll: clock-controller@190f3000 {
--        compatible = "mediatek,mt8195-apusys_pll";
--        reg = <0x190f3000 0x1000>;
--        #clock-cells = <1>;
--    };
-diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8195-sys-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8195-sys-clock.yaml
-deleted file mode 100644
-index ba1b36fa0169..000000000000
---- a/Documentation/devicetree/bindings/clock/mediatek,mt8195-sys-clock.yaml
-+++ /dev/null
-@@ -1,77 +0,0 @@
--# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
--%YAML 1.2
-----
--$id: http://devicetree.org/schemas/clock/mediatek,mt8195-sys-clock.yaml#
--$schema: http://devicetree.org/meta-schemas/core.yaml#
--
--title: MediaTek System Clock Controller for MT8195
--
--maintainers:
--  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
--
--description:
--  The clock architecture in Mediatek like below
--  PLLs -->
--          dividers -->
--                      muxes
--                           -->
--                              clock gate
--
--  The apmixedsys provides most of PLLs which generated from SoC 26m.
--  The topckgen provides dividers and muxes which provide the clock source to other IP blocks.
--  The infracfg_ao and pericfg_ao provides clock gate in peripheral and infrastructure IP blocks.
--
--properties:
--  compatible:
--    items:
--      - enum:
--          - mediatek,mt8195-topckgen
--          - mediatek,mt8195-infracfg_ao
--          - mediatek,mt8195-apmixedsys
--          - mediatek,mt8195-pericfg_ao
--      - const: syscon
--
--  reg:
--    maxItems: 1
--
--  '#clock-cells':
--    const: 1
--
--  '#reset-cells':
--    const: 1
--
--required:
--  - compatible
--  - reg
--  - '#clock-cells'
--
--additionalProperties: false
--
--examples:
--  - |
--    topckgen: syscon@10000000 {
--        compatible = "mediatek,mt8195-topckgen", "syscon";
--        reg = <0x10000000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    infracfg_ao: syscon@10001000 {
--        compatible = "mediatek,mt8195-infracfg_ao", "syscon";
--        reg = <0x10001000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    apmixedsys: syscon@1000c000 {
--        compatible = "mediatek,mt8195-apmixedsys", "syscon";
--        reg = <0x1000c000 0x1000>;
--        #clock-cells = <1>;
--    };
--
--  - |
--    pericfg_ao: syscon@11003000 {
--        compatible = "mediatek,mt8195-pericfg_ao", "syscon";
--        reg = <0x11003000 0x1000>;
--        #clock-cells = <1>;
--    };
+ static DEFINE_SPINLOCK(mt8196_clk_vlp_lock);
+diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+index e97064868908..ee478bc64085 100644
+--- a/drivers/clk/mediatek/clk-pll.c
++++ b/drivers/clk/mediatek/clk-pll.c
+@@ -38,7 +38,7 @@ int mtk_pll_is_prepared(struct clk_hw *hw)
+ 	return (readl(pll->en_addr) & BIT(pll->data->pll_en_bit)) != 0;
+ }
+ 
+-static int mtk_pll_fenc_is_prepared(struct clk_hw *hw)
++static int mtk_pll_is_prepared_fenc_setclr(struct clk_hw *hw)
+ {
+ 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
+ 
+@@ -285,7 +285,7 @@ void mtk_pll_unprepare(struct clk_hw *hw)
+ 	writel(r, pll->pwr_addr);
+ }
+ 
+-static int mtk_pll_prepare_setclr(struct clk_hw *hw)
++static int mtk_pll_prepare_fenc_setclr(struct clk_hw *hw)
+ {
+ 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
+ 
+@@ -297,7 +297,7 @@ static int mtk_pll_prepare_setclr(struct clk_hw *hw)
+ 	return 0;
+ }
+ 
+-static void mtk_pll_unprepare_setclr(struct clk_hw *hw)
++static void mtk_pll_unprepare_fenc_setclr(struct clk_hw *hw)
+ {
+ 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
+ 
+@@ -313,15 +313,15 @@ const struct clk_ops mtk_pll_ops = {
+ 	.set_rate	= mtk_pll_set_rate,
+ };
+ 
+-const struct clk_ops mtk_pll_fenc_clr_set_ops = {
+-	.is_prepared	= mtk_pll_fenc_is_prepared,
+-	.prepare	= mtk_pll_prepare_setclr,
+-	.unprepare	= mtk_pll_unprepare_setclr,
++const struct clk_ops mtk_pll_fenc_setclr_ops = {
++	.is_prepared	= mtk_pll_is_prepared_fenc_setclr,
++	.prepare	= mtk_pll_prepare_fenc_setclr,
++	.unprepare	= mtk_pll_unprepare_fenc_setclr,
+ 	.recalc_rate	= mtk_pll_recalc_rate,
+ 	.determine_rate	= mtk_pll_determine_rate,
+ 	.set_rate	= mtk_pll_set_rate,
+ };
+-EXPORT_SYMBOL_GPL(mtk_pll_fenc_clr_set_ops);
++EXPORT_SYMBOL_GPL(mtk_pll_fenc_setclr_ops);
+ 
+ struct clk_hw *mtk_clk_register_pll_ops(struct mtk_clk_pll *pll,
+ 					const struct mtk_pll_data *data,
+diff --git a/drivers/clk/mediatek/clk-pll.h b/drivers/clk/mediatek/clk-pll.h
+index f49dc2732ffe..d6d34840c09d 100644
+--- a/drivers/clk/mediatek/clk-pll.h
++++ b/drivers/clk/mediatek/clk-pll.h
+@@ -85,7 +85,7 @@ void mtk_clk_unregister_plls(const struct mtk_pll_data *plls, int num_plls,
+ 			     struct clk_hw_onecell_data *clk_data);
+ 
+ extern const struct clk_ops mtk_pll_ops;
+-extern const struct clk_ops mtk_pll_fenc_clr_set_ops;
++extern const struct clk_ops mtk_pll_fenc_setclr_ops;
+ 
+ static inline struct mtk_clk_pll *to_mtk_clk_pll(struct clk_hw *hw)
+ {
 
 -- 
 2.55.0
