@@ -4,114 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7446C53200
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2026 03:32:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50570C53200
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2026 03:44:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YphEsPuwfO2GAZ8oScDaP5O5VSQEM8qtQtqlvFzmOwc=; b=Z5wEOOjMVLsSCa1I8ioqqnXKAP
-	8QNFBE8kIUQlgWAlEqUEYQR8AcK8Pzwa0QFHU/KSkmxp4ZRYyrI4nRfBUVqSeqtChOOBzdpzimLq8
-	D8b7E6KTaK4EgKE3mRy508jDQU19cqZF/eFVl1ksfb/brvUSMPebvExNk6SXPVhcBFTFHVz7LZjb+
-	xwGqJJUpGw3rP9aomH/sk71GHqR0w0M0BfquZTIW3UWWH6Hv0uG0GPbeJgrR/NGxhknE+qDs2Jz5W
-	HRQe+oWkF/q/hn7kgro+nb6PldFLX4BSZyhuA0LYp8/43SlQoxfaY26zxsMWp6Qpned1Y3kL2ugFk
-	qUlGHncw==;
+	bh=Q5SQzLZmnmAyoTu35635s72269K1LO99EjP1yPHjEts=; b=T+742BnlWvTo/S2WplaY4di2b+
+	nxc7QkWt167Z4UqZAbX4kTFWKhpJxn4cU3zlTxGDTsGeUIdaZf9bQyUBG2ohVAg6+JI3YowEvnPs9
+	ALUuRUXFPMzQ4e9SVeUqIpxFxJpriitkiV5UF03xFZ5zYRbARMsvKnVz5Zmjic39ghjGZv4bVYCpK
+	nZYCHdRDjsdxO7b1AnQafnu9baV3Y2Io1EPbMRba5kZXhbeNdokm2rDAR3tq3dO5fMBvU1Cj3kthi
+	5xVjzdW2XAmmGWAGk3m/eZUn82x1/cRbMxiDJUAKtIzdmY7LJYfjVmGHvya/K4UXfSTPd5q2L3QOb
+	vU2MpEAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wov20-00000006lAG-1frL;
-	Wed, 29 Jul 2026 03:32:32 +0000
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+	id 1wovDQ-00000006m4I-0ZrC;
+	Wed, 29 Jul 2026 03:44:20 +0000
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wov1w-00000006l96-2kP8
+	id 1wovDN-00000006m3Q-3S5v
 	for linux-mediatek@lists.infradead.org;
-	Wed, 29 Jul 2026 03:32:30 +0000
-Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-81f52945098so10119647b3.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 28 Jul 2026 20:32:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785295947; cv=none;
+	Wed, 29 Jul 2026 03:44:19 +0000
+Received: by mail-yw1-x1134.google.com with SMTP id 00721157ae682-81ef8255cccso6887547b3.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 28 Jul 2026 20:44:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1785296657; cv=none;
         d=google.com; s=arc-20260327;
-        b=nlgLyv+AEwL8qYItHBfPj5cwBX47wD12IGLKqEMzZ2ScPFCyjRvLpLn+ZmZx5AXaz5
-         WPdGDDUKn3yackT1t6qDzOS29Fp5JBewYPn7oYiq400O7zkuudN38DcR7hpiL3+IiyaI
-         oQuhrCVRJCQzMrkxPeAixzEticS5VWrG2bLkO7WpzmG/XLjvnxP+CdVcJnb1p0m0zoAD
-         O15ovXisLXy3YCqM66E4eP9RhbB1iuzUy7v/y3mXcmsjeYw/Q5QGKiXDK1AIOWusZZDX
-         edcZtxcPz0sE+yTJbzJr0Cz6lAM9IFNcYM7blOLnfZs/qr0S7UMkMWWXNis+ZJWWMRUO
-         LUKw==
+        b=Hj2fKn9hWAABCb67WUWMKhkeJQCMVbJyMnhvnVqabJhGELIq7D2D75FkEDUzwhxuTd
+         fQDR5XPGNQWK8wyAVlNI9jdzviAZjUevDfdTT2PG/NFSpnn7YcHaX6vmgy+ieJBk7wZs
+         2z0dyw1D0IOOLPl1pgWRdWRkAJ5fu9kzpDKhwPQ7fKDlM9JylKxsHGwiSAIQcMEtiNrl
+         hU44I6zH52c4N2ByLfwIr61nnTklRRQkOSwn6Wy164bYah76zYyDBoiYULfuDai2WyNm
+         dmLRnKbo1oWrjmTXkv92ZZ+h8YaLlQIGsX4jP/Dnpm1gAzcW70SnuO492mCh4If2KUPD
+         evig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=YphEsPuwfO2GAZ8oScDaP5O5VSQEM8qtQtqlvFzmOwc=;
-        fh=Dc3SAdiL7Tna8gLOgLyzFFPdUafjpP2J/IEMXhbrdOg=;
-        b=XQU+Y/T0DCK1WKGSLMx0HOwljVlfBT9sxvDNi+/INiPbl/gA8KNkHqY3c7ssbMtPcN
-         k6gpfHiBmbOKzBKLdCUH9y1JVHhQK3BHODoe+IWLTv/GLf1oPX3QuTjtzOuCbiEhoS9F
-         /MkCdGdzeR8oE0XHjQ+NsjLSTTjHwjkrbwaDGZwi4KJ423w5wvnDNiFYFP/wymtxlyIB
-         3gJNUTmo8uuENPNYweRFwXP8SewUeszWLWCv+c766+pFAO0bqWIql/fmmcIYmnBDmq3s
-         uy1tlbDosKQ46jL42Z+Sepzbb7aEnQ20nY9nbuxsRNdby9BVZJom01OGQqclJyPxiZt7
-         qGIw==;
+        bh=Q5SQzLZmnmAyoTu35635s72269K1LO99EjP1yPHjEts=;
+        fh=NXStUBk/VjpqnVX7FdgqewuDggbBfvf8KsLo81OIrE0=;
+        b=fT5M5lkGdjMhH4FqmAiQfiU/EnDg0/UScn+5iB3vqQxRAZx8pZeg5MHrtP4kd90Ik0
+         mPoUJyw8LpSQj5QqQxb1dG9mht8EUQ5tiD5zh3lriaFRcEfxnQZW9P1jjjNFz9P84avQ
+         gh+Sfy0unXdZoeOrovkHGk2nqHEhsAPB/xrh4SbzTLWg47xN+KWZuwcumz86gtDjv8+r
+         Ska4FxSoqsOm/qd30aSQ5sWZ/mS61Nv39Wse2J5TQgefuGRtw64qLooJknxiVyUrmrB8
+         IM5l5/PShSbYHx3smx7GFaaBtbb+gTfR8fQgTN4e96elVED7SgaZMWT4s65Q46QFRP9J
+         pXcg==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1785295947; x=1785900747; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1785296657; x=1785901457; darn=lists.infradead.org;
         h=content-transfer-encoding:content-type:cc:to:subject:message-id
          :date:from:in-reply-to:references:mime-version:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=YphEsPuwfO2GAZ8oScDaP5O5VSQEM8qtQtqlvFzmOwc=;
-        b=GjLdz0FLvlV4B9bOP7KpB5gZ+bCia+WQk+ZuGWy5VNa+YvH20w2qL8TDHHa0lOi5eg
-         xAgCPDZTqxrnnzBYzZXiau/vlabIuNKUn2vwRBXZcCdNoVaq2F7NaDe42V0bBgeG+prl
-         eO9e6tloHad99NNeHwdRDgpQEOf4LVCtlP3gw=
+        bh=Q5SQzLZmnmAyoTu35635s72269K1LO99EjP1yPHjEts=;
+        b=CTnCtXdzef/jdfggN8bF2V4699tyq6rqNSvi8Dn6KfFpFlkNu0IqNHPHiZJnPU2uBb
+         C1e5wXLKnrBbsCYtnW5SgMzwu7N3K137HvUQ9Ne11+gBdmx4308ReSrCCVRIBZQWns80
+         PbFkl0O7oBcGySyL9tSiYWkLUx6SuOjajcBYQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785295947; x=1785900747;
+        d=1e100.net; s=20251104; t=1785296657; x=1785901457;
         h=content-transfer-encoding:content-type:cc:to:subject:message-id
          :date:from:in-reply-to:references:mime-version:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=YphEsPuwfO2GAZ8oScDaP5O5VSQEM8qtQtqlvFzmOwc=;
-        b=CLj6yiTYmi3hoXtqJaqqczr9yDDktr9nhI1IdoSbxXKCoP/SBRTFfJ3GlcGvJfy7PJ
-         9iAb5Vv+17QcGo+Lj2sp6Ri6mhYE5XoU9ZE8yPZw9i8pXHkKTm5V2ruwFGTbzYLkwm0g
-         MOt00hydYV4vm3hy8HRn9U49QqAmI4SZmtenZ3ryjv6bsrBQN4wCrFOm6m6XI0TI68yM
-         9FX1oZDWdeZCII3+OH1n1VF77Q4AgeTBjDsNNkFXzkaImZYV8PsT5McvIuXbqSke7thE
-         jxku2Zt5LgP5/di0bJbT+pqTlfCiEadrxiXuDS7qTsJ2gWZb2emVy23oxg0WJXYlmRqa
-         gRCw==
-X-Forwarded-Encrypted: i=1; AHgh+RpgjvmGVQL50kIR4IYuW4kVS84IReWYOx2H8u1sidJahOujF6ugw93439H4M0QaIMJMppyfI94f+q/E9OIL/w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxpQtLo+EBWgxlGLIjtFXg2PFXi/nACxTjOcUFFatMoSM9DHZbH
-	bxIJ4g11slaal1oD70PE+RHnS0a/Z6jugzmhBRq6Pv6bgOa6aEJETZAVpANEDGFTu7p0LLFodf7
-	3dUugtmukXoIG8w5x3n6KHjubXis/XADpAWB+OQAS
-X-Gm-Gg: AR+sD117ILXR4ucVi3+EcRen1HZo6p0a3QVud14Nbs9rCYlSq54UioV/vfzRPX89+Cz
-	8Im5+AQ+MWprHtiD7czmrYogxuOxfBYF6lfvNNcZxT/oXSyIKj78sGp2AglZKvDK7V4RaGxb61m
-	OtFhUgEENY8OHuk1PFbvqF8BpJoZV1iFkV4zlQ6lFO2NFZ+qlsCoD4nAYb3xvaSScyE6aZgBiJw
-	60ymTtnz688ilyUPFYNScklGeBfBIWZ7Aju+m9uPeVi7QqTWqYkPieI8SbV8Ojk5SssmJea+BMf
-	HGovqN0tjtXUofhGgJcZauelZ6A6r+aqQSjq0k3Z9I7pMly4ipwvkJrkvaqtYK7ZlT6lqWctb8s
+        bh=Q5SQzLZmnmAyoTu35635s72269K1LO99EjP1yPHjEts=;
+        b=p18glMEpLjroveCDFUkkvJ45IpOqeIHTiQnrxzrg/xcmoE2ES0GiFKCVNL6jIvYzZk
+         EeofT1lsvy52l6vFegBSy4nBlkKdanwRyH99VybCDwvl0mTGiv8pl1ldp/64HteaEPgY
+         XmI97cYr9v10udkqlnig6BM+K17Hqk2pGUz11rCwTd0AYQzQJXUxQDx8TvTg7FIlw7vb
+         fKnFMvdj64vvCkuf1lfVbUUVVi+bpg6F1WhfVKNqR09ykW+9CJ063R41bTQdNmS9ib9+
+         D+mQChSdZOYm1dNNewWCSikhcu9YtczgXh9wi0gus5tjaS2hz6hW9eGZ1B0xOEUY9rnJ
+         bidQ==
+X-Forwarded-Encrypted: i=1; AHgh+RomY4SuDuP8jI4rR37Y5TPbEkz7QJDnE4XDnq7aF691/RzGTwBww9rIJLrVwer1wIN0j8xPrrNvc0n5pVTXfg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwezsajH+8h/FmZr9mvsIasQ/YkN45ji8X8cDpr/g6HmijmMlRT
+	MaSn9RVBgQmvXZkuNe2PVlCI2foeihrdhHyn4lVo8jP8UYSyiBA3T9vOsUcnxhTn0EQjLYr2UGx
+	yfoKMBe0jTtxgzrt/zani97NVCavAWAOyIStAZd/u
+X-Gm-Gg: AR+sD10j/VAaeqq/3w/vQq7EqBAl+oNLjESyqCuSE1DsYm4rd1zdj88fOZs0vbndVPA
+	gUJnqFIBUqAe1iJkk9+HDSIFY1xXCT1BefzJzNpcWXk7C79wJbY1l4NLyrNZWv0mBj2LwWTcfac
+	zQn2qcxr31OJgRyMF5vZ81PX2BP5vosXPnYpDdxyDFDNG0GQxGrHpdRavU3Zrljfi4eQJHDqA5X
+	g0g4cwGCdoevhI/as4SNPm21+tHJS6AKhYfP/aPEcf0Sf/76m0P1HirLwvJTC6rxo/FKE1YPVAg
+	yHRj911v24Q4sn+Qez5VCkA47idb3aG9iEodN3MUUN6A41i3fI0jC8CQgm9hS/iYhXjFqASaCW0
 	=
-X-Received: by 2002:a05:690c:250a:b0:81d:455b:5fdc with SMTP id
- 00721157ae682-81fa7a235edmr3133467b3.28.1785295947414; Tue, 28 Jul 2026
- 20:32:27 -0700 (PDT)
+X-Received: by 2002:a05:690c:3343:b0:808:f9bb:3832 with SMTP id
+ 00721157ae682-81f9912e26amr22006057b3.22.1785296656671; Tue, 28 Jul 2026
+ 20:44:16 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260728091804.382753-1-wenst@chromium.org> <amiqKRkFItYwD6oL@redhat.com>
- <CAGb2v64zUO-azpTuei6LCypad2noGFbg+EmaBC1iidoZ2stQzw@mail.gmail.com>
- <c1048eae-72c5-4e2e-ac49-25e2c4297018@collabora.com> <CAGb2v67VRhy_xzkdwUAYhzM_sWzoXyfZ3rYSHYLYaxuve9H17w@mail.gmail.com>
- <a0ae9525-9288-4d13-a080-9cb3d965d536@collabora.com> <CA+m4KrAvATV9qMMN9h+tKcPdrHRp7-jFJ0-Jq3DeCZLi3Z6RsA@mail.gmail.com>
-In-Reply-To: <CA+m4KrAvATV9qMMN9h+tKcPdrHRp7-jFJ0-Jq3DeCZLi3Z6RsA@mail.gmail.com>
+References: <20260728212438.54078-1-rosenp@gmail.com> <20260728212438.54078-3-rosenp@gmail.com>
+In-Reply-To: <20260728212438.54078-3-rosenp@gmail.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 29 Jul 2026 11:32:16 +0800
-X-Gm-Features: AUfX_my7lXKe9Z2oOqmBCydrADFp6DxbpdPpz-KqJ25BL6ZYGxlwr20b-0pppV8
-Message-ID: <CAGXv+5G8zPGb3SUwnzuutCF_U=+NKB4VQBsu+the6nLUqM-RDg@mail.gmail.com>
-Subject: Re: [PATCH v4 0/5] powervr: MT8173 GPU support
-To: YoungJoon Lee <getfeus@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, wens@kernel.org, 
-	Brian Masney <bmasney@redhat.com>, Stephen Boyd <sboyd@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Alessio Belle <alessio.belle@imgtec.com>, 
-	Luigi Santivetti <luigi.santivetti@imgtec.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	imagination@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, Icenowy Zheng <zhengxingda@iscas.ac.cn>
+Date: Wed, 29 Jul 2026 11:44:04 +0800
+X-Gm-Features: AUfX_mySigGaf9N_bx5P2m2Z30yXuSp7TjHLme6C1EdwCx1nkTn3oRTu9esXu2Y
+Message-ID: <CAGXv+5EVSc4=ug=GU6Gvdu0UatqM1DD48i-c3AEb4p0GwktRvg@mail.gmail.com>
+Subject: Re: [PATCHv2 2/2] Input: mtk-pmic-keys: Count available keys during
+ probe instead of pre-counting
+To: Rosen Penev <rosenp@gmail.com>
+Cc: linux-input@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_203228_775320_B267C357 
-X-CRM114-Status: GOOD (  43.47  )
+X-CRM114-CacheID: sfid-20260728_204418_125112_C6FB4B0F 
+X-CRM114-Status: GOOD (  26.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,235 +120,192 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 29, 2026 at 8:08=E2=80=AFAM YoungJoon Lee <getfeus@gmail.com> w=
-rote:
+On Wed, Jul 29, 2026 at 5:25=E2=80=AFAM Rosen Penev <rosenp@gmail.com> wrot=
+e:
 >
-> Hi Chen-Yu,
+> Replace the separate of_get_available_child_count() pre-count and
+> validation step with a single pass through
+> for_each_child_of_node_scoped().  Skip unavailable child nodes and
+> bail if more than MTK_PMIC_MAX_KEY_COUNT available keys are found.
+
+This actually fixes a small bug. The pre-count only gets the number
+of available keys, but the subsequent for_each_child block doesn't
+skip over the unavailable ones, so if an unavailable node is in
+the middle of the tree, there could end up being a mismatch.
+
+> Set nkeys after the loop so suspend/resume iterate only over
+> initialized entries.  Use a local key variable in the loop for
+> clarity.
 >
-> Thank you for posting the v4 series.
+> Add an irq > 0 guard to the suspend/resume wakeup paths so that
+> uninitialized key entries are safely skipped.
+
+You are trying to do too much in one patch. These other fixes should be
+in separate patches.
+
+And why not just modify the driver to keep "nkeys", so that it knows
+how many entries are valid? No use in iterating over empty entries.
+
+
+> Assisted-by: OpenCode:BigPickle
+> Signed-off-by: Rosen Penev <rosenp@gmail.com>
+> ---
+>  drivers/input/keyboard/mtk-pmic-keys.c | 71 ++++++++++++--------------
+>  1 file changed, 34 insertions(+), 37 deletions(-)
 >
-> I tested the complete v4 series on my MT8173 Chromebook, but I am
-> seeing a GPU device loss as soon as Mesa initializes the Vulkan device.
+> diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keybo=
+ard/mtk-pmic-keys.c
+> index fd684ac16938..e2ced6e5165a 100644
+> --- a/drivers/input/keyboard/mtk-pmic-keys.c
+> +++ b/drivers/input/keyboard/mtk-pmic-keys.c
+> @@ -267,7 +267,7 @@ static int mtk_pmic_keys_suspend(struct device *dev)
+>         int index;
 >
-> My current setup is:
+>         for (index =3D 0; index < MTK_PMIC_MAX_KEY_COUNT; index++) {
+> -               if (keys->keys[index].wakeup) {
+> +               if (keys->keys[index].irq > 0 && keys->keys[index].wakeup=
+) {
+>                         enable_irq_wake(keys->keys[index].irq);
+>                         if (keys->keys[index].irq_r > 0)
+>                                 enable_irq_wake(keys->keys[index].irq_r);
+> @@ -283,7 +283,7 @@ static int mtk_pmic_keys_resume(struct device *dev)
+>         int index;
 >
->   Board: Google Elm / Acer Chromebook R13 (CB5-312T)
->   Kernel:
->     linux-next next-20260727
->     commit: 33d6e5134c70446eddafbb3fd5ad088e848a7ad6
->     (next-20260727-5-g33d6e5134c70)
+>         for (index =3D 0; index < MTK_PMIC_MAX_KEY_COUNT; index++) {
+> -               if (keys->keys[index].wakeup) {
+> +               if (keys->keys[index].irq > 0 && keys->keys[index].wakeup=
+) {
+>                         disable_irq_wake(keys->keys[index].irq);
+>                         if (keys->keys[index].irq_r > 0)
+>                                 disable_irq_wake(keys->keys[index].irq_r)=
+;
+> @@ -324,13 +324,13 @@ MODULE_DEVICE_TABLE(of, of_mtk_pmic_keys_match_tbl)=
+;
+>  static int mtk_pmic_keys_probe(struct platform_device *pdev)
+>  {
+>         int error, index =3D 0;
+> -       unsigned int keycount;
+>         struct mt6397_chip *pmic_chip =3D dev_get_drvdata(pdev->dev.paren=
+t);
+>         struct device_node *node =3D pdev->dev.of_node;
+>         static const char *const irqnames[] =3D { "powerkey", "homekey" }=
+;
+>         static const char *const irqnames_r[] =3D { "powerkey_r", "homeke=
+y_r" };
+>         struct mtk_pmic_keys *keys;
+>         const struct mtk_pmic_regs *mtk_pmic_regs;
+> +       struct mtk_pmic_keys_info *key;
+>         struct input_dev *input_dev;
 >
->   Kernel release: 7.2.0-rc5-next-20260727-stb-cbm-next-pvr-v4+
+>         keys =3D devm_kzalloc(&pdev->dev, sizeof(*keys), GFP_KERNEL);
+> @@ -353,45 +353,42 @@ static int mtk_pmic_keys_probe(struct platform_devi=
+ce *pdev)
+>         input_dev->id.product =3D 0x0001;
+>         input_dev->id.version =3D 0x0001;
 >
->   Mesa: 26.1.5
->   vulkan-powervr: 26.1.5
->   Firmware:
->     rogue_4.40.2.51_v1.fw
->     SHA256:
->     f44b7056992fb4057c987dcd7073468bec628aa56cb9815b1162f1cb7c1d73f2
-
-My firmware blob is different from yours:
-
-powervr 13000000.gpu: [drm] loaded firmware powervr/rogue_4.40.2.51_v1.fw
-powervr 13000000.gpu: [drm] FW version v1.0 (build 6503725 OS)
-
-SHA256: 1456504351bd041f0bf96667403ad32460fc7b807c09858df1f083e207323e4a
-
-Funny thing is neither of ours match the official firmware blobs released
-by Imagination [1].
-
-The latest version is "FW version v1.1 (build 6976702 OS)" with
-SHA256: e6bf10aaf442798fd81df9b9122e7e85900aafe77fcbec34b426af435c2b1c44
-
-This version also works for me.
-
-The "initial version" is "FW version v1.0 (build 6734358 OS)" with
-SHA256: baa227de4f297b7c0928c6535d15affd80aa9c5f528d2d5dc4b764ad050d22f2
-
-And this version also works.
-
-It seems your firmware build is even older than mine. I suggest you
-update it and try again?
-
-[1] https://gitlab.freedesktop.org/imagination/linux-firmware/-/blob/powerv=
-r/powervr/rogue_4.40.2.51_v1.fw
-
-
-> All five patches applied cleanly. The PowerVR driver probes, loads the
-> firmware, and creates the DRM render node successfully.
+> -       keycount =3D of_get_available_child_count(node);
+> -       if (keycount > MTK_PMIC_MAX_KEY_COUNT ||
+> -           keycount > ARRAY_SIZE(irqnames)) {
+> -               dev_err(keys->dev, "too many keys defined (%d)\n", keycou=
+nt);
+> -               return -EINVAL;
+> -       }
+> -
+>         for_each_child_of_node_scoped(node, child) {
+> -               keys->keys[index].regs =3D &mtk_pmic_regs->keys_regs[inde=
+x];
+> -
+> -               keys->keys[index].irq =3D
+> -                       platform_get_irq_byname(pdev, irqnames[index]);
+> -               if (keys->keys[index].irq < 0)
+> -                       return keys->keys[index].irq;
+> -
+> -               if (mtk_pmic_regs->key_release_irq) {
+> -                       keys->keys[index].irq_r =3D platform_get_irq_byna=
+me(pdev,
+> -                                                                        =
+ irqnames_r[index]);
+> -
+> -                       if (keys->keys[index].irq_r < 0)
+> -                               return keys->keys[index].irq_r;
+> +               if (index >=3D MTK_PMIC_MAX_KEY_COUNT) {
+> +                       dev_err(&pdev->dev, "too many keys defined\n");
+> +                       return -EINVAL;
+>                 }
 >
-> However, when I run the following from an SSH session without GDM or
-> another graphical session running:
->
->   PVR_I_WANT_A_BROKEN_VULKAN_DRIVER=3D1 vulkaninfo --summary
->
-> Mesa prints the expected GX6250 warnings:
->
->   Missing reset support for brn51764
->   Missing reset support for brn58839
->   Missing support for brn62269
->
-> The command then hangs, and the kernel reports:
->
->   powervr 13000000.gpu: [drm] *ERROR* GPU device lost
->
-> There are no additional timeout, MMU fault, firmware, clock, or runtime
-> PM messages immediately before the device-lost message.
->
-> I originally also observed the same failure when GDM started GNOME
-> Shell, but reproducing it with vulkaninfo from a non-graphical SSH
-> session indicates that this is not specific to Mutter or GNOME.
->
-> Since your cover letter reports that vkmark and glmark2-es2-drm work
-> with Mesa 26.1.5, I suspect that there may be a difference in the
-> kernel configuration or another part of the test environment.
->
-> Could you please share the following details from your working setup?
->
->   1. The exact Chromebook board/model used for testing
+> -               error =3D of_property_read_u32(child,
+> -                       "linux,keycodes", &keys->keys[index].keycode);
+> -               if (error) {
+> -                       dev_err(keys->dev,
+> -                               "failed to read key:%d linux,keycode prop=
+erty: %d\n",
+> -                               index, error);
+> -                       return error;
+> +               if (of_device_is_available(child)) {
 
-The codename is "telesu", which is basically a hana in a different case.
+Instead of re-indenting the whole block and making the diff huge and
+unreadable, please make this skip over the remaining code when the
+condition fails, i.e.:
 
->   2. The exact kernel base commit
+                  if (!of_device_is_available(child))
+                          continue;
 
-I have a whole bunch of patches on top of next-20260727, but none
-that should affect this.
+Or better yet, just use for_each_available_child_of_node_scoped() { ... }
+instead.
 
->   3. The kernel configuration, or at least the relevant DRM, PM,
->      generic power-domain, IOMMU, and MediaTek clock options
-
-All relevant options are built-in.
-
->   4. Whether CONFIG_DRM_POWERVR was built-in or built as a module
-
-Module.
-
->   5. The firmware SHA256
-
-See above.
-
->   6. The kernel command line and bootloader used
-
-Chromebook's builtin bootloader.
-
-cmdline:
-
-    cros_secure root=3DPARTUUID=3D824526A4-24EE-344D-85A2-20630C42D31A
-    console=3Dtty0 console=3DttyS0,115200n8 earlycon ro text drm.debug=3D0x=
-106
-    panic=3D30 rootwait log_buf_len=3D1M no_console_suspend
-
-AFAICT nothing special.
-
->   7. Whether `vulkaninfo --summary` also completes successfully
->
-> My current relevant configuration includes:
->
-> CONFIG_PM_SLEEP=3Dy
-> CONFIG_PM=3Dy
-> CONFIG_PM_GENERIC_DOMAINS=3Dy
-> CONFIG_MODULES=3Dy
-> CONFIG_DMA_SHARED_BUFFER=3Dy
-> CONFIG_DRM_POWERVR=3Dm
-> CONFIG_DRM_MEDIATEK=3Dy
-> CONFIG_SYNC_FILE=3Dy
-> CONFIG_COMMON_CLK_MT8173_MFGTOP=3Dy
-> CONFIG_IOMMU_SUPPORT=3Dy
-> CONFIG_ARM_SMMU=3Dy
-> CONFIG_MTK_IOMMU=3Dy
->
-> I would be happy to test additional patches or provide any further
-> logs, kernel configuration, or debugging information if that would
-> help.
-
-As mentioned above, please try updating your firmware blob. Your
-version is even older than mine, and neither of ours is the "official"
-release.
+I normally suggest people read the API docs (either on docs.kernel.org
+or the kernel-doc sections in the code) to find better suited constructs
+to use.
 
 
 Thanks
 ChenYu
 
-
-> Thanks,
-> YoungJoon Lee
+> +                       key =3D &keys->keys[index];
+> +                       key->regs =3D &mtk_pmic_regs->keys_regs[index];
+> +
+> +                       key->irq =3D platform_get_irq_byname(pdev, irqnam=
+es[index]);
+> +                       if (key->irq < 0)
+> +                               return key->irq;
+> +
+> +                       if (mtk_pmic_regs->key_release_irq) {
+> +                               key->irq_r =3D platform_get_irq_byname(pd=
+ev, irqnames_r[index]);
+> +                               if (key->irq_r < 0)
+> +                                       return key->irq_r;
+> +                       }
+> +
+> +                       error =3D of_property_read_u32(child, "linux,keyc=
+odes", &key->keycode);
+> +                       if (error) {
+> +                               dev_err(keys->dev,
+> +                                       "failed to read key:%d linux,keyc=
+ode property: %d\n",
+> +                                       index, error);
+> +                               return error;
+> +                       }
+> +
+> +                       if (of_property_present(child, "wakeup-source"))
+> +                               key->wakeup =3D true;
+> +
+> +                       error =3D mtk_pmic_key_setup(keys, key);
+> +                       if (error)
+> +                               return error;
+>                 }
 >
-> 2026=E5=B9=B47=E6=9C=8829=E6=97=A5(=E6=B0=B4) 0:28 AngeloGioacchino Del R=
-egno
-> <angelogioacchino.delregno@collabora.com>:
-> >
-> > On 7/28/26 16:44, Chen-Yu Tsai wrote:
-> > > On Tue, Jul 28, 2026 at 10:33=E2=80=AFPM AngeloGioacchino Del Regno
-> > > <angelogioacchino.delregno@collabora.com> wrote:
-> > >>
-> > >> On 7/28/26 15:13, Chen-Yu Tsai wrote:
-> > >>> On Tue, Jul 28, 2026 at 9:10=E2=80=AFPM Brian Masney <bmasney@redha=
-t.com> wrote:
-> > >>>>
-> > >>>> Hi Chen-Yu,
-> > >>>>
-> > >>>> On Tue, Jul 28, 2026 at 05:17:58PM +0800, Chen-Yu Tsai wrote:
-> > >>>>> Hi everyone,
-> > >>>>>
-> > >>>>> This is v4 of my MT8173 PowerVR GPU support series.
-> > >>>>>
-> > >>>>> This time around Mesa was ready for basic testing, using both vul=
-kanmark
-> > >>>>> and glmark2-es2-drm (with Zink). Details below.
-> > >>>>>
-> > >>>>> Changes since v3 (all in the clk driver patch):
-> > >>>>> - Changed pm_runtime_put() to pm_runtime_put_sync()
-> > >>>>> - Added missing of_node_put() in remove function
-> > >>>>>
-> > >>>>> Changes since v2 (all in the clk driver patch):
-> > >>>>> - Made COMMON_CLK_MT8173_MFGTOP depend on PM
-> > >>>>>     - Needed since the driver implements PM domains using the gen=
-eric PM
-> > >>>>>       domain library, which also depends on PM
-> > >>>>>     - Fixes build breakage (kernel test robot)
-> > >>>>> - Fixed "RST_DELAY_CNT" name (Brian)
-> > >>>>> - Dropped unused mfg_desc (Brian)
-> > >>>>> - Added check of clk_prepare_enable()'s return value in
-> > >>>>>     clk_mt8173_mfgtop_power_on() (Brian)
-> > >>>>> - Saved error value for return in IS_ERR(data->clk_26m) branch
-> > >>>>>     (Dan Carpenter / kernel test robot w/ smatch)
-> > >>>>>
-> > >>>>> Changes since v1:
-> > >>>>> - Adapted to changed DT bindings
-> > >>>>> - Dropped driver change
-> > >>>>> - Use same power domain for "a" and "b" GPU power domains
-> > >>>>>
-> > >>>>>
-> > >>>>> This series enables the PowerVR GPU found in the MT8173 SoC, foun=
-d in
-> > >>>>> some Chromebooks.
-> > >>>>
-> > >>>> I'm making a pull for Stephen for the clk changes. Should patches =
-1,2,4
-> > >>>> go through the clk tree? Patches 3,5 go through the DRM tree?
-> > >>>
-> > >>> Only patches 1 and 2 should go through the clock tree.
-> > >>>
-> > >>> Patch 3, 4, 5 can all go through the soc tree if Angelo wants to pi=
-ck up
-> > >>> DT binding patches. Otherwise I can push patch 3 through drm-misc.
-> > >>>
-> > >>
-> > >> Not sure if I can really take the DRM bindings patch through soc.
-> > >>
-> > >> I will take the devicetree ones exactly right now, even though it's =
-going to
-> > >> give warnings.
-> > >>
-> > >> I trust that you'll make the binding get into linux-next before it's=
- too late.
-> > >
-> > > Rob beat me to it. :D
-> >
-> > Love it!
-> >
-> > Thanks Rob :-D
-> >
-> > Cheers,
-> > Angelo
+> -               if (of_property_read_bool(child, "wakeup-source"))
+> -                       keys->keys[index].wakeup =3D true;
+> -
+> -               error =3D mtk_pmic_key_setup(keys, &keys->keys[index]);
+> -               if (error)
+> -                       return error;
+> -
+>                 index++;
+>         }
+>
+> --
+> 2.55.0
+>
+>
 
