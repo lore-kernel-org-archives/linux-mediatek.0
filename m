@@ -4,113 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A695C53219
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2026 18:34:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A74DAC53219
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2026 18:58:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Mime-Version:Subject:References:In-Reply-To:Message-ID:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dEkdeq10zZmR1kctz1fIkkTbV43ha873suiUEwLT1nI=; b=dSb8IhV61gt3eB/dBr2mXCk63e
-	eYWK5UONumBVF2mO5h8QYEtaTopzaIexY0vkvpDz1lrDzrDCQwxCYSMB2SQMdJRVgolpgDxfJrqOQ
-	8KKG1lnMP0mRRzycoDDxkrd/Eh2fFt1FZ2rJUkEBtXX1XAVRnX0NZ0vgQcZYtjBc5xfyyTXINN6TW
-	0ZBDqgkkx8xbyhqjaB0iwJrYfBRrrlOTUib90f1SMLLx334SjlGSvr+sW6pI7Mm9htO95foEvGUKm
-	g+kCKA9uZ5Fewb9ck7l9xZZsL7cb7+n9defsmegiWxCtHfNaBnjgxTICLJOAlzsfQiL3A/KWIcykw
-	9WiPmT6Q==;
+	bh=EBrvDEnJYvhnFH7fX5PvcLxlTQTad9r13RWJQAwNzRY=; b=krBLaDwN6T4eYq8+1Gzn1gUeOB
+	FQlwc5YOkydGXN2iXFjpbPk16PFo8XFi3F5M16NR6MGCSgORKMCqGVl9DouH68Jqgf3heyNE8BptW
+	CH7RjT5tBUmC9f84xoaIYa1aBu/l4zR/DciWOjDWpv9lW2i/nCYuIsEvCqCxr+95BXFDNfn7VHcsK
+	mZSovqxjcYMgPNO2T5kAT4kf2Xx3jmcwrNPbLAXjCikg/xqzJlzbSVAKcUgXCHkOy17GzdcuzhKeH
+	sHJkLv1/TJn/nmQOFb0L6yig2yEFJTIdkgXtdWkZ0GDDwt4hMwhOJC31Z3A6gRyr3jCSOXYDoqp4d
+	tRr/WQ7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wp96z-00000008ont-44UV;
-	Wed, 29 Jul 2026 18:34:37 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1wp9Tb-00000008qde-3eeb;
+	Wed, 29 Jul 2026 18:57:59 +0000
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wp96v-00000008om3-0y0C
+	id 1wp9TY-00000008qd0-2oKq
 	for linux-mediatek@lists.infradead.org;
-	Wed, 29 Jul 2026 18:34:35 +0000
-Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-69c1220bd51so2017319a12.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 29 Jul 2026 11:34:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785350071; cv=none;
-        d=google.com; s=arc-20260327;
-        b=fTmPb+SoVjZg78gXMzhvcs3kMiJL2JLp70E7dBXOa6AbMzJ1TYZ7QagPUBZoEXbJgb
-         dGZ8OEqUiNgM1he3dsc9HiGEqYxHatyFfgZnicrjW3ij5JiSmjUrIwlptryZeiO2mqRS
-         QCv4QsP6DkfR16Xxz1WSOHViyrjbNXPK4iQBEYmr5rKIiVuLInwSXxrL3ApUCh3EEioe
-         FxztmS+icodBsITIu9ycEq1qqFY+rc8xljLC/cmxM4+4IwPHhsAofk8ZLyH6rq2MTfA3
-         p0crMtF84/pbuvj+eZOC+zJiSjjci54xitKKXKJxzfrWgSnb8DvEyFPq10K1wi2oU1s+
-         yyfA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=dEkdeq10zZmR1kctz1fIkkTbV43ha873suiUEwLT1nI=;
-        fh=qwoH1romTYnaONcw348cCJEZu66zRO2QrXLkJxgQg0s=;
-        b=Rtkjh4XigXsrU3LF5GMAs8tQTMvPIV8nsXagE1wNz3ABK8/DfvchHl3dAEMs5bcUr6
-         EnTlUTZ87xYf9Wxn4yZevtB5ClKpdiJMs2116R8gKE/OA8X7hMxdI6pK4MxM5YZ38mdH
-         0axASrWuqfEpCOHSFaAZ6mNfWHBiSUAp1M20NeiPrbdzXnLTtfyqLFn+p6LSmcqLDuOR
-         AQ9a4UoQqo/Xb31NPkLmRg+FAGCX8durFUZwVEvGrFpXJb5V/+Ro2rxU5mmm1Ax4jNGG
-         odxSY2NLFE7g3dEVQzQkWbZEBNKzuGUHI54Z5SpjEnkqXQ5/VJDlSv+YRpp+h04MEDas
-         Vi7Q==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Wed, 29 Jul 2026 18:57:58 +0000
+Received: by mail-yw1-x112d.google.com with SMTP id 00721157ae682-8111c0c7561so16584297b3.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 29 Jul 2026 11:57:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785350071; x=1785954871; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=dEkdeq10zZmR1kctz1fIkkTbV43ha873suiUEwLT1nI=;
-        b=q9xyd76YWimo8N3cNois6PlZKiwPKInWUDiiQ2WIzmD8xRacPnu12ylbz4iN8UM28i
-         ESx3OR/+5xy3XITgsYTRnLGjiI96BWFOWgtpcTluz3NrVXmj5F0iJxNWE1pkEILFlyQ4
-         ZUnJNzwbTux28JOozrdafXdPXn+D2+a5tXKUe9VCBSIDo3ggz+McvggndMwS9aYWHLMx
-         AeUqhBoMCTDuWmfsUPN0Tu2Sq+EGa1ANJAepYMcbNo0z2GiqrNE5wNHs5dEJ8da9XbbR
-         u26GwqwZNV7z+0EBrBrBRVxe1DcGNg+A8s4iOKCHHAEeJqSz4BAFBtEfavtsL3yMQz4A
-         HKjQ==
+        d=gmail.com; s=20251104; t=1785351475; x=1785956275; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:subject
+         :references:in-reply-to:message-id:cc:to:from:date:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=EBrvDEnJYvhnFH7fX5PvcLxlTQTad9r13RWJQAwNzRY=;
+        b=eyx7+rZ1JENTk3L3P+zzAXABJHRajGP8fH22/nK2d9IhsoPhXDZp+gYdQ7Z5zZyS8w
+         66chiar6+OJk7U1ceiqlMJoPLeJQkGc+UwfvpzCfCRkJF1GNIMeHTp4ZrE4espq2jteI
+         urUcNE71huHnU380qqsAVXeQgSpDd20edw8asjVmPa8hN+7nUvh7/PIklXZbuEr7Bgp8
+         6OHeryRutnCrAe2WVMLGzV4g3gaDjJV7F4xTvlx1eNUGTCtbCEvJHqcu6XwAHfIHYzQT
+         0CKY0s6C9M03dA2nEaqjbNvfEhsNPN7w3Vr+6XdCmYe4ThcdAXmDGASNtB1ya9zoJGlv
+         oH0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785350071; x=1785954871;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
+        d=1e100.net; s=20251104; t=1785351475; x=1785956275;
+        h=content-transfer-encoding:content-type:mime-version:subject
+         :references:in-reply-to:message-id:cc:to:from:date:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=dEkdeq10zZmR1kctz1fIkkTbV43ha873suiUEwLT1nI=;
-        b=Zfta+EPwY7Tybux79CfSdF0Iw0MsVIUX5Ik/lHgy1oWXs+bv+n9nbqoT47sD9B6Ccy
-         3ZumofwSBgVWqc8oMqwkc6BVQTfXZQDX+agFsb51WLmrxi9BSXo0D7t8Sandm1fKcEvi
-         hoacZQbh1ahKFXw5sEQKx17usDAhdT0DeASZV1CikAuVIZ5jUCZ+HcwiH4iNgXEkEIAt
-         Fss0yAZorMrjM2TyopoegdT4bVvGUvoxGDKG4+TS76mnhVx6u42nU0gz/Af3y6SZ/QuY
-         bzoBb1oleHsf+G69xyWH4EmevHaCDDMXO6puWlMvGEMJ3cOJ13fHfgfha/rUeHn53cPX
-         UyoQ==
-X-Forwarded-Encrypted: i=1; AHgh+RoX2a9LfI/hctlcUBju60dcnTLvq08A3XDUUhNw/XtnOtuFY0QJTicSqE6BuedONpBUaoYge4pC37tYA0Be1A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwOKTpfr2BFzsllG0Jo79kcaj9U+QeaB/dxavNBzdqwJDEVaZ6l
-	qB0sR2MOjCLQidc5Z7MenV1zwXKF48kC5O/16sjPIWTf6Vhz8TOAuV06qN4bzmCq9ei3zoCM+PH
-	Vv7Azq1iWdx2hBocI6/fWz633T5w5wZU=
-X-Gm-Gg: AR+sD13FcpwygATiXJoY4zUH+D/aRlCRgS4mk9aNhYaUEHFOdOazNEpB8shKA7BAY5k
-	7wNlEUHe9wYkKEH5CxoeJGqppCqFA3mfJU6STMt04uzbPZPLAj3P9ac981ausnmbeB0MuPtek39
-	f6hLkWoFRmHaokbPo55yI740eNCaBZ6sU0jUCE3+fB33z7s/vRDERNJff9ukwPjuZccRg3z8IRm
-	ZmLw1sepcGLwyzOfvekF43ACtLVDcP1EaTUuS7t6zbt2/vn1T+/40Uh1g1bNQ0NFLUt15swIkOU
-	us4ItflJLELZPg6xTPtzZC4fQhelLMCdEWV2RkxFuZ4IfdFwnKVRCcDx64L5JAanEYpOj1oVz62
-	ynJRPqRXFUdpV7Pk19Vwd5P1tlhTRMgVHoeOMFdH5nr9rGWpeQGBYniqdep1k+k1b3I6R+E7YgZ
-	qdzIwMm3xMnB3igBnjlSZfdpF7ylf15Q3npaY7cd19g8vcay9gh92X8/8=
-X-Received: by 2002:a05:6402:2345:b0:698:50ea:2d97 with SMTP id
- 4fb4d7f45d1cf-6a034ab91cfmr4406703a12.20.1785350070955; Wed, 29 Jul 2026
- 11:34:30 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260728212438.54078-1-rosenp@gmail.com> <20260728212438.54078-3-rosenp@gmail.com>
- <CAGXv+5EVSc4=ug=GU6Gvdu0UatqM1DD48i-c3AEb4p0GwktRvg@mail.gmail.com>
-In-Reply-To: <CAGXv+5EVSc4=ug=GU6Gvdu0UatqM1DD48i-c3AEb4p0GwktRvg@mail.gmail.com>
-From: Rosen Penev <rosenp@gmail.com>
-Date: Wed, 29 Jul 2026 11:34:17 -0700
-X-Gm-Features: AUfX_mxHHY_oKlFmxwUp_dDYkgE3HyOB09yEzi4_yjeUnpEenThghULANdcA5Us
-Message-ID: <CAKxU2N8VeE+xPGZ-41nqDCtk_LA_PvgzjrUbnOZ-5JmEb-uKHg@mail.gmail.com>
-Subject: Re: [PATCHv2 2/2] Input: mtk-pmic-keys: Count available keys during
- probe instead of pre-counting
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: linux-input@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
+        bh=EBrvDEnJYvhnFH7fX5PvcLxlTQTad9r13RWJQAwNzRY=;
+        b=NJsLAZew5QkLNeSCg9s/CJQFIFYVhBarTbeCa8NP+uOXpYP6JWm1h+mfN7a8MfUW7k
+         A5QqHZWWBr709gI3uBveHnWM4KH4hdRFb6liIlMg5wQJjCVmHygcteaM8J+Yq+Z2nfMn
+         Rrr9ej8a82z52eUy7yOXfs0zfXJl8ydZjWJv8TVVvlPkM3Va7MHdRhNFPJcAFKUr02ci
+         XP1c7kW3J2D1FW3TYA6BIHHa+muUXAWYBrDI8ZbigMAbzBI4mYtsnQK5LgDmZeAbdsAR
+         ixuXQStUO6C8iCJZUWUA3tgK9nzWRYAfx5IoL9z32kXwFv0O+nxBkaK3AFuxxVPNwavN
+         acvQ==
+X-Forwarded-Encrypted: i=1; AHgh+RpmKahEHr0/+72BmT4Lg4a3DhZdDnC10ALr2o60BsZk1PDKWhuSbTEH0VSYN3LEohEdfo4jl32VaLrZH2l4rQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw5gdgHl9vIfHvwsBxjDFm2bCQ9Q/119A8e+90KOKYdSCpLsuyU
+	dll74rYCa2CuyDg70jAyReE1xxma5X5rDqv+QHz6fmeATxvp5tn5/zEB
+X-Gm-Gg: AR+sD12hNJ+5Mgx1AZlNfx9yt3aIPD0WaisqkI2J21Q5PRm3aeYVP0mzmN7Z/Wga6wH
+	4J7G4EdY4EhoHI0X9KBv34ykLHZ0Q0XavX8WlHBjsr0OV9tTYqYFZVu1+Rju3uzk52ob3UqTwG5
+	GhoQEo97ceHCsC13cBOaqPWfnd+2mpTxR8EtbWZS/g3dISZk47+UKfLcbWt5vBEDNkYPnI1HYUf
+	RcL0j009wNQ9Ba6izgyo1QFa4m3h3m2qFp9IKrPDzYCn2A25LJkjxFEwFEF6YKo8QkAKGjQYyxQ
+	EJ4TyOiqisrYuNZX+pzQaP3wqFxvLP6AfFsEvUJhV6sflMUV3YJM/CIyb6mG1xRDmbR/HUQplYf
+	oS4A6gHzgNGSvGnM5eH43vbCVIouR/ZlJtKxi/2zIvK05QsAYgKuC8A5mADGsYdSd31A5wSxsUB
+	Ny/8UgoH2TebIlS1EGGwjKiX0xJGEQJS17WFvWPGajqxZN1fsTOFR3iXQz0avsXVCAgObjgb072
+	5Xi7RnRbLG/vSMMBi6qywtyG+e/gSiWglPgWA==
+X-Received: by 2002:a05:690c:c08:b0:81e:4886:2727 with SMTP id 00721157ae682-81fb5de8df5mr374317b3.58.1785351474737;
+        Wed, 29 Jul 2026 11:57:54 -0700 (PDT)
+Received: from gmail.com (250.4.48.34.bc.googleusercontent.com. [34.48.4.250])
+        by smtp.gmail.com with ESMTPSA id 00721157ae682-81fa2756af8sm24846587b3.3.2026.07.29.11.57.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 29 Jul 2026 11:57:53 -0700 (PDT)
+Date: Wed, 29 Jul 2026 14:57:53 -0400
+From: Willem de Bruijn <willemdebruijn.kernel@gmail.com>
+To: =?UTF-8?B?Wmhhb3BpbmcgU2h1ICjoiJLlj6zlubMp?= <Zhaoping.Shu@mediatek.com>, 
+ "kuba@kernel.org" <kuba@kernel.org>, 
+ "willemb@google.com" <willemb@google.com>
+Cc: "sd@queasysnail.net" <sd@queasysnail.net>, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+ "imv4bel@gmail.com" <imv4bel@gmail.com>, 
+ "alice@isovalent.com" <alice@isovalent.com>, 
+ "eilaimemedsnaimel@gmail.com" <eilaimemedsnaimel@gmail.com>, 
+ =?UTF-8?B?SFcgSGUgKOS9leS8nyk=?= <HW.He@mediatek.com>, 
+ =?UTF-8?B?SGFpanVuIExpdSAo5YiY5rW35YabKQ==?= <haijun.liu@mediatek.com>, 
+ "horms@kernel.org" <horms@kernel.org>, 
+ =?UTF-8?B?WGlheXUgWmhhbmcgKOW8oOWkj+Wuhyk=?= <Xiayu.Zhang@mediatek.com>, 
+ =?UTF-8?B?SXZlbiBZYW5nICjpmLPlhYkp?= <Iven.Yang@mediatek.com>, 
+ "pabeni@redhat.com" <pabeni@redhat.com>, 
+ "edumazet@google.com" <edumazet@google.com>, 
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, 
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+ =?UTF-8?B?TGFtYmVydCBXYW5nICjnjovkvJ8p?= <Lambert.Wang@mediatek.com>, 
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+ "davem@davemloft.net" <davem@davemloft.net>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ "kuniyu@google.com" <kuniyu@google.com>, 
+ "ncardwell@google.com" <ncardwell@google.com>, 
+ steffen.klassert@secunet.com
+Message-ID: <willemdebruijn.kernel.1758c8f19209@gmail.com>
+In-Reply-To: <0f5668da79eb9a13dfdb9c97c7d71c5153b3a48f.camel@mediatek.com>
+References: <20260723091601.72103-1-zhaoping.shu@mediatek.com>
+ <20260723063935.75bf55e3@kernel.org>
+ <CA+FuTSfgBbPkdLanqEgbDq-jLVQJax4fUxQ-tuzTuFwQANwxBA@mail.gmail.com>
+ <0f5668da79eb9a13dfdb9c97c7d71c5153b3a48f.camel@mediatek.com>
+Subject: Re: [PATCH net v2] net: gro: avoid nesting TCP GSO skbs in
+ skb_gro_receive_list()
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260729_113433_356146_B5CC41F1 
-X-CRM114-Status: GOOD (  33.09  )
+X-CRM114-CacheID: sfid-20260729_115756_765027_8B31FD71 
+X-CRM114-Status: GOOD (  36.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,200 +127,135 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 28, 2026 at 8:44=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> w=
-rote:
->
-> On Wed, Jul 29, 2026 at 5:25=E2=80=AFAM Rosen Penev <rosenp@gmail.com> wr=
-ote:
-> >
-> > Replace the separate of_get_available_child_count() pre-count and
-> > validation step with a single pass through
-> > for_each_child_of_node_scoped().  Skip unavailable child nodes and
-> > bail if more than MTK_PMIC_MAX_KEY_COUNT available keys are found.
->
-> This actually fixes a small bug. The pre-count only gets the number
-> of available keys, but the subsequent for_each_child block doesn't
-> skip over the unavailable ones, so if an unavailable node is in
-> the middle of the tree, there could end up being a mismatch.
->
-> > Set nkeys after the loop so suspend/resume iterate only over
-> > initialized entries.  Use a local key variable in the loop for
-> > clarity.
-> >
-> > Add an irq > 0 guard to the suspend/resume wakeup paths so that
-> > uninitialized key entries are safely skipped.
->
-> You are trying to do too much in one patch. These other fixes should be
-> in separate patches.
->
-> And why not just modify the driver to keep "nkeys", so that it knows
-> how many entries are valid? No use in iterating over empty entries.
->
->
-> > Assisted-by: OpenCode:BigPickle
-> > Signed-off-by: Rosen Penev <rosenp@gmail.com>
-> > ---
-> >  drivers/input/keyboard/mtk-pmic-keys.c | 71 ++++++++++++--------------
-> >  1 file changed, 34 insertions(+), 37 deletions(-)
-> >
-> > diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/key=
-board/mtk-pmic-keys.c
-> > index fd684ac16938..e2ced6e5165a 100644
-> > --- a/drivers/input/keyboard/mtk-pmic-keys.c
-> > +++ b/drivers/input/keyboard/mtk-pmic-keys.c
-> > @@ -267,7 +267,7 @@ static int mtk_pmic_keys_suspend(struct device *dev=
-)
-> >         int index;
-> >
-> >         for (index =3D 0; index < MTK_PMIC_MAX_KEY_COUNT; index++) {
-> > -               if (keys->keys[index].wakeup) {
-> > +               if (keys->keys[index].irq > 0 && keys->keys[index].wake=
-up) {
-> >                         enable_irq_wake(keys->keys[index].irq);
-> >                         if (keys->keys[index].irq_r > 0)
-> >                                 enable_irq_wake(keys->keys[index].irq_r=
-);
-> > @@ -283,7 +283,7 @@ static int mtk_pmic_keys_resume(struct device *dev)
-> >         int index;
-> >
-> >         for (index =3D 0; index < MTK_PMIC_MAX_KEY_COUNT; index++) {
-> > -               if (keys->keys[index].wakeup) {
-> > +               if (keys->keys[index].irq > 0 && keys->keys[index].wake=
-up) {
-> >                         disable_irq_wake(keys->keys[index].irq);
-> >                         if (keys->keys[index].irq_r > 0)
-> >                                 disable_irq_wake(keys->keys[index].irq_=
-r);
-> > @@ -324,13 +324,13 @@ MODULE_DEVICE_TABLE(of, of_mtk_pmic_keys_match_tb=
-l);
-> >  static int mtk_pmic_keys_probe(struct platform_device *pdev)
-> >  {
-> >         int error, index =3D 0;
-> > -       unsigned int keycount;
-> >         struct mt6397_chip *pmic_chip =3D dev_get_drvdata(pdev->dev.par=
-ent);
-> >         struct device_node *node =3D pdev->dev.of_node;
-> >         static const char *const irqnames[] =3D { "powerkey", "homekey"=
- };
-> >         static const char *const irqnames_r[] =3D { "powerkey_r", "home=
-key_r" };
-> >         struct mtk_pmic_keys *keys;
-> >         const struct mtk_pmic_regs *mtk_pmic_regs;
-> > +       struct mtk_pmic_keys_info *key;
-> >         struct input_dev *input_dev;
-> >
-> >         keys =3D devm_kzalloc(&pdev->dev, sizeof(*keys), GFP_KERNEL);
-> > @@ -353,45 +353,42 @@ static int mtk_pmic_keys_probe(struct platform_de=
-vice *pdev)
-> >         input_dev->id.product =3D 0x0001;
-> >         input_dev->id.version =3D 0x0001;
-> >
-> > -       keycount =3D of_get_available_child_count(node);
-> > -       if (keycount > MTK_PMIC_MAX_KEY_COUNT ||
-> > -           keycount > ARRAY_SIZE(irqnames)) {
-> > -               dev_err(keys->dev, "too many keys defined (%d)\n", keyc=
-ount);
-> > -               return -EINVAL;
-> > -       }
-> > -
-> >         for_each_child_of_node_scoped(node, child) {
-> > -               keys->keys[index].regs =3D &mtk_pmic_regs->keys_regs[in=
-dex];
-> > -
-> > -               keys->keys[index].irq =3D
-> > -                       platform_get_irq_byname(pdev, irqnames[index]);
-> > -               if (keys->keys[index].irq < 0)
-> > -                       return keys->keys[index].irq;
-> > -
-> > -               if (mtk_pmic_regs->key_release_irq) {
-> > -                       keys->keys[index].irq_r =3D platform_get_irq_by=
-name(pdev,
-> > -                                                                      =
-   irqnames_r[index]);
-> > -
-> > -                       if (keys->keys[index].irq_r < 0)
-> > -                               return keys->keys[index].irq_r;
-> > +               if (index >=3D MTK_PMIC_MAX_KEY_COUNT) {
-> > +                       dev_err(&pdev->dev, "too many keys defined\n");
-> > +                       return -EINVAL;
-> >                 }
-> >
-> > -               error =3D of_property_read_u32(child,
-> > -                       "linux,keycodes", &keys->keys[index].keycode);
-> > -               if (error) {
-> > -                       dev_err(keys->dev,
-> > -                               "failed to read key:%d linux,keycode pr=
-operty: %d\n",
-> > -                               index, error);
-> > -                       return error;
-> > +               if (of_device_is_available(child)) {
->
-> Instead of re-indenting the whole block and making the diff huge and
-> unreadable, please make this skip over the remaining code when the
-> condition fails, i.e.:
->
->                   if (!of_device_is_available(child))
->                           continue;
-Yeah probably better.
->
-> Or better yet, just use for_each_available_child_of_node_scoped() { ... }
-> instead.
-In v1 this is exactly what I did and was told not to.
->
-> I normally suggest people read the API docs (either on docs.kernel.org
-> or the kernel-doc sections in the code) to find better suited constructs
-> to use.
->
->
-> Thanks
-> ChenYu
->
-> > +                       key =3D &keys->keys[index];
-> > +                       key->regs =3D &mtk_pmic_regs->keys_regs[index];
-> > +
-> > +                       key->irq =3D platform_get_irq_byname(pdev, irqn=
-ames[index]);
-> > +                       if (key->irq < 0)
-> > +                               return key->irq;
-> > +
-> > +                       if (mtk_pmic_regs->key_release_irq) {
-> > +                               key->irq_r =3D platform_get_irq_byname(=
-pdev, irqnames_r[index]);
-> > +                               if (key->irq_r < 0)
-> > +                                       return key->irq_r;
-> > +                       }
-> > +
-> > +                       error =3D of_property_read_u32(child, "linux,ke=
-ycodes", &key->keycode);
-> > +                       if (error) {
-> > +                               dev_err(keys->dev,
-> > +                                       "failed to read key:%d linux,ke=
-ycode property: %d\n",
-> > +                                       index, error);
-> > +                               return error;
-> > +                       }
-> > +
-> > +                       if (of_property_present(child, "wakeup-source")=
-)
-> > +                               key->wakeup =3D true;
-> > +
-> > +                       error =3D mtk_pmic_key_setup(keys, key);
-> > +                       if (error)
-> > +                               return error;
-> >                 }
-> >
-> > -               if (of_property_read_bool(child, "wakeup-source"))
-> > -                       keys->keys[index].wakeup =3D true;
-> > -
-> > -               error =3D mtk_pmic_key_setup(keys, &keys->keys[index]);
-> > -               if (error)
-> > -                       return error;
-> > -
-> >                 index++;
-> >         }
-> >
-> > --
-> > 2.55.0
-> >
-> >
+Zhaoping Shu (=E8=88=92=E5=8F=AC=E5=B9=B3) wrote:
+> On Thu, 2026-07-23 at 16:02 +0200, Willem de Bruijn wrote:
+> > On Thu, Jul 23, 2026 at 3:39=E2=80=AFPM Jakub Kicinski <kuba@kernel.o=
+rg>
+> > wrote:
+> > > =
+
+> > > On Thu, 23 Jul 2026 17:16:01 +0800 zhaoping.shu@mediatek.com wrote:=
+
+> > > > From: HW He <hw.he@mediatek.com>
+> > > > =
+
+> > > > On devices that support both NETIF_F_GRO_HW and
+> > > > NETIF_F_GRO_FRAGLIST,
+> > > =
+
+> > > "devices that support FRAGLIST"? Isn't it a software feature?
+> =
+
+> Sorry for not making it clear. The test environment is:
+> device supports GRO_HW, and enable NETIF_F_GRO_FRAGLIST in
+> driver.
+> =
+
+> > > =
+
+> > > > the hardware or driver may deliver packets that have already been=
+
+> > > =
+
+> > > If you have a driver in mind please name it.
+> > > =
+
+> > > > aggregated into a TCP GSO skb with frags[]. GRO may then
+> > > > aggregate the skb again in skb_gro_receive_list().
+> > > > =
+
+> > > > This can create a nested GSO skb, which is not handled correctly
+> > > > by the
+> > > > later GSO segmentation paths. When the skb is segmented by
+> > > > skb_segment_list(), it not be fully restored to the original
+> > > > packets.
+> > > > =
+
+> > > > Avoid this by setting NAPI_GRO_CB(skb)->flush for GSO skbs before=
+
+> > > > aggregation.
+> > > =
+
+> > > I don't think we can do this. For GRO_HW devices re-aggregating
+> > > in SW is quite helpful, HW often runs out of contexts or times
+> > > out too soon, generating skbs with 16kB..32kB of data, the SW
+> > > can help bring it up to full TSO.
+> =
+
+> I'll try to explain this issue below.
+> =
+
+> > =
+
+> > Also, after e751256486d0 ("net: gro: fix double aggregation of
+> > flush-marked skbs"), it's not clear an another bug remains.
+> > =
+
+> > If it is: as said "nested GRO" of hw + sw GRO is intentional, e.g.,
+> > for BIG-TCP.
+> > =
+
+> > But it may not be anticipated for skb_gro_receive_list. One option
+> > would be to skip the fraglist GSO optimization for such packets.
+> > =
+
+> > First I'd like to understand better what exact bug remains.
+> =
+
+> I agree that re-aggregation is useful for improving GRO efficiency.
+> =
+
+> However, as a general rule, a GSO skb must be segment back to the
+> exact original packets stream. In tethering test, skb_segment_list()
+> cannot correctly segment a nested GSO skb produced by this path.
+
+So the specific issue is a driver that builds a regular (HW) GSO
+packet followed by software GSO that uses fraglist?
+
+Then I see three paths to fixing this
+
+1. decline to further apply SW GRO if skb is GSO and in fraglist mode
+2. if in fraglist mode, further apply SW GRO, but do not use fraglist
+3. in skb_segment_list detect this case and fall back onto
+   skb_segment
+
+We already apply option 3 to various cases where skb_segment_list
+cannot handle complex use-cases of fraglist.
+
+This patch chooses option 1, which is fine. Alternatively it could
+fall through to the regular skb_gro_receive path below.
+
+> This issue can reproduce in the following scenario:
+> 1.Driver submits a single TCP packet, P1. P1 is kept in the
+> gro_list as the first packet.
+> =
+
+> 2. The driver submits a TCP GSO skb, P2. P2 has already aggregated
+> multiple TCP packets by HW_GRO, and its non-linear data is stored in
+> frags[].
+> =
+
+> 3. P1 and P2 match the GRO rules, and since there is no local socket,
+> they are aggregated by skb_gro_receive_list(). The resulting skb,
+> P3, has a frag_list entry that still contains frags[]:
+> P3: [ Linear Data ] -> frag_list -> [ Linear Data ]
+>                                     [ frag[1] ]
+>                                     [ frag[2] ]
+>                                     ...
+> =
+
+> 4. Later, tcp4_gso_segment() or tcp6_gso_segment() calls
+> skb_segment_list() to segment P3. However, skb_segment_list() only
+> segments the entries in frag_list. It does not segment the frags[]
+> inside P2, so P3 is not restored to the original packets, which leads
+> to IP fragmentation or packet drop in the following path.
+> =
+
+> The patch only prevents that nested case before skb_gro_receive_list()
+> aggregation. It does not affect packets that are re-aggregated by
+> skb_gro_receive().
+
+Thanks for the detailed explanation.
+
+
 
