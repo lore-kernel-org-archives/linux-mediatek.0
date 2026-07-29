@@ -4,108 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83038C53219
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2026 04:41:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F106DC53200
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2026 05:06:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uA7NG5Dfr4VakgJXB94YnH6+2nDpY+bBSoINVwagc6U=; b=z8HFxWzVe6qxOANVBtZPAztttW
-	gTclkhG+Rw/XpPSsZVGyUnlVQpvTxuS0CZvyHgOE5ZPAdERYqQVBKIiNKuV5Zq3zbuzfuWEogu3gX
-	tnJzi9XowfZPKrO1pJYK/bf9UiaubO6FVPSpHskcHxhIW2jeml/YCtCq+uLLrHPPdomWPyN3kgWIz
-	od+ZRMxORMugLpbJU/c5lUd61afdwngT7fBEDJP2ytZ356Un+kGeeA33UsOYCFbHr8XfgQixtLldZ
-	DoXTTsBLma/+QjFrvGydXw5bgS/IFgjCQbc9nVCABd/vVAoWRS6S9vbTQWHcQTcyCI49QEo40ldLc
-	9QAGAlbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7/09h4JafWA6BTqjec/Vv8SutmyeV2+BMV1t1G7T10o=; b=0GsAqEzr/pa/fhf2PBOGoV7OHh
+	a10rN+6oBvSTpiQZKDRWVmCYKBWJLPNJw/BJGCdADT+O8oopnNihOHVTfPX0chVa/PfsHzbk6m93H
+	Ne8e2QtqzePQlYBNimG+aeoG0Z4Wx3YzCrY+F/YPAiHmtUEuwVnOkMa5EWtSXNTDr05MSesx5+6qf
+	pqY/xcwFMjll/9I/5d0OnUU3pxa7KwJlwg6GTwvw8qgZCjdYZ7VagDoXmmC81Avxqte/JlzdXuZJa
+	WzzasQppapnhy8OQtSNONU10E4sdoyiIpLrN9OwsP/7KXEoPPMyK1TDLfRpcxplB/RQmorcck+KFC
+	g/uvykcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wow6P-00000006rUG-1NnP;
-	Wed, 29 Jul 2026 04:41:09 +0000
-Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
+	id 1wowUX-00000006uAz-0fE8;
+	Wed, 29 Jul 2026 05:06:05 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wow6M-00000006rTH-1zev
+	id 1wowUT-00000006u9v-3zVe
 	for linux-mediatek@lists.infradead.org;
-	Wed, 29 Jul 2026 04:41:07 +0000
-Received: by mail-yx1-xb129.google.com with SMTP id 956f58d0204a3-66807ba2f0fso600795d50.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 28 Jul 2026 21:41:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785300065; cv=none;
-        d=google.com; s=arc-20260327;
-        b=kkNrBQURaamOYFnl9INdjy4sl3rqc1+u6p6GtZO0Pnqz8tblj4l7MKmMeqXmDYfluF
-         jfwSzycV2OFHmzFwDwRxBztJBtB5djbkO3/vwM781SCRuLRe1NAFfM3p+Y6WWNAPtcEQ
-         eJi+QlV3iPvKM+mURsgG3c9BqaVzmmAwmCHTjgC7kG0veFcjlpRIL2c1Qz5p4Zx97viS
-         vx2IUdKWbWXzYfNXgCTgAV5QUPi/GsLyPLC4HETlSpr3UHGG7pq4ymJxnCs6iSYuHpIz
-         0bf2khorOWxeqHwEEf206yRgjRcrOwvQ71LPAkIsek0ErDc0aU8m9Izxd8hQCoJ6PcMT
-         j09g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=uA7NG5Dfr4VakgJXB94YnH6+2nDpY+bBSoINVwagc6U=;
-        fh=Yt31IliU2ZHCZCdzOBiA+CavM6Wp7Y/Kp4xHuKei5Ac=;
-        b=cUrto7OmLLQnBTxIuPsdefHl62LehSSPqLlkw3CoeW4BI2EegvYhBpFXnuDcg56Ufo
-         q+4/HDw06NlHE8LcNQ37VylIQD9Y0+GMidD5oQYZIT8BQs9fBJfDSkbZLi9aXVqm9btJ
-         ZPI9vGVNPH3ES+uKsw4/CPLSWHSs/OBjHRiTy5SrPBX20iUuNGqqj8dAeaIYzpL0mjrL
-         ayuTFgeF0fP78w6Zm8aZvM2A9SXY3ZIOK1GBxi6bSTDHAVBY7g0H87slXEsE4wK+EVav
-         i9XHj+Y49yJk0DSIEfp2qNotW/OkLKBg9H8+RxikiR0O4w6kvdB6e9rerGaS8hrC7OSD
-         OCTA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Wed, 29 Jul 2026 05:06:03 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-84a652535dcso370240b3a.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 28 Jul 2026 22:06:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1785300065; x=1785904865; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+        d=chromium.org; s=google; t=1785301560; x=1785906360; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=uA7NG5Dfr4VakgJXB94YnH6+2nDpY+bBSoINVwagc6U=;
-        b=ZNCAn45yDe903ya4dZXdeHAkTl/H2xkqvkbsvJUQexbp8WOWVT+iB29ee1dWLK7YY3
-         aDsBwRulYdCCqk+qS90WCBLJitXgY2thYxFsgvOAoE/dp4Lqor56p1YSKqq4qnT6VG3L
-         XgLMxBWY8GOTIGLPrKqR1WUjkED3scU9AXq7c=
+        bh=7/09h4JafWA6BTqjec/Vv8SutmyeV2+BMV1t1G7T10o=;
+        b=QT9aYGz4b39f137FduNJJSdrPu3qRNQ2Suo1hwmMMvhPBkIoMMgoPTHhfhQi3wMbjB
+         DCL28pRr2+5UrGTxwoFKlqQ3BKLF9mc/pmFmmA+AzBf1s+1PXlScA4MgM1aJI0dGTQuu
+         LXdEaTM7vY2xO0aaOk/XX2wXM54aEMnkE/OW4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785300065; x=1785904865;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
+        d=1e100.net; s=20251104; t=1785301560; x=1785906360;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=uA7NG5Dfr4VakgJXB94YnH6+2nDpY+bBSoINVwagc6U=;
-        b=R93q8qSu7dSja6Jv31n4Ro3DX/eK95P7UZm0fb/nFmbauiAgcKMaNmS+CP7cu9jJEQ
-         7KYsOmUOtiHhxb0jnlB9U2jGmyh3O7FGWjsMxCyyp+fibuoOeE293dgLeYjAjedvfsH7
-         2AD28BIOYqU0m3Hi3IwHQjcRlBCeaHXLryj7bmtWIkBdYvEljd9pYFucGFXKB3MzJhEh
-         R3PPWj9yqvr1PFWJsMr+ReaJFmv3uAA8u9bLTW0ezk7wZ35H1LAqwOCMSBKxufXLqa7d
-         iRV2CbCeLJka9xIZuH3CRcI5IpKo+LiQG+OapiE1pEynSIxZZgjZW0vWIs9ZMV56+hy/
-         g6Hg==
-X-Forwarded-Encrypted: i=1; AHgh+RoFlHAnC/DgkZFvLcy1SEkOcMxXkvE2vbiq6G9rkBKg5astczvyss9sqsT40D8qffI8anCcgGbLf8CYUWC5RQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwtHtDVXYoeuhuNmuF9BLfJXTaO0lAAe7G2q6y+Jmyq8Mp7yI/C
-	ED8oT13wv4wTmLntvgIvCon3Pi4CBe9S5Jl5swAXWgfN84By3kvxn+xEefwx103fNwMK4fu8pJm
-	j6rsUqONOH8QILHSzmjbTdepy2sBPTWmRs17GgAZV
-X-Gm-Gg: AR+sD10LaP+arVyZPzbv4HzVn2qwChrwZKlAx1ZBrrJUJyqE3c+JT/FZVb6Ldshs5Z+
-	dJuXMg9L3NsaIlQxu7+c1ClgcrHlu8lF2DMODdc8jqwPxQgpgzFYdhgQfBC85EXl7Q1PlQlUW19
-	ChYB+KAU9wo/DeEPOviDw7UTfx+CBuVutfjCbQPZ/vNZl3AtdlN43kIxBkvVZ2tWf+goxspbF8G
-	lWEJCfYst57jjJBDHBJiww7FJQDO6HQWCVP4HhsJhd6/B8HJdrSvnwvZvmlWROgI42lq5LYJ85e
-	HUErkRvqf+uOHH9Zxu8LftW7cyhhwOr8PP6jjCNTgOQ+yNRQvzfLS4VwdNGG8UU6gfdyHcO7I2U
-	=
-X-Received: by 2002:a05:690c:4c0c:b0:7ea:809c:2af5 with SMTP id
- 00721157ae682-81f9935399dmr26755907b3.37.1785300065323; Tue, 28 Jul 2026
- 21:41:05 -0700 (PDT)
+        bh=7/09h4JafWA6BTqjec/Vv8SutmyeV2+BMV1t1G7T10o=;
+        b=FScb5S4tRmDSFhWplL0hv+pli1cC35bsMaGZcKkjgeNQcBOqgS9LFHBKox5a7rVxLH
+         L7NIe/1zKS516krI5AoyUpy3VFlBgBmHsQsuivAdHNZqBX+jLSq/LInnnzIUHypdXyiJ
+         DPH29JB82y0HI5EwAlbykrJZ3pxYmRiV4aTfZG2EmfLJg+oBJ9y50FW22g5+SB8BgiZ4
+         LFIBKmNwY/UVqdSr1Bx6Dt9xEa3PcKWNI2C9cdnMZqEYzQp0aIc5s4rFqpJvJAaNiR1E
+         4r/5sdq5yDWjdh3T1yemzB6J52JXP4mVrHAWwd5CITGxOHNYzphunpKGI6OEqQDT+n75
+         cRqw==
+X-Forwarded-Encrypted: i=1; AHgh+Rq4yoMrqK2AzO9SYImaias3neFjbDR+gjWi2Ix5upTSZVx2/97o9KSvCmxHOlZVtuy775FUrYqeY2Sv1TkXwA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyWhOoqQWOx0vmQkmCrK7Hluws//qcGhEvPnYK3w8ABk2hummHe
+	Vr9CpvJk2poRkBwhMulZsO052gmpEXKMZfrKABABTVLKNT7Gkn9sDcg+IcqgzSn3Hw==
+X-Gm-Gg: AR+sD132rbLOEN+fhuTWZFPBnquHNSvuv2zU5J3q77DWTKLb7fKKA1C3eMe3sYOrAFE
+	q4vBpJMRUZmdgaqSWaMEG0Ua1W2YEGNe2fVajY7LvITgYft1eOkgaV/oMsIJqPlU0g8ardfgmqw
+	X3RF6QjZ/MvpG5YZFqJM4tssNTNDchU9HtRaEN1ZeoXT52umCZOcrzkU6NXi0Q9mDPnTAvw2BFy
+	p162Nkd+J615wdmsV0mM8xInabW6dAswkKY6p7jXjUgtVf0MtI6BbkRm7BQYX33bedBAO+G7exq
+	KZMVWaGU1U9MMY6LyHDlSKwP3Wvhj4Ymdjugk/qb4L9ALCd6stpkxNo6FQs61bWZXmwlIznAxIs
+	FUnOvZke3g8wXSpcrHoW0x48o5hU+BkUBOZIXB8fJaNJ2KmHlf7WPkFDh58i7M65KnbM95DQYzP
+	dqpRoNGhJjONy25QA+G02ceMofo56fK1nh5SuC3X53FunkXAPXCNl5U/6R/D8GOP9oB2gtDba8t
+	TjTvSq8TUID84WHO+fhi2PNKdHhsUjDHZUL3v8=
+X-Received: by 2002:a05:6a00:2daa:b0:842:3a3b:d6e7 with SMTP id d2e1a72fcca58-84e931eeeafmr5750213b3a.23.1785301560519;
+        Tue, 28 Jul 2026 22:06:00 -0700 (PDT)
+Received: from google.com ([2a00:79e0:2031:6:65c1:52a3:f6d3:37dc])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84ea0055dd5sm741877b3a.20.2026.07.28.22.05.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 28 Jul 2026 22:05:59 -0700 (PDT)
+Date: Wed, 29 Jul 2026 14:05:55 +0900
+From: Sergey Senozhatsky <senozhatsky@chromium.org>
+To: Marcel Holtmann <marcel@holtmann.org>, 
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>, Sean Wang <sean.wang@mediatek.com>
+Cc: Tomasz Figa <tfiga@chromium.org>, linux-bluetooth@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Sergey Senozhatsky <senozhatsky@chromium.org>
+Subject: Re: [PATCH v4 0/2] Bluetooth: btmtksdio: teardown fixes
+Message-ID: <ammKA77-UC1Ie5V3@google.com>
+References: <20260618031338.1011410-1-senozhatsky@chromium.org>
+ <ajtoXTaBEMSyGADX@google.com>
 MIME-Version: 1.0
-References: <20260728212438.54078-1-rosenp@gmail.com> <20260728212438.54078-2-rosenp@gmail.com>
-In-Reply-To: <20260728212438.54078-2-rosenp@gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 29 Jul 2026 12:40:54 +0800
-X-Gm-Features: AUfX_mycg9wolGjQePESF--FJZRN09rHxCnfAnS_fOgAk4-5gb4BJmW1LYVjLVA
-Message-ID: <CAGXv+5GfUGRsGkRAWyX+GnJC8GOREqgkXeN4sVxE4+Y01PG+hQ@mail.gmail.com>
-Subject: Re: [PATCHv2 1/2] Input: mtk-pmic-keys: use of_device_get_match_data()
-To: Rosen Penev <rosenp@gmail.com>
-Cc: linux-input@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ajtoXTaBEMSyGADX@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260728_214106_728818_A0729FD6 
-X-CRM114-Status: UNSURE (   8.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260728_220602_211688_49B95631 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,17 +100,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 29, 2026 at 5:24=E2=80=AFAM Rosen Penev <rosenp@gmail.com> wrot=
-e:
->
-> Instead of open coding it, use the proper function.
->
-> All entries have a corresponding data entry so a NULL check is not
-> applied here.
->
-> Remove of_device.h as a result.
->
-> Signed-off-by: Rosen Penev <rosenp@gmail.com>
+On (26/06/24 14:19), Sergey Senozhatsky wrote:
+> On (26/06/18 12:13), Sergey Senozhatsky wrote:
+> > This fixes several teardown issues:
+> > 
+> >      INFO: task kworker/u17:0:189 blocked for more than 122 seconds.
+> >      __cancel_work_timer+0x3f4/0x460
+> >      cancel_work_sync+0x1c/0x2c
+> >      btmtksdio_flush+0x2c/0x40
+> >      hci_dev_open_sync+0x10c4/0x2190
+> >      [..]
+> > 
+> > close/flush can deadlock when run concurrently with btmtksdio_txrx_work().
+> > In addition btmtksdio_txrx_work() re-enables interrupts regardless of
+> > close/flush being executed on another CPU.
+> > 
+> > v3 -> v4:
+> > - fix commit message linter warnings/errors (tabs, subject line over 80
+> >   chars).
+> > 
+> > Sergey Senozhatsky (2):
+> >   Bluetooth: btmtksdio: test for BUS IO errors in btmtksdio_txrx_work()
+> >   Bluetooth: btmtksdio: call cancel_work_sync() out of host lock scope
+> 
+> Do the patches look good enough to pick up?
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Gentle ping.
 
