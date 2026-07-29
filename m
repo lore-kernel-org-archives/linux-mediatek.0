@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 164A0C54FCD
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21F48C54FD1
 	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Jul 2026 10:03:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,45 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SAdQkwU2PwOEodUlK/BSONJFJ2kfYX96n54l5W4YDwY=; b=VZHS6oDh0Asej5/WOtfe9vc5a/
-	RVJJ/4MFfVWYh6FGte2hp3CuCG7LnJe/D1nVUBEDfCcCCt8QZKZRHy7QyPW26hbbL7nr7pyYr5qFt
-	njYujm8Xs8lJTcWiaXK3JiJqoY8GwcCYfCfxJhHgcoEBpNqAW9rM8KOXAoVqm9/OFQUis17nmxIlW
-	MtT4wu7hK9ZKwZKi9pq3pFhTb10Fgp84AKKXamg+qDvkfGd1JtlB9a2EAb7byXMafT8oiyvQrVZLA
-	j8eC7to2iboE40PZwI8X4FsyOXSExdOPromaRMHfuTJPdflcSOr4fmm25Sq7FqczcX/gwFycZOUf5
-	uvQLNswQ==;
+	bh=KCVj1FlTShjtRVgqx/pUuo2vdas3/E1MArSsytI8S2Y=; b=Xe1Qzue8zNG4CXWqIk2cm6nBWA
+	1p3CdyrpXx3Dp+uS29TW9ncZqCzUoChGFCxy9t9m0d27nRsSwzofO2IWvlTcvQpzKM12HLv/PIREO
+	wO9kzEhYXXTjOjS3VmIFz54E0piPlr7dZLBW9+ZxyQIKW/HkkZCkL3ljzdUB4g3pR563NxnLgqSgU
+	hBLk4ShLwYJknpjeGfP3y+D9j5pA1gAfqi/oH/xQUmzuNxoUM9SRNxZ94B5Oba20pnTZV9nI2Yi4h
+	2QWTffspwB2me76zmDm2sY+6KcnvjIPoIQQqLqfUW0wvyaxBr+JpFYjaHobKgN7EtcXoFPo3UG4ia
+	2KEE+SLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wp18a-00000007SSy-1X2U;
-	Wed, 29 Jul 2026 10:03:44 +0000
+	id 1wp18b-00000007SUl-06Mx;
+	Wed, 29 Jul 2026 10:03:45 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wp18G-00000007S5E-0ilf;
+	id 1wp18G-00000007S5Y-2GDu;
 	Wed, 29 Jul 2026 10:03:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785319401;
-	bh=nmMkXcxJLcyi5jJSE7u+jNN//+j9QNGYv6dVLzwOIgI=;
+	s=mail; t=1785319402;
+	bh=xEeYmGMPvnAj8jbXB55YaPq0jUHYie7IR8h1C2C89Wg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=HP8GZ3hJiuhB5hkdQyhSkpwlK+Z5IwGeVe7ETdvj227waPj3BNGXOu87dNKWT3DlI
-	 h192bfL7DyPi3dRyZJyxlUEs1Z4NN8BZQkQENyH0V0E/q23G+3KekjeSXSVa6Fm6S5
-	 zm+jhO8kRceHcVJVos71dp7IBY6/1nmg294nbNfV9j4Wypbgfir/1PYiVXV3oMtmMa
-	 d2aHx8Wsd1BulZKX9EcHcQfqrl0nfZ9qGHwguR/PrdF6OO55ri1GnH9vRlkl9lScYa
-	 si2wY3iV8t0Lu1lq4XTGHtTNJyI/THRvz3Iw3Lpg54o1cUkv+o38kVcRKTNZSurss1
-	 1YghktQ3gp20A==
+	b=ECBKyxNA0hnr2k2ijrm/u+SJYYyj8Ont1lkDYTLky8vLN3GkUBwNDuYx0Vt6MvH2l
+	 5V3SJBheHsrWsfJc8TOdt0VfGHbMtDbBfnLdmS7AvihXzOQrZ2p3S+hDVsuSjczgSZ
+	 QsLfM4cJsRjfOiofec7Dis+XCU7Dgxh3zm13uxAaBBkvQFsLtNceoL5TdAMXchK4ph
+	 dMkbfZPoyOuR7+sCVt1+mjug8FFpmHXW0SUbPfTFovgSxagTMu4q7yksFu1sAndhHp
+	 BWhWiwJQ5wxCgg9gIVjPbcmglQyfwwYeifAsEZkypWfV9Ii4d5WbdEz/MeMncdFcCf
+	 0n8P06pek8qww==
 Received: from yukiji.home (unknown [100.64.0.131])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9065E17E08A2;
-	Wed, 29 Jul 2026 12:03:20 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BF87217E0048;
+	Wed, 29 Jul 2026 12:03:21 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Wed, 29 Jul 2026 12:02:54 +0200
-Subject: [PATCH v4 10/24] clk: mediatek: pll: Add BAR reset register
- offsets
+Date: Wed, 29 Jul 2026 12:02:55 +0200
+Subject: [PATCH v4 11/24] clk: mediatek: pll: split default
+ prepare/unprepare callbacks
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260729-mt8189-clocks-system-base-v4-10-e356b813a64c@collabora.com>
+Message-Id: <20260729-mt8189-clocks-system-base-v4-11-e356b813a64c@collabora.com>
 References: <20260729-mt8189-clocks-system-base-v4-0-e356b813a64c@collabora.com>
 In-Reply-To: <20260729-mt8189-clocks-system-base-v4-0-e356b813a64c@collabora.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -70,16 +70,16 @@ Cc: kernel@collabora.com, linux-clk@vger.kernel.org,
  netdev@vger.kernel.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1785319387; l=2982;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1785319387; l=3742;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=nmMkXcxJLcyi5jJSE7u+jNN//+j9QNGYv6dVLzwOIgI=;
- b=a1RidghG79JOU3GtpHU5tmwM89ANwdY5s+tG1K/ip2V08gHJqbleAusPP5Icr+wlKw3Hu/UEk
- HAihp8ugk+kDi0CwFwEfX4bOcrDn7x+iYLr8mK2JOlym0mFKbtQxpFu
+ bh=xEeYmGMPvnAj8jbXB55YaPq0jUHYie7IR8h1C2C89Wg=;
+ b=fx5ybOfhoYzmOOV8eXiyBMUHfB6Q7dC0pCNvTKXAsRkrgjUiq0uLg80gjH1bKg1Y9+TZJSKsF
+ QuGOPhd1d7bAR+O4u9degOGmp84nkwZ8DfpDf5lJyXfsKgZllybNub2
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260729_030324_375495_58A9F580 
-X-CRM114-Status: GOOD (  13.75  )
+X-CRM114-CacheID: sfid-20260729_030324_735240_B3942863 
+X-CRM114-Status: GOOD (  14.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,93 +94,133 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently, the register offset to handle BAR reset, for PLLs that
-support it, is hardcoded to CON0.
-On MT8189 SoC, there are separate status, set and clr registers to
-handle this, so differents offsets are needed.
-
-Add the new fields for offsets and addresses to the MTK PLL data
-structure and modify mtk_clk_register_pll_ops function to compute the
-new register addresses so they are available for clock operation usage.
-
-Also, replace reset BAR address computing by its computed address
-from MTK PLL data structure in prepare/unprepare callbacks.
+In order to prepare the MT8189 SoC support, that requires different
+registers to control PLL status and perform reset BAR, and so a
+different sets of clock operations, split both mtk_pll_prepare and
+mtk_pll_unprepare into several private subfunctions to factorize the
+common code.
 
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- drivers/clk/mediatek/clk-pll.c | 18 ++++++++++++++----
- drivers/clk/mediatek/clk-pll.h |  6 ++++++
- 2 files changed, 20 insertions(+), 4 deletions(-)
+ drivers/clk/mediatek/clk-pll.c | 61 ++++++++++++++++++++++++++++--------------
+ 1 file changed, 41 insertions(+), 20 deletions(-)
 
 diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index ee478bc64085..4b0f7e2bfc5a 100644
+index 4b0f7e2bfc5a..83a58ad23c5b 100644
 --- a/drivers/clk/mediatek/clk-pll.c
 +++ b/drivers/clk/mediatek/clk-pll.c
-@@ -249,9 +249,9 @@ int mtk_pll_prepare(struct clk_hw *hw)
- 	udelay(20);
+@@ -31,6 +31,8 @@
+ /* default 7 bits integer, can be overridden with pcwibits. */
+ #define INTEGER_BITS		7
  
- 	if (pll->data->flags & HAVE_RST_BAR) {
--		r = readl(pll->base_addr + REG_CON0);
-+		r = readl(pll->rst_bar_addr);
- 		r |= pll->data->rst_bar_mask;
--		writel(r, pll->base_addr + REG_CON0);
-+		writel(r, pll->rst_bar_addr);
- 	}
- 
++#define PLL_STABILIZATION_DELAY		20 /* in us */
++
+ int mtk_pll_is_prepared(struct clk_hw *hw)
+ {
+ 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
+@@ -223,9 +225,9 @@ int mtk_pll_determine_rate(struct clk_hw *hw, struct clk_rate_request *req)
  	return 0;
-@@ -263,9 +263,9 @@ void mtk_pll_unprepare(struct clk_hw *hw)
+ }
+ 
+-int mtk_pll_prepare(struct clk_hw *hw)
++static void mtk_pll_prepare_common(struct mtk_clk_pll *pll,
++				   void __iomem *en_addr)
+ {
+-	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
  	u32 r;
  
+ 	r = readl(pll->pwr_addr) | CON0_PWR_ON;
+@@ -236,8 +238,8 @@ int mtk_pll_prepare(struct clk_hw *hw)
+ 	writel(r, pll->pwr_addr);
+ 	udelay(1);
+ 
+-	r = readl(pll->en_addr) | BIT(pll->data->pll_en_bit);
+-	writel(r, pll->en_addr);
++	r = readl(en_addr) | BIT(pll->data->pll_en_bit);
++	writel(r, en_addr);
+ 
+ 	if (pll->data->en_mask) {
+ 		r = readl(pll->base_addr + REG_CON0) | pll->data->en_mask;
+@@ -246,7 +248,37 @@ int mtk_pll_prepare(struct clk_hw *hw)
+ 
+ 	__mtk_pll_tuner_enable(pll);
+ 
+-	udelay(20);
++	udelay(PLL_STABILIZATION_DELAY);
++}
++
++static void mtk_pll_unprepare_common(struct mtk_clk_pll *pll,
++				     void __iomem *en_addr)
++{
++	u32 r;
++
++	__mtk_pll_tuner_disable(pll);
++
++	if (pll->data->en_mask) {
++		r = readl(pll->base_addr + REG_CON0) & ~pll->data->en_mask;
++		writel(r, pll->base_addr + REG_CON0);
++	}
++
++	r = readl(en_addr) & ~BIT(pll->data->pll_en_bit);
++	writel(r, en_addr);
++
++	r = readl(pll->pwr_addr) | CON0_ISO_EN;
++	writel(r, pll->pwr_addr);
++
++	r = readl(pll->pwr_addr) & ~CON0_PWR_ON;
++	writel(r, pll->pwr_addr);
++}
++
++int mtk_pll_prepare(struct clk_hw *hw)
++{
++	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
++	u32 r;
++
++	mtk_pll_prepare_common(pll, pll->en_addr);
+ 
  	if (pll->data->flags & HAVE_RST_BAR) {
--		r = readl(pll->base_addr + REG_CON0);
-+		r = readl(pll->rst_bar_addr);
- 		r &= ~pll->data->rst_bar_mask;
--		writel(r, pll->base_addr + REG_CON0);
-+		writel(r, pll->rst_bar_addr);
+ 		r = readl(pll->rst_bar_addr);
+@@ -256,6 +288,7 @@ int mtk_pll_prepare(struct clk_hw *hw)
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_pll_prepare);
+ 
+ void mtk_pll_unprepare(struct clk_hw *hw)
+ {
+@@ -268,22 +301,9 @@ void mtk_pll_unprepare(struct clk_hw *hw)
+ 		writel(r, pll->rst_bar_addr);
  	}
  
- 	__mtk_pll_tuner_disable(pll);
-@@ -352,6 +352,16 @@ struct clk_hw *mtk_clk_register_pll_ops(struct mtk_clk_pll *pll,
- 		pll->en_set_addr = base + data->en_set_reg;
- 	if (data->en_clr_reg)
- 		pll->en_clr_addr = base + data->en_clr_reg;
-+
-+	if (data->rst_bar_reg)
-+		pll->rst_bar_addr = base + data->rst_bar_reg;
-+	else
-+		pll->rst_bar_addr = pll->base_addr + REG_CON0;
-+	if (data->rst_bar_set_reg)
-+		pll->rst_bar_set_addr = base + data->rst_bar_set_reg;
-+	if (data->rst_bar_clr_reg)
-+		pll->rst_bar_clr_addr = base + data->rst_bar_clr_reg;
-+
- 	pll->hw.init = &init;
- 	pll->data = data;
+-	__mtk_pll_tuner_disable(pll);
+-
+-	if (pll->data->en_mask) {
+-		r = readl(pll->base_addr + REG_CON0) & ~pll->data->en_mask;
+-		writel(r, pll->base_addr + REG_CON0);
+-	}
+-
+-	r = readl(pll->en_addr) & ~BIT(pll->data->pll_en_bit);
+-	writel(r, pll->en_addr);
+-
+-	r = readl(pll->pwr_addr) | CON0_ISO_EN;
+-	writel(r, pll->pwr_addr);
+-
+-	r = readl(pll->pwr_addr) & ~CON0_PWR_ON;
+-	writel(r, pll->pwr_addr);
++	mtk_pll_unprepare_common(pll, pll->en_addr);
+ }
++EXPORT_SYMBOL_GPL(mtk_pll_unprepare);
  
-diff --git a/drivers/clk/mediatek/clk-pll.h b/drivers/clk/mediatek/clk-pll.h
-index d6d34840c09d..3aaf3a7654b5 100644
---- a/drivers/clk/mediatek/clk-pll.h
-+++ b/drivers/clk/mediatek/clk-pll.h
-@@ -49,6 +49,9 @@ struct mtk_pll_data {
- 	u32 en_reg;
- 	u32 en_set_reg;
- 	u32 en_clr_reg;
-+	u32 rst_bar_reg;
-+	u32 rst_bar_set_reg;
-+	u32 rst_bar_clr_reg;
- 	u8 pll_en_bit; /* Assume 0, indicates BIT(0) by default */
- 	u8 pcw_chg_bit;
- 	u8 fenc_sta_bit;
-@@ -75,6 +78,9 @@ struct mtk_clk_pll {
- 	void __iomem	*en_set_addr;
- 	void __iomem	*en_clr_addr;
- 	void __iomem	*fenc_addr;
-+	void __iomem	*rst_bar_addr;
-+	void __iomem	*rst_bar_set_addr;
-+	void __iomem	*rst_bar_clr_addr;
- 	const struct mtk_pll_data *data;
+ static int mtk_pll_prepare_fenc_setclr(struct clk_hw *hw)
+ {
+@@ -312,6 +332,7 @@ const struct clk_ops mtk_pll_ops = {
+ 	.determine_rate = mtk_pll_determine_rate,
+ 	.set_rate	= mtk_pll_set_rate,
  };
++EXPORT_SYMBOL_GPL(mtk_pll_ops);
  
+ const struct clk_ops mtk_pll_fenc_setclr_ops = {
+ 	.is_prepared	= mtk_pll_is_prepared_fenc_setclr,
 
 -- 
 2.55.0
