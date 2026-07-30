@@ -4,124 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 460A9C531D0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 06:50:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18E76C531D0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 08:05:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=muYZ2Z/i8Wd4P0DhRTDk2O8YiDkrBYWL87HRk9Al4eg=; b=RMI+B/YELBKV5ndQFavuZN7eQC
-	BRj4wuSeUtCfnYL/EuPJ4zFl+0RTihALjjjccNPjrDUwzP8yZp3X9fgEbA0GCe2dDhCxdxmZSNTSA
-	uhL4RRr3lHObbwf+BulQiksqxWObRlO4D7+4ZWE70XX8uyOO5Mk5Pmc2JWfKBxHhMVJB/OkrYqfn8
-	ER4PGY+PqZs+VB+uD9g43pBJsQFprY4MuAedp+VVqJWmhD01lYXwK2Vxsy1N09udIu5sbTdwo5UCJ
-	q7daEno5AOsAYPdws5GCP+iW02yowxOeRZxgMZ/tebbrOP6+OOVXWOx7Pub4WRrzqEPsW7tdd3SeI
-	o/C+4i8Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GFIwwv1ZKlwIh2R3SG739aEFifVFKq7ZdG19KNvDtIc=; b=oXXdPKv4vjv3TF6VwLIJGNsVXR
+	uaP6nielWsKa5cIPlOhhipXvQFnRV8u+PLTKtQ286ClRKK7Lfo2RmNUxkiL2O/HvydKqmdKIK+357
+	8p1k4B0RQWtcTeYElw3vuYWalBn7P3fx7pkKB8ASSpFVrJabzOkF6Aamt9+9x++P1utZG9f+QY/yN
+	zXPZJ2wEixuYsO3XrowB9szDPA7ZRQZcMPCZAlfLycg75PV+ftuleyDwPHHwtyRP13gKw2GkjiRPi
+	0dm1m9Y5lcPK2Tzf92RpaSEPx0vQbO5UCB9FT/uPtzdYOoeg9iCmcBBn8oEh4NY17yINZHLkOhyah
+	f7/ZRhWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpKao-00000009eAh-2VIj;
-	Thu, 30 Jul 2026 06:50:10 +0000
-Received: from exmail3.compal.com ([59.120.207.196] helo=tpecef22.compal.com)
+	id 1wpLlH-00000009nQb-1gb4;
+	Thu, 30 Jul 2026 08:05:04 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpKak-00000009e9P-1weM;
-	Thu, 30 Jul 2026 06:50:09 +0000
-X-UUID: ddd88f448be211f1a87c2323a98e90a4-20260730
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.17,REQID:b7745416-769d-4913-bbce-350307af46c9,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:d497b38,CLOUDID:09cfb933-ecf5-44a3-a34c-573dcd551473,B
-	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|110|111|836|865|888|898,TC:-5,
-	Content:-10|0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,B
-	EC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: ddd88f448be211f1a87c2323a98e90a4-20260730
-Received: from sdmg12.sdbg.compal.com [(10.113.168.10)] by tpecef22.compal.com
-	(envelope-from <jackbb_wu@compal.com>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 2049505728; Thu, 30 Jul 2026 14:49:52 +0800
-X-UUID: db2744de8be211f1a9f9c99e036204b4-20260730
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.15,REQID:0f7f9550-cd24-49fd-935b-f98ff3e4defd,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e276073,CLOUDID:9dae4de7-61a4-4820-ab46-0ec6c5e6fc1a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|865|888|
-	898,TC:-5,Content:-10|0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:ni
-	l,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE
-	:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: db2744de8be211f1a9f9c99e036204b4-20260730
-Received: from sdbmbx13.tpe.compalcomm.com [(10.113.2.137)] by sdmg12.sdbg.compal.com
-	(envelope-from <jackbb_wu@compal.com>)
-	(Compal Mail Service with TLSv1.2 ECDHE-RSA-AES128-SHA 128/128)
-	with ESMTP id 231696872; Thu, 30 Jul 2026 14:49:48 +0800
-Received: from SDBMBX13.tpe.compalcomm.com (10.113.2.137) by
- SDBMBX13.tpe.compalcomm.com (10.113.2.137) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Thu, 30 Jul 2026 14:49:45 +0800
-Received: from SDBMBX13.tpe.compalcomm.com ([fe80::2b98:6c2c:37df:2a86]) by
- SDBMBX13.tpe.compalcomm.com ([fe80::2b98:6c2c:37df:2a86%11]) with mapi id
- 15.02.2562.043; Thu, 30 Jul 2026 14:49:45 +0800
-From: "Wu. JackBB (GSM)" <JackBB_Wu@compal.com>
-To: Jakub Kicinski <kuba@kernel.org>, Jack Wu via B4 Relay
-	<devnull+jackbb_wu.compal.com@kernel.org>
-CC: Loic Poulain <loic.poulain@oss.qualcomm.com>, Sergey Ryazanov
-	<ryazanov.s.a@gmail.com>, Johannes Berg <johannes@sipsolutions.net>, "Andrew
- Lunn" <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, "Eric
- Dumazet" <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Wen-Zhi
- Huang <wen-zhi.huang@mediatek.com>, Shi-Wei Yeh <shi-wei.yeh@mediatek.com>,
-	"Minano Tseng" <Minano.tseng@mediatek.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, "Simon Horman" <horms@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
-	"Yu. Robert (GSM)" <robert_yu@compal.com>, "Chang. Jeff (GSM)"
-	<Jeff_Chang@compal.com>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "netdev@vger.kernel.org"
-	<netdev@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-doc@vger.kernel.org"
-	<linux-doc@vger.kernel.org>
-Subject: RE: [External Mail] Re: [PATCH v5 3/7] net: wwan: t9xx: Add control
- DMA interface
-Thread-Topic: [External Mail] Re: [PATCH v5 3/7] net: wwan: t9xx: Add control
- DMA interface
-Thread-Index: AQHdHi3kzir4g820RkqQJOnw7ns9qbaFooJ+
-Date: Thu, 30 Jul 2026 06:49:45 +0000
-Message-ID: <722e299291e1433e89f5a75674797dd2@compal.com>
-References: <20260723-t9xx_driver_v1-v5-0-b27afb99ccbb@compal.com>
-	<20260723-t9xx_driver_v1-v5-3-b27afb99ccbb@compal.com>,<20260727181012.69e06bf6@kernel.org>
-In-Reply-To: <20260727181012.69e06bf6@kernel.org>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.113.2.241]
-x-tm-as-product-ver: SMEX-14.0.0.3239-9.1.2019-30102.005
-x-tm-as-result: No-10--5.766900-8.000000
-x-tmase-matchedrid: CEwNJ/T/RZQuv++HU7VXryRFbfQbCufdN0X64jGy2dbVc/AFNTvLS4zv
-	m4Pxxv8PfK2mxZdDSo0OW9wxtd9rfKGjTWUsfZTwm2eUW/oDuiGHF5DTCmfB2pASM5lkTKECEbr
-	AUOQkjxDQ+sS71+DOCDt5SMZ9h0apLRtwOjyP9FeiWLhmiI4dPyDilljGyWFts2R4RgZsli5q/W
-	wTchxsnmCMAACdFXeB0hBdGn2fh2eusmWOeoC/5bk5vrGhmfHN
-x-tm-as-user-approved-sender: No
-x-tm-as-user-blocked-sender: No
-x-tmase-result: 10--5.766900-8.000000
-x-tmase-version: SMEX-14.0.0.3239-9.1.2019-30102.005
-x-tm-snts-smtp: 6C47867A59C0461A93575AEB75272C270C262313A21D8C2F0B5E6B9331198B162000:8
-Content-Type: text/plain; charset="big5"
-Content-Transfer-Encoding: base64
+	id 1wpLlE-00000009nOI-0pCa
+	for linux-mediatek@lists.infradead.org;
+	Thu, 30 Jul 2026 08:05:02 +0000
+Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-4798bea72f9so1220081f8f.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 30 Jul 2026 01:04:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre.com; s=google; t=1785398697; x=1786003497; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=GFIwwv1ZKlwIh2R3SG739aEFifVFKq7ZdG19KNvDtIc=;
+        b=AY/VBU9Jpzp4JDZL/K8dsHIdqSt+nztYk0oryaosD0Bzb/NTNAX0+VZTqFkJZfdSib
+         060SNTw45dISRgbkNOo2nh5IaWoFO/pY667YsiiRdeFpLbY5r5Jk/X2d55uRD3oj1iFo
+         CM5A2xhpnKkm7BMhTmCBc+TDxGohWbgt9sZuEqdBs+WdbVoJZq085oMbdFjFMTz5LWlO
+         eI1oRYwySwO5JJvR6vmvWouFk0iGlSCODgUEN9ru/x64alJ6ApOJFO3TAliZFJ9E8lKj
+         rIfaCR2TZ4Fl89tv/xdxzQLPsZvFHPU1iqsR65gwPrBFW8H2dOM8nJN/2OBvPLXeCI2m
+         L/PA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785398697; x=1786003497;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=GFIwwv1ZKlwIh2R3SG739aEFifVFKq7ZdG19KNvDtIc=;
+        b=JVsrhXKf2BFAHSwO2NERx5j1kDiYtF9XmEP7wtmMpVa9UlApcjJkPz87/PHOFhZUZT
+         KALWI4SiLCVWvDi1t3FL6h+nqeJTGvgjkhrSXFwdnESTbIHjSwF+qXyy6OyAVqwNsT9z
+         5X+8vcaYsR8Y0+L2b8Bb0v+jw7SakQCX5AwgYm5jhEYzIYzPJTnRBCEByYIUWvvXNbeo
+         sAExfsF+eeRG1sIvnS5NJRtqo8+QkewncLcAt1rpOr6sz22HN4VLuy1KtYLLnQg1IWzF
+         NevEhu0vNXF8/ySqMI2HJNncrKEHWPNurgERoJROtMEZ+YEwkUA5gOnmFsQpgpBq44Rs
+         DjXw==
+X-Forwarded-Encrypted: i=1; AHgh+RqEYw8wl993o/qND9B6XQCKK3qNg2i+UdI06sR5v3wNMc+2WKtqc39MnvzFdkcOZ6nhASIlJ0QmxHZk13Nmbg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwokQ4I9AX9TdRp5DO8VLqyTNrLQfqlEOfqzACKlb09lpIE1/Zo
+	krSaMKdarpKsZKFV1eurHHvzPfqA8/WCA2f0PCJhN2pv/9xZdM0mL9UECQ45IrgaC5Q=
+X-Gm-Gg: AR+sD13vZHIuFeUlvc4f7zKJYPaVlIy9ZuPmURsZe3WkIoonRMAKgfb+y2RpGywQ4Qq
+	94a4w1qpG/y0olk6l9Avs+r5ZJBsMConUUzBNjF1JZ2MFcWnWcL/fYIiNO/HkHwTnNsjciWPgXx
+	1N85EHCRuohhqsOMJSd/pZXo5MckqwwwwUUxAk9NHM7IHMwbYgPoh097BVzQ9Y1SKQt+PpHbSle
+	gLLOe20SSOi+sehrA9R9IUSORyfjV7serhiOIP4+lIw6kJN+RrHwvHN6lmcaU+TA3NRr5JGiaga
+	O+NMNFS0Sbjko4zg/Zg7hgoF4MVqmXElxzXwp1TahNm05JKMKR6LDScaZBDdipJMzRz+ZDS4Eqr
+	yuDZrXxfh9t8+6tLpVGqbDhLepVW6WzRheKBY4hYvx2lIrKg7CgG0S9NJGSimORRxb5Igo0MUm1
+	DpXXBI+2XC6gCYq8+mat/aMBxefIvMyXADLzs1hTwjpZJoDXB6sw27riVusT+csWAzPdbfqIB4A
+	vGAWx7mpR/K2zlsQWj3GTg86vZL+R1FboZNT+KJgf9qIFFocjskbvkB4KU=
+X-Received: by 2002:a05:6000:400b:b0:47f:8465:2712 with SMTP id ffacd0b85a97d-47fc8213000mr2091889f8f.56.1785398697420;
+        Thu, 30 Jul 2026 01:04:57 -0700 (PDT)
+Received: from [127.0.0.1] (host-212-171-227-71.pool212171.interbusiness.it. [212.171.227.71])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47fc877dafasm3797373f8f.0.2026.07.30.01.04.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Jul 2026 01:04:56 -0700 (PDT)
+From: Carlo Caione <ccaione@baylibre.com>
+Date: Thu, 30 Jul 2026 10:04:41 +0200
+Subject: [PATCH v2] arm64: dts: mediatek: mt8390-genio-common: add boot
+ phase tags
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260730-ccaione-upstream-mt8390-bootph-v2-1-82f67feadf7a@baylibre.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/42OQQ6CMBBFr0K6dgwdK1BX3sOwaMsgNUJJW4iEc
+ HcLXsDlS17++ysL5C0FdstW5mm2wbohAZ4yZjo1PAlsk5hhjkVeIgdjVFIIpjFET6qHPlYXmYN
+ 2Lo4dkCoVCiFQomFpZPTU2s8ReNQ/DpN+kYn76m50NkTnl+PBzHfv79jMgcO1EMhl1cpSNnetl
+ rfVns7G9azetu0L93RbKeEAAAA=
+X-Change-ID: 20260721-ccaione-upstream-mt8390-bootph-ea7a2444292c
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ David Lechner <dlechner@baylibre.com>, 
+ Julien Stephan <jstephan@baylibre.com>, Carlo Caione <ccaione@baylibre.com>
+X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260729_235006_675073_BFA3440D 
-X-CRM114-Status: UNSURE (   5.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260730_010500_274640_C17C8AF0 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,14 +109,137 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgSmFrdWIsDQoNCj4gZWFjaCBjb21taXQgaGFzIHRvIGJ1aWxkIGNsZWFubHkgd2l0aCBXPTEg
-Qz0xLCBwbGVhc2U6DQo+DQo+IGRyaXZlcnMvbmV0L3d3YW4vdDl4eC9wY2llL210a19jbGRtYV9k
-cnZfbTl4eC5jOjM0OjIyOiB3YXJuaW5nOiBzeW1ib2wgJ210a19jbGRtYV9yZWdzX205eHgnIHdh
-cyBub3QgZGVjbGFyZWQuIFNob3VsZCBpdCBiZSBzdGF0aWM/DQo+IGRyaXZlcnMvbmV0L3d3YW4v
-dDl4eC9wY2llL210a19jbGRtYV9kcnZfbTl4eC5jOjE2NzoyMjogd2FybmluZzogc3ltYm9sICdj
-bGRtYV9kcnZfb3BzX205eHgnIHdhcyBub3QgZGVjbGFyZWQuIFNob3VsZCBpdCBiZSBzdGF0aWM/
-DQoNCldpbGwgZml4IGluIHY2LiBUaGUgZXh0ZXJuIGRlY2xhcmF0aW9ucyBmb3IgdGhlc2UgdHdv
-IHN5bWJvbHMNCndlcmUgcGxhY2VkIGluIFBhdGNoIDUncyBtdGtfY2xkbWEuaCChWCB3aWxsIG1v
-dmUgdGhlbSB0byBQYXRjaCAzDQp3aGVyZSB0aGUgc3ltYm9scyBhcmUgZmlyc3QgZGVmaW5lZC4N
-Cg0KVGhhbmtzLg0KICAgIA==
+U-Boot SPL runs after the platform DDR loader has initialized DRAM on
+the Genio 510 and Genio 700 EVKs. It needs the debug UART and eMMC
+controller, together with their clock, syscon, pinctrl, interrupt and
+watchdog providers, to load the firmware FIT.
+
+Mark the nodes consumed by the current SPL configuration with
+'bootph-pre-ram' so that the canonical devicetree carries the boot-phase
+information and bootloaders do not need local overrides.
+
+Signed-off-by: Carlo Caione <ccaione@baylibre.com>
+---
+Add the boot-phase annotations needed by U-Boot SPL on the MediaTek
+Genio 510 and Genio 700 EVKs. Both boards use the same pre-RAM device
+dependency chain, so keep the annotations in their shared
+mt8390-genio-common.dtsi.
+---
+Changes in v2:
+- Move the tags from the Genio 700 board DTS to
+  mt8390-genio-common.dtsi so they are shared with Genio 510.
+- Update the subject and description to cover both EVKs.
+- Link to v1: https://patch.msgid.link/20260721-ccaione-upstream-mt8390-bootph-v1-1-5642198f979d@baylibre.com
+---
+ .../boot/dts/mediatek/mt8390-genio-common.dtsi     | 84 ++++++++++++++++++++++
+ 1 file changed, 84 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+index b0c97930a0e6..6172160ea9f5 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
+@@ -20,6 +20,10 @@
+ #include <dt-bindings/usb/pd.h>
+ 
+ / {
++	memory@40000000 {
++		bootph-pre-ram;
++	};
++
+ 	aliases {
+ 		dsi0 = &disp_dsi0;
+ 		ethernet0 = &eth;
+@@ -1586,3 +1590,83 @@ &xhci2 {
+ 	vbus-supply = <&sdio_fixed_3v3>; /* wifi_3v3 */
+ 	status = "okay";
+ };
++
++&apmixedsys {
++	bootph-pre-ram;
++};
++
++&clk26m {
++	bootph-pre-ram;
++};
++
++&gic {
++	bootph-pre-ram;
++};
++
++&infracfg_ao {
++	bootph-pre-ram;
++};
++
++&mmc0 {
++	bootph-pre-ram;
++};
++
++&mmc0_default_pins {
++	bootph-pre-ram;
++
++	pins-clk {
++		bootph-pre-ram;
++	};
++
++	pins-cmd-dat {
++		bootph-pre-ram;
++	};
++
++	pins-rst {
++		bootph-pre-ram;
++	};
++};
++
++&mmc0_uhs_pins {
++	bootph-pre-ram;
++
++	pins-clk {
++		bootph-pre-ram;
++	};
++
++	pins-cmd-dat {
++		bootph-pre-ram;
++	};
++
++	pins-ds {
++		bootph-pre-ram;
++	};
++
++	pins-rst {
++		bootph-pre-ram;
++	};
++};
++
++&pio {
++	bootph-pre-ram;
++};
++
++&topckgen {
++	bootph-pre-ram;
++};
++
++&uart0 {
++	bootph-pre-ram;
++};
++
++&uart0_pins {
++	bootph-pre-ram;
++
++	pins {
++		bootph-pre-ram;
++	};
++};
++
++&watchdog {
++	bootph-pre-ram;
++};
+
+---
+base-commit: 11028ab62899e4191e074ee364c712b77823a9c4
+change-id: 20260721-ccaione-upstream-mt8390-bootph-ea7a2444292c
+
+Best regards,
+--  
+Carlo Caione <ccaione@baylibre.com>
+
 
