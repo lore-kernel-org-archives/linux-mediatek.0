@@ -4,60 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D57EEC55162
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 08:33:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0946EC54FDF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 08:33:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=J1JPH9AKZzJchBn7pDlPot8tRe7bTeB76GJZrx18aD4=; b=QAG5RPQuZDDMcWhRNUgwvo4qfx
-	tniJHft8abB92hbOxmYdiumzkJ504kdOU02FtZMwqqMkBd25SG9h4Uy2X/z2ewR5L9+ytb3HdJntr
-	iZ4qK8pux/gPMPsyjtuf77u+rkOIGiBgDhGR47XMKDB2iwHxWOUJt/MucLA5clq78NhenaxUOlCaq
-	vEbxCMULn4YhbAwRVCmyou2GvZ16jMPeg+W7tF5IudKoWwUAF1ey+/MkaIAnXZxUPKFxF7cgshqvi
-	JFHoglYoz58hw/AFEzhS7eulTLsDvE/6kPY9D0YUTQVGpu1EhDV5GJLktTcYFdYRkQoqkzhXTz2Xu
-	FEataang==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=T0KgRuPwYqTqOkfED0vrX1sYWNPgQ0FBaLi1ye8oN3E=; b=NucVkujIq4MZUFezp3E3ew4ZQO
+	rkSK2Vx5fAYiO3d/OkU91iuxcngg6eBHOhH6vZBilVF48xS1J6dEmZpmbWjV9Q4vpiIasYDLo3Y9o
+	d06YPHt1fKZJdXkHLl7OU92kyYjNeDM8DLPAm7zRR9vWPDTFtTFDVN0+oHA9WS3psvdGfWN0W7Wr/
+	gPJ4DK3Br3mkDTvmh6ctPrzYwzTq8ih4rJJzNfbcxQXP+n78dgMSL9BHm3k94yk4hkL/z0oV4xA/A
+	r40yvSpOwmm6yTUDyE57xk4ximhpulusNa/XLih+LMggYZsknU5RM6+oOWe2KwRweoPWu9fcKZFZX
+	py7k77pA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpMCJ-00000009sTz-3INh;
-	Thu, 30 Jul 2026 08:32:59 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wpMCT-00000009sa9-03as;
+	Thu, 30 Jul 2026 08:33:09 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpMCH-00000009sSG-1Mqe;
-	Thu, 30 Jul 2026 08:32:58 +0000
+	id 1wpMCM-00000009sUX-0cPR;
+	Thu, 30 Jul 2026 08:33:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785400372;
-	bh=zwE0qptctD4Vx8UNaJjRHbNvZ7ftCwYmm5ExAmdvNVw=;
-	h=From:To:Cc:Subject:Date:From;
-	b=H0cba5VKUrs7eXqNSH0twaGS4pg2YkxSc0lARup7d2xePB2QTFrFaJmbunMYWBX8T
-	 Eo2XNUQdYlagiHtOqgNNCuKPAGkhN5OIUqrqFYKV9/LaPaNoOH02PHjFUCwAW1l4Nk
-	 H5DQneFCuWDedkMlhYhakEO1/NZld5aZ065BQyqtHNKoXIcTlZnnCCaZrBUrhFfbH4
-	 ulT1pqhNAxqdM8EmIIGKIsRsIzzNMVcQmACF573oGPd6WJAVQyHiDiKeNhXL+lQhXd
-	 Ud+02GS4ktGf6flAeP0jXiNpCm6PfcZi4nFdfdufi/kaQs3Zc/nudlmHgsvzoTk2hN
-	 roR2ow/pIvCJQ==
+	s=mail; t=1785400373;
+	bh=ZIo8rE82+wDxPG4WdNoiRqJk8tGJQ7oEYtlWqZp0m8o=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=WPViPcVza8171Of+ouDEGA3nRUcpyo+3f605gwtkY3mNqkKTZoreH9xLvzwkdkZcm
+	 GLGwfsgzYonOdzhJY90dRCKa3gK19DdASLryBjIVyj2mT1CM3WZ0kcfzFjlcgrqBxC
+	 NN59bcQ9jI1vpgQB6Fskvc7SQjc4zSOh+qrIEL2Xa8KEfC0dxwKgljTNodULqOZtD3
+	 YpGjCMo7AP0ti8uHmhbXS4gxF1b8JJrcswrMMNA0wSWNj2iFMqgJnGb093DLz3gBkP
+	 POOXA79xd/vJVkHy3r+A9TxhhioPDw7oGqsBUOwOmgxp3SM5cVZH14Ses8BCH6yrI/
+	 YfjnraLhheLow==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8DAF417E063E;
-	Thu, 30 Jul 2026 10:32:52 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6285A17E0682;
+	Thu, 30 Jul 2026 10:32:53 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: arm-soc <arm@kernel.org>,
 	soc <soc@kernel.org>
 Cc: linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	matthias.bgg@gmail.com
-Subject: [GIT,PULL,1/3] MediaTek ARM64 Device Tree updates for v7.3
-Date: Thu, 30 Jul 2026 10:32:44 +0200
-Message-ID: <20260730083249.13867-1-angelogioacchino.delregno@collabora.com>
+Subject: [GIT,PULL,3/3] MediaTek SoC driver updates for v7.3
+Date: Thu, 30 Jul 2026 10:32:46 +0200
+Message-ID: <20260730083249.13867-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260730083249.13867-1-angelogioacchino.delregno@collabora.com>
+References: <20260730083249.13867-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260730_013257_518509_8BBE3AD1 
-X-CRM114-Status: UNSURE (   9.80  )
+X-CRM114-CacheID: sfid-20260730_013302_393561_24F39190 
+X-CRM114-Status: UNSURE (   9.02  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,78 +81,45 @@ The following changes since commit dc59e4fea9d83f03bad6bddf3fa2e52491777482:
 
 are available in the Git repository at:
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git tags/mtk-dts64-for-v7.3
+  https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git tags/mtk-soc-for-v7.3
 
-for you to fetch changes up to 3dc552c1bab6e83bb45af0a49f3a900845a24495:
+for you to fetch changes up to ec762057868d70d474a9816e9c293c2ef801c3c9:
 
-  arm64: dts: mediatek: mt6359: use proper compatible for rtc (2026-07-21 15:16:45 +0200)
-
-----------------------------------------------------------------
-MediaTek ARM64 DeviceTree updates
-
-This adds a couple of fixes and improvements for multiple
-MediaTek SoCs.
-
-In particular:
-- Indentation/whitespace fixes for some devicetrees
-- Documentation improvements for MediaTek Mute-X
-- dtbs-check warnings fixes
-  - MT8390 Tungsten boards: removal of unnecessary cells
-  - MT6795 SoC: removal of deprecated property in UART DMA
-- MT6359 PMIC's RTC now uses the correct compatible string
-- MT8183/86/88/92/95 SoCs gain support for the UART DMA IPs
-- MT8186 gets a new CCI OPP table to resolve lockups
-- MT8188/83 Chromebooks now got the correct SPI NOR supply
-- MT8192 Asurada drops support for the (unused) MMC1 port
-- MediaTek Genio 510/700/1200 EVKs and Radxa NIO-12L now get
-  their PMIC power input tree completed with assignment of
-  the correct supplies
+  soc: mediatek: add missing MODULE_DEVICE_TABLE() (2026-07-30 09:41:54 +0200)
 
 ----------------------------------------------------------------
-AngeloGioacchino Del Regno (8):
-      arm64: dts: mediatek: tungsten-smarc: Remove unnecessary cells
-      arm64: dts: mediatek: mt6795: Remove deprecated UART DMA property
-      arm64: dts: mediatek: mt8183: Add and use UART AP_DMA controller
-      arm64: dts: mediatek: mt8186: Add and use UART AP_DMA controller
-      arm64: dts: mediatek: mt8188: Add and use UART AP_DMA controller
-      arm64: dts: mediatek: mt8192: Add and use UART AP_DMA controller
-      arm64: dts: mediatek: mt8195: Add and use UART AP_DMA controller
-      dt-bindings: soc: mediatek: mutex: Improve title and description
+MediaTek SoC driver updates
 
-Chen-Yu Tsai (3):
-      arm64: dts: mediatek: mt8183-kukui: Add supply for SPI NOR flash
-      arm64: dts: mediatek: mt8188-geralt: Add supply for SPI NOR flash
-      arm64: dts: mediatek: mt8192-asurada: Disable mmc1 on Spherion
+This adds a fix for a missing error check in mtk-socinfo, and
+also a missing MODULE_DEVICE_TABLE() in the mtk-dvfsrc driver.
 
-Krzysztof Kozlowski (1):
-      arm64: dts: mediatek: Correct indentation and whitespace
+Besides from that, this also reworks how the MMSYS tables are
+specified with the macro, separating the component's hardware
+instance from the actual type, resolving a prerequirement for
+the restructuring of mediatek-drm.
 
-Louis-Alexis Eyraud (4):
-      arm64: dts: mediatek: mt8390-genio-common: Add MT6365 PMIC supplies
-      arm64: dts: mediatek: mt8395-genio-common: Add MT6365 PMIC supplies
-      arm64: dts: mediatek: mt8395-radxa-nio-12l: Add MT6365 PMIC supplies
-      arm64: dts: mediatek: mt6359: use proper compatible for rtc
+----------------------------------------------------------------
+AngeloGioacchino Del Regno (2):
+      soc: mediatek: mtk-mmsys: Rework routes to specify component ID
+      soc: mediatek: mtk-mmsys: Use MMSYS_ROUTE() in default routing table
 
-Mark Tseng (1):
-      arm64: dts: mediatek: mt8186: change CCI OPP scaling mapping
+Griffin Kroah-Hartman (1):
+      soc: mediatek: mtk-socinfo Add error handling in devm_kasprintf()
 
- Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml |  17 ++++++-----
- arch/arm64/boot/dts/mediatek/mt6359.dtsi                           |   2 +-
- arch/arm64/boot/dts/mediatek/mt6795.dtsi                           |   4 +--
- arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi              |   6 ++--
- arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dts         |   4 +--
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi                     |   2 ++
- arch/arm64/boot/dts/mediatek/mt8183.dtsi                           |  22 +++++++++++++
- arch/arm64/boot/dts/mediatek/mt8186.dtsi                           | 112 ++++++++++++++++++++++++++++++++++++++++---------------------------
- arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi                    |   1 +
- arch/arm64/boot/dts/mediatek/mt8188.dtsi                           |  33 ++++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts        |   4 +++
- arch/arm64/boot/dts/mediatek/mt8192.dtsi                           |  17 +++++++++++
- arch/arm64/boot/dts/mediatek/mt8195.dtsi                           |  37 ++++++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi              |  19 +++++++++++-
- arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi            |   4 ---
- arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi              |  17 +++++++++++
- arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts              |  17 +++++++++++
- 17 files changed, 252 insertions(+), 66 deletions(-)
+Pengpeng Hou (1):
+      soc: mediatek: add missing MODULE_DEVICE_TABLE()
+
+ drivers/soc/mediatek/mt8167-mmsys.h |  10 ++--
+ drivers/soc/mediatek/mt8173-mmsys.h |  28 +++++-----
+ drivers/soc/mediatek/mt8183-mmsys.h |  14 ++---
+ drivers/soc/mediatek/mt8186-mmsys.h |  22 ++++----
+ drivers/soc/mediatek/mt8188-mmsys.h |  78 +++++++++++++-------------
+ drivers/soc/mediatek/mt8192-mmsys.h |  20 +++----
+ drivers/soc/mediatek/mt8195-mmsys.h | 181 +++++++++++++++++++++++++++++------------------------------
+ drivers/soc/mediatek/mt8365-mmsys.h |  20 +++----
+ drivers/soc/mediatek/mtk-dvfsrc.c   |   1 +
+ drivers/soc/mediatek/mtk-mmsys.h    | 300 ++++++++++++++++++++++++++++++++++++++++++--------------------------------------------------------
+ drivers/soc/mediatek/mtk-socinfo.c  |   7 ++-
+ 11 files changed, 321 insertions(+), 360 deletions(-)
 
 
