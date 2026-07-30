@@ -4,75 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46E12C55160
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 11:56:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D97E2C55165
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 12:38:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SFkpULLeEhql1GOwtkE0tVUFKEV4LMzwilUZyMTV9ek=; b=1fs0U2C3tbl1yv5M1dduqV1l5O
-	uiyLUaJk7QF6CMOr2PZrFayVD28b/vDSaa+HyzN/c9zG6Qvr2S9e8AONqTE8iu3tSKCdbarBSEnLn
-	3hbrBGNmmwz/WgwZA21AuJbPV0lMfsAZfdLkaRI/+H/mKZrFXlMtEz5nlA/dJxp0QGEidA8pZeqcl
-	pRbBMmIo4t+nHdDNQEwfagiNhHPxlpI6jZ5+szGPkye1pWDUnStS/GJV7d2Wog5Hm7/JTFV0dc42L
-	hq6U6BqIZIUAOPDbDar8XQAcwSTprm5d5ZeJFQkBQbX893ZS32IrYhYtk3T/YKSQsjSEPXP0V42TG
-	fxQF9njQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mggr7wvIfCEo+6dv/C0d5uPBSyxJCecBvJHz21a0w1o=; b=mZIqGg9/fPY+1O
+	5a0Aie9dyo+h2J2Bh/ddRm3CYm96mvG3kDtLf3vq4/1iTgRsG6tM/U8Pkg8/Vc+tJlH8NkSVtUSqb
+	ks53oQ85mGBwaesZtHVf8M/UfIPW3bvroml4TG2r+adHQIO+Z/gj7liuviJnGa6asejHbGdz6Ei6A
+	zyDqtZP+jM5J8sbyxqj4cUKKiVS7VmHADMYr4FZlum8ji12BXJpA0O+u146x3iXL/zr9U16UJ1wWR
+	LZlzrNhK0TRzdeSZwmjqJZ38DA2c8WizLRIcJE+xQmRhkN4Yu4hzTxe9IjJ441AgsTbwKLNCmUv48
+	tBhOnW9d1sTdMATVWu5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpPN2-0000000AOrw-3JAb;
-	Thu, 30 Jul 2026 11:56:16 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wpQ20-0000000AUFr-2hTO;
+	Thu, 30 Jul 2026 12:38:36 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpPMz-0000000AOrL-3tCi;
-	Thu, 30 Jul 2026 11:56:13 +0000
+	id 1wpQ20-0000000AUFL-05DV
+	for linux-mediatek@lists.infradead.org;
+	Thu, 30 Jul 2026 12:38:36 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5CB0E40423;
-	Thu, 30 Jul 2026 11:56:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B84E11F00A3A;
-	Thu, 30 Jul 2026 11:56:12 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 9C56E44038
+	for <linux-mediatek@lists.infradead.org>; Thu, 30 Jul 2026 12:38:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7FC351F0155C
+	for <linux-mediatek@lists.infradead.org>; Thu, 30 Jul 2026 12:38:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785412573;
-	bh=SFkpULLeEhql1GOwtkE0tVUFKEV4LMzwilUZyMTV9ek=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=YH//EQZAn+jF5TJda2xTLG2D5MSpiy1x5ZiczyxiUGrPHFw9NhHHIMyUOpSdEhODj
-	 ssq+SPMM5vr++rFFyZ4x9Ut2L20z2BR1LhEQuYiNoSJsSi2l2Q18focNZn/uTHkhbE
-	 tJaJTOzteCTzZPrcS9JVblJqBGuHu7sd83nCqMekkbwtAOKT8+tDhMoa9FZ3LFmYFN
-	 oYp5s1fP1r/8Jr5UoqUVWPrmyylWDdDkM3A13Sihy7uFjoQAnTWTb8PoIVcZLR05cW
-	 aZc9pdUPJ/LLb3hXWpiYNU0YnKGhxk3TYxMHkBoUx9K3IuQdeCOE4SkkcwK0U9mnuB
-	 YMDyQBYgFI3Ig==
-Date: Thu, 30 Jul 2026 13:56:11 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Shuah Khan <skhan@linuxfoundation.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Nick Desaulniers <ndesaulniers@google.com>,
-	Bill Wendling <morbo@google.com>,
-	Justin Stitt <justinstitt@google.com>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
-Subject: Re: [PATCH net-next v10 11/11] net: airoha: add phylink support
-Message-ID: <ams72wEsCiACYh-k@lore-desk>
-References: <20260730102444.1967900-1-ansuelsmth@gmail.com>
- <20260730102444.1967900-12-ansuelsmth@gmail.com>
+	s=k20260515; t=1785415115;
+	bh=mggr7wvIfCEo+6dv/C0d5uPBSyxJCecBvJHz21a0w1o=;
+	h=References:In-Reply-To:Reply-To:From:Date:Subject:To:Cc;
+	b=JqQZ1Wem/W/7xLxCQm3EG3EkTkaXKflALH8qNzS3RVDmEiOS79agVsGHyEALzou3D
+	 GYUDku/DoBb52HTNcggTMGeLICvvemsWQlakuOY5bB+UmwfmBii4k2CukXAU2S7iDe
+	 wt69oS65mxwwR6vWL7PAIPlW5IuJmMjfeHnF9z4vvfvIBcEsbzREvQqtwkr3XeMNpL
+	 TRmxlhGCCQJI3k66rbIGtzo4Cl8XHAdq12B+9lnseX6lD4COHJG/nX7nmconEkwVYh
+	 HIZ7sq/ba32yxHFBy5FnWY9ypes/+veFhho8/C0RtSckRR8O1hGMGhjy/2oehu4DZ7
+	 ZLdwvjWEcZX6w==
+Received: by mail-lj1-f180.google.com with SMTP id 38308e7fff4ca-39c9bb9d2fbso19333821fa.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 30 Jul 2026 05:38:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+RouU5qfttUN+q7h5GwiMfezyPn8/yKXxfu6sDgV/GWhzvzR7BDzFWjyqsmzYAjXbLYY1Pn2QQxi47FkDLJmFA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxmWm9xnsL3JAGncTzmObOmAb2qSr05fRo48aeTUmJk6t8rIto/
+	6NoMZ5ESjqcFtU3/sCn/PAdbpi2kBf5XIdj6LcK+esDPZ3gySQgbSwC2RZj1M6j7IL+o+PegwiE
+	aKDQFUAoSi7X6OFKK3pXkSQiKxxT33mU=
+X-Received: by 2002:a2e:a99b:0:b0:399:83a4:4f2c with SMTP id
+ 38308e7fff4ca-39f6d112905mr4228721fa.18.1785415113867; Thu, 30 Jul 2026
+ 05:38:33 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="YV0bq4ezW6l3+6wa"
-Content-Disposition: inline
-In-Reply-To: <20260730102444.1967900-12-ansuelsmth@gmail.com>
+References: <20260728091804.382753-1-wenst@chromium.org> <amiqKRkFItYwD6oL@redhat.com>
+ <CAGb2v64zUO-azpTuei6LCypad2noGFbg+EmaBC1iidoZ2stQzw@mail.gmail.com>
+ <c1048eae-72c5-4e2e-ac49-25e2c4297018@collabora.com> <CAGXv+5EgGYFVt4TJCysQgRqA1J5=Qz9c0oWY5YTxgc5PnNC_AQ@mail.gmail.com>
+ <36f2775a-d332-4913-8e9e-ca0429c3f713@collabora.com> <amswFn2qWkvypMH8@redhat.com>
+In-Reply-To: <amswFn2qWkvypMH8@redhat.com>
+From: Chen-Yu Tsai <wens@kernel.org>
+Date: Thu, 30 Jul 2026 20:38:20 +0800
+X-Gmail-Original-Message-ID: <CAGb2v65yEtUH5LQ=kGL1io-urha12iOute=D2bbG872YXbK4fQ@mail.gmail.com>
+X-Gm-Features: AUfX_mwS6SDXJLNyyEHek9sC4FMHJj30AO-N34TA1MSNgmBhhcn22gBEYkF6-6I
+Message-ID: <CAGb2v65yEtUH5LQ=kGL1io-urha12iOute=D2bbG872YXbK4fQ@mail.gmail.com>
+Subject: Re: [PATCH v4 0/5] powervr: MT8173 GPU support
+To: Brian Masney <bmasney@redhat.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Chen-Yu Tsai <wenst@chromium.org>, Stephen Boyd <sboyd@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Alessio Belle <alessio.belle@imgtec.com>, 
+	Luigi Santivetti <luigi.santivetti@imgtec.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	imagination@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
+	linux-kernel@vger.kernel.org, Icenowy Zheng <zhengxingda@iscas.ac.cn>, 
+	YoungJoon Lee <getfeus@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,416 +88,119 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: wens@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---YV0bq4ezW6l3+6wa
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Thu, Jul 30, 2026 at 7:06=E2=80=AFPM Brian Masney <bmasney@redhat.com> w=
+rote:
+>
+> Hi Angelo and Chen-Yu,
+>
+> On Thu, Jul 30, 2026 at 10:23:14AM +0200, AngeloGioacchino Del Regno wrot=
+e:
+> > On 7/30/26 06:51, Chen-Yu Tsai wrote:
+> > > On Tue, Jul 28, 2026 at 10:33=E2=80=AFPM AngeloGioacchino Del Regno
+> > > <angelogioacchino.delregno@collabora.com> wrote:
+> > > >
+> > > > On 7/28/26 15:13, Chen-Yu Tsai wrote:
+> > > > > On Tue, Jul 28, 2026 at 9:10=E2=80=AFPM Brian Masney <bmasney@red=
+hat.com> wrote:
+> > > > > > On Tue, Jul 28, 2026 at 05:17:58PM +0800, Chen-Yu Tsai wrote:
+> > > > > > > Hi everyone,
+> > > > > > >
+> > > > > > > This is v4 of my MT8173 PowerVR GPU support series.
+> > > > > > >
+> > > > > > > This time around Mesa was ready for basic testing, using both=
+ vulkanmark
+> > > > > > > and glmark2-es2-drm (with Zink). Details below.
+> > > > > > >
+> > > > > > > Changes since v3 (all in the clk driver patch):
+> > > > > > > - Changed pm_runtime_put() to pm_runtime_put_sync()
+> > > > > > > - Added missing of_node_put() in remove function
+> > > > > > >
+> > > > > > > Changes since v2 (all in the clk driver patch):
+> > > > > > > - Made COMMON_CLK_MT8173_MFGTOP depend on PM
+> > > > > > >     - Needed since the driver implements PM domains using the=
+ generic PM
+> > > > > > >       domain library, which also depends on PM
+> > > > > > >     - Fixes build breakage (kernel test robot)
+> > > > > > > - Fixed "RST_DELAY_CNT" name (Brian)
+> > > > > > > - Dropped unused mfg_desc (Brian)
+> > > > > > > - Added check of clk_prepare_enable()'s return value in
+> > > > > > >     clk_mt8173_mfgtop_power_on() (Brian)
+> > > > > > > - Saved error value for return in IS_ERR(data->clk_26m) branc=
+h
+> > > > > > >     (Dan Carpenter / kernel test robot w/ smatch)
+> > > > > > >
+> > > > > > > Changes since v1:
+> > > > > > > - Adapted to changed DT bindings
+> > > > > > > - Dropped driver change
+> > > > > > > - Use same power domain for "a" and "b" GPU power domains
+> > > > > > >
+> > > > > > >
+> > > > > > > This series enables the PowerVR GPU found in the MT8173 SoC, =
+found in
+> > > > > > > some Chromebooks.
+> > > > > >
+> > > > > > I'm making a pull for Stephen for the clk changes. Should patch=
+es 1,2,4
+> > > > > > go through the clk tree? Patches 3,5 go through the DRM tree?
+> > > > >
+> > > > > Only patches 1 and 2 should go through the clock tree.
+> > > > >
+> > > > > Patch 3, 4, 5 can all go through the soc tree if Angelo wants to =
+pick up
+> > > > > DT binding patches. Otherwise I can push patch 3 through drm-misc=
+.
+> > > > >
+> > > >
+> > > > Not sure if I can really take the DRM bindings patch through soc.
+> > > >
+> > > > I will take the devicetree ones exactly right now, even though it's=
+ going to
+> > > > give warnings.
+> > >
+> > > Apologies for missing this, but the first DT patch depends on the clk=
+ DT
+> > > bindings patch for the clk ID macros. This is causing build errors in
+> > > linux-next right now.
+> > >
+> > > Not sure how we can fix this right now.
+> > >
+> > > Brian, would it be possible for you to split out that patch into a
+> > > separate immutable branch for Angelo to merge?
+>
+> Yes, I can split things out and make an immutable branch this morning.
+> But it sounds too late for that.
+>
+> > >
+> > > Otherwise Angelo might need to drop the DT patches until the next cyc=
+le.
+> >
+> > Yeah, that's so bad.
+> > I'd be happy to be able to resolve this, but it's too late on my side.
+> >
+> > I should've checked the DT patches more carefully, my bad: I got a bit =
+too excited
+> > to finally see this PowerVR stuff working on MT8173 and going upstream.
+> >
+> > Sadly, I have to drop the devicetree patches :-(
+>
+> Chen-Yu: Could Angelo add an Acked-by to the three patches, and then I se=
+nd
+> Stephen an additional pull with just those patches? Do you think he'd
+> pull that?
 
-> Add phylink support for each GDM port. For GDM1 add the internal interface
-> mode as the only supported mode. For GDM2/3/4 add the required
-> configuration of the PCS to make the external PHY or attached SFP cage
-> work.
->=20
-> These needs to be defined in the GDM port node using the pcs-handle
-> property.
->=20
-> Update and provide a .get/set_link_ksettings function that use phylink
-> for ethtool OPs now that we fully support phylink.
->=20
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+(replying from my @kernel.org address again because I don't feel like
+ pulling out my work laptop.)
 
-Hi Christian,
+I think the question is whether the soc & dt maintainers would be bothered
+by it or not.
 
-just some nits inline. Fixing them:
+No need to sweat over it though. It's not like the GPU driver is production
+ready anyway. We can just merge the DT patches in the next cycle. :)
 
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Regards,
-Lorenzo
-
-> ---
->  drivers/net/ethernet/airoha/Kconfig       |   1 +
->  drivers/net/ethernet/airoha/airoha_eth.c  | 189 +++++++++++++++++++++-
->  drivers/net/ethernet/airoha/airoha_eth.h  |   5 +
->  drivers/net/ethernet/airoha/airoha_regs.h |  12 ++
->  4 files changed, 205 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/Kconfig b/drivers/net/ethernet/a=
-iroha/Kconfig
-> index 1f6640a15fc9..789906516bf8 100644
-> --- a/drivers/net/ethernet/airoha/Kconfig
-> +++ b/drivers/net/ethernet/airoha/Kconfig
-> @@ -20,6 +20,7 @@ config NET_AIROHA
->  	depends on NET_DSA || !NET_DSA
->  	select NET_AIROHA_NPU
->  	select PAGE_POOL
-> +	select PHYLINK
->  	help
->  	  This driver supports the gigabit ethernet MACs in the
->  	  Airoha SoC family.
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index dba7c52c0896..5065d6583b9f 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -8,6 +8,7 @@
->  #include <linux/of_reserved_mem.h>
->  #include <linux/platform_device.h>
->  #include <linux/tcp.h>
-> +#include <linux/pcs/pcs.h>
-
-nit: alphabetic order.
-
->  #include <linux/u64_stats_sync.h>
->  #include <net/dst_metadata.h>
->  #include <net/page_pool/helpers.h>
-> @@ -1915,6 +1916,14 @@ static int airoha_dev_open(struct net_device *netd=
-ev)
->  	struct airoha_qdma *qdma;
->  	int err;
-> =20
-> +	err =3D phylink_of_phy_connect(dev->phylink, netdev->dev.of_node, 0);
-> +	if (err) {
-> +		netdev_err(netdev, "could not attach PHY: %d\n", err);
-> +		return err;
-> +	}
-> +
-> +	phylink_start(dev->phylink);
-
-Should it be last operation in airoha_dev_open()?
-
-> +
->  	netif_tx_start_all_queues(netdev);
->  	err =3D airoha_set_vip_for_gdm_port(dev, true);
->  	if (err)
-> @@ -1954,6 +1963,10 @@ static int airoha_dev_stop(struct net_device *netd=
-ev)
->  		airoha_set_gdm_port_fwd_cfg(dev->eth,
->  					    REG_GDM_FWD_CFG(port->id),
->  					    FE_PSE_PORT_DROP);
-> +
-> +	phylink_stop(dev->phylink);
-
-Should it be the first one? (reverse order of airoha_dev_open()).
-
-> +	phylink_disconnect_phy(dev->phylink);
-> +
->  	return 0;
->  }
-> =20
-> @@ -2509,6 +2522,24 @@ airoha_ethtool_get_rmon_stats(struct net_device *n=
-etdev,
->  	} while (u64_stats_fetch_retry(&dev->stats.syncp, start));
->  }
-> =20
-> +static int
-> +airoha_ethtool_get_link_ksettings(struct net_device *netdev,
-> +				  struct ethtool_link_ksettings *cmd)
-> +{
-> +	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> +
-> +	return phylink_ethtool_ksettings_get(dev->phylink, cmd);
-> +}
-> +
-> +static int
-> +airoha_ethtool_set_link_ksettings(struct net_device *netdev,
-> +				  const struct ethtool_link_ksettings *cmd)
-> +{
-> +	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> +
-> +	return phylink_ethtool_ksettings_set(dev->phylink, cmd);
-> +}
-> +
->  static int airoha_qdma_set_chan_tx_sched(struct net_device *netdev,
->  					 int channel, enum tx_sched_mode mode,
->  					 const u16 *weights, u8 n_weights)
-> @@ -3353,7 +3384,8 @@ static const struct ethtool_ops airoha_ethtool_ops =
-=3D {
->  	.get_drvinfo		=3D airoha_ethtool_get_drvinfo,
->  	.get_eth_mac_stats      =3D airoha_ethtool_get_mac_stats,
->  	.get_rmon_stats		=3D airoha_ethtool_get_rmon_stats,
-> -	.get_link_ksettings	=3D phy_ethtool_get_link_ksettings,
-> +	.get_link_ksettings	=3D airoha_ethtool_get_link_ksettings,
-> +	.set_link_ksettings	=3D airoha_ethtool_set_link_ksettings,
->  	.get_link		=3D ethtool_op_get_link,
->  };
-> =20
-> @@ -3409,6 +3441,155 @@ bool airoha_is_valid_gdm_dev(struct airoha_eth *e=
-th,
->  	return false;
->  }
-> =20
-> +/* Nothing to do in MAC, everything is handled in PCS */
-> +static void airoha_mac_config(struct phylink_config *config, unsigned in=
-t mode,
-> +			      const struct phylink_link_state *state)
-> +{
-> +}
-> +
-> +static void airoha_mac_link_up(struct phylink_config *config, struct phy=
-_device *phy,
-> +			       unsigned int mode, phy_interface_t interface,
-> +			       int speed, int duplex, bool tx_pause, bool rx_pause)
-> +{
-> +	struct airoha_gdm_dev *dev =3D container_of(config, struct airoha_gdm_d=
-ev,
-> +						  phylink_config);
-> +	struct airoha_gdm_port *port =3D dev->port;
-> +	struct airoha_eth *eth =3D dev->eth;
-> +	u32 frag_size_tx, frag_size_rx;
-> +	u32 mask, val;
-> +
-> +	/* TX/RX frag is configured only for GDM4 */
-> +	if (port->id !=3D AIROHA_GDM4_IDX)
-> +		return;
-> +
-> +	switch (speed) {
-> +	case SPEED_10000:
-> +	case SPEED_5000:
-> +		frag_size_tx =3D 8;
-> +		frag_size_rx =3D 8;
-> +		break;
-> +	case SPEED_2500:
-> +		frag_size_tx =3D 2;
-> +		frag_size_rx =3D 1;
-> +		break;
-> +	default:
-> +		frag_size_tx =3D 1;
-> +		frag_size_rx =3D 0;
-
-Missing break here.
-
-> +	}
-> +
-> +	mutex_lock(&port->reg_lock);
-> +
-> +	/* Configure TX/RX frag based on speed */
-> +	if (dev->nbq =3D=3D 1) {
-> +		mask =3D GDM4_SGMII1_TX_FRAG_SIZE_MASK;
-> +		val =3D FIELD_PREP(GDM4_SGMII1_TX_FRAG_SIZE_MASK,
-> +				 frag_size_tx);
-> +	}  else {
-> +		mask =3D GDM4_SGMII0_TX_FRAG_SIZE_MASK;
-> +		val =3D FIELD_PREP(GDM4_SGMII0_TX_FRAG_SIZE_MASK,
-> +				 frag_size_tx);
-> +	}
-> +	airoha_fe_rmw(eth, REG_FE_GDM4_TMBI_FRAG, mask, val);
-> +
-> +	if (dev->nbq =3D=3D 1) {
-> +		mask =3D GDM4_SGMII1_RX_FRAG_SIZE_MASK;
-> +		val =3D FIELD_PREP(GDM4_SGMII1_RX_FRAG_SIZE_MASK,
-> +				 frag_size_rx);
-> +	} else {
-> +		mask =3D GDM4_SGMII0_RX_FRAG_SIZE_MASK;
-> +		val =3D FIELD_PREP(GDM4_SGMII0_RX_FRAG_SIZE_MASK,
-> +				 frag_size_rx);
-> +	}
-> +	airoha_fe_rmw(eth, REG_FE_GDM4_RMBI_FRAG, mask, val);
-
-nit: I guess you can have just one if/else block here running airoha_fe_rmw=
-()
-inside the block and getting rid of val/mask.
-
-> +
-> +	mutex_unlock(&port->reg_lock);
-> +}
-> +
-> +/* Nothing to do in MAC, everything is handled in PCS */
-> +static void airoha_mac_link_down(struct phylink_config *config, unsigned=
- int mode,
-> +				 phy_interface_t interface)
-> +{
-> +}
-> +
-> +static const struct phylink_mac_ops airoha_phylink_ops =3D {
-> +	.mac_config =3D airoha_mac_config,
-> +	.mac_link_up =3D airoha_mac_link_up,
-> +	.mac_link_down =3D airoha_mac_link_down,
-> +};
-> +
-> +static int airoha_fill_available_pcs(struct phylink_config *config,
-> +				     struct phylink_pcs **available_pcs,
-> +				     unsigned int num_possible_pcs)
-> +{
-> +	struct device *dev =3D config->dev;
-> +
-> +	return fwnode_phylink_pcs_parse(dev_fwnode(dev), available_pcs,
-> +					num_possible_pcs);
-> +}
-> +
-> +static int airoha_setup_phylink(struct net_device *netdev)
-> +{
-> +	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> +	struct device_node *np =3D netdev->dev.of_node;
-> +	struct airoha_gdm_port *port =3D dev->port;
-> +	struct phylink_config *config;
-> +	phy_interface_t phy_mode;
-> +	struct phylink *phylink;
-> +	int err;
-> +
-> +	err =3D of_get_phy_mode(np, &phy_mode);
-> +	if (err) {
-> +		dev_err(&netdev->dev, "incorrect phy-mode\n");
-> +		return err;
-> +	}
-> +
-> +	config =3D &dev->phylink_config;
-> +	config->dev =3D &netdev->dev;
-> +	config->type =3D PHYLINK_NETDEV;
-> +
-> +	/*
-> +	 * GDM1 only supports internal for Embedded Switch
-> +	 * and doesn't require a PCS.
-> +	 */
-> +	if (port->id =3D=3D AIROHA_GDM1_IDX) {
-> +		config->mac_capabilities =3D MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
-> +					   MAC_10000FD;
-> +
-> +		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
-> +			  config->supported_interfaces);
-> +	} else {
-> +		config->mac_capabilities =3D MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
-> +					   MAC_10 | MAC_100 | MAC_1000 |
-> +					   MAC_2500FD | MAC_5000FD | MAC_10000FD;
-> +
-> +		config->num_possible_pcs =3D fwnode_phylink_pcs_count(dev_fwnode(confi=
-g->dev));
-> +		config->fill_available_pcs =3D airoha_fill_available_pcs;
-> +
-> +		__set_bit(PHY_INTERFACE_MODE_SGMII,
-> +			  config->supported_interfaces);
-> +		__set_bit(PHY_INTERFACE_MODE_1000BASEX,
-> +			  config->supported_interfaces);
-> +		__set_bit(PHY_INTERFACE_MODE_2500BASEX,
-> +			  config->supported_interfaces);
-> +		__set_bit(PHY_INTERFACE_MODE_10GBASER,
-> +			  config->supported_interfaces);
-> +		__set_bit(PHY_INTERFACE_MODE_USXGMII,
-> +			  config->supported_interfaces);
-> +
-> +		phy_interface_copy(config->pcs_interfaces,
-> +				   config->supported_interfaces);
-> +	}
-> +
-> +	phylink =3D phylink_create(config, of_fwnode_handle(np),
-> +				 phy_mode, &airoha_phylink_ops);
-> +	if (IS_ERR(phylink))
-> +		return PTR_ERR(phylink);
-> +
-> +	dev->phylink =3D phylink;
-> +
-> +	return 0;
-> +}
-> +
->  static int airoha_alloc_gdm_device(struct airoha_eth *eth,
->  				   struct airoha_gdm_port *port,
->  				   int nbq, struct device_node *np)
-> @@ -3474,7 +3655,7 @@ static int airoha_alloc_gdm_device(struct airoha_et=
-h *eth,
->  	dev->nbq =3D nbq;
->  	port->devs[index] =3D dev;
-> =20
-> -	return 0;
-> +	return airoha_setup_phylink(netdev);
->  }
-> =20
->  static int airoha_alloc_gdm_port(struct airoha_eth *eth,
-> @@ -3510,6 +3691,7 @@ static int airoha_alloc_gdm_port(struct airoha_eth =
-*eth,
-> =20
->  	port->id =3D id;
->  	spin_lock_init(&port->stats_lock);
-> +	mutex_init(&port->reg_lock);
->  	eth->ports[p] =3D port;
-> =20
->  	err =3D airoha_metadata_dst_alloc(port);
-> @@ -3706,6 +3888,8 @@ static int airoha_probe(struct platform_device *pde=
-v)
->  			netdev =3D netdev_from_priv(dev);
->  			if (netdev->reg_state =3D=3D NETREG_REGISTERED)
->  				unregister_netdev(netdev);
-> +			if (dev->phylink)
-> +				phylink_destroy(dev->phylink);
->  			of_node_put(netdev->dev.of_node);
->  		}
->  		airoha_metadata_dst_free(port);
-> @@ -3744,6 +3928,7 @@ static void airoha_remove(struct platform_device *p=
-dev)
-> =20
->  			netdev =3D netdev_from_priv(dev);
->  			unregister_netdev(netdev);
-> +			phylink_destroy(dev->phylink);
->  			of_node_put(netdev->dev.of_node);
->  		}
->  		airoha_metadata_dst_free(port);
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
-net/airoha/airoha_eth.h
-> index fa9a8edce22f..6396a5aec384 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.h
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-> @@ -595,6 +595,9 @@ struct airoha_gdm_dev {
->  	 * QDMA migration.
->  	 */
->  	spinlock_t txq_lock[AIROHA_NUM_NETDEV_TX_RINGS];
-> +
-> +	struct phylink *phylink;
-> +	struct phylink_config phylink_config;
->  };
-> =20
->  struct airoha_gdm_port {
-> @@ -604,6 +607,8 @@ struct airoha_gdm_port {
-> =20
->  	/* protect concurrent hw_stats accesses */
->  	spinlock_t stats_lock;
-> +	/* protect concurrent GDM4 register access */
-> +	struct mutex reg_lock;
-
-nit: naming is always hard, maybe link_lock?
-
-> =20
->  	struct metadata_dst *dsa_meta[AIROHA_MAX_DSA_PORTS];
->  };
-> diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethe=
-rnet/airoha/airoha_regs.h
-> index 442b48c9b991..4ea89057b560 100644
-> --- a/drivers/net/ethernet/airoha/airoha_regs.h
-> +++ b/drivers/net/ethernet/airoha/airoha_regs.h
-> @@ -357,6 +357,18 @@
->  #define IP_FRAGMENT_PORT_MASK		GENMASK(8, 5)
->  #define IP_FRAGMENT_NBQ_MASK		GENMASK(4, 0)
-> =20
-> +#define REG_FE_GDM4_TMBI_FRAG		0x2028
-> +#define GDM4_SGMII1_TX_WEIGHT_MASK	GENMASK(31, 26)
-> +#define GDM4_SGMII1_TX_FRAG_SIZE_MASK	GENMASK(25, 16)
-> +#define GDM4_SGMII0_TX_WEIGHT_MASK	GENMASK(15, 10)
-> +#define GDM4_SGMII0_TX_FRAG_SIZE_MASK	GENMASK(9, 0)
-> +
-> +#define REG_FE_GDM4_RMBI_FRAG		0x202c
-> +#define GDM4_SGMII1_RX_WEIGHT_MASK	GENMASK(31, 26)
-> +#define GDM4_SGMII1_RX_FRAG_SIZE_MASK	GENMASK(25, 16)
-> +#define GDM4_SGMII0_RX_WEIGHT_MASK	GENMASK(15, 10)
-> +#define GDM4_SGMII0_RX_FRAG_SIZE_MASK	GENMASK(9, 0)
-> +
->  #define REG_MC_VLAN_EN			0x2100
->  #define MC_VLAN_EN_MASK			BIT(0)
-> =20
-> --=20
-> 2.53.0
->=20
-
---YV0bq4ezW6l3+6wa
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCams72wAKCRA6cBh0uS2t
-rBsYAP9JVfpcG3iZ/fFIRDfuejgd6YEy15OWk6ya0hjQqN3D1QD+Jlplr8Il1Kjl
-n5Uuyl3jQ5fKeNkajMjtNeXSxELTogE=
-=+NVb
------END PGP SIGNATURE-----
-
---YV0bq4ezW6l3+6wa--
+ChenYu
 
