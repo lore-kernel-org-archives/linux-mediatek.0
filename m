@@ -4,38 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00228C55166
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 16:04:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50A68C55162
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 16:13:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KcEcWYmNmr/YwRv/wbbdXROwJ9GfqzJi4PNlqHkG4cU=; b=ytbTGESrbDqNtfmzGNr5UTzj2r
-	39cLSX5d0Y4ds7HWrVCsxYbdufbuPoLiMpfDtv/sGgYBROeFcDN2EcUyr71/31Rv1FlLRuJOZ/H8s
-	+mtxSpEyjAGI1fFpfTrrQMzfvD60/RCnikJNyoRtYQve2aH/TXLyVfgyfRAkGS5LP3AeiONbXkIdQ
-	BGA5KSlHdsKpVBIC95+3r9uhqtwTB/FT+XamiH++ojSrrQrRES7Xwi2/Nw1r6kR4DenKLvk27n0n7
-	EZ6aHPR1Dt/FFPs+mrH+tbOUsg/P77wg/3KGa/GD2AxuJTg5G8NDbh7atjKm91MaBYLLXQ+SElb54
-	+/0+VZNQ==;
+	bh=U8MQ+sboj6Emxgip/vMO33V3JD1l2EBPOqtHqVRFw3I=; b=orU8AQRXdS3tegZjtyIKoF70CS
+	/6a4Ss9T/NL6V9YDima6mb0uDbmKQ7aM+uSpdLPyg/dJmgGbaBDxR7O847e03rRrgRMgcEwGZcvbW
+	am4osTuYqIc8H4JT21IX+8zJbTZsU4r+IkqB22bBmEzO9vY6540UMjf/s+xPMv7Hbf5hxFnJDWe9w
+	Jg/XZOI4qXUuPSUosvdq6q0nOCZZnreE0NN24TYX1MzNMeDi9Jg+tz8zhYw/TLJpd0Vwx5jOUZf9x
+	/gn/oyM7C3ojgNbZO8TyfdHJCKSMK0dWWIj80utjqmflovZhHeM/jZ+xGPLncnbl2g+PACeSXXbXV
+	WhRY/4iQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpTEo-0000000Avsi-0kxl;
-	Thu, 30 Jul 2026 16:04:02 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1wpTOE-0000000AxPS-0Liv;
+	Thu, 30 Jul 2026 16:13:46 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpTEj-0000000Avpv-0sDT;
-	Thu, 30 Jul 2026 16:03:58 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1wpTEc-000000007YI-3FOH;
-	Thu, 30 Jul 2026 16:03:50 +0000
-Date: Thu, 30 Jul 2026 17:03:47 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
+	id 1wpTOB-0000000AxO2-46kt;
+	Thu, 30 Jul 2026 16:13:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=U8MQ+sboj6Emxgip/vMO33V3JD1l2EBPOqtHqVRFw3I=; b=QJHbkG9inB4HeB0zhPf1Ecu+Jd
+	PDG/oyKlbHHjqGSmdYTafJnH93wJVo47oZ4UcPWG1nshVtZbn1+iGB/krH9MxR5Vt8ty4rvEjUneS
+	o4x4KUf9tAEAvjtZVhgHcnRDYAyZTyOPenqKYB8uxIPn16mpoIYXIJxcjhoHt1W5Q3jo=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1wpTNh-00F29y-48; Thu, 30 Jul 2026 18:13:13 +0200
+Date: Thu, 30 Jul 2026 18:13:13 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: "Chester A. Unal" <chester.a.unal@arinc9.com>,
 	Vladimir Oltean <olteanv@gmail.com>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
@@ -51,17 +56,18 @@ To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
 	Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net 4/4] net: dsa: mt7530: serialize the regmap IRQ chip like
- every other user
-Message-ID: <f2a52e4ada145fe6aa3fcbe5f923b125364b1a87.1785427248.git.daniel@makrotopia.org>
+Subject: Re: [PATCH net 1/4] net: pcs: mtk-lynxi: check regmap reads in
+ mtk_pcs_lynxi_get_state()
+Message-ID: <e2ae2cba-e62e-447c-b5f4-25411cac11ff@lunn.ch>
 References: <cover.1785427248.git.daniel@makrotopia.org>
+ <c41c256a5b4695bec24abc6baa4f990fca88f834.1785427248.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1785427248.git.daniel@makrotopia.org>
+In-Reply-To: <c41c256a5b4695bec24abc6baa4f990fca88f834.1785427248.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260730_090357_250277_8974A58B 
-X-CRM114-Status: GOOD (  18.46  )
+X-CRM114-CacheID: sfid-20260730_091344_015366_35EFFA15 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,111 +82,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The switch register regmap is created with .disable_locking = true;
-every other user in this driver calls mt7530_mutex_lock()/unlock()
-around it, which takes priv->bus->mdio_lock, since the underlying
-mt7530_regmap_read()/write() issue raw, unserialized bus->read()/
-write() MDIO transactions.
+On Thu, Jul 30, 2026 at 05:03:11PM +0100, Daniel Golle wrote:
+> mtk_pcs_lynxi_get_state() ignores regmap_read()'s return value; a
+> failed read leaves bm and adv holding uninitialized stack values
+> which are then decoded into the reported link state. The regmaps
+> backing the MT7531 SGMII PCS instances sit on an MDIO bus where
+> reads can fail. Check both reads and leave the state untouched on
+> error.
+> 
+> Fixes: 4765a9722e09 ("net: pcs: add driver for MediaTek SGMII PCS")
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-mt7530_setup_irq() hands this same unlocked regmap straight to
-devm_regmap_add_irq_chip_fwnode(), whose threaded IRQ handler then
-calls regmap_read()/regmap_update_bits() on it without ever calling
-mt7530_mutex_lock(). An interrupt firing while another thread is
-mid-transaction on the same regmap (e.g. a paged register access, or
-an indirect PHY access) can interleave with the IRQ handler's own
-paged access and corrupt page selection on either side.
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
-Use struct regmap_irq_chip's handle_mask_sync hook to call
-mt7530_mutex_lock()/unlock() around the mask register write regmap-irq
-issues whenever a consumer of one of the mapped sub-IRQs enables,
-disables, requests or frees its line. This needs a per-device copy of
-mt7530_regmap_irq_chip, since devm_regmap_add_irq_chip_fwnode() keeps
-a pointer to it rather than copying it.
-
-handle_pre_irq/handle_post_irq, which would additionally cover the
-status read and ack write the threaded handler does directly, bracket
-the whole handler including its handle_nested_irq() calls. Lockdep
-caught this on hardware: those calls reach phy_interrupt() for the
-per-port PHY IRQ lines mapped through this chip, which takes
-phydev->lock, while phy_attach_direct() and this driver's own indirect
-PHY access already establish the opposite order (phydev->lock, then
-priv->bus->mdio_lock) elsewhere. Using them here would close that
-cycle, so they are not used.
-
-regmap_irq_sync_unlock() also has its own init_ack_masked path, used
-by this chip, which unconditionally does its own regmap_write() to ack
-currently-masked IRQs; that path has no per-driver hook. Together with
-the threaded handler's own status read and ack write, these stay
-unprotected -- a narrower, harder-to-hit gap than the recurring mask
-sync above -- and will be closed once the switch regmap moves to
-regmap's own locking in the driver-wide register access cleanup.
-
-Fixes: 254f6b272e3b ("dsa: mt7530: Utilize REGMAP_IRQ for interrupt handling")
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- drivers/net/dsa/mt7530.c | 26 +++++++++++++++++++++++++-
- 1 file changed, 25 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 2a17696e6a45..f8f0799ede63 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2311,6 +2311,21 @@ static const struct regmap_irq mt7530_irqs[] = {
- 	REGMAP_IRQ_REG_LINE(31, 32), /* ACL */
- };
- 
-+/* Serialize regmap-irq's mask sync like every other regmap user */
-+static int mt7530_irq_mask_sync(int index, unsigned int mask_buf_def,
-+				unsigned int mask_buf, void *irq_drv_data)
-+{
-+	struct mt7530_priv *priv = irq_drv_data;
-+	int ret;
-+
-+	mt7530_mutex_lock(priv);
-+	ret = regmap_update_bits(priv->regmap, MT7530_SYS_INT_EN,
-+				 mask_buf_def, ~mask_buf);
-+	mt7530_mutex_unlock(priv);
-+
-+	return ret;
-+}
-+
- static const struct regmap_irq_chip mt7530_regmap_irq_chip = {
- 	.name = KBUILD_MODNAME,
- 	.status_base = MT7530_SYS_INT_STS,
-@@ -2320,12 +2335,14 @@ static const struct regmap_irq_chip mt7530_regmap_irq_chip = {
- 	.irqs = mt7530_irqs,
- 	.num_irqs = ARRAY_SIZE(mt7530_irqs),
- 	.num_regs = 1,
-+	.handle_mask_sync = mt7530_irq_mask_sync,
- };
- 
- static int
- mt7530_setup_irq(struct mt7530_priv *priv)
- {
- 	struct regmap_irq_chip_data *irq_data;
-+	struct regmap_irq_chip *chip;
- 	struct device *dev = priv->dev;
- 	struct device_node *np = dev->of_node;
- 	int irq, ret;
-@@ -2345,10 +2362,17 @@ mt7530_setup_irq(struct mt7530_priv *priv)
- 	if (priv->id == ID_MT7530 || priv->id == ID_MT7621)
- 		mt7530_set(priv, MT7530_TOP_SIG_CTRL, TOP_SIG_CTRL_NORMAL);
- 
-+	chip = devm_kmemdup(dev, &mt7530_regmap_irq_chip, sizeof(*chip),
-+			    GFP_KERNEL);
-+	if (!chip)
-+		return -ENOMEM;
-+
-+	chip->irq_drv_data = priv;
-+
- 	ret = devm_regmap_add_irq_chip_fwnode(dev, dev_fwnode(dev),
- 					      priv->regmap, irq,
- 					      IRQF_ONESHOT,
--					      0, &mt7530_regmap_irq_chip,
-+					      0, chip,
- 					      &irq_data);
- 	if (ret)
- 		return ret;
--- 
-2.55.0
+    Andrew
 
