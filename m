@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D165C53200
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 00:40:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A10FC55160
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 01:44:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NdY0BKHWph5EOwbrDaQoxQuPkpzGFFgegddJCFpDceU=; b=Ma1jOVuYAfont3bzp60YX29c4I
-	KcV+us5NGs9J2aYHlC0z0rrm2T5/9AnFFt0OJmqcrNF5Y5wrhY3FwU8ngRRy3Gy6FDt2yT7765hIY
-	yyGMTfjamBiXL8mDKNL4iC/L2KReuZgGlf3J9dOxjTe/BgU4qrXCjnPh9rhmceWk93NZmJI57giSs
-	+1fkiZk8RB6CYgLtqZ4L1DKj4GGOXkIzqRjvCHmIyCczQJO5mNLB2us5UjIprTKjLuvh1/1TaJDgn
-	I2ahBEnUFaSYnAWHqXgPXG66Lbl2z2CEiws+Ll4pSUrrTP3TfJvN/V0+3EXkAlK25BhgPL1HrC5c1
-	Pjo/LEFw==;
+	bh=hLDg/lOQfnHHDcmf98A5srZhKLIOaOoJ/RLfiAyjiFo=; b=hfKk+o1zqF4iswvmJcIk7tK2LL
+	HOIO8QpKPF4ckJAF1eumSGToy3H+iE+3W4sey6bPEvhTYyWd2xEIGMoPk3AO7GC8NxxO5BVpROpsD
+	m7rCRu2qvti4RwEHaim3Esu4HVft9FJRSsOUnmx17Sm+hIl5hhIKmvxhJVX5D4E41hnXR3kPy39Wh
+	MiigXcQ7hUACIY8XIXSLVjXDewTci4NSGJFE8e48xzQQnG7CMrjQSi2ldInCvY5hO3SaMREaxWxWL
+	pxsaC4wloU8p/n74gb9cejjcTATBErKvhna3n5nCqHSWVou9YPr4UhKMz8cUXxz/9n6HW2exwKqXg
+	Bo6oUhwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpEpN-00000009BnH-2pi1;
-	Thu, 30 Jul 2026 00:40:49 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wpFpE-00000009Hq0-1Ktv;
+	Thu, 30 Jul 2026 01:44:44 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpEpL-00000009Bn0-3YVR;
-	Thu, 30 Jul 2026 00:40:47 +0000
+	id 1wpFpC-00000009Hp4-337H;
+	Thu, 30 Jul 2026 01:44:42 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id EFE11600AE;
-	Thu, 30 Jul 2026 00:40:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A4D811F000E9;
-	Thu, 30 Jul 2026 00:40:46 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 2E26D4362E;
+	Thu, 30 Jul 2026 01:44:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7DE7A1F000E9;
+	Thu, 30 Jul 2026 01:44:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785372046;
-	bh=NdY0BKHWph5EOwbrDaQoxQuPkpzGFFgegddJCFpDceU=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=RqCczNNiZuvDEbli0Zx/NGjRSjKFFlmkFDUBAnDJ/xtP6zPyRPum56X07xjomVw1C
-	 X8gdkFQ/SOH++6iS3EWJ1Pi6WOiNk1VbbIGOIy/dc9aRTxrPJXyQQL80BH72RU9VY6
-	 7WjlnlwnVA0MFDkQdHVTyBQTh040/VHToXzM7QD0vf+TvS+mIHO8nGE/pUH0pydViW
-	 ju3E981raAN6xkb9Cl+5vV9MlVaazgG13SXc3EHGwBVJL4ISBqmRdxaRwFL9D5RS6Z
-	 QGeQBT8rqaw+LNwrMfJkLdsx1ZC2xKlOcGMPb9g39DZHO2GHV3e5PvcliQilGs2iyq
-	 f22UXX8XEPB7g==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id D0BED3926251;
-	Thu, 30 Jul 2026 00:40:11 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net 0/3] net: dsa: mt7530: fix swallowed MDIO read errors
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178537201040.3298470.15022630671470651266.git-patchwork-notify@kernel.org>
-Date: Thu, 30 Jul 2026 00:40:10 +0000
-References: <cover.1785213071.git.daniel@makrotopia.org>
-In-Reply-To: <cover.1785213071.git.daniel@makrotopia.org>
+	s=k20260515; t=1785375882;
+	bh=hLDg/lOQfnHHDcmf98A5srZhKLIOaOoJ/RLfiAyjiFo=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=hFcyLcQTUVNOHTXuVoab1LHOar6vUpahKFtRrwXtVzGu+HqLHeGMMVnlO0MywAxM0
+	 q2hqrpRhp3GOQbpkQgZaaE1NAj//OQnc35haTpfSI0teK/Wl2oNqw/XlDx2GA/8muP
+	 Ko4T4247XaxIzUTiIN6rQXvVByziF47eDmVqjPfBLgCUUxyG46KUCM9S9KtcWKLAQ3
+	 PbAEtj6vgjXuz7ZUmQeWSCL48J2zfU1S7A2ncZcMvtuoxFS2T7hZJngB0Gf4qsxWQb
+	 Sn/q6ZODlSBtxcRoBsnRib+LCLErtZ7Qwek5Rkx3sxvhSzj0X6nentwzHeVk2vPY5m
+	 /67psCDxD/mfA==
+Date: Wed, 29 Jul 2026 18:44:40 -0700
+From: Jakub Kicinski <kuba@kernel.org>
 To: Daniel Golle <daniel@makrotopia.org>
-Cc: chester.a.unal@arinc9.com, andrew@lunn.ch, olteanv@gmail.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- Landen.Chao@mediatek.com, f.fainelli@gmail.com, sean.wang@mediatek.com,
+Cc: "Chester A. Unal" <chester.a.unal@arinc9.com>, Andrew Lunn
+ <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Alexander Couzens <lynxis@fe80.eu>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, Russell King
+ <rmk+kernel@armlinux.org.uk>, Sean Wang <sean.wang@mediatek.com>, Florian
+ Fainelli <f.fainelli@gmail.com>, Landen Chao <Landen.Chao@mediatek.com>,
  netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net v2 0/5] net: dsa: mt7530: fix swallowed MDIO read
+ errors
+Message-ID: <20260729184440.0d67ce5b@kernel.org>
+In-Reply-To: <cover.1785368701.git.daniel@makrotopia.org>
+References: <cover.1785368701.git.daniel@makrotopia.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,34 +77,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This series was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Tue, 28 Jul 2026 05:52:05 +0100 you wrote:
+On Thu, 30 Jul 2026 01:14:30 +0100 Daniel Golle wrote:
 > While working on a register access cleanup for the mt7530 driver, the
 > Sashiko AI reviewers flagged long-standing error handling gaps in the
 > driver's read paths [1].
-> 
-> The MDIO regmap backend truncates negative bus->read() errnos into u16
-> register halves and returns success, handing garbage data to callers
-> and to read-modify-write cycles which then write it back to the switch.
-> 
-> [...]
 
-Here is the summary with links:
-  - [net,1/3] net: dsa: mt7530: check bus->read() errors in the MDIO regmap backend
-    https://git.kernel.org/netdev/net/c/b4ce102b2cd8
-  - [net,2/3] net: dsa: mt7530: error out on failed reads in ATC/VTCR command polling
-    https://git.kernel.org/netdev/net/c/ed9adac35b8f
-  - [net,3/3] net: dsa: mt7530: error out on failed reads in MT7531 PHY polling
-    https://git.kernel.org/netdev/net/c/77a9ebe8818c
-
-You are awesome, thank you!
+I just applied v1, please send a rebased / incremental series.
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+pw-bot: cr
 
