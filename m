@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58EC5C55162
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 16:15:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 197F3C55162
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 16:16:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IL3Oo7QOt9gbYMZOfnGaQko6Bls9KQHHxXUeMAA4kYs=; b=puLUA9QPjojmqzfalGssuavh40
-	T9mR6J3M5RQjdo3Q8MNNQ2+TD0xoLm8XR7VqMY1bohmSyjNC2D29lMZvSq/pTK4w3Sb9w2YHtmPkS
-	Xj6JCrZiYXYPYpTrQH6DdXayJAXqxoysbH+tVgRrfef7PJkndFPqbvK/fgiE5tU/PiAIIlSq0BeVd
-	dA495PUisvVRb9QXLjOeM+dIcJGSPrfBGH81wVP2XxH1+V1exfZPCw/7ADZSMvBw03KQeBoCrrCci
-	PIvFBMPAx1pgNqrjXI7nSUbpc+o/nW/icu+32/V0wl3yRG4uPNd9CFlUANnwzmunLU2OZs7viEUmf
-	/nSzsw7Q==;
+	bh=VNFN2Co99MmNM9wjzZFskt0bLc4iBky+Jm2OcMCXmE8=; b=4XS4z01pBpeahzAusOkaap/Ica
+	2mZrMWNS5N71/e9uJ50xDQFN3S7/bF6OzXXb1O8ohXUC7lkNI8TuYvSof9KZ5moA+3qxhYRyUH1dy
+	O7ddejcPJTFM1Yo0ZBbgnA8Er+qjr7rHEceFlnv3vkuV/Pe/L7GQU0GoAEpKkav0PS640RbQtTzmi
+	dMfEJnShW30GFwU7wIXn8oy8fv4kLnW9df8x+i1lJPEATUd4AmZKhidGrGY2Ox7j7cMtDeBkof56t
+	0iuu5RaGx6cn0XIWLt59iKyYrJiys/ktPaiImAYUEkVl8twRTTAWgJdXkiPvc/mdYqzm9AdtegUyX
+	n+hEOaGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpTPv-0000000AxxR-23up;
-	Thu, 30 Jul 2026 16:15:31 +0000
+	id 1wpTQg-0000000Ay8c-2yGc;
+	Thu, 30 Jul 2026 16:16:18 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpTPs-0000000AxwP-3EpQ;
-	Thu, 30 Jul 2026 16:15:29 +0000
+	id 1wpTQe-0000000Ay7K-1nga;
+	Thu, 30 Jul 2026 16:16:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=IL3Oo7QOt9gbYMZOfnGaQko6Bls9KQHHxXUeMAA4kYs=; b=kNbvtihEq+ufWkZGyL3dKiuh1L
-	VYiSyD5AE4oJel9u0So3Xo9mLfar0Lqf1QG/xJuS4F92Y4mFGoWuqN6Zv7hlg3TfYu9eSCX1qUwfM
-	HUuHlEmUI2Bs7BV1j1mVmEW9mlgxdc6ssQbavmD1U55MxFVQeep+06F4LNErn66ez4FU=;
+	bh=VNFN2Co99MmNM9wjzZFskt0bLc4iBky+Jm2OcMCXmE8=; b=p/CFWH9OT/Hf2t9gPenGWEjaiD
+	Z1qfm6U1bT3BS+ytUN53IACn0m088dp/I7mcIukGS7ipfvdmupelUkYfHVkeRtaflpSloiwR9CiQj
+	k8HAJVWOiMXk0OklgT+Z/9C97os3vah6sDXZpgTwItT+uoWuOu0mMpfdkaeUET+odmU8=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1wpTPa-00F2Bf-IB; Thu, 30 Jul 2026 18:15:10 +0200
-Date: Thu, 30 Jul 2026 18:15:10 +0200
+	id 1wpTQO-00F2Cg-JM; Thu, 30 Jul 2026 18:16:00 +0200
+Date: Thu, 30 Jul 2026 18:16:00 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Daniel Golle <daniel@makrotopia.org>
 Cc: "Chester A. Unal" <chester.a.unal@arinc9.com>,
@@ -56,18 +56,18 @@ Cc: "Chester A. Unal" <chester.a.unal@arinc9.com>,
 	Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net 2/4] net: dsa: mt7530: check bus->read() error in
- core_rmw()
-Message-ID: <a1bc4379-3d28-4d8e-99ee-8c4035434eca@lunn.ch>
+Subject: Re: [PATCH net 3/4] net: dsa: mt7530: error out on failed PHY_IAC
+ command writes
+Message-ID: <5f1b2fc3-33de-4c50-9ad2-fc989838f9de@lunn.ch>
 References: <cover.1785427248.git.daniel@makrotopia.org>
- <fe3926ab260b94d88d97ee5f417dab7dcf55f8fc.1785427248.git.daniel@makrotopia.org>
+ <2c0409afcdbd795fbc15b0cd3c9018474c272883.1785427248.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <fe3926ab260b94d88d97ee5f417dab7dcf55f8fc.1785427248.git.daniel@makrotopia.org>
+In-Reply-To: <2c0409afcdbd795fbc15b0cd3c9018474c272883.1785427248.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260730_091528_809349_D615C0B2 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20260730_091616_466853_01C2169C 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,14 +82,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 30, 2026 at 05:03:17PM +0100, Daniel Golle wrote:
-> core_rmw() accesses the MMD core registers directly rather than
-> through the regmap and has the same unchecked bus->read() as the
-> one just fixed in the MDIO regmap backend: a negative errno is
-> consumed as register data, modified and written back to the switch.
-> Check the read and bail out like the surrounding bus accesses do.
+On Thu, Jul 30, 2026 at 05:03:29PM +0100, Daniel Golle wrote:
+> MT7531_PHY_ACS_ST is only ever set by the command write that precedes
+> each poll in the MT7531 indirect PHY access functions, and that
+> write's return value is discarded. A failed write leaves ACS_ST at 0
+> from the previous access, so the poll succeeds on its first iteration
+> and the functions return stale IAC contents as if they were fresh PHY
+> data. Check the writes and bail out before polling.
 > 
-> Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
+> Fixes: c288575f7810 ("net: dsa: mt7530: Add the support of MT7531 switch")
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
 Reviewed-by: Andrew Lunn <andrew@lunn.ch>
