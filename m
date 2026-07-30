@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B64DC55162
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11F84C53200
 	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 00:15:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bP8EAeC1CZ9D1bfHHL3jOQrAcf6Vz3KCNlqRIImUCKM=; b=Ru+ESjMOHFI/+7RIoxujfZQw4P
-	GWRmyLzEQrh2SVCqHENq/VXAg9u6mNhCYBL83gLnLxUQDv5pCa4i6jWWXSmLKea/PRepaOmbl5iub
-	2l+GLf+UlSo89w3hKSlfy4j/uixxkrw58Q8XWp1LKVI8ZIrVQrqXQlnU6xX6gJBN8cjvV1nNZaFOP
-	yDA/kRmIOg7FFMnDfQJbCk5xDoCV5ZOZFT86YgG9xS3LtSseaZPh9HI+4SvpU33yjjuQeENGCI2py
-	Mpas5E1Ksxw17lPhISD8fj61pbQx2xvb8PAc2z97wQmNwIjTbbHwxgdIN+r+oS+Q64LNGMKgT3zW3
-	HsZve4iw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=x6VEIGoM0CTqq1w7BV8EITL2hcdo71wvSqgOUEq1fKk=; b=0hMkTNx59AP6Rypnp76gAu9Jjr
+	UVBF5DIM7VcvHXHoqEbxl1/ZbEeTuLIW4iu+q5B1u7/FwoUYmAT2B5bmwzzQMzG0+oM2TFcJI96KV
+	5uZca1twW93JrWt3wNZR/iBFeWlQzGaBZjm1Wczji65n4DbRl9mteHfyROTC306drucrlbEAzurMz
+	kZA91IvjeNJxeXp4x0iE5vlNEITfQD2MksmaWq7pTrceUvvJ6Kvuetv0sSOzrFIkzxWdY0BVmUWVs
+	4Keqh5ECwp6R7A72S7w0Ji3uXSB41Zp646GPnCTT3wMZifRyYrzZ45SAACQmqOtH7UBFmapkvaos1
+	B9XDIoLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpEQP-000000099Ul-3Zj3;
+	id 1wpEQP-000000099UQ-2nfJ;
 	Thu, 30 Jul 2026 00:15:01 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpEQN-000000099Su-31MO;
+	id 1wpEQM-000000099St-3jgI;
 	Thu, 30 Jul 2026 00:15:00 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.99)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1wpEQC-000000002f9-2oqg;
-	Thu, 30 Jul 2026 00:14:48 +0000
-Date: Thu, 30 Jul 2026 01:14:45 +0100
+	id 1wpEPx-000000002eX-3Jjt;
+	Thu, 30 Jul 2026 00:14:33 +0000
+Date: Thu, 30 Jul 2026 01:14:30 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
 	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
@@ -51,17 +51,14 @@ To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
 	Landen Chao <Landen.Chao@mediatek.com>, netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net v2 2/5] net: dsa: mt7530: check bus->read() errors in the
- MDIO regmap backend
-Message-ID: <cead5b47a21b7aeb8fc869f072ba981fc93aa6f0.1785368701.git.daniel@makrotopia.org>
-References: <cover.1785368701.git.daniel@makrotopia.org>
+Subject: [PATCH net v2 0/5] net: dsa: mt7530: fix swallowed MDIO read errors
+Message-ID: <cover.1785368701.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1785368701.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260729_171459_756498_6D0F0DC7 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20260729_171458_934033_6887F970 
+X-CRM114-Status: GOOD (  12.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,70 +73,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-bus->read() returns a negative errno on failure, but
-mt7530_regmap_read() assigns it to a u16, truncating e.g. -ETIMEDOUT
-into 0xff92, and returns success. The garbage word is then consumed as
-register data, and read-modify-write cycles write it back to the
-switch. Check both reads and propagate their errors.
+While working on a register access cleanup for the mt7530 driver, the
+Sashiko AI reviewers flagged long-standing error handling gaps in the
+driver's read paths [1].
 
-The same defect existed in mt7530_mii_read() since the driver was
-introduced and moved into the regmap backend unchanged. core_rmw(),
-which accesses the MMD core registers directly rather than through the
-regmap, has the identical unchecked bus->read(); fix it the same way.
+The MDIO regmap backend truncates negative bus->read() errnos into u16
+register halves and returns success, handing garbage data to callers
+and to read-modify-write cycles which then write it back to the switch.
 
-Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
----
-v2:
- * also check the identical unchecked bus->read() in core_rmw()
-   (found by Sashiko AI review)
- * split the mtk_pcs_lynxi_get_state() fix into its own patch
+The ATC/VTCR command polls and the MT7531 indirect PHY polls consume
+reads through a helper which returns 0 when the underlying read fails.
+A failed bus transaction thus clears the polled busy bit and is
+mistaken for command completion, defeats the subsequent
+ATC_INVALID/VTCR_INVALID checks the same way, and lets the indirect
+PHY access functions return garbage PHY register data.
 
- drivers/net/dsa/mt7530-mdio.c | 11 +++++++++--
- drivers/net/dsa/mt7530.c      |  6 +++++-
- 2 files changed, 14 insertions(+), 3 deletions(-)
+Fix the backend to propagate bus->read() errors, and convert the
+command and PHY access polls to regmap_read_poll_timeout(), which
+terminates polling on read errors and propagates them. The driver's
+legacy read helpers return plain u32 values and cannot convey errors,
+hence the affected reads switch to the plain regmap API the helpers
+are built on, while all other accesses are deliberately left
+untouched; the cleanup series converts the rest of the driver.
 
-diff --git a/drivers/net/dsa/mt7530-mdio.c b/drivers/net/dsa/mt7530-mdio.c
-index 11ea924a9f35..784dd58a7158 100644
---- a/drivers/net/dsa/mt7530-mdio.c
-+++ b/drivers/net/dsa/mt7530-mdio.c
-@@ -55,8 +55,15 @@ mt7530_regmap_read(void *context, unsigned int reg, unsigned int *val)
- 	if (ret < 0)
- 		return ret;
- 
--	lo = bus->read(bus, priv->mdiodev->addr, r);
--	hi = bus->read(bus, priv->mdiodev->addr, 0x10);
-+	ret = bus->read(bus, priv->mdiodev->addr, r);
-+	if (ret < 0)
-+		return ret;
-+	lo = ret;
-+
-+	ret = bus->read(bus, priv->mdiodev->addr, 0x10);
-+	if (ret < 0)
-+		return ret;
-+	hi = ret;
- 
- 	*val = (hi << 16) | (lo & 0xffff);
- 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 3c2a3029b10c..f349b54c2d9e 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -124,8 +124,12 @@ core_rmw(struct mt7530_priv *priv, u32 reg, u32 mask, u32 set)
- 		goto err;
- 
- 	/* Read the content of the MMD's selected register */
--	val = bus->read(bus, MT753X_CTRL_PHY_ADDR(priv->mdiodev->addr),
-+	ret = bus->read(bus, MT753X_CTRL_PHY_ADDR(priv->mdiodev->addr),
- 			MII_MMD_DATA);
-+	if (ret < 0)
-+		goto err;
-+	val = ret;
-+
- 	val &= ~mask;
- 	val |= set;
- 	/* Write the data into MMD's selected register */
+The Sashiko reviewers went over v1 as well [2] and found that the same
+unchecked-read pattern recurs in a couple of other places, and that the
+read-error propagation above widens a pre-existing gap in a PCS driver
+consumer; patches 1-3 grew companion fixes for those. They also found a
+separate locking gap between the switch regmap and its IRQ chip, fixed
+in the new patch 4 with its own Fixes: tag.
+
+The cleanup series depending on these fixes will be submitted to
+net-next separately.
+
+Changes since v1:
+ * 1/4: also check the identical unchecked bus->read() in core_rmw(),
+   and fix mtk_pcs_lynxi_get_state() (drivers/net/pcs/pcs-mtk-lynxi.c)
+   to check regmap_read() now that a failed read can leave its output
+   unwritten instead of holding truncated-but-defined garbage
+ * 2/4: drop the redundant regmap_read() after
+   regmap_read_poll_timeout(), and print ret in the error messages
+ * 3/4: also check mt7530_mii_write()'s return for the PHY_IAC command
+   word in all four PHY access helpers, and print ret in the poll
+   error messages
+ * add 4/4, calling mt7530_mutex_lock()/unlock() around the regmap IRQ
+   chip's own accesses via handle_pre_irq/handle_post_irq/
+   handle_mask_sync, the same driver-provided locking every other user
+   of the unlocked switch regmap already goes through, instead of
+   adding a second regmap instance
+
+[1] https://lore.kernel.org/netdev/cover.1784481922.git.daniel@makrotopia.org/
+[2] https://lore.kernel.org/netdev/cover.1785213071.git.daniel@makrotopia.org/
+
+Daniel Golle (5):
+  net: pcs: mtk-lynxi: check regmap reads in mtk_pcs_lynxi_get_state()
+  net: dsa: mt7530: check bus->read() errors in the MDIO regmap backend
+  net: dsa: mt7530: error out on failed reads in ATC/VTCR command
+    polling
+  net: dsa: mt7530: error out on failed reads in MT7531 PHY polling
+  net: dsa: mt7530: serialize the regmap IRQ chip like every other user
+
+ drivers/net/dsa/mt7530-mdio.c   |  11 ++-
+ drivers/net/dsa/mt7530.c        | 170 ++++++++++++++++++--------------
+ drivers/net/pcs/pcs-mtk-lynxi.c |   5 +-
+ 3 files changed, 108 insertions(+), 78 deletions(-)
+
+
+base-commit: 51b093a7ba27476e1f639455f005e8d2e75390e4
+prerequisite-patch-id: 0000000000000000000000000000000000000000
 -- 
 2.55.0
 
