@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D73CC55164
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16F9CC55162
 	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 16:03:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=3s2HJFqh+DDOetxTyo9o779Bmx/pzDHI5lZrygVa5Qc=; b=EtzydnQuE8GD2/ifC8revQlm7v
-	WwQg73OzZkk4BzILoROkyVgyM9hKFmVkoa965d2t1qkxsp8pf/NaH4IyvWwmt8dau+fU021f2+jJH
-	66jn/S7GuitMlPrE3Rbp4GUVHetugH5Ukymnd4otbk4EFjfBEtDYERngyPAIN7O0sfaKD+m3Q/v3T
-	7KAHX1SFREDuKX6MFai/hL7+Gx6Ou9U2aVI0Vw2M3/ipsQNrRlpfQZrNUz7wKPiaswPhkUskjKl8X
-	MFCf0SpFYOVuE9n1/8H7AZnPsBsrIixqavjv1NjSzHYYet9KNTf4T+Vmfvs2NWeeVZXsl0vKoujIT
-	LF8AqXSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9A84IZqp54aTPox6XpdcUzJLSF60NFVWMMJK5ZwGya8=; b=xIgwgLR9hCUwGkNPjT2tdCeTsT
+	cEysYNpIDXaqeOJ3iIjPXyYRK9vyGfnKnudfMpcUFED0jN7SKrWu4INDh6qnZkuZ91CU5TQ40q7o+
+	tTs2AEFRL9NkiMPfbObn1aMpDzAP4tFiHslQpv3VmOQRK+L2EHuFHTniY8J1QR7bcDX1qmoDCIFsC
+	VoOoM1MAj7HCXuvCN3YHXxJuuwW250RnkKtAXtGWqwFehTGi2GnDvA+RlqP6WXWjt9YsVS8jb7uae
+	haWxnQ+PENM9zaRIyuD0UowTQyTSq2wVfQVBSzVYMLCxcW6Ih9v8dxjmPPjRH7HODoQO91PlBywfL
+	SgCvvtew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpTEI-0000000Avbd-2Rb0;
+	id 1wpTEI-0000000AvbC-1shT;
 	Thu, 30 Jul 2026 16:03:30 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpTEF-0000000AvZV-1Zrt;
+	id 1wpTEF-0000000AvZa-1xZZ;
 	Thu, 30 Jul 2026 16:03:28 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.99)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1wpTDv-000000007W1-0nVU;
-	Thu, 30 Jul 2026 16:03:07 +0000
-Date: Thu, 30 Jul 2026 17:03:00 +0100
+	id 1wpTE2-000000007W4-1UaJ;
+	Thu, 30 Jul 2026 16:03:14 +0000
+Date: Thu, 30 Jul 2026 17:03:11 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
 	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
@@ -51,16 +51,17 @@ To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
 	Sean Wang <sean.wang@mediatek.com>, netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net 0/4] net: dsa: mt7530: fix remaining swallowed MDIO
- access errors
-Message-ID: <cover.1785427248.git.daniel@makrotopia.org>
+Subject: [PATCH net 1/4] net: pcs: mtk-lynxi: check regmap reads in
+ mtk_pcs_lynxi_get_state()
+Message-ID: <c41c256a5b4695bec24abc6baa4f990fca88f834.1785427248.git.daniel@makrotopia.org>
+References: <cover.1785427248.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <cover.1785427248.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260730_090327_417739_D5A4FB54 
-X-CRM114-Status: UNSURE (   8.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260730_090327_503886_8D9049CD 
+X-CRM114-Status: GOOD (  12.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,33 +76,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-v1 of "net: dsa: mt7530: fix swallowed MDIO read errors" [1] was
-applied to net just before v2 [2] went out. This series carries
-everything from v2 which was not already applied with v1 and still
-qualifies as a fix: the two standalone patches v2 had grown following
-the Sashiko AI reviewers' findings on v1, and, as patches of their
-own, the companion fixes v2 added inside the already applied patches:
-the unchecked bus->read() in core_rmw() and the unchecked PHY_IAC
-command writes in the MT7531 indirect PHY access functions.
+mtk_pcs_lynxi_get_state() ignores regmap_read()'s return value; a
+failed read leaves bm and adv holding uninitialized stack values
+which are then decoded into the reported link state. The regmaps
+backing the MT7531 SGMII PCS instances sit on an MDIO bus where
+reads can fail. Check both reads and leave the state untouched on
+error.
 
-The remaining non-fix changes from v2, dropping a redundant read-back
-and improving the poll failure messages, will follow via net-next.
+Fixes: 4765a9722e09 ("net: pcs: add driver for MediaTek SGMII PCS")
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+---
+ drivers/net/pcs/pcs-mtk-lynxi.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-[1] https://lore.kernel.org/netdev/cover.1785213071.git.daniel@makrotopia.org/
-[2] https://lore.kernel.org/netdev/cover.1785368701.git.daniel@makrotopia.org/
-
-Daniel Golle (4):
-  net: pcs: mtk-lynxi: check regmap reads in mtk_pcs_lynxi_get_state()
-  net: dsa: mt7530: check bus->read() error in core_rmw()
-  net: dsa: mt7530: error out on failed PHY_IAC command writes
-  net: dsa: mt7530: serialize the regmap IRQ chip like every other user
-
- drivers/net/dsa/mt7530.c        | 56 ++++++++++++++++++++++++++++-----
- drivers/net/pcs/pcs-mtk-lynxi.c |  5 +--
- 2 files changed, 51 insertions(+), 10 deletions(-)
-
-
-base-commit: dd16f1b5720f5dae33a79b5305e188e8290a3973
+diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
+index a753bd88cbc2..454f2924831c 100644
+--- a/drivers/net/pcs/pcs-mtk-lynxi.c
++++ b/drivers/net/pcs/pcs-mtk-lynxi.c
+@@ -113,8 +113,9 @@ static void mtk_pcs_lynxi_get_state(struct phylink_pcs *pcs,
+ 	unsigned int bm, adv;
+ 
+ 	/* Read the BMSR and LPA */
+-	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &bm);
+-	regmap_read(mpcs->regmap, SGMSYS_PCS_ADVERTISE, &adv);
++	if (regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &bm) ||
++	    regmap_read(mpcs->regmap, SGMSYS_PCS_ADVERTISE, &adv))
++		return;
+ 
+ 	phylink_mii_c22_pcs_decode_state(state, neg_mode,
+ 					 FIELD_GET(SGMII_BMSR, bm),
 -- 
 2.55.0
 
