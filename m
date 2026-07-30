@@ -4,64 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6388C53200
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 00:15:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D165C53200
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 00:40:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rnHLUX+w7mZFPXxMD++W4xQxzEElpz3f9TIxGKtAGfM=; b=nybtvplW+VIdvagzC8jZ0OrIjq
-	ANivl0DfJjqfotSDc6yuB8MM8M/hzJ3aasRFEY0bLGmcdHb7dpIb+LxfJ6AaBfH9ozKnrmjQV9mhi
-	J+YKidnwnRo8VwJtDrSEpUkhbgez0KELJzdEY4VhU/V5Pa+oUxjnb5Kp8Ab6qjcfnmYt/wob7FGOC
-	fZzE2ptGxTT7KlTOQJxwzNNlNzbpPP4pc32Lue2KXEAc/12C5ffexD/22iOkpVc1Ijn//nbh4v8No
-	AvzE+8r+tEIbHFg2T4LXVBe3MokwBhRbdtdH+6bHgAHE8NWKKm9empu4FcC1D0/yZ5VAk29pWBNID
-	brrtGhlQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NdY0BKHWph5EOwbrDaQoxQuPkpzGFFgegddJCFpDceU=; b=Ma1jOVuYAfont3bzp60YX29c4I
+	KcV+us5NGs9J2aYHlC0z0rrm2T5/9AnFFt0OJmqcrNF5Y5wrhY3FwU8ngRRy3Gy6FDt2yT7765hIY
+	yyGMTfjamBiXL8mDKNL4iC/L2KReuZgGlf3J9dOxjTe/BgU4qrXCjnPh9rhmceWk93NZmJI57giSs
+	+1fkiZk8RB6CYgLtqZ4L1DKj4GGOXkIzqRjvCHmIyCczQJO5mNLB2us5UjIprTKjLuvh1/1TaJDgn
+	I2ahBEnUFaSYnAWHqXgPXG66Lbl2z2CEiws+Ll4pSUrrTP3TfJvN/V0+3EXkAlK25BhgPL1HrC5c1
+	Pjo/LEFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpEQz-000000099pw-06RB;
-	Thu, 30 Jul 2026 00:15:37 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1wpEpN-00000009BnH-2pi1;
+	Thu, 30 Jul 2026 00:40:49 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpEQf-000000099by-0SDr;
-	Thu, 30 Jul 2026 00:15:18 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1wpEQX-000000002gm-14zt;
-	Thu, 30 Jul 2026 00:15:09 +0000
-Date: Thu, 30 Jul 2026 01:15:06 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Alexander Couzens <lynxis@fe80.eu>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Russell King <rmk+kernel@armlinux.org.uk>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Landen Chao <Landen.Chao@mediatek.com>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net v2 5/5] net: dsa: mt7530: serialize the regmap IRQ chip
- like every other user
-Message-ID: <b28df01d04c0e50c3d44ca2f29b12260bc32072d.1785368701.git.daniel@makrotopia.org>
-References: <cover.1785368701.git.daniel@makrotopia.org>
+	id 1wpEpL-00000009Bn0-3YVR;
+	Thu, 30 Jul 2026 00:40:47 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id EFE11600AE;
+	Thu, 30 Jul 2026 00:40:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A4D811F000E9;
+	Thu, 30 Jul 2026 00:40:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1785372046;
+	bh=NdY0BKHWph5EOwbrDaQoxQuPkpzGFFgegddJCFpDceU=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=RqCczNNiZuvDEbli0Zx/NGjRSjKFFlmkFDUBAnDJ/xtP6zPyRPum56X07xjomVw1C
+	 X8gdkFQ/SOH++6iS3EWJ1Pi6WOiNk1VbbIGOIy/dc9aRTxrPJXyQQL80BH72RU9VY6
+	 7WjlnlwnVA0MFDkQdHVTyBQTh040/VHToXzM7QD0vf+TvS+mIHO8nGE/pUH0pydViW
+	 ju3E981raAN6xkb9Cl+5vV9MlVaazgG13SXc3EHGwBVJL4ISBqmRdxaRwFL9D5RS6Z
+	 QGeQBT8rqaw+LNwrMfJkLdsx1ZC2xKlOcGMPb9g39DZHO2GHV3e5PvcliQilGs2iyq
+	 f22UXX8XEPB7g==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id D0BED3926251;
+	Thu, 30 Jul 2026 00:40:11 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1785368701.git.daniel@makrotopia.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260729_171517_155205_3953793C 
-X-CRM114-Status: GOOD (  18.45  )
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net 0/3] net: dsa: mt7530: fix swallowed MDIO read errors
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <178537201040.3298470.15022630671470651266.git-patchwork-notify@kernel.org>
+Date: Thu, 30 Jul 2026 00:40:10 +0000
+References: <cover.1785213071.git.daniel@makrotopia.org>
+In-Reply-To: <cover.1785213071.git.daniel@makrotopia.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: chester.a.unal@arinc9.com, andrew@lunn.ch, olteanv@gmail.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ Landen.Chao@mediatek.com, f.fainelli@gmail.com, sean.wang@mediatek.com,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,113 +74,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The switch register regmap is created with .disable_locking = true;
-every other user in this driver calls mt7530_mutex_lock()/unlock()
-around it, which takes priv->bus->mdio_lock, since the underlying
-mt7530_regmap_read()/write() issue raw, unserialized bus->read()/
-write() MDIO transactions.
+Hello:
 
-mt7530_setup_irq() hands this same unlocked regmap straight to
-devm_regmap_add_irq_chip_fwnode(), whose threaded IRQ handler then
-calls regmap_read()/regmap_update_bits() on it without ever calling
-mt7530_mutex_lock(). An interrupt firing while another thread is
-mid-transaction on the same regmap (e.g. a paged register access, or
-an indirect PHY access) can interleave with the IRQ handler's own
-paged access and corrupt page selection on either side.
+This series was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Use struct regmap_irq_chip's handle_mask_sync hook to call
-mt7530_mutex_lock()/unlock() around the mask register write regmap-irq
-issues whenever a consumer of one of the mapped sub-IRQs enables,
-disables, requests or frees its line. This needs a per-device copy of
-mt7530_regmap_irq_chip, since devm_regmap_add_irq_chip_fwnode() keeps
-a pointer to it rather than copying it.
+On Tue, 28 Jul 2026 05:52:05 +0100 you wrote:
+> While working on a register access cleanup for the mt7530 driver, the
+> Sashiko AI reviewers flagged long-standing error handling gaps in the
+> driver's read paths [1].
+> 
+> The MDIO regmap backend truncates negative bus->read() errnos into u16
+> register halves and returns success, handing garbage data to callers
+> and to read-modify-write cycles which then write it back to the switch.
+> 
+> [...]
 
-handle_pre_irq/handle_post_irq, which would additionally cover the
-status read and ack write the threaded handler does directly, bracket
-the whole handler including its handle_nested_irq() calls. Lockdep
-caught this on hardware: those calls reach phy_interrupt() for the
-per-port PHY IRQ lines mapped through this chip, which takes
-phydev->lock, while phy_attach_direct() and this driver's own indirect
-PHY access already establish the opposite order (phydev->lock, then
-priv->bus->mdio_lock) elsewhere. Using them here would close that
-cycle, so they are not used.
+Here is the summary with links:
+  - [net,1/3] net: dsa: mt7530: check bus->read() errors in the MDIO regmap backend
+    https://git.kernel.org/netdev/net/c/b4ce102b2cd8
+  - [net,2/3] net: dsa: mt7530: error out on failed reads in ATC/VTCR command polling
+    https://git.kernel.org/netdev/net/c/ed9adac35b8f
+  - [net,3/3] net: dsa: mt7530: error out on failed reads in MT7531 PHY polling
+    https://git.kernel.org/netdev/net/c/77a9ebe8818c
 
-regmap_irq_sync_unlock() also has its own init_ack_masked path, used
-by this chip, which unconditionally does its own regmap_write() to ack
-currently-masked IRQs; that path has no per-driver hook. Together with
-the threaded handler's own status read and ack write, these stay
-unprotected -- a narrower, harder-to-hit gap than the recurring mask
-sync above -- and will be closed once the switch regmap moves to
-regmap's own locking in the driver-wide register access cleanup.
-
-Fixes: 254f6b272e3b ("dsa: mt7530: Utilize REGMAP_IRQ for interrupt handling")
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
-v2: new patch
-
- drivers/net/dsa/mt7530.c | 26 +++++++++++++++++++++++++-
- 1 file changed, 25 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 29b8b28e8d2c..575eb90ce3f0 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2303,6 +2303,21 @@ static const struct regmap_irq mt7530_irqs[] = {
- 	REGMAP_IRQ_REG_LINE(31, 32), /* ACL */
- };
- 
-+/* Serialize regmap-irq's mask sync like every other regmap user */
-+static int mt7530_irq_mask_sync(int index, unsigned int mask_buf_def,
-+				unsigned int mask_buf, void *irq_drv_data)
-+{
-+	struct mt7530_priv *priv = irq_drv_data;
-+	int ret;
-+
-+	mt7530_mutex_lock(priv);
-+	ret = regmap_update_bits(priv->regmap, MT7530_SYS_INT_EN,
-+				 mask_buf_def, ~mask_buf);
-+	mt7530_mutex_unlock(priv);
-+
-+	return ret;
-+}
-+
- static const struct regmap_irq_chip mt7530_regmap_irq_chip = {
- 	.name = KBUILD_MODNAME,
- 	.status_base = MT7530_SYS_INT_STS,
-@@ -2312,12 +2327,14 @@ static const struct regmap_irq_chip mt7530_regmap_irq_chip = {
- 	.irqs = mt7530_irqs,
- 	.num_irqs = ARRAY_SIZE(mt7530_irqs),
- 	.num_regs = 1,
-+	.handle_mask_sync = mt7530_irq_mask_sync,
- };
- 
- static int
- mt7530_setup_irq(struct mt7530_priv *priv)
- {
- 	struct regmap_irq_chip_data *irq_data;
-+	struct regmap_irq_chip *chip;
- 	struct device *dev = priv->dev;
- 	struct device_node *np = dev->of_node;
- 	int irq, ret;
-@@ -2337,10 +2354,17 @@ mt7530_setup_irq(struct mt7530_priv *priv)
- 	if (priv->id == ID_MT7530 || priv->id == ID_MT7621)
- 		mt7530_set(priv, MT7530_TOP_SIG_CTRL, TOP_SIG_CTRL_NORMAL);
- 
-+	chip = devm_kmemdup(dev, &mt7530_regmap_irq_chip, sizeof(*chip),
-+			    GFP_KERNEL);
-+	if (!chip)
-+		return -ENOMEM;
-+
-+	chip->irq_drv_data = priv;
-+
- 	ret = devm_regmap_add_irq_chip_fwnode(dev, dev_fwnode(dev),
- 					      priv->regmap, irq,
- 					      IRQF_ONESHOT,
--					      0, &mt7530_regmap_irq_chip,
-+					      0, chip,
- 					      &irq_data);
- 	if (ret)
- 		return ret;
+You are awesome, thank you!
 -- 
-2.55.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
