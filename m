@@ -4,97 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18E76C531D0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 08:05:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8619BC54FDF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 08:23:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=GFIwwv1ZKlwIh2R3SG739aEFifVFKq7ZdG19KNvDtIc=; b=oXXdPKv4vjv3TF6VwLIJGNsVXR
-	uaP6nielWsKa5cIPlOhhipXvQFnRV8u+PLTKtQ286ClRKK7Lfo2RmNUxkiL2O/HvydKqmdKIK+357
-	8p1k4B0RQWtcTeYElw3vuYWalBn7P3fx7pkKB8ASSpFVrJabzOkF6Aamt9+9x++P1utZG9f+QY/yN
-	zXPZJ2wEixuYsO3XrowB9szDPA7ZRQZcMPCZAlfLycg75PV+ftuleyDwPHHwtyRP13gKw2GkjiRPi
-	0dm1m9Y5lcPK2Tzf92RpaSEPx0vQbO5UCB9FT/uPtzdYOoeg9iCmcBBn8oEh4NY17yINZHLkOhyah
-	f7/ZRhWw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9FGPMfL7PH9eP+Zge0qWj9bUTToHMTTfVsVr7USZH/s=; b=rVWUBSId44QyUH9v6VURFeAJ7v
+	JF4u6u+v94ytZFZGAm72RhPsbHKuz/tlvHsSxMhXBQRIFicMY7cBtExHuJdU54jOW87afWFbK/JTp
+	9urg0zCvTd1kx170vwiJM7WtFyZV+XrajCi7qjOArrwL5bMT35ZzNjV2buJoKQ4dOgTvv+vfTf/77
+	And67MM2FoRnw8VjH2wl4VveJ4Fw8VMMMY/boP+/Bv/Y8n4A2udKMKo/Tcp8I4HPHSi0xdaGf4tBa
+	zSbChPxaZ8o9dDX68G06Z6w3niUTiFAWE4pF42pRRwkuc9WsWVU+gQh2ioJm70ve4Cc/DcPGtvhkf
+	dDk6poVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpLlH-00000009nQb-1gb4;
-	Thu, 30 Jul 2026 08:05:04 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1wpM30-00000009qW6-1o4z;
+	Thu, 30 Jul 2026 08:23:22 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpLlE-00000009nOI-0pCa
-	for linux-mediatek@lists.infradead.org;
-	Thu, 30 Jul 2026 08:05:02 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-4798bea72f9so1220081f8f.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 30 Jul 2026 01:04:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1785398697; x=1786003497; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=GFIwwv1ZKlwIh2R3SG739aEFifVFKq7ZdG19KNvDtIc=;
-        b=AY/VBU9Jpzp4JDZL/K8dsHIdqSt+nztYk0oryaosD0Bzb/NTNAX0+VZTqFkJZfdSib
-         060SNTw45dISRgbkNOo2nh5IaWoFO/pY667YsiiRdeFpLbY5r5Jk/X2d55uRD3oj1iFo
-         CM5A2xhpnKkm7BMhTmCBc+TDxGohWbgt9sZuEqdBs+WdbVoJZq085oMbdFjFMTz5LWlO
-         eI1oRYwySwO5JJvR6vmvWouFk0iGlSCODgUEN9ru/x64alJ6ApOJFO3TAliZFJ9E8lKj
-         rIfaCR2TZ4Fl89tv/xdxzQLPsZvFHPU1iqsR65gwPrBFW8H2dOM8nJN/2OBvPLXeCI2m
-         L/PA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785398697; x=1786003497;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=GFIwwv1ZKlwIh2R3SG739aEFifVFKq7ZdG19KNvDtIc=;
-        b=JVsrhXKf2BFAHSwO2NERx5j1kDiYtF9XmEP7wtmMpVa9UlApcjJkPz87/PHOFhZUZT
-         KALWI4SiLCVWvDi1t3FL6h+nqeJTGvgjkhrSXFwdnESTbIHjSwF+qXyy6OyAVqwNsT9z
-         5X+8vcaYsR8Y0+L2b8Bb0v+jw7SakQCX5AwgYm5jhEYzIYzPJTnRBCEByYIUWvvXNbeo
-         sAExfsF+eeRG1sIvnS5NJRtqo8+QkewncLcAt1rpOr6sz22HN4VLuy1KtYLLnQg1IWzF
-         NevEhu0vNXF8/ySqMI2HJNncrKEHWPNurgERoJROtMEZ+YEwkUA5gOnmFsQpgpBq44Rs
-         DjXw==
-X-Forwarded-Encrypted: i=1; AHgh+RqEYw8wl993o/qND9B6XQCKK3qNg2i+UdI06sR5v3wNMc+2WKtqc39MnvzFdkcOZ6nhASIlJ0QmxHZk13Nmbg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwokQ4I9AX9TdRp5DO8VLqyTNrLQfqlEOfqzACKlb09lpIE1/Zo
-	krSaMKdarpKsZKFV1eurHHvzPfqA8/WCA2f0PCJhN2pv/9xZdM0mL9UECQ45IrgaC5Q=
-X-Gm-Gg: AR+sD13vZHIuFeUlvc4f7zKJYPaVlIy9ZuPmURsZe3WkIoonRMAKgfb+y2RpGywQ4Qq
-	94a4w1qpG/y0olk6l9Avs+r5ZJBsMConUUzBNjF1JZ2MFcWnWcL/fYIiNO/HkHwTnNsjciWPgXx
-	1N85EHCRuohhqsOMJSd/pZXo5MckqwwwwUUxAk9NHM7IHMwbYgPoh097BVzQ9Y1SKQt+PpHbSle
-	gLLOe20SSOi+sehrA9R9IUSORyfjV7serhiOIP4+lIw6kJN+RrHwvHN6lmcaU+TA3NRr5JGiaga
-	O+NMNFS0Sbjko4zg/Zg7hgoF4MVqmXElxzXwp1TahNm05JKMKR6LDScaZBDdipJMzRz+ZDS4Eqr
-	yuDZrXxfh9t8+6tLpVGqbDhLepVW6WzRheKBY4hYvx2lIrKg7CgG0S9NJGSimORRxb5Igo0MUm1
-	DpXXBI+2XC6gCYq8+mat/aMBxefIvMyXADLzs1hTwjpZJoDXB6sw27riVusT+csWAzPdbfqIB4A
-	vGAWx7mpR/K2zlsQWj3GTg86vZL+R1FboZNT+KJgf9qIFFocjskbvkB4KU=
-X-Received: by 2002:a05:6000:400b:b0:47f:8465:2712 with SMTP id ffacd0b85a97d-47fc8213000mr2091889f8f.56.1785398697420;
-        Thu, 30 Jul 2026 01:04:57 -0700 (PDT)
-Received: from [127.0.0.1] (host-212-171-227-71.pool212171.interbusiness.it. [212.171.227.71])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-47fc877dafasm3797373f8f.0.2026.07.30.01.04.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Jul 2026 01:04:56 -0700 (PDT)
-From: Carlo Caione <ccaione@baylibre.com>
-Date: Thu, 30 Jul 2026 10:04:41 +0200
-Subject: [PATCH v2] arm64: dts: mediatek: mt8390-genio-common: add boot
- phase tags
+	id 1wpM2x-00000009qTU-12QU;
+	Thu, 30 Jul 2026 08:23:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1785399796;
+	bh=nGG9LtH3M3n5b0i0af5jANNTuqeyC/oMM6qwL7FI4is=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ZW6guvuf0Pa3TUqsqHD9xIFIOpIlto1dDyerDBo6lTaEhwwdvi3LD0+5lvtlreb8M
+	 VIAoCsoxmGsXWft6YSdWbbH6PaZNyik2FW7oRay0RyF+E/LPUqBxTHtjVud2Lyn3ly
+	 euUSLv12apRjBS4xsG3usTiSwDSaJh0zb7fdu2dKdzk64sB9D7IPUiT9L3PYE0EOa6
+	 aVCy2fMLpKnCJaBeM0fjITlZCtR46VEQpIgXok9m64rxQny0Xl7lC3dRtinz3CSnPx
+	 E+dKdt5ZnKT1xHshwWY55CWE0mk/KLYMpyGHCnWGuwRk95lu2RxztStHiu8KaCVeSQ
+	 JIyuAU1eP7FTg==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 555DE17E001F;
+	Thu, 30 Jul 2026 10:23:15 +0200 (CEST)
+Message-ID: <36f2775a-d332-4913-8e9e-ca0429c3f713@collabora.com>
+Date: Thu, 30 Jul 2026 10:23:14 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260730-ccaione-upstream-mt8390-bootph-v2-1-82f67feadf7a@baylibre.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/42OQQ6CMBBFr0K6dgwdK1BX3sOwaMsgNUJJW4iEc
- HcLXsDlS17++ysL5C0FdstW5mm2wbohAZ4yZjo1PAlsk5hhjkVeIgdjVFIIpjFET6qHPlYXmYN
- 2Lo4dkCoVCiFQomFpZPTU2s8ReNQ/DpN+kYn76m50NkTnl+PBzHfv79jMgcO1EMhl1cpSNnetl
- rfVns7G9azetu0L93RbKeEAAAA=
-X-Change-ID: 20260721-ccaione-upstream-mt8390-bootph-ea7a2444292c
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- David Lechner <dlechner@baylibre.com>, 
- Julien Stephan <jstephan@baylibre.com>, Carlo Caione <ccaione@baylibre.com>
-X-Mailer: b4 0.15.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 0/5] powervr: MT8173 GPU support
+To: Chen-Yu Tsai <wenst@chromium.org>, Brian Masney <bmasney@redhat.com>
+Cc: Stephen Boyd <sboyd@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Alessio Belle <alessio.belle@imgtec.com>,
+ Luigi Santivetti <luigi.santivetti@imgtec.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ imagination@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, Icenowy Zheng <zhengxingda@iscas.ac.cn>,
+ YoungJoon Lee <getfeus@gmail.com>
+References: <20260728091804.382753-1-wenst@chromium.org>
+ <amiqKRkFItYwD6oL@redhat.com>
+ <CAGb2v64zUO-azpTuei6LCypad2noGFbg+EmaBC1iidoZ2stQzw@mail.gmail.com>
+ <c1048eae-72c5-4e2e-ac49-25e2c4297018@collabora.com>
+ <CAGXv+5EgGYFVt4TJCysQgRqA1J5=Qz9c0oWY5YTxgc5PnNC_AQ@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <CAGXv+5EgGYFVt4TJCysQgRqA1J5=Qz9c0oWY5YTxgc5PnNC_AQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260730_010500_274640_C17C8AF0 
-X-CRM114-Status: GOOD (  11.58  )
+X-CRM114-CacheID: sfid-20260730_012319_450287_5A531F13 
+X-CRM114-Status: GOOD (  22.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,137 +87,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-U-Boot SPL runs after the platform DDR loader has initialized DRAM on
-the Genio 510 and Genio 700 EVKs. It needs the debug UART and eMMC
-controller, together with their clock, syscon, pinctrl, interrupt and
-watchdog providers, to load the firmware FIT.
+On 7/30/26 06:51, Chen-Yu Tsai wrote:
+> On Tue, Jul 28, 2026 at 10:33 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> On 7/28/26 15:13, Chen-Yu Tsai wrote:
+>>> On Tue, Jul 28, 2026 at 9:10 PM Brian Masney <bmasney@redhat.com> wrote:
+>>>>
+>>>> Hi Chen-Yu,
+>>>>
+>>>> On Tue, Jul 28, 2026 at 05:17:58PM +0800, Chen-Yu Tsai wrote:
+>>>>> Hi everyone,
+>>>>>
+>>>>> This is v4 of my MT8173 PowerVR GPU support series.
+>>>>>
+>>>>> This time around Mesa was ready for basic testing, using both vulkanmark
+>>>>> and glmark2-es2-drm (with Zink). Details below.
+>>>>>
+>>>>> Changes since v3 (all in the clk driver patch):
+>>>>> - Changed pm_runtime_put() to pm_runtime_put_sync()
+>>>>> - Added missing of_node_put() in remove function
+>>>>>
+>>>>> Changes since v2 (all in the clk driver patch):
+>>>>> - Made COMMON_CLK_MT8173_MFGTOP depend on PM
+>>>>>     - Needed since the driver implements PM domains using the generic PM
+>>>>>       domain library, which also depends on PM
+>>>>>     - Fixes build breakage (kernel test robot)
+>>>>> - Fixed "RST_DELAY_CNT" name (Brian)
+>>>>> - Dropped unused mfg_desc (Brian)
+>>>>> - Added check of clk_prepare_enable()'s return value in
+>>>>>     clk_mt8173_mfgtop_power_on() (Brian)
+>>>>> - Saved error value for return in IS_ERR(data->clk_26m) branch
+>>>>>     (Dan Carpenter / kernel test robot w/ smatch)
+>>>>>
+>>>>> Changes since v1:
+>>>>> - Adapted to changed DT bindings
+>>>>> - Dropped driver change
+>>>>> - Use same power domain for "a" and "b" GPU power domains
+>>>>>
+>>>>>
+>>>>> This series enables the PowerVR GPU found in the MT8173 SoC, found in
+>>>>> some Chromebooks.
+>>>>
+>>>> I'm making a pull for Stephen for the clk changes. Should patches 1,2,4
+>>>> go through the clk tree? Patches 3,5 go through the DRM tree?
+>>>
+>>> Only patches 1 and 2 should go through the clock tree.
+>>>
+>>> Patch 3, 4, 5 can all go through the soc tree if Angelo wants to pick up
+>>> DT binding patches. Otherwise I can push patch 3 through drm-misc.
+>>>
+>>
+>> Not sure if I can really take the DRM bindings patch through soc.
+>>
+>> I will take the devicetree ones exactly right now, even though it's going to
+>> give warnings.
+> 
+> Apologies for missing this, but the first DT patch depends on the clk DT
+> bindings patch for the clk ID macros. This is causing build errors in
+> linux-next right now.
+> 
+> Not sure how we can fix this right now.
+> 
+> Brian, would it be possible for you to split out that patch into a
+> separate immutable branch for Angelo to merge?
+> 
+> Otherwise Angelo might need to drop the DT patches until the next cycle.
+> 
+> 
+Yeah, that's so bad.
+I'd be happy to be able to resolve this, but it's too late on my side.
 
-Mark the nodes consumed by the current SPL configuration with
-'bootph-pre-ram' so that the canonical devicetree carries the boot-phase
-information and bootloaders do not need local overrides.
+I should've checked the DT patches more carefully, my bad: I got a bit too excited
+to finally see this PowerVR stuff working on MT8173 and going upstream.
 
-Signed-off-by: Carlo Caione <ccaione@baylibre.com>
----
-Add the boot-phase annotations needed by U-Boot SPL on the MediaTek
-Genio 510 and Genio 700 EVKs. Both boards use the same pre-RAM device
-dependency chain, so keep the annotations in their shared
-mt8390-genio-common.dtsi.
----
-Changes in v2:
-- Move the tags from the Genio 700 board DTS to
-  mt8390-genio-common.dtsi so they are shared with Genio 510.
-- Update the subject and description to cover both EVKs.
-- Link to v1: https://patch.msgid.link/20260721-ccaione-upstream-mt8390-bootph-v1-1-5642198f979d@baylibre.com
----
- .../boot/dts/mediatek/mt8390-genio-common.dtsi     | 84 ++++++++++++++++++++++
- 1 file changed, 84 insertions(+)
+Sadly, I have to drop the devicetree patches :-(
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-index b0c97930a0e6..6172160ea9f5 100644
---- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-@@ -20,6 +20,10 @@
- #include <dt-bindings/usb/pd.h>
- 
- / {
-+	memory@40000000 {
-+		bootph-pre-ram;
-+	};
-+
- 	aliases {
- 		dsi0 = &disp_dsi0;
- 		ethernet0 = &eth;
-@@ -1586,3 +1590,83 @@ &xhci2 {
- 	vbus-supply = <&sdio_fixed_3v3>; /* wifi_3v3 */
- 	status = "okay";
- };
-+
-+&apmixedsys {
-+	bootph-pre-ram;
-+};
-+
-+&clk26m {
-+	bootph-pre-ram;
-+};
-+
-+&gic {
-+	bootph-pre-ram;
-+};
-+
-+&infracfg_ao {
-+	bootph-pre-ram;
-+};
-+
-+&mmc0 {
-+	bootph-pre-ram;
-+};
-+
-+&mmc0_default_pins {
-+	bootph-pre-ram;
-+
-+	pins-clk {
-+		bootph-pre-ram;
-+	};
-+
-+	pins-cmd-dat {
-+		bootph-pre-ram;
-+	};
-+
-+	pins-rst {
-+		bootph-pre-ram;
-+	};
-+};
-+
-+&mmc0_uhs_pins {
-+	bootph-pre-ram;
-+
-+	pins-clk {
-+		bootph-pre-ram;
-+	};
-+
-+	pins-cmd-dat {
-+		bootph-pre-ram;
-+	};
-+
-+	pins-ds {
-+		bootph-pre-ram;
-+	};
-+
-+	pins-rst {
-+		bootph-pre-ram;
-+	};
-+};
-+
-+&pio {
-+	bootph-pre-ram;
-+};
-+
-+&topckgen {
-+	bootph-pre-ram;
-+};
-+
-+&uart0 {
-+	bootph-pre-ram;
-+};
-+
-+&uart0_pins {
-+	bootph-pre-ram;
-+
-+	pins {
-+		bootph-pre-ram;
-+	};
-+};
-+
-+&watchdog {
-+	bootph-pre-ram;
-+};
-
----
-base-commit: 11028ab62899e4191e074ee364c712b77823a9c4
-change-id: 20260721-ccaione-upstream-mt8390-bootph-ea7a2444292c
-
-Best regards,
---  
-Carlo Caione <ccaione@baylibre.com>
-
+Cheers,
+Angelo
 
