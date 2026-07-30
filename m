@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5D46C5516E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 20:09:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CABEBC5516D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Jul 2026 20:10:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YoageaeHuW+vLD+n3J3BgniEcl+294LoQ8nwrWdQTmM=; b=P0pgq1cAZFE9bhHxpPrqLzLe80
-	+r3j5kBRrPMyzVE7DASV4bRfdHa+8ajf1TX/zqsaV2Z1D898Gzzvx0VfMnnD4UX/eZouF129o2DJB
-	QGASwn/htfhMOCkk4WqEOC8E8Ua5l0eWqA1BNCd6NvP7oVjQ30mzYMFga9sPbinhZKAwQzcKdCHVh
-	PgZInOPKhulqHCf+X6Bx/cwcX4eIl/TIAhJMUbmpFtjRtHiULVI+MIhw4uzvYkQgQoY4BqwV4uSoO
-	whl0+JCiokdB9sIiebx57mqZx1EalHZ/JQyvuyWg1Eeua+vKir+pR8xw0ccbMilmpRaMHNKyl6s24
-	AIaLF+EA==;
+	bh=sokq5D7tI+T6oijSo/RXj4RLHZm270EHMfSXqBxtpdk=; b=3QzGcDgqQjK9S3vNou7xJ8tOY1
+	rRY5YXkwt5QtZ41rqAaJkZlRdC3+I9qfBdrLoXCYx7ipgZ4md+BohDQbGQr+0TDNrPP5H+MYqwERr
+	gP5vbdONO18a9ZCUbuq6eS4iokoYKPH3r2EXBlL6NCkD1JnnO31TnnCt0h+/ViMp/OV/5gOvXX/FV
+	qS601HczMp2YL1wCFUMVBqbgDmmnIvQRBGYSsAQj/fosY30yPQcdXXvKxiw6rbHENkzoOrLpnG3Ce
+	ouHAMrESn/mDNXvo9VO7lMkETabnuC55qPdPVEwrRhvn3OOL8m8FxVTZxBeymdjiEle1iiB+6dKlm
+	pWdwqUeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpX4N-0000000BIk2-1m4o;
-	Thu, 30 Jul 2026 20:09:31 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wpX5V-0000000BIuo-31uL;
+	Thu, 30 Jul 2026 20:10:41 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wpX4K-0000000BIjU-0KJr;
-	Thu, 30 Jul 2026 20:09:29 +0000
+	id 1wpX5T-0000000BIuK-2Z5c;
+	Thu, 30 Jul 2026 20:10:40 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 33CEF43C0B;
-	Thu, 30 Jul 2026 20:09:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A3511F00A3A;
-	Thu, 30 Jul 2026 20:09:25 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 9550C6001D;
+	Thu, 30 Jul 2026 20:10:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD9941F000E9;
+	Thu, 30 Jul 2026 20:10:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785442166;
-	bh=YoageaeHuW+vLD+n3J3BgniEcl+294LoQ8nwrWdQTmM=;
+	s=k20260515; t=1785442238;
+	bh=sokq5D7tI+T6oijSo/RXj4RLHZm270EHMfSXqBxtpdk=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=m9tJgX3s2+fJtTOhhzSUFdSf87f6HjmB6S0nyzk6AawrnI2k3ZI7Ayp4PPvoIHtcB
-	 x/nuxXEsuEtzHawo9hnIacD46ErBp0Ce8aOJMYeeZa07Sc6imTMJrJT4AZaarPmd3U
-	 3iEVDGLGDiUtOZnb1OB6kHky6CS03EbgSp2Wv6uh0VpiXc94wEQpq3xXoEY3KAdhL/
-	 +xaTi+pCBaTEB8me4zzBzMj7/WvYt/OoK1/dL2hL0JPZ8CNQCn5FFCD2Sgp83hJoRA
-	 9mg7rEbTuCxYM0onWdSQSwyWXIC9Sdc+XCXq08APafCGENqjiwOMCN189/C96EUqmQ
-	 FKQZbf/MUCEPg==
-Date: Thu, 30 Jul 2026 13:09:24 -0700
+	b=GKjuKMT2OGLzF6EwLDZzZiZlCPDNuXzonsXiQQBADZ7Zg9je+xB6t/802/s45ZN/J
+	 2QYABUoM2JDYkus4bNYaXhTm8uR5r+wfpW3mdbDA+q9G3prX4isOKIrl+YhtyNmBwI
+	 EuNXdVxHqxhWvaH3pIzVvqGgLy3gbPuG6H+a0soVJ1gFDH+CpaexXOCTwYOB09Fa0G
+	 GR9AKUDAq8O0TfPWZD3IoUhzP9ivrdM9BduBIXqcZvFQU0G+aY6nscgC403AKpLaHV
+	 qk4+sNOrCZT4ST1V+1Kelql6IBYWny3kiVCYZbtL+5uvq6icjkNGP4g/cg6YRydkub
+	 KIOWdhidtPh0A==
+Date: Thu, 30 Jul 2026 13:10:37 -0700
 From: Jakub Kicinski <kuba@kernel.org>
 To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Andrew
- Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Vladimir
- Oltean <olteanv@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "Chester A. Unal" <chester.a.unal@arinc9.com>, Daniel Golle
- <daniel@makrotopia.org>, Heiner Kallweit <hkallweit1@gmail.com>, Russell
- King <linux@armlinux.org.uk>, Simon Horman <horms@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, mfd@lists.linux.dev, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH net-next v19 00/10] net: dsa: Add Airoha AN8855 support
-Message-ID: <20260730130924.1f99801a@kernel.org>
-In-Reply-To: <20260728154846.1828945-1-ansuelsmth@gmail.com>
-References: <20260728154846.1828945-1-ansuelsmth@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, Daniel Golle <daniel@makrotopia.org>, Qingfang Deng
+ <dqfext@gmail.com>, SkyLake Huang <SkyLake.Huang@mediatek.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next v2 5/6] net: phy: mediatek: add calibration
+ logic for AN7581
+Message-ID: <20260730131037.3d7c4eaa@kernel.org>
+In-Reply-To: <20260724190811.198339-6-ansuelsmth@gmail.com>
+References: <20260724190811.198339-1-ansuelsmth@gmail.com>
+	<20260724190811.198339-6-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
@@ -77,13 +76,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 28 Jul 2026 17:48:27 +0200 Christian Marangi wrote:
-> This series add the initial support for the Airoha AN8855 Switch.
+On Fri, 24 Jul 2026 21:08:08 +0200 Christian Marangi wrote:
+> Airoha AN7581 require dedicated calibration and specific tuneup to make
+> the Ethernet port work on specific HW PCB layout.
+> 
+> The calibration process is similar to Mediatek PHY but Airoha PHY use
+> Software calibration process instead of making use of EFUSE.
+> 
+> It does also require some complex table for TX Amp compensation and
+> multiple register settings for EEE and 10/100M to correctly work.
+> Also the PHY apply a different TX Amp compensation table based on the
+> SoC PDIDR version. Such version info is stored in the SCU SoC registers.
+> 
+> Add module version as suggested by Airoha to identify the calibration logic
+> with a specific version.
 
-This series did not apply at the time of posting.
+Build warning here:
 
-Looks like Sashiko/Gemini applied and reviewed it against net/main
-so you should check if it has anything worth addressing to say:
+../drivers/net/phy/mediatek/airoha-ge-soc.c:1508:3: warning: variable 'shared' is uninitialized when used here [-Wuninitialized]
+ 1508 |                 shared->phydev_p0 = phydev;
+      |                 ^~~~~~
 
-https://sashiko.dev/#/patchset/20260728154846.1828945-8-ansuelsmth@gmail.com
+Sashiko/Gemini has some other review comments so please check before
+reposting:
+https://sashiko.dev/#/patchset/20260724190811.198339-6-ansuelsmth@gmail.com
 
