@@ -4,98 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB277C55167
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2026 07:12:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A445BC55167
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jul 2026 08:14:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=p/zSUWBhbluccRh5Y+3PaEaBGuhqo6tGCiQ6G7WtFxk=; b=spjaO+qxU2E/CCbARbgHWTqtEE
-	8oO8BtH0g5F57P5Hp2f61/btagQS9Rbe1XFF2dg0lxMKiYbhSjbHyJyiZSD+cuWHVPH2WeBk5gpRU
-	wkGDqEt6kvUJE4ox8eTD7sorm7PCrfvYlLj9+d3g2Tmtz3htFYyS/P7KsnfzdwBnquHO/AoV6BLEG
-	pHfmhBRe3OwuQ4w9lkFg6XCxkmIkYutVOh1I34gDvRVtHKrOMr8aU++5p+4kB8buVqPCa9LlbcK89
-	6sume5b2QkHiXTfv0wcTPg4dMmpcc7mzr+wK4u5Nn+WK7nHLwJCDegN6g5idoupG+hWOqIDojW6wc
-	5N+DaBGQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VewIb1jpFD9+Ly+Da3oQkWDfjfUDWHa7vRLH9Q2aIRk=; b=CKbF/AsTK0/bw6rUgcljsd+gzL
+	nosFbuxD6kNitR6+77oOIanu9yKSc/b4V2nEkyU9WtiBA4TavOvWcv3yPqdfqiyu5ZErq0ZzLV30S
+	3DqpKirMXWkd7+FnMxpyD0ousgSaXcsztF/NcE3vVrtEjvmklR9bRtdcYRYAow+jgYURq3IE7QWq9
+	nphbA2s/+fbbn6hBsX7MSZm7Jq8S0KuSFRisf/umWnLNUGfJY21qtLAYRyHawnT8dI0NJEN+3Qk9d
+	DQk7whBnPvnxoCFJqDny3sfXAoihponQEsE0kcKiZ2CPn4PCAjDzm+YDheM7rgJ9zpkbr3tUJ9PjS
+	NHoW0Pjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wphPX-0000000Bvy8-1pKR;
-	Fri, 31 Jul 2026 07:12:03 +0000
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+	id 1wpiNa-0000000C25Y-3bAX;
+	Fri, 31 Jul 2026 08:14:06 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wphPU-0000000BvxO-46Cp
+	id 1wpiNW-0000000C233-0qjc
 	for linux-mediatek@lists.infradead.org;
-	Fri, 31 Jul 2026 07:12:02 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id 98e67ed59e1d1-38e3617ba36so749109a91.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 31 Jul 2026 00:11:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785481919; x=1786086719; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=p/zSUWBhbluccRh5Y+3PaEaBGuhqo6tGCiQ6G7WtFxk=;
-        b=jwBTvpO0XG0DiJPJVYSmokIOkaaOITY/Xd91xMzsJqPtClIAAC9SrIZVXu4cwr6BNH
-         Q6/76Hn1dlU6sc1cHqcha4mk6YseiWGIJoO7Ru5VecLKS/Xp172Xp1DVlqUbZC65Hkj4
-         SfFj2x3/dzNm8nIAQpi0V1+hbnUkglo7quyoKSlY1mMkLeDKvvTMMRdKBIlXzo8FKnXg
-         REHYsm3YbbQ3DPb4h4hOwXTb7hNS5tCV10GqI9QZE3NHZYXOzlw2ask+ePGz+FCLXB3I
-         JJy0ybfEhAlgS4+xSdDxCI19BL8IAma7uzeKBBmDfWOu7ntPlp0BECKAQ/hUR8+Smbiz
-         zCHw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785481919; x=1786086719;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=p/zSUWBhbluccRh5Y+3PaEaBGuhqo6tGCiQ6G7WtFxk=;
-        b=lLLUaQ5hZU0btgPi8W1nDvB34lhMsGLvpwrJHmTxgNs7gwyNbnqMAXnVi4EZL0JD2G
-         Fdb7baUhEiqqFKgBuYe+ixvUR8Vk+i/An7uhSRb9KsL1UsQ+PRNWRUUvTd9ylZKk1vbl
-         uxpuh8u4GkdOJemOOp64C0zCXAWKfcFM13L5LzheyVioi8aaxSswQLZk7q4ajtq+2VkT
-         LMxppxIHRmtb4XIlhMcZ0/FOHSuiA2yHu7grA6ESCg7LrBS7noumPsmMjIvC0pjLXaxE
-         64DOVvrxY9706w9DawELkl4xDFpJnOA/Mt21W5+uqUWRF5L9TENk7oQNRhj9vZ9gwvll
-         vwJQ==
-X-Forwarded-Encrypted: i=1; AHgh+Rr1x3LFRrk1zRvOB/3XkQD9E02PuQZcHfAt//WmOwsdXQ+OFIT1hAAIMyhkPpiqXRfZRL0a4giP/QJV6OSPog==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxDyN5WD70ylayfFO7IiJ/qKpKVY9ECEvmpHvOV3rK1OnmxjMRC
-	Ou//WVUEFOFGIMpabATO+lXQHs4LvqHEG6d15itVwQKdoqa/5RMWm9A7
-X-Gm-Gg: AR+sD13kBqQauNTGV9MwP51SKEU82h6vqrM2lEECwzHTVf2kFSX19+Zz+z6tho1rove
-	0qCHVdHPaTBzzwvcoEjzLw8U9Admxp35yoJaDat7Yqktj+wBbNvke8sORwiZG8tIILL2RKnrABa
-	6RY3w6wITEJViX4EbL/tOIsCiVr9NH4ao/euis1ORNZsS5ZR5V6vfIAxY9K/NyGr/GN9VdP4kGW
-	nduX7s/wbiY0MWY2qpiNcVFeZijVc8RILRf7xPYTmw1XRFkJOjYtKqlumPzYpEoyiHBMe4IEi/C
-	YXUM9JzbmdEqJk14LkQUC1LtoARsnae51m2ZU0PKK5mGV6ehmUW2cky+gStxuLX7SsYiEV370Yb
-	qREnNmqB6snJv+qcYlQa7Djm0Va5Y9x4f5NWIuK0b6VvEFzkT99N/eqJGqA7WJw5SBmSyX8yG94
-	Wo3ZfQxX2XL6v4Fn5i0mURCiCIna7fku1EO/SKxur5qzdUlOCE6MzjroIeBc7Cjgz4pM34/5ySe
-	zK+ZeqzJ1Wz6DD5aoh1CQ2mHhQ=
-X-Received: by 2002:a05:6a20:4308:b0:3c3:a1ed:3c36 with SMTP id adf61e73a8af0-3c91b266a96mr892351637.24.1785481918740;
-        Fri, 31 Jul 2026 00:11:58 -0700 (PDT)
-Received: from KRHW1CJW23.bytedance.net ([203.208.189.11])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3153dd4f0f0sm2308226eec.2.2026.07.31.00.11.52
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 31 Jul 2026 00:11:58 -0700 (PDT)
-From: Zhao Li <enderaoelyther@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>
-Cc: Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	JB Tsai <jb.tsai@mediatek.com>,
-	Leon Yen <leon.yen@mediatek.com>,
-	Quan Zhou <quan.zhou@mediatek.com>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
-	Deren Wu <deren.wu@mediatek.com>,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	stable@vger.kernel.org
-Subject: [PATCH] wifi: mt76: mt7921: validate CLC indices
-Date: Fri, 31 Jul 2026 15:11:48 +0800
-Message-ID: <20260731071148.74484-1-enderaoelyther@gmail.com>
-X-Mailer: git-send-email 2.50.1
+	Fri, 31 Jul 2026 08:14:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=VewIb1jpFD9+Ly+Da3oQkWDfjfUDWHa7vRLH9Q2aIRk=; b=E6oDMrySWWmFAzJQWyqOBf4VUC
+	CcLfK2HYw9bobrarxGWp3oJYA8eEJQbXeEXn8cPRhJH86sYWJwOHs730c4McqMC1kXYEnOCiiKGKr
+	Kj22o8oQjcko0loKuDAwRIHRflCHOc45ZkkW+nd0d3zNFwYfEmccRjKkq3Y3+TIHUnWI=;
+Received: from p54a43140.dip0.t-ipconnect.de ([84.164.49.64] helo=nf.local)
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.96)
+	(envelope-from <nbd@nbd.name>)
+	id 1wpiNI-009ZtY-1J;
+	Fri, 31 Jul 2026 10:13:48 +0200
+Message-ID: <a7681525-b5fd-4a34-8ba5-99e79d77a694@nbd.name>
+Date: Fri, 31 Jul 2026 10:13:47 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] wifi: mt76: pass LED define via ccflags-y in driver
+ submodules
+To: "Mateus B. Cassiano" <mbc07@live.com>
+Cc: lorenzo@kernel.org, ryder.lee@mediatek.com, shayne.chen@mediatek.com,
+ sean.wang@mediatek.com, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20260715044431.1207-2-mbc07@live.com>
+ <CAGsSZgFqeNpPXS8q9VYGGqE_ONVCD-V18vf0+R6tZTS2PeKv9Q@mail.gmail.com>
+ <CH3PR15MB6020E8912A56105D447332BEC8C82@CH3PR15MB6020.namprd15.prod.outlook.com>
+From: Felix Fietkau <nbd@nbd.name>
+Content-Language: en-US
+Autocrypt: addr=nbd@nbd.name; keydata=
+ xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
+ ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
+ Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
+ AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
+ vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
+ wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
+ TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
+ l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
+ dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
+ HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
+ VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
+ CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
+ VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
+ Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
+ DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
+ wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
+ f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
+ aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
+ FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
+ TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
+ GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
+ cL98efvrjdstUfTCP2pfetyN
+In-Reply-To: <CH3PR15MB6020E8912A56105D447332BEC8C82@CH3PR15MB6020.namprd15.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260731_001201_027757_0DDB7079 
-X-CRM114-Status: GOOD (  11.09  )
+X-CRM114-CacheID: sfid-20260731_011402_315820_841EEBFE 
+X-CRM114-Status: UNSURE (   5.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,47 +101,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt7921_load_clc() indexes phy->clc[] with the index stored in each CLC
-record from the firmware image, but does not validate that index before
-its first array access.
+On 31.07.26 07:43, Mateus B. Cassiano wrote:
+> Hi,
+> 
+> Gentle ping on this patch.
+> 
+> The mt7615 change was tested by me, and the mt7996 hunk was also
+> independently confirmed on hardware in the follow-up above.Please don't send mt76 repo patches to the linux-wireless list. This 
+belongs purely in the openwrt/mt76 repository, since it is out of tree.
+I will apply this to the correct tree later.
 
-The equivalent mt7925 parser added the same validation for a potential
-array-index out-of-bounds issue and later corrected the comparison from
-> to >=. mt7921 never received either change; see the linked commits.
-
-A malformed CLC region can therefore read or write past phy->clc[] while
-the driver is starting.
-
-Stop parsing the CLC region when a record has an out-of-range index,
-matching the corrected mt7925 parser.
-
-Fixes: 23bdc5d8cadf ("wifi: mt76: mt7921: introduce Country Location Control support")
-Link: https://git.kernel.org/linus/9679ca7326e52282cc923c4d71d81c999cb6cd55
-Link: https://git.kernel.org/linus/08fa656c91fd5fdf47ba393795b9c0d1e97539ed
-Cc: stable@vger.kernel.org
-Assisted-by: Codex:gpt-5.6-sol
-Signed-off-by: Zhao Li <enderaoelyther@gmail.com>
----
- drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index 25b9437250f7..1c99645b8122 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -467,6 +467,9 @@ static int mt7921_load_clc(struct mt792x_dev *dev, const char *fw_name)
- 	for (offset = 0; offset < len; offset += le32_to_cpu(clc->len)) {
- 		clc = (const struct mt7921_clc *)(clc_base + offset);
- 
-+		if (clc->idx >= ARRAY_SIZE(phy->clc))
-+			break;
-+
- 		/* do not init buf again if chip reset triggered */
- 		if (phy->clc[clc->idx])
- 			continue;
-
-base-commit: 4a0bd262df757b25fc4e2a53c947317c119ced4e
--- 
-2.50.1 (Apple Git-155)
-
+- Felix
 
