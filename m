@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E979C55175
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Aug 2026 11:22:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D2CDC55173
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Aug 2026 11:22:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8R2OWFuvWJZb2qYdXdzCQzd8OjIRnCGpSuszfCnMt9g=; b=TFUtF0cp7Fj/mOJdmYcaBtj0Fk
-	DOdDfPhSzHGpsgm12QI67brMJ4jNIO7Jwj30Dw7LP7bIrLHIxHDyCCNPGcUDr4U+pK4nAD+L2EvRS
-	3iSvL09SnIY0v4J/ua+FT6Yg/8dfif9RnGt1QGrmA4idjsZ3z/eiC//gQRepg13UyqymkVOr+Nk93
-	+XGIp8VhDxknGRQyBtsQ3nA8jFiwkgHvRp8T6I5f7JiYEybY8ET0j7IXGARSrTED28NyYkyXK7FFn
-	uzvXe2saBUQ6Q7m0+5dIuG+SY7YnDECVxMlXa6+AfqOX9ESc9KBLZhjI6Kfd3wev53NoAbPCkQjXM
-	2j6HWeeQ==;
+	bh=CavFiKSwUhGNGqn+cczlrzOrn0/LpIKMvM53+AdO948=; b=XNB/MYuy9rh8V0KwNX1r1Te2jN
+	8froOJQuK9b6g0VrM8mAuE95SqWUuVUbMT+iHtM7UrABq/35LpOMRfIbd1BUDJCOwlDET2XjZsAAS
+	zdz0gagbQZu+g7QCCS4UrZ34Jh31REFLjugm6wSAhHEk2jsYtU1jKGhrNZXPbyEfFkIluwzmD0AFy
+	f3E6nF4y1YCH/7Lh8LFqtC8Fk6kUeSEEMipsG6cRVUbEIUpSeLUDzZ93jFQpdFdgqv5frlYdoDk42
+	/Zl6P9ufYagW+hldMxi1Qe/I8H3+Mll/yQV7ZM92Xww1DSWNv+Wk/NTDrVbQrbb7DgYSRXQ4dUa3L
+	AQc3bNIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wq7mx-0000000EEHr-1kW9;
-	Sat, 01 Aug 2026 11:21:59 +0000
+	id 1wq7my-0000000EELr-2qCo;
+	Sat, 01 Aug 2026 11:22:00 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wq7ma-0000000EDSP-0lRl;
-	Sat, 01 Aug 2026 11:21:36 +0000
+	id 1wq7mb-0000000EDVz-3uKm;
+	Sat, 01 Aug 2026 11:21:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=8R2OWFuvWJZb2qYdXdzCQzd8OjIRnCGpSuszfCnMt9g=; b=DWjEhoXf+5UULr0zxe1AlOclf4
-	PKYYiFCpi5gqEqM1rtmP3AdHCtU72erPcJuFgZpTl38JxHvsViXOScWiIf8fTXvWGN6zOubSjJrvB
-	6tIy3603BKbZUWSElQqv+xTOiNp6d7tIhnTPWtLOO5BZTDKXr65ju9D2d7TiYCTPXI2lkhF8VXGB8
-	mwIajtE6DeGgycXxUrR6C3/f+o4G3fjctgQNBLM1UyOqXgiUyetoKEPcINAA8XY9g6TnhjLLjgkAt
-	I5nND7yjVesjEsJv4gywviU8D2PRSxLoBz2wcpQCvt7UIABG80bA6OS7rAQFXuTyq0lq9cpLmu7k3
-	e2dgXnaQ==;
+	bh=CavFiKSwUhGNGqn+cczlrzOrn0/LpIKMvM53+AdO948=; b=Q7vK1IlTJi10Gp74FLAOl1f0QX
+	WffsI2fVwpc9J21nlaoX6HGZcWaUjnG5l79Mj/7ADS+E4bJZY73OJIpmEXYnuz2II4BTaLVgEIpXg
+	NuiXKdRYUOj+l6IzViCjQoQSSBetGwO2SOeVoEFDeWRQLtCwTdYRr8QuPO9bZzDtOORSOZaOk6Eb3
+	hU3N9xir5IiZYXN0cUbhTYJSe4/cTsgACXCrXNWZGq9n1fk0E8sMteJcVVkacfLiXC9UB+XO6NUIH
+	KlMHTDpaFCni6daPkJL7WJdNcPg+lPlleaTBbAet3UySXPQSku2Es3KQl7fgrvlTFFkwbDyI+TxgX
+	S24WMesQ==;
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wq7mW-000000081MU-2iB3;
-	Sat, 01 Aug 2026 11:21:34 +0000
+	id 1wq7mX-000000081Mh-2F7l;
+	Sat, 01 Aug 2026 11:21:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1785583276;
-	bh=NoFwu2xld36Y84LtysJW9LuSu41fCdVWpVU4but4BcM=;
+	s=mail; t=1785583289;
+	bh=n9wUOpobDjDzuRSQD9VUQ/Ag4R9g26eowejTg9uByGA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=aptucHBgegXh7JMJkh4TQuFwq6PoM4iZfl8PiDs7ht/EXN6kyGJnARpp+1qY+095b
-	 q7EJTeiBJntVEU6kS5lARE3S1JH8W2qeT3IxVdlN6wfp4RRlwjtS34SrtkIeFTHVFe
-	 IZMD+XGDixH5mN+BsUiXcnqLnNa5hTPq0RjqUgjJ7F09fxfAHZhdwIc/5ZtXuZOCnq
-	 37qgRfPCE87jNN6rSurW8K0qeFvcYsbL/wYOkGcz2O0RZj4f6z+QjZ7T3y54EI86/f
-	 QtF+72Qh6EvpTBt9Si3xDR7SoGFt2SB5Ohl+jFg+ICJ3+7lJLvCDm1HCU13bmwmrEk
-	 oh+nGq5mNI/4Q==
+	b=lQ35vELXEkZod5kp8HXm5BuHv+QxPaTctnFQXG8WY6wcbynMQUQ+1TbIzR1auvnSL
+	 QLSNITIjL2+5rSHLd7Ns2HeNh4OeYBp7G0FfigDjrfor1zQOg7ukKIzaz+BDCnb1qy
+	 ZIeGZGug/EbjFXRGvg18tKCKCsnek91pecpYnUZ4YVmCwjPYiiKANSRcVYqxHlSAcT
+	 PhMHCl+yghOcCjqYstPTIFq8DeD3qmASLQLP4E8A3XujhkKMMA7mWFNNkUF6QSoP6L
+	 AcHTYqsXZzw0hjZsmfWdMJsStCfA3Xa7MOCv39OzUjieqmaX5X6WNf66/JEsaZsWln
+	 Rw2q5nx9M8GdA==
 Received: from yukiji.home (unknown [100.64.0.131])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F06AA17E015B;
-	Sat, 01 Aug 2026 13:21:14 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8E19C17E092F;
+	Sat, 01 Aug 2026 13:21:28 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Sat, 01 Aug 2026 13:20:57 +0200
-Subject: [PATCH v5 11/25] clk: mediatek: pll: Factorise pll power on/off
- sequences
+Date: Sat, 01 Aug 2026 13:21:08 +0200
+Subject: [PATCH v5 22/25] clk: mediatek: Add MT8189 dvfsrc clock support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260801-mt8189-clocks-system-base-v5-11-ac4410697cc2@collabora.com>
+Message-Id: <20260801-mt8189-clocks-system-base-v5-22-ac4410697cc2@collabora.com>
 References: <20260801-mt8189-clocks-system-base-v5-0-ac4410697cc2@collabora.com>
 In-Reply-To: <20260801-mt8189-clocks-system-base-v5-0-ac4410697cc2@collabora.com>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -81,19 +80,19 @@ To: Michael Turquette <mturquette@baylibre.com>,
 Cc: kernel@collabora.com, linux-clk@vger.kernel.org, 
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- netdev@vger.kernel.org, 
+ netdev@vger.kernel.org, Irving-CH Lin <irving-ch.lin@mediatek.com>, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1785583260; l=2013;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1785583261; l=4468;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=NoFwu2xld36Y84LtysJW9LuSu41fCdVWpVU4but4BcM=;
- b=cgHTWWvxRccS6fe8+EUY7eNiO1kYUcF5l9jWikSXBtIAvfoOyfdRlhq/lVqwgOoJiky2P2zby
- fiiiSsLknqmDYjBqJzSXDFuGmnJhmhinRlMSwSHvoSPKLMni/p3EEx5
+ bh=n9wUOpobDjDzuRSQD9VUQ/Ag4R9g26eowejTg9uByGA=;
+ b=eO6vA4sKV+c6KgXZEC8ViERfr03K22X00pwwk8H2X8Ivv68Z0dfcug5JorCpGEv8Ag4G9ZTsK
+ S1r7WuDU80JBksEfeZRAS12zbg/Azp842kqh9LX+IaQKICAxOG/AqT9
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260801_122132_920874_9E30775C 
-X-CRM114-Status: GOOD (  10.35  )
+X-CRM114-CacheID: sfid-20260801_122133_790700_77CF5D08 
+X-CRM114-Status: GOOD (  17.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,71 +107,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to prepare the MT8189 SoC support, that requires different
-registers to control PLL status and perform reset BAR, and so a
-different sets of clock operations, split the pll power on and off
-sequences from mtk_pll_prepare/unprepare functions into private
-subfunctions.
+Add support for the MT8189 dvfsrc clock controller,
+which provides clock gate control for dram dvfs.
 
+Co-developed-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
+Signed-off-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
+Co-developed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- drivers/clk/mediatek/clk-pll.c | 28 +++++++++++++++++++++-------
- 1 file changed, 21 insertions(+), 7 deletions(-)
+ drivers/clk/mediatek/Kconfig             | 10 ++++++
+ drivers/clk/mediatek/Makefile            |  1 +
+ drivers/clk/mediatek/clk-mt8189-dvfsrc.c | 58 ++++++++++++++++++++++++++++++++
+ 3 files changed, 69 insertions(+)
 
-diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index 4b0f7e2bfc5a..2aaf2871ecf6 100644
---- a/drivers/clk/mediatek/clk-pll.c
-+++ b/drivers/clk/mediatek/clk-pll.c
-@@ -223,9 +223,8 @@ int mtk_pll_determine_rate(struct clk_hw *hw, struct clk_rate_request *req)
- 	return 0;
- }
+diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+index 635b0109ec07..245d3b83b5d3 100644
+--- a/drivers/clk/mediatek/Kconfig
++++ b/drivers/clk/mediatek/Kconfig
+@@ -849,6 +849,16 @@ config COMMON_CLK_MT8189_DBGAO
+ 	  vcore debug system clocks. If you want to control its clocks, say Y or M
+ 	  to include this driver in your kernel build.
  
--int mtk_pll_prepare(struct clk_hw *hw)
-+static void mtk_pll_power_on(struct mtk_clk_pll *pll)
- {
--	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 	u32 r;
- 
- 	r = readl(pll->pwr_addr) | CON0_PWR_ON;
-@@ -235,6 +234,25 @@ int mtk_pll_prepare(struct clk_hw *hw)
- 	r = readl(pll->pwr_addr) & ~CON0_ISO_EN;
- 	writel(r, pll->pwr_addr);
- 	udelay(1);
-+}
++config COMMON_CLK_MT8189_DVFSRC
++	tristate "Clock driver for MediaTek MT8189 dvfsrc"
++	depends on COMMON_CLK_MT8189
++	default COMMON_CLK_MT8189
++	help
++	  Enable this to support the clock management for the dvfsrc
++	  on MediaTek MT8189 SoCs. This includes enabling and disabling
++	  vcore dvfs clocks. If you want to control its clocks, say Y or M
++	  to include this driver in your kernel build.
 +
-+static void mtk_pll_power_off(struct mtk_clk_pll *pll)
-+{
-+	u32 r;
+ config COMMON_CLK_MT8192
+ 	tristate "Clock driver for MediaTek MT8192"
+ 	depends on ARM64 || COMPILE_TEST
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index 6ab6df7ebf2a..4dbfc9ac83ba 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -127,6 +127,7 @@ obj-$(CONFIG_COMMON_CLK_MT8189) += clk-mt8189-apmixedsys.o clk-mt8189-topckgen.o
+ 				   clk-mt8189-vlpckgen.o clk-mt8189-vlpcfg.o
+ obj-$(CONFIG_COMMON_CLK_MT8189_BUS) += clk-mt8189-bus.o
+ obj-$(CONFIG_COMMON_CLK_MT8189_DBGAO) += clk-mt8189-dbgao.o
++obj-$(CONFIG_COMMON_CLK_MT8189_DVFSRC) += clk-mt8189-dvfsrc.o
+ obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192-apmixedsys.o clk-mt8192.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
+diff --git a/drivers/clk/mediatek/clk-mt8189-dvfsrc.c b/drivers/clk/mediatek/clk-mt8189-dvfsrc.c
+new file mode 100644
+index 000000000000..37b81dc0b882
+--- /dev/null
++++ b/drivers/clk/mediatek/clk-mt8189-dvfsrc.c
+@@ -0,0 +1,58 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (C) 2025-2026 MediaTek Inc.
++ *                    Qiqi Wang <qiqi.wang@mediatek.com>
++ *                    Irving-CH Lin <irving-ch.lin@mediatek.com>
++ * Copyright (C) 2026 Collabora Ltd.
++ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++ *                    Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
++ */
 +
-+	r = readl(pll->pwr_addr) | CON0_ISO_EN;
-+	writel(r, pll->pwr_addr);
++#include <linux/clk-provider.h>
++#include <linux/module.h>
++#include <linux/of_device.h>
++#include <linux/platform_device.h>
 +
-+	r = readl(pll->pwr_addr) & ~CON0_PWR_ON;
-+	writel(r, pll->pwr_addr);
-+}
++#include "clk-mtk.h"
++#include "clk-gate.h"
 +
-+int mtk_pll_prepare(struct clk_hw *hw)
-+{
-+	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
-+	u32 r;
++#include <dt-bindings/clock/mediatek,mt8189-clk.h>
 +
-+	mtk_pll_power_on(pll);
- 
- 	r = readl(pll->en_addr) | BIT(pll->data->pll_en_bit);
- 	writel(r, pll->en_addr);
-@@ -278,11 +296,7 @@ void mtk_pll_unprepare(struct clk_hw *hw)
- 	r = readl(pll->en_addr) & ~BIT(pll->data->pll_en_bit);
- 	writel(r, pll->en_addr);
- 
--	r = readl(pll->pwr_addr) | CON0_ISO_EN;
--	writel(r, pll->pwr_addr);
--
--	r = readl(pll->pwr_addr) & ~CON0_PWR_ON;
--	writel(r, pll->pwr_addr);
-+	mtk_pll_power_off(pll);
- }
- 
- static int mtk_pll_prepare_fenc_setclr(struct clk_hw *hw)
++static const struct mtk_gate_regs dvfsrc_top_cg_regs = {
++	.set_ofs = 0x0,
++	.clr_ofs = 0x0,
++	.sta_ofs = 0x0,
++};
++
++#define GATE_DVFSRC_TOP_FLAGS(_id, _name, _parent, _shift, _flags)		\
++	GATE_MTK_FLAGS(_id, _name, _parent, &dvfsrc_top_cg_regs, _shift,	\
++		       &mtk_clk_gate_ops_no_setclr_inv, _flags)
++
++static const struct mtk_gate dvfsrc_top_clks[] = {
++	GATE_DVFSRC_TOP_FLAGS(CLK_DVFSRC_TOP_DVFSRC_EN, "dvfsrc_dvfsrc_en",
++			      "clk26m", 0, CLK_IS_CRITICAL),
++};
++
++static const struct mtk_clk_desc dvfsrc_top_mcd = {
++	.clks = dvfsrc_top_clks,
++	.num_clks = ARRAY_SIZE(dvfsrc_top_clks),
++};
++
++static const struct of_device_id of_match_clk_mt8189_dvfsrc[] = {
++	{ .compatible = "mediatek,mt8189-dvfsrc-top", .data = &dvfsrc_top_mcd },
++	{ /* sentinel */ }
++};
++MODULE_DEVICE_TABLE(of, of_match_clk_mt8189_dvfsrc);
++
++static struct platform_driver clk_mt8189_dvfsrc_drv = {
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
++	.driver = {
++		.name = "clk-mt8189-dvfsrc",
++		.of_match_table = of_match_clk_mt8189_dvfsrc,
++	},
++};
++module_platform_driver(clk_mt8189_dvfsrc_drv);
++
++MODULE_DESCRIPTION("MediaTek MT8189 dvfsrc clocks driver");
++MODULE_LICENSE("GPL");
 
 -- 
 2.55.0
