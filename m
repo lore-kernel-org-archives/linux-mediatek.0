@@ -4,99 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DAB4C55174
-	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Aug 2026 21:44:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D510FC55174
+	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Aug 2026 23:21:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:MIME-Version:From:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fuXEqimyffgC3r6i7frZWabp2CjAJ6czkCeh1u+cNBo=; b=ZocnYGqoViRDPFyVmF/8DC0LEI
-	z4pioseufQGsmpPJv9XyUjOH+SD4n0ZPFcDDYfByRgbKvS64ZMhJSoVHnB+019z6vcgIa1AoHUPVN
-	HafJDW/eBmRmv3KSiDUKvtQqciJw7WIVb3CBx8sQYRlmopd39Fl6qwiENsdTlCLkEQGlbuZltqS/V
-	QnJXOtd7+AVk1xPV8X//hupTe6iWqQtftJtyz7x5NAGRWLiemas0iucllwF3Dzx1sFUKdFW5FlHjh
-	ox71UV44suxBMfhy+gCJwXVKDxb5KWGvcvssmT3hEC9bkg6flw5FpEM/W6WVjuTuiPjyXnWfPxezG
-	4cp2U1/w==;
+	bh=GpnhTy9VhTfgus07R9luoxqIJ3Uscqq/lVYAIyMKBGE=; b=0fHXBmoqCPJ1YsLk9+XCugaB2t
+	aVYpIJtiXaSzwdGCw284tYSyAF9LF8OfrjNJfiDTPV5o5HOF3zeN0r8Fp9XcKpy6goEtazoL+OOQa
+	BqNJM/Zo1NjGcJJonlOjMgBxYJ/vv7eGciClAI1617BQBJtfvw7PMJ6FhLvOnwLMPxKeUJZybpCyI
+	lfgrMt3sk+Xk2Fv6mcwcoLWNHajMQjycbz19O+sqp9Zxo/IdE1fC2sTu653ZGFRsUnJiZ9Ar2X2gY
+	3JwNk6jKRBO4r4CX7S+oxvCcFpivIucov2DCL4Dk7hFSkFd+Tk1ANbNghyWn0jDKsTIgI91qUVL1L
+	lLlE+JZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqdyW-0000000G4U9-06PS;
-	Sun, 02 Aug 2026 21:44:04 +0000
-Received: from mail-qv1-xf2b.google.com ([2607:f8b0:4864:20::f2b])
+	id 1wqfUP-0000000G7Ml-31hs;
+	Sun, 02 Aug 2026 23:21:07 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqdyT-0000000G4TP-1xZh
+	id 1wqfUL-0000000G7MJ-0aqj
 	for linux-mediatek@lists.infradead.org;
-	Sun, 02 Aug 2026 21:44:02 +0000
-Received: by mail-qv1-xf2b.google.com with SMTP id 6a1803df08f44-9083f928b60so15912836d6.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 02 Aug 2026 14:44:00 -0700 (PDT)
+	Sun, 02 Aug 2026 23:21:03 +0000
+Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-c15dd4b9132so433509966b.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 02 Aug 2026 16:20:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1785712857; cv=none;
+        d=google.com; s=arc-20260327;
+        b=QZXvZnq+DtfPrVihFOFilk3CaZaUw7Iola/wIQSYt2jSZeMCNrx5UcF/YDbYJbhHC3
+         tsvINyv1BFJu5VrPBHqvtleiMTprGvBwCDaNSF1QGqA3eNj71RVWKVCZ5TzJ0EruO4LD
+         tMadVYfuQtL2Se18vC2rSqrkJVVBRacfos6F3rQzujKWUnE89mAymTIJbGVLJLMV3mnz
+         2ycA++4QzgVma7Jedq9n9dMPyC+m6Wm3OlWbqN6QrbMCu50xkaay+Ag6G0urOeia9zm1
+         oFxSCkkfAJcXQvG83bk2smzRy12FMBWkiIWE4LD3M8AUGJX3V34wrn2neBnjfJl/DxVc
+         FnIA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:mime-version:from:dkim-signature;
+        bh=GpnhTy9VhTfgus07R9luoxqIJ3Uscqq/lVYAIyMKBGE=;
+        fh=LvWu6EBn3NC5AeXtgORVUahHe2CkKRY6YZEQZTgtuNQ=;
+        b=c1s+KwjWMC+HfXBbav8B2F6/HJWq34FpTwcGMzUqAWT3+cs/3v75z+8JVh65HV3OPv
+         8hfUN3QfRg0Wcrr02l9km7AeZR0KL7slIYLGXGRlfI0k6kYzUkVd6Tg4SVnOOX8IYt04
+         NuBa2/LuuQ71QDbMyMHpn9cSqxBLNRhM2R1iJ0y8ERTvnaIG8yQRCb/YXJyRakDvtFp6
+         JfZg7fpTW3uRmjTkZwUQsOoqJm207Y47l+lC+tuFSHl11KMMIYPhoQLEykoVfFPCiNAi
+         Mt4k2UGB2/oBDO34rpXOG0SHTq8kuILHTzQwNJ8s01E9/HsRoyW29LO8d90Cf2EL9F5j
+         Ch0Q==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785707039; x=1786311839; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=fuXEqimyffgC3r6i7frZWabp2CjAJ6czkCeh1u+cNBo=;
-        b=McKcFFCIzdQtsgWQUJi8CWFlYKPOXI48gLD0PgIPmwIk4SyiH0FTlGPzd0otq3WbE5
-         AqB4BYECUn6r3U89VZOngXvcc+qMWxer9f/hfpJLmD1nYRxcAJ1XPVnm39j9MBfPrem0
-         JFEL0E88DKWv9FhV55psTUsZFbE4GSX5F05EmjkASD9ciFJo8Fnpstu8vERLGkD+iDJQ
-         L5XVfyHm4M1jSTncIx2J8WVE5z+D73WQ3/bPcjuv0wu+s8Wovoji/kYPXvzgFPajotwL
-         T4QURF1IIvCtIs9gyE8rqoGOWn6y01hn6aDKHc/f8DFEg4VYFjPIrpXgxPkKLUvIx/Wi
-         RPoA==
+        d=gmail.com; s=20251104; t=1785712857; x=1786317657; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:mime-version:from:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=GpnhTy9VhTfgus07R9luoxqIJ3Uscqq/lVYAIyMKBGE=;
+        b=jV4A6YG/DP4cc4FBreGXil8duTb8oi8lEbsy6BEioYP4bquQDzFFiYSHBLne/9O+iz
+         U0pqWcve6YU11kenJSrUaeN6Vo7eCTNhyv1ozYWJpBjINrMVwWrxdc4AI3ZFiVUAIC73
+         wt1wWgO9MDuxfWMBMuGvukjIvdFmc8w+lGRWFdVJ/CJqP89uNG3ozCB0liuqOQGgO/RZ
+         R9fYZZnRd7QshawyfFPmZq9YsulcUaOHiAsovME+L7GIo6Ub2Kd+Ad8hYwptYXAii2rX
+         d3OcyQbjYDLQqR5TDrUrp5QUs1O/ULo86xBA3DFLNs36Oqgcz0aVeLAfha1HCh756TaL
+         8OfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785707039; x=1786311839;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=fuXEqimyffgC3r6i7frZWabp2CjAJ6czkCeh1u+cNBo=;
-        b=ZOAJWudH1o93E4oo+oL4HOwlv3CmK4oWsoe6Gwc1foZ5PNFo2YEPuASoA71GSoxSug
-         QvbQGvQBSgTLKNu2I+9emPryYikM3SeKx9KqUf9rmByTSRSxVHn3X+sDT6S35/SAcD8K
-         ga7O6l6vfPgENvu4xu8KyCDjLbQE1DVgrzYu8WTmQ2/exwTC8PjW7ZbEwIdGjevKZdFs
-         KCSft8b9dCPG4/SnRKT1HZuMtLNfuBlx6fnma6k0LWD6tv9CwB+5UiTTYZIkXukoid9M
-         odhXf38kMuoJ2JzoOZjFLfIZ1BcSP3g3W7GaIMMvD8RYp1th+28BaCwKOYMVHyH+S/Md
-         M3jg==
-X-Forwarded-Encrypted: i=1; AHgh+RpJVTRZfvXjilBm1O3wkV+qUW8HGeIucaQvjz7QYT9jmyde5TZKC1TCydkXYUdOEwrv/TCmcU4k4dilr/O2zg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxhw5iyid7sgHL6ZobUnr6qdYTGIR9pRasi4Qr/n6oJr4nDcM+n
-	ggfFQOTUL8EmWD2vPTt2JZhKiO450BO3vTMh3HWFMJpPk8dVaJNjeWYc
-X-Gm-Gg: AR+sD12PcBphXfGAqKfhF1kvFOF9sBNYAi+lmrbW0+o1EN9RnChjAIjLEY4EGwgsnID
-	zxfiU4HNN5+AAexGsV+1K0NIrUqEqSRAiWuzF+qrb9QjD32sL9jZ70pM63iwxnm5ePIT9fVmuur
-	9d0qCqnZq+KhCCykgPhKwXV7CDbgqvBkPin38f+2Ap/n4KJMyiVV4a0LZcPQBLz8lXdTY6+qUwg
-	i6KiQbbXf8sRo7Hb0ThvxKBpdR0YrIhM1Lsp1PX8LWuMSoS+KAz3WbpTXtHPvWCaOLZMXyoWXCH
-	4rkU3jurawVGgzDs3Z2srT51rXQySED/eAt+Wqjv7xnwEhGdgUPaWTbmAfaaQWhnTSwCyHrOO1E
-	RyBpf0/UBnV6TM+/ish2Ipm5/cnvPW9HbcL0Fa3G84NwU3av4RpOrXP19RDQALAOHq21WtNwqmw
-	+iY2CkqoNZtA5xcs6ehOR5ZYWp3d+Ny9rFxSQiIcodiL/i+ltJ7bneF4iK+j5fvCMvdcwhObOeY
-	yegB3gfzNTSbB18E3okRbZst+40i87Mp9QoL1j9npwXF/Xl8Gd6p8uvx5eFjVwSOhyHw4WUWHt8
-	ACugGAxBqZMhuF9+CtiDY87mt/WpbKkUjT3iT2qA/5jFjzjk
-X-Received: by 2002:a05:6214:5403:b0:8b3:f911:c1df with SMTP id 6a1803df08f44-9084966585bmr185128876d6.21.1785707039288;
-        Sun, 02 Aug 2026 14:43:59 -0700 (PDT)
-Received: from ryzen.lan ([2601:644:8000:7a86::e35])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-908435b6778sm60683266d6.30.2026.08.02.14.43.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 02 Aug 2026 14:43:58 -0700 (PDT)
-From: Rosen Penev <rosenp@gmail.com>
-To: devicetree@vger.kernel.org
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mailing List <devicetree-spec@vger.kernel.org>,
-	netdev@vger.kernel.org (open list:NETWORKING DRIVERS),
-	linux-kernel@vger.kernel.org (open list),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek)
-Subject: [PATCH] dt-bindings: net: add nvmem-consumer reference to network-class
-Date: Sun,  2 Aug 2026 14:43:54 -0700
-Message-ID: <20260802214354.490074-1-rosenp@gmail.com>
-X-Mailer: git-send-email 2.55.0
+        d=1e100.net; s=20251104; t=1785712857; x=1786317657;
+        h=content-type:cc:to:subject:message-id:date:mime-version:from
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=GpnhTy9VhTfgus07R9luoxqIJ3Uscqq/lVYAIyMKBGE=;
+        b=dxltVha4Y3GLMRWFz48gjEyh7AbtrtUYcS+WlJJYK9ILseLVMeqg952HzsxFzoNbJu
+         ztjXlNko52ULgPAH+AmuCpFke2CX9/Lm2gJBZy/DP81GDjOWQ+000VotLJec7atw+YGF
+         G4bld1O7jnX9z+0a5C3/Q6AUZG5MOx1hhimKCdWIKankUfJHOgwkyv+o4+66d3sNN+NG
+         m+ot0vyGvMvPY4MFuyxqJ5wCcyT6HU/jYVK5/+bkrLplxcwW0s+6Y0A1/rFSlEMgMEsk
+         JmrGozyo7YbK8whrA6aUOZkZBTFTWDtaKLiocOBgBiqj9DDbGG+gXtByLmGleE5f4eFb
+         wNuw==
+X-Forwarded-Encrypted: i=1; AHgh+RqLByUCphzQOXTayItWnvK0l2L5AUP7ENllVFGeniaIjQjXWImWH0BTC9/ubUn6ZlHjlytMfqn2b5TeVc9TOg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzyAhH+M5tjWebphy4TSB+eYG+bzOFhdCElqSbC4IM/p3FB8Yh7
+	RZwa15ZnRRzzUQCK9a3eHt7k2tegh4nygcGk63iWcMoE+Q17rhIK2N2W84rvQFYQxzB1MitzNmP
+	Li0jttCD2N9cyrgmKNqLH3U410b3E+OM=
+X-Gm-Gg: AR+sD11rFLX3TYIVETw1r+SNiIVNGgFGwcsdf4XJSkRFbQFz5Fkr6j2j3jqftFgv+l9
+	K5rqLAf4LDB1PpjPSX6mSaELiBCJQN6VwLOEXv/NVeoRPC2HeyjTa666URxEUZoCOPTIt199Sl/
+	TS8CHpzuSGKFYlmu95MpGjUQqrfEWdUCFzNhdO5Kw0uYs2MyHNSVk3irq4lszLimZIV0cdKO2NX
+	FZcZG7a0P1lO1do5X+uTLQeN3EfR9Ui8U+vduwMebTDTK2cXJYGnDf7x3RXIsPlzDdk3j2Z7OKk
+	rfVtMZ2poIuc7fTq2FreQkQ2n2rylAQfXTPH/o4jQQ3iW0F4c6Q2FnJOheygZolJQsFuGU0fCCd
+	/fA0=
+X-Received: by 2002:a17:907:3c93:b0:c1c:64d4:5ba3 with SMTP id
+ a640c23a62f3a-c1fe7efb692mr580583966b.20.1785712857015; Sun, 02 Aug 2026
+ 16:20:57 -0700 (PDT)
+Received: from 24047573820 named unknown by gmailapi.google.com with HTTPREST;
+ Sun, 2 Aug 2026 16:20:55 -0700
+Received: from 24047573820 named unknown by gmailapi.google.com with HTTPREST;
+ Sun, 2 Aug 2026 16:11:40 -0700
+From: Facundo Karanik <facundo.karanik@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Date: Sun, 2 Aug 2026 16:20:55 -0700
+X-Gm-Features: AUfX_myBTVGBJrkfBlzC96giSapLxO2U7AxY6YzFQS9SLnjdrqlzc-JzU3yaUGA
+Message-ID: <CAHNRTq83iAAFyYNB5D0eg3HJggJNq3xjO8Z1zi9=+yGe4uy_Lw@mail.gmail.com>
+Subject: [PATCH] wifi: mt76: mt7615: skip MT_TXD5_TX_STATUS_HOST for MT7663
+ group frames
+To: linux-wireless@vger.kernel.org
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260802_144401_515945_687FF442 
-X-CRM114-Status: UNSURE (   8.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260802_162102_320417_FDEC7604 
+X-CRM114-Status: GOOD (  17.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,44 +118,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The nvmem-cells and nvmem-cell-names properties are used to supply MAC
-addresses to both wired and wireless network controllers. The wired
-hierarchy already allows them through ethernet-controller.yaml, but the
-wireless hierarchy (wireless-controller.yaml -> network-class.yaml)
-does not. As a result, brcm,bcm4329-fmac nodes using nvmem (e.g.
-bcm4709-linksys-ea9200.dts) failed dtbs_check with:
+Under the right circumstances, a broadcast or multicast packet can remain
+stuck in the firmware/hardware queue. Following group packets then stop
+completing and accumulate. On my system, this appeared as excessive airtime
+queue limit (AQL) debt, which eventually stopped batman-adv traffic on that
+interface.
 
-    Unevaluated properties are not allowed ('nvmem-cell-names',
-    'nvmem-cells' were unexpected)
+For a packet to potentially get stuck it must have the
+`MT_TXD5_TX_STATUS_HOST` bit set and remain pending while group traffic is
+held for the next DTIM because a station is in power save. The queue stalls
+when such a packet is present on the queue and the final station (still
+treated by the firmware as power-saving) is removed, whether explicitly or
+through normal teardown after the client disappears.
 
-Each wireless driver otherwise has to add the nvmem-consumer reference
-individually (qca,ath9k and mediatek,mt76 already declare their own
-nvmem-cells/nvmem-cell-names).
+In summary, the packet must:
 
-Add the nvmem-consumer reference to network-class.yaml so all network
-nodes inherit the properties at once. Wired controllers keep the tighter
-single-cell, mac-address-only constraints via ethernet-controller.yaml,
-which still apply alongside the relaxed class-level properties.
+1. Be broadcast or multicast.
+2. Be pending under group power-save/DTIM handling.
+3. Have the `MT_TXD5_TX_STATUS_HOST` bit set.
+4. Remain pending when the final power-saving station is removed.
 
-Assisted-by: opencode:big-pickle
-Signed-off-by: Rosen Penev <rosenp@gmail.com>
+The fix is to leave `MT_TXD5_TX_STATUS_HOST` clear for MT7663 group
+frames. These frames normally use PID 0, the no-ACK packet identifier, and
+(as far as I was able to find) the driver discards TX-status reports
+carrying PID 0. The report therefore has no consumer or useful
+per-recipient result. If a future path assigns another PID to a group
+frame, `WARN_ON_ONCE()` records a stack trace while the status-request bit
+remains clear.
+
+My broader interpretation of this failure is that the firmware/hardware
+does not expect a host TX report for packets that are not aimed at a single
+station. The last power-saving client leaving might have been enough of an
+edge case to surface this expectation as a bug. This is speculation, of
+course.
+
+After applying this patch, every single packet matching conditions 1, 2
+and 4 cleared the queue without any issues. I also did A/B testing with all
+conditions present. The stall occurred in 100% of tests without the patch
+and 0% with the patch (which, of course, removes condition 3).
+
+I let it run for about a week without either the stall coming up again or
+any regressions showing up. The hardware used for testing is a TP-Link
+Archer C6U v1 (MT7663E PCIe), running OpenWrt 24.10.3 and Linux 6.6.104. I
+do not have any reason to believe this will break on newer kernel versions
+or different hardware, although I was personally not able to test either.
+
+This patch very likely solves the issue below, but it still needs to be
+tested on that setup:
+
+https://github.com/openwrt/mt76/issues/598#issuecomment-939419710
+
+Assisted-by: Codex:gpt-5.6-sol
+Signed-off-by: Facundo Karanik <facundo.karanik@gmail.com>
 ---
- Documentation/devicetree/bindings/net/network-class.yaml | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/net/network-class.yaml b/Documentation/devicetree/bindings/net/network-class.yaml
-index 06461fb92eb8..f7c8e24016f7 100644
---- a/Documentation/devicetree/bindings/net/network-class.yaml
-+++ b/Documentation/devicetree/bindings/net/network-class.yaml
-@@ -43,4 +43,7 @@ properties:
-       maximum frame size (there\'s contradiction in the Devicetree
-       Specification).
- 
-+allOf:
-+  - $ref: /schemas/nvmem/nvmem-consumer.yaml#
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index aad232c5a6fa..5c846f136961 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -823,8 +823,21 @@ int mt7615_mac_write_txwi(struct mt7615_dev *dev,
+__le32 *txwi,
+
+ 	if (!ieee80211_is_beacon(fc)) {
+ 		struct ieee80211_hw *hw = mt76_hw(dev);
++		bool mt7663_group = is_mt7663(&dev->mt76) && multicast;
+
+-		val = MT_TXD5_TX_STATUS_HOST | FIELD_PREP(MT_TXD5_PID, pid);
++		val = FIELD_PREP(MT_TXD5_PID, pid);
++		if (mt7663_group) {
++			/* Host TX status has no useful per-recipient result
++			 * for group frames. On MT7663, requesting it can
++			 * stall group traffic when the final power-saving
++			 * station disconnects. Force the request off, and
++			 * warn if the no-ACK PID invariant is violated.
++			 */
++			WARN_ON_ONCE(pid != MT_PACKET_ID_NO_ACK);
++		} else {
++			val |= MT_TXD5_TX_STATUS_HOST;
++		}
 +
- additionalProperties: true
+ 		if (!ieee80211_hw_check(hw, SUPPORTS_PS))
+ 			val |= MT_TXD5_SW_POWER_MGMT;
+ 		txwi[5] = cpu_to_le32(val);
 -- 
-2.55.0
-
+2.51.0
 
