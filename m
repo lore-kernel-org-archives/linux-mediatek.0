@@ -4,162 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B6F3C55171
-	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Aug 2026 14:11:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C2E8C55162
+	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Aug 2026 16:05:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=CcA21w3/sZIwoJ8o6e+c2vyopqAU1eR1GmGZyGN0FB8=; b=2TngZZsXbw6NKi6G1Y3JjNNyyk
-	zkpZEZTYcaHGs9jhIKNHQRRBtEU48lKWjInrsvClaa2Omd6mPCwkq+KGL3JXv/wjCy5PdxGgjNtP8
-	EUGRhA1BUI7ihrdqZ1CkA6N8CWHivBQcQexrNLumeLcDjgDwSJytdc6/BeVAxZJswbhVYfATXQVVK
-	9qLE1OmmQNRV+Mwrfep7r0RUcZ4p2ilkdGH9Xe4nK6NzP7BSv2vEFy+SUDwDSqI5frzc9ZeV2YfKM
-	we/A1ZQDJHtVfunuqqwj2aa8a8sYUyTDZnuVrzdizhVNtx8nGkIiRmCgM4tdkp57A6fZ54S0MddoD
-	peUo7l6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jQmpfn45uaTNNsHtj+z4E83LXS4CJJjfzV+3sS08LV0=; b=XSd58cByBZzWjhJq4VsM3p/B0P
+	HyvF5K5PqgNqUimp2qUuR/qIeHB8PveEzPuwXXGePd2nD2CdRXL9nteoeCyItzkvPzLBt8lJ1SGjT
+	faYVVYFYapUSI4t0l+PXXs8YCpE6GNyKAqwRS0Gm6+XoidHIYMtdzP/7GNotxcz03xgyy6GKZcT4y
+	pyI/GvEtFlTeXqAnVL+nLxBpEYFHld9UU+ZbECoXihsdHoH5RYbTWryhiDC5U9AV65g13OdLdAkvI
+	GeCcnV9OLFQy19k5UGaqrBRDlAJmTVqT+ZHrk8HwNQJjlVCEhe6j4nAoGO/x5/0BRBD9UM+B+Dfsh
+	amZQqnOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqWuE-0000000FhU1-3Mrh;
-	Sun, 02 Aug 2026 14:11:10 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1wqYhC-0000000FoXj-30A9;
+	Sun, 02 Aug 2026 16:05:50 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqWuB-0000000FhSs-3k7K
+	id 1wqYhA-0000000FoXJ-2boi
 	for linux-mediatek@lists.infradead.org;
-	Sun, 02 Aug 2026 14:11:10 +0000
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 672B6dd01352524
-	for <linux-mediatek@lists.infradead.org>; Sun, 2 Aug 2026 14:11:07 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:message-id
-	:mime-version:subject:to; s=qcppdkim1; bh=CcA21w3/sZIwoJ8o6e+c2v
-	yopqAU1eR1GmGZyGN0FB8=; b=pA9c8GFqUZd3LtzbaTmeHPbX9uiJiQD8gh8Op+
-	UEgsMmrOyr9n5RC5OQFnjfx9yQ1CGviK13rU5cLiZMgMLuGaOPG4EyI9UagwSL0q
-	f4xamCYxJaUVOPmCEGRU38vIXT4Zopv1/iWPpeP8M6Kx86PakXAyxl4eJlC67c7C
-	H3isRpuaKtwyw+yyDTdewcIjiVDW/wuJANCjKnUZL/H3Elcq1XyZ9wgXF7hxPcae
-	yZyp5tM2QhLBWEoSRfvijurXwvh6Yq99rfsjEa0acLjiU0e/op7vgDY0kIHa68nR
-	6/kYp+KvF9PyYcS9X41lRcoTC09UdzVMjXEu2AbDGxgU/VlA==
-Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com [209.85.216.72])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fs9jftt0k-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Sun, 02 Aug 2026 14:11:07 +0000 (GMT)
-Received: by mail-pj1-f72.google.com with SMTP id 98e67ed59e1d1-38e25e4b41cso2768757a91.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 02 Aug 2026 07:11:07 -0700 (PDT)
+	Sun, 02 Aug 2026 16:05:49 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2cf50c6f235so28888755ad.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 02 Aug 2026 09:05:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1785679866; x=1786284666; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=CcA21w3/sZIwoJ8o6e+c2vyopqAU1eR1GmGZyGN0FB8=;
-        b=Q49VTczYdY/qHN/707XxLJr164w26ppNbKHtfY3i55Z9s4vTZaHQpeQFaqVr0vqR6k
-         OuvXlcM197UzQSnvIMpYwzR42EhsLX7Y6HEqapHGCUjyS6rL3mQDMVxyFv5VBXdX1EUT
-         wqDqZK32QjwkWFNPHK0JJX6H9OtC8R7nqTJi2xWLV2aNibvn1Z7lDcfOsND8ny+LdxTS
-         DowqeyKXxaO9gS2Bc2+BCFeQKfHTy38utDmwaeWnlIuHjiB2nw6vlpUIb9RROT/pngS2
-         b4MEBqCKBaV2gWU/vJ1l2r2bYabbx4CzwfuIJfB1jF1ylzfUrng5v3VGfWjM/+u7Eb6u
-         IIJA==
+        d=gmail.com; s=20251104; t=1785686747; x=1786291547; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=jQmpfn45uaTNNsHtj+z4E83LXS4CJJjfzV+3sS08LV0=;
+        b=LQrTOXNEXkt+nrDyM4fNqFRev0sxkRV61rWaVv7ChZZ/Ma04N7khusCUHMfiPMkbrZ
+         3Nm5Z3Larbg1syIvisk2wrx7rhYj/eRZCLMdZjRssP1356puKGfRuOMW33AEhwBmWDk7
+         PZTamd09iFxtZKZgml+maEVpx/Hm7Ru3ACyhMbZJCimFt/HzQESZTekRG57QKZniKi+P
+         +zf6QJYZfrlm6zjoafbdWj1nzOTOdwQZpFVg9m+6XroDFtBNuQIznKJl10WrSpnp+ki9
+         AvtREPBbBNUkgg1v0Dot/sX5viQSytTqDvceFoytrOJbmk+xBQUEKQjA7Cqy2LyF047e
+         HH1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785679866; x=1786284666;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=CcA21w3/sZIwoJ8o6e+c2vyopqAU1eR1GmGZyGN0FB8=;
-        b=Rf/x8ObUMOo0EEeMH7JTxthZ2+RwcRjq3XNGGawYyibxVbkNRtF5tdLjJbpN2VTZYD
-         8jOgFXrhgKG8UL3D9uFLlasLejlmjKXW3UagFvgQ9zE5kMv5WtdmJJ2eWRf3ENuoYlyD
-         +GDEcqkkIDMSG2Bn1sojNYvk1M0yxkfST2Jmf4o/YaVAjxUAAh+oLEa1FahKhxUD/w5D
-         tmshJhSW9csq3lOkudewzaIXcNDo8/O+uUuqfxwCnTZW0qFkS26b6Qn1r3k66pTaasa0
-         a4Jjgqp6p0PjLPQiwIN/lpXdCZjtLFLXfGJlxc7xkZjToGDRmAE1+6gBTup19ef6P/MZ
-         ejcA==
-X-Forwarded-Encrypted: i=1; AHgh+Roz6uMliHFgfQrBbCScNFUpPpi0gd25SiH23WMCAr5nfP7rVoEHy3BgzkI8ajnsRvL5VYtuiztPuQ/zLBHj2Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyFTySIeL2bBwMZEq6rGOWTjOO0TIt8Jep/okR6FJdgzwEzHTwD
-	NbvX+n/3s3uClFVppjMFNklC87F4F686bmtHnCknHEDDIBGhZs8r91zH+KvL6O8h6omcXn7+m3k
-	iGC4y60wdmZ+qWMAoc/Z0cDOogESIpI9XzqPqsO4fMB9iMtpEzWA6nfHwpV4QFGUw0MpMxTMWji
-	Y=
-X-Gm-Gg: AR+sD11lg4mk9PgzAFKbKgG/vYu8e/p8OifEulElEuaQVLGXgLm2TRuft/rfdbKJjlK
-	hsnH0slp6dNsolkWAwVXmoZfZyxT7zIfs9mAetunzkn0MH/YKfS4JzDOSu4iZS7xu0O2vpphHrM
-	YDmZn3GVTYNfy1bD2s7T5HAAZJ13+zbOSNmsNWDiNGic1CBBVRCYKqclLpCF+FrrHc3FOblxhPK
-	f2d10HJy0lBF2mh5k6tqhV+dV0c564qJGV8pDF8js+yBut5GpBN1T2lIOhNWQ9TXPbB7aAYG2Qd
-	ibC6a/BXQ/ehlsomEKpw5fouGw88/PIGJNjXsxd0edS0skQlgXJyQOG0k8ghu8dxV+AtF5ZRjBQ
-	zSs8nIRYhH3WNCiihRkcgVtDmRftB
-X-Received: by 2002:a17:90b:5627:b0:387:e0bb:57ff with SMTP id 98e67ed59e1d1-38fbc58d37fmr5602089a91.38.1785679866362;
-        Sun, 02 Aug 2026 07:11:06 -0700 (PDT)
-X-Received: by 2002:a17:90b:5627:b0:387:e0bb:57ff with SMTP id 98e67ed59e1d1-38fbc58d37fmr5602036a91.38.1785679865853;
-        Sun, 02 Aug 2026 07:11:05 -0700 (PDT)
-Received: from hu-mkshah-hyd.qualcomm.com ([202.46.22.19])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3153e18d9c6sm28626151eec.30.2026.08.02.07.10.57
+        d=1e100.net; s=20251104; t=1785686747; x=1786291547;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=jQmpfn45uaTNNsHtj+z4E83LXS4CJJjfzV+3sS08LV0=;
+        b=jZPwbrUcJhv8b5L052JwinzF1kH79qBWq3l8nnMXux0XHiguwfPp9ZREGP450IgGrO
+         l96jFt91RGMNin4tOlKeaf/VgxTDkvRiO/HJfAy58dnJl3Wu0vPlxZr9r/2JtvQqJpF2
+         n5dN3bM21S+QXJKo0jz6YDl6W3q+sfAq49zUW28xtBGbHBqKhvSkK04GWnkET9gKfV/Q
+         kjsf4W99vJJjJ6tKOcdCL4+ZC9DZ//N5Ju0IcZBZgrHJjHv/g14ALO0rm3cjegSmvDUd
+         QyyNRISPqlL55Rn4Ut4198sIPXr82tNNjcrDq2QPYCv+sw6g60psiadlQ32JChXdj/Tg
+         rt1A==
+X-Forwarded-Encrypted: i=1; AHgh+Rqt3WacYty1YMcfbIe/7xT7jhrkc2moKkdJijbH1zcKZYpROuocQtF3e2ed2IXhKw8WH6Cbzi8N51qnxb8wdQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy2TKKh8jae00p1AQn6a0pJtZVWFhQTz+55yb4oy5CUkokbVfrH
+	PUTi58W3WvXMiE1cVi3SnY4H+gxFVerYqHDwsK+wkBMy0tkJwtrBU3AM
+X-Gm-Gg: AR+sD102Dyff5WnmniJRcy2oAhnmHhW0OzlhlO6GW5GAhGWNQDaElF/9jgqkxEDKzdp
+	jIEk2+ElIwpqSVwoaB8NC+KQaogDXyQ7H1dMJA0Q9fD5pXBTAdyPtxsZbxJA9VfLI1BMPwZP2Ln
+	kQS+cdhnVJy36W3ElQD4rKmvSbtcv3Hg27gXHU1QaAipbszAvMmj1nz94b4ls8tTaQw5wdmhwKC
+	v+g+WWuZy9sr+54b/vPnjVudiKMvXIiAWPlTf1nHKTzxf1DnyD1CWfZVhbg94lIFtTKMtF+Bf28
+	Yh2eaIsJ+QHwfsL81LWSRkTXuhBwFZ0VEfYLzjyt8rVoieIwuWiFpvR8z0WX3zUCB+dia8APt+G
+	uiIpO+rkI0lv3mK1vmUhsP6WZfYEKNkJpFCPDy6++GSBi3p0mESrhQ88bYFL16mVspTB16jQzlK
+	ogp0pHa4G3aNj4Lsw7gP0kxAoFOXdSoNnusCP3CesNsY2nivXFbyBQk+2YSngfLAHFkgdS
+X-Received: by 2002:a17:902:d489:b0:2cc:61e8:5fba with SMTP id d9443c01a7336-2d05244492amr68660835ad.32.1785686747186;
+        Sun, 02 Aug 2026 09:05:47 -0700 (PDT)
+Received: from Hybread.localdomain ([118.100.92.57])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2d04b120fe0sm26777115ad.67.2026.08.02.09.05.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 02 Aug 2026 07:11:05 -0700 (PDT)
-From: Maulik Shah <maulik.shah@oss.qualcomm.com>
-Date: Sun, 02 Aug 2026 19:40:35 +0530
-Subject: [PATCH] gpio: Use IRQ trigger mask helpers
+        Sun, 02 Aug 2026 09:05:46 -0700 (PDT)
+From: Koh Tom Han <kohtomhan@gmail.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>
+Cc: Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Koh Tom Han <kohtomhan@gmail.com>,
+	stable@vger.kernel.org
+Subject: [PATCH] wifi: mt76: mt7996: validate sta_num in ALL_STA_INFO event
+Date: Mon,  3 Aug 2026 00:05:40 +0800
+Message-ID: <20260802160540.1072-1-kohtomhan@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260802-b4b4-irq-trigger-mask-gpio-v1-1-948973636c84@oss.qualcomm.com>
-X-B4-Tracking: v=1; b=H4sIANpPb2oC/yXMwQqDMAwA0F+RnBeonRTZr4wdTI01ytQlbgzEf
- 7dux3d5GxirsMGt2ED5IybzlFFeCoh9MyVGabPBOx9c7TxSRRWKvnBVSYkVn42NmBaZsYzXLgS
- KrQ8EOViUO/n+8vvjb3vTwHE9R9j3AxlJmw9+AAAA
-X-Change-ID: 20260802-b4b4-irq-trigger-mask-gpio-1c3f66bcd26b
-To: Keerthy <j-keerthy@ti.com>, Linus Walleij <linusw@kernel.org>,
-        Bartosz Golaszewski <brgl@kernel.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>,
-        Fabio Estevam <festevam@gmail.com>,
-        Grygorii Strashko <grygorii.strashko@ti.com>,
-        Santosh Shilimkar <ssantosh@kernel.org>,
-        Kevin Hilman <khilman@kernel.org>,
-        Robert Jarzmik <robert.jarzmik@free.fr>,
-        Manivannan Sadhasivam <mani@kernel.org>,
-        Andy Shevchenko <andy@kernel.org>,
-        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-        Alexandre Torgue <alexandre.torgue@foss.st.com>,
-        Thierry Reding <thierry.reding@kernel.org>,
-        Jonathan Hunter <jonathanh@nvidia.com>
-Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org, imx@lists.linux.dev,
-        linux-omap@vger.kernel.org, linux-unisoc@lists.infradead.org,
-        linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org,
-        Maulik Shah <maulik.shah@oss.qualcomm.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1785679857; l=10843;
- i=maulik.shah@oss.qualcomm.com; s=20240109; h=from:subject:message-id;
- bh=kmNNPLpqsde0L4mq3OnecKZCCNZLcryG1pWcz1C+eAk=;
- b=nQReNWb+UmnkXw/zketYQXUdCtGRweCEgZnr9tCDL9XvXxXXhw2bFFqE+AU8ZSuBCe1mtSqzE
- g9APKKoxQXzA17eSkRGAjhB9BUwLChbdS/SkdcENB32PTxTIQtPKrIf
-X-Developer-Key: i=maulik.shah@oss.qualcomm.com; a=ed25519;
- pk=bd9h5FIIliUddIk8p3BlQWBlzKEQ/YW5V+fe759hTWQ=
-X-Proofpoint-GUID: SPvsiXbpy45BUeQL9RsojIkubJx-cfAB
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODAyMDEyNSBTYWx0ZWRfX/vHvCCJ7dBp/
- auE6yiZ03ZrsMIienO/jFK3SIWIGPvFXITM9CGgyh5z/fdlqHMSLrd6fJn5WxH5pfwJMmnyYFfh
- 4s/6hwhylzFpGYLGWlpO0zE+PyEOy/Gozimc3gacW6af3Oc8XwwDrY4DOgk5A74YXRNxL0w3Ekm
- kffG+sfcMseZ+gsBSOR70M7HnecGxZ224q1D+dLdrV3U14oEpCcHVItjtUxSF0GeKglCg0sBlN1
- 1FyzIjhN01PRdd+rzn79LAfop/2CaX9JoxOoWZLoDZ8UBBVDX27DjJeyGnYpYrayDqTzmd7ffqi
- 316LnhJQ5F7h7Yjnb/C6774OmPULwdOcb5Kvkx+xUF6SOJpBmjqISD5zD53SiSlJr4Agj2kcktx
- D3jmjkGzu+x7QDp7Hw32x4I+dKt9bL66HNrVNlE0cT41t5DcnueLs6186OkCUdr9hy5gcWetSPM
- 4FXgmlaT8bj7lrzl0FA==
-X-Authority-Analysis: v=2.4 cv=TYSmcxQh c=1 sm=1 tr=0 ts=6a6f4ffb cx=c_pps
- a=RP+M6JBNLl+fLTcSJhASfg==:117 a=fChuTYTh2wq5r3m49p7fHw==:17
- a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_K5XuSEh1TEqbUxoQ0s3:22
- a=EUspDBNiAAAA:8 a=UPyg-B154qBqbsG8PrAA:9 a=QEXdDO2ut3YA:10
- a=iS9zxrgQBfv6-_F4QbHw:22
-X-Proofpoint-ORIG-GUID: SPvsiXbpy45BUeQL9RsojIkubJx-cfAB
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODAyMDEyNSBTYWx0ZWRfX9XiprFRo0vuC
- O40HKx071vKbL9WOJon4YizO7x2ckUCkoLZ+J2iHYdFg6Styvk8lHMZoT3Et/7/pns/lbEnLXdY
- zVx9tgEVsZkagczVpQyKnhsHGRJgmUY=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-02_04,2026-07-30_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 spamscore=0 lowpriorityscore=0 malwarescore=0 phishscore=0
- suspectscore=0 priorityscore=1501 bulkscore=0 clxscore=1011 impostorscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608020125
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260802_071107_968226_5A31C80B 
-X-CRM114-Status: GOOD (  17.75  )
+X-CRM114-CacheID: sfid-20260802_090548_669013_CBA0CC19 
+X-CRM114-Status: GOOD (  17.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -174,282 +101,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use IRQ_TYPE_LEVEL_MASK and IRQ_TYPE_EDGE_BOTH instead of open-coded
-trigger type combinations in irqchip callbacks.
+mt7996_mcu_rx_all_sta_info_event() uses res->sta_num, a __le16 taken
+straight from the firmware event, as the bound of a loop that indexes the
+rate[], adm_stat[] and msdu_cnt[] flexible-array members of the event.
+The count is never clamped and skb->len is never consulted, so an event
+declaring more stations than it actually carries makes the driver read
+past the end of the received skb.
 
-No functional change intended.
+The strides are 20, 36 and 12 bytes respectively, so the worst case
+(tag UNI_ALL_STA_TXRX_ADM_STAT, sta_num 0xFFFF) walks roughly 2.25 MB
+beyond the buffer, in softirq context. Out-of-bounds wlan_idx values are
+range-checked by mt76_wcid_ptr(), but the break statements inside the
+switch exit only the switch, so the loop keeps running; indices that do
+fall in range accumulate out-of-bounds data into wcid->stats, which
+mt7996_sta_statistics() exports to userspace when WED offload is active.
 
-Assisted-by: Claude:claude-sonnet-5
-Signed-off-by: Maulik Shah <maulik.shah@oss.qualcomm.com>
+The return value of the preceding skb_pull() is also discarded.
+skb_pull() returns NULL without modifying the skb when the requested
+length exceeds skb->len, so for an event shorter than
+sizeof(struct mt7996_mcu_rxd) the pull silently does nothing and res
+ends up aliasing the RXD header, taking sta_num from arbitrary
+descriptor bytes.
+
+Check the pull, require the fixed part of the event to be present, pick
+the element stride for the tag being processed, and reject any sta_num
+that cannot fit in the received payload. The subtraction cannot
+underflow because of the preceding skb->len check.
+
+For comparison, mt7996_mcu_wed_rro_event() in the same file already
+bounds its iteration with "while (skb->len >= sizeof(*e))".
+
+Found by code review and confirmed under KASAN with a KUnit test that
+feeds the handler a synthetic ALL_STA_INFO event carrying four adm_stat
+entries but declaring 65535, using a kzalloc-ed struct mt7996_dev (the
+handler only dereferences dev via mt76_wcid_ptr()). No MT7996 hardware
+was involved:
+
+  BUG: KASAN: slab-out-of-bounds in mt7996_mcu_rx_all_sta_info_event+0x19a/0x3a0
+  Read of size 2 at addr ffff8880012422a0 by task kunit_try_catch/28
+   mt7996_mcu_rx_all_sta_info_event+0x19a/0x3a0
+   mt7996_all_sta_info_oob_test+0x24b/0x360
+  The buggy address belongs to the object at ffff888001242000
+   which belongs to the cache skbuff_small_head of size 640
+  The buggy address is located 32 bytes to the right of
+   allocated 640-byte region [ffff888001242000, ffff888001242280)
+
+The same test passes cleanly with this patch applied.
+
+Fixes: adde3eed4a75 ("wifi: mt76: mt7996: Add mcu commands for getting sta tx statistic")
+Cc: stable@vger.kernel.org
+Signed-off-by: Koh Tom Han <kohtomhan@gmail.com>
 ---
- drivers/gpio/gpio-davinci.c    | 8 ++++----
- drivers/gpio/gpio-mt7621.c     | 2 +-
- drivers/gpio/gpio-mvebu.c      | 4 ++--
- drivers/gpio/gpio-mxs.c        | 4 ++--
- drivers/gpio/gpio-omap.c       | 9 ++++-----
- drivers/gpio/gpio-pl061.c      | 5 ++---
- drivers/gpio/gpio-pxa.c        | 2 +-
- drivers/gpio/gpio-rda.c        | 4 ++--
- drivers/gpio/gpio-sa1100.c     | 2 +-
- drivers/gpio/gpio-sodaville.c  | 2 +-
- drivers/gpio/gpio-stmpe.c      | 2 +-
- drivers/gpio/gpio-tegra.c      | 4 ++--
- drivers/gpio/gpio-timberdale.c | 2 +-
- 13 files changed, 24 insertions(+), 26 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 30 +++++++++++++++++--
+ 1 file changed, 27 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/gpio/gpio-davinci.c b/drivers/gpio/gpio-davinci.c
-index 270cd7c88812..cccbaea1dec2 100644
---- a/drivers/gpio/gpio-davinci.c
-+++ b/drivers/gpio/gpio-davinci.c
-@@ -285,9 +285,9 @@ static void gpio_irq_unmask(struct irq_data *d)
- 
- 	gpiochip_enable_irq(&chips->chip, hwirq);
- 
--	status &= IRQ_TYPE_EDGE_FALLING | IRQ_TYPE_EDGE_RISING;
-+	status &= IRQ_TYPE_EDGE_BOTH;
- 	if (!status)
--		status = IRQ_TYPE_EDGE_FALLING | IRQ_TYPE_EDGE_RISING;
-+		status = IRQ_TYPE_EDGE_BOTH;
- 
- 	if (status & IRQ_TYPE_EDGE_FALLING)
- 		writel_relaxed(mask, &g->set_falling);
-@@ -297,7 +297,7 @@ static void gpio_irq_unmask(struct irq_data *d)
- 
- static int gpio_irq_type(struct irq_data *d, unsigned trigger)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 2e83f4b79..65d9ae11e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -648,13 +648,37 @@ static void
+ mt7996_mcu_rx_all_sta_info_event(struct mt7996_dev *dev, struct sk_buff *skb)
  {
--	if (trigger & ~(IRQ_TYPE_EDGE_FALLING | IRQ_TYPE_EDGE_RISING))
-+	if (trigger & ~IRQ_TYPE_EDGE_BOTH)
- 		return -EINVAL;
+ 	struct mt7996_mcu_all_sta_info_event *res;
+-	u16 i;
++	size_t elem_size;
++	u16 i, sta_num;
  
- 	return 0;
-@@ -400,7 +400,7 @@ static int gpio_irq_type_unbanked(struct irq_data *data, unsigned trigger)
+-	skb_pull(skb, sizeof(struct mt7996_mcu_rxd));
++	if (!skb_pull(skb, sizeof(struct mt7996_mcu_rxd)))
++		return;
++
++	if (skb->len < sizeof(*res))
++		return;
  
- 	mask = __gpio_mask(i);
+ 	res = (struct mt7996_mcu_all_sta_info_event *)skb->data;
  
--	if (trigger & ~(IRQ_TYPE_EDGE_FALLING | IRQ_TYPE_EDGE_RISING))
-+	if (trigger & ~IRQ_TYPE_EDGE_BOTH)
- 		return -EINVAL;
- 
- 	writel_relaxed(mask, (trigger & IRQ_TYPE_EDGE_FALLING)
-diff --git a/drivers/gpio/gpio-mt7621.c b/drivers/gpio/gpio-mt7621.c
-index 87086c322f08..a86f6b1060fc 100644
---- a/drivers/gpio/gpio-mt7621.c
-+++ b/drivers/gpio/gpio-mt7621.c
-@@ -194,7 +194,7 @@ mt7621_gpio_irq_type(struct irq_data *d, unsigned int type)
- 		     rg->hlevel | rg->llevel) & mask)
- 			return 0;
- 
--		type = IRQ_TYPE_EDGE_RISING | IRQ_TYPE_EDGE_FALLING;
-+		type = IRQ_TYPE_EDGE_BOTH;
- 	}
- 
- 	rg->rising &= ~mask;
-diff --git a/drivers/gpio/gpio-mvebu.c b/drivers/gpio/gpio-mvebu.c
-index 8d3acadb0d68..93b8a08b04b9 100644
---- a/drivers/gpio/gpio-mvebu.c
-+++ b/drivers/gpio/gpio-mvebu.c
-@@ -1296,7 +1296,7 @@ static int mvebu_gpio_probe(struct platform_device *pdev)
- 	gc = irq_get_domain_generic_chip(mvchip->domain, 0);
- 	gc->private = mvchip;
- 	ct = &gc->chip_types[0];
--	ct->type = IRQ_TYPE_LEVEL_HIGH | IRQ_TYPE_LEVEL_LOW;
-+	ct->type = IRQ_TYPE_LEVEL_MASK;
- 	ct->chip.irq_mask = mvebu_gpio_level_irq_mask;
- 	ct->chip.irq_unmask = mvebu_gpio_level_irq_unmask;
- 	ct->chip.irq_set_type = mvebu_gpio_irq_set_type;
-@@ -1305,7 +1305,7 @@ static int mvebu_gpio_probe(struct platform_device *pdev)
- 	ct->chip.name = mvchip->chip.label;
- 
- 	ct = &gc->chip_types[1];
--	ct->type = IRQ_TYPE_EDGE_RISING | IRQ_TYPE_EDGE_FALLING;
-+	ct->type = IRQ_TYPE_EDGE_BOTH;
- 	ct->chip.irq_ack = mvebu_gpio_irq_ack;
- 	ct->chip.irq_mask = mvebu_gpio_edge_irq_mask;
- 	ct->chip.irq_unmask = mvebu_gpio_edge_irq_unmask;
-diff --git a/drivers/gpio/gpio-mxs.c b/drivers/gpio/gpio-mxs.c
-index 5635694bf9f4..900315aba85a 100644
---- a/drivers/gpio/gpio-mxs.c
-+++ b/drivers/gpio/gpio-mxs.c
-@@ -198,7 +198,7 @@ static int mxs_gpio_init_gc(struct mxs_gpio_port *port, int irq_base)
- 	gc->private = port;
- 
- 	ct = &gc->chip_types[0];
--	ct->type = IRQ_TYPE_LEVEL_HIGH | IRQ_TYPE_LEVEL_LOW;
-+	ct->type = IRQ_TYPE_LEVEL_MASK;
- 	ct->chip.irq_ack = irq_gc_ack_set_bit;
- 	ct->chip.irq_mask = irq_gc_mask_disable_reg;
- 	ct->chip.irq_unmask = irq_gc_unmask_enable_reg;
-@@ -210,7 +210,7 @@ static int mxs_gpio_init_gc(struct mxs_gpio_port *port, int irq_base)
- 	ct->regs.disable = PINCTRL_PIN2IRQ(port) + MXS_CLR;
- 
- 	ct = &gc->chip_types[1];
--	ct->type = IRQ_TYPE_EDGE_RISING | IRQ_TYPE_EDGE_FALLING;
-+	ct->type = IRQ_TYPE_EDGE_BOTH;
- 	ct->chip.irq_ack = irq_gc_ack_set_bit;
- 	ct->chip.irq_mask = irq_gc_mask_disable_reg;
- 	ct->chip.irq_unmask = irq_gc_unmask_enable_reg;
-diff --git a/drivers/gpio/gpio-omap.c b/drivers/gpio/gpio-omap.c
-index e39723b5901b..005420baecf4 100644
---- a/drivers/gpio/gpio-omap.c
-+++ b/drivers/gpio/gpio-omap.c
-@@ -432,8 +432,7 @@ static int omap_gpio_irq_type(struct irq_data *d, unsigned type)
- 	if (type & ~IRQ_TYPE_SENSE_MASK)
- 		return -EINVAL;
- 
--	if (!bank->regs->leveldetect0 &&
--		(type & (IRQ_TYPE_LEVEL_LOW|IRQ_TYPE_LEVEL_HIGH)))
-+	if (!bank->regs->leveldetect0 && (type & IRQ_TYPE_LEVEL_MASK))
- 		return -EINVAL;
- 
- 	raw_spin_lock_irqsave(&bank->lock, flags);
-@@ -450,9 +449,9 @@ static int omap_gpio_irq_type(struct irq_data *d, unsigned type)
- 	}
- 	raw_spin_unlock_irqrestore(&bank->lock, flags);
- 
--	if (type & (IRQ_TYPE_LEVEL_LOW | IRQ_TYPE_LEVEL_HIGH))
-+	if (type & IRQ_TYPE_LEVEL_MASK)
- 		irq_set_handler_locked(d, handle_level_irq);
--	else if (type & (IRQ_TYPE_EDGE_FALLING | IRQ_TYPE_EDGE_RISING))
-+	else if (type & IRQ_TYPE_EDGE_BOTH)
- 		/*
- 		 * Edge IRQs are already cleared/acked in irq_handler and
- 		 * not need to be masked, as result handle_edge_irq()
-@@ -702,7 +701,7 @@ static void omap_gpio_unmask_irq(struct irq_data *d)
- 	 * after enabing the interrupt to clear the wakeup status.
- 	 */
- 	if (bank->regs->leveldetect0 && bank->regs->wkup_en &&
--	    trigger & (IRQ_TYPE_LEVEL_HIGH | IRQ_TYPE_LEVEL_LOW))
-+	    trigger & IRQ_TYPE_LEVEL_MASK)
- 		omap_clear_gpio_irqstatus(bank, offset);
- 
- 	if (trigger)
-diff --git a/drivers/gpio/gpio-pl061.c b/drivers/gpio/gpio-pl061.c
-index 919cf86fd590..fcd44e34f65e 100644
---- a/drivers/gpio/gpio-pl061.c
-+++ b/drivers/gpio/gpio-pl061.c
-@@ -132,8 +132,7 @@ static int pl061_irq_type(struct irq_data *d, unsigned trigger)
- 	if (offset < 0 || offset >= PL061_GPIO_NR)
- 		return -EINVAL;
- 
--	if ((trigger & (IRQ_TYPE_LEVEL_HIGH | IRQ_TYPE_LEVEL_LOW)) &&
--	    (trigger & (IRQ_TYPE_EDGE_RISING | IRQ_TYPE_EDGE_FALLING)))
-+	if ((trigger & IRQ_TYPE_LEVEL_MASK) && (trigger & IRQ_TYPE_EDGE_BOTH))
- 	{
- 		dev_err(gc->parent,
- 			"trying to configure line %d for both level and edge "
-@@ -149,7 +148,7 @@ static int pl061_irq_type(struct irq_data *d, unsigned trigger)
- 	gpiois = readb(pl061->base + GPIOIS);
- 	gpioibe = readb(pl061->base + GPIOIBE);
- 
--	if (trigger & (IRQ_TYPE_LEVEL_HIGH | IRQ_TYPE_LEVEL_LOW)) {
-+	if (trigger & IRQ_TYPE_LEVEL_MASK) {
- 		bool polarity = trigger & IRQ_TYPE_LEVEL_HIGH;
- 
- 		/* Disable edge detection */
-diff --git a/drivers/gpio/gpio-pxa.c b/drivers/gpio/gpio-pxa.c
-index 5d61053e0596..2b5da973f51f 100644
---- a/drivers/gpio/gpio-pxa.c
-+++ b/drivers/gpio/gpio-pxa.c
-@@ -406,7 +406,7 @@ static int pxa_gpio_irq_type(struct irq_data *d, unsigned int type)
- 		if (__gpio_is_occupied(pchip, gpio))
- 			return 0;
- 
--		type = IRQ_TYPE_EDGE_RISING | IRQ_TYPE_EDGE_FALLING;
-+		type = IRQ_TYPE_EDGE_BOTH;
- 	}
- 
- 	gpdr = readl_relaxed(c->regbase + GPDR_OFFSET);
-diff --git a/drivers/gpio/gpio-rda.c b/drivers/gpio/gpio-rda.c
-index 7bbc6f0ce4c8..f6c05fdbe63f 100644
---- a/drivers/gpio/gpio-rda.c
-+++ b/drivers/gpio/gpio-rda.c
-@@ -169,9 +169,9 @@ static int rda_gpio_irq_set_type(struct irq_data *data, unsigned int flow_type)
- 	if (ret)
- 		return ret;
- 
--	if (flow_type & (IRQ_TYPE_LEVEL_LOW | IRQ_TYPE_LEVEL_HIGH))
-+	if (flow_type & IRQ_TYPE_LEVEL_MASK)
- 		irq_set_handler_locked(data, handle_level_irq);
--	else if (flow_type & (IRQ_TYPE_EDGE_FALLING | IRQ_TYPE_EDGE_RISING))
-+	else if (flow_type & IRQ_TYPE_EDGE_BOTH)
- 		irq_set_handler_locked(data, handle_edge_irq);
- 
- 	return 0;
-diff --git a/drivers/gpio/gpio-sa1100.c b/drivers/gpio/gpio-sa1100.c
-index ffa73dd3b982..e4f3bf949b87 100644
---- a/drivers/gpio/gpio-sa1100.c
-+++ b/drivers/gpio/gpio-sa1100.c
-@@ -139,7 +139,7 @@ static int sa1100_gpio_type(struct irq_data *d, unsigned int type)
- 	if (type == IRQ_TYPE_PROBE) {
- 		if ((sgc->irqrising | sgc->irqfalling) & mask)
- 			return 0;
--		type = IRQ_TYPE_EDGE_RISING | IRQ_TYPE_EDGE_FALLING;
-+		type = IRQ_TYPE_EDGE_BOTH;
- 	}
- 
- 	if (type & IRQ_TYPE_EDGE_RISING)
-diff --git a/drivers/gpio/gpio-sodaville.c b/drivers/gpio/gpio-sodaville.c
-index 37c133837729..e2a784df275c 100644
---- a/drivers/gpio/gpio-sodaville.c
-+++ b/drivers/gpio/gpio-sodaville.c
-@@ -158,7 +158,7 @@ static int sdv_register_irqsupport(struct sdv_gpio_chip_data *sd,
- 
- 	sd->gc->private = sd;
- 	ct = sd->gc->chip_types;
--	ct->type = IRQ_TYPE_LEVEL_HIGH | IRQ_TYPE_LEVEL_LOW;
-+	ct->type = IRQ_TYPE_LEVEL_MASK;
- 	ct->regs.eoi = GPSTR;
- 	ct->regs.mask = GPIO_INT;
- 	ct->chip.irq_mask = irq_gc_mask_clr_bit;
-diff --git a/drivers/gpio/gpio-stmpe.c b/drivers/gpio/gpio-stmpe.c
-index 6faf30347a36..ccdf13a741b7 100644
---- a/drivers/gpio/gpio-stmpe.c
-+++ b/drivers/gpio/gpio-stmpe.c
-@@ -149,7 +149,7 @@ static int stmpe_gpio_irq_set_type(struct irq_data *d, unsigned int type)
- 	int regoffset = offset / 8;
- 	int mask = BIT(offset % 8);
- 
--	if (type & IRQ_TYPE_LEVEL_LOW || type & IRQ_TYPE_LEVEL_HIGH)
-+	if (type & IRQ_TYPE_LEVEL_MASK)
- 		return -EINVAL;
- 
- 	/* STMPE801 and STMPE 1600 don't have RE and FE registers */
-diff --git a/drivers/gpio/gpio-tegra.c b/drivers/gpio/gpio-tegra.c
-index fa6c8ee92093..ccda3a56d599 100644
---- a/drivers/gpio/gpio-tegra.c
-+++ b/drivers/gpio/gpio-tegra.c
-@@ -342,9 +342,9 @@ static int tegra_gpio_irq_set_type(struct irq_data *d, unsigned int type)
- 		return ret;
- 	}
- 
--	if (type & (IRQ_TYPE_LEVEL_LOW | IRQ_TYPE_LEVEL_HIGH))
-+	if (type & IRQ_TYPE_LEVEL_MASK)
- 		irq_set_handler_locked(d, handle_level_irq);
--	else if (type & (IRQ_TYPE_EDGE_FALLING | IRQ_TYPE_EDGE_RISING))
-+	else if (type & IRQ_TYPE_EDGE_BOTH)
- 		irq_set_handler_locked(d, handle_edge_irq);
- 
- 	if (d->parent_data)
-diff --git a/drivers/gpio/gpio-timberdale.c b/drivers/gpio/gpio-timberdale.c
-index ec378a4220a7..727fa1b5ad3b 100644
---- a/drivers/gpio/gpio-timberdale.c
-+++ b/drivers/gpio/gpio-timberdale.c
-@@ -148,7 +148,7 @@ static int timbgpio_irq_type(struct irq_data *d, unsigned trigger)
- 	if (ver > 2)
- 		bflr = ioread32(tgpio->membase + TGPIO_BFLR);
- 
--	if (trigger & (IRQ_TYPE_LEVEL_HIGH | IRQ_TYPE_LEVEL_LOW)) {
-+	if (trigger & IRQ_TYPE_LEVEL_MASK) {
- 		bflr &= ~(1 << offset);
- 		flr &= ~(1 << offset);
- 		if (trigger & IRQ_TYPE_LEVEL_HIGH)
-
----
-base-commit: 415606a7be939835db9b0d6b711887586646346d
-change-id: 20260802-b4b4-irq-trigger-mask-gpio-1c3f66bcd26b
-
-Best regards,
---  
-Maulik Shah <maulik.shah@oss.qualcomm.com>
+-	for (i = 0; i < le16_to_cpu(res->sta_num); i++) {
++	switch (le16_to_cpu(res->tag)) {
++	case UNI_ALL_STA_TXRX_RATE:
++		elem_size = sizeof(res->rate[0]);
++		break;
++	case UNI_ALL_STA_TXRX_ADM_STAT:
++		elem_size = sizeof(res->adm_stat[0]);
++		break;
++	case UNI_ALL_STA_TXRX_MSDU_COUNT:
++		elem_size = sizeof(res->msdu_cnt[0]);
++		break;
++	default:
++		return;
++	}
++
++	/* the firmware-provided station count must fit in the received event */
++	sta_num = le16_to_cpu(res->sta_num);
++	if (sta_num > (skb->len - sizeof(*res)) / elem_size)
++		return;
++
++	for (i = 0; i < sta_num; i++) {
+ 		u8 ac;
+ 		u16 wlan_idx;
+ 		struct mt76_wcid *wcid;
+-- 
+2.53.0
 
 
