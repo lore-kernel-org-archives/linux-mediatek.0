@@ -4,140 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A1FFC55182
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2026 15:37:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47463C55184
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2026 17:14:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oYYtfqkC2z+zGFusXbLXfXaBLPq/Bv1l8KfzotDMXk4=; b=IAZ1OdR0aHflpDmVJvAaUrhPV2
-	d8YvsAKfMwBRrv9syn7+vgyqBTjdUqOayD4vOXcorQD3ENNGioru6/DKyxXPu7NMaRb3UDuFnqOEA
-	pQXZuDVjbglf/tN54xMereOEn9e0IGimGkekHf2VjXMDR1KZhtQsw7qyzT7N79yhJPfL6ZISnUf3G
-	iGMf7SCb/2fxgp2gJUXKEhtEW5cB+x5c3G12IDKV2qKbKH8DWBa9Q1ShHH1GiplZS75w39NCqYrOf
-	5uxDeWs8NCcbhYUNrsnkotm7jN2Sxzjm15FA7EVAmZy7RtmdsssJnTc/mR0iRs+C5Wi0XMGotAVvU
-	m4Qf3Z8w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vwy/plpObeCn5fP/sLcl02qhvGaAmrLPd2NoxLUk5Js=; b=xV+x8q65fnyf3Dp4lBdV8D5ljV
+	E8Khs25b2w0Vu+5eDBProfGvHUJYhC+TBfv72vdsG0TlqXTGNjMQ6MU8UcTc+u4J03PNhOMv3LEtV
+	lNWndRxpPkna9f1BMmHWZVoZ2mVz3tcrzeovbjv/lbtq4N1j+EAVbkksCNt/BpF1YoiKQuo/gG/sE
+	sWPuRxsUr5alf0CQSxSsIGlByD2EeqR1GnQe8WcO0x8nyy5+FGzROZchoIx0JyCJmgCIvDBUqTQmB
+	Zgc+3To52zuyl2GZ+dhEJo+7zVblvSwIPZeJSo+jOriaNDpB99S5EpImGidKNBEtsbfgyDGqbYxUR
+	f67WYCdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqujB-0000000HXww-1CvW;
-	Mon, 03 Aug 2026 15:37:21 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1wqwF4-00000000CDQ-3fZb;
+	Mon, 03 Aug 2026 17:14:22 +0000
+Received: from mgamail.intel.com ([192.198.163.12])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wquj9-0000000HXvA-04G6
+	id 1wqwF2-00000000CD3-3DZa
 	for linux-mediatek@lists.infradead.org;
-	Mon, 03 Aug 2026 15:37:20 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-84eb992a881so2869904b3a.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 03 Aug 2026 08:37:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785771437; x=1786376237; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=oYYtfqkC2z+zGFusXbLXfXaBLPq/Bv1l8KfzotDMXk4=;
-        b=oUTliR7BlebiR+mDItJELi00QFCGCcd1da4m7nEoHLBFOa+HCYM6dsFBLlXsSH0QT+
-         gwilMpzoHEr7zpKGg7XoZiwDTb6eqiHRUhCq/t1fwKDitqAL+Ac+B0UttFTjjRwmNCs4
-         pF4DCxGjIbfzwV0njTEa4IfDJXITkVMnMNaynFhfM2EBRZV9E1QC8ftzHYuIGF5gu0hN
-         fBxE3n1mTybBsjOwtYQQx6bMMYGREYbSSM1ym8vd/8wdEZE9hdxQeUyLdhOWJJY+/+Gj
-         hMEXEoXyFX73dV18Eyl8Xa1MxGl8JUu1hwMkKYyzvCTo/lTPdgHkgcDIk4CFzGcCYoK8
-         8Law==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785771437; x=1786376237;
-        h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:sender:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=oYYtfqkC2z+zGFusXbLXfXaBLPq/Bv1l8KfzotDMXk4=;
-        b=QkEVqaEVcAxeO0sNzYn3yh4eITCSHGM/ELyDjQewIc3/eCobA5KlWe9OnkT977OwQr
-         zfTXhMtUamsVbzPBb7ehTh9ghFg4VtIytQPNU7pTw5AeQsxp09FlWIaAKCenAazARvYa
-         9/k8v42WBs5aWb/JR3c+o0TAUldvAo46Egg+bEpKIrN2hceKOAbFtP7l+zAIs1nmxoo6
-         KNidHTJJx0J932C4IlMGlvh7lsmsbdZ65u9MYCKzBPJ4p7US9FpV/9cgpXxoT+s4DqqM
-         saORtBJxcSPk0VB6f4gvomyKf9uIbnouhPbJwNyeM7g2AgPLBl5930ZYu+8QVFQAXWpd
-         sohw==
-X-Forwarded-Encrypted: i=1; AHgh+RrgaClkWqsO0yVCqJ86gFGiyjtudUmXJbMrccMkgaluna1gtfnK5iS3B73TtY90rj+QcX91rg8Yi7XcFGs2pA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyOhJYOob7o02JXrLBFDeE/BNtuwOt99j5aKQ3YgCNfi+tmcPsA
-	p8tidkvCKdLvPcEpVQV8A/K/PJ+S4u+wPOYWdB3oCx9D/qzMhfdBwSGw
-X-Gm-Gg: AR+sD102LWKcLQaVgzR/krJCdTNJwnFUQYLxB1dELCPCrVQT9piVvcCw4f9skhDXZ7V
-	XctIUBCd9yZugFygtMXy99j2R5HwerARwvJWfBAzoayC2EXOPW1C//ZPjB5YKGYgVEnW39NbsVP
-	kzoFbpwPgQocF/i9X4iJc++kBsCR3h112es56ugxtUMiMGsy68IezifC3vo22e3KGhUzuL1NJIb
-	pxdzABWXD+OzmTAEnjvFP+Tf1kVvGbfrlCKMPMmMsnkh+/Nsz6ZI7on6iL8Vk2ZSHqEUksk7bHc
-	LLdZFZ9/gzZ8gcKxTEz0HQa/NQYINXvm5aRifsZsExWAoyChJHyIY9f4uVgPzyxyZZb2c3hSww4
-	AtTy6UR82xzpmYIuWhQFpGAByXEifbjoyxCjDbHvNgXbfPap9xGQeGxA8BnpV3ycHBiBH/FFF49
-	rbraqrWAd4Z7G+Y5qX8aKe6305VfTq1QMFJYRyNV2xlO83Fjzdwkq6uI+4CE+1TvW/0810q+Vz6
-	v92P5hTo28raWNe3seEbHjUMletbwVqA1UhLDY=
-X-Received: by 2002:a05:6a00:1256:b0:845:ba94:a56 with SMTP id d2e1a72fcca58-84ee47dbef9mr9500711b3a.5.1785771437475;
-        Mon, 03 Aug 2026 08:37:17 -0700 (PDT)
-Received: from ?IPV6:2600:1700:e321:62f0:da43:aeff:fecc:bfd5? ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84edc29c7e3sm3939704b3a.38.2026.08.03.08.37.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 03 Aug 2026 08:37:16 -0700 (PDT)
-Message-ID: <45698e38-73c3-4548-95fa-3037c9d133c2@roeck-us.net>
-Date: Mon, 3 Aug 2026 08:37:15 -0700
+	Mon, 03 Aug 2026 17:14:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1785777260; x=1817313260;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=O6I5z+hO9I5U5pxhNDiVlajwFCyfjfEyaeAjsSR9uE8=;
+  b=ViUHA5HkEIqRa0J9t3QTtKuLfWLyWYgci33whJm58mdlhaKWS0zqE9M0
+   Ut22NQdd59C6pKfAFmmoSBYQlrdSrxWg/iUWkTQRmr2sQ+3NzMIsp8rfH
+   +e7J6trELjOCxFe4VkkDONpRDGEE+UntDzC2sWfH4vPRoiww3HkghpN5l
+   OEv6NhtcldM7tz4pBSkokLs1ES9omAP9PYOvT9QoWkgfIQHXezPewXBOE
+   /FXeY/NkyZe3qtCUYROqMZ0iz+kRj3CvkOKgrf7QBspN3bwgmTsEEcAup
+   kkYknB6Fwlk133InKAUwD2CCN3Ksj0pSc9JRBhZSHwZvCMxvjU3gvQpEj
+   w==;
+X-CSE-ConnectionGUID: jll1q8shQjC5chBCvqzV7g==
+X-CSE-MsgGUID: oxsQ8g6iQt2txB2cz/W71w==
+X-IronPort-AV: E=McAfee;i="6800,10657,11864"; a="90131978"
+X-IronPort-AV: E=Sophos;i="6.25,202,1779174000"; 
+   d="scan'208";a="90131978"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Aug 2026 10:14:20 -0700
+X-CSE-ConnectionGUID: SfkezNeKQryRg3JKVUBY/A==
+X-CSE-MsgGUID: tXZxqbhQSQCR0GDI2mYb9g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.25,202,1779174000"; 
+   d="scan'208";a="260681371"
+Received: from lkp-server01.sh.intel.com (HELO 6eda058d650d) ([10.239.97.150])
+  by orviesa008.jf.intel.com with ESMTP; 03 Aug 2026 10:14:18 -0700
+Received: from kbuild by 6eda058d650d with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1wqwEw-000000007RX-3s5x;
+	Mon, 03 Aug 2026 17:14:14 +0000
+Date: Tue, 4 Aug 2026 01:13:44 +0800
+From: kernel test robot <lkp@intel.com>
+To: JB Tsai <jb.tsai@mediatek.com>, nbd@nbd.name, lorenzo@kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, Sean.Wang@mediatek.com,
+	Quan.Zhou@mediatek.com, Ryder.Lee@mediatek.com,
+	litien.chang@mediatek.com, Charlie-cy.Wu@mediatek.com,
+	jb.tsai@mediatek.com
+Subject: Re: [PATCH] wifi: mt76: connac3: implement 6GHz power type detection
+ and dynamic CLC filtering
+Message-ID: <202608040156.lx0926Ek-lkp@intel.com>
+References: <20260724085103.3155942-1-jb.tsai@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND PATCH] watchdog: sbsa_gwdt: add force_enable module
- parameter
-To: Zexin Wang <ot_zexin.wang@mediatek.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: light.chen@mediatek.com, Fred-WY.Chen@mediatek.com,
- Yt.Hsieh@mediatek.com, linux-watchdog@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20260803071823.27759-1-ot_zexin.wang@mediatek.com>
-Content-Language: en-US
-From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- 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
- np3900V20aS7eD9K8GTU0TGC1pyz6IVJwIE=
-In-Reply-To: <20260803071823.27759-1-ot_zexin.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260724085103.3155942-1-jb.tsai@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_083719_061635_66D6ABE0 
-X-CRM114-Status: GOOD (  26.91  )
+X-CRM114-CacheID: sfid-20260803_101420_819189_5A822B2F 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,97 +91,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8/3/26 00:18, Zexin Wang wrote:
-> The sbsa_gwdt driver only manages and registers the watchdog timer if it
-> was already enabled by a previous boot stage (such as firmware). If the
-> watchdog was left disabled prior to entering the kernel, the driver
-> will not actively enable it during the probe phase.
-> 
-> Introduce a new module parameter 'force_enable' to allow overriding this
-> behavior. When 'force_enable' is set, the driver will forcibly start
-> the watchdog and register it as running during the probe phase, even if
-> it was disabled in the previous boot stage.
-> 
+Hi JB,
 
-That describes what is done. It does not describe why it is needed. If the
-watchdog is left disabled by firmware, there is nothing that can be done
-if the system hangs before the watchdog module is loaded. Enabling it when
-it is loaded will in most cases not buy much additional protection, because
-the userspace watchdog daemon is loaded shortly thereafter. In many cases,
-the userspace daemon will be the entity loading the watchdog driver.
+kernel test robot noticed the following build errors:
 
-So, _why_ is this needed ? Why can;t the firmware enable the watchdog on
-systems needing such protection ?
+[auto build test ERROR on wireless-next/main]
+[cannot apply to wireless/main linus/master v7.2-rc6 next-20260731]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-> Signed-off-by: Zexin Wang <ot_zexin.wang@mediatek.com>
-> ---
->   drivers/watchdog/sbsa_gwdt.c | 23 +++++++++++++++++++++--
->   1 file changed, 21 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/watchdog/sbsa_gwdt.c b/drivers/watchdog/sbsa_gwdt.c
-> index e04d42cc7774..4b49e1aeef84 100644
-> --- a/drivers/watchdog/sbsa_gwdt.c
-> +++ b/drivers/watchdog/sbsa_gwdt.c
-> @@ -122,6 +122,11 @@ MODULE_PARM_DESC(nowayout,
->   		 "Watchdog cannot be stopped once started (default="
->   		 __MODULE_STRING(WATCHDOG_NOWAYOUT) ")");
->   
-> +static bool force_enable;
-> +module_param(force_enable, bool, 0);
-> +MODULE_PARM_DESC(force_enable,
-> +		 "Force enable watchdog on probe (default=0)");
-> +
+url:    https://github.com/intel-lab-lkp/linux/commits/JB-Tsai/wifi-mt76-connac3-implement-6GHz-power-type-detection-and-dynamic-CLC-filtering/20260803-215116
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
+patch link:    https://lore.kernel.org/r/20260724085103.3155942-1-jb.tsai%40mediatek.com
+patch subject: [PATCH] wifi: mt76: connac3: implement 6GHz power type detection and dynamic CLC filtering
+config: alpha-allmodconfig (https://download.01.org/0day-ci/archive/20260804/202608040156.lx0926Ek-lkp@intel.com/config)
+compiler: alpha-linux-gcc (GCC) 16.1.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260804/202608040156.lx0926Ek-lkp@intel.com/reproduce)
 
-This enables watchdog while booting. There is nothing "force" about it,
-unless everything the kernel is directed to do is done by force, and
-everything needs to be named "force <something>".
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202608040156.lx0926Ek-lkp@intel.com/
 
-Please drop "force". Name the parameter "early_enable" and describe it
-similar to other drivers (such as omap, s32g) with the same functionality.
+All errors (new ones prefixed by >>):
 
-Thanks,
-Guenter
+   drivers/net/wireless/mediatek/mt76/mt7925/main.c: In function 'mt7925_set_sar_specs':
+>> drivers/net/wireless/mediatek/mt76/mt7925/main.c:1986:15: error: too few arguments to function 'mt7925_mcu_set_clc'; expected 4, have 3
+    1986 |         err = mt7925_mcu_set_clc(dev, dev->mt76.alpha2,
+         |               ^~~~~~~~~~~~~~~~~~
+   In file included from drivers/net/wireless/mediatek/mt76/mt7925/main.c:10:
+   drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h:387:5: note: declared here
+     387 | int mt7925_mcu_set_clc(struct mt792x_dev *dev, u8 *alpha2,
+         |     ^~~~~~~~~~~~~~~~~~
 
->   /*
->    * Arm Base System Architecture 1.0 introduces watchdog v1 which
->    * increases the length watchdog offset register to 48 bits.
-> @@ -296,6 +301,7 @@ static int sbsa_gwdt_probe(struct platform_device *pdev)
->   	struct sbsa_gwdt *gwdt;
->   	int ret, irq;
->   	u32 status;
-> +	bool force_action;
->   
->   	gwdt = devm_kzalloc(dev, sizeof(*gwdt), GFP_KERNEL);
->   	if (!gwdt)
-> @@ -386,14 +392,27 @@ static int sbsa_gwdt_probe(struct platform_device *pdev)
->   	 */
->   	sbsa_gwdt_set_timeout(wdd, wdd->timeout);
->   
-> +	force_action = force_enable && !(status & SBSA_GWDT_WCS_EN);
-> +	if (force_action) {
-> +		sbsa_gwdt_start(wdd);
-> +		set_bit(WDOG_HW_RUNNING, &wdd->status);
-> +		dev_info(dev, "Watchdog force enabled.\n");
-> +	}
-> +
->   	watchdog_stop_on_reboot(wdd);
->   	ret = devm_watchdog_register_device(dev, wdd);
-> -	if (ret)
-> +	if (ret) {
-> +		dev_err(dev, "Failed to register watchdog: %d\n", ret);
-> +		if (force_action) {
-> +			clear_bit(WDOG_HW_RUNNING, &wdd->status);
-> +			sbsa_gwdt_stop(wdd);
-> +		}
->   		return ret;
-> +	}
->   
->   	dev_info(dev, "Initialized with %ds timeout @ %u Hz, action=%d.%s\n",
->   		 wdd->timeout, gwdt->clk, action,
-> -		 status & SBSA_GWDT_WCS_EN ? " [enabled]" : "");
-> +		 watchdog_hw_running(wdd) ? " [enabled]" : "");
->   
->   	return 0;
->   }
 
+vim +/mt7925_mcu_set_clc +1986 drivers/net/wireless/mediatek/mt76/mt7925/main.c
+
+c948b5da6bbec7 Deren Wu    2023-09-18  1978  
+c948b5da6bbec7 Deren Wu    2023-09-18  1979  static int mt7925_set_sar_specs(struct ieee80211_hw *hw,
+c948b5da6bbec7 Deren Wu    2023-09-18  1980  				const struct cfg80211_sar_specs *sar)
+c948b5da6bbec7 Deren Wu    2023-09-18  1981  {
+c948b5da6bbec7 Deren Wu    2023-09-18  1982  	struct mt792x_dev *dev = mt792x_hw_dev(hw);
+c948b5da6bbec7 Deren Wu    2023-09-18  1983  	int err;
+c948b5da6bbec7 Deren Wu    2023-09-18  1984  
+c948b5da6bbec7 Deren Wu    2023-09-18  1985  	mt792x_mutex_acquire(dev);
+8a27c5c764040f Jared.Huang 2026-06-17 @1986  	err = mt7925_mcu_set_clc(dev, dev->mt76.alpha2,
+8a27c5c764040f Jared.Huang 2026-06-17  1987  			 dev->country_ie_env);
+8a27c5c764040f Jared.Huang 2026-06-17  1988  	if (err < 0)
+8a27c5c764040f Jared.Huang 2026-06-17  1989  		goto out;
+8a27c5c764040f Jared.Huang 2026-06-17  1990  
+c948b5da6bbec7 Deren Wu    2023-09-18  1991  	err = mt7925_set_tx_sar_pwr(hw, sar);
+c948b5da6bbec7 Deren Wu    2023-09-18  1992  
+8a27c5c764040f Jared.Huang 2026-06-17  1993  out:
+8a27c5c764040f Jared.Huang 2026-06-17  1994  	mt792x_mutex_release(dev);
+c948b5da6bbec7 Deren Wu    2023-09-18  1995  	return err;
+c948b5da6bbec7 Deren Wu    2023-09-18  1996  }
+c948b5da6bbec7 Deren Wu    2023-09-18  1997  
+
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
