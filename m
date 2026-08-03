@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8C85C55184
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2026 15:19:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63DE8C55184
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2026 15:23:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mfrwFppqeJr324Y3CbSyZQEjIv8H0QwZoY4+hT00zdY=; b=KmuvchRO6IFhC46K4pieRDS5Ik
-	6qIAYClESbfIbFsXK+9bORuv3cnObM4CeDGYkWzdE5MJ1rmmOpqVhnOVE/Tr/vS/WfPnLocPpQp6J
-	ev7cPapWAhtgVHQB1TJ7X9OHu6sMNisEUL1lJHeMM7pi7AyqGwUEsPrIeYI3Cf0H+qvmPMBA3Hkrs
-	t7tpPa6HIJrFP6ZIKWnumge+1UMoyhy8Xuuxf63IN2Vb3xaqUWz9HlioFLQXtgPmOv4W8r3UPNPk5
-	bJaRG4Z6b1rP96rfAUJxFrasaFI7ed0Bdn6rVfcIUDG8odvUZxMs1lVkajvnBZS86GpHerRL4LarR
-	RNjBG++Q==;
+	bh=B+vZ8FUC6EzJTLpIOuSsz/wpLgYkJ6eDVgEjXOFLrVc=; b=PnNOAIR7H4IEJGdFW6q0XC6cjE
+	pLuUYdVkJPBimBt0Qy/pXShwIaJRoGAG0YfcWG1nZXoQ0MuqwJcpHYMBjO5+cHzcnhswV4eOjG28x
+	cVugEtMULCFjBm4B+GIWMCQixkJUgjJi3zpCT0/+U5LaWxjP6mfekJ4NF+d/uzGr/9n84/1xA71LC
+	FXdao1obdxM7Aas3tzkToZPUKQNeN91aeGbgXMQdflGH7hTVqhlm+5PkaeqESwnxPLVkGTqESyr5L
+	i9ykrGGe0396q85HFP1pZzyqd2QSd9awdFkN7RWySbMxIeroHdbLBpf1T/8kxDWCWUzv0yG6UDPJj
+	pFGzmhAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wquS6-0000000HVQZ-2RZ7;
-	Mon, 03 Aug 2026 15:19:42 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1wquW5-0000000HWLg-2WsG;
+	Mon, 03 Aug 2026 15:23:49 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wquS3-0000000HVON-3Pjk
+	id 1wquW2-0000000HWKl-2iG4
 	for linux-mediatek@lists.infradead.org;
-	Mon, 03 Aug 2026 15:19:41 +0000
+	Mon, 03 Aug 2026 15:23:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1785770379;
+	s=mimecast20190719; t=1785770625;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=mfrwFppqeJr324Y3CbSyZQEjIv8H0QwZoY4+hT00zdY=;
-	b=Aq03bMLYvnUBdewIaUTpgr7+x5kGUfOdZ6r2aEzLAJW1oz6Q+0LakpgZXvvqkFfDw85tfL
-	2tDLXF5rQok+hzni4yQgU1UV16xo0H2NEoyZSz8SHEbu+cBkbFZ0AS5o7Fu86IxSS75XLb
-	GogI8k7UKruRgzrYaVWgBdry/rHy8kU=
-Received: from mail-yw1-f199.google.com (mail-yw1-f199.google.com
- [209.85.128.199]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=B+vZ8FUC6EzJTLpIOuSsz/wpLgYkJ6eDVgEjXOFLrVc=;
+	b=UftY0Tc8pKsWLMe5hB5GJQWPGlSdhH5WfSmhRFXcG6hQIPfCe6PaoxV3Lwp2Qy0nl0NGHW
+	prjtY5PCl7rHmqPM02m1qXlWv9h7cHheHMOuXRHVWWAcTf3goytE584EQCj24x6yDu0p/s
+	s23Gk+NZVGDGyqOWitI2jfaPrG7CXKY=
+Received: from mail-yw1-f198.google.com (mail-yw1-f198.google.com
+ [209.85.128.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-625-S85BlbkCM3WWXNhWZOEpSQ-1; Mon, 03 Aug 2026 11:19:37 -0400
-X-MC-Unique: S85BlbkCM3WWXNhWZOEpSQ-1
-X-Mimecast-MFC-AGG-ID: S85BlbkCM3WWXNhWZOEpSQ_1785770377
-Received: by mail-yw1-f199.google.com with SMTP id 00721157ae682-81bee860fb7so133697907b3.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 03 Aug 2026 08:19:37 -0700 (PDT)
+ us-mta-520-HOyIDe6sMdiOhXhQGcoEug-1; Mon, 03 Aug 2026 11:23:44 -0400
+X-MC-Unique: HOyIDe6sMdiOhXhQGcoEug-1
+X-Mimecast-MFC-AGG-ID: HOyIDe6sMdiOhXhQGcoEug_1785770624
+Received: by mail-yw1-f198.google.com with SMTP id 00721157ae682-81e6bb29581so127384777b3.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 03 Aug 2026 08:23:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785770377; x=1786375177;
+        d=1e100.net; s=20251104; t=1785770624; x=1786375424;
         h=user-agent:in-reply-to:content-disposition:content-type
          :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=mfrwFppqeJr324Y3CbSyZQEjIv8H0QwZoY4+hT00zdY=;
-        b=CLTjeReb8hKKvUICw7Pv5n5khF+IiAZpntwKW9wvE4JVFHmJqULt5uN54+dj+aRlo7
-         5hJeI290lGjsICC82R7QhsImrsds4CGKrcGjOy1dw1HqDUXYsKdXUf9NXVfbW+n9IQ6k
-         +J/xSgn25Ykf/NspE+fFGLa90Pw8XVMXG+w/fcvLRaVr9pbBDTDHoqWbqYCb0OhCqXft
-         ed6qMtpKAxUS+cJ8MXtlH3K4UxNLrktyahHTdpC4cIjKXT4pmOWv9BMb2WOgSfOgGUAO
-         w3FEDfA9LMVJVrkB0SRgNVGdSQSXAWchtXQMf/NfOioUovm3BY0/IT2OFc3BYdk0y6eW
-         UinA==
-X-Forwarded-Encrypted: i=1; AHgh+RoY143o0X0fxg6PKvA1zwG8TvBoNJYt6jZbbUgFw1U830lxYfOJd2BQo4eoqHhMNmLQNYvTeQLxCgkAs/ZH5w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxyAMh1LBM8Qh5Quzixyu7JXIGOoOoQCSOB1k/3wtelC0pJKaPc
-	FwLK/3e4Na0FnLPMpbWds7YF7JpPzgRnUXfnTwHKLcdxpi5ZvBjV6V7QkWO9+oqnjgiHOucFkMS
-	xwd+b6wLzEuJHNcZ4iZozbHtgCL37JOOMRF0ub4hIOhkAr/6Wl6zvA1GhokTS0tlVDc4qTM9oSA
+        bh=B+vZ8FUC6EzJTLpIOuSsz/wpLgYkJ6eDVgEjXOFLrVc=;
+        b=HDxeRbQzWotKf9/L7/CtExgr9r8o1MlNT2/oFQr7RDDfxazJ9IxIS8WtUITY9npUWG
+         86URSwI+Fi9BD4vdLYP47jhxbH78ECzWcod23tQP6wVgcl1Il/oDAUdYxfmQPBZNAq+R
+         YRc2Kp3aSDZuacEAXYbCEGGI8vmxNiRyloa8ToKYEqKujnuWW2c+SoZe3psLEUSxd42g
+         +BAw81TOtHIRPz4LjaPpSmQCZV67e3yX6VPYFc2ndCmKAc5M6PoboCT+BHSseHQw+8xy
+         8sAkqzh/KKE7iGWMArkXJ+QWnzMpQxlahtY78EUSMr6Jal7apDXSST1i92usVzyZu8TY
+         r14g==
+X-Forwarded-Encrypted: i=1; AHgh+RrRgA9Upg41Xt00SLczBPuPXcJS/JCCe3fni5wJVhGAyOa2V8ME9RInMfWhMebtPORmaPmFmZU+EHXmyZK4kw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyM/Jc+BpEfBleUNBphXxDx+dCBXbIil75AzT2d35vEEfYgN1jT
+	82J3jitktQxF+E72C54wDYltE0Higf/rYPS2rFtHQXfmTZPZdta4J7HXdk1XDPOSDq3DtWlS0+F
+	Bd7krSv+iruHfwDiIRJoitb1Jlyr/ITMPVyXruSgtQgLG15t8G4/ZNGkO1QKakS8RllcsINqrGA
 	==
-X-Gm-Gg: AR+sD13/ATVmGoSNhszp55/xjJvFQyGUyblhFSd69Mlc4F/5VaNOHjpsnnHAm3zXt1b
-	PIjPpnkkP/iPHtOS2dQkDFYRuTAovXDv1Z27yrAOAyVNURH3SrWxS4TxxAuNGFUh8DOTglZTLTa
-	MNZj4LwVegJuzNIfMm5pby3IF4xQnERADiISwjXvb7CYeOFMxR65p+PLpxyfCw/aEytih16jGk2
-	23jlmDUBllN3kQfgzwj7VD90l+bCK07wBZqIAv9B1a2BuqhLNML6PBTHhv5A2h6bHYLuVrkt1DU
-	4CrQKYYgVqpp93A9QaVXQAQX1fLm7cHzYLqAX+/ho/lg9596eU0tEnoxAkn20LLiCnOzcM/pwBQ
-	zx1MezEFl1wU9FF44o2Lv+75C9IQNum21+eI=
-X-Received: by 2002:a05:690c:278a:b0:81c:a61e:6309 with SMTP id 00721157ae682-81fd4bee7cfmr133566897b3.32.1785770376554;
-        Mon, 03 Aug 2026 08:19:36 -0700 (PDT)
-X-Received: by 2002:a05:690c:278a:b0:81c:a61e:6309 with SMTP id 00721157ae682-81fd4bee7cfmr133566557b3.32.1785770376131;
-        Mon, 03 Aug 2026 08:19:36 -0700 (PDT)
+X-Gm-Gg: AR+sD13VNOewovTV7hJ1QnnduDtYeBp8zbHNOO/4U966cELgEuOJvXlTJWaGbJr/O/A
+	9sXA6h7qnP92PRZAmeldEAeD798CheNUTWLP33pmnAPV99XminEMBu2SY9KJvsoaZ1iWAzamWwW
+	vdkADU9ZN+9WaYQSGDt+g9/VjbJKNlGmmEN1RtOSkuL3uIVw2GcBFvwpGVOmQpAG7HDaOORD6I0
+	jKRcOw8BkMaupoLDjO8lKPwtx7O5q9njJEotIG+MGzyburlYo2Mq2nGDrSDwOVqQJkcKImWky87
+	lQZVWK3eSUS+2nKF+gRDOacAm/JCV62MlKReSVBwOVO8Gw4b+GkXTkGoM1C7qiJ1mjm98do/3V5
+	Eib1gYs2tu7CBVT92/V4WH83G93vo5+ewuak=
+X-Received: by 2002:a05:690c:3709:b0:80c:72a1:fca3 with SMTP id 00721157ae682-81fd4a8e63dmr141736247b3.16.1785770623691;
+        Mon, 03 Aug 2026 08:23:43 -0700 (PDT)
+X-Received: by 2002:a05:690c:3709:b0:80c:72a1:fca3 with SMTP id 00721157ae682-81fd4a8e63dmr141735747b3.16.1785770623266;
+        Mon, 03 Aug 2026 08:23:43 -0700 (PDT)
 Received: from redhat.com (c-73-183-53-213.hsd1.pa.comcast.net. [73.183.53.213])
-        by smtp.gmail.com with ESMTPSA id 00721157ae682-81fccf2e2b0sm55932967b3.8.2026.08.03.08.19.33
+        by smtp.gmail.com with ESMTPSA id 00721157ae682-81fcd0d5ec2sm56111587b3.23.2026.08.03.08.23.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Aug 2026 08:19:35 -0700 (PDT)
-Date: Mon, 3 Aug 2026 11:19:33 -0400
+        Mon, 03 Aug 2026 08:23:42 -0700 (PDT)
+Date: Mon, 3 Aug 2026 11:23:40 -0400
 From: Brian Masney <bmasney@redhat.com>
 To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 Cc: Michael Turquette <mturquette@baylibre.com>,
@@ -93,22 +93,23 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
 	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	Conor Dooley <conor.dooley@microchip.com>,
 	Irving-CH Lin <irving-ch.lin@mediatek.com>
-Subject: Re: [PATCH v5 19/25] clk: mediatek: Add MT8189 vlpcfg clock support
-Message-ID: <anCxhZEK9Rh1H4U9@redhat.com>
+Subject: Re: [PATCH v5 00/25] MT8189: Add support for system and base clock
+ controllers
+Message-ID: <anCyfAxujzRS3wf2@redhat.com>
 References: <20260801-mt8189-clocks-system-base-v5-0-ac4410697cc2@collabora.com>
- <20260801-mt8189-clocks-system-base-v5-19-ac4410697cc2@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20260801-mt8189-clocks-system-base-v5-19-ac4410697cc2@collabora.com>
+In-Reply-To: <20260801-mt8189-clocks-system-base-v5-0-ac4410697cc2@collabora.com>
 User-Agent: Mutt/2.4.0 (2026-06-19)
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: D4b4v3YT0HLS73Y9YHLJqWiNO8chJJ8VKYSsDmLHPFQ_1785770377
+X-Mimecast-MFC-PROC-ID: at0KxAN2PpdOKJQ0Kd34d8TXN9ClAtkQC0H2scGqpbs_1785770624
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_081940_049929_4A3B7909 
-X-CRM114-Status: GOOD (  18.12  )
+X-CRM114-CacheID: sfid-20260803_082346_833598_C6824FA4 
+X-CRM114-Status: GOOD (  14.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,58 +124,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Aug 01, 2026 at 01:21:05PM +0200, Louis-Alexis Eyraud wrote:
-> Add support for the MT8189 vlpcfg clock controller,
-> which provides clock gate control for vlp domain IPs.
-> 
-> Co-developed-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
-> Signed-off-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
-> Co-developed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> ---
->  drivers/clk/mediatek/Makefile            |   2 +-
->  drivers/clk/mediatek/clk-mt8189-vlpcfg.c | 116 +++++++++++++++++++++++++++++++
->  2 files changed, 117 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-> index 3b25df9e7b50..d9279b237b7b 100644
-> --- a/drivers/clk/mediatek/Makefile
-> +++ b/drivers/clk/mediatek/Makefile
-> @@ -124,7 +124,7 @@ obj-$(CONFIG_COMMON_CLK_MT8188_VENCSYS) += clk-mt8188-venc.o
->  obj-$(CONFIG_COMMON_CLK_MT8188_VPPSYS) += clk-mt8188-vpp0.o clk-mt8188-vpp1.o
->  obj-$(CONFIG_COMMON_CLK_MT8188_WPESYS) += clk-mt8188-wpe.o
->  obj-$(CONFIG_COMMON_CLK_MT8189) += clk-mt8189-apmixedsys.o clk-mt8189-topckgen.o \
-> -				   clk-mt8189-vlpckgen.o
-> +				   clk-mt8189-vlpckgen.o clk-mt8189-vlpcfg.o
->  obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192-apmixedsys.o clk-mt8192.o
->  obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
->  obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
-> diff --git a/drivers/clk/mediatek/clk-mt8189-vlpcfg.c b/drivers/clk/mediatek/clk-mt8189-vlpcfg.c
-> new file mode 100644
-> index 000000000000..cc4ebfd46a6f
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-mt8189-vlpcfg.c
-> @@ -0,0 +1,116 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (C) 2025-2026 MediaTek Inc.
-> + *                    Qiqi Wang <qiqi.wang@mediatek.com>
-> + *                    Irving-CH Lin <irving-ch.lin@mediatek.com>
-> + * Copyright (C) 2026 Collabora Ltd.
-> + *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> + *                    Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> + */
-> +
-> +#include <linux/clk-provider.h>
-> +#include <linux/module.h>
-> +#include <linux/of_device.h>
+On Sat, Aug 01, 2026 at 01:20:46PM +0200, Louis-Alexis Eyraud wrote:
+>  .../bindings/clock/mediatek,mt8186-clock.yaml      |  128 ++-
+>  .../bindings/clock/mediatek,mt8186-fhctl.yaml      |    1 +
+>  .../bindings/clock/mediatek,mt8186-sys-clock.yaml  |   24 +-
+>  .../bindings/clock/mediatek,mt8188-clock.yaml      |   93 --
+>  .../bindings/clock/mediatek,mt8188-sys-clock.yaml  |   58 --
+>  .../bindings/clock/mediatek,mt8192-clock.yaml      |  191 ----
+>  .../bindings/clock/mediatek,mt8192-sys-clock.yaml  |   68 --
+>  .../bindings/clock/mediatek,mt8195-clock.yaml      |  238 -----
+>  .../bindings/clock/mediatek,mt8195-sys-clock.yaml  |   76 --
+>  drivers/clk/mediatek/Kconfig                       |   79 ++
+>  drivers/clk/mediatek/Makefile                      |    8 +
+>  drivers/clk/mediatek/clk-mt8189-apmixedsys.c       |  203 ++++
+>  drivers/clk/mediatek/clk-mt8189-bus.c              |  200 ++++
+>  drivers/clk/mediatek/clk-mt8189-dbgao.c            |   98 ++
+>  drivers/clk/mediatek/clk-mt8189-dvfsrc.c           |   58 ++
+>  drivers/clk/mediatek/clk-mt8189-iic.c              |  122 +++
+>  drivers/clk/mediatek/clk-mt8189-scp.c              |   77 ++
+>  drivers/clk/mediatek/clk-mt8189-topckgen.c         | 1025 ++++++++++++++++++++
+>  drivers/clk/mediatek/clk-mt8189-ufs.c              |  133 +++
+>  drivers/clk/mediatek/clk-mt8189-vlpcfg.c           |  116 +++
+>  drivers/clk/mediatek/clk-mt8189-vlpckgen.c         |  285 ++++++
+>  drivers/clk/mediatek/clk-mt8196-apmixedsys.c       |    2 +-
+>  drivers/clk/mediatek/clk-mt8196-vlpckgen.c         |    2 +-
+>  drivers/clk/mediatek/clk-pll.c                     |  130 ++-
+>  drivers/clk/mediatek/clk-pll.h                     |   13 +-
+>  drivers/clk/mediatek/clk-pllfh.c                   |   15 +-
+>  drivers/clk/mediatek/clk-pllfh.h                   |    3 +
+>  include/dt-bindings/clock/mediatek,mt8189-clk.h    |  433 +++++++++
+>  include/dt-bindings/reset/mediatek,mt8189-resets.h |   17 +
+>  29 files changed, 3136 insertions(+), 760 deletions(-)
 
-of_device.h is deprecated. You can drop this one since what you need
-will be provided by platform_device.h.
+I went through the rest of the series and didn't see anything new in the
+last half dozen or so patches beyond some deprecated headers.
 
-With that fixed:
+Just for completeness: There's still the maintainer issue that I brought up
+in v4 that needs to be addressed. I saw the message from Angelo about
+responding to that in mid September.
 
-Reviewed-by: Brian Masney <bmasney@redhat.com>
+Brian
 
 
