@@ -4,112 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EAC1C55182
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2026 13:10:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5B1AC55179
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2026 13:24:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9GUW6H6oVqnVvcG/Ou7I3vxmPgZY6GyVYmapcyiskgI=; b=cXvMZxep9FyWPR72gilhKPYozv
-	NAG6C0e93a4wANkAJNO6YW+G/u5vy6loWbvsC9Y54cOQhxiNZOKZPGa4FHM3Dat9slvMkePdGzHy+
-	SB1SflOMUUrk1K3INcmgWpR4DIj1k9YFM9V4h6IFS6Veh2yrAo+TXRAo/80nCkwN3EzBTfpjlMbhT
-	vmh+fGsdo9ZUxDWfgSoy2iAHMbvyn8DS0OWhFhmIVnoGkJOs8V4v3MfCkh92ukRdfx/PRqYUskllU
-	B6sUjkuTcLQTvlPC8TdU+cNBAqFOSMsZU0aBNhEZgEQD4fq8oyDZZOQ/2Jc7P7XMsk0p2vdcaf5I5
-	s4aMW/hg==;
+	bh=ewIzq0LibUQ6nB6UeoGja0UgNFI3wXy5HatxgQmIUJw=; b=Fji7ydAzHMG8YrCZIxvIi38/H2
+	vMso/Zw4i3uDLJPbVnJJkSlU/4K7O4RWxHm1BJSXTFf3HbHul55AElx7+JW+f1XUN2VEYs9rDju4a
+	YN/MQz9s1bz6tNykk4t4O27LnuI9b20jPYATllhwrhkDiX7IqC/jIdkscsgHGEGXRF/LlByWF0qzr
+	rzoLBxfmBdkuYrh2ENFIckUg5ajUfOmr623XsVRTZ3qptmQmrt6pMG/Uy9LuaQqDpXHwdA3mbjEjU
+	NDUa06rPHhX7NOHA5CJ55dTf+CPvQbolpGTDqrA6QZsTiUwaqKhx9dvTAmOa/D9GR1O9afC1vfjBY
+	U+ZdfXSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqsQa-0000000H8G7-3bHL;
-	Mon, 03 Aug 2026 13:10:00 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1wqseH-0000000H9Vc-23q8;
+	Mon, 03 Aug 2026 13:24:09 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqsQZ-0000000H8Fc-0xeR
-	for linux-mediatek@lists.infradead.org;
-	Mon, 03 Aug 2026 13:10:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1785762598;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9GUW6H6oVqnVvcG/Ou7I3vxmPgZY6GyVYmapcyiskgI=;
-	b=bneIQ5hv3ZFgY8ahwgMOLJwnVXj/wTrf8REp4X3EBAe1bKL0YygYeNLoFUSOjBLpOVDBir
-	hnA5szmxvoljkrzPjTQgRVw7iowvRQMcA86opyPEt6Wqq24Mo9iEGNTt4kQnZ/AAhnPIrn
-	W9q3Z4D1tuwGI/zKenmMOmU3VmsbccA=
-Received: from mail-yw1-f197.google.com (mail-yw1-f197.google.com
- [209.85.128.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-74-wYxAsMCZNH-7GFgLvW7uIQ-1; Mon, 03 Aug 2026 09:09:55 -0400
-X-MC-Unique: wYxAsMCZNH-7GFgLvW7uIQ-1
-X-Mimecast-MFC-AGG-ID: wYxAsMCZNH-7GFgLvW7uIQ_1785762595
-Received: by mail-yw1-f197.google.com with SMTP id 00721157ae682-81e67e87752so31290137b3.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 03 Aug 2026 06:09:55 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785762594; x=1786367394;
-        h=user-agent:in-reply-to:content-disposition:content-type
-         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=9GUW6H6oVqnVvcG/Ou7I3vxmPgZY6GyVYmapcyiskgI=;
-        b=mcGeb+F19Lb5szvhpzuvpl8qCgphLJfja9txyfi1JHCbA+4gfrXwOVpoPRzkaWs49F
-         l301KkfuUQ+wHxlwHWAsx+BYBxrg75VuxesxylbUrgQrwuQoBOVZpyh9copp0bGe4HaK
-         IB6/YK536j6X4LHxfSArrpjtD4927eO4lRE0rFZfdIo8vhNe/Jvk5KW/X8LtdclM50dW
-         Uv6RX9BFEjHZ8dd9oIiXORyRwVr5gTGiWtPep3KpgcRHXx3d+LTJGjRDmyon3v5ggnZX
-         Xnr+q5ZqJW6a3KYjKKMHZqkmehs+wmaG5C0bbPaH4jZ1XOad4Yt0o2UQHzzevMMuk2dD
-         YPiA==
-X-Forwarded-Encrypted: i=1; AHgh+RqvaNBemo0KQAq9X7J1LMtvJ0EerlBtpytL/2sUOE1tQrx7AbgCOLDYJLb6qL0N8Zcy05UwEq+GG+U3/EGtgA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxJ3CSs/czm+y/4InQaS5X9/cpXHXwD7+r9TnLfi/WFIyzeeRbF
-	uPA7UfW2jwvKohku5EoNEFFLpTHbH8VHz4FTpZdgKhJcv0wr/DbPjewiKlICQu5JvyHOd9mD9IT
-	eQ0YkdAj7vOD5F1GhOTmitWeFm3zDGAAr9eGnHJyHscZa89Es+jZdbG3JS/esSarp4sWuXrSlZg
-	==
-X-Gm-Gg: AR+sD105UZwOhZyWVxdnmfVGJLO88LQcq1mCfdE0+XdxIaeDz66vfDtFQGw7rzEm8Ek
-	LwYhtRfEiqRTLmnml02m8pWmaF9ynZFTonpdy/M9P5uczGy0VsijSJRf5lRRPw85dxVk+Rqy4Er
-	ulBdWVZ80/HtO5v+94fUIdxg4e2qO7f9Kt4PPSOdzDBpQITS2BaINAnXKyQNTeCMFIytHcAEDTL
-	4sZww7MwnxbW+fTjFYa1wO9vL0ORMOm1sihWdU1a6bMlFmELN25HC0ezC3U4APrbatI+TuU8yqV
-	khEsUBszVjZpckKWn5D3ogtfWJmkhgHLOZASosdOr7ctY4gpDpsGLVcS0ebztlwhHpKVPaAEJ33
-	Qr+wT7KIgMkPMj8E72aM6bgiEJDOcrc2qVUQ=
-X-Received: by 2002:a05:690c:c503:b0:81d:a1e5:a4d7 with SMTP id 00721157ae682-81fd49d3db8mr127611257b3.5.1785762594632;
-        Mon, 03 Aug 2026 06:09:54 -0700 (PDT)
-X-Received: by 2002:a05:690c:c503:b0:81d:a1e5:a4d7 with SMTP id 00721157ae682-81fd49d3db8mr127610687b3.5.1785762594054;
-        Mon, 03 Aug 2026 06:09:54 -0700 (PDT)
-Received: from redhat.com (c-73-183-53-213.hsd1.pa.comcast.net. [73.183.53.213])
-        by smtp.gmail.com with ESMTPSA id 00721157ae682-81fccf2e239sm55024337b3.5.2026.08.03.06.09.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Aug 2026 06:09:53 -0700 (PDT)
-Date: Mon, 3 Aug 2026 09:09:50 -0400
-From: Brian Masney <bmasney@redhat.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Cc: Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1wqseF-0000000H9U0-2MCB;
+	Mon, 03 Aug 2026 13:24:07 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 34E4941209;
+	Mon,  3 Aug 2026 13:24:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA8CF1F000E9;
+	Mon,  3 Aug 2026 13:24:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1785763447;
+	bh=ewIzq0LibUQ6nB6UeoGja0UgNFI3wXy5HatxgQmIUJw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=SV0fH98WZVDHS7kV3MtroOyYATNwTHsNidP7OGsD9j1V4qyH+YZ/Z6Hox1QZ1jNA9
+	 3jdYzqqt6GOMDx+cHMzWLEllGzDiDSbCMjaRF+vYEnhYSnwCC94E1nTW9rUHlDmzKn
+	 /ttUNPZyWB/8TRiK8Ze4s6IhSF/MxJZrj+la7KbmuQOJZjSRBpr7BKObrhLpco39Y0
+	 URWIpqf4GWuOtmtT2OpMhlAdLWgyh9RRr//v6IedvZ8H3Nv7xEq9QBgHh9mX5Vopcx
+	 /56VW0xcJQdfq4amODpFS7ibeYomUH76DHpLhbXjmoiMMW5mHjFNlStxVhEERporJZ
+	 6XaUvT5CgQ2UA==
+Date: Mon, 3 Aug 2026 08:24:06 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Carlo Caione <ccaione@baylibre.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Bartosz Golaszewski <brgl@kernel.org>,
-	Gabriel Fernandez <gabriel.fernandez@foss.st.com>,
-	Shubhrajyoti Datta <shubhrajyoti.datta@amd.com>,
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
+	devicetree@vger.kernel.org, Julien Stephan <jstephan@baylibre.com>,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
+	linux-usb@vger.kernel.org, David Lechner <dlechner@baylibre.com>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: clock: Correct white-space style
-Message-ID: <anCTHhVjoymK6AiW@redhat.com>
-References: <20260801195540.235298-2-krzysztof.kozlowski@oss.qualcomm.com>
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>
+Subject: Re: [PATCH] dt-bindings: usb: mtu3: Add MT8512
+Message-ID: <178576344579.3104650.10771178654777991535.robh@kernel.org>
+References: <20260721-ccaione-upstream-mt8512-mtu3-binding-v1-1-2f229c39f121@baylibre.com>
 MIME-Version: 1.0
-In-Reply-To: <20260801195540.235298-2-krzysztof.kozlowski@oss.qualcomm.com>
-User-Agent: Mutt/2.4.0 (2026-06-19)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: GElWiEU1IK20SoxRemb0xGHl_pG4UdvQPymDJY1ymHM_1785762595
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_060959_359526_59671C5F 
-X-CRM114-Status: UNSURE (   8.94  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20260721-ccaione-upstream-mt8512-mtu3-binding-v1-1-2f229c39f121@baylibre.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,13 +75,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Aug 01, 2026 at 09:55:41PM +0200, Krzysztof Kozlowski wrote:
-> Correct a few white-space issues, like double space after '=' or before
-> bracket '{' characters, which will be flagged by dt-check-style.  No
-> functional changes.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-Reviewed-by: Brian Masney <bmasney@redhat.com>
+On Tue, 21 Jul 2026 10:00:28 +0200, Carlo Caione wrote:
+> The MT8512 USB controller uses the standard MTU3 device MAC and IPPC
+> register layout and is handled by the generic mediatek,mtu3 driver. Add
+> the SoC-specific compatible so the controller can be described without a
+> legacy split node.
+> 
+> For now the only user of this is on the U-Boot side but we want to keep
+> bindings in sync.
+> 
+> Signed-off-by: Carlo Caione <ccaione@baylibre.com>
+> ---
+>  Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 
