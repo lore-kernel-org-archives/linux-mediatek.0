@@ -4,82 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8358C55182
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2026 12:55:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EAC1C55182
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2026 13:10:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QP1gv1KtBwNFk7/kA74jHt/nez/gj01dosMTZSD+IzQ=; b=t4NlU4Lr3CdZx8UgHxzR1AOpJ8
-	qbWRqvq5O6b8NSMO/OLhlH8qRmk1f1KOMMdANdWmiudFItqx8dZhF99FzWJDjQt4QW1hZpkmAdwS+
-	8VGM2zNJ4qVn4fUA8xn4sZWG96gy4gRPyQTsJF/NLuWHzvpB3m8iJa4gMi8D1e4VxnCK6L+1jeb7Y
-	SmnC3SY98Hv6bCitq2ROV3K4JhGbC/Cir7/E0afjNFIEaICx4MBLIASvSx/zbzz+vTqKufD5yVB4u
-	6sacxnKP2vMyumH/pzAbnvugD2bOCYnzeq8TXWxyiHQaNWFcZpS5KW7HF0MF/QqmaMnQ2ujl+bbXP
-	O4QO4RoA==;
+	bh=9GUW6H6oVqnVvcG/Ou7I3vxmPgZY6GyVYmapcyiskgI=; b=cXvMZxep9FyWPR72gilhKPYozv
+	NAG6C0e93a4wANkAJNO6YW+G/u5vy6loWbvsC9Y54cOQhxiNZOKZPGa4FHM3Dat9slvMkePdGzHy+
+	SB1SflOMUUrk1K3INcmgWpR4DIj1k9YFM9V4h6IFS6Veh2yrAo+TXRAo/80nCkwN3EzBTfpjlMbhT
+	vmh+fGsdo9ZUxDWfgSoy2iAHMbvyn8DS0OWhFhmIVnoGkJOs8V4v3MfCkh92ukRdfx/PRqYUskllU
+	B6sUjkuTcLQTvlPC8TdU+cNBAqFOSMsZU0aBNhEZgEQD4fq8oyDZZOQ/2Jc7P7XMsk0p2vdcaf5I5
+	s4aMW/hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqsCp-0000000H5WH-2a7j;
-	Mon, 03 Aug 2026 12:55:47 +0000
-Received: from mgamail.intel.com ([198.175.65.16])
+	id 1wqsQa-0000000H8G7-3bHL;
+	Mon, 03 Aug 2026 13:10:00 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqsCm-0000000H5V6-1p0d;
-	Mon, 03 Aug 2026 12:55:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1785761744; x=1817297744;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Th0Wiu+Dicd+R2zy4lVM9VJScxk+BaVoF9bs+K4JhBw=;
-  b=C0S5wqNjd+xq2lnDAo57NYRXZvJw91ky68iif2vGbxmZGn+IkaST1ws+
-   C4kZDdxaV7NSN+32g1qD9LE/Y97ekaZM2jKBDnG6EkVtEEas2Sfk6pE2W
-   jXtuADPdRE3035oI6wwsIRNRVuBs2q3vKi0m9jfctKzp+SVcO2hfsyACL
-   xLd7vZTJ4QPd5YYP+98uqfboB5NxlGM8DHsaPorr5EBP8FHOPBhoTzpY+
-   g7XOT0WVKofHv0m9dXwy9dPCy8YwOUfwOkOAwqCEn6XksrwmA/GXM9hXv
-   2HnzaridoEuw9Nt/HsH0AMrdlvRpxvC+n78NCMCEf+kaL/Fs96evcT/yY
-   g==;
-X-CSE-ConnectionGUID: xJNT/OHcRmq8GlpnGefn9g==
-X-CSE-MsgGUID: ueVKLKfsSqeqtNNqJHeobw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11864"; a="86497994"
-X-IronPort-AV: E=Sophos;i="6.25,202,1779174000"; 
-   d="scan'208";a="86497994"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Aug 2026 05:55:43 -0700
-X-CSE-ConnectionGUID: +wzxwPWjTuyivh+Qz8rzIw==
-X-CSE-MsgGUID: URf5YnKhTKmKfzsllNgY0g==
-X-ExtLoop1: 1
-Received: from lkp-server01.sh.intel.com (HELO 6eda058d650d) ([10.239.97.150])
-  by fmviesa003.fm.intel.com with ESMTP; 03 Aug 2026 05:55:40 -0700
-Received: from kbuild by 6eda058d650d with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1wqsCf-000000006x7-1an8;
-	Mon, 03 Aug 2026 12:55:37 +0000
-Date: Mon, 3 Aug 2026 20:55:13 +0800
-From: kernel test robot <lkp@intel.com>
-To: Guangshuo Li <lgs201920130244@gmail.com>,
-	Bin Liu <bin.liu@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	id 1wqsQZ-0000000H8Fc-0xeR
+	for linux-mediatek@lists.infradead.org;
+	Mon, 03 Aug 2026 13:10:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1785762598;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=9GUW6H6oVqnVvcG/Ou7I3vxmPgZY6GyVYmapcyiskgI=;
+	b=bneIQ5hv3ZFgY8ahwgMOLJwnVXj/wTrf8REp4X3EBAe1bKL0YygYeNLoFUSOjBLpOVDBir
+	hnA5szmxvoljkrzPjTQgRVw7iowvRQMcA86opyPEt6Wqq24Mo9iEGNTt4kQnZ/AAhnPIrn
+	W9q3Z4D1tuwGI/zKenmMOmU3VmsbccA=
+Received: from mail-yw1-f197.google.com (mail-yw1-f197.google.com
+ [209.85.128.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-74-wYxAsMCZNH-7GFgLvW7uIQ-1; Mon, 03 Aug 2026 09:09:55 -0400
+X-MC-Unique: wYxAsMCZNH-7GFgLvW7uIQ-1
+X-Mimecast-MFC-AGG-ID: wYxAsMCZNH-7GFgLvW7uIQ_1785762595
+Received: by mail-yw1-f197.google.com with SMTP id 00721157ae682-81e67e87752so31290137b3.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 03 Aug 2026 06:09:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785762594; x=1786367394;
+        h=user-agent:in-reply-to:content-disposition:content-type
+         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=9GUW6H6oVqnVvcG/Ou7I3vxmPgZY6GyVYmapcyiskgI=;
+        b=mcGeb+F19Lb5szvhpzuvpl8qCgphLJfja9txyfi1JHCbA+4gfrXwOVpoPRzkaWs49F
+         l301KkfuUQ+wHxlwHWAsx+BYBxrg75VuxesxylbUrgQrwuQoBOVZpyh9copp0bGe4HaK
+         IB6/YK536j6X4LHxfSArrpjtD4927eO4lRE0rFZfdIo8vhNe/Jvk5KW/X8LtdclM50dW
+         Uv6RX9BFEjHZ8dd9oIiXORyRwVr5gTGiWtPep3KpgcRHXx3d+LTJGjRDmyon3v5ggnZX
+         Xnr+q5ZqJW6a3KYjKKMHZqkmehs+wmaG5C0bbPaH4jZ1XOad4Yt0o2UQHzzevMMuk2dD
+         YPiA==
+X-Forwarded-Encrypted: i=1; AHgh+RqvaNBemo0KQAq9X7J1LMtvJ0EerlBtpytL/2sUOE1tQrx7AbgCOLDYJLb6qL0N8Zcy05UwEq+GG+U3/EGtgA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxJ3CSs/czm+y/4InQaS5X9/cpXHXwD7+r9TnLfi/WFIyzeeRbF
+	uPA7UfW2jwvKohku5EoNEFFLpTHbH8VHz4FTpZdgKhJcv0wr/DbPjewiKlICQu5JvyHOd9mD9IT
+	eQ0YkdAj7vOD5F1GhOTmitWeFm3zDGAAr9eGnHJyHscZa89Es+jZdbG3JS/esSarp4sWuXrSlZg
+	==
+X-Gm-Gg: AR+sD105UZwOhZyWVxdnmfVGJLO88LQcq1mCfdE0+XdxIaeDz66vfDtFQGw7rzEm8Ek
+	LwYhtRfEiqRTLmnml02m8pWmaF9ynZFTonpdy/M9P5uczGy0VsijSJRf5lRRPw85dxVk+Rqy4Er
+	ulBdWVZ80/HtO5v+94fUIdxg4e2qO7f9Kt4PPSOdzDBpQITS2BaINAnXKyQNTeCMFIytHcAEDTL
+	4sZww7MwnxbW+fTjFYa1wO9vL0ORMOm1sihWdU1a6bMlFmELN25HC0ezC3U4APrbatI+TuU8yqV
+	khEsUBszVjZpckKWn5D3ogtfWJmkhgHLOZASosdOr7ctY4gpDpsGLVcS0ebztlwhHpKVPaAEJ33
+	Qr+wT7KIgMkPMj8E72aM6bgiEJDOcrc2qVUQ=
+X-Received: by 2002:a05:690c:c503:b0:81d:a1e5:a4d7 with SMTP id 00721157ae682-81fd49d3db8mr127611257b3.5.1785762594632;
+        Mon, 03 Aug 2026 06:09:54 -0700 (PDT)
+X-Received: by 2002:a05:690c:c503:b0:81d:a1e5:a4d7 with SMTP id 00721157ae682-81fd49d3db8mr127610687b3.5.1785762594054;
+        Mon, 03 Aug 2026 06:09:54 -0700 (PDT)
+Received: from redhat.com (c-73-183-53-213.hsd1.pa.comcast.net. [73.183.53.213])
+        by smtp.gmail.com with ESMTPSA id 00721157ae682-81fccf2e239sm55024337b3.5.2026.08.03.06.09.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 03 Aug 2026 06:09:53 -0700 (PDT)
+Date: Mon, 3 Aug 2026 09:09:50 -0400
+From: Brian Masney <bmasney@redhat.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Fan Wu <fanwu01@zju.edu.cn>, Hans Verkuil <hverkuil@kernel.org>,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Bartosz Golaszewski <brgl@kernel.org>,
+	Gabriel Fernandez <gabriel.fernandez@foss.st.com>,
+	Shubhrajyoti Datta <shubhrajyoti.datta@amd.com>,
+	linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	linux-media@vger.kernel.org,
-	Guangshuo Li <lgs201920130244@gmail.com>
-Subject: Re: [PATCH] media: mtk-jpeg: drain hardware completion before
- freeing context
-Message-ID: <202608032056.zBdPisX5-lkp@intel.com>
-References: <20260708120833.755998-1-lgs201920130244@gmail.com>
+Subject: Re: [PATCH] dt-bindings: clock: Correct white-space style
+Message-ID: <anCTHhVjoymK6AiW@redhat.com>
+References: <20260801195540.235298-2-krzysztof.kozlowski@oss.qualcomm.com>
 MIME-Version: 1.0
+In-Reply-To: <20260801195540.235298-2-krzysztof.kozlowski@oss.qualcomm.com>
+User-Agent: Mutt/2.4.0 (2026-06-19)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: GElWiEU1IK20SoxRemb0xGHl_pG4UdvQPymDJY1ymHM_1785762595
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260708120833.755998-1-lgs201920130244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_055544_546981_EF9633CB 
-X-CRM114-Status: GOOD (  12.23  )
+X-CRM114-CacheID: sfid-20260803_060959_359526_59671C5F 
+X-CRM114-Status: UNSURE (   8.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,75 +124,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Guangshuo,
+On Sat, Aug 01, 2026 at 09:55:41PM +0200, Krzysztof Kozlowski wrote:
+> Correct a few white-space issues, like double space after '=' or before
+> bracket '{' characters, which will be flagged by dt-check-style.  No
+> functional changes.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-kernel test robot noticed the following build errors:
+Reviewed-by: Brian Masney <bmasney@redhat.com>
 
-[auto build test ERROR on linuxtv-media-pending/master]
-[also build test ERROR on media-tree/master linus/master v7.2-rc6 next-20260731]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Guangshuo-Li/media-mtk-jpeg-drain-hardware-completion-before-freeing-context/20260803-143440
-base:   https://git.linuxtv.org/media-ci/media-pending.git master
-patch link:    https://lore.kernel.org/r/20260708120833.755998-1-lgs201920130244%40gmail.com
-patch subject: [PATCH] media: mtk-jpeg: drain hardware completion before freeing context
-config: arm-randconfig-004-20260803 (https://download.01.org/0day-ci/archive/20260803/202608032056.zBdPisX5-lkp@intel.com/config)
-compiler: clang version 21.1.8 (https://github.com/llvm/llvm-project 2078da43e25a4623cab2d0d60decddf709aaea28)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260803/202608032056.zBdPisX5-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202608032056.zBdPisX5-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c:1207:3: error: call to undeclared function 'mtk_jpeg_release_hw'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-    1207 |                 mtk_jpeg_release_hw(jpeg, ctx);
-         |                 ^
-   drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c:1207:3: note: did you mean 'mtk_jpeg_release'?
-   drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c:1200:12: note: 'mtk_jpeg_release' declared here
-    1200 | static int mtk_jpeg_release(struct file *file)
-         |            ^
-    1201 | {
-    1202 |         struct mtk_jpeg_dev *jpeg = video_drvdata(file);
-    1203 |         struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
-    1204 | 
-    1205 |         if (jpeg->variant->jpeg_worker) {
-    1206 |                 cancel_work_sync(&ctx->jpeg_work);
-    1207 |                 mtk_jpeg_release_hw(jpeg, ctx);
-         |                 ~~~~~~~~~~~~~~~~~~~
-         |                 mtk_jpeg_release
-   1 error generated.
-
-
-vim +/mtk_jpeg_release_hw +1207 drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-
-  1199	
-  1200	static int mtk_jpeg_release(struct file *file)
-  1201	{
-  1202		struct mtk_jpeg_dev *jpeg = video_drvdata(file);
-  1203		struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
-  1204	
-  1205		if (jpeg->variant->jpeg_worker) {
-  1206			cancel_work_sync(&ctx->jpeg_work);
-> 1207			mtk_jpeg_release_hw(jpeg, ctx);
-  1208		}
-  1209	
-  1210		mutex_lock(&jpeg->lock);
-  1211		v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
-  1212		v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
-  1213		v4l2_fh_del(&ctx->fh, file);
-  1214		v4l2_fh_exit(&ctx->fh);
-  1215		kfree(ctx);
-  1216		mutex_unlock(&jpeg->lock);
-  1217		return 0;
-  1218	}
-  1219	
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
