@@ -4,74 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED70AC55162
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2026 07:18:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89F57C55175
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2026 09:06:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rnPJ65E1Y9yzwUYd8xbFQASARnIMv8dFxPXCgrTihiM=; b=sUKTKJ0eHWFpNKIXHTzMZY7g1R
-	XyGO71patOSivlF6ff+dK7Mov+6cTCilKl3s0c7luN8Z1vZq12K6i8klRafmsdnEyq9HQeAGirryv
-	BJMKf18Vm7GmnufUn6jAcVnpvc7/Dy4CmaFshfMZd9Ebpu8Vz0Pv3vQzCNhbbU3vSr6BRUjkrCx2D
-	v/HRdS3wIrR6EbmnAsHZMgqeeP4BtYAdLmQJSshR9TgHEBRJ3rtqqJ6/M057+pT9x75vQMo19NWmo
-	5vMrUNwTyZxBo++GCwTa+dNzSfx8exNpVFFnV7lz52Ki5AtPF73RrZBa9qXUHkTalWTZZIl8BftWs
-	ohtEWmQg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3BH3T7qHwOp1a9o5tbDLQUUMqbdhvZojNgKi0kS7JfY=; b=cYep7bsdiueYKeQNS9k8rtotRb
+	fjAfaeOxnbHsAXAud4+SkSWQryNQLPz3acp2J23xC2xIkw6GO9H/Oy8HA+mzQ8v+Ni1C0V9BE6BGB
+	hTApFn6jWaBSQOhPGWDOr1GMBVn0o1e+3hH+/k5TgdNkXEJpR4RwSm0Me2YB0Ysw81e3RJriccAIu
+	E1fEeioLhEv60oIP5lbJxcQNAGN+v8VGhUgGrrejx8Q+ny9brPtrLrUfrlh5RmF8HWW09WwrKCCXi
+	dfUDkh8eFQUe3r7ZynoAVUdsYnEetNKEFWcJJ868k6gHHqrs049TTUnYqUQ9GSAaz+wdHEdAMblJ+
+	le6Zc+iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqmwX-0000000GVXc-2Psu;
-	Mon, 03 Aug 2026 07:18:37 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wqocs-0000000Ge0h-43ur;
+	Mon, 03 Aug 2026 09:06:26 +0000
+Received: from mgamail.intel.com ([198.175.65.15])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqmwU-0000000GVWt-39YM;
-	Mon, 03 Aug 2026 07:18:36 +0000
-X-UUID: 86a87e928f0b11f1acbe4559397dec65-20260803
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=rnPJ65E1Y9yzwUYd8xbFQASARnIMv8dFxPXCgrTihiM=;
-	b=mR9iyQ8aKeM3JFbOdCnDc5SrV+eenLI8BnQhujrB7jW1js+NzZyYUN+OrLuvDYTKKbgKLTT+ZK0D85V6oRThuBjPIknqw+LJWxCEXdZ6OM1dZ+lCZIrKmHIX9Ejoise4REN0PvHr2EjSuEwvD2QZ9lI7EKYIzv4BzM1f2AfN4S0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:249d2bd4-5bf2-42dd-9d31-34dfe4ef064b,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:86e7b2cd-1e1e-41fe-8474-552e0064a2de,B
-	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
-	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 86a87e928f0b11f1acbe4559397dec65-20260803
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <ot_zexin.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 265560649; Mon, 03 Aug 2026 00:18:29 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 3 Aug 2026 15:18:26 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 3 Aug 2026 15:18:25 +0800
-From: Zexin Wang <ot_zexin.wang@mediatek.com>
-To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
-	<linux@roeck-us.net>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <light.chen@mediatek.com>, <Fred-WY.Chen@mediatek.com>,
-	<Yt.Hsieh@mediatek.com>, Zexin Wang <ot_zexin.wang@mediatek.com>,
-	<linux-watchdog@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [RESEND PATCH] watchdog: sbsa_gwdt: add force_enable module parameter
-Date: Mon, 3 Aug 2026 15:18:18 +0800
-Message-ID: <20260803071823.27759-1-ot_zexin.wang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	id 1wqocq-0000000Ge01-0bP5;
+	Mon, 03 Aug 2026 09:06:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1785747985; x=1817283985;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=5r34M1HHBdLNcPvzBryAdGoZIZUgWkfLIrG031AonBo=;
+  b=gL1wXxwISWNTMPqbNli4wfWMX5FGmS1N0wNoVM9n6PHPGFRU70IhT2OJ
+   6MV9aFE2tQQAJRD3Xn6H8WNgdn29o0HjPCMVWbW8dy5sARX9kvGi7K2ZD
+   d8I+9QgHA/FAuvv14DU6hjRpOyUDBB69gvl7+guAxaSiUTxQDX8gSMbzm
+   XF6A+y8a7yRa1rdu8OSPNQCOvMcWeHjXzSGLgIGZ7T4I5hyipZmtTfigi
+   HDGQ05RjRu8TjYB2I9VFqTVBbFHblso/MoTPazqmngdqI3klDuANK1fZg
+   NS4IH/vCiN5QqdHFYEx9qRJ5MEMWo/I9SOEUtC40NxTelS1tgbQzAIMOD
+   g==;
+X-CSE-ConnectionGUID: MMW4WbvcRdKW96Jv7z5qGQ==
+X-CSE-MsgGUID: 1/ICrvjaRMycWchOYN6Csw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11863"; a="89957984"
+X-IronPort-AV: E=Sophos;i="6.25,202,1779174000"; 
+   d="scan'208";a="89957984"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Aug 2026 02:06:24 -0700
+X-CSE-ConnectionGUID: HcefI9CnSy2NxCgotPKkRg==
+X-CSE-MsgGUID: WdfcalN0TOm7U5TS4Q+O/g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.25,202,1779174000"; 
+   d="scan'208";a="266281795"
+Received: from lkp-server01.sh.intel.com (HELO 6eda058d650d) ([10.239.97.150])
+  by fmviesa005.fm.intel.com with ESMTP; 03 Aug 2026 02:06:20 -0700
+Received: from kbuild by 6eda058d650d with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1wqocj-000000006Zh-2RBr;
+	Mon, 03 Aug 2026 09:06:17 +0000
+Date: Mon, 3 Aug 2026 17:05:33 +0800
+From: kernel test robot <lkp@intel.com>
+To: Guangshuo Li <lgs201920130244@gmail.com>,
+	Bin Liu <bin.liu@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Fan Wu <fanwu01@zju.edu.cn>, Hans Verkuil <hverkuil@kernel.org>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org,
+	Guangshuo Li <lgs201920130244@gmail.com>
+Subject: Re: [PATCH] media: mtk-jpeg: drain hardware completion before
+ freeing context
+Message-ID: <202608031631.Ha5cORQG-lkp@intel.com>
+References: <20260708120833.755998-1-lgs201920130244@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260708120833.755998-1-lgs201920130244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_001834_801933_3C54AA0D 
-X-CRM114-Status: GOOD (  15.34  )
+X-CRM114-CacheID: sfid-20260803_020624_263856_3EF60662 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,76 +95,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The sbsa_gwdt driver only manages and registers the watchdog timer if it
-was already enabled by a previous boot stage (such as firmware). If the
-watchdog was left disabled prior to entering the kernel, the driver
-will not actively enable it during the probe phase.
+Hi Guangshuo,
 
-Introduce a new module parameter 'force_enable' to allow overriding this
-behavior. When 'force_enable' is set, the driver will forcibly start
-the watchdog and register it as running during the probe phase, even if
-it was disabled in the previous boot stage.
+kernel test robot noticed the following build errors:
 
-Signed-off-by: Zexin Wang <ot_zexin.wang@mediatek.com>
----
- drivers/watchdog/sbsa_gwdt.c | 23 +++++++++++++++++++++--
- 1 file changed, 21 insertions(+), 2 deletions(-)
+[auto build test ERROR on linuxtv-media-pending/master]
+[also build test ERROR on media-tree/master linus/master v7.2-rc5 next-20260731]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/drivers/watchdog/sbsa_gwdt.c b/drivers/watchdog/sbsa_gwdt.c
-index e04d42cc7774..4b49e1aeef84 100644
---- a/drivers/watchdog/sbsa_gwdt.c
-+++ b/drivers/watchdog/sbsa_gwdt.c
-@@ -122,6 +122,11 @@ MODULE_PARM_DESC(nowayout,
- 		 "Watchdog cannot be stopped once started (default="
- 		 __MODULE_STRING(WATCHDOG_NOWAYOUT) ")");
- 
-+static bool force_enable;
-+module_param(force_enable, bool, 0);
-+MODULE_PARM_DESC(force_enable,
-+		 "Force enable watchdog on probe (default=0)");
-+
- /*
-  * Arm Base System Architecture 1.0 introduces watchdog v1 which
-  * increases the length watchdog offset register to 48 bits.
-@@ -296,6 +301,7 @@ static int sbsa_gwdt_probe(struct platform_device *pdev)
- 	struct sbsa_gwdt *gwdt;
- 	int ret, irq;
- 	u32 status;
-+	bool force_action;
- 
- 	gwdt = devm_kzalloc(dev, sizeof(*gwdt), GFP_KERNEL);
- 	if (!gwdt)
-@@ -386,14 +392,27 @@ static int sbsa_gwdt_probe(struct platform_device *pdev)
- 	 */
- 	sbsa_gwdt_set_timeout(wdd, wdd->timeout);
- 
-+	force_action = force_enable && !(status & SBSA_GWDT_WCS_EN);
-+	if (force_action) {
-+		sbsa_gwdt_start(wdd);
-+		set_bit(WDOG_HW_RUNNING, &wdd->status);
-+		dev_info(dev, "Watchdog force enabled.\n");
-+	}
-+
- 	watchdog_stop_on_reboot(wdd);
- 	ret = devm_watchdog_register_device(dev, wdd);
--	if (ret)
-+	if (ret) {
-+		dev_err(dev, "Failed to register watchdog: %d\n", ret);
-+		if (force_action) {
-+			clear_bit(WDOG_HW_RUNNING, &wdd->status);
-+			sbsa_gwdt_stop(wdd);
-+		}
- 		return ret;
-+	}
- 
- 	dev_info(dev, "Initialized with %ds timeout @ %u Hz, action=%d.%s\n",
- 		 wdd->timeout, gwdt->clk, action,
--		 status & SBSA_GWDT_WCS_EN ? " [enabled]" : "");
-+		 watchdog_hw_running(wdd) ? " [enabled]" : "");
- 
- 	return 0;
- }
--- 
-2.45.2
+url:    https://github.com/intel-lab-lkp/linux/commits/Guangshuo-Li/media-mtk-jpeg-drain-hardware-completion-before-freeing-context/20260803-143440
+base:   https://git.linuxtv.org/media-ci/media-pending.git master
+patch link:    https://lore.kernel.org/r/20260708120833.755998-1-lgs201920130244%40gmail.com
+patch subject: [PATCH] media: mtk-jpeg: drain hardware completion before freeing context
+config: alpha-allmodconfig (https://download.01.org/0day-ci/archive/20260803/202608031631.Ha5cORQG-lkp@intel.com/config)
+compiler: alpha-linux-gcc (GCC) 16.1.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260803/202608031631.Ha5cORQG-lkp@intel.com/reproduce)
 
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202608031631.Ha5cORQG-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c: In function 'mtk_jpeg_release':
+>> drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c:1207:17: error: implicit declaration of function 'mtk_jpeg_release_hw'; did you mean 'mtk_jpeg_release'? [-Wimplicit-function-declaration]
+    1207 |                 mtk_jpeg_release_hw(jpeg, ctx);
+         |                 ^~~~~~~~~~~~~~~~~~~
+         |                 mtk_jpeg_release
+
+
+vim +1207 drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+
+  1199	
+  1200	static int mtk_jpeg_release(struct file *file)
+  1201	{
+  1202		struct mtk_jpeg_dev *jpeg = video_drvdata(file);
+  1203		struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
+  1204	
+  1205		if (jpeg->variant->jpeg_worker) {
+  1206			cancel_work_sync(&ctx->jpeg_work);
+> 1207			mtk_jpeg_release_hw(jpeg, ctx);
+  1208		}
+  1209	
+  1210		mutex_lock(&jpeg->lock);
+  1211		v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
+  1212		v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
+  1213		v4l2_fh_del(&ctx->fh, file);
+  1214		v4l2_fh_exit(&ctx->fh);
+  1215		kfree(ctx);
+  1216		mutex_unlock(&jpeg->lock);
+  1217		return 0;
+  1218	}
+  1219	
+
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
