@@ -4,67 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D5C9C55182
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2026 19:51:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31DB3C55182
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2026 20:28:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q3hwnMFgDGFCuJRAXL8oGqWOBTJI33ph5sUSaM1/MFc=; b=F/cjNV0er0dEZiEh38FJrWDQzy
-	bBIJrvIDer23ski09JNxFsD4ZAS8rBy8/POogMUICTOhNDAuf7eh3z4j/4SGmkkXC68xDe+taqJA7
-	j7VVU0AA+IaZqcwmXbPxlVrym/vBdw8khW6b8PysJ9VpEZzOIzoOBG0YMF7r8nS1uxmum5SEzHKhT
-	MejwfvtIiVPOBHW47pyPK/Gn/OkIlZV9Pl0ajlbtIGlaK+JRdNofYD0H7/gPh47/J9LcOdB1fd/js
-	ev75uRfqsabEza6WY1LAahw7AvQpTGlXHg5Gzz/gRGwRuEUozsXPkIlCA7JI7lIPZwLZPSByuOGQ5
-	iAk3H7lw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wX+bqNXzbUvOFq+BzRqzbHoTdraqMXAamIS5FpWS7aU=; b=cqCsp50Y4LxQTO77LqObzl2veS
+	oNewQO4O8jLLIn3EtK02o2a2JTbugARGaFV6qI9+Zz3tTMwBOuWb0pfJoD/Xijxc1C4aorzmw2mdo
+	eO8qrx74n2RiN+op0AQjlIZxCwTzeLvaoKa4UEAaGIJSTdB5Pz8M5FYTfIp1mmnjSyYDBielt5xXZ
+	6ejveB/0K+rylTkcowzrjmgGhjqoN1/5TP/C8/UMSHrFL7rZW+ceK5KIoLkhMxp7Bck6DrvyKOHNz
+	nnulUR7YT+QeYWULFiNAjA+qIVCsXX/9SAu3DzHyMn0k7pQiSNd1T8gzY6wRnlH4Z1JcGPwYezXL3
+	ypsR3iMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqygp-00000000Skj-1XEF;
-	Mon, 03 Aug 2026 19:51:11 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wqzGm-00000000VBI-2u2V;
+	Mon, 03 Aug 2026 20:28:20 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqygo-00000000SkH-03gq;
-	Mon, 03 Aug 2026 19:51:10 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4E7F060A86;
-	Mon,  3 Aug 2026 19:51:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5571B1F000E9;
-	Mon,  3 Aug 2026 19:51:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785786669;
-	bh=q3hwnMFgDGFCuJRAXL8oGqWOBTJI33ph5sUSaM1/MFc=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=URJ7/siq1x5v5FXaGH5mw6h7Wq7K/lLEqrBnQ4M2Rz2Q33AyEHeQ8POFZumXkhTxP
-	 PbcbpOoUbm/o0ejVMKVYThjcBc/5pzCBIjlv+TYtjOIgik0yJi9aZhk7YdgmvYC64n
-	 QOA66GvNtuCWIlTb3bnycCgw8OFnWdOlpJuWUqGJBJ8HnBvAbnXFjNdQfjG1fgRl2t
-	 dF85vNAxNhin0BM68QEguGAocsfVR6tjxcE82doeGzvRhziaTrEp2s2zLffQ1QWcWK
-	 oAIVAHTPzEdusNs7cnvs2CRJei3w84MRagjMzOqsm/Dt2RcZcGSvbXRVAyZn1K4Qhl
-	 pFNvgiFe7UsVg==
-Date: Mon, 3 Aug 2026 12:51:07 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Brian Masney <bmasney@redhat.com>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>, Philipp Zabel
- <p.zabel@pengutronix.de>, Edward-JW Yang <edward-jw.yang@mediatek.com>,
- Richard Cochran <richardcochran@gmail.com>, Chen-Yu Tsai
- <wenst@chromium.org>, kernel@collabora.com, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>,
- Irving-CH Lin <irving-ch.lin@mediatek.com>
-Subject: Re: [PATCH v5 00/25] MT8189: Add support for system and base clock
- controllers
-Message-ID: <20260803125107.76bc9c9a@kernel.org>
-In-Reply-To: <20260801-mt8189-clocks-system-base-v5-0-ac4410697cc2@collabora.com>
-References: <20260801-mt8189-clocks-system-base-v5-0-ac4410697cc2@collabora.com>
+	id 1wqzGj-00000000VAI-28a6
+	for linux-mediatek@lists.infradead.org;
+	Mon, 03 Aug 2026 20:28:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1785788896;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=wX+bqNXzbUvOFq+BzRqzbHoTdraqMXAamIS5FpWS7aU=;
+	b=e6vHidd4YJFy43TlJgizNUHEOXAOcjmvwFBMAotbavFFKYkQe3UmCc+OpuFY4gLAXBbkyl
+	PqjjHDNjThfyInas7KHHj2PhL076XV3mK5LgDPmfUOOOC91gtSKMNDCEnHxMvRLzZgsgPI
+	SEFzBkfgiL3v7YArC0wrGr84/hMipbk=
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-495-4F7th8YAPQOkAz9rq8-GvA-1; Mon, 03 Aug 2026 16:28:14 -0400
+X-MC-Unique: 4F7th8YAPQOkAz9rq8-GvA-1
+X-Mimecast-MFC-AGG-ID: 4F7th8YAPQOkAz9rq8-GvA_1785788894
+Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-92e53b8a302so373094685a.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 03 Aug 2026 13:28:14 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785788894; x=1786393694;
+        h=user-agent:in-reply-to:content-disposition:content-type
+         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=wX+bqNXzbUvOFq+BzRqzbHoTdraqMXAamIS5FpWS7aU=;
+        b=Tu/TTTLHWoHXYgPRMCOa8ixmKV+oNJBbo1M//iolCh/kZHg0lRAdqsN1steHLR4aN+
+         IEJfI+1JT/eEKpSO2e+uTRT30Q1dPPE7ZuIpegeWBMIrltd66Ul3D1BJj3ZwX0gp8PI5
+         VK43Q9vSLwLC7GnPpQhbVQz2ntFX++mm2GgiouSCzFxbJAvi9MB7PHxnETmK/TSJj9ea
+         iC2Q3Ql3r30BszKmP8nAPK3oyfNHpG0/8oNR/53DcQ1XEwNpFW1CM9hOQpkPMzZqV+4/
+         iDV2y/fqMIm3d5OqUUDTvUYAAPuOnTkaFJ5CD5VIIS9y8v9ZYtsSVCT11ILMv0b27tyc
+         xJQA==
+X-Forwarded-Encrypted: i=1; AHgh+Rru9SRhkD/6uDyfhopt3jUDdMICFPr4kC4eaXNzKtirfI2bkj57GM9NdsvbuC2Or+Z1vl0Q452+ZZ5yqUrT2Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwFaINp3a+CA6cizj/LB1mi5jKkTNxljwPdVg+lNZgyiuy9jRLh
+	1xim3LV+brpT2IV6ury7mtK7xw4gtAjRnlynnojhbngq2P9FnwrIrXYYiJoEDG6+0o13qDhw4J9
+	0yZZFzMdQOyWXybq3soxKW96QrQNBJ89VFf1xBejPR+NbD5qSYCIqSDCC9xI/ZMXJ4scFzlgaRg
+	==
+X-Gm-Gg: AR+sD10XKtqjJEcfcBEn4DCULWJDIyEulKhqXr4Y2qjhpletwYICzJl2JInDlhZLFRy
+	EjlzxumXPoF1IoVprmBoeUZV751CuZVPCPWYhyq3P6Sf6fwvjHkA+lLYVztViKPnHhImTfB7k4r
+	hQHH3wLDax/RsQAkPGlhC/00NMdDM85WHx7a93vuIDTyKZmnD68gjg/vq7vkkbJlFm95W+lgBUM
+	Y2OgiQ0d74qH0/kX2NIM2tUWW8X6rtLM9RIUVL/n7+jS4sTbTs7KbrYm3ksyEreCf/ao0T1DSfg
+	Bj2D1VSS1ZXknpWfGr45vkRJWjeBmUzCzhH+yOcjbHwFlA6R0/sNRhoX1hRE0WXEGV28rRsvsA=
+	=
+X-Received: by 2002:a05:620a:a0db:20b0:914:e3dd:17ea with SMTP id af79cd13be357-934a07873b9mr1716840685a.12.1785788893655;
+        Mon, 03 Aug 2026 13:28:13 -0700 (PDT)
+X-Received: by 2002:a05:620a:a0db:20b0:914:e3dd:17ea with SMTP id af79cd13be357-934a07873b9mr1716836085a.12.1785788893100;
+        Mon, 03 Aug 2026 13:28:13 -0700 (PDT)
+Received: from redhat.com ([2600:382:8125:3ab5:9f4e:536:3d0c:6b89])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-9349bc25410sm737190485a.7.2026.08.03.13.28.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 03 Aug 2026 13:28:12 -0700 (PDT)
+Date: Mon, 3 Aug 2026 16:28:07 -0400
+From: Brian Masney <bmasney@redhat.com>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Akari Tsuyukusa <akkun11.open@gmail.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Yassine Oudjana <y.oudjana@protonmail.com>,
+	Richard Cochran <richardcochran@gmail.com>,
+	Laura Nao <laura.nao@collabora.com>,
+	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>,
+	Danilo Krummrich <dakr@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Uwe =?iso-8859-1?Q?Kleine-K=F6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+	Takashi Sakamoto <o-takashi@sakamocchi.jp>,
+	Haotian Zhang <vulab@iscas.ac.cn>, Kees Cook <kees@kernel.org>,
+	Miles Chen <miles.chen@mediatek.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Sam Shih <sam.shih@mediatek.com>,
+	"open list:COMMON CLK FRAMEWORK" <linux-clk@vger.kernel.org>,
+	open list <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	"open list:PTP HARDWARE CLOCK SUPPORT:Keyword:(?:b|_)ptp(?:b|_)" <netdev@vger.kernel.org>,
+	stable@vger.kernel.org
+Subject: Re: [PATCH 00/32] clk: mediatek: Migrate to common probe/remove
+ helpers and fix memory leaks
+Message-ID: <anD518s51UBvJHj4@redhat.com>
+References: <20260803141659.559129-1-akkun11.open@gmail.com>
+ <20260803125034.49055f62@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <20260803125034.49055f62@kernel.org>
+User-Agent: Mutt/2.4.0 (2026-06-19)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 9JaFjGhacLtETkz1Vw6FonHZNediMf6cAXpbeFdrcE0_1785788894
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260803_132817_637864_CD35CA77 
+X-CRM114-Status: GOOD (  15.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,10 +135,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 01 Aug 2026 13:20:46 +0200 Louis-Alexis Eyraud wrote:
-> This series is a continuation by AngeloGioacchino Del Regno and I of a
-> previous series ([1]), that adds the clock controller support for
-> the Mediatek MT8189 SoC and its variants (MT8371, MT8391).  
+Hi Jakub,
 
-Why are you CCing netdev on this? None of the patches touch networking
+On Mon, Aug 03, 2026 at 12:50:34PM -0700, Jakub Kicinski wrote:
+> On Mon,  3 Aug 2026 23:16:27 +0900 Akari Tsuyukusa wrote:
+> > This series migrates most MediaTek clock drivers to the common
+> > probe/remove helpers provided by the MTK clock framework.
+> 
+> Why are you CCing netdev on this? None of it touches networking
+
+I saw that message from you about two different mediatek patch series
+from different submitters. This series has 38 files, all under
+drivers/clk/mediatek/. If I run get_maintainers.pl on each file path
+individuall like this:
+
+  $ cat filelist | awk '{print $1}' | \
+  	xargs -iblah echo ./scripts/get_maintainer.pl blah
+
+Then netdev list doesn't show up.
+
+However, if I look at it as a whole, then it shows up:
+
+    $ b4 am 20260803141659.559129-1-akkun11.open@gmail.com
+    $ ./scripts/get_maintainer.pl \
+    	./20260803_akkun11_open_clk_mediatek_migrate_to_common_probe_remove_helpers_and_fix_memory_leaks.mbx
+
+    ...
+    netdev@vger.kernel.org (open list:PTP HARDWARE CLOCK SUPPORT:Keyword:(?:\b|_)ptp(?:\b|_))
+
+I think it's matching on this entry in MAINTAINERS:
+
+PTP HARDWARE CLOCK SUPPORT
+M:      Richard Cochran <richardcochran@gmail.com>
+L:      netdev@vger.kernel.org
+S:      Maintained
+W:      http://linuxptp.sourceforge.net/
+F:      Documentation/ABI/testing/sysfs-ptp
+F:      Documentation/driver-api/ptp.rst
+F:      drivers/net/phy/dp83640*
+F:      drivers/ptp/*
+F:      include/linux/ptp_cl*
+K:      (?:\b|_)ptp(?:\b|_)
+
+I think it's the K: for the ptp that's matching.
+
+$ grep ptp 20260803_akkun11_open_clk_mediatek_migrate_to_common_probe_remove_helpers_and_fix_memory_leaks.mbx
+-static const struct mtk_pll_data ptp_plls[] = {
+-	PLL(CLK_PTPPLL, "ptppll", PTPPLL_CON0, PTPPLL_CON0, 0, 0, PLL_AO,
++static const struct mtk_clk_desc ptp_plls = {
++		PLL(CLK_PTPPLL, "ptppll", PTPPLL_CON0, PTPPLL_CON0, 0, 0, PLL_AO,
+
+Brian
+
 
