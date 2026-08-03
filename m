@@ -4,114 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62A08C55182
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2026 12:53:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8358C55182
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2026 12:55:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WGVqxVKLC2Gks94xayPEyUqyvnJiYIaVHNXa8plDaec=; b=WYvgQT51KDqVPtJgNRbQ90Cf6/
-	ts9hJmw53tHDMBm4iU6pJroAc1kqWRyumOfmjzF/Tsw9oFmNVYGcJwBQJZ8La3er4+Ml4PzOjIJIL
-	2pEvYmFMQtCuUH/xnFxvVuVWlJz0z43g2NsWhtWka15vqvL2gspZW8x3yhEkL6vLglB5BOq95B1ul
-	UMXKJEFjNw5SeHYjn9OKHz1v7iZysK+5bYMi/ZdtVq/l3fz2fGQmgjeGuze+akpKAdPQUdd3yML4c
-	LI77gZEe5usZ9XLp/AiJwljxf/5z3hYjDiVCL6G/QM9nfEIAkbgGTIQm0WGXOwnnQxdewf0Fykj9U
-	Iiha8i+A==;
+	bh=QP1gv1KtBwNFk7/kA74jHt/nez/gj01dosMTZSD+IzQ=; b=t4NlU4Lr3CdZx8UgHxzR1AOpJ8
+	qbWRqvq5O6b8NSMO/OLhlH8qRmk1f1KOMMdANdWmiudFItqx8dZhF99FzWJDjQt4QW1hZpkmAdwS+
+	8VGM2zNJ4qVn4fUA8xn4sZWG96gy4gRPyQTsJF/NLuWHzvpB3m8iJa4gMi8D1e4VxnCK6L+1jeb7Y
+	SmnC3SY98Hv6bCitq2ROV3K4JhGbC/Cir7/E0afjNFIEaICx4MBLIASvSx/zbzz+vTqKufD5yVB4u
+	6sacxnKP2vMyumH/pzAbnvugD2bOCYnzeq8TXWxyiHQaNWFcZpS5KW7HF0MF/QqmaMnQ2ujl+bbXP
+	O4QO4RoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqsAj-0000000H5Ek-3zRm;
-	Mon, 03 Aug 2026 12:53:37 +0000
-Received: from mail-vk1-f180.google.com ([209.85.221.180])
+	id 1wqsCp-0000000H5WH-2a7j;
+	Mon, 03 Aug 2026 12:55:47 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wqsAh-0000000H5Du-47Py
-	for linux-mediatek@lists.infradead.org;
-	Mon, 03 Aug 2026 12:53:37 +0000
-Received: by mail-vk1-f180.google.com with SMTP id 71dfb90a1353d-5c3a1d005c5so597504e0c.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 03 Aug 2026 05:53:35 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785761614; x=1786366414;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=WGVqxVKLC2Gks94xayPEyUqyvnJiYIaVHNXa8plDaec=;
-        b=IMeGhIYPERcdhU9gYiVZw/CE5+efPQ/v+soF2L+YRNGrWOxiX2dUrVUVEtNVbeuuac
-         mpm+7Soc8tE4tceYcwJaAvuu23xuf1+4xdOr5TT4Uea6HApTCDOfvjr0qOyycEBsufpu
-         /9yYjByR65rFcZbUvSRqhOvfkNOfHAd8WSBLlrKMGRsj++ugfTPhxznpQegSZp6/hcMQ
-         auDq7xPHNNjoARouHYa4Xxuu6Bc3JP1XwdWgSa9yNWXf/xkpKPvGAcwBixwp72HnJ8DS
-         HlbHwEJ9p+MpLYLWc24u30f8lSVaRc8ElTNzj42fBm0YStSHnOMpc/Fwk2CDLzASV4BR
-         dubw==
-X-Forwarded-Encrypted: i=1; AHgh+RrI4DKjcoVIxz8LQhZULToeU7+rz4jMF8Ml0AxKre8EeRz6FGrb+Tj+KiKGqf0NPYrwWkCG5V07Kj3DI2jDeg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyOfAljoSRzVN9Uo7IP0Bk+PdsKHAryOUlq0VLXdbWdlmjx9b4q
-	wFKCr30EgXHVEODttTOfJaAs5bEedIvzi1LWOU0xOE5w49Is0loj/8cqPc+YMMI4
-X-Gm-Gg: AR+sD123D+NLS2/66ZAEAWepsiOaC7uuLcjGLfzvA5l8J/+XSgJoEElzhgyQhguj14J
-	Xg2n/wA3nsUD6cs9IkCdLOeksMmuOcZl5N4PsKHD9fz15E7NsNXDSO/VK6AUoDiv4NB5snW2byj
-	QH8le34rjFFPOY8zQCTMcIwdeoJ01sx8nU0oZo7Eph7Ac+qwJgz8kbcvTyUb8xTLjsTbf9qlldc
-	zZEgpD8zUBp/1+7sQ+Pczz6mykk0g1iJeYrAsp3m+MhTqYJPs42cjruV6woHvb997Lo1Bh75W9w
-	+KZjRzs7Q72B4dCVDqodCsHllWlvCxlQeykKdo3wWF5vPfOt9qsHZdHIApYWT4W3wnnLNwab5SG
-	0NEF3fIlWHGY0MxL8zrKOUmC/m3Zc3yfy4Qev1SKrT5UJ02HVnr3D0JYraX7mJ6jqaHfGPKfHwB
-	ykHBGylE3hePogNyFqbyLBVit2nLweE1Hszf71oakX5wv39r4XikFa+EPRhXCILTAPOuDOeQMf+
-	clVYwa15xq3ocrCUJY9xqodIw==
-X-Received: by 2002:a05:6102:e0e:b0:739:5cfb:50f6 with SMTP id ada2fe7eead31-75b23d68848mr7621747137.11.1785761614601;
-        Mon, 03 Aug 2026 05:53:34 -0700 (PDT)
-Received: from mail-ua1-f51.google.com (mail-ua1-f51.google.com. [209.85.222.51])
-        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-759a8cf988fsm6212516137.0.2026.08.03.05.53.34
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 03 Aug 2026 05:53:34 -0700 (PDT)
-Received: by mail-ua1-f51.google.com with SMTP id a1e0cc1a2514c-97727c2064fso2192255241.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 03 Aug 2026 05:53:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+RpulQ3Zqx35Gw/G6YYwYYIAgF1LqzEFKoPC8tmEs95fWzCcEwGu+6BomCcOr3rJ9hXjxFIzccdg2rOCpMzSQA==@lists.infradead.org
-X-Received: by 2002:a05:6102:6a83:b0:729:affa:70fd with SMTP id
- ada2fe7eead31-75b2295c6d6mr7103654137.8.1785761305110; Mon, 03 Aug 2026
- 05:48:25 -0700 (PDT)
+	id 1wqsCm-0000000H5V6-1p0d;
+	Mon, 03 Aug 2026 12:55:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1785761744; x=1817297744;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Th0Wiu+Dicd+R2zy4lVM9VJScxk+BaVoF9bs+K4JhBw=;
+  b=C0S5wqNjd+xq2lnDAo57NYRXZvJw91ky68iif2vGbxmZGn+IkaST1ws+
+   C4kZDdxaV7NSN+32g1qD9LE/Y97ekaZM2jKBDnG6EkVtEEas2Sfk6pE2W
+   jXtuADPdRE3035oI6wwsIRNRVuBs2q3vKi0m9jfctKzp+SVcO2hfsyACL
+   xLd7vZTJ4QPd5YYP+98uqfboB5NxlGM8DHsaPorr5EBP8FHOPBhoTzpY+
+   g7XOT0WVKofHv0m9dXwy9dPCy8YwOUfwOkOAwqCEn6XksrwmA/GXM9hXv
+   2HnzaridoEuw9Nt/HsH0AMrdlvRpxvC+n78NCMCEf+kaL/Fs96evcT/yY
+   g==;
+X-CSE-ConnectionGUID: xJNT/OHcRmq8GlpnGefn9g==
+X-CSE-MsgGUID: ueVKLKfsSqeqtNNqJHeobw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11864"; a="86497994"
+X-IronPort-AV: E=Sophos;i="6.25,202,1779174000"; 
+   d="scan'208";a="86497994"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Aug 2026 05:55:43 -0700
+X-CSE-ConnectionGUID: +wzxwPWjTuyivh+Qz8rzIw==
+X-CSE-MsgGUID: URf5YnKhTKmKfzsllNgY0g==
+X-ExtLoop1: 1
+Received: from lkp-server01.sh.intel.com (HELO 6eda058d650d) ([10.239.97.150])
+  by fmviesa003.fm.intel.com with ESMTP; 03 Aug 2026 05:55:40 -0700
+Received: from kbuild by 6eda058d650d with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1wqsCf-000000006x7-1an8;
+	Mon, 03 Aug 2026 12:55:37 +0000
+Date: Mon, 3 Aug 2026 20:55:13 +0800
+From: kernel test robot <lkp@intel.com>
+To: Guangshuo Li <lgs201920130244@gmail.com>,
+	Bin Liu <bin.liu@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Fan Wu <fanwu01@zju.edu.cn>, Hans Verkuil <hverkuil@kernel.org>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	linux-media@vger.kernel.org,
+	Guangshuo Li <lgs201920130244@gmail.com>
+Subject: Re: [PATCH] media: mtk-jpeg: drain hardware completion before
+ freeing context
+Message-ID: <202608032056.zBdPisX5-lkp@intel.com>
+References: <20260708120833.755998-1-lgs201920130244@gmail.com>
 MIME-Version: 1.0
-References: <20260720-drm_simple_encoder_init-v2-0-5020b630668a@gmail.com> <20260720-drm_simple_encoder_init-v2-10-5020b630668a@gmail.com>
-In-Reply-To: <20260720-drm_simple_encoder_init-v2-10-5020b630668a@gmail.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 3 Aug 2026 14:48:14 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdUe0F06RE4ahWb9ERFq0_pnNy-qGZ5ewod+59x-RtU_FQ@mail.gmail.com>
-X-Gm-Features: AUfX_mz7dUNKx_CkXmX2bBiqeRWfQJXaKympC5b4Q722_mZANMq2M_rTZsMnNYo
-Message-ID: <CAMuHMdUe0F06RE4ahWb9ERFq0_pnNy-qGZ5ewod+59x-RtU_FQ@mail.gmail.com>
-Subject: Re: [PATCH v2 10/15] drm/renesas/shmobile: remove dependency on DRM
- simple helpers
-To: Diogo Silva <diogompaissilva@gmail.com>
-Cc: Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, 
-	Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Peter Griffin <peter.griffin@linaro.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, 
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Michal Simek <michal.simek@amd.com>, 
-	Thierry Reding <thierry.reding@kernel.org>, Mikko Perttunen <mperttunen@nvidia.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Stefan Agner <stefan@agner.ch>, 
-	Alison Wang <alison.wang@nxp.com>, Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
-	David Airlie <airlied@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, 
-	Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
-	Gurchetan Singh <gurchetansingh@chromium.org>, Chia-I Wu <olvaffe@gmail.com>, 
-	Jyri Sarha <jyri.sarha@iki.fi>, Liu Ying <victor.liu@nxp.com>, Frank Li <Frank.Li@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Xinliang Liu <xinliang.liu@linaro.org>, 
-	Sumit Semwal <sumit.semwal@linaro.org>, Yongqin Liu <yongqin.liu@linaro.org>, 
-	John Stultz <jstultz@google.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
-	Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Jonathan Corbet <corbet@lwn.net>, 
-	Shuah Khan <skhan@linuxfoundation.org>, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org, 
-	virtualization@lists.linux.dev, imx@lists.linux.dev, 
-	linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
-	linux-amlogic@lists.infradead.org, linux-doc@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260708120833.755998-1-lgs201920130244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_055336_029501_1953340B 
-X-CRM114-Status: GOOD (  21.03  )
+X-CRM114-CacheID: sfid-20260803_055544_546981_EF9633CB 
+X-CRM114-Status: GOOD (  12.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,55 +94,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Diogo,
+Hi Guangshuo,
 
-On Mon, 20 Jul 2026 at 17:41, Diogo Silva <diogompaissilva@gmail.com> wrote:
-> The simple KMS helpers are deprecated because they only add an
-> intermediate layer between drivers and atomic modesetting.
->
-> Open-code drm_simple_encoder_init() by calling drm_encoder_init()
-> directly and providing driver-local drm_encoder_funcs.
->
-> Signed-off-by: Diogo Silva <diogompaissilva@gmail.com>
+kernel test robot noticed the following build errors:
 
-Thanks for your patch!
+[auto build test ERROR on linuxtv-media-pending/master]
+[also build test ERROR on media-tree/master linus/master v7.2-rc6 next-20260731]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-> --- a/drivers/gpu/drm/renesas/shmobile/shmob_drm_crtc.c
-> +++ b/drivers/gpu/drm/renesas/shmobile/shmob_drm_crtc.c
+url:    https://github.com/intel-lab-lkp/linux/commits/Guangshuo-Li/media-mtk-jpeg-drain-hardware-completion-before-freeing-context/20260803-143440
+base:   https://git.linuxtv.org/media-ci/media-pending.git master
+patch link:    https://lore.kernel.org/r/20260708120833.755998-1-lgs201920130244%40gmail.com
+patch subject: [PATCH] media: mtk-jpeg: drain hardware completion before freeing context
+config: arm-randconfig-004-20260803 (https://download.01.org/0day-ci/archive/20260803/202608032056.zBdPisX5-lkp@intel.com/config)
+compiler: clang version 21.1.8 (https://github.com/llvm/llvm-project 2078da43e25a4623cab2d0d60decddf709aaea28)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260803/202608032056.zBdPisX5-lkp@intel.com/reproduce)
 
-> @@ -29,7 +30,6 @@
->  #include <drm/drm_modeset_helper_vtables.h>
->  #include <drm/drm_panel.h>
->  #include <drm/drm_probe_helper.h>
-> -#include <drm/drm_simple_kms_helper.h>
->  #include <drm/drm_vblank.h>
->
->  #include <video/videomode.h>
-> @@ -436,6 +436,10 @@ static const struct drm_encoder_helper_funcs encoder_helper_funcs = {
->         .mode_fixup = shmob_drm_encoder_mode_fixup,
->  };
->
-> +static const struct drm_encoder_funcs shmob_encoder_funcs = {
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202608032056.zBdPisX5-lkp@intel.com/
 
-Nit: shmob_drm_encoder_funcs?
+All errors (new ones prefixed by >>):
 
-> +       .destroy = drm_encoder_cleanup,
-> +};
-> +
->  /* -----------------------------------------------------------------------------
->   * Encoder
->   */
+>> drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c:1207:3: error: call to undeclared function 'mtk_jpeg_release_hw'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+    1207 |                 mtk_jpeg_release_hw(jpeg, ctx);
+         |                 ^
+   drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c:1207:3: note: did you mean 'mtk_jpeg_release'?
+   drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c:1200:12: note: 'mtk_jpeg_release' declared here
+    1200 | static int mtk_jpeg_release(struct file *file)
+         |            ^
+    1201 | {
+    1202 |         struct mtk_jpeg_dev *jpeg = video_drvdata(file);
+    1203 |         struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
+    1204 | 
+    1205 |         if (jpeg->variant->jpeg_worker) {
+    1206 |                 cancel_work_sync(&ctx->jpeg_work);
+    1207 |                 mtk_jpeg_release_hw(jpeg, ctx);
+         |                 ~~~~~~~~~~~~~~~~~~~
+         |                 mtk_jpeg_release
+   1 error generated.
 
-Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
 
-Gr{oetje,eeting}s,
+vim +/mtk_jpeg_release_hw +1207 drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
 
-                        Geert
+  1199	
+  1200	static int mtk_jpeg_release(struct file *file)
+  1201	{
+  1202		struct mtk_jpeg_dev *jpeg = video_drvdata(file);
+  1203		struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
+  1204	
+  1205		if (jpeg->variant->jpeg_worker) {
+  1206			cancel_work_sync(&ctx->jpeg_work);
+> 1207			mtk_jpeg_release_hw(jpeg, ctx);
+  1208		}
+  1209	
+  1210		mutex_lock(&jpeg->lock);
+  1211		v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
+  1212		v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
+  1213		v4l2_fh_del(&ctx->fh, file);
+  1214		v4l2_fh_exit(&ctx->fh);
+  1215		kfree(ctx);
+  1216		mutex_unlock(&jpeg->lock);
+  1217		return 0;
+  1218	}
+  1219	
 
--- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
