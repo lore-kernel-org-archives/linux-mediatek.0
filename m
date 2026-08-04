@@ -4,153 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 452CFC5518F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 14:38:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93E75C55184
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 14:43:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n8ixtTzRipWSng2lUt2MxnHT7dTmpb44so3J9utVvq8=; b=jKCB2f2nOzGeLM8c1hXjdrwEE+
-	n/Vbh/eplmHcGGEVk2DDNXljVO+eQghAp2mwomtK3tTsyGpbrSaGBTau8MfC0nW31uO7OasIu7Fws
-	LnoQ9UxquYG+pa8gI0Sx4VM68CjkTUJ8w+H4dUR/spXUtq5iULvKAO1R5etbw1FF6K2ooMUsYDiRo
-	VaIa2c3M8dWiqPBSYF8LdxnrgjEjadku5ueEOk7R1P+0I0u9NeVtQNU2koK4YEw0Q9YdZQB5wizoh
-	WDQtFLlujZcgbB9CfljJYssSv/RjArSabJ0jt+pgoHm8l9GD3B3VVmvfVuGlAgttAN3Qv4JpiCz7x
-	m6dDmcMg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=V5bWvi6ykthzl7ggK9SqN1JOT9wDhVQTnCPUpppGeiU=; b=menk40tp4uLrGIlraZjW5GI7Ft
+	ofuz9Q63eR4tA9uVQP6yT5F+GqbEe9JjyxICMEO6NggDsr+yXNAS2JHgDH5CiErPB1NalMqjrympQ
+	0n/pcsj9XIhPCznBG2rdK/wL8K+RjPZVxpUzBNZNNcQN0NCqEvFgpBC5aFV6cojHujqWtguS9NGq4
+	7TpW8C7qETC+ED2FJUDTTNiIy2Uyd8ynGq20tljEAycNyftLKPJPXva14pRliN9hQ5iQ7UlrjO6Og
+	8SSKzgxonZw3saDhMMrnkk+73CyOC0eBLgLVkafE2W2Hiw3uUNn45pkAqn7wUOFg742XqdFZ9eTEG
+	8s+3W9tQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrGHU-0000000265e-38mH;
-	Tue, 04 Aug 2026 14:38:12 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1wrGN3-000000026sW-1e8R;
+	Tue, 04 Aug 2026 14:43:57 +0000
+Received: from mail-westeuropeazlp170130006.outbound.protection.outlook.com ([2a01:111:f403:c201::6] helo=AM0PR02CU008.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrGHS-0000000264R-28bO
+	id 1wrGMz-000000026rt-2hjc
 	for linux-mediatek@lists.infradead.org;
-	Tue, 04 Aug 2026 14:38:11 +0000
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 674CWwOe3211645
-	for <linux-mediatek@lists.infradead.org>; Tue, 4 Aug 2026 14:38:10 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	n8ixtTzRipWSng2lUt2MxnHT7dTmpb44so3J9utVvq8=; b=bnJhHFml3sy2gaQz
-	Ci9sZKYL5yG+Oj4FnR8ardvu1diFIEzPYOoDyi2MBDkws7UtwGx5DdY4SbgkVHM/
-	rjB5F45uD1naCjeUuhfE2hn720XV1fP5rhFMk7CagCzppXhXY9cZcMcUHdpWF86k
-	ang3AV6bobCsHplowoD7u1DdABblZtmgz4KNFHA7HmBegrvSLch4YcMlTB5u/3Xj
-	V8wxWuiAavYP36IHqXQrqdbBJudqfgADLtBWEp7wSnwmSBkAgYPN3yJBEqYWu/gE
-	hH6v86h/WN2eKhRULlmY19wxzW1YrgPDQPg6s+DZnZEYW3RBIQh/W3rQokgGChoo
-	5pegZQ==
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com [209.85.219.70])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fud23hc3a-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Tue, 04 Aug 2026 14:38:09 +0000 (GMT)
-Received: by mail-qv1-f70.google.com with SMTP id 6a1803df08f44-8e934385db1so47065176d6.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 04 Aug 2026 07:38:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785854289; cv=none;
-        d=google.com; s=arc-20260327;
-        b=A+ynyVUjLJhLAP3HfDaoa3RVSuh63nwgqQZLFySjwwvWrdwY32xKx6Iy6oekNWNPzQ
-         r1Vjur8SqJgMzMSLFlX9j4N5AJmPBJTArpxuO8MavwSpxQnzNpZgbBoWYRtfRhUbXWWo
-         RCJn7cwlpToDU4nDCIk8EdyIDYZ/eN43HoeFuQS+F7qT94E3MZzREBP9aK1bsii1AIhm
-         wdeLzzJu1nZmP+jNC46GXU9w01XCGoXoYj+dr1WXfv/KtCXC98rwiASqfFRT5F4bSQO/
-         ShPYKpdsJYKrYqNwIoJD7aKquS6EkthSir9usJIjevWTH/QFYHLRfC4PSP37QcMkosXn
-         lCvA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=n8ixtTzRipWSng2lUt2MxnHT7dTmpb44so3J9utVvq8=;
-        fh=zCvJDmV0YcGF8HBULR9jM4xBvKcRQAk05AyciJkCk7Q=;
-        b=MCTIsPw31WF/Hl5YGn9/oJHhPrnJP0z9iO4QrC6D/v3wl7GYy6Y1sYy7uuDSZR6Q2R
-         N00LCU8dee3Y/pnFRDY+mB1q77NQomnKn0M/PuRlTXgmXtAGUAf6nsjoDI2s5QoUlaA3
-         w/75RSKTXeIIOGWT4D33mI3XZZkYizjY2mU1vtYO3EwCAUGCASqZjSnlX6UXq2oyspxn
-         LUlmhvduwg764f5RrOqtIxU7NcRe6UXaSixSINIbKbsQwzWs8HpLYfyupIC+ZFWQBo7n
-         o88W/L6IS9DnCqmAbupeHDuSEnPgNahpiQgKdt7khYVnOTjjaiv+CkWPxx71Xg0zHJc0
-         o8DQ==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1785854289; x=1786459089; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=n8ixtTzRipWSng2lUt2MxnHT7dTmpb44so3J9utVvq8=;
-        b=Q6/SnKwLDqEgOzEE8MTseRujTy/syZgADYO69wS9BE8l08chNNaD6+2kpLNURdDFsM
-         cBsAIjilk0+DycvvXZZVHcdgEiF5UXTr6RMkYV8MmM9LRL7uzBkAtf/aDSXfF4j8D1My
-         Tfr7Ht8+v+Nn/od6m4ujNcAU1xdLfBc+240hFY/xT9Mc2sB4nNnRkRidyH7UCCNcopFc
-         9SwEdrqkr9PkU6R1s0NI32BCkIDQvome1777CQR06meB7/hpMT3uUfIFvcm2XByLxF/T
-         qsiMxBLav3P6PJqKX9hnXXFAfnYmzXbJMOU9YQ787hqy8Z96vtH/kVRKW4OHQacsLF4j
-         IamA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785854289; x=1786459089;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=n8ixtTzRipWSng2lUt2MxnHT7dTmpb44so3J9utVvq8=;
-        b=QDJcJxqD9g6bIFkd8o3WRyuLZ4jX3YhURCzASnhP59t1soW7IR4bXjUKIggErd3YS7
-         GBiuiNFZs8DnIpb8HwFy7q7zGoedu4a/9dt5dolAWSxDyjjvFJ7zveql9JKBxgX3WeAk
-         gZJHmnXKXzVpkpax4jbS67BrOR8KyxFz2qhv3ckU6yFQ92CiYng+7Ox9xBQFvPGG4L07
-         TWJAIdz9pUPaXNltTrvtR3p0YnvIIDpGUl3GPKVbXlPkvr/MXHDIUIpIu1c0xQMDAkdA
-         gDAZr+4PICaLWbP0jMNhxYuVkmQTGcJQPqhVcPSBqQoGaejkGDXXpEBKd1ImGYKkpfaW
-         Z4Ug==
-X-Forwarded-Encrypted: i=1; AHgh+RoYDwDS6WHrJAoHs7Cx4k3KIrLlKNt8KD9MaiKYorxBpVqPWOT7lBC4zb+mScPcmx8Z4qMcIgZ9+QQ1cw/5RQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwO7B82eCqyVivfwRgvn1ef1fuShJTEVKdsIBl6fkrs6A1aa1EG
-	83x/Xvy/WA6WSQNenswxOl0opbxvs7Srv/ZxhwlHPbLHyG9Gb18Oxw8UIUOtci7c3DoaESIgOFs
-	duVBKY+8nBpWKygq/bIe9nW/NXJTachS4leVOCjEDADdlvhUwFtVCCM4esYgP9Q4l4nFAQex1oG
-	DWwj0dlclPOExYZLXxZG/O3Ps5F6kr0vgMdTIRnpfFUYkd/6Z+cQ==
-X-Gm-Gg: AR+sD12kM5QZKGJ+Rrop88uyqoW3lJJOoBZvS8ETAOLHxBUQhtZ8pf1SjVqYRXcwgEZ
-	GrwcuQCwUpKxtvoW+awmumKNfEo1j+QI2HZUFF3p3lScO7bfrkFGTVEtetq5ur1h+xdQCCAOlym
-	4cobpp2lIRDY+kU7aAwqJ8N4mIwg3UxyOnCO0dS+kFVjmtIPu5QkAZDl2Ffw==
-X-Received: by 2002:a05:6214:4009:b0:908:1bd5:9c38 with SMTP id 6a1803df08f44-9084957bcb6mr304720056d6.14.1785854288956;
-        Tue, 04 Aug 2026 07:38:08 -0700 (PDT)
-X-Received: by 2002:a05:6214:4009:b0:908:1bd5:9c38 with SMTP id
- 6a1803df08f44-9084957bcb6mr304719426d6.14.1785854288513; Tue, 04 Aug 2026
- 07:38:08 -0700 (PDT)
+	Tue, 04 Aug 2026 14:43:56 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=IjBZRaQ5TuDo4441KTeY7JZSBSnVMw4amlvYQ/gNinaXJRCMvNZNRgU12JaQKZzUKu8P/wVqPmQYl8XstZRYjmTiAh3cSrG5hv2R2144DCiAyf2aHO2rbKDvUWkA9Oi87nRTmGk9eO1j0hmoEH8F2VS3cD7qLnae9S7zTag9+rkZo6VPkY4q6ylsF3oLQOFIP9nTPA+xLVL9crWDOhOPJjNEwU9mWh6z8ElyMo5kiSK3eiCuQva6nyesJbVoeXNdBpyWHF+2AqMfbulWzyU7peV57HBuMbJx8KGF6rhlitv7Ko6w+fembIxspQz4U62rw50tLgGvSUveF8T1Iwk9CQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=V5bWvi6ykthzl7ggK9SqN1JOT9wDhVQTnCPUpppGeiU=;
+ b=jGrWB0y5TPh/ciTo3xCxA7zeRNR9iDj+bGpMiZaelwH9f0AhXS/2dQsELBhaOndkpoUTbjXNAtQJVMDZRQKnqd2rNKMScQ6CwGDUqFBMjRr5clii/PQKyGUMlKh9JrGGWlsmG7B5zjmv8di8ZSZYFsj/8zoKMC7J4NiwtYk8vILxEj01cLwYfu7Tmt+nB74gUWVp9yAmxRVJajsEWE56E+cOlhmmdxfYpqvr0qGm+BuhJJBgLLn6NJZyf2NjzvRZBezZpJnJPM+zqP+Pu7CAO61as69tog9d3dQ44Hhs/2JtNVCWP7sNmiNetbSSty2/3E7k8yhJNjfWMYE5A37b1Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
+ dkim=pass header.d=iopsys.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=V5bWvi6ykthzl7ggK9SqN1JOT9wDhVQTnCPUpppGeiU=;
+ b=l7DIoRIlk0v+fkFhsFtaLj0jq4TgEOCLcHBVINWxulIbu/MTv+LBbeTTpyetPUd5zIxTnqJ5XZkMYW8KvA5LNn3K/37BTBiIb8aiNmNNwzDZyaXCq/Z0wNUwJW/Bxt57uzqa+LRjIn/dgabwRFpGDt3Fo7XEm0b6HlS0PWuYomCXxBQbiKKQLHqiIPH+WhdmnlzbV3eOAgSMJOiPRpch0r/iEvSkpzhQb48AIyyqIm3feg0CVLMwji5DIBDzpRWNiD9W0vaOahbcQMs//EH71nnEaKjwdkjqHOX9jENhOtrVJ6lBoPVDjXKmcxsKSW+D1Et17pah2WLo04rhN6ExzQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=iopsys.eu;
+Received: from DU2PR08MB10037.eurprd08.prod.outlook.com (2603:10a6:10:49a::20)
+ by DB9PR08MB9753.eurprd08.prod.outlook.com (2603:10a6:10:462::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.270.18; Tue, 4 Aug
+ 2026 14:43:46 +0000
+Received: from DU2PR08MB10037.eurprd08.prod.outlook.com
+ ([fe80::3c7:6d2e:8afe:e4dc]) by DU2PR08MB10037.eurprd08.prod.outlook.com
+ ([fe80::3c7:6d2e:8afe:e4dc%5]) with mapi id 15.21.0292.013; Tue, 4 Aug 2026
+ 14:43:46 +0000
+Message-ID: <d92137d6-5dde-468a-95ec-3acc506444f9@iopsys.eu>
+Date: Tue, 4 Aug 2026 17:43:43 +0300
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 30/35] dt-bindings: pinctrl: airoha: an7583: add olt
+ function/group
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Bartosz Golaszewski <brgl@kernel.org>,
+ Christian Marangi <ansuelsmth@gmail.com>,
+ Benjamin Larsson <benjamin.larsson@genexis.eu>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Markus Gothe <markus.gothe@genexis.eu>,
+ Matheus Sampaio Queiroga <srherobrine20@gmail.com>
+References: <20260727174141.664933-1-mikhail.kshevetskiy@iopsys.eu>
+ <20260727174141.664933-31-mikhail.kshevetskiy@iopsys.eu>
+ <20260727-chivalrous-legendary-goat-b9ab93@quoll>
+From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Content-Language: en-US, ru-RU
+In-Reply-To: <20260727-chivalrous-legendary-goat-b9ab93@quoll>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: GVZP280CA0074.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:150:274::15) To DU2PR08MB10037.eurprd08.prod.outlook.com
+ (2603:10a6:10:49a::20)
 MIME-Version: 1.0
-References: <20260729125907.830090-1-dmitry.osipenko@collabora.com>
-In-Reply-To: <20260729125907.830090-1-dmitry.osipenko@collabora.com>
-From: Ulf Hansson <ulf.hansson@oss.qualcomm.com>
-Date: Tue, 4 Aug 2026 16:37:57 +0200
-X-Gm-Features: AUfX_mz-i8dB5SWfHvWpOVnVTkawqldOEJi0_Rvnt1_rX3o7xhgWlAFvXqEMTd4
-Message-ID: <CAPx+jO--DskGufFZyhObH_t+H_idykV0gBPqPC6=g5uFUAJeRQ@mail.gmail.com>
-Subject: Re: [PATCH v2] pmdomain: mediatek: Fix mt8183 hang on boot
-To: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-Cc: Ulf Hansson <ulfh@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Proofpoint-ORIG-GUID: zuKuxNiu2OqTt32MvoQ06exVaQbibvSv
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODA0MDExOCBTYWx0ZWRfXxpILIbSv7Omo
- 9BgVLRofXNC7UFgmdzgATvY9yMYngOSwBgOGygkM1oiRQsFSvAXJ7FYJMdbXVKYtpELQRJz2gNe
- qetbJV8d/uXqgVgbVDeY0lFeH7p2tMg=
-X-Authority-Analysis: v=2.4 cv=XIkAjwhE c=1 sm=1 tr=0 ts=6a71f952 cx=c_pps
- a=oc9J++0uMp73DTRD5QyR2A==:117 a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10
- a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
- a=DJpcGTmdVt4CTyJn9g5Z:22 a=QX4gbG5DAAAA:8 a=W51c6IlItZHyHODVoFAA:9
- a=QEXdDO2ut3YA:10 a=iYH6xdkBrDN1Jqds4HTS:22 a=AbAUZ8qAyYyZVLSsDulk:22
-X-Proofpoint-GUID: zuKuxNiu2OqTt32MvoQ06exVaQbibvSv
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODA0MDExOCBTYWx0ZWRfX7/Q92UGGRf7M
- 9KcyJcdVVpyH0rUKmAd9gkyssg4o8v4TRr1WjDudTEp/csH6QIsBh1bzUbCEFToYzilVARRxcJ5
- derJA+xMJ3s9ivw9/canXLReR8n6Mg9YpMweJGLtSlQSYfALmBG28ZdlQShxmgf3YEnoJlcILZ8
- se233rFbRVDNWXOq07l94dOGVxb02+z9A2hBRNiiY4tM8zjHGyzMPDYf+NuYojfgaNXkNEdCEXt
- GHLdNAfAU9GnDJPcPQ/vweoE2ZvXrs4lyj94dtAQQPvtj5Fc6mUzWigOZzQtC+T1/7sMTyPxmnJ
- qFa83SIJooN7PCa7gNhtyM1zTuwmy3QfBmUhkBhMDpoyOnjcS7tr4KL1RgE/l0+dDVKxBxYjIKx
- 7Zn5PhPa5woyl1zUo/z6yVfp2LchTJijdem9l9B7Cnlbra+9pqrZaomODAP4KuPwoEVfvP6jfSF
- TtQHLWH+viZLEXz4Cyw==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-04_03,2026-08-03_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 suspectscore=0 lowpriorityscore=0 phishscore=0
- priorityscore=1501 malwarescore=0 adultscore=0 impostorscore=0 bulkscore=0
- spamscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2608040118
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU2PR08MB10037:EE_|DB9PR08MB9753:EE_
+X-MS-Office365-Filtering-Correlation-Id: fb16adda-dfd9-41c3-a10a-08def236c9f7
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|7416014|376014|23010399003|1800799024|56012099006|10067099003|11063799006|4143699003|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: DMwekxCJDb29fify8VOochrzzai803eu+cIvymjGE65qz70/ujnuPOngZ4mv+yWH3IJyV4yftwdLHF65BTYXimLUcsIVdIV7faeTZCQehXduTdGQoN2emwreLyoaeufOj4HvbfLNiIrkuz75Is16gtOtOZDexR4kyPLujowib4ylWfs+1jckQOMBqDLwii5b+BQhh7gU38G6btuwWBmacWLtXBQBk5bMv2jLUbzmamJ6lJus8/uYusP6zJqMG2GLTn+Jbre+jZV8Vt8bVHTnFoIIGbCIqZbYCrhFPx88H5HGbXcnxzU3AQpfTkukOeDg5RuE1DTEODAW4PA7RpoQ1YK1EqSsqOXyisz+MMbXC4C9fjdoRw99Rl0bMCKOgydHxPZ75zOAUg/gS5RRwl4yqn5UdZUzALO/m9GR2ul1jV1Yv/R08h6LDdtdzSi470mNZlk2RI0DeNqWRWJLMyAEe0UwvvVB8RqG05RS0qWFdINdzzLHYFMOzJmu8dc6eZF1nziAp2Nogm+szXl1RZCg6JLDg6/4GgNoi24Ht04H0ujiJZOfPjvGNeTEDpvEenctFU8stOwLLWV8bX6+OyuMx4GHE43gY1gymfcPpM1IvG24B5OKI/1q6rbgA959bdxCt5rWPYPRhHH8J80e7JbGqPiRlEBjT1lCD3VINdpwfLU=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR08MB10037.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(376014)(23010399003)(1800799024)(56012099006)(10067099003)(11063799006)(4143699003)(18002099003)(22082099003);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Z05aKzVwUG1BNWhGTHNPQjNZTkdqTFF3cTFzNUt3T2pMVkM5OGNaOTdNNXRp?=
+ =?utf-8?B?SE9XUWZHaXVGUjFLbUNpV0QvQ2dWZVpSUlBxYVlEYUhTQWNRVUp3UzkxUTZZ?=
+ =?utf-8?B?QVBXY0lYK3RPZ1lSQ3FVYnF1R2ExR3o0TXJGUWNUdm91VmthTy9hN0phUlhX?=
+ =?utf-8?B?WXJ5Y09yV0lYN0NldFF0eG5jNXZQS3dET0JwQzFDSUVqUU11R0M0TVJuL1cv?=
+ =?utf-8?B?Z0RKK0NybmlnYll3UjN1VUpQY2lQOStvRkJlNGpzeis3Ykoza0tqY1JHOVVu?=
+ =?utf-8?B?dUExUS9MendZN2VLUTFHclM4R3psRzFmcXE3ZWkvOCtrMGJkTGhLdUlJUS9K?=
+ =?utf-8?B?WE9DT1lPQ2hQUElSQzZVb1RKNTdDM3BoR2k1WTNjV25KbmQ1SDNqLzJGajMz?=
+ =?utf-8?B?cFJ1V2pKYUd0Q0gvcDh3NmN6SGVPTVNFelFRbFpyZlVHNWlvbVpjcng3QzQw?=
+ =?utf-8?B?ZW5QUkw1VzV3ekZUalY3bE91eGIwbEZXQnJUQ28xWm53L0NIZUhFTWJ2Zkti?=
+ =?utf-8?B?b2hhamRSR0VRaVRaKzVXODNqaDMyQ0dyZ3VNcmF2VnY3YzVTa01YajZyNWpv?=
+ =?utf-8?B?NUQ2UHRkVHRGV3JKNFBLWXBhZEpUQVFqb3dKMklYRzNON0pJK2lITys2bjZy?=
+ =?utf-8?B?MTdQSGMxcHg2am5ORHlnanJ1TlRSMW9JVnNpU2JzR0FpTXY3bzFGSzUveCt4?=
+ =?utf-8?B?UHlONXJiVHEvT2hpMVMxVVh6dU5ybDR3RnJMNi9QTk1ENWNhekV2OEthdGk4?=
+ =?utf-8?B?anJiREc3dHkyQ0VOYkFDOVRBZkhVR052TnN0V3ZGVjBTTm5NdktzL2psQmVN?=
+ =?utf-8?B?TTZ1WGxTLzRIYlZzSXBUdXc0U2doQkpRNUFBbUo3dUY0VitjN052UXBvVDRj?=
+ =?utf-8?B?Z2tXWS8yYmJuOGRWTUJ4M1ZzNTUwcmF6T1Z6dGVJMFRrL2Q5NW1EQ0hHMGpw?=
+ =?utf-8?B?WWJGZWNIMmlMTFRTbWJBRGxOeXlRUU5tcG8zRVFibjdsblRKN1RRRVdhb1lQ?=
+ =?utf-8?B?QTY5dmF1Qm5KbnphTndSb0VsS2xwaVMwenNHbXN5OUVaRFRZOHJsdjluRm9n?=
+ =?utf-8?B?SU90OXJyWTlpVlFOU1pOVHQvVis0ajBaekI2YmtDcjdDQnZEbEZCaXdsU2ZB?=
+ =?utf-8?B?Um1IYkV0VWJlYmRVRDBQZ2lZZFFMOHk2VDRXYTRodm9XUFlBbXhLalMxclVk?=
+ =?utf-8?B?NEtrS2U2Qjd4cFRqVUpYK1NzSjlBY1Z6VDErRVkzY3I3blVwRit6RGFaRTY0?=
+ =?utf-8?B?d3JrSnA1TWQ3YTExblMxd2hrM1dIU3NGYUNkNW9zUmxnaUJOTWw0TzRiZ2E2?=
+ =?utf-8?B?QXdOamE4WE9nYTd4Rk5LbktmaUFjb1JnVUNKYVh4WkhyTXZwb1VBZE5wQjVR?=
+ =?utf-8?B?OHNZc1JtekJoZUV6by9nZmpveFJXUGZkaGhWQ25NMEtEdzF0V0hPbnFJcVJw?=
+ =?utf-8?B?N2VIeDBDaSthdS9IcXVvenAvZkxFU01kTDBRZXVycXBkSnJRekRvUjlHa3Q5?=
+ =?utf-8?B?NXUzZkYwQzhESXZqUGhiLy9NRDZxWnhWU1NjL1l4SHZvUG9uWWZ5S3JPaDVY?=
+ =?utf-8?B?V3RZL084TmpvOE1zRjBZRkYrd2JLbUhGa0pwRVhLZ25pRkF4Z0szdTAxZS9w?=
+ =?utf-8?B?Q0xLNkMvSlBtUEd6QXhXRWl3cW9URzY5OXUzK20ycG5BT1NydkZLWmtRNk85?=
+ =?utf-8?B?MmlDaDA1MlI3TDRtMUJSZ3pibjVqWVFwNWFnYStGQTJVRmNDSTR0ZVNSTkVi?=
+ =?utf-8?B?Y2wxT3hpM2hvUGpuV01yc3RyT3AzWFdEMGRRRFpMNUNoYlY2L0NncldIY25Z?=
+ =?utf-8?B?UXFYTHpFTmpkeGhUVTEwa0lMdTFoQkdGcm5rRkhiTHNpU0p5SFZFR0JSd2xU?=
+ =?utf-8?B?ejR3M3VZRGgzckJ5WGhJS1hoWEUwSU5hQWFVZ0d4R1BlaTBmdVFDdlZLY1po?=
+ =?utf-8?B?Ui9sTGMyRlZLd2kxbUQzZWtRclNSR1E3SWlzU1A1bGgyNUNRUDhFZUNhM0tv?=
+ =?utf-8?B?cW1zQzFGWVVuQzU0K0kzVmRSdFRJdWdXSUhvNittVzlQL3ViYllwOC85Q2Y3?=
+ =?utf-8?B?WkJ4eDBwTEtBSU1TRVp1akhkTzhhT1FoaGRCanplNFplL0M4KzZuZTByNlVa?=
+ =?utf-8?B?dER4TWZXdTVndjZ6YXVTQTh4K2tqUDB1cy9hamc0eVJFbkdTaitHNTdaSC9z?=
+ =?utf-8?B?MWZMRzBFMjBnY20yamdOMVlTR0tITU5uVE1TWFluQkVYNHdRa3M4eEFHSHhM?=
+ =?utf-8?B?bnJ2Wjh2OVBNRFRWRFlFSUVWSDUzbGhUdWJINlBnZmx3Ync4RHlBNUJWN1Yw?=
+ =?utf-8?B?eUZkUTMvQjlkZTJoU1pycWZudjJYYjRETWlxNnQreFdtMDhwU0R2Q2RNQkRx?=
+ =?utf-8?Q?qcxQTpewcdiKETrQ=3D?=
+X-OriginatorOrg: iopsys.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: fb16adda-dfd9-41c3-a10a-08def236c9f7
+X-MS-Exchange-CrossTenant-AuthSource: DU2PR08MB10037.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Aug 2026 14:43:46.5869
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: MS1Mc91WqOT+3dYhNTF1XfrbBS9DTeIpBlE5Rs48SpdDYr9Qbm9Aq2C1XnfRZxxeqXeaL2o1NkM1AsCwzLsdcZipoxHVEOliwohzrPgHhcA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR08MB9753
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260804_073810_762415_01FCA0F9 
-X-CRM114-Status: GOOD (  26.38  )
+X-CRM114-CacheID: sfid-20260804_074355_415814_C030A4EF 
+X-CRM114-Status: GOOD (  13.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -165,109 +159,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 29, 2026 at 3:00=E2=80=AFPM Dmitry Osipenko
-<dmitry.osipenko@collabora.com> wrote:
->
-> Depending on firmware, part of the MFG domains may be partially left ON
-> at boot time with kernel detecting PD as ON, while it's OFF.
->
-> Some of MFG cores may be left powered after bootloader, to let the ACP to
-> prefetch the GPU region when the display controller is brought up for a
-> continuous splash animation performed by downstream stack.
->
-> This doesn't play well with an eventual delay in probing upstream Panfros=
-t
-> driver when the display controller is fully set up, as that would make
-> genpd's sync_state() to power off the domain while ACP tries to prefetch:
-> this is causing an AXI stall, effectively freezing the AP indefinitely.
->
-> In order to prevent trouble from happening, the sync_state() functionalit=
-y
-> must be obliterated on all of the MFG domains: while this guarantees a
-> power leakage if the bootloader boots the kernel with MFG PDs partially
-> powered on, this is the only way to ensure stable operation of the SoC
-> during boot on devices with such firmware because, of course, those will
-> never officially receive a firmware update.
->
-> Fixes Kappa Chromebook hanging during system boot.
->
-> Fixes: 0e789b491ba0 ("pmdomain: core: Leave powered-on genpds on until sy=
-nc_state")
-> Fixes: 13a4b7fb6260 ("pmdomain: core: Leave powered-on genpds on until la=
-te_initcall_sync")
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 
-Applied for fixes and by adding a stable tag, thanks!
-
-Kind regards
-Uffe
-
-
-> ---
+On 7/27/26 23:15, Krzysztof Kozlowski wrote:
+> On Mon, Jul 27, 2026 at 08:41:36PM +0300, Mikhail Kshevetskiy wrote:
+>> Add support for olt pin function for olt pin group.
+>>
+>> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+>> ---
+>>  .../bindings/pinctrl/airoha,an7583-pinctrl.yaml        | 10 +++++++++-
+>>  1 file changed, 9 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/pinctrl/airoha,an7583-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/airoha,an7583-pinctrl.yaml
+>> index 7deb48db52c3a..f016e0da65a57 100644
+>> --- a/Documentation/devicetree/bindings/pinctrl/airoha,an7583-pinctrl.yaml
+>> +++ b/Documentation/devicetree/bindings/pinctrl/airoha,an7583-pinctrl.yaml
+>> @@ -60,7 +60,7 @@ patternProperties:
+>>            function:
+>>              description:
+>>                A string containing the name of the function to mux to the group.
+>> -            enum: [pon, tod_1pps, sipo, mdio, uart, jtag, pcm, spi,
+>> +            enum: [pon, olt, tod_1pps, sipo, mdio, uart, jtag, pcm, spi,
+> You just changed this line in previous patch, no?
 >
-> v2 - Expanded commit message with more clarification about kernel wrongly
->      detecting PD state left after bootloader.
->
->  drivers/pmdomain/mediatek/mt8183-pm-domains.h | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/pmdomain/mediatek/mt8183-pm-domains.h b/drivers/pmdo=
-main/mediatek/mt8183-pm-domains.h
-> index 3742782a2702..5e33b8628e85 100644
-> --- a/drivers/pmdomain/mediatek/mt8183-pm-domains.h
-> +++ b/drivers/pmdomain/mediatek/mt8183-pm-domains.h
-> @@ -47,7 +47,7 @@ static const struct scpsys_domain_data scpsys_domain_da=
-ta_mt8183[] =3D {
->                 .pwr_sta2nd_offs =3D 0x0184,
->                 .sram_pdn_bits =3D 0,
->                 .sram_pdn_ack_bits =3D 0,
-> -               .caps =3D MTK_SCPD_DOMAIN_SUPPLY,
-> +               .caps =3D MTK_SCPD_DOMAIN_SUPPLY | MTK_SCPD_KEEP_DEFAULT_=
-OFF,
->         },
->         [MT8183_POWER_DOMAIN_MFG] =3D {
->                 .name =3D "mfg",
-> @@ -57,7 +57,7 @@ static const struct scpsys_domain_data scpsys_domain_da=
-ta_mt8183[] =3D {
->                 .pwr_sta2nd_offs =3D 0x0184,
->                 .sram_pdn_bits =3D GENMASK(8, 8),
->                 .sram_pdn_ack_bits =3D GENMASK(12, 12),
-> -               .caps =3D MTK_SCPD_DOMAIN_SUPPLY,
-> +               .caps =3D MTK_SCPD_DOMAIN_SUPPLY | MTK_SCPD_KEEP_DEFAULT_=
-OFF,
->         },
->         [MT8183_POWER_DOMAIN_MFG_CORE0] =3D {
->                 .name =3D "mfg_core0",
-> @@ -67,6 +67,7 @@ static const struct scpsys_domain_data scpsys_domain_da=
-ta_mt8183[] =3D {
->                 .pwr_sta2nd_offs =3D 0x0184,
->                 .sram_pdn_bits =3D GENMASK(8, 8),
->                 .sram_pdn_ack_bits =3D GENMASK(12, 12),
-> +               .caps =3D MTK_SCPD_KEEP_DEFAULT_OFF,
->         },
->         [MT8183_POWER_DOMAIN_MFG_CORE1] =3D {
->                 .name =3D "mfg_core1",
-> @@ -76,6 +77,7 @@ static const struct scpsys_domain_data scpsys_domain_da=
-ta_mt8183[] =3D {
->                 .pwr_sta2nd_offs =3D 0x0184,
->                 .sram_pdn_bits =3D GENMASK(8, 8),
->                 .sram_pdn_ack_bits =3D GENMASK(12, 12),
-> +               .caps =3D MTK_SCPD_KEEP_DEFAULT_OFF,
->         },
->         [MT8183_POWER_DOMAIN_MFG_2D] =3D {
->                 .name =3D "mfg_2d",
-> @@ -85,6 +87,7 @@ static const struct scpsys_domain_data scpsys_domain_da=
-ta_mt8183[] =3D {
->                 .pwr_sta2nd_offs =3D 0x0184,
->                 .sram_pdn_bits =3D GENMASK(8, 8),
->                 .sram_pdn_ack_bits =3D GENMASK(12, 12),
-> +               .caps =3D MTK_SCPD_KEEP_DEFAULT_OFF,
->                 .bp_cfg =3D {
->                         BUS_PROT_WR(INFRA,
->                                     MT8183_TOP_AXI_PROT_EN_1_MFG,
-> --
-> 2.54.0
+> Why binding patches are spread all over instead of properly grouped?
+> This makes it difficult to review. Please read submitting patches (both documents).
+
+I tried to create a separate binding patch per change. Could you clarify
+your suggestion?
+
+> Best regards,
+> Krzysztof
 >
 
