@@ -4,74 +4,192 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08C29C55172
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 06:25:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 007C4C55184
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 06:52:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+HadGpgIIwsDkvhCJNd5RT/h3BnMqvag/KtuUIT7O6Y=; b=FVMU2VYKBZpYKfQbGn6SE+LDtt
-	ddXBqaSDATssYDqoTLdXvEzzmAC/a5sCbBLJYjNSBgwgABZJX571UmGmUp6YDFduDLHIdOlX023T9
-	IGJELBKOJ5uSHG9tC/7hFE34OB6xY7/23BZPYiaPx4W8WQaecppecozBGcWcFmmwnaF1E0xPQlAj+
-	6qY1RvPLqrwEONYi8QyTdSaLlfNORuq5Xyqx0URUdaxgDrX5/PYXLJA5tyGOUmFolutw1YySvExP3
-	8FtMztJfxx69YDIPD37t0gk04F+eg7CJWnUDIU/F1gGb3LjRWOb+ECXgYaTLEAwDyYbSJXpY/vM8Q
-	zIr8X1XA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zUkGuwbdu1obu1EcqGPWYoGwP0uBDP5HgtlVdvK9vgk=; b=0UeAsoPJdCbeRDDpTjMGfkuIDR
+	95QpRoPhnqm6I+lRereTdOLwOZShv6ZAwCIF2RV1L3aPE7SfnLlhtwjgW/V6+/FbJE9GjjmsGcXv1
+	VH+6lLF8mXpj7RDMiQftJBg7SqfcMBZ17j7vrhfayyQ0hyvpJ5Y2lC0YMzyUnPKTvDqqeoO9XLA7a
+	ENiAH4C1MZfzoFjV6mlsvZ3PZqUWTaPwEndVkKF87+D0FP4Gi4DTMYqROMSb3tSzhJ37b17bjJ5bR
+	1m6QlXZ0GRQU5nwKoF+SjvF9i3Lfov9OBchDoPwsrNh3KewdjkKp35VOkYmmz5pZ434r1vaHjbInB
+	GLPM2h8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wr8aU-000000016yV-3VIj;
-	Tue, 04 Aug 2026 06:25:18 +0000
+	id 1wr91E-000000019xx-33er;
+	Tue, 04 Aug 2026 06:52:56 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wr8aS-000000016xr-2Rsg
-	for linux-mediatek@lists.infradead.org;
-	Tue, 04 Aug 2026 06:25:17 +0000
-X-UUID: 3e6b052e8fcd11f1afed4741b24580c9-20260803
+	id 1wr91C-000000019x5-1uq9;
+	Tue, 04 Aug 2026 06:52:55 +0000
+X-UUID: 1af7d7f88fd111f1afed4741b24580c9-20260803
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=+HadGpgIIwsDkvhCJNd5RT/h3BnMqvag/KtuUIT7O6Y=;
-	b=kqedOuGEl4njldNALBpMZqRU+Abhz1AyT89j3F7aasRtSDNS53PmfoDJlKSwhQ7g55ZYzVQTnSWfrHGTPxD1JwKm+RG+STkgC2Q9Mk1vxvZ6uR5Nf1rI5HQhUNBwbriYMxYc79bjTWb2qNWNYyPKESJsEF3MXQIxdBeK/lw0Enk=;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=zUkGuwbdu1obu1EcqGPWYoGwP0uBDP5HgtlVdvK9vgk=;
+	b=ixoLFn4F70hbIe90y9l9WnrRRqFbmAWF8Wi7SIqi8DfHfcPPK8lfvDxTh4aQqPuuI+mRWNVDafHhzZhGbPIh/EpDPIytztkWzwZVYK04+jkBimB02fTk6XKkkWO7qBBGbgC2Q3CvSdACALQx+5slm5qh9rfsFRqdSzD7T8tLKPI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:09d974c7-de13-477f-9dbd-2c5d63ad54a3,IP:0,U
+X-CID-O-INFO: VERSION:1.3.19,REQID:14b0a376-0d8a-4fde-9354-c24f847dded3,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:cfb3abd0-ca62-416c-8ebd-0e12e851d77c,B
-	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
-	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:7db8b62,CLOUDID:5bf41be2-71f1-405e-92eb-6802d6af74fd,B
+	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|110|111|136|836|865|888|898,TC
+	:-5,Content:0|15|50|99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:
+	nil,BEC:-1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC
+	:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 3e6b052e8fcd11f1afed4741b24580c9-20260803
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
-	(envelope-from <jb.tsai@mediatek.com>)
+X-UUID: 1af7d7f88fd111f1afed4741b24580c9-20260803
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 254502255; Mon, 03 Aug 2026 23:25:10 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 1873609553; Mon, 03 Aug 2026 23:52:48 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Tue, 4 Aug 2026 14:25:08 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Tue, 4 Aug 2026 14:25:08 +0800
-From: JB Tsai <jb.tsai@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<Sean.Wang@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<litien.chang@mediatek.com>, <Charlie-cy.Wu@mediatek.com>,
-	<jb.tsai@mediatek.com>
-Subject: [PATCH v2] wifi: mt76: connac3: implement 6GHz power type detection and dynamic CLC filtering
-Date: Tue, 4 Aug 2026 14:25:06 +0800
-Message-ID: <20260804062507.643024-1-jb.tsai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+ 15.2.2562.29; Tue, 4 Aug 2026 14:52:46 +0800
+Received: from SI4PR04CU001.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 4 Aug 2026 14:52:46 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=VODt3RvSDockrZLG4jJyii32o2Mew5+EcksSGTautM6SuhZMFJiRBuSifqSIcA80SfKwSGJF4ufLJqlFqPRjCh4sAb+9AUNY6FFc0suGciduSMRPNsTSAyCM4DTzozl4Z4hkIODL0zwJvCxUsZpwXij3eO5fjM9w4DGvgCMnx3P859svEcM9Rq1qBw1TN+mvs+rW1BxHwnjOcEwf3ni49gy6OSOxUbxe8Y3ml+kcxgC2fAsxKEEMvW6rfcmpuZfTp0ENcjiZLX+WiMrPT+xkf5a2VL7WJy+USClxHhEOqwkvL/Q8RIGHgtgJ/qLSeYLrxPKziKfBVATtZqonhK9X0g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=zUkGuwbdu1obu1EcqGPWYoGwP0uBDP5HgtlVdvK9vgk=;
+ b=KwhmeOisA/a9Du3O7CK3XLDZDEGcGn1WDvTY6qxSOqHunJ2c+PTChr4TBvJ/AV4avMJuw7WkRut/ocvNvaHdGMEVsrAZsiDFNqq5QnZQx0Z2UruOwlTMSqOPlhFMhBqHDvy6nDIGUmXJmo2sQUUay1wvjVw2cGMIBDrVbXDDQ7XfjXnnNklUEpftuA3NbW/w7DnP0t+2FhplLp57bHP2MHWN579kPJp2+f0Omn0cF9RJcfwpkQMYsBpXaqNVPQd82yrvbdGjOWxlDieqtWpHDApI5dDop6ysYPXHKukllkqCFdvcrQXykL9WIJLh+vRNPM5NSAiFKFa5u84mZ+Zpnw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=zUkGuwbdu1obu1EcqGPWYoGwP0uBDP5HgtlVdvK9vgk=;
+ b=gXZOl4c6yBz7t3vdwAx+ofn8AiA9BAElz7WzUiHCSlHc6tmTaQPEXz8sr9M+RVJkwKfEF+9VGZhpnSYXZsPDQOia68QFf0BHpS2KoZVQ3PoCQbcQ/Z0niQ26Nzd0zKfwYTIN8cnb5hFPNk+OqjvFNBlr0Z/jq3kHrn5cfLOaatg=
+Received: from PSAPR03MB5605.apcprd03.prod.outlook.com (2603:1096:301:66::6)
+ by SEZPR03MB6594.apcprd03.prod.outlook.com (2603:1096:101:76::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.270.18; Tue, 4 Aug
+ 2026 06:52:40 +0000
+Received: from PSAPR03MB5605.apcprd03.prod.outlook.com
+ ([fe80::165:d36a:3f76:2925]) by PSAPR03MB5605.apcprd03.prod.outlook.com
+ ([fe80::165:d36a:3f76:2925%6]) with mapi id 15.21.0270.016; Tue, 4 Aug 2026
+ 06:52:40 +0000
+From: =?utf-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>
+To: "chu.stanley@gmail.com" <chu.stanley@gmail.com>, "robh@kernel.org"
+	<robh@kernel.org>, =?utf-8?B?Q2h1bmZlbmcgWXVuICjkupHmmKXls7Ap?=
+	<Chunfeng.Yun@mediatek.com>, "James.Bottomley@HansenPartnership.com"
+	<James.Bottomley@HansenPartnership.com>, "avri.altman@sandisk.com"
+	<avri.altman@sandisk.com>, "bvanassche@acm.org" <bvanassche@acm.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	=?utf-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+	<Chaotian.Jing@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
+	"lgirdwood@gmail.com" <lgirdwood@gmail.com>, "vkoul@kernel.org"
+	<vkoul@kernel.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, "Louis-Alexis
+ Eyraud" <louisalexis.eyraud@collabora.com>, "alim.akhtar@samsung.com"
+	<alim.akhtar@samsung.com>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+	"neil.armstrong@linaro.org" <neil.armstrong@linaro.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+	"broonie@kernel.org" <broonie@kernel.org>
+CC: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-phy@lists.infradead.org"
+	<linux-phy@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "nicolas.frattaroli@collabora.com"
+	<nicolas.frattaroli@collabora.com>, "kernel@collabora.com"
+	<kernel@collabora.com>
+Subject: Re: [PATCH v10 23/26] scsi: ufs: mediatek: Add MT8196 compatible,
+ update copyright
+Thread-Topic: [PATCH v10 23/26] scsi: ufs: mediatek: Add MT8196 compatible,
+ update copyright
+Thread-Index: AQHdIAjxntENx7POn06PrBV79k/G8raNe5uA
+Date: Tue, 4 Aug 2026 06:52:40 +0000
+Message-ID: <5bd5a02970531b954d2b51ff85e2e685b3a93eb0.camel@mediatek.com>
+References: <20260730-mt8196-ufs-v10-0-bc5ecef202dc@collabora.com>
+	 <20260730-mt8196-ufs-v10-23-bc5ecef202dc@collabora.com>
+In-Reply-To: <20260730-mt8196-ufs-v10-23-bc5ecef202dc@collabora.com>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PSAPR03MB5605:EE_|SEZPR03MB6594:EE_
+x-ms-office365-filtering-correlation-id: 4a6ac309-cc5f-4a9c-99b9-08def1f4fa22
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|23010399003|376014|1800799024|7416014|366016|921020|38070700021|56012099006|4143699003|11063799006|10067099003|18002099003|22082099003;
+x-microsoft-antispam-message-info: YYJScARjLA5uE+O9EWqS3SRKODiYWP5h2iqi+UVv2f/s5Ko7uwPVAbQDdwKL2O8HdRro9+BdYAsytPCn1iN3aWI2Kt+7+tkkEjwAPm5zN+uzTlKjW2NfT8HEv0eJRr6sfhRWAHotyxWN+J7QZ9F/D3KCzbFMzfKBdCe/O6GFYe6GZBDyiAO8WPVnT9u4uZkBCEvUaoMoV6yIS481LiidVx+IdZwdqQxj60cGOmJPCVSTv4lAHi5ek4noXTCyPlolpHHS/WsjeqYG1STjyUJY94Ap84NT0zjBThtoWhzTOqyWCWi5/9X7FfDvNp5ecMEYZh5UyPyDfFkvi/tzgMnP9j3vTZCUW1Hczt9gwn1QpyioG3595q1Nt+XD1/V+du58hS4xO7uNRf+0dTADFg3TxF8iEHM5+paLHV+/9JbU7XgNMQ7JDExlefMh87aYKB8BBvs0hE24wwjkH6yXrklNl+ifD9niKSCGJ/uhPPBnZMX1JhL5x2KmuCD090qhEahjz+YYF+xHnMGgSRA+X7D4IpcbSl5ieWNewncaiUtmzbkYzDYsjSCAlV59+lkxkIs/3XN5QvKq/gKAn7i5T25lCgHnI0dX7ZETcYXbarX7rCO0RgOM/zxmRdPNdRadup+rJPHKt7uQW/lSn3uA/ushqG7574vOmR8LPtJbwjFmoUzgfoReq5spUgUDf1IUO3XG0Rq/y3O4JpXahvSUmtsZKI0ojmDNdglvfHHqgFrmDihINuirj4AHQNbZBjnh/P3C
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PSAPR03MB5605.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(376014)(1800799024)(7416014)(366016)(921020)(38070700021)(56012099006)(4143699003)(11063799006)(10067099003)(18002099003)(22082099003);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?YmZKMCtwTWtXbER5QklGSWcyZ25ML25LUW5kZ1ZKWERJdHZLMkhJNDd1WmpQ?=
+ =?utf-8?B?UEt3UWZvdi9OQjNndWtabXJpRXp2NHAvaWtUeDRKUkJXWkxhcUVmZlRhd0c5?=
+ =?utf-8?B?bFpqVW9xWVYwV0JMdmd2U2xjay85N0lKTmN5VFBhS0s0NDZGUkg2dTZEdkhm?=
+ =?utf-8?B?SWtPeTBkMG8vUWx1Q0ZOLzBBYnE5VUppRmcvc2FOKzlWdmNDekprSGF2SWlp?=
+ =?utf-8?B?aWRuTkJpektQNjFDamRkQllhaVY3YmZrNDNYU1ZOQjQrZi9aeE15Z3NQRmFH?=
+ =?utf-8?B?S3pHL0V1TXU3WEdUYy9ZMXBaRmh1Y2lKb2E5amRQZ0VDTDZhdklZdlQ4T3hS?=
+ =?utf-8?B?RWF3RGtFZXlPQXM5bkwvS0Y3Q0ZIUlpLdnJPQVVyMXlyYVJpYzFnWlo1YS9T?=
+ =?utf-8?B?NVZCWVJLdmt4MmlsbGVpRHZtd2FXVXBKSlFGaXFQVHYzemtBYXdCSzUyWnlK?=
+ =?utf-8?B?N3pEbE05emxWUmcweUdjaUFhbk81VkViVDRTRE41NHd5S1BnUjE5Tytuc2JN?=
+ =?utf-8?B?QVBFNFZSS3RkVUlrNlVUdGlzQ2RNc1hKRmt1QzZFdDIrekhNc2VQb0k3L0lJ?=
+ =?utf-8?B?WFJFN2xZSm1IR3N0TlhtQ1JqSndHcmd3dmRvaE50ZkIrUEtSZXY2cktEcUJM?=
+ =?utf-8?B?OTdPUnJWaUJxbmVkWW9mbGFqdlZIaG1JOW5sUkxZa1drTmIxQmdjREczamx0?=
+ =?utf-8?B?dHFuZGN5dEpUajdJWVVSS3ZUcXN0c1BvNUpzdVV1d09scUN5NTdDMUhWUEVz?=
+ =?utf-8?B?RzE1Y1k1MWRFcUcyM29PTG1TUDhnclA1WlNmZHMvUTA4eHJRVFpZUmpmUzZX?=
+ =?utf-8?B?Q2tGV2VETkhHcVRzSSs0TXcrVzdmSUU3OGxMRzA4a0hGNWpUT1ZmNVcwbzlH?=
+ =?utf-8?B?SnNoYWJ4OXg1RGFQb3N5M2dZOXNKSXMwbGlXcE1TVnR0K0JNUEZ0OFNxcERs?=
+ =?utf-8?B?Q1RhVkdWeTBJcThscXpzaVZDRVRaTDZRTmtERDVVZVRVUWFJVXVRVVZldnR6?=
+ =?utf-8?B?UGZTeUF1bWJEWVpQc2FDdG5CSHVYVU0vRGJ4cnNVT2FLVjlDeDJVQ01ZeUxh?=
+ =?utf-8?B?UnowYUZoUnpIeWlOek5SVHhSdUltMVZJNFdzdHVsbkZPaEFhS2IzUHJiMGhS?=
+ =?utf-8?B?dWhuTXA3MUc1czFjMWk0WGd1eWJnZ3JKYjdZS1NIbTV1Nk8zZE9oMjVsN2pP?=
+ =?utf-8?B?OTJKdXFIaHVjd1ZCSmhOM1NOOHFqbzNMTk5ySkYzTlU4eW5mZkZ3MFl2ZEpP?=
+ =?utf-8?B?VWgzaXVCYnBZLzBmWmhOQ3hybTNNUEJJakhGYnAzNVJNTkVKY3M4WVVSTytx?=
+ =?utf-8?B?NFN3eGlNMThzSWN3SlMrZTMyUlVTODl0enZWTFA3V2dzeDA3WHBLSmRsUnp1?=
+ =?utf-8?B?ZFo2SEo4N21aS2xDcXJ2TFBIbTBNbEpTQksvQ1V1UnpsV0JwQXVCRnlTMlgv?=
+ =?utf-8?B?TzJ3RjFFbzJDRzdHNERmZTR2S0U5RXNiQXdXNG1KVGdiR251WlhhVHoxdTBT?=
+ =?utf-8?B?QnNyL2RFaU00aFlvbEJDTG1xRDBYYXZ5MWNRNTFmNmxwdUdlTXoxZXorTmdM?=
+ =?utf-8?B?TG1OOHB6Mk5vZmJjbUhHREZxZktSSmhuZXRickIvSFFXWUJIM3hYRmpCKzl0?=
+ =?utf-8?B?Vm42L25TcDlucUdpUWx4bHhNOHoxUmIyRVBqMWRaUU45Vk03NW5UV3N2QjZN?=
+ =?utf-8?B?NTdaR2tYSUlYZE5keE9SZTZLMHhnUWhhRXBScUE4Y0JKUS96ekpFVWVUUXh4?=
+ =?utf-8?B?VHRnRVFqM3kvUU1TKy9DYVgyVHJFUUhmbzFkQ1dlWnpEc3FlNVQ5cnFTcDRC?=
+ =?utf-8?B?UXhFMjM1WkZIZVE3YjhzSk1vSjNGd2dKaEEwaVRIOUJ4dTRuSDdMbmhaeDhJ?=
+ =?utf-8?B?TkZjTFNFM0ZOS1RFTHlrcXZXUlBRWitEdkY3cmZmMTJCSTA2UHNuYVk3WitL?=
+ =?utf-8?B?Q2ZPS2JEY25lYmZxTGVCQUNqeW5vTGV5VTY4eEphRFo4T2Jqd1JabVlmbGp6?=
+ =?utf-8?B?QzRkZFZoS2k2bWpyOUlhTms0S1NSNGsrQ0NYZFdMQ0VNYWpJbWJLMlpZYVJv?=
+ =?utf-8?B?eEZueENSS09GRUpBaDFXbU1GdzJ1WXpSNUxPOEl0WS9wdXJpcy9Ec3BJbC8z?=
+ =?utf-8?B?dmdOcnV6cUlvWEw3d0JoYzJxekIzYkVkTTlEZk5LSXd0WGNPTXpuR04xbWFH?=
+ =?utf-8?B?WHdoZ2FWek81YXhURHg2TjF2Y1ZlczkrUnRZdk5Ua3o1ZmZmbUg2VmZoZHh4?=
+ =?utf-8?B?Ylorc2RRa2xJN2d3MXgydmRFdnJ6NDhrZDB5d0ViV2ZMTDNQeHhFUkxaY2Y4?=
+ =?utf-8?B?ODlkeW5lT1NwSHhEZTE2blBGV0tLazFuSllLTWtnMHBleFBIT0k3YXpSaE9B?=
+ =?utf-8?Q?VN2OKOUniehk7Tnc=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <962B3F5F0F5E95408192D22169019C42@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+X-Exchange-RoutingPolicyChecked: PCv6ceXzp9JcApw79UeDNVLz760IquSNnK1DIb6B4wyOIcGqwQJVZNhHhljHoYub9eGiC8YOWhmIEmMALpVE6oB/8oOKEC0hIdKTgeyiHQxh9wbmaSgbcr+W0xJcyebJI3GZrbRt39g7hluh9zsolkJtiQEmO1eHoncHEB/nQKJm+sEc8HPE4yHnfj1GODMenZD4xEnnPQjTpLQaZQNGf1CUnFnQHP18atj8JxHgcsPXZOE+ydXrcwbognD7ZJHKaAuFUgds3Ey7OSkAVoFYcI9MuOkTUKdO1vD0wzZAEjh40hBjnzgFHAchLFGdk75+5zgbvJPeXwT/Kw2N/4+itA==
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PSAPR03MB5605.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4a6ac309-cc5f-4a9c-99b9-08def1f4fa22
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Aug 2026 06:52:40.3725
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: S/kBNf8WAxAMpvtxEjfc2cPRK2Zv0Rslhzjxt2XEHbbqpqoH0GrbwmgbOy61Gj4lhWbG899RqFzTrjtgEAKZ/g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR03MB6594
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_232516_637860_40B2C346 
-X-CRM114-Status: GOOD (  20.33  )
+X-CRM114-CacheID: sfid-20260803_235254_509534_230DCE92 
+X-CRM114-Status: GOOD (  16.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,327 +204,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Charlie-cy Wu <Charlie-cy.Wu@mediatek.com>
-
-This patch enhances 6GHz regulatory handling by implementing proper
-power type detection and selective CLC (Country Location Configuration)
-table filtering.
-
-Changes in main.c:
-1. Add mt7925_regd_set_6ghz_power_type() with multi-source channel
-   detection fallback mechanism:
-   - Primary: link_conf->chanreq.oper.chan (per-link BSS config)
-   - Secondary: vif->bss_conf.chanreq.oper.chan (default link)
-   - Tertiary: phy->mt76->chandef.chan (PHY layer)
-2. Move mt7925_calc_vif_num() and mt7925_regd_set_6ghz_power_type()
-   before mt7925_mac_link_sta_add() to avoid implicit declaration
-3. Call mt7925_regd_set_6ghz_power_type() in station add/remove paths
-
-Changes in mcu.c:
-1. Add power_type_change parameter to __mt7925_mcu_set_clc() and
-   related functions to distinguish between regulatory updates and
-   power type changes
-2. Implement CLC table filtering logic:
-   - When power_type_change=false (from mt7925_mcu_regd_update):
-     Send 2/5G ('-'), 6G LPI ('0'), and 6G VLP ('2') tables
-   - When power_type_change=true (from mt7925_regd_set_6ghz_power_type):
-     Send only the specific 6G power table matching current power_type
-3. Map power_type to CLC type codes:
-   MT_AP_LPI -> '0', MT_AP_SP -> '1', MT_AP_VLP -> '2'
-4. Add env_6g field to CLC request structure to pass power type to FW
-
-This fixes the issue where vif->bss_conf.chanreq.oper.chan was NULL
-during early connection stages, and enables proper 6GHz power type
-switching based on regulatory requirements.
-
-Signed-off-by: Charlie-cy Wu <Charlie-cy.Wu@mediatek.com>
-
----
-v2: rebase to fix build error
-
----
- .../net/wireless/mediatek/mt76/mt7925/main.c  | 86 ++++++++++++++++++-
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 46 ++++++++--
- .../wireless/mediatek/mt76/mt7925/mt7925.h    |  4 +-
- .../net/wireless/mediatek/mt76/mt7925/regd.c  | 10 +--
- 4 files changed, 134 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 8813fd00d569..5d38c7e7f5f7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -884,6 +884,86 @@ mt7925_get_rates_table(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	return mvif->basic_rates_idx;
- }
- 
-+static void
-+mt7925_calc_vif_num(void *priv, u8 *mac, struct ieee80211_vif *vif)
-+{
-+	u32 *num = priv;
-+
-+	if (!priv)
-+		return;
-+
-+	switch (vif->type) {
-+	case NL80211_IFTYPE_STATION:
-+	case NL80211_IFTYPE_P2P_CLIENT:
-+	case NL80211_IFTYPE_AP:
-+	case NL80211_IFTYPE_P2P_GO:
-+		*num += 1;
-+		break;
-+	default:
-+		break;
-+	}
-+}
-+
-+static void
-+mt7925_regd_set_6ghz_power_type(struct ieee80211_vif *vif,
-+				struct ieee80211_bss_conf *link_conf,
-+				bool is_add)
-+{
-+	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
-+	struct mt792x_phy *phy = mvif->phy;
-+	struct mt792x_dev *dev = phy->dev;
-+	struct ieee80211_channel *chan = NULL;
-+	u32 valid_vif_num = 0;
-+	enum mt792x_reg_power_type old_power_type;
-+	bool power_type_changed = false;
-+
-+	old_power_type = phy->power_type;
-+
-+	/* Try to get channel from link_conf first, then vif->bss_conf, then phy */
-+	if (link_conf && link_conf->chanreq.oper.chan)
-+		chan = link_conf->chanreq.oper.chan;
-+	else if (vif->bss_conf.chanreq.oper.chan)
-+		chan = vif->bss_conf.chanreq.oper.chan;
-+	else if (phy->mt76->chandef.chan)
-+		chan = phy->mt76->chandef.chan;
-+
-+	ieee80211_iterate_active_interfaces(mt76_hw(dev),
-+					    IEEE80211_IFACE_ITER_RESUME_ALL,
-+					    mt7925_calc_vif_num, &valid_vif_num);
-+
-+	if (valid_vif_num > 1) {
-+		phy->power_type = MT_AP_DEFAULT;
-+		goto out;
-+	}
-+
-+	if (!is_add)
-+		vif->bss_conf.power_type = IEEE80211_REG_UNSET_AP;
-+
-+	switch (vif->bss_conf.power_type) {
-+	case IEEE80211_REG_SP_AP:
-+		phy->power_type = MT_AP_SP;
-+		break;
-+	case IEEE80211_REG_VLP_AP:
-+		phy->power_type = MT_AP_VLP;
-+		break;
-+	case IEEE80211_REG_LPI_AP:
-+		phy->power_type = MT_AP_LPI;
-+		break;
-+	case IEEE80211_REG_UNSET_AP:
-+		phy->power_type = MT_AP_UNSET;
-+		break;
-+	default:
-+		phy->power_type = MT_AP_DEFAULT;
-+		break;
-+	}
-+
-+out:
-+	power_type_changed = (old_power_type != phy->power_type);
-+
-+	if (power_type_changed && chan && chan->band == NL80211_BAND_6GHZ)
-+		mt7925_mcu_apply_regd(dev, dev->mt76.alpha2, dev->country_ie_env, true);
-+}
-+
- static int mt7925_mac_link_sta_add(struct mt76_dev *mdev,
- 				   struct ieee80211_vif *vif,
- 				   struct ieee80211_link_sta *link_sta,
-@@ -1006,6 +1086,8 @@ static int mt7925_mac_link_sta_add(struct mt76_dev *mdev,
- 			goto out_pm;
- 	}
- 
-+	mt7925_regd_set_6ghz_power_type(vif, link_conf, true);
-+
- 	mt76_connac_power_save_sched(&dev->mphy, &dev->pm);
- 
- 	return 0;
-@@ -1279,6 +1361,8 @@ static void mt7925_mac_link_sta_remove(struct mt76_dev *mdev,
- 	mt76_wcid_cleanup(mdev, wcid);
- 	mt76_wcid_mask_clear(mdev->wcid_mask, idx);
- 
-+	mt7925_regd_set_6ghz_power_type(vif, link_conf, false);
-+
- 	mt76_connac_power_save_sched(&dev->mphy, &dev->pm);
- }
- 
-@@ -1829,7 +1913,7 @@ static int mt7925_set_sar_specs(struct ieee80211_hw *hw,
- 
- 	mt792x_mutex_acquire(dev);
- 	err = mt7925_mcu_set_clc(dev, dev->mt76.alpha2,
--			 dev->country_ie_env);
-+				 dev->country_ie_env, false);
- 	if (err < 0)
- 		goto out;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index bebac21e4d38..76f26cb36f24 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -3504,7 +3504,7 @@ EXPORT_SYMBOL_GPL(mt7925_mcu_set_channel_domain);
- static int
- __mt7925_mcu_set_clc(struct mt792x_dev *dev, u8 *alpha2,
- 		     enum environment_cap env_cap,
--		     struct mt7925_clc *clc, u8 idx)
-+		     struct mt7925_clc *clc, u8 idx, bool power_type_change)
- {
- 	struct mt7925_clc_segment *seg;
- 	struct sk_buff *skb;
-@@ -3522,19 +3522,38 @@ __mt7925_mcu_set_clc(struct mt792x_dev *dev, u8 *alpha2,
- 		u8 pad1;
- 		u8 alpha2[2];
- 		u8 type[2];
--		u8 rsvd[64];
-+		u8 env_6g;
-+		u8 rsvd[63];
- 	} __packed req = {
- 		.tag = cpu_to_le16(0x3),
- 
- 		.idx = idx,
- 		.env = env_cap,
-+		.env_6g = dev->phy.power_type,
- 	};
- 	int ret, valid_cnt = 0;
- 	u8 *pos, *last_pos;
-+	u8 target_6g_type;
- 
- 	if (!clc)
- 		return 0;
- 
-+	/* Determine target 6G power type based on phy->power_type */
-+	switch (dev->phy.power_type) {
-+	case MT_AP_LPI:
-+		target_6g_type = '0';
-+		break;
-+	case MT_AP_SP:
-+		target_6g_type = '1';
-+		break;
-+	case MT_AP_VLP:
-+		target_6g_type = '2';
-+		break;
-+	default:
-+		target_6g_type = '0'; /* default to LPI */
-+		break;
-+	}
-+
- 	req.ver = clc->ver;
- 	pos = clc->data + sizeof(*seg) * clc->t0.nr_seg;
- 	last_pos = clc->data + le32_to_cpu(*(__le32 *)(clc->data + 4));
-@@ -3546,6 +3565,23 @@ __mt7925_mcu_set_clc(struct mt792x_dev *dev, u8 *alpha2,
- 		    rule->alpha2[1] != alpha2[1])
- 			continue;
- 
-+		/* Filter power tables based on call source:
-+		 * power_type_change == false: from mt7925_mcu_regd_update()
-+		 *   - Send 2/5G ('-') and 6G LPI ('0') and 6G VLP ('2')
-+		 * power_type_change == true: from mt7925_regd_set_6ghz_power_type()
-+		 *   - Send only the specific 6G power table based on power_type
-+		 */
-+		if (power_type_change) {
-+			/* Only send the specific 6G power table */
-+			if (rule->type[0] != target_6g_type)
-+				continue;
-+		} else {
-+			/* Send 2/5G and 6G LPI and VLP only */
-+			if (rule->type[0] != '-' && rule->type[0] != '0' &&
-+			    rule->type[0] != '2')
-+				continue;
-+		}
-+
- 		seg = (struct mt7925_clc_segment *)clc->data
- 			  + rule->seg_idx - 1;
- 
-@@ -3579,7 +3615,7 @@ __mt7925_mcu_set_clc(struct mt792x_dev *dev, u8 *alpha2,
- }
- 
- int mt7925_mcu_set_clc(struct mt792x_dev *dev, u8 *alpha2,
--		       enum environment_cap env_cap)
-+		       enum environment_cap env_cap, bool power_type_change)
- {
- 	struct mt792x_phy *phy = (struct mt792x_phy *)&dev->phy;
- 	int i, ret;
-@@ -3594,13 +3630,13 @@ int mt7925_mcu_set_clc(struct mt792x_dev *dev, u8 *alpha2,
- 			continue;
- 
- 		ret = __mt7925_mcu_set_clc(dev, alpha2, env_cap,
--					   phy->clc[i], i);
-+					   phy->clc[i], i, power_type_change);
- 
- 		/* If no country found, set "00" as default */
- 		if (ret == -ENOENT)
- 			ret = __mt7925_mcu_set_clc(dev, "00",
- 						   ENVIRON_INDOOR,
--						   phy->clc[i], i);
-+						   phy->clc[i], i, power_type_change);
- 		if (ret < 0)
- 			return ret;
- 	}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-index 321e732347f2..e3fef41cbb33 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-@@ -385,7 +385,9 @@ int mt7925_set_tx_sar_pwr(struct ieee80211_hw *hw,
- 
- int mt7925_mcu_regval(struct mt792x_dev *dev, u32 regidx, u32 *val, bool set);
- int mt7925_mcu_set_clc(struct mt792x_dev *dev, u8 *alpha2,
--		       enum environment_cap env_cap);
-+		       enum environment_cap env_cap, bool power_type_change);
-+int mt7925_mcu_apply_regd(struct mt792x_dev *dev, u8 *alpha2,
-+			  enum environment_cap env, bool power_type_change);
- int mt7925_mcu_set_mlo_roc(struct mt792x_phy *phy, struct mt792x_bss_conf *mconf,
- 			   u16 sel_links, int duration, u8 token_id);
- int mt7925_mcu_set_roc(struct mt792x_phy *phy, struct mt792x_bss_conf *mconf,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/regd.c b/drivers/net/wireless/mediatek/mt76/mt7925/regd.c
-index 3eb3f172dba4..a039ec3ee47b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/regd.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/regd.c
-@@ -137,14 +137,14 @@ mt7925_regd_channel_update(struct wiphy *wiphy, struct mt792x_dev *dev)
- 	}
- }
- 
--static int mt7925_mcu_apply_regd(struct mt792x_dev *dev, u8 *alpha2,
--				  enum environment_cap env)
-+int mt7925_mcu_apply_regd(struct mt792x_dev *dev, u8 *alpha2,
-+			  enum environment_cap env, bool power_type_change)
- {
- 	struct ieee80211_hw *hw = mt76_hw(dev);
- 	struct wiphy *wiphy = hw->wiphy;
- 	int ret;
- 
--	ret = mt7925_mcu_set_clc(dev, alpha2, env);
-+	ret = mt7925_mcu_set_clc(dev, alpha2, env, power_type_change);
- 	if (ret < 0)
- 		return ret;
- 
-@@ -167,7 +167,7 @@ int mt7925_mcu_regd_update(struct mt792x_dev *dev, u8 *alpha2,
- 
- 	mt792x_mutex_acquire(dev);
- 	if (dev->regd_change)
--		ret = mt7925_mcu_apply_regd(dev, alpha2, country_ie_env);
-+		ret = mt7925_mcu_apply_regd(dev, alpha2, country_ie_env, false);
- 	mt792x_mutex_release(dev);
- 	dev->regd_change = false;
- 	dev->regd_in_progress = false;
-@@ -407,7 +407,7 @@ int mt7925_regd_change(struct mt792x_phy *phy, char *alpha2)
- 	} else if (phy->chip_cap & MT792x_CHIP_CAP_11D_EN) {
- 		return regulatory_hint(wiphy, alpha2);
- 	} else {
--		return mt7925_mcu_set_clc(dev, alpha2, ENVIRON_INDOOR);
-+		return mt7925_mcu_set_clc(dev, alpha2, ENVIRON_INDOOR, false);
- 	}
- }
- EXPORT_SYMBOL_GPL(mt7925_regd_change);
--- 
-2.18.0
-
+T24gVGh1LCAyMDI2LTA3LTMwIGF0IDExOjQ5ICswMjAwLCBMb3Vpcy1BbGV4aXMgRXlyYXVkIHdy
+b3RlOg0KPiBGcm9tOiBOaWNvbGFzIEZyYXR0YXJvbGkgPG5pY29sYXMuZnJhdHRhcm9saUBjb2xs
+YWJvcmEuY29tPg0KPiANCj4gVEhlIE1UODE5NidzIFVGUyBjb250cm9sbGVyIGhhcyBhIG5ldyBj
+b21wYXRpYmxlLiBBZGQgdGhlIG5lY2Vzc2FyeQ0KPiBzdHJ1Y3QgZGVmaW5pdGlvbnMgdG8gc3Vw
+cG9ydCBpdC4NCj4gDQo+IEFsc28gdXBkYXRlIHRoZSBjb3B5cmlnaHRzIGFuZCBhdXRob3JzLCB3
+aXRob3V0IHRhYnMgZm9sbG93aW5nIHNwYWNlcw0KPiB0bw0KPiBhdm9pZCBjaGVja3BhdGNoIGVy
+cm9ycywgdG8gbGlzdCBteXNlbGYgYXMgaGF2aW5nIGNvbnRyaWJ1dGVkIHRvIHRoaXMNCj4gZHJp
+dmVyIGFmdGVyIHRoZSBwcmVjZWRpbmcgcmV3b3JrIHBhdGNoZXMuDQo+IA0KPiBSZXZpZXdlZC1i
+eTogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8NCj4gPGFuZ2Vsb2dpb2FjY2hpbm8uZGVscmVn
+bm9AY29sbGFib3JhLmNvbT4NCj4gUmV2aWV3ZWQtYnk6IFBldGVyIFdhbmcgPHBldGVyLndhbmdA
+bWVkaWF0ZWsuY29tPg0KPiBTaWduZWQtb2ZmLWJ5OiBOaWNvbGFzIEZyYXR0YXJvbGkgPG5pY29s
+YXMuZnJhdHRhcm9saUBjb2xsYWJvcmEuY29tPg0KPiBTaWduZWQtb2ZmLWJ5OiBMb3Vpcy1BbGV4
+aXMgRXlyYXVkIDxsb3Vpc2FsZXhpcy5leXJhdWRAY29sbGFib3JhLmNvbT4NCj4gLS0tDQo+IMKg
+ZHJpdmVycy91ZnMvaG9zdC91ZnMtbWVkaWF0ZWsuYyB8IDE3ICsrKysrKysrKysrKysrKy0tDQo+
+IMKgMSBmaWxlIGNoYW5nZWQsIDE1IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pDQo+IA0K
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy91ZnMvaG9zdC91ZnMtbWVkaWF0ZWsuYyBiL2RyaXZlcnMv
+dWZzL2hvc3QvdWZzLQ0KPiBtZWRpYXRlay5jDQo+IGluZGV4IDVkZDcyYjgyNjE4MS4uZGVjZjJm
+NTgxNGI0IDEwMDY0NA0KPiAtLS0gYS9kcml2ZXJzL3Vmcy9ob3N0L3Vmcy1tZWRpYXRlay5jDQo+
+ICsrKyBiL2RyaXZlcnMvdWZzL2hvc3QvdWZzLW1lZGlhdGVrLmMNCj4gQEAgLTEsOSArMSwxMSBA
+QA0KPiDCoC8vIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wDQo+IMKgLyoNCj4gwqAg
+KiBDb3B5cmlnaHQgKEMpIDIwMTkgTWVkaWFUZWsgSW5jLg0KPiArICogQ29weXJpZ2h0IChDKSAy
+MDI1IENvbGxhYm9yYSBMdGQuDQo+IA0KDQoyMDI2DQoNCg0KPiDCoCAqIEF1dGhvcnM6DQo+IC0g
+KglTdGFubGV5IENodSA8c3RhbmxleS5jaHVAbWVkaWF0ZWsuY29tPg0KPiAtICoJUGV0ZXIgV2Fu
+ZyA8cGV0ZXIud2FuZ0BtZWRpYXRlay5jb20+DQo+ICsgKsKgwqDCoMKgwqAgU3RhbmxleSBDaHUg
+PHN0YW5sZXkuY2h1QG1lZGlhdGVrLmNvbT4NCj4gKyAqwqDCoMKgwqDCoCBQZXRlciBXYW5nIDxw
+ZXRlci53YW5nQG1lZGlhdGVrLmNvbT4NCj4gKyAqwqDCoMKgwqDCoCBOaWNvbGFzIEZyYXR0YXJv
+bGkgPG5pY29sYXMuZnJhdHRhcm9saUBjb2xsYWJvcmEuY29tPiAoTWFqb3INCj4gY2xlYW51cHMp
+DQo+IMKgICovDQo+IA0KVGhlIG5hbWUgYW5kIGVtYWlsIHNob3VsZCBiZSB1cGRhdGVkIHRvIHlv
+dXJzPw0KDQpUaGFua3MNClBldGVyDQoNCg==
 
