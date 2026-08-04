@@ -4,75 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A161C55822
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 18:19:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DFD7C55184
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 18:32:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g08EIf41pC8GEK9juMB6Ku4OixyItou7ZrSB0SvDB9s=; b=I5DNqQUSXNbvVK5XYIc9PUVf5R
-	rWj1W2wYVAyNcYcOf2Cwszsw9BD1LIf61FJ0goV2NNwL7/He/0kq+gHDBQuctkno+iMZNLKh8KywP
-	jWVc8aC4ZNbIr0qfuqf32VIIbt5IcpdLfF8NUx/ZtbaxWkRq9HrCAG9e/f6u6JKea+ZM2xDquzzFN
-	+8jYw5zKte1oyuvTp70FXP9+NfqH8/7PG/XpNVliDMJTDNkNnUT4ylLEW+lI0nyTlYqTipHS0cJXQ
-	gSoVpaBjuWERPdz4zH/HsxE05e6elHLUIXm/hpOJgwCurPhuq8V6VHT6I4XdRF1z0qfq01XNKUATz
-	gLjSkmBg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=T46aT6b6jrcEqP7BKbyuJ+Dqx/tXTl32zZ60csvLnD8=; b=0ae9WxM7mlzJQhjET3s8Zlxei4
+	Hcs5quEgR64+xEnaKvKGrd/TpPvkk1TU+r5doLOAYLjJe1P8w8rARE5felddnh/em+BZyvI3qYjyr
+	dTg7zRPRm3KUmmZj543wNu6UG8ZeLdW/JB/g8+Xo+dASWeDNuHDSasyHqUeG6gwBPpocAqinHG24p
+	vxLLzpF3EJIhkur6fjZzDsPSxDWS8fK3HffWgDx+oQpeqcLW+gHgPmWdtELt9+TxEIvMdbUclh2G2
+	B3tsD5p7RsLhCVfCD6nLsh4vFjU3BssuEHWhsg/Swn+R13rCdFqvxlI5nYzdMNb3jt+2yFtWDB5h1
+	MiSgBnlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrJk0-00000002bSe-2PjS;
-	Tue, 04 Aug 2026 18:19:52 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wrJwY-00000002cZi-3BXB;
+	Tue, 04 Aug 2026 18:32:50 +0000
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrJjz-00000002bS1-1AMB
+	id 1wrJwV-00000002cY5-3g9e
 	for linux-mediatek@lists.infradead.org;
-	Tue, 04 Aug 2026 18:19:51 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0C76444FE4
-	for <linux-mediatek@lists.infradead.org>; Tue,  4 Aug 2026 18:19:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E83531F00ACF
-	for <linux-mediatek@lists.infradead.org>; Tue,  4 Aug 2026 18:19:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785867590;
-	bh=g08EIf41pC8GEK9juMB6Ku4OixyItou7ZrSB0SvDB9s=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=kr8iHNeJzCoBt8T5H1O+CsSYeURejmgFk0XvAfR/2ONMKEAFnb6CjQqNUvOMVSPRA
-	 ZL/Xrc7myD6X+jqx+rcLPhlIFPdB65yiJEAifRCHWYZHfj6BePng4G6AtrxfdIEwqX
-	 F2tDKhsXa6GF1mk8MMrYhi++cKPMaoLvphgiRbuvt+8cTRDZqYcPD4ngwu0lWxC6uw
-	 bHqAtt3rA9z78B5LygutAIV1fzRfUPNEC471W1eq3uH1Ofm6cp5xEE1j94KafFS0s7
-	 7CpT1a8z4HmUP9mNa0wZ6x0PfM1hDGMC3c6T0EslehRErWUkL6QZcHXunGBmH9Pytj
-	 uLp9fVs88Gygg==
-Received: by mail-ej1-f41.google.com with SMTP id a640c23a62f3a-c15cd3fd760so24054266b.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 04 Aug 2026 11:19:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+RqdTo6tsQWezfhtojOdMnPO3WOZB6XKn0mJdMbvVZPqE7kJOLZMvoaYUEbrwAVDAn04lz02OxgndaR91STZ6Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzJmHYzk+cV8Y8MHVxBVBI9xfYJ0hTO4rx7Vq4HubPTjnjzszHL
-	mqBhU7l3xzrkh0aTVCnsfrjtR/Hp8Y5KfRx7oB6XzoTE0V+qhviZrKnscTE2QH4AGt/c1gV2JSp
-	hJLnO0AdMrriGfq+G0INYUOjh7d9GRQ==
-X-Received: by 2002:a17:907:1c86:b0:c16:b05c:b9cf with SMTP id
- a640c23a62f3a-c2039cdc721mr25942266b.26.1785867589418; Tue, 04 Aug 2026
- 11:19:49 -0700 (PDT)
+	Tue, 04 Aug 2026 18:32:50 +0000
+Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-38de840f2f0so123144a91.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 04 Aug 2026 11:32:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1785868367; x=1786473167; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=T46aT6b6jrcEqP7BKbyuJ+Dqx/tXTl32zZ60csvLnD8=;
+        b=tJtikfivZdEjbl1FKOzzrRR05iCy8BXieNThz9Bd+tLnbvtcDwzEH6SBJ1mHQxLKLT
+         gSycN83TD7ZdpnUBaFUBa+HCxDF/ehn24TxpFQzoP0j92NkCQ+yNS+7Lw5xsr9i7BR4e
+         liAfu0MnIQfhTAhnd4Z5gCCu5bFQ9NY545geKXDDKBuI6QZjG0QRavET23XMzRrgJsm+
+         mXVWoqNCk1IR0Psp8M/b2mvMrn3VhUEX8xOJmXmoFRKjjK0hKVVPWvSf1U3qH0ees7y7
+         9CfKU0eT5jRaMuB2WHkXJyq+h9+Vh8oN/ACwZrt3nfHZYsKe1RshQlB5QTYYm5qaakSr
+         vFXw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785868367; x=1786473167;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=T46aT6b6jrcEqP7BKbyuJ+Dqx/tXTl32zZ60csvLnD8=;
+        b=F9dQfaCcdU136VrCJRyIg04y77iHDIxLFY7dEeb3hrJgH9BR24R8zmN0l/8H8kv9ol
+         3rO6kQysemHLNiaBam0WUzNzlJKUpbi0EJyeVgTANmRQsMGfy21bbMHqtEEtGnVW9CzM
+         LL8FuHpOrt/Z8PYBRBMQH7tnVsid+fw2apYRf6SPExqRGsHd/DID//ayyxMGI9w9AfmQ
+         Ef72mXWlvNKEoIT429+zQitS4/mMIyu/K1tfCofGZ0IV50FN5yYU71mxnfJ+O6jURuxt
+         RrUqc6Wtj6DL2aBK5t3vVLBPVfDeyhlGVIc7ftCk2vFVyCjY3OnBhxrzztnuZqROM5Hf
+         69tQ==
+X-Forwarded-Encrypted: i=1; AHgh+RpVDp9W9QEi5XkJgLYKFxVZUmoLdxHefEkb3jZleOd/Dg0BMJDf3Pc+/pMIFMfErwlp00ce23AT4TdkOGD7gQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz9LBPMpeNjVJUWGKaQG0+YAU8fL6HE7GPrJg7ZuoRXsLNAMbk7
+	b4p/QgzAgXWe83S4NDxgPA+NpVhSJ0GyRfXHPIE1X48qFcA7jKp6oZ2n
+X-Gm-Gg: AR+sD13s6494l2R3q9kc2L5SA5uToKu5vnXgGSAiySaEU52dmwFcnrQm1HFyrkKYBkK
+	Eixh01w/oONBEY1ktFUihmnGqNNh5y+yhD4fRHqKz6fs9vEGU6ZLDn2/Hp8xwliLNYKUC1LDuNv
+	aScuXYMJ6DqV8kpq81AwcYnQLNrRaLG8wo+OjjHcb3hNRni0VI9cBbFPJ374kYSl2+RO6g/bPQA
+	QkTppiGn3se686enry22N5S0mDfcDEB/5aHsEBDBtcOCFl45qZfGGp/F8U1x9SdQWXsyIWkF290
+	Ra2hiiiLQtFTvDiiLhZqCr/aGgkIi3FH6TnJEDvlP/ZJ3momNr/iWjiE+zu+yrG2ezwWnap+vLO
+	8hVJdQiodMtXbUCp1f+zvGMv6lVyvB6UIe22GImGzocCQ2Mi+pS2z5fEysuNTJ8clJlciNAVi9p
+	jntSUPFuHdHZxGhtZ1Ar+QfFH39veow2QrxR3mrNU8S0tvH1kx1mCLySQQ0560jLpkCpDGca8k8
+	8iD
+X-Received: by 2002:a17:90b:224e:b0:38e:9ef9:eb97 with SMTP id 98e67ed59e1d1-3903c5c443dmr636262a91.16.1785868366824;
+        Tue, 04 Aug 2026 11:32:46 -0700 (PDT)
+Received: from DESKTOP-TIT0J8O.localdomain ([49.47.198.15])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-13fca926c0bsm5440864c88.14.2026.08.04.11.32.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 04 Aug 2026 11:32:46 -0700 (PDT)
+Date: Tue, 4 Aug 2026 22:32:38 +0400
+From: Ahmed Naseef <naseefkm@gmail.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Ahmed Naseef <naseefkm@gmail.com>, netdev@vger.kernel.org,
+	"David S. Miller" <davem@davemloft.net>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Eric Dumazet <edumazet@google.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Paolo Abeni <pabeni@redhat.com>, Qingfang Deng <dqfext@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net] net: phy: mediatek: fix TX blink masks using the RX
+ bits
+Message-ID: <anIwRrQT9qMD89v5@DESKTOP-TIT0J8O.localdomain>
+References: <20260804113511.3371248-1-naseefkm@gmail.com>
+ <ab2f7f4f-0f46-4c6e-b3b1-ea713dbd08c6@lunn.ch>
 MIME-Version: 1.0
-References: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com>
- <20260714114414.184512-43-angelogioacchino.delregno@collabora.com>
- <CAL_JsqJXpY8jHEgSHcHz4QZTFEZe8PLbO6vbpxWH4qobs0MPyA@mail.gmail.com> <f3837531-2949-4741-a23e-387317485c02@collabora.com>
-In-Reply-To: <f3837531-2949-4741-a23e-387317485c02@collabora.com>
-From: Rob Herring <robh@kernel.org>
-Date: Tue, 4 Aug 2026 13:19:38 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqLVAQ6uhU0fGK_qnOn1x559ErWSJTKkSjr0z791thwD3w@mail.gmail.com>
-X-Gm-Features: AUfX_myLekSI9jogdlVNQCKmwUBvLh2cfWQ2ZHLsEAU03-4FpLXeKk3q8NZzUt8
-Message-ID: <CAL_JsqLVAQ6uhU0fGK_qnOn1x559ErWSJTKkSjr0z791thwD3w@mail.gmail.com>
-Subject: Re: [PATCH v2 42/46] dt-bindings: display: mediatek: Introduce MT8196
- 2D Sharpness Processor
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
-	simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
-	tzimmermann@suse.de, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	justin.yeh@mediatek.com, jason-jh.lin@mediatek.com, kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <ab2f7f4f-0f46-4c6e-b3b1-ea713dbd08c6@lunn.ch>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260804_113248_171246_5183D824 
+X-CRM114-Status: GOOD (  17.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,107 +113,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 28, 2026 at 8:49=E2=80=AFAM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> On 7/28/26 15:40, Rob Herring wrote:
-> > On Tue, Jul 14, 2026 at 6:45=E2=80=AFAM AngeloGioacchino Del Regno
-> > <angelogioacchino.delregno@collabora.com> wrote:
-> >>
-> >> Add documentation for the Two-Dimension Sharpness Processor, or
-> >> "TDSHP", found in many MediaTek SoCs including MT8196 and its
-> >> variants.
-> >>
-> >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@c=
-ollabora.com>
-> >> ---
-> >>   .../mediatek/mediatek,mt8196-tdshp.yaml       | 98 +++++++++++++++++=
-++
-> >>   1 file changed, 98 insertions(+)
-> >>   create mode 100644 Documentation/devicetree/bindings/display/mediate=
-k/mediatek,mt8196-tdshp.yaml
-> >>
-> >> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediat=
-ek,mt8196-tdshp.yaml b/Documentation/devicetree/bindings/display/mediatek/m=
-ediatek,mt8196-tdshp.yaml
-> >> new file mode 100644
-> >> index 000000000000..ccd6a8443443
-> >> --- /dev/null
-> >> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mt81=
-96-tdshp.yaml
-> >> @@ -0,0 +1,98 @@
-> >> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> >> +%YAML 1.2
-> >> +---
-> >> +$id: http://devicetree.org/schemas/display/mediatek/mediatek,mt8196-t=
-dshp.yaml#
-> >> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> >> +
-> >> +title: MediaTek Display Two-Dimension Sharpness Processor (TDSHP)
-> >> +
-> >> +maintainers:
-> >> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.c=
-om>
-> >> +
-> >> +description:
-> >> +  The MediaTek 2D Sharpness Processor (TDSHP) is responsible for perf=
-orming
-> >> +  image sharpness adjustments/enhancements in a display pipeline.
-> >> +  This hardware block supports adjusting the luma and contour 2d hist=
-ograms,
-> >> +  frequency weighting, luma-chroma gain and others, with adaptive wei=
-ghts.
-> >> +
-> >> +properties:
-> >> +  compatible:
-> >> +    const: mediatek,mt8196-disp-tdshp
-> >> +
-> >> +  reg:
-> >> +    maxItems: 1
-> >> +
-> >> +  clocks:
-> >> +    maxItems: 1
-> >> +
-> >> +  power-domains:
-> >> +    maxItems: 1
-> >> +
-> >> +  ports:
-> >> +    $ref: /schemas/graph.yaml#/properties/ports
-> >> +
-> >> +    properties:
-> >> +      port@0:
-> >> +        $ref: /schemas/graph.yaml#/properties/port
-> >> +
-> >> +      port@1:
-> >> +        $ref: /schemas/graph.yaml#/properties/port
-> >> +
-> >> +    required:
-> >> +      - port@0
-> >> +      - port@1
-> >> +
-> >> +  trigger-sources:
-> >> +    maxItems: 1
-> >> +
-> >> +required:
-> >> +  - compatible
-> >> +  - reg
-> >> +  - clocks
-> >> +  - clock-names
-> >
-> > This causes a warning.
-> >
-> > Seems this is in linux-next already, but no reviews?
-> >
-> > Rob
->
-> Wow. No idea how clock-names got into the list of required properties: th=
-ere is
-> only one possible clock, and this doesn't need any clock-names at all.
->
-> Same for the resizer binding.
-> Sorry for the mistake.
+On Tue, Aug 04, 2026 at 08:11:21PM +0200, Andrew Lunn wrote:
+> On Tue, Aug 04, 2026 at 03:35:11PM +0400, Ahmed Naseef wrote:
+> > MTK_GPHY_LED_TX_BLINK_SET and MTK_2P5GPHY_LED_TX_BLINK_SET are built
+> > from the RX blink bits instead of the TX ones, so both TX masks are
+> > identical to their RX counterparts. The TX bits they should be using,
+> > MTK_PHY_LED_BLINK_{10,100,1000,2500}TX, are otherwise only referenced
+> > by the per-speed branch of mtk_phy_led_hw_ctrl_set().
+> > 
+> > A TX trigger selected without a link trigger therefore programs the RX
+> > blink bits, and the LED blinks on received traffic. The masks are also
+> > used to decode the blink register in mtk_phy_led_hw_ctrl_get(), which
+> > as a result cannot tell the two triggers apart: an RX-only
+> > configuration reads back as RX and TX, and a TX-only configuration
+> > reads back as neither.
+> > 
+> > Fixes: 7f9c320c98db ("net: phy: mediatek: Move LED helper functions into mtk phy lib")
+> 
+> Was this bug introduced in this commit, or did this commit just move
+> the code around and it was broken before? The Fixes should go back to
+> where the bug was added, which could be earlier.
 
-Why is this still in linux-next?
+It was introduced by that commit. Before it, mtk-ge-soc.c correctly had:
 
-Rob
+  #define   MTK_PHY_LED_BLINK_TX      (MTK_PHY_LED_BLINK_10TX |\
+                                       MTK_PHY_LED_BLINK_100TX |\
+                                       MTK_PHY_LED_BLINK_1000TX)
+
+which 7f9c320c98db removed, adding to mtk.h in the same commit:
+
+  #define MTK_GPHY_LED_TX_BLINK_SET   (MTK_PHY_LED_BLINK_1000RX | \
+                                       MTK_PHY_LED_BLINK_100RX | \
+                                       MTK_PHY_LED_BLINK_10RX)
+
+
+Thanks,
+Ahmed
+
+> 
+> 	Andrew
 
