@@ -4,85 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97496C5518F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 10:19:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA4CEC55172
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 10:33:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=13TTvH1EeGqMs0mz6hnT5sV4Dz8BUjbRnK70xfNiQaM=; b=kD6AsL0M3jZNCzLFIvGiNNOphx
-	IMWekNR7TbceBgExe1pzNgXxYdapd+Y1FuammOZwCRnE6RBm+4OOGZfKhp8gAbzF+jkYn2DgZlRtR
-	JyyYXt9ExwCdQ01bnItJV/EMSY4rk7H2QxM81VK/INUMRm5c2uGSD31DdWyr4c4CTSPZUNLFxbD4K
-	4BKuI/3Xju+oCMHbXdwnxrOvO8P9GgJqWUzzq5zmOy/4SAAl/XHGsMAA+LmvBJwS4LSZyQPIDYTEA
-	fw08g4EiQpZE/f5qaEM28G/nU494yluMB5t+pGajRWiT2HmHF9nVnN2QjP3u7YDM66C01P3yLoEA2
-	HyAUuBBQ==;
+	bh=vTXDHsnwFlbf3g77LNyPYkdxcBB8Zd+YWsg2JPpDVpU=; b=KC2E652xTP5fyZj+C+YVrkW1W0
+	XEGM2YT/p6PXrhauPbAMzj3GVVsYQCa8YJ30EKic/f4rNH3wHdP22rLfxR2OJgRQxJSZaaNsn7PRU
+	mnKlgu+Cyy6aXyYmONGivYzvK2gPEQVqFQarHrsGTe/+mM1oDxrkf/6NIvta4rRUHf7NE0Q8PMqtY
+	Jp0vypmEFHoFUu4496TEVQe1vRuW6C9Yw2+lOWkBpdj0oEU9gfU5pabEoPkTUiih6KkyKQ1aiEBsX
+	x+u0cRX0oMFR2PzRaC2VWCt92WiW+tAztlolmbCRbqY9ge8YhVNlmVk5k9/UTZDBfXMmsvqfWB74Q
+	16l0rTyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrCFR-00000001XGa-0G9m;
-	Tue, 04 Aug 2026 10:19:49 +0000
-Received: from mail-wm2-x07.google.com ([2a00:1450:4864:31::7])
+	id 1wrCSz-00000001YBa-2kmB;
+	Tue, 04 Aug 2026 10:33:49 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrCFN-00000001XGE-3M66
+	id 1wrCSx-00000001YAr-1Y48
 	for linux-mediatek@lists.infradead.org;
-	Tue, 04 Aug 2026 10:19:47 +0000
-Received: by mail-wm2-x07.google.com with SMTP id 5b1f17b1804b1-49557073245so11348725e9.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 04 Aug 2026 03:19:44 -0700 (PDT)
+	Tue, 04 Aug 2026 10:33:48 +0000
+Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-2caced6038eso10598385ad.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 04 Aug 2026 03:33:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785838783; x=1786443583; darn=lists.infradead.org;
-        h=content-disposition:content-type:mime-version:message-id:subject:cc
-         :to:from:date:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=13TTvH1EeGqMs0mz6hnT5sV4Dz8BUjbRnK70xfNiQaM=;
-        b=ZCt9MCb/ySb1YUsB6J8g53ze4OGVgRcAHFidJUEKsMa0dzrY1SMqsv1LQDrqZXaRMy
-         05GZnpa4d2DEQ3tArNXaqM+jnZPXWo702NZvobb1dRBej2H5j4TCoaCt7pP49vuRSMyp
-         92R8AWIi8lybmKZTx0Mlw9AwLDmoYeAZra+57kBffJEqu9mMi4DtzJvA7qGaSWSzP4YO
-         3KIBwMbki8TVdwosdgXNleI3PvagPCdwizgbzrWSC6JPqDeUbbxxvxKpw62snFlR5s9h
-         50qNBRbJ8NrMYod17E4qWy/Y/mawKfdUvBjlzYj1MzPtBXJjhue+SS51Prtl96Mc3iDE
-         0aIQ==
+        d=gmail.com; s=20251104; t=1785839626; x=1786444426; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=vTXDHsnwFlbf3g77LNyPYkdxcBB8Zd+YWsg2JPpDVpU=;
+        b=Dv5NAu/03960KvQjdn0CHJoGMGJWVv7EQiVbrKM2/icUsEGJRUKfzSpTtNehsoNpIM
+         likB77ltDQ54Vg9EMihee/+M+7jbuZV9x/UhByX7TRuaZtmww2DC7Q6XlbFAZHEEf5RQ
+         nkSGdYsbXtYdYom1M8cduxF6nD5WXailpz4GGX/TBudaS6XvxFEw1pjjOk6m5sYWh+Gq
+         A1Aw2zoMYfgkLZ7uVWjTntMlnNZFha1dZWELgYE0td3dhAmRcZQARn0Vlm0/Cqf9cVJS
+         Po3Ziq7cVNiLz4sLkT9xQ9mxARoDY7G6ArO2jSb3ZFiAuH01FiAKjLfBdSg7GZFJZdTZ
+         QKiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785838783; x=1786443583;
-        h=content-disposition:content-type:mime-version:message-id:subject:cc
-         :to:from:date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=1e100.net; s=20251104; t=1785839626; x=1786444426;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=13TTvH1EeGqMs0mz6hnT5sV4Dz8BUjbRnK70xfNiQaM=;
-        b=K5egmCfHWqaR9755lPVBslx6miS7wvcyNnADamAieZMOr4+32kVNu5txy1h/J354mX
-         Ip4G0b66KxbCj2JJ+GMf9YzeLSJ0Tc0ON4jvOSJkjzHd4Fd2+zowRcoqGkJww1zTjUMp
-         qMxONDQIlicSKYn2o7TvVXhG4x6GJJS8zK9wNrQsAyOMCmhJbdd72f3h9WRILXMwCRH4
-         l31iX6aIC/4awB+SFnRGahUWdPBJUJe2PVtVtUAtVcjpf6eOQGfO+M44PLe5SL8MLGHQ
-         KBLeDptY0Z4yM5c7hEkJXxrmkINx/SBncsRewLrF3Ioy56ESbJyz9dcgVUxY04/8iyBD
-         o2Lw==
-X-Gm-Message-State: AOJu0YylCtPHqfTsMO/NNt2va9FzqGUvRectP9r1fAkkm/F4GdieOaPX
-	e2VqCKp/m6eiXj1yw+iN/3iNZxNVNWw563P0gVR6dFSUIq9lFMnSK3hKCHzRT5aG0ixP9k+g
-X-Gm-Gg: AR+sD10TugPiDryO2I0zZtE+DgHLG2FVNpPs86j2nIc1m/f3rX/K+3opcEcWXKnIXca
-	oxwoRaM9zTOPF9nfNxJVWyKg2nm294GuIvBnZlyZ62Knc75J9h2zODGV11Mi5rJSaSHvdtj3Iol
-	TvJMBcm4uZ7aNE1VQhDtfaNGJsG8MrzFGlPQWNkwJvRTPhxcFet8efqr2n80e4CJZZBpMEQWTtd
-	/x3JY/sWMVNmznl3UqIzfPccx9cQC/gB0Qku2PS9CPG0IFLtJJobQDXyFtRrE3a5PQa4UWYKz3m
-	dBT0RsLFSjkszUl3G+xdqzdnoIMp3LLums6j99UUmZE7/4JUqs0v0Zj/M1dKefyxGMP2/EttoqE
-	aRkvAF20O5YI98oRt1FxHbbldttZDF+RvgIaLHQZkyjY3ZqZS9fsDbxUdPbBvrboabDCMlA9iNw
-	mcDW3FUiIwO2BhZTGZPvKU6V3dnJViBkX+JzFb+rEDZ+jdp/2n6PVned4IsrmJPKVdkgTxxmflB
-	mQjjrY8241ZDe4NnFZIVroNnWISPVaDFA7h/TlrmuLxi+Y=
-X-Received: by 2002:a05:600c:840f:b0:496:c379:b2a1 with SMTP id 5b1f17b1804b1-4980c66d7bbmr269011845e9.2.1785838783093;
-        Tue, 04 Aug 2026 03:19:43 -0700 (PDT)
-Received: from fedora.fritz.box (dynamic-adsl-84-220-246-20.clienti.tiscali.it. [84.220.246.20])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49807b5b4a2sm381950585e9.1.2026.08.04.03.19.42
+        bh=vTXDHsnwFlbf3g77LNyPYkdxcBB8Zd+YWsg2JPpDVpU=;
+        b=PzWHxMnFfrtx5dUBw2o/xjxpidPKWWVMSZN9WrKF8WTnzBDzz8coaFO5wsWV7LFSkC
+         bWExqurynn00n3aKEFMD+7LYqERondUQomeWpTobMmIC3uq9J1grEtxAzNgSRNfrLTy2
+         +jy38n4B482W48yqMlJyC89pkU/3TepRdJjv4tIDaxRZCPwD0zOWDMVV+ICua3ppChkT
+         HB9NGjU0uu0nCl+hUM4pXkmd79mL4B/Q/KIO0v5PGZXa6eCzQ+a5X7mU+VTThgBfadjl
+         0c32GdP2/ih9B2q1vru+78RoF8uNkc/WIQxk0XjlLdESxIkzEjzm9sMcMCpS/JOEWh8j
+         mRVA==
+X-Forwarded-Encrypted: i=1; AHgh+Ro3N5v0XE1mskelOKwyPjOWN4s+zwWG+hvBmcDJXeWFDDNxR20XektFDrGpS1f512qwr9NQqNBUlDgZOE3LdA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz5z63UDH6s86QQpxmFFwZkDMVU8pCGdUKaHFU3yXC+IS5ODXz4
+	PhgbnO8vu7CDMGNRewa6ejexnjo5JdyZd+e9/8NhVyp7RFQBqyxcoXPh
+X-Gm-Gg: AR+sD12cHQ0Gq85WXxGJQpDIBiwCH3pXVPqadS9E9Wt6cqYhiqbH5WeQ+OspcpR4gc2
+	omaoQ0xZ6vbYaNXyITFrx2jrmNc/xdFIXrY2FLIOy3f4ENa8V7ep2uuyex/vvg54XcE7rk2RvTX
+	Kcx7TC6IqKErwG/lHv5Dy8vkUaYZKoa5m1kJv7WxIzpN3NkA9WWu/1VKh+wqbbQkW0TxJrdlGfA
+	oQ24avv5DnBxeFOmmynYN3KOlRY2TyiTpAiX/17aNOW0wTYO8Qpd1f4e3EvHo5Mn1kwfw20duMs
+	NHg9WBMvf22equX/y6MeVHCNjqFXlbxTzX5fdRal0gIpAolbW5uNa9AnwlTS3vAjCd3umxIhHMm
+	BtG00XE7n3vTLNe3od1tHHQ9UBszmiN0+PFAfliV56kHgcxpNHg/oBLdLadns5URxeSaIOhEc3D
+	0aU9aS1ZmvYB/54QOP4GUa8Osqp2ZwiT0vxDM70LdM2kBYA2oAud89qer7ktEK1ExMf78n
+X-Received: by 2002:a17:903:98f:b0:2cf:461a:3863 with SMTP id d9443c01a7336-2d08ab8bec3mr29565945ad.22.1785839625772;
+        Tue, 04 Aug 2026 03:33:45 -0700 (PDT)
+Received: from DESKTOP-TIT0J8O.dm.ae ([49.47.198.15])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3158676f579sm2955011eec.20.2026.08.04.03.33.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Aug 2026 03:19:42 -0700 (PDT)
-Date: Tue, 4 Aug 2026 12:19:31 +0200
-From: moosager <moosager90@gmail.com>
-To: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com, 
-	shayne.chen@mediatek.com, sean.wang@mediatek.com, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com
-Cc: linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org
-Subject: mt7921e: failure to reset causes network drop
-Message-ID: <anG46qbvCqCHGF-f@fedora.fritz.box>
+        Tue, 04 Aug 2026 03:33:45 -0700 (PDT)
+From: Ahmed Naseef <naseefkm@gmail.com>
+To: netdev@vger.kernel.org
+Cc: "David S. Miller" <davem@davemloft.net>,
+	Andrew Lunn <andrew@lunn.ch>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Eric Dumazet <edumazet@google.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Qingfang Deng <dqfext@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Ahmed Naseef <naseefkm@gmail.com>
+Subject: [PATCH net-next] net: phy: mediatek: add EcoNet EN7528 PHY support
+Date: Tue,  4 Aug 2026 14:33:21 +0400
+Message-Id: <20260804103321.3331802-1-naseefkm@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260804_031946_767173_4F1A3A9E 
-X-CRM114-Status: GOOD (  14.42  )
+X-CRM114-CacheID: sfid-20260804_033347_425482_460E05F6 
+X-CRM114-Status: GOOD (  21.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,60 +109,137 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
-there is an issue with the mt7291e that causes the network to drop at random, 
-with dmesg outputting repeatedly:
-kernel: mt7921e 0000:62:00.0: Timeout for driver own
-kernel: mt7921e 0000:62:00.0: driver own failed
+The EcoNet EN7528 MIPS SoC embeds four Gigabit Ethernet PHYs (PHY ID
+0x03a29491) behind its built-in MT7530 switch. They use the same LED
+register layout as the other SoC PHYs handled by this driver, but their
+LED controller powers up with its external control disabled, so the LED
+pins stay dark regardless of what is programmed into the LED control
+registers.
 
-Other effects are the system becoming generally unresponsive, kernel panics 
-(reporting "Fatal exception in interrupt"), and the system instantly rebooting. 
-It also has a tendency to happen again on every subsequent reboot.
-More reports of users' experiences are available at [1].
+Add a phy_driver entry for it, modelled on the Airoha AN7583 one. Its
+config_init callback enables the LED controller through the LED basic
+control register, which this driver does not program for its other
+PHYs, but which the air_en8811h driver already handles as
+AIR_PHY_LED_BCR. LED behaviour is then controlled through the phylib
+LED operations shared with the other PHYs of this driver.
 
-This script lets you reproduce the issue:
-#!/bin/sh
-echo 0x7c060010 > /sys/kernel/debug/ieee80211/phy0/mt76/regidx
-while true; do echo 0xffffffff > /sys/kernel/debug/ieee80211/phy0/mt76/regval ; done
+The LED block is shared by the four PHYs of the EN7528: the LED
+configuration programmed through any one of them applies to all four,
+while each PHY still drives its own LED pin from its own link state.
 
-I had previously investigated the code and have some potential insight: during 
-normal usage, the function __mt792xe_mcu_drv_pmctrl writes to a register 
-like this:
-mt76_wr(dev, MT_CONN_ON_LPCTL, PCIE_LPCR_HOST_CLR_OWN);
+The EN7528 PHYs need no efuse calibration data, so relax the
+MEDIATEK_GE_SOC_PHY dependencies to allow building the driver on the
+ECONET platform.
 
-and it expects to find 0x00000004 (which is PCIE_LPCR_HOST_OWN_SYNC). Instead, 
-when the issue happens, it finds 0xffffffff, which does not change even after 
-the driver attempts to write to it.
+Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
+---
+ drivers/net/phy/mediatek/Kconfig      |  8 ++++--
+ drivers/net/phy/mediatek/mtk-ge-soc.c | 35 +++++++++++++++++++++++++++
+ 2 files changed, 41 insertions(+), 2 deletions(-)
 
-In addition, the failure of __mt792xe_mcu_drv_pmctrl returns -5 as an error 
-code; this is not checked by the caller, mt7921e_mac_reset, which calls 
-mt792xe_mcu_drv_pmctrl without checking its return value.
+diff --git a/drivers/net/phy/mediatek/Kconfig b/drivers/net/phy/mediatek/Kconfig
+index bb7dc876271e..b6d41bbbbc27 100644
+--- a/drivers/net/phy/mediatek/Kconfig
++++ b/drivers/net/phy/mediatek/Kconfig
+@@ -23,9 +23,9 @@ config MEDIATEK_GE_PHY
  
-I have also found some potentially helpful patches at [2]; however, applying 
-them did not fix it, and my best attempts at adapting the proposed code paths to 
-be triggered in mt7921e_mac_reset have not fixed it either.
+ config MEDIATEK_GE_SOC_PHY
+ 	tristate "MediaTek SoC Ethernet PHYs"
+-	depends on ARM64 || COMPILE_TEST
++	depends on ARM64 || ECONET || COMPILE_TEST
+ 	depends on ARCH_AIROHA || (ARCH_MEDIATEK && NVMEM_MTK_EFUSE) || \
+-		   COMPILE_TEST
++		   ECONET || COMPILE_TEST
+ 	select MTK_NET_PHYLIB
+ 	select PHY_PACKAGE
+ 	help
+@@ -36,5 +36,9 @@ config MEDIATEK_GE_SOC_PHY
+ 	  present in the SoCs efuse and will dynamically calibrate VCM
+ 	  (common-mode voltage) during startup.
+ 
++	  Also include support for the built-in Gigabit Ethernet PHYs of
++	  the Airoha AN7581 and AN7583 SoCs and of the EcoNet EN7528 SoC,
++	  which need no efuse calibration data.
++
+ config MTK_NET_PHYLIB
+ 	tristate
+diff --git a/drivers/net/phy/mediatek/mtk-ge-soc.c b/drivers/net/phy/mediatek/mtk-ge-soc.c
+index 9a54949644d5..0041300d4f10 100644
+--- a/drivers/net/phy/mediatek/mtk-ge-soc.c
++++ b/drivers/net/phy/mediatek/mtk-ge-soc.c
+@@ -16,6 +16,7 @@
+ 
+ #define MTK_GPHY_ID_MT7981			0x03a29461
+ #define MTK_GPHY_ID_MT7988			0x03a29481
++#define MTK_GPHY_ID_EN7528			0x03a29491
+ #define MTK_GPHY_ID_AN7581			0x03a294c1
+ #define MTK_GPHY_ID_AN7583			0xc0ff0420
+ 
+@@ -320,6 +321,14 @@
+ /* Registers on MDIO_MMD_VEND2 */
+ #define MTK_PHY_LED1_DEFAULT_POLARITIES		BIT(1)
+ 
++/* LED basic control register, part of the same LED block as the LED0/LED1
++ * control registers above. The air_en8811h driver describes the same
++ * register as AIR_PHY_LED_BCR.
++ */
++#define MTK_PHY_LED_BCR				0x21
++#define   MTK_PHY_LED_BCR_CLK_EN		BIT(3)
++#define   MTK_PHY_LED_BCR_EXT_CTRL		BIT(15)
++
+ #define MTK_PHY_RG_BG_RASEL			0x115
+ #define   MTK_PHY_RG_BG_RASEL_MASK		GENMASK(2, 0)
+ 
+@@ -1470,6 +1479,19 @@ static int an7583_phy_config_init(struct phy_device *phydev)
+ 	return phy_clear_bits(phydev, MII_BMCR, BMCR_PDOWN);
+ }
+ 
++static int en7528_phy_config_init(struct phy_device *phydev)
++{
++	/* The LED controller of the EN7528 powers up with its external
++	 * control disabled, leaving the LED pins dark regardless of what is
++	 * programmed into the LED control registers. Hand the pins over to
++	 * the LED control registers the same way the air_en8811h driver
++	 * does; the mode field of this register is already set out of reset.
++	 */
++	return phy_set_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED_BCR,
++				MTK_PHY_LED_BCR_CLK_EN |
++				MTK_PHY_LED_BCR_EXT_CTRL);
++}
++
+ static struct phy_driver mtk_socphy_driver[] = {
+ 	{
+ 		PHY_ID_MATCH_EXACT(MTK_GPHY_ID_MT7981),
+@@ -1505,6 +1527,18 @@ static struct phy_driver mtk_socphy_driver[] = {
+ 		.led_hw_control_set = mt798x_phy_led_hw_control_set,
+ 		.led_hw_control_get = mt798x_phy_led_hw_control_get,
+ 	},
++	{
++		PHY_ID_MATCH_EXACT(MTK_GPHY_ID_EN7528),
++		.name		= "EcoNet EN7528 PHY",
++		.config_init	= en7528_phy_config_init,
++		.probe		= an7581_phy_probe,
++		.led_blink_set	= mt798x_phy_led_blink_set,
++		.led_brightness_set = mt798x_phy_led_brightness_set,
++		.led_hw_is_supported = mt798x_phy_led_hw_is_supported,
++		.led_hw_control_set = mt798x_phy_led_hw_control_set,
++		.led_hw_control_get = mt798x_phy_led_hw_control_get,
++		.led_polarity_set = an7581_phy_led_polarity_set,
++	},
+ 	{
+ 		PHY_ID_MATCH_EXACT(MTK_GPHY_ID_AN7581),
+ 		.name		= "Airoha AN7581 PHY",
+@@ -1537,6 +1571,7 @@ module_phy_driver(mtk_socphy_driver);
+ static const struct mdio_device_id __maybe_unused mtk_socphy_tbl[] = {
+ 	{ PHY_ID_MATCH_EXACT(MTK_GPHY_ID_MT7981) },
+ 	{ PHY_ID_MATCH_EXACT(MTK_GPHY_ID_MT7988) },
++	{ PHY_ID_MATCH_EXACT(MTK_GPHY_ID_EN7528) },
+ 	{ PHY_ID_MATCH_EXACT(MTK_GPHY_ID_AN7581) },
+ 	{ PHY_ID_MATCH_EXACT(MTK_GPHY_ID_AN7583) },
+ 	{ }
 
-Here is my firmware version reported in dmesg:
+base-commit: 5b4f243f78a533abf414bfd96325aa2c96e711a3
+-- 
+2.34.1
 
-[   15.848101] mt7921e 0000:62:00.0: enabling device (0000 -> 0002)
-[   15.849369] mt7921e 0000:62:00.0: disabling ASPM  L1
-[   15.865381] mt7921e 0000:62:00.0: ASIC revision: 79220010
-[   15.958433] mt7921e 0000:62:00.0: HW/SW Version: 0x8a108a10, Build Time: 20260605203307a
-[   16.352504] mt7921e 0000:62:00.0: WM Firmware Version: ____000000, Build Time: 20260605203411
-
-It has also been happening at least since the firmware with HW/SW build time 
-20251118163143a and WM firmware build time 20251118163234, which is when I got 
-my laptop with this Wi-Fi chip.
-
-Note: the issue happens whether ASPM is on or off.
-The issue happens on my build of the vanilla 7.2.0-rc4 kernel, as it has 
-been happening on every past kernel version.
-
-I would like some guidance as to how I could debug the issue further, though 
-ultimately the problem is likely in the firmware. It would be very helpful to 
-have this fixed, as it currently makes my laptop almost unusable, and I know I'm 
-not the only user having this issue.
-
-[1] https://bugzilla.kernel.org/show_bug.cgi?id=220353
-[2] https://lore.kernel.org/linux-mediatek/20260506070458.3096180-1-jb.tsai@mediatek.com/
 
