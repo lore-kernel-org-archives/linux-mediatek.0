@@ -4,114 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66765C55838
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 14:57:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF6E8C55822
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 15:39:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Jld8QoXOyiRKxKiV6Ij6KMsJftWjnRzT1IjV73V8qmY=; b=YRh6jLoKOQblJqnkglHPOWe1l3
-	A5voMQdY6kbGEjsKI3Xaylzo0dOt3EWIpVwdtltQrC/NHkVlenWvZLBqB3GHJsQ3FvMAnXWQYyjfJ
-	U8tdcq7Lv1mwat/RFaop2hC7QRjUa+HK+4B7ENS7ngfQoSqkw5ZPvYJc0ouhLQY6iLVLkSxO3Uz3E
-	e8wagN1Mdmhj1myFUc+n6XC/YlD32hwTCxTAV56ZNHNGZ3klsG+lX4LxqIluaKt5U+ss4Mvoo+rGa
-	/GFu/rfgaAwWs5Q9jGw/npmgGUAD20qGd3r1JsRknqhmkE4KQyqEexZXaWdGyr/1j1Kj3CtmCpFG9
-	nQZjdw2Q==;
+	bh=GE0WgxrhQlszpq0bFS8ekUeWF2E3M+uVciQ9zYtpewc=; b=wRgLw/NT5lRS6vGsP7fItr8f9l
+	npLfnZzarPEziqzFoPnYS+hVB/90JWj7gCif9D2hBkbsJ69+gPl18hyIXZ0+/allI096nFzbeMnqv
+	vShJyIljesjKKv6ZqjDsQ2taUNYKTzY76JT11HxP2IkRXZ4GAx+hN/vKRvMCDJ6VKhqMF8CG4gjcm
+	8ujUBeDRXNGMbe5yuL+jGfBx8Tn9+nAjxRLi0d97lK9jIt39yraM8lSpyx4ASCHFPXrvOuViu4qYO
+	wfXVXnDw6SVbkx0eis6zp2hhU9WnZyLr36AM5OIx30hof1FMEX2qgZnhorenqQ8WsB27D4ESyRpLH
+	l/HzlFMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrGaP-000000029Ap-2rgN;
-	Tue, 04 Aug 2026 14:57:45 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wrHEy-00000002ETq-2VfK;
+	Tue, 04 Aug 2026 15:39:40 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrGaO-0000000299d-2M45
+	id 1wrHEv-00000002ET0-2oCk
 	for linux-mediatek@lists.infradead.org;
-	Tue, 04 Aug 2026 14:57:44 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id AF2F960A8C;
-	Tue,  4 Aug 2026 14:57:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B22341F000E9;
-	Tue,  4 Aug 2026 14:57:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785855463;
-	bh=Jld8QoXOyiRKxKiV6Ij6KMsJftWjnRzT1IjV73V8qmY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=LP7eRLHsIvkuDUhDSJnSpHvpTQWt3F61j6RQKNDy07FNsBlrRb807tlFflrNdton7
-	 XAAWF3/uHfejsdwVyu3UYh8aDyqjiV9O2zxhZvfCtrMSDyKFsbrpiG0qTiiw2QGx8R
-	 XPFIDoWdCpVtWxNEvQXq2SsDvpu22+Uxz/+/bpoyVHbfxrRYUyKK6y1OVB2lbE63no
-	 Hrk0msCy4GNs/mv6QYbsMxzu12Ux4S//vDdVp72Q+ZoHAMC2XUS+kLzNNK40PwsBL7
-	 ETWz6LzTpv+hGaBnabnBVAtquqd+BMSvESxoICuiSRroJ8LH9vbVBfFkUFQXrxe2ZI
-	 AywwE0tVdjK/Q==
-Message-ID: <b99c478d-302b-4c50-8a8b-94aa0f4f7fad@kernel.org>
-Date: Tue, 4 Aug 2026 16:57:34 +0200
+	Tue, 04 Aug 2026 15:39:38 +0000
+Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-84862b0d5aeso5706412b3a.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 04 Aug 2026 08:39:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1785857977; x=1786462777; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=GE0WgxrhQlszpq0bFS8ekUeWF2E3M+uVciQ9zYtpewc=;
+        b=EPul2gfReCeOdjn7GI9YZDU1YtADoDCjBEhXLWpfwzUti+AxbPlsTG6qTbvruGDidq
+         MPIl8iVs2gm/FHdOQ2oK+rdAI9tPss9QHwu3V+YIUnPk0LLV4KSh/M6wZiYr3eqf+D9I
+         j3VxDxAUnA3wLD22faNbh0Q+RByg2V0mz9+4pVmaIbUxJb5iSOtmzeWaXbf1vEUqpbDU
+         lbjJPEE0NtsmLJJK824VwIchEABJQSnpo9IufFDdHBW4IMl0ic0p96G1w0jjeOsABnNd
+         0qK6Fyzjt254u3jzqW8a1QNqP7OGh4hOJjiaxb66njzNqiji+AV8oEfSsZ7HZ67SzOv1
+         zAFg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1785857977; x=1786462777;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=GE0WgxrhQlszpq0bFS8ekUeWF2E3M+uVciQ9zYtpewc=;
+        b=qJYmUrCwt6raa8/5MoM0LzhRhbOswiDztGUGhERj5cOD2MYXmsvVcAv1qqaFZAzgIT
+         yV0o2orQclX6veUXegDqQjUKZbU2D5kQqk7/YfTG2IH/PU7LT9WLh2n/A+fPtwNSbvXq
+         INm/bJmjRuZ5sBaChFzHgRUqRo6jV0oN7H/BZ/PUBDC5cYIf42TmihDdN19fUSz6lfR/
+         b1mV54UuxZnrWvI2yrs2W5eWUsn2AK5V8NKwpdTzrS12B0nWOe2YI9Abu89mtLIkAMqs
+         45QOvVYqeMB0svGf9R8fA7iyXSwfH+VTSrs5Hcz8CZFsYr27gFaw69hnys/QBtQwK75v
+         HCxw==
+X-Forwarded-Encrypted: i=1; AHgh+RorJgHLG76XO1OQlCoSppKuXFjKhrvw0/2PTzDOhrNAqwOQj6lnATQIceIfM/UtBUt41Hy8xGy1cAgD+ElvLg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YynQ2hCn0W5JB/2pOYdf+VIItfj9nHxberPecXq5vLFA/3ZaFdx
+	VMf6eFhY1jobrjLiUFNEdMNO11AaneAiSO/31Ntz7zwiKYMepgYCaFs=
+X-Gm-Gg: AR+sD13ihBWK9FGBe1RhtLeAACo6/Bs6Bu75v9ueekAECypc6ixaeOKBerAN68KhvHm
+	w6FPWceDNwp4VOFYkY7qtSXXdPYgzgncIYMwbRB/ZV/AC+AaFnqqCxgEafERAIpiMzrvJBbYkGO
+	9AcWWVKB4jR5eK1K+5Dd5DbSYxrltmzG6w/0hEeAXi9gY2AjIQ6qFS9yoFSwhs1KJkcP7VSZxU5
+	QqWCGLL/Y3lESZTWzqQPO9VFagrXAiQUXN7QZQpnM836U85zDZ0xKzIgG24Odg74KCQINa1K6dW
+	6vq//uaA7nHqnInjeaWiAnGej2Ygw14UL2hzPdaccpK32L+XkFatAMoRXScurTXGvJp5hXRUETR
+	O3qYJRnc+mSxEcsoSDg8/xudTVyicrJKjD4rqvsV5RtztFT3l22wNfb/usm3JgwJprEjuNtR+7i
+	Hu6mB35j1Ys4Pb4FLya9/264wN2Blg9DYdNwPmeM8TgZhoNmIacWKE9UlJW948lEJRMF9o7KJh7
+	EPCjXd3Fr+4zgZ2PAnhsGdeDGqqpMofV4xixUz8gfR53VNH5vqKujvu837YbIq04XnzncuQ2xn1
+	7bhdqg9LyCx3h1pptcCiRKY=
+X-Received: by 2002:a05:6a00:3cd1:b0:847:98ff:4af5 with SMTP id d2e1a72fcca58-84ee47d5328mr14103507b3a.26.1785857976549;
+        Tue, 04 Aug 2026 08:39:36 -0700 (PDT)
+Received: from localhost.localdomain ([1.226.165.54])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84edbd31639sm5581184b3a.9.2026.08.04.08.39.33
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Tue, 04 Aug 2026 08:39:35 -0700 (PDT)
+From: Myeonghun Pak <mhun512@gmail.com>
+To: Sean Wang <sean.wang@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Frank Li <Frank.Li@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: dmaengine@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Myeonghun Pak <mhun512@gmail.com>,
+	Ijae Kim <ae878000@gmail.com>
+Subject: [PATCH v2 RESEND] dmaengine: mediatek: hsdma: fix runtime PM leak on init failure
+Date: Wed,  5 Aug 2026 00:39:24 +0900
+Message-ID: <20260804153924.49627-1-mhun512@gmail.com>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <aj1RSj5ZXvc-9yu7@lizhi-Precision-Tower-5810>
+References: <aj1RSj5ZXvc-9yu7@lizhi-Precision-Tower-5810>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 30/35] dt-bindings: pinctrl: airoha: an7583: add olt
- function/group
-To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Bartosz Golaszewski <brgl@kernel.org>,
- Christian Marangi <ansuelsmth@gmail.com>,
- Benjamin Larsson <benjamin.larsson@genexis.eu>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Markus Gothe <markus.gothe@genexis.eu>,
- Matheus Sampaio Queiroga <srherobrine20@gmail.com>
-References: <20260727174141.664933-1-mikhail.kshevetskiy@iopsys.eu>
- <20260727174141.664933-31-mikhail.kshevetskiy@iopsys.eu>
- <20260727-chivalrous-legendary-goat-b9ab93@quoll>
- <d92137d6-5dde-468a-95ec-3acc506444f9@iopsys.eu>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <d92137d6-5dde-468a-95ec-3acc506444f9@iopsys.eu>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260804_083937_706801_05F75F57 
+X-CRM114-Status: GOOD (  13.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,37 +108,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 04/08/2026 16:43, Mikhail Kshevetskiy wrote:
-> 
-> On 7/27/26 23:15, Krzysztof Kozlowski wrote:
->> On Mon, Jul 27, 2026 at 08:41:36PM +0300, Mikhail Kshevetskiy wrote:
->>> Add support for olt pin function for olt pin group.
->>>
->>> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
->>> ---
->>>  .../bindings/pinctrl/airoha,an7583-pinctrl.yaml        | 10 +++++++++-
->>>  1 file changed, 9 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/Documentation/devicetree/bindings/pinctrl/airoha,an7583-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/airoha,an7583-pinctrl.yaml
->>> index 7deb48db52c3a..f016e0da65a57 100644
->>> --- a/Documentation/devicetree/bindings/pinctrl/airoha,an7583-pinctrl.yaml
->>> +++ b/Documentation/devicetree/bindings/pinctrl/airoha,an7583-pinctrl.yaml
->>> @@ -60,7 +60,7 @@ patternProperties:
->>>            function:
->>>              description:
->>>                A string containing the name of the function to mux to the group.
->>> -            enum: [pon, tod_1pps, sipo, mdio, uart, jtag, pcm, spi,
->>> +            enum: [pon, olt, tod_1pps, sipo, mdio, uart, jtag, pcm, spi,
->> You just changed this line in previous patch, no?
->>
->> Why binding patches are spread all over instead of properly grouped?
->> This makes it difficult to review. Please read submitting patches (both documents).
-> 
-> I tried to create a separate binding patch per change. Could you clarify
-> your suggestion?
+mtk_hsdma_hw_init() enables runtime PM and gets a runtime PM reference
+before enabling the HSDMA clock. It currently ignores failures from
+pm_runtime_get_sync(); if runtime resume fails, the usage count remains
+held. If clk_prepare_enable() then fails, the usage count remains held.
 
-Adding missing functions is one patch, unless there is reason to split.
+Use devm_pm_runtime_enable() to manage runtime PM enablement, and use
+pm_runtime_resume_and_get() so resume failures do not leak the usage count.
+If clk_prepare_enable() fails after a successful runtime resume, drop the
+runtime PM reference before returning.
 
-Best regards,
-Krzysztof
+The probe path also ignores the return value from mtk_hsdma_hw_init(), so a
+failed hardware init can continue as a successful probe. Propagate
+mtk_hsdma_hw_init() failures from probe, while keeping a separate unwind
+label so mtk_hsdma_hw_deinit() is only called after hardware init succeeds.
+
+Fixes: 548c4597e984 ("dmaengine: mediatek: Add MediaTek High-Speed DMA controller for MT7622 and MT7623 SoC")
+Co-developed-by: Ijae Kim <ae878000@gmail.com>
+Signed-off-by: Ijae Kim <ae878000@gmail.com>
+Signed-off-by: Myeonghun Pak <mhun512@gmail.com>
+
+---
+Changes in v2:
+- Use devm_pm_runtime_enable() for runtime PM enablement.
+- Drop manual pm_runtime_disable() calls from init/deinit paths.
+
+ drivers/dma/mediatek/mtk-hsdma.c | 26 +++++++++++++++++++-------
+ 1 file changed, 19 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/dma/mediatek/mtk-hsdma.c b/drivers/dma/mediatek/mtk-hsdma.c
+index a43412ff5e..27cb370106 100644
+--- a/drivers/dma/mediatek/mtk-hsdma.c
++++ b/drivers/dma/mediatek/mtk-hsdma.c
+@@ -848,17 +848,27 @@ static int mtk_hsdma_hw_init(struct mtk_hsdma_device *hsdma)
+ {
+ 	int err;
+ 
+-	pm_runtime_enable(hsdma2dev(hsdma));
+-	pm_runtime_get_sync(hsdma2dev(hsdma));
++	err = devm_pm_runtime_enable(hsdma2dev(hsdma));
++	if (err)
++		return err;
++
++	err = pm_runtime_resume_and_get(hsdma2dev(hsdma));
++	if (err < 0)
++		return err;
+ 
+ 	err = clk_prepare_enable(hsdma->clk);
+ 	if (err)
+-		return err;
++		goto err_put_pm;
+ 
+ 	mtk_dma_write(hsdma, MTK_HSDMA_INT_ENABLE, 0);
+ 	mtk_dma_write(hsdma, MTK_HSDMA_GLO, MTK_HSDMA_GLO_DEFAULT);
+ 
+ 	return 0;
++
++err_put_pm:
++	pm_runtime_put_sync(hsdma2dev(hsdma));
++
++	return err;
+ }
+ 
+ static int mtk_hsdma_hw_deinit(struct mtk_hsdma_device *hsdma)
+@@ -868,7 +878,6 @@ static int mtk_hsdma_hw_deinit(struct mtk_hsdma_device *hsdma)
+ 	clk_disable_unprepare(hsdma->clk);
+ 
+ 	pm_runtime_put_sync(hsdma2dev(hsdma));
+-	pm_runtime_disable(hsdma2dev(hsdma));
+ 
+ 	return 0;
+ }
+@@ -983,7 +992,9 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
+ 		goto err_unregister;
+ 	}
+ 
+-	mtk_hsdma_hw_init(hsdma);
++	err = mtk_hsdma_hw_init(hsdma);
++	if (err)
++		goto err_free;
+ 
+ 	err = devm_request_irq(&pdev->dev, hsdma->irq,
+ 			       mtk_hsdma_irq, 0,
+@@ -991,7 +1002,7 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
+ 	if (err) {
+ 		dev_err(&pdev->dev,
+ 			"request_irq failed with err %d\n", err);
+-		goto err_free;
++		goto err_deinit;
+ 	}
+ 
+ 	platform_set_drvdata(pdev, hsdma);
+@@ -1000,8 +1011,9 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
+ 
+ 	return 0;
+ 
+-err_free:
++err_deinit:
+ 	mtk_hsdma_hw_deinit(hsdma);
++err_free:
+ 	of_dma_controller_free(pdev->dev.of_node);
+ err_unregister:
+ 	dma_async_device_unregister(dd);
+-- 
+2.47.1
 
