@@ -4,99 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 748E6C55184
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 04:21:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E288AC55AB9
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 06:24:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SNaVEJ1HZqqSb/BWjpBmAcESh4gvUlmp0T6zod8QVBo=; b=w1eZ5/JjwprbiFIjvczM+VQeAF
-	nJfu1JHqixyZP/4yhs87v08BdYmixflMIgy7oxIS8OwGft3fSQgFI9jC5U5pxRcdPFekqat/k+CUZ
-	/Xu4855g+uCQxTuafQvZL72nR0qfzT3kNdUouEEfiThjcBTzyeDHsursCDPwhaLRWRiG2h+A492Rj
-	tuLa9UVMbtYrhfvEE697aUTzY54pwv6d73WuZMq5W8YUqOPizefXqN/evHtPRjcba+9PiyP21NhtQ
-	1bJso/668LdroePtBQ7SqzHbqBE51jxmzFv/y7Tlq/tnLq9/GYeYgCtp64S/ypOvWSa0uesb0hT+N
-	nRO7blGQ==;
+	bh=Dcq6KvToLY8RXeRwKZY8lWOQzYPl0qxL7K9MxmMPL6I=; b=UKoUTXumE10Nh0UvvFd7cH9vZt
+	BIQBRT2mpylbtsjNO1ydxCN1KaLI3lfhialoTbbeHpiLK74J53p7s25DjJJjbapfzd1isaisjzUfM
+	HGU1uz2iUf23v1pTkuqyZNPjwNh0OzbOhNLfd5zOWhSeqwE57tqbD+j7XcNoKL04xyUS1d6LAoumk
+	EQzY01DCT81+889pwrNvkih6m5RmRCjLVlw6NfgecoKFcdz1CrREMDyZckDQbCnyupJ78eFk/IPpg
+	7Wc0umeWosLIW0dlUg9oIhxPxO5yAjw2LOffn6ffw1vjRcytCcrVQkNVp+rrneoDqP1u+7GdEtHwb
+	Pybaot2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wr6eb-00000000yhQ-2y6M;
-	Tue, 04 Aug 2026 04:21:25 +0000
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+	id 1wr8ZU-000000016ou-0ZZl;
+	Tue, 04 Aug 2026 06:24:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wr6eZ-00000000ygL-08VD
+	id 1wr8ZS-000000016o5-0Ewv
 	for linux-mediatek@lists.infradead.org;
-	Tue, 04 Aug 2026 04:21:24 +0000
-Received: by mail-pj1-x1029.google.com with SMTP id 98e67ed59e1d1-3811f512167so4195266a91.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 03 Aug 2026 21:21:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1785817282; x=1786422082; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=SNaVEJ1HZqqSb/BWjpBmAcESh4gvUlmp0T6zod8QVBo=;
-        b=Ofc6sUoU1vvQ2mWE3A68da9sQlaiAxpZVSK/KLtqxq53xVtu9vWvbI0HfmJ1FU35WK
-         8a9tlvsgyEecLXmxwzq/42+ZfUU06xKOnuqnLhRcq6KIAU6TeFz8YDjJwImqFof0BRdg
-         vEtBkrV5sWKLzHRVcxUVbWRZV7PVpF0txiwuB2OfCDJKi+CNdRYvUYVcz9Q1Q7DAX0hs
-         n5qCA+jpjH2UKyxwF8ZDgdh8ARIrGieYug5f9Ug8S3GvGNI3+/Q0Vg6PPYDGyDgO1Q5q
-         RHEznHJ7wieIr5K5BTQrpnAJy1oI/EZChy22b9zKAI6hP5OvdKiZl1iL/eQibKq99sga
-         bxGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785817282; x=1786422082;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=SNaVEJ1HZqqSb/BWjpBmAcESh4gvUlmp0T6zod8QVBo=;
-        b=J02XzgI5tnGXphUoo5quHHyK41IJr0Ew/V0RaZV7A3wWt3nO7F9+zY55mNB+9xUlxm
-         peaDva1XdQCuDjSv7s8YOw3j2A+nTbG0Y1bv4CuQeCJpktfITaeA9DANzqLEui6ePuWv
-         d4qIFbdskWsf1RKXFs4jTIXl2wZ1HwlNA+UFaKesZUwAGll3CuEQrQrse30vxhpiHAsD
-         i++fBxcLm8YT9iBbkGUJvseGYtx43NWkB44p1Qm2G5b6y4Qzg/bL44/hrEEtOv+2+FD5
-         HG5d/Q25sSOsH61dPjVn99iykKYE20jANpWsd4V20LSeoS2cMJ/Sm82+Upe0SlcHhL+r
-         kzmQ==
-X-Forwarded-Encrypted: i=1; AHgh+Rra2J7PguCUnUkRGc59yaLLQDkxI4kww5+B26XEICmz9DhhPWR0+E9LZXVvLohjJ0wFuMhhYJWcI42i3eRUEg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwsbDn5mlNF83kFTcHY8+GZ6ffA+pAIzOeGXi5535dlpdxeU1l4
-	hAv1o+57fulo1vBrceoCVtq1w/TjJJ6ePvAIlNardSHPVW3X/dVuSy9MIfZ+eUG+4ow=
-X-Gm-Gg: AR+sD11kbugNwwibpecmsCuR2Gw1aiNMTArbd6XK0Z4Ac/RSMmpk25bUNNA8NDL6Zz8
-	gjc8w3UYC/W/aFY5EbX44SUmpVJK0l/9s+s6E6AO3aAfGvhPZG8X/bKzHwNR48U4CFTX+uWiV0G
-	42Cod1Oa6jqoLH3VdV8SQQvWu+FMByM7du281ENopFyowYVhlh/5QA8PB5DzrPpWpfyY307pV7J
-	c8kbvHoOmf+A+zU3ULJh8WALW7AHiSzjzGDzRqscmM00j1BC/OsoyBLc2Lm7XTvfSnZpud+NYtl
-	cngCQ9UvqBE8wS9DUr/c8H3j+dmpDji9kIXBDx+5ufBbmYP9c/UWLi2Zblz4nLM+J41ZGzlgZNS
-	9zn4IpXrfUAH6+zYvYAvvHgaWSqlpGd6v/2+4h6A3x7tHZR7ENofu0mnV5+oaA7tXRMkDyO+YiK
-	6U9Nic8VRigH2k6nFRC8fU7DrcJFyquH0XMA35I5ULP08DjTqZ6KPZ/Y4HLGsI
-X-Received: by 2002:a17:90b:4a09:b0:38d:ecfe:41aa with SMTP id 98e67ed59e1d1-38fbc60c7femr11264577a91.43.1785817281575;
-        Mon, 03 Aug 2026 21:21:21 -0700 (PDT)
-Received: from localhost ([122.172.82.94])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3153dd4e47dsm64394331eec.3.2026.08.03.21.21.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Aug 2026 21:21:20 -0700 (PDT)
-Date: Tue, 4 Aug 2026 09:51:17 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Maulik Shah <maulik.shah@oss.qualcomm.com>
-Cc: Linus Walleij <linusw@kernel.org>, 
-	Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>, Manivannan Sadhasivam <mani@kernel.org>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Sean Wang <sean.wang@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
-	Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, 
-	Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, 
-	Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, 
-	Bartosz Golaszewski <brgl@kernel.org>, Bjorn Andersson <andersson@kernel.org>, 
-	Viresh Kumar <vireshk@kernel.org>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-actions@lists.infradead.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	openbmc@lists.ozlabs.org, linux-arm-msm@vger.kernel.org, soc@lists.linux.dev
-Subject: Re: [PATCH] pinctrl: Use IRQ trigger mask helpers
-Message-ID: <mre6ggyfjxo5dgvtrp3nsrbxngenw4r2eb6nygi4ybs5zsefyq@kcu6u33q3ien>
-References: <20260802-b4b4-irq-trigger-mask-pinctrl-v1-1-1c398ab53d28@oss.qualcomm.com>
+	Tue, 04 Aug 2026 06:24:15 +0000
+X-UUID: 1933aa868fcd11f1acbe4559397dec65-20260803
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Dcq6KvToLY8RXeRwKZY8lWOQzYPl0qxL7K9MxmMPL6I=;
+	b=OUzfjG532skcjcsXcPbA3gduEJYYqBJM4pv+LpW+Q3KrSo9PEzDeYXLV4mGgx16p32zsi6EjeAw6Ozd7Lq5OAQJd2G2P+Qx93JNd0PGoA8uw3X5mdA0+S4orTy77ZHVLuGVUqBqvDzQ033qNk4vOYuwGzqGGZbABGRWZJwYw1vQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.19,REQID:371465ce-0f0f-4aaf-90cd-d164318d37b5,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:7db8b62,CLOUDID:4cb1abd0-ca62-416c-8ebd-0e12e851d77c,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
+	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
+	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 1933aa868fcd11f1acbe4559397dec65-20260803
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <jb.tsai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 464718231; Mon, 03 Aug 2026 23:24:07 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 4 Aug 2026 14:24:05 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 4 Aug 2026 14:24:05 +0800
+From: JB Tsai <jb.tsai@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<Sean.Wang@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<Shengwei.Lu@mediatek.com>, <litien.chang@mediatek.com>,
+	<jb.tsai@mediatek.com>, Shengwei Lu <shengwei.lu@mediatek.com>, Sean Wang
+	<sean.wang@mediatek.com>
+Subject: [PATCH 2/2] [PATCH 2/2] wifi: mt76: mt7925: add STA_REC_SUSWM TLV for SU beamforming capability for MT7928
+Date: Tue, 4 Aug 2026 14:24:03 +0800
+Message-ID: <20260804062403.642593-2-jb.tsai@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20260804062403.642593-1-jb.tsai@mediatek.com>
+References: <20260804062403.642593-1-jb.tsai@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260802-b4b4-irq-trigger-mask-pinctrl-v1-1-1c398ab53d28@oss.qualcomm.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_212123_066236_BCD87277 
-X-CRM114-Status: GOOD (  11.11  )
+X-CRM114-CacheID: sfid-20260803_232414_105628_E5E9E102 
+X-CRM114-Status: GOOD (  15.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,23 +89,163 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 02-08-26, 19:35, Maulik Shah wrote:
-> diff --git a/drivers/pinctrl/spear/pinctrl-plgpio.c b/drivers/pinctrl/spear/pinctrl-plgpio.c
-> index 1ec22010a3f9..5fcbea32089d 100644
-> --- a/drivers/pinctrl/spear/pinctrl-plgpio.c
-> +++ b/drivers/pinctrl/spear/pinctrl-plgpio.c
-> @@ -339,7 +339,7 @@ static int plgpio_irq_set_type(struct irq_data *d, unsigned trigger)
->  	if (plgpio->regs.eit == -1)
->  		supported_type = IRQ_TYPE_LEVEL_HIGH;
->  	else
-> -		supported_type = IRQ_TYPE_EDGE_RISING | IRQ_TYPE_EDGE_FALLING;
-> +		supported_type = IRQ_TYPE_EDGE_BOTH;
->  
->  	if (!(trigger & supported_type))
->  		return -EINVAL;
+From: Shengwei Lu <shengwei.lu@mediatek.com>
 
-Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+MT7928 firmware requires a STA_REC_SUSWM TLV to convey SU beamforming
+and spatial stream capabilities when associating with a BSS. Add:
 
+ - sta_rec_su_swm struct with a capability bitmap (tag 0x1A)
+ - STA_REC_SUSWM enum entry in the STA record tag list
+ - mt7928_mcu_sta_suswm_tlv() that resolves the peer link_sta and own
+   sband, then calls mt7928_get_bss_suswm_cap() to obtain the SU BF
+   bfer/bfee/nsts summary and fills the TLV
+ - Call site in mt7925_mcu_sta_cmd() guarded by is_mt7928()
+
+The capability bitmap bit layout passed to firmware:
+  bit 0 - AP is SU beamformer capable
+  bit 1 - local device is SU beamformee capable
+  bit 2 - AP NSTS <= 2 (within supported spatial-stream limit)
+
+Signed-off-by: Shengwei Lu <shengwei.lu@mediatek.com>
+Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  1 +
+ .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 67 +++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7925/mcu.h   |  8 +++
+ 3 files changed, 76 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index 51380849d24e..b2c79d65525a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -857,6 +857,7 @@ enum {
+ 	STA_REC_PHY = 0x15,
+ 	STA_REC_HE_6G = 0x17,
+ 	STA_REC_HE_V2 = 0x19,
++	STA_REC_SUSWM = 0x1A,
+ 	STA_REC_MLD = 0x20,
+ 	STA_REC_EHT_MLD = 0x21,
+ 	STA_REC_EHT = 0x22,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 983a9eacd8c7..e94742c8c370 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -8,6 +8,7 @@
+ #include "mcu.h"
+ #include "mac.h"
+ #include "nan.h"
++#include "ies.h"
+ 
+ #define MT_STA_BFER			BIT(0)
+ #define MT_STA_BFEE			BIT(1)
+@@ -2110,6 +2111,70 @@ mt7925_mcu_sta_mld_tlv(struct sk_buff *skb,
+ 	mld->link_num = cnt;
+ }
+ 
++static void
++mt7928_mcu_sta_suswm_tlv(struct sk_buff *skb,
++			 struct ieee80211_vif *vif, struct mt76_wcid *wcid)
++{
++	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
++	struct mt792x_phy *phy = mvif->phy;
++	struct ieee80211_link_sta *link_sta;
++	struct ieee80211_bss_conf *link_conf;
++	struct cfg80211_chan_def *chandef;
++	struct mt792x_bss_conf *mconf;
++	enum nl80211_band band;
++	struct ieee80211_sta *sta;
++	struct ieee80211_supported_band *sband;
++	const struct cfg80211_bss_ies *ies;
++	struct cfg80211_bss *bss;
++	struct mt7928_suswm_cap cap = {};
++	struct sta_rec_su_swm *su_swm;
++	struct tlv *tlv;
++
++	if (vif->type != NL80211_IFTYPE_STATION || !vif->cfg.assoc)
++		return;
++
++	rcu_read_lock();
++	sta = ieee80211_find_sta(vif, vif->bss_conf.bssid);
++
++	if (!sta)
++		goto exit;
++
++	link_sta = mt792x_sta_to_link_sta(vif, sta, wcid->link_id);
++
++	if (!link_sta)
++		goto exit;
++
++	link_conf = mt792x_vif_to_bss_conf(vif, link_sta->link_id);
++	mconf = mt792x_vif_to_link(mvif, link_sta->link_id);
++
++	chandef = mconf->mt76.ctx ? &mconf->mt76.ctx->def :
++				    &link_conf->chanreq.oper;
++	band = chandef->chan->band;
++
++	sband = phy->mt76->hw->wiphy->bands[band];
++
++	bss = link_conf->bss;
++	if (!bss || !bss->ies)
++		goto exit;
++
++	ies = rcu_dereference(bss->ies);
++
++	mt7928_get_bss_suswm_cap(ies, link_sta, sband, vif->type, &cap);
++
++	tlv = mt76_connac_mcu_add_tlv(skb, STA_REC_SUSWM, sizeof(*su_swm));
++	su_swm = (struct sta_rec_su_swm *)tlv;
++
++	if (cap.bfer_en)
++		su_swm->su_swm_cap_map |= MT_SU_SWM_BFER;
++	if (cap.bfee_en)
++		su_swm->su_swm_cap_map |= MT_SU_SWM_BFEE;
++	if (cap.nsts > 0 && cap.nsts <= 2)
++		su_swm->su_swm_cap_map |= MT_SU_SWM_NSTS_MEET;
++
++exit:
++	rcu_read_unlock();
++}
++
+ static void
+ mt7925_mcu_sta_remove_tlv(struct sk_buff *skb)
+ {
+@@ -2179,6 +2244,8 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
+ 			mlink = &mvif->sta.deflink;
+ 
+ 		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, mlink);
++		if (is_mt7928(dev))
++			mt7928_mcu_sta_suswm_tlv(skb, info->vif, info->wcid);
+ 	}
+ 
+ 	return mt76_mcu_skb_send_msg(dev, skb, info->cmd, true);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
+index 11f9eac13ffc..f8696ce36413 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
+@@ -493,6 +493,13 @@ struct sta_rec_eht_mld {
+ 	u8 __rsv2[3];
+ } __packed;
+ 
++struct sta_rec_su_swm {
++	__le16 tag;
++	__le16 len;
++	u8   su_swm_cap_map;
++	u8 rsv[3];
++} __packed;
++
+ struct bss_ifs_time_tlv {
+ 	__le16 tag;
+ 	__le16 len;
+@@ -542,6 +549,7 @@ struct bss_rlm_tlv {
+ 					 sizeof(struct sta_rec_eht) +		\
+ 					 sizeof(struct sta_rec_hdr_trans) +	\
+ 					 sizeof(struct sta_rec_mld) +		\
++					 sizeof(struct sta_rec_su_swm) +		\
+ 					 sizeof(struct tlv) * 2 +		\
+ 					 sizeof(struct sta_rec_remove))
+ 
 -- 
-viresh
+2.45.2
+
 
