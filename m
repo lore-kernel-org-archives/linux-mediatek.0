@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA4CEC55172
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 10:33:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CF35C55838
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 11:35:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=vTXDHsnwFlbf3g77LNyPYkdxcBB8Zd+YWsg2JPpDVpU=; b=KC2E652xTP5fyZj+C+YVrkW1W0
-	XEGM2YT/p6PXrhauPbAMzj3GVVsYQCa8YJ30EKic/f4rNH3wHdP22rLfxR2OJgRQxJSZaaNsn7PRU
-	mnKlgu+Cyy6aXyYmONGivYzvK2gPEQVqFQarHrsGTe/+mM1oDxrkf/6NIvta4rRUHf7NE0Q8PMqtY
-	Jp0vypmEFHoFUu4496TEVQe1vRuW6C9Yw2+lOWkBpdj0oEU9gfU5pabEoPkTUiih6KkyKQ1aiEBsX
-	x+u0cRX0oMFR2PzRaC2VWCt92WiW+tAztlolmbCRbqY9ge8YhVNlmVk5k9/UTZDBfXMmsvqfWB74Q
-	16l0rTyw==;
+	bh=uNVTFfdfEZG90+jAE3BzNE+piQiVWzc95vgbhLXgILA=; b=sJIeoGAhxNlcXRXw/WF2LJW4YQ
+	oo54pw2W9NXvdvemO2HkjDn2uZr6RfUfGsjiNt6LbA8i0g2X8BqRJupC1Bj8Q8a2thoOvHyNX9xlF
+	/nDsHgvQ3R96IUlfP9vzVYE5/GB8mHkXhpruPEzbzQD+W/XprVPcVaMps1SjVXNin1P9wGlRrRs/N
+	MkXl+qOx21S8bzMJt8Fsbg6wwyuci8uHHKki5uts1BYffIGPscsJpwEpGfarkrchDekxfA1RabvvH
+	Qa2dk+vPDqnkbVkDmMO9vpUdcO/CYiBZYIYUJL+nYrIS3Hfu7GMS/VnTuGAxJXRadYK9FRizTykWP
+	imNyqPaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrCSz-00000001YBa-2kmB;
-	Tue, 04 Aug 2026 10:33:49 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1wrDQq-00000001iVJ-3xfc;
+	Tue, 04 Aug 2026 11:35:40 +0000
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrCSx-00000001YAr-1Y48
+	id 1wrDQo-00000001iS4-0tZv
 	for linux-mediatek@lists.infradead.org;
-	Tue, 04 Aug 2026 10:33:48 +0000
-Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-2caced6038eso10598385ad.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 04 Aug 2026 03:33:46 -0700 (PDT)
+	Tue, 04 Aug 2026 11:35:39 +0000
+Received: by mail-pg1-x52f.google.com with SMTP id 41be03b00d2f7-cbb973e6749so4994842a12.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 04 Aug 2026 04:35:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785839626; x=1786444426; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1785843337; x=1786448137; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=vTXDHsnwFlbf3g77LNyPYkdxcBB8Zd+YWsg2JPpDVpU=;
-        b=Dv5NAu/03960KvQjdn0CHJoGMGJWVv7EQiVbrKM2/icUsEGJRUKfzSpTtNehsoNpIM
-         likB77ltDQ54Vg9EMihee/+M+7jbuZV9x/UhByX7TRuaZtmww2DC7Q6XlbFAZHEEf5RQ
-         nkSGdYsbXtYdYom1M8cduxF6nD5WXailpz4GGX/TBudaS6XvxFEw1pjjOk6m5sYWh+Gq
-         A1Aw2zoMYfgkLZ7uVWjTntMlnNZFha1dZWELgYE0td3dhAmRcZQARn0Vlm0/Cqf9cVJS
-         Po3Ziq7cVNiLz4sLkT9xQ9mxARoDY7G6ArO2jSb3ZFiAuH01FiAKjLfBdSg7GZFJZdTZ
-         QKiA==
+        bh=uNVTFfdfEZG90+jAE3BzNE+piQiVWzc95vgbhLXgILA=;
+        b=lJqO9jUD0QsGG32XOGzfuYq3yobUPEJNkmh4Q0Q2duGMpZfgXkU5KZ23h6n8YS1zwa
+         JFabZUNGCvECiATCzIy3hqK4i1dpqnHcAwWsFSsIlcIpGAl5f+e/hphIfKM9jwdXOLn4
+         drNA6OWXQbWydK4Atk9s0V/EX6hbQtj35FHZypZrTFRGU+6fqn3lJmMngr774yonisap
+         BPZxWicv5/0sDvEsqcEFM1/FB1CDKZ10tcqsUs4zRuzexJiAeyjTPAaWX5S0ayVMxp3C
+         RPCossCijJ1eEQmi92lSKqf5LrIXBRNfbendKUU2W8q5IF5nHb9f42Rf0az92FBc0Sgk
+         n0kg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785839626; x=1786444426;
+        d=1e100.net; s=20251104; t=1785843337; x=1786448137;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=vTXDHsnwFlbf3g77LNyPYkdxcBB8Zd+YWsg2JPpDVpU=;
-        b=PzWHxMnFfrtx5dUBw2o/xjxpidPKWWVMSZN9WrKF8WTnzBDzz8coaFO5wsWV7LFSkC
-         bWExqurynn00n3aKEFMD+7LYqERondUQomeWpTobMmIC3uq9J1grEtxAzNgSRNfrLTy2
-         +jy38n4B482W48yqMlJyC89pkU/3TepRdJjv4tIDaxRZCPwD0zOWDMVV+ICua3ppChkT
-         HB9NGjU0uu0nCl+hUM4pXkmd79mL4B/Q/KIO0v5PGZXa6eCzQ+a5X7mU+VTThgBfadjl
-         0c32GdP2/ih9B2q1vru+78RoF8uNkc/WIQxk0XjlLdESxIkzEjzm9sMcMCpS/JOEWh8j
-         mRVA==
-X-Forwarded-Encrypted: i=1; AHgh+Ro3N5v0XE1mskelOKwyPjOWN4s+zwWG+hvBmcDJXeWFDDNxR20XektFDrGpS1f512qwr9NQqNBUlDgZOE3LdA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz5z63UDH6s86QQpxmFFwZkDMVU8pCGdUKaHFU3yXC+IS5ODXz4
-	PhgbnO8vu7CDMGNRewa6ejexnjo5JdyZd+e9/8NhVyp7RFQBqyxcoXPh
-X-Gm-Gg: AR+sD12cHQ0Gq85WXxGJQpDIBiwCH3pXVPqadS9E9Wt6cqYhiqbH5WeQ+OspcpR4gc2
-	omaoQ0xZ6vbYaNXyITFrx2jrmNc/xdFIXrY2FLIOy3f4ENa8V7ep2uuyex/vvg54XcE7rk2RvTX
-	Kcx7TC6IqKErwG/lHv5Dy8vkUaYZKoa5m1kJv7WxIzpN3NkA9WWu/1VKh+wqbbQkW0TxJrdlGfA
-	oQ24avv5DnBxeFOmmynYN3KOlRY2TyiTpAiX/17aNOW0wTYO8Qpd1f4e3EvHo5Mn1kwfw20duMs
-	NHg9WBMvf22equX/y6MeVHCNjqFXlbxTzX5fdRal0gIpAolbW5uNa9AnwlTS3vAjCd3umxIhHMm
-	BtG00XE7n3vTLNe3od1tHHQ9UBszmiN0+PFAfliV56kHgcxpNHg/oBLdLadns5URxeSaIOhEc3D
-	0aU9aS1ZmvYB/54QOP4GUa8Osqp2ZwiT0vxDM70LdM2kBYA2oAud89qer7ktEK1ExMf78n
-X-Received: by 2002:a17:903:98f:b0:2cf:461a:3863 with SMTP id d9443c01a7336-2d08ab8bec3mr29565945ad.22.1785839625772;
-        Tue, 04 Aug 2026 03:33:45 -0700 (PDT)
+        bh=uNVTFfdfEZG90+jAE3BzNE+piQiVWzc95vgbhLXgILA=;
+        b=dFx4Mfsje9H6JROf1PEfTPvTCXY8ld1KFDPnReEcfZ49OKoKY19MZ68vFMAbNS9g1h
+         AYRGcmf0DzAQcrRjwkwdsWycEtnXGz8gxCulWcyVVoJL/FjaQMKZt+btUpbrlc3L+AcH
+         VAomXT/wdj9FzvDC220GLaeL9JfV78UEvOzBF/wMSugyY9w3BMGzHQinQ48oOxNtucuq
+         S6IAyBQt4cFDieH9tj7BGwmlw1bfEpSs2DmX2pvSsOiLUyWhsrTw9i90UypBo+mQy197
+         MQzO4mguHO1/CLvgSZ4KADRTHyCxvtzC008cZ1w6SJwBQvmLR2DOOBPra3OOSFWK8Bv4
+         vwzg==
+X-Forwarded-Encrypted: i=1; AHgh+RoZ2GNMlZ5W6ROleM6Zonm2VyPQbkX24dqm7vC9uS35P4apWxF1baRPMnVGf/yXlB8IYRLu+zM2ug9zodlPBA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz/ZRH3/ws8jHjnVuZku7dl097iCxUr57RbpfAzKaBc1lbKP0Ge
+	HBxMU+qCDVH2/GrSkM6hKT75JU9uKv1dRkaTN7uyaI96DiniZ8ijARDy
+X-Gm-Gg: AR+sD10uNh64svQOliKUjwCxB54MM1N4Y0XqUhein3UWjyeD3n+XU/KwnwL7GHHzCup
+	wnn/m0L6UI7dKBh4xrmjjpFYjMoZ5IudXP3qUMB8pgf8Ore/eIOmcvO7ppRUX4OU05g96v5FwmI
+	vk1DTF6V8PVxfYKMPxAMoIhfXW3vcMRh+7arHiAWQR0JhjlrFpsJPJ2npw3vSGZEgDDVofybIQt
+	xg9gvjqq1kVUKbLXiv5Ys2TVnjkg4L2WYhkCHqfo03M9UrRREs6w064b0XQ6K2msaKz567DyiEm
+	esYkcaCI8nHDUbA+PbyaWkpWMmw2NpwDPohh3VvjUivlGAg3l83X5e3CIj/jyCciZyTjuf9BrJV
+	QMmSRPMbwmsVJFvtE3dvgEosOr4vtaT/w5zlF5Q+IThi62u7REdwbgJva5aeV2b4KL0dpNcRXAY
+	2nrylUxewN81qShb1VJe1Kx+MuteKSY70323jWhbURs9I9dH54+D9WDVpeinW65xPTXpRD
+X-Received: by 2002:a05:6a21:3a47:b0:3c0:278c:6a31 with SMTP id adf61e73a8af0-3c92a51df73mr13770829637.11.1785843337304;
+        Tue, 04 Aug 2026 04:35:37 -0700 (PDT)
 Received: from DESKTOP-TIT0J8O.dm.ae ([49.47.198.15])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3158676f579sm2955011eec.20.2026.08.04.03.33.40
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-13fca63ce12sm3569493c88.5.2026.08.04.04.35.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Aug 2026 03:33:45 -0700 (PDT)
+        Tue, 04 Aug 2026 04:35:36 -0700 (PDT)
 From: Ahmed Naseef <naseefkm@gmail.com>
 To: netdev@vger.kernel.org
 Cc: "David S. Miller" <davem@davemloft.net>,
@@ -86,15 +86,15 @@ Cc: "David S. Miller" <davem@davemloft.net>,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Ahmed Naseef <naseefkm@gmail.com>
-Subject: [PATCH net-next] net: phy: mediatek: add EcoNet EN7528 PHY support
-Date: Tue,  4 Aug 2026 14:33:21 +0400
-Message-Id: <20260804103321.3331802-1-naseefkm@gmail.com>
+Subject: [PATCH net] net: phy: mediatek: fix TX blink masks using the RX bits
+Date: Tue,  4 Aug 2026 15:35:11 +0400
+Message-Id: <20260804113511.3371248-1-naseefkm@gmail.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260804_033347_425482_460E05F6 
-X-CRM114-Status: GOOD (  21.74  )
+X-CRM114-CacheID: sfid-20260804_043538_271437_2EB3637D 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,136 +109,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The EcoNet EN7528 MIPS SoC embeds four Gigabit Ethernet PHYs (PHY ID
-0x03a29491) behind its built-in MT7530 switch. They use the same LED
-register layout as the other SoC PHYs handled by this driver, but their
-LED controller powers up with its external control disabled, so the LED
-pins stay dark regardless of what is programmed into the LED control
-registers.
+MTK_GPHY_LED_TX_BLINK_SET and MTK_2P5GPHY_LED_TX_BLINK_SET are built
+from the RX blink bits instead of the TX ones, so both TX masks are
+identical to their RX counterparts. The TX bits they should be using,
+MTK_PHY_LED_BLINK_{10,100,1000,2500}TX, are otherwise only referenced
+by the per-speed branch of mtk_phy_led_hw_ctrl_set().
 
-Add a phy_driver entry for it, modelled on the Airoha AN7583 one. Its
-config_init callback enables the LED controller through the LED basic
-control register, which this driver does not program for its other
-PHYs, but which the air_en8811h driver already handles as
-AIR_PHY_LED_BCR. LED behaviour is then controlled through the phylib
-LED operations shared with the other PHYs of this driver.
+A TX trigger selected without a link trigger therefore programs the RX
+blink bits, and the LED blinks on received traffic. The masks are also
+used to decode the blink register in mtk_phy_led_hw_ctrl_get(), which
+as a result cannot tell the two triggers apart: an RX-only
+configuration reads back as RX and TX, and a TX-only configuration
+reads back as neither.
 
-The LED block is shared by the four PHYs of the EN7528: the LED
-configuration programmed through any one of them applies to all four,
-while each PHY still drives its own LED pin from its own link state.
-
-The EN7528 PHYs need no efuse calibration data, so relax the
-MEDIATEK_GE_SOC_PHY dependencies to allow building the driver on the
-ECONET platform.
-
+Fixes: 7f9c320c98db ("net: phy: mediatek: Move LED helper functions into mtk phy lib")
+Cc: stable@vger.kernel.org
 Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
 ---
- drivers/net/phy/mediatek/Kconfig      |  8 ++++--
- drivers/net/phy/mediatek/mtk-ge-soc.c | 35 +++++++++++++++++++++++++++
- 2 files changed, 41 insertions(+), 2 deletions(-)
+ drivers/net/phy/mediatek/mtk.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/phy/mediatek/Kconfig b/drivers/net/phy/mediatek/Kconfig
-index bb7dc876271e..b6d41bbbbc27 100644
---- a/drivers/net/phy/mediatek/Kconfig
-+++ b/drivers/net/phy/mediatek/Kconfig
-@@ -23,9 +23,9 @@ config MEDIATEK_GE_PHY
+diff --git a/drivers/net/phy/mediatek/mtk.h b/drivers/net/phy/mediatek/mtk.h
+index 320f76ffa81f..79e09727b81b 100644
+--- a/drivers/net/phy/mediatek/mtk.h
++++ b/drivers/net/phy/mediatek/mtk.h
+@@ -53,15 +53,15 @@
+ #define MTK_GPHY_LED_RX_BLINK_SET		(MTK_PHY_LED_BLINK_1000RX | \
+ 						 MTK_PHY_LED_BLINK_100RX | \
+ 						 MTK_PHY_LED_BLINK_10RX)
+-#define MTK_GPHY_LED_TX_BLINK_SET		(MTK_PHY_LED_BLINK_1000RX | \
+-						 MTK_PHY_LED_BLINK_100RX | \
+-						 MTK_PHY_LED_BLINK_10RX)
++#define MTK_GPHY_LED_TX_BLINK_SET		(MTK_PHY_LED_BLINK_1000TX | \
++						 MTK_PHY_LED_BLINK_100TX | \
++						 MTK_PHY_LED_BLINK_10TX)
  
- config MEDIATEK_GE_SOC_PHY
- 	tristate "MediaTek SoC Ethernet PHYs"
--	depends on ARM64 || COMPILE_TEST
-+	depends on ARM64 || ECONET || COMPILE_TEST
- 	depends on ARCH_AIROHA || (ARCH_MEDIATEK && NVMEM_MTK_EFUSE) || \
--		   COMPILE_TEST
-+		   ECONET || COMPILE_TEST
- 	select MTK_NET_PHYLIB
- 	select PHY_PACKAGE
- 	help
-@@ -36,5 +36,9 @@ config MEDIATEK_GE_SOC_PHY
- 	  present in the SoCs efuse and will dynamically calibrate VCM
- 	  (common-mode voltage) during startup.
+ #define MTK_2P5GPHY_LED_ON_SET			(MTK_PHY_LED_ON_LINK2500 | \
+ 						 MTK_GPHY_LED_ON_SET)
+ #define MTK_2P5GPHY_LED_RX_BLINK_SET		(MTK_PHY_LED_BLINK_2500RX | \
+ 						 MTK_GPHY_LED_RX_BLINK_SET)
+-#define MTK_2P5GPHY_LED_TX_BLINK_SET		(MTK_PHY_LED_BLINK_2500RX | \
++#define MTK_2P5GPHY_LED_TX_BLINK_SET		(MTK_PHY_LED_BLINK_2500TX | \
+ 						 MTK_GPHY_LED_TX_BLINK_SET)
  
-+	  Also include support for the built-in Gigabit Ethernet PHYs of
-+	  the Airoha AN7581 and AN7583 SoCs and of the EcoNet EN7528 SoC,
-+	  which need no efuse calibration data.
-+
- config MTK_NET_PHYLIB
- 	tristate
-diff --git a/drivers/net/phy/mediatek/mtk-ge-soc.c b/drivers/net/phy/mediatek/mtk-ge-soc.c
-index 9a54949644d5..0041300d4f10 100644
---- a/drivers/net/phy/mediatek/mtk-ge-soc.c
-+++ b/drivers/net/phy/mediatek/mtk-ge-soc.c
-@@ -16,6 +16,7 @@
- 
- #define MTK_GPHY_ID_MT7981			0x03a29461
- #define MTK_GPHY_ID_MT7988			0x03a29481
-+#define MTK_GPHY_ID_EN7528			0x03a29491
- #define MTK_GPHY_ID_AN7581			0x03a294c1
- #define MTK_GPHY_ID_AN7583			0xc0ff0420
- 
-@@ -320,6 +321,14 @@
- /* Registers on MDIO_MMD_VEND2 */
- #define MTK_PHY_LED1_DEFAULT_POLARITIES		BIT(1)
- 
-+/* LED basic control register, part of the same LED block as the LED0/LED1
-+ * control registers above. The air_en8811h driver describes the same
-+ * register as AIR_PHY_LED_BCR.
-+ */
-+#define MTK_PHY_LED_BCR				0x21
-+#define   MTK_PHY_LED_BCR_CLK_EN		BIT(3)
-+#define   MTK_PHY_LED_BCR_EXT_CTRL		BIT(15)
-+
- #define MTK_PHY_RG_BG_RASEL			0x115
- #define   MTK_PHY_RG_BG_RASEL_MASK		GENMASK(2, 0)
- 
-@@ -1470,6 +1479,19 @@ static int an7583_phy_config_init(struct phy_device *phydev)
- 	return phy_clear_bits(phydev, MII_BMCR, BMCR_PDOWN);
- }
- 
-+static int en7528_phy_config_init(struct phy_device *phydev)
-+{
-+	/* The LED controller of the EN7528 powers up with its external
-+	 * control disabled, leaving the LED pins dark regardless of what is
-+	 * programmed into the LED control registers. Hand the pins over to
-+	 * the LED control registers the same way the air_en8811h driver
-+	 * does; the mode field of this register is already set out of reset.
-+	 */
-+	return phy_set_bits_mmd(phydev, MDIO_MMD_VEND2, MTK_PHY_LED_BCR,
-+				MTK_PHY_LED_BCR_CLK_EN |
-+				MTK_PHY_LED_BCR_EXT_CTRL);
-+}
-+
- static struct phy_driver mtk_socphy_driver[] = {
- 	{
- 		PHY_ID_MATCH_EXACT(MTK_GPHY_ID_MT7981),
-@@ -1505,6 +1527,18 @@ static struct phy_driver mtk_socphy_driver[] = {
- 		.led_hw_control_set = mt798x_phy_led_hw_control_set,
- 		.led_hw_control_get = mt798x_phy_led_hw_control_get,
- 	},
-+	{
-+		PHY_ID_MATCH_EXACT(MTK_GPHY_ID_EN7528),
-+		.name		= "EcoNet EN7528 PHY",
-+		.config_init	= en7528_phy_config_init,
-+		.probe		= an7581_phy_probe,
-+		.led_blink_set	= mt798x_phy_led_blink_set,
-+		.led_brightness_set = mt798x_phy_led_brightness_set,
-+		.led_hw_is_supported = mt798x_phy_led_hw_is_supported,
-+		.led_hw_control_set = mt798x_phy_led_hw_control_set,
-+		.led_hw_control_get = mt798x_phy_led_hw_control_get,
-+		.led_polarity_set = an7581_phy_led_polarity_set,
-+	},
- 	{
- 		PHY_ID_MATCH_EXACT(MTK_GPHY_ID_AN7581),
- 		.name		= "Airoha AN7581 PHY",
-@@ -1537,6 +1571,7 @@ module_phy_driver(mtk_socphy_driver);
- static const struct mdio_device_id __maybe_unused mtk_socphy_tbl[] = {
- 	{ PHY_ID_MATCH_EXACT(MTK_GPHY_ID_MT7981) },
- 	{ PHY_ID_MATCH_EXACT(MTK_GPHY_ID_MT7988) },
-+	{ PHY_ID_MATCH_EXACT(MTK_GPHY_ID_EN7528) },
- 	{ PHY_ID_MATCH_EXACT(MTK_GPHY_ID_AN7581) },
- 	{ PHY_ID_MATCH_EXACT(MTK_GPHY_ID_AN7583) },
- 	{ }
+ #define MTK_PHY_LED_STATE_FORCE_ON	0
 
-base-commit: 5b4f243f78a533abf414bfd96325aa2c96e711a3
+base-commit: 1a35da325cac4d5bcad76a2aa943408a6f1d9000
 -- 
 2.34.1
 
