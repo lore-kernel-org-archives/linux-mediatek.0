@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43EBFC55182
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 03:10:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FBD2C55AB9
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 03:10:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LR6KlJ8zJpWe+SaEbU6xOjFznD3R+LzL2CuzrR2oFm0=; b=bOZ/s9ffK/iQZUH2xz4IbTmjwJ
-	zWl+L1HNEe+lUWRg65x8Ni63EcXCaMSWxMbv4y0vl3BTVr2EStyVK/ugn4xCq+O+wZBDypWBuZhUn
-	DqYzHP3H/4Tz26gXvhC7Ia05E69w3QAwJqHKOgRGu8SS+1zeX31vOqAOC9rNzgK/oWjxiK/Sil7DM
-	Qt22QzqVTYTyChRCLJqJ+iM2tBDvGWZ/CSAWsK9OltLx6p6RxA/jfvMgjq9qKSok5vOYmG3D4c2W4
-	o5B5X2p4cZHe+o9J817iRfPB8Nxfzk60eG+q88d6MB/dUc9zDqkCA4NoBjHuXsgx1YI43Uc2p5uoC
-	r+OfEiCw==;
+	bh=NYTa3ZE9dRcwXkxbRMPTGVFyhxJPiPFKrBnC2eG24oU=; b=0k5UtUo8RW/goCE8DZW8zxEblI
+	dUikd6J89kf1vCLc2iF1aWI13brCILXyp+C4TxAiati+1Hbuw0cfdXnhZPa1MxS2WZEyGX67SeECs
+	5HfokPQ1DmK1nNa+Cy0wPskyX7oD4Xkz1quu2ntweTnxaIVP/pDL4MOv/ubOTbeLAnhpCNofseU1Z
+	ZEQj2B2QZ2Yd1pxlIplELzSyhmnvKIZ7dIRsybstjPFfsh0vbyv4C0r7giFbOhPG/lPeh171qvFBB
+	T/Oh/oUKxGNSQjZhG8w09rOcbRzRo6B+4pJBHBT2CU9iyxNZ9q497v2c2fRuKPlUmOml59NP52hgS
+	reuPLV+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wr5YJ-00000000tWM-0U9p;
-	Tue, 04 Aug 2026 03:10:51 +0000
+	id 1wr5YP-00000000tcb-1RZe;
+	Tue, 04 Aug 2026 03:10:57 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wr5YH-00000000tTg-0DIE;
-	Tue, 04 Aug 2026 03:10:50 +0000
+	id 1wr5YN-00000000tZg-2E4P;
+	Tue, 04 Aug 2026 03:10:56 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
 	 (Exim 4.99)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1wr5YB-0000000045K-150F;
-	Tue, 04 Aug 2026 03:10:43 +0000
-Date: Tue, 4 Aug 2026 04:10:40 +0100
+	id 1wr5YH-0000000045u-3fjr;
+	Tue, 04 Aug 2026 03:10:49 +0000
+Date: Tue, 4 Aug 2026 04:10:46 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
 	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
@@ -51,17 +51,17 @@ To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
 	Florian Fainelli <f.fainelli@gmail.com>, netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net v2 3/6] net: dsa: mt7530: error out on failed PHY_IAC
- command writes
-Message-ID: <c34602e63a20ebbfb97babd145c82832d7a0b523.1785811140.git.daniel@makrotopia.org>
+Subject: [PATCH net v2 4/6] net: dsa: mt7530: check CORE_PLL_GROUP4 access in
+ mt7531_setup()
+Message-ID: <a7dfe3b66ea6ac1ae7915034de0527060e6ddcd4.1785811140.git.daniel@makrotopia.org>
 References: <cover.1785811140.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1785811140.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_201049_093694_B6169A02 
-X-CRM114-Status: GOOD (  11.33  )
+X-CRM114-CacheID: sfid-20260803_201055_572180_D4C7385F 
+X-CRM114-Status: GOOD (  13.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,92 +76,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT7531_PHY_ACS_ST is only ever set by the command write that precedes
-each poll in the MT7531 indirect PHY access functions, and that
-write's return value is discarded. A failed write leaves ACS_ST at 0
-from the previous access, so the poll succeeds on its first iteration
-and the functions return stale IAC contents as if they were fresh PHY
-data. Check the writes and bail out before polling.
+mt7531_setup() reads CORE_PLL_GROUP4 through the MT7531 indirect c45
+PHY access, modifies it and writes it back to enable the PHY core
+PLL, but checks neither the read nor the write. Now that the indirect
+access functions propagate command-write failures, a failed read
+returns a negative errno that would be bit-modified and written back
+into the PLL register, and a failed write-back would go unnoticed.
+Check both and bail out. The adjacent EEE advertisement writes push a
+constant value and cannot corrupt state, so they are left as is.
 
 Fixes: c288575f7810 ("net: dsa: mt7530: Add the support of MT7531 switch")
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 ---
-v2: no changes
+v2: new patch
 
- drivers/net/dsa/mt7530.c | 24 ++++++++++++++++++------
- 1 file changed, 18 insertions(+), 6 deletions(-)
+ drivers/net/dsa/mt7530.c | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 9be6fb63c311..2a17696e6a45 100644
+index 2a17696e6a45..69cee61564cb 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -565,7 +565,9 @@ mt7531_ind_c45_phy_read(struct mt7530_priv *priv, int port, int devad,
- 
- 	reg = MT7531_MDIO_CL45_ADDR | MT7531_MDIO_PHY_ADDR(port) |
- 	      MT7531_MDIO_DEV_ADDR(devad) | regnum;
--	mt7530_mii_write(priv, MT7531_PHY_IAC, reg | MT7531_PHY_ACS_ST);
-+	ret = mt7530_mii_write(priv, MT7531_PHY_IAC, reg | MT7531_PHY_ACS_ST);
+@@ -2781,14 +2781,20 @@ mt7531_setup(struct dsa_switch *ds)
+ 	 * phy_[read,write]_mmd_indirect is called, we provide our own
+ 	 * mt7531_ind_mmd_phy_[read,write] to complete this function.
+ 	 */
+-	val = mt7531_ind_c45_phy_read(priv,
++	ret = mt7531_ind_c45_phy_read(priv,
+ 				      MT753X_CTRL_PHY_ADDR(priv->mdiodev->addr),
+ 				      MDIO_MMD_VEND2, CORE_PLL_GROUP4);
 +	if (ret < 0)
-+		goto out;
- 
- 	ret = regmap_read_poll_timeout(priv->regmap, MT7531_PHY_IAC, val,
- 				       !(val & MT7531_PHY_ACS_ST), 20, 100000);
-@@ -576,7 +578,9 @@ mt7531_ind_c45_phy_read(struct mt7530_priv *priv, int port, int devad,
- 
- 	reg = MT7531_MDIO_CL45_READ | MT7531_MDIO_PHY_ADDR(port) |
- 	      MT7531_MDIO_DEV_ADDR(devad);
--	mt7530_mii_write(priv, MT7531_PHY_IAC, reg | MT7531_PHY_ACS_ST);
-+	ret = mt7530_mii_write(priv, MT7531_PHY_IAC, reg | MT7531_PHY_ACS_ST);
++		return ret;
++
++	val = ret;
+ 	val |= MT7531_RG_SYSPLL_DMY2 | MT7531_PHY_PLL_BYPASS_MODE;
+ 	val &= ~MT7531_PHY_PLL_OFF;
+-	mt7531_ind_c45_phy_write(priv,
+-				 MT753X_CTRL_PHY_ADDR(priv->mdiodev->addr),
+-				 MDIO_MMD_VEND2, CORE_PLL_GROUP4, val);
++	ret = mt7531_ind_c45_phy_write(priv,
++				       MT753X_CTRL_PHY_ADDR(priv->mdiodev->addr),
++				       MDIO_MMD_VEND2, CORE_PLL_GROUP4, val);
 +	if (ret < 0)
-+		goto out;
++		return ret;
  
- 	ret = regmap_read_poll_timeout(priv->regmap, MT7531_PHY_IAC, val,
- 				       !(val & MT7531_PHY_ACS_ST), 20, 100000);
-@@ -610,7 +614,9 @@ mt7531_ind_c45_phy_write(struct mt7530_priv *priv, int port, int devad,
- 
- 	reg = MT7531_MDIO_CL45_ADDR | MT7531_MDIO_PHY_ADDR(port) |
- 	      MT7531_MDIO_DEV_ADDR(devad) | regnum;
--	mt7530_mii_write(priv, MT7531_PHY_IAC, reg | MT7531_PHY_ACS_ST);
-+	ret = mt7530_mii_write(priv, MT7531_PHY_IAC, reg | MT7531_PHY_ACS_ST);
-+	if (ret < 0)
-+		goto out;
- 
- 	ret = regmap_read_poll_timeout(priv->regmap, MT7531_PHY_IAC, val,
- 				       !(val & MT7531_PHY_ACS_ST), 20, 100000);
-@@ -621,7 +627,9 @@ mt7531_ind_c45_phy_write(struct mt7530_priv *priv, int port, int devad,
- 
- 	reg = MT7531_MDIO_CL45_WRITE | MT7531_MDIO_PHY_ADDR(port) |
- 	      MT7531_MDIO_DEV_ADDR(devad) | data;
--	mt7530_mii_write(priv, MT7531_PHY_IAC, reg | MT7531_PHY_ACS_ST);
-+	ret = mt7530_mii_write(priv, MT7531_PHY_IAC, reg | MT7531_PHY_ACS_ST);
-+	if (ret < 0)
-+		goto out;
- 
- 	ret = regmap_read_poll_timeout(priv->regmap, MT7531_PHY_IAC, val,
- 				       !(val & MT7531_PHY_ACS_ST), 20, 100000);
-@@ -654,7 +662,9 @@ mt7531_ind_c22_phy_read(struct mt7530_priv *priv, int port, int regnum)
- 	val = MT7531_MDIO_CL22_READ | MT7531_MDIO_PHY_ADDR(port) |
- 	      MT7531_MDIO_REG_ADDR(regnum);
- 
--	mt7530_mii_write(priv, MT7531_PHY_IAC, val | MT7531_PHY_ACS_ST);
-+	ret = mt7530_mii_write(priv, MT7531_PHY_IAC, val | MT7531_PHY_ACS_ST);
-+	if (ret < 0)
-+		goto out;
- 
- 	ret = regmap_read_poll_timeout(priv->regmap, MT7531_PHY_IAC, val,
- 				       !(val & MT7531_PHY_ACS_ST), 20, 100000);
-@@ -689,7 +699,9 @@ mt7531_ind_c22_phy_write(struct mt7530_priv *priv, int port, int regnum,
- 	reg = MT7531_MDIO_CL22_WRITE | MT7531_MDIO_PHY_ADDR(port) |
- 	      MT7531_MDIO_REG_ADDR(regnum) | data;
- 
--	mt7530_mii_write(priv, MT7531_PHY_IAC, reg | MT7531_PHY_ACS_ST);
-+	ret = mt7530_mii_write(priv, MT7531_PHY_IAC, reg | MT7531_PHY_ACS_ST);
-+	if (ret < 0)
-+		goto out;
- 
- 	ret = regmap_read_poll_timeout(priv->regmap, MT7531_PHY_IAC, reg,
- 				       !(reg & MT7531_PHY_ACS_ST), 20, 100000);
+ 	/* Disable EEE advertisement on the switch PHYs. */
+ 	for (i = MT753X_CTRL_PHY_ADDR(priv->mdiodev->addr);
 -- 
 2.55.0
 
