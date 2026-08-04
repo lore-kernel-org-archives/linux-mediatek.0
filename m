@@ -4,96 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF6E8C55822
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 15:39:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C322FC55822
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 16:04:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GE0WgxrhQlszpq0bFS8ekUeWF2E3M+uVciQ9zYtpewc=; b=wRgLw/NT5lRS6vGsP7fItr8f9l
-	npLfnZzarPEziqzFoPnYS+hVB/90JWj7gCif9D2hBkbsJ69+gPl18hyIXZ0+/allI096nFzbeMnqv
-	vShJyIljesjKKv6ZqjDsQ2taUNYKTzY76JT11HxP2IkRXZ4GAx+hN/vKRvMCDJ6VKhqMF8CG4gjcm
-	8ujUBeDRXNGMbe5yuL+jGfBx8Tn9+nAjxRLi0d97lK9jIt39yraM8lSpyx4ASCHFPXrvOuViu4qYO
-	wfXVXnDw6SVbkx0eis6zp2hhU9WnZyLr36AM5OIx30hof1FMEX2qgZnhorenqQ8WsB27D4ESyRpLH
-	l/HzlFMA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=aYaNCiQoF4urfa0f6mlOK89FWKeRMLlipdj88oKjBPs=; b=W368+f/SoK7j5F6uhh5XPknRyu
+	Ani+FmALJvwo41F7VQh9mZOGqOFDrCXRZqBA0BSLR4oRCS18zH4tPr/Qr7vWt+uOrvAmbKSafsm/F
+	FbVO1ufi3sIbLxi3+UIrshQ1Ew+m22ANB3d+5lF7vBBSuzAiloCr6joUFEui0c6nK9nUmGDqJMNJM
+	bHoCxoIN82dHy2HmD6c9wi0DNz8OR8EpqvrmMk6XuVP+upHbEtVCH+lldV0zwzYKVo9E+VpTSt3OW
+	Mwz8GMXG0F+Jl2k0Oz42xAs07O3Kiluo7Q+AOhg19qUCFBGKBRr5hYXlXRh+92RaCMT4RHvJH8eGu
+	SQUZmaQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrHEy-00000002ETq-2VfK;
-	Tue, 04 Aug 2026 15:39:40 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1wrHd8-00000002G5J-0j2c;
+	Tue, 04 Aug 2026 16:04:38 +0000
+Received: from mail-francesouthazon11021122.outbound.protection.outlook.com ([40.107.130.122] helo=MRWPR03CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrHEv-00000002ET0-2oCk
+	id 1wrHd4-00000002G3t-2a8c
 	for linux-mediatek@lists.infradead.org;
-	Tue, 04 Aug 2026 15:39:38 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-84862b0d5aeso5706412b3a.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 04 Aug 2026 08:39:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785857977; x=1786462777; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=GE0WgxrhQlszpq0bFS8ekUeWF2E3M+uVciQ9zYtpewc=;
-        b=EPul2gfReCeOdjn7GI9YZDU1YtADoDCjBEhXLWpfwzUti+AxbPlsTG6qTbvruGDidq
-         MPIl8iVs2gm/FHdOQ2oK+rdAI9tPss9QHwu3V+YIUnPk0LLV4KSh/M6wZiYr3eqf+D9I
-         j3VxDxAUnA3wLD22faNbh0Q+RByg2V0mz9+4pVmaIbUxJb5iSOtmzeWaXbf1vEUqpbDU
-         lbjJPEE0NtsmLJJK824VwIchEABJQSnpo9IufFDdHBW4IMl0ic0p96G1w0jjeOsABnNd
-         0qK6Fyzjt254u3jzqW8a1QNqP7OGh4hOJjiaxb66njzNqiji+AV8oEfSsZ7HZ67SzOv1
-         zAFg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785857977; x=1786462777;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=GE0WgxrhQlszpq0bFS8ekUeWF2E3M+uVciQ9zYtpewc=;
-        b=qJYmUrCwt6raa8/5MoM0LzhRhbOswiDztGUGhERj5cOD2MYXmsvVcAv1qqaFZAzgIT
-         yV0o2orQclX6veUXegDqQjUKZbU2D5kQqk7/YfTG2IH/PU7LT9WLh2n/A+fPtwNSbvXq
-         INm/bJmjRuZ5sBaChFzHgRUqRo6jV0oN7H/BZ/PUBDC5cYIf42TmihDdN19fUSz6lfR/
-         b1mV54UuxZnrWvI2yrs2W5eWUsn2AK5V8NKwpdTzrS12B0nWOe2YI9Abu89mtLIkAMqs
-         45QOvVYqeMB0svGf9R8fA7iyXSwfH+VTSrs5Hcz8CZFsYr27gFaw69hnys/QBtQwK75v
-         HCxw==
-X-Forwarded-Encrypted: i=1; AHgh+RorJgHLG76XO1OQlCoSppKuXFjKhrvw0/2PTzDOhrNAqwOQj6lnATQIceIfM/UtBUt41Hy8xGy1cAgD+ElvLg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YynQ2hCn0W5JB/2pOYdf+VIItfj9nHxberPecXq5vLFA/3ZaFdx
-	VMf6eFhY1jobrjLiUFNEdMNO11AaneAiSO/31Ntz7zwiKYMepgYCaFs=
-X-Gm-Gg: AR+sD13ihBWK9FGBe1RhtLeAACo6/Bs6Bu75v9ueekAECypc6ixaeOKBerAN68KhvHm
-	w6FPWceDNwp4VOFYkY7qtSXXdPYgzgncIYMwbRB/ZV/AC+AaFnqqCxgEafERAIpiMzrvJBbYkGO
-	9AcWWVKB4jR5eK1K+5Dd5DbSYxrltmzG6w/0hEeAXi9gY2AjIQ6qFS9yoFSwhs1KJkcP7VSZxU5
-	QqWCGLL/Y3lESZTWzqQPO9VFagrXAiQUXN7QZQpnM836U85zDZ0xKzIgG24Odg74KCQINa1K6dW
-	6vq//uaA7nHqnInjeaWiAnGej2Ygw14UL2hzPdaccpK32L+XkFatAMoRXScurTXGvJp5hXRUETR
-	O3qYJRnc+mSxEcsoSDg8/xudTVyicrJKjD4rqvsV5RtztFT3l22wNfb/usm3JgwJprEjuNtR+7i
-	Hu6mB35j1Ys4Pb4FLya9/264wN2Blg9DYdNwPmeM8TgZhoNmIacWKE9UlJW948lEJRMF9o7KJh7
-	EPCjXd3Fr+4zgZ2PAnhsGdeDGqqpMofV4xixUz8gfR53VNH5vqKujvu837YbIq04XnzncuQ2xn1
-	7bhdqg9LyCx3h1pptcCiRKY=
-X-Received: by 2002:a05:6a00:3cd1:b0:847:98ff:4af5 with SMTP id d2e1a72fcca58-84ee47d5328mr14103507b3a.26.1785857976549;
-        Tue, 04 Aug 2026 08:39:36 -0700 (PDT)
-Received: from localhost.localdomain ([1.226.165.54])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84edbd31639sm5581184b3a.9.2026.08.04.08.39.33
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 04 Aug 2026 08:39:35 -0700 (PDT)
-From: Myeonghun Pak <mhun512@gmail.com>
-To: Sean Wang <sean.wang@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Frank Li <Frank.Li@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: dmaengine@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
+	Tue, 04 Aug 2026 16:04:37 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=CuSVB0uct98HOoowCw+wKEbyXe1H3cAPm/ZYT4k9mQqpVFjk+TLymbRKj6RC86m79cpptUkZvv1bCiF+25ys7g2a+poMFFsDhLfNL+xvFQ5vz+UKltzo2qjDb9Nf/W7TqK8PiYU8+6s9/nAUnHsZvaZsbhnXWhSA19Xce1KFNyzrsiUmcEVLGUFo8m8HoRcJLk3aMiFYb4vYbBzY5dwe8G0ioenj3gtaxZ4a7eMWpkmmR6Odi0p0Ipc8o2qVfB7iJcPxbRJe1XkaJW2lTiw+koFyYOLDMRdSYovh5Y6hfeOzdPUJZva5EB7Lmj++koaGF/dTgdA+ZAyxpMfKGovZVQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=aYaNCiQoF4urfa0f6mlOK89FWKeRMLlipdj88oKjBPs=;
+ b=kMiVxxSrSFomT/jGOH2VFx5juKC8a1KEGnk4jDYmrvrwxSa74tqvWODLQW05o+tXK+9I/5/6rHwjeGHueP2wkeH6BAzoVNM2+8a6m0gfbiWU9uQ8Ygf1ozyQyRd6Ic+Rp0v2Dh/4PchznQcC4Sb505fCbNmcmHGNiQoNri6ugLv2W5ZxaDLwOXy2TItcK8mhBx/PBg+1z47eEYaLbG/PIjCkx3uJIv9sni0x7cu3KYJEbAP2M9qcf426+G84XI7opUqdiZJ92ld9HOENE7H3rnX+g9fdOP+JIVVpnk3LtINSyB3QnkhZK13VzNjL2V4jbwU3s9B0AH0U0efcOJJQUQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
+ dkim=pass header.d=iopsys.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=aYaNCiQoF4urfa0f6mlOK89FWKeRMLlipdj88oKjBPs=;
+ b=lw+/N0tsNhXEnY3cIiHrrFb9SkDEoP0Iw5ZSh9ysnTJzSgpsgAA1sPOVrPLorHsTPWJk7njeK/bRY/UYWNSpipgKhmbxY6TXNrQflSlVaBnjDBdr9WqskxwwrE54EWdUxl+x5Y03zeHDaC0mEFixFyY9IPI5kYtfDbb8CT+/+2eKEmB842ybYW6KqK3J4MOjNv99p7yPbPOUpZRMuQRp9v9VNPBTb1SYSWuLOajXPiYYM98/kyERokHnd+C1bJUGkwkMZ/Mb5XLi5TqCDJjtT7G6lr2qfB4Si8XKOeSeKooxDVV9PjEs/YQpQMzikafAW9pSgeTiVQ41TOk1YFwOFQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=iopsys.eu;
+Received: from DU2PR08MB10037.eurprd08.prod.outlook.com (2603:10a6:10:49a::20)
+ by AM8PR08MB5761.eurprd08.prod.outlook.com (2603:10a6:20b:1d0::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.270.18; Tue, 4 Aug
+ 2026 16:04:28 +0000
+Received: from DU2PR08MB10037.eurprd08.prod.outlook.com
+ ([fe80::3c7:6d2e:8afe:e4dc]) by DU2PR08MB10037.eurprd08.prod.outlook.com
+ ([fe80::3c7:6d2e:8afe:e4dc%5]) with mapi id 15.21.0292.013; Tue, 4 Aug 2026
+ 16:04:28 +0000
+From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+To: Linus Walleij <linusw@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Bartosz Golaszewski <brgl@kernel.org>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benjamin Larsson <benjamin.larsson@genexis.eu>,
+	linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	Myeonghun Pak <mhun512@gmail.com>,
-	Ijae Kim <ae878000@gmail.com>
-Subject: [PATCH v2 RESEND] dmaengine: mediatek: hsdma: fix runtime PM leak on init failure
-Date: Wed,  5 Aug 2026 00:39:24 +0900
-Message-ID: <20260804153924.49627-1-mhun512@gmail.com>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <aj1RSj5ZXvc-9yu7@lizhi-Precision-Tower-5810>
-References: <aj1RSj5ZXvc-9yu7@lizhi-Precision-Tower-5810>
-MIME-Version: 1.0
+	linux-mediatek@lists.infradead.org,
+	Markus Gothe <markus.gothe@genexis.eu>,
+	Matheus Sampaio Queiroga <srherobrine20@gmail.com>,
+	Daniel Schwierzeck <daniel.schwierzeck@gmail.com>
+Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Subject: [PATCH v9 00/36] pinctrl: airoha: split on shared and SoC drivers, add more SoCs
+Date: Tue,  4 Aug 2026 19:03:43 +0300
+Message-ID: <20260804160419.3592327-1-mikhail.kshevetskiy@iopsys.eu>
+X-Mailer: git-send-email 2.53.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: FR4P281CA0237.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:e9::12) To DU2PR08MB10037.eurprd08.prod.outlook.com
+ (2603:10a6:10:49a::20)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU2PR08MB10037:EE_|AM8PR08MB5761:EE_
+X-MS-Office365-Filtering-Correlation-Id: 13d32afc-a521-4ce0-3e18-08def2420fb4
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|52116014|376014|7416014|23010399003|921020|38350700014|6133799003|18002099003|3023799007|10067099003|56012099006|11063799006;
+X-Microsoft-Antispam-Message-Info: 9GBdW3RHPp5OaSVRG/be/yMPYGKRPOYURCpqfgX6VkgbAahYoqpmBX2o2OUbPrKDkvcCng2lTBWZkOTGAml4agBxk03wBlittEPTaWN+prg+Ojni0+V7w428NVqAPHPXYVcgV6lASVaqME6rBcp4QWjE9iHq7sD3TaNlJ39GmOxCXoSEU6YAw3u2XZD6AzQKAxeU5eoTWpZYDuLBs2rLS7QsuEh2i9CjsAE+AHBvcNCsNiGOgD/SO7rjklV0gu+171waBbmbPp6M8QycUv6t+5wYBho4WSCQh4CgrZ9vq588UtdR+zT5jIlIxHDGRja/4Jsqc4OMFbeYsjkP5kBkKN/zuLbU+sP0pSFsaJ7RDfLZxlG2n8LXy8wjG7Ub17oG75pcld9+QabH+PalDBS2mWx+iBl9LWtQIE7X0S6qBovUE0H0u1yQ0PIGyBXn/A4cy3Dy1nz1+73soE1IFpjsg6+N9b6UbBdJOlC64G0u0VrEQvhfLiZyxUryRjwhsdNhSTPhceVe5eYcY6BgLZ/+bzbUIGm6znkifWS3Ob/Y/hf+Dg1ycUd9xJXJb36nLeCh3lKJUkTuSYBh6ixHVf1wKo6YbTSsgtUOkomUIYK8yPzyuLSFNoyWqCq+BbTuJSmnUDkjGgA8+fDP0yrrDOLnBFCpDaYAYF3GVuOmrNa45Ovoe1Z1c+37aJrO33M7Om90
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR08MB10037.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(52116014)(376014)(7416014)(23010399003)(921020)(38350700014)(6133799003)(18002099003)(3023799007)(10067099003)(56012099006)(11063799006);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?F7gLWR9fRkZQoqmiSYCJFFV66e1sSE8b/hS8D2MYfJhEdbT5YlR8a41cBtMT?=
+ =?us-ascii?Q?omTFJYQ3+4xdP/asqY7HLSOluWA+5py+esCl+6TnYCGEM/YKA/AjjD0bcq0n?=
+ =?us-ascii?Q?YV8YAqRBvWCwir+nEKSjZg8BmkugeyqA7+XsYRDGshjqLBYjqvReo9ISNuOt?=
+ =?us-ascii?Q?7hJF2HRmJ1zRds1nEWTrSQvONgk5hw/y/KWKzAkBPzcWYzbJ0G0mScE8DNVu?=
+ =?us-ascii?Q?Mw8HtqzmurRU9V3et6dF4sBu+weWKzMb/Ia7E/2iSdSpqLaQMD2Od5FlAacm?=
+ =?us-ascii?Q?Uw+ysast3aDSJck0WpQ1stMHWc+iGfH5FbRlXoUPRKSF/B5sz3tNt+SdTEay?=
+ =?us-ascii?Q?4ZUOHWGSdgoMjKcVqylrv3DvbeVVagxbKDD3aDxa/yRPmVRCWxawfFEidUOb?=
+ =?us-ascii?Q?bxt/OUalGWenP3CkSkvG3xunF3IgyZC1AqhGUdXk3trVqwHFh+jwhBJTDIFB?=
+ =?us-ascii?Q?Ewnxm2yENts3U02BvZTiL5Et4NpCD0EMnVYFx6Le8bHvhScFODZCLk1Dhu0Y?=
+ =?us-ascii?Q?pUgqCiYQR9tigSQ+Cbf2uQpkkldpA326MuVva+Tpm2Wns3CQeRDktu3mANZp?=
+ =?us-ascii?Q?/orGe7fdv5nf/Cef0r/Uc1smMskRfu88QP9d3MNa0cZWXEMdpQP4aEQAAKwf?=
+ =?us-ascii?Q?IjznOLNPsIErtN99j7zlwHKqWvOIGaaMKC/CT5wY4h86zZndFu49HEsuevD+?=
+ =?us-ascii?Q?q9XexNYB3fiBBphGHCjZS9zpoGsOlt58bkW5sfP9DlLRDatV5tgvJJKxswhT?=
+ =?us-ascii?Q?4OXPQhCi6QN3VcGuWYUxKBVyy2RfO0MnFH2ccTi7uA/5mUXYG6vuhfxVpVjq?=
+ =?us-ascii?Q?B8Vrki6RCt/RzfaPzc7LEdnmVEGm80BFhYCunh1DEvIzp0hRB9JNqbbTTZP/?=
+ =?us-ascii?Q?12vMTqshNVFYbAkC0ascoSddK3fP1T41NU6vVbqvm2LuHA6c2d1Os6XBgoUF?=
+ =?us-ascii?Q?XlY0XfHVHBdRvJvrjYUCG2lIX6hL3L6kR5nyqe9npYPL4hDn6zmsp9OYfAO4?=
+ =?us-ascii?Q?wV85X7FxVq5ncC4fsgI3ICo0PXCk/AyAo3IJhnxlzyPNAYFbgZXkK75Tpn9d?=
+ =?us-ascii?Q?5AOchhc5/xI2xgKj8cbBemxgTLup9YlqArRjgQGG3p8/YU1C+lIjX7nijpKE?=
+ =?us-ascii?Q?udfL7pzdmcATk+ouOj2/keu0YOSbxefSZ5MCd80DpdGxgRpkw8wwIO2JMZOc?=
+ =?us-ascii?Q?7j56yp4BzjtpuM8RxbHoeL81wPNnDMippFs5M45OJR8vikgXJbuJyb3Dvbla?=
+ =?us-ascii?Q?cr6gNUGqUWRfZPtNtIQOSH0KQJZ7Jm1be8jd38408s/DGvJ0FWxhjFbXrhpa?=
+ =?us-ascii?Q?w1FzosLfkWJjs3hK1clFJ1l7JjK0Hi3xEcEPAqeijygikSGY+MVAFejWxCPP?=
+ =?us-ascii?Q?m1JTzHLge/3TD7aAS67L9MKJb0rYHFHtqWhxQcN6+SmuVWklYF/kcpHMf60s?=
+ =?us-ascii?Q?GDWSRrtTzY/ey+PH3X0ZgO1Q+mqVWaThuINQnYb3JwAcIgJlJ1LA1gt2U2H6?=
+ =?us-ascii?Q?syE2/x2A6CPKIvYnxhMEnP5FqygNF0gDFpsAFTKOAUd3kK5MhKdsQRxDAkSY?=
+ =?us-ascii?Q?q2mPSnKvda0a20Mky0XXmS1VXs9JgpUDPsMuDMCyrqRmnZ2ucYcDj/KwqN6v?=
+ =?us-ascii?Q?jwxOHOQylWnvPOVCaD0InJByb7DALygZ7R2JHro/z+GGCXYz1ktgKCXOs2cV?=
+ =?us-ascii?Q?dlWctqDNJjLRY3cv9n0C718H/bfpotIp1NOl6Bizj68ydDK5BeRxdwIEGU6u?=
+ =?us-ascii?Q?4NZ7iBmx85W6O1+pesa9s+IE8kup69A=3D?=
+X-OriginatorOrg: iopsys.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 13d32afc-a521-4ce0-3e18-08def2420fb4
+X-MS-Exchange-CrossTenant-AuthSource: DU2PR08MB10037.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Aug 2026 16:04:28.1942
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ZF15wUs77FEgt0+l4CzWcDHfF1c1mR03OPPO9zTR8fgQjia6KQLOC24I6X6XkbBTvEmfTyrFF24piuSNxs8OgVW5d0kXE/Q3HTOCPw/R8sM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM8PR08MB5761
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260804_083937_706801_05F75F57 
-X-CRM114-Status: GOOD (  13.62  )
+X-CRM114-CacheID: sfid-20260804_090435_396175_68CB9BCA 
+X-CRM114-Status: GOOD (  13.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,108 +148,130 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_hsdma_hw_init() enables runtime PM and gets a runtime PM reference
-before enabling the HSDMA clock. It currently ignores failures from
-pm_runtime_get_sync(); if runtime resume fails, the usage count remains
-held. If clk_prepare_enable() then fails, the usage count remains held.
+This patchset
+ * fixes more airoha pinctrl issues
+ * split combined driver on common code and several SoC specific drivers
+ * improves an7583 pinctrl support
+ * adds support of en7523 SoC
+ * adds support of an7563 SoC
 
-Use devm_pm_runtime_enable() to manage runtime PM enablement, and use
-pm_runtime_resume_and_get() so resume failures do not leak the usage count.
-If clk_prepare_enable() fails after a successful runtime resume, drop the
-runtime PM reference before returning.
+The driver split changes are based on Matheus Sampaio Queiroga work.
 
-The probe path also ignores the return value from mtk_hsdma_hw_init(), so a
-failed hardware init can continue as a successful probe. Propagate
-mtk_hsdma_hw_init() failures from probe, while keeping a separate unwind
-label so mtk_hsdma_hw_deinit() is only called after hardware init succeeds.
+Changes v2:
+ * more issues of airoha pinctrl driver was fixed
+ * SoC specific register addresses, bitfields, macroses were
+   removed from common header and placed to SoC specific file
+ * fixed address of LAN LED mappings registers for en7523 SoC
+ * improves support of an7583 pinctrl
 
-Fixes: 548c4597e984 ("dmaengine: mediatek: Add MediaTek High-Speed DMA controller for MT7622 and MT7623 SoC")
-Co-developed-by: Ijae Kim <ae878000@gmail.com>
-Signed-off-by: Ijae Kim <ae878000@gmail.com>
-Signed-off-by: Myeonghun Pak <mhun512@gmail.com>
+Changes v3:
+ * improve searching of chip scu regmap necessary for drivers
+   operations
 
----
-Changes in v2:
-- Use devm_pm_runtime_enable() for runtime PM enablement.
-- Drop manual pm_runtime_disable() calls from init/deinit paths.
+Changes v4:
+ * an7583: add support of OLT pin function
+ * an7581: do a proper fix of pcie_reset pins mux/conf.
 
- drivers/dma/mediatek/mtk-hsdma.c | 26 +++++++++++++++++++-------
- 1 file changed, 19 insertions(+), 7 deletions(-)
+Changes v5:
+ * improve description of an7583 i2c pinmux fix
+ * rename an7583 registers to match its an7583 names
+ * add support of an7563 SoC
 
-diff --git a/drivers/dma/mediatek/mtk-hsdma.c b/drivers/dma/mediatek/mtk-hsdma.c
-index a43412ff5e..27cb370106 100644
---- a/drivers/dma/mediatek/mtk-hsdma.c
-+++ b/drivers/dma/mediatek/mtk-hsdma.c
-@@ -848,17 +848,27 @@ static int mtk_hsdma_hw_init(struct mtk_hsdma_device *hsdma)
- {
- 	int err;
- 
--	pm_runtime_enable(hsdma2dev(hsdma));
--	pm_runtime_get_sync(hsdma2dev(hsdma));
-+	err = devm_pm_runtime_enable(hsdma2dev(hsdma));
-+	if (err)
-+		return err;
-+
-+	err = pm_runtime_resume_and_get(hsdma2dev(hsdma));
-+	if (err < 0)
-+		return err;
- 
- 	err = clk_prepare_enable(hsdma->clk);
- 	if (err)
--		return err;
-+		goto err_put_pm;
- 
- 	mtk_dma_write(hsdma, MTK_HSDMA_INT_ENABLE, 0);
- 	mtk_dma_write(hsdma, MTK_HSDMA_GLO, MTK_HSDMA_GLO_DEFAULT);
- 
- 	return 0;
-+
-+err_put_pm:
-+	pm_runtime_put_sync(hsdma2dev(hsdma));
-+
-+	return err;
- }
- 
- static int mtk_hsdma_hw_deinit(struct mtk_hsdma_device *hsdma)
-@@ -868,7 +878,6 @@ static int mtk_hsdma_hw_deinit(struct mtk_hsdma_device *hsdma)
- 	clk_disable_unprepare(hsdma->clk);
- 
- 	pm_runtime_put_sync(hsdma2dev(hsdma));
--	pm_runtime_disable(hsdma2dev(hsdma));
- 
- 	return 0;
- }
-@@ -983,7 +992,9 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
- 		goto err_unregister;
- 	}
- 
--	mtk_hsdma_hw_init(hsdma);
-+	err = mtk_hsdma_hw_init(hsdma);
-+	if (err)
-+		goto err_free;
- 
- 	err = devm_request_irq(&pdev->dev, hsdma->irq,
- 			       mtk_hsdma_irq, 0,
-@@ -991,7 +1002,7 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
- 	if (err) {
- 		dev_err(&pdev->dev,
- 			"request_irq failed with err %d\n", err);
--		goto err_free;
-+		goto err_deinit;
- 	}
- 
- 	platform_set_drvdata(pdev, hsdma);
-@@ -1000,8 +1011,9 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
- 
- 	return 0;
- 
--err_free:
-+err_deinit:
- 	mtk_hsdma_hw_deinit(hsdma);
-+err_free:
- 	of_dma_controller_free(pdev->dev.of_node);
- err_unregister:
- 	dma_async_device_unregister(dd);
+Changes v6:
+ * fix some of the issues found by
+   https://sashiko.dev/#/patchset/20260622113046.3619139-1-mikhail.kshevetskiy%40iopsys.eu
+ * update device tree binding
+ * add bindings for en7523 and an7563
+
+Changes v7:
+ * a lot of IRQ support fixes, now there is chances that IRQ code is
+   really working
+ * device tree bindings moved to the separate patches
+ * fix some of the issues found by
+   https://sashiko.dev/#/patchset/20260628143733.273651-1-mikhail.kshevetskiy@iopsys.eu
+
+Changes v8:
+ * an7581: fix pinconf of i2c_scl/i2c_sda pins
+ * ignore high bit in set_direction/get_direction helpers
+ * minor patch modification
+ * fix some issue found by
+   https://sashiko.dev/#/patchset/20260727074234.3761170-1-mikhail.kshevetskiy@iopsys.eu
+ * add more 'Fixes: commit' lines
+ * add Acked-by Lorenzo Bianconi where it was approved
+
+Changes v9:
+ * fix some issue found by
+   https://sashiko.dev/#/message/20260727174141.664933-5-mikhail.kshevetskiy%40iopsys.eu
+ * take into account openwrt changes created by Daniel Schwierzeck
+ * improve binding patches
+
+Daniel Schwierzeck (3):
+  pinctrl: airoha: fix I2C1 pin mux config for AN7581
+  pinctrl: airoha: fix I2C pin mux config for AN7583
+  pinctrl: airoha: fix AN7583 MDIO pin mux config
+
+Mikhail Kshevetskiy (33):
+  dt-bindings: pinctrl: airoha: en7581: fix misprint in i2s function
+    name
+  dt-bindings: pinctrl: airoha: an7583: fix device tree binding schema
+  pinctrl: airoha: fix mdio bitfield names
+  pinctrl: airoha: an7581: fix pinconf of i2c_scl/i2c_sda pins
+  pinctrl: airoha: an7583: fix I2C0_SDA_PD register bit order
+  pinctrl: airoha: an7581: fix mux/conf of pcie_reset pins
+  dt-bindings: pinctrl: airoha: en7581: allow configuration of
+    pcie_reset pins as gpio or pwm
+  pinctrl: airoha: an7583: fix muxing of non-gpio default pins
+  dt-bindings: pinctrl: airoha: an7583: allow configuration of non-gpio
+    default pins as gpio and pwm
+  pinctrl: airoha: an7583: fix spi group pins
+  pinctrl: airoha: add missed get_direction() function for gpio_chip
+  pinctrl: airoha: add set_direction() helper for gpio_chip
+  pinctrl: airoha: minor improvements
+  pinctrl: airoha: fix getting gpiochip/pinctrl pointers in the IRQ
+    handling code
+  pinctrl: airoha: add missed IRQ resource helpers
+  pinctrl: airoha: fix IRQ mask/unmask code
+  pinctrl: airoha: fix edge-triggered interrupts handling
+  pinctrl: airoha: remove not needed irq_type[] array
+  pinctrl: airoha: statically allocate gpio regs structure
+  pinctrl: airoha: move common definitions to the separate header
+  pinctrl: airoha: split driver on shared code and SoC specific drivers
+  pinctrl: airoha: an7581: remove en7581 prefix from variable names
+  pinctrl: airoha: an7583: remove an7583 prefix from variable names and
+    definitions
+  pinctrl: airoha: an7583: rename registers to match its an7583 names
+  pinctrl: airoha: an7583: add support for npu_uart pinmux
+  pinctrl: airoha: an7583: add support for pon_alt pinmux
+  pinctrl: airoha: an7583: add support for olt pinmux
+  dt-bindings: pinctrl: airoha: an7583: add missed features
+  pinctrl: airoha: add support of en7523 SoC
+  pinctrl: airoha: try to find chip scu node by phandle first
+  dt-bindings: pinctrl: airoha: add support of en7523 pin controller
+  pinctrl: airoha: add support of an7563 SoC
+  dt-bindings: pinctrl: airoha: add support of an7563 pin controller
+
+ .../pinctrl/airoha,an7563-pinctrl.yaml        |  348 +++
+ .../pinctrl/airoha,an7583-pinctrl.yaml        |   59 +-
+ .../pinctrl/airoha,en7523-pinctrl.yaml        |  379 +++
+ .../pinctrl/airoha,en7581-pinctrl.yaml        |   15 +-
+ drivers/pinctrl/airoha/Kconfig                |   42 +-
+ drivers/pinctrl/airoha/Makefile               |    7 +
+ drivers/pinctrl/airoha/airoha-common.h        |  147 +
+ drivers/pinctrl/airoha/pinctrl-airoha.c       | 2645 ++---------------
+ drivers/pinctrl/airoha/pinctrl-an7563.c       | 1115 +++++++
+ drivers/pinctrl/airoha/pinctrl-an7581.c       | 1487 +++++++++
+ drivers/pinctrl/airoha/pinctrl-an7583.c       | 1517 ++++++++++
+ drivers/pinctrl/airoha/pinctrl-en7523.c       | 1157 +++++++
+ 12 files changed, 6440 insertions(+), 2478 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/airoha,an7563-pinctrl.yaml
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/airoha,en7523-pinctrl.yaml
+ create mode 100644 drivers/pinctrl/airoha/airoha-common.h
+ create mode 100644 drivers/pinctrl/airoha/pinctrl-an7563.c
+ create mode 100644 drivers/pinctrl/airoha/pinctrl-an7581.c
+ create mode 100644 drivers/pinctrl/airoha/pinctrl-an7583.c
+ create mode 100644 drivers/pinctrl/airoha/pinctrl-en7523.c
+
 -- 
-2.47.1
+2.53.0
+
 
