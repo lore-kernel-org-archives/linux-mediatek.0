@@ -4,87 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50574C55172
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 09:18:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AFF0C5518F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 10:05:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ukzJUrxVGism5T7q511qwl/xpNe86Uc9McPdwfBNVKg=; b=ekTQEKVRzkbjzEuIq5xpXg6VtY
-	QC+s/iikk0pUOXLj7kwPfmf06Xig1FqIvfaCNZflCOfihN18q370RHVFPMJ4TE7J+yiTguIzZzdNe
-	fReUCtL9QmGKjFc7V5weiAT4PqSe2Ht+5ZknuqauZcnwN2Ul1LE30w2WvqWoDG2ydyioT0r8h/uZ3
-	jO9hOFOiZZCEMZviIHFE8lHO1EpEK73DDOEqZHh96E7XS9KPeryahTFqhNLB5pSqdjsJZgLUQp1U9
-	i05S+KwCUcMAynXjA8a1RDuo/fu7Swmi4VhRIsX87U3u6LjrUnrRQkRP+EYNN43xvgu35Wl9aBgii
-	zUDvdq3w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
+	bh=KZ7812YrouTaGKtnZrRRlTGtZhtVMD2AeJWLFgwrtg0=; b=aO7EBQufg7BfNwqbHj/ZJgZzW2
+	ibco0qsBfiF682TetAp+ZI87WQpBylOJt3BVr2XvXG5I04/Poinl0QdAeSSuuXXV8iZ0DcvPpqF4u
+	7lemQZDp4HJZyBTzd3t1USmHklje0LbhUS29bKJAxO+xwifoXloKa7mmZRkXE5rH4isb05XUYKT+B
+	7/ZMyCHB03HpUeELmkdvsg/0Bx0mCUonZcL0PtwQp9ceFrlEjmwq5pVtttQsm31aQwiDgT0GBWEUp
+	RdE/44TT6sdhgLd+6rR+d2ALSF1JFwdGbeUYolVJ3Rs3M/bR9gpejE/oKMkXQg0Xder5EUCY5xY/y
+	8TkOj3bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrBHf-00000001Qqw-0pBl;
-	Tue, 04 Aug 2026 09:18:03 +0000
-Received: from mgamail.intel.com ([198.175.65.20])
+	id 1wrC1u-00000001UxQ-3W8Y;
+	Tue, 04 Aug 2026 10:05:50 +0000
+Received: from mailout1.w1.samsung.com ([210.118.77.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrBHb-00000001QpH-24UN;
-	Tue, 04 Aug 2026 09:18:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1785835080; x=1817371080;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Xnc5KBLqfTrzf1YHz9XESgTn+NFwXtPtYwkXhanXaHU=;
-  b=cxF8yV/q77wxZbRdNrol/7aolw1WzuREMVez62m2LhnYDF70erJAH6nw
-   W8Fla4Hjsva2hiXNuEbLG7kqODYwvGHCcJYCeYzqFOjQ37eAGSSYy2M0P
-   pig6xIwUghH/RBajDrCSHmbAGI3HAFTXNbDHpJNm87hS2S0+Ym5GNSFx6
-   ROE7Y9WrUkyp/Zs5m/0ABgNrVM0m1zMyJ2omYkTMCeQcxaOe20/p9aaAc
-   Hd+6CH+eQa8OzDf0VoYbOoXiaD340d8zGY+Y/C3HWHwmQ6sPjd9/kljST
-   YoJn6Hmufk4720HJvB8/1VBiDEisRJ+wblPX04043/bSNvOcpo50RQXx/
-   g==;
-X-CSE-ConnectionGUID: ZGWLhwEKR4qH21GYjgSi/w==
-X-CSE-MsgGUID: kRSloIUTQjSygNLT5VTJFw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11864"; a="86150480"
-X-IronPort-AV: E=Sophos;i="6.25,204,1779174000"; 
-   d="scan'208";a="86150480"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Aug 2026 02:17:58 -0700
-X-CSE-ConnectionGUID: RwfehJXCRJaaQFErlCyujQ==
-X-CSE-MsgGUID: MDC7Lv8tT+iWScqToc/J2w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,204,1779174000"; 
-   d="scan'208";a="263448278"
-Received: from lkp-server01.sh.intel.com (HELO 6eda058d650d) ([10.239.97.150])
-  by fmviesa004.fm.intel.com with ESMTP; 04 Aug 2026 02:17:54 -0700
-Received: from kbuild by 6eda058d650d with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1wrBHT-000000009Wj-2Awl;
-	Tue, 04 Aug 2026 09:17:51 +0000
-Date: Tue, 4 Aug 2026 17:16:56 +0800
-From: kernel test robot <lkp@intel.com>
-To: Guangshuo Li <lgs201920130244@gmail.com>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-	Houlong Wei <houlong.wei@mediatek.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	Tomasz Figa <tfiga@chromium.org>, Chen-Yu Tsai <wenst@chromium.org>,
-	Haoxiang Li <haoxiang_li2024@163.com>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org
-Subject: Re: [PATCH] media: mediatek: vcodec: unregister VPU watchdog handler
-Message-ID: <202608041721.qBlQgdnE-lkp@intel.com>
-References: <20260708124235.763036-1-lgs201920130244@gmail.com>
+	id 1wrC1r-00000001UwP-0DJ0
+	for linux-mediatek@lists.infradead.org;
+	Tue, 04 Aug 2026 10:05:49 +0000
+Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
+	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20260804100540euoutp01f294f36f6362bf2edbf4e8515a139fb6~IkiUjhYMK1924619246euoutp01i
+	for <linux-mediatek@lists.infradead.org>; Tue,  4 Aug 2026 10:05:40 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20260804100540euoutp01f294f36f6362bf2edbf4e8515a139fb6~IkiUjhYMK1924619246euoutp01i
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1785837940;
+	bh=KZ7812YrouTaGKtnZrRRlTGtZhtVMD2AeJWLFgwrtg0=;
+	h=From:To:Cc:Subject:Date:References:From;
+	b=W9pMlmYIb9bMkRu4jfc8clgyQCFq19x84t+o1f4NNVFPNzppRlZfYm/Am//yXRobf
+	 x9kobMvqpbC40iYmNByaNhNsQ9BRZb/wIs6elgt/V8N+y/3vHg7FqvqQGKBEYYvQfV
+	 TVkrr7vDCeqxCNyFlCNeF2wekj6FmFNO16Y2jVcg=
+Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
+	eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
+	20260804100540eucas1p24c59c891e91eeeeea8032d1c80312ea3~IkiUU8B6_3251632516eucas1p2x;
+	Tue,  4 Aug 2026 10:05:40 +0000 (GMT)
+Received: from AMDC4653.digital.local (unknown [106.120.51.32]) by
+	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
+	20260804100539eusmtip249c88d331150984ce7acdc66a99b9818~IkiT6smw23264332643eusmtip2G;
+	Tue,  4 Aug 2026 10:05:39 +0000 (GMT)
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+To: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Marek Szyprowski <m.szyprowski@samsung.com>, Chunfeng Yun
+	<chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
+	<gregkh@linuxfoundation.org>, Steven Rostedt <rostedt@goodmis.org>
+Subject: [PATCH] USB: mtu3: tracing: fix pointers dereferencing
+Date: Tue,  4 Aug 2026 12:05:30 +0200
+Message-ID: <20260804100531.88576-1-m.szyprowski@samsung.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260708124235.763036-1-lgs201920130244@gmail.com>
+Content-Transfer-Encoding: 8bit
+X-CMS-MailID: 20260804100540eucas1p24c59c891e91eeeeea8032d1c80312ea3
+X-Msg-Generator: CA
+Content-Type: text/plain; charset="utf-8"
+X-RootMTR: 20260804100540eucas1p24c59c891e91eeeeea8032d1c80312ea3
+X-EPHeader: CA
+X-CMS-RootMailID: 20260804100540eucas1p24c59c891e91eeeeea8032d1c80312ea3
+References: <CGME20260804100540eucas1p24c59c891e91eeeeea8032d1c80312ea3@eucas1p2.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260804_021759_564952_A55C8B6B 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20260804_030547_574847_A275F94C 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,56 +82,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Guangshuo,
+Commit b5cc230af5e5 ("tracing: Warn when an event dereferences a pointer
+in TP_printk()") added a warning then printing an event dereferences
+a pointer, because it might be already freed that time.
 
-kernel test robot noticed the following build errors:
+MTU3 driver is one of the drivers triggering this warning. Fix it by
+storing also the DMA address in the event structure to avoid
+dereferencing gpd_ring pointer during event printing.
 
-[auto build test ERROR on linuxtv-media-pending/master]
-[also build test ERROR on media-tree/master linus/master v7.2-rc6 next-20260803]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Fixes: 83374e035b62 ("usb: mtu3: add tracepoints to help debug")
+Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
+---
+ drivers/usb/mtu3/mtu3_trace.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Guangshuo-Li/media-mediatek-vcodec-unregister-VPU-watchdog-handler/20260804-140933
-base:   https://git.linuxtv.org/media-ci/media-pending.git master
-patch link:    https://lore.kernel.org/r/20260708124235.763036-1-lgs201920130244%40gmail.com
-patch subject: [PATCH] media: mediatek: vcodec: unregister VPU watchdog handler
-config: alpha-allmodconfig (https://download.01.org/0day-ci/archive/20260804/202608041721.qBlQgdnE-lkp@intel.com/config)
-compiler: alpha-linux-gcc (GCC) 16.1.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260804/202608041721.qBlQgdnE-lkp@intel.com/reproduce)
+diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
+index 89870175d635..b24c6411a8cf 100644
+--- a/drivers/usb/mtu3/mtu3_trace.h
++++ b/drivers/usb/mtu3/mtu3_trace.h
+@@ -224,6 +224,7 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+ 		__field(unsigned int, flags)
+ 		__field(unsigned int, direction)
+ 		__field(struct mtu3_gpd_ring *, gpd_ring)
++		__field(dma_addr_t, gpd_ring_dma)
+ 	),
+ 	TP_fast_assign(
+ 		__assign_str(name);
+@@ -235,12 +236,13 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+ 		__entry->flags = mep->flags;
+ 		__entry->direction = mep->is_in;
+ 		__entry->gpd_ring = &mep->gpd_ring;
++		__entry->gpd_ring_dma = __entry->gpd_ring->dma;
+ 	),
+ 	TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p/%pad flags %c:%c%c%c:%c",
+ 		__get_str(name), usb_ep_type_string(__entry->type),
+ 		__entry->maxp, __entry->slot,
+ 		__entry->mult, __entry->maxburst,
+-		__entry->gpd_ring, &__entry->gpd_ring->dma,
++		__entry->gpd_ring, &__entry->gpd_ring_dma,
+ 		__entry->flags & MTU3_EP_ENABLED ? 'E' : 'e',
+ 		__entry->flags & MTU3_EP_STALL ? 'S' : 's',
+ 		__entry->flags & MTU3_EP_WEDGE ? 'W' : 'w',
+-- 
+2.43.0
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202608041721.qBlQgdnE-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> drivers/media/platform/mediatek/vpu/mtk_vpu.c:440:1: error: expected identifier or '(' before '+' token
-     440 | +void vpu_wdt_unreg_handler(struct platform_device *pdev, enum rst_id id)
-         | ^
-
-
-vim +440 drivers/media/platform/mediatek/vpu/mtk_vpu.c
-
-   439	
- > 440	+void vpu_wdt_unreg_handler(struct platform_device *pdev, enum rst_id id)
-   441	{
-   442		struct mtk_vpu *vpu = platform_get_drvdata(pdev);
-   443	
-   444		if (!vpu || id >= VPU_RST_MAX)
-   445			return;
-   446	
-   447		mutex_lock(&vpu->vpu_mutex);
-   448		vpu->wdt.handler[id].reset_func = NULL;
-   449		vpu->wdt.handler[id].priv = NULL;
-   450		mutex_unlock(&vpu->vpu_mutex);
-   451	}
-   452	EXPORT_SYMBOL_GPL(vpu_wdt_unreg_handler);
-   453	
-   454	
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
