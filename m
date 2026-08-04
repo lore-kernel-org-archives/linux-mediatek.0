@@ -4,75 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9593C55843
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 06:24:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE4A5C55172
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 06:24:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=M3loX8ga7znSQULYfqy+ijlN4dXdSpPjSIiieTvPzf4=; b=rwRcEaA45RWaAaSKLBiXLy+D6f
-	etPh7aPRBru/AXZU0bG54hqPfv+YjDhsE56JSzSSOeeg+WuBL608QtROwgJrdf+fjDER36G5vIwEB
-	a/YHvRqELaafGv/sxoX50YgwhIXXtvOBvkEYWLNx6dG5T1ZRYMGoo27IFx4NU9o+B3XMYuWmoOsE6
-	EqU2ljFZ5cy8ddsVAWux4fvl/OstRkGSYSqNiQduAT9UDqYtBiSoO0Gynixo40/nmUyWNXNDiORTi
-	yizdhQTMK4fO9rjYQlAa2/iM8nL5VJZ3KQ21MxXW1uPsc/YCvu3B5rtb1TTF29aHXIa0MWhNTE4wF
-	TfbSscpQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vs5BIlpD31kH75lJ3LGWHfh0U65a6Zt4KmLafSW9ByQ=; b=4Dx4b1/8MTVKDmBmf6kKdHEDWF
+	L2lyil5aF7E9ynzhF6lB6KQsapFF9HsM9E5ihr0ng+tSq8Dji7JyZWye4yasdUVLussPF7S4OF85n
+	GEK6kq4wBX3y7Drm7w5UQCvG+fZFvIJrQd286wDGlxRDP440kEMI3jKVZxdJPLDXLzlmw7uDDR/4W
+	YTENHOkNti/bV2b0aCxMTsCioPGC9iq+U2xu5XuG9S1a1PE/V95cBQ9XPSl5K1WTOjdahmS3UNvNh
+	kGCllpt688XVhB9ra/mtFImKtNyDx5v0roYe4tDs8YFy3wvKcaBOXDiwzS8gWg4Dz0ltGJ3h1zYTx
+	V0Y7KY7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wr8ZU-000000016oq-0N3M;
-	Tue, 04 Aug 2026 06:24:16 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wr8a1-000000016u1-3C8w;
+	Tue, 04 Aug 2026 06:24:49 +0000
+Received: from mgamail.intel.com ([192.198.163.12])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wr8ZR-000000016o3-1a6Z
-	for linux-mediatek@lists.infradead.org;
-	Tue, 04 Aug 2026 06:24:15 +0000
-X-UUID: 187864f68fcd11f1acbe4559397dec65-20260803
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=M3loX8ga7znSQULYfqy+ijlN4dXdSpPjSIiieTvPzf4=;
-	b=oI7Iewx9Ge4TMLSTKkFUO4kZutokVOpu/tGFLSl3dA24T+BVWQWjio5HCurnCprg7BAOyCKVpB9yiA3kNMqMt3d9WCCPosFSVFIbjqOszaW2FegqUNP/ZMFtzHelJdoLQsi4ifpeh4KCDt0Cq2jSklfPgfz8aL6IyXGogE/HuFE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:8fb129cd-9f75-4327-a436-ee4956eba881,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:7db8b62,CLOUDID:edb7ae7e-1239-47c2-a054-c33c1ab2b3a0,B
-	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
-	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 187864f68fcd11f1acbe4559397dec65-20260803
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
-	(envelope-from <jb.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 439141453; Mon, 03 Aug 2026 23:24:06 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Tue, 4 Aug 2026 14:24:04 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Tue, 4 Aug 2026 14:24:04 +0800
-From: JB Tsai <jb.tsai@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<Sean.Wang@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shengwei.Lu@mediatek.com>, <litien.chang@mediatek.com>,
-	<jb.tsai@mediatek.com>, Shengwei Lu <shengwei.lu@mediatek.com>, Sean Wang
-	<sean.wang@mediatek.com>
-Subject: [PATCH 1/2] [PATCH 1/2] wifi: mt76: mt7925: add IE-parsing helpers for AP NSTS extraction for MT7928
-Date: Tue, 4 Aug 2026 14:24:02 +0800
-Message-ID: <20260804062403.642593-1-jb.tsai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+	id 1wr8Zy-000000016tD-1hU6;
+	Tue, 04 Aug 2026 06:24:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1785824686; x=1817360686;
+  h=date:from:to:cc:subject:message-id;
+  bh=KKZFpNziv8p8HKPLsoOocbI9p7wTHRY7703zAFRVqFM=;
+  b=cEUYeWSa+OkdJ4ZgfcHohaGaKFGOC525Qbot3hRRGnNl0muNxTNbBPue
+   VAMHwvt2iEvB5fx4MDQY9EYsQq1AtHPLHamQLMUEvL2MEIKeNHgYWYsII
+   UglWkRViZWbEfaIxQrKlpUkgU3lwag09arv7lb7GfQB0jH3yqfWjnledM
+   OkCNMz5YdZXFewjhaSiR84nMRxF5ff/8n0lqp2Y02/xwZz0NS8TvYPpWJ
+   EsJeK6z2D9A128gDwckdn0u/+eBPmxMJy9fspB3EL+3FKVZDnMEhqSF5u
+   mqOB9C6lSb87DGFqaa7xPCyHPu2s/v+d64tpLbjQxyvxBXZh/S2l/0+r6
+   w==;
+X-CSE-ConnectionGUID: U2t8iAp4Sh6tvicFLcO4cw==
+X-CSE-MsgGUID: PTQmcHC0QYqQ9fVbzxYkKQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11864"; a="90179420"
+X-IronPort-AV: E=Sophos;i="6.25,203,1779174000"; 
+   d="scan'208";a="90179420"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Aug 2026 23:24:42 -0700
+X-CSE-ConnectionGUID: COFkYOwiRDeMNnPUy81RQg==
+X-CSE-MsgGUID: WbO2gSoCTg+tnth5R6yU4Q==
+X-ExtLoop1: 1
+Received: from lkp-server01.sh.intel.com (HELO 6eda058d650d) ([10.239.97.150])
+  by fmviesa003.fm.intel.com with ESMTP; 03 Aug 2026 23:24:39 -0700
+Received: from kbuild by 6eda058d650d with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1wr8Zp-0000000097p-0Ov6;
+	Tue, 04 Aug 2026 06:24:37 +0000
+Date: Tue, 04 Aug 2026 14:24:23 +0800
+From: kernel test robot <lkp@intel.com>
+To: Andrew Morton <akpm@linux-foundation.org>
+Cc: Linux Memory Management List <linux-mm@kvack.org>,
+ linux-arm-kernel@lists.infradead.org, linux-iio@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>
+Subject: [linux-next:master] BUILD REGRESSION
+ 9a4cdc958dd79fc6c3b20b51a10debec6ca09fec
+Message-ID: <202608041404.bOHh2XuT-lkp@intel.com>
+User-Agent: s-nail v14.9.25
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_232413_442738_AEF930C4 
-X-CRM114-Status: GOOD (  21.26  )
+X-CRM114-CacheID: sfid-20260803_232446_480120_E9FD2097 
+X-CRM114-Status: UNSURE (   4.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,279 +83,132 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Shengwei Lu <shengwei.lu@mediatek.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
+branch HEAD: 9a4cdc958dd79fc6c3b20b51a10debec6ca09fec  Add linux-next specific files for 20260803
 
-Add a dedicated module (ies.c / ies.h) that provides four helpers to
-parse BSS IEs and extract the AP's maximum TX spatial-stream count
-(NSTS):
+Unverified Error/Warning (likely false positive, kindly check if interested):
 
- - mt7928_ht_nsts_from_ies()  - reads HT Capability TX MCS streams
- - mt7928_vht_nsts_from_ies() - reads VHT Capability TX MCS map
- - mt7928_he_nsts_from_ies()  - reads HE Capability TX MCS/NSS for 80 MHz
- - mt7928_eht_nsts_from_ies() - reads EHT Capability TX MCS/NSS
+    https://lore.kernel.org/oe-kbuild/202608040800.45L57Mym-lkp@intel.com
 
-Also add mt7928_get_bss_suswm_cap() which walks the HT/VHT/HE/EHT caps
-of both the AP (peer link_sta) and the local device (own sband) and
-fills a struct mt7928_suswm_cap {bfer_en, bfee_en, nsts} summarising
-the SU beamforming capabilities and the AP's NSTS count. The
-MT_SU_SWM_{BFER,BFEE,NSTS_MEET} bitmap defines used by the STA_REC_SUSWM
-TLV are also introduced here.
+    drivers/iio/magnetometer/qmc6308.c:402:7: error: call to '__compiletime_assert_472' declared with 'error' attribute: FIELD_PREP: value too large for the field
+    drivers/net/ethernet/airoha/airoha_eth.c:3470:25: sparse: sparse: division by zero
 
-These helpers will be consumed by the STA_REC_SUSWM TLV builder to
-determine whether the AP's NSTS count falls within the device's
-supported spatial-stream limit.
+Error/Warning ids grouped by kconfigs:
 
-Signed-off-by: Shengwei Lu <shengwei.lu@mediatek.com>
-Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- .../wireless/mediatek/mt76/mt7925/Makefile    |   2 +-
- .../net/wireless/mediatek/mt76/mt7925/ies.c   | 183 ++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7925/ies.h   |  31 +++
- 3 files changed, 215 insertions(+), 1 deletion(-)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/ies.c
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/ies.h
+recent_errors
+|-- arm-randconfig-r121-20260803
+|   `-- drivers-net-ethernet-airoha-airoha_eth.c:sparse:sparse:division-by-zero
+`-- um-randconfig-002-20260803
+    `-- drivers-iio-magnetometer-qmc6308.c:error:call-to-__compiletime_assert_NNN-declared-with-error-attribute:FIELD_PREP:value-too-large-for-the-field
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/Makefile b/drivers/net/wireless/mediatek/mt76/mt7925/Makefile
-index f9dcc0bba393..af62c775c3d6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/Makefile
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/Makefile
-@@ -4,7 +4,7 @@ obj-$(CONFIG_MT7925_COMMON) += mt7925-common.o
- obj-$(CONFIG_MT7925E) += mt7925e.o
- obj-$(CONFIG_MT7925U) += mt7925u.o
- 
--mt7925-common-y := mac.o mcu.o regd.o main.o init.o debugfs.o nan.o
-+mt7925-common-y := mac.o mcu.o regd.o main.o init.o debugfs.o nan.o ies.o
- mt7925-common-$(CONFIG_NL80211_TESTMODE) += testmode.o
- mt7925e-y := pci.o pci_mac.o pci_mcu.o
- mt7925u-y := usb.o
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/ies.c b/drivers/net/wireless/mediatek/mt76/mt7925/ies.c
-new file mode 100644
-index 000000000000..0eb7dc7665b3
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/ies.c
-@@ -0,0 +1,183 @@
-+// SPDX-License-Identifier: BSD-3-Clause-Clear
-+/* Copyright (C) 2026 MediaTek Inc. */
-+
-+#include <linux/ieee80211.h>
-+#include <net/cfg80211.h>
-+#include <net/mac80211.h>
-+#include "ies.h"
-+
-+u8 mt7928_ht_nsts_from_ies(const struct cfg80211_bss_ies *ies)
-+{
-+	const struct ieee80211_ht_cap *ht_cap;
-+	const struct element *elem;
-+	u8 nsts = 0, i, max_tx_streams;
-+
-+	elem = cfg80211_find_elem(WLAN_EID_HT_CAPABILITY,
-+				  ies->data, ies->len);
-+	if (!elem || elem->datalen < sizeof(*ht_cap))
-+		return 0;
-+
-+	ht_cap = (const void *)elem->data;
-+
-+	if ((ht_cap->mcs.tx_params & IEEE80211_HT_MCS_TX_RX_DIFF) &&
-+	    (ht_cap->mcs.tx_params & IEEE80211_HT_MCS_TX_DEFINED))
-+		max_tx_streams =
-+			((ht_cap->mcs.tx_params & IEEE80211_HT_MCS_TX_MAX_STREAMS_MASK)
-+				>> IEEE80211_HT_MCS_TX_MAX_STREAMS_SHIFT) + 1;
-+	else
-+		max_tx_streams = IEEE80211_HT_MCS_TX_MAX_STREAMS;
-+
-+	for (i = 0; i < max_tx_streams; i++) {
-+		if (ht_cap->mcs.rx_mask[i])
-+			nsts = i + 1;
-+	}
-+
-+	return nsts;
-+}
-+
-+u8 mt7928_vht_nsts_from_ies(const struct cfg80211_bss_ies *ies)
-+{
-+	const struct ieee80211_vht_cap *vht_cap;
-+	const struct element *elem;
-+	u16 tx_mcs_map;
-+	u8 nsts = 0, i;
-+
-+	elem = cfg80211_find_elem(WLAN_EID_VHT_CAPABILITY,
-+				  ies->data, ies->len);
-+	if (!elem || elem->datalen < sizeof(*vht_cap))
-+		return 0;
-+
-+	vht_cap = (const void *)elem->data;
-+	tx_mcs_map = le16_to_cpu(vht_cap->supp_mcs.tx_mcs_map);
-+
-+	for (i = 0; i < 8; i++) {
-+		if (((tx_mcs_map >> (2 * i)) & 0x3) != IEEE80211_VHT_MCS_NOT_SUPPORTED)
-+			nsts = i + 1;
-+	}
-+
-+	return nsts;
-+}
-+
-+u8 mt7928_he_nsts_from_ies(const struct cfg80211_bss_ies *ies)
-+{
-+	const struct ieee80211_he_cap_elem *he_cap;
-+	const struct ieee80211_he_mcs_nss_supp *mcs_nss;
-+	const struct element *elem;
-+	u8 mcs_nss_size;
-+	u16 tx_mcs_80;
-+	u8 nsts = 0, i;
-+
-+	elem = cfg80211_find_ext_elem(WLAN_EID_EXT_HE_CAPABILITY,
-+				      ies->data, ies->len);
-+
-+	if (!elem || elem->datalen < 1 + sizeof(*he_cap))
-+		return 0;
-+
-+	he_cap = (const void *)(elem->data + 1);
-+	mcs_nss_size = ieee80211_he_mcs_nss_size(he_cap);
-+
-+	if (elem->datalen < 1 + sizeof(*he_cap) + mcs_nss_size)
-+		return 0;
-+
-+	mcs_nss = (const void *)(he_cap + 1);
-+	tx_mcs_80 = le16_to_cpu(mcs_nss->tx_mcs_80);
-+
-+	for (i = 0; i < 8; i++) {
-+		if (((tx_mcs_80 >> (2 * i)) & 0x3) != IEEE80211_HE_MCS_NOT_SUPPORTED)
-+			nsts = i + 1;
-+	}
-+
-+	return nsts;
-+}
-+
-+u8 mt7928_eht_nsts_from_ies(const struct cfg80211_bss_ies *ies)
-+{
-+	const struct ieee80211_eht_cap_elem_fixed *eht_cap;
-+	const struct ieee80211_he_cap_elem *he_cap;
-+	const struct element *eht_elem, *he_elem;
-+	const u8 *mcs_nss_data;
-+	u8 mcs_nss_size;
-+	u8 nsts = 0, i;
-+
-+	eht_elem = cfg80211_find_ext_elem(WLAN_EID_EXT_EHT_CAPABILITY,
-+					  ies->data, ies->len);
-+	if (!eht_elem || eht_elem->datalen < 1 + sizeof(*eht_cap))
-+		return 0;
-+
-+	he_elem = cfg80211_find_ext_elem(WLAN_EID_EXT_HE_CAPABILITY,
-+					 ies->data, ies->len);
-+	if (!he_elem || he_elem->datalen < 1 + sizeof(*he_cap))
-+		return 0;
-+
-+	eht_cap = (const void *)(eht_elem->data + 1);
-+	he_cap = (const void *)(he_elem->data + 1);
-+
-+	mcs_nss_size = ieee80211_eht_mcs_nss_size(he_cap, eht_cap, true);
-+	if (eht_elem->datalen < 1 + sizeof(*eht_cap) + mcs_nss_size)
-+		return 0;
-+
-+	mcs_nss_data = (const u8 *)(eht_cap + 1);
-+
-+	for (i = 0; i < mcs_nss_size; i++)
-+		nsts = (mcs_nss_data[i] >> 4) & 0xf;
-+
-+	return nsts;
-+}
-+
-+void mt7928_get_bss_suswm_cap(const struct cfg80211_bss_ies *ies,
-+			      const struct ieee80211_link_sta *link_sta,
-+			      const struct ieee80211_supported_band *own_sband,
-+			      enum nl80211_iftype iftype,
-+			      struct mt7928_suswm_cap *cap)
-+{
-+	const struct ieee80211_sta_ht_cap *ht_cap = &link_sta->ht_cap;
-+	const struct ieee80211_sta_vht_cap *vht_cap = &link_sta->vht_cap;
-+	const struct ieee80211_sta_he_cap *he_cap = &link_sta->he_cap;
-+	const struct ieee80211_sta_eht_cap *eht_cap = &link_sta->eht_cap;
-+	const struct ieee80211_sta_vht_cap *own_vht_cap = &own_sband->vht_cap;
-+	const struct ieee80211_sta_he_cap *own_he_cap =
-+		ieee80211_get_he_iftype_cap(own_sband, iftype);
-+	const struct ieee80211_sta_eht_cap *own_eht_cap =
-+		ieee80211_get_eht_iftype_cap(own_sband, iftype);
-+
-+	cap->bfer_en = false;
-+	cap->bfee_en = false;
-+	cap->nsts = 0;
-+
-+	if (ht_cap->ht_supported)
-+		cap->nsts = mt7928_ht_nsts_from_ies(ies);
-+
-+	if (vht_cap->vht_supported) {
-+		if (vht_cap->cap & IEEE80211_VHT_CAP_SU_BEAMFORMER_CAPABLE)
-+			cap->bfer_en = true;
-+
-+		if (own_vht_cap->cap & IEEE80211_VHT_CAP_SU_BEAMFORMEE_CAPABLE)
-+			cap->bfee_en = true;
-+
-+		cap->nsts = mt7928_vht_nsts_from_ies(ies);
-+	}
-+
-+	if (he_cap->has_he && own_he_cap) {
-+		if (he_cap->he_cap_elem.phy_cap_info[3] &
-+		    IEEE80211_HE_PHY_CAP3_SU_BEAMFORMER)
-+			cap->bfer_en = true;
-+
-+		if (own_he_cap->he_cap_elem.phy_cap_info[4] &
-+		    IEEE80211_HE_PHY_CAP4_SU_BEAMFORMEE)
-+			cap->bfee_en = true;
-+
-+		cap->nsts = mt7928_he_nsts_from_ies(ies);
-+	}
-+
-+	if (eht_cap->has_eht && own_eht_cap) {
-+		if (eht_cap->eht_cap_elem.phy_cap_info[0] &
-+		    IEEE80211_EHT_PHY_CAP0_SU_BEAMFORMER)
-+			cap->bfer_en = true;
-+
-+		if (own_eht_cap->eht_cap_elem.phy_cap_info[0] &
-+		    IEEE80211_EHT_PHY_CAP0_SU_BEAMFORMEE)
-+			cap->bfee_en = true;
-+
-+		cap->nsts = mt7928_eht_nsts_from_ies(ies);
-+	}
-+}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/ies.h b/drivers/net/wireless/mediatek/mt76/mt7925/ies.h
-new file mode 100644
-index 000000000000..a1239f22ef54
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/ies.h
-@@ -0,0 +1,31 @@
-+/* SPDX-License-Identifier: BSD-3-Clause-Clear */
-+/* Copyright (C) 2026 MediaTek Inc. */
-+
-+#ifndef __MT7925_IES_H
-+#define __MT7925_IES_H
-+
-+#include <net/cfg80211.h>
-+#include <net/mac80211.h>
-+
-+#define MT_SU_SWM_BFER		BIT(0)
-+#define MT_SU_SWM_BFEE		BIT(1)
-+#define MT_SU_SWM_NSTS_MEET	BIT(2)
-+
-+struct mt7928_suswm_cap {
-+	bool bfee_en;
-+	bool bfer_en;
-+	u8 nsts;
-+};
-+
-+u8 mt7928_ht_nsts_from_ies(const struct cfg80211_bss_ies *ies);
-+u8 mt7928_vht_nsts_from_ies(const struct cfg80211_bss_ies *ies);
-+u8 mt7928_he_nsts_from_ies(const struct cfg80211_bss_ies *ies);
-+u8 mt7928_eht_nsts_from_ies(const struct cfg80211_bss_ies *ies);
-+
-+void mt7928_get_bss_suswm_cap(const struct cfg80211_bss_ies *ies,
-+			      const struct ieee80211_link_sta *link_sta,
-+			      const struct ieee80211_supported_band *own_sband,
-+			      enum nl80211_iftype iftype,
-+			      struct mt7928_suswm_cap *cap);
-+
-+#endif /* __MT7925_IES_H */
--- 
-2.45.2
+elapsed time: 726m
 
+configs tested: 100
+configs skipped: 1
+
+tested configs:
+alpha                            allnoconfig    gcc-16.1.0
+alpha                           allyesconfig    gcc-16.1.0
+alpha                              defconfig    gcc-16.1.0
+arc                             allmodconfig    gcc-16.1.0
+arc                             allyesconfig    gcc-16.1.0
+arc                  randconfig-001-20260804    gcc-15.2.0
+arc                  randconfig-002-20260804    gcc-8.5.0
+arm                  randconfig-001-20260804    gcc-10.5.0
+arm                  randconfig-002-20260804    gcc-15.2.0
+arm                  randconfig-003-20260804    clang-17
+arm                  randconfig-004-20260804    gcc-8.5.0
+arm64                randconfig-001-20260804    clang-24
+arm64                randconfig-002-20260804    gcc-9.5.0
+arm64                randconfig-003-20260804    gcc-11.5.0
+arm64                randconfig-004-20260804    gcc-9.5.0
+csky                            allmodconfig    gcc-16.1.0
+csky                 randconfig-001-20260804    gcc-9.5.0
+csky                 randconfig-002-20260804    gcc-11.5.0
+hexagon              randconfig-001-20260804    clang-24
+hexagon              randconfig-002-20260804    clang-24
+i386                            allmodconfig    gcc-14
+i386                buildonly-randconfig-001    gcc-14
+i386       buildonly-randconfig-001-20260804    clang-22
+i386       buildonly-randconfig-002-20260804    clang-22
+i386       buildonly-randconfig-003-20260804    clang-22
+i386       buildonly-randconfig-004-20260804    gcc-12
+i386       buildonly-randconfig-005-20260804    clang-22
+i386       buildonly-randconfig-006-20260804    gcc-14
+i386                 randconfig-001-20260804    gcc-14
+i386                 randconfig-002-20260804    gcc-14
+i386                 randconfig-003-20260804    gcc-14
+i386                 randconfig-004-20260804    gcc-14
+i386                 randconfig-005-20260804    gcc-14
+i386                 randconfig-006-20260804    clang-22
+i386                 randconfig-007-20260804    gcc-14
+i386                 randconfig-011-20260804    clang-22
+i386                 randconfig-012-20260804    gcc-14
+i386                 randconfig-013-20260804    clang-22
+i386                 randconfig-014-20260804    gcc-14
+i386                 randconfig-015-20260804    clang-22
+i386                 randconfig-016-20260804    gcc-13
+i386                 randconfig-017-20260804    clang-22
+loongarch                          defconfig    clang-24
+loongarch            randconfig-001-20260804    clang-24
+loongarch            randconfig-002-20260804    gcc-16.1.0
+nios2                           allmodconfig    gcc-11.5.0
+nios2                            allnoconfig    gcc-11.5.0
+nios2                randconfig-001-20260804    gcc-8.5.0
+nios2                randconfig-002-20260804    gcc-11.5.0
+parisc                          allmodconfig    gcc-16.1.0
+parisc                          allyesconfig    gcc-16.1.0
+parisc                             defconfig    gcc-16.1.0
+parisc               randconfig-001-20260804    gcc-8.5.0
+parisc               randconfig-002-20260804    gcc-8.5.0
+powerpc                      eiger_defconfig    clang-24
+powerpc              randconfig-001-20260804    clang-24
+powerpc              randconfig-002-20260804    gcc-11.5.0
+powerpc64            randconfig-001-20260804    gcc-8.5.0
+powerpc64            randconfig-002-20260804    gcc-8.5.0
+riscv                randconfig-002-20260804    gcc-13.4.0
+s390                 randconfig-001-20260804    clang-21
+s390                 randconfig-002-20260804    clang-18
+sh                                 defconfig    gcc-16.1.0
+sh                   randconfig-001-20260804    gcc-16.1.0
+sh                   randconfig-002-20260804    gcc-16.1.0
+sparc                randconfig-001-20260804    gcc-16.1.0
+sparc                randconfig-002-20260804    gcc-16.1.0
+sparc64              randconfig-001-20260804    clang-24
+sparc64              randconfig-002-20260804    clang-20
+um                   randconfig-001-20260804    gcc-14
+um                   randconfig-002-20260804    gcc-14
+x86_64              buildonly-randconfig-001    gcc-12
+x86_64     buildonly-randconfig-001-20260804    gcc-14
+x86_64     buildonly-randconfig-002-20260804    clang-22
+x86_64     buildonly-randconfig-003-20260804    gcc-14
+x86_64     buildonly-randconfig-004-20260804    gcc-14
+x86_64     buildonly-randconfig-005-20260804    clang-22
+x86_64     buildonly-randconfig-006-20260804    clang-22
+x86_64                                 kexec    clang-22
+x86_64               randconfig-001-20260804    gcc-14
+x86_64               randconfig-002-20260804    gcc-13
+x86_64               randconfig-003-20260804    clang-22
+x86_64               randconfig-004-20260804    clang-22
+x86_64               randconfig-005-20260804    gcc-14
+x86_64               randconfig-006-20260804    clang-22
+x86_64               randconfig-011-20260804    clang-22
+x86_64               randconfig-012-20260804    gcc-14
+x86_64               randconfig-013-20260804    clang-22
+x86_64               randconfig-014-20260804    clang-22
+x86_64               randconfig-015-20260804    clang-22
+x86_64               randconfig-016-20260804    clang-22
+x86_64               randconfig-071-20260804    gcc-14
+x86_64               randconfig-072-20260804    gcc-14
+x86_64               randconfig-073-20260804    gcc-14
+x86_64               randconfig-074-20260804    gcc-12
+x86_64               randconfig-075-20260804    gcc-14
+x86_64               randconfig-076-20260804    clang-22
+x86_64                          rhel-9.4-bpf    gcc-14
+xtensa               randconfig-001-20260804    gcc-8.5.0
+xtensa               randconfig-002-20260804    gcc-14.3.0
+
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
