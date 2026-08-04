@@ -4,79 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D45F1C55184
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Aug 2026 22:36:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1AFFC55182
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 01:40:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t/nq0L+HCBu/VVlNCjhE/XdgRdWy3/vgJ4mB7nFnRLo=; b=xe/dMjTFdRqlCV6kdIur8mk4I3
-	yhhSo822jJyEZVZTj74uoTgLKpqVAKHFjVAtch62aK2iZuMNULOhnCWAZwPa4UDa/4v7wTUaRHqMo
-	NLjyvSJgtO1QFQIlxJr9XO47IAZA1kXeYfN63gib5aBdzqY+jGg4H6IEGYI/l7/NJCBOMBMgRs+Mz
-	Ir2Ls4wUQUtvmTZ+oNxyMIdpZkwcENaj+dVcVviL3D/IULaHN1nJPMJapWdVxNQwtbtc3LD5jqTe+
-	k6uVJyaxvwisruJd1pvEZrhesqxi1pO9FH3zey0ta0pqH0dVzeytE2e7D7cKKu11usUDfm+dbCk8T
-	vOAUJ5fw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Oic1r/RdJs0p25eYXITWGXQfTIlTGgREqOaY42+fH1s=; b=Ug2XoT6w2ed+uerRvtXQoK8IP7
+	sBjxxm8EKIsKyyYHcSftaaPulehuw843J4DQL70JvrOPdvVDI4dm3yXeftNj1yGqautVWCD3+3rfs
+	eMxRAyVPG5iVnngAgKYOHPhVbRwp5dOTIHyDbEcvQQBWN6n5g2c05dIQT5vRzLeERoTQUNNXqzZ9M
+	qvD8z7sMaHzHhKHdglnhFWLmFCaRWiQ3rTXJ/UJqhH8mBVj0NQ3NMzf1EwgnGVLVdgkYtPnClqZgv
+	aagN2Mc1YAYr8Od7EgIfnPQ+BesfAQGZgYyS2+cOcJeo90ExDZy1HPTl+cGWYpfxHn4fRBEXW4V0i
+	hCKjQC/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wr1HB-00000000c4c-1ALz;
-	Mon, 03 Aug 2026 22:36:53 +0000
-Received: from mgamail.intel.com ([192.198.163.18])
+	id 1wr49G-00000000nQu-30XV;
+	Tue, 04 Aug 2026 01:40:54 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wr1H8-00000000c4H-0Atb
-	for linux-mediatek@lists.infradead.org;
-	Mon, 03 Aug 2026 22:36:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1785796610; x=1817332610;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=SMhjVdU2ZDAmJkhf9Tg7h3l0ADU6HH3S2XK+03kIQNw=;
-  b=Nzd5nc3R+CaOSqWaJ3toWoRZ01lsZ16tuIRMjDEmPTcUOk9Nh9rFKMHP
-   tVpjuS10PAN3ZFjnBeScMIl8TstTzhCw32TrGRnrOy65KFLyWkX7X1SjX
-   caO+gHNLNfJ3zsoJ88RbWN4VHTIVnvVkXkWKwkw+d4hDHBq5rwtSqNtTC
-   Ma161qZdxorOPSm03xrv4SwrIg87JJY9BpsYeyIhNNlS1jEtQ4ycqSJxL
-   gD9xvHGczSSFJ/MUs+P8EiA7ymQ48gwpHHB+BGn8tei2A2vgC1tMCl74i
-   RSZ9DsFpOvCD6uafMyx8Q5dVqIv7YNpbhvHYxjpUNBDY3RxK670hOkVNa
-   w==;
-X-CSE-ConnectionGUID: c8+Xr+oPQEe75GlrQDSWJA==
-X-CSE-MsgGUID: h2VYf7ETT36wWlLtrMvrqQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11864"; a="85474329"
-X-IronPort-AV: E=Sophos;i="6.25,203,1779174000"; 
-   d="scan'208";a="85474329"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Aug 2026 15:36:49 -0700
-X-CSE-ConnectionGUID: Mzxjk8tvTWqrXS+MdLLxUA==
-X-CSE-MsgGUID: /gGtqyWdQXaebCJpfJmvfw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,203,1779174000"; 
-   d="scan'208";a="263324267"
-Received: from lkp-server01.sh.intel.com (HELO 6eda058d650d) ([10.239.97.150])
-  by fmviesa004.fm.intel.com with ESMTP; 03 Aug 2026 15:36:47 -0700
-Received: from kbuild by 6eda058d650d with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1wr1H2-000000008AD-0x9z;
-	Mon, 03 Aug 2026 22:36:44 +0000
-Date: Tue, 4 Aug 2026 06:36:03 +0800
-From: kernel test robot <lkp@intel.com>
-To: JB Tsai <jb.tsai@mediatek.com>, nbd@nbd.name, lorenzo@kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, Sean.Wang@mediatek.com,
-	Quan.Zhou@mediatek.com, Ryder.Lee@mediatek.com,
-	litien.chang@mediatek.com, Charlie-cy.Wu@mediatek.com,
-	jb.tsai@mediatek.com
-Subject: Re: [PATCH] wifi: mt76: connac3: implement 6GHz power type detection
- and dynamic CLC filtering
-Message-ID: <202608040641.uKGpvScD-lkp@intel.com>
-References: <20260724085103.3155942-1-jb.tsai@mediatek.com>
+	id 1wr49E-00000000nQb-3jG3;
+	Tue, 04 Aug 2026 01:40:53 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id B780760A59;
+	Tue,  4 Aug 2026 01:40:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4C4031F00A3A;
+	Tue,  4 Aug 2026 01:40:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1785807651;
+	bh=Oic1r/RdJs0p25eYXITWGXQfTIlTGgREqOaY42+fH1s=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=hG/L8wKAeNwmgVRj+GI45ZUdZMnvGSE3EOLe6ya7z5Ixxo3CHf2b8ZgXsa7BbUzcS
+	 7co2spdP6CcXFrOSI/kBi6x+3iNMR1hljxbHS7VwJpUOsKi9R+rzt2SwGZC+pnCkiE
+	 TkZb2VVT+eiwwKTfVqAYiCz+azb6exQObopo8xQ2wbczVTw5K6X21DIhkItLnY4eon
+	 ZU//XShakHIQJcxxs7eMeGrS44Krc/Gu9Z1+RfB97+PsuFfncxfQYNMvx1u51LKQM5
+	 GVC8QOB9u/XHGNiq73al5iynUFtPC6Uvb1DnCCIWTBt/NhN+pElxQPkY+8fc5gO05R
+	 lXcuyMPPp82Fw==
+Date: Mon, 3 Aug 2026 18:40:47 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Brian Masney <bmasney@redhat.com>
+Cc: Akari Tsuyukusa <akkun11.open@gmail.com>, Michael Turquette
+ <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Yassine Oudjana
+ <y.oudjana@protonmail.com>, Richard Cochran <richardcochran@gmail.com>,
+ Laura Nao <laura.nao@collabora.com>, "=?UTF-8?B?TsOtY29sYXM=?= F. R. A.
+ Prado" <nfraprado@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>, Danilo
+ Krummrich <dakr@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, "Uwe
+ =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= (The Capable Hub)"
+ <u.kleine-koenig@baylibre.com>, Nicolas Frattaroli
+ <nicolas.frattaroli@collabora.com>, Takashi Sakamoto
+ <o-takashi@sakamocchi.jp>, Haotian Zhang <vulab@iscas.ac.cn>, Kees Cook
+ <kees@kernel.org>, Miles Chen <miles.chen@mediatek.com>, Daniel Golle
+ <daniel@makrotopia.org>, Sam Shih <sam.shih@mediatek.com>, "open
+ list:COMMON CLK FRAMEWORK" <linux-clk@vger.kernel.org>, open list
+ <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "open list:PTP HARDWARE
+ CLOCK SUPPORT:Keyword:(?:b|_)ptp(?:b|_)" <netdev@vger.kernel.org>,
+ stable@vger.kernel.org
+Subject: Re: [PATCH 00/32] clk: mediatek: Migrate to common probe/remove
+ helpers and fix memory leaks
+Message-ID: <20260803184047.4a8ec29a@kernel.org>
+In-Reply-To: <anD518s51UBvJHj4@redhat.com>
+References: <20260803141659.559129-1-akkun11.open@gmail.com>
+	<20260803125034.49055f62@kernel.org>
+	<anD518s51UBvJHj4@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260724085103.3155942-1-jb.tsai@mediatek.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_153650_116830_FFA6323A 
-X-CRM114-Status: GOOD (  11.15  )
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,66 +89,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi JB,
+On Mon, 3 Aug 2026 16:28:07 -0400 Brian Masney wrote:
+> Hi Jakub,
+> 
+> On Mon, Aug 03, 2026 at 12:50:34PM -0700, Jakub Kicinski wrote:
+> > On Mon,  3 Aug 2026 23:16:27 +0900 Akari Tsuyukusa wrote:  
+> > > This series migrates most MediaTek clock drivers to the common
+> > > probe/remove helpers provided by the MTK clock framework.  
+> > 
+> > Why are you CCing netdev on this? None of it touches networking  
+> 
+> I saw that message from you about two different mediatek patch series
+> from different submitters. This series has 38 files, all under
+> drivers/clk/mediatek/. If I run get_maintainers.pl on each file path
+> individuall like this:
+> 
+>   $ cat filelist | awk '{print $1}' | \
+>   	xargs -iblah echo ./scripts/get_maintainer.pl blah
+> 
+> Then netdev list doesn't show up.
+> 
+> However, if I look at it as a whole, then it shows up:
+> 
+>     $ b4 am 20260803141659.559129-1-akkun11.open@gmail.com
+>     $ ./scripts/get_maintainer.pl \
+>     	./20260803_akkun11_open_clk_mediatek_migrate_to_common_probe_remove_helpers_and_fix_memory_leaks.mbx
+> 
+>     ...
+>     netdev@vger.kernel.org (open list:PTP HARDWARE CLOCK SUPPORT:Keyword:(?:\b|_)ptp(?:\b|_))
+> 
+> I think it's matching on this entry in MAINTAINERS:
+> 
+> PTP HARDWARE CLOCK SUPPORT
+> M:      Richard Cochran <richardcochran@gmail.com>
+> L:      netdev@vger.kernel.org
+> S:      Maintained
+> W:      http://linuxptp.sourceforge.net/
+> F:      Documentation/ABI/testing/sysfs-ptp
+> F:      Documentation/driver-api/ptp.rst
+> F:      drivers/net/phy/dp83640*
+> F:      drivers/ptp/*
+> F:      include/linux/ptp_cl*
+> K:      (?:\b|_)ptp(?:\b|_)
+> 
+> I think it's the K: for the ptp that's matching.
+> 
+> $ grep ptp 20260803_akkun11_open_clk_mediatek_migrate_to_common_probe_remove_helpers_and_fix_memory_leaks.mbx
+> -static const struct mtk_pll_data ptp_plls[] = {
+> -	PLL(CLK_PTPPLL, "ptppll", PTPPLL_CON0, PTPPLL_CON0, 0, 0, PLL_AO,
+> +static const struct mtk_clk_desc ptp_plls = {
+> +		PLL(CLK_PTPPLL, "ptppll", PTPPLL_CON0, PTPPLL_CON0, 0, 0, PLL_AO,
+> 
 
-kernel test robot noticed the following build errors:
+I see, thanks for digging thru this!
 
-[auto build test ERROR on wireless-next/main]
-[also build test ERROR on next-20260803]
-[cannot apply to wireless/main linus/master v7.2-rc6]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/JB-Tsai/wifi-mt76-connac3-implement-6GHz-power-type-detection-and-dynamic-CLC-filtering/20260803-215116
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
-patch link:    https://lore.kernel.org/r/20260724085103.3155942-1-jb.tsai%40mediatek.com
-patch subject: [PATCH] wifi: mt76: connac3: implement 6GHz power type detection and dynamic CLC filtering
-config: nios2-allmodconfig (https://download.01.org/0day-ci/archive/20260804/202608040641.uKGpvScD-lkp@intel.com/config)
-compiler: nios2-linux-gcc (GCC) 11.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260804/202608040641.uKGpvScD-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202608040641.uKGpvScD-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   drivers/net/wireless/mediatek/mt76/mt7925/main.c: In function 'mt7925_set_sar_specs':
->> drivers/net/wireless/mediatek/mt76/mt7925/main.c:1986:15: error: too few arguments to function 'mt7925_mcu_set_clc'
-    1986 |         err = mt7925_mcu_set_clc(dev, dev->mt76.alpha2,
-         |               ^~~~~~~~~~~~~~~~~~
-   In file included from drivers/net/wireless/mediatek/mt76/mt7925/main.c:10:
-   drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h:387:5: note: declared here
-     387 | int mt7925_mcu_set_clc(struct mt792x_dev *dev, u8 *alpha2,
-         |     ^~~~~~~~~~~~~~~~~~
-
-
-vim +/mt7925_mcu_set_clc +1986 drivers/net/wireless/mediatek/mt76/mt7925/main.c
-
-c948b5da6bbec74 Deren Wu    2023-09-18  1978  
-c948b5da6bbec74 Deren Wu    2023-09-18  1979  static int mt7925_set_sar_specs(struct ieee80211_hw *hw,
-c948b5da6bbec74 Deren Wu    2023-09-18  1980  				const struct cfg80211_sar_specs *sar)
-c948b5da6bbec74 Deren Wu    2023-09-18  1981  {
-c948b5da6bbec74 Deren Wu    2023-09-18  1982  	struct mt792x_dev *dev = mt792x_hw_dev(hw);
-c948b5da6bbec74 Deren Wu    2023-09-18  1983  	int err;
-c948b5da6bbec74 Deren Wu    2023-09-18  1984  
-c948b5da6bbec74 Deren Wu    2023-09-18  1985  	mt792x_mutex_acquire(dev);
-8a27c5c764040fb Jared.Huang 2026-06-17 @1986  	err = mt7925_mcu_set_clc(dev, dev->mt76.alpha2,
-8a27c5c764040fb Jared.Huang 2026-06-17  1987  			 dev->country_ie_env);
-8a27c5c764040fb Jared.Huang 2026-06-17  1988  	if (err < 0)
-8a27c5c764040fb Jared.Huang 2026-06-17  1989  		goto out;
-8a27c5c764040fb Jared.Huang 2026-06-17  1990  
-c948b5da6bbec74 Deren Wu    2023-09-18  1991  	err = mt7925_set_tx_sar_pwr(hw, sar);
-c948b5da6bbec74 Deren Wu    2023-09-18  1992  
-8a27c5c764040fb Jared.Huang 2026-06-17  1993  out:
-8a27c5c764040fb Jared.Huang 2026-06-17  1994  	mt792x_mutex_release(dev);
-c948b5da6bbec74 Deren Wu    2023-09-18  1995  	return err;
-c948b5da6bbec74 Deren Wu    2023-09-18  1996  }
-c948b5da6bbec74 Deren Wu    2023-09-18  1997  
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Patchwork matching rules must be missing the PTP side because none of
+the patches end up assigned to netdev. No big deal but going forward
+I think you can drop this extra CC.
 
