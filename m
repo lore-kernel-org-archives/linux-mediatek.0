@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFCA1C55182
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 02:08:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCC6FC55184
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 02:09:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U2EK07+wqnSMzescspEC9qsT2233v6Xmazp/HC0ovbI=; b=PDfWBCGxSmm1pyp3QyIZPKkLjo
-	X+IbUyAuuCifvP8TrtuL8ykIp4wzvZ2J0iwoJX/Y/dZrWVAcY+gXsxasm1Ec3BXFsfRRm7VVOPf4t
-	wb3UAuK9X2JFRujxgoVqYJ1MYLpZWioHt/TvwzVCKccQnSq/Rz0joi9h1bv191SD+C6VdhU77NxbQ
-	zUYM4xXw00nx2Q1opqMAl0b+tOcc6fzErrf/z7hjErMLmFEuMur8BCCVIousfJuAIDtyO2l3uFS12
-	yyTtqQ2M9v1dcooUq9h/QWqUi6R+Xy899JJ8Kw4HhFZx/SfUGYj62K/1jN9rPYZKlamthrF6dyQlj
-	8gyEKMtA==;
+	bh=aoFvMGhDfDOW3E0MWAosEdNVj/krmvIXG4EI2giGr74=; b=AFm3P7Prm6RxNtuSHXIdvWuzbu
+	7JCJq1B2p8btYMNslbHz0bHtvY1OkkxLNpN5T4g38foU97UYwAIT1P3LYX/tY+ReTq7tZ2e0dSNRP
+	GWy9yiE772tb4FSoEjpvswjEWcFpyMSRpPsLf5w9fB82OnQnxNSVJm4f7fr6B5dC+DQ9JthhA/OGq
+	or8630mMlexvYGQcoOVmHtzou+ZZh0hQNqQ1MJx1RZUuIr800dxwf3Sx6Gei5Nca2OyE93U/HTYKX
+	V/2jjsiVnnq4T/NFarKWRfH4lLq7aY59JJBLDJDlvW4c4Y7+3dP/gWxzoNltdYJSkLEWzq/QNiikF
+	IGIrBULw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wr4aB-00000000obc-2nXs;
-	Tue, 04 Aug 2026 02:08:43 +0000
+	id 1wr4bG-00000000ojS-3iMg;
+	Tue, 04 Aug 2026 02:09:50 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wr4a8-00000000oaV-2iP8;
-	Tue, 04 Aug 2026 02:08:41 +0000
+	id 1wr4bD-00000000oij-3y2a;
+	Tue, 04 Aug 2026 02:09:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=U2EK07+wqnSMzescspEC9qsT2233v6Xmazp/HC0ovbI=; b=hysqWGGqjQ64vonaJgoLWb0oEB
-	rPgAjIo1dk2UsVdsLFuox1nd/XEI2HqSWifXpDZUEpuYBDU9PLd18FApx1m/exERlbbBZ9Sj/+lX5
-	bVSBi/u5JCsCQB8CcSpoHAMSCT0zAhN8+zp5Wzm/dxgI/nCRtxYQ6jupp6hekYPKCz9g=;
+	bh=aoFvMGhDfDOW3E0MWAosEdNVj/krmvIXG4EI2giGr74=; b=RbyfqlqHrxEumvBY/2y7FRqbcl
+	pAYtP/nvcihbG9J88Ay7b7meG19LkAVtrDkZtk2kOflzK/VAfb0Hd/N86Q5IKWdW6GeAYd0ddSzVT
+	WuqgusIf6vUidQ6HV9ohD3M1u2kA0xg7fi3ZjlGH8jqUPKiI3hNwHHmZYxm3/HyKgeVQ=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1wr4Zg-00FtJQ-3B; Tue, 04 Aug 2026 04:08:12 +0200
-Date: Tue, 4 Aug 2026 04:08:12 +0200
+	id 1wr4ay-00FtKw-Ek; Tue, 04 Aug 2026 04:09:32 +0200
+Date: Tue, 4 Aug 2026 04:09:32 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Daniel Golle <daniel@makrotopia.org>
 Cc: "Chester A. Unal" <chester.a.unal@arinc9.com>,
@@ -56,18 +56,18 @@ Cc: "Chester A. Unal" <chester.a.unal@arinc9.com>,
 	Landen Chao <Landen.Chao@mediatek.com>, netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net v2 1/5] net: pcs: mtk-lynxi: check regmap reads in
- mtk_pcs_lynxi_get_state()
-Message-ID: <b2f3f283-90f0-458f-ad0e-1745cf38b008@lunn.ch>
+Subject: Re: [PATCH net v2 5/5] net: dsa: mt7530: serialize the regmap IRQ
+ chip like every other user
+Message-ID: <33c097a2-6b88-4b43-b378-c9c90988c9b9@lunn.ch>
 References: <cover.1785368701.git.daniel@makrotopia.org>
- <b58d5d99dddd67e35a6f14a14a6ad63d8b3fbadc.1785368701.git.daniel@makrotopia.org>
+ <b28df01d04c0e50c3d44ca2f29b12260bc32072d.1785368701.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <b58d5d99dddd67e35a6f14a14a6ad63d8b3fbadc.1785368701.git.daniel@makrotopia.org>
+In-Reply-To: <b28df01d04c0e50c3d44ca2f29b12260bc32072d.1785368701.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260803_190840_702892_5DF893E4 
-X-CRM114-Status: GOOD (  10.49  )
+X-CRM114-CacheID: sfid-20260803_190947_982293_151FFC5D 
+X-CRM114-Status: GOOD (  19.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,15 +82,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 30, 2026 at 01:14:38AM +0100, Daniel Golle wrote:
-> mtk_pcs_lynxi_get_state() ignores regmap_read()'s return value; a
-> failed read leaves bm and adv holding uninitialized stack values
-> which are then decoded into the reported link state. The regmaps
-> backing the MT7531 SGMII PCS instances sit on an MDIO bus where
-> reads can fail. Check both reads and leave the state untouched on
-> error.
+On Thu, Jul 30, 2026 at 01:15:06AM +0100, Daniel Golle wrote:
+> The switch register regmap is created with .disable_locking = true;
+> every other user in this driver calls mt7530_mutex_lock()/unlock()
+> around it, which takes priv->bus->mdio_lock, since the underlying
+> mt7530_regmap_read()/write() issue raw, unserialized bus->read()/
+> write() MDIO transactions.
 > 
-> Fixes: 4765a9722e09 ("net: pcs: add driver for MediaTek SGMII PCS")
+> mt7530_setup_irq() hands this same unlocked regmap straight to
+> devm_regmap_add_irq_chip_fwnode(), whose threaded IRQ handler then
+> calls regmap_read()/regmap_update_bits() on it without ever calling
+> mt7530_mutex_lock(). An interrupt firing while another thread is
+> mid-transaction on the same regmap (e.g. a paged register access, or
+> an indirect PHY access) can interleave with the IRQ handler's own
+> paged access and corrupt page selection on either side.
+> 
+> Use struct regmap_irq_chip's handle_mask_sync hook to call
+> mt7530_mutex_lock()/unlock() around the mask register write regmap-irq
+> issues whenever a consumer of one of the mapped sub-IRQs enables,
+> disables, requests or frees its line. This needs a per-device copy of
+> mt7530_regmap_irq_chip, since devm_regmap_add_irq_chip_fwnode() keeps
+> a pointer to it rather than copying it.
+> 
+> handle_pre_irq/handle_post_irq, which would additionally cover the
+> status read and ack write the threaded handler does directly, bracket
+> the whole handler including its handle_nested_irq() calls. Lockdep
+> caught this on hardware: those calls reach phy_interrupt() for the
+> per-port PHY IRQ lines mapped through this chip, which takes
+> phydev->lock, while phy_attach_direct() and this driver's own indirect
+> PHY access already establish the opposite order (phydev->lock, then
+> priv->bus->mdio_lock) elsewhere. Using them here would close that
+> cycle, so they are not used.
+> 
+> regmap_irq_sync_unlock() also has its own init_ack_masked path, used
+> by this chip, which unconditionally does its own regmap_write() to ack
+> currently-masked IRQs; that path has no per-driver hook. Together with
+> the threaded handler's own status read and ack write, these stay
+> unprotected -- a narrower, harder-to-hit gap than the recurring mask
+> sync above -- and will be closed once the switch regmap moves to
+> regmap's own locking in the driver-wide register access cleanup.
+> 
+> Fixes: 254f6b272e3b ("dsa: mt7530: Utilize REGMAP_IRQ for interrupt handling")
 > Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
 Reviewed-by: Andrew Lunn <andrew@lunn.ch>
