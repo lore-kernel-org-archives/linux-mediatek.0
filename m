@@ -4,99 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AC77C55822
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Aug 2026 20:19:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BF0FC55ABA
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2026 00:33:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hBR0k3B+Ox56qcPWJ0TM79yte8w4B4AOdAQPCwDKKzE=; b=HioU1WH8ZnXFMDumSgBOiB4JM8
-	UwdkIeWA4T6wuk2G6k3TQwX0qtkANDi5aX1FgbhPRqO4Qo/fOMv+yuuOhjop/VS/uE8Rg7kN+sD40
-	TxydoQIhljGGtjuXlXugMCwL9QLj/1ilbZaLI7aE8bYOjMstEzKFLeRRKCiO3R0m7KprJspEIaZqO
-	NY6nxgDkmY30BPsszEOyWudF7Ibcy/Yt+NOb9n1/2cBQPt9WPOyCtwJBJ85m+P0mMR5U0NnPSZoiL
-	auBAugdWLgd/h93VpT8Td/rHVlwBkGezJCkjzAQPntt/i65jr5ZFBGm2E5FTg3ddnHIHyvms31yfm
-	ZD3Cjfkw==;
+	bh=jf/xVNbWPols23hslUUwD7fcUT/RrrsqrpMbZwK78iA=; b=ZqDLiLgRmr3jVjHdksPHbL/Nbr
+	7hiJIZsdZCy+YkWUn6hT+LaqF2sO+xCFpRB4DA6iySm7Shwe68C+/aASjW3UkOqJ30tZhr+JEgMHT
+	CEOkCBSm7ZV47ePoRI9Q2gR7HfP+uYVPWrUZTlcW3Yn8Nt692F/U9U/rMRl3HKRH+kfgNx/8OAUJI
+	0dOSjQft4tvWhiUPJ6MMrXvHRDSkmcr8V9alR0FXiTK6Y/yw1PKTnLsCsIlq1lN/d7J5JaOFZG5gS
+	J6bITmiXcwu1wDTY+BHMPo4p6XPl+Q2r83rNs9G79FhsTItbPonrynGGNmxCReai3ajfm7YELw/xe
+	AxiTqN2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrLbx-00000002lGt-2ubG;
-	Tue, 04 Aug 2026 20:19:41 +0000
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+	id 1wrPZm-00000002yXj-3tgO;
+	Wed, 05 Aug 2026 00:33:42 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrLbt-00000002lG3-3ysx
-	for linux-mediatek@lists.infradead.org;
-	Tue, 04 Aug 2026 20:19:40 +0000
-Received: by mail-pg1-x529.google.com with SMTP id 41be03b00d2f7-ca12086c06eso161294a12.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 04 Aug 2026 13:19:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785874777; x=1786479577; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=hBR0k3B+Ox56qcPWJ0TM79yte8w4B4AOdAQPCwDKKzE=;
-        b=Gv+JdJHcnukypVbvVlicUdJh75+jcZFwuCGcUAet2ZJKnN9W6GdrVwq9Zh8ksaU9mB
-         /8+A5VDkDS1b/WM/lAqK9JV63nqcWT0YAdf47gVseE0EZaSix/e9XBcGQb+q7WO7zX+Y
-         MReJP+vrCVMt6ndEAU28HGgRATCgZRvT065SKnPQSCOdzSwGrNx7ynVeOgyi5T+paRgE
-         x9G6C3+YsC1Dk7GJJey7jn8nvrnfF7L2ozw+4M9vjCYsJUWPQbC6kUN+wyxwnht29Prq
-         WKadNlCzjOpoO0P4BZyKWbLukoYIodarXnFHJZ1Zpa6dekXu10fyftzEvnRxxYmqEDeH
-         zdtg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785874777; x=1786479577;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=hBR0k3B+Ox56qcPWJ0TM79yte8w4B4AOdAQPCwDKKzE=;
-        b=JONbSiDp9ToXSHFlhROZqACKmy6cSWkj/ySCmLnUAh2lV/CCJo2pHVFDQy/Hzvs9oE
-         sF+K9CM7B/2PwesUzuGEcnXXDNRCyqasE38Oqi0E86W6tf+8/CLKxUgmIFUrXoVIPYgZ
-         87ClXcGa0ary0k2mUmWif65Us9rnSy+rWNq9TtJsxhhbvSIFkKrlHFUhX+B1jF1jl5Yv
-         FVmSEMMrxPF4I+X0MggVz6ShzeL+BwtcGj5LVK9bp9879KvAXv9NRbkdDizk54yrRXei
-         206+HlAehyz5h6O/9tYNd/nNJq+CnIBb4177qmRM0LqstQ3lrRoqlredYU8ACfO4Umkh
-         flnQ==
-X-Forwarded-Encrypted: i=1; AHgh+RrlSZXrqGNlTRdr8f/O0sjBvdQfKvkbw3Rn/a8wRuxcMoTFob9Avh6qMO3TAStnTEO4EfrAEQccD9Qhipdjjg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YylLPA/751cnKMYBaMJvkBvW/WZ9oJpQ1fS2k4zmbgkiJVGxcT8
-	6vm5kOkYp4lOE+IQ6tt3Cax8S153tz+IOInsQKsQ/v0GEOg8Re7xC9KGTQ3xOvxfCHE=
-X-Gm-Gg: AR+sD12dB6hLQB3VeDkPpncZEegO9YKcOX4yuT4PTQx+143AtibH9pnCB4YzVJKzhjn
-	i+ujj6TSBEVXSwlHN/RpnIolkBAbknaRU/KIHa5UsnxJI35S7+LjIeTVxM9tgpLL5A6SUHSyQz7
-	STLy0cbEKgy5PVMsJVrnIRFsQXsUzqU6RJVu0TqIlHwP+GOxvNp8DtsHMVQTtvSeh/zPTmPKX+y
-	c9wBm5mqo+m/W8w4ngnyX6ThWNs7qXnEQVARurcVoYVNoYAS3niamh6f+deNIaWTLgZ1V+oRdvX
-	GMjAiaj2N7J4hB9Fzj4g25gs0imPAevqW05dWgmz6S5d1mVVFkIG/5fbFpeFNFVgdZM8ImI2cS3
-	Yd5vWa0Pg9vevaBVVRWekgR47zqmJQGWgBJv+WNp8nVI9xg98b1VbEN69r1s+rGBCSkdJ2S3UmL
-	cdsjsj4xiBo4lZHL/lVNJ4TAxj2dvxGDBddIauNvlooDg9KnqlsNBEa1mLfUSvHvXZ0KFbQbo4e
-	GjvS2+C71nB
-X-Received: by 2002:a05:6a20:d529:b0:3b1:cce5:9140 with SMTP id adf61e73a8af0-3cb85f4a5b8mr1402930637.33.1785874776947;
-        Tue, 04 Aug 2026 13:19:36 -0700 (PDT)
-Received: from localhost.localdomain ([103.179.230.122])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-315863b761asm12466072eec.1.2026.08.04.13.19.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 04 Aug 2026 13:19:36 -0700 (PDT)
-From: Sreeraj S Kurup <sreekuttan2156239@gmail.com>
+	id 1wrPZm-00000002yXF-02Gj;
+	Wed, 05 Aug 2026 00:33:42 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id E5FCA40D87;
+	Wed,  5 Aug 2026 00:33:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A8461F000E9;
+	Wed,  5 Aug 2026 00:33:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1785890020;
+	bh=jf/xVNbWPols23hslUUwD7fcUT/RrrsqrpMbZwK78iA=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=ZsAE/KR5jsl+73ewpPJ90yFlmGYeO7a/wU07gbrHhMBmdf2F7ePh3+D6jz4/Yvg+N
+	 675vAD3SbnXCak/e6mSmhMiirV3WDfNQEA2LDct1FWFIuqG+MNwHTbruXgTZbbWtc6
+	 MjuMfKZ/wyvQ0Kd+VFExQUnJyMNZ31FnnYVilc6wfpN8Y6QapN+M/XcDG3My7JaY3S
+	 f0NwSVZ50X7wH3OHI4nJI1uCw5K+6hRv/gDBJBV/KvkvspNC0xGWkbGohBhhbGBZQv
+	 yXlRidHfTfUNxbqlME8YG9BJw8RxuHD6fKpCPpEJhRP3jfYi0XLE6MtCpYBITsXgTI
+	 lxGgiv42yPQkQ==
+Date: Wed, 5 Aug 2026 01:33:36 +0100
+From: Jonathan Cameron <jic23@kernel.org>
 To: kernel test robot <lkp@intel.com>
-Cc: ryder.lee@mediatek.com,
-	lpieralisi@kernel.org,
-	kwilczynski@kernel.org,
-	mani@kernel.org,
-	bhelgaas@google.com,
-	oe-kbuild-all@lists.linux.dev,
-	robh@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] PCI: mediatek-gen3: Fix 64-bit type truncation in mtk_pcie_set_trans_table()
-Date: Tue,  4 Aug 2026 20:18:37 +0000
-Message-ID: <20260804201837.2427-1-sreekuttan2156239@gmail.com>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <202608050123.GZC7hug7-lkp@intel.com>
-References: <202608050123.GZC7hug7-lkp@intel.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>, Linux Memory Management List
+ <linux-mm@kvack.org>, linux-arm-kernel@lists.infradead.org,
+ linux-iio@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, Mark Brown <broonie@kernel.org>
+Subject: Re: [linux-next:master] BUILD REGRESSION
+ 9a4cdc958dd79fc6c3b20b51a10debec6ca09fec
+Message-ID: <20260805013336.4bd8a298@jic23-huawei>
+In-Reply-To: <202608041404.bOHh2XuT-lkp@intel.com>
+References: <202608041404.bOHh2XuT-lkp@intel.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260804_131937_985561_DD66BBB1 
-X-CRM114-Status: UNSURE (   7.42  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,11 +71,141 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Tue, 04 Aug 2026 14:24:23 +0800
+kernel test robot <lkp@intel.com> wrote:
 
-Thanks for the report. This build error was caused by an invalid function call in v1 and has been fixed in v3:
-https://lore.kernel.org/all/20260728122810.3475-1-sreekuttan2156239@gmail.com/
+> tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
+> branch HEAD: 9a4cdc958dd79fc6c3b20b51a10debec6ca09fec  Add linux-next specific files for 20260803
+> 
+> Unverified Error/Warning (likely false positive, kindly check if interested):
+> 
+>     https://lore.kernel.org/oe-kbuild/202608040800.45L57Mym-lkp@intel.com
+> 
+>     drivers/iio/magnetometer/qmc6308.c:402:7: error: call to '__compiletime_assert_472' declared with 'error' attribute: FIELD_PREP: value too large for the field
 
-Thanks,
-Sreeraj
+The line in question is setting a 2 bit field (GENMASK(3, 2)) to 0.
+No idea what is triggering that warning.
+
+>     drivers/net/ethernet/airoha/airoha_eth.c:3470:25: sparse: sparse: division by zero
+> 
+> Error/Warning ids grouped by kconfigs:
+> 
+> recent_errors
+> |-- arm-randconfig-r121-20260803
+> |   `-- drivers-net-ethernet-airoha-airoha_eth.c:sparse:sparse:division-by-zero
+> `-- um-randconfig-002-20260803
+>     `-- drivers-iio-magnetometer-qmc6308.c:error:call-to-__compiletime_assert_NNN-declared-with-error-attribute:FIELD_PREP:value-too-large-for-the-field
+> 
+> elapsed time: 726m
+> 
+> configs tested: 100
+> configs skipped: 1
+> 
+> tested configs:
+> alpha                            allnoconfig    gcc-16.1.0
+> alpha                           allyesconfig    gcc-16.1.0
+> alpha                              defconfig    gcc-16.1.0
+> arc                             allmodconfig    gcc-16.1.0
+> arc                             allyesconfig    gcc-16.1.0
+> arc                  randconfig-001-20260804    gcc-15.2.0
+> arc                  randconfig-002-20260804    gcc-8.5.0
+> arm                  randconfig-001-20260804    gcc-10.5.0
+> arm                  randconfig-002-20260804    gcc-15.2.0
+> arm                  randconfig-003-20260804    clang-17
+> arm                  randconfig-004-20260804    gcc-8.5.0
+> arm64                randconfig-001-20260804    clang-24
+> arm64                randconfig-002-20260804    gcc-9.5.0
+> arm64                randconfig-003-20260804    gcc-11.5.0
+> arm64                randconfig-004-20260804    gcc-9.5.0
+> csky                            allmodconfig    gcc-16.1.0
+> csky                 randconfig-001-20260804    gcc-9.5.0
+> csky                 randconfig-002-20260804    gcc-11.5.0
+> hexagon              randconfig-001-20260804    clang-24
+> hexagon              randconfig-002-20260804    clang-24
+> i386                            allmodconfig    gcc-14
+> i386                buildonly-randconfig-001    gcc-14
+> i386       buildonly-randconfig-001-20260804    clang-22
+> i386       buildonly-randconfig-002-20260804    clang-22
+> i386       buildonly-randconfig-003-20260804    clang-22
+> i386       buildonly-randconfig-004-20260804    gcc-12
+> i386       buildonly-randconfig-005-20260804    clang-22
+> i386       buildonly-randconfig-006-20260804    gcc-14
+> i386                 randconfig-001-20260804    gcc-14
+> i386                 randconfig-002-20260804    gcc-14
+> i386                 randconfig-003-20260804    gcc-14
+> i386                 randconfig-004-20260804    gcc-14
+> i386                 randconfig-005-20260804    gcc-14
+> i386                 randconfig-006-20260804    clang-22
+> i386                 randconfig-007-20260804    gcc-14
+> i386                 randconfig-011-20260804    clang-22
+> i386                 randconfig-012-20260804    gcc-14
+> i386                 randconfig-013-20260804    clang-22
+> i386                 randconfig-014-20260804    gcc-14
+> i386                 randconfig-015-20260804    clang-22
+> i386                 randconfig-016-20260804    gcc-13
+> i386                 randconfig-017-20260804    clang-22
+> loongarch                          defconfig    clang-24
+> loongarch            randconfig-001-20260804    clang-24
+> loongarch            randconfig-002-20260804    gcc-16.1.0
+> nios2                           allmodconfig    gcc-11.5.0
+> nios2                            allnoconfig    gcc-11.5.0
+> nios2                randconfig-001-20260804    gcc-8.5.0
+> nios2                randconfig-002-20260804    gcc-11.5.0
+> parisc                          allmodconfig    gcc-16.1.0
+> parisc                          allyesconfig    gcc-16.1.0
+> parisc                             defconfig    gcc-16.1.0
+> parisc               randconfig-001-20260804    gcc-8.5.0
+> parisc               randconfig-002-20260804    gcc-8.5.0
+> powerpc                      eiger_defconfig    clang-24
+> powerpc              randconfig-001-20260804    clang-24
+> powerpc              randconfig-002-20260804    gcc-11.5.0
+> powerpc64            randconfig-001-20260804    gcc-8.5.0
+> powerpc64            randconfig-002-20260804    gcc-8.5.0
+> riscv                randconfig-002-20260804    gcc-13.4.0
+> s390                 randconfig-001-20260804    clang-21
+> s390                 randconfig-002-20260804    clang-18
+> sh                                 defconfig    gcc-16.1.0
+> sh                   randconfig-001-20260804    gcc-16.1.0
+> sh                   randconfig-002-20260804    gcc-16.1.0
+> sparc                randconfig-001-20260804    gcc-16.1.0
+> sparc                randconfig-002-20260804    gcc-16.1.0
+> sparc64              randconfig-001-20260804    clang-24
+> sparc64              randconfig-002-20260804    clang-20
+> um                   randconfig-001-20260804    gcc-14
+> um                   randconfig-002-20260804    gcc-14
+> x86_64              buildonly-randconfig-001    gcc-12
+> x86_64     buildonly-randconfig-001-20260804    gcc-14
+> x86_64     buildonly-randconfig-002-20260804    clang-22
+> x86_64     buildonly-randconfig-003-20260804    gcc-14
+> x86_64     buildonly-randconfig-004-20260804    gcc-14
+> x86_64     buildonly-randconfig-005-20260804    clang-22
+> x86_64     buildonly-randconfig-006-20260804    clang-22
+> x86_64                                 kexec    clang-22
+> x86_64               randconfig-001-20260804    gcc-14
+> x86_64               randconfig-002-20260804    gcc-13
+> x86_64               randconfig-003-20260804    clang-22
+> x86_64               randconfig-004-20260804    clang-22
+> x86_64               randconfig-005-20260804    gcc-14
+> x86_64               randconfig-006-20260804    clang-22
+> x86_64               randconfig-011-20260804    clang-22
+> x86_64               randconfig-012-20260804    gcc-14
+> x86_64               randconfig-013-20260804    clang-22
+> x86_64               randconfig-014-20260804    clang-22
+> x86_64               randconfig-015-20260804    clang-22
+> x86_64               randconfig-016-20260804    clang-22
+> x86_64               randconfig-071-20260804    gcc-14
+> x86_64               randconfig-072-20260804    gcc-14
+> x86_64               randconfig-073-20260804    gcc-14
+> x86_64               randconfig-074-20260804    gcc-12
+> x86_64               randconfig-075-20260804    gcc-14
+> x86_64               randconfig-076-20260804    clang-22
+> x86_64                          rhel-9.4-bpf    gcc-14
+> xtensa               randconfig-001-20260804    gcc-8.5.0
+> xtensa               randconfig-002-20260804    gcc-14.3.0
+> 
+> --
+> 0-DAY CI Kernel Test Service
+> https://github.com/intel/lkp-tests/wiki
+> 
+
 
