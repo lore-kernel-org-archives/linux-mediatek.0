@@ -4,75 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 856C3C56201
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2026 09:25:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B77DEC55174
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2026 09:59:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yzil/Mlf3ePuxeRuT5OEh2LZy0rHiWskGCYU7Mq6F4o=; b=vKw4+LvdXaBhwwiUNxjI6h0wfJ
-	0swb+ZdgReexIIPcPFjpYhYXpwMhYytRWVtcWrWEeH3N/wKowMy07+7YF4HbufwnKxtIXNbNogRCt
-	qB1ThOsGJZBK2S7BoWHbJnnTvQg1eM98sW7EUwLTwkHsb7wtdK+FF1AyIose0CatvggR52PVbVWBV
-	YOvSX183C91nS2mU3jNqVZKlY6MfNt1s8rC584F2UMIeafSOI7yfdmsu1GnUEu8zeKfrkTIItiW2S
-	ie2Ql/PPRq6wBZnRjrsCKTiuZToyUnkY023PnCkwH3k+OXMJjk4K1r+MtatR4nfJYpNaUGdmKziLg
-	cfpn2pcA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ghtUzlFRWUUGu8ZsJmgzWJeSIDOJKHfpz5iFtgTk1jY=; b=vt2lEdbDD7ZBPUl4jwau7wQVUQ
+	mlevtGbeYbEG6ZfSbhzn+Ns44k5mWjnvcAVZgkE/hJQWpXnOZMAHu+NNx1kTczQnS7q1Bu0Uha8Gx
+	R5KXxdKpFHBwKOkwcp41GrlVPuBmw+l45PS0Ixio0PRSzMUVx7USo1a/1VG9QB0Nf1QaJZ73qfiTo
+	963ztzaxM9E/0erCpNvIoFnBFMKEJlYvmYJVc9DrUU4AUcIlpdSObIyVcSzfKsI9PXdrIhs1a+g3l
+	DuUKB2qSXDzlR4TVfnkRQ3GoQCsUmFGZSn5hd3KHSqe+gYQhJb3DBFmMMb/5fvAJBEFI6IExhWym6
+	4QKtW6WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrXsd-00000003c9y-1Kgf;
-	Wed, 05 Aug 2026 09:25:43 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wrYP9-00000003gCk-0iY0;
+	Wed, 05 Aug 2026 09:59:19 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrXsa-00000003c8k-2UzM
-	for linux-mediatek@lists.infradead.org;
-	Wed, 05 Aug 2026 09:25:42 +0000
-X-UUID: 9d4fc64690af11f1acbe4559397dec65-20260805
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=yzil/Mlf3ePuxeRuT5OEh2LZy0rHiWskGCYU7Mq6F4o=;
-	b=KnHpePGXcyZcamOUwQfzcxzCE/BNS4/HmtbFoEg6x9+w4eYZd24CUN8La8l4aBQHqHvp6N6Q20pn0jusDcCq9i+8A1P2SJMIIB0lnwVKQjOGcc11axH5mW0bP38iOWc1+gDaZjWwYjO8FI9AFLavPXj1sMHNIk05q1FyDczLCJQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:b5898cdf-ea2c-45b2-ac7d-e922e799de74,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:a0038df1-0685-46a3-9cac-19d8f3a05ae7,B
-	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
-	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 9d4fc64690af11f1acbe4559397dec65-20260805
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <eason.lai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1111534564; Wed, 05 Aug 2026 02:25:35 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 5 Aug 2026 17:25:33 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 5 Aug 2026 17:25:33 +0800
-From: Eason Lai <eason.lai@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<kun.wu@mediatek.com>, <deren.wu@mediatek.com>, <sean.wang@mediatek.com>,
-	<quan.zhou@mediatek.com>, <ryder.lee@mediatek.com>, <leon.yen@mediatek.com>,
-	<litien.chang@mediatek.com>, <jb.tsai@mediatek.com>, <ck.chang@mediatek.com>,
-	<eason.lai@mediatek.com>
-Subject: [PATCH v1 0/2] wifi: mt76: mt7925: Fix coredump issue and add coredump end collect mechanism
-Date: Wed, 5 Aug 2026 17:25:29 +0800
-Message-ID: <20260805092531.1490746-1-eason.lai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1wrYP8-00000003gCM-0rJv;
+	Wed, 05 Aug 2026 09:59:18 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id A06D0600AE;
+	Wed,  5 Aug 2026 09:59:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD5F21F000E9;
+	Wed,  5 Aug 2026 09:59:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1785923957;
+	bh=ghtUzlFRWUUGu8ZsJmgzWJeSIDOJKHfpz5iFtgTk1jY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=FiBxFpztljXX18c2a222ItNUCA7gRkrA5EdoZb+yMDPOeKqmYWaTHflTPRlfijc7x
+	 pbm2E2PHyHSvIEbXqYJi0aBzIvXUDTP4lQVl2FaBFXKQLwx6t5rhwEdZ1tmJE8SFmk
+	 IKa0rW5DJ0pP2fOTCQyuBSBgTYFIEqoR2oFbRvdduH2J4/dJ12Y8k+DpKw9Pn7Xr3P
+	 P6B7kcHxJINZi1xj9FKO8i/eZPJipJKM36za3uDU2b0nMLX0EMdaNHpdAMa9ifY6EV
+	 RCcseK/nDSTnqQltrbaQN2lW2afLgMzlI3IHXeE2xFeogBvsNfMVaZ3Gd4kLkGoy7h
+	 aagIS05dIdgyQ==
+Date: Wed, 5 Aug 2026 11:59:14 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Daniel Pawlik <pawlik.dan@gmail.com>
+Cc: netdev@vger.kernel.org, win847@gmail.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] net: airoha: npu: use coherent DMA for mailbox messages
+Message-ID: <anMJcp-R17Hx6DQL@lore-desk>
+References: <20260805070851.2885888-1-pawlik.dan@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260805_022540_688190_A2B04269 
-X-CRM114-Status: UNSURE (   5.86  )
-X-CRM114-Notice: Please train this message.
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Ex/oSxVbmvjUCGv9"
+Content-Disposition: inline
+In-Reply-To: <20260805070851.2885888-1-pawlik.dan@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,20 +69,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "ck.chang" <ck.chang@mediatek.com>
+--Ex/oSxVbmvjUCGv9
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-This series fix coredump file size not enough issue, and add coredump end collect mechanism
+> Commit 6f884eb87a79 ("net: airoha: Fix DMA direction for NPU mailbox
+> buffer") switched airoha_npu_send_msg() to DMA_BIDIRECTIONAL so
+> non-coherent CPUs invalidate caches before reading NPU GET responses.
+>=20
+> On EN7581 + MT7996 that change regresses probe: the mailbox completes
+> successfully, but WLAN_FUNC_GET_WAIT_NPU_VERSION still reads as 0.0 and
+> mt76 never binds NPU offload. Healthy boards report 0.1111.
+>=20
+> Mailbox messages are tiny and already copied by the caller. Bounce
+> through dma_alloc_coherent() so the CPU observes the NPU-written
+> response without relying on streaming DMA direction.
+>=20
+> Verified on Quantum Fiber W1700K (EN7581 + MT7996).
+>=20
+> Fixes: 6f884eb87a79 ("net: airoha: Fix DMA direction for NPU mailbox buff=
+er")
+> Assisted-by: Cursor:composer-2
+> Signed-off-by: Daniel Pawlik <pawlik.dan@gmail.com>
+> ---
+>  drivers/net/ethernet/airoha/airoha_npu.c | 21 ++++++++++++++++-----
+>  1 file changed, 16 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ether=
+net/airoha/airoha_npu.c
+> index b679bed952de..d2f6c9c084b8 100644
+> --- a/drivers/net/ethernet/airoha/airoha_npu.c
+> +++ b/drivers/net/ethernet/airoha/airoha_npu.c
+> @@ -166,12 +166,21 @@ static int airoha_npu_send_msg(struct airoha_npu *n=
+pu, int func_id,
+>  	u16 core =3D 0; /* FIXME */
+>  	u32 val, offset =3D core << 4;
+>  	dma_addr_t dma_addr;
+> +	void *dma_buf;
+>  	int ret;
+> =20
+> -	dma_addr =3D dma_map_single(npu->dev, p, size, DMA_BIDIRECTIONAL);
+> -	ret =3D dma_mapping_error(npu->dev, dma_addr);
+> -	if (ret)
+> -		return ret;
+> +	/*
+> +	 * Mailbox payloads are small and bidirectional (CPU sets the
+> +	 * request, NPU writes the response). Streaming DMA_BIDIRECTIONAL
+> +	 * mapping regresses EN7581+MT7996: MBOX reports success but
+> +	 * WLAN_FUNC_GET_WAIT_NPU_VERSION still reads as 0.0. Use a
+> +	 * coherent bounce buffer so the CPU always sees the NPU response.
+> +	 */
+> +	dma_buf =3D dma_alloc_coherent(npu->dev, size, &dma_addr, GFP_ATOMIC);
+> +	if (!dma_buf)
+> +		return -ENOMEM;
 
-ck.chang (2):
-  wifi: mt76: mt7925: Fix coredump size not enough issue
-  wifi: mt76: mt7925: Add coredump end collect mechanism
+I tried to reproduce the issue locally, but it does not occur for me.
+Moreover, I guess dma_alloc_coherent() is not the right approach since it is
+usually used for long-standing descriptors (e.g. tx/rx DMA descriptor rings=
+).
+Can you please provide more details about the hw you are running?
 
- .../net/wireless/mediatek/mt76/mt76_connac.h  |  1 +
- .../net/wireless/mediatek/mt76/mt7925/mac.c   | 52 +++++++++++++------
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 10 +++-
- 3 files changed, 47 insertions(+), 16 deletions(-)
+Regards,
+Lorenzo
 
--- 
-2.45.2
+> +
+> +	memcpy(dma_buf, p, size);
+> =20
+>  	spin_lock_bh(&npu->cores[core].lock);
+> =20
+> @@ -191,7 +200,9 @@ static int airoha_npu_send_msg(struct airoha_npu *npu=
+, int func_id,
+> =20
+>  	spin_unlock_bh(&npu->cores[core].lock);
+> =20
+> -	dma_unmap_single(npu->dev, dma_addr, size, DMA_BIDIRECTIONAL);
+> +	if (!ret)
+> +		memcpy(p, dma_buf, size);
+> +	dma_free_coherent(npu->dev, size, dma_buf, dma_addr);
+> =20
+>  	return ret;
+>  }
+> --=20
+> 2.55.0
+>=20
 
+--Ex/oSxVbmvjUCGv9
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCanMJcgAKCRA6cBh0uS2t
+rKWZAQCujgPJTZmcbTNA0/ICmZK2kc73Mi+wEdDGBnP49Ka4iQD+ONR1+zHNLbXx
+445U0plbBScvVOcAFOFBID5pan51xws=
+=gjZ7
+-----END PGP SIGNATURE-----
+
+--Ex/oSxVbmvjUCGv9--
 
