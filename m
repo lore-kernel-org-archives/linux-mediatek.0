@@ -4,113 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D58BC55182
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2026 03:48:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 455E9C55174
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2026 06:05:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j/NmALyDnaea82VN1dJT9y4h9uKdhWB1U02N76kyw3U=; b=hHGEvfIaGBQcdo/VywICxX5SE1
-	Rkb8x4DjW1gG6x/dKzjkWuEpYxeXVYGqywJ+y48tSLgGEAyb7vv/AuJ8ROrXIucKSll/jLbExJkKm
-	/StVWnmhHseaTZVBDe3BZIsj0dakEEpNjb/uf28uEcve0iJ7nJBT6jWedVgUKM2mjhBBEC2CwsOwA
-	mrZiMIxtJbDarxVmxdNdVRP1oy4h6cfOciMJnEpiRWeJsSdENFTQnEKpMh1KqHqQcSnnQT85LPPN1
-	K+c5PM1HkaC46ZV6n6Q6Xofm6eY2foQYdDqkfDllQ03S3nIwUH8oyBKjQOcbYyfAf6Ek4q7dIbjtO
-	ATziPXCQ==;
+	MIME-Version:Date:Subject:Cc:To:From:Message-ID:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tRd1VpgdcpCboCWZ3SthlDpOzvouEzTnkFBo/WtbgVQ=; b=zw2hbPSNNRvuTg1bgSsmGjEM/N
+	IojFnWeHdGIfIlIplPkBe15LNOIDzCF33SkvP2Gghi3RQ9ck+Cl/d2Tu+GnGALfy3+Kr+ugMeQI0f
+	+9tLENN9tS1+JKZ5GbY2cCvfUvbV0MNRtvzf4/IKhuUdGQGhpzTkjzQl1/g9ENnuMNtiKTPTrAIp9
+	xDJkKp8oiQ5B2JA73BpZfRwRvz5HFHQnAkVYBMCD+Jxh6EMiBYNyMot/fc970wAKY3KhlkBXxOlDc
+	gl89DfnZn96GJQetziNgmdCVmjFkJHyEC3B9bZcvSzv2Zf9n5STQuz4S6stqmxE8oqXrZUl9xvpAw
+	/5ZXJpcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrScR-00000003Bkj-15Qb;
-	Wed, 05 Aug 2026 03:48:39 +0000
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+	id 1wrUl4-00000003HYE-1vPn;
+	Wed, 05 Aug 2026 06:05:42 +0000
+Received: from out162-62-57-64.mail.qq.com ([162.62.57.64])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrScN-00000003BiG-157Q
+	id 1wrUl0-00000003HWk-3Pgv
 	for linux-mediatek@lists.infradead.org;
-	Wed, 05 Aug 2026 03:48:37 +0000
-Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-820100e3504so5849777b3.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 04 Aug 2026 20:48:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785901713; cv=none;
-        d=google.com; s=arc-20260327;
-        b=AN22oSV40l1wylz6L9EvKFED7whDJbUJw5w3GQlGlLGEidzdm8d3z7wFg1+aMqYLyS
-         NqvMs4zohilpElY+obHYcnbMBJDulvbXizaFuchIcLQH1R5Be5APtOKI5T4SvCLdkao5
-         wl75MV8t3DRnozAMAU0vPyxN83cmY2uhVWtoPNpagBz17twjNMiSUy8TdcGcVcpIQb+t
-         HDPpXLo9e1kX7Le9KSvUwgxNjcSeJ6YF4Y5xfMQ0d6Dy2Z/dwJ/Poiq2WqCUGoxmi5ve
-         JHpzRE2/1sn3AhWhwTXE9jRRekxWusCEF6lYNHrrr2RmJVDF27sHdwmrI8bPZRphEeko
-         PFVg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=j/NmALyDnaea82VN1dJT9y4h9uKdhWB1U02N76kyw3U=;
-        fh=PTEhSOa1EJDfR0VV7RYbmpO3T/5vNkW19MIC51HUtUo=;
-        b=cU3Q+BKn2kJidnA+b02rjI0+KBMbgczBv0aF/0HmRtw/LwOe+lF+kFvSbiE/dLaMRv
-         oYPoaQTsfsTgYlNgBdhFHoZ+lZ8CjW3TkKhDSjODPdWXnDSRd/HFQm3Fw1f1tjgIrCZw
-         pZZNxDeHqXRLF/IdGckTvpFZRWkyODmGjMB+at3Gf/bcP4VzGZQ9r6puTTdvm7O1C3sj
-         1/eQc+UuBM2pAhihcbTkpArCaEx9bBsDWaDG3Z0hk3K0lCFjh1nKUSLKISj2w7v+rusf
-         zzCuqsEfdsdjGspzlibBHPGH3Iebb4/QBfrE3iQvkJSOF6lE45RA23epd1spHu/q5G4Q
-         c2rA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1785901713; x=1786506513; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=j/NmALyDnaea82VN1dJT9y4h9uKdhWB1U02N76kyw3U=;
-        b=N8uAkXPz0J97Vlj2S6yDIsUFNFYBR0F0DMY+wjAUHHXUAKKitHvBWRTjmO+Ea8UDiI
-         i3SahlAFRJZBQIa1cXC2ckVxSOKpvliF7CceUJ4sfr9akHyMwsGeqzx7TVQNrhQYAmQ7
-         oddY9ecjd1i543qfYj2u5AhRM5Z7zboVsBTzk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785901713; x=1786506513;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=j/NmALyDnaea82VN1dJT9y4h9uKdhWB1U02N76kyw3U=;
-        b=UTq2UmYF8olmpXP21RQd/0DYsvb6BSJlZ1/Hfv6PYIQoWss5eZq+qHJkZA8PvAY7yf
-         MOmQy+tss2L1fYSXBl9laQMQRbrz/lDCPuJMsm0WMMQKMxa+B2pvwkwvOG2w+CKJqCUz
-         dpvdTs13CoG3TUhMsdMC3S0WKVTv7Q9xTOJauaxIW+IxXW6P02au0UhngKlswtQcezvM
-         Ier0fl76fjaMlpIvrridohuX4fCypHQBpmRvBwiYpNJraghnE2DuPaO97HSQVct58eah
-         OnapPCleBcuwfMixmo7nYemLHirXII4/tstO1wqdnFri7Lr1kv89K/UvYMmu0XcflMee
-         WeVA==
-X-Forwarded-Encrypted: i=1; AHgh+RqHvNtOMNV6q0LTEF/45xs89ItPmdzYWQjhGG7fvjzdU9ozduyYfos0WzkTmWndBNK+61Fs6BNug6ktubmzKg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxMDuXGf03rSPy8a/K/0CtVAi1rSv1rnAa+bpAGijYh1md0HMcc
-	gPDm9GBk0yDrkS1b3jbN0WeIUKSCLlHWwn6UBxsVqj+E5931Ysz9ufuWpuYgtcRU5TCpei5mmSo
-	vvdJaX9MOEaZ9r18zZNzo+ME5T0vPo18g7A/8shSH
-X-Gm-Gg: AR+sD13nbtvy/u9myKG/i1jZFmR79CXHGeWfUxA073pjo4CbwFs9hONCKWhT9766OMZ
-	zUu1XhzQOqiwhVY5mtfiFvlZrc3kKZd/ku5/B3fVp1bJrSLDMU8TZ5HjKG7dq0AbgxM0att9rut
-	yaMmXHWeecuE9my9Q8hsjf2FUAauyN5rDFj12E8hMivBGr89/BJLfZ27PXB7nfJN8OXTOVD5JUR
-	7XrpQOKwD2DinwUZ06e5gZB/QoZOT1Iusa9xn+Xx1Y1LrolXFrc+M3aeEQTWPd9D1+Z7lsCRhDe
-	f/s3S5nAtNi8U2+nECLmaq01rR32tUJ1bo/lyMzQdAE8JhX1dFlBrW2JrpLU9fFIhZ1riC/XE9w
-	=
-X-Received: by 2002:a05:690c:9a88:b0:81e:4e5d:484a with SMTP id
- 00721157ae682-82022294eb4mr22113487b3.2.1785901713089; Tue, 04 Aug 2026
- 20:48:33 -0700 (PDT)
+	Wed, 05 Aug 2026 06:05:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1785909928; bh=tRd1VpgdcpCboCWZ3SthlDpOzvouEzTnkFBo/WtbgVQ=;
+	h=From:To:Cc:Subject:Date;
+	b=ARr8ZSb4uJsV9c/BtPVMfKpi67DIVWRT9LkSt1454apAXUM84rLvT++tE/uBtR8dS
+	 oXE6TijrP+PMvHK6PnxFknCb91E4iXYqecZiGO6CeOllG30rMawF1TkyYlPXU2me2G
+	 KlEF0g60P94RUjJ0vK09NG0PvujqsTOp+X+8x/wk=
+Received: from PC24010019.. ([58.240.122.156])
+	by newxmesmtplogicsvrsza53-0.qq.com (NewEsmtp) with SMTP
+	id 157AE45F; Wed, 05 Aug 2026 14:05:23 +0800
+X-QQ-mid: xmsmtpt1785909923ty2jmr6xa
+Message-ID: <tencent_5E7D6E7FB25B4CD732F08547C11F5DA24808@qq.com>
+X-QQ-XMAILINFO: NQp/UN4soYLT105Eu4TQVRXyb/MTuV1aAwkKI5/+YhNpZEItaTz97Aa46qFUUg
+	 /Uqi47c0DPPwTJzpQBq1/2bzGXNZx3tn+WTNp8ScbhKcV5WEIE0Z95SmL20xBi/+g1WSSoylyQvb
+	 H/MB9DFBSAmfqMSkv+hOnFRHXQZ2NKtBw2kFi4Cw6Inqwcf7ldVQJ09gucQWPZstUgzc7ESAADdO
+	 8RU8k1kE+kqYyud670NtGmCQX+XdKU1YRBUt+NcZMWBtmbr4t5VGpbpSmXvMI8RSBzMeZezpnzzn
+	 bCvpta200iGJO15FR3hMnDvkYfWEkoA+oc2DvQqFLyoyWMNuxmAD8tTVgN3xhWVn5zSOF3yHkTqG
+	 VXApQHcsKCXvn2wfoRj2GAGTyWpqdcK4HtQkkzl06Ldg1OHNc/0YrLQMt5kb9aLGG/0SifI4cBCr
+	 Uygtt5FlA2CIDwnmHGCe2OM7nAVO7vTN5NIo+elpxFHAUYQ2m5X8NRiqBP2oT8RtJkePElPiaWIr
+	 gfmz/V3pd21p1btDef18lZkhBiGdUPNKBoshMl+yl1wLGcvftGSLO5fqSFjnZ27OvzoANdXYd5+e
+	 QmsWcKkkxbi/PO1/6FqGGx3SlcE4k+5KP1DBpbUbuzsgauxBEex81mGv1JzfGIZZGfPw/Msjc0WG
+	 xFujy1+9pr2oYfvPYNet9tkm3E1iPJic2TMl049YOxscenkrSVHKBuogX9AH2DB/I0ULEmNusw9h
+	 T3UeskF3BkbNHG+VmLVCWJr6/L+UNZfF0J6pI4+O2uFc+giQG59J6sFkxvFx/uC/8bTxqU58DWc7
+	 t7TE2reRA4tlFSQsuHoBWVvZbox59VrHF5pTbvU9pRoUHV7oGbH74g0t/+NzKBoK7idCz8wmB/zK
+	 QmDjZ+0pJFpcoYHJU6KUS4XyFL7NyA/mR9g+P4OyHRshRhy2qEjfomSVQdQ1eBwx1hOiVs55Y8Uj
+	 x5kylUFduH9jPtLZLlZjDipnFnHvI1UA1/jDTZmzSaaqiJ5G/XckVd3s/JTQE5zWsrSOd+2TzqF0
+	 yLG6dgbSKroxmSGiIChqLK8Fo7Wh07JrT97spFl7W+9QK5mhX3yHlmlKpWGTU=
+X-QQ-XMRINFO: MSVp+SPm3vtSI1QTLgDHQqIV1w2oNKDqfg==
+From: aquapinn@qq.com
+To: Ryder Lee <ryder.lee@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Cc: zhengping.zhang@airoha.com,
+	lei.dong@airoha.com,
+	hui.ma@airoha.com,
+	upstream@airoha.com,
+	Zhengping Zhang <aquapinn@qq.com>
+Subject: [PATCH] PCI: mediatek: Find INTx controller by property
+Date: Wed,  5 Aug 2026 14:05:07 +0800
+X-OQ-MSGID: <20260805060508.594458-1-aquapinn@qq.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-References: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com>
- <20260714114414.184512-43-angelogioacchino.delregno@collabora.com>
- <CAL_JsqJXpY8jHEgSHcHz4QZTFEZe8PLbO6vbpxWH4qobs0MPyA@mail.gmail.com>
- <f3837531-2949-4741-a23e-387317485c02@collabora.com> <CAL_JsqLVAQ6uhU0fGK_qnOn1x559ErWSJTKkSjr0z791thwD3w@mail.gmail.com>
-In-Reply-To: <CAL_JsqLVAQ6uhU0fGK_qnOn1x559ErWSJTKkSjr0z791thwD3w@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 5 Aug 2026 11:48:22 +0800
-X-Gm-Features: AUfX_mymFrVaiYOLaCO3AlvD0Um00IkfLaFRQ7IWTs7XOa8ZsYdcyTa8_6zr7HM
-Message-ID: <CAGXv+5GeYZ_et3bH9Udf=C3f30-zuM1=Z1meU47RnofG0NL+dQ@mail.gmail.com>
-Subject: Re: [PATCH v2 42/46] dt-bindings: display: mediatek: Introduce MT8196
- 2D Sharpness Processor
-To: Rob Herring <robh@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, chunkuang.hu@kernel.org, 
-	p.zabel@pengutronix.de, airlied@gmail.com, simona@ffwll.ch, 
-	maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, 
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, justin.yeh@mediatek.com, 
-	jason-jh.lin@mediatek.com, kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260804_204835_383649_541C44E8 
-X-CRM114-Status: GOOD (  21.27  )
+X-CRM114-CacheID: sfid-20260804_230539_477461_5EF14D14 
+X-CRM114-Status: UNSURE (   9.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,113 +96,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 5, 2026 at 2:19=E2=80=AFAM Rob Herring <robh@kernel.org> wrote:
->
-> On Tue, Jul 28, 2026 at 8:49=E2=80=AFAM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
-> >
-> > On 7/28/26 15:40, Rob Herring wrote:
-> > > On Tue, Jul 14, 2026 at 6:45=E2=80=AFAM AngeloGioacchino Del Regno
-> > > <angelogioacchino.delregno@collabora.com> wrote:
-> > >>
-> > >> Add documentation for the Two-Dimension Sharpness Processor, or
-> > >> "TDSHP", found in many MediaTek SoCs including MT8196 and its
-> > >> variants.
-> > >>
-> > >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno=
-@collabora.com>
-> > >> ---
-> > >>   .../mediatek/mediatek,mt8196-tdshp.yaml       | 98 +++++++++++++++=
-++++
-> > >>   1 file changed, 98 insertions(+)
-> > >>   create mode 100644 Documentation/devicetree/bindings/display/media=
-tek/mediatek,mt8196-tdshp.yaml
-> > >>
-> > >> diff --git a/Documentation/devicetree/bindings/display/mediatek/medi=
-atek,mt8196-tdshp.yaml b/Documentation/devicetree/bindings/display/mediatek=
-/mediatek,mt8196-tdshp.yaml
-> > >> new file mode 100644
-> > >> index 000000000000..ccd6a8443443
-> > >> --- /dev/null
-> > >> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mt=
-8196-tdshp.yaml
-> > >> @@ -0,0 +1,98 @@
-> > >> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > >> +%YAML 1.2
-> > >> +---
-> > >> +$id: http://devicetree.org/schemas/display/mediatek/mediatek,mt8196=
--tdshp.yaml#
-> > >> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > >> +
-> > >> +title: MediaTek Display Two-Dimension Sharpness Processor (TDSHP)
-> > >> +
-> > >> +maintainers:
-> > >> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora=
-.com>
-> > >> +
-> > >> +description:
-> > >> +  The MediaTek 2D Sharpness Processor (TDSHP) is responsible for pe=
-rforming
-> > >> +  image sharpness adjustments/enhancements in a display pipeline.
-> > >> +  This hardware block supports adjusting the luma and contour 2d hi=
-stograms,
-> > >> +  frequency weighting, luma-chroma gain and others, with adaptive w=
-eights.
-> > >> +
-> > >> +properties:
-> > >> +  compatible:
-> > >> +    const: mediatek,mt8196-disp-tdshp
-> > >> +
-> > >> +  reg:
-> > >> +    maxItems: 1
-> > >> +
-> > >> +  clocks:
-> > >> +    maxItems: 1
-> > >> +
-> > >> +  power-domains:
-> > >> +    maxItems: 1
-> > >> +
-> > >> +  ports:
-> > >> +    $ref: /schemas/graph.yaml#/properties/ports
-> > >> +
-> > >> +    properties:
-> > >> +      port@0:
-> > >> +        $ref: /schemas/graph.yaml#/properties/port
-> > >> +
-> > >> +      port@1:
-> > >> +        $ref: /schemas/graph.yaml#/properties/port
-> > >> +
-> > >> +    required:
-> > >> +      - port@0
-> > >> +      - port@1
-> > >> +
-> > >> +  trigger-sources:
-> > >> +    maxItems: 1
-> > >> +
-> > >> +required:
-> > >> +  - compatible
-> > >> +  - reg
-> > >> +  - clocks
-> > >> +  - clock-names
-> > >
-> > > This causes a warning.
-> > >
-> > > Seems this is in linux-next already, but no reviews?
-> > >
-> > > Rob
-> >
-> > Wow. No idea how clock-names got into the list of required properties: =
-there is
-> > only one possible clock, and this doesn't need any clock-names at all.
-> >
-> > Same for the resizer binding.
-> > Sorry for the mistake.
->
-> Why is this still in linux-next?
+From: Zhengping Zhang <aquapinn@qq.com>
 
-This is in your dt/next branch, applied 13 days ago. Maybe you applied it
-by mistake?
+All existing DTS users already name the INTx child node
+"interrupt-controller". Use of_get_child_by_name() to find it instead
+of assuming it is the first child node.
 
+Signed-off-by: Zhengping Zhang <aquapinn@qq.com>
+---
+ drivers/pci/controller/pcie-mediatek.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-ChenYu
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 8b57c3d75b94..7b54f3dc6cf8 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -572,9 +572,9 @@ static int mtk_pcie_init_irq_domain(struct mtk_pcie_port *port,
+ 	int ret;
+ 
+ 	/* Setup INTx */
+-	pcie_intc_node = of_get_next_child(node, NULL);
++	pcie_intc_node = of_get_child_by_name(node, "interrupt-controller");
+ 	if (!pcie_intc_node) {
+-		dev_err(dev, "no PCIe Intc node found\n");
++		dev_err(dev, "no PCIe INTx interrupt-controller node found\n");
+ 		return -ENODEV;
+ 	}
+ 
+-- 
+2.43.0
+
 
