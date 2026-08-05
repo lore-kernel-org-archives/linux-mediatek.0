@@ -4,59 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BF0FC55ABA
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2026 00:33:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20DA9C55184
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2026 01:00:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jf/xVNbWPols23hslUUwD7fcUT/RrrsqrpMbZwK78iA=; b=ZqDLiLgRmr3jVjHdksPHbL/Nbr
-	7hiJIZsdZCy+YkWUn6hT+LaqF2sO+xCFpRB4DA6iySm7Shwe68C+/aASjW3UkOqJ30tZhr+JEgMHT
-	CEOkCBSm7ZV47ePoRI9Q2gR7HfP+uYVPWrUZTlcW3Yn8Nt692F/U9U/rMRl3HKRH+kfgNx/8OAUJI
-	0dOSjQft4tvWhiUPJ6MMrXvHRDSkmcr8V9alR0FXiTK6Y/yw1PKTnLsCsIlq1lN/d7J5JaOFZG5gS
-	J6bITmiXcwu1wDTY+BHMPo4p6XPl+Q2r83rNs9G79FhsTItbPonrynGGNmxCReai3ajfm7YELw/xe
-	AxiTqN2Q==;
+	bh=wDoFFK8k5YTxmRnKscMNyLZY+muzZHuYjeYkOMRXrgw=; b=V5XLbzOMmEfjlk9hKuXLp1PJvu
+	v5u5kKUUEFz/cfz6Jhyy51SuxWodzbZof/2QNm2wqvMyE33n9o8BbHaP/b8ZWJLHOvT/huKMuqVre
+	4PqxivryV5u8BIAvqX5lU43YPr817v/QAT+ELLM1OZPRFXQSRtdxfG+U6Oamv+m9Ght5/JtaqTNVz
+	YCjVThDDVgZNd4KTucjSzTdsiZaViwfdt4zlvwgEx3hxC/7CgKKIL+BKCyEiv5zRnP/6sloDGCF1Q
+	N2G+OwxOb37ZANgXgA/eczfacAQClrrn9xoySzzmTZ1zAQMnuNFjTV9GRVj9cFCWj0r0m4SrncEk/
+	zhPgjJFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrPZm-00000002yXj-3tgO;
-	Wed, 05 Aug 2026 00:33:42 +0000
+	id 1wrQ04-000000031oJ-330g;
+	Wed, 05 Aug 2026 01:00:52 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrPZm-00000002yXF-02Gj;
-	Wed, 05 Aug 2026 00:33:42 +0000
+	id 1wrQ02-000000031nq-2uSD;
+	Wed, 05 Aug 2026 01:00:50 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id E5FCA40D87;
-	Wed,  5 Aug 2026 00:33:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3A8461F000E9;
-	Wed,  5 Aug 2026 00:33:39 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id E901843B31;
+	Wed,  5 Aug 2026 01:00:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C92EE1F00A3A;
+	Wed,  5 Aug 2026 01:00:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1785890020;
-	bh=jf/xVNbWPols23hslUUwD7fcUT/RrrsqrpMbZwK78iA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=ZsAE/KR5jsl+73ewpPJ90yFlmGYeO7a/wU07gbrHhMBmdf2F7ePh3+D6jz4/Yvg+N
-	 675vAD3SbnXCak/e6mSmhMiirV3WDfNQEA2LDct1FWFIuqG+MNwHTbruXgTZbbWtc6
-	 MjuMfKZ/wyvQ0Kd+VFExQUnJyMNZ31FnnYVilc6wfpN8Y6QapN+M/XcDG3My7JaY3S
-	 f0NwSVZ50X7wH3OHI4nJI1uCw5K+6hRv/gDBJBV/KvkvspNC0xGWkbGohBhhbGBZQv
-	 yXlRidHfTfUNxbqlME8YG9BJw8RxuHD6fKpCPpEJhRP3jfYi0XLE6MtCpYBITsXgTI
-	 lxGgiv42yPQkQ==
-Date: Wed, 5 Aug 2026 01:33:36 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: kernel test robot <lkp@intel.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>, Linux Memory Management List
- <linux-mm@kvack.org>, linux-arm-kernel@lists.infradead.org,
- linux-iio@vger.kernel.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, Mark Brown <broonie@kernel.org>
-Subject: Re: [linux-next:master] BUILD REGRESSION
- 9a4cdc958dd79fc6c3b20b51a10debec6ca09fec
-Message-ID: <20260805013336.4bd8a298@jic23-huawei>
-In-Reply-To: <202608041404.bOHh2XuT-lkp@intel.com>
-References: <202608041404.bOHh2XuT-lkp@intel.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+	s=k20260515; t=1785891648;
+	bh=wDoFFK8k5YTxmRnKscMNyLZY+muzZHuYjeYkOMRXrgw=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=RF85tYGhiHjm4uKEo6TkqefkpcwefKhKJq9/2Jlh8vaqy6UKnmGfglB6gY4WtX+RB
+	 g3uMxUym+TA80Pcie3lZ6/FjKqvM134zsd5ySqspot8vYK3oVDvkuBDe4F1MSjY1tP
+	 tMPfXZf/mLT6faoINwrYE9u3oeQ9vMaeKNi+Mf7xTdgwzWxcVDu0D9LfPQB8B7kzk+
+	 68TLfFuLW+eZN+heFN1zkWLtcThdT2/mT8CRfzjstHj2yfiRw0AQ0PhCK96/2NhUaw
+	 sCIgFltDMj64gGpqSTbyDwmm1oLoM2rC4m4979s7z3U5e68pfEagOi/MMH6AGxI9hP
+	 K6Y0lPpuZgGSw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 5691F3926663;
+	Wed,  5 Aug 2026 01:00:10 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next] net: airoha: fix ARRAY_SIZE() division by zero
+ on
+ UP builds
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <178589160888.3856351.13210051056800049801.git-patchwork-notify@kernel.org>
+Date: Wed, 05 Aug 2026 01:00:08 +0000
+References: <20260731-airoha-spinlock-array-fix-v1-1-863a7e239a5f@kernel.org>
+In-Reply-To: <20260731-airoha-spinlock-array-fix-v1-1-863a7e239a5f@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, nathan@kernel.org,
+ ndesaulniers@google.com, morbo@google.com, justinstitt@google.com,
+ horms@kernel.org, aleksander.lobakin@intel.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, llvm@lists.linux.dev, ojeda@kernel.org, lkp@intel.com
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,141 +76,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 04 Aug 2026 14:24:23 +0800
-kernel test robot <lkp@intel.com> wrote:
+Hello:
 
-> tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
-> branch HEAD: 9a4cdc958dd79fc6c3b20b51a10debec6ca09fec  Add linux-next specific files for 20260803
-> 
-> Unverified Error/Warning (likely false positive, kindly check if interested):
-> 
->     https://lore.kernel.org/oe-kbuild/202608040800.45L57Mym-lkp@intel.com
-> 
->     drivers/iio/magnetometer/qmc6308.c:402:7: error: call to '__compiletime_assert_472' declared with 'error' attribute: FIELD_PREP: value too large for the field
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-The line in question is setting a 2 bit field (GENMASK(3, 2)) to 0.
-No idea what is triggering that warning.
+On Fri, 31 Jul 2026 17:47:38 +0200 you wrote:
+> airoha_alloc_gdm_device() initializes the txq_lock[] array iterating
+> over ARRAY_SIZE(dev->txq_lock). ARRAY_SIZE() expands to
+> sizeof(dev->txq_lock) / sizeof((dev->txq_lock)[0]), but on UP builds
+> (CONFIG_SMP unset, CONFIG_DEBUG_SPINLOCK unset) arch_spinlock_t is an
+> empty struct, so sizeof(spinlock_t) is zero and the expression is a
+> compile-time division by zero (undefined behavior), reported by clang
+> as "division by zero is undefined [-Wdivision-by-zero]".
+> 
+> [...]
 
->     drivers/net/ethernet/airoha/airoha_eth.c:3470:25: sparse: sparse: division by zero
-> 
-> Error/Warning ids grouped by kconfigs:
-> 
-> recent_errors
-> |-- arm-randconfig-r121-20260803
-> |   `-- drivers-net-ethernet-airoha-airoha_eth.c:sparse:sparse:division-by-zero
-> `-- um-randconfig-002-20260803
->     `-- drivers-iio-magnetometer-qmc6308.c:error:call-to-__compiletime_assert_NNN-declared-with-error-attribute:FIELD_PREP:value-too-large-for-the-field
-> 
-> elapsed time: 726m
-> 
-> configs tested: 100
-> configs skipped: 1
-> 
-> tested configs:
-> alpha                            allnoconfig    gcc-16.1.0
-> alpha                           allyesconfig    gcc-16.1.0
-> alpha                              defconfig    gcc-16.1.0
-> arc                             allmodconfig    gcc-16.1.0
-> arc                             allyesconfig    gcc-16.1.0
-> arc                  randconfig-001-20260804    gcc-15.2.0
-> arc                  randconfig-002-20260804    gcc-8.5.0
-> arm                  randconfig-001-20260804    gcc-10.5.0
-> arm                  randconfig-002-20260804    gcc-15.2.0
-> arm                  randconfig-003-20260804    clang-17
-> arm                  randconfig-004-20260804    gcc-8.5.0
-> arm64                randconfig-001-20260804    clang-24
-> arm64                randconfig-002-20260804    gcc-9.5.0
-> arm64                randconfig-003-20260804    gcc-11.5.0
-> arm64                randconfig-004-20260804    gcc-9.5.0
-> csky                            allmodconfig    gcc-16.1.0
-> csky                 randconfig-001-20260804    gcc-9.5.0
-> csky                 randconfig-002-20260804    gcc-11.5.0
-> hexagon              randconfig-001-20260804    clang-24
-> hexagon              randconfig-002-20260804    clang-24
-> i386                            allmodconfig    gcc-14
-> i386                buildonly-randconfig-001    gcc-14
-> i386       buildonly-randconfig-001-20260804    clang-22
-> i386       buildonly-randconfig-002-20260804    clang-22
-> i386       buildonly-randconfig-003-20260804    clang-22
-> i386       buildonly-randconfig-004-20260804    gcc-12
-> i386       buildonly-randconfig-005-20260804    clang-22
-> i386       buildonly-randconfig-006-20260804    gcc-14
-> i386                 randconfig-001-20260804    gcc-14
-> i386                 randconfig-002-20260804    gcc-14
-> i386                 randconfig-003-20260804    gcc-14
-> i386                 randconfig-004-20260804    gcc-14
-> i386                 randconfig-005-20260804    gcc-14
-> i386                 randconfig-006-20260804    clang-22
-> i386                 randconfig-007-20260804    gcc-14
-> i386                 randconfig-011-20260804    clang-22
-> i386                 randconfig-012-20260804    gcc-14
-> i386                 randconfig-013-20260804    clang-22
-> i386                 randconfig-014-20260804    gcc-14
-> i386                 randconfig-015-20260804    clang-22
-> i386                 randconfig-016-20260804    gcc-13
-> i386                 randconfig-017-20260804    clang-22
-> loongarch                          defconfig    clang-24
-> loongarch            randconfig-001-20260804    clang-24
-> loongarch            randconfig-002-20260804    gcc-16.1.0
-> nios2                           allmodconfig    gcc-11.5.0
-> nios2                            allnoconfig    gcc-11.5.0
-> nios2                randconfig-001-20260804    gcc-8.5.0
-> nios2                randconfig-002-20260804    gcc-11.5.0
-> parisc                          allmodconfig    gcc-16.1.0
-> parisc                          allyesconfig    gcc-16.1.0
-> parisc                             defconfig    gcc-16.1.0
-> parisc               randconfig-001-20260804    gcc-8.5.0
-> parisc               randconfig-002-20260804    gcc-8.5.0
-> powerpc                      eiger_defconfig    clang-24
-> powerpc              randconfig-001-20260804    clang-24
-> powerpc              randconfig-002-20260804    gcc-11.5.0
-> powerpc64            randconfig-001-20260804    gcc-8.5.0
-> powerpc64            randconfig-002-20260804    gcc-8.5.0
-> riscv                randconfig-002-20260804    gcc-13.4.0
-> s390                 randconfig-001-20260804    clang-21
-> s390                 randconfig-002-20260804    clang-18
-> sh                                 defconfig    gcc-16.1.0
-> sh                   randconfig-001-20260804    gcc-16.1.0
-> sh                   randconfig-002-20260804    gcc-16.1.0
-> sparc                randconfig-001-20260804    gcc-16.1.0
-> sparc                randconfig-002-20260804    gcc-16.1.0
-> sparc64              randconfig-001-20260804    clang-24
-> sparc64              randconfig-002-20260804    clang-20
-> um                   randconfig-001-20260804    gcc-14
-> um                   randconfig-002-20260804    gcc-14
-> x86_64              buildonly-randconfig-001    gcc-12
-> x86_64     buildonly-randconfig-001-20260804    gcc-14
-> x86_64     buildonly-randconfig-002-20260804    clang-22
-> x86_64     buildonly-randconfig-003-20260804    gcc-14
-> x86_64     buildonly-randconfig-004-20260804    gcc-14
-> x86_64     buildonly-randconfig-005-20260804    clang-22
-> x86_64     buildonly-randconfig-006-20260804    clang-22
-> x86_64                                 kexec    clang-22
-> x86_64               randconfig-001-20260804    gcc-14
-> x86_64               randconfig-002-20260804    gcc-13
-> x86_64               randconfig-003-20260804    clang-22
-> x86_64               randconfig-004-20260804    clang-22
-> x86_64               randconfig-005-20260804    gcc-14
-> x86_64               randconfig-006-20260804    clang-22
-> x86_64               randconfig-011-20260804    clang-22
-> x86_64               randconfig-012-20260804    gcc-14
-> x86_64               randconfig-013-20260804    clang-22
-> x86_64               randconfig-014-20260804    clang-22
-> x86_64               randconfig-015-20260804    clang-22
-> x86_64               randconfig-016-20260804    clang-22
-> x86_64               randconfig-071-20260804    gcc-14
-> x86_64               randconfig-072-20260804    gcc-14
-> x86_64               randconfig-073-20260804    gcc-14
-> x86_64               randconfig-074-20260804    gcc-12
-> x86_64               randconfig-075-20260804    gcc-14
-> x86_64               randconfig-076-20260804    clang-22
-> x86_64                          rhel-9.4-bpf    gcc-14
-> xtensa               randconfig-001-20260804    gcc-8.5.0
-> xtensa               randconfig-002-20260804    gcc-14.3.0
-> 
-> --
-> 0-DAY CI Kernel Test Service
-> https://github.com/intel/lkp-tests/wiki
-> 
+Here is the summary with links:
+  - [net-next] net: airoha: fix ARRAY_SIZE() division by zero on UP builds
+    https://git.kernel.org/netdev/net-next/c/c509971352a6
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
