@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F28FC56203
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2026 12:34:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51109C55174
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2026 12:34:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
 	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oBj0IHire2KuEO9ACnbQOuA7Xwq0cNeUv4zo1WsCD5c=; b=u/Yy2y37nGgJ3zFJYVOTNie+Jz
-	/izG3j56xtDbTOI7PNUTdcxOLNnRKyTlr8DR+1HvSZ8ndtR09VsEIvezZezFSUsZwpNUXxfqnL6YG
-	Tbv4aiy6rTB5hmTBHrFWiBDLEcTP3oTxe4dTzh79vUPtsXoIxXTFxYJVBsNfFCDmU4Q7vd0R40Hjp
-	MrGMY/qzDFQmuyM2Oinaikn0LotXMHeHz80+/eyLCCR0Z2B/oXYqO3SMoj0EP2Sf7IgAal4/w+63S
-	kb7E4efK1QnOLUEiWQlwGzhSoL9v1TfaIk9wJX3+NR7bI4jvXGT9uUSDZiFBUeph6eSzoYKEP+mc3
-	V7HIF6iQ==;
+	bh=58OFInlsuXMddJEzbQ/pESSN3qMBCPwTNYV/5X3RixM=; b=xKi8+Iwva8wS8OW9rVnilmrBIw
+	8Lp9dsJgkGpYL4QwQqEvpGDkV6Uyldcr0lmuatdSFBzkzbQNDs6RCS0djf+nst9yNNp1z9JmUiudO
+	U9urhNE2b1k0yZnAQrA+86jfHY48CXw1Xf+u+aj9y6tuHTIkmJv/PzLaKAynC8DLIEAMtzKvq4B1K
+	EvdFsWfNHVK8cAyTE48iCBILHXvndyDJvfIXbRtkxsssGOdeo1yWZmnU8nJC1bwMH95rZa6NE7yAn
+	MY/FrSHltL6mzIQ+q+LyPYoI+Jq5upgXjEJvfmnwcXC5vbup0TigvQVoyqvVMOEKCr30LcGn9354I
+	JKvAA1xA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wraph-00000003uuS-0CaU;
-	Wed, 05 Aug 2026 12:34:53 +0000
+	id 1wrapi-00000003uwd-1QmP;
+	Wed, 05 Aug 2026 12:34:54 +0000
 Received: from mail-francecentralazon11023093.outbound.protection.outlook.com ([40.107.162.93] helo=PA4PR04CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrapd-00000003uqd-2H6J
+	id 1wrapg-00000003uqd-2qWf
 	for linux-mediatek@lists.infradead.org;
-	Wed, 05 Aug 2026 12:34:50 +0000
+	Wed, 05 Aug 2026 12:34:53 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Pp8uKP947VGZJN/2McMmdqnOapPcJZQYgE1yg/bqAhzwgnOoODhj2m7elYMyLxi2bqRk4lAZUpXiaiVi++hRqRlu+q/nJlWhs0c5fnOMcc3ofK6hgrZxE0jzIoyZ7aHsxvkd16VcHZh93j7iLRTacFa3iPli4f6MHC+8RxqEol03q1V4087OT59jSm/8CAV2OBmIsrjLrPSNUlkGpyihDPN1KaJ71A0RDo19cD/GOAg0A8NITgrZCRsvzRYq2tQrea6mrXMvrKKrSOYy/qW57HvLqPL3J+qXFPZnSpP8O7RGsv5Wzq16PfLBjiA41ohAkGuD4h9DCv+4tUGkizoYIQ==
+ b=GRm0ZYbHFCkaSwTKPBdVBjgyOA/nwguD/rxOnxFoXX9bH41oKhMAnwoERa5YJLzD98RtlhmYpEldT5IuKsudn7cMvPr282bCCBHr3czo2j4lW/X82o2daP3vrri2iZZPh0ighV/rf76KoDP793uP0E0yc3hEDKuKaYba6xDG2zN3vKQ/2cTVvIklI/UO/2BHoCUgQHyIpCtMXRIUd/1dLee2DVVLqr6DoEVFpJykEtWMI/NJn31+TrJG+TScdRHO38YmaM+jo8+y1yYhIHzGEXQAvyyI0Lk9nLG/CRtYi/bvIGFjwFHYL6/hygutY5n8VUHLIR9maCzTlG+561KluA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=oBj0IHire2KuEO9ACnbQOuA7Xwq0cNeUv4zo1WsCD5c=;
- b=rjmSgi/wbRKZd6FdhshdbwngmiqVJCJ6NLdHQyZlaqd3MOfoAEa0sEHuRozI4L47crlyUbUp667w17Z0GoLKl99U4by9Bj9ymEas8gdkECEw5y8dm6DfUhACBKq3su4PJzecXPxrVxQ36UYxasw7NcKgKT+Hgy1Y8OwDB/907/QxU6/Xh63XoV3TM1vC32K2afWLrpheZEiP7Ad4xd+Pt3P3njEPHcGzk7/13iWFWnAn8gJ2PDnsBo+YtvRMcRgqO1UUmNWaVMSJIuAUDkz8OriDK06iV7BM+eIKtCe7SfNbTUAyO0Bu/QsHCaKeuKHr8Rkb1/VKObNT4BlBQ/HBzQ==
+ bh=58OFInlsuXMddJEzbQ/pESSN3qMBCPwTNYV/5X3RixM=;
+ b=xtGmF0BiB/3ry3fg5Y9sG1hsqR06NCw/J5kUuHTVgmZ1mvH28hkx6vLWFIHI5gVL9T4tEa4EgI7fg5E/lly5MemaQRFplZv9/SRmQqjqn6ESsjvXMbdZPGuUkXdTFH8lpSYILJw4MgDYvWbei1zLW4IIGNqBONRXP/f7Qj4jPQEgeHakGnTY4HW/mbeywy8v+hKYAZhSKzbZhoZ32lPglgWjp3/UGLNhKMObITb9zx+dqOdtvZmThfzXPh3MzEehRNsK3q1VfJWNKTgHxIlKq5chInP6aFtZ6pkisdDkaTpUFU2efzs8gINJloXKWrSIiCwmLa7t1tCY2zStj3ThSA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
  dkim=pass header.d=iopsys.eu; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=oBj0IHire2KuEO9ACnbQOuA7Xwq0cNeUv4zo1WsCD5c=;
- b=rtI4ZPJ6rWoxC8kNVOWQiCYwN83unCfVbbMLpqAkFiGwjZSGkQJ30+SCZo2DORS1N9eRbY1mMJjqTpZyd6p/BVESJA+8XiKKICV8X9HBMDr2eVeTlOPqbJWuvt2oW9nHvgIiKsVqS9xPZhISa4qlNNp380dWyXiKV3G6Jala07bzpNMdOQSSkFPlFSTCK3hoCsifLEHG/JkozuWHSad7Guu3hSPF0RzX/riUlRGeFS2NfVdLtfMTnBMP+5CRcdYSjo40potZKdJ8JIbipBtjIVal9HV8nY0Bp63DlR7cn4hOqnM9EqhHZXxnwAPBR5qXDfVYL//oG9MmPZkw6z8iDg==
+ bh=58OFInlsuXMddJEzbQ/pESSN3qMBCPwTNYV/5X3RixM=;
+ b=Atat8QBdQCAxcW01ARVXIc0b+t/OPeZy9i1HUXdOa+CmkRdaxj/8jAIU9AS86ws9fcVvzK9UyqGUVuJ3Ow1AsobKDoRLsXuVSymSyi1HzsyB1aVJz8BEQfUpFEpEmpKffb26mq3Fx71V4geLUqzZKZ9Rq42EXtTH2fv62Bpx+7TStPdKU2r2pNeQ4iY7Lbs/ObofiDnTTLzZV1LAhkeDXmofjRDqKaLaebEjdprHGzqXJoOpjKiTkgD5dkwrcmvMOxMQBqgYSbxsZcoo/9X7mneTsaP3CuwJVZ6gre5GZo6Gnn0O4C8lCPv+0/gyjzxlfU+FHsYYI9IjukqwnDoBuQ==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=iopsys.eu;
 Received: from DU2PR08MB10037.eurprd08.prod.outlook.com (2603:10a6:10:49a::20)
  by PAVPR08MB8918.eurprd08.prod.outlook.com (2603:10a6:102:323::5) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.292.19; Wed, 5 Aug
- 2026 12:34:42 +0000
+ 2026 12:34:46 +0000
 Received: from DU2PR08MB10037.eurprd08.prod.outlook.com
  ([fe80::3c7:6d2e:8afe:e4dc]) by DU2PR08MB10037.eurprd08.prod.outlook.com
  ([fe80::3c7:6d2e:8afe:e4dc%5]) with mapi id 15.21.0292.013; Wed, 5 Aug 2026
- 12:34:42 +0000
+ 12:34:46 +0000
 From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
 To: Linus Walleij <linusw@kernel.org>,
 	Rob Herring <robh@kernel.org>,
@@ -71,9 +71,9 @@ To: Linus Walleij <linusw@kernel.org>,
 	Matheus Sampaio Queiroga <srherobrine20@gmail.com>,
 	Daniel Schwierzeck <daniel.schwierzeck@gmail.com>
 Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Subject: [PATCH v10 11/36] pinctrl: airoha: fix I2C pin mux config for AN7583
-Date: Wed,  5 Aug 2026 15:33:43 +0300
-Message-ID: <20260805123408.3767648-12-mikhail.kshevetskiy@iopsys.eu>
+Subject: [PATCH v10 13/36] pinctrl: airoha: an7583: fix spi group pins
+Date: Wed,  5 Aug 2026 15:33:45 +0300
+Message-ID: <20260805123408.3767648-14-mikhail.kshevetskiy@iopsys.eu>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260805123408.3767648-1-mikhail.kshevetskiy@iopsys.eu>
 References: <20260805123408.3767648-1-mikhail.kshevetskiy@iopsys.eu>
@@ -85,57 +85,57 @@ X-ClientProxiedBy: FR4P281CA0065.DEUP281.PROD.OUTLOOK.COM
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: DU2PR08MB10037:EE_|PAVPR08MB8918:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6e7fcd77-3b78-49e4-656c-08def2edec81
+X-MS-Office365-Filtering-Correlation-Id: 60ae3454-93d1-4aae-e6f1-08def2edeeaf
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|366016|7416014|52116014|376014|1800799024|921020|38350700014|56012099006|11063799006|10067099003|18002099003|22082099003;
-X-Microsoft-Antispam-Message-Info: SalhpBqqRzVvEEd8XgN9cD6Uq035nCEK8ZgzLVDXNyoMAU82kH1tifr4TQbcEIyz6XQ6yEhEtZTBd9UJ98naRY24iClmp0+rP8bClQirmEv3RmdQWWBS8767sXj8g3WwRbq4+qUhEk/qXy7E2lj5JGmLq7EjUMaEDWTCmYcXOJhoCi2s4JGckoZJBrkMvwitagaASLtRAJ7ratziep040446nSuQdhyoQJ6+55A5IcZsGQey7rDRSrXV9+kDMe26fsV6UVRiC4JOO7db+6w2Vvq1ioA/gN8qX8Md5P2bYBUfpd6BDrwy3vBXZNWBGTZvRRh0s3ESfZC5CYmreBqzXXQIqN//hGl+hvcbEw+6kLRufZYiQRodpqDRL5bJXNw8B4MPwMqCtlH4/BsQidWtP2QHAgB97QTOknZLOKe0zvj1RFeOD4lLe+QI9yt+mUFK5b5u2dOxEQn+gSM0sT/yvCgEPW+szzOpofHcUjEo35WZ1fkoYSFV3Z0Owv2NV6bIYjFi6xKCwJLbN1gf4RVyP4Cr20YFwzOxmLCIqIVwg0x9TnXMGMRtkE92HdjWFowDtBjP7eB07okbsGO79+bFq3ZnYPIKmHwdEXcRp9qwoVsyc/4sBMTsImQ83lXXRZ5/JbHfrJEd7VkX9sZtQTquB5jDt0CiN1N/IyNAgIaIhYCbQ4E/nV7Bzmb1RX8tgB8l3nZSXaPYmnfWfmDMf++PUiVO7GLEUQLNr6vECnM4dTJI2+sp7eKNnR9s5szSm9j7
+X-Microsoft-Antispam-Message-Info: J0WwVrEDqZ6yYULaAOqDqGe4KSnkL4gs8Zwr54EHnVnaCU328LYozSXHo8LhIqVaU6e7h3bIaLB4+cOVCTPz+RrXm8HhL4oL3UlVGMRumswOYAF+sBH5rhlIT/IQz1+VUm51JQ6IZy1YXaNI1ju2XrlJqTGjBVBpaU0qsF+yoGC722dv/ThaIUDLLiDriz1fQm4cgrlPQZ0JcsgZiNdshb6RdqDnLnEpVtSq52Rrq9o/rIdPrKoVtyx1N/fJyqaDvUcDXyZtCTa8PCXcGwDbrFgEfBjGVRv20U3XdxFO42XR3fLvuoRKMaHPjkmgd7sBuYHoW9/v6XeiFL19B+niCDO8nspn8Kgp4b7Xz0WK7He1YUWdDk83REPUE3GUX3K9QeiiBZBUw2925FSF1/XaxE5bq4dIizgMvYbySZD5Jz1uc88iA7kR/1SIeI4/sJYpv7d5cleaC1Pau4+NOFFc90zJxdxH9rsd2Syh+V4yO1YlXnbpbU1QYGMMIC0G2iKaZJZ03S7usAgtM/sw+mOdlMhIIV1ftk+uOoBQOID2ds0GEcRIDZSOHmeJof5NwPyhwjsiMSlizdRt4xj4rU3/DzICH84kzUW9UN/JEGZ03FdERIvGlTnIHz1voT3rRpv+DLYnn/rEAnXr0xHuXgVVjmCawAjjg1zxS2ZxWas8JhisATmt1hoHbgox89hI6a2DFp0Yac/Ius2olbr9Dkpr6FOLj9ufYqT2Yyqu7NDA0GDa9L5pRaO/91mOhwEM10at
 X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR08MB10037.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(366016)(7416014)(52116014)(376014)(1800799024)(921020)(38350700014)(56012099006)(11063799006)(10067099003)(18002099003)(22082099003);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?HeTvh1Q78Z+K+OEaMmKsMHVhL7ON7FpDVPCUxwiqkoE/yh4V20rZu2xsj83O?=
- =?us-ascii?Q?WFC8ebEZ68lxQfL3K+sF06shQz8YDBqinJxusAOINKfPTqMHaRJcSJahggdx?=
- =?us-ascii?Q?DR5kKl3YMm24Nt5/uTaPlt4rCpuY1cQUAK1eRDO0lGaaAWVNSwsNEHfXo9DU?=
- =?us-ascii?Q?87WGawpiZ/BUDIbutctc7cunu1Sbu+aOQ79cGd6VaSWL40E6IgoimHKiTgC5?=
- =?us-ascii?Q?oF0hU7CzluxI0ptRURG8QwMLC17JozNMW9beEkU/uf+Ute+2EjWQyFRXgR7E?=
- =?us-ascii?Q?Hq2PcC0IFkXk6ZLmfkz5vJfcyvoPhpblcvYPIfo47xpXIf+GY6a3rF1ExuVZ?=
- =?us-ascii?Q?YQbdSFVRLIURoMrFFxUN/vKEVPHPZLgddE38ofVCJsp2/qDZkwOmFZNbH8JQ?=
- =?us-ascii?Q?lzEb1aBYVKv1qyo9C3H6/7ybjTdoooTwMz9MKfM4P2fxTtFrsgr2n688QR9m?=
- =?us-ascii?Q?h+08L/Yc81LAsPzhJBmFvclWhAkBpXNBeSFmvRfGD6KnA11N+APfO/+yCopj?=
- =?us-ascii?Q?F4ABeNCBlIMakHNy9qNsOhKn7sqIDfKhScSXNrRI3E5/RTPSGlVmRx6OZZKJ?=
- =?us-ascii?Q?44CpUoJLgtCq95S6oIDk17Ba3giej2APUQnJkPMgYQ1U3r79iNKyYB0CQznQ?=
- =?us-ascii?Q?r0WjeHl/GHbMNolsScVn34GpBy4M9XRORKVs4I65KpTk4vIQRV85C+n6A6vn?=
- =?us-ascii?Q?JXUzR82eOOKMc6HXXF/zaMw0zDzER8jOxFYeJmyYFJJxj5qKJG1QbiKfEpNK?=
- =?us-ascii?Q?MIDXcmFvk+jVkqxKfxGcoXF58iDhEArFWrdJjZJYzjjH2jazNeFXXEsN2z/a?=
- =?us-ascii?Q?gSQduJuvJXQFiA8YjkDGuDAKq+wLzU3c7WN7B2AbV2yboxDzrmef9omBc1qI?=
- =?us-ascii?Q?5WMCW3WSnWyK2cSg50DODJuqBt2UiBKcAgdweusulNJar2lYa6w2N0Soz9PP?=
- =?us-ascii?Q?4WkshOy1y4MvBxHFymZGPM1oqL118DkMBZK8ZsmAFpr3zRzD8+jnQFVom9p3?=
- =?us-ascii?Q?e09qnWCUnlXyTjDzdBnWstSQY79DScmlp22fWx5ypGipjoZEOyoln4ApUGTz?=
- =?us-ascii?Q?ac11ndbePztPdkkTL/cD3N7sRCm2Ta0DiArD/Tmd7bzhvWgWhIRvc2/und0+?=
- =?us-ascii?Q?4WoovskdYlbmIQDZwgz3a5Pq4IRRr/3dhVFHa2Lv+OeAJSJxNrvvSKYjmHl2?=
- =?us-ascii?Q?Y8Q57zdzgWil+r1CjIpZ9xuLKtuKiwj838v80gLn3omN+mGveVgJdMgqtl1B?=
- =?us-ascii?Q?WBDUM5XoN5LX8fQXkOLtybJBUsSbaWYuMsLbUkV1JNxnhFlrWnJ3PdMOyrA7?=
- =?us-ascii?Q?a4Rp9f4+IP4iMxzRFI3vn0Ah0+tZjwL1ZaPCYoeIdRH5L/fGv7W0o6JXjeNG?=
- =?us-ascii?Q?BI4fGBsDIbeyHOrysu17z1Ro0AkwBL2+iAErU6NmizdmhkUJB7u9p2dZH3nF?=
- =?us-ascii?Q?HNomyf7SvXO/giJ3bLVy0kn/qNi8UzmU8rnEsOdWElOHLYewyrTSTCAGrfOz?=
- =?us-ascii?Q?HkmGJytocjCoO2/jw3orz11k3Q4UqG4gJijnZX5BkqeQ5EGm9fR3YApbGzW7?=
- =?us-ascii?Q?l3y9y86eUBSMnAEV/0CjAg99ZOuitJbXezuf/RPhvThkughJzdxkihtmL+Gu?=
- =?us-ascii?Q?X4LLHFg2126U1YaEaEDnV9DVGQtz/9t4xP9JVgKOH0xWnubIuzpWUMk9F8mN?=
- =?us-ascii?Q?P4EytE27FD0T88o8SzAen0+Pp/HobiqAO9hQqAgL+FUE1qiVYVDt44XglC3s?=
- =?us-ascii?Q?EzWOHpwnyvk0p3Mcmpyw2KQNg4b6Au4=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?NpCgiCW2bbQwjr3iZI8raf5codGnuTrq4LefAf7MKZaIpkrnoQCnVaHS131p?=
+ =?us-ascii?Q?IITVZvBbyoyOWf7uqRKpKAbsdAmp9SF1RLFpTfqRXDmk9GgW1f/RvIqksByt?=
+ =?us-ascii?Q?9qqQKl0X0c41QUEl63g22rmnx0+7enx4khMUf/ULulNMTNQvXM37/wpnkTKS?=
+ =?us-ascii?Q?Hljllgr5Yi6dGs2Ns5onxTSrthMZag89W1owoGHFKSXPQKSPoXV41L0ZLsEJ?=
+ =?us-ascii?Q?Ebw0fWcVSDRXhKPgU7p7Q7540PflBIrRlE5xhZxxIwcVebp2B0RiDAocfYc9?=
+ =?us-ascii?Q?1+oo8vFDVptEelVk7maAEiuNNpF7VZhHj3Im4DaU+oyb2v6+JO1uyNSMzdGG?=
+ =?us-ascii?Q?aw9YG6Af65cPYzY+Ao9qNfc6kLAa2nL4qMF0GqDqo+epSOOD/RdUs9/gOcM0?=
+ =?us-ascii?Q?2/2JAZBDKaWAfhMsoQCPXs15ZyJ/fMXJ+ZDMeiiMx+bG2vCXU8XDaggOybEw?=
+ =?us-ascii?Q?idXV7vyh7ZyUe1RNjvGcIivGHEyPHaInnhKY8d58f6L6A9UyATwSYZM8Y6qU?=
+ =?us-ascii?Q?ioJX4PBOA3tXMdm/trJyLtEl5Dze6wj6brifrD+dBa+/P28SG4oETOnK605B?=
+ =?us-ascii?Q?M4Hgc8VqGtsVO1I3g+sLtWQ0uU+PGxphctng4lYuFbC2t34gceQ1oB5z59Jg?=
+ =?us-ascii?Q?tojNdjsiuoL6tOo1G872vKb0fkTZ092TL3mNOK2MzLzv0E8lRXkz5k/8qL82?=
+ =?us-ascii?Q?QHZLmapLlz/U+CL31MDTXRd2zm/Bo6UvajnXTqvQnRkLuppt5x796RBECU9C?=
+ =?us-ascii?Q?wIcj/u+qzKd+ri6bvJs1Axw5DVzEG6AEbQsi+Yl9c4c3PaNabJvvNbdNLtTu?=
+ =?us-ascii?Q?PrvTpQF0/KZaSvoNAtr6bO0U3KokcAASZFq+mJmtDZoqL16BZyiQkdsieP5H?=
+ =?us-ascii?Q?+89VvTqCE+twO0Sh5d5FDBbuHcNGVEZLKDBIFiF8LHu8HJo1gvj6WiHmDY0Z?=
+ =?us-ascii?Q?tMv2FHJzsZm5slJbtCfoa2tWziQq78GnO5iSg3TWjm3AyBxaIMoKw0SluXpS?=
+ =?us-ascii?Q?qz6CYqV9lV9EbEJI2ssvtk6n8AzgnRL3OqjbAjr+A+iqRTNi5fmu9tTytnsZ?=
+ =?us-ascii?Q?jDweN2lUdk5/OxKv5VPNbLoFgzN/H8kDSqzvYaiixMR8dSTnsrobNYGYVM81?=
+ =?us-ascii?Q?j5H38O6r/CWWNwQ8ag1oPoZfuk5q4ykjn6xixsUhJep/bti0ARni3s/XVV5l?=
+ =?us-ascii?Q?ffVSN4oWZM4TaDfNy1dhI8L1E6OkAdZ7a+q8nEk2WdsU7pidrEPUn3h0vS9I?=
+ =?us-ascii?Q?nzpvb7YzLmAxQQj+emFVqG1mYLkWulTZOG7p42Nu10Q1C5Pv54tEJ0hbu/uT?=
+ =?us-ascii?Q?l+4ZkRi/FxCmzMy+DbMVlZ6lXuziaGcku/4Mld2ygmKF68AnkShtqA4p9vsq?=
+ =?us-ascii?Q?ILyusaebPbEsU8OyWw8LdYjqL8WlRF/LA4J/9bRkuBey3ZowMF16j3ft9Suf?=
+ =?us-ascii?Q?yZ/IGEOa+mDgbBxf/Vqk/pzstQqRnwRBFiHQCacM438IG1FxdkQOUT0i+PV1?=
+ =?us-ascii?Q?gWKZJn3GkTGjICMbvI/Rl6cSHid+0PkfrFwcUTCYs0yJAGkcgtw6+lHvl1Q/?=
+ =?us-ascii?Q?/CA6YRi70NVBEqIove3V6OJJauAk1Jy1xd5qf1Y2BKCMM4SEFZfX5PMP+nzH?=
+ =?us-ascii?Q?6SZQs0F6eSty1f3I4mknRSoQ7GHuD19trj7peyvkWx+RQ3D1HTiXJXwIBMCB?=
+ =?us-ascii?Q?vzgy/+ZNvxYiG8/grsmzEvol41tvupgBwqd7TaWWnx44P9a3gMikNEvE8V84?=
+ =?us-ascii?Q?3LFSANdhPlHmRMQJU5hb8hlGswptHYg=3D?=
 X-OriginatorOrg: iopsys.eu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6e7fcd77-3b78-49e4-656c-08def2edec81
+X-MS-Exchange-CrossTenant-Network-Message-Id: 60ae3454-93d1-4aae-e6f1-08def2edeeaf
 X-MS-Exchange-CrossTenant-AuthSource: DU2PR08MB10037.eurprd08.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Aug 2026 12:34:42.3702
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Aug 2026 12:34:46.0167
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: /UDe3DMRW4bldHQEJj3/eaEjwabC4aSlDSOXa7D0zLUgiZTQN9bHp3vclXTXDoDlCv+13IQywnE9dmS9lRsZf3u+TjufiIiRCoWgOQFLZyg=
+X-MS-Exchange-CrossTenant-UserPrincipalName: 7ql0O9Vlq4iPNBM9qM0MYQPZ+wfA+FClsCuiLwbNhSurIs1M0qGB1a5j4YhceienXCgbg9TOqxSetvJUHrZLgg33WVwdt2LEDwkIoXnNYIc=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAVPR08MB8918
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260805_053449_576859_881FF22D 
-X-CRM114-Status: GOOD (  11.25  )
+X-CRM114-CacheID: sfid-20260805_053452_735916_0A20B95C 
+X-CRM114-Status: GOOD (  10.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,69 +150,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Daniel Schwierzeck <daniel.schwierzeck@gmail.com>
+pcm pins were used insted of spi pins. This patch fixes an issue.
 
-On AN7583 both I2C busses have a pin sharing with GPIO. Also the pin mux
-setting is done in REG_GPIO_PON_MODE instead of REG_GPIO_2ND_I2C_MODE.
+Thanks to Daniel Schwierzeck for noticing it.
 
-Add dedicated I2C pin groups and function groups for AN7583. The new
-groups must support i2c0 and i2c1.
-
-Signed-off-by: Daniel Schwierzeck <daniel.schwierzeck@gmail.com>
+Fixes: 3ffeb17a9a27 ("pinctrl: airoha: add support for Airoha AN7583 PINs")
+Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
 ---
- drivers/pinctrl/airoha/pinctrl-airoha.c | 25 ++++++++++++++++++++++++-
- 1 file changed, 24 insertions(+), 1 deletion(-)
+ drivers/pinctrl/airoha/pinctrl-airoha.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/pinctrl/airoha/pinctrl-airoha.c b/drivers/pinctrl/airoha/pinctrl-airoha.c
-index db6644bcd3aba..ff77a7832d11b 100644
+index e5ae703c0e0bf..ad6d24e39c868 100644
 --- a/drivers/pinctrl/airoha/pinctrl-airoha.c
 +++ b/drivers/pinctrl/airoha/pinctrl-airoha.c
-@@ -896,6 +896,7 @@ static const char *const uart_groups[] = { "uart2", "uart2_cts_rts", "hsuart",
- 					   "hsuart_cts_rts", "uart4",
- 					   "uart5" };
- static const char *const i2c_groups[] = { "i2c1" };
-+static const char *const an7583_i2c_groups[] = { "i2c0", "i2c1" };
- static const char *const jtag_groups[] = { "jtag_udi", "jtag_dfd" };
- static const char *const pcm_groups[] = { "pcm1", "pcm2" };
- static const char *const spi_groups[] = { "spi_quad", "spi_cs1" };
-@@ -1165,6 +1166,28 @@ static const struct airoha_pinctrl_func_group i2c_func_group[] = {
- 	},
- };
- 
-+static const struct airoha_pinctrl_func_group an7583_i2c_func_group[] = {
-+	{
-+		.name = "i2c0",
-+		.regmap[0] = {
-+			AIROHA_FUNC_MUX,
-+			REG_GPIO_PON_MODE,
-+			AN7583_I2C0_SCL_GPIO_MODE_MASK | AN7583_I2C0_SDA_GPIO_MODE_MASK,
-+			0
-+		},
-+		.regmap_size = 1,
-+	}, {
-+		.name = "i2c1",
-+		.regmap[0] = {
-+			AIROHA_FUNC_MUX,
-+			REG_GPIO_PON_MODE,
-+			AN7583_I2C1_SCL_GPIO_MODE_MASK | AN7583_I2C1_SDA_GPIO_MODE_MASK,
-+			0
-+		},
-+		.regmap_size = 1,
-+	},
-+};
-+
- static const struct airoha_pinctrl_func_group jtag_func_group[] = {
- 	{
- 		.name = "jtag_udi",
-@@ -1966,7 +1989,7 @@ static const struct airoha_pinctrl_func an7583_pinctrl_funcs[] = {
- 	PINCTRL_FUNC_DESC("sipo", sipo),
- 	PINCTRL_FUNC_DESC("mdio", an7583_mdio),
- 	PINCTRL_FUNC_DESC("uart", uart),
--	PINCTRL_FUNC_DESC("i2c", i2c),
-+	PINCTRL_FUNC_DESC("i2c", an7583_i2c),
- 	PINCTRL_FUNC_DESC("jtag", jtag),
- 	PINCTRL_FUNC_DESC("pcm", pcm),
- 	PINCTRL_FUNC_DESC("spi", spi),
+@@ -739,7 +739,7 @@ static const int an7583_jtag_udi_pins[] = { 23, 24, 22, 25, 26 };
+ static const int an7583_jtag_dfd_pins[] = { 23, 24, 22, 25, 26 };
+ static const int an7583_pcm1_pins[] = { 10, 11, 12, 13, 14 };
+ static const int an7583_pcm2_pins[] = { 28, 29, 30, 31, 24 };
+-static const int an7583_spi_pins[] = { 28, 29, 30, 31 };
++static const int an7583_spi_pins[] = { 45, 46, 47, 48 };
+ static const int an7583_spi_quad_pins[] = { 25, 26 };
+ static const int an7583_spi_cs1_pins[] = { 27 };
+ static const int an7583_pcm_spi_pins[] = { 28, 29, 30, 31, 10, 11, 12, 13 };
 -- 
 2.53.0
 
