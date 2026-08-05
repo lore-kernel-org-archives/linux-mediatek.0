@@ -4,86 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A59BAC55174
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2026 07:09:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99315C55822
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Aug 2026 07:28:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AB188XGB4sbY3JcvO+RtPjAq1fA2l4207oGcIEuttd0=; b=Oqls2t+Ftt1LVyNmUnp++KDjMY
-	NyP76kQlO/cAmN2w7D3lTotfzSa3u9v1ZtWYWmpybs/z/GaiJ9ux2ato8M+JXyAB79XhqfdLT6+p5
-	bFNv7eC+ILjGlOc6XzvyPm6la239XoQ4calEl6qIjWk7q9Z6YCDGMKNRcqoJH9dLBhK/8SIBM1qVT
-	5VWXTbYJDh9jBWTwamRlQ0dYcfADGElyvyLnOT8IZa3fLBIvKKbatj4tVnMgsHUeUTnLIlUk6P1BX
-	bPQ3w7ZoXV3x7zQHWXQRjUA2EfKusd7CA+32YLIKEWzZ26MCsWQkKN7uLiPJ3DbPZmG3x5zwyCZFQ
-	apZVhdUg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jb9IMGHKa0qKlFCrdN1lAvSnRHELMc3mbyx/KloVe8U=; b=QSBC6RXIZqzk/WrLtQF2gVwhz1
+	G/yoQHNImYDsq6iPF7l9KphmjXZyLQKE64o9x8T/RX+FZ4jlNqyp5k/0ZzlFIVG/VdhN+5r9J27KV
+	No2sk4qBj6L/rsAPTl8XmAgmcVKgwE/labhTkgWx/M7EhSLSVhFOKKZDZGLME1qJXqVZs2U12Tr2d
+	VeWrEaZj5DN8NpMDmpqi1jVOqC/lTpgAkfl+7gUdbZNIaUNYOc17JTVcJ7/yyUVzf5QN2C/mQJL1+
+	VIlti7w0kDkEBQH5QsgMTMKtdKVN38mak4FDM6yh4Dtn3H+KKsTSNjodHVIUUCgQwEVSGB768QHh7
+	J3QBe24Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrVl7-00000003NMX-2xk2;
-	Wed, 05 Aug 2026 07:09:49 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1wrW3e-00000003PIq-1Krk;
+	Wed, 05 Aug 2026 07:28:58 +0000
+Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrVl4-00000003NLX-2HEI
+	id 1wrW3b-00000003PIM-3siY
 	for linux-mediatek@lists.infradead.org;
-	Wed, 05 Aug 2026 07:09:47 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-49557167508so5398575e9.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 05 Aug 2026 00:09:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1785913784; x=1786518584; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=AB188XGB4sbY3JcvO+RtPjAq1fA2l4207oGcIEuttd0=;
-        b=Zmd250JP9XjGtUOnPFTnNZdltGx++3X0ytGmoupNQ3H/GHglw86oyBKL2s6fVFjyBI
-         Sa7BIxKv6hZfoY6VHM80rfFp29jku7gJiIoy8WFqpp1aKLfnCGdwYYXU5NfD301y0GBb
-         kR6GKqmelJItOl+jdpZd6jryZ+ou5QAZsW+fpYX1X/eqWsakPcHkxflpeKsUssNj8dGD
-         +v25rZw8Cz9NKRzu6TcVUGJBkfzNCu46TTCYSTY3g6CQSHs+9PARWHwI8GmZgkpB100i
-         L5jE2mtpQnBsB+jh5YhRJbaPXQ4qhCRiI5f9QaX+O0RU9Vnm4oRF7q8swJUB6W54Jr+p
-         p3kA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1785913784; x=1786518584;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=AB188XGB4sbY3JcvO+RtPjAq1fA2l4207oGcIEuttd0=;
-        b=nl8AXVhAat/3br/Xx/W025zf47bqzxpGdSvYqIYSAHJoaN+3QsuuYEToLkG4JBat9O
-         wiMX4pHjzbo+Imnc5qCjWXPf1ZdjeZsEXKdkM9Y/xOETBIctXb3hIl2xijr6BwHyUP2m
-         9jL0tpYqoiztr9BhPrEA7MHmy3z8k/Q5DsKjisl5L/Oi7GgrEKQXsWP7c1aFcRIbSXM4
-         pit8yrqctAKqyzCgPGemBikArvIilkaRh87JF3hjq9JwlIUpqzaCrn4orrQJfjm1AKnv
-         B/cJLSJkkIYuSVh5alBTl3AKGlSM6Kz3yoB98mFSzJyZrR75UyD5gRXkstqNnuSvxee6
-         FhBg==
-X-Forwarded-Encrypted: i=1; AHgh+RqeRupQ6CW8cTxQDYqKph2GIpRhpSa1frOSXa+ebd9epIu2A+L0E+48r7bPoz0Qm4zyfz1OczrlucJC0lO16w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzDTdvIVaPh6P03Yf9LSrg7MO9PeGlocGH9UHW6jy4TYOl9KtJg
-	1nIjIzQjygJgKdpbIrIK32UaWchnMHCRnJN2IX6oCjaNvKX8IL3mFkGb
-X-Gm-Gg: AR+sD106RoK/k4VkPPtjy4Q8Rqx+MPurJPQDrD3tHZsLpERU1UidmocrZ/6vBk1te+7
-	J8OAtE5dXqf0QR/E+gMMOmyeIpshi2i43MjyRKwaxKi1549MgK8Ygr8YzBmJkKWJRweaidTp5XA
-	uTNintIr+RZNGgQsLTq4O4WPdrUdWTtkfaqvgwYG8BruGTBFNYbspTyIUNGUbJx3Ye1qPjxsEw6
-	0L0FFY5nIqazYbBJsTlXKZRyeLz5LhGe7XJk5ftXoqgRH1S5CuJJ28UmcXQVUO43GIY3gyP1jGf
-	831o1FOX6b12YFpzOSnvcu8O4fqV92PgjAyQaMedj/Wp0dbA2X9lKXwExA+sa576L0vKxrlbzZm
-	WqgfEGaEUe2yrdMxAKNhhT8Q1dNuSiFDaRMS0A0lTjkf2p+X//iZKCiE+hrtH2xgA5SLdGS/2ro
-	D0KiHUzV2Pu+Hzi10L3ciMiGLWF9NrPSCVPFDE6qMu17nBDpGVAMKGdueomXBEpLeSew==
-X-Received: by 2002:a05:600c:138a:b0:498:943:ccc0 with SMTP id 5b1f17b1804b1-4994e714d8fmr46447075e9.6.1785913783962;
-        Wed, 05 Aug 2026 00:09:43 -0700 (PDT)
-Received: from fedora ([46.205.219.119])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4994e4c32e0sm35567225e9.0.2026.08.05.00.09.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Aug 2026 00:09:43 -0700 (PDT)
-From: Daniel Pawlik <pawlik.dan@gmail.com>
-To: netdev@vger.kernel.org
-Cc: lorenzo@kernel.org,
-	win847@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Daniel Pawlik <pawlik.dan@gmail.com>
-Subject: [PATCH] net: airoha: npu: use coherent DMA for mailbox messages
-Date: Wed,  5 Aug 2026 09:08:51 +0200
-Message-ID: <20260805070851.2885888-1-pawlik.dan@gmail.com>
-X-Mailer: git-send-email 2.55.0
+	Wed, 05 Aug 2026 07:28:56 +0000
+X-UUID: 4d405b4e909f11f1acbe4559397dec65-20260805
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=jb9IMGHKa0qKlFCrdN1lAvSnRHELMc3mbyx/KloVe8U=;
+	b=C8Kvc85AVFFrcIlWmYdBXHgM7HX3Gm3SfhpdEh1maiC5sRop12T+ZC17vNTFaupE7gsWcSHbUz2T3rxqA3kK41osk6S87G3MGULJ0bgcTsH/kI8msr6OL9honDKRb2uHhz0InjaHXbb+FI4dPxKcdhjA+F7/6UFTIc+BZnNI7HE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.19,REQID:fb611cf0-c326-4693-a298-a786510ca10f,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:7db8b62,CLOUDID:716226e2-71f1-405e-92eb-6802d6af74fd,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 4d405b4e909f11f1acbe4559397dec65-20260805
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <eason.lai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1517496638; Wed, 05 Aug 2026 00:28:49 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Wed, 5 Aug 2026 15:28:47 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 5 Aug 2026 15:28:47 +0800
+From: Eason Lai <eason.lai@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<kun.wu@mediatek.com>, <deren.wu@mediatek.com>, <sean.wang@mediatek.com>,
+	<quan.zhou@mediatek.com>, <ryder.lee@mediatek.com>, <leon.yen@mediatek.com>,
+	<litien.chang@mediatek.com>, <jb.tsai@mediatek.com>, <eason.lai@mediatek.com>
+Subject: [PATCH v1] wifi: mt76: mt7925: Fix MCU command timeouts during module unload
+Date: Wed, 5 Aug 2026 15:28:45 +0800
+Message-ID: <20260805072846.1428148-1-eason.lai@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260805_000946_599852_FC91D0B6 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20260805_002855_975250_D2B31AF2 
+X-CRM114-Status: GOOD (  12.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,69 +85,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Commit 6f884eb87a79 ("net: airoha: Fix DMA direction for NPU mailbox
-buffer") switched airoha_npu_send_msg() to DMA_BIDIRECTIONAL so
-non-coherent CPUs invalidate caches before reading NPU GET responses.
+Move MT76_REMOVED flag setting from mt7925_pci_remove() to after
+mt76_unregister_device() completes. Setting it too early causes
+mt792x_irq_handler() to drop MCU completion interrupts, timing out
+teardown commands (scan abort, BSS_INFO_UPDATE, etc).
 
-On EN7581 + MT7996 that change regresses probe: the mailbox completes
-successfully, but WLAN_FUNC_GET_WAIT_NPU_VERSION still reads as 0.0 and
-mt76 never binds NPU offload. Healthy boards report 0.1111.
+The flag must still be set before napi_disable() to prevent reset_work
+from re-enabling NAPI and causing deadlock. Also guard mt792x_reset()
+to skip queuing work when device is removed.
 
-Mailbox messages are tiny and already copied by the caller. Bounce
-through dma_alloc_coherent() so the CPU observes the NPU-written
-response without relying on streaming DMA direction.
+Fixes: 896f4dfd68e1 ("wifi: mt76: mt7925: Fix unregister deadlock")
 
-Verified on Quantum Fiber W1700K (EN7581 + MT7996).
-
-Fixes: 6f884eb87a79 ("net: airoha: Fix DMA direction for NPU mailbox buffer")
-Assisted-by: Cursor:composer-2
-Signed-off-by: Daniel Pawlik <pawlik.dan@gmail.com>
+Signed-off-by: Eason Lai <eason.lai@mediatek.com>
 ---
- drivers/net/ethernet/airoha/airoha_npu.c | 21 ++++++++++++++++-----
- 1 file changed, 16 insertions(+), 5 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7925/pci.c | 4 ++--
+ drivers/net/wireless/mediatek/mt76/mt792x_mac.c | 3 +++
+ 2 files changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
-index b679bed952de..d2f6c9c084b8 100644
---- a/drivers/net/ethernet/airoha/airoha_npu.c
-+++ b/drivers/net/ethernet/airoha/airoha_npu.c
-@@ -166,12 +166,21 @@ static int airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
- 	u16 core = 0; /* FIXME */
- 	u32 val, offset = core << 4;
- 	dma_addr_t dma_addr;
-+	void *dma_buf;
- 	int ret;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+index 02ef09dd797d..93c823eb7501 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+@@ -47,9 +47,10 @@ static void mt7925e_unregister_device(struct mt792x_dev *dev)
+ 	if (dev->phy.chip_cap & MT792x_CHIP_CAP_WF_RF_PIN_CTRL_EVT_EN)
+ 		wiphy_rfkill_stop_polling(hw->wiphy);
  
--	dma_addr = dma_map_single(npu->dev, p, size, DMA_BIDIRECTIONAL);
--	ret = dma_mapping_error(npu->dev, dma_addr);
--	if (ret)
--		return ret;
-+	/*
-+	 * Mailbox payloads are small and bidirectional (CPU sets the
-+	 * request, NPU writes the response). Streaming DMA_BIDIRECTIONAL
-+	 * mapping regresses EN7581+MT7996: MBOX reports success but
-+	 * WLAN_FUNC_GET_WAIT_NPU_VERSION still reads as 0.0. Use a
-+	 * coherent bounce buffer so the CPU always sees the NPU response.
-+	 */
-+	dma_buf = dma_alloc_coherent(npu->dev, size, &dma_addr, GFP_ATOMIC);
-+	if (!dma_buf)
-+		return -ENOMEM;
+-	cancel_work_sync(&dev->reset_work);
+ 	cancel_work_sync(&dev->init_work);
+ 	mt76_unregister_device(&dev->mt76);
++	set_bit(MT76_REMOVED, &dev->mphy.state);
++	cancel_work_sync(&dev->reset_work);
+ 	mt76_for_each_q_rx(&dev->mt76, i)
+ 		napi_disable(&dev->mt76.napi[i]);
+ 	cancel_delayed_work_sync(&pm->ps_work);
+@@ -725,7 +726,6 @@ static void mt7925_pci_remove(struct pci_dev *pdev)
+ 	struct mt76_dev *mdev = pci_get_drvdata(pdev);
+ 	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
+ 
+-	set_bit(MT76_REMOVED, &mdev->phy.state);
+ 	mt7925e_unregister_device(dev);
+ 	devm_free_irq(&pdev->dev, pdev->irq, dev);
+ 	mt76_free_device(&dev->mt76);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_mac.c b/drivers/net/wireless/mediatek/mt76/mt792x_mac.c
+index 888e5a505673..1e20b333cc61 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_mac.c
+@@ -278,6 +278,9 @@ void mt792x_reset(struct mt76_dev *mdev)
+ 	if (pm->suspended)
+ 		return;
+ 
++	if (test_bit(MT76_REMOVED, &mdev->phy.state))
++		return;
 +
-+	memcpy(dma_buf, p, size);
- 
- 	spin_lock_bh(&npu->cores[core].lock);
- 
-@@ -191,7 +200,9 @@ static int airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
- 
- 	spin_unlock_bh(&npu->cores[core].lock);
- 
--	dma_unmap_single(npu->dev, dma_addr, size, DMA_BIDIRECTIONAL);
-+	if (!ret)
-+		memcpy(p, dma_buf, size);
-+	dma_free_coherent(npu->dev, size, dma_buf, dma_addr);
- 
- 	return ret;
+ 	queue_work(dev->mt76.wq, &dev->reset_work);
  }
+ EXPORT_SYMBOL_GPL(mt792x_reset);
 -- 
-2.55.0
+2.45.2
 
 
