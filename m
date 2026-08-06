@@ -4,102 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBDA8C5AC7C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2026 16:53:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 632CDC56208
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2026 17:13:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
-	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tg5FdjePWRklsBJbX6Npe19S1RoA39DQ5iJXo4rcmgc=; b=3WlP8P7KtObP2VtTHNX1LvcIq5
-	MR6XPht2BA3zM5VJH4K3r/SzKbXBIhV21dvuQ/P4g+6K5p7ON4r0oNyJzXnQRUZY/p18QOpxBRmk9
-	Au/5lVyJcsHa9HjjzXCjPXbk4iXHgkJiD44o/UFa/lPu4EOXevtclXGQTiZf0wyYON3MJPA+Y2Uo9
-	mL4S1GI1lPzHE/HSiPSSl9PmwoqgVobAs+6CmtXh4/4UnhaR0cdVGcfJRrZlcrP99+4HtJSFMtztN
-	Z7opds0o5WJNGjqGxHrtg7z75dMdF6oUDgvgecjvrMv07e/lZAL7+1ZyMRIl568fs1DrvflSs0R5y
-	OL4oRlbQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZtyOCXOdSpPncxX9X95K21xTpnlgw4ERbigVVrepMHc=; b=ZClYmZ9s5uqYYAIOgHs04++6Yr
+	mPEJMMoWKu1lgd2FB1qeJ1VE+q0107qvKmMdkJgW4OOvN07OnY1jZgmI3GFX5CvP+zy6r8dg241iJ
+	cE8+0W74tKMfF0BQwVdC+tEbsDBXHiac5WF42D2moJo/9RQovqHuVIIKuDwZL/7KwkIkifzfQzA3v
+	8FC8Ld+tqqJexkk2XIi+E6CiaipnAB5Kd3eMyiHg0SEKQCBDpwAmIatZTAjWtYEt5b7RuD2VKKycU
+	5ONN7XihVhj8wfZ7Y82tk7Etnc7PPvwFCP9/QaHG90OKEfW62r73o+DJMlVG5Z4bsRWvVwiAuAinA
+	IJAKXOtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws1Lr-00000006GSh-2aDo;
-	Thu, 06 Aug 2026 16:53:51 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1ws1f6-00000006LWu-16th;
+	Thu, 06 Aug 2026 17:13:44 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws1Lo-00000006GP7-3s1i
+	id 1ws1f3-00000006LVx-1hWq
 	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Aug 2026 16:53:50 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-47fe377a217so1635645f8f.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 06 Aug 2026 09:53:48 -0700 (PDT)
+	Thu, 06 Aug 2026 17:13:42 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-4980dc26022so24260015e9.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 06 Aug 2026 10:13:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786035227; x=1786640027; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=Tg5FdjePWRklsBJbX6Npe19S1RoA39DQ5iJXo4rcmgc=;
-        b=cnMiNqJ7ctmY18Mb8fR56FiFH4c/p9Sjx5dIrU/wqVVXECfR6oYFyDp3oY23OO9DMQ
-         W6q/w9lmmkj/9YHSBBqrvVUW2tttmLLmV/nfRn6d+AutjQBs1xPAcC4NLg7MRnRxotBV
-         7FZSgttjrWAd4hBD6v1cUcNrr/vvZqUMTc56WXcwWk47j2y335bQWJGwaLnvQnBSK+MG
-         4putoFRg6ujmtKlHBjNxlCxCk8RcZpVFeFFmSATYTbDBCePl6DnpODaB4Fv9ytZE5ssr
-         1Dnmb2O3b7y0QYDecJ3743UuseGc0sJHEUmaYa0SttZnchGTE76kQkXjQC56Ukn8Xn0v
-         Tfpw==
+        d=gmail.com; s=20251104; t=1786036419; x=1786641219; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:subject:cc:to:from:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=ZtyOCXOdSpPncxX9X95K21xTpnlgw4ERbigVVrepMHc=;
+        b=JPRKxRpe6Iafzab5D0yuGjLRM1XK1BOnZOyP5v1qfIE0+4ujcFvNPVD5mdBuU1bMtS
+         eQ6K/3W7M9nUXwYUQF2y5FpSpM6+rEtRumiHhunB4OsTbnHBplL1O9PYOwUfYu3cba0k
+         D30jv7H6dd3bx4fe4v+byAljBj5Q/NnOs5yqeNSCG5lpgsHdZrsMNVYegSJVqmff2J/l
+         eMdd7ePNXnnTZmP1hhFBG8VXJnD6uHBvTDH6EZy5CM1pYLieTMq4qcJd6+j6oy5KzryG
+         1Ig8yea/e1FXZ9cMAEHngYJauj1YLqpTU5jyJq5JO3Bblrko6O/YTRIITFZXsmPWW3n2
+         IEGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786035227; x=1786640027;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=Tg5FdjePWRklsBJbX6Npe19S1RoA39DQ5iJXo4rcmgc=;
-        b=dta7Xu7Dzr6UkH6lSwdFP2/r8Qj1ntkkc6/uuvgemmLqtH8dv/o4h2QYi0Lvxq6epk
-         fF90sogxUuAzbK4BdXkVuJ3pLqHH3RR6ePy6DBowAD4N5MH+zaVMQBy8qRVkyQNhpaFv
-         SOFXIla3u6kA81tCHVg4RqWbScdSDX3aeK67NfJIZQjCUn4ik/rmCQRGltL67EizWvRW
-         3vazPkF7ftFUBfwjuXJ8ayxAFuXuDJHoz8ApKBaNKIAv5P9Ug3u5bC1HLX5vvaPjxGVU
-         a1e/1QLawpjH+bQ62l0YqBeVvZS6ZNV4GDQGMjMjhntafTKUpcSeKj0QbJa/ExMKLlAI
-         xHHA==
-X-Forwarded-Encrypted: i=1; AHgh+Rou7alumvcCoY1XN23N7hQhRPPpBbvn7fTSRWGPRFNVWHfyfrNSSsCgNTkTdqYSroVeKxPi+9mremXLCn+moQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw7cP7TcIXn0FFSPglMUWdXSPeR7bpzvJPnaA2Q0e6XivxRy1dH
-	SS0nrjIkjvra0qNcNjJP/Paob3MLV1F71NiNeohqbzE8iDJ7c6Zba1xN
-X-Gm-Gg: AR+sD104YQwOn+wnmuxyWx+RPb1CHUCbBkUN/i/t1zgDXfse9/Lcd9VHGh2qngRG72Z
-	Q96cyzKnnGNm5HpJEIoDnQ+pn24NPReogMQaOOymX4vKZX38pqa2c1c5TkF3mRLclM6754IcXCF
-	gMGm+p5JXjr+zOHRmcxhDA5lmmSgrVe5ucE02T4n9j2krqPPOsrean9QyE1BRS0N02pDNnBW8Oe
-	XF919zOl+PQ/dwff1VZIpGUDp33ssF0Q+mP9N0Bx1R2GUEvbxLJmipAPRxQaDxGU8+AhW9FkOzb
-	qv2UzLcz0CbQH1ZUXQV8rtfAhGByTcsBg1iqmWxV0Ko+E0EQMtsEE7Ngn8N0eN3C5bMKmgkDlpi
-	rkvraXhILj2hoHlBCAuSAYbjVUjOtveWB0bNYY5/D6MLr2mHV2gKQFg0d+Hr1YS4ETRUdUZm/O9
-	JUc3FQ+NM5nT/nLyKpiPnKmxP27wH+zLz9U2DqSWCk3PlsdKCnqjnLI01EoslFUQMNlbIs3ZE52
-	WlW932v3xy9F7nt+2PfOTQld3jMJ2id2H2hp8lIUxv4ojJ2hMlOMg==
-X-Received: by 2002:a5d:6a4e:0:b0:47f:8fc9:6eaa with SMTP id ffacd0b85a97d-47fec4edc2amr21933554f8f.8.1786035227056;
-        Thu, 06 Aug 2026 09:53:47 -0700 (PDT)
-Received: from Ansuel-XPS24.localdomain (host-79-42-255-151.retail.telecomitalia.it. [79.42.255.151])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-47ff79a7f07sm8070586f8f.8.2026.08.06.09.53.45
+        d=1e100.net; s=20251104; t=1786036419; x=1786641219;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:subject:cc:to:from:date:message-id:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=ZtyOCXOdSpPncxX9X95K21xTpnlgw4ERbigVVrepMHc=;
+        b=ZXgXnxZm6WOAj1S3nWXCDRKQasMwbi2eq8zQsU+3cyBa2Y8Cv6n4UJETRnrVjMRHIV
+         Z1H6N1ZhCC9gxbmZ7aGE5G7SCsBky/qupYj+7NYZMqHAeHYtshe0T2Vp+EDYbo7UYNaz
+         FRh+YQTidRLx6uzlYKrA0OYqIKLUqQkhAtT9fVtlcrf9i4EfYiBEBsmIVGZ92XNMjrSb
+         eqWNZlSvja8Wl/nmiQvqxpnyKC4BbSs3EsL/cJ1uO20VZc1icsbIolpwPeUelLxVaVRl
+         qR8gst9KoVZzmhblv+hmVafPSsiRyaeM7gTJRMe/m1mCewg3i7JgrDixmbZq6JQvNOUt
+         ksUg==
+X-Forwarded-Encrypted: i=1; AHgh+RrsnQH+MPHGU8i116CPmagMZi/UFCbw+iRfvAn3zkdVFFTttfmKIse7komNwotyO4M02w1yDhigNfUZzEOc6g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzsuEBOUJYor8Oj2dODk/vzW9RmnYOh5xxhyKIZP7B1/NqIYY1o
+	AzkC/ZsWKbsBwLWsHzAZPKWMnCee0aOtInwuWGI9rv7U5HmYbMS7WGrO
+X-Gm-Gg: AR+sD12TvOdJPKqZr3+zvLbUALsPCYu/lie5JijDM2+kMmSf02Fe47gvj3uhbgKNnbS
+	oSx1MZNk0dbadKBuxsdImzSINe18prtfF6TcUEqAsqa1tuX3hb/Q9bZOzE5of4lm76GO7iCqLN9
+	4f4luiGXOLq6hFDSC6aZBitXPpH3nQXq9v09MeUliymC8RWjfHhuOD4szMTgspT0Hi9t2GKlCh5
+	So1h0BzpsXHXJN/GycnTUgX0i+J1iHcczCUq03iRmzRZkLFpBysS92DAi/VYFRhcoj2gsZUelBN
+	qzfNagb5MAn/qb+ai1gBvz9GJSNtnC3cDe+nrUEezyERB/HLsBLx11jqVZ32NHlqqewnOe7fTEM
+	OfpAydvtJ8xR+t6G/4u4xDVNxomJjhhnQ0c+DlOPjAnPgZpaj6UTcF79Ts5AYpyLL/qNlMj3qQd
+	/mVDyVZfVEmKiC/waJR+7zmkXdVhT9yIRA9WnYfWsQIxIuZIeWuhQ2wY2euI/zK1Z4RyiPbzYY4
+	mxIwhwPqy2H/F6Xg8ViBGMwGXSQW8ROFrUd
+X-Received: by 2002:a05:600c:5251:b0:499:5b04:6920 with SMTP id 5b1f17b1804b1-4995b04695bmr7965295e9.16.1786036419254;
+        Thu, 06 Aug 2026 10:13:39 -0700 (PDT)
+Received: from Ansuel-XPS. (host-79-42-255-151.retail.telecomitalia.it. [79.42.255.151])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4995bb81731sm1732145e9.0.2026.08.06.10.13.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 06 Aug 2026 09:53:46 -0700 (PDT)
+        Thu, 06 Aug 2026 10:13:38 -0700 (PDT)
+Message-ID: <6a74c0c2.1c04d3ff.d716d.a9f0@mx.google.com>
+X-Google-Original-Message-ID: <anTAvad1j37P3ZfY@Ansuel-XPS.>
+Date: Thu, 6 Aug 2026 19:13:33 +0200
 From: Christian Marangi <ansuelsmth@gmail.com>
-To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
+	Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Shuah Khan <skhan@linuxfoundation.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	linux-pci@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v5 2/2] PCI: mediatek-gen3: Add 2-lanes mode support for Airoha AN7581
-Date: Thu,  6 Aug 2026 18:53:32 +0200
-Message-ID: <20260806165334.7328-3-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260806165334.7328-1-ansuelsmth@gmail.com>
-References: <20260806165334.7328-1-ansuelsmth@gmail.com>
+	Nathan Chancellor <nathan@kernel.org>,
+	Nick Desaulniers <ndesaulniers@google.com>,
+	Bill Wendling <morbo@google.com>,
+	Justin Stitt <justinstitt@google.com>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
+Subject: Re: [PATCH net-next v10 11/11] net: airoha: add phylink support
+References: <20260730102444.1967900-1-ansuelsmth@gmail.com>
+ <20260730102444.1967900-12-ansuelsmth@gmail.com>
+ <ams72wEsCiACYh-k@lore-desk>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ams72wEsCiACYh-k@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260806_095349_087812_58736FAD 
-X-CRM114-Status: GOOD (  26.36  )
+X-CRM114-CacheID: sfid-20260806_101341_512265_A2557A8E 
+X-CRM114-Status: GOOD (  39.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,226 +121,389 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Airoha AN7581 SoC supports configuring the first PCIe0 lane to 2-lanes
-mode (x2 link) by bonding it with the second PCIe lane (PCIe1). This is
-done by configuring the PCIe MUX in the SCU register.
+On Thu, Jul 30, 2026 at 01:56:11PM +0200, Lorenzo Bianconi wrote:
+> > Add phylink support for each GDM port. For GDM1 add the internal interface
+> > mode as the only supported mode. For GDM2/3/4 add the required
+> > configuration of the PCS to make the external PHY or attached SFP cage
+> > work.
+> > 
+> > These needs to be defined in the GDM port node using the pcs-handle
+> > property.
+> > 
+> > Update and provide a .get/set_link_ksettings function that use phylink
+> > for ethtool OPs now that we fully support phylink.
+> > 
+> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> 
+> Hi Christian,
+> 
+> just some nits inline. Fixing them:
+> 
+> Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> 
+> Regards,
+> Lorenzo
+> 
+> > ---
+> >  drivers/net/ethernet/airoha/Kconfig       |   1 +
+> >  drivers/net/ethernet/airoha/airoha_eth.c  | 189 +++++++++++++++++++++-
+> >  drivers/net/ethernet/airoha/airoha_eth.h  |   5 +
+> >  drivers/net/ethernet/airoha/airoha_regs.h |  12 ++
+> >  4 files changed, 205 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/net/ethernet/airoha/Kconfig b/drivers/net/ethernet/airoha/Kconfig
+> > index 1f6640a15fc9..789906516bf8 100644
+> > --- a/drivers/net/ethernet/airoha/Kconfig
+> > +++ b/drivers/net/ethernet/airoha/Kconfig
+> > @@ -20,6 +20,7 @@ config NET_AIROHA
+> >  	depends on NET_DSA || !NET_DSA
+> >  	select NET_AIROHA_NPU
+> >  	select PAGE_POOL
+> > +	select PHYLINK
+> >  	help
+> >  	  This driver supports the gigabit ethernet MACs in the
+> >  	  Airoha SoC family.
+> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+> > index dba7c52c0896..5065d6583b9f 100644
+> > --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> > @@ -8,6 +8,7 @@
+> >  #include <linux/of_reserved_mem.h>
+> >  #include <linux/platform_device.h>
+> >  #include <linux/tcp.h>
+> > +#include <linux/pcs/pcs.h>
+> 
+> nit: alphabetic order.
+> 
+> >  #include <linux/u64_stats_sync.h>
+> >  #include <net/dst_metadata.h>
+> >  #include <net/page_pool/helpers.h>
+> > @@ -1915,6 +1916,14 @@ static int airoha_dev_open(struct net_device *netdev)
+> >  	struct airoha_qdma *qdma;
+> >  	int err;
+> >  
+> > +	err = phylink_of_phy_connect(dev->phylink, netdev->dev.of_node, 0);
+> > +	if (err) {
+> > +		netdev_err(netdev, "could not attach PHY: %d\n", err);
+> > +		return err;
+> > +	}
+> > +
+> > +	phylink_start(dev->phylink);
+> 
+> Should it be last operation in airoha_dev_open()?
+>
 
-To correctly configure PCIe0 in x2 link, define in DT the following
-additional properties:
+I checked also other ethernet driver for this pattern and it seems
+phylink_start is always called before any netif_start_queues.
 
-  - additional reg, 'sec-pcie-mac' for the secondary PCIe.
-  - PERSTOUT reset for both main and secondary PCIE0, called 'perstout' and
-    'sec-perstout'
-  - 'airoha,scu' property to correctly configure the SCU register for the
-    PCIe MUX
-  - 'num-lanes' set to '2' to enable PCIe0 in x2 link
+I'm addressing all the other suggestion and adding the Ack if you are ok
+with keeping this as is.
+ 
+> > +
+> >  	netif_tx_start_all_queues(netdev);
+> >  	err = airoha_set_vip_for_gdm_port(dev, true);
+> >  	if (err)
+> > @@ -1954,6 +1963,10 @@ static int airoha_dev_stop(struct net_device *netdev)
+> >  		airoha_set_gdm_port_fwd_cfg(dev->eth,
+> >  					    REG_GDM_FWD_CFG(port->id),
+> >  					    FE_PSE_PORT_DROP);
+> > +
+> > +	phylink_stop(dev->phylink);
+> 
+> Should it be the first one? (reverse order of airoha_dev_open()).
+> 
+> > +	phylink_disconnect_phy(dev->phylink);
+> > +
+> >  	return 0;
+> >  }
+> >  
+> > @@ -2509,6 +2522,24 @@ airoha_ethtool_get_rmon_stats(struct net_device *netdev,
+> >  	} while (u64_stats_fetch_retry(&dev->stats.syncp, start));
+> >  }
+> >  
+> > +static int
+> > +airoha_ethtool_get_link_ksettings(struct net_device *netdev,
+> > +				  struct ethtool_link_ksettings *cmd)
+> > +{
+> > +	struct airoha_gdm_dev *dev = netdev_priv(netdev);
+> > +
+> > +	return phylink_ethtool_ksettings_get(dev->phylink, cmd);
+> > +}
+> > +
+> > +static int
+> > +airoha_ethtool_set_link_ksettings(struct net_device *netdev,
+> > +				  const struct ethtool_link_ksettings *cmd)
+> > +{
+> > +	struct airoha_gdm_dev *dev = netdev_priv(netdev);
+> > +
+> > +	return phylink_ethtool_ksettings_set(dev->phylink, cmd);
+> > +}
+> > +
+> >  static int airoha_qdma_set_chan_tx_sched(struct net_device *netdev,
+> >  					 int channel, enum tx_sched_mode mode,
+> >  					 const u16 *weights, u8 n_weights)
+> > @@ -3353,7 +3384,8 @@ static const struct ethtool_ops airoha_ethtool_ops = {
+> >  	.get_drvinfo		= airoha_ethtool_get_drvinfo,
+> >  	.get_eth_mac_stats      = airoha_ethtool_get_mac_stats,
+> >  	.get_rmon_stats		= airoha_ethtool_get_rmon_stats,
+> > -	.get_link_ksettings	= phy_ethtool_get_link_ksettings,
+> > +	.get_link_ksettings	= airoha_ethtool_get_link_ksettings,
+> > +	.set_link_ksettings	= airoha_ethtool_set_link_ksettings,
+> >  	.get_link		= ethtool_op_get_link,
+> >  };
+> >  
+> > @@ -3409,6 +3441,155 @@ bool airoha_is_valid_gdm_dev(struct airoha_eth *eth,
+> >  	return false;
+> >  }
+> >  
+> > +/* Nothing to do in MAC, everything is handled in PCS */
+> > +static void airoha_mac_config(struct phylink_config *config, unsigned int mode,
+> > +			      const struct phylink_link_state *state)
+> > +{
+> > +}
+> > +
+> > +static void airoha_mac_link_up(struct phylink_config *config, struct phy_device *phy,
+> > +			       unsigned int mode, phy_interface_t interface,
+> > +			       int speed, int duplex, bool tx_pause, bool rx_pause)
+> > +{
+> > +	struct airoha_gdm_dev *dev = container_of(config, struct airoha_gdm_dev,
+> > +						  phylink_config);
+> > +	struct airoha_gdm_port *port = dev->port;
+> > +	struct airoha_eth *eth = dev->eth;
+> > +	u32 frag_size_tx, frag_size_rx;
+> > +	u32 mask, val;
+> > +
+> > +	/* TX/RX frag is configured only for GDM4 */
+> > +	if (port->id != AIROHA_GDM4_IDX)
+> > +		return;
+> > +
+> > +	switch (speed) {
+> > +	case SPEED_10000:
+> > +	case SPEED_5000:
+> > +		frag_size_tx = 8;
+> > +		frag_size_rx = 8;
+> > +		break;
+> > +	case SPEED_2500:
+> > +		frag_size_tx = 2;
+> > +		frag_size_rx = 1;
+> > +		break;
+> > +	default:
+> > +		frag_size_tx = 1;
+> > +		frag_size_rx = 0;
+> 
+> Missing break here.
+> 
+> > +	}
+> > +
+> > +	mutex_lock(&port->reg_lock);
+> > +
+> > +	/* Configure TX/RX frag based on speed */
+> > +	if (dev->nbq == 1) {
+> > +		mask = GDM4_SGMII1_TX_FRAG_SIZE_MASK;
+> > +		val = FIELD_PREP(GDM4_SGMII1_TX_FRAG_SIZE_MASK,
+> > +				 frag_size_tx);
+> > +	}  else {
+> > +		mask = GDM4_SGMII0_TX_FRAG_SIZE_MASK;
+> > +		val = FIELD_PREP(GDM4_SGMII0_TX_FRAG_SIZE_MASK,
+> > +				 frag_size_tx);
+> > +	}
+> > +	airoha_fe_rmw(eth, REG_FE_GDM4_TMBI_FRAG, mask, val);
+> > +
+> > +	if (dev->nbq == 1) {
+> > +		mask = GDM4_SGMII1_RX_FRAG_SIZE_MASK;
+> > +		val = FIELD_PREP(GDM4_SGMII1_RX_FRAG_SIZE_MASK,
+> > +				 frag_size_rx);
+> > +	} else {
+> > +		mask = GDM4_SGMII0_RX_FRAG_SIZE_MASK;
+> > +		val = FIELD_PREP(GDM4_SGMII0_RX_FRAG_SIZE_MASK,
+> > +				 frag_size_rx);
+> > +	}
+> > +	airoha_fe_rmw(eth, REG_FE_GDM4_RMBI_FRAG, mask, val);
+> 
+> nit: I guess you can have just one if/else block here running airoha_fe_rmw()
+> inside the block and getting rid of val/mask.
+> 
+> > +
+> > +	mutex_unlock(&port->reg_lock);
+> > +}
+> > +
+> > +/* Nothing to do in MAC, everything is handled in PCS */
+> > +static void airoha_mac_link_down(struct phylink_config *config, unsigned int mode,
+> > +				 phy_interface_t interface)
+> > +{
+> > +}
+> > +
+> > +static const struct phylink_mac_ops airoha_phylink_ops = {
+> > +	.mac_config = airoha_mac_config,
+> > +	.mac_link_up = airoha_mac_link_up,
+> > +	.mac_link_down = airoha_mac_link_down,
+> > +};
+> > +
+> > +static int airoha_fill_available_pcs(struct phylink_config *config,
+> > +				     struct phylink_pcs **available_pcs,
+> > +				     unsigned int num_possible_pcs)
+> > +{
+> > +	struct device *dev = config->dev;
+> > +
+> > +	return fwnode_phylink_pcs_parse(dev_fwnode(dev), available_pcs,
+> > +					num_possible_pcs);
+> > +}
+> > +
+> > +static int airoha_setup_phylink(struct net_device *netdev)
+> > +{
+> > +	struct airoha_gdm_dev *dev = netdev_priv(netdev);
+> > +	struct device_node *np = netdev->dev.of_node;
+> > +	struct airoha_gdm_port *port = dev->port;
+> > +	struct phylink_config *config;
+> > +	phy_interface_t phy_mode;
+> > +	struct phylink *phylink;
+> > +	int err;
+> > +
+> > +	err = of_get_phy_mode(np, &phy_mode);
+> > +	if (err) {
+> > +		dev_err(&netdev->dev, "incorrect phy-mode\n");
+> > +		return err;
+> > +	}
+> > +
+> > +	config = &dev->phylink_config;
+> > +	config->dev = &netdev->dev;
+> > +	config->type = PHYLINK_NETDEV;
+> > +
+> > +	/*
+> > +	 * GDM1 only supports internal for Embedded Switch
+> > +	 * and doesn't require a PCS.
+> > +	 */
+> > +	if (port->id == AIROHA_GDM1_IDX) {
+> > +		config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
+> > +					   MAC_10000FD;
+> > +
+> > +		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
+> > +			  config->supported_interfaces);
+> > +	} else {
+> > +		config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
+> > +					   MAC_10 | MAC_100 | MAC_1000 |
+> > +					   MAC_2500FD | MAC_5000FD | MAC_10000FD;
+> > +
+> > +		config->num_possible_pcs = fwnode_phylink_pcs_count(dev_fwnode(config->dev));
+> > +		config->fill_available_pcs = airoha_fill_available_pcs;
+> > +
+> > +		__set_bit(PHY_INTERFACE_MODE_SGMII,
+> > +			  config->supported_interfaces);
+> > +		__set_bit(PHY_INTERFACE_MODE_1000BASEX,
+> > +			  config->supported_interfaces);
+> > +		__set_bit(PHY_INTERFACE_MODE_2500BASEX,
+> > +			  config->supported_interfaces);
+> > +		__set_bit(PHY_INTERFACE_MODE_10GBASER,
+> > +			  config->supported_interfaces);
+> > +		__set_bit(PHY_INTERFACE_MODE_USXGMII,
+> > +			  config->supported_interfaces);
+> > +
+> > +		phy_interface_copy(config->pcs_interfaces,
+> > +				   config->supported_interfaces);
+> > +	}
+> > +
+> > +	phylink = phylink_create(config, of_fwnode_handle(np),
+> > +				 phy_mode, &airoha_phylink_ops);
+> > +	if (IS_ERR(phylink))
+> > +		return PTR_ERR(phylink);
+> > +
+> > +	dev->phylink = phylink;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> >  static int airoha_alloc_gdm_device(struct airoha_eth *eth,
+> >  				   struct airoha_gdm_port *port,
+> >  				   int nbq, struct device_node *np)
+> > @@ -3474,7 +3655,7 @@ static int airoha_alloc_gdm_device(struct airoha_eth *eth,
+> >  	dev->nbq = nbq;
+> >  	port->devs[index] = dev;
+> >  
+> > -	return 0;
+> > +	return airoha_setup_phylink(netdev);
+> >  }
+> >  
+> >  static int airoha_alloc_gdm_port(struct airoha_eth *eth,
+> > @@ -3510,6 +3691,7 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
+> >  
+> >  	port->id = id;
+> >  	spin_lock_init(&port->stats_lock);
+> > +	mutex_init(&port->reg_lock);
+> >  	eth->ports[p] = port;
+> >  
+> >  	err = airoha_metadata_dst_alloc(port);
+> > @@ -3706,6 +3888,8 @@ static int airoha_probe(struct platform_device *pdev)
+> >  			netdev = netdev_from_priv(dev);
+> >  			if (netdev->reg_state == NETREG_REGISTERED)
+> >  				unregister_netdev(netdev);
+> > +			if (dev->phylink)
+> > +				phylink_destroy(dev->phylink);
+> >  			of_node_put(netdev->dev.of_node);
+> >  		}
+> >  		airoha_metadata_dst_free(port);
+> > @@ -3744,6 +3928,7 @@ static void airoha_remove(struct platform_device *pdev)
+> >  
+> >  			netdev = netdev_from_priv(dev);
+> >  			unregister_netdev(netdev);
+> > +			phylink_destroy(dev->phylink);
+> >  			of_node_put(netdev->dev.of_node);
+> >  		}
+> >  		airoha_metadata_dst_free(port);
+> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
+> > index fa9a8edce22f..6396a5aec384 100644
+> > --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> > +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> > @@ -595,6 +595,9 @@ struct airoha_gdm_dev {
+> >  	 * QDMA migration.
+> >  	 */
+> >  	spinlock_t txq_lock[AIROHA_NUM_NETDEV_TX_RINGS];
+> > +
+> > +	struct phylink *phylink;
+> > +	struct phylink_config phylink_config;
+> >  };
+> >  
+> >  struct airoha_gdm_port {
+> > @@ -604,6 +607,8 @@ struct airoha_gdm_port {
+> >  
+> >  	/* protect concurrent hw_stats accesses */
+> >  	spinlock_t stats_lock;
+> > +	/* protect concurrent GDM4 register access */
+> > +	struct mutex reg_lock;
+> 
+> nit: naming is always hard, maybe link_lock?
+> 
+> >  
+> >  	struct metadata_dst *dsa_meta[AIROHA_MAX_DSA_PORTS];
+> >  };
+> > diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethernet/airoha/airoha_regs.h
+> > index 442b48c9b991..4ea89057b560 100644
+> > --- a/drivers/net/ethernet/airoha/airoha_regs.h
+> > +++ b/drivers/net/ethernet/airoha/airoha_regs.h
+> > @@ -357,6 +357,18 @@
+> >  #define IP_FRAGMENT_PORT_MASK		GENMASK(8, 5)
+> >  #define IP_FRAGMENT_NBQ_MASK		GENMASK(4, 0)
+> >  
+> > +#define REG_FE_GDM4_TMBI_FRAG		0x2028
+> > +#define GDM4_SGMII1_TX_WEIGHT_MASK	GENMASK(31, 26)
+> > +#define GDM4_SGMII1_TX_FRAG_SIZE_MASK	GENMASK(25, 16)
+> > +#define GDM4_SGMII0_TX_WEIGHT_MASK	GENMASK(15, 10)
+> > +#define GDM4_SGMII0_TX_FRAG_SIZE_MASK	GENMASK(9, 0)
+> > +
+> > +#define REG_FE_GDM4_RMBI_FRAG		0x202c
+> > +#define GDM4_SGMII1_RX_WEIGHT_MASK	GENMASK(31, 26)
+> > +#define GDM4_SGMII1_RX_FRAG_SIZE_MASK	GENMASK(25, 16)
+> > +#define GDM4_SGMII0_RX_WEIGHT_MASK	GENMASK(15, 10)
+> > +#define GDM4_SGMII0_RX_FRAG_SIZE_MASK	GENMASK(9, 0)
+> > +
+> >  #define REG_MC_VLAN_EN			0x2100
+> >  #define MC_VLAN_EN_MASK			BIT(0)
+> >  
+> > -- 
+> > 2.53.0
+> > 
 
-In such configuration the EQ preset are configured to the same values.
 
-To permit correct configuration of the PCIe link, additional logic is added
-to assert and deassert the PERSTOUT resets. Support of these additional
-reset was introduced in Airoha clk driver with commit
-6712f48eb3a1 ("clk: en7523: add support for dedicated PCIe PERSTOUT reset")
-and on backporting of this commit also the clk driver change will be
-needed.
 
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
----
- drivers/pci/controller/pcie-mediatek-gen3.c | 106 ++++++++++++++++----
- 1 file changed, 89 insertions(+), 17 deletions(-)
-
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index b0accd828589..c8300c47374b 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -32,6 +32,11 @@
- 
- #include "../pci.h"
- 
-+/* AN7581 SCU register */
-+#define SCU_PCIC			0x88
-+#define SCU_PCIC_PCIE_CTRL		GENMASK(7, 0)
-+
-+/* PCIe register */
- #define PCIE_BASE_CFG_REG		0x14
- #define PCIE_BASE_CFG_SPEED		GENMASK(15, 8)
- 
-@@ -131,6 +136,7 @@
- #define PCIE_ATR_TLP_TYPE_IO		PCIE_ATR_TLP_TYPE(2)
- 
- #define MAX_NUM_PHY_RESETS		3
-+#define MAX_NUM_PERSTOUT_RESETS		2
- 
- #define PCIE_MTK_RESET_TIME_US		10
- 
-@@ -203,9 +209,11 @@ struct mtk_msi_set {
- struct mtk_gen3_pcie {
- 	struct device *dev;
- 	void __iomem *base;
-+	void __iomem *sec_base;
- 	phys_addr_t reg_base;
- 	struct reset_control *mac_reset;
- 	struct reset_control_bulk_data phy_resets[MAX_NUM_PHY_RESETS];
-+	struct reset_control_bulk_data perstout_resets[MAX_NUM_PERSTOUT_RESETS];
- 	struct phy *phy;
- 	struct clk_bulk_data *clks;
- 	int num_clks;
-@@ -928,6 +936,14 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
- 	if (ret)
- 		return dev_err_probe(dev, ret, "failed to get PHY bulk reset\n");
- 
-+	pcie->perstout_resets[0].id = "perstout";
-+	pcie->perstout_resets[1].id = "sec-perstout";
-+
-+	ret = devm_reset_control_bulk_get_optional_exclusive(dev, MAX_NUM_PERSTOUT_RESETS,
-+							     pcie->perstout_resets);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to get PERSTOUT bulk reset\n");
-+
- 	pcie->mac_reset = devm_reset_control_get_optional_exclusive(dev, "mac");
- 	if (IS_ERR(pcie->mac_reset))
- 		return dev_err_probe(dev, PTR_ERR(pcie->mac_reset), "failed to get MAC reset\n");
-@@ -949,18 +965,38 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
- 			pcie->num_lanes = num_lanes;
- 	}
- 
-+	/* Map secondary PCIe for 2-lanes mode for EN7581 */
-+	if (pcie->num_lanes == 2 && device_is_compatible(dev, "airoha,en7581-pcie")) {
-+		regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sec-pcie-mac");
-+		if (!regs)
-+			return -EINVAL;
-+		pcie->sec_base = devm_ioremap_resource(dev, regs);
-+		if (IS_ERR(pcie->sec_base))
-+			return dev_err_probe(dev, PTR_ERR(pcie->sec_base), "failed to map secondary register base\n");
-+	}
-+
- 	return 0;
- }
- 
- static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- {
- 	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
-+	unsigned int num_lanes = max(1, pcie->num_lanes);
-+	struct regmap *pbus_regmap, *scu;
- 	struct device *dev = pcie->dev;
- 	struct resource_entry *entry;
--	struct regmap *pbus_regmap;
- 	u32 val, args[2], size;
- 	resource_size_t addr;
--	int err;
-+	int i, err;
-+
-+	if (num_lanes > 2)
-+		return dev_err_probe(dev, -EINVAL, "unsupported num-lanes, maximum 2 lanes supported\n");
-+
-+	if (num_lanes == 2) {
-+		scu = syscon_regmap_lookup_by_phandle(dev->of_node, "airoha,scu");
-+		if (IS_ERR(scu))
-+			return dev_err_probe(dev, PTR_ERR(scu), "failed to map SCU regmap\n");
-+	}
- 
- 	/*
- 	 * The controller may have been left out of reset by the bootloader
-@@ -992,6 +1028,19 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- 	size = lower_32_bits(resource_size(entry->res));
- 	regmap_write(pbus_regmap, args[1], GENMASK(31, __fls(size)));
- 
-+	/* Assert PERSTOUT for all relevant lanes */
-+	err = reset_control_bulk_assert(MAX_NUM_PERSTOUT_RESETS,
-+					pcie->perstout_resets);
-+	if (err) {
-+		dev_err(dev, "failed to assert PERSTOUTs\n");
-+		return err;
-+	}
-+
-+	/* Configure SCU MUX to disable PCIE1 for x2 lanes mode */
-+	if (num_lanes == 2)
-+		regmap_update_bits(scu, SCU_PCIC, SCU_PCIC_PCIE_CTRL,
-+				   FIELD_PREP(SCU_PCIC_PCIE_CTRL, BIT(1)));
-+
- 	/*
- 	 * Unlike the other MediaTek Gen3 controllers, the Airoha EN7581
- 	 * requires PHY initialization and power-on before PHY reset deassert.
-@@ -1024,18 +1073,6 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- 	pm_runtime_enable(dev);
- 	pm_runtime_get_sync(dev);
- 
--	val = FIELD_PREP(PCIE_VAL_LN0_DOWNSTREAM, 0x47) |
--	      FIELD_PREP(PCIE_VAL_LN1_DOWNSTREAM, 0x47) |
--	      FIELD_PREP(PCIE_VAL_LN0_UPSTREAM, 0x41) |
--	      FIELD_PREP(PCIE_VAL_LN1_UPSTREAM, 0x41);
--	writel_relaxed(val, pcie->base + PCIE_EQ_PRESET_01_REG);
--
--	val = PCIE_K_PHYPARAM_QUERY | PCIE_K_QUERY_TIMEOUT |
--	      FIELD_PREP(PCIE_K_PRESET_TO_USE_16G, 0x80) |
--	      FIELD_PREP(PCIE_K_PRESET_TO_USE, 0x2) |
--	      FIELD_PREP(PCIE_K_FINETUNE_MAX, 0xf);
--	writel_relaxed(val, pcie->base + PCIE_PIPE4_PIE8_REG);
--
- 	err = clk_bulk_prepare_enable(pcie->num_clks, pcie->clks);
- 	if (err) {
- 		dev_err(dev, "failed to prepare clock\n");
-@@ -1043,14 +1080,47 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3_pcie *pcie)
- 	}
- 
- 	/*
--	 * Airoha EN7581 performs PCIe reset via clk callbacks since it has a
--	 * hw issue with PCIE_PE_RSTB signal. Add wait for the time needed to
--	 * complete the PCIe reset.
-+	 * Old Airoha EN7581 clock driver performed PCIe reset via
-+	 * clk callbacks since it has a hw issue with PCIE_PE_RSTB signal.
-+	 * This is now handled by dedicated PERSTOUT resets with clk
-+	 * driver only enabling the refclk.
-+	 *
-+	 * Wait is still needed for refclk to stabilize
- 	 */
- 	msleep(PCIE_T_PVPERL_MS);
- 
-+	/* Configure all the lanes to the same EQ config */
-+	for (i = 0; i < num_lanes; i++) {
-+		void __iomem *base = pcie->base;
-+
-+		if (i == 1)
-+			base = pcie->sec_base;
-+
-+		val = FIELD_PREP(PCIE_VAL_LN0_DOWNSTREAM, 0x47) |
-+			FIELD_PREP(PCIE_VAL_LN1_DOWNSTREAM, 0x47) |
-+			FIELD_PREP(PCIE_VAL_LN0_UPSTREAM, 0x41) |
-+			FIELD_PREP(PCIE_VAL_LN1_UPSTREAM, 0x41);
-+		writel_relaxed(val, base + PCIE_EQ_PRESET_01_REG);
-+
-+		val = PCIE_K_PHYPARAM_QUERY | PCIE_K_QUERY_TIMEOUT |
-+			FIELD_PREP(PCIE_K_PRESET_TO_USE_16G, 0x80) |
-+			FIELD_PREP(PCIE_K_PRESET_TO_USE, 0x2) |
-+			FIELD_PREP(PCIE_K_FINETUNE_MAX, 0xf);
-+		writel_relaxed(val, base + PCIE_PIPE4_PIE8_REG);
-+	}
-+
-+	/* Deassert PERSTOUT for all relevant lanes */
-+	err = reset_control_bulk_deassert(MAX_NUM_PERSTOUT_RESETS,
-+					  pcie->perstout_resets);
-+	if (err) {
-+		dev_err(dev, "failed to deassert PERSTOUTs\n");
-+		goto err_perstout_deassert;
-+	}
-+
- 	return 0;
- 
-+err_perstout_deassert:
-+	clk_bulk_disable_unprepare(pcie->num_clks, pcie->clks);
- err_clk_prepare_enable:
- 	pm_runtime_put_sync(dev);
- 	pm_runtime_disable(dev);
-@@ -1136,6 +1206,8 @@ static void mtk_pcie_power_down(struct mtk_gen3_pcie *pcie)
- 
- 	phy_power_off(pcie->phy);
- 	phy_exit(pcie->phy);
-+	reset_control_bulk_assert(MAX_NUM_PERSTOUT_RESETS,
-+				  pcie->perstout_resets);
- 	reset_control_bulk_assert(pcie->soc->phy_resets.num_resets,
- 				  pcie->phy_resets);
- }
 -- 
-2.53.0
-
+	Ansuel
 
