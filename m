@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 777C4C56208
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2026 22:06:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EE25C5AC7A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2026 22:06:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Kbik6KtVjqs+bog3IBGa43LcuOKTdzPwkW2xTIsTlJ4=; b=ke/MFpYSF1UVvW4ZLM3xCt+lnF
-	2P1/rH1vq9UTMskZeSPQ3cnLCXUSx2UYPGbA9XgvSRw5vlBE1ID2+Cmw7jFxF659hd+o5jMZ/hCBq
-	PpCxQop0jTFGqIcopHJRXpyXM2oSIa6d6EIzFwxMk0LXGTMrW0+6z4KvWbCVbYJrVl8ixToxUYuwf
-	6czQXvQvF97aHFvGPc+J8K5pGxnAMMAP8QeM/J8TAbSS8KCFmvKjNT+WG44BKPrTgk+v326MyjcVs
-	/yDdoxUWz1aIxaa3aAE5syHKzuqtyPNGtxCe9204GVALhrm+buD2ePTiI95xJ/wJEz6wgvkVvX9p8
-	4E2Md5eA==;
+	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WrLkZUEKeZ8UlJprxMuGzc7+lKM2edyo5K+IihRyREA=; b=Tv0PjfVnxCOw+nJr5x6fS5XVjE
+	c1Vn9OUueCsNZUxZ/lerEcMzwhjda3dP7lRMRK5ro6iRBHkznskste9eWeX7DUAQGnaC9HkUI0Pl/
+	NiVV+/hSKM4ku3XcdcNMGVljMBeDOucM6unRHgEvkEqhs0UwxpzLAJx2WXMIbZTpErG/KZZ9JCcux
+	RMB8GS3TW+i0r1pUkWkisivC4o2xS1qopo/PTSUuHP/zpOEcK/OpAE8zvNWjQf0Ls6Qh5kD4DZ2/g
+	Nuv/IaFPfDUhkecyY2QuNBB8oE9glKl6n5ym137ItfABgIBVuuA5xQoFAliDYZyewybSOBE3efk7H
+	jvF7SWyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws6EV-00000006lSb-3XWG;
-	Thu, 06 Aug 2026 22:06:35 +0000
+	id 1ws6EX-00000006lTs-3xKZ;
+	Thu, 06 Aug 2026 22:06:37 +0000
 Received: from mail-francecentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20a::7] helo=PA4PR04CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws6ER-00000006lRq-3ePC
+	id 1ws6EW-00000006lRq-0RUG
 	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Aug 2026 22:06:34 +0000
+	Thu, 06 Aug 2026 22:06:37 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=oPQUtzUUWJoxswoTbEZ6SOhmJhA4lm77W6JO3LrRtOOmaQztSYVCirVB4mZslve9snSTXPDTr8b6/IqruQwflPIGkcq7Lq/nzwuDA9xdSg7aLh15D7/fNtlg7rqkN025fHwNjK3dv8/r02i96Dcw3z+eJedA95cmXy0KMsJP5QKgxYdIrNlSYrQyUeOm84Ey/hggELbL1cHyBkB08lXC3yJdgYjoFS5OY39nYXc5XSmM+I5O/xxMjULTeCTFomMKMrNQG/R42IqsR/fAA63wLwtgMNpyVZfUKHvWUXdv+Zs0OzMMR9s8oXz+43Im5BiJDt45gYMlum9BmPo8YI2FDg==
+ b=uAv8KoS1iuOuPA1gx5OnS1f0LJXV/hB5fBFEJjbfxnmYC+0UhqPuCFDnhgbahv/8KBiPAWAHo8/Qh++2qeYBlJaZiCZF/C8rPkIhzRRcbCWciBrsADZCxtGPrN1Pj4iSujHzGoSPsR9avNhqcxAaxtOe0p14k/HcWIA831F3iqRNEEfHxWMEbsA4eTLI4rJZ56NFFO7TNdmL/ami1RylwYU15HQW5lXv6xS0PHsyyQ52Er2XsTjCyYayALRqaEUhfNc3Wn1bVGnvJqoxQuJ7CLiPLUCJRUdgpL7GWOALs2prYEJkIU+QaDLVd6AkHHD/sAQOfUx/Py2xwAHwMMhWfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Kbik6KtVjqs+bog3IBGa43LcuOKTdzPwkW2xTIsTlJ4=;
- b=ytXqhMatH0Zkr/Yh/bkSD3Bpkb0vyvd79dFQKkTFmseTr9hrZKgpfYJZ9HWAohncdXGDJSn2+sIGguY39EfasEPL9HRjY0txEowj672H4fwgwcmC+wnDUSCCHJqzWYRh5hg5pr86YQSGcWROb0XFnJg+u/qspQoOR8DwzoL956lJ1WZqPnXnj6A9P966+m1CLU5HQrdZCmtBnwUl2YCOmqboc09xyvcKWxw18h//NnOCggNthp8c1yczLQWegdmY3X+JIBLgcF27/HH+VZWJZGjh1Fcbp45brUyKxCr3U6wim5Q6Xn7fVzezbBNHGMtT9bjQgzrp8EwkIx8pvrLDtQ==
+ bh=WrLkZUEKeZ8UlJprxMuGzc7+lKM2edyo5K+IihRyREA=;
+ b=WX+DYGkt4WfDl/VPcqsr2Tvm8FiFiOqTlcyAJsUO2IR9E3ohTjQtGcfMT0xc+fvMay3uT2DzkiNIAJb22C5NjNUl+ZYd6orsUnWaZEd4TeFloocBpGtHyFh4H751TTk2q278tI4SBSYSqIixkzfaXmZL5OkyHSp8uJLfLHvZgTFdgEXszjZD/HfyppDOZzMrFKZ5rnz9q3M8QxsUbPZvnN4kDbXGs79XlUtDE1DZFJJSzXOMcvS9tRX6A58pSvfyuDc27r1mXaE1sWpHJlIU+s6lxA3R2U7S+H61PF3N6BfBrcZT2qw6zeRH2ZiJ6TdU/GizRuyrH8JvzD3P9uKAvQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
  dkim=pass header.d=iopsys.eu; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Kbik6KtVjqs+bog3IBGa43LcuOKTdzPwkW2xTIsTlJ4=;
- b=M3FaS8A8KJWKNvHRHMFNpDzcvm0I6MFzdFlyd7NYIyqM+avOsk0Ef6CKORv3aEB/ptOS6P0mRAalB8hJAGGx1nDm3OFL1x0o73KCoteaKuJTmGCzX71mv0yXJu1J5sQGUh58lD7EOWX4leUgMajNljMpiqIdCQMCEIesUDysWw1rxU2+xQnxkn/tl77IFUgREJhlKC70TId1G7+XekC0Wvn70oAV4xFrVWC+7jVWlv5MeMpILIboSanX6J6AT8NH7KAuBZQAwpS8pP0zFbx9NYymOw2xrxx9zte7Sgkeo0WPmQbFeyco6ysz7sX0eBvHBH3ewkeXsPMehK2pSFIqCg==
+ bh=WrLkZUEKeZ8UlJprxMuGzc7+lKM2edyo5K+IihRyREA=;
+ b=mII5nEnGo8nQVROYoptip9UiIncxndWr0FbPb8gV23hzsq9j/KwFA7CIaZRToEupBCBulaL3pUYy9HlqZAOvIYnKZ8fmCmYHBeWjevPwzQgd6oC4j99yZoWwLily1PKaZ3k5DVWoLrbwHvVuirKpcSJG/6Xb1WD4ZJrG+h3pI4vWNYNI+8juJf0GNUl0x9MEs6xsMRXY0eRINxLqhI+Kl6C1kD4sTmfFD439Po5mzctimir9lOKAeE1foWEFSY+UkXm8ApFDao3ZiH7L12cAt1uMDwtDlP/Bq3EnnwvXFLjeXe5MN7cRf60XW4U7KM499biUSK3Qh/2yRRkCuvKBAA==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=iopsys.eu;
 Received: from DU2PR08MB10037.eurprd08.prod.outlook.com (2603:10a6:10:49a::20)
  by AM9PR08MB6705.eurprd08.prod.outlook.com (2603:10a6:20b:300::23) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.270.18; Thu, 6 Aug
- 2026 22:06:24 +0000
+ 2026 22:06:28 +0000
 Received: from DU2PR08MB10037.eurprd08.prod.outlook.com
  ([fe80::3c7:6d2e:8afe:e4dc]) by DU2PR08MB10037.eurprd08.prod.outlook.com
  ([fe80::3c7:6d2e:8afe:e4dc%5]) with mapi id 15.21.0292.013; Thu, 6 Aug 2026
- 22:06:24 +0000
+ 22:06:28 +0000
 From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
 To: Linus Walleij <linusw@kernel.org>,
 	Rob Herring <robh@kernel.org>,
@@ -70,11 +70,14 @@ To: Linus Walleij <linusw@kernel.org>,
 	Markus Gothe <markus.gothe@genexis.eu>,
 	Matheus Sampaio Queiroga <srherobrine20@gmail.com>,
 	Daniel Schwierzeck <daniel.schwierzeck@gmail.com>
-Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Subject: [PATCH v11 00/37] pinctrl: airoha: split on shared and SoC drivers, add more SoCs
-Date: Fri,  7 Aug 2026 01:05:38 +0300
-Message-ID: <20260806220615.4078303-1-mikhail.kshevetskiy@iopsys.eu>
+Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: [PATCH v11 02/37] dt-bindings: pinctrl: airoha: an7583: fix device tree binding schema
+Date: Fri,  7 Aug 2026 01:05:40 +0300
+Message-ID: <20260806220615.4078303-3-mikhail.kshevetskiy@iopsys.eu>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260806220615.4078303-1-mikhail.kshevetskiy@iopsys.eu>
+References: <20260806220615.4078303-1-mikhail.kshevetskiy@iopsys.eu>
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-ClientProxiedBy: FR3P281CA0102.DEUP281.PROD.OUTLOOK.COM
@@ -83,57 +86,58 @@ X-ClientProxiedBy: FR3P281CA0102.DEUP281.PROD.OUTLOOK.COM
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: DU2PR08MB10037:EE_|AM9PR08MB6705:EE_
-X-MS-Office365-Filtering-Correlation-Id: fb20219d-faf1-43d8-f5ba-08def406f47c
+X-MS-Office365-Filtering-Correlation-Id: 722d24a2-6c2f-4689-8679-08def406f6e1
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|23010399003|1800799024|376014|52116014|7416014|56012099006|10067099003|11063799006|3023799007|6133799003|18002099003|921020|38350700014;
-X-Microsoft-Antispam-Message-Info: hXbO1sMJ/Vcu54KfAPh02dLzefxmRpW0D8BQdPTvRoNKl+2iXoVrwZyDHDJV727e8cBydp7evT+TG9BFnI3qGXfv5arM86PhvtlNh5L4c/n5sP0bPRjGnuBZ9WiP7eE9dmmOYehjD1adL+SLZhv04up5JtE3v6ercUWp+z/5uaViXNbSwLefUYYNwDhVIWeB8OBKZfZ6LKty/CoFc4AdgoGNK7K+CTuO049fA2oir4zO3xfyRUYlJaVyW5HpBRMjSkOSQcM+/cVFHTAmegBHJZU+XfTrMXFkbT4cw//EnHJpNYWVyO5b+8xlp5/+h14lcaQidGIXRn44x6kYMpKgsSGla2nGgQBc42JJ8Mom19pChB03m/3mR2aFNF38jvisg++Kt1XLM95x+ulGqCVkU7GtBj88r7hv4/ZsBX0VA4zHA89+RAKbJet0z3ULpgomZ9mX4xvkTMTPA0W9SFDdha1avH/BU4YeOCi9kb88/GkYOVJLxHYaFB1BuA+lkjOGOePrMim5uNPTelxNCHRctmH496l8I+TgntWKTeHzZDL2S1ntuEJoYcJLLaZTawn1Wik6yrPJs9dpviR96XEE42RDCIuBjXD+qPeVe8iPeUOHSr1sytw00rVopA8Y+DVpqWrdZS9w11lB70VT1L1g1x4LBS9w3H79VUpSbC/fWJfjh8eiYe5wBOuGSxzJAB9u
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR08MB10037.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(23010399003)(1800799024)(376014)(52116014)(7416014)(56012099006)(10067099003)(11063799006)(3023799007)(6133799003)(18002099003)(921020)(38350700014);DIR:OUT;SFP:1102;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|23010399003|1800799024|376014|52116014|7416014|56012099006|10067099003|11063799006|3023799007|6133799003|18002099003|22082099003|921020|38350700014;
+X-Microsoft-Antispam-Message-Info: FZjDNvNVupg92TbCDJ+Voq3hKmwaF7snfcm8okIVfWLjxJLYfrDgHxnAlei5WS7hcFpvu4ynsEqFe2J/q62+OTNjys2DV/K4uECuykEhD8HDt8Jo9jxOcXYamgU/QsO8H+oJAmuJV0qqhIjS+3ptSZ2pqiJmdywOhb402434L9VC08Bt8EYLZ5cuT0qLtFWqr78ZcgYzTafagM/V732ifvYCcyuplTp9tuKEDL4m3BA0KxPW7fMF553K8I/156E3bM1pMi7kUwtLcK8t/qCbh8dUXpcR9L20Qbhs4MOGpepp/6GA9nnB0DFqKPxyMKWoKfwLGRwj+8CoIWTuXJNXMUfh7BbJKXsCjoc3UHvuNa2/oPVrn1qhw26Xkoqh1YEiw06u3esXhFMVsRR3H6ysODsGHp2KLZRdZRUEDlXunPrw14oA6+PeEVTQAD3WCFqKw2yuKPwM5mY/9Vtd3gmXnx7VIJGsZ7r3syGgHQmJOKV3ZqYP4ox5wy1OjXBpPwi69eIb4fVpzTTO89qfWtLkp2l0Zm9YjphqIE16RI8/ekIHz+FsPSwg+uADfEWlMuPn5esMmCT49G4eXGV6+cwqe6utDima7NN0pETOEzX64WgCSXEqfSO1wWAdyin32/+mBveNIQFYk9Xs7wLtihUFPZw/7WR1tV0vHAtWTqwQdVx11dibglK6EGDOLYkQyNoeIYdCcztPnsls9e6+HXGGyV5wojWZzZe6MjxYhgJ8J4dbYVOLVzlv+W3jxbkZ3ulq
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR08MB10037.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(23010399003)(1800799024)(376014)(52116014)(7416014)(56012099006)(10067099003)(11063799006)(3023799007)(6133799003)(18002099003)(22082099003)(921020)(38350700014);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?szwQ8i5EtX0iEsn7HfAyhUlBQR62OjUG5f4ubUsCb5c1ggHaRh3N8iU29aDt?=
- =?us-ascii?Q?evg9WAnsflSmp8nLxUEGkyMWsxOUFSaqzJgSVcu9knPH4BsjhSFmSYel4XgM?=
- =?us-ascii?Q?ec/ndl0UTdVSamOypEp9qz8RnN5PR57uWTNCEWMHgwh0kYMFewFujidmgjhj?=
- =?us-ascii?Q?0LZ9jFoRqsXxR3sQjmI5CDjDvfzDrcb0+eG+2CGwjNLssSnp6OtgprHfww/L?=
- =?us-ascii?Q?oD3gOZHHr1C8zTTYGHu0pktSIoOwnOoTkKEJFJprtiCtAtBj899d9EOkAjLq?=
- =?us-ascii?Q?c1NpOmPg5rTEjNROGAU3HCySOzppd5cfGw/fwCPPbpAqAN8gREOvNWHVSIMw?=
- =?us-ascii?Q?gdopbXCO4bjEvAHSMuhF111X97cLwY90xk3AZRhsulHXdPILBv8qyH3/DrVI?=
- =?us-ascii?Q?PXtlFNuXGH2zHXJxiHkmjAW0ELylcjXSK4jrU4KQDSarDgiVYKNhqjpj2NbF?=
- =?us-ascii?Q?ZLhzdKal9Thlx7hntJaRpxZ1SJTlbKVfbS2K6qwIeqtwfyKuuokIbe0j9Frk?=
- =?us-ascii?Q?q07QKiiZa5KAf49gIVbSe84tq2DhN7YbIUsays4XdhM/fAQWZh6J5ljr7Ypu?=
- =?us-ascii?Q?l9OCogEWq05pTFevJgf9vJjweacdSwS+Qa54xoFCcmWf3cjvU75+5GfodbjL?=
- =?us-ascii?Q?p2Bffi5MnDVOhFy0yAuP9AyQYqnsbtEzpiFLQNtf9iYRDkdnVoIFfvJxAT2R?=
- =?us-ascii?Q?NJ++ApZv73hNX1ztLqEj06Ee5VS/t9S/7eL6dy+INmRB6NYSJLe70Fg1FKJT?=
- =?us-ascii?Q?ZRiW7XS3tTAv59+ucdvtRBs9iAXTzWLPeUESjQzfJ/sJKU+K8eTi5vs9N3vL?=
- =?us-ascii?Q?bHt0DjTxRLWkshvdatq/988Y/xvWJ2zmXxrHSCATFvJPO3DSEyL1ivNTQQi5?=
- =?us-ascii?Q?Yqq7aLPnS3HULuqFZqM0TF/OGzDt/Qgf7phhWQHb2XAc83yC7CxiqpkDbv8K?=
- =?us-ascii?Q?ETqr1CFvCzbzoxiXf6huI5/AnADbtvsG/nq9P06oezhIf9P4UXW8pTj2npu1?=
- =?us-ascii?Q?pYhA698NF11q+E+gfqsF4lMv4mJV24RS1Ba77Reu6EKCgMw4KVcC/Vpfh+RY?=
- =?us-ascii?Q?NjFGWMgYKly40JKS2K5crYnOWyKD2M98Ix4LXOvJ70U/aNMjGMKhWal28Zy5?=
- =?us-ascii?Q?ogbKVCTpu49XkPLKMyV6PCgkrFMhm/LTXHY4Di4yaG+VJLpIEy83yBxzU4Nr?=
- =?us-ascii?Q?kozfkKekC+xp/dgDPnLuLNoz+pAeAVWfvhTTykLQGlB9W36Q5+BcMFkNPUy4?=
- =?us-ascii?Q?tIVQkFFaqrimWolKZO7xNfsszDWheQGipa9h4r6ydk8iw0xroX3IwTTqNtQn?=
- =?us-ascii?Q?oLa0QXXqvQMPOol0gn55xxLhV7eLtD964aK6IF4tqGp4qEBH2C7TP1P3gPLd?=
- =?us-ascii?Q?2ZluMPn9GknXm4MSq4ravu2zVEjz5c2UVCGpF9PnmtV7DoPK0fsY1Rao9hRG?=
- =?us-ascii?Q?uxj8dQiyXuwb4spOpugi/Xx+wYx2h2bBgu4HpT8InRe46YUa0QrxEyc95ZKu?=
- =?us-ascii?Q?iLK83O9w5IUNQTUbdt/YzNEwAJ8SNSIEaR6s5oqzClRdl2gUlPdvDy8GF4xd?=
- =?us-ascii?Q?19WqYIvbLgm5Tp1/NO2yPMHcHlMo3CnLlXG3uDoDSJUW2AU1WQD2+WcWYNVI?=
- =?us-ascii?Q?g1VP0gJsCcrifbEWWYuD7y4fCwVIvzNfhR06Y5Gf3Qmrtk4bLOCZJsGb1wGp?=
- =?us-ascii?Q?TpiFJiNqz5MVHOxpIjQ4/R9asUs2PxzeIMJ1AcKsAjTxDhRUMPsgy4wUEo2x?=
- =?us-ascii?Q?1idci7Zrx8OrfKkREeXOfsfoiXtmxBw=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?q6THRF1TtftCSpWvm5zY0uNMIaBU6pIKd+kVlhKpvIvRUMxgPhNBY5By0Hyd?=
+ =?us-ascii?Q?HlFadpi/RUbDGSHCEqn/H3wmMKy42TRhyZfsezzuLx+A+tOzSVCUH+pPLz3U?=
+ =?us-ascii?Q?hoFnATMVaCowbp4KebuptmBEEj9GYi8qnHfQEJojnnX7VrF+2aHv1NT7zi9A?=
+ =?us-ascii?Q?wyrYeY0Yp0po6Pgg9didOZro06/W6aUeVEWSN+HvSnd58moBTJkrYP+bmY7q?=
+ =?us-ascii?Q?E8LIIrl2X1k5oAnelbt8g2FSWwqi5+Chm/Se36aRfYq7upD9NThTOX1eTCpt?=
+ =?us-ascii?Q?7IjM+L7OU8XHej+cKLrbbPMeYBQNkdDxjV65GMx/WGr/CL7JFUtRU32ceEQu?=
+ =?us-ascii?Q?+riRSlW2Us3Ouz/UcR5D7pNkG3WwRWM9urJeOPLYtQgGRdQ5yp2t//UBEn2V?=
+ =?us-ascii?Q?8ox5elZp8n/7oP4XbNMdq69DyNkIW2WSpRVF255LvkJsU5vr2v32i1JfMGe4?=
+ =?us-ascii?Q?nAwLA6UarQTnT65SUmnBl3+f7LPPVHdaXBMfn9ughhrxocv4EHbSlBd3/7Nn?=
+ =?us-ascii?Q?pKFPB8Z6k8rIRF0GjyE3Hve2BL+2iEP/tZ9KKk5NlCPig0blSGc8VI/PvSzR?=
+ =?us-ascii?Q?FrUhBwaKtamfaaLaqJbHjW4dcvNhe2hKWDgIYRchLrGNNf23tKNPQRCiBPP4?=
+ =?us-ascii?Q?iMIpbquDOyXupU5w98/vA3Un8eMt3k8lSmOUbWaDrw/5R/ZJws/59UwvQzRy?=
+ =?us-ascii?Q?QO6Mu4ngpS7UtC8/RD5Twutzm1I+GWzekrdoZgNPwcA/2ctUG4EzOvFxI48S?=
+ =?us-ascii?Q?cs8BpEak15XJGDMRCSshC6e1ndfbz2+hq5SKozXLrt5L+ULT9iln/Ssuf0Uv?=
+ =?us-ascii?Q?k0zqrURikwcQtVO/l5PjGL2gNiLiiwRaBizx/1RnWwzE4WtfxPwcusR00T3U?=
+ =?us-ascii?Q?pmuSLWBzTeR1RtQ1etDMz6dOqMU2Ctr7Z/PVW0xUP5NpNXgv0v0OeR4dtdP2?=
+ =?us-ascii?Q?rOeh8gABBcVWku4NmgS5t860hn063Iz4Gq2T6u+g+lNuw1ALjy9NoltdiGEd?=
+ =?us-ascii?Q?teKyQolLoReIIVlsbq2F2OMYrXTRO2nMUsxkwqsaniuyfChM6Ie/KVCPCA5v?=
+ =?us-ascii?Q?xTp1zdrcnqvny2nmAPjopK1SvyB1HH6VXMJIEV+RObz45s01Fia9cJJLSddL?=
+ =?us-ascii?Q?eoklBxFQvP29dT2KkRPjXvUOo+fCLYpmjYp8tUbul0HyPeHQEdVTPwEWwPMf?=
+ =?us-ascii?Q?49+IBYzrqMstuuoNbuV10gCoIo4pvvT1mg51sykETDykX+RPU0Wdh+az4fXg?=
+ =?us-ascii?Q?+WTsVHJjVEtY2/bnXHjFo+dOyDh1VmFLGev76IdhT9P6OqmwpjLqf7Zc1g3k?=
+ =?us-ascii?Q?ZQX6lHJApDu/VecscU9cznijY/Pn9UgkTl1yUSChA7nj2yILaSBhlrgA1A2f?=
+ =?us-ascii?Q?kxZ43wbLZAMT8Jd1yckVh2GaqmcymQy4Cyp4sTDYZsfsXxNHiO5WVOxHEmT1?=
+ =?us-ascii?Q?sBtNa3nFgby6HPiCj8Xxp/JUyov7E8BBpip0RGNVe+GpcttFqg8cQbRjXsHI?=
+ =?us-ascii?Q?mtpqJsPEABSI5G6D+A5VbbaOnOa79k+VdcUvapXG9wFmx+4nPpNrjd7xAD3p?=
+ =?us-ascii?Q?Xe3VK6MPGxq/s6srlzV0nsO9lcyMuvRTwG4P1I1/GSYNr3C0zewMV8jd34RP?=
+ =?us-ascii?Q?gGR1yOMGYYJMit0CzHTBn4VB0qRDrZV8MBamP6zRR30BxbTmZ9htcZ/U7wjh?=
+ =?us-ascii?Q?+ZCsbVamGZTpY3lLMkATkbdI2b+8E3LpQ5J+X1v67jDSt1qdziGVgfiUrthc?=
+ =?us-ascii?Q?ImB6MXjxFlEH5F0+W/poS9GTTcpQIWo=3D?=
 X-OriginatorOrg: iopsys.eu
-X-MS-Exchange-CrossTenant-Network-Message-Id: fb20219d-faf1-43d8-f5ba-08def406f47c
+X-MS-Exchange-CrossTenant-Network-Message-Id: 722d24a2-6c2f-4689-8679-08def406f6e1
 X-MS-Exchange-CrossTenant-AuthSource: DU2PR08MB10037.eurprd08.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Aug 2026 22:06:24.5336
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Aug 2026 22:06:28.3626
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: BLxyIOgy9NUARRts8sOLz26ipYdQedWmvSP5Ig+6pZJN0UHkMNCtysVZ012XRuF9kMUzBw2BdnZQa6meSKLHtRc+ZUckMePS2xF4F/dPa7c=
+X-MS-Exchange-CrossTenant-UserPrincipalName: mrhoEgB3adT9LFRcoS6//TLa7b+eMxUKDEELLlfmg8DuMyssHRBUDsEEVGkeRoH9BKjOssAzLtPAqh20gc4mO4yXQMCdQ6nhnB7eKly8qhQ=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR08MB6705
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260806_150632_293451_79D8F26F 
-X-CRM114-Status: GOOD (  13.72  )
+X-CRM114-CacheID: sfid-20260806_150636_147166_28E30B3E 
+X-CRM114-Status: UNSURE (   8.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,138 +152,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patchset
- * fixes more airoha pinctrl issues
- * split combined driver on common code and several SoC specific drivers
- * improves an7583 pinctrl support
- * adds support of en7523 SoC
- * adds support of an7563 SoC
+An7583 device tree binding schema was more or less blinly copied from
+corresponding en7581 schema. As result it's not correct.
 
-The driver split changes are based on Matheus Sampaio Queiroga work.
+There are following issues:
+ * i2s pin-function is not really defined for an7583
+ * i2s pin-function by mistake was replaced by i2c pin-function in the
+   functions/groups checks
+ * pcm_spi pin-function defined for less number of pin-groups
+ * pwm pin-function should have more pin-groups elements
+ * unexisting pins was defined
 
-Changes v2:
- * more issues of airoha pinctrl driver was fixed
- * SoC specific register addresses, bitfields, macroses were
-   removed from common header and placed to SoC specific file
- * fixed address of LAN LED mappings registers for en7523 SoC
- * improves support of an7583 pinctrl
+Fix an7583 schema, so it matches actual pinctrl driver.
 
-Changes v3:
- * improve searching of chip scu regmap necessary for drivers
-   operations
+Fixes: e6e47d31d3f8 ("dt-bindings: pinctrl: airoha: Document AN7583 Pin Controller")
+Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+---
+ .../pinctrl/airoha,an7583-pinctrl.yaml        | 37 +++++++------------
+ 1 file changed, 14 insertions(+), 23 deletions(-)
 
-Changes v4:
- * an7583: add support of OLT pin function
- * an7581: do a proper fix of pcie_reset pins mux/conf.
-
-Changes v5:
- * improve description of an7583 i2c pinmux fix
- * rename an7583 registers to match its an7583 names
- * add support of an7563 SoC
-
-Changes v6:
- * fix some of the issues found by
-   https://sashiko.dev/#/patchset/20260622113046.3619139-1-mikhail.kshevetskiy%40iopsys.eu
- * update device tree binding
- * add bindings for en7523 and an7563
-
-Changes v7:
- * a lot of IRQ support fixes, now there is chances that IRQ code is
-   really working
- * device tree bindings moved to the separate patches
- * fix some of the issues found by
-   https://sashiko.dev/#/patchset/20260628143733.273651-1-mikhail.kshevetskiy@iopsys.eu
-
-Changes v8:
- * an7581: fix pinconf of i2c_scl/i2c_sda pins
- * ignore high bit in set_direction/get_direction helpers
- * minor patch modification
- * fix some issue found by
-   https://sashiko.dev/#/patchset/20260727074234.3761170-1-mikhail.kshevetskiy@iopsys.eu
- * add more 'Fixes: commit' lines
- * add Acked-by Lorenzo Bianconi where it was approved
-
-Changes v9:
- * fix some issue found by
-   https://sashiko.dev/#/message/20260727174141.664933-5-mikhail.kshevetskiy%40iopsys.eu
- * take into account openwrt changes created by Daniel Schwierzeck
- * improve binding patches
-
-Changes v10:
- * fix en7523 binding issue
- * improve a bit error handling
-
-Changes v11:
- * improve binding patches
- * add Acked-by Krzysztof Kozlowski where it was approved
-
-Daniel Schwierzeck (3):
-  pinctrl: airoha: fix I2C1 pin mux config for AN7581
-  pinctrl: airoha: fix I2C pin mux config for AN7583
-  pinctrl: airoha: fix AN7583 MDIO pin mux config
-
-Mikhail Kshevetskiy (34):
-  dt-bindings: pinctrl: airoha: en7581: fix misprint in i2s function
-    name
-  dt-bindings: pinctrl: airoha: an7583: fix device tree binding schema
-  pinctrl: airoha: fix mdio bitfield names
-  pinctrl: airoha: an7581: fix pinconf of i2c_scl/i2c_sda pins
-  pinctrl: airoha: an7583: fix I2C0_SDA_PD register bit order
-  dt-bindings: pinctrl: airoha: en7581: allow configuration of
-    pcie_reset pins as gpio or pwm
-  pinctrl: airoha: an7581: fix mux/conf of pcie_reset pins
-  dt-bindings: pinctrl: airoha: an7583: allow configuration of non-gpio
-    default pins as gpio and pwm
-  pinctrl: airoha: an7583: fix muxing of non-gpio default pins
-  dt-bindings: pinctrl: airoha: an7583: add i2c0 group for i2c function
-  pinctrl: airoha: an7583: fix spi group pins
-  pinctrl: airoha: add missed get_direction() function for gpio_chip
-  pinctrl: airoha: add set_direction() helper for gpio_chip
-  pinctrl: airoha: minor improvements
-  pinctrl: airoha: fix getting gpiochip/pinctrl pointers in the IRQ
-    handling code
-  pinctrl: airoha: add missed IRQ resource helpers
-  pinctrl: airoha: fix IRQ mask/unmask code
-  pinctrl: airoha: fix edge-triggered interrupts handling
-  pinctrl: airoha: remove not needed irq_type[] array
-  pinctrl: airoha: statically allocate gpio regs structure
-  pinctrl: airoha: move common definitions to the separate header
-  pinctrl: airoha: split driver on shared code and SoC specific drivers
-  pinctrl: airoha: an7581: remove en7581 prefix from variable names
-  pinctrl: airoha: an7583: remove an7583 prefix from variable names and
-    definitions
-  pinctrl: airoha: an7583: rename registers to match its an7583 names
-  dt-bindings: pinctrl: airoha: an7583: add missed features
-  pinctrl: airoha: an7583: add support for npu_uart pinmux
-  pinctrl: airoha: an7583: add support for pon_alt pinmux
-  pinctrl: airoha: an7583: add support for olt pinmux
-  dt-bindings: pinctrl: airoha: add support of en7523 pin controller
-  pinctrl: airoha: add support of en7523 SoC
-  pinctrl: airoha: try to find chip scu node by phandle first
-  dt-bindings: pinctrl: airoha: add support of an7563 pin controller
-  pinctrl: airoha: add support of an7563 SoC
-
- .../pinctrl/airoha,an7563-pinctrl.yaml        |  350 +++
- .../pinctrl/airoha,an7583-pinctrl.yaml        |   61 +-
- .../pinctrl/airoha,en7523-pinctrl.yaml        |  378 +++
- .../pinctrl/airoha,en7581-pinctrl.yaml        |   17 +-
- drivers/pinctrl/airoha/Kconfig                |   42 +-
- drivers/pinctrl/airoha/Makefile               |    7 +
- drivers/pinctrl/airoha/airoha-common.h        |  147 +
- drivers/pinctrl/airoha/pinctrl-airoha.c       | 2664 ++---------------
- drivers/pinctrl/airoha/pinctrl-an7563.c       | 1115 +++++++
- drivers/pinctrl/airoha/pinctrl-an7581.c       | 1487 +++++++++
- drivers/pinctrl/airoha/pinctrl-an7583.c       | 1517 ++++++++++
- drivers/pinctrl/airoha/pinctrl-en7523.c       | 1157 +++++++
- 12 files changed, 6460 insertions(+), 2482 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/pinctrl/airoha,an7563-pinctrl.yaml
- create mode 100644 Documentation/devicetree/bindings/pinctrl/airoha,en7523-pinctrl.yaml
- create mode 100644 drivers/pinctrl/airoha/airoha-common.h
- create mode 100644 drivers/pinctrl/airoha/pinctrl-an7563.c
- create mode 100644 drivers/pinctrl/airoha/pinctrl-an7581.c
- create mode 100644 drivers/pinctrl/airoha/pinctrl-an7583.c
- create mode 100644 drivers/pinctrl/airoha/pinctrl-en7523.c
-
+diff --git a/Documentation/devicetree/bindings/pinctrl/airoha,an7583-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/airoha,an7583-pinctrl.yaml
+index 79910214d9b5c..f52802a3ad79d 100644
+--- a/Documentation/devicetree/bindings/pinctrl/airoha,an7583-pinctrl.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/airoha,an7583-pinctrl.yaml
+@@ -61,7 +61,7 @@ patternProperties:
+             description:
+               A string containing the name of the function to mux to the group.
+             enum: [pon, tod_1pps, sipo, mdio, uart, i2c, jtag, pcm, spi,
+-                   pcm_spi, i2s, emmc, pnand, pcie_reset, pwm, phy1_led0,
++                   pcm_spi, emmc, pnand, pcie_reset, pwm, phy1_led0,
+                    phy2_led0, phy3_led0, phy4_led0, phy1_led1, phy2_led1,
+                    phy3_led1, phy4_led1]
+ 
+@@ -159,17 +159,8 @@ patternProperties:
+               properties:
+                 groups:
+                   items:
+-                    enum: [pcm_spi, pcm_spi_int, pcm_spi_rst, pcm_spi_cs1,
+-                           pcm_spi_cs2, pcm_spi_cs3, pcm_spi_cs4]
+-                  maxItems: 7
+-          - if:
+-              properties:
+-                function:
+-                  const: i2c
+-            then:
+-              properties:
+-                groups:
+-                  enum: [i2s]
++                    enum: [pcm_spi, pcm_spi_rst, pcm_spi_cs1]
++                  maxItems: 3
+           - if:
+               properties:
+                 function:
+@@ -207,7 +198,8 @@ patternProperties:
+                          gpio20, gpio21, gpio22, gpio23, gpio24, gpio25,
+                          gpio26, gpio27, gpio28, gpio29, gpio30, gpio31,
+                          gpio36, gpio37, gpio38, gpio39, gpio40, gpio41,
+-                         gpio42, gpio43, gpio44, gpio45, gpio46, gpio47]
++                         gpio42, gpio43, gpio44, gpio45, gpio46, gpio47,
++                         gpio48]
+           - if:
+               properties:
+                 function:
+@@ -288,17 +280,16 @@ patternProperties:
+             description:
+               An array of strings. Each string contains the name of a pin.
+             items:
+-              enum: [uart1_txd, uart1_rxd, i2c_scl, i2c_sda, spi_cs0, spi_clk,
+-                     spi_mosi, spi_miso, gpio0, gpio1, gpio2, gpio3, gpio4,
+-                     gpio5, gpio6, gpio7, gpio8, gpio9, gpio10, gpio11, gpio12,
+-                     gpio13, gpio14, gpio15, gpio16, gpio17, gpio18, gpio19,
+-                     gpio20, gpio21, gpio22, gpio23, gpio24, gpio25, gpio26,
+-                     gpio27, gpio28, gpio29, gpio30, gpio31, gpio32, gpio33,
+-                     gpio34, gpio35, gpio36, gpio37, gpio38, gpio39, gpio40,
+-                     gpio41, gpio42, gpio43, gpio44, gpio45, gpio46,
+-                     pcie_reset0, pcie_reset1, pcie_reset2]
++              enum: [gpio0, gpio1, gpio2, gpio3, gpio4, gpio5, gpio6, gpio7,
++                     gpio8, gpio9, gpio10, gpio11, gpio12, gpio13, gpio14,
++                     gpio15, gpio16, gpio17, gpio18, gpio19, gpio20, gpio21,
++                     gpio22, gpio23, gpio24, gpio25, gpio26, gpio27, gpio28,
++                     gpio29, gpio30, gpio31, gpio32, gpio33, gpio34, gpio35,
++                     gpio36, gpio37, gpio38, i2c0_scl, i2c0_sda, i2c1_scl,
++                     i2c1_sda, spi_clk, spi_cs, spi_mosi, spi_miso, uart_txd,
++                     uart_rxd, pcie_reset0, pcie_reset1, mdc_0, mdio_0]
+             minItems: 1
+-            maxItems: 58
++            maxItems: 53
+ 
+           bias-disable: true
+ 
 -- 
 2.53.0
 
