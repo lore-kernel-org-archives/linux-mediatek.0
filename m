@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42220C5AC67
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2026 21:12:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C498C5AC67
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2026 21:41:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OC10ZEOluFS/VVKaiWFZxFd6Wj1H/lb8zKFSE4udPgU=; b=MqrKW2HybyFc2qlDpQ1UHNK6a1
-	WnELFo2N06iqWcFTIBDAwllgIlHZe1vLrZbBre1Dms8ktNy3KgkAPU6rcjA3EDsUzXRt3Kaclphba
-	fgZWJcFXeaPB+RBodPSRKH1yzqq1ramyITk60UYPmR/fA9GvSnQjST39lsuB0RAEcz6B2JZO4MZIf
-	I+4GK1N2+zBTCrtOcGc69YIQQzCfHL3S66p6WPKVeC7o6RyUM2uy7FwDevh3JcOyMQ6KAg7KSnbqn
-	hUD45HJsCw8GM/rYgoRV1bzOgHo9ANc9IfLa9GMZfZicp2dvnUdZk9fTcPBjZpQI4OtZ+N2kd2YEJ
-	d7tEjv4g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=emwhs/R12V88FksqW/fCHLiEZt+g/eeVJZV7F/tinJU=; b=0TfI+OXHC6K3KLqK9vQhOk4fj3
+	9E8+CR2vhorRN6yYOI945tCJycuvKMl+2X5MxjbkooPCXRIszfBLxcbxB4rIoMQ21jWAWfDI5rpgp
+	p4+ZapDqAhuzLiQ/rfKgSMTCC+mWs8bQhseX97uIbAuhfrUovDzCnhnOvOGJeMtRJzFD4sdEpkmvq
+	JV0MwEnrUMkiEmIP0x4s7moLptZPK6BqKgIZCkJ1vkSnc0T2rnrQ9fvufr2FkCga4HUWZ8hzpJxZ7
+	dP2q5vYa3aCT9n37PNE4sPLHQs4l3dSLE4KJikelPkMKCbqW4gkhZAU4hWKoO3UAmt+MW1ykc6QD4
+	fqRIrt2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws5Nh-00000006hlp-2aq8;
-	Thu, 06 Aug 2026 21:12:01 +0000
-Received: from mgamail.intel.com ([198.175.65.10])
+	id 1ws5qP-00000006kGY-0Vk9;
+	Thu, 06 Aug 2026 21:41:41 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws5Nc-00000006hlH-2S7z
+	id 1ws5qN-00000006kFz-3fMM
 	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Aug 2026 21:12:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1786050716; x=1817586716;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=tXWRzu2QjkjkMrRKthZt+8sxsjGH4nCQH73BAmW/Ubo=;
-  b=WaOZQS65OBCLlZoBGB/fP7yeygoHK/NqkB/5sGu/+P8mfdbSfaaEq1xq
-   GJ10didqLmtlBvVHNfye1NzpVHC0lTVTaqbEPrIfFObSe3aEHplR4flEn
-   LpGdGyh3J930hUrWyefppSjQaxGvb4TaSHH9o6tZ/qc1mb5RJuh9hcV+h
-   rXAZ5yTa3F30HsswCKqmyGLKb1UAOHwuwvCmazpHwnRwK0Tluy9r7jW6c
-   XqSH2lTZy050fvKZEwBfcpmcmOkA+8XuSJSmVgz8Ixi9V7sWrQ8bqHpR7
-   PZk6XWJM9A0XgZej8mGYwkYnIgFxyKXvAEtOAbWKtugyjeVZ4IPT9D/m3
-   g==;
-X-CSE-ConnectionGUID: 6YrC39RLRvmi/vmRahmg3g==
-X-CSE-MsgGUID: dzCYYcAnSfmgZZ4K5rZjjw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11867"; a="104060707"
-X-IronPort-AV: E=Sophos;i="6.25,209,1779174000"; 
-   d="scan'208";a="104060707"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Aug 2026 14:11:55 -0700
-X-CSE-ConnectionGUID: 4j6H+A/sTDmnwF37oLj1+A==
-X-CSE-MsgGUID: Amw0ygE8ReSyRfSe0k4srw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,209,1779174000"; 
-   d="scan'208";a="258887367"
-Received: from lkp-server01.sh.intel.com (HELO 6eda058d650d) ([10.239.97.150])
-  by fmviesa007.fm.intel.com with ESMTP; 06 Aug 2026 14:11:52 -0700
-Received: from kbuild by 6eda058d650d with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1ws5NW-00000000GFR-1NNI;
-	Thu, 06 Aug 2026 21:11:50 +0000
-Date: Fri, 7 Aug 2026 05:11:40 +0800
-From: kernel test robot <lkp@intel.com>
-To: JB Tsai <jb.tsai@mediatek.com>, nbd@nbd.name, lorenzo@kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, Sean.Wang@mediatek.com,
-	Quan.Zhou@mediatek.com, Ryder.Lee@mediatek.com,
-	Leon.Yen@mediatek.com, litien.chang@mediatek.com,
-	jeff.hsu@mediatek.com, jb.tsai@mediatek.com
-Subject: Re: [PATCH] wifi: mt76: mt7925: Add flag to control if need DMA
- re-init
-Message-ID: <202608070519.XrTS2LxW-lkp@intel.com>
-References: <20260706024306.47806-1-jb.tsai@mediatek.com>
+	Thu, 06 Aug 2026 21:41:39 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 4B9B743B9B
+	for <linux-mediatek@lists.infradead.org>; Thu,  6 Aug 2026 21:41:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A5E71F0155B
+	for <linux-mediatek@lists.infradead.org>; Thu,  6 Aug 2026 21:41:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1786052499;
+	bh=emwhs/R12V88FksqW/fCHLiEZt+g/eeVJZV7F/tinJU=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=hFjhKrHPrnTV9AX10vJFnzua6fH29RdjhXZxDjVAXlDA9J+sh6DZabN9flRgi4shl
+	 d0JOIBkGrW2l6GrRxVp20xoUJoyE9KzvkvlUAUrMAp0t4sendDUS2MqPbZ7QNxq2AD
+	 BvuCcqRkuRKjq6vS+/UFihOeOZJdMx92IC1CAwn/jyMZc/2BGDmDXHx7mtpFjDI7xg
+	 IjpfTNW90JyxD6PFRbamS+r3NIbqIw5+It7nwLeSFzEouuWhtM4Y85eBAiw9DQD/t3
+	 1ph+Qpgb/QOrp74+XR5M+nXH9kZ5F9x9pCsszMCDtQUJ5VlSCX8KkPGlIWH2G8Iq+b
+	 eFhfsMc9TZjbg==
+Received: by mail-lf1-f46.google.com with SMTP id 2adb3069b0e04-5aeb2bc82ccso3341130e87.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 06 Aug 2026 14:41:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+Roq6lGF7t53cO12sH7k783OATyha7urYEpz7F6qj04cnhGfx+m3owKzVpMLpcrYBuoeQaQZq4hwrOthaMx6DA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwoVMyz715kKnQmKUc+Itei9QKbYQ4zNKFcOwqxm4ODKCVBJl7N
+	P/69X254BAYuJCjanIUmLcZtoqBGuMySUZAnIe0AWhIxxAgsD2wiSqBN3tF6jit9pCnc2qFlfe3
+	bctylewut1UPCee0j7h3RhG5/NuE1Prk=
+X-Received: by 2002:a05:6512:10cf:b0:5b1:da61:a13f with SMTP id
+ 2adb3069b0e04-5b2f4cd3e1emr2391855e87.43.1786052497832; Thu, 06 Aug 2026
+ 14:41:37 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260706024306.47806-1-jb.tsai@mediatek.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260806_141156_672613_4692FB32 
-X-CRM114-Status: GOOD (  13.21  )
+References: <20260802-b4b4-irq-trigger-mask-pinctrl-v1-1-1c398ab53d28@oss.qualcomm.com>
+In-Reply-To: <20260802-b4b4-irq-trigger-mask-pinctrl-v1-1-1c398ab53d28@oss.qualcomm.com>
+From: Linus Walleij <linusw@kernel.org>
+Date: Thu, 6 Aug 2026 23:41:24 +0200
+X-Gmail-Original-Message-ID: <CAD++jLm+sfo2pB=cM3v2-ewwdkaomRvTdKh9VVKNU8mJS3wPyA@mail.gmail.com>
+X-Gm-Features: AUfX_mxUELB5EjLZQ8CDlb5p0mqmJmh3sKO6rvUX7_wSkyifvS8Bgv83X4i36kE
+Message-ID: <CAD++jLm+sfo2pB=cM3v2-ewwdkaomRvTdKh9VVKNU8mJS3wPyA@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: Use IRQ trigger mask helpers
+To: Maulik Shah <maulik.shah@oss.qualcomm.com>
+Cc: =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Sean Wang <sean.wang@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Andrew Jeffery <andrew@codeconstruct.com.au>, Avi Fishman <avifishman70@gmail.com>, 
+	Tomer Maimon <tmaimon77@gmail.com>, Tali Perry <tali.perry1@gmail.com>, 
+	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>, 
+	Benjamin Fair <benjaminfair@google.com>, Bartosz Golaszewski <brgl@kernel.org>, 
+	Bjorn Andersson <andersson@kernel.org>, Viresh Kumar <vireshk@kernel.org>, linux-gpio@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	openbmc@lists.ozlabs.org, linux-arm-msm@vger.kernel.org, soc@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,243 +91,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi JB,
+On Sun, Aug 2, 2026 at 4:06=E2=80=AFPM Maulik Shah <maulik.shah@oss.qualcom=
+m.com> wrote:
 
-kernel test robot noticed the following build errors:
+> Use IRQ_TYPE_LEVEL_MASK and IRQ_TYPE_EDGE_BOTH instead of open-coded
+> trigger type combinations in irqchip callbacks.
+>
+> No functional change intended.
+>
+> Assisted-by: Claude:claude-sonnet-5
+> Signed-off-by: Maulik Shah <maulik.shah@oss.qualcomm.com>
 
-[auto build test ERROR on wireless/main]
-[also build test ERROR on linus/master v7.2-rc6]
-[cannot apply to wireless-next/main next-20260806]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Nice cleanup, patch applied!
 
-url:    https://github.com/intel-lab-lkp/linux/commits/JB-Tsai/wifi-mt76-mt7925-Add-flag-to-control-if-need-DMA-re-init/20260807-004748
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless.git main
-patch link:    https://lore.kernel.org/r/20260706024306.47806-1-jb.tsai%40mediatek.com
-patch subject: [PATCH] wifi: mt76: mt7925: Add flag to control if need DMA re-init
-config: powerpc-allmodconfig (https://download.01.org/0day-ci/archive/20260807/202608070519.XrTS2LxW-lkp@intel.com/config)
-compiler: powerpc64-linux-gcc (GCC) 16.1.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260807/202608070519.XrTS2LxW-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202608070519.XrTS2LxW-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   drivers/net/wireless/mediatek/mt76/mt7925/pci.c: In function 'mt7925_pci_probe':
->> drivers/net/wireless/mediatek/mt76/mt7925/pci.c:434:13: error: implicit declaration of function 'is_mt7928'; did you mean 'is_mt7922'? [-Wimplicit-function-declaration]
-     434 |         if (is_mt7928(&dev->mt76))
-         |             ^~~~~~~~~
-         |             is_mt7922
-
-
-vim +434 drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-
-   300	
-   301	static const struct mt792x_irq_map mt7927_irq_map = {
-   302		.host_irq_enable = MT_WFDMA0_HOST_INT_ENA,
-   303		.tx = {
-   304			.all_complete_mask = MT_INT_TX_DONE_ALL,
-   305			.mcu_complete_mask = MT_INT_TX_DONE_MCU,
-   306		},
-   307		.rx = {
-   308			.data_complete_mask = MT7927_RX_DONE_INT_ENA4,
-   309			.wm_complete_mask = MT7927_RX_DONE_INT_ENA6,
-   310			.wm2_complete_mask = MT7927_RX_DONE_INT_ENA7,
-   311		},
-   312	};
-   313	static int mt7925_pci_probe(struct pci_dev *pdev,
-   314				    const struct pci_device_id *id)
-   315	{
-   316		static const struct mt76_driver_ops drv_ops = {
-   317			/* txwi_size = txd size + txp size */
-   318			.txwi_size = MT_TXD_SIZE + sizeof(struct mt76_connac_hw_txp),
-   319			.drv_flags = MT_DRV_TXWI_NO_FREE | MT_DRV_HW_MGMT_TXQ |
-   320				     MT_DRV_AMSDU_OFFLOAD,
-   321			.survey_flags = SURVEY_INFO_TIME_TX |
-   322					SURVEY_INFO_TIME_RX |
-   323					SURVEY_INFO_TIME_BSS_RX,
-   324			.token_size = MT7925_TOKEN_SIZE,
-   325			.tx_prepare_skb = mt7925e_tx_prepare_skb,
-   326			.tx_complete_skb = mt76_connac_tx_complete_skb,
-   327			.rx_check = mt7925_rx_check,
-   328			.rx_skb = mt7925_queue_rx_skb,
-   329			.rx_poll_complete = mt792x_rx_poll_complete,
-   330			.sta_add = mt7925_mac_sta_add,
-   331			.sta_event = mt7925_mac_sta_event,
-   332			.sta_remove = mt7925_mac_sta_remove,
-   333			.update_survey = mt792x_update_channel,
-   334		};
-   335		static const struct mt792x_hif_ops mt7925_pcie_ops = {
-   336			.init_reset = mt7925e_init_reset,
-   337			.reset = mt7925e_mac_reset,
-   338			.mcu_init = mt7925e_mcu_init,
-   339			.drv_own = mt792xe_mcu_drv_pmctrl,
-   340			.fw_own = mt792xe_mcu_fw_pmctrl,
-   341		};
-   342		static const struct mt792x_irq_map irq_map = {
-   343			.host_irq_enable = MT_WFDMA0_HOST_INT_ENA,
-   344			.tx = {
-   345				.all_complete_mask = MT_INT_TX_DONE_ALL,
-   346				.mcu_complete_mask = MT_INT_TX_DONE_MCU,
-   347			},
-   348			.rx = {
-   349				.data_complete_mask = HOST_RX_DONE_INT_ENA2,
-   350				.wm_complete_mask = HOST_RX_DONE_INT_ENA0,
-   351			},
-   352		};
-   353		struct ieee80211_ops *ops;
-   354		struct mt76_bus_ops *bus_ops;
-   355		struct mt792x_dev *dev;
-   356		struct mt76_dev *mdev;
-   357		bool is_mt7927_hw;
-   358		u8 features;
-   359		int ret;
-   360		u16 cmd;
-   361	
-   362		ret = pcim_enable_device(pdev);
-   363		if (ret)
-   364			return ret;
-   365	
-   366		ret = pcim_iomap_regions(pdev, BIT(0), pci_name(pdev));
-   367		if (ret)
-   368			return ret;
-   369	
-   370		pci_read_config_word(pdev, PCI_COMMAND, &cmd);
-   371		if (!(cmd & PCI_COMMAND_MEMORY)) {
-   372			cmd |= PCI_COMMAND_MEMORY;
-   373			pci_write_config_word(pdev, PCI_COMMAND, cmd);
-   374		}
-   375		pci_set_master(pdev);
-   376	
-   377		ret = pci_alloc_irq_vectors(pdev, 1, 1, PCI_IRQ_ALL_TYPES);
-   378		if (ret < 0)
-   379			return ret;
-   380	
-   381		ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(32));
-   382		if (ret)
-   383			goto err_free_pci_vec;
-   384	
-   385		is_mt7927_hw = (pdev->device == 0x6639 || pdev->device == 0x7927 ||
-   386				pdev->device == 0x0738);
-   387	
-   388		/* MT7927: ASPM L1 causes unreliable WFDMA register access */
-   389		if (mt7925_disable_aspm || is_mt7927_hw)
-   390			mt76_pci_disable_aspm(pdev);
-   391	
-   392		ops = mt792x_get_mac80211_ops(&pdev->dev, &mt7925_ops,
-   393					      (void *)id->driver_data, &features);
-   394		if (!ops) {
-   395			ret = -ENOMEM;
-   396			goto err_free_pci_vec;
-   397		}
-   398	
-   399		mdev = mt76_alloc_device(&pdev->dev, sizeof(*dev), ops, &drv_ops);
-   400		if (!mdev) {
-   401			ret = -ENOMEM;
-   402			goto err_free_pci_vec;
-   403		}
-   404	
-   405		pci_set_drvdata(pdev, mdev);
-   406	
-   407		dev = container_of(mdev, struct mt792x_dev, mt76);
-   408		dev->fw_features = features;
-   409		dev->hif_ops = &mt7925_pcie_ops;
-   410		dev->irq_map = is_mt7927_hw ? &mt7927_irq_map : &irq_map;
-   411		mt76_mmio_init(&dev->mt76, pcim_iomap_table(pdev)[0]);
-   412		tasklet_init(&mdev->irq_tasklet, mt792x_irq_tasklet, (unsigned long)dev);
-   413	
-   414		dev->phy.dev = dev;
-   415		dev->phy.mt76 = &dev->mt76.phy;
-   416		dev->mt76.phy.priv = &dev->phy;
-   417		dev->bus_ops = dev->mt76.bus;
-   418		bus_ops = devm_kmemdup(dev->mt76.dev, dev->bus_ops, sizeof(*bus_ops),
-   419				       GFP_KERNEL);
-   420		if (!bus_ops) {
-   421			ret = -ENOMEM;
-   422			goto err_free_dev;
-   423		}
-   424	
-   425		bus_ops->rr = mt7925_rr;
-   426		bus_ops->wr = mt7925_wr;
-   427		bus_ops->rmw = mt7925_rmw;
-   428		dev->mt76.bus = bus_ops;
-   429	
-   430		if (!mt7925_disable_aspm && mt76_pci_aspm_supported(pdev))
-   431			dev->aspm_supported = true;
-   432	
-   433		/* MT7935 does not need wpdma reinit */
- > 434		if (is_mt7928(&dev->mt76))
-   435			dev->skip_wpdma_reinit = true;
-   436	
-   437		ret = __mt792x_mcu_fw_pmctrl(dev);
-   438		if (ret)
-   439			goto err_free_dev;
-   440	
-   441		ret = __mt792xe_mcu_drv_pmctrl(dev);
-   442		if (ret)
-   443			goto err_free_dev;
-   444	
-   445		mdev->rev = (mt76_rr(dev, MT_HW_CHIPID) << 16) |
-   446			    (mt76_rr(dev, MT_HW_REV) & 0xff);
-   447	
-   448		dev_info(mdev->dev, "ASIC revision: %04x\n", mdev->rev);
-   449	
-   450		if (is_mt7927_hw && mt76_chip(mdev) != 0x7927) {
-   451			dev_info(mdev->dev,
-   452				 "MT7927 raw CHIPID=0x%04x, forcing chip=0x7927\n",
-   453				 mt76_chip(mdev));
-   454			mdev->rev = (0x7927 << 16) | (mdev->rev & 0xff);
-   455		}
-   456	
-   457		mt76_rmw_field(dev, MT_HW_EMI_CTL, MT_HW_EMI_CTL_SLPPROT_EN, 1);
-   458	
-   459		ret = mt792x_wfsys_reset(dev);
-   460		if (ret)
-   461			goto err_free_dev;
-   462	
-   463		mt76_wr(dev, irq_map.host_irq_enable, 0);
-   464	
-   465		mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
-   466	
-   467		ret = devm_request_irq(mdev->dev, pdev->irq, mt792x_irq_handler,
-   468				       IRQF_SHARED, KBUILD_MODNAME, dev);
-   469		if (ret)
-   470			goto err_free_dev;
-   471	
-   472		if (is_mt7927(&dev->mt76))
-   473			ret = mt7927_dma_init(dev);
-   474		else if (is_mt7925(&dev->mt76))
-   475			ret = mt7925_dma_init(dev);
-   476		else
-   477			ret = -EINVAL;
-   478	
-   479		if (ret)
-   480			goto err_free_irq;
-   481	
-   482		ret = mt7925_register_device(dev);
-   483		if (ret)
-   484			goto err_free_dma;
-   485	
-   486		return 0;
-   487	
-   488	err_free_dma:
-   489		mt792x_dma_cleanup(dev);
-   490	err_free_irq:
-   491		devm_free_irq(&pdev->dev, pdev->irq, dev);
-   492	err_free_dev:
-   493		mt76_free_device(&dev->mt76);
-   494	err_free_pci_vec:
-   495		pci_free_irq_vectors(pdev);
-   496	
-   497		return ret;
-   498	}
-   499	
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Yours,
+Linus Walleij
 
