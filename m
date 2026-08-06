@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C498C5AC67
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2026 21:41:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 868FFC5AC67
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2026 21:50:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=emwhs/R12V88FksqW/fCHLiEZt+g/eeVJZV7F/tinJU=; b=0TfI+OXHC6K3KLqK9vQhOk4fj3
-	9E8+CR2vhorRN6yYOI945tCJycuvKMl+2X5MxjbkooPCXRIszfBLxcbxB4rIoMQ21jWAWfDI5rpgp
-	p4+ZapDqAhuzLiQ/rfKgSMTCC+mWs8bQhseX97uIbAuhfrUovDzCnhnOvOGJeMtRJzFD4sdEpkmvq
-	JV0MwEnrUMkiEmIP0x4s7moLptZPK6BqKgIZCkJ1vkSnc0T2rnrQ9fvufr2FkCga4HUWZ8hzpJxZ7
-	dP2q5vYa3aCT9n37PNE4sPLHQs4l3dSLE4KJikelPkMKCbqW4gkhZAU4hWKoO3UAmt+MW1ykc6QD4
-	fqRIrt2Q==;
+	bh=xcy7vptF/hy+DPHjB4Gbv52wsdaMVtOZt/3bPVoHJCQ=; b=JvUAsLztgG3daaANHo79TNZaYU
+	ZFW3HcTSiHCwWVf9/4y9gTfereMpRyPXMRjRe1Srq2WpalbW+PLpGkvOFnUy4kLkLjNkEhrTmOOXU
+	ztZFxparf58DYxSa3iIionmI6G9uT0w1A9AK99mzhN16kV4H35Xwbx4wLY/LdKoTYlUOxrfCl1vQI
+	fSD1V0/4A55a2Xgp1Q0OS9iVsT68NfpF4YkDnZ//2hNnh9IUcbMWAYJawnz8jYKSw4qkXjp2FUiWp
+	3LpBjfaTC7aw5PhqeDJzXxNEvuEtMsClUt9eB+U1Uu+t18dOiC8r4Lk6GAG1XBp8pD8ayeJuekGQX
+	KvVLEVnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws5qP-00000006kGY-0Vk9;
-	Thu, 06 Aug 2026 21:41:41 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1ws5yl-00000006kpS-0ujL;
+	Thu, 06 Aug 2026 21:50:19 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ws5qN-00000006kFz-3fMM
+	id 1ws5yj-00000006koq-3eGK
 	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Aug 2026 21:41:39 +0000
+	Thu, 06 Aug 2026 21:50:17 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4B9B743B9B
-	for <linux-mediatek@lists.infradead.org>; Thu,  6 Aug 2026 21:41:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A5E71F0155B
-	for <linux-mediatek@lists.infradead.org>; Thu,  6 Aug 2026 21:41:39 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id E89F060103
+	for <linux-mediatek@lists.infradead.org>; Thu,  6 Aug 2026 21:50:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8EC031F00ACF
+	for <linux-mediatek@lists.infradead.org>; Thu,  6 Aug 2026 21:50:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786052499;
-	bh=emwhs/R12V88FksqW/fCHLiEZt+g/eeVJZV7F/tinJU=;
+	s=k20260515; t=1786053016;
+	bh=xcy7vptF/hy+DPHjB4Gbv52wsdaMVtOZt/3bPVoHJCQ=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=hFjhKrHPrnTV9AX10vJFnzua6fH29RdjhXZxDjVAXlDA9J+sh6DZabN9flRgi4shl
-	 d0JOIBkGrW2l6GrRxVp20xoUJoyE9KzvkvlUAUrMAp0t4sendDUS2MqPbZ7QNxq2AD
-	 BvuCcqRkuRKjq6vS+/UFihOeOZJdMx92IC1CAwn/jyMZc/2BGDmDXHx7mtpFjDI7xg
-	 IjpfTNW90JyxD6PFRbamS+r3NIbqIw5+It7nwLeSFzEouuWhtM4Y85eBAiw9DQD/t3
-	 1ph+Qpgb/QOrp74+XR5M+nXH9kZ5F9x9pCsszMCDtQUJ5VlSCX8KkPGlIWH2G8Iq+b
-	 eFhfsMc9TZjbg==
-Received: by mail-lf1-f46.google.com with SMTP id 2adb3069b0e04-5aeb2bc82ccso3341130e87.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 06 Aug 2026 14:41:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+Roq6lGF7t53cO12sH7k783OATyha7urYEpz7F6qj04cnhGfx+m3owKzVpMLpcrYBuoeQaQZq4hwrOthaMx6DA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwoVMyz715kKnQmKUc+Itei9QKbYQ4zNKFcOwqxm4ODKCVBJl7N
-	P/69X254BAYuJCjanIUmLcZtoqBGuMySUZAnIe0AWhIxxAgsD2wiSqBN3tF6jit9pCnc2qFlfe3
-	bctylewut1UPCee0j7h3RhG5/NuE1Prk=
-X-Received: by 2002:a05:6512:10cf:b0:5b1:da61:a13f with SMTP id
- 2adb3069b0e04-5b2f4cd3e1emr2391855e87.43.1786052497832; Thu, 06 Aug 2026
- 14:41:37 -0700 (PDT)
+	b=ngV5zpVu+weQOpvh2gMXaltxq8rXyXczgW76DqK2uqSDkzlHCp8bcelPQ7d9NZqWu
+	 9qcU6Qmwhv0CHSXt1hjnP7i9hY6paI1gyIO8etzTx27D5tz0rjwJMs7odjmk8Fr/Fu
+	 kD8cNNMtuOh7eTnilBSaWt+3HS5KaxzCmqjHLCDnEobNlUay3H5N/UpT8jXqE4EXbu
+	 BWkLtbYFL/vasv6axsDMLMoFoOc+KR+15lE4BY4TnTwXM2uhVshbKk8FTOlfGLEKbO
+	 gulS2mOt6lSwEKUHsnrowuAx8G14Cr2r/6lHEwtvFRkrshhUrNj/uSVl2Bk70oiAoZ
+	 jB2+/rorUgz1Q==
+Received: by mail-lf1-f44.google.com with SMTP id 2adb3069b0e04-5aea0fff535so3058298e87.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 06 Aug 2026 14:50:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+RqXVX10mLTfctsKcz1aE9nkFrWlfQCaMTJ7iHO++Ngv9det8Z7N16xv9oCE+SeYtsM8Q95EeRdrRQEM0O7T6A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwDAjStSGqS1nBcfJfgx0pgxcz95wAYAA4XDaQ13ZlNnv+IxNwm
+	ehllo/V6Z1V2e9euPAFgxFMAQZhqL65BNAxvTnE4va8SwixtJVDhimS/dy1xKZ9ZOSQwzF1LJfT
+	AqrDhBNh3AdEUUN9R5nEiMC3s4DqIZ1A=
+X-Received: by 2002:a05:6512:304f:b0:5b1:5807:50f2 with SMTP id
+ 2adb3069b0e04-5b303cb381fmr548646e87.43.1786053015336; Thu, 06 Aug 2026
+ 14:50:15 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260802-b4b4-irq-trigger-mask-pinctrl-v1-1-1c398ab53d28@oss.qualcomm.com>
-In-Reply-To: <20260802-b4b4-irq-trigger-mask-pinctrl-v1-1-1c398ab53d28@oss.qualcomm.com>
+References: <20260802-b4b4-irq-trigger-mask-gpio-v1-1-948973636c84@oss.qualcomm.com>
+In-Reply-To: <20260802-b4b4-irq-trigger-mask-gpio-v1-1-948973636c84@oss.qualcomm.com>
 From: Linus Walleij <linusw@kernel.org>
-Date: Thu, 6 Aug 2026 23:41:24 +0200
-X-Gmail-Original-Message-ID: <CAD++jLm+sfo2pB=cM3v2-ewwdkaomRvTdKh9VVKNU8mJS3wPyA@mail.gmail.com>
-X-Gm-Features: AUfX_mxUELB5EjLZQ8CDlb5p0mqmJmh3sKO6rvUX7_wSkyifvS8Bgv83X4i36kE
-Message-ID: <CAD++jLm+sfo2pB=cM3v2-ewwdkaomRvTdKh9VVKNU8mJS3wPyA@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: Use IRQ trigger mask helpers
+Date: Thu, 6 Aug 2026 23:50:00 +0200
+X-Gmail-Original-Message-ID: <CAD++jLmFruzsuSCgzKCZoy63dgTPi=Hci-xgj76315ht9ttFyQ@mail.gmail.com>
+X-Gm-Features: AUfX_mz1H-BHPNicMG_kro-JKcpFPgsijOdPLrxM4JqaXBQO7QyYZT_KtNKmkEg
+Message-ID: <CAD++jLmFruzsuSCgzKCZoy63dgTPi=Hci-xgj76315ht9ttFyQ@mail.gmail.com>
+Subject: Re: [PATCH] gpio: Use IRQ trigger mask helpers
 To: Maulik Shah <maulik.shah@oss.qualcomm.com>
-Cc: =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Sean Wang <sean.wang@kernel.org>, 
+Cc: Keerthy <j-keerthy@ti.com>, Bartosz Golaszewski <brgl@kernel.org>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Andrew Jeffery <andrew@codeconstruct.com.au>, Avi Fishman <avifishman70@gmail.com>, 
-	Tomer Maimon <tmaimon77@gmail.com>, Tali Perry <tali.perry1@gmail.com>, 
-	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>, 
-	Benjamin Fair <benjaminfair@google.com>, Bartosz Golaszewski <brgl@kernel.org>, 
-	Bjorn Andersson <andersson@kernel.org>, Viresh Kumar <vireshk@kernel.org>, linux-gpio@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	openbmc@lists.ozlabs.org, linux-arm-msm@vger.kernel.org, soc@lists.linux.dev
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Frank Li <Frank.Li@nxp.com>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, Grygorii Strashko <grygorii.strashko@ti.com>, 
+	Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>, 
+	Robert Jarzmik <robert.jarzmik@free.fr>, Manivannan Sadhasivam <mani@kernel.org>, 
+	Andy Shevchenko <andy@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Thierry Reding <thierry.reding@kernel.org>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, imx@lists.linux.dev, 
+	linux-omap@vger.kernel.org, linux-unisoc@lists.infradead.org, 
+	linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -91,7 +91,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Aug 2, 2026 at 4:06=E2=80=AFPM Maulik Shah <maulik.shah@oss.qualcom=
+On Sun, Aug 2, 2026 at 4:11=E2=80=AFPM Maulik Shah <maulik.shah@oss.qualcom=
 m.com> wrote:
 
 > Use IRQ_TYPE_LEVEL_MASK and IRQ_TYPE_EDGE_BOTH instead of open-coded
@@ -102,7 +102,7 @@ m.com> wrote:
 > Assisted-by: Claude:claude-sonnet-5
 > Signed-off-by: Maulik Shah <maulik.shah@oss.qualcomm.com>
 
-Nice cleanup, patch applied!
+Reviewed-by: Linus Walleij <linusw@kernel.org>
 
 Yours,
 Linus Walleij
