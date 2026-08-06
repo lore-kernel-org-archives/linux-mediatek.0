@@ -4,85 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83E3DC55ABF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2026 06:36:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D16BCC55ABF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Aug 2026 07:08:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=3aCaFbKDjbrgsWA9pX65sno3g8y9yQszPJrQTiaiiUo=; b=QjPU5ZVKkC3I322VC8vWKt9a3f
-	kkJsfYUsG6uUI9SW/Oiw6X78BbDBK8QMhP23Fni1kTs6oYkaa7vI8s1s2GtKZaJKTbhdWkd09tWOA
-	KwBs6D01BilBaR2uF5KQQlN0nmndpjrPRPAHc865VS7NovLC4w3tea1DuZKAZd+VuViwREvJHI5Gv
-	0YPkMyxWnMvb+VZdFdRpb+IdyzJqCC9r6hw32QEu4l4tfz0DVHsTGXh/Ja0M7Dhd9ZNznBYZGSXK1
-	1frdfUfz36/9+BQYeLmbGkb0aMRti2qs5eU+uJsx1fWcMUMuegsNQHSRaQr3z+oCjvSinZdzQDWHI
-	rceJnXTg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SwNkJ5k/Yg61eA28+MStpfNR2SV/C3habiYRXhmHhCQ=; b=tO8nxJxFRUyKAXQZyvLLDGME4X
+	+LYyv7LCb6yGJiCJhT/lx3kZ6y9XgMgzjtYBBeOmiO9+yfBbNAXlUQXLrUvvqsKrcpu+Oq76U+T5I
+	lPX0wqmcKMpudH8gF+fEJJ5OxlVYOHiEWhSobdTpVT2wckltnNS+a2NJChV3P4Ae0YVC7wI6UEcjo
+	LJWZRdewUs1neK4rsCXHlcM8uMqS+K43HI/DBKOzfBLsJIPyqjmg5WVhZaeP2F5NUcRaFIUakWwna
+	g2HueF3Cz30Et3NlLnYktleXF6RXLTuW/HMk6dKFVM8Uc2Ma8H/krkxfZzSS/EcUK86uROIFogftJ
+	VkvMO9Dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrrip-000000054X9-2AXM;
-	Thu, 06 Aug 2026 06:36:55 +0000
-Received: from smtpbgeu2.qq.com ([18.194.254.142])
+	id 1wrsD0-0000000573U-3mYM;
+	Thu, 06 Aug 2026 07:08:06 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wrrij-000000054QB-1Rv7;
-	Thu, 06 Aug 2026 06:36:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=uniontech.com;
-	s=onoh2408; t=1785998144;
-	bh=3aCaFbKDjbrgsWA9pX65sno3g8y9yQszPJrQTiaiiUo=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version;
-	b=XF7HG/ZzWcaBrI5Tx+atc6SAPN0SaKr2z9E3gpU0wxNZPziECnhvJYJK4Ru6KRQ8y
-	 6gL2HFfO8Dws50/hx8MSt5/TezFk1aSrq2S8mY2686Qc539b5wDzz//EJWoRIWVhw2
-	 MVifQNmg1U/r/rACA5DGNRFUr1T/O/FQQ804M+X0=
-X-QQ-mid: esmtpsz18t1785998139t713a1b3e
-X-QQ-Originating-IP: meHIFHb/eE+sKBjPiO2vnCjlJI5G19NMZP2xmTBwoyQ=
-Received: from PEN002676 ( [124.126.19.250])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 06 Aug 2026 14:35:27 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 1
-X-BIZMAIL-ID: 7208643304580338951
-EX-QQ-RecipientCnt: 9
-From: ZhaoJinming <zhaojinming@uniontech.com>
-To: Marcel Holtmann <marcel@holtmann.org>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
-	linux-bluetooth@vger.kernel.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	ZhaoJinming <zhaojinming@uniontech.com>
-Subject: [PATCH] Bluetooth: btmtksdio: fix deadlock in close and reset paths
-Date: Thu,  6 Aug 2026 14:35:21 +0800
-Message-ID: <FD5D03449312D17C+20260806-btmtksdio-deadlock-fix-v1-1-3a2d4392d117@uniontech.com>
-X-Mailer: git-send-email 2.51.0
+	id 1wrsCz-0000000573C-0rzx
+	for linux-mediatek@lists.infradead.org;
+	Thu, 06 Aug 2026 07:08:05 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 89FCF60A64;
+	Thu,  6 Aug 2026 07:08:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C81701F000E9;
+	Thu,  6 Aug 2026 07:08:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1786000084;
+	bh=SwNkJ5k/Yg61eA28+MStpfNR2SV/C3habiYRXhmHhCQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=QnV4eU5TzkqPq1Ftksvg5xOjg8ledIprFYrZg9FMw8uGP8cEvEdPCteE592KBx0q/
+	 M+7pWqn8vviIrWSaaHBS5Zr5VplijkzHa7JFD7rw+zDGEglomgo+938ImCrrenC4fO
+	 avFZBgWZEv5xwwjY8/tcDHKI2lYF+eH9KxTnJAtvxiRijfe8vcggUFvTUJRjzMZyNN
+	 cdxecdkV+T5YKmNcIROQIYTeNFAKPW9aQuNzFWoa8Bw3tso71ctoLXQXTtuNm+GURs
+	 GRyb+tQXXFL3qKulMcRMM/aqtvSIN7k8IUdLNBZTyLblXiusSZkbJtlPS+6K3ejkbc
+	 6hu/MAPuRHlrg==
+Date: Thu, 6 Aug 2026 09:07:59 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>, 
+	Christian Marangi <ansuelsmth@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Benjamin Larsson <benjamin.larsson@genexis.eu>, 
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, Markus Gothe <markus.gothe@genexis.eu>, 
+	Matheus Sampaio Queiroga <srherobrine20@gmail.com>, Daniel Schwierzeck <daniel.schwierzeck@gmail.com>
+Subject: Re: [PATCH v10 02/36] dt-bindings: pinctrl: airoha: an7583: fix
+ device tree binding schema
+Message-ID: <20260806-large-ingenious-guan-c5df98@quoll>
+References: <20260805123408.3767648-1-mikhail.kshevetskiy@iopsys.eu>
+ <20260805123408.3767648-3-mikhail.kshevetskiy@iopsys.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-X-Change-ID: 20260806-btmtksdio-deadlock-fix-f9421f1a7879
-Content-Transfer-Encoding: 8bit
-X-QQ-SENDSIZE: 520
-Feedback-ID: esmtpsz:uniontech.com:qybglogicsvrsz:qybglogicsvrsz4b-0
-X-QQ-XMAILINFO: MwhIHrVefHZTbIQJW/yOT8KZgKpd1+0ZMDcoJ5Hltu8eO0TmTrGEAKU9
-	TfGtNIWDK4iuVZVkdNTzXdPpl7RKAL0DXK5bCqEFsr9JqSVG4VhikSxbF4HhjlVQyiTFi2G
-	FnjavN4fnRF9DepxgMkm5fovaWikDrPfP/1Pko4YHmGFqqjEdW7vDsfyWUN7gO/eAmBGKq6
-	ryan8rEp8xz8LhE1qVxhqm8IQ839NP2b5PWWVAmBBVwjtfu3L9Owq1B/OfARA+2Mra6tfrg
-	KoGzF/912hOIz1oYq0C4kfOLiMM4AJapNplMOKywUbIAn6u0e1krhwiNUsPtQEKn5f/a/xI
-	ZTrvvruC2Ihvp4RlC9nt6pUjU3mnzq6xh5+rTENA7/9V7DZkwALKBzxtfCnJre3HyqMlin0
-	2IbFApJGlFT+T0OObqEIcnuafnjddMYRHDpebYQPGq1rduKOg3SFDMoaco+F0w5lyNQXejh
-	k4YcJDhC6QyuFOmYd3bNTFXjI8yI/IdwjJBIjG/QBCpDvyJw2caavRtp1KY40UCt8sZszOb
-	1Hw5lrM9whz3wjmcyuKBroAKeCaHb+fSeYAYCnoju3xMeyYj6q+CIX9o82b5MQ77C1iqmQG
-	ntwGNoIGqCJoJFlVpFVEmCc3cLNx8vlxbUts39XXhH1xf+MFip0bTY8os9QwCYOj8uaRy7S
-	TmwSiJIScE3IQo9vTsqNjlC85ojVXVu4NEOeN5xZeAfuveW3chylamadq3HyBJHdUgun58H
-	MM8/jV38dFAnt/oo78qjaU9ZTQFg2pO09ZvjLLRxFDJkuKBsTJnrEjnExSeThNV/avuUDzb
-	QImo0K14fIoe84NIe5H0b6zG8a4C1JqjPKkyY5pfPFcbO+5OIL+4x4FSVINUUE9Kz858EYh
-	IpurnPMeJ7BbzuP0N8OvBbHT65VGtvssrJB05yUtUUz7V6WvXIsiNfOyeCCWZv1+jjklFSx
-	eJAA+AjxzhiYTAPwEv6httCKsVijBxGWu49CiS/bB1YGM/fdQAGqCmssG03gDKxnAES8+rD
-	a5V6QmwQIdnrnONtj0
-X-QQ-XMRINFO: OWPUhxQsoeAVwkVaQIEGSKwwgKCxK/fD5g==
-X-QQ-RECHKSPAM: 0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260805_233649_947241_81E847D5 
-X-CRM114-Status: GOOD (  13.42  )
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20260805123408.3767648-3-mikhail.kshevetskiy@iopsys.eu>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,86 +76,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-btmtksdio_close() and btmtksdio_reset() call cancel_work_sync() on
-bdev->txrx_work while holding the sdio host lock, which is also acquired
-by btmtksdio_txrx_work().  If txrx_work is queued when close/reset runs,
-a worker thread may start it after the host lock is taken and block in
-sdio_claim_host(), while cancel_work_sync() waits for the work to
-finish.  The host lock is only released after cancel_work_sync()
-returns, so both sides wait forever, deadlocking close/reset.
+On Wed, Aug 05, 2026 at 03:33:34PM +0300, Mikhail Kshevetskiy wrote:
+> An7583 device tree binding schema was more or less blinly copied from
+> corresponding en7581 schema. As result it's not correct.
+> 
+> There are following issues:
+>  * i2s pin-function is not really defined for an7583
+>  * i2s pin-function by mistake was replaced by i2c pin-function in the
+>    functions/groups checks
+>  * pcm_spi pin-function defined for less number of pin-groups
+>  * pwm pin-function should have more pin-groups elements
+>  * unexisting pins was defined
+> 
+> This patch fixes an7583 schema, so it matches actual pinctrl driver.
 
-Fix this by releasing the sdio host lock before calling
-cancel_work_sync(), then re-acquiring it afterwards.  The interrupt is
-already disabled (sdio_release_irq() in close, C_INT_EN_CLR in reset)
-before the work is cancelled, so no new work can be scheduled and
-cancel_work_sync() fully quiesces txrx_work before the device is torn
-down.  This mirrors the pattern already used by btmtksdio_flush(),
-which cancels the work without holding the host lock.
+"Fix ..."
+https://elixir.bootlin.com/linux/v6.16/source/Documentation/process/submitting-patches.rst#L94
 
-Signed-off-by: ZhaoJinming <zhaojinming@uniontech.com>
----
-btmtksdio_close() and btmtksdio_reset() call cancel_work_sync() on
-bdev->txrx_work while holding the sdio host lock that
-btmtksdio_txrx_work() also acquires. If txrx_work is queued at that
-point, a worker thread can start it and block in sdio_claim_host(),
-while cancel_work_sync() waits for the work to finish and the host lock
-is only released afterwards - a deadlock.
-
-This series releases the host lock around cancel_work_sync() so the work
-can always complete, mirroring the pattern already used by
-btmtksdio_flush().
----
-
----
- drivers/bluetooth/btmtksdio.c | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
-
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index c6f80c419e901e71b21e550449250a5a6755d100..879d580226d25ad398105a158de1545dace33718 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -746,8 +746,16 @@ static int btmtksdio_close(struct hci_dev *hdev)
- 
- 	sdio_release_irq(bdev->func);
- 
-+	/* No new work can be scheduled after sdio_release_irq(), so cancel the
-+	 * work outside the sdio host lock. btmtksdio_txrx_work() also claims
-+	 * the host, so canceling it while holding the lock would deadlock.
-+	 */
-+	sdio_release_host(bdev->func);
-+
- 	cancel_work_sync(&bdev->txrx_work);
- 
-+	sdio_claim_host(bdev->func);
-+
- 	btmtksdio_fw_pmctrl(bdev);
- 
- 	clear_bit(BTMTKSDIO_FUNC_ENABLED, &bdev->tx_state);
-@@ -1293,8 +1301,18 @@ static void btmtksdio_reset(struct hci_dev *hdev)
- 
- 	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, NULL);
- 	skb_queue_purge(&bdev->txq);
-+
-+	/* With the interrupt disabled, the SDIO IRQ handler can no longer
-+	 * schedule txrx_work. Cancel the work outside the sdio host lock;
-+	 * btmtksdio_txrx_work() also claims the host, so canceling it while
-+	 * holding the lock would deadlock.
-+	 */
-+	sdio_release_host(bdev->func);
-+
- 	cancel_work_sync(&bdev->txrx_work);
- 
-+	sdio_claim_host(bdev->func);
-+
- 	gpiod_set_value_cansleep(bdev->reset, 1);
- 	msleep(100);
- 	gpiod_set_value_cansleep(bdev->reset, 0);
-
----
-base-commit: 0d839570765118029aa8bf4a95444c6a11aacf85
-change-id: 20260806-btmtksdio-deadlock-fix-f9421f1a7879
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
 Best regards,
--- 
-ZhaoJinming <zhaojinming@uniontech.com>
+Krzysztof
+
 
