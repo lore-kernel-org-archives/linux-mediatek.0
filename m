@@ -4,61 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5E9AC5AC7C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2026 10:17:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78CE5C5AC7C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2026 10:29:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pztF5ZmE57ytikk6f3PQbP5jBmY/LIYwAmQLXlLbfIs=; b=OVjva3dZ+lqS85+b2euqwUbL6U
-	LKwf9XHsHPmbeVM6WpiNyGjE0VrXEB4FU4u6dMK2RLo9pRIsO915x2VZO/bcFKTkkRNuahyyE010w
-	3O+mBbSQ7b4a1Z5E6r6ulbehXMTasnA6FeKwS3elLOu3P0gcFu5jZ1mTxi8RX6sXsQChCT+v4rGoP
-	SKfk8BwetXrCeMdxBrPMBYvD2tEOEodNhRHPWqppVjLkaOjXqTPqRbKIDJTU+/fnLqc3Uqd05PO0v
-	fVOgcDATXwszfSdzGNOhZX3g4xO54HLAz5xEX1E70Cqt3xh3cQf4yuf8RfPwTK5MFSVTEN2FaE4Fg
-	p16GD2TA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HZTcrQzGXuunNIwct3+GtblbyDkGvD9ZQvC5QSvDxeM=; b=Rjqw5/pyLb+JBvUjtaBqeGMaAa
+	rUzFq8gYQZJl7gwOugYoqH8DfFzoV5AYiqu+WV7AsCdITDs4Ql57uiQwA/s/auHLUsV8NnkOu3HPt
+	wMS3uMH4MSO6sDYqL924q0tZPhGUv3Q+sktRvSslYZKSfYpRbcYJ7LWoFpbliiRPcn+A55Yyw3AHm
+	7jcfW3NShHGuuIrqDZe9SX8zfJL1aYuyHff3BxENJH2o1WAGDnJjhYJ9x1HDZqhCSUj2tv/0XzpXE
+	+Zmwr5EjpD/s9vO3kF8NnTwm7GCAyGsM/javnJN/Gibf9QhbEkudW0CPkr2ANLkpp5GeZwua/KeGk
+	Xdeg9ThQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsHeB-00000007eZE-3z6T;
-	Fri, 07 Aug 2026 10:17:51 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wsHpr-00000007ft7-16dQ;
+	Fri, 07 Aug 2026 10:29:55 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsHeA-00000007eYT-0XOR;
-	Fri, 07 Aug 2026 10:17:50 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5384260A86;
-	Fri,  7 Aug 2026 10:17:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F3851F00A3A;
-	Fri,  7 Aug 2026 10:17:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786097869;
-	bh=pztF5ZmE57ytikk6f3PQbP5jBmY/LIYwAmQLXlLbfIs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=LSB/0X+9XEap2xAfvK4LNYyoEdhiXgPP9zSo9nREqqKzTmHXVX+ZeKhJa0vwnUSB5
-	 i11+t2xKrW6i1Fwrl9Gakc4ZcjXtTDn3z8L+qMttvF2zKMpOcJGmDdDjkkr1SKvTuu
-	 w/IXBDEuDxONJBMCcgU4kPV69sHLFcdVFwJnxlLTdeEJIiRFmUdfl7dXf+ac8Y7f4N
-	 JalGQM2Zr13VhrPy5RXKBfC1btgUdTSK0ck3r1EAbq+52R5ECu0sHlDaGEqii/lp8n
-	 R3SuYydG702WEsyHFco/uhIvPBCOtF8F4vumvy8yp9jrSHmLXoWcMAfni7jWsGqM8u
-	 JEBc0+WaPprQA==
-Date: Fri, 7 Aug 2026 12:17:40 +0200
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunfeng.yun@mediatek.com, vkoul@kernel.org, neil.armstrong@linaro.org, 
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-phy@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	kernel@collabora.com
-Subject: Re: [PATCH v3 1/2] dt-bindings: phy: Document MT8196 MediaTek
- PCI-Express Gen4 S-PHY
-Message-ID: <4copgyszdf2tjc7mes3lzw3tnvtn4nn3ossdjbgckaucnfrn52@di74kohvokfz>
-References: <20260720152654.92216-1-angelogioacchino.delregno@collabora.com>
- <20260720152654.92216-2-angelogioacchino.delregno@collabora.com>
+	id 1wsHpo-00000007frj-3H4Y
+	for linux-mediatek@lists.infradead.org;
+	Fri, 07 Aug 2026 10:29:54 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id 98e67ed59e1d1-38759bcd877so3393409a91.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Aug 2026 03:29:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1786098592; x=1786703392; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=HZTcrQzGXuunNIwct3+GtblbyDkGvD9ZQvC5QSvDxeM=;
+        b=BPXe8N4lVobLvSZ7W3j/PA0C1DBPgu9uvBtWmJUnVrNg3AdYVb2EUCiL2jt9fGvFZq
+         hH81AfVr9Nsk1sRC7hqeheBi4N+ZBZLryOuX8+VnVFXadyAltJyeXFtJEW95m4tQrxOd
+         O6gqui/k33sH81ozQQPd6f8Pm4AW/iTQMZXSFt6k+5blYcOYw9BZruE9v5b2tdOI7xBL
+         35sTjGtw0TytMFAM0eQyQRlePY5PjBG+8yt+HWY/7qGMtm9tKri0hUGja9um+Ib4nteS
+         0yZY3UPA1szfbQd28QeR/0gQhBzVfFbJDKmVmzmm4TlYOFLFIu77o/70uX01r9Ti+28n
+         1TpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1786098592; x=1786703392;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=HZTcrQzGXuunNIwct3+GtblbyDkGvD9ZQvC5QSvDxeM=;
+        b=VIAWaa358K/1btf2NQv0R/Tr7Ucj3cLPCcBDai5gmy4tZLjZ1NiA1j1+jzd0R0qxaR
+         qFigQ1xZWq33jgbPGnE0vnQ8Qs9xi/q8Rw/WSzUZ2eZOHsKhxDomJ2KmeMBlEhS3RUeM
+         DlEz++J1N5dIeID1MfOpsuHlkSuj7LbmfKu8mPGrliUtgSbUAAvKGVc1Q90KH88jsRac
+         KXhGKqivppq2CSHTV983Z+TwbAkNgN6mGjOiEuJemTIOuDVk+d5THorT/mICtp+RWmGL
+         EVRGajRxL4yrVBCLrfbPoUpam3j5I9cKI2rHz08Oy8Vq9knNzoqgKG4M1v2iKTkK5YDQ
+         JwxA==
+X-Forwarded-Encrypted: i=1; AHgh+RqvHZUeNNBFoND6cCaCp8Fgu/Cwu0Hzu/U4kXsEYsNBd2OVE7NO08u46WaY6Y2xsSbyCJUfusif72MSpbpEkg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxliZztQuIe3HJ7Y7evR5Pojs5MxMraogyaGIWtFkQvvqTgZpyG
+	sp41ABjEuCChWbXuYfYFvdDEIlg3WA2aj1QMFDwZVIR1rLIPCduKt77/Uqdb+g==
+X-Gm-Gg: AR+sD10qJPMxBPL7ELTfrt2wN8vQf1BrDeMbfx37GQf26BwllPB4GYwMM/YsDjR41fb
+	cz03on4Yiw2LAKOps2kFG6PyjpCpknf+/6Qvc+ldzvuDLfmKtsXQa8MxQybQAj10IFiNIojmISs
+	tloIlYX9Hm5X7fJ0ZlFf+R8M7UBJeY9xU14c4heIDzhskRORv7FyzwFHRguMQVG126e+l4qZLVp
+	KBwEMP6ymrjqVo+GgehlW2yUwFoaW8ceEFnU5Lpm3gKLFnK7F5Xc00X9ZVig8D986PKdbDDPUhS
+	nd1bFVJfzUCppf1eqd72Zx2igF2d70+srOImai1RJ/MSfV6YR3bvsGzKRpKBKdO+/Lb3yJ6UA5p
+	GsfVNEo0FqMSwqMvDlEWYmxVnlplyJfVfJNwBNegr2LjSYFrcgtygSNrhaM01iGafF1H0F8DW0p
+	S592Aj3D+kxvmvhfclEDxYmKcc+EEuw3an7CkJLsy7xISbsustBh6fC1nZSxw5Q0c1zfhC+XVrf
+	mknzsXDXp7GSNVy64HQgKio5ihdD9/iW4h9bG/dMXq6MIKwJBkRIfH2Rzc/DCvyFeI7a7VeY/pK
+	n6bT
+X-Received: by 2002:a17:90b:1d10:b0:390:b41a:b92f with SMTP id 98e67ed59e1d1-390b41acf77mr3051923a91.18.1786098591764;
+        Fri, 07 Aug 2026 03:29:51 -0700 (PDT)
+Received: from phuc-desktop.. ([183.91.15.56])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-390b1389e1fsm1133614a91.0.2026.08.07.03.29.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 Aug 2026 03:29:51 -0700 (PDT)
+From: phucduc.bui@gmail.com
+To: Mark Brown <broonie@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-spi@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	bui duc phuc <phucduc.bui@gmail.com>
+Subject: [PATCH 1/2] spi: mtk-nor: Propagate errors from optional IRQ lookup
+Date: Fri,  7 Aug 2026 17:29:30 +0700
+Message-ID: <20260807102932.45785-1-phucduc.bui@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260720152654.92216-2-angelogioacchino.delregno@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260807_032952_835541_605A9691 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,22 +102,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 20, 2026 at 05:26:53PM +0200, AngeloGioacchino Del Regno wrote:
-> This adds bindings for the PCI-Express Gen4 S-PHY found in newer
-> MediaTek SoCs, such as MT8196 and its variants.
-> 
-> In the current "revision 3", depending on the specific port, this
-> S-PHY supports up to two lanes of PCI-Express Gen 4 and both EP
-> and RC modes.
-> It is not clear whether revisions/versions earlier than 3 have
-> ever been shipped in any other MediaTek SoC.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+From: bui duc phuc <phucduc.bui@gmail.com>
 
-Acked-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+platform_get_irq_optional() returns a positive IRQ number on success or
+a negative error code on failure. For an optional IRQ, -ENXIO indicates
+that no IRQ is available, while other errors should be propagated.
 
-- Mani
+Propagate errors such as -EPROBE_DEFER and -EINVAL instead of continuing
+probe without the IRQ.
 
+Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
+---
+ drivers/spi/spi-mtk-nor.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
+index 74f34537b02c..6b9a5d728549 100644
+--- a/drivers/spi/spi-mtk-nor.c
++++ b/drivers/spi/spi-mtk-nor.c
+@@ -895,6 +895,10 @@ static int mtk_nor_probe(struct platform_device *pdev)
+ 	irq = platform_get_irq_optional(pdev, 0);
+ 
+ 	if (irq < 0) {
++		if (irq != -ENXIO) {
++			ret = irq;
++			goto err_disable_clk;
++		}
+ 		dev_warn(sp->dev, "IRQ not available.");
+ 	} else {
+ 		ret = devm_request_irq(sp->dev, irq, mtk_nor_irq_handler, 0,
+@@ -928,6 +932,7 @@ static int mtk_nor_probe(struct platform_device *pdev)
+ 	pm_runtime_set_suspended(&pdev->dev);
+ 	pm_runtime_dont_use_autosuspend(&pdev->dev);
+ 
++err_disable_clk:
+ 	mtk_nor_disable_clk(sp);
+ 
+ 	return ret;
 -- 
-மணிவண்ணன் சதாசிவம்
+2.43.0
+
 
