@@ -4,77 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A4CFC5AC7C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2026 09:23:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19CD5C5AC7A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2026 09:32:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YQQIIcoVDl4XGLckZltIX3NSmdGB/0glURatR93oa2s=; b=GdboJFpZdBE+usVHmsnFCbT2Tx
-	kw5XvqoRE7X3v0MY+cKZlB3Tzgw0Nb+V4hbSME0mJjiLCUSqehwWaw2AK0ath+aoX428piMEqgDRE
-	07JvmzWzS0c0xtoIOJa7GQbA9hm7Xs+74gCG/gWeAyJnt6Ghqw8pe9S+JI29o2A4CmEF/bfHvyoA9
-	l2WfdZdkUl+4fdn7ZVlWG60P9pJ468h7WIb8eZU/78yedvUHpw9VvS7fHH2BMnjmfcHUz3W76soJj
-	ZDHbhS2pjH7zfBi83whJUJZeqdVDhh3KIn/PJwtLCxAoMwMiKY57VBuJzMDLcq2gZ2pHymZ8ILRJE
-	GxfKDnrw==;
+	bh=IANzF0ECqfYvNW6o6lUVxR7BnQHMG2/Ia6EKNLv4V7U=; b=AnzJ6ZRbJ2jxOzh3qZxDSIQM+F
+	LSXgWkdOXjN2n8EY7eqxl+DE5JSbHkTyg/8y/jdH/o2JH139K3FKwXVUVeVpyJsiUZ3+mDWxkpBsW
+	CP8yeldGMVD7mIszvHVkLc5MplQJHXkQO6TSnHfhw27heXNXu4u3FLaaRwwaaG+omDSGAjvwtBBqP
+	js48zx1M1/HZK8uw6x8f0zPTnLXIMCUzfyrmf8MNstH8mCUFifk/C4skW1YTNF8WHvqu/qeRyw7f7
+	wULJ+dkGqflIS75zntE73lVY4EBgw/OdSFLZIKsZfobXCyQ7AkZMNCV5CcONyOlaobK1oD7MBKItA
+	lOYcBclw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsGnW-00000007VvY-0kSs;
-	Fri, 07 Aug 2026 09:23:26 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wsGvz-00000007Wm4-36hJ;
+	Fri, 07 Aug 2026 09:32:11 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsGnU-00000007Vv5-3vRI;
-	Fri, 07 Aug 2026 09:23:25 +0000
+	id 1wsGvy-00000007Wl1-0BJq;
+	Fri, 07 Aug 2026 09:32:10 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6A19A60AB4;
-	Fri,  7 Aug 2026 09:23:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9992D1F00A3A;
-	Fri,  7 Aug 2026 09:23:22 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7FAEE416DE;
+	Fri,  7 Aug 2026 09:32:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D92BB1F000E9;
+	Fri,  7 Aug 2026 09:32:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786094603;
-	bh=YQQIIcoVDl4XGLckZltIX3NSmdGB/0glURatR93oa2s=;
+	s=k20260515; t=1786095129;
+	bh=IANzF0ECqfYvNW6o6lUVxR7BnQHMG2/Ia6EKNLv4V7U=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=NgegLwUFkoTqxCVOO/B4Nub71rLTKzrgcr6TO3DDEzYVt7r8TYWEHvv0cjcj0BObQ
-	 WnHGEh9STRKzTEQ8nrJF+y54OB6Y4+RO1FZzeHfaPeaWUSiffZRhy9LZoha5j7Kqcj
-	 Y9/kQsSLAuFGJE0CN5BMdqWJbRwKexB9oiT3Vxxi8RC0P7q0zdaOymDXSuBbHfS3HR
-	 CymnSwluqN5ylBVlVL7atPdJuwP1TaCnQkGNJ5TDVTwvYMznYy1idFVdKt0KJgqV/9
-	 nWnufbzxd4lrKqVppH7f8zopI4JI3FtMVHUsWLjZiuZYCOTWacfUujEM29aZ5Y2/U+
-	 hfrlBkigYTf0A==
-Date: Fri, 7 Aug 2026 11:23:20 +0200
+	b=Vy4vfCDZFH8U9cH+bjQQHEgS2fvGgOSfDBUTJNaxbud290GK0chUox81FUVfjYg6R
+	 3D2kF8uFiOhRp4ZTdgX08mxKIIOCwk0CByMtDgdw8VrKE4HyZK3Uqdot/M01udXbjF
+	 d+zLRz/6yuX2MeuVz/N2eD5Ch99Fu9wXQAwgB4FCdEVJJx9wKqPylzLz9BL5xJYnGV
+	 9NaCxFaZ1Nc5my5YC3wPke/7BYlhHDRnZZaPpo2A3cu1VZdHYDgCPdVIxyX61/C/8M
+	 0W8Ne5Kpd4kw60U1ZYN+AkKqDLy7YERpluujRY2u3VJRZmJAzK4I+uy2sLSTx9byx2
+	 Xdxv036z7kNiA==
+Date: Fri, 7 Aug 2026 11:32:07 +0200
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Shuah Khan <skhan@linuxfoundation.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Nick Desaulniers <ndesaulniers@google.com>,
-	Bill Wendling <morbo@google.com>,
-	Justin Stitt <justinstitt@google.com>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
-Subject: Re: [PATCH net-next v10 11/11] net: airoha: add phylink support
-Message-ID: <anWkCLIp9NxIJJec@lore-desk>
-References: <20260730102444.1967900-1-ansuelsmth@gmail.com>
- <20260730102444.1967900-12-ansuelsmth@gmail.com>
- <ams72wEsCiACYh-k@lore-desk>
- <6a74c0c2.1c04d3ff.d716d.a9f0@mx.google.com>
+To: Daniel Pawlik <pawlik.dan@gmail.com>
+Cc: netdev@vger.kernel.org, win847@gmail.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v4] net: airoha: npu: use coherent DMA for mailbox
+ messages
+Message-ID: <anWmF-BsC-gKAvNF@lore-desk>
+References: <20260807064058.1117747-1-pawlik.dan@gmail.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="8p7i5PObBPdgE3my"
+	protocol="application/pgp-signature"; boundary="WZcbrwvPngP5YrRS"
 Content-Disposition: inline
-In-Reply-To: <6a74c0c2.1c04d3ff.d716d.a9f0@mx.google.com>
+In-Reply-To: <20260807064058.1117747-1-pawlik.dan@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,435 +70,244 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---8p7i5PObBPdgE3my
+--WZcbrwvPngP5YrRS
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> On Thu, Jul 30, 2026 at 01:56:11PM +0200, Lorenzo Bianconi wrote:
-> > > Add phylink support for each GDM port. For GDM1 add the internal inte=
-rface
-> > > mode as the only supported mode. For GDM2/3/4 add the required
-> > > configuration of the PCS to make the external PHY or attached SFP cage
-> > > work.
-> > >=20
-> > > These needs to be defined in the GDM port node using the pcs-handle
-> > > property.
-> > >=20
-> > > Update and provide a .get/set_link_ksettings function that use phylink
-> > > for ethtool OPs now that we fully support phylink.
-> > >=20
-> > > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> >=20
-> > Hi Christian,
-> >=20
-> > just some nits inline. Fixing them:
-> >=20
-> > Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> >=20
-> > Regards,
-> > Lorenzo
-> >=20
-> > > ---
-> > >  drivers/net/ethernet/airoha/Kconfig       |   1 +
-> > >  drivers/net/ethernet/airoha/airoha_eth.c  | 189 ++++++++++++++++++++=
-+-
-> > >  drivers/net/ethernet/airoha/airoha_eth.h  |   5 +
-> > >  drivers/net/ethernet/airoha/airoha_regs.h |  12 ++
-> > >  4 files changed, 205 insertions(+), 2 deletions(-)
-> > >=20
-> > > diff --git a/drivers/net/ethernet/airoha/Kconfig b/drivers/net/ethern=
-et/airoha/Kconfig
-> > > index 1f6640a15fc9..789906516bf8 100644
-> > > --- a/drivers/net/ethernet/airoha/Kconfig
-> > > +++ b/drivers/net/ethernet/airoha/Kconfig
-> > > @@ -20,6 +20,7 @@ config NET_AIROHA
-> > >  	depends on NET_DSA || !NET_DSA
-> > >  	select NET_AIROHA_NPU
-> > >  	select PAGE_POOL
-> > > +	select PHYLINK
-> > >  	help
-> > >  	  This driver supports the gigabit ethernet MACs in the
-> > >  	  Airoha SoC family.
-> > > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/e=
-thernet/airoha/airoha_eth.c
-> > > index dba7c52c0896..5065d6583b9f 100644
-> > > --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> > > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> > > @@ -8,6 +8,7 @@
-> > >  #include <linux/of_reserved_mem.h>
-> > >  #include <linux/platform_device.h>
-> > >  #include <linux/tcp.h>
-> > > +#include <linux/pcs/pcs.h>
-> >=20
-> > nit: alphabetic order.
-> >=20
-> > >  #include <linux/u64_stats_sync.h>
-> > >  #include <net/dst_metadata.h>
-> > >  #include <net/page_pool/helpers.h>
-> > > @@ -1915,6 +1916,14 @@ static int airoha_dev_open(struct net_device *=
-netdev)
-> > >  	struct airoha_qdma *qdma;
-> > >  	int err;
-> > > =20
-> > > +	err =3D phylink_of_phy_connect(dev->phylink, netdev->dev.of_node, 0=
-);
-> > > +	if (err) {
-> > > +		netdev_err(netdev, "could not attach PHY: %d\n", err);
-> > > +		return err;
-> > > +	}
-> > > +
-> > > +	phylink_start(dev->phylink);
-> >=20
-> > Should it be last operation in airoha_dev_open()?
-> >
+> Commit 6f884eb87a79 ("net: airoha: Fix DMA direction for NPU mailbox
+> buffer") switched airoha_npu_send_msg() to DMA_BIDIRECTIONAL so
+> non-coherent CPUs invalidate caches before reading NPU GET responses.
 >=20
-> I checked also other ethernet driver for this pattern and it seems
-> phylink_start is always called before any netif_start_queues.
+> On EN7581 + MT7996 that change regresses probe: the mailbox completes
+> successfully, but WLAN_FUNC_GET_WAIT_NPU_VERSION still reads as 0.0 and
+> mt76 never binds NPU offload. Healthy boards report 0.1111.
 >=20
-> I'm addressing all the other suggestion and adding the Ack if you are ok
-> with keeping this as is.
+> airoha_npu_send_msg() is also used from PPE foe_commit under
+> spin_lock_bh(), so per-message dma_alloc_coherent(GFP_ATOMIC) is a poor
+> fit. Allocate one device-managed coherent bounce buffer per NPU core at
+> probe and reuse it under the existing per-core mailbox lock. That also
+> keeps the buffer valid if the NPU completes a write after a mailbox
+> timeout.
+>=20
+> Introduce __airoha_npu_send_msg() with an optional reply pointer so GET
+> callers can copy the trailing response payload once. Keep
+> airoha_npu_send_msg() as a thin wrapper for SET paths.
+>=20
+> Verified on Quantum Fiber / Gemtek W1700K (EN7581 + MT7996).
+>=20
+> Fixes: 6f884eb87a79 ("net: airoha: Fix DMA direction for NPU mailbox buff=
+er")
+> Link: https://patchwork.kernel.org/project/linux-mediatek/patch/202608050=
+70851.2885888-1-pawlik.dan@gmail.com/
+> Link: https://patchwork.kernel.org/project/linux-mediatek/patch/202608060=
+72601.1815487-1-pawlik.dan@gmail.com/
+> Assisted-by: Cursor:composer-2
+> Signed-off-by: Daniel Pawlik <pawlik.dan@gmail.com>
+> ---
+> v4:
+> - drop rsp_off; copy trailing reply_len bytes into reply pointer
+> - split __airoha_npu_send_msg() + thin airoha_npu_send_msg() wrapper
+>   so SET callers stay unchanged
+> - fix reverse-christmas-tree local variable ordering
+> - constify data argument; clarify reply copy comment
+>=20
+> v3:
+> - move coherent mailbox buffer into struct airoha_npu_core (buf/addr)
+> - allocate one buffer per core at probe
+> - add optional reply buffer to avoid the extra copy in
+>   airoha_npu_wlan_msg_get()
+> - document AIROHA_NPU_MBOX_SIZE vs ppe_mbox_data / WLAN payloads
+>=20
+> v2:
+> - allocate one coherent mailbox buffer at probe and reuse it under the
+>   per-core lock instead of per-message dma_alloc_coherent(GFP_ATOMIC)
+>=20
+>  drivers/net/ethernet/airoha/airoha_npu.c  | 70 +++++++++++++++++------
+>  include/linux/soc/airoha/airoha_offload.h |  3 +
+>  2 files changed, 54 insertions(+), 19 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ether=
+net/airoha/airoha_npu.c
+> index b679bed952de..74da3c4d06e4 100644
+> --- a/drivers/net/ethernet/airoha/airoha_npu.c
+> +++ b/drivers/net/ethernet/airoha/airoha_npu.c
+> @@ -23,6 +23,12 @@
+>  #define NPU_EN7581_FIRMWARE_RV32_MAX_SIZE	0x200000
+>  #define NPU_EN7581_FIRMWARE_DATA_MAX_SIZE	0x10000
+>  #define NPU_DUMP_SIZE				512
+> +/*
+> + * Mailbox DMA payload size. Covers sizeof(struct ppe_mbox_data) (28) and
+> + * WLAN TLV messages (header + payload); largest in-tree WLAN payload to=
+day
+> + * is 16 bytes (INODE_TXRX_REG_ADDR). Keep headroom for future commands.
+> + */
+> +#define AIROHA_NPU_MBOX_SIZE			256
+> =20
+>  #define REG_NPU_LOCAL_SRAM		0x0
+> =20
+> @@ -160,23 +166,32 @@ struct wlan_mbox_data {
+>  	DECLARE_FLEX_ARRAY(u8, d);
+>  };
+> =20
+> -static int airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
+> -			       void *p, int size)
+> +static int __airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
+> +				 const void *data, int len, void *reply,
+> +				 int reply_len)
 
-sure, I am fine with that.
+if you use an u16 for reply_len you can avoid the reply_len < 0 check below.
+
+>  {
+> -	u16 core =3D 0; /* FIXME */
+> -	u32 val, offset =3D core << 4;
+> -	dma_addr_t dma_addr;
+> +	struct airoha_npu_core *c =3D &npu->cores[0]; /* FIXME: core */
+> +	u32 val, offset =3D 0;
+>  	int ret;
+> =20
+> -	dma_addr =3D dma_map_single(npu->dev, p, size, DMA_BIDIRECTIONAL);
+> -	ret =3D dma_mapping_error(npu->dev, dma_addr);
+> -	if (ret)
+> -		return ret;
+> +	if (len > AIROHA_NPU_MBOX_SIZE ||
+> +	    (reply && (reply_len < 0 || reply_len > len)))
+
+maybe you can have a dedicated if for this check
+
+	if (reply && reply_len > len)
+		reutrn -EINVAL;
+
+> +		return -EINVAL;
+> =20
+> -	spin_lock_bh(&npu->cores[core].lock);
+> +	/*
+> +	 * Mailbox payloads are bidirectional (CPU request, NPU response).
+> +	 * On EN7581+MT7996, streaming DMA_BIDIRECTIONAL against the
+> +	 * caller kzalloc() buffer can leave WLAN_FUNC_GET_WAIT_NPU_VERSION
+> +	 * reading as 0.0 despite MBOX success. Reuse a probe-time coherent
+> +	 * bounce buffer under the per-core lock (also used from PPE
+> +	 * foe_commit under atomic context).
+> +	 */
+> +	spin_lock_bh(&c->lock);
+> +
+> +	memcpy(c->buf, data, len);
+> =20
+> -	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(0) + offset, dma_addr);
+> -	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(1) + offset, size);
+> +	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(0) + offset, c->addr);
+> +	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(1) + offset, len);
+>  	regmap_read(npu->regmap, REG_CR_MBQ0_CTRL(2) + offset, &val);
+>  	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(2) + offset, val + 1);
+>  	val =3D FIELD_PREP(MBOX_MSG_FUNC_ID, func_id) | MBOX_MSG_WAIT_RSP;
+> @@ -189,13 +204,21 @@ static int airoha_npu_send_msg(struct airoha_npu *n=
+pu, int func_id,
+>  	if (!ret && FIELD_GET(MBOX_MSG_STATUS, val) !=3D NPU_MBOX_SUCCESS)
+>  		ret =3D -EINVAL;
+> =20
+> -	spin_unlock_bh(&npu->cores[core].lock);
+> +	/* Copy the trailing reply_len bytes of the response. */
+> +	if (!ret && reply)
+> +		memcpy(reply, c->buf + len - reply_len, reply_len);
+> =20
+> -	dma_unmap_single(npu->dev, dma_addr, size, DMA_BIDIRECTIONAL);
+> +	spin_unlock_bh(&c->lock);
+> =20
+>  	return ret;
+>  }
+> =20
+> +static inline int airoha_npu_send_msg(struct airoha_npu *npu, int func_i=
+d,
+> +				      const void *data, int len)
+> +{
+
+if you put in .c file please drop the inline.
+
+> +	return __airoha_npu_send_msg(npu, func_id, data, len, NULL, 0);
+> +}
+> +
+>  static int airoha_npu_load_firmware(struct device *dev, void __iomem *ad=
+dr,
+>  				    const char *fw_name, int fw_max_size)
+>  {
+> @@ -442,8 +465,9 @@ static int airoha_npu_ppe_stats_setup(struct airoha_n=
+pu *npu,
+>  	ppe_data->func_id =3D PPE_FUNC_SET_WAIT_FLOW_STATS_SETUP;
+>  	ppe_data->stats_info.foe_stats_addr =3D foe_stats_addr;
+> =20
+> -	err =3D airoha_npu_send_msg(npu, NPU_FUNC_PPE, ppe_data,
+> -				  sizeof(*ppe_data));
+> +	err =3D __airoha_npu_send_msg(npu, NPU_FUNC_PPE, ppe_data,
+> +				    sizeof(*ppe_data), ppe_data,
+> +				    sizeof(*ppe_data));
+
+why not using airoha_npu_send_msg() here?
 
 Regards,
 Lorenzo
 
+>  	if (err)
+>  		goto out;
 > =20
-> > > +
-> > >  	netif_tx_start_all_queues(netdev);
-> > >  	err =3D airoha_set_vip_for_gdm_port(dev, true);
-> > >  	if (err)
-> > > @@ -1954,6 +1963,10 @@ static int airoha_dev_stop(struct net_device *=
-netdev)
-> > >  		airoha_set_gdm_port_fwd_cfg(dev->eth,
-> > >  					    REG_GDM_FWD_CFG(port->id),
-> > >  					    FE_PSE_PORT_DROP);
-> > > +
-> > > +	phylink_stop(dev->phylink);
-> >=20
-> > Should it be the first one? (reverse order of airoha_dev_open()).
-> >=20
-> > > +	phylink_disconnect_phy(dev->phylink);
-> > > +
-> > >  	return 0;
-> > >  }
-> > > =20
-> > > @@ -2509,6 +2522,24 @@ airoha_ethtool_get_rmon_stats(struct net_devic=
-e *netdev,
-> > >  	} while (u64_stats_fetch_retry(&dev->stats.syncp, start));
-> > >  }
-> > > =20
-> > > +static int
-> > > +airoha_ethtool_get_link_ksettings(struct net_device *netdev,
-> > > +				  struct ethtool_link_ksettings *cmd)
-> > > +{
-> > > +	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> > > +
-> > > +	return phylink_ethtool_ksettings_get(dev->phylink, cmd);
-> > > +}
-> > > +
-> > > +static int
-> > > +airoha_ethtool_set_link_ksettings(struct net_device *netdev,
-> > > +				  const struct ethtool_link_ksettings *cmd)
-> > > +{
-> > > +	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> > > +
-> > > +	return phylink_ethtool_ksettings_set(dev->phylink, cmd);
-> > > +}
-> > > +
-> > >  static int airoha_qdma_set_chan_tx_sched(struct net_device *netdev,
-> > >  					 int channel, enum tx_sched_mode mode,
-> > >  					 const u16 *weights, u8 n_weights)
-> > > @@ -3353,7 +3384,8 @@ static const struct ethtool_ops airoha_ethtool_=
-ops =3D {
-> > >  	.get_drvinfo		=3D airoha_ethtool_get_drvinfo,
-> > >  	.get_eth_mac_stats      =3D airoha_ethtool_get_mac_stats,
-> > >  	.get_rmon_stats		=3D airoha_ethtool_get_rmon_stats,
-> > > -	.get_link_ksettings	=3D phy_ethtool_get_link_ksettings,
-> > > +	.get_link_ksettings	=3D airoha_ethtool_get_link_ksettings,
-> > > +	.set_link_ksettings	=3D airoha_ethtool_set_link_ksettings,
-> > >  	.get_link		=3D ethtool_op_get_link,
-> > >  };
-> > > =20
-> > > @@ -3409,6 +3441,155 @@ bool airoha_is_valid_gdm_dev(struct airoha_et=
-h *eth,
-> > >  	return false;
-> > >  }
-> > > =20
-> > > +/* Nothing to do in MAC, everything is handled in PCS */
-> > > +static void airoha_mac_config(struct phylink_config *config, unsigne=
-d int mode,
-> > > +			      const struct phylink_link_state *state)
-> > > +{
-> > > +}
-> > > +
-> > > +static void airoha_mac_link_up(struct phylink_config *config, struct=
- phy_device *phy,
-> > > +			       unsigned int mode, phy_interface_t interface,
-> > > +			       int speed, int duplex, bool tx_pause, bool rx_pause)
-> > > +{
-> > > +	struct airoha_gdm_dev *dev =3D container_of(config, struct airoha_g=
-dm_dev,
-> > > +						  phylink_config);
-> > > +	struct airoha_gdm_port *port =3D dev->port;
-> > > +	struct airoha_eth *eth =3D dev->eth;
-> > > +	u32 frag_size_tx, frag_size_rx;
-> > > +	u32 mask, val;
-> > > +
-> > > +	/* TX/RX frag is configured only for GDM4 */
-> > > +	if (port->id !=3D AIROHA_GDM4_IDX)
-> > > +		return;
-> > > +
-> > > +	switch (speed) {
-> > > +	case SPEED_10000:
-> > > +	case SPEED_5000:
-> > > +		frag_size_tx =3D 8;
-> > > +		frag_size_rx =3D 8;
-> > > +		break;
-> > > +	case SPEED_2500:
-> > > +		frag_size_tx =3D 2;
-> > > +		frag_size_rx =3D 1;
-> > > +		break;
-> > > +	default:
-> > > +		frag_size_tx =3D 1;
-> > > +		frag_size_rx =3D 0;
-> >=20
-> > Missing break here.
-> >=20
-> > > +	}
-> > > +
-> > > +	mutex_lock(&port->reg_lock);
-> > > +
-> > > +	/* Configure TX/RX frag based on speed */
-> > > +	if (dev->nbq =3D=3D 1) {
-> > > +		mask =3D GDM4_SGMII1_TX_FRAG_SIZE_MASK;
-> > > +		val =3D FIELD_PREP(GDM4_SGMII1_TX_FRAG_SIZE_MASK,
-> > > +				 frag_size_tx);
-> > > +	}  else {
-> > > +		mask =3D GDM4_SGMII0_TX_FRAG_SIZE_MASK;
-> > > +		val =3D FIELD_PREP(GDM4_SGMII0_TX_FRAG_SIZE_MASK,
-> > > +				 frag_size_tx);
-> > > +	}
-> > > +	airoha_fe_rmw(eth, REG_FE_GDM4_TMBI_FRAG, mask, val);
-> > > +
-> > > +	if (dev->nbq =3D=3D 1) {
-> > > +		mask =3D GDM4_SGMII1_RX_FRAG_SIZE_MASK;
-> > > +		val =3D FIELD_PREP(GDM4_SGMII1_RX_FRAG_SIZE_MASK,
-> > > +				 frag_size_rx);
-> > > +	} else {
-> > > +		mask =3D GDM4_SGMII0_RX_FRAG_SIZE_MASK;
-> > > +		val =3D FIELD_PREP(GDM4_SGMII0_RX_FRAG_SIZE_MASK,
-> > > +				 frag_size_rx);
-> > > +	}
-> > > +	airoha_fe_rmw(eth, REG_FE_GDM4_RMBI_FRAG, mask, val);
-> >=20
-> > nit: I guess you can have just one if/else block here running airoha_fe=
-_rmw()
-> > inside the block and getting rid of val/mask.
-> >=20
-> > > +
-> > > +	mutex_unlock(&port->reg_lock);
-> > > +}
-> > > +
-> > > +/* Nothing to do in MAC, everything is handled in PCS */
-> > > +static void airoha_mac_link_down(struct phylink_config *config, unsi=
-gned int mode,
-> > > +				 phy_interface_t interface)
-> > > +{
-> > > +}
-> > > +
-> > > +static const struct phylink_mac_ops airoha_phylink_ops =3D {
-> > > +	.mac_config =3D airoha_mac_config,
-> > > +	.mac_link_up =3D airoha_mac_link_up,
-> > > +	.mac_link_down =3D airoha_mac_link_down,
-> > > +};
-> > > +
-> > > +static int airoha_fill_available_pcs(struct phylink_config *config,
-> > > +				     struct phylink_pcs **available_pcs,
-> > > +				     unsigned int num_possible_pcs)
-> > > +{
-> > > +	struct device *dev =3D config->dev;
-> > > +
-> > > +	return fwnode_phylink_pcs_parse(dev_fwnode(dev), available_pcs,
-> > > +					num_possible_pcs);
-> > > +}
-> > > +
-> > > +static int airoha_setup_phylink(struct net_device *netdev)
-> > > +{
-> > > +	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
-> > > +	struct device_node *np =3D netdev->dev.of_node;
-> > > +	struct airoha_gdm_port *port =3D dev->port;
-> > > +	struct phylink_config *config;
-> > > +	phy_interface_t phy_mode;
-> > > +	struct phylink *phylink;
-> > > +	int err;
-> > > +
-> > > +	err =3D of_get_phy_mode(np, &phy_mode);
-> > > +	if (err) {
-> > > +		dev_err(&netdev->dev, "incorrect phy-mode\n");
-> > > +		return err;
-> > > +	}
-> > > +
-> > > +	config =3D &dev->phylink_config;
-> > > +	config->dev =3D &netdev->dev;
-> > > +	config->type =3D PHYLINK_NETDEV;
-> > > +
-> > > +	/*
-> > > +	 * GDM1 only supports internal for Embedded Switch
-> > > +	 * and doesn't require a PCS.
-> > > +	 */
-> > > +	if (port->id =3D=3D AIROHA_GDM1_IDX) {
-> > > +		config->mac_capabilities =3D MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
-> > > +					   MAC_10000FD;
-> > > +
-> > > +		__set_bit(PHY_INTERFACE_MODE_INTERNAL,
-> > > +			  config->supported_interfaces);
-> > > +	} else {
-> > > +		config->mac_capabilities =3D MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
-> > > +					   MAC_10 | MAC_100 | MAC_1000 |
-> > > +					   MAC_2500FD | MAC_5000FD | MAC_10000FD;
-> > > +
-> > > +		config->num_possible_pcs =3D fwnode_phylink_pcs_count(dev_fwnode(c=
-onfig->dev));
-> > > +		config->fill_available_pcs =3D airoha_fill_available_pcs;
-> > > +
-> > > +		__set_bit(PHY_INTERFACE_MODE_SGMII,
-> > > +			  config->supported_interfaces);
-> > > +		__set_bit(PHY_INTERFACE_MODE_1000BASEX,
-> > > +			  config->supported_interfaces);
-> > > +		__set_bit(PHY_INTERFACE_MODE_2500BASEX,
-> > > +			  config->supported_interfaces);
-> > > +		__set_bit(PHY_INTERFACE_MODE_10GBASER,
-> > > +			  config->supported_interfaces);
-> > > +		__set_bit(PHY_INTERFACE_MODE_USXGMII,
-> > > +			  config->supported_interfaces);
-> > > +
-> > > +		phy_interface_copy(config->pcs_interfaces,
-> > > +				   config->supported_interfaces);
-> > > +	}
-> > > +
-> > > +	phylink =3D phylink_create(config, of_fwnode_handle(np),
-> > > +				 phy_mode, &airoha_phylink_ops);
-> > > +	if (IS_ERR(phylink))
-> > > +		return PTR_ERR(phylink);
-> > > +
-> > > +	dev->phylink =3D phylink;
-> > > +
-> > > +	return 0;
-> > > +}
-> > > +
-> > >  static int airoha_alloc_gdm_device(struct airoha_eth *eth,
-> > >  				   struct airoha_gdm_port *port,
-> > >  				   int nbq, struct device_node *np)
-> > > @@ -3474,7 +3655,7 @@ static int airoha_alloc_gdm_device(struct airoh=
-a_eth *eth,
-> > >  	dev->nbq =3D nbq;
-> > >  	port->devs[index] =3D dev;
-> > > =20
-> > > -	return 0;
-> > > +	return airoha_setup_phylink(netdev);
-> > >  }
-> > > =20
-> > >  static int airoha_alloc_gdm_port(struct airoha_eth *eth,
-> > > @@ -3510,6 +3691,7 @@ static int airoha_alloc_gdm_port(struct airoha_=
-eth *eth,
-> > > =20
-> > >  	port->id =3D id;
-> > >  	spin_lock_init(&port->stats_lock);
-> > > +	mutex_init(&port->reg_lock);
-> > >  	eth->ports[p] =3D port;
-> > > =20
-> > >  	err =3D airoha_metadata_dst_alloc(port);
-> > > @@ -3706,6 +3888,8 @@ static int airoha_probe(struct platform_device =
-*pdev)
-> > >  			netdev =3D netdev_from_priv(dev);
-> > >  			if (netdev->reg_state =3D=3D NETREG_REGISTERED)
-> > >  				unregister_netdev(netdev);
-> > > +			if (dev->phylink)
-> > > +				phylink_destroy(dev->phylink);
-> > >  			of_node_put(netdev->dev.of_node);
-> > >  		}
-> > >  		airoha_metadata_dst_free(port);
-> > > @@ -3744,6 +3928,7 @@ static void airoha_remove(struct platform_devic=
-e *pdev)
-> > > =20
-> > >  			netdev =3D netdev_from_priv(dev);
-> > >  			unregister_netdev(netdev);
-> > > +			phylink_destroy(dev->phylink);
-> > >  			of_node_put(netdev->dev.of_node);
-> > >  		}
-> > >  		airoha_metadata_dst_free(port);
-> > > diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/e=
-thernet/airoha/airoha_eth.h
-> > > index fa9a8edce22f..6396a5aec384 100644
-> > > --- a/drivers/net/ethernet/airoha/airoha_eth.h
-> > > +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-> > > @@ -595,6 +595,9 @@ struct airoha_gdm_dev {
-> > >  	 * QDMA migration.
-> > >  	 */
-> > >  	spinlock_t txq_lock[AIROHA_NUM_NETDEV_TX_RINGS];
-> > > +
-> > > +	struct phylink *phylink;
-> > > +	struct phylink_config phylink_config;
-> > >  };
-> > > =20
-> > >  struct airoha_gdm_port {
-> > > @@ -604,6 +607,8 @@ struct airoha_gdm_port {
-> > > =20
-> > >  	/* protect concurrent hw_stats accesses */
-> > >  	spinlock_t stats_lock;
-> > > +	/* protect concurrent GDM4 register access */
-> > > +	struct mutex reg_lock;
-> >=20
-> > nit: naming is always hard, maybe link_lock?
-> >=20
-> > > =20
-> > >  	struct metadata_dst *dsa_meta[AIROHA_MAX_DSA_PORTS];
-> > >  };
-> > > diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/=
-ethernet/airoha/airoha_regs.h
-> > > index 442b48c9b991..4ea89057b560 100644
-> > > --- a/drivers/net/ethernet/airoha/airoha_regs.h
-> > > +++ b/drivers/net/ethernet/airoha/airoha_regs.h
-> > > @@ -357,6 +357,18 @@
-> > >  #define IP_FRAGMENT_PORT_MASK		GENMASK(8, 5)
-> > >  #define IP_FRAGMENT_NBQ_MASK		GENMASK(4, 0)
-> > > =20
-> > > +#define REG_FE_GDM4_TMBI_FRAG		0x2028
-> > > +#define GDM4_SGMII1_TX_WEIGHT_MASK	GENMASK(31, 26)
-> > > +#define GDM4_SGMII1_TX_FRAG_SIZE_MASK	GENMASK(25, 16)
-> > > +#define GDM4_SGMII0_TX_WEIGHT_MASK	GENMASK(15, 10)
-> > > +#define GDM4_SGMII0_TX_FRAG_SIZE_MASK	GENMASK(9, 0)
-> > > +
-> > > +#define REG_FE_GDM4_RMBI_FRAG		0x202c
-> > > +#define GDM4_SGMII1_RX_WEIGHT_MASK	GENMASK(31, 26)
-> > > +#define GDM4_SGMII1_RX_FRAG_SIZE_MASK	GENMASK(25, 16)
-> > > +#define GDM4_SGMII0_RX_WEIGHT_MASK	GENMASK(15, 10)
-> > > +#define GDM4_SGMII0_RX_FRAG_SIZE_MASK	GENMASK(9, 0)
-> > > +
-> > >  #define REG_MC_VLAN_EN			0x2100
-> > >  #define MC_VLAN_EN_MASK			BIT(0)
-> > > =20
-> > > --=20
-> > > 2.53.0
-> > >=20
->=20
->=20
->=20
+> @@ -497,9 +521,8 @@ static int airoha_npu_wlan_msg_get(struct airoha_npu =
+*npu, int ifindex,
+>  	wlan_data->func_type =3D NPU_OP_GET;
+>  	wlan_data->func_id =3D func_id;
+> =20
+> -	err =3D airoha_npu_send_msg(npu, NPU_FUNC_WIFI, wlan_data, len);
+> -	if (!err)
+> -		memcpy(data, wlan_data->d, data_len);
+> +	err =3D __airoha_npu_send_msg(npu, NPU_FUNC_WIFI, wlan_data, len,
+> +				    data, data_len);
+>  	kfree(wlan_data);
+> =20
+>  	return err;
+> @@ -770,6 +793,15 @@ static int airoha_npu_probe(struct platform_device *=
+pdev)
+>  	if (err)
+>  		return err;
+> =20
+> +	for (i =3D 0; i < ARRAY_SIZE(npu->cores); i++) {
+> +		struct airoha_npu_core *core =3D &npu->cores[i];
+> +
+> +		core->buf =3D dmam_alloc_coherent(dev, AIROHA_NPU_MBOX_SIZE,
+> +						&core->addr, GFP_KERNEL);
+> +		if (!core->buf)
+> +			return -ENOMEM;
+> +	}
+> +
+>  	err =3D airoha_npu_run_firmware(dev, base, &res);
+>  	if (err)
+>  		return dev_err_probe(dev, err, "failed to run npu firmware\n");
+> diff --git a/include/linux/soc/airoha/airoha_offload.h b/include/linux/so=
+c/airoha/airoha_offload.h
+> index 7589fccfeef6..16a988ad7467 100644
+> --- a/include/linux/soc/airoha/airoha_offload.h
+> +++ b/include/linux/soc/airoha/airoha_offload.h
+> @@ -173,6 +173,9 @@ struct airoha_npu {
+>  		/* protect concurrent npu memory accesses */
+>  		spinlock_t lock;
+>  		struct work_struct wdt_work;
+> +		/* Coherent bounce buffer for mailbox cmd/rsp */
+> +		void *buf;
+> +		dma_addr_t addr;
+>  	} cores[NPU_NUM_CORES];
+> =20
+>  	int irqs[NPU_NUM_IRQ];
 > --=20
-> 	Ansuel
+> 2.55.0
+>=20
 
---8p7i5PObBPdgE3my
+--WZcbrwvPngP5YrRS
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCanWkCAAKCRA6cBh0uS2t
-rAhhAP9ChrPJx+1KRMSesbgkCVk3ak6QiDvF6BcAQyS3S0qaowD8CZUfTR7MH4LZ
-JV7nKPw+7/veEL5G2Dz2LvFxWGJ+yAg=
-=SJXp
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCanWmFwAKCRA6cBh0uS2t
+rCrkAP9Gw4KU6cTCczB4RER9jrHGuEfMkiF0nhbpGGqA0MdPIAD/f88pv8Q2mc+6
+TPT97YWkH/jbYGN6PM1gFTdB6aMhQwU=
+=QdxD
 -----END PGP SIGNATURE-----
 
---8p7i5PObBPdgE3my--
+--WZcbrwvPngP5YrRS--
 
