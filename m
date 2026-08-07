@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 813D3C2A09B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2026 18:45:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17C88C2A09B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2026 18:53:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iAAQGBdBoRkovVpJQHo5IAsY4ppMJrT4CJ2byK1QahQ=; b=oKw+L/YCA/+1Ve8siTOejKKY5l
-	tEm+/oePODGLERfhnVztuSis00rCO26onhudhVDq8clVilF6z7vwvatW5b4Vzo8pjoyq8ntkKCt54
-	5Fp7k7tRgx2i8KY6tUAyTcbkYKKdt4OrGMgXcp4C2XLeedIVCyHVafzH+FTYW6SBaMb9dZNf1Bloa
-	eglEHoC6swgvj5fMjO6IDVcTWZps+iiAR7z6IyUdGAYQuz2H8FGHNU2RpSdwCLdgrR7Oe57m+eZzV
-	hGBCJtYktuPGW0QKkZyFE9eV4+vhjLR0l036Vk2H1gXWkm3Hv6kaSi+QDQU/BAJInv7YgyqAnbPbk
-	lPuszuaQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RtE4Ffj2sOQDLMNirE1V0XAHKtAHOYS1QiMsPe57FSo=; b=svFr+qBHUdO9OfwaBY8/F/HF56
+	LGOJsNSiZ1sOJYyfoNHpAZGET3/KqVvaGu0Ppuld8zt4QYp8RoQLIPA5EYFEP86SOtvRFBC41cZW/
+	PnCrzFcfOrdJjE6Yp3f0ZZ9nK5sokEAvhe5UaeVR0XBvvm2vrrXpMavZeM5Bq/OvZRFz3a9oI2laU
+	a+5DgnDX8KnxUx6e6+myKQcis1CNw7stfw87HHc2Fq4GUg9udtmWmGa9wFP+5+D6MCYZjwbkx+Sbf
+	i4lS5T0KZUell3uvVJKaETQ0YXVhjqiH6E/R6y4ZHtGqE1zoUus9fXiyrI3bYdt62ue+cE+afDK9j
+	IiHTxB8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsPZp-00000008csW-3IcQ;
-	Fri, 07 Aug 2026 18:45:53 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wsPgq-00000008dHS-3uB2;
+	Fri, 07 Aug 2026 18:53:08 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsPZo-00000008csH-1lHe
-	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Aug 2026 18:45:52 +0000
+	id 1wsPgo-00000008dGx-1Ay4;
+	Fri, 07 Aug 2026 18:53:06 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id AE541600B0
-	for <linux-mediatek@lists.infradead.org>; Fri,  7 Aug 2026 18:45:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 674C21F000E9
-	for <linux-mediatek@lists.infradead.org>; Fri,  7 Aug 2026 18:45:51 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 5434260A69;
+	Fri,  7 Aug 2026 18:53:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 451691F000E9;
+	Fri,  7 Aug 2026 18:53:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786128351;
-	bh=iAAQGBdBoRkovVpJQHo5IAsY4ppMJrT4CJ2byK1QahQ=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=eaHqZsGUnGMcADqx4BeggqvVTdls6zjBr4TBOnKeO1H6CHTJ1cDJ3PjB+SJwMuIAE
-	 ipZ67WAh1NWPvOngGBK4VkeYlzR0H35V1iRzA1tMZuwpvBbnETduGrX3am5ZBRpa8B
-	 hVS+WCc+Imo8qEdzTvXcQpE/hRKoEiqB+TbBRiGV07nVM5s/iJ43jaxJXwloSuYt1u
-	 tHj+yKClCoGcO55p3Qbc9AQL1UZNn3TSJYySEDqxT4xtHwyQMNeADJynNjSDhL0qnu
-	 F6iQTEblCKSPU+fWswpig6ImTO1Vi+BTmQvMy3NHSuLKiphz2Ur4oN3mTsSgXWBb++
-	 5Sf8QpHUjeNJQ==
-Received: by mail-lf1-f53.google.com with SMTP id 2adb3069b0e04-5b0148201fbso3355299e87.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 07 Aug 2026 11:45:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+RrY/ekpegtTqjHbkA0EkIoQyM5Ru+AW5CobDxDFUjy6EguzJ0xQ43EPOrUfXN2VBhZ38FiwKgSZxgr3wl3HNA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxyITtShVgNkKSdRiHhUTRWf+8jIdFgIbfq7ki772JNPt4AUMyx
-	IKy0Lhbgv/u8ekUYfBMHJWyknRqm0DEZK5d9XlZHbt9PEnKi8/L8lfnwjPn7uvIv8Jx/CnaL8Iw
-	QZb+zwkOwustuTFJjKBJzet6uDxvTSI4=
-X-Received: by 2002:a05:6512:2911:b0:5ae:bfd6:173b with SMTP id
- 2adb3069b0e04-5b30b73dcecmr333543e87.20.1786128350255; Fri, 07 Aug 2026
- 11:45:50 -0700 (PDT)
+	s=k20260515; t=1786128785;
+	bh=RtE4Ffj2sOQDLMNirE1V0XAHKtAHOYS1QiMsPe57FSo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=HbALYNT+65gDDX5gHgWsLacTJ3iLwSX1KuPae5lUA/6j25rlkXHVMtIeUcwIvPoUa
+	 Or2R+UQQFx2Zf5gWebXY88/gXpM7sfp4RX9dVbKRhqzQoHoDAPAfdKMjuw1t5UUKB5
+	 X7BSqhWJYbMome6B53o0mTBljlMNShzz4Rqw0qTStnA9qPiO6iS5KBfrNBZ2eY1Yp6
+	 8vTjmqsvR/+cERCADuo4u09npFPVb94Y67sgnFd77ZGEP6A2HW/nEhBY3OMgvUSlW4
+	 0VzIh2ilfAe7pWcjHyt4GpvWFIY8n31X1yeC41nOimDcrY08NOKSbI+c2t2zuvP9vh
+	 y4mAi+asSxxOw==
+Date: Fri, 7 Aug 2026 11:52:59 -0700
+From: Nathan Chancellor <nathan@kernel.org>
+To: Arnd Bergmann <arnd@kernel.org>
+Cc: Akari Tsuyukusa <akkun11.open@gmail.com>,
+	Nick Desaulniers <ndesaulniers@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Bill Wendling <morbo@google.com>,
+	Justin Stitt <justinstitt@google.com>,
+	Yingjoe Chen <yingjoe.chen@mediatek.com>,
+	"moderated list:ARM SUB-ARCHITECTURES" <linux-arm-kernel@lists.infradead.org>,
+	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	"open list:CLANG/LLVM BUILD SUPPORT:Keyword:b(?i:clang|llvm)b" <llvm@lists.linux.dev>,
+	stable@vger.kernel.org, Ard Biesheuvel <ardb@google.com>
+Subject: Re: [PATCH] arm: mediatek: fix secondary CPU boot on Thumb-2 kernels
+ with Clang
+Message-ID: <20260807185259.GA941196@ax162>
+References: <20260722172443.534251-1-akkun11.open@gmail.com>
+ <CAKwvOdnbPKoTy72EvfpKtT9Ne-r+O0j99KFX8OvjGk8ZxsuEGw@mail.gmail.com>
+ <amHYO1c-5vzqSekt@buffalo-ssd>
+ <ef007a23-46bd-41d6-83ff-264831341093@app.fastmail.com>
+ <amWfjDyn0jrnIf63@buffalo-ssd>
+ <c4e9a566-baf7-4df6-b874-30c68a5c67f6@app.fastmail.com>
 MIME-Version: 1.0
-References: <20260806220615.4078303-1-mikhail.kshevetskiy@iopsys.eu>
-In-Reply-To: <20260806220615.4078303-1-mikhail.kshevetskiy@iopsys.eu>
-From: Linus Walleij <linusw@kernel.org>
-Date: Fri, 7 Aug 2026 20:45:37 +0200
-X-Gmail-Original-Message-ID: <CAD++jL=2vt6qJcXdnyuCSEWMTAdZA0-=yhKtsXX9Qqzm9scjEA@mail.gmail.com>
-X-Gm-Features: AUfX_mwyyr_F-MwW0ZW6ZC4tI78PAU_OowRuALyPIokafW-F9bK_08tyDxfajbs
-Message-ID: <CAD++jL=2vt6qJcXdnyuCSEWMTAdZA0-=yhKtsXX9Qqzm9scjEA@mail.gmail.com>
-Subject: Re: [PATCH v11 00/37] pinctrl: airoha: split on shared and SoC
- drivers, add more SoCs
-To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Bartosz Golaszewski <brgl@kernel.org>, Christian Marangi <ansuelsmth@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Benjamin Larsson <benjamin.larsson@genexis.eu>, linux-gpio@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, Markus Gothe <markus.gothe@genexis.eu>, 
-	Matheus Sampaio Queiroga <srherobrine20@gmail.com>, Daniel Schwierzeck <daniel.schwierzeck@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <c4e9a566-baf7-4df6-b874-30c68a5c67f6@app.fastmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,25 +84,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 7, 2026 at 12:06=E2=80=AFAM Mikhail Kshevetskiy
-<mikhail.kshevetskiy@iopsys.eu> wrote:
+On Sun, Jul 26, 2026 at 10:00:35PM +0200, Arnd Bergmann wrote:
+> Working around it in the kernel is fine, but I'd prefer to wait for
+> the fix to first get merged into llvm so we can reference the
+> bugfix in the kernel commit.
 
-> This patchset
->  * fixes more airoha pinctrl issues
->  * split combined driver on common code and several SoC specific drivers
->  * improves an7583 pinctrl support
->  * adds support of en7523 SoC
->  * adds support of an7563 SoC
->
-> The driver split changes are based on Matheus Sampaio Queiroga work.
+This is now fixed in LLVM main:
 
-Patches applied!
+  https://github.com/llvm/llvm-project/commit/261c025a03732ac6d3a26ad80e962481237de052
 
-I had to manually fixup one patch due to orthogonal changes,
-check the result!
+> A trivial workaround would be to have a dependency in
+> CONFIG_THUMB2_KERNEL for !AS_IS_LLVM||CLANG_VERSION>=24
+> (or whatever version), though fixing the .S code in all known
+> instances is probably better if we want to ever have a chance
+> to require IAS on all architectures.
 
-Any remaining nags; let's do patches on top of this.
+I guess it is a question of how much maintenance will keeping up the .S
+code take over time. Presumably this issue is not too common if we are
+just now discovering it but maybe that is because CONFIG_THUMB2_KERNEL
+is not too common? Is there a way to flag this at compile time? I don't
+really have a strong opinion.
 
-Yours,
-Linus Walleij
+-- 
+Cheers,
+Nathan
 
