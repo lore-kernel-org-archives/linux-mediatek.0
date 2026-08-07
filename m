@@ -4,94 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 407B8C5AC7C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2026 07:27:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2809BC5AC7C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2026 08:17:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1raNmBEOmz6ZINnfoRbXmauBepPzo7RH3URyysnOXJI=; b=e2Ts+AaOZtK8SxfS+M7szJUvem
-	ZsJ5kq1dsPG5VMxasGDdW0GWvXjzBMwSTIPtR4OZ9A+eX47UuiLofbqP9W28b310vAQl5GksPyS6s
-	5K3ZAUCB/HQDKPTjiR0vStA06NaksuW8LXJIY7Eqh2rX2gJ6UQJPNvrS86SdOkQ5200mB8KAvbWXC
-	dbatFhL7oiv8+brDqMbrTfECbqpmHeLyN71Wrfv0iklf5cQSBXBZwSNutltsA8qHLARkdjYzveXnK
-	0Ks7C96L+fQ726XbBXk4wW407XFC2sE2LKnUm3fHbcSoZ2slwpQ4suEcHLTAdcetP2oRkPyck+fr7
-	+PJzHVrw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Og8epPMT2luMUJBXRpFI2/AU8UKubYJ4m2A5JNHJ56Y=; b=vf3DGzLztHVjQ25hzobUqHuYy9
+	7qcLhBWlmL2+kIFqhk5KZCg+MiX6A3hjFy/skHy6+SOmQ997O50IgFXAVlCCK0Y0+Sopha6fdHYe/
+	L7zQbt2Nq4+MdVYzOjURMW6KsawFBp0nv9yTYI0TMqZBLwFmcbuDOS2CmZyAhQXm44ZLlrrM05lLR
+	lgQqvXciRvXbsHaogYBdd1Cea3+jwSt57VjsosSzo+xkUonJ7qYnOsalzLbax+gS6tRqvLKEOhyrT
+	NoQJVwsitDxenaSgdekKKTWrih3cYG2JGcP/s3sjVtFdh+2aD8vl1WNAmyGT3nZWeaWGvs8wAop4N
+	1rNCxJCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsEz9-00000007EvP-1V3u;
-	Fri, 07 Aug 2026 07:27:19 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1wsFlS-00000007OXz-2ClN;
+	Fri, 07 Aug 2026 08:17:14 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsEz5-00000007EuA-3qJm
+	id 1wsFlR-00000007OXW-2E8n
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 07 Aug 2026 08:17:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=Og8epPMT2luMUJBXRpFI2/AU8UKubYJ4m2A5JNHJ56Y=; b=nbz1F9a0qq/TT5ww/Uwxwoo/R5
+	g1h6li8qx9tLTP/QpaJ1dohCSHuMpk3Q0U/HjKdcv/BMFyKYHqGHl8M4k8ENWMNZl9np7rXRQ1GP1
+	U3NRYoKO6LUx8U3amOr+jn8eOtfsUPVkEtyhohqrCO5bpa5CK13RrsOmBljTuv40UR8wKYuPOmRa6
+	REevU3NtNHPjePf/M34147zVO+tf/TiuUilM9XwVooVclzUdszl0f5uu/NndPWaiR1/bwVrcC28/k
+	VNtkXO35PqgVbvPQ8jcsq55bWi0bF6aIs1Bp+q5wIbs/ym8FmIUlbvmE6jxev053XgeKNusoLTPuJ
+	UFEE974A==;
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1wsFlO-0000000CBav-2BFJ
 	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Aug 2026 07:27:17 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-5aec201b582so3055965e87.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 07 Aug 2026 00:27:15 -0700 (PDT)
+	Fri, 07 Aug 2026 08:17:12 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-38dfe7eb825so2572574a91.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Aug 2026 01:17:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786087634; x=1786692434; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=1raNmBEOmz6ZINnfoRbXmauBepPzo7RH3URyysnOXJI=;
-        b=GK/MUU+12YOdudd+IeMPJtVWnEORCsCNXxCv7g8DtSp+rmO/X767dF6OmxQT0F44Yv
-         WRjILbari8v/mX1IRCdNwy0sU7QpYAM+uEc0m0RNDUkCgXVNYJyuu6a87A5GJaKMivuP
-         HVk67V0GPRUmWgv4zTLYO/8/zVcMpUXPmDbm7fyWHPnQNAl+f2R3bGwvzMp125GNZw3M
-         9trNgtFNEhuegMOL4sFqkaKScQuonWu6JvW2jv6Yl5WQ4SMICHVsZuA7syFAY7nhgOEO
-         xm2UTWu8teTYg0TMU0FZqZ54+NYOGrhHbUw+5cNVM+penSfeTLcRYJqLPM5AggNHP1iI
-         qyxQ==
+        d=gmail.com; s=20251104; t=1786090628; x=1786695428; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=Og8epPMT2luMUJBXRpFI2/AU8UKubYJ4m2A5JNHJ56Y=;
+        b=aM0HnrA0DMcHQ7e0guXe4hCCIAIR9fk7CKEutY0sW/3AvG3QYee4lqjNLrnygqW2vj
+         cxLOvksrsTTjuIl6xi6vdt0NP+ItKQQpt/6ixZh+Bq+xw/5v9QVDJFbOLa6ghc3e2NcH
+         cXEmtlnL1kavgRCxHndZLpHMcNcJrF+y+CJHNjiqfHxgoJuqD7xFuG1vv/rNaGTZqdBN
+         spgSvcSSGPLoF6TQPkG3umSeaPc502Rl6ZkMNv52OVHB47Z8Hcpavb4zti2OHIMz/pvv
+         DOSS756aIwuNahC/ORgIqMwqUsR9ihF277ub+fRqjAfeYbWbaBEDxKO3pGQsyug/QhC8
+         PshQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786087634; x=1786692434;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=1raNmBEOmz6ZINnfoRbXmauBepPzo7RH3URyysnOXJI=;
-        b=OUyQC8yHX0Zu7R6zyFkEFj6EYok6qAkMeSA6RgNi4PTPHLl1hxXY6QFkjaGB/w89Uc
-         LJGJoO5R2TOb6b+K02x8o6u4mRbPdBuAx8mC9OShMsmUqFI0DwNY+qfjqjT5NDh1Bdb3
-         rfOj9u3/ffl8+RpVyILsO9krJ9MYl3eHZwHabRMQZnpZ2gGg3q1IrNRYj3kkOi3lWgEM
-         uxIhL18XvUaiwCzT2OMUK/B1Ks0IIsFKRu+LjR49ylk8gXQbrJ9abXmlX4vfVISL+qJF
-         jqE77HdexWhcRCBs+o5q+v7QUo7rt1loD7rgQ6N+O5p0jvmdjDQqtxKFV+OJoFz6P7wU
-         OQjg==
-X-Forwarded-Encrypted: i=1; AHgh+RqefvNSdPG46ysVsLvtNshe1IXMxDQtNDqsZXlHXm4qanyUh8pyrRd4eoJ6rxD8Ebgul5Q7sd70cSjcWM8eIw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxn1SnoRRh9CzUcOkzF9djbkiwLxJWpm0y5rU4vzGWFPwDe+hqz
-	6bhSDGJ2GFUt/FjTkCFRUwcvWQ+h7VrqpRC474oa7u31ObGaiUeYvsQ=
-X-Gm-Gg: AR+sD11pLF/N4ySQFGUgFrfmIE+ZgETuVG5rB+Wm2eXnFp3UmgKYdrNJK3wEHGTDuLq
-	MmFizzyxcP8rHs2r81jfX8pK1JBIJRsYN1YJ8uzRDO+NbGJSsFSocaq7jd0sqQo3F2AGtIvSwqr
-	AV6NBWMEI0wJNOt6Oa4V/pLD9rzgpyDTw3AlL7p+Ia9NBK/hr4bz5rN5/+HJrUheO+zx7hSHlhK
-	RUhNizoOWmxcynzrJU/xbISXfnvhnj3G1Nf6s4uh8Pgpit5xuHeMLa9SUe8zE3offMCmEqSn7AL
-	2QVf/KC5+zTvZZwQ4rF7BXtnoye7yAdZWE7PuJNWeGij2ukWxBmqM4/1QQjMvmOmi89uy0rP1B4
-	N0gR0AC2YLgAsKmmLtwvF4ixdl/g0NOqlF6e5jLSA9HYGABCoSErE431kzEG2mW/DqTP9j61jj3
-	Km40fO76BpWAEtmsdcCgShff9+IUpwHwJBDV3vrD//QqJMwETsdCY=
-X-Received: by 2002:a05:6512:3a93:b0:5b2:a21a:10e7 with SMTP id 2adb3069b0e04-5b2f4ccb4aemr2641992e87.25.1786087633471;
-        Fri, 07 Aug 2026 00:27:13 -0700 (PDT)
-Received: from fedora ([46.8.219.5])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5b3055f1cb0sm317139e87.64.2026.08.07.00.27.12
+        d=1e100.net; s=20251104; t=1786090628; x=1786695428;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=Og8epPMT2luMUJBXRpFI2/AU8UKubYJ4m2A5JNHJ56Y=;
+        b=b7ScpftuJB9BBgm+TTz38t9C22WBk/eyF1Vu1BFVvLOCC4H+0PyZeEcsCQVxyYsB0i
+         4Lvn++sId31h07uhqo190ZpmtP5zeCdg1zkpzUslJhVLpyGairor3UDpK08AA9fne+Ya
+         F5LfxhLz+nVVbNP4miEO9/XbyAK3scMHA2nEtL3WZ46ucfUsmXjP3NUzeqH8iCGIvnwd
+         Cxxcv0NHHmJyUar51XaBCJU4MjawG14ncjMo54FUbFBMEjR/9MwPJ/g5eZCnuaAy6JJ+
+         L9YSwa+55MlXude+heaYRMxxTgRziSwc2CcDkULi8FX4ocF0UMpgEaTvf9AjShw14dHc
+         B2ZQ==
+X-Forwarded-Encrypted: i=1; AHgh+RoVtId3LKdO2EzpOv9XzjVaTUpdaK0ENqcjon1RKbHQn5gB5uMAinyYJH0qkcn1pufg5e9cqqMSU4eSHAA+OA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy7H6s36fGHtC2/SAwz4krHYhvLSldMxEdodKeyMw4xm8zMc+X8
+	9BKjMKaepUFO4qRmSXKwpkYyryZ5WOIx/AhSn38OYUNUlNdsVaqUgnWoidmitQ==
+X-Gm-Gg: AR+sD13ASNMDBW1ewl8v6mSUll9unwx33QINI4dhJW8ATOPqTdEvW4Uaeh3yfVZAxko
+	7uW3/q/pd9Bt5RQ58Q+tkot7lD2trIu9gTf3g3TD68gSMyTINHcYOrAXlQY9KLSACdt2lhbdyAt
+	MyRYicBJbXvKzXW455i+ozMC9VDEJ+vS4q6Ym0DM9sTa+fsj1r7Pc7nRcArwSIIOXT3yDVVCkmF
+	7LLlEli+3QOsvLKb27o6a4Li1upXpha3+FyLh+JiiYwvEs/uL5zkaOYkcDYXRCo4feoXbH81KWw
+	7AIUHJrXl77aBKjjoRNaQeDlfFfMgq0/hZgVvS6SJfp+lG1R6cN1QtAg2LK5UyR1i296GIoojZB
+	FHTatlorh4ZIx819V7CquEYuqPr602Z76n3VPIU33ZZOdnlH5ISaevg4isKDn+4Kx1uNzoEy7lJ
+	QUOSrgcAWuoccCbAT580amAvQeP6wJ0AfC3CoJapJ1XsTKedmLiwXfiZRbVxT8tLDY5sunTDOjv
+	KWcwB2WqxFTJAw9Gkod40MpFwXRi0bYS0uNdei8IeHvt60p68Zm5FiEjFYY4BsUoqTn4TYTePK4
+	36M7DtYdpzZU9rY=
+X-Received: by 2002:a17:90b:51ca:b0:38e:5b59:c2ff with SMTP id 98e67ed59e1d1-3909d79f8f5mr8625493a91.3.1786090627565;
+        Fri, 07 Aug 2026 01:17:07 -0700 (PDT)
+Received: from phuc-desktop.. ([183.91.15.56])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39085de8ddcsm3913377a91.6.2026.08.07.01.17.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Aug 2026 00:27:12 -0700 (PDT)
-From: Vitaliy Sochnev <sochnev.v.74@gmail.com>
-To: lorenzo@kernel.org,
-	andrew+netdev@lunn.ch,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com
-Cc: netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+        Fri, 07 Aug 2026 01:17:07 -0700 (PDT)
+From: phucduc.bui@gmail.com
+To: Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-arm-msm@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH net] net: airoha: npu: load the firmware without the sysfs fallback
-Date: Fri,  7 Aug 2026 10:25:30 +0100
-Message-ID: <20260807092530.46853-1-sochnev.v.74@gmail.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260807024125.434055-1-sochnev.v.74@gmail.com>
-References: <20260807024125.434055-1-sochnev.v.74@gmail.com>
+	linux-watchdog@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-aspeed@lists.ozlabs.org,
+	linux-arm-kernel@lists.infradead.org,
+	bui duc phuc <phucduc.bui@gmail.com>
+Subject: [PATCH 1/4] watchdog: qcom: Propagate errors from optional IRQ lookup
+Date: Fri,  7 Aug 2026 15:16:49 +0700
+Message-ID: <20260807081652.38692-1-phucduc.bui@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260807_002715_958602_4C32AF22 
-X-CRM114-Status: UNSURE (   9.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260807_091710_699971_C1B22511 
+X-CRM114-Status: GOOD (  12.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,26 +121,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri,  7 Aug 2026 03:41:08 +0100, Vitaliy Sochnev wrote:
-> request_firmware_direct() sets FW_OPT_NOFALLBACK_SYSFS, so a missing file
-> is reported as -ENOENT whatever the firmware loader is configured to do,
-> and the deferred probe path works as it was meant to.
+From: bui duc phuc <phucduc.bui@gmail.com>
 
-Prior art I was not aware of when I sent this. Ziyang Huang described the
-same failure and proposed the same fix for OpenWrt's copy of the driver in
-March 2026:
+platform_get_irq_optional() returns a positive IRQ number on success or
+a negative error code on failure. For an optional IRQ, -ENXIO indicates
+that no IRQ is available, while other errors should be propagated.
 
-  https://github.com/openwrt/openwrt/pull/22697
+Instead of only checking for -EPROBE_DEFER, propagate all error codes
+returned by platform_get_irq_optional() other than -ENXIO, so that
+failures are properly reported to the caller.
 
-That one predates the refactor which folded the two request_firmware()
-call sites into airoha_npu_load_firmware(), so it changes two lines rather
-than one, and it was never sent here. The reasoning matches what I arrived
-at independently, down to LEDS_LP55XX_COMMON being what selects the symbol
-back on.
+Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
+---
+ drivers/watchdog/qcom-wdt.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Recording it here rather than leaving it to be found later. If you would
-like it in the commit message, I will send a v2 with a Link: tag.
+diff --git a/drivers/watchdog/qcom-wdt.c b/drivers/watchdog/qcom-wdt.c
+index 49bd04841f0c..a8eb1d8f24f0 100644
+--- a/drivers/watchdog/qcom-wdt.c
++++ b/drivers/watchdog/qcom-wdt.c
+@@ -298,8 +298,8 @@ static int qcom_wdt_probe(struct platform_device *pdev)
+ 		wdt->wdd.info = &qcom_wdt_pt_info;
+ 		wdt->wdd.pretimeout = 1;
+ 	} else {
+-		if (irq == -EPROBE_DEFER)
+-			return -EPROBE_DEFER;
++		if (irq != -ENXIO)
++			return irq;
+ 
+ 		wdt->wdd.info = &qcom_wdt_info;
+ 	}
+-- 
+2.43.0
 
-Thanks,
-Vitaliy
 
