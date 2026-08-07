@@ -4,69 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1640C5AC7A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2026 15:21:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54CF6C2A09B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2026 16:07:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	bh=iG4zfB3mkX/9JfpqPZptcO7ZZiGhOcnJC3Whi+Knzc4=; b=hQsSoMnNn1YhI+kBCxlTv1SpKS
-	UvH97n4AeJF1c+UeaMmAYt791m1ahTv830D/8jHq09L3C+Nswce53GNWo5+zFetUluKiNl9beg0l7
-	ewM4hacyWy8iZO2XGOjlL4nI052a8BnolGooULF62RDBTSGYy6XU4gNazkfguA8/X+eHr1gPVA5Uj
-	++8sIXj1zybitT4hUHVqPmmg5g2eRgxxTTM3m+VCFtfRjA5jfrY+SNC6RsZlvZgubfdgPYcqche1Z
-	XG9C0Hh2G5w9tUOTjYQ2Kuk8nZiMq7a6uT0LAK0dWH4UR+CMsk+1vpA1hFHhw/KItre+xAyBdEql0
-	yqrU+uZg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=E/7u7I2Djvix0P2NwMSrq7QV2o+ie3mFI36omFn2Qe4=; b=mOAsaAExojtUPyNxgrQ6QcCa12
+	ULmj1UvfEru4FMa4ahLjSqShP5HnV5jajlqa9JUs2kbnmykYqiZAskQ1by3/MunO9Z7CuwTEO8SWu
+	QAffKNfFRYDxp7VzjkzViXNjfIi24rmbyipMFyQjIkGWfUfG3a8CiiuVMzpN30ApraZupUKwkPs7K
+	CCC8JVdDSt4k4S6RbbmjjTXTVj2deQnWIQGp1lXQHJaeyDW9e3MudLEKilihdOkx31JrmZoKCSc9B
+	2lSld9N6jn6YC8/A90EgnY1+0rUfdMWMFsdkMKF84fIg+AuVc+LUWUkZ8EZPnZJDCpOwijRFl3GLi
+	BaN5FO+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsMNb-00000008KRv-27Xp;
-	Fri, 07 Aug 2026 15:21:03 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wsN6g-00000008OqW-0Jk3;
+	Fri, 07 Aug 2026 16:07:38 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsMNZ-00000008KRb-2yWj;
-	Fri, 07 Aug 2026 15:21:01 +0000
+	id 1wsN6e-00000008OqQ-17BK
+	for linux-mediatek@lists.infradead.org;
+	Fri, 07 Aug 2026 16:07:36 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1A7CB600B0;
-	Fri,  7 Aug 2026 15:21:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9306F1F00A3A;
-	Fri,  7 Aug 2026 15:21:00 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id C351842DC8
+	for <linux-mediatek@lists.infradead.org>; Fri,  7 Aug 2026 16:07:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A74891F00A3A
+	for <linux-mediatek@lists.infradead.org>; Fri,  7 Aug 2026 16:07:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786116060;
-	bh=iG4zfB3mkX/9JfpqPZptcO7ZZiGhOcnJC3Whi+Knzc4=;
-	h=Date:From:To:Cc:Subject:In-Reply-To;
-	b=F9xIqInDTiHDd/d8qIPuMoAMNRb5iBY71TAvq+QxygVPo9hlrdSmDykOOI5fL7COR
-	 XMJ6uE2TqHIUe+3as/KvudQnR7vISAqZwIouja74y8krfv/MwVOwvFYSaZKAAJjQjW
-	 HDDueZ+wGHviBXEfWMtMA3jkh4fXG74jJGz/FD1FVPnzyTf7qczyJYLZ2yX6QGZ1R7
-	 SYsmiN1aGKmSSwD01XgaHxh2r3sKkWm0xkzX52rL5GDETPOAfb1RZtn10uWVIMGKbd
-	 WYlW4bZeRrJ2fMJRYlXjo9Dz6c+o+a8sttqPE6WPAeteHnZ2+Q0De82rsr1surN7v8
-	 8uBZ1OdrsSuwg==
-Date: Fri, 7 Aug 2026 10:20:59 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Christian Marangi <ansuelsmth@gmail.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>, linux-pci@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v5 0/2] PCI: mediatek-gen3: Add 2-lanes mode support +
- clock
-Message-ID: <20260807152059.GA39821@bhelgaas>
+	s=k20260515; t=1786118855;
+	bh=E/7u7I2Djvix0P2NwMSrq7QV2o+ie3mFI36omFn2Qe4=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=dzWoCNiS+1H5cMWyLNwH7NxQLHuWOodEoiiK64vQFPQFdXULN1EalhUa9VrrUrSVH
+	 CIDW9ITSPA38BknGjgYfRWGPthYKfnpXrE37Aq+TsO8j5r0Ca/JeNi5yp3la6ckXkg
+	 frcAh8cq8JR/NUnrK8cd3ukB2OivPqektPH9e+CV3qpX+4+OIy+tGI3aq9r5DN8Jk2
+	 7FcRHw4tVkp1+TJhmeFAiPx9OaR4q7mCyFIXCkJwfAV5IGC5JYtqV5VHcbGslK8vgh
+	 OixShL8lcsPBF3PVQmMClfckhhukVKpwegFUn3TMnxsi9cqbRtRQTiWI/Falwx9o/A
+	 N7tbdKX0ojl5g==
+Received: by mail-lf1-f53.google.com with SMTP id 2adb3069b0e04-5aebd52488cso4054281e87.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Aug 2026 09:07:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+Rog7rQxMfmJJAk5DlNv34Pb3W/rcMWd+SV8jkK558QeoeAhV+1NPigD+2+jHqsvrQk9de3mFwivRmA20+HpPw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxYz7NLwjYKHAY+NqE8460wW79JY3uS/UmyMR0f9O/5z6Y0XQQt
+	VZvAiQSsskRKc6u18/qVHURdK31sOEUYl5VNqObNEdsXSjM1YmiB6OvD+TSsz+qDouYEEzYSIiH
+	dM4Vs1dsYJW7YjsFpTf9UwkgeadPU3+E=
+X-Received: by 2002:a05:6512:131d:b0:5b3:419:7c86 with SMTP id
+ 2adb3069b0e04-5b304197d35mr1526582e87.19.1786118854497; Fri, 07 Aug 2026
+ 09:07:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5HrDw8GWb9zp1AaQU9UW+0FGcr7jOV2jt_zi_2KgfgBqA@mail.gmail.com>
+References: <20260806220615.4078303-1-mikhail.kshevetskiy@iopsys.eu>
+In-Reply-To: <20260806220615.4078303-1-mikhail.kshevetskiy@iopsys.eu>
+From: Linus Walleij <linusw@kernel.org>
+Date: Fri, 7 Aug 2026 18:07:21 +0200
+X-Gmail-Original-Message-ID: <CAD++jLn8uL7NePnPK6SNcuKRjxm6c_98Piu4Y+urKko5eT-mhA@mail.gmail.com>
+X-Gm-Features: AUfX_myE9lBIlT3ccrCM0uiAQGhdWYGeb1eZf7EHX8xjjW8G2nlmXblTO5FBaEs
+Message-ID: <CAD++jLn8uL7NePnPK6SNcuKRjxm6c_98Piu4Y+urKko5eT-mhA@mail.gmail.com>
+Subject: Re: [PATCH v11 00/37] pinctrl: airoha: split on shared and SoC
+ drivers, add more SoCs
+To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+	Bartosz Golaszewski <brgl@kernel.org>, Christian Marangi <ansuelsmth@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Benjamin Larsson <benjamin.larsson@genexis.eu>, linux-gpio@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, Markus Gothe <markus.gothe@genexis.eu>, 
+	Matheus Sampaio Queiroga <srherobrine20@gmail.com>, Daniel Schwierzeck <daniel.schwierzeck@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,39 +86,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 07, 2026 at 11:24:09AM +0800, Chen-Yu Tsai wrote:
-> On Fri, Aug 7, 2026 at 12:53 AM Christian Marangi <ansuelsmth@gmail.com> wrote:
-> > This small series introduce support for 2-lanes mode for Airoha AN7581
-> 
-> Just a nitpick, but I would probably name this something else, like
-> "cross-controller lane-bonding mode" or "lane stealing"? PCIe already
-> has 2x lanes as a standard feature, so this naming is a bit confusing.
-> It's not like dual-LVDS display in which LVDS is only a single lane.
+Hi Mikhail,
 
-I suggested the "2-lane" and "x2" terminology because I assumed the
-result is what the PCIe spec would describe as a "x2 Link" consisting
-of two Lanes. 
+On Fri, Aug 7, 2026 at 12:06=E2=80=AFAM Mikhail Kshevetskiy
+<mikhail.kshevetskiy@iopsys.eu> wrote:
 
-If that's not the case, maybe "cross-controller lane-bonding mode" or
-"lane stealing" would be more accurate, but I don't know what those
-mean, so if we use them I would also like to know what the result
-looks like in standard PCIe terms.
+> This patchset
+>  * fixes more airoha pinctrl issues
+>  * split combined driver on common code and several SoC specific drivers
+>  * improves an7583 pinctrl support
+>  * adds support of en7523 SoC
+>  * adds support of an7563 SoC
+>
+> The driver split changes are based on Matheus Sampaio Queiroga work.
 
-> > SoC. This is needed for correctly functionality of Eagle WiFi Card
-> > normally attached to this SoC that require a 2-line PCIe card to
-> > correctly work (and give the proper performance)
-> >
-> > The first 2 patch address a limitation of the PCIe implementation
-> > where the PERSTOUT reset were indirectly asserted and deasserted
-> > all at the same time (for all the 3 PCIe card) with PCIe
-> > enable and disable.
-> > The 2 patch address this and introduce correct reset to control
-> > reset line for the relevant PCIe line.
-> >
-> > The last 2 patch add additional logic and support to assert
-> > and deassert the PERSTOUT and also apply the required configuration
-> > for 2-lanes mode.
-> >
-> > 2-lanes mode is implemented in DT by adding the required property
-> > and by defining the "num-lanes" to 2.
+This patch set began with 11 patches and is now 37 patches.
+
+Is this becayse Sashiko is touting you to just fix more and more issues?
+
+I think at some point we have to draw a line and say "let's fix the rest
+later".
+
+On the other hand I appreciate your efforts...
+
+Yours,
+Linus Walleij
 
