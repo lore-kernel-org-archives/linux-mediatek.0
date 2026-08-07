@@ -4,112 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3A29C5AC7C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2026 08:17:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC9A0C5AC7C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2026 09:10:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xhHhQhUh884edb2pkrtgwkkFMcH6OBy0eevlqyMXflE=; b=eEzs52Omm9Afvxd2ZU9cQYt4T3
-	MYwSlpyopN2f4riwpnK/C6li76Cug7Gv5+U/HfbC08cJkwDGXb+Ob0ovzGq1ZAOqtY6mjsdJFexBM
-	1D2P64ALnj03r8EPzKCOlF2DfRU/LY9zCkSBz5YawbuzCJ+ahRULK5LJIVWU54VUS/cRJdSB6H88c
-	02FBL9DZiXpKzA47UJnrSjOwOAcNSSYL6hvyAJSv36ACAuBL6VicNeFFbJvsQsPZpXc1klv4fjhUl
-	XxFmE2omybTqgFgA/8kRQ9xpZvqEaeTIKq2K7TtaNquzOvSCYEtR7OGWHtK9hBk35YVVRFJr1WXFT
-	U5WL+u9g==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KIWGEh9Ufcm6qiadbjnDxFEVPk5jpDGnhvZvsj6Ps4M=; b=c1QcDy18rDyC0OLWRSswCTegEy
+	H2waXs3yX/dp+CseaFGIV5tGDuXQkEzPUBRq4qJjihYTVNMxztxhEg3yHC3/f3BYd34zrtd5iIbH5
+	mAnJOWKAi2L8fR0SvTm1uyM7/OJPR87InCepbsVp/xZ2k/76kJKf8Tg6jys/Y084A36S8XoVN5Z67
+	ZE2bbDKmCmINcQ/VqCpEkL34FkscCCfdTdnCRDfZgUz6hjqILoyHFrUSqL+/ZhVUH09G0gN/2DUkB
+	AvlnPouhmt/Vw9Ee2i7IG2pIPetKuEtrOuP6hiiFguCmpJ3ZzpsctDnhG7YJbid4A1yGvatmzEnnE
+	R3uMnrFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsFli-00000007OjK-0tCL;
-	Fri, 07 Aug 2026 08:17:30 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wsGae-00000007UKD-2IvK;
+	Fri, 07 Aug 2026 09:10:08 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsFlg-00000007OhP-2Xxv
-	for linux-mediatek@bombadil.infradead.org;
-	Fri, 07 Aug 2026 08:17:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=xhHhQhUh884edb2pkrtgwkkFMcH6OBy0eevlqyMXflE=; b=SRW4sR6iCbNXRPRmKqlWQtnLIv
-	rY1yR9aGd8FZILUqadqQhM0cSwP2dAARxlWAeSGdwoidO0vGEBRi3BGKD3CjHw8PnJz01DDFTL/lC
-	c3nhClJ4jaRruMuamcktFS3XW7UZSmfCO8kKitcPTDvx8SI7Yv5RgfoK8fJ1UfV370Oehq+75kbbm
-	5UF8EYURvl13vWYSGQqnArnRMRVD8bgBp58nwfE51e5OguPff+QJDNotR7rocEQu78l0f1jYUMFu8
-	CicptaXaBiwoqiYduw59zqTbQGB24zFmqHF0k+InOwf0uQv8zcGNuuJKm3Oi1C5hwnocENa84wm0I
-	tSX2ALhw==;
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wsFlc-0000000CBdf-1a6g
+	id 1wsGab-00000007UJ4-2Fiw
 	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Aug 2026 08:17:27 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-38f620399a0so2773339a91.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 07 Aug 2026 01:17:23 -0700 (PDT)
+	Fri, 07 Aug 2026 09:10:07 +0000
+Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-8485b358552so2678922b3a.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Aug 2026 02:10:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786090642; x=1786695442; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=xhHhQhUh884edb2pkrtgwkkFMcH6OBy0eevlqyMXflE=;
-        b=Nm9WSL2paNU/WA65NpsV78iYUSypss0prfrv2lkZhYyqMfM1x63lB1KEnLHLGU28nP
-         jBze16WMNv/ne1R9II41BZbx3aXjuu5Lco3MQAld1QPApjvEg7OqXsRqxtqxkYasJjGC
-         MQ/WRgz2aEPUkYZk7zS+UdEkRZuhQd+zhs1mpf9kpiyIbWMLYiEIU7CrxKdMDhVHZXnO
-         o8ajDQ9EKlYF576NHfkAT2aBg+x32NyQoAVA0UUMr/eFl9wQYEX08Y/4Gjc6QB57QhTS
-         2uVnm9bWNJGdGVVF3ybxfnH22moJRKTyyYaBUSIa1NfqfAYCAWwXFSDVJqOmtRc3wm5F
-         Q78A==
+        d=gmail.com; s=20251104; t=1786093804; x=1786698604; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=KIWGEh9Ufcm6qiadbjnDxFEVPk5jpDGnhvZvsj6Ps4M=;
+        b=OFCIhzPciys4VyZvraYfZzqqRz6jqve7lSEyFZ3BMR8GfAMect2Xu0Vy9wYzk6pW4/
+         u9DpSyDSxde66BwDoym/jzBY3uDC4JVnKMgAH3BC1K/JFXX1tj+wzDHGkhMvvrFryuHz
+         tS0pGWWmbCisF7wNnkpqxc7/Qd0NxPJLrjz2IzEqE4aVCEfNL8cw2vVmaWuyxVPHdgfs
+         SQq1ToOvk3ipd8um1ereH0oBdU+7hXn1v3BkDM5h3cVd2yojO+Y6C4gJdpF7J1oVi5f2
+         15Lo00iqqCrijgJnFFy2qyosqVnxbygySQjFgXiOt1sGPyKod+eyjSt7W5i6RZ8UHtGl
+         6LfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786090642; x=1786695442;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=xhHhQhUh884edb2pkrtgwkkFMcH6OBy0eevlqyMXflE=;
-        b=sTSmV2q6LSclaTz7C100HpEPWyHRX7VmWPW1uVksXv/qp3mI36tuzUnBdClaRMd7DK
-         b1SCxmwa/gfKoOnZwtj5fUFk4EqJHDmhVQ872RnJjyGMc0BuuHD52x109qM1984UcCK0
-         4Sa6FSjIC0H6FpBng3/oQh1AwzXN/Wi4O9FRTN1N8hT+7eVRhwsCsQlZngpm5ApJkWkp
-         2iuwRVCvEzvlghyULPKrBvovDrIQgaTqYOF0S0bwEQ+wRl40AKW5Ovgp6NhRZi5uNyKx
-         Yulpjimolm7rbiJULFt7UTpZQNYBFLDqZZIOvMNVwtQRPNkhpZMlI77mDaek+su2N/hk
-         QmBg==
-X-Forwarded-Encrypted: i=1; AHgh+RqmPUCRSGNEq3kBMIhfK1LAnHJ+on8XgpT/Rk0YAHHCkn/KLXGCPaYZNjvcxNRJHj9DZYWqywu4ivOeJsnIyw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyERzOAtEIZg2y6VixSP/Z0mfngALg1X+ZtESQxlVyEzpM4gz+0
-	3P4K+afSGm2+AwngdKe3Ku3BMNyVKlYujdiEsmLrPDlboQYXBiWWjRGh
-X-Gm-Gg: AR+sD13AS8vyEIrRSR0M2HG6Bm88tH14/Vgd6ESaRQxX8hTwSvN19/5iOj+NK/qvxua
-	khjo9y9Sf+7uFCIIEkuNwv0VHyGE+IHbEQkjmsjQbpG/tBG8joZx/QXaLAnwTw92arCycsNEwwA
-	GFOhnsZ0zdq3ze9efMc9/zb/FUTScVTYgbcLvkuJxXwrT5UhsOHaaAKVU0riS1bcxJbfdZttew4
-	zi++VBMKLg9BnbIoTnJUCUDUrmM3baI/2cCl1jX42gvlyWVvo179Wc+auXwuoEolVVjb9QQVXtq
-	kaSrXfjTBlJR04LCarPSMaw5HqOuxNmOsQ1et1KIYqKVxlnvzShfr9YArTplayFM7xq+RzeowJO
-	3oc7MdSKmEy+hBtGrqaQ1Yzd8dm+hzDoUzvAuy9h3AMF/ljihy6uPcSPuhvW3CttX3e34d57Gfc
-	nY+xDX4WBa38RfCEYghIne/YkZky3BEUM9t8ss9HAdZ7kaCiaChODVz0h2OhChuYN25NGc+UU0p
-	4QlZyFLWDNuht63Ku6Qv++gta43NI95Pvms2SsA0iVT4JT9Ki/wNjdk3/SIdr2dRMg67P3q3ozz
-	FXfd
-X-Received: by 2002:a17:90b:4e8d:b0:38d:ec31:4840 with SMTP id 98e67ed59e1d1-3903c5932femr22557442a91.13.1786090642107;
-        Fri, 07 Aug 2026 01:17:22 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1786093804; x=1786698604;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=KIWGEh9Ufcm6qiadbjnDxFEVPk5jpDGnhvZvsj6Ps4M=;
+        b=OvZ98y2ZXPLEsRGhPXSifQJ93xU1mNNjAkZAm7I5UXIT6SHj0aQQ5kT5UrpoWYRRsA
+         DIYnjtu6KiQPbqsqFJ9xAec3sh4IrQ1OEIor73UBtnYZ5p9zx3nxe6toT0b3MoxCkYg2
+         xtadcV4IiPMO7L0KmgHHOH3joDgiBcnNTThhlwbo/LX2Va0vX6YhdPHBY761krHuMm6U
+         4aaX773gEVo3FRmsQqLOB+FnSpT9iLOH16GUUFTUvg3j0HvyyjdSmH1+nvIdA4GN6KJd
+         EqpDfbyzfOIHO+T7loyxndJrrH7oBSunnoSBZY7TwsGTCcYBRgtLH3zAHk/C11B9Mdwu
+         HRLw==
+X-Forwarded-Encrypted: i=1; AHgh+Rr2421C0dCUm+c6pNJN/Yb67XeRPGIMOrOGUSwkKyYg3RlvJ1aAg0QaifTqH7Y8G6mCW4YWnCrdwcVL0t3aKA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzj/hnUvz6jCHrH86iW18mg4OMAgFV9a80p6vuDh9OFkDigAaff
+	k1jxBHFH2RkQhQMROztXuqVzM+1WHaRKmNqu3HBohcs0L/OAZ70VVTf4
+X-Gm-Gg: AR+sD11kWJdBviXHFl+b0sYZMu//RWYXxMgF9i02hMIQe4nQNPt14vXOEv3RJd0URHI
+	ZySEuVyPCATtae4rkUeeGdyJp3sthIE1m4FUK2qfU3T+JgxylPliHdNlZcuz1w7eRyS7VvCM9QO
+	0TT7dKT3IlU57U0vQwhqQCbCM+tnzKirg5EtCb1DTSH5miKGcMCbcrY4CJwZjaAgppqiB0GHSJP
+	s6LbRX+AAe3601JLXYbk7uKih18H19xZnLflX0dfKrn9FXPxtGGBL9ZYjgHfb4HuTa+EsdAg+dX
+	d9UwbPXMT0ha7BassS1H4JwDHXtUprEbC2WHbbCiXjKuT7oKXzHUC3yJ9lFjfFFUNYmSg+2vRnl
+	6ZJNm7T5Xr69U4oej71xzA+b4UDkU3o/4r3f0dyCXaQxcHaTNLwiOV5y17ZFS/X7B/V3NqqvB2Q
+	Y3nwpq4A+7GMXdIhIaXOdrnyYYHL1y/GDiqF8QiELKBaqDo4ueigJYGIpHfTXc623fPpctRN4Ox
+	uZBD/wSTK52YRqqDoKM6CyK5Q8VMy9TBsztbza4RRcmpe+I8Kqc9tw2gG5maF0JlAFKLiTehA8r
+	dz6a
+X-Received: by 2002:a05:6a00:a116:b0:846:bc60:5bf7 with SMTP id d2e1a72fcca58-84f2dfcf7f5mr24182425b3a.6.1786093804529;
+        Fri, 07 Aug 2026 02:10:04 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39085de8ddcsm3913377a91.6.2026.08.07.01.17.18
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-84f5a552859sm715908b3a.42.2026.08.07.02.09.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 07 Aug 2026 01:17:21 -0700 (PDT)
+        Fri, 07 Aug 2026 02:10:03 -0700 (PDT)
 From: phucduc.bui@gmail.com
-To: Wim Van Sebroeck <wim@linux-watchdog.org>,
-	Guenter Roeck <linux@roeck-us.net>,
-	Joel Stanley <joel@jms.id.au>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-watchdog@vger.kernel.org,
+To: Jiri Slaby <jirislaby@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Frank Li <Frank.Li@nxp.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Yenchia Chen <yenchia.chen@mediatek.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Zhiyong Tao <zhiyong.tao@mediatek.com>,
+	Sherry Sun <sherry.sun@nxp.com>,
+	Robin Gong <yibin.gong@nxp.com>,
+	Viken Dadhaniya <viken.dadhaniya@oss.qualcomm.com>,
+	Praveen Talari <praveen.talari@oss.qualcomm.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Zong Jiang <quic_zongjian@quicinc.com>,
+	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
+	Aniket Randive <aniket.randive@oss.qualcomm.com>,
+	Kathiravan Thirumoorthy <kathiravan.thirumoorthy@oss.qualcomm.com>,
+	Anup Kulkarni <anup.kulkarni@oss.qualcomm.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
 	linux-kernel@vger.kernel.org,
-	linux-aspeed@lists.ozlabs.org,
+	linux-serial@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	imx@lists.linux.dev,
+	linux-arm-msm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH 4/4] watchdog: aspeed: Propagate errors from optional IRQ lookup
-Date: Fri,  7 Aug 2026 15:16:52 +0700
-Message-ID: <20260807081652.38692-4-phucduc.bui@gmail.com>
+Subject: [PATCH 1/3] serial: qcom-geni: Propagate errors from optional IRQ lookup
+Date: Fri,  7 Aug 2026 16:09:43 +0700
+Message-ID: <20260807090945.41690-1-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260807081652.38692-1-phucduc.bui@gmail.com>
-References: <20260807081652.38692-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260807_091724_576713_9C8743E8 
-X-CRM114-Status: GOOD (  10.75  )
+X-CRM114-CacheID: sfid-20260807_021005_575262_7C865F6D 
+X-CRM114-Status: GOOD (  12.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,22 +133,28 @@ probe without the IRQ.
 
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- drivers/watchdog/aspeed_wdt.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/tty/serial/qcom_geni_serial.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/watchdog/aspeed_wdt.c b/drivers/watchdog/aspeed_wdt.c
-index c9e79851504c..48454ac86074 100644
---- a/drivers/watchdog/aspeed_wdt.c
-+++ b/drivers/watchdog/aspeed_wdt.c
-@@ -429,6 +429,8 @@ static int aspeed_wdt_probe(struct platform_device *pdev)
- 	if (wdt->cfg->irq_mask) {
- 		int irq = platform_get_irq_optional(pdev, 0);
+diff --git a/drivers/tty/serial/qcom_geni_serial.c b/drivers/tty/serial/qcom_geni_serial.c
+index 7ead87b4eb65..240a6d67d847 100644
+--- a/drivers/tty/serial/qcom_geni_serial.c
++++ b/drivers/tty/serial/qcom_geni_serial.c
+@@ -1883,8 +1883,13 @@ static int qcom_geni_serial_probe(struct platform_device *pdev)
+ 	uport->irq = irq;
+ 	uport->has_sysrq = IS_ENABLED(CONFIG_SERIAL_QCOM_GENI_CONSOLE);
  
-+		if (irq < 0 && irq != -ENXIO)
-+			return irq;
- 		if (irq > 0) {
- 			ret = devm_request_irq(dev, irq, aspeed_wdt_irq,
- 					       IRQF_SHARED, dev_name(dev),
+-	if (!data->console)
++	if (!data->console) {
+ 		port->wakeup_irq = platform_get_irq_optional(pdev, 1);
++		if (port->wakeup_irq < 0 && port->wakeup_irq != -ENXIO) {
++			ret = port->wakeup_irq;
++			goto error;
++		}
++	}
+ 
+ 	if (of_property_read_bool(pdev->dev.of_node, "rx-tx-swap"))
+ 		port->rx_tx_swap = true;
 -- 
 2.43.0
 
