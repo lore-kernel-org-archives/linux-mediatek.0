@@ -4,58 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19CD5C5AC7A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2026 09:32:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 957A2C5AC80
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Aug 2026 10:17:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IANzF0ECqfYvNW6o6lUVxR7BnQHMG2/Ia6EKNLv4V7U=; b=AnzJ6ZRbJ2jxOzh3qZxDSIQM+F
-	LSXgWkdOXjN2n8EY7eqxl+DE5JSbHkTyg/8y/jdH/o2JH139K3FKwXVUVeVpyJsiUZ3+mDWxkpBsW
-	CP8yeldGMVD7mIszvHVkLc5MplQJHXkQO6TSnHfhw27heXNXu4u3FLaaRwwaaG+omDSGAjvwtBBqP
-	js48zx1M1/HZK8uw6x8f0zPTnLXIMCUzfyrmf8MNstH8mCUFifk/C4skW1YTNF8WHvqu/qeRyw7f7
-	wULJ+dkGqflIS75zntE73lVY4EBgw/OdSFLZIKsZfobXCyQ7AkZMNCV5CcONyOlaobK1oD7MBKItA
-	lOYcBclw==;
+	bh=hUHFsx+PJg3aBK5v0PAYLEFmVL5S7vEOMhoPgycQYzY=; b=nwoS9+HLUSu5+BHCqSHRM0CBh2
+	JDht/b1wb5F+R0uPEX5o3GDrNZdQ/Clw8gmLxMEQ/MpY18DpJUj8+cCMMruSIC/rKjTMurkjOkIO2
+	EMXFDE3JFqcOOz8bBG/VHV/m7TbzhHonsDG99t2QzvTnv228dK8c7KPR9m92FYTc91OD+qP7/EQdq
+	hcAn3Wk9ntzHshY+ESRPQhCUTH9l0aW8I56QtPCLX/WoWsN8eJXgKp84tOt012yjLh5mr4YlGelw0
+	qIZ7K4Y5YaaOyRaMO1Z3HZXhNrxP7juBCirrgz1+jVWL6WZzGnVk1+eEabHb6c7TnWlh0+O2rJs+u
+	viAQYVzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsGvz-00000007Wm4-36hJ;
-	Fri, 07 Aug 2026 09:32:11 +0000
+	id 1wsHdb-00000007eK2-3hs4;
+	Fri, 07 Aug 2026 10:17:15 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wsGvy-00000007Wl1-0BJq;
-	Fri, 07 Aug 2026 09:32:10 +0000
+	id 1wsHda-00000007eJE-2xAJ;
+	Fri, 07 Aug 2026 10:17:14 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7FAEE416DE;
-	Fri,  7 Aug 2026 09:32:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D92BB1F000E9;
-	Fri,  7 Aug 2026 09:32:08 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 47800438DB;
+	Fri,  7 Aug 2026 10:17:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 775DC1F000E9;
+	Fri,  7 Aug 2026 10:17:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786095129;
-	bh=IANzF0ECqfYvNW6o6lUVxR7BnQHMG2/Ia6EKNLv4V7U=;
+	s=k20260515; t=1786097834;
+	bh=hUHFsx+PJg3aBK5v0PAYLEFmVL5S7vEOMhoPgycQYzY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Vy4vfCDZFH8U9cH+bjQQHEgS2fvGgOSfDBUTJNaxbud290GK0chUox81FUVfjYg6R
-	 3D2kF8uFiOhRp4ZTdgX08mxKIIOCwk0CByMtDgdw8VrKE4HyZK3Uqdot/M01udXbjF
-	 d+zLRz/6yuX2MeuVz/N2eD5Ch99Fu9wXQAwgB4FCdEVJJx9wKqPylzLz9BL5xJYnGV
-	 9NaCxFaZ1Nc5my5YC3wPke/7BYlhHDRnZZaPpo2A3cu1VZdHYDgCPdVIxyX61/C/8M
-	 0W8Ne5Kpd4kw60U1ZYN+AkKqDLy7YERpluujRY2u3VJRZmJAzK4I+uy2sLSTx9byx2
-	 Xdxv036z7kNiA==
-Date: Fri, 7 Aug 2026 11:32:07 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Daniel Pawlik <pawlik.dan@gmail.com>
-Cc: netdev@vger.kernel.org, win847@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v4] net: airoha: npu: use coherent DMA for mailbox
- messages
-Message-ID: <anWmF-BsC-gKAvNF@lore-desk>
-References: <20260807064058.1117747-1-pawlik.dan@gmail.com>
+	b=XFEb04/biKeSZU6PfRRDBCFDpF0swdthtXbgW/4JftxL/H65iwqY52zLgqhChQwt0
+	 2iagQY49RkbjCL12smw17Z/2TOYSu3UkKZYzFtQbqgJhlmWrFf61PWOM9aGXk4qG/j
+	 R5l+b/0Oc5LAJYjicsd9aadPkegn2ZBq2u88YH7OvrwXloK3r0EJukgg06wxHcWyVq
+	 E4WTi5nBZg5SVcmg74F5FZbvAdK2p3iJ4rZW9zvVvbLAjFFn/fqkdHpcJyrOexa+qC
+	 gXnVW2Tiis/K/h8i6d3T5W5UHk6fsYixXuAP6cPDMzZn848eUaY891mMU4DPIv7418
+	 lRP6kR16xv+KA==
+Date: Fri, 7 Aug 2026 12:17:03 +0200
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunfeng.yun@mediatek.com, vkoul@kernel.org, neil.armstrong@linaro.org, 
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-phy@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	kernel@collabora.com
+Subject: Re: [PATCH v3 2/2] phy: mediatek: Add support for PCI-Express Gen4
+ S-PHY
+Message-ID: <l3rdxgnhhalstuxsytsofd45nxa6uiulficlvhfltqazcclonu@3l3idggohsd4>
+References: <20260720152654.92216-1-angelogioacchino.delregno@collabora.com>
+ <20260720152654.92216-3-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="WZcbrwvPngP5YrRS"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260807064058.1117747-1-pawlik.dan@gmail.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20260720152654.92216-3-angelogioacchino.delregno@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,244 +73,385 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---WZcbrwvPngP5YrRS
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> Commit 6f884eb87a79 ("net: airoha: Fix DMA direction for NPU mailbox
-> buffer") switched airoha_npu_send_msg() to DMA_BIDIRECTIONAL so
-> non-coherent CPUs invalidate caches before reading NPU GET responses.
->=20
-> On EN7581 + MT7996 that change regresses probe: the mailbox completes
-> successfully, but WLAN_FUNC_GET_WAIT_NPU_VERSION still reads as 0.0 and
-> mt76 never binds NPU offload. Healthy boards report 0.1111.
->=20
-> airoha_npu_send_msg() is also used from PPE foe_commit under
-> spin_lock_bh(), so per-message dma_alloc_coherent(GFP_ATOMIC) is a poor
-> fit. Allocate one device-managed coherent bounce buffer per NPU core at
-> probe and reuse it under the existing per-core mailbox lock. That also
-> keeps the buffer valid if the NPU completes a write after a mailbox
-> timeout.
->=20
-> Introduce __airoha_npu_send_msg() with an optional reply pointer so GET
-> callers can copy the trailing response payload once. Keep
-> airoha_npu_send_msg() as a thin wrapper for SET paths.
->=20
-> Verified on Quantum Fiber / Gemtek W1700K (EN7581 + MT7996).
->=20
-> Fixes: 6f884eb87a79 ("net: airoha: Fix DMA direction for NPU mailbox buff=
-er")
-> Link: https://patchwork.kernel.org/project/linux-mediatek/patch/202608050=
-70851.2885888-1-pawlik.dan@gmail.com/
-> Link: https://patchwork.kernel.org/project/linux-mediatek/patch/202608060=
-72601.1815487-1-pawlik.dan@gmail.com/
-> Assisted-by: Cursor:composer-2
-> Signed-off-by: Daniel Pawlik <pawlik.dan@gmail.com>
+On Mon, Jul 20, 2026 at 05:26:54PM +0200, AngeloGioacchino Del Regno wrote:
+> Add support for the PCI-Express Gen4 S-PHY found in the latest
+> MediaTek SoCs, including MT8196, MT8894 and similar.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
-> v4:
-> - drop rsp_off; copy trailing reply_len bytes into reply pointer
-> - split __airoha_npu_send_msg() + thin airoha_npu_send_msg() wrapper
->   so SET callers stay unchanged
-> - fix reverse-christmas-tree local variable ordering
-> - constify data argument; clarify reply copy comment
->=20
-> v3:
-> - move coherent mailbox buffer into struct airoha_npu_core (buf/addr)
-> - allocate one buffer per core at probe
-> - add optional reply buffer to avoid the extra copy in
->   airoha_npu_wlan_msg_get()
-> - document AIROHA_NPU_MBOX_SIZE vs ppe_mbox_data / WLAN payloads
->=20
-> v2:
-> - allocate one coherent mailbox buffer at probe and reuse it under the
->   per-core lock instead of per-message dma_alloc_coherent(GFP_ATOMIC)
->=20
->  drivers/net/ethernet/airoha/airoha_npu.c  | 70 +++++++++++++++++------
->  include/linux/soc/airoha/airoha_offload.h |  3 +
->  2 files changed, 54 insertions(+), 19 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ether=
-net/airoha/airoha_npu.c
-> index b679bed952de..74da3c4d06e4 100644
-> --- a/drivers/net/ethernet/airoha/airoha_npu.c
-> +++ b/drivers/net/ethernet/airoha/airoha_npu.c
-> @@ -23,6 +23,12 @@
->  #define NPU_EN7581_FIRMWARE_RV32_MAX_SIZE	0x200000
->  #define NPU_EN7581_FIRMWARE_DATA_MAX_SIZE	0x10000
->  #define NPU_DUMP_SIZE				512
+>  drivers/phy/mediatek/Kconfig             |   9 +
+>  drivers/phy/mediatek/Makefile            |   1 +
+>  drivers/phy/mediatek/phy-mtk-pcie-sphy.c | 556 +++++++++++++++++++++++
+>  3 files changed, 566 insertions(+)
+>  create mode 100644 drivers/phy/mediatek/phy-mtk-pcie-sphy.c
+> 
+> diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
+> index ba6461350951..77236f3084c8 100644
+> --- a/drivers/phy/mediatek/Kconfig
+> +++ b/drivers/phy/mediatek/Kconfig
+> @@ -13,6 +13,15 @@ config PHY_MTK_PCIE
+>  	  callback for PCIe GEN3 port, it supports software efuse
+>  	  initialization.
+>  
+> +config PHY_MTK_PCIE_SPHY
+> +	tristate "MediaTek PCIe S-PHY Driver"
+> +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	depends on OF
+> +	select GENERIC_PHY
+> +	help
+> +	  Say 'Y' here to add support for MediaTek PCIe S-PHY driver for
+
+I think this part got cargo culted from existing help texts, but this should not
+mention 'Y' as this driver is a tristate.
+
+> +	  PCI-Express Gen4 controllers as found in MT6991, MT8196 and others.
+
+MT6991 is not mentioned in the patch description. So wondering if this is a
+mistake or not.
+
+> +
+>  config PHY_MTK_XFI_TPHY
+>  	tristate "MediaTek 10GE SerDes XFI T-PHY driver"
+>  	depends on ARCH_MEDIATEK || COMPILE_TEST
+> diff --git a/drivers/phy/mediatek/Makefile b/drivers/phy/mediatek/Makefile
+> index ed0da708759b..7e984c7cfea3 100644
+> --- a/drivers/phy/mediatek/Makefile
+> +++ b/drivers/phy/mediatek/Makefile
+> @@ -5,6 +5,7 @@
+>  
+>  obj-$(CONFIG_PHY_MTK_DP)		+= phy-mtk-dp.o
+>  obj-$(CONFIG_PHY_MTK_PCIE)		+= phy-mtk-pcie.o
+> +obj-$(CONFIG_PHY_MTK_PCIE_SPHY)		+= phy-mtk-pcie-sphy.o
+>  obj-$(CONFIG_PHY_MTK_TPHY)		+= phy-mtk-tphy.o
+>  obj-$(CONFIG_PHY_MTK_UFS)		+= phy-mtk-ufs.o
+>  obj-$(CONFIG_PHY_MTK_XSPHY)		+= phy-mtk-xsphy.o
+> diff --git a/drivers/phy/mediatek/phy-mtk-pcie-sphy.c b/drivers/phy/mediatek/phy-mtk-pcie-sphy.c
+> new file mode 100644
+> index 000000000000..853aafa18259
+> --- /dev/null
+> +++ b/drivers/phy/mediatek/phy-mtk-pcie-sphy.c
+> @@ -0,0 +1,556 @@
+> +// SPDX-License-Identifier: GPL-2.0
 > +/*
-> + * Mailbox DMA payload size. Covers sizeof(struct ppe_mbox_data) (28) and
-> + * WLAN TLV messages (header + payload); largest in-tree WLAN payload to=
-day
-> + * is 16 bytes (INODE_TXRX_REG_ADDR). Keep headroom for future commands.
+> + * Copyright (c) 2022 MediaTek Inc.
+> + * Copyright (c) 2026 Collabora Ltd.
+> + *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+nit: Odd indent and missing 'Author:'
+
 > + */
-> +#define AIROHA_NPU_MBOX_SIZE			256
-> =20
->  #define REG_NPU_LOCAL_SRAM		0x0
-> =20
-> @@ -160,23 +166,32 @@ struct wlan_mbox_data {
->  	DECLARE_FLEX_ARRAY(u8, d);
->  };
-> =20
-> -static int airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
-> -			       void *p, int size)
-> +static int __airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
-> +				 const void *data, int len, void *reply,
-> +				 int reply_len)
-
-if you use an u16 for reply_len you can avoid the reply_len < 0 check below.
-
->  {
-> -	u16 core =3D 0; /* FIXME */
-> -	u32 val, offset =3D core << 4;
-> -	dma_addr_t dma_addr;
-> +	struct airoha_npu_core *c =3D &npu->cores[0]; /* FIXME: core */
-> +	u32 val, offset =3D 0;
->  	int ret;
-> =20
-> -	dma_addr =3D dma_map_single(npu->dev, p, size, DMA_BIDIRECTIONAL);
-> -	ret =3D dma_mapping_error(npu->dev, dma_addr);
-> -	if (ret)
-> -		return ret;
-> +	if (len > AIROHA_NPU_MBOX_SIZE ||
-> +	    (reply && (reply_len < 0 || reply_len > len)))
-
-maybe you can have a dedicated if for this check
-
-	if (reply && reply_len > len)
-		reutrn -EINVAL;
-
-> +		return -EINVAL;
-> =20
-> -	spin_lock_bh(&npu->cores[core].lock);
-> +	/*
-> +	 * Mailbox payloads are bidirectional (CPU request, NPU response).
-> +	 * On EN7581+MT7996, streaming DMA_BIDIRECTIONAL against the
-> +	 * caller kzalloc() buffer can leave WLAN_FUNC_GET_WAIT_NPU_VERSION
-> +	 * reading as 0.0 despite MBOX success. Reuse a probe-time coherent
-> +	 * bounce buffer under the per-core lock (also used from PPE
-> +	 * foe_commit under atomic context).
-> +	 */
-> +	spin_lock_bh(&c->lock);
 > +
-> +	memcpy(c->buf, data, len);
-> =20
-> -	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(0) + offset, dma_addr);
-> -	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(1) + offset, size);
-> +	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(0) + offset, c->addr);
-> +	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(1) + offset, len);
->  	regmap_read(npu->regmap, REG_CR_MBQ0_CTRL(2) + offset, &val);
->  	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(2) + offset, val + 1);
->  	val =3D FIELD_PREP(MBOX_MSG_FUNC_ID, func_id) | MBOX_MSG_WAIT_RSP;
-> @@ -189,13 +204,21 @@ static int airoha_npu_send_msg(struct airoha_npu *n=
-pu, int func_id,
->  	if (!ret && FIELD_GET(MBOX_MSG_STATUS, val) !=3D NPU_MBOX_SUCCESS)
->  		ret =3D -EINVAL;
-> =20
-> -	spin_unlock_bh(&npu->cores[core].lock);
-> +	/* Copy the trailing reply_len bytes of the response. */
-> +	if (!ret && reply)
-> +		memcpy(reply, c->buf + len - reply_len, reply_len);
-> =20
-> -	dma_unmap_single(npu->dev, dma_addr, size, DMA_BIDIRECTIONAL);
-> +	spin_unlock_bh(&c->lock);
-> =20
->  	return ret;
->  }
-> =20
-> +static inline int airoha_npu_send_msg(struct airoha_npu *npu, int func_i=
-d,
-> +				      const void *data, int len)
+> +#include <linux/bitfield.h>
+> +#include <linux/module.h>
+> +#include <linux/nvmem-consumer.h>
+> +#include <linux/of.h>
+> +#include <linux/phy/phy.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/pm_runtime.h>
+> +#include <linux/slab.h>
+> +
+> +#include "phy-mtk-io.h"
+> +
+> +/* PHY System Interface (SIF) registers */
+> +#define PEXTP_DIG_GLB_TOP				0x20
+> +#  define RG_XTP_BYPASS_PIPE_RST_RC			BIT(17)
+> +#define PEXTP_DIG_GLB_CKBG0				0x30
+> +#  define RG_XTP_CKBG_XTAL_STABLE_TIME_SEL		GENMASK(25, 16)
+> +#define PEXTP_DIG_GLB_TPLL_CTL0				0x38
+> +#  define RG_XTP_TPLL_SET_STABLE_TIME_SEL		GENMASK(7, 2)
+> +#  define RG_XTP_TPLL_PWE_ON_STABLE_TIME_SEL		GENMASK(9, 8)
+> +#define PEXTP_DIG_GLB_CLKREQ_CTL			0x50
+> +#  define RG_XTP_CKM_EN_L1S0				BIT(13)
+> +#  define RG_XTP_CKM_EN_L1S1				BIT(14)
+> +#define PEXTP_DIG_GLB_TPLL_CTL2				0xf4
+> +#  define RG_XTP_TPLL_ISO_EN_STABLE_TIME_SEL		GENMASK(13, 12)
+> +
+> +/* PHY System Interface Digital registers */
+> +#define PEXTP_DIG_LN_TRX_PIPE_IF_17			0x30e8
+> +#  define RG_XTP_LN_RX_LF_CTLE_CSEL_GEN4		GENMASK(14, 12)
+> +#define PEXTP_DIG_LN_RX_F0				0x50f0
+> +#  define RG_XTP_LN_RX_GEN1_CTLE1_CSEL			GENMASK(3, 0)
+> +#  define RG_XTP_LN_RX_GEN2_CTLE1_CSEL			GENMASK(7, 4)
+> +#  define RG_XTP_LN_RX_GEN3_CTLE1_CSEL			GENMASK(11, 8)
+> +#  define RG_XTP_LN_RX_GEN4_CTLE1_CSEL			GENMASK(15, 12)
+> +#define PEXTP_DIG_LN_RX2_AEQ_EDGE_0			0x6004
+> +#  define RG_XTP_LN_RX_AEQ_EGEQ_RATIO_GEN3		GENMASK(21, 16)
+> +#  define RG_XTP_LN_RX_AEQ_EGEQ_RATIO_GEN4		GENMASK(29, 24)
+> +
+> +/* PHY System Interface Analog registers */
+> +#define PEXTP_ANA_GLB_TPLL1_RSVD			0x902c
+> +#  define RG_XTP_GLB_TPLL1_P_PATH_GAIN			GENMASK(2, 0)
+> +#define PEXTP_ANA_GLB_BIAS_0				0x9060
+> +#  define RG_XTP_GLB_BIAS_INTR_CTRL			GENMASK(5, 0)
+> +#define PEXTP_ANA_GLB_BIAS_1				0x90c0
+> +#  define RG_XTP_GLB_BIAS_V2V_VTRIM			GENMASK(9, 6)
+> +#define PEXTP_ANA_LN_TRX_0C				0xa00c
+> +#  define RG_XTP_LN_TX_RSWN_IMPSEL			GENMASK(20, 16)
+> +#define PEXTP_ANA_LN_TRX_34				0xa034
+> +#  define RG_XTP_LN_RX_FE				BIT(15)
+> +#define PEXTP_ANA_LN_TRX_6C				0xa06c
+> +#  define RG_XTP_LN_RX_AEQ_CTLE_ERR_TYPE		GENMASK(14, 13)
+> +#   define AEQ_CTLE_SEARCH_ERR_TYPE_H1P5		0
+> +#   define AEQ_CTLE_SEARCH_ERR_TYPE_H1P5_H2P5		1
+> +#   define AEQ_CTLE_SEARCH_ERR_TYPE_P1P5_H2P5_H3P5	2
+> +#define PEXTP_ANA_LN_TRX_A0				0xa0a0
+> +#  define RG_XTP_LN_TX_IMPSEL_PMOS			GENMASK(4, 0)
+> +#  define RG_XTP_LN_TX_IMPSEL_NMOS			GENMASK(11, 7)
+> +#  define RG_XTP_LN_RX_IMPSEL				GENMASK(15, 12)
+> +#define PEXTP_ANA_LN_TRX_A8				0xa0a8
+> +#  define RG_XTP_LN_RX_LEQ_RL_CTLE_CAL			GENMASK(6, 2)
+> +#  define RG_XTP_LN_RX_LEQ_RL_VGA_CAL			GENMASK(11, 7)
+> +#  define RG_XTP_LN_RX_LEQ_RL_DFE_CAL			GENMASK(23, 19)
+> +#define PEXTP_DIG_LN_TX_LC_TABLE_RSWN_4			0xb004
+> +#define PEXTP_DIG_LN_TX_LC_TABLE_RSWN_8			0xb008
+> +#define PEXTP_DIG_LN_TX_LC_TABLE_RSWN_C			0xb00c
+> +#define PEXTP_DIG_LN_TX_LC_TABLE_RSWN_10		0xb010
+> +#define PEXTP_DIG_LN_TX_LC_TABLE_RSWN_14		0xb014
+> +#define PEXTP_DIG_LN_TX_LC_TABLE_RSWN_18		0xb018
+> +#  define RG_XTP_LN_TX_LC_PRESET_MGx_Px_CM1		GENMASK(5, 0)
+> +#  define RG_XTP_LN_TX_LC_PRESET_MGx_Px_C0		GENMASK(13, 8)
+> +#  define RG_XTP_LN_TX_LC_PRESET_MGx_Px_CP1		GENMASK(21, 16)
+> +#define PEXTP_REG_LANE(x)				((x) * 0x100)
+> +
+> +/* PHY Clock Management (CKM) registers */
+> +#define XTP_CKM_FORCE_6					0x38
+> +#  define RG_CKM_BIAS_WAIT_PRD_US			GENMASK(21, 16)
+> +#define XTP_CKM_REG_SPLL_FBKDIV_5			0xd4
+> +#  define RG_CKM_CKTX_IMPSEL_PMOS			GENMASK(19, 16)
+> +#  define RG_CKM_CKTX_IMPSEL_NMOS			GENMASK(23, 20)
+> +#  define RG_CKM_CKTX_IMPSEL_SW				GENMASK(27, 24)
+> +
+> +/* Calibration data from eFuses */
+> +#define MTK_PCIE_SPHY_CALIBRATION_MAX_DATA_LANES	2
+> +#define MTK_PCIE_SPHY_CALIBRATION_LAST_QUIRK_VER	4
+> +
+> +/**
+> + * struct mtk_pcie_sphy_imp_sel - Impedance Selection parameters
+> + * @pmos: Impedance selection for P-Channel MOSFET
+> + * @nmos: Impedance selection for N-Channel MOSFET
+> + */
+> +struct mtk_pcie_sphy_imp_sel {
+> +	u8 pmos;
+> +	u8 nmos;
+> +};
+> +
+> +/**
+> + * struct mtk_pcie_sphy_efuse - eFuse calibration data for S-PHY
+> + * @int_r_ctrl:     Internal resistor selection of TX Bias Current
+> + * @xtp_vtrim:      XTP Bias V2V voltage calibration
+> + * @cktx_impsel:    SPLL CKTX Impedance Selection (P and N MOSFET)
+> + * @cktx_r_mid:     SPLL CKTX Intermediate Transition Impedance (Rmid)
+> + * @rx_leq_rl_ctle: RX Front-End Return Loss Continuous Time Linear Equalization value
+> + * @rx_leq_rl_vga:  RX Front-End Return Loss Variable Gain Amplifier value
+> + * @rx_leq_rl_dfe:  RX Front-End Return Loss Decision Feedback Equalization value
+> + * @rx_impsel:      RX Impedance Selection
+> + * @tx_impsel:      TX Impedance Selection (P and N MOSFET)
+> + * @tx_rswn_impsel: TX RSWn (Switch Resistance) impedance selection
+> + * @supported:      eFuse calibration data is supported
+> + */
+> +struct mtk_pcie_sphy_efuse {
+> +	u8 int_r_ctrl;
+> +	u8 xtp_vtrim;
+> +	struct mtk_pcie_sphy_imp_sel cktx_impsel;
+> +	u8 cktx_r_mid;
+> +	u8 rx_leq_rl_ctle;
+> +	u8 rx_leq_rl_vga;
+> +	u8 rx_leq_rl_dfe;
+> +	u8 rx_impsel;
+> +	struct mtk_pcie_sphy_imp_sel tx_impsel;
+> +	u8 tx_rswn_impsel[MTK_PCIE_SPHY_CALIBRATION_MAX_DATA_LANES];
+
+Nit: Unless really required, move the u8 members after all structs to avoid
+holes.
+
+> +	bool supported;
+> +};
+> +
+
+[...]
+
+> +static int mtk_pcie_sphy_get_calibration_data(struct mtk_pcie_sphy *pcie_sphy)
 > +{
-
-if you put in .c file please drop the inline.
-
-> +	return __airoha_npu_send_msg(npu, func_id, data, len, NULL, 0);
-> +}
+> +	struct mtk_pcie_sphy_efuse *cal = &pcie_sphy->calibration;
+> +	struct device *dev = pcie_sphy->dev;
+> +	u8 version;
+> +	int ret;
 > +
->  static int airoha_npu_load_firmware(struct device *dev, void __iomem *ad=
-dr,
->  				    const char *fw_name, int fw_max_size)
->  {
-> @@ -442,8 +465,9 @@ static int airoha_npu_ppe_stats_setup(struct airoha_n=
-pu *npu,
->  	ppe_data->func_id =3D PPE_FUNC_SET_WAIT_FLOW_STATS_SETUP;
->  	ppe_data->stats_info.foe_stats_addr =3D foe_stats_addr;
-> =20
-> -	err =3D airoha_npu_send_msg(npu, NPU_FUNC_PPE, ppe_data,
-> -				  sizeof(*ppe_data));
-> +	err =3D __airoha_npu_send_msg(npu, NPU_FUNC_PPE, ppe_data,
-> +				    sizeof(*ppe_data), ppe_data,
-> +				    sizeof(*ppe_data));
-
-why not using airoha_npu_send_msg() here?
-
-Regards,
-Lorenzo
-
->  	if (err)
->  		goto out;
-> =20
-> @@ -497,9 +521,8 @@ static int airoha_npu_wlan_msg_get(struct airoha_npu =
-*npu, int ifindex,
->  	wlan_data->func_type =3D NPU_OP_GET;
->  	wlan_data->func_id =3D func_id;
-> =20
-> -	err =3D airoha_npu_send_msg(npu, NPU_FUNC_WIFI, wlan_data, len);
-> -	if (!err)
-> -		memcpy(data, wlan_data->d, data_len);
-> +	err =3D __airoha_npu_send_msg(npu, NPU_FUNC_WIFI, wlan_data, len,
-> +				    data, data_len);
->  	kfree(wlan_data);
-> =20
->  	return err;
-> @@ -770,6 +793,15 @@ static int airoha_npu_probe(struct platform_device *=
-pdev)
->  	if (err)
->  		return err;
-> =20
-> +	for (i =3D 0; i < ARRAY_SIZE(npu->cores); i++) {
-> +		struct airoha_npu_core *core =3D &npu->cores[i];
-> +
-> +		core->buf =3D dmam_alloc_coherent(dev, AIROHA_NPU_MBOX_SIZE,
-> +						&core->addr, GFP_KERNEL);
-> +		if (!core->buf)
-> +			return -ENOMEM;
+> +	if (pcie_sphy->num_lanes > MTK_PCIE_SPHY_CALIBRATION_MAX_DATA_LANES) {
+> +		dev_info(dev, "Skipping PHY calibration for more than %u lanes.\n",
+> +			 MTK_PCIE_SPHY_CALIBRATION_MAX_DATA_LANES);
+> +		ret = -EOPNOTSUPP;
+> +		goto end;
 > +	}
 > +
->  	err =3D airoha_npu_run_firmware(dev, base, &res);
->  	if (err)
->  		return dev_err_probe(dev, err, "failed to run npu firmware\n");
-> diff --git a/include/linux/soc/airoha/airoha_offload.h b/include/linux/so=
-c/airoha/airoha_offload.h
-> index 7589fccfeef6..16a988ad7467 100644
-> --- a/include/linux/soc/airoha/airoha_offload.h
-> +++ b/include/linux/soc/airoha/airoha_offload.h
-> @@ -173,6 +173,9 @@ struct airoha_npu {
->  		/* protect concurrent npu memory accesses */
->  		spinlock_t lock;
->  		struct work_struct wdt_work;
-> +		/* Coherent bounce buffer for mailbox cmd/rsp */
-> +		void *buf;
-> +		dma_addr_t addr;
->  	} cores[NPU_NUM_CORES];
-> =20
->  	int irqs[NPU_NUM_IRQ];
-> --=20
-> 2.55.0
->=20
+> +	ret = mtk_pcie_sphy_get_one_cal_para(dev, "int-r",
+> +					     FIELD_MAX(RG_XTP_GLB_BIAS_INTR_CTRL));
+> +	if (ret < 0)
+> +		goto end;
+> +	cal->int_r_ctrl = ret;
+> +
+> +	ret = mtk_pcie_sphy_get_one_cal_para(dev, "xtp-vtrim",
+> +					     FIELD_MAX(RG_XTP_GLB_BIAS_V2V_VTRIM));
+> +	if (ret < 0)
+> +		goto end;
+> +	cal->xtp_vtrim = ret;
+> +
+> +	ret = mtk_pcie_sphy_get_one_cal_para(dev, "cktx-pmos",
+> +					     FIELD_MAX(RG_CKM_CKTX_IMPSEL_PMOS));
+> +	if (ret < 0)
+> +		goto end;
+> +	cal->cktx_impsel.pmos = ret;
+> +
+> +	ret = mtk_pcie_sphy_get_one_cal_para(dev, "cktx-nmos",
+> +					     FIELD_MAX(RG_CKM_CKTX_IMPSEL_NMOS));
+> +	if (ret < 0)
+> +		goto end;
+> +	cal->cktx_impsel.nmos = ret;
+> +
+> +	ret = mtk_pcie_sphy_get_one_cal_para(dev, "cktx-r-mid",
+> +					     FIELD_MAX(RG_CKM_CKTX_IMPSEL_SW));
+> +	if (ret < 0)
+> +		goto end;
+> +	cal->cktx_r_mid = ret;
+> +
+> +	ret = mtk_pcie_sphy_get_one_cal_para(dev, "rxfe-lanes-rl-ctle",
+> +					     FIELD_MAX(RG_XTP_LN_RX_LEQ_RL_CTLE_CAL));
+> +	if (ret < 0)
+> +		goto end;
+> +	cal->rx_leq_rl_ctle = ret;
+> +
+> +	ret = mtk_pcie_sphy_get_one_cal_para(dev, "rxfe-lanes-rl-vga",
+> +					     FIELD_MAX(RG_XTP_LN_RX_LEQ_RL_VGA_CAL));
+> +	if (ret < 0)
+> +		goto end;
+> +	cal->rx_leq_rl_vga = ret;
+> +
+> +	ret = mtk_pcie_sphy_get_one_cal_para(dev, "rxfe-lanes-rl-dfe",
+> +					     FIELD_MAX(RG_XTP_LN_RX_LEQ_RL_DFE_CAL));
+> +	if (ret < 0)
+> +		goto end;
+> +	cal->rx_leq_rl_dfe = ret;
+> +
+> +	ret = mtk_pcie_sphy_get_one_cal_para(dev, "rx-lanes-imp",
+> +					     FIELD_MAX(RG_XTP_LN_RX_IMPSEL));
+> +	if (ret < 0)
+> +		goto end;
+> +	cal->rx_impsel = ret;
+> +
+> +	ret = mtk_pcie_sphy_get_one_cal_para(dev, "tx-lanes-pmos",
+> +					     FIELD_MAX(RG_XTP_LN_TX_IMPSEL_PMOS));
+> +	if (ret < 0)
+> +		goto end;
+> +	cal->tx_impsel.pmos = ret;
+> +
+> +	ret = mtk_pcie_sphy_get_one_cal_para(dev, "tx-lanes-nmos",
+> +					     FIELD_MAX(RG_XTP_LN_TX_IMPSEL_NMOS));
+> +	if (ret < 0)
+> +		goto end;
+> +	cal->tx_impsel.nmos = ret;
+> +
+> +	ret = mtk_pcie_sphy_get_one_cal_para(dev, "tx-ln0-rswn",
+> +					     FIELD_MAX(RG_XTP_LN_TX_RSWN_IMPSEL));
+> +	if (ret < 0)
+> +		goto end;
+> +	cal->tx_rswn_impsel[0] = ret;
+> +
+> +	if (pcie_sphy->num_lanes == 2) {
+> +		ret = mtk_pcie_sphy_get_one_cal_para(dev, "tx-ln1-rswn",
+> +						     FIELD_MAX(RG_XTP_LN_TX_RSWN_IMPSEL));
+> +		if (ret < 0)
+> +			goto end;
+> +		cal->tx_rswn_impsel[1] = ret;
+> +	}
+> +
+> +	ret = mtk_pcie_sphy_get_one_cal_para(dev, "cal-version", 15);
+> +	if (ret < 0)
+> +		goto end;
+> +	version = ret;
+> +
+> +	/* Quirk for eFuse calibration table versions 0 to 4 */
+> +	if ((version <= MTK_PCIE_SPHY_CALIBRATION_LAST_QUIRK_VER) &&
+> +	    cal->rx_leq_rl_ctle == 10) {
+> +		cal->rx_leq_rl_vga = cal->rx_leq_rl_ctle;
+> +		cal->rx_leq_rl_dfe = cal->rx_leq_rl_ctle;
+> +	}
+> +
+> +end:
+> +	if (ret < 0) {
+> +		/*
+> +		 * If any of the calibration values is missing, or if there is
+> +		 * no calibration at all in the eFuses, this is not a problem,
+> +		 * as the PHY doesn't require one to actually work.
+> +		 */
+> +		if (ret == -ENOENT || ret == -EOPNOTSUPP) {
+> +			cal->supported = false;
+> +			return 0;
 
---WZcbrwvPngP5YrRS
-Content-Type: application/pgp-signature; name=signature.asc
+If any of the above calibration values are missing, you are returning success
+here instead of trying next calibration. Is it because if one is missing, all
+others will also be missing? I don't think this assumption is correct.
 
------BEGIN PGP SIGNATURE-----
+> +		}
+> +		return ret;
+> +	};
+> +	cal->supported = true;
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_pcie_sphy_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct phy_provider *provider;
+> +	struct mtk_pcie_sphy *pcie_sphy;
+> +	u32 num_lanes;
+> +	int ret;
+> +
+> +	pcie_sphy = devm_kzalloc(dev, sizeof(*pcie_sphy), GFP_KERNEL);
+> +	if (!pcie_sphy)
+> +		return -ENOMEM;
+> +
+> +	pcie_sphy->sif_base = devm_platform_ioremap_resource_byname(pdev, "sif");
+> +	if (IS_ERR(pcie_sphy->sif_base))
+> +		return dev_err_probe(dev, PTR_ERR(pcie_sphy->sif_base),
+> +				     "Failed to map phy-sif base\n");
+> +
+> +	pcie_sphy->ckm_base = devm_platform_ioremap_resource_byname(pdev, "ckm");
+> +	if (IS_ERR(pcie_sphy->ckm_base))
+> +		return dev_err_probe(dev, PTR_ERR(pcie_sphy->ckm_base),
+> +				     "Failed to map phy-ckm base\n");
+> +
+> +	pcie_sphy->phy = devm_phy_create(dev, dev->of_node, &mtk_pcie_sphy_ops);
+> +	if (IS_ERR(pcie_sphy->phy))
+> +		return dev_err_probe(dev, PTR_ERR(pcie_sphy->phy),
+> +				     "Failed to create PCIe phy\n");
+> +
+> +	ret = of_property_read_u32(dev->of_node, "num-lanes", &num_lanes);
+> +	if (ret)
+> +		num_lanes = 1;
+> +	else if (num_lanes > 4)
+> +		return dev_err_probe(dev, -EINVAL, "Invalid number of lanes.\n");
+> +
+> +	pcie_sphy->num_lanes = num_lanes;
+> +	pcie_sphy->dev = dev;
+> +
+> +	ret = mtk_pcie_sphy_get_calibration_data(pcie_sphy);
+> +	if (ret)
+> +		return ret;
+> +
+> +	phy_set_drvdata(pcie_sphy->phy, pcie_sphy);
+> +
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCanWmFwAKCRA6cBh0uS2t
-rCrkAP9Gw4KU6cTCczB4RER9jrHGuEfMkiF0nhbpGGqA0MdPIAD/f88pv8Q2mc+6
-TPT97YWkH/jbYGN6PM1gFTdB6aMhQwU=
-=QdxD
------END PGP SIGNATURE-----
+Add pm_runtime_no_callbacks()
 
---WZcbrwvPngP5YrRS--
+> +	ret = devm_pm_runtime_enable(dev);
+
+Is the PHY already ON at this point? I don't see power_on() callback in this
+driver, so it should be ON? If so, you should do
+devm_pm_runtime_set_active_enabled() instead.
+
+- Mani
+
+-- 
+மணிவண்ணன் சதாசிவம்
 
