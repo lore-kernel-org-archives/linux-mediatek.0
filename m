@@ -4,76 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48503C5AD4E
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Aug 2026 20:43:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A900C5AD55
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Aug 2026 20:56:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8CwAOv7AuOU3VUGki+Bi2QHHT2yAfq3OZkA/qLdvJjM=; b=F47D4EKrLVOX8eiS0cPDJSwhf4
-	1EcJBgHqIfdoyDucyR4JXBgGLw2p+DwS+b5bbGg0V8apFX0sVLCcVmxWSPbtSlm3eRdD7zEroJI+B
-	w/pnWenh+drKVzt3Pg9uuF6Pm2fYbAGV37EogeeLL+meidZem9nJFK2M5HbFXkjaIHuUHvw+kiea7
-	NvGIu50i8EJvHv17lfA18nm0RUQ7522imJIwP8kAofrGNcWp0i+j6zuYthtDmgQW3Puj0F86j9J7y
-	pFd1IKkGG60X4+7piBex2F9ULN2403SAbGHEnewF+nzmIbAJlNay4J9HE312/LzmwxZm7EO1AQlRK
-	Jahp8x/w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7ifGUktyTBRpD2vqspRbC+RDO6MA0r+jWv/wAEOzB8s=; b=HDEZrleEBuvge2vYSy1/oymhHk
+	LzfLTK8ofeJaZP46p7GgSz9VpxvScYgaNK6crejoyDJxfAm3EjZcU/+KcfxjvCsKOFcwYhWXWOxRS
+	LZsR17yV+BfAP9kLblsUmNJdtygAvQlXMwigqp7xGWWYKJk/sfx/hqQqGTSCYIlSgAM+2EgAFZEOy
+	Bw2KtlSc7e9ZYFYR3XquaUWUKD8KhObQJPWpRvEwiw9x5/JiE1/u/iJnecvnhsyGHknPvYCHFsQqB
+	oPxMaVcAzgA7ZJ76So/GtFPC6pAaEX5j1tFDN/NLYFABsFzuLlTDaF++s7XdfRZwrrl4T6I0Tsf8r
+	huLkzT9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtAN6-0000000Ahsm-03Z9;
-	Sun, 09 Aug 2026 20:43:52 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1wtAZI-0000000AiEy-3yQa;
+	Sun, 09 Aug 2026 20:56:28 +0000
+Received: from mta1.migadu.com ([37.59.57.117] helo=out-181.mta1.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtAN2-0000000AhsD-3UY0;
-	Sun, 09 Aug 2026 20:43:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=8CwAOv7AuOU3VUGki+Bi2QHHT2yAfq3OZkA/qLdvJjM=; b=UIgSVgZnmz+5WlFSwJJZKiT824
-	DTiu0zX3/mLBpv7/M4Fkbq45gPPjyiHRXTm8asKXEmk7uxC7vQm/8rhOCKd40QleKyr5XUiHF5buE
-	wQHcnC6j6UjP7/D6iGx6E6NoQJvPr9lQ3QLMxVVuwslBI+UX7/YKdezQ5cihWe6CLaH0=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1wtAMh-00Gqw3-H1; Sun, 09 Aug 2026 22:43:27 +0200
-Date: Sun, 9 Aug 2026 22:43:27 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Shuah Khan <skhan@linuxfoundation.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Nick Desaulniers <ndesaulniers@google.com>,
-	Bill Wendling <morbo@google.com>,
-	Justin Stitt <justinstitt@google.com>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
-Subject: Re: [PATCH net-next v11 00/12] net: pcs: Introduce support for
- fwnode PCS
-Message-ID: <f9151481-7dcf-4c9e-9507-7eb0c217851d@lunn.ch>
-References: <20260807131301.192060-1-ansuelsmth@gmail.com>
- <4c595c15-17d9-4c23-bb44-344c48d36e9a@lunn.ch>
- <6a78bdc6.89544747.3fcae.b8e0@mx.google.com>
+	id 1wtAZG-0000000AiEb-3R2S
+	for linux-mediatek@lists.infradead.org;
+	Sun, 09 Aug 2026 20:56:28 +0000
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=justthetip.ca;
+	s=key1; t=1786308981;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=7ifGUktyTBRpD2vqspRbC+RDO6MA0r+jWv/wAEOzB8s=;
+	b=pza10K9FqR59KucqwDxUWfOX7soPRO16abnN9R+Iob+HMko/P8pZrpJyf3EQVB7KruBdQX
+	ovvhAlzmuEnJ73AZUgihsdf5RPT+kcMAJKlhZZuiGFpjUux/XP5BCUXUzePZQRyZfWb7Js
+	YaWkucVRoo5BhGz3ilIaYBYQFuxtVdv0HAvoDHCUFiQyA/Ae0OXbYr4bBbq37DJi/OWqdQ
+	QdpoGBCFHb/cSKVzZK+BA7OC5UZDQMKsNGYRjt6FmazfXI0vk4id6hpU/2m9FnLNI6aFvu
+	RmPcxh4B/4K5ilpUUtXtG27GSKf+a5vkeyJmKDrD1OjJaTaqukus0YR3XwLpjQ==
+From: Devin Wittmayer <lucid_duck@justthetip.ca>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH wireless] wifi: mt76: mt7925: check drv_pmctrl return in the PCIe reset path
+Date: Sun,  9 Aug 2026 13:55:59 -0700
+Message-ID: <20260809205559.32116-1-lucid_duck@justthetip.ca>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <6a78bdc6.89544747.3fcae.b8e0@mx.google.com>
+Content-Transfer-Encoding: 8bit
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260809_134348_894563_6A7E8F6C 
-X-CRM114-Status: GOOD (  16.48  )
+X-CRM114-CacheID: sfid-20260809_135627_278287_7408BBB7 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,44 +71,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> I think the most annoying one will be stmmac with the 3 different PCS
-> implementation but we already handled that in a upcoming ipq50xx driver
-> currently present in OpenWrt mainline.
+mt7925e_mac_reset() ignores what mt792xe_mcu_drv_pmctrl() returns. It
+checks both pmctrl calls it makes later in the same function, and probe,
+suspend and resume check theirs. mt7925e_unregister_device() also discards
+it, but there the device is going away and teardown has to continue
+regardless.
 
-stmmac is always annoying :-(
+When the driver-own handshake does not complete, __mt792xe_mcu_drv_pmctrl()
+gives up after MT792x_DRV_OWN_RETRY_COUNT and returns -EIO without
+reinitialising WPDMA or clearing MT76_STATE_PM. The reset continues anyway,
+writing interrupt enable registers, cycling NAPI, resetting WPDMA and
+calling mt7925_run_firmware() on a chip the driver does not own.
 
-If this can make it more uniform, make internal and external PCS look
-the same, that would be great.
+On an MT7925 with MT_CONN_ON_LPCTL held asserted, a triggered reset failed
+the handshake 4 times. Each failure was followed within 85 ms by both
+firmware stages loading:
 
+  mt7925e 0000:0a:00.0: driver own failed
+  mt7925e 0000:0a:00.0: HW/SW Version: 0x8a108a10, Build Time: [...]
+  mt7925e 0000:0a:00.0: WM Firmware Version: ____000000, Build Time: [...]
 
-> @@ -6808,7 +6792,10 @@ static void mvpp2_acpi_start(struct mvpp2_port *port)
->         };
->         struct phylink_pcs *pcs;
-> 
-> -       pcs = mvpp2_select_pcs(&port->phylink_config, port->phy_interface);
-> +       if (mvpp2_is_xlg(port->phy_interface))
-> +               pcs = &port->pcs_xlg;
-> +       else
-> +               pcs = &port->pcs_gmac;
+With the return checked, 8 handshake failures were followed by no firmware
+load. The one load in that run came after a handshake that succeeded.
 
-I thought the point of new API was that phylink picked the PCS. Why
-this if? Why not register both and let phylink pick?
+Return the error instead. The call is the first statement in the function,
+before MT76_RESET is set and before the TX worker and NAPI are disabled, so
+bailing out there leaves them untouched. This does not fix why the
+handshake fails.
 
-> +static int mvpp2_port_fill_pcs(struct phylink_config *config,
-> +                              struct phylink_pcs **available_pcs,
-> +                              unsigned int num_possible_pcs)
-> +{
-> +       struct mvpp2_port *port = mvpp2_phylink_to_port(config);
-> +
-> +       available_pcs[0] = &port->pcs_gmac;
-> +
-> +       if (mvpp2_port_supports_xlg(port)) {
-> +               if (num_possible_pcs < 2)
-> +                       return -EINVAL;
+Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
+Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+---
+ drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-This seems like defensive programming. If we said there was two, we
-should assume available_pcs has room for two. I would not even pass
-int num_possible_pcs as a parameter.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c
+index 97683949a305..2ce9ad0350ef 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c
+@@ -73,7 +73,9 @@ int mt7925e_mac_reset(struct mt792x_dev *dev)
+ 	const struct mt792x_irq_map *irq_map = dev->irq_map;
+ 	int i, err;
+ 
+-	mt792xe_mcu_drv_pmctrl(dev);
++	err = mt792xe_mcu_drv_pmctrl(dev);
++	if (err)
++		return err;
+ 
+ 	mt76_connac_free_pending_tx_skbs(&dev->pm, NULL);
+ 
+-- 
+2.55.0
 
-    Andrew
 
