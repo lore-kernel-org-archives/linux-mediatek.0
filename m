@@ -4,111 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E57DBC5AD5A
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Aug 2026 18:56:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D58CCC5AD4E
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Aug 2026 19:02:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fKfWVbm9KpeTwL3/mVwrfju84PrObkxu9nWfkWUyNGM=; b=Znv2h5ipWsXcYFAuXmN3bkQnfq
-	yEwGOxFOmn0wzzIGkvs0ZsyFdbRq98BdK6t+ovH+DLXTWAGVdfSyPCbeWYOulSrxmnD56nZYww6IA
-	D0gnY8nFB+kdpN9sLXmTlC3xYLCFkgX7KutxSMNA/Hp6SRuXeOex3J5RjzdaJrnlCxNmMHmTZ/76U
-	fbHK+CN+cpR6QDIwW9OTur/GjgTFrPoArqkMp9AFK/aDbeK4MYqC7fO5BON4FeRLDbkxi9BfTgkyv
-	jurWzfi3Os28XJcNNF6/5u3fk5Q2bMLvwmXAaZCJrFgCzj5EL5low6u0E2Wi+4+9rbyT+tXAsX19R
-	JoY6+SzQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:MIME-Version:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kK/baEY+iyHIx6N7/Yc/rss5G3sNOiQswNXX/D/jPWM=; b=tTrXD+OOYL9AAmSh4wx6OrMaQ5
+	BxS6I+Nj9/JPRbT4KzIkPsSn3UPI+Sy9icwda+AOmSgTr+C/sTx6DpiejWNHtf/xxgjE1Z56Np3/b
+	fcBxDXzMYzvViBfTffgUGokSAsdYa5cNI2NodjdO7PpIW5y74/hWhosRtg7TZodMb1KR0RCi2uRxa
+	UMaUpUQTBpOPUFN3S8OFDPA5SqPgKFz0NovSd+/6wzRiiXAnSeH5PlAX3nwlDk8O4VyLUWxyVyeZf
+	e1EM+KwalEfEbV9JK00hO4DmuOHN2Dcb74oYu6Rm9j5uRnL6vxxvhjR1sm2KC4zYVaX4BWXVEK20C
+	AWoSWlHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wt8go-0000000AazF-2iWz;
-	Sun, 09 Aug 2026 18:56:06 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1wt8nN-0000000AbSd-16lL;
+	Sun, 09 Aug 2026 19:02:53 +0000
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wt8gm-0000000AayX-2YF6
+	id 1wt8nK-0000000AbRs-22Ou
 	for linux-mediatek@lists.infradead.org;
-	Sun, 09 Aug 2026 18:56:05 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-c20755e8295so217142866b.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 09 Aug 2026 11:56:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1786301762; cv=none;
+	Sun, 09 Aug 2026 19:02:52 +0000
+Received: by mail-lf1-x129.google.com with SMTP id 2adb3069b0e04-5aeb24c0807so837498e87.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 09 Aug 2026 12:02:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1786302166; cv=none;
         d=google.com; s=arc-20260327;
-        b=We276Dd87+f2f32j8OEkCyR7eYRJH3Tp3cs9vbeYG9WPtB6gNpya6rUtGGpNKqrCtd
-         34Px+Acq6zh/Ug3JQi59dOisydQeNYTjJcp8RZjQshGRcrN480VpnvPhPseZtD4NWU5W
-         jodwXl8TTEoGdc2h52Fk2sVFDVWiShJIBu5HGi5E/OnipZ+AUT11vqVH4BDoIwBdsZ6z
-         dA2NRDZU+Q8skon/vKjzNMsbbJ6lc1H1/zwxgFzqkqn2RDK5QaHHvqAH9EPr972aPF7u
-         m2Adc363k37mUvs1788QslXmvgVo8CjW5MvVpaNfKuxs4mxlqCNa51OYV/O1vcF2kcHN
-         hGZw==
+        b=AOtRFyCRW5RvV5u0a+3l8A+BcLNKG7Z+t2oLZkWO34Wvcsp068eGlGu9TNhgmwPtKY
+         1yAj4rRnXcLxbDNWgJtaX5A1oZRcLE59CDJiCoMrEGudoFPlQMjHtfiVShLcpG17/sR2
+         3VFs3ktE8ThKYeeVnQKagYQJmHXVtN2WSoNh9lxu2GDkTRLxdx7PUkesn6s5T2p0Q4Ng
+         mDr0tg5x8CfAuk4ubnWxlCahD4ygHRjVB70uLb3/6tP5XWf72o9TXazfBRiY0IMkJPpO
+         xpGYl0xlJ0uxCaN59i/FU5MQ19wh+0TfjsUlnjkSfmD2TTZ6R0//wYHjEd5viK9Z5mQy
+         ZQLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :mime-version:dkim-signature;
-        bh=fKfWVbm9KpeTwL3/mVwrfju84PrObkxu9nWfkWUyNGM=;
-        fh=+O0ctHGjiTyc6s3JvCmsWEEWz6GTDxlkLtSPYZEaZWw=;
-        b=CBappYOv30ZaB2AdxzfMmyCaVBxAVzPHibPHnEzFk52Sic/Khb2GpoB8I6gd4KSrfG
-         vKpxCMOC7qEuWkSP9gXfc99v5OvjyA6ZupVODT7ffcwD4j+iOtL97ZE98tziCV1SqIEm
-         9tMvhGlDhziwOAtvlBXhsd/yK/DrZuhA5DyKzF8kw9ADKFfkxnGQT11wQfcqYZp61PNl
-         4Wtancdi/4ydWjq/NYGO9rVu2jBNALylIVai1OfRz+XUFQPsbi46jrFqcb24jJVOgmkq
-         k+VZr81cEI0MNE2tEkp8CZtQJzaHM7WRMKNzT5vVBGSSCg80zpZnUyFmIooHtRnUj4xa
-         j9kQ==;
+        bh=kK/baEY+iyHIx6N7/Yc/rss5G3sNOiQswNXX/D/jPWM=;
+        fh=wcqEt7zPcua2Bq9P/4Ly3atgsuA5Q5iQd6iQsVu78Kk=;
+        b=VutxiSkupxa9p5nN6ELU2GafRNKsMtIY3m59Eb+mrHU+t668HEPo72vPNiy1vTo1nR
+         HWJHURNAEDRKc0SYQybVGJptRBHcWXNJr+LwXk/wmUHgoehVWce70ASsUwsb/Yn/dEAY
+         S36KZl1WAta4oJ9k7X8lnoL5pNU+IJQsnQNk/Ga9UP5bXvxaa+iJGucKa0t1yUGqqEmh
+         YcJLS92H2lYx0njjbCLzbfPhxAo9CQQKuCrHQJpI3l1YOOuRFj0hhyANt2ZhNIQGmu8H
+         hM3s07U5NDVnIRJXLdxsdgmFFcyAuYTM6+mBuho7mHGOuiYAnd6Egd8jXugnQqgBFYG0
+         QX7g==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786301762; x=1786906562; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+        d=gmail.com; s=20251104; t=1786302166; x=1786906966; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:mime-version:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=fKfWVbm9KpeTwL3/mVwrfju84PrObkxu9nWfkWUyNGM=;
-        b=nIv2hoVtQRBv1NLX9uE0lcT2z/6+toMkHsotDN1ktaDwus7XIVMsgNpI7YCeR2hMGm
-         WlT6PlECDtyq/Jc2uFE7GNdPFs7uNHT1JI+adWwzdybgNDVtgQ2GAzvgzfUr4cHPoCtI
-         Iqzk+TbULXACJP6nwIJuOZiwLz7c/Ei5jXSUrBnQ/s1feeUYMkvOnDtJc3M/oxmBUAO9
-         xcxnl+5buKryHj2ZNbR8Yg24x6FRu08xE10moNRI0m9OnooZcViirVQhFkPfNLMm2Ksl
-         u0vCOVBwCT8/bbfOOM/28y6uGg4E6vunUX3FIiaNcaqgRgR/lN/3qA/nCNnFUvubKS3R
-         FrTA==
+        bh=kK/baEY+iyHIx6N7/Yc/rss5G3sNOiQswNXX/D/jPWM=;
+        b=Sp4rFA51rM0L0+KPfUNAH794ahrVCPdfbmSzuRdXo18sn5B6t6JJ3qXtN0usfyLYjV
+         JlE4aiPaItppAeGWaGG4BDwxlI+tdXtUDfeuXdL1XGnh8Iqh3SdFZE8rOMlzKfZktK2N
+         UModt01/fum4iLeMXlkkjKwrfr+gS45xjai7R3VDHuSaa7gra0nHYxBb48QLQ/loOJcd
+         74pDw2ZDxu3Y7KtFiYHPIbt0alPaMz6bUqHeCsLsuyRDCqkCuiqrE2CMRPyOnqr8l0JQ
+         Xl2AhBD9YIZ7RpHpSt6PA+1w8RtR6eDPpLxVxET3W23J0O0imEcyI7+XK1KrsFtsShfG
+         gxGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786301762; x=1786906562;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20251104; t=1786302166; x=1786906966;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to:content-type;
-        bh=fKfWVbm9KpeTwL3/mVwrfju84PrObkxu9nWfkWUyNGM=;
-        b=qnqPaLC+8rkNv23Nh4bW67cg6XUKQ2gslrP1SB1nw0wt3iNDXy+5X4MVbAwiDVQjnK
-         CD5EomzW/aoa4AqUI7MMwhcjKdPFStGkkhOufxN3KRX6HMmjjTgpI64SSTvm/pEQliix
-         Divs2i4WDwsYhM4IoCo/Wed9/C79ypoqrdRC7oYg32tiABS5x3d4sDWuuONa88uNGDZe
-         PWXEXgNLalVHRatek/cHzkBvgSA/z6WTh5mR2xHSbxxecmNogfZcUM3BL1VlLR/tP1jj
-         2hMMqO3wOvSlK+oT1KqmXYlXESsXN9fSKAxbo7jcFaJtHWEJ/fKkzKSxeQZGuBuPzAZT
-         PnRQ==
-X-Forwarded-Encrypted: i=1; AHgh+RoI0jfJ1e+hKyTF5LX7qh01IeBlZ8/Jxm8f3HQ9uownpR833Zxr/GhI1loC0K6u/7vO4ymSBfBkoAERl4QFpg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzGL6ffNr6bBj0pXUzx4khtQG2H3bF9Jciq4rl/Lxr31J52W7HQ
-	Vi8gG1Tn25uDeKxc5lXIXPpG1g68EgBCxWkZrrZHsbiXw/oC/vSwUCi0hXEiu5QkAPyOOCcoksR
-	R2IiL94dpi00y6ZqrFM9D50o6kGo3gQM=
-X-Gm-Gg: AR+sD11ba7MdPAebrc4qqL1pbHs7kGY/3Lod3UUBmiY5MWBD0XE8S9Ymx/mpa6BAfVL
-	q4JeW9GW8b/cwARo8rY4uoG3Y2Miw9QaQcQeo+Jmj2q3YSWGTTe5tIJLxieE5ogeFh+vplnPd+6
-	AofLm82SBizrTzW20xWq1axSFtVcgfexEfZ5xYhMEhyn/bSPQtmURqJxi+pEj7r5FlgTNvK9vm2
-	w/4YQWS0Zwc10V2OdAALdV9PN0RPTdnadztNHPU10iyyqu8uRW9BV9tw0davuYJFKT5O7kkIxr/
-	XGJmrNBUThQ9+najO1jTbn45KcdsyZeq+j9u8A1rSwnDraJd55DmRlcE59UsPxFXZNrM2j8L/0k
-	9f3vhRGMIRQ==
-X-Received: by 2002:a17:907:962a:b0:c12:b58c:fd7a with SMTP id
- a640c23a62f3a-c208d4b5c1bmr643267266b.9.1786301762159; Sun, 09 Aug 2026
- 11:56:02 -0700 (PDT)
+        bh=kK/baEY+iyHIx6N7/Yc/rss5G3sNOiQswNXX/D/jPWM=;
+        b=qDVDdxD7rZA0dfLAEjCZXtczIOrjgeEcqAEdbsWfMJtmG9Jq59FAW5dq+5+yd/ZhRL
+         varGYVMWUylB61I7UWSKWEVpM0kpYzkJh6vfi2Hf9OkvzaSes9ki4SqXmTI0DbGydBXe
+         1UuRdxCjt+/tUmC1Zj6ACUtTRiNvQ1Vtl7DrcRJITfH3BUog9NI6AKzWiBml39nxuMaM
+         gnJJU+0wi5xnrPCmrl6UDbTOtcBakcDAWpTB1e66IQ2P/23hv2eN4mJbFLgvNZ8Lx8QR
+         /czxPCVTArhpHrlIyf0IsoHh4Lh2QaUcYlIaM8LGNQCrO317CcFJHjlZS+t9LWUwongs
+         yOFw==
+X-Forwarded-Encrypted: i=1; AHgh+RomT67B8qr2sy1dcOwFJ6tCHqduyar3stjEAPRthJBnT68vSF3Rurp9CBedg3u0JyJNqPKnTMIVOdamr4jrLw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzH577dDsOYmI/tFyRoJmtvdOivrKrwLkxxofO8T/DK7k1njeun
+	RPwyfxJq/V7hPXAbHDtOlWhwqmxbFVoeqDy2mwyYTiRU7tvnpvGA4TRUGb8rb+pXXpFLYv3rmrS
+	1i+kHtbRPi8+tLXC4xEU839VfUjzjzCQ=
+X-Gm-Gg: AR+sD11XIfUzN7/aIK59i4aiE3tqGnfSVqFZedvisT36kf+NgMKoOFzg6w2lFrWxKyg
+	vZ07PJY3nBcVKn2eCzxXf0+SZ1l7keXuxe68ecKOyf7GvFtkpRyelHD87ObTEMr8wFuZTZx7tas
+	i3DRjE4KUZCZPOTQeuvYzD87CTBD17xRUGGAEW0R/aXHE2y9HkU45MxFTPa0bL7ygUN76FoCrgn
+	Iy+7AMgfWVWLqN5JqbrpRJZHx9+DP2/B6IB8ffCsa1AGmbtG01udeMUOPnaTBPzH5nv0Gl2rpmP
+	J9+y6iTvLsD4Sa+Wjx/6UTMZZrREIEGROvZEoPXiy9uFSOPtkI1TygzlpVHEtAwfnabqjZhkJ8p
+	cQJiBSLgGE6pHIks=
+X-Received: by 2002:a05:6512:39ce:b0:5b3:e02:b398 with SMTP id
+ 2adb3069b0e04-5b30e02b54dmr1231733e87.44.1786302165841; Sun, 09 Aug 2026
+ 12:02:45 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260809160643.33991-1-l.scorcia@gmail.com> <20260809160643.33991-4-l.scorcia@gmail.com>
- <aniv5B4jz07mI70D@buffalo-ssd> <0e4dfe8b-af67-4dcf-92fc-cd564d7c3744@roeck-us.net>
-In-Reply-To: <0e4dfe8b-af67-4dcf-92fc-cd564d7c3744@roeck-us.net>
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Date: Sun, 9 Aug 2026 20:55:51 +0200
-X-Gm-Features: AUfX_mw2G_pgmXXoJxjvv-8va564k6KXHRWKZyjeue4zkg_p1JWDElM0hRbQ6kQ
-Message-ID: <CAORyz2+op80Tj1Ax1PD8wN9fAT5QfAev+vEPBgihvM0O-tWXPA@mail.gmail.com>
-Subject: Re: [PATCH v3 3/8] arm: dts: mediatek: mt6589: Enable toprgu reset controller
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: Akari Tsuyukusa <akkun11.open@gmail.com>, linux-mediatek@lists.infradead.org, 
-	Wim Van Sebroeck <wim@linux-watchdog.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, linux-watchdog@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
+From: Jason Zeng <jasonzeng2009@gmail.com>
+Date: Sun, 9 Aug 2026 12:02:34 -0700
+X-Gm-Features: AUfX_mw0GrRobnvOBwc7j3_1MvOf25PTcnqEU1bZx91zZ2QtvD_WMJ9uPQSXbOk
+Message-ID: <CAMe_HMpLsGEgW=1i6W6od_ADpEEDoMVgfNQ-4rWW==J=QNNPtQ@mail.gmail.com>
+Subject: wifi: mt76: mt7925: false-positive hard rfkill on MSI Vector A16 HX (MS-15MM)
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>
+Cc: Allan Wang <allan.wang@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
+	Sean Wang <sean.wang@mediatek.com>, linux-wireless@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260809_115604_687409_A5A0CBB4 
-X-CRM114-Status: GOOD (  15.80  )
+X-CRM114-CacheID: sfid-20260809_120250_576791_6B706EE7 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,43 +117,162 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Hi,
-I added his Signed-off tag as he provided basically this same patch in
-a separate series [1] slightly before this submission and I wanted to
-acknowledge his work. As far as I understand, this attribution is
-within the guidelines.
 
-[1] https://lore.kernel.org/linux-mediatek/20260716161923.266315-8-akkun11.open@gmail.com/
+Since v6.16, mt7925 Wi-Fi is unusable on the MSI Vector A16 HX A8WHG
+laptop (board MS-15MM): the interface is reported as rfkill
+"Hard blocked: yes" on every boot, and the block cannot be lifted from
+software. Windows on the same machine works normally. I have traced
+this to a false-positive hardware-rfkill report on this platform and
+verified experimentally that the radio is actually functional.
 
-Il giorno dom 9 ago 2026 alle ore 19:49 Guenter Roeck
-<linux@roeck-us.net> ha scritto:
->
-> On 8/9/26 10:04, Akari Tsuyukusa wrote:
-> > On Sun, Aug 09, 2026 at 06:03:27PM +0200, Luca Leonardo Scorcia wrote:
-> >> Enable the toprgu reset controller feature for the mt6589 SoC. This
-> >> allows generating reset signals for the 12 subsystems managed by its
-> >> top reset generation unit.
-> >>
-> >> Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
-> >> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-> >> ---
-> >>   arch/arm/boot/dts/mediatek/mt6589.dtsi | 2 ++
-> >>   1 file changed, 2 insertions(+)
-> >
-> > I provided "Acked-by", not "Signed-off-by"...
-> > https://lore.kernel.org/linux-mediatek/amEBgRmQktZ44jc1@buffalo-ssd/
-> >
-> > PS: I am also fine with this patch carrying my Signed-off-by.
-> > Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
-> >
->
-> That is completely inappropriate and unacceptable. You are not in the
-> Sign-off chain.
->
-> Guenter
->
+Hardware
+--------
+- Laptop: MSI Vector A16 HX A8WHG (DMI: sys_vendor "Micro-Star
+  International Co., Ltd.", product "Vector A16 HX A8WHG", board
+  "MS-15MM"), BIOS E15MMAMS.104 (07/28/2025), EC 15MMIMS1.101
+- WLAN: MEDIATEK MT7925 [14c3:7925], subsystem Foxconn [105b:e138]
+- Kernel: 6.18.42 (also reproduced by other users on Arch/Fedora/Mint
+  kernels >=3D 6.16; kernels of the 6.12 LTS era are NOT affected)
+- Firmware: linux-firmware 20260622, WM firmware build 20260605184805,
+  HW/SW version 0x8a108a10
 
+Symptom
+-------
+- mt7925e probes fine, firmware loads fine.
+- As soon as the interface is brought up, rfkill flips to
+  "Hard blocked: yes" and the interface is taken down. The block
+  persists for the rest of the session.
+- NetworkManager logs "Wi-Fi now disabled by radio killswitch" ~1 s
+  after activating the device.
 
--- 
-Luca Leonardo Scorcia
-l.scorcia@gmail.com
+Analysis
+--------
+Commit e54b870212c0 ("wifi: mt76: mt7925: add rfkill_poll for hardware
+rfkill", first in v6.16) added:
+
+  __mt7925_start():
+      if (phy->chip_cap & MT792x_CHIP_CAP_WF_RF_PIN_CTRL_EVT_EN)
+          wiphy_rfkill_start_polling(mphy->hw->wiphy);
+
+  mt7925_rfkill_poll():
+      ret =3D mt7925_mcu_wf_rf_pin_ctrl(phy);   /* MCU_UNI_CMD(RADIO_STATUS=
+) */
+      wiphy_rfkill_set_hw_state(hw->wiphy, ret =3D=3D 0);
+
+On this platform the firmware advertises
+MT792x_CHIP_CAP_WF_RF_PIN_CTRL_EVT_EN, and the RADIO_STATUS query
+always returns 0 ("RF pin asserted"), so the wiphy is hard-blocked as
+soon as polling starts. However, the pin state appears to be a board
+wiring/EC defect on this MSI model, not a real kill switch: the radio
+demonstrably works, and there is no airplane-mode state that can clear
+it (toggling the airplane key, BIOS reset, EC reset, cold boot, and a
+Windows full shutdown were all tried by various users without effect).
+
+Experimental verification (on 6.18.42)
+--------------------------------------
+1. Fresh "modprobe mt7925e" with the interface left down:
+   rfkill shows "Hard blocked: no".
+2. "ip link set wlan0 up": rfkill flips to "Hard blocked: yes" the
+   moment polling starts. Scans return nothing because mac80211
+   immediately downs the interface.
+3. With a one-line test patch disabling the poll registration in
+   __mt7925_start() (rebuilt mt7925-common only, same kernel, same
+   firmware): the interface comes up, "iw dev wlan0 scan" returns 19
+   BSSs, and NetworkManager can connect normally. The radio is fully
+   functional despite the firmware reporting the RF pin as asserted.
+
+So on this platform the new hardware-rfkill support faithfully reports
+a bogus pin state and disables a working radio. The Windows MediaTek
+driver evidently ignores this pin on this machine, and kernels < 6.16
+worked for the same reason.
+
+Community reports of what appears to be the same issue (multiple users,
+multiple distros, since around Dec 2025):
+- https://discuss.cachyos.org/t/new-laptop-with-mt7925-wifi-adapter-being-h=
+ard-blocked-rfkill/23872
+- https://discuss.cachyos.org/t/getting-wifi-to-work-on-msi-vector-a16-hx-a=
+8whg/27772
+- https://forum-en.msi.com/index.php?threads/wifi-hard-blocked-on-msi-vecto=
+r-a16-hx-a8whg-linux-ubuntu-24-04-acpi-bios-bug.418090/
+
+(One user in the second thread reported to linux-mediatek earlier this
+year; I'm adding the root-cause analysis above.)
+
+Possible fixes
+--------------
+Would a DMI-based quirk (or a PCI subsystem-vendor/-device based one,
+[105b:e138] on this board) that skips wiphy_rfkill_start_polling() on
+affected platforms be acceptable? Alternatively the poll result could
+be cross-checked before hard-blocking (e.g. ignore a pin that is
+asserted from cold boot and never changes state), or a module parameter
+could allow affected users to opt out.
+
+I'm happy to test patches on this hardware and to provide any further
+debugging output (full dmesg, MCU traces, ACPI tables =E2=80=94 note this
+BIOS also has duplicate \_SB.PCI0.GPPA/WLAN power objects that ACPICA
+rejects with AE_ALREADY_EXISTS at table load; that turned out to be
+unrelated to the rfkill issue, but I can share the tables if useful).
+
+Raw data
+--------
+
+lspci -nnk:
+
+  05:00.0 Network controller [0280]: MEDIATEK Corp. MT7925 802.11be
+          160MHz 2x2 PCIe Wireless Network Adapter [Filogic 360] [14c3:7925=
+]
+          Subsystem: Foxconn International, Inc. Device [105b:e138]
+          Kernel driver in use: mt7925e
+
+Driver probe (dmesg):
+
+  mt7925e 0000:05:00.0: ASIC revision: 79250000
+  mt7925e 0000:05:00.0: HW/SW Version: 0x8a108a10, Build Time: 202606051846=
+51a
+  mt7925e 0000:05:00.0: WM Firmware Version: ____000000, Build Time:
+20260605184805
+
+Typical boot (journal):
+
+  NetworkManager: rfkill1: found Wi-Fi radio killswitch
+    (at /sys/devices/pci0000:00/0000:00:03.2/0000:05:00.0/ieee80211/phy0/rf=
+kill1)
+    (driver mt7925e)
+  NetworkManager: manager: rfkill: Wi-Fi now disabled by radio killswitch
+  wpa_supplicant: rfkill: WLAN hard blocked
+
+Experiment, unpatched 6.18.42 (phy index varies across module reloads):
+
+  # modprobe -r mt7925e && modprobe mt7925e     # interface left down
+  # rfkill list
+  2: phy1: Wireless LAN
+          Soft blocked: no
+          Hard blocked: no
+  # ip link set wlan0 up && iw dev wlan0 scan   # scan returns nothing
+  # rfkill list
+  2: phy1: Wireless LAN
+          Soft blocked: no
+          Hard blocked: yes
+
+Experiment, same kernel/firmware with the test change below:
+
+  # ip link set wlan0 up && iw dev wlan0 scan | grep -c '^BSS'
+  19
+  # rfkill list
+  3: phy2: Wireless LAN
+          Soft blocked: no
+          Hard blocked: no                      # stays unblocked; NM
+connects fine
+
+Test change used for step 3 (diagnostic only, not proposed as the fix):
+
+  --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+  +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+  @@ __mt7925_start()
+  - if (phy->chip_cap & MT792x_CHIP_CAP_WF_RF_PIN_CTRL_EVT_EN)
+  + if (0 && (phy->chip_cap & MT792x_CHIP_CAP_WF_RF_PIN_CTRL_EVT_EN))
+    wiphy_rfkill_start_polling(mphy->hw->wiphy);
+
+Thanks,
+Jason Zeng
 
