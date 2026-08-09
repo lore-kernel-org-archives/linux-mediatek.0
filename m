@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F848C5AD4E
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Aug 2026 20:31:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EA57C5AD55
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Aug 2026 20:31:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xRvacLN+57DJnBMudtYrTXU7KiHkZYvlMNwzIQQLHng=; b=3uiM2jayJWm1hYJSe54LPsc7N3
-	4fgf5kCSEB9qEpeCvky+21KgvpRkBgrOCkF9pq09jO1f33w0xzDJbJa4z3OFJ54Mtgg5InxV0jX5f
-	ImwjXd4IzzLV8jfM8h9EJ8pInbJeTLhnvhtLnaVFfvehXKbDzMsLd2qnXA3mRE15sTbCW7H6Q/TaZ
-	xv09/Ob54VCD5ueExB0FsELlgxHWazCkd3ilkDDW3y7//+5DGOs2HloQWN5ThNZ8x/iiHNOOuSJ8x
-	gj/xktPZU2BrsZ4nGMw6lPxpvxLms3F/T8pBxxx19+tRHEQla0SI6Qf5zKMee/xVRVyOzsE/i7yBI
-	/IrssfbA==;
+	bh=dlxFxuCU78lVU09E4RtDg01ZSBTP1Ohfhu61a6QHxlE=; b=S99GvMV+HVrB6nSeW6mYZKK5lG
+	iBLLXBqOip/GE0WL5tx9TYld9McVHsSO+8auaXHGUdFUFUQPTXF5YKd1HUCIkPhGNI8vkq+QNUxQv
+	es5RL6MJbmIIMTK7FA1DqBwUdVs/5/qr0qRmB3DPz7+HfRMTaM9BSyYQbHENQTiUG/an1Qc5SHnnL
+	JKYYU4mIJFcTcikJWANCEUYHWXm/3rIj6PTEwiarbenFyWKjFXS17CfCc88aRK4D3ilrT39LZcTtn
+	DCK/8S/U136mX7/0QAMqnjA41QVklvy6vY/Mpe420EpBKtrXZDCVWDRRNb/6YaJ5r7HSZjlk42dzR
+	G0FVlHZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtABM-0000000Ag4Z-0bGA;
-	Sun, 09 Aug 2026 20:31:44 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1wtABN-0000000Ag69-0wdv;
+	Sun, 09 Aug 2026 20:31:45 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtABI-0000000AfyW-3caj
+	id 1wtABL-0000000Ag1O-0T0Q
 	for linux-mediatek@lists.infradead.org;
-	Sun, 09 Aug 2026 20:31:42 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-4980dc26022so12039225e9.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 09 Aug 2026 13:31:40 -0700 (PDT)
+	Sun, 09 Aug 2026 20:31:44 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-49554ebb87dso11180315e9.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 09 Aug 2026 13:31:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786307499; x=1786912299; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1786307501; x=1786912301; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to:content-type;
-        bh=xRvacLN+57DJnBMudtYrTXU7KiHkZYvlMNwzIQQLHng=;
-        b=cCQmee+CmIU6HCpcOb5hkLp8SKW0Lt6o9FTcnn4MQ0KKdaoG/uqw03MfrbEDrt7jt9
-         zlpcjao1E/W7rbobY83d1bvPHwEUvoYXPH14AArOHl2H4QylTw9jSVz20pOcuOVXt7by
-         M4aJIyr8zNV4tq8AcCWdH8HIU9YeBPBF+eLmzjtLmzWerBZTenEQAOlHnJViFU5nUyWC
-         4V19CN4irt+RrGgBIN3HtGqObkaAbrTfHQg1s9Gv8vEBE29lsXpw45fBI+sI7lbhpZGM
-         lC8k2twiNR0JLHf3T1z7pTmqIrCoXNawsFKJmDaAAwnlHymherZ3pkD6/7PhEO/LIuBQ
-         qhbg==
+        bh=dlxFxuCU78lVU09E4RtDg01ZSBTP1Ohfhu61a6QHxlE=;
+        b=LOcQbl4+5qKfV08J26WEzs0unxFn/90524L+h1dnpAgtEWUbS6AmEok8i+/Lcuuz15
+         hMMs0tgdME/gHElISLSF8CrXAPrUF4lwTQApRL5Ck382+lrWtEuQ3EryOaIwF/HXz/oE
+         lBq6QTNUt1pYKyinT4AGnWkWHkFR4tC3IXMJ7rILsQX6Ls9pClas7JDT0Loeu82dk09D
+         v5ZHW3LMJql7or/+ezHSFet8W4lErcwzvVGmUpGRUDdY6AzEwRBHEsIHYePP4NoTHEWH
+         QsJedyXgYSf2rCCWcjCdRpjqildpfrJ5MY9Rf8zEX09/2MpG+eBlXDydxxlhSCNMNafT
+         NeYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786307499; x=1786912299;
+        d=1e100.net; s=20251104; t=1786307501; x=1786912301;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to:content-type;
-        bh=xRvacLN+57DJnBMudtYrTXU7KiHkZYvlMNwzIQQLHng=;
-        b=B5ntyzUyfS2h+sVbYjjE4yK7H8vFrAWaZp7Kkx7uo82oFrb77MVvKE19wmGCObKm1p
-         7YjmYquIM4YnZsb79KiX+KUYgEwz8qIJs5G710zGCLwEs7sfFtguQTL8U9uT3FdTOLaM
-         e20ODyxoTDzFDZGPdV5MuvUqcR3hvpb15iEePLQGcTbe3IA5KQddvbfL+rr5pmbFD160
-         XPai7pvWW1SdC8unmOq5TDQymKWNhhJ2isVQ3YB8B78rCWqKV2RxSh9yfkzG/2Z11FPH
-         G/oxUf/UnsqXFpCVJ5vGCxxg8aZYO2SS89JKASsneuBRY51jGMEi7cBsU4ZGezdMX+B7
-         ok8Q==
-X-Forwarded-Encrypted: i=1; AHgh+Rpvd+SfHyr/nSXpJAE39tuanzerDU886o3R737gf5kEELVDHR3NxtZoWj5VCw6A++8KpbkOcgW+QysfgDHmDA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxmwCSn/W6axjPuDW774WrbQP3zBBIKaOJ3qepnzHu73z8PLgxk
-	GGic0VBNjB59hv3RPgnRD60lbT2pVWrVTcvZYgltkJpl7IFtBB/7lPRn
-X-Gm-Gg: AR+sD11rRi3Na007R59EExg+ZQuaWjppZfFFVCizqEnnxEAiT6AnnBx+jdfZgInrmSM
-	eI1YC3UTUB+O60FZAz9wyOFajew/RuRA/r8e06igd4Xh1XrXth3AEqF0SVzi2TmpJq6C81AfFTs
-	9uzgGBn9qTBo61APNpBbwXB5o4HscnXpYTktJa2PUSZcu75lBq9d9OQWFjs3F7dOXRS4MZYCkKR
-	maylVb6VQZGvJ0b0lQIdRfZr3SILy10Y9Bu8pl4ffdCvkRbucVZYWNFSuLJVtI9L/mA111EFF6f
-	9qjIRyUyae5KqezQ6V2IwoZO5jV0XlHg8sd8eGnfRu6NMq0pXlD7poZEov7QJV8V0BWS13Pkivm
-	cBPEc0ubossUCMfxIEoa7v31bJBN9CbmPt5e+Kzev8xmjQ+2XSETB6QaK8zSGgp+9++PBQ5VI2J
-	lqQ6gf+FLTVVIiGW5XispeOglsGxGcqAvfOgzSCF6C9jk1Cs041rfl7NIdVwTPGyxV/7wl0iEBn
-	LIowoYEfWA6yVV5uhF7WFpsPxmgi0lUD7h96Dzwt02abud3UDdBHhFftrM=
-X-Received: by 2002:a05:600c:1d23:b0:499:516b:83d5 with SMTP id 5b1f17b1804b1-499516b83d9mr386176995e9.11.1786307499071;
-        Sun, 09 Aug 2026 13:31:39 -0700 (PDT)
+        bh=dlxFxuCU78lVU09E4RtDg01ZSBTP1Ohfhu61a6QHxlE=;
+        b=cdw/+imWVOQa90N5mrlvjKJprVXNfSxcO9N4B9aJ77HpWfO03oakDui/m9p+s9Yiu1
+         OPfe/4lpBfckTmMAliQK8d4ypKpJBQ5sspwrjhW/raZMnhAzQObn7ues+Y//G244gnx9
+         2sTZkc5QJQ07XGT1jVaTiVj0QNUuzJavOTcjQ9Z7FbI2Kz7KqysKt6tYkCE9YcG2dBEq
+         feFLVbezLrzgS2L2J6pNsvGvot9Ok4mtPYWbiY+LA5szCvE8Q0emK87SDBv4FmCXHLzq
+         9JCrlNTEs1YxIEsvtPsefdRuugI/O+LdvKNs8Gpm0dccbbm1M+ypNivkPLkTvRD7p2Ap
+         ZVOA==
+X-Forwarded-Encrypted: i=1; AHgh+RpXIu1UIB0yRqLIfNVY5m6aKLUO8qOyQ/z6oaVD7g3uUmZ3HDCGy26pSNVpGDs1BYvYxX+rIy43w1fU7GgLaw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwW4KpIUloioec3BNY8Bky9sIO72mYxlSfq2SdzwtW+NpGqFvE7
+	uZpVuSDqEkuOQ57N9gNKU+3dlYoGlbm4bRMdLuconGmiS4WmGP13fUwX
+X-Gm-Gg: AR+sD13iz4gH5UcNeBnfELOyVRsOEEpv5IO8vUJNOuVZZ/Hlh5VI2TmNgIKmMrIIzT+
+	zHkKnoBNwXYiJwkQ5cVluRMKl07dtY1MLYX5z2FgTtvSZYXOrtFU7w+WLb5Nt1XR3M7SRf+zbRi
+	3w2WRQPEWzOxmaqRdmq+paE1QbyMWryDq5jU99q7g1zItHmLujamZPxoi0FqJHfC1Wzzr+9YZnR
+	ghjlxaZH7YNTuOQUVNph4f7MKq8R1HhfUPb4sql+iOJHEZYZKuhFCUk4T/SEzWthaVxLF7f1G+N
+	BJJTSbMpvjNO0RhGs/LcE7oh8yUIPgG8tjQrOM6/rlDaZflYcTS0az9SnzbUx6z+B+/jc3yhBKs
+	l0xosnmGIsBAdFS+5kgWBXhj/3Psj9XwhrBi9wmnOKvWaVz2WCVexxbRxmPIZfNxiRpvV888M1N
+	/vcF8SCfcsdzT4nh5N8hlCYOl1L7kf1zb5byu1rOw8FW2ayh2K9FLuFadjPibtj/5HCvNwik5RF
+	sOjaF/SNamQ5Epzi3lPKtG6WQxBvt2s6yOy4RLq2I5Jj5kx
+X-Received: by 2002:a05:600c:1d23:b0:499:51cc:4e57 with SMTP id 5b1f17b1804b1-499617f7699mr188949035e9.0.1786307501400;
+        Sun, 09 Aug 2026 13:31:41 -0700 (PDT)
 Received: from Ansuel-XPS24.localdomain (host-87-20-3-207.retail.telecomitalia.it. [87.20.3.207])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4995e9ea92csm229357065e9.4.2026.08.09.13.31.36
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4995e9ea92csm229357065e9.4.2026.08.09.13.31.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 09 Aug 2026 13:31:38 -0700 (PDT)
+        Sun, 09 Aug 2026 13:31:40 -0700 (PDT)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Maxime Chevallier <maxime.chevallier@bootlin.com>,
 	Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -99,17 +99,17 @@ To: Maxime Chevallier <maxime.chevallier@bootlin.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	llvm@lists.linux.dev
-Subject: [PATCH net-next v12 05/12] net: phylink: support PCS provider release
-Date: Sun,  9 Aug 2026 22:31:02 +0200
-Message-ID: <20260809203116.640271-6-ansuelsmth@gmail.com>
+Subject: [PATCH net-next v12 06/12] net: phylink: support late PCS provider attach
+Date: Sun,  9 Aug 2026 22:31:03 +0200
+Message-ID: <20260809203116.640271-7-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260809203116.640271-1-ansuelsmth@gmail.com>
 References: <20260809203116.640271-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260809_133141_043027_1B57CD89 
-X-CRM114-Status: GOOD (  33.56  )
+X-CRM114-CacheID: sfid-20260809_133143_208332_C37A097C 
+X-CRM114-Status: GOOD (  26.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,458 +124,261 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for release of fwnode PCS from a PCS provider.
-This works by creating a global notifier for the PCS provider and
-making each phylink instance that makes use of fwnode subscribe to
-this notifier.
+Add support for late PCS provider attachment to a phylink instance.
+Similar to FWNODE_PCS_PROVIDER_DEL, FWNODE_PCS_PROVIDER_ADD is added to
+address the case where a PCS provider is added after a phylink instance is
+created and started.
 
-The PCS notifier will emit the event FWNODE_PCS_PROVIDER_DEL every time
-a new PCS provider is released.
+The PCS notifier will emit the event FWNODE_PCS_PROVIDER_ADD every time
+a new PCS provider is added.
 
-phylink will then react to this event and will call the new function
-fwnode_pcs_matches_provider() on each PCS of the phylink instance and
-will check if the PCS is provided by the PCS provider that is getting
-released.
+If a related PCS is found, then such PCS is added to the phylink
+instance PCS list.
 
-If a related PCS is found, then such PCS is removed from the phylink
-instance PCS list and the supported_interfaces value is updated.
+Such PCS is then linked to the phylink instance and the supported
+interfaces of the phylink instance get refreshed.
 
-The flag force_major_config is set to make phylink resolve reconfigure
-the interface (even if it didn't change).
-This is needed to handle the special case when the current PCS used
-by phylink is removed and a major_config is needed to propagae the
-configuration change. With this option enabled we also force mac_config
-even if the PHY link is not up for the in-band case.
+If we are in a major_config_failed scenario an interface reconfiguration
+is triggered in the next phylink resolve.
 
-Finally a phylink resolve is triggered to handle the PCS removal.
-
-Protect every access of phylink pcs_list with state_mutex to handle async
-PCS provider release.
+In the example scenario where the link was previously torn down due to
+removal of PCS, the link will be established again as the PCS came back
+and is now available to phylink.
 
 Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 ---
- drivers/net/pcs/pcs.c     |  47 +++++++++++++++
- drivers/net/phy/phylink.c | 118 +++++++++++++++++++++++++++++++++++++-
- include/linux/pcs/pcs.h   |  69 ++++++++++++++++++++++
- 3 files changed, 231 insertions(+), 3 deletions(-)
+ drivers/net/pcs/pcs.c     | 22 +++++++++++
+ drivers/net/phy/phylink.c | 83 +++++++++++++++++++++++++++++++--------
+ include/linux/pcs/pcs.h   | 31 +++++++++++++++
+ 3 files changed, 119 insertions(+), 17 deletions(-)
 
 diff --git a/drivers/net/pcs/pcs.c b/drivers/net/pcs/pcs.c
-index c1bb93bc0892..52097466ce91 100644
+index 52097466ce91..92d346755acc 100644
 --- a/drivers/net/pcs/pcs.c
 +++ b/drivers/net/pcs/pcs.c
-@@ -22,6 +22,19 @@ struct fwnode_pcs_provider {
- 
- static LIST_HEAD(fwnode_pcs_providers);
- static DEFINE_MUTEX(fwnode_pcs_mutex);
-+static BLOCKING_NOTIFIER_HEAD(fwnode_pcs_notify_list);
-+
-+int register_fwnode_pcs_notifier(struct notifier_block *nb)
-+{
-+	return blocking_notifier_chain_register(&fwnode_pcs_notify_list, nb);
-+}
-+EXPORT_SYMBOL_GPL(register_fwnode_pcs_notifier);
-+
-+int unregister_fwnode_pcs_notifier(struct notifier_block *nb)
-+{
-+	return blocking_notifier_chain_unregister(&fwnode_pcs_notify_list, nb);
-+}
-+EXPORT_SYMBOL_GPL(unregister_fwnode_pcs_notifier);
- 
- struct phylink_pcs *fwnode_pcs_simple_xlate(struct fwnode_reference_args *pcsspec,
- 					    void *data)
-@@ -74,6 +87,11 @@ void fwnode_pcs_del_provider(struct fwnode_pcs_provider *pp)
+@@ -69,6 +69,10 @@ fwnode_pcs_add_provider(struct fwnode_handle *fwnode,
  
  	mutex_unlock(&fwnode_pcs_mutex);
  
-+	/* Signal phylink to release any PCS from this provider */
 +	blocking_notifier_call_chain(&fwnode_pcs_notify_list,
-+				     FWNODE_PCS_PROVIDER_DEL,
-+				     pp);
++				     FWNODE_PCS_PROVIDER_ADD,
++				     fwnode);
 +
- 	fwnode_handle_put(pp->fwnode);
- 	kfree(pp);
- }
-@@ -183,6 +201,35 @@ struct phylink_pcs *fwnode_pcs_get(const struct fwnode_handle *fwnode, unsigned
+ 	pr_debug("Added pcs provider from %pfwf\n", fwnode);
+ 
+ 	return pp;
+@@ -201,6 +205,24 @@ struct phylink_pcs *fwnode_pcs_get(const struct fwnode_handle *fwnode, unsigned
  }
  EXPORT_SYMBOL_GPL(fwnode_pcs_get);
  
-+bool fwnode_pcs_matches_provider(struct fwnode_pcs_provider *provider,
-+				 const struct fwnode_handle *fwnode,
-+				 struct phylink_pcs *pl_pcs)
++struct phylink_pcs *fwnode_pcs_get_from_provider(struct fwnode_pcs_provider *provider,
++						 const struct fwnode_handle *fwnode,
++						 int index)
 +{
 +	struct fwnode_reference_args pcsspec;
-+	int index = 0;
++	struct phylink_pcs *pcs;
 +	int ret;
 +
-+	while (true) {
-+		struct phylink_pcs *pcs;
++	ret = fwnode_parse_pcsspec(fwnode, index, NULL, &pcsspec);
++	if (ret)
++		return ERR_PTR(ret);
 +
-+		ret = fwnode_parse_pcsspec(fwnode, index, NULL, &pcsspec);
-+		if (ret)
-+			return false;
-+
-+		pcs = __fwnode_pcs_get_from_pcsspec_provider(&pcsspec, provider);
-+		if (!IS_ERR(pcs) && pcs == pl_pcs) {
-+			fwnode_handle_put(pcsspec.fwnode);
-+			return true;
-+		}
-+
-+		fwnode_handle_put(pcsspec.fwnode);
-+		index++;
-+	}
-+
-+	return false;
++	pcs = __fwnode_pcs_get_from_pcsspec_provider(&pcsspec, provider);
++	fwnode_handle_put(pcsspec.fwnode);
++	return pcs;
 +}
-+EXPORT_SYMBOL_GPL(fwnode_pcs_matches_provider);
++EXPORT_SYMBOL_GPL(fwnode_pcs_get_from_provider);
 +
- unsigned int fwnode_phylink_pcs_count(struct fwnode_handle *fwnode)
- {
- 	struct fwnode_reference_args out_args;
+ bool fwnode_pcs_matches_provider(struct fwnode_pcs_provider *provider,
+ 				 const struct fwnode_handle *fwnode,
+ 				 struct phylink_pcs *pl_pcs)
 diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
-index b9a5cd123775..1d7223e95474 100644
+index 1d7223e95474..191c902d4008 100644
 --- a/drivers/net/phy/phylink.c
 +++ b/drivers/net/phy/phylink.c
-@@ -12,6 +12,7 @@
- #include <linux/netdevice.h>
- #include <linux/of.h>
- #include <linux/of_mdio.h>
-+#include <linux/pcs/pcs.h>
- #include <linux/phy.h>
- #include <linux/phy_fixed.h>
- #include <linux/phylink.h>
-@@ -63,6 +64,7 @@ struct phylink {
- 
- 	/* List of available PCS */
- 	struct list_head pcs_list;
-+	struct notifier_block fwnode_pcs_nb;
- 
- 	/* What interface are supported by the current link.
- 	 * Can change on removal or addition of new PCS.
-@@ -560,12 +562,14 @@ static int phylink_validate_mac_and_pcs(struct phylink *pl,
- 	 * the requested interface.
- 	 */
- 	} else if (test_bit(state->interface, pl->config->pcs_interfaces)) {
-+		mutex_lock(&pl->state_mutex);
- 		list_for_each_entry(pcs, &pl->pcs_list, list) {
- 			if (!phylink_validate_pcs_interface(pcs, state->interface)) {
- 				pcs_found = true;
- 				break;
- 			}
- 		}
-+		mutex_unlock(&pl->state_mutex);
- 	}
- 
- 	if (pcs_found) {
-@@ -1004,12 +1008,14 @@ static unsigned int phylink_inband_caps(struct phylink *pl,
- 						  interface);
- 		pcs_found = !!pcs;
- 	} else if (test_bit(interface, pl->config->pcs_interfaces)) {
-+		mutex_lock(&pl->state_mutex);
- 		list_for_each_entry(pcs, &pl->pcs_list, list) {
- 			if (!phylink_validate_pcs_interface(pcs, interface)) {
- 				pcs_found = true;
- 				break;
- 			}
- 		}
-+		mutex_unlock(&pl->state_mutex);
- 	}
- 
- 	if (!pcs_found)
-@@ -1553,11 +1559,13 @@ static void phylink_mac_initial_config(struct phylink *pl, bool force_restart)
- 	link_state.link = false;
- 
- 	phylink_apply_manual_flow(pl, &link_state);
-+	mutex_lock(&pl->state_mutex);
- 	if (phy)
- 		mutex_lock(&phy->lock);
- 	phylink_major_config(pl, force_restart, &link_state);
- 	if (phy)
- 		mutex_unlock(&phy->lock);
-+	mutex_unlock(&pl->state_mutex);
+@@ -1912,6 +1912,27 @@ int phylink_set_fixed_link(struct phylink *pl,
  }
+ EXPORT_SYMBOL_GPL(phylink_set_fixed_link);
  
- static const char *phylink_pause_to_str(int pause)
-@@ -1927,6 +1935,8 @@ static int phylink_fill_available_pcs(struct phylink *pl,
- 	if (ret < 0)
- 		goto out;
- 
-+	mutex_lock(&pl->state_mutex);
-+
- 	for (i = 0; i < config->num_possible_pcs; i++) {
- 		struct phylink_pcs *pcs = pcss[i];
- 
-@@ -1936,12 +1946,90 @@ static int phylink_fill_available_pcs(struct phylink *pl,
- 		list_add_tail(&pcs->list, &pl->pcs_list);
- 	}
- 
-+	mutex_unlock(&pl->state_mutex);
-+
- out:
- 	kfree(pcss);
- 
- 	return ret;
- }
- 
-+static void phylink_del_pcs(struct phylink *pl, struct phylink_pcs *pcs)
++static void phylink_add_pcs(struct phylink *pl, struct phylink_pcs *pcs)
 +{
++	struct phylink_pcs *tmp;
++
++	/*
++	 * Make sure state mutex is locked to protect concurrent
++	 * access to phylink instance PCS list from
++	 * initial fill_available_pcs and late PCS attach
++	 */
 +	lockdep_assert_held(&pl->state_mutex);
 +
-+	list_del(&pcs->list);
-+	pcs->phylink = NULL;
++	list_for_each_entry(tmp, &pl->pcs_list, list)
++		if (tmp == pcs)
++			return;
 +
++	list_add_tail(&pcs->list, &pl->pcs_list);
++
++	/* Link PCS to phylink */
++	pcs->phylink = pl;
++}
++
+ static int phylink_fill_available_pcs(struct phylink *pl,
+ 				      struct phylink_config *config)
+ {
+@@ -1943,7 +1964,7 @@ static int phylink_fill_available_pcs(struct phylink *pl,
+ 		if (!pcs)
+ 			continue;
+ 
+-		list_add_tail(&pcs->list, &pl->pcs_list);
++		phylink_add_pcs(pl, pcs);
+ 	}
+ 
+ 	mutex_unlock(&pl->state_mutex);
+@@ -1990,26 +2011,57 @@ static int pcs_provider_notify(struct notifier_block *self,
+ 	struct phylink_pcs *pcs, *tmp;
+ 	bool resolve = false;
+ 
+-	rtnl_lock();
 +	/*
-+	 * Check if we are removing the PCS currently
-+	 * in use by this phylink instance. If this is the case,
-+	 * tear down the link, force phylink resolve to reconfigure the
-+	 * interface mode, disable the current PCS and set the
-+	 * phylink PCS to NULL.
++	 * On PCS provider deletion hold rtnl lock as one of
++	 * PCS can be currently in use by the phylink instance
++	 * and ethtool OPs can reference it.
 +	 */
-+	if (pl->pcs == pcs) {
-+		if (pl->old_link_state) {
-+			phylink_link_down(pl);
-+			pl->old_link_state = false;
++	if (val == FWNODE_PCS_PROVIDER_DEL)
++		rtnl_lock();
+ 
+ 	mutex_lock(&pl->state_mutex);
+ 
+-	/*
+-	 * Loop all the PCS for phylink instance and check if
+-	 * this notification is relevant for some of them.
+-	 */
+-	list_for_each_entry_safe(pcs, tmp, &pl->pcs_list, list) {
+-		if (!fwnode_pcs_matches_provider(pp, pl->fwnode, pcs))
+-			continue;
++	switch (val) {
++	case FWNODE_PCS_PROVIDER_ADD:
++		int count, i;
++
++		count = fwnode_phylink_pcs_count(pl->fwnode);
++		for (i = 0; i < count; i++) {
++			pcs = fwnode_pcs_get_from_provider(pp, pl->fwnode, i);
++			if (IS_ERR(pcs))
++				continue;
++
++			phylink_add_pcs(pl, pcs);
++			resolve = true;
 +		}
-+		if (pl->cfg_link_an_mode == MLO_AN_INBAND)
-+			timer_delete_sync(&pl->link_poll);
-+		phylink_pcs_disable(pl->pcs);
 +
-+		pl->force_major_config = true;
-+		WRITE_ONCE(pl->pcs, NULL);
-+	}
-+}
++		/* Force an interface reconfig if major config fail */
++		if (resolve && pl->major_config_failed)
++			pl->force_major_config = true;
 +
-+static int pcs_provider_notify(struct notifier_block *self,
-+			       unsigned long val, void *data)
-+{
-+	struct phylink *pl = container_of(self, struct phylink, fwnode_pcs_nb);
-+	struct fwnode_pcs_provider *pp = data;
-+	struct phylink_pcs *pcs, *tmp;
-+	bool resolve = false;
++		break;
++	case FWNODE_PCS_PROVIDER_DEL:
++		/*
++		 * Loop all the PCS for phylink instance and check if
++		 * this notification is relevant for some of them.
++		 */
++		list_for_each_entry_safe(pcs, tmp, &pl->pcs_list, list) {
++			if (!fwnode_pcs_matches_provider(pp, pl->fwnode, pcs))
++				continue;
+ 
+-		phylink_del_pcs(pl, pcs);
+-		resolve = true;
++			phylink_del_pcs(pl, pcs);
++			resolve = true;
++		}
++		break;
+ 	}
+ 
+ 	/* Exit early if nothing has changed */
+ 	if (!resolve) {
+ 		mutex_unlock(&pl->state_mutex);
+-		rtnl_unlock();
 +
-+	rtnl_lock();
++		if (val == FWNODE_PCS_PROVIDER_DEL)
++			rtnl_unlock();
 +
-+	mutex_lock(&pl->state_mutex);
-+
-+	/*
-+	 * Loop all the PCS for phylink instance and check if
-+	 * this notification is relevant for some of them.
-+	 */
-+	list_for_each_entry_safe(pcs, tmp, &pl->pcs_list, list) {
-+		if (!fwnode_pcs_matches_provider(pp, pl->fwnode, pcs))
-+			continue;
-+
-+		phylink_del_pcs(pl, pcs);
-+		resolve = true;
-+	}
-+
-+	/* Exit early if nothing has changed */
-+	if (!resolve) {
-+		mutex_unlock(&pl->state_mutex);
+ 		return NOTIFY_DONE;
+ 	}
+ 
+@@ -2023,7 +2075,8 @@ static int pcs_provider_notify(struct notifier_block *self,
+ 
+ 	mutex_unlock(&pl->state_mutex);
+ 
+-	rtnl_unlock();
++	if (val == FWNODE_PCS_PROVIDER_DEL)
 +		rtnl_unlock();
-+		return NOTIFY_DONE;
-+	}
-+
-+	/* Refresh supported interfaces */
-+	phy_interface_copy(pl->supported_interfaces,
-+			   pl->config->supported_interfaces);
-+	list_for_each_entry(pcs, &pl->pcs_list, list)
-+		phy_interface_or(pl->supported_interfaces,
-+				 pl->supported_interfaces,
-+				 pcs->supported_interfaces);
-+
-+	mutex_unlock(&pl->state_mutex);
-+
-+	rtnl_unlock();
-+
-+	phylink_run_resolve(pl);
-+
-+	return NOTIFY_OK;
-+}
-+
- /**
-  * phylink_create() - create a phylink instance
-  * @config: a pointer to the target &struct phylink_config
-@@ -2005,10 +2093,18 @@ struct phylink *phylink_create(struct phylink_config *config,
- 		goto free_pl;
- 	}
  
-+	/* First register notifier for hotplug PCS events */
-+	if (!phy_interface_empty(config->pcs_interfaces)) {
-+		pl->fwnode_pcs_nb.notifier_call = pcs_provider_notify;
-+		register_fwnode_pcs_notifier(&pl->fwnode_pcs_nb);
-+	}
-+
- 	/* Fill the PCS list with available PCS from phylink config */
- 	ret = phylink_fill_available_pcs(pl, config);
- 	if (ret < 0)
--		goto free_pl;
-+		goto unregister_pcs_notify;
-+
-+	mutex_lock(&pl->state_mutex);
+ 	phylink_run_resolve(pl);
  
- 	/* Link available PCS to phylink */
- 	list_for_each_entry(pcs, &pl->pcs_list, list)
-@@ -2023,6 +2119,8 @@ struct phylink *phylink_create(struct phylink_config *config,
- 				 pl->supported_interfaces,
- 				 pcs->supported_interfaces);
+@@ -2106,10 +2159,6 @@ struct phylink *phylink_create(struct phylink_config *config,
  
-+	mutex_unlock(&pl->state_mutex);
-+
- 	pl->mac_supports_eee_ops = phylink_mac_implements_lpi(mac_ops);
- 	pl->mac_supports_eee = pl->mac_supports_eee_ops &&
- 			       pl->config->lpi_capabilities &&
-@@ -2054,7 +2152,7 @@ struct phylink *phylink_create(struct phylink_config *config,
+ 	mutex_lock(&pl->state_mutex);
  
- 	ret = phylink_parse_mode(pl, fwnode);
- 	if (ret < 0)
--		goto unlink_pcs_list;
-+		goto unregister_pcs_notify;
+-	/* Link available PCS to phylink */
+-	list_for_each_entry(pcs, &pl->pcs_list, list)
+-		pcs->phylink = pl;
+-
+ 	phy_interface_copy(pl->supported_interfaces,
+ 			   pl->config->supported_interfaces);
  
- 	if (pl->cfg_link_an_mode == MLO_AN_FIXED) {
- 		ret = phylink_parse_fixedlink(pl, fwnode);
-@@ -2073,11 +2171,17 @@ struct phylink *phylink_create(struct phylink_config *config,
- release_link_gpio:
- 	if (pl->link_gpio)
- 		gpiod_put(pl->link_gpio);
--unlink_pcs_list:
-+unregister_pcs_notify:
-+	if (pl->fwnode_pcs_nb.notifier_call)
-+		unregister_fwnode_pcs_notifier(&pl->fwnode_pcs_nb);
-+	/* PCS notifier might queue a resolve, cancel it */
-+	cancel_work_sync(&pl->resolve);
-+	mutex_lock(&pl->state_mutex);
- 	list_for_each_entry_safe(pcs, tmp, &pl->pcs_list, list) {
- 		list_del(&pcs->list);
- 		pcs->phylink = NULL;
- 	}
-+	mutex_unlock(&pl->state_mutex);
- free_pl:
- 	fwnode_handle_put(pl->fwnode);
- 	kfree(pl);
-@@ -2102,14 +2206,22 @@ void phylink_destroy(struct phylink *pl)
- 	if (pl->link_gpio)
- 		gpiod_put(pl->link_gpio);
- 
-+	/* Unregister notifier for late PCS attach */
-+	if (pl->fwnode_pcs_nb.notifier_call)
-+		unregister_fwnode_pcs_notifier(&pl->fwnode_pcs_nb);
-+
- 	cancel_work_sync(&pl->resolve);
- 
-+	mutex_lock(&pl->state_mutex);
-+
- 	/* Remove every PCS from phylink PCS list */
- 	list_for_each_entry_safe(pcs, tmp, &pl->pcs_list, list) {
- 		pcs->phylink = NULL;
- 		list_del(&pcs->list);
- 	}
- 
-+	mutex_unlock(&pl->state_mutex);
-+
- 	fwnode_handle_put(pl->fwnode);
- 
- 	kfree(pl);
 diff --git a/include/linux/pcs/pcs.h b/include/linux/pcs/pcs.h
-index ef2134c578c7..83e0a2ad4b09 100644
+index 83e0a2ad4b09..00a636c82c65 100644
 --- a/include/linux/pcs/pcs.h
 +++ b/include/linux/pcs/pcs.h
-@@ -4,7 +4,38 @@
- 
+@@ -5,6 +5,7 @@
  #include <linux/phylink.h>
  
-+enum fwnode_pcs_notify_event {
-+	FWNODE_PCS_PROVIDER_DEL,
-+};
-+
-+struct fwnode_pcs_provider;
-+
- #if IS_ENABLED(CONFIG_FWNODE_PCS)
-+/**
-+ * register_fwnode_pcs_notifier - Register a notifier block for fwnode
-+ *				  PCS events
-+ * @nb: pointer to the notifier block
-+ *
-+ * Registers a notifier block to the fwnode_pcs_notify_list blocking
-+ * notifier chain. This allows phylink instance to subscribe for
-+ * PCS provider events.
-+ *
-+ * Returns: 0 or a negative error.
-+ */
-+int register_fwnode_pcs_notifier(struct notifier_block *nb);
-+
-+/**
-+ * unregister_fwnode_pcs_notifier - Unregister a notifier block for fwnode
-+ *				    PCS events
-+ * @nb: pointer to the notifier block
-+ *
-+ * Unregisters a notifier block to the fwnode_pcs_notify_list blocking
-+ * notifier chain.
-+ *
-+ * Returns: 0 or a negative error.
-+ */
-+int unregister_fwnode_pcs_notifier(struct notifier_block *nb);
-+
- /**
-  * fwnode_pcs_get - Retrieves a PCS from a firmware node
-  * @fwnode: firmware node
-@@ -19,6 +50,27 @@
+ enum fwnode_pcs_notify_event {
++	FWNODE_PCS_PROVIDER_ADD,
+ 	FWNODE_PCS_PROVIDER_DEL,
+ };
+ 
+@@ -50,6 +51,28 @@ int unregister_fwnode_pcs_notifier(struct notifier_block *nb);
  struct phylink_pcs *fwnode_pcs_get(const struct fwnode_handle *fwnode,
  				   unsigned int index);
  
 +/**
-+ * fwnode_pcs_matches_provider() - Check whether a PCS belongs to a provider
-+ * @provider: PCS provider to check
-+ * @fwnode: firmware node containing the PCS references
-+ * @pl_pcs: PCS to check
++ * fwnode_pcs_get_from_provider() - Retrieve a PCS from a specific provider
++ * @provider: PCS provider to use
++ * @fwnode: firmware node
++ * @index: index fwnode PCS handle in firmware node
 + *
-+ * Parse the PCS references from the "pcs-handle" property of a firmware node
-+ * and use provider to determine whether pl_pcs is one of the PCS provided by
-+ * provider.
++ * Get a PCS from the firmware node at index specifically provided by
++ * passed PCS provider.
 + *
-+ * This function is intended to be used when handling provider removal
-+ * notifications, where the provider is already known and its PCS need to be
-+ * identified among the PCS associated with a phylink instance.
++ * Unlike fwnode_pcs_get(), this function does not search the global list of
++ * PCS providers. The caller must provide the provider responsible for the
++ * referenced PCS.
 + *
-+ * Returns: true if pl_pcs is provided by provider and referenced by fwnode,
-+ * false otherwise.
++ * Returns: a pointer to the phylink_pcs or a negative error pointer. Can
++ * return -ENODEV if the PCS is not present in global providers list (either
++ * due to driver still needs to be probed or it failed to probe/removed) or
++ * can return -EINVAL if the PCS provider doesn't expose any PCS for the fwnode.
 + */
-+bool fwnode_pcs_matches_provider(struct fwnode_pcs_provider *provider,
-+				 const struct fwnode_handle *fwnode,
-+				 struct phylink_pcs *pl_pcs);
++struct phylink_pcs *fwnode_pcs_get_from_provider(struct fwnode_pcs_provider *provider,
++						 const struct fwnode_handle *fwnode,
++						 int index);
 +
  /**
-  * fwnode_phylink_pcs_count - Count PCS entries described in firmware node
-  * @fwnode: firmware node
-@@ -52,12 +104,29 @@ int fwnode_phylink_pcs_parse(struct fwnode_handle *fwnode,
- 			     struct phylink_pcs **available_pcs,
- 			     unsigned int num_pcs);
- #else
-+static inline int register_fwnode_pcs_notifier(struct notifier_block *nb)
-+{
-+	return -EOPNOTSUPP;
-+}
-+
-+static inline int unregister_fwnode_pcs_notifier(struct notifier_block *nb)
-+{
-+	return -EOPNOTSUPP;
-+}
-+
- static inline struct phylink_pcs *fwnode_pcs_get(const struct fwnode_handle *fwnode,
- 						 unsigned int index)
- {
+  * fwnode_pcs_matches_provider() - Check whether a PCS belongs to a provider
+  * @provider: PCS provider to check
+@@ -120,6 +143,14 @@ static inline struct phylink_pcs *fwnode_pcs_get(const struct fwnode_handle *fwn
  	return ERR_PTR(-ENOENT);
  }
  
-+static inline bool fwnode_pcs_matches_provider(struct fwnode_pcs_provider *provider,
-+					       const struct fwnode_handle *fwnode,
-+					       struct phylink_pcs *pl_pcs)
++static inline struct phylink_pcs *
++fwnode_pcs_get_from_provider(struct fwnode_pcs_provider *provider,
++			     const struct fwnode_handle *fwnode,
++			     int index)
 +{
-+	return false;
++	return ERR_PTR(-ENOENT);
 +}
 +
- static inline unsigned int fwnode_phylink_pcs_count(struct fwnode_handle *fwnode)
- {
- 	return 0;
+ static inline bool fwnode_pcs_matches_provider(struct fwnode_pcs_provider *provider,
+ 					       const struct fwnode_handle *fwnode,
+ 					       struct phylink_pcs *pl_pcs)
 -- 
 2.53.0
 
