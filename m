@@ -4,60 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E8DEC5AC67
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Aug 2026 01:23:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D228C5AC80
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Aug 2026 08:05:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EqjVhNT1qnAO8PMUu4jkHoOq42Hqz8Dv+e48J1/57G0=; b=hbHqx6sS7LkvgFi7BnZO+HBFmT
-	5Xut1G9qxfcPnBZtYxD4rd8BkLxCCQdhrtVPZZN9YsiqtV0Cv4fl/9Ys/VqeC3popM5Mab1D9CK3E
-	UWNpquhM1ImlMPgaUkHmMC1K/mDNfr6Z7TtedPF9EEGj3H1iEXPcx68LrEmJXnLCXN6ZUW59ng1cw
-	BwSw9guCtjpxGZ1TlA1QRLf9ZtB3p+q6OifCIusHR4fbUSHbVS0m6aGQTQD2eA9zuQBm+z39DzkBR
-	cJQhWUEtMX6DGFkMwcqc6XHBK9B4qBo3dujMkOHvXeK7Cha4m6LHZZXRKeo4oBi3UORRmNb4dBFm1
-	0yCEWhcQ==;
+	bh=JNvAhMakBMCB2Za5yQlirrHhgtFAds445Zn94S2EPWw=; b=uq2uoQSi641zC/SqMOZvM/KVLB
+	ZO5kMlulnvjbI8F+6rBfeNyeWgiAjAtSS8xaWZ2HB6G39BhyEuW1EcSnLFvgkoBrMGouLjv+zfCk8
+	Mv/PAHk57ia3VmWTYgsVepj9kVyq/sXOU+d5dXnPmFsa/BfpoFJLYH0vA11f//nLOZsPoXik2wtq1
+	IUAgKKjEwQjrMaBV2NjBtzszMYXT4A2Zvvz0GlfbYawk076MLVcLxXon7bEoRDkcTQHfaTlfP+jFV
+	YOcs3O7fSv1vxbWSrG4b+eVI6fTP02X7LLjELo/CrYJn0LjdLNn5TJ8RuBvpgtUE1Hl9ac9xYyEK5
+	3cv6fbBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wssGX-00000009sAE-3sEk;
-	Sun, 09 Aug 2026 01:23:53 +0000
-Received: from out-184.mta1.migadu.com ([95.215.58.184])
+	id 1wsyWz-0000000A51f-396q;
+	Sun, 09 Aug 2026 08:05:17 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wssGV-00000009s9j-0PQQ
+	id 1wsyWw-0000000A51F-21IU
 	for linux-mediatek@lists.infradead.org;
-	Sun, 09 Aug 2026 01:23:52 +0000
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=justthetip.ca;
-	s=key1; t=1786238623;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=EqjVhNT1qnAO8PMUu4jkHoOq42Hqz8Dv+e48J1/57G0=;
-	b=HDC7bJfrPQAwb+I5t5yDFu7FrXgAXSugEXQ+adp9X8zP4TH+OMXdbfUUQE2Re7vh/5Fvo2
-	PGy5qhm6LuknIsE1Tps+ycq6CSdw/k9kx4DokQdoa7SlUAKRaKAzxe9S0EjkmkA5v3DQ/7
-	27qbQIhEJ96TqOxMaZQF3kbEu0nopVzrp6PMRhPVoVl1Rp2nnNb7C+XHQiieVbK/Wqi/Ix
-	JhKlQWW01zEMkRmqCCEFDOjqGOcWzdf2eaN2hT49B+ESlT1+ms7diDxoKQYMWqMBvaUO+h
-	qmlzXhmKAC0SiUTN6P/J95DCAJiiUg8oELZWWURSL8pXnIXuJ0JUgCIpBbGkaw==
-From: Devin Wittmayer <lucid_duck@justthetip.ca>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Deren Wu <deren.wu@mediatek.com>,
-	moosager <moosager90@gmail.com>
-Subject: [PATCH wireless] wifi: mt76: mt7921: check drv_pmctrl return in the PCIe reset path
-Date: Sat,  8 Aug 2026 18:23:09 -0700
-Message-ID: <20260809012309.43657-1-lucid_duck@justthetip.ca>
+	Sun, 09 Aug 2026 08:05:15 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id 98e67ed59e1d1-38ea87caafeso545891a91.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 09 Aug 2026 01:05:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1786262713; x=1786867513; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=JNvAhMakBMCB2Za5yQlirrHhgtFAds445Zn94S2EPWw=;
+        b=k8kaWJ8vhVIKnWybcjcLQzPqn2cHuwJMKZMjdTDEF/lF6doBZmdSFv4lNTcL3v2CSC
+         N6LZXjorJnzYye6gqTZxcyMecI6jOOv06pv5fAwlhM3QfAISHri6IqjRHGaUVZbpyzYN
+         quhqz6s4bwp9XXWXrgfCP6Mvcdq0DfkTgBR/nDBxy2KsezpvLoIWFh9CV71BlrpsA4nB
+         3YR/uG3mZesaIn7CfRRtcFi2hpYE/4GteWST74Td9P7MqCG9nT/wdxErR0QCUVlm023U
+         zWpXpE697/CgJy/HTItGyuAI2F4qcHgUvXkjEQTSaz06JnuBaZjDuiEKX3QUVMSPPkTR
+         P3yQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1786262713; x=1786867513;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=JNvAhMakBMCB2Za5yQlirrHhgtFAds445Zn94S2EPWw=;
+        b=tFhzZdX3/qk+O7HlLH38LEVcywFoVCdX/CrCHjdM8+sw9SolnvAw19znIlOvLfD3ej
+         Au7BARllyIbo3gQsQXVfv63RzukSZrlpZod6fsBTQcUe++Cmwyat3Z1n74b4rTxV3u2/
+         IJgBUrAU2gTQKCaYUM0pX3CTfA0uSj5fbah9K0TnVTl/dOUCQkg1+GNZT/EozX//SxnA
+         c/FoGqLgZQKx9UVPM4eSPTJRd/w/cioZo05Zaff9/7h8bz0Vc8a4w2CTRedvjkCQrf6+
+         MLB6LeaNCIDa+VicfdzFLJAs5X4TknpG5LrsRhgDb1NIUwHxv2BnnMq3HBn6kc7Lt6H2
+         MhQw==
+X-Forwarded-Encrypted: i=1; AHgh+Rrwk2/EJhX/f0V5aD2MYavInzTVgMhnnq8v7KvTElw/c0GuR1TbjEcfb8NcufXIXifS3TPu1ShLlyfebRhvgw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzcA6Myb1dLCrnaZWNMHDeaZW4AYmhZaxoW9Vf0PhhS9r3rQK5v
+	+txdMvbdKI8ciToADrZ+AyfipwQGCXg6+F8YfRRyvc3nSoAyRaQqwnmi
+X-Gm-Gg: AR+sD128l3nvP2TMxHAeP5xxrBWBHslP9iqLlBvnT5OtA9TK/t1hShmCJ8y6rN9fRTa
+	brWShwTmdOVmBIxYxSUWeqO8qrzmmxy5vVKE9PQqwGq2lrVz5sfBa7MtEfzCf9rW788VYraatcc
+	kTWYfwrcBEaDx22cZuoIS7jXJMTxW3IDJXtjtTZrp4Fcm1KEGPWD0tjahp5Hg294Q1x4cFXu/T8
+	2u6c3+ZRkGFKCj2+hEhIX+allDmqYot9pVxQsCKVhmN6ezhQqEryYCR43nswln+1FqPAEbMiScY
+	TZosyK7QvdGhBvtLO200keJHzjumQULP5cr8HoYde4+hkmOkoPveP4kvp+k/eN3HtA+5q66knyi
+	J8wIj8R/1AVTbPRpoxKBiYYsaTZsn+/Z19YH2vvHeCp4WrZJXcj5fGPVxHh11N3m3d+T83lgewz
+	a7o6hGbLGrwvuVt9jD/ZaQryxzLahcyOMsZSc8L8fMOD9Lj7sW0fIx/mj+nHLpNm07iA4b
+X-Received: by 2002:a17:90a:c106:b0:38e:250b:122f with SMTP id 98e67ed59e1d1-3909d8d5993mr21121164a91.16.1786262712632;
+        Sun, 09 Aug 2026 01:05:12 -0700 (PDT)
+Received: from DESKTOP-TIT0J8O.dm.ae ([49.47.198.15])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-14101b7b39bsm23315598c88.14.2026.08.09.01.05.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 09 Aug 2026 01:05:12 -0700 (PDT)
+From: Ahmed Naseef <naseefkm@gmail.com>
+To: linux-gpio@vger.kernel.org
+Cc: Ahmed Naseef <naseefkm@gmail.com>,
+	Benjamin Larsson <benjamin.larsson@genexis.eu>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Linus Walleij <linusw@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
+	Rob Herring <robh@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 0/3] pinctrl: airoha: add EcoNet EN7528 pin controller support
+Date: Sun,  9 Aug 2026 12:04:57 +0400
+Message-Id: <cover.1786262697.git.naseefkm@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260808_182351_558124_ECBE4220 
-X-CRM114-Status: GOOD (  10.69  )
+X-CRM114-CacheID: sfid-20260809_010514_567951_7B7D2BAA 
+X-CRM114-Status: GOOD (  13.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,55 +105,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt7921e_mac_reset() ignores what mt792xe_mcu_drv_pmctrl() returns. The
-probe, suspend and resume paths all check it. The only other caller that
-does not is mt7921e_unregister_device(), where the device is going away.
+The EcoNet EN7528 is a MIPS SoC that uses the same pin controller and GPIO
+IP as the Airoha SoCs, so it reuses the shared driver code introduced by
+the split into per-SoC drivers. Its register layout differs from every
+existing variant though: all IOMUX mode bits live in a single CHIP SCU
+register plus a few spill-over bits in IOMUX Control 3, EJTAG has its own
+enable register, and every pin configuration register is at a different
+offset than on EN7523.
 
-If the driver-own handshake does not complete, __mt792xe_mcu_drv_pmctrl()
-gives up after MT792x_DRV_OWN_RETRY_COUNT and returns -EIO without
-reinitialising WPDMA or clearing MT76_STATE_PM. The reset continues anyway,
-writing interrupt enable registers, cycling NAPI, resetting WPDMA and
-downloading firmware to a chip the driver does not own.
+It also differs in a way the shared code did not model: only GPIO0-GPIO15
+are wired to the interrupt controller, while the driver assumed all
+AIROHA_NUM_PINS GPIOs could raise an interrupt. Patch 1 adds a
+num_irq_pins field to the per-SoC match data to describe that, bounds the
+interrupt callbacks and handler with it, and feeds it to gpiolib through
+gpio_irq_chip::init_valid_mask so gpiod_to_irq() fails up front for a pin
+that can never be an interrupt source. All existing SoCs pass
+AIROHA_NUM_PINS and are unaffected.
 
-On an MT7922 with MT_CONN_ON_LPCTL held asserted, a triggered reset gave 8
-ownership failures, each followed by an MCU timeout and a failed firmware
-download:
+Patch 2 documents the binding, patch 3 adds the driver.
 
-  mt7921e 0000:04:00.0: driver own failed
-  mt7921e 0000:04:00.0: Message 00000010 (seq 7) timeout
-  mt7921e 0000:04:00.0: Failed to get patch semaphore
+The series is based on linux-pinctrl/for-next, as it depends on the
+per-SoC driver split and on the CHIP SCU lookup by "airoha,chip-scu"
+phandle that landed there.
 
-With the return checked, 26 ownership failures produced no firmware
-download, and mt7921_mac_reset_work() got as far as logging "chip reset
-failed", which it never did otherwise.
+Tested on a DASAN H660GM-A (EN7528, Airtel), booting OpenWrt.
 
-The call sits before any teardown, so returning early leaves NAPI and the
-TX worker alone. This does not fix why the handshake fails.
+Ahmed Naseef (2):
+  pinctrl: airoha: limit GPIO interrupts to interrupt-capable pins
+  dt-bindings: pinctrl: Add EcoNet EN7528 pin controller
 
-Reported-by: moosager <moosager90@gmail.com>
-Link: https://lore.kernel.org/linux-wireless/anG46qbvCqCHGF-f@fedora.fritz.box/
-Fixes: dfc7743de1eb ("mt76: mt7921: refactor mcu.c to be bus independent")
-Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
----
- drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Benjamin Larsson (1):
+  pinctrl: airoha: add support of en7528 SoC
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
-index 0db7acb3a637..c4261f66f469 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
-@@ -57,7 +57,9 @@ int mt7921e_mac_reset(struct mt792x_dev *dev)
- {
- 	int i, err;
- 
--	mt792xe_mcu_drv_pmctrl(dev);
-+	err = mt792xe_mcu_drv_pmctrl(dev);
-+	if (err)
-+		return err;
- 
- 	mt76_connac_free_pending_tx_skbs(&dev->pm, NULL);
- 
+ .../pinctrl/econet,en7528-pinctrl.yaml        |  190 +++
+ drivers/pinctrl/airoha/Kconfig                |   15 +-
+ drivers/pinctrl/airoha/Makefile               |    1 +
+ drivers/pinctrl/airoha/airoha-common.h        |    3 +
+ drivers/pinctrl/airoha/pinctrl-airoha.c       |   33 +-
+ drivers/pinctrl/airoha/pinctrl-an7563.c       |    1 +
+ drivers/pinctrl/airoha/pinctrl-an7581.c       |    1 +
+ drivers/pinctrl/airoha/pinctrl-an7583.c       |    1 +
+ drivers/pinctrl/airoha/pinctrl-en7523.c       |    1 +
+ drivers/pinctrl/airoha/pinctrl-en7528.c       | 1204 +++++++++++++++++
+ 10 files changed, 1443 insertions(+), 7 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/econet,en7528-pinctrl.yaml
+ create mode 100644 drivers/pinctrl/airoha/pinctrl-en7528.c
+
+
+base-commit: 87e787e591a82b9b324aa0968795b256f789d287
 -- 
-2.54.0
+2.34.1
 
 
