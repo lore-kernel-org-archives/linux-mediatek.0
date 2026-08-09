@@ -4,143 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2200C5AC80
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Aug 2026 14:54:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80712C5AD4E
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Aug 2026 15:02:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H/cw6oMGvUHB+hNpkuOSeNVySjC3l8LxiE9FdEJYQLw=; b=2nTHQt1gSLTnSO5FRGOueg0Oag
-	A/XBgzPx3697AeThE72Kb145JYNPe9Sg0Udjfh1PfPDu2Ny+4kzvGJllBdDKwyf9W3rby2eKcM467
-	BMqGgocsE5nal58wo8TmYTkj3XzneLTtJmhcy1vApMPo7zVm1KMOao0EIyig59JDPI7gmZOU08Esa
-	mX79Jzg1eveG/vrdRB/dZiY1Vj1LHnevH+Dxo8DHVW03xuBeBhMv3QNDX+0DGbCOOstTPJ4rn4Ecy
-	vQQvpzsBEPiGmWNLoou1HJ3fBEkXhyceTEfFC4X/h29XCtu3qw7RfI2GtBYjqAKg1GSTZklEAWYTp
-	p25dejVA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=f2Ph1N2YXDcF/EsJKreKtP+YQA5yS18iu0pKlYJPT7E=; b=ZZN6SDOuIYxMj9Kxzsr2kV8LWp
+	HjbTMTJAruZuwQfKNu894kCZvq24gTCP2L2NaUiRPi8f8H7Q+OMPHOBqo1nnjaIqMoEZDh6m0wcvn
+	mpG3q95Iar+7iAlkQEnYdBDUW+wd6CSWcCbzvX10an9qxcd3b11cuu6zIPYU5Dj6uwIcp8hQgueVM
+	1x3pyNPpvNXaQN+1gMVFuxCqi42sILSeAgeScyrxuEOBMCX95BhCADXxWveufDV9Nw0NJFvixzCks
+	PsVN3bBUdp8JRNFOce6iNht/Wz+Wtih0ylOCakXNaZkhsNN5e7oJaWZ45CDbx9u7yXD8jl6p9uklv
+	0cmL/bGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wt4ud-0000000APPs-3QUm;
-	Sun, 09 Aug 2026 14:54:07 +0000
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
+	id 1wt533-0000000AQ46-2kQZ;
+	Sun, 09 Aug 2026 15:02:49 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wt4ub-0000000APPA-31yw
+	id 1wt531-0000000AQ33-09NN
 	for linux-mediatek@lists.infradead.org;
-	Sun, 09 Aug 2026 14:54:06 +0000
-Received: by mail-pg1-x52e.google.com with SMTP id 41be03b00d2f7-c9e0b89e228so427211a12.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 09 Aug 2026 07:54:05 -0700 (PDT)
+	Sun, 09 Aug 2026 15:02:48 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2cca0c5799eso9528145ad.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 09 Aug 2026 08:02:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786287244; x=1786892044; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=H/cw6oMGvUHB+hNpkuOSeNVySjC3l8LxiE9FdEJYQLw=;
-        b=OX5Ho/BzWooi5IdpLgLEmb/awHdyIPK9dMG9D044vRltTEgn3c+i2jbroTkLRbx6js
-         aniqcdnex+8Ysc+5Q4FsTyz/8uW1sFy2m8ds8oWh8pMX4EoLPdCpB0Auh7fGvulvgjKc
-         V7nHSSQo1xCHzb0YVj+QdgyIruB+XeKvPUkjmAeQej/LtL9Ez+kUYmFBbIdts/nLhl0c
-         5U+PEu0dft9cQKGxdhh372+aIdMpfJ6AoITsTueh1/XAe5buMlOei2PnuTObC0IQlzqC
-         qjmTeb5qauep8eGnJlGM9SUG9Aa4QD4zQi55su7xH2if8GP6S6rLemsykox5J3NuQ851
-         ZvOw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786287244; x=1786892044;
-        h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:sender:x-gm-gg:x-gm-message-state:from:to:cc
+        d=gmail.com; s=20251104; t=1786287766; x=1786892566; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:sender:from:to:cc
          :subject:date:message-id:reply-to:content-type;
-        bh=H/cw6oMGvUHB+hNpkuOSeNVySjC3l8LxiE9FdEJYQLw=;
-        b=aSjCxAwxf4ZFzlUEEQ/SBiwT68AKLemjo9YV+u2GAURvjpfHyMH87h8IUsKBDDVwXj
-         IfFwG4ROme9qiMjrpmeWYp03L8ar/DJ53dDFdUYkKdCzonmP7aqBVMfSYpi/XhgL5h9r
-         wrxQGFG50q/MiZPALug6D3YNy7DLl/ApFeeEnHkm7b/Vm95xI3f3l3pOngrL2ATnTdVm
-         d479jvCj+w+TWVj51tpGujCDcLdnp8V7VGuyu6hYbhjEBa7mrdJbJnLloaMQmBNlAEEP
-         ttXImMR3LaRLzSpKT50HHb3wRLw9heSbnjA5ERhYar77uH30vHyBzXHzWWIbq67N4F6e
-         2DqA==
-X-Forwarded-Encrypted: i=1; AHgh+RrWC6BfqGTXe2wcUlx95Y8ngqhC890nBA1rsbipoE9VSrhWJwon2/asulUc+6Stb3tLuACX/pAKrMNxhGr7jA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxan4Btxpey/mDzCxOMipDGvwYmnkhSStHZM0SI4YU7eVQBj2VE
-	aLI6hpZ657XgdYuDiPHLfCndvuz2xAWQ0eTQZfnymLoNGQatdu6FKeNf
-X-Gm-Gg: AR+sD138CSQTzs0saXgdlHwTa+XO0N1dAK9quUyteLUSyM5Pnc5JtjtkEsN7AudanQK
-	a7BghDmE35BUVuTfn45srVr402KHG6UoKAbYAZbczm/gWnwXy4yMlfGbQbQnB38SXgZXRjtISDh
-	0XB6wnGvrOUBFmZ30pAxBgkMWhCNcDrp0hglLYHC7dDsr1GJhpHMVe6ScJfxubrI9aCfurnv3kD
-	r4o2U2Kv7opKET41tIw3P5CVZs/kHh85oRwsh1SiZXr+k1DbAROvDqljBm6CrkxqqLdIOmLKLaP
-	bsZMxX4h34etgrcf5/A8bituDrLKvNZ5bKT8eYCAgbE+BPBUgy/nLv1zMuWwyp+aFJcfBh93yCR
-	HQO0p1SXklqZgyO+stkncQPAKKcnj1ZaVl1Bg2UfhXfYhqrYdFFjINcstTcCX41Ntz+WCeKCqbY
-	yiN/zfX++H6rkRutnxSt45oxysEvNdy+sI9lxN4pttnHHsJNxhFvr1Kqb691rnPswDIouwwoc+K
-	5u0cyJOyYMKXOopLPpeGuLuTmqCgECdfgIBtw==
-X-Received: by 2002:a05:6a20:e593:b0:3c3:fb32:a004 with SMTP id adf61e73a8af0-3cbcea16454mr15497371637.34.1786287244292;
-        Sun, 09 Aug 2026 07:54:04 -0700 (PDT)
-Received: from ?IPV6:2600:1700:e321:62f0:da43:aeff:fecc:bfd5? ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-315be86e90asm31456515eec.3.2026.08.09.07.54.02
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 09 Aug 2026 07:54:03 -0700 (PDT)
-Message-ID: <ccd8fd7d-4555-4ac5-ae73-c16e98b8edc8@roeck-us.net>
-Date: Sun, 9 Aug 2026 07:54:02 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/4] watchdog: qcom: Propagate errors from optional IRQ
- lookup
-To: Bui Duc Phuc <phucduc.bui@gmail.com>
-Cc: Wim Van Sebroeck <wim@linux-watchdog.org>, Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-aspeed@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org
-References: <20260807081652.38692-1-phucduc.bui@gmail.com>
- <2eb8b31e-a3c6-4310-b9cc-7acd135b6c99@roeck-us.net>
- <CAABR9nHqKKbxkzBNkENadhFJgC_HuetV+ab7SVsGH+cwbF+OFw@mail.gmail.com>
- <9971b3aa-cb1f-44a9-9d58-4f75f0c6ccea@roeck-us.net>
- <CAABR9nHu4pt-Rg8Aq0B6KfKFHX+C1xQmMk6=j8jq1Zn-MQ0p6Q@mail.gmail.com>
-Content-Language: en-US
+        bh=f2Ph1N2YXDcF/EsJKreKtP+YQA5yS18iu0pKlYJPT7E=;
+        b=UqrKWrNSTCx5h/QsnmeEZoinFqKt7lGlrb2wGLYMW2IV76/mdxlVUnk0+jbrh93SON
+         UjVuRX39wHwKtqkxyL7C23WAEQYvmejzkQ6QFCW8CBh9DzzUp/AG04hszJX5RNpTaGUv
+         XePuiPUqduylky3rO5tO7Dfxu/RklhsU7nPRpPaNAT3wl15ckkahIatgl4FHxdFU5fg8
+         GD6jQwbsieTqlRw7AHJ6fTZ7WYvLnk6U0nbEeBFAh65GHkLDQx13dW+wZVLblLxkvL+t
+         f1wbucCroOh4VCQ7ih0trP4sSHjYb84/sbw2IGMYkx+TtpCevC2aq3SsimHCi3rWJ9hf
+         mmkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1786287766; x=1786892566;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:sender:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=f2Ph1N2YXDcF/EsJKreKtP+YQA5yS18iu0pKlYJPT7E=;
+        b=OHQxM56B6nswyUSoZhhVmJ5fabiG3JHHU4Z837sw/v/iraJnQQHltCOr2OYISi6oyM
+         JHwKu3TGYk80M102G2EL76JfEoYY2W1DFxYZjMS+JUJeuun8+C5cyfnRh/yF8eLZ8fCp
+         rQ+dOTHmUIe4hAiKniHQJMbVEgEL6uvTsmO66owLOGM8GYX7MMbaF93dnvU0SWo0yry7
+         Pxj9G0XEY8W2+07ouTCSdI4g0woYPb81bejtaMQR+I1vuYoqp5tK/ZV5otLuPdfWf7kb
+         gRT157BRODCqMWOFdSZK7ATDftC7WV1vN6Ha083Ul87JanyqZnM610gvS52Qsp+quJlR
+         iWkg==
+X-Forwarded-Encrypted: i=1; AHgh+Ro1Fon2u/vzVLjdkKUgphIhbhOPsR0OF0r57ezh3jnURC12guyrpF+YYh0FR7CpEVJn7JDOlWU2rhCzuSkxwQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzao6eVzGbBuyvss46PEGkNPtRNkFpiOokIgTWKI82FEAV5QNft
+	nx/NT49k5OnsAZVV/z8MD4sRqseZntLGMrY0H6l9XnLwUky2tGE8+C+6
+X-Gm-Gg: AR+sD11VlmzYfv+TX4SJEspOjzdzG8xU8e/zotPcqo1MLXd6J2VyOcOyrMvE0Y81lQ4
+	aL9mATFX7qQ3QnIcmdScGVyiNfOVBx4/N3sCTte+aHdcO3xLazHsqNvPot68ipToUVzoRKtnsgc
+	u6PebknBaI2etaWeGFKJzus1zChOJXOFiww0w+dfhf/92bjBHGp+DFVkiuVrzaatwWZ2IRJlG17
+	57IH6Kvc8wCzlOOrKOVe6bvT6+hA7B1G3MnApzY03gYmGZt+8iru2eEIr1QHTnbBjdgo6Bj4Fmk
+	U5/PyUXl9cvSytAtbDmP5DkocUKigr1PVs3pJr+2z3X/2EBnKXpcZobUMkutZ9unhifKOb/GWau
+	47ofCx+DN7Hz4ZrVsmX/3R4/UWfCHnUJeBXUSoFVIc0xI1tYwhx6NwBWj7pqKKTT9lSPm7absgL
+	z496z9IUSOWwPqclAbGZSeWCICE6VPhUQ837iGPZdojHYHl9hrlj73qi6kkxfJibX7tCALPuz0r
+	/Pbdlla3SMQ
+X-Received: by 2002:a17:90b:258f:b0:38e:c232:9d3f with SMTP id 98e67ed59e1d1-39282247ee9mr14215543a91.5.1786287766154;
+        Sun, 09 Aug 2026 08:02:46 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-141019b41d9sm25594852c88.5.2026.08.09.08.02.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 09 Aug 2026 08:02:45 -0700 (PDT)
+Date: Sun, 9 Aug 2026 08:02:44 -0700
 From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- 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
- np3900V20aS7eD9K8GTU0TGC1pyz6IVJwIE=
-In-Reply-To: <CAABR9nHu4pt-Rg8Aq0B6KfKFHX+C1xQmMk6=j8jq1Zn-MQ0p6Q@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: phucduc.bui@gmail.com
+Cc: Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-aspeed@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 2/4] watchdog: mediatek: Propagate errors from optional
+ IRQ lookup
+Message-ID: <4a875307-19ea-486c-923d-78a362651f60@roeck-us.net>
+References: <20260807081652.38692-1-phucduc.bui@gmail.com>
+ <20260807081652.38692-2-phucduc.bui@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260807081652.38692-2-phucduc.bui@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260809_075405_768811_B681B4B9 
-X-CRM114-Status: GOOD (  17.09  )
+X-CRM114-CacheID: sfid-20260809_080247_076607_122E7A88 
+X-CRM114-Status: UNSURE (   9.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,108 +108,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8/9/26 03:01, Bui Duc Phuc wrote:
-> Hi Guenter
+On Fri, Aug 07, 2026 at 03:16:50PM +0700, phucduc.bui@gmail.com wrote:
+> From: bui duc phuc <phucduc.bui@gmail.com>
 > 
-> Thank you for your review .
+> platform_get_irq_optional() returns a positive IRQ number on success or
+> a negative error code on failure. For an optional IRQ, -ENXIO indicates
+> that no IRQ is available, while other errors should be propagated.
 > 
->>>    irq = platform_get_irq_optional(pdev, 0);
->>> +if (irq < 0 && irq != -ENXIO)
->>> +        return irq;
->>
->> This is still wrong. If there is no pretimeout, it does not matter if there is an error.
->>
+> Instead of only checking for -EPROBE_DEFER, propagate all error codes
+> returned by platform_get_irq_optional() other than -ENXIO, so that
+> failures are properly reported to the caller.
 > 
-> If checking data->pretimeout is required here, I'd propose one of the
-> following approaches
-> let me know which one you'd prefer:
-> 
-> Option A (minimal diff, keep existing structure):
-> ---------------
-> irq = platform_get_irq_optional(pdev, 0);
-> if (data->pretimeout && irq > 0) {
->          ret = devm_request_irq(dev, irq, qcom_wdt_isr, 0,
->                                                 "wdt_bark", &wdt->wdd);
->          if (ret)
->                  return ret;
-> 
->          wdt->wdd.info = &qcom_wdt_pt_info;
->          wdt->wdd.pretimeout = 1;
-> } else {
->          if (data->pretimeout && irq < 0 && irq != -ENXIO)
->                  return irq;
-> 
->          wdt->wdd.info = &qcom_wdt_info;
-> }
-> ------------------
-> 
-> Option B (check moved out, before the if/else):
-> 
-> ------------------
-> irq = platform_get_irq_optional(pdev, 0);
-> if (data->pretimeout && irq < 0 && irq != -ENXIO)
->          return irq;
-> 
-> if (data->pretimeout && irq > 0) {
->          ret = devm_request_irq(dev, irq, qcom_wdt_isr, 0,
->                                                 "wdt_bark", &wdt->wdd);
->          if (ret)
->                  return ret;
-> 
->          wdt->wdd.info = &qcom_wdt_pt_info;
->          wdt->wdd.pretimeout = 1;
-> } else {
->          wdt->wdd.info = &qcom_wdt_info;
-> }
-> ----------------------
-> 
-> Option C (default-then-override, only look up the IRQ when pretimeout
-> is supported):
-> 
-> ----------------------
-> wdt->wdd.info = &qcom_wdt_info;
-> 
-> if (data->pretimeout) {
->          irq = platform_get_irq_optional(pdev, 0);
->          if(irq < 0 && irq != -ENXIO)
->                  return irq;
-> 
->          if (irq > 0){
->                  ret = devm_request_irq(dev, irq, qcom_wdt_isr, 0,
->                                                         "wdt_bark", &wdt->wdd);
->                  if(ret)
->                          return ret;
-> 
->                  wdt->wdd.info= &qcom_wdt_pt_info;
->                  wdt->wdd.pretimeout = 1;
->          }
-> }
-> -----------------------
-> 
-> Let me know which one you think fits best, or if you'd prefer something else.
-> 
+> Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 
-I wpuld probably implement something like
-
-	if (data->pretimeout) {
-		irq = platform_get_irq_optional(pdev, 0);
-		if (irq < 0 && irq != -ENXIO)
-			return irq;
-	        ret = devm_request_irq(dev, irq, qcom_wdt_isr, 0,
-				       "wdt_bark", &wdt->wdd);
-	        if (ret)
-         	        return ret;
-
-	        wdt->wdd.info = &qcom_wdt_pt_info;
-         	wdt->wdd.pretimeout = 1;
-	} else {
-         	wdt->wdd.info = &qcom_wdt_info;
-	}
-
-(which I think would be a combination of B and C) but ultimately it is
-POV and doesn't really matter.
+Applied.
 
 Thanks,
 Guenter
-
 
