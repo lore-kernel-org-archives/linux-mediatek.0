@@ -4,114 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED83EC5AC80
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Aug 2026 12:12:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C52F3C5AD4E
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Aug 2026 13:23:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1F/+cfZIAkAn2MH5HWhnU43a68MUjIzWX0xwmyWQRGo=; b=yZT2i61Djy7/oQzS6NP04KlY17
-	9uBrIBnwNexnlSsBuXkMftLQ4gaW8YtWkuBpskVGzSUeCxgxBOIskQxp6f7jBsw/bUaxBD0isDab6
-	SKL4w2mEh7yeBjIgeLStrgr5ssfy34JudzrlZoBzQiYNBQX2uAi6U9LLlxJxHf4QCIqoUbImvh/dj
-	gFH2nA2AwIfDee2wMvw58WoVVYTBN+rbPvuWovO7k81aGYnrUJdzatsbE+7ABjRJVrTSdNFvnmYzw
-	mKtRDK05JJMK5rDYAm2yOM9XiAGJmFtk6rbS+nxjGL1LKVFD0sAHPGFhR5Vb2/7iyT+Fwt4bydBo2
-	/gGlbzUw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jiE5KveVgNl9XkJ4WjLCf6DiWT0Rzjhuj8+wghGG/qQ=; b=4R6qtFDvzaFX7RCdFyX7cEByGF
+	L7Fmb2FpbdTODXW+74v5923Lrokcwf2HZXjSjPuTkPSj0gE8GniIzFdTbgqLBbl/Y0Kwwhm8RgGgg
+	3DwhQivAaCfUfCWxtq8Z6x+dNQ8X0U8I1Z0htsJqIvDh773xSseUobCF9KoT6qJtjnCrPhudlaKnX
+	blPFFbeCVAk+dAHcF9URlskPr4MC9oqg3aFoeO1IkKpeix5y8uyDWempN5mVtXs1Oy3x+tCPIZUGN
+	wUx8N52RL9FQ6iPbg62VS2m7evWHcgDWH3ki6aKzUxOaEwFPYIBhKCZpuxzqbMrpqnvyLmqnFaFsX
+	NTgZiQUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wt2OF-0000000AGzf-3LHU;
-	Sun, 09 Aug 2026 12:12:31 +0000
-Received: from mail-qv1-xf36.google.com ([2607:f8b0:4864:20::f36])
+	id 1wt3VE-0000000ALmi-14J3;
+	Sun, 09 Aug 2026 13:23:48 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wt2OC-0000000AGya-3pAz
+	id 1wt3VB-0000000ALlr-3S3k
 	for linux-mediatek@lists.infradead.org;
-	Sun, 09 Aug 2026 12:12:30 +0000
-Received: by mail-qv1-xf36.google.com with SMTP id 6a1803df08f44-9034b6b7674so7354896d6.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 09 Aug 2026 05:12:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1786277547; cv=none;
-        d=google.com; s=arc-20260327;
-        b=ZnuSqlTR+95Tc8D5yJErQZZ9VD33XPz9iBXoFQQzCOdjlnQ7xCZ3VoBh+tnPZCyHph
-         m+S73DgO5eFB9AKnNhWbT7pvHsCyz0TbE8Y0nPSUuvrMPjSbxGyY673C94PDMLNe3h5h
-         Djm/eUyxGDcfGwHkfrc8Jdxcx/snkOY0xcXgs/ofsxtit7cuixQBXjK7jPV0CD4zMsnW
-         41Ih8YioErQUcgmL+TEUWBId5vbr2FUJCT+bPdxH4HLM4dM4OCfYynrPVv4ul4DkT9fN
-         dGam2pgQgbpYFzS18SC93fNZ5qiLUsrDCw7AQ8DEitBexioOSteRNatn2mGmFa3WALRB
-         GYOw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=1F/+cfZIAkAn2MH5HWhnU43a68MUjIzWX0xwmyWQRGo=;
-        fh=o6V02kF+xi/VHDTAYhT3zS/N8Z8bpc4jpTxAkuV8K9E=;
-        b=IkfdyhYLLzvAOygPNSoGiex4Qe4LKexXptpOoTBgXwf01jbK2oSSLzQ2CA5duGh1T4
-         8vU9yt7ggnBD7gd8DygjRKDIdN/oyGP+tYoYTvmxv/43aBn6/IbIpeszKEiZlecNvm79
-         vu9mudUFv+EqKXjtl1CUYnO7SrJlHNGTtJ4jlU4hLmG3TC2RcaIlmOG1CRNguwhU5mfR
-         Qhsh+VBvM5eiT0l7DesanUX2cRTuQgctqXsH0toXDw6dS1uMChlYeSrd9olmT8NrU1Vm
-         s9HxlHOye3EHYrYAuFFPYTXVo3DVjqFJ8RxeJryLwnt9SJ5exrzOQuD3WRFLg2F+IP+x
-         520w==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Sun, 09 Aug 2026 13:23:47 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-47fd4531020so522092f8f.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 09 Aug 2026 06:23:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786277547; x=1786882347; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=1F/+cfZIAkAn2MH5HWhnU43a68MUjIzWX0xwmyWQRGo=;
-        b=kZ6dL5byDCyupt+QwW+dmtNoTrZNHj9ABpVX/x7M7aTsSuo6ryDMknKpFiqzOFr9A9
-         3Y1wCoRIwMN04BpYO+SS56KCcty2SE07AWPq+wiEKOeSf3udRuayt5fIUSIvUOGOILXn
-         WbE7C/Bli6p1mvLBlUSa7OSMsjyWzpelyGYO53HnLD9nHyh3xSgbavKZFFn+aQYnqTbR
-         xEv7bGuAMfYp/HI1LyzCmW0QjN2g5dmV1FObb0e7nRVzXJsRQjBKQLaKYNSUZZrthL7T
-         Y0LVYu8szMBaD+7ibA+KBV4wm6UdYS5nLVVFsUBHmk5L9hNi0fdmQ1WQBXQ5s/lFyXuH
-         gjdA==
+        d=gmail.com; s=20251104; t=1786281823; x=1786886623; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=jiE5KveVgNl9XkJ4WjLCf6DiWT0Rzjhuj8+wghGG/qQ=;
+        b=Eoe2Uie0MhSG6MkT2Qry14u66upwKPHeKBbtgXPIrCnM3UxBMA3NvEk4bmZ+4/AC+X
+         THYOkxW8IH7nIyTodhkpU2TNKvV+J1p/PAUfFIq2C+HlrpUBKPzkO1bh1fEp16c5/B+U
+         5x0PO45eCyPBC067cO6pmNkDrXRzNwaXtoE59vq7/tstJ5Fyc/eIj7robSCsWu2hTPKI
+         N/5yZvHSdnIb7qjt9XHWEkCFkaGlGWC2PzE0uK7KYUfDlmUb1AxPuzjvT5TGV5TlQ/SK
+         +UyoucHhM6wwLNzzd1KvAL5EFOvxRuES6smTj0r/mnlwi0bI6r0/nY05YzgKuYdJ88t8
+         ybMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786277547; x=1786882347;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=1F/+cfZIAkAn2MH5HWhnU43a68MUjIzWX0xwmyWQRGo=;
-        b=UoiU3Q2sAPsLWpTlo3rUfOcENKhIphaJJNVlciWhPX+w2GyjrpI07Ip9MtczPmjhKp
-         roLQFz0RXrb+AX51PfSh0a9Bn7XwqQPlet+yzqGVSL+PSKWRu4w1M6NHl33Sogo4tkkR
-         RKA7UXw4kLn2xfowAEmcjkgwuHSx2Xv8sHMNcDwe8RaYfeiPKr/UBZeBUtuDsQxbO00h
-         YNL19ynkrHN9JNKPvOj1yhqJLicIkrYmmUZZYx8fdFOWoI+49d+988Av7sZxHz3fTQGx
-         0OTsoNeiAHYNoieWZkzEbB9cW3BJOOsS2fY3Nkm2CGX+c4ZxC6r3Y6SyYPiBlHxSg8Qh
-         csLA==
-X-Forwarded-Encrypted: i=1; AHgh+RrVlh4s4PTVGTZzkY7DZkbU5Bo0+vYkG4uFI51Ilyk+ywhR6xFXL+KU6AK7aDBddZWjuTXi8HvSOQ9NGhk2Qg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy5A0ft0GxWXLkgbmA7TTvWp2VtXyjW+VE8L1qCqBsavmbWfUiF
-	eoIIwNnw4TvaHDx1lCaRKZgNEkByyHoOhPxSFbrlSoFcgeO/TOYmpAZGIvrpuBeyJkYwdqcIMe/
-	KX9HAFW6zPKQRqMh9CEajoRf5M9EKybY=
-X-Gm-Gg: AR+sD11s8GxOOEbQcYmA4Af8Vih2yAk6xvmr2bCZOKedh0pgYLdCeEcg9l51yLfjrOu
-	E/HuWbuAwNQ7B+lFSoOUQuAIMTRpSBS0yccgzm32q+QiQIC96J/uvR1mbWLRCDOhTbdc1wosCuL
-	s0yYMX9H/gX+8/aZUxt7WjUfXCyjMxs5+U6ZClUj+R29D4BS/RzS3Dd511xCHXaTlSuIwG6cQSa
-	Pz3oydecEOzTBfxSK/P6dXoHspMyyX0i5+owYr45/9B9dj/yUVy/WgR/5PCdyLwIRCJy2Cx44Pv
-	42ebHaqFwGCWLL4MIGtCywAya4w9guR+Ki0vHHlvqA==
-X-Received: by 2002:a05:6214:5346:b0:8ed:1887:426e with SMTP id
- 6a1803df08f44-9088126d7cemr445146386d6.24.1786277547104; Sun, 09 Aug 2026
- 05:12:27 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1786281823; x=1786886623;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=jiE5KveVgNl9XkJ4WjLCf6DiWT0Rzjhuj8+wghGG/qQ=;
+        b=KNB59a18uD5P2Rb8wacqn2SwzLTvy8yvguFcLuxcR+nwSXQYVzyMTGhKnCZbyduzty
+         KaNjBrK2Xpjc1qc04MIIl+jXnPFK0KdLqHdqQntpqaPnnI84HpS+vG0fo9IVTOkBimcJ
+         UTb0/+/HBd79AsJguiEbWp4DvRchF0irJPjJbZ4KPfDbvqoIR6kNuHh2moB3H/Hpg6+t
+         qar5DpgnR1wgO0cFri96ABKhPqxcILyS0Uz0fUnYzS4YaYCu9ztgC1rd22tDlMQ7+1ct
+         FrvWLWx95A4wfLu4GQVnNRc3KXYgD4UgLo8DdyY5phrTkimJMQ7zSMTG6ABC3R6KEdj1
+         TYfw==
+X-Gm-Message-State: AOJu0YxWLf8RLe5x8+ks5Bg/8LZfKzZHvDLemJUAo7RzP9hLv+BXpUKC
+	XDobSrPiv5GbgzReVInLlWva8PxFGrcb3N0EGO7qX8BOUUxjx0rRoO+n73a5dB9o+fHRYA==
+X-Gm-Gg: AR+sD106y2XAyxE7u/STtWkbVBFlRVL7pv7eMNJzjUSRTCh71nC+e6T02rdgSg4XztS
+	AbyIMdsP10dSWQQ/QRrP3AInSnTNBwAQwEdfBb1Yvh5fPA4G2Ihe7wJ7h0+kAw/OGmh17Pw+6tM
+	u0lBEoWE1lyLC5XCzVEyLK1ow+BeePCvhFY6i/IdtlDSa2kwLFb/sGitK37o1WqrWGOs+Ga0F0v
+	MRkDYYImGGdbdGxSHsPECbEpqZyKaWTbHwa+coIZ5Rqe9dNrWqG7R068RD2knj17lUC1RK+6H3/
+	8ZZ6+rb3QPzbHwJ/Y513ZWLCF8nOui1lnNjbqbKsNFISGiX3Ble2LbaC2M3rXx5/AWR4K8pqbv1
+	RDM3qTbFSzefbKHZ3YqfroooKuh81Uftaxdgim/XPmUIEt8ynDRSXSlckOJTm66THC1BSZ+AhrZ
+	jjdI7JlOwSPSHmdXr42RLn9TqCP2XfCzIABf02STFA7lWgDVCqbxzUTA==
+X-Received: by 2002:a05:6000:2913:b0:47f:973b:71c8 with SMTP id ffacd0b85a97d-47fec62e4eamr46608879f8f.21.1786281823240;
+        Sun, 09 Aug 2026 06:23:43 -0700 (PDT)
+Received: from luca-vm.. ([81.56.18.151])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4800214557esm22476356f8f.2.2026.08.09.06.23.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 09 Aug 2026 06:23:42 -0700 (PDT)
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+To: linux-mediatek@lists.infradead.org
+Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	CK Hu <ck.hu@mediatek.com>,
+	Jitao shi <jitao.shi@mediatek.com>,
+	dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH v2] dt-bindings: mediatek: hdmi-ddc: Correct the compatibles for mt7623-mt8167
+Date: Sun,  9 Aug 2026 15:22:24 +0200
+Message-ID: <20260809132241.6153-1-l.scorcia@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-References: <CAGXv+5HrDw8GWb9zp1AaQU9UW+0FGcr7jOV2jt_zi_2KgfgBqA@mail.gmail.com>
- <20260807152059.GA39821@bhelgaas>
-In-Reply-To: <20260807152059.GA39821@bhelgaas>
-From: "Christian Marangi (Ansuel)" <ansuelsmth@gmail.com>
-Date: Sun, 9 Aug 2026 14:12:12 +0200
-X-Gm-Features: AUfX_myzAmsvVlb0T_3tOngECWxC2UoI-Iw4nvKe7r1djj_0kecpEPp7cncj8nM
-Message-ID: <CA+_ehUxQfWRRec4q2ZvC12nYAeV2VGm1xCFrTWeN6sEL+qkXBw@mail.gmail.com>
-Subject: Re: [PATCH v5 0/2] PCI: mediatek-gen3: Add 2-lanes mode support + clock
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Jianjun Wang <jianjun.wang@mediatek.com>, linux-pci@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260809_051229_016624_654652A5 
-X-CRM114-Status: GOOD (  30.41  )
+X-CRM114-CacheID: sfid-20260809_062345_869711_17E0926A 
+X-CRM114-Status: UNSURE (   9.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,56 +113,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il giorno ven 7 ago 2026 alle ore 17:21 Bjorn Helgaas
-<helgaas@kernel.org> ha scritto:
->
-> On Fri, Aug 07, 2026 at 11:24:09AM +0800, Chen-Yu Tsai wrote:
-> > On Fri, Aug 7, 2026 at 12:53=E2=80=AFAM Christian Marangi <ansuelsmth@g=
-mail.com> wrote:
-> > > This small series introduce support for 2-lanes mode for Airoha AN758=
-1
-> >
-> > Just a nitpick, but I would probably name this something else, like
-> > "cross-controller lane-bonding mode" or "lane stealing"? PCIe already
-> > has 2x lanes as a standard feature, so this naming is a bit confusing.
-> > It's not like dual-LVDS display in which LVDS is only a single lane.
->
-> I suggested the "2-lane" and "x2" terminology because I assumed the
-> result is what the PCIe spec would describe as a "x2 Link" consisting
-> of two Lanes.
->
-> If that's not the case, maybe "cross-controller lane-bonding mode" or
-> "lane stealing" would be more accurate, but I don't know what those
-> mean, so if we use them I would also like to know what the result
-> looks like in standard PCIe terms.
->
+The HDMI DDC driver for both mt7623 and mt8167 is actually the same as
+mt8173-hdmi-ddc and the mt7623n.dtsi board include file already uses
+mt8173-hdmi-ddc compatible as a fallback, but the documentation lists
+them as separate entries. Correct the binding by adding the correct
+fallback.
 
-Mhhh I don't really like the term lane stealing. Also cross-controller
-lane-bonding
-might be a first. Even if correct it would complicate identification
-of the feature
-that at the end of the day configures the HW to provide a 2 lanes PCIe.
+Fixes the following dtbs_check error in mt7623n-rfb-emmc.dts and
+mt7623n-bananapi-bpi-r2.dts:
 
-Consider that in such mode, the other PCIe controller gets disabled (this i=
-s
-handled in DT) so it's effectively enabling the standard PCIe 2x lanes
-and apply the HW configuration for it.
+i2c@11013000 (mediatek,mt7623-hdmi-ddc): compatible:
+  ['mediatek,mt7623-hdmi-ddc', 'mediatek,mt8173-hdmi-ddc'] is too long
 
-> > > SoC. This is needed for correctly functionality of Eagle WiFi Card
-> > > normally attached to this SoC that require a 2-line PCIe card to
-> > > correctly work (and give the proper performance)
-> > >
-> > > The first 2 patch address a limitation of the PCIe implementation
-> > > where the PERSTOUT reset were indirectly asserted and deasserted
-> > > all at the same time (for all the 3 PCIe card) with PCIe
-> > > enable and disable.
-> > > The 2 patch address this and introduce correct reset to control
-> > > reset line for the relevant PCIe line.
-> > >
-> > > The last 2 patch add additional logic and support to assert
-> > > and deassert the PERSTOUT and also apply the required configuration
-> > > for 2-lanes mode.
-> > >
-> > > 2-lanes mode is implemented in DT by adding the required property
-> > > and by defining the "num-lanes" to 2.
+Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+---
+Changes in v2: Simplified error description in commit message.
+Initial version: [1]
+
+[1] https://lore.kernel.org/linux-mediatek/20260624173514.19752-1-l.scorcia@gmail.com/
+
+ .../bindings/display/mediatek/mediatek,hdmi-ddc.yaml  | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi-ddc.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi-ddc.yaml
+index bd8f7b8ae0ff..966127e1ee63 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi-ddc.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi-ddc.yaml
+@@ -15,10 +15,13 @@ description: |
+ 
+ properties:
+   compatible:
+-    enum:
+-      - mediatek,mt7623-hdmi-ddc
+-      - mediatek,mt8167-hdmi-ddc
+-      - mediatek,mt8173-hdmi-ddc
++    oneOf:
++      - const: mediatek,mt8173-hdmi-ddc
++      - items:
++          - enum:
++              - mediatek,mt7623-hdmi-ddc
++              - mediatek,mt8167-hdmi-ddc
++          - const: mediatek,mt8173-hdmi-ddc
+ 
+   reg:
+     maxItems: 1
+-- 
+2.43.0
+
 
