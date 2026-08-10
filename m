@@ -4,109 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B2D1C5AC82
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2026 07:27:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F00C8C5AD4E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2026 08:26:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+DtkcWXpgSVoe05+cxu51zHZ9Mzah1+nKac2Hu8aixI=; b=oatdT/PcN7Y3SiY/K90zSzh3Nm
-	N7KHUdiQ72BakvcMIppDY+JGw2LDG+lSjrk9NKh/BUkpIdp8E3wa+bgeDNtgv7nh4R2nPsMBVkCt5
-	8QM/KugCP8ZmPs+4pc9XaqUW7XsbyNIWdGWTe3l/L1SrAEKOEfjrmO7HaAFhwj9TcdOgruJ/lWlan
-	7Hn7oQpJTwkNvdVV3F4UarKowwF3t8M47Z4qkm/aL0m4j7/rnolM1gh7PhpRrjWFsrCP91aZaya1i
-	tch3i4IH9x+mmRQMMQWFwuusyo5Jivp9gIzCVIZkzK+f2coNFvVHrkgWz8jqbrNMKRVtTjscnY4ms
-	lqNAcjCA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3/2uz3Z9LXt81xrmADWBDtSalvtqiayfNTtdYsjQ0ro=; b=QvPIqY2fsK0lzZCi9nN/fOVSn5
+	7/2yiu987DhQ8VQQ2/TvEYowNNu9sU5jCJkcuyncKLjuiSH26wRgVA/JvwNdYaig328AKdU+Lz1RT
+	6t8uc7dI2IYgFZJuOboRIhy7fGDk80cZscdLgvGBlZ/X2IvyniZes4vfHAyGwAhbX+7/lg3dJADmh
+	IAWI6GpV0yS8ciNWC6VCgTg9B9FbZcXRmNNUyqDVPaCV/7cxNmvnH25cp7XTIJuiy4C4OjTTrfv8Q
+	JLfpRgLVj2AdFR4L2ge+fINrI0UyAd29xOnvr6wfEdivlbiow9vVmL1V3xWRyCPwpsNTSPXi0tlYc
+	ftsJ9RZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtKPp-0000000BCTj-1o4R;
-	Mon, 10 Aug 2026 07:27:21 +0000
-Received: from mail-qt1-x829.google.com ([2607:f8b0:4864:20::829])
+	id 1wtLKw-0000000BHfi-2viV;
+	Mon, 10 Aug 2026 08:26:22 +0000
+Received: from mgamail.intel.com ([192.198.163.18])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtKPn-0000000BCT8-1bXZ
-	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Aug 2026 07:27:20 +0000
-Received: by mail-qt1-x829.google.com with SMTP id d75a77b69052e-5276d598b96so6739981cf.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Aug 2026 00:27:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1786346838; cv=none;
-        d=google.com; s=arc-20260327;
-        b=scVjhecOsNJYZ4j81TjK91513n8N2F17pyoC+QHMNhZmyT80nyk6ZXz5M4UcqAzemB
-         jmopVY1oXo8Ozz+XIFGzfE7kn++6pzrCGIWxhjHQ+oyoR1hQj6KWurqpBwPpuAnaGh3s
-         IYaMRAhLokBG6QWJ0DQgFOGQW3by9tz36sFsf5rkaWeaGvx2m/oQ8UaASWflUgjt7Jbw
-         79T1mGm9CKuk/3U/E+YQv17tTDn6qab1ZtEITpI0P/bw6bSx1WJ5GIvatZnlW8wz0sLH
-         LUsG7HpErqZCYTZRwLrjOQBG/X/1TSXk79RDMRGyj1B+M1IIwPckni5G43CzQVFTU0om
-         /AuQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=+DtkcWXpgSVoe05+cxu51zHZ9Mzah1+nKac2Hu8aixI=;
-        fh=9K7VShErqN8M9gHDYPJivBt9VlGZGiDxrXGYHUlYOuk=;
-        b=lDMOtVKVHR2KJa8a0Jb44+KOn1eay5TVn+eiyfrmhn1ewDTcD6sl9+l0iuvEEV4zWh
-         6pXjilHe4LYYQzLStG9oNWuEXm4ETI8V+DKPTfIcjvdvVUUTsKPN+kp2jYtHlHSVSnPI
-         KTwnN6XxovULuV1L1fPaKfIlqvpTjliQIXcgwlwC/nG/9xvNj5FgCS93YKdFx+/K1wIO
-         RanmXseLcJ8xshM1JsU2AGp9jdHJnTg0KZmGDucDoziWdQswValLwZJNJUnovV17JFe2
-         931hMG4rcrC/M+QJ8bqZioFOOxQBagIAG3J4l0OhsrahhiZ/ZUtf/eMsFnSpPfplumxB
-         sStg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786346838; x=1786951638; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=+DtkcWXpgSVoe05+cxu51zHZ9Mzah1+nKac2Hu8aixI=;
-        b=J+tHnTlm6xlDewBRlGfuAzPMTUarxmOx+N//lvi+wrQyBRwM54ahD2itl7Vy7B3E3/
-         yhgIzqDv2F4mlNlD8beG1ttmBb6A1W7vaQ20IzqitTSAw29gi16I2Fi7Yt8YQJ6DT7gU
-         l6F+SEaOUtvaOqyXE/x4XZIwift+7pUvRjUHBqBktcYQHYln/J222wKFrXUc/n09Fj85
-         Zuq28uhMGGiIPR9Ky2bEW3qCFSTtmLUxqu5EY0A6ww05T9Naz6NpW2hzH3/kIi0NWfSb
-         ZXJeF6bUjccKyaYQgmOl70qT8/wDzg64VcBEFsNjX+cs/stvQjOPCUWhQlykVvYBSwwV
-         qAMQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786346838; x=1786951638;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=+DtkcWXpgSVoe05+cxu51zHZ9Mzah1+nKac2Hu8aixI=;
-        b=UhGUh/0Fh4vqzgC++CkQwDYsr7/C1lZfChTPYJetvRNYsFTRRtCHGMKJ7f97eILKvj
-         dw32wwU8s5OsgpaHMaxcaTSZkRT3vv3cbwDfFQkFSCHJOzdGpjmpYd643AtH6y3YJ38G
-         UMkDMLM019pdBP7dKmwvzkwRGKSqo00LNPmDZh4aiHgcxVi0Gv+Ym2PL11T8cRwx/pMt
-         2079nzFO+nbj0qZq+duVfJSSBxT5MhfsVmAbyvovynje1oweX4pXM2NWEuNXO3wrcUMN
-         TVA8chSEBmxopAObyn784OcKR0/rRjC6ntrBwH5wyB4FmpFQfZlCkFJ7rKc+dRcNK1ZO
-         +thg==
-X-Forwarded-Encrypted: i=1; AHgh+RoWcCRqgrPtA2ZJqs8H67IaV7DjFKvDDmknUwVT+W1nF4eaBKnPPyZ5zQXzHrbMSn6FhP812W03pvFR/PKLGw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzCHd2m7BsnUHJataeDYFWwhuj+woTVyM5qMwZruZ1SRyDI6s+E
-	h1wsNfRCI9DufJn2KyJTfoIFJUVSlRh9r+ThHzDx01TWVUWAji4dh8Nn3Sf4PLuJ2/B6m/Iv87v
-	uoCbUAhN1m5cCBkIfX0u7+QQHlS51KZ0=
-X-Gm-Gg: AR+sD10iwYi40IGs4OrzpVvh62kFzSybXVWk1lLI5vg+uvvV5N381WbRpfqzcxRHhpN
-	Jqcr6qfzMz1u9kBsEpIqJKHBHPODUn89VG560A32BAeBqG1AaxziHnDXBlLJVcegLJYd8gXRvhn
-	frFp5EUyFUtke9euRZzPvj3+uLdhBILqXrH5TPPHo+D65ZiJOIdJxBfwd63S0DMhVW4Vjpx8ElA
-	feS2oL3yqQYzDEWbhP6q1PEfbv+KYK9Zfh8Mx7iHnVSItceHfOdjuJPJHY0j+Jt1tHK9A+UoyWc
-	zxebBVOJ16opxZSnue0RIjUzCash3UNyaHFWWygTLQ==
-X-Received: by 2002:a05:622a:2b4e:b0:51c:17cd:1fd4 with SMTP id
- d75a77b69052e-52ce622aad1mr426354311cf.41.1786346837843; Mon, 10 Aug 2026
- 00:27:17 -0700 (PDT)
+	id 1wtLKu-0000000BHeN-1ZDz;
+	Mon, 10 Aug 2026 08:26:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1786350380; x=1817886380;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=++vktebTJ+rMB1mZxjsv9rXUywIuN/HM5q3NZWWkCDk=;
+  b=Ez6yytasg1AGi6nW8IOpDIobHQqFqeYz2M4Jua+UKg1qMXe4B0Pbgq5B
+   IjHFfRn7NTaaQglfzekc6nj8ejqpTvOaGQFLgsSuUP3O3srAuatQoykY/
+   oXQjl9aYaluy0bKStq82ggZwaZfs6K/frBYHcJ7Pp0GMxF786N1/0P0lW
+   p2psXlQQ3Ipr4wIAfrbCbl98gUHuyq1IrFRbICSBftSQFpJv1am/oD9xU
+   vbzL/anGYaedMZGLAWNi8XRbKHn1bhSqzVNPIoVc1KhA/DlAPHcH50kil
+   1xNLQ+6Q0Vii4AY773GIDxgkxE0+yJiEgot9pqjWT3BNyK2ZvKbypOscQ
+   A==;
+X-CSE-ConnectionGUID: komk6A8aSfi11S6Hf6mzEQ==
+X-CSE-MsgGUID: VFphwRQARaC87TaJ2Dd72w==
+X-IronPort-AV: E=McAfee;i="6800,10657,11870"; a="85976394"
+X-IronPort-AV: E=Sophos;i="6.25,215,1779174000"; 
+   d="scan'208";a="85976394"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Aug 2026 01:26:16 -0700
+X-CSE-ConnectionGUID: qsY+KBHKTJaaQy+CCw/B+w==
+X-CSE-MsgGUID: UzhpxU54SZmz8vkYlnfovg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.25,215,1779174000"; 
+   d="scan'208";a="264960575"
+Received: from conormcd-mobl2.ger.corp.intel.com (HELO kekkonen.fi.intel.com) ([10.245.244.104])
+  by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Aug 2026 01:26:11 -0700
+Received: from kekkonen.localdomain (localhost [IPv6:::1])
+	by kekkonen.fi.intel.com (Postfix) with SMTP id 137AA121197;
+	Mon, 10 Aug 2026 11:26:09 +0300 (EEST)
+Date: Mon, 10 Aug 2026 11:26:09 +0300
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6 krs, Bertel Jungin Aukio 5, 02600 Espoo
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Bartosz Golaszewski <brgl@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wei Deng <wei.deng@oss.qualcomm.com>, linux-acpi@vger.kernel.org,
+	driver-core@lists.linux.dev, linux-pm@vger.kernel.org,
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Alan Stern <stern@rowland.harvard.edu>,
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Subject: Re: [PATCH v7 01/16] device property: Add
+ fwnode_graph_get_port_by_id()
+Message-ID: <anmLIT--JrEvOaSs@kekkonen.localdomain>
+References: <20260724084328.3943997-1-wenst@chromium.org>
+ <20260724084328.3943997-2-wenst@chromium.org>
 MIME-Version: 1.0
-References: <cover.1786262697.git.naseefkm@gmail.com> <CAD++jLkpcQkdN5DgCp61OANFhodoQyAUAb2WF4CyNYv=0xVsyQ@mail.gmail.com>
-In-Reply-To: <CAD++jLkpcQkdN5DgCp61OANFhodoQyAUAb2WF4CyNYv=0xVsyQ@mail.gmail.com>
-From: "Christian Marangi (Ansuel)" <ansuelsmth@gmail.com>
-Date: Mon, 10 Aug 2026 09:27:04 +0200
-X-Gm-Features: AUfX_mxJ04kaXTJmP1OVrdQLPid7YkYxdoDRvjl11jvmxSghogHNPP37XYst2dw
-Message-ID: <CA+_ehUwO0WEiDGE18a=v=ZjJhpZB_KVP=m-Cog7K9Cm-zZV6EQ@mail.gmail.com>
-Subject: Re: [PATCH 0/3] pinctrl: airoha: add EcoNet EN7528 pin controller support
-To: Linus Walleij <linusw@kernel.org>
-Cc: Ahmed Naseef <naseefkm@gmail.com>, linux-gpio@vger.kernel.org, 
-	Benjamin Larsson <benjamin.larsson@genexis.eu>, Conor Dooley <conor+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>, Rob Herring <robh@kernel.org>, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260724084328.3943997-2-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260810_002719_431826_EC7C0145 
-X-CRM114-Status: GOOD (  15.05  )
+X-CRM114-CacheID: sfid-20260810_012620_425214_223E749B 
+X-CRM114-Status: GOOD (  25.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,29 +105,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il giorno lun 10 ago 2026 alle ore 09:23 Linus Walleij
-<linusw@kernel.org> ha scritto:
->
-> Hi Ahmed,
->
-> thanks for your patches!
->
-> On Sun, Aug 9, 2026 at 10:05=E2=80=AFAM Ahmed Naseef <naseefkm@gmail.com>=
- wrote:
->
-> > The series is based on linux-pinctrl/for-next, as it depends on the
-> > per-SoC driver split and on the CHIP SCU lookup by "airoha,chip-scu"
-> > phandle that landed there.
->
-> If we can get a speedy review on these patches I don't mind merging
-> them for v7.3 already, it's nice to get some movement on all the
-> nice Airoha silicon.
->
+Hi Chen-Yu,
 
-Hi Linus,
+On Fri, Jul 24, 2026 at 04:43:10PM +0800, Chen-Yu Tsai wrote:
+> In some cases the driver needs a reference to the port firmware node.
+> Once such case is the upcoming USB power sequencing integration. The
+> USB hub port is tied to the corresponding port firmware node if it
+> exists.
+> 
+> Provide a helper for this.
+> 
+> Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+> Changes since v5:
+> - Dropped left-over declaration in header (Sashiko)
+> 
+> Changes since v4:
+> - Added flags parameter so users can specify whether incomplete ports
+>   are returned or not (Sashiko)
+> 
+> Changes since v2:
+> - Moved "Return:" kernel-doc section to the end. (Andy)
+> 
+> Changes since v1:
+> - New patch
+> ---
+>  drivers/base/property.c  | 29 +++++++++++++++++++++++++++++
+>  include/linux/property.h |  2 ++
+>  2 files changed, 31 insertions(+)
+> 
+> diff --git a/drivers/base/property.c b/drivers/base/property.c
+> index 9387bb83eb54..950defc0c55a 100644
+> --- a/drivers/base/property.c
+> +++ b/drivers/base/property.c
+> @@ -1346,6 +1346,35 @@ int fwnode_graph_parse_endpoint(const struct fwnode_handle *fwnode,
+>  }
+>  EXPORT_SYMBOL(fwnode_graph_parse_endpoint);
+>  
+> +/**
+> + * fwnode_graph_get_port_by_id - get the port matching a given id
+> + * @fwnode: parent fwnode_handle containing the graph
+> + * @id: id of the port
+> + * @flags: fwnode lookup flags
+> + *
+> + * The caller is responsible for calling fwnode_handle_put() on the returned
+> + * fwnode pointer.
+> + *
+> + * Does not return ports that belong to disabled devices or endpoints that
+> + * are unconnected, unless FWNODE_GRAPH_DEVICE_DISABLED is passed in @flags.
 
-I wonder if the same speed treatment can be done also for the clock driver =
-and
-also dts?
-There are a few patch there that are currently blocking usb phy and pcie...
+The function also does not return ports that have no endpoints. I don't
+think it'd be very useful to do that either, instead this should be still
+documented.
+
+> + *
+> + * Return: A 'port' firmware node pointer with refcount incremented.
+> + */
+> +struct fwnode_handle *fwnode_graph_get_port_by_id(struct fwnode_handle *fwnode,
+> +						  u32 id,
+> +						  unsigned long flags)
+> +{
+> +	struct fwnode_handle *ep;
+> +
+> +	ep = fwnode_graph_get_endpoint_by_id(fwnode, id, 0,
+> +					     flags | FWNODE_GRAPH_ENDPOINT_NEXT);
+> +	if (!ep)
+> +		return NULL;
+> +
+> +	return fwnode_get_next_parent(ep);
+> +}
+> +EXPORT_SYMBOL_GPL(fwnode_graph_get_port_by_id);
+> +
+>  const void *device_get_match_data(const struct device *dev)
+>  {
+>  	return fwnode_call_ptr_op(dev_fwnode(dev), device_get_match_data, dev);
+> diff --git a/include/linux/property.h b/include/linux/property.h
+> index 14c304db4664..01ea010cb2f9 100644
+> --- a/include/linux/property.h
+> +++ b/include/linux/property.h
+> @@ -505,6 +505,8 @@ int fwnode_get_phy_mode(const struct fwnode_handle *fwnode);
+>  
+>  void __iomem *fwnode_iomap(struct fwnode_handle *fwnode, int index);
+>  
+> +struct fwnode_handle *fwnode_graph_get_port_by_id(struct fwnode_handle *fwnode, u32 id,
+> +						  unsigned long flags);
+>  struct fwnode_handle *fwnode_graph_get_next_endpoint(
+>  	const struct fwnode_handle *fwnode, struct fwnode_handle *prev);
+>  struct fwnode_handle *
+
+-- 
+Kind regards,
+
+Sakari Ailus
 
