@@ -4,98 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FAEBC5AC82
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2026 11:26:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55643C5AD7B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2026 13:01:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:References:MIME-Version:In-Reply-To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wZoyj/bcYqq2WaFoOPNolBM0q0on9gdK76aAsSvObhU=; b=zKRub+Ox7gA+F7ULfHS3czbcYY
-	h2apo9b6XeYkrUPBH/5TAoxM/Z+jbzUBTlkoPyp7RGBGTU86InyUxBxfGqhwZC4fJaclgaj4sOup5
-	ffzhvJryAPx6TVQ4Sx7ZTe27qTUjUYduj2jyk4ICNpvxglxlAYzSAgnF2Vl+w6xP613GJ7kkWCcCw
-	973DDzqjMD+mULUJXiO/p8/x7pBHr7tb7ZWw8fIiPT8KJrcvzW7cYhNegRVha5ZRWCU0VftkHv0jf
-	xpWl5WPu1aeX8xRD9D+hIECnLdPVyeXvpXHhqgIIr6jq5pUCZnZN+aJ6qlaipfevrB6VctbHXr/pH
-	UuIATFwg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:From:To:Date:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=H0a1CQIGg5sXxmGkEd9IVGyS3yp2N3ok/AxA3NteMO0=; b=PYD6dw/ITI+inWQjFFFKJRIPQ3
+	mKk465e5Qx8fPWUTJqe+mNj68P7pQDxFgUUWEYKejZRYI/HFsV4/QNjrAZBEyb/VMftUQXG3f/qJC
+	Tz/XONj+kQSCXGLuQRuKBUNDEUtMp6Pnc9FlhB0HA+vE/FcgJy2joAGZ2jgqQXuonRHyZrUcLVF0D
+	92Jb6yYL+uPFheJB1wy3R3Thcbwf6A+I+WLYmeT2bTVN58IAtsyUE+52tYtW7VJUEpG8cGfMn2D11
+	kQYa+aCYpPT9EzZecM9S3xzVdYCylr7S7/pQRv3xytkH214BFCcvZfFOlMyXuG7wq6SiPAhHAOxmg
+	3YWXDvcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtO8y-0000000BcLZ-1qQV;
-	Mon, 10 Aug 2026 11:26:12 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wtPdX-0000000Bqvs-0Um2;
+	Mon, 10 Aug 2026 13:01:51 +0000
+Received: from mail-24429.protonmail.ch ([109.224.244.29])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtO8w-0000000BcL0-3eph
-	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Aug 2026 11:26:10 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A038F43D4B
-	for <linux-mediatek@lists.infradead.org>; Mon, 10 Aug 2026 11:26:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 878FE1F00A3D
-	for <linux-mediatek@lists.infradead.org>; Mon, 10 Aug 2026 11:26:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786361170;
-	bh=wZoyj/bcYqq2WaFoOPNolBM0q0on9gdK76aAsSvObhU=;
-	h=From:In-Reply-To:References:Date:Subject:To:Cc;
-	b=TAi5N8oQgDU3uxlgGdhWfEn9nNC7rXCuv4yN2uZImZ5Qe473HPVo3p50VUpSWiPHG
-	 IoiTod5iPqxiSXKiITSq8Z8zTmwJc5HZ5uz7xmOpQ3Jkb0fyrve6APE8i9wcqXWbG9
-	 lXGMKZJiKDjBF9o//Mpr0RyCf4KxJ0hU7mN22P+i0Mg5N9bg3iRDxEVPL+nUuBavi3
-	 AGideJY+Jza/asFc16Mup/MjDB2acqh/PegxslqsJ6Ggp5t9N4qp8PgknMdViirGgS
-	 A8bpR8iBlt1Pwb4LwILd9Hw6sRCpa0GAj9fkI0FlOKyQ95A6k8YjbPxxtVg2uxyHNg
-	 fWwlAMzpEDWvA==
-Received: by mail-lf1-f53.google.com with SMTP id 2adb3069b0e04-5b01cb18515so1640528e87.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Aug 2026 04:26:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+RqgPHdc37hSmOsr8iPqEqQNButAZbBpqYxr1TpvV5bonc99ZyP6xrGfkuSBGZmshJnIAaOuNmEd7Qq6Hxtykg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwEoUX2K4bur4Q6FJenEqHxudIwg6DtM5prJdRw5PVFal6KDhZT
-	ZPu+Q6x23guvgvEZ28LCOdj676a4r7nEO0YAtJvndl+ALFeIKYkuFUYWWh046LVzWjy+SvrMLZ3
-	9xE7YRXYsym3vgoN7nf1ykbfMfwio9HopgQiiEPWTTg==
-X-Received: by 2002:ac2:4d18:0:b0:5b0:1b0f:7a60 with SMTP id
- 2adb3069b0e04-5b2f4cc8da0mr3704106e87.32.1786361168649; Mon, 10 Aug 2026
- 04:26:08 -0700 (PDT)
-Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Mon, 10 Aug 2026 06:26:07 -0500
-Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Mon, 10 Aug 2026 06:26:07 -0500
-From: Bartosz Golaszewski <brgl@kernel.org>
-In-Reply-To: <20260801195613.235430-2-krzysztof.kozlowski@oss.qualcomm.com>
+	id 1wtPdT-0000000Bquv-30OD;
+	Mon, 10 Aug 2026 13:01:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1786366900; x=1786626100;
+	bh=H0a1CQIGg5sXxmGkEd9IVGyS3yp2N3ok/AxA3NteMO0=;
+	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=a75mMLVq8pW1ulubCNe2hWY5yRfUkPWQPJbq5Mxi+r8nmnaLoUWIyWjf5mfDr1OM2
+	 3nlqC+LWE1DCFwDai0fhsPeD+2EEU1fcRoMzWHwrzpzKIfvj+iGpjqLWUgQAGwosoe
+	 nlv7nmm+SE/fVJPEIsFVHcrLbUlJcjx37yAhX0lnwB7z4HT5gMNNedFjMGuWLqQCyS
+	 zWwat40JwsWOY4qi5TC+7MEV510IwS7ZUjh2G7RH07v8a1tP23aeLyFtXqb9JAzGoF
+	 D7qCR5Wm4260J0SnJcrfMLAg+DnaEM6lO8P+lv3pHLI14e5yhPeMiaLMGAjqmbF0tG
+	 bSGRh4EVPRFLw==
+Date: Mon, 10 Aug 2026 13:01:35 +0000
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+From: Ryan Leung <untilscour@protonmail.com>
+Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryan Leung <untilscour@protonmail.com>
+Subject: [PATCH mt76 v2] wifi: mt76: mt7915: fix thermal zone use-after-free and cooling device leak
+Message-ID: <20260810-mt7915-unregister-thermal-v2-1-2a0f51adf56f@protonmail.com>
+Feedback-ID: 184418679:user:proton
+X-Pm-Message-ID: 6a9c3b37ed443ec86e6a41c1e1036b5137affe13
 MIME-Version: 1.0
-References: <20260801195613.235430-2-krzysztof.kozlowski@oss.qualcomm.com>
-Date: Mon, 10 Aug 2026 06:26:07 -0500
-X-Gmail-Original-Message-ID: <CAMRc=MeiXHL-1i31q-+wuibK5qM1=xV+4qn0z+CWFXjt3CdrCQ@mail.gmail.com>
-X-Gm-Features: AUfX_myd-9E67e5jDYYEWIDd_Fhka4yTI8ar0CZ3ucq5EUGNAu2R2AhAZ0we-FI
-Message-ID: <CAMRc=MeiXHL-1i31q-+wuibK5qM1=xV+4qn0z+CWFXjt3CdrCQ@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: Correct white-space style
-To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Suzuki K Poulose <suzuki.poulose@arm.com>, 
-	Mike Leach <mike.leach@arm.com>, James Clark <james.clark@linaro.org>, Leo Yan <leo.yan@arm.com>, 
-	Damien Le Moal <dlemoal@kernel.org>, Niklas Cassel <cassel@kernel.org>, Jyri Sarha <jyri.sarha@iki.fi>, 
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Linus Walleij <linusw@kernel.org>, 
-	Bartosz Golaszewski <brgl@kernel.org>, Patrice Chotard <patrice.chotard@foss.st.com>, 
-	Andi Shyti <andi.shyti@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>, 
-	Lee Jones <lee@kernel.org>, Johannes Berg <johannes@sipsolutions.net>, 
-	Jeff Johnson <jjohnson@kernel.org>, Viresh Kumar <vireshk@kernel.org>, Nishanth Menon <nm@ti.com>, 
-	Stephen Boyd <sboyd@kernel.org>, Yangbo Lu <yangbo.lu@nxp.com>, 
-	=?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <ukleinek@kernel.org>, 
-	Paul Walmsley <pjw@kernel.org>, Samuel Holland <samuel.holland@sifive.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Richard Cochran <richardcochran@gmail.com>, 
-	Jens Wiklander <jenswi@kernel.org>, Yuanfang Zhang <yuanfang.zhang@oss.qualcomm.com>, 
-	YC Hung <yc.hung@mediatek.com>, Svyatoslav Ryhel <clamor95@gmail.com>, 
-	Sean Wang <sean.wang@kernel.org>, Frank Li <Frank.Li@nxp.com>, 
-	Peter Ujfalusi <peter.ujfalusi@gmail.com>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	coresight@lists.linaro.org, linux-arm-msm@vger.kernel.org, 
-	linux-ide@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-i2c@vger.kernel.org, mfd@lists.linux.dev, 
-	linux-wireless@vger.kernel.org, ath10k@lists.infradead.org, 
-	linux-pm@vger.kernel.org, netdev@vger.kernel.org, linux-pwm@vger.kernel.org, 
-	linux-riscv@lists.infradead.org, linux-usb@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260810_060147_913980_2B09A428 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,40 +65,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 1 Aug 2026 21:56:14 +0200, Krzysztof Kozlowski
-<krzysztof.kozlowski@oss.qualcomm.com> said:
-> Correct a few white-space issues, like double space after '=' or before
-> bracket '{' characters, which will be flagged by dt-check-style.  No
-> functional changes.
->
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
->
-> ---
->
-> Patch applies on Rob's for-next branch.
-> ---
->  .../arm/firmware/linaro,optee-tz.yaml         |  8 +-
->  .../devicetree/bindings/arm/psci.yaml         | 18 ++--
->  .../bindings/arm/qcom,coresight-tnoc.yaml     |  2 +-
->  .../devicetree/bindings/ata/st,ahci.yaml      | 22 ++---
->  .../bindings/display/ti/ti,am65x-dss.yaml     | 12 +--
->  .../bindings/display/ti/ti,j721e-dss.yaml     | 96 +++++++++----------
->  .../bindings/display/ti/ti,k2g-dss.yaml       | 36 +++----
->  .../bindings/dsp/mediatek,mt8195-dsp.yaml     |  2 +-
->  .../bindings/gpio/st,nomadik-gpio.yaml        |  2 +-
->  .../devicetree/bindings/i2c/st,sti-i2c.yaml   |  2 +-
->  .../bindings/mailbox/st,sti-mailbox.yaml      |  2 +-
->  .../bindings/mfd/maxim,max77620.yaml          |  2 +-
->  .../bindings/net/wireless/qcom,ath10k.yaml    | 34 +++----
->  .../devicetree/bindings/opp/opp-v2.yaml       | 28 +++---
->  .../pinctrl/mediatek,mt7988-pinctrl.yaml      |  2 +-
->  .../devicetree/bindings/ptp/fsl,ptp.yaml      | 12 +--
->  .../devicetree/bindings/pwm/pwm-sifive.yaml   |  2 +-
->  .../bindings/usb/ti,twl4030-usb.yaml          |  2 +-
->  18 files changed, 142 insertions(+), 142 deletions(-)
->
+The thermal zone registered against the parent device is never torn
+down when the phy is unregistered, so it can still be dereferenced
+by the thermal core after the phy is freed. The thermal zone and
+cooling device are also left registered if a later hwmon
+registration step fails during init, leaking both.
 
-For GPIO:
+Unregister the thermal zone alongside the cooling device on both the
+regular unregister path and the init failure path.
 
-Acked-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+While at it, include the band index in the thermal zone registration
+warning to help identify which band failed on multi-band chips.
+
+Fixes: 313f1a27ebcb ("wifi: mt76: mt7915: add thermal zone device registrat=
+ion")
+Signed-off-by: Ryan Leung <untilscour@protonmail.com>
+---
+Changes in v2:
+- Unwind cdev/tzone registration in mt7996_thermal_init() on hwmon registra=
+tion failure.
+- Link to v1: https://patch.msgid.link/20260810-mt7915-unregister-thermal-v=
+1-1-c6d57b4cb368@protonmail.com
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/init.c | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net=
+/wireless/mediatek/mt76/mt7915/init.c
+index ca46a203aa48..5fe70dc822eb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -200,6 +200,9 @@ static void mt7915_unregister_thermal(struct mt7915_phy=
+ *phy)
+ {
+ =09struct wiphy *wiphy =3D phy->mt76->hw->wiphy;
+=20
++=09if (phy->tzone)
++=09=09devm_thermal_of_zone_unregister(phy->dev->mt76.dev, phy->tzone);
++
+ =09if (!phy->cdev)
+ =09=09return;
+=20
+@@ -213,6 +216,7 @@ static int mt7915_thermal_init(struct mt7915_phy *phy)
+ =09struct thermal_cooling_device *cdev;
+ =09struct device *hwmon;
+ =09const char *name;
++=09int ret;
+=20
+ =09name =3D devm_kasprintf(&wiphy->dev, GFP_KERNEL, "mt7915_%s",
+ =09=09=09      wiphy_name(wiphy));
+@@ -238,8 +242,8 @@ static int mt7915_thermal_init(struct mt7915_phy *phy)
+ =09if (IS_ERR(phy->tzone)) {
+ =09=09if (PTR_ERR(phy->tzone) !=3D -ENODEV)
+ =09=09=09dev_warn(phy->dev->mt76.dev,
+-=09=09=09=09 "failed to register thermal zone: %ld\n",
+-=09=09=09=09 PTR_ERR(phy->tzone));
++=09=09=09=09 "failed to register thermal zone %d: %ld\n",
++=09=09=09=09 phy->mt76->band_idx, PTR_ERR(phy->tzone));
+ =09=09phy->tzone =3D NULL;
+ =09}
+=20
+@@ -248,7 +252,11 @@ static int mt7915_thermal_init(struct mt7915_phy *phy)
+=20
+ =09hwmon =3D devm_hwmon_device_register_with_groups(&wiphy->dev, name, phy=
+,
+ =09=09=09=09=09=09       mt7915_hwmon_groups);
+-=09return PTR_ERR_OR_ZERO(hwmon);
++=09ret =3D PTR_ERR_OR_ZERO(hwmon);
++=09if (ret)
++=09=09mt7915_unregister_thermal(phy);
++
++=09return ret;
+ }
+=20
+ static void mt7915_led_set_config(struct led_classdev *led_cdev,
+
+---
+base-commit: ca800a9302764c445de0da0e84d2252400a770ee
+change-id: 20260809-mt7915-unregister-thermal-82e805c618a6
+
+Best regards,
+-- =20
+Ryan Leung <untilscour@protonmail.com>
+
+
 
