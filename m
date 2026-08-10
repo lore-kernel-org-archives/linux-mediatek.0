@@ -4,170 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC1D4C5AD55
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2026 03:09:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1E92C5AC82
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2026 03:51:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tz5Oj/qKKkTfAaqQZf82hn4y5WtOSaQFj/lZlLVK1xY=; b=K0fsLdos2zqycTfcZqu4NR5D5M
-	xIp0K/Em6aFMS44mrUQ6DpHLlmnmatFrPSQW/uRXFMLWLLYFTt5AEwvgc5Z0XhIJq8KdC6DxwCn0Q
-	5t5vx0aqjtPcQqNxjtDB7QNOyAHhM2WivAiSAXtpeUI5hkERS51p41h1gA788aXs5as9uISSSOuKi
-	Lk1pmpb8X0D9VppbEo67Nksq2URlyx/TJYQmbiAbH77tC3/f3ZxoSuuNzcdtu9gPzC2YwtSUxGsRE
-	5a3VIiwfbLf/MZ+bRu6o97riPpfuYrlsSDoMNRIU9wGdsGHkXfY8OfC523aJSGKsQqp3Ox1nUCoc9
-	+B3TwPKw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=aKsyijpS87KrH3d7SROumCM4scO43+pgIBjkKc2f8Po=; b=DO1vxGeXB7AhHFFQkuxFMV2tbv
+	IDB/O6eAz0HMv5qHKW8OKmNjx/4DqZVyPDWWemgOWFrBV1QziDS5QTTASXRv0bLxJiz5Q3Ea6U1Xk
+	D3f7hHYGlRzEoUKAl2dmKG7KBQcdMdGc4m3tHt7V5mxGZlzTL8Xa/4nMadJl21dvg3gkyp8KOv1IA
+	WlFi6JkB6wKhZQo1vnRqqkYDdQvf87q44omagvPESZp5iwQAVmAoDdNau4fDHbS4aTpflb15tTOdC
+	rFrUQQhbULunfz1JhQ+tjd7f4ROxY8lSNPZG6lXdZcdt9jVJrXcEASZVDX6MO1RaeHKT44xqqrjSh
+	QrryvIfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtGOR-0000000AwYd-3jaY;
-	Mon, 10 Aug 2026 03:09:39 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wtH2a-0000000AydY-1M4F;
+	Mon, 10 Aug 2026 03:51:08 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtGOO-0000000AwXf-42nC;
-	Mon, 10 Aug 2026 03:09:38 +0000
-X-UUID: e8e9bbb8946811f1acbe4559397dec65-20260809
+	id 1wtH2W-0000000Ayd0-44CY
+	for linux-mediatek@lists.infradead.org;
+	Mon, 10 Aug 2026 03:51:06 +0000
+X-UUID: b18e36de946e11f1afed4741b24580c9-20260809
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=Tz5Oj/qKKkTfAaqQZf82hn4y5WtOSaQFj/lZlLVK1xY=;
-	b=MZzO2aJfyRXmSEdljTJ6BL7hqKdiM03wdz4rvYp1DDBtLbOK50Al6/maRfgX7f117JT3JJAEN4Raz+znYdOtlHFYRLPm2HyitguIReeJf1P9folaMBkD/uSc/d5V1Wle7X3s/1M6jBpqAZ01rP50Yis9LmjGS/HXSGP54Q2iK9A=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=aKsyijpS87KrH3d7SROumCM4scO43+pgIBjkKc2f8Po=;
+	b=cbI4rv7F/4AFmrzX2Lb6aj1ayBUzKhVyt2H2zTN6ipiaRyRZOJI/ERb1o8/C/eeqPgh1i6fri8C89+BW5EDSOpGbJCBXMp6bsbMEmb2J1OJM+x5363yHMLxa4cAlSqBOccMnbv/DZo42em5dsEPQIMeUXwYrBRo7IdIhfeFh5ZM=;
+X-CID-CACHE: Type:Local,Time:202608092048-07,HitQuantity:1
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:55e5b36a-099c-4131-ad0a-8fe14a49e0aa,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:30f0b3f1-0685-46a3-9cac-19d8f3a05ae7,B
-	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|110|111|836|865|888|898,TC:-5,
-	Content:0|15|50|99,EDM:-3,IP:nil,URL:99|80|1,File:130,RT:0,Bulk:nil,QS:nil
-	,BEC:-1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.19,REQID:f695ef41-a64e-4105-a57d-8c1fc9138cb5,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:7db8b62,CLOUDID:a41a1736-4b33-4561-b864-14761266665a,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: e8e9bbb8946811f1acbe4559397dec65-20260809
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
-	(envelope-from <kyrie.wu@mediatek.com>)
+X-UUID: b18e36de946e11f1afed4741b24580c9-20260809
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+	(envelope-from <allan.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1862587841; Sun, 09 Aug 2026 20:09:33 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+	with ESMTP id 49883136; Sun, 09 Aug 2026 20:50:57 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 10 Aug 2026 11:09:30 +0800
-Received: from SG2PR04CU009.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 10 Aug 2026 11:09:30 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=tzdnLwAaK8yLK6+IeT6zcfZY7s5W/gbGHBGnhohaMTea2qN11SGBYAYMsptd8CT4cRL9jNpKWTl3qf3LZ56qIdMkviTxaoX+VhDW0x8HKOUYjkTjCkdpl4LB+CsMEs5I0288earHQzxm2eEjHjxSe+cICwn/Z+wJJt1nJTEGl+WLNPlbDnGP+NUHr9LqE5odas0QlNzeD+UR0Sk/G5DpEtRTVmEYvHPefNaOy2K744R3BXC8yoa+fOO6TEvnbJCMq0sPKgZtUp7ey2k9vJC5gCZClkNSpy49f19RkpWIz/XRHV7YCgJ2pyKfG15LUDfaA4wCUAi/04fxYVKdGlb/6A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Tz5Oj/qKKkTfAaqQZf82hn4y5WtOSaQFj/lZlLVK1xY=;
- b=qaaEDlvKrZkwPywqrXlUgyMiT7dtB8+d1eRLh8F/jekdzB9iw2+LtzRgs0oNEKLBCRUE6Rp2Dk8xh5bE1n5p7aUD+eXTW7KmZQfHGHwPKSKBigM15cumAWU8YYRXr1Me0h6DciIpo6RqAHdJKi3udd7T5TDZSGxPU0oT/Gwkw98305SVVyGmhVDXtinHtwsKSS7Km+Wd6Sk/DuRUb1qOdOJ+D/e3dUfJ8Ptzwc9ErRcOZ1F4/kfUd9oAVYv8J8AraMSAD/P+HuqUew+OpWVL1MJYQ+KWtIGUAhVMLO5EBJNoVnYHbEr2pBR2ackR6iJMo+g20EAZJZmc18x7veUl1A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Tz5Oj/qKKkTfAaqQZf82hn4y5WtOSaQFj/lZlLVK1xY=;
- b=KeeJJyBAD53R573jvVkkQkSybzprKFuiAasnOG02q7HrwxjfxYBEL0enH9yB/QUUhHOIe8QqkgVO7Z9dy0Bh4h44SdNHY4Z2m5FGwQjlHt+0m95iaygAg09NgplbS7KK8pLLszD2Wi8KlDb3O/npi5yncW92TPE0ROaH+CbXW10=
-Received: from SI2PR03MB6195.apcprd03.prod.outlook.com (2603:1096:4:14f::13)
- by TYZPR03MB9672.apcprd03.prod.outlook.com (2603:1096:405:39c::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.292.25; Mon, 10 Aug
- 2026 03:09:27 +0000
-Received: from SI2PR03MB6195.apcprd03.prod.outlook.com
- ([fe80::ea95:8d21:d28a:6b2c]) by SI2PR03MB6195.apcprd03.prod.outlook.com
- ([fe80::ea95:8d21:d28a:6b2c%6]) with mapi id 15.21.0292.024; Mon, 10 Aug 2026
- 03:09:27 +0000
-From: =?utf-8?B?S3lyaWUgV3UgKOWQtOaZlyk=?= <Kyrie.Wu@mediatek.com>
-To: "krzk@kernel.org" <krzk@kernel.org>
-Subject: Re: [PATCH v6 08/14] dt-bindings: media: mediatek: vcodec: add
- decoder dt-bindings for mt8196
-Thread-Topic: [PATCH v6 08/14] dt-bindings: media: mediatek: vcodec: add
- decoder dt-bindings for mt8196
-Thread-Index: AQHdF+ZCyChClad61Eelw4Pditpo87Z15nYAgAAAywCAAAm5AIAAQdgAgCCIo4A=
-Date: Mon, 10 Aug 2026 03:09:26 +0000
-Message-ID: <2b567b39434d7d125dcdca75e198a1442e4c2f22.camel@mediatek.com>
-References: <20260720012056.1026551-1-kyrie.wu@mediatek.com>
-	 <20260720012056.1026551-9-kyrie.wu@mediatek.com>
-	 <20260720-gregarious-satisfied-shrew-f71cba@quoll>
-	 <f499f2c3-f31d-4c2c-84fb-d1d9d95fc868@kernel.org>
-	 <a9123dce5ae7ef184f5640b12e3e9427084ec542.camel@mediatek.com>
-	 <8558035b-d825-4e56-bfd2-551cff51f73f@kernel.org>
-In-Reply-To: <8558035b-d825-4e56-bfd2-551cff51f73f@kernel.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR03MB6195:EE_|TYZPR03MB9672:EE_
-x-ms-office365-filtering-correlation-id: 1f0f423b-db47-4553-ffee-08def68cc980
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|23010399003|376014|7416014|1800799024|366016|38070700021|10067099003|4143699003|56012099006|11063799006|22082099003|18002099003|4133799003;
-x-microsoft-antispam-message-info: 5IymfDFuMxXuJd6LmZ2QJdF2GEfGsoGS6RMfzhVIWfIaz3LaPNwPiZITP2X52DuK53y6UjEHmskOHeFqzerQbV3qzv9OUwBNifgV4Do7YFRoao1xiMu8FeCjiAJ9cjckNdCtthm0wg+rAfjC9vR2+ZiH+H6i0GjZYIplw4Bahit+j1gkH5zjFK2SfsAW1gQZUdXDHmS5kRZb8nSM52WnVY+ZDP6O9fAvfRJRxe64+pjC92ars/Lj1N+k9LXZRukqTfwtJjjncSoyDrIR98LGige3pYk9heOUx2/9Kd2n82QneTc3M32Lm7Ds/6U6yVONr5+UwCFn1y3RbtpBwuc0fWWmnPeh1cksIUEgEe7XmDU+fAUXNTL+jUiSTbM+APMpIy1UlUCBBv8n8BZ4WroCocV2dtX1Pj1vejPSNC4gx7dSU0a89Xiq/9vsFk+gkA0VmKC+FACLi8c5/VKmavaH0+4sdm9vKykyrWdWOKicy2Q5ReS2xN0KXlKECUXkFYkGeWPsTICkDAcyOqbZ/+HnanXthv1pzrcB/kEB8u+T8GA9aneK0OVkcZ4qz23Y5BWeu5JkzFwu87dyPPgNDX8aIEKvfUFAV5BtEq0kf40V3oICvZAUgb5UCrYFJa/vWtUsKRd8dc7g6lFcnco7ucIhtTpUIDbw4Ly0oy7UsPzdPKeaLdsrCR1ImSUPre+WGuw+mWY59o4Dx/v5MRQK7Yq+vM9ZnrLVSBfMz+2r0uTqdOk=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB6195.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(376014)(7416014)(1800799024)(366016)(38070700021)(10067099003)(4143699003)(56012099006)(11063799006)(22082099003)(18002099003)(4133799003);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?THQrRm1FWGYyS3JSWnFQc1pvcFNWT0FTZlBkMCt6RnFpVjAzTEJYNk11QzJR?=
- =?utf-8?B?eU41YnFUWFBLckNpQjNkZ0p3bTd2akFDMTlPVjZnMk84cHpxd1Myay9yYjVh?=
- =?utf-8?B?azFvdWNJMzN1ZFdzRmk0cXJTZ21RRkxqTkRpOXZkSVhQMSt0bWx4NXV2Q0Y4?=
- =?utf-8?B?bzBPbmdvL2lWQ2ZGK3FmNDV6K0lSeHBZdGJ4cTB5M0FaTE8rK2dMQ2czbzRw?=
- =?utf-8?B?VnpYa3g2VS9zZ2JDaisxaXg2Rm9BeC8yemM0RzFkdnErN29GU2xFTGlMQmlQ?=
- =?utf-8?B?UlVidmpHTkNEcUYwbEJNWk10R0Y0YmFMTmpyNzBSclBrNXVUenJ3eG83b2V6?=
- =?utf-8?B?UHdkRjFkRFR3cVNFLzYvMXhyNEd3Z2x1Q2h6dDNxZDhhdk9CUUNRZVRzcHFM?=
- =?utf-8?B?ZFh0VDdoY01ZdzRHU3ZzR2ZzLytHOVVZWjlhREZDejFIT3BQa1pWcHJvMmk0?=
- =?utf-8?B?czdIZWNCYXpWM0ZkaERnWkZaNk51YndYdXRPTjdHWnM4MnFXVjFIaTh3aFdU?=
- =?utf-8?B?VmNtYTkvY1VTMVRyaGorYVBsS1JnYWh0NksxcWtBZC9UdHpCaTN0cWNDY2tV?=
- =?utf-8?B?U3o0NExoZVRERWZwKzBvRXFnMi9maUxET2lTQlc2RWtleVl0ck9RaHAxZFky?=
- =?utf-8?B?Nyt4NWdnaE43eFVVbDgrNTRWb09oSSthdXpJYzNQejJsTFZldGEvZ05QUFJO?=
- =?utf-8?B?T3pCZThCSXNBZHlETFMyemV4NGxIL040T3crMEhUVllIQ1FkdVhBOEEvN1hG?=
- =?utf-8?B?eFBQREJNSDRPRndmQmo3M29YTG1HMkIyM2doSHlFakJKVTRLK2JhSzFKbEdY?=
- =?utf-8?B?YWNNZ0YvODRBa053S2VXRzR0YVJkaEExUW5LVG80dEJJdTVWdDUrTjA1bHAx?=
- =?utf-8?B?Vmtuc0tLcWJnWkNMdUY1VytJQ0NhdndpZHpFcXFDL2MxRUZkOFR6L01qRGRP?=
- =?utf-8?B?Uk82VE5ocTB2aHBvWlBaMVJiSlRjQXM1WlpoRktoaUMvb0ViU3ordFdXTTk3?=
- =?utf-8?B?Tk1oVXFHVWUwTFU5dGxMc3pQMTgyMEFmaWpDNUdrNVNlUEV2SzRKUXpIcWNE?=
- =?utf-8?B?WGxrOTZqenB3UE1pOThUbDJjVEppRWNmMm1PUHc3TG93K2tjZ2Nic3BBcGhJ?=
- =?utf-8?B?VFAydkc3WXFud0hqYllKd2RrengrWi9TZndwK21KRXRUNzNmWEpKZFM4endG?=
- =?utf-8?B?SlRWTlo5ay90TnU1ZVpOWVJicVJ1UGlIZ2hhaU9RTDdER3ZQK0ZIcXdhbFNP?=
- =?utf-8?B?QzRiUDdVMEx3S1pCeGVyNVpSTm5RMEE0dzhuOWFVbUVzT3ZWSmRiZnloMTZ6?=
- =?utf-8?B?bHR1bVQvQTJHVjBhM3QyMnF6eUh6ckQwNnJRNHlXM1RKZkFsVUVIWjZrbGZR?=
- =?utf-8?B?MjhINVNISVhaZmk5U041MjRNaURocVcrOHhrektGYXl2TmdPY01NaHhEckZ2?=
- =?utf-8?B?aUM2aG5oNnE5QWdycDJHVnNkcDQrTEYvQXFpMXV6WkJjUHBPcEFhYm01cHBl?=
- =?utf-8?B?SGFGUE1iSjJJaFFkU3FGa05EVDBuMVJYUkVIWisyeGE5R1V5TlMveG1aS3RL?=
- =?utf-8?B?b0VNZnVuZkxNNFdQazJDK042NjlZL2RJYXIxZlJSTTRoSmFRTVlMbUlhdC9w?=
- =?utf-8?B?bmEyTDJhZWhHeUpZQWV0VWRyTmtla25pWGlwamd0azF4WnU1aEVQb3dBSGlS?=
- =?utf-8?B?dy9oTDgzR3RIc0FKdStqbWNKdlZBL25uZW4raFBzMTliTXNCOXd0MTFOeGRk?=
- =?utf-8?B?QzNzNjQyNGJTN2ZobjBjTFAxalp3THE2Kys1Wjk4S1hzSmQzNUNjWC9VWW5N?=
- =?utf-8?B?UjIxZ1dYVjgvb0poVkxSQmlTY2tOUzh6NXVKa0hETXJzVW84TnJVa2JOemFU?=
- =?utf-8?B?b00xOUNXcnozTE05NlR4dmZMNk1KdTFuUUdYbmxMaHROQlN5eklVbG9mdi9B?=
- =?utf-8?B?M21FazBhU0x1M01BaFgxT0llZVFseitHY05Gdyt5UzFORFJQTTZCbkp5emdE?=
- =?utf-8?B?RVJwN0ZubHV3TWR2MWdHaVpXNHhjNHQ2WDQ0VjNCSUlBZDFtc29WMlE1L3Y4?=
- =?utf-8?B?MVlaMlpOdlpoU01TSmZXY1l5Tk5lTk85RkF4VkVSeTNvUTlaWTEwYXFJdnlU?=
- =?utf-8?B?Vnc1bVppM1RYcjU1OUI4OEsxdWJyOVQvYk1zTldId2h5c3A4ak5EVWtQTmQw?=
- =?utf-8?B?RytBOEpxem9GSk8zQURleW5Nb1RKVWIxS3N2am9mdWl0S0xlZU1xa3Z3bUpp?=
- =?utf-8?B?bnVkN3hIVFFGWGlMNC9mcmxwZzBBZWEwNUdYMlRvdmNyaVNnQXpMMmJ6SFI5?=
- =?utf-8?B?YXRCdjNxeWh1TkRnSnYwemlkbUpxVUlpc1hheGlJNVd0MlhlemlXUT09?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <9E4F943390CCDF4B9BF5C5C9600C99A4@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ 15.2.2562.29; Mon, 10 Aug 2026 11:50:54 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 10 Aug 2026 11:50:54 +0800
+From: Allan Wang <allan.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <litien.chang@mediatek.com>, <jb.tsai@mediatek.com>,
+	<emery.hsin@mediatek.com>, <deren.wu@mediatek.com>,
+	<mingyen.hsieh@mediatek.com>, <Sean.Wang@mediatek.com>,
+	<robin.chiu@mediatek.com>, <posh.sun@mediatek.com>, <Quan.Zhou@mediatek.com>,
+	<Ryder.Lee@mediatek.com>, <Shayne.Chen@mediatek.com>,
+	<linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Allan
+ Wang <allan.wang@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7925: add AXI DMA calibration cache for MT7928
+Date: Mon, 10 Aug 2026 11:50:50 +0800
+Message-ID: <20260810035050.73103-1-allan.wang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: shmj7vE7KIz4oe20ZcKzSC+290pobkmWSbWzLHusdrvbhJydrIcXRbpmo38XovH/C0oArINmOdYzWaWmTu45cCl7CCbMTLRoc7ql9/33mrY3Laa6bqGw09qMhuUZA2jv1N8xSxd2V0avQ+ehUlNAV768RqmQGESKhXE4tFxKNYSK0E10eu0to6lr2etwND1xsUo9MkxaDzcfkw8/IT6aSioRR2UebTSOnKLO+sVwMzfZq+FUeJ2+b7spI+pmIcu9tv8Wn7LUCMXZLj4r81KwkGwcbhw1cGLuEDtX/HhCqrXEiyWxTAVqK+CR4Lrp5exgFpXlxCEZTHn2hS1QL4t59g==
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB6195.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1f0f423b-db47-4553-ffee-08def68cc980
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Aug 2026 03:09:26.8899
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: q3J1jPxOP6WlQMpPDtaqiICpY9/gLakuFEDmZBSwOwKdKJZFMJ7Oj21QtCi1GKSzshi87FPxtocpRaEEwa/3tA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR03MB9672
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260809_200937_018031_6DB9C143 
-X-CRM114-Status: GOOD (  24.01  )
+X-CRM114-CacheID: sfid-20260809_205105_027742_26C94D8A 
+X-CRM114-Status: GOOD (  24.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -179,58 +87,699 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "fanwu01@zju.edu.cn" <fanwu01@zju.edu.cn>, =?utf-8?B?QW5kcmV3LUNUIENoZW4gKOmZs+aZuui/qik=?= <Andrew-CT.Chen@mediatek.com>, "kees@kernel.org" <kees@kernel.org>, =?utf-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "haoxiang_li2024@163.com" <haoxiang_li2024@163.com>, =?utf-8?B?SXJ1aSBXYW5nICjnjovnkZ4p?= <Irui.Wang@mediatek.com>, "mchehab@kernel.org" <mchehab@kernel.org>, "benjamin.gaignard@collabora.com" <benjamin.gaignard@collabora.com>, "sebastian.fricke@collabora.com" <sebastian.fricke@collabora.com>, "wenst@chromium.org" <wenst@chromium.org>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, "robh@kernel.org" <robh@kernel.org>, "laurent.pinchart+renesas@ideasonboard.com" <laurent.pinchart+renesas@ideasonboard.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, "jacopo.mondi@ideasonboard.com" <jacopo.mondi@ideasonboard.com>, =?utf-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>, "rongqianfeng@vivo.com" <rongqianfeng@vivo.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "hverkuil+cisco@kernel.org" <hverkuil+cisco@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "tfiga@chromium.org" <tfiga@chromium.org>, "sakari.ailus@linux.intel.com" <sakari.ailus@linux.intel.com>, "ribalda@chromium.org" <ribalda@chromium.org>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, "nicolas.dufresne@collabora.com" <nicolas.dufresne@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDI2LTA3LTIwIGF0IDEyOjE5ICswMjAwLCBLcnp5c3p0b2YgS296bG93c2tpIHdy
-b3RlOg0KPiBPbiAyMC8wNy8yMDI2IDA4OjI2LCBLeXJpZSBXdSAo5ZC05pmXKSB3cm90ZToNCj4g
-PiBPbiBNb24sIDIwMjYtMDctMjAgYXQgMDc6NDkgKzAyMDAsIEtyenlzenRvZiBLb3psb3dza2kg
-d3JvdGU6DQo+ID4gPiBPbiAyMC8wNy8yMDI2IDA3OjQ2LCBLcnp5c3p0b2YgS296bG93c2tpIHdy
-b3RlOg0KPiA+ID4gPiBPbiBNb24sIEp1bCAyMCwgMjAyNiBhdCAwOToyMDo1MEFNICswODAwLCBL
-eXJpZSBXdSB3cm90ZToNCj4gPiA+ID4gPiBBZGQgdGhlIE1UODE5NiBjb21wYXRpYmxlIHN0cmlu
-ZyB0byB0aGUgTWVkaWFUZWsgdmNvZGVjDQo+ID4gPiA+ID4gc3ViZGV2DQo+ID4gPiA+ID4gZGVj
-b2RlciBiaW5kaW5nLg0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IENvbXBhcmVkIHRvIHByZXZpb3Vz
-IElDcywgdGhlIE1UODE5NiBzdXBwb3J0cyBhIDEwLWJpdA0KPiA+ID4gPiA+IGRlY29kZXINCj4g
-PiA+ID4gPiBhbmQgaGFzIGEgZGVjb2RpbmcgY2FwYWJpbGl0eSBvZiA0S0AxMjBmcHMuIEl0IGFs
-c28gc3VwcG9ydHMNCj4gPiA+ID4gPiAzNi1iaXQgRFJBTSBJT1ZBIGFkZHJlc3MgYW5kIFZpZGVv
-IFBvd2VyIENvbnRyb2wgdG8gb3B0aW1pemUNCj4gPiA+ID4gPiBiYW5kd2lkdGggYW5kIHZvbHRh
-Z2UgdXNhZ2UuDQo+ID4gPiA+IA0KPiA+ID4gPiBQbGVhc2Ugd3JhcCBjb21taXQgbWVzc2FnZSBh
-Y2NvcmRpbmcgdG8gTGludXggY29kaW5nIHN0eWxlIC8NCj4gPiA+ID4gc3VibWlzc2lvbg0KPiA+
-ID4gPiBwcm9jZXNzIChuZWl0aGVyIHRvbyBlYXJseSBub3Igb3ZlciB0aGUgbGltaXQpOg0KPiA+
-ID4gPiBodHRwczovL3VybGRlZmVuc2UuY29tL3YzL19faHR0cHM6Ly9lbGl4aXIuYm9vdGxpbi5j
-b20vbGludXgvdjYuNC1yYzEvc291cmNlL0RvY3VtZW50YXRpb24vcHJvY2Vzcy9zdWJtaXR0aW5n
-LXBhdGNoZXMucnN0Kkw1OTdfXztJdyEhQ1RSTktBOXdNZzBBUmJ3IWdEamJxMEVaTmtoTFR6dUpN
-X3c1UG9wbkRGZWoxbUc0cW5rUkZneW9pVTdEdmhtN3RqM01lRzVlWllOR0EwTDBHXzYxai1jbWRJ
-eE9SQSQNCj4gPiA+ID4gwqANCj4gPiA+ID4gDQo+ID4gPiA+ID4gDQo+ID4gPiA+ID4gU2lnbmVk
-LW9mZi1ieTogS3lyaWUgV3UgPGt5cmllLnd1QG1lZGlhdGVrLmNvbT4NCj4gPiA+ID4gPiBBY2tl
-ZC1ieTogTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPg0K
-PiA+ID4gPiA+IC0tLQ0KPiA+ID4gPiA+IMKgLi4uL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLHZj
-b2RlYy1zdWJkZXYtDQo+ID4gPiA+ID4gZGVjb2Rlci55YW1swqDCoMKgwqDCoMKgwqDCoMKgwqAN
-Cj4gPiA+ID4gPiA+IDEgKw0KPiA+ID4gPiA+IMKgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9u
-KCspDQo+ID4gPiA+IA0KPiA+ID4gPiBBY2tlZC1ieTogS3J6eXN6dG9mIEtvemxvd3NraQ0KPiA+
-ID4gPiA8a3J6eXN6dG9mLmtvemxvd3NraUBvc3MucXVhbGNvbW0uY29tPg0KPiA+ID4gDQo+ID4g
-PiBBY3R1YWxseSBuby4gSSBjaGVja2VkIHByZXZpb3VzIGNvbW1lbnRzIGFuZCB5b3UgcmVjZWl2
-ZWQNCj4gPiA+IGZlZWRiYWNrDQo+ID4gPiB3aGljaA0KPiA+ID4geW91IGJhc2ljYWxseSBpZ25v
-cmVkLCBzbyBleHBsYWluIHdoeSB0aGlzIG1vZGVsIGhhcyBmbGV4aWJsZQ0KPiA+ID4gbnVtYmVy
-DQo+ID4gPiBvZg0KPiA+ID4gY2xvY2tzDQo+ID4gPiANCj4gPiA+IEJlc3QgcmVnYXJkcywNCj4g
-PiA+IEtyenlzenRvZg0KPiA+IA0KPiA+IERlYXIgS3J6eXN6dG9mLA0KPiA+IA0KPiA+IEFzIG1l
-bnRpb25lZCBpbiB0aGUgcHJldmlvdXMgdmVyc2lvbiBvZiB0aGUgY29tbXVuaWNhdGlvbiwgdGhl
-DQo+ID4gaW5mb3JtYXRpb24gcmVnYXJkaW5nIGNsayB3YXMgaW5jb3JyZWN0LCBhbmQgSSBoYXZl
-IGNvcnJlY3RlZCBpdCBpbg0KPiA+IHRoaXMgdmVyc2lvbi7CoA0KPiA+IA0KPiA+IFRoYW5rIHlv
-dSBmb3IgeW91ciBhdHRlbnRpb24gYW5kIHJlbWluZGVyLg0KPiANCj4gUmVhZCBteSBtZXNzYWdl
-IGNhcmVmdWxseSBpbnN0ZWFkIG9mIHJlc3BvbmRpbmcgd2hhdGV2ZXIgbmVjZXNzYXJ5IHRvDQo+
-IG1ha2UgbWUgZ28gYXdheS4NCj4gDQo+IE5BSw0KPiANCj4gV2hlcmUgZGlkIHlvdSBleHBsYWlu
-IHRoYXQgZGV2aWNlIGhhcyBmbGV4aWJsZSBudW1iZXIgb2YgY2xvY2tzPw0KPiANCj4gQmVzdCBy
-ZWdhcmRzLA0KPiBLcnp5c3p0b2YNCg0KSGkgS3J6eXN6dG9mLA0KDQpZb3UgYXJlIHJpZ2h0LCBt
-eSBwcmV2aW91cyByZXBseSB3YXMgbm90IHN1ZmZpY2llbnQuIFNvcnJ5IGFib3V0IHRoYXQuDQoN
-Ck1UODE5NiBoYXMgYSBmaXhlZCBzZXQgb2YgY2xvY2sgaW5wdXRzOiA5IGNsb2NrcyBmb3IgdGhl
-IGRlY29kZXINCmhhcmR3YXJlDQphbmQgMyBjbG9ja3MgZm9yIHRoZSBWQ1AgaW50ZXJmYWNlLiBC
-eSAiZmxleGlibGUgbnVtYmVyIG9mIGNsb2NrcyIsDQpJIG1lYW50IHRoYXQgY2xvY2sgY29udHJv
-bCBjYW4gYmUgc3BsaXQgYmV0d2VlbiB0aGUga2VybmVsIGRyaXZlcg0KYW5kIFZDUCBmaXJtd2Fy
-ZS4gVGhpcyBpcyBhIHNvZnR3YXJlIGltcGxlbWVudGF0aW9uIGRldGFpbCwNCm5vdCBhIGhhcmR3
-YXJlIG9yIERUIGJpbmRpbmcgcHJvcGVydHkuIE15IHdvcmRpbmcgd2FzIGluY29ycmVjdC4NCg0K
-VGhlIGJpbmRpbmcgc2hvdWxkIG5vdCBpbXBseSB0aGF0IHRoZSBudW1iZXIgb2YgY2xvY2tzIGlz
-IGZsZXhpYmxlLg0KSSBoYXZlIHVwZGF0ZWQgdGhlIGNvbW1pdCBtZXNzYWdlIHRvIGNsYXJpZnkg
-dGhpcy4NCg0KQmVzdCByZWdhcmRzLA0KS3lyaWUNCg0K
+MT7928 supports caching calibration (fact-cal) data in a
+host-side DMA buffer over AXI DMA, so the firmware can reuse previously
+computed calibration results across warm resets instead of recomputing
+them on every bring-up.
+
+Add a new cached_cal source file under mt7925/, built into mt7925e
+since the cache is reachable only over PCIe AXI DMA, that:
+ - allocates a coherent DMA region laid out for the common/group/channel
+   fact-cal buffers plus the mapping table,
+ - programs the firmware with the region base/offset via the new
+   MCU_UNI_CMD_AXIDMA command,
+ - builds and streams the fact-cal mapping table to the firmware via the
+   new MCU_UNI_CMD_FACT_CAL command.
+
+On MT7928 run-firmware, the cache is enabled only when the chip
+advertises MT792x_CHIP_CAP_AXIDMA_EN. A carried-over buffer that still
+holds FW-written cal data is reused (reused=true); a freshly allocated
+zeroed buffer starts cold. The region is freed on device unregister.
+
+The buf_info and mapping-table layouts are size-asserted to match the
+MT7928 firmware ABI.
+
+Signed-off-by: Allan Wang <allan.wang@mediatek.com>
+---
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |   2 +
+ .../wireless/mediatek/mt76/mt7925/Makefile    |   2 +-
+ .../mediatek/mt76/mt7925/cached_cal.c         | 304 ++++++++++++++++++
+ .../mediatek/mt76/mt7925/cached_cal.h         | 151 +++++++++
+ .../wireless/mediatek/mt76/mt7925/mt7925.h    |   1 +
+ .../net/wireless/mediatek/mt76/mt7925/pci.c   |  62 +++-
+ .../wireless/mediatek/mt76/mt7925/pci_mac.c   |   2 +
+ .../wireless/mediatek/mt76/mt7925/pci_mcu.c   |   2 +
+ drivers/net/wireless/mediatek/mt76/mt792x.h   |   8 +
+ 9 files changed, 532 insertions(+), 2 deletions(-)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/cached_cal.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/cached_cal.h
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index 0ededa569e9a..e46cb4ae37a9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -1357,9 +1357,11 @@ enum {
+ 	MCU_UNI_CMD_ALL_STA_INFO = 0x6e,
+ 	MCU_UNI_CMD_ASSERT_DUMP = 0x6f,
+ 	MCU_UNI_CMD_EXT_EEPROM_CTRL = 0x74,
++	MCU_UNI_CMD_FACT_CAL = 0x7c,
+ 	MCU_UNI_CMD_RADIO_STATUS = 0x80,
+ 	MCU_UNI_CMD_MLD = 0x82,
+ 	MCU_UNI_CMD_SDO = 0x88,
++	MCU_UNI_CMD_AXIDMA = 0xa2,
+ };
+ 
+ enum {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/Makefile b/drivers/net/wireless/mediatek/mt76/mt7925/Makefile
+index f9dcc0bba393..33539121a15c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/Makefile
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/Makefile
+@@ -6,5 +6,5 @@ obj-$(CONFIG_MT7925U) += mt7925u.o
+ 
+ mt7925-common-y := mac.o mcu.o regd.o main.o init.o debugfs.o nan.o
+ mt7925-common-$(CONFIG_NL80211_TESTMODE) += testmode.o
+-mt7925e-y := pci.o pci_mac.o pci_mcu.o
++mt7925e-y := pci.o pci_mac.o pci_mcu.o cached_cal.o
+ mt7925u-y := usb.o
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/cached_cal.c b/drivers/net/wireless/mediatek/mt76/mt7925/cached_cal.c
+new file mode 100644
+index 000000000000..03bd682f1224
+--- /dev/null
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/cached_cal.c
+@@ -0,0 +1,304 @@
++// SPDX-License-Identifier: BSD-3-Clause-Clear
++/* Copyright (C) 2026 MediaTek Inc. */
++
++#include <linux/dma-mapping.h>
++#include "../mt792x.h"
++#include "cached_cal.h"
++
++static void mt7925_cal_cache_calc_layout(struct mt7925_cal_cache_layout *l)
++{
++	u32 hdr = sizeof(struct mt7925_fact_cal_buf_info);
++
++	l->common_stride  = hdr + MT7925_FACT_CAL_LEN_COM;
++	l->group_stride   = hdr + MT7925_FACT_CAL_LEN_GRP;
++	l->channel_stride = hdr + MT7925_FACT_CAL_LEN_CH;
++
++	l->common_off  = 0;
++	l->group_off   = l->common_off +
++		l->common_stride * MT7925_FACT_CAL_COMMON_BAND_NUM;
++	l->channel_off = l->group_off +
++		l->group_stride * MT7925_FACT_CAL_GROUP_NUM;
++	l->mapping_off = l->channel_off +
++		l->channel_stride * MT7925_FACT_CAL_CH_NUM_ALL;
++	l->total = l->mapping_off +
++		sizeof(struct mt7925_fact_cal_mapping_tbl);
++}
++
++static u32 mt7925_cal_cache_region_size(void)
++{
++	struct mt7925_cal_cache_layout l;
++
++	mt7925_cal_cache_calc_layout(&l);
++
++	return l.total;
++}
++
++int mt7925_axidma_alloc(struct mt792x_dev *dev)
++{
++	u32 total_size;
++	dma_addr_t dma_addr;
++	void *va;
++
++	if (dev->cached_cal.va)
++		return 0;
++
++	total_size = mt7925_cal_cache_region_size();
++
++	va = dma_alloc_coherent(dev->mt76.dev, total_size, &dma_addr,
++				GFP_KERNEL);
++	if (!va)
++		return -ENOMEM;
++
++	dev->cached_cal.va = va;
++	dev->cached_cal.dma_addr = dma_addr;
++	dev->cached_cal.size = total_size;
++
++	return 0;
++}
++
++void mt7925_axidma_free(struct mt792x_dev *dev)
++{
++	if (!dev->cached_cal.va)
++		return;
++
++	dma_free_coherent(dev->mt76.dev, dev->cached_cal.size,
++			  dev->cached_cal.va, dev->cached_cal.dma_addr);
++
++	memset(&dev->cached_cal, 0, sizeof(dev->cached_cal));
++}
++
++int mt7925_mcu_send_axidma_info(struct mt792x_dev *dev)
++{
++	struct mt7925_axidma_info_req *req;
++	u32 remap_base, pa_offset;
++	int ret;
++
++	if (!dev->cached_cal.va)
++		return -EINVAL;
++
++	req = kzalloc(sizeof(*req), GFP_KERNEL);
++	if (!req)
++		return -ENOMEM;
++
++	remap_base = (u32)(dev->cached_cal.dma_addr >> 16);
++	pa_offset = (u32)(dev->cached_cal.dma_addr & 0xFFFF);
++
++	req->remap.tag = cpu_to_le16(MT7925_AXIDMA_TAG_REMAP);
++	req->remap.len = cpu_to_le16(sizeof(req->remap));
++	req->remap.remap_addr = cpu_to_le32(remap_base);
++
++	req->fact_cal.tag = cpu_to_le16(MT7925_AXIDMA_TAG_FACT_CAL);
++	req->fact_cal.len = cpu_to_le16(sizeof(req->fact_cal));
++	req->fact_cal.host_addr_offset = cpu_to_le32(pa_offset);
++	req->fact_cal.size = cpu_to_le32(dev->cached_cal.size);
++	req->fact_cal.bound = cpu_to_le32(pa_offset + dev->cached_cal.size - 1);
++
++	ret = mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD(AXIDMA),
++				req, sizeof(*req), true);
++
++	kfree(req);
++
++	if (ret)
++		dev_err(dev->mt76.dev,
++			"failed to send AXI DMA info: %d\n", ret);
++
++	return ret;
++}
++
++static bool mt7925_cal_cache_read_slot(struct mt792x_dev *dev, u32 region_off,
++				       u32 stride, u32 idx,
++				       u32 *cal_param, u32 *total_buf_num)
++{
++	const struct mt7925_fact_cal_buf_info *bi;
++	u32 off = region_off + stride * idx;
++
++	if (!dev->cached_cal.va || off + sizeof(*bi) > dev->cached_cal.size)
++		return false;
++
++	bi = (const struct mt7925_fact_cal_buf_info *)
++		((const u8 *)dev->cached_cal.va + off);
++	if (cal_param)
++		*cal_param = le32_to_cpu(bi->cal_param);
++	if (total_buf_num)
++		*total_buf_num = le32_to_cpu(bi->total_buf_num);
++	return true;
++}
++
++static void mt7925_fact_cal_build_mapping_tbl(struct mt792x_dev *dev,
++					      struct mt7925_fact_cal_mapping_tbl *tbl)
++{
++	dma_addr_t common_pa, group_pa, channel_pa, mapping_pa;
++	u32 hdr = sizeof(struct mt7925_fact_cal_buf_info);
++	dma_addr_t base = dev->cached_cal.dma_addr;
++	struct mt7925_cal_cache_layout l;
++
++	mt7925_cal_cache_calc_layout(&l);
++
++	common_pa  = base + l.common_off;
++	group_pa   = base + l.group_off;
++	channel_pa = base + l.channel_off;
++	mapping_pa = base + l.mapping_off;
++
++	memset(tbl, 0, sizeof(*tbl));
++
++	tbl->common.phy_addr_h = cpu_to_le32(upper_32_bits(common_pa));
++	tbl->common.phy_addr_l = cpu_to_le32(lower_32_bits(common_pa));
++	tbl->common.offset     = cpu_to_le32(l.common_stride);
++
++	tbl->group.phy_addr_h  = cpu_to_le32(upper_32_bits(group_pa));
++	tbl->group.phy_addr_l  = cpu_to_le32(lower_32_bits(group_pa));
++	tbl->group.offset      = cpu_to_le32(l.group_stride);
++
++	tbl->channel.phy_addr_h = cpu_to_le32(upper_32_bits(channel_pa));
++	tbl->channel.phy_addr_l = cpu_to_le32(lower_32_bits(channel_pa));
++	tbl->channel.offset     = cpu_to_le32(l.channel_stride);
++
++	if (dev->cached_cal.reused) {
++		u32 i, cal_param, total_buf_num;
++
++		for (i = 0; i < MT7925_FACT_CAL_COMMON_BAND_NUM; i++)
++			if (mt7925_cal_cache_read_slot(dev, l.common_off,
++						       l.common_stride, i,
++						       &cal_param, NULL))
++				tbl->common.band[i] = cal_param & 0xff;
++
++		for (i = 0; i < MT7925_FACT_CAL_GROUP_NUM; i++)
++			if (mt7925_cal_cache_read_slot(dev, l.group_off,
++						       l.group_stride, i,
++						       &cal_param, NULL))
++				tbl->group.group[i] = cal_param & 0xff;
++
++		for (i = 0; i < MT7925_FACT_CAL_CH_NUM_ALL; i++)
++			if (mt7925_cal_cache_read_slot(dev, l.channel_off,
++						       l.channel_stride, i,
++						       &cal_param,
++						       &total_buf_num)) {
++				tbl->channel.cal_param[i] =
++					cpu_to_le32(cal_param);
++				tbl->channel.total_buf_num[i] =
++					total_buf_num & 0xff;
++			}
++	}
++
++	tbl->buf_info_size = cpu_to_le32(hdr);
++	tbl->phy_addr_h    = cpu_to_le32(upper_32_bits(mapping_pa));
++	tbl->phy_addr_l    = cpu_to_le32(lower_32_bits(mapping_pa));
++}
++
++static int mt7925_mcu_fact_cal_rapid_set(struct mt792x_dev *dev, u8 cal_type,
++					 u32 seq_num, bool done,
++					 const void *data, u32 data_len)
++{
++	struct mt7925_fact_cal_req *req;
++	int ret;
++
++	if (data_len > MT7925_FACT_CAL_DATA_BUF_LEN)
++		return -EINVAL;
++
++	req = kzalloc(sizeof(*req), GFP_KERNEL);
++	if (!req)
++		return -ENOMEM;
++
++	req->set.tag = cpu_to_le16(MT7925_FACT_CAL_TAG_RAPID_SET);
++	req->set.len = cpu_to_le16(sizeof(req->set));
++	req->set.seq_num = cpu_to_le32(seq_num);
++	req->set.buf_data_len = cpu_to_le32(data_len);
++	req->set.cal_type = cal_type;
++	req->set.done = done;
++	if (data && data_len)
++		memcpy(req->set.buf_data, data, data_len);
++
++	/* Wait for the ACK on the final chunk only: the FW applies the whole
++	 * table there (DMAs the cached common / power-on group cal data in and
++	 * programs the PHY), so its ACK is the completion point. Waiting also
++	 * drains the ACKs the earlier chunks left in the MCU response queue,
++	 * since UNI commands always request one.
++	 */
++	ret = mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD(FACT_CAL),
++				req, sizeof(*req), done);
++	kfree(req);
++
++	return ret;
++}
++
++int mt7925_mcu_send_fact_cal_mapping_tbl(struct mt792x_dev *dev)
++{
++	struct mt7925_fact_cal_mapping_tbl *tbl;
++	__le32 cfg[MT7925_FACT_CAL_BUF_CFG_LEN / sizeof(__le32)] = {0};
++	u32 seq = 0, off = 0, left;
++	int ret;
++
++	if (!dev->cached_cal.va)
++		return -EINVAL;
++
++	tbl = kzalloc(sizeof(*tbl), GFP_KERNEL);
++	if (!tbl)
++		return -ENOMEM;
++
++	mt7925_fact_cal_build_mapping_tbl(dev, tbl);
++
++	cfg[1] = cpu_to_le32(sizeof(*tbl));
++	cfg[2] = cpu_to_le32(MT7925_FACT_CAL_DATA_BUF_NUM_MAX);
++	ret = mt7925_mcu_fact_cal_rapid_set(dev, MT7925_FACT_CAL_TYPE_MAPPING_TBL,
++					    seq, false, cfg, sizeof(cfg));
++	if (ret) {
++		dev_err(dev->mt76.dev,
++			"fact-cal mapping tbl header send failed (seq=%u): %d\n",
++			seq, ret);
++		goto out;
++	}
++
++	left = sizeof(*tbl);
++	while (left) {
++		u32 chunk = min_t(u32, left, MT7925_FACT_CAL_DATA_BUF_LEN);
++
++		ret = mt7925_mcu_fact_cal_rapid_set(dev,
++						    MT7925_FACT_CAL_TYPE_MAPPING_TBL,
++						    ++seq, false,
++						    (u8 *)tbl + off, chunk);
++		if (ret) {
++			dev_err(dev->mt76.dev,
++				"fact-cal mapping tbl data send failed (seq=%u, off=%u, chunk=%u): %d\n",
++				seq, off, chunk, ret);
++			goto out;
++		}
++
++		off  += chunk;
++		left -= chunk;
++	}
++
++	ret = mt7925_mcu_fact_cal_rapid_set(dev, MT7925_FACT_CAL_TYPE_MAPPING_TBL,
++					    ++seq, true, NULL, 0);
++	if (ret) {
++		dev_err(dev->mt76.dev,
++			"fact-cal mapping tbl done send failed (seq=%u): %d\n",
++			seq, ret);
++		goto out;
++	}
++out:
++	kfree(tbl);
++
++	return ret;
++}
++
++int mt7925_mcu_fact_cal_set_bypass(struct mt792x_dev *dev, bool enable)
++{
++	struct {
++		u8 _rsv[4];
++
++		struct {
++			__le16 tag;
++			__le16 len;
++			__le32 data;
++		} __packed update_flag;
++	} req = {
++		.update_flag = {
++			.tag  = cpu_to_le16(MT7925_FACT_CAL_TAG_UPDATE_FLAG),
++			.len  = cpu_to_le16(sizeof(req.update_flag)),
++			.data = cpu_to_le32(enable ? 1 : 0),
++		},
++	};
++
++	return mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD(FACT_CAL),
++				 &req, sizeof(req), false);
++}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/cached_cal.h b/drivers/net/wireless/mediatek/mt76/mt7925/cached_cal.h
+new file mode 100644
+index 000000000000..6572513b7646
+--- /dev/null
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/cached_cal.h
+@@ -0,0 +1,151 @@
++/* SPDX-License-Identifier: BSD-3-Clause-Clear */
++/* Copyright (C) 2026 MediaTek Inc. */
++
++#ifndef __CACHED_CAL_H
++#define __CACHED_CAL_H
++
++enum mt7925_axidma_info_tag {
++	MT7925_AXIDMA_TAG_REMAP = 0,
++	MT7925_AXIDMA_TAG_FACT_CAL = 1,
++	MT7925_AXIDMA_TAG_NUM
++};
++
++enum mt7925_fact_cal_tag {
++	MT7925_FACT_CAL_TAG_TRIGGER	= 2,
++	MT7925_FACT_CAL_TAG_UPDATE_FLAG	= 3,
++	MT7925_FACT_CAL_TAG_RAPID_GET	= 4,
++	MT7925_FACT_CAL_TAG_RAPID_SET	= 5,
++};
++
++enum mt7925_fact_cal_type {
++	MT7925_FACT_CAL_TYPE_COMMON		= 0,
++	MT7925_FACT_CAL_TYPE_GROUP		= 1,
++	MT7925_FACT_CAL_TYPE_CHANNEL		= 2,
++	MT7925_FACT_CAL_TYPE_MAPPING_TBL	= 4,
++};
++
++#define MT7925_FACT_CAL_DATA_BUF_LEN		1400
++#define MT7925_FACT_CAL_BUF_CFG_LEN			16
++#define MT7925_FACT_CAL_DATA_BUF_NUM_MAX	4
++#define MT7925_FACT_CAL_BUF_CFG_U32_LEN		4
++#define MT7925_FACT_CAL_DATA_MAX_BUF_LEN \
++	(MT7925_FACT_CAL_DATA_BUF_NUM_MAX * MT7925_FACT_CAL_BUF_CFG_U32_LEN)
++
++#define MT7925_FACT_CAL_COMMON_BAND_NUM		2
++#define MT7925_FACT_CAL_GROUP_NUM		35
++#define MT7925_FACT_CAL_CH_NUM_2G		14
++#define MT7925_FACT_CAL_CH_NUM_5G		68
++#define MT7925_FACT_CAL_CH_NUM_6G		109
++#define MT7925_FACT_CAL_CH_NUM_ALL \
++	(MT7925_FACT_CAL_CH_NUM_2G + MT7925_FACT_CAL_CH_NUM_5G + \
++	 MT7925_FACT_CAL_CH_NUM_6G)
++
++#define MT7925_FACT_CAL_LEN_COM			600
++#define MT7925_FACT_CAL_LEN_GRP			4500
++#define MT7925_FACT_CAL_LEN_CH			2800
++
++struct mt7925_fact_cal_buf_info {
++	__le32 cal_type;
++	__le32 cal_param;
++	__le32 buf_seq_num;
++	__le32 total_buf_num;
++	__le32 buf_data_len;
++	u8 valid;
++	u8 done;
++	u8 rsv[2];
++	__le32 buf_cfg_info[MT7925_FACT_CAL_DATA_MAX_BUF_LEN];
++} __packed;
++
++static_assert(sizeof(struct mt7925_fact_cal_buf_info) == 88,
++	      "buf_info must match the MT7928 FW (88 bytes) or it rejects the mapping table");
++
++struct mt7925_fact_cal_common_map {
++	__le32 phy_addr_h;
++	__le32 phy_addr_l;
++	__le32 offset;
++	u8 band[MT7925_FACT_CAL_COMMON_BAND_NUM];
++	u8 rsv[2];
++} __packed;
++
++struct mt7925_fact_cal_group_map {
++	__le32 phy_addr_h;
++	__le32 phy_addr_l;
++	__le32 offset;
++	u8 group[MT7925_FACT_CAL_GROUP_NUM];
++	u8 rsv;
++} __packed;
++
++struct mt7925_fact_cal_channel_map {
++	__le32 phy_addr_h;
++	__le32 phy_addr_l;
++	__le32 offset;
++	__le32 cal_param[MT7925_FACT_CAL_CH_NUM_ALL];
++	u8 total_buf_num[MT7925_FACT_CAL_CH_NUM_ALL];
++	u8 rsv;
++} __packed;
++
++struct mt7925_fact_cal_mapping_tbl {
++	struct mt7925_fact_cal_common_map common;
++	struct mt7925_fact_cal_group_map group;
++	struct mt7925_fact_cal_channel_map channel;
++	__le32 buf_info_size;
++	__le32 phy_addr_h;
++	__le32 phy_addr_l;
++} __packed;
++
++static_assert(sizeof(struct mt7925_fact_cal_mapping_tbl) == 1044,
++	      "mapping table must match the MT7928 FW (1044 bytes) or the FW parse corrupts");
++
++struct mt7925_cal_cache_layout {
++	u32 common_off, group_off, channel_off, mapping_off;
++	u32 common_stride, group_stride, channel_stride;
++	u32 total;
++};
++
++struct mt7925_axidma_info_req {
++	u8 _rsv[4];
++
++	struct {
++		__le16 tag;
++		__le16 len;
++		__le32 remap_addr;
++		__le32 reserved;
++	} __packed remap;
++
++	struct {
++		__le16 tag;
++		__le16 len;
++		__le32 host_addr_offset;
++		__le32 size;
++		__le32 bound;
++		__le32 reserved;
++	} __packed fact_cal;
++} __packed;
++
++struct mt7925_fact_cal_req {
++	u8 _rsv[4];
++
++	struct {
++		__le16 tag;
++		__le16 len;
++		__le32 data;
++		__le32 seq_num;
++		__le32 buf_data_len;
++		u8 cal_type;
++		u8 done;
++		u8 rsv[2];
++		u8 buf_data[MT7925_FACT_CAL_DATA_BUF_LEN];
++	} __packed set;
++} __packed;
++
++int mt7925_axidma_alloc(struct mt792x_dev *dev);
++
++void mt7925_axidma_free(struct mt792x_dev *dev);
++
++int mt7925_mcu_send_axidma_info(struct mt792x_dev *dev);
++
++int mt7925_mcu_send_fact_cal_mapping_tbl(struct mt792x_dev *dev);
++
++int mt7925_mcu_fact_cal_set_bypass(struct mt792x_dev *dev, bool enable);
++
++#endif /* __CACHED_CAL_H */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+index 321e732347f2..4d79c1e66e66 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+@@ -353,6 +353,7 @@ int mt7925_mcu_parse_response(struct mt76_dev *mdev, int cmd,
+ 
+ int mt7925e_mac_reset(struct mt792x_dev *dev);
+ int mt7925e_mcu_init(struct mt792x_dev *dev);
++void mt7925e_axidma_cal_cache_init(struct mt792x_dev *dev);
+ void mt7925_mac_add_txs(struct mt792x_dev *dev, void *data);
+ void mt7928_mac_add_txs_msg(struct mt792x_dev *dev, void *evt);
+ void mt7925_set_runtime_pm(struct mt792x_dev *dev);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+index 02ef09dd797d..724abd2be57c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+@@ -9,6 +9,7 @@
+ #include "mac.h"
+ #include "mcu.h"
+ #include "regd.h"
++#include "cached_cal.h"
+ #include "../dma.h"
+ 
+ static const struct pci_device_id mt7925_pci_device_table[] = {
+@@ -38,6 +39,62 @@ static int mt7925e_init_reset(struct mt792x_dev *dev)
+ 	return mt792x_wpdma_reset(dev, true);
+ }
+ 
++/* Set up the factory-calibration cache in host memory. PCIe only: the FW
++ * reaches the buffer through AXI DMA, so it has no meaning on other buses.
++ * Every failure just leaves the cache off, which is not fatal.
++ */
++void mt7925e_axidma_cal_cache_init(struct mt792x_dev *dev)
++{
++	if (!(dev->phy.chip_cap & MT792x_CHIP_CAP_AXIDMA_EN))
++		return;
++
++	if (dev->cached_cal.va) {
++		/* Carried-over buffer still holds FW-written cal data. */
++		dev->cached_cal.reused = true;
++	} else {
++		if (mt7925_axidma_alloc(dev)) {
++			dev_warn(dev->mt76.dev,
++				 "AXI DMA cal cache disabled: buffer alloc failed\n");
++			return;
++		}
++		/* Freshly allocated buffer is zeroed: no cal data yet. */
++		dev->cached_cal.reused = false;
++	}
++
++	if (mt7925_mcu_send_axidma_info(dev)) {
++		dev_warn(dev->mt76.dev,
++			 "AXI DMA cal cache disabled: info cmd to FW failed\n");
++		return;
++	}
++
++	/* Enable the bypass-cal flow so the FW reuses cached cal data
++	 * (common / power-on group) instead of running a full calibration;
++	 * must be set before the mapping table is sent.
++	 */
++	if (mt7925_mcu_fact_cal_set_bypass(dev, true)) {
++		dev_warn(dev->mt76.dev,
++			 "AXI DMA cal cache disabled: bypass flag set failed\n");
++		return;
++	}
++
++	if (mt7925_mcu_send_fact_cal_mapping_tbl(dev)) {
++		dev_warn(dev->mt76.dev,
++			 "AXI DMA cal cache disabled: mapping tbl send failed\n");
++		return;
++	}
++
++	if (mt7925_mcu_fact_cal_set_bypass(dev, false)) {
++		dev_warn(dev->mt76.dev,
++			 "AXI DMA cal cache disabled: bypass flag set failed\n");
++		return;
++	}
++
++	dev_info(dev->mt76.dev,
++		 "AXI DMA cal cache enabled (DMA=%pad, size=%u, reused=%d)\n",
++		 &dev->cached_cal.dma_addr, dev->cached_cal.size,
++		 dev->cached_cal.reused);
++}
++
+ static void mt7925e_unregister_device(struct mt792x_dev *dev)
+ {
+ 	int i;
+@@ -58,6 +115,9 @@ static void mt7925e_unregister_device(struct mt792x_dev *dev)
+ 
+ 	mt7925_tx_token_put(dev);
+ 	__mt792x_mcu_drv_pmctrl(dev);
++
++	mt7925_axidma_free(dev);
++
+ 	mt792x_dma_cleanup(dev);
+ 	mt792x_wfsys_reset(dev);
+ 	skb_queue_purge(&dev->mt76.mcu.res_q);
+@@ -587,7 +647,7 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+ 	is_mt7928_hw = (pdev->device == 0x7928 || pdev->device == 0x7935);
+ 
+ 	if (is_mt7928_hw)
+-		ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(34));
++		ret = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
+ 	else
+ 		ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(32));
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c
+index 8477d21abc66..c90f129b3a34 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c
+@@ -135,6 +135,8 @@ int mt7925e_mac_reset(struct mt792x_dev *dev)
+ 	if (err)
+ 		goto out;
+ 
++	mt7925e_axidma_cal_cache_init(dev);
++
+ 	err = mt7925_mcu_set_eeprom(dev);
+ 	if (err)
+ 		goto out;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci_mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci_mcu.c
+index 72707eddc3db..258f3753db1f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/pci_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci_mcu.c
+@@ -46,6 +46,8 @@ int mt7925e_mcu_init(struct mt792x_dev *dev)
+ 	mt76_rmw_field(dev, dev->pcie_reg->pm, MT_PCIE_MAC_PM_L0S_DIS, 1);
+ 
+ 	err = mt7925_run_firmware(dev);
++	if (!err)
++		mt7925e_axidma_cal_cache_init(dev);
+ 
+ 	mt76_queue_tx_cleanup(dev, dev->mt76.q_mcu[MT_MCUQ_FWDL], false);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
+index 9efc251cb745..740d517eb38b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+@@ -33,6 +33,7 @@
+ #define MT792x_CHIP_CAP_REGD_EN BIT(5)
+ #define MT792x_CHIP_CAP_MLO_EN BIT(8)
+ #define MT792x_CHIP_CAP_MLO_EML_EN BIT(9)
++#define MT792x_CHIP_CAP_AXIDMA_EN BIT(16)
+ 
+ /* NOTE: used to map mt76_rates. idx may change if firmware expands table */
+ #define MT792x_BASIC_RATES_TBL	14
+@@ -342,6 +343,13 @@ struct mt792x_dev {
+ 	struct ieee80211_vif *nan_vif;
+ 	const struct ieee80211_iface_combination *iface_combinations;
+ 	int n_iface_combinations;
++
++	struct {
++		void *va;
++		dma_addr_t dma_addr;
++		u32 size;
++		bool reused;
++	} cached_cal;
+ };
+ 
+ static inline struct mt792x_bss_conf *
+-- 
+2.45.2
+
 
