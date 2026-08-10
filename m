@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2A92C5AD7B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2026 16:26:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34DD8C5B56A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2026 17:12:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SUi8TvaGZ/ONLDR20xtbgTj2PSwgrawqHUmwvPH281Y=; b=udRfv4E/Tbk11eoDCi0087xYlk
-	zjuVJ7SlOSkgKDJNSoTm8mkPN7mNL67Z8qKEsr3RAC2CAYHlvSdQWq6JZMXsIR4V2OeEQvCIAbIrI
-	Y11B4D7T8akTVw6nAerNNXG+Cn/x+rXFy5RovzrvCfBbYRydd+SUNNyahzmURqJcspDyo5LOTGmUv
-	cRkx1CCwcb3mEeeSRMDLSx8QO2KXa+FJtafLPgubhnwad3tvTISTru/Gh7ahWxm38OVhRo7/OuZeg
-	fc3T6B1AaDMn9azQwS2zvbRe8RPDwLMHfDp8fVU5f+ycATnbuM0EqnskksUw5LhUmX8qAenghWOwu
-	iixeq4iQ==;
+	bh=fVrGGL5Q0nSgj2p380L09qPkXcrVRBJyN66cazrVrMM=; b=463wN0uf+S52Q1wY+esUVMOBP7
+	Qa0U9HYq/9r97UOj9DiqF71MZAAmme/VktgUre4z7CA1z0mg+GX/JtxEsdQT8u0E3860s67PhXhRH
+	88yMqmPT7Piazca8U/CLLHW9g6XdV5pLQMU6Z8LI//20hPFicnqrdRVlV7KUL3uS4ur0UgiY9/hcw
+	ToF2elVPAxl21cC8ZXi4O95lnaC7oA2BEhjri4CSxZSrdRPk6gyxlPWfp/R5T+ZihrRb8saaFxOTJ
+	C13B80dgIi6M922C/bbkqwV3xKzz/5XsR9FerARkrM0BLxGJf4ZmqrsbzRdfv6a1WiiahdU6rQggD
+	COKQdXkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtSpY-0000000CNvH-2bPM;
-	Mon, 10 Aug 2026 16:26:28 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wtTXu-0000000CUDz-3hKI;
+	Mon, 10 Aug 2026 17:12:18 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtSpW-0000000CNuR-2thB;
-	Mon, 10 Aug 2026 16:26:26 +0000
+	id 1wtTXt-0000000CUDX-1Jiv;
+	Mon, 10 Aug 2026 17:12:17 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2595A60052;
-	Mon, 10 Aug 2026 16:26:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5CE791F00A3A;
-	Mon, 10 Aug 2026 16:26:19 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id E0B684393A;
+	Mon, 10 Aug 2026 17:12:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A5881F000E9;
+	Mon, 10 Aug 2026 17:12:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786379185;
-	bh=SUi8TvaGZ/ONLDR20xtbgTj2PSwgrawqHUmwvPH281Y=;
+	s=k20260515; t=1786381936;
+	bh=fVrGGL5Q0nSgj2p380L09qPkXcrVRBJyN66cazrVrMM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=iZLUvplyIcNz5VE9d3kCC55idVkZrcMUkNQMbp9OGxSTxJfNYZ4yr2JOIOsKLJAn8
-	 OObjougUbmk/38Tg1bYoCpjH+ub9h5QwXhL5o/8zljucHR+7DSNhua66AetPZHytcQ
-	 3y2CRfYBQvSNkeuKQbvgCx8L6hlt9D3WV679tfLe6BvPHzmCHXlH9U99BxReF/HGin
-	 TL4hR+2U4zuEU+faiR9plq7xmFoQFSgBVHxVjTPoHNr+pLGwQl794ToVshVql7ZgUD
-	 g+L0acQ0yPs3jYsKAs1idJ115olPzn+IoDNqdAlrajYd2g8cEdKKUpyT9Dcts4aZoC
-	 Zur8II8DGV73g==
-Date: Mon, 10 Aug 2026 18:26:15 +0200
+	b=PjGA/P24nLObN/Vr0Bxq12S0QmU7205Y8TzFWVr4OpTB51Nd4GtcEPxwaNVh5NLY/
+	 Hk870KboTaYos41UywIijUWP3lCPNOr3XiUbNzg2JR+WFmMUJ01xs9HHUosv/IG7HD
+	 bj54JiKJBhSDlWThr6gedepNZrPRdreI5HoQdfLV/WE5NWmWa654WjYcXxrPStliRh
+	 p2Zj5kFWg6+KNdbmipxEEADZGm1w8pFmFt5//PmCO7lY3AUodjHHKu/fLekg1Dtan4
+	 Za+sUxmqcSAJSMiDJEfrQzAMrReqclqt8FH7is5NZlviPAdg/Rf7Vy633pOmQOqCsk
+	 QhAXbL278yMcQ==
+Date: Mon, 10 Aug 2026 19:12:06 +0200
 From: Manivannan Sadhasivam <mani@kernel.org>
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Bartosz Golaszewski <brgl@kernel.org>, 
@@ -56,16 +56,16 @@ Cc: Bartosz Golaszewski <brgl@kernel.org>,
 	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
 	Alan Stern <stern@rowland.harvard.edu>
-Subject: Re: [PATCH v7 13/16] power: sequencing: pcie-m2: Add usb and sdio
- targets for E-key connector
-Message-ID: <hxidwwqeooyo4fwjc6rmbsfv35b2af7flub23qcpwin6bqj5ff@h46sqvwc6k6i>
+Subject: Re: [PATCH v7 14/16] power: sequencing: pcie-m2: Split Bluetooth
+ unit based on interface
+Message-ID: <ns5zexfsbin4om3klprrh4v2xfvhhg5nztbbf5neakyuwq47bc@mckelf2d5x5f>
 References: <20260724084328.3943997-1-wenst@chromium.org>
- <20260724084328.3943997-14-wenst@chromium.org>
+ <20260724084328.3943997-15-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260724084328.3943997-14-wenst@chromium.org>
+In-Reply-To: <20260724084328.3943997-15-wenst@chromium.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,25 +80,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 24, 2026 at 04:43:22PM +0800, Chen-Yu Tsai wrote:
-> The M.2 E-key connector allows either PCIe or SDIO for WiFi and USB or
-> UART for BT. Currently the driver only supports PCIe and UART.
+On Fri, Jul 24, 2026 at 04:43:23PM +0800, Chen-Yu Tsai wrote:
+> Some UART / serdev based Bluetooth drivers need to be able to reset the
+> hardware during initialization or recovery. This is not possible with
+> the current power sequencing API if a unit is shared between USB and
+> UART interfaces.
 > 
-> Add power sequencing targets for SDIO and USB. To avoid adding a
-> complicated dependency tree, rename the existing power sequencing units
-> "pcie" and "uart" to "wifi" and "bt". The existing target names are left
-> untouched. The new "sdio" and "usb" targets just point to the renamed
-> "wifi" and "bt" units.
+> For now, split the Bluetooth unit into two, one for each interface.
+> This allows either interface to independently toggle the power, with
+> the last action prevailing, thereby unbreaking the Qualcomm Bluetooth
+> serdev driver. This is also needed for the Realtek Bluetooth serdev
+> driver (hci_h5).
 > 
-> The "unit" names are internal to the power sequencing framework, and
-> should be confined to a single provider. The names are only
-> informational. Dependencies are tracked with pointers to other units.
+> Having independent control from either interface unfortunately means
+> that userspace is able to shut down the controller from sysfs using
+> the USB port's "disable" setting without the serdev driver knowing
+> about it. On the USB side, independent control is also desired, as it
+> allows the USB core to power cycle the port/device during faults, and
+> for userspace to initiate reset and recovery using the aforementioned
+> "disable" setting. However when USB is used, a serdev device is not
+> created, and there is no conflicting usage, which allows the power
+> sequencing to work even without the split unit.
 > 
-> The "target" names are the strings that the consumer uses to acquire a
-> descriptor with. As these remain the same, existing users will continue
-> to work.
-> 
+> Suggested-by: Wei Deng <wei.deng@oss.qualcomm.com>
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+> Changes since v4:
+> - New patch
+> 
+> This patch is _not_ squashed into the previous to provide clear context
+> on the change, and the less than perfect nature of it.
+> 
+> I think what we need in this case is some sort of lockout. The serdev
+> consumer would want "exclusive" access, locking out the USB consumer,
+> which can tolerate "shared" access.
+> 
+> Something similar would be needed for the WiFi if we ever add support
+> for SDIO for toggling the state of W_DISABLE#1. At least the SDIO and
+> PCIe reset signals are separate.
+
+I don't think PCIe/SDIO suffers from the same issue as USB/BT. But anyhow, I
+think it is OK to have this patch as an interim solution, but we should try to
+model the BT control in a proper manner. I'd fancy adding TODO instead of XXX in
+the comments. But nevertheless,
 
 Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
 
