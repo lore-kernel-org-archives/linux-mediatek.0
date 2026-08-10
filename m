@@ -4,88 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70263C5AD7B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2026 10:23:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14F90C5AD7B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2026 10:33:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UaiKz12rre+TEb0L0zwF2Ar518hheHMHyzdiIuPJmqA=; b=ns7oxvbK4mpvUNc4NB+0qgyUe7
-	eYp3DiiQADArSVx6DDNQyNGdJ5GYp0czBJV5ignTvZXC+HrFdstvgYh/bIlP/e3GM3X23/wMid1Jm
-	Zg0kbDitN4GhFrrtMnpbjOORv3XzagaN+YLFItuN3ZxKOeXQY0OGYYf8GL6d/9jNXpnZnh2nzGN4j
-	dfSFxkzfi+ACd0oU3QelWqyzPkwTIWpYXM0EVPq1gtf8xjHMgtgvTw6s9QGe9BB0Pgqi3bmqJXh09
-	3xlWMbWQt0/OiEmrZBv8NkDao+Urxu3Mrd1/l5iAOEzouOPvna0rjvJi7RubP/n6NRY7nVe7/6uXe
-	Nir3bOqw==;
+	bh=zDZgGtDZA2SodhjUYL0QDlYRHGpmrmtit/UzUDZv+M8=; b=BfydAs4/gnhrGMzwoBlgHJY8qm
+	i3al8TpYIqniH91TQTHXJ8Tu5SBEL+YHysjiEtNnf+xakfOoX7N7EOFXFBcDCYvtD3E6cbmjozLR+
+	TfmNLSqF/08L5npm+GNGk/yDEfgFxQ/rxCFR814dVd1egT4iC3HlGBzF8jJaJhhMN5+p2exeOLyXZ
+	ITO8gfIUbLRNdg7mfQNyCqMahMICsREzC6qQ2a7mTwUSe7zNxlY96Xr4cn/AFaW7wFnWifyw+uw+m
+	UtuR+2tRnCinRUjTXfU0gyHpv0RyDft+2QgeGaVgaPLJi3LtPSxgNnFeb/kmqzT4s1+JXlgwH3SEg
+	4R0/vrvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtNAW-0000000BUsi-11Gl;
-	Mon, 10 Aug 2026 10:23:44 +0000
-Received: from smtpbgeu1.qq.com ([52.59.177.22])
+	id 1wtNJw-0000000BWFG-0hhA;
+	Mon, 10 Aug 2026 10:33:28 +0000
+Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtNAQ-0000000BUqi-2HDG;
-	Mon, 10 Aug 2026 10:23:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=uniontech.com;
-	s=onoh2408; t=1786357373;
-	bh=UaiKz12rre+TEb0L0zwF2Ar518hheHMHyzdiIuPJmqA=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version;
-	b=UTRaja9Fq7Z6GXoKunTgh2glOTKaW5WALQ8Qr27kWrQArwk4FVx9YnzpuNpwP7qHp
-	 4EbTPKh16zSrgIYWuUK9W8Itq1GgVA/ijqxlQxqWI+VEne7nCDjz+Q5DhMtUaUjPy6
-	 1Wqp7XGWFxVpV+27st0pgkOR7e10TsSBeSKDdH0A=
-X-QQ-mid: esmtpsz19t1786357368t5ddead0c
-X-QQ-Originating-IP: Ai5nYPNeALjmEVvXxU8/ax7XOt7XYVRi8rRRc3K6A4w=
-Received: from PEN002676 ( [124.126.19.250])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 10 Aug 2026 18:22:40 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 1
-X-BIZMAIL-ID: 17557001589291606295
-EX-QQ-RecipientCnt: 9
-From: ZhaoJinming <zhaojinming@uniontech.com>
-To: Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
-	linux-bluetooth@vger.kernel.org
-Cc: Marcel Holtmann <marcel@holtmann.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	ZhaoJinming <zhaojinming@uniontech.com>
-Subject: [PATCH v2] Bluetooth: btmtksdio: fix deadlock in close and reset paths
-Date: Mon, 10 Aug 2026 18:22:38 +0800
-Message-ID: <81B94E6D2ACC0BFD+20260810-btmtksdio-deadlock-fix-v2-1-0eb31f9066d6@uniontech.com>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <CABBYNZK1VKSthhfEi_BRJSX90W_c3sAqCSdsFm3Z6wXYDcWaVA@mail.gmail.com>
-References: <CABBYNZK1VKSthhfEi_BRJSX90W_c3sAqCSdsFm3Z6wXYDcWaVA@mail.gmail.com>
+	id 1wtNJt-0000000BWEC-2V8T
+	for linux-mediatek@lists.infradead.org;
+	Mon, 10 Aug 2026 10:33:27 +0000
+Received: by mail-yx1-xb12d.google.com with SMTP id 956f58d0204a3-6682259cb3dso3036224d50.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Aug 2026 03:33:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1786358004; cv=none;
+        d=google.com; s=arc-20260327;
+        b=rLqk0zurc88t1T8/5xQHnS1z/IzRyHgotnWHBVmFib0PWm503ZYL9H8vJio1HMYw2y
+         ZJmCZtE0bU9SQfCuaJJGh9w+cKCqVAZMHjoUjMYmjhHqeuR2O517BLpUABzCZg5M+hso
+         mR9i/0xZd+WZs9lNabfg0s7dq4R/8EzchqvmpU7YN90e+e5+n9yg1cEVLss7+c1SgEId
+         WssUxAfqejegYLLZefvMyqt0q9tTsQbDFQ3i0E1h9ZaDlXBkMEZbMPE1mCHX1massp6i
+         AliO3Dm+hOzuq5u3+rojx3qwzh/tqNi1n53wojFWsCX2+K5Ua5Yjoce9jezTLF3eACG9
+         b3fA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=zDZgGtDZA2SodhjUYL0QDlYRHGpmrmtit/UzUDZv+M8=;
+        fh=Uu8nFRP0ktqlVrGPiGoZtsG1P5MNwNNj8ZhEzr8i8G4=;
+        b=rc80uLanadoNHWND2ysXZDdkWEUbkXyaZ4OJE4WQystYYL8q8/MYSGDSkHeJj+ZIRp
+         deGkYIBTs81lGAEOEF3IPPKnM1T/xTjX0e1npajYn+Dr3EHyqeHEaYKPvMETjv80PFFB
+         Bgoy/1vTj4I9FDfMlnr9D2TfVW37ONjHrfQDdopmKA5GDpGlcFDGO37R9ImQH0vzs/rn
+         9yoNmYZBb3dQILGQROR1k+62uGmvG/nqFzfiYbiqbeBPpTiWDBpJLrWVBgfoZCaXsyLo
+         1PsLM/BwQKlSyaPBDEmnL9kJs17eWoCumVT8fW/NKVCu3c3DWHiy8eNy/j5xZnTqGL5l
+         JCRg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1786358004; x=1786962804; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=zDZgGtDZA2SodhjUYL0QDlYRHGpmrmtit/UzUDZv+M8=;
+        b=dmdHdV/iZFRsi/tCulajiCdcdjfBYOeKdlQg1esmuiRv0Y7XgZJhLgwm7TzVSRzsQ5
+         FOHenhItgV9j/C9X7LRp8zIRicmYtXegddeema5n3jPVTtxf502qKpDSeiEumvb0TjqW
+         Pk3v7XJ+uOKihSNXz68BGpJOxQQTEaytdpcRE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1786358004; x=1786962804;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=zDZgGtDZA2SodhjUYL0QDlYRHGpmrmtit/UzUDZv+M8=;
+        b=J3cFdBCgtlM67njFdGVNOeipdV+6uVlvKzAHYekVXdIvJNBgYcyOoNqJwoQc3B1Zdh
+         mRZTbsAz9uza8suNFC4hahdqYWgqBHAL6xVnymPMYjPpkPj7XAecgx+A9f9hh+FacsD4
+         0V6uNPbcLm6pPRLev5UZz7MjUIPtyLPVE4tTXSMAUlB5DPbRmvANX4fG5mYiUWFXWbdl
+         4yHWYBwVQtOiDt0UURZ1nb8c+AdLgwq7QTtZeV2ls1sFE7zrH064FVecxuWQe6ueIx65
+         2yvmqd8JsLiNPYojMCInMqwJ/uDbvHKsc9AyzH9ZhanrEeIFI5bD7w5x3/baaDLpk0Hm
+         zqVg==
+X-Forwarded-Encrypted: i=1; AHgh+Rp4bAvFh9dwpc/gbF6lDZuXKPZp8K5TwFHAdHnqsHAMjwW684MCyzgwblY4hvb/TJZHrozxI3JQgGZRuufnVA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywv1a7ll5RPqNqAlgeEHTRk5ppa6Cp2FdpeJbc3rKHdMJ6hO3u0
+	0xRcCqmMscb0HgZky64eJc/lxTCR8JgRx6wI4pglvz1ptSh3PmWNXYcakwcmHhXpw8/BuMjeNXp
+	A2s4swFw4LAytCB5SmMrKFUAXW8OAPeRcvbyPZ796
+X-Gm-Gg: AR+sD13gxkqkac8mL5E4t6FrvBPRPo6G9DPBYjeMP2CVxnN2FsGrJSCXu3Rc4gJemOl
+	P4kzqy1qML2vEWQ9+F+euSHTU4W1nqWQT747miPqYaMaSw28ifXM2KEeCJuBzFgj/mG6Nb84T72
+	XIiaWLazoDUVbco+E1SHGZ12TtDl84dI1QGgW8SIpp8WyXqyDTckmAFMor8e4OkdtX7zVlkEVuR
+	bAvgLXOV2kav91E4ZzbNuAGXyLHTrMvqwSPkdOits8gNO6mShqUyVCqeskEpNtr3ym9Jt/L60l/
+	iSLBsHvdE4J2hu0O/ythUrmF2ANZzbfuLM/k4D+JW/ctGzh+ohNR9btYygbtp/SnFkkM7g66qsE
+	=
+X-Received: by 2002:a05:690e:244b:b0:667:ef7f:c37e with SMTP id
+ 956f58d0204a3-66ada8434d8mr7210260d50.8.1786358003849; Mon, 10 Aug 2026
+ 03:33:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-X-Change-ID: 20260806-btmtksdio-deadlock-fix-f9421f1a7879
-Content-Transfer-Encoding: 8bit
-X-QQ-SENDSIZE: 520
-Feedback-ID: esmtpsz:uniontech.com:qybglogicsvrsz:qybglogicsvrsz4b-0
-X-QQ-XMAILINFO: M4zpSD2yH9t0vRrXbfSFaR6ew+yVCD2QGLZ5y+G4m0OuDL/1u5FW43q0
-	DgeKIksj4OQZCZNeVrCnGZJUviWUr1BrJl1Mss6V6DSJ2KmvNectLWiWNRHDfjoiC7iFEp9
-	j3mpaR/2/RdghVJpCxwotGIGgdjGS1spKqaa4HvIlzZ7hQkmqBa0m2kvDw0a7DOBhaVFOKu
-	jBTcuSz9+W446LYGoBwRAb5Y0h+1b8TDc9e616DBvld2CMnIOoKb4mrDeMZ14MurKXjE1x8
-	PKwl1tEQHS/8yOLCbflZbSxMAIjoSofwUXCQuNy8EG0F4IiCNs3BB35tNiB/cQ/ORW2JrGh
-	TjeCavYRJbYfZ1fWAHTm01/Ga09cE2RQ90WSzpTkNr3WsP2NSPEuIfkq+N/svhWLiM9fc0g
-	KrH0VfqV3+R5Sja/Rmwduj1oP6dx8uI/JQVdUmEW3dwlm21FSNH8xHFcIHexgq03UGcDs3x
-	r0sxGIeSmz/YhfyVbA/sMSrpn0xZ/f63aa5BVPUOa13Jkhxqv+tuxR+UAvNCNnPgTgJjzXa
-	KAJuQfZGwT2W/JqMmtFuICRV+zH0u2742NjKmh4E6WTneTMEvN5p981eokniFtyAGwk0PIe
-	CtRYDoT97fhbLM85tooLa07q5uAoLBgY7vZbQcxjQjBmQ2EAxhyJt/7kpoYWUEyIERK7ypI
-	fPJg4HkoswhQExuecRmkTRwlp8zLWmDvHb2DzsBS6meKwla0gr9XhHu1ipwOwBD6H/UplN9
-	nfLSdIf7ti4ZmnBy+8+TpS3V7RpXmXbyWQJqxe7JqErgYUCLsmrs/ltyYYH6yGUP54Jucuy
-	/ygGjD45TjYa9NGnGXQNzbE8G+LqVEB5SaX4bD45Nsap+dCe+iQHb4z1XccePOwbmMS3FbH
-	SiMdhdX0ft5bYVoxNidyx7jwRnN0xLhCK8QlhoTa5etsniJSJ5uwknefAFh5RRD4oGSta3y
-	D89BdyC/+8FserlF6ZsS7ecKgmQCyx5YheQQihwmC27x2EZggHneSdJEYAKMnxJyO1UKaiG
-	lOarOgaJGAT5+cUHxrTKiRtZto5fWtW1zmmPTi/Jj0IsXQ1Jw03qGMJI1/UBUH9KCnVc1fF
-	KxlbTh+78cg3Axn4RJaZqA=
-X-QQ-XMRINFO: MPJ6Tf5t3I/ylTmHUqvI8+Wpn+Gzalws3A==
-X-QQ-RECHKSPAM: 0
+References: <CAGXv+5HrDw8GWb9zp1AaQU9UW+0FGcr7jOV2jt_zi_2KgfgBqA@mail.gmail.com>
+ <20260807152059.GA39821@bhelgaas>
+In-Reply-To: <20260807152059.GA39821@bhelgaas>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 10 Aug 2026 18:33:12 +0800
+X-Gm-Features: AUfX_mxe5L1RZVyMRQ0Vt-LD7TRaHThgwqJqmmrQKlLCig1wrp3paWSMXqZXYyM
+Message-ID: <CAGXv+5GNvV0yfX2v7E9HxvFpm0xwhGMQLjec=_xV_6YipXFcbw@mail.gmail.com>
+Subject: Re: [PATCH v5 0/2] PCI: mediatek-gen3: Add 2-lanes mode support + clock
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Christian Marangi <ansuelsmth@gmail.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Ryder Lee <ryder.lee@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Jianjun Wang <jianjun.wang@mediatek.com>, linux-pci@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	Benjamin Larsson <benjamin.larsson@genexis.eu>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260810_032339_159301_5DB8537C 
-X-CRM114-Status: GOOD (  14.12  )
+X-CRM114-CacheID: sfid-20260810_033325_682999_34756054 
+X-CRM114-Status: GOOD (  28.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,92 +125,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-btmtksdio_close() and btmtksdio_reset() call cancel_work_sync() on
-bdev->txrx_work while holding the sdio host lock, which is also acquired
-by btmtksdio_txrx_work().  If txrx_work is queued when close/reset runs,
-a worker thread may start it after the host lock is taken and block in
-sdio_claim_host(), while cancel_work_sync() waits for the work to
-finish.  The host lock is only released after cancel_work_sync()
-returns, so both sides wait forever, deadlocking close/reset.
+On Fri, Aug 7, 2026 at 11:21=E2=80=AFPM Bjorn Helgaas <helgaas@kernel.org> =
+wrote:
+>
+> On Fri, Aug 07, 2026 at 11:24:09AM +0800, Chen-Yu Tsai wrote:
+> > On Fri, Aug 7, 2026 at 12:53=E2=80=AFAM Christian Marangi <ansuelsmth@g=
+mail.com> wrote:
+> > > This small series introduce support for 2-lanes mode for Airoha AN758=
+1
+> >
+> > Just a nitpick, but I would probably name this something else, like
+> > "cross-controller lane-bonding mode" or "lane stealing"? PCIe already
+> > has 2x lanes as a standard feature, so this naming is a bit confusing.
+> > It's not like dual-LVDS display in which LVDS is only a single lane.
+>
+> I suggested the "2-lane" and "x2" terminology because I assumed the
+> result is what the PCIe spec would describe as a "x2 Link" consisting
+> of two Lanes.
+>
+> If that's not the case, maybe "cross-controller lane-bonding mode" or
+> "lane stealing" would be more accurate, but I don't know what those
+> mean, so if we use them I would also like to know what the result
+> looks like in standard PCIe terms.
 
-Fix this by releasing the sdio host lock before calling
-cancel_work_sync(), then re-acquiring it afterwards.
+Benjamin pointed out later in the thread that it is just bifurcation.
 
-In btmtksdio_close() the interrupt is already disabled by
-sdio_release_irq(), which also unregisters the IRQ handler, so no new
-work can be scheduled and cancel_work_sync() fully quiesces txrx_work.
+I would assume "PCIe bifurcation" is a standard term, so maybe we could
+call this "Support un-bifurcated 2-lane operation"?
 
-btmtksdio_reset() must additionally unregister the IRQ handler before
-dropping the host lock: btmtksdio_txrx_work() unconditionally re-enables
-the device interrupt (C_INT_EN_SET) when the handler is still registered,
-so an in-flight worker would re-enable interrupts and be rescheduled
-while the device is being reset, defeating the cancellation.  The IRQ is
-re-claimed by btmtksdio_open() when the HCI device is re-opened after
-the reset.
+On the implementation side, having to reach into the second PCIe controller
+is a bit messy :(
 
-This mirrors the pattern already used by btmtksdio_flush(), which
-cancels the work without holding the host lock.
 
-Signed-off-by: ZhaoJinming <zhaojinming@uniontech.com>
----
-Changes in v2:
-- Unregister the IRQ handler in btmtksdio_reset() before dropping the
-  host lock, so a concurrent txrx_work cannot re-enable the device
-  interrupt (C_INT_EN_SET) and be rescheduled during reset.
----
- drivers/bluetooth/btmtksdio.c | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ChenYu
 
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index c6f80c419e901e71b21e550449250a5a6755d100..23650df4fb06114ab7be1f0b30eb61a15322b288 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -746,8 +746,16 @@ static int btmtksdio_close(struct hci_dev *hdev)
- 
- 	sdio_release_irq(bdev->func);
- 
-+	/* No new work can be scheduled after sdio_release_irq(), so cancel the
-+	 * work outside the sdio host lock. btmtksdio_txrx_work() also claims
-+	 * the host, so canceling it while holding the lock would deadlock.
-+	 */
-+	sdio_release_host(bdev->func);
-+
- 	cancel_work_sync(&bdev->txrx_work);
- 
-+	sdio_claim_host(bdev->func);
-+
- 	btmtksdio_fw_pmctrl(bdev);
- 
- 	clear_bit(BTMTKSDIO_FUNC_ENABLED, &bdev->tx_state);
-@@ -1293,8 +1301,22 @@ static void btmtksdio_reset(struct hci_dev *hdev)
- 
- 	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, NULL);
- 	skb_queue_purge(&bdev->txq);
-+
-+	/* Unregister the IRQ before releasing the host lock so that a
-+	 * concurrently running btmtksdio_txrx_work() cannot re-enable the
-+	 * device interrupt (C_INT_EN_SET) and be rescheduled while the device
-+	 * is being reset. btmtksdio_txrx_work() also claims the host, so the
-+	 * work must be cancelled outside the sdio host lock to avoid a
-+	 * deadlock. The IRQ is re-claimed by btmtksdio_open() when the HCI
-+	 * device is re-opened after the reset.
-+	 */
-+	sdio_release_irq(bdev->func);
-+	sdio_release_host(bdev->func);
-+
- 	cancel_work_sync(&bdev->txrx_work);
- 
-+	sdio_claim_host(bdev->func);
-+
- 	gpiod_set_value_cansleep(bdev->reset, 1);
- 	msleep(100);
- 	gpiod_set_value_cansleep(bdev->reset, 0);
-
----
-base-commit: 0d839570765118029aa8bf4a95444c6a11aacf85
-change-id: 20260806-btmtksdio-deadlock-fix-f9421f1a7879
-
-Best regards,
--- 
-ZhaoJinming <zhaojinming@uniontech.com>
+> > > SoC. This is needed for correctly functionality of Eagle WiFi Card
+> > > normally attached to this SoC that require a 2-line PCIe card to
+> > > correctly work (and give the proper performance)
+> > >
+> > > The first 2 patch address a limitation of the PCIe implementation
+> > > where the PERSTOUT reset were indirectly asserted and deasserted
+> > > all at the same time (for all the 3 PCIe card) with PCIe
+> > > enable and disable.
+> > > The 2 patch address this and introduce correct reset to control
+> > > reset line for the relevant PCIe line.
+> > >
+> > > The last 2 patch add additional logic and support to assert
+> > > and deassert the PERSTOUT and also apply the required configuration
+> > > for 2-lanes mode.
+> > >
+> > > 2-lanes mode is implemented in DT by adding the required property
+> > > and by defining the "num-lanes" to 2.
 
