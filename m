@@ -4,79 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9645AC5B569
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Aug 2026 20:26:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E69ECC5AC67
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Aug 2026 04:24:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HRAkQNjOlqrTIb8I0YR5BiL9axZ7sEUCy9tY1l9m71Y=; b=A2Gq13OOzgIbMYPWaKk/8qTuIi
-	VkFKeHLkdRmIEGX8gHDnNrq/gk1DWG4m5bRkx6BeXg/xozftyGXdnEsRekiSycBbK3Ts8r6X2pIWC
-	fp+Qzh0ya1FtZ3gfxIlmDHeUCWioK9L3XPyIc8VidNEm6qXHbzpiWNnjkImpzmIjx/AWQSxCde+U/
-	K96oG1f/BapebFSWHbXj4OhciZo9AMWvGCTsPotIYwOze/hqAaDZdLJ2pMonbnZ1ZjXeSCWctarXF
-	4SHpjHTOD7YaJUwd0ng4wikyKz5SO89vcXv/rdZhd2JRzmiGOxSEVtFx0TC3jt3c+XW6A0jxDFMRw
-	c9soWklQ==;
+	bh=DjeSCh8LZRB+SCMaYU6AxHwq7ze7+snnwffs3yjAKx0=; b=gfDNEI46R7cf/pG1BM0O4MyFIp
+	Cfr51RsHGGlXGW/2tNeJ+hYcOp8Eq7lOqsaI0aXAC4UNxmPydCmY3MyVI2s/beczfvh095EWO079I
+	TYtAkPVtP+VK9FzD2gPO8Sz/wC+4u6zyhHrgbBVGOKzfU1aPM4rz8OBt2DrpjJQYKd8p2ovzxxoYx
+	Mx6j8ioFi9GVQjMZuRPWYR/UAD0+6TrTcg2yqrgUjjgoo8MVbvkE4BmWxhxGauZZKBMRmrZAn4Xq3
+	hMXDir84gA43mFVuWDOVInTyt7ZWF9aPDbeKUxmvig+pOh312A/+gi/xx/PU5ep70Epnov6VdBHZk
+	JkghfaLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtWZy-0000000CpbL-21Gr;
-	Mon, 10 Aug 2026 20:26:38 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wte2S-0000000DHFD-35YK;
+	Tue, 11 Aug 2026 04:24:32 +0000
+Received: from mail-oo1-xc2e.google.com ([2607:f8b0:4864:20::c2e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtWZx-0000000Cpb6-1chN;
-	Mon, 10 Aug 2026 20:26:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9010E600AF;
-	Mon, 10 Aug 2026 20:26:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 377BCC19425;
-	Mon, 10 Aug 2026 20:26:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1786393596;
-	bh=+rRZGWkOPwgSd/A3Gd2WBWuoa56lNnyZ5hnzluMF+3I=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=B6zbm0WwgZG+zH0XtSyPcDPZGK59sqRXAeZE9H38zbCdef8DKtQmPNupikf1iLvj6
-	 joLYzPcjAaOdRRU7zH0e0TCC1cUDuZhCY4oFBjrfD3vUKztA67BgV/sShkJaYg3EQO
-	 tkyi9rfdV3Ur+KVeDVAH7+8IqjPlvI7kQGWZus0wBXLkqNcBPjRVN81Rr0dSGSxQtH
-	 6fs9Xh4JOUbakqfLWiS6vmizTtlIzaPngJNAwzDIFBxt0iXummCI5LDffBT/vgPOaF
-	 ydNHwSkscZiWNgveVdXmM2sxdEygIZT7NWqybd3tQaCWLYSAr8QzdCJZVnkPjTSmxt
-	 u2W+/z+m231Gg==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 109BAC5AD7B;
-	Mon, 10 Aug 2026 20:26:36 +0000 (UTC)
-From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Mon, 10 Aug 2026 23:16:19 +0300
-Subject: [PATCH] dt-bindings: gpu: arm,mali-utgard: add mt6572
+	id 1wte2P-0000000DHEA-1r56
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Aug 2026 04:24:31 +0000
+Received: by mail-oo1-xc2e.google.com with SMTP id 006d021491bc7-6b03e59a9b4so906501eaf.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Aug 2026 21:24:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1786422268; x=1787027068; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=DjeSCh8LZRB+SCMaYU6AxHwq7ze7+snnwffs3yjAKx0=;
+        b=p4kIve4LOO+3NOKfsH+7AaTOnscHM4pF/o7sTXB/RNDf5hQOPUS1oaMYPub35zxkBi
+         vINrJY2LQLCv+cJbAu8j3inGhLuwItf0CWeRsS+Njbp6NJM/H0ce9u/bke7APn6aPkUp
+         FU4+0oEqBKEOLIZujp/1qrz5fzFnTFj4b9PY1b4D/wFVL6XsfakcoU+pqz8r2Thg/WJq
+         /MyUEO7J1qzc9lfARh2IdkaCDZ+9xbNB/2c69uNQYJ8F1f509RlmEUMmnhaNoDJlSfAu
+         J95QHolpX013ertyilNUIJBhaHu62uByNqQz7dhG5QxUhNJHbH5SkR01vx+26/qkmmuY
+         11+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1786422268; x=1787027068;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=DjeSCh8LZRB+SCMaYU6AxHwq7ze7+snnwffs3yjAKx0=;
+        b=iupgxzl+YUKDRbibj4UilKjFXZji2d4HXD+R3OUTKEyEQfrmYmsmbpvluGjFv5kssz
+         f3LbDJLjrSpb+NGfPPhuX+l+OMnhicL2oUjGAP1Movfem6n5Qy9ib/hx/uLjYL5jfcyk
+         4FrdLa7sBAy/VO/z8gM9c1H9yINc0wXobVo3MumyPic4yWhge48729jh37e4r+c188SV
+         1go1tpGqDS+3a9mL5nyEHG37iA9k4QTk64qkcoYGjuI3R9jtraju/FjPfC+srTB6Bm9q
+         TVxrL8ZQLPC3RA2j9n8f6fDiX4kR5swxfM5PWD2cvHYswRI/nlAbyuBPxoCaFb3JJjnz
+         OUHA==
+X-Forwarded-Encrypted: i=1; AHgh+RofTiYipHoBlPEp9qY1x8isVqHxrGFewa233K/rniXRYG8zGyGy2ZggbmRlOA4YL25SHJaoT40yF63LrrNmSg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwjDSxjnvdb+wef8dxo21J+oH1cb5VnJJ10Atu30rXL0/gX5Zcs
+	ZC3pWxsCkMpLfNuLsws79WcoURvColoStuud3tiC4EzSkzmZI+FmWEFW
+X-Gm-Gg: AR+sD119noPoZ1/uIaz6+T3ZmAzxmrD6Jtdp4ShEDDvUrLHRrTMmtdxhc9mXYwg9HAU
+	J1jyxoPq9hzbO/V3dIp8JMwGtSFSRp1ycqFSUeD+HhNhiKJpkmIlY6hyKDiLjUWTo2CbOnh8YUp
+	vHLTcHp3b1eEdCbXwVA5uXQB4qlW5j7FKbLJQNtN7SSnoxjQqkN9x9DFrmhqsDkpYM+w7xVmo37
+	kQ0VZTD18W/knrwyXO8YR6Mr+LUCNqaSl6Htr62eherRo4IYHCqUHdaiaXZoy0W03G5Iv6+ORaA
+	OB2bTksMjj50U+D7g79gPF4BnYK5pZnUSoq2RVqw9cTLdU+KE2GKYjFv29ddq/uHyVbEHFD4dmG
+	ZjMa9vBma6ABrAn3PA7jBpl3U/C1GRpTfArkG939GQeptyqCgGb1Dh3a6eEAovJuUI6/W3wKyCt
+	rVNiuOZLRBV5O5EkfTnBVAE9uEZzwW7t3PUl5jRCayBx8Djl6S9QShS2vAszGueZV/L50Vo00sf
+	qDNiG5dgxn87PTKecPWzZVzQOmfc+pYvs6tt0eLwFIamNjG+HCUMC4BCprPUyKop726dUfI1384
+	t2w/YvML0+hgBptDGJVB6bF5U7mzKvi+E+3l/g==
+X-Received: by 2002:a05:6820:618:b0:6ae:55f6:2cdb with SMTP id 006d021491bc7-6b0a2ff0e72mr140724eaf.1.1786422267869;
+        Mon, 10 Aug 2026 21:24:27 -0700 (PDT)
+Received: from ryzen.lan ([2601:644:8000:7a86::e35])
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-45e1d99a4efsm371286fac.13.2026.08.10.21.24.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 10 Aug 2026 21:24:27 -0700 (PDT)
+From: Rosen Penev <rosenp@gmail.com>
+To: linux-sound@vger.kernel.org
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH] ASoC: mediatek: mt8365: use devm_platform_ioremap_resource helpers
+Date: Mon, 10 Aug 2026 21:24:24 -0700
+Message-ID: <20260811042424.66882-1-rosenp@gmail.com>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260810-6572-dt-mali-v1-1-fb908627bf23@protonmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIzMDC0MDXTNTcyPdlBLd3MScTF2LJEvjJENTy0SD5FQloJaCotS0zAqwcdG
- xEH5xaVJWanIJyAyl2loA1qQsdXAAAAA=
-X-Change-ID: 20260810-6572-dt-mali-8b93b159a0ce
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Roman Vivchar <rva333@protonmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1786393594; l=1015;
- i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=w9n8g0GvmLHdo4ZTDe8Qbd8jCW9LIeOjEpTJ03K8T3A=;
- b=Wl4b7fBK2XQcGb9Kc4Pqrn9gaLffzHfZKwfl+k10TPwS5Q3Y5WE+9SGFjVRrpTZpsY/d731yr
- uFMh1XUT+M7Bp5ULqe8NWew9WYkdx+wB/eRSn4u3ghdHyY5Eun7sMYb
-X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
- pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
-X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
- auth_id=777
-X-Original-From: Roman Vivchar <rva333@protonmail.com>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260810_212429_477619_28412AA3 
+X-CRM114-Status: GOOD (  11.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,39 +101,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Roman Vivchar <rva333@protonmail.com>
+Simplify the probe function by using devm_platform_ioremap_resource()
+for the base address and devm_platform_get_and_ioremap_resource() for
+the SRAM, dropping the manual platform_get_resource() calls.
 
-Add a compatible string for the mt6572 Mali-400 MP1 GPU.
-
-Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+Assisted-by: opencode:deepseek-v4-flash-free
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
 ---
- Documentation/devicetree/bindings/gpu/arm,mali-utgard.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ sound/soc/mediatek/mt8365/mt8365-afe-pcm.c | 16 ++++++----------
+ 1 file changed, 6 insertions(+), 10 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-utgard.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-utgard.yaml
-index c8d0d9192d92..6bdbab82126c 100644
---- a/Documentation/devicetree/bindings/gpu/arm,mali-utgard.yaml
-+++ b/Documentation/devicetree/bindings/gpu/arm,mali-utgard.yaml
-@@ -27,6 +27,7 @@ properties:
-               - allwinner,sun8i-h3-mali
-               - allwinner,sun8i-r40-mali
-               - allwinner,sun50i-a64-mali
-+              - mediatek,mt6572-mali
-               - rockchip,rk3036-mali
-               - rockchip,rk3066-mali
-               - rockchip,rk3128-mali
-
----
-base-commit: 8cd9520d35a6c38db6567e97dd93b1f11f185dc6
-change-id: 20260810-6572-dt-mali-8b93b159a0ce
-
-Best regards,
---  
-Roman Vivchar <rva333@protonmail.com>
-
+diff --git a/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c b/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c
+index dcbc5a345382..fc3a457683b8 100644
+--- a/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c
++++ b/sound/soc/mediatek/mt8365/mt8365-afe-pcm.c
+@@ -2121,19 +2121,15 @@ static int mt8365_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	spin_lock_init(&afe_priv->afe_ctrl_lock);
+ 	mutex_init(&afe_priv->afe_clk_mutex);
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	afe->base_addr = devm_ioremap_resource(&pdev->dev, res);
++	afe->base_addr = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(afe->base_addr))
+ 		return PTR_ERR(afe->base_addr);
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
+-	if (res) {
+-		afe_priv->afe_sram_vir_addr =
+-			devm_ioremap_resource(&pdev->dev, res);
+-		if (!IS_ERR(afe_priv->afe_sram_vir_addr)) {
+-			afe_priv->afe_sram_phy_addr = res->start;
+-			afe_priv->afe_sram_size = resource_size(res);
+-		}
++	afe_priv->afe_sram_vir_addr =
++		devm_platform_get_and_ioremap_resource(pdev, 1, &res);
++	if (!IS_ERR(afe_priv->afe_sram_vir_addr)) {
++		afe_priv->afe_sram_phy_addr = res->start;
++		afe_priv->afe_sram_size = resource_size(res);
+ 	}
+ 
+ 	/* initial audio related clock */
+-- 
+2.55.0
 
 
