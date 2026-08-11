@@ -4,92 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F04C9C5AC67
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Aug 2026 13:16:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B7B1C5AC67
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Aug 2026 13:36:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=gitYuIgMAmJ0oQcU7iG8TZn7YufiftcwyUkdvrQmLDk=; b=i9QyEZ7GJeyjnKo0hx5sx1z+RS
-	HFL1qD8CTojAU+JeTumQnihqUJ6OD6m2g+9uXtk3n1CSH4TZcyorUvSu0cCHMbc9Z4u4ifDHsd4lS
-	T7oKxvuG3nQlwiJQw/v+FuRE4Qu/Vm7QXBxwyNSxmtRnghMw4MnngZclCk55seSoBgAllzDKTOAH3
-	iyXObvBxo2VBOCGlbI9jSFVHFdqU5/8d6Py5LNhXZrO/zBlAT31qHP4xAjhZJPU2onF2MQaAqHstN
-	3SfK/HIhmsKPmVqoPIMrilI9TMmg9blfLsYrMlZPvF8w9xaILDoJQI98BIsBoHfhX3ZCLGJrETOA6
-	Lg/JvSDA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=G3NfUAs/yg6NvfYWRoM6IMaD7EPZVmGmM1y1VGAZJAo=; b=NGPLm5U8AH9uI537vv1iI8O0+Y
+	8/6XI+QEOESf3c/X/d1m2xtC6d8iW+SLwdfaxWzQ1uzLjEoec6BLxucWnCF3ltjuquYRfK64QaXnk
+	+rpkWFatoXg/ZcuOHJcUpbeq7UdMlFYPdyACSaCiqXYA3MRjg4s/x19OU4t8CcoWis+MW/cZgHcYq
+	sh6DAcgP8X6I0s83CFxJoEfN+daRc4FVhR9z5nEXoets3sXL3uSZP77qjjM2z3m/SQDdfZSgeC69D
+	8lMmLJauzvdfsy0LCwZMq97mStlEWbz0l/RglO+2snkGUWoWZ7TGgnlOMtXGX052zx2hKGyPMOmYW
+	xo9yBHvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtmLd-0000000E5Dp-3zyP;
-	Tue, 11 Aug 2026 13:16:53 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1wtmey-0000000E75a-1wtS;
+	Tue, 11 Aug 2026 13:36:52 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtmLV-0000000E5Cz-3E93
-	for linux-mediatek@lists.infradead.org;
-	Tue, 11 Aug 2026 13:16:51 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-49558ce01afso6967475e9.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 11 Aug 2026 06:16:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786454204; x=1787059004; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=gitYuIgMAmJ0oQcU7iG8TZn7YufiftcwyUkdvrQmLDk=;
-        b=P21gRNmFKAaovpTnVEZKjjEt/nE1c3qNQEnn5ABaEMR70O7Q0fYog5/G+bbloBV+oy
-         ZHKU3tse3I5zvuud2lRTMTzP1zKZR5gcMVVZJTIHFX7Mtjle1MXvyKqpsbr6ekFNe54m
-         Zz69rD0CJzutmWMWcYVOTeZpWsAkFuezXwfdoJ/sRKFfohsutaYniQ2GdWbK2sSY3ShD
-         BsvN2a5Si+PWQY3+aq7TYlAg1QJm8Hc9wBv4jQGauRwBHHNXCRFkuEuKHeG0KHIwpIQw
-         mUjtTy2YuxhLSMa7CRo1zcS+skMdJyDX/LE8K9bZU/Dg60vgjs2lPUsI/evSYBdjO4qY
-         M4Kw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786454204; x=1787059004;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=gitYuIgMAmJ0oQcU7iG8TZn7YufiftcwyUkdvrQmLDk=;
-        b=ECfdYBNOB6Nk5yD7nSuU8KGuGUpO8UooBlHG4hVh1HTWaOIDcQJ0iGy3xqJv38KJel
-         peWEwgSox0kgVkvHm0VHsr8wXQBvjkCeDMdusRtQdNAzhhm/TJ3p2+foJLhNZTtBrFoq
-         ic5qvfeTKFKGLAOcNV8W8e1FPuQ4N0stF3Mn9X6pJK/ZrH4TSZvT3BpqvUauHh6qR+ay
-         jboKkPMhPH5rv9MbPysGrXju44s7nXVWxz0pb/JoR/b2GWTSzzTda15XbXraK4WAnw0l
-         VmzJW2RjIm1tviMCN8O2U/kK/mO3SjG+CV/GY5ycHcfjkqFRAjaMyObGLJJndRct4pGc
-         S1oQ==
-X-Forwarded-Encrypted: i=1; AHgh+RqN/w3qMmUf+1P1rJPUe/BncQ/t8pVHCGVe6q47+aVvbEJh9epJ2DvBSF2OQ63U3fdxHYnUM693a1PIFQzAcw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzQV3mGjL6rGOy1iIJLM/l+dAgjV4FzDfmrpu1sJptrGGt/1CvV
-	SuyPSF/Gi9KPpF/8aBySUERg0i4IqNOQXES9ikA02DtmO/4WFFzzJZDtSjaz568X
-X-Gm-Gg: AR+sD10zVrtlk7E7ntPRFSPtHX2vNFjOwD1hPeNDNWrGlBQ3b51MzuVG+7bO+3A4Qtn
-	cHso1TQ4SuVNWt4vVoVhdALDRL4Ezkg4EnbqJZ/MCVHzdTkJ0pY5Svw0P5n9kAyJKjF36b1+cWP
-	1wRerm30tlcPi4x3/u4VB8jv5BC6U4FfdijgjlloPDQ6MPJVSYG8md8DkO2FOopqBwVEH4GdPbI
-	JHVWR90oVww6dkD++Gd4LuGkov26nzfTB+glV57paB+TbBlg7SiHg+Kte24QhLBuK7GRIGM9Aua
-	9/YI5FIcePzcGEEaHB/IMVPmieuxiyWhDTYHa9V2UTDKqZ8Kw7s9sSb/4x7vyPsCUCjKs0hbc+a
-	NgrovkwmZTFH9zq5gXzwLeX7cqudKFJCb1lgz9wUtT1ujRe0NYcOP9U1autU1Hk1NUuf3cgBiMX
-	OP5o1MYcJDzDWvWKKZj4RplbSX/muMrTHqCVWvDdBYF4VKVgcvOR2lXALptTMGSwy+/b9UFUhpW
-	ykAHY90Q3LI06Jqvlus4XyOM1BOC/bteRpjnNxW1z8m8FKM
-X-Received: by 2002:a05:600c:3b0e:b0:496:c361:fb96 with SMTP id 5b1f17b1804b1-4997a578481mr2356495e9.0.1786454203704;
-        Tue, 11 Aug 2026 06:16:43 -0700 (PDT)
-Received: from Ansuel-XPS24.localdomain (host-87-20-3-207.retail.telecomitalia.it. [87.20.3.207])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-499788fd908sm47639145e9.13.2026.08.11.06.16.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 11 Aug 2026 06:16:43 -0700 (PDT)
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH RESEND] arm64: dts: airoha: en7581: Enable spi nand controller for EN7581 EVB
-Date: Tue, 11 Aug 2026 15:16:30 +0200
-Message-ID: <20260811131634.703225-1-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	id 1wtmew-0000000E757-2ksh;
+	Tue, 11 Aug 2026 13:36:51 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1786455402; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=D0TPzENdxefpJxJwik7lnoq0yeCwSdF5CRbkNLU/9kVO68M/xJBBnR+p9MDSAhUYaZWUQt0eKf4Pc+NarqIUkZbp0Lx2RxXMKrRs2svSQ1cCfd2W/jldeItbf8k3CM6w7JaHHAqHlPHVD/FAHdrEmtaViu/LZiKOz563kAL+fCk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1786455402; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=G3NfUAs/yg6NvfYWRoM6IMaD7EPZVmGmM1y1VGAZJAo=; 
+	b=Y81tdimYn9i5F6FdEo2COlkhmAxtcoFxv5ph5u3fAAmru9nyH4qCibBd6NBxHNru9Cb8Xhxnth9IxrkfhhXSgKtD4ZJ9UGUVx/mfVoUu2KH39G0Ttl01nS2NKaFNzN1DSaSe4+K6t9SRSu7Wf3RRqkc/FAMuJcnNDZ0trgfS+z4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1786455402;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=G3NfUAs/yg6NvfYWRoM6IMaD7EPZVmGmM1y1VGAZJAo=;
+	b=Cr9DQ8GppoI5XwYAXVTpgUoz6jD6ca3J5VOYTAd0ayPr7RAxxXWeOAn/lfVrLE9G
+	ODgINZl1k1ipZrf/cC+C8OGNAhS/Jq5BeaWr3gRLOjcrDGbhXIPic+8Z2c9fznjen1H
+	XdMB+4uzMhbBjsbw26IO5N+QHc10FjN3uMjVgT6o=
+Received: by mx.zohomail.com with SMTPS id 1786455400413839.8405244833747;
+	Tue, 11 Aug 2026 06:36:40 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Ulf Hansson <ulfh@kernel.org>, Karl Mehltretter <kmehltretter@gmail.com>
+Cc: Karl Mehltretter <kmehltretter@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Brian Masney <bmasney@redhat.com>, linux-pm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] pmdomain: mediatek: mfg: initialize prev_o in
+ mtk_mfg_attach_dev()
+Date: Tue, 11 Aug 2026 15:36:35 +0200
+Message-ID: <uqYyyOonSY-BbJQAbP_FjQ@collabora.com>
+In-Reply-To: <20260808150506.78534-1-kmehltretter@gmail.com>
+References: <20260808150506.78534-1-kmehltretter@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260811_061645_827357_19AA497B 
-X-CRM114-Status: GOOD (  10.86  )
+X-CRM114-CacheID: sfid-20260811_063650_767709_FC1AAFF3 
+X-CRM114-Status: GOOD (  17.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,48 +80,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo@kernel.org>
+On Saturday, 8 August 2026 17:05:06 Central European Summer Time Karl Mehltretter wrote:
+> mtk_mfg_attach_dev() reads prev_o on the first iteration of its loop,
+> in "if (prev_o && prev_o->freq == o->freq)", before prev_o is assigned
+> at the end of the loop body. On that first iteration, evaluating prev_o
+> reads an indeterminate value. If it is non-NULL, the condition
+> dereferences a stale or invalid pointer, potentially faulting or
+> incorrectly skipping the first OPP.
+> 
+> Initialize prev_o to NULL. This matches the intent as well: there is no
+> previous OPP to compare against on the first iteration.
+> 
+> Found with Clang's -Wconditional-uninitialized.
+> 
+> Fixes: f08e7a4e8d6ac ("pmdomain: mediatek: Add support for MFlexGraphics")
+> Assisted-by: Claude:claude-fable-5
+> Signed-off-by: Karl Mehltretter <kmehltretter@gmail.com>
+> ---
+>  drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c b/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
+> index 53bdab66cf157..9a8a38d98cce7 100644
+> --- a/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
+> +++ b/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
+> @@ -657,7 +657,7 @@ static int mtk_mfg_attach_dev(struct generic_pm_domain *pd, struct device *dev)
+>  	struct mtk_mfg *mfg = mtk_mfg_from_genpd(pd);
+>  	struct dev_pm_opp_data *so = mfg->stack_opps;
+>  	struct dev_pm_opp_data *go = mfg->gpu_opps;
+> -	struct dev_pm_opp_data *prev_o;
+> +	struct dev_pm_opp_data *prev_o = NULL;
+>  	struct dev_pm_opp_data *o;
+>  	int i, ret;
+>  
+> 
 
-Enable spi controller used for snand memory device for EN7581 evaluation
-board.
+Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
----
- arch/arm64/boot/dts/airoha/en7581-evb.dts | 4 ++++
- arch/arm64/boot/dts/airoha/en7581.dtsi    | 2 +-
- 2 files changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/airoha/en7581-evb.dts b/arch/arm64/boot/dts/airoha/en7581-evb.dts
-index 886e2e4b5f64..3dc68dbf1be7 100644
---- a/arch/arm64/boot/dts/airoha/en7581-evb.dts
-+++ b/arch/arm64/boot/dts/airoha/en7581-evb.dts
-@@ -25,6 +25,10 @@ memory@80000000 {
- 	};
- };
- 
-+&snfi {
-+	status = "okay";
-+};
-+
- &spi_nand {
- 	partitions {
- 		compatible = "fixed-partitions";
-diff --git a/arch/arm64/boot/dts/airoha/en7581.dtsi b/arch/arm64/boot/dts/airoha/en7581.dtsi
-index ff6908a76e8e..0964cd783013 100644
---- a/arch/arm64/boot/dts/airoha/en7581.dtsi
-+++ b/arch/arm64/boot/dts/airoha/en7581.dtsi
-@@ -150,7 +150,7 @@ gic: interrupt-controller@9000000 {
- 			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_LOW>;
- 		};
- 
--		spi@1fa10000 {
-+		snfi: spi@1fa10000 {
- 			compatible = "airoha,en7581-snand";
- 			reg = <0x0 0x1fa10000 0x0 0x140>,
- 			      <0x0 0x1fa11000 0x0 0x160>;
--- 
-2.53.0
 
 
