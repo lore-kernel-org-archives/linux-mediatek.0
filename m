@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B7B1C5AC67
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Aug 2026 13:36:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E074BC5AC67
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Aug 2026 13:52:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G3NfUAs/yg6NvfYWRoM6IMaD7EPZVmGmM1y1VGAZJAo=; b=NGPLm5U8AH9uI537vv1iI8O0+Y
-	8/6XI+QEOESf3c/X/d1m2xtC6d8iW+SLwdfaxWzQ1uzLjEoec6BLxucWnCF3ltjuquYRfK64QaXnk
-	+rpkWFatoXg/ZcuOHJcUpbeq7UdMlFYPdyACSaCiqXYA3MRjg4s/x19OU4t8CcoWis+MW/cZgHcYq
-	sh6DAcgP8X6I0s83CFxJoEfN+daRc4FVhR9z5nEXoets3sXL3uSZP77qjjM2z3m/SQDdfZSgeC69D
-	8lMmLJauzvdfsy0LCwZMq97mStlEWbz0l/RglO+2snkGUWoWZ7TGgnlOMtXGX052zx2hKGyPMOmYW
-	xo9yBHvg==;
+	bh=phhTzL60K0GYV8Ub4xF5Zw997M9eAMmsDvtg1hwuGlk=; b=NWDuhlJgnQOwifwOIlCv1v6enb
+	6UWO9n6SUYIxMEPXBTjo3fG0QFAlGc3LmUNS98umJIFG6kKWKeBtzRbKum2+kCfrJqVqg4Lx03pJs
+	wUGlOSnI63+64YE94sWnN6MYI9P18ugRGHX96Ahy6G4aCDf7l0vGHtXHhBKO5KPgAiQwqmLnGUJ6p
+	Z4VujmEWJ2vVS829x5NrwZYafl082INvZlKZg1wjv/iV1w6X2KDambQlV/kRz1cn7z1JnlNeWfE5m
+	Ub+RWJKFdL+W2mIwCwY+jqNKEa86MYW69rIsm6EVd7oVWkwabiWUwuQFmmHS3xpAKx4wYA6x0ixfu
+	lpjE1rDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtmey-0000000E75a-1wtS;
-	Tue, 11 Aug 2026 13:36:52 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wtmti-0000000E8Md-3Xo1;
+	Tue, 11 Aug 2026 13:52:06 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtmew-0000000E757-2ksh;
-	Tue, 11 Aug 2026 13:36:51 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1786455402; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=D0TPzENdxefpJxJwik7lnoq0yeCwSdF5CRbkNLU/9kVO68M/xJBBnR+p9MDSAhUYaZWUQt0eKf4Pc+NarqIUkZbp0Lx2RxXMKrRs2svSQ1cCfd2W/jldeItbf8k3CM6w7JaHHAqHlPHVD/FAHdrEmtaViu/LZiKOz563kAL+fCk=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1786455402; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=G3NfUAs/yg6NvfYWRoM6IMaD7EPZVmGmM1y1VGAZJAo=; 
-	b=Y81tdimYn9i5F6FdEo2COlkhmAxtcoFxv5ph5u3fAAmru9nyH4qCibBd6NBxHNru9Cb8Xhxnth9IxrkfhhXSgKtD4ZJ9UGUVx/mfVoUu2KH39G0Ttl01nS2NKaFNzN1DSaSe4+K6t9SRSu7Wf3RRqkc/FAMuJcnNDZ0trgfS+z4=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1786455402;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=G3NfUAs/yg6NvfYWRoM6IMaD7EPZVmGmM1y1VGAZJAo=;
-	b=Cr9DQ8GppoI5XwYAXVTpgUoz6jD6ca3J5VOYTAd0ayPr7RAxxXWeOAn/lfVrLE9G
-	ODgINZl1k1ipZrf/cC+C8OGNAhS/Jq5BeaWr3gRLOjcrDGbhXIPic+8Z2c9fznjen1H
-	XdMB+4uzMhbBjsbw26IO5N+QHc10FjN3uMjVgT6o=
-Received: by mx.zohomail.com with SMTPS id 1786455400413839.8405244833747;
-	Tue, 11 Aug 2026 06:36:40 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Ulf Hansson <ulfh@kernel.org>, Karl Mehltretter <kmehltretter@gmail.com>
-Cc: Karl Mehltretter <kmehltretter@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Brian Masney <bmasney@redhat.com>, linux-pm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] pmdomain: mediatek: mfg: initialize prev_o in
- mtk_mfg_attach_dev()
-Date: Tue, 11 Aug 2026 15:36:35 +0200
-Message-ID: <uqYyyOonSY-BbJQAbP_FjQ@collabora.com>
-In-Reply-To: <20260808150506.78534-1-kmehltretter@gmail.com>
-References: <20260808150506.78534-1-kmehltretter@gmail.com>
+	id 1wtmth-0000000E8M8-38Fx;
+	Tue, 11 Aug 2026 13:52:05 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 55B24406E6;
+	Tue, 11 Aug 2026 13:52:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1210C1F00A3D;
+	Tue, 11 Aug 2026 13:52:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1786456325;
+	bh=phhTzL60K0GYV8Ub4xF5Zw997M9eAMmsDvtg1hwuGlk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=VSEuZbNramUZ/vh5AcIst7DMicGcUY4lthiLgHZboYkBEfgwDdMmJzfhg/Dfb88sr
+	 zJJc8DmKlrjaH94MJV5KZ7DqkTPIbnzCTZFsFN8ayYTbBNrrb+SapZj4RHOKVyYSUw
+	 M9iNrmsQX/MEf/EGviZJYyxLea0bqMdYr+D4dYTsitc12lb6ZgyvBvlFKgG62S8Kf9
+	 yBWQfN+gQ8CDKlRn+3yf+lPXYAHomfE+89f1G2DNOi9PBwLunNcQArzMrt9g5PGDAs
+	 b3rj03EMSO//IsP8JwC9GD/fiueaSGbiVEe2bo5/7qoDdpIK3zMXRU6DIywdEyDO8d
+	 DLshxKWX/FFjw==
+Date: Tue, 11 Aug 2026 08:52:04 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: linux-clk@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Shubhrajyoti Datta <shubhrajyoti.datta@amd.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	devicetree@vger.kernel.org, Bartosz Golaszewski <brgl@kernel.org>,
+	linux-mediatek@lists.infradead.org,
+	Brian Masney <bmasney@redhat.com>, Stephen Boyd <sboyd@kernel.org>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Gabriel Fernandez <gabriel.fernandez@foss.st.com>,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] dt-bindings: clock: Correct white-space style
+Message-ID: <178645632389.2072234.6959201411927643233.robh@kernel.org>
+References: <20260801195540.235298-2-krzysztof.kozlowski@oss.qualcomm.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260811_063650_767709_FC1AAFF3 
-X-CRM114-Status: GOOD (  17.93  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260801195540.235298-2-krzysztof.kozlowski@oss.qualcomm.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,43 +79,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Saturday, 8 August 2026 17:05:06 Central European Summer Time Karl Mehltretter wrote:
-> mtk_mfg_attach_dev() reads prev_o on the first iteration of its loop,
-> in "if (prev_o && prev_o->freq == o->freq)", before prev_o is assigned
-> at the end of the loop body. On that first iteration, evaluating prev_o
-> reads an indeterminate value. If it is non-NULL, the condition
-> dereferences a stale or invalid pointer, potentially faulting or
-> incorrectly skipping the first OPP.
+
+On Sat, 01 Aug 2026 21:55:41 +0200, Krzysztof Kozlowski wrote:
+> Correct a few white-space issues, like double space after '=' or before
+> bracket '{' characters, which will be flagged by dt-check-style.  No
+> functional changes.
 > 
-> Initialize prev_o to NULL. This matches the intent as well: there is no
-> previous OPP to compare against on the first iteration.
-> 
-> Found with Clang's -Wconditional-uninitialized.
-> 
-> Fixes: f08e7a4e8d6ac ("pmdomain: mediatek: Add support for MFlexGraphics")
-> Assisted-by: Claude:claude-fable-5
-> Signed-off-by: Karl Mehltretter <kmehltretter@gmail.com>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 > ---
->  drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c b/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
-> index 53bdab66cf157..9a8a38d98cce7 100644
-> --- a/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
-> +++ b/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
-> @@ -657,7 +657,7 @@ static int mtk_mfg_attach_dev(struct generic_pm_domain *pd, struct device *dev)
->  	struct mtk_mfg *mfg = mtk_mfg_from_genpd(pd);
->  	struct dev_pm_opp_data *so = mfg->stack_opps;
->  	struct dev_pm_opp_data *go = mfg->gpu_opps;
-> -	struct dev_pm_opp_data *prev_o;
-> +	struct dev_pm_opp_data *prev_o = NULL;
->  	struct dev_pm_opp_data *o;
->  	int i, ret;
->  
+>  .../bindings/clock/mediatek,pericfg.yaml      |   2 +-
+>  .../bindings/clock/st,stm32mp21-rcc.yaml      | 140 +++++++--------
+>  .../bindings/clock/st,stm32mp25-rcc.yaml      | 160 +++++++++---------
+>  .../bindings/clock/xlnx,clocking-wizard.yaml  |   2 +-
+>  4 files changed, 152 insertions(+), 152 deletions(-)
 > 
 
-Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-
-
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
 
