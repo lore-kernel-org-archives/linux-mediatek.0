@@ -4,93 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22D64C5B572
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Aug 2026 16:16:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBA68C5B572
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Aug 2026 16:17:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rL+1cscBL7DruRZtVhJ1GMBcU3y4ACC4gyo40QpBBnY=; b=pnAF4ZNCEEsHrv+mwQJZk932sN
-	TGJEwDd/r0inNwtsNzy4aS0UNGw6oiy6ENaaGSN8CTunsjZHSh9jCsm1xc/0flhEOFRPfHSwflut+
-	XQ/BRvjrXUyMI4Hl/+xOxiMyBl+JosdzUNgEZlkJoudqpdOxpf3AQ7tj0W3QhYINj54NUpOgkxQJR
-	89doCXAf0qTw4pd0xvBVWUdvuVjIkIAK8L0KkvwOj9Hp9+UcYHGe77Pg8VWdJ19e/pqG+Yykluku5
-	2mfrJd9dd6TayWz2ix7T06Evd4cudQkQKGYikxBwkyYb/8DdIvjO+G750b3Bw2CDL4ZobpQGAPYOi
-	LmZAlfsg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=RR2VgYwZjBupSt8VlBAmyBBmTAH9MTVFGE/w24WyCi4=; b=Ilreb2rA4u1/irj5CnHSO6qLon
+	ql5liqR0hNx9gx37ThrdTJMTW/h8hL3jJLmCrC8Uiklzt54uQdxshq6RbnQo8s9DfufE9FZtMCEdO
+	NkhmI3SN5V9B6TDAcFI+vT2/jMfs7XbbtTILCr8kblqnwP3M5zf4INGVZWaVwMyIybTC25IyYpDQU
+	INU5VFxYQCjEpPcAqrk4fEoO8FgtyQn566PikOPlrmwSAqBuL21RkRV9+ctqH29m3Nhe0YD9aj38q
+	dZBrvvyvEQmIvJ404LFzIiF6wzj6f4ue+6RQ926polOomseHVgXXh4NCRL4fnTOiFgaS8XDbNH3Mz
+	FNcfFP5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtp9W-0000000ESuE-0d3w;
-	Tue, 11 Aug 2026 16:16:34 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1wtpAU-0000000ET6U-2Usj;
+	Tue, 11 Aug 2026 16:17:34 +0000
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtp9T-0000000ESt3-0YAV
+	id 1wtpAS-0000000ET4e-0YOd
 	for linux-mediatek@lists.infradead.org;
-	Tue, 11 Aug 2026 16:16:32 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-5aebd52488cso2062e87.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 11 Aug 2026 09:16:30 -0700 (PDT)
+	Tue, 11 Aug 2026 16:17:33 +0000
+Received: by mail-lj1-x236.google.com with SMTP id 38308e7fff4ca-39f631dbce3so648441fa.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Aug 2026 09:17:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786464988; x=1787069788; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=rL+1cscBL7DruRZtVhJ1GMBcU3y4ACC4gyo40QpBBnY=;
-        b=elGZ7axkbTEizaM4xCJ/GTH0pUj9qge+lPUd6t4U3y0UsmiS4Wg5CrUangEoemM84k
-         d2G4KYqVwYgQZL+kEr8UEN7A3fncAznIjyN31pEfdzPwCXo62YTW3uCr4j+CmmPzHmeq
-         S24fC40KtqDcmdpQTuWQoC9lUiR+sQA1On2Po1Ux6gty0aaV3sHIUFmwTRZeugyyody2
-         1N33nKqbYc7PmzpRxwrNHx6qYxhr6V+yRjD8TKFGK6NrmHnGO3YORCaASAV4ube2WvxH
-         r/UAlgVoUWrKnytXy3yUS31MEj2oyOheql7esUFnsjRbUPTRxkBg3Y8Aeu+basL05s2W
-         V0ew==
+        d=gmail.com; s=20251104; t=1786465050; x=1787069850; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=RR2VgYwZjBupSt8VlBAmyBBmTAH9MTVFGE/w24WyCi4=;
+        b=pJW1nnfzjIyCBUgL6fs406uulye1g3piNkcN/M3ivkFrcvjC0k2nt8nDSHjOJsqJAw
+         N9SUtaYOfSgD3BTQR7cLxCezYKCYR/9gRTZH6Hsq9EDOtHotlUAyGtb13Fp5zK8WBWdA
+         R4huFxvZaZVZY9FtvfWomaZ3zXqIqlORc+vZqdu27nSuX7tFAcc1RWcam5x1NgO47ikF
+         ILvc9IbfoibgAnoGvTuoLcjvZAjbG6TFzJceCbpjYkyuFjdJgu2GVfGC/7fj/HNmed8V
+         7ZUrwTCEaAbPU3poF19Wwf2DRizqQMQ98oKCJrW1oE9d2WYT+PiMueeFy8hwTKuyr5cS
+         MvWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786464988; x=1787069788;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=rL+1cscBL7DruRZtVhJ1GMBcU3y4ACC4gyo40QpBBnY=;
-        b=N6kZtG7AM0tvdlfsGq9VE2pRgfDUwhLsbUOpXJDXxDQmWewzh37vcZhZ67oR3Qt74O
-         RDR0YVB3sl5UsH1S306pHaI4XCTYNIGnMS7a0vrEwdk0SY35g8wgpZbn+mU3N+lRyBbQ
-         j3SJaujYQ/ZNrxmiCoIxtAPGa59SZFkfuvb2qT/rGZIbprvSYtr/3I1iyuUUtwqzgc+D
-         luowL75YGXeKkFV7mJWUA7DouKyRZHUN0prgZfeMxWreLCWmb3kqcdPKLp1u3BSBnaHz
-         7jAuP44XnHkkT0kXbHTfcCVinxe2kYj0mHc8HHPf1uqSIbtzOrPxmsPzADMBqDTOo4UT
-         FTbw==
-X-Forwarded-Encrypted: i=1; AHgh+Ro8d9NqPkr+IpsFx6KE1l8r9vv7s0R6BNPCtimT5tvhwXitslStqd0zpDV2FXZ87NsL+yjzgyvGvko8Gm4Jww==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyUxwFpQ76MVBiz7L8sV9b2lE8Cs5sgrY8w6lpRPCNRgwGnrDqx
-	C0YQ8+eOnDZpMo412ixJS1hYxw99PRmu9wIvPDC+qnTa3jExWsawgMHCz4Y8lAQ=
-X-Gm-Gg: AR+sD11RrOLkBtnfXmDyl1+OkAjS41HG16k45FD4hrSn6dt/A3bv9ghb9FEhnzZNp3H
-	o2UJmLExbmaij6RKluwoo63aFxoCsuv6S1aTQt8SDxq4b6V9L19JukmnVvcvBjwr5zrk32+Ewp0
-	AR/yjtMjNmDOYH4maLf+6HVN9sKKiW3A5XCR/7BCdmkqx2iEk2wfhGpH6mwztEWI8APAy6Ad4SV
-	svE1S28XwvYDwSubmO1CeNM7UuR68JfSzlK8ySsVDQYIU5wwO7lujttX4s8vb2lsq4S0cwlXp1l
-	EWXAOzk+taEfjAK05nwI35aoMWxG+V5r5sXBVGuqBoTaVSrWphdXsI1P7Bu6lhilIcXdAS2XAge
-	FAQkToR3HM1XIiv7gZM9Gd6btffCA/2827qw2h0GQwx7weEOrAquvJlwRgoZPWBM+gbN6Dw5Tms
-	IcYnc6STO+0J5SOgLH8UuFaPLgGT5egfkGPomPa+wp6Dc0DHZatUk=
-X-Received: by 2002:a05:6512:3e28:b0:5b0:1f06:f204 with SMTP id 2adb3069b0e04-5b448649364mr752550e87.34.1786464987550;
-        Tue, 11 Aug 2026 09:16:27 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1786465050; x=1787069850;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=RR2VgYwZjBupSt8VlBAmyBBmTAH9MTVFGE/w24WyCi4=;
+        b=QxTTFhRrQ3D7blDiSFMu4RypuTDwgdqzf3wE1d13ad2UT/gN+GQ6nM7V2aulvSVxLF
+         EsV78nlKttmuX3EUJCZ/RpcLjh/OswkCPb/MCg3yf3UWLaOVluyIrpd6CeQu/Y1/9EkM
+         Ts/eNpdxdIL3bVev9x3QSWl5kFt3Z8qvZnCHKRm7luEggCO+TaPv2Px0FrEI9Gho1rV0
+         wLMmKPrBA4+HQx1GxMXrAR8FWbClt4VuowMrjVOKVnns52MWc2Nu8RXR5pI+gNTWn2Dv
+         L8YnFFN3C8DVWNCw8tYF/bUOodU09vjIP6aJzChiScQQSxW45zSo8+Y/qsFyQlSEOdn8
+         85hA==
+X-Forwarded-Encrypted: i=1; AHgh+Rrb55TBK0pjdlu8c5L1HChbMJuTVImjq7mhY5vEnpzlsnQwhVDeyJFb4M6UR5u7bdu7lsMsDhPicNrXptAlLw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyw2YeDk4x7Ia25xEyInVfJr4VFIbo2OZLDjkDF3r0BKM0bMO+5
+	d8PvgSKmN7I5ZSsFIYmhhyQsfVHO4WOWuJe4GNQUAKBk8YDMK9TbmJo=
+X-Gm-Gg: AR+sD11LQcfFmVW+sAkRJP6dUZo8VNbEmsJFQDZqu3OxZmGiWjcQXVRacNuo/Qgr0rP
+	5EVljRkH1vy34aGg2zGOrec5zDQbN3NRfk8NvaZKc4+/jzL//A/wPLNtYJI7mesPX39xZfuXM2z
+	EEoyXa58aKfsqX+zzrncwe+ukkXz772x0odTvprVAh9/tozAUxEMCkUU8F6lZvfYfn6dRamJ4U7
+	9es26ibZqs4kiUUfVAAFa5Ueahi/+3BFf0hwFu3n3O9xMvsGfwG9wfBE4vHbZvVnjH7OWkunp8h
+	9ihW9jJDZzFZeEZj+VMkRBF4qk1fD3il+xLmDQ2sXUvaMi5rjT8nWJG5bVHXiOapkp3eqEWZSCC
+	gkFkXpvya0Ja9+14d2ZyOTRSDJllQaZTwV6Krra7gRi4pMe+JIToDiADA5xfKIMJ2GnDVNCVFiQ
+	6ZSs+1gOORNCfclEL3Y0F/KDfUbJ5HgvGnba1vEzMQNUlBm+uBcFo=
+X-Received: by 2002:a2e:b8d6:0:b0:39e:fff5:7cdc with SMTP id 38308e7fff4ca-3a0f8d24244mr5889591fa.18.1786465049259;
+        Tue, 11 Aug 2026 09:17:29 -0700 (PDT)
 Received: from fedora ([46.8.219.5])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5b4486cacbbsm377769e87.31.2026.08.11.09.16.26
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3a0fa5bc458sm3575781fa.27.2026.08.11.09.17.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 11 Aug 2026 09:16:27 -0700 (PDT)
+        Tue, 11 Aug 2026 09:17:28 -0700 (PDT)
 From: Vitaliy Sochnev <sochnev.v.74@gmail.com>
-To: pabeni@redhat.com,
-	lorenzo@kernel.org
-Cc: andrew+netdev@lunn.ch,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net] net: airoha: npu: load the firmware without the sysfs fallback
-Date: Tue, 11 Aug 2026 19:16:13 +0100
-Message-ID: <20260811181613.19199-1-sochnev.v.74@gmail.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>
+Cc: Vitaliy Sochnev <sochnev.v.74@gmail.com>,
+	stable@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org (moderated list:AIROHA ETHERNET DRIVER),
+	linux-mediatek@lists.infradead.org (moderated list:AIROHA ETHERNET DRIVER),
+	netdev@vger.kernel.org (open list:AIROHA ETHERNET DRIVER),
+	linux-kernel@vger.kernel.org (open list)
+Subject: [PATCH net v2] net: airoha: npu: load the firmware without the sysfs fallback
+Date: Tue, 11 Aug 2026 19:16:59 +0100
+Message-ID: <20260811181717.19339-1-sochnev.v.74@gmail.com>
 X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260811110253.181862-1-pabeni@redhat.com>
-References: <20260811110253.181862-1-pabeni@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260811_091631_191936_CB3BF832 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20260811_091732_458756_080DFAB3 
+X-CRM114-Status: GOOD (  21.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,41 +104,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Both findings look right, thanks - v2 addresses them in the code rather
-than only in the changelog.
+airoha_npu_load_firmware() maps a missing firmware file to -EPROBE_DEFER
+so that the NPU can be brought up once the rootfs carrying /lib/firmware
+has been mounted. That mapping holds only as long as request_firmware()
+reports -ENOENT.
 
-main-1-0, the lost warning: confirmed. request_firmware_direct() sets
-FW_OPT_NO_WARN, and the driver did not compensate. airoha_npu_load_firmware()
-returned the code silently and airoha_npu_probe() reported a generic
-"failed to run npu firmware" through dev_err_probe(), which at
--EPROBE_DEFER only stores the string as the deferred-probe reason. So the
-file name reached neither the log nor the "deferred probe pending" line.
+It does not when the sysfs fallback is in play. With
+CONFIG_FW_LOADER_USER_HELPER_FALLBACK set, or with the fallback armed at
+runtime through /proc/sys/kernel/firmware_config/force_sysfs_fallback,
+request_firmware() hands the request to a userspace helper, waits out the
+full loading_timeout and returns -ETIMEDOUT. The -ENOENT test no longer
+matches, dev_err_probe() turns the result into a hard failure, and the
+NPU is left unbound after stalling the boot for 60 seconds:
 
-This is not hypothetical: I hit it myself building an AN7583 image that
-shipped the en7581 firmware set but not an7583_npu_rv32.bin. The pending
-message named nothing, and it cost me a rebuild to work out what was
-missing.
+  airoha-npu 1e900000.npu: Direct firmware load for airoha/en7581_npu_rv32.bin failed with error -2
+  airoha-npu 1e900000.npu: Falling back to sysfs fallback for: airoha/en7581_npu_rv32.bin
+  airoha-npu 1e900000.npu: error -ETIMEDOUT: failed to run npu firmware
+  airoha-npu 1e900000.npu: probe with driver airoha-npu failed with error -110
 
-Since the regression would be introduced by this patch, and the patch
-carries Cc: stable, I did not want to leave it to a follow-up that stable
-might not pick up. v2 reports the failure from airoha_npu_load_firmware()
-through dev_err_probe() with the file name, so it lands in the deferred
-probe reason and the timeout line names it. The generic report in
-airoha_npu_probe() goes, since it would overwrite that reason; of the
-paths it covered, devm_ioremap_resource() reports itself and the
-malformed firmware-name property now does too.
+Clearing FW_LOADER_USER_HELPER in the configuration is not a dependable
+guard against this, because unrelated drivers select it. On the affected
+build the symbol was turned back on by LEDS_LP55XX_COMMON, even though
+the platform had explicitly disabled it.
 
-main-1-1, the usermode helper: also correct, and my wording was too
-narrow. "the patch does not disable it, it only keeps the driver from
-falling into it" holds for the mechanism in general but not for this
-driver's requests, which lose the helper route entirely, including where
-it is the only one. v2 states that as a deliberate trade-off: the -ENOENT
-to -EPROBE_DEFER mapping was written to wait for a filesystem, and the
-sysfs helper interface has had no in-tree consumer since udev dropped
-firmware loading.
+Use request_firmware_direct() instead. It sets FW_OPT_NOFALLBACK_SYSFS,
+so a missing file is reported as -ENOENT whatever the firmware loader is
+configured to do, and the deferred probe path works as intended.
 
-v2 shortly, as a separate thread.
+Two consequences are worth stating plainly.
 
-Thanks,
-Vitaliy
+The helper is not merely bypassed for the boot-before-rootfs case.
+fw_run_sysfs_fallback() returns early on FW_OPT_NOFALLBACK_SYSFS, so this
+driver's firmware requests can no longer be served by a usermode helper
+at all, including on a system where that is the only delivery route;
+having no second firmware source, the driver would defer forever there.
+That is a deliberate trade-off: the -ENOENT to -EPROBE_DEFER mapping was
+written to wait for a filesystem, and the sysfs helper interface has had
+no in-tree consumer since udev dropped firmware loading.
+
+request_firmware_direct() also sets FW_OPT_NO_WARN, which drops the only
+message naming the file that failed to load. Report it from the driver
+instead, so the name lands in the deferred probe reason and shows up in
+the "deferred probe pending" line emitted at
+driver_deferred_probe_timeout. The generic report in airoha_npu_probe()
+goes away with it, since it would otherwise overwrite that reason with a
+message naming nothing; of the paths it covered, devm_ioremap_resource()
+reports itself and the malformed firmware-name property now does too.
+
+Measured on a Nokia XG-040G-MD with FW_LOADER_USER_HELPER=y and
+FW_LOADER_USER_HELPER_FALLBACK=y forced on, two images from the same
+tree differing only by this patch:
+
+  without:  fallback at 2.477s -> -ETIMEDOUT at 64.555s -> probe failed
+            with -110, preinit at 69.6s, NPU unbound
+  with:     no fallback, NPU fw version 1456.62 at 3.665s, preinit at
+            7.6s
+
+Fixes: 23290c7bc190 ("net: airoha: Introduce Airoha NPU support")
+Cc: stable@vger.kernel.org
+Signed-off-by: Vitaliy Sochnev <sochnev.v.74@gmail.com>
+---
+v2:
+ - Keep the file name in the diagnostics. request_firmware_direct() also
+   sets FW_OPT_NO_WARN, which dropped the only message naming the file;
+   report it from airoha_npu_load_firmware() through dev_err_probe() so
+   the name lands in the deferred probe reason. Drop the generic report
+   in airoha_npu_probe(), which would overwrite that reason, and give
+   the malformed firmware-name path a message of its own.
+ - Say in the changelog that the usermode helper path is disabled for
+   this driver's requests rather than merely bypassed, and why that
+   trade-off is acceptable.
+ - Both points raised in review of v1:
+   https://lore.kernel.org/netdev/20260807024125.434055-1-sochnev.v.74@gmail.com/
+
+ drivers/net/ethernet/airoha/airoha_npu.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
+index b679bed95..de75376db 100644
+--- a/drivers/net/ethernet/airoha/airoha_npu.c
++++ b/drivers/net/ethernet/airoha/airoha_npu.c
+@@ -202,9 +202,10 @@ static int airoha_npu_load_firmware(struct device *dev, void __iomem *addr,
+ 	const struct firmware *fw;
+ 	int ret;
+ 
+-	ret = request_firmware(&fw, fw_name, dev);
++	ret = request_firmware_direct(&fw, fw_name, dev);
+ 	if (ret)
+-		return ret == -ENOENT ? -EPROBE_DEFER : ret;
++		return dev_err_probe(dev, ret == -ENOENT ? -EPROBE_DEFER : ret,
++				     "failed to load %s\n", fw_name);
+ 
+ 	if (fw->size > fw_max_size) {
+ 		dev_err(dev, "%s: fw size too overlimit (%zu)\n",
+@@ -230,7 +231,8 @@ airoha_npu_load_firmware_from_dts(struct device *dev, void __iomem *addr,
+ 	ret = of_property_read_string_array(dev->of_node, "firmware-name",
+ 					    fw_names, ARRAY_SIZE(fw_names));
+ 	if (ret != ARRAY_SIZE(fw_names))
+-		return -EINVAL;
++		return dev_err_probe(dev, -EINVAL,
++				     "invalid firmware-name property\n");
+ 
+ 	ret = airoha_npu_load_firmware(dev, addr, fw_names[0],
+ 				       NPU_EN7581_FIRMWARE_RV32_MAX_SIZE);
+@@ -772,7 +774,7 @@ static int airoha_npu_probe(struct platform_device *pdev)
+ 
+ 	err = airoha_npu_run_firmware(dev, base, &res);
+ 	if (err)
+-		return dev_err_probe(dev, err, "failed to run npu firmware\n");
++		return err;
+ 
+ 	regmap_write(npu->regmap, REG_CR_NPU_MIB(10),
+ 		     res.start + NPU_EN7581_FIRMWARE_RV32_MAX_SIZE);
+-- 
+2.55.0
+
 
