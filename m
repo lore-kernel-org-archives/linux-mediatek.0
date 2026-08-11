@@ -4,66 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BEDCC5AC67
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Aug 2026 12:43:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F04C9C5AC67
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Aug 2026 13:16:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4doV9GUIAy9xUM+AhC/KkssK6h0MHIlM0ziN846RuEo=; b=Lpz4Aud9gPpslUA/PKIBIb4lV3
-	qzFIwEwlHdBsR5ZZZRYdZxrmfDy2plG1aRitnjRd1rO2hV3ab/pl567QFCOwYDDE0VKsbpVqL8hNk
-	sY4ABEEZJTS3QPqcv16x5NevVnCSXtM7JeQLK0TOrc57Z3bEa8sSJGtcZd6555Ab4rB9430erRQAp
-	4SbHuYxCZ1LtOX8//s2x1DH5UvUW0XMptkCeKaBM3Fr4WLFxhhfIFtzMQPuXx92JVNdnyq3WiipJB
-	dKwyNEOuAkrxfHU86V5AeaCxVf339lkP1r7LyWCVnommpkd1rj5xNcMuhLNX7K3tTq7Jy1jwzyFwV
-	wrzcNDhw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=gitYuIgMAmJ0oQcU7iG8TZn7YufiftcwyUkdvrQmLDk=; b=i9QyEZ7GJeyjnKo0hx5sx1z+RS
+	HFL1qD8CTojAU+JeTumQnihqUJ6OD6m2g+9uXtk3n1CSH4TZcyorUvSu0cCHMbc9Z4u4ifDHsd4lS
+	T7oKxvuG3nQlwiJQw/v+FuRE4Qu/Vm7QXBxwyNSxmtRnghMw4MnngZclCk55seSoBgAllzDKTOAH3
+	iyXObvBxo2VBOCGlbI9jSFVHFdqU5/8d6Py5LNhXZrO/zBlAT31qHP4xAjhZJPU2onF2MQaAqHstN
+	3SfK/HIhmsKPmVqoPIMrilI9TMmg9blfLsYrMlZPvF8w9xaILDoJQI98BIsBoHfhX3ZCLGJrETOA6
+	Lg/JvSDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtlp5-0000000E2dK-2aAr;
-	Tue, 11 Aug 2026 12:43:15 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wtmLd-0000000E5Dp-3zyP;
+	Tue, 11 Aug 2026 13:16:53 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtlp4-0000000E2ct-1wY2;
-	Tue, 11 Aug 2026 12:43:14 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7BC28600AD;
-	Tue, 11 Aug 2026 12:43:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4BAD41F000E9;
-	Tue, 11 Aug 2026 12:43:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786452193;
-	bh=4doV9GUIAy9xUM+AhC/KkssK6h0MHIlM0ziN846RuEo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=op7S08VpI3MrH1h/maoaiUxk163dPSARrCqOWylNsQmtVHV+KnxK4GX8vEm6kwbWL
-	 ntm5ElhUpUHiS4sSlN+gI77xvYnSbPQiqonQLrh3g0zDWKd3HMB6gl8M0JMh6mCTDT
-	 wGovQw6wQfSpz4wO5uP0Mtlqjwwi+kcvmLVCCNXHVCjcbZvjFMaQEdvEJkxcFdcLAn
-	 gU1wOk3RewFn3ukeZbekbefbLhtx9sxYiBjQsBMXQRhJbyo79cWQik9Y/kBA4DLNEs
-	 bxDoaLOKdBWil1q6EOIavriIi6PqWS9UmfwybeZv/TQn20XWNkNaYtvy/dOeRXNrCb
-	 uNLFK2CXeDLNg==
-Date: Tue, 11 Aug 2026 13:43:07 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1wtmLV-0000000E5Cz-3E93
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Aug 2026 13:16:51 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-49558ce01afso6967475e9.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Aug 2026 06:16:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1786454204; x=1787059004; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=gitYuIgMAmJ0oQcU7iG8TZn7YufiftcwyUkdvrQmLDk=;
+        b=P21gRNmFKAaovpTnVEZKjjEt/nE1c3qNQEnn5ABaEMR70O7Q0fYog5/G+bbloBV+oy
+         ZHKU3tse3I5zvuud2lRTMTzP1zKZR5gcMVVZJTIHFX7Mtjle1MXvyKqpsbr6ekFNe54m
+         Zz69rD0CJzutmWMWcYVOTeZpWsAkFuezXwfdoJ/sRKFfohsutaYniQ2GdWbK2sSY3ShD
+         BsvN2a5Si+PWQY3+aq7TYlAg1QJm8Hc9wBv4jQGauRwBHHNXCRFkuEuKHeG0KHIwpIQw
+         mUjtTy2YuxhLSMa7CRo1zcS+skMdJyDX/LE8K9bZU/Dg60vgjs2lPUsI/evSYBdjO4qY
+         M4Kw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1786454204; x=1787059004;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=gitYuIgMAmJ0oQcU7iG8TZn7YufiftcwyUkdvrQmLDk=;
+        b=ECfdYBNOB6Nk5yD7nSuU8KGuGUpO8UooBlHG4hVh1HTWaOIDcQJ0iGy3xqJv38KJel
+         peWEwgSox0kgVkvHm0VHsr8wXQBvjkCeDMdusRtQdNAzhhm/TJ3p2+foJLhNZTtBrFoq
+         ic5qvfeTKFKGLAOcNV8W8e1FPuQ4N0stF3Mn9X6pJK/ZrH4TSZvT3BpqvUauHh6qR+ay
+         jboKkPMhPH5rv9MbPysGrXju44s7nXVWxz0pb/JoR/b2GWTSzzTda15XbXraK4WAnw0l
+         VmzJW2RjIm1tviMCN8O2U/kK/mO3SjG+CV/GY5ycHcfjkqFRAjaMyObGLJJndRct4pGc
+         S1oQ==
+X-Forwarded-Encrypted: i=1; AHgh+RqN/w3qMmUf+1P1rJPUe/BncQ/t8pVHCGVe6q47+aVvbEJh9epJ2DvBSF2OQ63U3fdxHYnUM693a1PIFQzAcw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzQV3mGjL6rGOy1iIJLM/l+dAgjV4FzDfmrpu1sJptrGGt/1CvV
+	SuyPSF/Gi9KPpF/8aBySUERg0i4IqNOQXES9ikA02DtmO/4WFFzzJZDtSjaz568X
+X-Gm-Gg: AR+sD10zVrtlk7E7ntPRFSPtHX2vNFjOwD1hPeNDNWrGlBQ3b51MzuVG+7bO+3A4Qtn
+	cHso1TQ4SuVNWt4vVoVhdALDRL4Ezkg4EnbqJZ/MCVHzdTkJ0pY5Svw0P5n9kAyJKjF36b1+cWP
+	1wRerm30tlcPi4x3/u4VB8jv5BC6U4FfdijgjlloPDQ6MPJVSYG8md8DkO2FOopqBwVEH4GdPbI
+	JHVWR90oVww6dkD++Gd4LuGkov26nzfTB+glV57paB+TbBlg7SiHg+Kte24QhLBuK7GRIGM9Aua
+	9/YI5FIcePzcGEEaHB/IMVPmieuxiyWhDTYHa9V2UTDKqZ8Kw7s9sSb/4x7vyPsCUCjKs0hbc+a
+	NgrovkwmZTFH9zq5gXzwLeX7cqudKFJCb1lgz9wUtT1ujRe0NYcOP9U1autU1Hk1NUuf3cgBiMX
+	OP5o1MYcJDzDWvWKKZj4RplbSX/muMrTHqCVWvDdBYF4VKVgcvOR2lXALptTMGSwy+/b9UFUhpW
+	ykAHY90Q3LI06Jqvlus4XyOM1BOC/bteRpjnNxW1z8m8FKM
+X-Received: by 2002:a05:600c:3b0e:b0:496:c361:fb96 with SMTP id 5b1f17b1804b1-4997a578481mr2356495e9.0.1786454203704;
+        Tue, 11 Aug 2026 06:16:43 -0700 (PDT)
+Received: from Ansuel-XPS24.localdomain (host-87-20-3-207.retail.telecomitalia.it. [87.20.3.207])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-499788fd908sm47639145e9.13.2026.08.11.06.16.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Aug 2026 06:16:43 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Jiri Kosina <jikos@kernel.org>, Andi Shyti <andi.shyti@kernel.org>,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Christian Marangi <ansuelsmth@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
-	chrome-platform@lists.linux.dev, linux-input@vger.kernel.org,
-	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 1/9] regulator: core: Add "enable and wait" functions
-Message-ID: <99ad23ba-f8f2-404b-960e-1c22a20c9ac4@sirena.org.uk>
-References: <20260811122011.3539250-1-wenst@chromium.org>
- <20260811122011.3539250-2-wenst@chromium.org>
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH RESEND] arm64: dts: airoha: en7581: Enable spi nand controller for EN7581 EVB
+Date: Tue, 11 Aug 2026 15:16:30 +0200
+Message-ID: <20260811131634.703225-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="jN3Lu5VuliZs+Yka"
-Content-Disposition: inline
-In-Reply-To: <20260811122011.3539250-2-wenst@chromium.org>
-X-Cookie: Take me drunk, I'm home again!
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260811_061645_827357_19AA497B 
+X-CRM114-Status: GOOD (  10.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,43 +104,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Lorenzo Bianconi <lorenzo@kernel.org>
 
---jN3Lu5VuliZs+Yka
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Enable spi controller used for snand memory device for EN7581 evaluation
+board.
 
-On Tue, Aug 11, 2026 at 08:20:01PM +0800, Chen-Yu Tsai wrote:
-> In device power sequencing and initialization use cases, it is common
-> for the driver to enable the regulator and then wait for a certain
-> period of time to pass before continuing.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+ arch/arm64/boot/dts/airoha/en7581-evb.dts | 4 ++++
+ arch/arm64/boot/dts/airoha/en7581.dtsi    | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
-Please don't bury core changes for subsystems in the middle of random
-other serieses, this is the first time I've seen this.  :(
+diff --git a/arch/arm64/boot/dts/airoha/en7581-evb.dts b/arch/arm64/boot/dts/airoha/en7581-evb.dts
+index 886e2e4b5f64..3dc68dbf1be7 100644
+--- a/arch/arm64/boot/dts/airoha/en7581-evb.dts
++++ b/arch/arm64/boot/dts/airoha/en7581-evb.dts
+@@ -25,6 +25,10 @@ memory@80000000 {
+ 	};
+ };
+ 
++&snfi {
++	status = "okay";
++};
++
+ &spi_nand {
+ 	partitions {
+ 		compatible = "fixed-partitions";
+diff --git a/arch/arm64/boot/dts/airoha/en7581.dtsi b/arch/arm64/boot/dts/airoha/en7581.dtsi
+index ff6908a76e8e..0964cd783013 100644
+--- a/arch/arm64/boot/dts/airoha/en7581.dtsi
++++ b/arch/arm64/boot/dts/airoha/en7581.dtsi
+@@ -150,7 +150,7 @@ gic: interrupt-controller@9000000 {
+ 			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_LOW>;
+ 		};
+ 
+-		spi@1fa10000 {
++		snfi: spi@1fa10000 {
+ 			compatible = "airoha,en7581-snand";
+ 			reg = <0x0 0x1fa10000 0x0 0x140>,
+ 			      <0x0 0x1fa11000 0x0 0x160>;
+-- 
+2.53.0
 
-> One case in particular is not optimized yet: a regulator left on either
-> by hardware reset default or by the bootloader, but does not have the
-> "regulator-boot-on" property set. As the enable timestamp only gets
-> updated when enabled by a consumer or by the core, the first enablement
-> always needs to wait.
-
-Just take a timestamp during registration if the regulator is enabled,
-we check if it's enabled anyway so we may as well take that as the last
-time the enable happened.
-
---jN3Lu5VuliZs+Yka
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmp7GNoACgkQJNaLcl1U
-h9BeJwf+NkLsGljQXwokTuIRv+ig4jdUnALSbb8+0ZIRrZ+96sNEkwqEODMFToii
-m8eaYIc5o7+PoXbWo0li99AO3IoZAw8otyweKMS8qGabP4EmHx4RQlRtmT5EB8GN
-KKPHgVNpuTTrP8/pNacCVJUZ2keDYA98Mqugtuxo14y9ZOp4HKevYQvXdimF1sXM
-43lEEtZJ/tnW/FlDVUtljN42u51I1ly4Tc2SUvquTs1V5sOJGEFvAftOVMTQWZeb
-dGPhAbqkevlNFnoQqIGB/9AeSYm8PpMRwVbveoDgBKXYMiHKpxokg2Vib+LH/6rn
-wYimUcQhuqXcIN2eQrOr0HIWPeB9Qg==
-=2Up9
------END PGP SIGNATURE-----
-
---jN3Lu5VuliZs+Yka--
 
