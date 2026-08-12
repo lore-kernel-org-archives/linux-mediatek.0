@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C12D0C5AD5A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2026 10:35:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BF5CC5CFCF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2026 13:32:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KqmtgzPBncZEMRO2d8cE2MGb0LERXNEQmTQuzXuj/AI=; b=BRuwvWbTZIv7qYaWQMUePDxxpg
-	7JCW4Ik916/fPfuohx6thdP5STZ0kd1Jnmjb02yTZ21xrm2DPnmq337QqzvAxFQ0NVxOyl7maf08X
-	kxtswaKPVErgORbov1iR+7ZNBcxJ7ExvZpD7DxKHiTZ6aJugC8wv+9LLJ2Mqg/GaBZs3UoXr5BZTG
-	vApsqMUUAie7iS1x4+SARyXaQcmE7WIQ7jha/5nXn9BJJ8b9ulPUT0MniZDLcQE3a3+lizO9k+5UL
-	RjR64p+SYFgNrUOnaWev8WFnBCc47ZXx7s/Y7wSJe/Bf5ZWVbg41BBUwS5jqGIP04svlMFEX9oXvq
-	TnrShF/Q==;
+	bh=FHP2adXMKime99fuV2vPCh1LzH4rU7kufd/f7lfaEnw=; b=LaaHYNdlUEPxna2ZqnWLhXgT/k
+	wotKxTrhDTzJXuIdY60+j/bOfpI45Rb3Vlq40R0zrkHdgvv1311AwxTV2RSYpaMZF8KcZWJAaHn8/
+	Q+uZ2GZv0TuF60YHDerGgKzHAPuyPaNx72cQkWhryZTlwZmy5bB1T3mh44UARLALiaaaV0uqUwcv/
+	rIuzw0WG80/T0X8G+wV5ejB1P45us6YmvLcA6Wte7SdIrhWyGIUL8yc7nzwj+jVVsQZotwqSMuIMM
+	gkXTXoOfeEOPZgGCQG4ySKTXz/JDAWYFRCpiJRw8z55hBtb0LhXcGdgIwhNs19GravYLbD1FZpVqz
+	U7UOlEFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wu6Im-0000000FuMZ-0p2Y;
-	Wed, 12 Aug 2026 10:35:16 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wu94N-0000000GISq-0vwz;
+	Wed, 12 Aug 2026 13:32:35 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wu6Il-0000000FuMI-0bEZ;
-	Wed, 12 Aug 2026 10:35:15 +0000
+	id 1wu94L-0000000GIRy-2vu3;
+	Wed, 12 Aug 2026 13:32:33 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 49DFA60A88;
-	Wed, 12 Aug 2026 10:35:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 43F911F000E9;
-	Wed, 12 Aug 2026 10:35:07 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 1219D6136F;
+	Wed, 12 Aug 2026 13:32:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F2E11F000E9;
+	Wed, 12 Aug 2026 13:32:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786530914;
-	bh=KqmtgzPBncZEMRO2d8cE2MGb0LERXNEQmTQuzXuj/AI=;
+	s=k20260515; t=1786541552;
+	bh=FHP2adXMKime99fuV2vPCh1LzH4rU7kufd/f7lfaEnw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=AfLkYVyfGTIYmy+S7st1151b23Xy+xY3bWWxuaVHuqqo/z/0IXC4lEcFGRR0VWwQw
-	 i81X2EBDwaKXpCWtvaOK+XT0MJ9mmbMi7gqRBSuCGCZ3mk1hc+yzsArgjTri6jEiWr
-	 yCELNoUO/63kQ5Guz13iDRsdzhpE0uPiHkujZDXgaOsWK2h8YvS7JOPoRJA7wi0SJ7
-	 JCUE/2/u5CNB6EWqcomUEeOuKKkHFaSrXJ9aYvT08t9V6etLmzhAcJfTykOxsAjQIa
-	 cWA/DDCz6VWJYqc7LXJ7VD3Gwenkewi7aLhZvA6ign4LCWvvAVLm4rQn676EWZvu/O
-	 jqIlpDPi0PITw==
-Date: Wed, 12 Aug 2026 12:35:04 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, 
-	Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v3 1/8] dt-bindings: reset: Add mt6589 toprgu reset IDs
-Message-ID: <20260812-smooth-artichoke-kittiwake-f6e85e@quoll>
-References: <20260809160643.33991-1-l.scorcia@gmail.com>
- <20260809160643.33991-2-l.scorcia@gmail.com>
- <20260811-amethyst-seriema-of-gallantry-ca9c7f@quoll>
- <CAORyz2KXJf4gU46649w1ncb7TAOErdoGmfOMzwKr8b+eGdAgVA@mail.gmail.com>
+	b=NpavJL8RPxuNJNu1SBs6w918KEO6ukKSW8Yr9b/sBXY1tKAiORrsy8wHkCioJ9mG0
+	 AI1YnPz1VkTha8o9/c+ywk6S0XYF+NQ3dEIGv1otvYPcWGlJsiJejKBtCNi/KsmSAn
+	 OxtVJdQftYcSEikfEmlG9IQ8XM4mWTuG/99dE//Kns7WWWxNdo+ESzfQ4+Kcl1KFje
+	 h0Tm5Y5kT0UDsu+m43ZrLjB8RcextlNlh2hC7VOsTV5DBfMpw/J++D/wl/sgU1YKUO
+	 eurYC0DBCLiHBfZBbjxs9LHMumQKPr2NlSaF6mEfbg/7hiVu+CHxB0bp6XL9PdFCAu
+	 4aVIYtH4ZL6zQ==
+Date: Wed, 12 Aug 2026 15:32:24 +0200
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Rosen Penev <rosenp@gmail.com>
+Cc: linux-phy@lists.infradead.org, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Kees Cook <kees@kernel.org>, 
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>, 
+	"moderated list:ARM/Mediatek USB3 PHY DRIVER" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek USB3 PHY DRIVER" <linux-mediatek@lists.infradead.org>, 
+	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
+	"open list:KERNEL HARDENING (not covered by other areas):Keyword:b__counted_by(_le|_be)?b" <linux-hardening@vger.kernel.org>
+Subject: Re: [PATCH] phy: mediatek: tphy: simplify main allocation
+Message-ID: <djjg6jwpuu6l5wcc7zbxfi7j4n5hircmhivxohdtgufzrp6rlb@l6eyfdyfrxix>
+References: <20260304041400.7236-1-rosenp@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <CAORyz2KXJf4gU46649w1ncb7TAOErdoGmfOMzwKr8b+eGdAgVA@mail.gmail.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20260304041400.7236-1-rosenp@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,30 +75,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 11, 2026 at 04:20:11PM +0200, Luca Leonardo Scorcia wrote:
+On Tue, Mar 03, 2026 at 08:14:00PM -0800, Rosen Penev wrote:
+> Use a flexible array member to replace kzalloc + kcalloc with a single
+> kzalloc.
 > 
-> > We do not take bits, but identifiers of resets.
+> Shuffled some code around as __counted_by requires the counting variable
+> to be assigned first.
 > 
-> Currently the existing mtk_wdt.c driver does not use a reset table
-> that binds identifiers to bits for any of the existing devices. There
-> are a bunch of mediatek,mt*.h files under dt-bindings/reset [3] that
-> point directly to reset bits instead of being indexes.
+> Removed NULL check from of_get_match_data as it's never NULL per the
+> device table.
+> 
 
-Many got accepted unnoticed, many times we did not care, but the point
-is still valid - pure hardware numbers do not belong to the bindings,
-because they do not bind any pieces of code. The proper binding header
-constants bind DTS with SW implementation, so two pieces of code. Not
-applicable here.
+Please do not combine multiple fixes in a single patch. Also, the NULL check can
+be kept for the case of sanity as it wouldn't hurt.
 
-> I can introduce a reset table in the driver, but it would break
-> existing devices as those bits are referred in device trees and they
-> are often non-contiguous (e.g. [4]). As before, it could be done by
+- Mani
 
-Then these bits stay as is in DTS but bindings header is not needed. You
-can have of course DTS header, as we did in the past multiple times for
-such hardware constants.
-
-Best regards,
-Krzysztof
-
+-- 
+மணிவண்ணன் சதாசிவம்
 
