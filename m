@@ -4,63 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BF5CC5CFCF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2026 13:32:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C50C8C5B56A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2026 16:30:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FHP2adXMKime99fuV2vPCh1LzH4rU7kufd/f7lfaEnw=; b=LaaHYNdlUEPxna2ZqnWLhXgT/k
-	wotKxTrhDTzJXuIdY60+j/bOfpI45Rb3Vlq40R0zrkHdgvv1311AwxTV2RSYpaMZF8KcZWJAaHn8/
-	Q+uZ2GZv0TuF60YHDerGgKzHAPuyPaNx72cQkWhryZTlwZmy5bB1T3mh44UARLALiaaaV0uqUwcv/
-	rIuzw0WG80/T0X8G+wV5ejB1P45us6YmvLcA6Wte7SdIrhWyGIUL8yc7nzwj+jVVsQZotwqSMuIMM
-	gkXTXoOfeEOPZgGCQG4ySKTXz/JDAWYFRCpiJRw8z55hBtb0LhXcGdgIwhNs19GravYLbD1FZpVqz
-	U7UOlEFg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6UWAE3YyH4XKWS1i6AZYOVl03Cz627Sq6U1AvRQjmsE=; b=uyYlfBSkVfX+TOfAE+W+2nwtQl
+	lImRFLm3fZ/8TChxzQEvwgBPVYqJsoygw3A1FWxmcZNGPhu1rF8ZNVD5x0EBy0c7TImjx1mpwrWxw
+	4yRX2v0gneclvqvpb/17Skqsx0r5xk3vgjb5dmU9w107aUv38E22PBp5NtUs+tcMHsUsJqM4ELXzR
+	546QoDvSw7nJNRexDFnA0iRSEgffgkFNjwSlLNk9IXp97bXsEfLm0aF+KVGcOm8wCoHtzag0AAs8P
+	ZezFcDq15MkyQ9Nv1VnrWzlsVf5uqIvKqlnUnms0PiClCztxqZE0oFZ0avPvCvBeHmtOWf37bPKI2
+	uKBnUqrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wu94N-0000000GISq-0vwz;
-	Wed, 12 Aug 2026 13:32:35 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wuBq6-0000000GaV3-17TO;
+	Wed, 12 Aug 2026 16:30:02 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wu94L-0000000GIRy-2vu3;
-	Wed, 12 Aug 2026 13:32:33 +0000
+	id 1wuBq5-0000000GaTt-08q0;
+	Wed, 12 Aug 2026 16:30:01 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1219D6136F;
-	Wed, 12 Aug 2026 13:32:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F2E11F000E9;
-	Wed, 12 Aug 2026 13:32:28 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8C8154087A;
+	Wed, 12 Aug 2026 16:29:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 872DC1F000E9;
+	Wed, 12 Aug 2026 16:29:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786541552;
-	bh=FHP2adXMKime99fuV2vPCh1LzH4rU7kufd/f7lfaEnw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=NpavJL8RPxuNJNu1SBs6w918KEO6ukKSW8Yr9b/sBXY1tKAiORrsy8wHkCioJ9mG0
-	 AI1YnPz1VkTha8o9/c+ywk6S0XYF+NQ3dEIGv1otvYPcWGlJsiJejKBtCNi/KsmSAn
-	 OxtVJdQftYcSEikfEmlG9IQ8XM4mWTuG/99dE//Kns7WWWxNdo+ESzfQ4+Kcl1KFje
-	 h0Tm5Y5kT0UDsu+m43ZrLjB8RcextlNlh2hC7VOsTV5DBfMpw/J++D/wl/sgU1YKUO
-	 eurYC0DBCLiHBfZBbjxs9LHMumQKPr2NlSaF6mEfbg/7hiVu+CHxB0bp6XL9PdFCAu
-	 4aVIYtH4ZL6zQ==
-Date: Wed, 12 Aug 2026 15:32:24 +0200
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Rosen Penev <rosenp@gmail.com>
-Cc: linux-phy@lists.infradead.org, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Kees Cook <kees@kernel.org>, 
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>, 
-	"moderated list:ARM/Mediatek USB3 PHY DRIVER" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek USB3 PHY DRIVER" <linux-mediatek@lists.infradead.org>, 
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
-	"open list:KERNEL HARDENING (not covered by other areas):Keyword:b__counted_by(_le|_be)?b" <linux-hardening@vger.kernel.org>
-Subject: Re: [PATCH] phy: mediatek: tphy: simplify main allocation
-Message-ID: <djjg6jwpuu6l5wcc7zbxfi7j4n5hircmhivxohdtgufzrp6rlb@l6eyfdyfrxix>
-References: <20260304041400.7236-1-rosenp@gmail.com>
+	s=k20260515; t=1786552199;
+	bh=6UWAE3YyH4XKWS1i6AZYOVl03Cz627Sq6U1AvRQjmsE=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=WNhQdhHTGn/2BWrRfPpoU56S8XSJbzUreg0GvIRj2hNGf+zrjdFJIt1CeFWvXq/C6
+	 vStJ4AtGZJgfjzDi2nDHpuK30NYEbROkGQZFm2aKy9z9fnfzbu8b+WhT3DYRSLg7zt
+	 Ip5b1S12GLpE5z5mGSvshS6GdagcT1jlmfoFYncuqcYPd3u9+Bz3U0gQg2eoEiirI2
+	 5/jd2nbK6AsylTrsE4hoAfLRsqMhd9AJcF5+Itj8eTOVVFgv8gEiDNOTVYo8BL2bYZ
+	 UCCL0zoKTttdVEkYMbwquf+7e/0hJJA0eufA+yqu+khfmh1OhdUnu3WSrbtgkXmuRy
+	 h5w86XCDPwisg==
+From: Mark Brown <broonie@kernel.org>
+To: linux-sound@vger.kernel.org, Rosen Penev <rosenp@gmail.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20260811042424.66882-1-rosenp@gmail.com>
+References: <20260811042424.66882-1-rosenp@gmail.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8365: use
+ devm_platform_ioremap_resource helpers
+Message-Id: <178655027936.8393.11056539340382876563.b4-ty@b4>
+Date: Wed, 12 Aug 2026 16:57:59 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260304041400.7236-1-rosenp@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1149; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=wnZ3dwLi2v71HRTnl19XP230YuzHDG2xlcwtpxnEExM=;
+ b=owEBbAGT/pANAwAKASTWi3JdVIfQAcsmYgBqfJ+D9IUcUTa8aN8BdfJR70JuBC1nerzCrNVN6
+ XUamXYxiz6JATIEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCanyfgwAKCRAk1otyXVSH
+ 0FkqB/jelPTFXsIwlc/UGyL5aieoa3lN30k90fSwHzywnFlnuY210O1mo+m8hKrYtKS4Cc3iieZ
+ mHiwU7BOnjCrOk76enRTLa4e0kSpoecdQQMzP9wUdn458s7wVnX/JWyVw3TAbQtMpjIryegKZWw
+ VRuL04lh99OyDVuDPEgLOdIqql19Lh+aVgKZJoX99WsWZjKwxjLtFFI9S+EX0dVg2bKE+Rj21Ns
+ BPG9k8GQzLv13WONqLDk3k5PSSXAJN8WBSz20LA90G6x3h5nGdGDdXEsrKZCDi/NylmkZoiotnz
+ OJMxpq1fAjqdlvb4GaULRDvvppFfdYCrYGtsVgjZpNmuuPE=
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,22 +83,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 03, 2026 at 08:14:00PM -0800, Rosen Penev wrote:
-> Use a flexible array member to replace kzalloc + kcalloc with a single
-> kzalloc.
-> 
-> Shuffled some code around as __counted_by requires the counting variable
-> to be assigned first.
-> 
-> Removed NULL check from of_get_match_data as it's never NULL per the
-> device table.
-> 
+On Mon, 10 Aug 2026 21:24:24 -0700, Rosen Penev wrote:
+> ASoC: mediatek: mt8365: use devm_platform_ioremap_resource helpers
 
-Please do not combine multiple fixes in a single patch. Also, the NULL check can
-be kept for the case of sanity as it wouldn't hurt.
+Applied to
 
-- Mani
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.3
 
--- 
-மணிவண்ணன் சதாசிவம்
+Thanks!
+
+[1/1] ASoC: mediatek: mt8365: use devm_platform_ioremap_resource helpers
+      https://git.kernel.org/broonie/sound/c/3d7fb01b36aa
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
