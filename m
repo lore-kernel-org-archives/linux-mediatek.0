@@ -4,98 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCB43C5CFC1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2026 01:15:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C01C1C5AD5A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2026 04:40:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:Subject:
-	Message-ID:Date:From:MIME-Version:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=st3PA4rMKmSdQCpBKGXISTJ37lNdsPli6gx+o+ezt7c=; b=Q8Vwn4ynvueVV+mCWMJfOlapP8
-	e2BQzrKOvgi+QCqUnfUWGtP/g/ZUEFeL8Kl9qne+iEXyWCIo9jsrh1l7N8R4Vj/Es8sys8V3mAxr5
-	eVy+EHb9dtnL04er1dC1W3YwTTl/S3x8qzcD9Pzo6M5r3g81htcDjeG/kbAEIVaHBpL9/OPeMarws
-	52ZOIu6R3udGXX6rzjA0xkQvVt1Pe4kc2ZqCU6eJrWjC4XjURbODRt2+YdePexf8gT/cBPq0xCI+/
-	sp12NqnaphvOpGfdhjIS+k31dKf9IxEjgXQDW6bVTF/KjeAumJ/S+CvAkGgMjwBb/XozR9CuAuDkc
-	WQWy5FBA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=y8EqzbJg8fD3KowEEfKkshsn5eXfhPp6NSIWl0mIxuU=; b=zhZDy7e1HrSheSOq9lqtl5PLU2
+	BiHy8RZ2u4I7Vz7KjftYvtnJiQXK367sNGETFVeKDkvTV1+NlMR/9o1hlpWc2UL39AELbWJeCzf/3
+	RH4Xi8Z9gj+8toKTTANtNPgvfSuJR1kbUjmTDim8RozZq06UWFS28Xlpy2nr6XR/GwildG6Y0vLUW
+	uY9lXBWYMS4EUTLYfJpeFtGdD8IcY4GB8CUFvJTASTz7K0iUCxLQ8jHgDxji1V3VTcaD69Tr0JgAs
+	XIwxci8mo6M+JB3WD8AH7NGjOIsFKTDOcKFxck7KEj0KbK0f/JMQewzub72/MObOAqQGLGAGgeSBG
+	WrHL1lnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtxZD-0000000FC6A-0A4n;
-	Wed, 12 Aug 2026 01:15:39 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1wu0kx-0000000FPHh-13EM;
+	Wed, 12 Aug 2026 04:39:59 +0000
+Received: from mail-oa1-x2a.google.com ([2001:4860:4864:20::2a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wtxZ9-0000000FC5c-0A1Z
+	id 1wu0kt-0000000FPGc-0HJH
 	for linux-mediatek@lists.infradead.org;
-	Wed, 12 Aug 2026 01:15:36 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id a640c23a62f3a-c1f5208b38dso80241566b.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 11 Aug 2026 18:15:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1786497333; cv=none;
+	Wed, 12 Aug 2026 04:39:57 +0000
+Received: by mail-oa1-x2a.google.com with SMTP id 586e51a60fabf-456395f4e7bso468720fac.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Aug 2026 21:39:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1786509594; cv=none;
         d=google.com; s=arc-20260327;
-        b=TyCWDP7a02MB0S2JHKgj90Q7UAy33nJsmgigqZO5aND+v2Wwcf+MsT0B9A6UQt77/T
-         KYC/wLCAquwXHYwVdDuaqu8lk7t5JLCHbFZMeEBueOdd0PxTSDQassekWJbzPknAWoKE
-         Bi5ogo5RHlNvFHTRFJ1LD2eEC3LJi2bDc4UGy2NJilTmpMCNRQ3Nkzh/+ypy3nio5OAN
-         kQIUblEC1SYDbVDPPxrLYRQZblKwQQHGs/6efX54NqD00LMTH5zNFteVw1F7j5pHdXsl
-         WL79qGrk2OeNybiWeIWgMarSzDGQtZ8tt60yP2TNlkJgAJrzgSGNyBpeAZKcQd/m3tis
-         Mvlg==
+        b=sZ/EDAr+Khcv2jOkzrEJRAioF5DZkc0u/LF/bFIGUB7w/m9WqHUdTEHisSJ5EoOnh4
+         YYpNF1SSgoDSAiMZeca/3Ckd5FBNRcm19eCyOkvOHXzv7cZn3Pv4wmKmpwhsPSsf6TqR
+         xd1+ujUiTBLX/YoOvwh6soOfo1hQQtFBJ7l3O/bMaMynLXYLdKqfdQgIE2QqSBXijRLU
+         CwJ5kaukOCC9WzTgL62AxfJVQIy/4sgX25/SkK/9ZlwUW+FfTOF5v8EN0VpBvxeD/9cB
+         2TFi5MU9SSmYGZ7CFByh8XyuYv2wxxdb9WnZPEouq/McaspGtTmDJlmCwZxwAVsryOg3
+         HORg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=st3PA4rMKmSdQCpBKGXISTJ37lNdsPli6gx+o+ezt7c=;
-        fh=7q9slQwJZ94/e6e481MFJgYPeNForZhGYqL2OGSLeAY=;
-        b=XR3ifCrFf0lKpHT2c+tcez60njlbte2IcJtobTOke5pHtN8S75DUyHf03UWgS7vKHD
-         5WJZGSC2tVtlClIBEMftyURGCxmenVUyq/koWZwbgIoaV28WqpdlmSB2OuSG48pjZqGz
-         HO/C5hAgx92ps8MTpotiUdke6EudJjn2YrHqKw6Jcl8cfohklV6+sGhDbzyAmMqFuHwB
-         e1ITcKkCVHRFVJTBR0ese86LoGOJA4QaVwyXmLN8dJIDrP4AWFhfwXCmC7psSaC76r/6
-         +IuiJt+u4+4OtlAUfCMP2btxGgDUJbcNjf8LXMr4eKAAkA42gATG0FWHDKfdvn1eljrN
-         py2A==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=y8EqzbJg8fD3KowEEfKkshsn5eXfhPp6NSIWl0mIxuU=;
+        fh=3xjMrKdcKwCFr7MsaPMMvSWlXjnVZ++WIGqlmUnLWK8=;
+        b=KErIPGs5mMDpjiySPaBv3/W4AiqQAbFOsgOL8ikusEt1N6UASvvRBVb40vGwmd/ERh
+         3IPOporaY6WPJJNC49kpGOsMKV5c4V25V7ri77zM8ANhRlObZt4voPxH8U7ABe+KxBUC
+         esIUEMuZQU1CQJ4oqigG/lXdWpuJAOuBiRggZYpgEGuJU6DupxihqxCKkdq/JnbOFvlH
+         0sc22A+XKqjUQ1K3AkzB7+3ckd7OAazr0XaatmM2Xs39AtBFZStgwS5TSzxfmI3CBMwL
+         DkB97Q3zVi4AfURGp7pSWxiqCMmzHG4zV2Prn+ZQsv0mtyOwH/C8/goTsX2B+vJlaf2O
+         pqIQ==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786497333; x=1787102133; darn=lists.infradead.org;
-        h=content-type:to:subject:message-id:date:from:mime-version:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=st3PA4rMKmSdQCpBKGXISTJ37lNdsPli6gx+o+ezt7c=;
-        b=DfbyBhytmJfo8JrEhcezW3Sxb3FBWkqzNK8TvqWs+bmdXjNjVsypBFtzSQcQz+q9AN
-         8pTO4CjXjqUnWnLW4G+qGKP9q4GYg2H/T/1eLvjjUmDkbRLNjaQBHPJrd/2eOdHtHUP3
-         /Zd7X1q0vKcP2RB3oZDwkteGS9nVfzqoZw8SU8EA7yXEfDz8qXHagtolC17kXLvuKsVT
-         OqgppOi1pPJvGECkD385hoL7yP63PyOgBtr5MeCnhE2unoql/FXMYLsO2+Tq0TlfaOmO
-         fidYsSKmxzAUxlByTx8+MvKsWeWGY+Aa0MGrQphQ6RrIz3gaH7Zr8P/U1BkZEjv4KHNd
-         mmVQ==
+        d=chromium.org; s=google; t=1786509594; x=1787114394; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=y8EqzbJg8fD3KowEEfKkshsn5eXfhPp6NSIWl0mIxuU=;
+        b=Iup0tSiz9+wfJSEVRQdeBRVC9XX1egfRngUJEofTm95UGhO8gvkO19ZLKtmbRCEId2
+         ixvKcKbZSS6iDCvHoasCZUoZPfl3o5OrfaLdJpYTzRKeVbm6RIQ1LCJE70Wg9rWtYfTC
+         ZivLYf8ybyDsbLhrRrF99T0+HFBe8j7PxhEsM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786497333; x=1787102133;
-        h=content-type:to:subject:message-id:date:from:mime-version:x-gm-gg
+        d=1e100.net; s=20251104; t=1786509594; x=1787114394;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=st3PA4rMKmSdQCpBKGXISTJ37lNdsPli6gx+o+ezt7c=;
-        b=TMWFb4/G8xGyGq+MHq7PsJSFbViS+PhDl3oPu2Z6CyfdOLQnC/Hl9c5hx+lt4iuQaE
-         ddEDsIbDH8q5CXr6bX36aMlqLBqVExYuS6rUzIdbYq0TTNOHQuVxwvdEruTIxaar6D8P
-         26uZ2WVUw3MXQPgUHkf4noKmANqF+hvK1gJ42AbNKADLqcwhsoHH5Zy5owNZBZm8U9D1
-         iy9OB/jvD6XpW5tO/y5CDni5I/Ae11joInvi5+gLEyCcIvfTSneTlCzkLAwEbTZyrk6p
-         LFAWmYAVzLmweptqVuUqfLqP3M2g6kVqzwWAriF69MXMNj/Dx9cVNRDtio5DexQQNC0O
-         cb8Q==
-X-Gm-Message-State: AOJu0Yzb6QdLyV/DcLDXx+lYAIsnHaGzl0gdN2pApo1URnv6sVhzOO8v
-	iyWlGxEBWzJf4Coi4ZqbTHUdMBst429kaHnhsa4lt89k+bCWLqv7r7Pj5W0GKX2UNk8wXLE0E+v
-	F9IwjB0bs+XDtm5Jm/8gNeSR3Y7FVA0Xtzqq+a+Y=
-X-Gm-Gg: AR+sD12lWAmTiMp9CVI4Y2MV9rT+6PeAzXWdF7wVGLkFMwPrtFaXyR/6uXQ7VomCJe3
-	6f+6lZgbzeMmjrNQ58Tm7z+40K29cmnITFkq6HlIye6mmMY4LFAYjaStfQF9uevKeDnb3p8c/vv
-	ckTP/c/m/7ynNjR655fxhjkHGplw6kgkdFyeL3OXwg20V26jTUdCiepTWd1MD2GQ5nlBbRe+Ziy
-	yc510SFgqioyuWGw+2D3zG494lquAKdg0cKfbsrj4aFC+0ZRKMPcTkFyac6GjF8F7FyBmKPXXdb
-	sq4SYa7EVVh/wAKWAbMe9LdmZ/ABhNJxuXx10C06bLPn+C990F7JLHdstMy0PifDibvr5uRZRlu
-	c
-X-Received: by 2002:a17:906:fe03:b0:c16:8799:fcb4 with SMTP id
- a640c23a62f3a-c20f3080468mr57761966b.19.1786497332474; Tue, 11 Aug 2026
- 18:15:32 -0700 (PDT)
+        bh=y8EqzbJg8fD3KowEEfKkshsn5eXfhPp6NSIWl0mIxuU=;
+        b=hz6naLuv8xN97+Kkkqwx07125FQSzcMH4F9cUUNiBsLiBGJfKfcJIezlzZGLB1+rpt
+         satkgMtp8vjRur1EAlgCkuHDARBCzlaPt/I6LHMnpLxxTQ6FXOTVMf02vkcoJY8VupdN
+         x9NB0zmp2q1xi+5lJ3ZOPbjeJSzQt5kNGA0QuhpQkpy1fFERK/5dgqr9Z8Jo6Yg4aWio
+         e7/L2ti3rLEcSiXsnKQvBaGofReIXSfTjaqq6w2lOKXhjMJJUkHsS71lHm0nhQ4seY3Y
+         zPYUINUQi5ARTVynMqyKjJQvLx1H4LCTmY3uyMmjPkYhICPXsFC/9wbj2Qbn3i/0zYtp
+         Zwiw==
+X-Forwarded-Encrypted: i=1; AHgh+Rr1XJQbivuFBp3CpHUsKbzq3lyDjeYbjpBe7MYFzj++AQpJq+xiub5WBMhUjo7IbheZ9ep1xCOxtSBb4HltRQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxjPx4jKHFUfIemD2mEgELBwZq/g1Ed2PS0Qf2lBPKvqC7COxQO
+	rGQljFsGuLN4qY0BUmEQU1/Hi7NKElQ1Tcr2uXyNdCHXW7LRMciCM6jRUJv0CTaet3zX87Cxhr9
+	ECX3u6E4Q9T8PfkG5MaKoaD+po3Z6Xnydya6Zwufg
+X-Gm-Gg: AR+sD11P3+evCElzeCY0L7j2olywMV18TTkQFMgUqJaxtz8MhgJB7+6X2jadMuSdJ87
+	vS5pJYgwg0690x6ecr7pnkwtMZI15C8ek5j+lifIYBgfp1ud8y7eZJvspqsgD/bNJl7VeccYPel
+	ecr31O99simUQWp1RgVhx/TF/Ontf+kw6wd5kCCOeSOsUwl6Fq0pphbXE2XO5/+toh0zkYDj2tT
+	1RB2c19v1+FtEQuYzlKMGTgRhwzc/wIrXdIBKT/m1KZdeo6DSD2BRBAazJx/4TxbmmqYmlSulZ9
+	RlqOacbS7saSZzrbAYAgK6B3oXdDvYm94w54RELDbHbid2mYxzAbKrA42BlMQoJ6/R0KQysG5EF
+	UDTWqcTM=
+X-Received: by 2002:a05:6808:2f13:b0:495:d7ec:b6be with SMTP id
+ 5614622812f47-4b210ca8dc6mr1833103b6e.18.1786509593853; Tue, 11 Aug 2026
+ 21:39:53 -0700 (PDT)
 MIME-Version: 1.0
-From: Greentwip <greentwip@gmail.com>
-Date: Tue, 11 Aug 2026 19:15:21 -0600
-X-Gm-Features: AUfX_mxsjGGi0_exYaJxn3FeahrgoSZOfB-laC4bK3I_QCB_GrkM_HaQ_yJVhII
-Message-ID: <CAGswFt6yJ+u2Wr8DprcS1Fd5-LkwgJDnOUKC84hNmsCogCAKDw@mail.gmail.com>
-Subject: Samsung, Xperia, Oppo and related MediaTek 6592 drivers
-To: linux-mediatek@lists.infradead.org
+References: <20260811122011.3539250-1-wenst@chromium.org> <20260811122011.3539250-2-wenst@chromium.org>
+ <99ad23ba-f8f2-404b-960e-1c22a20c9ac4@sirena.org.uk>
+In-Reply-To: <99ad23ba-f8f2-404b-960e-1c22a20c9ac4@sirena.org.uk>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 12 Aug 2026 12:39:42 +0800
+X-Gm-Features: AUfX_myPgwTrMoDWlXxd7K4JTdOxXQP71DAA9qzbfq1hbTylwiYJcqKiFEh4if4
+Message-ID: <CAGXv+5EeEQM6O8Vb8e8fGjRzMe1icmz=cPm3GoKLxvEO=weVcA@mail.gmail.com>
+Subject: Re: [PATCH v4 1/9] regulator: core: Add "enable and wait" functions
+To: Mark Brown <broonie@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>, Jiri Kosina <jikos@kernel.org>, 
+	Andi Shyti <andi.shyti@kernel.org>, linux-mediatek@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	chrome-platform@lists.linux.dev, linux-input@vger.kernel.org, 
+	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260811_181535_269486_FBC7E6F1 
-X-CRM114-Status: UNSURE (   6.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260811_213955_107603_A85CA383 
+X-CRM114-Status: GOOD (  19.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,27 +122,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Tue, Aug 11, 2026 at 8:43=E2=80=AFPM Mark Brown <broonie@kernel.org> wro=
+te:
+>
+> On Tue, Aug 11, 2026 at 08:20:01PM +0800, Chen-Yu Tsai wrote:
+> > In device power sequencing and initialization use cases, it is common
+> > for the driver to enable the regulator and then wait for a certain
+> > period of time to pass before continuing.
+>
+> Please don't bury core changes for subsystems in the middle of random
+> other serieses, this is the first time I've seen this.  :(
 
-We just wrote the first drivers for those devices.
+Sorry, that is entirely my fault. I was using an old v1 recipient list
+on the previous two versions and that list didn't include you.
 
-They were extremely complicated to write, MediaTek gave support and
-documentation, and we're mostly ready to submit patches, caveats is
-that Google might not be happy with it, asides from the fact that they
-were mad we open sourced our own work.
+> > One case in particular is not optimized yet: a regulator left on either
+> > by hardware reset default or by the bootloader, but does not have the
+> > "regulator-boot-on" property set. As the enable timestamp only gets
+> > updated when enabled by a consumer or by the core, the first enablement
+> > always needs to wait.
+>
+> Just take a timestamp during registration if the regulator is enabled,
+> we check if it's enabled anyway so we may as well take that as the last
+> time the enable happened.
 
-Lastly, let's finish the integration, we have an affordable gaming
-console that is also a PC station with Debian and our gui frontend, I
-can't fight the Sun as it seems, and all the scolding Torvalds has
-done while I have been working at Intel, and when working at Microsoft
-has been for a good reason, so I apologise for not following his
-advice. It's illogical to follow a route that won't benefit everyone,
-that is not supported, and that is not community available.
+Yeah, I just haven't figured out where exactly in regulator_register() to
+put it. I think it should be after the supplies are resolved, so maybe
+I could do this in the "final setup" part in regulator_resolve_supply()?
 
-I hope you have an incredible week.
 
-Best regards.
-
-- Victor
-Cybertwip
+Thanks
+ChenYu
 
