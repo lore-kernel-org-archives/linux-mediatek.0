@@ -4,68 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54607C5B56A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2026 18:02:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6EEAC5CFEB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2026 18:16:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uz27fRQbmLZ3xcxLxL3E+lR1tIUbt6V3Gu1RoS5Srs4=; b=RpqIDyB5TiuHxOYSzdJb74z6mL
-	DptqAoU7tgOWl4c0lCyZT6WRwRybxbfau0KpF9/tOspbyMxXFPwb7dm+9bY0qxXt3VK5vPsm1D3lU
-	5hvdsAREdQAIYhyGx8TZukWB0v4hJSwjTElYYIos3y1P5PZaD/OBezGDBDvx6+YTLo+LqAA7UtbvO
-	wE4pHrUiyjiHwNGogIkmYvDiC0bGUkKnH57z7DOYg0MoX5BGeAlOROU7PEgrxZi76OKrdyQ7LRnit
-	RJKFtAmpP3KB8kbV96USndxjrFgrj5taKgeixPRQFzvbNIqY9F8fgYcqwei0JgyPztERVBelxdXa8
-	GyfJL3KA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PgwvOoLAHdeH5x1LPpK/Ic794djJ4NRcQySFzYPO0Xs=; b=Dy7gx5/Oz8Xn5rRI7ZDEhHCgXR
+	dau8UFIo88gSjG9YKj71GCErrSlV3rbVU2VbI0fe3bLqcoglhCuHp06A9eLRavY5j6YqDpCYx0b6K
+	FtWRIji0Il9DF8J4gCwmp8lAGoVjqLwEZrzjgIEPqaiD3gim1LOn0o8cemqB0xFf/KTryAmyi6B/n
+	8GdwpEBp1jJOiGcf6rJ2CW7FAL6mI6GWAsPJEK/yu44UF971iTHjQAOwg/P+FYZ3AtIA0THQevlFQ
+	1D7DxoW9eqExi7reSdpN915VMPqOU643i0qFz5agrBXO+6mM4KMZL7I/I8CX7mSiWjemAx4xKuHv0
+	hpzaHPxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuDHd-0000000Gk25-2vWo;
-	Wed, 12 Aug 2026 18:02:33 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wuDUd-0000000Gm2S-3RBS;
+	Wed, 12 Aug 2026 18:15:59 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuDHc-0000000Gk1b-0M7t;
-	Wed, 12 Aug 2026 18:02:32 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6448840278;
-	Wed, 12 Aug 2026 18:02:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 666F81F000E9;
-	Wed, 12 Aug 2026 18:02:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786557751;
-	bh=uz27fRQbmLZ3xcxLxL3E+lR1tIUbt6V3Gu1RoS5Srs4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=ocomHOSxOmZSJCeI5nxJuoqhAhytsq3r9cJjlIsVsHbDvLUe+DB7jbdTJa7d88sjd
-	 m4pvknxfMPyLosyg+6KdokWt/qmg+e4yVNmU9JE+S5ZpfW1YlU7CxmQaUE8zYU1bRW
-	 WWRqVUHK3yBJndI+PzfNMb4p8mvK5RCzmBxLV1t4Fdnf+pYellKIpxLnh1ZqbAzbIJ
-	 5Guz1PvzSLP1H1+0amt58f6bMdcctlNxbgECiShUKMNo4TURA717QpgGtiZxojSBuc
-	 0P9IqUCKO9oqritMgalAXEJDzVFRdSQu9p2ec08lrcfBMhi0TJJT07ILInpp1ssJW5
-	 N7H160o46ZxxQ==
-Date: Wed, 12 Aug 2026 19:02:25 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Jiri Kosina <jikos@kernel.org>, Andi Shyti <andi.shyti@kernel.org>,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	chrome-platform@lists.linux.dev, linux-input@vger.kernel.org,
-	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 1/9] regulator: core: Add "enable and wait" functions
-Message-ID: <93fe2e3e-7a2a-4aa3-ad27-9e99c602c495@sirena.org.uk>
-References: <20260811122011.3539250-1-wenst@chromium.org>
- <20260811122011.3539250-2-wenst@chromium.org>
- <99ad23ba-f8f2-404b-960e-1c22a20c9ac4@sirena.org.uk>
- <CAGXv+5EeEQM6O8Vb8e8fGjRzMe1icmz=cPm3GoKLxvEO=weVcA@mail.gmail.com>
+	id 1wuDUb-0000000Gm1R-1YQL
+	for linux-mediatek@lists.infradead.org;
+	Wed, 12 Aug 2026 18:15:58 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-c2020421077so222863866b.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Aug 2026 11:15:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1786558555; cv=none;
+        d=google.com; s=arc-20260327;
+        b=V0OkBPuyMv0rF2ryL85m8NinGPAkLSJZ6k9ZOelsIN6NjySOrlsYWu9paYS4HASQBb
+         bLNUSuspeKX5AD3fMADabR0zYPkGEj0L8vp4rJVJ0h7/lJUWoEF7Osqlkg7woeQ20L4V
+         Yx0x/kAJkjhcrGxvcq5OD8flTor7hqSjfXOW21ed/TIOW8mx+VXQvaQp8EyXzztop17h
+         fCUHJTQ7DABKGMf9emFNbZrrbhfgBPqj94+RUapBcaDwphkG7pNm5WiKKa75NFSP5S6Y
+         jxhJROYtbG7Gao/tO4kfCQ+56is0mEFujTAYi5EK7nYy0Y9n91PaKG8rA03WBb5hHQcp
+         LNlQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=PgwvOoLAHdeH5x1LPpK/Ic794djJ4NRcQySFzYPO0Xs=;
+        fh=YsvXsmx9lNbftHE7m80Gq5XnPBFe3ODWT1AM/83FnTo=;
+        b=PlrosCStmjVdQhi7zKmPZsET0ZwXm59IpYS6jRKq9DaVxVrxHT+lUqKN0JC5ABH5JL
+         TvPMdjqLWWMyVL8uoiYGqkA44TMBnHmX1VJVPJtMiWHtk7DxmVNJkhY/Zl0TqkF/QkZi
+         Cem5AP8VmF7mySf1VdIhbK+j/jtVlu/2170VJJEC8hZR5XASF89Sm4+wq8wW4H/FGMD9
+         mbkQqD/hlup02kpIPD3dQRI3F9APbcqT8/+DdOKMotWkznKAMz16w06CAVlw8Z04E/9/
+         7X+Z5hC/kGvTagHVicCEZdiLHAyEqnJh5A8fByKltEUepAco+V/zCg7GTyFxTMgSn9iJ
+         k3og==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1786558555; x=1787163355; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=PgwvOoLAHdeH5x1LPpK/Ic794djJ4NRcQySFzYPO0Xs=;
+        b=NnUnDbAYTQbOwj/fxcFXA9n2iavnR2lp5BkZkAi8ybEwdmAlrLpefxCKDZTGO7RdRQ
+         yse/7WtV9ZxNI31ACFsnfcFjvsNPy4Ztj5uvq1SwtI/Fgnz+Z0TAmNJYrnwsgXjFm7Zt
+         ZpWWZxeLETdb5NdxANerTHuCGNJ2rEKCPLOMkQkXnvnZZxNFO/AXacAwNTaKkIPPooW2
+         sAkW0rc00GPgwEvCAgPhg8r6ap0vfTC6j+kpJVJgwZsU8yXqK4rEZ+Ulg0ZX42uZOnMI
+         kT0OGEBe14bHSVvGaGu4lhQyNAK6y32/qCoTCSOCIl6WcPmXP2eiXNfQZ5h435PwOyLB
+         Bayw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1786558555; x=1787163355;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=PgwvOoLAHdeH5x1LPpK/Ic794djJ4NRcQySFzYPO0Xs=;
+        b=aqECaFDCYOte2thtalwjzndsmp3OZyT2LcMLX/ESYBm6H6ayXveRT6ktV6kbI1JW1+
+         Z2geFKH9Sp8bd7z3LfMOgD4l0bXhV4957eUTUy7AwFwe8elWB1sj7RW/u1yUT0w3lhbJ
+         jtRSMQfUj63YPmewt6mxVF2ResWbo0QUObZLO9Yey/j720DpwPIGqGVJEpulC7Ab+VsS
+         XNf1Cx6ADwfnKk08Lp4q6h74cii3/dudl6OMkKeoILHNW1Hm8pukbufhZtyZBjBLcG5N
+         xSiWWgbEU68wgPlvpxPeFDXcrx4Eu9BVdxV6lx2zBTpx2aruPrZNE4ATIpwHWlFNd8sb
+         HMPw==
+X-Forwarded-Encrypted: i=1; AHgh+RqgOpK2Yh96MmMlq0G0MXWPxo6vsNPtYpiCTiEyy7z5xz9WcoY5nqHw9gvK8gssZzkBxheROon3D42RsBMazw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxrc9gY65d/QFI8Yy6KLDs0yiFHXEWLlKeqq5XaNJFepLbeq0FL
+	HzTHn+JNfnD3MYxgxplDNWnyhpWJQdqeM7jMbdOZFeQRZfkYrwi8ciSJ1J+lffl4X/3bUVTELJV
+	n9wQDdnyMvZHoCzuQAlzwP89bO1bJWh1P0A==
+X-Gm-Gg: AR+sD100eGCylVojiSbXHvSrkb/gXUZwuzIFNK/tqq+KxpV5GwUfUi5KLzFxsH0R0wm
+	tdBM/ZQ2Y+fJhb/2wI2rbVXq7HjQFrfJUSUICAe1ywjoZBvQ+Owar46hJcXTNvkFOhkTqVwjcu3
+	q0atROfoEywNwQeIJepGS5dP3Ptf8fZmvEYS99xr3cFZbUBWdq8WwFpG5yCyF3gqKTTZaro6cMk
+	tA2jwPds7qhhfH6UEZ6J+qJM3PNhG5KCJPgD4rRxWAk0/zBwE4wKoV12XjQMW2uPGQWLb2aGjCC
+	soARJ4KzPQPpMl/l/IWftroSduVOx7kXJhHAL3dqTSGTpVkzajTvljrKMfTvJaaMz8jBLb0mUrd
+	6NWk6vwYeMCCsusp8IGNNKCfSLYOwqYn+58VBvCI+jF73VMXokZWImmGwaH2u+frFhriXBsq7nq
+	YHi9huCJkn0r7qT8qN9ZR+gcN+T0JT30EUnZgu0yYVOg++xgzFZ8j0PMM=
+X-Received: by 2002:a17:907:c0d:b0:c20:899:b8bc with SMTP id
+ a640c23a62f3a-c2108ee3cf0mr7867166b.6.1786558554870; Wed, 12 Aug 2026
+ 11:15:54 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="3qPAsn7wmCMfZq5C"
-Content-Disposition: inline
-In-Reply-To: <CAGXv+5EeEQM6O8Vb8e8fGjRzMe1icmz=cPm3GoKLxvEO=weVcA@mail.gmail.com>
-X-Cookie: !07/11 PDP a ni deppart m'I  !pleH
+References: <20260304041400.7236-1-rosenp@gmail.com> <djjg6jwpuu6l5wcc7zbxfi7j4n5hircmhivxohdtgufzrp6rlb@l6eyfdyfrxix>
+In-Reply-To: <djjg6jwpuu6l5wcc7zbxfi7j4n5hircmhivxohdtgufzrp6rlb@l6eyfdyfrxix>
+From: Rosen Penev <rosenp@gmail.com>
+Date: Wed, 12 Aug 2026 11:15:43 -0700
+X-Gm-Features: AUfX_mxqbIvZ73kcSiSnSMXY77gQTI6q5M4UWPSGxgp8t1CwI1GTwLlXmGpI4Co
+Message-ID: <CAKxU2N_VYNgYKhS11Frzio4fbg_ZnDsvCfEypvxSiw3-JV0_QQ@mail.gmail.com>
+Subject: Re: [PATCH] phy: mediatek: tphy: simplify main allocation
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: linux-phy@lists.infradead.org, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+	Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Kees Cook <kees@kernel.org>, 
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>, 
+	"moderated list:ARM/Mediatek USB3 PHY DRIVER" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek USB3 PHY DRIVER" <linux-mediatek@lists.infradead.org>, 
+	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
+	"open list:KERNEL HARDENING (not covered by other areas):Keyword:b__counted_by(_le|_be)?b" <linux-hardening@vger.kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260812_111557_424157_6EE1991F 
+X-CRM114-Status: GOOD (  12.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,42 +126,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---3qPAsn7wmCMfZq5C
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Aug 12, 2026 at 12:39:42PM +0800, Chen-Yu Tsai wrote:
-> On Tue, Aug 11, 2026 at 8:43=E2=80=AFPM Mark Brown <broonie@kernel.org> w=
-rote:
-
-> > Just take a timestamp during registration if the regulator is enabled,
-> > we check if it's enabled anyway so we may as well take that as the last
-> > time the enable happened.
-
-> Yeah, I just haven't figured out where exactly in regulator_register() to
-> put it. I think it should be after the supplies are resolved, so maybe
-> I could do this in the "final setup" part in regulator_resolve_supply()?
-
-Makes sense I think.  The other place would be while doing the
-constraints but they're optional so might not happen.  Perhaps make the
-one at the end of registration skip if there's a timestamp already?
-
---3qPAsn7wmCMfZq5C
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmp8tTEACgkQJNaLcl1U
-h9B2FAf8D1M22Grx18J9/WwNFIOC9lobobrOEs3T/vwO7/gO1L2DkkIIJ+O6giFE
-pVSJK0jvB/6bFVrLlTTFUvMLxE+WxD/G/kpriivyU1quihyIkp1hVbsCmVQlKcTx
-4gWcO383CQneVfUhZTcFpXFBT8l6pzLP4nT/6El14xC0nf6L2nX1me4vgBSlNhsX
-1vVrWMkUDh7nORWr3MBRcbVICD/95yzWD6uUq64zT2yX8QBFACOGWzt4w5dooGFO
-grAcJyH7t0K0WlFBSogUFX05QKN0eLiAuMEfCuVkpXf5phImv/MiaPaIlEZUxMC+
-lPVvKyLFNzRuafb6rYrFUuevW9Ibaw==
-=gO+2
------END PGP SIGNATURE-----
-
---3qPAsn7wmCMfZq5C--
+On Wed, Aug 12, 2026 at 6:32=E2=80=AFAM Manivannan Sadhasivam <mani@kernel.=
+org> wrote:
+>
+> On Tue, Mar 03, 2026 at 08:14:00PM -0800, Rosen Penev wrote:
+> > Use a flexible array member to replace kzalloc + kcalloc with a single
+> > kzalloc.
+> >
+> > Shuffled some code around as __counted_by requires the counting variabl=
+e
+> > to be assigned first.
+> >
+> > Removed NULL check from of_get_match_data as it's never NULL per the
+> > device table.
+> >
+>
+> Please do not combine multiple fixes in a single patch. Also, the NULL ch=
+eck can
+> be kept for the case of sanity as it wouldn't hurt.
+hmm? There are no fixes here. Just a FAM conversion.
+>
+> - Mani
+>
+> --
+> =E0=AE=AE=E0=AE=A3=E0=AE=BF=E0=AE=B5=E0=AE=A3=E0=AF=8D=E0=AE=A3=E0=AE=A9=
+=E0=AF=8D =E0=AE=9A=E0=AE=A4=E0=AE=BE=E0=AE=9A=E0=AE=BF=E0=AE=B5=E0=AE=AE=
+=E0=AF=8D
 
