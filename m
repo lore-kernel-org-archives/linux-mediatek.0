@@ -4,71 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C50C8C5B56A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2026 16:30:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54607C5B56A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Aug 2026 18:02:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6UWAE3YyH4XKWS1i6AZYOVl03Cz627Sq6U1AvRQjmsE=; b=uyYlfBSkVfX+TOfAE+W+2nwtQl
-	lImRFLm3fZ/8TChxzQEvwgBPVYqJsoygw3A1FWxmcZNGPhu1rF8ZNVD5x0EBy0c7TImjx1mpwrWxw
-	4yRX2v0gneclvqvpb/17Skqsx0r5xk3vgjb5dmU9w107aUv38E22PBp5NtUs+tcMHsUsJqM4ELXzR
-	546QoDvSw7nJNRexDFnA0iRSEgffgkFNjwSlLNk9IXp97bXsEfLm0aF+KVGcOm8wCoHtzag0AAs8P
-	ZezFcDq15MkyQ9Nv1VnrWzlsVf5uqIvKqlnUnms0PiClCztxqZE0oFZ0avPvCvBeHmtOWf37bPKI2
-	uKBnUqrg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uz27fRQbmLZ3xcxLxL3E+lR1tIUbt6V3Gu1RoS5Srs4=; b=RpqIDyB5TiuHxOYSzdJb74z6mL
+	DptqAoU7tgOWl4c0lCyZT6WRwRybxbfau0KpF9/tOspbyMxXFPwb7dm+9bY0qxXt3VK5vPsm1D3lU
+	5hvdsAREdQAIYhyGx8TZukWB0v4hJSwjTElYYIos3y1P5PZaD/OBezGDBDvx6+YTLo+LqAA7UtbvO
+	wE4pHrUiyjiHwNGogIkmYvDiC0bGUkKnH57z7DOYg0MoX5BGeAlOROU7PEgrxZi76OKrdyQ7LRnit
+	RJKFtAmpP3KB8kbV96USndxjrFgrj5taKgeixPRQFzvbNIqY9F8fgYcqwei0JgyPztERVBelxdXa8
+	GyfJL3KA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuBq6-0000000GaV3-17TO;
-	Wed, 12 Aug 2026 16:30:02 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wuDHd-0000000Gk25-2vWo;
+	Wed, 12 Aug 2026 18:02:33 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuBq5-0000000GaTt-08q0;
-	Wed, 12 Aug 2026 16:30:01 +0000
+	id 1wuDHc-0000000Gk1b-0M7t;
+	Wed, 12 Aug 2026 18:02:32 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8C8154087A;
-	Wed, 12 Aug 2026 16:29:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 872DC1F000E9;
-	Wed, 12 Aug 2026 16:29:57 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6448840278;
+	Wed, 12 Aug 2026 18:02:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 666F81F000E9;
+	Wed, 12 Aug 2026 18:02:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786552199;
-	bh=6UWAE3YyH4XKWS1i6AZYOVl03Cz627Sq6U1AvRQjmsE=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=WNhQdhHTGn/2BWrRfPpoU56S8XSJbzUreg0GvIRj2hNGf+zrjdFJIt1CeFWvXq/C6
-	 vStJ4AtGZJgfjzDi2nDHpuK30NYEbROkGQZFm2aKy9z9fnfzbu8b+WhT3DYRSLg7zt
-	 Ip5b1S12GLpE5z5mGSvshS6GdagcT1jlmfoFYncuqcYPd3u9+Bz3U0gQg2eoEiirI2
-	 5/jd2nbK6AsylTrsE4hoAfLRsqMhd9AJcF5+Itj8eTOVVFgv8gEiDNOTVYo8BL2bYZ
-	 UCCL0zoKTttdVEkYMbwquf+7e/0hJJA0eufA+yqu+khfmh1OhdUnu3WSrbtgkXmuRy
-	 h5w86XCDPwisg==
+	s=k20260515; t=1786557751;
+	bh=uz27fRQbmLZ3xcxLxL3E+lR1tIUbt6V3Gu1RoS5Srs4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=ocomHOSxOmZSJCeI5nxJuoqhAhytsq3r9cJjlIsVsHbDvLUe+DB7jbdTJa7d88sjd
+	 m4pvknxfMPyLosyg+6KdokWt/qmg+e4yVNmU9JE+S5ZpfW1YlU7CxmQaUE8zYU1bRW
+	 WWRqVUHK3yBJndI+PzfNMb4p8mvK5RCzmBxLV1t4Fdnf+pYellKIpxLnh1ZqbAzbIJ
+	 5Guz1PvzSLP1H1+0amt58f6bMdcctlNxbgECiShUKMNo4TURA717QpgGtiZxojSBuc
+	 0P9IqUCKO9oqritMgalAXEJDzVFRdSQu9p2ec08lrcfBMhi0TJJT07ILInpp1ssJW5
+	 N7H160o46ZxxQ==
+Date: Wed, 12 Aug 2026 19:02:25 +0100
 From: Mark Brown <broonie@kernel.org>
-To: linux-sound@vger.kernel.org, Rosen Penev <rosenp@gmail.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20260811042424.66882-1-rosenp@gmail.com>
-References: <20260811042424.66882-1-rosenp@gmail.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8365: use
- devm_platform_ioremap_resource helpers
-Message-Id: <178655027936.8393.11056539340382876563.b4-ty@b4>
-Date: Wed, 12 Aug 2026 16:57:59 +0100
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Jiri Kosina <jikos@kernel.org>, Andi Shyti <andi.shyti@kernel.org>,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	chrome-platform@lists.linux.dev, linux-input@vger.kernel.org,
+	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4 1/9] regulator: core: Add "enable and wait" functions
+Message-ID: <93fe2e3e-7a2a-4aa3-ad27-9e99c602c495@sirena.org.uk>
+References: <20260811122011.3539250-1-wenst@chromium.org>
+ <20260811122011.3539250-2-wenst@chromium.org>
+ <99ad23ba-f8f2-404b-960e-1c22a20c9ac4@sirena.org.uk>
+ <CAGXv+5EeEQM6O8Vb8e8fGjRzMe1icmz=cPm3GoKLxvEO=weVcA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.17-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1149; i=broonie@kernel.org;
- h=from:subject:message-id; bh=wnZ3dwLi2v71HRTnl19XP230YuzHDG2xlcwtpxnEExM=;
- b=owEBbAGT/pANAwAKASTWi3JdVIfQAcsmYgBqfJ+D9IUcUTa8aN8BdfJR70JuBC1nerzCrNVN6
- XUamXYxiz6JATIEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCanyfgwAKCRAk1otyXVSH
- 0FkqB/jelPTFXsIwlc/UGyL5aieoa3lN30k90fSwHzywnFlnuY210O1mo+m8hKrYtKS4Cc3iieZ
- mHiwU7BOnjCrOk76enRTLa4e0kSpoecdQQMzP9wUdn458s7wVnX/JWyVw3TAbQtMpjIryegKZWw
- VRuL04lh99OyDVuDPEgLOdIqql19Lh+aVgKZJoX99WsWZjKwxjLtFFI9S+EX0dVg2bKE+Rj21Ns
- BPG9k8GQzLv13WONqLDk3k5PSSXAJN8WBSz20LA90G6x3h5nGdGDdXEsrKZCDi/NylmkZoiotnz
- OJMxpq1fAjqdlvb4GaULRDvvppFfdYCrYGtsVgjZpNmuuPE=
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="3qPAsn7wmCMfZq5C"
+Content-Disposition: inline
+In-Reply-To: <CAGXv+5EeEQM6O8Vb8e8fGjRzMe1icmz=cPm3GoKLxvEO=weVcA@mail.gmail.com>
+X-Cookie: !07/11 PDP a ni deppart m'I  !pleH
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,35 +80,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 10 Aug 2026 21:24:24 -0700, Rosen Penev wrote:
-> ASoC: mediatek: mt8365: use devm_platform_ioremap_resource helpers
 
-Applied to
+--3qPAsn7wmCMfZq5C
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.3
+On Wed, Aug 12, 2026 at 12:39:42PM +0800, Chen-Yu Tsai wrote:
+> On Tue, Aug 11, 2026 at 8:43=E2=80=AFPM Mark Brown <broonie@kernel.org> w=
+rote:
 
-Thanks!
+> > Just take a timestamp during registration if the regulator is enabled,
+> > we check if it's enabled anyway so we may as well take that as the last
+> > time the enable happened.
 
-[1/1] ASoC: mediatek: mt8365: use devm_platform_ioremap_resource helpers
-      https://git.kernel.org/broonie/sound/c/3d7fb01b36aa
+> Yeah, I just haven't figured out where exactly in regulator_register() to
+> put it. I think it should be after the supplies are resolved, so maybe
+> I could do this in the "final setup" part in regulator_resolve_supply()?
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+Makes sense I think.  The other place would be while doing the
+constraints but they're optional so might not happen.  Perhaps make the
+one at the end of registration skip if there's a timestamp already?
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+--3qPAsn7wmCMfZq5C
+Content-Type: application/pgp-signature; name="signature.asc"
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+-----BEGIN PGP SIGNATURE-----
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmp8tTEACgkQJNaLcl1U
+h9B2FAf8D1M22Grx18J9/WwNFIOC9lobobrOEs3T/vwO7/gO1L2DkkIIJ+O6giFE
+pVSJK0jvB/6bFVrLlTTFUvMLxE+WxD/G/kpriivyU1quihyIkp1hVbsCmVQlKcTx
+4gWcO383CQneVfUhZTcFpXFBT8l6pzLP4nT/6El14xC0nf6L2nX1me4vgBSlNhsX
+1vVrWMkUDh7nORWr3MBRcbVICD/95yzWD6uUq64zT2yX8QBFACOGWzt4w5dooGFO
+grAcJyH7t0K0WlFBSogUFX05QKN0eLiAuMEfCuVkpXf5phImv/MiaPaIlEZUxMC+
+lPVvKyLFNzRuafb6rYrFUuevW9Ibaw==
+=gO+2
+-----END PGP SIGNATURE-----
 
-Thanks,
-Mark
-
+--3qPAsn7wmCMfZq5C--
 
