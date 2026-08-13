@@ -4,92 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAA03C5B572
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2026 12:38:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FC5FC5CFEB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2026 13:33:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qozE/6Jsz/i/baB0e57vxp0gFaz1rBUfSBvJdVPfpxI=; b=IRBERil5wJV/lfiRgnQtn4oRVx
-	K+FfbSmGNbA3pNMpNyjZdIKfG+A7rj2FvQ1iPjH69dDnZquxM78pE2LqbrUn4BhszLN+Vr2azvJBa
-	lr0exNwZKqVYLbUSnoVDNXPJ59yRfvBIc3QM2RtD5HTLon9j82xnsGDQ71AsttL3NI0fvmdfeuLvw
-	w23ANhVk+vcynkOUFy9IS8gF5+O9QwDZQw2lj84SGybWEA452U7myUnjWflHTgq3fZvW4gIsp2vQF
-	CJWgFi/EMZ8rotW1LnBl29kwGol+PCzySaLBFjGzp0CN9bRyLTVvQbRaTS5QpzLkY4ZC3gOB98qBG
-	nq9Hks7w==;
+	bh=nSLP590tH+YrdMCZ3ykFZ5UctbQuGnKXxbm3iof4jgE=; b=I81I5MPH/bhVgMx9jHGCE5D1Kn
+	NY6JSuhxFvVE9mBIAnTuMf7+C43QM+zpP56IAtkXY2LukWNJUjaS5jkX0GMVKcgARGzCvgI90DIas
+	/qP/HL6Kh9b6dQcXyELUPmusyq9/iMfxGAv5r0EHGPoxBvbXptrQhP5vw0lJgXCuRa3GyYdI5Wl4i
+	u69BLBgi0kkuuMG5WyaWP0AjXIT9PtueeAdKmwZ3/O+/mcD1MH7DbKVT6kIGGDwFosjdqcFUvVI2r
+	yFtBc5qdWoGwkYNxQp9JY/cQoMZjw86AAL1D+O6q/gSacP+Xkp8zYDgUt1BwcgJL5IQpKKU4yJkfo
+	ji33QbvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuUhR-00000000fC6-1QQo;
-	Thu, 13 Aug 2026 12:38:21 +0000
-Received: from mail-wm2-x07.google.com ([2a00:1450:4864:31::7])
+	id 1wuVZC-00000000kbX-3jCx;
+	Thu, 13 Aug 2026 13:33:54 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuUhP-00000000fBa-03WG
-	for linux-mediatek@lists.infradead.org;
-	Thu, 13 Aug 2026 12:38:20 +0000
-Received: by mail-wm2-x07.google.com with SMTP id 5b1f17b1804b1-49557073245so2314835e9.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 13 Aug 2026 05:38:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786624697; x=1787229497; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=qozE/6Jsz/i/baB0e57vxp0gFaz1rBUfSBvJdVPfpxI=;
-        b=AHuMX75aOlQlljHd0x/aCtAyxlGmsJmlAWQuWYHzJqJ1GRBmTwVrL+2ys9FlLog2Kl
-         G8odVbb6yLsYKbcpBk87Ia+mLUvSCGGrJBLfWMZjbUtFFyl6qyqr1SFa1ubecDq4qd6j
-         yaJfekEtzDpCbCVXqUqSQEpa+ICEubAlAnC+1ZXI0w+soW5KVLADtI7CWXTl5LfDsGkv
-         sTgf3Thl8SZO4nBx4BHEMSUyIEouBDk+bkmi46UDnr4toXkhmWzX/XjVC9fxwyG1emAw
-         ImYggz/jckTSYQNSLaw3BQfGOP+GuNkBDi74is2DTGGjb9SULXXao4twN0b8PN295P/Q
-         +Erw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786624697; x=1787229497;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=qozE/6Jsz/i/baB0e57vxp0gFaz1rBUfSBvJdVPfpxI=;
-        b=PHq0nft6g38ETG+RmbhXGFXzQxj96plLTeKHZ+ppVzPgv/R9BjmLK6L+FBQcI/kzOs
-         u+78S7uhBeKhYx2L9tbjTWNk5qi7QCCyCF8J6ayNI7Ta3+u41irc9+iCEO6Ht92qDyxa
-         4zFZ6+4ja35Np+Sut1i67/A8nJOdMgSXzVevrGMUH8NwkbpzJPLlXegTwe421ZFE0VFi
-         hp4X7u6SE97Vm+mLlRf8R4rdHAIy8iIsf5yRVrPXzYaqtx2R+civgCU5QwCQuHFKYKdj
-         x+5DAaOSiBjFlZ8VNVuDZzqALytxoI2rDMSxhy6t+CicfYTY+SOjWTRyzq85exP9LorY
-         T9qw==
-X-Forwarded-Encrypted: i=1; AHgh+RqXDsTjv/cW7jgV4UMbV0Qf4ahr/8JDlFmzI+ntOgDpX+BrDNfwNhhg8BMVq8nGcFd2mV7xX9BGIXJTiLEBWA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxoLKL34spSxkmEBkjY9RxIYicS97h9oaeRS3I2knV5HwS4Yg2B
-	u9jcYfedYJ0BEgnhk8Gt5QIz+RMqMW9niaFfKm3qf8j0xkZA0f42zb7K
-X-Gm-Gg: AR+sD11FUAHuD+kI4a6NZuQuQpEKcMSzpEYv7QggG2tEyO3aPUlVQ2prgT/MubtW+nQ
-	zEVP3x4tDGfJrucq8QSoS6GSBiEBaKfE7IKtx0/iNflNBOotz1TERWgkccmV8QfHj8hNwALSIjs
-	u5+jLW0WN0atkngvkeTWHJh0I5mgYrC7gjqrWCBrTq5BJo2geDoEZGQqZWyWzR+2GEP3wRcauTO
-	8ctk0P8fA6oYIgWHDEK+yFPDjJE+fc2m5UglSGaNrcTBw+88CbQ4dTWIO//RxZfoQ6KM9x4surs
-	nyhjXaIgBUucS9pLS/coYz5WLBb5PWDxDhhjGxOrT6J+ToOtD3injonZ2YpcET/FP4EbPW/oFdv
-	uK+xSFqb47lwWlKAy5rua+eM7eT1slOkYIQIHNBfZczkgx5EWFpq4hGAUy+lhKXWku65Wl6t28E
-	H5gLItqAtAODTXtQ5dbLs/K7NNyfrPhRWBbAc+1G8usdKPvj5j3B/MpSxpHHeAjhVZqNrlV4wD6
-	wHJNKJDljl1SR8pgoyGh/npZkodKVLgMDJlKW3tP7LdamSfeF9hSDPsNBM=
-X-Received: by 2002:a05:600c:1d19:b0:496:c379:b2a1 with SMTP id 5b1f17b1804b1-499821548efmr77322515e9.2.1786624696381;
-        Thu, 13 Aug 2026 05:38:16 -0700 (PDT)
-Received: from fedora.fritz.box (dynamic-adsl-84-220-246-20.clienti.tiscali.it. [84.220.246.20])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49981b585b3sm67349925e9.10.2026.08.13.05.38.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 13 Aug 2026 05:38:15 -0700 (PDT)
-Date: Thu, 13 Aug 2026 14:37:56 +0200
-From: moosager <moosager90@gmail.com>
-To: Devin Wittmayer <lucid_duck@justthetip.ca>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Deren Wu <deren.wu@mediatek.com>
-Subject: Re: [PATCH wireless] wifi: mt76: mt7921: check drv_pmctrl return in
- the PCIe reset path
-Message-ID: <an23_8DALILoGLP6@fedora.fritz.box>
-References: <20260809012309.43657-1-lucid_duck@justthetip.ca>
+	id 1wuVZB-00000000kb9-2pEy;
+	Thu, 13 Aug 2026 13:33:53 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id B863460A72;
+	Thu, 13 Aug 2026 13:33:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5C19A1F000E9;
+	Thu, 13 Aug 2026 13:33:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1786628032;
+	bh=nSLP590tH+YrdMCZ3ykFZ5UctbQuGnKXxbm3iof4jgE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=flKOaZplI1eVL+EvOd2ocj5LMKADV1j0JnLCz8Gat5bVdSlkgB2q9ssXUJZizXrXz
+	 rrfDBMm/Fs22loTiue3RGUKHjotJtgtXH2gWJgCfluyEnTrLmCtkuk1wCrwNjUp+gk
+	 3Oo3OSWQxgxbSVdQuCS+49XHH4bYQ957Wn8+W1KSUHf7kMTUsi4vDJE1n7CweiUiEa
+	 Rp+8PtYDCKzarwMz2tka4v1f2zDh5meSrs/J5j7+vGlMWMAykiPvlAhKo29SIjNFe9
+	 JwDrKtBw2e0kp5fjKvferDsaEyNU6/jjU01+EnjABnR0HyCVuT3Ywx23imI42sr+Mu
+	 c+vfOxSy7wR2g==
+Date: Thu, 13 Aug 2026 14:33:48 +0100
+From: Simon Horman <horms@kernel.org>
+To: Vitaliy Sochnev <sochnev.v.74@gmail.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	stable@vger.kernel.org,
+	"moderated list:AIROHA ETHERNET DRIVER" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:AIROHA ETHERNET DRIVER" <linux-mediatek@lists.infradead.org>,
+	"open list:AIROHA ETHERNET DRIVER" <netdev@vger.kernel.org>,
+	open list <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH net v2] net: airoha: npu: load the firmware without the
+ sysfs fallback
+Message-ID: <20260813133348.GB265046@horms.kernel.org>
+References: <20260811181717.19339-1-sochnev.v.74@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260809012309.43657-1-lucid_duck@justthetip.ca>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260813_053819_057011_E33A6002 
-X-CRM114-Status: UNSURE (   8.27  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20260811181717.19339-1-sochnev.v.74@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,20 +76,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+On Tue, Aug 11, 2026 at 07:16:59PM +0100, Vitaliy Sochnev wrote:
+> airoha_npu_load_firmware() maps a missing firmware file to -EPROBE_DEFER
+> so that the NPU can be brought up once the rootfs carrying /lib/firmware
+> has been mounted. That mapping holds only as long as request_firmware()
+> reports -ENOENT.
+> 
+> It does not when the sysfs fallback is in play. With
+> CONFIG_FW_LOADER_USER_HELPER_FALLBACK set, or with the fallback armed at
+> runtime through /proc/sys/kernel/firmware_config/force_sysfs_fallback,
+> request_firmware() hands the request to a userspace helper, waits out the
+> full loading_timeout and returns -ETIMEDOUT. The -ENOENT test no longer
+> matches, dev_err_probe() turns the result into a hard failure, and the
+> NPU is left unbound after stalling the boot for 60 seconds:
+> 
+>   airoha-npu 1e900000.npu: Direct firmware load for airoha/en7581_npu_rv32.bin failed with error -2
+>   airoha-npu 1e900000.npu: Falling back to sysfs fallback for: airoha/en7581_npu_rv32.bin
+>   airoha-npu 1e900000.npu: error -ETIMEDOUT: failed to run npu firmware
+>   airoha-npu 1e900000.npu: probe with driver airoha-npu failed with error -110
+> 
+> Clearing FW_LOADER_USER_HELPER in the configuration is not a dependable
+> guard against this, because unrelated drivers select it. On the affected
+> build the symbol was turned back on by LEDS_LP55XX_COMMON, even though
+> the platform had explicitly disabled it.
+> 
+> Use request_firmware_direct() instead. It sets FW_OPT_NOFALLBACK_SYSFS,
+> so a missing file is reported as -ENOENT whatever the firmware loader is
+> configured to do, and the deferred probe path works as intended.
+> 
+> Two consequences are worth stating plainly.
+> 
+> The helper is not merely bypassed for the boot-before-rootfs case.
+> fw_run_sysfs_fallback() returns early on FW_OPT_NOFALLBACK_SYSFS, so this
+> driver's firmware requests can no longer be served by a usermode helper
+> at all, including on a system where that is the only delivery route;
+> having no second firmware source, the driver would defer forever there.
+> That is a deliberate trade-off: the -ENOENT to -EPROBE_DEFER mapping was
+> written to wait for a filesystem, and the sysfs helper interface has had
+> no in-tree consumer since udev dropped firmware loading.
+> 
+> request_firmware_direct() also sets FW_OPT_NO_WARN, which drops the only
+> message naming the file that failed to load. Report it from the driver
+> instead, so the name lands in the deferred probe reason and shows up in
+> the "deferred probe pending" line emitted at
+> driver_deferred_probe_timeout. The generic report in airoha_npu_probe()
+> goes away with it, since it would otherwise overwrite that reason with a
+> message naming nothing; of the paths it covered, devm_ioremap_resource()
+> reports itself and the malformed firmware-name property now does too.
+> 
+> Measured on a Nokia XG-040G-MD with FW_LOADER_USER_HELPER=y and
+> FW_LOADER_USER_HELPER_FALLBACK=y forced on, two images from the same
+> tree differing only by this patch:
+> 
+>   without:  fallback at 2.477s -> -ETIMEDOUT at 64.555s -> probe failed
+>             with -110, preinit at 69.6s, NPU unbound
+>   with:     no fallback, NPU fw version 1456.62 at 3.665s, preinit at
+>             7.6s
+> 
+> Fixes: 23290c7bc190 ("net: airoha: Introduce Airoha NPU support")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Vitaliy Sochnev <sochnev.v.74@gmail.com>
+> ---
+> v2:
+>  - Keep the file name in the diagnostics. request_firmware_direct() also
+>    sets FW_OPT_NO_WARN, which dropped the only message naming the file;
+>    report it from airoha_npu_load_firmware() through dev_err_probe() so
+>    the name lands in the deferred probe reason. Drop the generic report
+>    in airoha_npu_probe(), which would overwrite that reason, and give
+>    the malformed firmware-name path a message of its own.
+>  - Say in the changelog that the usermode helper path is disabled for
+>    this driver's requests rather than merely bypassed, and why that
+>    trade-off is acceptable.
+>  - Both points raised in review of v1:
+>    https://lore.kernel.org/netdev/20260807024125.434055-1-sochnev.v.74@gmail.com/
 
-I can confirm the patch works as advertised:
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-> With the return checked, 26 ownership failures produced no firmware
-> download, and mt7921_mac_reset_work() got as far as logging "chip reset
-> failed", which it never did otherwise.
-
-I would like to reiterate, though, that a more complete fix should be pursued by 
-anyone who has more knowledge of the driver or firmware. Previously, a marginal 
-improvement like this one was applied, but the issue persists to this day 
-(see [1]).
-
-Thanks in advance.
-
-[1] https://patchwork.kernel.org/project/linux-wireless/patch/727eb5ffd3c7c805245e512da150ecf0a7154020.1659452909.git.deren.wu@mediatek.com/
 
