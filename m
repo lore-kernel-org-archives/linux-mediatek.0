@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3185C5B572
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2026 05:11:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC1A8C5B572
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Aug 2026 05:13:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hbgXz5++RlW5L6cDaDP8mafunaN5CoUMDCWXW8oXEmU=; b=b9EAhW2ivWBlMg00VqI2Kj1ykr
-	0XbomCXyr+I33EELaKR5hrihvTwUBMdrp8SWvJdoKg+tuqxuOXtBkI3I1wmRbEpa0aToCmLoXPcJ/
-	l1V5ITR0FPPqiMWYGE7cmyRM7DLUPKSCUa4KYAkIdc0Y+tYKV1yDW/QnUvTZvUJ1J+5WYzhgw3DJU
-	xQMz35SGUFGY0rG+8lObAhnUXq6J/bLMwrnexeTKUN+msoXHez5OehKY3eHWJy+Cq9hmVTNKa+xha
-	naVW5yphYo6d0+D4SdILzfID1MLqAtU0Y2/1e7RJRilN7FYZoHgUh+lBo1e6bvzy4x88UdVCBUGEz
-	d9m/jREA==;
+	bh=DD47gfXQGF6nwCSKbyRAaZ7LXoHHtibmaDJ2ODdpViY=; b=IAE5PB2Kd0PP2tO/79ew4G3KfJ
+	jFig58xYnsCcXXGiP9uowRTEKJ75Ihc3EDuDdQ+qO2M3TTfWELnNcgQgzUDlE1cNbj0ipoHFYhDJF
+	HWJttL11Uiu0ZyG3xOLhWLLpYud1ywd0r4WmYLfmsDaHbEajWonf5a8oD6otIRsIRdNgYZ1M2IYYP
+	Cdd8OJr/nToQSbjxyij4UI0qmtuK5koguEkNCEjuAJDb8gZTfO39Pmsq0Iz8XNN3yvXQYhkDYSFoe
+	wiI5+j0ZdojnYmEsn2kWsVsa31xUtPT+Ripl/oIFpIpKJyRwhVzopgkd8nMgKzoq8bUkMfxxt199d
+	lYgI77xA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuNii-0000000HOJe-0Gn9;
-	Thu, 13 Aug 2026 05:11:12 +0000
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+	id 1wuNkV-0000000HOZ0-1eAH;
+	Thu, 13 Aug 2026 05:13:03 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuNig-0000000HOIv-0MYi
+	id 1wuNkT-0000000HOYF-3GSj
 	for linux-mediatek@lists.infradead.org;
-	Thu, 13 Aug 2026 05:11:11 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id 98e67ed59e1d1-3811f512167so2256544a91.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 12 Aug 2026 22:11:09 -0700 (PDT)
+	Thu, 13 Aug 2026 05:13:02 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-38d489b6b71so2141819a91.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Aug 2026 22:13:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786597868; x=1787202668; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1786597981; x=1787202781; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:content-type:mime-version
          :references:message-id:subject:cc:to:from:date:sender:from:to:cc
          :subject:date:message-id:reply-to:content-type;
-        bh=hbgXz5++RlW5L6cDaDP8mafunaN5CoUMDCWXW8oXEmU=;
-        b=sgE79slImng6xGxsbKroe3QU7ipulzSBN2dlpB7LiUuxAHHNGrjdgTpSWHk2l94Lki
-         y6AgadfncWtcOG1fKEfYs2kv+plMl5CXo4RQ068xXFeuzVwDnCu6zaRzwymheFcvBpz4
-         bi+E9UDt1tsPlVnAY4k91kP8G7xOytyq9M5nTgz4Og+6wgRn0EfqkILIwzesu25uL4P3
-         SYAjAq7ek/KHNFWohd6mSrypyIIY9E8hr0ikY8gTyAzbjzMuy3NJZcYwuax5umqPcsnn
-         KvgIE0pGaQHrf4GsFPfExEk7MJ0m80jEMmXxBK2uX16ftIqu6dY6Rc5CdJWDbQxSiRO2
-         gFuA==
+        bh=DD47gfXQGF6nwCSKbyRAaZ7LXoHHtibmaDJ2ODdpViY=;
+        b=B6tOLx9qnKXufmYkAhdlj4+TJadFPALMHBYGzadumbY+ByPVLTrBfrazmLiR+NwoMv
+         dj9PmUXHAg7leXZcRtf1VSgAZ96Nl0URK+j6d391jOiFx7cjRb3EQulJ9k/YopZfEUk0
+         pv0zUGIOf2EUseUg/70OFBR6jCvKInf/wjcoWCfmxKYTmIVueC/GgEjAN/kwUxoWrlX4
+         i5bwU7Q9x+vjvS6yWQgVtbfPW/4SegAF6HDvlL32OltllMgbLeRUTpaET7zrFyH9HdMu
+         Ab6aE8ed+9HIWznyewik0P4tHjZGiEAA+K0aAu1tO9Oxco5YB/VZx7lq4e6j+h0/Mf7v
+         aaPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786597868; x=1787202668;
+        d=1e100.net; s=20251104; t=1786597981; x=1787202781;
         h=in-reply-to:content-disposition:content-type:mime-version
          :references:message-id:subject:cc:to:from:date:sender:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=hbgXz5++RlW5L6cDaDP8mafunaN5CoUMDCWXW8oXEmU=;
-        b=nZFB7ysYjfg7jPu34Iv1e70wUn+Ko5+DIyQKyNmt4I/PJMRosO3UYRqKa5KXMIq31M
-         Dxfpd7AqtWoqCLUn8AyUEnKx1YPoXyxaw1BWUrhEg4HN+wyzKIMLCvE45iY4dKe+y3u/
-         YwhwfK3sgz/n0KZAEA4xbHXkqS/L1i7VdlIgsyOqQg+rxvW2P005xC613YIspOi2NnNS
-         2n56CWIl3YOledvsZwECS0YSCh/oPYR5LF9KtRuYf64q1Yqc6kBU3IKh096U1FEfZmrV
-         GKfZ94o5WtjZgEydcmjy2Exf32jfBY/CbkLiJ+dwgN6PW/1JYopDJvzL/bDBCwbwVdR8
-         TWEQ==
-X-Forwarded-Encrypted: i=1; AHgh+RqZGU+AvAkDdj5T9EAuDGXSXq7M0AWKw04tXzIK1Hox5mIl6Yy5V84ecs/3XhmfuJIoC4p8yl7a3M6GY/JiUQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw7rF8jyMaU1prSN/lq6Tap4kdbe2Drxmx+LJmHtVmceMjypIyu
-	fdGRFxcjowWZUH8rGeMH7XIUrmHSH1com4DZ0Ot4q7vRPdJ8EKAO+ifJ
-X-Gm-Gg: AR+sD100o20m8gaxvobi5RcmwqIco37pcN2TW3zSr74ZIEqY0qYR001FxeFoub8etmA
-	sdp/AZiNcGE8GJ2dACOt8fTXtXjFUmoQMeP1aEZlufcsQ/pisyP3rA3WMKXxBV1Ha+o9SmCMuQG
-	+7gou4W/sjOyJwTJzm/SCp9HzaaonFPxb36zeAxoq2fBjC8p8cEINGpKSVA7VgW61O/XPRnx/Jg
-	hy1pEIeLynBo8FTQD8LYFNsaRxx9cX7Sd9zoR8LrkgzCU77fCBHyan0WI/Enuh9FuzrKAQIARhH
-	kQFTcmVnfLUO1m5zcoeVaptSOiWeuMiWdlEVj/Gk7FBeo9FvoJJzQKinlu35quSzD49v6kkFLRP
-	1W+DCnBv9QNFSQbLK3WVaOafn4ApPiVmYiweAB3IHdt5dPpCvlpldi6A0vHcpc0lVbHPZleJW7D
-	CaM9pKBYvHbeWAiqTAByAU1QrJ+iu94AeMT+7S8ZKNlGpkpecvL6G6Weka3mCFym2BS/fC2gbQz
-	w==
-X-Received: by 2002:a17:90b:17cf:b0:38e:6a30:4bbc with SMTP id 98e67ed59e1d1-3931e32f509mr2910539a91.21.1786597868370;
-        Wed, 12 Aug 2026 22:11:08 -0700 (PDT)
+        bh=DD47gfXQGF6nwCSKbyRAaZ7LXoHHtibmaDJ2ODdpViY=;
+        b=HdOeQBUb2LhAVkaIxj0i/gLD58YOfOfbD8ytmvyuMwNFnXRx187FLYnL7Kjuk0nw2S
+         sG1TljKAdSb1pH8/pCSf0zgQoXyf5K9+6YgsB7lrjehRx3xEuueXRPIGN3goD28z5XRN
+         5bJ+nCW/JWb57ZZ5bgt1vGBDTU3hbsKQdhIGdEFPvUQqr88OT0+OP9KHFB6rRf4halv2
+         gz+ehbiFjQmYD7oEo7mW8nZ1UDHGn/EzjYbHsFpb4I6tAaViP0mMhD6tqliRma/NLjua
+         2tZ2hJ+rOQPI2YxCTSm2a/VB2dij9RcgI8AAumybYX9Odd5b6G7Fv+D8M3H1ZsZPhyYj
+         Kmcg==
+X-Forwarded-Encrypted: i=1; AHgh+RrgeqSUaciYrKjCQKGnuJkdOI6JyMq+0VlioBojcNLRb4P8da44U1dC05GeGaY+1Q7Bs/ubnJuNUFoHfw7yuA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxYtVZV8me0yBTP5EnoMyquCf1pWRa7V5aEycVjS1vTY7EV3W6d
+	DsoG+2RUigmSSpk4yaL7Fo/kZzZT8fcHIjezDRDOf2t0jG7AI8BVD/swMrGvow==
+X-Gm-Gg: AR+sD12beqK+PoTvR+XVduedQqRnyjvvC3qwrwscwNRQGTUdLLf1jrDTTwDu4STG1st
+	koOfCrfl7pXhq7wEAb6BYGW6aUNN2Nh9iAj9BQYFkIF01HlG/SyU0Ban5zRIAyI3Zu/0B2H4o5W
+	+dWROI5VxuA2nCwQxAD+YqVR/PUcCn1MaKCzFej5wdy90EK3uK+TFhB9cMKl50JdTpFVhF5FHSv
+	QHXU1MaC3yrdUikxXOd/QIksYgLua3W93tD2b6yX6iFiVdN+w05wS8qjGy5extbOouW4vdhSkMl
+	0ppMx0KJ0elPLtqBAwqPOq33Yjj14Q63BoVRTH4thaB1yRjHDcovR5G+o3/F9TB0y9IeltjbBm4
+	VS/3l9RDYz0Ta0Zdu+Fq2JAXzA91AdqZyTjiucJh0tnkZSikHIQg+fMi66R6R145BQEAahGZYBx
+	xQra/lZbXUsvnYddZ9PIX8dPPpe2QECe3fzqBB8TNiPR4DPZLTC2/oX7W5OfDRDWGYiXcHWGwJ7
+	Q==
+X-Received: by 2002:a17:90b:180c:b0:37c:6130:7a5b with SMTP id 98e67ed59e1d1-3931e07548bmr3673397a91.8.1786597980659;
+        Wed, 12 Aug 2026 22:13:00 -0700 (PDT)
 Received: from server.roeck-us.net ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3931cce8a3esm1866321a91.1.2026.08.12.22.11.07
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3931f41cd2fsm1324751a91.12.2026.08.12.22.12.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 12 Aug 2026 22:11:07 -0700 (PDT)
-Date: Wed, 12 Aug 2026 22:11:07 -0700
+        Wed, 12 Aug 2026 22:13:00 -0700 (PDT)
+Date: Wed, 12 Aug 2026 22:12:59 -0700
 From: Guenter Roeck <linux@roeck-us.net>
 To: Zexin Wang <ot_zexin.wang@mediatek.com>
 Cc: Wim Van Sebroeck <wim@linux-watchdog.org>,
@@ -81,16 +81,16 @@ Cc: Wim Van Sebroeck <wim@linux-watchdog.org>,
 	Yt.Hsieh@mediatek.com, linux-watchdog@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] watchdog: sbsa_gwdt: add early_enable module parameter
-Message-ID: <a5e2f50f-4f3c-40aa-b881-fc730b9821cf@roeck-us.net>
-References: <20260813034900.20235-1-ot_zexin.wang@mediatek.com>
+Subject: Re: [PATCH v3] watchdog: sbsa_gwdt: add early_enable module parameter
+Message-ID: <27ebd686-c5de-4abf-9683-6a700b7592bc@roeck-us.net>
+References: <20260813041228.23084-1-ot_zexin.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260813034900.20235-1-ot_zexin.wang@mediatek.com>
+In-Reply-To: <20260813041228.23084-1-ot_zexin.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260812_221110_129100_16E9D766 
-X-CRM114-Status: GOOD (  29.19  )
+X-CRM114-CacheID: sfid-20260812_221301_823923_B83DBEFD 
+X-CRM114-Status: GOOD (  32.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,7 +105,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 13, 2026 at 11:48:56AM +0800, Zexin Wang wrote:
+On Thu, Aug 13, 2026 at 12:12:18PM +0800, Zexin Wang wrote:
 > On SBSA platforms using standard UEFI firmware (such as EDK II), the
 > watchdog timer is often enabled during early boot stages but explicitly
 > disabled by the firmware before handing over control to the OS (e.g.,
@@ -131,26 +131,34 @@ On Thu, Aug 13, 2026 at 11:48:56AM +0800, Zexin Wang wrote:
 > The parameter defaults to false to preserve the traditional behavior.
 > 
 > Signed-off-by: Zexin Wang <ot_zexin.wang@mediatek.com>
+
+You might want to wait a few minutes before sending new versions
+of a patch.
+
 > ---
-
-Change log goes here.
-
+> Changes in v3:
+> - Fix indentation of `early_enable` in watchdog-parameters.rst to ensure
+>   it renders as a separate parameter rather than part of `nowayout`'s
+>   description.
+> 
+> Changes in v2:
+> - Rename `force_enable` to `early_enable` as suggested by Guenter.
+> - Update commit message to explain the UEFI handover gap motivation.
+> - Add documentation for the new parameter.
+> 
 >  .../watchdog/watchdog-parameters.rst          |  2 ++
 >  drivers/watchdog/sbsa_gwdt.c                  | 23 +++++++++++++++++--
 >  2 files changed, 23 insertions(+), 2 deletions(-)
 > 
 > diff --git a/Documentation/watchdog/watchdog-parameters.rst b/Documentation/watchdog/watchdog-parameters.rst
-> index 502cb6adbeda..47867a621ada 100644
+> index 502cb6adbeda..348229ffcb43 100644
 > --- a/Documentation/watchdog/watchdog-parameters.rst
 > +++ b/Documentation/watchdog/watchdog-parameters.rst
 > @@ -515,6 +515,8 @@ sbsa_gwdt:
 >      nowayout:
 >  	Watchdog cannot be stopped once started
 >  	(default=kernel config parameter)
-> +	early_enable:
-
-As pointed out by Sashiko, bad alignment (tab instead of four spaces).
-
+> +    early_enable:
 > +	Watchdog is started on module insertion (default=0)
 >  
 >  -------------------------------------------------
@@ -189,7 +197,7 @@ As pointed out by Sashiko, bad alignment (tab instead of four spaces).
 > +		set_bit(WDOG_HW_RUNNING, &wdd->status);
 > +		dev_info(dev, "Watchdog early enabled.\n");
 
-Unnecessary noise (it is also reported below).
+Still unnecessary noise.
 
 > +	}
 > +
@@ -199,12 +207,12 @@ Unnecessary noise (it is also reported below).
 > +	if (ret) {
 > +		dev_err(dev, "Failed to register watchdog: %d\n", ret);
 
-Unrelated and unnecessary addition.
+Still unrelated.
 
 > +		if (early_action) {
 > +			clear_bit(WDOG_HW_RUNNING, &wdd->status);
 
-Pointless. The watchdog was not registered.
+Still pointless / unnecessary.
 
 > +			sbsa_gwdt_stop(wdd);
 > +		}
