@@ -4,129 +4,142 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A292C5CFC1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2026 19:20:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A4BFC5B572
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2026 19:38:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ml4nFFPO4E1DRPtyQK31bvAG+DqqBMl5o3+Nm/A8ZXo=; b=NAwwESzhHK9uo9l0jCRLhBCKLp
-	820+lfC8NVv0anTk4IZ+NUVY5nVttDcmFZWlaQ2f2iJmB+iU/wVE5ucpEuiKM+1JbaLTtmeFnxXA+
-	JkUr+9bYSElPwqI1uYRQTO9H+QKLkV1D8pQNYKtVQb6abhXvEz4ERFbuahB2o7yYCxpaRUspwFtyP
-	7jZRmkZ2YsPR+gyITIeESuo+Tuck6/VgeYLBuV6Jt3ZjJRb6winzuZR1AddpWe4bE9S90JqEq4em5
-	D09NKWRkxbr8Uo1s0KNuEprVge6jADzzjR4KX/vpC5O56uVh6SS73YS5+xhDSxfYlzN3g6tnjRQCp
-	Xf6dzZ2A==;
+	bh=A4wSOwCiBgisfVO8uVY2zM54EkqH8lMLymzzjg1vXFs=; b=xyqpcnGAJSFvSY6dLaDnjb+sl5
+	CXQ4qBTHzibBTYb/nhRG6L330IHuEpyYSzgjl6M82bvLnYR1jYt24X/BaNVxob9Ry5ADaD1nddy6N
+	VlOJG41HfmbjOH85vbCFL0poEXo5So3G/iEPMUNVfitV3+c3fqsl1ui+pUm5VDbQ4L83Em5Az/B3f
+	wxQc2gY0H3hO6H47tycYiW5t2HjXdKQZFrsSGj1P+AqhrIITpVJseGdm88Nc6uE6d669+Zj1mE2v5
+	Bnl6aJAICWw6120OQja3x+Jydmo/9fva/oi9FSAyfjXmBzD3wbmYISHnGIyY/tb0+fYizwdV1UU29
+	aFxdgXaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuxRh-000000035hO-0zzO;
-	Fri, 14 Aug 2026 19:20:01 +0000
-Received: from mail-northeuropeazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c200::5] helo=DUZPR83CU001.outbound.protection.outlook.com)
+	id 1wuxjd-000000036j4-3eFM;
+	Fri, 14 Aug 2026 19:38:33 +0000
+Received: from mail-northeuropeazon11021119.outbound.protection.outlook.com ([52.101.65.119] helo=DU2PR03CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuxRe-000000035ga-3mM0;
-	Fri, 14 Aug 2026 19:20:00 +0000
+	id 1wuxjb-000000036iU-40Wm
+	for linux-mediatek@lists.infradead.org;
+	Fri, 14 Aug 2026 19:38:33 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=XyvFCfv9YWMlOXxBJnkGgcPykuj9tZGgY19/JnUeADLcLao1HV9rtngVozmqWxYWi6VHk5PLrceZC+vr++lppAq7wh52ZVtsZ76qfMnEItI3C9FhrLl94Jd/qMA2moVUfhnV4I7H3wp+o8Xg4+8fl0MbZWsP9r6+UiucPx0goTl2svJ05X5KdLyyz3DTzAYl65Vp+jeQoD8k6bt5EESuKb2PdtHiRSSmTgLRcOzfU8RUKweLTUVqRYeQ7GhM8yd3Fz8fLacJ7n/90nweiV6y1ClLkQpvIeaywaPwFdgeg+uiSap6NXCG7YLEQMVrpxxVU+Wy37rkvvUIlYgCDgA+RQ==
+ b=EG68/ihNWSXyqguboTJjzfvqT4CPTaniUEk/eGuXoA/hvRzUTsVeAcN+gUJJlYHcVjtMgg53CBcYrkUVdsDqDOkUpYz5a+KrLMAF+gqVV2I6ZvQv2ZSnSKDu1yzDJo7oFOIo+g4Q7Ov+Tjhe2frm4UB7sFXxZMCFR5QL8eM5NGGjtGOEy1hi5zYgV2U2tT9dBlIPHEHBZamrIauI5+5W5GZspxdOS9KAVG+EPEy5rj1Vbpsc5WNiEXj+ZA5pO8fh4h5Mlfgi4e15yV1P3n+cl63chFYxup0J28TJtAbGC8IxLHvGlSmYpSlu1wV5KSYReLtAPXYbjNXraPzWK0qUtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ml4nFFPO4E1DRPtyQK31bvAG+DqqBMl5o3+Nm/A8ZXo=;
- b=a/DGIcVXZMHwHrqtyYgyJduZhKAaf4Fa43THI+QR81lxXiKYMlcR8RJldcQh4+vD2HJQGsstJF/o7xXjlBR/W+/8RE4UKnsCtqAWfC/FI0b/DHQGDBO4I5SAq2jm6QQ0L4qW30TgbpyjTFcagBjupe1Tdkvqc1zW/+GZuojnXsvYopFjZhYrAA9HTYdRf4R9x+vF91e2Nj9eZUAvKDKJ1BjdIz4NMF+HzFJc4XK1cDTxA5ifGVcMsB7CPOnZbUbGtg+clrLCdK6Hiw51QaLQBdUXcknUz6ckcB7mpeBSkBKoRCOSwlCv51NfL8uyemwzgY34tMO8nVJT8z4oSpX2+w==
+ bh=A4wSOwCiBgisfVO8uVY2zM54EkqH8lMLymzzjg1vXFs=;
+ b=Ub/h+lV+nxZGBP6AYW8CuygiC1bH4sOjKbr0O5hp38m2GjivWiQbe6M5+YaaKtNtoSDtJSXEp2hgUGOsW/d9dAAmORdYLlaM9UfgXIJLTfrpSiPprLVf7IqQa6kHtpw6UWmBRXniKMYPQLxemWVWw0updwPduAX+DGx3W23kidEoci4paZdD3JVaBAOPhQmwKMkwyvXZ4V1sLY2paR6/RuqcMBojqAhQsrPNac9F9+EMN/Q84wLQchQqSIL7M4SS+DBGn1POQBEiMOj+btjWpcdTHJ8JfATC3RvBHEerXp9FcVGYsVTK3sCUCmI8SmsEhhRJv3E9syLhoykXaZwEXA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=genexis.eu;
+ dkim=pass header.d=genexis.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=genexis.eu;
+ s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ml4nFFPO4E1DRPtyQK31bvAG+DqqBMl5o3+Nm/A8ZXo=;
- b=al6eJknOA4T6MjLp148cI7MgrjLQGIIcG5IJM0XqXwVRRd7mfv++r+lfOETC6ssn+O6l6fhFcmq6gKAZU4LW54n1D6BJvGzUqwP729/YIohc3YIc0Q8GXXeVffrvQgp06LVkki6lIBtmkJHg+KN0rOMec4svGJPURvQrkcOo0krANtib63RukV/552hyPCBf/Ru9Ie8hzJ65ulQOwyO8/vvle9j3PoAJO2uWZhP3jVb22g96Wf/nRTAzGqZrhZKXLucRfrILSrgq5NBCkivVj9yo1RXH98i7MTNbGtuOSaxSvRNU1lVyfsfo2ZZFijnA8/qNx4GxM4N+DFWOdKuhsQ==
+ bh=A4wSOwCiBgisfVO8uVY2zM54EkqH8lMLymzzjg1vXFs=;
+ b=YTHqr8uOaALXsaoraPqGNEKoSrukpTvvtGOXgnfylNefWzsMdPP8dcZiOMb1ONemUcyrpHpnoU1c2xppuQCREKMKfOKCz+0/nH6AS7trwCHUmP3KBAmRvgXXeaPwt0pWml7unRVQIIfzYmsaYZOQ5ZZ8s/cLkXYfapQhzrk+UXKNQXSkNd0TM/RIhS/kAcwmfohipxAfPYhUiCoZJV8ciPyc0rioxSgGq25CF4mCTa/c4PE8KuVcF1ljnVcVyWa7PL7olMZsg758lzW5E8K5t7Iuw2PNX6M0f5xH4t7tUTDvGGL+VFniUg2toSTQltM91/VfTQDoHrvEJSFxHX0RJw==
 Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from GV2PR04MB11799.eurprd04.prod.outlook.com (2603:10a6:150:2cf::9)
- by DBBPR04MB7996.eurprd04.prod.outlook.com (2603:10a6:10:1e3::11) with
+ header.d=none;dmarc=none action=none header.from=genexis.eu;
+Received: from DB9PR08MB6697.eurprd08.prod.outlook.com (2603:10a6:10:2ad::14)
+ by AS2PR08MB9811.eurprd08.prod.outlook.com (2603:10a6:20b:604::19) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.315.16; Fri, 14 Aug
- 2026 19:19:54 +0000
-Received: from GV2PR04MB11799.eurprd04.prod.outlook.com
- ([fe80::2146:83a2:5329:b7c]) by GV2PR04MB11799.eurprd04.prod.outlook.com
- ([fe80::2146:83a2:5329:b7c%7]) with mapi id 15.21.0315.014; Fri, 14 Aug 2026
- 19:19:54 +0000
-Date: Fri, 14 Aug 2026 15:19:46 -0400
-From: Frank Li <Frank.li@oss.nxp.com>
-To: Myeonghun Pak <mhun512@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
-	Frank Li <Frank.Li@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Ijae Kim <ae878000@gmail.com>
-Subject: Re: [PATCH v2 RESEND] dmaengine: mediatek: hsdma: fix runtime PM
- leak on init failure
-Message-ID: <an9qUnMZ7_iRTwY2@lizhi-Precision-Tower-5810>
-References: <aj1RSj5ZXvc-9yu7@lizhi-Precision-Tower-5810>
- <20260804153924.49627-1-mhun512@gmail.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260804153924.49627-1-mhun512@gmail.com>
-X-ClientProxiedBy: PH7P220CA0137.NAMP220.PROD.OUTLOOK.COM
- (2603:10b6:510:327::22) To GV2PR04MB11799.eurprd04.prod.outlook.com
- (2603:10a6:150:2cf::9)
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.315.15; Fri, 14 Aug
+ 2026 19:38:25 +0000
+Received: from DB9PR08MB6697.eurprd08.prod.outlook.com
+ ([fe80::bdec:3e95:6614:441f]) by DB9PR08MB6697.eurprd08.prod.outlook.com
+ ([fe80::bdec:3e95:6614:441f%6]) with mapi id 15.21.0315.014; Fri, 14 Aug 2026
+ 19:38:25 +0000
+Message-ID: <1cd344b3-22a3-43d2-83b6-2eb01b3245d3@genexis.eu>
+Date: Fri, 14 Aug 2026 21:38:22 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] pinctrl: airoha: limit GPIO interrupts to
+ interrupt-capable pins
+To: Ahmed Naseef <naseefkm@gmail.com>, linux-gpio@vger.kernel.org
+Cc: Christian Marangi <ansuelsmth@gmail.com>,
+ Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Linus Walleij <linusw@kernel.org>,
+ Lorenzo Bianconi <lorenzo@kernel.org>,
+ Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
+ Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <cover.1786262697.git.naseefkm@gmail.com>
+ <5a7f97adbca73f2bd01393ce0ca840c2a6f43f76.1786262697.git.naseefkm@gmail.com>
+Content-Language: en-US
+From: Benjamin Larsson <benjamin.larsson@genexis.eu>
+In-Reply-To: <5a7f97adbca73f2bd01393ce0ca840c2a6f43f76.1786262697.git.naseefkm@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: GVZP280CA0010.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:150:272::9) To DB9PR08MB6697.eurprd08.prod.outlook.com
+ (2603:10a6:10:2ad::14)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: GV2PR04MB11799:EE_|DBBPR04MB7996:EE_
-X-MS-Office365-Filtering-Correlation-Id: 785f92de-aaf6-4075-6380-08defa390559
+X-MS-TrafficTypeDiagnostic: DB9PR08MB6697:EE_|AS2PR08MB9811:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0fa40f5c-3046-4a31-7797-08defa3b9ae8
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|23010399003|366016|19092799006|56012099006|10067099003|11063799006|4143699003|22082099003|18002099003;
-X-Microsoft-Antispam-Message-Info: 6bow7FiMO90jOV/wY5kt17SkbxIkLOmN958BIvAc2awlvcBp1bLaLxGNou+JmWYb/vkJLxJIcq/ujyUDDQgwzTuVWFGQzKVgQO3t3P1Givg6qhdFxrODLtWUoX7TpREP/Sb+YHL7eJl19nl0suInq9af8CgaQWRYf3nbjNTYq8KPEe6nawEZw92LWy1D9PINGaLTjZuIrtw9x6JVpCKjCdNaCsBAGK0iOGbZDlyJvYklEEduV5lwc1uW3mQxT8YWNdBttURDkP5PUwQFiEgy0W7OK8jWfECGgh7dW6sCdxLZGiAS6nWZ4PLPTE7fQ1blffPRHXz1p2gLRf/lue/49txNBXWTHv1u5kZqcfwGoVWO/bSvpFWZtP/tEnU4HT40eJUCPkOTuESDxrw1CaWRk8rArGzcXCtjr4VTKgXLUPwA8wbtxru1W7i3cmbC/m0E7rMso9jsIhQ6pvzFym7X83qAjwibWnsc2pzABPuZNdmi2Pw+zgDIsm59keV/mcF3x7ZGTjcPK2mAJd7aLXgthuSEwQHOPYl+rdxjJOSzOJyWr/0FZQhUQ/Qb8YB5h1DS8YxDWt2uHxEnUP2kCPA17SpA2oNOXGsNlyYBVMAHShK3CjgiGzuUDZ6xlnurNncdbsgq1EAsx1V7ubBSry/FdHX3LJ7K/rbOpaPqUAAcDN8=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR04MB11799.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(23010399003)(366016)(19092799006)(56012099006)(10067099003)(11063799006)(4143699003)(22082099003)(18002099003);DIR:OUT;SFP:1101;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|23010399003|366016|6133799003|56012099006|10067099003|11063799006|22082099003|18002099003|4143699003;
+X-Microsoft-Antispam-Message-Info: HUX7J51P0Na4nFHVMrggQM31Au54j0q5rS+SQpYjnMseOP0gdljpGFI1j1DZZEsNbUUC+QZ+wjUNNfljiY7AJAXHb2jeU8dB10nDlYdx6b9Wf72C7Wv/4KViG31A/L6X1DUrFhv5fShuClALk+bImC4cjNwlJZ3IIUagTeK10GuWnw+0NX9WIVQe+HrUF+nNDJ9+4TNGnxkTBiTUvTBw9SOm/6AIVWL7SdiiQd1Hkw/sFvwOIw25oexnDdoyAxHLh3o8pT8iJXccrgBqo6+AAeVIjt32DbvNIFp/5fJxPzm6saXgLr42qzxOvBj6CmQiRctq8nhC2MluAbhsZKKBU9ZcclvJ+YH3B32kuOCCN8TPOsz6+AO2X+iPyoNvXRfc0zfMFRHD21dEBhCkEqzDxA1haCT7amoMqwrtIpb0QHxyJ29i+Nv+pYycgWrjcHL7ifvsXhHbxoYJrazEuZjF9BIyEax3ryKC5ltoFQziTydesz7NPhmuZa8Q9n/HEzumdkzczN0eHYK4nzc7xNp4cr+udo1jcD2wA5mOwj0PTqYsrf/b4EFQ/d1bkZActMq8VFOD/5heolUv42TnHNjGxvxM3Pij+WuU1JcU5SM+hzuL7KAdj6F4VxDDyj0n9avlaAR9lP4ZfaxpGi/LEdUEK0nV8fUoPkXLpyReD5PL7kI=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DB9PR08MB6697.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(23010399003)(366016)(6133799003)(56012099006)(10067099003)(11063799006)(22082099003)(18002099003)(4143699003);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?E6sZ2PjP/nLnSgLcMfJ5wUlIUw3cXi/7A6doB4V9xHJz8CHjS8tXB6vjPzOk?=
- =?us-ascii?Q?9uAXuXFf+++sFpPiiuFWhzzkuihHwsgbAPL90EF7B/zWUK+3sHLusKZz+zac?=
- =?us-ascii?Q?QlQTl047+tf58Sjy5upmodbJRK2rVsxbvRghs9V3StWabYm8Yq5Yn8NjwZPi?=
- =?us-ascii?Q?LHWEShOKSAnfCDfzoMEuWTPBsKpPZ0gJZppdvUlNLT3bN8lOyWM16COGl4bz?=
- =?us-ascii?Q?+iqaJVhtQlz5VeJ3DNDbdLpbHwUzcbA6QNZFaUXMuEp+KV0BYbS3E1L1+r3L?=
- =?us-ascii?Q?E3wwVGAzb3WZgvRIXylzwCR1LNx1D1w0YgFPNEun30Fp+B+ODDIK6gpW5yLI?=
- =?us-ascii?Q?n7m3aZHG0K20Ao33f5Csl/OxHS3ZgPioyft7Pzyn3mICd5c20MkXrUu0sKJo?=
- =?us-ascii?Q?IBN4EOIrm1CDLAK5cLjRkEhduqyvN9zmsKe4+6ynGdabnqnuEnoGM8RHu3ZD?=
- =?us-ascii?Q?1Qr6UnZ4dvv92FZPFIpeFaveJSNh70eBmdA0FzXFNUkHR0oI5tLjZJ//AB9l?=
- =?us-ascii?Q?77NUAeQeX9aQYhmDOUXUNQdoKS7B3UNHCUcH5KbUyYEWhTkHh+xZ33YAo/NX?=
- =?us-ascii?Q?1z5PpWUvjZc4WpxR9qtV1ioXvACud6xEI6Wrt67SdOlY9WVFmT4MyYN93VsE?=
- =?us-ascii?Q?B/eRRV/DZ1wRZFVV3VWqeMAtE8T2KLKFjMXOW76cR9FJs5JGLEsRkxyMnD7L?=
- =?us-ascii?Q?mh3c8n2fdSu7GU05XGPv59OgpKQgMYnsXfnaMtjiQO2TpXDTBE9h6HaRZ3sa?=
- =?us-ascii?Q?jJM/+ObC/16oUkJidBoi5WEnnzqxOeZnyztFY5EphzA+O45llF1r0/3i19b9?=
- =?us-ascii?Q?2Ce8T7Gaf6Y2+E9ECe4ooqsEH8Sb6y8SIAvjlVnpMFSMpeg7QkoLXVnpTV2O?=
- =?us-ascii?Q?lKsHxzzlxUFl1LqP9S/PxGoniEOuefHQdKQQoMMDTXwBvwZlkJ/xDfBlunya?=
- =?us-ascii?Q?0nOyvt6Fcmv5MxLwq7KoHvbwfSUg0b2syDDffed8ZRKUuT/QcqWEKAlZVf+H?=
- =?us-ascii?Q?+BCvOJWPSPfof6NaaGL4OUYgc4Qe9fOYMCpXMziif2GL40r6lb/TQT2e9HaK?=
- =?us-ascii?Q?YTKv7mnWpqay+Hw2ESMOIm5JGC1pjmKjrzAobJnl0SsA5TgxvNUETUb7k1DF?=
- =?us-ascii?Q?wLCau2pkwMDu3A2kzKXJfRAiUacjoI/TWqo7NEMbV/qL7zmO1SkrQFg9lanG?=
- =?us-ascii?Q?eIbUrIhMipook2Msu968ldBeB4fqvw/H5lrRKALZf7LnAF/5tB9eB6mSOj77?=
- =?us-ascii?Q?BJiSnCjpBeJX3KIIbL3BnE4oekOYv6qxf37h+g57Efxt7fzz30QKzHFsT9ry?=
- =?us-ascii?Q?r21hx9Z7g06k52qEVuFLgmjkqtZZL5wagFrM+YJwnN9RXCHpthymmMYZcLRm?=
- =?us-ascii?Q?MtNRbqnhyYbCoY2GIjFKrOtZmKTd4xO+ymhUUkt3TqnQ/cT2kCHxAwjGWUwU?=
- =?us-ascii?Q?fNtQmfmpBXwCbRWol2cqDToUfYKjSV3jnIpPelWAcAnB9aRiXf2PcXOxtKIu?=
- =?us-ascii?Q?8gLhPiFhw22b5HFsWXUMszFjEUs0RuVF0SK+TLR//Mw33m1BTAeC1Kwyjd3B?=
- =?us-ascii?Q?iVua8TZJ4sFCMfIJ43JMmFtPnwFYqBmmchJw54lm3wIUs5lVvBo3+pu9nkQF?=
- =?us-ascii?Q?GpOKR5bycWVebpuX75sdJIu+UqeGGsW65uimf55JpOyhIt8gOwWbBMVzo+oQ?=
- =?us-ascii?Q?egaDZGVdFkOTcVq3TAj8M7nDv9AT7kvqzEq98dkXwXEcMS+dzw4AmhMUYu1H?=
- =?us-ascii?Q?ifrSq5I0ccClY4uS6o/ZAMbAZ7lkoCWIv6Wv2X4MCnPa55jAOHf7?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 785f92de-aaf6-4075-6380-08defa390559
-X-MS-Exchange-CrossTenant-AuthSource: GV2PR04MB11799.eurprd04.prod.outlook.com
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?MFB1SVBYSGJrRUNPTWMwVCtMRDVKeHZ1RkxjSzkwR2ltSFduZHpkQkxLK0Qv?=
+ =?utf-8?B?a0ZEbE40Tk1TWldkVVc4UzRrWTVNT0JCWXk4YzRMM2hnK2llaXBxMFpGOG9Y?=
+ =?utf-8?B?ZHkvK3ptNE5TSXAxeXNQRnhzandGVmRSZ2VjVWZhZWFROGt4WCtkSDdrdkNF?=
+ =?utf-8?B?TWpQYjBFU3V0NlkxU2lBT0lsWWVha1BNWjRCZTAwdVBSM3c0ejRyTldjODNE?=
+ =?utf-8?B?TWgrOTVxbUVscFgzTndYenFrOHl3L1hiU2xlTTdnZHl5ejVRZDR3anVNRngr?=
+ =?utf-8?B?cVZnVE1UMS91bktPVDhTcFRFS2NsQnVKbFowMDl2MmJIdlhaVVdnd3A0UVNh?=
+ =?utf-8?B?N0diRWY5UGFXZ2dsWDBWVG0vdG5lcTAybmNDNGNDY2FiMG01VEQ1V1VVRzZY?=
+ =?utf-8?B?ekxNVEsrMjF3ZU5DOURtbnYwWWFJK3oxc3ovNS96aWVTM2ZuQ210Vjg3UTI3?=
+ =?utf-8?B?cnArQlozS2g3WWQrMjlyTDJud21VaTcrREV3R3RhZ005dGI1SnNkeHhWQisy?=
+ =?utf-8?B?NXlXVlAzT3kxdUsxbU0zOEZiaFNBZ1RpQjU4WmFpZUo4eDZ2STR1UG1ocEhj?=
+ =?utf-8?B?eitpTkcrQWdVUkNCWS9wd2hOQ09TckNOa2cvazBMQm5iUzcxbG8vemtLWFFm?=
+ =?utf-8?B?YUxMdWNoZnpUVDlZc0RDcFpaaTNydll6VEwxVm1UM3NZVUJtamc2Wk5ERGJi?=
+ =?utf-8?B?VnBSb1hhNGcyUVlTWnVGRG1jRnZUQzNWRTBDOW1NblBSM1JYUDJ2NUhEV3Zy?=
+ =?utf-8?B?UFdOQnZlTm1PSFJBZWNTRG8rc3dGazhjdjhUVlhVdWlmOGNSNUs4dkRPaCtY?=
+ =?utf-8?B?WkRxVndEbFdsUmZhZXEveUZPTzljUEtsbVpaU3RjV1V5VEdkeUtPM2dKdi9a?=
+ =?utf-8?B?M3o4dk02c0QyYTc5cjcvR3BrSVlYWml5TWRDYzNzb2lDMGZvWFgvN0RGTUFk?=
+ =?utf-8?B?c0RvUEhKV21xU2dKS0tjbUJuUGxVVUExV2dhSUVIMHBRY2dHY1lvL1FYLzVL?=
+ =?utf-8?B?clRwQnp6MytnbUhqSTN2WmtGZWpXTlBtYlhkaDgxNTRrN2V0ZDZWUThPekt5?=
+ =?utf-8?B?SERQYzc4YTZzempCUjVZdXpxOHNxeXdlWk5BMXVzSWRscmx5R0VEWmQ4U0dH?=
+ =?utf-8?B?Tmx5Ti9Hb0Q3ckZnYXRUZTlHWXo5SGJIN1gzbGM5di9HK0tWaTZJMFdnTmtL?=
+ =?utf-8?B?bUJwMlJqcEEzeGtTVGY3aFpJYWNPZzBOREZzWHJQWXFpV25waFFoWk5KSE04?=
+ =?utf-8?B?TC9pSk51UytqS0NRNzBqcDZYNHV6dzZNTnB6OElRMXZXMXRMYTI2dEVqUVJF?=
+ =?utf-8?B?RC8vVlM0OHBDSmJlUTB5UDRFcmVrL21tT1o3ajB6QUpZWFFuMGkyMEc1bGxV?=
+ =?utf-8?B?c2hjczFGUW9QZmlyN0pEZUNHcGxZbFUzRDBiTnpHb0RGUmFYbS9mWEZiWE52?=
+ =?utf-8?B?WnJwZ0NzdG05TkZnTjM3WSs4V3hxckVUdlpwcjVzb0VIWWdRMWxGUXFMQ3VE?=
+ =?utf-8?B?a3ViS2ZHMWpNL2RTZUJZeXZPR2RqdUFJM2kzZ1BEZ0RLVnpLVzdMY1NXZ1c5?=
+ =?utf-8?B?Z0hGM1hpVUJESmUrWk1KYllWamlTbGVQQ3RLNldsc0JBMHVsb0J3Y2VJcWl4?=
+ =?utf-8?B?VS8xUXlnQUd6d0JxQnMxRVU5RldCTUZ6dUgrdHgrUXNBVjdCWkl2SWpmMVRp?=
+ =?utf-8?B?NXgzTjM0SEJkK0t0UEFzOVladHVDRWhzRFpFQWhlUklOTEllYW5jRlVQVGdl?=
+ =?utf-8?B?Y2F5NGVIU3ppbnNaRkZQd3dOU1FCU2VnMlNXdnNGKzd1M2gxR21QeDdMcXBn?=
+ =?utf-8?B?ekhEMFRjWU8zM0o2ODFNcGdEMS83OHVWNDBuSndCenpWODRDM21HZlN1T2t0?=
+ =?utf-8?B?alJKZEptcE0xcnpVdmZyWks2YnJGSlIzK3oyTS9KYmo0em44UDdOdTcvOFhD?=
+ =?utf-8?B?K3BjWUNmNTBzcUNnQkFmdFYzRWhHamE2UmxNYi9DUDRCcENQRnZObjloOEJa?=
+ =?utf-8?B?OEdoTzl1YW84RWdkN1p6ekFxSEN6WWt1VUZTbFZrVDhPMGVXSnpncW85S1Jp?=
+ =?utf-8?B?ZEVaTWVFRlViY2hHZlF3d1c0Yy9oVGc1SWFldDh3dDR6d3F1UWloZHFWZFJP?=
+ =?utf-8?B?WlBnenowSzFQOGlIS21NMGtFN0MzV2ladUdXcVlBQk5aU29oS2pnNnBsQzFp?=
+ =?utf-8?B?bElVSmVaaVVZV2JvUWNBcWFXeDR0eStubWE5RHpmeU90T0NZK1BtZGRjcW1n?=
+ =?utf-8?B?NHA0QTNFYU55SFBLWWlNYzR5R2swM1dDK2JlVU03bXBNOTg0SFNzMTlZWWxI?=
+ =?utf-8?B?OElKY1l5SUhNanNNY1UzMXRFUHdwbGttZzlRYzRzT0FQY0hhYUR4NFk3UnJ1?=
+ =?utf-8?Q?u+a5wf9KV1iwS/+k=3D?=
+X-OriginatorOrg: genexis.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0fa40f5c-3046-4a31-7797-08defa3b9ae8
+X-MS-Exchange-CrossTenant-AuthSource: DB9PR08MB6697.eurprd08.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Aug 2026 19:19:54.4680
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Aug 2026 19:38:25.0407
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: fdUwU39x3+JZ6suoLeov4Pp+3xcx6yErG9PIR1a53RD7Z1DvSH22oxaBrQB5dFFjkzRAj63Oqw0QeumV5bASdQ7CK/3jpTV9O2HtTeo3rOMg4LI+92p2o8WsTZb/mpTw
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR04MB7996
+X-MS-Exchange-CrossTenant-UserPrincipalName: eWYi44CztijwJ1GlxYTisIeIJb46r8T1mQt8POuns0RrKEJmN0lzIe+bs9aKBlqx60RSXUTMJeVNUEZht8F3LmIdtq3uNs6eWfdhWvM2uqk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS2PR08MB9811
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260814_121958_973521_01758D1E 
-X-CRM114-Status: GOOD (  21.13  )
+X-CRM114-CacheID: sfid-20260814_123832_176613_BEABC591 
+X-CRM114-Status: GOOD (  32.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,114 +154,204 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 05, 2026 at 12:39:24AM +0900, Myeonghun Pak wrote:
-> mtk_hsdma_hw_init() enables runtime PM and gets a runtime PM reference
-> before enabling the HSDMA clock. It currently ignores failures from
-> pm_runtime_get_sync(); if runtime resume fails, the usage count remains
-> held. If clk_prepare_enable() then fails, the usage count remains held.
->
-> Use devm_pm_runtime_enable() to manage runtime PM enablement, and use
-> pm_runtime_resume_and_get() so resume failures do not leak the usage count.
-> If clk_prepare_enable() fails after a successful runtime resume, drop the
-> runtime PM reference before returning.
->
-> The probe path also ignores the return value from mtk_hsdma_hw_init(), so a
-> failed hardware init can continue as a successful probe. Propagate
-> mtk_hsdma_hw_init() failures from probe, while keeping a separate unwind
-> label so mtk_hsdma_hw_deinit() is only called after hardware init succeeds.
->
-> Fixes: 548c4597e984 ("dmaengine: mediatek: Add MediaTek High-Speed DMA controller for MT7622 and MT7623 SoC")
-> Co-developed-by: Ijae Kim <ae878000@gmail.com>
-> Signed-off-by: Ijae Kim <ae878000@gmail.com>
-> Signed-off-by: Myeonghun Pak <mhun512@gmail.com>
+Hi.
 
-Please don't post new patch to old email thread.
-
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
-
->
+On 09/08/2026 10:04, Ahmed Naseef wrote:
+> The driver assumes that every one of the AIROHA_NUM_PINS GPIOs can raise
+> an interrupt. That holds for the SoCs supported so far, but not for every
+> member of the family: on EN7528 only GPIO0-GPIO15 are wired to the
+> interrupt controller.
+> 
+> Without this the driver hands out interrupts for GPIOs that can never
+> fire, and the interrupt handler reads status registers that are not
+> backed by any pin.
+> 
+> Add a num_irq_pins field to the per-SoC match data and use it to bound
+> the interrupt callbacks and to size the loop in the interrupt handler.
+> Feed it to gpiolib through gpio_irq_chip::init_valid_mask as well, so
+> that gpiod_to_irq() fails for a pin that cannot be an interrupt source
+> instead of deferring the failure to request_irq().
+> 
+> Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
 > ---
-> Changes in v2:
-> - Use devm_pm_runtime_enable() for runtime PM enablement.
-> - Drop manual pm_runtime_disable() calls from init/deinit paths.
->
->  drivers/dma/mediatek/mtk-hsdma.c | 26 +++++++++++++++++++-------
->  1 file changed, 19 insertions(+), 7 deletions(-)
->
-> diff --git a/drivers/dma/mediatek/mtk-hsdma.c b/drivers/dma/mediatek/mtk-hsdma.c
-> index a43412ff5e..27cb370106 100644
-> --- a/drivers/dma/mediatek/mtk-hsdma.c
-> +++ b/drivers/dma/mediatek/mtk-hsdma.c
-> @@ -848,17 +848,27 @@ static int mtk_hsdma_hw_init(struct mtk_hsdma_device *hsdma)
->  {
->  	int err;
->
-> -	pm_runtime_enable(hsdma2dev(hsdma));
-> -	pm_runtime_get_sync(hsdma2dev(hsdma));
-> +	err = devm_pm_runtime_enable(hsdma2dev(hsdma));
-> +	if (err)
-> +		return err;
+>   drivers/pinctrl/airoha/airoha-common.h  |  3 +++
+>   drivers/pinctrl/airoha/pinctrl-airoha.c | 33 +++++++++++++++++++++----
+>   drivers/pinctrl/airoha/pinctrl-an7563.c |  1 +
+>   drivers/pinctrl/airoha/pinctrl-an7581.c |  1 +
+>   drivers/pinctrl/airoha/pinctrl-an7583.c |  1 +
+>   drivers/pinctrl/airoha/pinctrl-en7523.c |  1 +
+>   6 files changed, 35 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/pinctrl/airoha/airoha-common.h b/drivers/pinctrl/airoha/airoha-common.h
+> index c1acbfb7426e..16f7abcdfb83 100644
+> --- a/drivers/pinctrl/airoha/airoha-common.h
+> +++ b/drivers/pinctrl/airoha/airoha-common.h
+> @@ -127,6 +127,7 @@ struct airoha_pinctrl {
+>   
+>   	struct gpio_chip gpiochip;
+>   	struct airoha_gpiochip_regs *gpio_regs;
+> +	unsigned int num_irq_pins;
+>   };
+>   
+>   struct airoha_pinctrl_match_data {
+> @@ -140,6 +141,8 @@ struct airoha_pinctrl_match_data {
+>   	const struct airoha_pinctrl_func *funcs;
+>   	const unsigned int num_funcs;
+>   	const struct airoha_pinctrl_confs_info confs_info[AIROHA_PINCTRL_CONFS_MAX];
+> +	/* number of GPIOs wired to the interrupt controller */
+> +	const unsigned int num_irq_pins;
+>   };
+>   
+>   int airoha_pinctrl_probe(struct platform_device *pdev);
+> diff --git a/drivers/pinctrl/airoha/pinctrl-airoha.c b/drivers/pinctrl/airoha/pinctrl-airoha.c
+> index f505a3f69c5d..52a768c859b7 100644
+> --- a/drivers/pinctrl/airoha/pinctrl-airoha.c
+> +++ b/drivers/pinctrl/airoha/pinctrl-airoha.c
+> @@ -213,7 +213,7 @@ static void airoha_irq_unmask(struct irq_data *data)
+>   	u32 mask = GENMASK(2 * offset + 1, 2 * offset);
+>   	u32 val = BIT(2 * offset);
+>   
+> -	if (WARN_ON_ONCE(data->hwirq >= AIROHA_NUM_PINS))
+> +	if (WARN_ON_ONCE(data->hwirq >= pinctrl->num_irq_pins))
+>   		return;
+>   
+>   	gpiochip_enable_irq(gc, irqd_to_hwirq(data));
+> @@ -249,7 +249,7 @@ static void airoha_irq_mask(struct irq_data *data)
+>   	u8 index = data->hwirq / AIROHA_REG_GPIOCTRL_NUM_PIN;
+>   	u32 mask = GENMASK(2 * offset + 1, 2 * offset);
+>   
+> -	if (data->hwirq >= AIROHA_NUM_PINS)
+> +	if (data->hwirq >= pinctrl->num_irq_pins)
+>   		return;
+>   
+>   	regmap_clear_bits(pinctrl->regmap, gpio_regs->level[index], mask);
+> @@ -265,7 +265,7 @@ static void airoha_irq_ack(struct irq_data *data)
+>   	u8 offset = data->hwirq % AIROHA_PIN_BANK_SIZE;
+>   	u8 index = data->hwirq / AIROHA_PIN_BANK_SIZE;
+>   
+> -	if (data->hwirq >= AIROHA_NUM_PINS)
+> +	if (data->hwirq >= pinctrl->num_irq_pins)
+>   		return;
+>   
+>   	regmap_write(pinctrl->regmap, gpio_regs->status[index], BIT(offset));
+> @@ -273,7 +273,10 @@ static void airoha_irq_ack(struct irq_data *data)
+>   
+>   static int airoha_irq_type(struct irq_data *data, unsigned int type)
+>   {
+> -	if (data->hwirq >= AIROHA_NUM_PINS)
+> +	struct gpio_chip *gc = irq_data_get_irq_chip_data(data);
+> +	struct airoha_pinctrl *pinctrl = gpiochip_get_data(gc);
 > +
-> +	err = pm_runtime_resume_and_get(hsdma2dev(hsdma));
-> +	if (err < 0)
-> +		return err;
->
->  	err = clk_prepare_enable(hsdma->clk);
->  	if (err)
-> -		return err;
-> +		goto err_put_pm;
->
->  	mtk_dma_write(hsdma, MTK_HSDMA_INT_ENABLE, 0);
->  	mtk_dma_write(hsdma, MTK_HSDMA_GLO, MTK_HSDMA_GLO_DEFAULT);
->
->  	return 0;
+> +	if (data->hwirq >= pinctrl->num_irq_pins)
+>   		return -EINVAL;
+>   
+>   	if (type == IRQ_TYPE_NONE) {
+> @@ -304,9 +307,11 @@ static irqreturn_t airoha_irq_handler(int irq, void *data)
+>   {
+>   	struct airoha_pinctrl *pinctrl = data;
+>   	bool handled = false;
+> +	unsigned int nbanks;
+>   	int i;
+>   
+> -	for (i = 0; i < ARRAY_SIZE(irq_status_regs); i++) {
+> +	nbanks = DIV_ROUND_UP(pinctrl->num_irq_pins, AIROHA_PIN_BANK_SIZE);
+> +	for (i = 0; i < nbanks; i++) {
+>   		struct gpio_irq_chip *girq = &pinctrl->gpiochip.irq;
+>   		u32 regmap;
+>   		unsigned long status;
+> @@ -340,6 +345,22 @@ static const struct irq_chip airoha_gpio_irq_chip = {
+>   	GPIOCHIP_IRQ_RESOURCE_HELPERS,
+>   };
+>   
+> +/*
+> + * Mark the GPIOs that are not wired to the interrupt controller as not
+> + * valid, so that gpiod_to_irq() fails for them with -ENXIO instead of
+> + * handing out an interrupt that can never fire.
+> + */
+> +static void airoha_gpio_init_valid_mask(struct gpio_chip *gc,
+> +					unsigned long *valid_mask,
+> +					unsigned int ngpios)
+> +{
+> +	struct airoha_pinctrl *pinctrl = gpiochip_get_data(gc);
+> +	unsigned int num_irq_pins = pinctrl->num_irq_pins;
 > +
-> +err_put_pm:
-> +	pm_runtime_put_sync(hsdma2dev(hsdma));
+> +	if (num_irq_pins < ngpios)
+> +		bitmap_clear(valid_mask, num_irq_pins, ngpios - num_irq_pins);
+> +}
+
+I'm not sure if there is something that gives a sane error log if this 
+trigger. Maybe make it explicit?
+
+Either way:
+Reviewed-by: Benjamin Larsson <benjamin.larsson@genexis.eu>
+
 > +
-> +	return err;
->  }
->
->  static int mtk_hsdma_hw_deinit(struct mtk_hsdma_device *hsdma)
-> @@ -868,7 +878,6 @@ static int mtk_hsdma_hw_deinit(struct mtk_hsdma_device *hsdma)
->  	clk_disable_unprepare(hsdma->clk);
->
->  	pm_runtime_put_sync(hsdma2dev(hsdma));
-> -	pm_runtime_disable(hsdma2dev(hsdma));
->
->  	return 0;
->  }
-> @@ -983,7 +992,9 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
->  		goto err_unregister;
->  	}
->
-> -	mtk_hsdma_hw_init(hsdma);
-> +	err = mtk_hsdma_hw_init(hsdma);
-> +	if (err)
-> +		goto err_free;
->
->  	err = devm_request_irq(&pdev->dev, hsdma->irq,
->  			       mtk_hsdma_irq, 0,
-> @@ -991,7 +1002,7 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
->  	if (err) {
->  		dev_err(&pdev->dev,
->  			"request_irq failed with err %d\n", err);
-> -		goto err_free;
-> +		goto err_deinit;
->  	}
->
->  	platform_set_drvdata(pdev, hsdma);
-> @@ -1000,8 +1011,9 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
->
->  	return 0;
->
-> -err_free:
-> +err_deinit:
->  	mtk_hsdma_hw_deinit(hsdma);
-> +err_free:
->  	of_dma_controller_free(pdev->dev.of_node);
->  err_unregister:
->  	dma_async_device_unregister(dd);
-> --
-> 2.47.1
+>   static int airoha_pinctrl_add_gpiochip(struct airoha_pinctrl *pinctrl,
+>   					struct platform_device *pdev)
+>   {
+> @@ -362,6 +383,7 @@ static int airoha_pinctrl_add_gpiochip(struct airoha_pinctrl *pinctrl,
+>   
+>   	girq->default_type = IRQ_TYPE_NONE;
+>   	girq->handler = handle_bad_irq;
+> +	girq->init_valid_mask = airoha_gpio_init_valid_mask;
+>   	gpio_irq_chip_set_chip(girq, &airoha_gpio_irq_chip);
+>   
+>   	irq = platform_get_irq(pdev, 0);
+> @@ -848,6 +870,7 @@ int airoha_pinctrl_probe(struct platform_device *pdev)
+>   	pinctrl->grps = data->grps;
+>   	pinctrl->funcs = data->funcs;
+>   	pinctrl->confs_info = data->confs_info;
+> +	pinctrl->num_irq_pins = data->num_irq_pins;
+>   
+>   	err = pinctrl_enable(pinctrl->ctrl);
+>   	if (err)
+> diff --git a/drivers/pinctrl/airoha/pinctrl-an7563.c b/drivers/pinctrl/airoha/pinctrl-an7563.c
+> index 40cbbe90cc46..f011c6c9ccce 100644
+> --- a/drivers/pinctrl/airoha/pinctrl-an7563.c
+> +++ b/drivers/pinctrl/airoha/pinctrl-an7563.c
+> @@ -1069,6 +1069,7 @@ static const struct airoha_pinctrl_match_data pinctrl_match_data = {
+>   	.num_grps = ARRAY_SIZE(pinctrl_groups),
+>   	.funcs = pinctrl_funcs,
+>   	.num_funcs = ARRAY_SIZE(pinctrl_funcs),
+> +	.num_irq_pins = AIROHA_NUM_PINS,
+>   	.confs_info = {
+>   		[AIROHA_PINCTRL_CONFS_PULLUP] = {
+>   			.confs = pinctrl_pullup_conf,
+> diff --git a/drivers/pinctrl/airoha/pinctrl-an7581.c b/drivers/pinctrl/airoha/pinctrl-an7581.c
+> index 2fcf88106e11..bfb777594811 100644
+> --- a/drivers/pinctrl/airoha/pinctrl-an7581.c
+> +++ b/drivers/pinctrl/airoha/pinctrl-an7581.c
+> @@ -1441,6 +1441,7 @@ static const struct airoha_pinctrl_match_data pinctrl_match_data = {
+>   	.num_grps = ARRAY_SIZE(pinctrl_groups),
+>   	.funcs = pinctrl_funcs,
+>   	.num_funcs = ARRAY_SIZE(pinctrl_funcs),
+> +	.num_irq_pins = AIROHA_NUM_PINS,
+>   	.confs_info = {
+>   		[AIROHA_PINCTRL_CONFS_PULLUP] = {
+>   			.confs = pinctrl_pullup_conf,
+> diff --git a/drivers/pinctrl/airoha/pinctrl-an7583.c b/drivers/pinctrl/airoha/pinctrl-an7583.c
+> index 2c3a75c35915..1cd0f442ddc1 100644
+> --- a/drivers/pinctrl/airoha/pinctrl-an7583.c
+> +++ b/drivers/pinctrl/airoha/pinctrl-an7583.c
+> @@ -1471,6 +1471,7 @@ static const struct airoha_pinctrl_match_data pinctrl_match_data = {
+>   	.num_grps = ARRAY_SIZE(pinctrl_groups),
+>   	.funcs = pinctrl_funcs,
+>   	.num_funcs = ARRAY_SIZE(pinctrl_funcs),
+> +	.num_irq_pins = AIROHA_NUM_PINS,
+>   	.confs_info = {
+>   		[AIROHA_PINCTRL_CONFS_PULLUP] = {
+>   			.confs = pinctrl_pullup_conf,
+> diff --git a/drivers/pinctrl/airoha/pinctrl-en7523.c b/drivers/pinctrl/airoha/pinctrl-en7523.c
+> index 5aa39bacf460..b0c5e60f0aeb 100644
+> --- a/drivers/pinctrl/airoha/pinctrl-en7523.c
+> +++ b/drivers/pinctrl/airoha/pinctrl-en7523.c
+> @@ -1113,6 +1113,7 @@ static const struct airoha_pinctrl_match_data pinctrl_match_data = {
+>   	.num_grps = ARRAY_SIZE(pinctrl_groups),
+>   	.funcs = pinctrl_funcs,
+>   	.num_funcs = ARRAY_SIZE(pinctrl_funcs),
+> +	.num_irq_pins = AIROHA_NUM_PINS,
+>   	.confs_info = {
+>   		[AIROHA_PINCTRL_CONFS_PULLUP] = {
+>   			.confs = pinctrl_pullup_conf,
+
 
