@@ -4,77 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3D05C5CFDB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2026 13:14:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 154E9C5B572
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2026 13:42:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=NLH7Xmd1zNbIyVGn5V1KyBpmu9YhPaZ2W9vJmT8n4bU=; b=Bl5V1+W3ZGjLyZWGocbUXT/rcz
-	y/sn6wCn7ddDv1XR90UR2FQDQntnEC0qN2omfB7ur6VS4efek6lFApKiEU/et7J0ou1hzAnUI+Gpd
-	916Qw6n8l65wac6taAXTcgzhlkwsrBs1z67jOn4Bp/8o09WWKHA+o1nyKhg3jVo6OcOI9qMi2IcXb
-	CEB3McncjuDtY6VnspvgbCgjxGsUJsaMKtj70lfXiIiz3eLRbsRO/bbZWl/OknyUsDSVrVbQDdDZb
-	zWkuCARsy67eABQrE+tPlcaFeNzTQj30dpygkKdrStpMlgfefJ3zxsLIbCupjL/KcKF+DVJkLGVqB
-	fuTFxClQ==;
+	bh=vesdrJBOwlQOlA8CDULI3Zoo3petA5kgW0e7uLS9npA=; b=e+m7BEun7m/G3hD9+4AXRA3jgL
+	GrvodhMX3WZLYVzngf+k1HR9IPDqs8GUV6IehE42V6R0RkNP3au+IqNoSksQ+j4UV4jTDW/88fIPc
+	Y1W8SZtXPRihkUmZMluIFaKCJKPzkUIwh+8Yl0yyNc1Q3tj0+uw8b2nuc1pSIPLIWxjQ9lufA4mim
+	tEiNtmSzSvF/hBFqwCOSmHWOECcNas+TLvzJ0ZKlrrh61axCZiUVkgdwgYvVh2SWdFMsHlDn8F73v
+	7zvVYS7CPiRsIjYJxvL69XyqgTY1eTzRCk45PnQkFIaVZSElHjUVEsuy1nINa2aBBGRhTSSJgHjta
+	CsRNLJFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wurjs-00000002hTp-3uj7;
-	Fri, 14 Aug 2026 13:14:24 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wusAg-00000002jwi-3Gbh;
+	Fri, 14 Aug 2026 13:42:06 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wurjr-00000002hTP-0Wfz;
-	Fri, 14 Aug 2026 13:14:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7688A43566;
-	Fri, 14 Aug 2026 13:14:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 4F7B2C2BCB9;
-	Fri, 14 Aug 2026 13:14:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1786713262;
-	bh=SehANLEi1AhnebfTL1kjlO9MbWFqPE1U/G9I2+q8iqs=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=por2zTBMLibZcg4USnC89ZsLcBriS53gQfOjGVBSgXR8XfNxPZ40hTCGfTgCwxb+T
-	 qmaIt/siez/re03IegYooGWBV9Dzw6A0a2XLJhaUZse9y9YczqyTXpa2y3J6G6hMLJ
-	 VC0z4QcLyIxoMJ48eJkTpb+vNf7a5T9M7thxxuePeBXiRoaQx4TZ3NwC/pPnI0nm6q
-	 hrtfe3U4vjr+eyZr/s3tYzZvc7cF7LMROI4m6VlYrjuAWvU2cGujD0v+3ln+3eta8w
-	 XqE2Rb1q1YqY1uCNYcl/9uOM/v1tCuj5uploimcBpeUxCjXzjazJ4mrvmEnQvF+b8h
-	 loV25GCyLoqJQ==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A47FC5B572;
-	Fri, 14 Aug 2026 13:14:22 +0000 (UTC)
-From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Fri, 14 Aug 2026 16:13:52 +0300
-Subject: [PATCH] dt-bindings: input: mediatek,mt6779-keypad: add mt6572
+	id 1wusAd-00000002jvx-2wY7
+	for linux-mediatek@lists.infradead.org;
+	Fri, 14 Aug 2026 13:42:04 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-38e42560ebcso861320a91.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 14 Aug 2026 06:42:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1786714923; x=1787319723; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=vesdrJBOwlQOlA8CDULI3Zoo3petA5kgW0e7uLS9npA=;
+        b=BC4D9hV8mZbhclNPDdJ5O2H8p6yqVcpyNqiCu1zemGDRLox2cM9F/hD+vuC5l9ejqf
+         8pPVTSYxt5v26aFPROovjHoc4NinPkb5DhC+Mv3QoQ3NH1OF5FVxgqRzSIHSVe6DdIqh
+         S3T9YcCObV6R8p/VmyoeUSxCgBjSEj6BXcGcQKzHuNZmVUNG0rZmFcpUKQU8sxSTckgv
+         rBwaxAAB7XT4z5DSW+EdB1GhRjLB4j5J6YVmT+kybZ14zG/QadNPuX0tT6naIHhEU65q
+         E82t3/S1gXdvQ3wYIHqhSHJUAnWck3UKeU2TiCTDrpYTARj213GhxM+rJ7ZF0q8OZ2Vd
+         YQjA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1786714923; x=1787319723;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=vesdrJBOwlQOlA8CDULI3Zoo3petA5kgW0e7uLS9npA=;
+        b=mkxgWrRM03eZXCRxA0awAjGQRp8hxARc3+gtzDLTTc8Qo48T1RgX8mB5CYq7QzvRNE
+         cnBllitgY6eJj0g9X9dGX+rD8wKntq4zrKgR1831vl3FIPSGyalIUOw7WxCnO8WBNr+c
+         89uzXplhSio808g23pt59PLUAkXxgfwmjD7ENI5fgO9Y/zOeWe0ubTh6PXgsxx8rTUBh
+         cLe2vrJgBLNcHPCmoXVIBwwQqIxsGKNS8WHEcOuKY7gViBpKHS+NVbldDVNTLp/l2k0Z
+         p0RdyuZVCqCxJqKSgNcE7paMNv3SWcAR38KCTC0EhgblqwBNyfMXks3Pr37IlS8a0U6M
+         Xqrw==
+X-Forwarded-Encrypted: i=1; AHgh+Ro3hZcY7zWh60Oe5UFGXBP2ZgLBc6IV5hrEbOOPcrlQLtZLjzIje0+X4k2VgeDSvEfrdoMbX3fpXdq8BNtIbg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwrS8N+plGYORBZ2CM1SM8YZD0dwbzqXkJyTjKyPLpXj2FbAyGy
+	6SEMkNGCy3EmFShauwKO62McEZ2fBvBw80+em1pLvLUjdMkyjUxgprSM
+X-Gm-Gg: AR+sD109Bw/1G6bSNdWX7ddsExNuMugbIwxXcQkOWXwnwZjk8wUL8AVwGWXlcu/GpZh
+	Dx2Qp0lWtA6KqMV6J9AKTTmvh2ldN9hsPnMlPe5X4eFFZEZYJeAnkkwaeZ8g8ZvcBB2dPA1eaBg
+	JrPyucAyhCJ643O0mhzYo9tcpVveZFr69nDKFO/xzK8lRf7tITRH+LIWaZPDHc56oJ5I8AJg+/A
+	IGQ6daFjouDZFPKwXZ5YmpIynBzT5OJYwSlB4WIlFDW5tchuSlwDHMjb/5kyCvw8H/vunAsx4xR
+	fhdcORCgd7/6BQMuNiCCT/6ufVNur658BZyLL5ZBl94wbPI/BMd+91CUZUDh3Lx++QisrG7YoWn
+	V4aE0YiLs0m8mYOHvNo59IviWtkgNoslM98N4wZqpM7CPxi5jb38LfwOgy+QuUThBlmZCqmtLO1
+	bUIhNCXfI/Lj5JUHODYKbAqGgymujkkGs3P30Y1fSZEfaFDfIgs8MMXbqC8/EGR5X2YzvoDhq5E
+	BCdlAwG
+X-Received: by 2002:a17:90b:510a:b0:38e:9ef9:eb97 with SMTP id 98e67ed59e1d1-3933ba87422mr6655253a91.16.1786714922710;
+        Fri, 14 Aug 2026 06:42:02 -0700 (PDT)
+Received: from haichao.tail057a43.ts.net ([2001:da8:e000:1206:e9af:7c0e:be31:2c3f])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-394ea972c79sm2932232a91.4.2026.08.14.06.41.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 14 Aug 2026 06:42:02 -0700 (PDT)
+From: Ruoyu Wang <ruoyuw560@gmail.com>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Wenzhen Yu <wenzhen.yu@mediatek.com>,
+	Ryder Lee <ryder.lee@mediatek.com>
+Cc: linux-clk@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Ruoyu Wang <ruoyuw560@gmail.com>
+Subject: [PATCH v2] clk: mediatek: mt7629: Properly use CLK_IS_CRITICAL flag
+Date: Fri, 14 Aug 2026 21:41:56 +0800
+Message-ID: <20260814134156.1388413-1-ruoyuw560@gmail.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260814-6572-dt-keypad-v1-1-2ceff2373211@protonmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIzMDC0MTXTNTcyPdlBLd7NTKgsQUXaM0QwNDS4NUA4skAyWgpoKi1LTMCrC
- B0bEQfnFpUlZqcgnIFKXaWgCOtcbzcgAAAA==
-X-Change-ID: 20260814-6572-dt-keypad-2f10190e08b0
-To: Mattijs Korpershoek <mkorpershoek@kernel.org>, 
- Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Roman Vivchar <rva333@protonmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1786713259; l=1041;
- i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=dnFCakk4vuGhlPYs5js9z6YmW0GnQtXr03hvBnhKxc0=;
- b=n5oqb/qqHWnBuYOLTPzQm8tLKvcunF+q145rv7u6gZq2JHxvdLiDZCezeD+FxS7AWq7o+O9F0
- jNVhnoo38TAD3bJqDh5TZBqVx6BwcorClnTnwfd24kRG74EOJNUf32w
-X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
- pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
-X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
- auth_id=777
-X-Original-From: Roman Vivchar <rva333@protonmail.com>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260814_064203_749719_2D5D6966 
+X-CRM114-Status: GOOD (  14.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,40 +102,143 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Roman Vivchar <rva333@protonmail.com>
+The MT7629 clock driver calls clk_prepare_enable() for six clocks that
+must remain running. These calls create permanent references owned by
+the driver. In topckgen and apmixedsys, provider registration can fail
+after the references are acquired, leaving them unreleased.
 
-Add a compatible string for the mt6572 keypad, that is compatible with
-mt6779.
+Mark ARMPLL, main_core_en, the AXI, memory and DDRPHY selectors, and the
+UART0 gate with CLK_IS_CRITICAL, and remove the manual enable calls. Keep
+CLK_SET_RATE_PARENT on the three muxes while adding the critical flag.
+The common clock framework then preserves the existing always-on behavior
+without driver-owned prepare and enable references.
 
-Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+This issue was found by a static analysis checker and confirmed by manual
+source review.
+
+Fixes: 3b5e748615e7 ("clk: mediatek: add clock support for MT7629 SoC")
+Signed-off-by: Ruoyu Wang <ruoyuw560@gmail.com>
 ---
- Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml | 1 +
- 1 file changed, 1 insertion(+)
+Changes in v2:
+- Preserve CLK_SET_RATE_PARENT on the AXI, memory and DDRPHY muxes.
+- Rebase onto clk-next and repeat the focused ARM W=1 build.
 
-diff --git a/Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml b/Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml
-index 914dd3283df3..20fa41f691ed 100644
---- a/Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml
-+++ b/Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml
-@@ -26,6 +26,7 @@ properties:
-       - const: mediatek,mt6779-keypad
-       - items:
-           - enum:
-+              - mediatek,mt6572-keypad
-               - mediatek,mt6873-keypad
-               - mediatek,mt8183-keypad
-               - mediatek,mt8365-keypad
+v1: https://lore.kernel.org/r/20260813153113.3952621-1-ruoyuw560@gmail.com/
 
----
-base-commit: 8cd9520d35a6c38db6567e97dd93b1f11f185dc6
-change-id: 20260814-6572-dt-keypad-2f10190e08b0
+ drivers/clk/mediatek/clk-mt7629.c | 39 +++++++++++++++----------------
+ 1 file changed, 19 insertions(+), 20 deletions(-)
 
-Best regards,
---  
-Roman Vivchar <rva333@protonmail.com>
+diff --git a/drivers/clk/mediatek/clk-mt7629.c b/drivers/clk/mediatek/clk-mt7629.c
+index e154771b1b8bb..1a3abffd3238f 100644
+--- a/drivers/clk/mediatek/clk-mt7629.c
++++ b/drivers/clk/mediatek/clk-mt7629.c
+@@ -48,8 +48,9 @@
+ 		_pd_reg, _pd_shift, _tuner_reg, _pcw_reg, _pcw_shift,	\
+ 		NULL, "clk20m")
+ 
+-#define GATE_APMIXED(_id, _name, _parent, _shift)			\
+-	GATE_MTK(_id, _name, _parent, &apmixed_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
++#define GATE_APMIXED_AO(_id, _name, _parent, _shift)			\
++	GATE_MTK_FLAGS(_id, _name, _parent, &apmixed_cg_regs, _shift,	\
++		 &mtk_clk_gate_ops_no_setclr_inv, CLK_IS_CRITICAL)
+ 
+ #define GATE_INFRA(_id, _name, _parent, _shift)				\
+ 	GATE_MTK(_id, _name, _parent, &infra_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
+@@ -57,6 +58,10 @@
+ #define GATE_PERI0(_id, _name, _parent, _shift)				\
+ 	GATE_MTK(_id, _name, _parent, &peri0_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
+ 
++#define GATE_PERI0_AO(_id, _name, _parent, _shift)			\
++	GATE_MTK_FLAGS(_id, _name, _parent, &peri0_cg_regs, _shift,	\
++		 &mtk_clk_gate_ops_setclr, CLK_IS_CRITICAL)
++
+ #define GATE_PERI1(_id, _name, _parent, _shift)				\
+ 	GATE_MTK(_id, _name, _parent, &peri1_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
+ 
+@@ -311,7 +316,7 @@ static const struct mtk_gate_regs peri1_cg_regs = {
+ 
+ static const struct mtk_pll_data plls[] = {
+ 	PLL(CLK_APMIXED_ARMPLL, "armpll", 0x0200, 0x020C, 0,
+-	    0, 21, 0x0204, 24, 0, 0x0204, 0),
++	    PLL_AO, 21, 0x0204, 24, 0, 0x0204, 0),
+ 	PLL(CLK_APMIXED_MAINPLL, "mainpll", 0x0210, 0x021C, 0,
+ 	    HAVE_RST_BAR, 21, 0x0214, 24, 0, 0x0214, 0),
+ 	PLL(CLK_APMIXED_UNIV2PLL, "univ2pll", 0x0220, 0x022C, 0,
+@@ -325,7 +330,7 @@ static const struct mtk_pll_data plls[] = {
+ };
+ 
+ static const struct mtk_gate apmixed_clks[] = {
+-	GATE_APMIXED(CLK_APMIXED_MAIN_CORE_EN, "main_core_en", "mainpll", 5),
++	GATE_APMIXED_AO(CLK_APMIXED_MAIN_CORE_EN, "main_core_en", "mainpll", 5),
+ };
+ 
+ static const struct mtk_gate infra_clks[] = {
+@@ -437,7 +442,7 @@ static const struct mtk_gate peri_clks[] = {
+ 	GATE_PERI0(CLK_PERI_PWM_PD, "peri_pwm_pd", "pwm_qtr_26m", 9),
+ 	GATE_PERI0(CLK_PERI_AP_DMA_PD, "peri_ap_dma_pd", "faxi", 12),
+ 	GATE_PERI0(CLK_PERI_MSDC30_1_PD, "peri_msdc30_1", "msdc30_1", 14),
+-	GATE_PERI0(CLK_PERI_UART0_PD, "peri_uart0_pd", "faxi", 17),
++	GATE_PERI0_AO(CLK_PERI_UART0_PD, "peri_uart0_pd", "faxi", 17),
+ 	GATE_PERI0(CLK_PERI_UART1_PD, "peri_uart1_pd", "faxi", 18),
+ 	GATE_PERI0(CLK_PERI_UART2_PD, "peri_uart2_pd", "faxi", 19),
+ 	GATE_PERI0(CLK_PERI_UART3_PD, "peri_uart3_pd", "faxi", 20),
+@@ -459,12 +464,15 @@ static struct mtk_composite infra_muxes[] = {
+ 
+ static struct mtk_composite top_muxes[] = {
+ 	/* CLK_CFG_0 */
+-	MUX_GATE(CLK_TOP_AXI_SEL, "axi_sel", axi_parents,
+-		 0x040, 0, 3, 7),
+-	MUX_GATE(CLK_TOP_MEM_SEL, "mem_sel", mem_parents,
+-		 0x040, 8, 1, 15),
+-	MUX_GATE(CLK_TOP_DDRPHYCFG_SEL, "ddrphycfg_sel", ddrphycfg_parents,
+-		 0x040, 16, 1, 23),
++	MUX_GATE_FLAGS(CLK_TOP_AXI_SEL, "axi_sel", axi_parents,
++		       0x040, 0, 3, 7,
++		       CLK_SET_RATE_PARENT | CLK_IS_CRITICAL),
++	MUX_GATE_FLAGS(CLK_TOP_MEM_SEL, "mem_sel", mem_parents,
++		       0x040, 8, 1, 15,
++		       CLK_SET_RATE_PARENT | CLK_IS_CRITICAL),
++	MUX_GATE_FLAGS(CLK_TOP_DDRPHYCFG_SEL, "ddrphycfg_sel", ddrphycfg_parents,
++		       0x040, 16, 1, 23,
++		       CLK_SET_RATE_PARENT | CLK_IS_CRITICAL),
+ 	MUX_GATE(CLK_TOP_ETH_SEL, "eth_sel", eth_parents,
+ 		 0x040, 24, 3, 31),
+ 	/* CLK_CFG_1 */
+@@ -568,10 +576,6 @@ static int mtk_topckgen_init(struct platform_device *pdev)
+ 				    ARRAY_SIZE(top_muxes), base,
+ 				    &mt7629_clk_lock, clk_data);
+ 
+-	clk_prepare_enable(clk_data->hws[CLK_TOP_AXI_SEL]->clk);
+-	clk_prepare_enable(clk_data->hws[CLK_TOP_MEM_SEL]->clk);
+-	clk_prepare_enable(clk_data->hws[CLK_TOP_DDRPHYCFG_SEL]->clk);
+-
+ 	return of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+ }
+ 
+@@ -620,8 +624,6 @@ static int mtk_pericfg_init(struct platform_device *pdev)
+ 	if (r)
+ 		return r;
+ 
+-	clk_prepare_enable(clk_data->hws[CLK_PERI_UART0_PD]->clk);
+-
+ 	return 0;
+ }
+ 
+@@ -640,9 +642,6 @@ static int mtk_apmixedsys_init(struct platform_device *pdev)
+ 	mtk_clk_register_gates(&pdev->dev, node, apmixed_clks,
+ 			       ARRAY_SIZE(apmixed_clks), clk_data);
+ 
+-	clk_prepare_enable(clk_data->hws[CLK_APMIXED_ARMPLL]->clk);
+-	clk_prepare_enable(clk_data->hws[CLK_APMIXED_MAIN_CORE_EN]->clk);
+-
+ 	return of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
+ }
+ 
 
-
+base-commit: 684633bd76956b5d7ed59eb799e6fe7f45e47be4
+-- 
+2.51.0
 
