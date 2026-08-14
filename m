@@ -4,109 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B894DC5CFDB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2026 14:31:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A292C5CFC1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2026 19:20:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OcLA+9NxXaZ0Z8qAWG9RrfMqZWDWTvs48FyXhXFFOCg=; b=mFol6mOjkous/1xufM7sz6J/6m
-	Rfws00PDXWhqhzKUcqAfLTMsxJ1007T2dbF2YRf7q4rj6ERCW3/kc6OHXAoNfo6tr6VjxoIbjlvZb
-	KVYNHTatmA4hJhE0hiaZauHB+dBUvSTfQoqUY+uS+jZvQByR/267JLeYSntDnFt1BKKj36n3yFXmb
-	2+ptEc5zIzZtLOB36L6USB+Ycf+clSQujpmrUdoe/9Ahm0tgxplM8xllqnohK/WYWOmZxM9i6pme/
-	2Mo0LZ9nIVT9BIdjIl0G25/osuauWtvfZQ2Ek0GVQvKkHIRgf+eSoj9OwaTTq2+kArqAaqXE4w/st
-	KTC4Q7gQ==;
+	bh=ml4nFFPO4E1DRPtyQK31bvAG+DqqBMl5o3+Nm/A8ZXo=; b=NAwwESzhHK9uo9l0jCRLhBCKLp
+	820+lfC8NVv0anTk4IZ+NUVY5nVttDcmFZWlaQ2f2iJmB+iU/wVE5ucpEuiKM+1JbaLTtmeFnxXA+
+	JkUr+9bYSElPwqI1uYRQTO9H+QKLkV1D8pQNYKtVQb6abhXvEz4ERFbuahB2o7yYCxpaRUspwFtyP
+	7jZRmkZ2YsPR+gyITIeESuo+Tuck6/VgeYLBuV6Jt3ZjJRb6winzuZR1AddpWe4bE9S90JqEq4em5
+	D09NKWRkxbr8Uo1s0KNuEprVge6jADzzjR4KX/vpC5O56uVh6SS73YS5+xhDSxfYlzN3g6tnjRQCp
+	Xf6dzZ2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuswm-00000002nU2-2vuG;
-	Fri, 14 Aug 2026 14:31:48 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wuxRh-000000035hO-0zzO;
+	Fri, 14 Aug 2026 19:20:01 +0000
+Received: from mail-northeuropeazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c200::5] helo=DUZPR83CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wuswk-00000002nTI-2eQT;
-	Fri, 14 Aug 2026 14:31:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1786717902;
-	bh=OcLA+9NxXaZ0Z8qAWG9RrfMqZWDWTvs48FyXhXFFOCg=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=pfUKVYmbkxlA+SMcEC8ybrcIQqZtCcqxkwdD4V+FUYhiI2NHNLPCg+n18pYPmf7CN
-	 g6CISMdt6CDVXaBKviCpMUoXDjyx6YdG3u/oSCsc4SSXvioxGl0ADHjxP7apIUmz6W
-	 8EIZDrCsa3vR1aq9Ot2u8zgQ2jZFh0GjiHZFxPHcU3Ymc2kUvXNiNoqEnnXqLxiai6
-	 UqjulyZxOj3rl6/shuSU0DLi3oUNlIs0RKMXKcOfgn1jthZdJS/GvZjtKLwHmKEByF
-	 GrWyw2zbA8vVSoY/ffcom4AJCqtOTVO7nWjCyaFQt8/lN64ighUUkHTqh9qQVFH756
-	 UZZI+qsDcohRQ==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EB00617E07B5;
-	Fri, 14 Aug 2026 16:31:38 +0200 (CEST)
-Message-ID: <dcb6ecbd6184c01861c7d36068abb266df4587c5.camel@collabora.com>
-Subject: Re: [PATCH v6 01/14] media: mediatek: vcodec: support vcp
- architecture
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Kyrie Wu =?UTF-8?Q?=28=E5=90=B4=E6=99=97=29?= <Kyrie.Wu@mediatek.com>, 
- "fshao@chromium.org"	 <fshao@chromium.org>, Yunfei Dong
- =?UTF-8?Q?=28=E8=91=A3=E4=BA=91=E9=A3=9E=29?=	 <Yunfei.Dong@mediatek.com>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,  "fanwu01@zju.edu.cn"	
- <fanwu01@zju.edu.cn>, "jacopo.mondi@ideasonboard.com"	
- <jacopo.mondi@ideasonboard.com>, "haoxiang_li2024@163.com"	
- <haoxiang_li2024@163.com>, "tfiga@chromium.org" <tfiga@chromium.org>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andrew-CT Chen =?UTF-8?Q?=28=E9=99=B3=E6=99=BA=E8=BF=AA=29?=	
- <Andrew-CT.Chen@mediatek.com>, "linux-media@vger.kernel.org"	
- <linux-media@vger.kernel.org>, "ribalda@chromium.org"
- <ribalda@chromium.org>,  "wenst@chromium.org"	 <wenst@chromium.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
- "linux-kernel@vger.kernel.org"	 <linux-kernel@vger.kernel.org>,
- "kees@kernel.org" <kees@kernel.org>,  "rongqianfeng@vivo.com"	
- <rongqianfeng@vivo.com>, Irui Wang =?UTF-8?Q?=28=E7=8E=8B=E7=91=9E=29?=	
- <Irui.Wang@mediatek.com>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, 
- "linux-mediatek@lists.infradead.org"	 <linux-mediatek@lists.infradead.org>,
- Tiffany Lin =?UTF-8?Q?=28=E6=9E=97=E6=85=A7=E7=8F=8A=29?=	
- <tiffany.lin@mediatek.com>, "p.zabel@pengutronix.de"
- <p.zabel@pengutronix.de>,  "benjamin.gaignard@collabora.com"	
- <benjamin.gaignard@collabora.com>, "matthias.bgg@gmail.com"	
- <matthias.bgg@gmail.com>, "mchehab@kernel.org" <mchehab@kernel.org>, 
- "sebastian.fricke@collabora.com"	 <sebastian.fricke@collabora.com>,
- "robh@kernel.org" <robh@kernel.org>, 
- "linux-arm-kernel@lists.infradead.org"	
- <linux-arm-kernel@lists.infradead.org>, 
- "laurent.pinchart+renesas@ideasonboard.com"	
- <laurent.pinchart+renesas@ideasonboard.com>, "hverkuil+cisco@kernel.org"	
- <hverkuil+cisco@kernel.org>
-Cc: "sakari.ailus@linux.intel.com" <sakari.ailus@linux.intel.com>
-Date: Fri, 14 Aug 2026 10:31:37 -0400
-In-Reply-To: <44d9ec5c5f856b378f745fae8bd60aa4730df044.camel@mediatek.com>
-References: <20260720012056.1026551-1-kyrie.wu@mediatek.com>
-		 <20260720012056.1026551-2-kyrie.wu@mediatek.com>
-		 <c3abd49fc12e8cfab6993feb60b361ba07b6fb7d.camel@collabora.com>
-		 <275503aae6ff76a4c186efe665acf996dec9229d.camel@mediatek.com>
-		 <c8ab26c2edfa4ee4fbbb83faf5f54547f252464f.camel@collabora.com>
-	 <44d9ec5c5f856b378f745fae8bd60aa4730df044.camel@mediatek.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-1Pa9FEAnN6BDVnhiPDGq"
-User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
+	id 1wuxRe-000000035ga-3mM0;
+	Fri, 14 Aug 2026 19:20:00 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=XyvFCfv9YWMlOXxBJnkGgcPykuj9tZGgY19/JnUeADLcLao1HV9rtngVozmqWxYWi6VHk5PLrceZC+vr++lppAq7wh52ZVtsZ76qfMnEItI3C9FhrLl94Jd/qMA2moVUfhnV4I7H3wp+o8Xg4+8fl0MbZWsP9r6+UiucPx0goTl2svJ05X5KdLyyz3DTzAYl65Vp+jeQoD8k6bt5EESuKb2PdtHiRSSmTgLRcOzfU8RUKweLTUVqRYeQ7GhM8yd3Fz8fLacJ7n/90nweiV6y1ClLkQpvIeaywaPwFdgeg+uiSap6NXCG7YLEQMVrpxxVU+Wy37rkvvUIlYgCDgA+RQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ml4nFFPO4E1DRPtyQK31bvAG+DqqBMl5o3+Nm/A8ZXo=;
+ b=a/DGIcVXZMHwHrqtyYgyJduZhKAaf4Fa43THI+QR81lxXiKYMlcR8RJldcQh4+vD2HJQGsstJF/o7xXjlBR/W+/8RE4UKnsCtqAWfC/FI0b/DHQGDBO4I5SAq2jm6QQ0L4qW30TgbpyjTFcagBjupe1Tdkvqc1zW/+GZuojnXsvYopFjZhYrAA9HTYdRf4R9x+vF91e2Nj9eZUAvKDKJ1BjdIz4NMF+HzFJc4XK1cDTxA5ifGVcMsB7CPOnZbUbGtg+clrLCdK6Hiw51QaLQBdUXcknUz6ckcB7mpeBSkBKoRCOSwlCv51NfL8uyemwzgY34tMO8nVJT8z4oSpX2+w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
+ dkim=pass header.d=oss.nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
+ s=selector1-NXP1-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ml4nFFPO4E1DRPtyQK31bvAG+DqqBMl5o3+Nm/A8ZXo=;
+ b=al6eJknOA4T6MjLp148cI7MgrjLQGIIcG5IJM0XqXwVRRd7mfv++r+lfOETC6ssn+O6l6fhFcmq6gKAZU4LW54n1D6BJvGzUqwP729/YIohc3YIc0Q8GXXeVffrvQgp06LVkki6lIBtmkJHg+KN0rOMec4svGJPURvQrkcOo0krANtib63RukV/552hyPCBf/Ru9Ie8hzJ65ulQOwyO8/vvle9j3PoAJO2uWZhP3jVb22g96Wf/nRTAzGqZrhZKXLucRfrILSrgq5NBCkivVj9yo1RXH98i7MTNbGtuOSaxSvRNU1lVyfsfo2ZZFijnA8/qNx4GxM4N+DFWOdKuhsQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=oss.nxp.com;
+Received: from GV2PR04MB11799.eurprd04.prod.outlook.com (2603:10a6:150:2cf::9)
+ by DBBPR04MB7996.eurprd04.prod.outlook.com (2603:10a6:10:1e3::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.315.16; Fri, 14 Aug
+ 2026 19:19:54 +0000
+Received: from GV2PR04MB11799.eurprd04.prod.outlook.com
+ ([fe80::2146:83a2:5329:b7c]) by GV2PR04MB11799.eurprd04.prod.outlook.com
+ ([fe80::2146:83a2:5329:b7c%7]) with mapi id 15.21.0315.014; Fri, 14 Aug 2026
+ 19:19:54 +0000
+Date: Fri, 14 Aug 2026 15:19:46 -0400
+From: Frank Li <Frank.li@oss.nxp.com>
+To: Myeonghun Pak <mhun512@gmail.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+	Frank Li <Frank.Li@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Ijae Kim <ae878000@gmail.com>
+Subject: Re: [PATCH v2 RESEND] dmaengine: mediatek: hsdma: fix runtime PM
+ leak on init failure
+Message-ID: <an9qUnMZ7_iRTwY2@lizhi-Precision-Tower-5810>
+References: <aj1RSj5ZXvc-9yu7@lizhi-Precision-Tower-5810>
+ <20260804153924.49627-1-mhun512@gmail.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260804153924.49627-1-mhun512@gmail.com>
+X-ClientProxiedBy: PH7P220CA0137.NAMP220.PROD.OUTLOOK.COM
+ (2603:10b6:510:327::22) To GV2PR04MB11799.eurprd04.prod.outlook.com
+ (2603:10a6:150:2cf::9)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GV2PR04MB11799:EE_|DBBPR04MB7996:EE_
+X-MS-Office365-Filtering-Correlation-Id: 785f92de-aaf6-4075-6380-08defa390559
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|23010399003|366016|19092799006|56012099006|10067099003|11063799006|4143699003|22082099003|18002099003;
+X-Microsoft-Antispam-Message-Info: 6bow7FiMO90jOV/wY5kt17SkbxIkLOmN958BIvAc2awlvcBp1bLaLxGNou+JmWYb/vkJLxJIcq/ujyUDDQgwzTuVWFGQzKVgQO3t3P1Givg6qhdFxrODLtWUoX7TpREP/Sb+YHL7eJl19nl0suInq9af8CgaQWRYf3nbjNTYq8KPEe6nawEZw92LWy1D9PINGaLTjZuIrtw9x6JVpCKjCdNaCsBAGK0iOGbZDlyJvYklEEduV5lwc1uW3mQxT8YWNdBttURDkP5PUwQFiEgy0W7OK8jWfECGgh7dW6sCdxLZGiAS6nWZ4PLPTE7fQ1blffPRHXz1p2gLRf/lue/49txNBXWTHv1u5kZqcfwGoVWO/bSvpFWZtP/tEnU4HT40eJUCPkOTuESDxrw1CaWRk8rArGzcXCtjr4VTKgXLUPwA8wbtxru1W7i3cmbC/m0E7rMso9jsIhQ6pvzFym7X83qAjwibWnsc2pzABPuZNdmi2Pw+zgDIsm59keV/mcF3x7ZGTjcPK2mAJd7aLXgthuSEwQHOPYl+rdxjJOSzOJyWr/0FZQhUQ/Qb8YB5h1DS8YxDWt2uHxEnUP2kCPA17SpA2oNOXGsNlyYBVMAHShK3CjgiGzuUDZ6xlnurNncdbsgq1EAsx1V7ubBSry/FdHX3LJ7K/rbOpaPqUAAcDN8=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR04MB11799.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(23010399003)(366016)(19092799006)(56012099006)(10067099003)(11063799006)(4143699003)(22082099003)(18002099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?E6sZ2PjP/nLnSgLcMfJ5wUlIUw3cXi/7A6doB4V9xHJz8CHjS8tXB6vjPzOk?=
+ =?us-ascii?Q?9uAXuXFf+++sFpPiiuFWhzzkuihHwsgbAPL90EF7B/zWUK+3sHLusKZz+zac?=
+ =?us-ascii?Q?QlQTl047+tf58Sjy5upmodbJRK2rVsxbvRghs9V3StWabYm8Yq5Yn8NjwZPi?=
+ =?us-ascii?Q?LHWEShOKSAnfCDfzoMEuWTPBsKpPZ0gJZppdvUlNLT3bN8lOyWM16COGl4bz?=
+ =?us-ascii?Q?+iqaJVhtQlz5VeJ3DNDbdLpbHwUzcbA6QNZFaUXMuEp+KV0BYbS3E1L1+r3L?=
+ =?us-ascii?Q?E3wwVGAzb3WZgvRIXylzwCR1LNx1D1w0YgFPNEun30Fp+B+ODDIK6gpW5yLI?=
+ =?us-ascii?Q?n7m3aZHG0K20Ao33f5Csl/OxHS3ZgPioyft7Pzyn3mICd5c20MkXrUu0sKJo?=
+ =?us-ascii?Q?IBN4EOIrm1CDLAK5cLjRkEhduqyvN9zmsKe4+6ynGdabnqnuEnoGM8RHu3ZD?=
+ =?us-ascii?Q?1Qr6UnZ4dvv92FZPFIpeFaveJSNh70eBmdA0FzXFNUkHR0oI5tLjZJ//AB9l?=
+ =?us-ascii?Q?77NUAeQeX9aQYhmDOUXUNQdoKS7B3UNHCUcH5KbUyYEWhTkHh+xZ33YAo/NX?=
+ =?us-ascii?Q?1z5PpWUvjZc4WpxR9qtV1ioXvACud6xEI6Wrt67SdOlY9WVFmT4MyYN93VsE?=
+ =?us-ascii?Q?B/eRRV/DZ1wRZFVV3VWqeMAtE8T2KLKFjMXOW76cR9FJs5JGLEsRkxyMnD7L?=
+ =?us-ascii?Q?mh3c8n2fdSu7GU05XGPv59OgpKQgMYnsXfnaMtjiQO2TpXDTBE9h6HaRZ3sa?=
+ =?us-ascii?Q?jJM/+ObC/16oUkJidBoi5WEnnzqxOeZnyztFY5EphzA+O45llF1r0/3i19b9?=
+ =?us-ascii?Q?2Ce8T7Gaf6Y2+E9ECe4ooqsEH8Sb6y8SIAvjlVnpMFSMpeg7QkoLXVnpTV2O?=
+ =?us-ascii?Q?lKsHxzzlxUFl1LqP9S/PxGoniEOuefHQdKQQoMMDTXwBvwZlkJ/xDfBlunya?=
+ =?us-ascii?Q?0nOyvt6Fcmv5MxLwq7KoHvbwfSUg0b2syDDffed8ZRKUuT/QcqWEKAlZVf+H?=
+ =?us-ascii?Q?+BCvOJWPSPfof6NaaGL4OUYgc4Qe9fOYMCpXMziif2GL40r6lb/TQT2e9HaK?=
+ =?us-ascii?Q?YTKv7mnWpqay+Hw2ESMOIm5JGC1pjmKjrzAobJnl0SsA5TgxvNUETUb7k1DF?=
+ =?us-ascii?Q?wLCau2pkwMDu3A2kzKXJfRAiUacjoI/TWqo7NEMbV/qL7zmO1SkrQFg9lanG?=
+ =?us-ascii?Q?eIbUrIhMipook2Msu968ldBeB4fqvw/H5lrRKALZf7LnAF/5tB9eB6mSOj77?=
+ =?us-ascii?Q?BJiSnCjpBeJX3KIIbL3BnE4oekOYv6qxf37h+g57Efxt7fzz30QKzHFsT9ry?=
+ =?us-ascii?Q?r21hx9Z7g06k52qEVuFLgmjkqtZZL5wagFrM+YJwnN9RXCHpthymmMYZcLRm?=
+ =?us-ascii?Q?MtNRbqnhyYbCoY2GIjFKrOtZmKTd4xO+ymhUUkt3TqnQ/cT2kCHxAwjGWUwU?=
+ =?us-ascii?Q?fNtQmfmpBXwCbRWol2cqDToUfYKjSV3jnIpPelWAcAnB9aRiXf2PcXOxtKIu?=
+ =?us-ascii?Q?8gLhPiFhw22b5HFsWXUMszFjEUs0RuVF0SK+TLR//Mw33m1BTAeC1Kwyjd3B?=
+ =?us-ascii?Q?iVua8TZJ4sFCMfIJ43JMmFtPnwFYqBmmchJw54lm3wIUs5lVvBo3+pu9nkQF?=
+ =?us-ascii?Q?GpOKR5bycWVebpuX75sdJIu+UqeGGsW65uimf55JpOyhIt8gOwWbBMVzo+oQ?=
+ =?us-ascii?Q?egaDZGVdFkOTcVq3TAj8M7nDv9AT7kvqzEq98dkXwXEcMS+dzw4AmhMUYu1H?=
+ =?us-ascii?Q?ifrSq5I0ccClY4uS6o/ZAMbAZ7lkoCWIv6Wv2X4MCnPa55jAOHf7?=
+X-OriginatorOrg: oss.nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 785f92de-aaf6-4075-6380-08defa390559
+X-MS-Exchange-CrossTenant-AuthSource: GV2PR04MB11799.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Aug 2026 19:19:54.4680
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: fdUwU39x3+JZ6suoLeov4Pp+3xcx6yErG9PIR1a53RD7Z1DvSH22oxaBrQB5dFFjkzRAj63Oqw0QeumV5bASdQ7CK/3jpTV9O2HtTeo3rOMg4LI+92p2o8WsTZb/mpTw
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR04MB7996
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260814_073146_835593_3B8DE3EE 
-X-CRM114-Status: GOOD (  18.58  )
+X-CRM114-CacheID: sfid-20260814_121958_973521_01758D1E 
+X-CRM114-Status: GOOD (  21.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,66 +141,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, Aug 05, 2026 at 12:39:24AM +0900, Myeonghun Pak wrote:
+> mtk_hsdma_hw_init() enables runtime PM and gets a runtime PM reference
+> before enabling the HSDMA clock. It currently ignores failures from
+> pm_runtime_get_sync(); if runtime resume fails, the usage count remains
+> held. If clk_prepare_enable() then fails, the usage count remains held.
+>
+> Use devm_pm_runtime_enable() to manage runtime PM enablement, and use
+> pm_runtime_resume_and_get() so resume failures do not leak the usage count.
+> If clk_prepare_enable() fails after a successful runtime resume, drop the
+> runtime PM reference before returning.
+>
+> The probe path also ignores the return value from mtk_hsdma_hw_init(), so a
+> failed hardware init can continue as a successful probe. Propagate
+> mtk_hsdma_hw_init() failures from probe, while keeping a separate unwind
+> label so mtk_hsdma_hw_deinit() is only called after hardware init succeeds.
+>
+> Fixes: 548c4597e984 ("dmaengine: mediatek: Add MediaTek High-Speed DMA controller for MT7622 and MT7623 SoC")
+> Co-developed-by: Ijae Kim <ae878000@gmail.com>
+> Signed-off-by: Ijae Kim <ae878000@gmail.com>
+> Signed-off-by: Myeonghun Pak <mhun512@gmail.com>
 
---=-1Pa9FEAnN6BDVnhiPDGq
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Please don't post new patch to old email thread.
 
-Le vendredi 14 ao=C3=BBt 2026 =C3=A0 02:38 +0000, Kyrie Wu (=E5=90=B4=E6=99=
-=97) a =C3=A9crit=C2=A0:
-> On Tue, 2026-08-11 at 16:22 -0400, Nicolas Dufresne wrote:
-> > Hi Kyrie,
-> >=20
-> > Le lundi 10 ao=C3=BBt 2026 =C3=A0 03:05 +0000, Kyrie Wu (=E5=90=B4=E6=
-=99=97) a =C3=A9crit=C2=A0:
-> > > I agree. Since the platform data is introduced in the MT8189 patch
-> > > series, I will move fw_type to the platform data and make
-> > > mtk_vcodec_dec_get_chip_name() derive the chip identifier from it
-> > > in
-> > > the MT8189 series.
-> >=20
-> > I'm not sure I have captured the plan correctly. Would you mind
-> > clarifying ?
-> >=20
-> > Nicolas
->=20
-> Hi Nicolas,
->=20
-> Sorry, my previous reply was unclear.
->=20
-> The platform-data refactoring will be included in the next revision of
-> the MT8189 series. That series depends on the updated MT8196 encoder
-> series, so I need to wait for the new MT8196 encoder revision to be
-> posted before I can rebase and send the updated MT8189 series.
->=20
-> In the updated MT8189 series, `fw_type` and the chip identifier will be
-> set in the platform data for each compatible, rather than being derived
-> by probing DT properties. Consequently, the DT-property-based selection
-> shown in this patch will be removed.
->=20
-> I will make this dependency explicit in the cover letter. Sorry again
-> for not explaining the plan clearly.
+Reviewed-by: Frank Li <Frank.Li@nxp.com>
 
-Thanks, this will be helpful to handle follow-up series.
-
-Nicolas
-
->=20
-> Best regards,
-> Kyrie
-
---=-1Pa9FEAnN6BDVnhiPDGq
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCan8myQAKCRDZQZRRKWBy
-9AjrAP47W1O0MlybGV5nddQLSeB987/IQrb90AsBaMHCuSPMNwEAqHnDqWue4hCg
-bIF5omk88zNifV9lAU/7JgU1KPCuiAU=
-=bcq9
------END PGP SIGNATURE-----
-
---=-1Pa9FEAnN6BDVnhiPDGq--
+>
+> ---
+> Changes in v2:
+> - Use devm_pm_runtime_enable() for runtime PM enablement.
+> - Drop manual pm_runtime_disable() calls from init/deinit paths.
+>
+>  drivers/dma/mediatek/mtk-hsdma.c | 26 +++++++++++++++++++-------
+>  1 file changed, 19 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/dma/mediatek/mtk-hsdma.c b/drivers/dma/mediatek/mtk-hsdma.c
+> index a43412ff5e..27cb370106 100644
+> --- a/drivers/dma/mediatek/mtk-hsdma.c
+> +++ b/drivers/dma/mediatek/mtk-hsdma.c
+> @@ -848,17 +848,27 @@ static int mtk_hsdma_hw_init(struct mtk_hsdma_device *hsdma)
+>  {
+>  	int err;
+>
+> -	pm_runtime_enable(hsdma2dev(hsdma));
+> -	pm_runtime_get_sync(hsdma2dev(hsdma));
+> +	err = devm_pm_runtime_enable(hsdma2dev(hsdma));
+> +	if (err)
+> +		return err;
+> +
+> +	err = pm_runtime_resume_and_get(hsdma2dev(hsdma));
+> +	if (err < 0)
+> +		return err;
+>
+>  	err = clk_prepare_enable(hsdma->clk);
+>  	if (err)
+> -		return err;
+> +		goto err_put_pm;
+>
+>  	mtk_dma_write(hsdma, MTK_HSDMA_INT_ENABLE, 0);
+>  	mtk_dma_write(hsdma, MTK_HSDMA_GLO, MTK_HSDMA_GLO_DEFAULT);
+>
+>  	return 0;
+> +
+> +err_put_pm:
+> +	pm_runtime_put_sync(hsdma2dev(hsdma));
+> +
+> +	return err;
+>  }
+>
+>  static int mtk_hsdma_hw_deinit(struct mtk_hsdma_device *hsdma)
+> @@ -868,7 +878,6 @@ static int mtk_hsdma_hw_deinit(struct mtk_hsdma_device *hsdma)
+>  	clk_disable_unprepare(hsdma->clk);
+>
+>  	pm_runtime_put_sync(hsdma2dev(hsdma));
+> -	pm_runtime_disable(hsdma2dev(hsdma));
+>
+>  	return 0;
+>  }
+> @@ -983,7 +992,9 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
+>  		goto err_unregister;
+>  	}
+>
+> -	mtk_hsdma_hw_init(hsdma);
+> +	err = mtk_hsdma_hw_init(hsdma);
+> +	if (err)
+> +		goto err_free;
+>
+>  	err = devm_request_irq(&pdev->dev, hsdma->irq,
+>  			       mtk_hsdma_irq, 0,
+> @@ -991,7 +1002,7 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
+>  	if (err) {
+>  		dev_err(&pdev->dev,
+>  			"request_irq failed with err %d\n", err);
+> -		goto err_free;
+> +		goto err_deinit;
+>  	}
+>
+>  	platform_set_drvdata(pdev, hsdma);
+> @@ -1000,8 +1011,9 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
+>
+>  	return 0;
+>
+> -err_free:
+> +err_deinit:
+>  	mtk_hsdma_hw_deinit(hsdma);
+> +err_free:
+>  	of_dma_controller_free(pdev->dev.of_node);
+>  err_unregister:
+>  	dma_async_device_unregister(dd);
+> --
+> 2.47.1
 
