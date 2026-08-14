@@ -4,58 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1258FC5CFDB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2026 12:55:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3D05C5CFDB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2026 13:14:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5CyJvTE+C18+28hqN3SKsvblt/DEqcy8hmgnnZ6dd/s=; b=nrFIqV69rCx5RqPp2AwO08+OS5
-	AXdBMia4yc1Vx/+TBjSv837/3AqohtcsB/x7yearuC0NW8G30Sc0gBRFAEHvPyv0T4TrOVrvKoygy
-	WCX+sy//F5t694eZl5SLyQIrYuPNwPfDaQUEVK3M9yk5d7OU8TOL0j8KmabCBkAs0MqFw6BO+01Ul
-	fTjsd9npISeyLBc3GsvTW9GwRtQU+AsY+ZI/Jn6OBKZa2an1hjMAY92UPvz+QjGkFasoMszspzlvv
-	ZJmzRiU1QH+a/8BahSwSmeP/cUnGwDo98gs5HoYXy410nqobUbOvMq4LOvw0oWHXQCGIgp81G5k3l
-	IqAEyYyw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NLH7Xmd1zNbIyVGn5V1KyBpmu9YhPaZ2W9vJmT8n4bU=; b=Bl5V1+W3ZGjLyZWGocbUXT/rcz
+	y/sn6wCn7ddDv1XR90UR2FQDQntnEC0qN2omfB7ur6VS4efek6lFApKiEU/et7J0ou1hzAnUI+Gpd
+	916Qw6n8l65wac6taAXTcgzhlkwsrBs1z67jOn4Bp/8o09WWKHA+o1nyKhg3jVo6OcOI9qMi2IcXb
+	CEB3McncjuDtY6VnspvgbCgjxGsUJsaMKtj70lfXiIiz3eLRbsRO/bbZWl/OknyUsDSVrVbQDdDZb
+	zWkuCARsy67eABQrE+tPlcaFeNzTQj30dpygkKdrStpMlgfefJ3zxsLIbCupjL/KcKF+DVJkLGVqB
+	fuTFxClQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wurRs-00000002gN1-2z02;
-	Fri, 14 Aug 2026 12:55:48 +0000
-Received: from mail-24424.protonmail.ch ([109.224.244.24])
+	id 1wurjs-00000002hTp-3uj7;
+	Fri, 14 Aug 2026 13:14:24 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wurRp-00000002gMC-3bFr
-	for linux-mediatek@lists.infradead.org;
-	Fri, 14 Aug 2026 12:55:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1786712140; x=1786971340;
-	bh=5CyJvTE+C18+28hqN3SKsvblt/DEqcy8hmgnnZ6dd/s=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=IOAFiCvOuY0ejXPK4bAzT4AU+PGHAGgoIV9Sy2zFNgzy7K6uJeFB5UB4+RQuc1Twf
-	 Vt8I3eeTRc+ipNv+bnvM5WA2kNNO9KddSadf/WgvudTQ2p/5/SzOx0GFVRR2R/je0V
-	 WWTQcC4Siv1BrugLahM6nNnBadVZmQA/AjJS22l0vnxTfOLDUDMhthoG4cOG4vOgBc
-	 dLCxzG+1xc3FWQA32AI0d0aFHEPzta5PTU4X6F1I9MX36CzBGgyKtzmg5RExonfOR8
-	 G0Pg8vlhKzTa59a8a7Szzq2a//c4ToKUp8A/e3rrq8tchkJCwPI3r42kLoNpJxQW4u
-	 qKyfG6bFhMghg==
-Date: Fri, 14 Aug 2026 12:55:32 +0000
-To: Krzysztof Kozlowski <krzk@kernel.org>
-From: Roman Vivchar <rva333@protonmail.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: gpu: arm,mali-utgard: add mt6572
-Message-ID: <47r1iD-p_AVnHH7YeiXxNHnX9o8zmOaWUvLivra1vGyPngBdfaTKUtwGb_OAAwnW0-mu41sICz2PoKyCw99AACkhjt7XtyQp3_40jLMAUKU=@protonmail.com>
-In-Reply-To: <20260814-portable-premium-avocet-eafbe2@quoll>
-References: <20260810-6572-dt-mali-v1-1-fb908627bf23@protonmail.com> <20260814-portable-premium-avocet-eafbe2@quoll>
-Feedback-ID: 173184497:user:proton
-X-Pm-Message-ID: 2dc330e17f8b88bcaf3ae0dbfe5c2b4bce6048c8
+	id 1wurjr-00000002hTP-0Wfz;
+	Fri, 14 Aug 2026 13:14:23 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7688A43566;
+	Fri, 14 Aug 2026 13:14:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 4F7B2C2BCB9;
+	Fri, 14 Aug 2026 13:14:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1786713262;
+	bh=SehANLEi1AhnebfTL1kjlO9MbWFqPE1U/G9I2+q8iqs=;
+	h=From:Date:Subject:To:Cc:Reply-To:From;
+	b=por2zTBMLibZcg4USnC89ZsLcBriS53gQfOjGVBSgXR8XfNxPZ40hTCGfTgCwxb+T
+	 qmaIt/siez/re03IegYooGWBV9Dzw6A0a2XLJhaUZse9y9YczqyTXpa2y3J6G6hMLJ
+	 VC0z4QcLyIxoMJ48eJkTpb+vNf7a5T9M7thxxuePeBXiRoaQx4TZ3NwC/pPnI0nm6q
+	 hrtfe3U4vjr+eyZr/s3tYzZvc7cF7LMROI4m6VlYrjuAWvU2cGujD0v+3ln+3eta8w
+	 XqE2Rb1q1YqY1uCNYcl/9uOM/v1tCuj5uploimcBpeUxCjXzjazJ4mrvmEnQvF+b8h
+	 loV25GCyLoqJQ==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A47FC5B572;
+	Fri, 14 Aug 2026 13:14:22 +0000 (UTC)
+From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
+Date: Fri, 14 Aug 2026 16:13:52 +0300
+Subject: [PATCH] dt-bindings: input: mediatek,mt6779-keypad: add mt6572
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260814_055546_052786_6A58E202 
-X-CRM114-Status: UNSURE (   8.55  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260814-6572-dt-keypad-v1-1-2ceff2373211@protonmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIzMDC0MTXTNTcyPdlBLd7NTKgsQUXaM0QwNDS4NUA4skAyWgpoKi1LTMCrC
+ B0bEQfnFpUlZqcgnIFKXaWgCOtcbzcgAAAA==
+X-Change-ID: 20260814-6572-dt-keypad-2f10190e08b0
+To: Mattijs Korpershoek <mkorpershoek@kernel.org>, 
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Roman Vivchar <rva333@protonmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1786713259; l=1041;
+ i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
+ bh=dnFCakk4vuGhlPYs5js9z6YmW0GnQtXr03hvBnhKxc0=;
+ b=n5oqb/qqHWnBuYOLTPzQm8tLKvcunF+q145rv7u6gZq2JHxvdLiDZCezeD+FxS7AWq7o+O9F0
+ jNVhnoo38TAD3bJqDh5TZBqVx6BwcorClnTnwfd24kRG74EOJNUf32w
+X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
+ pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
+X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
+ auth_id=777
+X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,33 +86,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+From: Roman Vivchar <rva333@protonmail.com>
 
-On Friday, August 14th, 2026 at 1:36 PM, Krzysztof Kozlowski <krzk@kernel.o=
-rg> wrote:
+Add a compatible string for the mt6572 keypad, that is compatible with
+mt6779.
 
-> On Mon, Aug 10, 2026 at 11:16:19PM +0300, Roman Vivchar wrote:
-> > Add a compatible string for the mt6572 Mali-400 MP1 GPU.
-> >
-> > Signed-off-by: Roman Vivchar <rva333@protonmail.com>
->=20
-> Does not come with resets?
+Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+---
+ Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-As far as I understand, no. Vendor kernel says there's a reset, but
-toggling bit in the reset controller doesn't crash the GPU. I assume
-android kernel has copypaste leftover and the bit is reserved/unused.
+diff --git a/Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml b/Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml
+index 914dd3283df3..20fa41f691ed 100644
+--- a/Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml
++++ b/Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml
+@@ -26,6 +26,7 @@ properties:
+       - const: mediatek,mt6779-keypad
+       - items:
+           - enum:
++              - mediatek,mt6572-keypad
+               - mediatek,mt6873-keypad
+               - mediatek,mt8183-keypad
+               - mediatek,mt8365-keypad
 
->=20
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
->=20
-> Best regards,
-> Krzysztof
->=20
->=20
+---
+base-commit: 8cd9520d35a6c38db6567e97dd93b1f11f185dc6
+change-id: 20260814-6572-dt-keypad-2f10190e08b0
 
 Best regards,
-Roman
+--  
+Roman Vivchar <rva333@protonmail.com>
+
+
 
