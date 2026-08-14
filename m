@@ -4,116 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4467C5CFDB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2026 14:11:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B894DC5CFDB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Aug 2026 14:31:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Mime-Version:Subject:References:In-Reply-To:Message-ID:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a6Tr53R1oyo5DF6Qa5INdwaCZq7w4p85RVWoodqQmV8=; b=cxk01025SCk3LIpr0SC+Y6u6kY
-	BEvN0NmqlWaD6KcZ7zzE1eRedPK97v341nDq8gVMHnckdDStsYLFZ9yK8jyTFgKie2Ck7irKnsw+O
-	/heVfDcukYSfVBo/hMYrf3wQThNYenrQutAP2JxnnfEPglCK23NnviA2jpGI4F+Elm3eizkI1GbVL
-	IwkYImTpvHuSUob+ftGlJO8ss1AGmvwzfBkwLG1h5/u1E/J4Ajar94PkCB//RSSCL0wDLQyXYSmVP
-	udzWguesAs0M05HbvoLbRO28mjTAmh1jzdGbUFK+D80YK9KepgV2xQ/SuIceitlpexphZ6zdu9+ck
-	f+DDEXLg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OcLA+9NxXaZ0Z8qAWG9RrfMqZWDWTvs48FyXhXFFOCg=; b=mFol6mOjkous/1xufM7sz6J/6m
+	Rfws00PDXWhqhzKUcqAfLTMsxJ1007T2dbF2YRf7q4rj6ERCW3/kc6OHXAoNfo6tr6VjxoIbjlvZb
+	KVYNHTatmA4hJhE0hiaZauHB+dBUvSTfQoqUY+uS+jZvQByR/267JLeYSntDnFt1BKKj36n3yFXmb
+	2+ptEc5zIzZtLOB36L6USB+Ycf+clSQujpmrUdoe/9Ahm0tgxplM8xllqnohK/WYWOmZxM9i6pme/
+	2Mo0LZ9nIVT9BIdjIl0G25/osuauWtvfZQ2Ek0GVQvKkHIRgf+eSoj9OwaTTq2+kArqAaqXE4w/st
+	KTC4Q7gQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wusd3-00000002lW6-25Vh;
-	Fri, 14 Aug 2026 14:11:25 +0000
-Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
+	id 1wuswm-00000002nU2-2vuG;
+	Fri, 14 Aug 2026 14:31:48 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wusd1-00000002lV9-1Ru4
-	for linux-mediatek@lists.infradead.org;
-	Fri, 14 Aug 2026 14:11:24 +0000
-Received: by mail-yx1-xb135.google.com with SMTP id 956f58d0204a3-66b3803ef19so1810070d50.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 14 Aug 2026 07:11:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786716681; x=1787321481; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:subject
-         :references:in-reply-to:message-id:cc:to:from:date:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=a6Tr53R1oyo5DF6Qa5INdwaCZq7w4p85RVWoodqQmV8=;
-        b=Pq1DWYXcXaxWjxHLzhkiXdpz7uNtS4nWGYHIYJ7waa0wikhwPIOyPvp7WkiqBMOSeG
-         wHpMjmNQ0s/Y7J4u8c4S7r1eCHpMuFoxj0uKyGZufQfrXpLNG86EEOqkFaTqF/Gj86rI
-         QUCJmzzwovb6+zmoxeWASyE17pNIhc9HegcfhvZqTMtdFWBZQ1C1RSWZyhUC0f2bDhsh
-         hkuJlQ6ueXaVhpIENybWwM0MAuf57xeId0tcFYOb0FiP1aOxQVRo8va1RTSuKPZKhSXw
-         OlAT6nZEelyyF1z72uW0f+oKBTprdHSFLsQj1UZKNC1OemulaQDUKwp/P5QFO38982B3
-         X3ZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786716681; x=1787321481;
-        h=content-transfer-encoding:content-type:mime-version:subject
-         :references:in-reply-to:message-id:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=a6Tr53R1oyo5DF6Qa5INdwaCZq7w4p85RVWoodqQmV8=;
-        b=V0QgP0MUOXYLnTHfhUFp4X85IOYzrWJIFPPyGGajX/UiZg4ykZ7UKOuP0mvgPS5f0k
-         OWep/g8dwUfeYexyhI5RueUtc/W1CJBF0jTrEF8LvNSuj9zBT5LzcF92w/VvVsIVV/b4
-         1KHETaIGxeILfgNZ8PmS8aEo+rEgMhbtPqRj4VXtBN7mqaVjfHX2KZ0frMduGEPR0gfx
-         6jTI3tJ8x7Ex20jDA7AYu0IiPokxqplD2fr3uLxS3oXeEwgtkPFYtl8sJyTRttyOUjnF
-         3h+ffqQ4XsLtPF8IBB6zG1kOycUxjUVvfb82XX9KaUAZ5MoF712X272pxCoJW1Kg104C
-         bzeQ==
-X-Forwarded-Encrypted: i=1; AHgh+RpHlu8YKkCpWoI4nEKmBanAG7iiV8jreBmbvVDHIin0DDr7gSmj0H/dkg9t1WldfLP1MaaItufBZ0hb8FYBCA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzV6j7nDo8CtMbz/y8GQ6RHeA+6wWDtLWNXYhvZmUpflQTGNKAH
-	o/NnkReO5SoJBn+Hb8Van/20ppRir24xHtVxlN39Xje7zRFV6T67L5pt
-X-Gm-Gg: AR+sD11LaWX+u4pZiU0XzxJbrFFFeu+lofwdbssFcmydQNk4V5ZMTjrJa7G0vXC0WRU
-	pjGAHJ2oICB1+7qXb/4r29RbaRMtP8xt6crXQSrhS0oNKFNCz5EygpfKIP1LwlehNEyBUhuQWzG
-	GRaGixLIVd65FHYcG+VmSYS72QMFaKs+JI1Ku9vOG/JlQINcT/PsONNrktGUAuxuZ64ChQ1cHTZ
-	JEPsRIykmqTUG7kpmm6/GaS63vfedbN0yLPuK27X1aH9VuxvvjW1/A5dPe+PmDtBWkwAnwkPWXu
-	HGgW+j6/vZJo65I8IICHwNokpu2ZKAxdF7Lz0WpA9dqXHLG5sG6US3M0ryHE/GrrIH28/bZfQbd
-	2AFBMzK7F9LTaXkviI8iLqOk0TOEGaZ2sUGLlrV/sl+gmOBMKzTiq/Od0G584GbL7nm9btPfd15
-	zrei93mBf8U5fQYTcUMutvp7+P5PoXkG2PcFN23UoEe7o4caGIG0+5MjUioyrTa/b8+CZcN+y3v
-	eVNyeC6wY4XxXuPGOpPvynfoN9eONbcQ7J65ewK5RR2mJY=
-X-Received: by 2002:a05:690e:1c0a:b0:66c:4163:c4e6 with SMTP id 956f58d0204a3-66c72c75dc1mr2777139d50.26.1786716681408;
-        Fri, 14 Aug 2026 07:11:21 -0700 (PDT)
-Received: from gmail.com (250.4.48.34.bc.googleusercontent.com. [34.48.4.250])
-        by smtp.gmail.com with ESMTPSA id 956f58d0204a3-66c79390cd0sm895319d50.19.2026.08.14.07.11.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Aug 2026 07:11:19 -0700 (PDT)
-Date: Fri, 14 Aug 2026 10:11:19 -0400
-From: Willem de Bruijn <willemdebruijn.kernel@gmail.com>
-To: =?UTF-8?B?Wmhhb3BpbmcgU2h1ICjoiJLlj6zlubMp?= <Zhaoping.Shu@mediatek.com>, 
- "willemdebruijn.kernel@gmail.com" <willemdebruijn.kernel@gmail.com>
-Cc: "kuniyu@google.com" <kuniyu@google.com>, 
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
- "imv4bel@gmail.com" <imv4bel@gmail.com>, 
- "eilaimemedsnaimel@gmail.com" <eilaimemedsnaimel@gmail.com>, 
- "alice@isovalent.com" <alice@isovalent.com>, 
- =?UTF-8?B?SFcgSGUgKOS9leS8nyk=?= <HW.He@mediatek.com>, 
- =?UTF-8?B?SGFpanVuIExpdSAo5YiY5rW35YabKQ==?= <haijun.liu@mediatek.com>, 
- =?UTF-8?B?SXZlbiBZYW5nICjpmLPlhYkp?= <Iven.Yang@mediatek.com>, 
- "horms@kernel.org" <horms@kernel.org>, 
- "kuba@kernel.org" <kuba@kernel.org>, 
- =?UTF-8?B?WGlheXUgWmhhbmcgKOW8oOWkj+Wuhyk=?= <Xiayu.Zhang@mediatek.com>, 
- "pabeni@redhat.com" <pabeni@redhat.com>, 
- "edumazet@google.com" <edumazet@google.com>, 
- "willemb@google.com" <willemb@google.com>, 
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, 
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
- =?UTF-8?B?TGFtYmVydCBXYW5nICjnjovkvJ8p?= <Lambert.Wang@mediatek.com>, 
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
- "davem@davemloft.net" <davem@davemloft.net>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- "sd@queasysnail.net" <sd@queasysnail.net>, 
- "ncardwell@google.com" <ncardwell@google.com>
-Message-ID: <willemdebruijn.kernel.82fd3c4505e2@gmail.com>
-In-Reply-To: <ddb39bf238a544cb5c8a178dd0fc6e5cb682bbb1.camel@mediatek.com>
-References: <20260813014056.160533-1-zhaoping.shu@mediatek.com>
- <willemdebruijn.kernel.1372b82f50882@gmail.com>
- <0e1f71c4417099399eda78fd2a082b2444e42af9.camel@mediatek.com>
- <CAF=yD-+AF1aW5D5H_QPKE1yxyU2wLxOmT8c2Fm4CJsPY=BjW-g@mail.gmail.com>
- <ddb39bf238a544cb5c8a178dd0fc6e5cb682bbb1.camel@mediatek.com>
-Subject: Re: [PATCH net v3] net: gro: Fix nesting of TCP GSO SKBs in
- skb_gro_receive_list()
-Mime-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: 7bit
+	id 1wuswk-00000002nTI-2eQT;
+	Fri, 14 Aug 2026 14:31:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1786717902;
+	bh=OcLA+9NxXaZ0Z8qAWG9RrfMqZWDWTvs48FyXhXFFOCg=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=pfUKVYmbkxlA+SMcEC8ybrcIQqZtCcqxkwdD4V+FUYhiI2NHNLPCg+n18pYPmf7CN
+	 g6CISMdt6CDVXaBKviCpMUoXDjyx6YdG3u/oSCsc4SSXvioxGl0ADHjxP7apIUmz6W
+	 8EIZDrCsa3vR1aq9Ot2u8zgQ2jZFh0GjiHZFxPHcU3Ymc2kUvXNiNoqEnnXqLxiai6
+	 UqjulyZxOj3rl6/shuSU0DLi3oUNlIs0RKMXKcOfgn1jthZdJS/GvZjtKLwHmKEByF
+	 GrWyw2zbA8vVSoY/ffcom4AJCqtOTVO7nWjCyaFQt8/lN64ighUUkHTqh9qQVFH756
+	 UZZI+qsDcohRQ==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EB00617E07B5;
+	Fri, 14 Aug 2026 16:31:38 +0200 (CEST)
+Message-ID: <dcb6ecbd6184c01861c7d36068abb266df4587c5.camel@collabora.com>
+Subject: Re: [PATCH v6 01/14] media: mediatek: vcodec: support vcp
+ architecture
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Kyrie Wu =?UTF-8?Q?=28=E5=90=B4=E6=99=97=29?= <Kyrie.Wu@mediatek.com>, 
+ "fshao@chromium.org"	 <fshao@chromium.org>, Yunfei Dong
+ =?UTF-8?Q?=28=E8=91=A3=E4=BA=91=E9=A3=9E=29?=	 <Yunfei.Dong@mediatek.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,  "fanwu01@zju.edu.cn"	
+ <fanwu01@zju.edu.cn>, "jacopo.mondi@ideasonboard.com"	
+ <jacopo.mondi@ideasonboard.com>, "haoxiang_li2024@163.com"	
+ <haoxiang_li2024@163.com>, "tfiga@chromium.org" <tfiga@chromium.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andrew-CT Chen =?UTF-8?Q?=28=E9=99=B3=E6=99=BA=E8=BF=AA=29?=	
+ <Andrew-CT.Chen@mediatek.com>, "linux-media@vger.kernel.org"	
+ <linux-media@vger.kernel.org>, "ribalda@chromium.org"
+ <ribalda@chromium.org>,  "wenst@chromium.org"	 <wenst@chromium.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
+ "linux-kernel@vger.kernel.org"	 <linux-kernel@vger.kernel.org>,
+ "kees@kernel.org" <kees@kernel.org>,  "rongqianfeng@vivo.com"	
+ <rongqianfeng@vivo.com>, Irui Wang =?UTF-8?Q?=28=E7=8E=8B=E7=91=9E=29?=	
+ <Irui.Wang@mediatek.com>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, 
+ "linux-mediatek@lists.infradead.org"	 <linux-mediatek@lists.infradead.org>,
+ Tiffany Lin =?UTF-8?Q?=28=E6=9E=97=E6=85=A7=E7=8F=8A=29?=	
+ <tiffany.lin@mediatek.com>, "p.zabel@pengutronix.de"
+ <p.zabel@pengutronix.de>,  "benjamin.gaignard@collabora.com"	
+ <benjamin.gaignard@collabora.com>, "matthias.bgg@gmail.com"	
+ <matthias.bgg@gmail.com>, "mchehab@kernel.org" <mchehab@kernel.org>, 
+ "sebastian.fricke@collabora.com"	 <sebastian.fricke@collabora.com>,
+ "robh@kernel.org" <robh@kernel.org>, 
+ "linux-arm-kernel@lists.infradead.org"	
+ <linux-arm-kernel@lists.infradead.org>, 
+ "laurent.pinchart+renesas@ideasonboard.com"	
+ <laurent.pinchart+renesas@ideasonboard.com>, "hverkuil+cisco@kernel.org"	
+ <hverkuil+cisco@kernel.org>
+Cc: "sakari.ailus@linux.intel.com" <sakari.ailus@linux.intel.com>
+Date: Fri, 14 Aug 2026 10:31:37 -0400
+In-Reply-To: <44d9ec5c5f856b378f745fae8bd60aa4730df044.camel@mediatek.com>
+References: <20260720012056.1026551-1-kyrie.wu@mediatek.com>
+		 <20260720012056.1026551-2-kyrie.wu@mediatek.com>
+		 <c3abd49fc12e8cfab6993feb60b361ba07b6fb7d.camel@collabora.com>
+		 <275503aae6ff76a4c186efe665acf996dec9229d.camel@mediatek.com>
+		 <c8ab26c2edfa4ee4fbbb83faf5f54547f252464f.camel@collabora.com>
+	 <44d9ec5c5f856b378f745fae8bd60aa4730df044.camel@mediatek.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-1Pa9FEAnN6BDVnhiPDGq"
+User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260814_071123_411151_C07D5807 
-X-CRM114-Status: GOOD (  31.01  )
+X-CRM114-CacheID: sfid-20260814_073146_835593_3B8DE3EE 
+X-CRM114-Status: GOOD (  18.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,93 +121,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> > > > Would it be better to test skb_is_gso(skb) and only skip fraglist
-> > > > GRO
-> > > > for HW-GRO skbs, rather than disabling it for all skbs?
-> > > 
-> > > Yes, for tethering packets, HW-GRO skbs are aggregated by
-> > > skb_gro_receive(), while others go through fraglist GRO. However,
-> > > care
-> > > must be taken to avoid packets arriving out of order. I will work
-> > > on
-> > > it and submit V4.
-> > 
-> > Oh right.
-> > 
-> > As long as the choice is only between fraglist GRO or not fraglist
-> > (rather than GRO or bypass GRO), it should not introduce any new
-> > reordering concerns.
-> > 
-> > But the decision cannot be made based on skb_is_gso(skb) of an
-> > arriving skb. Because when such a HW-GRO skb arrives a SW GRO context
-> > in fraglist mode may already have been opened, and it is too late to
-> > convert that to non-fraglist.
-> > 
-> > So essentially HW-GRO and fraglist are mutually exclusive.
-> > 
-> > > > 
-> > > > If treating the features as mutually exclusive, another option
-> > > > would
-> > > > be to replace these datapath checks with disabling one at
-> > > > configuration
-> > > > time, in netdev_fix_features.
-> > > > 
-> > > 
-> > > If V4 work well, there will be no need to check netdev->features.
-> > > Linux kernel GRO will be more robust and able to handle scenarios
-> > > where both NETIF_F_GRO_HW and NETIF_F_GRO_FRAGLIST are enabled.
-> > 
-> > What is your plan for v4?
-> Based on kernel 7.2.0.rc7 code:
-> Add logic in tcp4/6_check_fraglist_gro() as follow:
-> if an arriving skb is the first packet in the GRO list.
-> 	NAPI_GRO_CB(skb)->is_flist = !sk && !skb_is_gso(skb);
-> 
-> /*
-> * Otherwise, the arriving skb is not the first packet, which means
-> * that struct sk_buff *p exists.
-> */
-> if (!skb_is_gso(skb) || !NAPI_GRO_CB(p)->is_flist) {
-> 	/* Aggregate the skb using p's GRO method. */
-> 	NAPI_GRO_CB(skb)->is_flist = NAPI_GRO_CB(p)->is_flist;
-> } else {
-> 	NAPI_GRO_CB(skb)->is_flist = 0;
-> 	/* Flush p and start a new GRO list using the non-fraglist
-> method. */
-> }
-> 
-> Another code change in
-> tcp_gro_receive() {
-> 	...
-> 	if (unlikely(NAPI_GRO_CB(p)->is_flist)) {
-> 		...
-> 		/* if aggregate method changed, flush current gro list
-> */
-> 		flush |= NAPI_GRO_CB(skb)->is_flist != NAPI_GRO_CB(p)-
-> >is_flist;
-> 		if (flush || skb_gro_receive_list())
-> 			...
-> 	}
-> }
-> 
-> After this change:
-> - NETIF_F_GRO_HW and NETIF_F_GRO_FRAGLIST are no longer mutually
-> exclusive.
-> - In tethering scenarios, TCP fraglist GRO applies only to consecutive
-> non-GSO skbs(!skb_is_gso(skb)).
->   others will adopt skb_gro_receive() path.
-> 
-> Please provide some suggestions on the changes above. Should I prepare
-> V4 patch based on these changes?
 
-Thanks. This sounds good to me.
+--=-1Pa9FEAnN6BDVnhiPDGq
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-The risk is that GRO might be less effective at coalescing, if HW-GRO
-and non HW-GRO packets alternate regularly.
+Le vendredi 14 ao=C3=BBt 2026 =C3=A0 02:38 +0000, Kyrie Wu (=E5=90=B4=E6=99=
+=97) a =C3=A9crit=C2=A0:
+> On Tue, 2026-08-11 at 16:22 -0400, Nicolas Dufresne wrote:
+> > Hi Kyrie,
+> >=20
+> > Le lundi 10 ao=C3=BBt 2026 =C3=A0 03:05 +0000, Kyrie Wu (=E5=90=B4=E6=
+=99=97) a =C3=A9crit=C2=A0:
+> > > I agree. Since the platform data is introduced in the MT8189 patch
+> > > series, I will move fw_type to the platform data and make
+> > > mtk_vcodec_dec_get_chip_name() derive the chip identifier from it
+> > > in
+> > > the MT8189 series.
+> >=20
+> > I'm not sure I have captured the plan correctly. Would you mind
+> > clarifying ?
+> >=20
+> > Nicolas
+>=20
+> Hi Nicolas,
+>=20
+> Sorry, my previous reply was unclear.
+>=20
+> The platform-data refactoring will be included in the next revision of
+> the MT8189 series. That series depends on the updated MT8196 encoder
+> series, so I need to wait for the new MT8196 encoder revision to be
+> posted before I can rebase and send the updated MT8189 series.
+>=20
+> In the updated MT8189 series, `fw_type` and the chip identifier will be
+> set in the platform data for each compatible, rather than being derived
+> by probing DT properties. Consequently, the DT-property-based selection
+> shown in this patch will be removed.
+>=20
+> I will make this dependency explicit in the cover letter. Sorry again
+> for not explaining the plan clearly.
 
-The alternative to make HW-GRO and fraglist GRO mutually exclusive
-does not have that problem, but on the flipside cannot use the fraglist
-optimization (esp for forwarding path).
+Thanks, this will be helpful to handle follow-up series.
 
-So no free lunch. Either works.
+Nicolas
+
+>=20
+> Best regards,
+> Kyrie
+
+--=-1Pa9FEAnN6BDVnhiPDGq
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCan8myQAKCRDZQZRRKWBy
+9AjrAP47W1O0MlybGV5nddQLSeB987/IQrb90AsBaMHCuSPMNwEAqHnDqWue4hCg
+bIF5omk88zNifV9lAU/7JgU1KPCuiAU=
+=bcq9
+-----END PGP SIGNATURE-----
+
+--=-1Pa9FEAnN6BDVnhiPDGq--
 
