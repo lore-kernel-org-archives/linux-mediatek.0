@@ -4,89 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6553BC5DF6A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Aug 2026 12:47:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2146CC5AD5A
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Aug 2026 13:50:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=UovdtwbKOZJYgbPU5yoW/I+C9znrZRaPv34XykRkKzU=; b=afabMJpppwjcdqohyREE8MRV49
-	Hz7ErpM8Pvn3UjIZ0E7gwOGEgMqfwZ2JyzUwETCINYnnwYWeg6G7n/TVJuk+rnjo480gsAMcPVYui
-	AmqPQCrPnWxPjucMMfZztoqcIKBaXmck5fjAxcI1fYwJLlJ13pSABm0luT0F11plOwq9umeW7AbXZ
-	cxGgRmbtZ1EA1r7rIwPjJCS9nIZG4/DZqn9QSrI10klFyaVerVkMBNAeWjSc/ceaEKd1VEwdOrRdX
-	36ytymj14xvpBKSWcA92uoKurAQg1lqo65SJg/+wYgavcTjdfsGlswPk8R7X9N2whYsi+w8EUoTUG
-	6BZSZH3Q==;
+	bh=ouaHJhplnHCADze6y8BxHpbB8lgiZlHM7mqdl+IZ2ZY=; b=MFG7nV3PvxaRR9izB5yc/t5Yak
+	Ztfb60/7p0dbCVQWvmw3GABmlEEcxGm4Y+fmzXGfDPk3sTSNugAsvXbgWOGvqKB7JVEvVm7QKWydL
+	PMvRuiR3X7xY9Zci+AQAwFKJlPTZEoywpISnYb+TDmNUmSy+IIoQAFCXi6kFJ1MHA92kpFS6DjCTz
+	RbeKS3AIxZVrFG6Gu9TunD5RaC9TlrcXrhiD+rG+kNow3qGb9UecaYKGMZ4OE9qkLWL+w14Km1RLy
+	yyiKP0acs+appv9ho5xing9rQCZMYbm5rL4peCL83oIglfO8H0yF4/QoMVn/Z5Hg+4KlRjee4OLjS
+	VG4JcBjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvDn5-00000003pWs-1nph;
-	Sat, 15 Aug 2026 12:47:11 +0000
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
+	id 1wvElp-00000003rRb-1JDy;
+	Sat, 15 Aug 2026 13:49:57 +0000
+Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvDn2-00000003pW3-1Cud
-	for linux-mediatek@lists.infradead.org;
-	Sat, 15 Aug 2026 12:47:09 +0000
-Received: by mail-pg1-x52e.google.com with SMTP id 41be03b00d2f7-cbedf433a99so1784744a12.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 15 Aug 2026 05:47:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786798026; x=1787402826; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=UovdtwbKOZJYgbPU5yoW/I+C9znrZRaPv34XykRkKzU=;
-        b=V7yPyJ1gnMFtCFXT7A04UMxz+ICOnll9Ou2AZlyNu3S/YynaterTuTe64M52LRmXN0
-         nZLAVqvuoVLkILzccLbvmdkurkUVJD2ygKitk5KhR6mdslsbhMA1BF9WotV8XZ6AOyRV
-         Fh7BW77w1fLDoRBRRV5pFbkCkp+MIoQbuoa4EFCoXcZljg4bXarV41jL9zZxF+cePE20
-         euYYhRbTh6CmkGLUF42bCpyVXotSPsV6Dug/E38OB0BMi7gcBE5iSD/OWOPzjRM9VPuq
-         58I2OUwyeuoaiVUF3eQ8OqVc7FQ5Ht8P4kBcaooTMiskv543BqGI3eLPL8qMEFgKtBwR
-         aeYA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786798026; x=1787402826;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=UovdtwbKOZJYgbPU5yoW/I+C9znrZRaPv34XykRkKzU=;
-        b=T4rV67oyXn4XDHh0czMoeSca4MgXgJ/mmsQYYPik/c27qKdFYbYQSqzy6q4MAjF1iK
-         gSK5m1yUVZIGwoqqsDjUj1rVFGz/tm6V5jkmZ6pKTQZYlQRIX8DwFTBZKHtaa1OCg2lE
-         9KvNiONR6VaePMD9UiU+UbXheP+Y6iHSnqoNRs01DwyupCA8T+/UY+2sxZUHiNr/dibC
-         t7tzHXyRI/cdJ4VrmESISaRCDkfVsg5nqxU/hBmEnQ4yi3BQfzKbwCQLOmr5v0jlQfAZ
-         RwLskED3nlMIkYTAiu/1fk07OCNmiW8zSkA+yxZmtqwjaqlPcv7SSykuZX9Z2xPmBAjQ
-         j/2w==
-X-Forwarded-Encrypted: i=1; AHgh+Rou/9Q0dBoAAWTNhj+QY6Sr5ndfdbzsL8jR5BJdF9l9Stglsy9xIZZ34jELE5KhC4hI3wr7W4L7LNE2N6J5Ow==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyhAGOZKFyxqx82XkEt7yiV4/cKZ4yPBu8jaZ44KEWVDE1svaTY
-	JPkxykmKyhLG+IPy+gKHZG56SX/+5GwviGxGXX+QW2or0wbAB2F1wyqT
-X-Gm-Gg: AR+sD13Y6sVJI2/96sOomuxRdpsoYEEbXwoLDbj1H/UpSibYUhWaX6yRt9WPrt8yiPb
-	G8qCT31B+nojhMDr7+PhqoeSals3MdFOB9uHlhu1GyWjpRjdF5MfhbGRZzTPWoTr0oeT9BDwvLq
-	oQXOAMJRRVSakSjCtjGm70TL5JRyeMsfeQpzPlClC7sG89gad7aISKClUlB740gc9Shph6xJHJd
-	QiexO9AK4p+7Daa+ldmuKN5YHhDVy0DFmfIloIURYgp/Rlm837VsityG7BdPWd15nKRO9PBsn/z
-	322CPzMoYd6WfXb1+kAf5uBjYVso51ENL8IfG9zK3H7Qm0g8hZUOCgq3L0Ur4SeuNY5c7hVFlbK
-	/flO6SWK3O098MCNIx7EL7Ieh//09eMEqjyqV0ZIaodeikZrH+yLLwHeIhuBBhW/K+Uy8Uz5DxU
-	yZMEAcnJReK0/sSEwB1zi+sF8eT6s437g1kQMAVP6X7gc4ieQ9xX5+ntjNz14BfwDRv/j1GQMLa
-	d0u84QwOWU=
-X-Received: by 2002:a05:6a20:7290:b0:3cc:54a6:8a44 with SMTP id adf61e73a8af0-3cc71cd9e2amr13949926637.29.1786798026370;
-        Sat, 15 Aug 2026 05:47:06 -0700 (PDT)
-Received: from cachyos-x8664.nitc.ac.in ([117.250.237.105])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-320ea302649sm13943893eec.24.2026.08.15.05.47.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 15 Aug 2026 05:47:05 -0700 (PDT)
-From: John Robin <johnrobin044@gmail.com>
-To: linux-wireless@vger.kernel.org
-Cc: John Robin <johnrobin044@gmail.com>,
-	Jakub Kicinski <kuba@kernel.org>,
+	id 1wvEll-00000003rR3-2P4B;
+	Sat, 15 Aug 2026 13:49:55 +0000
+Received: from localhost.localdomain (unknown [111.196.241.250])
+	by APP-05 (Coremail) with SMTP id zQCowADnUDt9boBqQGPRBQ--.3894S2;
+	Sat, 15 Aug 2026 21:49:50 +0800 (CST)
+From: Pengpeng Hou <pengpeng@iscas.ac.cn>
+To: bin.liu@mediatek.com,
+	Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Pengpeng Hou <pengpeng@iscas.ac.cn>,
+	Nicolas Dufresne <nicolas@ndufresne.ca>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hans Verkuil <hverkuil@kernel.org>,
+	Irui Wang <irui.wang@mediatek.com>,
+	Kyrie Wu <kyrie.wu@mediatek.com>,
+	linux-media@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH wireless-next] wifi: mt76: mt7601u: add support for AP and P2P concurrent modes
-Date: Sat, 15 Aug 2026 18:11:48 +0530
-Message-ID: <20260815124547.329654-1-johnrobin044@gmail.com>
-X-Mailer: git-send-email 2.55.0
+Subject: [PATCH v3] media: mediatek: jpeg: retry HW selection after successful wait
+Date: Sat, 15 Aug 2026 21:49:49 +0800
+Message-ID: <20260815134949.49042-1-pengpeng@iscas.ac.cn>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: zQCowADnUDt9boBqQGPRBQ--.3894S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7Aw4rWFW8ury5ury8XFykuFg_yoW5JFW5pr
+	WYg39I9rW8KrsFgrW8Aa17ZFy5Gr1rCF4xGrn8Zw4xA3yaqF1DJw1UAa40qFWxAr12kay3
+	JF1Fg393AFWjyFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUU9214x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+	1l84ACjcxK6xIIjxv20xvE14v26r4j6ryUM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4j
+	6r4UJwA2z4x0Y4vEx4A2jsIE14v26F4UJVW0owA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Cr
+	1j6rxdM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj
+	6xIIjxv20xvE14v26r126r1DMcIj6I8E87Iv67AKxVWUJVW8JwAm72CE4IkC6x0Yz7v_Jr
+	0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7M4IIrI8v6xkF7I0E
+	8cxan2IY04v7MxkF7I0En4kS14v26r1q6r43MxAIw28IcxkI7VAKI48JMxC20s026xCaFV
+	Cjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWl
+	x4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1I6r
+	4UMIIF0xvE2Ix0cI8IcVCY1x0267AKxVWxJVW8Jr1lIxAIcVCF04k26cxKx2IYs7xG6r1j
+	6r1xMIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYx
+	BIdaVFxhVjvjDU0xZFpf9x0JUL0edUUUUU=
+X-Originating-IP: [111.196.241.250]
+X-CM-SenderInfo: pshqw1xhqjqxpvfd2hldfou0/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260815_054708_339203_C6F7D906 
-X-CRM114-Status: GOOD (  21.50  )
+X-CRM114-CacheID: sfid-20260815_064954_325664_24949DE9 
+X-CRM114-Status: UNSURE (   9.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,404 +87,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable Access Point (AP) and Wi-Fi Direct (P2P_GO/P2P_CLIENT) interface
-modes on MT7601U device, allowing concurrent Station and AP.
+wait_event_interruptible_timeout() returns a positive value when its
+condition becomes true before the timeout. mtk_jpegdec_worker() treats
+every nonzero result as a failure, so a normal decoder wakeup finishes
+the mem2mem job as though no hardware became available.
 
-Register AP, P2P_GO, P2P_CLIENT, and ADHOC modes and
-defined an interface combination to support 2 concurrent modes.
-Set NEEDS_UNIQUE_STA_ADDR to allow mac80211 to generate MACs for
-virtual interfaces.
+Handle interrupted waits and exhausted timeout retries separately, and
+retry hardware selection after a successful wakeup. Increment the retry
+count only for actual timeouts. The encoder uses
+wait_event_interruptible(), whose successful return is zero, so its
+existing check is correct; leave that separate no-timeout policy
+unchanged.
 
-Implement start_ap() and stop_ap() to clear WCID tables and
-manage the hardware Pre-TBTT timer. Update mt7601u_bss_info_changed()
-to handle BSS_CHANGED_BEACON and BSS_CHANGED_BEACON_ENABLED.
-
-Add beacon frame handling through mt7601u_mac_set_beacon() and
-set appropriate SYNC Modes for AP and ADHOC interfaces.
-
-Add bounds checking to rate->idx to prevent out of bounds access and
-safely fall back to CCK rates.
-
-Route management and injected frames to the Voice (VO) queue
-to bypass firmware queue suspension also avoid requesting ACKs for
-multicast frames and skip data rate fallbacks for management frames
-
-All implemented modes were verified to be working. Tested AP mode and
-simultaneous STA+AP with iperf3 to verify stability.
-
-Signed-off-by: John Robin <johnrobin044@gmail.com>
+Fixes: dedc21500334 ("media: mtk-jpegdec: add jpeg decode worker interface")
+Assisted-by: Codex:gpt-5
+Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
 ---
- drivers/net/wireless/mediatek/mt7601u/init.c  | 31 ++++++-
- drivers/net/wireless/mediatek/mt7601u/mac.c   | 91 +++++++++++++++----
- drivers/net/wireless/mediatek/mt7601u/mac.h   |  3 +-
- drivers/net/wireless/mediatek/mt7601u/main.c  | 56 +++++++++++-
- .../net/wireless/mediatek/mt7601u/mt7601u.h   |  3 +-
- drivers/net/wireless/mediatek/mt7601u/tx.c    | 19 +++-
- 6 files changed, 175 insertions(+), 28 deletions(-)
+Changes since v2:
+https://lore.kernel.org/all/20260720115322.89784-1-pengpeng@iscas.ac.cn/
+- add the Fixes tag
+- revalidate the decoder-only change against current mainline
+- add the required coding-assistant attribution
 
-diff --git a/drivers/net/wireless/mediatek/mt7601u/init.c b/drivers/net/wireless/mediatek/mt7601u/init.c
-index 5d9e952b29664..e871f7b63cb35 100644
---- a/drivers/net/wireless/mediatek/mt7601u/init.c
-+++ b/drivers/net/wireless/mediatek/mt7601u/init.c
-@@ -12,6 +12,25 @@
- 
- #include "initvals.h"
- 
-+static const struct ieee80211_iface_limit if_limits[] = {
-+	{ .max = 1, .types = BIT(NL80211_IFTYPE_ADHOC) },
-+	{ .max = 8,
-+	  .types = BIT(NL80211_IFTYPE_STATION) |
-+#ifdef CONFIG_MAC80211_MESH
-+		   BIT(NL80211_IFTYPE_MESH_POINT) |
-+#endif
-+		   BIT(NL80211_IFTYPE_P2P_CLIENT) | BIT(NL80211_IFTYPE_P2P_GO) |
-+		   BIT(NL80211_IFTYPE_AP) },
-+};
-+
-+static const struct ieee80211_iface_combination if_comb[] = { {
-+	.limits = if_limits,
-+	.n_limits = ARRAY_SIZE(if_limits),
-+	.max_interfaces = 2,
-+	.num_different_channels = 1,
-+	.beacon_int_infra_match = true,
-+} };
-+
- static void
- mt7601u_set_wlan_state(struct mt7601u_dev *dev, u32 val, bool enable)
- {
-@@ -599,6 +618,7 @@ int mt7601u_register_device(struct mt7601u_dev *dev)
- 	ieee80211_hw_set(hw, AMPDU_AGGREGATION);
- 	ieee80211_hw_set(hw, SUPPORTS_RC_TABLE);
- 	ieee80211_hw_set(hw, MFP_CAPABLE);
-+	ieee80211_hw_set(hw, NEEDS_UNIQUE_STA_ADDR);
- 	hw->max_rates = 1;
- 	hw->max_report_rates = 7;
- 	hw->max_rate_tries = 1;
-@@ -607,9 +627,16 @@ int mt7601u_register_device(struct mt7601u_dev *dev)
- 	hw->vif_data_size = sizeof(struct mt76_vif);
- 
- 	SET_IEEE80211_PERM_ADDR(hw, dev->macaddr);
--
-+	wiphy->interface_modes =
-+		BIT(NL80211_IFTYPE_STATION) | BIT(NL80211_IFTYPE_AP) |
-+#ifdef CONFIG_MAC80211_MESH
-+		BIT(NL80211_IFTYPE_MESH_POINT) |
-+#endif
-+		BIT(NL80211_IFTYPE_P2P_CLIENT) | BIT(NL80211_IFTYPE_P2P_GO) |
-+		BIT(NL80211_IFTYPE_ADHOC);
-+	wiphy->iface_combinations = if_comb;
-+	wiphy->n_iface_combinations = ARRAY_SIZE(if_comb);
- 	wiphy->features |= NL80211_FEATURE_ACTIVE_MONITOR;
--	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION);
- 	wiphy->flags |= WIPHY_FLAG_SUPPORTS_TDLS;
- 
- 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_CQM_RSSI_LIST);
-diff --git a/drivers/net/wireless/mediatek/mt7601u/mac.c b/drivers/net/wireless/mediatek/mt7601u/mac.c
-index ca9cf628eb10d..5e2dec131331c 100644
---- a/drivers/net/wireless/mediatek/mt7601u/mac.c
-+++ b/drivers/net/wireless/mediatek/mt7601u/mac.c
-@@ -118,19 +118,27 @@ u16 mt76_mac_tx_rate_val(struct mt7601u_dev *dev,
- 		if (rate->flags & IEEE80211_TX_RC_40_MHZ_WIDTH)
- 			bw = 1;
- 	} else {
--		const struct ieee80211_rate *r;
--		int band = dev->chandef.chan->band;
--		u16 val;
--
--		r = &dev->hw->wiphy->bands[band]->bitrates[rate->idx];
--		if (rate->flags & IEEE80211_TX_RC_USE_SHORT_PREAMBLE)
--			val = r->hw_value_short;
--		else
--			val = r->hw_value;
- 
--		phy = val >> 8;
--		rate_idx = val & 0xff;
--		bw = 0;
-+		int band = dev->chandef.chan->band;
-+		struct ieee80211_supported_band *sband =
-+			dev->hw->wiphy->bands[band];
-+
-+		if (rate->idx < 0 || rate->idx >= sband->n_bitrates) {
-+			phy = MT_PHY_TYPE_CCK;
-+			rate_idx = 0;
-+		} else {
-+			const struct ieee80211_rate *r =
-+				&sband->bitrates[rate->idx];
-+			u16 val;
-+
-+			if (rate->flags & IEEE80211_TX_RC_USE_SHORT_PREAMBLE)
-+				val = r->hw_value_short;
-+			else
-+				val = r->hw_value;
-+
-+			phy = val >> 8;
-+			rate_idx = val & 0xff;
+Changes since v1:
+https://lore.kernel.org/all/20260625003142.99598-1-pengpeng@iscas.ac.cn/
+- split interrupted waits, timeout exhaustion and successful wakeups
+- use distinct diagnostics and explain why the encoder path is unchanged
+
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index d147ec483081..9634c95aaada 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1697,9 +1697,15 @@ static void mtk_jpegdec_worker(struct work_struct *work)
+ 		ret = wait_event_interruptible_timeout(jpeg->hw_wq,
+ 						       atomic_read(&jpeg->hw_rdy) > 0,
+ 						       MTK_JPEG_HW_TIMEOUT_MSEC);
+-		if (ret != 0 || (i++ > MTK_JPEG_MAX_RETRY_TIME)) {
+-			dev_err(jpeg->dev, "%s : %d, all HW are busy\n",
+-				__func__, __LINE__);
++		if (ret < 0) {
++			dev_err(jpeg->dev, "decoder HW wait interrupted: %d\n",
++				ret);
++			v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
++			return;
 +		}
- 	}
- 
- 	rateval = FIELD_PREP(MT_RXWI_RATE_MCS, rate_idx);
-@@ -264,13 +272,13 @@ void mt7601u_mac_set_short_preamble(struct mt7601u_dev *dev, bool short_preamb)
- 		mt76_clear(dev, MT_AUTO_RSP_CFG, MT_AUTO_RSP_PREAMB_SHORT);
- }
- 
--void mt7601u_mac_config_tsf(struct mt7601u_dev *dev, bool enable, int interval)
-+void mt7601u_mac_config_tsf(struct mt7601u_dev *dev, struct ieee80211_vif *vif,
-+			    bool enable, int interval)
- {
- 	u32 val = mt7601u_rr(dev, MT_BEACON_TIME_CFG);
- 
--	val &= ~(MT_BEACON_TIME_CFG_TIMER_EN |
--		 MT_BEACON_TIME_CFG_SYNC_MODE |
--		 MT_BEACON_TIME_CFG_TBTT_EN);
-+	val &= ~(MT_BEACON_TIME_CFG_TIMER_EN | MT_BEACON_TIME_CFG_SYNC_MODE |
-+		 MT_BEACON_TIME_CFG_TBTT_EN | MT_BEACON_TIME_CFG_BEACON_TX);
- 
- 	if (!enable) {
- 		mt7601u_wr(dev, MT_BEACON_TIME_CFG, val);
-@@ -279,9 +287,22 @@ void mt7601u_mac_config_tsf(struct mt7601u_dev *dev, bool enable, int interval)
- 
- 	val &= ~MT_BEACON_TIME_CFG_INTVAL;
- 	val |= FIELD_PREP(MT_BEACON_TIME_CFG_INTVAL, interval << 4) |
--		MT_BEACON_TIME_CFG_TIMER_EN |
--		MT_BEACON_TIME_CFG_SYNC_MODE |
--		MT_BEACON_TIME_CFG_TBTT_EN;
-+	       MT_BEACON_TIME_CFG_TIMER_EN | MT_BEACON_TIME_CFG_TBTT_EN;
 +
-+	/* AP Mode */
-+	if (vif && (vif->type == NL80211_IFTYPE_AP ||
-+		    vif->type == NL80211_IFTYPE_P2P_GO))
-+		val |= FIELD_PREP(MT_BEACON_TIME_CFG_SYNC_MODE, 3) |
-+		       MT_BEACON_TIME_CFG_BEACON_TX;
-+	/* IBSS / Ad-Hoc Mode */
-+	else if (vif && vif->type == NL80211_IFTYPE_ADHOC)
-+		val |= FIELD_PREP(MT_BEACON_TIME_CFG_SYNC_MODE, 2) |
-+		       MT_BEACON_TIME_CFG_BEACON_TX;
-+	/* Station mode */
-+	else
-+		val |= FIELD_PREP(MT_BEACON_TIME_CFG_SYNC_MODE, 1);
-+
-+	mt7601u_wr(dev, MT_BEACON_TIME_CFG, val);
- }
- 
- static void mt7601u_check_mac_err(struct mt7601u_dev *dev)
-@@ -393,6 +414,38 @@ void mt7601u_mac_set_ampdu_factor(struct mt7601u_dev *dev)
- 		   FIELD_PREP(MT_MAX_LEN_CFG_AMPDU, min_factor));
- }
- 
-+int mt7601u_mac_set_beacon(struct mt7601u_dev *dev, struct ieee80211_vif *vif,
-+			   struct ieee80211_bss_conf *info)
-+{
-+	struct sk_buff *skb = ieee80211_beacon_get(dev->hw, vif, 0);
-+	struct mt76_txwi *txwi;
-+	int err, words;
-+
-+	if (!skb)
-+		return 0;
-+
-+	/* USB devices already reserve enough skb headroom */
-+	err = skb_cow_head(skb, sizeof(struct mt76_txwi));
-+	if (err) {
-+		dev_kfree_skb(skb);
-+		return err;
-+	}
-+
-+	txwi = (struct mt76_txwi *)skb_push(skb, sizeof(struct mt76_txwi));
-+	memset(txwi, 0, sizeof(*txwi));
-+
-+	txwi->wcid = 0;
-+	txwi->len_ctl = cpu_to_le16(skb->len - sizeof(struct mt76_txwi));
-+	txwi->rate_ctl = cpu_to_le16(0);
-+
-+	words = DIV_ROUND_UP(skb->len, 4);
-+	err = mt7601u_burst_write_regs(dev, MT_BEACON_BASE,
-+				       (const u32 *)skb->data, words);
-+	dev_kfree_skb(skb);
-+
-+	return err;
-+}
-+
- static void
- mt76_mac_process_rate(struct ieee80211_rx_status *status, u16 rate)
- {
-diff --git a/drivers/net/wireless/mediatek/mt7601u/mac.h b/drivers/net/wireless/mediatek/mt7601u/mac.h
-index 54bd4fac54d83..528756ccf4725 100644
---- a/drivers/net/wireless/mediatek/mt7601u/mac.h
-+++ b/drivers/net/wireless/mediatek/mt7601u/mac.h
-@@ -167,5 +167,6 @@ struct mt76_tx_status
- mt7601u_mac_fetch_tx_status(struct mt7601u_dev *dev);
- void mt76_send_tx_status(struct mt7601u_dev *dev, struct mt76_tx_status *stat);
- void mt7601u_set_macaddr(struct mt7601u_dev *dev, const u8 *addr);
--
-+int mt7601u_mac_set_beacon(struct mt7601u_dev *dev, struct ieee80211_vif *vif,
-+			   struct ieee80211_bss_conf *info);
- #endif
-diff --git a/drivers/net/wireless/mediatek/mt7601u/main.c b/drivers/net/wireless/mediatek/mt7601u/main.c
-index 05ba43e1985c8..4389e332dfe19 100644
---- a/drivers/net/wireless/mediatek/mt7601u/main.c
-+++ b/drivers/net/wireless/mediatek/mt7601u/main.c
-@@ -149,7 +149,7 @@ mt7601u_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		 *	 rt2x00 doesn't seem to be bothered though.
- 		 */
- 		if (is_zero_ether_addr(info->bssid))
--			mt7601u_mac_config_tsf(dev, false, 0);
-+			mt7601u_mac_config_tsf(dev, vif, false, 0);
- 	}
- 
- 	if (changed & BSS_CHANGED_BASIC_RATES) {
-@@ -161,7 +161,20 @@ mt7601u_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	}
- 
- 	if (changed & BSS_CHANGED_BEACON_INT)
--		mt7601u_mac_config_tsf(dev, true, info->beacon_int);
-+		mt7601u_mac_config_tsf(dev, vif, true, info->beacon_int);
-+
-+	if ((changed & BSS_CHANGED_BEACON) && vif->type == NL80211_IFTYPE_AP)
-+		mt7601u_mac_set_beacon(dev, vif, info);
-+
-+	if ((changed & BSS_CHANGED_BEACON_ENABLED) &&
-+	    vif->type == NL80211_IFTYPE_AP) {
-+		if (info->enable_beacon)
-+			mt76_set(dev, MT_BEACON_TIME_CFG,
-+				 MT_BEACON_TIME_CFG_BEACON_TX);
-+		else
-+			mt76_clear(dev, MT_BEACON_TIME_CFG,
-+				   MT_BEACON_TIME_CFG_BEACON_TX);
-+	}
- 
- 	if (changed & BSS_CHANGED_HT || changed & BSS_CHANGED_ERP_CTS_PROT)
- 		mt7601u_mac_set_protection(dev, info->use_cts_prot,
-@@ -183,6 +196,43 @@ mt7601u_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	mutex_unlock(&dev->mutex);
- }
- 
-+static int mt7601u_start_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-+			    struct ieee80211_bss_conf *link_conf)
-+{
-+	struct mt7601u_dev *dev = hw->priv;
-+	int err = 0;
-+
-+	mutex_lock(&dev->mutex);
-+
-+	/* Clear the wcid Table */
-+	for (int i = 1; i < 128; i++)
-+		mt7601u_mac_wcid_setup(dev, i, 0, NULL);
-+
-+	/* Set pre TBTT to 6ms */
-+	mt76_rmw_field(dev, MT_INT_TIMER_CFG, MT_INT_TIMER_CFG_PRE_TBTT, 6);
-+	mt76_set(dev, MT_INT_TIMER_EN, MT_INT_TIMER_EN_PRE_TBTT_EN);
-+
-+	mt7601u_mac_config_tsf(dev, vif, true, link_conf->beacon_int);
-+
-+	mutex_unlock(&dev->mutex);
-+
-+	return err;
-+}
-+
-+static void mt7601u_stop_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-+			    struct ieee80211_bss_conf *link_conf)
-+{
-+	struct mt7601u_dev *dev = hw->priv;
-+
-+	mutex_lock(&dev->mutex);
-+
-+	mt7601u_mac_config_tsf(dev, vif, false, 0);
-+
-+	mt76_clear(dev, MT_INT_TIMER_EN, MT_INT_TIMER_EN_PRE_TBTT_EN);
-+
-+	mutex_unlock(&dev->mutex);
-+}
-+
- static int
- mt76_wcid_alloc(struct mt7601u_dev *dev)
- {
-@@ -419,6 +469,8 @@ const struct ieee80211_ops mt7601u_ops = {
- 	.config = mt7601u_config,
- 	.configure_filter = mt76_configure_filter,
- 	.bss_info_changed = mt7601u_bss_info_changed,
-+	.start_ap = mt7601u_start_ap,
-+	.stop_ap = mt7601u_stop_ap,
- 	.sta_add = mt7601u_sta_add,
- 	.sta_remove = mt7601u_sta_remove,
- 	.sta_notify = mt7601u_sta_notify,
-diff --git a/drivers/net/wireless/mediatek/mt7601u/mt7601u.h b/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
-index 118d437078537..7366e1c476339 100644
---- a/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
-+++ b/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
-@@ -359,7 +359,8 @@ void mt7601u_mac_work(struct work_struct *work);
- void mt7601u_mac_set_protection(struct mt7601u_dev *dev, bool legacy_prot,
- 				int ht_mode);
- void mt7601u_mac_set_short_preamble(struct mt7601u_dev *dev, bool short_preamb);
--void mt7601u_mac_config_tsf(struct mt7601u_dev *dev, bool enable, int interval);
-+void mt7601u_mac_config_tsf(struct mt7601u_dev *dev, struct ieee80211_vif *vif,
-+			    bool enable, int interval);
- void
- mt7601u_mac_wcid_setup(struct mt7601u_dev *dev, u8 idx, u8 vif_idx, u8 *mac);
- void mt7601u_mac_set_ampdu_factor(struct mt7601u_dev *dev);
-diff --git a/drivers/net/wireless/mediatek/mt7601u/tx.c b/drivers/net/wireless/mediatek/mt7601u/tx.c
-index 5aeeac0dd9fe7..47c78c4ff5144 100644
---- a/drivers/net/wireless/mediatek/mt7601u/tx.c
-+++ b/drivers/net/wireless/mediatek/mt7601u/tx.c
-@@ -27,6 +27,14 @@ static u8 q2hwq(u8 q)
- static u8 skb2q(struct sk_buff *skb)
- {
- 	int qid = skb_get_queue_mapping(skb);
-+	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
-+	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
-+
-+	if (ieee80211_is_mgmt(hdr->frame_control) ||
-+	    (info->flags & IEEE80211_TX_CTL_INJECTED)) {
-+		skb_set_queue_mapping(skb, MT_TXQ_VO);
-+		return q2hwq(MT_TXQ_VO);
-+	}
- 
- 	if (WARN_ON(qid >= MT_TXQ_PSD)) {
- 		qid = MT_TXQ_BE;
-@@ -134,6 +142,9 @@ mt7601u_push_txwi(struct mt7601u_dev *dev, struct sk_buff *skb,
- 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
- 	struct ieee80211_tx_rate *rate = &info->control.rates[0];
- 	struct mt76_txwi *txwi;
-+	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
-+	bool is_mgmt = ieee80211_is_mgmt(hdr->frame_control);
-+	bool is_mcast = is_multicast_ether_addr(hdr->addr1);
- 	unsigned long flags;
- 	bool is_probe;
- 	u32 pkt_id;
-@@ -148,14 +159,14 @@ mt7601u_push_txwi(struct mt7601u_dev *dev, struct sk_buff *skb,
- 				       info->control.rates, 1);
- 
- 	spin_lock_irqsave(&dev->lock, flags);
--	if (rate->idx < 0 || !rate->count)
-+	if (!is_mgmt && (rate->idx < 0 || !rate->count))
- 		rate_ctl = wcid->tx_rate;
- 	else
- 		rate_ctl = mt76_mac_tx_rate_val(dev, rate, &nss);
- 	spin_unlock_irqrestore(&dev->lock, flags);
- 	txwi->rate_ctl = cpu_to_le16(rate_ctl);
- 
--	if (!(info->flags & IEEE80211_TX_CTL_NO_ACK))
-+	if (!(info->flags & IEEE80211_TX_CTL_NO_ACK) && sta && !is_mcast)
- 		txwi->ack_ctl |= MT_TXWI_ACK_CTL_REQ;
- 	if (info->flags & IEEE80211_TX_CTL_ASSIGN_SEQ)
- 		txwi->ack_ctl |= MT_TXWI_ACK_CTL_NSEQ;
-@@ -197,6 +208,8 @@ void mt7601u_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
- 	struct mt76_sta *msta = NULL;
- 	struct mt76_wcid *wcid = dev->mon_wcid;
- 	struct mt76_txwi *txwi;
-+	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
-+	bool is_mcast = is_multicast_ether_addr(hdr->addr1);
- 	int pkt_len = skb->len;
- 	int hw_q = skb2q(skb);
- 
-@@ -211,7 +224,7 @@ void mt7601u_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
- 	if (sta) {
- 		msta = (struct mt76_sta *) sta->drv_priv;
- 		wcid = &msta->wcid;
--	} else if (vif) {
-+	} else if (vif && is_mcast) {
- 		struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
- 
- 		wcid = &mvif->group_wcid;
++		if (!ret && i++ > MTK_JPEG_MAX_RETRY_TIME) {
++			dev_err(jpeg->dev, "all decoder HW are busy\n");
+ 			v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+ 			return;
+ 		}
+
+base-commit: dac3e89a2c90c2feeb471e1f22a2512ad424b792
 -- 
-2.55.0
+2.50.1 (Apple Git-155)
 
 
