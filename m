@@ -4,105 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61431C5AD5A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Aug 2026 11:04:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ACE9C5CFC1
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Aug 2026 11:56:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GrwB5zfsW4lC1jK6YCZThBFVhJVN5/++tlnL9AR3ZH4=; b=NlOdOsXZZBH7BT5n5eYpgrTbYi
-	TyVdDOSC1+TFm0Y5ocsOwBkZdveY99dMM4tvmXp2wGFAgWW/mLhjwCHvh+UUisyGwmI22sY20/ICh
-	LqiZ/q/pdOas7VrnUGBbIC/ZgSmhjprAOUxwIMCgyMJTDf23k+O7jMvaHblMcxuYGrgcIiAW/mCaM
-	8d3uu6pk7KwOCWbP14sQndK607rb3kTYPBdLqbSvHA2SGai17C+UTsFiSvcgWx79YRNc5VHbJfyVC
-	MeEGC8I6dFa8n14t6cquAykPoH+RBjmkzSHfoIviILNiWaAJS7/VrZcf1qNMYIVc9bbVZ1V3ouVuC
-	KVZAm4OQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GXrlacljC9jA0dJpbVEtwiza65imm1+twTjzq4FOwK8=; b=N5RdyHHKfLP+dskcnZYXyz5DmE
+	d9dUCTFCeVg79UdjJVX0s3qd9TsH/TrsAq/q/Xql68ychSbGW+N7sr5JPnr6QDFrV3LRPnuLQ9Hs2
+	sv8bzBdjIazEVyPZsyB1tIUTNxz90ENn2kcZu19MhB+9bv7XlLftfKE7cLCB3ufrAsvWftXfMikKf
+	+VdH6SprbMktZFx97ZsiU9NUXfZPZGaj6jeFYQWION1aryfZcUG9Jidjkoyj5n00v2zrfFJjcSVaV
+	eZZz9x7Pc3Ls+TBBm0xdQGv5NFdH3x9cE0eic27NrJbJBBY8JnKqwWJd0y/KlSDLnRpApJcPL361w
+	TFNEoSSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvCC8-00000003lnJ-47sH;
-	Sat, 15 Aug 2026 11:04:56 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1wvD0D-00000003nUC-4580;
+	Sat, 15 Aug 2026 11:56:41 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvCC6-00000003lmX-147i
+	id 1wvD0A-00000003nTi-3Q7T
 	for linux-mediatek@lists.infradead.org;
-	Sat, 15 Aug 2026 11:04:56 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-498028b3d5eso22947585e9.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 15 Aug 2026 04:04:52 -0700 (PDT)
+	Sat, 15 Aug 2026 11:56:40 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-47fe2d179e2so1223867f8f.1
+        for <linux-mediatek@lists.infradead.org>; Sat, 15 Aug 2026 04:56:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786791891; x=1787396691; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:subject:cc:to:from:date:message-id:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=GrwB5zfsW4lC1jK6YCZThBFVhJVN5/++tlnL9AR3ZH4=;
-        b=K+5vLfpEMZlF+bvE0FH0as+MlvTH0TwFksVRY+4oXJ82BDzlMKB9T7xIBFudK8HfiS
-         lcAnY9RORhPvI1asQQPjAxXBdp86FHGvOIgjMkab4W07xZ8Uf4RddUwMsghFaR1TVGdn
-         BVthsQ/pQCuXwBGCBtXHHFIvqIZWG7Fux5I+8EeHGJTKc/4kRXAwEcfERFKeH5tH+yt1
-         BUMA/dy6QRndFT9wNrOGAtodidyN4GhgOx4trZ+GoL01CzYIdm+WawEqoUvkcbxMzjRe
-         XtNmOw+EveOmeM91rb/Q5dCjAraCMWqgyChWUuevjoOKUzVYSYoHwv2zT4nQpzkLpk4a
-         1wvg==
+        d=gmail.com; s=20251104; t=1786794997; x=1787399797; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=GXrlacljC9jA0dJpbVEtwiza65imm1+twTjzq4FOwK8=;
+        b=lG7m93egfTvf58gQxqTSdPaPiQJltYbpKnK+ET9+ncIS22Hy6pnsAz4L1eml42WL8B
+         lz11JBb8iHWoELKwiS9dhu624rJ5cKSB1Pf7VBoWQaY64Bg77rTbDmWWReHjk7Q0aOHL
+         uwkSHyNITIqr/Pf5PqGYZaRut6Hqn9TDu78Lxx/A+66HSwjHPZzp2MbpbTne0lpDNEYw
+         zYAB95gobuhMmyZIYlThVsbDntvb5BPoTWT87ewC1YLcBQXHle+ftJWLvQ+zE9zIMWph
+         sDubI8OcfT82wcYhuJVDZc8jTXUp+I4gXzB4QZrTNIj3h2vYXdGlDbVCrywQM1+5oM8T
+         Pp0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786791891; x=1787396691;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:subject:cc:to:from:date:message-id:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=GrwB5zfsW4lC1jK6YCZThBFVhJVN5/++tlnL9AR3ZH4=;
-        b=VJUomzcs8dN9tz4s5TVyjwordly1fOiYTjVWU4vndl0nIaZ0QbgYHOrD1cTLX61ywJ
-         EQJkEDmnS4nSWHepka8pxg08mTWlQvT0RBbhE0Btfz67ZbyJIz40ccFcijuk/+3Q7rvc
-         skqobc5M5IdzQ+JIB003XhxZ4EoH3UYfD4LuqMp5bM0gKKZx0/Wsm/k3N/km10iSVuys
-         p+nTWSTddb/xqQsSZ3tc1HsWOguUCAr5BKEu6L+6SkVACsHHAU8WmVOjW3vlEoh24SNT
-         px8bYSOZTjwUKjrzY/a7SvOL4KEYbWEE8eRZlBGse5hkmZ8hSsgIZp1SLcW6CybiOo4H
-         ESUA==
-X-Forwarded-Encrypted: i=1; AHgh+Rpbzk2JHmB0BqqHbomjHkMu9cw0IL/DMCqI1ccl/TYLg1M76vk85ghJezrdZz/Avkg6bIRAXWbk5j+c8ws5Cw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzjpHZ1LarbUQPB3wb+JYvk8xTbaAMgBPBmcKPvmGqaxIZe63VT
-	exTd/eZWI3GCLPdgwjezysJrfweWQKNXUxdeuKfGNVmMXwAFRHVkjqE7
-X-Gm-Gg: AR+sD10Nt08tzPKHJ4xFeQWi4NnhlITdWwLHm9F44cSLXiLQ8h5G26Qej4znGa25Da3
-	XafLi2BOFNnO+ngBWjZeJrYwgCTfQrdLGtv5QsYODv/02svNfp1g3g2zuLLlTrh3CkRbnsYPKNk
-	kFPfjdmg077dimSW8RvLMywdOp+Ll9Y0SLiJPYGIKeO9fkbKuCXE1N0WoGE/dVyaLz7ElF/IFOM
-	cATeWV40vgZo9vIEHaYw4WzdSIdN7Fo9VPK56+jNiMm36/SHblGTOtcapmF4RjgvE+7ALhXfjEK
-	SA6HTrnJyLHT78f3JdPIkvWLQKcJra/np/Rs1pauSBpyZWhyTcsKfAFsdO89nlGueeQombx8xmr
-	mKjvV+GomVKKecUvhLIQdoZx2x/FxdfVp/QhqP5xIGmBOj43uL9UY6fZbatwpdi5OpGvb26zWIk
-	1egkKZUMjwWtE+OdiQrs8jpm0DVY5+Pbel+d70cp8VMTQuGUrjz3tNaOgnA4sqQKJWqVi2kxE6w
-	70fChvHVH/WVnuxJiJHPGGl7ClAu1k=
-X-Received: by 2002:a05:600c:1f91:b0:492:4e09:9fc1 with SMTP id 5b1f17b1804b1-4998797d111mr154059175e9.15.1786791890869;
-        Sat, 15 Aug 2026 04:04:50 -0700 (PDT)
-Received: from Ansuel-XPS. (host-87-20-3-207.retail.telecomitalia.it. [87.20.3.207])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-499899afae3sm98004825e9.3.2026.08.15.04.04.47
+        d=1e100.net; s=20251104; t=1786794997; x=1787399797;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=GXrlacljC9jA0dJpbVEtwiza65imm1+twTjzq4FOwK8=;
+        b=BDwbeepxrMouh0sqjwKvDRgt3sZ5MiipLtaTiS4EAFmB50/gPriKBZlXb+efkUoxB4
+         0noLXCy5001/V9C5zOx0EqQ6x4rEN99fUEqsBj+EDT/WngeWyWk5SbqwKuNCjYTVI9H1
+         wMEWMS1mGxWJ/kbhYvAiHbck3SRJG0sqBGnygxUdXOFoazq7GAUvya+yYd+nQWUHH02b
+         nO7QiQr7XTHIciuo48JbKwDC+gObRmxkKXSFdEgtXOargbaPPZr5Pzm5A8IdPl0rO4a4
+         783wk5ofO/XmuGmCv6BObpL21PL8QjS0Ex1ud6x5Q8M2Za1IDBhREjSvROoOIC8B6mO7
+         5rlQ==
+X-Forwarded-Encrypted: i=1; AHgh+Ro8gSQMG58IdCzk8I4wZdnAuWPE+Xlyq3X8cs+ySkW+CA6ySCcv04g+8wrZgIIiDpaAAQHoywwUMEQ7zdWaBA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzwBZa3DN6ZXZLnN3LiLY9Nbvj8HGiG19v9/mDKjEZErJEhNg8P
+	KQVTYz7GUlaNNMHlwrU6HSSSwnUgJm4DaSJEVQ0GialoY83g0PTaGIIMjkL0XIPw
+X-Gm-Gg: AR+sD11z5D1IexmNS0bVwfCLyNNWM7eI2AMAJDtXIdwXfJ9gRLe2W6tcIBnaRLUsBg3
+	K82NruBeIS6W3+yPMIpnKTblOy3uN93qPgWjMMe05qkAK3awgqNDZA34eh5ghsFUShjSvLPIdiE
+	c+L3cHKPxeQkTmXjY2iSNn67q4cuPiw+rDVQ3BU01y05wDZ/uZ3ao9Vp935Dd+Ht7+oThqbzoRn
+	4FNeT+8VHYETPMnZ7AhT+TnpvJ+K9GjZRbDkjunMaWqlmPC4YC4wmd6O7yW9iifKJ3kCJXa3fXu
+	RDVM57LSblwkMASSakl6N4Q/GG+1HFUCcU7OxVKWvmfN1Bue9zZgV212xOrEGKuwY9cNkrq4GWp
+	0vbYzIKhdgCp0ukDSJsjiqLN7yUH6ZxXgBhrADOoYMt+RlkhBuIMRIri/E6UwM6m21/7tTnZsNP
+	wKr7Ok8u4lesZjVbrfLJoQuXKgpLw+/FyiCf1iWuR8t1T4Dme78U64XK6vvb1hZQgd468dJkRSt
+	IQO69uG7eGl
+X-Received: by 2002:a05:6000:29cf:b0:481:5f33:c2fc with SMTP id ffacd0b85a97d-4816078c9ffmr13200821f8f.29.1786794996637;
+        Sat, 15 Aug 2026 04:56:36 -0700 (PDT)
+Received: from archlinux.tailbe3ea7.ts.net ([185.19.153.11])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4815f2c129dsm16085455f8f.26.2026.08.15.04.56.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 15 Aug 2026 04:04:49 -0700 (PDT)
-Message-ID: <6a8047d1.3527643f.2d620e.3236@mx.google.com>
-X-Google-Original-Message-ID: <aoBHzVNCc-TOnCaP@Ansuel-XPS.>
-Date: Sat, 15 Aug 2026 13:04:45 +0200
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: Bjorn Helgaas <helgaas@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>, linux-pci@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+        Sat, 15 Aug 2026 04:56:35 -0700 (PDT)
+From: Ismail Tarim <ismailtarim7@gmail.com>
+To: Marcel Holtmann <marcel@holtmann.org>,
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	linux-bluetooth@vger.kernel.org
+Cc: Jing Cai <jing.cai@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Chris Lu <chris.lu@mediatek.com>,
 	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v5 2/2] PCI: mediatek-gen3: Add 2-lanes mode support for
- Airoha AN7581
-References: <20260806165334.7328-3-ansuelsmth@gmail.com>
- <20260813170820.GA1143871@bhelgaas>
- <6a7e1b73.e11288f4.1351ae.5625@mx.google.com>
- <5qulrgfnwzuo556hxsyg3iweqv6i57ll3chhhb3nxe7lgr6fff@4l3s5rotnpab>
+	linux-kernel@vger.kernel.org,
+	Ismail Tarim <ismailtarim7@gmail.com>
+Subject: [PATCH v2 0/2] Bluetooth: btmtk: fix subsystem reset error reporting
+Date: Sat, 15 Aug 2026 14:56:22 +0300
+Message-ID: <20260815115624.8309-1-ismailtarim7@gmail.com>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <5qulrgfnwzuo556hxsyg3iweqv6i57ll3chhhb3nxe7lgr6fff@4l3s5rotnpab>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260815_040454_314198_57B9D531 
-X-CRM114-Status: GOOD (  24.95  )
+X-CRM114-CacheID: sfid-20260815_045638_892923_C2A53067 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,51 +102,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Aug 15, 2026 at 08:16:56AM +0200, Manivannan Sadhasivam wrote:
-> On Thu, Aug 13, 2026 at 09:30:54PM +0200, Christian Marangi wrote:
-> > On Thu, Aug 13, 2026 at 12:08:20PM -0500, Bjorn Helgaas wrote:
-> > > On Thu, Aug 06, 2026 at 06:53:32PM +0200, Christian Marangi wrote:
-> > > > The Airoha AN7581 SoC supports configuring the first PCIe0 lane to 2-lanes
-> > > > mode (x2 link) by bonding it with the second PCIe lane (PCIe1). This is
-> > > > done by configuring the PCIe MUX in the SCU register.
-> > > > 
-> > > > To correctly configure PCIe0 in x2 link, define in DT the following
-> > > > additional properties:
-> > > > 
-> > > >   - additional reg, 'sec-pcie-mac' for the secondary PCIe.
-> > > >   - PERSTOUT reset for both main and secondary PCIE0, called 'perstout' and
-> > > >     'sec-perstout'
-> > > >   - 'airoha,scu' property to correctly configure the SCU register for the
-> > > >     PCIe MUX
-> > > >   - 'num-lanes' set to '2' to enable PCIe0 in x2 link
-> > > > 
-> > > > In such configuration the EQ preset are configured to the same values.
-> > > > 
-> > > > To permit correct configuration of the PCIe link, additional logic is added
-> > > > to assert and deassert the PERSTOUT resets. Support of these additional
-> > > > reset was introduced in Airoha clk driver with commit
-> > > > 6712f48eb3a1 ("clk: en7523: add support for dedicated PCIe PERSTOUT reset")
-> > > > and on backporting of this commit also the clk driver change will be
-> > > > needed.
-> > > 
-> > > I don't see 6712f48eb3a1 in upstream or linux-next.  Is this SHA1
-> > > going to valid if we merge this for v7.3?
-> > 
-> > I picked that sha1 from the git pull for the staging clk tree.
-> > 
-> 
-> Ah, I missed it. In this case the SHA should be dropped and maybe we can refer
-> the lore link of the patch?
-> 
+Two bugs in btmtk_usb_subsys_reset() that make it report success to its
+caller when the subsystem reset has actually failed.
 
-Just yesterday it was picked and it's present in clk-next [1].
+Patch 1 covers the case where the post-reset chip id reads back as zero:
+the function logs "subsys reset fail." and then returns 0.
 
-The commit didn't change as merge commit are used so the sha1 is valid.
+Patch 2 restores propagation of the MTK_BT_RST_DONE poll timeout, which
+has been silently overwritten since commit 3dcb122b3064 ("Bluetooth:
+btusb: mediatek: return error for failed reg access") started assigning
+err at the chip id read.
 
-I think we can keep it?
+Found while investigating an MT7902 [13d3:3579] whose controller stops
+responding and never returns to the USB bus. On that device the failing
+path can be reached on demand by requesting a coredump, since btmtk asks
+for a reset once the dump completes:
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git/commit/drivers/clk/clk-en7523.c?h=clk-next&id=6712f48eb3a15842925171441505fa2e7699c57e
+  # echo 1 > /sys/class/bluetooth/hci0/device/coredump
 
+The captured firmware coredump shows the controller asserting inside its
+ROM rather than in the downloadable blob, which is consistent with the
+failure surviving a firmware update:
+
+  <ASSERT> system/rom/transport/tra_usb3.c #764 - BTSYS, id=0x4 idle
+
+Both patches only correct the error reporting; neither changes the
+recovery behaviour or makes that controller recoverable. They are a
+prerequisite for anything that wants to react to a failed reset, since
+today the failure is not visible to the caller.
+
+Compile tested on x86_64 (W=1, no new warnings); checkpatch --strict clean.
+
+Changes in v2:
+- 1/2: shorten the subject so the CI gitlint check passes (was 81 > 80).
+- 1/2: document how the failing path can be reached on demand.
+- No functional change; the diff is identical to v1.
+
+v1: https://lore.kernel.org/linux-bluetooth/20260815110119.11301-1-ismailtarim7@gmail.com/
+
+Ismail Tarim (2):
+  Bluetooth: btmtk: Do not report success when subsys reset fails
+  Bluetooth: btmtk: Do not discard the subsystem reset timeout
+
+ drivers/bluetooth/btmtk.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+
+base-commit: 15ef2f78c49d20d53ec7c0f1c9b40b02e089f2d6
 -- 
-	Ansuel
+2.55.0
+
 
