@@ -4,95 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CE66C5DF6E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Aug 2026 13:23:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2EE0C5DF70
+	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Aug 2026 13:59:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vg9qAqprJ1qT8ZCEcxsSaRPXUDpRR/0AcgE/OG5kf+U=; b=LW69DTEK0edeyozJ0Jb4e7eo+G
-	KPMyupNiS76PCsBZ3zg9T9N/qGk4PBcKrGgzoe5N4pfP2C6hwBfQIYAOtsTQ7acJFmWX6GIAXh3QW
-	1WpBEgBfAjw8dx821j5icZchJBvA8ylMJ97K+XPnn1E1VymmVElygFA3ueTIheZkP51H4Ot6XUQrC
-	lJuk0EHUD2ebIoDUZGWQHmRvQvWAhjG9cRcmcLiVJBYugJOiVAS1F7MNANmwFj7YLC3WUSeL8A0JD
-	AkXsujCFLUi8BHbDluN7vY1x+J8XbrSuFLw6HRb+TFduUuYbf2vzvpdreACMT0TGumV5nyE0cnFT6
-	JNtyRUEA==;
+	bh=F9HEXESutLpOiaj8UhWCcmiSUavGLm/Yffesz0tGfsc=; b=LQGgDD496W6PxnxfmK5SeylXsf
+	SQcYAaM8jyL7SSu3EXBtLUpID9X11IPd/Omq684bTkZOi1yvYyqPMA5Iz2YvHNeHVcTqrqL1NVewB
+	JkVNEkhCAhvgdOPDeHNPY4dRd0ealvZBpzXbhsTcWfBaKdgfEYbNm8AKlQLJO7tAobh++Z7733eBZ
+	WGwlI+/0FX/ULMZZlGv9usw5j/0YtXzKFieH2nAwjjqHxjcjRupmgk1R/IIKK2a2NaRdRWKeXelvA
+	6u1nj4FzRCDpdUu/8E6D/gpAAkqpQF7SWrPgGfuh8uJJ42omhfOlXxDdXSZMY6qokCle850PMG4v1
+	BOF1hVng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvapq-00000004nBJ-1qCF;
-	Sun, 16 Aug 2026 13:23:34 +0000
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
+	id 1wvbOS-00000004oAM-0oij;
+	Sun, 16 Aug 2026 13:59:20 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvapn-00000004nAi-3zmt
+	id 1wvbOQ-00000004oA3-2E6U
 	for linux-mediatek@lists.infradead.org;
-	Sun, 16 Aug 2026 13:23:33 +0000
-Received: by mail-lj1-x22d.google.com with SMTP id 38308e7fff4ca-39db07589caso18832311fa.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 16 Aug 2026 06:23:31 -0700 (PDT)
+	Sun, 16 Aug 2026 13:59:19 +0000
+Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-5aeb2bc82ccso2913849e87.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 16 Aug 2026 06:59:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786886609; x=1787491409; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1786888756; x=1787493556; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=vg9qAqprJ1qT8ZCEcxsSaRPXUDpRR/0AcgE/OG5kf+U=;
-        b=BzqeoRwbWgaTx7B++MNRXUhB3Kk75nP7Tct+59PC+eVuZNGTsECxtcUpAA9VGjP031
-         WNwQsZJ2UJG7l2ebpkJQbblYkYJLkPHc3HPIISftYwYok3b9Bvg9NpWWoiWNAcuyRrFd
-         kyK1PAUYr9iGFbF3HXwKy5kzVtWonMsOM0NUpH9qgSbYGVbetUWXid4IpXGW/Ic6rsZs
-         lTE859M4UjrxSD0UnkuYUidJSSccCVKwHJ2Eznkb8xGHnM+EzjyYwFIDYv7OuFNwLuu6
-         is5uzSjOjqxWhzQdpySLVIVGwO4kgZf48CwUq9/0cqQxDpZ1dWxG3OQ5YJQBx1bmFYm1
-         rhNQ==
+        bh=F9HEXESutLpOiaj8UhWCcmiSUavGLm/Yffesz0tGfsc=;
+        b=QZ8xsWqSXpGDL+ZvrkzLdtclY+vWsVk0hON3A1nBKljI/nDhIsoOF5bV7h1JSBrlde
+         F8MvTTzQofUH5MvIkG2/Y2jSHKaplo5YaoKXNteGhRM5iSMZZ6FAoFBCm1i9knN9k/+9
+         NyhFRtYpIuRaNG5o0q/InhpG4Flal8WZa6D0QDvPVflbSwfys97qC5cTA2/oNlIbtMXb
+         DVtsbzlkVrQ8ImeS9QbfMmszyIRaJNYFVH8sw5JLNGNMzg0dnypj0ISvqAKQuEINoyyN
+         jXAvsPSgKYX6bp9XCRWZzieUR7wa/4QPzOWC+EbyQe/OKpR0ECpBoyuFS4+Ylg+9bwvj
+         +/fg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786886609; x=1787491409;
+        d=1e100.net; s=20251104; t=1786888756; x=1787493556;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=vg9qAqprJ1qT8ZCEcxsSaRPXUDpRR/0AcgE/OG5kf+U=;
-        b=DcrVkkk0mgePXFVpCXQ7bZFxDSPvTBerk5DuWFx/bPn7NyMwu6Od2LoXzOWlkEcBDj
-         wZXVHn81uGW/LH01A8O76j9ST+ArD3qIe9ICdexfgsObiwpA/bJEyfG/omzAwfva3yNv
-         KmNhlhjerNT2o93DCeXMBc6+BuICqyLUDYb3jYn0wKZ5bYWkcWmqmtze+ykuDN2CfaYJ
-         eKxBrDa/LBvKY3FCrRYv58WrGckORv/YuK1NUfMtSvec5LXkn9qwreKvQCk1Z5CMAOs3
-         oFdSTtxjDlH5oR967vBYyOuYYC8qw6aQ4FyFLCpF/q40Ineas1NmNrQ30WhRMszeNWX7
-         HVnw==
-X-Forwarded-Encrypted: i=1; AHgh+RqqF9hsjjdAU7Rejo6DtfyechivwwdczX5se7B4Zi+sDXKwOjUu5ZnHE/4vJtp2R6A9cax+nM3/CkqWspipLw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwW9pSNuRXZi1MWrnN3F/H1+VAXCcyuEYhci5AARTx10zeZFUYf
-	kBWElO8GngqXZBA/4JJ4XY9ZJtpCqfgo7VqOMrnJUayJVq01SRy5YmUH
-X-Gm-Gg: AR+sD10/0KJzRme8aQLietWuWgf/+Qt/BPKd5Tc06GBTdlbvahO/Nhf9+7tgRIQi0f7
-	jjQlPiJEE31j1odVieuAWHz57f6ChXCBnv3MRsc27UHCRzaNLesxg/1mX5BZYF4vR602VrqGRur
-	oB06iMwqMMVP7KYPdmXtizlWaYPLrwxxwrBCbGkdXbwI2HZd/a5NkBA3/RFbqqZY36Ca98ZwGA+
-	AwzyRz6wkQLbv69Sp8g/2KY4LZ1qgqQubqwdC3QatE9Xbzhfi1liUBSxSRltW95EDzkRV+FaDwL
-	voH53FGqbEBzf2lF/YoM289dRVRuz6Cp17Aswh8EL4aJkoRJ26pT/k++UoktAVUJttkFww6gamC
-	k0k6GnDFBkVz7KNZfJxoFnkJImIGi74S52dIS5UUuSsTMG6hNO9OrSMxHS1u5c173VjlpL4fBY8
-	ipB//g+eLSvWfv4q7yvjaKblwb+MvHbCXDXoHr1cL72JY2RnqI9odEdBfrIKgc1ZnOQA+2eShFR
-	PeVRdS39cDFlv++dcKpHbkNNad/WzyqwdEOWULi8PaYJ7m+iY0oN7FKb4G2gGtQbVKUba0=
-X-Received: by 2002:a05:651c:2113:b0:39c:71c9:e28f with SMTP id 38308e7fff4ca-3a1327dfff1mr17716681fa.25.1786886609125;
-        Sun, 16 Aug 2026 06:23:29 -0700 (PDT)
+        bh=F9HEXESutLpOiaj8UhWCcmiSUavGLm/Yffesz0tGfsc=;
+        b=p3vTX9f/96WyaxeOZeYhjsO9oN76NcdUmWcCgiVG1OedG9h+hwRy8NIig806wMk62z
+         oSPfR8tLqTfx785CWT7vnxm3cxBtcoZG/qU4/fa43HGtkDRl8AdjUH5IMkfZ5tCArSSf
+         r/TRTIGYK/zYTqxJ3ThhLCIef47/rPOh2mkuX57UMuHpT0dzMtaUlqq5tCJmDN2UtbDB
+         Jo1V4qyiUrs8OYyTSJtxrrsnEk+2ufi2b2VNfhwzM6CMoYK2AJH9RU1s58tjRcstUFbb
+         1PwvqOuzaj+jsDQT0D2Xv2COcMEaCymutf8tiq0o/LTbnjsNYzODyElWaJ+Reu5dcUeb
+         ujqg==
+X-Forwarded-Encrypted: i=1; AHgh+RqhlAoDzsRaMRn6viHjTAfN3khX9D8KY5cFvw/2tQH1cUn1ZLpeyoEiEyZ6z3jybyHdYr/rLB1jL9pFvSLWQw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzInhn4VE8zc4lExE6Jw7vY5/gl827FnJ3HeCZTnDFfDavTqNsk
+	ZBDxm6bxR9A5dSjar9yI51XOPC3VkF5z7TLdZ9Xl8Q11UhVH+HJJcule
+X-Gm-Gg: AR+sD12cRGp9np/btexmaJqLtpVSzJ28x9EosCZxoQAeFkl+lXJJTeQuIsdztZAUfZG
+	JRXfCZxEXkbxC/DPIZVOE20dWP5+srwIza9mUNA0+BlkhblYAHvvvxoTDnDi5xZs8mtE4yof4vx
+	BWPmQXYBc86pvfE4Glm2YJEm/Gxea74zVy37EQI8f7DO8LGpgaWeXkhMymr2uXmg86huTx/N+XH
+	NNwShBvfYA5Dgd92iMqBIi0RD2tCwYqTRjFRt/7EoqxdiWHAqwYFnfc7Wvp0sMGv4Y+05fsWLkD
+	gukX6mK4mzq1GK0f/UIK8ypt+OWmZCeRI3DCM9TYUvMadllBmavwy0FJ4sHKM/8Y+EAYLUjtG0e
+	vB2b5Q6KHlDU/6NVePCPS5utJT+XMH9g2or0MRkVRO1IEHd255yqS9HAJamnoh+iwzUuDxg2oLs
+	n6Go8fWu0lHprQMGdeKKckE6HVx2ung611HaUCZwbhHzDxQ2SVEexw1WLdmSNcsq7xt7FHLWXgj
+	F7phrvDbnD2AqXUQ0KITHkkbyGSW6xdbKZY0w0TmdMgPHb+ksfva3kz0wJgNGLt0HxEhXQa
+X-Received: by 2002:a05:6512:32c5:b0:5b3:cd0:6be6 with SMTP id 2adb3069b0e04-5b45914b25cmr3159910e87.54.1786888755964;
+        Sun, 16 Aug 2026 06:59:15 -0700 (PDT)
 Received: from localhost ([188.234.148.119])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3a130cfd4c8sm18812451fa.34.2026.08.16.06.23.26
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5b458bac120sm1796996e87.35.2026.08.16.06.59.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 16 Aug 2026 06:23:27 -0700 (PDT)
+        Sun, 16 Aug 2026 06:59:14 -0700 (PDT)
 From: Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
-To: Laxman Acharya Padhya <acharyalaxman8848@gmail.com>,
-	Felix Fietkau <nbd@nbd.name>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
-	Deren Wu <deren.wu@mediatek.com>,
+To: JB Tsai <jb.tsai@mediatek.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Charlie-cy Wu <charlie-cy.wu@mediatek.corp-partner.google.com>,
+	Charlie-cy.Wu@mediatek.com,
+	Deren.Wu@mediatek.com,
+	Sean.Wang@mediatek.com,
+	Quan.Zhou@mediatek.com,
+	Ryder.Lee@mediatek.com,
+	Leon.Yen@mediatek.com,
+	litien.chang@mediatek.com,
 	linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] wifi: mt76: mt7921: validate CLC firmware records
-Date: Sun, 16 Aug 2026 18:23:25 +0500
-Message-ID: <20260816132325.23007-1-mikhail.v.gavrilov@gmail.com>
+	Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
+Subject: Re: [PATCH] wifi: mt76: mt7921: refactor regd update to fix recursive mutex deadlock
+Date: Sun, 16 Aug 2026 18:59:09 +0500
+Message-ID: <20260816135909.52136-1-mikhail.v.gavrilov@gmail.com>
 X-Mailer: git-send-email 2.55.0
-In-Reply-To: <CAMyXUJmh=WfwC4_KHupNxYR5e2Gy5QhBDL5TSG6XEW-XLa+X4Q@mail.gmail.com>
-References: <CAMyXUJmh=WfwC4_KHupNxYR5e2Gy5QhBDL5TSG6XEW-XLa+X4Q@mail.gmail.com>
+In-Reply-To: <20260629083543.153564-1-jb.tsai@mediatek.com>
+References: <20260629083543.153564-1-jb.tsai@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260816_062332_012217_E09695B8 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20260816_065918_599515_32A7CAA6 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,67 +111,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch is in linux-next as 9417c5818a01, and on current shipping
-firmware it stops mt7921e from probing at all.
+I hit this deadlock on an MT7922 (mt7921e) and arrived at the same split
+independently before finding this commit in linux-next.
 
-An unknown clc->idx is treated as fatal:
+Without it, associating with a 6 GHz AP self-deadlocks: mt76_sta_state()
+holds &dev->mt76.mutex and mt7921_regd_set_6ghz_power_type() takes it
+again via mt7921_mcu_regd_update(), on both the sta_add and the
+sta_remove path. wpa_supplicant then blocks while holding wiphy.mtx,
+NetworkManager blocks on wiphy.mtx while holding rtnl, and the machine
+is left with no working network stack and needs sysrq to reboot. Because
+NetworkManager retries the saved profile on every boot, an affected
+kernel stops reaching a usable state at all once a 6 GHz profile exists.
 
-	if (clc_len < sizeof(*clc) || clc_len > len - offset ||
-	    clc->idx >= ARRAY_SIZE(phy->clc)) {
-		ret = -EINVAL;
-		goto out;
-	}
+With this commit applied to mainline at 3eb40771c00a (post-v7.2-rc7), on
+a lockdep and UBSAN build: association with a 6 GHz AP completes
+(channel 37, 6135 MHz, 160 MHz), switching back and forth between a
+5 GHz and a 6 GHz BSS exercises both call sites, "iw reg set NL" reaches
+the regulatory notifier and visibly takes effect - the link moves off
+6 GHz - and "iw reg set RU" restores it, and an 88 s deep suspend/resume
+cycle reconnects to the 6 GHz BSS. dmesg is clean throughout.
 
-but linux-firmware 20260810 ships an MT7922 image that legitimately
-carries records with idx 3. Dumping the CLC region of
-WIFI_RAM_CODE_MT7922_1.bin before and after that firmware update:
+One request while this is fresh: the regression this fixes was
+introduced in v7.2-rc1 by e88098133ed4, so it ought to be fixed within
+7.2 rather than carried into 7.3. This commit is only in wireless-next
+and has no Cc: stable. Could it go in through the fixes tree before the
+7.2 release, or failing that into 7.2.y as soon as it opens?
 
-  20260622, region len 366448:
-    idx=0 ver=1 nr_country=255 type=0 len=179384
-    idx=0 ver=1 nr_country=255 type=1 len=187064
-
-  20260810, region len 475488:
-    idx=0 ver=1 nr_country=255 type=0 len=179384
-    idx=0 ver=1 nr_country=255 type=1 len=187054
-    idx=3 ver=1 nr_country=0   type=0 len=54520
-    idx=3 ver=1 nr_country=0   type=1 len=54530
-
-So mt7921_load_clc() returns -EINVAL, mt7921_run_firmware() fails, and
-the probe retries the firmware ten times before giving up:
-
-  mt7921e 0000:0b:00.0: ASIC revision: 79220010
-  mt7921e 0000:0b:00.0: HW/SW Version: 0x8a108a10, Build Time: 20260724143257a
-  mt7921e 0000:0b:00.0: WM Firmware Version: ____000000, Build Time: 20260724143402
-  [ ... nine more identical pairs ... ]
-  mt7921e 0000:0b:00.0: hardware init failed
-
-No interface is created. There is no dev_err on this path, so the only
-clue is the retry loop. Loading mt7921_common with disable_clc=1, which
-makes mt7921_load_clc() return before any of this, brings the device up
-normally and the firmware is loaded once rather than ten times.
-
-The rest of the patch is a real improvement - bounds-checking the region
-table and each record length also closes an infinite loop on a
-zero-length record. Only the handling of an unknown index needs to
-change: an index the driver does not know about is not a malformed
-image, it is a newer firmware, and the record should be skipped:
-
-	if (clc_len < sizeof(*clc) || clc_len > len - offset) {
-		ret = -EINVAL;
-		goto out;
-	}
-
-	if (clc->idx >= ARRAY_SIZE(phy->clc))
-		continue;
-
-I sent an overlapping patch yesterday, "wifi: mt76: mt7921: fix
-array-index-out-of-bounds in mt7921_load_clc()", before I found this one
-in linux-next; I will mark mine superseded, since this patch is the
-broader fix. Happy to send the one-line change above as a follow-up
-patch and test it here, or leave it to you to fold in before this
-reaches mainline.
-
-Separately, it would be useful to know what CLC index 3 actually
-contains - roughly 109 KB of payload in two hw_encap variants that the
-driver currently discards either way.
+Tested-by: Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
 
