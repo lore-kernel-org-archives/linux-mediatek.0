@@ -4,83 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC772C5DF66
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 09:44:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52859C5DF70
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 09:52:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+THMLn1UZx9nf5RAT2P7GzAZnM9DxkEgB9Bh6dff4ho=; b=Xbu8uQPMwWAjlqsEbc2vblbrcN
-	904EAI8DOb+EEZ2G/H44Bl862RUI7UyWVnHU8KfrAH6uHY0l3aFWZeOwm+VWVSnWbHN691DdwIHC8
-	4oFH/856rUxdivKEGLFDS1fg31paLcKqs2f/9Ccf9+jjW93E3PYnoJKKBEZJxcRg6wWvZAQvvB49E
-	geE3uLFcXL1yt9q9vHYt+SK3OBtsZJlVZ7dRsM09G5C7QgX4PvcSV/RnfOliJuiy0MFldVxYf5mwh
-	wh/jK11EIw4lvecIXGm0aFsUHDIoB39FdZyB6Hvjsnas0CK/dIURxM57F/Rob5ZAacyibltyfud/Z
-	rW6xnFBw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cqgZX36tq3stw7WUYgCHB9nJa4XRCAPBMvSex21T0K4=; b=iM1j1/NfVg1H6p0aIZ13MZYiBC
+	aVNSPZyhNAwqCjazfw1oXKep6tK2pN1MFg9A+LiQaBSU0K1MO4v1nkEwA34uTNBB/KGPnh/MeJtFx
+	/ZciCZry5Legeh/9vp7qcw7oZaqx4gSt8j9sDratDxfyhm0L0GGcfYiX1UprUjWjDubvArvUbgBVp
+	7XpC3Y/ALJoKmxu5DyHlLCjMdXV0js8onD+It0asWpuS9k+diGVH3SmWJT4pts/f1GVh5Q1WjIy5N
+	beQ1tQTuaMLuMyswEvAKClVJTSVHvCru0KF0WBf66AUF8n/m0x8TXTJaMlQ0IDaV9Lfz2ORqKkKWg
+	NUDb8c5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvttY-00000005q9B-3Do0;
-	Mon, 17 Aug 2026 09:44:40 +0000
-Received: from fanzine2.igalia.com ([213.97.179.56])
+	id 1wvu1M-00000005qzZ-40rn;
+	Mon, 17 Aug 2026 09:52:44 +0000
+Received: from out-106.mta1.migadu.com ([2001:41d0:203:375::6a] helo=mta1.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvttU-00000005q7F-18G0;
-	Mon, 17 Aug 2026 09:44:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=igalia.com;
-	s=20170329; h=Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:
-	From:Reply-To; bh=+THMLn1UZx9nf5RAT2P7GzAZnM9DxkEgB9Bh6dff4ho=; b=F9ED7xRebfO
-	fpKmtDdJPClyjkM0wdEcvuHinh/JJwYUq/anG2SrWwi7ulZMSHNb5DyOM2paCKQs6s1+1EydqZ7e4
-	NguAxHxj5o9yjk+tszmJgayTZR3WRQIqTqYItjv7rB1LVtFRp/MMsfAdN/N8xpAJ/XXwR5y8wzINo
-	g59JSsj6T+PpEDZEE88JBG0Ijjuq1T6ySXwPqQ6oRtx4JVd+x6F17ATJTTrWYqaQ1gFofG2TyxvwO
-	042PoThldp1pqUi3M8n/FzC+N4+txPch8hazThaEJBW1C+MaKLVWe9bt61FUV0EDNExBsfbCI3cEV
-	RZjJS2tHgicIp0AoouP6p0g==;
-Received: from maestria.local.igalia.com ([192.168.10.14] helo=mail.igalia.com)
-	by fanzine2.igalia.com with esmtps 
-	(Cipher TLS1.3:ECDHE_SECP256R1__RSA_PSS_RSAE_SHA256__AES_256_GCM:256) (Exim)
-	id 1wvtt1-0046Zh-1a; Mon, 17 Aug 2026 11:44:07 +0200
-Received: from gate.service.igalia.com ([192.168.21.52])
-	by mail.igalia.com with esmtp (Exim)
-	id 1wvtt0-00AeNY-0G; Mon, 17 Aug 2026 11:44:06 +0200
-Received: from berto by gate.service.igalia.com with local (Exim 4.96)
-	(envelope-from <berto@igalia.com>)
-	id 1wvtsz-002qMz-2h;
-	Mon, 17 Aug 2026 09:44:05 +0000
-Date: Mon, 17 Aug 2026 11:44:05 +0200
-From: Alberto Garcia <berto@igalia.com>
-To: Rong Zhang <i@rong.moe>
-Cc: Michal Pecio <michal.pecio@gmail.com>,
-	Chris Lu =?utf-8?B?KOmZuOeomuazkyk=?= <Chris.Lu@mediatek.com>,
-	sean.wang@kernel.org, "luiz.dentz@gmail.com" <luiz.dentz@gmail.com>,
-	Will-CY Lee =?utf-8?B?KOadjuaUv+epjik=?= <Will-CY.Lee@mediatek.com>,
-	"marcel@holtmann.org" <marcel@holtmann.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	SS Wu =?utf-8?B?KOW3q+aGsuasoyk=?= <ss.wu@mediatek.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"linux-bluetooth@vger.kernel.org" <linux-bluetooth@vger.kernel.org>,
-	"patchwork-bot+bluetooth@kernel.org" <patchwork-bot+bluetooth@kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] Bluetooth: btmtk: Disable remote wakeup for MT7922/MT7925
-Message-ID: <aoLX5TsNv5d9jw0g@igalia.com>
-References: <20260603-btmtk-remote-wakeup-v1-1-5c1006442f36@rong.moe>
- <178050901239.1520440.2026593395539384648.git-patchwork-notify@kernel.org>
- <3f9c376a5dbfc9d737e2a7f83c5db8e591fb8793.camel@mediatek.com>
- <17FE08E9-2229-4C97-846F-6FA099E22C90@rong.moe>
- <CABBYNZ+rR71SKUEuZBTf+E3SwRNzV2-s-zt8EwNJM3PSx9qB_A@mail.gmail.com>
- <fd8587e97a48e49332a4ad36e51e18739d000250.camel@mediatek.com>
- <4e96132bcfb267af05c06dc277b5ba6895e3ddde.camel@rong.moe>
- <99fb847b8fdedb1464798230407719912d6585c6.camel@mediatek.com>
- <20260809223320.24431a4a.michal.pecio@gmail.com>
- <868e97331dc74f176db2d3efdd1c579049b8e493.camel@rong.moe>
+	id 1wvu1J-00000005qyS-43BW
+	for linux-mediatek@lists.infradead.org;
+	Mon, 17 Aug 2026 09:52:43 +0000
+X-Envelope-To: linux-mediatek@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=1ja/V7nTbqqmXtS7BPIrWfg4KU9kF4ez22A8VfBaMI8=;
+ c=simple/simple; d=linux.dev;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1786960357; v=1; x=1787565157;
+ b=rNBIXpmLrBTjiANagf23NRgfs9kWm35rmmTr4Ow8pICWezRCNVk6uU3+YuBcZuGHVxjZS4uX
+ y3cfo2iEVK9dgR4U9AoDc6bRQlqvNnrl6+LRwk4l3oSdnHhAV/nHmcTNLxegh7rzLsxj5v+IRFe
+ mbDpEoDaZb892vReEfpyLAHg=
+X-Envelope-To: linux-mediatek@lists.infradead.org
+Received: from [IPV6:2408:820c:270a:b561:544d:9f6f:ea74:16a5] (2a14:7586:6109:1::198)
+	by smtp.migadu.com with ESMTPS id 051eb70d1ed59f2d;
+	Mon, 17 Aug 2026 09:52:37 +0000
+X-Migadu-Flow: FLOW_OUT
+Message-ID: <29a29de8-ce58-40d5-9161-5ac36b7368c1@linux.dev>
+Date: Mon, 17 Aug 2026 17:52:31 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <868e97331dc74f176db2d3efdd1c579049b8e493.camel@rong.moe>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8] net: airoha: npu: use cacheline-sized buffers for
+ mailbox DMA
+To: Daniel Pawlik <pawlik.dan@gmail.com>, netdev@vger.kernel.org
+Cc: lorenzo@kernel.org, win847@gmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260817090601.1256389-1-pawlik.dan@gmail.com>
+From: Qingfang Deng <qingfang.deng@linux.dev>
+In-Reply-To: <20260817090601.1256389-1-pawlik.dan@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260817_024437_405361_823E4D1D 
-X-CRM114-Status: UNSURE (   9.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260817_025242_298928_BC964B7C 
+X-CRM114-Status: GOOD (  17.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,20 +71,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 11, 2026 at 04:03:38AM +0800, Rong Zhang wrote:
-> I have also seen claims that auto power management is broken in btusb:
-> > https://lore.kernel.org/linux-bluetooth/cover.1774348119.git.berto@igalia.com/T/#u
-> 
-> I believe the proper fix of autopm failure during initialization is
-> https://lore.kernel.org/linux-bluetooth/20250319231235.812700-1-sean.wang@kernel.org/
+Hi,
 
-I'm afraid that patch does not fix the problem for me.
+On 2026/8/17 17:06, Daniel Pawlik wrote:
+> On EN7581 + MT7996 (Gemtek W1700K), mapping small caller buffers with
+> DMA_BIDIRECTIONAL regresses NPU version probe: the mailbox completes
+> successfully but WLAN_FUNC_GET_WAIT_NPU_VERSION reads as 0.0 instead of
+> 0.1111.
+>
+> Allocate at least SMP_CACHE_BYTES for each mailbox payload and map
+> ALIGN(len, SMP_CACHE_BYTES) with DMA_BIDIRECTIONAL while programming
+> the original payload length into the mailbox length register.
+>
+> Tested on Quantum Fiber / Gemtek W1700K (EN7581 + MT7996), kernel
+> 6.18.44, including two cold reboots and sustained WiFi use.
+>
+> Fixes: 6f884eb87a79 ("net: airoha: Fix DMA direction for NPU mailbox buffer")
+> Link: https://patchwork.kernel.org/project/linux-mediatek/patch/20260814110017.2795022-1-pawlik.dan@gmail.com/
+> Link: https://patchwork.kernel.org/project/linux-mediatek/patch/20260809152813.585797-1-pawlik.dan@gmail.com/
+> Link: https://patchwork.kernel.org/project/linux-mediatek/patch/20260805070851.2885888-1-pawlik.dan@gmail.com/
+> Assisted-by: Cursor:composer-2
+> Signed-off-by: Daniel Pawlik <pawlik.dan@gmail.com>
+> ---
+>   drivers/net/ethernet/airoha/airoha_npu.c | 25 +++++++++++++++---------
+>   1 file changed, 16 insertions(+), 9 deletions(-)
+>
+> --
+> 2.55.0
+>
+> diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
+> index b679bed952de..d560b8763753 100644
+> --- a/drivers/net/ethernet/airoha/airoha_npu.c
+> +++ b/drivers/net/ethernet/airoha/airoha_npu.c
+> @@ -5,6 +5,7 @@
+>    */
+>
+>   #include <linux/devcoredump.h>
+> +#include <linux/dma-mapping.h>
+>   #include <linux/firmware.h>
+>   #include <linux/platform_device.h>
+>   #include <linux/of_net.h>
+> @@ -160,15 +161,21 @@ struct wlan_mbox_data {
+>   	DECLARE_FLEX_ARRAY(u8, d);
+>   };
+>
+> +static size_t airoha_npu_mbox_size(size_t len)
+> +{
+> +	return ALIGN(max(len, SMP_CACHE_BYTES), SMP_CACHE_BYTES);
 
-With a patched kernel 6.12.96, after a couple of reboots:
+SMP_CACHE_BYTES defaults to L1_CACHE_BYTES on Aarch64. On Cortex-A53 
+this is fine, but some CPU's L2 cache line size might differ. For 
+portability, please use dma_get_cache_alignment() instead.
 
-kernel: Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20241106151414
-kernel: Bluetooth: hci0: Failed to write uhw reg(-113)
-kernel: Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
+Also "max" is redundant.
 
-Berto
+> +}
+> +
+>   static int airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
+>   			       void *p, int size)
+>   {
+>   	u16 core = 0; /* FIXME */
+>   	u32 val, offset = core << 4;
+>   	dma_addr_t dma_addr;
+> +	size_t map_len = airoha_npu_mbox_size(size);
+>   	int ret;
+>
+> -	dma_addr = dma_map_single(npu->dev, p, size, DMA_BIDIRECTIONAL);
+> +	dma_addr = dma_map_single(npu->dev, p, map_len, DMA_BIDIRECTIONAL);
+You don't have to align the size passed to DMA API. The underlying 
+implementation already aligns it.
+>   	ret = dma_mapping_error(npu->dev, dma_addr);
+>   	if (ret)
+>   		return ret;
+> @@ -191,7 +198,7 @@ static int airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
+>
+>   	spin_unlock_bh(&npu->cores[core].lock);
+>
+> -	dma_unmap_single(npu->dev, dma_addr, size, DMA_BIDIRECTIONAL);
+> +	dma_unmap_single(npu->dev, dma_addr, map_len, DMA_BIDIRECTIONAL);
+>
+>   	return ret;
+>   }
+
+Best regards,
+
+Qingfang
+
 
