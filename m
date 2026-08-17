@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEC50C5DF7F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 19:46:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA059C5DF66
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 19:46:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q3mTxThq2eLy86xHYm2SOBoR5dU3codgK38xVj3ikbo=; b=jfAxJGbZ49HYSy6FNFd+woqj6U
-	vWH7TQHCbdStELCGpczux2SAUW8bCl7WIwnp5S0aDZRMWxdk0a1Qsqxb94yHn18/Ebpyfrw0ve2Tf
-	QY64fSxGLwQdPkNFg74tpoHCMtZUBx3JUmDOc97zwG95rkmm/5FQNfmK2qzr3WlsErnU2UL+POZMc
-	hRWaCJPVl45DO2EQ84OTysnglx1w5NmVGQ07DEzDE7oT5EPM+JQxlXskrRe2ZTYk0PvbeMeu38V+z
-	0xNcq81BM1k1WJr97zsNBY87JU4GfwUQXk4Vi/KTc11hfXOBVn/gxvYdVDeXj+GmofDzw28fwg7AT
-	Ii+HgNJw==;
+	bh=CKjj70wy++8B4OuPl3qmHY5wJCNNCbgrj5oNpTSYmOk=; b=y2tQ95QtvFEt8TqbAbnToaxjfM
+	O/+/X8sCRyIgk/j1cBn2oobHTS8afrhXLhoQvSKNNtsbJYThYqky2TNTpMjq0pq56TLYQLb4J03VN
+	hRNzeUbbaY9H/4nD69x4q+pSkCa7kZm8Vk3vySIMzOqb2hH8Crajkev+kHMWwWbX5I+gdXoWZEF7c
+	QfpTW+VFb+ca+7W+PFZYKoMN6UFDojW0sZnE9TGhh7KXcinVEjm3Nv2ghJSQw0qP1T5YCByax0WEn
+	Uyhfhpe+gfFh2m6aePXJmrHRVyY/umPW+DnQVO16iUi8xq5bzeVR/bsWJ3+ldVRsEbZ96Dbnq0c9z
+	QC2c8fAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ww3IG-00000006jkB-2gCW;
-	Mon, 17 Aug 2026 19:46:48 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1ww3II-00000006jmC-2xGp;
+	Mon, 17 Aug 2026 19:46:50 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ww3ID-00000006jhU-3Lui
+	id 1ww3IH-00000006jkh-1OcX
 	for linux-mediatek@lists.infradead.org;
-	Mon, 17 Aug 2026 19:46:45 +0000
+	Mon, 17 Aug 2026 19:46:49 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8D56041646;
-	Mon, 17 Aug 2026 19:46:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70DF91F000E9;
-	Mon, 17 Aug 2026 19:46:45 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id BAAEE60A73;
+	Mon, 17 Aug 2026 19:46:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 721BB1F000E9;
+	Mon, 17 Aug 2026 19:46:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786996005;
-	bh=q3mTxThq2eLy86xHYm2SOBoR5dU3codgK38xVj3ikbo=;
+	s=k20260515; t=1786996008;
+	bh=CKjj70wy++8B4OuPl3qmHY5wJCNNCbgrj5oNpTSYmOk=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=GQowfqHJhOQATrJ4wwy0mLfZVGkZwwxoYeddnwivFi9ZVTDK/5ElyY9VTx4maxfGs
-	 6c8twxmqHe3FLXlLtmTbLp6G751vG/JBnCzQcAK5dXKl2BWYBB3kudDTs8mgWDzxUT
-	 SBNsJ6+vtSate76IjRA2yCw7Ip4OjbqR9iNkbBaSnqbYP6/fb0E2LBJJAQdzI9vZsU
-	 AEzDn5uflNILproFtD28idG/7QXGhNPGiaoSRtqlDODBTgdkg5At4Mdo0xzsuTAv01
-	 ChLRS52nQRskpBnaiax1XA0RXG7/5L0Whpyf95mUK089m0bdC+QIkXuKbpc5CtUGUl
-	 3AtUvHXLaqMxg==
+	b=eqDReBdm5AiwgrZIhHP/3S9LFHYP5yyJwIbUnaJmxOnHGF4Vxw16jJ0Uv/IITYH8H
+	 /u3ns8Rzmvgn6S7s4A5I0bFMIoih7T/bwiR5tBP3cY413+lPFnq20c9ptfdxx4z+hy
+	 e5MxASAokV+sO9SJ8MCocHIIZR6osP4P6Q1y3c1ZVKZAHh8Ila9z4K77neuNeir9Sc
+	 z0RA0XlZEo7g3yXifH0YC4cjUnXyWkHIXRg30/PbGz6XiACKK9y/WeMWIm/jh+ZEOZ
+	 p5ytKTtolJxFQAv9F6jWzE2AZGOlMSzZ5RK8U8rKr6ZisE8mzoloD3XiJLbE/SZAA5
+	 kQLuohZ73qPfw==
 Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id D0CC13926262;
-	Mon, 17 Aug 2026 19:45:58 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id D09D13926262;
+	Mon, 17 Aug 2026 19:46:01 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH 0/2] Bluetooth: btmtksdio: Fix SKB handling in the TX path
+Subject: Re: [PATCH v2 0/2] Bluetooth: btmtk: fix subsystem reset error
+ reporting
 From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <178699595738.1691257.9499694982738760170.git-patchwork-notify@kernel.org>
-Date: Mon, 17 Aug 2026 19:45:57 +0000
-References: <20260817095332.182994-1-chris.lu@mediatek.com>
-In-Reply-To: <20260817095332.182994-1-chris.lu@mediatek.com>
-To: Chris Lu <chris.lu@mediatek.com>
-Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
- sean.wang@mediatek.com, will-cy.Lee@mediatek.com, ss.wu@mediatek.com,
- linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
+Message-Id: <178699596038.1691257.10089072145797162594.git-patchwork-notify@kernel.org>
+Date: Mon, 17 Aug 2026 19:46:00 +0000
+References: <20260815115624.8309-1-ismailtarim7@gmail.com>
+In-Reply-To: <20260815115624.8309-1-ismailtarim7@gmail.com>
+To: Ismail Tarim <ismailtarim7@gmail.com>
+Cc: marcel@holtmann.org, luiz.dentz@gmail.com,
+ linux-bluetooth@vger.kernel.org, jing.cai@mediatek.com,
+ sean.wang@mediatek.com, chris.lu@mediatek.com,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,26 +79,25 @@ Hello:
 This series was applied to bluetooth/bluetooth-next.git (master)
 by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-On Mon, 17 Aug 2026 17:53:30 +0800 you wrote:
-> btmtksdio_tx_packet() rounds the SDIO transfer size up to the 256 byte
-> block size, but never grows the SKB accordingly, so the host controller
-> reads up to 255 bytes of uninitialised memory and sends it to the device,
-> and can read past the end of the buffer as well.
+On Sat, 15 Aug 2026 14:56:22 +0300 you wrote:
+> Two bugs in btmtk_usb_subsys_reset() that make it report success to its
+> caller when the subsystem reset has actually failed.
 > 
-> Patch 2 fixes that by padding the SKB with zeros. The padding is written
-> behind skb->tail, which is only safe once the driver owns the data
-> buffer, so patch 1 replaces the open-coded headroom check with
-> skb_cow_head() first. Patch 1 on its own changes no observable
-> behaviour, but it is a hard prerequisite, so both patches carry the same
-> Fixes: tag.
+> Patch 1 covers the case where the post-reset chip id reads back as zero:
+> the function logs "subsys reset fail." and then returns 0.
+> 
+> Patch 2 restores propagation of the MTK_BT_RST_DONE poll timeout, which
+> has been silently overwritten since commit 3dcb122b3064 ("Bluetooth:
+> btusb: mediatek: return error for failed reg access") started assigning
+> err at the chip id read.
 > 
 > [...]
 
 Here is the summary with links:
-  - [1/2] Bluetooth: btmtksdio: Take exclusive ownership of the SKB before TX
-    https://git.kernel.org/bluetooth/bluetooth-next/c/951d9f743029
-  - [2/2] Bluetooth: btmtksdio: Fix out-of-bounds DMA read in the TX path
-    https://git.kernel.org/bluetooth/bluetooth-next/c/262cb784c96c
+  - [v2,1/2] Bluetooth: btmtk: Do not report success when subsys reset fails
+    https://git.kernel.org/bluetooth/bluetooth-next/c/771e812f94b3
+  - [v2,2/2] Bluetooth: btmtk: Do not discard the subsystem reset timeout
+    https://git.kernel.org/bluetooth/bluetooth-next/c/54c03e6bc718
 
 You are awesome, thank you!
 -- 
