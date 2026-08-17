@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 704CEC5DF74
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 22:38:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE0A3C5DF74
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 22:40:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6MQDmmi489+J32O1Hp2TCiuVBnz9rSj/w+MrSjdNOg8=; b=NAA/GZ4tuENwUOiZs0fKESUCrb
-	URYi73w4sjeeoJnO0AAMBvoO8VxxUYScEBrjpdEDT9WNVB5Lb712bkfx8T0a9+42l/aY1YwQsxtQe
-	tW80CEZ37w7ghPGupSqleXOAf2qJIzWE/iwWl0B3DLzmHGHaRCD37SMNmWMtF6Et4pHJB3LiAhPde
-	LRI5gihu8tj4Mesnl1NrU6CWW+J0tfH9zl0KPNh8W2XM7Vf5EoTpHh02+qL6LVeI9ukvxcjr1jstV
-	8ztB9EaY8CsEwYz1k+68tREK8Hh/cRp7+5CwULO4BXNwmzgdONNS641ZV7tfEQNcqJs/HLgKKvv0k
-	G+O58nQg==;
+	bh=udONfB0KqPlNsNyooEvhiKK+MK28bo75R+x50okB03I=; b=QDcJM6Oe0o61d9ca9SvtncweCq
+	MSIybRvpOymc5kqLMeXKWtHxQd0GfZqmNF1kJs+bK+Kz36hgWpyoIWC8s/tGl43rvtYnzS4iLnOGr
+	fuAtWziRIpFkrGh7gyGw62YGbtG5Tc7LCEFZ8Cfn/I24Q4BIkCLTItuA8cQkngKBKi1xQdWt0tWU6
+	/I+1hR94r7yXIhQulXOPUyIx3+ftp3pdbiPe9+BFwNJ6IN41Xtl+5gm9UuvgxtqsGnoldREcozwKx
+	gxyNcj05hxg0+GmDknU8U8NfwziUO6/ZpI7yOi3ElNkaKI9ueH/QAaj6cj3CrxapQu31lCREK/PoI
+	c4s0xXAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ww5yK-00000006wUf-2GEo;
-	Mon, 17 Aug 2026 22:38:24 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1ww5zv-00000006why-3Lhb;
+	Mon, 17 Aug 2026 22:40:03 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ww5yJ-00000006wUR-0qjS;
-	Mon, 17 Aug 2026 22:38:23 +0000
+	id 1ww5zt-00000006whC-2sy5;
+	Mon, 17 Aug 2026 22:40:01 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id EF52441AAE;
-	Mon, 17 Aug 2026 22:38:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 330CA1F00A3A;
-	Mon, 17 Aug 2026 22:38:22 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 20771600C8;
+	Mon, 17 Aug 2026 22:40:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD9C41F000E9;
+	Mon, 17 Aug 2026 22:39:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787006302;
-	bh=6MQDmmi489+J32O1Hp2TCiuVBnz9rSj/w+MrSjdNOg8=;
+	s=k20260515; t=1787006400;
+	bh=udONfB0KqPlNsNyooEvhiKK+MK28bo75R+x50okB03I=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=B4aAyeZOXY+TB1DjdqVF58uXzHkWLQC9Fp0dpoPDAc7Y56bIobyPeLrCk7q0O1xK1
-	 AYHbv6V1REHbq0WQQO66qeQJnhFcdx7nIuLiLEXMBdv9vdGoLIXYDmXTt/Pb//QPv3
-	 WMrM9pBF2EM15AJGLni2ZuyxzmRR/ABnxo+Iq+ESJgbphrzxrkUWocg/Vt7YxmI3sb
-	 AINxwZnrDuv34xO6dKWZdr8YHJ2nezXEwpuSIXrNa4fcQUYShxsE0gBBDA9aeLgstk
-	 +26DidBbp7m0dIG7MqfhbAynQu2tCDA33RlZV0yYiNHc7qG8O237OwhbesVGOZBHy5
-	 PNqm/OdjvVyrw==
-Date: Mon, 17 Aug 2026 15:38:21 -0700
+	b=VQHiLBMFGQCgeoew6Cp4Ows756OkMTcKte3toNPglY/bGSasnVZuHKMz8eXnxbElh
+	 jsBGBwsL3xfxOTdgVVpOTDDU2C70vLO5VTYBveLAOTn8yG/FNoeanEwmfEDd0peSw8
+	 7CsCsSF0+XSukhQmxxssL1Sly8Ixga9t1wvzsXXwhuj3kGtIpCuHEdMypW4KOpaBaX
+	 XAu0FMlO4QQkI3hO6viDTnZPCS6YhpoVyK82jTwb1uLmVC8SwU5WWXN0ITiBkwvwJZ
+	 aKpy5RJNdPbI9ZbvayusP0l7sPqUN6YOJqvwCcAU6D8YF54bDafqh6+DiNPEfsiJJY
+	 Ip1r2Gyhdzlcw==
+Date: Mon, 17 Aug 2026 15:39:58 -0700
 From: Jakub Kicinski <kuba@kernel.org>
 To: Jack Wu via B4 Relay <devnull+jackbb_wu.compal.com@kernel.org>
 Cc: jackbb_wu@compal.com, Loic Poulain <loic.poulain@oss.qualcomm.com>,
@@ -57,11 +57,10 @@ Cc: jackbb_wu@compal.com, Loic Poulain <loic.poulain@oss.qualcomm.com>,
  <Jeff_Chang@compal.com>, linux-kernel@vger.kernel.org,
  netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH v6 7/7] net: wwan: t9xx: Add maintainers entry
-Message-ID: <20260817153821.6ee1b4a8@kernel.org>
-In-Reply-To: <20260811-t9xx_driver_v1-v6-7-2c969fad57c6@compal.com>
+Subject: Re: [PATCH v6 0/7] net: wwan: t9xx: Add MediaTek T9XX WWAN driver
+Message-ID: <20260817153958.4b120ce9@kernel.org>
+In-Reply-To: <20260811-t9xx_driver_v1-v6-0-2c969fad57c6@compal.com>
 References: <20260811-t9xx_driver_v1-v6-0-2c969fad57c6@compal.com>
-	<20260811-t9xx_driver_v1-v6-7-2c969fad57c6@compal.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
@@ -79,10 +78,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 11 Aug 2026 15:14:29 +0800 Jack Wu via B4 Relay wrote:
-> Add MAINTAINERS entry for the MediaTek T9XX 5G WWAN modem device
-> driver.
+On Tue, 11 Aug 2026 15:14:22 +0800 Jack Wu via B4 Relay wrote:
+> * Core logic - Contains the core logic to keep the
+>    device working. It includes:
+> 
+>    * FSM (Finite State Machine) - Monitors the state
+>      of the device, and notifies each module when the
+>      state changes.
 
-
-Please squash this into the first patch
+This FSM exists in the driver, even tho you call it "core logic".
+Please provide more details in the patch description of patch 5
+and consider whether any of this logic should live in the WWAN
+framework.
 
