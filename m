@@ -4,63 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE0A3C5DF74
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 22:40:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96625C5DF74
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 23:18:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=udONfB0KqPlNsNyooEvhiKK+MK28bo75R+x50okB03I=; b=QDcJM6Oe0o61d9ca9SvtncweCq
-	MSIybRvpOymc5kqLMeXKWtHxQd0GfZqmNF1kJs+bK+Kz36hgWpyoIWC8s/tGl43rvtYnzS4iLnOGr
-	fuAtWziRIpFkrGh7gyGw62YGbtG5Tc7LCEFZ8Cfn/I24Q4BIkCLTItuA8cQkngKBKi1xQdWt0tWU6
-	/I+1hR94r7yXIhQulXOPUyIx3+ftp3pdbiPe9+BFwNJ6IN41Xtl+5gm9UuvgxtqsGnoldREcozwKx
-	gxyNcj05hxg0+GmDknU8U8NfwziUO6/ZpI7yOi3ElNkaKI9ueH/QAaj6cj3CrxapQu31lCREK/PoI
-	c4s0xXAQ==;
+	bh=BeLurHl48k47YBXiRQrPwq6QLHKVeqckCwiB1xJKzUU=; b=fgtgwjnLze3jIAB+OxLezaatAv
+	K7Pmq/lxKMzYkkpApvm2PE04cgpWY3WtodBt7zpo43KMpAhZ6Kn854Ayl1oYM8Y+pCDpc+kKeFwMC
+	4apAGzGB8bAS390B8Vw0x7Df63ZdoWYESvYGhNkkEnvHgYyiwgWy9thkkwjqyZAhb00eoFUn0t110
+	q0rDlEu5sxGrlwTHwfkrLFkbQ0kolSmGtTCojDAMuG0N9OjZL6o7IhmnbgQ5i7BvBAAYlTUH6Ir0+
+	8VGiUr690NO6V/jGayW+q3KfRksHKCs9hT27S54QJrOFhTk+6ya/5v4JcwzgyWFCZ3PR21XzBzN7g
+	QVcSUIyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ww5zv-00000006why-3Lhb;
-	Mon, 17 Aug 2026 22:40:03 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1ww6ad-00000006yCF-3uov;
+	Mon, 17 Aug 2026 23:17:59 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ww5zt-00000006whC-2sy5;
-	Mon, 17 Aug 2026 22:40:01 +0000
+	id 1ww6ac-00000006yBd-3Bml;
+	Mon, 17 Aug 2026 23:17:58 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 20771600C8;
-	Mon, 17 Aug 2026 22:40:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD9C41F000E9;
-	Mon, 17 Aug 2026 22:39:59 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 2336540179;
+	Mon, 17 Aug 2026 23:17:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D03B61F000E9;
+	Mon, 17 Aug 2026 23:17:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787006400;
-	bh=udONfB0KqPlNsNyooEvhiKK+MK28bo75R+x50okB03I=;
+	s=k20260515; t=1787008678;
+	bh=BeLurHl48k47YBXiRQrPwq6QLHKVeqckCwiB1xJKzUU=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=VQHiLBMFGQCgeoew6Cp4Ows756OkMTcKte3toNPglY/bGSasnVZuHKMz8eXnxbElh
-	 jsBGBwsL3xfxOTdgVVpOTDDU2C70vLO5VTYBveLAOTn8yG/FNoeanEwmfEDd0peSw8
-	 7CsCsSF0+XSukhQmxxssL1Sly8Ixga9t1wvzsXXwhuj3kGtIpCuHEdMypW4KOpaBaX
-	 XAu0FMlO4QQkI3hO6viDTnZPCS6YhpoVyK82jTwb1uLmVC8SwU5WWXN0ITiBkwvwJZ
-	 aKpy5RJNdPbI9ZbvayusP0l7sPqUN6YOJqvwCcAU6D8YF54bDafqh6+DiNPEfsiJJY
-	 Ip1r2Gyhdzlcw==
-Date: Mon, 17 Aug 2026 15:39:58 -0700
+	b=FkrxHe5nI/WdOsL00EjFMtJLAdf6WxL4CFwmMqrlweIpfOwYZKQAmxSdcok838mj9
+	 kYmFVHgJc9hMAaNsuJI5Rb0rWzfrtF8q4Ya7b/8suiCyDThhqMeM1JqsmEb6863mYR
+	 j1aimzw9Dc93A4O12hqtbuDFFeylw+18hQNMPUmg6p1nG9SQpUTNlKj01hTFqVetne
+	 6UUgSGXzVgAAit4X0HhvD0EK61LXnZEcFMnX+P/WnXg+lfR/1RZXU6Jxlt724/EHW6
+	 ZbEvIyQ43ezP7BJEvOzOrRQrQZggS9Feb+7R4zMa9G42j98w7vpE/SeGumE3JfyKsP
+	 ZrsfrMPH8lGmw==
+Date: Mon, 17 Aug 2026 16:17:56 -0700
 From: Jakub Kicinski <kuba@kernel.org>
-To: Jack Wu via B4 Relay <devnull+jackbb_wu.compal.com@kernel.org>
-Cc: jackbb_wu@compal.com, Loic Poulain <loic.poulain@oss.qualcomm.com>,
- Sergey Ryazanov <ryazanov.s.a@gmail.com>, Johannes Berg
- <johannes@sipsolutions.net>, Andrew Lunn <andrew+netdev@lunn.ch>, "David S.
- Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo
- Abeni <pabeni@redhat.com>, Wen-Zhi Huang <wen-zhi.huang@mediatek.com>,
- Shi-Wei Yeh <shi-wei.yeh@mediatek.com>, Minano Tseng
- <Minano.tseng@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Simon
- Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Shuah Khan
- <skhan@linuxfoundation.org>, Robert Yu <robert_yu@compal.com>, Jeff Chang
- <Jeff_Chang@compal.com>, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH v6 0/7] net: wwan: t9xx: Add MediaTek T9XX WWAN driver
-Message-ID: <20260817153958.4b120ce9@kernel.org>
-In-Reply-To: <20260811-t9xx_driver_v1-v6-0-2c969fad57c6@compal.com>
-References: <20260811-t9xx_driver_v1-v6-0-2c969fad57c6@compal.com>
+To: Daniel Pawlik <pawlik.dan@gmail.com>
+Cc: netdev@vger.kernel.org, lorenzo@kernel.org, win847@gmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v8] net: airoha: npu: use cacheline-sized buffers for
+ mailbox DMA
+Message-ID: <20260817161756.5fd2185a@kernel.org>
+In-Reply-To: <20260817090601.1256389-1-pawlik.dan@gmail.com>
+References: <20260817090601.1256389-1-pawlik.dan@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
@@ -78,16 +68,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 11 Aug 2026 15:14:22 +0800 Jack Wu via B4 Relay wrote:
-> * Core logic - Contains the core logic to keep the
->    device working. It includes:
+On Mon, 17 Aug 2026 11:06:01 +0200 Daniel Pawlik wrote:
+> On EN7581 + MT7996 (Gemtek W1700K), mapping small caller buffers with
+> DMA_BIDIRECTIONAL regresses NPU version probe: the mailbox completes
+> successfully but WLAN_FUNC_GET_WAIT_NPU_VERSION reads as 0.0 instead of
+> 0.1111.
 > 
->    * FSM (Finite State Machine) - Monitors the state
->      of the device, and notifies each module when the
->      state changes.
+> Allocate at least SMP_CACHE_BYTES for each mailbox payload and map
+> ALIGN(len, SMP_CACHE_BYTES) with DMA_BIDIRECTIONAL while programming
+> the original payload length into the mailbox length register.
+> 
+> Tested on Quantum Fiber / Gemtek W1700K (EN7581 + MT7996), kernel
+> 6.18.44, including two cold reboots and sustained WiFi use.
 
-This FSM exists in the driver, even tho you call it "core logic".
-Please provide more details in the patch description of patch 5
-and consider whether any of this logic should live in the WWAN
-framework.
+To me the fact that this patch helps only proves that the swiotlb
+implementation on this platform is wonky, no?
+IOW AFAIU we are avoiding the bounce buffer so things work, but
+the bounce buffer is still broken?
 
