@@ -4,97 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D81AC5DF7A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 20:17:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7866BC5B572
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 20:47:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EjzIcz1zGypMzu78Nhg1bwmrFTPlTUKvakOpJEEFMYE=; b=0hjm9yyfVR3s26mC0WNpJ5WdwJ
-	cRfxKOh9zoMNatCqaJTX+hX/pxOtUm2fHs7/AVcuU7TMXBomf5BVdzoV34sT10pkPFwHaw5/Jutff
-	pmgUwVBqdHmsTY/HWSOoR4hSxmWf2AUpSeWtfED54q3NtVPif6q7nl7hmHJP83c8ib6W0xKZPc6j6
-	7JlyzuOAdlWHoJLSCg9m1hwICvfReRx/xUlV0C43rOJfax939JWIz+11UTHzTQYGzOrTHtawO/+Sx
-	4ef+5eTgT88qIa5v4UOtey2gelQuJI3J7bAhWLArV5pvZd9j9+J/2Lk6agmyq1gJhZZ3d/7Kww2G9
-	5g4Drhvg==;
+	bh=111cZwE+fIsihcrOn87KAVC+gmNsgNFaiu9bx9gzA6c=; b=Lu23i9aSU/GCeqSYqZ/6is/56G
+	8TzRy+PzbUAw7uvNgxUL+9v9V81f82Jg4Ov3CV9s5Mv5QbdmrbLCiVSrqIMuTLJiMSCnK2yFlsexy
+	SudfJVwEsH0ajK/IdrnUF+pui61jOWOcsusFVnXS+wVNKUIcW2+Kr6GArLhFzYZj+FntGAwuRFjqY
+	Dsi6g2WmxhZ7FcwonoOld6ROjQdW7hF+SwzNgjFD9F/lyHdvv5FwB6gvlQo8ED/2ybiNh8IhfL4uJ
+	7on4YSGQuR/qf6f1aRapXC36mzBI+yEtkB0XGpthgWqStsTcpCMbepO45AoUQnnk4KhFo8U05E9ZB
+	XhfyZgJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ww3la-00000006lzw-38Mk;
-	Mon, 17 Aug 2026 20:17:06 +0000
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+	id 1ww4F2-00000006nSj-3O7E;
+	Mon, 17 Aug 2026 20:47:32 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ww3lY-00000006lzc-2XcT
-	for linux-mediatek@lists.infradead.org;
-	Mon, 17 Aug 2026 20:17:05 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id 38308e7fff4ca-3a12ffc112cso2712241fa.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 17 Aug 2026 13:17:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786997822; x=1787602622; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=EjzIcz1zGypMzu78Nhg1bwmrFTPlTUKvakOpJEEFMYE=;
-        b=G3Hutn4Wr7Ksi1iH35IdX2bsUYZ77+BWWmCBqpX0fdQeidII0oxS+pxjCKl064ATSt
-         PrtJNYnRyZOg6O1mpVaMILD7pc5RbPB8xDa4STRa3+eFz0OyafnOa5WDoFIBLnDqSEph
-         FUmUMg2uoOIK/p+FboyEsNgs1SrzflaFZfEW3m8Q3581orxrxxmQqP/YeAZRYKgpGXr9
-         fIcmwKc40XL/A2gtvTbNBxXwIGXxz8mCemY87TERrlZbYwAsv0P8oTPog1p/Kt0yqTQh
-         wItru75CZAEpzidFgQYFkIANYhZ4jd1GVmxat/0sA8YHmzRIyPfyZaj08o/9YrAYL8et
-         0m1w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786997822; x=1787602622;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=EjzIcz1zGypMzu78Nhg1bwmrFTPlTUKvakOpJEEFMYE=;
-        b=KCQkkBEp/XfzzUIIbZAqCb++B9/WSPXeq3sndMkE5elWRFC2lklssBtneEqvnPUcj5
-         axn6lTrPLCy+5RZGX2Z0nqsLH1daObC9rSGDrWPn+NNniCJIMdbpP7aFXIhX0axcKvZ/
-         EhFuumkoLJ5bxPYwNp5H6nVQi8lwpXA8221VRXgYrpcUL5bNvm/ronUUzKLDamMxk/18
-         0h3rQjx4KL0fbcVUEZN54lrztbbs/fXM9i/Z3I+kOxlNd1IL4R3hDF0/bzsJf6NYH2Oc
-         3ug0tx8AULeLDJLTOHluJqDWvVs/8tlGHmTNqC987eqdlLxyQLd2sgGghN8zImIfaXcU
-         HMgA==
-X-Forwarded-Encrypted: i=1; AHgh+RpXBnduG3syk/Kw2dDj2ttrR11IwrmmjFbWgXTyQ7ImTYdNQOFW6+0G22zqd0+coAAlMhe90KVVdfPBYLrMBw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwdfXXpbY9VPkWOYh8xOnPtYVXRcByoVeuxt5rtb+hlaeAhh4GS
-	b1Dz9bY8NBMdMuI4zHx5oo9oEdTV3BFDUmW8LAVeOZQo9psVRDqRGQ95
-X-Gm-Gg: AR+sD11netg/aNcZ0gU0E38V7GtMAIMkIffMIbSenHOEM3KhX99YYqgf811/txl0D0U
-	+CKz2mw23BG7rsd27G51AWMj+x3WY+vLUAMcYHfyoV+EjGcohQKkVAiN5wOw37hua6zXK4diOR/
-	gfAVLzAiOkN8bCZKVRAhcL1lnRmn0VhNuNNBfMrdkRZPfQooYYFZjTA+ylF/L/Ck4bzIPKpH7Q6
-	sJxR5GPmKRSOD+arqKqmsVOMsCGGcYnaAPNLc83UVChIqPK0zzsP94SydkvrCPIU0DUDHa/uW67
-	uudrpPA8mBdcEBwObHkXhcwfRtWhIEHLvexou1XOgSkNruwxGXeV28J5m2nGt2DwApdjbb/CugW
-	/lpqYHCyNcnW+tm2PqBsSl7eZqucf+EimQ1jKvx1F9ApQ/+WzCqrb3HMuqVpi2N5KzJGPzVFBvd
-	rwitrMa1av8y+oKvLFVKAQb6o4Vuo2ymXMndaP6eske1kxhrmLSnvMW3E00ijNVwTtmqwHw5zlt
-	/mJNk/HgWGjBHWHQJf1Kl/njBfCH634Gg9K2BbXwoZjMWxv9K1IObvIWHsv
-X-Received: by 2002:a05:651c:50f:b0:39b:439b:6246 with SMTP id 38308e7fff4ca-3a17686d024mr2948121fa.3.1786997821732;
-        Mon, 17 Aug 2026 13:17:01 -0700 (PDT)
-Received: from localhost ([188.234.148.119])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3a16b0de90fsm7142071fa.11.2026.08.17.13.16.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 17 Aug 2026 13:17:00 -0700 (PDT)
-From: Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
-To: Laxman Acharya Padhya <acharyalaxman8848@gmail.com>,
-	Felix Fietkau <nbd@nbd.name>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
-	Deren Wu <deren.wu@mediatek.com>,
-	linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
-Subject: Re: [PATCH] wifi: mt76: mt7921: skip unknown CLC firmware records
-Date: Tue, 18 Aug 2026 01:16:56 +0500
-Message-ID: <20260817201656.1773758-1-mikhail.v.gavrilov@gmail.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260816174841.1918-1-acharyalaxman8848@gmail.com>
-References: <20260816174841.1918-1-acharyalaxman8848@gmail.com>
+	id 1ww4F1-00000006nSF-21SP;
+	Mon, 17 Aug 2026 20:47:31 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id A91C7601DE;
+	Mon, 17 Aug 2026 20:47:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 910901F000E9;
+	Mon, 17 Aug 2026 20:47:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1786999649;
+	bh=111cZwE+fIsihcrOn87KAVC+gmNsgNFaiu9bx9gzA6c=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=FL0z2pUnciX4/Rv9iwWhFcb2vERfUR1zoJ8VQv1oWRemL7hekh9TWUinYS67I7TqN
+	 RlQRH3t/1/0njxFN0sL0e0S56NAmnj6JwcipGbfE5sv9zWwxQyWA0SH/mEbb4fuqmh
+	 7Xz1AHU6cYORwQULXlq+2x8bMt0eo3YqTDPn7I19Ajg+DgwB19B0L8E3TbP3m2szIH
+	 1l7+129bQJNtPWJGJOUinh9MHY2jp0u6cX5f/wp2ubcd0jT63meYaz6iz/efakqDRU
+	 +/Dxc38W25cd6Jy2JNSTQGv3kZbaXagWuC2ThDnwjwBBo7eDIrgdhs6+AFkrcsfBuj
+	 7j7a6isGz0/0Q==
+Date: Mon, 17 Aug 2026 13:47:27 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>, Andrew Lunn
+ <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>, Jonathan Corbet
+ <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, Lorenzo Bianconi
+ <lorenzo@kernel.org>, Heiner Kallweit <hkallweit1@gmail.com>, Russell King
+ <linux@armlinux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>, Nathan
+ Chancellor <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>,
+ Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ llvm@lists.linux.dev
+Subject: Re: [PATCH v14 00/12] net: pcs: Introduce support for fwnode PCS
+Message-ID: <20260817134727.1f76d6dd@kernel.org>
+In-Reply-To: <20260813083536.970196-1-ansuelsmth@gmail.com>
+References: <20260813083536.970196-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260817_131704_661730_E1383C3D 
-X-CRM114-Status: UNSURE (   8.20  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,23 +79,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thanks for the quick turnaround.
+On Thu, 13 Aug 2026 10:35:05 +0200 Christian Marangi wrote:
+> This series introduce a most awaited feature that is correctly
+> provide PCS with fwnode without having to use specific export symbol
+> and additional handling of PCS in phylink.
+> 
+> At times there were 2 different implementation (this and the one
+> from Sean) but Sean agreed that this can be picked and used in favor
+> of his implementation as long as his case with race condition is
+> correctly handled.
 
-Tested on an MT7922 (mt7921e) with linux-firmware 20260810 - the image
-whose CLC region carries the idx 3 records - on a lockdep and UBSAN
-build of mainline at fd923b32d761, with 9417c5818a01 applied underneath.
+Coccicheck says:
 
-The device probes normally: the RAM firmware is loaded once rather than
-ten times, wlp11s0 appears, association with a 6 GHz AP works (channel
-37, 6135 MHz, 160 MHz), and switching between a 5 GHz and a 6 GHz BSS
-and back is clean. No "hardware init failed", no "Invalid CLC record",
-and no UBSAN report - so the bounds checks are still doing their job on
-the very firmware that used to trip them.
+  drivers/net/phy/phylink.c:1039:31-34:
+    ERROR: invalid reference to the index variable of the iterator on line 1028
 
-Tested-by: Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
+  drivers/net/phy/phylink.c:1364:26-29:
+    ERROR: invalid reference to the index variable of the iterator on line 1346
 
-One nit, take it or leave it: both length failures print the same
-"Invalid CLC record", so the log does not distinguish a table that ends
-mid-header from a record whose length is out of range. Two distinct
-strings would make a future report easier to read.
+  drivers/net/phy/phylink.c:582:7-10:
+    ERROR: invalid reference to the index variable of the iterator on line 569
+
+I vaguely recall that you're supposed to make a copy of the pointer,
+not just add a "found" boolean. Dunno if it ever happened but Linus
+was trying to make the list iterators override the pointer on exit.
 
