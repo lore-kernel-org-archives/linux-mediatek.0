@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B750C5DF70
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81457C5DF7A
 	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 09:53:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gYjs8Gt4Zh3PcSkiBzHmaM7G0pSUXr3KcGvF22lZlJw=; b=QN1T2w/po69Xo421/VJb1ubB0v
-	87mEjehiQ2giHrwjpdjgLVlPQF4M/VxGkYiX5xb8gODu3rETKvpOOqkGcjJjUsy6jUiw8JkrJJ2qx
-	1jM31XErpi+iF4F/mDrw3J4+35holmIim4wKa9ddAstWQGhB1X8sBoovfKLhaEsxmsLEdIbVQ4k26
-	VIaegAq3D+65T0m2zDOZ+/uc4UqNCj7gCypSWc504uavLZ7CGQk0GTdID55Rit3WCbgTRTO0lDQJU
-	kKJLEPrXRY9InhDfm8dXn3WCproThe3HMGJ6VHEjfXTcdhqrx26YNmguX0eZmnFDw3exXdqVeRFio
-	QPLy9XMQ==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+apygaq/YUCV3RE1Ys0Qckcc5sV7s5aZ8LqZEreUi9Y=; b=jCo0eXqYrXy7YFi5TqEf97kwJu
+	eo0J/BmfF8re7oUSWk/08MuLmmZ8kGBR6mH7A0ieKFdjfQr8smWfTvXRwbByIjr9sN7nKGg48ytov
+	fL2NywWHjOPMjkpgTKpiNOmnuUAeBPqkDF/Vd0ZmAzthcMBhcS+cK56AQNftcDnx26CFOyDZZECMm
+	HEDe4hJ1JqEgHx1d4zLV/tstgPT2yPa/QPUmz3FCKQ6ZNN5snKspn9jSNGn+eNO4VTwB/fClrCxCi
+	Hg8x2wd6vrrfXGh54K9+sdKcTphXcgd8ZnIYjDAXkSjglr/hocq+xrLWoDm+F5gd1sDP4rtXEyU/3
+	xc6RFb9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvu2N-00000005rAw-1NiW;
+	id 1wvu2N-00000005rAs-1A0L;
 	Mon, 17 Aug 2026 09:53:47 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvu2K-00000005r94-3KvI
+	id 1wvu2K-00000005r9B-1xv6
 	for linux-mediatek@lists.infradead.org;
-	Mon, 17 Aug 2026 09:53:46 +0000
-X-UUID: 84feb1629a2111f1afed4741b24580c9-20260817
+	Mon, 17 Aug 2026 09:53:45 +0000
+X-UUID: 84883c3a9a2111f1afed4741b24580c9-20260817
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=gYjs8Gt4Zh3PcSkiBzHmaM7G0pSUXr3KcGvF22lZlJw=;
-	b=kWYxdeNkjy5AKg24m51VEbocXopfKqXAoF/IhvpfczKH7jvWcjaEuJQT5dkSYLIkJ8/XLdZBvjJCEfiGRAdevoHyaxZT9OtY/O/JUm/lj9DegpKospYZeMOiKuvAKTYyJqRdltPYsJ9fEGcPCVN8gpf+HP181QWCXyvDk302HBw=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=+apygaq/YUCV3RE1Ys0Qckcc5sV7s5aZ8LqZEreUi9Y=;
+	b=Xyuvl0gAAFAc+idcSEkjl4C4BnWLp+OhjwncljHeq+tyA+lr316SPmqLkiN9ttxMYe+6KwziWYlVDP8XA9kEK3TdyqXAM9p3OlXgeTSp7c/gfsKsMyNBfVoh48XSth1W+CBqF1KlqbJqr5ZgACM98IW0ZtfOgpPhH8RRQDAXYS4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:ecdfd9ac-f486-41dd-bd24-dfe82761f3c1,IP:0,U
+X-CID-O-INFO: VERSION:1.3.19,REQID:0dd21376-c188-473e-81ea-599e7854e631,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:7bbeba0d-5c15-42ab-b5f9-31962f9e07fb,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
-	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
-	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:7db8b62,CLOUDID:768cf4f1-0685-46a3-9cac-19d8f3a05ae7,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
+	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 84feb1629a2111f1afed4741b24580c9-20260817
+X-UUID: 84883c3a9a2111f1afed4741b24580c9-20260817
 Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <chris.lu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1627729834; Mon, 17 Aug 2026 02:53:38 -0700
+	with ESMTP id 178732760; Mon, 17 Aug 2026 02:53:37 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
  mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
@@ -63,18 +63,17 @@ CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
 	<linux-bluetooth@vger.kernel.org>, linux-kernel
 	<linux-kernel@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH 1/2] Bluetooth: btmtksdio: Take exclusive ownership of the SKB before TX
-Date: Mon, 17 Aug 2026 17:53:31 +0800
-Message-ID: <20260817095332.182994-2-chris.lu@mediatek.com>
+Subject: [PATCH 0/2] Bluetooth: btmtksdio: Fix SKB handling in the TX path
+Date: Mon, 17 Aug 2026 17:53:30 +0800
+Message-ID: <20260817095332.182994-1-chris.lu@mediatek.com>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260817095332.182994-1-chris.lu@mediatek.com>
-References: <20260817095332.182994-1-chris.lu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260817_025344_844482_42E8522D 
-X-CRM114-Status: GOOD (  14.54  )
+X-CRM114-CacheID: sfid-20260817_025344_510787_95D61D0C 
+X-CRM114-Status: UNSURE (   9.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,57 +88,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-btmtksdio_tx_packet() prepends the MediaTek SDIO header with skb_push()
-and writes into that space after only checking the headroom size. On a
-cloned SKB that headroom belongs to a buffer shared with the other owner,
-which the driver has no right to write to.
+btmtksdio_tx_packet() rounds the SDIO transfer size up to the 256 byte
+block size, but never grows the SKB accordingly, so the host controller
+reads up to 255 bytes of uninitialised memory and sends it to the device,
+and can read past the end of the buffer as well.
 
-Cloned SKBs do reach this path: hci_send_cmd_sync() keeps a clone of every
-HCI command in hdev->sent_cmd before handing the SKB to the driver, and
-l2cap_ertm_send() clones SKBs for retransmission.
+Patch 2 fixes that by padding the SKB with zeros. The padding is written
+behind skb->tail, which is only safe once the driver owns the data
+buffer, so patch 1 replaces the open-coded headroom check with
+skb_cow_head() first. Patch 1 on its own changes no observable
+behaviour, but it is a hard prerequisite, so both patches carry the same
+Fixes: tag.
 
-Replace the open-coded headroom check with skb_cow_head(), which both
-guarantees the headroom and reallocates a private buffer when the SKB is
-cloned. The cost is one reallocation and copy per cloned packet, the usual
-price of this pattern in network drivers.
+Both patches were previously part of a larger MT7928 series [1]. They
+are unrelated to MT7928 and to the USB driver, so they are sent
+separately here. The remaining parts of that series will follow as
+separate topic branches.
 
-This has no observable effect on its own, as the driver only writes in
-front of skb->data where no other owner looks. It is a prerequisite for
-"Bluetooth: btmtksdio: Fix out-of-bounds DMA read in the TX path", which
-writes padding behind skb->tail, and carries the same Fixes: tag so that
-both are backported together.
+Tested on a Chromebook with MT7921S: Bluetooth power on, then A2DP
+connect and stream continuously for one hour without failure. The padding
+added by patch 2 covers every packet whose length is not a multiple of
+the block size, and the reallocation added by patch 1 covers every HCI
+command, which hci_send_cmd_sync() always clones into hdev->sent_cmd.
 
-Fixes: 9aebfd4a2200 ("Bluetooth: mediatek: add support for MediaTek MT7663S and MT7668S SDIO devices")
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
-Assisted-by: Claude:claude-opus-5
----
- drivers/bluetooth/btmtksdio.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+[1] https://lore.kernel.org/linux-bluetooth/20260717072133.2858136-1-chris.lu@mediatek.com/
 
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index 67d055d5f197..bcbbcf8ecc24 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -274,13 +274,12 @@ static int btmtksdio_tx_packet(struct btmtksdio_dev *bdev,
- 	struct mtkbtsdio_hdr *sdio_hdr;
- 	int err;
- 
--	/* Make sure that there are enough rooms for SDIO header */
--	if (unlikely(skb_headroom(skb) < sizeof(*sdio_hdr))) {
--		err = pskb_expand_head(skb, sizeof(*sdio_hdr), 0,
--				       GFP_ATOMIC);
--		if (err < 0)
--			return err;
--	}
-+	/* Make sure that the data buffer is not shared with anyone else and
-+	 * that there is enough room for the SDIO header
-+	 */
-+	err = skb_cow_head(skb, sizeof(*sdio_hdr));
-+	if (err < 0)
-+		return err;
- 
- 	/* Prepend MediaTek SDIO Specific Header */
- 	skb_push(skb, sizeof(*sdio_hdr));
+Chris Lu (2):
+  Bluetooth: btmtksdio: Take exclusive ownership of the SKB before TX
+  Bluetooth: btmtksdio: Fix out-of-bounds DMA read in the TX path
+
+ drivers/bluetooth/btmtksdio.c | 33 ++++++++++++++++++++++++---------
+ 1 file changed, 24 insertions(+), 9 deletions(-)
+
 -- 
 2.45.2
 
