@@ -4,58 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8776C5DF66
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 01:56:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 171F9C5DF66
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 02:38:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3jU4tOtpt0N2CNGog4ZXhtt5MKvEVYITAXmgNSw14DY=; b=NBc+pTB5Zo/ULLqyWVUk0N8IsO
-	W9yzdiy3Q8PAM4ywV9W0oV6s0TF5hOvE5kHRDa5WFhFogl4XqK3+zHlcQhoJQYQOswufjS4xtCpNG
-	M0IL7U3ouExJhl2gz0ihEqebMEqqIIjVuNX2pixt911Km9hbzEam4wnf3CoA0k59y4vm9K5YznDqS
-	hyIiKKqOY9UcX4TLe0XDxh5L580Lh6HIzFt4+qNAaFwUgg2Df3nj7vS83e+efZMwLKzW2qmFXC+we
-	mjnAyABQjlPZ0AkPaNoQ76K9qsyMflqdrlMtuNaH6O/GYpVOQSBbK9eDCajZ5AtSZs4MIj3AFB2Zu
-	PYE2U3CQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lhOKwsR5SDq98/XwAqYZPpTbBrVHGuqe8tfzF4XrU+Y=; b=KAnkuN6zH5t1EbNy1U7cKqzVDQ
+	Mhfnp97lTPtCdKlK6spZ4p1MpgWJ+zwgyGwSbIxektMtp9vxZQQB9Y4tqsD9is5VNoBC20MC+Zwls
+	PTiSsBtdT/MJXScEcirGqO6WYwKr+XRJ/t9BteIqUeeWg4dfbGF8Y5gCMGwWUHWGomQTLWmOuO1Hx
+	fsxmOUsUR2R+gFJ/rLO4Qqo3zebStiUQOw7ef1rPstjRE8mdvFeO0R/UE3ifvNV9iISKIxXnI2pLl
+	8YTamjRg4Dhv92L/EoXB+hLGRPkvUrjj8d4T69cSnrl59awSFHOUj8m1jIzJkQqoA4Mpf+a3Vg4ff
+	G0R4UBDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvmaf-00000005Hks-0nWl;
-	Mon, 17 Aug 2026 01:56:41 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wvnFT-00000005KRx-2aMT;
+	Mon, 17 Aug 2026 02:38:51 +0000
+Received: from [216.200.240.184] (helo=mailgw01.mediatek.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvmac-00000005HkE-2lna;
-	Mon, 17 Aug 2026 01:56:38 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 93953601DE;
-	Mon, 17 Aug 2026 01:56:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15D0B1F000E9;
-	Mon, 17 Aug 2026 01:56:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786931797;
-	bh=3jU4tOtpt0N2CNGog4ZXhtt5MKvEVYITAXmgNSw14DY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=QOuCv99wUAkezZJtwI61Fv1GJWp99WBNuQxWObmyDW3oEjctUCwwMOAxt+tt9e8gT
-	 zO3aHyIagk/GYOEIH+YTrXO9oP+oeYfDNjJI8kI2GkfLp+jat5rErZkFWF7Lxr+rdS
-	 Z8gxRXjgMPu8VetOmGzWR9E9QwuyuGiG26VHQr4jI1K0sGhIDbtSsDrcCQhgz67oPz
-	 OZX2uC/9HVGAPaTAeUa8aIk8Qu07Mth4PY/Nm6Jtsln8w3ZjfPc3lwt4KtSVeHQPVm
-	 2y8iEZ5vDY9AivHf/A5Nc2QcAcn5UjkxUcDfVAwp2jLx8EEXpApNcLc7GQVi5sJPpS
-	 a7DWjemdHUsDw==
-Date: Mon, 17 Aug 2026 03:56:36 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Daniel Pawlik <pawlik.dan@gmail.com>
-Cc: netdev@vger.kernel.org, win847@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v7] net: airoha: npu: use aligned streaming DMA for
- mailbox messages
-Message-ID: <aoJqU7G9xIoAQfXA@lore-qca>
-References: <20260814110017.2795022-1-pawlik.dan@gmail.com>
+	id 1wvnFR-00000005KRC-1BuX;
+	Mon, 17 Aug 2026 02:38:50 +0000
+X-UUID: c35df27099e411f1afed4741b24580c9-20260816
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=lhOKwsR5SDq98/XwAqYZPpTbBrVHGuqe8tfzF4XrU+Y=;
+	b=IiQ5fxPldBGhv23nVcMVb1AWCVfvm/ZV9phPB4iPxleNcUyndQMjaDjULVrUtF8FeLbXnh2u8Oja3pJm9mUQn3FR7QPZ5AHa4QdFTu5zVlr+UODvxuddT6oVtb8lD4RDDY8jEMTAjfPNr/k3ANFNYOX8pN7iqhxHjjgi1obB4s0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.19,REQID:a03b4179-35c1-4fc5-a7c9-f6887c154202,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:7db8b62,CLOUDID:f66798b3-c700-40ec-9e2b-60285d67984b,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: c35df27099e411f1afed4741b24580c9-20260816
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <ot_zexin.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 758933527; Sun, 16 Aug 2026 19:38:43 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 17 Aug 2026 10:38:40 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 17 Aug 2026 10:38:40 +0800
+From: Zexin Wang <ot_zexin.wang@mediatek.com>
+To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
+	<linux@roeck-us.net>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: <light.chen@mediatek.com>, <Fred-WY.Chen@mediatek.com>,
+	<Yt.Hsieh@mediatek.com>, Zexin Wang <ot_zexin.wang@mediatek.com>,
+	<linux-watchdog@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v4] watchdog: sbsa_gwdt: add early_enable module parameter
+Date: Mon, 17 Aug 2026 10:37:49 +0800
+Message-ID: <20260817023838.6459-1-ot_zexin.wang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="k48ETKoVT/LBu6qS"
-Content-Disposition: inline
-In-Reply-To: <20260814110017.2795022-1-pawlik.dan@gmail.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260816_193849_342837_CB31A755 
+X-CRM114-Status: GOOD (  19.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,214 +86,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---k48ETKoVT/LBu6qS
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On SBSA platforms using standard UEFI firmware (such as EDK II), the
+watchdog timer is often enabled during early boot stages but explicitly
+disabled by the firmware before handing over control to the OS (e.g.,
+during ExitBootServices). This is done to prevent unintended resets
+while the OS is loading, assuming the OS watchdog driver will take over.
 
-> On EN7581 + MT7996 (Gemtek W1700K), mapping small caller buffers with
-> DMA_BIDIRECTIONAL regresses NPU version probe: the mailbox completes
-> successfully but WLAN_FUNC_GET_WAIT_NPU_VERSION reads as 0.0 instead of
-> 0.1111.
+However, this leaves a protection gap. If the system hangs between the
+firmware handover and the userspace watchdog daemon startup, the hardware
+watchdog will not fire to recover the system. For safety-critical systems
+that require continuous hardware watchdog protection from the earliest
+possible moment, this gap is problematic.
 
-IIUC you are suggesting the issue is if we allocate a small buffer it could=
- fit
-in the same cacheline of a neighbour object so if the DMA reads/writes the =
-same
-cacheline, it could invalidate data, right? (I am not sure if this device is
-DMA-coherent or not).
-If so, in the airoha_npu_send_msg() callers, I guess it is enough to alloca=
-te
-something like:
+Add an 'early_enable' module parameter to allow the kernel driver to
+re-enable the watchdog immediately during probe if it was left disabled
+by the firmware. By setting the WDOG_HW_RUNNING status bit, the watchdog
+core is instructed that the hardware is active. As a result, the core's
+pre-userspace handler (controlled by 'handle_boot_enabled') will
+automatically issue periodic keepalives until userspace opens the device.
 
-	kzalloc(max(len, SMP_CACHE_BYTES))
+This bridges the protection gap seamlessly without requiring firmware
+modifications and without risking unintended resets during kernel boot.
 
-and avoid the extra copy in __airoha_npu_send_msg(). What do you think?
-IIRC kzalloc() aligns to SMP_CACHE_BYTES is len >=3D SMP_CACHE_BYTES.
+The parameter defaults to false to preserve the traditional behavior.
 
-Regards,
-Lorenzo
+Signed-off-by: Zexin Wang <ot_zexin.wang@mediatek.com>
+---
+Changes in v4:
+- Remove unnecessary dev_info() log message
+- Remove dev_err() on register failure
+- Remove clear_bit(WDOG_HW_RUNNING) on register failure
 
->=20
-> Bounce mailbox traffic through a per-core cacheline-aligned buffer
-> allocated at probe. Map ALIGN(len, SMP_CACHE_BYTES) with
-> DMA_BIDIRECTIONAL while programming the original payload length into the
-> mailbox length register. Copy the reply only after dma_unmap_single() so
-> the CPU sees the NPU-written payload on non-coherent DMA.
->=20
-> Introduce __airoha_npu_send_msg() with an optional reply pointer so GET
-> callers can copy the trailing response payload once. Keep
-> airoha_npu_send_msg() as a wrapper that copies the full response back
-> into the caller buffer, matching the old bidirectional mapping.
->=20
-> Tested on Quantum Fiber / Gemtek W1700K (EN7581 + MT7996), kernel
-> 6.18.44, including two cold reboots and sustained WiFi use.
->=20
-> Fixes: 6f884eb87a79 ("net: airoha: Fix DMA direction for NPU mailbox buff=
-er")
-> Link: https://patchwork.kernel.org/project/linux-mediatek/patch/202608050=
-70851.2885888-1-pawlik.dan@gmail.com/
-> Assisted-by: Cursor:composer-2
-> Signed-off-by: Daniel Pawlik <pawlik.dan@gmail.com>
-> ---
->  drivers/net/ethernet/airoha/airoha_npu.c  | 62 ++++++++++++++++++-----
->  include/linux/soc/airoha/airoha_offload.h |  1 +
->  2 files changed, 49 insertions(+), 14 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ether=
-net/airoha/airoha_npu.c
-> index b679bed952de..2ba78bf0e97b 100644
-> --- a/drivers/net/ethernet/airoha/airoha_npu.c
-> +++ b/drivers/net/ethernet/airoha/airoha_npu.c
-> @@ -5,6 +5,7 @@
->   */
-> =20
->  #include <linux/devcoredump.h>
-> +#include <linux/dma-mapping.h>
->  #include <linux/firmware.h>
->  #include <linux/platform_device.h>
->  #include <linux/of_net.h>
-> @@ -23,6 +24,8 @@
->  #define NPU_EN7581_FIRMWARE_RV32_MAX_SIZE	0x200000
->  #define NPU_EN7581_FIRMWARE_DATA_MAX_SIZE	0x10000
->  #define NPU_DUMP_SIZE				512
-> +/* Maximum mailbox DMA payload (PPE ~28 bytes, WLAN TLV up to 24). */
-> +#define AIROHA_NPU_MBOX_SIZE			256
-> =20
->  #define REG_NPU_LOCAL_SRAM		0x0
-> =20
-> @@ -160,23 +163,33 @@ struct wlan_mbox_data {
->  	DECLARE_FLEX_ARRAY(u8, d);
->  };
-> =20
-> -static int airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
-> -			       void *p, int size)
-> +static int __airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
-> +				 const void *data, int len, void *reply,
-> +				 u16 reply_len)
->  {
-> -	u16 core =3D 0; /* FIXME */
-> -	u32 val, offset =3D core << 4;
-> +	struct airoha_npu_core *core =3D &npu->cores[0]; /* FIXME: core */
->  	dma_addr_t dma_addr;
-> +	unsigned int map_len =3D ALIGN(len, SMP_CACHE_BYTES);
-> +	u32 val, offset =3D 0;
->  	int ret;
-> =20
-> -	dma_addr =3D dma_map_single(npu->dev, p, size, DMA_BIDIRECTIONAL);
-> +	if (len <=3D 0 || len > AIROHA_NPU_MBOX_SIZE)
-> +		return -EINVAL;
-> +
-> +	if (reply && reply_len > len)
-> +		return -EINVAL;
-> +
-> +	spin_lock_bh(&core->lock);
-> +
-> +	memcpy(core->buf, data, len);
-> +
-> +	dma_addr =3D dma_map_single(npu->dev, core->buf, map_len, DMA_BIDIRECTI=
-ONAL);
->  	ret =3D dma_mapping_error(npu->dev, dma_addr);
->  	if (ret)
-> -		return ret;
-> -
-> -	spin_lock_bh(&npu->cores[core].lock);
-> +		goto unlock;
-> =20
->  	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(0) + offset, dma_addr);
-> -	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(1) + offset, size);
-> +	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(1) + offset, len);
->  	regmap_read(npu->regmap, REG_CR_MBQ0_CTRL(2) + offset, &val);
->  	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(2) + offset, val + 1);
->  	val =3D FIELD_PREP(MBOX_MSG_FUNC_ID, func_id) | MBOX_MSG_WAIT_RSP;
-> @@ -189,13 +202,23 @@ static int airoha_npu_send_msg(struct airoha_npu *n=
-pu, int func_id,
->  	if (!ret && FIELD_GET(MBOX_MSG_STATUS, val) !=3D NPU_MBOX_SUCCESS)
->  		ret =3D -EINVAL;
-> =20
-> -	spin_unlock_bh(&npu->cores[core].lock);
-> +	dma_unmap_single(npu->dev, dma_addr, map_len, DMA_BIDIRECTIONAL);
-> =20
-> -	dma_unmap_single(npu->dev, dma_addr, size, DMA_BIDIRECTIONAL);
-> +	/* Copy the trailing reply_len bytes of the response. */
-> +	if (!ret && reply)
-> +		memcpy(reply, core->buf + len - reply_len, reply_len);
-> +unlock:
-> +	spin_unlock_bh(&core->lock);
-> =20
->  	return ret;
->  }
-> =20
-> +static int airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
-> +			       void *data, int len)
-> +{
-> +	return __airoha_npu_send_msg(npu, func_id, data, len, data, len);
-> +}
-> +
->  static int airoha_npu_load_firmware(struct device *dev, void __iomem *ad=
-dr,
->  				    const char *fw_name, int fw_max_size)
->  {
-> @@ -497,9 +520,8 @@ static int airoha_npu_wlan_msg_get(struct airoha_npu =
-*npu, int ifindex,
->  	wlan_data->func_type =3D NPU_OP_GET;
->  	wlan_data->func_id =3D func_id;
-> =20
-> -	err =3D airoha_npu_send_msg(npu, NPU_FUNC_WIFI, wlan_data, len);
-> -	if (!err)
-> -		memcpy(data, wlan_data->d, data_len);
-> +	err =3D __airoha_npu_send_msg(npu, NPU_FUNC_WIFI, wlan_data, len,
-> +				    data, data_len);
->  	kfree(wlan_data);
-> =20
->  	return err;
-> @@ -770,6 +792,18 @@ static int airoha_npu_probe(struct platform_device *=
-pdev)
->  	if (err)
->  		return err;
-> =20
-> +	for (i =3D 0; i < ARRAY_SIZE(npu->cores); i++) {
-> +		struct airoha_npu_core *core =3D &npu->cores[i];
-> +		void *raw;
-> +
-> +		raw =3D devm_kmalloc(dev, AIROHA_NPU_MBOX_SIZE + SMP_CACHE_BYTES,
-> +				   GFP_KERNEL);
-> +		if (!raw)
-> +			return -ENOMEM;
-> +
-> +		core->buf =3D PTR_ALIGN(raw, SMP_CACHE_BYTES);
-> +	}
-> +
->  	err =3D airoha_npu_run_firmware(dev, base, &res);
->  	if (err)
->  		return dev_err_probe(dev, err, "failed to run npu firmware\n");
-> diff --git a/include/linux/soc/airoha/airoha_offload.h b/include/linux/so=
-c/airoha/airoha_offload.h
-> index 7589fccfeef6..f635766e3dba 100644
-> --- a/include/linux/soc/airoha/airoha_offload.h
-> +++ b/include/linux/soc/airoha/airoha_offload.h
-> @@ -173,6 +173,7 @@ struct airoha_npu {
->  		/* protect concurrent npu memory accesses */
->  		spinlock_t lock;
->  		struct work_struct wdt_work;
-> +		void *buf; /* mailbox DMA bounce buffer */
->  	} cores[NPU_NUM_CORES];
-> =20
->  	int irqs[NPU_NUM_IRQ];
-> --=20
-> 2.55.0
->=20
+Changes in v3:
+- Fix indentation of `early_enable` in watchdog-parameters.rst to ensure
+  it renders as a separate parameter rather than part of `nowayout`'s
+  description.
 
---k48ETKoVT/LBu6qS
-Content-Type: application/pgp-signature; name=signature.asc
+Changes in v2:
+- Rename `force_enable` to `early_enable` as suggested by Guenter.
+- Update commit message to explain the UEFI handover gap motivation.
+- Add documentation for the new parameter.
 
------BEGIN PGP SIGNATURE-----
+ .../watchdog/watchdog-parameters.rst          |  2 ++
+ drivers/watchdog/sbsa_gwdt.c                  | 19 +++++++++++++++++--
+ 2 files changed, 19 insertions(+), 2 deletions(-)
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaoJqUwAKCRA6cBh0uS2t
-rJKHAQCxbJO+swWF67vpy0YipmSukJEskcpf4E5FlW4+fsqZ7AEAkI8UQNvU/9WD
-52cI/EuNY2zC2edZWZkbH7TmFi/ZFgs=
-=SfV1
------END PGP SIGNATURE-----
+diff --git a/Documentation/watchdog/watchdog-parameters.rst b/Documentation/watchdog/watchdog-parameters.rst
+index 502cb6adbeda..348229ffcb43 100644
+--- a/Documentation/watchdog/watchdog-parameters.rst
++++ b/Documentation/watchdog/watchdog-parameters.rst
+@@ -515,6 +515,8 @@ sbsa_gwdt:
+     nowayout:
+ 	Watchdog cannot be stopped once started
+ 	(default=kernel config parameter)
++    early_enable:
++	Watchdog is started on module insertion (default=0)
+ 
+ -------------------------------------------------
+ 
+diff --git a/drivers/watchdog/sbsa_gwdt.c b/drivers/watchdog/sbsa_gwdt.c
+index e04d42cc7774..3c5bfd8641c6 100644
+--- a/drivers/watchdog/sbsa_gwdt.c
++++ b/drivers/watchdog/sbsa_gwdt.c
+@@ -122,6 +122,11 @@ MODULE_PARM_DESC(nowayout,
+ 		 "Watchdog cannot be stopped once started (default="
+ 		 __MODULE_STRING(WATCHDOG_NOWAYOUT) ")");
+ 
++static bool early_enable;
++module_param(early_enable, bool, 0);
++MODULE_PARM_DESC(early_enable,
++		 "Watchdog is started on module insertion (default=0)");
++
+ /*
+  * Arm Base System Architecture 1.0 introduces watchdog v1 which
+  * increases the length watchdog offset register to 48 bits.
+@@ -296,6 +301,7 @@ static int sbsa_gwdt_probe(struct platform_device *pdev)
+ 	struct sbsa_gwdt *gwdt;
+ 	int ret, irq;
+ 	u32 status;
++	bool early_action;
+ 
+ 	gwdt = devm_kzalloc(dev, sizeof(*gwdt), GFP_KERNEL);
+ 	if (!gwdt)
+@@ -386,14 +392,23 @@ static int sbsa_gwdt_probe(struct platform_device *pdev)
+ 	 */
+ 	sbsa_gwdt_set_timeout(wdd, wdd->timeout);
+ 
++	early_action = early_enable && !(status & SBSA_GWDT_WCS_EN);
++	if (early_action) {
++		sbsa_gwdt_start(wdd);
++		set_bit(WDOG_HW_RUNNING, &wdd->status);
++	}
++
+ 	watchdog_stop_on_reboot(wdd);
+ 	ret = devm_watchdog_register_device(dev, wdd);
+-	if (ret)
++	if (ret) {
++		if (early_action)
++			sbsa_gwdt_stop(wdd);
+ 		return ret;
++	}
+ 
+ 	dev_info(dev, "Initialized with %ds timeout @ %u Hz, action=%d.%s\n",
+ 		 wdd->timeout, gwdt->clk, action,
+-		 status & SBSA_GWDT_WCS_EN ? " [enabled]" : "");
++		 watchdog_hw_running(wdd) ? " [enabled]" : "");
+ 
+ 	return 0;
+ }
+-- 
+2.45.2
 
---k48ETKoVT/LBu6qS--
 
