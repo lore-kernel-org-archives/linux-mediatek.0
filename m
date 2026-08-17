@@ -4,70 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7C76C5DF66
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 16:45:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59526C5B572
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 18:24:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+KG+iiGRdylcb+xJMSMtImIGNJiqrfPHBleDHvNir4w=; b=t+fluwNPpVbSzBW9rV/mdGPNtw
-	V4yFgucU2d2nLEIv1eXsfFk82AkO2m43WgKzkL8/PalgAghbSZjl1W1QOKjEFf58JIWC4DrsL9TlE
-	vSPjrqEvLpyTx1p8iKXAuc/czE/RpCAWozV0Lowq6JiDHjgXkjMmafF8KeR9N+7t7LQRD9zrJly4Y
-	GYDy2IsM9zTji3UIhN4uYVnxUbwGh77M2ZLZ6D+zukHyVsRWpAfKorBflauGI7AU8Om65OR31PpF8
-	S3A3R4o1TB22k7lcZrLLoGQbl8wpH3VRxg2QNM6fM2n45FtGG6U3xU1rlnfsBYGR5hyjOpq0RLw6F
-	oaUTvKyg==;
+	bh=vy5aeHD8d+Jx1qMGwwl5D/7Bi3rGEWzbwGp1Tk7bSPw=; b=h1W9XCZEYjDDpKVs0NTUo7dWAT
+	q2297DBnMdgDoszxjOhtZF/MHD5h4slIHJ4k+Nyw937pL73JP0DT6ZnQMszp54dzOT/MjFizZaWnr
+	h/DNk4nwieQAPQsWeBrxnA2zg+FWxYAqLDtKlBHVzjpqUQCz3ml+bwTrk5VhjaUTfKp4vknTwwQmW
+	o0+84j6ghB21t/ZrlTFK80CNE8lcMoj98Qr2lG2Ofj1t3v+nIaOP3AwrYLFsU8gcMCge8oSfl2ahL
+	maYPYm+VFcRdd5Y+Awj4Pj57IFK63UVEliLG+5BSDLKHDLsdPRE/ff55c4v/J+6EA3CVw8i9FKrz9
+	8C+BL7kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ww0Sc-00000006Xfr-3CgW;
-	Mon, 17 Aug 2026 16:45:18 +0000
-Received: from out-6.mta0.migadu.com ([2001:41d0:1004:224b::6] helo=mta0.migadu.com)
+	id 1ww20S-00000006ez6-03UX;
+	Mon, 17 Aug 2026 18:24:20 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ww0Sa-00000006XfJ-1diX
-	for linux-mediatek@lists.infradead.org;
-	Mon, 17 Aug 2026 16:45:18 +0000
-X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=+KG+iiGRdylcb+xJMSMtImIGNJiqrfPHBleDHvNir4w=;
- c=simple/simple; d=justthetip.ca;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1786985114; v=1; x=1787589914;
- b=Ww0eb0RzZ5OCtWRMwMwz31TU8bJix7tgf1mF2zT3Q37aUNX9esju+5wAgaFxrmICrlClL5z0
- ikQConsdheGgrs2QBhkzJYMXj74iPngAu58VSgIiXa8NywX3vg9/ycJR6Q44mVJWzx9aNrwokwM
- RbifK2ivxwJ4aUqbZ041bBW9XY+nTNFFDeIiSIENooLn/pL2VFhP4B/WDiARaXTqng/n0n+OR1V
- NPDxbKM2aaH3+171+m4LWEyMgUE0uNjeITMenWhTINybzvORHkfh6U01mKGXsZJ16tpehJ1WorU
- u8Z0FIqxqUJnPA57gYPZ7scMJVIBeqKVnhz4dPgaI34kA==
-X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: from fedora.lan (2001:569:be59:c500:b340:3f2c:4486:21c1)
-	by smtp.migadu.com with ESMTPS id 366244d03d620435;
-	Mon, 17 Aug 2026 16:45:14 +0000
-X-Migadu-Flow: FLOW_OUT
-From: Devin Wittmayer <lucid_duck@justthetip.ca>
-To: Eason Lai <eason.lai@mediatek.com>,
-	nbd@nbd.name,
-	lorenzo@kernel.org
-Cc: linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	kun.wu@mediatek.com,
-	deren.wu@mediatek.com,
-	sean.wang@mediatek.com,
-	quan.zhou@mediatek.com,
-	ryder.lee@mediatek.com,
-	leon.yen@mediatek.com,
-	litien.chang@mediatek.com,
-	jb.tsai@mediatek.com
-Subject: Re: [PATCH v2] wifi: mt76: mt792x: fix memory leak in USB TX path
-Date: Mon, 17 Aug 2026 09:45:06 -0700
-Message-ID: <20260817164506.13333-1-lucid_duck@justthetip.ca>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260817090157.168089-1-eason.lai@mediatek.com>
-References: <20260817090157.168089-1-eason.lai@mediatek.com>
+	id 1ww20Q-00000006eyX-2gGR;
+	Mon, 17 Aug 2026 18:24:18 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id A4351601DE;
+	Mon, 17 Aug 2026 18:24:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDC171F000E9;
+	Mon, 17 Aug 2026 18:24:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1786991057;
+	bh=vy5aeHD8d+Jx1qMGwwl5D/7Bi3rGEWzbwGp1Tk7bSPw=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=j33J8SpBIEotOP8DhEHOuKEtjOPRTXcET4HUd1Twrbxoy70DMh3OJGmKV0UiW9o+c
+	 k7CokEMVkmuueB5Q0+qu5IK0i6uP5PvWwcDGHf50qkDYe1x9BltWLSZfdqdS4A8FfQ
+	 FaE8QNl6MpnFogd+K8VaKN1pMU28jwtT42Eax3ht91iyEAq9yfNtcu076eUyKWlxyP
+	 TFgopx0VgjUrNMJV4sCmFlXvkdnTGObyHxw6nRhW+O0fLTu1eVkvj+pc9ZTpq4S/Jm
+	 TCzuzEJA79IBPBGpwb/EHkytvYnEcscqDeVIysh4wOQpz0WFPV0EOpJ4Tk654icHpQ
+	 JBFFkHdQ8khhg==
+Date: Mon, 17 Aug 2026 11:24:14 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Vitaliy Sochnev <sochnev.v.74@gmail.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn
+ <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+ stable@vger.kernel.org, linux-arm-kernel@lists.infradead.org (moderated
+ list:AIROHA ETHERNET DRIVER), linux-mediatek@lists.infradead.org (moderated
+ list:AIROHA ETHERNET DRIVER), netdev@vger.kernel.org (open list:AIROHA
+ ETHERNET DRIVER), linux-kernel@vger.kernel.org (open list)
+Subject: Re: [PATCH net v2] net: airoha: npu: load the firmware without the
+ sysfs fallback
+Message-ID: <20260817112414.0e82a395@kernel.org>
+In-Reply-To: <20260811181717.19339-1-sochnev.v.74@gmail.com>
+References: <20260811181717.19339-1-sochnev.v.74@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260817_094516_838182_11423E55 
-X-CRM114-Status: UNSURE (   8.46  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,38 +73,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2026-08-17 at 09:23 +0000, Eason Lai wrote:
-> If you have time, please help test the v2 on mt7921u.
+On Tue, 11 Aug 2026 19:16:59 +0100 Vitaliy Sochnev wrote:
+> airoha_npu_load_firmware() maps a missing firmware file to -EPROBE_DEFER
+> so that the NPU can be brought up once the rootfs carrying /lib/firmware
+> has been mounted. That mapping holds only as long as request_firmware()
+> reports -ENOENT.
 
-Done, on an MT7921AU. Unpatched, the socket fills after 111 zero-length
-frames and is still blocked 20 s later. With both patches it runs 3000 with
-no block, and the driver still rejects all 3000, so only the cleanup changed.
-
-Tested-by: Devin Wittmayer <lucid_duck@justthetip.ca>
-
-That is the tx_prepare_skb exit. The other two never fired in any arm, and
-the buffer-setup one cannot fire here at all, since mac80211 caps the
-fragment count below the table size. Those two hunks are untested.
-
-One correction from the 16th: mt76s_tx_queue_skb's prepare exit already
-frees, from your July patch. Only its queue-full exit still misses it.
-
-Before this lands. The two patches are not marked as a series, and this one
-does not say it needs the skb_pad change first. I tried it alone and it
-still passes, because the frame returns before the padding runs, so passing
-alone proves nothing. Worth sending both as one series.
-
-The skb_pad patch also needs my sign-off under the Co-developed-by, or
-checkpatch objects:
-
-Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
-
-And it is worth Cc: stable. The Fixes goes back to 2018, and on mt7921 and
-mt7925 USB this silently kills wpa_supplicant with the link still up, so
-nothing notices until a group rekey. The reporter there hit it on different
-hardware and ran the equivalent change:
-
-Closes: https://github.com/morrownr/mt76/issues/83
-
-Devin
+Okay, but AFAIU this is a hack. AFAIU PROBE_DEFER is not meant to
+be used for FW loading. The driver module should live on the same
+'partition' as the firmware. Either have them both available in initrd,
+or have neither?
 
