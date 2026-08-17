@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 171F9C5DF66
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 02:38:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23B03C5CFC1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 05:22:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lhOKwsR5SDq98/XwAqYZPpTbBrVHGuqe8tfzF4XrU+Y=; b=KAnkuN6zH5t1EbNy1U7cKqzVDQ
-	Mhfnp97lTPtCdKlK6spZ4p1MpgWJ+zwgyGwSbIxektMtp9vxZQQB9Y4tqsD9is5VNoBC20MC+Zwls
-	PTiSsBtdT/MJXScEcirGqO6WYwKr+XRJ/t9BteIqUeeWg4dfbGF8Y5gCMGwWUHWGomQTLWmOuO1Hx
-	fsxmOUsUR2R+gFJ/rLO4Qqo3zebStiUQOw7ef1rPstjRE8mdvFeO0R/UE3ifvNV9iISKIxXnI2pLl
-	8YTamjRg4Dhv92L/EoXB+hLGRPkvUrjj8d4T69cSnrl59awSFHOUj8m1jIzJkQqoA4Mpf+a3Vg4ff
-	G0R4UBDQ==;
+	bh=HTWfwGfzFc2XqVUlWrFEfYproDWYn0hNuxeA+miUg6I=; b=Iw9nH6e3T4DIpKACk9a8ajg26p
+	r4zCOUL/0ibiLtbpfOqD3SeTGO/OidNjH5yZSQAlCwTznDC6WqWbUbD/zhX9Uqmxbz+2SlaUQVZyO
+	8gV8EGAZAbh3QleBvZBrbJ18WsJ4E0rW6nxv5GrLyNIvg7CF5Me42TJyHR9qkHJKAPVt/ZmF1Wa3E
+	EODeK7WVToxxzJbUu6ODqa5QNA+uKG5d19UvNGURyH9g1E+L6AkQdlGwtT3z5dO5zPr/S2OYDHvz4
+	IWScGe7VBxi9HEo2n5KL1WjnR/564+4u2ovcv6mhcHfCeeCxprF5cmRF5utPZVmgTdBoCB9EgtQFP
+	HmH8MQIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvnFT-00000005KRx-2aMT;
-	Mon, 17 Aug 2026 02:38:51 +0000
-Received: from [216.200.240.184] (helo=mailgw01.mediatek.com)
+	id 1wvpnS-00000005R64-3QXS;
+	Mon, 17 Aug 2026 05:22:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvnFR-00000005KRC-1BuX;
-	Mon, 17 Aug 2026 02:38:50 +0000
-X-UUID: c35df27099e411f1afed4741b24580c9-20260816
+	id 1wvpnQ-00000005R55-43Ty
+	for linux-mediatek@lists.infradead.org;
+	Mon, 17 Aug 2026 05:22:06 +0000
+X-UUID: 90929b1899fb11f1afed4741b24580c9-20260816
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=lhOKwsR5SDq98/XwAqYZPpTbBrVHGuqe8tfzF4XrU+Y=;
-	b=IiQ5fxPldBGhv23nVcMVb1AWCVfvm/ZV9phPB4iPxleNcUyndQMjaDjULVrUtF8FeLbXnh2u8Oja3pJm9mUQn3FR7QPZ5AHa4QdFTu5zVlr+UODvxuddT6oVtb8lD4RDDY8jEMTAjfPNr/k3ANFNYOX8pN7iqhxHjjgi1obB4s0=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=HTWfwGfzFc2XqVUlWrFEfYproDWYn0hNuxeA+miUg6I=;
+	b=DpqkFAUqs7I7mdMXgI8PgbwAUwmeEdktr28XRB47/umK7RaiR544ys63pDt9m5VMq/kcow8WnZgyTQvlrJ5BnULaG3VET+c/VcunBofNiAn7zrLuHFB0PGYMssDJYRSgYxFIZ258byrbIN347ot0t+oa/3i3ew/OffKCp5rAqU4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:a03b4179-35c1-4fc5-a7c9-f6887c154202,IP:0,U
+X-CID-O-INFO: VERSION:1.3.19,REQID:7fd031ff-da28-4984-aeae-33ae5622d83b,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:f66798b3-c700-40ec-9e2b-60285d67984b,B
-	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
-	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:7db8b62,CLOUDID:c318f7d4-1b57-4e05-9e9d-187d09b3460c,B
+	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|50|
+	99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
+	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: c35df27099e411f1afed4741b24580c9-20260816
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <ot_zexin.wang@mediatek.com>)
+X-UUID: 90929b1899fb11f1afed4741b24580c9-20260816
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <eason.lai@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 758933527; Sun, 16 Aug 2026 19:38:43 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+	with ESMTP id 533316554; Sun, 16 Aug 2026 22:21:56 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 17 Aug 2026 10:38:40 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 17 Aug 2026 10:38:40 +0800
-From: Zexin Wang <ot_zexin.wang@mediatek.com>
-To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
-	<linux@roeck-us.net>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <light.chen@mediatek.com>, <Fred-WY.Chen@mediatek.com>,
-	<Yt.Hsieh@mediatek.com>, Zexin Wang <ot_zexin.wang@mediatek.com>,
-	<linux-watchdog@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v4] watchdog: sbsa_gwdt: add early_enable module parameter
-Date: Mon, 17 Aug 2026 10:37:49 +0800
-Message-ID: <20260817023838.6459-1-ot_zexin.wang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+ 15.2.2562.29; Mon, 17 Aug 2026 13:21:54 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 17 Aug 2026 13:21:54 +0800
+From: Eason Lai <eason.lai@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<kun.wu@mediatek.com>, <deren.wu@mediatek.com>, <sean.wang@mediatek.com>,
+	<quan.zhou@mediatek.com>, <ryder.lee@mediatek.com>, <leon.yen@mediatek.com>,
+	<litien.chang@mediatek.com>, <jb.tsai@mediatek.com>, <jeff.hsu@mediatek.com>,
+	<eason.lai@mediatek.com>, Jeff Hsu <Jeff.Hsu@mediatek.com>
+Subject: [PATCH] Fixes: a01a222ab4aa ("wifi: mt76: mt7928: Fix TX hang due to DMASHDL setting error")
+Date: Mon, 17 Aug 2026 13:21:50 +0800
+Message-ID: <20260817052151.98079-1-eason.lai@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260816_193849_342837_CB31A755 
-X-CRM114-Status: GOOD (  19.31  )
+X-CRM114-CacheID: sfid-20260816_222205_019188_E67AC87F 
+X-CRM114-Status: UNSURE (   8.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,114 +87,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On SBSA platforms using standard UEFI firmware (such as EDK II), the
-watchdog timer is often enabled during early boot stages but explicitly
-disabled by the firmware before handing over control to the OS (e.g.,
-during ExitBootServices). This is done to prevent unintended resets
-while the OS is loading, assuming the OS watchdog driver will take over.
+From: Jeff Hsu <Jeff.Hsu@mediatek.com>
 
-However, this leaves a protection gap. If the system hangs between the
-firmware handover and the userspace watchdog daemon startup, the hardware
-watchdog will not fire to recover the system. For safety-critical systems
-that require continuous hardware watchdog protection from the earliest
-possible moment, this gap is problematic.
+Correct the setting for DMASHDL or it will result TX hang,
+due to upstream just used one TX data ring but setting DMASHDL
+with multiple TX ring
 
-Add an 'early_enable' module parameter to allow the kernel driver to
-re-enable the watchdog immediately during probe if it was left disabled
-by the firmware. By setting the WDOG_HW_RUNNING status bit, the watchdog
-core is instructed that the hardware is active. As a result, the core's
-pre-userspace handler (controlled by 'handle_boot_enabled') will
-automatically issue periodic keepalives until userspace opens the device.
-
-This bridges the protection gap seamlessly without requiring firmware
-modifications and without risking unintended resets during kernel boot.
-
-The parameter defaults to false to preserve the traditional behavior.
-
-Signed-off-by: Zexin Wang <ot_zexin.wang@mediatek.com>
+Signed-off-by: Jeff Hsu <Jeff.Hsu@mediatek.com>
 ---
-Changes in v4:
-- Remove unnecessary dev_info() log message
-- Remove dev_err() on register failure
-- Remove clear_bit(WDOG_HW_RUNNING) on register failure
+ .../net/wireless/mediatek/mt76/mt7925/pci.c   | 29 ++++++++++---------
+ 1 file changed, 15 insertions(+), 14 deletions(-)
 
-Changes in v3:
-- Fix indentation of `early_enable` in watchdog-parameters.rst to ensure
-  it renders as a separate parameter rather than part of `nowayout`'s
-  description.
-
-Changes in v2:
-- Rename `force_enable` to `early_enable` as suggested by Guenter.
-- Update commit message to explain the UEFI handover gap motivation.
-- Add documentation for the new parameter.
-
- .../watchdog/watchdog-parameters.rst          |  2 ++
- drivers/watchdog/sbsa_gwdt.c                  | 19 +++++++++++++++++--
- 2 files changed, 19 insertions(+), 2 deletions(-)
-
-diff --git a/Documentation/watchdog/watchdog-parameters.rst b/Documentation/watchdog/watchdog-parameters.rst
-index 502cb6adbeda..348229ffcb43 100644
---- a/Documentation/watchdog/watchdog-parameters.rst
-+++ b/Documentation/watchdog/watchdog-parameters.rst
-@@ -515,6 +515,8 @@ sbsa_gwdt:
-     nowayout:
- 	Watchdog cannot be stopped once started
- 	(default=kernel config parameter)
-+    early_enable:
-+	Watchdog is started on module insertion (default=0)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+index 154e4372664e..27f27ba2e587 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+@@ -401,16 +401,17 @@ static int mt7927_dma_init(struct mt792x_dev *dev)
  
- -------------------------------------------------
+ static void mt7928_dma_shdl_lite_init(struct mt792x_dev *dev)
+ {
+-	u32 addr, idx, grp1_5_quota, grp15_quota;
++	u32 addr, idx, grp0_quota, grp15_quota;
++	/* Driver only uses TX ring 0, map all queues to group 0 */
+ 	u32 q2group[8] = {
+-		0x04000000, /* AC00->G0,..., AC03->G4 */
+-		0x04010101, /* AC10->G1,..., AC13->G4 */
+-		0x04020202, /* AC20->G2,..., AC23->G4 */
+-		0x04030303, /* AC30->G3,..., AC33->G4 */
+-		0x00000005, /* ALTX->G5,BMC->G0,BCN->G0 */
+-		0x00000005, /* TGID=1 ALTX->G5 */
+-		0x00000000, /* NAF/NBCN/FIXFID -> G0 */
+-		0x00000005, /* TGID=2 ALTX->G5 */
++		0x00000000, /* All queues -> G0 */
++		0x00000000, /* All queues -> G0 */
++		0x00000000, /* All queues -> G0 */
++		0x00000000, /* All queues -> G0 */
++		0x00000000, /* All queues -> G0 */
++		0x00000000, /* All queues -> G0 */
++		0x00000000, /* All queues -> G0 */
++		0x00000000, /* All queues -> G0 */
+ 	};
  
-diff --git a/drivers/watchdog/sbsa_gwdt.c b/drivers/watchdog/sbsa_gwdt.c
-index e04d42cc7774..3c5bfd8641c6 100644
---- a/drivers/watchdog/sbsa_gwdt.c
-+++ b/drivers/watchdog/sbsa_gwdt.c
-@@ -122,6 +122,11 @@ MODULE_PARM_DESC(nowayout,
- 		 "Watchdog cannot be stopped once started (default="
- 		 __MODULE_STRING(WATCHDOG_NOWAYOUT) ")");
+ 	/* RST */
+@@ -433,18 +434,18 @@ static void mt7928_dma_shdl_lite_init(struct mt792x_dev *dev)
+ 	     idx < ARRAY_SIZE(q2group);
+ 	     idx++, addr += 4)
+ 		mt76_wr(dev, addr, q2group[idx]);
+-	/* refill, set 0 to enable group 0,1,2,3,4,5 & 15 */
+-	mt76_wr(dev, MT_DMASHDL_LITE_GROUP_DISABLE0, 0xffff7fc0);
++	/* refill, set 0 to enable group 0 & 15 */
++	mt76_wr(dev, MT_DMASHDL_LITE_GROUP_DISABLE0, 0xffff7ffe);
+ 	mt76_wr(dev, MT_DMASHDL_LITE_GROUP_DISABLE1, 0xffffffff);
+ 	/* max/min quota */
+-	grp1_5_quota = FIELD_PREP(MT_DMASHDL_LITE_GROUP_MAX_QUOTA_MASK, 0x3f0) |
+-		       FIELD_PREP(MT_DMASHDL_LITE_GROUP_MIN_QUOTA_MASK, 0x10);
++	grp0_quota = FIELD_PREP(MT_DMASHDL_LITE_GROUP_MAX_QUOTA_MASK, 0x700) |
++		     FIELD_PREP(MT_DMASHDL_LITE_GROUP_MIN_QUOTA_MASK, 0x10);
+ 	grp15_quota = FIELD_PREP(MT_DMASHDL_LITE_GROUP_MAX_QUOTA_MASK, 0x30);
  
-+static bool early_enable;
-+module_param(early_enable, bool, 0);
-+MODULE_PARM_DESC(early_enable,
-+		 "Watchdog is started on module insertion (default=0)");
-+
- /*
-  * Arm Base System Architecture 1.0 introduces watchdog v1 which
-  * increases the length watchdog offset register to 48 bits.
-@@ -296,6 +301,7 @@ static int sbsa_gwdt_probe(struct platform_device *pdev)
- 	struct sbsa_gwdt *gwdt;
- 	int ret, irq;
- 	u32 status;
-+	bool early_action;
- 
- 	gwdt = devm_kzalloc(dev, sizeof(*gwdt), GFP_KERNEL);
- 	if (!gwdt)
-@@ -386,14 +392,23 @@ static int sbsa_gwdt_probe(struct platform_device *pdev)
- 	 */
- 	sbsa_gwdt_set_timeout(wdd, wdd->timeout);
- 
-+	early_action = early_enable && !(status & SBSA_GWDT_WCS_EN);
-+	if (early_action) {
-+		sbsa_gwdt_start(wdd);
-+		set_bit(WDOG_HW_RUNNING, &wdd->status);
-+	}
-+
- 	watchdog_stop_on_reboot(wdd);
- 	ret = devm_watchdog_register_device(dev, wdd);
--	if (ret)
-+	if (ret) {
-+		if (early_action)
-+			sbsa_gwdt_stop(wdd);
- 		return ret;
-+	}
- 
- 	dev_info(dev, "Initialized with %ds timeout @ %u Hz, action=%d.%s\n",
- 		 wdd->timeout, gwdt->clk, action,
--		 status & SBSA_GWDT_WCS_EN ? " [enabled]" : "");
-+		 watchdog_hw_running(wdd) ? " [enabled]" : "");
- 
- 	return 0;
+ 	for (addr = MT_DMASHDL_LITE_GROUP0_QUOTA, idx = 0;
+ 	     idx < DMASHDL_LITE_GROUP_NUM;
+ 	     idx++, addr += 4)
+-		mt76_wr(dev, addr, (idx <= 5) ? grp1_5_quota :
++		mt76_wr(dev, addr, (idx == 0) ? grp0_quota :
+ 			((idx == 15) ? grp15_quota : 0));
  }
+ 
 -- 
 2.45.2
 
