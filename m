@@ -4,63 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80903C5B572
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 19:46:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEC50C5DF7F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 19:46:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jYtufi31esdthh9skm50DsS40oKA05LQqbajS7Trxzs=; b=zzT4pjXhgKfotuDLoP8iw1ataM
-	6kjgyIC20dyekgqDWKSVog0bbopFkbKNW5GkQd4geB47neQR83xieUhrQp7/6BmLFCQaG90cAF/M+
-	IAofymd0YTTXxauRvW7eNfihEHny7pArgnSyOpolWDwAh5AzRuXJVX7tX/ag6RhM7UmERqpzA/mZC
-	PggKZVBEpygrl/cXNoVQbjV1Fz4KrCWbihrBZLQBuSy45fOF9Fqvpb8Pf0xumtt4gizMAewmHyos4
-	x5LXYn5CuRcpD134ZWzPHCn490beXdbFU+QDHxCWMEcdzdyMsf2y2FsEJ3DrNI48DA2J4DNlNqaAX
-	gtXz0tJQ==;
+	bh=q3mTxThq2eLy86xHYm2SOBoR5dU3codgK38xVj3ikbo=; b=jfAxJGbZ49HYSy6FNFd+woqj6U
+	vWH7TQHCbdStELCGpczux2SAUW8bCl7WIwnp5S0aDZRMWxdk0a1Qsqxb94yHn18/Ebpyfrw0ve2Tf
+	QY64fSxGLwQdPkNFg74tpoHCMtZUBx3JUmDOc97zwG95rkmm/5FQNfmK2qzr3WlsErnU2UL+POZMc
+	hRWaCJPVl45DO2EQ84OTysnglx1w5NmVGQ07DEzDE7oT5EPM+JQxlXskrRe2ZTYk0PvbeMeu38V+z
+	0xNcq81BM1k1WJr97zsNBY87JU4GfwUQXk4Vi/KTc11hfXOBVn/gxvYdVDeXj+GmofDzw28fwg7AT
+	Ii+HgNJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ww3I7-00000006jbs-2z2r;
-	Mon, 17 Aug 2026 19:46:39 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1ww3IG-00000006jkB-2gCW;
+	Mon, 17 Aug 2026 19:46:48 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ww3I5-00000006ja0-0SR3;
-	Mon, 17 Aug 2026 19:46:37 +0000
+	id 1ww3ID-00000006jhU-3Lui
+	for linux-mediatek@lists.infradead.org;
+	Mon, 17 Aug 2026 19:46:45 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7E78C60A69;
-	Mon, 17 Aug 2026 19:46:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 33AC11F000E9;
-	Mon, 17 Aug 2026 19:46:36 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8D56041646;
+	Mon, 17 Aug 2026 19:46:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70DF91F000E9;
+	Mon, 17 Aug 2026 19:46:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786995996;
-	bh=jYtufi31esdthh9skm50DsS40oKA05LQqbajS7Trxzs=;
+	s=k20260515; t=1786996005;
+	bh=q3mTxThq2eLy86xHYm2SOBoR5dU3codgK38xVj3ikbo=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=EXE9SNbuoc/FVdgBY3XEwncT9Oe1hlZbedIMw2pfqDCgd+yI5VThgL3nQEqLF8z2O
-	 6BQeLZvK9w3M+2GJ8Zf2jN31swsywkBchOlK8KLCYSQ0vDSenuRGA858WO+hQHoXbG
-	 ROq8+MWxb4TfjQljoc1JMennkP8rOmRFld9dszNEAAs4TAJY9FAZp9YI//aVyHWgx+
-	 q2x9NjTIM6mbK2he4cFc00s2cgvDB2I2ESU9OCi9lX5x7z5xQW6858PD/5jv2hqPal
-	 +jxMTenqk3m5yC48AXZp8iPP+BrpIQqNBK934knQNQKweJ0gZ4NcEZFXsNGz3x5Hf9
-	 9v/dW25V+jnrQ==
+	b=GQowfqHJhOQATrJ4wwy0mLfZVGkZwwxoYeddnwivFi9ZVTDK/5ElyY9VTx4maxfGs
+	 6c8twxmqHe3FLXlLtmTbLp6G751vG/JBnCzQcAK5dXKl2BWYBB3kudDTs8mgWDzxUT
+	 SBNsJ6+vtSate76IjRA2yCw7Ip4OjbqR9iNkbBaSnqbYP6/fb0E2LBJJAQdzI9vZsU
+	 AEzDn5uflNILproFtD28idG/7QXGhNPGiaoSRtqlDODBTgdkg5At4Mdo0xzsuTAv01
+	 ChLRS52nQRskpBnaiax1XA0RXG7/5L0Whpyf95mUK089m0bdC+QIkXuKbpc5CtUGUl
+	 3AtUvHXLaqMxg==
 Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 939C13926262;
-	Mon, 17 Aug 2026 19:45:49 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id D0CC13926262;
+	Mon, 17 Aug 2026 19:45:58 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net v2] net: airoha: npu: load the firmware without the
- sysfs
- fallback
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178699594816.1691257.16349624064991937172.git-patchwork-notify@kernel.org>
-Date: Mon, 17 Aug 2026 19:45:48 +0000
-References: <20260811181717.19339-1-sochnev.v.74@gmail.com>
-In-Reply-To: <20260811181717.19339-1-sochnev.v.74@gmail.com>
-To: Vitaliy Sochnev <sochnev.v.74@gmail.com>
-Cc: lorenzo@kernel.org, andrew+netdev@lunn.ch, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- stable@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 0/2] Bluetooth: btmtksdio: Fix SKB handling in the TX path
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <178699595738.1691257.9499694982738760170.git-patchwork-notify@kernel.org>
+Date: Mon, 17 Aug 2026 19:45:57 +0000
+References: <20260817095332.182994-1-chris.lu@mediatek.com>
+In-Reply-To: <20260817095332.182994-1-chris.lu@mediatek.com>
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
+ sean.wang@mediatek.com, will-cy.Lee@mediatek.com, ss.wu@mediatek.com,
+ linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,28 +75,29 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hello:
 
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+This series was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-On Tue, 11 Aug 2026 19:16:59 +0100 you wrote:
-> airoha_npu_load_firmware() maps a missing firmware file to -EPROBE_DEFER
-> so that the NPU can be brought up once the rootfs carrying /lib/firmware
-> has been mounted. That mapping holds only as long as request_firmware()
-> reports -ENOENT.
+On Mon, 17 Aug 2026 17:53:30 +0800 you wrote:
+> btmtksdio_tx_packet() rounds the SDIO transfer size up to the 256 byte
+> block size, but never grows the SKB accordingly, so the host controller
+> reads up to 255 bytes of uninitialised memory and sends it to the device,
+> and can read past the end of the buffer as well.
 > 
-> It does not when the sysfs fallback is in play. With
-> CONFIG_FW_LOADER_USER_HELPER_FALLBACK set, or with the fallback armed at
-> runtime through /proc/sys/kernel/firmware_config/force_sysfs_fallback,
-> request_firmware() hands the request to a userspace helper, waits out the
-> full loading_timeout and returns -ETIMEDOUT. The -ENOENT test no longer
-> matches, dev_err_probe() turns the result into a hard failure, and the
-> NPU is left unbound after stalling the boot for 60 seconds:
+> Patch 2 fixes that by padding the SKB with zeros. The padding is written
+> behind skb->tail, which is only safe once the driver owns the data
+> buffer, so patch 1 replaces the open-coded headroom check with
+> skb_cow_head() first. Patch 1 on its own changes no observable
+> behaviour, but it is a hard prerequisite, so both patches carry the same
+> Fixes: tag.
 > 
 > [...]
 
 Here is the summary with links:
-  - [net,v2] net: airoha: npu: load the firmware without the sysfs fallback
-    https://git.kernel.org/netdev/net-next/c/a085e68b1390
+  - [1/2] Bluetooth: btmtksdio: Take exclusive ownership of the SKB before TX
+    https://git.kernel.org/bluetooth/bluetooth-next/c/951d9f743029
+  - [2/2] Bluetooth: btmtksdio: Fix out-of-bounds DMA read in the TX path
+    https://git.kernel.org/bluetooth/bluetooth-next/c/262cb784c96c
 
 You are awesome, thank you!
 -- 
