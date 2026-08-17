@@ -4,65 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C08EFC5B572
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 15:38:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7C76C5DF66
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 16:45:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xKXOCD9CuZCCFOTORHsxB/Y4xy2wPXe8BRMSxN/bXRg=; b=4wHEmKGfJiqhatvIKNYaSLxb6I
-	Q+sGiFTvqUNQLzfsH/khY+/y8z4zgicNtHS3TzrCQSKWikhIGFC4Doyiqmad+luF88xaiFtOTXE6B
-	OAU1vYKt60lx3eOzQPIFYVo0VFZjcuB5hIFLi0xW5btq8exd4JfIHRAI25P3wnbwfkuts+mN0ZYaA
-	6stc3JdHKw7kTOkKa2wNAb9Q83P1YnFbXEJpJi0ibPsC1UJ6n8G8XoU9bEc7KyUYVPitAv/laaBAh
-	fe1og4FRx3wXh71U1Noft0ybIXcznKZKWOQaoVQuVGRwMJo6/aR/lAqZwBFg2uVaGIbgN2E8+cIUv
-	CvZBLVYA==;
+	bh=+KG+iiGRdylcb+xJMSMtImIGNJiqrfPHBleDHvNir4w=; b=t+fluwNPpVbSzBW9rV/mdGPNtw
+	V4yFgucU2d2nLEIv1eXsfFk82AkO2m43WgKzkL8/PalgAghbSZjl1W1QOKjEFf58JIWC4DrsL9TlE
+	vSPjrqEvLpyTx1p8iKXAuc/czE/RpCAWozV0Lowq6JiDHjgXkjMmafF8KeR9N+7t7LQRD9zrJly4Y
+	GYDy2IsM9zTji3UIhN4uYVnxUbwGh77M2ZLZ6D+zukHyVsRWpAfKorBflauGI7AU8Om65OR31PpF8
+	S3A3R4o1TB22k7lcZrLLoGQbl8wpH3VRxg2QNM6fM2n45FtGG6U3xU1rlnfsBYGR5hyjOpq0RLw6F
+	oaUTvKyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvzPr-00000006QZB-1YLL;
-	Mon, 17 Aug 2026 15:38:23 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1ww0Sc-00000006Xfr-3CgW;
+	Mon, 17 Aug 2026 16:45:18 +0000
+Received: from out-6.mta0.migadu.com ([2001:41d0:1004:224b::6] helo=mta0.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvzPq-00000006QYg-0YDi;
-	Mon, 17 Aug 2026 15:38:22 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5FAF8601DE;
-	Mon, 17 Aug 2026 15:38:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6664D1F000E9;
-	Mon, 17 Aug 2026 15:38:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1786981101;
-	bh=xKXOCD9CuZCCFOTORHsxB/Y4xy2wPXe8BRMSxN/bXRg=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=ZvjcytQro4FcohRmb7N6AK14yxjEkep/XoDVLoNLnoPY0rTz3/ej/NX2dU5EaOQS9
-	 lWNnTpMnK7QCa12ivhA6fCXvPYeHe3hhr/ZwgtIK/JA5lhGCzu/GFzGVS7jPDHt41F
-	 rSldX9QCcyshIOMubkTFvvIilwVY+Yz7v4tQ5jl+GfqyKjDr49jMH/5QoWa+MMoUvL
-	 aYbYA0CtVghFN+b1UJh+he0Rk0JcUe8bgcJDX0nJ49Gpqys3jVSoI/nh4gBrzPrk41
-	 4sIv9wtxaZiYUxw9DY423vOymteEHbxaKwvX7blDnvRLtHkHKIRAz8EZ5BI1uYh4Fa
-	 25rgBGvslelWw==
-Date: Mon, 17 Aug 2026 08:38:19 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Andrew
- Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Vladimir
- Oltean <olteanv@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "Chester A. Unal" <chester.a.unal@arinc9.com>, Daniel Golle
- <daniel@makrotopia.org>, Heiner Kallweit <hkallweit1@gmail.com>, Russell
- King <linux@armlinux.org.uk>, Simon Horman <horms@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, mfd@lists.linux.dev, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH net-next v20 00/10] net: dsa: Add Airoha AN8855 support
-Message-ID: <20260817083819.67dff919@kernel.org>
-In-Reply-To: <20260817082034.20326-1-ansuelsmth@gmail.com>
-References: <20260817082034.20326-1-ansuelsmth@gmail.com>
+	id 1ww0Sa-00000006XfJ-1diX
+	for linux-mediatek@lists.infradead.org;
+	Mon, 17 Aug 2026 16:45:18 +0000
+X-Envelope-To: linux-mediatek@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=+KG+iiGRdylcb+xJMSMtImIGNJiqrfPHBleDHvNir4w=;
+ c=simple/simple; d=justthetip.ca;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1786985114; v=1; x=1787589914;
+ b=Ww0eb0RzZ5OCtWRMwMwz31TU8bJix7tgf1mF2zT3Q37aUNX9esju+5wAgaFxrmICrlClL5z0
+ ikQConsdheGgrs2QBhkzJYMXj74iPngAu58VSgIiXa8NywX3vg9/ycJR6Q44mVJWzx9aNrwokwM
+ RbifK2ivxwJ4aUqbZ041bBW9XY+nTNFFDeIiSIENooLn/pL2VFhP4B/WDiARaXTqng/n0n+OR1V
+ NPDxbKM2aaH3+171+m4LWEyMgUE0uNjeITMenWhTINybzvORHkfh6U01mKGXsZJ16tpehJ1WorU
+ u8Z0FIqxqUJnPA57gYPZ7scMJVIBeqKVnhz4dPgaI34kA==
+X-Envelope-To: linux-mediatek@lists.infradead.org
+Received: from fedora.lan (2001:569:be59:c500:b340:3f2c:4486:21c1)
+	by smtp.migadu.com with ESMTPS id 366244d03d620435;
+	Mon, 17 Aug 2026 16:45:14 +0000
+X-Migadu-Flow: FLOW_OUT
+From: Devin Wittmayer <lucid_duck@justthetip.ca>
+To: Eason Lai <eason.lai@mediatek.com>,
+	nbd@nbd.name,
+	lorenzo@kernel.org
+Cc: linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	kun.wu@mediatek.com,
+	deren.wu@mediatek.com,
+	sean.wang@mediatek.com,
+	quan.zhou@mediatek.com,
+	ryder.lee@mediatek.com,
+	leon.yen@mediatek.com,
+	litien.chang@mediatek.com,
+	jb.tsai@mediatek.com
+Subject: Re: [PATCH v2] wifi: mt76: mt792x: fix memory leak in USB TX path
+Date: Mon, 17 Aug 2026 09:45:06 -0700
+Message-ID: <20260817164506.13333-1-lucid_duck@justthetip.ca>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260817090157.168089-1-eason.lai@mediatek.com>
+References: <20260817090157.168089-1-eason.lai@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260817_094516_838182_11423E55 
+X-CRM114-Status: UNSURE (   8.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,25 +82,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 17 Aug 2026 10:20:21 +0200 Christian Marangi wrote:
-> This series add the initial support for the Airoha AN8855 Switch.
+On Mon, 2026-08-17 at 09:23 +0000, Eason Lai wrote:
+> If you have time, please help test the v2 on mt7921u.
 
-## Form letter - net-next-closed
+Done, on an MT7921AU. Unpatched, the socket fills after 111 zero-length
+frames and is still blocked 20 s later. With both patches it runs 3000 with
+no block, and the driver still rejects all 3000, so only the cleanup changed.
 
-The merge window for v7.3 has started, and therefore net-next is closed
-for new drivers, features, code refactoring and optimizations.
-We will only consider applying net-next patches which were posted
-before the announcement:
+Tested-by: Devin Wittmayer <lucid_duck@justthetip.ca>
 
-https://lore.kernel.org/20260816155953.072d73da@kernel.org
+That is the tx_prepare_skb exit. The other two never fired in any arm, and
+the buffer-setup one cannot fire here at all, since mac80211 caps the
+fragment count below the table size. Those two hunks are untested.
 
-Fixes are obviously welcome at any time. net-next patches may be sent
-for review and discussion only with an RFC tag.
+One correction from the 16th: mt76s_tx_queue_skb's prepare exit already
+frees, from your July patch. Only its queue-full exit still misses it.
 
-Please repost when net-next reopens.
+Before this lands. The two patches are not marked as a series, and this one
+does not say it needs the skb_pad change first. I tried it alone and it
+still passes, because the frame returns before the padding runs, so passing
+alone proves nothing. Worth sending both as one series.
 
-See: https://www.kernel.org/doc/html/next/process/maintainer-netdev.html#development-cycle
--- 
-pw-bot: defer
-pv-bot: closed
+The skb_pad patch also needs my sign-off under the Co-developed-by, or
+checkpatch objects:
+
+Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+
+And it is worth Cc: stable. The Fixes goes back to 2018, and on mt7921 and
+mt7925 USB this silently kills wpa_supplicant with the link still up, so
+nothing notices until a group rekey. The reporter there hit it on different
+hardware and ran the equivalent change:
+
+Closes: https://github.com/morrownr/mt76/issues/83
+
+Devin
 
