@@ -4,74 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1DB4C5B572
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 05:28:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95CC6C5B572
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Aug 2026 07:51:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/9R0CT7B7Ed1BYuIdZpDCGjx9t/H9AuxT04WVQcQb+M=; b=CU9tBJv7LNYnt5JqG8PcMf88Qh
-	N0m0QfrbeN6h9LziaJTD7Fm6EsmClf7UClF426ysobW/l8eb9KRD1KKp16uyC7WiFNzY7yZJYcumd
-	o+H4HwwCVryL/ZGA/v/0zfFmZL4IYolTqPBYsGzD21rkIm4H1aqCFiYzp800ElZ1mZE0dFizrtJkA
-	faKGsfzUX+Oc8N6sY14Vn5uTpLrXABy8sDH7z3XPk/9BaMOt7yfKi4+4Iau2ajEtxOUgFB4jxBYPA
-	1exHFJyxUyy1U/fH2YypD7xD1SIHAEHbCWhjVUQcWFc95V72/8w5nYfU/v6+QIFzAsieAj5W7XkcX
-	0XbQB27Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DDeFtTnxMBvDDeM+UXcBJoOG/+TlVBVJ2Mo0e9wRHls=; b=ogua3wXXW8o8RnXz+Kuzqb+dit
+	80/V1ie/p9SdwR6/KPe/K0Xtl/a4Hvx54sstfPM4T3+w3Wv+tj2XRrQU3LwUesMQV7th4lbvOC7uK
+	XkY+G+h85dAmO9jf8Dnk3qi3nmGAjaYSdWTKVNRrCbmb564LWMpWcwVm6ugQai7ZcFJihf3h1Itl5
+	rGDNCIxBLnP4J+8qOr4YKRQrYV98iTpkXbeNRh9y3ZYajdVlTKpRoM5+PhRWH92ADAocPfu0g47qB
+	RYD8MxtT8XAI+RdhqB0AScIyr7mk5UR4iAgZXVQvDTg2kl24W6dw93OKMNHaHJANTiz5I+zWq5qDZ
+	v6Ox6BIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvpu1-00000005RJq-2PM6;
-	Mon, 17 Aug 2026 05:28:53 +0000
-Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
+	id 1wvs7i-00000005bFJ-1k5i;
+	Mon, 17 Aug 2026 07:51:10 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wvptz-00000005RJV-1Bfr
+	id 1wvs7e-00000005bEB-32Ac
 	for linux-mediatek@lists.infradead.org;
-	Mon, 17 Aug 2026 05:28:52 +0000
-X-UUID: 8327101699fc11f1acbe4559397dec65-20260816
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=/9R0CT7B7Ed1BYuIdZpDCGjx9t/H9AuxT04WVQcQb+M=;
-	b=AudPLZ001KNSLLTqyPHnnFbYhlg48lmcErSdJ7N9hmFkI4geYnRSvBUi2YLt3UF5S+7+rZCIMQDAuHCIZnMHDbF64FGTdyLJLqKmN6VORuYVuPyrkPv/Yncblh+AFgSt5xz8eaLfnDx9M5YcQeXnfIACYranx7sqT6e/LFS75TI=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:d01be996-a0c5-402d-b587-c8ddaf3a59fd,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:7db8b62,CLOUDID:09ef5e62-4c4b-4795-b2b0-2fe6b5cfd48e,B
-	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
-	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 8327101699fc11f1acbe4559397dec65-20260816
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <eason.lai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 186993296; Sun, 16 Aug 2026 22:28:43 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 17 Aug 2026 13:28:41 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 17 Aug 2026 13:28:41 +0800
-From: Eason Lai <eason.lai@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<kun.wu@mediatek.com>, <deren.wu@mediatek.com>, <sean.wang@mediatek.com>,
-	<quan.zhou@mediatek.com>, <ryder.lee@mediatek.com>, <leon.yen@mediatek.com>,
-	<litien.chang@mediatek.com>, <jb.tsai@mediatek.com>,
-	<eason.lai@mediatek.com>, Devin Wittmayer <lucid_duck@justthetip.ca>
-Subject: [PATCH v3] wifi: mt76: mt7925: Fix MCU command timeouts during module unload
-Date: Mon, 17 Aug 2026 13:28:39 +0800
-Message-ID: <20260817052840.99478-1-eason.lai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	Mon, 17 Aug 2026 07:51:09 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-49954b88fffso34424755e9.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 17 Aug 2026 00:51:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1786953063; x=1787557863; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:message-id:date
+         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=DDeFtTnxMBvDDeM+UXcBJoOG/+TlVBVJ2Mo0e9wRHls=;
+        b=laHDzsSrq40dRqeTMQZeopZxOyY5HvOsQ2JPnk0cZyMAOCRL/mfXQcep/U3SmcUV+g
+         IoOwETgH43d3g6/sF/LAgoHD7/h+3wcfHtVVEegUB17IZbKqIBr06jHSGri4cfTrraWL
+         33B1/V/QPFcUi1KZlxUYXDlcWD6IFaSjPAw/OH4oSpIRHg1ZhVW76C1FhCg7eMZ/y3Mf
+         lPcp/5N14txq3mPXm2Kzs2ZWgzK4oka45yb4tFrvUGCDWWiegy+rWrYsd3XqoF8sBSOL
+         lFjIXPYS9gWLNsg0LKF4xXRlUm0UujgUR1F/5Ki4mFA8I6uTmJP6L9bSK/o0yZDY2Qve
+         LJ+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1786953063; x=1787557863;
+        h=content-transfer-encoding:content-type:mime-version:message-id:date
+         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=DDeFtTnxMBvDDeM+UXcBJoOG/+TlVBVJ2Mo0e9wRHls=;
+        b=Wam3l1nxaQ1f4j5aoSTzYZLEx1MRpwULidJak5ssM53+nXCG4hxsZAZo1LExiKPnfy
+         tz23+JDgCOrKTgMiaL08IkPoOmvl1qmDglQBVVmGoRR3cXrX3IDIznpq5u5DFiQhACrN
+         BsyHZnbVHgEiYakkM3Fz/ZwGKkxbj/bwvPyf1snejBh4H9bMljYDbvpL8ats78mvxIEU
+         hANgv3y2YK1NWVI4l2FwnmwkNYlkZw53cP8+/tH81/jD1dEp1MRrj9zg41qh0Uyrsaf5
+         KzBqGET5AThwpAXrtWVUWo0WBT91EybbaXhwN5AifeOuIqwBBktEiKz106UkrQdns91Q
+         pXPQ==
+X-Forwarded-Encrypted: i=1; AHgh+RojEYUsio9G/kAvhbNLts02qqdWCZVqDk4e8aLTPIcqvR+hi1cEj8uPxlISNSkH/UmE49dBklqmHhqWwdSBaw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwfgbkTfACZbT289vd/efeEX8DhLC6S3kqJ0tZOClIoxRNc3S6D
+	RLk59XkYtbImzKUUq34d/hYJvFC/JmE9iGRKkTtui5p99XP6TNZl5zlx
+X-Gm-Gg: AR+sD13DgYfws8N5Cj0EzE0eKAxYVZHIHK8B8uwOXTgAFCD7DCAZSc726jcHKOL+g+O
+	Hi0RcaD+PtnfXphqyeQil95vaEnXkSTflbwhc8ukugmPD9ZSdPKYiGu8l2KFH1SV/KmYXWfZP8N
+	cuomaRe3pTX/2e0L5OoNoZrU74R3cvvDJdiMyFwor/JUgbKNlpO5/lxjJwYutYFfGV0Cn3YGduG
+	S46peqkHcc3NvyTWQWAw/62/Am/+NhQDAXXjckos2OIl5NeBd0Q0aC4bh6yt5zxbiEmJkvXH6i/
+	QCZxmDR8lCdo9rM6QBsSchD+pDSGVAuYmDtpKYQ/q8+PgRKA134Fa4nZUhTDjO3hNNZv/4/an5R
+	NshbczWJaUM3/R8ix8iwy042Y6FVH9ZeNsF4Gd7hc5yQHNMzZcAehhnalOdq6Ww95FNncBAYidm
+	pR30HVpKrUcWuAlyXAofxb34M2w5wRN2YU4/Hxw/d7trU3n5gaQ3Xit9sH1JkX54GW4Wl4XXBTC
+	JI5Ww0aggJYH1VSmgf3mTRsccI29I8mmiddt4kQGxPeMC9Z54WNPSTd
+X-Received: by 2002:a05:600c:3114:b0:495:63e4:7f78 with SMTP id 5b1f17b1804b1-49987971986mr331622695e9.10.1786953063033;
+        Mon, 17 Aug 2026 00:51:03 -0700 (PDT)
+Received: from Ansuel-XPS24.localdomain (host-79-40-190-175.business.telecomitalia.it. [79.40.190.175])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4999d11f073sm22486255e9.15.2026.08.17.00.51.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Aug 2026 00:51:02 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Cc: =?UTF-8?q?Leto=20Liu=20=28=E5=88=98=E6=B6=9B=29?= <Leto.Liu@airoha.com>,
+	Christian Marangi <ansuelsmth@gmail.com>
+Subject: [PATCH net v4] net: airoha: Add retry mechanism to airoha_qdma_set_trtcm_param()
+Date: Mon, 17 Aug 2026 09:50:39 +0200
+Message-ID: <20260817075044.17691-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260816_222851_365524_BEE30DF7 
-X-CRM114-Status: GOOD (  11.77  )
+X-CRM114-CacheID: sfid-20260817_005108_247779_918716CB 
+X-CRM114-Status: GOOD (  13.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,70 +107,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Move MT76_REMOVED flag setting from mt7925_pci_remove() to after
-mt76_unregister_device() completes. Setting it too early causes
-mt792x_irq_handler() to drop MCU completion interrupts, timing out
-teardown commands (scan abort, BSS_INFO_UPDATE, etc).
+From: Leto Liu (刘涛) <Leto.Liu@airoha.com>
 
-The flag must still be set before napi_disable() to prevent reset_work
-from re-enabling NAPI and causing deadlock. Also guard mt792x_reset()
-to skip queuing work when device is removed.
+CPU accesses QDMA via the bus. When multiple modules are using the bus
+simultaneously, CPU access to QDMA may encounter bus timeouts and fails,
+resulting in QDMA configuration failures and potentially causing packet
+transmission issues. In order to mitigate the issue, introduce a retry
+mechanism to airoha_qdma_set_trtcm_param routine in order to ensure the
+configuration is correctly applied to the hardware.
 
-With nothing associated it still costs 9 to 10 seconds, so a bare rmmod
-does reach this, just small enough there to read as normal teardown.
-
-Fixes: 98c13eb564e5 ("wifi: mt76: mt7925: Fix unregister deadlock")
-
-Tested-by: Devin Wittmayer <lucid_duck@justthetip.ca>
-Signed-off-by: Eason Lai <eason.lai@mediatek.com>
+Fixes: ef1ca9271313b ("net: airoha: Add sched HTB offload support")
+Signed-off-by: Leto Liu (刘涛) <Leto.Liu@airoha.com>
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 ---
-v2: Update correct SHA in "Fixes" tag; reword commit message as
-    suggested by Devin Wittmayer.
-v3: Update correct SHA in "Fixes" tag;
----
- drivers/net/wireless/mediatek/mt76/mt7925/pci.c | 4 ++--
- drivers/net/wireless/mediatek/mt76/mt792x_mac.c | 3 +++
- 2 files changed, 5 insertions(+), 2 deletions(-)
+Changes v4:
+- Rebase on top of net
+Changes v3:
+- Init data
+- Use continue instead of negative error for poll
+- Add memory block after CFG_PARAM
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-index 02ef09dd797d..93c823eb7501 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-@@ -47,9 +47,10 @@ static void mt7925e_unregister_device(struct mt792x_dev *dev)
- 	if (dev->phy.chip_cap & MT792x_CHIP_CAP_WF_RF_PIN_CTRL_EVT_EN)
- 		wiphy_rfkill_stop_polling(hw->wiphy);
+ drivers/net/ethernet/airoha/airoha_eth.c | 29 +++++++++++++++++++-----
+ 1 file changed, 23 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 79418e682f71..302f8c432055 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -2712,14 +2712,31 @@ static int airoha_qdma_set_trtcm_param(struct airoha_qdma *qdma, int channel,
+ 		     FIELD_PREP(TRTCM_METER_GROUP_MASK, group) |
+ 		     FIELD_PREP(TRTCM_PARAM_INDEX_MASK, idx) |
+ 		     FIELD_PREP(TRTCM_PARAM_RATE_TYPE_MASK, mode);
++	int i;
  
--	cancel_work_sync(&dev->reset_work);
- 	cancel_work_sync(&dev->init_work);
- 	mt76_unregister_device(&dev->mt76);
-+	set_bit(MT76_REMOVED, &dev->mphy.state);
-+	cancel_work_sync(&dev->reset_work);
- 	mt76_for_each_q_rx(&dev->mt76, i)
- 		napi_disable(&dev->mt76.napi[i]);
- 	cancel_delayed_work_sync(&pm->ps_work);
-@@ -725,7 +726,6 @@ static void mt7925_pci_remove(struct pci_dev *pdev)
- 	struct mt76_dev *mdev = pci_get_drvdata(pdev);
- 	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
+-	airoha_qdma_wr(qdma, REG_TRTCM_DATA_LOW(addr), val);
+-	airoha_qdma_wr(qdma, REG_TRTCM_CFG_PARAM(addr), config);
++	for (i = 0; i < 100; i++) {
++		u32 data = 0;
  
--	set_bit(MT76_REMOVED, &mdev->phy.state);
- 	mt7925e_unregister_device(dev);
- 	devm_free_irq(&pdev->dev, pdev->irq, dev);
- 	mt76_free_device(&dev->mt76);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_mac.c b/drivers/net/wireless/mediatek/mt76/mt792x_mac.c
-index 888e5a505673..1e20b333cc61 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_mac.c
-@@ -278,6 +278,9 @@ void mt792x_reset(struct mt76_dev *mdev)
- 	if (pm->suspended)
- 		return;
- 
-+	if (test_bit(MT76_REMOVED, &mdev->phy.state))
-+		return;
+-	return read_poll_timeout(airoha_qdma_rr, val,
+-				 val & TRTCM_PARAM_RW_DONE_MASK,
+-				 USEC_PER_MSEC, 10 * USEC_PER_MSEC, true,
+-				 qdma, REG_TRTCM_CFG_PARAM(addr));
++		airoha_qdma_wr(qdma, REG_TRTCM_DATA_LOW(addr), val);
++		wmb();
++		airoha_qdma_wr(qdma, REG_TRTCM_CFG_PARAM(addr), config);
++		wmb();
 +
- 	queue_work(dev->mt76.wq, &dev->reset_work);
++		if (read_poll_timeout(airoha_qdma_rr, data,
++				      data & TRTCM_PARAM_RW_DONE_MASK,
++				      USEC_PER_MSEC, 10 * USEC_PER_MSEC,
++				      true, qdma, REG_TRTCM_CFG_PARAM(addr)))
++			continue;
++
++		if (airoha_qdma_get_trtcm_param(qdma, channel, addr, param,
++						mode, &data, NULL))
++			continue;
++
++		if (data == val)
++			return 0;
++	}
++
++	return -EBUSY;
  }
- EXPORT_SYMBOL_GPL(mt792x_reset);
+ 
+ static int airoha_qdma_set_trtcm_config(struct airoha_qdma *qdma, int channel,
 -- 
-2.45.2
+2.53.0
 
 
