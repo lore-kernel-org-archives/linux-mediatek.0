@@ -4,65 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34BE4C5DF80
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2026 08:32:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C375C5DF84
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2026 09:56:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WBhVPa7Em4e5H/GpqI2kk5BMFpsOBV262URRmPCJ4oc=; b=kEn33mtsj0AtgH3AGxaEJwmi1x
-	ggNnNxEXoJIQW5tEUptkq5MVUZ/m3/FOCyxnoM5m6dMpKIfdEECB5FbsVwXV0pQwY6k0DEqihpPlG
-	dF647MbPIfwrWpmKE4V6424txVlqb18Ml16vKlxcLtN+XTDtITcgEpw5PW030p1q1vaiKw/qQJl//
-	9RETdJm1UdtBnS/InIAO3WTUCj7crMWtJq615Z+LpTVgJKC26aks4LvxKfnMfHiEebF5hMCZ97Iaj
-	PWX1LX/1nD6jekF2HjyQaaphDLBCD4+AytpGtZQu8Ue5AJXC5SEDYustHbl2wWU1WYUPRcMz9ZhoU
-	VZcvG5Lw==;
+	bh=OpABj3+sont+lTlaUvAJDdQDP8dcU9QYNrimiXFBDhI=; b=GHLhH2FSOhcvMuOC5/Y1V+ss9i
+	b1+YuzcsARtEWPKF8rkhV8+zH2B8ZzqM+ZzIzVTCUZpV+Q0pE+zQy1aFBZcIBTXOnK+TudG2dsPOW
+	PaD6OfvL6DN7aIQd/8JIvm0BInKsfSXHL9+PAASPZ6pNG7LuR9tbTZeLfAOaisvIyoYARnsQYXPXv
+	WF/Gvt+reE/9Ab1M8jmpjMJhpMx9zptCXWUruZ3BzBgeuxJgGPPGwhVu6ZDI77WTVKQkS6X2wmfqe
+	ET0rtzcSM+ZS32j4QYoYgdSKPIRkaq0btjmxe2p/wqB6j8cSkaObVFd0knGrXIoufpkPljZj77Sub
+	afODchYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwFFA-00000007WtF-3l3N;
-	Tue, 18 Aug 2026 08:32:24 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wwGYt-00000007gHA-0HOt;
+	Tue, 18 Aug 2026 09:56:51 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwFFA-00000007Wso-0uSS;
-	Tue, 18 Aug 2026 08:32:24 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id DB87840494;
-	Tue, 18 Aug 2026 08:32:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF9131F000E9;
-	Tue, 18 Aug 2026 08:32:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787041943;
-	bh=WBhVPa7Em4e5H/GpqI2kk5BMFpsOBV262URRmPCJ4oc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Y2Lt/Um3F8jMLR1Nyj93w2lOgX3xKsNywnI+r11g89E7ut0cRr+BowtxC7rxE9fke
-	 K+AS99si2ruEgdih+ML6ID51Ir71OrOoPbSYJqmKoVvMvhcp3wO9FjnA58VIz358e7
-	 PT3CurqU4gbCHEW7Hf8LbTj5ujlmW6LWJ/whgqUMvTIaZzhKu/PoYP0siy97DMDKel
-	 Wxybod8OGM0M/srMVy80b3l6SHC8fjIN9KwdZgHjOphcxBxfbgIJJxcxAHDzcQEu1g
-	 YEp0D7GPTnIR1GrBq5trsyr/EBiQLLK9w77tuIs6psbvmE5o9ZNUIxlkA8VQCSz7my
-	 D3K5TteMabNYA==
-Received: from johan by xi.lan with local (Exim 4.99.4)
-	(envelope-from <johan@kernel.org>)
-	id 1wwFF7-00000000nSF-2mWv;
-	Tue, 18 Aug 2026 10:32:21 +0200
-Date: Tue, 18 Aug 2026 10:32:21 +0200
-From: Johan Hovold <johan@kernel.org>
-To: Guangshuo Li <lgs201920130244@gmail.com>
-Cc: Marcel Holtmann <marcel@holtmann.org>,
+	id 1wwGYp-00000007gGP-24Ep;
+	Tue, 18 Aug 2026 09:56:49 +0000
+X-UUID: 1d36ba009aeb11f19a56ed5b684f684d-20260818
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.19,REQID:aadada70-85a5-4738-bb57-5d46c20dd131,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:7db8b62,CLOUDID:0117d1633de0ca8be3aca8d3d8ee63d9,BulkI
+	D:nil,BulkQuantity:0,SF:81|82|83|102|136|865|898,TC:nil,Content:0|15|50,ED
+	M:-3|-100,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 1d36ba009aeb11f19a56ed5b684f684d-20260818
+X-User: liujiajia@kylinos.cn
+Received: from nature [(10.44.16.150)] by mailgw.kylinos.cn
+	(envelope-from <liujiajia@kylinos.cn>)
+	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
+	with ESMTP id 2004755932; Tue, 18 Aug 2026 17:56:42 +0800
+Date: Tue, 18 Aug 2026 17:56:39 +0800
+From: Jiajia Liu <liujiajia@kylinos.cn>
+To: Marcel Holtmann <marcel@holtmann.org>,
 	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	Ying Hsu <yinghsu@chromium.org>,
+	Archie Pusaka <apusaka@chromium.org>,
+	Abhishek Pandit-Subedi <abhishekpandit@google.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sean Wang <sean.wang@mediatek.com>, linux-bluetooth@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Jing Cai <jing.cai@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Chris Lu <chris.lu@mediatek.com>
+Cc: linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] Bluetooth: btmtksdio: fix usage_count leak when
- autosuspend_delay is negative
-Message-ID: <aoQYld5vlDa4hChP@hovoldconsulting.com>
-References: <20260807151447.2530075-1-lgs201920130244@gmail.com>
+Subject: Re: [PATCH 1/2] Bluetooth: btusb: Fix leaked runtime PM reference in
+ btusb_reset()
+Message-ID: <aoQsV6O3jbZ1vy0j@nature>
+References: <781dc2cd5ab0533fff9ee7fdcb92fff573431f18.1787039123.git.liujiajia@kylinos.cn>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260807151447.2530075-1-lgs201920130244@gmail.com>
+In-Reply-To: <781dc2cd5ab0533fff9ee7fdcb92fff573431f18.1787039123.git.liujiajia@kylinos.cn>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260818_025647_838572_03A7C0BB 
+X-CRM114-Status: UNSURE (   5.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,56 +86,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 07, 2026 at 11:14:47PM +0800, Guangshuo Li wrote:
-> btmtksdio_setup() calls pm_runtime_use_autosuspend() when runtime PM
-> is supported, but btmtksdio_remove() does not call the matching
-> pm_runtime_dont_use_autosuspend() when removing the device.
-> 
-> If the autosuspend delay is set to a negative value while autosuspend
-> is enabled, the runtime PM core increments usage_count to prevent
-> runtime suspend. Without calling pm_runtime_dont_use_autosuspend()
-> during driver teardown, this reference is not dropped and usage_count
-> remains unbalanced.
-
-I noticed the bluetooth ones have already been picked up, but for the
-record:
-
-As I've explained elsewhere, this is just misleading. There is no usage
-count leak here as the count is balanced whenever the user re-enables
-autosuspend through sysfs (by writing a non-negative timeout).
-
-Drivers should clean up after themselves and disable autosuspend, but
-this is more of a clean up than a fix and should not be backported.
-
-You've sent upwards of 60 of these in the matter of a just a few days,
-some which have even been picked up. Please send follow-ups (replies or
-v2s) as soon as possible to prevent further of these from getting
-merged.
-
-> Add the missing pm_runtime_dont_use_autosuspend() call in the remove
-> path before restoring the runtime PM usage reference.
-> 
-> This issue was found by manual code inspection.
-> 
-> Fixes: 7f3c563c575e ("Bluetooth: btmtksdio: Add runtime PM support to SDIO based Bluetooth")
-> Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
-> ---
->  drivers/bluetooth/btmtksdio.c | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-> index c6f80c419e90..4e1012e90979 100644
-> --- a/drivers/bluetooth/btmtksdio.c
-> +++ b/drivers/bluetooth/btmtksdio.c
-> @@ -1480,6 +1480,9 @@ static void btmtksdio_remove(struct sdio_func *func)
->  	if (test_bit(BTMTKSDIO_FUNC_ENABLED, &bdev->tx_state))
->  		btmtksdio_close(hdev);
->  
-> +	if (bdev->data->pm_runtime_supported)
-> +		pm_runtime_dont_use_autosuspend(bdev->dev);
-> +
->  	/* Be consistent the state in btmtksdio_probe */
->  	pm_runtime_get_noresume(bdev->dev);
-
-Johan
+Drop this series. There is a potential race window found by sashiko,
+usb_lock_device_for_reset may abort the usb reset if the usb device
+enters suspended before it.
 
