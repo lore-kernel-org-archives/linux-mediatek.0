@@ -4,93 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68C8AC5DF7D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2026 10:45:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAF07C5DF7E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2026 11:03:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=shmmSGcBhVr0mO/l9YtNu+PS04UbaQ1RsT84Z7QOJuU=; b=qIrJY7W/AbNlNsBb560A3R7P08
-	pm2B8XLKLZR0Ed6HJN1ByOZjYPPz+JNcOXEFj98JeswTqzizlDMUqhXY+YoVmhd8P8JW/BuL9B2mq
-	YeL245EEy4xGzjw4meXijrCgyMnQuuH7uGa0X5JmwtAZRHNnxKakZ64aUOxj+v+HxZJojJ7nKvpVd
-	tJBO8Kd6Q5NjIfXSAir8RhVhIyHmsYeLEu+dNjU5sNuFCfk2Es3Oz4BWBHAvIcBqASdLiLuTJ7xir
-	9sNsSjw1d/Ww8L6q1j15sfVKhDaYPYYxgtAfABv7oMbrW0Trx/WGOoOnAvO2T+F+pOj1LSG4OWfuA
-	YNry4A3g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BPjS6YWQ/poakltSjvNSgNnRZjwLe6wcNcWXaxoAgLk=; b=QZnezsA1v9BxBcBsjfXC72uwyP
+	Ng7ijbqVKhRUvPfmhxj9IFvvZ/6xWvaWMhGehMGjdTGFZI33VJ+QzXo9ZSDDbv38n2OWrN7JxzC5c
+	7xi6UDb0yqpNg1KJP1IELSaTVA7xqyu7tqUr7b57eFAYgLbguIBiItJDPzYrpDTXat1KQ8uZFJ+Yd
+	b2F3OAsCZ0Ci2MjKwj4+uTf+os1ZzzpvHwOyzKDuE7EWPjUSS1xw8PqFoYUBbn5x6DI11sJoWBlC/
+	1bP/exySmkkVlCwa3P/Yw3lrqu6Q+nzn1F1U8n3m7Cq5QhAMlu+Pvf8djuL9mIRxHVxs5F70HwzDL
+	yVsWjGbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwHKE-00000007mO0-1Iwj;
-	Tue, 18 Aug 2026 10:45:46 +0000
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+	id 1wwHas-00000007nxU-1YfZ;
+	Tue, 18 Aug 2026 11:02:58 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwHKB-00000007mN0-2lBb
+	id 1wwHap-00000007nwo-2Vus
 	for linux-mediatek@lists.infradead.org;
-	Tue, 18 Aug 2026 10:45:45 +0000
-Received: by mail-pj1-x102c.google.com with SMTP id 98e67ed59e1d1-38fdeaed181so6183771a91.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 18 Aug 2026 03:45:43 -0700 (PDT)
+	Tue, 18 Aug 2026 11:02:56 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-2caed617615so58955665ad.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 18 Aug 2026 04:02:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1787050974; cv=none;
+        d=google.com; s=arc-20260327;
+        b=l/EISxE0fH2Qj+Pq0hEp0jjYtN+gg4xPwireQmjTS5vAk0iohfehCnbA+Xt7bEuQ4/
+         jbwL+VG99jBDPfw8psjhZzEvbY7hIg9y3CfjSxIU4KCfvjuMVWDlf0aV1+c3/HGi3KAy
+         7ZBN82DFg0D6wcIbHNnJxordyYPsu2OZi5gtqlQcg034JOa7bmfwTWGrkKwBDnUHMC2z
+         XdJvkkXqJlYY+fYzRbn5s52xGq4Vvyn3Hv3dbdEBeMgYAObMySjFUxSBQmmTPtNKPiUh
+         XfzE1hrozhEsi7Z/tnBoOenH5tSG5h8iv+Et1HL25IAGt382l7WrfNNkzi1uiL7gfEhz
+         mvoQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=BPjS6YWQ/poakltSjvNSgNnRZjwLe6wcNcWXaxoAgLk=;
+        fh=jLHvvfQ8FP2oHoN3+W73ht5nTdQTC1lDdF2KuLXWOac=;
+        b=sVbbsJm798VTrRSQ3rL2pgLLGPAlvVDnAyQTlI4WsNlEMK8oOhwZP7bnx6K2QZRlAR
+         dAlduSC9riFsVUsqW24blepIeUgdWA8Smms2yJFrQWNXa9FtcDGM0+nk35igwvC7OasC
+         4mbYxxbL5Mh2a9ASuE6FJb7VfLnjbajNkmDL2LIkhSNkC8Ys356MnWNNfKhRcZG/8Om5
+         AhLqCRsTH6qu2gUswOml2K6LtqNWs+j+NvWIQJI3q6Hk6EGet4XmLBBfz9ryw/BG6Xda
+         MzoTO5LXXa2pj2D0cQmhDcDfGW+2j2S4LeCs5HziDa+pi8f7AHemE7OIUuMOpu5tEbiL
+         C+5g==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1787049943; x=1787654743; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=shmmSGcBhVr0mO/l9YtNu+PS04UbaQ1RsT84Z7QOJuU=;
-        b=SLQGjG1/MDXg+CthXB6aHgDePCifgz5NyK/DewJPkvOXOVBhK9CFJk4rJg/cApp81P
-         IWxgN53Sa0dT+K4tAt0RipCW3NCrnSUeQ3CHeYW4Ne48uxyWK7dF0o2///+XTeXLMiaK
-         hEVcTZEwGoizi3aiDmuBrjeGU5DJ3AwA5JFaYzL+o95gbCTdIcQgSYlDEXmTXvOgRCYD
-         L2slIL6I3llxxeqdFRAqpQQg7BkPAPrSVdiqf9L+UihjSl3lV1z6k0o0xS1hC2Hy3/gh
-         f6Gal6Nb15u1xiTIXvOK4QwiaRSRJWT3w5rpSJgZWY41f1RB+NMu+QkCZA24oN7G/1Xh
-         4dKw==
+        d=gmail.com; s=20251104; t=1787050974; x=1787655774; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=BPjS6YWQ/poakltSjvNSgNnRZjwLe6wcNcWXaxoAgLk=;
+        b=oa6gu+KLR9MiNJOZDqwJFQ4g0cbdPkkoZAJYZgib1pUaXDJwl4R1/JoGm/UKldCZsC
+         DoKQelNfKUO8A1ZfrQvbYVQGfVW+x/hoonH0vEvYU23ClnvJ70uOAG6zuLOtWBgzHFpB
+         m29s8OVZTH4eIHV7sqoRfSuns+Ex8kiGnogIMkonobw3DYdTeTrnF0rsxMe121c3dOwy
+         OmRJm84zyJ5erTXG8qrnW/OfGdAGiykvsx4/3UgIPj7PfUq6Jstgj4DEccH38k+XUxx5
+         crdPrEHjQ8OuxSprU7oGpXP2L12soh7VEGxsecEAkFmApwJ3znLCKfRiP6/7JZr/g5sk
+         zkUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787049943; x=1787654743;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=shmmSGcBhVr0mO/l9YtNu+PS04UbaQ1RsT84Z7QOJuU=;
-        b=YH+uPMxndPi3Kvpez8QuV0zVp/B2DyMxfDr3wl45/SRHkEtd/MjpC/ofZAjDxEgWcF
-         W3Niix+u0BZSBkErkTDWSZ4v7hG9Z0YAlEtD2Uh9WY2YmGmmr23y+Dlxc+3EROt1PYtq
-         rcAxWFkqpt0E6lGWSemyMyhOGjUMt0Bbd+lFMbu+XDXXjrVVBTW6ugo9UyBiR03dA3D/
-         Sff9t+kT71qWMOeSRY7NK4x4D5gDMFCctmFfkRFjljeMFxIG0hrM7l/yu7E3YauYWAaM
-         wbYqrzcCKVQmaOYNsdl5UYQojQDNMilDEv0X0eijA959NqWdcBcC/Xld0MCasrUruiuY
-         13lw==
-X-Forwarded-Encrypted: i=1; AHgh+RqkoL9GvxWhBEY2BBJfA8h5xOLQSPiPZ5BpPuV/TXMgzDqegQVOTsD8HPxqxJcoLBiJgT38poJsmjmW0uccSA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz1jFqHTZZ/UkogYE3wGdXIAK/YalUd3SlfaeWWNMBdQBHGn6qo
-	vkaZ5oprEw//2WQdhf27am5FnUB0NzB+garvjgt/LXlRPcjXmXxS6vLg
-X-Gm-Gg: AR+sD11Pmz178ASGmBnCxC7ll8f9BLIRWle9rX4mGEHOI01JDJHDDBZu+LSKkmaJwL5
-	SICgERgDjK/I/KcgLrBovHX5sh8dlTFlp0FvzCBmUabJMh+OQdowW08neHR2jJnXHPVNQ7CJ+PX
-	f13Ebnk9JvKJy5pqJKR0bdBQsc7cPvl/VI3qtsq47i8kftzmXXK0MUOiGoj53cAu+2DMXVYCzjo
-	hauVMdbCLIGIZLbnB78VIEEptKyJamA5Zmd1wRbh2lb+OlBfFKoBFiMdXalJvoD2sjBBJmPKFOG
-	1HFKejKnNHQb0CF+ZHy99bm6/m/DmBqUWE/FD1YB1zjQZQg65zAd5dJsusvsLneXlgAZxKkug+4
-	E7z5kzU/mgY53mRgi5YGpMkIMvozSDj0NmJ+1UD100jhO8HpTKJAMBTEl6ES28y+6GDkGvjNMTX
-	5CO34KO7TZ71FxkgCNDlkJbjELSD38GABgLR0ToKTpC9WJPJADdJ5GQMpaU2BKaILdscX5pV2gi
-	vgh4LsA5XAVhVTZirThmtVkRiIavsSoBezc+5nOG1k1GogSEm0QYRnRNVidDkvXyWRDqNSPwabn
-	yTJh
-X-Received: by 2002:a17:90b:3f47:b0:37f:e177:f58 with SMTP id 98e67ed59e1d1-3955a774dbfmr9754597a91.9.1787049942887;
-        Tue, 18 Aug 2026 03:45:42 -0700 (PDT)
-Received: from phuc-desktop.. ([14.160.25.72])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3267bf83fb2sm15056847eec.19.2026.08.18.03.45.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Aug 2026 03:45:42 -0700 (PDT)
-From: phucduc.bui@gmail.com
-To: Mark Brown <broonie@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH] ASoC: mediatek: mt7986: Drop redundant probe error messages
-Date: Tue, 18 Aug 2026 17:45:26 +0700
-Message-ID: <20260818104526.37904-1-phucduc.bui@gmail.com>
-X-Mailer: git-send-email 2.43.0
+        d=1e100.net; s=20251104; t=1787050974; x=1787655774;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=BPjS6YWQ/poakltSjvNSgNnRZjwLe6wcNcWXaxoAgLk=;
+        b=JIlvQFC9qU6vAxg2IyY1e7yUnteBejfLIjChjZmgieQeOBUgWQp9Vz3VEbLo4fiLoS
+         Q90z/AfN9VxEkTpz7ZDjr7mNBDkUp3jzugCxlto7uzj5rMD7EqUEep5iWVepXkZQexOT
+         eqpDkAfuaqfnfWq8p3EIOOPxEd2WVhDGehJm5T2OCDiQhf7LZ5N8f0DWqNAeDM+2Q5l+
+         BChdBVtKAdNHhp06CWZIafUl5/UlCc3iElBCzraSdV5J7GCqJI/HWlVsXHX844Txd8/B
+         Zyxb+cv7NzJD84D3Y+3pTH+c9lLiaZRA6c8SWNm/ZLkrcoP1DFiN9Gfeu/jTOJxRcI33
+         txyg==
+X-Forwarded-Encrypted: i=1; AHgh+Rqiw1+caA38vHv3TiuNnLlM4w68Iq15kNvs9BAFsfNdPg6LTSBDW1o2evzkplwwaCldGpraodr2W2rKlQXJnw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyJOn0/jmnJU7N4PizEJGdQo7qJ31GBfcBMwgiOaCuupC6e7oFc
+	cO3F29bT28SGT2yTuFBT44RzJ43QbHo6M7iiBSgSo7KxnJXfVGeaj6qWIfHEcNcEiMfjhZigwgY
+	dOS7dWBAckBQMYAf1050UtjFHLk0pngg=
+X-Gm-Gg: AR+sD11HQFlFN/ZU8uvYI0o4azT9fZ3v+It+EbYehRPR3bSeawhy/xHvp8UVqorgfP/
+	ZcCGx0hLuDJbqg7ybqIqmD1sBDflf8Qec53uxWc2/e/1mJm2q8hYWrAuydRSL4Zvx0OlmDpijc8
+	DzFznLgnfpuLngG7lhuXToHJcLYhKrypQX/DSWeDdCHvKee+fBKHyU+AergutAqmD+Wqnybfdnf
+	JS2ckaH8jj+KPobUYzFFzvaDKrvuROGoVOmlcXr8+quQV/VkaY6h/I9/+KEh3Z8EX/h9RhEeQFw
+	nSwopdnV0dHOx/n+uEoOt0cZavM7AkGLuqCTCOALPl8huHK+lyIxuRz/itt9muwnvKPzo9VS5gf
+	MaoGEYxzSEhlYzQD297yU8lfBho0+sASBJ+OJSJ5retA0h6G0E+ThUtBZQnireht9toc=
+X-Received: by 2002:a17:903:3c44:b0:2d0:8b28:517c with SMTP id
+ d9443c01a7336-2d3b0d78141mr373925525ad.3.1787050973910; Tue, 18 Aug 2026
+ 04:02:53 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20260817104929.63152-1-phucduc.bui@gmail.com> <b3dad816-469b-478a-b6a8-a08ac8610ac9@intel.com>
+In-Reply-To: <b3dad816-469b-478a-b6a8-a08ac8610ac9@intel.com>
+From: Bui Duc Phuc <phucduc.bui@gmail.com>
+Date: Tue, 18 Aug 2026 18:02:42 +0700
+X-Gm-Features: AcwNN1U_fcSxMy9R21C80tITgSmylcf4dSivVK9nzajAgmmuEsH3ejkqOedKKGQ
+Message-ID: <CAABR9nFME5kYrLZUMn86sT1RaJiqzJeC7QJzqqxedL1NkZUYwA@mail.gmail.com>
+Subject: Re: [PATCH 1/3] ASoC: mediatek: mt2701: Use devm_clk_get_optional()
+ for audio_mrgif_pd
+To: Cezary Rojewski <cezary.rojewski@intel.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jaroslav Kysela <perex@perex.cz>, 
+	Takashi Iwai <tiwai@suse.com>, Rosen Penev <rosenp@gmail.com>, Daniel Golle <daniel@makrotopia.org>, 
+	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260818_034544_028577_83F86FA5 
-X-CRM114-Status: GOOD (  13.22  )
+X-CRM114-CacheID: sfid-20260818_040255_641428_41B22312 
+X-CRM114-Status: GOOD (  16.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,89 +121,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: bui duc phuc <phucduc.bui@gmail.com>
+Hi Cezary,
 
-The errors handled here are already reported by the called functions,
-either directly or deeper in the call chain. Therefore, the additional
-dev_err() calls are redundant and can be removed.
+Thank you for your review.
 
-Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
----
- sound/soc/mediatek/mt7986/mt7986-afe-pcm.c  | 8 ++++----
- sound/soc/mediatek/mt7986/mt7986-dai-etdm.c | 2 +-
- sound/soc/mediatek/mt7986/mt7986-wm8960.c   | 4 +---
- 3 files changed, 6 insertions(+), 8 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt7986/mt7986-afe-pcm.c b/sound/soc/mediatek/mt7986/mt7986-afe-pcm.c
-index 7a6ad9116e55..e7ecb2761b4d 100644
---- a/sound/soc/mediatek/mt7986/mt7986-afe-pcm.c
-+++ b/sound/soc/mediatek/mt7986/mt7986-afe-pcm.c
-@@ -334,7 +334,7 @@ static int mt7986_init_clock(struct mtk_base_afe *afe)
- 
- 	ret = devm_clk_bulk_get(afe->dev, afe_priv->num_clks, afe_priv->clks);
- 	if (ret)
--		return dev_err_probe(afe->dev, ret, "Failed to get clocks\n");
-+		return ret;
- 
- 	return 0;
- }
-@@ -414,7 +414,7 @@ static int mt7986_afe_runtime_resume(struct device *dev)
- 
- 	ret = clk_bulk_prepare_enable(afe_priv->num_clks, afe_priv->clks);
- 	if (ret)
--		return dev_err_probe(afe->dev, ret, "Failed to enable clocks\n");
-+		return ret;
- 
- 	if (!afe->regmap || afe_priv->pm_runtime_bypass_reg_ctl)
- 		return 0;
-@@ -484,7 +484,7 @@ static int mt7986_afe_pcm_dev_probe(struct platform_device *pdev)
- 	/* initial audio related clock */
- 	ret = mt7986_init_clock(afe);
- 	if (ret)
--		return dev_err_probe(dev, ret, "Cannot initialize clocks\n");
-+		return ret;
- 
- 	ret = devm_pm_runtime_enable(dev);
- 	if (ret)
-@@ -535,7 +535,7 @@ static int mt7986_afe_pcm_dev_probe(struct platform_device *pdev)
- 	ret = devm_request_irq(dev, irq_id, mt7986_afe_irq_handler,
- 			       IRQF_TRIGGER_NONE, "asys-isr", (void *)afe);
- 	if (ret)
--		return dev_err_probe(dev, ret, "Failed to request irq for asys-isr\n");
-+		return ret;
- 
- 	/* init sub_dais */
- 	INIT_LIST_HEAD(&afe->sub_dais);
-diff --git a/sound/soc/mediatek/mt7986/mt7986-dai-etdm.c b/sound/soc/mediatek/mt7986/mt7986-dai-etdm.c
-index fc55ff47b7bc..49f5b2bf565f 100644
---- a/sound/soc/mediatek/mt7986/mt7986-dai-etdm.c
-+++ b/sound/soc/mediatek/mt7986/mt7986-dai-etdm.c
-@@ -124,7 +124,7 @@ static int mtk_dai_etdm_startup(struct snd_pcm_substream *substream,
- 
- 	ret = clk_bulk_prepare_enable(afe_priv->num_clks, afe_priv->clks);
- 	if (ret)
--		return dev_err_probe(afe->dev, ret, "Failed to enable clocks\n");
-+		return ret;
- 
- 	regmap_update_bits(afe->regmap, AUDIO_TOP_CON2, CLK_OUT5_PDN_MASK, 0);
- 	regmap_update_bits(afe->regmap, AUDIO_TOP_CON2, CLK_IN5_PDN_MASK, 0);
-diff --git a/sound/soc/mediatek/mt7986/mt7986-wm8960.c b/sound/soc/mediatek/mt7986/mt7986-wm8960.c
-index f1dc18222be7..4517af9e2d14 100644
---- a/sound/soc/mediatek/mt7986/mt7986-wm8960.c
-+++ b/sound/soc/mediatek/mt7986/mt7986-wm8960.c
-@@ -135,10 +135,8 @@ static int mt7986_wm8960_machine_probe(struct platform_device *pdev)
- 	}
- 
- 	ret = snd_soc_of_parse_audio_routing(card, "audio-routing");
--	if (ret) {
--		dev_err(&pdev->dev, "Failed to parse audio-routing: %d\n", ret);
-+	if (ret)
- 		goto err_of_node_put;
--	}
- 
- 	ret = devm_snd_soc_register_card(&pdev->dev, card);
- 	if (ret) {
--- 
-2.43.0
+> > The audio_mrgif_pd clock is optional as some platforms may support the
+> > BT path while others do not. Use devm_clk_get_optional() to reflect
+> > this.
+> >
+> > Propagate other errors to the caller.
+>
+> What does that mean? Did the functional path change?
+>
 
+Previously, the code only returned an error for -EPROBE_DEFER and
+ignored other errors.
+After switching to devm_clk_get_optional(), all other errors are
+propagated to the caller as well.
+
+Regarding the functional path, I don't think it changes on platforms
+where the clock is present.
+The change only allows platforms without this optional clock to
+continue probing.
+
+
+> > Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
+> This should be part of a mediatek-patch-series with a cover letter.
+> Yeah, the mt6797 changes should be here too.
+
+Currently, the MediaTek ASoC drivers are split into multiple groups by SoC.
+I am handling them one group at a time to make the review easier.
+
+I will send each group once it is completed, rather than waiting for the entire
+MediaTek cleanup, which would take quite a long time. A single series
+covering all
+MediaTek SoCs would also be very long and harder to follow,
+especially if changes are requested during review.
+
+I hope this approach works for you.
+
+Best regards,
+Phuc
 
