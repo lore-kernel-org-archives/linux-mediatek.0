@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39B4BC5DF70
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FD4EC5DF67
 	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2026 07:53:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=54/4YSOnL8ByQklJUt2c02h2ImAoezGvMFKLi+iavxc=; b=HOD1pLYG+sOyTdOs2HzCP6aNdL
-	yN2c3fN9gMEKko9CaVo1eLXiIi7tJMzA/XhRSiRaneGUyuZAfH+jc0awVpjIUNpcvLpR26Uobxxb7
-	bCX9/+zPikdByOsyfhLRanXpxdmwAqMNYcfcU0nbbRmmirb8ERhUGaTbbGLu1T+KUMde8Ps5UhG0n
-	BvanJPafJp4mF+2AhQ9tqI+05U0W3ZMRQObABV1Oh95bs/WwMMpXdo1QuV0cm4U4G+S4f++3PAze6
-	lNC9LFxOrmRx0VzpXTwvaPVo48c5aztuuKeZ0kCQS5TgguANN8A46rbtMtFgk0gSAg6BHVZT4/joK
-	yJj1N+TA==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+qw8I3l8FMjEeGsAy7bEoWGR8IffbGvi49S9EG9wWBI=; b=BYAZ15yFAeQAxTbH/qi/un94gh
+	Ru8QjAu2nDAvH8T41ioKzEtPqYqVcUTsPAmsmEkCD86TA61oYivSUmg8mXBBEDmJ32eOyPYPiPNGe
+	loBehWsjK3WTTmYD6KIrfQwpI0Zep8eCbQeJtx6ikQsAyJFIaaC6dPX2AjGrOc5eQ1L4v7MVV59bl
+	NqDFibwFfpNFbkHGr6COAHp6AlzPsmmk7tXcClhfKs2TdubQ6Znj+NN6vGiam6JcJBlvyhF3vJpeI
+	1Vtd45j9Yeq2hUkw/tKadis8onVPEMM4BMERsM24EeOfLLyjyNtEZIsisUbPS3iAuf2E7Pz331kAe
+	f/WKnR4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwEdv-00000007TrL-3Wqf;
+	id 1wwEdv-00000007TrT-42sP;
 	Tue, 18 Aug 2026 07:53:55 +0000
 Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwEds-00000007Tpj-1d8E;
+	id 1wwEds-00000007Tpn-0oVH;
 	Tue, 18 Aug 2026 07:53:54 +0000
-X-UUID: ec0692c29ad911f19a56ed5b684f684d-20260818
+X-UUID: ee7413409ad911f19a56ed5b684f684d-20260818
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:d2326a37-bd2a-44f2-92ad-f6f7c88e8710,IP:0,U
+X-CID-O-INFO: VERSION:1.3.19,REQID:a50bf361-9e29-44a0-bbd3-f46c1145c02d,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:70bffb1bdf9e52cce7602c3f90b7257c,BulkI
-	D:nil,BulkQuantity:0,SF:102|136|865|898,TC:nil,Content:0|15|50,EDM:-3|-100
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:7db8b62,CLOUDID:0ed92bd1b7fbfdd9b91affb71a9f2ecc,BulkI
+	D:nil,BulkQuantity:0,SF:81|82|102|136|865|898,TC:nil,Content:0|15|50,EDM:-
+	3|-100,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: ec0692c29ad911f19a56ed5b684f684d-20260818
+X-UUID: ee7413409ad911f19a56ed5b684f684d-20260818
 X-User: liujiajia@kylinos.cn
 Received: from nature.lan [(10.44.16.150)] by mailgw.kylinos.cn
 	(envelope-from <liujiajia@kylinos.cn>)
 	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 299611927; Tue, 18 Aug 2026 15:53:38 +0800
+	with ESMTP id 1742744017; Tue, 18 Aug 2026 15:53:42 +0800
 From: Jiajia Liu <liujiajia@kylinos.cn>
 To: Marcel Holtmann <marcel@holtmann.org>,
 	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
@@ -61,15 +61,17 @@ Cc: linux-bluetooth@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Jiajia Liu <liujiajia@kylinos.cn>
-Subject: [PATCH 1/2] Bluetooth: btusb: Fix leaked runtime PM reference in btusb_reset()
-Date: Tue, 18 Aug 2026 15:52:15 +0800
-Message-ID: <781dc2cd5ab0533fff9ee7fdcb92fff573431f18.1787039123.git.liujiajia@kylinos.cn>
+Subject: [PATCH 2/2] Bluetooth: btusb: mediatek: Fix leaked runtime PM reference in reset
+Date: Tue, 18 Aug 2026 15:52:16 +0800
+Message-ID: <013a815ce33958ded954c9c1aef95f962a9b2480.1787039123.git.liujiajia@kylinos.cn>
 X-Mailer: git-send-email 2.55.0
+In-Reply-To: <781dc2cd5ab0533fff9ee7fdcb92fff573431f18.1787039123.git.liujiajia@kylinos.cn>
+References: <781dc2cd5ab0533fff9ee7fdcb92fff573431f18.1787039123.git.liujiajia@kylinos.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260818_005352_720042_8065C6F8 
-X-CRM114-Status: GOOD (  12.24  )
+X-CRM114-CacheID: sfid-20260818_005352_541507_3F7C30D9 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,51 +86,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-btusb_reset() calls usb_autopm_get_interface() to resume the device
-before queuing a reset of it, but never calls the matching
-usb_autopm_put_interface().
+MT7925 on HP Pro Mini 260 sometimes timed out during reloading driver
+and reset usb device. btusb_suspend is not called again after closing
+bluetooth interface.
 
-usb_queue_reset_device() ends up in usb_reset_device(), and since
-btusb provides no pre_reset/post_reset callbacks the interface is
-merely unbound and rebound: the interface device object survives
-this cycle, and so does its PM usage count, which is not cleared
-when the driver is unbound.
+ usbcore: registered new interface driver btusb
+ Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20260605184935
+ Bluetooth: hci0: Execution of wmt command timed out
+ Bluetooth: hci0: Failed to send wmt patch dwnld (-110)
+ Bluetooth: hci0: Failed to set up firmware (-110)
+ usb 3-10: reset high-speed USB device number 4 using xhci_hcd
+ Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20260605184935
+ Bluetooth: hci0: Device setup in 1856545 usecs
+ Bluetooth: hci0: AOSP extensions version v1.00
+ Bluetooth: hci0: AOSP quality report is supported
+ Bluetooth: MGMT ver 1.23
 
-As a result every reset permanently leaks a PM usage reference,
-preventing the interface from being runtime suspended again until it
-is unbound.
+btusb_mtk_reset() calls usb_autopm_get_interface() to resume the
+device before driving the hardware reset, but never calls the matching
+usb_autopm_put_interface(). Every hardware reset therefore leaks a PM
+usage reference of the interface, preventing the device from being
+runtime suspended again until it is unbound.
 
-Calling usb_autopm_put_interface() right after queuing the reset: the
-reset runs asynchronously in a workqueue and usb_reset_device()
-resumes the device on its own.
+Add the missing usb_autopm_put_interface() at the end of the function.
+The reset_gpio path is left untouched on purpose: there the device
+yanks itself off the USB and replugs, so the interface is destroyed
+and its PM state goes away with it.
 
-Fixes: c9209b269afd ("Bluetooth: btusb: Introduce generic USB reset")
+Fixes: 25b6d7593a3a ("Bluetooth: btmtk: introduce btmtk reset work")
 Assisted-by: Claude:qwen3.8-max
 Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
 ---
- drivers/bluetooth/btusb.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/bluetooth/btusb.c | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 2bae85b0016c..cc19828893c6 100644
+index cc19828893c6..c3cc70ca28dc 100644
 --- a/drivers/bluetooth/btusb.c
 +++ b/drivers/bluetooth/btusb.c
-@@ -1051,7 +1051,6 @@ static void btusb_reset(struct hci_dev *hdev)
- 	int err;
+@@ -2945,6 +2945,7 @@ static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
  
- 	data = hci_get_drvdata(hdev);
--	/* This is not an unbalanced PM reference since the device will reset */
- 	err = usb_autopm_get_interface(data->intf);
- 	if (err) {
- 		bt_dev_err(hdev, "Failed usb_autopm_get_interface: %d", err);
-@@ -1060,6 +1059,7 @@ static void btusb_reset(struct hci_dev *hdev)
- 
- 	bt_dev_err(hdev, "Resetting usb device.");
  	usb_queue_reset_device(data->intf);
+ 	clear_bit(BTMTK_HW_RESET_ACTIVE, &btmtk_data->flags);
 +	usb_autopm_put_interface(data->intf);
- }
  
- static void btusb_intel_reset(struct hci_dev *hdev)
+ 	return err;
+ }
 -- 
 2.55.0
 
