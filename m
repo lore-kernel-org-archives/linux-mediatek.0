@@ -4,96 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39295C5DF74
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2026 01:55:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB6D6C5DF74
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2026 03:00:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=qgbYfTaLJzZ/mWrE8M0JIJXKh7owvbsDYdf4//0WP8A=; b=fT+f05NEZlvjuBx0L46r5GDOdT
-	0Y+IFGUDmqiAPcBM1EHOnaBtc8J4vUJCxRdyP1Mbxl81if9BIURUyhohpqqi2SWAPiOqk50rkV2jn
-	pMxnUxuiuIa6mhB+CL//6VRo0ahpf/Dmrk1HNNjxqFdzK9h6pa0LIdbGI+DeIq+OQTpjn3QYJwSl3
-	NeowI2/VHcjcingE8ndxKeJFtg3HGx02YKr86IOPdRNDLxHG1H/gAoH9i5Z95bK8FnBa81VUpQ7gk
-	98AoaemMqsEJJg5VdrCNpEL+qloBfcI1Rp9VOdDJ4bPxuqgCQFHJnJWy4IwpeoK5r1qITv2Xu9mOw
-	If+CU+sA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=b8DaECQ3JNQpRp/xVNNj6/OuhoV+zn4RSKyoCeMesfU=; b=WgsyCtQOX1RNDnBniUr7hiMkgq
+	XSwiCVfCa8P343TQ7X3niWLsRH7f0H1ScxvNpPoc8BiElST4G38WRpLnbAf48W09M3EYJjEQEtylb
+	iHvQWQOV9M8lzJ+mLN0khrqy262qZ3bl2LwGIB8Zwrocb0c3uzjiPTBROacGVtrsLo+tP5I2NHC/1
+	ibE7Ryw3CeD5Li2AG2+H+s5W4FvieTFKY78eLpESJqQC/afle983JXiFN1VXGlM2ttHSShuVlaQbL
+	w82phP5VbTDoaVAexqkieepzTHQxLlFmETAlVAS5aRzk/26ukiRO8SNDVb39e8D0YGu/dD7MJtT+x
+	/ViwFeCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ww92n-000000074dJ-2UPq;
-	Tue, 18 Aug 2026 01:55:13 +0000
-Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
+	id 1wwA4L-000000077X2-0rIP;
+	Tue, 18 Aug 2026 03:00:53 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1ww92k-000000074cb-05GB
-	for linux-mediatek@lists.infradead.org;
-	Tue, 18 Aug 2026 01:55:11 +0000
-Received: by mail-yx1-xb133.google.com with SMTP id 956f58d0204a3-66cad42593dso1551563d50.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 17 Aug 2026 18:55:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1787018107; x=1787622907; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=qgbYfTaLJzZ/mWrE8M0JIJXKh7owvbsDYdf4//0WP8A=;
-        b=A+k9MBF18lA0PCL/2gFP/3+Jqa389D5/Ibnr6S+ZMqYGo+cQaiMN0W2J+I3QGQXs18
-         usf+8pmM+0m18TqfElhMtUOAjVPIjpio1ofMaoxTUPB84dIG4PYZAOpM+sLZnYfg3Uhg
-         sgS6ZSFq2yp01Rd1Ik5BbN7VnKgkczANR9Z3A/qBW60ZlWuyxyBHAHqfvzJWBZ0aZt5E
-         VL6qZj3LQZ+9ONkDRVG7fcviPnBFbiU2CW8TU36MpTX+mWFHUk1p/Uyz1dgPI1MKaqLe
-         or95itVC9+aKCLiPMiEUbVqCWYcjIgtAudH/bM/UPIfgucOl1O9rpaGIwee5AmnjCGNM
-         EgFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787018107; x=1787622907;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=qgbYfTaLJzZ/mWrE8M0JIJXKh7owvbsDYdf4//0WP8A=;
-        b=Iu6UIHIppgTOO7N9erEfpQLcoBpuZH1+b18Db9lMyzk3lSS94lU3wR0OZGhtGJALdD
-         geNH2zJzaRBKREjNgLw+3afgdwroCFHkc8FF6yQ2nvnHjpZ/wwIhZ9QRg+GgQEiI8EWn
-         48yt5PvlGdyvjYmYVF44FGMiFlYIpp+NbkEaqQH6xervPKMnpR9f3X+gi6/6HDt6oyrR
-         iFL8Pkq1NpINzuk4w0IQRI/DuuZJ50CUWs7fSSGTC/t0LgHUVsPxccMNSw7SLjW4cMzW
-         E5se63UpXnG9rvHC0/2e7NPs5E0AgNTdxsDHIV/nWBNjCzxEkGr656JeBVJv+PLOsyMV
-         ED0A==
-X-Forwarded-Encrypted: i=1; AHgh+RomKqL/almgC0YYlLjPC9oFsXNoO1/vMKkhyO/1Qg9NShgAW2i5iKZAvws4aSzgjvEOL/GCbf2tf55NHDjAsQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyTxnU73Yg4gpGumUKZEYHHl1za/64J+xmdCR9uvL3GjRGHf1tu
-	T/Ugc+wYLBZi4acG+kuygQH/8u6sycRY8yH5cXCmskG0nyaL2VT2ukN2
-X-Gm-Gg: AR+sD13vAmbxBVyRnrqrqOTRJzoTccmTo6XdzYJZu6+QbqksVyApsaEOs6fHojJAmV3
-	YPb1Yj4QrAN1jxwP+xfhiSlBi8XX6AG7UG1eIEEtkWhR3Prvp02obhGngMHVyPPnQWN+i7KUdGj
-	UkXZEcSAhZtPgE8Zfk77XUjujD1IgR257NkARWU6LjgwECgkGNV9IGM2hPWbvyzTvyucR3JWbYM
-	Igt5CeNOw7aj580X9OU9qe04yCKuF8qeWQ0V1xP6DQgCJ3bUQhAUBwWbmTHLnIP/fyTMMOWOyS1
-	Ti5LmxCmJg/IDsOyYWKMp7Np/fRafCsoZ92A61PcQ/l4WYV3bJwEfUkyzrV4gsRlgQfUdtGUZKA
-	VDm3cAYqblxr+8ZAIl48QSbRoAqHVkHljr2/ONptBPS7DgQb7bt2HhDE+t6HrAbnU0YxIFY9FTx
-	9XBbiq2uEg2O08rPzBTSs53KHT0OkYPM45VqGi7GXo2Px/V4Bu9TbyIIjP+m6aAHxwRRAGZlsxT
-	cgt5gyJ+u78dmRoYzP7ek7L7pMTzmERtp4bXBCNPJE9rSr2MI3agN3nPVYehw==
-X-Received: by 2002:a05:690e:1189:b0:667:a95b:59f0 with SMTP id 956f58d0204a3-66c72c826ccmr9003965d50.34.1787018107417;
-        Mon, 17 Aug 2026 18:55:07 -0700 (PDT)
-Received: from tux ([2601:7c0:c37e:2360::6219])
-        by smtp.gmail.com with ESMTPSA id 956f58d0204a3-66cb47a6f8dsm1598940d50.16.2026.08.17.18.55.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 17 Aug 2026 18:55:07 -0700 (PDT)
-From: Ethan Tidmore <ethantidmore06@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jeremy Yu <chengwei.yu@mediatek.com>,
-	Stella Liu <yu-ching.liu@mediatek.com>
-Cc: linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Ethan Tidmore <ethantidmore06@gmail.com>
-Subject: [PATCH] wifi: mt76: mt7925: Remove useless condition
-Date: Mon, 17 Aug 2026 20:54:40 -0500
-Message-ID: <20260818015440.875703-1-ethantidmore06@gmail.com>
-X-Mailer: git-send-email 2.55.0
+	id 1wwA4I-000000077WK-3beS;
+	Tue, 18 Aug 2026 03:00:50 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id DC2E642A9A;
+	Tue, 18 Aug 2026 03:00:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id BB7E2C2BCF6;
+	Tue, 18 Aug 2026 03:00:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1787022049;
+	bh=lN8gr0eID1lGrFTTNUIMwNSjyBOb3TsnREZbiNkECnI=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=PCg+PM7Wu34xP4J6pU+hUNvIEVAclWRTyQ35wJ2I8BJphLNlnrQ19zTlMmSrRMo7Z
+	 mcspFGeJhVb549bJfvEPONTECS5gsFq4Fa2atgbHYjiT7cxTj0n169oLzL7PV8+Jy8
+	 LYp5q4FGeY6AH8uTCmRloQcLCkxjWupaE0RqSaq70WK4+ncD6YHTV8Sn5bNYBqGEVY
+	 czgUiCY/AFwl47Y2epxQodJS8RymI0y3JX9DgEduVLAlNNwjHFJqq++DyRwSkxdMn3
+	 l2xRjBRSFv1bdD9hwROctuH7wKekAzUIK4ga3ZSP079AihIEVsjDb9lxQSaQh9PILE
+	 DUzGWhKMzOi/A==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A8F4EC5DF74;
+	Tue, 18 Aug 2026 03:00:49 +0000 (UTC)
+From: George Maraveyas via B4 Relay <devnull+george.0xfff.gmail.com@kernel.org>
+Date: Tue, 18 Aug 2026 04:55:21 +0200
+Subject: [PATCH RFC 2/2] Bluetooth: mt7925: recover subsystem-reset timeout
+ through USB re-enumeration
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260817_185510_054787_F74CFA37 
-X-CRM114-Status: UNSURE (   8.68  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260818-mt7925-rfc-v1-2-284d856ac572@gmail.com>
+References: <20260818-mt7925-rfc-v1-0-284d856ac572@gmail.com>
+In-Reply-To: <20260818-mt7925-rfc-v1-0-284d856ac572@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Marcel Holtmann <marcel@holtmann.org>, 
+ Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-bluetooth@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ George Maraveyas <george.0xfff@gmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1787022047; l=5329;
+ i=george.0xfff@gmail.com; s=20260818; h=from:subject:message-id;
+ bh=tw21DpwflFbWWZ7xCtmAWfoLs4aafF589lcKdxB+wGk=;
+ b=Ix8UDLUTd3fPtF4Fj9V9Qd5tWoAqB0bL7oV7Wy8yEsyle2hgNl34XqyvZ4pF2vAGU+VqagctJ
+ 6n8FspmR5/4CqOkdPqZG3dZEfv488nXnL9APzijyoGt5lNuJYL0VPI/
+X-Developer-Key: i=george.0xfff@gmail.com; a=ed25519;
+ pk=Jz8kMnumjUlo1GJvJ5kdfkF3ZP8DjPbYaYQR5J8IHMI=
+X-Endpoint-Received: by B4 Relay for george.0xfff@gmail.com/20260818 with
+ auth_id=960
+X-Original-From: George Maraveyas <george.0xfff@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,36 +85,149 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: george.0xfff@gmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The condition (master_pref > NAN_MAX_MASTER_PREFERENCE) will always be
-false because the variable 'master_pref' is of type u8 and the macro
-'NAN_MAX_MASTER_PREFERENCE' is equal to 255.
+From: George Maraveyas <george.0xfff@gmail.com>
 
-Fixes: a5487a6824068 ("wifi: mt76: mt7925: add NAN MCU helpers")
-Signed-off-by: Ethan Tidmore <ethantidmore06@gmail.com>
+The MT7925 Bluetooth controller on an ASUS ROG Strix B850-I Gaming WiFi
+can remain unusable after a warm reboot even though its USB function
+initially enumerates normally.
+
+The Bluetooth USB function on the test system is:
+
+  idVendor=13d3, idProduct=3602
+  Manufacturer: MediaTek Inc.
+  Product: Wireless_Device
+
+The problem was reproduced with ASUS motherboard BIOS versions 1644 and
+1681.  Updating from BIOS 1644 to 1681 did not change the failure.
+
+The Bluetooth firmware reported during testing was:
+
+  HW/SW Version: 0x00000000
+  Build Time: 20260605184935
+
+A typical Windows 11-to-Linux failure is:
+
+  1. The MT7925 USB function enumerates as 13d3:3602.
+  2. Bluetooth setup begins.
+  3. The WMT function-control command times out with -ETIMEDOUT (-110).
+  4. The existing MediaTek reset work runs.
+  5. btmtk_usb_subsys_reset() also times out.
+  6. Resetting the existing usb_device does not recover the controller.
+
+The relevant log contains:
+
+  Bluetooth: hci0: Execution of wmt command timed out
+  Bluetooth: hci0: Failed to send wmt func ctrl (-110)
+  Bluetooth: hci0: MT7925 WMT func ctrl timed out (dev_id=0x7925), scheduling device reset
+  Bluetooth: hci0: Failed to read uhw reg(-110)
+
+The WMT timeout handling and scheduling of the MediaTek reset already
+exist before this change.  This patch begins later, inside
+btusb_mtk_reset(), after btmtk_usb_subsys_reset() has returned.
+
+The existing path calls btmtk_usb_subsys_reset() and then queues
+usb_queue_reset_device().  On the affected MT7925 the subsystem reset
+returns -ETIMEDOUT, and resetting the existing usb_device does not recover
+the controller.
+
+After btmtk_usb_subsys_reset() returns, check for an MT7925 device and an
+-ETIMEDOUT result.  When both conditions are present, request
+re-enumeration through usb_queue_reenumerate_device(), added by Patch 1.
+
+If the re-enumeration request is queued successfully, clear
+BTMTK_HW_RESET_ACTIVE and return the original subsystem-reset error.  If
+the request cannot be queued, report the error and continue into the
+existing usb_queue_reset_device() path.
+
+Other MediaTek devices and MT7925 reset results other than -ETIMEDOUT
+continue to use the existing recovery path unchanged.
+
+The re-enumeration request gives the MT7925 another chance to go through
+normal USB enumeration via the helper in Patch 1, which does this.  This
+patch calls that helper when the MT7925 subsystem reset has timed out.
+
+Chia-Lin Kao's preceding _PRR patch is required for the port recovery
+used on this machine.  Re-enumeration does not itself request a port
+power-cycle or an ACPI _PRR reset.  If the re-enumerated device continues
+to fail during enumeration, the existing hub retry path can reach its
+port power-cycle, where the _PRR prerequisite supplies the ACPI reset.
+
+The _PRR prerequisite does not fix this failure by itself because the
+first USB enumeration has already succeeded before the WMT timeout and
+subsequent subsystem-reset timeout occur.
+
+A representative successful recovery was:
+
+  Bluetooth: hci0: MT7925 subsystem reset timed out, requesting USB re-enumeration
+  usb 1-11: USB disconnect, device number 4
+  usb 1-11: device descriptor read/64, error -110
+  usb 1-11: device descriptor read/64, error -110
+  usb usb1-port11: attempt power cycle
+  usb 1-11: New USB device found, idVendor=13d3, idProduct=3602
+
+Three Windows 11-to-Linux warm restart tests recovered successfully with
+this series.  The observed average interval from the initial WMT timeout
+to successful Bluetooth setup was about 70.9 seconds.
+
+Bluetooth remains unavailable during most of this interval, so recovery
+should not be expected immediately after usb_queue_reenumerate_device()
+is called.
+
+Signed-off-by: George Maraveyas <george.0xfff@gmail.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7925/nan.c | 3 ---
- 1 file changed, 3 deletions(-)
+ drivers/bluetooth/btmtk.c |  4 ++++
+ drivers/bluetooth/btusb.c | 16 ++++++++++++++++
+ 2 files changed, 20 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/nan.c b/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
-index d260e803d056..8d13a42b72a8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
-@@ -255,9 +255,6 @@ mt7925_nan_mp_tlv(struct sk_buff *skb, u8 master_pref)
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 66b346761..e8f02f1e3 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -1413,6 +1413,10 @@ int btmtk_usb_setup(struct hci_dev *hdev)
+ 		err = btmtk_usb_hci_wmt_sync(hdev, &wmt_params);
+ 		if (err < 0) {
+ 			bt_dev_err(hdev, "Failed to send wmt func ctrl (%d)", err);
++
++			if (dev_id == 0x7925 && err == -ETIMEDOUT)
++				btmtk_reset_sync(hdev);
++
+ 			return err;
+ 		}
  
- 	mp_tlv = (struct mt7925_nan_master_preference_tlv *)tlv;
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 2bae85b00..5b56c26de 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -2943,6 +2943,22 @@ static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
  
--	if (master_pref > NAN_MAX_MASTER_PREFERENCE)
--		return 0;
--
- 	mp_tlv->master_preference = master_pref;
+ 	err = btmtk_usb_subsys_reset(hdev, btmtk_data->dev_id);
  
- 	return 0;
++	if (btmtk_data->dev_id == 0x7925 && err == -ETIMEDOUT) {
++		int reenum_err;
++
++		bt_dev_warn(hdev,
++			    "MT7925 subsystem reset timed out, requesting USB re-enumeration");
++
++		reenum_err = usb_queue_reenumerate_device(data->intf);
++		if (!reenum_err) {
++			clear_bit(BTMTK_HW_RESET_ACTIVE, &btmtk_data->flags);
++			return err;
++		}
++
++		bt_dev_err(hdev, "Failed to queue USB re-enumeration (%d)",
++			   reenum_err);
++	}
++
+ 	usb_queue_reset_device(data->intf);
+ 	clear_bit(BTMTK_HW_RESET_ACTIVE, &btmtk_data->flags);
+ 
+
 -- 
-Thanks,
-ET
-https://github.com/sponsors/ethantidmore
+2.53.0
+
 
 
