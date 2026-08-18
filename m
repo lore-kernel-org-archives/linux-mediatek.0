@@ -4,59 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AC69C5DF7D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2026 15:14:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBD6AC5DF7E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Aug 2026 15:29:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k1hoNyVpiMb5nugh3F7JK+Dcf+wldIKzcFr1U6yCpSE=; b=a+B8jINdep2/7gfBvoDke6HUuc
-	kUpopJ48+B8DPheVV4OKXmapuh7HDWZKGMiYgtJa+q/4WKeJ8E4rWW405vbNRTzGksMFv+qj43xuG
-	VqsinPliW65jYZM/gs3usQumQHjziFJ/T6O/R6kWZcRpiHeNYro7JWHfkHw0Ncw6VDBXxgt+PyvoT
-	HWhhYs3jfQnDoSNq2qUCHvNG1jeQr18m3qw3dvpTgcx4nF9y4tdvaDLAT6Y3Lug5gqN5I34qdGvkT
-	Nz0uzdBwD/KlvqS5v4HARYkFBTQPfHa2h/25XPw6LHg9VLSfSQsiaBS9DP9nGcfm2wiPFw226nMN9
-	IFoHC65A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Fu2n3BnOxXot3kZ7+JaRDlx1+WuO9eZ8yLgzOEaQxiY=; b=zKpFFfJvVp4VKLQsfse8cnMX1Z
+	0QEB/86Jkm/pWggT5HSgFn/bICSsg2m9uQsTFvrnazMi4eXQY5HWSkDhtuFlnetSNE6Yqik+6j0TJ
+	L4e0+pbCtkPReYeT1WmteFKVEMsOXubaOcKLNM4WxokiIdxW/LrbfuNWsuRCziKIfj44TToTKAzEv
+	MQv5t1gbYUVML0seXL7p7VyPdtE97AQd6ODfidBhqykYRrRKJ7xcj2sImOMgv4NbISJtBzohxp0Sn
+	0zQX9WFq4OMCwZvXFSbIMhjX8ggkrg39J2e67RjBK0svHqXKd12fWeOX0F67jFQkcZOOSsarqNX7S
+	Nc28V2wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwLWQ-00000008FDM-0OrI;
-	Tue, 18 Aug 2026 15:14:38 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wwLkv-00000008GZe-3CEo;
+	Tue, 18 Aug 2026 15:29:37 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwLWO-00000008FCo-2OGX;
-	Tue, 18 Aug 2026 15:14:36 +0000
+	id 1wwLkt-00000008GYj-3101;
+	Tue, 18 Aug 2026 15:29:35 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id C383B600AD;
-	Tue, 18 Aug 2026 15:14:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E31D71F000E9;
-	Tue, 18 Aug 2026 15:14:34 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 0BD274077F;
+	Tue, 18 Aug 2026 15:29:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A09141F000E9;
+	Tue, 18 Aug 2026 15:29:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787066075;
-	bh=k1hoNyVpiMb5nugh3F7JK+Dcf+wldIKzcFr1U6yCpSE=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date;
-	b=RZmAyJnLcQnrOU2OT1Hz/+rAxWPbPSFLOiSO18BLUkuygzH8B/+BtEcv+khkrQGuP
-	 sxGvicShJsy58LXKTzkGzvPx3//QcKKGQyZccR+3XreCOBSKdu/IFgOAIgej3c9r6t
-	 eea35mjhd0N17sJCAEpXycAIoJkxo+vC1W8yFj2CRYs1PpnMudqNCRPBZDZS8vrCDW
-	 ROdXOVxFp92kQMQMXhdP9UWTQV8aukdOICCrMTP1M6lnmwzVEHF1q8RuysjUyxi+HO
-	 JMthndg3u3GOhiCZoEh72D8ZRne9dTfVQZqZKRq8EBNHkCdOAbMHjec7sp3RM7zjoA
-	 3xoY25bu/356w==
-From: Mattijs Korpershoek <mkorpershoek@kernel.org>
-To: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-input@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Roman Vivchar <rva333@protonmail.com>
-Subject: Re: [PATCH] dt-bindings: input: mediatek,mt6779-keypad: add mt6572
-In-Reply-To: <20260814-6572-dt-keypad-v1-1-2ceff2373211@protonmail.com>
-References: <20260814-6572-dt-keypad-v1-1-2ceff2373211@protonmail.com>
-Date: Tue, 18 Aug 2026 17:14:32 +0200
-Message-ID: <87zeyjh353.fsf@kernel.org>
+	s=k20260515; t=1787066974;
+	bh=Fu2n3BnOxXot3kZ7+JaRDlx1+WuO9eZ8yLgzOEaQxiY=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=M7fhLpkcm85yYr+S4YvfDk1ZyJ0JikJVkvVqSs5a7i77lp3GCICaHjW1TJIyAQ5ky
+	 8w+v+8WEzKxNtwatOg9DdmOrIElZNO5Zlbmizi2D4OORnK5fg10I2vHWkke1+VMzPq
+	 QJ9C7QAWGWu/U8WRFC4tyy/fxWoObOX0U/pgGPqesbVP9dGPbY3EPK8KB5ZR2jRrs6
+	 wGWdlUDa/krBtcqSBTt2kj61cXxJavNI359zUk4zs+zLYlY3kIUvU46z4IgoksZokc
+	 PKcrVKXMIf4bULIjHuEVp4wam/bI0Mprh7JoMf3qzXAFUNJaqEoPypnX6ZpBHxNhEy
+	 qhZYgee67Esuw==
+Date: Tue, 18 Aug 2026 08:29:33 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Daniel Pawlik <pawlik.dan@gmail.com>
+Cc: netdev@vger.kernel.org, lorenzo@kernel.org, win847@gmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v8] net: airoha: npu: use cacheline-sized buffers for
+ mailbox DMA
+Message-ID: <20260818082933.28b5c9d1@kernel.org>
+In-Reply-To: <CALC2Apj7rQv=6uUqaqBjfJ9yO+VCddQqHB=yDhXH7+QUCh2JyA@mail.gmail.com>
+References: <20260817090601.1256389-1-pawlik.dan@gmail.com>
+	<20260817161756.5fd2185a@kernel.org>
+	<CALC2Apj7rQv=6uUqaqBjfJ9yO+VCddQqHB=yDhXH7+QUCh2JyA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,19 +70,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Roman,
+On Tue, 18 Aug 2026 08:23:33 +0200 Daniel Pawlik wrote:
+> v8 does not switch to coherent DMA; it only rounds up mailbox payload
+> allocations (dma_get_cache_alignment() in v9) and maps the same rounded
+> length with DMA_BIDIRECTIONAL, while the mailbox length register still
+> uses the original payload size. On this board, mapping only the payload
+> size regresses probe back to 0.0 even with the larger allocation, so the
+> rounded map length seems required here.
 
-Thank you for the patch.
-
-On Fri, Aug 14, 2026 at 16:13, Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org> wrote:
-
-> From: Roman Vivchar <rva333@protonmail.com>
->
-> Add a compatible string for the mt6572 keypad, that is compatible with
-> mt6779.
->
-> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-
-Reviewed-by: Mattijs Korpershoek <mkorpershoek@kernel.org>
-
+Please trace into the dma API implementation on this platform where the
+alignment makes a difference. The "unaligned length" path must be buggy.
+We should fix it there, not in all the drivers (my concern being that
+this is not the only driver that hits the issue).
 
