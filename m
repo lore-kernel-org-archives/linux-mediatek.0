@@ -4,76 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99FB3C5DF85
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2026 09:32:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12D97C5DF86
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2026 09:52:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7Qk/nPnOw6aepbRPixLa0uauS/wumrW6H2o503UEaho=; b=2fQ/N8uIX0Yz+1xS90TjhG675h
-	ct01GnBhV+IbY5sKHqC7Cr1XTH6gVRgarLerea71IdOlBIEBcH4SlMqXNUiP2BvtvL1hXt0Ce2zju
-	feXSEbHga/9+Cq8Jn7kFwsdEFv6iRbzoEcjhOVrhRdd1kWQ0URl9KE1YlNq8CvbId5F0bz725o7n9
-	kTBFdXrHE2V1tEcRTuhQptZm3ub9PhCVzph+oXkEuUd01vCX7UOb/RydCcdWbfcX9u9rmiynjrE0x
-	98C/s7Qns5Hx94tpFH5OvWVlFKpClOg63yLFz/psCfM47BLfxMSeqD1eRZwvfEHXVG1+FwDv2e8rL
-	95XmaXcw==;
+	bh=3spXCEvSpIyu+hySEp3OskjT5ha9Us48vnxBp1SKQG0=; b=APGjIGzOeZPwYH4wGodkZUQF3P
+	JG9Gk7bU7QgZEjqteGN4NDHBrHSYl3MvCZa/NqTJCO2AKn97XyEilbB75gIuph6GLvPK9pJdWv0kf
+	bx1zKY45AdGSdXefE6WXLVRR/PpuW4YYAwRlDQ/w59+Fwy7kfQH2lsmpGcZqjFny/WIdimplUCfmQ
+	0zajxf4uBDOT7Ka8Bx2tBuwLxtBnppM7bq2waJTO1JcFLnEkjBHHeqzbxJNOTtKNa2kZ717+vg5MM
+	TH9qFejOJi/2d6rUvAUamvUUOOrxNPoD6WS/vaRKWGtdfK0QQcq0jJrfO8glMv8kIXhPwaOhl6Uir
+	SIxu/xaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwcfA-00000009Q9p-2MJQ;
-	Wed, 19 Aug 2026 09:32:48 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wwcyN-00000009S7n-1lW5;
+	Wed, 19 Aug 2026 09:52:39 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwcf7-00000009Q9Q-463A;
-	Wed, 19 Aug 2026 09:32:47 +0000
-X-UUID: eb913d109bb011f1afed4741b24580c9-20260819
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=7Qk/nPnOw6aepbRPixLa0uauS/wumrW6H2o503UEaho=;
-	b=bQOSuvGAAfNhxXtyCzrXX2ftp0Kn4jtrpGrWIPWZ3eXgCZv12Dj8YUZ/pEGS/EDNSWMope/jhmLIpY29qZ78SzYeTheI7s7q5sG9E51lCWzZ3p+bMTfyFYoDkF7Rs7mVMo3DElZpPgIhOsiIMbdlqx8Yo7yWX2Kxtw8wmXYH7/I=;
+	id 1wwcyK-00000009S6c-0v1V;
+	Wed, 19 Aug 2026 09:52:37 +0000
+X-UUID: ac9cfda89bb311f19a56ed5b684f684d-20260819
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:066c51ec-b860-424d-b873-5efcf019fe38,IP:0,U
+X-CID-O-INFO: VERSION:1.3.19,REQID:bc74f226-5ddb-4fcc-a10d-29476d432c8c,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:84eb2ffe-f4cb-4ad2-b022-e3ac6648bf25,B
-	ulkID:nil,BulkQuantity:0,SF:102|123|836|865|888|898,TC:-5,Content:0|15|50|
-	99,EDM:-3,IP:nil,URL:1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:7db8b62,CLOUDID:f1bb0513c15bb466cbd6d68b5bffb98d,BulkI
+	D:nil,BulkQuantity:0,SF:102|136|865|898,TC:nil,Content:0|15|50,EDM:-3|-100
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: eb913d109bb011f1afed4741b24580c9-20260819
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <zhaoping.shu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1111249570; Wed, 19 Aug 2026 02:32:39 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 19 Aug 2026 17:32:36 +0800
-Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 19 Aug 2026 17:32:35 +0800
-From: <zhaoping.shu@mediatek.com>
-To: <edumazet@google.com>, <ncardwell@google.com>, <kuniyu@google.com>,
-	<davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>,
-	<horms@kernel.org>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>, <dsahern@kernel.org>,
-	<willemb@google.com>, <netdev@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: <haijun.liu@mediatek.com>, <xiayu.zhang@mediatek.com>,
-	<lambert.wang@mediatek.com>, <Iven.Yang@mediatek.com>, HW He
-	<hw.he@mediatek.com>, Zhaoping Shu <zhaoping.shu@mediatek.com>
-Subject: [PATCH net v4] net: gro: Fix nesting of TCP GSO SKBs in skb_gro_receive_list()
-Date: Wed, 19 Aug 2026 17:32:26 +0800
-Message-ID: <20260819093226.193385-1-zhaoping.shu@mediatek.com>
-X-Mailer: git-send-email 2.17.0
+X-UUID: ac9cfda89bb311f19a56ed5b684f684d-20260819
+X-User: liujiajia@kylinos.cn
+Received: from nature.lan [(10.44.16.150)] by mailgw.kylinos.cn
+	(envelope-from <liujiajia@kylinos.cn>)
+	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
+	with ESMTP id 1108759978; Wed, 19 Aug 2026 17:52:22 +0800
+From: Jiajia Liu <liujiajia@kylinos.cn>
+To: Marcel Holtmann <marcel@holtmann.org>,
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	Ying Hsu <yinghsu@chromium.org>,
+	Archie Pusaka <apusaka@chromium.org>,
+	Abhishek Pandit-Subedi <abhishekpandit@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jing Cai <jing.cai@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Chris Lu <chris.lu@mediatek.com>
+Cc: linux-bluetooth@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Jiajia Liu <liujiajia@kylinos.cn>
+Subject: [PATCH v2 1/2] Bluetooth: btusb: mediatek: Fix leaked runtime PM reference in reset
+Date: Wed, 19 Aug 2026 17:52:08 +0800
+Message-ID: <ec23dae6c247005e8eccd312d326a626163ea491.1787132512.git.liujiajia@kylinos.cn>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260819_023246_104648_71E0124E 
-X-CRM114-Status: GOOD (  18.72  )
+X-CRM114-CacheID: sfid-20260819_025236_700977_1A272A0B 
+X-CRM114-Status: GOOD (  13.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,141 +84,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: HW He <hw.he@mediatek.com>
+MT7925 on HP Pro Mini 260 sometimes timed out during reloading driver
+and reset usb device. btusb_suspend is not called again after closing
+bluetooth interface.
 
-A device supports GRO_HW, and the device driver enables the
-NETIF_F_GRO_FRAGLIST feature. During a tethering test,
-skb_gro_receive_list() reaggregates the GSO packet. However,
-skb_segment_list() cannot segment this packet back into
-the original packets, which leads to IP fragmentation or packet drop.
+ usbcore: registered new interface driver btusb
+ Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20260605184935
+ Bluetooth: hci0: Execution of wmt command timed out
+ Bluetooth: hci0: Failed to send wmt patch dwnld (-110)
+ Bluetooth: hci0: Failed to set up firmware (-110)
+ usb 3-10: reset high-speed USB device number 4 using xhci_hcd
+ Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20260605184935
+ Bluetooth: hci0: Device setup in 1856545 usecs
+ Bluetooth: hci0: AOSP extensions version v1.00
+ Bluetooth: hci0: AOSP quality report is supported
+ Bluetooth: MGMT ver 1.23
 
-Scenario (Tethering/Forwarding):
-1.Driver submits a single TCP packet, P1. P1 is kept in the
-gro_list as the first packet.
+btusb_mtk_reset calls usb_autopm_get_interface to resume the device
+before driving the hardware reset, but never calls the matching
+usb_autopm_put_interface. Every hardware reset therefore leaks a PM
+usage reference of the interface, preventing the device from being
+runtime suspended again until it is unbound.
 
-2. The driver submits a TCP GSO skb, P2. P2 has already aggregated
-multiple TCP packets by HW_GRO, and its non-linear data is stored in
-frags[].
+Add BTUSB_USB_RESET_ACTIVE flag and set it before usb_queue_reset_device.
+Release the PM reference in btusb_disconnect if this flag is set.
 
-3. P1 and P2 match the GRO rules, and since there is no local socket,
-they are aggregated by skb_gro_receive_list(). The resulting skb,
-P3, has a frag_list entry that still contains frags[]:
-P3: [ Linear Data ] -> frag_list -> [ Linear Data ]
-                                    [ frag[1] ]
-                                    [ frag[2] ]
-                                    ...
-4. Later, tcp4_gso_segment() or tcp6_gso_segment() calls
-skb_segment_list() to segment P3. However, skb_segment_list() only
-segments the entries in frag_list. It does not segment the frags[]
-inside P2, so P3 is not restored to the original packets, which leads
-to IP fragmentation or packet drop in the following path.
+Fixes: 25b6d7593a3a ("Bluetooth: btmtk: introduce btmtk reset work")
+Assisted-by: Claude:qwen3.8-max
+Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
+---
 
-Check skb_is_gso(skb) and current GRO method, make sure fraglist GRO
-applies to consecutive non-GSO skb, others adopt regular GRO path.
+Changes in v2:
+- Fix the race window (sashiko)
+  Add and set BTUSB_USB_RESET_ACTIVE flag before usb_queue_reset_device.
+  Release PM reference in btusb_disconnect if this flag is set.
 
-Fixes: 8d95dc474f85 ("net: add code for TCP fraglist GRO")
-Signed-off-by: Zhaoping Shu <zhaoping.shu@mediatek.com>
-Signed-off-by: HW He <hw.he@mediatek.com>
+Changes in v1:
+- add usb_autopm_put_interface after usb_queue_reset_device
 
 ---
-[3]: https://patchwork.kernel.org/patch/14747095
-[2]: https://patchwork.kernel.org/patch/14706032
-[1]: https://patchwork.kernel.org/patch/14702209
----
- net/ipv4/tcp_offload.c   | 22 ++++++++++++++++------
- net/ipv6/tcpv6_offload.c | 15 +++++++++++++--
- 2 files changed, 29 insertions(+), 8 deletions(-)
+ drivers/bluetooth/btusb.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/net/ipv4/tcp_offload.c b/net/ipv4/tcp_offload.c
-index 3b1fdcd3cb29..e74d99ca9fac 100644
---- a/net/ipv4/tcp_offload.c
-+++ b/net/ipv4/tcp_offload.c
-@@ -332,6 +332,7 @@ struct sk_buff *tcp_gro_receive(struct list_head *head, struct sk_buff *skb,
- 		flush |= skb->ip_summed != p->ip_summed;
- 		flush |= skb->csum_level != p->csum_level;
- 		flush |= NAPI_GRO_CB(p)->count >= 64;
-+		flush |= NAPI_GRO_CB(p)->is_flist != NAPI_GRO_CB(skb)->is_flist;
- 		skb_set_network_header(skb, skb_gro_receive_network_offset(skb));
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 184e95c1625e..45a726bed0dd 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -957,6 +957,7 @@ struct qca_dump_info {
+ #define BTUSB_USE_ALT3_FOR_WBS	15
+ #define BTUSB_ALT6_CONTINUOUS_TX	16
+ #define BTUSB_HW_SSR_ACTIVE	17
++#define BTUSB_USB_RESET_ACTIVE	18
  
- 		if (flush || skb_gro_receive_list(p, skb))
-@@ -395,12 +396,20 @@ static void tcp4_check_fraglist_gro(struct list_head *head, struct sk_buff *skb,
- 	struct net *net;
- 	int iif, sdif;
+ struct btusb_data {
+ 	struct hci_dev       *hdev;
+@@ -2915,6 +2916,7 @@ static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
  
--	if (likely(!(skb->dev->features & NETIF_F_GRO_FRAGLIST)))
--		return;
--
- 	p = tcp_gro_lookup(head, th);
- 	if (p) {
--		NAPI_GRO_CB(skb)->is_flist = NAPI_GRO_CB(p)->is_flist;
-+		/* flist GRO applies to consecutive non-GSO skbs */
-+		if (!skb_is_gso(skb) || !NAPI_GRO_CB(p)->is_flist) {
-+			NAPI_GRO_CB(skb)->is_flist = NAPI_GRO_CB(p)->is_flist;
-+			return;
-+		}
+ 	err = btmtk_usb_subsys_reset(hdev, btmtk_data->dev_id);
+ 
++	set_bit(BTUSB_USB_RESET_ACTIVE, &data->flags);
+ 	usb_queue_reset_device(data->intf);
+ 	clear_bit(BTMTK_HW_RESET_ACTIVE, &btmtk_data->flags);
+ 
+@@ -4497,6 +4499,9 @@ static void btusb_disconnect(struct usb_interface *intf)
+ 	if (data->reset_gpio)
+ 		gpiod_put(data->reset_gpio);
+ 
++	if (test_bit(BTUSB_USB_RESET_ACTIVE, &data->flags))
++		usb_autopm_put_interface_no_suspend(data->intf);
 +
-+		/* Fall back to the regular GRO path */
-+		if (NAPI_GRO_CB(p)->count == 1)
-+			NAPI_GRO_CB(p)->is_flist = 0;
-+
-+		NAPI_GRO_CB(skb)->is_flist = 0;
-+
- 		return;
- 	}
- 
-@@ -410,7 +419,7 @@ static void tcp4_check_fraglist_gro(struct list_head *head, struct sk_buff *skb,
- 	sk = __inet_lookup_established(net, iph->saddr, th->source,
- 				       iph->daddr, ntohs(th->dest),
- 				       iif, sdif);
--	NAPI_GRO_CB(skb)->is_flist = !sk;
-+	NAPI_GRO_CB(skb)->is_flist = !sk && !skb_is_gso(skb);
- 	if (sk)
- 		sock_gen_put(sk);
- }
-@@ -430,7 +439,8 @@ struct sk_buff *tcp4_gro_receive(struct list_head *head, struct sk_buff *skb)
- 	if (!th)
- 		goto flush;
- 
--	tcp4_check_fraglist_gro(head, skb, th);
-+	if (unlikely(skb->dev->features & NETIF_F_GRO_FRAGLIST))
-+		tcp4_check_fraglist_gro(head, skb, th);
- 
- 	return tcp_gro_receive(head, skb, th);
- 
-diff --git a/net/ipv6/tcpv6_offload.c b/net/ipv6/tcpv6_offload.c
-index f2a659cd6183..eec3778855eb 100644
---- a/net/ipv6/tcpv6_offload.c
-+++ b/net/ipv6/tcpv6_offload.c
-@@ -26,7 +26,18 @@ static void tcp6_check_fraglist_gro(struct list_head *head, struct sk_buff *skb,
- 
- 	p = tcp_gro_lookup(head, th);
- 	if (p) {
--		NAPI_GRO_CB(skb)->is_flist = NAPI_GRO_CB(p)->is_flist;
-+		/* flist GRO applies to consecutive non-GSO skbs */
-+		if (!skb_is_gso(skb) || !NAPI_GRO_CB(p)->is_flist) {
-+			NAPI_GRO_CB(skb)->is_flist = NAPI_GRO_CB(p)->is_flist;
-+			return;
-+		}
-+
-+		/* Fall back to the regular GRO path */
-+		if (NAPI_GRO_CB(p)->count == 1)
-+			NAPI_GRO_CB(p)->is_flist = 0;
-+
-+		NAPI_GRO_CB(skb)->is_flist = 0;
-+
- 		return;
- 	}
- 
-@@ -36,7 +47,7 @@ static void tcp6_check_fraglist_gro(struct list_head *head, struct sk_buff *skb,
- 	sk = __inet6_lookup_established(net, &hdr->saddr, th->source,
- 					&hdr->daddr, ntohs(th->dest),
- 					iif, sdif);
--	NAPI_GRO_CB(skb)->is_flist = !sk;
-+	NAPI_GRO_CB(skb)->is_flist = !sk && !skb_is_gso(skb);
- 	if (sk)
- 		sock_gen_put(sk);
- #endif /* IS_ENABLED(CONFIG_IPV6) */
+ 	if (intf == data->intf) {
+ 		if (data->isoc)
+ 			usb_driver_release_interface(&btusb_driver, data->isoc);
 -- 
-2.17.0
+2.55.0
 
 
