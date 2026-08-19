@@ -4,94 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED6F4C5DF85
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2026 17:43:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D32BC5DF81
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2026 19:29:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7MtCs8dnl1tQU2h4oXHMcOoDEsGNNkInvX360HS1foA=; b=z0VwfcTxoRK8e8pooEKdgXTtm3
-	RzVJTpVi/IGeE9WrfEPbFZyVrkucmrcyelSbJbWxQYty4poo0W1FLHdIl4uBcYq8rFoihqLOeqhYg
-	9qCXlAPbaXx/GSr3tZjyOTDgSqmxAiaHkeEKhp/FvnE6ctmV19PFyeApOqzDrjms5Lk0vyHay4gUY
-	SlbNyteXXdM+RwemAyofgv6QWjqP2q0G7ZjnUUB5f74+SkFqB99dnh5cNI9FJx+yF4aMd0rgvbLJE
-	2VcnfZNAlgeh3k/eBfkys/r8oSjuXikwvXz+9yDczkSF1sIw+5MKqZFZwJ72Cj5cQLdd86ky6+OmU
-	cAaZyUAg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=O/sNYgJI7iTmex3XqzHbkrDBlq9Mkontfk7aIxaop2E=; b=I56VDFY87jo0t501mY6jnZkTSF
+	9dDjXiE5QP38KjFCxcd7owcQjQeZUx5Dr1KdC7RG+z2ah3Vll9KiOkLZsVG7cGUw3f9CJ2IOPsD2r
+	l5cAPtYpWZFPLvXLIxN10sqGiJ4gzQR38jXlPciX353helbF98cDKH1XoP0yoSizCK2yBCiu2jMVV
+	s9pgRjz1ICW0zNrCdS4lCt+ZAU5f7AZWyRRoDScDo7OjfBQ7H/EVIrmyj2CP52A8Qm0SbJjFPwHTn
+	UNrjdoFBt57H00Yk72P4rQvg/axrWV2FlfPGolEqSQ/QgRkDSBDX3OdBGr2/Mw2+KYT3YGHBz/fIk
+	YTYij+PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwkKM-0000000AIb6-3WVE;
-	Wed, 19 Aug 2026 17:43:50 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1wwlyl-0000000ASVH-1kEj;
+	Wed, 19 Aug 2026 19:29:39 +0000
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwkKK-0000000AIa8-24cE
+	id 1wwlyj-0000000ASUj-0Co1
 	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Aug 2026 17:43:49 +0000
-Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-2cc891373e0so16383675ad.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 19 Aug 2026 10:43:48 -0700 (PDT)
+	Wed, 19 Aug 2026 19:29:38 +0000
+Received: by mail-pg1-x530.google.com with SMTP id 41be03b00d2f7-c9ef3e1337fso1078811a12.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 19 Aug 2026 12:29:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1787161428; x=1787766228; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=7MtCs8dnl1tQU2h4oXHMcOoDEsGNNkInvX360HS1foA=;
-        b=QqRp8Y8/anIOgOU41xFvPhsvezFiIQzsOH5VDt2jLf9PqQeSN0nD400o5p7vo7NjXc
-         oF082juD406yI9RQGGt54lYQA0Yhol7+xatWpss/fFjAOyln4KQfbUh39YBEcvLeIeFu
-         YrKsgs9FWmSWLNNiEBwvu5aHYHF93nPtRlLBkB1YNaFgoIXUaPWCMydWCggE4Ys1b9ja
-         qsFV2E2G2AhM+m2/GLfRle02xM56kehx8YcycrG81UtdZuZFik/Ccdcm+98TdKq0k0yu
-         2+r04SqiST5tQ1p0374EHEfeRHcV2934wYme14RAqYE21y4mBeJ2WdLAi9ui3FXYHzW8
-         DjWg==
+        d=gmail.com; s=20251104; t=1787167776; x=1787772576; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=O/sNYgJI7iTmex3XqzHbkrDBlq9Mkontfk7aIxaop2E=;
+        b=l31LVF9N4CX6sTD2ETXSVOpEjDBZk9RWmxsO4+q7qjZ0QUN/A08PCcwdSVV9Sfh+zf
+         UjKUiMGAUKhFbPweizBWcS4OinLNdK16YKAswRDu/2N7qnzHePMGTOzSxqQ+2Lh/XmGc
+         z8jooDYGClKq4nNsH5jLwv4oJX+ldXRSUZ1EbJfWGJv8cKvGREKNVPN7lSoavQQTDJlW
+         Won6YSFqk0rwLJMkD5OYFKxfNymZkkK8Bhmantos0jLKlr/u+1/HEJ6VClV8kjne9cgK
+         kDMZSRjfshCACtqld/7XpvtBxR50wdYQK2l/Lf/leAZe3zvRVgpVmcHJkuAeAGSbXsk0
+         OL3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787161428; x=1787766228;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=7MtCs8dnl1tQU2h4oXHMcOoDEsGNNkInvX360HS1foA=;
-        b=K0omt5VaszRPXLCa30KL4Msmk9KDYFAvzthruPG0J0XT3jkBV5hVohMec2mpOL+Mma
-         aqfqNwXsOj5lr9Z1hYzQIQ50IVp8oPSswYQ2L1uUyUb/KjOoykr2eGrKd1+YHksE3Nc6
-         59YM7FSBovVI46Gx9bdMGb76m+G3wF18td8As1UvS4mreKNqGQiKs7N6l61o8uUlGqXR
-         3qVT70jiaLQqka/qm/+FeBLaaUEiWhunpW+6MjTlGdA6nAWcoN2go412RUxBWw2ULvtO
-         UV/mfymQ9jfWgR+7proIGo1/4z0Lk7WhlwgnvXs5i4zsQtEoOWg17L1rS4U6fbx7TwRe
-         PDcA==
-X-Gm-Message-State: AFuF++kNnwk5EcK82FvNUzafcqU6MGxfYMf7k3ZLYRZbsFTw0CmWrvbP
-	TKxFjNJWPCEDkjQE3zXGtq5QMe4a29Hnszm2vyrd77EtZnMUEWxPuHrO
-X-Gm-Gg: AR+sD10jFQvilnntwM4Ik8+6tWohlrs3AzzjqSLjbf2IadrmdVXAWLOV6dctFXXOBte
-	iFlUAY+A35vx7uKeWzTCseV00DJaqSBYcTCDte/Ngt8tgQOl9sgyNf67dBJW9G3fY3abeG9V9og
-	wPvbKOlIMB9fc59EaWnZ4S+K1bQmjyjsIeaAIm7wHYgf6arU9V6BmtGq0HJrwxwkHZsbT85ESjT
-	tTuld/CXU8v4tbsZk6Cg26AAIr/2hcudmZA6Y/5ncvBWQ/vygmXousZV66flNc/WeFP6zPv/hUg
-	EdydzlYVODIpP+EJEaNgeVrs/5cgaYcFBttI0BC5noaDjcn32gTF75M2O7XB8yxb3cj7+1g5hja
-	KEjBfyk0OIY+7iqFs8d9/WVV1x1L3m0eOdCOV4IYZKf90FezMy7LN9sFiwiKsEF82gKjfIk55fx
-	nJFiBiuaUHA9ZBJasZCe8kGJTYStcEvJgVjBLLl14SJOfM6lp2L7P0DqRZUf+RaeraA7U4PYjgZ
-	p59CS81KqqPpOVlVOjX
-X-Received: by 2002:a17:902:fda6:b0:2cf:a108:7605 with SMTP id d9443c01a7336-2d60186263bmr126123935ad.11.1787161427501;
-        Wed, 19 Aug 2026 10:43:47 -0700 (PDT)
-Received: from buffalo-ssd (M014013071096.v4.enabler.ne.jp. [14.13.71.96])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2d5bb499e81sm30466825ad.1.2026.08.19.10.43.44
+        d=1e100.net; s=20251104; t=1787167776; x=1787772576;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=O/sNYgJI7iTmex3XqzHbkrDBlq9Mkontfk7aIxaop2E=;
+        b=aC6lrOKGZgXw4foVo6kt+PCHXPGPzaJtkUKuTlfgJtwDGW56X85zqtORvYZ4BJT+vV
+         O7kfHlmmzB8TMWGkwMRYKxTHv16pF/qcQfFmoX/7pL3lPE/mx/s28++rd0eG9DjbWB9H
+         ARHqhISZ+vKVBc1insXwTXO2D6EdFlDqQouow/CHLjcz1JNwEl1977Z+gVGjljkpsmNy
+         vDc6TxZ3c9UYtMLffnJlC94Q2Vfmarjg9kOolIJ3pT7RTE8Gufd3DTwSJhBrGhonhCZO
+         hpWeNnK80Bg+/bJQISC7RyCbtP0xAvfjKT+Fu6QzH79BdAJd0wJYsn0afTpMPtCbtxJe
+         roiw==
+X-Forwarded-Encrypted: i=1; AHgh+Rq00kl8RPQlvN3gn0lykXbkuJzhx12PsACOMeThtIHyv8gH284HNgHcxNjE2Cv+QQ0HTd083Rz0xIYtZq2MLw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxxnge+rrjr4zFfJjdU7V/Dab9S3YE1BBPsttf0WcM7SjgAUE5p
+	fi9w3i9NVuNqoPHj1giQqhRcc/owMSO9wKftorv95+iqcQXQBzWsWNVZ
+X-Gm-Gg: AR+sD101CfjFEYK16tuUeIDindgyZSdhE77Ym+oYYy3yHABFbX0FT4HoPN5BNYXPi73
+	Dt3n/SRsxZ+5QIQl6lURseJ1Mltt9sdjSThHWRWy3BAzScGzRWbd40mu+G6vaibTgRwBq2CZImT
+	VHY3swxWVZib0Lfr1FFSCuKjYXvsO6nHqOsV6q2Ssp5q4DAF8XEYM4ibo1bYztAjsSgVbiKHP5i
+	o9aySkL37J78ZDuG5VhUNL3Qfd4mtjSPctkXpPPjQOeuJjuQoz7XdTRlcKEUgDS1CTSIkwWUAFw
+	CR9Tqw2tL4okELX2IpSVo+Rn7Lxry5ZT+chU5LEFIu8hIybjYl37ORWhPzxNi2BMk4KLF4yMb1m
+	lw4dQnFkW3j3PkvrEsRNy/o+lIi7EsHajTUfCi9vat5033wOu2hXqt3b1WdJwpvSWVUM8dZttU4
+	dnFTea8Mz4a3onFWL564a+tpKpITAynLEAd8GRyOk4HmI2R5CJqzna8BIIdCO2XOy3FUZVEg==
+X-Received: by 2002:a05:6a20:d707:b0:3c1:fbf:1e2e with SMTP id adf61e73a8af0-3cd011d6123mr15174456637.10.1787167775719;
+        Wed, 19 Aug 2026 12:29:35 -0700 (PDT)
+Received: from DESKTOP-TIT0J8O.dm.ae ([49.47.196.141])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-327bef77be3sm9088789eec.10.2026.08.19.12.29.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 19 Aug 2026 10:43:47 -0700 (PDT)
-Date: Thu, 20 Aug 2026 02:43:43 +0900
-From: Akari Tsuyukusa <akkun11.open@gmail.com>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, 
-	Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v4 3/7] arm: dts: mediatek: mt6589: Enable toprgu reset
- controller
-Message-ID: <h6cxeranayykvjnco5vuaoccuknoiu4yiancmwugouewucb5k5@osmdfzfc5dsh>
-References: <20260819101853.44681-1-l.scorcia@gmail.com>
- <20260819101853.44681-4-l.scorcia@gmail.com>
+        Wed, 19 Aug 2026 12:29:35 -0700 (PDT)
+From: Ahmed Naseef <naseefkm@gmail.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>
+Cc: Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	naseefkm@gmail.com
+Subject: [PATCH wireless-next] wifi: mt76: mt7615: read MT7663 temperature from the correct offset
+Date: Wed, 19 Aug 2026 23:29:11 +0400
+Message-Id: <20260819192911.1886457-1-naseefkm@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260819101853.44681-4-l.scorcia@gmail.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260819_104348_538221_DD7E1AA0 
-X-CRM114-Status: GOOD (  12.99  )
+X-CRM114-CacheID: sfid-20260819_122937_091267_B7D107C2 
+X-CRM114-Status: GOOD (  10.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,30 +100,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On MT7663 the hwmon temp1_input attribute always reads 0.
 
-I noticed that my Signed-off-by is still present on this patch in v4.
+mt7615_mcu_parse_response() takes the temperature from the first dword of
+the THERMAL_CTRL response payload, but MT7663 firmware reports it in the
+second one. On a DASAN H660GM-A (MT7663E, N9 firmware 7663mp1827) the
+request and its response are:
 
-On Wed, Aug 19, 2026 at 12:16:24PM +0200, Luca Leonardo Scorcia wrote:
-> Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+  request:  00 00 00 00
+  response: 00 00 00 00 2a 00 00 00
 
-Sorry for confusing you with the v3 patch discussion. As discussed in
-v3, my Signed-off-by should not be included in the sign-off chain.
+0x2a is the reading, 42 degrees, while the driver returns the leading
+zero. mt7915 and mt7921 already pull sizeof(*rxd) + 4 for this command.
 
-Please drop my Signed-off-by from this patch.
+Restrict the extra pull to MT7663, as no MT7615 or MT7622 hardware was
+available to check whether their firmware uses the same layout.
 
-> --- a/arch/arm/boot/dts/mediatek/mt6589.dtsi
-> +++ b/arch/arm/boot/dts/mediatek/mt6589.dtsi
-> @@ -7,6 +7,7 @@
->  
->  #include <dt-bindings/interrupt-controller/irq.h>
->  #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +#include <dt-bindings/reset/mediatek,mt6589-wdt.h>
+Fixes: f40ac0f3d3c0 ("mt76: mt7615: introduce mt7663e support")
+Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-By the way, this header is not used by any part of mt6589.dtsi,
-so I think this line can simply be dropped.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+index ff57ede87f71..1ce0192c2c91 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+@@ -153,6 +153,8 @@ int mt7615_mcu_parse_response(struct mt76_dev *mdev, int cmd,
+ 		ret = *skb->data;
+ 	} else if (cmd == MCU_EXT_CMD(THERMAL_CTRL)) {
+ 		skb_pull(skb, sizeof(*rxd));
++		if (is_mt7663(mdev))
++			skb_pull(skb, 4);
+ 		ret = le32_to_cpu(*(__le32 *)skb->data);
+ 	} else if (cmd == MCU_EXT_QUERY(RF_REG_ACCESS)) {
+ 		skb_pull(skb, sizeof(*rxd));
+-- 
+2.34.1
 
-Best regards,
-Akari
 
