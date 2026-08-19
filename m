@@ -4,74 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62778C5DF6D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2026 09:52:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A2A0C5DF6D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2026 10:18:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yHcANXOUzZhV4MjrKHXZUBAWg4aG9Khq/Wvu5UZONCs=; b=HdF8KS5M+6OIw11zh4fxOyWLeP
-	v4edv0uP9DzjRwNV2kjJ2eHHUva/srpv4dKfMYObaoF24WNhfloy+QhY1C9fo7sAAKtaSprdgFVbM
-	L35DLZFA9fYf9z1xwDpRhuPHAn81sTS9wTkV0uSDV9GEqXaUup/qPL3IiSJCiP+eOGXq732J0keFv
-	hsJgbe/ZgagsEGHUZtp544Avs4WfaUR78a0QFf2C74GCJjwCQAKJEvdwnAxNPl2sCcSThgKyOD2Ej
-	hsVG0rOTAIARPLQixZAOM5sa//jEiaaFwnY8alSqzsWvYPzlwMIMi7pBwOOAdMRzz+m0tsoOQLY8g
-	5BVEYtig==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/xNynUBdZ1hKic7P/IiQFiODLJooKh+/AvfbqzXkgn4=; b=N/BGT7wM0y9siJGVxHkbra4GMJ
+	by5tQM+j97FVQjaCs18Od6c0fagaIHnqYogJ186bb7/3U4eYHUPO1FrZtsz/+6gYDBDwtiMcm5VrM
+	fzovksUwtIX6NVTB4GPQohP4cefeTO5Dxq8dM8V48t6p6fDqo9hlWV5yCwqTDuZztuzRiUC5Dwsps
+	HqXqPVV+047ajZTB06uYhGprL9xh1WfxBpziQ6njIieOFsS/lnQibVLFT8X9maFyVvZFoIZyo2LYL
+	7Ds3O+8It7I4CAM0+DGFlrfOCC/rC4xdqphxFc09zHaU2smiZM9XFkBt5W0QJug/85EVJPe5qLFWx
+	dpHb4NCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwcyP-00000009S8w-0chN;
-	Wed, 19 Aug 2026 09:52:41 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1wwdMt-00000009VNQ-2x8y;
+	Wed, 19 Aug 2026 10:17:59 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwcyM-00000009S7A-1bmi;
-	Wed, 19 Aug 2026 09:52:39 +0000
-X-UUID: b28422a09bb311f19a56ed5b684f684d-20260819
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:f201161b-c3f1-4dfe-95b1-629af28feecb,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:d4b4afcd073a426229884d47da646f3f,BulkI
-	D:nil,BulkQuantity:0,SF:81|82|102|136|865|898,TC:nil,Content:0|15|50,EDM:-
-	3|-100,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: b28422a09bb311f19a56ed5b684f684d-20260819
-X-User: liujiajia@kylinos.cn
-Received: from nature.lan [(10.44.16.150)] by mailgw.kylinos.cn
-	(envelope-from <liujiajia@kylinos.cn>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 1227869756; Wed, 19 Aug 2026 17:52:32 +0800
-From: Jiajia Liu <liujiajia@kylinos.cn>
-To: Marcel Holtmann <marcel@holtmann.org>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
-	Ying Hsu <yinghsu@chromium.org>,
-	Archie Pusaka <apusaka@chromium.org>,
-	Abhishek Pandit-Subedi <abhishekpandit@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1wwdMq-00000009VMV-1119
+	for linux-mediatek@lists.infradead.org;
+	Wed, 19 Aug 2026 10:17:57 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id 98e67ed59e1d1-3811f512167so1270530a91.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 19 Aug 2026 03:17:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1787134675; x=1787739475; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=/xNynUBdZ1hKic7P/IiQFiODLJooKh+/AvfbqzXkgn4=;
+        b=kg0zrFavVL5ou0DQsOxcAZOjlMb3GGxpm40QuQtXB4RjELryIPToZoxCdnUi/2urCP
+         jq1UkPu7sMDB1GZ4yl1rpowde98AcHA7ZCeF4InkMOPu51q+epZA1GFc8F7QzP4lQacm
+         kenNKcd5qeupTwCOaIsgT5qL+yd00HRePWmeGL2OkRah7Al6qRF6QRDTnIwpoQEzdlE4
+         mHLjtSTu62AJ+1WI+4aX2YLAZkjOBk2ixk4QDwOfpSY2oxSAM6WO3QfTC0rUlVUpYH3c
+         SQzJKmoxpv8voLpqePvICI+Tz3D15UT3bPXKyJ7ZyQyDfSfBN66AZjwXeVHAUqYAlOnB
+         LDIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787134675; x=1787739475;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=/xNynUBdZ1hKic7P/IiQFiODLJooKh+/AvfbqzXkgn4=;
+        b=IuZmGGYCGbJsyvP5Joajluh1e7KWeoy7aX8ZUR3KVN4P/FUCFRfZrt8U6tPqV9k6lv
+         l6iTC3KFBfmN2tr1TJv2VCN1IUVCc/4cxhDdHQYkFn+YfI6JBCpxNw/8j091ILRI2tI2
+         pD5mMXZtwEmGZhEdQlPIXNwBEOaR0+2poCIP2oNFWIsMoP9LSa1kcqAO2cd2D4zoiD6i
+         M0vrz+74YvLiawZ1LZ2/eXIbR028NRc2F8mHPV2IcHZ14+yVa44OEJaP6NEzKaP5OKFp
+         0F3agXZ76LuFWQ/wKpRju7WO+2T6Dl+olCt/ydce93zdeyk3oHyIXD92P4otsEOXN1IR
+         IcDA==
+X-Forwarded-Encrypted: i=1; AHgh+RpD3ceVpWW9QKSl/ed8lSScHqQRklhtjN6YPKTPrziof1g+uiQP1n0y7K33ioDhPd3AzXo/+bwAJvMx6CX+yw==@lists.infradead.org
+X-Gm-Message-State: AFuF++nbFApJBPJzJD1DMwV8YGrUGBTUx2D2dozc/B81uj7P+peZgjgj
+	ZhkIzX07zp57ruI7yBvzSNNyO0BRVH2deTAkFrtKwZ8J0vGuYWVnXjuv
+X-Gm-Gg: AR+sD11Cf50CKJuFCHBSRA2vWza3LRpYccO2fyvgJPvYJgPDEohh7QLfpZ882BI/58x
+	zVEoDtSape4dnSF46S5jYwiu9A7GRXggOk/VG3W1Hv6qKtkCiOy26EFT9h9if75HqWKUDrxB17A
+	AFfLSByHWSBt77mFtGWTtBOS3CDivhiF48aNiQKMdaKptvet+Gm23vmCE3/gbqYMFLwOkxLfacf
+	b9HoZcmrZC6g4jRduVnr23VgkaXGqycUkkzMj3ENMN4KoM/85E1NFrM2Y0fNDotQdlS4VysMuXc
+	pNI/tlHuZd3eQfI8ZwMp973Z5VszeuCbOf96HL4A1l+jMciZv01yzyW47DKHfpBzh25rYgF0vfS
+	bxHegeAgSSRtj7okj7BXf0R4FWWB8bpUtQCKG7LmSHoqBYs7T5CmlE7TnSCwkPfaQGKqvd7WCK1
+	AXdJT/6heY01M4BtEsHj8cBAc9jwy3C8O1WbrnvanHkCGRY0kBWBLfglxih+olM5NRtxi7+5Wl6
+	cztupHd65iJwToK1FADCbt6iBH1PZyEBuRPy3B+hvq1NvyZv8VrkcFZEVeCNg4K5W1Sqv/ZnXvS
+	D9/p
+X-Received: by 2002:a17:90b:4ac9:b0:37f:ed7e:7e42 with SMTP id 98e67ed59e1d1-395810cad6amr6268601a91.14.1787134675189;
+        Wed, 19 Aug 2026 03:17:55 -0700 (PDT)
+Received: from phuc-desktop.. ([183.91.15.56])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3957fb60a2bsm2222374a91.17.2026.08.19.03.17.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Aug 2026 03:17:54 -0700 (PDT)
+From: phucduc.bui@gmail.com
+To: Mark Brown <broonie@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jing Cai <jing.cai@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Chris Lu <chris.lu@mediatek.com>
-Cc: linux-bluetooth@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Cezary Rojewski <cezary.rojewski@intel.com>,
+	linux-sound@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Jiajia Liu <liujiajia@kylinos.cn>
-Subject: [PATCH v2 2/2] Bluetooth: btusb: Fix leaked runtime PM reference in btusb_reset
-Date: Wed, 19 Aug 2026 17:52:09 +0800
-Message-ID: <32063ab253702663276b200365388116218aa5c2.1787132512.git.liujiajia@kylinos.cn>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <ec23dae6c247005e8eccd312d326a626163ea491.1787132512.git.liujiajia@kylinos.cn>
-References: <ec23dae6c247005e8eccd312d326a626163ea491.1787132512.git.liujiajia@kylinos.cn>
+	linux-kernel@vger.kernel.org,
+	bui duc phuc <phucduc.bui@gmail.com>
+Subject: [PATCH v2 1/3] ASoC: mediatek: mt6797: fix wrong unwind order and error code in enable_clock
+Date: Wed, 19 Aug 2026 17:17:34 +0700
+Message-ID: <20260819101736.67632-1-phucduc.bui@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260819_025238_735357_BD6A2E2B 
-X-CRM114-Status: GOOD (  11.11  )
+X-CRM114-CacheID: sfid-20260819_031756_446793_5753770B 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,52 +106,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-btusb_reset calls usb_autopm_get_interface to resume the device
-before queuing a reset of it, but never calls the matching
-usb_autopm_put_interface.
+From: bui duc phuc <phucduc.bui@gmail.com>
 
-usb_queue_reset_device ends up in usb_reset_device(), and since
-btusb provides no pre_reset/post_reset callbacks the interface is
-merely unbound and rebound: the interface device object survives
-this cycle, and so does its PM usage count, which is not cleared
-when the driver is unbound.
+The error paths in mt6797_afe_enable_clock() use incorrect goto labels,
+causing clocks that failed to enable to be disabled during cleanup.
 
-As a result every reset permanently leaks a PM usage reference,
-preventing the interface from being runtime suspended again until
-it is unbound.
+Fix the goto labels to only unwind clocks that were successfully
+enabled, and return the actual error code.
 
-Set BTUSB_USB_RESET_ACTIVE flag before usb_queue_device_reset so
-that the reference can be released in btusb_disconnect.
-
-Fixes: c9209b269afd ("Bluetooth: btusb: Introduce generic USB reset")
-Assisted-by: Claude:qwen3.8-max
-Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
+Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
+ sound/soc/mediatek/mt6797/mt6797-afe-clk.c | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
 
-Changes in v2:
-- Fix the race window (sashiko)
-  set BTUSB_USB_RESET_ACTIVE flag before usb_queue_reset_device.
-
-Changes in v1:
-- add usb_autopm_put_interface after usb_queue_reset_device
-
----
- drivers/bluetooth/btusb.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 45a726bed0dd..ed5d6d0f2c1b 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -1041,6 +1041,7 @@ static void btusb_reset(struct hci_dev *hdev)
+diff --git a/sound/soc/mediatek/mt6797/mt6797-afe-clk.c b/sound/soc/mediatek/mt6797/mt6797-afe-clk.c
+index 6f3e6acfcfab..0ac04d73b777 100644
+--- a/sound/soc/mediatek/mt6797/mt6797-afe-clk.c
++++ b/sound/soc/mediatek/mt6797/mt6797-afe-clk.c
+@@ -63,21 +63,21 @@ int mt6797_afe_enable_clock(struct mtk_base_afe *afe)
+ 	if (ret) {
+ 		dev_err(afe->dev, "%s(), clk_prepare_enable %s fail %d\n",
+ 			__func__, aud_clks[CLK_INFRA_SYS_AUD], ret);
+-		goto CLK_INFRA_SYS_AUDIO_ERR;
++		return ret;
  	}
  
- 	bt_dev_err(hdev, "Resetting usb device.");
-+	set_bit(BTUSB_USB_RESET_ACTIVE, &data->flags);
- 	usb_queue_reset_device(data->intf);
+ 	ret = clk_prepare_enable(afe_priv->clk[CLK_INFRA_SYS_AUD_26M]);
+ 	if (ret) {
+ 		dev_err(afe->dev, "%s(), clk_prepare_enable %s fail %d\n",
+ 			__func__, aud_clks[CLK_INFRA_SYS_AUD_26M], ret);
+-		goto CLK_INFRA_SYS_AUD_26M_ERR;
++		goto CLK_INFRA_SYS_AUDIO_ERR;
+ 	}
+ 
+ 	ret = clk_prepare_enable(afe_priv->clk[CLK_TOP_MUX_AUD]);
+ 	if (ret) {
+ 		dev_err(afe->dev, "%s(), clk_prepare_enable %s fail %d\n",
+ 			__func__, aud_clks[CLK_TOP_MUX_AUD], ret);
+-		goto CLK_MUX_AUDIO_ERR;
++		goto CLK_INFRA_SYS_AUD_26M_ERR;
+ 	}
+ 
+ 	ret = clk_set_parent(afe_priv->clk[CLK_TOP_MUX_AUD],
+@@ -93,13 +93,11 @@ int mt6797_afe_enable_clock(struct mtk_base_afe *afe)
+ 	if (ret) {
+ 		dev_err(afe->dev, "%s(), clk_prepare_enable %s fail %d\n",
+ 			__func__, aud_clks[CLK_TOP_MUX_AUD_BUS], ret);
+-		goto CLK_MUX_AUDIO_INTBUS_ERR;
++		goto CLK_MUX_AUDIO_ERR;
+ 	}
+ 
+-	return ret;
++	return 0;
+ 
+-CLK_MUX_AUDIO_INTBUS_ERR:
+-	clk_disable_unprepare(afe_priv->clk[CLK_TOP_MUX_AUD_BUS]);
+ CLK_MUX_AUDIO_ERR:
+ 	clk_disable_unprepare(afe_priv->clk[CLK_TOP_MUX_AUD]);
+ CLK_INFRA_SYS_AUD_26M_ERR:
+@@ -107,7 +105,7 @@ int mt6797_afe_enable_clock(struct mtk_base_afe *afe)
+ CLK_INFRA_SYS_AUDIO_ERR:
+ 	clk_disable_unprepare(afe_priv->clk[CLK_INFRA_SYS_AUD]);
+ 
+-	return 0;
++	return ret;
  }
  
+ int mt6797_afe_disable_clock(struct mtk_base_afe *afe)
 -- 
-2.55.0
+2.43.0
 
 
