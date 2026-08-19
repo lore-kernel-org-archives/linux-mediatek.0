@@ -4,112 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D67F9C5DF81
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2026 16:35:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67C8DC5DF81
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2026 17:15:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TRAkgPHFku3K+qajzjnPibaXiy9bxH0hoBjsc6qNOtE=; b=mqgmezXNtNewXM9Xbo+RCAIUYv
-	jGuCjgn5lmLDHR7uUzPUYRL5FvTjrO2KdHag4g8Botz1kFTjDJf/+SSq99nNpoja9AsKbcTceJ8By
-	M4497BM405TCeQ+IaxIs8FUMWGsa1+SvQmdXLMDGPQbp8/oTk1QP2twoUXIjgPI7bwCDBTs1OISpM
-	wVo8NHg/sZ9x0rQ2eYoqlUEIE1dGEx+ZIITBCY2WLL/Tu9HwWk1p4fzxtk3ReA7hKC/QwtdTgBR+Z
-	lUVeQU2EYPKadqE+Er8aduLnXSjkhOPqMz6JzZIO5NVP1JRAEOkHvfJ7Ogsc8APxmADk7ArH+W8D6
-	NJ7e2YXQ==;
+	bh=nYbsrWivBMCeajuwceCcXZv8DWqP+VkuZva8rP+5LTk=; b=ARP526YTrWY03mnn+xb9QrqP86
+	UBHFWHceYypm4AAlwHG5Guj+eJp5rpSRJRcPvoinmj6uWrtoq44usEArje09U86gDDwWGeQ4b1VKV
+	nwIwZu6OfQTPE/xovEtjXEDz4UwNRhZt7prb+4QWk36G7Mh6k766L7xrQ9COsnRJW3HUHE7XS4Vr1
+	pEpq4qycgzxWWu/CtgsNNZoBiL/APIf3uJNvipN/nZLKdgRFYu9XwKMCOMNDddqfSjTRzw3ZjfHMo
+	IFHyG9nlGfnPIZW+CgX8pnxsk2LOtCE+eTzifzo6yYMcBytAbQYqisT6u81+QD8nC5YmuTaXDAcrZ
+	S8UeitFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwjGb-0000000ACRi-3NrC;
-	Wed, 19 Aug 2026 16:35:53 +0000
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+	id 1wwjso-0000000AG7j-3ztj;
+	Wed, 19 Aug 2026 17:15:22 +0000
+Received: from out-121.mta1.migadu.com ([2001:41d0:203:375::79] helo=mta1.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwjGZ-0000000ACQw-1Ygd
+	id 1wwjsl-0000000AG6a-1l9t
 	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Aug 2026 16:35:52 +0000
-Received: by mail-yw1-x112d.google.com with SMTP id 00721157ae682-836cb2fa1bcso19141857b3.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 19 Aug 2026 09:35:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1787157350; cv=none;
-        d=google.com; s=arc-20260327;
-        b=RUg9zN90AKlcUGeNjGoZcrWtziSgvcCTKXf//r+c2tUW1C2z/Bn79sjql402TUdU/E
-         Ac13l3wDaM73yMeVpgMKE3h75Xn4Zln0LnNYsSR9oYYqAca9pkGAbRvwjxxlJUKKQXK6
-         RmNY1s+cyHFqs5KuGHHGr4kA2g1fk5sLpqiUP/EfKH6Sz3K3HglIjwVrrLHa9KNYK3vi
-         DCNT2zafnD0yWdjO1P+ODoRcBSOjT0ys7sH0dbZvXJtTwAG0lYVPd9yBF7CrZpfjHgMB
-         iVtojqyG+3qQVV8h3JTOgfj6gRmxzTs4bdAEmhqa751+wn72sTIdgnzOp0yXtgxVcHZo
-         OxAQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=TRAkgPHFku3K+qajzjnPibaXiy9bxH0hoBjsc6qNOtE=;
-        fh=h+OL0SAtZaoiKE+JrdiWVbceXh+nzOPhEjbE4hRI8Ug=;
-        b=T6eitFR7fn7D5aRoPJzBJHidWwWd+N1UoYOPnRIO9C/+MhjAiznv8kg1AhZx3yJfYD
-         lkB4x4Pt67MEGXU3PDtWCXxdd6mZwuIOGep0hKi5VfCogLnO+vUVNE4JoUoZfWpgF4f/
-         b3xTJ1Fc8NHRcpELjTO8ls2yTqCVBgrw8nGXF7LaNmeOOYYzvcEK/n0Rf4N9K+Vr+vgv
-         AqhQn/09uWsf3ECvgFnw8lAEAmKbqr19quBh233G8c+SsqRM9OXhZZevfJiclFlZq19q
-         snKqQmDVEM907McSizznY1HQHFeOBLv7sytKArhVs/yBiL3m7p0Ay2h1CjjSB/IsCCyM
-         Hdjw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1787157350; x=1787762150; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=TRAkgPHFku3K+qajzjnPibaXiy9bxH0hoBjsc6qNOtE=;
-        b=U1jX51lwMTpxJ69Rp6b3JUUjhVeD53GisTHdy0O2MqKQ50iFAbFKZP/8jgD/Jc/z46
-         7QHXQKR2CpvpPQ+IZgFNkiM8dfknZCLIRIUOT9avncRRKpX/Nl6oaT2/IzFo6CP7Ai43
-         EFNOy3Hp62YB+CnzUUGh6FPCP8L3JNRp2L5oD3cX2g63qem6DdMh5qysEmLNuvIm0RXh
-         VaF7cPNStXt68MpaHOZflr/AjXOO8ZUEPS0lrP4X/U4PrSSuUa+G4PVx30N6Xs2LQYtx
-         ZKvLmZMYl4eV7VHjFmEjsk2k67qYZrU1UTb1ahkmy2zHmUlkfQlewMprVYdZtRaidoGW
-         sYOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787157350; x=1787762150;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=TRAkgPHFku3K+qajzjnPibaXiy9bxH0hoBjsc6qNOtE=;
-        b=jJi2WyrusuDMJgoGvVF8fF43lGF2Q9f46dCjwfzSHYcas1iLytYxl9greuryW/gVMl
-         q3ykQFouxBPbhSmMvTxk3snoeGBJxWlKa9brimRoIgRaI5pwMzYvaTYCSvBJxdn/xrWm
-         rVwQYuqhsis8243Y6NsVqdJOGhcClk0W8rulPnhJ+PiPt+8eZu/E0I6e59pbRX9eZVFs
-         3nuXIQBEnFypOyEb8Gt/RdK2m8BIn9DYgM2rFJZopxfoS55WB1fFk+q74vZen/PYY01w
-         GVvQ02/OXJ54sSWKA4QWyeSTmrzdeg898SizEJ0mzUVKdc4xSzpo/w0nXx9YrLbXfK2C
-         yYeg==
-X-Forwarded-Encrypted: i=1; AHgh+RopSXpsk+d54wialFD8Wa+8cRsFMN0imAMRFEJwoLe5Y+1CfdudCHHx9z0pp3dKMVpZOoAecrX62eh1d163mg==@lists.infradead.org
-X-Gm-Message-State: AFuF++mb3TOwHn/hXmyl5kmhBzA9Fs70k7jkvC8OarkuEhfN40BWLGCs
-	V6sKSOlYFS/Z8fZVB7OSUHtvHATxv+PBZlQkeSNAmyFRUkFu4NCnKg6UT6KtTeUTdGOEHvO6Kvp
-	nJeJSqj2ZQan8elpnUe8W+sNoJ1n+2Hc=
-X-Gm-Gg: AR+sD13Wj0daSZTL6Zlnt8gWjxA+1cVfRBqp7JYbKB9iAY0XRPdUUBg+a5qwMfXjq1S
-	uV70X6IbnZz5V0A5/1bY3sbALJvhJA1IZPyzD4nkczRMJ+esGsoQaMmG00Pmfiroh0GfJHYogeK
-	mJqCvO1Q9yop31+n7s9Yxu3xN2qX435eGD/Fpyn8tv9IQ3YTJgp30baSfHHl1A+j5APsE/Rew+r
-	VrRW87pUoA5Xo/ywSBBzWLk/ruDDN2jLptrqXIKkB/R9jFnvJGSq/JBb4LHjzAWWD/cO09/1/+0
-	M+AvXVfo8Hc1vOUFpJJ1w5JUa9BthJqCR5qbCDbKOjJMaG6nMIEPbhrbTKyp3MJ2VJ5r6pCXFB8
-	rj5c2MtlCbN87l+RchbDFuC9o/ZHw
-X-Received: by 2002:a05:690c:e284:10b0:81f:a7b5:7f0e with SMTP id
- 00721157ae682-844e3d5b9camr18778167b3.26.1787157349722; Wed, 19 Aug 2026
- 09:35:49 -0700 (PDT)
+	Wed, 19 Aug 2026 17:15:22 +0000
+X-Envelope-To: linux-mediatek@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=ZGyWkzttW3nnagzLYFMbHLzIPd7mtY05HDR/82e8DcI=;
+ c=simple/simple; d=justthetip.ca;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1787159712; v=1; x=1787764512;
+ b=U8cSw0MW2e6g2QBtQZQD/7lMoO5b7STVbZ8eb/XEPs9bVb0RmEUSSVwhlZoQ5sGlku5Hk/Av
+ hwSg5mE7w+S0HF9GfcOOIXZHhxI4bpeGSRWUyXccVePcINT9TSH91ug+YR/sKv2tjaHjkdq0two
+ ZOApiYdIV6uQOHB+V6RhsIT81X7VEQHHEo4zl0RJop9ZyXLzxVk7b00tQuwVNip4ClOXPqz1QOR
+ Ku5EPYCaKsvr+tjU0629fNqR6Lk7fGXeU8F8e1qnzbntVjy7EQ3+rkKPJR6zOKHyKFGAzQgixXo
+ 9fCWMhx6uDi5PFwHBaDiXogdhwrd0p+pwjk4fciQpWTvw==
+X-Envelope-To: linux-mediatek@lists.infradead.org
+Received: from fedora.lan (2001:569:be59:c500:b340:3f2c:4486:21c1)
+	by smtp.migadu.com with ESMTPS id b01abdb8988f6c9c;
+	Wed, 19 Aug 2026 17:15:01 +0000
+X-Mizu-Trace-ID: b01abdb8988f6c9c
+X-Migadu-Flow: FLOW_OUT
+From: Devin Wittmayer <lucid_duck@justthetip.ca>
+To: moosager <moosager90@gmail.com>
+Cc: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Deren Wu <deren.wu@mediatek.com>
+Subject: Re: [PATCH wireless] wifi: mt76: mt7921: check drv_pmctrl return in the PCIe reset path
+Date: Wed, 19 Aug 2026 10:14:54 -0700
+Message-ID: <20260819171454.21329-1-lucid_duck@justthetip.ca>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <an23_8DALILoGLP6@fedora.fritz.box>
+References: <20260809012309.43657-1-lucid_duck@justthetip.ca> <an23_8DALILoGLP6@fedora.fritz.box>
 MIME-Version: 1.0
-References: <ec23dae6c247005e8eccd312d326a626163ea491.1787132512.git.liujiajia@kylinos.cn>
-In-Reply-To: <ec23dae6c247005e8eccd312d326a626163ea491.1787132512.git.liujiajia@kylinos.cn>
-From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Date: Wed, 19 Aug 2026 12:35:38 -0400
-X-Gm-Features: AcwNN1W6XuOgeA5e2OhnPyTrBuVGeEQINGGnNT6mDgRFvBtgWJXRQOG9YTogiw4
-Message-ID: <CABBYNZ+Ow7XQTpM6gO_x2c9Z=jKewXk=dknxX6Ly9QZdezi4zA@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] Bluetooth: btusb: mediatek: Fix leaked runtime PM
- reference in reset
-To: Jiajia Liu <liujiajia@kylinos.cn>
-Cc: Marcel Holtmann <marcel@holtmann.org>, Ying Hsu <yinghsu@chromium.org>, 
-	Archie Pusaka <apusaka@chromium.org>, Abhishek Pandit-Subedi <abhishekpandit@google.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jing Cai <jing.cai@mediatek.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, 
-	linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260819_093551_431607_ABE4CAC9 
-X-CRM114-Status: GOOD (  25.06  )
+X-CRM114-CacheID: sfid-20260819_101519_893506_DA2FAC50 
+X-CRM114-Status: GOOD (  14.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,102 +78,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jiajia,
 
-On Wed, Aug 19, 2026 at 5:52=E2=80=AFAM Jiajia Liu <liujiajia@kylinos.cn> w=
-rote:
->
-> MT7925 on HP Pro Mini 260 sometimes timed out during reloading driver
-> and reset usb device. btusb_suspend is not called again after closing
-> bluetooth interface.
->
->  usbcore: registered new interface driver btusb
->  Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20260605184935
->  Bluetooth: hci0: Execution of wmt command timed out
->  Bluetooth: hci0: Failed to send wmt patch dwnld (-110)
->  Bluetooth: hci0: Failed to set up firmware (-110)
->  usb 3-10: reset high-speed USB device number 4 using xhci_hcd
->  Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20260605184935
->  Bluetooth: hci0: Device setup in 1856545 usecs
->  Bluetooth: hci0: AOSP extensions version v1.00
->  Bluetooth: hci0: AOSP quality report is supported
->  Bluetooth: MGMT ver 1.23
->
-> btusb_mtk_reset calls usb_autopm_get_interface to resume the device
-> before driving the hardware reset, but never calls the matching
-> usb_autopm_put_interface. Every hardware reset therefore leaks a PM
-> usage reference of the interface, preventing the device from being
-> runtime suspended again until it is unbound.
->
-> Add BTUSB_USB_RESET_ACTIVE flag and set it before usb_queue_reset_device.
-> Release the PM reference in btusb_disconnect if this flag is set.
->
-> Fixes: 25b6d7593a3a ("Bluetooth: btmtk: introduce btmtk reset work")
-> Assisted-by: Claude:qwen3.8-max
-> Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
-> ---
->
-> Changes in v2:
-> - Fix the race window (sashiko)
->   Add and set BTUSB_USB_RESET_ACTIVE flag before usb_queue_reset_device.
->   Release PM reference in btusb_disconnect if this flag is set.
->
-> Changes in v1:
-> - add usb_autopm_put_interface after usb_queue_reset_device
->
-> ---
->  drivers/bluetooth/btusb.c | 5 +++++
->  1 file changed, 5 insertions(+)
->
-> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-> index 184e95c1625e..45a726bed0dd 100644
-> --- a/drivers/bluetooth/btusb.c
-> +++ b/drivers/bluetooth/btusb.c
-> @@ -957,6 +957,7 @@ struct qca_dump_info {
->  #define BTUSB_USE_ALT3_FOR_WBS 15
->  #define BTUSB_ALT6_CONTINUOUS_TX       16
->  #define BTUSB_HW_SSR_ACTIVE    17
-> +#define BTUSB_USB_RESET_ACTIVE 18
->
->  struct btusb_data {
->         struct hci_dev       *hdev;
-> @@ -2915,6 +2916,7 @@ static int btusb_mtk_reset(struct hci_dev *hdev, vo=
-id *rst_data)
->
->         err =3D btmtk_usb_subsys_reset(hdev, btmtk_data->dev_id);
->
-> +       set_bit(BTUSB_USB_RESET_ACTIVE, &data->flags);
->         usb_queue_reset_device(data->intf);
->         clear_bit(BTMTK_HW_RESET_ACTIVE, &btmtk_data->flags);
->
-> @@ -4497,6 +4499,9 @@ static void btusb_disconnect(struct usb_interface *=
-intf)
->         if (data->reset_gpio)
->                 gpiod_put(data->reset_gpio);
->
-> +       if (test_bit(BTUSB_USB_RESET_ACTIVE, &data->flags))
-> +               usb_autopm_put_interface_no_suspend(data->intf);
+Thanks for testing it, and sorry for the slow reply.
 
-Should this be test_and_clear_bit rather then just test_bit, otherwise
-it doesn't seem to be ever cleared? Sashiko also complains about the
-handling of multiple resets (is that really possible though?):
+If you're up for it, reply with this line and it'll get picked up:
 
-https://sashiko.dev/#/patchset/ec23dae6c247005e8eccd312d326a626163ea491.178=
-7132512.git.liujiajia%40kylinos.cn
+Tested-by: moosager <moosager90@gmail.com>
 
-Or perhaps we should check if BTUSB_USB_RESET_ACTIVE (Id rename it to
-just BTUSB_RESET) and then don't queue a second time which perhaps is
-what sashiko is talking about when it refers to reference.
+Fair point on the 2022 one. The difference is Deren's had to be a goto
+because napi was already torn down by then, mine returns before any of that
+runs. Still doesn't tell you why the handshake fails though, you're right
+there.
 
->         if (intf =3D=3D data->intf) {
->                 if (data->isoc)
->                         usb_driver_release_interface(&btusb_driver, data-=
->isoc);
-> --
-> 2.55.0
+On the debugging, I instrumented the same failure on an MT7922 back in July.
+Wedged, it read lpctl=0x00000004 and misc=0x00000003, and a scratch write of
+0xa5a5a5a5 read back exactly. So on mine the bus is fine and the chip is
+alive, it just won't give ownership up.
+
+Yours reads 0xffffffff where mine reads 0x4, and that's the part I'd chase.
+The same write test tells you which one you've got, no patch needed, and
+nothing on the host side reads that register:
+
+  echo 0x54000120 > /sys/kernel/debug/ieee80211/phy0/mt76/regidx
+  echo 0xa5a5a5a5 > /sys/kernel/debug/ieee80211/phy0/mt76/regval
+  cat /sys/kernel/debug/ieee80211/phy0/mt76/regval
+
+Comes back 0xa5a5a5a5 and it's alive and latched like mine. Comes back
+0xffffffff and it's off the bus, which is a different bug.
+
+Your repro wedges an MT7922 here too, for what it's worth, not just your
+laptop.
+
+Devin
+
+On 13 Aug 2026, moosager wrote:
+
+> I would like to reiterate, though, that a more complete fix should be
+> pursued by anyone who has more knowledge of the driver or firmware.
+> Previously, a marginal improvement like this one was applied, but the
+> issue persists to this day (see [1]).
+
+On 4 Aug 2026, moosager wrote:
+
+> and it expects to find 0x00000004 (which is PCIE_LPCR_HOST_OWN_SYNC).
+> Instead, when the issue happens, it finds 0xffffffff, which does not
+> change even after the driver attempts to write to it.
 >
-
-
---=20
-Luiz Augusto von Dentz
+> I would like some guidance as to how I could debug the issue further,
+> though ultimately the problem is likely in the firmware.
 
