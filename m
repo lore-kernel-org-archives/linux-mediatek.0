@@ -4,66 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67C8DC5DF81
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2026 17:15:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CF9BC5DF81
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Aug 2026 17:18:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nYbsrWivBMCeajuwceCcXZv8DWqP+VkuZva8rP+5LTk=; b=ARP526YTrWY03mnn+xb9QrqP86
-	UBHFWHceYypm4AAlwHG5Guj+eJp5rpSRJRcPvoinmj6uWrtoq44usEArje09U86gDDwWGeQ4b1VKV
-	nwIwZu6OfQTPE/xovEtjXEDz4UwNRhZt7prb+4QWk36G7Mh6k766L7xrQ9COsnRJW3HUHE7XS4Vr1
-	pEpq4qycgzxWWu/CtgsNNZoBiL/APIf3uJNvipN/nZLKdgRFYu9XwKMCOMNDddqfSjTRzw3ZjfHMo
-	IFHyG9nlGfnPIZW+CgX8pnxsk2LOtCE+eTzifzo6yYMcBytAbQYqisT6u81+QD8nC5YmuTaXDAcrZ
-	S8UeitFA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VFRNQn9+IiCFEpwSAiKoW4qdoRMCAiZZVu4dsGCqCeM=; b=d1R/IM8thSQyneS8k+qSXl7bBT
+	sAuFq9Y5r10Jg5nKureherj1M+zS8NwSNQVywJKEfyibxLZvQ+herekTPd3aZm2MRiHqob4ttWWHa
+	6Kz6FQqL5EzrGiWhWor6kV67/Ha+GLY9KP/+jeuOmhVxJ59UMRJFZz4bkBhDmrxy4AOh4HCz91McF
+	TBMav3dZ7cqX7SGNbEfEP8X1SduJvWBS3JIpjoLsdNRjNiJkaQsBventCJwfFGWDK8h55Jm2BDyZk
+	A9Xl5BPVPYsgqQYQGGPE17NTaO6f8xBSlrmmw5T1nG6J8D/0P8zwHCa4sUWNDwAyWcLSzGVjDLKMr
+	g8JzGwYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwjso-0000000AG7j-3ztj;
-	Wed, 19 Aug 2026 17:15:22 +0000
-Received: from out-121.mta1.migadu.com ([2001:41d0:203:375::79] helo=mta1.migadu.com)
+	id 1wwjvK-0000000AGR3-1ZNS;
+	Wed, 19 Aug 2026 17:17:58 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwjsl-0000000AG6a-1l9t
+	id 1wwjvD-0000000AGOu-367L
 	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Aug 2026 17:15:22 +0000
-X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=ZGyWkzttW3nnagzLYFMbHLzIPd7mtY05HDR/82e8DcI=;
- c=simple/simple; d=justthetip.ca;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1787159712; v=1; x=1787764512;
- b=U8cSw0MW2e6g2QBtQZQD/7lMoO5b7STVbZ8eb/XEPs9bVb0RmEUSSVwhlZoQ5sGlku5Hk/Av
- hwSg5mE7w+S0HF9GfcOOIXZHhxI4bpeGSRWUyXccVePcINT9TSH91ug+YR/sKv2tjaHjkdq0two
- ZOApiYdIV6uQOHB+V6RhsIT81X7VEQHHEo4zl0RJop9ZyXLzxVk7b00tQuwVNip4ClOXPqz1QOR
- Ku5EPYCaKsvr+tjU0629fNqR6Lk7fGXeU8F8e1qnzbntVjy7EQ3+rkKPJR6zOKHyKFGAzQgixXo
- 9fCWMhx6uDi5PFwHBaDiXogdhwrd0p+pwjk4fciQpWTvw==
-X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: from fedora.lan (2001:569:be59:c500:b340:3f2c:4486:21c1)
-	by smtp.migadu.com with ESMTPS id b01abdb8988f6c9c;
-	Wed, 19 Aug 2026 17:15:01 +0000
-X-Mizu-Trace-ID: b01abdb8988f6c9c
-X-Migadu-Flow: FLOW_OUT
-From: Devin Wittmayer <lucid_duck@justthetip.ca>
-To: moosager <moosager90@gmail.com>
-Cc: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Deren Wu <deren.wu@mediatek.com>
-Subject: Re: [PATCH wireless] wifi: mt76: mt7921: check drv_pmctrl return in the PCIe reset path
-Date: Wed, 19 Aug 2026 10:14:54 -0700
-Message-ID: <20260819171454.21329-1-lucid_duck@justthetip.ca>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <an23_8DALILoGLP6@fedora.fritz.box>
-References: <20260809012309.43657-1-lucid_duck@justthetip.ca> <an23_8DALILoGLP6@fedora.fritz.box>
+	Wed, 19 Aug 2026 17:17:53 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-2d032846c95so16584765ad.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 19 Aug 2026 10:17:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1787159871; x=1787764671; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=VFRNQn9+IiCFEpwSAiKoW4qdoRMCAiZZVu4dsGCqCeM=;
+        b=CBpCiv1Dd5rQvOYVyAC1fGMqFAZu00NaRfZq+9VuIn/h/H7DHM2MSGWCQTljUVn9a0
+         a6hKsWduDvHdt+9MKnHddRY30gIQJvn1T7JeCKfJ+VEVJpc2jkdOyz4nJ+qfnl+2/R8R
+         Yuk1O4LyHFrUaLBJK3Bakda+5fAlHJgE2TAo8AUVk9/m3qElPTZdFec+5H1HZqZ838Wv
+         ftKktD6pC8tXGaeH/PWK9hKZMKdoQomChj48ZGaJcKGX8KvbVenavwWcrpiFGBVzLBaH
+         0AgNZMJpq4BBS8oL8XAuk23v6zrc/CBENBct4T3LecczzjQoUkgax4LmF/ypcD7hcpn+
+         XcXw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787159871; x=1787764671;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=VFRNQn9+IiCFEpwSAiKoW4qdoRMCAiZZVu4dsGCqCeM=;
+        b=ZA5jgaAoUewNzJPrCy9zQZNf4xMlrIInpUiuPWUgKWMkYeJSSuK5uOZwa6Frau7xj5
+         hqP67rXkRPeeWBK36NHw2jNuO+waJCZBdmtWEGJ7eui/yO2Wa2uZN/QL6KcQTmwiQc57
+         sNkSYn3kh1Y7vBPZvWcWG+sPpFQx+yXSdLDVCHCM3d9ggiWcDSqGm0D8e4nyPgaAdKZH
+         WbM5qoxQeeQo3v7xH5m4FaCceKEmzkzhebsXiq0gft1CmIDOPVhDEn01x/U/ygg/B3Ag
+         h/rYIZTHeI7zBEiNnZofgcbGSpn1VDACeR0PlRIF25jVNSDZFO63saalQSLQcVRz8W3Q
+         92IQ==
+X-Gm-Message-State: AFuF++k5H3R55b8KPV9yuEUq8HhPYYZDHrD5e92h3mxifcNuE+/9x3t/
+	iA7OhuRH+eklmyS1C1S5fZkBZFVjYEdehDUzV/19N86cNl2AYuwVQ97u
+X-Gm-Gg: AR+sD127Ax+k73gByhwiqHVT9LfBd8yAWwH89GsRPprrdePjGRqh5qTsYakRbvNsvFo
+	gM3ej83zCjiVi/2oRhF1oTHFuseITYNpdh+u3OO1dpZW8EL68LJOfQ8m7E6EpIEPfm5/Qb+ClX7
+	CAvbnFY4ofxV8Ye00dgj2IIiONSeLD3nC1IVvru+xQ+J1fv20HHI/WPDXC5/Rc1FqsQfEt4CE5x
+	afHSa8nsbxuByenOKBY9KUqxAM3w/5f0/2XIwukpJe5A8A7ERXMLmH8QMjqznKaAkzt5lHTsz02
+	J96oyCQ3+8SxMjkPi57ARkGuVqkG0DZG2UZoP3wnY8nfd4Gx979FBIe0gJbPyXArQImngwZRevg
+	ML3RLnpWvqiLUMM14MJJSsajiwwqL3fqZKz90IA+LuhyChS5+Wuu3dPuZzypNZHLcXx5DPXbii6
+	2+8zt/U1OaBCouxxvSjGGcRiNyHEjBGj59+dzD/BwbrCcjHFEeG2TwKy2/1S/mxnAm0xypHbk0n
+	Qk8M7Wqct84WFvnnzTt
+X-Received: by 2002:a17:90a:e188:b0:38e:6d4c:14e6 with SMTP id 98e67ed59e1d1-39580a50d5cmr11805598a91.3.1787159870492;
+        Wed, 19 Aug 2026 10:17:50 -0700 (PDT)
+Received: from buffalo-ssd (M014013071096.v4.enabler.ne.jp. [14.13.71.96])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3957f4cedeesm1482992a91.0.2026.08.19.10.17.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Aug 2026 10:17:50 -0700 (PDT)
+Date: Thu, 20 Aug 2026 02:17:46 +0900
+From: Akari Tsuyukusa <akkun11.open@gmail.com>
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, 
+	Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v4 0/7] Properly describe mt6589 and mt8167 toprgu resets
+Message-ID: <xqnpukvhtezpqhwjnxbqeddiaqlro4m5yjukpplv5mjfxodlfp@ijaf2trst7p4>
+References: <20260819101853.44681-1-l.scorcia@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260819101853.44681-1-l.scorcia@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260819_101519_893506_DA2FAC50 
-X-CRM114-Status: GOOD (  14.87  )
+X-CRM114-CacheID: sfid-20260819_101751_788433_9FF4F3AE 
+X-CRM114-Status: GOOD (  31.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,52 +104,266 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Luca,
 
-Thanks for testing it, and sorry for the slow reply.
+On Wed, Aug 19, 2026 at 12:16:21PM +0200, Luca Leonardo Scorcia wrote:
+> Currently mt8167 inherits its watchdog from the included mt8516 dtsi,
+> which in turn falls back on mt6589-wdt, which does not support toprgu
+> resets yet. This series adds support for mt6589 toprgu resets with bit
+> definitions obtained from Android stock sources.
+> 
+> However, according to its data sheet, mt8167 has 14 sw resets instead of
+> 12, and the reset bits are non-contiguous. This is currently unsupported
+> by the mtk-wtd driver, and it caused confusion between reset IDs and reset
+> bits in device tree includes.
+> 
+> Therefore in the first three patches we improve the description of the,
+> resets for mt6589 using the definitions obtained from Android sources.
+> 
+> Then we introduce a dedicated mediatek,mt8167-wdt compatible for the
+> watchdog driver that describes correctly this SoC's resets. Also while
+> we're touching the bindings reset includes, we add IDs for the MMSYS
+> resets.
 
-If you're up for it, reply with this line and it'll get picked up:
+This is somewhat outside the scope of this series, but adding TOPRGU
+reset support for MT6589 exposes a pre-existing problem with the
+mtk-wdt binding that I think should not go unnoticed.
 
-Tested-by: moosager <moosager90@gmail.com>
+Until now, using `mediatek,mt6589-wdt` as a fallback compatible for
+other SoCs was mostly harmless, since the driver did not expose the
+TOPRGU reset controller.
+This series changes that by adding reset controller support for MT6589.
 
-Fair point on the 2022 one. The difference is Deren's had to be a goto
-because napi was already torn down by then, mine returns before any of that
-runs. Still doesn't tell you why the handshake fails though, you're right
-there.
+According to the MT6589 datasheet, its TOPRGU reset bits are:
 
-On the debugging, I instrumented the same failure on an MT7922 back in July.
-Wedged, it read lpctl=0x00000004 and misc=0x00000003, and a scratch write of
-0xa5a5a5a5 read back exactly. So on mine the bus is fine and the chip is
-alive, it just won't give ownership up.
+  0 infra
+  1 disp (same as mmsys in upstream)
+  2 mfg
+  3 venc
+  4 vdec
+  5 img
+  6 ddrphy
+  7 md
+  8 infra_ao
+  9 md_lite
+ 10 apmixed
+ 11 pwrap_spictl
 
-Yours reads 0xffffffff where mine reads 0x4, and that's the part I'd chase.
-The same write test tells you which one you've got, no patch needed, and
-nothing on the host side reads that register:
+These are the reset bits that `mediatek,mt6589-wdt` will provide once
+this series is merged.
+Therefore, for another SoC to use this compatible as a fallback,
+its TOPRGU reset layout needs to be compatible with the above.
 
-  echo 0x54000120 > /sys/kernel/debug/ieee80211/phy0/mt76/regidx
-  echo 0xa5a5a5a5 > /sys/kernel/debug/ieee80211/phy0/mt76/regval
-  cat /sys/kernel/debug/ieee80211/phy0/mt76/regval
+At commit bd5f485f3f02, mediatek,mtk-wdt.yaml contains:
 
-Comes back 0xa5a5a5a5 and it's alive and latched like mine. Comes back
-0xffffffff and it's off the bus, which is a different bug.
+      - items:
+          - enum:
+              - mediatek,mt2701-wdt
+              - mediatek,mt6572-wdt
+              - mediatek,mt6582-wdt
+              - mediatek,mt6797-wdt
+              - mediatek,mt7622-wdt
+              - mediatek,mt7623-wdt
+              - mediatek,mt7629-wdt
+              - mediatek,mt8173-wdt
+              - mediatek,mt8188-wdt
+              - mediatek,mt8189-wdt
+              - mediatek,mt8365-wdt
+              - mediatek,mt8516-wdt
+          - const: mediatek,mt6589-wdt
 
-Your repro wedges an MT7922 here too, for what it's worth, not just your
-laptop.
+Let's examine the evidence for each of these SoCs.
 
-Devin
+## MT2701
 
-On 13 Aug 2026, moosager wrote:
+I could not find enough public information to determine the reset
+layout.
 
-> I would like to reiterate, though, that a more complete fix should be
-> pursued by anyone who has more knowledge of the driver or firmware.
-> Previously, a marginal improvement like this one was applied, but the
-> issue persists to this day (see [1]).
 
-On 4 Aug 2026, moosager wrote:
+## MT6572
 
-> and it expects to find 0x00000004 (which is PCIE_LPCR_HOST_OWN_SYNC).
-> Instead, when the issue happens, it finds 0xffffffff, which does not
-> change even after the driver attempts to write to it.
->
-> I would like some guidance as to how I could debug the issue further,
-> though ultimately the problem is likely in the firmware.
+A downstream kernel suggests it has the same reset layout as MT6589:
+https://github.com/orangepi-xunlong/OrangePi3G-iot_external/blob/b8a66e9bde91d75a8535dc6342d668efb6ab14ee/mediatek/platform/mt6572/kernel/core/include/mach/mt_wdt.h
+
+However, a report based on actual hardware suggests
+it may have fewer resets than MT6589:
+https://lore.kernel.org/linux-mediatek/W7fWZU3pu6akI_HMTAWPGnnErv60QtTz-LaPb6OtGvU5Bx0Iekl4SxWB6mxBPx8cBo9q9Lg7t8dDzcyfti-5fTirEACcwCLhNAh8e5xoHus=@protonmail.com/
+
+The datasheet is missing the bitfield for WDT_SWRST. 
+
+
+## MT6582
+
+According to the datasheet, the reset bits are:
+
+  0 infra
+  1 mm
+  2 mfg
+  4 vdec
+  5 venc
+  6 ddrphy
+  7 md
+  8 infra_ao
+  9 conn
+ 10 apmixed
+ 12 conn_mcu
+
+This is clearly not the same reset layout as MT6589.
+
+
+## MT6797
+
+According to the downstream kernel,
+it has additional resets compared to MT6589:
+
+  #define MTK_WDT_SWSYS_RST_C2KSYS_RST    (0x10000)
+  #define MTK_WDT_SWSYS_RST_C2KWDT_RST    (0x20000)
+  #define MTK_WDT_SWSYS_RST_CONMCU_RST    (0x1000)
+
+https://github.com/SHIFTPHONES/android_kernel_shift_mt6797/blob/4c594e5fa5648dd9a8b8ccc5d609bb523f4799b7/drivers/watchdog/mediatek/wdt/mt6797/mt_wdt.h
+
+
+## MT7622
+
+According to the datasheet, the reset bits are:
+
+  0 infra
+  1 ethdma
+  6 ddrphy
+  8 infra_ao
+  9 conn
+ 10 apmixed
+ 12 conn_mcu
+
+This is not the MT6589 reset layout.
+
+
+## MT7623
+
+According to the datasheet, the reset bits are:
+
+  0 infra
+  1 mm
+  2 mfg
+  3 ethdma
+  4 vdec
+  5 venc_img
+  6 ddrphy
+  7 md
+  8 infra_ao
+  9 conn
+ 10 apmixed
+ 11 hifsys
+ 12 conn_mcu
+ 13 bdp_disp
+
+Again, this is not the MT6589 reset layout.
+
+
+## MT7629
+
+I have no evidence either way. 
+
+
+## MT8173
+
+A the downstream kernel claims that MT8173 is compatible
+with MT2701, MT8127 and MT8163:
+https://github.com/bq/aquaris-M10/blob/ab0f5a519edaf314e9b537e448838ec9a4a9a3c8/drivers/watchdog/mediatek/wdt/common/mtk_wdt.c
+
+I don't find this particularly convincing.
+
+MT8163 has 15 reset bits:
+https://github.com/amazon-oss/android_kernel_amazon_mt8163/blob/479f405abf2ee6c0f13688b8cf567cce135924af/include/dt-bindings/reset-controller/mt8163-resets.h
+
+MT8127 appears to have the same reset layout as MT6589:
+https://github.com/amazon-oss/android_kernel_amazon_mt8127/blob/8428ef2958b83fa51edd6de734c069455f00cd8b/arch/arm/mach-mt8127/include/mach/mt_wdt.h
+
+However, I am not sure whether this actually reflects the hardware.
+
+
+## MT8188
+
+This is presumably a typo for MT8189, because there is no explanation
+for using MT8188 in the patch:
+
+
+[PATCH v7 6/9] dt-bindings: watchdog: Support MediaTek MT8189 wdt
+
+modify dt-binding for support mt8189 dts node of wdt
+
+Signed-off-by: Jack Hsu <jh.hsu@mediatek.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Acked-by: Guenter Roeck <linux@roeck-us.net>
+
+---
+Changs in v7:
+ - update dt-bindings commit msg
+   (use "mt8189" instead of "mt8189 evb board")
+
+---
+ Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+index ba0bfd73ab62..a05f8155b738 100644
+--- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
++++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+@@ -41,6 +41,7 @@ properties:
+               - mediatek,mt7623-wdt
+               - mediatek,mt7629-wdt
+               - mediatek,mt8173-wdt
++              - mediatek,mt8188-wdt
+               - mediatek,mt8365-wdt
+               - mediatek,mt8516-wdt
+           - const: mediatek,mt6589-wdt
+-- 
+2.45.2
+
+
+https://lore.kernel.org/linux-arm-kernel/20251111070031.305281-7-jh.hsu@mediatek.com/
+https://github.com/torvalds/linux/commit/a742d1713c34dff992d1273f614548d214ba1550
+I honestly cannot understand how this passed review.
+
+MT8188 already had a standalone compatible entry before this patch,
+and it is clearly not compatible with MT6589:
+https://github.com/torvalds/linux/blob/bd5f485f3f026225b86573e559af0b7254ef4184/include/dt-bindings/reset/mt8188-resets.h
+
+
+## MT8189
+
+There is no publicly available information about its reset layout:
+https://github.com/external-mirrors/chromiumos-third_party-kernel/blob/a5153266e4c8777fac687e9009a12d32d946514b/drivers/watchdog/mtk_wdt.c#L462
+
+
+## MT8365
+
+I have no evidence to establish compatibility.
+
+
+## MT8516
+
+According to the downstream kernel, its reset layout appears to be
+compatible with MT6589:
+https://android.googlesource.com/platform/hardware/bsp/kernel/mediatek/mt8516-v4.4/+/refs/heads/nougat-iot-release/drivers/watchdog/mediatek/wdt/common/mtk_wdt.h
+
+
+Note that a downstream kernel claiming compatibility does not necessarily
+mean that the SoCs are actually compatible. In my experience, MediaTek's
+downstream kernels contain substantial amounts of copied code between
+different SoCs, so I would not consider such compatibility claims
+sufficient evidence on their own.
+
+Overall, I don't think `mediatek,mt6589-wdt` is an appropriate fallback
+compatible for most of the SoCs currently listed in the binding.
+I realize that fixing all of these bindings is outside the scope of
+this series, but I think this should be addressed rather than leaving
+`mediatek,mt6589-wdt` as a generic fallback.
+
+
+I also noticed that the v3 link is missing from the cover letter:
+[3] https://lore.kernel.org/linux-arm-kernel/20260809160643.33991-1-l.scorcia@gmail.com/
+
+Best regards,
+Akari
 
