@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74FFCC5DF82
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2026 09:10:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A2B0C5DF82
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2026 10:01:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C/hfcOK7zM4LQEB9IqujIYfDMZGIv1G6kLyZkAL1T9M=; b=NAjJrgtgGjZqoK+TTtSF+dKyva
-	JZQWxVCBJg67DQg5wqEtHjowBZ+GWfUW5TVxHtMMfgiT9VvbatNthSrDCj3bLZXl8NyrLZxkLuswy
-	sSYuyBYu535kaQqCz3v2LvZ5NbiYLzsPw6LPPibVyMwuPXzGxuNMSaTBB8ZCaAOW2CYMNDRSLGyII
-	HaV2ModnJ9YD8b3ewc1elaB7+47crm9qiDgKRueJae6WmVxs3uvWM817nNnUUTYa8hggZCNFlpTqG
-	GqVEWMsmePnwqpoZdPqVDEssg54OQddRnoE5yYzWaZD6z3AyyHvi9wRP/6QwIHj0+nYlPB52GMKFq
-	nnUOLNDQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qzV7l2BBhFOSHhVVyklbUdf55qxMMkHEpueYgfVDU9o=; b=umJj2B1UCDapGYMRV6i+UFuMgD
+	OycnKJmJ9MGlhpdp1zeE931qHI6JtBSr7A5L6GH2LrCfZHbw4Gg8hqy/nMuntR2fTqyYh5oHbCYo7
+	GKas485iv+gZgrNw6kzx/YR4xnHvXQ/OIHwVpRp+z6BZ61aB+MONNyH2d0CjkGNXUlpT/XIty/LJp
+	YKlrXxOL1FGPrZ6fn7o6CUNiQ53sR+vgy6j1H7yO0K9RH6AXE/UBaxr3Blf25IFoqGwQ2EeIw9iMa
+	yb+N1rz06lDwbU7E2p+8P97D5mfqLjvwS1jl2lYgEsB51xvNaT6T4AL0K4ZPaOyGiCSwv9rpVFOtL
+	xurqk5Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwyn3-0000000BDrZ-0OxC;
-	Thu, 20 Aug 2026 09:10:25 +0000
-Received: from mout.web.de ([212.227.15.14])
+	id 1wwzaF-0000000BJsF-29sX;
+	Thu, 20 Aug 2026 10:01:15 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwyn0-0000000BDqx-3HrK;
-	Thu, 20 Aug 2026 09:10:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1787217006; x=1787821806; i=markus.elfring@web.de;
-	bh=C/hfcOK7zM4LQEB9IqujIYfDMZGIv1G6kLyZkAL1T9M=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
-	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
-	 cc:content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=EUR9HklNZhtLTPZ6yQeK+khDXGnUrbqdmMZIO5FkSc5SNOWNkOhni7uMxEzQ+Q65
-	 wteUrvHnX31lQvTQSXeOSAigSzzx0m7lfY7PxXLxZsviT1E2oGC7V3MeOrOzjWcF5
-	 bk+oD7mhSnDv4z5nHr8PzuVb1UaLWWtwjFfMiSrtXphbbDWfCfDvbaiUoSQPrJGRH
-	 u7BiXJ34mqg3oofBr7p0C1g3zr4JR5BWwRpac9haMIxRwzfvi0HkQ+fZkl1OFFGsq
-	 vXtvYJHIKc6/ZfiFyfWhRAyQ/xxQKI9YRR3Fy0ZvuJIomPzEdcYZcSGLCHj76f9zE
-	 i7/gZHtVb81apaHS8A==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from client.hidden.invalid by smtp.web.de (mrweb006
- [213.165.67.108]) with ESMTPSA (Nemesis) id 1MwA1A-1we4QE1Ktg-013N9d; Thu, 20
- Aug 2026 11:10:06 +0200
-Message-ID: <45534001-10da-454c-92be-9c6a96afc5c3@web.de>
-Date: Thu, 20 Aug 2026 11:10:03 +0200
+	id 1wwza7-0000000BJjb-2haW;
+	Thu, 20 Aug 2026 10:01:14 +0000
+X-UUID: 076e3ff69c7e11f19a56ed5b684f684d-20260820
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.19,REQID:766d5a45-013b-410e-97b0-5ef8d818dacd,IP:0,U
+	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:7db8b62,CLOUDID:ac774b139aef87384a1761c539b108d6,BulkI
+	D:nil,BulkQuantity:0,SF:80|81|82|83|102|136|865|898,TC:nil,Content:0|15|50
+	,EDM:-3|-100,IP:nil,URL:11|94|82|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil
+	,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 076e3ff69c7e11f19a56ed5b684f684d-20260820
+X-User: liujiajia@kylinos.cn
+Received: from nature [(10.44.16.150)] by mailgw.kylinos.cn
+	(envelope-from <liujiajia@kylinos.cn>)
+	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
+	with ESMTP id 16256110; Thu, 20 Aug 2026 18:00:52 +0800
+Date: Thu, 20 Aug 2026 18:00:49 +0800
+From: Jiajia Liu <liujiajia@kylinos.cn>
+To: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+Cc: Marcel Holtmann <marcel@holtmann.org>, Ying Hsu <yinghsu@chromium.org>,
+	Archie Pusaka <apusaka@chromium.org>,
+	Abhishek Pandit-Subedi <abhishekpandit@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jing Cai <jing.cai@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Chris Lu <chris.lu@mediatek.com>, linux-bluetooth@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 1/2] Bluetooth: btusb: mediatek: Fix leaked runtime PM
+ reference in reset
+Message-ID: <aobQUR1NXk5vHBrg@nature>
+References: <ec23dae6c247005e8eccd312d326a626163ea491.1787132512.git.liujiajia@kylinos.cn>
+ <CABBYNZ+Ow7XQTpM6gO_x2c9Z=jKewXk=dknxX6Ly9QZdezi4zA@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Triet Hoang <triet.hoang.dev@gmail.com>, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, David Airlie <airlied@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Simona Vetter <simona@ffwll.ch>
-Cc: LKML <linux-kernel@vger.kernel.org>
-References: <20260820085609.2103835-1-triet.hoang.dev@gmail.com>
-Subject: Re: [PATCH] drm/mediatek: Convert to DEFINE_SIMPLE_DEV_PM_OPS()
-Content-Language: en-GB, de-DE
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20260820085609.2103835-1-triet.hoang.dev@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:+fSKlASmaz/AotNPNzZvw6miU9//Ca0y1viDd8QtW+7qN8qrstr
- 1p+TZ2tAkfc0iuo1b/NYorT7GLu6og19YOnDSOvyuuYGZ4S3b6aW8sBfOgeELcoTCehFj9b
- 55gRwNSCaWNV6vAhEoWTf/GhupUW0MtCm3qAtMXKlOwBHBZp8+4QX1I95YCFsdEiXGSqe1X
- tM0/aQFcNi+cyvNmPiHpA==
-UI-OutboundReport: notjunk:1;M01:P0:zWsw0++HIlc=;R6ZKcQxN0juoDJHeV+Om2AfK0H2 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 uwJ/APxo4iLdMGeBujRm4XHfrX74M=
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CABBYNZ+Ow7XQTpM6gO_x2c9Z=jKewXk=dknxX6Ly9QZdezi4zA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260820_021023_116941_6CDC05BE 
-X-CRM114-Status: UNSURE (   3.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260820_030107_981764_D2996253 
+X-CRM114-Status: GOOD (  30.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,11 +85,169 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-=E2=80=A6
-> This lets us drop the __maybe_unused annotations from its suspend and
-=E2=80=A6
-  Thus drop =E2=80=A6?
+On Wed, Aug 19, 2026 at 12:35:38PM -0400, Luiz Augusto von Dentz wrote:
+> Hi Jiajia,
+> 
+> On Wed, Aug 19, 2026 at 5:52 AM Jiajia Liu <liujiajia@kylinos.cn> wrote:
+> >
+> > MT7925 on HP Pro Mini 260 sometimes timed out during reloading driver
+> > and reset usb device. btusb_suspend is not called again after closing
+> > bluetooth interface.
+> >
+> >  usbcore: registered new interface driver btusb
+> >  Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20260605184935
+> >  Bluetooth: hci0: Execution of wmt command timed out
+> >  Bluetooth: hci0: Failed to send wmt patch dwnld (-110)
+> >  Bluetooth: hci0: Failed to set up firmware (-110)
+> >  usb 3-10: reset high-speed USB device number 4 using xhci_hcd
+> >  Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20260605184935
+> >  Bluetooth: hci0: Device setup in 1856545 usecs
+> >  Bluetooth: hci0: AOSP extensions version v1.00
+> >  Bluetooth: hci0: AOSP quality report is supported
+> >  Bluetooth: MGMT ver 1.23
+> >
+> > btusb_mtk_reset calls usb_autopm_get_interface to resume the device
+> > before driving the hardware reset, but never calls the matching
+> > usb_autopm_put_interface. Every hardware reset therefore leaks a PM
+> > usage reference of the interface, preventing the device from being
+> > runtime suspended again until it is unbound.
+> >
+> > Add BTUSB_USB_RESET_ACTIVE flag and set it before usb_queue_reset_device.
+> > Release the PM reference in btusb_disconnect if this flag is set.
+> >
+> > Fixes: 25b6d7593a3a ("Bluetooth: btmtk: introduce btmtk reset work")
+> > Assisted-by: Claude:qwen3.8-max
+> > Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
+> > ---
+> >
+> > Changes in v2:
+> > - Fix the race window (sashiko)
+> >   Add and set BTUSB_USB_RESET_ACTIVE flag before usb_queue_reset_device.
+> >   Release PM reference in btusb_disconnect if this flag is set.
+> >
+> > Changes in v1:
+> > - add usb_autopm_put_interface after usb_queue_reset_device
+> >
+> > ---
+> >  drivers/bluetooth/btusb.c | 5 +++++
+> >  1 file changed, 5 insertions(+)
+> >
+> > diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+> > index 184e95c1625e..45a726bed0dd 100644
+> > --- a/drivers/bluetooth/btusb.c
+> > +++ b/drivers/bluetooth/btusb.c
+> > @@ -957,6 +957,7 @@ struct qca_dump_info {
+> >  #define BTUSB_USE_ALT3_FOR_WBS 15
+> >  #define BTUSB_ALT6_CONTINUOUS_TX       16
+> >  #define BTUSB_HW_SSR_ACTIVE    17
+> > +#define BTUSB_USB_RESET_ACTIVE 18
+> >
+> >  struct btusb_data {
+> >         struct hci_dev       *hdev;
+> > @@ -2915,6 +2916,7 @@ static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
+> >
+> >         err = btmtk_usb_subsys_reset(hdev, btmtk_data->dev_id);
+> >
+> > +       set_bit(BTUSB_USB_RESET_ACTIVE, &data->flags);
+> >         usb_queue_reset_device(data->intf);
+> >         clear_bit(BTMTK_HW_RESET_ACTIVE, &btmtk_data->flags);
+> >
+> > @@ -4497,6 +4499,9 @@ static void btusb_disconnect(struct usb_interface *intf)
+> >         if (data->reset_gpio)
+> >                 gpiod_put(data->reset_gpio);
+> >
+> > +       if (test_bit(BTUSB_USB_RESET_ACTIVE, &data->flags))
+> > +               usb_autopm_put_interface_no_suspend(data->intf);
+> 
+> Should this be test_and_clear_bit rather then just test_bit, otherwise
+> it doesn't seem to be ever cleared? Sashiko also complains about the
+> handling of multiple resets (is that really possible though?):
 
-Regards,
-Markus
+Will use test_and_clear_bit.
+
+> 
+> https://sashiko.dev/#/patchset/ec23dae6c247005e8eccd312d326a626163ea491.1787132512.git.liujiajia%40kylinos.cn
+> 
+> Or perhaps we should check if BTUSB_USB_RESET_ACTIVE (Id rename it to
+> just BTUSB_RESET) and then don't queue a second time which perhaps is
+> what sashiko is talking about when it refers to reference.
+
+Sashiko concerns other PM usage references will leak if there are multiple
+resets, since btusb_disconnect only drop one reference.
+
+I am trying to use test_and_set_bit before usb_queue_reset_device. If flag
+BTUSB_RESET_ACTIVE is already set, drop the reference it gets.
+
+ @@ -2915,6 +2918,9 @@ static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
+ 
+         err = btmtk_usb_subsys_reset(hdev, btmtk_data->dev_id);
+ 
+ +       if (test_and_set_bit(BTUSB_RESET_ACTIVE, &data->flags))
+ +               usb_autopm_put_interface_no_suspend(data->intf);
+ +
+         usb_queue_reset_device(data->intf);
+         clear_bit(BTMTK_HW_RESET_ACTIVE, &btmtk_data->flags);
+ 
+ @@ -4497,6 +4503,9 @@ static void btusb_disconnect(struct usb_interface *intf)
+         if (data->reset_gpio)
+                 gpiod_put(data->reset_gpio);
+ 
+ +       if (test_and_clear_bit(BTUSB_RESET_ACTIVE, &data->flags))
+ +               usb_autopm_put_interface_no_suspend(data->intf);
+
+And add btmtk_reset_sync before btmtk_setup_firmware_79xx to construct two
+calls of btusb_mtk_reset for testing.
+
+ [29641.975493] usbcore: deregistering interface driver btusb
+ [29641.997490] btusb_close: hci0
+ [29642.334308] usbcore: registered new interface driver btusb
+ [29642.334794] called btmtk_reset_sync
+ [29642.335654] Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20260605184935
+ [29643.559484] Bluetooth: hci0: adv larger than maximum supported
+ [29643.569495] Bluetooth: hci0: adv larger than maximum supported
+ [29647.472831] Bluetooth: hci0: adv larger than maximum supported
+ [29648.920846] Bluetooth: hci0: adv larger than maximum supported
+ [29652.577442] Bluetooth: hci0: Execution of wmt command timed out
+ [29652.577450] Bluetooth: hci0: Failed to send wmt patch dwnld (-110)
+ [29652.577468] Bluetooth: hci0: Failed to set up firmware (-110)
+ [29652.577470] Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
+ [29652.577475] btusb_close: hci0
+
+Detect two calls.
+
+ [29652.786083] btusb_mtk_reset: already set BTUSB_RESET_ACTIVE
+ [29652.922030] usb 3-10: reset high-speed USB device number 4 using xhci_hcd
+ [29653.069414] Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20260605184935
+ [29653.086161] Bluetooth: hci0: urb 00000000b24765f3 failed to resubmit (2)
+ [29655.108547] Bluetooth: hci0: Device setup in 1993116 usecs
+ [29655.108554] Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
+ [29657.121635] Bluetooth: hci0: Opcode 0x0c03 failed: -110
+ [29659.137668] Bluetooth: hci0: Failed to read MSFT supported features (-110)
+ [29661.153775] Bluetooth: hci0: AOSP get vendor capabilities (-110)
+ [29661.154635] btusb_close: hci0
+ [29661.290132] usb 3-10: reset high-speed USB device number 4 using xhci_hcd
+ [29661.432184] Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20260605184935
+ [29661.934878] Bluetooth: hci0: Device setup in 492744 usecs
+ [29661.934887] Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
+ [29662.020980] Bluetooth: hci0: AOSP extensions version v1.00
+ [29662.021001] Bluetooth: hci0: AOSP quality report is supported
+ [29662.021474] Bluetooth: MGMT ver 1.23
+
+Close bluetooth on control panel. btusb_suspend is called after two seconds.
+
+ [29674.033188] btusb_close: hci0
+ [29676.530032] btusb_suspend: intf 0000000016fc024b
+ [29676.530053] btusb_suspend: intf 000000009b822b1b
+
+> 
+> >         if (intf == data->intf) {
+> >                 if (data->isoc)
+> >                         usb_driver_release_interface(&btusb_driver, data->isoc);
+> > --
+> > 2.55.0
+> >
+> 
+> 
+> -- 
+> Luiz Augusto von Dentz
 
