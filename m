@@ -4,111 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29C83C5DF81
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2026 11:22:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EF39C5DF82
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2026 11:36:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DplQ14TFElXbQ39WaDvUzcCzX+hFbqRbBlASoiLjzDc=; b=0ifaNDLrqijrZoL0ttJV1GOJdD
-	1oalr5T7gfXK3R+xGstFl2a5fhJ+5XG3OnVj73RjmSJHSm0BYq/CwNDzsYa1SoBtmhXp3sUhKWymt
-	L0PPAikEdaqa0hZOUfhcxWOTNCxAEDS01Qjpp/xrEEr8g9hLohsWcVVO2nNpEMY625qKCeHpLBjzu
-	POJUPNaSKBK+Tl6q3KaQuvaPtXD0GGIT1bnxO2emYX8dUaVxmiP0ooKfdLL/5CQYYu0jBtICPtrpV
-	4ZLTu+Dj4QtN/xZZRcmp3zSd6wZSSPTo+VBsic9fCVvDXQ7v/umfsgBy+q4u1oxcPvu2mDwDg+TG4
-	O8DXt6rQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Pv++npyQsS+0elD7u+7CYZUc6oiH830RRaypT/ZkgY0=; b=xnq/Ps6Dr0H1LwneYzyMjPFivF
+	GHNCBmq/b7v3RFA2Krqj59PSI9t6ZJfKgsPuNThz84nA8kecWUVft8M2iuKN67hD6Uzg+NkqAYhQO
+	OC3MM7YfsJcuJAerHJLqW2wGWqOXkLLkyAu7ZujWY8O6e5cUv2TuQHsnsta/IFbI5uATHUgXEDWJQ
+	wrrr/0FHuOBl7Dg+HBhub07TYhdy2IsZowz/qYmrJKLsm6+QPW/sXec8KPrqXOMwtPKByKIUP6mJG
+	fD8iPxMl5PTrpsbkwuO1afl8Os0IR57/M/kzw205n35YHw7qTMRz3YdJHcgV52f2ZjAPiuk89mGAQ
+	41hSyBJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wx0qY-0000000BRRB-0SuC;
-	Thu, 20 Aug 2026 11:22:10 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1wx14K-0000000BSxB-2htW;
+	Thu, 20 Aug 2026 11:36:24 +0000
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wx0qW-0000000BRQY-03U2
+	id 1wx14I-0000000BSw9-0iyF
 	for linux-mediatek@lists.infradead.org;
-	Thu, 20 Aug 2026 11:22:09 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-84a2c90e383so556261b3a.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Aug 2026 04:22:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1787224927; cv=none;
+	Thu, 20 Aug 2026 11:36:23 +0000
+Received: by mail-pf1-x42d.google.com with SMTP id d2e1a72fcca58-84862b0d5f8so1570020b3a.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Aug 2026 04:36:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1787225781; cv=none;
         d=google.com; s=arc-20260327;
-        b=G/+uorJvYoE7EyFm7xnkz5CA+ayZOJimOn5g/egCykLeWtoEr+GhDpYkfc6kZv5rVA
-         0X/P4kybSh5Y5sHzebRXFp9mfoQuj/HkdK1juZ8Lns7UWsBs6UderIQsmQ5OlL2He1rW
-         zWvLZRZNAKZSwUBZOXv2bxX7kCKaSJjESi7i7IvVCGzFxYkjeHoNqKnkMRwBknNrSJtB
-         gF327KiTJs4WSaCdJTg0Bw3BQCTRCUjAAfej7cYgAg3uJ6ROFYA3zF63wedwe2//70ag
-         vyoJ4h432A62aprPB30SCjBqP/U8+g3xSO1PYlXleobm6WWL3KQBpifNJp44PjskpaYz
-         egOg==
+        b=dEGk7cOnYbtl9d9AhAzkOAALD38t0WJYwYgvEu1M6TeaW6bXD2U1EhhGwH76gtQX/Q
+         CM1AdRy2s8r7vyJxO4HVrWwXAgXTVKnhcUPnR3RdFSMPVqvRbpeEA7EuhtSjquoVYdt0
+         5n2Kal/7QIxL571he1Ojl0GTncPKvD6XA0Sxf6aLtTxo1uFtSDM1UKxy5YCRBnucUrO0
+         JUSGaoH7sGaRlffF4hwG0d1mVyxmN6kb942BTHuDSOh9u2MW77Fuoch/WZ+AzSKGuP3l
+         pPA8YQk/pbe+jg6eZoUP+fen96/MBioeUfcIv2GLkwG4pUefVnkinCxQXUbjzys7QbAG
+         Lrew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=DplQ14TFElXbQ39WaDvUzcCzX+hFbqRbBlASoiLjzDc=;
-        fh=rQIxY7EEDwFKp4TlUx2rzfxPtMOjkWnlhSTfRBm6IuU=;
-        b=mPZYTc+KUEoyYFpET5SXxqA1d9NLpjkziT/ONJuTrdeFiiG4UYHOx8CNbXi+DO2x5i
-         ogQCq6W0rs63+MNgk/hb9E5PN4mjTmXzHRgzUMabjD0zq2oyMnqdc9rsIrT/N2Mtdtoy
-         G7sH0gAfLS28vrefBXZXnZOOPLKVCjx2hhKHi2bGWxHYhSUacE4GqzownT3yXkFaiWea
-         2DgnAGklI4IX9s99smV4iBYuvQIlDKQweci7SOYmZvmWxkrP1DMFNKYRy9SAAQbppHoh
-         MuRQ/BlzwyD11WBADknZ1C1Ve0Qk6mRvQgmDIxNgVM2v2ZN+Kanrmci+LN5J47AJEt06
-         YFmg==;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=Pv++npyQsS+0elD7u+7CYZUc6oiH830RRaypT/ZkgY0=;
+        fh=aAkjxFd7wfFIKVYs5+AN0+637NqfyEbZq8o2jjktbxY=;
+        b=MFyOru93fE+5le6DhNQE1HcJPiMvNHajGErDJlam6AYcQoYVbYXrKuaPO++l3QiJB/
+         6Y39OuDZqA/VXSTa3KSc8iiS72LaJYKTCeIi2WgksRIZaDEk1morX1/X+xj06si63LuI
+         3EHqQweCFxaI5l8iv89DGvFYImIP7dKaS76a8vGcu779LDkoczp27ukCljAj7QOLT22a
+         A05obz/HmbGAt3cBXstiQOSXtBJo6sJsULVHvAhXl6QpZ1yOxifDFCCGCIdZoupVsyWY
+         ueih2d6n9E7aY59lJFfRumS60Z9C3ZtqCTkN9Se9Snl0fEuMk1jcQy3769aZdSZHQKl3
+         M4ew==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1787224927; x=1787829727; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=DplQ14TFElXbQ39WaDvUzcCzX+hFbqRbBlASoiLjzDc=;
-        b=r4ImFo3bnR9n+Y+xV5G6OdZJ6fxYcPlLHmoiQSgax4J5GqqN9UwI/8k3864000ofRS
-         PyTu0RPJdGYJNp6P15rz9Tx8wtqeenbH6YwGB/QfCjg0Qb27tWqnMzWM3xVb4U45jAjT
-         kMELZRPLUQtDi5M2zSzvR6Y7KT6v532Z8f7AVnlNo5oUVamvzjh57JyEnYJ2nD7nWhUY
-         R7dv4QikG8EZ/bQ8slxR5g7jPESBF157FfNu9UBGAArWsSeLRVyKKUzLi37mL6OuVQBb
-         ugL7dEfdlYAIMV3d8caxJoa9mxJuGkxmTCKbPFtnhNOd3Lhi5qMvdNNtkvwuYojvptUb
-         AamQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787224927; x=1787829727;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+        d=gmail.com; s=20251104; t=1787225781; x=1787830581; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=DplQ14TFElXbQ39WaDvUzcCzX+hFbqRbBlASoiLjzDc=;
-        b=Wl/qLaogVpSTqX5dK+vaBlzoa3djPXQxIXd3+DOB/KZUuM4RJj2kuCkw+lqiOZtpvv
-         2049H7qIKvd4zGI2zfvbqBNa1xL3vwJWF80CAsnAI8eaRziylxtrWFzWNHIgyHVykftd
-         rToGtMY08OaR9ccKc87gMnG20aevGsLof/45KXk1Cfm4KWsaEv9ex1YxaXbXI5TzAtz1
-         2Q2D2NBZtbFWm3h4BL9M8VqmtTkn5xrxaMF4qng39tYYtRN1NC81mcCF7ERRc2dgsRBG
-         s3DH37KwE9zWz3MLJB9GDLaOwP2D4Og5mGpBImCAqzWkPPkRZMlfHJBJmwceYiyMxgV+
-         iaLQ==
-X-Forwarded-Encrypted: i=1; AHgh+Rr6/ha+c57o0pxLMXVk6KyMSExkt//9zdzBXpttaxTQcVXez8dk+Ofmc1TgHA6qzG/C+9Vw69YCmB99dzyZNw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyU9802Djdkhh1scozZt/S4prDKt9mMZkEvaXJK3gdW1nFnCteL
-	krruqvf6z9NTxH0Xo0m7vs/VjbWH6ApC+g3VGCf/zo2Lorfci8FYnylHOz6Uxj2/KGknh55Jur4
-	1togrFiLjcXb2fdkcaDljnbEdvDVdXhE=
-X-Gm-Gg: AR+sD11vwFaKmOuhhtVE8FLkogU5/Js2G8EoJRuHGucDeOI2iOMB+HN1xlZ2jzbj0LO
-	WxNlgY0ysdfezvz0w6sVWD9UPEZMppkqAYpHiKzqu9uI8YOkD2JC8hxNGlqpHHvvRyKTY5aZcXl
-	PQKonSNfB4jco6QY2FCzenVuW3QdOatJqZMBPnfxsSdUdYVOtFRhrEpSXlvvd3dfvBWc1z8Txxc
-	ELTWzXESFMJnRhAftQr1K+8nMKdtFU+vDm63SPlYNiyx0Z187NXTmFbMIrxIZJBKSFJdg8TzqMm
-	HSaC9SPyO2OYvafjLUG0FeLbpS00rT1By3an4aOMoc+GEiA58XohRbgB5zu/dhjofXhBcAQ1VRe
-	r1tcnFd0wZB5NfGrf18eJxGcUloiKTGHSHWHccnP7znCrJez4HG2IdhTyOvV3+jT3YTU=
-X-Received: by 2002:a05:6a00:7603:b0:842:446a:4cb5 with SMTP id
- d2e1a72fcca58-851df6bca8fmr5910456b3a.0.1787224927100; Thu, 20 Aug 2026
- 04:22:07 -0700 (PDT)
+        bh=Pv++npyQsS+0elD7u+7CYZUc6oiH830RRaypT/ZkgY0=;
+        b=Yph8yWm7/MSpojAxFE0dIpqJGtmArFoTA3clt5JYwrquGTY29lPcaJT+pzHLOZDZct
+         OtptxCV/kOi0POibLSkXJKSETK8gLyO//DsflsrMm7tcOKJPl46ssMTaKH82RpuhuZ+1
+         gD76jn7eCTHPk+1n3qBG4tvKuC4T/SqPucVzEMTyKkyK2Z65WXHKpXCj40iIURC8hJMN
+         W6U/eUGIKCd2h1VjfbjXh/dJBJbJa1tcn2N0ewp+qaBNEyDyc/zAfL8kDPfWXIiJjRI2
+         G0GI1VI5Yqgf/W6VImaUaq9TeIIEUdl6gvb7+TSWSmMOZLkMmyRfpZ3+AF8/9MGxBd1b
+         ZXCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787225781; x=1787830581;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=Pv++npyQsS+0elD7u+7CYZUc6oiH830RRaypT/ZkgY0=;
+        b=Zcmr1f5gD6EiTA3PV7mCTr5/4bv/IjDBQvyjHPWOqc3XBGDstMgySJtJvjY1FFGmT0
+         dMGz6Xxl8x7kWLifafzmPvqTJWk0MDUP8gO0o1vOH8AXNFe0B+NIzLW8QpSfSrbLKO6r
+         GPZPmIf1Ua+DIWssqE0hKv9MczC0O7rKHcqsl/3zOYD5FMHvaH8Ly9pTxfbOtRG4DPQ+
+         UNN5UTA0FuAncTt1ufpuZ6zwJkUwFSYAEofLWrlOqyhbFpmzJxsh8TC/3ZIWOi8TNV24
+         uQ3Us7MNH6nZseQedcpBwMAiAcy02OCQLgGHmuQ5kr+mGFTlkMhqaJ1dG432qeLJb03w
+         jQrQ==
+X-Forwarded-Encrypted: i=1; AHgh+RqDxUkh7siuX8etGMqoyyC8nq8sZt/tndqJbB2VbXuy4wZ1A2MVeI1wn6I36RBofNpwUwWbKQkwypmH7PE/GQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw3eiEVuPDDaEaZx6WzSIQjDuBvhgn1fy0Livbx+3AwjBFtWCyF
+	Z+5a7Jmg9e+4eYQp5MTyjg85ObnEfMihQpN0vgZmdvZvZa2W+wVPGPbKlXfRQY/4YB+Rsy7TN8q
+	9uuOX9vpFMFUfoOlGwtsrKLpZeRsc4XQ=
+X-Gm-Gg: AR+sD13j3IZn+R8deRoBTPewqVFhXyByJqrYO8zAV1KF7t7+QbzaMFKatvkHlBY/LTg
+	PxK3163XFqx5kKCgsEIBLw/Oj87Ocv3HxeNQLk0JO/BoVgGVEhXoOLyDMZzvmP0QsYehXr1Aebg
+	yuQf5DSVL1xfQUYMnvoJwCvoYsH7BpKHM5zxYRuckhPyasatUgWiJLDzEgokaHbWnfXmaEGUepn
+	WtwRSWzJ0lEad7Fu6fIX7qpPZA4gUMO+zbXQgsoPGqy81ZuwdZMZEIC0sl+DeWgOypZoPKFy7bc
+	/PLQTPAIJ4C93zs1j2gsUWWaDDcFbTkCzuDcbUk7Ka2TrO639rKGc+p3t+x6/XH9NClRoK4Z4TT
+	SAYfiOd1kLosb8TqKp0iiypzac97nfEMAOUuOjrsX/jMbICaAq17uwl8FTYs7p08+h9C+PVMx2z
+	NK5hnd1LWPhSj8eg==
+X-Received: by 2002:a05:6a00:2e92:b0:848:2c5e:305e with SMTP id
+ d2e1a72fcca58-851d382f3d1mr18117690b3a.6.1787225781272; Thu, 20 Aug 2026
+ 04:36:21 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260819101736.67632-1-phucduc.bui@gmail.com> <b85a7eff-10bc-44fa-96c7-601e80eefc3b@intel.com>
-In-Reply-To: <b85a7eff-10bc-44fa-96c7-601e80eefc3b@intel.com>
+References: <20260820111253.97866-1-phucduc.bui@gmail.com>
+In-Reply-To: <20260820111253.97866-1-phucduc.bui@gmail.com>
 From: Bui Duc Phuc <phucduc.bui@gmail.com>
-Date: Thu, 20 Aug 2026 18:21:55 +0700
-X-Gm-Features: AcwNN1Xqmf4X13xrwyEUJ2fuZQQM6YMt4gy6bjJzPbQcjJLgXb_ufsHBtAfIWEQ
-Message-ID: <CAABR9nFcw+hZhUKCMkgs+L0JHJqFSKw9OQRFUm9e3pmNqmAg0A@mail.gmail.com>
-Subject: Re: [PATCH v2 1/3] ASoC: mediatek: mt6797: fix wrong unwind order and
- error code in enable_clock
-To: Cezary Rojewski <cezary.rojewski@intel.com>
+Date: Thu, 20 Aug 2026 18:36:09 +0700
+X-Gm-Features: AcwNN1XBwQbXQT6wc4CnwLZAJqiHhO0ddYg-yE6lNaCe8_uhwLKGBMlMjT7-UaY
+Message-ID: <CAABR9nErEB6c-nQH+mvP2V+oz-tACQsiH0hY54p17CNovmZraQ@mail.gmail.com>
+Subject: Re: [PATCH 0/5] ASoC: mediatek: mt8186: Fix clock error handling
+To: Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
 Cc: Liam Girdwood <lgirdwood@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jaroslav Kysela <perex@perex.cz>, 
-	Takashi Iwai <tiwai@suse.com>, linux-sound@vger.kernel.org, 
+	Takashi Iwai <tiwai@suse.com>, Cezary Rojewski <cezary.rojewski@intel.com>, linux-sound@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, Mark Brown <broonie@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>
+	linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260820_042208_072969_3125B633 
-X-CRM114-Status: GOOD (  13.47  )
+X-CRM114-CacheID: sfid-20260820_043622_215303_114ECECC 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,27 +120,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Cezary,
-
-Thank you for your review.
-
+> The changes therefore assume that the clocks used by the driver are
+> required. If these clocks are intended to be optional and
+> devm_clk_get_optional() is preferred, the clock users would also need
+> to check for missing clocks before calling clock APIs such as
+> clk_prepare_enable(), clk_disable_unprepare(), and clk_set_parent().
 >
-> There is no changelog in this series so reviewers have harder job
-> analyzing the v2 patches. If there is no cover-letter, you can always
-> paste the update here, after '---'.
->
+> If that is the preferred approach, I can rework the series accordingly.
 
-> In regard to the patch, the fix looks good - given the number of errors
-> in the existing code with invalid return code on top, perhaps someone
-> wanted the function to be permissive.
->
-> Otherwise it's just bunch of untested stuff and your change should be
-> tagged with: Fixes: and propagated downstream.
->
-> Reviewed-by: Cezary Rojewski <cezary.rojewski@intel.com>
 
-I=E2=80=99ll add the Fixes: tag and include a changelog
-for the changes in the next revision.
+I apologize for the confusion. clk_prepare_enable(), clk_disable_unprepare(),
+and clk_set_parent() already handle missing clocks and return 0 in that case.
+
+So I only need to confirm whether an optional clock is intended to be used here,
+so that I can revise the patch series accordingly.
 
 Best regards,
 Phuc
