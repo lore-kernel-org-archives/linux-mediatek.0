@@ -4,93 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DEDCC5DF85
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2026 16:01:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56DC0C5DF81
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2026 16:22:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wzv3uP0w/VGEKyAdxgzQ+j7UoRyZuBIJ3kqw0ykhhiw=; b=OIzZQ3hWVTP3lXmp1u2geSBpYg
-	skJxY3Hl6z3YVPxLDG61+sIGaTdUaXp/w7/8eyu2MtmUctP1H95nq5ndae9FJ9q48Gkph/RVjkxUS
-	MrS4Oykma1XfSBLiBDdLSd08lFgif9Z4JrH+Q07bzjS+hg6JYOe+hWIGKqEDuI6B2y6LijRe5oJY7
-	ADEhuiMybw9Q7v6sXFm/CbP9Jk5z/GCC6ioksuDkMTcZh+dQmRlxazBHTQ7FB/cveZlFfXLFi40y3
-	H+E+jkNW3CQOac0gQMCU7mLQME5GPEvpDXSJPHnsD/Kk7SPZOuAMdERWyfGJj9T6h14gjr/IJJIkx
-	06YO64Dg==;
+	bh=kbkVuqDqT4/QcJ6UY7w9DzQnwqj+U7UexT9FJ69upSw=; b=Djl2NZyLUEe6o9RM1+QyVfWFan
+	WSNIX+CG7IIRurd2IQDtElnqbrvKdP/Y9pTfHg10OJqoldDYFlPaMECzEN6H5EYds4OKTHFf84yel
+	F5foNzd0tX0g24qjFsqZ56uG/mOuThMLeL7gKEDJrxZWLOFOj8UNxxGJ2E/vHw9EKMIoiX3bACIzb
+	o07KguALbYe29emEj6rZkONOlhYPVec2qM55nVD2NOpfgfR/tGklU89tVugY64L1CoOX5mfAeepNb
+	GgxnZWa/e4RjY57zI67O7InpGis/jKYm6gYstOu8sj720OwIrSJ05x+XaZtr/W/LD8SINYiMFJ6sn
+	+Eee9nVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wx5D5-0000000Br3m-0a28;
-	Thu, 20 Aug 2026 16:01:43 +0000
-Received: from mail-ej2-x0a.google.com ([2a00:1450:4864:34::a])
+	id 1wx5XD-0000000Bspj-3cRg;
+	Thu, 20 Aug 2026 16:22:31 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wx5D3-0000000Br3D-167x
+	id 1wx5XA-0000000Bsp7-3byN
 	for linux-mediatek@lists.infradead.org;
-	Thu, 20 Aug 2026 16:01:42 +0000
-Received: by mail-ej2-x0a.google.com with SMTP id a640c23a62f3a-c2193fc3dabso119780866b.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Aug 2026 09:01:40 -0700 (PDT)
+	Thu, 20 Aug 2026 16:22:30 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-c20ce3c118aso264384666b.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Aug 2026 09:22:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1787242947; cv=none;
+        d=google.com; s=arc-20260327;
+        b=GfNrNGSOiN2ZAMxx8JifWTm5qe1BjIBMJPji4nTiH/P1N0zSbwsbU7H0GcmvO5wK+j
+         EXJSbDO+LVoM+sMOPKRB6D0Jf965hqWoclMP0iTip9uOHmZreNRmllS2Sr7B4uhoUNYj
+         7NVS7+HcZvlxdVJICfz3pe1CypBW6okicknuArmMNXVH1wDLGC4yWBKTMW2So5CKXfub
+         fR5GiIN4+v+HjUvGy0bqwTVA8ECyYDj6ch9WGkf3Fkj1yJWDoIEvFIUH9izKfyveIABI
+         XEWJkVn9NMZoGwxWjJyMHOk1waaud7LqINJmslfJZLPj1Lbsy9M0PZYuV3efXHBF8pCZ
+         bjNA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=kbkVuqDqT4/QcJ6UY7w9DzQnwqj+U7UexT9FJ69upSw=;
+        fh=7q9slQwJZ94/e6e481MFJgYPeNForZhGYqL2OGSLeAY=;
+        b=UVaaA6YwZQcZ4NaqeRPzWd2CaJ7LalmMiZSN2XCDiPluirZsDSMSODCyca3tWaKel0
+         kWZd8fFbiZ4M3qS15fRl4tWTgiuXz5wzOy06hOm7457/A8ElPsbQr50Lp4WeFHM87od6
+         7SJU6TVkjFtGnocdJZ74mLqfha/8jfrxlgwRSgKeKA04/Lll+aMmIdJzgE9Qp+JaI81h
+         ElhNcIQ9fV4JoGqJFngyeKOrjCeGaDneagsmcS5xCSpmKyvx1Iqm3WzkS7ijpE63w7fZ
+         IVwz4Axfey1T3OQw8/B7qhcbCYYUnezGbPF2ETST7r/I6UiXttRQgBawOcSC9XPdyV31
+         1GKg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1787241699; x=1787846499; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=Wzv3uP0w/VGEKyAdxgzQ+j7UoRyZuBIJ3kqw0ykhhiw=;
-        b=r/guF/2qgLeyrTn2xA+8aRFUBnOnH2xdailLgIxuTSEi/8XBjYVsyZFNin/xXqA3S/
-         ApKyXT/XwQhzwqsJ++luoMRdHW/w8fl08wlkMlEJJd6/u15ADAoqdfa38zO3qCvRypZ5
-         I11+qIZfEC0UtjSDuXVu+XD47lvfD/fya5oaMCw1NY+3q8a7jOO48KYIDj2B2iyHm8nG
-         Ko12kSbTHTaGFfYHuJDtzj7WkmMay7uvBXNIQefqjAx7vddhHcU1MJRfhGhe2iWEGvFZ
-         bipVMaMCgSNhYrTM/HcGT6eRIcU0QLzhwfT/QzX/jxMKf7rzVQWa1bRXKC0GlPN4rOec
-         pATw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787241699; x=1787846499;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+        d=gmail.com; s=20251104; t=1787242947; x=1787847747; darn=lists.infradead.org;
+        h=content-type:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=Wzv3uP0w/VGEKyAdxgzQ+j7UoRyZuBIJ3kqw0ykhhiw=;
-        b=P1PAW1sq6OhgiKn/kcXtHI65jiHDcPpEInrln+q6D83F87XmCVmIPB43pCb+YKjB7o
-         CgHF9P3UUsBBo9BrAhLvhEXDTMtjRYedA2ywtGbx2FrFAHPz49QmSY+1rDX+gfN5/R3r
-         b0V5WbaFpiHtuvHQ84FchwpcDJm+6NMrpuXkWq8iS5cbmycAHMdFB3TdZGxwJrfNpXi7
-         4JLXBghVWWutNmh2lq2M2YdwKFJf7CouBjS9Vmcvb1yYB8QxVqy9Beu+WMBR8qVyfmek
-         GI/uBaVXr81aMQRMsxpFMVxXbBPKvRAGX62KpVw9AYZ/g6PPuPv+/c+oth05ilIg0z2m
-         3p+Q==
-X-Forwarded-Encrypted: i=1; AHgh+Rrn+V0DyWrYtDrAQqJuJcy2BhzmC5YBOoh8UbpWGtyE6caExv8RJW/FQCu3ZOg5MRQolVy+NNh8vzirD7Tmww==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw2MiW09sDYRMusf7iMFVbGnbTSFVdRycOntE/Hrlm+lItSFDqH
-	F8j2mbwlVt6N7XKgD6gSzlLEcNvyXuQG81wgEgqdvAkZ7hifwRG5owlQ/FprwsK/hOXueg==
-X-Gm-Gg: AR+sD12XDPysDC0EEc9OfTiMtM1kCrbEOpVSljnqEhV1FVCweUzsh0yMshWV67us+bY
-	Y6bo/BMSyYY4V47vwScznujGQCfnYctabLSbYVbDl5wNt5eDLev0Oq6qUyd/UyurKSvzi+0CHaJ
-	7n/d0smYatLX54d9w8aT58me8UQVb4+3zrc20h2yvBIxaI+KetBYpwHvDGpzCwE9BsnANS3wCwM
-	Xpu+qSJA5g10zUJfOz9jhOm8W9jkivJkyn0p0n8lnDd/XiRQv0YvX7ruZgNNa0zEVOaqHphNGAB
-	VlG+cgosqJluRnup1E78sIN24ww7Lnd25y1O4a+g9HcTL/BO5nLVUBtJl2EMh20/rwChOEoOsSU
-	KmkFYY1CsbdhE7UJ8QeCcHajPY6RrG75eyMw9eOgWIoE3O0tu+pBjZb6eAv/XioNiTOLdn1W71S
-	MyCAtCiB3EU9RS8PuuPRJOnFamIG4g5oqyeiQvbxQpsLVHkrq2KRj1ckUpfaADKcmFz25Ba8Vv5
-	X3Eq0VO5givzvk/va3Cv+fO9mw2f5pA6f/CJHFzwQz5Y38=
-X-Received: by 2002:a17:907:c03:b0:c19:fb6e:5fec with SMTP id a640c23a62f3a-c242e25525dmr1171279666b.18.1787241698523;
-        Thu, 20 Aug 2026 09:01:38 -0700 (PDT)
-Received: from fedora.fritz.box (dynamic-adsl-84-220-246-20.clienti.tiscali.it. [84.220.246.20])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-482b1441c78sm13634405f8f.2.2026.08.20.09.01.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Aug 2026 09:01:37 -0700 (PDT)
-Date: Thu, 20 Aug 2026 18:01:26 +0200
-From: moosager <moosager90@gmail.com>
-To: Devin Wittmayer <lucid_duck@justthetip.ca>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Deren Wu <deren.wu@mediatek.com>
-Subject: Re: [PATCH wireless] wifi: mt76: mt7921: check drv_pmctrl return in
- the PCIe reset path
-Message-ID: <aocbq-_gRsXgFV94@fedora.fritz.box>
-References: <20260809012309.43657-1-lucid_duck@justthetip.ca>
- <an23_8DALILoGLP6@fedora.fritz.box>
- <20260819171454.21329-1-lucid_duck@justthetip.ca>
+        bh=kbkVuqDqT4/QcJ6UY7w9DzQnwqj+U7UexT9FJ69upSw=;
+        b=ATtgShgf3dHF6U+63DIxFIPFtlEgNiGagRnFkRdNlpJLp/qckweexldMz//m7SXu1d
+         QxP9x0ZlUCfY8KqwgOyerGqlshrbzCmf0HnrWbVSbVFItqy3hfaOs7gTZHT3k4ckSzis
+         Yeor2plz2rY7uqS7I7fJ1b9YXiLYb+zhmjAGP4CxZj124hhl0pCLcL1/iLTHB9HLPMQs
+         fcD4seZ0wyPtWbPVg/z/o97n9U62s/0+sy+bPjNQ5tmdp3K02Yu1AhhsIkQqyDsyuSap
+         d9cZthO17/nGICR3ozWZhJKxNrvPtb2+i2DwQhZwlDkMwuKLfap0tiEs+xdOjuoO0UXz
+         d2WA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787242947; x=1787847747;
+        h=content-type:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=kbkVuqDqT4/QcJ6UY7w9DzQnwqj+U7UexT9FJ69upSw=;
+        b=mm6rdy5eLW9uN03a2EjZbo81lDxvrgC05Qkfto2x+WwhfTYz2qMvycatjXsKev2DSC
+         GVCiuBxiNLlKYPzo59lrAZN3fPwi+bEvsEmsk8/a/ELIEmBQL/4FW63Y0A1iZyDt+6EG
+         NFM8+n5MfG0EtZM5GW6mtwf4BsVJmIH3h577zKIxiE/625KkX7/bn2bnoNERXEfv/amF
+         IGKQcQtz3Lxko2yIQ3r1tlmGfI8N2Jm7L7FNRpZqGDMyDS577jaOF5rovP/tixKBWPOb
+         n9vOT40v0BQmBLyaW9Lc9KAQRWlztTN1k0psKu6E1m0mo3uY4KDwN3x23ErNG3nws0OU
+         RZcQ==
+X-Gm-Message-State: AOJu0Yzs3iLMgn97FXtJqA2wReq1C88vccWEU5xP4Vy/trBaGoj8hRQW
+	XMyXYxqi+JZ2SvTFG7BZSJNMfNN/gZ7RSgVFz4+nIJs0joes2JUvuw3k8z7C7sRqg8Hl4AJGl3F
+	W4egGNWRAkgYCNoqXNxVbal6T8O4lPAkAsAt8
+X-Gm-Gg: AR+sD11U7NHjT8mBrTkutENOyYBqEAcEBHdbH7zUp/42GCd5omkBrmD7NlNoBaP7GO/
+	2Y2ir3gwVutOZ+a4RCAHQsOo/PFNb/Gn5JzrlfnZKbbNuCfDt+Eg9oxffr2qMc2GCD0dlzMFOza
+	qmF1+2qSBV+IYz3LCAUlSHUoThopG0xi4lOysokC4VVagf7rjFgXQUqj0Urpxtz4GALZ0gr6VrZ
+	wrgmu0oYVF5Q4cjwVpv8wmYgiyHIYea5AMlT+8YCjnAXDHa7mXyCXvR/SpHTTSAnK559g2oOYgs
+	slIXRhEZhT3yw+gtHIykhROjdFdadDgc8x/IIifNc54=
+X-Received: by 2002:a17:907:d641:b0:c12:8a:7d7b with SMTP id
+ a640c23a62f3a-c244d45ad42mr582771466b.1.1787242946891; Thu, 20 Aug 2026
+ 09:22:26 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260819171454.21329-1-lucid_duck@justthetip.ca>
+References: <20260820122242.120039-1-l.scorcia@gmail.com> <20260820122242.120039-10-l.scorcia@gmail.com>
+In-Reply-To: <20260820122242.120039-10-l.scorcia@gmail.com>
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Date: Thu, 20 Aug 2026 18:22:15 +0200
+X-Gm-Features: AcwNN1ULD8tV9VduIxQY5KwSWW2RZWb2wXCRNlNix-EL4J7sLEsFXcZHp9EVcOA
+Message-ID: <CAORyz2Lggjwgo8TtWQ8YoJ6JUYPoUOOaiAbYm7XkcbR8mppmsA@mail.gmail.com>
+Subject: Re: [PATCH v9 9/9] arm64: dts: mediatek: Add MediaTek MT6392 PMIC dtsi
+To: linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260820_090141_318669_72CEB383 
-X-CRM114-Status: GOOD (  14.55  )
+X-CRM114-CacheID: sfid-20260820_092228_937302_382F3C0F 
+X-CRM114-Status: UNSURE (   7.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,47 +113,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+> +&pwrap {
+> +       pmic: pmic {
+> +               compatible = "mediatek,mt6392", "mediatek,mt6323";
 
-I've tested your commands with a vanilla kernel (no patches applied): the 
-results differ based on whether the bug is triggered by my orignal script to 
-reproduce the issue, or the issue happens naturally.
-
-For reference, this is what i mean by "my original script":
-#!/bin/sh
-echo 0x7c060010 > /sys/kernel/debug/ieee80211/phy0/mt76/regidx
-while true; do echo 0xffffffff > /sys/kernel/debug/ieee80211/phy0/mt76/regval ; done
-(to be inturrupted with Ctrl-C after 2-3 seconds)
-
-So, when the issue happens on its own, your script (accessing register 
-0x54000120) outputs 0xffffffff, and even me attempting to write 0xa5a5a5a5 in a 
-loop won't change anything.
-
-Instead, when the issue is triggered by my original script, your script outputs 
-0xffff0002; again, I cannot manage to manually write a different value to the 
-register. In addition, with my original script I sometimes get messages in 
-dmesg saying:
-> mt7921e: MCU is not ready for firmware download
-
-So it would seem that my script does not reproduce the issue identically: 
-however, whether the trigger is artificial or not, the issue pops back up 
-naturally on subsequent reboots almost immediately.
-
-> Yours reads 0xffffffff where mine reads 0x4
-
-0x4 is the correct value for it to read, and it should correspond to 
-PCIE_LPCR_HOST_OWN_SYNC. When I was testing the bug with some dev_info(), 0x4 
-was the value read all the time up until the issue happened and it started 
-reading 0xffffffff.
-
-> Comes back 0xa5a5a5a5 and it's alive and latched like mine. Comes back
-> 0xffffffff and it's off the bus, which is a different bug.
-
-We may be looking at two different issues after all, both mitigated by an error 
-check that was missing anyway. I'm still inclined to say that it is not a 
-hardware issue, since nothing similar happens on Windows.
-
-> If you're up for it, reply with this line and it'll get picked up:
-
-Tested-by: moosager <moosager90@gmail.com>
+Please disregard this patch/series. Sashiko correctly pointed out that
+it's not necessary and actually wrong to provide a fallback on
+"mediatek,mt6323", which was needed on a previous iteration of the
+series but not in the current one.
+I will mark the series as archived on patchwork and provide a revised
+v10 once completed testing on devices.
+-- 
+Luca Leonardo Scorcia
+l.scorcia@gmail.com
 
