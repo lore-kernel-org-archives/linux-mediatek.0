@@ -4,73 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A2B0C5DF82
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2026 10:01:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C29CC5DF82
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Aug 2026 10:55:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qzV7l2BBhFOSHhVVyklbUdf55qxMMkHEpueYgfVDU9o=; b=umJj2B1UCDapGYMRV6i+UFuMgD
-	OycnKJmJ9MGlhpdp1zeE931qHI6JtBSr7A5L6GH2LrCfZHbw4Gg8hqy/nMuntR2fTqyYh5oHbCYo7
-	GKas485iv+gZgrNw6kzx/YR4xnHvXQ/OIHwVpRp+z6BZ61aB+MONNyH2d0CjkGNXUlpT/XIty/LJp
-	YKlrXxOL1FGPrZ6fn7o6CUNiQ53sR+vgy6j1H7yO0K9RH6AXE/UBaxr3Blf25IFoqGwQ2EeIw9iMa
-	yb+N1rz06lDwbU7E2p+8P97D5mfqLjvwS1jl2lYgEsB51xvNaT6T4AL0K4ZPaOyGiCSwv9rpVFOtL
-	xurqk5Zw==;
+	bh=ipmbXrGZuUTW3clkvLRtCtAeLwQH+jlck342QgUqPnQ=; b=ZLPZfJAOjMlS89sTNsPlJ9fedr
+	a+5d3tYMQC2g8jH4ZRDZHIW8crcHpRzSnrk8bHYS6uYKAhweRLvXYz/RimPryDBJjLz7OXJNx39KO
+	+jTtxExk2Ekv/mY2nVmsHxEwJjzHhttdZUKJCSDggRXJeb4p2LRCqnGs6rApzOqvKDbgE+yBtQPEO
+	wWywfK9hlSj+gpogayM2OgP4QgL8VH2PvmVFEIkyTGX20Bx9lSdi+sFjKw/sIVMXYfIz/rEvh/SON
+	o5mDKH370kPfybJoBNZDfJ/+pdlSTFIdGb6/CVrpgeeefYRcenjuSYnINZhIYXKKfPlcd2Jl42fbN
+	Osevh4rA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwzaF-0000000BJsF-29sX;
-	Thu, 20 Aug 2026 10:01:15 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1wx0Qr-0000000BOKT-3q6f;
+	Thu, 20 Aug 2026 10:55:37 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wwza7-0000000BJjb-2haW;
-	Thu, 20 Aug 2026 10:01:14 +0000
-X-UUID: 076e3ff69c7e11f19a56ed5b684f684d-20260820
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:766d5a45-013b-410e-97b0-5ef8d818dacd,IP:0,U
-	RL:25,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:25
-X-CID-META: VersionHash:7db8b62,CLOUDID:ac774b139aef87384a1761c539b108d6,BulkI
-	D:nil,BulkQuantity:0,SF:80|81|82|83|102|136|865|898,TC:nil,Content:0|15|50
-	,EDM:-3|-100,IP:nil,URL:11|94|82|1,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil
-	,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 076e3ff69c7e11f19a56ed5b684f684d-20260820
-X-User: liujiajia@kylinos.cn
-Received: from nature [(10.44.16.150)] by mailgw.kylinos.cn
-	(envelope-from <liujiajia@kylinos.cn>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 16256110; Thu, 20 Aug 2026 18:00:52 +0800
-Date: Thu, 20 Aug 2026 18:00:49 +0800
-From: Jiajia Liu <liujiajia@kylinos.cn>
-To: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Cc: Marcel Holtmann <marcel@holtmann.org>, Ying Hsu <yinghsu@chromium.org>,
-	Archie Pusaka <apusaka@chromium.org>,
-	Abhishek Pandit-Subedi <abhishekpandit@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jing Cai <jing.cai@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Chris Lu <chris.lu@mediatek.com>, linux-bluetooth@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 1/2] Bluetooth: btusb: mediatek: Fix leaked runtime PM
- reference in reset
-Message-ID: <aobQUR1NXk5vHBrg@nature>
-References: <ec23dae6c247005e8eccd312d326a626163ea491.1787132512.git.liujiajia@kylinos.cn>
- <CABBYNZ+Ow7XQTpM6gO_x2c9Z=jKewXk=dknxX6Ly9QZdezi4zA@mail.gmail.com>
+	id 1wx0Qn-0000000BOI8-47d6
+	for linux-mediatek@lists.infradead.org;
+	Thu, 20 Aug 2026 10:55:36 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-c2055f5a993so221869666b.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Aug 2026 03:55:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1787223332; cv=none;
+        d=google.com; s=arc-20260327;
+        b=AvDvD5rzR4feq0OOlxbCKOmJE+OYYAt4O5/+ASUgOvWXUJVNsAjvyfKCHtq1FauYgZ
+         F8Bpl0UY2XsXo47UvgUsfhm/eiErputRNPy4BWuZVweYg7fOu+uUIVS79C/O9uhTYZkR
+         zPnVFokXYWA4yPZs2XBQ2MrE9uXrcML0+wAbz9VI7zo4rzrGGpun2XjuhwsjcZKnfdD4
+         PdYCyB5tk6f5xfDOK6inChIFwGRo7aDhkxMm9zM4O+W30lWL+Zn26HpdZn05RWzHVsfu
+         cBrK29hdrh4gIkYye5UHhE/SajS3xYyISAa01HkUAekn0Q6Twbp7cLe7EUgHCHyYE4Xf
+         sQtA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=ipmbXrGZuUTW3clkvLRtCtAeLwQH+jlck342QgUqPnQ=;
+        fh=4RcNdqh1bqasO4dfc5aPAtMd0wkDyGXkP+HO3RTg5rM=;
+        b=rdCjCBFn7NYOGlzwsgZ04lIKeTxTuMo+iT41C3tB/0tG7zD9yxXsgqNPSN2rrwayJl
+         P5sjILNb1G9BBVuLsuuNeK+tG8VvGo0s4kq7agZ3giwF+oefSBc4148i9y41kFyfbkA6
+         KRQJkehprKLpTJLl79tT9Y8MP7x5DjMpFN9qASU9iZMAiImj7/9VsC2ZuoYM8V96vts0
+         C40PAlOmrycUy6PgtC5pslXbOeJPMPCLfjcWkoleLuuLKRDbX/RC3Wjp8R/Och9yHt2t
+         idyihDJKV/cw49eIdPogdfdIAV95oT/CTt1rTMUeCMhkHlkD3Z2kZFjuefY0UkCxCSbF
+         nFQw==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1787223332; x=1787828132; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=ipmbXrGZuUTW3clkvLRtCtAeLwQH+jlck342QgUqPnQ=;
+        b=SROYfvxg3zfpubSposkfDZtalk2HP0yLoCPwR6d0eCVwOJdU7aAmD2Q/1uCt4kJRd+
+         zcgks6rWtBmg853aOKtUI7lQVNdbzVJSakRanKdtJwtS/tXKluwP2sHYUbiE3IZ/BrQ2
+         oDTjBceUUYA7GJW2JVn3oHpntoj06nnaafUE3x0M1vBe5pcFfSZuDxn1+9h2mbn04qzY
+         DiW4nZpkzq8wnUvLoluhlGR1GDl9pvhsL4KF1njbmIBUdQNJ4fc/FUD2AdeoRj9+Hb+k
+         0pAcZSETtRdKxCN1ni64cz2rxkn/XamFXoLWVdsXY7eNFGwNxgJNPvJ/VpT+0/omokFj
+         d8lQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787223332; x=1787828132;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=ipmbXrGZuUTW3clkvLRtCtAeLwQH+jlck342QgUqPnQ=;
+        b=oaHCuselH6o6K+/Syteowq29cO7L/dWCtjXWNOoD3oEJiSJFdy6CxqzrWSwjU/qGiY
+         iavqDogz2k3B72DNlXViCVo+OL8UWhmG+2WkHfjGaiv86Zk+EYBGXgtKadd8Q16uespW
+         c2K4p8+yrbtonR5jetUTadZagYQw2gQCiCjSqTM0ny6ujslZM9aQoaljkr0u0it0bnFz
+         tfzm0mniNPmFEfZdethEY1P5FFc2zCpSdxpCfiWBPol+YjCZza9Ol4BkKE8ePBxzmOoo
+         9ERRvmUwI32eMV9046AGfhPSz1fZzm/Q53onTPx6HUgc4+4VAmdBqpO/B5EZbh6zOxmE
+         +k8A==
+X-Gm-Message-State: AOJu0YwZctkRF03kmlUAkvK8F3jk+2wkCtoRuymr2m7Oal3qdqJL7pyy
+	WF2PW0FN3dZ5z9idyNOd/K6foDADlWiKx7/EQxBuQEVDsOC1BEaJ+mn8eEhsaoXgEmG0RoAk4um
+	q870OZCv0c4+rFrh2zJmt8P0AT1Q6WX4=
+X-Gm-Gg: AR+sD11UnM7C1O+w/cm1N9/oqP5mV5mgV8yIjfUc+RJoGSr2E23ciJf2cSbD3fj1d8E
+	QQwCr6m4rAjFZJFok+6xLY/KIKbtmB2H/HDMFTycFVuHgWxT/anuBwkaiTaGxqfx7d/IQPxznhw
+	GZBG+3oX2m9XJRj9lFVCx37GIiMDY/ahN7LLWpdjBQywfyFxsJll4MLococxnWggrqDL1B4qIkc
+	tED1E/HOsiGyW09/+gGxdf5Ivfgv6OUg46ji3yStDMRpYHwF5QgNT2ZKYxSt5vA6Pd4AqirL6em
+	GEeEHMLiI6453MnXtbsbVBq1WC4BZIkY8VL20CtHf6U=
+X-Received: by 2002:a17:907:1c99:b0:c1c:2173:d412 with SMTP id
+ a640c23a62f3a-c23f93178a1mr798064166b.1.1787223331499; Thu, 20 Aug 2026
+ 03:55:31 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CABBYNZ+Ow7XQTpM6gO_x2c9Z=jKewXk=dknxX6Ly9QZdezi4zA@mail.gmail.com>
+References: <20260819101853.44681-1-l.scorcia@gmail.com> <xqnpukvhtezpqhwjnxbqeddiaqlro4m5yjukpplv5mjfxodlfp@ijaf2trst7p4>
+In-Reply-To: <xqnpukvhtezpqhwjnxbqeddiaqlro4m5yjukpplv5mjfxodlfp@ijaf2trst7p4>
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Date: Thu, 20 Aug 2026 12:55:19 +0200
+X-Gm-Features: AcwNN1UZv97CCo3bWTxILn7aTXSi7ZUKBM5jaDSq07HQRpTQTLXr653YW63gQJQ
+Message-ID: <CAORyz2Kp-LzLdUp=qWfF2xC4kCuUufj0seBKPcKEaebrXnhhYQ@mail.gmail.com>
+Subject: Re: [PATCH v4 0/7] Properly describe mt6589 and mt8167 toprgu resets
+To: Akari Tsuyukusa <akkun11.open@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, 
+	Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, linux-watchdog@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260820_030107_981764_D2996253 
-X-CRM114-Status: GOOD (  30.83  )
+X-CRM114-CacheID: sfid-20260820_035534_051355_C230735C 
+X-CRM114-Status: GOOD (  22.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,169 +120,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 19, 2026 at 12:35:38PM -0400, Luiz Augusto von Dentz wrote:
-> Hi Jiajia,
-> 
-> On Wed, Aug 19, 2026 at 5:52 AM Jiajia Liu <liujiajia@kylinos.cn> wrote:
-> >
-> > MT7925 on HP Pro Mini 260 sometimes timed out during reloading driver
-> > and reset usb device. btusb_suspend is not called again after closing
-> > bluetooth interface.
-> >
-> >  usbcore: registered new interface driver btusb
-> >  Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20260605184935
-> >  Bluetooth: hci0: Execution of wmt command timed out
-> >  Bluetooth: hci0: Failed to send wmt patch dwnld (-110)
-> >  Bluetooth: hci0: Failed to set up firmware (-110)
-> >  usb 3-10: reset high-speed USB device number 4 using xhci_hcd
-> >  Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20260605184935
-> >  Bluetooth: hci0: Device setup in 1856545 usecs
-> >  Bluetooth: hci0: AOSP extensions version v1.00
-> >  Bluetooth: hci0: AOSP quality report is supported
-> >  Bluetooth: MGMT ver 1.23
-> >
-> > btusb_mtk_reset calls usb_autopm_get_interface to resume the device
-> > before driving the hardware reset, but never calls the matching
-> > usb_autopm_put_interface. Every hardware reset therefore leaks a PM
-> > usage reference of the interface, preventing the device from being
-> > runtime suspended again until it is unbound.
-> >
-> > Add BTUSB_USB_RESET_ACTIVE flag and set it before usb_queue_reset_device.
-> > Release the PM reference in btusb_disconnect if this flag is set.
-> >
-> > Fixes: 25b6d7593a3a ("Bluetooth: btmtk: introduce btmtk reset work")
-> > Assisted-by: Claude:qwen3.8-max
-> > Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
-> > ---
-> >
-> > Changes in v2:
-> > - Fix the race window (sashiko)
-> >   Add and set BTUSB_USB_RESET_ACTIVE flag before usb_queue_reset_device.
-> >   Release PM reference in btusb_disconnect if this flag is set.
-> >
-> > Changes in v1:
-> > - add usb_autopm_put_interface after usb_queue_reset_device
-> >
-> > ---
-> >  drivers/bluetooth/btusb.c | 5 +++++
-> >  1 file changed, 5 insertions(+)
-> >
-> > diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-> > index 184e95c1625e..45a726bed0dd 100644
-> > --- a/drivers/bluetooth/btusb.c
-> > +++ b/drivers/bluetooth/btusb.c
-> > @@ -957,6 +957,7 @@ struct qca_dump_info {
-> >  #define BTUSB_USE_ALT3_FOR_WBS 15
-> >  #define BTUSB_ALT6_CONTINUOUS_TX       16
-> >  #define BTUSB_HW_SSR_ACTIVE    17
-> > +#define BTUSB_USB_RESET_ACTIVE 18
-> >
-> >  struct btusb_data {
-> >         struct hci_dev       *hdev;
-> > @@ -2915,6 +2916,7 @@ static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
-> >
-> >         err = btmtk_usb_subsys_reset(hdev, btmtk_data->dev_id);
-> >
-> > +       set_bit(BTUSB_USB_RESET_ACTIVE, &data->flags);
-> >         usb_queue_reset_device(data->intf);
-> >         clear_bit(BTMTK_HW_RESET_ACTIVE, &btmtk_data->flags);
-> >
-> > @@ -4497,6 +4499,9 @@ static void btusb_disconnect(struct usb_interface *intf)
-> >         if (data->reset_gpio)
-> >                 gpiod_put(data->reset_gpio);
-> >
-> > +       if (test_bit(BTUSB_USB_RESET_ACTIVE, &data->flags))
-> > +               usb_autopm_put_interface_no_suspend(data->intf);
-> 
-> Should this be test_and_clear_bit rather then just test_bit, otherwise
-> it doesn't seem to be ever cleared? Sashiko also complains about the
-> handling of multiple resets (is that really possible though?):
+Hi Akari,
+thank you for the detailed report!
 
-Will use test_and_clear_bit.
+> This is somewhat outside the scope of this series, but adding TOPRGU
+> reset support for MT6589 exposes a pre-existing problem with the
+> mtk-wdt binding that I think should not go unnoticed.
+>
+> Until now, using `mediatek,mt6589-wdt` as a fallback compatible for
+> other SoCs was mostly harmless, since the driver did not expose the
+> TOPRGU reset controller.
+> This series changes that by adding reset controller support for MT6589.
 
-> 
-> https://sashiko.dev/#/patchset/ec23dae6c247005e8eccd312d326a626163ea491.1787132512.git.liujiajia%40kylinos.cn
-> 
-> Or perhaps we should check if BTUSB_USB_RESET_ACTIVE (Id rename it to
-> just BTUSB_RESET) and then don't queue a second time which perhaps is
-> what sashiko is talking about when it refers to reference.
+This is the exact reason that led me to touching the MT6589 code. I
+have been working on improving upstream support for MT8167 and its
+TOPRGU reset is required for audio support, but the current fallback
+on MT6589 does not allow resets. If I changed MT8167 only, a reviewer
+might have thought that the new MT8167 resets should have been applied
+to MT6589 instead.
+This series should cause no regressions as the addition of
+#reset-cells itself only registers the reset controller for
+mt6589-derived boards and it does not trigger any reset on its own.
 
-Sashiko concerns other PM usage references will leak if there are multiple
-resets, since btusb_disconnect only drop one reference.
+I agree that fixing MT6589 should be an initial step and that upstream
+would greatly benefit from the cleanup you described. From a
+high-level standpoint it seems like all of MediaTek's WDTs include a
+sw reset controller, it's just that the reset table is different for
+each SoC. If I'm not mistaken, fixing it shouldn't have particular
+repercussions on existing ABI since the existing fallback could be
+deprecated and their compatibles relisted as independent devices, i.e.
+basically what I'm doing with MT8167.
 
-I am trying to use test_and_set_bit before usb_queue_reset_device. If flag
-BTUSB_RESET_ACTIVE is already set, drop the reference it gets.
+> ## MT8516
+>
+> According to the downstream kernel, its reset layout appears to be
+> compatible with MT6589:
+> [...]
+> Note that a downstream kernel claiming compatibility does not necessarily
+> mean that the SoCs are actually compatible. In my experience, MediaTek's
+> downstream kernels contain substantial amounts of copied code between
+> different SoCs, so I would not consider such compatibility claims
+> sufficient evidence on their own.
 
- @@ -2915,6 +2918,9 @@ static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
- 
-         err = btmtk_usb_subsys_reset(hdev, btmtk_data->dev_id);
- 
- +       if (test_and_set_bit(BTUSB_RESET_ACTIVE, &data->flags))
- +               usb_autopm_put_interface_no_suspend(data->intf);
- +
-         usb_queue_reset_device(data->intf);
-         clear_bit(BTMTK_HW_RESET_ACTIVE, &btmtk_data->flags);
- 
- @@ -4497,6 +4503,9 @@ static void btusb_disconnect(struct usb_interface *intf)
-         if (data->reset_gpio)
-                 gpiod_put(data->reset_gpio);
- 
- +       if (test_and_clear_bit(BTUSB_RESET_ACTIVE, &data->flags))
- +               usb_autopm_put_interface_no_suspend(data->intf);
+Kudos for finding MT8516 sources, I have been looking for them for
+ages! They actually reinforce what you say above.
+MT8167 hardware is currently described upstream as MT8516 + display
+blocks, but the MT8167 resets as described in the data sheet are quite
+different from MT6589. That said, I've also noticed that sometimes
+parts of MediaTek's data sheets are copied from other SoCs too, and
+sometimes contain mistakes of their own... unless it's possible to
+test on an actual device, some kind of guessing is probably
+inevitable.
 
-And add btmtk_reset_sync before btmtk_setup_firmware_79xx to construct two
-calls of btusb_mtk_reset for testing.
+> I also noticed that the v3 link is missing from the cover letter:
+> [3] https://lore.kernel.org/linux-arm-kernel/20260809160643.33991-1-l.scorcia@gmail.com/
 
- [29641.975493] usbcore: deregistering interface driver btusb
- [29641.997490] btusb_close: hci0
- [29642.334308] usbcore: registered new interface driver btusb
- [29642.334794] called btmtk_reset_sync
- [29642.335654] Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20260605184935
- [29643.559484] Bluetooth: hci0: adv larger than maximum supported
- [29643.569495] Bluetooth: hci0: adv larger than maximum supported
- [29647.472831] Bluetooth: hci0: adv larger than maximum supported
- [29648.920846] Bluetooth: hci0: adv larger than maximum supported
- [29652.577442] Bluetooth: hci0: Execution of wmt command timed out
- [29652.577450] Bluetooth: hci0: Failed to send wmt patch dwnld (-110)
- [29652.577468] Bluetooth: hci0: Failed to set up firmware (-110)
- [29652.577470] Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
- [29652.577475] btusb_close: hci0
-
-Detect two calls.
-
- [29652.786083] btusb_mtk_reset: already set BTUSB_RESET_ACTIVE
- [29652.922030] usb 3-10: reset high-speed USB device number 4 using xhci_hcd
- [29653.069414] Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20260605184935
- [29653.086161] Bluetooth: hci0: urb 00000000b24765f3 failed to resubmit (2)
- [29655.108547] Bluetooth: hci0: Device setup in 1993116 usecs
- [29655.108554] Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
- [29657.121635] Bluetooth: hci0: Opcode 0x0c03 failed: -110
- [29659.137668] Bluetooth: hci0: Failed to read MSFT supported features (-110)
- [29661.153775] Bluetooth: hci0: AOSP get vendor capabilities (-110)
- [29661.154635] btusb_close: hci0
- [29661.290132] usb 3-10: reset high-speed USB device number 4 using xhci_hcd
- [29661.432184] Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20260605184935
- [29661.934878] Bluetooth: hci0: Device setup in 492744 usecs
- [29661.934887] Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
- [29662.020980] Bluetooth: hci0: AOSP extensions version v1.00
- [29662.021001] Bluetooth: hci0: AOSP quality report is supported
- [29662.021474] Bluetooth: MGMT ver 1.23
-
-Close bluetooth on control panel. btusb_suspend is called after two seconds.
-
- [29674.033188] btusb_close: hci0
- [29676.530032] btusb_suspend: intf 0000000016fc024b
- [29676.530053] btusb_suspend: intf 000000009b822b1b
-
-> 
-> >         if (intf == data->intf) {
-> >                 if (data->isoc)
-> >                         usb_driver_release_interface(&btusb_driver, data->isoc);
-> > --
-> > 2.55.0
-> >
-> 
-> 
-> -- 
-> Luiz Augusto von Dentz
+Thank you for spotting this, I will list it in the next iteration!
+-- 
+Luca Leonardo Scorcia
+l.scorcia@gmail.com
 
