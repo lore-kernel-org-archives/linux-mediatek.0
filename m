@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B85EC5DF87
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:04:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72857C5DF87
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:05:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qXV52+XJ+DRfn1F+0FjeSnHXuvt+SSnmIy+75ouQp+U=; b=ik6Q94AfREXD9Za69lrnVVntn4
-	zYoQOegPQX0MDHuUSBKxGhGlrIA/CY5WRgIJyk8YHpA81IXMiT+GOVL/4PZRQ9uqg5AVlgfMfHGi2
-	gcP9JD/Jud+P8mgG+XIkEH4Penw0/vVOqB9AWvwCxfu7JQv9Z3EnQOUapAdm/zYNDzoTA/Xg0AnFZ
-	YHzsisBEoAUt6dcj/v4DVvbCo4x++c8s08mxvRpgNWbxid5A3zAsrBZJiUq7MEnuKb3VTE0t6QFg1
-	Ooa/zuf7LcFThxfVVLO9K/Re8CgF9wX4Y4FESEbjdF2G3vQAxijYXKACWfujnzl9aNNtwEVs3XqQq
-	seYmCH6Q==;
+	bh=oNIcbkNGrav4X+tGpa6f5NksBwBQLYNO1DslwLk7zQo=; b=r3tSwb5Zo14YmVk0XhxshCC765
+	ro1KnSJZ8Ff9DxS759CgSJ1mFtAtRUwqeMQ6iBmSI7nBx3IVwc5psJlLy7YWaCbRpAUTanaJBHCQ2
+	hgj24NuivqpEPxoqtYO5N3p7Xhi5afrXjgVrR+fEFnSexKNYTPIt1vQEwu03J+pa72EMOzP2oDQhE
+	MXgcu+mEIw+dFWnkjJ4HeKb8/wnOUabNOIxVblfUt1UrP6mQULmQ4rOJqMJVKWcgzNLuzPmUDYQzd
+	4gygnPlJXXIBX5QKMQwPaGVOYbuTriGthA4odVjTn2JYUCMLIMqy6+VVNyqg2WOOkBVUuKPKopsB3
+	xmp3uM6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxLB9-0000000Ct2D-28t3;
-	Fri, 21 Aug 2026 09:04:47 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wxLBO-0000000Ct50-2tdb;
+	Fri, 21 Aug 2026 09:05:02 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxLB7-0000000Ct1g-236A;
-	Fri, 21 Aug 2026 09:04:45 +0000
+	id 1wxLBM-0000000Ct4N-3Gmf;
+	Fri, 21 Aug 2026 09:05:00 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E69FB618C9;
+	by tor.source.kernel.org (Postfix) with ESMTP id 0A403618D7;
+	Fri, 21 Aug 2026 09:05:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CAB41F00A3E;
 	Fri, 21 Aug 2026 09:04:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 098391F00A3D;
-	Fri, 21 Aug 2026 09:04:29 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 41/45] clk: vt8500: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:51 +0200
-Message-ID: <df1b75b7ad9c4181d440422b2e62d66de4e412a7.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 42/45] clk: x86: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:52 +0200
+Message-ID: <2d1690a6966152450bda8e8b1e6f5fe2c1df1610.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -147,33 +147,23 @@ Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 Compile-tested only.
 ---
- drivers/clk/clk-vt8500.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/clk/x86/clk-pmc-atom.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/clk/clk-vt8500.c b/drivers/clk/clk-vt8500.c
-index 3e62cb853d5e90e7..581ac00c31bc0448 100644
---- a/drivers/clk/clk-vt8500.c
-+++ b/drivers/clk/clk-vt8500.c
-@@ -227,8 +227,8 @@ static __init void vtwm_device_clk_init(struct device_node *node)
- 	struct clk_hw *hw;
- 	struct clk_device *dev_clk;
- 	const char *clk_name = node->name;
+diff --git a/drivers/clk/x86/clk-pmc-atom.c b/drivers/clk/x86/clk-pmc-atom.c
+index 08c83e0abc41d942..43dda274e329d19e 100644
+--- a/drivers/clk/x86/clk-pmc-atom.c
++++ b/drivers/clk/x86/clk-pmc-atom.c
+@@ -151,8 +151,8 @@ static struct clk_plt *plt_clk_register(struct platform_device *pdev, int id,
+ 					const char **parent_names,
+ 					int num_parents)
+ {
 +	struct clk_init_data init = {};
- 	const char *parent_name;
+ 	struct clk_plt *pclk;
 -	struct clk_init_data init;
- 	int rc;
- 	int clk_init_flags = 0;
+ 	int ret;
  
-@@ -687,8 +687,8 @@ static __init void vtwm_pll_clk_init(struct device_node *node, int pll_type)
- 	struct clk_hw *hw;
- 	struct clk_pll *pll_clk;
- 	const char *clk_name = node->name;
-+	struct clk_init_data init = {};
- 	const char *parent_name;
--	struct clk_init_data init;
- 	int rc;
- 
- 	if (!pmc_base)
+ 	pclk = devm_kzalloc(&pdev->dev, sizeof(*pclk), GFP_KERNEL);
 -- 
 2.43.0
 
