@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5832AC5DF7D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:04:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B85EC5DF87
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:04:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UjAbSupE/I3gjkA/r+CxggJI0p9J85Zn8zuFFXwGXVU=; b=baWjQeQOqjSpsqxsSVJQ6MzBs/
-	AifnWzDOISCRRjMeoy4CifOK8vgwoQoufoaPHrbWp8Z3wWqXWhZodBX4G9Y6S0OgHO1Nafe9ua6xa
-	C66xU4t9hvtOki/6wYskXEVCYx+LpSamWaGBmTyhSxBNAHAaNAIQGQU9+Qds7ZI0MA4x+jJHcERa5
-	8U+bJKo9uohv/7XE2+v1/c2EaRs/pByAWdoC9qgGYq67KKQwhi19qPt0wdTFoPlV7wgZtdVLi0Ism
-	k/qQnWvAzR1PVRspC6aymsIfSvbirH5m9rfkg8Qr3nm0f1ohA8JP49icpg7WWK1k0UP8KmjkcjW7i
-	4wUIsc9Q==;
+	bh=qXV52+XJ+DRfn1F+0FjeSnHXuvt+SSnmIy+75ouQp+U=; b=ik6Q94AfREXD9Za69lrnVVntn4
+	zYoQOegPQX0MDHuUSBKxGhGlrIA/CY5WRgIJyk8YHpA81IXMiT+GOVL/4PZRQ9uqg5AVlgfMfHGi2
+	gcP9JD/Jud+P8mgG+XIkEH4Penw0/vVOqB9AWvwCxfu7JQv9Z3EnQOUapAdm/zYNDzoTA/Xg0AnFZ
+	YHzsisBEoAUt6dcj/v4DVvbCo4x++c8s08mxvRpgNWbxid5A3zAsrBZJiUq7MEnuKb3VTE0t6QFg1
+	Ooa/zuf7LcFThxfVVLO9K/Re8CgF9wX4Y4FESEbjdF2G3vQAxijYXKACWfujnzl9aNNtwEVs3XqQq
+	seYmCH6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxLAt-0000000CsyQ-1VuQ;
-	Fri, 21 Aug 2026 09:04:31 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wxLB9-0000000Ct2D-28t3;
+	Fri, 21 Aug 2026 09:04:47 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxLAr-0000000Csy6-48Xr;
-	Fri, 21 Aug 2026 09:04:30 +0000
+	id 1wxLB7-0000000Ct1g-236A;
+	Fri, 21 Aug 2026 09:04:45 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id AADB745142;
+	by tor.source.kernel.org (Postfix) with ESMTP id E69FB618C9;
+	Fri, 21 Aug 2026 09:04:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 098391F00A3D;
 	Fri, 21 Aug 2026 09:04:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBE701F000E9;
-	Fri, 21 Aug 2026 09:04:14 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 40/45] clk: versatile: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:50 +0200
-Message-ID: <7c480e73222bb51982fb82dc0cc6cd503f2e8b92.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 41/45] clk: vt8500: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:51 +0200
+Message-ID: <df1b75b7ad9c4181d440422b2e62d66de4e412a7.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -147,51 +147,33 @@ Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 Compile-tested only.
 ---
- drivers/clk/versatile/clk-icst.c         | 2 +-
- drivers/clk/versatile/clk-sp810.c        | 2 +-
- drivers/clk/versatile/clk-vexpress-osc.c | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/clk/clk-vt8500.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/clk/versatile/clk-icst.c b/drivers/clk/versatile/clk-icst.c
-index 6bd3db54dd229d28..97a1bfd6cf0ed995 100644
---- a/drivers/clk/versatile/clk-icst.c
-+++ b/drivers/clk/versatile/clk-icst.c
-@@ -360,8 +360,8 @@ struct clk *icst_clk_setup(struct device *dev,
- {
- 	struct clk *clk;
- 	struct clk_icst *icst;
--	struct clk_init_data init;
- 	struct icst_params *pclone;
+diff --git a/drivers/clk/clk-vt8500.c b/drivers/clk/clk-vt8500.c
+index 3e62cb853d5e90e7..581ac00c31bc0448 100644
+--- a/drivers/clk/clk-vt8500.c
++++ b/drivers/clk/clk-vt8500.c
+@@ -227,8 +227,8 @@ static __init void vtwm_device_clk_init(struct device_node *node)
+ 	struct clk_hw *hw;
+ 	struct clk_device *dev_clk;
+ 	const char *clk_name = node->name;
 +	struct clk_init_data init = {};
+ 	const char *parent_name;
+-	struct clk_init_data init;
+ 	int rc;
+ 	int clk_init_flags = 0;
  
- 	icst = kzalloc_obj(*icst);
- 	if (!icst)
-diff --git a/drivers/clk/versatile/clk-sp810.c b/drivers/clk/versatile/clk-sp810.c
-index b0e69686f7a9a93e..28e5c0cf1fda38e4 100644
---- a/drivers/clk/versatile/clk-sp810.c
-+++ b/drivers/clk/versatile/clk-sp810.c
-@@ -86,7 +86,7 @@ static void __init clk_sp810_of_setup(struct device_node *node)
- 	const char *parent_names[2];
- 	int num = ARRAY_SIZE(parent_names);
- 	char name[12];
--	struct clk_init_data init;
+@@ -687,8 +687,8 @@ static __init void vtwm_pll_clk_init(struct device_node *node, int pll_type)
+ 	struct clk_hw *hw;
+ 	struct clk_pll *pll_clk;
+ 	const char *clk_name = node->name;
 +	struct clk_init_data init = {};
- 	static int instance;
- 	int i;
- 	bool deprecated;
-diff --git a/drivers/clk/versatile/clk-vexpress-osc.c b/drivers/clk/versatile/clk-vexpress-osc.c
-index 9adbf5c33bd1cada..72e872ec6b7c9b47 100644
---- a/drivers/clk/versatile/clk-vexpress-osc.c
-+++ b/drivers/clk/versatile/clk-vexpress-osc.c
-@@ -64,7 +64,7 @@ static const struct clk_ops vexpress_osc_ops = {
+ 	const char *parent_name;
+-	struct clk_init_data init;
+ 	int rc;
  
- static int vexpress_osc_probe(struct platform_device *pdev)
- {
--	struct clk_init_data init;
-+	struct clk_init_data init = {};
- 	struct vexpress_osc *osc;
- 	u32 range[2];
- 	int ret;
+ 	if (!pmc_base)
 -- 
 2.43.0
 
