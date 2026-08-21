@@ -4,97 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D629C5DF8E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 12:31:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC221C5DF87
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 13:26:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cOrddxMe438IsC7xeJkXYhGEPOhIf02MCjyvV84OxAQ=; b=a0uQtZPuqVbIHHsAEffsDGy17S
-	2SHG1Cb3ZduxjZVwNAuoZyuzBEu3+h9hDTprpE4tG0tI4HeKPqy2kW0Rkxt+mkdrtK6DWmmE1Ul5H
-	OZDltC4BkuYl4FwAPVvB/z5iclG1cKCHiSOzx5888wzqfebZDdojxgIevjsCzNNS3NCV0ar+Def10
-	poX5UIaumjIrhA/WnAk+bGdJZgCqc2rzbiKEzGHqDhJBmFAynqElC8KcfpD9CfNjacV/m3a0VIwRT
-	9XJk1CsW2ZUajC7fwDRo+ZN/pLM363SBKWFdaLHN7zcO+NWdI4V5MShQGJ6Y1Go6Fpse611klrHST
-	ULxCd00Q==;
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:From:To:Date:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=RMOVq/yYVJ/t1zHFfNFBFWkMeYoxZiohJENLsBDPSw8=; b=dhyyRwqMKQkh8m4AON3hH/C2Mz
+	oVwyzA/z/UlyANPtCGTGQJBRbytMwsLcTDrORIzncGjAwjTYtV+1r/3BfdB1OGG8T/4SIQN9oCUr3
+	xzNtMZ/Cl4p0oBlaYs+UmQHuso4ybwqtQ/DjlQOPCZvRZDVkoRxHapIUmwAoJFriSwRDFJ6mX9hih
+	sL4Pgr02hgKFNiuXf74tRMiQzq05+/YvMdomHSzCQK4hlggrVay5SUYgrlkECKdGA58GOOAr/5ihT
+	4zkJeIyOpxDj1W7uMTP3yPRJM8Ui4lr+tkPOQSOu/cLiiY9DGrRm7npy1CybLPhECe6lPQEZr8fTn
+	3gRZLHsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxOOt-0000000DKFx-13ZJ;
-	Fri, 21 Aug 2026 12:31:11 +0000
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+	id 1wxPGq-0000000DOs4-2qc2;
+	Fri, 21 Aug 2026 13:26:56 +0000
+Received: from mail-4319.protonmail.ch ([185.70.43.19])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxOOd-0000000DK62-0pOK
+	id 1wxPGn-0000000DOr0-2vzY
 	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Aug 2026 12:30:56 +0000
-Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-2cf27856f9cso9401615ad.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 21 Aug 2026 05:30:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1787315454; x=1787920254; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=cOrddxMe438IsC7xeJkXYhGEPOhIf02MCjyvV84OxAQ=;
-        b=KIxlz8fS/qQmKkwoqlU9LdBlSQLtxhhPs+VuHkiTSluep4NR5llM6LkhJoNt2IqC6Y
-         +auTXpaZKDg5wEEBipbiRqlQ8phHmflqGujwVAIaOGBUYP9e4ZrKCyiazkp1Q5MpHETB
-         H6MxQ+clFV7QZSFx79OwKE/rJ9SG4pVNj4KyJxTx8msjhdb6TFkSZLhpWIgTxtxeOily
-         s777eaeuReN5rCT6wRTTlDwkN70wLdBBMWh/QyvKZ1iYhirPZTIe9HlddJwZP22vj0Kf
-         1bS2+2L+5sfsCp1Yfu69KyT9z+oQDlkN1BP2gJcdV1MKmuJSlI0dXvtvT5eZ5HZSPaRT
-         kc1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787315454; x=1787920254;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=cOrddxMe438IsC7xeJkXYhGEPOhIf02MCjyvV84OxAQ=;
-        b=ftzPYPytqgXUM8qVkO8Q5CVLtABSQkzX4tFHAIu02naXVazO6JAq+keho4e+2WBIBZ
-         gy4VufJbiXWzO7lEJeEmmYm+5icARlBzKPiaU1a7eF4wNJzZK1Shr8+jt7cb5qadQeeS
-         4Pzcx6o+PlfN/0JYXyqyeZWALQEBiPhob3PhzyNTWyp4pAH16I66E0nYInogNRx62mr/
-         3RVfKLHXELp1sexLYqBawNj54UXF2mVAy3AqsVodoUjeJpibhYdobGALAM/FNUpO4N8r
-         QA1vSIpOofmQrHdJJsmzJ5ojhydZMK7sgDjgdNLmFrQtDUePILmqF+0kVvCXdLHV7pOa
-         vavQ==
-X-Forwarded-Encrypted: i=1; AHgh+RpVdZWft43mJa5zz7O7rMNfGx1b0ILHcNkFsdiFFFBoRutHQF9atW357+3OLR+zjngm4mAilI7EMT3ewXcCsQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++lBVCOcZeK8KYMImXnuMXH5S1gBvydwwhnTl1l1/YRszX5NkIhk
-	hYjCfM2NvKoaJ6GM422D2KLlia/g2NS+iybY7s8OTPYniCcjU+h6XEzb
-X-Gm-Gg: AR+sD13EnkvcJqVOe1BQmPwBWotUR2vZBu5Chj+Fdb59j28iav1oGTchijI1Mv7sy+Y
-	NH2iYpC8gHYPvIBGAKCid2co1WGrrsPNHDSDk2i0F+EiJNTKlxHPdLUlTi4UfFOrzWEsqg+IlPm
-	P5qqV6Z5lgJKsCDwwylnAs8J3rkGYINNO7l6KNOhmluuR1qepv7zBdW1HYmGvsgxqPjoxeBGPcx
-	MtW0DqLdZtpJDUDEN4nm7oz/PSVXOHu762O9uvDmJHjTPbKGwxFlsLY6WFlX4l8SafxaWOH7i2L
-	y9dkRGtCXkkcO5M/yRvvgolxEOg1QMNFmzvrxX8mO+RiTi6sxLCA5lixrwbVL3Dw/FtZr4n3QNm
-	oxTLnlVYZaMfNDxanY4OwArIiYwB28zYgAHGB2ufyYH87lCxkQfVPZ7nZPlBDhHnobJWTHbFCSR
-	RDispqErsAMouyn7LdZ/pcxRduLVf8KDZ/x9Jrnb8M2KgTlvmWVfLgpEiLEVB6W+4XVKQCOmug/
-	+pl5FTQSgz7il/A8ThfL77R/Kmmw/NSTwSZKtWSAJfpe1M+Fy8Bcdut4T9b9nmJt3JtUxh9j/BR
-	8XbL
-X-Received: by 2002:a17:903:3c6c:b0:2ca:9d5a:8b6c with SMTP id d9443c01a7336-2d64adc5f3emr120518305ad.5.1787315454282;
-        Fri, 21 Aug 2026 05:30:54 -0700 (PDT)
-Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2d62e36e1besm18302235ad.53.2026.08.21.05.30.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Aug 2026 05:30:53 -0700 (PDT)
-From: phucduc.bui@gmail.com
-To: Mark Brown <broonie@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Cezary Rojewski <cezary.rojewski@intel.com>,
-	linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH v2 4/4] ASoC: mediatek: mt8186: Fix MCK error handling
-Date: Fri, 21 Aug 2026 19:30:21 +0700
-Message-ID: <20260821123021.41390-5-phucduc.bui@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260821123021.41390-1-phucduc.bui@gmail.com>
-References: <20260821123021.41390-1-phucduc.bui@gmail.com>
+	Fri, 21 Aug 2026 13:26:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1787318809; x=1787578009;
+	bh=RMOVq/yYVJ/t1zHFfNFBFWkMeYoxZiohJENLsBDPSw8=;
+	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=Jj4+o+sHnk0QyXaTkOcWoRiXcP+0Ztgdi86Jhsn+2sMQ3710fSX//lP+wty6TCqYE
+	 7wRkhnCo2wNe53PdYNY6v1xtuvVfBwWISt0ErMpMUJdf6DAapYiIeEZu8Ic0oAPh9x
+	 AFY/2esZrVP3qSiw6DgGXvuTJowOOFYeUU/LPrcUOxSVgTrG4m2p8o90M4qypE3CKc
+	 PQUBXYBPBPwe844PqosYaVmGF9x1/GtRNTA6ehPU5r0gMJsm8rxkwY9+quaJHWAf55
+	 OaaavzlysmX3eNZ8PhNsL5DSqaXtdPo/tFScou0p9YyTJGmMidt6K74w+tZVXdAa1t
+	 Y6wBZQkchD6Zw==
+Date: Fri, 21 Aug 2026 13:26:43 +0000
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+From: Ryan Leung <untilscour@protonmail.com>
+Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryan Leung <untilscour@protonmail.com>
+Subject: [PATCH mt76] wifi: mt76: fix wcid teardown ordering in mt76_reset_device()
+Message-ID: <20260821-mt76-wcid-null-before-cleanup-v1-1-0e364d9062d6@protonmail.com>
+Feedback-ID: 184418679:user:proton
+X-Pm-Message-ID: 6c7e4c8903af770bdbcc283a100b1d8847502fc7
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260821_053055_524004_F096B754 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20260821_062653_889934_934053B7 
+X-CRM114-Status: UNSURE (   8.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,71 +67,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: bui duc phuc <phucduc.bui@gmail.com>
+mt76_reset_device() tears down each wcid's pktid idr before clearing
+dev->wcid[i], which is the reverse of the ordering used on the
+sta removal path. Until the pointer is cleared, a concurrent lookup
+under status_lock can still find the wcid and access its
+already destroyed idr.
 
-The mt8186_mck_enable() function returns immediately when a clock
-operation fails, leaving previously enabled clocks active.
+Clear dev->wcid[i] before calling mt76_wcid_cleanup(), reproducing
+the ordering mac80211 already enforces for normal sta removal (where
+mt76_sta_pre_rcu_remove() clears dev->wcid[idx] before
+mt76_wcid_cleanup() runs via the .sta_state callback).
 
-Add error paths to disable previously enabled clocks before returning
-the error.
-
-Fixes: 55b423d5623c ("ASoC: mediatek: mt8186: support audio clock control in platform driver")
-Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
+Fixes: 065c79df595a ("wifi: mt76: mt7915: fix list corruption after hardwar=
+e restart")
+Signed-off-by: Ryan Leung <untilscour@protonmail.com>
 ---
- sound/soc/mediatek/mt8186/mt8186-afe-clk.c | 17 +++++++++++++----
- 1 file changed, 13 insertions(+), 4 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mac80211.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/sound/soc/mediatek/mt8186/mt8186-afe-clk.c b/sound/soc/mediatek/mt8186/mt8186-afe-clk.c
-index d6b0174e2655..8cc8eb8022b5 100644
---- a/sound/soc/mediatek/mt8186/mt8186-afe-clk.c
-+++ b/sound/soc/mediatek/mt8186/mt8186-afe-clk.c
-@@ -528,7 +528,7 @@ int mt8186_mck_enable(struct mtk_base_afe *afe, int mck_id, int rate)
- 		if (ret) {
- 			dev_err(afe->dev, "%s(), clk_prepare_enable %s fail %d\n",
- 				__func__, aud_clks[m_sel_id], ret);
--			return ret;
-+			goto ERR_ENABLE_MCLK;
- 		}
- 		ret = clk_set_parent(afe_priv->clk[m_sel_id],
- 				     afe_priv->clk[apll_clk_id]);
-@@ -536,7 +536,7 @@ int mt8186_mck_enable(struct mtk_base_afe *afe, int mck_id, int rate)
- 			dev_err(afe->dev, "%s(), clk_set_parent %s-%s fail %d\n",
- 				__func__, aud_clks[m_sel_id],
- 				aud_clks[apll_clk_id], ret);
--			return ret;
-+			goto ERR_SELECT_MCLK;
- 		}
- 	}
- 
-@@ -545,16 +545,25 @@ int mt8186_mck_enable(struct mtk_base_afe *afe, int mck_id, int rate)
- 	if (ret) {
- 		dev_err(afe->dev, "%s(), clk_prepare_enable %s fail %d\n",
- 			__func__, aud_clks[div_clk_id], ret);
--		return ret;
-+		goto ERR_ENABLE_MCLK_DIV;
- 	}
- 	ret = clk_set_rate(afe_priv->clk[div_clk_id], rate);
- 	if (ret) {
- 		dev_err(afe->dev, "%s(), clk_set_rate %s, rate %d, fail %d\n",
- 			__func__, aud_clks[div_clk_id], rate, ret);
--		return ret;
-+		goto ERR_SET_MCLK_RATE;
- 	}
- 
- 	return 0;
-+
-+ERR_SET_MCLK_RATE:
-+	clk_disable_unprepare(afe_priv->clk[div_clk_id]);
-+ERR_ENABLE_MCLK_DIV:
-+ERR_SELECT_MCLK:
-+	if (m_sel_id >= 0)
-+		clk_disable_unprepare(afe_priv->clk[m_sel_id]);
-+ERR_ENABLE_MCLK:
-+	return ret;
- }
- 
- void mt8186_mck_disable(struct mtk_base_afe *afe, int mck_id)
--- 
-2.43.0
+diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wi=
+reless/mediatek/mt76/mac80211.c
+index abbe65cbcd89..0eb021be837a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mac80211.c
++++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
+@@ -856,8 +856,8 @@ void mt76_reset_device(struct mt76_dev *dev)
+ =09=09=09continue;
+=20
+ =09=09wcid->sta =3D 0;
+-=09=09mt76_wcid_cleanup(dev, wcid);
+ =09=09rcu_assign_pointer(dev->wcid[i], NULL);
++=09=09mt76_wcid_cleanup(dev, wcid);
+ =09}
+ =09rcu_read_unlock();
+=20
+
+---
+base-commit: ca800a9302764c445de0da0e84d2252400a770ee
+change-id: 20260821-mt76-wcid-null-before-cleanup-cdb4d640f7de
+
+Best regards,
+-- =20
+Ryan Leung <untilscour@protonmail.com>
+
 
 
