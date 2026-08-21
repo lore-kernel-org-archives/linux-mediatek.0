@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80F39C5DF7D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:59:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3EDFC5DF7D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:00:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0WkqiEdozonjkCcLhygEqb5N6B2vWx7grnAT9ReE/8Q=; b=aDeoQM8wHFoAH+xTh14n2xFdie
-	kiBdw3+bG2NXcaAiZXe2QUb083XxqFGL8Vpit9szoU9bovaayGJdUMAd6NnJz9DppTRd7pN0Y2Eqt
-	szrBkTH3TxRw+A2rAdHXTriJUEb3zY3SrOQ5D3HaO9NoZ5j9IGo6/NaRRndfMIvvA50flbZl3xTWZ
-	sxn3xPmvKUFfXo9UZ5l8NpMJvHXC9Ws8VpffD5Jn98fvf/jKUG5n6qb1A6883S+6mkggBNX2eZhH8
-	b4ouCb7esjuAHFREiFZJvLir0pKlsDN4190mFcPmnbOGalgSbL25HORZ5DMN8Q+GaWb2LAUau78jh
-	9u5YBpPw==;
+	bh=FGPEhrlWiHMmUVrc+nustzQYPzVsEgzV8P9Ed2pRqQc=; b=saDRTUoTCU/zzAj3xCopvOa6jW
+	NIgGuCNv1QdkikcDuKhE6JkaGZKk38HPOr/dQgkikGAKqkdw+2w/K9yu8KYQQBlM1FOPqJ3crMZ1/
+	Z69PsMsDBFAwu+kbqZkXzWOBMpJ3PYG+yFmamsMOXSV+bc1P80hFtaSyKKM0/xHFydezangc0rOnf
+	rLWbrkU29ceTI865K6OpOmYBOMajcQjemrfTkCSbZEDlTwPwkdMfb+4i7MnZCADzee0ZpXvLGzTYR
+	LxikJgrTJHxh9e2YetHbqII/50qOLQH9dEdBRXqN6REtRLlomzm4xKIHI4rjSzVT/143TZv+vJfS2
+	2nQEMEpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL6H-0000000CrY2-2bnN;
-	Fri, 21 Aug 2026 08:59:45 +0000
+	id 1wxL6X-0000000Crbx-3GEm;
+	Fri, 21 Aug 2026 09:00:01 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL6F-0000000CrXi-4BeM;
-	Fri, 21 Aug 2026 08:59:44 +0000
+	id 1wxL6U-0000000CrbH-41hz;
+	Fri, 21 Aug 2026 08:59:59 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5A7EB6136E;
+	by tor.source.kernel.org (Postfix) with ESMTP id 6263B61883;
+	Fri, 21 Aug 2026 08:59:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8491B1F000E9;
 	Fri, 21 Aug 2026 08:59:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 679A61F00A3A;
-	Fri, 21 Aug 2026 08:59:28 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 21/45] clk: mxs: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:31 +0200
-Message-ID: <b6aed754c64c4709646cac9cafaf57825af67c6a.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 22/45] clk: nomadik: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:32 +0200
+Message-ID: <631df13629bf77d55bda770f94c7b1863690f2e2.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -147,72 +147,31 @@ Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 Compile-tested only.
 ---
- drivers/clk/mxs/clk-div.c  | 2 +-
- drivers/clk/mxs/clk-frac.c | 2 +-
- drivers/clk/mxs/clk-pll.c  | 2 +-
- drivers/clk/mxs/clk-ref.c  | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
+ drivers/clk/clk-nomadik.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/clk/mxs/clk-div.c b/drivers/clk/mxs/clk-div.c
-index fe7224162b3cc0fa..d4ee785c651190f0 100644
---- a/drivers/clk/mxs/clk-div.c
-+++ b/drivers/clk/mxs/clk-div.c
-@@ -70,9 +70,9 @@ static const struct clk_ops clk_div_ops = {
- struct clk *mxs_clk_div(const char *name, const char *parent_name,
- 			void __iomem *reg, u8 shift, u8 width, u8 busy)
+diff --git a/drivers/clk/clk-nomadik.c b/drivers/clk/clk-nomadik.c
+index da6b89759a14ecb0..890084b3912b4cb5 100644
+--- a/drivers/clk/clk-nomadik.c
++++ b/drivers/clk/clk-nomadik.c
+@@ -263,7 +263,7 @@ pll_clk_register(struct device *dev, const char *name,
  {
-+	struct clk_init_data init = {};
- 	struct clk_div *div;
- 	struct clk *clk;
--	struct clk_init_data init;
- 
- 	div = kzalloc_obj(*div);
- 	if (!div)
-diff --git a/drivers/clk/mxs/clk-frac.c b/drivers/clk/mxs/clk-frac.c
-index 52eb82fde322dcc4..e317710ab503a84a 100644
---- a/drivers/clk/mxs/clk-frac.c
-+++ b/drivers/clk/mxs/clk-frac.c
-@@ -112,9 +112,9 @@ static const struct clk_ops clk_frac_ops = {
- struct clk *mxs_clk_frac(const char *name, const char *parent_name,
- 			 void __iomem *reg, u8 shift, u8 width, u8 busy)
- {
-+	struct clk_init_data init = {};
- 	struct clk_frac *frac;
- 	struct clk *clk;
--	struct clk_init_data init;
- 
- 	frac = kzalloc_obj(*frac);
- 	if (!frac)
-diff --git a/drivers/clk/mxs/clk-pll.c b/drivers/clk/mxs/clk-pll.c
-index 581868e0693c6e5e..5acf48cddbb2859f 100644
---- a/drivers/clk/mxs/clk-pll.c
-+++ b/drivers/clk/mxs/clk-pll.c
-@@ -82,9 +82,9 @@ static const struct clk_ops clk_pll_ops = {
- struct clk *mxs_clk_pll(const char *name, const char *parent_name,
- 			void __iomem *base, u8 power, unsigned long rate)
- {
-+	struct clk_init_data init = {};
+ 	int ret;
  	struct clk_pll *pll;
- 	struct clk *clk;
 -	struct clk_init_data init;
- 
- 	pll = kzalloc_obj(*pll);
- 	if (!pll)
-diff --git a/drivers/clk/mxs/clk-ref.c b/drivers/clk/mxs/clk-ref.c
-index 9667d4d3c2a885eb..66ea1c229014ed60 100644
---- a/drivers/clk/mxs/clk-ref.c
-+++ b/drivers/clk/mxs/clk-ref.c
-@@ -113,9 +113,9 @@ static const struct clk_ops clk_ref_ops = {
- struct clk *mxs_clk_ref(const char *name, const char *parent_name,
- 			void __iomem *reg, u8 idx)
- {
 +	struct clk_init_data init = {};
- 	struct clk_ref *ref;
- 	struct clk *clk;
--	struct clk_init_data init;
  
- 	ref = kzalloc_obj(*ref);
- 	if (!ref)
+ 	if (id != 1 && id != 2) {
+ 		pr_err("%s: the Nomadik has only PLL 1 & 2\n", __func__);
+@@ -355,7 +355,7 @@ src_clk_register(struct device *dev, const char *name,
+ {
+ 	int ret;
+ 	struct clk_src *sclk;
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 
+ 	sclk = kzalloc_obj(*sclk);
+ 	if (!sclk)
 -- 
 2.43.0
 
