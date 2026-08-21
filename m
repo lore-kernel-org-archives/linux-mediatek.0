@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B213C5DF87
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D18FC5DF8C
 	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 01:25:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gVcIWXhY2wz8NvM95p3hoeFhZkF3cOjz6bVDt67l2Xo=; b=unIgg7cYpA76j5IjsZX4HY+vwd
-	cWd8137kASgVQ5De4nEZMIoFDxhMQrhKeOuz79zsAsCI+T/xW+Zt4rbnGJMN+dbKakP5pV0mV+Mz3
-	gg+KsIMaAb5ZzbKyjHVnE5ufYfVP8YIH1n7Tsq8HU8NdcXYGzKnMhLYIrD5IglOTu5nkkCduxiDoC
-	5UrxApqxRXnrdQl6ZGUE3MyB+ndXSQeqyGHyQDM03be1aDG22OvdoZplERW3fborsN+HlumimEeyM
-	ZTJCuU/7y5WpOzKr2sF0CFGckQrXDY81BNo5EIUJeVWU+jAh1SrEOWcn1A31YXtwr6JpQXo8LKv8I
-	OPnt3i/Q==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=p5GiJXrSInWGLYVDBdF42ox+8FqWGYR7BDF+4zj3OQY=; b=e1ftL1db6GyjrUG32DNbkJvqkq
+	PKCP6H5afyi1o81eUIcVqkhn4e+Io/Ezx/0e5PDVwQQn6bXPd4TB5oaMVNl0foxMWzVG5fiGh/WP5
+	6gsNSr8it+T6EUxcC+/lqs5EkPjjzt9z8x3GnOtJIMeDNsD6q/SGll+aUNz6ojP7en7VGd8YtrK3+
+	2gEqWjVxengOVRm6cHUsMxSaXzRJzl7mASzwoFQyJeirfrHMsDpqiTyUX7ccMUKTJcqt2LucIE2Ap
+	Rs2UyWeQ0W09NtqZzDgNafyV6NAHOC0f+1oWbdh+ZSckcJsfVaLz/ffKAR9WPkqjYI9+OqYuLtF8m
+	Q+MVd13Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxE0z-0000000CPss-0SGJ;
+	id 1wxE0z-0000000CPsw-0maJ;
 	Fri, 21 Aug 2026 01:25:49 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxE0w-0000000CPsA-3Z6j
+	id 1wxE0w-0000000CPs9-3Isv
 	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Aug 2026 01:25:47 +0000
-X-UUID: 3a37e7a89cff11f1afed4741b24580c9-20260820
+	Fri, 21 Aug 2026 01:25:48 +0000
+X-UUID: 3a1597c09cff11f1afed4741b24580c9-20260820
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=gVcIWXhY2wz8NvM95p3hoeFhZkF3cOjz6bVDt67l2Xo=;
-	b=oGT80TkWQSHP+lLbTLeHa88NuS4XtH/NJN3jbjLEr/BF1tNfhU3u6Z/Lcdb8OT899wylFFH1JADtY3LZ+0xwzpUgykT9ISQmSdHnlfgzRgeoqMhYbs2z+rTzqWpkkG1qBLyr1937WiVlHdM+N4dIUrptvA/SdmeJ5381aEqyE38=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=p5GiJXrSInWGLYVDBdF42ox+8FqWGYR7BDF+4zj3OQY=;
+	b=slolAnOOiFIgW4KXazdgUibNEanjDqEwVCoOTZ0ZcNJxEVs11yl/+519EYAUoH1ECkOe05wvfSsKgL71/J4GRl8mY8kFMnhx65VRaZHN7QaiVsMzwCM5cEaqyhk7RCuul7wTUPNcKbzHY5Yqs4C99ndW3IqRwcYBIar6k/a1bl0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:8256a6a5-533d-4ce7-b103-5bef44704feb,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:7db8b62,CLOUDID:d465495e-4843-4d87-9105-fd688b4769cd,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
-	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
-	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.19,REQID:43cb335e-73d3-49a7-b3c8-54b383ed9cb4,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:7db8b62,CLOUDID:0161b1e2-71f1-405e-92eb-6802d6af74fd,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 3a37e7a89cff11f1afed4741b24580c9-20260820
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+X-UUID: 3a1597c09cff11f1afed4741b24580c9-20260820
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
 	(envelope-from <anthony.liu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 102408426; Thu, 20 Aug 2026 18:25:43 -0700
+	with ESMTP id 1773690276; Thu, 20 Aug 2026 18:25:43 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 21 Aug 2026 09:25:41 +0800
+ 15.2.2562.29; Fri, 21 Aug 2026 09:25:40 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.2562.29 via Frontend Transport; Fri, 21 Aug 2026 09:25:40 +0800
@@ -62,20 +62,17 @@ CC: <Sean.Wang@mediatek.com>, <Leon.Yen@mediatek.com>,
 	<litien.chang@mediatek.com>, <kun.wu@mediatek.com>, <jb.tsai@mediatek.com>,
 	<emery.hsin@mediatek.com>, <linux-wireless@vger.kernel.org>,
 	<linux-mediatek@lists.infradead.org>, Anthony Liu <anthony.liu@mediatek.com>
-Subject: [PATCH v2] [PATCH 03/05] wifi: mt76: add ACPI MTFG option for bus configuration
-Date: Fri, 21 Aug 2026 09:25:26 +0800
-Message-ID: <20260821012528.2259093-3-anthony.liu@mediatek.com>
+Subject: [PATCH v2] [PATCH 01/05] wifi: mt76: refactor chip_config to accept generic commands
+Date: Fri, 21 Aug 2026 09:25:24 +0800
+Message-ID: <20260821012528.2259093-1-anthony.liu@mediatek.com>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260821012528.2259093-1-anthony.liu@mediatek.com>
-References: <20260821012528.2259093-1-anthony.liu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260820_182546_969383_292168AB 
-X-CRM114-Status: UNSURE (   8.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260820_182546_927781_B36B7D08 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,27 +87,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Extend ACPI MTFG table parsing to support an additional MTFG bus
-configuration option.
+The API, mt76_connac_mcu_chip_config(), was only used to send reset
+command but the chip_config command is a carrier of more commands.
 
-Change-Id: I200f080d5b297e765b6a57c394f1006ae1bc585e
+This patch enables other FW commands to be carried over
+mt76_connac_mcu_chip_config().
+
+Change-Id: I6a82052ab3a2bdb8aff5aeb3ccc692f527b826b1
 Signed-off-by: Anthony Liu <anthony.liu@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c  | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 4 ++--
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c  | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
-index 946dd7956e4a..227a6960f135 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
-@@ -355,6 +355,7 @@ u8 mt792x_acpi_get_flags(struct mt792x_phy *phy)
- 	} map[] = {
- 		{ 1, 1 },
- 		{ 4, 2 },
-+		{ 13, 3 },
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
+index 6a1475e3c899..83cffa94bc0e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
+@@ -54,7 +54,7 @@ static int mt7615_config(void *data, u64 val)
+ 	int ret;
+ 
+ 	mt7615_mutex_acquire(dev);
+-	ret = mt76_connac_mcu_chip_config(&dev->mt76);
++	ret = mt76_connac_mcu_chip_config(&dev->mt76, "assert");
+ 	mt7615_mutex_release(dev);
+ 
+ 	return ret;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index 2f925d22b9aa..de83d41ca9c9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -2044,13 +2044,13 @@ int mt76_connac_mcu_sched_scan_enable(struct mt76_phy *phy,
+ }
+ EXPORT_SYMBOL_GPL(mt76_connac_mcu_sched_scan_enable);
+ 
+-int mt76_connac_mcu_chip_config(struct mt76_dev *dev)
++int mt76_connac_mcu_chip_config(struct mt76_dev *dev, const char *cmd)
+ {
+ 	struct mt76_connac_config req = {
+ 		.resp_type = 0,
  	};
- 	u8 flags = BIT(0);
- 	int i, j;
+ 
+-	strscpy(req.data, "assert");
++	strscpy(req.data, cmd);
+ 
+ 	return mt76_mcu_send_msg(dev, MCU_CE_CMD(CHIP_CONFIG),
+ 				 &req, sizeof(req), false);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index 0ededa569e9a..45f77c80e879 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -2098,7 +2098,7 @@ void mt76_connac_mcu_set_suspend_iter(void *priv, u8 *mac,
+ int mt76_connac_sta_state_dp(struct mt76_dev *dev,
+ 			     enum ieee80211_sta_state old_state,
+ 			     enum ieee80211_sta_state new_state);
+-int mt76_connac_mcu_chip_config(struct mt76_dev *dev);
++int mt76_connac_mcu_chip_config(struct mt76_dev *dev, const char *cmd);
+ int mt76_connac_mcu_set_deep_sleep(struct mt76_dev *dev, bool enable);
+ void mt76_connac_mcu_coredump_event(struct mt76_dev *dev, struct sk_buff *skb,
+ 				    struct mt76_connac_coredump *coredump);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
+index a5a70d8e8544..62bf33347e9e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
+@@ -237,7 +237,7 @@ static int mt7921_chip_reset(void *data, u64 val)
+ 	default:
+ 		/* Collect the core dump before reset wifisys. */
+ 		mt792x_mutex_acquire(dev);
+-		ret = mt76_connac_mcu_chip_config(&dev->mt76);
++		ret = mt76_connac_mcu_chip_config(&dev->mt76, "assert");
+ 		mt792x_mutex_release(dev);
+ 		break;
+ 	}
 -- 
 2.45.2
 
