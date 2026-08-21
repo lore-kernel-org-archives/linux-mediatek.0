@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF5B4C5DF87
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:56:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F8F4C5DF8C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:57:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5ikO43IXZJhExvwhty0Udda0kKS83dS0CwsWGz2Azek=; b=dNWQcwuNyPYv9oga7FIKZaI4sK
-	aC35Sv97TldBDwzjc5eAicHKPRNySbO5C6Ah7/GEUaaTMy4FJi4dAXVQNGoXMKeAhsuoAqEL6kpod
-	Gq6q0L/rUg9KjfQKt57Hfiw593jpbYmVbHF1jm8SXt61Tq9gBZqw7hBHXNzAgy6/AGXewP9VC6mNY
-	u6nadAHEzHQfm0mP05MbT6tChifbPm+XJJunCdr0RInobxyZJpVrMN+8+vqOc+9zkUnX5shhUMusN
-	rGca3bZFzWDpGQ1XWUIEU70CxmZW23RtdRepEWg1eTyQvv+OvrcBDU2L4X4YM0dBmN5D/sOjEGAfH
-	FKpiwmvQ==;
+	bh=Bk5GXW1DfINuzC0uMaEplrh3tvMFCiyq0/LQwpMggl0=; b=JVRaf9zTc0gwH4chqTVj9bru0v
+	xuHzNqzY8ze5tvh3u5bV2AJu1lwESAHyg5G1wXkGfI2Z6bdUGjaXv4ztpFyKyqAVlbvAlRlo0Y0sz
+	+YRgNs/rrqRJ3l9HaV1N3ptf/8U9x7FHWe6Z6IlAKTDhxGchB3Yq2GQrzbOIxvtLX8uGZqs+m/NIg
+	KzG6RKrkaxyOgQk/nzQS2OYVlkaKgj/Zb9v/kF5LZv1H08G8tavG4ufJMWC0zkCIvyw3LggPIREZ1
+	st/PL4dASZn7yXw4TWVWFFm3/OAtY7V2lptXl5MDdZ4XkDq1h09ISI6VAPWVxgc0k/c2F7QHaMiCw
+	tpl3yhHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL3X-0000000Cqv6-3hsN;
-	Fri, 21 Aug 2026 08:56:55 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wxL3n-0000000Cqzg-0sk9;
+	Fri, 21 Aug 2026 08:57:11 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL3V-0000000CquJ-1x9n;
-	Fri, 21 Aug 2026 08:56:53 +0000
+	id 1wxL3l-0000000Cqz9-0IF2;
+	Fri, 21 Aug 2026 08:57:09 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1D98B41984;
+	by tor.source.kernel.org (Postfix) with ESMTP id 663966187B;
+	Fri, 21 Aug 2026 08:57:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 706AD1F00A3A;
 	Fri, 21 Aug 2026 08:56:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 47C2C1F000E9;
-	Fri, 21 Aug 2026 08:56:38 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 10/45] clk: gemini: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:20 +0200
-Message-ID: <33f8a87834a75b6677894f1993c90f00eb6a2547.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 11/45] clk: highbank: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:21 +0200
+Message-ID: <21a8ecd80d87eb4fbea3a098957ccf8450299efd.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -147,23 +147,22 @@ Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 Compile-tested only.
 ---
- drivers/clk/clk-gemini.c | 2 +-
+ drivers/clk/clk-highbank.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/clk/clk-gemini.c b/drivers/clk/clk-gemini.c
-index 9c0e6e7a7cacdf59..4e874392e3b0b57e 100644
---- a/drivers/clk/clk-gemini.c
-+++ b/drivers/clk/clk-gemini.c
-@@ -193,8 +193,8 @@ static struct clk_hw *gemini_pci_clk_setup(const char *name,
- 					   const char *parent_name,
- 					   struct regmap *map)
- {
-+	struct clk_init_data init = {};
- 	struct clk_gemini_pci *pciclk;
+diff --git a/drivers/clk/clk-highbank.c b/drivers/clk/clk-highbank.c
+index e9b177811dfc2ced..61c23199763508ea 100644
+--- a/drivers/clk/clk-highbank.c
++++ b/drivers/clk/clk-highbank.c
+@@ -269,7 +269,7 @@ static void __init hb_clk_init(struct device_node *node, const struct clk_ops *o
+ 	struct hb_clk *hb_clk;
+ 	const char *clk_name = node->name;
+ 	const char *parent_name;
 -	struct clk_init_data init;
- 	int ret;
++	struct clk_init_data init = {};
+ 	struct device_node *srnp;
+ 	int rc;
  
- 	pciclk = kzalloc_obj(*pciclk);
 -- 
 2.43.0
 
