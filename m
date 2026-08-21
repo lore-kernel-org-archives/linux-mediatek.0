@@ -4,91 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90C14C5DF7D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:52:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7AA4C5DF7D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:54:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=wxIJbdtHu5EFzZttDmDXTiKHDXuSlZ7X22WCTLQoMi0=; b=Ojl55UBo8/XtDOPu1jTL/AH1JR
-	irqqbmPbJsxq7Lzy1Ged9Nq60o5veXB8cxSCfqnJy60iWTBEXJOTfz0x0Gp9iCvWdCXVbQvgmtdBd
-	O9D14a2AdkvxtxXdPB0Z+gePEZcJWvhMiXLqiFpmywISUPsWkeegdImr0tRuOlwGNeq9EjborS6Px
-	1HiIU/2ugM7RDJ12S/ab9SmvzGotFLuDloDHJgIy1099w1NI24Me8saZC12rJ02noJdpH8MeqtVdA
-	KG0gjRrYnxwxUcp3cpW0Mtk/DAshWI6WVLAGI7+YjZiibmbjrgWzVWJIoIW9510W06pgwLc5C4K7Q
-	JvbGKgUg==;
+	bh=UEAKAK3qVtW6dETuDI56Cj+E7CBI3JhviZhDgPCqUgc=; b=yu7J8UDcHDnKrmaxynztvjjYp+
+	V4J99nCicDReMWI+e9iql4ZVfXl3trwjsC0e1bhdWKWEOSt2os8EbWkFJWROvNEu0ZaAZQDKrgNbN
+	1IhiT029b44+HHL3Hz7d1Tv7S6j4i99JK+50TqUVSq6sC/nZLvY/cP93xTjynxf8iMf8NH3xpa6Hy
+	yjR7mRh+kM0v7GWc33mpi57Uazs10o0wbynR1+LKwkGxTnS/gZwsJzBXskLe3T7f0k6ZSBXaOZ9tC
+	6D0xaLblTS8zhs9O60RNBcNMhfAOu9y5pzKMLnCj1anA34TjaPk9G5uQsUSRg7VuAz8ndM8NCl+xk
+	C3+z4B/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxKzL-0000000CpiM-15tR;
-	Fri, 21 Aug 2026 08:52:35 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1wxL14-0000000CqAT-2cm0;
+	Fri, 21 Aug 2026 08:54:22 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxKzI-0000000Cphb-3EXK
-	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Aug 2026 08:52:33 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-69fab5a852cso1527819a12.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 21 Aug 2026 01:52:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1787302350; x=1787907150; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=wxIJbdtHu5EFzZttDmDXTiKHDXuSlZ7X22WCTLQoMi0=;
-        b=lI8pO0xUdJaaNrVR6pts/EvbIufPOKS7Yj9vLMGtkl3SJZx+MzRG2VRIlIN5bWToOB
-         6MOfeFV+ojnOA1meFDh18U3M6BuW41WC+n3YGE/C9C/b5b/nB4ziJzuFxUlJOhftu9X8
-         JWl42NvRisxUx97BGnPw0lze9FLEg3CA98NyKpKLPbBG6Jc/x6lHJRZdDJI5VkHENAo7
-         iol5HnXigsEBN6lWWHGyR3p57NUi6JNSZb3SUMhAWJCQ0YANxQUMfAHLQb7WAbmvoS0Z
-         0bf8wQr4WdBphHfIXZIVU525Vee7FoH2R8F82P4WUDff4H7p5oIJrnoP/fPErXjUAmeg
-         Jj3g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787302350; x=1787907150;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=wxIJbdtHu5EFzZttDmDXTiKHDXuSlZ7X22WCTLQoMi0=;
-        b=Pde56N4aPL/PjmnM1E7ou7fF0HBcVI4g1jKrVm99POWM6Jx0OXBeFsFx1LsbYmjTwW
-         B3eiQFvqiAV445h8MWR0xHgIhOAaRaDdqbL9UsPuM4w/NJVbL+pV3XT91dvYZz4VnTR0
-         Bxkn1Mb5tnaAaH4FVvKOd3+LyCmC4QJ5NqqfBO/z8OQvtmYNXLvZUr00u2jaG6PXuxUD
-         3Av5RfUrqtZjfqhhhkwyvgrYNuZr2Nyrmo9JqWyGUdVGyBZzWhoIlefZ+/YkZuXEkalD
-         9k7uSfiFx3B3dDYetIRQSgqjaOwlY3nDw0GtUh822tvIblaY2VRGmTLPHtj83gkQg/ve
-         oVyw==
-X-Forwarded-Encrypted: i=1; AHgh+RoJlOV9ma/GqBrKh5YORxeNU0/Zn+WaAqEG8pYU9pFR2mBmBql+22NHbQygwit7yD3zVtJZ0LwmBYiqndWzpA==@lists.infradead.org
-X-Gm-Message-State: AFuF++mOZR5BgWYoEb+THiMSWza3iTDogiJzZWZwxumJ/JnHZvyfrpPu
-	mn1vu3VrGahOQArWD9ZnRYa4Df7mk7/AsTNWm+e7POMECAMlmE5xdpYW
-X-Gm-Gg: AR+sD10gQUaOr2ZQelxkgzLq/Orqk36qW1oqKPl6985mYjvyAfnhXgrJAR3Smdwj4hp
-	+MSSTGlb/yLX/PdQ0EGhXd5mfYHC0t8bajxByPLL92qjwl9VMYFM/U2TPOnm8HvRLiaLad4kt5k
-	K0ByBdtASL4VjHod7iSQ+t2JZJr+9bvGPdHY55oILRpR4n+xKRegjbDpQzk45ZRWGE2GntSj6g3
-	QiZOFpEIkqnDAYPE8UwSZS/0b/yYf7xAsp3orreoM3JGT22u5y2I4Npb51ofrVOV8jruARaYjVY
-	+x4Cp1lH21T9/jA3YC5CfAolYKHqTg8RlunW5MymX/IKSVZu3tNrJVkxZ/CDd5w5S2GOBJCNJ8j
-	RBOCxCW6JOVYVZMssvaIZ+6P6BL6zYwktPzUduXGNAfk6ZLGe1itJvv2nbsu7tKoq83ireVJzyK
-	1dpZE2OC3nPt/kXZ/bRZh+vriiMNSO5K1p5zDWkc9W7nczK+kPI3dPTc7VdmIvjS8SSA5AzM7z9
-	qNqYQ==
-X-Received: by 2002:a17:907:94d2:b0:c19:473b:dc8f with SMTP id a640c23a62f3a-c246a2eb99amr471049166b.3.1787302349629;
-        Fri, 21 Aug 2026 01:52:29 -0700 (PDT)
-Received: from Ansuel-XPS24.localdomain ([95.236.20.157])
-        by smtp.googlemail.com with ESMTPSA id a640c23a62f3a-c2458b096d9sm422551466b.20.2026.08.21.01.52.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Aug 2026 01:52:28 -0700 (PDT)
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Ulf Hansson <ulfh@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1wxL12-0000000CqAH-2P5w;
+	Fri, 21 Aug 2026 08:54:20 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 50BB7419CF;
+	Fri, 21 Aug 2026 08:54:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1626D1F000E9;
+	Fri, 21 Aug 2026 08:54:04 +0000 (UTC)
+From: Geert Uytterhoeven <geert+renesas@glider.be>
+To: Ryan Chen <ryan_chen@aspeedtech.com>,
+	Joel Stanley <joel@jms.id.au>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Brian Masney <bmasney+clk@redhat.com>,
+	Jerome Brunet <jbrunet+clk@baylibre.com>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Billy Tsai <billy_tsai@aspeedtech.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Taichi Sugaya <sugaya.taichi@socionext.com>,
+	Takao Orito <orito.takao@socionext.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Patrick Venture <venture@google.com>,
+	Nancy Yuen <yuenn@google.com>,
+	Benjamin Fair <benjaminfair@google.com>,
+	Sudeep Holla <sudeep.holla@kernel.org>,
+	Cristian Marussi <cristian.marussi@arm.com>,
+	David Lechner <david@lechnology.com>,
+	Abel Vesa <abelvesa@kernel.org>,
+	Peng Fan <peng.fan@nxp.com>,
+	Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Santosh Shilimkar <ssantosh@kernel.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Dinh Nguyen <dinguyen@kernel.org>,
+	Viresh Kumar <vireshk@kernel.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	=?UTF-8?q?Emilio=20L=C3=B3pez?= <emilio@elopez.com.ar>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Prashant Gaikwad <pgaikwad@nvidia.com>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Ulf Hansson <ulfh@kernel.org>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Michal Simek <michal.simek@amd.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-clk@vger.kernel.org,
+	linux-aspeed@lists.ozlabs.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: stable@vger.kernel.org
-Subject: [PATCH] pmdomain: airoha: fix unselectable AIROHA_CPU_PM_DOMAIN kconfig
-Date: Fri, 21 Aug 2026 10:52:15 +0200
-Message-ID: <20260821085222.140633-1-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	linux-kernel@vger.kernel.org,
+	openbmc@lists.ozlabs.org,
+	arm-scmi@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-mips@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	soc@lists.linux.dev,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Geert Uytterhoeven <geert+renesas@glider.be>
+Subject: [PATCH 00/45] clk: Make sure clk_init_data is fully initialized (part two)
+Date: Fri, 21 Aug 2026 10:53:10 +0200
+Message-ID: <cover.1787239813.git.geert+renesas@glider.be>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260821_015232_804321_29CCBB80 
-X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,43 +130,241 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The AIROHA_CPU_PM_DOMAIN config was wrongly guarded under the Mediatek PM
-Domains menu and was unselectable.
+	Hi all,
 
-Move it outside the menu so it's now visible and correctly selectable by
-default on Airoha SoC.
+The clk_init_data structure contains several mutually-exclusive members
+for different methods to specify the possible parents of a clock,
+prompting drivers to initialize only the members they need.  However,
+not initializing all members may cause subtle issues, which are only
+exposed when CONFIG_INIT_STACK_ALL_PATTERN or CONFIG_INIT_STACK_NONE is
+enabled.
 
-Cc: stable@vger.kernel.org
-Fixes: 82e703dd438b ("pmdomain: airoha: Add Airoha CPU PM Domain support")
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
----
- drivers/pmdomain/mediatek/Kconfig | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+Hence this series aims to make sure all members are fully initialized,
+to avoid such bugs, and to prevent future breakage when converting
+drivers to a different method for specifying the parents.
 
-diff --git a/drivers/pmdomain/mediatek/Kconfig b/drivers/pmdomain/mediatek/Kconfig
-index 8923e6516441..a2eb704a773c 100644
---- a/drivers/pmdomain/mediatek/Kconfig
-+++ b/drivers/pmdomain/mediatek/Kconfig
-@@ -43,9 +43,12 @@ config MTK_MFG_PM_DOMAIN
- 	  This driver is required for the Mali GPU to work at all on MT8196 and
- 	  MT6991.
- 
-+endmenu
-+
- config AIROHA_CPU_PM_DOMAIN
- 	tristate "Airoha CPU power domain"
- 	default ARCH_AIROHA
-+	depends on ARCH_AIROHA || COMPILE_TEST
- 	depends on HAVE_ARM_SMCCC
- 	depends on PM
- 	select PM_GENERIC_DOMAINS
-@@ -54,5 +57,3 @@ config AIROHA_CPU_PM_DOMAIN
- 
- 	  CPU frequency and power is controlled by ATF with SMC command to
- 	  set performance states.
--
--endmenu
+Part One[1] fixed all cases that I identified to be real bugs, in
+response to a crash I saw on BeagleBone Black.
+
+This series is the clock subpart of Part Two, which fixes remaining
+cases that are currently harmless.  These are still fragile, and may
+cause future breakage when converting drivers to a different method for
+specifying the parents.
+
+Thanks for your comments!
+
+[1] "[PATCH treewide 0/5] clk: Make sure clk_init_data is fully
+     initialized (part 1)"
+    https://lore.kernel.org/cover.1787165329.git.geert+renesas@glider.be
+
+Geert Uytterhoeven (45):
+  clk: aspeed: Make sure clk_init_data is fully initialized
+  clk: at91: Make sure clk_init_data is fully initialized
+  clk: bcm: iproc: Make sure clk_init_data is fully initialized
+  clk: berlin: Make sure clk_init_data is fully initialized
+  clk: cdce925: Make sure clk_init_data is fully initialized
+  clk: clk-axi-clkgen: Make sure clk_init_data is fully initialized
+  clk: cs2000-cp: Make sure clk_init_data is fully initialized
+  clk: davinci: Make sure clk_init_data is fully initialized
+  clk: fractional-divider: Make sure clk_init_data is fully initialized
+  clk: gemini: Make sure clk_init_data is fully initialized
+  clk: highbank: Make sure clk_init_data is fully initialized
+  clk: hisilicon: Make sure clk_init_data is fully initialized
+  clk: imx: Make sure clk_init_data is fully initialized
+  clk: ingenic: Make sure clk_init_data is fully initialized
+  clk: keystone: Make sure clk_init_data is fully initialized
+  clk: lmk04832: Make sure clk_init_data is fully initialized
+  clk: mediatek: Make sure clk_init_data is fully initialized
+  clk: milbeaut: Make sure clk_init_data is fully initialized
+  clk: mmp: Make sure clk_init_data is fully initialized
+  clk: mvebu: Make sure clk_init_data is fully initialized
+  clk: mxs: Make sure clk_init_data is fully initialized
+  clk: nomadik: Make sure clk_init_data is fully initialized
+  clk: npcm7xx: Make sure clk_init_data is fully initialized
+  clk: nxp: Make sure clk_init_data is fully initialized
+  clk: pistachio: Make sure clk_init_data is fully initialized
+  clk: pwm: Make sure clk_init_data is fully initialized
+  clk: renesas: Make sure clk_init_data is fully initialized
+  clk: rockchip: Make sure clk_init_data is fully initialized
+  clk: samsung: Make sure clk_init_data is fully initialized
+  clk: scpi: Make sure clk_init_data is fully initialized
+  clk: silabs: Make sure clk_init_data is fully initialized
+  clk: socfpga: Make sure clk_init_data is fully initialized
+  clk: spear: Make sure clk_init_data is fully initialized
+  clk: stm32: Make sure clk_init_data is fully initialized
+  clk: st: Make sure clk_init_data is fully initialized
+  clk: sunxi: Make sure clk_init_data is fully initialized
+  clk: tegra: Make sure clk_init_data is fully initialized
+  clk: uniphier: Make sure clk_init_data is fully initialized
+  clk: ux500: Make sure clk_init_data is fully initialized
+  clk: versatile: Make sure clk_init_data is fully initialized
+  clk: vt8500: Make sure clk_init_data is fully initialized
+  clk: x86: Make sure clk_init_data is fully initialized
+  clk: xgene: Make sure clk_init_data is fully initialized
+  clk: xilinx: Make sure clk_init_data is fully initialized
+  clk: zynqmp: Make sure clk_init_data is fully initialized
+
+ drivers/clk/aspeed/clk-aspeed.c                |  2 +-
+ drivers/clk/aspeed/clk-ast2600.c               |  2 +-
+ drivers/clk/aspeed/clk-ast2700.c               |  2 +-
+ drivers/clk/at91/clk-audio-pll.c               |  4 ++--
+ drivers/clk/at91/clk-h32mx.c                   |  2 +-
+ drivers/clk/at91/clk-main.c                    |  2 +-
+ drivers/clk/at91/clk-pll.c                     |  2 +-
+ drivers/clk/at91/clk-plldiv.c                  |  2 +-
+ drivers/clk/at91/clk-slow.c                    |  2 +-
+ drivers/clk/at91/clk-smd.c                     |  2 +-
+ drivers/clk/at91/clk-usb.c                     |  6 +++---
+ drivers/clk/at91/sckc.c                        |  2 +-
+ drivers/clk/bcm/clk-iproc-armpll.c             |  2 +-
+ drivers/clk/bcm/clk-iproc-asiu.c               |  2 +-
+ drivers/clk/bcm/clk-iproc-pll.c                |  2 +-
+ drivers/clk/berlin/berlin2-avpll.c             |  4 ++--
+ drivers/clk/berlin/berlin2-pll.c               |  2 +-
+ drivers/clk/clk-axi-clkgen.c                   |  2 +-
+ drivers/clk/clk-cdce925.c                      |  2 +-
+ drivers/clk/clk-cs2000-cp.c                    |  2 +-
+ drivers/clk/clk-fractional-divider.c           |  2 +-
+ drivers/clk/clk-gemini.c                       |  2 +-
+ drivers/clk/clk-highbank.c                     |  2 +-
+ drivers/clk/clk-lmk04832.c                     |  6 +++---
+ drivers/clk/clk-milbeaut.c                     |  4 ++--
+ drivers/clk/clk-nomadik.c                      |  4 ++--
+ drivers/clk/clk-npcm7xx.c                      |  2 +-
+ drivers/clk/clk-pwm.c                          |  2 +-
+ drivers/clk/clk-scpi.c                         |  2 +-
+ drivers/clk/clk-si514.c                        |  2 +-
+ drivers/clk/clk-si5341.c                       |  2 +-
+ drivers/clk/clk-si544.c                        |  2 +-
+ drivers/clk/clk-si570.c                        |  2 +-
+ drivers/clk/clk-stm32f4.c                      |  4 ++--
+ drivers/clk/clk-stm32h7.c                      |  2 +-
+ drivers/clk/clk-vt8500.c                       |  4 ++--
+ drivers/clk/clk-xgene.c                        |  6 +++---
+ drivers/clk/davinci/da8xx-cfgchip.c            |  4 ++--
+ drivers/clk/davinci/pll.c                      |  2 +-
+ drivers/clk/davinci/psc.c                      |  2 +-
+ drivers/clk/hisilicon/clk-hi3559a.c            |  2 +-
+ drivers/clk/hisilicon/clk-hi3620.c             |  2 +-
+ drivers/clk/hisilicon/clk-hi6220-stub.c        |  2 +-
+ drivers/clk/hisilicon/clk-hisi-phase.c         |  2 +-
+ drivers/clk/hisilicon/clk-hix5hd2.c            |  2 +-
+ drivers/clk/hisilicon/clkdivider-hi6220.c      |  2 +-
+ drivers/clk/hisilicon/clkgate-separated.c      |  2 +-
+ drivers/clk/imx/clk-busy.c                     |  4 ++--
+ drivers/clk/imx/clk-cpu.c                      |  2 +-
+ drivers/clk/imx/clk-divider-gate.c             |  2 +-
+ drivers/clk/imx/clk-fixup-div.c                |  2 +-
+ drivers/clk/imx/clk-fixup-mux.c                |  2 +-
+ drivers/clk/imx/clk-frac-pll.c                 |  2 +-
+ drivers/clk/imx/clk-fracn-gppll.c              |  2 +-
+ drivers/clk/imx/clk-gate-93.c                  |  2 +-
+ drivers/clk/imx/clk-gate-exclusive.c           |  2 +-
+ drivers/clk/imx/clk-gate2.c                    |  2 +-
+ drivers/clk/imx/clk-lpcg-scu.c                 |  2 +-
+ drivers/clk/imx/clk-pfd.c                      |  2 +-
+ drivers/clk/imx/clk-pfdv2.c                    |  2 +-
+ drivers/clk/imx/clk-pll14xx.c                  |  2 +-
+ drivers/clk/imx/clk-pllv1.c                    |  2 +-
+ drivers/clk/imx/clk-pllv2.c                    |  2 +-
+ drivers/clk/imx/clk-pllv3.c                    |  2 +-
+ drivers/clk/imx/clk-pllv4.c                    |  2 +-
+ drivers/clk/imx/clk-scu.c                      |  4 ++--
+ drivers/clk/imx/clk-sscg-pll.c                 |  2 +-
+ drivers/clk/ingenic/cgu.c                      |  2 +-
+ drivers/clk/keystone/gate.c                    |  2 +-
+ drivers/clk/keystone/pll.c                     |  2 +-
+ drivers/clk/keystone/syscon-clk.c              |  2 +-
+ drivers/clk/mediatek/clk-cpumux.c              |  2 +-
+ drivers/clk/mmp/clk-apbc.c                     |  2 +-
+ drivers/clk/mmp/clk-apmu.c                     |  2 +-
+ drivers/clk/mmp/clk-frac.c                     |  2 +-
+ drivers/clk/mmp/clk-gate.c                     |  2 +-
+ drivers/clk/mmp/clk-mix.c                      |  2 +-
+ drivers/clk/mmp/clk-pll.c                      |  2 +-
+ drivers/clk/mvebu/ap-cpu-clk.c                 |  2 +-
+ drivers/clk/mvebu/clk-corediv.c                |  2 +-
+ drivers/clk/mvebu/clk-cpu.c                    |  2 +-
+ drivers/clk/mxs/clk-div.c                      |  2 +-
+ drivers/clk/mxs/clk-frac.c                     |  2 +-
+ drivers/clk/mxs/clk-pll.c                      |  2 +-
+ drivers/clk/mxs/clk-ref.c                      |  2 +-
+ drivers/clk/nxp/clk-lpc18xx-creg.c             |  2 +-
+ drivers/clk/pistachio/clk-pll.c                |  2 +-
+ drivers/clk/renesas/rzg2l-cpg.c                | 18 +++++++++---------
+ drivers/clk/renesas/rzv2h-cpg.c                |  8 ++++----
+ drivers/clk/rockchip/clk-cpu.c                 |  2 +-
+ drivers/clk/rockchip/clk-ddr.c                 |  2 +-
+ drivers/clk/rockchip/clk-gate-grf.c            |  2 +-
+ drivers/clk/rockchip/clk-inverter.c            |  2 +-
+ drivers/clk/rockchip/clk-mmc-phase.c           |  2 +-
+ drivers/clk/rockchip/clk-muxgrf.c              |  2 +-
+ drivers/clk/rockchip/clk-pll.c                 |  2 +-
+ drivers/clk/rockchip/clk.c                     |  2 +-
+ drivers/clk/samsung/clk-cpu.c                  |  2 +-
+ drivers/clk/samsung/clk-pll.c                  |  2 +-
+ drivers/clk/socfpga/clk-gate-a10.c             |  2 +-
+ drivers/clk/socfpga/clk-gate-s10.c             |  6 +++---
+ drivers/clk/socfpga/clk-gate.c                 |  2 +-
+ drivers/clk/socfpga/clk-periph-a10.c           |  2 +-
+ drivers/clk/socfpga/clk-periph-s10.c           |  8 ++++----
+ drivers/clk/socfpga/clk-periph.c               |  2 +-
+ drivers/clk/socfpga/clk-pll-a10.c              |  2 +-
+ drivers/clk/socfpga/clk-pll-s10.c              |  8 ++++----
+ drivers/clk/socfpga/clk-pll.c                  |  2 +-
+ drivers/clk/spear/clk-aux-synth.c              |  2 +-
+ drivers/clk/spear/clk-frac-synth.c             |  2 +-
+ drivers/clk/spear/clk-gpt-synth.c              |  2 +-
+ drivers/clk/spear/clk-vco-pll.c                |  2 +-
+ drivers/clk/st/clk-flexgen.c                   |  2 +-
+ drivers/clk/st/clkgen-fsyn.c                   |  4 ++--
+ drivers/clk/st/clkgen-pll.c                    |  2 +-
+ drivers/clk/stm32/clk-stm32mp1.c               |  4 ++--
+ drivers/clk/sunxi/clk-sun4i-tcon-ch1.c         |  2 +-
+ drivers/clk/tegra/clk-audio-sync.c             |  2 +-
+ drivers/clk/tegra/clk-divider.c                |  2 +-
+ drivers/clk/tegra/clk-periph-fixed.c           |  2 +-
+ drivers/clk/tegra/clk-periph-gate.c            |  2 +-
+ drivers/clk/tegra/clk-periph.c                 |  2 +-
+ drivers/clk/tegra/clk-pll-out.c                |  2 +-
+ drivers/clk/tegra/clk-pll.c                    |  2 +-
+ drivers/clk/tegra/clk-sdmmc-mux.c              |  2 +-
+ drivers/clk/tegra/clk-super.c                  |  4 ++--
+ drivers/clk/tegra/clk-tegra-super-cclk.c       |  2 +-
+ drivers/clk/tegra/clk-tegra124-emc.c           |  2 +-
+ drivers/clk/tegra/clk-tegra20-emc.c            |  2 +-
+ drivers/clk/tegra/clk-tegra210-emc.c           |  2 +-
+ drivers/clk/uniphier/clk-uniphier-cpugear.c    |  2 +-
+ .../clk/uniphier/clk-uniphier-fixed-factor.c   |  2 +-
+ drivers/clk/uniphier/clk-uniphier-fixed-rate.c |  2 +-
+ drivers/clk/uniphier/clk-uniphier-gate.c       |  2 +-
+ drivers/clk/uniphier/clk-uniphier-mux.c        |  2 +-
+ drivers/clk/ux500/clk-prcc.c                   |  2 +-
+ drivers/clk/ux500/clk-prcmu.c                  |  4 ++--
+ drivers/clk/ux500/clk-sysctrl.c                |  2 +-
+ drivers/clk/versatile/clk-icst.c               |  2 +-
+ drivers/clk/versatile/clk-sp810.c              |  2 +-
+ drivers/clk/versatile/clk-vexpress-osc.c       |  2 +-
+ drivers/clk/x86/clk-pmc-atom.c                 |  2 +-
+ drivers/clk/xilinx/clk-xlnx-clock-wizard.c     |  6 +++---
+ drivers/clk/xilinx/xlnx_vcu.c                  |  2 +-
+ drivers/clk/zynqmp/clk-gate-zynqmp.c           |  2 +-
+ drivers/clk/zynqmp/clk-mux-zynqmp.c            |  2 +-
+ drivers/clk/zynqmp/divider.c                   |  2 +-
+ drivers/clk/zynqmp/pll.c                       |  2 +-
+ 148 files changed, 188 insertions(+), 188 deletions(-)
+
 -- 
-2.53.0
+2.43.0
 
+Gr{oetje,eeting}s,
+
+						Geert
+
+--
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+							    -- Linus Torvalds
 
