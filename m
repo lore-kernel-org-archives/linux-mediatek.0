@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9371FC5DF7D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:58:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C65FCC5DF87
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:58:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5wauFAnMunw/Th2U9nrJf3Bl94L6qEwB+3wASBvofFc=; b=S12qeQ7KUJXOK6XVZTEG4FmFoY
-	rTwFCkGq1tY9STqd5b9m56hGx1uUrA7nJDDYT7bM2oX06TYlQ1eBAfdTl0GxtcHmU+0J0mHcDdgTV
-	tA7zz2rNtGohFvdCdKtnDVXS8lgv2oeeY3Q4PwlzYLeZti5z5W9DSzdtO76X28sQWiUrICbPOvYYf
-	9RIayQsNO+TMmz79tGpH+GDJ/a8D5RLnL2rp0O4ewCf7IghCiYsy4mPo6Ykdc3VxxujyyDlOqtCj+
-	ZWFRIod49SzTifSrq9URUe4lu/H+YFNwoONYApy6vb5dknyPyV8D8c8OHnixcs+NT8WPof8I7wywt
-	p0O/I1Cg==;
+	bh=yo5CTh9F5bmWIQO/4XbNNV83HRjIfPNyqg0WlHQ1MXo=; b=LN2xKCN0w4G6rCgXwuW1U79/J0
+	/0w5ccmmfwtA5Kn4yAIUdP4U2+61tVea/DoPnIVIMfhJ6FRzIWT4ULmI8tVwBNRmsOsckv2p+BCPa
+	MZGNY4qNyFT6Z3rNtmBY8bCllC0B8wRB3W5bHX7P1I75KoZ4ijxdNzcQS/zhhbOPbi9aIH3u9NScr
+	xp1iCUy8zRY4VYbd2D2KwjbEpt2+iRmulxxIBUQQ3CK9pFyG5ydtYGsRmOyuz1nBI64WmqAgfMZHg
+	LeMhzm4grJQF/ynork1CI62V0zDqUEgyYdGBqDGBIaycJnduMwSgJZ3SYdXBiDJWTUeQVZ3gHby96
+	XKZJtdZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL50-0000000CrH2-2V7j;
-	Fri, 21 Aug 2026 08:58:26 +0000
+	id 1wxL5H-0000000CrJs-3Dcy;
+	Fri, 21 Aug 2026 08:58:43 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL4z-0000000CrGb-0FCw;
-	Fri, 21 Aug 2026 08:58:25 +0000
+	id 1wxL5F-0000000CrJb-2G95;
+	Fri, 21 Aug 2026 08:58:41 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7FE0D60A7D;
+	by tor.source.kernel.org (Postfix) with ESMTP id EEFBD60A77;
+	Fri, 21 Aug 2026 08:58:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB7A01F00A3A;
 	Fri, 21 Aug 2026 08:58:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67D001F000E9;
-	Fri, 21 Aug 2026 08:58:09 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 16/45] clk: lmk04832: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:26 +0200
-Message-ID: <357cf49d53cc8abc27f3ec3372b8de587e2278c9.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 17/45] clk: mediatek: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:27 +0200
+Message-ID: <6cf9d1621379b34175743e764aaea3ed514db01b.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -147,43 +147,24 @@ Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 Compile-tested only.
 ---
- drivers/clk/clk-lmk04832.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/clk/mediatek/clk-cpumux.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/clk/clk-lmk04832.c b/drivers/clk/clk-lmk04832.c
-index f9a0684d2628eb7a..10e5cfa96e6be195 100644
---- a/drivers/clk/clk-lmk04832.c
-+++ b/drivers/clk/clk-lmk04832.c
-@@ -587,8 +587,8 @@ static const struct clk_ops lmk04832_vco_ops = {
-  */
- static int lmk04832_register_vco(struct lmk04832 *lmk)
+diff --git a/drivers/clk/mediatek/clk-cpumux.c b/drivers/clk/mediatek/clk-cpumux.c
+index 412558b9512772cd..9799bc156dccd650 100644
+--- a/drivers/clk/mediatek/clk-cpumux.c
++++ b/drivers/clk/mediatek/clk-cpumux.c
+@@ -62,9 +62,9 @@ static struct clk_hw *
+ mtk_clk_register_cpumux(struct device *dev, const struct mtk_composite *mux,
+ 			struct regmap *regmap)
  {
 +	struct clk_init_data init = {};
- 	const char *parent_names[1];
--	struct clk_init_data init;
+ 	struct mtk_clk_cpumux *cpumux;
  	int ret;
- 
- 	init.name = "lmk-vco";
-@@ -947,8 +947,8 @@ static const struct clk_ops lmk04832_sclk_ops = {
- 
- static int lmk04832_register_sclk(struct lmk04832 *lmk)
- {
-+	struct clk_init_data init = {};
- 	const char *parent_names[1];
 -	struct clk_init_data init;
- 	int ret;
  
- 	init.name = "lmk-sclk";
-@@ -1292,8 +1292,8 @@ static int lmk04832_register_clkout(struct lmk04832 *lmk, const int num)
- {
- 	char name[] = "lmk-clkoutXX";
- 	char dclk_name[] = "lmk-dclkXX_YY";
-+	struct clk_init_data init = {};
- 	const char *parent_names[2];
--	struct clk_init_data init;
- 	int dclk_num = num / 2;
- 	int ret;
- 
+ 	cpumux = kzalloc_obj(*cpumux);
+ 	if (!cpumux)
 -- 
 2.43.0
 
