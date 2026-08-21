@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F8F4C5DF8C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:57:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BC77C5DF87
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:57:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Bk5GXW1DfINuzC0uMaEplrh3tvMFCiyq0/LQwpMggl0=; b=JVRaf9zTc0gwH4chqTVj9bru0v
-	xuHzNqzY8ze5tvh3u5bV2AJu1lwESAHyg5G1wXkGfI2Z6bdUGjaXv4ztpFyKyqAVlbvAlRlo0Y0sz
-	+YRgNs/rrqRJ3l9HaV1N3ptf/8U9x7FHWe6Z6IlAKTDhxGchB3Yq2GQrzbOIxvtLX8uGZqs+m/NIg
-	KzG6RKrkaxyOgQk/nzQS2OYVlkaKgj/Zb9v/kF5LZv1H08G8tavG4ufJMWC0zkCIvyw3LggPIREZ1
-	st/PL4dASZn7yXw4TWVWFFm3/OAtY7V2lptXl5MDdZ4XkDq1h09ISI6VAPWVxgc0k/c2F7QHaMiCw
-	tpl3yhHg==;
+	bh=hIHDTurKhrl/9rra11H+BxL+3S/r2r2zOmNm2py4nZ0=; b=aAgxIvsbcNnl0MgXZALT59ahS9
+	BrMIZktJzsylekoFwvpW2nANhf7TbY9dmLzvR6FIILxTAWOKhNG/Agq/NGu75z9AATTgLNEreIaFb
+	zOFNVLvZZ2/cYwdB7AavYnCQ0ZHJJtrfOCb5U3TUzNqyuQTa75Thihc6FHOvAw7m04vXMPfshXUyQ
+	PWRrNKq5DzsuoJ+gvJsDDPkbDvuDUGCuuhnI8md+bAspUO/y3X2sPJmK1nHX33C9Y1FVIq66gcyJz
+	Q7pnMulW7DFYcMRJmVGFbcvKUadaYTO1mgbjZ1qlwToQdRP4CeHAQP+mADkLQYa3H3aohvMAq2bHb
+	6hwuzpSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL3n-0000000Cqzg-0sk9;
-	Fri, 21 Aug 2026 08:57:11 +0000
+	id 1wxL49-0000000Cr4V-1V3G;
+	Fri, 21 Aug 2026 08:57:33 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL3l-0000000Cqz9-0IF2;
-	Fri, 21 Aug 2026 08:57:09 +0000
+	id 1wxL40-0000000Cr3L-0jhV;
+	Fri, 21 Aug 2026 08:57:24 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 663966187B;
+	by tor.source.kernel.org (Postfix) with ESMTP id 9898660A7A;
+	Fri, 21 Aug 2026 08:57:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E6C41F000E9;
 	Fri, 21 Aug 2026 08:57:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 706AD1F00A3A;
-	Fri, 21 Aug 2026 08:56:53 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 11/45] clk: highbank: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:21 +0200
-Message-ID: <21a8ecd80d87eb4fbea3a098957ccf8450299efd.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 12/45] clk: hisilicon: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:22 +0200
+Message-ID: <04ef5b163e1ae63ffd6b568d3544c482b43f347f.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -147,22 +147,112 @@ Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 Compile-tested only.
 ---
- drivers/clk/clk-highbank.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/clk/hisilicon/clk-hi3559a.c       | 2 +-
+ drivers/clk/hisilicon/clk-hi3620.c        | 2 +-
+ drivers/clk/hisilicon/clk-hi6220-stub.c   | 2 +-
+ drivers/clk/hisilicon/clk-hisi-phase.c    | 2 +-
+ drivers/clk/hisilicon/clk-hix5hd2.c       | 2 +-
+ drivers/clk/hisilicon/clkdivider-hi6220.c | 2 +-
+ drivers/clk/hisilicon/clkgate-separated.c | 2 +-
+ 7 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/clk/clk-highbank.c b/drivers/clk/clk-highbank.c
-index e9b177811dfc2ced..61c23199763508ea 100644
---- a/drivers/clk/clk-highbank.c
-+++ b/drivers/clk/clk-highbank.c
-@@ -269,7 +269,7 @@ static void __init hb_clk_init(struct device_node *node, const struct clk_ops *o
- 	struct hb_clk *hb_clk;
- 	const char *clk_name = node->name;
- 	const char *parent_name;
+diff --git a/drivers/clk/hisilicon/clk-hi3559a.c b/drivers/clk/hisilicon/clk-hi3559a.c
+index f297fb25c512a322..fea6fb9e98f59a86 100644
+--- a/drivers/clk/hisilicon/clk-hi3559a.c
++++ b/drivers/clk/hisilicon/clk-hi3559a.c
+@@ -456,8 +456,8 @@ static void hisi_clk_register_pll(struct hi3559av100_pll_clock *clks,
+ {
+ 	void __iomem *base = data->base;
+ 	struct hi3559av100_clk_pll *p_clk = NULL;
++	struct clk_init_data init = {};
+ 	struct clk *clk = NULL;
+-	struct clk_init_data init;
+ 	int i;
+ 
+ 	p_clk = devm_kcalloc(dev, nums, sizeof(*p_clk), GFP_KERNEL);
+diff --git a/drivers/clk/hisilicon/clk-hi3620.c b/drivers/clk/hisilicon/clk-hi3620.c
+index 8dcad74e679aa462..a2c4637eaa9880d5 100644
+--- a/drivers/clk/hisilicon/clk-hi3620.c
++++ b/drivers/clk/hisilicon/clk-hi3620.c
+@@ -410,9 +410,9 @@ static const struct clk_ops clk_mmc_ops = {
+ static struct clk *hisi_register_clk_mmc(struct hisi_mmc_clock *mmc_clk,
+ 			void __iomem *base, struct device_node *np)
+ {
++	struct clk_init_data init = {};
+ 	struct clk_mmc *mclk;
+ 	struct clk *clk;
+-	struct clk_init_data init;
+ 
+ 	mclk = kzalloc_obj(*mclk);
+ 	if (!mclk)
+diff --git a/drivers/clk/hisilicon/clk-hi6220-stub.c b/drivers/clk/hisilicon/clk-hi6220-stub.c
+index bf99cfafafa0133d..a70544d2bdb9a805 100644
+--- a/drivers/clk/hisilicon/clk-hi6220-stub.c
++++ b/drivers/clk/hisilicon/clk-hi6220-stub.c
+@@ -195,7 +195,7 @@ static const struct clk_ops hi6220_stub_clk_ops = {
+ static int hi6220_stub_clk_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
 -	struct clk_init_data init;
 +	struct clk_init_data init = {};
- 	struct device_node *srnp;
- 	int rc;
+ 	struct hi6220_stub_clk *stub_clk;
+ 	struct clk *clk;
+ 	struct device_node *np = pdev->dev.of_node;
+diff --git a/drivers/clk/hisilicon/clk-hisi-phase.c b/drivers/clk/hisilicon/clk-hisi-phase.c
+index ba6afad66a2b0c25..d8e555d9728de9ad 100644
+--- a/drivers/clk/hisilicon/clk-hisi-phase.c
++++ b/drivers/clk/hisilicon/clk-hisi-phase.c
+@@ -94,8 +94,8 @@ struct clk *clk_register_hisi_phase(struct device *dev,
+ 		const struct hisi_phase_clock *clks,
+ 		void __iomem *base, spinlock_t *lock)
+ {
++	struct clk_init_data init = {};
+ 	struct clk_hisi_phase *phase;
+-	struct clk_init_data init;
  
+ 	phase = devm_kzalloc(dev, sizeof(struct clk_hisi_phase), GFP_KERNEL);
+ 	if (!phase)
+diff --git a/drivers/clk/hisilicon/clk-hix5hd2.c b/drivers/clk/hisilicon/clk-hix5hd2.c
+index 57db6fab43aacd41..4b7ebebfac4be608 100644
+--- a/drivers/clk/hisilicon/clk-hix5hd2.c
++++ b/drivers/clk/hisilicon/clk-hix5hd2.c
+@@ -258,8 +258,8 @@ hix5hd2_clk_register_complex(struct hix5hd2_complex_clock *clks, int nums,
+ 
+ 	for (i = 0; i < nums; i++) {
+ 		struct hix5hd2_clk_complex *p_clk;
++		struct clk_init_data init = {};
+ 		struct clk *clk;
+-		struct clk_init_data init;
+ 
+ 		p_clk = kzalloc_obj(*p_clk);
+ 		if (!p_clk)
+diff --git a/drivers/clk/hisilicon/clkdivider-hi6220.c b/drivers/clk/hisilicon/clkdivider-hi6220.c
+index 20a337383a1e1fea..cc53d0a33e3c4e92 100644
+--- a/drivers/clk/hisilicon/clkdivider-hi6220.c
++++ b/drivers/clk/hisilicon/clkdivider-hi6220.c
+@@ -103,7 +103,7 @@ struct clk *hi6220_register_clkdiv(struct device *dev, const char *name,
+ {
+ 	struct hi6220_clk_divider *div;
+ 	struct clk *clk;
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 	struct clk_div_table *table;
+ 	u32 max_div, min_div;
+ 	int i;
+diff --git a/drivers/clk/hisilicon/clkgate-separated.c b/drivers/clk/hisilicon/clkgate-separated.c
+index 199303157ebd84da..e02d6bb5ada79a3c 100644
+--- a/drivers/clk/hisilicon/clkgate-separated.c
++++ b/drivers/clk/hisilicon/clkgate-separated.c
+@@ -87,8 +87,8 @@ struct clk *hisi_register_clkgate_sep(struct device *dev, const char *name,
+ 				      u8 clk_gate_flags, spinlock_t *lock)
+ {
+ 	struct clkgate_separated *sclk;
++	struct clk_init_data init = {};
+ 	struct clk *clk;
+-	struct clk_init_data init;
+ 
+ 	sclk = kzalloc_obj(*sclk);
+ 	if (!sclk)
 -- 
 2.43.0
 
