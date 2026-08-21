@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70A84C5DF7D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:55:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84E23C5DF8C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:55:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QD0U9xK1rC/Vkp4rzBGD7TSrjwEYAxQIFW/CXuEcbag=; b=TcAOVGhIF77kIaFwjzlnR+ZpBD
-	Oa/RAbgues19BpRM8kYgm20Rm7v5SPw6t73KxtOon4EfBz4bzKP7CYMI70tPjPzETMJI98UprJdEj
-	AlBSG1NuJBQiG2aqEbfH0UoqlOglgv1qwL0k+MfL1EaY5VI1P3BgdB75EKh0V/BGOp34fyZHDGI1Y
-	SPGVwzdw+tn0O5OfiQ0apJoObWykEa4BkfdkVrCMuTtFJ7YEFpcH6yhKd9mLXkxsvPV1ev8x7DXZU
-	DCBJXBSVLN+7NimPtvq8uWO5s69ahMycSeWXbNdQ0cCSoBFGqReMCSYb72R+edp6u7Zen6BegMz1x
-	HSsBFmeg==;
+	bh=/x6fJX9wdapsSuYOG/DAqgNYAs4vDEXC4k1wR1h3QdM=; b=u++Wzo9b5WqxDOFFpX3k0Usyco
+	HBIrOk5VkOszK9wyMBF2WXQhvDE582iVZS9wMrx4QI1XOkeXaE8ToOKvXk82vpradzt7eBXYC1YAX
+	g62AonjecLymZPjOqvLuTnJYyhtKpS5Jhkk0u4pdKxUZ2yPpDrxRrBUcpUOZUT/ecEzkup9HXK7Wu
+	r6tarkzC8WU7AU4waY3KJxJ56jkOQgGCXIC7MtTCrZXMF8P4ffSWHRur+yn6DMry0TiRo65AxCc4P
+	Arcpw3BqJGF5QZ2zy5H0vLkoCTwCe0ADovdUczSH5YsFhsFzdVUxP2z0i/6xF1EIYV+F9HCVEcxLp
+	kD0hnSXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL1p-0000000CqNf-3c3w;
-	Fri, 21 Aug 2026 08:55:09 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wxL27-0000000CqQl-0EGc;
+	Fri, 21 Aug 2026 08:55:27 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL1n-0000000CqNJ-0CP2;
-	Fri, 21 Aug 2026 08:55:07 +0000
+	id 1wxL22-0000000CqQO-3md6;
+	Fri, 21 Aug 2026 08:55:23 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 781F361879;
+	by tor.source.kernel.org (Postfix) with ESMTP id B859261838;
+	Fri, 21 Aug 2026 08:55:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A05811F000E9;
 	Fri, 21 Aug 2026 08:55:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64BD61F00A3A;
-	Fri, 21 Aug 2026 08:54:51 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 03/45] clk: bcm: iproc: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:13 +0200
-Message-ID: <28233748ddbdefe6a2eb18127d5cd5f72984ab62.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 04/45] clk: berlin: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:14 +0200
+Message-ID: <cb9b1a8fe20577c2519f40f41dbb3ded2aa67fba.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -147,50 +147,46 @@ Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 Compile-tested only.
 ---
- drivers/clk/bcm/clk-iproc-armpll.c | 2 +-
- drivers/clk/bcm/clk-iproc-asiu.c   | 2 +-
- drivers/clk/bcm/clk-iproc-pll.c    | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/clk/berlin/berlin2-avpll.c | 4 ++--
+ drivers/clk/berlin/berlin2-pll.c   | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/clk/bcm/clk-iproc-armpll.c b/drivers/clk/bcm/clk-iproc-armpll.c
-index 8485428fe49ce667..aca53e2bda010cca 100644
---- a/drivers/clk/bcm/clk-iproc-armpll.c
-+++ b/drivers/clk/bcm/clk-iproc-armpll.c
-@@ -235,7 +235,7 @@ void __init iproc_armpll_setup(struct device_node *node)
+diff --git a/drivers/clk/berlin/berlin2-avpll.c b/drivers/clk/berlin/berlin2-avpll.c
+index c801d42397bf06b2..33a3cc16b0cc5f4b 100644
+--- a/drivers/clk/berlin/berlin2-avpll.c
++++ b/drivers/clk/berlin/berlin2-avpll.c
+@@ -181,8 +181,8 @@ int __init berlin2_avpll_vco_register(void __iomem *base,
+ 			       const char *name, const char *parent_name,
+ 			       u8 vco_flags, unsigned long flags)
  {
- 	int ret;
- 	struct iproc_arm_pll *pll;
++	struct clk_init_data init = {};
+ 	struct berlin2_avpll_vco *vco;
+-	struct clk_init_data init;
+ 
+ 	vco = kzalloc_obj(*vco);
+ 	if (!vco)
+@@ -358,7 +358,7 @@ int __init berlin2_avpll_channel_register(void __iomem *base,
+ 			   u8 ch_flags, unsigned long flags)
+ {
+ 	struct berlin2_avpll_channel *ch;
 -	struct clk_init_data init;
 +	struct clk_init_data init = {};
- 	const char *parent_name;
+ 
+ 	ch = kzalloc_obj(*ch);
+ 	if (!ch)
+diff --git a/drivers/clk/berlin/berlin2-pll.c b/drivers/clk/berlin/berlin2-pll.c
+index d0ec3d0bcf3e57ea..1c4203736ecf4ff7 100644
+--- a/drivers/clk/berlin/berlin2-pll.c
++++ b/drivers/clk/berlin/berlin2-pll.c
+@@ -78,7 +78,7 @@ berlin2_pll_register(const struct berlin2_pll_map *map,
+ 		     void __iomem *base, const char *name,
+ 		     const char *parent_name, unsigned long flags)
+ {
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 	struct berlin2_pll *pll;
  
  	pll = kzalloc_obj(*pll);
-diff --git a/drivers/clk/bcm/clk-iproc-asiu.c b/drivers/clk/bcm/clk-iproc-asiu.c
-index 56a8132279814d03..86c0100934f81bd5 100644
---- a/drivers/clk/bcm/clk-iproc-asiu.c
-+++ b/drivers/clk/bcm/clk-iproc-asiu.c
-@@ -206,7 +206,7 @@ void __init iproc_asiu_setup(struct device_node *node,
- 		goto err_iomap_gate;
- 
- 	for (i = 0; i < num_clks; i++) {
--		struct clk_init_data init;
-+		struct clk_init_data init = {};
- 		const char *parent_name;
- 		struct iproc_asiu_clk *asiu_clk;
- 		const char *clk_name;
-diff --git a/drivers/clk/bcm/clk-iproc-pll.c b/drivers/clk/bcm/clk-iproc-pll.c
-index d708f770971ceed1..4354aac2d2707d71 100644
---- a/drivers/clk/bcm/clk-iproc-pll.c
-+++ b/drivers/clk/bcm/clk-iproc-pll.c
-@@ -722,7 +722,7 @@ void iproc_pll_clk_setup(struct device_node *node,
- 	int i, ret;
- 	struct iproc_pll *pll;
- 	struct iproc_clk *iclk;
--	struct clk_init_data init;
-+	struct clk_init_data init = {};
- 	const char *parent_name;
- 	struct iproc_clk *iclk_array;
- 	struct clk_hw_onecell_data *clk_data;
 -- 
 2.43.0
 
