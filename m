@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1123BC5DF7D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:03:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 916B2C5DF8C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:03:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6E5fG2+nEik0ay/c+1HINFkbMjG4z3r5bpfH0fvjLhI=; b=jhKKXPph+oP9M1a6TKJebc39uT
-	dUfIWp0feYwttQVMw3lnT4Uy7W6U53CsjiatuW3a4qGBcnLBO+tkfH90mFG7Z5+nbBk9A4r+mBmEe
-	gPFjyfROLpjDpD0oSIWnJOvuF0/8vJU07yrA5bVE5rRRgqFBP5Pb+zLtrSWqUysa8Lhyb9TqDeGeF
-	9060LFkj2BFjPnKQJcPyaZ8adsng9fsniODy5iZknJ6+7/igVaWfS7nVIcva1OFXDvpmn/BBbyDdh
-	SwRlbjU+uTMowFv1AnjzvjF3mzCYtRfwuUN/Z8QnWjGMABUAnjPNmFI2N8LvHDHrFIPl+D8X0aKm8
-	2kH5Y8fw==;
+	bh=uqx3XgkJJohHA7Mcb8Jypbo2yvaRetF23BQugkNhEe8=; b=DUtpO7XOTahhbIzoDjCrPo6yep
+	Y87/I4uz2No2kgbFzMGfuGVqGja5ye/mpNzLFieFi/EhAUS0+xdNsHwxQrY5cr7jfEVaZLi3wefgF
+	oAJu9KEHm6IAugF3aG7FPf8A7fzIUH2iu+wGmxoLAO+b5yDbu1K7JCGbcDaRlUU9Ry0O0oVwdZvF5
+	C80dJOMzCnb7ktXGoghOIVoivmP42D/LiIiPmJRzPWirmGRw4NP9fjO+rzXocqqgiP9ewfAN57+7k
+	gDBq3S/DP5s5CDojNa3AV4Ox8SrUSk/QwVpXe9yulA0Y4iZIPdBO30JhMC43PFq4WoMVPtMhms1Ix
+	EPG15iCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL9T-0000000CsZ5-0NAp;
-	Fri, 21 Aug 2026 09:03:03 +0000
+	id 1wxL9g-0000000Csey-20ta;
+	Fri, 21 Aug 2026 09:03:16 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL9Q-0000000CsYG-00xy;
-	Fri, 21 Aug 2026 09:03:00 +0000
+	id 1wxL9f-0000000CseC-0QZa;
+	Fri, 21 Aug 2026 09:03:15 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6B4156189B;
+	by tor.source.kernel.org (Postfix) with ESMTP id 85569618B8;
+	Fri, 21 Aug 2026 09:03:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 93F071F00A3A;
 	Fri, 21 Aug 2026 09:02:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 856551F000E9;
-	Fri, 21 Aug 2026 09:02:44 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 34/45] clk: stm32: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:44 +0200
-Message-ID: <0b80535e9cfdc96d43169e5023e3a92a8f2252d6.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 35/45] clk: st: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:45 +0200
+Message-ID: <e43a03b5f0b1a8151835d9823cbbcc03178b5e46.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -147,73 +147,64 @@ Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 Compile-tested only.
 ---
- drivers/clk/clk-stm32f4.c        | 4 ++--
- drivers/clk/clk-stm32h7.c        | 2 +-
- drivers/clk/stm32/clk-stm32mp1.c | 4 ++--
- 3 files changed, 5 insertions(+), 5 deletions(-)
+ drivers/clk/st/clk-flexgen.c | 2 +-
+ drivers/clk/st/clkgen-fsyn.c | 4 ++--
+ drivers/clk/st/clkgen-pll.c  | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/clk/clk-stm32f4.c b/drivers/clk/clk-stm32f4.c
-index 565b4d99bebb06e8..6603d4815514151a 100644
---- a/drivers/clk/clk-stm32f4.c
-+++ b/drivers/clk/clk-stm32f4.c
-@@ -485,8 +485,8 @@ static struct clk *clk_register_apb_mul(struct device *dev, const char *name,
- 					const char *parent_name,
- 					unsigned long flags, u8 bit_idx)
- {
-+	struct clk_init_data init = {};
- 	struct clk_apb_mul *am;
--	struct clk_init_data init;
+diff --git a/drivers/clk/st/clk-flexgen.c b/drivers/clk/st/clk-flexgen.c
+index 211535fd8ac9bf3c..46e5c7be43e8277e 100644
+--- a/drivers/clk/st/clk-flexgen.c
++++ b/drivers/clk/st/clk-flexgen.c
+@@ -209,7 +209,7 @@ static struct clk *clk_register_flexgen(const char *name,
+ 				unsigned long flexgen_flags, bool mode) {
+ 	struct flexgen *fgxbar;
  	struct clk *clk;
- 
- 	am = kzalloc_obj(*am);
-@@ -810,8 +810,8 @@ static struct clk_hw *clk_register_pll_div(const char *name,
- 		struct clk_hw *pll_hw, spinlock_t *lock)
- {
- 	struct stm32f4_pll_div *pll_div;
-+	struct clk_init_data init = {};
- 	struct clk_hw *hw;
 -	struct clk_init_data init;
- 	int ret;
++	struct clk_init_data init = {};
+ 	u32  xbar_shift;
+ 	void __iomem *xbar_reg, *fdiv_reg;
  
- 	/* allocate the divider */
-diff --git a/drivers/clk/clk-stm32h7.c b/drivers/clk/clk-stm32h7.c
-index 82e0789cf189c7cb..c6afa9b202351c04 100644
---- a/drivers/clk/clk-stm32h7.c
-+++ b/drivers/clk/clk-stm32h7.c
-@@ -462,8 +462,8 @@ static struct clk_hw *clk_register_stm32_timer_ker(struct device *dev,
- 		u8 dppre_shift,
+diff --git a/drivers/clk/st/clkgen-fsyn.c b/drivers/clk/st/clkgen-fsyn.c
+index 3fcc1da20c04ed8b..705133b959d74ed3 100644
+--- a/drivers/clk/st/clkgen-fsyn.c
++++ b/drivers/clk/st/clkgen-fsyn.c
+@@ -444,9 +444,9 @@ static struct clk * __init st_clk_register_quadfs_pll(
+ 		struct clkgen_quadfs_data *quadfs, void __iomem *reg,
  		spinlock_t *lock)
  {
 +	struct clk_init_data init = {};
- 	struct timer_ker *element;
+ 	struct st_clk_quadfs_pll *pll;
+ 	struct clk *clk;
 -	struct clk_init_data init;
- 	struct clk_hw *hw;
- 	int err;
  
-diff --git a/drivers/clk/stm32/clk-stm32mp1.c b/drivers/clk/stm32/clk-stm32mp1.c
-index 2d9ccd96ec98c05e..b265e3f3e94c2805 100644
---- a/drivers/clk/stm32/clk-stm32mp1.c
-+++ b/drivers/clk/stm32/clk-stm32mp1.c
-@@ -902,8 +902,8 @@ static struct clk_hw *clk_register_pll(struct device *dev, const char *name,
- 				       unsigned long flags,
- 				       spinlock_t *lock)
+ 	/*
+ 	 * Sanity check required pointers.
+@@ -885,8 +885,8 @@ static struct clk * __init st_clk_register_quadfs_fsynth(
+ 		unsigned long flags, spinlock_t *lock)
+ {
+ 	struct st_clk_quadfs_fsynth *fs;
++	struct clk_init_data init = {};
+ 	struct clk *clk;
+-	struct clk_init_data init;
+ 
+ 	/*
+ 	 * Sanity check required pointers, note that nsdiv3 is optional.
+diff --git a/drivers/clk/st/clkgen-pll.c b/drivers/clk/st/clkgen-pll.c
+index 17551c6a879ac480..aaa28aaff6272592 100644
+--- a/drivers/clk/st/clkgen-pll.c
++++ b/drivers/clk/st/clkgen-pll.c
+@@ -652,9 +652,9 @@ static struct clk * __init clkgen_pll_register(const char *parent_name,
+ 				void __iomem *reg, unsigned long pll_flags,
+ 				const char *clk_name, spinlock_t *lock)
  {
 +	struct clk_init_data init = {};
- 	struct stm32_pll_obj *element;
+ 	struct clkgen_pll *pll;
+ 	struct clk *clk;
 -	struct clk_init_data init;
- 	struct clk_hw *hw;
- 	int err;
  
-@@ -1041,8 +1041,8 @@ static struct clk_hw *clk_register_cktim(struct device *dev, const char *name,
- 					 void __iomem *timpre,
- 					 spinlock_t *lock)
- {
-+	struct clk_init_data init = {};
- 	struct timer_cker *tim_ker;
--	struct clk_init_data init;
- 	struct clk_hw *hw;
- 	int err;
- 
+ 	pll = kzalloc_obj(*pll);
+ 	if (!pll)
 -- 
 2.43.0
 
