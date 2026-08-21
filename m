@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70AC4C5DF7D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:00:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 349F5C5DF7D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:01:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8xXwaN+RgdnPDyQu310UUODgjiWRNGclUCAE7JEqwyI=; b=zRspufZm4gze531xU8SfJWu/ho
-	hx+QBDSXJgZMRDsxhFuDu7QyjMQw3ljy0msPkYek1BZN/drtKGQED8dgGwCE5ETMPNmHCmEtodIZZ
-	qtZsMC3SuxnczEjWAJZuLT3d0lTUKpWRwQ3PdHGy2Cl4jkhZZkBwa9Sik2A7DwClJhCTxiN7lBMKv
-	i4pmo1+TqDDMJjyW1zMgIC08OPeb60XxU+fom+6qzRVeAJNpOXRMTtejq7oT1iz1b0Qg2HR1brrPH
-	RLlc76xh4YVjL5WQrbsO2Wm1oWEhbiIyVSheSU/Iam+dPCJn0RBDtlONjfTYJx85CYawWtZu8VbHW
-	LJgmNF8w==;
+	bh=ZyHzAV45MXqHHZ15rBrnzLmdCc+GHBWPFxshRZ6Yqps=; b=Eny06MMa1OhrXb0IZXXkbitW+m
+	hgKxLv4TI31pozdk9XjL/r869wZhDkvEDjvVt/GQi0vmdZW5uyXcQ/RgpxVXk3Z1/RuyBfWfpeiBT
+	1aVc8RLofdiEX3gMq1XzOt+shyihdQGC/SBLJdaNKGZG7k4oGJ072A+IZ1JH2ncefQ+hKiPT/E3kQ
+	EPBlhzvhDl/nDRwAKW7ev/HL71RYRf7EyhZhSrQaY8yMJzuEw8S4vlCXsd90VC7L1hTPsy8OfyysT
+	HD6SP9FJMDq/O8D7m3B76u0Bui1dRTFfi7rfWh++zRAsgjwG1OUNhvYLazFqPvS2D3uO7vzrJN3cZ
+	g++KOyOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL7G-0000000Crq3-11Sm;
-	Fri, 21 Aug 2026 09:00:46 +0000
+	id 1wxL7V-0000000Cruw-11nh;
+	Fri, 21 Aug 2026 09:01:01 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL7E-0000000Crpa-0rvH;
-	Fri, 21 Aug 2026 09:00:44 +0000
+	id 1wxL7T-0000000Crtc-19Ce;
+	Fri, 21 Aug 2026 09:00:59 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id A112161896;
+	by tor.source.kernel.org (Postfix) with ESMTP id AFC3061897;
+	Fri, 21 Aug 2026 09:00:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C99D41F000E9;
 	Fri, 21 Aug 2026 09:00:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BBDED1F00A3E;
-	Fri, 21 Aug 2026 09:00:28 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 25/45] clk: pistachio: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:35 +0200
-Message-ID: <34b65a00a6a40ddcb7a9f4d3d724e80a00ac9bd2.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 26/45] clk: pwm: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:36 +0200
+Message-ID: <f809871afb8fdee621087dc23e18539ed2839cde.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -147,23 +147,22 @@ Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 Compile-tested only.
 ---
- drivers/clk/pistachio/clk-pll.c | 2 +-
+ drivers/clk/clk-pwm.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/clk/pistachio/clk-pll.c b/drivers/clk/pistachio/clk-pll.c
-index 5b268a985a9c7d0e..ad997a777632a842 100644
---- a/drivers/clk/pistachio/clk-pll.c
-+++ b/drivers/clk/pistachio/clk-pll.c
-@@ -453,8 +453,8 @@ static struct clk *pll_register(const char *name, const char *parent_name,
- 				struct pistachio_pll_rate_table *rates,
- 				unsigned int nr_rates)
+diff --git a/drivers/clk/clk-pwm.c b/drivers/clk/clk-pwm.c
+index 4709f0338e373b57..2001c7c9367c00ec 100644
+--- a/drivers/clk/clk-pwm.c
++++ b/drivers/clk/clk-pwm.c
+@@ -95,7 +95,7 @@ static const struct clk_ops clk_pwm_ops = {
+ static int clk_pwm_probe(struct platform_device *pdev)
  {
-+	struct clk_init_data init = {};
- 	struct pistachio_clk_pll *pll;
+ 	struct device_node *node = pdev->dev.of_node;
 -	struct clk_init_data init;
- 	struct clk *clk;
- 
- 	pll = kzalloc_obj(*pll);
++	struct clk_init_data init = {};
+ 	struct clk_pwm *clk_pwm;
+ 	struct pwm_device *pwm;
+ 	struct pwm_args pargs;
 -- 
 2.43.0
 
