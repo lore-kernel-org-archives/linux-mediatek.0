@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5AF2C5DF87
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:05:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20E7AC5DF7D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:05:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jmqVrBvpc8seaSlewwMFXORAx+tTpcIR7P0mCVsBl/8=; b=PwKQxUzEbWz0XM/YZg8DxsHzou
-	yzjSEiG6LaclLlPox2sq/mvIpoKNprYWgi2AVoh6eVfao5XFC8isKgQNbN2jy1uxpvbeNjvYWc8gw
-	JsD1jvYtRSkVj4EbfJpcegnmibPnC3y9+41yuFwTaD7aiGaVJ0jni84iGqFD/UmBLSo0+/0bxKfm3
-	Ovxl2MDv1faSapj6ZS0T0vCXJVhwxSMn3pJoMswzyQtBDctgfIKiCyC/UtQ5N4RjWDFNuS2uxI2J1
-	8J6Uu2LMXdJ7wGnvZ7C6xlB4GLdyuHlWnMd8XDNR/q5X1mUKZYeikoM6FwtwOg7gmN46u+GafU+T4
-	0nkExtQQ==;
+	bh=f5Hzvca94/MpqPmGFa6vAWEDRGZpUXT7cxp37bpGpu8=; b=y3rxPIBV0EImH8OCglHg1lrhNe
+	xl89vh+cP4Dje39gtcmkQvO5yT+JZ+h1SYeB4UDz7JsHXfUIjIY0GfEZvvm6Kfj9DROU4yuK2ylVX
+	kokYFlszwyzbF0TqOPaujoL6L8XRnVUbH0LQdyYKP0GE53WQIVunZwLEzQHmMXy25Nt3n8CEbTF9/
+	b3mB81BgpnAFuuQDeNG8GoKVnGS8GBACW0JQoIbEoAGP1CMFzKH0Ein5an499auJdoT9acoCathJj
+	MMInrkSBp6pXufjeqAQS7V3OB6euot7dVk/TDNeSqE0JTXSgHP3ejNuajMyHARPekqH6fn4Myu6AY
+	ou+u2oWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxLBc-0000000Ct7h-3ZFL;
-	Fri, 21 Aug 2026 09:05:16 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wxLBt-0000000CtBg-0KQp;
+	Fri, 21 Aug 2026 09:05:33 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxLBb-0000000Ct7P-3GLM;
-	Fri, 21 Aug 2026 09:05:15 +0000
+	id 1wxLBq-0000000CtBM-3Jc0;
+	Fri, 21 Aug 2026 09:05:30 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1A59F618E0;
+	by tor.source.kernel.org (Postfix) with ESMTP id 2D1EC618F9;
+	Fri, 21 Aug 2026 09:05:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 437761F00A3E;
 	Fri, 21 Aug 2026 09:05:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 329421F00A3A;
-	Fri, 21 Aug 2026 09:05:00 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 43/45] clk: xgene: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:53 +0200
-Message-ID: <21374aa8a23b8a72746030eda9e67f6ca3dc37e3.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 44/45] clk: xilinx: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:54 +0200
+Message-ID: <cf858f84a9d517745fb53981f02f9c3dcd65a14f.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -147,45 +147,62 @@ Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 Compile-tested only.
 ---
- drivers/clk/clk-xgene.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/clk/xilinx/clk-xlnx-clock-wizard.c | 6 +++---
+ drivers/clk/xilinx/xlnx_vcu.c              | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/clk/clk-xgene.c b/drivers/clk/clk-xgene.c
-index c9e371fce0939771..5cf015da49ad336e 100644
---- a/drivers/clk/clk-xgene.c
-+++ b/drivers/clk/clk-xgene.c
-@@ -126,9 +126,9 @@ static struct clk *xgene_register_clk_pll(struct device *dev,
- 	unsigned long flags, void __iomem *reg, u32 pll_offset,
- 	u32 type, spinlock_t *lock, int version)
+diff --git a/drivers/clk/xilinx/clk-xlnx-clock-wizard.c b/drivers/clk/xilinx/clk-xlnx-clock-wizard.c
+index edf8c0eaca27cab4..4e5b9cb3754b9a18 100644
+--- a/drivers/clk/xilinx/clk-xlnx-clock-wizard.c
++++ b/drivers/clk/xilinx/clk-xlnx-clock-wizard.c
+@@ -936,9 +936,9 @@ static struct clk_hw *clk_wzrd_register_divf(struct device *dev,
+ 					  u32 div_type,
+ 					  spinlock_t *lock)
  {
 +	struct clk_init_data init = {};
- 	struct xgene_clk_pll *apmclk;
- 	struct clk *clk;
+ 	struct clk_wzrd_divider *div;
+ 	struct clk_hw *hw;
 -	struct clk_init_data init;
+ 	int ret;
  
- 	/* allocate the APM clock structure */
- 	apmclk = kzalloc_obj(*apmclk);
-@@ -351,8 +351,8 @@ xgene_register_clk_pmd(struct device *dev,
- 		       unsigned long flags, void __iomem *reg, u8 shift,
- 		       u8 width, u64 denom, u32 clk_flags, spinlock_t *lock)
+ 	div = devm_kzalloc(dev, sizeof(*div), GFP_KERNEL);
+@@ -980,9 +980,9 @@ static struct clk_hw *clk_wzrd_ver_register_divider(struct device *dev,
+ 						 u32 div_type,
+ 						 spinlock_t *lock)
  {
 +	struct clk_init_data init = {};
- 	struct xgene_clk_pmd *fd;
+ 	struct clk_wzrd_divider *div;
+ 	struct clk_hw *hw;
 -	struct clk_init_data init;
- 	struct clk *clk;
+ 	int ret;
  
- 	fd = kzalloc_obj(*fd);
-@@ -635,9 +635,9 @@ static struct clk *xgene_register_clk(struct device *dev,
- 		const char *name, const char *parent_name,
- 		struct xgene_dev_parameters *parameters, spinlock_t *lock)
+ 	div = devm_kzalloc(dev, sizeof(*div), GFP_KERNEL);
+@@ -1026,9 +1026,9 @@ static struct clk_hw *clk_wzrd_register_divider(struct device *dev,
+ 					     u32 div_type,
+ 					     spinlock_t *lock)
  {
 +	struct clk_init_data init = {};
- 	struct xgene_clk *apmclk;
- 	struct clk *clk;
+ 	struct clk_wzrd_divider *div;
+ 	struct clk_hw *hw;
 -	struct clk_init_data init;
- 	int rc;
+ 	int ret;
  
- 	/* allocate the APM clock structure */
+ 	div = devm_kzalloc(dev, sizeof(*div), GFP_KERNEL);
+diff --git a/drivers/clk/xilinx/xlnx_vcu.c b/drivers/clk/xilinx/xlnx_vcu.c
+index f14bda375e353e6a..ccd9d7c0b18098a5 100644
+--- a/drivers/clk/xilinx/xlnx_vcu.c
++++ b/drivers/clk/xilinx/xlnx_vcu.c
+@@ -406,9 +406,9 @@ static struct clk_hw *xvcu_register_pll(struct device *dev,
+ 					const char *name, const char *parent,
+ 					unsigned long flags)
+ {
++	struct clk_init_data init = {};
+ 	struct vcu_pll *pll;
+ 	struct clk_hw *hw;
+-	struct clk_init_data init;
+ 	int ret;
+ 
+ 	init.name = name;
 -- 
 2.43.0
 
