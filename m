@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7970C5DF87
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:03:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F211CC5DF7D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:03:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w0/s+bb+js2b83HDw0YlgeqQNEJGiYtptz+Z9ITYCsw=; b=D/SxFmW0cVCM4ejdgT7WprKjLT
-	kgHhUuiH9dEZnbBg8+8RXZwY31pYWJzk1PRpUlpZoLwF/7mvOXh4O+/j6wdJjnP7sK9MVhA98rDSU
-	/0R34l8g9P/q63AMr9XFznIJJru3nsMPqmg8n2IHyj3VO0K24Yx0rDB/RrIXXlsXVkul6Z5qGnj6u
-	kaIuM7v0CjgMkH0vKNZtyntlYy/QfaJ2EhaRVDc82DmBEYNJRknRWpdKNZajSKI1z/n2ijiw8emgQ
-	ekipfatLi7wJUyfpNzvTODcwVTHX9R66Oq/UqqddROrrYnqtZi1c8ihuzoGmLXoFxINHGwl5JGDfb
-	yR386irw==;
+	bh=1U3S7OiKrSVjqr36qvoVhjlFnjsEcKZD5Z4POBhizKI=; b=rZLoZkEEcUakOD5eaW5mi4+RXe
+	QfOpRCYrHlXvoHxASas7tcnFsVJ+wlGjZ2dr37hVSXQnV39A3czNgbPNwOlur3/wPR4SmB2MITJG4
+	MJZ09qEB6dFc7TB22g2Hv4ocH+CSUM1kK0KXSqQiOvU9kMQ4yojCFmZngaxU+7HncYp9IKO2xKLli
+	Ch7Go0RPFhSzanHl91N+fhjhmo6SWN7jDao/wMUt+9IGzIQ1jMIEzbz2Tf7kxvwiDltPABO1vQF7s
+	nhKwRAzrLOtdO15XhszG1fQZWR3+j13fd/m3HXykmRqI1euTcnLMIAQJ7YfBhf7yKvz2XMgSVxa3/
+	BYTMTGYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL9v-0000000Csja-3GLS;
-	Fri, 21 Aug 2026 09:03:31 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wxLAB-0000000CsnH-0Ncx;
+	Fri, 21 Aug 2026 09:03:47 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL9t-0000000Csj3-3Yhb;
-	Fri, 21 Aug 2026 09:03:29 +0000
+	id 1wxLA8-0000000Csmv-34Zx;
+	Fri, 21 Aug 2026 09:03:44 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 64C1140C2F;
+	by sea.source.kernel.org (Postfix) with ESMTP id 74E0D40AA3;
+	Fri, 21 Aug 2026 09:03:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B7E5A1F000E9;
 	Fri, 21 Aug 2026 09:03:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD8351F00A3D;
-	Fri, 21 Aug 2026 09:03:14 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 36/45] clk: sunxi: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:46 +0200
-Message-ID: <c7eea3804f3b01fa78225775c6844c5e8d07b3f2.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 37/45] clk: tegra: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:47 +0200
+Message-ID: <1cc7367a121a748dc126f54e1df70a5acebe5914.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -147,22 +147,207 @@ Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 Compile-tested only.
 ---
- drivers/clk/sunxi/clk-sun4i-tcon-ch1.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/clk/tegra/clk-audio-sync.c       | 2 +-
+ drivers/clk/tegra/clk-divider.c          | 2 +-
+ drivers/clk/tegra/clk-periph-fixed.c     | 2 +-
+ drivers/clk/tegra/clk-periph-gate.c      | 2 +-
+ drivers/clk/tegra/clk-periph.c           | 2 +-
+ drivers/clk/tegra/clk-pll-out.c          | 2 +-
+ drivers/clk/tegra/clk-pll.c              | 2 +-
+ drivers/clk/tegra/clk-sdmmc-mux.c        | 2 +-
+ drivers/clk/tegra/clk-super.c            | 4 ++--
+ drivers/clk/tegra/clk-tegra-super-cclk.c | 2 +-
+ drivers/clk/tegra/clk-tegra124-emc.c     | 2 +-
+ drivers/clk/tegra/clk-tegra20-emc.c      | 2 +-
+ drivers/clk/tegra/clk-tegra210-emc.c     | 2 +-
+ 13 files changed, 14 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/clk/sunxi/clk-sun4i-tcon-ch1.c b/drivers/clk/sunxi/clk-sun4i-tcon-ch1.c
-index b61eba112a7fecf5..b7f55864ea2a519c 100644
---- a/drivers/clk/sunxi/clk-sun4i-tcon-ch1.c
-+++ b/drivers/clk/sunxi/clk-sun4i-tcon-ch1.c
-@@ -225,7 +225,7 @@ static void __init tcon_ch1_setup(struct device_node *node)
+diff --git a/drivers/clk/tegra/clk-audio-sync.c b/drivers/clk/tegra/clk-audio-sync.c
+index 0bbfcf46bedd521e..0fb4377c80bf2a04 100644
+--- a/drivers/clk/tegra/clk-audio-sync.c
++++ b/drivers/clk/tegra/clk-audio-sync.c
+@@ -47,7 +47,7 @@ struct clk *tegra_clk_register_sync_source(const char *name,
+ 					   unsigned long max_rate)
  {
- 	const char *parents[TCON_CH1_SCLK2_PARENTS];
- 	const char *clk_name = node->name;
+ 	struct tegra_clk_sync_source *sync;
 -	struct clk_init_data init;
 +	struct clk_init_data init = {};
- 	struct tcon_ch1_clk *tclk;
- 	struct resource res;
  	struct clk *clk;
+ 
+ 	sync = kzalloc_obj(*sync);
+diff --git a/drivers/clk/tegra/clk-divider.c b/drivers/clk/tegra/clk-divider.c
+index 27f43c3da1563e92..2dc7713433451754 100644
+--- a/drivers/clk/tegra/clk-divider.c
++++ b/drivers/clk/tegra/clk-divider.c
+@@ -145,8 +145,8 @@ struct clk *tegra_clk_register_divider(const char *name,
+ 		u8 frac_width, spinlock_t *lock)
+ {
+ 	struct tegra_clk_frac_div *divider;
++	struct clk_init_data init = {};
+ 	struct clk *clk;
+-	struct clk_init_data init;
+ 
+ 	divider = kzalloc_obj(*divider);
+ 	if (!divider) {
+diff --git a/drivers/clk/tegra/clk-periph-fixed.c b/drivers/clk/tegra/clk-periph-fixed.c
+index bb33e32cad4a1732..9ea9d41f47963168 100644
+--- a/drivers/clk/tegra/clk-periph-fixed.c
++++ b/drivers/clk/tegra/clk-periph-fixed.c
+@@ -77,7 +77,7 @@ struct clk *tegra_clk_register_periph_fixed(const char *name,
+ {
+ 	const struct tegra_clk_periph_regs *regs;
+ 	struct tegra_clk_periph_fixed *fixed;
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 	struct clk *clk;
+ 
+ 	regs = get_reg_bank(num);
+diff --git a/drivers/clk/tegra/clk-periph-gate.c b/drivers/clk/tegra/clk-periph-gate.c
+index fa39d64875154efe..d821e1b9f77e6ba3 100644
+--- a/drivers/clk/tegra/clk-periph-gate.c
++++ b/drivers/clk/tegra/clk-periph-gate.c
+@@ -139,7 +139,7 @@ struct clk *tegra_clk_register_periph_gate(const char *name,
+ {
+ 	struct tegra_clk_periph_gate *gate;
+ 	struct clk *clk;
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 	const struct tegra_clk_periph_regs *pregs;
+ 
+ 	pregs = get_reg_bank(clk_num);
+diff --git a/drivers/clk/tegra/clk-periph.c b/drivers/clk/tegra/clk-periph.c
+index 6ebeaa7cb65648e7..7af832d9af9b011f 100644
+--- a/drivers/clk/tegra/clk-periph.c
++++ b/drivers/clk/tegra/clk-periph.c
+@@ -166,7 +166,7 @@ static struct clk *_tegra_clk_register_periph(const char *name,
+ 			unsigned long flags)
+ {
+ 	struct clk *clk;
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 	const struct tegra_clk_periph_regs *bank;
+ 	bool div = !(periph->gate.flags & TEGRA_PERIPH_NO_DIV);
+ 
+diff --git a/drivers/clk/tegra/clk-pll-out.c b/drivers/clk/tegra/clk-pll-out.c
+index 2299545fc386f87b..285b0af811fb1903 100644
+--- a/drivers/clk/tegra/clk-pll-out.c
++++ b/drivers/clk/tegra/clk-pll-out.c
+@@ -90,8 +90,8 @@ struct clk *tegra_clk_register_pll_out(const char *name,
+ 		spinlock_t *lock)
+ {
+ 	struct tegra_clk_pll_out *pll_out;
++	struct clk_init_data init = {};
+ 	struct clk *clk;
+-	struct clk_init_data init;
+ 
+ 	pll_out = kzalloc_obj(*pll_out);
+ 	if (!pll_out)
+diff --git a/drivers/clk/tegra/clk-pll.c b/drivers/clk/tegra/clk-pll.c
+index adfb74f111ef1afd..fc3abe86414ddd11 100644
+--- a/drivers/clk/tegra/clk-pll.c
++++ b/drivers/clk/tegra/clk-pll.c
+@@ -1903,7 +1903,7 @@ static struct clk *_tegra_clk_register_pll(struct tegra_clk_pll *pll,
+ 		const char *name, const char *parent_name, unsigned long flags,
+ 		const struct clk_ops *ops)
+ {
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 
+ 	init.name = name;
+ 	init.ops = ops;
+diff --git a/drivers/clk/tegra/clk-sdmmc-mux.c b/drivers/clk/tegra/clk-sdmmc-mux.c
+index 14b5439a100a0cef..74fe06fa546abf47 100644
+--- a/drivers/clk/tegra/clk-sdmmc-mux.c
++++ b/drivers/clk/tegra/clk-sdmmc-mux.c
+@@ -236,7 +236,7 @@ struct clk *tegra_clk_register_sdmmc_mux_div(const char *name,
+ 	unsigned long flags, void *lock)
+ {
+ 	struct clk *clk;
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 	const struct tegra_clk_periph_regs *bank;
+ 	struct tegra_sdmmc_mux *sdmmc_mux;
+ 
+diff --git a/drivers/clk/tegra/clk-super.c b/drivers/clk/tegra/clk-super.c
+index 370445e3d5acc34e..7aa3c3774445d32c 100644
+--- a/drivers/clk/tegra/clk-super.c
++++ b/drivers/clk/tegra/clk-super.c
+@@ -204,8 +204,8 @@ struct clk *tegra_clk_register_super_mux(const char *name,
+ 		u8 width, u8 pllx_index, u8 div2_index, spinlock_t *lock)
+ {
+ 	struct tegra_clk_super_mux *super;
++	struct clk_init_data init = {};
+ 	struct clk *clk;
+-	struct clk_init_data init;
+ 
+ 	super = kzalloc_obj(*super);
+ 	if (!super)
+@@ -240,8 +240,8 @@ struct clk *tegra_clk_register_super_clk(const char *name,
+ 		spinlock_t *lock)
+ {
+ 	struct tegra_clk_super_mux *super;
++	struct clk_init_data init = {};
+ 	struct clk *clk;
+-	struct clk_init_data init;
+ 
+ 	super = kzalloc_obj(*super);
+ 	if (!super)
+diff --git a/drivers/clk/tegra/clk-tegra-super-cclk.c b/drivers/clk/tegra/clk-tegra-super-cclk.c
+index e7aeb67606b11390..1047a1104ec1f5d7 100644
+--- a/drivers/clk/tegra/clk-tegra-super-cclk.c
++++ b/drivers/clk/tegra/clk-tegra-super-cclk.c
+@@ -135,8 +135,8 @@ struct clk *tegra_clk_register_super_cclk(const char *name,
+ 		spinlock_t *lock)
+ {
+ 	struct tegra_clk_super_mux *super;
++	struct clk_init_data init = {};
+ 	struct clk *clk;
+-	struct clk_init_data init;
+ 	u32 val;
+ 
+ 	if (WARN_ON(cclk_super))
+diff --git a/drivers/clk/tegra/clk-tegra124-emc.c b/drivers/clk/tegra/clk-tegra124-emc.c
+index 94ac24ea1e6adc37..0fc74808fe39b2f7 100644
+--- a/drivers/clk/tegra/clk-tegra124-emc.c
++++ b/drivers/clk/tegra/clk-tegra124-emc.c
+@@ -485,8 +485,8 @@ static const struct clk_ops tegra_clk_emc_ops = {
+ struct clk *tegra124_clk_register_emc(void __iomem *base, struct device_node *np,
+ 				      spinlock_t *lock)
+ {
++	struct clk_init_data init = {};
+ 	struct tegra_clk_emc *tegra;
+-	struct clk_init_data init;
+ 	struct device_node *node;
+ 	u32 node_ram_code;
+ 	struct clk *clk;
+diff --git a/drivers/clk/tegra/clk-tegra20-emc.c b/drivers/clk/tegra/clk-tegra20-emc.c
+index 44465726a8a67005..5cd026e8f305a35a 100644
+--- a/drivers/clk/tegra/clk-tegra20-emc.c
++++ b/drivers/clk/tegra/clk-tegra20-emc.c
+@@ -245,8 +245,8 @@ bool tegra20_clk_emc_driver_available(struct clk_hw *emc_hw)
+ 
+ struct clk *tegra20_clk_register_emc(void __iomem *ioaddr, bool low_jitter)
+ {
++	struct clk_init_data init = {};
+ 	struct tegra_clk_emc *emc;
+-	struct clk_init_data init;
+ 	struct clk *clk;
+ 
+ 	emc = kzalloc_obj(*emc);
+diff --git a/drivers/clk/tegra/clk-tegra210-emc.c b/drivers/clk/tegra/clk-tegra210-emc.c
+index 9f140d94bef75560..2e559d95d40e7d50 100644
+--- a/drivers/clk/tegra/clk-tegra210-emc.c
++++ b/drivers/clk/tegra/clk-tegra210-emc.c
+@@ -274,8 +274,8 @@ static const struct clk_ops tegra210_clk_emc_ops = {
+ struct clk *tegra210_clk_register_emc(struct device_node *np,
+ 				      void __iomem *regs)
+ {
++	struct clk_init_data init = {};
+ 	struct tegra210_clk_emc *emc;
+-	struct clk_init_data init;
+ 	struct clk *clk;
+ 
+ 	emc = kzalloc_obj(*emc);
 -- 
 2.43.0
 
