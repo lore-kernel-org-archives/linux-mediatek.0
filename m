@@ -4,121 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95565C5DF87
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 11:29:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A096DC5DF87
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 11:42:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yvXny4Uzt3tUYS9bpKHRNKA1xycDne4ixBPlCcMH+lk=; b=bQo13VuKzzJF9BhACQREBiwp7I
-	0yD3qGahWM6ZkaoK6Lh3kU53PSWieRQP63KY7wjz/DrrIlyE8uu+YJnceeWJqr+kTe2GYEd6oo72I
-	Qv7RB8wKtoWGbvDMLSeer8T19TulvgTExH/4SANH5DoYZTB1zciq/CTffXtfm6FPgOJgmTnIC9QiY
-	drtM8jAC7DaGmifQPcNrN63/fumeXbOf3ORk7NrdNY1ZojEfdBSvpr7OOkGCXMNwYVrBBp9jOiWcC
-	CvDIzTbxNEC0fxcejlRRu3rNs1fpHfkNwcaJ8OdsTHnIYewU8N3LCsUwW9ilMi2fhlvUAZvlPD+Pw
-	MA7EXD2Q==;
+	bh=Oh9SGcJoUiskZKX4r4ZOUupPC4HusVwgeUCpZ4i0z2g=; b=pgMwKswu/KeqF92zbMJ5Nax0G9
+	bYfTo06iCE9zMlDsiXLw68HO8UmsYgS3hJ4yXUudgSsUj1nyk5ydimfppy7LahO1WCYx195R/lSDM
+	KBYfs6ry81iIXQYXKPWpLQzftlXezCYGHCRvJS43YdTL8FiTWX5e/vPFF3NFMotBiO9sVgBEvQ7zo
+	vciLTQLYa7OEEnKXKrduHIC1mC0pTN4c2t23o2kZh/ypjSuU9MljAx+o4HRv5UbTreck0sq0BEWWH
+	FZE+Y//IbKU1+dIejomhzOXUbvmIqZ3ZbB8mK8EAyO8/I2Wz1Y0w/KsOT72izfVOSTAsixdvCEdWL
+	tSinCiuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxNRE-0000000DBsh-2IsX;
-	Fri, 21 Aug 2026 11:29:32 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxNRC-0000000DBsG-1XtR
+	id 1wxNdq-0000000DCyt-2UXr;
+	Fri, 21 Aug 2026 11:42:34 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wxNdn-0000000DCyB-1Mtb
 	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Aug 2026 11:29:31 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id A904F165C
-	for <linux-mediatek@lists.infradead.org>; Fri, 21 Aug 2026 04:29:25 -0700 (PDT)
-Received: from [192.168.0.1] (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 55C953F763
-	for <linux-mediatek@lists.infradead.org>; Fri, 21 Aug 2026 04:29:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
-	t=1787311769; bh=rReboDtVWR+LchIn66VCIiRA4RrsNZEU4pEK04rnFMY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NhnclExCvn8RSb9jmyrbu6n5rFUHQhBKclqpY0k+grwY7M1gsB6pmIu+0GkBEMPK+
-	 /CsSfUP2GvON5x7fYYhArgKFgvFbA5+lvJtjr3Kp5wTdrJoJiTkI8wn3UaNIfpsjDe
-	 xpOaICW9HKymZNCzycdj7VidPzcYStz83SoAG4ko=
-Date: Fri, 21 Aug 2026 12:28:01 +0100
-From: Liviu Dudau <liviu.dudau@arm.com>
-To: Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: Ryan Chen <ryan_chen@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Brian Masney <bmasney+clk@redhat.com>,
-	Jerome Brunet <jbrunet+clk@baylibre.com>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Billy Tsai <billy_tsai@aspeedtech.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Taichi Sugaya <sugaya.taichi@socionext.com>,
-	Takao Orito <orito.takao@socionext.com>,
-	Linus Walleij <linusw@kernel.org>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Sudeep Holla <sudeep.holla@kernel.org>,
-	Cristian Marussi <cristian.marussi@arm.com>,
-	David Lechner <david@lechnology.com>,
-	Abel Vesa <abelvesa@kernel.org>, Peng Fan <peng.fan@nxp.com>,
-	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Santosh Shilimkar <ssantosh@kernel.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Vladimir Zapolskiy <vz@mleia.com>, Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Peter Griffin <peter.griffin@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Dinh Nguyen <dinguyen@kernel.org>,
-	Viresh Kumar <vireshk@kernel.org>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Emilio =?utf-8?B?TMOzcGV6?= <emilio@elopez.com.ar>,
-	Chen-Yu Tsai <wens@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Prashant Gaikwad <pgaikwad@nvidia.com>,
-	Thierry Reding <thierry.reding@kernel.org>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Ulf Hansson <ulfh@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Michal Simek <michal.simek@amd.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-clk@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	openbmc@lists.ozlabs.org, arm-scmi@vger.kernel.org,
-	imx@lists.linux.dev, linux-mips@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 40/45] clk: versatile: Make sure clk_init_data is fully
- initialized
-Message-ID: <aog2QXT_86BrtvTs@e142607>
-References: <cover.1787239813.git.geert+renesas@glider.be>
- <7c480e73222bb51982fb82dc0cc6cd503f2e8b92.1787239813.git.geert+renesas@glider.be>
+	Fri, 21 Aug 2026 11:42:32 +0000
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 67L9LtUT1799149
+	for <linux-mediatek@lists.infradead.org>; Fri, 21 Aug 2026 11:42:30 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=Oh9SGcJoUiskZKX4r4ZOUupP
+	C4HusVwgeUCpZ4i0z2g=; b=dIiHrkTie97NjxVm4NvU2TiTEPat6N9VWVR5IIA2
+	RhkfBrap9NoBtwZeXf84BAFAvVqDmeUEEBvzztw6grOX+S36Aah6OQKe33ZrZhj+
+	IQUgKQ8o0BiJOn2Jx761e3/gJcHAjbEg0SDLZ7ZCNjGn/u9gzb4R5hXN7n+9nqVZ
+	QGRYA89WYA0/kMgPqzGdns4lDCPLwQmN+Bt/35DOV1DFLVLdr4Bp02FWo4/EkgNt
+	MNCqVVGTiHHDjxxxZ1Q7yxqzfCfBUWr6xzYIYYQ24/B/k+ePz6/3Xoxfas9PWnmG
+	UCmHB6WAWGlYEXM9Yd+WTwz8LeHPhNHji2REd4PtzfIpGA==
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com [209.85.160.200])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g6ecb9qtt-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Fri, 21 Aug 2026 11:42:30 +0000 (GMT)
+Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-5276aa86d00so9258661cf.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 21 Aug 2026 04:42:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1787312549; x=1787917349; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=Oh9SGcJoUiskZKX4r4ZOUupPC4HusVwgeUCpZ4i0z2g=;
+        b=aBoSipodtUDdRNbZuWLPZ0EJi45IGmvz+sf1SdjmZZxL+XJxSbGQTq2SuaoLQ2y17k
+         4GPVE8UPQoymB/DFqP6Ggd9TS4Ogkxfm0GSktqGEan3EuOWr/9+l2eT8CEeRtb4/0F9W
+         UJCDqoXwSh8ATE12cMDH9q6o2xwEIR6MTKt0Yx2wDWtBrihrSK8llA6osNfK2hI5r9OT
+         51gDt1HIooCwA7955/uiLRDvKtOl+eIaI6DfUrzfL3LXr+4PMIXhe+bVvdil+PH8+8uX
+         dHVh2pnnBLDft4Fsp0Q6rwanlX5Jgc+SOmxu+CZxX9s+vDBhtDDf9QIF6NLxqqQh0LFn
+         47HA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787312549; x=1787917349;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=Oh9SGcJoUiskZKX4r4ZOUupPC4HusVwgeUCpZ4i0z2g=;
+        b=OECegwNdL8mKU+6jrqkWVV5Tq4tFZ0FMX9tyhEXTla5HzL+jxb7qeQY2LUcbvlhszX
+         +GAZBV0vDw3eO0Lv6OCUcupj3/4rKope0JNFERarQdg0938bcyyn3VD5gWYBXDo+2DWF
+         Twje+hsb+M9OPD01e36m7EWjZUPWlZXKb6TTED1ETPtXgufV76+RSu2+3mYqR8odCcKt
+         p1Af1t9/0ADUp5GHuFJndOuHee3KAWdmKAcCA6ZaBy13h4+o2sQ2WI9bmFrkJ3vb3Jsk
+         T1lkKIuFUEz+Q5ckKfpId1PP/7QOwFHiR7Q/c6So4yuyrjwec1+4+PBP3dsm2tMJfcRx
+         0DlQ==
+X-Forwarded-Encrypted: i=1; AHgh+Ro+BhFkJ/E6BCCNB1gKrUrrZV5zE8BU0XpdjHyH79adaIJ6XrDU9grElQfL5MpIazxepaW9wzCneo22oUvXXA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyeyung2odrf7U6uj5+OfKV43GY5O3DfIhO1P0l08J0fuFuBrEl
+	rOI5u2R643yCLF6ps/yTXldfqaTO8GXOsONSSWfhBJTnO/BKs+0hw2znoOKPewIHmR5GbAcbleq
+	XlUEVBSogez0bmwK2V5mR2OIflH+ycI3+kyQvY9WCXkt6WULQpSBbPg++LZWwlfFzYrf32BA7qf
+	U=
+X-Gm-Gg: AR+sD10FzwKDhhrjFIl/zJy/tutDpYM4M1QQSIYOLVYGE6ZEHvsZ/k0Iuajz7/xrQDk
+	IwxLxX8SKaaIxur4ciegme11mpJlv6rHHlHoPeo/LuqXSE4NLAcr0Db7vavGAs5UubL3qu2g33g
+	9E0l+JQW6ZW7CdQ6++vjTXM/kLr+su+q0wBN1o1RNu3KQH6PXc1tII9R7q43NlWkWQXAI30JpjJ
+	ph6tvMt+/cBnHuqx0nw6zd4N1iSViDKUmCQwsfOKuoNXgkcfAecm5yziGEiu+JtjPV+jFa6uJNA
+	QVGn3YRvJuMkB5nAuOKYdB6OWPvTXGIaWvV6kerCDBvStUugJMoWtll0h2bh8cMTGEEKetbH9Kv
+	lapjEQfgu3xrkmrI=
+X-Received: by 2002:a05:622a:283:b0:52d:89f8:4f8 with SMTP id d75a77b69052e-52df56e491bmr49499961cf.5.1787312549405;
+        Fri, 21 Aug 2026 04:42:29 -0700 (PDT)
+X-Received: by 2002:a05:622a:283:b0:52d:89f8:4f8 with SMTP id d75a77b69052e-52df56e491bmr49499401cf.5.1787312548864;
+        Fri, 21 Aug 2026 04:42:28 -0700 (PDT)
+Received: from oss.qualcomm.com ([188.27.161.240])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c24591df293sm474840366b.45.2026.08.21.04.42.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Aug 2026 04:42:27 -0700 (PDT)
+Date: Fri, 21 Aug 2026 14:42:26 +0300
+From: Abel Vesa <abel.vesa@oss.qualcomm.com>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Ulf Hansson <ulfh@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+        linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org, stable@vger.kernel.org
+Subject: Re: [PATCH] pmdomain: airoha: fix unselectable AIROHA_CPU_PM_DOMAIN
+ kconfig
+Message-ID: <7hlarbdpln2y5ckt3i6nz4gskcxl6e6rher6rvsgmwop6bj7jc@exu2d7paa5iz>
+References: <20260821085222.140633-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <7c480e73222bb51982fb82dc0cc6cd503f2e8b92.1787239813.git.geert+renesas@glider.be>
+In-Reply-To: <20260821085222.140633-1-ansuelsmth@gmail.com>
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODIxMDA4OSBTYWx0ZWRfXxp9w3AanGe4Z
+ 5fYmC0xLcuRwiBkY0RKEroehHqPnOqUgCeC7Ab++HI/zYE8hD0VPaR4zB7EwMvwKcoQe1YVBWYg
+ rnUoYc7Q4u1eKpUBGH3r+vg8z+UdmfZmTi0XUVgJsJyANoWWcbB9FcS3tktm6YK8b98g1v5jBb+
+ TQ5mWopWutxmHRQ0c7X87Xp4tHv6J2Zt2BBSQL6cQCLIltRK0f8yNMonQYUM2R/crYDdxYWtpQH
+ ve8oIpyqCjDV13bw8ljyQfasYzSU1XkXo6Ojhy2d2zi9t/rjV/Xbj2OLwYCG0a9OP/HZtNjWkuo
+ aZ9GPmn/5Vq8D5yW/Sz7ZhlEGk6HFRlrv2nSZ9nijtkwqZgKEiopLbkFgbRKLN8yP2qUmFg/uox
+ xABSoSO8QZyrDwm/O/lmXOl2GekN79jjFxaP9gz1Qaaxn4IQ/V0dmupHBLYAwBCAjETG9YWr4/D
+ u2HvNbGjLWldDpIcW5w==
+X-Authority-Analysis: v=2.4 cv=e/s2j6p/ c=1 sm=1 tr=0 ts=6a8839a6 cx=c_pps
+ a=JbAStetqSzwMeJznSMzCyw==:117 a=wUpz7uCjLrEXi01cjX+DLw==:17
+ a=kj9zAlcOel0A:10 a=Sv0fKeRqtYgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22
+ a=VwQbUJbxAAAA:8 a=pGLkceISAAAA:8 a=EUspDBNiAAAA:8 a=8jWgAth1d_VLo0Q-LswA:9
+ a=CjuIK1q_8ugA:10 a=uxP6HrT_eTzRwkO_Te1X:22
+X-Proofpoint-GUID: xkOKndRHOBri8ETcHfBx11X4O76TGCmG
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODIxMDA4OSBTYWx0ZWRfXxqw1GUWCNfMu
+ xRAjC6D8JWPUpy/5uisMZLn/phl1Co+HHuI8hhObT4jCq22de+mh/Xvndm3PekU0b5oIdgKHzvf
+ wfKJWOWHD9SjcLkJKhacZf+v7xLvG18=
+X-Proofpoint-ORIG-GUID: xkOKndRHOBri8ETcHfBx11X4O76TGCmG
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-08-21_03,2026-08-21_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ adultscore=0 impostorscore=0 suspectscore=0 spamscore=0 phishscore=0
+ lowpriorityscore=0 clxscore=1011 malwarescore=0 priorityscore=1501
+ bulkscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2608210089
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260821_042930_517077_E718DF85 
-X-CRM114-Status: GOOD (  24.63  )
+X-CRM114-CacheID: sfid-20260821_044231_471545_95B64184 
+X-CRM114-Status: GOOD (  10.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,84 +151,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 21, 2026 at 10:53:50AM +0200, Geert Uytterhoeven wrote:
-> The clk_init_data structure contains several mutually-exclusive members
-> for different methods to specify the possible parents of a clock,
-> prompting drivers to initialize only the members they need.  However,
-> not initializing all members may cause subtle issues, which are only
-> exposed when CONFIG_INIT_STACK_ALL_PATTERN or CONFIG_INIT_STACK_NONE is
-> enabled.
+On 26-08-21 10:52:15, Christian Marangi wrote:
+> The AIROHA_CPU_PM_DOMAIN config was wrongly guarded under the Mediatek PM
+> Domains menu and was unselectable.
 > 
-> Make sure all members are fully initialized, to avoid such bugs, and to
-> prevent future breakage when converting drivers to a different method
-> for specifying the parents.
+> Move it outside the menu so it's now visible and correctly selectable by
+> default on Airoha SoC.
 > 
-> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> Cc: stable@vger.kernel.org
+> Fixes: 82e703dd438b ("pmdomain: airoha: Add Airoha CPU PM Domain support")
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 
-Reviewed-by: Liviu Dudau <liviu.dudau@arm.com>
+This looks OK to me, so:
 
-Best regards,
-Liviu
-
-> ---
-> Compile-tested only.
-> ---
->  drivers/clk/versatile/clk-icst.c         | 2 +-
->  drivers/clk/versatile/clk-sp810.c        | 2 +-
->  drivers/clk/versatile/clk-vexpress-osc.c | 2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/clk/versatile/clk-icst.c b/drivers/clk/versatile/clk-icst.c
-> index 6bd3db54dd229d28..97a1bfd6cf0ed995 100644
-> --- a/drivers/clk/versatile/clk-icst.c
-> +++ b/drivers/clk/versatile/clk-icst.c
-> @@ -360,8 +360,8 @@ struct clk *icst_clk_setup(struct device *dev,
->  {
->  	struct clk *clk;
->  	struct clk_icst *icst;
-> -	struct clk_init_data init;
->  	struct icst_params *pclone;
-> +	struct clk_init_data init = {};
->  
->  	icst = kzalloc_obj(*icst);
->  	if (!icst)
-> diff --git a/drivers/clk/versatile/clk-sp810.c b/drivers/clk/versatile/clk-sp810.c
-> index b0e69686f7a9a93e..28e5c0cf1fda38e4 100644
-> --- a/drivers/clk/versatile/clk-sp810.c
-> +++ b/drivers/clk/versatile/clk-sp810.c
-> @@ -86,7 +86,7 @@ static void __init clk_sp810_of_setup(struct device_node *node)
->  	const char *parent_names[2];
->  	int num = ARRAY_SIZE(parent_names);
->  	char name[12];
-> -	struct clk_init_data init;
-> +	struct clk_init_data init = {};
->  	static int instance;
->  	int i;
->  	bool deprecated;
-> diff --git a/drivers/clk/versatile/clk-vexpress-osc.c b/drivers/clk/versatile/clk-vexpress-osc.c
-> index 9adbf5c33bd1cada..72e872ec6b7c9b47 100644
-> --- a/drivers/clk/versatile/clk-vexpress-osc.c
-> +++ b/drivers/clk/versatile/clk-vexpress-osc.c
-> @@ -64,7 +64,7 @@ static const struct clk_ops vexpress_osc_ops = {
->  
->  static int vexpress_osc_probe(struct platform_device *pdev)
->  {
-> -	struct clk_init_data init;
-> +	struct clk_init_data init = {};
->  	struct vexpress_osc *osc;
->  	u32 range[2];
->  	int ret;
-> -- 
-> 2.43.0
-> 
-
--- 
-====================
-| I would like to |
-| fix the world,  |
-| but they're not |
-| giving me the   |
- \ source code!  /
-  ---------------
-    ¯\_(ツ)_/¯
+Reviewed-by: Abel Vesa <abel.vesa@oss.qualcomm.com>
 
