@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDD4EC5DF87
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:59:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80F39C5DF7D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:59:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ctu31X6f0EComy3lo+7EiHqAYJzV2dZtlb7TtvBVyds=; b=C4X3IXCkdYCvBvbCsrt4U+TZwz
-	dls+iSn82GUBomOtur8a6dYpZZkUNJzVw1OvvvEREidIJ+fn/1IH1C3K/Nb9vBhDCim78OyYTDbgv
-	qCxgom6zbH7VttjX1v0Kzci1RHPTRjVKB+YsVqZyVcL43b6zyNj77YyoqDPPUOVAtdhW1G5wHgSlI
-	Sha8YNB2IYMm2TCz8DY9oqOF0DUH6YIH6Vxq0TJFEB9zZHG1Bzn9fAWuwUh6XCWsogtedfco0eeum
-	AqL6jcPY1nx+tjKKaI2WlXKhONP3QLImRODO2vJnLoIKEOxV2s706WHqzvYT8TsAyhJbeXd4p+bI7
-	5mCbrDJA==;
+	bh=0WkqiEdozonjkCcLhygEqb5N6B2vWx7grnAT9ReE/8Q=; b=aDeoQM8wHFoAH+xTh14n2xFdie
+	kiBdw3+bG2NXcaAiZXe2QUb083XxqFGL8Vpit9szoU9bovaayGJdUMAd6NnJz9DppTRd7pN0Y2Eqt
+	szrBkTH3TxRw+A2rAdHXTriJUEb3zY3SrOQ5D3HaO9NoZ5j9IGo6/NaRRndfMIvvA50flbZl3xTWZ
+	sxn3xPmvKUFfXo9UZ5l8NpMJvHXC9Ws8VpffD5Jn98fvf/jKUG5n6qb1A6883S+6mkggBNX2eZhH8
+	b4ouCb7esjuAHFREiFZJvLir0pKlsDN4190mFcPmnbOGalgSbL25HORZ5DMN8Q+GaWb2LAUau78jh
+	9u5YBpPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL62-0000000CrV3-2A1R;
-	Fri, 21 Aug 2026 08:59:30 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wxL6H-0000000CrY2-2bnN;
+	Fri, 21 Aug 2026 08:59:45 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL60-0000000CrUo-1alz;
-	Fri, 21 Aug 2026 08:59:28 +0000
+	id 1wxL6F-0000000CrXi-4BeM;
+	Fri, 21 Aug 2026 08:59:44 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 14E1C42E3D;
+	by tor.source.kernel.org (Postfix) with ESMTP id 5A7EB6136E;
+	Fri, 21 Aug 2026 08:59:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 679A61F00A3A;
 	Fri, 21 Aug 2026 08:59:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8CD521F000E9;
-	Fri, 21 Aug 2026 08:59:12 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 20/45] clk: mvebu: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:30 +0200
-Message-ID: <ff7a34f21c55fdd285b700600380b3cc7737bf38.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 21/45] clk: mxs: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:31 +0200
+Message-ID: <b6aed754c64c4709646cac9cafaf57825af67c6a.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -147,50 +147,72 @@ Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 Compile-tested only.
 ---
- drivers/clk/mvebu/ap-cpu-clk.c  | 2 +-
- drivers/clk/mvebu/clk-corediv.c | 2 +-
- drivers/clk/mvebu/clk-cpu.c     | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/clk/mxs/clk-div.c  | 2 +-
+ drivers/clk/mxs/clk-frac.c | 2 +-
+ drivers/clk/mxs/clk-pll.c  | 2 +-
+ drivers/clk/mxs/clk-ref.c  | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/clk/mvebu/ap-cpu-clk.c b/drivers/clk/mvebu/ap-cpu-clk.c
-index 1e44ace7d95197b2..721cad4218677163 100644
---- a/drivers/clk/mvebu/ap-cpu-clk.c
-+++ b/drivers/clk/mvebu/ap-cpu-clk.c
-@@ -286,7 +286,7 @@ static int ap_cpu_clock_probe(struct platform_device *pdev)
- 
- 	for_each_of_cpu_node(dn) {
- 		char *clk_name = "cpu-cluster-0";
--		struct clk_init_data init;
-+		struct clk_init_data init = {};
- 		const char *parent_name;
- 		struct clk *parent;
- 		u64 cpu;
-diff --git a/drivers/clk/mvebu/clk-corediv.c b/drivers/clk/mvebu/clk-corediv.c
-index ae48293b0c413fc0..e26ada3c29aeb0c1 100644
---- a/drivers/clk/mvebu/clk-corediv.c
-+++ b/drivers/clk/mvebu/clk-corediv.c
-@@ -253,7 +253,7 @@ static void __init
- mvebu_corediv_clk_init(struct device_node *node,
- 		       const struct clk_corediv_soc_desc *soc_desc)
+diff --git a/drivers/clk/mxs/clk-div.c b/drivers/clk/mxs/clk-div.c
+index fe7224162b3cc0fa..d4ee785c651190f0 100644
+--- a/drivers/clk/mxs/clk-div.c
++++ b/drivers/clk/mxs/clk-div.c
+@@ -70,9 +70,9 @@ static const struct clk_ops clk_div_ops = {
+ struct clk *mxs_clk_div(const char *name, const char *parent_name,
+ 			void __iomem *reg, u8 shift, u8 width, u8 busy)
  {
--	struct clk_init_data init;
 +	struct clk_init_data init = {};
- 	struct clk_corediv *corediv;
- 	struct clk **clks;
- 	void __iomem *base;
-diff --git a/drivers/clk/mvebu/clk-cpu.c b/drivers/clk/mvebu/clk-cpu.c
-index 24196e288fe29cae..a7646a25726b64a5 100644
---- a/drivers/clk/mvebu/clk-cpu.c
-+++ b/drivers/clk/mvebu/clk-cpu.c
-@@ -192,7 +192,7 @@ static void __init of_cpu_clk_setup(struct device_node *node)
- 		goto clks_out;
+ 	struct clk_div *div;
+ 	struct clk *clk;
+-	struct clk_init_data init;
  
- 	for_each_possible_cpu(cpu) {
--		struct clk_init_data init;
-+		struct clk_init_data init = {};
- 		struct clk *clk;
- 		char *clk_name = kzalloc(5, GFP_KERNEL);
+ 	div = kzalloc_obj(*div);
+ 	if (!div)
+diff --git a/drivers/clk/mxs/clk-frac.c b/drivers/clk/mxs/clk-frac.c
+index 52eb82fde322dcc4..e317710ab503a84a 100644
+--- a/drivers/clk/mxs/clk-frac.c
++++ b/drivers/clk/mxs/clk-frac.c
+@@ -112,9 +112,9 @@ static const struct clk_ops clk_frac_ops = {
+ struct clk *mxs_clk_frac(const char *name, const char *parent_name,
+ 			 void __iomem *reg, u8 shift, u8 width, u8 busy)
+ {
++	struct clk_init_data init = {};
+ 	struct clk_frac *frac;
+ 	struct clk *clk;
+-	struct clk_init_data init;
  
+ 	frac = kzalloc_obj(*frac);
+ 	if (!frac)
+diff --git a/drivers/clk/mxs/clk-pll.c b/drivers/clk/mxs/clk-pll.c
+index 581868e0693c6e5e..5acf48cddbb2859f 100644
+--- a/drivers/clk/mxs/clk-pll.c
++++ b/drivers/clk/mxs/clk-pll.c
+@@ -82,9 +82,9 @@ static const struct clk_ops clk_pll_ops = {
+ struct clk *mxs_clk_pll(const char *name, const char *parent_name,
+ 			void __iomem *base, u8 power, unsigned long rate)
+ {
++	struct clk_init_data init = {};
+ 	struct clk_pll *pll;
+ 	struct clk *clk;
+-	struct clk_init_data init;
+ 
+ 	pll = kzalloc_obj(*pll);
+ 	if (!pll)
+diff --git a/drivers/clk/mxs/clk-ref.c b/drivers/clk/mxs/clk-ref.c
+index 9667d4d3c2a885eb..66ea1c229014ed60 100644
+--- a/drivers/clk/mxs/clk-ref.c
++++ b/drivers/clk/mxs/clk-ref.c
+@@ -113,9 +113,9 @@ static const struct clk_ops clk_ref_ops = {
+ struct clk *mxs_clk_ref(const char *name, const char *parent_name,
+ 			void __iomem *reg, u8 idx)
+ {
++	struct clk_init_data init = {};
+ 	struct clk_ref *ref;
+ 	struct clk *clk;
+-	struct clk_init_data init;
+ 
+ 	ref = kzalloc_obj(*ref);
+ 	if (!ref)
 -- 
 2.43.0
 
