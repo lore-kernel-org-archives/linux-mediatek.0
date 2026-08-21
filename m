@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0A4CC5DF7D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:57:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D96BCC5DF7D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:58:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wS3ioiZuLxiQp6eu7NOe45+zg3ZZWzEZtKMoi4HTz/Y=; b=FoB26P9clbTLKA/jP7w/VAY0gb
-	X2E2lc+clRZQgJjIKB52ZZXEq5T0+ZtaDsJy4NZQ+DjkJXjZHOfNdfrTA89nb34ZPAfGjPqCHL330
-	p4RJC7TGCyFasrCfDBTD98rV5ZlTN1luXivCn+89KMjYamsjyK5XLtTohXJFSwtGCr0N4UgbfT4FH
-	LU85H7dZ4f3ujY9DFAsWtOx3IcgC0JjhwEdXKOONpYopvM9D+JFs/tvwHUsp+ukIhVc3CKWpjXtYD
-	C/Ipl59/b/NR8eMPC88uJBsKlH6R2quOpUj1jpPFEvDpOU6HTNEgBnnO4AVfSsixtGm+KAnBuI9yT
-	ZQsSgBeA==;
+	bh=4ahANutkKdTMCFb8GNirNf69UC5A1LB0mCSk6qbK/ko=; b=AoEdt17SOPZmM5nIQ9Z1qnjjTB
+	C/fEP3o1dv9OIfEY6xvmN12X4FC9ayzfMNppWYhtpDa30y3eFPP7GNJ84l+0aoxjII/enLiAUiXHg
+	YfhCbxH57U9W58OVu6MqSZyDa2fbQJcyvgYBP/bDAj6Div92MY444KmV+RT857D8gwBH1C9VRxdPj
+	JlJUd5DNh17FPZEImnwh2+4laf2bX81R9NzMn8I5PJYWf0js7A64udfaO6HoG0Z6yoVWisn8b4b8M
+	wFvN4wFqmRCf1QaMNRIzEdt/4zfGjx/BhW2qmDBObHvTl/NJ/aWCJ5JC8HqLI5oowhKxRoEqwu40k
+	mZH+AOlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL4X-0000000CrAl-3kVf;
-	Fri, 21 Aug 2026 08:57:57 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wxL4m-0000000CrDt-09VT;
+	Fri, 21 Aug 2026 08:58:12 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL4U-0000000CrAH-1EN3;
-	Fri, 21 Aug 2026 08:57:55 +0000
+	id 1wxL4j-0000000CrDU-3O8g;
+	Fri, 21 Aug 2026 08:58:09 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D367743B97;
-	Fri, 21 Aug 2026 08:57:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E73351F000E9;
-	Fri, 21 Aug 2026 08:57:38 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 3EB8360A7E;
+	Fri, 21 Aug 2026 08:58:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 32CD21F00A3A;
+	Fri, 21 Aug 2026 08:57:54 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 14/45] clk: ingenic: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:24 +0200
-Message-ID: <e3a8b277773f46eb200f3c4bac98ee380f3a24bc.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 15/45] clk: keystone: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:25 +0200
+Message-ID: <a431874631da9e5843af0a00dcca70002ffa2c0f.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -147,23 +147,50 @@ Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 Compile-tested only.
 ---
- drivers/clk/ingenic/cgu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/clk/keystone/gate.c       | 2 +-
+ drivers/clk/keystone/pll.c        | 2 +-
+ drivers/clk/keystone/syscon-clk.c | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/clk/ingenic/cgu.c b/drivers/clk/ingenic/cgu.c
-index 41e4c69131bd6ec7..ad223aa20e8db5a5 100644
---- a/drivers/clk/ingenic/cgu.c
-+++ b/drivers/clk/ingenic/cgu.c
-@@ -644,8 +644,8 @@ static const struct clk_ops ingenic_clk_ops = {
- static int ingenic_register_clock(struct ingenic_cgu *cgu, unsigned idx)
+diff --git a/drivers/clk/keystone/gate.c b/drivers/clk/keystone/gate.c
+index 03e854f10fd98afc..e83e3d4c7d67a1ac 100644
+--- a/drivers/clk/keystone/gate.c
++++ b/drivers/clk/keystone/gate.c
+@@ -164,7 +164,7 @@ static struct clk *clk_register_psc(struct device *dev,
+ 			struct clk_psc_data *psc_data,
+ 			spinlock_t *lock)
  {
- 	const struct ingenic_cgu_clk_info *clk_info = &cgu->clock_info[idx];
--	struct clk_init_data clk_init;
- 	struct ingenic_clk *ingenic_clk = NULL;
-+	struct clk_init_data clk_init = {};
- 	struct clk *clk, *parent;
- 	const char *parent_names[4];
- 	unsigned caps, i, num_possible;
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 	struct clk_psc *psc;
+ 	struct clk *clk;
+ 
+diff --git a/drivers/clk/keystone/pll.c b/drivers/clk/keystone/pll.c
+index ed197ee0cc88f8e5..020d5f4e9ed64119 100644
+--- a/drivers/clk/keystone/pll.c
++++ b/drivers/clk/keystone/pll.c
+@@ -122,7 +122,7 @@ static struct clk *clk_register_pll(struct device *dev,
+ 			const char *parent_name,
+ 			struct clk_pll_data *pll_data)
+ {
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 	struct clk_pll *pll;
+ 	struct clk *clk;
+ 
+diff --git a/drivers/clk/keystone/syscon-clk.c b/drivers/clk/keystone/syscon-clk.c
+index ecf180a7949c9345..338174be41215fe9 100644
+--- a/drivers/clk/keystone/syscon-clk.c
++++ b/drivers/clk/keystone/syscon-clk.c
+@@ -67,7 +67,7 @@ static struct clk_hw
+ 			     const struct ti_syscon_gate_clk_data *data)
+ {
+ 	struct ti_syscon_gate_clk_priv *priv;
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 	char *name = NULL;
+ 	int ret;
+ 
 -- 
 2.43.0
 
