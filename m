@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D89C3C5DF87
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:58:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B6C3C5DF87
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:59:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SPYd4l0JpAFCSmcq8utdTYRLWEgp4WYuyshpf7WR7EQ=; b=0NbhoR4YnUPwYGwkb2UD8IsE7f
-	yszJjEniNRQXo/1m75W/2G45Zjvqlz2oQssMMBtrJvw+4GYT+sGHRsO1x+ZdIMWeciElvC2KIxEj5
-	4AlVnf3kX4oaocf1nft0L5NudQgI0DLPWmo8cjTWmLXfCE5z3bPWq8C1MKH+dwAieu7c59WUf9wH7
-	u0QYtoeM5T9+ltLwUIDuTfKQPPSAlptkpKSe6h9T4brWqgD3mNJlUIau3I732TdtfhCI+Oj39D58O
-	Jk3qRgDeUVlRbDP0j8ABKQRMdMw4rpuC1hc6WSBHSWdc53OyUBVEGUwHfxH/1KTR4gqNhWW3teeMm
-	2kYw+kaA==;
+	bh=K1ZTHhEVFzuhoeGpGEwdJTaQoVDzROhgV0o3/kNPJm0=; b=XhwntgBZTAfnxGFyCmTQ0uLGx8
+	t7+dnIrbuxd6ztx1EFlRNgg97obRKo0E0fzuYhYLMuNQsaI1Ibdjgw8IIZkBVV6DJf/Y35kyvEMqV
+	9SwMEyqFn5A1LkuclvM7mszCyOSvpVAGYgV2VhP571he8FPcnxguiDIUUkLjdq4T8M1yvyB8b47g4
+	kqXL9L0cUI5jkahx8QMdIh+hh3nGwU+a3JDQGeZLaG2tQ1yylsa0J52V9GQHlV9EZbLl9a1VLOx49
+	u1yWCjEF7CEsIQYuE/PbX8F+rB92WYD7QfH1tImm3+BASY7IWXtDGPa/OOfMFNoebPWIMR2m3MTnF
+	uf4J34yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL5W-0000000CrMx-3tw5;
-	Fri, 21 Aug 2026 08:58:58 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wxL5m-0000000CrSN-1AYf;
+	Fri, 21 Aug 2026 08:59:14 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL5U-0000000CrMU-3a3W;
-	Fri, 21 Aug 2026 08:58:56 +0000
+	id 1wxL5k-0000000CrS1-20bt;
+	Fri, 21 Aug 2026 08:59:12 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 50FDB413DB;
+	by sea.source.kernel.org (Postfix) with ESMTP id 34DDB40752;
+	Fri, 21 Aug 2026 08:59:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A4C821F00A3E;
 	Fri, 21 Aug 2026 08:58:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25B3D1F00A3D;
-	Fri, 21 Aug 2026 08:58:40 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 18/45] clk: milbeaut: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:28 +0200
-Message-ID: <79693c173c0b74a8d176e51409b89cd14156179b.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 19/45] clk: mmp: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:29 +0200
+Message-ID: <c794be8edca2c373b12e925b101f7e298012e5d6.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -147,35 +147,103 @@ Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 Compile-tested only.
 ---
- drivers/clk/clk-milbeaut.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/clk/mmp/clk-apbc.c | 2 +-
+ drivers/clk/mmp/clk-apmu.c | 2 +-
+ drivers/clk/mmp/clk-frac.c | 2 +-
+ drivers/clk/mmp/clk-gate.c | 2 +-
+ drivers/clk/mmp/clk-mix.c  | 2 +-
+ drivers/clk/mmp/clk-pll.c  | 2 +-
+ 6 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/clk/clk-milbeaut.c b/drivers/clk/clk-milbeaut.c
-index 4265bc442dfd2988..485540b9552820b1 100644
---- a/drivers/clk/clk-milbeaut.c
-+++ b/drivers/clk/clk-milbeaut.c
-@@ -328,9 +328,9 @@ static struct clk_hw *m10v_clk_hw_register_mux(struct device *dev,
- 			u8 shift, u32 mask, u8 clk_mux_flags, u32 *table,
- 			spinlock_t *lock)
+diff --git a/drivers/clk/mmp/clk-apbc.c b/drivers/clk/mmp/clk-apbc.c
+index 84532ce8fd09431c..338ccd8fe99ca644 100644
+--- a/drivers/clk/mmp/clk-apbc.c
++++ b/drivers/clk/mmp/clk-apbc.c
+@@ -120,9 +120,9 @@ struct clk *mmp_clk_register_apbc(const char *name, const char *parent_name,
+ 		void __iomem *base, unsigned int delay,
+ 		unsigned int apbc_flags, spinlock_t *lock)
  {
 +	struct clk_init_data init = {};
- 	struct clk_mux *mux;
- 	struct clk_hw *hw;
+ 	struct clk_apbc *apbc;
+ 	struct clk *clk;
 -	struct clk_init_data init;
- 	int ret;
  
- 	mux = kzalloc_obj(*mux);
-@@ -459,9 +459,9 @@ static struct clk_hw *m10v_clk_hw_register_divider(struct device *dev,
- 		u8 clk_divider_flags, const struct clk_div_table *table,
- 		spinlock_t *lock, void __iomem *write_valid_reg)
+ 	apbc = kzalloc_obj(*apbc);
+ 	if (!apbc)
+diff --git a/drivers/clk/mmp/clk-apmu.c b/drivers/clk/mmp/clk-apmu.c
+index 30bbac1deca14289..887854d8f5b1d645 100644
+--- a/drivers/clk/mmp/clk-apmu.c
++++ b/drivers/clk/mmp/clk-apmu.c
+@@ -65,9 +65,9 @@ static const struct clk_ops clk_apmu_ops = {
+ struct clk *mmp_clk_register_apmu(const char *name, const char *parent_name,
+ 		void __iomem *base, u32 enable_mask, spinlock_t *lock)
  {
 +	struct clk_init_data init = {};
- 	struct m10v_clk_divider *div;
- 	struct clk_hw *hw;
+ 	struct clk_apmu *apmu;
+ 	struct clk *clk;
 -	struct clk_init_data init;
- 	int ret;
  
- 	div = kzalloc_obj(*div);
+ 	apmu = kzalloc_obj(*apmu);
+ 	if (!apmu)
+diff --git a/drivers/clk/mmp/clk-frac.c b/drivers/clk/mmp/clk-frac.c
+index 13bfc4c99f3ae5b9..5774354563aa672d 100644
+--- a/drivers/clk/mmp/clk-frac.c
++++ b/drivers/clk/mmp/clk-frac.c
+@@ -171,8 +171,8 @@ struct clk *mmp_clk_register_factor(const char *name, const char *parent_name,
+ 		struct mmp_clk_factor_masks *masks,
+ 		struct u32_fract *ftbl, unsigned int ftbl_cnt, spinlock_t *lock)
+ {
++	struct clk_init_data init = {};
+ 	struct mmp_clk_factor *factor;
+-	struct clk_init_data init;
+ 	struct clk *clk;
+ 
+ 	if (!masks) {
+diff --git a/drivers/clk/mmp/clk-gate.c b/drivers/clk/mmp/clk-gate.c
+index cc2f841ae9d96316..e8dad4ed0125ef7a 100644
+--- a/drivers/clk/mmp/clk-gate.c
++++ b/drivers/clk/mmp/clk-gate.c
+@@ -94,9 +94,9 @@ struct clk *mmp_clk_register_gate(struct device *dev, const char *name,
+ 		void __iomem *reg, u32 mask, u32 val_enable, u32 val_disable,
+ 		unsigned int gate_flags, spinlock_t *lock)
+ {
++	struct clk_init_data init = {};
+ 	struct mmp_clk_gate *gate;
+ 	struct clk *clk;
+-	struct clk_init_data init;
+ 
+ 	/* allocate the gate */
+ 	gate = kzalloc_obj(*gate);
+diff --git a/drivers/clk/mmp/clk-mix.c b/drivers/clk/mmp/clk-mix.c
+index b1c9899c71afba0c..2f3d1cb6f836c6c6 100644
+--- a/drivers/clk/mmp/clk-mix.c
++++ b/drivers/clk/mmp/clk-mix.c
+@@ -444,9 +444,9 @@ struct clk *mmp_clk_register_mix(struct device *dev,
+ 					struct mmp_clk_mix_config *config,
+ 					spinlock_t *lock)
+ {
++	struct clk_init_data init = {};
+ 	struct mmp_clk_mix *mix;
+ 	struct clk *clk;
+-	struct clk_init_data init;
+ 
+ 	mix = kzalloc_obj(*mix);
+ 	if (!mix)
+diff --git a/drivers/clk/mmp/clk-pll.c b/drivers/clk/mmp/clk-pll.c
+index 430f5e3c8540e863..e0ea29b5bb66cf98 100644
+--- a/drivers/clk/mmp/clk-pll.c
++++ b/drivers/clk/mmp/clk-pll.c
+@@ -104,9 +104,9 @@ static struct clk *mmp_clk_register_pll(char *name,
+ 			unsigned long input_rate,
+ 			void __iomem *postdiv_reg, u8 postdiv_shift)
+ {
++	struct clk_init_data init = {};
+ 	struct mmp_clk_pll *pll;
+ 	struct clk *clk;
+-	struct clk_init_data init;
+ 
+ 	pll = kzalloc_obj(*pll);
+ 	if (!pll)
 -- 
 2.43.0
 
