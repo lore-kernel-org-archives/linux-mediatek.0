@@ -4,121 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35945C5DF8E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 11:53:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE082C5DF7D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 12:28:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Fy7q0LDk0mFttSEZPyj5LdprEXxuVGgJAGebjPEw9Zs=; b=n5Nyoy/+zMbm7RE+cNlKqY54wf
-	Ik2NvF2B9SiMPoUguYqy7UcnUH4fT2u4GtVYfJhZlkZXkjF0p4Oj06G2m96sOXwkjxC9Dvu2ffoES
-	UdZSq0bXtz8RlqFyOyTMKAC0w9cSHBnZkxAOIlkVcpHvMUIEw4VpOWkcUK2NWLfG3WMkmWitXxcE9
-	k9sEc0lsbvEd7NOv9ZOeDhTOCQ2jYQr9cOidUAylIloRycdbFBqHK1UatLzIO3PzyErgv3vV6AB2P
-	/zskYcgWLMnb1T71m1tFsji0melI2SzFhx/RhXApVHv4Ofy6A42aUjI5vTPIP8lHh/O5DI1Yao9TM
-	CTAEhOnQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=xJG5qITotgQ4r/8yEzCbVy01AHxnXQ29q5xOCfnqmk4=; b=tsTVcx4+xEN+4i/c0HEXRE099M
+	M8YWJ+CJq+Glot4nCvpKN+x+jXoAVz47DBi2VwZfxWpTjFt7YHaV9E5dS5tYS7f9U3d3G158R7frr
+	fKXwio5ip/jT0czIVC2LL5tIQv43cE+TNkGN/GtiDdjPymDi8iJjiAfWn6t5x/sAtJt6tndnDrdDZ
+	s9NOLmKizMufpKT2l/++qytdgLvuGvsX9SL0+CwrJUGl3TqbKLEfykuut5/aU3nmV2MiU0yc/+UK6
+	MHpX9ta+Z2XEfIib0HITs5De46CAAVdpjAPd6Wa8b8wkSM/U/zW+6tHBtorYm+c0W7HV3Usaftk1a
+	LGnBE9Ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxNo1-0000000DFCn-0XHR;
-	Fri, 21 Aug 2026 11:53:05 +0000
-Received: from mleia.com ([178.79.152.223] helo=mail.mleia.com)
+	id 1wxOMj-0000000DIuE-17Qp;
+	Fri, 21 Aug 2026 12:28:57 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxNnx-0000000DFBO-20rB;
-	Fri, 21 Aug 2026 11:53:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mleia.com; s=mail;
-	t=1787313174; bh=l8B8jrUwtIpdpun0A6Qe16xv/NvpR7D53DSTYbiZ4f0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oPKzPzeTto3Rtpjceb9FC+Dvuza3fomwF5mQYCAp+YKs0B/tPC1MS8THVmmrxs6ou
-	 zhiaamwhVaKDU7jU5WC1gTjRBzRQhbcACY4ctkYJr6WQjgcTThdl7GQCUPiZ7UqH7g
-	 csnjYmgX9WYMTrZ29W734dsp9g33Y9EvhzWyUQ1uIRDQObGY8D1xbj3hedRPFAHoQF
-	 U0n9q2y/XGnsZ38tLRDkPYoQO7zr7GLXOdk7I0zy5OppGqqM0BG/JRKMVW1YmJtoNp
-	 P+8saJSIi5glthGejj0fJxKtW1i/9gb2SNwscq7IITpJmbx1bAaAsSZSU3WAHWldb2
-	 JTVqZ/wxxf+qg==
-Received: from mail.mleia.com (localhost [127.0.0.1])
-	by mail.mleia.com (Postfix) with ESMTP id AC49D81EF9;
-	Fri, 21 Aug 2026 11:52:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mleia.com; s=mail;
-	t=1787313174; bh=l8B8jrUwtIpdpun0A6Qe16xv/NvpR7D53DSTYbiZ4f0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oPKzPzeTto3Rtpjceb9FC+Dvuza3fomwF5mQYCAp+YKs0B/tPC1MS8THVmmrxs6ou
-	 zhiaamwhVaKDU7jU5WC1gTjRBzRQhbcACY4ctkYJr6WQjgcTThdl7GQCUPiZ7UqH7g
-	 csnjYmgX9WYMTrZ29W734dsp9g33Y9EvhzWyUQ1uIRDQObGY8D1xbj3hedRPFAHoQF
-	 U0n9q2y/XGnsZ38tLRDkPYoQO7zr7GLXOdk7I0zy5OppGqqM0BG/JRKMVW1YmJtoNp
-	 P+8saJSIi5glthGejj0fJxKtW1i/9gb2SNwscq7IITpJmbx1bAaAsSZSU3WAHWldb2
-	 JTVqZ/wxxf+qg==
-Message-ID: <9def4b16-50e2-4fe0-918f-d680cb9f075c@mleia.com>
-Date: Fri, 21 Aug 2026 14:52:49 +0300
+	id 1wxOMh-0000000DIsO-0WHs
+	for linux-mediatek@lists.infradead.org;
+	Fri, 21 Aug 2026 12:28:56 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-2cf27856f9cso9377775ad.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 21 Aug 2026 05:28:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1787315334; x=1787920134; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=xJG5qITotgQ4r/8yEzCbVy01AHxnXQ29q5xOCfnqmk4=;
+        b=R0Y67kCuiKWl8HqKhfOaGnX04Hfiltfj9KDYy8O5rGkD1z1NQ7yX/g/Ev2S35ShAlg
+         326PpN7Vf8Z5Y6YC2OVsJK6m8DdtR4szi3O858TJAJUL12Im3K8m+wh4CHM6ArQEkOsm
+         AYtrS5vOcMnZJMeeN9TvIt6qR9DtEk9M8akNmnGIOb7sWUibZ1aBFiF6f9c1WMIjwgvi
+         j6Qj1SXJ336Ox8U3YlNEDZ21yNFGel6INkhD8MKU4NA2NvE0qA3blFkf1UvlJsu+VZy/
+         d4xlWWLF/cdAYo7N9vTnfq1iPuP1uksIxrWFMrVs48Megke6sMznagjVSmjDNjR1P2mh
+         4sEw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787315334; x=1787920134;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=xJG5qITotgQ4r/8yEzCbVy01AHxnXQ29q5xOCfnqmk4=;
+        b=HFCHfrSQAW36si10RotzXJZpauRTSbYHrCy4/JrzsZXDhJCQM11gNu3/y++FwT60Fa
+         feJM/eSJOdKk4sqPvwS3l2DZrJZot7u1QOpmnxsLbOcVEazY4DDwlMcwov3FItxv7Dyn
+         hfthclZbwvr3oBtz3b5PdSMm8RaaQ4ZP54ZSmZMLR4wDhwrqJn0R6LxAJ5LnR13oaaRO
+         9DYczi41g/igV4XeAZSo+ZqUbmhiBvK59VRmRWt52GJ4XNFKfhmDWCAsV5Bmxv83xZLj
+         VyBl5lPPmwm+qXc2l9zKb6UVsYt1ur5WvQRJhKfzmornTSItJPnghOFN4xNupy8dkZoH
+         33kw==
+X-Forwarded-Encrypted: i=1; AHgh+RqPDlLw39Cqu/wT02hzuOkyVpphxwUA7aCL4HoHmHI7lcTMu1zCyaY8LTB5td0YvGqfb5o4nyxfQmJwFULGGQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++mo7trbhJsKUx56+NGmH8Y2MRj6FANgsiv6ESy/dQA5QNvcIyyV
+	ouEiPmwBGicrsHwm1r/8pjC3dLisa3qdBaN1a7OxJjhx/hgSY4BnX4iu
+X-Gm-Gg: AR+sD10YLE/RXcjkA3rH16ZpNj8Gsg/mBzNgsoTsbQMBANTEtZSRjS2LRTkofwUDLuC
+	9A0P2qObOtTUi/UHEUln8WIFi33m00mVQ9NSZoYX+Wl8Ott0WL6Ig9HetgRyuUpxQSH3uJnGVrD
+	Lapn+GyQqEJAB7rjjWDxDuvF8K+EA+weQ9ZWm1FJfEQgGUmiU0WKmTFIyfnAZx39p4kMKpKLfLB
+	jNbOnI1UVEsD2APoZ2VcZQidxmTEh/dgv2rEEzCzHH9VZsrrGqpwhNW84eV0mA20Bx9rPYAW49I
+	YKJnSgYgZBoWdbH+1mSjH/EbnBxeJFg/6Y4z4VEI3j4SNAbwoXorx6fK/9eOmvI6E9kcV2vmNxw
+	RRcmMV9QqCDOFhvqwVBD+NpRc7OZ/Rnm8gPL4BCcrXJp36LpKxAfIL5wVe11/cAmSqQAsptm7WJ
+	fEvx46qD5+ufcCZWvh+wU5XztKOY9bQPh1nvDkTy6kXVnZ+3Fc1cqYZLgKKQ2DhjqjwfcDESJV1
+	cDsu8XnNzOmjoKmYK7cUQg7Wm8p4ulDpE0ZIBSPFsmvRyjELdEAFLG2EtuRJFckL3+6zQZ1nG2z
+	46Wx
+X-Received: by 2002:a17:903:b07:b0:2cf:afe8:b722 with SMTP id d9443c01a7336-2d64afe960dmr114112305ad.11.1787315333606;
+        Fri, 21 Aug 2026 05:28:53 -0700 (PDT)
+Received: from phuc-desktop.. ([183.91.15.56])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2d62d554450sm18134515ad.2.2026.08.21.05.28.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Aug 2026 05:28:53 -0700 (PDT)
+From: phucduc.bui@gmail.com
+To: Mark Brown <broonie@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Cezary Rojewski <cezary.rojewski@intel.com>,
+	linux-sound@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	bui duc phuc <phucduc.bui@gmail.com>
+Subject: [PATCH v3 0/3] ASoC: mediatek: mt6797: Fix error handling
+Date: Fri, 21 Aug 2026 19:28:37 +0700
+Message-ID: <20260821122840.41266-1-phucduc.bui@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 24/45] clk: nxp: Make sure clk_init_data is fully
- initialized
-To: Geert Uytterhoeven <geert+renesas@glider.be>,
- Ryan Chen <ryan_chen@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
- Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>,
- Jerome Brunet <jbrunet+clk@baylibre.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Billy Tsai <billy_tsai@aspeedtech.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, Ray Jui <rjui@broadcom.com>,
- Scott Branden <sbranden@broadcom.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>,
- Taichi Sugaya <sugaya.taichi@socionext.com>,
- Takao Orito <orito.takao@socionext.com>, Linus Walleij <linusw@kernel.org>,
- Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
- Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>,
- Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>,
- Sudeep Holla <sudeep.holla@kernel.org>,
- Cristian Marussi <cristian.marussi@arm.com>,
- David Lechner <david@lechnology.com>, Abel Vesa <abelvesa@kernel.org>,
- Peng Fan <peng.fan@nxp.com>, Frank Li <Frank.Li@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>,
- Santosh Shilimkar <ssantosh@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
- Gregory Clement <gregory.clement@bootlin.com>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzk@kernel.org>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>,
- Peter Griffin <peter.griffin@linaro.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Dinh Nguyen <dinguyen@kernel.org>,
- Viresh Kumar <vireshk@kernel.org>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- =?UTF-8?Q?Emilio_L=C3=B3pez?= <emilio@elopez.com.ar>,
- Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Prashant Gaikwad
- <pgaikwad@nvidia.com>, Thierry Reding <thierry.reding@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>, Ulf Hansson <ulfh@kernel.org>,
- Liviu Dudau <liviu.dudau@arm.com>, Lorenzo Pieralisi
- <lpieralisi@kernel.org>, Michal Simek <michal.simek@amd.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-clk@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- openbmc@lists.ozlabs.org, arm-scmi@vger.kernel.org, imx@lists.linux.dev,
- linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- soc@lists.linux.dev, linux-stm32@st-md-mailman.stormreply.com,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <cover.1787239813.git.geert+renesas@glider.be>
- <fa00846b4f9e3b91d3cbcb21cd27be7697b3994e.1787239813.git.geert+renesas@glider.be>
-From: Vladimir Zapolskiy <vz@mleia.com>
-In-Reply-To: <fa00846b4f9e3b91d3cbcb21cd27be7697b3994e.1787239813.git.geert+renesas@glider.be>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-49551924 
-X-CRM114-CacheID: sfid-20260821_115254_755594_54D68DD2 
-X-CRM114-Status: GOOD (  17.51  )
-ln: failed to access 'reaver_cache/texts/20260821_115254_755594_54D68DD2': No such file or directory
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260821_115254_755594_54D68DD2 
-X-CRM114-Status: GOOD (  19.25  )
+X-CRM114-CacheID: sfid-20260821_052855_239608_3EEB5124 
+X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,42 +107,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8/21/26 11:53, Geert Uytterhoeven wrote:
-> The clk_init_data structure contains several mutually-exclusive members
-> for different methods to specify the possible parents of a clock,
-> prompting drivers to initialize only the members they need.  However,
-> not initializing all members may cause subtle issues, which are only
-> exposed when CONFIG_INIT_STACK_ALL_PATTERN or CONFIG_INIT_STACK_NONE is
-> enabled.
-> 
-> Make sure all members are fully initialized, to avoid such bugs, and to
-> prevent future breakage when converting drivers to a different method
-> for specifying the parents.
-> 
-> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> ---
-> Compile-tested only.
-> ---
->   drivers/clk/nxp/clk-lpc18xx-creg.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/clk/nxp/clk-lpc18xx-creg.c b/drivers/clk/nxp/clk-lpc18xx-creg.c
-> index 3d3982e9c661a5c2..de3c214a80fcf903 100644
-> --- a/drivers/clk/nxp/clk-lpc18xx-creg.c
-> +++ b/drivers/clk/nxp/clk-lpc18xx-creg.c
-> @@ -138,7 +138,7 @@ static struct clk *clk_register_creg_clk(struct device *dev,
->   					 const char **parent_name,
->   					 struct regmap *syscon)
->   {
-> -	struct clk_init_data init;
-> +	struct clk_init_data init = {};
->   
->   	init.ops = creg_clk->ops;
->   	init.name = creg_clk->name;
+From: bui duc phuc <phucduc.bui@gmail.com>
 
-Reviewed-by: Vladimir Zapolskiy <vz@mleia.com>
+Hi all,
+
+This series fixes and cleans up error handling in the MT6797 ASoC driver.
+
+Compile tested only.
+
+Changes in v2:
+ - Update the subject prefix from ASoC: mt6797: to ASoC: mediatek: mt6797:.
+
+Changes in v3:
+ - Add a cover letter.
+ - Add Fixes tags.
+ - Add Reviewed-by tags.
+
+ 
+Thanks,
+Phuc
+
+bui duc phuc (3):
+  ASoC: mediatek: mt6797: fix wrong unwind order and error code in
+    enable_clock
+  ASoC: mediatek: mt6797: Use dev_err_probe() for error handling
+  ASoC: mediatek: mt6797: Drop redundant probe error messages
+
+ sound/soc/mediatek/mt6797/mt6797-afe-clk.c | 23 +++++++++-------------
+ sound/soc/mediatek/mt6797/mt6797-afe-pcm.c |  8 ++------
+ 2 files changed, 11 insertions(+), 20 deletions(-)
 
 -- 
-Best wishes,
-Vladimir
+2.43.0
+
 
