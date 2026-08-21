@@ -4,120 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D545C5DF87
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:05:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43AE3C5DF7D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 10:40:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p8811fIOUMeDJPL4kxhAUd5eRiyVv42HJh+DBrKnPwQ=; b=MGfLXvx3OiJKyUkD2IFzlUI0h2
-	/BsF2iTPTHdp58bxG7Z3tRWSLC6dA2fCJF+h1afHElHNGYukGZSza5Sgh3rarU8STAupUqyK1ztqm
-	mZuoyXgnH38baQTiFTd3kwSez7JsmsujWe3Tw500zkm21ToOuiTYgSSLxjgFiMrUkoN2JrXA1tX1Q
-	hTcamreOPlDLV8OgBQpA+Y7x6LUiSQKzYWDf6Uoo5u+1XdgXF1oj2kVEf/5kvTJiWU8RBBDLbxSZf
-	haWAZ95xi8yL0axlu9LUkTFyM1dzYjj5ISoHTO1On1gEKMb0ogcjyhU4HlsMSkcBXHuxrKH4mE3gV
-	Cj+5IRjQ==;
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:From:To:Date:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=q1cswTBQwlfyKLjgpL/0p/xOuHzHelUpb/0O/Tv/eGo=; b=Q/TaU0TDOGQ/ZjuLGhddMwdAK9
+	UiegSQoZd6SQOQaDVLxM+p7Xwr5DqleJ1FgT4ztSuZEpL+5KXaXbHUI5M0QLcC8tUgIxFOTEq+iJ6
+	YYFKSr4AIlfnYwBGH3BDxy/1xFSVRsYaIx136+PHzfTkAu/c1/vFs4wvzpoKlwJgPRgKV4l9sfRJI
+	21OyCCiTWgNHiVmwFBcFMWkzHRVtLofHNm/5kD7RTHwYuiyQ595Z6dURg2D75dXguQ+IGsDyNE7Az
+	4uYk23lFqKIbkyM2SvGJVd72oDyp+LSGJG1NNou8FSLGPWM6ON2WDRI8puhxMB/8/mYXdHxSRyTA9
+	2KbgBOlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxLC7-0000000CtEW-11wf;
-	Fri, 21 Aug 2026 09:05:47 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wxMfo-0000000D6cl-244N;
+	Fri, 21 Aug 2026 10:40:32 +0000
+Received: from mail-4325.protonmail.ch ([185.70.43.25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxLC5-0000000CtEB-3NVM;
-	Fri, 21 Aug 2026 09:05:45 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3C88D618FB;
-	Fri, 21 Aug 2026 09:05:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5598F1F000E9;
-	Fri, 21 Aug 2026 09:05:30 +0000 (UTC)
-From: Geert Uytterhoeven <geert+renesas@glider.be>
-To: Ryan Chen <ryan_chen@aspeedtech.com>,
-	Joel Stanley <joel@jms.id.au>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Brian Masney <bmasney+clk@redhat.com>,
-	Jerome Brunet <jbrunet+clk@baylibre.com>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Billy Tsai <billy_tsai@aspeedtech.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Ray Jui <rjui@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Taichi Sugaya <sugaya.taichi@socionext.com>,
-	Takao Orito <orito.takao@socionext.com>,
-	Linus Walleij <linusw@kernel.org>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Patrick Venture <venture@google.com>,
-	Nancy Yuen <yuenn@google.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Sudeep Holla <sudeep.holla@kernel.org>,
-	Cristian Marussi <cristian.marussi@arm.com>,
-	David Lechner <david@lechnology.com>,
-	Abel Vesa <abelvesa@kernel.org>,
-	Peng Fan <peng.fan@nxp.com>,
-	Frank Li <Frank.Li@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Santosh Shilimkar <ssantosh@kernel.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Vladimir Zapolskiy <vz@mleia.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Peter Griffin <peter.griffin@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Dinh Nguyen <dinguyen@kernel.org>,
-	Viresh Kumar <vireshk@kernel.org>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	=?UTF-8?q?Emilio=20L=C3=B3pez?= <emilio@elopez.com.ar>,
-	Chen-Yu Tsai <wens@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Prashant Gaikwad <pgaikwad@nvidia.com>,
-	Thierry Reding <thierry.reding@kernel.org>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Ulf Hansson <ulfh@kernel.org>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Michal Simek <michal.simek@amd.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-clk@vger.kernel.org,
-	linux-aspeed@lists.ozlabs.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	openbmc@lists.ozlabs.org,
-	arm-scmi@vger.kernel.org,
-	imx@lists.linux.dev,
-	linux-mips@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	soc@lists.linux.dev,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 45/45] clk: zynqmp: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:55 +0200
-Message-ID: <ca5b863571e9e21d123ab95cd5667b19f0d14d96.1787239813.git.geert+renesas@glider.be>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
-References: <cover.1787239813.git.geert+renesas@glider.be>
+	id 1wxMfi-0000000D6bj-2xcc;
+	Fri, 21 Aug 2026 10:40:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1787308823; x=1787568023;
+	bh=q1cswTBQwlfyKLjgpL/0p/xOuHzHelUpb/0O/Tv/eGo=;
+	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=a23QH3JPSszQ13w6n0oiuoHgBRAQHbon7SzTKxP9V/uxWtwJU/wZ7TrAOCo3g43gT
+	 Y7v7yp4lJ6HqVCcmcHo4ML2mZSQLxH6IZ5VaxKAH6BZFTGNVaAZuPu75EJv5I2zhGD
+	 o34NUq1SNPSPJzkfaJ3PxRm/7XAQjRSW9OI4BRDHxTqk0QQ1hgzweu/X/cQWjCWO4K
+	 0brCshKKN6jO4/4azjTk733D7cdtlY5DugvAc2iVNx74nsg3gNd60mS685t3l7lzil
+	 tmQuOcm4gPj7qHoxj+zmBNyNgE7CB1eOi4DFlHth3JjEtn/ke29zbR+O7W3R00rhx4
+	 U/PvaoMiZ/DBg==
+Date: Fri, 21 Aug 2026 10:40:18 +0000
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+From: Ryan Leung <untilscour@protonmail.com>
+Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ryan Leung <untilscour@protonmail.com>
+Subject: [PATCH] wifi: mt76: fix unlocked wcid check in mt76_tx_status_skb_add()
+Message-ID: <20260821-mt76-stale-wcid-race-v1-1-d6de3f842506@protonmail.com>
+Feedback-ID: 184418679:user:proton
+X-Pm-Message-ID: 020a7b2af528b10c02e7f3b790153a0ef2cff700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260821_034026_898593_37EA7E2B 
+X-CRM114-Status: UNSURE (   8.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,89 +66,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The clk_init_data structure contains several mutually-exclusive members
-for different methods to specify the possible parents of a clock,
-prompting drivers to initialize only the members they need.  However,
-not initializing all members may cause subtle issues, which are only
-exposed when CONFIG_INIT_STACK_ALL_PATTERN or CONFIG_INIT_STACK_NONE is
-enabled.
+mt76_tx_status_skb_add() checks rcu_access_pointer(dev->wcid[wcid->idx])
+before taking dev->status_lock, then allocates a pktid afterwards. A
+concurrent mt76_wcid_cleanup() can run between the check and the lock,
+letting a stale wcid be re-added to dev->wcid_list after teardown.
 
-Make sure all members are fully initialized, to avoid such bugs, and to
-prevent future breakage when converting drivers to a different method
-for specifying the parents.
+Move the check inside the status_lock section, so that it is atomic
+with the idr_alloc() and wcid_list update.
 
-Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+Fixes: fcfe1b5e162b ("mt76: fix tx status related use-after-free race on st=
+ation removal")
+Signed-off-by: Ryan Leung <untilscour@protonmail.com>
 ---
-Compile-tested only.
----
- drivers/clk/zynqmp/clk-gate-zynqmp.c | 2 +-
- drivers/clk/zynqmp/clk-mux-zynqmp.c  | 2 +-
- drivers/clk/zynqmp/divider.c         | 2 +-
- drivers/clk/zynqmp/pll.c             | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
+ drivers/net/wireless/mediatek/mt76/tx.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clk/zynqmp/clk-gate-zynqmp.c b/drivers/clk/zynqmp/clk-gate-zynqmp.c
-index db10eb69f3fe01a5..1a462af7b8ea3efa 100644
---- a/drivers/clk/zynqmp/clk-gate-zynqmp.c
-+++ b/drivers/clk/zynqmp/clk-gate-zynqmp.c
-@@ -109,10 +109,10 @@ struct clk_hw *zynqmp_clk_register_gate(const char *name, u32 clk_id,
- 					u8 num_parents,
- 					const struct clock_topology *nodes)
- {
-+	struct clk_init_data init = {};
- 	struct zynqmp_clk_gate *gate;
- 	struct clk_hw *hw;
- 	int ret;
--	struct clk_init_data init;
- 
- 	/* allocate the gate */
- 	gate = kzalloc_obj(*gate);
-diff --git a/drivers/clk/zynqmp/clk-mux-zynqmp.c b/drivers/clk/zynqmp/clk-mux-zynqmp.c
-index e37bd3516974c1ee..79509e387b51fe40 100644
---- a/drivers/clk/zynqmp/clk-mux-zynqmp.c
-+++ b/drivers/clk/zynqmp/clk-mux-zynqmp.c
-@@ -133,9 +133,9 @@ struct clk_hw *zynqmp_clk_register_mux(const char *name, u32 clk_id,
- 				       u8 num_parents,
- 				       const struct clock_topology *nodes)
- {
-+	struct clk_init_data init = {};
- 	struct zynqmp_clk_mux *mux;
- 	struct clk_hw *hw;
--	struct clk_init_data init;
- 	int ret;
- 
- 	mux = kzalloc_obj(*mux);
-diff --git a/drivers/clk/zynqmp/divider.c b/drivers/clk/zynqmp/divider.c
-index 4075f6ecf076a8e6..3eabd1cf211ddba3 100644
---- a/drivers/clk/zynqmp/divider.c
-+++ b/drivers/clk/zynqmp/divider.c
-@@ -278,9 +278,9 @@ struct clk_hw *zynqmp_clk_register_divider(const char *name,
- 					   u8 num_parents,
- 					   const struct clock_topology *nodes)
- {
-+	struct clk_init_data init = {};
- 	struct zynqmp_clk_divider *div;
- 	struct clk_hw *hw;
--	struct clk_init_data init;
- 	int ret;
- 
- 	/* allocate the divider */
-diff --git a/drivers/clk/zynqmp/pll.c b/drivers/clk/zynqmp/pll.c
-index 6463787cf57b6018..6158386ca743d1f8 100644
---- a/drivers/clk/zynqmp/pll.c
-+++ b/drivers/clk/zynqmp/pll.c
-@@ -313,9 +313,9 @@ struct clk_hw *zynqmp_clk_register_pll(const char *name, u32 clk_id,
- 				       u8 num_parents,
- 				       const struct clock_topology *nodes)
- {
-+	struct clk_init_data init = {};
- 	struct zynqmp_pll *pll;
- 	struct clk_hw *hw;
--	struct clk_init_data init;
- 	int ret;
- 
- 	init.name = name;
--- 
-2.43.0
+diff --git a/drivers/net/wireless/mediatek/mt76/tx.c b/drivers/net/wireless=
+/mediatek/mt76/tx.c
+index 3707ee19e4ae..fa635fe84ec2 100644
+--- a/drivers/net/wireless/mediatek/mt76/tx.c
++++ b/drivers/net/wireless/mediatek/mt76/tx.c
+@@ -129,7 +129,7 @@ mt76_tx_status_skb_add(struct mt76_dev *dev, struct mt7=
+6_wcid *wcid,
+=20
+ =09memset(cb, 0, sizeof(*cb));
+=20
+-=09if (!wcid || !rcu_access_pointer(dev->wcid[wcid->idx]))
++=09if (!wcid)
+ =09=09return MT_PACKET_ID_NO_ACK;
+=20
+ =09if (info->flags & IEEE80211_TX_CTL_NO_ACK)
+@@ -147,6 +147,11 @@ mt76_tx_status_skb_add(struct mt76_dev *dev, struct mt=
+76_wcid *wcid,
+=20
+ =09spin_lock_bh(&dev->status_lock);
+=20
++=09if (!rcu_access_pointer(dev->wcid[wcid->idx])) {
++=09=09pid =3D MT_PACKET_ID_NO_ACK;
++=09=09goto out;
++=09}
++
+ =09pid =3D idr_alloc(&wcid->pktid, skb, MT_PACKET_ID_FIRST,
+ =09=09=09MT_PACKET_ID_MASK, GFP_ATOMIC);
+ =09if (pid < 0) {
+
+---
+base-commit: ca800a9302764c445de0da0e84d2252400a770ee
+change-id: 20260821-mt76-stale-wcid-race-4d92f898437b
+
+Best regards,
+-- =20
+Ryan Leung <untilscour@protonmail.com>
+
 
 
