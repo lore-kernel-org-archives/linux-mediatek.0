@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95653C5DF87
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:04:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C15BC5DF7D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:04:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HHw2phGMpilBrCUaA9JhcC9At+jiJ9lpbnVuwcbaeEg=; b=bZULmz61be/+yABYRTW1c09DYp
-	KxFBXbocYdedo+ARknR2g+yB1RbkWLaYp8WhotAihNFy1xLNOtN6mHy0vmnBfJMW7txYd9q/r9Cay
-	nZbYppX6GeYzQhN544cdUPLjfQj4mNxeuiwAIztANIIF4QPRlbvMJAxUiQBsPuYHVRdVkHvLPd0lu
-	CzxDTrIchnzwKBcPazS0ES7DufMf5F3XnjamB8Pg+1QHLxgGGmoS2RXcAXPNsC9eSPku7TtHPIQpx
-	O+eQdbiI/I7t8o0FChCsgaB8+DDgfxu9pAXSWpVGJyjcyxx8Fww03Vzvdn87wmXtOFLvfwgjosQDe
-	gcVc+ruw==;
+	bh=Usy3PgSBIh1QSQ6laEpUYZGvqSHbiAzqMCe9pFrPVU0=; b=2IZzPPs0OBdIoCpM0qc7OW+vNn
+	ZXjRUGsxulB5eQbQHniJ9H1FZ2ZGtPaJkvzK9Ect31vU2w4QKqTc47ZltW8WcKFYBRFZP852IVgYM
+	KpLNgAqHXSgaTo1WZ3zA59DordEbaFUVZhBauetat1VRg80r25j95SLCQkf/3Qbu+WtCVyWc659jd
+	lF7XMqmZT1xPO78vp+7zgbuqJdrwvcC+CWcn/3VQoSbnW1yybunucRaufX3LBd9ifIUgdW++EOI5+
+	2t0ELN/A7Io+oil9UYli6I9xfOt71klgmtduZYz/Ds7OBAMP0/jIqecyxQY7ezwqPjNOpqLw9apsA
+	fb1NU7cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxLAP-0000000Csq5-39Vo;
-	Fri, 21 Aug 2026 09:04:01 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wxLAe-0000000CsuW-21QW;
+	Fri, 21 Aug 2026 09:04:16 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxLAN-0000000Cspn-3ytJ;
-	Fri, 21 Aug 2026 09:03:59 +0000
+	id 1wxLAd-0000000Cstu-1VPG;
+	Fri, 21 Aug 2026 09:04:15 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 815A5402BF;
+	by tor.source.kernel.org (Postfix) with ESMTP id C3B4C618D2;
+	Fri, 21 Aug 2026 09:04:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D49841F00A3E;
 	Fri, 21 Aug 2026 09:03:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C869B1F00A3A;
-	Fri, 21 Aug 2026 09:03:44 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 38/45] clk: uniphier: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:48 +0200
-Message-ID: <491e41d759cec667d6bcd742673e1fec70b4bc31.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 39/45] clk: ux500: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:49 +0200
+Message-ID: <bd84df92640a05a1a73a8bc775b2d50568a9d0ec.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -147,82 +147,63 @@ Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 Compile-tested only.
 ---
- drivers/clk/uniphier/clk-uniphier-cpugear.c      | 2 +-
- drivers/clk/uniphier/clk-uniphier-fixed-factor.c | 2 +-
- drivers/clk/uniphier/clk-uniphier-fixed-rate.c   | 2 +-
- drivers/clk/uniphier/clk-uniphier-gate.c         | 2 +-
- drivers/clk/uniphier/clk-uniphier-mux.c          | 2 +-
- 5 files changed, 5 insertions(+), 5 deletions(-)
+ drivers/clk/ux500/clk-prcc.c    | 2 +-
+ drivers/clk/ux500/clk-prcmu.c   | 4 ++--
+ drivers/clk/ux500/clk-sysctrl.c | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/clk/uniphier/clk-uniphier-cpugear.c b/drivers/clk/uniphier/clk-uniphier-cpugear.c
-index a2f01a4da1276903..165c6832b722faa9 100644
---- a/drivers/clk/uniphier/clk-uniphier-cpugear.c
-+++ b/drivers/clk/uniphier/clk-uniphier-cpugear.c
-@@ -79,7 +79,7 @@ struct clk_hw *uniphier_clk_register_cpugear(struct device *dev,
- 				const struct uniphier_clk_cpugear_data *data)
+diff --git a/drivers/clk/ux500/clk-prcc.c b/drivers/clk/ux500/clk-prcc.c
+index dce235df2576dfb2..dde72d2fd0ac67ae 100644
+--- a/drivers/clk/ux500/clk-prcc.c
++++ b/drivers/clk/ux500/clk-prcc.c
+@@ -97,8 +97,8 @@ static struct clk *clk_reg_prcc(const char *name,
+ 				unsigned long flags,
+ 				const struct clk_ops *clk_prcc_ops)
  {
- 	struct uniphier_clk_cpugear *gear;
--	struct clk_init_data init;
-+	struct clk_init_data init = {};
++	struct clk_init_data clk_prcc_init = {};
+ 	struct clk_prcc *clk;
+-	struct clk_init_data clk_prcc_init;
+ 	struct clk *clk_reg;
+ 
+ 	if (!name) {
+diff --git a/drivers/clk/ux500/clk-prcmu.c b/drivers/clk/ux500/clk-prcmu.c
+index ac96c46bd1bbf76b..d89f3b634f8bbd26 100644
+--- a/drivers/clk/ux500/clk-prcmu.c
++++ b/drivers/clk/ux500/clk-prcmu.c
+@@ -200,8 +200,8 @@ static struct clk_hw *clk_reg_prcmu(const char *name,
+ 				    unsigned long flags,
+ 				    const struct clk_ops *clk_prcmu_ops)
+ {
++	struct clk_init_data clk_prcmu_init = {};
+ 	struct clk_prcmu *clk;
+-	struct clk_init_data clk_prcmu_init;
  	int ret;
  
- 	gear = devm_kzalloc(dev, sizeof(*gear), GFP_KERNEL);
-diff --git a/drivers/clk/uniphier/clk-uniphier-fixed-factor.c b/drivers/clk/uniphier/clk-uniphier-fixed-factor.c
-index a6a37a6bca3ab047..c86683fce20549d9 100644
---- a/drivers/clk/uniphier/clk-uniphier-fixed-factor.c
-+++ b/drivers/clk/uniphier/clk-uniphier-fixed-factor.c
-@@ -13,8 +13,8 @@ struct clk_hw *uniphier_clk_register_fixed_factor(struct device *dev,
- 						  const char *name,
- 			const struct uniphier_clk_fixed_factor_data *data)
+ 	if (!name) {
+@@ -357,8 +357,8 @@ struct clk_hw *clk_reg_prcmu_clkout(const char *name,
+ 				    u8 source, u8 divider)
+ 
  {
-+	struct clk_init_data init = {};
- 	struct clk_fixed_factor *fix;
--	struct clk_init_data init;
++	struct clk_init_data clk_prcmu_clkout_init = {};
+ 	struct clk_prcmu_clkout *clk;
+-	struct clk_init_data clk_prcmu_clkout_init;
+ 	u8 clkout_id;
  	int ret;
  
- 	fix = devm_kzalloc(dev, sizeof(*fix), GFP_KERNEL);
-diff --git a/drivers/clk/uniphier/clk-uniphier-fixed-rate.c b/drivers/clk/uniphier/clk-uniphier-fixed-rate.c
-index 3bc55ab75314bf8d..63f49d3bab80bae8 100644
---- a/drivers/clk/uniphier/clk-uniphier-fixed-rate.c
-+++ b/drivers/clk/uniphier/clk-uniphier-fixed-rate.c
-@@ -13,8 +13,8 @@ struct clk_hw *uniphier_clk_register_fixed_rate(struct device *dev,
- 						const char *name,
- 				const struct uniphier_clk_fixed_rate_data *data)
+diff --git a/drivers/clk/ux500/clk-sysctrl.c b/drivers/clk/ux500/clk-sysctrl.c
+index ba3258c88d28e101..2127a949e56ccf27 100644
+--- a/drivers/clk/ux500/clk-sysctrl.c
++++ b/drivers/clk/ux500/clk-sysctrl.c
+@@ -127,8 +127,8 @@ static struct clk *clk_reg_sysctrl(struct device *dev,
+ 				unsigned long flags,
+ 				const struct clk_ops *clk_sysctrl_ops)
  {
-+	struct clk_init_data init = {};
- 	struct clk_fixed_rate *fixed;
--	struct clk_init_data init;
- 	int ret;
++	struct clk_init_data clk_sysctrl_init = {};
+ 	struct clk_sysctrl *clk;
+-	struct clk_init_data clk_sysctrl_init;
+ 	struct clk *clk_reg;
+ 	int i;
  
- 	/* allocate fixed-rate clock */
-diff --git a/drivers/clk/uniphier/clk-uniphier-gate.c b/drivers/clk/uniphier/clk-uniphier-gate.c
-index e58093e79dd7dc23..9f49e6bb6b2042f7 100644
---- a/drivers/clk/uniphier/clk-uniphier-gate.c
-+++ b/drivers/clk/uniphier/clk-uniphier-gate.c
-@@ -61,8 +61,8 @@ struct clk_hw *uniphier_clk_register_gate(struct device *dev,
- 					  const char *name,
- 				const struct uniphier_clk_gate_data *data)
- {
-+	struct clk_init_data init = {};
- 	struct uniphier_clk_gate *gate;
--	struct clk_init_data init;
- 	int ret;
- 
- 	gate = devm_kzalloc(dev, sizeof(*gate), GFP_KERNEL);
-diff --git a/drivers/clk/uniphier/clk-uniphier-mux.c b/drivers/clk/uniphier/clk-uniphier-mux.c
-index 1998e9d4cfc0224a..a63ad4df8e65ebcf 100644
---- a/drivers/clk/uniphier/clk-uniphier-mux.c
-+++ b/drivers/clk/uniphier/clk-uniphier-mux.c
-@@ -58,8 +58,8 @@ struct clk_hw *uniphier_clk_register_mux(struct device *dev,
- 					 const char *name,
- 				const struct uniphier_clk_mux_data *data)
- {
-+	struct clk_init_data init = {};
- 	struct uniphier_clk_mux *mux;
--	struct clk_init_data init;
- 	int ret;
- 
- 	mux = devm_kzalloc(dev, sizeof(*mux), GFP_KERNEL);
 -- 
 2.43.0
 
