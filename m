@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C15BC5DF7D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:04:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5832AC5DF7D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:04:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Usy3PgSBIh1QSQ6laEpUYZGvqSHbiAzqMCe9pFrPVU0=; b=2IZzPPs0OBdIoCpM0qc7OW+vNn
-	ZXjRUGsxulB5eQbQHniJ9H1FZ2ZGtPaJkvzK9Ect31vU2w4QKqTc47ZltW8WcKFYBRFZP852IVgYM
-	KpLNgAqHXSgaTo1WZ3zA59DordEbaFUVZhBauetat1VRg80r25j95SLCQkf/3Qbu+WtCVyWc659jd
-	lF7XMqmZT1xPO78vp+7zgbuqJdrwvcC+CWcn/3VQoSbnW1yybunucRaufX3LBd9ifIUgdW++EOI5+
-	2t0ELN/A7Io+oil9UYli6I9xfOt71klgmtduZYz/Ds7OBAMP0/jIqecyxQY7ezwqPjNOpqLw9apsA
-	fb1NU7cQ==;
+	bh=UjAbSupE/I3gjkA/r+CxggJI0p9J85Zn8zuFFXwGXVU=; b=baWjQeQOqjSpsqxsSVJQ6MzBs/
+	AifnWzDOISCRRjMeoy4CifOK8vgwoQoufoaPHrbWp8Z3wWqXWhZodBX4G9Y6S0OgHO1Nafe9ua6xa
+	C66xU4t9hvtOki/6wYskXEVCYx+LpSamWaGBmTyhSxBNAHAaNAIQGQU9+Qds7ZI0MA4x+jJHcERa5
+	8U+bJKo9uohv/7XE2+v1/c2EaRs/pByAWdoC9qgGYq67KKQwhi19qPt0wdTFoPlV7wgZtdVLi0Ism
+	k/qQnWvAzR1PVRspC6aymsIfSvbirH5m9rfkg8Qr3nm0f1ohA8JP49icpg7WWK1k0UP8KmjkcjW7i
+	4wUIsc9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxLAe-0000000CsuW-21QW;
-	Fri, 21 Aug 2026 09:04:16 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wxLAt-0000000CsyQ-1VuQ;
+	Fri, 21 Aug 2026 09:04:31 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxLAd-0000000Cstu-1VPG;
-	Fri, 21 Aug 2026 09:04:15 +0000
+	id 1wxLAr-0000000Csy6-48Xr;
+	Fri, 21 Aug 2026 09:04:30 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id C3B4C618D2;
+	by sea.source.kernel.org (Postfix) with ESMTP id AADB745142;
+	Fri, 21 Aug 2026 09:04:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBE701F000E9;
 	Fri, 21 Aug 2026 09:04:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D49841F00A3E;
-	Fri, 21 Aug 2026 09:03:59 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 39/45] clk: ux500: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:49 +0200
-Message-ID: <bd84df92640a05a1a73a8bc775b2d50568a9d0ec.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 40/45] clk: versatile: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:50 +0200
+Message-ID: <7c480e73222bb51982fb82dc0cc6cd503f2e8b92.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -147,63 +147,51 @@ Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 Compile-tested only.
 ---
- drivers/clk/ux500/clk-prcc.c    | 2 +-
- drivers/clk/ux500/clk-prcmu.c   | 4 ++--
- drivers/clk/ux500/clk-sysctrl.c | 2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ drivers/clk/versatile/clk-icst.c         | 2 +-
+ drivers/clk/versatile/clk-sp810.c        | 2 +-
+ drivers/clk/versatile/clk-vexpress-osc.c | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/clk/ux500/clk-prcc.c b/drivers/clk/ux500/clk-prcc.c
-index dce235df2576dfb2..dde72d2fd0ac67ae 100644
---- a/drivers/clk/ux500/clk-prcc.c
-+++ b/drivers/clk/ux500/clk-prcc.c
-@@ -97,8 +97,8 @@ static struct clk *clk_reg_prcc(const char *name,
- 				unsigned long flags,
- 				const struct clk_ops *clk_prcc_ops)
+diff --git a/drivers/clk/versatile/clk-icst.c b/drivers/clk/versatile/clk-icst.c
+index 6bd3db54dd229d28..97a1bfd6cf0ed995 100644
+--- a/drivers/clk/versatile/clk-icst.c
++++ b/drivers/clk/versatile/clk-icst.c
+@@ -360,8 +360,8 @@ struct clk *icst_clk_setup(struct device *dev,
  {
-+	struct clk_init_data clk_prcc_init = {};
- 	struct clk_prcc *clk;
--	struct clk_init_data clk_prcc_init;
- 	struct clk *clk_reg;
+ 	struct clk *clk;
+ 	struct clk_icst *icst;
+-	struct clk_init_data init;
+ 	struct icst_params *pclone;
++	struct clk_init_data init = {};
  
- 	if (!name) {
-diff --git a/drivers/clk/ux500/clk-prcmu.c b/drivers/clk/ux500/clk-prcmu.c
-index ac96c46bd1bbf76b..d89f3b634f8bbd26 100644
---- a/drivers/clk/ux500/clk-prcmu.c
-+++ b/drivers/clk/ux500/clk-prcmu.c
-@@ -200,8 +200,8 @@ static struct clk_hw *clk_reg_prcmu(const char *name,
- 				    unsigned long flags,
- 				    const struct clk_ops *clk_prcmu_ops)
- {
-+	struct clk_init_data clk_prcmu_init = {};
- 	struct clk_prcmu *clk;
--	struct clk_init_data clk_prcmu_init;
- 	int ret;
- 
- 	if (!name) {
-@@ -357,8 +357,8 @@ struct clk_hw *clk_reg_prcmu_clkout(const char *name,
- 				    u8 source, u8 divider)
- 
- {
-+	struct clk_init_data clk_prcmu_clkout_init = {};
- 	struct clk_prcmu_clkout *clk;
--	struct clk_init_data clk_prcmu_clkout_init;
- 	u8 clkout_id;
- 	int ret;
- 
-diff --git a/drivers/clk/ux500/clk-sysctrl.c b/drivers/clk/ux500/clk-sysctrl.c
-index ba3258c88d28e101..2127a949e56ccf27 100644
---- a/drivers/clk/ux500/clk-sysctrl.c
-+++ b/drivers/clk/ux500/clk-sysctrl.c
-@@ -127,8 +127,8 @@ static struct clk *clk_reg_sysctrl(struct device *dev,
- 				unsigned long flags,
- 				const struct clk_ops *clk_sysctrl_ops)
- {
-+	struct clk_init_data clk_sysctrl_init = {};
- 	struct clk_sysctrl *clk;
--	struct clk_init_data clk_sysctrl_init;
- 	struct clk *clk_reg;
+ 	icst = kzalloc_obj(*icst);
+ 	if (!icst)
+diff --git a/drivers/clk/versatile/clk-sp810.c b/drivers/clk/versatile/clk-sp810.c
+index b0e69686f7a9a93e..28e5c0cf1fda38e4 100644
+--- a/drivers/clk/versatile/clk-sp810.c
++++ b/drivers/clk/versatile/clk-sp810.c
+@@ -86,7 +86,7 @@ static void __init clk_sp810_of_setup(struct device_node *node)
+ 	const char *parent_names[2];
+ 	int num = ARRAY_SIZE(parent_names);
+ 	char name[12];
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 	static int instance;
  	int i;
+ 	bool deprecated;
+diff --git a/drivers/clk/versatile/clk-vexpress-osc.c b/drivers/clk/versatile/clk-vexpress-osc.c
+index 9adbf5c33bd1cada..72e872ec6b7c9b47 100644
+--- a/drivers/clk/versatile/clk-vexpress-osc.c
++++ b/drivers/clk/versatile/clk-vexpress-osc.c
+@@ -64,7 +64,7 @@ static const struct clk_ops vexpress_osc_ops = {
  
+ static int vexpress_osc_probe(struct platform_device *pdev)
+ {
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 	struct vexpress_osc *osc;
+ 	u32 range[2];
+ 	int ret;
 -- 
 2.43.0
 
