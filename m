@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 591DBC5DF87
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:56:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5934C5DF87
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:56:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IIoJUyf1XiRrFpsrenI8NwFcWr/Ib5O3xqS2Xj/rNDM=; b=gHgB128exhxgTJeR1hyNjPBFyW
-	M229bUdH3g6Tawoehiklhy/sRPGVv49C+lfi+dUIIr7BD4nxisHlgoFfJMuPPLoZHvSkmPYGYkxDR
-	5Sz44yiMkkPzjxRNCjhYvujFXGI7SiPI/Tyctf5wbcQ4z5JgDHnotBXCxHJiKiL4t2TTYSNWh4Z0r
-	gPeG9/ckTwgA0FQzg9tejf/Z6Zkr6HlV6k2cYRLgbviahRi37/hyggL7F9wGATRL/JDCNYVMrWdtE
-	HCCD+ap3VkPbno8LXmxEN8T3bCNzyKwb+bdDXBHrcqBB1lOQkiwQ8gvGLBtkG7BjTDXNhDsRAsHlv
-	k4noUfxg==;
+	bh=itpHEbH4k2lsJzsxO46eYTw/+gTeQhNYN3Hz551XSrE=; b=AZThz29Fzbpm5GufKopm6Y1/JV
+	pks3kbdAKXrprHRIWJdnN+TBrGSzwik05WE+fik/WX5/5HjtjLoQV0TsJgXx1GpY5XN5Id9/NzWc3
+	rUo4VPbLj1fiwUuQu/4VrjHk7FidZDckhR4TLT+HmCX68W8NRhRoYc+o2o/wZuxv55j3dgmMiZlsf
+	KC4kuq7B6QC4/S/45uUNhar6BtEonmTPZ5jLKdCtOi+XhvWURexIIkU6Md5o5O6HXrb8QJd+LKRn1
+	9Uei/IUt9zh/2ZtMN60XjTJnHocWC3rSx3roOiQrn4naMMTkkaamlxCMze5ZOyEONVq/wl+QL+Xsn
+	XIVopVHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL2d-0000000Cqbi-0qkU;
-	Fri, 21 Aug 2026 08:55:59 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wxL2n-0000000Cqf8-3Psm;
+	Fri, 21 Aug 2026 08:56:10 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL2W-0000000CqaE-221t;
-	Fri, 21 Aug 2026 08:55:52 +0000
+	id 1wxL2m-0000000CqeY-2AW7;
+	Fri, 21 Aug 2026 08:56:08 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 275FE41725;
+	by sea.source.kernel.org (Postfix) with ESMTP id 4B0F74034A;
+	Fri, 21 Aug 2026 08:56:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7F09E1F00A3D;
 	Fri, 21 Aug 2026 08:55:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4AC911F000E9;
-	Fri, 21 Aug 2026 08:55:37 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 06/45] clk: clk-axi-clkgen: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:16 +0200
-Message-ID: <2c6fe5e2efb86c8fec0b19cb14cfa1e3be5b6b99.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 07/45] clk: cs2000-cp: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:17 +0200
+Message-ID: <e8d75ce94cde05d165c8a25c93cebd3fd7cf05d5.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -145,24 +145,24 @@ for specifying the parents.
 
 Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
-Compile-tested only.
+Boot-tested on Salvator-X(S) and Ebisu-4D.
 ---
- drivers/clk/clk-axi-clkgen.c | 2 +-
+ drivers/clk/clk-cs2000-cp.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/clk/clk-axi-clkgen.c b/drivers/clk/clk-axi-clkgen.c
-index 6fcee41447e45581..e53256c56dfabc4e 100644
---- a/drivers/clk/clk-axi-clkgen.c
-+++ b/drivers/clk/clk-axi-clkgen.c
-@@ -568,7 +568,7 @@ static int axi_clkgen_probe(struct platform_device *pdev)
- 	const struct axi_clkgen_limits *dflt_limits;
- 	struct axi_clkgen *axi_clkgen;
- 	unsigned int pcore_version;
+diff --git a/drivers/clk/clk-cs2000-cp.c b/drivers/clk/clk-cs2000-cp.c
+index 5a7758f5a1e4a0f1..b28fd4e5615ff7a7 100644
+--- a/drivers/clk/clk-cs2000-cp.c
++++ b/drivers/clk/clk-cs2000-cp.c
+@@ -461,7 +461,7 @@ static int cs2000_clk_register(struct cs2000_priv *priv)
+ {
+ 	struct device *dev = priv_to_dev(priv);
+ 	struct device_node *np = dev->of_node;
 -	struct clk_init_data init;
 +	struct clk_init_data init = {};
- 	const char *parent_names[2];
- 	const char *clk_name;
- 	struct clk *axi_clk;
+ 	const char *name = np->name;
+ 	static const char *parent_names[CLK_MAX];
+ 	u32 aux_out = 0;
 -- 
 2.43.0
 
