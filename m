@@ -4,75 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3486C5DF7D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:01:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D7AEC5DF7D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:01:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=5ZMIgV9sSCRM7UCth/wb9kbNDS9+H51ny5rAs4BFkIM=; b=qaqzGyfZ7qN7KrqZgyWbzLnT0M
-	jEPzo2IIqfXxhiNevmWO2J8jx9fe25a8tAZ533eSd8ztU8pUgqVL0q4rVpXcljJhl+Gfg9frbMc+Q
-	eRpo3hDOl75yasFD04MMg6lRaGdQWLxKWPglTt2hGP7aJrZUjZDNmgRBqdN9MG4tfkUTQzwmpXX1E
-	76cyMREBCJ+v/Gb5aBksBevuAAGMTobfjBw75oxSOqr1bDyR/73EdbKsC4cOhtA8ehh30a8itzcO+
-	3B34gc0C5jAN0Pl4n+tECMw/Jxoi9K3jKxcoaNLW7spR5McQriqrmP7D9Zl/EMKs7bO6RCGYeye2X
-	UtdwfKFw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=05gTl57+h9xghNBWG0C/kPdhcBSMafMBqYK4LsWo/hI=; b=GjGvMQUcGZmsT74WviWLHKqIRy
+	2xp8KEYEItEMl/gg8npgtBmQ7igDsAovdGjn5j1qumgO2v/OXI9Frc1TXGTv2ciyLEE0xYdryGgpP
+	891Iq9OtH+a8FzCQO0PKVvR9F5fqrZ7SWGHSQRl3iNiSJ7LGaApCdKeN+8MhoPZlMcqnA0E/jW/cU
+	iWzA4oZDR8di+4YhBUEFwf2wUKKnj7GREqoZSePe01Rj4b9gEf9ZqJnNYyCJ/posMBgw3487q3/aI
+	IkMeGCDhAn50DTCdLbK42QUEGuuvEqBGH3IrDVPGTl2rfv4H1ncB62BfSwuL1UuPDgUpWkLFW4G/b
+	ZbE38gDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL7a-0000000Crwx-1tSF;
-	Fri, 21 Aug 2026 09:01:06 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wxL7j-0000000Cs10-2wRA;
+	Fri, 21 Aug 2026 09:01:15 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL7U-0000000CrtV-273c;
-	Fri, 21 Aug 2026 09:01:04 +0000
-X-UUID: d02651e89d3e11f1afed4741b24580c9-20260821
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=5ZMIgV9sSCRM7UCth/wb9kbNDS9+H51ny5rAs4BFkIM=;
-	b=L+IAs+UiuInvI5me+OjvkFTwSKMI2PkAjTFIQJsk5+Uh4DDN8vHQYD+AfcDzX8imF0Em44m7PZRVH1FiJk8Hl1rG/7PorXZAc2fQ5SNWkPDffN6KvPQ0094MP1+S5DQBx3LSc8/80Mveu/hsBB5qVUwcarTPLw+pBnz+D2tnd+E=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:455183c8-ad0c-45fa-8354-4eddc7d3aa62,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:7db8b62,CLOUDID:68b1b8fb-8958-4756-89ca-0c20582edcef,B
-	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
-	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: d02651e89d3e11f1afed4741b24580c9-20260821
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
-	(envelope-from <ot_jingcheng.ji@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 759660428; Fri, 21 Aug 2026 02:00:53 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 21 Aug 2026 17:00:50 +0800
-Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 21 Aug 2026 17:00:49 +0800
-From: Jingcheng Ji <ot_jingcheng.ji@mediatek.com>
-To: Mark Brown <broonie@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-spi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<jarried.lin@mediatek.com>, <vince-wl.liu@mediatek.com>,
-	<justin.yeh@mediatek.com>, Jingcheng Ji <ot_jingcheng.ji@mediatek.com>
-Subject: [PATCH] spi: spi-mtk-nor: Get clocks from devicetree in bulk
-Date: Fri, 21 Aug 2026 17:00:22 +0800
-Message-ID: <20260821090046.2353986-1-ot_jingcheng.ji@mediatek.com>
+	id 1wxL7i-0000000Cs0N-1pMO;
+	Fri, 21 Aug 2026 09:01:14 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id DA286618A0;
+	Fri, 21 Aug 2026 09:01:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D868B1F00A3A;
+	Fri, 21 Aug 2026 09:00:58 +0000 (UTC)
+From: Geert Uytterhoeven <geert+renesas@glider.be>
+To: Ryan Chen <ryan_chen@aspeedtech.com>,
+	Joel Stanley <joel@jms.id.au>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Brian Masney <bmasney+clk@redhat.com>,
+	Jerome Brunet <jbrunet+clk@baylibre.com>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Billy Tsai <billy_tsai@aspeedtech.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Taichi Sugaya <sugaya.taichi@socionext.com>,
+	Takao Orito <orito.takao@socionext.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Patrick Venture <venture@google.com>,
+	Nancy Yuen <yuenn@google.com>,
+	Benjamin Fair <benjaminfair@google.com>,
+	Sudeep Holla <sudeep.holla@kernel.org>,
+	Cristian Marussi <cristian.marussi@arm.com>,
+	David Lechner <david@lechnology.com>,
+	Abel Vesa <abelvesa@kernel.org>,
+	Peng Fan <peng.fan@nxp.com>,
+	Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Santosh Shilimkar <ssantosh@kernel.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	Vladimir Zapolskiy <vz@mleia.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Dinh Nguyen <dinguyen@kernel.org>,
+	Viresh Kumar <vireshk@kernel.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	=?UTF-8?q?Emilio=20L=C3=B3pez?= <emilio@elopez.com.ar>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Prashant Gaikwad <pgaikwad@nvidia.com>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Ulf Hansson <ulfh@kernel.org>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Michal Simek <michal.simek@amd.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-clk@vger.kernel.org,
+	linux-aspeed@lists.ozlabs.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	openbmc@lists.ozlabs.org,
+	arm-scmi@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-mips@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	soc@lists.linux.dev,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Geert Uytterhoeven <geert+renesas@glider.be>
+Subject: [PATCH 27/45] clk: renesas: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:37 +0200
+Message-ID: <b3473adc50c71aec5bc5f7ce6f5cda1727e26635.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
+References: <cover.1787239813.git.geert+renesas@glider.be>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260821_020100_564083_84CCB10B 
-X-CRM114-Status: GOOD (  18.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,192 +132,163 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The driver currently gets a fixed set of clock inputs by name. This ties
-the driver to the clock names used by existing devicetrees and silently
-ignores any additional clocks declared by a future platform.
+The clk_init_data structure contains several mutually-exclusive members
+for different methods to specify the possible parents of a clock,
+prompting drivers to initialize only the members they need.  However,
+not initializing all members may cause subtle issues, which are only
+exposed when CONFIG_INIT_STACK_ALL_PATTERN or CONFIG_INIT_STACK_NONE is
+enabled.
 
-Get every clock described by the devicetree with
-devm_clk_bulk_get_all() and enable the resulting set as a group. Keep
-looking up the "spi" input to derive the transfer rate, and verify that
-the required "sf" input is present. Obtain the clock inputs before
-allocating the SPI controller so a deferred clock probe fails early.
+Make sure all members are fully initialized, to avoid such bugs, and to
+prevent future breakage when converting drivers to a different method
+for specifying the parents.
 
-This keeps the existing platforms' behavior while allowing the binding to
-describe all controller clock inputs without requiring driver changes.
-
-Signed-off-by: Jingcheng Ji <ot_jingcheng.ji@mediatek.com>
+Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
- drivers/spi/spi-mtk-nor.c | 106 +++++++++++++++++---------------------
- 1 file changed, 46 insertions(+), 60 deletions(-)
+Boot-tested on RZ/Five.
+---
+ drivers/clk/renesas/rzg2l-cpg.c | 18 +++++++++---------
+ drivers/clk/renesas/rzv2h-cpg.c |  8 ++++----
+ 2 files changed, 13 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
-index 5e1fdbb40ffb..2a713d27ae8e 100644
---- a/drivers/spi/spi-mtk-nor.c
-+++ b/drivers/spi/spi-mtk-nor.c
-@@ -116,10 +116,8 @@ struct mtk_nor {
- 	void __iomem *base;
- 	u8 *buffer;
- 	dma_addr_t buffer_dma;
--	struct clk *spi_clk;
--	struct clk *ctlr_clk;
--	struct clk *axi_clk;
--	struct clk *axi_s_clk;
-+	struct clk_bulk_data *clks;
-+	int num_clks;
- 	unsigned int spi_freq;
- 	bool wbuf_en;
- 	bool has_irq;
-@@ -703,42 +701,12 @@ static int mtk_nor_transfer_one_message(struct spi_controller *host,
- 
- static void mtk_nor_disable_clk(struct mtk_nor *sp)
+diff --git a/drivers/clk/renesas/rzg2l-cpg.c b/drivers/clk/renesas/rzg2l-cpg.c
+index 88d74858687d4866..50b64eb3eafebe71 100644
+--- a/drivers/clk/renesas/rzg2l-cpg.c
++++ b/drivers/clk/renesas/rzg2l-cpg.c
+@@ -580,7 +580,7 @@ rzg2l_cpg_sd_mux_clk_register(const struct cpg_core_clk *core,
+ 			      struct rzg2l_cpg_priv *priv)
  {
--	clk_disable_unprepare(sp->spi_clk);
--	clk_disable_unprepare(sp->ctlr_clk);
--	clk_disable_unprepare(sp->axi_clk);
--	clk_disable_unprepare(sp->axi_s_clk);
-+	clk_bulk_disable_unprepare(sp->num_clks, sp->clks);
- }
+ 	struct sd_mux_hw_data *sd_mux_hw_data;
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 	struct clk_hw *clk_hw;
+ 	int ret;
  
- static int mtk_nor_enable_clk(struct mtk_nor *sp)
+@@ -831,9 +831,9 @@ rzg2l_cpg_dsi_div_clk_register(const struct cpg_core_clk *core,
+ 			       struct rzg2l_cpg_priv *priv)
  {
--	int ret;
--
--	ret = clk_prepare_enable(sp->spi_clk);
--	if (ret)
--		return ret;
--
--	ret = clk_prepare_enable(sp->ctlr_clk);
--	if (ret) {
--		clk_disable_unprepare(sp->spi_clk);
--		return ret;
--	}
--
--	ret = clk_prepare_enable(sp->axi_clk);
--	if (ret) {
--		clk_disable_unprepare(sp->spi_clk);
--		clk_disable_unprepare(sp->ctlr_clk);
--		return ret;
--	}
--
--	ret = clk_prepare_enable(sp->axi_s_clk);
--	if (ret) {
--		clk_disable_unprepare(sp->spi_clk);
--		clk_disable_unprepare(sp->ctlr_clk);
--		clk_disable_unprepare(sp->axi_clk);
--		return ret;
--	}
--
--	return 0;
-+	return clk_bulk_prepare_enable(sp->num_clks, sp->clks);
- }
+ 	struct dsi_div_hw_data *clk_hw_data;
++	struct clk_init_data init = {};
+ 	const struct clk *parent;
+ 	const char *parent_name;
+-	struct clk_init_data init;
+ 	struct clk_hw *clk_hw;
+ 	int ret;
  
- static void mtk_nor_init(struct mtk_nor *sp)
-@@ -807,34 +775,47 @@ static const struct of_device_id mtk_nor_match[] = {
- };
- MODULE_DEVICE_TABLE(of, mtk_nor_match);
- 
-+static struct clk *mtk_nor_get_clk(struct clk_bulk_data *clks, int num_clks,
-+				   const char *id)
-+{
-+	int i;
-+
-+	for (i = 0; i < num_clks; i++) {
-+		if (clks[i].id && !strcmp(clks[i].id, id))
-+			return clks[i].clk;
-+	}
-+
-+	return NULL;
-+}
-+
- static int mtk_nor_probe(struct platform_device *pdev)
+@@ -916,8 +916,8 @@ static struct clk * __init
+ rzg3l_cpg_lvds_div_clk_register(const struct cpg_core_clk *core,
+ 				struct rzg2l_cpg_priv *priv)
  {
- 	struct spi_controller *ctlr;
- 	struct mtk_nor *sp;
- 	struct mtk_nor_caps *caps;
- 	void __iomem *base;
--	struct clk *spi_clk, *ctlr_clk, *axi_clk, *axi_s_clk;
--	int ret, irq;
-+	struct clk_bulk_data *clks;
-+	struct clk *spi_clk;
-+	int num_clks, ret, irq;
++	struct clk_init_data init = {};
+ 	struct clk_fixed_factor *ff;
+-	struct clk_init_data init;
+ 	const struct clk *parent;
+ 	const char *parent_name;
+ 	int ret;
+@@ -1031,9 +1031,9 @@ rzg3l_cpg_dsi_div_clk_register(const struct cpg_core_clk *core,
+ 			       struct rzg2l_cpg_priv *priv)
+ {
+ 	struct g3l_dsi_div_hw_data *clk_hw_data;
++	struct clk_init_data init = {};
+ 	const struct clk *parent;
+ 	const char *parent_name;
+-	struct clk_init_data init;
+ 	struct clk_hw *clk_hw;
+ 	int ret;
  
- 	base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(base))
- 		return PTR_ERR(base);
+@@ -1128,7 +1128,7 @@ rzg2l_cpg_pll5_4_mux_clk_register(const struct cpg_core_clk *core,
+ 				  struct rzg2l_cpg_priv *priv)
+ {
+ 	struct pll5_mux_hw_data *clk_hw_data;
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 	struct clk_hw *clk_hw;
+ 	int ret;
  
--	spi_clk = devm_clk_get(&pdev->dev, "spi");
--	if (IS_ERR(spi_clk))
--		return PTR_ERR(spi_clk);
--
--	ctlr_clk = devm_clk_get(&pdev->dev, "sf");
--	if (IS_ERR(ctlr_clk))
--		return PTR_ERR(ctlr_clk);
--
--	axi_clk = devm_clk_get_optional(&pdev->dev, "axi");
--	if (IS_ERR(axi_clk))
--		return PTR_ERR(axi_clk);
--
--	axi_s_clk = devm_clk_get_optional(&pdev->dev, "axi_s");
--	if (IS_ERR(axi_s_clk))
--		return PTR_ERR(axi_s_clk);
-+	num_clks = devm_clk_bulk_get_all(&pdev->dev, &clks);
-+	if (num_clks < 0)
-+		return dev_err_probe(&pdev->dev, num_clks,
-+				     "failed to get clocks\n");
-+	if (!num_clks)
-+		return dev_err_probe(&pdev->dev, -EINVAL, "no clocks defined\n");
-+
-+	spi_clk = mtk_nor_get_clk(clks, num_clks, "spi");
-+	if (!spi_clk)
-+		return dev_err_probe(&pdev->dev, -EINVAL,
-+				     "missing \"spi\" clock\n");
-+	if (!mtk_nor_get_clk(clks, num_clks, "sf"))
-+		return dev_err_probe(&pdev->dev, -EINVAL,
-+				     "missing \"sf\" clock\n");
+@@ -1255,8 +1255,8 @@ static struct clk * __init
+ rzg2l_cpg_sipll5_register(const struct cpg_core_clk *core,
+ 			  struct rzg2l_cpg_priv *priv)
+ {
++	struct clk_init_data init = {};
+ 	const struct clk *parent;
+-	struct clk_init_data init;
+ 	const char *parent_name;
+ 	struct sipll5 *sipll5;
+ 	struct clk_hw *clk_hw;
+@@ -1381,9 +1381,9 @@ rzg2l_cpg_pll_clk_register(const struct cpg_core_clk *core,
+ 			   struct rzg2l_cpg_priv *priv,
+ 			   const struct clk_ops *ops)
+ {
++	struct clk_init_data init = {};
+ 	struct device *dev = priv->dev;
+ 	const struct clk *parent;
+-	struct clk_init_data init;
+ 	const char *parent_name;
+ 	struct pll_clk *pll_clk;
+ 	int ret;
+@@ -1525,8 +1525,8 @@ static struct clk * __init
+ rzg3l_cpg_dsi_mux_clk_register(const struct cpg_core_clk *core,
+ 			       struct rzg2l_cpg_priv *priv)
+ {
++	struct clk_init_data init = {};
+ 	struct clk_mux *mux_data;
+-	struct clk_init_data init;
+ 	int ret;
  
- 	caps = (struct mtk_nor_caps *)of_device_get_match_data(&pdev->dev);
- 
-@@ -867,10 +848,8 @@ static int mtk_nor_probe(struct platform_device *pdev)
- 	sp->wbuf_en = false;
- 	sp->ctlr = ctlr;
- 	sp->dev = &pdev->dev;
--	sp->spi_clk = spi_clk;
--	sp->ctlr_clk = ctlr_clk;
--	sp->axi_clk = axi_clk;
--	sp->axi_s_clk = axi_s_clk;
-+	sp->clks = clks;
-+	sp->num_clks = num_clks;
- 	sp->caps = caps;
- 	sp->high_dma = caps->dma_bits > 32;
- 	sp->buffer = dmam_alloc_coherent(&pdev->dev,
-@@ -886,9 +865,15 @@ static int mtk_nor_probe(struct platform_device *pdev)
- 
- 	ret = mtk_nor_enable_clk(sp);
- 	if (ret < 0)
--		return ret;
--
--	sp->spi_freq = clk_get_rate(sp->spi_clk);
-+		return dev_err_probe(&pdev->dev, ret,
-+				     "failed to enable clocks\n");
-+
-+	sp->spi_freq = clk_get_rate(spi_clk);
-+	if (!sp->spi_freq) {
-+		dev_err(&pdev->dev, "invalid spi clock rate\n");
-+		ret = -EINVAL;
-+		goto err_disable_clk;
-+	}
- 
- 	mtk_nor_init(sp);
- 
-@@ -928,6 +913,7 @@ static int mtk_nor_probe(struct platform_device *pdev)
- 	pm_runtime_set_suspended(&pdev->dev);
- 	pm_runtime_dont_use_autosuspend(&pdev->dev);
- 
-+err_disable_clk:
- 	mtk_nor_disable_clk(sp);
- 
- 	return ret;
+ 	mux_data = devm_kzalloc(priv->dev, sizeof(*mux_data), GFP_KERNEL);
+@@ -2265,10 +2265,10 @@ rzg2l_cpg_register_mod_clk(const struct rzg2l_mod_clk *mod,
+ 			   const struct rzg2l_cpg_info *info,
+ 			   struct rzg2l_cpg_priv *priv)
+ {
++	struct clk_init_data init = {};
+ 	struct mod_clock *clock = NULL;
+ 	struct device *dev = priv->dev;
+ 	unsigned int id = mod->id;
+-	struct clk_init_data init;
+ 	struct clk *parent, *clk;
+ 	const char *parent_name;
+ 	unsigned int i;
+diff --git a/drivers/clk/renesas/rzv2h-cpg.c b/drivers/clk/renesas/rzv2h-cpg.c
+index 917fc737f254b916..7003d59ac34b1179 100644
+--- a/drivers/clk/renesas/rzv2h-cpg.c
++++ b/drivers/clk/renesas/rzv2h-cpg.c
+@@ -338,7 +338,7 @@ rzv2h_cpg_plldsi_div_clk_register(const struct cpg_core_clk *core,
+ {
+ 	struct rzv2h_plldsi_div_clk *clk_hw_data;
+ 	struct clk **clks = priv->clks;
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 	const struct clk *parent;
+ 	const char *parent_name;
+ 	struct clk_hw *clk_hw;
+@@ -582,7 +582,7 @@ rzv2h_cpg_plldsi_smux_clk_register(const struct cpg_core_clk *core,
+ 				   struct rzv2h_cpg_priv *priv)
+ {
+ 	struct rzv2h_plldsi_mux_clk *clk_hw_data;
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 	struct clk_hw *clk_hw;
+ 	struct smuxed smux;
+ 	int ret;
+@@ -711,7 +711,7 @@ rzv2h_cpg_pll_clk_register(const struct cpg_core_clk *core,
+ 			   const struct clk_ops *ops)
+ {
+ 	struct device *dev = priv->dev;
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 	const struct clk *parent;
+ 	const char *parent_name;
+ 	struct pll_clk *pll_clk;
+@@ -1229,7 +1229,7 @@ rzv2h_cpg_register_mod_clk(const struct rzv2h_mod_clk *mod,
+ {
+ 	struct mod_clock *clock = NULL;
+ 	struct device *dev = priv->dev;
+-	struct clk_init_data init;
++	struct clk_init_data init = {};
+ 	struct clk *parent, *clk;
+ 	const char *parent_name;
+ 	unsigned int id;
 -- 
-2.45.2
+2.43.0
 
 
