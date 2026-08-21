@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2496AC5DF87
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:01:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C164C5DF87
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 09:02:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rh6PFwmCJ1xglf/mQve+dGIZod24rHn0R7f9Dl9SJ9k=; b=uy0bIyTI9JApGTTDjznsS2ecDc
-	ZWn3QFlniyFVn1L5mI7dgEI3DjB7jgFme/DOATH2q+9PN8wVhpeqUg/ATIdJciNBSJ1ahz2yqbObl
-	KZGHGuZXIEwAvgzqYT1NAgF+WHjP7IxuLLC2kezUjMPaZgq2kHcnf+MObnJGnjqbVl26HtRCOUDVt
-	b1Tleu82VH35w8hyXqFVegJcV020FoywOgEpKyUBUgZE3wR/nypYpMzawop0KtvD5TuIGn5m0tj+G
-	NdLgENs3lDE/lOJ/UKbPIzosmM+c6fBgbKhu8QptM6Qwhv6yR7GCqMq6FUDjZNyZA9XXiUzhbQZ4W
-	X+IqHy0A==;
+	bh=NQHMtNGYh33aRoPAi8RPd3UZO5E2j6ZyBROIFyP12mM=; b=TtvB0y7S8FTyEvaqnWynYltV3O
+	87PTAOkEznmJl/Qf0y4dDNB8ZjZgo9tOzl536a4+qOlsDxK8LT9mGwOC/vojMT7hkpaFDz15i3Ng4
+	zGrBitf9uYsyB7tuuWXVlso0WWAy8L7XHgbW9tVY4O/f2cy973nWnLP3FPqpDoNoNRwAvJqQD3j9D
+	TWPSRvZBmcTnT1BwJMqiT+RKMQX8kbKStJKMSQy7fFhFyet3K9Zun/e/hswVadPOmYoP92AtozRUa
+	cE4vMTcNWR0mw8zt/FIL6nPIQ7ceB1A0aP/MgtpQHF/vfGyZrj+lANaaRXwvUlCn5WVDcB//E1vJc
+	W+BRiaFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL8D-0000000CsAP-1PHG;
-	Fri, 21 Aug 2026 09:01:45 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wxL8T-0000000CsDv-22FN;
+	Fri, 21 Aug 2026 09:02:01 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL8C-0000000Cs9w-1UMt;
-	Fri, 21 Aug 2026 09:01:44 +0000
+	id 1wxL8R-0000000CsDS-3eV0;
+	Fri, 21 Aug 2026 09:02:00 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0364143D4F;
+	by tor.source.kernel.org (Postfix) with ESMTP id 359B661899;
+	Fri, 21 Aug 2026 09:01:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55F1C1F000E9;
 	Fri, 21 Aug 2026 09:01:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 244E31F00A3D;
-	Fri, 21 Aug 2026 09:01:28 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 29/45] clk: samsung: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:39 +0200
-Message-ID: <87b3e83137e1a987f3c69d214706e93ef3898cab.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 30/45] clk: scpi: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:40 +0200
+Message-ID: <939f1be93abebc7967a889e9c24c34942df8229a.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -147,35 +147,20 @@ Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 Compile-tested only.
 ---
- drivers/clk/samsung/clk-cpu.c | 2 +-
- drivers/clk/samsung/clk-pll.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/clk/clk-scpi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/clk/samsung/clk-cpu.c b/drivers/clk/samsung/clk-cpu.c
-index 37cf47533dc610e1..a17ce26494f3ebd5 100644
---- a/drivers/clk/samsung/clk-cpu.c
-+++ b/drivers/clk/samsung/clk-cpu.c
-@@ -647,7 +647,7 @@ static int __init exynos_register_cpu_clock(struct samsung_clk_provider *ctx,
- 	const struct clk_hw *parent, *alt_parent;
- 	struct clk_hw **hws;
- 	struct exynos_cpuclk *cpuclk;
--	struct clk_init_data init;
-+	struct clk_init_data init = {};
- 	const char *parent_name;
- 	unsigned int num_cfgs;
- 	int ret = 0;
-diff --git a/drivers/clk/samsung/clk-pll.c b/drivers/clk/samsung/clk-pll.c
-index e74552846ba34105..813b8834ef16cc9b 100644
---- a/drivers/clk/samsung/clk-pll.c
-+++ b/drivers/clk/samsung/clk-pll.c
-@@ -1591,8 +1591,8 @@ static const struct clk_ops samsung_a9fraco_clk_min_ops = {
- static void __init _samsung_clk_register_pll(struct samsung_clk_provider *ctx,
- 				const struct samsung_pll_clock *pll_clk)
+diff --git a/drivers/clk/clk-scpi.c b/drivers/clk/clk-scpi.c
+index 2328d2abf6d88012..16796cf3c89271a9 100644
+--- a/drivers/clk/clk-scpi.c
++++ b/drivers/clk/clk-scpi.c
+@@ -128,7 +128,7 @@ static int
+ scpi_clk_ops_init(struct device *dev, const struct of_device_id *match,
+ 		  struct scpi_clk *sclk, const char *name)
  {
-+	struct clk_init_data init = {};
- 	struct samsung_clk_pll *pll;
 -	struct clk_init_data init;
- 	unsigned int len = 0;
++	struct clk_init_data init = {};
+ 	unsigned long min = 0, max = 0;
  	int ret;
  
 -- 
