@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D96BCC5DF7D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:58:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9371FC5DF7D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 08:58:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4ahANutkKdTMCFb8GNirNf69UC5A1LB0mCSk6qbK/ko=; b=AoEdt17SOPZmM5nIQ9Z1qnjjTB
-	C/fEP3o1dv9OIfEY6xvmN12X4FC9ayzfMNppWYhtpDa30y3eFPP7GNJ84l+0aoxjII/enLiAUiXHg
-	YfhCbxH57U9W58OVu6MqSZyDa2fbQJcyvgYBP/bDAj6Div92MY444KmV+RT857D8gwBH1C9VRxdPj
-	JlJUd5DNh17FPZEImnwh2+4laf2bX81R9NzMn8I5PJYWf0js7A64udfaO6HoG0Z6yoVWisn8b4b8M
-	wFvN4wFqmRCf1QaMNRIzEdt/4zfGjx/BhW2qmDBObHvTl/NJ/aWCJ5JC8HqLI5oowhKxRoEqwu40k
-	mZH+AOlw==;
+	bh=5wauFAnMunw/Th2U9nrJf3Bl94L6qEwB+3wASBvofFc=; b=S12qeQ7KUJXOK6XVZTEG4FmFoY
+	rTwFCkGq1tY9STqd5b9m56hGx1uUrA7nJDDYT7bM2oX06TYlQ1eBAfdTl0GxtcHmU+0J0mHcDdgTV
+	tA7zz2rNtGohFvdCdKtnDVXS8lgv2oeeY3Q4PwlzYLeZti5z5W9DSzdtO76X28sQWiUrICbPOvYYf
+	9RIayQsNO+TMmz79tGpH+GDJ/a8D5RLnL2rp0O4ewCf7IghCiYsy4mPo6Ykdc3VxxujyyDlOqtCj+
+	ZWFRIod49SzTifSrq9URUe4lu/H+YFNwoONYApy6vb5dknyPyV8D8c8OHnixcs+NT8WPof8I7wywt
+	p0O/I1Cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL4m-0000000CrDt-09VT;
-	Fri, 21 Aug 2026 08:58:12 +0000
+	id 1wxL50-0000000CrH2-2V7j;
+	Fri, 21 Aug 2026 08:58:26 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxL4j-0000000CrDU-3O8g;
-	Fri, 21 Aug 2026 08:58:09 +0000
+	id 1wxL4z-0000000CrGb-0FCw;
+	Fri, 21 Aug 2026 08:58:25 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3EB8360A7E;
+	by tor.source.kernel.org (Postfix) with ESMTP id 7FE0D60A7D;
+	Fri, 21 Aug 2026 08:58:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67D001F000E9;
 	Fri, 21 Aug 2026 08:58:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 32CD21F00A3A;
-	Fri, 21 Aug 2026 08:57:54 +0000 (UTC)
 From: Geert Uytterhoeven <geert+renesas@glider.be>
 To: Ryan Chen <ryan_chen@aspeedtech.com>,
 	Joel Stanley <joel@jms.id.au>,
@@ -110,9 +110,9 @@ Cc: linux-clk@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 15/45] clk: keystone: Make sure clk_init_data is fully initialized
-Date: Fri, 21 Aug 2026 10:53:25 +0200
-Message-ID: <a431874631da9e5843af0a00dcca70002ffa2c0f.1787239813.git.geert+renesas@glider.be>
+Subject: [PATCH 16/45] clk: lmk04832: Make sure clk_init_data is fully initialized
+Date: Fri, 21 Aug 2026 10:53:26 +0200
+Message-ID: <357cf49d53cc8abc27f3ec3372b8de587e2278c9.1787239813.git.geert+renesas@glider.be>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
@@ -147,48 +147,41 @@ Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 ---
 Compile-tested only.
 ---
- drivers/clk/keystone/gate.c       | 2 +-
- drivers/clk/keystone/pll.c        | 2 +-
- drivers/clk/keystone/syscon-clk.c | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/clk/clk-lmk04832.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/clk/keystone/gate.c b/drivers/clk/keystone/gate.c
-index 03e854f10fd98afc..e83e3d4c7d67a1ac 100644
---- a/drivers/clk/keystone/gate.c
-+++ b/drivers/clk/keystone/gate.c
-@@ -164,7 +164,7 @@ static struct clk *clk_register_psc(struct device *dev,
- 			struct clk_psc_data *psc_data,
- 			spinlock_t *lock)
+diff --git a/drivers/clk/clk-lmk04832.c b/drivers/clk/clk-lmk04832.c
+index f9a0684d2628eb7a..10e5cfa96e6be195 100644
+--- a/drivers/clk/clk-lmk04832.c
++++ b/drivers/clk/clk-lmk04832.c
+@@ -587,8 +587,8 @@ static const struct clk_ops lmk04832_vco_ops = {
+  */
+ static int lmk04832_register_vco(struct lmk04832 *lmk)
  {
--	struct clk_init_data init;
 +	struct clk_init_data init = {};
- 	struct clk_psc *psc;
- 	struct clk *clk;
+ 	const char *parent_names[1];
+-	struct clk_init_data init;
+ 	int ret;
  
-diff --git a/drivers/clk/keystone/pll.c b/drivers/clk/keystone/pll.c
-index ed197ee0cc88f8e5..020d5f4e9ed64119 100644
---- a/drivers/clk/keystone/pll.c
-+++ b/drivers/clk/keystone/pll.c
-@@ -122,7 +122,7 @@ static struct clk *clk_register_pll(struct device *dev,
- 			const char *parent_name,
- 			struct clk_pll_data *pll_data)
- {
--	struct clk_init_data init;
-+	struct clk_init_data init = {};
- 	struct clk_pll *pll;
- 	struct clk *clk;
+ 	init.name = "lmk-vco";
+@@ -947,8 +947,8 @@ static const struct clk_ops lmk04832_sclk_ops = {
  
-diff --git a/drivers/clk/keystone/syscon-clk.c b/drivers/clk/keystone/syscon-clk.c
-index ecf180a7949c9345..338174be41215fe9 100644
---- a/drivers/clk/keystone/syscon-clk.c
-+++ b/drivers/clk/keystone/syscon-clk.c
-@@ -67,7 +67,7 @@ static struct clk_hw
- 			     const struct ti_syscon_gate_clk_data *data)
+ static int lmk04832_register_sclk(struct lmk04832 *lmk)
  {
- 	struct ti_syscon_gate_clk_priv *priv;
--	struct clk_init_data init;
 +	struct clk_init_data init = {};
- 	char *name = NULL;
+ 	const char *parent_names[1];
+-	struct clk_init_data init;
+ 	int ret;
+ 
+ 	init.name = "lmk-sclk";
+@@ -1292,8 +1292,8 @@ static int lmk04832_register_clkout(struct lmk04832 *lmk, const int num)
+ {
+ 	char name[] = "lmk-clkoutXX";
+ 	char dclk_name[] = "lmk-dclkXX_YY";
++	struct clk_init_data init = {};
+ 	const char *parent_names[2];
+-	struct clk_init_data init;
+ 	int dclk_num = num / 2;
  	int ret;
  
 -- 
