@@ -4,81 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50AE4C5DF8C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Aug 2026 23:38:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE79DC5DF8C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Aug 2026 00:41:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:References:
-	In-Reply-To:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sbJl5fxGKNVdoPi1O5oWYHROj3QbC9kP8ZIzQytStbQ=; b=UeZ3ome+sZkeKCIqLTbZsFtWry
-	O/33Bnmj/BqxV/AVEB+A0WYzdgdf8wG1ze0rGHiUSicq0s46NGr+gKTm0W61Rg02LNZiApA/bPO/f
-	OP/BgKswqSejqIe8mG1PQq21ifEwm/UzU+WKN9FD2Q6RvCnJxAw2ZQaolnCDVBwkhBHbhMBhFdW6j
-	tYS/URSBBg7Rxq57tjSnprKmLakpHRI5s5Gt5122r8nPsp9FN0dueDBVBUPA/aZRbmr8wYzNhPX5/
-	882uTUEnfvoEGC5o6CkGucI8Vopf8tXhMC1BPbXpLsl7LXQiicTcKqhbDaF6tXbS248AA1hm4rG2g
-	AVTsVE4A==;
+	bh=aObQf2oaYp5QKQcNw3tYERl0NwSXy/AaP2uuZhlQdS0=; b=N2WFgUDzm57FGxAdWDtVeEpn7n
+	aeSWTztGgGnOlPN+E+vVVjh4amWbbY+6ALaSL9VS826y5jZexPPMgjIfCvGkCg0M6WoU7V6d+a8Df
+	GhLN4NgCBZJclBxWKhqIpGuYu5PLOmW1WNZ15naaSAyiWTse85/LhkJUr5mt8eeB2gLwi8GS/dFsw
+	4FB3ol0Qei3RX6uxBpafDwHutwTlsYnN/RV1cZznsFOSUWutOGj9mHpEj4Q9lkgT++aAlWNkpqkkg
+	6aY8s5uDbbok6tyHK3MYuiXg1No/UI2XNhV9FJwU6bjRmuIt2x/L49tRtHTPTiQJ9Ey4BCjVIaCPx
+	hmSXs2Lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxYoX-0000000EASv-3gtd;
-	Fri, 21 Aug 2026 23:38:21 +0000
+	id 1wxZnb-0000000ECaR-0UqC;
+	Sat, 22 Aug 2026 00:41:27 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxYoW-0000000EAST-0fMs;
-	Fri, 21 Aug 2026 23:38:20 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1D21661126;
-	Fri, 21 Aug 2026 23:38:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id C3DECC2BCB3;
-	Fri, 21 Aug 2026 23:38:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1787355498;
-	bh=rlbSOuaEzyKo5jZHsV6n7SSdJDwWMAOutuR6tIJXPhI=;
-	h=From:Date:Subject:In-Reply-To:References:To:Cc:Reply-To:From;
-	b=FUrG4kTVRofbSX4GusS4dinoTUhR3Zlq5YLIqWfW9EFBdcKP2JZUtXoaN4nWQ/sYJ
-	 1+QutDQMnjOaO3bvwZlRcVa8bngeoYegBEq8wrepAYDieMCSoQFE8mRtl9mjuFLJG4
-	 fsqHOf7788o6Jpq1+Ta29JClM4hH9ow6hZsRLbT7GGi2HSSEvrBR6wWWC9rqRko7N6
-	 na9/5ZrxbVMqsJsDVjfWVc2Wcfh4glM0IYLdIIlVYlHHFTByheZF3Wr/46WlIK07jW
-	 w6dBh+r/ShK7J6MOwHDbV0MoBQNaEwK76WWeASuFyek5zelCeIhZAYwIxBbDAI0YXl
-	 xm3s3NnkZdTew==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B288C5DF8C;
-	Fri, 21 Aug 2026 23:38:18 +0000 (UTC)
-From: George Maraveyas via B4 Relay <devnull+george.0xfff.gmail.com@kernel.org>
-Date: Sat, 22 Aug 2026 01:37:33 +0200
-Subject: [PATCH RFC v2] Bluetooth: mt7925: trigger reset on WMT timeout
+	id 1wxZnZ-0000000ECaB-45HB;
+	Sat, 22 Aug 2026 00:41:26 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id B3FD261126;
+	Sat, 22 Aug 2026 00:41:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0A4C71F000E9;
+	Sat, 22 Aug 2026 00:41:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1787359283;
+	bh=aObQf2oaYp5QKQcNw3tYERl0NwSXy/AaP2uuZhlQdS0=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=c1fIJOUC8htT+L7mTOSWTZ22TQjYb6mSU3FVTqQ2Gy6GYmZ+pdnEvRVRcGRFFSzHT
+	 zsg9Ugdl2YCloKJ2xt4hY+6P7dL76Gl65xnNBCNjYJIrZ6SQYVAqqOViubL7bO0w0q
+	 oCZsxc+386+GMUbE15FPq7+tQ9AqEKaV4f8NyKrsmirc2VQCAKrknBtOOLKShaMJEI
+	 SjnU/hN4Z8L6/u/x7UqJEHD15XQoQHH9J67yCmEYMSQL0xE1ssJv8y6mBpEhq6u21I
+	 1trDR/aOM1u7ECZ3TPq25A/Wsz/UkdBGCm1h4HtiEF8atnqGAZAe/MIvtHsDAU8oGM
+	 kUnQ0nX3nimOg==
+Date: Fri, 21 Aug 2026 17:41:21 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Shiji Yang <yangshiji66@outlook.com>, netdev@vger.kernel.org, Rex Lu
+ <rex.lu@mediatek.com>, Felix Fietkau <nbd@nbd.name>, Andrew Lunn
+ <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] net: ethernet: mtk_wed: increase WED v2 WDMA RESV_BUFF
+ to 0x80
+Message-ID: <20260821174121.326f3c49@kernel.org>
+In-Reply-To: <OSZPR01MB779537889255E2F606E47EABBCA52@OSZPR01MB7795.jpnprd01.prod.outlook.com>
+References: <OSZPR01MB779537889255E2F606E47EABBCA52@OSZPR01MB7795.jpnprd01.prod.outlook.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260822-mt7925-rfc-v2-1-c88e3bcf7eb8@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/22QTW7DIBCFr2KxLhZgCBBVVaRKPUC3VRZjGCe0w
- U7AsVpFvnsJzbLLNz/vezM3kjEFzGTb3EjCJeQwjUWIp4a4I4wHpMEXTQQTG2a4oXHWViiaBkf
- R+07iwDruLSkL54RD+K5mH+T97ZXs/4r52n+im+82j7GEl2tBzY/ZiDlDRW2b50rSrNAY57rtt
- JJKMcopODzB2H7BtHMwTmNwcGrdFF/upj1kpEXEMJf0xjMucOhlJ/RgnVZeIZMCtLMcLShZmmB
- NDXgMeZ7ST/3Awmue/45dOGVUGOmN2oBTWuwOEUINQPbruv4Cg3ggnkoBAAA=
-X-Change-ID: 20260818-mt7925-rfc-edd34ef031d9
-In-Reply-To: <20260818-mt7925-rfc-v1-0-284d856ac572@gmail.com>
-References: <20260818-mt7925-rfc-v1-0-284d856ac572@gmail.com>
-To: Alan Stern <stern@rowland.harvard.edu>, 
- Marcel Holtmann <marcel@holtmann.org>, 
- Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Chia-Lin Kao <acelan.kao@canonical.com>, 
- George Maraveyas <george.0xfff@gmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1787355496; l=6566;
- i=george.0xfff@gmail.com; s=20260818; h=from:subject:message-id;
- bh=eD0xVzdZ+MLHOp0LYT7FNSr4T7TwQldMA7EKYnGOfwE=;
- b=KzR8Sr3nxgfX34AVXTYV5vC9vEHxjKPdJwG4SnjP+eVVVNb4Lr3dDHZ9AHC9kLB0seaa6bQhE
- xikvwO/kzEFCglAqfeeihvlm/BkmqyUPUoFtKYgTO0XaWAzFqK7PRDp
-X-Developer-Key: i=george.0xfff@gmail.com; a=ed25519;
- pk=Jz8kMnumjUlo1GJvJ5kdfkF3ZP8DjPbYaYQR5J8IHMI=
-X-Endpoint-Received: by B4 Relay for george.0xfff@gmail.com/20260818 with
- auth_id=960
-X-Original-From: George Maraveyas <george.0xfff@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,165 +70,13 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: george.0xfff@gmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: George Maraveyas <george.0xfff@gmail.com>
+On Wed, 19 Aug 2026 21:07:07 +0800 Shiji Yang wrote:
+> Change WDMA RESV_BUFF from 0x40 to 0x80 to avoid CDM TX FIFO overflow.
+> Without this patch mt7986 and mt7981 may have WDMA TX hang issue. This
+> patch was pulled from mtk-openwrt-feeds GPL open source project.
 
-The MT7925 Bluetooth USB function can enumerate successfully after a warm
-reboot while the WMT function-control command remains unresponsive.
-
-When that command times out, btmtk_usb_setup() currently returns
--ETIMEDOUT without entering the existing MediaTek reset path. The existing
-USB reset and recovery machinery is therefore never reached.
-
-For MT7925, call btmtk_reset_sync() when the WMT function-control command
-times out. This enters the existing reset path in btusb_mtk_reset(), which
-performs the MediaTek subsystem reset and queues a USB device reset.
-
-Runtime tracing on the affected hardware showed the resulting path through
-usb_queue_reset_device(), usb_reset_device() and
-usb_reset_and_verify_device(). When reset and verification could not
-restore the device, the USB core escalated to a logical disconnect and
-re-enumeration.
-
-Recovery succeeded in three controlled Windows-to-Linux tests. Runtime
-tracing showed the existing USB reset path escalating to logical disconnect
-and re-enumeration. In two of those tests, tracing continued through the
-subsequent enumeration failures and directly captured
-usb_acpi_port_prr_reset(), after which the MT7925 re-enumerated and
-Bluetooth recovered.
-
-These tests were performed on top of Chia-Lin Kao's ACPI _PRR hub patch,
-which remains a prerequisite for this patch.
-
-A fourth Windows-to-Linux test was then performed with the diagnostic btusb
-blacklist removed and btusb binding normally during boot. The WMT timeout
-reproduced and Bluetooth recovered automatically without manual
-intervention.
-
-Signed-off-by: George Maraveyas <george.0xfff@gmail.com>
----
-Dear Alan,
-
-Thank you for taking the time to look into my patch and for pointing me
-towards the existing reset path. I have now traced the failure on the
-affected MT7925 hardware and tested the individual parts separately.
-
-You were correct that a new USB re-enumeration helper is unnecessary.
-Once the MT7925 failure is made to enter the existing reset path, I can
-see:
-
-  btmtk_reset_sync()
-    -> btmtk_usb_subsys_reset()
-    -> usb_queue_reset_device()
-    -> usb_reset_device()
-    -> usb_reset_and_verify_device()
-
-When reset and verification cannot restore the device,
-usb_reset_and_verify_device() eventually reaches:
-
-  hub_port_logical_disconnect()
-
-and normal hub re-enumeration follows. I have therefore dropped the
-proposed USB helper from v1.
-
-The problem I found is earlier in the Bluetooth path. When MT7925 WMT
-FUNC_CTRL times out, btmtk_usb_setup() currently returns -ETIMEDOUT
-without entering the existing MediaTek reset machinery. The revised patch
-now consists only of the part of my original submission that makes this
-timeout enter the existing reset path:
-
-  if (dev_id == 0x7925 && err == -ETIMEDOUT)
-          btmtk_reset_sync(hdev);
-
-I tested this both with and without Chia-Lin Kao's _PRR hub patch. I want
-to stress that this v2 is based on and dependent on Kao's patch; that
-remains the configuration in which I have validated recovery.
-
-Kao's patch alone does not recover this failure because the WMT timeout
-never enters the reset path. With the WMT trigger but without Kao's patch,
-the reset/disconnect/re-enumeration sequence started, but the device did
-not recover in that test.
-
-With Kao's patch plus the WMT trigger, I reproduced and recovered the
-Windows-to-Linux failure in three controlled tests. Runtime tracing showed
-the existing reset path escalating through usb_queue_reset_device(),
-usb_reset_and_verify_device() and hub_port_logical_disconnect(). In two
-of those runs, tracing continued through the subsequent enumeration
-failures and directly captured:
-
-  usb_acpi_port_prr_reset() <- hub_event.cold
-
-The MT7925 subsequently re-enumerated and Bluetooth recovered.
-
-I then removed the diagnostic btusb blacklist and repeated the test as a
-normal Windows-to-Linux restart, allowing btusb to bind automatically.
-The WMT command again timed out with -110 and the adapter recovered
-without any manual module loading or other intervention.
-
-One behavioural difference is recovery time. The original RFC, which
-requested logical disconnect/re-enumeration directly after the MT7925
-subsystem reset timed out, recovered Bluetooth in about 71 seconds on
-average. Using the existing usb_queue_reset_device() path takes about
-133 seconds to complete Bluetooth setup in the current tests, with
-successful USB re-enumeration at about 114-115 seconds.
-
-The traces account for most of that difference:
-usb_reset_and_verify_device() spends roughly 65 seconds attempting reset
-and verification before escalating to hub_port_logical_disconnect(). In
-practice this was long enough that, during the first test of the reduced
-patch, I almost concluded that recovery had failed and rebooted to start
-the test again before the device eventually returned.
-
-I do not think that recovery-time difference justifies retaining the new
-USB API, but it seemed worth mentioning because it is a noticeable
-behavioural difference between v1 and the reduced approach.
-
-Changes in v2:
-- Drop the proposed USB re-enumeration helper.
-- Drop the direct MT7925 re-enumeration handling which depended on it.
-- Reduce the series from two patches to one Bluetooth patch.
-- Retain only the part of the original Bluetooth patch that enters the
-  existing reset path on an MT7925 WMT -ETIMEDOUT.
-- Keep Chia-Lin Kao's ACPI _PRR hub patch as a prerequisite.
-- Add the new runtime trace and recovery results.
-- Link to v1: https://patch.msgid.link/20260818-mt7925-rfc-v1-0-284d856ac572@gmail.com
-
-Thanks again for the review.
-
-Kind regards,
-George
----
- drivers/bluetooth/btmtk.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 66b346761..e8f02f1e3 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -1413,6 +1413,10 @@ int btmtk_usb_setup(struct hci_dev *hdev)
- 		err = btmtk_usb_hci_wmt_sync(hdev, &wmt_params);
- 		if (err < 0) {
- 			bt_dev_err(hdev, "Failed to send wmt func ctrl (%d)", err);
-+
-+			if (dev_id == 0x7925 && err == -ETIMEDOUT)
-+				btmtk_reset_sync(hdev);
-+
- 			return err;
- 		}
- 
-
----
-base-commit: 28d012efb4327f9c75d5e042a7c91e9a542efa98
-change-id: 20260818-mt7925-rfc-edd34ef031d9
-prerequisite-message-id: <20260706080117.3754550-1-acelan.kao@canonical.com>
-prerequisite-patch-id: 47a2729fbc473534f8ba52052b00723c54a26c17
-
-Best regards,
---  
-George Maraveyas <george.0xfff@gmail.com>
-
-
+Lorenzo, could you TAL? (incl. Simon's suggestion of the Fixes tag)
 
