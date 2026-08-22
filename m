@@ -4,59 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5AE4C5B572
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Aug 2026 08:56:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E529C5DF97
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Aug 2026 09:39:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6YE7rVKkppuVjzkxFH0bH0kbXzu8LKHWY6a+DsEbwnU=; b=Bwf2EOZQqCw99TvXAjEIwHVyWn
-	b1gUJyFT9Em9/y3zztugOXElfHI9wm6g/p1Yj+u3uEl5Nc08jREWAdwmL58jCPvwMnR5v2falei4W
-	2sZvk5nF0XcBcSj6WsLV9hAipIKGqD+LxHA/4BmaK4Z+jdsRJco4dTyYihGQjo6pqzWxz0lVFocKp
-	oH9SNvtVRuCU3GS+ZBDwh1BqZYhljcrCYlwq4ZCOB/oySZJPQoLuQeoQfHLBsMTw7JBZdEmkn+gKu
-	itZxfvbMsjjdZb0eoWidEBHVJjt5ZpaYMXuuUOeAGrBd7+nmJnIV5KzO+TIVYEFXuut8xVQ+WlS3x
-	R8fAaBlQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=SWkv33Y+74+gq7J0O5ontHRvQtInE5grEbn+LzFrXq4=; b=QCeqcn/j72szIZKWT/ZMiM/86S
+	Eb++0zvGJwMdDvgxGINm0nBBciTcIwrja6tahvCGJM7ia61fUs1GVuyRQf5XBOJHBcc2+W14Wr5Qr
+	mXJENW/dNVEzJXxUZp5vi6Ra3LD5Ssh/GIm9B8D4rWR9/xyGrlN8WGKfYFOsjJZ/bNwo/lz7zVZ6O
+	0zzXc1BvCTqIS2LpQ7htHxvwFfh0SszyXapscioziCRlPDGN0Yk1eVblTFBxAhVZGbtR3bFFQFj2a
+	gQlF3CPwuDo6Q2DAfTBBRknI1VTP+fL4/tfB8mAttjCFap5KHardE8t+sH2s3GXeRmJ//SfyXF3VL
+	jy4YN9bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxhWR-0000000EPXW-3vou;
-	Sat, 22 Aug 2026 08:56:15 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wxiCA-0000000EQrV-0yIh;
+	Sat, 22 Aug 2026 09:39:22 +0000
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxhWQ-0000000EPXG-0z7g;
-	Sat, 22 Aug 2026 08:56:14 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0721841285;
-	Sat, 22 Aug 2026 08:56:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 414131F000E9;
-	Sat, 22 Aug 2026 08:56:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787388972;
-	bh=6YE7rVKkppuVjzkxFH0bH0kbXzu8LKHWY6a+DsEbwnU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Yxb1eeqtycN/SSjtnUdYrw/LYXrdiQnrfclXmZl1EnqW6GnV/H17v80wm01TQKggo
-	 z01SZ5rAmYjyRU7i8Ok5QjqSoniTf61ZB7kwT0Bc22PX7yOG+qEm/poEETNZjyo3rE
-	 cYHmVXhTAfkpGw44d0pMJek0aOoOf4/kB1sP7PsmKU3UDLfOkzqxiG7wgJzDXyMCsd
-	 Mc2Dy7HdPBM1/XuED/DsfudhKBxx9dUas6pXtDUVzCk/Tfknp/MH4Y8mHvVoxqbqUm
-	 L94vNphRi/iZp1N3EppGc2txslRVN7iwCXSzi5gNtgE1KP+nZmweePDVWvS6hsVEfm
-	 PUupfJ9CtgnWA==
-Date: Sat, 22 Aug 2026 10:56:10 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Daniel Pawlik <pawlik.dan@gmail.com>
-Cc: netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, kuba@kernel.org, nbd@nbd.name,
-	sean.wang@mediatek.com, Mark-MC.Lee@mediatek.com,
-	davem@davemloft.net, edumazet@google.com, pabeni@redhat.com,
-	andrew+netdev@lunn.ch, yangshiji66@outlook.com
-Subject: Re: [PATCH v10 1/2] net: airoha: npu: fix missing streaming DMA mask
-Message-ID: <aolkKmwLsvnmG8Td@lore-qca>
-References: <20260820085941.380401-1-pawlik.dan@gmail.com>
+	id 1wxiC7-0000000EQqa-2rlk
+	for linux-mediatek@lists.infradead.org;
+	Sat, 22 Aug 2026 09:39:21 +0000
+Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-2d530328efbso16451325ad.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 22 Aug 2026 02:39:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1787391558; x=1787996358; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=SWkv33Y+74+gq7J0O5ontHRvQtInE5grEbn+LzFrXq4=;
+        b=AdnXbMh347Xg3fp4zuSRHSamdPYnEDDvx7ZybFQpsAvMg2joFy7V4M50LNHWNrG1XM
+         q+9kj2EZIgbqi5KKZp3npp+lZdoCbvE59Bge9g2VkbWoPThixSMXdHJ5GS4ZoyeEgeh1
+         V3XICs7VE+bnrnqRu633wSDRyT3r3GvdBcAuhAIrwHwzfMeAV63z8dEWmXaTzEfloDQ2
+         K61rOu++0Y/dyyV2uiLZwZiWcweII4QVOQCZfEb+kiG79K1gFu09ChKlfn6CcCLqUh1j
+         zdLUTdUxZDbdX8C4EfIXysYBzk3nQ21bL7Xftd0Xw8XwI0yS6XOiAYgmYjkNYYKIT2Wg
+         PqpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787391558; x=1787996358;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=SWkv33Y+74+gq7J0O5ontHRvQtInE5grEbn+LzFrXq4=;
+        b=gfqaj3U3wc6UveXZZECS5i/m1WA52mn581LGhrs+VtXzxcj0p0Y15J/yss3Z5UBy9Y
+         6l8dAZPn0jOs32LXXPHVy7KWJVXezt2hZJAMorS/uEVNHWxFdBZeZl8pJYRo9uAX8Mlf
+         l3+8ShX/k1Ka+ihnGQJyp9s70tYxBTHDGGwYsJ2H03LeRJcLH1dOwMxq0vHsEHYCdfC5
+         tE2BISMNALUpeFG2WU1blNcJNtSUtovrtona4JI5DWjN0Ni/ZGxOtMf/ItmNi6PyH2Fx
+         YL2T3/lrageMhjcWbFNNFFCOHoTPV3SoQbG5M+lyK7I/oy4CKwfQtzSxLw8dT1vMRsm0
+         6f1g==
+X-Forwarded-Encrypted: i=1; AHgh+RrgSck26mIpekgv53OCThahXcEqJLjU/jqG6PmBClkADJp7MmfnEFywkVZOV9716ze/GKhXXU/uPkaZOc55lQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++nrSeZSLUZ+gC/pEVePRfyoanqdChDQBqpDS2VxSXMY0jH6XrA3
+	hWI976gdQV1fS/MTuizJL8tn14q2KbvJGl6L9yD4EW61ndCeK0wwWKQy
+X-Gm-Gg: AR+sD12qZhALuLg+RXcHqaknuRb0kKnqlmZG9d/L0x3MOytwGa+uPpjiaghNrjvwMX7
+	kl5aBHnatALDF8i73vRZpzjFgKp7CFzpc8rPoouvGSXJfxfTv1EYwaL/bV4Jkq4dNRelPLyOyLd
+	4v3nrM7ppkFD2oPfrtClq7gyClF6qlcOjqxJh+7Gjgo8l1OX2mobUM0yQ7rJ3ctM/grFhZWMv07
+	GRo9UUS8ZmBHSMb2ao9A2kQ4/Mfvog/TtGDR3mH2EoG41p1wLfc0VU8WPSBbi+khvf3oiFrRUzE
+	16tf/YZ6r2qAJdpVCj4NUsYUbFaV9PdED8tQghcBwng2uKr+D9cKtPslbTgxBnbyHCvEZzDnJ9R
+	tiFONNv14pCeT4e0YZeGjM8CfFOILYxMATqIT9bSEKdZkEGBvjFdty13IxD4qsoX7TFgUX5lJCl
+	T1CvuC6XAkRX/hQl4aS2D1A23eWOXTCYPenKZmpW3AsXPvBFSWdl9uFoX4PV1Fb8Y=
+X-Received: by 2002:a17:90b:3945:b0:37f:fb1d:63fa with SMTP id 98e67ed59e1d1-395c37199b7mr23933867a91.15.1787391558342;
+        Sat, 22 Aug 2026 02:39:18 -0700 (PDT)
+Received: from Ultimate.. ([2406:b400:53:4f23:d4ee:2200:a28b:c285])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-395e49d8d26sm2171183a91.10.2026.08.22.02.39.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 22 Aug 2026 02:39:17 -0700 (PDT)
+From: Udaya Kiran Challa <challauday369@gmail.com>
+To: angelogioacchino.delregno@collabora.com,
+	matthias.bgg@gmail.com,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org
+Cc: skhan@linuxfoundation.org,
+	me@brighamcampbell.com,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Udaya Kiran Challa <challauday369@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: [PATCH v5] dt-bindings: arm: mediatek: mediatek,g3dsys: Convert to DT schema
+Date: Sat, 22 Aug 2026 15:08:29 +0530
+Message-Id: <20260822093829.46295-1-challauday369@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="4UCTKtFfDws+VdJ1"
-Content-Disposition: inline
-In-Reply-To: <20260820085941.380401-1-pawlik.dan@gmail.com>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260822_023919_722643_83930E1A 
+X-CRM114-Status: GOOD (  14.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,66 +105,143 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---4UCTKtFfDws+VdJ1
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Convert the MediaTek G3D system controller devicetree binding
+from the legacy text format to DT schema.
 
-> The driver calls dma_set_coherent_mask() but never dma_set_mask(),
-> leaving the streaming DMA mask at the bus default. On the non-coherent
-> EN7581 platform (Cortex-A53), this causes the NPU mailbox to hang
-> after approximately 41 calls when using streaming DMA mappings.
->=20
-> Replace dma_set_coherent_mask() with dma_set_mask_and_coherent() to
-> set both the streaming and coherent DMA masks, matching standard
-> driver practice.
->=20
-> Fixes: 6f884eb87a79 ("net: airoha: Fix DMA direction for NPU mailbox buff=
-er")
-> Link: https://patchwork.kernel.org/project/linux-mediatek/patch/202608141=
-10017.2795022-1-pawlik.dan@gmail.com/
-> Link: https://patchwork.kernel.org/project/linux-mediatek/patch/202608091=
-52813.585797-1-pawlik.dan@gmail.com/
-> Link: https://patchwork.kernel.org/project/linux-mediatek/patch/202608050=
-70851.2885888-1-pawlik.dan@gmail.com/
-> Assisted-by: Claude:claude-opus-4-6
-> Signed-off-by: Daniel Pawlik <pawlik.dan@gmail.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Signed-off-by: Udaya Kiran Challa <challauday369@gmail.com>
+---
+Changelog:
 
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Changes since v4:
+- Add Mediatek Soc maintainers in the send list
 
-> ---
->  drivers/net/ethernet/airoha/airoha_npu.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ether=
-net/airoha/airoha_npu.c
-> index b679bed952de..4045d1eb93ea 100644
-> --- a/drivers/net/ethernet/airoha/airoha_npu.c
-> +++ b/drivers/net/ethernet/airoha/airoha_npu.c
-> @@ -766,7 +766,7 @@ static int airoha_npu_probe(struct platform_device *p=
-dev)
->  		npu->irqs[i] =3D irq;
->  	}
-> =20
-> -	err =3D dma_set_coherent_mask(dev, DMA_BIT_MASK(32));
-> +	err =3D dma_set_mask_and_coherent(dev, DMA_BIT_MASK(32));
->  	if (err)
->  		return err;
-> =20
-> --=20
-> 2.55.0
->=20
+Link to v4:https://lore.kernel.org/all/20260326181726.64957-1-challauday369@gmail.com/
 
---4UCTKtFfDws+VdJ1
-Content-Type: application/pgp-signature; name=signature.asc
+Changes since v3:
+- Fix $id path to match new location
 
------BEGIN PGP SIGNATURE-----
+Link to v3:https://lore.kernel.org/all/20260325181509.3430-1-challauday369@gmail.com/
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaolkKgAKCRA6cBh0uS2t
-rNLJAQClqStH75ruqGvASzQdetMn8Ppz4CPPTVAsMWPo/akT/wD9ECaDg33ScsTK
-Dsxo0yNMrKwF78XzKE85XmFCUxf7jw8=
-=mecl
------END PGP SIGNATURE-----
+Changes since v2:
+- Move binding to soc/mediatek directory
+- Rename file to mediatek,mt2701-g3dsys.yaml based on fallback compatible
 
---4UCTKtFfDws+VdJ1--
+Link to v2:https://lore.kernel.org/all/20260323180616.23333-1-challauday369@gmail.com/
+
+Changes since v1:
+- Drop redundant description for reg
+- Drop redundant description for provider properties
+
+Link to v1:https://lore.kernel.org/all/20260315080302.454233-1-challauday369@gmail.com/
+---
+ .../bindings/arm/mediatek/mediatek,g3dsys.txt | 30 ----------
+ .../soc/mediatek/mediatek,mt2701-g3dsys.yaml  | 58 +++++++++++++++++++
+ 2 files changed, 58 insertions(+), 30 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,g3dsys.txt
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,mt2701-g3dsys.yaml
+
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,g3dsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,g3dsys.txt
+deleted file mode 100644
+index 7de43bf41fdc..000000000000
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,g3dsys.txt
++++ /dev/null
+@@ -1,30 +0,0 @@
+-MediaTek g3dsys controller
+-============================
+-
+-The MediaTek g3dsys controller provides various clocks and reset controller to
+-the GPU.
+-
+-Required Properties:
+-
+-- compatible: Should be:
+-	- "mediatek,mt2701-g3dsys", "syscon":
+-		for MT2701 SoC
+-	- "mediatek,mt7623-g3dsys", "mediatek,mt2701-g3dsys", "syscon":
+-		for MT7623 SoC
+-- #clock-cells: Must be 1
+-- #reset-cells: Must be 1
+-
+-The g3dsys controller uses the common clk binding from
+-Documentation/devicetree/bindings/clock/clock-bindings.txt
+-The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+-
+-Example:
+-
+-g3dsys: clock-controller@13000000 {
+-	compatible = "mediatek,mt7623-g3dsys",
+-		     "mediatek,mt2701-g3dsys",
+-		     "syscon";
+-	reg = <0 0x13000000 0 0x200>;
+-	#clock-cells = <1>;
+-	#reset-cells = <1>;
+-};
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt2701-g3dsys.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt2701-g3dsys.yaml
+new file mode 100644
+index 000000000000..ad3df062d5db
+--- /dev/null
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt2701-g3dsys.yaml
+@@ -0,0 +1,58 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/soc/mediatek/mediatek,mt2701-g3dsys.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek G3D System Controller
++
++maintainers:
++  - Sean Wang <sean.wang@mediatek.com>
++  - Ryder Lee <ryder.lee@mediatek.com>
++
++description: |
++  The MediaTek G3D system controller provides clocks and reset control
++  for the GPU subsystem on MediaTek SoCs.
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt2701-g3dsys
++          - const: syscon
++      - items:
++          - const: mediatek,mt7623-g3dsys
++          - const: mediatek,mt2701-g3dsys
++          - const: syscon
++
++  reg:
++    maxItems: 1
++
++  "#clock-cells":
++    const: 1
++
++  "#reset-cells":
++    const: 1
++
++required:
++  - compatible
++  - reg
++  - "#clock-cells"
++  - "#reset-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++     soc {
++       #address-cells = <2>;
++       #size-cells = <2>;
++       g3dsys: syscon@13000000 {
++         compatible = "mediatek,mt7623-g3dsys",
++                      "mediatek,mt2701-g3dsys",
++                      "syscon";
++         reg = <0 0x13000000 0 0x200>;
++         #clock-cells = <1>;
++         #reset-cells = <1>;
++       };
++     };
+-- 
+2.34.1
+
 
