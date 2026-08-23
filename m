@@ -4,67 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 499FDC5B572
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Aug 2026 21:49:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00A08C5B572
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Aug 2026 00:22:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=80UgMBvAIwndVclpnLX2WADk5OqrVIX0GJw2yYQPwPI=; b=p/n1hXgGsC7S1zqnlcQBtInyd7
-	IJkda9+6B5WF+3//Xa64mfrGuyQmdCd2Xe3yJdRrdT0A9wQVZ9Ck7+JhWGXUQb+3ETZJHLKsfXw4a
-	ijJp7kfvdhhBjhRtZR9ZJrPFJUsVt8nuFKPJ8MfqsJ0rHVN6qZ9quUyApmlxURa1qVyiA4Q9D9Xys
-	c6KhDheCfIyzltUlHGKGactAv8G9JdWrWaJOgMIOst6mWDzveN298dIcGAw9/vcyQhZSxUBHOQPpB
-	rJs8DCqMxB4OhQ8EIiCozkEAA7bGS7a7aL+2OhE/5ZmAq/mLXXT6AabTxxsCb6kjLqdp+Xsulgcpt
-	+zjbR5Sw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PnfycOpIeVLKHmflGiUF526cXqauQ3cReF2OjuRBrdk=; b=pq/QWtJZvbWwHdGHUDPMjEQO9x
+	s+nwZKc9Qcx1xbg1ueuvcG4Rb8FyUkIIpBrc+MYtDexG4DUu0X0ftZBz1sFY36jgX/oIPBkO5xU6n
+	iEy0+GTKE3rgwM+38sPejsJQWm4i4jOicurMAwi/WkUwyQrwwX1alk9KebKEmR4WYdZQWWGmbIm+3
+	iDmds5mWbzlzf4ss7JEA2C8kxbxK2ZT0caxayJvojEkR+87ORRfln0JJDOFH4VgWL/rxgx04lEP98
+	POLImejIn31iKZI+KojaCDfbIDyeghbwi5NK04iLRBDGLlqk6E+RA/9yFtBzeCdcImbVumDFNBoda
+	l7gpR2yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxtam-0000000Ep5b-1gFP;
-	Sat, 22 Aug 2026 21:49:32 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1wxvzB-0000000Ev8X-317w;
+	Sun, 23 Aug 2026 00:22:53 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wxtaj-0000000Ep55-0Q25;
-	Sat, 22 Aug 2026 21:49:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=80UgMBvAIwndVclpnLX2WADk5OqrVIX0GJw2yYQPwPI=; b=fMEvHcPl1fB/pyc/wz6XfFlyuo
-	YB2BX60p4m0zDlEwcYJWZLx5v+B0V1H4JPS0LY0DqPRQ42O+0RGCqrEzGgrrjN4XTJiSOjfHvtBjW
-	TCgDM5G5EXtjOkMoT4KOC10bcXfeNoSdrUJdHGSMTVUuwZWD2L+2KTlcOFWaDuRi59Pk=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1wxtaC-0014WS-S9; Sat, 22 Aug 2026 23:48:56 +0200
-Date: Sat, 22 Aug 2026 23:48:56 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Aleksei Sviridkin <f@lex.la>
+	id 1wxvz9-0000000Ev7t-1jHR
+	for linux-mediatek@lists.infradead.org;
+	Sun, 23 Aug 2026 00:22:52 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-c15d47266baso258185266b.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 22 Aug 2026 17:22:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=lex.la; s=google; t=1787444569; x=1788049369; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=PnfycOpIeVLKHmflGiUF526cXqauQ3cReF2OjuRBrdk=;
+        b=ktLZeiQ3R6PLIUs0QNPgLUVOcj4mbqJSGK6JPzXWzSCfg6SnV5fayypsUoGl/oGITg
+         2HVHvnTHVORmAi/SzAx4wpjsog3jPHN7wsTPL/CjNZRFUAP/1TB/p+3aNV2muKdJi4R7
+         t2iMU5gtDzDQ4r+7X/NyTKB99g3J+g239mDwOzW1So2h4cY6erS+FgWSz120M1Ft+FT/
+         lzKnprVs88WCwyEv5opOO3eiX6BW7obnsfwfM0WiNjgVBVEwJ4DZslk6edXGlqm3Uvmr
+         nKXUu+0WqsdeXlX5YFLqj4BwhvJFMtWpFwE0AfLzk7wrYzXF2PbhtMjIoRisyfWtaQAJ
+         eM2w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787444569; x=1788049369;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=PnfycOpIeVLKHmflGiUF526cXqauQ3cReF2OjuRBrdk=;
+        b=QbAKux2xj4Woakz4RXnsNaHIPcG3usN0qAdK91Dld/DKjYVaCuHdg/3Z4ccZSt0s41
+         CJqq2gLO1JpxVNjeY/bTQCiMBDuB46CJ7YWzYx2j5SpJNP5bpKnIVyuC4VMTPyx0xW9D
+         1XBy55EH7SAbTLwqbdWNTYWwCNyjnIpF4yn8uSDDgK21kWZRHsbFz3cUPtwEHU1myEjp
+         4U12vNld7j9Z1q3xmromWPhR6Ll97s8qQMYdIDVbHEqaBXmaNvw8eu/+ecTNceNrV1eF
+         dN09s6/yTqmLlsiayYKz6wdFCiwVq3hk1CZG6ACKRlZvgrdl94errVnSzmvTAzmL0/k7
+         xT3A==
+X-Forwarded-Encrypted: i=1; AHgh+RqOOp5E16xjPRodkDRHFVejdBRWli0bbE/gx727jHDKO9htNjmGDCiqM0EgMAg98KT1Uv4KSx3TwIJnek5CvA==@lists.infradead.org
+X-Gm-Message-State: AFuF++lsbbgNAGftPr+D9pjUWqsMnXNPMGuibt4oaQ9qMrP20ZrSXj5m
+	NJLahDVBe7bP5sTu62ofVn+chdyuE1AY2SwFS8mL9m7itoPLg/1UmNevpnJRN0+Q5Rw=
+X-Gm-Gg: AR+sD12jN26wMAZHFtjo/cIgcBxMsdA8+TM17mEquVhbpUajNaN8wfUmfP/6/qvZGuD
+	jHc4MfcDU8eM/+4P2V8xbLMJAYIPdoQtBbVONYwRP7Z3f5V+L9rtEC3gcll1Jv9m+Jn06nZELBG
+	18npMHGPrOle4BTHPf4o8Hm2XgoMyIqlZr9d0AGgG0asn/GsUn4VE/TO7P6YeIjTBjESBmcxaLl
+	9TDFgCqHKp5QVaQzHtgFudgsZ5dBvsnVjv0bsnLfyLx7FSakEp43FoEzGzoDLQUYmyoPDPz1AhT
+	P3av/BxnOox7dVMjr5qSn5u7YKKcDylqV2Gg7Ani9CyLsg2lrK+IMHpDjHh2jIspkeyQQWPO4LS
+	XNAaIUsFImdYs4Qb/aPdm1OKlkPjPCpOC+kEVS3ibEdGRn991pzhep/cqoJoCsupAfzVIt3O70x
+	ux4DA6AYe6K/PLoo4jnJF/EL+9nqO8i1pt7ztHcOyuL3v+25cK9Gz3jKm/LdG/0yhUibmAWgUDB
+	0bKYYWK
+X-Received: by 2002:a17:906:6a27:b0:c20:2eee:97be with SMTP id a640c23a62f3a-c246a33ed69mr1775593266b.7.1787444568708;
+        Sat, 22 Aug 2026 17:22:48 -0700 (PDT)
+Received: from ownbook.home.lex.la ([84.17.55.225])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c24968a2e42sm438394466b.59.2026.08.22.17.22.46
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Sat, 22 Aug 2026 17:22:48 -0700 (PDT)
+From: Aleksei Sviridkin <f@lex.la>
+To: Andrew Lunn <andrew@lunn.ch>
 Cc: "Chester A . Unal" <chester.a.unal@arinc9.com>,
 	Daniel Golle <daniel@makrotopia.org>,
-	Vladimir Oltean <olteanv@gmail.com>, Felix Fietkau <nbd@nbd.name>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Felix Fietkau <nbd@nbd.name>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
 	"David S . Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	netdev@vger.kernel.org, Russell King <linux@armlinux.org.uk>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	netdev@vger.kernel.org,
+	Russell King <linux@armlinux.org.uk>,
 	Qingfang Deng <dqfext@gmail.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net 1/2] net: dsa: mt7530: populate lpi_interfaces to fix
- EEE support
-Message-ID: <c501d5f8-015c-4ce1-87ee-c4cdaea57f7e@lunn.ch>
-References: <20260822195252.2934-1-f@lex.la>
- <20260822195252.2934-2-f@lex.la>
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Aleksei Sviridkin <f@lex.la>
+Subject: Re: [PATCH net 1/2] net: dsa: mt7530: populate lpi_interfaces to fix EEE support
+Date: Sun, 23 Aug 2026 03:22:46 +0300
+Message-ID: <20260823002246.28455-1-f@lex.la>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <c501d5f8-015c-4ce1-87ee-c4cdaea57f7e@lunn.ch>
+References: <20260822195252.2934-1-f@lex.la> <20260822195252.2934-2-f@lex.la> <c501d5f8-015c-4ce1-87ee-c4cdaea57f7e@lunn.ch>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260822195252.2934-2-f@lex.la>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260822_144929_166148_D2114E03 
-X-CRM114-Status: GOOD (  30.11  )
+X-CRM114-CacheID: sfid-20260822_172251_466101_C1BBDEF4 
+X-CRM114-Status: UNSURE (   8.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,97 +116,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Aug 22, 2026 at 10:52:51PM +0300, Aleksei Sviridkin wrote:
-> mt753x_phylink_get_caps() fills in config->lpi_capabilities and
-> config->lpi_timer_default, but never populates config->lpi_interfaces.
-> phylink only treats a MAC as supporting phylink managed EEE when the
-> tx_lpi methods are implemented and both the LPI capabilities and the
-> LPI interfaces are non-empty, so EEE is unavailable on every port:
-> 
->   # ethtool --show-eee lan1
->   Cannot get EEE settings: Not supported
-> 
-> even though the driver implements mac_enable_tx_lpi() and
-> mac_disable_tx_lpi() and reads the LPI threshold back out of PMEEECR.
-> Since the tx_lpi methods are implemented, phylink takes the other
-> branch and calls phy_disable_eee(), which fills eee_disabled_modes, so
-> userspace cannot enable EEE either.
-> 
-> Only the first half of what commit 06dfcd4098cf ("net: dsa: mt7530: fix
-> enabling EEE on MT7531 switch on all boards") arranged therefore
-> survives. It left EEE off out of the box on purpose, by having
-> mt7531_setup() clear the switch PHYs' EEE advertisement, and ended
-> "With this change, EEE can now be enabled using ethtool". It cannot be,
-> any more.
-> 
-> Copy the supported interfaces into lpi_interfaces. This requires moving
-> the mac_port_get_caps() call ahead of the EEE block, since that is what
-> populates supported_interfaces - copying it beforehand would copy an
-> empty bitmap.
-> 
-> LPI stays off by default. The driver does not set eee_enabled_default,
-> so phylink leaves tx_lpi_enabled false, and phy_check_link_status()
-> computes enable_tx_lpi as tx_lpi_enabled && eee_active - nothing
-> asserts LPI until userspace enables it with ethtool --set-eee. The EEE
-> advertisement is the part that does change: phylink no longer takes the
-> phy_disable_eee() branch, so a PHY that advertises EEE out of reset
-> advertises it again and the link may negotiate EEE. MT7531's five
-> internal PHYs are the exception, as mt7531_setup() zeroes
-> MDIO_AN_EEE_ADV before the switch MDIO bus is registered, so
-> phy_probe() reads an empty advertisement and records eee_cfg.eee_enabled
-> as false. Nothing does that for an external PHY on port 5 or 6, or on
-> the other mt753x variants, EN7528 aside - see below.
-> 
-> This also makes lpi_capabilities take effect for the first time, so
-> correct its value in the same change. PMCR only has force bits for
-> 100 Mbps (PMCR_FORCE_EEE100) and 1 Gbps (PMCR_FORCE_EEE1G), and PMSR
-> only reports EEE state for those two speeds, so the MAC cannot signal
-> LPI at 2.5 Gbps: drop MAC_2500FD. Absence from the header is weak
-> evidence on its own, so for what it is worth, the Airoha AN8855 DSA
-> driver - posted but not merged [1] - describes a PMCR of the same shape
-> that does carry AN8855_PMCR_FORCE_EEE2P5G and AN8855_PMCR_FORCE_EEE5G
-> next to the 1 Gbps and 100 Mbps bits. Correcting the value here rather
-> than in a separate patch changes nothing observable: while
-> lpi_interfaces was empty, lpi_capabilities never reached
-> phy->advertising_eee, so no state ever claimed 2.5 Gbps LPI.
-> 
-> 2500BASE-X has to come out of lpi_interfaces as well, because
-> lpi_capabilities cannot express it: it masks the PHY's EEE
-> advertisement, a media side property, and never gates LPI activation on
-> the MAC side speed. phylink raises the MAC speed to the interface
-> maximum when the PHY rate matches (RATE_MATCH_PAUSE in
-> phylink_link_up()), so a 1 Gbps media link behind a rate matching 2.5G
-> PHY would otherwise arm LPI while the MAC runs at 2.5 Gbps. What that
-> costs is limited to setups that keep the MAC on 2500BASE-X, where there
-> are no LPI bits to use anyway; a PHY that switches the interface down
-> to SGMII or 1000BASE-X keeps LPI, as those stay in the mask.
-> 
-> For the same reason, skip ports that support neither 100 Mbps nor
-> 1 Gbps: on MT7988, EN7581 and AN7583, port 6 is 10 Gbps only, and it
-> shares PHY_INTERFACE_MODE_INTERNAL with the 1 Gbps user ports, so the
-> interface mask alone cannot tell them apart.
-> 
-> EEE remains unavailable on EN7528, whose GPHYs do not negotiate it
-> reliably. Both LPI bitmaps stay empty there, so phylink keeps taking
-> the phy_disable_eee() branch and its advertisement stays off.
+> This is very verbose. Is it AI generated? Please revise it and make it
+> suitable for a human.
 
-This is very verbose. Is it AI generated? Please revise it and make it
-suitable for a human. The important part of the commit message is
-"Why?", since "What?" can be answered by reading the code.
+AI assisted, English is not my first language and I lean on it for
+prose. The verbosity is my fault though, I reviewed and approved every
+word. v2 will carry the Why only and move the mechanism notes below
+the scissors.
 
-> - mt753x_phylink_mac_enable_tx_lpi() sets the PMCR force-EEE bits
->   without checking the resolved speed or interface, relying entirely on
->   phylink never calling it above 1 Gbps. A check there would make the
->   driver robust independently of lpi_interfaces being right;
->   deliberately not bundled into a fix.
+> It is normal to assume phylink is correct. Now, if you do find it
+> doing the wrong thing, we want to know so we can fix it. So if you do
+> want to validate it here, make it very noisy if the validation fails.
 
-It is normal to assume phylink is correct. Now, if you do find it
-doing the wrong thing, we want to know so we can fix it. So if you do
-want to validate it here, make it very noisy if the validation fails.
-
-	
-    Andrew
-
----
-pw-bot: cr
+That note was about a possible defensive check in
+mt753x_phylink_mac_enable_tx_lpi(), not something this series adds. If
+I ever send it, it will warn loudly.
 
