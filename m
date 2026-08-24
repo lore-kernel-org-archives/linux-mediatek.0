@@ -4,151 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2A75C5DF8C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 04:06:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3FC5C5DF8C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 04:52:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aZ+YAW/hXFppA4FxL5IflpWDS7HfTYg8qTJoBoXjwNs=; b=abVKgzKjOEZrKVSPVKPKASN7xA
-	ms78ApGTxWEVc/rR5GgxmLzS0kg2WJyuhr1x3fdK7o/xb7f6+mJgmuhu421OtjBrQIN1NX6oI5Exw
-	hUzLPLWaGdjNkCR/6SO3+sTnHBJjBasFvZV1QzRLig7EkmtI7mwtdr3LJAT4sQdNEDQ55MUXdxLMK
-	6kkq07MJko/vT0kvVltC2fmDHcM75YRtlNas8r1+1Cal4XaQEf1gr8OCl+To9K7/pxd4UgqWnupZA
-	K2Rp9CSrT7Lg5ZXbdldg3dgV+wLBD7fZpk+oksVVnFd9Ei10Eg/UkUFeCo7sET7hxzSPAX5EzUIEg
-	+XDVLnHg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+lbk07JkI5e+MY/+5jcqL9HA7nRDZjiBGwmNADWAQxA=; b=BjSd6r8bzglGG1+Yyb4Hw6Rm6p
+	qpAIR6l/1k+xJpy1+QL7C7el3NrPTiRvFLrW4kGVtADJEgHW7lMnC9Eq7cg6V1uYSN/GExDr9AMnx
+	BramBIznMRkWdtz0Eu4s9lJ07Uv6V8lFaTWAJvDAIVeATDKuG3T5Hc+MCnVFuRfuYBSwdlsLhC0BS
+	af5AhCYZkw5vz3JVTfg2gQIYMcEoZklPiMqGq/19o1gUM6w6xADFd1M/w44LNVvntCTzj8YkqzeJT
+	ReSmnhL6SFm9TOtHUt9IR5VdF7rmwDIAWf/XZ7oLqzjvoyIQ/3g6FE2VjJ+ijoWGR96Mjom2tiprN
+	nEjNcTyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyLx3-0000000FtZs-2Y7k;
-	Mon, 24 Aug 2026 04:06:26 +0000
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+	id 1wyMfs-0000000Fv9q-3cW4;
+	Mon, 24 Aug 2026 04:52:44 +0000
+Received: from relay.yourmailgateway.de ([188.68.61.107])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyLx0-0000000FtYr-3qFh
+	id 1wyMfq-0000000Fv9S-1XBk
 	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Aug 2026 04:06:24 +0000
-Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-cbb8b54fcf8so2888801a12.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 23 Aug 2026 21:06:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1787544381; x=1788149181; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=aZ+YAW/hXFppA4FxL5IflpWDS7HfTYg8qTJoBoXjwNs=;
-        b=GttA3kzxO4Yv/WcOOFGv2H+8cgCoOfNaCscQi4ztq2tnP5oRbbOu7LE9MxadIleKok
-         tX2s6FU0MlfzHYCzdHetEhgOfWYNeWy4c+GChTg0gF7qhrSb370nxcXie+EJ3dRd38Ag
-         JysFR8vS206NrfnS/NIwVVP2KLS1nO6uFyUCzZTjeIM+GiUMJuNi1r38Ge4b3nktANlJ
-         zZKqn+kWsa+fPUCWI384btqFWsjtvQQkNDLw7yyKO9L1Gbh+3hdMmN6sWwaDgfmUiumV
-         w+rC0jSxzIoSr3cmWHZzSanrBmiQ+SNTB7Jfrsw4p1Ob8FRcrJ8INX+ufDSG+tkbb0oh
-         SKFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787544381; x=1788149181;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=aZ+YAW/hXFppA4FxL5IflpWDS7HfTYg8qTJoBoXjwNs=;
-        b=LiyuomAa/Imj0ZgXonm1L77tAxkM2VVDvZSXcN/2pe/2tz85GTuKGAX7mQnx1gHFXd
-         JCKNTLpAilpMq4OZY+8/x3HhuCfsX4EXd7+cm7ynOyPDjEUncaT/KmdXV3C0l7SPyfEb
-         nUKHGiwkk4HdLFPsrCvzsydCJpdn64khNqgVjGxaissr/tE4QeVy7KQv7dvfY6nxyWk1
-         IGCMoRJQez95dnzS+7WLLl8UE4teZh53eLwXNux6DsGS9IdWVW224Rqn7nkZAvZyDtrO
-         9nlbZOja6kpcB8mNppIRv6CQpaBl1YJ18YscHMC9ioS8fCQ35zYqAZxic7YD3LHPAZiB
-         LpFQ==
-X-Forwarded-Encrypted: i=1; AHgh+RqZ8SozDrF1pGtQEkBpxa+nfszEil3RMu3Hh4/oWNlSpXatW993bq9o1jMbtoXK7Hrvdj8jSZywTm7iCIL14A==@lists.infradead.org
-X-Gm-Message-State: AFuF++n/Kmfucp7UkAVA7rGQcKsgbY9nl4mdsFAFkqkgy2QL92hnPPoe
-	MlkVJWTlPU4U32hjqdDdUc0h914opHYgsHzSGxJeLCgdMxKWMg7cZ1Zx31Zav3XyXFw=
-X-Gm-Gg: AR+sD10pVdxLu+LS1RBaxVGk6iYMaY+eHzxb4ecExz8+65jwkNlAUZ2+g0Dbx/K0Tu7
-	b9X8CsFFN9Gukq90qkiopKO0OHFfngau0qopUeF75Z6bjdCZiO4EhYWuS/PP9Jzl/xMhuWVTtvV
-	Sh9dhQ66jGRjyIlcfrzvHzu/ESdhhGJaX3PRF/TwVzAnPfDK9XALMXsEOs4U7iioRd09XMd/0Og
-	qhJoFcGKTMBhwJz9iYxfCYu2Kz+Y6yl3QTf0vCAI6ugUBVB8aTHkj2Hpf0YKcgI9M9+RViJWW1c
-	KVlQvFyepylt/aJIBEw38WK98gzPqfNR3LB0ipxmUGvRQFfu18bTnDqjiM+bEdHecfHjxTWeOHs
-	ACU4bRRVPQDla6JvMbarJ4j5pfNFdsZ2n8qVUSotiyA6ptNmEmRCPY+54TRWFlu35oCDn3iLyeO
-	Of/KlFkuNEuFYDtRW2+b50+9A5Webgl/v5YYaZCmEPL9RqJrmCCRwMfVXJLGbD+5s=
-X-Received: by 2002:a05:6a20:7288:b0:3c3:6b6e:8ba0 with SMTP id adf61e73a8af0-3cd3008a6f1mr36995990637.11.1787544381391;
-        Sun, 23 Aug 2026 21:06:21 -0700 (PDT)
-Received: from localhost ([122.172.87.224])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1418619d6ecsm19733419c88.14.2026.08.23.21.06.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 23 Aug 2026 21:06:20 -0700 (PDT)
-Date: Mon, 24 Aug 2026 09:36:17 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: Ryan Chen <ryan_chen@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Brian Masney <bmasney+clk@redhat.com>,
-	Jerome Brunet <jbrunet+clk@baylibre.com>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Billy Tsai <billy_tsai@aspeedtech.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Taichi Sugaya <sugaya.taichi@socionext.com>,
-	Takao Orito <orito.takao@socionext.com>,
-	Linus Walleij <linusw@kernel.org>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Sudeep Holla <sudeep.holla@kernel.org>,
-	Cristian Marussi <cristian.marussi@arm.com>,
-	David Lechner <david@lechnology.com>,
-	Abel Vesa <abelvesa@kernel.org>, Peng Fan <peng.fan@nxp.com>,
-	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Santosh Shilimkar <ssantosh@kernel.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Vladimir Zapolskiy <vz@mleia.com>, Heiko Stuebner <heiko@sntech.de>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Peter Griffin <peter.griffin@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Dinh Nguyen <dinguyen@kernel.org>,
-	Viresh Kumar <vireshk@kernel.org>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Emilio =?iso-8859-1?Q?L=F3pez?= <emilio@elopez.com.ar>,
-	Chen-Yu Tsai <wens@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Prashant Gaikwad <pgaikwad@nvidia.com>,
-	Thierry Reding <thierry.reding@kernel.org>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Ulf Hansson <ulfh@kernel.org>, Liviu Dudau <liviu.dudau@arm.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Michal Simek <michal.simek@amd.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-clk@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	openbmc@lists.ozlabs.org, arm-scmi@vger.kernel.org,
-	imx@lists.linux.dev, linux-mips@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 33/45] clk: spear: Make sure clk_init_data is fully
- initialized
-Message-ID: <aovDOSMKhHLI70dW@vireshk-B250M-D3H>
-References: <cover.1787239813.git.geert+renesas@glider.be>
- <d4500d249021013d52aa87407f875dc203a251df.1787239813.git.geert+renesas@glider.be>
+	Mon, 24 Aug 2026 04:52:44 +0000
+Received: from mors-relay-8405.netcup.net (localhost [127.0.0.1])
+	by mors-relay-8405.netcup.net (Postfix) with ESMTPS id 4hSz6v0vndz74QG;
+	Mon, 24 Aug 2026 06:52:39 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=leemhuis.info;
+	s=key2; t=1787547159;
+	bh=XgnWoqC9vlOxYt8TkrbhJL8JlSG616CE7CLNhY/UYes=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=YW3Emin0qJ/aLYlnYJMZSXz9o+zrUVW1zMe8ZM2/5uGEJcngC96KDcnNauhL57grC
+	 iu9ix0QcHFukb7R8wn3gSBLFlvOUvddFfCT5bl/4dwwZgAdnOpBMckaY4JpFpYgE3V
+	 2NbIEqIxre05L//8gVKmsSCGfnXpAM8hgHTk4iv9pL0BXcu6Iy3t5st7nkibkXj8zj
+	 uoZmBCmpfl8TxHLSBirNLsLI5si1iG0xhgpQ9nxZYfNABUdYR6yMkTG6qyuYORLQ96
+	 LMPT1olozhUpCeIN7i43bzlChQv1ix4V8f26eQJAciPXypqK4PWL3Gbgy6HhXF2AGk
+	 Ulv6y+eXcVWuQ==
+Received: from policy01-mors.netcup.net (unknown [46.38.225.35])
+	by mors-relay-8405.netcup.net (Postfix) with ESMTPS id 4hSz6v0B71z74Py;
+	Mon, 24 Aug 2026 06:52:39 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at policy01-mors.netcup.net
+Received: from mxe9fb.netcup.net (unknown [10.243.12.53])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by policy01-mors.netcup.net (Postfix) with ESMTPS id 4hSz6s1kFMz8tdN;
+	Mon, 24 Aug 2026 06:52:37 +0200 (CEST)
+Received: from [IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f] (unknown [IPv6:2a02:8108:8984:1d00:a0cf:1912:4be:477f])
+	by mxe9fb.netcup.net (Postfix) with ESMTPSA id 8DE805FA13;
+	Mon, 24 Aug 2026 06:52:36 +0200 (CEST)
+Authentication-Results: mxe9fb;
+        spf=pass (sender IP is 2a02:8108:8984:1d00:a0cf:1912:4be:477f) smtp.mailfrom=regressions@leemhuis.info smtp.helo=[IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f]
+Received-SPF: pass (mxe9fb: connection is authenticated)
+Message-ID: <476e7721-580e-4a6b-86e5-5ed782a2c7ec@leemhuis.info>
+Date: Mon, 24 Aug 2026 06:52:35 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <d4500d249021013d52aa87407f875dc203a251df.1787239813.git.geert+renesas@glider.be>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [REGRESSION] mt7925: MLO connectivity silently stalls with 6GHz
+ link active
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: regressions@lists.linux.dev, linux-wireless@vger.kernel.org,
+ Devin Wittmayer <lucid_duck@justthetip.ca>, Felix Fietkau <nbd@nbd.name>,
+ Jonas Hort <jonas.hort@posteo.de>, lorenzo.bianconi83@gmail.com,
+ linux-mediatek@lists.infradead.org
+References: <503eb10e-80cf-493e-95fd-04fc0f94ce01@posteo.de>
+ <e4bc5ce3-9a6f-4365-9d36-f6440ded0865@posteo.de>
+ <c64f5fa6-4c61-45b6-a513-b971e59d7723@posteo.de>
+From: Thorsten Leemhuis <regressions@leemhuis.info>
+Content-Language: de-DE, en-US
+In-Reply-To: <c64f5fa6-4c61-45b6-a513-b971e59d7723@posteo.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-PPP-Message-ID: <178754715696.1770844.12341715983871143000@mxe9fb.netcup.net>
+X-NC-CID: jZRQ2YBXAlL/TetqCSSSWEo4HFDmv75leDsS4FbASSy4KieyXQs=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260823_210622_963972_F834D1AE 
-X-CRM114-Status: GOOD (  15.44  )
+X-CRM114-CacheID: sfid-20260823_215242_752090_777C1FFB 
+X-CRM114-Status: GOOD (  24.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -163,30 +94,148 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 21-08-26, 10:53, Geert Uytterhoeven wrote:
-> The clk_init_data structure contains several mutually-exclusive members
-> for different methods to specify the possible parents of a clock,
-> prompting drivers to initialize only the members they need.  However,
-> not initializing all members may cause subtle issues, which are only
-> exposed when CONFIG_INIT_STACK_ALL_PATTERN or CONFIG_INIT_STACK_NONE is
-> enabled.
-> 
-> Make sure all members are fully initialized, to avoid such bugs, and to
-> prevent future breakage when converting drivers to a different method
-> for specifying the parents.
-> 
-> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> ---
-> Compile-tested only.
-> ---
->  drivers/clk/spear/clk-aux-synth.c  | 2 +-
->  drivers/clk/spear/clk-frac-synth.c | 2 +-
->  drivers/clk/spear/clk-gpt-synth.c  | 2 +-
->  drivers/clk/spear/clk-vco-pll.c    | 2 +-
->  4 files changed, 4 insertions(+), 4 deletions(-)
+On 8/23/26 22:54, Jonas Hort wrote:
+> Bisect is done. First bad commit:
+>
+> ff643b81bc38eaff6c0ab783a62e4ba9e10d2476
+> wifi: mt76: mt7925: pass mlink and mconf to sta_mld_tlv()
+> Sean Wang, 2026-03-06
+> https://patch.msgid.link/20260306232238.2039675-4-sean.wang@kernel.org
 
-Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+Then let's add Sean to the list of recipients. :-D
 
--- 
-viresh
+Sean, FWIW, this thread starts here:
+
+https://lore.kernel.org/all/066b30cc-a9e6-4aeb-964d-71551e8ea3ef@posteo.de/t/#u
+
+To quote the summary: "WiFi 7 MLO (5GHz+6GHz) on MT7925 silently stops
+passing traffic after a few minutes, while the driver continues to
+report a fully healthy link. Root cause appears to be a stalled WFDMA0
+TX hardware queue."
+
+Ciao, Thorsten
+> Bisected on vanilla, path-restricted to
+> drivers/net/wireless/mediatek/mt76/mt7925/, using v7.0 as good and
+> v7.1 as bad. Each step was booted and tested with MLO active
+> (5GHz+6GHz, FritzBox 5690 Pro), and every "bad" verdict was confirmed
+> by the WFDMA0 signature (tail frozen while head keeps advancing),
+> not just by the connection dropping.
+> 
+>   ea757740dd87  pass WCID indices to bss_basic_tlv()      good (45 min
+> clean)
+>   ff643b81bc38  pass mlink and mconf to sta_mld_tlv()     bad (freeze
+> after ~4 min)
+>   dc019e3294c7  pass mlink to mcu_sta_update()            bad (freeze
+> after ~3 min)
+>   9e4d518a4707  pass mlink to mac_link_sta_remove()       bad (freeze
+> after ~4 min)
+>   cf9db836b1e0  pass mlink to set_link_key()              bad (freeze
+> after ~4 min)
+> 
+> git bisect log and the incident logs for each step are available if
+> useful - happy to attach them to the bugzilla ticket or send them
+> here.
+> 
+> Let me know if you want anything else tested.
+> 
+> Thanks,
+> Jonas
+> 
+> Am 22.08.26 um 22:18 schrieb Jonas Hort:
+>> Quick update: v7.0 vanilla has been running clean for over 2 hours now
+>> with MLO active (5GHz+6GHz, same FritzBox 5690 Pro), no freeze at all.
+>>
+>> Am 19.08.26 um 11:03 schrieb Jonas Hort:
+>>> Thanks for the detailed breakdown.
+>>>
+>>> I'll build v7.0 vanilla and test it, as suggested. Fair warning
+>>> though: I'm on vacation this week, so I'll pick this up next week.
+>>> I've also never compiled a kernel before, so it'll likely take me a
+>>> bit of trial and error the first time around - please bear with me
+>>> if it takes a little longer than expected.
+>>>
+>>> Will report back once I have results.
+>>>
+>>> Thanks again,
+>>> Jonas
+>>>
+>>> 19.08.2026 03:18:34 Devin Wittmayer <lucid_duck@justthetip.ca>:
+>>>
+>>>> Thank you very much, that answers both things.
+>>>>
+>>>> The ROC tracing is the more useful of the two even though it came back
+>>>> negative. Two of the three freezes have no ROC activity in them at
+>>>> all, so a
+>>>> link switch that never finished cannot be what starts this. The
+>>>> middle one
+>>>> does have rocabort, mloroc and rocwork in it, but one out of three
+>>>> makes
+>>>> that look like the exception rather than the pattern. So the area I
+>>>> sent you
+>>>> looking at is out, and that is worth knowing before you spend nights on
+>>>> builds.
+>>>>
+>>>> One other thing worth saying first. There is a five patch mt76
+>>>> series on the
+>>>> list at the moment and two of the patches look like they were
+>>>> written for
+>>>> exactly this bug. I do not think they were, and it is your own
+>>>> numbers that
+>>>> show it. The failure 4/5 fixes stops mt76_txq_schedule_list from
+>>>> servicing
+>>>> the queue, and the one 5/5 fixes stops mt76_txq_send_burst once the
+>>>> non-AQL
+>>>> count reaches its cap. Both of those keep frames from ever reaching the
+>>>> hardware, so if either were your problem head would be sitting still
+>>>> alongside tail. Yours does the opposite. Head climbs 390 to 408
+>>>> while tail
+>>>> stays at 260, so the frames are getting into the ring and nothing is
+>>>> finishing them, which is the far end of the same path. 2/5 is a use
+>>>> after
+>>>> free when an interface goes away, so it does not fit either. I would
+>>>> not
+>>>> expect that series to change what you see.
+>>>>
+>>>> On the bisect I would build v7.0 next. There are 32 mt7925 commits
+>>>> between
+>>>> 7.0 and 7.1 and 19 of them are one run of work from Sean Wang,
+>>>> reworking how
+>>>> the driver tracks the per link mlink and WCID for an MLO station.
+>>>> That is
+>>>> the kind of change that fits a bug only showing up with two links
+>>>> up. If
+>>>> v7.0 comes back clean, that series is where I would look. If v7.0 is
+>>>> already
+>>>> broken then it is off the hook and 6.19 becomes the next split. The
+>>>> mt76
+>>>> core and mac80211 both moved in the same window, so mt7925 is where
+>>>> I would
+>>>> look first rather than the only place worth looking.
+>>>>
+>>>> Devin
+>>>>
+>>>> Am 17.08.26 um 23:34 schrieb Jonas Hort:
+>>>>
+>>>>> Quick follow-up: managed to confirm 6.18 as a clean baseline on my
+>>>>> own hardware now (not just secondhand from others in the forum
+>>>>> thread) - running Linux 6.18.42-1-cachyos-lts with MLO active
+>>>>> (5GHz+6GHz, same FritzBox 5690 Pro) for 3 hours straight, no freeze
+>>>>> at all.
+>>>> Am 17.08.26 um 16:25 schrieb Jonas Hort:
+>>>>
+>>>>> One correction to how I described this earlier: the connection does
+>>>>> NOT reliably self-heal on its own. I have manually intervened every
+>>>>> single time to restore connectivity [...]
+>>>>>
+>>>>> Update on the ROC tracing: three real freezes captured now with the
+>>>>> kprobes active (all confirmed via the WFDMA0 tail-frozen signature).
+>>>>>
+>>>>> - Freeze #1 (15:37): no ROC activity in the trace.
+>>>>> - Freeze #2 (15:43): [...] The trace shows several ROC events
+>>>>>    (rocabort, mloroc, rocwork) clustered together.
+>>>>> - Freeze #3 (16:15): no ROC activity again.
+>>>>>
+>>>>> Uploaded all three logs to the bugzilla ticket if useful:
+>>>>> https://bugzilla.kernel.org/show_bug.cgi?id=221884
+
 
