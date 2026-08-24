@@ -4,77 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F04A9C5DF81
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 09:04:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00969C5DF94
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 09:05:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yVSAp3BOn2NMVHDPGQ6AJu+jYwg4kqser2wze3TvZks=; b=aK2dFFuJvDmI/QDb0aVrD55brm
-	uXqxtZo6wcaN4tJCBI9478xuNH2GDGDTm6KWsWZnWKmj/MwG2uBC0lODTH2XGZzhJAJzaVT6IcM5b
-	eRBki0kxiABchVeF6DSh1ld30X5UXGAiXp8hM1Z4d+Iasj0gtfYEo0mx79Sl6ZK3wNy6Yb7LhV2kv
-	UkeEYf+elCaF8WFBl2Kq5+aqkm6rrbEJKO6Vk/RjbvR8edd01jLjSooparYNvzDHTKbcioz/IspAk
-	8coFAXshZ6N5RF1crqMYQMH5hEtM/4XLet8j1oNS5NDbbT9BIfhBXxk9UQE8pcxB2FCaE+ce8nHAK
-	G0cQtXSg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KQZI73q5Exni8BU+8wGbesz3YhWlzsOsEvNqr/vzRXY=; b=QZR3FAMprK+OVWsnQ6iXP9U4pf
+	KltGLCqFksPaIHNv7zy2WzP+5ol/bECRKh8rLzOxBoGOCbWW7ksRfL499dddPTBodUyvCPi7uaB4h
+	J0p9Ie/yh7OUZo8BJ/+UALjiyPklRgW3/NgHMaGNIbNRXVTxtMM5Sa1knP3BOw+odW3/5xDp8Ag+r
+	HHZxul7RYUIJVAfqcfrVCl1za2MGI0CHTJbOkvg5QWL8KfJHhBDUeio4RSiqD/ZHQ6HQMjsWBTSsU
+	dgtaRe1ygLp9ixcPnl7r9UyQY34BAhgILkgmwyy/xTm/zeUiJX8d6rh0ZDu3tfVa+vEoLGbWcPsKj
+	eiHpNZ2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyQbY-0000000GG16-2mMv;
-	Mon, 24 Aug 2026 09:04:32 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wyQcL-0000000GGeG-2VMe;
+	Mon, 24 Aug 2026 09:05:21 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyQbU-0000000GFuC-0E9j;
-	Mon, 24 Aug 2026 09:04:31 +0000
-X-UUID: c8ebeff69f9a11f1afed4741b24580c9-20260824
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=yVSAp3BOn2NMVHDPGQ6AJu+jYwg4kqser2wze3TvZks=;
-	b=pLglmnOamEJZIzk8PC3d0HVWd+fsj8GCpNcL3BhPYkn3+J8lIbsR70QvPqXfAotormSi2zc9EOxMtPv8kxvvgJhbqftr1f5Vy9R3Mq5kY5v/QURRt9vjtJyiHxIycuscVNKczGt/UO5JigdWw0wSkWMIpYfCbmc64zt6HdUL6Eg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:fb79ceae-531a-4e1e-a065-894d415011fc,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:33c795a0-ab86-4d1b-963c-dc790779b75a,B
-	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
-	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: c8ebeff69f9a11f1afed4741b24580c9-20260824
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <justin.yeh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1732657383; Mon, 24 Aug 2026 02:04:16 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 24 Aug 2026 17:04:13 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 24 Aug 2026 17:04:13 +0800
-From: Justin Yeh <justin.yeh@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	Fei Shao <fshao@chromium.org>
-CC: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Justin Yeh
-	<justin.yeh@mediatek.com>
-Subject: [PATCH] arm64: dts: mediatek: mt8188-geralt: Enlarge SCP core0 memory region
-Date: Mon, 24 Aug 2026 17:04:00 +0800
-Message-ID: <20260824090409.203230-1-justin.yeh@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1wyQcD-0000000GGVq-1nWt;
+	Mon, 24 Aug 2026 09:05:14 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1E09340479;
+	Mon, 24 Aug 2026 09:05:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 764EB1F00ACA;
+	Mon, 24 Aug 2026 09:05:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1787562313;
+	bh=KQZI73q5Exni8BU+8wGbesz3YhWlzsOsEvNqr/vzRXY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=bIqjI0sYAmyaFUTpNpQZyf7W23Y2EEH5UgfN8f3Nk3XmnegBLOEYH5SksLDdDq7DG
+	 mL18wuC5U5foSBe68y/hyZduAH/P1GsKj/i8A2TbFUyMDj9HwcVssoN67+5wEJCPpb
+	 tMIkpkO5kG4diHAbNYW2ymcYMBfe36t9bv6d04us0Lqcvd93yWfXs52qPactTFR8h2
+	 HueIqjRPGpq/C58IsO389MW1qDaGtYNf1G/Odfg5oZk5tpQE31C8tT0p0jh3wQJlKJ
+	 bojPPxkDhPD4H/cdZieqFYO3tiapgJVOW/FNjcnbBchfbHpOV34AbJcyPMsfhP9X7d
+	 a0U3fwOI1XlLQ==
+Date: Mon, 24 Aug 2026 11:05:10 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Rex Lu =?utf-8?B?KOebp+W7uumKmCk=?= <Rex.Lu@mediatek.com>
+Cc: Jakub Kicinski <kuba@kernel.org>, Shiji Yang <yangshiji66@outlook.com>,
+	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+	Felix Fietkau <nbd@nbd.name>, Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+Subject: Re: =?utf-8?B?5Zue6KaGOiBbUEFUQ0hdIG5ldA==?= =?utf-8?Q?=3A?=
+ ethernet: mtk_wed: increase WED v2 WDMA RESV_BUFF to 0x80
+Message-ID: <aowJRvfl2E0oYK3k@lore-desk>
+References: <OSZPR01MB779537889255E2F606E47EABBCA52@OSZPR01MB7795.jpnprd01.prod.outlook.com>
+ <20260821174121.326f3c49@kernel.org>
+ <aoljUFw-rQTLDXg0@lore-qca>
+ <aov3TTKBZ68yl50k@lore-desk>
+ <SI2PR03MB55456905E3D6E84E2337F6ADF3A02@SI2PR03MB5545.apcprd03.prod.outlook.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260824_020428_112601_D97B96AD 
-X-CRM114-Status: GOOD (  12.21  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="6n3KvZE76g7zMrBv"
+Content-Disposition: inline
+In-Reply-To: <SI2PR03MB55456905E3D6E84E2337F6ADF3A02@SI2PR03MB5545.apcprd03.prod.outlook.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,36 +81,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The SCP firmware in linux-firmware for this platform
-(mediatek/mt8188/scp_c0.img) supports MDP, which the mdp3-rdma node
-drives through scp_c0. On top of the segments it loads, the firmware
-allocates a 1 MiB DMA region at 0x50800000 at run time. That lies
-outside the 8 MiB reserved for SCP core0, so Linux is free to allocate
-over memory the firmware uses.
+--6n3KvZE76g7zMrBv
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Enlarge the region to 9 MiB. apu_mem starts at 0x55000000, so no other
-reserved region has to move.
+> Hi Lorenzo,
+>=20
+>     it is only for v2.  v3 changed the hw design and fixed it.  so this R=
+ESV_BUFF register was removed =20
 
-Fixes: e36be19823f0 ("arm64: dts: mediatek: mt8188-geralt: Enable first SCP core")
-Signed-off-by: Justin Yeh <justin.yeh@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Hi Rex,
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-index f382f90c48f5..35f60b5bba6f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-@@ -166,7 +166,7 @@ reserved_memory: reserved-memory {
- 
- 		scp_mem_reserved: memory@50000000 {
- 			compatible = "shared-dma-pool";
--			reg = <0 0x50000000 0 0x800000>;
-+			reg = <0 0x50000000 0 0x900000>;
- 			no-map;
- 		};
- 
--- 
-2.45.2
+thx for pointing this out. In this case:
 
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+
+>=20
+> Thanks
+> Rex Lu
+> ________________________________________
+> =E5=AF=84=E4=BB=B6=E8=80=85: Lorenzo Bianconi
+> =E5=B7=B2=E5=82=B3=E9=80=81: =E6=98=9F=E6=9C=9F=E4=B8=80, 2026 =E5=B9=B4 =
+8 =E6=9C=88 24 =E6=97=A5  =E4=B8=8B=E5=8D=88 03:48
+> =E6=94=B6=E4=BB=B6=E8=80=85: Jakub Kicinski
+> =E5=89=AF=E6=9C=AC: Shiji Yang; netdev@vger.kernel.org; Rex Lu (=E7=9B=A7=
+=E5=BB=BA=E9=8A=98); Felix Fietkau; Andrew Lunn; David S. Miller; Eric Duma=
+zet; Paolo Abeni; Matthias Brugger; AngeloGioacchino Del Regno; linux-kerne=
+l@vger.kernel.org; linux-arm-kernel@lists.infradead.org; linux-mediatek@lis=
+ts.infradead.org
+> =E4=B8=BB=E6=97=A8: Re: [PATCH] net: ethernet: mtk_wed: increase WED v2 W=
+DMA RESV_BUFF to 0x80
+>=20
+> > On Aug 21, Jakub Kicinski wrote:
+> > > On Wed, 19 Aug 2026 21:07:07 +0800 Shiji Yang wrote:
+> > > > Change WDMA RESV_BUFF from 0x40 to 0x80 to avoid CDM TX FIFO overfl=
+ow.
+> > > > Without this patch mt7986 and mt7981 may have WDMA TX hang issue. T=
+his
+> > > > patch was pulled from mtk-openwrt-feeds GPL open source project.
+> > >
+> > > Lorenzo, could you TAL? (incl. Simon's suggestion of the Fixes tag)
+>=20
+> I am wondering if this is necessary for v3 as well.
+> @Rex any input on it?
+>=20
+> Regarding Fixes tag, I think cf26df8833cc is the right one.
+>=20
+> Regards,
+> Lorenzo
+>=20
+> >
+> > sure, I am AFK now, I will review it next week.
+> >
+> > Regards,
+> > Lorenzo
+>=20
+>=20
+
+--6n3KvZE76g7zMrBv
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaowJRgAKCRA6cBh0uS2t
+rOKOAQCrUxXhlq2/GicDy3cYv/kixByf4XwJGX6woI2YjRSeIAEAoPpH97TupPNm
+u1YKwGOwPcA2t7USs374lgneUPvYPA8=
+=XhAn
+-----END PGP SIGNATURE-----
+
+--6n3KvZE76g7zMrBv--
 
