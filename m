@@ -4,162 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79DC8C5DF94
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 13:16:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A505C5DF9B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 13:29:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a5uoZNVB2XRKnrTBdvCmJrG8M4XSoSEJo8KaXU4b4e8=; b=AU8ANJCXDyA1NFKKgzsPNV//qs
-	oXf98ftNBv+ObMahd9dgEbgxVR4TQnq9k2tc2MC7XB4I6lNFmSjWK/X/9meIwj2kwdX6QBUYqEoXR
-	QpXX9LgLY493H+EiZJaPQKf0NwVNIWO9id4a4dZKzZuipbFNRXW2w9Kss867g5N5HuMT3pgz6rZuc
-	K5SNJ2yTvJTne101Z93ZFiqMUcW+e0ZTDTg4M7bfTJp+oG/0Dc12fPqj2EU/BbGTOQQQgwsRYd1Vx
-	L8iHEVFe4QNg0YtmRrqOy0L5ATKbgdoHbHCDvwB7yjrvEhRX/F2MzlreP2XLkYlqlhcWgMf2ct9wq
-	83CHVFKg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=AXV7791+lKEuxikXvEafEqUKInZMtNVXGmlQ9vNTOV0=; b=fMTzxrY3wfGAH+/VPU97bpVFYO
+	/6tb9xQ+y2WJjHqri4LgSY1JGZXF1DiHjOI48QDZzTlqdMn9zncj1nrnSUua3eFz4rrSjkv4Pxctx
+	ZKLHBxOHVgT9WGJZLtIIvz1UkS0Rt0RVTWZlXN+Rv6oUjz+rpd7XH7GgbVLr9pFbBYavQyT7vYKhu
+	DMkd9/1tN874m0I/nyuTcUMHj8HRj7TpMlHnDZtqGBX7PCTfSb7g14mLpbP175wcnA4yRbpM5Z3LE
+	pWwwbBlJ4uq59sKvI3ijVPCIeQts68uzQPmZtf4wwJtb1p5Z+kJaEvW0VyjbasSojyQfjM3sBMlpW
+	XL9glsfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyUXl-0000000GgOa-0WaV;
-	Mon, 24 Aug 2026 13:16:53 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1wyUjw-0000000GhV3-3snQ;
+	Mon, 24 Aug 2026 13:29:28 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyUXg-0000000GgNB-1ZpM
-	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Aug 2026 13:16:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1787577405;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=a5uoZNVB2XRKnrTBdvCmJrG8M4XSoSEJo8KaXU4b4e8=;
-	b=Yt2qQfWIpvra9OdM7gDDW3etGkeqEgtGb6YiRhLqOsf27nRSbUrfF6mJUa9/Jm+7hF0CA/
-	Mx8vJ2x8NHR5UEZyHU7Vb93UVBj1V7Vc044wIY3ZzE4iU3tOMCgUkrmIkMJmcq9QXh6KEn
-	2GLT1s9ZGLJB0PuCtZAiwbj0g++2RoA=
-Received: from mail-yw1-f198.google.com (mail-yw1-f198.google.com
- [209.85.128.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-650-ThD969rSOSi14fZt3WGQRQ-1; Mon, 24 Aug 2026 09:16:43 -0400
-X-MC-Unique: ThD969rSOSi14fZt3WGQRQ-1
-X-Mimecast-MFC-AGG-ID: ThD969rSOSi14fZt3WGQRQ_1787577403
-Received: by mail-yw1-f198.google.com with SMTP id 00721157ae682-836cfd56077so51610957b3.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Aug 2026 06:16:43 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787577403; x=1788182203;
-        h=user-agent:in-reply-to:content-disposition:content-type
-         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=a5uoZNVB2XRKnrTBdvCmJrG8M4XSoSEJo8KaXU4b4e8=;
-        b=AIvJ6Tsyjmdr8BGsKc8F1pOQEyLsI3X6yV6ci0q/oP+VdHJWJ3D0UoEuCx/4UNTJaJ
-         2iOKC1O6Trwh77ErgtfBi68owkcHzkMfWeLc4xRmW0GnpxGTwdmJ1S6+jjRYxYdhmlxP
-         9MCK4q5F6x97NT7jXlWzxpX2tB63TmRIPbuMr+W47RP385Ai59x+BQL3OXZCAEK2k4hw
-         Xr8NejQE045iaoaXrc4uDbIKd5K3Key+xZveuzk2GkvmSLPQWeqk4RZT7LHMOz9vOmni
-         aBgAq/0HPV9FulBUyWrNAvMo2Kp0iNxr1UsyDS0ZmukfjmvJx5hebis040kNix1lv0Lp
-         LRjw==
-X-Forwarded-Encrypted: i=1; AHgh+Rq2UiyB8ftUi3mWXtKWTvYqd3p3CUj4PlNbU8bA+4S729Ws9SrIYnu5dzxjmWLYIUiEydMGRHM6H094cXPwPg==@lists.infradead.org
-X-Gm-Message-State: AFuF++nQPmBxyT982+uyuebDO+/4T+UYRnGIwFo7NNYQyoPzm8/IqGQg
-	nnffRkjLM8tkwwN21lJRBjb2OzfATawS4eOo1gaLP4eBSxaPNRF8D9bkrbjzk81QJ9aujlc5K0r
-	ZPuzpCUVcLaMWgbX2JHn/tsaX3DJAXVI5ItxPMCbX8cjPmGkkO5hrwwaZpqN0kQ8j2rlQXV/vgQ
-	==
-X-Gm-Gg: AR+sD101u+8tKmtN6ONRjZAGOqdsF20fGpV+kl4F2NHPFGu/3RDm+jJzGBZJAAAjds+
-	AnatAIurU8uzyhDIV/hZnF3bwHfZ5jrBqZObf2/CKLHMaHOP2YGqMwS4rOfi8QwJ5igyo8SNaz/
-	e2fD8k6Bq5pAeOshG4r5CaZ63yhUXs60MHbY54OpgC6HLN5NFdW2mr+EjA1DYtV0lQlmjPKUlj/
-	uubTWDdVs+8KZmZxDJhlhj/OKaZ6MYJfgOP/6VaylVBejKrF5S2NIU//IodMWuI9p3p9qTxD6Mv
-	9cgp4GX92hI8N8Ql2QGWkf9qdMUmOnKixsPvqHQT9sDqc0IIlEDYWygoBTOeEZPiqwCeIYVkpky
-	HwgbCHNr5/h2qQZYCi+LMpJztMo29DsTAMIg=
-X-Received: by 2002:a05:690c:e0c1:10b0:81e:a4cf:131b with SMTP id 00721157ae682-849f4a7cc91mr76172907b3.22.1787577403099;
-        Mon, 24 Aug 2026 06:16:43 -0700 (PDT)
-X-Received: by 2002:a05:690c:e0c1:10b0:81e:a4cf:131b with SMTP id 00721157ae682-849f4a7cc91mr76172227b3.22.1787577402495;
-        Mon, 24 Aug 2026 06:16:42 -0700 (PDT)
-Received: from redhat.com (c-73-183-53-213.hsd1.pa.comcast.net. [73.183.53.213])
-        by smtp.gmail.com with ESMTPSA id 00721157ae682-84ca5d254adsm33243617b3.16.2026.08.24.06.16.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 24 Aug 2026 06:16:41 -0700 (PDT)
-Date: Mon, 24 Aug 2026 09:16:34 -0400
-From: Brian Masney <bmasney@redhat.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Geert Uytterhoeven <geert+renesas@glider.be>,
-	Ryan Chen <ryan_chen@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Brian Masney <bmasney+clk@redhat.com>,
-	Jerome Brunet <jbrunet+clk@baylibre.com>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Billy Tsai <billy_tsai@aspeedtech.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Taichi Sugaya <sugaya.taichi@socionext.com>,
-	Takao Orito <orito.takao@socionext.com>,
-	Linus Walleij <linusw@kernel.org>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Sudeep Holla <sudeep.holla@kernel.org>,
-	Cristian Marussi <cristian.marussi@arm.com>,
-	David Lechner <david@lechnology.com>,
-	Abel Vesa <abelvesa@kernel.org>, Peng Fan <peng.fan@nxp.com>,
-	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Santosh Shilimkar <ssantosh@kernel.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Vladimir Zapolskiy <vz@mleia.com>, Heiko Stuebner <heiko@sntech.de>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Peter Griffin <peter.griffin@linaro.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Dinh Nguyen <dinguyen@kernel.org>,
-	Viresh Kumar <vireshk@kernel.org>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Emilio =?iso-8859-1?Q?L=F3pez?= <emilio@elopez.com.ar>,
-	Chen-Yu Tsai <wens@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Prashant Gaikwad <pgaikwad@nvidia.com>,
-	Thierry Reding <thierry.reding@kernel.org>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Ulf Hansson <ulfh@kernel.org>, Liviu Dudau <liviu.dudau@arm.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Michal Simek <michal.simek@amd.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-clk@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	openbmc@lists.ozlabs.org, arm-scmi@vger.kernel.org,
-	imx@lists.linux.dev, linux-mips@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 29/45] clk: samsung: Make sure clk_init_data is fully
- initialized
-Message-ID: <aoxEMm6FGf_onEBf@redhat.com>
-References: <cover.1787239813.git.geert+renesas@glider.be>
- <87b3e83137e1a987f3c69d214706e93ef3898cab.1787239813.git.geert+renesas@glider.be>
- <60a8d05a-76fa-43c3-a0f7-fb26a3b659b8@kernel.org>
+	id 1wyUju-0000000GhTf-2flU;
+	Mon, 24 Aug 2026 13:29:27 +0000
+X-UUID: cf62eb4e9fbf11f1acbe4559397dec65-20260824
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=AXV7791+lKEuxikXvEafEqUKInZMtNVXGmlQ9vNTOV0=;
+	b=oMv/hnk94PcdcK0MXFlIX4CaUFAdM2dqrdvHA7guWMyRCwzpIPz0LYKgdwB2TJdFc+E2TKZsRebs3NGy4Hx7gtnKf4m/GI2oZCdFhsa4uKaI8TdqIr9YlfcsJfk1Hr2qP9yutmojIh6pFDgngVT1P+g9iK1KsN9i8gsIluUWwcs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.19,REQID:105a291a-77b5-48ad-a8bb-180891c0dc38,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:7db8b62,CLOUDID:adb15bfe-f4cb-4ad2-b022-e3ac6648bf25,B
+	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|50|
+	99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
+	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: cf62eb4e9fbf11f1acbe4559397dec65-20260824
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+	(envelope-from <wanming.gao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1574913668; Mon, 24 Aug 2026 06:29:19 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 24 Aug 2026 21:29:16 +0800
+Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 24 Aug 2026 21:29:16 +0800
+From: Wanming Gao <wanming.gao@mediatek.com>
+To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
+	<linux@roeck-us.net>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: <linux-watchdog@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<wanming.gao@mediatek.com>, <wallace.yu@mediatek.com>,
+	<Jarried.Lin@mediatek.com>, <vince-wl.liu@mediatek.com>
+Subject: [PATCH] watchdog: mediatek: Enable pretimeout support
+Date: Mon, 24 Aug 2026 21:29:12 +0800
+Message-ID: <20260824132914.2662346-1-wanming.gao@mediatek.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-In-Reply-To: <60a8d05a-76fa-43c3-a0f7-fb26a3b659b8@kernel.org>
-User-Agent: Mutt/2.4.0 (2026-06-19)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: mJTpdU06vXlYfmzZM6S2kVRV9lIKXBtXljjTc7PIQsQ_1787577403
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260824_061650_180833_4353927A 
-X-CRM114-Status: GOOD (  20.85  )
+X-CRM114-CacheID: sfid-20260824_062926_702810_F8D33818 
+X-CRM114-Status: GOOD (  19.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -174,38 +86,204 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+The watchdog pretimeout interrupt needs to be deasserted after the
+hardware pretimeout event is received. Add IRQ level control handling
+to the MediaTek watchdog interrupt handler so the interrupt is cleared
+before notifying the watchdog core.
 
-On Fri, Aug 21, 2026 at 01:04:01PM +0200, Krzysztof Kozlowski wrote:
-> On 21/08/2026 10:53, Geert Uytterhoeven wrote:
-> > The clk_init_data structure contains several mutually-exclusive members
-> > for different methods to specify the possible parents of a clock,
-> > prompting drivers to initialize only the members they need.  However,
-> > not initializing all members may cause subtle issues, which are only
-> > exposed when CONFIG_INIT_STACK_ALL_PATTERN or CONFIG_INIT_STACK_NONE is
-> > enabled.
-> > 
-> > Make sure all members are fully initialized, to avoid such bugs, and to
-> > prevent future breakage when converting drivers to a different method
-> > for specifying the parents.
-> > 
-> > Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> > ---
-> > Compile-tested only.
-> > ---
-> >  drivers/clk/samsung/clk-cpu.c | 2 +-
-> >  drivers/clk/samsung/clk-pll.c | 2 +-
-> >  2 files changed, 2 insertions(+), 2 deletions(-)
-> 
-> 
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-> 
-> Let me know if I should take it via Samsung SoC clock tree. I assume by
-> default this will go directly via clock tree.
+Serialize all WDT_MODE read-modify-write operations using the existing
+watchdog spinlock. Initialize the lock before registering the interrupt
+handler and hold it across the complete 70us IRQ level toggle sequence.
+This prevents concurrent watchdog start, stop, or pretimeout updates
+from overwriting the temporary IRQ level state and disrupting the
+deassert pulse.
 
-Please take it through your Samsung tree to avoid merge conflicts if
-there are other changes to these files during this development cycle.
+This avoids leaving the watchdog pretimeout interrupt asserted, prevents
+a potential interrupt storm, and allows the kernel to handle the
+pretimeout event properly before the final watchdog reset.
 
-Brian
+Test: Boot ok, trigger watchdog pretimeout case and verify the
+      pretimeout interrupt is received and handled before watchdog reset.
+
+Signed-off-by: Wanming Gao <wanming.gao@mediatek.com>
+---
+ drivers/watchdog/mtk_wdt.c | 59 +++++++++++++++++++++++++++++++++++---
+ 1 file changed, 55 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+index d9c30e4c80e3..17176bee9d38 100644
+--- a/drivers/watchdog/mtk_wdt.c
++++ b/drivers/watchdog/mtk_wdt.c
+@@ -35,6 +35,7 @@
+ #define WDT_MAX_TIMEOUT		31
+ #define WDT_MIN_TIMEOUT		2
+ #define WDT_LENGTH_TIMEOUT(n)	((n) << 5)
++#define WDT_IRQ_LEVEL_SYNC_US	70
+ 
+ #define WDT_LENGTH		0x04
+ #define WDT_LENGTH_KEY		0x8
+@@ -49,6 +50,7 @@
+ #define WDT_MODE_EXRST_EN	(1 << 2)
+ #define WDT_MODE_IRQ_EN		(1 << 3)
+ #define WDT_MODE_AUTO_START	(1 << 4)
++#define WDT_MODE_IRQ_LEVEL_EN	(1 << 5)
+ #define WDT_MODE_DUAL_EN	(1 << 6)
+ #define WDT_MODE_CNT_SEL	(1 << 8)
+ #define WDT_MODE_KEY		0x22000000
+@@ -72,7 +74,7 @@ static unsigned int timeout;
+ struct mtk_wdt_dev {
+ 	struct watchdog_device wdt_dev;
+ 	void __iomem *wdt_base;
+-	spinlock_t lock; /* protects WDT_SWSYSRST reg */
++	spinlock_t lock; /* protects WDT_MODE and WDT_SWSYSRST reg */
+ 	struct reset_controller_dev rcdev;
+ 	bool disable_wdt_extrst;
+ 	bool reset_by_toprgu;
+@@ -212,8 +214,6 @@ static int toprgu_register_reset_controller(struct platform_device *pdev,
+ 	int ret;
+ 	struct mtk_wdt_dev *mtk_wdt = platform_get_drvdata(pdev);
+ 
+-	spin_lock_init(&mtk_wdt->lock);
+-
+ 	mtk_wdt->rcdev.owner = THIS_MODULE;
+ 	mtk_wdt->rcdev.nr_resets = rst_num;
+ 	mtk_wdt->rcdev.ops = &toprgu_reset_ops;
+@@ -230,14 +230,17 @@ static int mtk_wdt_restart(struct watchdog_device *wdt_dev,
+ {
+ 	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdt_dev);
+ 	void __iomem *wdt_base;
++	unsigned long flags;
+ 	u32 reg;
+ 
+ 	wdt_base = mtk_wdt->wdt_base;
+ 
+ 	/* Enable reset in order to issue a system reset instead of an IRQ */
++	spin_lock_irqsave(&mtk_wdt->lock, flags);
+ 	reg = readl(wdt_base + WDT_MODE);
+ 	reg &= ~WDT_MODE_IRQ_EN;
+ 	writel(reg | WDT_MODE_KEY, wdt_base + WDT_MODE);
++	spin_unlock_irqrestore(&mtk_wdt->lock, flags);
+ 
+ 	while (1) {
+ 		writel(WDT_SWRST_KEY, wdt_base + WDT_SWRST);
+@@ -302,12 +305,15 @@ static int mtk_wdt_stop(struct watchdog_device *wdt_dev)
+ {
+ 	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdt_dev);
+ 	void __iomem *wdt_base = mtk_wdt->wdt_base;
++	unsigned long flags;
+ 	u32 reg;
+ 
++	spin_lock_irqsave(&mtk_wdt->lock, flags);
+ 	reg = readl(wdt_base + WDT_MODE);
+ 	reg &= ~WDT_MODE_EN;
+ 	reg |= WDT_MODE_KEY;
+ 	iowrite32(reg, wdt_base + WDT_MODE);
++	spin_unlock_irqrestore(&mtk_wdt->lock, flags);
+ 
+ 	return 0;
+ }
+@@ -317,12 +323,14 @@ static int mtk_wdt_start(struct watchdog_device *wdt_dev)
+ 	u32 reg;
+ 	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdt_dev);
+ 	void __iomem *wdt_base = mtk_wdt->wdt_base;
++	unsigned long flags;
+ 	int ret;
+ 
+ 	ret = mtk_wdt_set_timeout(wdt_dev, wdt_dev->timeout);
+ 	if (ret < 0)
+ 		return ret;
+ 
++	spin_lock_irqsave(&mtk_wdt->lock, flags);
+ 	reg = ioread32(wdt_base + WDT_MODE);
+ 	if (wdt_dev->pretimeout)
+ 		reg |= (WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
+@@ -334,6 +342,7 @@ static int mtk_wdt_start(struct watchdog_device *wdt_dev)
+ 		reg |= WDT_MODE_CNT_SEL;
+ 	reg |= (WDT_MODE_EN | WDT_MODE_KEY);
+ 	iowrite32(reg, wdt_base + WDT_MODE);
++	spin_unlock_irqrestore(&mtk_wdt->lock, flags);
+ 
+ 	return 0;
+ }
+@@ -343,7 +352,11 @@ static int mtk_wdt_set_pretimeout(struct watchdog_device *wdd,
+ {
+ 	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdd);
+ 	void __iomem *wdt_base = mtk_wdt->wdt_base;
+-	u32 reg = ioread32(wdt_base + WDT_MODE);
++	unsigned long flags;
++	u32 reg;
++
++	spin_lock_irqsave(&mtk_wdt->lock, flags);
++	reg = ioread32(wdt_base + WDT_MODE);
+ 
+ 	if (timeout && !wdd->pretimeout) {
+ 		wdd->pretimeout = wdd->timeout / 2;
+@@ -352,19 +365,55 @@ static int mtk_wdt_set_pretimeout(struct watchdog_device *wdd,
+ 		wdd->pretimeout = 0;
+ 		reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
+ 	} else {
++		spin_unlock_irqrestore(&mtk_wdt->lock, flags);
+ 		return 0;
+ 	}
+ 
+ 	reg |= WDT_MODE_KEY;
+ 	iowrite32(reg, wdt_base + WDT_MODE);
++	spin_unlock_irqrestore(&mtk_wdt->lock, flags);
+ 
+ 	return mtk_wdt_set_timeout(wdd, wdd->timeout);
+ }
+ 
++static void mtk_wdt_deassert_irq(struct watchdog_device *wdd)
++{
++	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdd);
++	void __iomem *wdt_base = mtk_wdt->wdt_base;
++	unsigned long flags;
++	u32 reg;
++
++	spin_lock_irqsave(&mtk_wdt->lock, flags);
++	reg = ioread32(wdt_base + WDT_MODE);
++
++	if (reg & WDT_MODE_IRQ_LEVEL_EN) {
++		reg &= ~WDT_MODE_IRQ_LEVEL_EN;
++		iowrite32(reg | WDT_MODE_KEY, wdt_base + WDT_MODE);
++		/*
++		 * Wait for two 32KHz watchdog clock cycles so the
++		 * hardware can latch the IRQ level change across the clock
++		 * domain.
++		 */
++		udelay(WDT_IRQ_LEVEL_SYNC_US);
++		reg = ioread32(wdt_base + WDT_MODE);
++		reg |= WDT_MODE_IRQ_LEVEL_EN;
++	} else {
++		reg |= WDT_MODE_IRQ_LEVEL_EN;
++		iowrite32(reg | WDT_MODE_KEY, wdt_base + WDT_MODE);
++		udelay(WDT_IRQ_LEVEL_SYNC_US);
++		reg = ioread32(wdt_base + WDT_MODE);
++		reg &= ~WDT_MODE_IRQ_LEVEL_EN;
++	}
++	iowrite32(reg | WDT_MODE_KEY, wdt_base + WDT_MODE);
++	ioread32(wdt_base + WDT_MODE);
++	spin_unlock_irqrestore(&mtk_wdt->lock, flags);
++}
++
+ static irqreturn_t mtk_wdt_isr(int irq, void *arg)
+ {
+ 	struct watchdog_device *wdd = arg;
+ 
++	mtk_wdt_deassert_irq(wdd);
+ 	watchdog_notify_pretimeout(wdd);
+ 
+ 	return IRQ_HANDLED;
+@@ -406,6 +455,8 @@ static int mtk_wdt_probe(struct platform_device *pdev)
+ 	if (!mtk_wdt)
+ 		return -ENOMEM;
+ 
++	spin_lock_init(&mtk_wdt->lock);
++
+ 	platform_set_drvdata(pdev, mtk_wdt);
+ 
+ 	mtk_wdt->wdt_base = devm_platform_ioremap_resource(pdev, 0);
+-- 
+2.45.2
 
 
