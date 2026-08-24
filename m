@@ -4,72 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11031C5DF8C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 01:09:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C80EBC5DF8C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 02:15:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Abp7f0lslry2Y3P+l2UVi7yMoY3UipA/IpSDKDZi65U=; b=zH+vjxSqcWrYbeGKOOEvQJoVrx
-	bJ6NI9rSF7p1mC62LYqi9xiZSXVPOy9vtoNpSjfHnorCOuxa3bl9ay69mLXCXlckFd2fuQcqWgKaW
-	h+JXHKWWBJnDJ4Vf6KEw0RwFhOgqQ9e8g6EkV1Iu3XEnApKh8wNyjPnkXPGa3+1N3/wAgHc4IEVwV
-	aSMHTmigu78hKbSleitfCJhUnQAz7yn24B6dIbf7FjkVy65D+BiZfmdHB3FcDtWynoKUvPyEb5baX
-	VhulDs89L71YIHdNO5cPSRHPfEC8xtxKYgdGNUGLKGmujBstkjE310fvdFO1PfFUBabRD/QPLlqbn
-	ddJ9AZsQ==;
+	bh=8j7/FGt0oFHCAupBVOrQ+nukdA+Ej2PxRli8y7TFGPw=; b=BvGFjjzQqYm8efaSxt5tcXdmAI
+	w7PLEzOm9+UdtUB2uSa0NhmnzUEFDIDxQeof2XLjupVRcrbHYbd7m7tv4F21laMf+vBCDbK8bWdb3
+	FrOffyy4MgwDM753YR0OBxnA4gI9leW0oWHrb4DwSuv5aXFAtaSIadLJIgqnZCnV/LogkCvj/qNYs
+	tdQz3Nuwvsy5lnxSMgi6obrLVHAs/HpfJ0FNwOazOgk4RGyO+flAW5wIQQBz/kFGBbh4A6swT1Fel
+	GTbQrq7vN5uodfPCA4YOExLOKWhNDqGm/0OLeDW2xBovm//cjTP0S0+GBLFiLpgdEGZ6pdqnZa/NC
+	+TGIqPkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyJBn-0000000FjMO-3Qp1;
-	Mon, 24 Aug 2026 01:09:28 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1wyKDH-0000000Flb7-14kj;
+	Mon, 24 Aug 2026 02:15:03 +0000
+Received: from out-121.mta1.migadu.com ([2001:41d0:203:375::79] helo=mta1.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyJBj-0000000FjL1-07zM;
-	Mon, 24 Aug 2026 01:09:26 +0000
-X-UUID: 6a57d9ce9f5811f19a56ed5b684f684d-20260824
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:140851fc-e384-4fe3-ad9b-98d3cb667b51,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:7db8b62,CLOUDID:dc90ac184cdb00c67510a7f936423c1a,BulkI
-	D:nil,BulkQuantity:0,SF:102|136|865|898,TC:nil,Content:0|15|50,EDM:-3|-100
-	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
-	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 6a57d9ce9f5811f19a56ed5b684f684d-20260824
-X-User: liujiajia@kylinos.cn
-Received: from nature.lan [(10.44.16.150)] by mailgw.kylinos.cn
-	(envelope-from <liujiajia@kylinos.cn>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 211265000; Mon, 24 Aug 2026 09:09:11 +0800
-From: Jiajia Liu <liujiajia@kylinos.cn>
-To: Marcel Holtmann <marcel@holtmann.org>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
-	Ying Hsu <yinghsu@chromium.org>,
-	Archie Pusaka <apusaka@chromium.org>,
-	Abhishek Pandit-Subedi <abhishekpandit@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jing Cai <jing.cai@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Chris Lu <chris.lu@mediatek.com>
-Cc: linux-bluetooth@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1wyKDD-0000000Fla4-2XH0
+	for linux-mediatek@lists.infradead.org;
+	Mon, 24 Aug 2026 02:15:01 +0000
+X-Envelope-To: linux-mediatek@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=NtQ2IOM/Mh5R17rSUOh8SsBc1MqYsMk2h3KzjPHs0PE=;
+ c=simple/simple; d=linux.dev;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1787537693; v=1; x=1788142493;
+ b=wQVvXueOFLtDN5Vz2tgoyaSRzYAX7FfBDKUOiijLrQlo2B4jI0dhYuab3bIgZezb0devHpaf
+ 8ONXFs7as3ZARCG/vhHg2mxL52GZlfBk9BR9XRzM04jrRUYlAxcprZSyp1kk9GYUnV9DyaHQKSR
+ uxGLG0tcaX8dIPAVqwNrobIo=
+X-Envelope-To: linux-mediatek@lists.infradead.org
+Received: from localhost.localdomain (116.128.244.169)
+	by mta10.migadu.com with ESMTPS id 9bf3271d94a12da4;
+	Mon, 24 Aug 2026 02:14:53 +0000
+X-Mizu-Trace-ID: 9bf3271d94a12da4
+X-Migadu-Flow: FLOW_OUT
+From: Yi Cong <cong.yi@linux.dev>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com
+Cc: shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	Jiajia Liu <liujiajia@kylinos.cn>
-Subject: [PATCH v4 1/2] Bluetooth: btusb: mediatek: Fix leaked runtime PM reference in reset
-Date: Mon, 24 Aug 2026 09:08:59 +0800
-Message-ID: <59a4c09e1cb02ad8c375a08e5af164d64a3d7061.1787477831.git.liujia6264@gmail.com>
-X-Mailer: git-send-email 2.55.0
+	Yi Cong <yicong@kylinos.cn>,
+	stable@vger.kernel.org
+Subject: [PATCH] wifi: mt76: mt792x: fix negative errno truncation in offload capability
+Date: Mon, 24 Aug 2026 10:14:29 +0800
+Message-Id: <20260824021429.43761-1-cong.yi@linux.dev>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260823_180923_370541_FA741733 
-X-CRM114-Status: GOOD (  17.93  )
+X-CRM114-CacheID: sfid-20260823_191500_020031_8DBA6BE1 
+X-CRM114-Status: UNSURE (   8.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,110 +75,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT7925 on HP Pro Mini 260 sometimes timed out during reloading driver
-and reset usb device. btusb_suspend is not called again after closing
-bluetooth interface.
+From: Yi Cong <yicong@kylinos.cn>
 
- usbcore: registered new interface driver btusb
- Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20260605184935
- Bluetooth: hci0: Execution of wmt command timed out
- Bluetooth: hci0: Failed to send wmt patch dwnld (-110)
- Bluetooth: hci0: Failed to set up firmware (-110)
- usb 3-10: reset high-speed USB device number 4 using xhci_hcd
- Bluetooth: hci0: HW/SW Version: 0x00000000, Build Time: 20260605184935
- Bluetooth: hci0: Device setup in 1856545 usecs
- Bluetooth: hci0: AOSP extensions version v1.00
- Bluetooth: hci0: AOSP quality report is supported
- Bluetooth: MGMT ver 1.23
+Returning a negative errno as u8 turned -ENOENT into 0xfe, wrongly
+enabling CNM and NAN caps. Return int and default to no caps on error.
 
-btusb_mtk_reset calls usb_autopm_get_interface to resume the device
-before driving the hardware reset, but never calls the matching
-usb_autopm_put_interface. Every hardware reset therefore leaks a PM
-usage reference of the interface, preventing the device from being
-runtime suspended again until it is unbound.
-
-Add the BTUSB_RESET flag. It is set before usb_queue_reset_device
-and is cleared in btusb_disconnect, which drops the reference as well.
-If the flag is already set when a new reset is requested, drop one
-reference.
-
-Also clear BTMTK_HW_RESET_ACTIVE if usb_autopm_get_interface fails,
-otherwise no further reset could ever be attempted.
-
-Fixes: 25b6d7593a3a ("Bluetooth: btmtk: introduce btmtk reset work")
-Assisted-by: Claude:qwen3.8-max
-Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
+Fixes: e8a264ccd2de0 ("wifi: mt76: mt7921: move init shared code in mt792x-lib module")
+Cc: stable@vger.kernel.org
+Signed-off-by: Yi Cong <yicong@kylinos.cn>
 ---
+ drivers/net/wireless/mediatek/mt76/mt792x_core.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
 
-Changes in v4:
-- do not return if BTUSB_RESET is set in case the first reset failed.
-  move test_and_set_bit right before usb_queue_reset_device (sashiko)
-
-Changes in v3:
-- rename BTUSB_USB_RESET_ACTIVE to BTUSB_RESET (Luiz)
-
-- test_and_clear_bit BTUSB_RESET in btusb_disconnect (Luiz)
-
-- handle multiple reset requests int btusb_mtk_reset (sashiko)
-  set BTUSB_RESET if no reset_gpio after usb_autopm_get_interface.
-  If the flag is already set, add log and drop newly acquired reference
-  and return.
-
-- clear BTMTK_HW_RESET_ACTIVE if usb_autopm_get_interface fails and add
-  error log. (sashiko)
-
----
- drivers/bluetooth/btusb.c | 14 +++++++++++++-
- 1 file changed, 13 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 184e95c1625e5..c95f72484fc0f 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -957,6 +957,7 @@ struct qca_dump_info {
- #define BTUSB_USE_ALT3_FOR_WBS	15
- #define BTUSB_ALT6_CONTINUOUS_TX	16
- #define BTUSB_HW_SSR_ACTIVE	17
-+#define BTUSB_RESET		18
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+index 0ad33f74c2285..297c8a9f41ba3 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+@@ -857,7 +857,7 @@ int mt792x_init_wiphy(struct ieee80211_hw *hw)
+ }
+ EXPORT_SYMBOL_GPL(mt792x_init_wiphy);
  
- struct btusb_data {
- 	struct hci_dev       *hdev;
-@@ -2891,8 +2892,11 @@ static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
- 	}
+-static u8
++static int
+ mt792x_get_offload_capability(struct device *dev, const char *fw_wm)
+ {
+ 	const struct mt76_connac2_fw_trailer *hdr;
+@@ -926,13 +926,20 @@ mt792x_get_mac80211_ops(struct device *dev,
+ 			void *drv_data, u8 *fw_features)
+ {
+ 	struct ieee80211_ops *ops;
++	int ret;
  
- 	err = usb_autopm_get_interface(data->intf);
--	if (err < 0)
-+	if (err < 0) {
-+		bt_dev_err(hdev, "Failed usb_autopm_get_interface: %d", err);
-+		clear_bit(BTMTK_HW_RESET_ACTIVE, &btmtk_data->flags);
- 		return err;
+ 	ops = devm_kmemdup(dev, mac80211_ops, sizeof(struct ieee80211_ops),
+ 			   GFP_KERNEL);
+ 	if (!ops)
+ 		return NULL;
+ 
+-	*fw_features = mt792x_get_offload_capability(dev, drv_data);
++	ret = mt792x_get_offload_capability(dev, drv_data);
++	if (ret < 0) {
++		dev_warn(dev, "failed to read firmware offload caps: %d\n", ret);
++		*fw_features = 0;
++	} else {
++		*fw_features = ret;
 +	}
  
- 	/* Release MediaTek ISO data interface */
- 	btusb_mtk_release_iso_intf(hdev);
-@@ -2915,6 +2919,11 @@ static int btusb_mtk_reset(struct hci_dev *hdev, void *rst_data)
- 
- 	err = btmtk_usb_subsys_reset(hdev, btmtk_data->dev_id);
- 
-+	if (test_and_set_bit(BTUSB_RESET, &data->flags)) {
-+		bt_dev_err(hdev, "last usb reset failed? Resetting again");
-+		usb_autopm_put_interface_no_suspend(data->intf);
-+	}
-+
- 	usb_queue_reset_device(data->intf);
- 	clear_bit(BTMTK_HW_RESET_ACTIVE, &btmtk_data->flags);
- 
-@@ -4497,6 +4506,9 @@ static void btusb_disconnect(struct usb_interface *intf)
- 	if (data->reset_gpio)
- 		gpiod_put(data->reset_gpio);
- 
-+	if (test_and_clear_bit(BTUSB_RESET, &data->flags))
-+		usb_autopm_put_interface_no_suspend(data->intf);
-+
- 	if (intf == data->intf) {
- 		if (data->isoc)
- 			usb_driver_release_interface(&btusb_driver, data->isoc);
+ 	if (mt792x_needs_cnm_runtime(drv_data))
+ 		*fw_features |= MT792x_FW_CAP_CNM;
 -- 
-2.53.0
+2.25.1
 
 
