@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2226C5DF81
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 19:53:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 965CEC5DF9C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 19:53:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vJux4Od4WclGRzmE6aM1d/Z4wHjU5GgSWPM1pDjMQUM=; b=SpKcyRpvPNWzpkxx8hGRQb3XHc
-	V1NGe0fc9KfFSP5vb2nNwoUUI133kq5xKSMhmAIrhM7tsNfNn+TyuLpF1eQtfXCRLGxqjQ2CSx8pW
-	q2MppR7sUo65ckjCnLP8hT/t3VkP2DWWSNXZos6KpnG8ieYG8DvnJJZCGP/PyGvEqSSqOaPuVnToX
-	5P+V7ZdU84XOPKswk77Bplz5a4Wr67FXJggHaKlBb6dzZBvEHHyNvxn9xkGWaOVuJYuR6FADwhyo+
-	ytdjAnfzlMWDrAsSl6c1aSFRtlnkiD4Mj8xkmlY+XFhFpJ9X6ho7wF8pYO6LKnu7TvS/9eA4UERNb
-	fgX+QUgg==;
+	bh=TeonRlP0AmNpIWgR3zOOTFzTXc3/eUo2hUs/hJhA6L8=; b=GzMVCDH2oknv4B4z8Wm7EjY4z5
+	L97/Se45ZZe0X8Pl5OITdeqV+49PnBN4PqdItT3RpUGvuZu448G26lz1vZ1ocXJB655a+FhcVDIz8
+	vmX5swYf5vTNyYU0Ta9ln5YUxNLQ6verID1IO4ROdxPHK0k2gLmN9Gb1HnQD9EbqRsctQgOwqD8NP
+	rvCyG/TlUVeQJUg819tzR9vvigmCJEBth3cfyQS0GfGaFOL6Vl8zOsh3SrfjugkaS4GLNxHs4pJnd
+	iwr1q7Faycm0cBwHk/0dVs5PQn57QQ2QFO4zSCcmdp0XBjaochadSl+Ram9tKknfZpkc7iQU5c9J+
+	cfGc9SWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyaj5-0000000HKKX-0wcD;
-	Mon, 24 Aug 2026 19:52:59 +0000
-Received: from mail-oa1-f50.google.com ([209.85.160.50])
+	id 1wyajD-0000000HKMZ-19Ue;
+	Mon, 24 Aug 2026 19:53:07 +0000
+Received: from mail-oa1-f51.google.com ([209.85.160.51])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyaj3-0000000HKJs-1HkU
+	id 1wyaj8-0000000HKLi-3v4V
 	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Aug 2026 19:52:58 +0000
-Received: by mail-oa1-f50.google.com with SMTP id 586e51a60fabf-44cf70de986so2708398fac.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Aug 2026 12:52:56 -0700 (PDT)
+	Mon, 24 Aug 2026 19:53:04 +0000
+Received: by mail-oa1-f51.google.com with SMTP id 586e51a60fabf-448b69cfc6dso3791109fac.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Aug 2026 12:53:02 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787601176; x=1788205976;
+        d=1e100.net; s=20251104; t=1787601182; x=1788205982;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=vJux4Od4WclGRzmE6aM1d/Z4wHjU5GgSWPM1pDjMQUM=;
-        b=sNIlzhm9w4lHL8a0k+0ZjmZgxQXbhSLYrZxABxYFB11bwzbjNg/NzUQ9ehfoHakju5
-         DhifKY2H9uKYxM3VkJDyweEkP8mfhaX2vSqnnmTZbSXp8xs/7x0LVksGV/lN/YK1Y5R3
-         W6XordD/BKg27nFjIO+oW10asTTc9ZOI5+u60Epc22n55h9DBqrFkaSeKEPOmmL20cpp
-         /vaDuWXVuh8t+Tw25SUP7pC+YbJL5Whe/qzPi+lQrtgnWHXpKk2OmEFd8M8JABtig7TJ
-         zAbd5t9rjYdJOQC6pqVp1GvVn9Te5VYTHY2QENNAUGdaysVwSk5ZbNgBQFOniZzsshqt
-         KRKA==
-X-Forwarded-Encrypted: i=1; AHgh+RotZSYTXsL09LO1YejDA6pJhHvDBaPW88df6g3JQ10Dq30QrztwsfeK1D5j6azoQd5ZKJaJrl2JdksDsix8sQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++lrZDK71TwyEETnxcQZX3y6g9rQYp+4INBqR8Amfuv7jN0JyihO
-	IKbi65DRrYYDAVEwsAmVww9ZMD8fc68/9Wq0dX8lVYAqpZ7I+p5jLt3/
-X-Gm-Gg: AR+sD12JL77Hbdlgm9UFnwCFMmW8HZEKFr2FyeU/SOEdkVe0lGxhrAdNdRh4kQUod+C
-	/YV9maHSz566ysEu7LKkcuBVy1OzzCha1pV6RNpVqWMC93ftqWda2jf4+WrzEEqFb6voemtRC1k
-	ZIEMND1p81FKfFWEWDOPrwv/Xrm15wlpnt9ffJneV6NZt/on9xuMzOMtkx5ZtIohqVlE0TugdR4
-	yck3qhcwYJ8G4EbR4eYOPRj4+bg2bpAX91mFzioccU5Lns1nM1BZi04t3H+0PMK1n3LI/qL2yWq
-	5HZSoJb9KqhB/4Q2jmF0CpRmztwmyKDEp6pNoiFK4DSVojP0ZEx5NQowvR75KxZ/wtYg4G79+yG
-	GRDnZG3rhTtyCBgIXI0aJqa/wi+vjhLrfdMm35d0D0k4+RXexm+WNBbB1oPM8Bbu5II/7WfQYBF
-	duTDLJ/6PxYHT2xCh3D1XWWTku4TtzC9SDqbsDWH3mpHq4gAbYADOnzGEOqiP8poihrYceiErIz
-	YyzGvAcbsv8imRVhAlRESgmfKnx+JNG9ZxOUkM8JT/b
-X-Received: by 2002:a05:6870:b3e9:b0:451:9455:d733 with SMTP id 586e51a60fabf-463802da087mr21787483fac.21.1787601176165;
-        Mon, 24 Aug 2026 12:52:56 -0700 (PDT)
+        bh=TeonRlP0AmNpIWgR3zOOTFzTXc3/eUo2hUs/hJhA6L8=;
+        b=dGZfE6k8DPhyRrQuecpVQfjM4PEBHlw6UYsiOhJB1+tyr83tK8IIwd4H/v7cY/F69Z
+         pamgdaYIBl6JTiL5q31GuA78b0EWeWYDazxS8OvFV+BgppguDS+EandmJKqKfjls0BHB
+         iK80oHzFcAJFVz7WUjFPsfTf+W3YjQv36aJ2K2Bol1hHzCgJnU3DdcIG3VyPexJOCoh3
+         hTQCgMZ56aeK0vwADyWLvtvI6nQ7nZPTN41jbCkWrDJCJstMiW6txPxI5h+DkjJjAHzU
+         b4JS0+cUri6mj5ZHYpVPQIBrKMDVCA6JRob873paWB3/v+cFU8zLHO3jn66O9xd2XM1z
+         sFUQ==
+X-Forwarded-Encrypted: i=1; AHgh+RrooYuEHupCgQxpsNY5nSBngddQtMcIe0S76bx/dZzQK45J6hhnIkynuhfZAR0hMpSETrHSJ/w0SS4ss+cBPA==@lists.infradead.org
+X-Gm-Message-State: AFuF++n5QEERUI1rnBnVkyPUcoTF+wqOgHZy4MsjEmwHuugGENzr+weA
+	onh7eDyflbfdnM+Ea4cXZ+wWU0Yd8jXD7Cx/LhP5+wlJnr1UnTNwDUdX
+X-Gm-Gg: AR+sD121CbA22iAVNVI0ETLsiIH6bTmA4ENaBsIO4mMbR7C6TzqucczdmJ4O/oSLRne
+	FOZ8uQRU01wmNZrtCyWrK249i5vV1WRzOiC9FwTRmcXlwoW+Z0QbwsiSt3bWmlsFJM7Nb5Fv9DL
+	08RcCqiFPr4kcqvsQjIFtQ305Z1bGfz7mLM0EVhRAVN6sbeANlp1mlzuvd8wvFyOSb+eNUN63Ev
+	nE6e+eAalNdUAT4WLhlVWJ19Os7ovpzBlV9Yb9KOjPBg51QJfvy/l0N1tsPlBiVA3q+u2jkBLC8
+	aCDL/zdxAaodY8IRjGB6GZHNWr8WeNbsqxPmnrG5J0vjvUXVF8X6EIlAbJ3u4HFczbrBbLysa/f
+	ApjtW+q2r9RbNJmr/jy/bopG9Zlxcw1Z/lZP6KXk9eyiWxlNgVkRHpt84wUSDtE/zNATqLsmtt2
+	x22edq7QdO0//kpGItK0AwSijohJAIDzIcxP2C2yR9Sj8kkGexqIBm1LAedyzlambOtDElmbShS
+	G+9xXRhGT9LKYT8PiIRh9KHkLKXE5iLcwNHeNZcDLeajH7yhObp0B74zlH8
+X-Received: by 2002:a05:6870:ab8b:b0:435:16e9:f288 with SMTP id 586e51a60fabf-4644b59067cmr1615297fac.20.1787601181803;
+        Mon, 24 Aug 2026 12:53:01 -0700 (PDT)
 Received: from sean-HP-EliteBook-830-G6.lan ([207.191.35.252])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-463835bcdcbsm5805896fac.18.2026.08.24.12.52.55
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-463835bcdcbsm5805896fac.18.2026.08.24.12.53.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 24 Aug 2026 12:52:55 -0700 (PDT)
+        Mon, 24 Aug 2026 12:53:01 -0700 (PDT)
 From: Sean Wang <sean.wang@kernel.org>
 To: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com
@@ -67,17 +67,17 @@ Cc: linux-wireless@vger.kernel.org,
 	jenhao.yang@mediatek.com,
 	posh.sun@mediatek.com,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH 02/15] wifi: mt76: mt7925: fix NAN start failure
-Date: Mon, 24 Aug 2026 14:52:14 -0500
-Message-ID: <20260824195227.12589-3-sean.wang@kernel.org>
+Subject: [PATCH 03/15] wifi: mt76: mt7925: fix NAN committed CRB timeline layout
+Date: Mon, 24 Aug 2026 14:52:15 -0500
+Message-ID: <20260824195227.12589-4-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260824195227.12589-1-sean.wang@kernel.org>
 References: <20260824195227.12589-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260824_125257_353228_C60460C2 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20260824_125302_980285_539B434E 
+X-CRM114-Status: GOOD (  13.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,115 +94,115 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Stella Liu <yu-ching.liu@mediatek.com>
 
-mt7925_start_nan() called mt7925_nan_set_nmi_addr(), which makes NAN
-start fail. The NMI address is not managed here, so drop the call.
+The committed CRB timeline carried a local_map_id byte that does not
+exist in the firmware NAN_SCHEDULE_TIMELINE_T layout (map id plus 3
+reserved bytes), shifting the availability bitmap. Drop it and match
+the firmware structure.
 
-Also track dev->nan_vif only in add/remove_interface and fold the
-single BSS rollback into an inline error check.
+The common-slot check is also dropped as redundant: mac80211 already
+tracks common slots, so avail_map is built directly from the peer
+schedule.
 
 Fixes: 0f3605e4f8de ("wifi: mt76: mt7925: wire up NAN operations")
 Co-developed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Stella Liu <yu-ching.liu@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7925/main.c  | 17 +---------
- .../net/wireless/mediatek/mt76/mt7925/nan.c   | 32 -------------------
- .../net/wireless/mediatek/mt76/mt7925/nan.h   |  2 --
- 3 files changed, 1 insertion(+), 50 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7925/nan.c   | 37 ++++++-------------
+ .../net/wireless/mediatek/mt76/mt7925/nan.h   |  3 +-
+ 2 files changed, 12 insertions(+), 28 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 84b55f008b3d..77420bb6f977 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -2592,21 +2592,9 @@ static int mt7925_start_nan(struct ieee80211_hw *hw,
- 	if (err < 0)
- 		goto out;
- 
--	dev->nan_vif = vif;
--
--	err = mt7925_nan_set_nmi_addr(dev, vif->addr);
--	if (err)
--		goto rollback_bss;
--
- 	err = mt7925_nan_enable(vif, dev, conf);
- 	if (err)
--		goto rollback_bss;
--
--	goto out;
--
--rollback_bss:
--	dev->nan_vif = NULL;
--	mt7925_mcu_add_bss_info(&dev->phy, NULL, link_conf, NULL, false);
-+		mt7925_mcu_add_bss_info(&dev->phy, NULL, link_conf, NULL, false);
- 
- out:
- 	mt792x_mutex_release(dev);
-@@ -2630,9 +2618,6 @@ static int mt7925_stop_nan(struct ieee80211_hw *hw,
- 	if (!err)
- 		err = ret;
- 
--	if (dev->nan_vif == vif)
--		dev->nan_vif = NULL;
--
- 	mt792x_mutex_release(dev);
- 
- 	return err;
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/nan.c b/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
-index 70cb2c44869c..ba7374fb7c03 100644
+index ba7374fb7c03..e51e91f08b49 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
-@@ -144,38 +144,6 @@ mt7925_nan_update_conf(struct mt792x_vif *mvif,
- 	memcpy(mvif->nan.conf.cluster_id, conf->cluster_id, ETH_ALEN);
+@@ -753,52 +753,38 @@ static int mt7925_nan_peer_cap_tlv(struct sk_buff *skb,
+ 
+ static void
+ mt7925_nan_fill_crb_committed(struct mt7925_nan_sched_update_crb_tlv *crb_tlv,
+-			      struct ieee80211_vif *vif,
+ 			      struct ieee80211_nan_peer_sched *sched)
+ {
+-	struct ieee80211_nan_sched_cfg *local_sched;
+-	u8 local_map_id;
+ 	u32 m, slot;
+ 
+-	if (!vif || !sched)
++	if (!sched)
+ 		return;
+ 
+-	local_sched = &vif->cfg.nan_sched;
+-	local_map_id = mt7925_nan_avail_attr_ctrl(local_sched) &
+-		       NAN_AVAIL_CTRL_MAPID;
+-
+ 	for (m = 0; m < CFG80211_NAN_MAX_PEER_MAPS &&
+ 	     m < NAN_TIMELINE_MGMT_SIZE; m++) {
++		struct ieee80211_nan_peer_map *map = &sched->maps[m];
+ 		struct mt7925_nan_sched_timeline *tl =
+ 			&crb_tlv->comm_faw_timeline[m];
+-		struct ieee80211_nan_peer_map *map = &sched->maps[m];
+-		u32 avail_map = 0;
+ 
+ 		if (map->map_id == CFG80211_NAN_INVALID_MAP_ID)
+ 			continue;
+ 
+ 		tl->map_id = map->map_id;
+-		tl->local_map_id = local_map_id;
+ 
++		/*
++		 * Convert peer schedule slots to FW avail_map bitmap.
++		 * Each bit in avail_map[0] represents one time slot where
++		 * the peer has committed availability.
++		 */
+ 		for (slot = 0; slot < CFG80211_NAN_SCHED_NUM_TIME_SLOTS;
+ 		     slot++) {
+-			struct ieee80211_nan_channel *local_ch;
+-			struct ieee80211_nan_channel *peer_ch;
++			struct ieee80211_nan_channel *ch = map->slots[slot];
+ 
+-			local_ch = local_sched->schedule[slot];
+-			peer_ch = map->slots[slot];
+-
+-			if (!local_ch || !local_ch->chanctx_conf ||
+-			    !peer_ch || !peer_ch->chanctx_conf)
+-				continue;
+-
+-			if (local_ch->chanctx_conf != peer_ch->chanctx_conf)
++			if (!ch || !ch->chanctx_conf)
+ 				continue;
+ 
+-			avail_map |= BIT(slot);
++			tl->avail_map[0] |= cpu_to_le32(BIT(slot));
+ 		}
+-
+-		tl->avail_map[0] = cpu_to_le32(avail_map);
+ 	}
  }
  
--int mt7925_nan_set_nmi_addr(struct mt792x_dev *dev, const u8 *addr)
--{
--	struct mt76_dev *mdev;
--	struct {
--		u8 rsv[4];
--		struct mt7925_nan_nmi_addr_tlv nmi_addr_tlv;
--	} nmi_cmd = {
--		.rsv = { 0 },
--		.nmi_addr_tlv = {
--			.tag = cpu_to_le16(NAN_UNI_CMD_CHANGE_NMI_ADDRESS),
--			.len = cpu_to_le16(sizeof(struct mt7925_nan_nmi_addr_tlv)),
--		},
--	};
--	int ret;
--
--	if (!dev || !addr)
--		return -EINVAL;
--
--	if (is_zero_ether_addr(addr) || is_multicast_ether_addr(addr)) {
--		dev_err(dev->mt76.dev, "NAN: invalid NMI address %pM\n", addr);
--		return -EINVAL;
--	}
--
--	mdev = &dev->mt76;
--	memcpy(nmi_cmd.nmi_addr_tlv.nmi_addr, addr, ETH_ALEN);
--
--	ret = mt76_mcu_send_msg(mdev, MCU_UNI_CMD(NAN), &nmi_cmd,
--				sizeof(nmi_cmd), true);
--
--	return ret;
--}
--
- int mt7925_nan_enable(struct ieee80211_vif *vif,
- 		      struct mt792x_dev *dev,
- 		      struct cfg80211_nan_conf *conf)
+@@ -824,8 +810,7 @@ static int mt7925_nan_update_crb_tlv(struct sk_buff *skb,
+ 	crb_tlv->is_use_ranging = false;
+ 	crb_tlv->comm_ndc_ctrl.is_valid = false;
+ 
+-	mt7925_nan_fill_crb_committed(crb_tlv, msta->vif->phy->dev->nan_vif,
+-				      sta->nan_sched);
++	mt7925_nan_fill_crb_committed(crb_tlv, sta->nan_sched);
+ 
+ 	return 0;
+ }
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/nan.h b/drivers/net/wireless/mediatek/mt76/mt7925/nan.h
-index 1dcc888d98f9..91f4e999711e 100644
+index 91f4e999711e..fab10b829eaa 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7925/nan.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7925/nan.h
-@@ -405,8 +405,6 @@ int mt7925_nan_change_configure(struct ieee80211_vif *vif,
+@@ -348,8 +348,7 @@ struct mt7925_nan_sched_update_peer_cap_tlv {
  
- void mt7925_nan_mcu_event(struct mt792x_dev *dev, struct sk_buff *skb);
- 
--int mt7925_nan_set_nmi_addr(struct mt792x_dev *dev, const u8 *addr);
--
- void mt7925_nan_local_sched_changed(struct mt792x_dev *dev,
- 				    struct ieee80211_vif *vif);
- 
+ struct mt7925_nan_sched_timeline {
+ 	u8 map_id;
+-	u8 local_map_id;
+-	u8 reserved[2];
++	u8 reserved[3];
+ 	union {
+ 		__le32 avail_map[NAN_TOTAL_DW];
+ 		u8 avail_block[NAN_TOTAL_DW * 4];
 -- 
 2.43.0
 
