@@ -4,71 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5D3EC5DF94
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 15:29:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BAA0C5DF9C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 16:51:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TQM9PhntWAt2lt8k5M4COgt8bAYljmeqxXab3pR2gKM=; b=onuyL8ETSUkQ9DtP+v5iiBfQgh
-	P8BZPr/UVo/i3di5rCMoRBXc486OaQeWXJEAa8syLaXZqk6y8hYGFswMt0MUMMX1tZOdqVP6ru/eb
-	kv1A/Mr9cD8fGds1HgstnR1xc2Pb05qe6hDeTAb7IZlmD904OK6l0edbrqMn+j/lstSf63LQznnf9
-	bv3WSvbadG5wn5hUd8RBG0rVMPhmoJlBx+C+jmECOSOLNHD6NESGGzxuNUbc8FgagxG31UxKbCeoE
-	uNrp7PzZbmpEVVuqu4nrkwyO9n6g7meIU7qjyqqfvZeFBDxY2XGPxZ+j5jGoas+qGFImz4Xncxzxe
-	3QO+rGOQ==;
+	bh=rJStwZRbP99TYWbbAHbc3tE4EIKFHDtlxRh14wfhlS8=; b=sz8H+g3j1ysjmgt+eEQplX5L/P
+	yxebRios5+G9MwlSU2NSWTdvkF6kSO3Wr/+ZA0JRsZfuF8X/PJuivcHoh0k44kXs38B/EpU9Lv03D
+	oxj+K0lZ1pxfj4mNIz52MqFoNroC6bIhMCYjvcc5JHf6KdXmlX+3E8/Ni0dc2W9I4RA2cwX5PY2hJ
+	aHdiHRhgGrMc59Kk5zofUE8WMT1K3w1NzJYon35cTO5pEtQjCE4BFZL2yz8JwdwBrW0cs/uk6FtA0
+	hNOP4RVjgxLa2eoEe2+B5xLlvAPywPAXcfG4ZTckAwMH5PkuL1scwHkX7F7e+wohq/IE80maLPjD7
+	5cnII2fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyWcJ-0000000GvhP-2rG9;
-	Mon, 24 Aug 2026 15:29:43 +0000
-Received: from out-189.mta1.migadu.com ([2001:41d0:203:375::bd] helo=mta1.migadu.com)
+	id 1wyXt2-0000000H54K-3t08;
+	Mon, 24 Aug 2026 16:51:04 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyWcF-0000000Gvff-1Tza
-	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Aug 2026 15:29:41 +0000
-X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=TQM9PhntWAt2lt8k5M4COgt8bAYljmeqxXab3pR2gKM=;
- c=simple/simple; d=justthetip.ca;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1787585375; v=1; x=1788190175;
- b=DwQAdg+NvfOLwXda4JA26GXw2phcKyTsIl3+Obge8gztA0zBlYbqoyhyWZ/fWJVdq/R3dkXn
- +uqFu16g/BxUYCcBsNFkACQ5NaCs6XrUVzEnIkpoK96MvpO4nD+RV3LmhfGDi5hAhAW+FGg+nFa
- P6Di7mo1o+zKgIkXpcW1e4QwZoNbUWiGCBv1PW/1qZA71ii/ROjzQ0es3x4gQRVDrjHXaHRr9qa
- XKEOKdOfUZ3KAHoEg5or63rEYt4bVU4yUGx4+/ke6TTmpVCnpeB/4pnJvPtY75lwXBlqDWTW1kc
- yjpNb5JKfM265sfK/azQcRAKz+2w68AA8MgFNR5Fp6GCg==
-X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: from fedora (2001:569:be59:c500:b340:3f2c:4486:21c1)
-	by smtp.migadu.com with ESMTPS id abc171f7b01dda4c;
-	Mon, 24 Aug 2026 15:29:25 +0000
-X-Mizu-Trace-ID: abc171f7b01dda4c
-X-Migadu-Flow: FLOW_OUT
-From: Devin Wittmayer <lucid_duck@justthetip.ca>
-To: Eason Lai <eason.lai@mediatek.com>
-Cc: nbd@nbd.name,
-	lorenzo@kernel.org,
-	linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	kun.wu@mediatek.com,
-	deren.wu@mediatek.com,
-	sean.wang@mediatek.com,
-	quan.zhou@mediatek.com,
-	ryder.lee@mediatek.com,
-	leon.yen@mediatek.com,
-	litien.chang@mediatek.com,
-	jb.tsai@mediatek.com,
-	stable@vger.kernel.org
-Subject: Re: [PATCH v3 0/2] wifi: mt76: refine USB/SDIO TX path error handling
-Date: Mon, 24 Aug 2026 08:29:18 -0700
-Message-ID: <20260824152918.11268-1-lucid_duck@justthetip.ca>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260819082129.1062282-1-eason.lai@mediatek.com>
-References: <20260819082129.1062282-1-eason.lai@mediatek.com>
+	id 1wyXt1-0000000H542-0y9V;
+	Mon, 24 Aug 2026 16:51:03 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id E2E3943796;
+	Mon, 24 Aug 2026 16:51:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C66B41F000E9;
+	Mon, 24 Aug 2026 16:51:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1787590262;
+	bh=rJStwZRbP99TYWbbAHbc3tE4EIKFHDtlxRh14wfhlS8=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=H+GqnKnMnAv3ysTMHpNn665+7WpzLFHlI7xXFGmnpERFQF4lJ/UnhffVbbw9f12It
+	 YVFfti/NHFnJaAbPbdfP/auSA4fg2uLBHHpwM7/9IB8IkQj41rD3jz6V/5Y7qc/ZnS
+	 0Ce3lroCK/sU1G5YlA3+OG8pIn44p5zzP/23hRub6UXaUTxAlMyP4rCTap2nkmP23s
+	 yJ7cSl86ejVtGegflUJWs9ovhfnY72w202hjSQ5EuVsh95uUoC7cubAItHgbHbuwX0
+	 SJOtd6VFeCskmzGw+PH7d546iKsavpTIp4aX4Spo/D84h0NpOuTyLmUYKU16KLmW3t
+	 odkAVkomB9Gow==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 938F53924478;
+	Mon, 24 Aug 2026 16:50:11 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260824_082939_990098_C2CE0507 
-X-CRM114-Status: GOOD (  11.68  )
+Subject: Re: [PATCH RFC v2] Bluetooth: mt7925: trigger reset on WMT timeout
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <178759021014.3014491.17750649359199343822.git-patchwork-notify@kernel.org>
+Date: Mon, 24 Aug 2026 16:50:10 +0000
+References: <20260822-mt7925-rfc-v2-1-c88e3bcf7eb8@gmail.com>
+In-Reply-To: <20260822-mt7925-rfc-v2-1-c88e3bcf7eb8@gmail.com>
+To: George Maraveyas <george.0xfff@gmail.com>
+Cc: stern@rowland.harvard.edu, marcel@holtmann.org, luiz.dentz@gmail.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ acelan.kao@canonical.com
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,31 +73,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2026-08-19 at 16:21 +0800, Eason Lai wrote:
-> This series fixes a UAF in the SDIO TX path when out of memory and
-> a memory leak in the USB TX path.
+Hello:
 
-Thanks for turning that around so fast, and for taking all of it. The
-code reads right to me now.
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-One thing to sort out before it lands. 2/2 is marked for stable and 1/2
-is not, but the two only work together. The padding helper frees the skb
-itself when it fails, which is fine today because the caller returns
-without touching it. 2/2 changes that, and starts reporting the prepare
-failure with a skb that is already gone. 1/2 is what stops the helper
-freeing. So a stable tree that takes 2/2 on its own gets a use after
-free where there is no bug today.
+On Sat, 22 Aug 2026 01:37:33 +0200 you wrote:
+> From: George Maraveyas <george.0xfff@gmail.com>
+> 
+> The MT7925 Bluetooth USB function can enumerate successfully after a warm
+> reboot while the WMT function-control command remains unresponsive.
+> 
+> When that command times out, btmtk_usb_setup() currently returns
+> -ETIMEDOUT without entering the existing MediaTek reset path. The existing
+> USB reset and recovery machinery is therefore never reached.
+> 
+> [...]
 
-It will not get caught on the way through, either. 2/2 applies and
-passes without 1/2, because the frame returns before the padding runs.
+Here is the summary with links:
+  - [RFC,v2] Bluetooth: mt7925: trigger reset on WMT timeout
+    https://git.kernel.org/bluetooth/bluetooth-next/c/a6491451f8b8
 
-Marking 1/2 for stable is all it takes. The stable rules say you do not
-have to list a prerequisite that is already in the same series, but only
-if that patch is itself marked for stable.
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-The Closes line did not make it onto either patch:
 
-https://github.com/morrownr/mt76/issues/83
-
-Devin
 
