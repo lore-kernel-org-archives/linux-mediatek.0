@@ -4,81 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74FFEC5DF81
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 19:53:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5FCFC5DF81
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 20:39:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MwmqByqgOjaj+boW8Byl/XAhEHD4P6qPLmf+pApdFow=; b=Rb+sOi5rBaoqBk36Ya8mDcchHV
-	2aeZc46rAzsDWMlkOtFxymr2Aoote+3Gj4czg25CihpORECCyl1jJMOpifyf4kUkqjxgewm3POny6
-	KV7rdlQODxc4JzC/qxhG23mZAQEoZuieMiy4Cr0p3NcZOmOU/WLwAF+H8+n+QpKMezIutk7kSmWH7
-	kZWym7Z1y6WMJJKi3p4fCogotQsbsBCFvHmhxgPWZZPonoTG+lK8QuaJyiBGNzd2lz4FVx79sP+Hz
-	aVsw4n7xKRrvjrqWBalKVThdiqi+8Lxs+i4DHSAasPrrDY5zfBysuHiXpHEzz8R6Qdv2F3eSlI97S
-	+ug8K3jQ==;
+	bh=LEMIXlW7UB4hHdDf5XWpYKY9mKhf7DDvl0I5DYYVcWI=; b=ZTafNCPL8uMCpV9np17KLn4yno
+	dmffoUP1OS3finPZ22idBC9/4xlf0SRARt0oJdb9fTAKMl4vDNEMArZOPd35nfHB/rtNrjAE/zgd8
+	IQ9pQwJkSd249lw04vBrtTGCMZveg4VZ6Q5tWm67KtqhZQzN4OiIm099pqMr4YLrDNpt6q+HnlfXn
+	Gns1CqRCtkc4biRHEZqkrVIoFRpeL6kOd/B7LPKlC8HU0KNaedhXTyXt2cFEOVwICZWQ4wvlP+DMm
+	ojKcLWItBTfvHo8PY8H7SYIusrkq5C9NPYxKLrC+ahO6JHAN7bD0RCRWpSyAthBBPMi65vsoasNzu
+	WZWOJw4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyajr-0000000HKjg-2vGC;
-	Mon, 24 Aug 2026 19:53:47 +0000
-Received: from mail-oa1-f44.google.com ([209.85.160.44])
+	id 1wybSG-0000000HNMw-1S0h;
+	Mon, 24 Aug 2026 20:39:40 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyajp-0000000HKi0-0jKE
+	id 1wybSE-0000000HNMa-1jwK
 	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Aug 2026 19:53:46 +0000
-Received: by mail-oa1-f44.google.com with SMTP id 586e51a60fabf-45e6d266921so2536680fac.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Aug 2026 12:53:44 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787601224; x=1788206024;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=MwmqByqgOjaj+boW8Byl/XAhEHD4P6qPLmf+pApdFow=;
-        b=izNohKKIFbsmVEyysGEJwPPCZfu1+Yj3qI1CGbDafuHxqfISpF1HtRneWQgOv0Xswx
-         1GdUfIXtusnEudx9EuZdwAbap3wcvF0Jg6kEDbAqsUtSseXf98m8IA3fStrvh+pHD09x
-         x5JBqYYG8okd43uMc82dfJAmdXAN+Rqis0NlnOAlwKkDLDsIU9+oqBSpP/j1S95TvzEY
-         fGw/tBrzO4g+qo3fSqEA/69Cf0WqshjI74Mz+DZ6Xs2IbGqhpFeuCnRAA7Udtv/8FcNF
-         d+Pynpe92C5BkMfAgwoGuLuShdSks+84976UfygCesRkxvahE6Gx1SGJ8fsKxv0XCUlF
-         5F2w==
-X-Forwarded-Encrypted: i=1; AHgh+Ro0OTazRFVJbib/ow3eZ/GbEsGKeD3G/1bjTiucTEQ8Ym24jv547dtvwHCYo3QkOyKg2TX7HS8r+mdVP+PloQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++ldHhuj8AUWH2Vr61s9KOOf/ohQ4Mu0IMWTxXe9CVTTVDVvQT0G
-	yNeyDbVWzmZ1Awqfd0Ykz4AsJkzkJNYBE63mmduqzkUJj9FAQnJxhngF
-X-Gm-Gg: AR+sD12rbjeG3Pqf3zXwBom76bq6Be/VENY6uRAydDJ/QBtzp7q9mhELrLuHoyF7EjH
-	M3RJeFTcL+GAZvXeAP87satY6P3dJnc6ZsQ+ysi8cS3tyzFBUzu+QWXaCF8r8iDgAWiZeUABT62
-	zMjsvJm7wVTvK0OJd9+IZAPNBxFMuVlwGG56hg9GwkVuzUP+6UlSKFFdfMiF0e+jO9fVytXbd2U
-	HbKxUa7OUL2OzKsmuakXcVzLsWe7KmdI3iDMXC0/5MqK+XWiWr1n/22cE5jr2lmzAr+WySkSGXk
-	rga0YGFgKgruoe3t5/zbYu39OUJkALMHkLKu+pkwWv1Xmb5ltw/o+pMPgKMtFRRZYxziZKciQ63
-	CcCi3cT1q9MrPerqunn4itrBqEp/LbFFhoSKxAAI89+BrR0Ys5TFlCpZgyuIqdDlEzvXO4RWDZd
-	9rA9zY+xNYpuzy6DADxMrcmmQ3z7rBHnkoyVXkOIWaN+WD1b2iT/TnoCkiNHPvO3AWdf5OLC99b
-	QeUo0hoCji/R6PnbHKjK+soFC3X2f7DFVS7fuHEzbpI
-X-Received: by 2002:a05:6870:2e84:b0:44c:3269:4d40 with SMTP id 586e51a60fabf-46350f85256mr27114382fac.7.1787601224083;
-        Mon, 24 Aug 2026 12:53:44 -0700 (PDT)
-Received: from sean-HP-EliteBook-830-G6.lan ([207.191.35.252])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-463835bcdcbsm5805896fac.18.2026.08.24.12.53.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 24 Aug 2026 12:53:43 -0700 (PDT)
-From: Sean Wang <sean.wang@kernel.org>
-To: nbd@nbd.name,
-	lorenzo.bianconi@redhat.com
-Cc: linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	yu-ching.liu@mediatek.com,
-	jenhao.yang@mediatek.com,
-	posh.sun@mediatek.com,
-	Jacobs Wu <jacobs.wu@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH 15/15] wifi: mt76: mt7925: fix HT/VHT caps and rates for NAN NDP peers
-Date: Mon, 24 Aug 2026 14:52:27 -0500
-Message-ID: <20260824195227.12589-16-sean.wang@kernel.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260824195227.12589-1-sean.wang@kernel.org>
-References: <20260824195227.12589-1-sean.wang@kernel.org>
+	Mon, 24 Aug 2026 20:39:39 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7374444F3E
+	for <linux-mediatek@lists.infradead.org>; Mon, 24 Aug 2026 20:39:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B4D91F0155C
+	for <linux-mediatek@lists.infradead.org>; Mon, 24 Aug 2026 20:39:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1787603977;
+	bh=LEMIXlW7UB4hHdDf5XWpYKY9mKhf7DDvl0I5DYYVcWI=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=op1PqS0ZcwJX9065pz+7n7Mhcirj6eX3k7xLqlZ+ppKs9SUQjaRYatOf7zFET/tfn
+	 ul80C8GWnGTALvbcy587qsJUwsDqASYiSFMYfHcPITUgCg3TZF48GkIuTKGWZKFR9M
+	 4KN8Sznl1jMlE46rBL1TjVyK3aAD3CngSTThQG0+P9d0RdhdZTKci8rg+oXU2+Knhy
+	 NbhSdxhVqpnJaSio1FP0K7pN0IwaOCStdR+sCf1wtsi2SseznQCBLMUxP19S9nO/9Q
+	 MUef/TEDW6ujepu5thZa0JHNFheaGU558HmIHS4lCPCIS/Hkxb7SN9fJwNlrWxn60U
+	 rLdy0en7BtOBg==
+Received: by mail-oa1-f43.google.com with SMTP id 586e51a60fabf-45171f2f608so3599672fac.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Aug 2026 13:39:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AHgh+RpnZJ30Zbs6+/blve1t1iHvJnr6WMQllYpgGDbC/GCUExJZ2TBZRiUOR+J1UNi4/C0IGOp+qM2DKm71G2L3kA==@lists.infradead.org
+X-Gm-Message-State: AFuF++mXEwUjFsAAV7U+hu/auE8Td0RenlqNWa/fiA9WihSo4UKZgGb4
+	KAH632COEms4e/9lJpz2pqCLkoZKlYDI8yomNkMwSoe4xH+6ac9Co236CKNoQp6Oy+WRmEXvI6k
+	EDCPCGhlMlmTzDt+iq5CDfMv6zNCWy3s=
+X-Received: by 2002:a05:6871:331c:b0:457:ed1a:9da3 with SMTP id
+ 586e51a60fabf-4644af0a69cmr1563335fac.17.1787603975698; Mon, 24 Aug 2026
+ 13:39:35 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260824_125345_225113_42CCBBF8 
-X-CRM114-Status: GOOD (  18.75  )
+References: <cover.1787239813.git.geert+renesas@glider.be> <33f8a87834a75b6677894f1993c90f00eb6a2547.1787239813.git.geert+renesas@glider.be>
+In-Reply-To: <33f8a87834a75b6677894f1993c90f00eb6a2547.1787239813.git.geert+renesas@glider.be>
+From: Linus Walleij <linusw@kernel.org>
+Date: Mon, 24 Aug 2026 22:39:20 +0200
+X-Gmail-Original-Message-ID: <CAD++jLnWF5Y+=Dz4XxFyHqrxuOtGucvYLaqMGDNH4XoR1S+rrQ@mail.gmail.com>
+X-Gm-Features: AcwNN1XmhR7K3AKRJKXT4Sd3qYlnwrUuNbhbfYVIv-485OoNG4okiQZloSgYvOE
+Message-ID: <CAD++jLnWF5Y+=Dz4XxFyHqrxuOtGucvYLaqMGDNH4XoR1S+rrQ@mail.gmail.com>
+Subject: Re: [PATCH 10/45] clk: gemini: Make sure clk_init_data is fully initialized
+To: Geert Uytterhoeven <geert+renesas@glider.be>
+Cc: Ryan Chen <ryan_chen@aspeedtech.com>, Joel Stanley <joel@jms.id.au>, 
+	Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
+	Jerome Brunet <jbrunet+clk@baylibre.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
+	Billy Tsai <billy_tsai@aspeedtech.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+	Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, 
+	Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, 
+	Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, 
+	Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, 
+	Sudeep Holla <sudeep.holla@kernel.org>, Cristian Marussi <cristian.marussi@arm.com>, 
+	David Lechner <david@lechnology.com>, Abel Vesa <abelvesa@kernel.org>, Peng Fan <peng.fan@nxp.com>, 
+	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Paul Cercueil <paul@crapouillou.net>, Santosh Shilimkar <ssantosh@kernel.org>, Andrew Lunn <andrew@lunn.ch>, 
+	Gregory Clement <gregory.clement@bootlin.com>, 
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, 
+	Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Sylwester Nawrocki <s.nawrocki@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
+	Peter Griffin <peter.griffin@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Dinh Nguyen <dinguyen@kernel.org>, Viresh Kumar <vireshk@kernel.org>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	=?UTF-8?Q?Emilio_L=C3=B3pez?= <emilio@elopez.com.ar>, 
+	Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Samuel Holland <samuel@sholland.org>, Prashant Gaikwad <pgaikwad@nvidia.com>, 
+	Thierry Reding <thierry.reding@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
+	Ulf Hansson <ulfh@kernel.org>, Liviu Dudau <liviu.dudau@arm.com>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, Michal Simek <michal.simek@amd.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, 
+	linux-aspeed@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, openbmc@lists.ozlabs.org, 
+	arm-scmi@vger.kernel.org, imx@lists.linux.dev, linux-mips@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
+	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
+	linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,158 +115,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jacobs Wu <jacobs.wu@mediatek.com>
+On Fri, Aug 21, 2026 at 10:53=E2=80=AFAM Geert Uytterhoeven
+<geert+renesas@glider.be> wrote:
 
-NAN NDP peers were added with bare link_sta caps: no HT cap or QoS
-flag (so no BA/A-MPDU), no VHT cap / bandwidth / rx_nss, a data BSS
-phy mode that still read legacy when the firmware built the peer's
-rate table, and caps filtered down by the currently committed
-schedule.
+> The clk_init_data structure contains several mutually-exclusive members
+> for different methods to specify the possible parents of a clock,
+> prompting drivers to initialize only the members they need.  However,
+> not initializing all members may cause subtle issues, which are only
+> exposed when CONFIG_INIT_STACK_ALL_PATTERN or CONFIG_INIT_STACK_NONE is
+> enabled.
+>
+> Make sure all members are fully initialized, to avoid such bugs, and to
+> prevent future breakage when converting drivers to a different method
+> for specifying the parents.
+>
+> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 
-Push the NAN_DATA BSS phymode before sta_update, force the HT cap and
-QoS flag, seed VHT80 / bandwidth / rx_nss=2 from the BSS RLM, fix the
-NDP HT/VHT rate selection and stop filtering the link_sta caps by the
-schedule, so rate control always sees the peer's real capabilities.
+Acked-by: Linus Walleij <linusw@kernel.org>
 
-Bench (MT7925<->MT7925 NDP, 5 GHz ch149): 866.7M VHT80 MCS9 NSS2 link
-rate, UDP ~290 Mbit/s.
-
-Fixes: 0f3605e4f8de ("wifi: mt76: mt7925: wire up NAN operations")
-Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Jacobs Wu <jacobs.wu@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7925/main.c  | 19 +++++-
- .../net/wireless/mediatek/mt76/mt7925/nan.c   | 62 +++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7925/nan.h   |  4 ++
- 3 files changed, 83 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index e1c688af7c59..051a0c8aed58 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -964,6 +964,21 @@ static int mt7925_mac_link_sta_add(struct mt76_dev *mdev,
- 
- 	link_conf = mt792x_vif_to_bss_conf(vif, link_id);
- 
-+	/* NAN_DATA (NDI) peers skip association - fill link_sta caps
-+	 * from sband and push BSS_INFO with correct phymode + RLM.
-+	 */
-+	if (vif->type == NL80211_IFTYPE_NAN_DATA) {
-+		struct ieee80211_chanctx_conf *nan_ctx;
-+
-+		nan_ctx = mt7925_nan_seed_link_sta(dev, link_sta);
-+		mconf->mt76.ctx = nan_ctx;
-+
-+		ret = mt7925_mcu_add_bss_info(&dev->phy, nan_ctx,
-+					      link_conf, link_sta, true);
-+		if (ret)
-+			goto out_pm;
-+	}
-+
- 	/* should update bss info before STA add */
- 	if (vif->type == NL80211_IFTYPE_STATION && !link_sta->sta->tdls) {
- 		struct mt792x_link_sta *mlink_bc;
-@@ -2587,8 +2602,8 @@ static int mt7925_start_nan(struct ieee80211_hw *hw,
- 	cfg80211_chandef_create(&link_conf->chanreq.oper, chan,
- 				NL80211_CHAN_NO_HT);
- 
--	err = mt7925_mcu_add_bss_info(&dev->phy, NULL, link_conf,
--				      NULL, true);
-+	err = mt7925_mcu_add_bss_info(&dev->phy, NULL,
-+				      link_conf, NULL, true);
- 	if (err < 0)
- 		goto out;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/nan.c b/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
-index 4b479edab018..8a59f7b1aee2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
-@@ -267,6 +267,68 @@ int mt7925_nan_update_phy_setting(struct mt792x_dev *dev)
- 				 &req, sizeof(req), true);
- }
- 
-+struct ieee80211_chanctx_conf *
-+mt7925_nan_seed_link_sta(struct mt792x_dev *dev,
-+			 struct ieee80211_link_sta *link_sta)
-+{
-+	struct ieee80211_supported_band *sband_2g, *sband_5g;
-+	struct ieee80211_chanctx_conf *nan_ctx = NULL;
-+	struct ieee80211_vif *nan_vif = dev->nan_vif;
-+
-+	/* Fill HT cap from 2G sband */
-+	sband_2g = dev->mphy.hw->wiphy->bands[NL80211_BAND_2GHZ];
-+	sband_5g = dev->mphy.hw->wiphy->bands[NL80211_BAND_5GHZ];
-+	if (sband_2g)
-+		link_sta->ht_cap = sband_2g->ht_cap;
-+
-+	link_sta->sta->wme = true;
-+	link_sta->rx_nss = hweight8(dev->mphy.antenna_mask);
-+
-+	/* Get chanctx from NAN schedule.
-+	 * Prefer 5G committed slot for wider BW (VHT), fallback
-+	 * to first valid slot if no 5G data slot is scheduled.
-+	 */
-+	if (nan_vif) {
-+		struct ieee80211_nan_channel **slots =
-+			nan_vif->cfg.nan_sched.schedule;
-+		int i;
-+
-+		for (i = 0; i < CFG80211_NAN_SCHED_NUM_TIME_SLOTS; i++) {
-+			struct ieee80211_chanctx_conf *ctx;
-+
-+			if (!slots[i] || IS_ERR(slots[i]) ||
-+			    !slots[i]->chanctx_conf)
-+				continue;
-+
-+			ctx = slots[i]->chanctx_conf;
-+			if (!nan_ctx)
-+				nan_ctx = ctx;
-+			if (ctx->def.chan->band == NL80211_BAND_5GHZ) {
-+				nan_ctx = ctx;
-+				break;
-+			}
-+		}
-+	}
-+
-+	/* Capability describes what the device can do and must not be
-+	 * filtered by the current schedule - firmware gates the VHT rate
-+	 * mode per the data schedule and re-derives it on schedule
-+	 * change, which only works if the caps are present up front.
-+	 */
-+	if (sband_5g)
-+		link_sta->vht_cap = sband_5g->vht_cap;
-+
-+	/* Bandwidth here is the capability ceiling, not the operating
-+	 * width - the per-slot operating bandwidth follows the current
-+	 * slot channel via the firmware RLM sync, so deriving it from
-+	 * the schedule at STA-add time would cap a later 5 GHz schedule
-+	 * at the bring-up width.
-+	 */
-+	link_sta->bandwidth = IEEE80211_STA_RX_BW_80;
-+
-+	return nan_ctx;
-+}
-+
- int mt7925_nan_enable(struct ieee80211_vif *vif,
- 		      struct mt792x_dev *dev,
- 		      struct cfg80211_nan_conf *conf)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/nan.h b/drivers/net/wireless/mediatek/mt76/mt7925/nan.h
-index c78a1350c456..d81d84a222d9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/nan.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/nan.h
-@@ -477,6 +477,10 @@ struct mt7925_nan_update_phy_setting_tlv {
- 
- int mt7925_nan_update_phy_setting(struct mt792x_dev *dev);
- 
-+struct ieee80211_chanctx_conf *
-+mt7925_nan_seed_link_sta(struct mt792x_dev *dev,
-+			 struct ieee80211_link_sta *link_sta);
-+
- int mt7925_nan_enable(struct ieee80211_vif *vif,
- 		      struct mt792x_dev *dev,
- 		      struct cfg80211_nan_conf *conf);
--- 
-2.43.0
-
+Yours,
+Linus Walleij
 
