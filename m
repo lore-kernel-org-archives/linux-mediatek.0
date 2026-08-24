@@ -4,74 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A505C5DF9B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 13:29:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4601C5DF94
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 14:53:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AXV7791+lKEuxikXvEafEqUKInZMtNVXGmlQ9vNTOV0=; b=fMTzxrY3wfGAH+/VPU97bpVFYO
-	/6tb9xQ+y2WJjHqri4LgSY1JGZXF1DiHjOI48QDZzTlqdMn9zncj1nrnSUua3eFz4rrSjkv4Pxctx
-	ZKLHBxOHVgT9WGJZLtIIvz1UkS0Rt0RVTWZlXN+Rv6oUjz+rpd7XH7GgbVLr9pFbBYavQyT7vYKhu
-	DMkd9/1tN874m0I/nyuTcUMHj8HRj7TpMlHnDZtqGBX7PCTfSb7g14mLpbP175wcnA4yRbpM5Z3LE
-	pWwwbBlJ4uq59sKvI3ijVPCIeQts68uzQPmZtf4wwJtb1p5Z+kJaEvW0VyjbasSojyQfjM3sBMlpW
-	XL9glsfg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=36XSYQRqdPAd+B6sJlPnCE0gh5OCgUy3ucqeEekGoG8=; b=JmuGK5FY8+e/wmg35FeQHns6T1
+	avoVrpGiJo5WMLU9IN714SwmfKt0jJmvjzKLck9LXXZeRSYBkUKjA68nO1sTBEvEKDia+kjcUZOXm
+	5CKWpP2KTfX9pgXU8+RVy4243xKvyXnW2Lugj4xM+MQXbZ7SltiyZ/QXe5If9uxv3vdcOFK6HXMaw
+	PS0LI44CEoKtuzj09ybyj1+V5JmV+vdamyJmAUibRMUSDEan4FTQ2OWbzazeYozFRaeybVX+N/BQW
+	7eSxhfXPjoJYBBuEdaa2ldtcXvUTQBV+w94EwRR3/OkPkIz3hZL1AUj9zOF505YLaBbubaoklcvRo
+	4grjYdWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyUjw-0000000GhV3-3snQ;
-	Mon, 24 Aug 2026 13:29:28 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1wyW2p-0000000GptL-1Cpc;
+	Mon, 24 Aug 2026 14:53:03 +0000
+Received: from mx1.white.stw.pengutronix.de ([185.203.200.13])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyUju-0000000GhTf-2flU;
-	Mon, 24 Aug 2026 13:29:27 +0000
-X-UUID: cf62eb4e9fbf11f1acbe4559397dec65-20260824
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=AXV7791+lKEuxikXvEafEqUKInZMtNVXGmlQ9vNTOV0=;
-	b=oMv/hnk94PcdcK0MXFlIX4CaUFAdM2dqrdvHA7guWMyRCwzpIPz0LYKgdwB2TJdFc+E2TKZsRebs3NGy4Hx7gtnKf4m/GI2oZCdFhsa4uKaI8TdqIr9YlfcsJfk1Hr2qP9yutmojIh6pFDgngVT1P+g9iK1KsN9i8gsIluUWwcs=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:105a291a-77b5-48ad-a8bb-180891c0dc38,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:adb15bfe-f4cb-4ad2-b022-e3ac6648bf25,B
-	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|50|
-	99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: cf62eb4e9fbf11f1acbe4559397dec65-20260824
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <wanming.gao@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1574913668; Mon, 24 Aug 2026 06:29:19 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 24 Aug 2026 21:29:16 +0800
-Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 24 Aug 2026 21:29:16 +0800
-From: Wanming Gao <wanming.gao@mediatek.com>
-To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
-	<linux@roeck-us.net>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <linux-watchdog@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<wanming.gao@mediatek.com>, <wallace.yu@mediatek.com>,
-	<Jarried.Lin@mediatek.com>, <vince-wl.liu@mediatek.com>
-Subject: [PATCH] watchdog: mediatek: Enable pretimeout support
-Date: Mon, 24 Aug 2026 21:29:12 +0800
-Message-ID: <20260824132914.2662346-1-wanming.gao@mediatek.com>
-X-Mailer: git-send-email 2.43.0
+	id 1wyW2b-0000000GpqN-1Nb9;
+	Mon, 24 Aug 2026 14:52:55 +0000
+Received: from [IPv6:2a0a:edc0:0:900:1d::4e] (lupine.office.stw.pengutronix.de [IPv6:2a0a:edc0:0:900:1d::4e])
+	(Authenticated sender: pza@pengutronix.de)
+	by mx1.white.stw.pengutronix.de (Postfix) with ESMTPSA id 27528200F4F;
+	Mon, 24 Aug 2026 16:52:43 +0200 (CEST)
+Message-ID: <f419c95ff3f97e25593557234d1b2276ba6cf453.camel@pengutronix.de>
+Subject: Re: [PATCH v5 2/2] PCI: mediatek-gen3: Add 2-lanes mode support for
+ Airoha AN7581
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Christian Marangi <ansuelsmth@gmail.com>, Lorenzo Pieralisi	
+ <lpieralisi@kernel.org>, Krzysztof =?UTF-8?Q?Wilczy=C5=84ski?=	
+ <kwilczynski@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, Rob
+ Herring	 <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Krzysztof
+ Kozlowski	 <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Ryder
+ Lee	 <ryder.lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jianjun Wang <jianjun.wang@mediatek.com>, 	linux-pci@vger.kernel.org,
+ devicetree@vger.kernel.org, 	linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, 	linux-arm-kernel@lists.infradead.org
+Date: Mon, 24 Aug 2026 16:52:43 +0200
+In-Reply-To: <20260806165334.7328-3-ansuelsmth@gmail.com>
+References: <20260806165334.7328-1-ansuelsmth@gmail.com>
+	 <20260806165334.7328-3-ansuelsmth@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2-0+deb13u1 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260824_062926_702810_F8D33818 
-X-CRM114-Status: GOOD (  19.23  )
+X-CRM114-CacheID: sfid-20260824_075249_521335_7B3AA416 
+X-CRM114-Status: GOOD (  23.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,204 +69,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The watchdog pretimeout interrupt needs to be deasserted after the
-hardware pretimeout event is received. Add IRQ level control handling
-to the MediaTek watchdog interrupt handler so the interrupt is cleared
-before notifying the watchdog core.
+On Do, 2026-08-06 at 18:53 +0200, Christian Marangi wrote:
+> The Airoha AN7581 SoC supports configuring the first PCIe0 lane to 2-lane=
+s
+> mode (x2 link) by bonding it with the second PCIe lane (PCIe1). This is
+> done by configuring the PCIe MUX in the SCU register.
+>=20
+> To correctly configure PCIe0 in x2 link, define in DT the following
+> additional properties:
+>=20
+>   - additional reg, 'sec-pcie-mac' for the secondary PCIe.
+>   - PERSTOUT reset for both main and secondary PCIE0, called 'perstout' a=
+nd
+>     'sec-perstout'
+>   - 'airoha,scu' property to correctly configure the SCU register for the
+>     PCIe MUX
+>   - 'num-lanes' set to '2' to enable PCIe0 in x2 link
+>=20
+> In such configuration the EQ preset are configured to the same values.
+>=20
+> To permit correct configuration of the PCIe link, additional logic is add=
+ed
+> to assert and deassert the PERSTOUT resets. Support of these additional
+> reset was introduced in Airoha clk driver with commit
+> 6712f48eb3a1 ("clk: en7523: add support for dedicated PCIe PERSTOUT reset=
+")
+> and on backporting of this commit also the clk driver change will be
+> needed.
+>=20
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>  drivers/pci/controller/pcie-mediatek-gen3.c | 106 ++++++++++++++++----
+>  1 file changed, 89 insertions(+), 17 deletions(-)
+>=20
+> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/co=
+ntroller/pcie-mediatek-gen3.c
+> index b0accd828589..c8300c47374b 100644
+> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> @@ -32,6 +32,11 @@
+> =20
+>  #include "../pci.h"
+> =20
+> +/* AN7581 SCU register */
+> +#define SCU_PCIC			0x88
+> +#define SCU_PCIC_PCIE_CTRL		GENMASK(7, 0)
+> +
+> +/* PCIe register */
+>  #define PCIE_BASE_CFG_REG		0x14
+>  #define PCIE_BASE_CFG_SPEED		GENMASK(15, 8)
+> =20
+> @@ -131,6 +136,7 @@
+>  #define PCIE_ATR_TLP_TYPE_IO		PCIE_ATR_TLP_TYPE(2)
+> =20
+>  #define MAX_NUM_PHY_RESETS		3
+> +#define MAX_NUM_PERSTOUT_RESETS		2
+> =20
+>  #define PCIE_MTK_RESET_TIME_US		10
+> =20
+> @@ -203,9 +209,11 @@ struct mtk_msi_set {
+>  struct mtk_gen3_pcie {
+>  	struct device *dev;
+>  	void __iomem *base;
+> +	void __iomem *sec_base;
+>  	phys_addr_t reg_base;
+>  	struct reset_control *mac_reset;
+>  	struct reset_control_bulk_data phy_resets[MAX_NUM_PHY_RESETS];
+> +	struct reset_control_bulk_data perstout_resets[MAX_NUM_PERSTOUT_RESETS]=
+;
+>  	struct phy *phy;
+>  	struct clk_bulk_data *clks;
+>  	int num_clks;
+> @@ -928,6 +936,14 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie =
+*pcie)
+>  	if (ret)
+>  		return dev_err_probe(dev, ret, "failed to get PHY bulk reset\n");
+> =20
+> +	pcie->perstout_resets[0].id =3D "perstout";
+> +	pcie->perstout_resets[1].id =3D "sec-perstout";
+> +
+> +	ret =3D devm_reset_control_bulk_get_optional_exclusive(dev, MAX_NUM_PER=
+STOUT_RESETS,
+> +							     pcie->perstout_resets);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "failed to get PERSTOUT bulk reset\n");
 
-Serialize all WDT_MODE read-modify-write operations using the existing
-watchdog spinlock. Initialize the lock before registering the interrupt
-handler and hold it across the complete 70us IRQ level toggle sequence.
-This prevents concurrent watchdog start, stop, or pretimeout updates
-from overwriting the temporary IRQ level state and disrupting the
-deassert pulse.
+"bulk" is a property of the API, not the reset controls. Maybe just
+"failed to get PERSTOUT resets"?
 
-This avoids leaving the watchdog pretimeout interrupt asserted, prevents
-a potential interrupt storm, and allows the kernel to handle the
-pretimeout event properly before the final watchdog reset.
+> +
+>  	pcie->mac_reset =3D devm_reset_control_get_optional_exclusive(dev, "mac=
+");
+>  	if (IS_ERR(pcie->mac_reset))
+>  		return dev_err_probe(dev, PTR_ERR(pcie->mac_reset), "failed to get MAC=
+ reset\n");
+[...]
+> @@ -992,6 +1028,19 @@ static int mtk_pcie_en7581_power_up(struct mtk_gen3=
+_pcie *pcie)
+>  	size =3D lower_32_bits(resource_size(entry->res));
+>  	regmap_write(pbus_regmap, args[1], GENMASK(31, __fls(size)));
+> =20
+> +	/* Assert PERSTOUT for all relevant lanes */
+> +	err =3D reset_control_bulk_assert(MAX_NUM_PERSTOUT_RESETS,
+> +					pcie->perstout_resets);
 
-Test: Boot ok, trigger watchdog pretimeout case and verify the
-      pretimeout interrupt is received and handled before watchdog reset.
+Isn't there a possible error return before this? Should the PERSTOUT
+resets be asserted in those error cases as well?
 
-Signed-off-by: Wanming Gao <wanming.gao@mediatek.com>
----
- drivers/watchdog/mtk_wdt.c | 59 +++++++++++++++++++++++++++++++++++---
- 1 file changed, 55 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index d9c30e4c80e3..17176bee9d38 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -35,6 +35,7 @@
- #define WDT_MAX_TIMEOUT		31
- #define WDT_MIN_TIMEOUT		2
- #define WDT_LENGTH_TIMEOUT(n)	((n) << 5)
-+#define WDT_IRQ_LEVEL_SYNC_US	70
- 
- #define WDT_LENGTH		0x04
- #define WDT_LENGTH_KEY		0x8
-@@ -49,6 +50,7 @@
- #define WDT_MODE_EXRST_EN	(1 << 2)
- #define WDT_MODE_IRQ_EN		(1 << 3)
- #define WDT_MODE_AUTO_START	(1 << 4)
-+#define WDT_MODE_IRQ_LEVEL_EN	(1 << 5)
- #define WDT_MODE_DUAL_EN	(1 << 6)
- #define WDT_MODE_CNT_SEL	(1 << 8)
- #define WDT_MODE_KEY		0x22000000
-@@ -72,7 +74,7 @@ static unsigned int timeout;
- struct mtk_wdt_dev {
- 	struct watchdog_device wdt_dev;
- 	void __iomem *wdt_base;
--	spinlock_t lock; /* protects WDT_SWSYSRST reg */
-+	spinlock_t lock; /* protects WDT_MODE and WDT_SWSYSRST reg */
- 	struct reset_controller_dev rcdev;
- 	bool disable_wdt_extrst;
- 	bool reset_by_toprgu;
-@@ -212,8 +214,6 @@ static int toprgu_register_reset_controller(struct platform_device *pdev,
- 	int ret;
- 	struct mtk_wdt_dev *mtk_wdt = platform_get_drvdata(pdev);
- 
--	spin_lock_init(&mtk_wdt->lock);
--
- 	mtk_wdt->rcdev.owner = THIS_MODULE;
- 	mtk_wdt->rcdev.nr_resets = rst_num;
- 	mtk_wdt->rcdev.ops = &toprgu_reset_ops;
-@@ -230,14 +230,17 @@ static int mtk_wdt_restart(struct watchdog_device *wdt_dev,
- {
- 	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdt_dev);
- 	void __iomem *wdt_base;
-+	unsigned long flags;
- 	u32 reg;
- 
- 	wdt_base = mtk_wdt->wdt_base;
- 
- 	/* Enable reset in order to issue a system reset instead of an IRQ */
-+	spin_lock_irqsave(&mtk_wdt->lock, flags);
- 	reg = readl(wdt_base + WDT_MODE);
- 	reg &= ~WDT_MODE_IRQ_EN;
- 	writel(reg | WDT_MODE_KEY, wdt_base + WDT_MODE);
-+	spin_unlock_irqrestore(&mtk_wdt->lock, flags);
- 
- 	while (1) {
- 		writel(WDT_SWRST_KEY, wdt_base + WDT_SWRST);
-@@ -302,12 +305,15 @@ static int mtk_wdt_stop(struct watchdog_device *wdt_dev)
- {
- 	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdt_dev);
- 	void __iomem *wdt_base = mtk_wdt->wdt_base;
-+	unsigned long flags;
- 	u32 reg;
- 
-+	spin_lock_irqsave(&mtk_wdt->lock, flags);
- 	reg = readl(wdt_base + WDT_MODE);
- 	reg &= ~WDT_MODE_EN;
- 	reg |= WDT_MODE_KEY;
- 	iowrite32(reg, wdt_base + WDT_MODE);
-+	spin_unlock_irqrestore(&mtk_wdt->lock, flags);
- 
- 	return 0;
- }
-@@ -317,12 +323,14 @@ static int mtk_wdt_start(struct watchdog_device *wdt_dev)
- 	u32 reg;
- 	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdt_dev);
- 	void __iomem *wdt_base = mtk_wdt->wdt_base;
-+	unsigned long flags;
- 	int ret;
- 
- 	ret = mtk_wdt_set_timeout(wdt_dev, wdt_dev->timeout);
- 	if (ret < 0)
- 		return ret;
- 
-+	spin_lock_irqsave(&mtk_wdt->lock, flags);
- 	reg = ioread32(wdt_base + WDT_MODE);
- 	if (wdt_dev->pretimeout)
- 		reg |= (WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
-@@ -334,6 +342,7 @@ static int mtk_wdt_start(struct watchdog_device *wdt_dev)
- 		reg |= WDT_MODE_CNT_SEL;
- 	reg |= (WDT_MODE_EN | WDT_MODE_KEY);
- 	iowrite32(reg, wdt_base + WDT_MODE);
-+	spin_unlock_irqrestore(&mtk_wdt->lock, flags);
- 
- 	return 0;
- }
-@@ -343,7 +352,11 @@ static int mtk_wdt_set_pretimeout(struct watchdog_device *wdd,
- {
- 	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdd);
- 	void __iomem *wdt_base = mtk_wdt->wdt_base;
--	u32 reg = ioread32(wdt_base + WDT_MODE);
-+	unsigned long flags;
-+	u32 reg;
-+
-+	spin_lock_irqsave(&mtk_wdt->lock, flags);
-+	reg = ioread32(wdt_base + WDT_MODE);
- 
- 	if (timeout && !wdd->pretimeout) {
- 		wdd->pretimeout = wdd->timeout / 2;
-@@ -352,19 +365,55 @@ static int mtk_wdt_set_pretimeout(struct watchdog_device *wdd,
- 		wdd->pretimeout = 0;
- 		reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
- 	} else {
-+		spin_unlock_irqrestore(&mtk_wdt->lock, flags);
- 		return 0;
- 	}
- 
- 	reg |= WDT_MODE_KEY;
- 	iowrite32(reg, wdt_base + WDT_MODE);
-+	spin_unlock_irqrestore(&mtk_wdt->lock, flags);
- 
- 	return mtk_wdt_set_timeout(wdd, wdd->timeout);
- }
- 
-+static void mtk_wdt_deassert_irq(struct watchdog_device *wdd)
-+{
-+	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdd);
-+	void __iomem *wdt_base = mtk_wdt->wdt_base;
-+	unsigned long flags;
-+	u32 reg;
-+
-+	spin_lock_irqsave(&mtk_wdt->lock, flags);
-+	reg = ioread32(wdt_base + WDT_MODE);
-+
-+	if (reg & WDT_MODE_IRQ_LEVEL_EN) {
-+		reg &= ~WDT_MODE_IRQ_LEVEL_EN;
-+		iowrite32(reg | WDT_MODE_KEY, wdt_base + WDT_MODE);
-+		/*
-+		 * Wait for two 32KHz watchdog clock cycles so the
-+		 * hardware can latch the IRQ level change across the clock
-+		 * domain.
-+		 */
-+		udelay(WDT_IRQ_LEVEL_SYNC_US);
-+		reg = ioread32(wdt_base + WDT_MODE);
-+		reg |= WDT_MODE_IRQ_LEVEL_EN;
-+	} else {
-+		reg |= WDT_MODE_IRQ_LEVEL_EN;
-+		iowrite32(reg | WDT_MODE_KEY, wdt_base + WDT_MODE);
-+		udelay(WDT_IRQ_LEVEL_SYNC_US);
-+		reg = ioread32(wdt_base + WDT_MODE);
-+		reg &= ~WDT_MODE_IRQ_LEVEL_EN;
-+	}
-+	iowrite32(reg | WDT_MODE_KEY, wdt_base + WDT_MODE);
-+	ioread32(wdt_base + WDT_MODE);
-+	spin_unlock_irqrestore(&mtk_wdt->lock, flags);
-+}
-+
- static irqreturn_t mtk_wdt_isr(int irq, void *arg)
- {
- 	struct watchdog_device *wdd = arg;
- 
-+	mtk_wdt_deassert_irq(wdd);
- 	watchdog_notify_pretimeout(wdd);
- 
- 	return IRQ_HANDLED;
-@@ -406,6 +455,8 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- 	if (!mtk_wdt)
- 		return -ENOMEM;
- 
-+	spin_lock_init(&mtk_wdt->lock);
-+
- 	platform_set_drvdata(pdev, mtk_wdt);
- 
- 	mtk_wdt->wdt_base = devm_platform_ioremap_resource(pdev, 0);
--- 
-2.45.2
-
+regards
+Philipp
 
