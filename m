@@ -4,103 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8479C5DF81
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Aug 2026 20:31:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF0CAC5DF97
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 01:09:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Hz9a2/4b0H2hGIuQcX4i4J6vhXjz7a1tVe8/vJ1mK5k=; b=G1SZNgYnYPOA5CaQMkPlDT3cye
-	XJgzl4GCFOOP5/r69XHsNpKjb4aT+nPGmGO7/jXft1quGOFYmLhiV+frNjCCkD2tEhokPh0uUZhmn
-	TUti7GFm7jwIqaQ42pEFAwZKqKnexXV1UE9l1jzqOVK+DTRwi/uMQujTi9g0iGpMbcXyMiZ8wpGRU
-	RO8OIIFxUxItAM7q4fp3rzXE+mdrplIivMvqOuLQEyGn6MbY/Mx35WjlQevXafDYOfy13RTskoFSo
-	rQ5++cXFOKLpfENQWDFnayPLk9azlPAL3E1XuPwSGYQkWRHuRYWPzOxdlscuq6QCOUqycrCm4wjXm
-	rdegK8+w==;
+	bh=82TQkR/Grc7Vk96Ux4CBl42uCtjliG4AMjjeE0Q0oec=; b=yHrECyGPZl1hP83VgzUytNcqwY
+	D6yGi1vhUXNbCJKTWnJTVgl9lJg2+Pdg/6UldE9Li1fDgVoledPcyq6IvvMSue/mIvZ2g5VEMQU7Q
+	h6jro6wtwleteYUihxof6k+5X7vlM0Crfvan4g1cxlzS1bjdnrzYX+bO0CuwsP4vSPyWnFF6bSD2R
+	fPPJ6WHtwrya9/vvyb7nIyfarvM1FscfB8hikk3gfLi7KVKzEijxhVyGjhKqzRBqlFGm6tcEQE4SM
+	BnQ2OJYn5pOVcu0ba2t8O9zkdDZDFBwGAU5OezgMG+IAwZ2lOUcL5VgD9l6Z9AOphCbIaeHtJ6iJW
+	ITTxd/NA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyEqa-0000000FbDG-3SQ8;
-	Sun, 23 Aug 2026 20:31:16 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wyJBq-0000000FjNA-15g0;
+	Mon, 24 Aug 2026 01:09:30 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyEqX-0000000FbCp-1alD
-	for linux-mediatek@lists.infradead.org;
-	Sun, 23 Aug 2026 20:31:14 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 944CB44044
-	for <linux-mediatek@lists.infradead.org>; Sun, 23 Aug 2026 20:31:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 797211F0155C
-	for <linux-mediatek@lists.infradead.org>; Sun, 23 Aug 2026 20:31:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787517070;
-	bh=Hz9a2/4b0H2hGIuQcX4i4J6vhXjz7a1tVe8/vJ1mK5k=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=Z9SR/CDW2+RChZ3knjritt88WVf6xuW1xAcW5680A4MsxFF1qx3Cyc2rapAylHwmY
-	 i01kHvJ/Qt8Az6ftSP9Wlfop6xlECrhrEo73TxjT0/f/TMQve4hcix+HMncPTM1HJF
-	 PaB7k9Vh9OJ+gqrSWVZQTIzVw2l2P5vSW5Kxn344fH7uIP+cOEvTizQYaQ/F5cUzA7
-	 p+sPgYQkVyJ1IO3DrZBKDbMjn5pO1E6mwMBR6s32rJgu0EpbBk5Sz2CzP916HdHBSq
-	 EsQUo4o2t5BYNwQt0xwWwIZl0XHOiTkx56XOJJ9rE7ywoOqP3O2l4SCAosPzB/PYLc
-	 Yuaa9lHQxDn9A==
-Received: by mail-lf1-f54.google.com with SMTP id 2adb3069b0e04-5b013aa02b2so4799015e87.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 23 Aug 2026 13:31:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+RrxQz7C1eq9Qd68POiPjy6TPWj1mLHd+LdADwU+0+g1ySjI6pxCflo68L8IlMnhPiSwUqDzP/3p/qCTy4D6nA==@lists.infradead.org
-X-Gm-Message-State: AFuF++k3lE/mIg4Bxw4dM5RPFVoooiiRLgmybpPHEhDzq2sbr2acyJjo
-	yRLdUoY5PN2AWld+ritWZSYH9lGJT0/gL4xxXoHlxH9J6wLCDzzyYTutPnYX8rrZsWqhzW6djF+
-	Nk1S8VSLJWXDS8pz41tnarIAvKekmyic=
-X-Received: by 2002:ac2:51c5:0:b0:5b3:12b1:be93 with SMTP id
- 2adb3069b0e04-5b484736c8amr4269481e87.0.1787517068028; Sun, 23 Aug 2026
- 13:31:08 -0700 (PDT)
+	id 1wyJBj-0000000FjLC-273Z;
+	Mon, 24 Aug 2026 01:09:26 +0000
+X-UUID: 6deb77809f5811f19a56ed5b684f684d-20260824
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.19,REQID:391ad985-496b-4dd4-a59c-801c0866842b,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:7db8b62,CLOUDID:258bb1fb369b99c8782552f16bfad1c9,BulkI
+	D:nil,BulkQuantity:0,SF:81|82|102|136|865|898,TC:nil,Content:0|15|50,EDM:-
+	3|-100,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 6deb77809f5811f19a56ed5b684f684d-20260824
+X-User: liujiajia@kylinos.cn
+Received: from nature.lan [(10.44.16.150)] by mailgw.kylinos.cn
+	(envelope-from <liujiajia@kylinos.cn>)
+	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
+	with ESMTP id 1873175886; Mon, 24 Aug 2026 09:09:17 +0800
+From: Jiajia Liu <liujiajia@kylinos.cn>
+To: Marcel Holtmann <marcel@holtmann.org>,
+	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+	Ying Hsu <yinghsu@chromium.org>,
+	Archie Pusaka <apusaka@chromium.org>,
+	Abhishek Pandit-Subedi <abhishekpandit@google.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jing Cai <jing.cai@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Chris Lu <chris.lu@mediatek.com>
+Cc: linux-bluetooth@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Jiajia Liu <liujiajia@kylinos.cn>
+Subject: [PATCH v4 2/2] Bluetooth: btusb: Fix leaked runtime PM reference in btusb_reset
+Date: Mon, 24 Aug 2026 09:09:00 +0800
+Message-ID: <309cc8501019921f480073be76d146825dfc8524.1787477831.git.liujia6264@gmail.com>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <59a4c09e1cb02ad8c375a08e5af164d64a3d7061.1787477831.git.liujia6264@gmail.com>
+References: <59a4c09e1cb02ad8c375a08e5af164d64a3d7061.1787477831.git.liujia6264@gmail.com>
 MIME-Version: 1.0
-References: <cover.1787239813.git.geert+renesas@glider.be> <bd84df92640a05a1a73a8bc775b2d50568a9d0ec.1787239813.git.geert+renesas@glider.be>
-In-Reply-To: <bd84df92640a05a1a73a8bc775b2d50568a9d0ec.1787239813.git.geert+renesas@glider.be>
-From: Linus Walleij <linusw@kernel.org>
-Date: Sun, 23 Aug 2026 22:30:56 +0200
-X-Gmail-Original-Message-ID: <CAD++jLkYE8Fh_HpKPYjL0-ksVQA8f_iLRFNkPU5Jvq+ihay5ww@mail.gmail.com>
-X-Gm-Features: AcwNN1U1aXPtuwFV8knvjn18BtYzZuPH0iZTVosQkZ_l23SVekgfIt7U_k24f4g
-Message-ID: <CAD++jLkYE8Fh_HpKPYjL0-ksVQA8f_iLRFNkPU5Jvq+ihay5ww@mail.gmail.com>
-Subject: Re: [PATCH 39/45] clk: ux500: Make sure clk_init_data is fully initialized
-To: Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: Ryan Chen <ryan_chen@aspeedtech.com>, Joel Stanley <joel@jms.id.au>, 
-	Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
-	Jerome Brunet <jbrunet+clk@baylibre.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
-	Billy Tsai <billy_tsai@aspeedtech.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, 
-	Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, 
-	Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, 
-	Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, 
-	Sudeep Holla <sudeep.holla@kernel.org>, Cristian Marussi <cristian.marussi@arm.com>, 
-	David Lechner <david@lechnology.com>, Abel Vesa <abelvesa@kernel.org>, Peng Fan <peng.fan@nxp.com>, 
-	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Paul Cercueil <paul@crapouillou.net>, Santosh Shilimkar <ssantosh@kernel.org>, Andrew Lunn <andrew@lunn.ch>, 
-	Gregory Clement <gregory.clement@bootlin.com>, 
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Sylwester Nawrocki <s.nawrocki@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
-	Peter Griffin <peter.griffin@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Dinh Nguyen <dinguyen@kernel.org>, Viresh Kumar <vireshk@kernel.org>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	=?UTF-8?Q?Emilio_L=C3=B3pez?= <emilio@elopez.com.ar>, 
-	Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Prashant Gaikwad <pgaikwad@nvidia.com>, 
-	Thierry Reding <thierry.reding@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
-	Ulf Hansson <ulfh@kernel.org>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Michal Simek <michal.simek@amd.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, 
-	linux-aspeed@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, openbmc@lists.ozlabs.org, 
-	arm-scmi@vger.kernel.org, imx@lists.linux.dev, linux-mips@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
-	linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260823_180923_833088_BB509688 
+X-CRM114-Status: GOOD (  15.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,25 +86,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 21, 2026 at 10:53=E2=80=AFAM Geert Uytterhoeven
-<geert+renesas@glider.be> wrote:
+btusb_reset calls usb_autopm_get_interface to resume the device
+before queuing a reset of it, but never calls the matching
+usb_autopm_put_interface.
 
-> The clk_init_data structure contains several mutually-exclusive members
-> for different methods to specify the possible parents of a clock,
-> prompting drivers to initialize only the members they need.  However,
-> not initializing all members may cause subtle issues, which are only
-> exposed when CONFIG_INIT_STACK_ALL_PATTERN or CONFIG_INIT_STACK_NONE is
-> enabled.
->
-> Make sure all members are fully initialized, to avoid such bugs, and to
-> prevent future breakage when converting drivers to a different method
-> for specifying the parents.
->
-> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+usb_queue_reset_device ends up in usb_reset_device(), and since
+btusb provides no pre_reset/post_reset callbacks the interface is
+merely unbound and rebound: the interface device object survives
+this cycle, and so does its PM usage count, which is not cleared
+when the driver is unbound.
 
-OK I trust you on this one:
-Acked-by: Linus Walleij <linusw@kernel.org>
+As a result every reset permanently leaks a PM usage reference,
+preventing the interface from being runtime suspended again until
+it is unbound.
 
-Yours,
-Linus Walleij
+Set BTUSB_RESET flag before usb_queue_reset_device so that
+btusb_disconnect drops the reference. If the flag is already set,
+drop one reference.
+
+Fixes: c9209b269afd ("Bluetooth: btusb: Introduce generic USB reset")
+Assisted-by: Claude:qwen3.8-max
+Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
+---
+
+Changes in v4:
+- do not return if BTUSB_RESET is set in case the first reset failed.
+  (sashiko)
+
+Changes in v3:
+- handle multiple reset requests int btusb_reset (sashiko)
+  set BTUSB_RESET after usb_autopm_get_interface. If the flag is
+  already set, drop newly acquired reference and return.
+
+Changes in v2:
+- Fix the race window (sashiko)
+  set BTUSB_USB_RESET_ACTIVE flag before usb_queue_reset_device.
+
+Changes in v1:
+- add usb_autopm_put_interface after usb_queue_reset_device
+
+---
+ drivers/bluetooth/btusb.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index c95f72484fc0f..f92ea1178bc26 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -1033,13 +1033,15 @@ static void btusb_reset(struct hci_dev *hdev)
+ 	int err;
+ 
+ 	data = hci_get_drvdata(hdev);
+-	/* This is not an unbalanced PM reference since the device will reset */
+ 	err = usb_autopm_get_interface(data->intf);
+ 	if (err) {
+ 		bt_dev_err(hdev, "Failed usb_autopm_get_interface: %d", err);
+ 		return;
+ 	}
+ 
++	if (test_and_set_bit(BTUSB_RESET, &data->flags))
++		usb_autopm_put_interface_no_suspend(data->intf);
++
+ 	bt_dev_err(hdev, "Resetting usb device.");
+ 	usb_queue_reset_device(data->intf);
+ }
+-- 
+2.53.0
+
 
