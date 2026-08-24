@@ -4,63 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C80EBC5DF8C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 02:15:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CDA8C5DF9C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 02:41:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8j7/FGt0oFHCAupBVOrQ+nukdA+Ej2PxRli8y7TFGPw=; b=BvGFjjzQqYm8efaSxt5tcXdmAI
-	w7PLEzOm9+UdtUB2uSa0NhmnzUEFDIDxQeof2XLjupVRcrbHYbd7m7tv4F21laMf+vBCDbK8bWdb3
-	FrOffyy4MgwDM753YR0OBxnA4gI9leW0oWHrb4DwSuv5aXFAtaSIadLJIgqnZCnV/LogkCvj/qNYs
-	tdQz3Nuwvsy5lnxSMgi6obrLVHAs/HpfJ0FNwOazOgk4RGyO+flAW5wIQQBz/kFGBbh4A6swT1Fel
-	GTbQrq7vN5uodfPCA4YOExLOKWhNDqGm/0OLeDW2xBovm//cjTP0S0+GBLFiLpgdEGZ6pdqnZa/NC
-	+TGIqPkA==;
+	bh=eQDlZUqXKTPfwqBY8N8tCdcmyCJmkDuzU6UtMMpoHKM=; b=Q3710fumtxuGonwHTk4GkjBW7b
+	efEYqKhDsXgv+9/q3akVlYaCrYAlvnsEL1zcVpvIux2aORoTx8wARiKTAI03wq+QrntPQg6x/L/ch
+	AyJIxbwcjc9m8nMxX0kCWdH5DldDq6k+Wqe5bWctwODgjnKSlAOf1HP2q0paYpJUR+3nBLT6BwADX
+	99GIGR6WOwavp5y/+X/TZ1CzbX3YK9cry4YsEezXq7jMiqw5xPNzLoGJQqck45lNo/DrE166sHymd
+	Ma0fnyH6Co1/M5DeSykAo4VLrqjzEQ4jrIct2TyokQPw+1nkXwaFv3d48WjYGf315qXHIkmRNSWIG
+	po4pstyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyKDH-0000000Flb7-14kj;
-	Mon, 24 Aug 2026 02:15:03 +0000
-Received: from out-121.mta1.migadu.com ([2001:41d0:203:375::79] helo=mta1.migadu.com)
+	id 1wyKcp-0000000FoRQ-0Qz8;
+	Mon, 24 Aug 2026 02:41:27 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyKDD-0000000Fla4-2XH0
+	id 1wyKcm-0000000FoQO-3kpY
 	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Aug 2026 02:15:01 +0000
-X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=NtQ2IOM/Mh5R17rSUOh8SsBc1MqYsMk2h3KzjPHs0PE=;
- c=simple/simple; d=linux.dev;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1787537693; v=1; x=1788142493;
- b=wQVvXueOFLtDN5Vz2tgoyaSRzYAX7FfBDKUOiijLrQlo2B4jI0dhYuab3bIgZezb0devHpaf
- 8ONXFs7as3ZARCG/vhHg2mxL52GZlfBk9BR9XRzM04jrRUYlAxcprZSyp1kk9GYUnV9DyaHQKSR
- uxGLG0tcaX8dIPAVqwNrobIo=
-X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: from localhost.localdomain (116.128.244.169)
-	by mta10.migadu.com with ESMTPS id 9bf3271d94a12da4;
-	Mon, 24 Aug 2026 02:14:53 +0000
-X-Mizu-Trace-ID: 9bf3271d94a12da4
-X-Migadu-Flow: FLOW_OUT
-From: Yi Cong <cong.yi@linux.dev>
-To: nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com
-Cc: shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	linux-wireless@vger.kernel.org,
+	Mon, 24 Aug 2026 02:41:26 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-c214e625259so412463166b.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 23 Aug 2026 19:41:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=lex.la; s=google; t=1787539282; x=1788144082; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=eQDlZUqXKTPfwqBY8N8tCdcmyCJmkDuzU6UtMMpoHKM=;
+        b=N41htkx0UfOL5kiq/HAfv3IqlNaEdyEvIyVwQ9BNvRFNlETvGcxFaqeSBN+4lge6zN
+         Os+eYfVR8tTM98zpV8HA770fYmcoaC5v3MDcKWdfoN+qDL4/rAchW8xs6qbUebrbqKup
+         GiLGixfYbW/fjWEG1wcnlVYnghC27t/QBFZ2XGg7N2wHZ4EfAFfIszQpWtbmOU6rIX/a
+         K+v4GI+BaFyKzEdcj5Mc5TJOuYwPfKY0t4KHU5YWZuOrV6ds+LjDFuCw4L5UWLeTrzey
+         KpoD7kP7Ls6wFZIEw4yi7KnpjGteCnNcWK1I/+c18kj9aqlgrDLIgnAZnfRgWea96dGn
+         rj3A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787539282; x=1788144082;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=eQDlZUqXKTPfwqBY8N8tCdcmyCJmkDuzU6UtMMpoHKM=;
+        b=TcQvFTjRegoreeb7WEMbbrzL3VKjr1jnDdsniY0eEXJ+h75LVGEIX73cEGsoi1OmW9
+         h40kfOCJsPgozt6bgXfwvduW6ZrZz//s9eql6I4IesTgHyy5l35f0PcD7fWwlQeY08jW
+         WbIJA0lHPF/5M4RxscRcndKgiAI69N1a8RZv9lGjlXYhzpgr6EbsE9XmlRZWqL2orqm7
+         wp2Sg+IWpDGmf5MdGUaHyTuScXIt+SDSGzTF7y6eD0pFIdhyUjI9Rgs8W092FNbukG5m
+         9FleeVdmZFfverkajVt1PU2AqWHJQb5zBWbGhDD9mr2FYuU4H3WgeiRvYb+WD+RgG1S5
+         Axig==
+X-Forwarded-Encrypted: i=1; AHgh+RqRUzyMKycdrTjcJOGO8sKfCqjW58ymyfyYG5UGjuZghVrvGtXE8XU4jlpq6xAGc6KSQCrnaqrNvUAEjepWJQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++nC7yjDc+n7FrdlFHkNWsN/UxvBKVzUDu/z2oTrJvYzbFzCAPnc
+	sIqLadMkrsJZSPdNKRE/WLYhAdaqoQ1mHgZb4QOoxdMHIkvFEYJxMW2E8a6eJcytljU=
+X-Gm-Gg: AR+sD10kbhat2lvohPfYHNBINPW37UMvcVoNIwSyxNINDj6HVi2kKLjSiYDP1ckaaNe
+	sBAlEz+ErAx+MzHVeXLtttZqLh57rarmPh72AOMJbO7A2DY2Kp05VqsgOlX6ACw7NpCNwNgITV8
+	Ar+/CMidQbMqfuy9DRzoKQlVtm2D2Qls8LVnnRIr0YTE2udlRS1qlareBSVMLhdbltuiSqMrnhF
+	Oc3PsQ2OxHlr+jb0M4g4zuGlO7sOwHlqHk4KW+cn3jY4FBfcQclowUdZkr2gGBJpkPUbbbznmxc
+	Duuygu2yO/cbz6LsmGXAL9rOqrIEPGdWiA5syTBNOM4erTiQtWVA/rDnRX5Ox9TJGNCA0+aYJGu
+	fqKTHng48sHMR44qZgpgTqZIchyhZF18NmMtN8BUICC78tlg6/E7PC2so48huv7cfV6Iqfa4s4Y
+	7C14hGAvmWJehuk275Sg2xaC5uLFUiGrsLdgPN9YPupor96vDGkmF8KmJL
+X-Received: by 2002:a17:907:97d5:b0:c20:21be:ea75 with SMTP id a640c23a62f3a-c246a33ea8bmr2393322466b.8.1787539282331;
+        Sun, 23 Aug 2026 19:41:22 -0700 (PDT)
+Received: from ownbook ([195.181.160.194])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c249686e37bsm949008466b.55.2026.08.23.19.41.18
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Sun, 23 Aug 2026 19:41:21 -0700 (PDT)
+From: Aleksei Sviridkin <f@lex.la>
+To: "Chester A . Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	netdev@vger.kernel.org
+Cc: Russell King <linux@armlinux.org.uk>,
+	Qingfang Deng <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Yi Cong <yicong@kylinos.cn>,
-	stable@vger.kernel.org
-Subject: [PATCH] wifi: mt76: mt792x: fix negative errno truncation in offload capability
-Date: Mon, 24 Aug 2026 10:14:29 +0800
-Message-Id: <20260824021429.43761-1-cong.yi@linux.dev>
-X-Mailer: git-send-email 2.25.1
+	Aleksei Sviridkin <f@lex.la>
+Subject: [PATCH net v2 0/2] net: restore EEE on MediaTek switches and SoC MACs
+Date: Mon, 24 Aug 2026 05:41:15 +0300
+Message-ID: <20260824024117.46154-1-f@lex.la>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260823_191500_020031_8DBA6BE1 
-X-CRM114-Status: UNSURE (   8.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260823_194124_968172_9C79FA2A 
+X-CRM114-Status: GOOD (  15.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,54 +111,116 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yi Cong <yicong@kylinos.cn>
+Both drivers fill in phylink_config.lpi_capabilities and
+lpi_timer_default but never lpi_interfaces. phylink treats a MAC as
+supporting managed EEE only when the tx_lpi methods are implemented and
+BOTH bitmaps are non-empty, which phylink_create() decides once and for
+all, so EEE has been off on every mt753x port and on every mtk_eth_soc
+MAC that uses mtk_phylink_ops since the two conversions named in the
+Fixes: tags. Because the tx_lpi methods ARE implemented, phylink takes
+the other branch and calls phy_disable_eee(), which fills
+eee_disabled_modes - so userspace cannot enable EEE either.
 
-Returning a negative errno as u8 turned -ENOENT into 0xfe, wrongly
-enabling CNM and NAN caps. Return int and default to no caps on error.
+On an MT7981B board with an MT7531 switch, before these patches:
 
-Fixes: e8a264ccd2de0 ("wifi: mt76: mt7921: move init shared code in mt792x-lib module")
-Cc: stable@vger.kernel.org
-Signed-off-by: Yi Cong <yicong@kylinos.cn>
+  == lan1
+  Cannot get EEE settings: Not supported
+  == lan2
+  Cannot get EEE settings: Not supported
+  == lan3
+  Cannot get EEE settings: Not supported
+  == lan4
+  Cannot get EEE settings: Not supported
+  == wan
+  Cannot get EEE settings: Not supported
+
+lan1-3 are the MT7531 internal PHYs, lan4 is an EN8811H on switch port
+5 whose MAC side runs 2500BASE-X rate matched to a 1 Gbps media link,
+and wan is the mtk_eth_soc MAC with its directly attached 1 Gbps PHY -
+so both drivers are covered.
+
+Each patch fills lpi_interfaces from supported_interfaces and leaves
+2.5 Gbps out of both bitmaps for now. LPI above 1 Gbps is unvalidated
+rather than unsupported: both MACs fold 2.5 Gbps onto their 1 Gbps
+speed encoding, so the 1 Gbps EEE force bit is what would govern it.
+MediaTek's SDK driver sets the force bits for 100 Mbps and 1 Gbps only,
+EEE signalling on 2500BASE-X is outside 802.3, and the 1 us unit of the
+wakeup timers is undocumented at 2.5 times the port clock.
+
+Neither driver sets eee_enabled_default, so LPI stays off until
+userspace asks for it with ethtool --set-eee. The EEE advertisement is
+a different matter: phylink stops force-clearing it, so a PHY that
+advertises EEE out of reset advertises it again and the link may
+negotiate EEE, without this MAC asserting LPI. MT7531's internal PHYs
+and EN7528 are the exceptions, for the reasons in patch 1. Devicetree
+eee-broken-* marks act at the PHY level and keep working, so a board
+that already distrusts its PHYs stays protected: OpenWrt marks all
+modes broken on MT7621's internal PHYs.
+
+The two patches are independent and touch different subsystems; they
+are sent together because they are the same bug.
+
+Targeted at net as a regression fix with an active userspace lockout;
+can be retargeted at net-next if maintainers prefer.
+
+Based on net-next at 91ec20351349. Both driver files are byte
+identical in net/main and the series applies there unchanged.
+
+After the series, all five ports report:
+
+  EEE status: disabled
+  Tx LPI: disabled
+  Supported EEE link modes:  100baseT/Full
+                             1000baseT/Full
+  Advertised EEE link modes:  Not reported
+
+No 2.5G mode is offered, which is the narrowed lpi_capabilities, and
+nothing is advertised until userspace asks. On this board no PHY came
+out of reset advertising EEE, so the case where the advertisement
+returns once phylink stops clearing it is not exercised here.
+
+Enabling it on lan1, whose partner advertises EEE at both speeds:
+
+  # ethtool --set-eee lan1 eee on
+  EEE status: enabled - active
+  Advertised EEE link modes:  100baseT/Full 1000baseT/Full
+  Link partner advertised EEE link modes:  100baseT/Full 1000baseT/Full
+
+  # ethtool --set-eee lan1 eee on tx-lpi on
+  EEE status: enabled - active
+  Tx LPI: 30 (us)
+
+With LPI armed, 30 parallel ICMPv6 streams of 1400-byte payload, 300
+packets each one second apart - so every gap crosses the LPI threshold
+and the link enters and leaves LPI thousands of times over 300 s - lost
+nothing: 300/300 on every stream, tx and rx error counters unchanged,
+carrier_changes unchanged, and no mac_enable_tx_lpi errors in dmesg.
+
+On wan the link partner advertises no EEE, so enabling it settles at
+"enabled - inactive", which is the correct outcome, and the link
+survived the autonegotiation restart. Its Tx LPI reads 1000 (us)
+against lan1's 30; see the note below the scissors of patch 1.
+
+lan4 keeps EEE disabled and never arms LPI, which is what dropping
+2500BASE-X from lpi_interfaces is for. Forwarding through it was
+lossless with no carrier change.
+
 ---
- drivers/net/wireless/mediatek/mt76/mt792x_core.c | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
+v2: commit messages rewritten to carry the Why only, mechanism notes
+    moved below the scissors (Andrew Lunn); comments and commit
+    messages reworded so the 2.5 Gbps exclusion reads as unvalidated
+    rather than impossible (Daniel Golle); no functional changes.
+v1: https://lore.kernel.org/netdev/20260822195252.2934-1-f@lex.la/
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-index 0ad33f74c2285..297c8a9f41ba3 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-@@ -857,7 +857,7 @@ int mt792x_init_wiphy(struct ieee80211_hw *hw)
- }
- EXPORT_SYMBOL_GPL(mt792x_init_wiphy);
- 
--static u8
-+static int
- mt792x_get_offload_capability(struct device *dev, const char *fw_wm)
- {
- 	const struct mt76_connac2_fw_trailer *hdr;
-@@ -926,13 +926,20 @@ mt792x_get_mac80211_ops(struct device *dev,
- 			void *drv_data, u8 *fw_features)
- {
- 	struct ieee80211_ops *ops;
-+	int ret;
- 
- 	ops = devm_kmemdup(dev, mac80211_ops, sizeof(struct ieee80211_ops),
- 			   GFP_KERNEL);
- 	if (!ops)
- 		return NULL;
- 
--	*fw_features = mt792x_get_offload_capability(dev, drv_data);
-+	ret = mt792x_get_offload_capability(dev, drv_data);
-+	if (ret < 0) {
-+		dev_warn(dev, "failed to read firmware offload caps: %d\n", ret);
-+		*fw_features = 0;
-+	} else {
-+		*fw_features = ret;
-+	}
- 
- 	if (mt792x_needs_cnm_runtime(drv_data))
- 		*fw_features |= MT792x_FW_CAP_CNM;
+Aleksei Sviridkin (2):
+  net: dsa: mt7530: populate lpi_interfaces to fix EEE support
+  net: ethernet: mtk_eth_soc: populate lpi_interfaces to fix EEE support
+
+ drivers/net/dsa/mt7530.c                    | 24 ++++++++++++++++-----
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 22 ++++++++++++++++---
+ 2 files changed, 38 insertions(+), 8 deletions(-)
+
 -- 
-2.25.1
+2.55.0
 
 
