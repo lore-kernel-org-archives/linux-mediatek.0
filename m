@@ -4,82 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3FC5C5DF8C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 04:52:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E381C5DF94
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 05:43:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+lbk07JkI5e+MY/+5jcqL9HA7nRDZjiBGwmNADWAQxA=; b=BjSd6r8bzglGG1+Yyb4Hw6Rm6p
-	qpAIR6l/1k+xJpy1+QL7C7el3NrPTiRvFLrW4kGVtADJEgHW7lMnC9Eq7cg6V1uYSN/GExDr9AMnx
-	BramBIznMRkWdtz0Eu4s9lJ07Uv6V8lFaTWAJvDAIVeATDKuG3T5Hc+MCnVFuRfuYBSwdlsLhC0BS
-	af5AhCYZkw5vz3JVTfg2gQIYMcEoZklPiMqGq/19o1gUM6w6xADFd1M/w44LNVvntCTzj8YkqzeJT
-	ReSmnhL6SFm9TOtHUt9IR5VdF7rmwDIAWf/XZ7oLqzjvoyIQ/3g6FE2VjJ+ijoWGR96Mjom2tiprN
-	nEjNcTyA==;
+	bh=yhu8ZNPsil3TZAdxeJ1obBEGvKGg5WGvYLcUNAK60Eg=; b=dyVNt620kJRUIFimcqM1DBeFVM
+	tfrKA//XIWgtO6BKKs/48Z+3PSVJcAyvhV6ojPJ7gjYwBh6KfsORGH8D/+wySbrMF9Pn5ip1N++61
+	5mNIDfc969GUjJd34BcN4aYS8i8+wSSMvsQVQ4OGCRcCtl4J3Pb6pzC4G2enpe9SFR6fMm4Vfc91p
+	9ZWqRlUuLgSzK0yuu5e9Sb5iCyhGQFvYe9h/rsIlj3EDqTIBBs18fYbB9JxYR6B+WeYgSaIcNaFpd
+	3p5EWd7RLDgrHE3J9A9+wODL9jcLrxzWj0HahUFhAtYqQlZ7mmKXs7Hrb5+jfAtYoBJhgyhSjmPqp
+	FOhFmFXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyMfs-0000000Fv9q-3cW4;
-	Mon, 24 Aug 2026 04:52:44 +0000
-Received: from relay.yourmailgateway.de ([188.68.61.107])
+	id 1wyNTS-0000000FwfT-1v7X;
+	Mon, 24 Aug 2026 05:43:58 +0000
+Received: from mout.web.de ([212.227.17.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyMfq-0000000Fv9S-1XBk
-	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Aug 2026 04:52:44 +0000
-Received: from mors-relay-8405.netcup.net (localhost [127.0.0.1])
-	by mors-relay-8405.netcup.net (Postfix) with ESMTPS id 4hSz6v0vndz74QG;
-	Mon, 24 Aug 2026 06:52:39 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=leemhuis.info;
-	s=key2; t=1787547159;
-	bh=XgnWoqC9vlOxYt8TkrbhJL8JlSG616CE7CLNhY/UYes=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=YW3Emin0qJ/aLYlnYJMZSXz9o+zrUVW1zMe8ZM2/5uGEJcngC96KDcnNauhL57grC
-	 iu9ix0QcHFukb7R8wn3gSBLFlvOUvddFfCT5bl/4dwwZgAdnOpBMckaY4JpFpYgE3V
-	 2NbIEqIxre05L//8gVKmsSCGfnXpAM8hgHTk4iv9pL0BXcu6Iy3t5st7nkibkXj8zj
-	 uoZmBCmpfl8TxHLSBirNLsLI5si1iG0xhgpQ9nxZYfNABUdYR6yMkTG6qyuYORLQ96
-	 LMPT1olozhUpCeIN7i43bzlChQv1ix4V8f26eQJAciPXypqK4PWL3Gbgy6HhXF2AGk
-	 Ulv6y+eXcVWuQ==
-Received: from policy01-mors.netcup.net (unknown [46.38.225.35])
-	by mors-relay-8405.netcup.net (Postfix) with ESMTPS id 4hSz6v0B71z74Py;
-	Mon, 24 Aug 2026 06:52:39 +0200 (CEST)
-X-Virus-Scanned: Debian amavisd-new at policy01-mors.netcup.net
-Received: from mxe9fb.netcup.net (unknown [10.243.12.53])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by policy01-mors.netcup.net (Postfix) with ESMTPS id 4hSz6s1kFMz8tdN;
-	Mon, 24 Aug 2026 06:52:37 +0200 (CEST)
-Received: from [IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f] (unknown [IPv6:2a02:8108:8984:1d00:a0cf:1912:4be:477f])
-	by mxe9fb.netcup.net (Postfix) with ESMTPSA id 8DE805FA13;
-	Mon, 24 Aug 2026 06:52:36 +0200 (CEST)
-Authentication-Results: mxe9fb;
-        spf=pass (sender IP is 2a02:8108:8984:1d00:a0cf:1912:4be:477f) smtp.mailfrom=regressions@leemhuis.info smtp.helo=[IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f]
-Received-SPF: pass (mxe9fb: connection is authenticated)
-Message-ID: <476e7721-580e-4a6b-86e5-5ed782a2c7ec@leemhuis.info>
-Date: Mon, 24 Aug 2026 06:52:35 +0200
+	id 1wyNTP-0000000Fwe9-2rJ5;
+	Mon, 24 Aug 2026 05:43:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1787550232; x=1788155032; i=markus.elfring@web.de;
+	bh=yhu8ZNPsil3TZAdxeJ1obBEGvKGg5WGvYLcUNAK60Eg=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
+	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
+	 cc:content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=RsqZE6zZiQ36YSOr5/6msdKrsRclzLdzbQNUM9Ba15OShM9QfWjATC2ykgAl8ehV
+	 CvdKhrx0MRsbRZ9fyOq8fqajUwdh42a9gWCNvaA549ANmDctTChbKZcCmMwtlBAdQ
+	 HYvUnTuydSj5OR9UJ7LCR4lqE3ohatpyihDI3T/zE4JD0cslpMRUzFMdXgrz5uoyF
+	 9F+LlXe3nU+JABg9X75swuB4cWzWTX7nHLAsJb1GovrZx9KjchzEQIJmlJWsxEMCB
+	 XxmKWhyM16FvJTCuwizS/ZpVOYnZ2wG7p8nHLvypaQlE9MCBBIe7OFiea0V54GViT
+	 h1qeLmLy+9pcrZhqjw==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from client.hidden.invalid by smtp.web.de (mrweb106
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1MMGyK-1xGSac0xHy-00NYF6; Mon, 24
+ Aug 2026 07:43:52 +0200
+Message-ID: <caa6ad68-9f9a-45b0-81ce-cdbeceb8d454@web.de>
+Date: Mon, 24 Aug 2026 07:43:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [REGRESSION] mt7925: MLO connectivity silently stalls with 6GHz
- link active
-To: Sean Wang <sean.wang@mediatek.com>
-Cc: regressions@lists.linux.dev, linux-wireless@vger.kernel.org,
- Devin Wittmayer <lucid_duck@justthetip.ca>, Felix Fietkau <nbd@nbd.name>,
- Jonas Hort <jonas.hort@posteo.de>, lorenzo.bianconi83@gmail.com,
- linux-mediatek@lists.infradead.org
-References: <503eb10e-80cf-493e-95fd-04fc0f94ce01@posteo.de>
- <e4bc5ce3-9a6f-4365-9d36-f6440ded0865@posteo.de>
- <c64f5fa6-4c61-45b6-a513-b971e59d7723@posteo.de>
-From: Thorsten Leemhuis <regressions@leemhuis.info>
-Content-Language: de-DE, en-US
-In-Reply-To: <c64f5fa6-4c61-45b6-a513-b971e59d7723@posteo.de>
+To: Manush Prajwal <manushprajwal555@gmail.com>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: LKML <linux-kernel@vger.kernel.org>, kernel-janitors@vger.kernel.org,
+ "Jason-JH.Lin" <jason-jh.lin@mediatek.com>,
+ Jassi Brar <jaswinder.singh@linaro.org>
+References: <20260823112321.2039-1-manushprajwal555@gmail.com>
+Subject: Re: [PATCH] mailbox: mtk-cmdq: fix runtime PM usage counter leak in
+ cmdq_mbox_flush
+Content-Language: en-GB, de-DE
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20260823112321.2039-1-manushprajwal555@gmail.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-PPP-Message-ID: <178754715696.1770844.12341715983871143000@mxe9fb.netcup.net>
-X-NC-CID: jZRQ2YBXAlL/TetqCSSSWEo4HFDmv75leDsS4FbASSy4KieyXQs=
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:kkCJuvXbxsKqBP+qpyJUlh76+xw/Y2HjHlEYf9pXuvebnRLT8Sw
+ mcgSSa7imIsZjhBZE8ZXS5meRZHjqaTUsIfPgI8yXA6YguTmzMKShNHtQZ7w81yV0o9sB47
+ 0hcAPE4Atf+ubS8aYryUcoBifCa+3K4UWRxJbq2hn9pm8iIoFzcYm0OKM36wfEYhBnFzKHC
+ gr0azYiIZOPZfa/A0kJkg==
+UI-OutboundReport: notjunk:1;M01:P0:CPV262Z8SVU=;s8mU28Jwzchzf+EXxHO8pjwqPyF 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 ydJo0GPg7fIXU3Hv4915NJC6xyAM/zGd
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260823_215242_752090_777C1FFB 
-X-CRM114-Status: GOOD (  24.97  )
+X-CRM114-CacheID: sfid-20260823_224356_085155_A60A4877 
+X-CRM114-Status: UNSURE (   4.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,148 +87,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8/23/26 22:54, Jonas Hort wrote:
-> Bisect is done. First bad commit:
->
-> ff643b81bc38eaff6c0ab783a62e4ba9e10d2476
-> wifi: mt76: mt7925: pass mlink and mconf to sta_mld_tlv()
-> Sean Wang, 2026-03-06
-> https://patch.msgid.link/20260306232238.2039675-4-sean.wang@kernel.org
+=E2=80=A6
+> Fix it by calling pm_runtime_put_noidle() before returning, matching
+> the pattern used by other pm_runtime_get_sync() callers in the same
+> subsystem (e.g. =E2=80=A6).
 
-Then let's add Sean to the list of recipients. :-D
+How do you think about to use the function =E2=80=9Cpm_runtime_resume_and_=
+get=E2=80=9D instead?
+https://elixir.bootlin.com/linux/v7.2/source/include/linux/pm_runtime.h#L5=
+30-L540
 
-Sean, FWIW, this thread starts here:
+https://elixir.bootlin.com/linux/v7.2/source/drivers/mailbox/mtk-cmdq-mail=
+box.c#L557-L611
 
-https://lore.kernel.org/all/066b30cc-a9e6-4aeb-964d-71551e8ea3ef@posteo.de/t/#u
-
-To quote the summary: "WiFi 7 MLO (5GHz+6GHz) on MT7925 silently stops
-passing traffic after a few minutes, while the driver continues to
-report a fully healthy link. Root cause appears to be a stalled WFDMA0
-TX hardware queue."
-
-Ciao, Thorsten
-> Bisected on vanilla, path-restricted to
-> drivers/net/wireless/mediatek/mt76/mt7925/, using v7.0 as good and
-> v7.1 as bad. Each step was booted and tested with MLO active
-> (5GHz+6GHz, FritzBox 5690 Pro), and every "bad" verdict was confirmed
-> by the WFDMA0 signature (tail frozen while head keeps advancing),
-> not just by the connection dropping.
-> 
->   ea757740dd87  pass WCID indices to bss_basic_tlv()      good (45 min
-> clean)
->   ff643b81bc38  pass mlink and mconf to sta_mld_tlv()     bad (freeze
-> after ~4 min)
->   dc019e3294c7  pass mlink to mcu_sta_update()            bad (freeze
-> after ~3 min)
->   9e4d518a4707  pass mlink to mac_link_sta_remove()       bad (freeze
-> after ~4 min)
->   cf9db836b1e0  pass mlink to set_link_key()              bad (freeze
-> after ~4 min)
-> 
-> git bisect log and the incident logs for each step are available if
-> useful - happy to attach them to the bugzilla ticket or send them
-> here.
-> 
-> Let me know if you want anything else tested.
-> 
-> Thanks,
-> Jonas
-> 
-> Am 22.08.26 um 22:18 schrieb Jonas Hort:
->> Quick update: v7.0 vanilla has been running clean for over 2 hours now
->> with MLO active (5GHz+6GHz, same FritzBox 5690 Pro), no freeze at all.
->>
->> Am 19.08.26 um 11:03 schrieb Jonas Hort:
->>> Thanks for the detailed breakdown.
->>>
->>> I'll build v7.0 vanilla and test it, as suggested. Fair warning
->>> though: I'm on vacation this week, so I'll pick this up next week.
->>> I've also never compiled a kernel before, so it'll likely take me a
->>> bit of trial and error the first time around - please bear with me
->>> if it takes a little longer than expected.
->>>
->>> Will report back once I have results.
->>>
->>> Thanks again,
->>> Jonas
->>>
->>> 19.08.2026 03:18:34 Devin Wittmayer <lucid_duck@justthetip.ca>:
->>>
->>>> Thank you very much, that answers both things.
->>>>
->>>> The ROC tracing is the more useful of the two even though it came back
->>>> negative. Two of the three freezes have no ROC activity in them at
->>>> all, so a
->>>> link switch that never finished cannot be what starts this. The
->>>> middle one
->>>> does have rocabort, mloroc and rocwork in it, but one out of three
->>>> makes
->>>> that look like the exception rather than the pattern. So the area I
->>>> sent you
->>>> looking at is out, and that is worth knowing before you spend nights on
->>>> builds.
->>>>
->>>> One other thing worth saying first. There is a five patch mt76
->>>> series on the
->>>> list at the moment and two of the patches look like they were
->>>> written for
->>>> exactly this bug. I do not think they were, and it is your own
->>>> numbers that
->>>> show it. The failure 4/5 fixes stops mt76_txq_schedule_list from
->>>> servicing
->>>> the queue, and the one 5/5 fixes stops mt76_txq_send_burst once the
->>>> non-AQL
->>>> count reaches its cap. Both of those keep frames from ever reaching the
->>>> hardware, so if either were your problem head would be sitting still
->>>> alongside tail. Yours does the opposite. Head climbs 390 to 408
->>>> while tail
->>>> stays at 260, so the frames are getting into the ring and nothing is
->>>> finishing them, which is the far end of the same path. 2/5 is a use
->>>> after
->>>> free when an interface goes away, so it does not fit either. I would
->>>> not
->>>> expect that series to change what you see.
->>>>
->>>> On the bisect I would build v7.0 next. There are 32 mt7925 commits
->>>> between
->>>> 7.0 and 7.1 and 19 of them are one run of work from Sean Wang,
->>>> reworking how
->>>> the driver tracks the per link mlink and WCID for an MLO station.
->>>> That is
->>>> the kind of change that fits a bug only showing up with two links
->>>> up. If
->>>> v7.0 comes back clean, that series is where I would look. If v7.0 is
->>>> already
->>>> broken then it is off the hook and 6.19 becomes the next split. The
->>>> mt76
->>>> core and mac80211 both moved in the same window, so mt7925 is where
->>>> I would
->>>> look first rather than the only place worth looking.
->>>>
->>>> Devin
->>>>
->>>> Am 17.08.26 um 23:34 schrieb Jonas Hort:
->>>>
->>>>> Quick follow-up: managed to confirm 6.18 as a clean baseline on my
->>>>> own hardware now (not just secondhand from others in the forum
->>>>> thread) - running Linux 6.18.42-1-cachyos-lts with MLO active
->>>>> (5GHz+6GHz, same FritzBox 5690 Pro) for 3 hours straight, no freeze
->>>>> at all.
->>>> Am 17.08.26 um 16:25 schrieb Jonas Hort:
->>>>
->>>>> One correction to how I described this earlier: the connection does
->>>>> NOT reliably self-heal on its own. I have manually intervened every
->>>>> single time to restore connectivity [...]
->>>>>
->>>>> Update on the ROC tracing: three real freezes captured now with the
->>>>> kprobes active (all confirmed via the WFDMA0 tail-frozen signature).
->>>>>
->>>>> - Freeze #1 (15:37): no ROC activity in the trace.
->>>>> - Freeze #2 (15:43): [...] The trace shows several ROC events
->>>>>    (rocabort, mloroc, rocwork) clustered together.
->>>>> - Freeze #3 (16:15): no ROC activity again.
->>>>>
->>>>> Uploaded all three logs to the bugzilla ticket if useful:
->>>>> https://bugzilla.kernel.org/show_bug.cgi?id=221884
-
+Regards,
+Markus
 
