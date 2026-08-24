@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0030AC5DF9D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECC3FC5DF81
 	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 21:12:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,29 +12,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jVWHXt5kccAnCww2YkWc7+CJixLQqoOYi0ZBcColNt0=; b=Mkw9xy336hNDSRoanFs4jCHmYY
-	B9OuPjfKSIp2N89QdbaOvjJG3Txow9AyGz/FEhOBOjPbzgZGLIwnj39RDHbiqs11P+AEYFCvgmkVz
-	AXMW3+ubUckz0Zp4mmnEqR8wG5oqElrSM1Wow5oH6eIE150mr4WZh/4f6n6C0/bUfrl1ZQOxSwLuB
-	m+NJm9XHzwpz7FMYkK2iJwpJqPTdixUIJzV1Z9UypXr63njrZNQe6/qjYR5/L6R3XYF9bX1kXLkgg
-	ZcnV2qRiWQarKMVKQJc7j+anfpSAc8BiWqPh8AjQLprlKoniKfpEpwxyj4M58cfR4oN/AbiIhNQH0
-	Kwx793UA==;
+	bh=CLZc7r+H5Cm5dsJH9Lph04hMwrcVERgqQMx1P2a2ozo=; b=sj3NDDWKmbDiFnDRi042jMd0oU
+	YGdWZPFm8FiVf2M+0q0uI5aVDAMgfb4uBTvBcbxRWaTDSVjekQ0ZbcGNDdCMMRbuSV9KH7NVkkR6v
+	FLA9mjkYv2Y8KzHlHE0kX29N5XXyzWGDrnS1W/CSp0lh+2Uqk22CCo8k6gqAKXH8JKD0ALmfbC+5f
+	X5ezV+3AW2r8atXoPCAPNJzUEgmu7AproLFRbv8erYs5B22MWdeImsBHX4oiSbVANQvIX9Gr1BDSB
+	vK5O09tVbPmMV2MYkzr22R3/7Y/z8uSvHK4iBZOToZKeE8Bp6f2hZ0UQi75zZXbqUwLYA1fxgmcyC
+	Pwy+kwoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyby9-0000000HOcv-2iza;
+	id 1wyby9-0000000HOd4-42UA;
 	Mon, 24 Aug 2026 21:12:37 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyby6-0000000HObi-0dH9;
+	id 1wyby6-0000000HOba-0c24;
 	Mon, 24 Aug 2026 21:12:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=jVWHXt5kccAnCww2YkWc7+CJixLQqoOYi0ZBcColNt0=; b=gWJzN7dM/JTTPxhl+cIzoI7bqh
-	xTglornZsWzyUT6gAWwHlVLJetXnZ2Z5EMuCLuAg11XlHgvf1Wk6a0btrtLN5HhjjAG2Q7UH6bgeO
-	5pNpJ0MEntul+ICrSfwFAc4fEk57NsAyll35Dcvwjx0oFXGnLlTCERbbZn+mD4nieMTql+KosEbZ5
-	inUdcsXbrlIQoUmUoxvJUnR4iJIkSUSNyx7MXP5QpUmuaGKDqp5W4m9eiveS9GyjB0lnwBJYC7Lm9
-	QtCoKLycKYO2D/67maCOOnaxcZahjOMGWSvtkjJmVar4K8lyd1CaB5mAfEoncOElmin1FKJV0R227
-	TIkdKuAg==;
+	bh=CLZc7r+H5Cm5dsJH9Lph04hMwrcVERgqQMx1P2a2ozo=; b=DZvpLPEk1MtqoBBRVWAtczTzHZ
+	QKPiaklbDy8pv/2jqpq0vKmDbMdUwHoxkMYOf8g5FmoJMh1N18o0sV8knS/rWa1e5neTd54CYAYRZ
+	T7v5zV9EGYfeiDeiiGaUXM9JULA6IqWwrVes4yMnDNMnvdE93aZlNZHDJFvY7Vmq7I6IRS1oX+aPZ
+	pIiQ6Nm6QGQWjb4eps39kwq8kjT5Jtmmod8mdsLvMN1fOpriQ3gcKW3Dl73Hd6H/vUSvrY+d3vhoV
+	fwNbK4h5sYQZ1MOo7u/dQRUPF1vruhoIxSaALuV6O1TQD0Jf+ntPiKBH0L9Qo/P/7Sb58ECzxSZhy
+	E52PwtTg==;
 From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
 To: Ryan Chen <ryan_chen@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
  Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>,
@@ -89,18 +89,18 @@ Cc: linux-clk@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
  linux-mediatek@lists.infradead.org,
  Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: Re: [PATCH 00/45] clk: Make sure clk_init_data is fully initialized (part
- two)
-Date: Mon, 24 Aug 2026 23:11:32 +0200
-Message-ID: <3074509.irdbgypaU6@diego>
-In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
+Subject: Re: [PATCH 28/45] clk: rockchip: Make sure clk_init_data is fully initialized
+Date: Mon, 24 Aug 2026 23:10:54 +0200
+Message-ID: <2765337.tdWV9SEqCh@diego>
+In-Reply-To: <49127c1f7529acccb17e1408db9f21f6d15aee2b.1787239813.git.geert+renesas@glider.be>
 References: <cover.1787239813.git.geert+renesas@glider.be>
+ <49127c1f7529acccb17e1408db9f21f6d15aee2b.1787239813.git.geert+renesas@glider.be>
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260824_141234_205489_4BAF731C 
-X-CRM114-Status: GOOD (  15.81  )
+X-CRM114-CacheID: sfid-20260824_141234_205231_CEC19E85 
+X-CRM114-Status: GOOD (  10.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,12 +115,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Geert,
-
-Am Freitag, 21. August 2026, 10:53:10 Mitteleurop=C3=A4ische Sommerzeit sch=
+Am Freitag, 21. August 2026, 10:53:38 Mitteleurop=C3=A4ische Sommerzeit sch=
 rieb Geert Uytterhoeven:
-> 	Hi all,
->=20
 > The clk_init_data structure contains several mutually-exclusive members
 > for different methods to specify the possible parents of a clock,
 > prompting drivers to initialize only the members they need.  However,
@@ -128,29 +124,13 @@ rieb Geert Uytterhoeven:
 > exposed when CONFIG_INIT_STACK_ALL_PATTERN or CONFIG_INIT_STACK_NONE is
 > enabled.
 >=20
-> Hence this series aims to make sure all members are fully initialized,
-> to avoid such bugs, and to prevent future breakage when converting
-> drivers to a different method for specifying the parents.
+> Make sure all members are fully initialized, to avoid such bugs, and to
+> prevent future breakage when converting drivers to a different method
+> for specifying the parents.
 >=20
-> Part One[1] fixed all cases that I identified to be real bugs, in
-> response to a crash I saw on BeagleBone Black.
->=20
-> This series is the clock subpart of Part Two, which fixes remaining
-> cases that are currently harmless.  These are still fragile, and may
-> cause future breakage when converting drivers to a different method for
-> specifying the parents.
->=20
-> Thanks for your comments!
+> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 
-I guess more a handling question, how do you expect this series to be
-applied?
-
-I.e. each clk-arch-maintainer, or in one big thing by the core clock
-maintainers? Just wondering if I should pick the Rockchip patch
-or just let the whole series get applied by the clock maintainers.
-
-
-Heiko
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
 
 
