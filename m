@@ -4,66 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEAF5C61DB6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2026 07:21:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 804B1C5DF94
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2026 07:44:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=tu10D1faxzRZxJdu+Ny2sxBSsQ2jkkXg61KqinheAZU=; b=oGbEUehWlhfJi2Sysz2fInKUXN
-	FBvo2BLjRus0MGNAUDz9SWjbM74p92xxNjkFTMK7MPK5HZEvjKWcTPjgN4YwU9rLUP7zWKFpIl72B
-	V0IxWTDF9143oaP235cNkuLTPP4QRvqr101QQPA7ok5opIoz5q6hTgJ6DWCLdQ6F6/d/lFz2Xh27U
-	p87exv5TjLhLrjH6ojPP4u9AmIWXSBzvBfcm+BLisUIzgT1bhabjN2O6HIFviK+FtEHGj5Nkv4DyU
-	V/10YLWDULOad9XpvJBc5IStjMVxGq36COKL4c3pB5KJ024irXD6BWPfmwIuV7C4k2GJpMYxgpfjQ
-	/3mm+8MQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=V/xJK88pfs277nwbYNBwPuRxCY6IirnLC5W4+cq/H6A=; b=GE4OfULtjrf0bIVHTFS57IX6qX
+	i2GBepGYO37wuwY1l1b/YbEIDFibZSyUvXRBNhdbI4icZwXtxkApR14GMH4lf/u5T0TDacUzwNNzB
+	ghquKFHCFqbAwMs6Owd76eQPE8F2QrqX4crQIZpiMIErI7bhYdEoJNj0kk7l+UuwjwDIh2uHRcR/i
+	76U+6Sl+pMUqw/F9QbkKYS7uqg/yegcePnh6QAxEmxYRbAH9dPk3SUOvJe9/HsjCD8Yivw7jV+S38
+	obxduka72pWA0WPcJ8fSKSmk8S8KKnwmZ4RH9G8N+DzyI/4sLlm7EsT6GriMTtmPbEcPuPfzj3EZF
+	7B6KqJeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wylTk-00000000HLp-1DoZ;
-	Tue, 25 Aug 2026 07:21:52 +0000
-Received: from mail.archlinux.org ([2a01:4f9:c010:3052::1])
+	id 1wylpm-00000000JVe-0G1T;
+	Tue, 25 Aug 2026 07:44:38 +0000
+Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wylT4-00000000HIK-3o8k
+	id 1wylph-00000000JUL-0wsP
 	for linux-mediatek@lists.infradead.org;
-	Tue, 25 Aug 2026 07:21:51 +0000
-Date: Tue, 25 Aug 2026 09:20:33 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=archlinux.org;
-	s=dkim-rsa; t=1787642460;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:mime-version:mime-version:content-type:content-type;
-	bh=tu10D1faxzRZxJdu+Ny2sxBSsQ2jkkXg61KqinheAZU=;
-	b=xlVhahTD+EiRw1d7g6h0Zt4KciB2gWrSgAh9Y29s5SdGLkQD8RI6LNAe7uxzcnLPjR/smO
-	vQ32ZPcNIfGs5RjMBCX5LqduBPGffDQd43mLpuSjcNeZgjxCVx+jwp28Bi/cAAZbYlDCYx
-	bvdaCaWpMs2Nr/bD4CRMbPbFvR2OvvwsrpFE7L4BIl+H+f7bDQf/hx+d72QFmf01sSFxJP
-	p20w183SzFiR0xy3VMpPat9B2aXD+0eM9KUurW/dROhpDCrtyU4L5E/bBTj8daYbi+WaWx
-	+qlg2INT2GhguBx72pW77UUBg3rR2FUNA8Avb004P2kvJqZuPP21PkfRVPywqQSJenBG6i
-	RcGb7IOs63K2R/iCaDg4qhm00nqOwspUqyCZzuftT/BzbtehHOMVP1loj5STVAFmxXRKUF
-	DX+X1lDi386ufrHtBeG5DkK1iFaNJddKom6VImW3DbhSmSxokj+XBuI3Ml58bDdNH/gT6X
-	KiGC0IIQm6QpEARc77I9vPgu+B4+ufhb1SIRV7Mgfdv82UfgE8yIkuExpUyGxjIkJxlm0D
-	T3PsYvgteLlTlMOWogKBjOhHzDzzPDrD0BsJvBm/DtJgW+luBh977mIwtkRAnBKlfJOAW8
-	3j9ifnOlycJ6vVfMJxpPj47znfKUg6ELevsoS+Z0LOFumX/eLdwT0=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=archlinux.org;
-	s=dkim-ed25519; t=1787642460;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:mime-version:mime-version:content-type:content-type;
-	bh=tu10D1faxzRZxJdu+Ny2sxBSsQ2jkkXg61KqinheAZU=;
-	b=Z1c4lFKHbLygzzzZiDUQ2DBOg9G4LpdPnGVJW5dZY6FuWXF3iH5wVnQ3MHfu34+ekBWm6W
-	LhXD2aVzBlAJl7Dw==
-Authentication-Results: mail.archlinux.org;
-	auth=pass smtp.auth=dvzrv smtp.mailfrom=dvzrv@archlinux.org
-From: David Runge <dvzrv@archlinux.org>
-To: linux-mediatek@lists.infradead.org
-Subject: Addition of BT_RAM_CODE_MT6639_2_1_hdr.bin to linux-firmware
-Message-ID: <ao1CQXyKli3LzxIZ@hmbx>
+	Tue, 25 Aug 2026 07:44:36 +0000
+Received: by mail-yx1-xb134.google.com with SMTP id 956f58d0204a3-66c711b7f2aso6452939d50.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 25 Aug 2026 00:44:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1787643872; cv=none;
+        d=google.com; s=arc-20260327;
+        b=HM360cMV1IOjKuYaaoQ8ixVSqS5YLCXskni2yrmJyAgMNhi2u+5axS9TT3RNMRs+EU
+         RlhKp3d5VTPqkX95hudue4/RLi8RWdWcIlVbxAbgTwmahbXw6VbVYgddTOIu/imy7ahX
+         680jsNr3PRPBs/OHlLc9SE6EeZjPkO8iy3kjN+NOdhpcUUWd3LnwsojNyTGg8gWoiozf
+         UUPxOJC4sv+iSivZHbJ8VvbFykwuXF4BGhCDoEs3vNEQVTb57yOhKBwiqPavpBkr1Qa0
+         CUVacP/QxqlHedqgjNWwHVL+PoiuECr86m3pzA91NQxgXS9j9aat/COK1ZJrBCunBiCe
+         t9aw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=V/xJK88pfs277nwbYNBwPuRxCY6IirnLC5W4+cq/H6A=;
+        fh=XfkEL/Zh2uHk2yEwlovQ2xzB7jd5MKYfZkImCVuxi94=;
+        b=rFWW1AMD43b69dw7OSxLgI/uZCLFcUocQEDOy0v882tF+TpGD/J2GymCLJrYiu9H8z
+         ziHuCC+U4BxrOqNuSn5WQECUoGIuThGMfv7LSnerdItwChEqWLTDxOyl6vP125wz+8i2
+         d0AwWJW0znfxNsjuDLc5GwhzMF64nJ5q5+UdHnc2aQTk74uJAXxRsmP9qL9XfDNK4Z9J
+         eBoDQqlBohal5WoKfUUZslnrwIBBDBx/Z4Ci32iGxny/FM7TBVRZ3N57Ap04H8d85HI/
+         Brh6MgHnM9rg4g0KYGkaCzefOq8wQ7qSXtTuOBS0C/HDtmtgU3z/4yAhaFJXvF47mhjW
+         s9uA==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1787643872; x=1788248672; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=V/xJK88pfs277nwbYNBwPuRxCY6IirnLC5W4+cq/H6A=;
+        b=TPJIs2+dzBjJv7VPX4Ug643td/FkJ1S9QdyvmbmioPttPS+ZAkjK95vi5hg5njFU5b
+         B2xA1sEvPWERUxQ2JNgtfEvRFvNP1MrTTZd649vveAvonPlkD/OEDHMbmMof97JbeFek
+         hZUACxdZuO/NIL44kx/zLVqWcHqy4+f8/kFFU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787643872; x=1788248672;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=V/xJK88pfs277nwbYNBwPuRxCY6IirnLC5W4+cq/H6A=;
+        b=jmyM/RFqdSmIQIKNWzLY6uE3xU2JM/8wApVu15VHNxa63iPl/IiRphHDzmRoE3Zd17
+         LlE6FqeP/yL5m2L/LuydrbPaxT+17fgN7drZNTs0J1aPMa/tqDiI3CR1m7vbuwSE/XW9
+         ukTsLc4m1wIPG0cbb+OMplAqUH6XO5vgrHandamcWMEGcUjmydzDINs53ykCi2AEf4Kc
+         IyxaCLeJsGNxagcpm3cZmDGXE+7gybTpyf41svVx3fPsXTkJapuG1cMqmqjjdEBKyJFT
+         mUYeSf+9jFncYo7Qytiw2k3jfCRzffsK41j0e7Nd0Fs6Ku48fUiMbh6ur7SZHHpBguLd
+         l64g==
+X-Forwarded-Encrypted: i=1; AHgh+RqpHYmHYJcPJbUWqNCqmsG/MI1eTjkH7G49d53wgr5jg+h0W+sYl2Wr5Q1YBA+j9XpInvn6Gpd+uS8B3nhjDQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++lS643ugqey7UlJ6Nwxmzmhx0buF8SnpxbkC8BzzE4tF5fLQn12
+	u+KecMLozwWsAaXGCLKtxsi3kvW8ztk22aI2lwmJ4zPwGRTJt6r/JMyXuCpEMSl0RozLPkJcVjf
+	unInStSDhUyJDU4juDkPTSdNCf3JQ/OHoHs6WLzqo
+X-Gm-Gg: AR+sD10ZKZ/kR3CIS4Ab83MN7J/zIdEB5BJuIRDo8hFSEMK4v+o16yPIBjNyMXKP+gk
+	fYP8Snn1LpTxfAvmJr+ueFtYnQGE/XRrUcZRmYMvGovr0PAkzD5Xddh7+9blaopeA6NlabjMWUi
+	uhVeZEuQenIv3YmHwt29Zrh61tKhWaPGTLDctWIN2aVRfjfJv/O+2IWY5xubIzZLb/zXlId0jGS
+	Fs9DEWyB/IszyHWbS1H9dNRq9K/hEkuINJM8oaimQnEVlWkud95cMTdAZMCOr/oKbtynzdky+MS
+	wLLDF0x0d+X3ZvEO4byZNQuciK5sRAEMUg+VU4VYwd5r3Da7oRCoCfJrsxA6ATjj4yk7SoW4
+X-Received: by 2002:a05:690e:1449:b0:66d:1131:b81d with SMTP id
+ 956f58d0204a3-66d1131bc41mr2549091d50.29.1787643871703; Tue, 25 Aug 2026
+ 00:44:31 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="jAg0QyvNvHar0ybR"
-Content-Disposition: inline
+References: <20260825041628.988369-1-wenst@chromium.org> <20260825041628.988369-2-wenst@chromium.org>
+In-Reply-To: <20260825041628.988369-2-wenst@chromium.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 25 Aug 2026 15:44:21 +0800
+X-Gm-Features: AcwNN1VHbO3y1ftfkF_7R2W7KDk8RFMySudnf-TTSiUhjGplV2Fwnh0fieb32LM
+Message-ID: <CAGXv+5Het3zp_OTp=_ktg+_d5Q55zkE0SwQnM7TVyJDmOdBtyA@mail.gmail.com>
+Subject: Re: [PATCH v5 1/7] regulator: core: Add "enable and wait" functions
+To: Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>, Jiri Kosina <jikos@kernel.org>, 
+	Andi Shyti <andi.shyti@kernel.org>
+Cc: Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, chrome-platform@lists.linux.dev, 
+	linux-input@vger.kernel.org, linux-i2c@vger.kernel.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260825_002111_545575_11ADB416 
-X-CRM114-Status: UNSURE (   9.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260825_004433_296899_F5274D8F 
+X-CRM114-Status: GOOD (  21.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,68 +120,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---jAg0QyvNvHar0ybR
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Date: Tue, 25 Aug 2026 09:20:33 +0200
-From: David Runge <dvzrv@archlinux.org>
-To: linux-mediatek@lists.infradead.org
-Subject: Addition of BT_RAM_CODE_MT6639_2_1_hdr.bin to linux-firmware
+On Tue, Aug 25, 2026 at 12:33=E2=80=AFPM Chen-Yu Tsai <wenst@chromium.org> =
+wrote:
+>
+> In device power sequencing and initialization use cases, it is common
+> for the driver to enable the regulator and then wait for a certain
+> period of time to pass before continuing.
+>
+> In cases where the regulator supply is always on, or has been turned on
+> or left on by another consumer, the driver could shorten the delay or
+> skip it altogether, provided that enough time has already passed since
+> the regulator was _actually_ turned on.
+>
+> Tracking this requires support from the regulator core. Introduce a
+> "last turned on" timestamp field to the regulator device, and "enable
+> and wait" functions to the single and bulk regulator consumer APIs.
+> The existing "enable without wait" functions are then converted to
+> macros that expand to the new functions.
+>
+> The timestamp is updated each time the regulator is actually turned on.
+> For regulators left on by hardware default or by firmware, the core will
+> set the timestamp if it detects it was left on and its supply (and their
+> supply, and so on) is on as well. This is unfortunately best effort
+> only. The core can only assume a dangling regulator (one without a
+> supply) has power. This also applies to the dummy regulator.
+>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+> Changes since v4:
+> - Try to update last_on timestamp for regulators that were left on
 
-Hi all,
+Sashiko flaged a few issues with the changes:
 
-sorry for sending this into a larger round.
-I don't know whether anyone of you is responsible for specific segments of
-mediatek firmware, but you have all contributed firmware to the linux-firmw=
-are
-project over the last year.
+- _regulator_is_enabled() called and subsequent timestamp update
+  without lock
+- bulk consumer wait_us incorrectly assigned
+- _regulator_is_enabled() could return an error
 
-Would it be possible to add the BT_RAM_CODE_MT6639_2_1_hdr.bin firmware blob
-to linux-firmware?
-A third-party had already attempted to add it [1], but was missing the
-permission to do so.
+Will fix and send a new version. I probably should get a local AI review
+working first.
 
-Please note, that without this firmware blob, on machines with relevant
-hardware, the firmware loading fails on first boot and on successive boots
-stalls the process for around 60s due to USB failures (which is fairly conf=
-using
-and of course annoying).
-Thus, it would be really fantastic, if you could either add this firmware b=
-lob
-yourself to the linux-firmware repository, or alternatively point me at a p=
-ublic
-resource I can link to, that allows me to do this myself.
 
-Greetings from Berlin,
-David
-
-[1] https://gitlab.com/kernel-firmware/linux-firmware/-/merge_requests/946
-
-P.S.: This mail has been sent to all contributors of the linux-firmware pro=
-ject
-with a mediatek.com mail address, that have been active within this year on
-2026-08-11.
-I am not a subscriber to this mailing list (seem to be unable to sign up, as
-the list host redirects to https://lists.openwrt.org/mailman/listinfo), but=
- have
-been asked to write here by Mario Limonciello, who maintains the linux-firm=
-ware
-project.
-
---=20
-https://archlinux.org
-
---jAg0QyvNvHar0ybR
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRizHP4hOUpV7L92IObeih9mi7GCAUCao1CQQAKCRCbeih9mi7G
-CEGvAQC8Esykb/C24H6A72N8Yy/M98DFcGgMsmdrtJv4aAVJ4AEAqfyYFcpqt0NT
-M9fqASp0yaaDTvsEVCX8VXynngkLewg=
-=6s6F
------END PGP SIGNATURE-----
-
---jAg0QyvNvHar0ybR--
+ChenYu
 
