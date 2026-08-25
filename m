@@ -4,65 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F1FDC61DB6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2026 08:43:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 458A9C61CE2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2026 10:09:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=sgjngM2YY8QYFIO3DGUdz0BGYzZgLDfC5zwZT59AEn4=; b=Odh6HIDrvF5zWH9y6/NILZKxcn
-	kExEj3+aYFhKFbOc96KSojW5ymDi06paGPn8LxoxeOYkZu3CQYQ/st1mUTn4i8OjX5+x1hjtkzlTp
-	FqUhxDN0mnTvH8EIdn1CwagdRlyTFxpWSKHHEuprn9jF55VY3TD2uz46Whas54obPy9Jpp4Ga8OXS
-	sts7lGt/xdUw5afgzA0MZJvwTlswO7zpX4XJ4P/JCYhgjfzExlbGhazuFZrbtLz1Fu0+Lm9r3x0Bp
-	fIIPU9i49fQQpc8hsbw3o17vymhmF9Ip6k4RoncFjjNwV7/hS8ybcgvdgZBq/NNzpbaUBCa8mupj9
-	56SJDS3Q==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5LS+cPNUgJ1aKOmq76gdPooNsDTdzsDpBPzBNoGCQPA=; b=zUBkbGFuAQ0Cq3cVN1PCCesOC0
+	mMpJQupV8J9rH8R4KNZnvWjSA764xQLiMQzHvXO+ATj+N5vCXDI3rPBZKyJ0RcExdfdtdUOSFzQdg
+	nzQqYcQRiR9qMQHpKGz0sTIpuZog8w1Qir/ndy2fa9l2zNGi/3q5VAqdLxghgvTgRn2oYcDupsxy7
+	3ErorSeqjrZgCqiyLez57pN0rFkGuXeOxtnAJw/BF/2/REi1MSM7aH3wrU3wicY26TcxTVX53sfYo
+	0AWPd2ARYZfIV45tCa7cyGU5MzUvGh8z/+yD0NhiZ9uUsyqP2vW4teP2OK9hoIhptJ/4Bg/Kh3WVR
+	dDtCa/LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyml5-00000000PiJ-0L8v;
-	Tue, 25 Aug 2026 08:43:51 +0000
-Received: from m16.mail.163.com ([220.197.31.3])
+	id 1wyo5Y-00000000YKV-0CUx;
+	Tue, 25 Aug 2026 10:09:04 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyml2-00000000Ph6-1AC9;
-	Tue, 25 Aug 2026 08:43:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=sg
-	jngM2YY8QYFIO3DGUdz0BGYzZgLDfC5zwZT59AEn4=; b=a3soZNMFB21v2pFuAs
-	J+EQ8h0rA77oiJm9pWBy3GTtT1zdx8Y4f60/FqIqv0Rn0T/5JEy+USGbUBMC9vwu
-	BcLhtb8MpVmFMx2q8/VCYQ5hMdT1eC+mdlGeuxQP7DE7KGcF+cliBsXYSvi0sdQk
-	Wzc7xWppNA25LwgslHMLhz+0w=
-Received: from localhost.localdomain (unknown [])
-	by gzsmtp5 (Coremail) with SMTP id QCgvCgDHvR2wVY1qjXFCOA--.63912S2;
-	Tue, 25 Aug 2026 16:43:29 +0800 (CST)
-From: Gongwei Li <13875017792@163.com>
-To: Marcel Holtmann <marcel@holtmann.org>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mark Chen <mark-yw.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	linux-bluetooth@vger.kernel.org,
+	id 1wyo5V-00000000YJG-0tWu
+	for linux-mediatek@lists.infradead.org;
+	Tue, 25 Aug 2026 10:09:02 +0000
+X-UUID: f7c1064aa06c11f19a56ed5b684f684d-20260825
+X-CTIC-Tags: HR_CC_COUNT, HR_CC_DOMAIN_COUNT, HR_CC_NO_NAME, HR_CTE_8B, HR_CTT_MISS
+	HR_DATE_H, HR_DATE_WKD, HR_DATE_ZONE, HR_FROM_NAME, HR_SJ_DIGIT_LEN
+	HR_SJ_LANG, HR_SJ_LEN, HR_SJ_LETTER, HR_SJ_NOR_SYM, HR_SJ_PHRASE
+	HR_SJ_PHRASE_LEN, HR_SJ_WS, HR_TO_COUNT, HR_TO_DOMAIN_COUNT, HR_TO_NO_NAME
+	IP_UNTRUSTED, SRC_UNTRUSTED, IP_UNFAMILIAR, SRC_UNFAMILIAR, DN_TRUSTED
+	SRC_TRUSTED, SA_EXISTED, SN_UNTRUSTED, SN_LOWREP, SN_EXISTED
+	SPF_NOPASS, DKIM_NOPASS, DMARC_NOPASS, CIE_BAD, CIE_GOOD_SPF
+	CIE_UNKNOWN, GTI_FG_BS, GTI_RG_INFO, GTI_C_BU, AMN_GOOD
+	ABX_MISS_RDNS
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.19,REQID:c4dbeec5-d9c6-4e7f-9724-98e671d410bf,IP:10,
+	URL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
+	ION:release,TS:10
+X-CID-INFO: VERSION:1.3.19,REQID:c4dbeec5-d9c6-4e7f-9724-98e671d410bf,IP:10,UR
+	L:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:10
+X-CID-META: VersionHash:7db8b62,CLOUDID:e30d52b1251784e770df18d386dded09,BulkI
+	D:260825180852GNJL4FDO,BulkQuantity:0,SF:17|19|66|78|81|82|102|127|850|865
+	|898|908|914,TC:nil,Content:0|15|50,EDM:5,IP:-2,URL:0,File:nil,RT:nil,Bulk
+	:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,
+	BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_FAS,TF_CID_SPAM_FSD
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: f7c1064aa06c11f19a56ed5b684f684d-20260825
+X-User: lihaojie@kylinos.cn
+Received: from localhost.localdomain [(39.144.194.152)] by mailgw.kylinos.cn
+	(envelope-from <lihaojie@kylinos.cn>)
+	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
+	with ESMTP id 160353266; Tue, 25 Aug 2026 18:08:49 +0800
+From: Haojie Li <lihaojie@kylinos.cn>
+To: ck.hu@mediatek.com
+Cc: chunkuang.hu@kernel.org,
+	dri-devel@lists.freedesktop.org,
+	lihaojie@kylinos.cn,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Gongwei Li <ligongwei@kylinos.cn>
-Subject: [PATCH] Bluetooth: btmtksdio: Do not fail probe on wakeup init failure
-Date: Tue, 25 Aug 2026 16:43:21 +0800
-Message-Id: <20260825084321.3544900-1-13875017792@163.com>
+	p.zabel@pengutronix.de,
+	stable@vger.kernel.org
+Subject: [PATCH v2] drm/mediatek: Add missing IS_ERR check for ovl_adaptor  platform device
+Date: Tue, 25 Aug 2026 18:08:45 +0800
+Message-Id: <20260825100845.438893-1-lihaojie@kylinos.cn>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <7a3cbf55bf6a97835ee426eb38c34b2c153437eb.camel@mediatek.com>
+References: <7a3cbf55bf6a97835ee426eb38c34b2c153437eb.camel@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: QCgvCgDHvR2wVY1qjXFCOA--.63912S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7WF43GrW3uryDGr45Ar4ktFb_yoW8Aw4xpa
-	98GF90kFWDurWUKw4kXFWfJFyY9w1FgayjkryYyryY9rZ5JrWFyF1ftryYqwn7CrWkt3WY
-	vF4Fqrn5WF1xGaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jbAwsUUUUU=
-X-Originating-IP: [116.128.244.169]
-X-CM-SenderInfo: rprtmlyvqrllizs6il2tof0z/xtbC4hF-OmqNVbELtAAA3K
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260825_014348_697264_5651FB38 
-X-CRM114-Status: GOOD (  13.90  )
+X-CRM114-CacheID: sfid-20260825_030901_571643_3C27FCC9 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,49 +93,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Gongwei Li <ligongwei@kylinos.cn>
+platform_device_register_data() can fail and return an ERR_PTR, but the
+return value is used without checking, leading to an invalid pointer
+being stored in ddp_comp[].dev and passed to component_match_add() and
+mtk_ddp_comp_init(), which could result in a kernel crash.
 
-devm_device_init_wakeup() merely marks the device as wakeup-capable;
-it is only consulted later through device_may_wakeup() in the ->wakeup
-callback to decide whether wake-on-bluetooth can be used.  When it
-fails, the controller itself still works normally and only the ability
-to wake up the system is lost.  Therefore the failure is not fatal for
-probe(), which is why the existing code only logs the error instead of
-bailing out.
+Add an IS_ERR() check to jump to the error handling path on failure.
 
-However, the negative error code returned by devm_device_init_wakeup()
-is never cleared, so if the subsequent devm_gpiod_get_optional()
-succeeds, probe() ends up returning the stale error even though
-probing actually succeeded and the HCI device has already been
-registered.  The SDIO core then wrongly treats the function as broken
-and unbinds the driver.
-
-Make the non-fatal semantics explicit: clear the error after logging
-it and keep probing.
-
-Fixes: ce64b3e94919 ("Bluetooth: mt7921s: Support wake on bluetooth")
-Signed-off-by: Gongwei Li <ligongwei@kylinos.cn>
+Fixes: 0d9eee9118b7 ("drm/mediatek: Add drm ovl_adaptor sub driver for MT8195")
+Cc: stable@vger.kernel.org
+Signed-off-by: Haojie Li <lihaojie@kylinos.cn>
 ---
- drivers/bluetooth/btmtksdio.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index 63d81341bd94..c918202f6c3a 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -1454,8 +1454,11 @@ static int btmtksdio_probe(struct sdio_func *func,
- 	pm_runtime_put_noidle(bdev->dev);
- 
- 	err = devm_device_init_wakeup(bdev->dev);
--	if (err)
-+	if (err) {
-+		/* failure is not fatal, keep probing */
- 		bt_dev_err(hdev, "failed to initialize device wakeup");
-+		err = 0;
-+	}
- 
- 	restore_node = false;
- 	if (!of_device_is_compatible(bdev->dev->of_node, "mediatek,mt7921s-bluetooth")) {
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index c86a3f54f35b..b281482ab8c8 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -1112,6 +1112,9 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 							    PLATFORM_DEVID_AUTO,
+ 							    (void *)private->mmsys_dev,
+ 							    sizeof(*private->mmsys_dev));
++		if (IS_ERR(ovl_adaptor))
++			return PTR_ERR(ovl_adaptor);
++
+ 		private->ddp_comp[DDP_COMPONENT_DRM_OVL_ADAPTOR].dev = &ovl_adaptor->dev;
+ 		mtk_ddp_comp_init(dev, NULL, &private->ddp_comp[DDP_COMPONENT_DRM_OVL_ADAPTOR],
+ 				  DDP_COMPONENT_DRM_OVL_ADAPTOR);
 -- 
 2.25.1
 
