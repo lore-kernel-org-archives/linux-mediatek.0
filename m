@@ -4,103 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6E9CC61DBE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2026 15:30:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF20FC61DBC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2026 17:34:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rZPvGbvTxuaUieZ0JykzVrZCBZ6diu5+kEagWcP5i6s=; b=aW/pRSpd5/fZyr/mVXjy2LFALL
-	UT04zobrfpQrVh2uv1yeGf/4KmjnDA0y1mmbIQYidGEx8V0YWj7K+AW9ag/mSI/bJ5p+t3sQ0GVxn
-	Pr3UFzlP8W10m7L2uRIm446Kt+LyRLHEdcGQIINkXq19CaQB/QVVzMDmFLo1jkjcEJ/dcqrroaC/6
-	QJ05AxrZ5N/RljVsOFJQfsFpSVn1o8HvFLuBG5lXmOYE2ypb0i/1aWXEQbIeU4TSC8g6d22tsxE7O
-	ZGK7+jHG+0LdJ68RoWs9GR4IzaGsHmvvS1w7PJ6LpvUgzcTuBhCw8yRCCDYtRldHX0W1q3r5iEkH/
-	9vYqyDSg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Subject:Date:Cc:To:From:MIME-Version:Message-ID:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=57hPk6B4v1KETwUArfZSnqqRqUE15uxO2Lfbtp7crWY=; b=Aa0MKjtDj7rjzw0Qw42zb2otdi
+	C8EoeS0QCh9D473M8K1s0wEjk4pYOFioJzD10GCsBFtWLvRGJvHb0NcJifQdlTeG9OwzwfGZF41e7
+	aVAVODr5eGZDMwbz4EfsRqrR3hklLJA0h5fSou9OJjJRcnX2k7OwbWjlaU2YSr74ajE/PjxrI2n35
+	yaQNmN/9uV5tB8aCvvWBFArdiHpqUsci04lnv0e8XHpkeHBGgezL7OpXW1vjkyQTw6GEajLstleUX
+	Y316C/p6eopFfifqKBu5JkLDQEXNhxmfAMSKSXVQHyR4nFUp7Cm3yUVjbBqF34gfwz63o6QxlQ/91
+	pHBGJf9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyt6O-000000012WM-0IlB;
-	Tue, 25 Aug 2026 15:30:16 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wyv2Y-00000001E2Q-2YjD;
+	Tue, 25 Aug 2026 17:34:26 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyt6J-000000012Vo-3Dtq;
-	Tue, 25 Aug 2026 15:30:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=rZPvGbvTxuaUieZ0JykzVrZCBZ6diu5+kEagWcP5i6s=; b=Yy9eNa8dOguB5ai5gM8NWsrx/s
-	S2pMtHYDnED1hvYB5pxj6+Ad4/4TwBMLiekzdUSvMpDKpHx8BPpPmvVJ/cip7X8H9hfTHeZg450Ac
-	2Op9+b8btKUlsb6NhCz7ZVBJEZsw/g05xmeUmxrRYHIzkWgR7QUNJTV7jrb9eXjwXkv34PFL2n521
-	y3/OYaJNFUPrMl+YX4jWZiQMiJAl6RKexP5dMehCDrnC/gaxSb8FbDAvrvjhAGY7LElro/LUGP1iU
-	8OZbYjEdaR/xakIod2clSq/KckMSPAOYC6Q+7GHQmf84+7SOpT2wUQGbrCqdD8QNr8LOptweM15Jp
-	TQq+Evrw==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Brian Masney <bmasney@redhat.com>
-Cc: Ryan Chen <ryan_chen@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
- Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>,
- Jerome Brunet <jbrunet+clk@baylibre.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Billy Tsai <billy_tsai@aspeedtech.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, Ray Jui <rjui@broadcom.com>,
- Scott Branden <sbranden@broadcom.com>,
- Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
- Taichi Sugaya <sugaya.taichi@socionext.com>,
- Takao Orito <orito.takao@socionext.com>, Linus Walleij <linusw@kernel.org>,
- Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
- Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>,
- Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>,
- Sudeep Holla <sudeep.holla@kernel.org>,
- Cristian Marussi <cristian.marussi@arm.com>,
- David Lechner <david@lechnology.com>, Abel Vesa <abelvesa@kernel.org>,
- Peng Fan <peng.fan@nxp.com>, Frank Li <Frank.Li@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>,
- Santosh Shilimkar <ssantosh@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
- Gregory Clement <gregory.clement@bootlin.com>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Vladimir Zapolskiy <vz@mleia.com>, Krzysztof Kozlowski <krzk@kernel.org>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>,
- Peter Griffin <peter.griffin@linaro.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Dinh Nguyen <dinguyen@kernel.org>,
- Viresh Kumar <vireshk@kernel.org>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Emilio =?UTF-8?B?TMOzcGV6?= <emilio@elopez.com.ar>,
- Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Prashant Gaikwad <pgaikwad@nvidia.com>,
- Thierry Reding <thierry.reding@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>, Ulf Hansson <ulfh@kernel.org>,
- Liviu Dudau <liviu.dudau@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
- Michal Simek <michal.simek@amd.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>, linux-clk@vger.kernel.org,
- linux-aspeed@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, openbmc@lists.ozlabs.org,
- arm-scmi@vger.kernel.org, imx@lists.linux.dev, linux-mips@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 00/45] clk: Make sure clk_init_data is fully initialized (part
- two)
-Date: Tue, 25 Aug 2026 17:28:37 +0200
-Message-ID: <4227750.aeNJFYEL58@diego>
-In-Reply-To: <ao2ws3ZA-o8ZVjTh@redhat.com>
-References: <cover.1787239813.git.geert+renesas@glider.be> <3074509.irdbgypaU6@diego>
- <ao2ws3ZA-o8ZVjTh@redhat.com>
+	id 1wyv2W-00000001E1I-0WTM
+	for linux-mediatek@lists.infradead.org;
+	Tue, 25 Aug 2026 17:34:25 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-2ceaf8a1265so1531055ad.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 25 Aug 2026 10:34:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1787679263; x=1788284063; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:subject:date:cc:to:from
+         :mime-version:message-id:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=57hPk6B4v1KETwUArfZSnqqRqUE15uxO2Lfbtp7crWY=;
+        b=U+f2J4E8SwpcK/bUTwT08OIns/4i1/ZWnuwtOlc9+dzZc5QMr+jG3QGuSx2I7xttcH
+         +S9RfhI3SZJOimOnfPHXQU9svIG6myX2p9XQekcvQb+l1V5xpRdqsvHJb3xCbHLDPELI
+         47sOUyk4BI7W2BrwMkfFfBt7zQthOPPip3oWgELSY4wrJdcdhQr8wtE0tU0k6dVj9ynl
+         83UosUbDSvFDIoWPsdHT4Hb97CLKamURKT45z04eJviS4BuqL0IRZMPoNOiYw0HYEGEp
+         rtHDM7htt5NHpTA9puQzvC25oQhIIrsYUEP4n1jPso/SmYxZK27sV53AjFPqKsAXpGfK
+         eovw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787679263; x=1788284063;
+        h=content-transfer-encoding:content-type:subject:date:cc:to:from
+         :mime-version:message-id:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=57hPk6B4v1KETwUArfZSnqqRqUE15uxO2Lfbtp7crWY=;
+        b=EDWtptQg2Xeq3FQZzlt0xEN15LaoWbuFn7kQs/6i+60osdsIHh0Da0vAprvDSemH8i
+         VvplNnShmyXtuAOlD1w1ftTPs3jqgi2gpvhnTJbgT98QblNHwHKzxglCXzwYCMiroSNG
+         4i7RilsbvYq7f5yvr1a4C9UKKCZFz6N+BvIyXAX4Mru2+D5YRT4To/LNye2nClEvDw1A
+         LMs44J8zRrFLeDWoQu8mdQ5kcypB1UpfHlLXMQjjhUIzZ8RPKk8SdwTHaN5PzkzYq93Y
+         OAqsghGGaIudKmo/8x7AIO0PEG6KB+ehD10sCWOENr5Q1/PpSwVNURGrFvaK1zrshu53
+         9BoQ==
+X-Forwarded-Encrypted: i=1; AHgh+Rpgyco5Qhz+aNPgI71tHxOEIE579tSQmOffUcu8TtdeGuIaxDgDpET8QNC/uaFbA+CQBWJvWvK5W0NTa/ZJlQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++lK+dWqgNU3o01EAvEW1JW+/pAaQTt3o7AI4W8J+3W+H3qrB5Sa
+	i0zLgmJyVZ64ZbIMsrSUSg5WtpmxYgu2lFOTsZ3AVOtFjUzZ74e164Tw
+X-Gm-Gg: AR+sD11aqP2ZpzCBji2dyDBfyeUU90dCeJJSyFAgBnn2BNzJCywvM1Bb0TCyfubJdIq
+	SUlO9c09enNxp/bsNL1mmqqUEXCzJw0kVRgvoUdedhacs12Jd/BQrEzY8ycID3ksmANOEaUqmn4
+	3kguXWbBUxXA+oGHYOPYr4o/G0Z4LVMbPhssJw4ihsERpVzLKnzvK5urnKFcT6e+dZilNgG6tAP
+	S2taYVpc1bm2tF7bYNcYhClgdPzz4/3ez52kr0jVPv9KZN+qKR3lf9xW6vzsEUtzxUM3sgpkvcT
+	G/ZXT89GJ38H6xbMFoqBqI/E5diruCidEu2UoDnaTmTdfIV6+vfRkuAcB3d9U2NFQ1OL5a0bpPS
+	NtfudINLLOQOn1YkmD5C60DfVLa1i8AIm+6BNEy98TZ6y6Id1PFDGK6hpNyGtG2cLb1bawphV8W
+	2MlI8syxPs1+uwyKmaPutxUXHICaoQe8vEX+yqGLuWwvxageW3tdQwdcZaBSDOqyEDjZ77DFPYa
+	r+mfMirtRnBlkWqjQHLPwo5UHKqt6zuEmz0RGJocYx7gDeecDRCaUXZ+Q==
+X-Received: by 2002:a17:902:e949:b0:2d6:3c2f:6a5 with SMTP id d9443c01a7336-2d64b1d68bemr710709365ad.14.1787679262972;
+        Tue, 25 Aug 2026 10:34:22 -0700 (PDT)
+Received: from manush ([2406:7400:94:a5e3:4d43:ded5:1c68:7d38])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3283d884d5esm465303eec.17.2026.08.25.10.34.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 25 Aug 2026 10:34:22 -0700 (PDT)
+Message-ID: <6a8dd21e.b12cec6a.f9ff0.b637@mx.google.com>
+X-Mailer: git-send-email-equivalent-ps1
 MIME-Version: 1.0
+From: "Manush Prajwal" <manushprajwal555@gmail.com>
+To: jassisinghbrar@gmail.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Markus.Elfring@web.de
+Date: 25 Aug 2026 23:04:22 +0530
+Subject: [PATCH v4] mailbox: mtk-cmdq: fix runtime PM usage counter leak in
+ cmdq_mbox_flush()
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260825_083011_835972_310C26DB 
-X-CRM114-Status: GOOD (  30.42  )
+X-CRM114-CacheID: sfid-20260825_103424_200560_A5A57F88 
+X-CRM114-Status: GOOD (  10.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,76 +100,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 25. August 2026, 17:11:47 Mitteleurop=C3=A4ische Sommerzeit sc=
-hrieb Brian Masney:
-> Hi Heiko,
->=20
-> On Mon, Aug 24, 2026 at 11:11:32PM +0200, Heiko St=C3=BCbner wrote:
-> > Am Freitag, 21. August 2026, 10:53:10 Mitteleurop=C3=A4ische Sommerzeit=
- schrieb Geert Uytterhoeven:
-> > > 	Hi all,
-> > >=20
-> > > The clk_init_data structure contains several mutually-exclusive membe=
-rs
-> > > for different methods to specify the possible parents of a clock,
-> > > prompting drivers to initialize only the members they need.  However,
-> > > not initializing all members may cause subtle issues, which are only
-> > > exposed when CONFIG_INIT_STACK_ALL_PATTERN or CONFIG_INIT_STACK_NONE =
-is
-> > > enabled.
-> > >=20
-> > > Hence this series aims to make sure all members are fully initialized,
-> > > to avoid such bugs, and to prevent future breakage when converting
-> > > drivers to a different method for specifying the parents.
-> > >=20
-> > > Part One[1] fixed all cases that I identified to be real bugs, in
-> > > response to a crash I saw on BeagleBone Black.
-> > >=20
-> > > This series is the clock subpart of Part Two, which fixes remaining
-> > > cases that are currently harmless.  These are still fragile, and may
-> > > cause future breakage when converting drivers to a different method f=
-or
-> > > specifying the parents.
-> > >=20
-> > > Thanks for your comments!
-> >=20
-> > I guess more a handling question, how do you expect this series to be
-> > applied?
-> >=20
-> > I.e. each clk-arch-maintainer, or in one big thing by the core clock
-> > maintainers? Just wondering if I should pick the Rockchip patch
-> > or just let the whole series get applied by the clock maintainers.
->=20
-> Before you pick up anything, let's see if Stephen picks up this series
-> the next few days before he sends his pull to Linus.
->=20
-> Next development cycle, Jerome Brunet and I will be clk co-maintainers
-> [1] and will start collecting patches then. If Stephen doesn't pick up
-> this whole series this week, then pick up the patch(es) relevant for
-> your tree and send Jerome and I pull as usual. That's just in case
-> there's other patches that come in during the next development cycle to
-> these files and to avoid merge conflicts. I don't have a strong opinion
-> about this though, and could be convinced to take the whole series for
-> simplicity.
-
-Thanks for the heads up on the maintainer expansion :-) .
-
-At least for me both work - Geert's fixes are for the clock types used
-by the Rockchip clock drivers and generally we mostly get new clock trees,
-so there shouldn't be any conflicts between this and other new stuff ;-) .
-
-
-Heiko
-
-
-> [1] https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git/commit/=
-?h=3Dclk-next&id=3D8bc7ceadce1f362a8b0e88075ef3d926b286c01c
->=20
-> Brian
->=20
->=20
-
-
-
+cmdq_mbox_flush() calls pm_runtime_get_sync() and returns its err=
+or=0D=0Acode directly on failure. Per Documentation/power/runtime=
+_pm.rst,=0D=0Apm_runtime_get_sync() does not drop the usage count=
+er on error, so the=0D=0Acaller is expected to release the refere=
+nce itself. The early return=0D=0Ahere skipped that, leaking a ru=
+ntime PM usage count on cmdq->mbox.dev=0D=0Aon every failed resum=
+e. v2 fixed this by switching to=0D=0Apm_runtime_resume_and_get()=
+, which performs the get-and-put=0D=0Ainternally on failure.=0D=0A=
+=0D=0AMarkus Elfring additionally pointed out that the "out:" and=
+ "wait:"=0D=0Alabels duplicate the same pm_runtime_mark_last_busy=
+() +=0D=0Apm_runtime_put_autosuspend() + return sequence. That du=
+plication=0D=0Ahides a second, separate leak: the "wait:" path's =
+timeout branch=0D=0A(readl_poll_timeout_atomic() failing) returns=
+ -EFAULT directly,=0D=0Awithout ever calling pm_runtime_mark_last=
+_busy() /=0D=0Apm_runtime_put_autosuspend(), so the pm_runtime re=
+ference taken at=0D=0Afunction entry is leaked on every polling t=
+imeout too.=0D=0A=0D=0AFix both by merging the two exit sequences=
+ into one common "out_pm:"=0D=0Alabel reached by both "out:" and =
+"wait:", using "ret" to carry the=0D=0Areturn value. "ret" is exp=
+licitly reset to 0 on both success paths=0D=0Abefore reaching "ou=
+t_pm:", since pm_runtime_resume_and_get() can=0D=0Areturn a posit=
+ive value (e.g. 1) on success, not just 0, and that=0D=0Astale va=
+lue must not leak into the function's return value.=0D=0A=0D=0AVe=
+rified the merged exit path with a standalone model of the four=0D=0A=
+possible outcomes (initial get failure, "out:" success, "wait:"=0D=0A=
+success, "wait:" timeout): the runtime PM refcount returns to its=
+=0D=0Astarting value and the return code is correct on every path=
+.=0D=0A=0D=0ASigned-off-by: Manush Prajwal <manushprajwal555@gmai=
+l.com>=0D=0A---=0D=0Av4:=0D=0A- Add parentheses to the function n=
+ame in the summary phrase=0D=0A  (cmdq_mbox_flush -> cmdq_mbox_fl=
+ush()), per Markus Elfring's review.=0D=0A=0D=0A- Reformat this c=
+hangelog so each version identifier stands on its=0D=0A  own line=
+ and blocks are separated by blank lines, per Markus=0D=0A  Elfri=
+ng's review.=0D=0A=0D=0A- No functional change from v3. Still no =
+Fixes tag: I don't have a=0D=0A  git history for this file availa=
+ble in my current environment to=0D=0A  identify the commit that =
+introduced this exit path with confidence,=0D=0A  and would rathe=
+r leave the tag off than guess a SHA. Still happy to=0D=0A  add i=
+t in a v5 if Markus or anyone else on Cc can point at the right=0D=0A=
+  commit.=0D=0A=0D=0Av3:=0D=0A- Fix the pm_runtime leak on the "w=
+ait:" timeout path found while=0D=0A  addressing Markus Elfring's=
+ duplicate-code comment, by merging the=0D=0A  "out:" and "wait:"=
+ exit sequences into a single "out_pm:" label.=0D=0A=0D=0A- Add M=
+atthias Brugger and AngeloGioacchino Del Regno plus the=0D=0A  li=
+nux-mediatek and linux-arm-kernel lists to Cc, per MAINTAINERS'=0D=0A=
+  "ARM/Mediatek SoC support" entry (matches any drivers/mailbox/m=
+tk-*.c=0D=0A  filename), per Markus Elfring's review.=0D=0A=0D=0A=
+v2:=0D=0A- Use pm_runtime_resume_and_get() instead of pm_runtime_=
+get_sync()=0D=0A  plus a manual pm_runtime_put_noidle() on the er=
+ror path, per Markus=0D=0A  Elfring's review.=0D=0A=0D=0A drivers=
+/mailbox/mtk-cmdq-mailbox.c | 15 +++++++--------=0D=0A 1 file cha=
+nged, 7 insertions(+), 8 deletions(-)=0D=0A=0D=0Adiff --git a/dri=
+vers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbo=
+x.c=0D=0Aindex e523c84b4..d4e5f6a7b 100644=0D=0A--- a/drivers/mai=
+lbox/mtk-cmdq-mailbox.c=0D=0A+++ b/drivers/mailbox/mtk-cmdq-mailb=
+ox.c=0D=0A@@ -565,7 +565,7 @@ static int cmdq_mbox_flush(struct m=
+box_chan *chan, unsigned long timeout)=0D=0A        int ret;=0D=0A=
+=0D=0A-       ret =3D pm_runtime_get_sync(cmdq->mbox.dev);=0D=0A+=
+       ret =3D pm_runtime_resume_and_get(cmdq->mbox.dev);=0D=0A  =
+      if (ret < 0)=0D=0A                return ret;=0D=0A=0D=0A@@=
+ -590,22 +590,21 @@ static int cmdq_mbox_flush(struct mbox_chan *=
+chan, unsigned long timeout)=0D=0A        cmdq_thread_disable(cmd=
+q, thread);=0D=0A=0D=0A out:=0D=0A        spin_unlock_irqrestore(=
+&thread->chan->lock, flags);=0D=0A-       pm_runtime_mark_last_bu=
+sy(cmdq->mbox.dev);=0D=0A-       pm_runtime_put_autosuspend(cmdq-=
+>mbox.dev);=0D=0A-=0D=0A-       return 0;=0D=0A+       ret =3D 0;=
+=0D=0A+       goto out_pm;=0D=0A=0D=0A wait:=0D=0A        cmdq_th=
+read_resume(thread);=0D=0A        spin_unlock_irqrestore(&thread-=
+>chan->lock, flags);=0D=0A+       ret =3D 0;=0D=0A        if (rea=
+dl_poll_timeout_atomic(thread->base + CMDQ_THR_ENABLE_TASK,=0D=0A=
+                                      enable, enable =3D=3D 0, 1,=
+ timeout)) {=0D=0A                dev_err(cmdq->mbox.dev, "Fail t=
+o wait GCE thread 0x%x done\n",=0D=0A                        (u32=
+)(thread->base - cmdq->base));=0D=0A-=0D=0A-               return=
+ -EFAULT;=0D=0A+               ret =3D -EFAULT;=0D=0A        }=0D=0A=
++=0D=0A+out_pm:=0D=0A        pm_runtime_mark_last_busy(cmdq->mbox=
+.dev);=0D=0A        pm_runtime_put_autosuspend(cmdq->mbox.dev);=0D=0A=
+-       return 0;=0D=0A+       return ret;=0D=0A }=0D=0A--=0D=0A2=
+.46.2.windows.1
 
 
