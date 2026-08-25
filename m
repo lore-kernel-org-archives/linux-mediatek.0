@@ -4,81 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 458A9C61CE2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2026 10:09:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70DBCC61DB6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2026 10:10:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5LS+cPNUgJ1aKOmq76gdPooNsDTdzsDpBPzBNoGCQPA=; b=zUBkbGFuAQ0Cq3cVN1PCCesOC0
-	mMpJQupV8J9rH8R4KNZnvWjSA764xQLiMQzHvXO+ATj+N5vCXDI3rPBZKyJ0RcExdfdtdUOSFzQdg
-	nzQqYcQRiR9qMQHpKGz0sTIpuZog8w1Qir/ndy2fa9l2zNGi/3q5VAqdLxghgvTgRn2oYcDupsxy7
-	3ErorSeqjrZgCqiyLez57pN0rFkGuXeOxtnAJw/BF/2/REi1MSM7aH3wrU3wicY26TcxTVX53sfYo
-	0AWPd2ARYZfIV45tCa7cyGU5MzUvGh8z/+yD0NhiZ9uUsyqP2vW4teP2OK9hoIhptJ/4Bg/Kh3WVR
-	dDtCa/LQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1Zsse2VsTNoktBh6xLOvRKZr+p3+dbWbTlB3AV5JhIU=; b=AaGu5Tyrs7ZK6C
+	02dF9d3dAniLQ0JOQ7AFoahy2TGR/5RaRfNuNDNvm5Scj9MKzQDm7GLCTLvNBLoVRfc9KR/xDRfPg
+	1v7RDSoDlbu+VwAD8a16EO4eUyv4ZVIbw84DtRvwwlusfoQdpXQ+5n2VJDRSMBxi9OEJo3EgHkhlP
+	AIt5p1qewmu7gxMcCJ5haMqa4VhbxjZIognbMjC3/XJAmyo4TFSb1cyjiw6aoc314o2mJ8hpVMxD3
+	3l3Uodf1EVkrUwzhlv2uDgHwUn4XsNTmJi5RZY9h1OO+NfUyk/igBcc6HKyGXlcP/LM9/X3yDstbj
+	NXGx31PkUGMlEHF0PCCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyo5Y-00000000YKV-0CUx;
-	Tue, 25 Aug 2026 10:09:04 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1wyo74-00000000YSb-0nkc;
+	Tue, 25 Aug 2026 10:10:38 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyo5V-00000000YJG-0tWu
+	id 1wyo71-00000000YRz-3dpR
 	for linux-mediatek@lists.infradead.org;
-	Tue, 25 Aug 2026 10:09:02 +0000
-X-UUID: f7c1064aa06c11f19a56ed5b684f684d-20260825
-X-CTIC-Tags: HR_CC_COUNT, HR_CC_DOMAIN_COUNT, HR_CC_NO_NAME, HR_CTE_8B, HR_CTT_MISS
-	HR_DATE_H, HR_DATE_WKD, HR_DATE_ZONE, HR_FROM_NAME, HR_SJ_DIGIT_LEN
-	HR_SJ_LANG, HR_SJ_LEN, HR_SJ_LETTER, HR_SJ_NOR_SYM, HR_SJ_PHRASE
-	HR_SJ_PHRASE_LEN, HR_SJ_WS, HR_TO_COUNT, HR_TO_DOMAIN_COUNT, HR_TO_NO_NAME
-	IP_UNTRUSTED, SRC_UNTRUSTED, IP_UNFAMILIAR, SRC_UNFAMILIAR, DN_TRUSTED
-	SRC_TRUSTED, SA_EXISTED, SN_UNTRUSTED, SN_LOWREP, SN_EXISTED
-	SPF_NOPASS, DKIM_NOPASS, DMARC_NOPASS, CIE_BAD, CIE_GOOD_SPF
-	CIE_UNKNOWN, GTI_FG_BS, GTI_RG_INFO, GTI_C_BU, AMN_GOOD
-	ABX_MISS_RDNS
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:c4dbeec5-d9c6-4e7f-9724-98e671d410bf,IP:10,
-	URL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
-	ION:release,TS:10
-X-CID-INFO: VERSION:1.3.19,REQID:c4dbeec5-d9c6-4e7f-9724-98e671d410bf,IP:10,UR
-	L:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:10
-X-CID-META: VersionHash:7db8b62,CLOUDID:e30d52b1251784e770df18d386dded09,BulkI
-	D:260825180852GNJL4FDO,BulkQuantity:0,SF:17|19|66|78|81|82|102|127|850|865
-	|898|908|914,TC:nil,Content:0|15|50,EDM:5,IP:-2,URL:0,File:nil,RT:nil,Bulk
-	:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,
-	BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_FAS,TF_CID_SPAM_FSD
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: f7c1064aa06c11f19a56ed5b684f684d-20260825
-X-User: lihaojie@kylinos.cn
-Received: from localhost.localdomain [(39.144.194.152)] by mailgw.kylinos.cn
-	(envelope-from <lihaojie@kylinos.cn>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 160353266; Tue, 25 Aug 2026 18:08:49 +0800
-From: Haojie Li <lihaojie@kylinos.cn>
-To: ck.hu@mediatek.com
-Cc: chunkuang.hu@kernel.org,
-	dri-devel@lists.freedesktop.org,
-	lihaojie@kylinos.cn,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	p.zabel@pengutronix.de,
-	stable@vger.kernel.org
-Subject: [PATCH v2] drm/mediatek: Add missing IS_ERR check for ovl_adaptor  platform device
-Date: Tue, 25 Aug 2026 18:08:45 +0800
-Message-Id: <20260825100845.438893-1-lihaojie@kylinos.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <7a3cbf55bf6a97835ee426eb38c34b2c153437eb.camel@mediatek.com>
-References: <7a3cbf55bf6a97835ee426eb38c34b2c153437eb.camel@mediatek.com>
+	Tue, 25 Aug 2026 10:10:37 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 53E381A180A;
+	Tue, 25 Aug 2026 10:10:31 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 1DF78604C4;
+	Tue, 25 Aug 2026 10:10:31 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 7425E11C7A3C3;
+	Tue, 25 Aug 2026 12:09:58 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1787652628; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding; bh=1Zsse2VsTNoktBh6xLOvRKZr+p3+dbWbTlB3AV5JhIU=;
+	b=RehtpQ/JKe3cg0IhoEUR42WWUeus87fvj0hZXYD0Qo0/ZovBRoMNe3t2z9bhkb52HKib8b
+	iVevKf8JFZ/RsNX0DN4mxfrKsQBDJWpxMQuBCg+nTL+kmIzRdbNEvT0OqpugFwbbh+Ol4T
+	YHl1YDvpfezCjhUwadRCWctJ0xvZI88YP06Nk9+hu3bN8rAxBnGRlgslrPlM3YWGpSkk/4
+	FKNURblN9e2qHecnzAqxqyTntOJPv3I/X4Qz/EIEuLJb6D2rb0JJBshDeiQ8lkNY7wEw5h
+	/QHf3xo6eu8teOd6O9EURVzvsuBRtqoG3AjyPGb5OkSObCsehBoy7WBq/QAaiQ==
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Subject: [PATCH v2 00/12] drm/bridge: Kconfig: cleanup DRM_PANEL usage
+Date: Tue, 25 Aug 2026 12:09:33 +0200
+Message-Id: <20260825-drm-bridge-drm_panel-cleanup-v2-0-c6c88ba7ffd2@bootlin.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/42NQQ6CMBREr0K6tua3IhZW3sMQU9qvfAMtaYFoC
+ He34AXczctM3iwsYiCMrMoWFnCmSN4lkIeMmVa7J3KyiZkEWYASktvQ8yaQTU2K90E77LjpULt
+ p4FCiPRsjoMwVS4oh4IPeu/5W/zhOzQvNuDm3RUtx9OGz/89i2/15NQsOHKwqLqccS1D62ng/d
+ uSOxvesXtf1C/VUs6DcAAAA
+X-Change-ID: 20260812-drm-bridge-drm_panel-cleanup-09ed5cc10948
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Peter Senna Tschudin <peter.senna@gmail.com>, 
+ Martyn Welch <martyn.welch@collabora.co.uk>, Andy Yan <andyshrk@163.com>, 
+ Marek Szyprowski <m.szyprowski@samsung.com>, Marek Vasut <marex@denx.de>, 
+ Jagan Teki <jagan@amarulasolutions.com>, 
+ Christopher Vollo <chris@renewoutreach.org>, 
+ Douglas Anderson <dianders@chromium.org>, 
+ Sandeep Panda <spanda@codeaurora.org>, 
+ Franz Schnyder <franz.schnyder@toradex.com>, 
+ John Ripple <john.ripple@keysight.com>, Michael Walle <mwalle@kernel.org>, 
+ Sudarshan Shetty <tessolveupstream@gmail.com>, 
+ Alexander Stein <alexander.stein@ew.tq-group.com>, 
+ Herve Codina <herve.codina@bootlin.com>, Esben Haabendal <esben@geanix.com>, 
+ Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, 
+ Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
+ Pin-yen Lin <treapking@chromium.org>, Tony Lindgren <tony@atomide.com>, 
+ Vinay Simha BN <simhavcs@gmail.com>, Maoyi Xie <maoyixie.tju@gmail.com>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Andrey Gusakov <andrey.gusakov@cogentembedded.com>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
+ Peter Ujfalusi <peter.ujfalusi@ti.com>, 
+ Svyatoslav Ryhel <clamor95@gmail.com>, 
+ Enric Balletbo i Serra <eballetbo@kernel.org>
+X-Mailer: b4 0.16.0
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260825_030901_571643_3C27FCC9 
-X-CRM114-Status: GOOD (  10.15  )
+X-CRM114-CacheID: sfid-20260825_031036_093439_5B169D68 
+X-CRM114-Status: UNSURE (   8.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,35 +111,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-platform_device_register_data() can fail and return an ERR_PTR, but the
-return value is used without checking, leading to an invalid pointer
-being stored in ddp_comp[].dev and passed to component_match_add() and
-mtk_ddp_comp_init(), which could result in a kernel crash.
+As a cleanup in preparation for making every drm_panel create a
+panel_bridge, remove unnecessary or wrong usage of 'depends on DRM_PANEL'
+and 'select DRM_PANEL' from drivers/gpu/drm/bridge/Kconfig.
 
-Add an IS_ERR() check to jump to the error handling path on failure.
+== Grand plan
 
-Fixes: 0d9eee9118b7 ("drm/mediatek: Add drm ovl_adaptor sub driver for MT8195")
-Cc: stable@vger.kernel.org
-Signed-off-by: Haojie Li <lihaojie@kylinos.cn>
+This is part of the work to support hotplug of DRM bridges. The grand plan
+was discussed in [0].
+
+Here's the work breakdown (➜ marks the current series):
+
+ 1. ➜ add refcounting to DRM bridges struct drm_bridge,
+      based on devm_drm_bridge_alloc()
+    A. ✔ add new alloc API and refcounting (v6.16)
+    B. ✔ convert all bridge drivers to new API (v6.17)
+    C. ✔ kunit tests (v6.17)
+    D. ✔ add get/put to drm_bridge_add/remove() + attach/detach()
+         and warn on old allocation pattern (v6.17)
+    E. ➜ add get/put on drm_bridge accessors
+       1. ✔ drm_bridge_chain_get_first_bridge(), add cleanup action (v6.18)
+       2. ✔ drm_bridge_get_prev_bridge() (v6.18)
+       3. ✔ drm_bridge_get_next_bridge() (v6.19)
+       4. ✔ drm_for_each_bridge_in_chain() (v6.19)
+       5. ✔ drm_bridge_connector_init (v6.19)
+       6. ✔ protect encoder bridge chain with a mutex (v7.2)
+       7. ✔ of_drm_find_bridge
+          a. ✔ add of_drm_get_bridge() (v7.0),
+               convert basic direct users (v7.0-v7.1)
+          b. ✔ convert direct of_drm_get_bridge() users, part 2 (v7.0)
+          c. ✔ convert direct of_drm_get_bridge() users, part 3 (v7.0)
+          d. ✔ convert direct of_drm_get_bridge() users, part 4 (v7.1-v7.2)
+          e. ✔ bridge-only drm_of_find_panel_or_bridge() users (v7.2)
+       8. ➜ panel_bridge lifetime
+          a. ➜ cleanup DRM_PANEL in bridge drivers
+	  b.   add a panel_bridge to every panel
+       9. ✔ enforce drm_bridge_add before drm_bridge_attach (v6.19)
+    F. ✔ debugfs improvements
+       1. ✔ add top-level 'bridges' file (v6.16)
+       2. ✔ show refcount and list lingering bridges (v6.19)
+ 2. ✔ handle gracefully atomic updates during bridge removal
+    A. ✔ Add drm_bridge_enter/exit() to protect device resources (v7.0)
+    B. ✔ Add drm_bridge_clear_and_put() (v7.1)
+ 3. … DSI host-device driver interaction
+ 4. ✔ removing the need for the "always-disconnected" connector
+ 5. ✔ Migrate i.MX LCDIF driver to bridge-connector (v7.2)
+ 6. … DRM bridge hotplug
+    A. … Bridge hotplug management in the DRM core
+       1. ✔ bridge-connector: attach encoder to the connector (v7.2)
+       2. … drm bridge hotplug
+    B.   Device tree description
+
+[0] https://lore.kernel.org/lkml/20250206-hotplug-drm-bridge-v6-0-9d6f2c9c3058@bootlin.com/#t
+
+Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 3 +++
- 1 file changed, 3 insertions(+)
+Changes in v2:
+- Added maintainers and recent authors to per-patch Cc list (these are not
+  added automatically by get-maintainers because the patches touch only the
+  Kconfig file)
+- Added review trailer
+- No changes to commit messages and patch content
+- Link to v1: https://patch.msgid.link/20260812-drm-bridge-drm_panel-cleanup-v1-0-0d86734e908a@bootlin.com
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index c86a3f54f35b..b281482ab8c8 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -1112,6 +1112,9 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 							    PLATFORM_DEVID_AUTO,
- 							    (void *)private->mmsys_dev,
- 							    sizeof(*private->mmsys_dev));
-+		if (IS_ERR(ovl_adaptor))
-+			return PTR_ERR(ovl_adaptor);
-+
- 		private->ddp_comp[DDP_COMPONENT_DRM_OVL_ADAPTOR].dev = &ovl_adaptor->dev;
- 		mtk_ddp_comp_init(dev, NULL, &private->ddp_comp[DDP_COMPONENT_DRM_OVL_ADAPTOR],
- 				  DDP_COMPONENT_DRM_OVL_ADAPTOR);
--- 
-2.25.1
+---
+Luca Ceresoli (12):
+      drm/bridge: megachips-stdpxxxx-ge-b850v3-fw: don't select unused DRM_PANEL
+      drm/bridge: tc358764: don't select unused DRM_PANEL
+      drm/bridge: ti-dlpc3433: don't depend on DRM_PANEL
+      drm/bridge: ti-sn65dsi86: don't select unused DRM_PANEL
+      drm/bridge: ti-sn65dsi83: select DRM_PANEL_BRIDGE
+      drm/bridge: nxp-ptn3460: select DRM_PANEL_BRIDGE
+      drm/bridge: parade-ps8622: select DRM_PANEL_BRIDGE
+      drm/bridge: parade-ps8640: select DRM_PANEL_BRIDGE
+      drm/bridge: tc358775: select DRM_PANEL_BRIDGE
+      drm/bridge: tc358767: select DRM_PANEL_BRIDGE
+      drm/bridge: tc358768: select DRM_PANEL_BRIDGE
+      drm/bridge: ssd2825: select DRM_PANEL_BRIDGE
+
+ drivers/gpu/drm/bridge/Kconfig | 21 +++++++++------------
+ 1 file changed, 9 insertions(+), 12 deletions(-)
+---
+base-commit: e935b7289ea925084ab342a141b153cc3e875391
+change-id: 20260812-drm-bridge-drm_panel-cleanup-09ed5cc10948
+
+Best regards,
+--  
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
 
