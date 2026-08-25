@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2DFAC5B572
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2026 04:33:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0C5DC5DF81
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2026 04:33:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gcqeYVtwEdBoGSrDXdk4fs5867JCY5OOBmzd0xKFWVg=; b=htveD12ebRI8pSHgtW8afE3Uvz
-	b4L334DAy35EX6SEUxW/3yyzjShGsFuNNyGURz7PKdujUitqeSFvIwZDT8iuxlOBR+E5xEuY23x6c
-	SEQvcpdaCCEn5oKetvdsf4lUp0mBq9pfNLK08GT+O8Fe3HD79RxnvanxlIWue1M5luel+g4JfTZ2l
-	3aCBiPIBPBs00MQ2J+SPCQ58iks0gKiprsjsGgEsOAZbNOCUQ7xTsNBmxII3U99aZp7rUcAsjh1Dw
-	b6NByHt0Nb9smf6mX1w1iuFJASX21Ay1vyhJINXsCAo6v7ndG/Oqi9zfW/EZGt6j6vhR23Mv/1WhZ
-	ynC5fvGg==;
+	bh=O3x3zvQVHa95aIkNqH4RuqCyE87uGo0+4gPg8D8l4X4=; b=Zw9Q0ipcvY3MQGPdGNr7e5HJBY
+	M7GGoBAhHakkZSqZi1c7hyKIvT7uXd6W6ruzazRQVZKoLc7BnyQhOcxRszsmg7oIsqgnhqIX1fiRj
+	OpUDpJOVHy1Skr34tTZ2IOgaeMXtdvLITgs2J1JH/cFZ1oKZsa1W4I9g1beALhg1SO5wbl8utuTmb
+	+6pjcobCALggsqpamE87tROjazdzvDPOtRrNqqGFNNMjxODZbkW17MqWo80GQUDtKWFVcmM/9h6ZJ
+	y2e5DAiQd35kNSnUAgnnvxJAyPdTuJngzptRe9XCqI5J+EW3UoMvlq4PHqR8oKUDMfR6Qe7DGiKKE
+	5ECwR7KQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyiqv-0000000088h-1975;
-	Tue, 25 Aug 2026 04:33:37 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	id 1wyiqz-000000008Bn-29Ic;
+	Tue, 25 Aug 2026 04:33:41 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyiqt-0000000087f-0f9G
+	id 1wyiqw-0000000089Y-3PrM
 	for linux-mediatek@lists.infradead.org;
-	Tue, 25 Aug 2026 04:33:36 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-3964e480f76so476986a91.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Aug 2026 21:33:34 -0700 (PDT)
+	Tue, 25 Aug 2026 04:33:40 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-38a0c7e841fso6057372a91.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Aug 2026 21:33:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1787632414; x=1788237214; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1787632418; x=1788237218; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=gcqeYVtwEdBoGSrDXdk4fs5867JCY5OOBmzd0xKFWVg=;
-        b=V64GdB5W1sCSvU33FU31KVKTSsvo4BTZMhbVS4RaltlSNkOgRc5yy77sTxsc8Pjok6
-         ZFfOABTkiRLyBA3O7SVbIkjW7H5eDaWm18oAe/krPW+IW0JUOnnOsYhuNQPhaWksDmoN
-         NQQP1FG4I5SLzvt/sRx7lxLY5wEZFKMQB87TI=
+        bh=O3x3zvQVHa95aIkNqH4RuqCyE87uGo0+4gPg8D8l4X4=;
+        b=AHgq5PyCIsj8qOdm8OcMVXVdnvcnjYWJYnrGOUug11XE00eoL12srlxZrBT5aigXiE
+         1G8iGo43tTuMEvyEI6nAMOW2vf1s1QwQpyZ0WTnl6ufYCo/oVg+fggnxPKASGGKFYcJm
+         RTHGvTTmTWWxG05b3wJCbUAd6ZvuFq342N9Wk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787632414; x=1788237214;
+        d=1e100.net; s=20251104; t=1787632418; x=1788237218;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=gcqeYVtwEdBoGSrDXdk4fs5867JCY5OOBmzd0xKFWVg=;
-        b=BFobVBms4GWB+dGcndfjH1CW7+1wc7bJMqDBUN5JftfRhNnwBZ/A4a9AmUJY/U1xxj
-         WYVR8oqAQaeovzLI3N9DCdLskNDy1MR/w9YqfCRZ088NRuakCCyXybWT0OM2iqhPCVAT
-         WwL6dKfstuUm2h2J+GGSSVW3FZhS+xtHFJBRfeUDXSbkeYeODykm98gxco1iVCVYhJXv
-         cTG5drMqtHQH0HjQ3v8TN8jW1D4ddq2et0y1u6GnraPhk5dNAYzIJ/eOhbxyBkyXy+k/
-         yVm01A+odmys/d3dIMBDF+77RG5FNF+6Td8S0OPUz43Vskf6jb7FumZN+DuzaMlr70Op
-         /Eow==
-X-Forwarded-Encrypted: i=1; AHgh+RrwinN2jPrUI7t3LPjXqhHbFoJnr8Bfs6lDDiss6f1LvF1PxtqGQ5ZaRK23dBM7hMfhmKMGb54qwNHtNVhwIA==@lists.infradead.org
-X-Gm-Message-State: AFuF++nvbN3xCCUCqylnPfgvd2d+D0PRHuJU/uAcGM1x2dj8kuV348hE
-	gbNa1IXLns1GTLbdbLSdE3TofFUgzutqzpKcvBFKFEvAS/9zRD7N8HHgBOE4h0U4eg==
-X-Gm-Gg: AR+sD128sYezYR2A6xin1w+mDxmYfUXYz3t/KYkZFCAjU1MgGDHsTCixgaCLUuEucAX
-	DaOCt8gxRYRe1M3+ig3JfVZQ/1gkOAvnvwIqroz+BTP1DeqtoJ7OLlQOixrFOyhkZZa4q+JCcFH
-	gZlrPtPZRGG7sK/FUWDqNXb7BW2+5BNqYfJZl2ukO+O7NxvEYNtq88m/IoppBKNu7gTM9qmczYp
-	bT3KAwfNFEuVq5tiCJ0Mgfp+NhEXWM9Xo7yHk3L1LuzhFu61jn1Oxpk2dHlpa99X1+Af4UArybK
-	Tn7VNyWVoFoOGPsYPsymFOYVg5yM6Yn5/d0FidXVLeOzZ872N8PyfgK8f1JBucWpgBULwH8jg6S
-	IG6xLzNUC5G+X5MxZ2FmhWUds7dC86z+Y2o8S+4xd/u9GnXO/m30YhtH/Cc9zx9OQ93nokIQxrd
-	o2X7PpneCXwur13z+jpy2ptJR9jPjrUuOiDjOnLnX+WIOTVKSuqrhTX+ATYrKOlAvJ8+Un2hWB7
-	9yK+ef2jQfVXNkteqk+gAgR9jr9FJKTPa8IXW7fudtAJvs=
-X-Received: by 2002:a17:90b:3911:b0:395:543a:cf3b with SMTP id 98e67ed59e1d1-396463084famr7174715a91.2.1787632414107;
-        Mon, 24 Aug 2026 21:33:34 -0700 (PDT)
+        bh=O3x3zvQVHa95aIkNqH4RuqCyE87uGo0+4gPg8D8l4X4=;
+        b=VSB5xBUDnJsm+CMSYP5DCirYYlkXBB0Y3j175pnt4XXQCC1XULT+5lbH4XumS9PEyu
+         FJDejABVIxSXa0dyXwSAQfo8omOk7q2QSQVwiCtn7oPNHlPfignNPsZgBKTvkltVkylN
+         y1h0Bz/uHdd9+b7mFGnFpp+kLAg+qJGDRcqiP+Q8pbS+Z+TqXN50XuwiXy5AbMDiwUmO
+         +USzXHOeVgMHwaxAkHJRhqalvR1Z3cD8Ei4kHJqiqkejrW/fHDJusC/ED0BbH4hoaRwi
+         5XWHRDxvUov06izsetqKI8BT/Ph0KU+HIfhqLoyFRb46AkpxkZXQkY8rDKIzFJZwfB1Q
+         427Q==
+X-Forwarded-Encrypted: i=1; AHgh+RoIhmtC/9A4HzIZgEo0AbCtYKAptfPw8DrXmSjhq5hUfZXHHbMQiuDhU+0/NhXU9rWJVIm2NhHpimIxBZga0A==@lists.infradead.org
+X-Gm-Message-State: AFuF++lBiNJ0+5oYCS2tarxkCCOJmUg25rEwkLdyOKOtsn0M6/aOFQ3b
+	oewfR2PphjxvM8ESAVACjwu1Gm5VwZ5eCJ/zf+mesql4UasVV7K5YeFBoj9bxtlGxg==
+X-Gm-Gg: AR+sD13HkwNZ1aghi5EBTiezFKZ7JmHq7YuuZYhQJpC7k9EMhmPmLPPu9zxdehBPRUy
+	DvnMORuQg45TP+uM+R/x2GPnEKfJy9MjyoZcbxFv/0S5zRQRCPs4km4Ir7wml0xkKWhtjLQe7Aj
+	acSV7KJAcjtIhCLHQc5Iwdyi6dUFb+O2OUFF0nnSfWel41Fx0i6fMazXxjgKFd5GI8ZYlsGzi/J
+	k24auVCQJhAai3mcpWhFyiiqW+Yx2vdcynopPZm2zCoWUVknk7S4G+v0gJvXmS7ihDG6o379U/O
+	wyWx04QUSO04m6AFEgyhUcT9a6Dg4YJyCYohpJIAqU9RqENzLo7HUhTymbWqV9909/xJFpidjNJ
+	saAhgpPdCV65BA3dBHU+Aje9V866OACtC6DkGLB6nW0JwKd5R2bQeG6OHaIofZqOThm+G4daeYY
+	QhDS3vtU1lZY5imXAMM5JJYHqCrTR969edHQNjvu+HnhYb9eu76Uo1+VBtfWQcCTOtz3O5Q1EjB
+	DS+GsPoohNBk7CbP+hrdj8HijCyUui2KuazXYu6zTQhtMs=
+X-Received: by 2002:a17:90b:574f:b0:38e:49c0:75a7 with SMTP id 98e67ed59e1d1-396463f1346mr8081145a91.8.1787632418173;
+        Mon, 24 Aug 2026 21:33:38 -0700 (PDT)
 Received: from wenst-7875.tpe.corp.google.com ([2a00:79e0:201d:8:a442:9780:24da:cb4e])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-396458212absm2187823a91.0.2026.08.24.21.33.30
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-396458212absm2187823a91.0.2026.08.24.21.33.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 24 Aug 2026 21:33:33 -0700 (PDT)
+        Mon, 24 Aug 2026 21:33:37 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Mark Brown <broonie@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
@@ -84,17 +84,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-input@vger.kernel.org,
 	linux-i2c@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v5 1/7] regulator: core: Add "enable and wait" functions
-Date: Tue, 25 Aug 2026 12:16:19 +0800
-Message-ID: <20260825041628.988369-2-wenst@chromium.org>
+Subject: [PATCH v5 2/7] Input: elan_i2c - Wait for initialization after enabling regulator supply
+Date: Tue, 25 Aug 2026 12:16:20 +0800
+Message-ID: <20260825041628.988369-3-wenst@chromium.org>
 X-Mailer: git-send-email 2.55.0.860.g4b6b3295ed-goog
 In-Reply-To: <20260825041628.988369-1-wenst@chromium.org>
 References: <20260825041628.988369-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260824_213335_215284_DD420B71 
-X-CRM114-Status: GOOD (  35.79  )
+X-CRM114-CacheID: sfid-20260824_213338_949031_E352E48F 
+X-CRM114-Status: GOOD (  16.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,380 +109,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In device power sequencing and initialization use cases, it is common
-for the driver to enable the regulator and then wait for a certain
-period of time to pass before continuing.
+Elan trackpad controllers require some delay after enabling power to
+the controller for the hardware and firmware to initialize:
 
-In cases where the regulator supply is always on, or has been turned on
-or left on by another consumer, the driver could shorten the delay or
-skip it altogether, provided that enough time has already passed since
-the regulator was _actually_ turned on.
+  - 2ms for hardware initialization
+  - 100ms for firmware initialization
 
-Tracking this requires support from the regulator core. Introduce a
-"last turned on" timestamp field to the regulator device, and "enable
-and wait" functions to the single and bulk regulator consumer APIs.
-The existing "enable without wait" functions are then converted to
-macros that expand to the new functions.
+Until then, the hardware will not respond to I2C transfers. This was
+observed on the MT8173 Chromebooks after the regulator supply for the
+trackpad was changed to "not always on".
 
-The timestamp is updated each time the regulator is actually turned on.
-For regulators left on by hardware default or by firmware, the core will
-set the timestamp if it detects it was left on and its supply (and their
-supply, and so on) is on as well. This is unfortunately best effort
-only. The core can only assume a dangling regulator (one without a
-supply) has power. This also applies to the dummy regulator.
+Switch to the new regulator_enable_and_wait(). This makes sure that
+enough time has passed since the regulator was first enabled, satisfying
+the power sequencing delay requirement. This allows the delay to be
+skipped if the regulator supply was already enabled by some other part
+of the kernel, such as the I2C OF component prober.
 
+Fixes: 6696777c6506 ("Input: add driver for Elan I2C/SMbus touchpad")
+Link: https://lore.kernel.org/all/20241001093815.2481899-1-wenst@chromium.org/
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
-Changes since v4:
-- Try to update last_on timestamp for regulators that were left on
-
-Changes since v3:
-- Added __private modified to regulator_bulk_data.wait_us field and
-  switched to ACCESS_PRIVATE accessor for the field
-- Moved wait outside regulator lock scope
-- Moved "remaining" value assignment closer to conditional
-- Fixed variable unit name in regulator_enable_and_wait() prototype
-
 Changes since v2:
-- New patch
----
- drivers/regulator/core.c           | 117 +++++++++++++++++++++++++----
- include/linux/regulator/consumer.h |  21 ++++--
- include/linux/regulator/driver.h   |   2 +
- 3 files changed, 119 insertions(+), 21 deletions(-)
+- Switched to new regulator_enable_and_wait() API
 
-diff --git a/drivers/regulator/core.c b/drivers/regulator/core.c
-index 6a4008f387b5..3cc01b2f4c9f 100644
---- a/drivers/regulator/core.c
-+++ b/drivers/regulator/core.c
-@@ -99,7 +99,7 @@ struct regulator_event_work {
- 	unsigned long event;
- };
+Changes since v1:
+- Delay only if the regulator was previously disabled / turned off
+- Link to v1
+  https://lore.kernel.org/all/20241001093815.2481899-1-wenst@chromium.org/
+---
+ drivers/input/mouse/elan_i2c_core.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/input/mouse/elan_i2c_core.c b/drivers/input/mouse/elan_i2c_core.c
+index f5e505edbc33..4bbc6cef8be6 100644
+--- a/drivers/input/mouse/elan_i2c_core.c
++++ b/drivers/input/mouse/elan_i2c_core.c
+@@ -36,6 +36,7 @@
+ #include <linux/sched.h>
+ #include <linux/slab.h>
+ #include <linux/string_choices.h>
++#include <linux/time.h>
+ #include <linux/uaccess.h>
+ #include <linux/unaligned.h>
  
--static int _regulator_enable(struct regulator *regulator);
-+static int _regulator_enable(struct regulator *regulator, ktime_t *last_on);
- static int _regulator_is_enabled(struct regulator_dev *rdev);
- static int _regulator_disable(struct regulator *regulator);
- static int _regulator_get_error_flags(struct regulator_dev *rdev, unsigned int *flags);
-@@ -1675,7 +1675,7 @@ static int set_machine_constraints(struct regulator_dev *rdev,
- 		    (rdev->constraints->always_on ||
- 		     !regulator_is_enabled(rdev->supply))) {
- 			ret = (is_locked
--			       ? _regulator_enable(rdev->supply)
-+			       ? _regulator_enable(rdev->supply, NULL)
- 			       : regulator_enable(rdev->supply));
- 			if (ret < 0) {
- 				_regulator_put(rdev->supply);
-@@ -2186,6 +2186,44 @@ static struct regulator_dev *regulator_dev_lookup(struct device *dev,
- 	return ERR_PTR(-ENODEV);
- }
+@@ -47,6 +48,8 @@
+ #define ETP_FWIDTH_REDUCE	90
+ #define ETP_FINGER_WIDTH	15
+ #define ETP_RETRY_COUNT		3
++/* H/W init 2 ms + F/W init 100 ms w/ round up */
++#define ETP_POWER_ON_DELAY_US	(110 * USEC_PER_MSEC)
  
-+/**
-+ * _regulator_is_enabled_recursive - is the regulator output enabled all
-+ *				     the way to the root supply
-+ * @rdev: regulator device
-+ *
-+ * Only intended for checking regulators that have been left on by
-+ * hardware default or firmware.
-+ *
-+ * Must be called with dependent locks held.
-+ *
-+ * Return: Positive if the regulator output backing the source/client,
-+ *	   and all of its upstream supplies, have requested that their
-+ *	   respective device be enabled, zero if any of them hasn't,
-+ *	   else a negative error number.
-+ */
-+static int _regulator_is_enabled_recursive(struct regulator_dev *rdev)
-+{
-+	int ret;
-+
-+	ret = _regulator_is_enabled(rdev);
-+	if (ret <= 0)
-+		return ret;
-+
-+	/*
-+	 * If .last_on was set, then this rdev was either enabled through
-+	 * _regulator_do_enable(), or had been checked before as the target
-+	 * of regulator_resolve_supply().
-+	 */
-+	if (rdev->last_on)
-+		return ret;
-+
-+	/* This is the root supply; we can only assume it actually has power */
-+	if (!rdev->supply)
-+		return ret;
-+
-+	return _regulator_is_enabled_recursive(rdev->supply->rdev);
-+}
-+
- static int regulator_resolve_supply(struct regulator_dev *rdev)
- {
- 	struct regulator_dev *r;
-@@ -2370,6 +2408,14 @@ static int regulator_resolve_supply(struct regulator_dev *rdev)
- 		}
- 		rdev->constraints_pending = false;
- 	}
-+
-+	/*
-+	 * regulator was left on but not enabled with .always_on or .boot_on
-+	 * constraints, and thus .last_on timestamp is still invalid.
-+	 */
-+	if (!rdev->last_on && _regulator_is_enabled_recursive(rdev))
-+		rdev->last_on = ktime_get_boottime();
-+
- 	regulator_unlock_dependent(rdev, &ww_ctx);
+ /* quirks to control the device */
+ #define ETP_QUIRK_QUICK_WAKEUP	BIT(0)
+@@ -1260,7 +1263,7 @@ static int elan_probe(struct i2c_client *client)
+ 	if (IS_ERR(data->vcc))
+ 		return dev_err_probe(dev, PTR_ERR(data->vcc), "Failed to get 'vcc' regulator\n");
  
- 	if (!do_final_setup)
-@@ -3061,6 +3107,8 @@ static int _regulator_do_enable(struct regulator_dev *rdev)
- 		fsleep(delay);
- 	}
+-	error = regulator_enable(data->vcc);
++	error = regulator_enable_and_wait(data->vcc, ETP_POWER_ON_DELAY_US);
+ 	if (error) {
+ 		dev_err(dev, "Failed to enable regulator: %d\n", error);
+ 		return error;
+@@ -1416,7 +1419,7 @@ static int elan_resume(struct device *dev)
+ 	int error;
  
-+	rdev->last_on = ktime_get_boottime();
-+
- 	trace_regulator_enable_complete(rdev_get_name(rdev));
- 
- 	return 0;
-@@ -3130,8 +3178,8 @@ static int _regulator_handle_consumer_disable(struct regulator *regulator)
- 	return 0;
- }
- 
--/* locks held by regulator_enable() */
--static int _regulator_enable(struct regulator *regulator)
-+/* locks held by regulator_enable_and_wait() */
-+static int _regulator_enable(struct regulator *regulator, ktime_t *last_on)
- {
- 	struct regulator_dev *rdev = regulator->rdev;
- 	int ret;
-@@ -3139,7 +3187,7 @@ static int _regulator_enable(struct regulator *regulator)
- 	lockdep_assert_held_once(&rdev->mutex.base);
- 
- 	if (rdev->use_count == 0 && rdev->supply) {
--		ret = _regulator_enable(rdev->supply);
-+		ret = _regulator_enable(rdev->supply, NULL);
- 		if (ret < 0)
- 			return ret;
- 	}
-@@ -3177,13 +3225,19 @@ static int _regulator_enable(struct regulator *regulator)
- 		} else if (ret < 0) {
- 			rdev_err(rdev, "is_enabled() failed: %pe\n", ERR_PTR(ret));
- 			goto err_consumer_disable;
-+		} else {
-+			/* regulator already enabled somehow, but timestamp might be invalid */
-+			if (!rdev->last_on)
-+				rdev->last_on = ktime_get_boottime();
- 		}
--		/* Fallthrough on positive return values - already enabled */
- 	}
- 
- 	if (regulator->enable_count == 1)
- 		rdev->use_count++;
- 
-+	if (last_on)
-+		*last_on = rdev->last_on;
-+
- 	return 0;
- 
- err_consumer_disable:
-@@ -3197,31 +3251,49 @@ static int _regulator_enable(struct regulator *regulator)
- }
- 
- /**
-- * regulator_enable - enable regulator output
-+ * regulator_enable_and_wait - enable regulator output and wait for time
-+ *			       passed after regulator actually enabled
-  * @regulator: regulator source
-+ * @wait_us: time to wait after regulator actually turned on; 0 to not wait
-  *
-  * Request that the regulator be enabled with the regulator output at
-  * the predefined voltage or current value.  Calls to regulator_enable()
-  * must be balanced with calls to regulator_disable().
-  *
-+ * If wait_us is greater than zero, then check that wait_us has passed since
-+ * the regulator is _actually_ enabled before returning.
-+ *
-  * NOTE: the output value can be set by other drivers, boot loader or may be
-  * hardwired in the regulator.
-  *
-  * Return: 0 on success or a negative error number on failure.
-  */
--int regulator_enable(struct regulator *regulator)
-+int regulator_enable_and_wait(struct regulator *regulator, unsigned int wait_us)
- {
- 	struct regulator_dev *rdev = regulator->rdev;
- 	struct ww_acquire_ctx ww_ctx;
-+	ktime_t last_on = 0;
- 	int ret;
- 
- 	regulator_lock_dependent(rdev, &ww_ctx);
--	ret = _regulator_enable(regulator);
-+	ret = _regulator_enable(regulator, &last_on);
- 	regulator_unlock_dependent(rdev, &ww_ctx);
- 
-+	if (ret)
-+		return ret;
-+
-+	if (wait_us) {
-+		ktime_t end = ktime_add_us(last_on, wait_us);
-+		s64 remaining;
-+
-+		remaining = ktime_us_delta(end, ktime_get_boottime());
-+		if (remaining > 0)
-+			fsleep(remaining);
-+	}
-+
- 	return ret;
- }
--EXPORT_SYMBOL_GPL(regulator_enable);
-+EXPORT_SYMBOL_GPL(regulator_enable_and_wait);
- 
- static int _regulator_do_disable(struct regulator_dev *rdev)
- {
-@@ -5390,30 +5462,38 @@ static void regulator_bulk_enable_async(void *data, async_cookie_t cookie)
- {
- 	struct regulator_bulk_data *bulk = data;
- 
--	bulk->ret = regulator_enable(bulk->consumer);
-+	bulk->ret = regulator_enable_and_wait(bulk->consumer, ACCESS_PRIVATE(bulk, wait_us));
- }
- 
- /**
-- * regulator_bulk_enable - enable multiple regulator consumers
-+ * regulator_bulk_enable_and_wait - enable multiple regulator consumers and
-+ *				    wait for time passed after regulators are
-+ *				    actually enabled
-  *
-  * @num_consumers: Number of consumers
-  * @consumers:     Consumer data; clients are stored here.
-+ * @wait_us: time to wait after regulators actually turned on; 0 to not wait
-  *
-  * This convenience API allows consumers to enable multiple regulator
-  * clients in a single API call.  If any consumers cannot be enabled
-  * then any others that were enabled will be disabled again prior to
-  * return.
-  *
-+ * If wait_us is greater than zero, then check that wait_us has passed since
-+ * the regulators are _actually_ enabled before returning.
-+ *
-  * Return: 0 on success or a negative error number on failure.
-  */
--int regulator_bulk_enable(int num_consumers,
--			  struct regulator_bulk_data *consumers)
-+int regulator_bulk_enable_and_wait(int num_consumers,
-+				   struct regulator_bulk_data *consumers,
-+				   unsigned int wait_us)
- {
- 	ASYNC_DOMAIN_EXCLUSIVE(async_domain);
- 	int i;
- 	int ret = 0;
- 
- 	for (i = 0; i < num_consumers; i++) {
-+		ACCESS_PRIVATE(consumers, wait_us) = wait_us;
- 		async_schedule_domain(regulator_bulk_enable_async,
- 				      &consumers[i], &async_domain);
- 	}
-@@ -5441,7 +5521,7 @@ int regulator_bulk_enable(int num_consumers,
- 
- 	return ret;
- }
--EXPORT_SYMBOL_GPL(regulator_bulk_enable);
-+EXPORT_SYMBOL_GPL(regulator_bulk_enable_and_wait);
- 
- /**
-  * regulator_bulk_disable - disable multiple regulator consumers
-@@ -6243,6 +6323,13 @@ regulator_register(struct device *dev,
- 			goto del_cdev_and_bdev;
- 	}
- 
-+	/*
-+	 * If no supply was given, then the last_on timestamp could not have
-+	 * been updated in regulator_resolve_supply(). Check it here.
-+	 */
-+	if (!rdev->supply_name && !rdev->last_on && _regulator_is_enabled(rdev))
-+		rdev->last_on = ktime_get_boottime();
-+
- 	rdev_init_debugfs(rdev);
- 
- 	/* try to resolve regulators coupling since a new one was registered */
-diff --git a/include/linux/regulator/consumer.h b/include/linux/regulator/consumer.h
-index 56fe2693d9b2..0b83acc015d4 100644
---- a/include/linux/regulator/consumer.h
-+++ b/include/linux/regulator/consumer.h
-@@ -145,6 +145,7 @@ struct regulator_bulk_data {
- 
- 	/* private: Internal use */
- 	int ret;
-+	unsigned int __private wait_us;
- };
- 
- #if defined(CONFIG_REGULATOR)
-@@ -192,7 +193,7 @@ int devm_regulator_bulk_register_supply_alias(struct device *dev,
- 					      int num_id);
- 
- /* regulator output control and status */
--int __must_check regulator_enable(struct regulator *regulator);
-+int __must_check regulator_enable_and_wait(struct regulator *regulator, unsigned int wait_us);
- int regulator_disable(struct regulator *regulator);
- int regulator_force_disable(struct regulator *regulator);
- int regulator_is_enabled(struct regulator *regulator);
-@@ -209,8 +210,9 @@ int __must_check devm_regulator_bulk_get_const(
- 	struct device *dev, int num_consumers,
- 	const struct regulator_bulk_data *in_consumers,
- 	struct regulator_bulk_data **out_consumers);
--int __must_check regulator_bulk_enable(int num_consumers,
--				       struct regulator_bulk_data *consumers);
-+int __must_check regulator_bulk_enable_and_wait(int num_consumers,
-+						struct regulator_bulk_data *consumers,
-+						unsigned int wait_us);
- int devm_regulator_bulk_get_enable(struct device *dev, int num_consumers,
- 				   const char * const *id);
- int regulator_bulk_disable(int num_consumers,
-@@ -410,7 +412,8 @@ static inline int devm_regulator_bulk_register_supply_alias(struct device *dev,
- 	return 0;
- }
- 
--static inline int regulator_enable(struct regulator *regulator)
-+static inline int regulator_enable_and_wait(struct regulator *regulator,
-+					    unsigned int wait_us)
- {
- 	return 0;
- }
-@@ -457,8 +460,9 @@ static inline int devm_regulator_bulk_get_const(
- 	return 0;
- }
- 
--static inline int regulator_bulk_enable(int num_consumers,
--					struct regulator_bulk_data *consumers)
-+static inline int regulator_bulk_enable_and_wait(int num_consumers,
-+						 struct regulator_bulk_data *consumers,
-+						 unsigned int wait_us)
- {
- 	return 0;
- }
-@@ -676,6 +680,11 @@ regulator_is_equal(struct regulator *reg1, struct regulator *reg2)
- }
- #endif
- 
-+#define regulator_enable(regulator)	regulator_enable_and_wait(regulator, 0)
-+
-+#define regulator_bulk_enable(num_consumers, consumers)	\
-+		regulator_bulk_enable_and_wait(num_consumers, consumers, 0)
-+
- #if IS_ENABLED(CONFIG_OF) && IS_ENABLED(CONFIG_REGULATOR)
- struct regulator *__must_check of_regulator_get(struct device *dev,
- 						struct device_node *node,
-diff --git a/include/linux/regulator/driver.h b/include/linux/regulator/driver.h
-index cc6ce709ec86..8a74aa681df3 100644
---- a/include/linux/regulator/driver.h
-+++ b/include/linux/regulator/driver.h
-@@ -658,6 +658,8 @@ struct regulator_dev {
- 	unsigned int constraints_pending:1;
- 	unsigned int is_switch:1;
- 
-+	/* time when this regulator was enabled last time */
-+	ktime_t last_on;
- 	/* time when this regulator was disabled last time */
- 	ktime_t last_off;
- 	int cached_err;
+ 	if (!device_may_wakeup(dev)) {
+-		error = regulator_enable(data->vcc);
++		error = regulator_enable_and_wait(data->vcc, ETP_POWER_ON_DELAY_US);
+ 		if (error) {
+ 			dev_err(dev, "error %d enabling regulator\n", error);
+ 			goto err;
 -- 
 2.55.0.860.g4b6b3295ed-goog
 
