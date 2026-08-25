@@ -4,103 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECC3FC5DF81
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Aug 2026 21:12:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74FBAC5DF9C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Aug 2026 03:36:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CLZc7r+H5Cm5dsJH9Lph04hMwrcVERgqQMx1P2a2ozo=; b=sj3NDDWKmbDiFnDRi042jMd0oU
-	YGdWZPFm8FiVf2M+0q0uI5aVDAMgfb4uBTvBcbxRWaTDSVjekQ0ZbcGNDdCMMRbuSV9KH7NVkkR6v
-	FLA9mjkYv2Y8KzHlHE0kX29N5XXyzWGDrnS1W/CSp0lh+2Uqk22CCo8k6gqAKXH8JKD0ALmfbC+5f
-	X5ezV+3AW2r8atXoPCAPNJzUEgmu7AproLFRbv8erYs5B22MWdeImsBHX4oiSbVANQvIX9Gr1BDSB
-	vK5O09tVbPmMV2MYkzr22R3/7Y/z8uSvHK4iBZOToZKeE8Bp6f2hZ0UQi75zZXbqUwLYA1fxgmcyC
-	Pwy+kwoA==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=PVXP7JyQSs8OYWK+OQgStDZmgSbIG44BJIzJ8IlkJEQ=; b=jdDP4wBnOqWLFjC5L6zmjRZ831
+	fMvBLlUKPLovqvSw23d/L7KWQfsgY1U+i0YMyy1RmS+xMrrCp7GbXcBJk5CTLAuYAkdwNk+SVee3L
+	uL+7gx/8ngILI3jApQf/VLUVdAjZe5ga7+nzOZyrd5b8zqEz/Sw3gXbl7dPKXauN9o/Z/gH8pbkXN
+	K+Kc6+N98p4uIliLvnwMnR8Xkk7Jwhj0v7MppluLRRfjWTHnEv8lS7sXLwU0Zf9ld8PeiUdhCpZ+G
+	uWMq1zWPfCKrrr69Nzj2rbOVF083UGAwIwVEqyegFnUUM+2WNBFHKawI2DtIRM3gHaAx8P/5KSdJ6
+	ME0a3iyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyby9-0000000HOd4-42UA;
-	Mon, 24 Aug 2026 21:12:37 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wyhxx-000000006IQ-3A1R;
+	Tue, 25 Aug 2026 03:36:49 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wyby6-0000000HOba-0c24;
-	Mon, 24 Aug 2026 21:12:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=CLZc7r+H5Cm5dsJH9Lph04hMwrcVERgqQMx1P2a2ozo=; b=DZvpLPEk1MtqoBBRVWAtczTzHZ
-	QKPiaklbDy8pv/2jqpq0vKmDbMdUwHoxkMYOf8g5FmoJMh1N18o0sV8knS/rWa1e5neTd54CYAYRZ
-	T7v5zV9EGYfeiDeiiGaUXM9JULA6IqWwrVes4yMnDNMnvdE93aZlNZHDJFvY7Vmq7I6IRS1oX+aPZ
-	pIiQ6Nm6QGQWjb4eps39kwq8kjT5Jtmmod8mdsLvMN1fOpriQ3gcKW3Dl73Hd6H/vUSvrY+d3vhoV
-	fwNbK4h5sYQZ1MOo7u/dQRUPF1vruhoIxSaALuV6O1TQD0Jf+ntPiKBH0L9Qo/P/7Sb58ECzxSZhy
-	E52PwtTg==;
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Ryan Chen <ryan_chen@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
- Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>,
- Jerome Brunet <jbrunet+clk@baylibre.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Billy Tsai <billy_tsai@aspeedtech.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, Ray Jui <rjui@broadcom.com>,
- Scott Branden <sbranden@broadcom.com>,
- Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
- Taichi Sugaya <sugaya.taichi@socionext.com>,
- Takao Orito <orito.takao@socionext.com>, Linus Walleij <linusw@kernel.org>,
- Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>,
- Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>,
- Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>,
- Sudeep Holla <sudeep.holla@kernel.org>,
- Cristian Marussi <cristian.marussi@arm.com>,
- David Lechner <david@lechnology.com>, Abel Vesa <abelvesa@kernel.org>,
- Peng Fan <peng.fan@nxp.com>, Frank Li <Frank.Li@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>,
- Santosh Shilimkar <ssantosh@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
- Gregory Clement <gregory.clement@bootlin.com>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Vladimir Zapolskiy <vz@mleia.com>, Krzysztof Kozlowski <krzk@kernel.org>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>,
- Peter Griffin <peter.griffin@linaro.org>,
- Alim Akhtar <alim.akhtar@samsung.com>, Dinh Nguyen <dinguyen@kernel.org>,
- Viresh Kumar <vireshk@kernel.org>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Emilio =?UTF-8?B?TMOzcGV6?= <emilio@elopez.com.ar>,
- Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Prashant Gaikwad <pgaikwad@nvidia.com>,
- Thierry Reding <thierry.reding@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>, Ulf Hansson <ulfh@kernel.org>,
- Liviu Dudau <liviu.dudau@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
- Michal Simek <michal.simek@amd.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: linux-clk@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- openbmc@lists.ozlabs.org, arm-scmi@vger.kernel.org, imx@lists.linux.dev,
- linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- soc@lists.linux.dev, linux-stm32@st-md-mailman.stormreply.com,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: Re: [PATCH 28/45] clk: rockchip: Make sure clk_init_data is fully initialized
-Date: Mon, 24 Aug 2026 23:10:54 +0200
-Message-ID: <2765337.tdWV9SEqCh@diego>
-In-Reply-To: <49127c1f7529acccb17e1408db9f21f6d15aee2b.1787239813.git.geert+renesas@glider.be>
-References: <cover.1787239813.git.geert+renesas@glider.be>
- <49127c1f7529acccb17e1408db9f21f6d15aee2b.1787239813.git.geert+renesas@glider.be>
+	id 1wyhxv-000000006HO-2xf3
+	for linux-mediatek@lists.infradead.org;
+	Tue, 25 Aug 2026 03:36:49 +0000
+X-UUID: 2e24c9a6a03611f1afed4741b24580c9-20260824
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=PVXP7JyQSs8OYWK+OQgStDZmgSbIG44BJIzJ8IlkJEQ=;
+	b=sM+wIYFgPf5TjVfeqJFT1VbPuFGmPSlRbtW1m2rHFH0VhhAFohpV7RnYpzMUuhynjcV4jMjGmmJZ9fzB9ztNjKsHf/RdbSRtBW1Puqdgi4MSPBI01qowhLLf+vp4NASpGweTrtUZEDVVxoSJ3KUPQb5h7mbL2AR6LTg7jOQD2ns=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.19,REQID:9b6bbcdc-367a-4e81-b3b1-191042024455,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:7db8b62,CLOUDID:1d9861fe-f4cb-4ad2-b022-e3ac6648bf25,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
+	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 2e24c9a6a03611f1afed4741b24580c9-20260824
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2112214335; Mon, 24 Aug 2026 20:36:38 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 25 Aug 2026 11:36:36 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 25 Aug 2026 11:36:36 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
+	SS Wu <ss.wu@mediatek.com>, linux-bluetooth
+	<linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH 0/2] Bluetooth: btmtksdio: Stop discarding the hardware device id
+Date: Tue, 25 Aug 2026 11:36:32 +0800
+Message-ID: <20260825033634.499118-1-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260824_141234_205231_CEC19E85 
-X-CRM114-Status: GOOD (  10.74  )
+X-CRM114-CacheID: sfid-20260824_203647_754572_7014544E 
+X-CRM114-Status: GOOD (  10.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,22 +87,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am Freitag, 21. August 2026, 10:53:38 Mitteleurop=C3=A4ische Sommerzeit sch=
-rieb Geert Uytterhoeven:
-> The clk_init_data structure contains several mutually-exclusive members
-> for different methods to specify the possible parents of a clock,
-> prompting drivers to initialize only the members they need.  However,
-> not initializing all members may cause subtle issues, which are only
-> exposed when CONFIG_INIT_STACK_ALL_PATTERN or CONFIG_INIT_STACK_NONE is
-> enabled.
->=20
-> Make sure all members are fully initialized, to avoid such bugs, and to
-> prevent future breakage when converting drivers to a different method
-> for specifying the parents.
->=20
-> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+btmtksdio_setup() reads the device id from register 0x70010200 and then
+throws it away twice: an snprintf() overwrites the filename that
+btmtk_fw_get_filename() derived from it, and mt79xx_setup() passes a
+hardcoded 0 on to btmtk_setup_firmware_79xx().
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Neither matters on supported hardware, since the device ids that would
+make a difference - 0x6639, 0x7925 and a flavored 0x7961 - all belong to
+parts with no SDIO interface. So this targets bluetooth-next with no
+Fixes: tags. What it buys is that the two functions stop silently ignoring
+their input, which is a trap for the next chip added to this driver.
 
+Both patches come from a larger MT7928 series [1], where they were
+described as fixing firmware load failures on MT6639, MT7925 and MT7928.
+That does not hold for the SDIO driver and has been dropped.
+
+Tested on a Chromebook with MT7921S, whose chip id register reports
+0x7961: before and after, the driver requests
+mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin, the firmware loads, and the
+controller powers on and connects to an A2DP device.
+
+[1] https://lore.kernel.org/linux-bluetooth/20260717072133.2858136-1-chris.lu@mediatek.com/
+
+Chris Lu (2):
+  Bluetooth: btmtksdio: Remove redundant firmware filename override
+  Bluetooth: btmtksdio: Pass the hardware device id to mt79xx_setup()
+
+ drivers/bluetooth/btmtksdio.c | 13 +++++--------
+ 1 file changed, 5 insertions(+), 8 deletions(-)
+
+-- 
+2.45.2
 
 
