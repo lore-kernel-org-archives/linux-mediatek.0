@@ -4,63 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F069CC61DBD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2026 02:21:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE14EC5DF97
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2026 04:36:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hWsnbWpreJ6QQ54ZCcdko66WA2cZH6mL0rv/WMd4xzM=; b=qEpbNl34X7J5kAVdHwThPUUpf7
-	fhPPGaQhXIAYzMjxZjQ1Y2dUiaEpFgBUltBsJmR0ORAp2N+i6TTnS1RHzt5s7YLwqosgMLTpVp5/H
-	rogVb6KoT/tywV58VzhG4wTLhBcZHOLyRnNA1orJyin11cf3N/eZHC4/rYBuma71Pi+SOGBdjI8o6
-	PIsG9Wzv2iN9W59+gtKVTlHbGnREPuARndm6+uq/3eKWr1XF1L5cFpsyFR0YsVhAYshI3x2n05R6f
-	hwKLZsuXaDTkIuyiNvHW7ZdVzNYozAGfD4ZeDCrRtsAvY1jptOYfYTO1VLg0gYbPq+uYxx8K7iaKy
-	ZPUpRfMw==;
+	bh=T+gJeU2dc10TfJV4Gm5lOdGKUdKdZ06S42Vqs2ccrTI=; b=zO0f3IdfLPkfo1u5OMp4sTl6sK
+	5+vqlUK3v/m6I56h33J5t13jn6t3uAPmiypNEh4Jf2xteitBVgWH+XnLDFAH/vN5aLQcOWjbk1NU3
+	dZy0GAO3ZT2K62VQ7/uHS0jcHKYK2WRDJ1VsMcbjikajtR+Y+UsdLYnnNGrKB8JCcdt1ODXFHU2XR
+	q1S8nocDgGDgcT5o7msxSl/V/1mWaOitQYgK3hPaoaNO0OXotc2oDItmhWMqv01pw/OwYaoHW3za2
+	vKvDI5AHeDPUGjc4JahnXP+DdcNWLT3BjNsH+nG5J9cpCjHI7BnGCCvCKA22u7oeNoQtdhcyZrIXO
+	L/bgwomw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wz3GS-00000001nHK-2NeL;
-	Wed, 26 Aug 2026 02:21:20 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1wz5N7-00000001t3D-18uB;
+	Wed, 26 Aug 2026 04:36:21 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wz3GP-00000001nGX-3zU3;
-	Wed, 26 Aug 2026 02:21:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=hWsnbWpreJ6QQ54ZCcdko66WA2cZH6mL0rv/WMd4xzM=; b=WRwlmjuZwzClxNAerr3bu0Fou9
-	Y0KlUS7/WtkYxouTGfteL+fm8tUgDZu8sW7zv95AiS2ou7QuOpl/5jljBxp3uk0CBFzwTOfDMQk+n
-	ju29mePgaMlRyND98vyj8ge1NjbGosHwlH0YRy5cjOhb++EMtqmhDahUrWtUjvUvV+R0=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1wz3G8-001SUU-Fm; Wed, 26 Aug 2026 04:21:00 +0200
-Date: Wed, 26 Aug 2026 04:21:00 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Caleb James DeLisle <cjd@cjdns.fr>
-Cc: ansuelsmth@gmail.com, netdev@vger.kernel.org, hkallweit1@gmail.com,
-	linux@armlinux.org.uk, davem@davemloft.net, edumazet@google.com,
-	kuba@kernel.org, pabeni@redhat.com, daniel@makrotopia.org,
-	dqfext@gmail.com, SkyLake.Huang@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next 3/3] net: phy: mediatek: support EcoNet EN751221
- gbit SoC PHY
-Message-ID: <4d594c62-2ceb-43c1-a3d2-731b80493787@lunn.ch>
-References: <20260825193456.1823985-1-cjd@cjdns.fr>
- <20260825193456.1823985-4-cjd@cjdns.fr>
- <d7d86078-8a29-4e7f-a62e-91f6b266bea1@lunn.ch>
- <a75b6b15-f86b-4cb2-934c-87583b5bb02c@cjdns.fr>
+	id 1wz5N6-00000001t2x-0D43;
+	Wed, 26 Aug 2026 04:36:20 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 52A1D437B6;
+	Wed, 26 Aug 2026 04:36:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E7EC1F000E9;
+	Wed, 26 Aug 2026 04:36:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1787718979;
+	bh=T+gJeU2dc10TfJV4Gm5lOdGKUdKdZ06S42Vqs2ccrTI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=S6cdIBw8TwHvQD8GPFRr78Ke1orCC5v2BfndzPKmYejPOHwCEDMlCuqUirhYwx1X9
+	 Wk4sRbTWZoxI8wN8jG6QLGAe2jzeVgZ5b8rMIQQx34JjsN+HoA4/GsDEA0fIQNQZ2m
+	 2s09Xa+aj5L5ZAA5LFWgf1UrY8pNFir8e2meH2fupUDmWY3zHK5vVmIkYs42Dpw4HJ
+	 QEyV7yva3TpHU++kdi7CUraRcHBR6fh0Xp2uXQlfWwNG/hS3tWxJL7/YIbqd4OChsY
+	 MLqslnJMk9lcwpnK/pL1PEnecNKmVa8WSiDmL1483H1oqQd95ro/9llpZwFQeent+l
+	 PnyxBzGVuSPgg==
+Date: Wed, 26 Aug 2026 04:36:15 +0000
+From: Tzung-Bi Shih <tzungbi@kernel.org>
+To: Wanming Gao <wanming.gao@mediatek.com>
+Cc: Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, wallace.yu@mediatek.com,
+	Jarried.Lin@mediatek.com, vince-wl.liu@mediatek.com
+Subject: Re: [PATCH] watchdog: mediatek: Enable pretimeout support
+Message-ID: <ao5tP40Wi-9jJgKk@google.com>
+References: <20260824132914.2662346-1-wanming.gao@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <a75b6b15-f86b-4cb2-934c-87583b5bb02c@cjdns.fr>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260825_192117_992103_AEC2C8C5 
-X-CRM114-Status: GOOD (  21.85  )
+In-Reply-To: <20260824132914.2662346-1-wanming.gao@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,50 +73,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> > Does this need a change to the binding document?
-> 
-> 
-> Not as far as I know. econet,en751221-chip-scu is defined in mfd/syscon.yaml
-> because it's a catch-all for configuration that the engineers didn't know
-> what to do with.
+On Mon, Aug 24, 2026 at 09:29:12PM +0800, Wanming Gao wrote:
+> The watchdog pretimeout interrupt needs to be deasserted after the
+> hardware pretimeout event is received. Add IRQ level control handling
+> to the MediaTek watchdog interrupt handler so the interrupt is cleared
+> before notifying the watchdog core.
 
-Do you need a property in the PHY node to make this work?
+This could be clearer.  Please merge this with the third paragraph to
+explain the why rather than just the what (e.g., explain that the hardware
+uses level triggering and requires an edge transition to clear the
+interrupt, if that is the case).
 
-> > > +static int en751221_gphy_config_init(struct phy_device *phydev)
-> > > +{
-> > > +	phy_write_mmd(phydev, MDIO_MMD_AN, MDIO_AN_EEE_ADV, 0);
-> > Why is the EEE register being cleared?
+> Serialize all WDT_MODE read-modify-write operations using the existing
+> watchdog spinlock. Initialize the lock before registering the interrupt
+> handler and hold it across the complete 70us IRQ level toggle sequence.
+> This prevents concurrent watchdog start, stop, or pretimeout updates
+> from overwriting the temporary IRQ level state and disrupting the
+> deassert pulse.
+
+Please expand on the why here as well.  The 70us delay specifically needs
+to be explained in the commit message (e.g., waiting for the clock domain
+crossing to the 32KHz clock).
+
 > 
+> This avoids leaving the watchdog pretimeout interrupt asserted, prevents
+> a potential interrupt storm, and allows the kernel to handle the
+> pretimeout event properly before the final watchdog reset.
+
+As mentioned above, please merge this with the first paragraph.
+
 > 
-> From reading the reference implementation, I get the impression that this
-> hardware is something of a basket case. There was a certain amount of "write
-> three times and then read back" type magic that I just omitted because it
-> really looks like they were actively debugging and as soon as it started
-> working they shipped the code exactly as it was.
-> 
-> 
-> In the case of disabling EEE, I thought it more prudent to follow them
-> because I don't have every SoC that this PHY ever appeared on and I would
-> rather not diverge too greatly and risk it being unreliable on some devices.
+> Test: Boot ok, trigger watchdog pretimeout case and verify the
+>       pretimeout interrupt is received and handled before watchdog reset.
 
-Is EEE broken? If it is, this is not the correct way to disable
-it. You should call phy_disable_eee(phydev); This will also prevent
-user space enabling it again.
+It is expected that patches are tested before submission.  Unless you are
+specifying the exact board/platform you tested against, please drop this
+section.
 
-> > > +	phy_select_page(phydev, MTK_PHY_PAGE_EXTENDED_52B5);
-> > > +	__mtk_tr_write(phydev, 0x1, 0xf, 0x00, 0x00002b);
-> > > +	__mtk_tr_write(phydev, 0x1, 0xf, 0x03, 0x082422);
-> > > +	phy_restore_page(phydev, MTK_PHY_PAGE_STANDARD, 0);
-> > > +
-> > > +	ret = phy_write(phydev, MII_CTRL1000,
-> > > +			ADVERTISE_1000FULL | CTL1000_PREFER_MASTER |
-> > > +			CTL1000_AS_MASTER | CTL1000_ENABLE_MASTER);
-> > What does this default to?
-> It starts with only ADVERTISE_1000FULL. I don't know why the engineers
-> wanted to set it to master, but its definitely intentional.
+> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+...
+> +static void mtk_wdt_deassert_irq(struct watchdog_device *wdd)
+> +{
+> +	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdd);
+> +	void __iomem *wdt_base = mtk_wdt->wdt_base;
+> +	unsigned long flags;
+> +	u32 reg;
+> +
+> +	spin_lock_irqsave(&mtk_wdt->lock, flags);
+> +	reg = ioread32(wdt_base + WDT_MODE);
+> +
+> +	if (reg & WDT_MODE_IRQ_LEVEL_EN) {
+> +		reg &= ~WDT_MODE_IRQ_LEVEL_EN;
+> +		iowrite32(reg | WDT_MODE_KEY, wdt_base + WDT_MODE);
+> +		/*
+> +		 * Wait for two 32KHz watchdog clock cycles so the
+> +		 * hardware can latch the IRQ level change across the clock
+> +		 * domain.
+> +		 */
+> +		udelay(WDT_IRQ_LEVEL_SYNC_US);
+> +		reg = ioread32(wdt_base + WDT_MODE);
+> +		reg |= WDT_MODE_IRQ_LEVEL_EN;
+> +	} else {
+> +		reg |= WDT_MODE_IRQ_LEVEL_EN;
+> +		iowrite32(reg | WDT_MODE_KEY, wdt_base + WDT_MODE);
+> +		udelay(WDT_IRQ_LEVEL_SYNC_US);
+> +		reg = ioread32(wdt_base + WDT_MODE);
+> +		reg &= ~WDT_MODE_IRQ_LEVEL_EN;
+> +	}
 
-Generally, switches take the master role, and client take the slave
-role. So this does make sense for a PHY used in a switch.
+Is the main purpose of toggling WDT_MODE_IRQ_LEVEL_EN simply to clear the
+interrupt?  Since the value of the bit doesn't seem to matter.
 
-	Andrew
+> +	iowrite32(reg | WDT_MODE_KEY, wdt_base + WDT_MODE);
+> +	ioread32(wdt_base + WDT_MODE);
+
+This read deserves a comment.  Otherwise, it looks like a NOP and might be
+accidentally removed by someone in the future.
+
+> +	spin_unlock_irqrestore(&mtk_wdt->lock, flags);
+> +}
+
+The function can be simplified a bit, e.g.:
+
+    /* Trigger a state change */
+    reg ^= WDT_MODE_IRQ_LEVEL_EN;
+    iowrite32(...);
+
+    /*
+     * Wait for two 32KHz watchdog clock cycles ...
+     */
+    udelay(...);
+
+    /* Restore to its original state */
+    reg = ioread32(...)
+    reg ^= WDT_MODE_IRQ_LEVEL_EN;
+    iowrite32(...)
 
