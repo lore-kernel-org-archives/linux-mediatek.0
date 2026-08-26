@@ -4,64 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F6C1C61DB9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2026 00:59:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63030C61DB9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2026 02:09:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NYZTQkL5Jzv5jHcLk9d/FWbuGL1zpQHqOJLwaJI1Qdk=; b=uNPJ3AcMJbmLGIMFfhZE/GJpVQ
-	wT9snYL+1NqXdAsjaae42aPH7TJSuSagcCZThVq2gfj+DTsQEkQdYZsVFCS+/85gvqb3+z3BrcFYL
-	EDnf3y6zovoBv3xZoI3NAlsZpZrWkp/ZJI3iiasIujEFLXpyuFJZQ0SCEGCtH/JoTxnh+Jq0lpJYe
-	5soZ+ldpfjUFuJ3eyrJ5yxEjZDvSU6dDYLH4tY38QChpxNHmedlH2ITyRt/yszjTWiyPoC2nQQHqg
-	EwyhXF/SVoFtTVF1ROL3xTaKuFa1PJVlSzjMmdnsl4REUc7m0i8AgRPR3I9uC8r3Jt7MVB52SoJzi
-	Zr8ZbGJg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aWj+O9wP6CX5GzhqEIWSE6hUZrqSuPWLLbAKWjlUHOo=; b=EHob1E2wlTvZXV8kbmlUUpUsrE
+	QQdG93U1cTQxQ8OMhRardpeaMWjm5c0iUcovTup3mjWa9BYoAUgHSX5WyqQ5oWiXHOkUaGY1s+eWt
+	P7xmB+tevXQmIrX9Rl22REVP1RRz1fKfunOiGHVy2m5Ipeu8BZgvM1Kt0dNKU1HLPU5ieRnMe7ukl
+	gYfzD1z2Ig0FqtyYIn/Rlqg3JnMBcCUbq2ABRRiXTyqnwpUVo5yts5ZwPimW4N4ZclTeUd9SA/qgW
+	mDHsvTHjvafQPl37xCdCEPiQcpFiF9OqfqCmiRnGpX7AS0tzxYPdy+xDiGuJC1mBRh1DnDRPzqKuf
+	CyOubdDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wz1zi-00000001jhq-1UmU;
-	Wed, 26 Aug 2026 00:59:58 +0000
-Received: from mail.cjdns.fr ([5.135.140.105])
+	id 1wz34t-00000001mVx-2OM8;
+	Wed, 26 Aug 2026 02:09:23 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wz1zf-00000001jhD-49DK;
-	Wed, 26 Aug 2026 00:59:57 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 247351C6BA7;
-	Wed, 26 Aug 2026 02:59:47 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1787705992; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=NYZTQkL5Jzv5jHcLk9d/FWbuGL1zpQHqOJLwaJI1Qdk=;
-	b=qgWkSdsNodFTmessuFQuNJNkTikXGeDFLJioSMdU5XVoHnZLlYBxtSWEfobf56AHPm6tbk
-	DUAjtqoxNxpejWOOsUFTtoFXv6fwmzGfOeXKC2FYBMKZhi4HAJqjtbCTKbjY7bjn6whkOA
-	zgUqOuqc2gCXUlrjVtDlTOSixrOnEI6NrXFbtiO5khf/GWEGH7uvHpqD3lgIEyYdIcuvJj
-	SATbSE+uD//L6aeHTQgUHhWg84x89vtWZukmQHkmDcva9hD8c5D6QaEZA7yC4IAO81AbJm
-	r2IVR7BQcBhfme4EDgSC3lYmNnPkr1Umvsayfm5C/GFeY2K94SnST489EBYCww==
-Message-ID: <a75b6b15-f86b-4cb2-934c-87583b5bb02c@cjdns.fr>
-Date: Wed, 26 Aug 2026 02:59:47 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird Beta
-Subject: Re: [PATCH net-next 3/3] net: phy: mediatek: support EcoNet EN751221
- gbit SoC PHY
-To: Andrew Lunn <andrew@lunn.ch>, ansuelsmth@gmail.com
+	id 1wz34r-00000001mVT-0mzd;
+	Wed, 26 Aug 2026 02:09:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=aWj+O9wP6CX5GzhqEIWSE6hUZrqSuPWLLbAKWjlUHOo=; b=3OTRBGloEhp96UaMmW1aExChQl
+	Msq9ofdkoTmqTXTdvGBdXv3ZlFxCxnpYbH7Cd0D4aPxcXXjTE5azaT/PWmg+Sul89cZJvHDmr7/5N
+	fGEegSDdoNimpRt0e8XdsKrxYxc5IjJwbe1obB2MQnOoWZfVAR+1m5MFGMXjUVvHrC20=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1wz34S-001SQz-Vl; Wed, 26 Aug 2026 04:08:56 +0200
+Date: Wed, 26 Aug 2026 04:08:56 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Caleb James DeLisle <cjd@cjdns.fr>
 Cc: netdev@vger.kernel.org, hkallweit1@gmail.com, linux@armlinux.org.uk,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, daniel@makrotopia.org, dqfext@gmail.com,
- SkyLake.Huang@mediatek.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20260825193456.1823985-1-cjd@cjdns.fr>
- <20260825193456.1823985-4-cjd@cjdns.fr>
- <d7d86078-8a29-4e7f-a62e-91f6b266bea1@lunn.ch>
-Content-Language: en-US
-From: Caleb James DeLisle <cjd@cjdns.fr>
-In-Reply-To: <d7d86078-8a29-4e7f-a62e-91f6b266bea1@lunn.ch>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, daniel@makrotopia.org,
+	naseefkm@gmail.com, joey@tinyisr.com, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next] net: phy: mediatek: add driver for EcoNet Fast
+ Ethernet SoC PHYs
+Message-ID: <e37d97cf-f4aa-499e-b372-21701f2e3782@lunn.ch>
+References: <20260825180421.1804729-1-cjd@cjdns.fr>
+ <177dc347-4cf9-48ca-97fe-b0f3cd46d8e3@lunn.ch>
+ <4fa1ab31-cdcb-4488-b038-c5869966b6ec@cjdns.fr>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <4fa1ab31-cdcb-4488-b038-c5869966b6ec@cjdns.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260825_175956_467056_EC6516FE 
-X-CRM114-Status: GOOD (  16.13  )
+X-CRM114-CacheID: sfid-20260825_190921_255325_79125E19 
+X-CRM114-Status: GOOD (  38.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,89 +74,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, Aug 26, 2026 at 02:08:50AM +0200, Caleb James DeLisle wrote:
+> 
+> On 25/08/2026 21:40, Andrew Lunn wrote:
+> > > Also provide support for the older EN7512 Fast Ethernet SoC PHYs found
+> > > in EN751221 chips with do not have the MCM switch. That is chips which
+> > > do not have a "G" in the name. As these PHYs bear the ID 03a2.9412
+> > > which collides with MTK_GPHY_ID_MT7530 gigabit PHY, do not match them
+> > > and instead rely on the user to override the PHY ID in the device tree
+> > > if they wish to use this driver.
+> > Is there a way to tell them apart using other registers?
+> 
+> 
+> The reference code differentiates this PHY from the other because this one
+> does not advertise gigabit capability. I sent it like this because the idea
+> of a matcher made me nervous and this felt more conservative, but I'm open
+> to guidance about what is the most appropriate solution.
 
-On 26/08/2026 02:00, Andrew Lunn wrote:
->> +static int en751221_tx_amp_compensation_tbl[2][TRANSFORMER_TYPE_MAX][MDI_TYPE_MAX][CALIB_CONST_TYPE_MAX][4] = {
-> const?
-Ahh yes, indeed all of them should be. Note to Ansuel: This is relevant 
-to your Airoha code as well.
->
->> +static u8 en751221_zcal_to_r50ohm[64] = {
-> const?
->
->> +	125, 125, 125, 125, 125, 125, 124, 121, 118, 115, 112, 110, 108, 105, 103, 101,
->> +	 99,  97,  95,  77,  75,  73,  72,  70,  68,  67,  65,  64,  63,  45,  44,  43,
->> +	 41,  40,  39,  38,  37,  36,  35,  34,  32,  32,  31,  30,  13,  12,  11,  10,
->> +	  9,   8,   8,   7,   6,   5,   5,   4,   3,   2,   2,   1,   0,   0,   0,   0
->> +};
->> +/* EN751221 also mirrors RG_BG_RASEL into CHIP SCU register 0x16c. */
->> +static void en751221_gphy_mirror_rext(struct phy_device *phydev, u8 zcal)
->> +{
->> +	struct regmap *chip_scu;
->> +
->> +	chip_scu = syscon_regmap_lookup_by_compatible("econet,en751221-chip-scu");
-> Does this need a change to the binding document?
+If it is as simple as that, i suggest you detect it at runtime.
 
+In the driver structure, you provide a match_phy_device()
+function. This get called independent of what ID value you have in the
+structure. So you first need to check if the ID matches. Then check
+the 1G capability.
 
-Not as far as I know. econet,en751221-chip-scu is defined in 
-mfd/syscon.yaml because it's a catch-all for configuration that the 
-engineers didn't know what to do with.
+Ideally you want the code in the same driver, because module loading
+happens based on the ID. I'm not sure user space will load two drivers
+if they both indicate the same ID. Something you can experiment with.
 
+> > > +	for (;;) {
+> > It is unusual to do loops like this. Can it be turned into a do while
+> > loop? And without looking deep into it, it is not clear if this is
+> > endless if the hardware stops responding.
+> 
+> 
+> You raise a good point in that it's hard to reason out the default exit
+> scenario, and I will figure out how to improve that. I'm not sure I can
+> actually get rid of the infinite loop without making the code worse, because
+> the default exit condition needs to assign ret and goto the error out label.
 
->
->> +static int en751221_gphy_config_init(struct phy_device *phydev)
->> +{
->> +	phy_write_mmd(phydev, MDIO_MMD_AN, MDIO_AN_EEE_ADV, 0);
-> Why is the EEE register being cleared?
+Consider adding comments as well. Also consider replacing the infinite
+loop with a bounded loop, and return -EIO if the it goes around the
+loop too many times. What you are trying to avoid is on hardware error
+a CPU constantly spinning until power off.
 
+> > > +static int en751221_fephy_config_init(struct phy_device *phydev)
+> > > +{
+> > > +	struct econet_socphy_shared *shared = phy_package_get_priv(phydev);
+> > > +	u16 l0r26_temp;
+> > > +	int ret;
+> > > +	int i;
+> > > +
+> > > +	if (!shared->phydev_p0) {
+> > > +		phydev_err(phydev, "Port zero must be configured\n");
+> > > +		return -EOPNOTSUPP;
+> > > +	}
+> > What is the issue here? Why must port 0 be first?
+> It doesn't need to be configured first but it must be probed because these
+> PHYs are not independent, they exist as a group and some configuration must
+> be done on the first phy in the group. I will re-send with clarification in
+> a comment.
 
- From reading the reference implementation, I get the impression that 
-this hardware is something of a basket case. There was a certain amount 
-of "write three times and then read back" type magic that I just omitted 
-because it really looks like they were actively debugging and as soon as 
-it started working they shipped the code exactly as it was.
+Consider using phy_package_init_once() to configure the shared things
+by the first PHY to probe, independent of what address it is.
 
-
-In the case of disabling EEE, I thought it more prudent to follow them 
-because I don't have every SoC that this PHY ever appeared on and I 
-would rather not diverge too greatly and risk it being unreliable on 
-some devices.
-
-
->
->> +
->> +	phy_select_page(phydev, MTK_PHY_PAGE_EXTENDED_52B5);
->> +	__mtk_tr_write(phydev, 0x1, 0xf, 0x00, 0x00002b);
->> +	__mtk_tr_write(phydev, 0x1, 0xf, 0x03, 0x082422);
->> +	phy_restore_page(phydev, MTK_PHY_PAGE_STANDARD, 0);
->> +
->> +	ret = phy_write(phydev, MII_CTRL1000,
->> +			ADVERTISE_1000FULL | CTL1000_PREFER_MASTER |
->> +			CTL1000_AS_MASTER | CTL1000_ENABLE_MASTER);
-> What does this default to?
-It starts with only ADVERTISE_1000FULL. I don't know why the engineers 
-wanted to set it to master, but its definitely intentional.
->
->> +
->> +	phy_set_bits(phydev, MII_BMCR, BMCR_ANRESTART | BMCR_ANENABLE);
-> Why? config_aneg() will do this, if needed.
-
-
-Okay this is probably just because the code I was working from is very 
-old. I will review this and see if it's truly needed.
-
-
-Also you're certainly more knowledgeable than me about what to expect 
-from PHY hardware, so if it is your opinion that setting master and 
-disabling EEE are probably not a real workaround for stability problems, 
-then I'll be happy to give it a try with these omitted.
-
-
-Thanks,
-
-Caleb
-
-
->
->       Andrew
+	Andrew
 
