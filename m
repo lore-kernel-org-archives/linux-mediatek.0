@@ -4,91 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBF4AC61DC2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2026 09:28:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F508C61DBD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2026 11:16:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=nLln/nzEL/lmZp8E8NEYYdhaUC5D7iZndLYefw4Q5CU=; b=FLkAqA1zQStEJvH+BUCr30uNIz
-	lr/b99fXrzrd5DgC85ptBTZK8kZdxkpEcl+o3EIk577A+XaeFbGSAtUbndQ+JkQ7UVO3b91uxbQFL
-	7QKxkwBPtNJW4WfP96Z7WxYhJw6ZGvx1/rfkpbOfh5O3Saojpt09YlfNCAsx7d5EKj+yUvQ9Txtj/
-	raNRXJLXrI9eY5XHwQU9pZGJoilzIac8/h2M70efY+AdYc3H+HvNdx2povYj/aOzdp/fRCeSN/6Dq
-	3SAenZc/Z8rc2Fue6yOIFGqozzfXz7uieKN/Znm4crTv91C3ZjyJusd1OfxVXrC4KpRZmbUgHsKSS
-	vlSJ4eqg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3w6x5i5cNJ44cvxGIR3mU/+8CUnMl13CMX4jUQ9qkts=; b=xM2dLQ5i7wS42Q4Yk1u304fYfZ
+	jUV5LvrCCxI8niS810ui7tHFJAijLiKgmBfTtkNlqyGJBgjrTTRZiBTxQzHUCN1fLmo7dPo9bqJct
+	oW3svGlooeZEV+ENETFYE4tj6oUAEPOLD33SBxbgeqYOZ44stcv/s96V1v3ycGMbUEeRayxN2Tahf
+	F/H21Jn9TWR3ecd0HJljC6CKW2W6BDyxvu0rMqPn8C2N5PIPZcrTYJlH1CTV9YgN40UTfm2aNrCFm
+	z+/vrhkBsa2yC6RMkJjXywCFYrCJ8swO6n6ZEfQk867UPYx6HO+QwL/NcFfI4OT72E5aVOAX5gAOh
+	Cl5Nbekg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wz9vV-00000002C4E-2vcf;
-	Wed, 26 Aug 2026 09:28:09 +0000
-Received: from mail-qk2-x0b.google.com ([2607:f8b0:4864:34::b])
+	id 1wzBcN-00000002LJ3-3XCt;
+	Wed, 26 Aug 2026 11:16:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wz9vS-00000002C3s-3ikw
+	id 1wzBcL-00000002LIN-3jvU
 	for linux-mediatek@lists.infradead.org;
-	Wed, 26 Aug 2026 09:28:08 +0000
-Received: by mail-qk2-x0b.google.com with SMTP id af79cd13be357-930914e4fc3so18987085a.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 26 Aug 2026 02:28:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1787736485; x=1788341285; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=nLln/nzEL/lmZp8E8NEYYdhaUC5D7iZndLYefw4Q5CU=;
-        b=UaFrnfK7eSAdO24GTtvShhuHVilDvKErx/lf+CGzvHT5LXvBQ8EPLLgLNG4koGSrHJ
-         aAsIU1rm3/JIif78KG0L3HR4NiTKJrhPnAK4d0T4q8asdTR3sAnSDFPCUnx9Yte4oY6A
-         uHMkhojiXDKSz1812RR5Zo0MCRZ6m4kr29leN9Yl4LURFnhRep/ILTjtyS4mUTtOPNtX
-         fPaI44ZTrr4RVxrGqYvLaBQeWrQchnc2yY6JEWd+NZTCBJfxEKgmZ5v8xLBMdkWJSQvq
-         ImPafr7/cN4LT0bUgAgVKFl6Rg2pLE7p29Gqbq4cPLub6JAjLii0uaq8hhbNBf1eGtkd
-         cCLQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787736485; x=1788341285;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=nLln/nzEL/lmZp8E8NEYYdhaUC5D7iZndLYefw4Q5CU=;
-        b=MUT56sTfGy3l6Le+UxDwnbDaOHUFFFRHsLOTAMRjAPTlzOmHH2NjC0htx5GwzgA0aa
-         qshKkipPegm76oz88Qb8JTcSEuJihTo0wDW7I7JRwJgz11H6QSENifizG4CmMc80aHgQ
-         hxJ2ZURJ1tPg+R7Qa15GUA7umoceookYig7qgL38ln6D0b/0QpPA4V9Hhhpv69ynbhpX
-         RUJT12og/P78VQ1poNWpmLWVBKwQCaxCj5CqcBfGjfuFVgxF0p5e+mLZzm/k70IBZVLb
-         l7kZ/K8reJFBEGeHdGdg7d7p0vOIFha9Zwc9RdNg77XMbj7We918q9nqCnp5y+A4sly/
-         HiPA==
-X-Forwarded-Encrypted: i=1; AHgh+RpVQA0KWRi6/2OoZzgjXddNNFdSRX73QpuPSbhPD3dvodTsnILrH/0OAeZ2PiArhf+INcC90jpBSxY0IICTdg==@lists.infradead.org
-X-Gm-Message-State: AFuF++mfRjA9CpmGpvN/lbG1F/b9dV/+zNBfcDm/ZAyTomFdYk7k5cnU
-	t+gh0coBwC85XfT5wHQAth4e+fP0WqbuYSEDFPRQGXHjo826yfi8XTvA
-X-Gm-Gg: AR+sD13R38UT342XdA6JMm1ggdPULtZlu6ywwsSwO0NfpUHWGECV706qPNgOAOLlvds
-	p4q7ryxQNkrD9uhCWypkoI2DVwdNeF48Um5PMdUio8C/jeIXS+C03iw6jgJPS1oUag6O59qisi1
-	5RmIb/53SJswHQKqWwlgtINlngIDbAyQYzW7C1e27g0iEd5G43vWFz+Y2Q0v8VEMy0Fr/A+TGvY
-	oNRFAc0N9MSzjXhmeCBOtJR4msP7taeR05YW0y58JnsNNMRZuHY843GD5a7jckUxH5XViPOl4sC
-	L1AGR1CfkLPk10L1gJmabW8JkYJvsW0QVsmlQxgj5dBQa4WRad3V+P3VBiJfPIRvEiQwd+AOzQu
-	PFwEdIe5VoqCRlxYtXeOx7XliQlctkDSikc5U8Y4v7cZ6C9YpmsjkTb9bA2k39hdBcirCsqXlNi
-	R825ul57eJeLlB26L4xfMy6dCfMEz0+o2aTppLX1YjKzmYpc3ZzKsVS19RyIZ6DGPDmWLoToido
-	UQJqohCoZ4e7g==
-X-Received: by 2002:a05:620a:99c:b0:937:2aca:4d58 with SMTP id af79cd13be357-937803e5454mr340157585a.24.1787736485479;
-        Wed, 26 Aug 2026 02:28:05 -0700 (PDT)
-Received: from localhost.localdomain ([2606:6d00:39f:4500:5acb:2301:2b5a:c076])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-9377e34b9cfsm170522085a.13.2026.08.26.02.28.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Aug 2026 02:28:05 -0700 (PDT)
-From: Mark Anthony Agarro <markanthonyagarro@gmail.com>
-To: linux-wireless@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	linux-mediatek@lists.infradead.org,
-	stable@vger.kernel.org,
-	Mark Anthony Agarro <markanthonyagarro@gmail.com>,
-	Devin Wittmayer <lucid_duck@justthetip.ca>
-Subject: [PATCH wireless v2] wifi: mt76: mt76x02: validate TX-status rate index before mac80211 handoff
-Date: Wed, 26 Aug 2026 05:27:55 -0400
-Message-ID: <20260826092755.480190-1-markanthonyagarro@gmail.com>
-X-Mailer: git-send-email 2.47.3
+	Wed, 26 Aug 2026 11:16:31 +0000
+X-UUID: 9115f472a13f11f1afed4741b24580c9-20260826
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=3w6x5i5cNJ44cvxGIR3mU/+8CUnMl13CMX4jUQ9qkts=;
+	b=dOXG+q1S6VSW9uv0SBwdL8CLS2sdRfLJtaJU2MGWcKIk4BV/pN+btf0PuiOWamLN/BGQMiNeCCPFHw1A9efruG594BoQWOW3KmyOMKkJCidiDdVuy5hfKr0+roQ7Sqbt5YSL9WK/iBG/ToKBFxuSj7bqQkdr1skDlEyNcoOj+Uc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.19,REQID:6bba4b7c-b816-465c-b3b7-9889e702903a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:7db8b62,CLOUDID:639b34c3-610e-480f-b463-9bb53aa0aeaf,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 9115f472a13f11f1afed4741b24580c9-20260826
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1178808139; Wed, 26 Aug 2026 04:16:21 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Wed, 26 Aug 2026 19:16:18 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 26 Aug 2026 19:16:18 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
+	SS Wu <ss.wu@mediatek.com>, linux-bluetooth
+	<linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH] Bluetooth: btmtk: Route firmware debug event to the diag channel
+Date: Wed, 26 Aug 2026 19:16:17 +0800
+Message-ID: <20260826111617.1175698-1-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260826_022806_936821_92910BF4 
-X-CRM114-Status: GOOD (  12.44  )
+X-CRM114-CacheID: sfid-20260826_041629_976843_B291C885 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,88 +87,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt76x02_mac_process_tx_rate() extracts the rate index straight from
-the hardware's raw TX-status word with no bounds check for the
-HT/HT_GF/VHT cases, and mt76x02_mac_fill_tx_status() ignores its
-return value. A stale or corrupt hardware index reaches mac80211's
-minstrel_ht rate control, whose per-group rate array is a fixed 10
-entries (MCS_GROUP_RATES), causing an out-of-bounds write.
+MediaTek controllers may emit a firmware debug event on the ACL channel
+using the reserved handle 0x0efd, which shows up in the ACL header as
+0x2efd once the start fragment flag is included.
 
-Validate the index in mt76x02_mac_process_tx_rate() (HT: 0-31,
-VHT: MCS nibble 0-9) and have mt76x02_mac_fill_tx_status() bail out
-cleanly on failure instead of passing an invalid index through.
+Neither btmtk_usb_recv_acl() nor btmtksdio_recv_acl() recognizes it, so
+the packet is passed to the HCI core, which has no connection with that
+handle and complains:
 
-Fixes: 7c1f88812690 ("mt76: unify send_tx_status and related helpers")
-Cc: stable@vger.kernel.org
-Closes: https://github.com/morrownr/mt76/issues/88
-Tested-by: Devin Wittmayer <lucid_duck@justthetip.ca>
-Signed-off-by: Mark Anthony Agarro <markanthonyagarro@gmail.com>
+  Bluetooth: hci0: ACL packet for unknown connection handle 3837
+
+Handle it the same way as the existing firmware debug logging packets and
+forward it to the diagnostic channel instead.
+
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
 ---
-v2: Drop the Reported-by tag. It named an invented
-    users.noreply.github.com address for the reporter that isn't a
-    real, deliverable mailbox (v1's Cc bounced with NXDOMAIN on that
-    domain). Closes: already credits and links the original report;
-    no functional change.
+ drivers/bluetooth/btmtk.c     | 1 +
+ drivers/bluetooth/btmtksdio.c | 1 +
+ 2 files changed, 2 insertions(+)
 
- .../net/wireless/mediatek/mt76/mt76x02_mac.c  | 27 ++++++++++++++-----
- 1 file changed, 21 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
-index 14ee5b3b9..d77356a2e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
-@@ -302,10 +302,22 @@ mt76x02_mac_process_tx_rate(struct ieee80211_tx_rate *txrate, u16 rate,
- 		txrate->flags |= IEEE80211_TX_RC_GREEN_FIELD;
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 73ba4a029e9c..8563ab06a99f 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -1006,6 +1006,7 @@ int btmtk_usb_recv_acl(struct hci_dev *hdev, struct sk_buff *skb)
  		fallthrough;
- 	case MT_PHY_TYPE_HT:
-+		/* Raw hardware TX-status index is unvalidated; a stale or
-+		 * corrupt value here overflows mac80211/minstrel_ht's
-+		 * per-group rate array (MCS_GROUP_RATES == 10) and crashes.
-+		 * Valid 802.11n MCS indices are 0-31 (four streams x 8).
-+		 */
-+		if (idx > 31)
-+			return -EINVAL;
- 		txrate->flags |= IEEE80211_TX_RC_MCS;
- 		txrate->idx = idx;
- 		break;
- 	case MT_PHY_TYPE_VHT:
-+		/* Same overflow risk for VHT: mac80211 expects the MCS
-+		 * nibble (bits 3:0) in range 0-9, nss packed above it.
-+		 */
-+		if ((idx & 0xf) > 9)
-+			return -EINVAL;
- 		txrate->flags |= IEEE80211_TX_RC_VHT_MCS;
- 		txrate->idx = idx;
- 		break;
-@@ -493,18 +505,21 @@ mt76x02_mac_fill_tx_status(struct mt76x02_dev *dev, struct mt76x02_sta *msta,
- 		first_rate = st->rate & ~MT_PKTID_RATE;
- 		first_rate |= st->pktid & MT_PKTID_RATE;
- 
--		mt76x02_mac_process_tx_rate(&rate[0], first_rate,
--					    dev->mphy.chandef.chan->band);
-+		if (mt76x02_mac_process_tx_rate(&rate[0], first_rate,
-+						dev->mphy.chandef.chan->band))
-+			return;
- 	} else if (rate[0].idx < 0) {
- 		if (!msta)
- 			return;
- 
--		mt76x02_mac_process_tx_rate(&rate[0], msta->wcid.tx_info,
--					    dev->mphy.chandef.chan->band);
-+		if (mt76x02_mac_process_tx_rate(&rate[0], msta->wcid.tx_info,
-+						dev->mphy.chandef.chan->band))
-+			return;
+ 	case 0x05ff:		/* Firmware debug logging 1 */
+ 	case 0x05fe:		/* Firmware debug logging 2 */
++	case 0x2efd:		/* Firmware debug event */
+ 		return hci_recv_diag(hdev, skb);
  	}
  
--	mt76x02_mac_process_tx_rate(&last_rate, st->rate,
--				    dev->mphy.chandef.chan->band);
-+	if (mt76x02_mac_process_tx_rate(&last_rate, st->rate,
-+					dev->mphy.chandef.chan->band))
-+		return;
- 
- 	for (i = 0; i < ARRAY_SIZE(info->status.rates); i++) {
- 		retry--;
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index b7f0be7fc42a..cba52724f867 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -460,6 +460,7 @@ static int btmtksdio_recv_acl(struct hci_dev *hdev, struct sk_buff *skb)
+ 		fallthrough;
+ 	case 0x05ff:
+ 	case 0x05fe:
++	case 0x2efd:		/* Firmware debug event */
+ 		/* Firmware debug logging */
+ 		return hci_recv_diag(hdev, skb);
+ 	}
 -- 
-2.47.3
+2.45.2
 
 
