@@ -4,73 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DE5DC5DF97
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2026 12:39:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B03EC61DBD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Aug 2026 16:02:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gQkt+AxOVU6u5IygNkiSEdsCB3ba9YtCG7UYdDpFwmo=; b=SXhrnP0bPYAzShf+SVJW+u/KWn
-	UyfDxPk6rCN6qXMOHPB/jd4iFEORNdu7g/eCmp68wJBh6ZLzWQRxrY3JnNgCkbI4hS4qfdu7LELXT
-	hH8X91DJ5/NCEGDy4Ae52b+1HnfzMlngYP1TmLv1YZpJgtJEBNuibnBfM0okueP9BAbi2zZVNukZX
-	SBK4TupRbaq91t8kzn5fYnr0zcKYTqgC75BNRCXY/9lqsJfEX8DMVy63v+ec4E5pLg0YN7/7sC4Cp
-	u1Fq8OVPRcP34Fe5Vh9tjrdQcGiwRO04U9giXYhH963cL3VMKtwcmS2dinFQlyiXAwUbLzZkm41T+
-	rlZKb/5g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=A2tCkHhAnhJUieAoIFUwqetCNrCTpIRrvxTeG80BJcI=; b=0tIOrh9rUSVwpnQ+6FuhiRJ0el
+	HkIPyMJg0mkb2bt8CexQJouJ8rTMmaJaE7FgrAAGwRTasdLaRJJ1S2NfcOYkw8AJwc3ex7RwiWw1j
+	k/GXX2vQpNozjJ+CZeFCFx9ocsAWs4XdllGHRrknslZRH78DulRGMY2DzCDx/d9ZbPZbY2RbhH25m
+	DQRW+3aSyMjcBfEJscLS29HkwItyb/YeG66ZYceMc8Cj0F4FjrInWY9Dx0YwyA/KySjdzGwcRnckX
+	W5qR2sCKuyJCW0dQEjF/1eNpW70zMHwCXoNEl2KaZ5tM51AKLmmHOhKke+QGoSJCXanGn70dUKjWq
+	xb5VOoXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzCuW-00000002SAB-2WHs;
-	Wed, 26 Aug 2026 12:39:20 +0000
-Received: from sender4-op-o11.zoho.com ([136.143.188.11])
+	id 1wzG4y-00000002hoe-1QAR;
+	Wed, 26 Aug 2026 16:02:20 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzCuC-00000002Rxi-2sE3;
-	Wed, 26 Aug 2026 12:39:02 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1787747932; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ByEOzvJz0+cY+J20QOmb+TXXI3p1JDkHAuyk6U63St+/IL0L4JmfEZ4ziNwY3bBxfaSQ3uY2KrGI1DwQuDAGf1Ou/pU6Sshh95+rT8RJl/3nlRZk/8yRh2RYtH0hQjroVa2d+WpIbEn+aRhmieZxxUxEYZ/RYCOEufhqnb8QwvU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1787747932; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=gQkt+AxOVU6u5IygNkiSEdsCB3ba9YtCG7UYdDpFwmo=; 
-	b=mu1RdgmmWcl5SdrjkPkpLApKyZpv4FPZV+mpfgN9tsg036tVLfy+frZfYo179wpdUWGk9qWgONTfiPzsE50Fb0fpSbHAAA8YHvljA2JYCWddK6syyE5KtXLb8Bsur3MmFijuTxr1WBvZFj0Nvc00xMS6+NFq+5+bhDFHFl5BE88=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=julien.massot@collabora.com;
-	dmarc=pass header.from=<julien.massot@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1787747932;
-	s=zohomail; d=collabora.com; i=julien.massot@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=gQkt+AxOVU6u5IygNkiSEdsCB3ba9YtCG7UYdDpFwmo=;
-	b=AIQJqf4QPRH0VCACXg9NC/nXpzAmws5B/UVx65Z6w2Hq4E6/+hEAkgIJgilYMh90
-	F1/o+3vvXlWAGz8JMbYS7yZo3BQHBwmnR2//+efZfxWDfABiZCcL3GKTZTs3VhkHdVp
-	YEE2cKDcAXrrBnp2RqFqwFu+7VU8uGsvADBnDBOU=
-Received: by mx.zohomail.com with SMTPS id 1787747930692813.6414076114834;
-	Wed, 26 Aug 2026 05:38:50 -0700 (PDT)
-From: Julien Massot <julien.massot@collabora.com>
-Date: Wed, 26 Aug 2026 14:38:36 +0200
-Subject: [PATCH 2/2] phy: mediatek: xsphy: add optional repeater support
- for USB2 ports
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260826-mtk-usb2-repeater-usb2-v1-2-e8e48e2fd6d8@collabora.com>
+	id 1wzG4x-00000002ho8-3HJf;
+	Wed, 26 Aug 2026 16:02:19 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 132776001D;
+	Wed, 26 Aug 2026 16:02:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F248F1F000E9;
+	Wed, 26 Aug 2026 16:02:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1787760137;
+	bh=A2tCkHhAnhJUieAoIFUwqetCNrCTpIRrvxTeG80BJcI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=hTuCTctgZTYuRNeOUOL3Dh8vVZl2dFrmaatOn/Y7BhOSDxGpqMQt5TgUGz3GrV158
+	 taSnjYbCC5ZrRhPXrRS71rSq5QJCwjpDgtVJEHDMqTdFQKzcwKJ2KPthSO/qdTKrL/
+	 sZ3XiSV4J87OO8PNpYpoI0+pKr0mWH/pb5MABxRPmJ4nW9KO3tL8ouK16T1hoA7arl
+	 ZxcY/O+MlNMfH/xTOtGARX3Hjbgll56apmb6aZ2VyeJsY6tbs/yYLWzLmcbVZ29IDC
+	 qhZqlnDf94wDy39JS1Q7GxM6mwCCo4SpRcVNbl77JeNXlqEx+7YaMROH2zM1R16riK
+	 jcK7xn/2Js4ig==
+Date: Wed, 26 Aug 2026 17:02:13 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Julien Massot <julien.massot@collabora.com>
+Cc: kernel@collabora.com, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] dt-bindings: phy: mediatek,xsphy: add optional
+ repeater phys property
+Message-ID: <20260826-phosphate-churn-06da285b0c0f@spud>
 References: <20260826-mtk-usb2-repeater-usb2-v1-0-e8e48e2fd6d8@collabora.com>
-In-Reply-To: <20260826-mtk-usb2-repeater-usb2-v1-0-e8e48e2fd6d8@collabora.com>
-To: kernel@collabora.com, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
- Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- Julien Massot <julien.massot@collabora.com>
-X-Mailer: b4 0.14.3
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260826_053901_004211_53D03E31 
-X-CRM114-Status: GOOD (  14.89  )
+ <20260826-mtk-usb2-repeater-usb2-v1-1-e8e48e2fd6d8@collabora.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Slhqmh3WOacDfSwh"
+Content-Disposition: inline
+In-Reply-To: <20260826-mtk-usb2-repeater-usb2-v1-1-e8e48e2fd6d8@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,89 +79,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-USB2 PHY port sub-nodes may carry an optional phys property referencing
-an external eUSB2 repeater.
+--Slhqmh3WOacDfSwh
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Fetch the repeater during probe using devm_of_phy_optional_get(),
-initialize and exit it alongside the USB2 PHY, and propagate USB mode
-changes to it.
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+pw-bot: not-applicable
 
-This follows the same pattern used by the Synopsys eUSB2 PHY driver.
+--Slhqmh3WOacDfSwh
+Content-Type: application/pgp-signature; name=signature.asc
 
-Signed-off-by: Julien Massot <julien.massot@collabora.com>
----
- drivers/phy/mediatek/phy-mtk-xsphy.c | 26 ++++++++++++++++++++++++--
- 1 file changed, 24 insertions(+), 2 deletions(-)
+-----BEGIN PGP SIGNATURE-----
 
-diff --git a/drivers/phy/mediatek/phy-mtk-xsphy.c b/drivers/phy/mediatek/phy-mtk-xsphy.c
-index cc1d66954212..7bc3d6794d7b 100644
---- a/drivers/phy/mediatek/phy-mtk-xsphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-xsphy.c
-@@ -94,6 +94,7 @@ struct xsphy_instance {
- 	struct phy *phy;
- 	void __iomem *port_base;
- 	struct clk *ref_clk;	/* reference clock of anolog phy */
-+	struct phy *repeater;
- 	u32 index;
- 	u32 type;
- 	struct regmap *type_sw;
-@@ -391,6 +392,11 @@ static int mtk_phy_init(struct phy *phy)
- 
- 	switch (inst->type) {
- 	case PHY_TYPE_USB2:
-+		ret = phy_init(inst->repeater);
-+		if (ret) {
-+			clk_disable_unprepare(inst->ref_clk);
-+			return ret;
-+		}
- 		u2_phy_instance_init(xsphy, inst);
- 		u2_phy_props_set(xsphy, inst);
- 		break;
-@@ -438,7 +444,11 @@ static int mtk_phy_exit(struct phy *phy)
- {
- 	struct xsphy_instance *inst = phy_get_drvdata(phy);
- 
-+	if (inst->type == PHY_TYPE_USB2)
-+		phy_exit(inst->repeater);
-+
- 	clk_disable_unprepare(inst->ref_clk);
-+
- 	return 0;
- }
- 
-@@ -446,9 +456,16 @@ static int mtk_phy_set_mode(struct phy *phy, enum phy_mode mode, int submode)
- {
- 	struct xsphy_instance *inst = phy_get_drvdata(phy);
- 	struct mtk_xsphy *xsphy = dev_get_drvdata(phy->dev.parent);
-+	int ret;
- 
--	if (inst->type == PHY_TYPE_USB2)
--		u2_phy_instance_set_mode(xsphy, inst, mode);
-+	if (inst->type != PHY_TYPE_USB2)
-+		return 0;
-+
-+	ret = phy_set_mode_ext(inst->repeater, mode, submode);
-+	if (ret)
-+		return ret;
-+
-+	u2_phy_instance_set_mode(xsphy, inst, mode);
- 
- 	return 0;
- }
-@@ -590,6 +607,11 @@ static int mtk_xsphy_probe(struct platform_device *pdev)
- 		retval = phy_type_syscon_get(inst, child_np);
- 		if (retval)
- 			return retval;
-+
-+		inst->repeater = devm_of_phy_optional_get(dev, child_np, NULL);
-+		if (IS_ERR(inst->repeater))
-+			return dev_err_probe(dev, PTR_ERR(inst->repeater),
-+					 "failed to get repeater\n");
- 	}
- 
- 	provider = devm_of_phy_provider_register(dev, mtk_phy_xlate);
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCao8OBAAKCRB4tDGHoIJi
+0k4+AQDUm2QUPhWgZ45GL8qPZVL+UlFrND1Hjkl5dEzc8QNDtwEAz/kB6ZPUpBNQ
+tLL2hWIYvJKTOwtT9FGCc456h7rwBQw=
+=YZCc
+-----END PGP SIGNATURE-----
 
--- 
-2.55.0
-
+--Slhqmh3WOacDfSwh--
 
