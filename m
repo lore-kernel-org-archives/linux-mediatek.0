@@ -4,113 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC986C61DC2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2026 12:10:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0B04C61DC4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2026 13:48:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QsfowmZfFtqwQf06McqdKSYocd05ZCERsUzwkfYHM00=; b=0M+6VFNvoab4t9c/K2Fuyfxtk6
-	CA/X744D147DG2ggTtqKjN1uypu58Rg0ycShnwbZr7LovbcIGMSH/7vhVNtJUPQ+X9nplPIa+QXD9
-	G4GB7SpHjOO1Copck8XL5m3zqsXx69zQJ3Gn/KwcAQsn6iO4j9dQ4j9xrY8f7a2PUxrjIH1h7aam1
-	BPo+YF85SIq6CEPigRPUcm6hZz8YzZcmL0Ka7Yy2YDyfoBdxso0lnP3pjSCfmXNXO/WEYh1mY4z4I
-	0icbCXGSy2ccNHc04Y238qyX7ECfbcJ/s8OjspiCNxQxbPC+c+W4hKSuGFgaiYLHlKIhzYY+LkRe4
-	L9yKxK9Q==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hWIouarLBH7JuHWJjN8tUII0KICbScsgCYFIy7YWfw0=; b=JfweCGK3GsC9Aox5/NjNmOQEOE
+	9jmqbI178O0CcRjKUproyDoNzF9wqKCwg0xQ1aVnwYlzeB78oCPU4ip8gM5p3NE23At8iiJJQrRHm
+	TP+QbdZC2OsWt6Xe0JnNEhltyEzQIpsC9T8r89FtpbbpXjKGt2fb2y2hGgsTL6ooUnxKYx/SSn/Qr
+	xH5oOLm484t9LAz7ein8u2iyzEUFp5oXAjdY7kPUdenaraQACqjVsPpYJ7UlUSbLuTtJ1QbSf5jGs
+	/6+/VTOKDtHQAllVl4c6D6dhXq/QXB/3u6d/jVvKLOq/WIR2oE2zRt/MupNjJ0lk7Ls9gpylmaBGN
+	+D/yYVfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzYwX-00000003vpb-3cXd;
-	Thu, 27 Aug 2026 12:10:53 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wzaT2-000000045Tp-1tXT;
+	Thu, 27 Aug 2026 13:48:32 +0000
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzYwW-00000003vp3-07uD;
-	Thu, 27 Aug 2026 12:10:52 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 01626600D2;
-	Thu, 27 Aug 2026 12:10:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F0F51F000E9;
-	Thu, 27 Aug 2026 12:10:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787832650;
-	bh=QsfowmZfFtqwQf06McqdKSYocd05ZCERsUzwkfYHM00=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=ojlFQEOefW691KZx5ZG46buKPEyHapxXxL3Bic700lla2lPXKIGc3w1adHwB6g08C
-	 YNZQM11mj5zq5XqZtYvQf1ZYMM7AIhRt211T+6G0YcgVvDiJYTMF5psZWJAUD2KEX/
-	 BKwJ4hXkX26VhMdR3iHRXELYReYUavZ3LcUr/egAeay36KkaWHoQrpyDrVsIvHfSwi
-	 8WY4Gm9dUpXqV5vg/A7BsmIFpGeTDVLTVLV/1lem5C2ojaSLskolAHYlfWeRYAhsEz
-	 JKmxCl6jYRsz2tAD9bQx6f0slSjaBAzLHo0Zm6S0wWf/01TyyrZ5qIdxeLm8xckRQn
-	 Fjot5m/mdCJRQ==
-Message-ID: <ca373f33-fa20-40cf-ab7b-33dd9c25bc49@kernel.org>
-Date: Thu, 27 Aug 2026 14:10:43 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/8] dt-bindings: reset: Add mt6589 toprgu reset IDs
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+	id 1wzaT0-000000045Sn-3llo
+	for linux-mediatek@lists.infradead.org;
+	Thu, 27 Aug 2026 13:48:32 +0000
+Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-2d530328efbso7532315ad.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 27 Aug 2026 06:48:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1787838509; x=1788443309; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=hWIouarLBH7JuHWJjN8tUII0KICbScsgCYFIy7YWfw0=;
+        b=hduQR0WzusjTQ+bqMuOGMRoO4m4Rp5ULmw58n/cIz0+C9RqbNHDxoAYI5ZUO3hXbpr
+         iu12P7AIXbrHqDBTtIIdGCE84b+Zfls650KmtiLv7U5NXYm0+kvC5OgeMaE/xrmuuPjU
+         O4zIg6pcltAeg5F8oPJDQn4jAiZHJn2Zz/Qz52Ze6WhW3rLpTJrQDJUa4ud9nJXZvH66
+         JB0we8RyjbFyr2MlqRxxfHm0MvkyV2YeETs9DPSAE0+UPc0Tzw2Ps3DbA35bGv1yd3Ht
+         uAhloVQdrl4NsenfuwqCWGwUDyRJEQAjMhbIVdRCuszHCW3lvyBSpa1Ld8EnwoD8vWAY
+         heow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787838509; x=1788443309;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=hWIouarLBH7JuHWJjN8tUII0KICbScsgCYFIy7YWfw0=;
+        b=ZKJr0lBh3wkL157cex+5ZhEkmPjXyYNeRR8tjhRmzL9jHnmeozcRA+9RxDjM1Yvdi+
+         Go0G5FQKC30/XA1kVYPrcdcn+T+/qJvOR58TVQvgTVOmrcGfqCcvCmIyt01TQCtsUROM
+         YC6w9z6X7zoIqqRW4PmrhcwoTsR7uu2n33xRnzsf5TBrdRFisGMvsIo3aOANQoCx2X1r
+         6ttiS1dCFUkELOy7ixfCoxFsa0fd/IORR1TTEhuZr+lj8Hg5Bp0ShA1LCck/sucPRZiu
+         ttK9VlESgkNZJMgwRHad5xSK8o1mnyIIaz8UL7ZDmvDso+oYAIupLBz9IrT/yknNUrRL
+         5ZHA==
+X-Gm-Message-State: AFuF++kJUyCYlStCLdhgiVTcVRcppDecwSTsLIz0DCBYwQnmoMhMN82P
+	4tb7dLUddb4ck8RsYQOz+W65GmpA6xN7rppRB40IVoFcHKKoNFbz6AtI
+X-Gm-Gg: AR+sD136fSMoXyaoCRvJWvLkXsdyzQEYxWrHtPvy/N+8u2ni3gj6sWw7P5n8spSSn7b
+	9FcNotLDyqgGJIsa/uw/imGD20ljRW+NdL0ooibgxe9hWebimHtdbeoAsFOzQtC5iB8Re3Pm8EL
+	w9gwKDHGorYZ9YVRZytK27dnOKuMGcMWIUtCrtu8hEGKYwltG7fEEnfz5KTgDe6lNzAxD8jTwy8
+	tIjPJUitu+KCvgzqbpc9j2LVTdjhZ7hUhQzhHBNVDAtsZ+54f2iQZAzKZoxFMzjQ1fqDMVPviWL
+	/oQh9wdJMFHr7Ue58LHTVvD5EB0wEqwJTPgucXaMqa5qGmWk+LxPafdHk1t2c3zbxM2vj27uiDS
+	jBaR3LNKXqh1fO08FwcojxZFIahLPYeVIizJDUiawjXZ8up6i8EKYo/m+ySRI9NZNZedsSP4+x9
+	PEznrvzmdzac/u1cFSiKjw7MebQmPjsN9fT2IwbyxlhrkvWCFQZoFoKvx2VsG3vhR6/xjm93jN/
+	XgL0aQ9PNVCvA01glyynsEHKRDDYWYiMM54NvpDZhhp9GaaxNmfdMH/uB0ebDtMlhHtjySeUFEV
+	eHwXtiFc2VLuow6mny0pvJwZWpZZKw4wbCtvWA8jLrpdcVXTx+LysrAsSK48AcKJZ9W93FPx7PD
+	BM9GvBXVWDwx012E3
+X-Received: by 2002:a17:902:e550:b0:2ca:1479:d9dc with SMTP id d9443c01a7336-2d707b64aecmr290601105ad.12.1787838508938;
+        Thu, 27 Aug 2026 06:48:28 -0700 (PDT)
+Received: from silver.tail241a39.ts.net ([2402:800:63a6:a199:ad96:d99:29d:5e21])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3283da25c09sm33302987eec.31.2026.08.27.06.48.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Aug 2026 06:48:28 -0700 (PDT)
+From: Huy Nguyen Dinh Quang <huynguyendinhquang@gmail.com>
+To: linux-wireless@vger.kernel.org
 Cc: linux-mediatek@lists.infradead.org,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
- <linux@roeck-us.net>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-watchdog@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-References: <20260809160643.33991-1-l.scorcia@gmail.com>
- <20260809160643.33991-2-l.scorcia@gmail.com>
- <20260811-amethyst-seriema-of-gallantry-ca9c7f@quoll>
- <CAORyz2KXJf4gU46649w1ncb7TAOErdoGmfOMzwKr8b+eGdAgVA@mail.gmail.com>
- <20260812-smooth-artichoke-kittiwake-f6e85e@quoll>
- <409e398b-eb8f-48eb-a0d3-ed8fa811328f@kernel.org>
- <CAORyz2JbOsiDYzCw--Y-tiRXEaZ69B8S9Hjvs-j5WZmtck-ynQ@mail.gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <CAORyz2JbOsiDYzCw--Y-tiRXEaZ69B8S9Hjvs-j5WZmtck-ynQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+	nbd@nbd.name,
+	lorenzo@kernel.org,
+	Huy Nguyen Dinh Quang <huynguyendinhquang@gmail.com>
+Subject: [PATCH RFC] wifi: mt76: mt792x: treat ACPI MTGS 0xff as no geo limit
+Date: Thu, 27 Aug 2026 20:48:20 +0700
+Message-ID: <20260827134820.2607530-1-huynguyendinhquang@gmail.com>
+X-Mailer: git-send-email 2.55.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260827_064830_944837_992EE21E 
+X-CRM114-Status: GOOD (  10.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,31 +99,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/08/2026 13:57, Luca Leonardo Scorcia wrote:
->>> Then these bits stay as is in DTS but bindings header is not needed. You
->>> can have of course DTS header, as we did in the past multiple times for
->>> such hardware constants.
->>
->> So I wrote above this to myself and can be ignored completely? Then why
->> would we not ignore your patches?
-> 
-> I am sorry, I'm definitely not ignoring reviews and I'm actually
-> trying to understand and fix my mistakes.
-> This reply refers to v3, but in v4 you reviewed earlier today I added
-> reset table support in the driver, therefore in v4 those constants are
-> IDs instead of bits (and it should help cleanup the other MediaTek
-> existing bindings if deemed necessary).
-> If they're IDs that describe actual hardware capabilities, shouldn't
-> they be located under devicetree/? (Again, I understood my mistake in
-> v3, but in v4 it should be fixed).
+Some OEM ACPI MTGS tables fill unused geo power/offset slots with
+0xff. Windows treats that as "no cap". Linux assigned the u8 value
+to s8 and min()'d it, clamping every rate to about -1 dBm
+(txpower_sku tmac = 3).
 
-The IDs do not describe hardware capabilities, but ABI between hardware
-(DTS) and software (Linux). If you do not have them in the software,
-then the ABI is not used. I looked at your driver patch and did not find
-usage of these. I found usage of mt8167 only, so mt8167 is fine. The one
-here is not fine.
+Skip geo capping when pwr is 0xff, and do not apply offset when it
+is 0xff.
 
+Tested on ASUS Vivobook S 14 M5406WA (MT7922, mt7921e):
+- 5 GHz: tmac 3 -> 25, TX ~40 Mbps -> 200-350 Mbps (80 MHz)
+- 2.4 GHz: tmac 30 after the change (channel 6, 20 MHz)
 
-Best regards,
-Krzysztof
+Fixes: f965333e491e ("mt76: mt7921: introduce ACPI SAR support")
+Signed-off-by: Huy Nguyen Dinh Quang <huynguyendinhquang@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
+index 946dd79..fa539cd 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
+@@ -280,7 +280,15 @@ mt792x_asar_get_geo_pwr(struct mt792x_phy *phy,
+ 		return dyn_power;
+ 
+ 	geo_power = (band_pwr + idx)->pwr;
+-	dyn_power += (band_pwr + idx)->offset;
++	/*
++	 * ASUS (and some other OEM) ACPI MTGS tables fill unused geo
++	 * slots with 0xFF. Windows treats that as "no cap". Linux took
++	 * it as s8 -1 dBm and min()'d every rate down to ~3 dBm tmac.
++	 */
++	if ((u8)geo_power == 0xff)
++		return dyn_power;
++	if ((band_pwr + idx)->offset != 0xff)
++		dyn_power += (band_pwr + idx)->offset;
+ 
+ 	return min(geo_power, dyn_power);
+ }
+-- 
+2.55.0
+
 
