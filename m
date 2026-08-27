@@ -4,111 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EECBC61DC7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2026 09:38:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EDF4C61DC2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2026 10:57:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kY9rdvBsO9uw6/8YaHM8vYu2zSCSBKCDyPP+3dDwwko=; b=XC1Z7NsK0JIL90J/K6xB8lMuZm
-	/sAQWy909C9mb8e4s5pNX+0wsXkM5ZAjyzkeCIbqmg3fMCwG9d3RKwUT2gIdLqu9hPIg2O50oq7vW
-	h37R5Lkyi7YwZFnv0o6dj+XcpoLgRKrVQUmFCexkA+ftIHOawfBYcZfQGSFey8c9azLT3Yvka5k+Y
-	1dFEKNgNEOtcieW3LqaO/5NJU3lwbGeJdUugjLKaGDzZp/aVVEXX1qhWdfp6kVkWFHjdNiR5rIJ9L
-	UwoME829bmkHi9A43uRndQ7lKASwuMvn6QaSlu/7e2QtGXTxeXb6ELbUVZ1vH9mHzwakemjwcGF8U
-	jY2xlunw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ntmVipoSayOwXs57Kc1THh0tKdh0WN7s/EHA02RtOpA=; b=h6g0Zvm4/MYs0fR3XSrAwwbVu7
+	YUc4sqIqZzI3PkRX5QOx7AM7O59c0tz+bJFU7Ghq3h93y7FGbilYNoS/tzkueVhRcDBXFZB34c3KR
+	NTxcQ5/binlXHQcabZssFDios1yIhqgsGNkv220pq65dgleH+SD9fKs7ta2HvDdmh6rTKcdPNu2mQ
+	sQknVwozAqX3g1tDLgxp4UTRYXHYHP3XpSo9dWn2bH8LOlib637lN3Yeyq0e26yLa4QaeITTXcAfq
+	AUi/wIEX/en+B2F8ZyK+Ft4O1qC+cDAbRJlqjpelNEGfC0cczN/7+U00amcH+HBHQsNJukM2xG7hk
+	N+HOkjXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzWYZ-00000003lGz-2bBP;
-	Thu, 27 Aug 2026 09:37:59 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wzXnp-00000003rSq-0hEg;
+	Thu, 27 Aug 2026 10:57:49 +0000
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzWYY-00000003lGV-2ca8;
-	Thu, 27 Aug 2026 09:37:58 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 24AC040E1D;
-	Thu, 27 Aug 2026 09:37:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 584531F000E9;
-	Thu, 27 Aug 2026 09:37:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787823478;
-	bh=kY9rdvBsO9uw6/8YaHM8vYu2zSCSBKCDyPP+3dDwwko=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To;
-	b=J0QhkLdHjlTOnt0Qp2hG3h+HCoFMYIiLSoW+I5lxSZVC1atDFYF/36mZq5G2iDvVC
-	 WNAbwyyncDgceSEndvaF9DiuEU/325axAGQfwrcPXSMAvyWT4P6Ud7bX9tB1r8GkIr
-	 ULKkSj4AyYTlhyNlsEuu4mQY8v/EEeCQzEgBYIFQxIlJwI/tqMTfy1qth1PdF8ideK
-	 m0zRzj15K/N5Aa3yKLX84G/dVp1cOnwK2ei4bGMKS2c/TSz5orNf4o8/sANKODtxT8
-	 TmVnvg+Msqq0nvcCP53T/ZaiQ7i1+zqq2TQ1+I71BQfEooVlD0IbcWRB3Sm8LtZPPJ
-	 AtrQ36cuGFw+A==
-Message-ID: <409e398b-eb8f-48eb-a0d3-ed8fa811328f@kernel.org>
-Date: Thu, 27 Aug 2026 11:37:51 +0200
+	id 1wzXnm-00000003rSB-46BR
+	for linux-mediatek@lists.infradead.org;
+	Thu, 27 Aug 2026 10:57:48 +0000
+Received: by mail-pg1-x529.google.com with SMTP id 41be03b00d2f7-ca7c1176317so1821739a12.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 27 Aug 2026 03:57:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1787828265; x=1788433065; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=ntmVipoSayOwXs57Kc1THh0tKdh0WN7s/EHA02RtOpA=;
+        b=A9NlXGA+a5m4U3EmOblQ8ZnDhLBJxodUenCXXuyeraPnYaGPCN2fMBDwFwJjCrp/c9
+         GzykveyFm8do1mnwPF9nd3lxUS27S0OO3ksHX+j+io0PYKagagEcBoJMs3AylROQvWm0
+         qX4gLdjZdHNeAEDS06Uvenoe4/6D5yF7vMXKo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787828265; x=1788433065;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=ntmVipoSayOwXs57Kc1THh0tKdh0WN7s/EHA02RtOpA=;
+        b=tAT/TjVXMiEP6m94EfJwLKV+dzxIwq7bYfLk+9ghjBGVbSp41d4wSyw0mwNVm82BXh
+         hezLuwEtQ4wW1ILDr51uu+7Qov3MEi4YkDPNrUnsUaSaMtwg/fQV6BJERQw9SwPMfviA
+         cxauNnfp3eptKfRxyOzkMTx1xiOozVmQHYhvYrOsrVVcC+fsdkwShd3KbJ2mjbGPHemA
+         UNPjjwwcVV4000WTn5Bt/3HnOTqxy6kDjmOFOCddC/bcRmH5iIYLVF+Cya0Hc3tnHBoX
+         W/GdtyyRX2w4tO/7+zXCLZfEuQBh7WQBSUluLUyxtMgS0Ehsy2u2uVzXKYhY3QXcJaeg
+         yMqQ==
+X-Forwarded-Encrypted: i=1; AHgh+Rrf3eBkdqfrBk5nivQiK4yIUy9iw8U3aMEj7idlq9uBlbsxi+zsigCQqC0b/ckYmDT/+vLiWD9bn59NZBF5GQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++lfs2THXAR592YWLGuLW9C+8B38SaPKn/4XGUXDkYDVghR1KwtD
+	yiC6lRs/pvEH41ZQMxydZlGj2Nl2GxlzkfNn2rCK9tOZtNk0oCFQ8y+SFuFwdxPODQ==
+X-Gm-Gg: AR+sD10TrTINyRklfllDk4gnj30WowkLZblnsS0annTXSWBp1LvZpCu7aI1P1C9omSG
+	u46hykT66tXGnCYb9S97ICfEMfrLsUC3W0LzvyR1kfpg3MyiyCvzULNr5YCXcXP4eW+z8bKxC1+
+	BUkwQOxyuU/akIEvfTykPJY5pCBhS6xTWcV9RrWXlU/NS88LnTt0jVvViZJWEfErbMsRogzSbrK
+	ceZg+PyRsr3nH+BeJCZUX+78GJWdBw5QtW1D4CK7ZnXK4/oHXFJ2S89sqOyPBprbK/qaro5M0C8
+	6QpGDHY3dJp+kUvKVz3ol3TLBeiEoPJ/LHxW4nLILQfYoWxDBlN7oObaVS2ehEptnQAYCR3Mg1u
+	WKzEONI5qUfKlkFQ3xgT8WIuqfxftMi5X4byFzH6rHDTOUrTiz6qiH/aPYzTtyfPQXeuy+LikuN
+	rJQ3cXJtIUkHp3JQu1Icm30SGljbiLMbEXXll9j6+ljojQAcNMkgiWF+MVmI9VIOO5mCrMhNrRu
+	HcJkac8qoCDR3AzGHfX1c7j3k5jOBhiYGZEMcnI/KbkmJpHy1dvo1JGXQ==
+X-Received: by 2002:a17:90b:3fc4:b0:38f:dec8:f7e9 with SMTP id 98e67ed59e1d1-3966d443146mr29645548a91.12.1787828264658;
+        Thu, 27 Aug 2026 03:57:44 -0700 (PDT)
+Received: from wenst-7875.tpe.corp.google.com ([2a00:79e0:201d:8:b7d8:fa42:587e:234d])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-396b186807bsm2434123a91.12.2026.08.27.03.57.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Aug 2026 03:57:43 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	linux-pwm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jitao Shi <jitao.shi@mediatek.com>
+Subject: [PATCH] pwm: mtk-disp: Fix period readback
+Date: Thu, 27 Aug 2026 18:57:36 +0800
+Message-ID: <20260827105738.8570-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.55.0.887.g758fc8c411-goog
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/8] dt-bindings: reset: Add mt6589 toprgu reset IDs
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
- <linux@roeck-us.net>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-watchdog@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-References: <20260809160643.33991-1-l.scorcia@gmail.com>
- <20260809160643.33991-2-l.scorcia@gmail.com>
- <20260811-amethyst-seriema-of-gallantry-ca9c7f@quoll>
- <CAORyz2KXJf4gU46649w1ncb7TAOErdoGmfOMzwKr8b+eGdAgVA@mail.gmail.com>
- <20260812-smooth-artichoke-kittiwake-f6e85e@quoll>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <20260812-smooth-artichoke-kittiwake-f6e85e@quoll>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260827_035747_027228_E4A85F1B 
+X-CRM114-Status: GOOD (  12.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,33 +99,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/08/2026 12:35, Krzysztof Kozlowski wrote:
-> On Tue, Aug 11, 2026 at 04:20:11PM +0200, Luca Leonardo Scorcia wrote:
->>
->>> We do not take bits, but identifiers of resets.
->>
->> Currently the existing mtk_wdt.c driver does not use a reset table
->> that binds identifiers to bits for any of the existing devices. There
->> are a bunch of mediatek,mt*.h files under dt-bindings/reset [3] that
->> point directly to reset bits instead of being indexes.
-> 
-> Many got accepted unnoticed, many times we did not care, but the point
-> is still valid - pure hardware numbers do not belong to the bindings,
-> because they do not bind any pieces of code. The proper binding header
-> constants bind DTS with SW implementation, so two pieces of code. Not
-> applicable here.
-> 
->> I can introduce a reset table in the driver, but it would break
->> existing devices as those bits are referred in device trees and they
->> are often non-contiguous (e.g. [4]). As before, it could be done by
-> 
-> Then these bits stay as is in DTS but bindings header is not needed. You
-> can have of course DTS header, as we did in the past multiple times for
-> such hardware constants.
+The period value stored in the register is the number of clock cycles - 1.
 
-So I wrote above this to myself and can be ignored completely? Then why
-would we not ignore your patches?
+Account for the offset when calculating the period in nanoseconds. This
+fixes the discrepancy reported by the pwm core when CONFIG_PWM_DEBUG=1:
 
-Best regards,
-Krzysztof
+    mediatek-disp-pwm 1100e000.pwm: .apply is not idempotent
+    	(ena=1 pol=0 281500/499875) -> (ena=1 pol=0 281500/499750)
+
+Calculation discrepancy in the driver was found by AI run by a colleague
+while debugging another PWM related issue. Check against SoC datasheet
+and fix done by the author.
+
+Fixes: 3f2b16734914 ("pwm: mtk-disp: Implement atomic API .get_state()")
+Cc: Jitao Shi <jitao.shi@mediatek.com>
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ drivers/pwm/pwm-mtk-disp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
+index b5409e15dac8..68a4512e821a 100644
+--- a/drivers/pwm/pwm-mtk-disp.c
++++ b/drivers/pwm/pwm-mtk-disp.c
+@@ -212,7 +212,7 @@ static int mtk_disp_pwm_get_state(struct pwm_chip *chip,
+ 	 * period has 12 bits, clk_div 11 and NSEC_PER_SEC has 30,
+ 	 * so period * (clk_div + 1) * NSEC_PER_SEC doesn't overflow.
+ 	 */
+-	state->period = DIV64_U64_ROUND_UP(period * (clk_div + 1) * NSEC_PER_SEC, rate);
++	state->period = DIV64_U64_ROUND_UP((period + 1) * (clk_div + 1) * NSEC_PER_SEC, rate);
+ 	high_width = FIELD_GET(PWM_HIGH_WIDTH_MASK, con1);
+ 	state->duty_cycle = DIV64_U64_ROUND_UP(high_width * (clk_div + 1) * NSEC_PER_SEC,
+ 					       rate);
+-- 
+2.55.0.887.g758fc8c411-goog
+
 
