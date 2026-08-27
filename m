@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61623C61DB9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2026 16:28:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39A11C61DB9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2026 18:13:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ebaBF7Wm57jhnHCdB2Tivrcc0WgePRhWe4w6HflJXUY=; b=0/i+6Klyv1q3bicqZOqMbKvUmL
-	TdQMq/dPKwjRp8WlwXWldkTzw02yM6JHGjSXswW6cg/Q+PdpJppsg4tWRjOHiQbnIK3vuv65JXYIC
-	Q3CG3ARB/ZxBNA6x7N66V8PYRJCQYM2tRXql59RT0KtePwf8jd8ELTaC3FXvIVYQHPCTzuYQvLc0b
-	JSeAt86/fvgBgnhx0+VjdNa/LqFUe5x5XIKLIq/CLQecZvIUVDbSY26Uc42F/x1o8mPbe4eG3tIdF
-	7fQVgoSHAG+3FiDLL5+NpPgpbSyu2lSzzj4yP84D4BWTdHmle1XKX7muo8EgtoxVqeic7htbylh79
-	4Y1fas4A==;
+	bh=IoQU/6fzzXlG8e+LszOJee1lrSsQe+ACl9wBVnDv6zA=; b=G2n9exNsbuW8Zo5gquqrjsQ/YL
+	BL+h/4EXnmx6eTnlSd9g0mmBT3HuxLJdELL1kU2lgfprw1llwBCnf+Y7FXVKgL6SQ2qqmVzc1FWTQ
+	tGe7dgXm/bRZv8p1nkWRAz7NGpl0yiJJU5fJ3X+WWJz3bdUEVcf1n9jDp75dp3S/PiSKsd/x2U9a8
+	H6nlLD9OdzGdMSOGVhLBOr6NLHBKqhZD4oYca3dw6j4qAOXZRnRJvpsL/PoLZrMRG8xOnXBPSZs3y
+	2kgPXf/+s7oS/KDad9aZUcyLpmQLar252TrfdwxXr7gSM2JPHVxQX5lorki2CbuoNKgPAb/OjgcJP
+	MO7dEXkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzcxy-00000004LYX-3MFk;
-	Thu, 27 Aug 2026 16:28:38 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wzebO-00000004ZiR-42v1;
+	Thu, 27 Aug 2026 18:13:27 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzcxw-00000004LYG-3w3A;
-	Thu, 27 Aug 2026 16:28:36 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6E7794170E;
-	Thu, 27 Aug 2026 16:28:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3AA701F000E9;
-	Thu, 27 Aug 2026 16:28:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787848115;
-	bh=ebaBF7Wm57jhnHCdB2Tivrcc0WgePRhWe4w6HflJXUY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=il8vsbVOCFUwes1trTtQUc+VPgHBNT8pQgbTC8TYPhIAsGILGCdk6BFKvKtouFF7w
-	 0PPcJVg5Gtfpy5/z5OLyJm4e0mv6CKzd2VaBzIKnLXQSKgpgHrlFsfjGPqNFaiCQeH
-	 uSVFdJ3k4Gk1OrESYOEx9lMTr5pPWqfhVFZd5dqCM2lB9C2vumY5EEuFN71EkbxGsI
-	 samfySvYLnoD4SGk5eCruJsS7oPPKnK/AB1On85pcTaP/Wgw4pb8ZU0I9NBG+9Q6Nl
-	 rf2zi7gzoJFdt2h8BnzEIFE8xLX9AhTb03u2FhNY+FTmul/19RTVJOTl22NmuMKNVp
-	 i28zpeufjzvOw==
-Date: Thu, 27 Aug 2026 17:28:30 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Bui Duc Phuc <phucduc.bui@gmail.com>
-Cc: Cezary Rojewski <cezary.rojewski@intel.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
+	id 1wzebL-00000004Zh1-0TCf;
+	Thu, 27 Aug 2026 18:13:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=IoQU/6fzzXlG8e+LszOJee1lrSsQe+ACl9wBVnDv6zA=; b=dHqgXAoVmI0kVTLChoKEvm9ki1
+	0+1g6Rlq4XeWS0grpmb/rQsHCvZ8r+YlQc8p6GRYvmBcnm2TrEL61m8KpvyK/KqoiEi+QkFaHLi/m
+	iQckVUu4djA4uI/ZpGarA5rEe+WaZ28I5I504JZe+DSnPODMsG/fMnNZOiI3DjQWrfK0=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1wzeaz-001hnJ-8B; Thu, 27 Aug 2026 20:13:01 +0200
+Date: Thu, 27 Aug 2026 20:13:01 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Aleksei Sviridkin <f@lex.la>
+Cc: "Chester A . Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Vladimir Oltean <olteanv@gmail.com>, Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	netdev@vger.kernel.org, Russell King <linux@armlinux.org.uk>,
+	Qingfang Deng <dqfext@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 2/4] ASoC: mediatek: mt8183: Fix APLL enable error
- handling
-Message-ID: <98b11d2d-8157-4c1b-8562-42ff11cdff60@sirena.org.uk>
-References: <20260821122928.41343-1-phucduc.bui@gmail.com>
- <20260821122928.41343-3-phucduc.bui@gmail.com>
- <47c14ad6-0311-467b-907c-517ff5044438@intel.com>
- <CAABR9nHyDL8=EiSi+_GBpHM0xLZraH8az+HRXQWudG=1hLZ7qQ@mail.gmail.com>
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net v2 1/2] net: dsa: mt7530: populate lpi_interfaces to
+ fix EEE support
+Message-ID: <55dbbbcf-f3b2-4e2d-bc3b-78fb0be4d843@lunn.ch>
+References: <20260824024117.46154-1-f@lex.la>
+ <20260824024117.46154-2-f@lex.la>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="0wMx2L5PNJE4zS3t"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAABR9nHyDL8=EiSi+_GBpHM0xLZraH8az+HRXQWudG=1hLZ7qQ@mail.gmail.com>
-X-Cookie: Alimony is the high cost of leaving.
+In-Reply-To: <20260824024117.46154-2-f@lex.la>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260827_111323_148801_D6150F32 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,37 +79,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Aug 24, 2026 at 05:41:16AM +0300, Aleksei Sviridkin wrote:
+> mt753x_phylink_get_caps() fills in lpi_capabilities and
+> lpi_timer_default but never lpi_interfaces, so phylink treats the MAC
+> as not supporting EEE: ethtool reports "Not supported" and
+> phy_disable_eee() keeps userspace locked out. That undoes what
+> commit 06dfcd4098cf ("net: dsa: mt7530: fix enabling EEE on MT7531
+> switch on all boards") arranged: EEE off by default, but enableable
+> with ethtool.
+> 
+> Copy the supported interfaces into lpi_interfaces after
+> mac_port_get_caps() has populated them, and leave the speeds above
+> 1 Gbps out for now: drop 2500BASE-X from the copy, drop MAC_2500FD
 
---0wMx2L5PNJE4zS3t
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Blah, blah, blah.
 
-On Thu, Aug 27, 2026 at 02:58:04PM +0700, Bui Duc Phuc wrote:
+Please assume i can read the patch and understand what it does.
 
-> To be honest, after looking at the code for other MediaTek SoCs, I found quite
-> a few logic issues and inconsistent clock handling. This, along with
-> the git log history,
-> makes me wonder whether these code paths were ever properly tested on
-> real hardware.
-> Therefore, I have stopped at mt8186 for now.
+The commit message is about answering the question "Why?". That you
+often cannot see from the code.
 
-There's a lot of code there with shaky error handling; probably the
-default case works but things blow up relatively easily on error.
+    Andrew
 
---0wMx2L5PNJE4zS3t
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqQZa0ACgkQJNaLcl1U
-h9DUGwf+MCKXjmklPUUS4YqdH7aXXG4NE645E1C5lIakFBlUZ2EMKk7d0PfJyYJ8
-1k50GnIm/Ud5wuZAvf5TWmKCRxtOHlOO3mK46E6jgJDVSEYu8D5G5hJGUoPuZDEF
-A/V6u4gDYz+UbUiuNEGgcUJAAxcAY0n5vQzDvrZgv+PKaxGdOlTL5j1BzZtX+UlD
-IDiuE6SkNZQ6MiSeAU/zyw5RLZES6NX3qliToDQnWYNcyWKUl8fdgVkAJWD75jAo
-85rJGgqvAPd6kQg3qTf43+PgBovSgwE/oZg1EEyUZrEQpZ2r79S/cFZHfpFz/TV+
-DRCLEIOXjwDCmSO5jYZOQXTCLRg4YA==
-=UBIx
------END PGP SIGNATURE-----
-
---0wMx2L5PNJE4zS3t--
+---
+pw-bot: cr
 
