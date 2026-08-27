@@ -4,96 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83F57C61DC4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2026 14:28:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3920C61DC4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2026 14:51:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H7NWHYQKU4joAJPyYxanKoDvZTJs0XozDUX3Hghfkuo=; b=EBqnVhHLUHHHoy9abKJHmHPq/8
-	lJIBqKpK3ZS15aqaiOd95zIG7LxJIqo+rjTRJ4BLjxvE6bQxFzYJVrgOHcZWnnUFY+iRttbkA9mWz
-	6/XmmgyxlLlGqR452OeuArjV1xDh70/a4awmPzd9AasVGdFzYY6mTglvTMizaDC8B2sseUDPzUc7f
-	FHG+Fl/wEy+RYDxvw4BPtj7poW0v++fpvgLR8+o1oZiUw+N//E0y4RcvQ4rJxUAwtbLEMknRBAuTu
-	JBuamGgPRv8ubY8PpiTFqNVBkHpD1VVeqAyL+lEiMaS32IUw39vZerBvpyFvfDZxKgCFoJmo5AGrH
-	+2/RQ+nA==;
+	bh=rNAVc3KEaJO754MBwf1BXCQjtokctPSDVwjt06/SloY=; b=tBXGekSXrBNPTwiOTCdOyLuJ6D
+	seXx7XvNjMABS9mCRp+dhSx5T5yfRN5jzMFoXoF6pRAZ/7PgZuuwR7VMUpIpf8dG6AEQ3qfefs1Ot
+	DhK5BSKqYvgYG/A5jfNXlbXT95+nNx1DUAM9cdaUiLEdDXWhc/78SVrsI5Q0ftFc/+mPrzQuNxc2p
+	fNcRXLJMpAESAZvCpU7lR0ZwukzkoMjwvPUlNH2POwQpHAXewIVeP/PaTOu29p0P/kV2XEg35LkIE
+	a0BT96iuWFNlct75dwLioyK535cHUQsjbtGAzt4aT8+k3ySXxyEc8kg8aJKjnmLKsUmFniPw5pUnH
+	F+DrjVOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzb64-00000004AS8-0RV5;
-	Thu, 27 Aug 2026 14:28:52 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1wzbSH-00000004CSq-2Lr3;
+	Thu, 27 Aug 2026 14:51:49 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzb62-00000004ARC-1gNj
+	id 1wzbSF-00000004CRw-0mv7
 	for linux-mediatek@lists.infradead.org;
-	Thu, 27 Aug 2026 14:28:51 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a640c23a62f3a-c2530cabcf4so249200366b.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 27 Aug 2026 07:28:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1787840929; cv=none;
+	Thu, 27 Aug 2026 14:51:48 +0000
+Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-c252c7270faso282913266b.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 27 Aug 2026 07:51:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1787842305; cv=none;
         d=google.com; s=arc-20260327;
-        b=gOa6hfq9IXHUr8g7+Prk8d1Lb1SimpI1Q7MOo3+/VnC+vzqoNIvYZxuXxvgtAFwpk5
-         4hJKlA1b1v6H6rFBGIfj/0KO6rTPR7ctkoUBTyCLjJAjyYdvg3rUxqGo18xSLCi6eENp
-         AzwRiFHHgXaCiQ/VIV9qlvZiuDvw2dmf1juuyPv+IRpg982AEdIqc2tv+FyNkN2oGH4Y
-         ismlnyfle2lJm05rcGOoUqkkDH1P9A/gXxbWfsy2aJEEtBwCktC8Hy3AXPVmLl8SAvoF
-         ek0zDAWG/JxqLlajHRaNzMZqGsFd2noH52+6boVInT02AovznQ+WX9pdUFzzDKAhWYcC
-         mJWA==
+        b=pT/Dk3+mE5WqIMfRDZXpbH1zTTOB6cCqHX6+TFNTVHpB7oFFH3rxY2p7O7BsYCkwy5
+         iYe7zgeofoLDcWEnRnQkX0GVYoXhcMsdC5TlIk/Nhk85SbDesJGhcr6eX+FTSC9G8vmb
+         h48LGQt0MpjV1Y+xsfTItr8dBMWFPF+jm1qwm+0n5NBWApX275Qsi/U1byXgBEtkacoD
+         NZFZdFq6QS7C8tT1w1PE8/RXlArkZVdXceKEP62tKtTtKx2pMrxyKZZ7zmfnLI872NEh
+         CBbkasUcBSepeSiyyldhzoHaR4/JickPAo+AUAUmSV8mxKuwL5E2DDMuUeJ+ydk/+sQC
+         cSMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=H7NWHYQKU4joAJPyYxanKoDvZTJs0XozDUX3Hghfkuo=;
+        bh=rNAVc3KEaJO754MBwf1BXCQjtokctPSDVwjt06/SloY=;
         fh=FGCOzqW4oK7K8xS5EwKwlW8qFzyVhVsDXrbSpirq1u0=;
-        b=HseZGw6KOFWW39NuFgiLBEGSMQTsaeBa9A5+Ta8Flhw05SsFeteao5tiT2aXg7Oy+n
-         eM2AoaA69M68cXRMdhN/6G2OOL5C6pjw6WvcpGNEDQdlhyrax6+nw1FX2rJbpvfY9xxK
-         s/j8j60xALaB7onZTzimEk1s1XelGKucloHZcGfC/g6S/aaaujcTLGwdivCZQD31rHAs
-         HWMIJ62XwNRN4Vl+YmG0EdTdJB5hLHoYJs+gxOPi57gOz0sTMRDb6hq5hrEiUAICJjOP
-         Ea01jR157erwoFdw65F2Atm0laXQk9QBYg/z5n7StOrhATNgvtfBN02E/WvNpPQ1ewSH
-         EAOA==;
+        b=mMJEIYcJ5HE+ZwHg70/KSrYbT5eufWo5HuYwtDLGVxYpl0FJ+xKCvex4mcfGQ4Xe+p
+         rNawsEPXkzhzUidqV3BufrtBf/N6qji1MSMsOorQ10AuN3Ac4r0bT4DpYBoTTdbjup0L
+         74YHBdMOIC1K4OkqAhasCr8Z6HGE2b2OG8uX9KCYss+jAGgJdKbx5PKHoMuVdtFQixdY
+         xubhjsu7dC5JljYLppE5UGuew+lftxAwP1fOrhHT7T+PGEsGN3Gc8tJHBvZOnJrfm/no
+         gbemK0fZ5tALF87H1uxbU5lYG+O79BI/OXGbp/V3WA9Zt3/Ixh46D+v68nChQrSBY1YX
+         la1w==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1787840929; x=1788445729; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1787842305; x=1788447105; darn=lists.infradead.org;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=H7NWHYQKU4joAJPyYxanKoDvZTJs0XozDUX3Hghfkuo=;
-        b=nQUmy+NUlB1zjUIFl7niiNr6lOMcga9QJY47CYQqOrkKFDSxc+sPpeBjE0gHS+Hrhw
-         7s296KIdV3+XcAG2WbBe/kkUZOZIQmSXkQMSz5t0Q4UjYuFlur3WhvYCagh4pkes4XAV
-         JyJ+ke9FyXT+GM1PHziYodfQZy3r/LA1ChcHjPak+3lzaiQTi3sv/Ykqh/deple+fhCr
-         ajzyUz1iPSavMBVIM3FLz6lVKl2iGJIYoSSCv+wFkbTN2VMpMkG9GwZlUpzrSczmhGU+
-         Z1zRdTQNbl8w+67eDhs6PVMiaRefW8DIo86nyYg27Qmb/PFUkCz7qPHeCi+2tlh9ke8y
-         KUVw==
+        bh=rNAVc3KEaJO754MBwf1BXCQjtokctPSDVwjt06/SloY=;
+        b=ilBFR/qZrmFDotl/8/zOjgV2AHAYCIBpLYxEoD20h9vD+hL/m4oSYTvH9WhbVPMgFV
+         KbAN2CK4FCoaKVJSQR1G0ttjRDTD8a1dqrKFo8evv6ywJFXi80mfFdK9jb2AAmGj8yM7
+         OZIRMWKlMPncSx/mb1feT/r6lo5xEXYcYzqQNJLoW7s4iPbCIOrEGGlA8RPHYXvDkQhv
+         Ofq1LFz1CcOcmWBK/exVKkx8+xJLVrkqK1FELSTQnxQ0fxe+9OFofrSoa+AkSTlPTK0F
+         FxSXrKjERqHoQOCQ4e23vWlGzHUM/ZyA1FXke2d1GVe3WEPumE50FXSC62TPb0JnGc5i
+         aBzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787840929; x=1788445729;
+        d=1e100.net; s=20251104; t=1787842305; x=1788447105;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to:content-type;
-        bh=H7NWHYQKU4joAJPyYxanKoDvZTJs0XozDUX3Hghfkuo=;
-        b=aQ2vUVgd0IegXZ5ePtVJn6/ZcMG7/1IzYYS37Oz+QXbA6WdyYHJ+xr53EbrYOWNTMg
-         48ssgzAnv0uKwhdlq40O3jfZ0A2C314kpHGhK4vxTVwwE/Mc3FGBJRwbGF7dUlQtAOb5
-         SwYfYRPBcqDz1s4Cxj2dpadQNuzC6XkN9camps2TWhfVBTVpMcjieFTV4quRhxxrrpS0
-         Uxcn1VKz4BaFU1I3kyjG9UD58D+bKphm/TFJlvvmo4LGUn8++yRxA96THaqRdELiXkqK
-         4oyF+rb4jPKvOo85ONUi0AbcIXMBVpOJjSGz3K9bhCtLsLxR/2u52HZkirbQiATJX5yg
-         RmwA==
-X-Gm-Message-State: AFuF++kknk9a/lVdlwrgzAxldAuUk5qTgZS/QVFeKgneIFXjQIyWr08k
-	4O+svHaWhiMfbdA6BtgupIYvIUpapqmTpLB7DxkCS+2MdveuCbp/oCplCowHVrQChpn6ZHZ7C9h
-	J386fCAvsr5tNm9sy09/5j+78TWCbhbA=
-X-Gm-Gg: AR+sD111BBjcr8AE/alaf6WA/AQvtwr0hAj4pYvY+gqj1FgFWBDAwDgtBMgWc4P2vKA
-	qokIgcTIy/KUsQxb3h6LiJ40YCq3tr4/ne5xbtEoOijA+Nq6AtGMy5c8xJOUWpD6wupFSG+14Wg
-	6nZ9y5nIpkfWOd+pIi+i12Geio4vY+WYJDBz40ylKnozlasueGazQj8cqk2QkWA7QQH2A4hAv3a
-	UvY9lrSyVv9nZRFe7uvhbWoYcKge8NMNvMmXMW6T103MBi9LJvTe31NRF9pmSsXuv+B/vrxxzlw
-	MUmhMP1okEkCYUCWzytjupLpXTPC7sQbJOaUCqb3lEc=
-X-Received: by 2002:a17:907:e98b:b0:c15:ee0d:9a32 with SMTP id
- a640c23a62f3a-c250c2e545amr1440724266b.21.1787840928409; Thu, 27 Aug 2026
- 07:28:48 -0700 (PDT)
+        bh=rNAVc3KEaJO754MBwf1BXCQjtokctPSDVwjt06/SloY=;
+        b=Y8o8CERmqPvHXMjKh+Sn7d1uCyOD3+e8rKt5hAdYrh/39nGmqXZmg/NhF9p7GZMW9u
+         hP4w5PpmYSGsUbpySej5/pbGadLStgWbwyjpT4NAz5vEJG4ZS4DCJXCgL+hpUHqwgn7d
+         +k9Kg4tvONxBufuOUkPJaFo1Y4+lRN0OM/VCNRXsoLBFoaBIylivc2Y6v7bcRPiB/LuK
+         O1GXv2cNtXd0wS14cI35xjxpT36YZSHSBOyPqRCBnsasYqh+Cs/8nf+7t7E/k015Qlto
+         ZjUj99YZ2bwW5OR+St/M60k2y9XeOZEJl1vxjYK98Un5uMZ3bANKZQjO9ZqScoFa42e5
+         uxhA==
+X-Gm-Message-State: AFuF++m6KJvslbZG2e349DkoML2q6QwIgznxEwnrcdzypY2EqiSpOUhn
+	1UeXbac+wWg+7u/ly3kjwVSUyQx1PSBQctzs1XtbxWpWFGFSrU+wHf//j7WZ9P8XWhW+5NZgNnW
+	d2xFXTAHr3yjwCXJcoGi9Lrj7b8D982Y=
+X-Gm-Gg: AR+sD11CjY4Zv0kdU/IoUu3QKmieMxFyTsncVjdwaJuQ8MHHb7EI2LqaCGG9AX2g4ks
+	kR+mB13RlYdAJ9tTEW/cxFwuTYJSXO9aBuiVQNBXDy9VNCSrBOJk1Lhx5nfjI0asdWPBQVNsL6B
+	NZ6ezTl/docbmgkOgkUrGkMWQivKKwMfZB3oOG72WDodJQP7T+8OmbRj5GtEJFcuayvuTNezMtf
+	RN8FJSoz+2ZpDv4fFlxFzYywDyPLntoJKcR6buZgGsM0ru6uanxBftcCCaX5zbJzcpQAsNDmnkM
+	T8wz5mgaUMIvTepOSGRHTfeaUoGQTzhKjwlxsfnamHo=
+X-Received: by 2002:a17:907:b050:10b0:c25:2688:8212 with SMTP id
+ a640c23a62f3a-c252688970emr595367466b.0.1787842304808; Thu, 27 Aug 2026
+ 07:51:44 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260819101853.44681-1-l.scorcia@gmail.com> <20260819101853.44681-3-l.scorcia@gmail.com>
- <20260827-clever-cherry-zebu-6a98f1@quoll>
-In-Reply-To: <20260827-clever-cherry-zebu-6a98f1@quoll>
+References: <20260809160643.33991-1-l.scorcia@gmail.com> <20260809160643.33991-2-l.scorcia@gmail.com>
+ <20260811-amethyst-seriema-of-gallantry-ca9c7f@quoll> <CAORyz2KXJf4gU46649w1ncb7TAOErdoGmfOMzwKr8b+eGdAgVA@mail.gmail.com>
+ <20260812-smooth-artichoke-kittiwake-f6e85e@quoll> <409e398b-eb8f-48eb-a0d3-ed8fa811328f@kernel.org>
+ <CAORyz2JbOsiDYzCw--Y-tiRXEaZ69B8S9Hjvs-j5WZmtck-ynQ@mail.gmail.com> <ca373f33-fa20-40cf-ab7b-33dd9c25bc49@kernel.org>
+In-Reply-To: <ca373f33-fa20-40cf-ab7b-33dd9c25bc49@kernel.org>
 From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Date: Thu, 27 Aug 2026 16:28:36 +0200
-X-Gm-Features: AcwNN1WwMj244ofyHxGC6S8z0K_T3xrDTw62tkx0k_I8FGnpAKJxs0-SepEND74
-Message-ID: <CAORyz2KCAzEEsCifDF4+_wKmi=M6t4EKVVqys-H5wOQqzBeVzw@mail.gmail.com>
-Subject: Re: [PATCH v4 2/7] watchdog: mediatek: Add wdt/toprgu resets for mt6589
+Date: Thu, 27 Aug 2026 16:51:31 +0200
+X-Gm-Features: AcwNN1UfydGY6AWpAopJHGYjoXoxQXXnBv3_HR2BQl9Llz3VNnES3KHGvzZYgY4
+Message-ID: <CAORyz2Jq-Q5CbFU5=vCffVyMmyS2KodFhomfUqyGwa1w8Q8RTg@mail.gmail.com>
+Subject: Re: [PATCH v3 1/8] dt-bindings: reset: Add mt6589 toprgu reset IDs
 To: Krzysztof Kozlowski <krzk@kernel.org>
 Cc: linux-mediatek@lists.infradead.org, 
 	Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, 
@@ -105,8 +107,8 @@ Cc: linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260827_072850_458234_6F76721F 
-X-CRM114-Status: GOOD (  16.24  )
+X-CRM114-CacheID: sfid-20260827_075147_249745_56127E03 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,37 +123,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> >  drivers/watchdog/mtk_wdt.c | 7 ++++++-
-> >  1 file changed, 6 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-> > index 91d110646e16..f8208fb0f723 100644
-> > --- a/drivers/watchdog/mtk_wdt.c
-> > +++ b/drivers/watchdog/mtk_wdt.c
-> > @@ -10,6 +10,7 @@
-> >   */
-> >
-> >  #include <dt-bindings/reset/mt2712-resets.h>
-> > +#include <dt-bindings/reset/mediatek,mt6589-wdt.h>
->
-> I do not see how you use the bindings here, so my previous comments
-> stay. You just ignored it and never replied. In such case:
->
-> NAK
+> The IDs do not describe hardware capabilities, but ABI between hardware
+> (DTS) and software (Linux). If you do not have them in the software,
+> then the ABI is not used. I looked at your driver patch and did not find
+> usage of these.
 
-The mtk_wdt driver requires the total number of available resets to
-register the reset controller. This was defined as
-MT6589_TOPRGU_SW_RST_NUM in the binding header, therefore the need for
-including it.
-In your review for patch v4 1/7 [1] you mentioned that that define
-should be dropped as it's not really a binding, so for the next
-revision I'll drop that define from the binding header and move it
-directly inside the driver. The include won't then be necessary.
+Thank you for the clarification.
+Since I'm not adding resets to any mt6589 DTS node here I can
+completely omit this patch in the next revision. If anyone in the
+future wants to specify a toprgu reset for a mt6589 DTS node, they may
+submit the binding header together with the actual DTS reference.
 
-Thank you for your help!
-
-[1] https://lists.infradead.org/pipermail/linux-mediatek/2026-August/112272.html
---
+Thank you,
+-- 
 Luca Leonardo Scorcia
 l.scorcia@gmail.com
 
