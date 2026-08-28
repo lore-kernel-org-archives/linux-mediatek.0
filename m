@@ -4,62 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7ACB0C61DB9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2026 10:31:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E554C61DD7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2026 11:34:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=I4N8gzh34TI4s9xtonIahAOEOyG3JFBd/5w0IEWxzdw=; b=CNcsSexUJKSsNCnJ0BIOYfTJAt
-	fGfnGJ+mWcxyW4JV/AqQEFy6zWBFRh7Jov/mETftDw9BDM5MMzpL5hoAxifsKz4GlxPPbL2utEi8p
-	l2RCb09bJBV9I1HxQPuvtXlRnkVda60FDemzTg+yivPfENQXEW61CgSn456Bz7zSlcmFPY+f9j5wE
-	o67pJEvSDj1H8ahxSE/P3C5Sp2uhnL9I34Qt5YWrxLsEvdUpdk7139hR7PWfxGYuMV87oXbvkHSIG
-	KMdNg9V8EszI8txy8G94jqXk5tUZ6AxU98CVy2Rhr4SSSUlBgFqUCdwK9wmpcix03uHV+Zus+D0KU
-	Xfq5j5WA==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9DUbFprSSwBLH7QrLmF5W6kigIbM/HOESze8hnplQjI=; b=lNnD2XdBxsweWlYF06etf3kCkU
+	bG8Q8K4TSPpR6MAV6NSVy9ZbmkSsXm+1ut9tkiFiMis+vN0gYx1GwgCZkkzx11odqu7Rnor2heYUq
+	45hSm1zUUK4uh+StU0HY24Lzypps9o6F2xJkNMvytYuxgY9uno40aj5TZmigsg8UtlusCepLMivSX
+	369/zG2tR9awj/sYzgehJxnOgpKRrdjgBun+KqqkpR5gpzNuAod4hhmJ+Fn0tFcq18h+U2Xgu642Z
+	C2VghINlJuLgSLFxGopMd/haGWLZAk+S5xUxCKuD/Q6tHM28GAWq0rs7w619TMZII9HHvJquIcYVt
+	rv2xdqUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzts0-00000005a5p-0NGw;
-	Fri, 28 Aug 2026 10:31:36 +0000
-Received: from m16.mail.163.com ([117.135.210.3])
+	id 1wzuqw-00000005ehJ-1eMR;
+	Fri, 28 Aug 2026 11:34:34 +0000
+Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wztrw-00000005a48-2Oq2;
-	Fri, 28 Aug 2026 10:31:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=I4
-	N8gzh34TI4s9xtonIahAOEOyG3JFBd/5w0IEWxzdw=; b=ctmxte7VTqPZfHLDUH
-	qSPlOfreNlz3vxDreQ9CQ7w4dognsWsVp83ezPsYhkSNh4aF3tvtRLKwfkaLP37t
-	+LvNB1+AjJRcyctC4dkIQrHrkWNAMhJ30eyhcgs58+GBAaHN2pSbM9DSX7ZdT89C
-	53RzD6hQpvLn+zhaQPjjvQhSM=
-Received: from localhost.localdomain (unknown [])
-	by gzsmtp4 (Coremail) with SMTP id PygvCgAnfhtxY5FqOxmtOg--.5497S2;
-	Fri, 28 Aug 2026 18:31:13 +0800 (CST)
-From: oushixiong1025@163.com
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-usb@vger.kernel.org,
+	id 1wzuqo-00000005ed7-1rap;
+	Fri, 28 Aug 2026 11:34:30 +0000
+Received: from localhost.localdomain (unknown [111.196.241.250])
+	by APP-01 (Coremail) with SMTP id qwCowACnfPA6cpFqpPm9Bg--.43118S22;
+	Fri, 28 Aug 2026 19:34:22 +0800 (CST)
+From: Pengpeng Hou <pengpeng@iscas.ac.cn>
+To: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>
+Cc: Pengpeng Hou <pengpeng@iscas.ac.cn>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Shixiong Ou <oushixiong@kylinos.cn>
-Subject: [PATCH] usb: mtu3: fix double dereference in mtu3_log_ep trace event
-Date: Fri, 28 Aug 2026 18:31:10 +0800
-Message-Id: <20260828103110.893817-1-oushixiong1025@163.com>
-X-Mailer: git-send-email 2.25.1
+	Cyril Chao <Cyril.Chao@mediatek.com>,
+	Darren Ye <darren.ye@mediatek.com>,
+	=?utf-8?q?C=C3=A1ssio_Gabriel?= <cassiogabrielcontato@gmail.com>
+Subject: [PATCH 20/20] ASoC: mediatek: mt8196: Unwind register clock and cache restore failures
+Date: Fri, 28 Aug 2026 19:34:15 +0800
+Message-ID: <20260828113416.47061-21-pengpeng@iscas.ac.cn>
+X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20260828113416.47061-1-pengpeng@iscas.ac.cn>
+References: <20260828113416.47061-1-pengpeng@iscas.ac.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: PygvCgAnfhtxY5FqOxmtOg--.5497S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxJw15CFyxXr1kWFW5Wr4Durg_yoW5Gr1fpa
-	yfuF9rKF4ktwsFvF4kZ34FyFZ0vrWFvFyrKryxu3s5Z3WS9FnxtFs7tryF9ryqkrWrCFy7
-	JF1qkryrX3Wj937anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UKXd8UUUUU=
-X-Originating-IP: [116.128.244.169]
-X-CM-SenderInfo: xrxvxxx0lr0wirqskqqrwthudrp/xtbC-hHzA2qRY3FYVQAA37
+X-CM-TRANSID: qwCowACnfPA6cpFqpPm9Bg--.43118S22
+X-Coremail-Antispam: 1UD129KBjvJXoWxXFW3JrWUWrykWw1fAryUGFg_yoWrGrWrp3
+	97Cr1qyrWjq348uFZ0vrW7tFyF9r4xAFW3CFyjg34kZr1akrWxAF1kJas7ZFsIqr1kGa1a
+	gFyDKa45CF4Y9FUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUmS14x267AKxVWrJVCq3wAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2048vs2IY020E87I2jVAFwI0_JF0E3s1l82xGYI
+	kIc2x26xkF7I0E14v26ryj6s0DM28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8wA2
+	z4x0Y4vE2Ix0cI8IcVAFwI0_Xr0_Ar1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr1j6F
+	4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxVW0oVCq
+	3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0I7
+	IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Gr0_Cr1lOx8S6xCaFVCjc4AY6r1j6r4U
+	M4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628vn2
+	kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkE
+	bVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67
+	AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVW5JVW7JwCI
+	42IY6xIIjxv20xvEc7CjxVAFwI0_Gr1j6F4UJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF
+	4lIxAIcVC2z280aVAFwI0_Gr0_Cr1lIxAIcVC2z280aVCY1x0267AKxVW8Jr0_Cr1UYxBI
+	daVFxhVjvjDU0xZFpf9x0JUhNVPUUUUU=
+X-Originating-IP: [111.196.241.250]
+X-CM-SenderInfo: pshqw1xhqjqxpvfd2hldfou0/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260828_033133_045308_569BFBA7 
-X-CRM114-Status: UNSURE (   9.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260828_043428_627474_8868036B 
+X-CRM114-Status: GOOD (  12.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,67 +89,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Shixiong Ou <oushixiong@kylinos.cn>
+mt8196_afe_runtime_resume() first acquires three register-access clocks
+and then replays the register cache.  mt8196_afe_enable_reg_rw_clk()
+ignores each clock-enable result and leaks already enabled clocks when a
+later rate change fails.  Runtime resume also ignores regcache_sync()
+and proceeds with 26 MHz requests and main-clock enable.
 
-TP_printk() dereferences the gpd_ring pointer stored in the entry
-via &__entry->gpd_ring->dma, which may point to freed memory when
-the trace record is read later. Store the dma address in the entry
-and print that instead.
+Make the register-clock helper acquire transactionally and unwind the
+successful prefix on every failure.  Return cache replay errors after
+restoring cache-only and dirty state and disabling the three
+register-access clocks.
 
-This is detected at boot:
+The issue was identified via static analysis and manually reviewed.
 
-  TRACE EVENT ERROR: Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
-  ------------[ cut here ]------------
-  Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
-  WARNING: kernel/trace/trace_events.c:420 at test_double_dereference+0x138/0x140, CPU#0: swapper/0/0
-  Call trace:
-   test_double_dereference+0x138/0x140 (P)
-   trace_event_raw_init+0x350/0x5b8
-   event_init+0x38/0xb0
-   trace_event_init+0xf4/0x5c8
-   trace_init+0x30/0x6b8
-   start_kernel+0x4a4/0x8d8
-   __primary_switched+0x88/0x98
-  TRACE EVENT ERROR: Event mtu3_gadget_ep_disable has double dereference in TP_printk: &REC->gpd_ring->dma
-  TRACE EVENT ERROR: Event mtu3_gadget_ep_enable has double dereference in TP_printk: &REC->gpd_ring->dma
+Fixes: 7384ecab34eb ("ASoC: mediatek: mt8196: support audio clock control")
+Fixes: 57513aabfe5b ("ASoC: mediatek: mt8196: add platform driver")
 
-Fixes: 83374e035b62 ("usb: mtu3: add tracepoints to help debug")
-Signed-off-by: Shixiong Ou <oushixiong@kylinos.cn>
+Assisted-by: LLM
+Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
 ---
- drivers/usb/mtu3/mtu3_trace.h | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ sound/soc/mediatek/mt8196/mt8196-afe-clk.c | 27 ++++++++++++++++++----
+ sound/soc/mediatek/mt8196/mt8196-afe-pcm.c |  8 ++++++-
+ 2 files changed, 29 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
-index 89870175d635..041e730c88a6 100644
---- a/drivers/usb/mtu3/mtu3_trace.h
-+++ b/drivers/usb/mtu3/mtu3_trace.h
-@@ -224,6 +224,7 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
- 		__field(unsigned int, flags)
- 		__field(unsigned int, direction)
- 		__field(struct mtu3_gpd_ring *, gpd_ring)
-+		__field(dma_addr_t, gpd_dma)
- 	),
- 	TP_fast_assign(
- 		__assign_str(name);
-@@ -235,12 +236,13 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
- 		__entry->flags = mep->flags;
- 		__entry->direction = mep->is_in;
- 		__entry->gpd_ring = &mep->gpd_ring;
-+		__entry->gpd_dma = mep->gpd_ring.dma;
- 	),
- 	TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p/%pad flags %c:%c%c%c:%c",
- 		__get_str(name), usb_ep_type_string(__entry->type),
- 		__entry->maxp, __entry->slot,
- 		__entry->mult, __entry->maxburst,
--		__entry->gpd_ring, &__entry->gpd_ring->dma,
-+		__entry->gpd_ring, &__entry->gpd_dma,
- 		__entry->flags & MTU3_EP_ENABLED ? 'E' : 'e',
- 		__entry->flags & MTU3_EP_STALL ? 'S' : 's',
- 		__entry->flags & MTU3_EP_WEDGE ? 'W' : 'w',
+diff --git a/sound/soc/mediatek/mt8196/mt8196-afe-clk.c b/sound/soc/mediatek/mt8196/mt8196-afe-clk.c
+index 286e39f53ae0..ea0835e73510 100644
+--- a/sound/soc/mediatek/mt8196/mt8196-afe-clk.c
++++ b/sound/soc/mediatek/mt8196/mt8196-afe-clk.c
+@@ -511,26 +511,43 @@ int mt8196_afe_enable_reg_rw_clk(struct mtk_base_afe *afe)
+ 	int ret;
+ 
+ 	/* bus clock for AFE external access, like DRAM */
+-	mt8196_afe_enable_clk(afe, afe_priv->clk[MT8196_CLK_TOP_ADSP_SEL]);
++	ret = mt8196_afe_enable_clk(afe, afe_priv->clk[MT8196_CLK_TOP_ADSP_SEL]);
++	if (ret)
++		return ret;
+ 
+ 	/* bus clock for AFE internal access, like AFE SRAM */
+-	mt8196_afe_enable_clk(afe, afe_priv->clk[MT8196_CLK_VLP_MUX_AUDIOINTBUS]);
++	ret = mt8196_afe_enable_clk(afe,
++				    afe_priv->clk[MT8196_CLK_VLP_MUX_AUDIOINTBUS]);
++	if (ret)
++		goto disable_adsp;
++
+ 	ret = mt8196_afe_set_clk_rate(afe, afe_priv->clk[MT8196_CLK_VLP_MUX_AUDIOINTBUS],
+ 				      MT8196_AFE_26M);
+ 	if (ret)
+-		return ret;
++		goto disable_intbus;
+ 
+ 	/* enable audio h clock */
+-	mt8196_afe_enable_clk(afe, afe_priv->clk[MT8196_CLK_VLP_MUX_AUDIO_H]);
++	ret = mt8196_afe_enable_clk(afe, afe_priv->clk[MT8196_CLK_VLP_MUX_AUDIO_H]);
++	if (ret)
++		goto disable_intbus;
++
+ 	ret = mt8196_afe_set_clk_rate(afe, afe_priv->clk[MT8196_CLK_VLP_MUX_AUDIO_H],
+ 				      MT8196_AFE_26M);
+ 	if (ret)
+-		return ret;
++		goto disable_audio_h;
+ 
+ 	/* AFE hw clock */
+ 	/* IPM2.0: USE HOPPING & 26M */
+ 	/* set in the regmap_register_patch */
+ 	return 0;
++
++disable_audio_h:
++	mt8196_afe_disable_clk(afe, afe_priv->clk[MT8196_CLK_VLP_MUX_AUDIO_H]);
++disable_intbus:
++	mt8196_afe_disable_clk(afe, afe_priv->clk[MT8196_CLK_VLP_MUX_AUDIOINTBUS]);
++disable_adsp:
++	mt8196_afe_disable_clk(afe, afe_priv->clk[MT8196_CLK_TOP_ADSP_SEL]);
++	return ret;
+ }
+ 
+ int mt8196_afe_disable_reg_rw_clk(struct mtk_base_afe *afe)
+diff --git a/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c b/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c
+index a1ae8322d8b6..49283f242c00 100644
+--- a/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c
++++ b/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c
+@@ -2222,7 +2222,13 @@ static int mt8196_afe_runtime_resume(struct device *dev)
+ 		goto skip_regmap;
+ 	}
+ 	regcache_cache_only(afe->regmap, false);
+-	regcache_sync(afe->regmap);
++	ret = regcache_sync(afe->regmap);
++	if (ret) {
++		regcache_cache_only(afe->regmap, true);
++		regcache_mark_dirty(afe->regmap);
++		mt8196_afe_disable_reg_rw_clk(afe);
++		return ret;
++	}
+ 
+ 	/* set audio 26M request */
+ 	regmap_update_bits(afe->regmap, AFE_SPM_CONTROL_REQ, 0x1, 0x1);
 -- 
-2.25.1
-
-No virus found
-		Checked by Hillstone Network AntiVirus
+2.43.0
 
 
