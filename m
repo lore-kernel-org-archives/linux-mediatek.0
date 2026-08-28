@@ -4,87 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71D0CC61DD9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2026 11:34:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DABCCC61DDA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2026 12:10:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Y0HX/xZ7Op12Xaru2nEPnTzkHe2HyNWMPEe/M9v8E/M=; b=DrNUvUPxlodiS5uZN+YzzXgZCx
-	JKGuy21kJwr10RWWsGEr6VwJwCDUGrap7/05uWE0FWaU65Im7kkiPhgi3j+kCy0jNaUdGHrtXl1zk
-	GOAIu76EtP3tKzNr0Z2sOaMRIjrCGbhEAanhqGOJT2Ez1kH6qSVxf8dQLI9zOOpUZ7ydYgQSzmpVP
-	fLOCB4slaJv46xjcyN0PNtJF9rzfajooTF6gff9ko+zqekFRa2Se7SfjlvjGkXVA4C3GkgIJdNXwy
-	br7aJy0yMlMODn/S/WSiyIcznoAoS5SszAO5ZNYU19vTxlG6FOGScUErzK6ANDzUQzAoViN4Sk2/W
-	kSY9xiUw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=l/wCsFq/Zorgy/BqKS/v6a3TdSdfv1vfVKndsRYo1PM=; b=NzHyho2/NUAuAIuT95+G8CdAKP
+	FVAAfoQC5AtDnOMCTf7IKzC7O4b+Hd8x/yeEGYjKy9vKmztQXIWlOlUx20b0cSmFJEN/GxGZRr31R
+	Q10/iKyIZBGReJHA4yrmJmW9GrVF+rNBT9eUFAcuZ2yQusQAZA/EkGywA47WG++r/ooX+NkyNy1a9
+	E9KE7mi5lgTSm40eZnZtGuHoyFsdSV/H5/cVAWxHf+TaoFS4anrY9xkGYlKNaD46adkpGVffkCMHK
+	9g+XfYSA6GPLQdi7ay6c3nXAUlGxteQxPK6GJJu5w+vhN8yb1aE/JYGfGz49polwCLjnoocaG/uSu
+	g2gfRwbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzuqw-00000005ehj-2Lef;
-	Fri, 28 Aug 2026 11:34:34 +0000
-Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
+	id 1wzvQ4-00000005hyn-1UJe;
+	Fri, 28 Aug 2026 12:10:52 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzuqq-00000005edv-3slZ;
-	Fri, 28 Aug 2026 11:34:31 +0000
-Received: from localhost.localdomain (unknown [111.196.241.250])
-	by APP-01 (Coremail) with SMTP id qwCowACnfPA6cpFqpPm9Bg--.43118S2;
-	Fri, 28 Aug 2026 19:34:18 +0800 (CST)
-From: Pengpeng Hou <pengpeng@iscas.ac.cn>
-To: Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>
-Cc: Pengpeng Hou <pengpeng@iscas.ac.cn>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Baojun Xu <baojun.xu@ti.com>,
-	=?utf-8?q?C=C3=A1ssio_Gabriel?= <cassiogabrielcontato@gmail.com>,
-	Cyril Chao <cyril.chao@mediatek.com>,
-	Darren Ye <darren.ye@mediatek.com>,
-	David Rhodes <david.rhodes@cirrus.com>,
-	Kevin Lu <kevin-lu@ti.com>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-mips@vger.kernel.org,
-	linux-sound@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	=?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>,
-	patches@opensource.cirrus.com,
-	Paul Cercueil <paul@crapouillou.net>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Sen Wang <sen@ti.com>,
-	Shenghao Ding <shenghao-ding@ti.com>,
-	Takashi Iwai <tiwai@suse.com>
-Subject: [PATCH 00/20] ASoC: propagate register restore failures
-Date: Fri, 28 Aug 2026 19:33:55 +0800
-Message-ID: <20260828113416.47061-1-pengpeng@iscas.ac.cn>
-X-Mailer: git-send-email 2.50.1
+	id 1wzvQ1-00000005hxR-2NRZ
+	for linux-mediatek@lists.infradead.org;
+	Fri, 28 Aug 2026 12:10:51 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-49a97714f5dso6060365e9.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 28 Aug 2026 05:10:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre.com; s=google; t=1787919047; x=1788523847; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=l/wCsFq/Zorgy/BqKS/v6a3TdSdfv1vfVKndsRYo1PM=;
+        b=G2yAP1XiGHCbiG5mDNWZLzPQSZmhvxDdemsSiB5KOPjRwa96lFKoTVLC7hHA2quLm5
+         dlQh/J6aV6yOpRQnANxo9nTCncoW0eNmJPOTs5djA7oXmMj8Pjbldb75qT3bTTHhIptG
+         I8OuqEgFATzTQHc6Zs5ANatJY6Ml2ZK50VgB9zfPBR6FmIUifXBFjM1G6+QWWqKJh2zN
+         Qy2uarLMwDsTuSquXw94Dv8+MbcA9y26qvUVW4o3xT6SVJPOGMkarSrPl3pxPuiUtFrk
+         wyn3mRCkQpdmXK+QB0vrugKWnUPSrUYSvuMDyOXTd09AL1ZDih54LwjfmJQYgSlpuhWC
+         +nmQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1787919047; x=1788523847;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=l/wCsFq/Zorgy/BqKS/v6a3TdSdfv1vfVKndsRYo1PM=;
+        b=XcxE1LmNYCAqB+3VOALSkS5ErpD+yMptuCu0pmQQT/vwkQKwE5OPx7PCmexDse2nke
+         MJcHlHiEnq/xnavoLKIpuFfe7zaN+AJwVIZkEK4ir54WYCZwddtgQoLHUEKQ0E3T2EJZ
+         0lYHrKrqFPUv7At6q+A96hPt4LQLfsO762FlMOzy71j/Y20gMfiJwcbByuOyameIDypX
+         AJjrMCQVvQVOE5fjx7OIYSSLZqOnrGAx8zcAgw84KBuklEqlxDdeDaSIiWNqdv5b1sFk
+         FI6hde3AxsJg7zL7KI/HvilPx/QYwYva3zAZ6d0EZvlyL6QVs+j5Mv8sTAX+2zDLC6/S
+         fmSw==
+X-Forwarded-Encrypted: i=1; AHgh+RqWqM4BThrRKGQPENTQ8ZebOcyeY2m5EG3gHGtLYA0JlpUxlixS1aRdYl5dGD8J4712p6IrMTriZczxJZZzjg==@lists.infradead.org
+X-Gm-Message-State: AFuF++lDrYgGTe3gqyboFB2QAH86YVQr+xOX2pNGvnnVIks75eDSSkXU
+	jrJn5XPC/uIG49wMTxbXxzv/mbq+eHDbkGHJru4KcSPdA+gQC93q74JbTD5xtDSZVV0=
+X-Gm-Gg: AR+sD10sEKeC8yEA32+cd0BWBH4o3rT6F+RllaZqLFt2AULEEA+GZW6PPwHZaPh2yPe
+	4DxWBeJEWkKyHUsuVCOo71XmhLpX9HYdUESFtA0T9gXoFaoT48yyScsbjZYpxfVzkR0aydHfYn8
+	NAE547KsDKlRJ5iwTyxJTyttss4b2ed5xJZP7YNOBLd3lgbehaJfpuNEhs1sWqS8JkO+fpvHeLT
+	3jjf3yWKg9LZKyllhkOUb+fYjYuUnLM2EKMLHQLJUXXauPxp5gBc31QHCDJOtNDrUsas3lhsoUT
+	pqNehGJ2N6OvuwAakKh8sdjMzz4RL/oD18kpw/nIJRKzKYbp34cVjYAkOQs4kF66T2AWnC3deww
+	7ClrRxH0+KdR0QCOC+n5bhjsU8pBwTxiK22dXcKL2k9Rk7J3aZAAaeWaW/fmvtNtaviQ48vupNY
+	ge94uHQIHzn7POhtDwoyTsh8YT0M+Ndq30xk8sYIQOXP2nP6PN8uYWiZS+RS41LyPUE4r+WU5Ng
+	6+oetsF0RoQrfF9iMeXzKPaoFm0mjhTSi9v826z2ODT939xb51Fg2Fuw9L6DmSzjv3ku6LtkMNR
+	WJtbAAQaGXw7TAGIbwI8TgbzGI5Wma2lg3TWletf18RO+w==
+X-Received: by 2002:a05:600c:4453:b0:499:8777:ccba with SMTP id 5b1f17b1804b1-49b91c486abmr84183025e9.12.1787919046770;
+        Fri, 28 Aug 2026 05:10:46 -0700 (PDT)
+Received: from [192.168.1.100] (2a02-842a-d52e-6101-6f8f-5617-c4b6-8627.rev.sfr.net. [2a02:842a:d52e:6101:6f8f:5617:c4b6:8627])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49b494228bfsm125368175e9.2.2026.08.28.05.10.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 28 Aug 2026 05:10:46 -0700 (PDT)
+From: Julien Stephan <jstephan@baylibre.com>
+Date: Fri, 28 Aug 2026 14:10:47 +0200
+Subject: [PATCH] drm/mediatek: mtk_hdmi_v2: fix VID_DOWNSAMPLE_CONFIG
+ register offset
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: qwCowACnfPA6cpFqpPm9Bg--.43118S2
-X-Coremail-Antispam: 1UD129KBjvJXoWxXw13Cry8Xr13GrW8tr4kCrg_yoW5Kw4fpr
-	s3G39Yqw1rX3y3Zw4fA3yUX3Zaka4ruF45JwnFq34vyry5CF1xKr4Iyw1UZFWUXrykKa9x
-	Xr13A3yDCr15JaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUU9014x267AKxVW5JVWrJwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26r1I6r4UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
-	6F4UM28EF7xvwVC2z280aVAFwI0_GcCE3s1l84ACjcxK6I8E87Iv6xkF7I0E14v26rxl6s
-	0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xII
-	jxv20xvE14v26r1j6r18McIj6I8E87Iv67AKxVW8JVWxJwAm72CE4IkC6x0Yz7v_Jr0_Gr
-	1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7M4IIrI8v6xkF7I0E8cxa
-	n2IY04v7MxkF7I0En4kS14v26r4a6rW5MxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4
-	AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE
-	17CEb7AF67AKxVW8ZVWrXwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMI
-	IF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4l
-	IxAIcVC2z280aVAFwI0_Gr0_Cr1lIxAIcVC2z280aVCY1x0267AKxVW8Jr0_Cr1UYxBIda
-	VFxhVjvjDU0xZFpf9x0pRx-BiUUUUU=
-X-Originating-IP: [111.196.241.250]
-X-CM-SenderInfo: pshqw1xhqjqxpvfd2hldfou0/
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260828-mtk-hdmi-v2-fix-register-offset-v1-1-118ad5d7ebe3@baylibre.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXNUQrCMBCE4auUfXahjaDRq4gPMZm0q7SV3ViE0
+ rsb9fGD4Z+VDCowOjcrKRYxmaeKbtdQHMLUgyVVk2vdofXO81gePKRReHGc5c2KXqxAec7ZUNg
+ fTyHHvY8hdVQrT0Wd/R4u17/tdbsjlm+Wtu0D+/pwJoMAAAA=
+X-Change-ID: 20260828-mtk-hdmi-v2-fix-register-offset-879afc38cad1
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
+ CK Hu <ck.hu@mediatek.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Tommy Chen <tommyyl.chen@mediatek.com>, 
+ Julien Stephan <jstephan@baylibre.com>
+X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260828_043429_337701_C6594A0F 
-X-CRM114-Status: UNSURE (   7.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260828_051049_628328_4FDC416D 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,81 +111,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Several ASoC codec and AFE power transitions restore cached register state
-after reset or power loss.  The callbacks in this series all have an effective
-error consumer: component probe or hw_params, DAPM bias handling, device
-runtime PM, or system PM.  They currently continue or publish success after a
-required register operation failed.
+According to the datasheet, VID_DOWNSAMPLE_CONFIG is at offset 0x8f0;
+0x8d0 is the VID_CSC_COEFF_0 register.
 
-Check the complete local restore transaction at each site and unwind clocks,
-supplies, GPIOs, cache state or software publication where that transaction
-acquired them.  For the Mediatek AFE drivers this also makes the clock helpers
-unwind partial internal acquisition prefixes before returning to runtime PM.
+Fixes: 8d0f79886273 ("drm/mediatek: Introduce HDMI/DDC v2 for MT8195/MT8188")
+Signed-off-by: Julien Stephan <jstephan@baylibre.com>
+---
+ drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-This is a new set of sites, not a revision of the earlier 19-patch series at:
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h b/drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h
+index 521b35c7e14d..bf3ebf5492d1 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h
+@@ -173,7 +173,7 @@
+ #define  TPI_AUDIO_LOOKUP_EN		BIT(2)
+ 
+ /* Video downsampling configuration */
+-#define VID_DOWNSAMPLE_CONFIG		0x8d0
++#define VID_DOWNSAMPLE_CONFIG		0x8f0
+ #define  C444_C422_CONFIG_ENABLE	BIT(0)
+ #define  C422_C420_CONFIG_ENABLE	BIT(4)
+ #define  C422_C420_CONFIG_BYPASS	BIT(5)
 
-  https://lore.kernel.org/all/20260704034845.14291-1-pengpeng@iscas.ac.cn/
+---
+base-commit: 1b78070aaef63512688aebfbc82365ef9d6660f1
+change-id: 20260828-mtk-hdmi-v2-fix-register-offset-879afc38cad1
 
-It intentionally excludes snd_soc_component_driver resume callbacks whose
-return values are discarded by snd_soc_component_resume(); that shared policy
-is being discussed separately.  The cs42l42 patch covers the shared system
-resume helper and is distinct from the SoundWire runtime-resume path fixed by
-commit a118fea777a2.
-
-The issues were identified via static analysis and manually reviewed.
-
-Assisted-by: LLM
-
-Pengpeng Hou (20):
-  ASoC: adau1372: Unwind failed power restoration
-  ASoC: adau1701: Propagate register cache replay errors
-  ASoC: cs35l56: Propagate register restore errors from runtime resume
-  ASoC: cs42l42: Propagate system resume restore errors
-  ASoC: es9356: Publish IRQ readiness after cache replay
-  ASoC: jz4740: Propagate codec wake-up errors
-  ASoC: max98088: Propagate cache replay errors from bias restore
-  ASoC: ssm2518: Unwind failed power restoration
-  ASoC: ssm4567: Unwind failed power restoration
-  ASoC: tlv320aic3x: Propagate power restoration errors
-  ASoC: wm8731: Unwind supplies on cache replay failure
-  ASoC: wm8770: Unwind supplies on cache replay failure
-  ASoC: wm8804: Propagate cache replay errors from runtime resume
-  ASoC: wm8904: Unwind resources on cache replay failure
-  ASoC: wm8985: Unwind supplies on cache replay failure
-  ASoC: wm8991: Propagate cache replay errors from bias restore
-  ASoC: wm8993: Unwind supplies on cache replay failure
-  ASoC: wm8996: Unwind supplies on cache replay failure
-  ASoC: mediatek: mt8186: Unwind runtime resume failures
-  ASoC: mediatek: mt8196: Unwind register clock and cache restore
-    failures
-
- sound/soc/codecs/adau1372.c                | 44 ++++++++++++++--------
- sound/soc/codecs/adau1701.c                |  4 +-
- sound/soc/codecs/cs35l56-shared.c          |  9 ++++-
- sound/soc/codecs/cs42l42-sdw.c             |  4 +-
- sound/soc/codecs/cs42l42.c                 | 27 +++++++++----
- sound/soc/codecs/cs42l42.h                 |  2 +-
- sound/soc/codecs/es9356.c                  | 14 +++++--
- sound/soc/codecs/jz4740.c                  | 25 ++++++++----
- sound/soc/codecs/max98088.c                |  9 ++++-
- sound/soc/codecs/ssm2518.c                 | 15 +++++++-
- sound/soc/codecs/ssm4567.c                 | 15 +++++++-
- sound/soc/codecs/tlv320aic3x.c             | 36 ++++++++++++++----
- sound/soc/codecs/wm8731.c                  |  7 +++-
- sound/soc/codecs/wm8770.c                  |  7 +++-
- sound/soc/codecs/wm8804.c                  |  6 ++-
- sound/soc/codecs/wm8904.c                  | 10 ++++-
- sound/soc/codecs/wm8985.c                  |  7 +++-
- sound/soc/codecs/wm8991.c                  |  7 +++-
- sound/soc/codecs/wm8993.c                  |  9 ++++-
- sound/soc/codecs/wm8996.c                  | 11 +++++-
- sound/soc/mediatek/mt8186/mt8186-afe-clk.c |  2 +
- sound/soc/mediatek/mt8186/mt8186-afe-pcm.c | 15 +++++++-
- sound/soc/mediatek/mt8196/mt8196-afe-clk.c | 27 ++++++++++---
- sound/soc/mediatek/mt8196/mt8196-afe-pcm.c |  8 +++-
- 24 files changed, 251 insertions(+), 69 deletions(-)
-
--- 
-2.43.0
+Best regards,
+--  
+Julien Stephan <jstephan@baylibre.com>
 
 
