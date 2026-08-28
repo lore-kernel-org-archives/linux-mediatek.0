@@ -4,67 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF26FC61DCB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2026 15:51:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE5CFC61DCB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2026 17:18:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MrxOZII0U1V57oNJKFQCS1oLJUTJEVDy3QDWlAiwRao=; b=vbgiWCUVyaKFyjHm2+8xBE4zpz
-	YO/VACftniZnVDCmGHTwJNolPGoCfYyyfrZ3GyYR8uej43r7URqA5q80Fs82+f5J+OuxrEj2S6InF
-	CyTO4nazdX+c/Qr8ezMu6YIDpmsKBJ1suvO1l8ry0WjLZg3lu7Xz56p/DmqKScvhQAeQugHjU7mun
-	T8cEqAms90JXIaz4ReM9ITloclgXxT5tzHKHTJ4kWKHvqC1/ENZJIbX2TQfpW9ws4xF58g5bHGDVX
-	zaQGd3vGaWdE8EL27x+aJhfrzP2EW6OPRFIwHLu2y46ENU/kPsk8cpXF5HlaB/Wzi5BcAiB1m1YFb
-	CNDuDVnw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yImK2RT+MG+Lfu43PlYGxRfyb0mAO/U6ZqrL//pyZaQ=; b=uhwN1Wxr65UaeSy7TcXXjUAigq
+	yj4fdXj8aGAxwqb1EeEm1SRIpNDHI4QlXIXidbWY3+PlesQcg7tZ7ZO+rF2vLS3QNqm9KK+FkmSaU
+	5bQCnl1C3+4Ne2Eh57B0M8dJSejht8SXsJ/oCDUvcbdUh6Teg+EfFSWeWqHg5YOcpg9hE28zNAO0X
+	Qp5hGSj8dZRXf6vrY+Aad3rdvMeGYyJwUNhs6qzcOIQ7oCOmY5rhDMoxIWKrTYVm9eAEfl7l/v012
+	dObml70ZQ2j/NPyGAzS6BAQemxUc2JxppTHXzphyrK7qhL4jan9k9hFtGWb6xHWvdHi1CkPxWyyhn
+	i2WBOdRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzyre-000000068Ip-1BMt;
-	Fri, 28 Aug 2026 15:51:34 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x00EC-00000006FmE-2aJs;
+	Fri, 28 Aug 2026 17:18:56 +0000
+Received: from out-62.mta1.migadu.com ([2001:41d0:203:375::3e] helo=mta1.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzyrd-000000068IS-1jTq
+	id 1x00E9-00000006FlP-49NP
 	for linux-mediatek@lists.infradead.org;
-	Fri, 28 Aug 2026 15:51:33 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6E74060209;
-	Fri, 28 Aug 2026 15:51:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A71C91F000E9;
-	Fri, 28 Aug 2026 15:51:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1787932292;
-	bh=MrxOZII0U1V57oNJKFQCS1oLJUTJEVDy3QDWlAiwRao=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=T9W/spZuHxH4EXPMfNsmZdNUHolT3KUS5V9w2jKDqVNNaWF1LiutG5AYIHlOFN1dr
-	 zWTFBncruZpv+5D55RTF9YG4WAiZ0vMKY3OO+EhxRYrkmpXyqL+wc5b+CsJTEXEcF7
-	 F9z+AI17KJPVP35n//38Tw95QG7k7SMkUi5pA4VI2KfG/RNy0Z3o6ajCzwIb7Ub762
-	 KTrDnNtpB/XobCmZWK1/opg6Sbd53Ni4Pddgr72eEa4s2bPvSThwAaWX2BTmLCV7j4
-	 T4eiow3/vwSPetYbUE5IHhzt8S+zKhLlP/Pa68Ff+vdCXWhM9A85X8kKMoChLFU8Ku
-	 WCcCZf1QrZD6g==
-Date: Fri, 28 Aug 2026 16:51:27 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Ahmed Naseef <naseefkm@gmail.com>
-Cc: linux-gpio@vger.kernel.org,
-	Benjamin Larsson <benjamin.larsson@genexis.eu>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Linus Walleij <linusw@kernel.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
-	Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 2/3] dt-bindings: pinctrl: Add EcoNet EN7528 pin
- controller
-Message-ID: <20260828-chaos-recovery-c99d547ee1b6@spud>
-References: <cover.1787931313.git.naseefkm@gmail.com>
- <c20005a81b4069f3ff68311629ff7d4678fa92dd.1787931313.git.naseefkm@gmail.com>
+	Fri, 28 Aug 2026 17:18:55 +0000
+X-Envelope-To: linux-mediatek@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=JSBFu5mtYAAxSf1z/Sc5HZpi1iqCxqQNp9ErZEemACM=;
+ c=simple/simple; d=justthetip.ca;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1787937531; v=1; x=1788542331;
+ b=KKmmhBM68x9yX1z07xOBrJk7YoG6eEoRl07hBiBVXSeVTOslr21mNeBO77Bb3mX2w8hPjKFU
+ l+/BSQVLmz7cjNYc18NAh8frF8MJ9NdQV5aFtF73nBJLMO9fWB/yMFhekKafa58Ly+eYv0ZGUN2
+ E89bI+wbgj2SRuJQl3w8VIK3fF/eRkw2iHtvAL2s5wfIjbwB2zmzYabW8RR/t3OST6k1Jb5bjLe
+ cX/MrtsVfAlZNzDm3avsJuE0zYhtir/1gflBr5iF5t/mWQ5/AqdnI7xkGafptVMvSwUpmBJSBK2
+ r/w12R1CgzvYRQO8aDWMQijZl+DsjCkDccGydAOW5wA+w==
+X-Envelope-To: linux-mediatek@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id 3182c772a689ec26;
+	Fri, 28 Aug 2026 17:18:41 +0000
+X-Mizu-Trace-ID: 3182c772a689ec26
+X-Migadu-Flow: FLOW_OUT
+From: Devin Wittmayer <lucid_duck@justthetip.ca>
+To: Klara Modin <klarasmodin@gmail.com>
+Cc: linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	nbd@nbd.name,
+	lorenzo@kernel.org,
+	regressions@lists.linux.dev
+Subject: Re: [PATCH wireless] wifi: mt76: mt792x: fix NULL dereference in ACPI SAR init during probe
+Date: Fri, 28 Aug 2026 10:18:38 -0700
+Message-ID: <20260828171838.22038-1-lucid_duck@justthetip.ca>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <apGWXuPOSqZJ_ShO@parmesan.int.kasm.eu>
+References: <20260825181712.28548-1-lucid_duck@justthetip.ca> <ao3dyqWJ3nf3rMMW@soda.int.kasm.eu> <20260828011737.22809-1-lucid_duck@justthetip.ca> <apGWXuPOSqZJ_ShO@parmesan.int.kasm.eu>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="+NZ9peSVGfDYs8bS"
-Content-Disposition: inline
-In-Reply-To: <c20005a81b4069f3ff68311629ff7d4678fa92dd.1787931313.git.naseefkm@gmail.com>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260828_101854_373655_F7206861 
+X-CRM114-Status: GOOD (  16.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,252 +74,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---+NZ9peSVGfDYs8bS
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 2026-08-28 15:27:10 +0000, Klara Modin wrote:
+> Wouldn't the Intel 11th generation have come with the Intel AX201 or
+> AX210 originally?
 
-On Fri, Aug 28, 2026 at 07:35:14PM +0400, Ahmed Naseef wrote:
-> Add the binding for the pin controller found on the EcoNet EN7528 MIPS
-> SoC. It shares the IP with the Airoha pin controllers, but its IOMUX and
-> pin configuration registers have a different layout, so it gets its own
-> compatible.
->=20
-> The CHIP SCU holding those registers is referenced by the airoha,chip-scu
-> phandle.
->=20
-> Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
-> ---
->  .../pinctrl/econet,en7528-pinctrl.yaml        | 190 ++++++++++++++++++
->  1 file changed, 190 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/pinctrl/econet,en75=
-28-pinctrl.yaml
->=20
-> diff --git a/Documentation/devicetree/bindings/pinctrl/econet,en7528-pinc=
-trl.yaml b/Documentation/devicetree/bindings/pinctrl/econet,en7528-pinctrl.=
-yaml
-> new file mode 100644
-> index 000000000000..3ce1a5309d09
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/pinctrl/econet,en7528-pinctrl.yaml
-> @@ -0,0 +1,190 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/pinctrl/econet,en7528-pinctrl.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: EcoNet EN7528 Pin Controller
-> +
-> +maintainers:
-> +  - Lorenzo Bianconi <lorenzo@kernel.org>
-> +
-> +description:
-> +  The EcoNet EN7528 pin controller is used to control SoC pins. It share=
-s the
-> +  IP with the Airoha pin controllers, but its IOMUX and pin configuration
-> +  registers have a different layout.
-> +
-> +properties:
-> +  compatible:
-> +    const: econet,en7528-pinctrl
-> +
-> +  airoha,chip-scu:
-> +    description: phandle to the chip SCU syscon
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  gpio-controller: true
-> +
-> +  '#gpio-cells':
-> +    const: 2
-> +
-> +  gpio-ranges:
-> +    maxItems: 1
-> +
-> +  interrupt-controller: true
-> +
-> +  '#interrupt-cells':
-> +    const: 2
-> +
-> +patternProperties:
-> +  '-pins$':
-> +    type: object
-> +
-> +    patternProperties:
-> +      '^mux(-|$)':
-> +        type: object
-> +
-> +        description:
-> +          pinmux configuration nodes.
-> +
-> +        $ref: /schemas/pinctrl/pinmux-node.yaml
-> +
-> +        properties:
-> +          function:
-> +            description:
-> +              A string containing the name of the function to mux to the=
- group.
-> +            enum: [gpio, jtag, pcie_reset, pcm, pcm_spi, phy1_led0,
-> +                   phy1_led1, phy2_led0, phy2_led1, phy3_led0, phy3_led1,
-> +                   phy4_led0, phy4_led1, pnand, pon, pwm, sipo, spi, uar=
-t]
-> +
-> +          groups:
-> +            description:
-> +              An array of strings. Each string contains the name of a gr=
-oup.
-> +            items:
-> +              enum: [pon, sipo, sipo_rclk, uart2, uart2_cts_rts, uart3,
-> +                     ejtag, pcm1, pcm2, spi_quad, spi_cs1, pcm_spi,
-> +                     pcm_spi_int, pcm_spi_rst, pcm_spi_cs1, pcm_spi_cs2,
-> +                     pcm_spi_cs3, pcm_spi_cs4, pcm_spi_cs5, pcm_spi_cs6,
-> +                     pcm_spi_cs7, pnand, gpio0, gpio1, gpio2, gpio3, gpi=
-o4,
-> +                     gpio5, gpio6, gpio7, gpio8, gpio9, gpio10, gpio11,
-> +                     gpio12, gpio13, gpio14, gpio15, gpio16, gpio17,
-> +                     gpio18, gpio19, gpio20, gpio21, gpio22, gpio23,
-> +                     gpio24, gpio25, gpio26, gpio27, gpio28, gpio29,
-> +                     gpio30, gpio31, gpio32, gpio33, gpio34, gpio35,
-> +                     gpio36, gpio37, gpio38, gpio39, gpio40, gpio41,
-> +                     pcie_reset0, pcie_reset1]
-> +
-> +        required:
-> +          - function
-> +          - groups
-> +
-> +        additionalProperties: false
-> +
-> +      '^conf(-|$)':
+It would, and thanks for the correction. This board's firmware carries
+Intel's wireless power methods and none of MediaTek's four. I put an
+MT7927 in it recently and the MediaTek ones did not appear, so they do
+not come with the card.
 
-Why is this needed? Why can you not tell from the group which pins the
-config applies to?
+> I don't think so (if this is the MTGS table above?), but I don't really
+> know how to parse the table contents.
 
-Thanks,
-Conor.
+That is the right table, and nothing in it is padded. Yours is fine.
 
-> +        type: object
-> +
-> +        description:
-> +          pinconf configuration nodes.
-> +
-> +        $ref: /schemas/pinctrl/pincfg-node.yaml
-> +
-> +        properties:
-> +          pins:
-> +            description:
-> +              An array of strings. Each string contains the name of a pi=
-n.
-> +            items:
-> +              enum: [gpio0, gpio1, gpio2, gpio3, gpio4, gpio5, gpio6,
-> +                     gpio7, gpio8, gpio9, gpio10, gpio11, gpio12, gpio13,
-> +                     gpio14, gpio15, gpio16, gpio17, gpio18, gpio19,
-> +                     gpio20, gpio21, gpio22, gpio23, gpio24, gpio25,
-> +                     gpio26, gpio27, gpio28, gpio29, gpio30, gpio31,
-> +                     gpio32, gpio33, gpio34, gpio35, gpio36, gpio37,
-> +                     gpio38, gpio39, pcie_reset0, pcie_reset1, i2c_sda,
-> +                     i2c_scl, uart_txd, uart_rxd, spi_cs0, spi_clk,
-> +                     spi_mosi, spi_miso]
-> +            minItems: 1
-> +            maxItems: 50
-> +
-> +          bias-disable: true
-> +
-> +          bias-pull-up: true
-> +
-> +          bias-pull-down: true
-> +
-> +          input-enable: true
-> +
-> +          output-enable: true
-> +
-> +          output-low: true
-> +
-> +          output-high: true
-> +
-> +          drive-strength:
-> +            description:
-> +              Selects the drive strength for the pin, in mA.
-> +            enum: [2, 4]
-> +
-> +        required:
-> +          - pins
-> +
-> +        additionalProperties: false
-> +
-> +    additionalProperties: false
-> +
-> +required:
-> +  - compatible
-> +  - airoha,chip-scu
-> +  - interrupts
-> +  - gpio-controller
-> +  - gpio-ranges
-> +  - "#gpio-cells"
-> +  - interrupt-controller
-> +  - "#interrupt-cells"
-> +
-> +allOf:
-> +  - $ref: pinctrl.yaml#
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/mips-gic.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +
-> +    pinctrl {
-> +      compatible =3D "econet,en7528-pinctrl";
-> +
-> +      airoha,chip-scu =3D <&chip_scu>;
-> +
-> +      interrupt-parent =3D <&gic>;
-> +      interrupts =3D <GIC_SHARED 10 IRQ_TYPE_LEVEL_HIGH>;
-> +
-> +      gpio-controller;
-> +      #gpio-cells =3D <2>;
-> +
-> +      interrupt-controller;
-> +      #interrupt-cells =3D <2>;
-> +
-> +      gpio-ranges =3D <&pinctrl 0 0 42>;
-> +
-> +      uart2-pins {
-> +        mux {
-> +          function =3D "uart";
-> +          groups =3D "uart2";
-> +        };
-> +
-> +        conf {
-> +          pins =3D "gpio28", "gpio29";
-> +          bias-pull-up;
-> +        };
-> +      };
-> +
-> +      pwm-pins {
-> +        mux {
-> +          function =3D "pwm";
-> +          groups =3D "gpio30";
-> +        };
-> +      };
-> +    };
-> --=20
-> 2.34.1
->=20
+> so the transmit power limits actually look like they are too high for
+> some bands, especially 5735-5835, but maybe it will limit to the AP
+> transmit power and be fine? However, according to `iw list` the channels
+> in 5735-5835 do not have the "no IR" flag, so in AP mode the card could
+> potentially transmit ~8 times the allowed power (I would rather not test
+> this)?
 
---+NZ9peSVGfDYs8bS
-Content-Type: application/pgp-signature; name=signature.asc
+Every line reads the same because the driver writes the same number into
+all of them:
 
------BEGIN PGP SIGNATURE-----
+	/* not used by fw */
+	rule->power_rule.max_antenna_gain = DBI_TO_MBI(6);
+	rule->power_rule.max_eirp = DBM_TO_MBM(22);
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCapGufwAKCRB4tDGHoIJi
-0j4NAP9eETqlBXqwRzyrhwyDVzt50yWQOHH1koC7H2EXeyBIBgEAoRooVdgTczfs
-cTzJYMPlZYMAxvSfHDJwvcWsyD0LYAM=
-=mN/M
------END PGP SIGNATURE-----
+It is a placeholder rather than anything the card sent up, which is why
+the same twenty-two turns up under every country code and not only
+yours. So it is not evidence of what the radio will do in that band, in
+either direction. The card has a power table of its own, separate from
+this one, and debugfs shows it as txpower_sku.
 
---+NZ9peSVGfDYs8bS--
+> The 5710-5735 range is also not covered, which results in 5 GHz channel
+> 144 being disabled (visible in `iw list`).
+
+That hole is in what the card replied with. The driver copies the ranges
+across untouched, so 144 goes with it.
+
+Devin
 
