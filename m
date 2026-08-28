@@ -4,99 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F132C61DCB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2026 14:33:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3FFDC61DBD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2026 15:02:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7BQwW3MX7INivSrsHmDm9zXMIwP0LHR3yDP5aFEwWB4=; b=TLyLJvinnZvuEzbePosBGosy1l
-	3MGheG5tlO1+REDwlBpBTfvrznx3VHfhY0rH8DrZF4hoU77kJp965/bzJOYaTv/cc8WiF0DFor0Bp
-	88i4TrBVIqZIulSf3sY92L2rGmHyHhBu74mWj+YOVMFV1Vi+8LWHism0Dn/i8ovD+R8R2XL1X1VLe
-	x4bQ65Y9lI3OuWvTkPqyzoXpG4bxy+iDrsHIoadCZnfFSi9SiEQeTg+P9J27PyjDaCW9uNQFp5ZZo
-	xMW7xNrMVINYf70WTARxOaudp5nniYovX8Z0/gnSXOkhLJDpkDchf/CunxyUcy+RcVeSsoSLNPVXW
-	cM7y+6nw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NOOUEhwDmB12LFQNSiGGCOAzSpgGLKnq2vsZHwr0Wgg=; b=fJq6jx7vifvXg3H/M6Ocq27HDg
+	+8u2ON25anP6htB/WJUyoNtTck5HIGwR5qqWxClxjjCbJVTL6107pnmj/ZuIHFh+Nl0AdwUH0KJDp
+	UaIHU/TTGipfbAoIbEOsFT+I102fVxkWCbRvzedGeh0HJNehOofQruWmNQ8ECF0lCwkcuuN8Ddlha
+	BDvHQDPth7kuS5ryfnQGzRX3o88Vib4Hj5/fDckgIuGJmQ4L9PkD9I4xjTAdRLJD5mjzXXYpdr1RY
+	S4N64dfcMMXRCvzSMwgBLSWcx0jmdYT12JgNQ1olfySSQn2rCBFGxrc6rCOCqTWi1xMdHCug204nN
+	OV9rqdMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzxeI-00000005zvV-0Fm1;
-	Fri, 28 Aug 2026 14:33:42 +0000
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+	id 1wzy6T-000000062sg-1uc0;
+	Fri, 28 Aug 2026 15:02:49 +0000
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzxeF-00000005zuq-3Fo0
+	id 1wzy6P-000000062r0-3fSb
 	for linux-mediatek@lists.infradead.org;
-	Fri, 28 Aug 2026 14:33:40 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id 98e67ed59e1d1-39266382df6so1117622a91.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 28 Aug 2026 07:33:39 -0700 (PDT)
+	Fri, 28 Aug 2026 15:02:47 +0000
+Received: by mail-pg1-x52a.google.com with SMTP id 41be03b00d2f7-cc1c9879395so859943a12.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 28 Aug 2026 08:02:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1787927618; x=1788532418; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=7BQwW3MX7INivSrsHmDm9zXMIwP0LHR3yDP5aFEwWB4=;
-        b=W7qqW3iKirp2kWLB4VtUOCMjkIVpoDM2leZSfRje2X7FVtJIMgIrPrl/TPJ+aHJCfX
-         M9B2y0qOu2qtvWr/EUPl9T04mcDiKH2vsu+BpNDMFKDkhqdShm0ZFkaitTr9JOjf3Rmc
-         uyQ9yHhoYCs5oZFuPhH0dSW+ebH2Og2NxxjOmxYM+hXlbhaa0BCi55v2gOqGAe2Xne+j
-         c5QU5TRDMQP3HLpezahQKKO+BvXkSLTj5070uYO8LVkEbMXdRIvcA6exU6qKH4UDeSYe
-         iRcT1m0CBIz6Y0zh0R6ryko/mt9lDUO2E9ZhJbdrZUljIXJq3fKmwmKqk8C0LHRXTpvR
-         lrww==
+        d=gmail.com; s=20251104; t=1787929364; x=1788534164; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=NOOUEhwDmB12LFQNSiGGCOAzSpgGLKnq2vsZHwr0Wgg=;
+        b=tMhUEjNJMyL5EzNhjDi2P1PWKY7x+JRAV8EF9t7QfYbaAK6QBqhQczQ8rgxZz3Jxx0
+         +HwqK7V94d3U1xw7k8I68iOSBv9oyaBeM+2auBVuJfSTHth61oaAg2b9ZZF73FP+kLtv
+         s4Adr+h6Fs8RRujtKKNj9i3WDqLzJymGErz7GIckb9Fuy79qgS9/JbtHPUL0Um8oYPK8
+         Yk1SCGcMZ4IuksYfjnK2VDLMOeyyi02nCU4CYoY/MySPhHIbmYDVeS0O5zEAcfYbdOI2
+         EZdtPrdDYdj50vqwK83I5Veg1hnv5bN6gQ/tHxs8Hs8TG/+fvW6z1tqtv3hFl4/WUwol
+         Y6wA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787927618; x=1788532418;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=7BQwW3MX7INivSrsHmDm9zXMIwP0LHR3yDP5aFEwWB4=;
-        b=ZGjRl6Zd1aNVO3wcN6mEYwCTrupmI8g/osr05LHBoJqOgunmU5JaBwt5rT0/fVDuJX
-         WiskD3YPX6hjBL5p2auLOZVyYEUI9j5U7O5UtWSd5GprbHmZTE5IwrlbKsHG8vSxMhuO
-         M2GeV+c25CxMpxHyyicX+HwJGYVchj7Lhkv7wqoKdkZqZogqlmY0NGuSy+S0sXXToyCO
-         50tRK0aSggT1cYjeLEl04r/u7RWB7hoOCUgm+JRfHK43fvetZnEjnR5sqavBPwUez+UN
-         rT+zja08M2OBftXtE+wqUEu+wqISqsDLJuRrNIrfzQFrCP60sW8znLu1HYJrM6r45Rfn
-         NvXg==
-X-Forwarded-Encrypted: i=1; AHgh+Ro2KjUvE0yUDPSpmrygTde52QKOUBNNRHDd81l6vpWTjAQU+6SmPxI+MvmuXluU8ddZWluO6NmesZJu9jg+Sw==@lists.infradead.org
-X-Gm-Message-State: AFuF++lN1vWsCklOouPvH9y48I3W4nypWqI2vDfbuHbnfBEiHIOPu8UQ
-	SCvOWFEJ3tB7VMtqoG823VYT+1fp54MQ9ZIsEg7A1TeAahxe0QI3Zv8n
-X-Gm-Gg: AR+sD11vaGho5orl+BzH0Grnx+mHGhWJQrCitghrme3aVrjV/GdPyw84lYEFg8vlmHo
-	yek9R8jErUue0kFrZnRmMrN9sZ7FPZ2SYlg2jHBvCHooGMnfIo33tWEf4+ZsAnHV5DmADFdSn4c
-	Ox3P+WT+/9kKxXwvkOyyqGjn2yzj0Ihs+eb9zqZryetezPme19MNAFJBh4uwYnLaYhpp5CE9hFL
-	O8KlxIaOCM0iRAw4gJYSMCi+NAycsPGlrk6WcvPKHPS6VIu894Us41MOAVlYa3ZXmH7vHBioEUa
-	xk+GOZTtY721hVJF/HFR5S/kYYfZAmWTiaxgrLhE62xakJVMqaXK1B9OXVUDe6PufEfaOUq+c0h
-	rYOKDv2+c7teXe3m29PbhvO6kRjmwoTcToC86z0wQBSf+5NQao/G6s19XkNsZX7dYhPsAm0a2bp
-	K3wxtctmxLCBNXMiDUi1AkFTJw4eKg3udLjY/bDnOrZLZKumwtgpZau6ip3Mite+6OUO1DPRvH+
-	g+02WYVIA==
-X-Received: by 2002:a17:90a:d2c6:b0:392:c80b:8eff with SMTP id 98e67ed59e1d1-396d0f6cb36mr15006187a91.11.1787927617279;
-        Fri, 28 Aug 2026 07:33:37 -0700 (PDT)
-Received: from DESKTOP-TIT0J8O.localdomain ([157.51.225.221])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-396dda36ed6sm2793476a91.2.2026.08.28.07.33.30
+        d=1e100.net; s=20251104; t=1787929364; x=1788534164;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=NOOUEhwDmB12LFQNSiGGCOAzSpgGLKnq2vsZHwr0Wgg=;
+        b=Pz0BU87fMlyxNvOFtRAeBpfRt4VeN89u+m/43iKvioVHZ3IB1R3sT1xPOl4Wx2JmPW
+         ePNAD/pricVPCdFp1kV28pdskDz3FW/DiXGvZDsEsL6La2LsQdEgxxB8b/asqlBRcUan
+         9T/831AFtOcJpUJkGoQB65Zobz9yBN7dhq870K29jQOrWI4+3BEwl8rqbXXCmjt+qQQM
+         uCY44wO+ckUvOfke39+ZF8ZpUM24+b1N2Bmapa57r6Sd5TNeZ8fiRdJnjA09I1sofJ3E
+         dx6Ji6+3p1f8iT6/n5bqGPDX40O9oAKDNKpqtPhYPRe4sowbSJF//u63aTRFfkbtc9y8
+         m/xQ==
+X-Forwarded-Encrypted: i=1; AHgh+RrlWIcRq3n47cAA72yW+b42lj5PDy1gzEvQeiroESJIIWkFeXNPc1XpxAXGsA0cQZc5wWAv1fIqxeZ1yd8qtQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++kk49UvG13zibbFy8uztz3nhcFgjn8olab7X+NRe3sEO5sUIuId
+	P0k6GLY0DVyRHrGEYoTWcrqXMV5EW/qg0XtvhW+GIoTEmKgQ2pEjxaWn
+X-Gm-Gg: AR+sD1060Alh1wfqXkv9kHKPSFio6krjSQNDjUqSZgf3nBZ8MI1qtA1XrWdmSGCoJ7c
+	7teX1PZqndjGBUh1QbnEuVJJ4L+j1ElT05X/rfK9DZnW1WKvm3v7KxfYozCox7ddOt3WTuR8+Vw
+	zEkl9EfmWDqtBzOUC/FQA2Yh1fsDb0zUocxIqDFqd3YC4h7lsNtArMIe22Ami25uXHFRXB+a5TM
+	7D6boOltZurd1tLx80aWtzmOnlwLITRDdvI6LG7NorbArYWrkCLIbcB0r41Lq2ClqnZLYZdAHQE
+	cu7HXWHhhxS71qb/cv/FP47SKU+4n4YDz0I/N1hBq0HWnipxKjTn5gdsZHjUtOKqv73IPwjGOK8
+	g9Az+kHH0BFKR4PFjGiN6VyiDVoA6FGHUbNySDi9fTSgltH/8zCQUxWZEoL0oRyIU6/9dT2s7YX
+	4QT/AAm3tTqlKwNUi8DErM3ZpApV2Fjdi42CYpdZgfnfk12cmkzkKhbyBPIlRGT9HMLdj+kK1yy
+	A0hz7hqbQ==
+X-Received: by 2002:a17:90b:5188:b0:396:5fce:8e24 with SMTP id 98e67ed59e1d1-396d0ea530emr17557004a91.4.1787929360339;
+        Fri, 28 Aug 2026 08:02:40 -0700 (PDT)
+Received: from cfarm424.jing.rocks (cfarm424.jing.rocks. [2600:3c18:e002:2e11::c424])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-396db196903sm2911068a91.0.2026.08.28.08.02.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 Aug 2026 07:33:36 -0700 (PDT)
-Date: Fri, 28 Aug 2026 18:33:28 +0400
-From: Ahmed Naseef <naseefkm@gmail.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Ahmed Naseef <naseefkm@gmail.com>, linux-gpio@vger.kernel.org,
-	Benjamin Larsson <benjamin.larsson@genexis.eu>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Linus Walleij <linusw@kernel.org>,
+        Fri, 28 Aug 2026 08:02:39 -0700 (PDT)
+From: Ridham Khurana <khurana.ridham222@gmail.com>
+To: Felix Fietkau <nbd@nbd.name>
+Cc: Ridham Khurana <khurana.ridham222@gmail.com>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
-	Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/3] dt-bindings: pinctrl: Add EcoNet EN7528 pin
- controller
-Message-ID: <apGcOAUpb6XZ2Iud@DESKTOP-TIT0J8O.localdomain>
-References: <cover.1786262697.git.naseefkm@gmail.com>
- <7e6150b186c2d16820d7382bce065596a0854a47.1786262697.git.naseefkm@gmail.com>
- <20260828-adorable-bug-from-arcadia-fcad00@quoll>
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Shuah Khan <shuah@kernel.org>,
+	Jori Koolstra <jkoolstra@xs4all.nl>,
+	Brigham Campbell <me@brighamcampbell.com>,
+	linux-kernel-mentees@lists.linux.dev,
+	stable@vger.kernel.org
+Subject: [PATCH] wifi: mt76: mt7915: validate default EEPROM firmware size
+Date: Fri, 28 Aug 2026 15:02:22 +0000
+Message-ID: <20260828150227.1062217-1-khurana.ridham222@gmail.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260828-adorable-bug-from-arcadia-fcad00@quoll>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260828_073339_818922_04BC83EA 
-X-CRM114-Status: GOOD (  18.39  )
+X-CRM114-CacheID: sfid-20260828_080246_032090_9989EAC5 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,99 +107,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 28, 2026 at 08:59:57AM +0200, Krzysztof Kozlowski wrote:
-> On Sun, Aug 09, 2026 at 12:04:59PM +0400, Ahmed Naseef wrote:
-> > +maintainers:
-> > +  - Lorenzo Bianconi <lorenzo@kernel.org>
-> > +
-> > +description:
-> > +  The EcoNet EN7528 pin controller is used to control SoC pins. It shares the
-> > +  IP with the Airoha pin controllers, but its IOMUX and pin configuration
-> > +  registers have a different layout.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: econet,en7528-pinctrl
-> > +
-> > +  airoha,chip-scu:
-> > +    description: phandle to the chip SCU syscon
-> > +    $ref: /schemas/types.yaml#/definitions/phandle
-> 
-> If the entire address space is part of the SCU, then this device should
-> be part of the SCU, e.g. its subnode.
+mt7915_eeprom_load_default() checks that the default EEPROM firmware was
+loaded, but not how big it is. It then copies mt7915_eeprom_size() bytes
+out of it, which is 3584 on MT7915 and 4096 on MT7916.
 
-It is not: the registers are split over two blocks. The GPIO, interrupt
-and PWM flash-mode registers are in the block the node sits under, and
-the IOMUX and pin configuration registers are in the SCU. Both are
-needed, so whichever of the two is the parent, the other one has to come
-in by phandle.
+If the file is smaller than that, the copy reads past the end of the
+firmware buffer. The extra bytes are whatever happens to follow it in
+memory, and they end up in the EEPROM buffer that is later used for band
+configuration, chainmask and TX power.
 
-> 
-> > +
-> > +  interrupts:
-> > +    maxItems: 1
-> > +
-> > +  gpio-controller: true
-> > +
-> > +  '#gpio-cells':
-> > +    const: 2
-> > +
-> > +  gpio-ranges:
-> > +    maxItems: 1
-> > +
-> > +  interrupt-controller: true
-> > +
-> > +  '#interrupt-cells':
-> > +    const: 2
-> > +
-> > +allOf:
-> 
-> This goes to the end of the file, before the additionalProperties.
-> 
-Will address in v2.
+Check the size before copying, the same way
+mt7996_eeprom_check_or_use_default() already does.
 
-> > +  - $ref: pinctrl.yaml#
-> > +
-> > +required:
-> > +  - compatible
-> > +  - airoha,chip-scu
-> > +  - interrupts
-> > +  - gpio-controller
-> > +  - gpio-ranges
-> > +  - "#gpio-cells"
-> > +  - interrupt-controller
-> > +  - "#interrupt-cells"
-> > +
-> > +patternProperties:
-> > +  '-pins$':
-> > +    type: object
-> 
-> "patternProperties" should follow "properties"
-> 
+Fixes: bbc1d4154ec1 ("mt76: mt7915: add default calibrated data support")
+Cc: stable@vger.kernel.org
+Signed-off-by: Ridham Khurana <khurana.ridham222@gmail.com>
+---
+Based on next-20260828; applies cleanly to v7.2.
 
-Will address in v2.
+ drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-Thanks for the review!
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+index fe7b29ebc0bf..145d14a1012d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+@@ -111,6 +111,12 @@ mt7915_eeprom_load_default(struct mt7915_dev *dev)
+ 		goto out;
+ 	}
+ 
++	if (fw->size < mt7915_eeprom_size(dev)) {
++		dev_err(dev->mt76.dev, "Invalid default bin size\n");
++		ret = -EINVAL;
++		goto out;
++	}
++
+ 	memcpy(eeprom, fw->data, mt7915_eeprom_size(dev));
+ 	dev->flash_mode = true;
+ 
+-- 
+2.47.3
 
-Ahmed
-> > +
-> > +    patternProperties:
-> > +      '^mux(-|$)':
-> > +        type: object
-> > +
-> > +        description:
-> > +          pinmux configuration nodes.
-> > +
-> > +        $ref: /schemas/pinctrl/pinmux-node.yaml
-> > +
-> > +        properties:
-> > +          function:
-> > +            description:
-> > +              A string containing the name of the function to mux to the group.
-> > +            enum: [gpio, jtag, pcie_reset, pcm, pcm_spi, phy1_led0,
-> > +                   phy1_led1, phy2_led0, phy2_led1, phy3_led0, phy3_led1,
-> > +                   phy4_led0, phy4_led1, pnand, pon, pwm, sipo, spi, uart]
-> 
-> Best regards,
-> Krzysztof
 
