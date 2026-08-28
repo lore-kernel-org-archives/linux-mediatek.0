@@ -4,190 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D603DC61DBD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2026 07:13:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AA1FC61DB9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2026 07:40:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xgsl7gB1WjICr0TKd2A0/7Zuy9gAy9qVSujd6TE2qVw=; b=2E3EW7P0R2Z0bLbxWRFeBnsSAR
-	mmrIlB4aJQVI58IAS+6gNz9vwyrh9451P4OlexVCtvfxbZ3eeSOTCVg4sA0hPlkknYasfUZgG3ASH
-	vmIDbPwQ5Ik/QJtSlxWFtbQfR3FJDGNwdKry0z9e7rL3w/kowuPJ1vfeChzQBYISC3kbSszK2Scim
-	GvRehkMkECuJ0dKtWRLSsbaDWyjS/Pjo/LMQa4Xi4MOKVLf/wE3SvU38YBHgdsIA7dIonJ7DP+3RA
-	paYjnRdqhjPogqMm/hJ9P3ZzjYa573HKG7LnBRbXqFWy1jk746ksOhK+uFGyBU7t9GEVc4H+jWzuM
-	mTV1nzog==;
+	bh=u4GvxHJ8kKIUaQA9z+32OXG/PVuVhIfikjTVFXnWDkc=; b=Z5f7uV1fmOtnZT8sxXqxG8hnbu
+	KLNyKvF1C3nw7p1uLUDa6pbmpkL5IPWN4PQ3+DyAFlfENFOybHyssRzSeXLYypCP1etjdWhYjmJWo
+	G98Mxp5ZHWVQ8zn1dNghu1y/eI0rBYaAQSwmjVP66R3tWFq+g74IYGN3hkBzh6vQ64qfqQN6Gkr8j
+	ZZg8WR/vYUCj5vYU0zXOaPSojoDqaAiQmvEM0osEUduuMBdz8rxwAfpugYo2RwONpSKksj0kSF0k+
+	PPOOWRYFJCmDzP0+IZyLM6IafwqWrMvmrltBmR5QdD4j6scFIsKNuUiwzo3NjZly8Cc722TlaA0yl
+	TUY1X9fA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzqm2-00000005GNg-0qFt;
-	Fri, 28 Aug 2026 07:13:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1wzrCr-00000005I3F-2Ck8;
+	Fri, 28 Aug 2026 07:40:57 +0000
+Received: from mgamail.intel.com ([198.175.65.20])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzqm0-00000005GMp-1tRg;
-	Fri, 28 Aug 2026 07:13:13 +0000
-X-UUID: eaedfa14a2af11f1afed4741b24580c9-20260828
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=Xgsl7gB1WjICr0TKd2A0/7Zuy9gAy9qVSujd6TE2qVw=;
-	b=Rl29+lZuCd05JkBc97KlnZoXbDhlgnFkTKcA/ebX+zqFQYKaavbnx/+iuD9bSxiBFjKzKh7AKV/+n+Ipt8QrdZrd9Fxpc+Ch8oe7/BjqWMJAy7RE+HNvnn9Tq/kCQKRczMoYByur8H3xY1lyG5kVfBI6qTxlA/9wuzhaw0zwc5Q=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:cee95633-e026-4faf-a637-e0e481ddbd7f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:77a84566-12a5-4d70-ac8b-bb56e33b3fc6,B
-	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|110|111|136|836|865|888|898,TC
-	:-5,Content:0|15|50|99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:
-	nil,BEC:-1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC
-	:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: eaedfa14a2af11f1afed4741b24580c9-20260828
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <ck.hu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 542843534; Fri, 28 Aug 2026 00:13:06 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 28 Aug 2026 15:13:04 +0800
-Received: from SG2PR04CU010.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 28 Aug 2026 15:13:04 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=hfCjKP25Q/UfGTZN9sDI1nApRuY/xMZ8dOalnKQ85+L7Je4NpMr4b/WBlpfXmqiFKZ/stUoExLAMT1zowQS43dT+FBuoCwMwRRpPsJKvZG390+Gea85rELLJpXzGg5pqCM/DcQWXVKReg3DiT0qd2I+XYlWUuCbd52wWc5bHbxX8FtV/ArkPkxhbFuHbCjy/fmSwyEGJLFg6koIzaSLydcw6g3ZNIPabYfQAG0dgS8yOQ/ttZBcR/soNR7FgHX9CYF8B1UmO3BbReSH5ff2g1SHYY93PeS4nsyFlwTsK9I7khhhKbu/g1lMezhqfWmHRWZ8zy8LcaD/s4kHilYdj9Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Xgsl7gB1WjICr0TKd2A0/7Zuy9gAy9qVSujd6TE2qVw=;
- b=TsEitUgcyGjNgWV8AaXe78hAuLvf4/24D7ej3Hq6YZdZLix2DnBy3yyK6ECia1jqssLt61vlYEq3KbhAtUAUngZSFJ4FsDD1v5Jklhh9jiU/zh4Uowe0xV9+GogSpKulVqmsuYWiVqDkcdqonvM/PXt+ui12uo0Hnruy5EhQmWaFVSkFNJAnEYF25H9DS5k5i8BsZlO83Bb/n0goxpKB8h4BWtPks5ZNptarOmDPCya8SiYKPY57HL9QXzfx5aG5YEDj9XMWgAuWS4CxBMx7HpJljDcOD0bxZz9I14F5NPstYNW4a0KBSB2Fr54tkLx5SbryAr2gb5YFSGI/l4j3hg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Xgsl7gB1WjICr0TKd2A0/7Zuy9gAy9qVSujd6TE2qVw=;
- b=IuxnQHahMWE5MtEoneCiwFxUcHXNAetiuScpFGl621OscMZ/WFwZbSLQT4qPXm5y4qH+ZTBR8wnypoo+lo9L2exoOQE5EXKF6q6+7m+q+DTwfF9uhYmYk3ZRJHcfiz50kDQUF+L8/jBlurEufqcJS5hHuon7dZrxD2dDtlapGsY=
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com (2603:1096:400:1f4::13)
- by SI6PR03MB8654.apcprd03.prod.outlook.com (2603:1096:4:24c::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.360.10; Fri, 28 Aug
- 2026 07:13:00 +0000
-Received: from TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::a3c2:b94a:70f:e640]) by TYZPR03MB6624.apcprd03.prod.outlook.com
- ([fe80::a3c2:b94a:70f:e640%4]) with mapi id 15.21.0360.008; Fri, 28 Aug 2026
- 07:13:00 +0000
-From: =?utf-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-CC: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"kernel@collabora.com" <kernel@collabora.com>, "robh@kernel.org"
-	<robh@kernel.org>, Alexandre Mergnat <amergnat@baylibre.com>,
-	"tzimmermann@suse.de" <tzimmermann@suse.de>, "dmitry.osipenko@collabora.com"
-	<dmitry.osipenko@collabora.com>, =?utf-8?B?Sml0YW8gU2hpICjnn7PorrDmtpsp?=
-	<jitao.shi@mediatek.com>, "simona@ffwll.ch" <simona@ffwll.ch>,
-	"mripard@kernel.org" <mripard@kernel.org>,
-	"maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	=?utf-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"krzk+dt@kernel.org" <krzk+dt@kernel.org>, "granquet@baylibre.com"
-	<granquet@baylibre.com>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
-	"airlied@gmail.com" <airlied@gmail.com>,
-	=?utf-8?B?SnVzdGluIFllaCAo6JGJ6Iux6IyCKQ==?= <Justin.Yeh@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-	=?utf-8?B?UmV4LUJDIENoZW4gKOmZs+afj+i+sCk=?= <Rex-BC.Chen@mediatek.com>
-Subject: Re: [PATCH v4 11/12] drm/mediatek: mtk_dp: Add support for eDP1.5 IPs
- and MT8196 SoC
-Thread-Topic: [PATCH v4 11/12] drm/mediatek: mtk_dp: Add support for eDP1.5
- IPs and MT8196 SoC
-Thread-Index: AQHdD5avUekwY68WskqDPbbSy8blo7azWiKA
-Date: Fri, 28 Aug 2026 07:13:00 +0000
-Message-ID: <120af9d72c11d3a00efd39fd0ff69911b2b318db.camel@mediatek.com>
-References: <20260709113148.49090-1-angelogioacchino.delregno@collabora.com>
-	 <20260709113148.49090-12-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20260709113148.49090-12-angelogioacchino.delregno@collabora.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Evolution 3.52.3-0ubuntu1 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR03MB6624:EE_|SI6PR03MB8654:EE_
-x-ms-office365-filtering-correlation-id: cb1e50c2-f796-45af-e69c-08df04d3cb5b
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|376014|42112799006|23010399003|366016|7416014|1800799024|22082099003|18002099003|38070700021|56012099006|4143699003|11063799006|10067099003;
-x-microsoft-antispam-message-info: 1mutBh+M5ePcnwZr3wsY16RA4MXJJnG7XZklmaSBHYwWYUe8GdY4Nnz/1cWDSDS46F6Gs3+bPqSBmLAVIQ/voGiO/g7hfNLsiHQoheIuB9/4eGkTl8HvhVc/5t0SqzpUZ+Fz2H1jUjIXkl8JmfC/XAy0xWVN4q7HqMemERxIDQoOAjrG9HYuF+jqFQsI5Pq4VJtrBHyqmk5ulkzrV8EITLB0n4GSiGY+Cns+CW99PMvOTzU7U1A2irBtHn4B28kbNPLSrzCLP6gWLcjDt4vip1+Z4rL7Bagc1sFr0cgxVjt9hD4drMm2E/DoZMEgVb+zGKS0xB2KlbZRqNDzByrvvAheXXIqg5dbZ22NR+6UdwAd9FnDgC63wQeK8NkZiQRPFLx+1ZFJ7M8UAiLTT6eQwKreCS1nZyMMFRSGHmQlX4alLD0700tV6/IJKO0vbo0RA09I0Tbcg/YySjL7O9Agxrmol+YIlG7rYWQoNjD/fxVUybtNu/y+UgA18q1uogohDNas6TQGWjgDj19KzuLuZMBras6IXU2J8hraFJ5Hgtuojjw40cyUeL5jWxKUARXI4OsY/Q4qhhmPmhZfWzZx1DbpoGsnS0IA+9RssFScs+7ni05rQOLV0gxCgF9wLC8Rov0V5apiyDg6XCw9O5a901e8wishCQoL6md14d51cLxXOS5nao270jqYgtrMJjaezCdAHjc6qnV0mjUbM9PBXSILClJDJn0ixn9IogZDXDs=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB6624.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(42112799006)(23010399003)(366016)(7416014)(1800799024)(22082099003)(18002099003)(38070700021)(56012099006)(4143699003)(11063799006)(10067099003);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?bTE3MkF4RGZsbWZLTEw3NTRFRkgwV2NKQVpQSHBmdWlmYml2UXZidkpiVitX?=
- =?utf-8?B?eUtNVGV0ajl5Y2VrVHdlWTgzU1M1UGNNMnRFYS9lYXJwQStUZkNZY09mY09F?=
- =?utf-8?B?U3JXak1paVhpcGtsMjF5S0dYL05nNWlXUFVzbHRKNHJGdUdYaHJtdUcrZ0VC?=
- =?utf-8?B?djBWaDMrRmZxWFhBNjB4dURlWVovUG96cHh2c1hjcFZrYTRDTW1FeUlpTWtj?=
- =?utf-8?B?NnJRditEME1CZjRMUDdpZjZuUW1GcnFqaElkUVlockJMTGd2Z3I3Vzk5RUVl?=
- =?utf-8?B?OUJVYWFVa2g5dlhKbFAyM0NZUmtGeTRaUzI1dTNKeW9zbEhTYW5CWDRIT3ZB?=
- =?utf-8?B?VFBYNkNsUjQ2R2hneHJobHFWK2FQdCt1dlU5Q21iL1YyNGtVZlpxUkRFSG5S?=
- =?utf-8?B?ZTluTUVzVWpidUtjZXVWei9ONjZwWlY2TEt6dzlkTjJzOFZkZExIamNTTGJH?=
- =?utf-8?B?WmlQTHZ3NVlyRHYrVXRsS2RqMVc4dVBybHY3aFlrMFhZTnU0dzdiUXJ6RVJ3?=
- =?utf-8?B?TitRM3dYODlVTERXRXQ3T3BWMmRNMmYwSU8weGN5RTNablNhZVRMb0FVMHZ2?=
- =?utf-8?B?Vjl6SHZKTWhnR1BuK3l4bExWOUU4WVhVYkJDblBKaEVrVXQ1YTZ3bVE2WVFz?=
- =?utf-8?B?UU92bDhqLytpTzJnd2dPKzhaNnk1anFveWtXYXIvOEJZM09Rd2w0emlkc2x2?=
- =?utf-8?B?djBFRWRWOG5oVXp3SUdLMGp3QU82aEFERFBOaFVvc1Z1VXpjc2JtNWRiWmpt?=
- =?utf-8?B?QThDaklqWlVZc0tqUTY3TDdjNkg2RzNoL0xVbldITlZsWmZXYVNORzJZUGFr?=
- =?utf-8?B?L1VhSVNaYmpMQTNEMFI4VUkvQmZZLzlsRUJpR0dGV3lOcG1EcWg5OENLcEJx?=
- =?utf-8?B?NUlXck1sVnZDWWJ6M3A0RUJUUGNWU1ZMUEJmWkZmeExXUXl3cElKOGx2aU5B?=
- =?utf-8?B?VS9LdHBjU1dvZXY5a2VWenJ1VHE4UUxHMTJKNHByT3FQNTdmeXorck4zZndy?=
- =?utf-8?B?RXkxM1g4R0FnOC9IV1JPV1NVcnBwVmpacWxyakZMbkFMWGNaK24rZzdIdVFN?=
- =?utf-8?B?bzI5QkFKVi9HRWs1d3VZeXlEaEExTUxhUklrUnpLOENGa0t1bDRPUmhaUmo3?=
- =?utf-8?B?NkIzdTBGbDlmWXR4RU84TTBHNHNaTm5BWWxqYjNjL3RpV3NabE9Gekk5V0ZF?=
- =?utf-8?B?aWQvcW5pQWx4WWhrS1ZKbnNSUFA4RUNwWWpHNlVxKzhrRGVwTXUreVhzY0k4?=
- =?utf-8?B?RjdWZHdHemtpNkwvdUZUc1RvemlIWmp4Ky9OdXFNSVdyNld2L0hUZ3NGR3Nv?=
- =?utf-8?B?S3V0UUlObkxpV1IvV3YyY0VPYkFxK0FOazBBckJ4dkJ0emtod1VLL0Fadllx?=
- =?utf-8?B?WTRwMDZZcGZsMlFoYmdOYWUzdjNiK3Npb29XWU52UlNDWDhwdVBId2ZISWlq?=
- =?utf-8?B?QzJ1R3VnN0NzSTN4aXZyTkxYR044NXNUTCtxZWl6SFp2SC9EKzhJUzhVTWdl?=
- =?utf-8?B?NXZJQll2V1p2N0tyMjQwcnpkeXp0eGJCdUZicnRXSEJtekNRTXc3bXppVUs4?=
- =?utf-8?B?amxxc0tJL3I5eHF4aXhQOUtKZ295MDlmSXp1R0t6WXdiaFJ0UTNOZVUvUEd5?=
- =?utf-8?B?RytlZ2pUOWpOdkU2TE1Ld1RncExFRmFHMmc1UUtjSW4zNlczY3Ntd3lNeXFF?=
- =?utf-8?B?amE5a3ArSCsvSmxlV0ROK0RYNXdEVm10RkhEcjFQNVNhWlBBVXRiYjhRb2p5?=
- =?utf-8?B?cmJ6V2k0SUxQTzR0akJXZ0h2enArdkw1TVNvRFpYNFFaZXZOSS9UWWU1SUpx?=
- =?utf-8?B?ZDlLUVVMR2l1K012bTVaNXdhZ2FzOUhvNDhpa0VZeSs0WHpQSHBqMmloUW1S?=
- =?utf-8?B?RDA3dVBVQWk2bUxVVlNxWmp5Yi91cnY4L0dwUG9YUWx6UVkvMFZnZnREMEV3?=
- =?utf-8?B?cVQ3SWFoMlA1RjZucWI5WnAwWVoveXRFMVN4dXJmaEdDMTk0UmxKeDUxSU5r?=
- =?utf-8?B?VEhRVnVxUHpHQ2hUcnpGU3dVckJZVTJrYm5xVFFYcUgxK1lEbzlCSmx2bEk4?=
- =?utf-8?B?L2tVc1haazBVcVdkVXdHUHFpQ1F3RGl5d1VSREwrYzZER3dMZlpFeW1UclJ6?=
- =?utf-8?B?cndIazVzQjNVK1lYZnZMYWdHQXd3eTkzVWdsbDNiRm44MTVvS01XblZpdUhB?=
- =?utf-8?B?V2NGYUg1eklJcUZTVDBZSkpwaDlkMGRGRU1DZzhid0hKOVNZZXprTnA5VVdl?=
- =?utf-8?B?TnhJVDhQSVR2dzVhcC8xa2RWUTB5QVp4QS9GRVFubVQvL29WL0hTUUJ6d2cr?=
- =?utf-8?B?aGoyMGt3RjdkTC8zRGI3NytBZ1pGY05IS1M4c1FjSTRIWkJUSnQrZz09?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <3E9A98EBC2C2CF4194393C053C6188FB@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+	id 1wzrCo-00000005I2f-0qRv
+	for linux-mediatek@lists.infradead.org;
+	Fri, 28 Aug 2026 07:40:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1787902854; x=1819438854;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Fzg4C2XBSsG3+gxax1UcohuhsDQhZoPjQ+UDQxQA1EE=;
+  b=UQsTijWA5LWhoRaT8h4l9A50bZnHW3bd4te+JBgn1ZNuYjD5Qog/lIwc
+   /YygWPNs2aK4czFxvy2PdVD/IcNT7kAjMiXZEvLiwm1Ngr/JCrF0Qeref
+   zGmne6uu59m0jFJoGEpU+et5Yr8RgIoRE//65o+HKTPtagiaBzoURR4g0
+   HjzODkIvLTCsFW8R0wW5r2uNF437bOPZSAmOMuEEf/L8AtbhIuZk2gtMA
+   fWYIaHiml4RpOW4y3y4JFt7LnxydCObQKEptAYOkiGkyiB9QzNIciBrbg
+   gcRsnqfocqjnSgvWJI2Sc5vvftv9+zGaMGv+pNKbmpdBgeYpv9vsK+qRV
+   g==;
+X-CSE-ConnectionGUID: pHbwzb/NQ4WFa9cNp826aw==
+X-CSE-MsgGUID: Og/iVs9BQ2Ky5GLh8f1Zlw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11888"; a="88173651"
+X-IronPort-AV: E=Sophos;i="6.25,248,1779174000"; 
+   d="scan'208";a="88173651"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Aug 2026 00:40:53 -0700
+X-CSE-ConnectionGUID: Z2gUKGXPRjqmhCdOVNk/yA==
+X-CSE-MsgGUID: 3GsM/yrgSsK0+JCGr1bIBw==
+X-ExtLoop1: 1
+Received: from lkp-server01.sh.intel.com (HELO 3532383e6126) ([10.239.97.150])
+  by fmviesa003.fm.intel.com with ESMTP; 28 Aug 2026 00:40:48 -0700
+Received: from kbuild by 3532383e6126 with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1wzrCf-00000000Ab7-2PeG;
+	Fri, 28 Aug 2026 07:40:45 +0000
+Date: Fri, 28 Aug 2026 15:39:48 +0800
+From: kernel test robot <lkp@intel.com>
+To: Eason Lai <eason.lai@mediatek.com>, nbd@nbd.name, lorenzo@kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, kun.wu@mediatek.com,
+	deren.wu@mediatek.com, sean.wang@mediatek.com,
+	quan.zhou@mediatek.com, ryder.lee@mediatek.com,
+	leon.yen@mediatek.com, litien.chang@mediatek.com,
+	jb.tsai@mediatek.com, michael.shih@mediatek.com,
+	eason.lai@mediatek.com, kernel test robot <lkp@intel.com>
+Subject: Re: [PATCH v3] wifi: mt76: mt7928: Add debugfs for stats to provide
+ debug purpose
+Message-ID: <202608281532.s7sXQ2Cc-lkp@intel.com>
+References: <20260827084427.1624598-1-eason.lai@mediatek.com>
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: j6Wcrpo7PrM3ospbRRaUZ+HC1TxuXeLaiOmPyff4X55BEidT3nt7SLptITJ7n/ez4D3iBw1yipscuP3xgfB6xHv8cafwcLTMz80GTPdyp3gf7+ukyPEsOMorgWfyHuZEnC5U3dYEkoesgglVGbrlTjF6nsXvfV65DNHywj8/5iCfJxnWN1O1KQ3UMn1sULSucFIqNlZGrgPGV2FN0LFlF+iXXPj3s8hNncWgXbUnQboQ0+y8/+C5T1ynq7dj0NmRnxRmvmppRNAN72lIf9z5N1v7oOFXCOHJhhdlx4Qu8u7+KifkENXier1A4Iu63M9Lcw00V1vqmf/M8wvujBpnqA==
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB6624.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: cb1e50c2-f796-45af-e69c-08df04d3cb5b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Aug 2026 07:13:00.6261
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: H33c33Xg1i0WZ9y47VVzD+2NhRGIh/ojED5Iro2gL+4+SGJh+UsYj7bRq/EadaixDKrLdA6JsUbN6dx0OjnSJA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI6PR03MB8654
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260827084427.1624598-1-eason.lai@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260828_001312_509397_3570ADAD 
-X-CRM114-Status: GOOD (  24.15  )
+X-CRM114-CacheID: sfid-20260828_004054_337119_D5C72B37 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -202,51 +91,255 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMDI2LTA3LTA5IGF0IDEzOjMxICswMjAwLCBBbmdlbG9HaW9hY2NoaW5vIERlbCBS
-ZWdubyB3cm90ZToNCj4gQWRkIHN1cHBvcnQgZm9yIE1lZGlhVGVrJ3MgRW1iZWRkZWQgRGlzcGxh
-eVBvcnQgKGVEUCkgdjEuNSBJUCBhcw0KPiBmb3VuZCBpbiB0aGUgTVQ4MTk2IFNvQyBhbmQgb3Ro
-ZXIgdmFyaWFudHMsIGFuZCBlbmNsb3NlIHNvbWUgb2YNCj4gdGhlIG5ldyByZWdpc3RlciB3cml0
-ZXMgaW4gc3BlY2lmaWMgcGxhdGZvcm0gZGF0YSBib29sZWFucywgYXM6DQo+ICAtIFNEUCBvbiBF
-bmNvZGVyMSBjYW4gYmUgc3VwcG9ydGVkIGJ5IGJvdGggb2xkIGFuZCBuZXcgSVBzDQo+ICAgIGJ1
-dCBpdCB3YXMgY2hvc2VuIHRvIHVzZSBFbmNvZGVyMCBmb3IgU0RQIGluIHRoZSBuZXcgb25lcw0K
-PiAgICBpbiBvcmRlciB0byBkZWNyZWFzZSB0aGUgbG9hZCBvbiB0aGUgc2Vjb25kYXJ5IGVuY29k
-ZXI7DQo+ICAtIFBTUiBjYW4gYmUgc3VwcG9ydGVkIGJ5IG9sZGVyIElQcyBhcyB3ZWxsLCBidXQg
-d2FzIG5vdCB0ZXN0ZWQNCj4gICAgb24gdGhvc2UgeWV0IChyZXF1aXJlcyBhIGRpc3BsYXkgd2l0
-aCBQU1Igc3VwcG9ydCBjb25uZWN0ZWQNCj4gICAgdG8gYSBkZXZpY2Ugd2l0aCBvbGRlciBTb0Ms
-IGFuZCBJIGRvbid0IGhhdmUgaXQgcmlnaHQgbm93KTsNCj4gIC0gUG93ZXIgU3RhdGUgZm9yY2lu
-ZyBtYXkgbm90IGJlIG5lZWRlZCBvbiBuZXdlciByZXZpc2lvbnMgb2YNCj4gICAgdGhlIGVEUC9E
-UCBJUCAoaW4gU29DcyBuZXdlciB0aGFuIE1UODE5Ni9NVDY5OTEpLg0KPiANCj4gQXMgYSBub3Rl
-LCBldmVuIGlmIHRoaXMgZWZmZWN0aXZlbHkgYWRkcyBzb21lIHBhcnRpYWwgc3VwcG9ydCBmb3IN
-Cj4gdGhlIERpc3BsYXlQb3J0IDEuNCBJUCBmcm9tIHRoZSBzYW1lIFNvQyAoYmVjYXVzZSB0aGUg
-RFAxLjQgYW5kDQo+IGVEUDEuNSBJUHMgaW4gdGhpcyBTb0MgaGF2ZSBzb21lIGxpdHRsZSBjb21t
-b24gcGFydHMgaW4gY29tbW9uKSwNCj4gdGhlcmUgaXMgc3RpbGwgYSBsb25nIHJvYWQgYWhlYWQg
-dG8gYWN0dWFsbHkgZW5hYmxlIHN1cHBvcnQgZm9yDQo+IHRoZSBEUDEuNCBJUCBpdHNlbGYuDQo+
-IA0KPiBTaWduZWQtb2ZmLWJ5OiBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyA8YW5nZWxvZ2lv
-YWNjaGluby5kZWxyZWdub0Bjb2xsYWJvcmEuY29tPg0KPiAtLS0NCj4gIGRyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHAuYyAgICAgfCAyODkgKysrKysrKysrKysrKysrKysrKysrKystLS0N
-Cj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHBfcmVnLmggfCAgNjEgKysrKystDQo+
-ICAyIGZpbGVzIGNoYW5nZWQsIDMxNSBpbnNlcnRpb25zKCspLCAzNSBkZWxldGlvbnMoLSkNCj4g
-DQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwLmMgYi9kcml2
-ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwLmMNCj4gaW5kZXggNzcyYmEzMTFhMzRhLi5mZTdl
-MDVlMjdmNmYgMTAwNjQ0DQo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHAu
-Yw0KPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwLmMNCj4gQEAgLTIsNiAr
-Miw4IEBADQo+ICAvKg0KPiAgICogQ29weXJpZ2h0IChjKSAyMDE5LTIwMjIgTWVkaWFUZWsgSW5j
-Lg0KPiAgICogQ29weXJpZ2h0IChjKSAyMDIyIEJheUxpYnJlDQo+ICsgKiBDb3B5cmlnaHQgKGMp
-IDIwMjYgQ29sbGFib3JhIEx0ZA0KPiArICogICAgICAgICAgICAgICAgICAgIEFuZ2Vsb0dpb2Fj
-Y2hpbm8gRGVsIFJlZ25vIDxhbmdlbG9naW9hY2NoaW5vLmRlbHJlZ25vQGNvbGxhYm9yYS5jb20+
-DQo+ICAgKi8NCj4gIA0KPiAgI2luY2x1ZGUgPGRybS9kaXNwbGF5L2RybV9kcF9hdXhfYnVzLmg+
-DQo+IEBAIC01Nyw2ICs1OSw4IEBADQo+ICAjZGVmaW5lIE1US19EUF9UT1BfT0ZGU0VUX0xFR0FD
-WQkweDIwMDANCj4gIA0KPiAgI2RlZmluZSBNVEtfRFBfU0lQX0NPTlRST0xfQUFSQ0gzMglNVEtf
-U0lQX1NNQ19DTUQoMHg1MjMpDQo+ICsjZGVmaW5lIE1US19EUF9TSVBfQVRGX0VEUF9TRVRfVklE
-X01VVEUJMzQNCj4gKyMgIGRlZmluZSBNVEtfRFBfU0lQX1JFUV9WSURFT19VTk1VVEUJMHhmZWZk
-DQoNCkFsaWduIHRvIG90aGVyIGluZGVudC4NCg0KPiAgI2RlZmluZSBNVEtfRFBfU0lQX0FURl9F
-RFBfVklERU9fVU5NVVRFCTMzDQo+ICAjZGVmaW5lIE1US19EUF9TSVBfQVRGX1ZJREVPX1VOTVVU
-RQkzMg0KPiAgDQo+IEBAIC0xNjgsNyArMTcyLDExIEBAIHN0cnVjdCBtdGtfZHBfZGF0YSB7DQo+
-ICAJYm9vbCBhdWRpb19wa3RfaW5faGJsYW5rX2FyZWE7DQo+ICAJdTE2IGF1ZGlvX21fZGl2Ml9i
-aXQ7DQo+ICAJdTggaHdfbWF4X2xpbmtfcmF0ZTsNCj4gKwlib29sIGh3aXBfdjFwNDsNCj4gIAli
-b29sIGF1eF9ocGRfc3VwcG9ydGVkOw0KPiArCWJvb2wgc2RwX2VuY29kZXIxX2VuYWJsZTsNCj4g
-Kwlib29sIGZvcmNlX3B3cl9zdGF0ZXM7DQo+ICsJYm9vbCBwc3Jfc3VwcG9ydGVkOw0KDQpCcmVh
-ayB0aGlzIHBhdGNoIGludG8gaHdpcF92MXA0LCBzZHBfZW5jb2RlcjFfZW5hYmxlLCBmb3JjZV9w
-d3Jfc3RhdGVzLCBwc3Jfc3VwcG9ydGVkLCBhbmQgTVQ4MTk2IFNvQyBzdXBwb3J0Lg0KDQpSZWdh
-cmRzLA0KQ0sNCg0KPiAgfTsNCj4gIA0KDQo=
+Hi Eason,
+
+kernel test robot noticed the following build warnings:
+
+[auto build test WARNING on wireless-next/main]
+[also build test WARNING on linus/master next-20260826]
+[cannot apply to wireless/main v7.2]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Eason-Lai/wifi-mt76-mt7928-Add-debugfs-for-stats-to-provide-debug-purpose/20260827-164427
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
+patch link:    https://lore.kernel.org/r/20260827084427.1624598-1-eason.lai%40mediatek.com
+patch subject: [PATCH v3] wifi: mt76: mt7928: Add debugfs for stats to provide debug purpose
+config: sparc-randconfig-r073-20260828 (https://download.01.org/0day-ci/archive/20260828/202608281532.s7sXQ2Cc-lkp@intel.com/config)
+compiler: sparc-linux-gcc (GCC) 14.3.0
+smatch: v0.5.0-9187-g5189e3fb
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202608281532.s7sXQ2Cc-lkp@intel.com/
+
+smatch warnings:
+drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c:437 mt792x_stats() warn: inconsistent indenting
+drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c:540 mt792x_stats() error: testing array offset 'band_idx' after use.
+
+vim +437 drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c
+
+   415	
+   416	static int mt792x_stats(struct seq_file *s, void *data)
+   417	{
+   418		s8 rssi = 0;
+   419		u8 band_idx = 0;
+   420		bool wtbl_rate_valid = false;
+   421		int ret = 0;
+   422		int i = 0;
+   423		u32 stats_value = 0;
+   424		u32 tx_link_speed_kbps = 0;
+   425		u64 tx_total = 0;
+   426		u64 tx_fail = 0;
+   427		u64 tx_per = 0;
+   428		u32 tx_per_rem = 0;
+   429		/* UNI_CMD_MIB_DATA */
+   430		u64 mib_values[ARRAY_SIZE(stats_query_mib_counters)];
+   431		struct mt792x_dev *dev = dev_get_drvdata(s->private);
+   432		struct mt7925_wtbl_rate wtbl_rate;
+   433		struct mt7925_sta_stats *stats = NULL;
+   434	
+   435		band_idx = dev->mphy.band_idx;
+   436	
+ > 437		 stats = kzalloc(sizeof(*stats), GFP_KERNEL);
+   438		if (!stats)
+   439			return -ENOMEM;
+   440	
+   441		/* Get STA_STATS */
+   442		mt792x_mutex_acquire(dev);
+   443		ret = mt792x_mcu_get_stat(dev, stats);
+   444		mt792x_mutex_release(dev);
+   445		if (ret)
+   446			goto out;
+   447	
+   448		/* Get MIB_STATS */
+   449		mt792x_mutex_acquire(dev);
+   450		ret = mt7925_mcu_get_mib_info(dev, band_idx, stats_query_mib_counters,
+   451					      ARRAY_SIZE(stats_query_mib_counters), mib_values);
+   452		mt792x_mutex_release(dev);
+   453		if (ret)
+   454			goto out;
+   455	
+   456		/* Get Link_Speed and RSSI */
+   457		mt792x_mutex_acquire(dev);
+   458		ret = mt7925_mcu_get_link_quality(dev, stats->bss_idx, &rssi, &tx_link_speed_kbps);
+   459		mt792x_mutex_release(dev);
+   460		if (ret)
+   461			goto out;
+   462	
+   463		/* Get the firmware auto-rate table (best effort; do not abort the
+   464		 * whole stats dump if the WTBL query is not available).
+   465		 */
+   466		mt792x_mutex_acquire(dev);
+   467		if (!mt792x_mcu_get_wtbl_rate(dev, stats->wtbl_idx, &wtbl_rate))
+   468			wtbl_rate_valid = true;
+   469		mt792x_mutex_release(dev);
+   470	
+   471		/* Print STA_STATS info */
+   472		seq_printf(s, "(STA) connected AP MAC Address = %pM\n", stats->mac_addr);
+   473		seq_printf(s, "%-22s  BssIdx = [%u]\n", " ", stats->bss_idx);
+   474		seq_printf(s, "%-22s  StaRecIdx = [%u]\n",
+   475			   " ", stats->sta_idx);
+   476		seq_printf(s, "%-22s  RSSI = %d\n", " ", rssi);
+   477		seq_printf(s, "%-22s  Link_Speed = %u (kbit/s)\n", " ", tx_link_speed_kbps);
+   478	
+   479		seq_printf(s, "%-22s  temperature = %u\n",
+   480			   " ", stats->temperature);
+   481	
+   482		stats_value = le32_to_cpu(stats->transmit_count) - le32_to_cpu(stats->transmit_fail_count);
+   483		seq_printf(s, "%-22s  Tx success = %u\n",
+   484			   " ", stats_value);
+   485	
+   486		stats_value = le32_to_cpu(stats->tx_fail_count) - le32_to_cpu(stats->tx_life_timeout_count);
+   487		seq_printf(s, "%-22s  Tx fail to Rcv ACK after retry = %u\n",
+   488			   " ", stats_value);
+   489	
+   490		seq_printf(s, "%-22s  Rx Mpdu = %u\n",
+   491			   " ", le32_to_cpu(stats->mib[band_idx].rx_mpdu_cnt));
+   492	
+   493		seq_printf(s, "%-22s  Rx Fcs Error = %u (MPDU)\n",
+   494			   " ", le32_to_cpu(stats->mib[band_idx].fcs_error));
+   495		seq_printf(s, "%-22s  Rx FIFO full = %u (MPDU)\n",
+   496			   " ", le32_to_cpu(stats->mib[band_idx].rx_fifo_full));
+   497	
+   498		for (i = 0; i < STAT_MIB_CNT_TRX_AGG_RANGE_MAX_NUM; i++)
+   499			seq_printf(s, "%-22s  TRX_AGG_RANGE[%d] = %u (PPDU)\n",
+   500				   " ", i, le32_to_cpu(stats->mib[band_idx].tx_range_ampdu_cnt[i]));
+   501	
+   502		seq_printf(s, "%-22s  MPDUs in AMPDUs transmitted = %u (MPDU)\n",
+   503			   " ", le32_to_cpu(stats->mib[band_idx].ampdu_tx_sf_cnt));
+   504		seq_printf(s, "%-22s  MPDUs in AMPDUs transmitted with ACK reply = %u (MPDU)\n",
+   505			   " ", le32_to_cpu(stats->mib[band_idx].ampdu_tx_ack_sf_cnt));
+   506		seq_printf(s, "%-22s  rate1_tx_cnt = %u\n",
+   507			   " ", le32_to_cpu(stats->rate1_tx_cnt));
+   508		seq_printf(s, "%-22s  rate1_fail_cnt = %u\n",
+   509			   " ", le32_to_cpu(stats->rate1_fail_cnt));
+   510		seq_printf(s, "%-22s  train_up = %u\n",
+   511			   " ", le16_to_cpu(stats->train_up));
+   512		seq_printf(s, "%-22s  train_down = %u\n",
+   513			   " ", le16_to_cpu(stats->train_down));
+   514		seq_printf(s, "%-22s  is_force_tx_stream = %u\n",
+   515			   " ", stats->is_force_tx_stream);
+   516		seq_printf(s, "%-22s  is_force_se_off = %u\n",
+   517			   " ", stats->is_force_se_off);
+   518		seq_printf(s, "%-22s  max_ampdu_factor = %u\n",
+   519			   " ", stats->max_ampdu_factor);
+   520		seq_printf(s, "%-22s  tx_rate_up_penalty = %u\n",
+   521			   " ", stats->tx_rate_up_penalty);
+   522		seq_printf(s, "%-22s  low_traffic_mode = %u\n",
+   523			   " ", stats->low_traffic_mode);
+   524		seq_printf(s, "%-22s  low_traffic_count = %u\n",
+   525			   " ", stats->low_traffic_count);
+   526		seq_printf(s, "%-22s  low_traffic_dashboard = %u\n",
+   527			   " ", stats->low_traffic_dashboard);
+   528		seq_printf(s, "%-22s  dynamic_sgi_state = %u\n",
+   529			   " ", stats->dynamic_sgi_state);
+   530		seq_printf(s, "%-22s  dynamic_sgi_score = %u\n",
+   531			   " ", stats->dynamic_sgi_score);
+   532		seq_printf(s, "%-22s  dynamic_bw_state = %u\n",
+   533			   " ", stats->dynamic_bw_state);
+   534		seq_printf(s, "%-22s  dynamic_gband_256qam_state = %u\n",
+   535			   " ", stats->dynamic_gband_256qam_state);
+   536		seq_printf(s, "%-22s  vht_non_sp_rate_state = %u\n",
+   537			   " ", stats->vht_non_sp_rate_state);
+   538	
+   539		/* Decode the TX Vector BBP latch to show the current TX MCS rate */
+ > 540		if (band_idx < MT7925_STA_STATS_BAND_NUM)
+   541			mt7925_print_last_tx_rate(s, stats->tx_vector[band_idx].txv);
+   542	
+   543		/* Dump the whole firmware auto-rate table and mark the entry currently */
+   544		if (wtbl_rate_valid)
+   545			mt7925_dump_auto_rate_table(s, &wtbl_rate);
+   546	
+   547		seq_puts(s, "\nmib state:\n");
+   548		/* ===Rx Related Counters=== */
+   549		seq_puts(s, "=== Rx Related Counters ===\n");
+   550		seq_printf(s, "%-22s  Rx with CRC = %llu (MPDU)\n",
+   551			   " ", mib_values[QUERY_MIB_CNT_RX_FCS_ERR]);
+   552		seq_printf(s, "%-22s  Rx drop due to out of resource = %llu (MPDU)\n",
+   553			   " ", mib_values[QUERY_MIB_CNT_RX_FIFO_OVERFLOW]);
+   554		seq_printf(s, "%-22s  Rx Mpdu = %llu (MPDU)\n",
+   555			   " ", mib_values[QUERY_MIB_CNT_RX_MPDU]);
+   556		seq_printf(s, "%-22s  Rx AMpdu = %llu (PPDU)\n",
+   557			   " ", mib_values[QUERY_MIB_CNT_AMPDU_RX_COUNT]);
+   558		seq_printf(s, "%-22s  Rx PF Drop = %llu (MPDU)\n",
+   559			   " ", mib_values[QUERY_MIB_CNT_PF_DROP]);
+   560		seq_printf(s, "%-22s  Rx Len Mismatch = %llu (PPDU)\n",
+   561			   " ", mib_values[QUERY_MIB_CNT_LEN_MISMATCH]);
+   562	
+   563		/* ===Phy/Timing Related Counters=== */
+   564		seq_puts(s, "\n=== Phy/Timing Related Counters ===\n");
+   565		seq_printf(s, "%-22s  ChannelIdleCnt = %llu\n",
+   566			   " ", mib_values[QUERY_MIB_CNT_CHANNEL_IDLE]);
+   567		seq_printf(s, "%-22s  CCA_NAV_Tx_Time = %llu\n",
+   568			   " ", mib_values[QUERY_MIB_CNT_CCA_NAV_TX_TIME]);
+   569		seq_printf(s, "%-22s  Rx_MDRDY_CNT = %llu (PPDU)\n",
+   570			   " ", mib_values[QUERY_MIB_CNT_MDRDY]);
+   571		seq_printf(s, "%-22s  CCK_MDRDY = %llu\n",
+   572			   " ", mib_values[QUERY_MIB_CNT_RX_CCK_MDRDY_TIME]);
+   573		seq_printf(s, "%-22s  OFDM_MDRDY = %llu\n",
+   574			   " ", mib_values[QUERY_MIB_CNT_RX_OFDM_LG_MIXED_MDRDY_TIME]);
+   575		seq_printf(s, "%-22s  OFDM_GREEN_MDRDY = %llu\n",
+   576			   " ", mib_values[QUERY_MIB_CNT_RX_OFDM_GREEN_MDRDY_TIME]);
+   577		seq_printf(s, "%-22s  Prim CCA Time = %llu\n",
+   578			   " ", mib_values[QUERY_MIB_CNT_P_CCA_TIME]);
+   579		seq_printf(s, "%-22s  Sec CCA Time = %llu\n",
+   580			   " ", mib_values[QUERY_MIB_CNT_S_CCA_TIME]);
+   581		seq_printf(s, "%-22s  Prim ED Time = %llu\n",
+   582			   " ", mib_values[QUERY_MIB_CNT_P_ED_TIME]);
+   583	
+   584		/* ===Tx Related Counters(Generic)=== */
+   585		seq_puts(s, "\n=== Tx Related Counters(Generic) ===\n");
+   586		seq_printf(s, "%-22s  BeaconTxCnt = %llu\n",
+   587			   " ", mib_values[QUERY_MIB_CNT_BCN_TX]);
+   588		seq_printf(s, "%-22s  Tx 40MHz Cnt = %llu  (MPDU)\n",
+   589			   " ", mib_values[QUERY_MIB_CNT_TX_BW_40MHZ]);
+   590		seq_printf(s, "%-22s  Tx 80MHz Cnt = %llu  (MPDU)\n",
+   591			   " ", mib_values[QUERY_MIB_CNT_TX_BW_80MHZ]);
+   592		seq_printf(s, "%-22s  Tx 160MHz Cnt = %llu  (MPDU)\n",
+   593			   " ", mib_values[QUERY_MIB_CNT_TX_BW_160MHZ]);
+   594	
+   595		/* ===BSSID[0] Related Counters=== */
+   596		seq_puts(s, "\n=== BSSID[0] Related Counters ===\n");
+   597		seq_printf(s, "%-22s  BA Miss Cnt = %llu  (PPDU)\n",
+   598			   " ", mib_values[QUERY_MIB_CNT_BSS0_BA_MISS]);
+   599		seq_printf(s, "%-22s  RTS Tx Cnt = %llu  (MPDU)\n",
+   600			   " ", mib_values[QUERY_MIB_CNT_BSS0_RTS_TX_CNT]);
+   601		seq_printf(s, "%-22s  Frame Retry Cnt = %llu (MPDU)\n",
+   602			   " ", mib_values[QUERY_MIB_CNT_BSS0_FRAME_RETRY]);
+   603		seq_printf(s, "%-22s  Frame Retry 2 Cnt = %llu (MPDU)\n",
+   604			   " ", mib_values[QUERY_MIB_CNT_BSS0_FRAME_RETRY_2]);
+   605		seq_printf(s, "%-22s  RTS Retry Cnt = %llu (MPDU)\n",
+   606			   " ", mib_values[QUERY_MIB_CNT_BSS0_RTS_RETRY]);
+   607		seq_printf(s, "%-22s  Ack Failed Cnt = %llu (PPDU)\n",
+   608			   " ", mib_values[QUERY_MIB_CNT_BSS0_ACK_FAIL]);
+   609	
+   610		/* ===AMPDU Related Counters=== */
+   611		seq_puts(s, "\n=== AMPDU Related Counters ===\n");
+   612		seq_printf(s, "%-22s  Tx AMPDU_Pkt_Cnt = %llu  (PPDU)\n",
+   613			   " ", mib_values[QUERY_MIB_CNT_AMPDU]);
+   614		seq_printf(s, "%-22s  Tx AMPDU_MPDU_Pkt_Cnt = %llu  (MPDU)\n",
+   615			   " ", mib_values[QUERY_MIB_CNT_AMPDU_MPDU]);
+   616		seq_printf(s, "%-22s  AMPDU Tx success = %llu (MPDU)\n",
+   617			   " ", mib_values[QUERY_MIB_CNT_AMPDU_ACKED]);
+   618	
+   619		tx_total = mib_values[QUERY_MIB_CNT_AMPDU_MPDU];
+   620		tx_fail =  mib_values[QUERY_MIB_CNT_AMPDU_MPDU] - mib_values[QUERY_MIB_CNT_AMPDU_ACKED];
+   621		tx_per = tx_total == 0 ? 0 : div64_u64(1000 * tx_fail, tx_total);
+   622		seq_printf(s, "%-22s  AMPDU Tx fail count   = %llu  (MPDU), PER=%llu.%1llu%%\n",
+   623			   " ",
+   624			   tx_fail,
+   625			   div_u64_rem(tx_per, 10, &tx_per_rem), (u64)tx_per_rem);
+   626	
+   627	out:
+   628		kfree(stats);
+   629		return ret;
+   630	}
+   631	
+
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
