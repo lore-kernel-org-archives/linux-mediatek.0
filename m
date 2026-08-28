@@ -4,103 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFB2DC61DC4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Aug 2026 21:17:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC74EC61DC4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2026 01:18:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tz5ILNw9DexVi+q49WPazou/vKYmLq2Kzp04C8PpRoI=; b=YfyLht9FAoEprV7JyCpw9ZPRuH
-	eh5PzUtgRkzOtEFbRdn9NOyUHgyPDwZdbSGPYXRQX6EAphC2AOFunyvnjjNaxM4TzfFITBwROY52f
-	HSXvXvJe1YblW5j9zIeHQJaQu8r+RkyS2usyg/YgcEGSJ2y9YyUKafn2HA0h6G7iiKJcHYjyzASud
-	ZkcQjpolenduvmmvrKm52yLzK9J3K95WItqonwJ6KRJk9KY58sFu0/Hajo8P603aQDoMZ1v3zNO+x
-	LdlFbHFA2XlEFrGEhU3eCKtPg0tVcTAK1G7pycVeCmDqaOimJY5OBFqvEqqG63u0CZhBqYPZA8abY
-	cAiVAZdw==;
+	bh=yvQ9vLC15Q38Lz0nWGrTIxK1VywUskRZnArH+IjTnwI=; b=RWTuo1Qd2x6agim12amvnutpaS
+	TJxIu0AmtIYa6MeHonUGmaOwYenRVXFEslnfvyRkv7iugCmBVDxKRUuj8z1y46E3RvkykyTXCVgCf
+	u8q0vrFs8IkAm3X0ODNhelNZ274+S5LFnjf/6bC9dr7T7pLYOYfGUkIWoB7oMbE0QLslznKLMbIlf
+	FLpDhoyXoEBGHHABrjPuOJ+pyi0tOpBrDOwgn9ateFBJKO9JyVghXLY7iJAk2dye7WX3V8EY5pNJI
+	6SBRHrQrLkQnWVylGwnkwgxgATeLswMaeTlaEA8w/jHu6sGT6mF48FyeNoAiCraGEdl9xW7r0dE30
+	mxaaFZBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzhTH-00000004ngR-20IE;
-	Thu, 27 Aug 2026 21:17:15 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1wzlEF-00000004yyU-3CdZ;
+	Fri, 28 Aug 2026 01:17:59 +0000
+Received: from out-107.mta0.migadu.com ([2001:41d0:1004:224b::6b] helo=mta0.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzhT2-00000004na2-2vOg
+	id 1wzlEB-00000004yx3-1IIj
 	for linux-mediatek@lists.infradead.org;
-	Thu, 27 Aug 2026 21:17:06 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-482e5733a5aso183149f8f.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 27 Aug 2026 14:17:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=lex.la; s=google; t=1787865419; x=1788470219; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=Tz5ILNw9DexVi+q49WPazou/vKYmLq2Kzp04C8PpRoI=;
-        b=YZaH2u9EPYNCB2NndIi/pkSKFUfIGH2Mm3UPVQmxiKeHYADACgg4XZGJrelPkB12Bc
-         zCLjjSmktCBHM9AmMe+tPi0WmF2ucAhFGYmOLnZWsV8ViYGHZXFg2VNigeDFaWMgIZr7
-         +4gtImDeQTrZy/zBKP/hhJDH1wXCuTGWDjZL31H8i6A/xrfHcmIFxOT1Zb+I3Kx2xWXD
-         ChahzS6LASfmEcnrlT+CXdbZ2wK2afwc0UYl5bB77ge79Lo/mOMrWdx8N90ZtWtCJr8L
-         1KoM7MbOra/ohJQ4P9dV9Akjyb9s0/Mxd3aZNBKMUzY5+BYRfGIvHGdWJC594+wC9H0P
-         r/XQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787865419; x=1788470219;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=Tz5ILNw9DexVi+q49WPazou/vKYmLq2Kzp04C8PpRoI=;
-        b=hVp/B1bqGG7Atj3ul2NQ38fqfugP7W8JW64QuSOOhfX7t2TrK+n5zsRkjft849K6wr
-         10bnSUS2wmY6Vsj3vl0GfM8unLmtrHZVixJYaPgOj73VSMemxkO0vx0RIitu7cfmI3dY
-         pPd2z86YKXO0vCsJIOWdIvmZKYtXv4tSoljB2DZo1TRwa+v8yM4nFtRT/+meRG/Jtrgs
-         /1hDuko4peiFAM7UuL9sEnt/Xj3yf4al282vzZHYNJrYVp3++lAIUBzQ1kcm9Dl/NCfZ
-         gs4pCDh/7nEo6zx83A2tJjgTUbVEOTceGMhwMHefDq4FQkRSBKTzyn2ELx2NfpCxJjo7
-         evMg==
-X-Forwarded-Encrypted: i=1; AHgh+Rqkw0f1DLBCreMawEqwERn6+HBIQeIb8v2ysHQLQ2eirc2aVa/GELD7piVs8HpNUR0qS4b5E8lP3IS6IawAtw==@lists.infradead.org
-X-Gm-Message-State: AFuF++kS8TGxhQaJtzfmKEcCKLxzsb7e1mD7LfzcbnunDk0Q/qpkevYU
-	O3NXzC0gy3W16ZhjMFhVrp5PDxHlf2mga9BQzgyH8euqkcSb7LP2z6HzSnTbGDcX3TYQL3N91Vb
-	jEISiWKfaDw==
-X-Gm-Gg: AR+sD10/jFYVb1witJDh3Pmad3OVX/uQIgg2MnXR5WFR/y6drdtyqc7Zv9sbEC0T9Re
-	1hI+J/3bNHQpf3TXI7CeLompAtbaUIN/ueGGqwfpGXVfdOfN/ojYfl+V3f3hZBalHlrMxoODzdi
-	4fP8rIIWq2eXEAXTn2nIa7UPSKOgCnl75401E5G8aGiRliZrAT0PR6nwEJ8DNHDfIuG2kSwuB3l
-	p9YMVCUJLUhCu1iKkRDnTJHAsqRziGJ/WxLxQ5RFC4++bvHRS0s1KsZ5e1cI6lPPt6PB59ZA/Aj
-	EOBlzT/vgIov8F8UAYgXR1a2De4wkh65aKoHtkDMkCc8L9ocv1N/E8npVqdk22qipWfGgQVmSzj
-	VDg6XJKNdhztFFWFPP0vK/M/8PSe3Uxh6QcvtcsgIgBrl2ABBThS9oSj7dq4Wku5veIO2TJ3dHj
-	6VAPRR4040/l/0KnthXPvnGokHKsCw7PXqL2IRK++VLCz7m53ESt3RuQ8=
-X-Received: by 2002:a05:6000:40ce:b0:482:e2f2:19c5 with SMTP id ffacd0b85a97d-482f79cc09fmr1611455f8f.4.1787865418791;
-        Thu, 27 Aug 2026 14:16:58 -0700 (PDT)
-Received: from ownbook ([31.146.92.111])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-482e27aa050sm11004557f8f.12.2026.08.27.14.16.56
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 27 Aug 2026 14:16:58 -0700 (PDT)
-From: Aleksei Sviridkin <f@lex.la>
-To: "Chester A . Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	netdev@vger.kernel.org
-Cc: Aleksei Sviridkin <f@lex.la>,
-	Russell King <linux@armlinux.org.uk>,
-	Qingfang Deng <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net v3 1/2] net: dsa: mt7530: populate lpi_interfaces to fix EEE support
-Date: Fri, 28 Aug 2026 00:16:51 +0300
-Message-ID: <20260827211652.63504-2-f@lex.la>
+	Fri, 28 Aug 2026 01:17:57 +0000
+X-Envelope-To: linux-mediatek@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=vkWAAncEPqSCfjPN3H3wr6ysqgrRP13JfyJKI8czm9Q=;
+ c=simple/simple; d=justthetip.ca;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1787879869; v=1; x=1788484669;
+ b=Gbwa1ZrK/5lf9wiUzqwmI8B1wZ7sxn9QhT0ftXgMPwEAn1wDORhUBfT2ipvYRD1RHZGyBVGX
+ yzVZiZz6HeF6+R+wexCKec6NSkwqC6mSmsaeGltKrg+eBvQcwrUBnJgG17zCVZ54/lE7FzItD0A
+ UyUUa76OOn265DN2yvSRuZCp+XCtdy4fOga9HYOIcOIC4B9o2iP+10RPQ51RqISfLtp8ZYE5CcV
+ f7CUiHPA1bTLOzSJS0fK+NJ+u0ViYdq2xoF1jJdLYAZ09lh6JiXioSMBoTiJL19NcXBX4kZgZAg
+ kiiDHFkmUt1FcpnPcvIiI08Szib+Zj62IyEAqXyIt6Nmg==
+X-Envelope-To: linux-mediatek@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id 4063e950ceabd68a;
+	Fri, 28 Aug 2026 01:17:39 +0000
+X-Mizu-Trace-ID: 4063e950ceabd68a
+X-Migadu-Flow: FLOW_OUT
+From: Devin Wittmayer <lucid_duck@justthetip.ca>
+To: Klara Modin <klarasmodin@gmail.com>
+Cc: linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	nbd@nbd.name,
+	lorenzo@kernel.org,
+	regressions@lists.linux.dev
+Subject: Re: [PATCH wireless] wifi: mt76: mt792x: fix NULL dereference in ACPI SAR init during probe
+Date: Thu, 27 Aug 2026 18:17:37 -0700
+Message-ID: <20260828011737.22809-1-lucid_duck@justthetip.ca>
 X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260827211652.63504-1-f@lex.la>
-References: <20260827211652.63504-1-f@lex.la>
+In-Reply-To: <ao3dyqWJ3nf3rMMW@soda.int.kasm.eu>
+References: <20260825181712.28548-1-lucid_duck@justthetip.ca> <ao3dyqWJ3nf3rMMW@soda.int.kasm.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260827_141704_389152_8FFCA72E 
-X-CRM114-Status: GOOD (  19.56  )
+X-CRM114-CacheID: sfid-20260827_181756_239878_C51B2B4B 
+X-CRM114-Status: GOOD (  35.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,106 +74,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-phylink_create() decides once and for all that a MAC supports managed
-EEE, and it requires the tx_lpi ops plus non-empty lpi_capabilities and
-lpi_interfaces. mt753x_phylink_get_caps() leaves lpi_interfaces empty.
+Thank you for the Tested-by, and for bisecting it in the first place. The
+report arrived with the commit named and a revert confirmed, which is most of
+the work already done.
 
-So ever since the conversion to phylink managed EEE, ethtool has
-answered "Not supported" on every mt753x port, and phy_disable_eee()
-has locked userspace out of turning EEE on. That undoes what
-commit 06dfcd4098cf ("net: dsa: mt7530: fix enabling EEE on MT7531
-switch on all boards") arranged: EEE off by default, but reachable
-with ethtool.
+Something odd, since we are on the same laptop. Mine is a Framework 13 that
+shipped with an MT7922, and it has no MediaTek power tables at all. I checked
+every ACPI table on the machine rather than only the main one, and there is
+nothing there for any vendor. So your oops cannot fire here on the same model
+with the same card, which is why I had to inject tables to reproduce it.
 
-Leave the speeds above 1 Gbps out of both bitmaps. PMCR folds
-SPEED_2500 and SPEED_10000 onto PMCR_FORCE_SPEED_1000, so
-PMCR_FORCE_EEE1G would govern LPI on such a link, and that is
-unvalidated rather than known unsupported: MediaTek's SDK driver sets
-the EEE force bits for 100 Mbps and 1 Gbps only, and the unit of the
-wakeup timers is undocumented with the port clock at 2.5 times the
-rate.
+Which means the difference is somewhere in the firmware, and I can only see my
+side of it. Mine is an Intel 11th generation board on BIOS 3.17, dated October
+2022. What are you on? Whether these tables came with a later release or only
+ever appeared on certain boards decides whether anyone else is about to walk
+into this.
 
-LPI stays off until userspace enables it, but the EEE advertisement of
-a PHY that advertises it out of reset comes back, since phylink stops
-force-clearing it.
+While you are in there, does your geo table carry 0xff in the unused slots?
+Someone turned up on the list yesterday with an ASUS padded that way, which
+the driver takes as roughly -1 dBm and clamps every rate down to it. Whether
+that is one vendor's habit or common changes what the right fix looks like.
 
-Fixes: 9cf21773f535 ("net: dsa: mt7530: convert to phylink managed EEE")
-Signed-off-by: Aleksei Sviridkin <f@lex.la>
----
+Devin
 
-Ports that support neither 100 Mbps nor 1 Gbps are skipped because on
-MT7988, EN7581 and AN7583 port 6 is 10 Gbps only and shares
-PHY_INTERFACE_MODE_INTERNAL with the user ports, so the interface mask
-alone cannot tell them apart. MT7531's internal PHYs keep the
-advertisement mt7531_setup() zeroed and EN7528 keeps both bitmaps
-empty, so EEE stays fully off there.
-
-Two pre-existing things this patch makes live, neither addressed here:
-
-- The unit of LPI_THRESH is still unspecified, as the comment above
-  lpi_timer_default says. ethtool now reports 30 for a switch port
-  against 1000 for the SoC MAC, which is a driver constant already in
-  microseconds, and mtk_eth_soc treats a structurally identical field
-  as milliseconds. Does anyone have the datasheet answer?
-
-- mt753x_phylink_mac_enable_tx_lpi() sets the PMCR force-EEE bits
-  without checking the resolved speed or interface, relying entirely on
-  phylink never calling it above 1 Gbps. A check there would make the
-  driver robust independently of lpi_interfaces being right.
-
-v2, with the full argument for leaving the higher speeds out:
-https://lore.kernel.org/netdev/20260824024117.46154-2-f@lex.la/
- drivers/net/dsa/mt7530.c | 24 +++++++++++++++++++-----
- 1 file changed, 19 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 2b7be091c056..4ed6218df64b 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -3172,23 +3172,37 @@ static void mt753x_phylink_get_caps(struct dsa_switch *ds, int port,
- 
- 	config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE;
- 
-+	priv->info->mac_port_get_caps(ds, port, config);
-+
- 	/* The EN7528 GPHYs report EEE capability, but negotiating EEE with
- 	 * common link partners (e.g. Realtek GbE NICs) results in an unstable
- 	 * link with dropped frames. Leave the LPI capabilities empty so that
- 	 * phylink disables EEE on these PHYs and refuses to enable it from
--	 * userspace.
-+	 * userspace. Ports that run at neither 100 Mbps nor 1 Gbps are left
-+	 * empty too, since LPI above 1 Gbps is unvalidated.
- 	 */
--	if (priv->id != ID_EN7528) {
-+	if (priv->id != ID_EN7528 &&
-+	    config->mac_capabilities & (MAC_100FD | MAC_1000FD)) {
- 		u32 eeecr = mt7530_read(priv, MT753X_PMEEECR_P(port));
- 
--		config->lpi_capabilities = MAC_100FD | MAC_1000FD | MAC_2500FD;
-+		/* PMCR folds SPEED_2500 and SPEED_10000 onto
-+		 * PMCR_FORCE_SPEED_1000, so LPI above 1 Gbps would be
-+		 * governed by PMCR_FORCE_EEE1G and is unvalidated rather than
-+		 * unsupported. Leave it out of both bitmaps: lpi_capabilities
-+		 * gates on the media speed a rate matching PHY reports, not
-+		 * on the speed the MAC runs at.
-+		 */
-+		config->lpi_capabilities = MAC_100FD | MAC_1000FD;
-+		phy_interface_copy(config->lpi_interfaces,
-+				   config->supported_interfaces);
-+		__clear_bit(PHY_INTERFACE_MODE_2500BASEX,
-+			    config->lpi_interfaces);
-+
- 		/* tx_lpi_timer should be in microseconds. The time units for
- 		 * LPI threshold are unspecified.
- 		 */
- 		config->lpi_timer_default = FIELD_GET(LPI_THRESH_MASK, eeecr);
- 	}
--
--	priv->info->mac_port_get_caps(ds, port, config);
- }
- 
- static int mt753x_pcs_validate(struct phylink_pcs *pcs,
--- 
-2.55.0
-
+On 2026-08-25 11:27:15 +0000, Klara Modin wrote:
+> On 2026-08-25 11:17:12 -0700, Devin Wittmayer wrote:
+> > Some laptops carry a MediaTek power table in their firmware, and the
+> > driver reads it to set a transmit limit for each frequency range. It
+> > only fills in the ranges themselves when it registers the device.
+> >
+> > The startup step that does this existed already, but it never programmed
+> > anything. These two commits made it run a regulatory update instead,
+> > which sets the limits on the way through, long before registration. So on
+> > a machine that has the table the driver reads through an empty pointer
+> > and the interface never appears:
+> >
+> >   BUG: kernel NULL pointer dereference, address: 0000000000000004
+> >   RIP: 0010:mt792x_init_acpi_sar_power
+> >   Call Trace:
+> >    mt7921_set_tx_sar_pwr
+> >    mt7921_mcu_regd_update
+> >    mt7921_regd_update
+> >    mt7921_run_firmware
+> >    mt7921e_mcu_init
+> >    mt7921_init_work
+> >
+> > Skip it when the ranges are missing. They are applied again once the
+> > device is up, which is where they came from before.
+> >
+> > Reported-by: Klara Modin <klarasmodin@gmail.com>
+> > Closes: https://lore.kernel.org/linux-wireless/aoyxqHYvSuaBeubf@soda.int.kasm.eu/
+> > Fixes: 9b80bd9cab40 ("wifi: mt76: mt7921: add regulatory wiphy self manager support")
+> > Fixes: e9f3f1cc133f ("wifi: mt76: mt7925: add regulatory wiphy self manager support")
+> > Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+> > ---
+> >
+> > Reproduced on both chips before sending, an MT7922 and an MT7925, and the
+> > fix clears both. Neither machine here ships a vendor power table, so I
+> > supplied one through an ACPI override in the initrd. It also wants recent
+> > firmware. The June builds do not turn on self-managed regulatory and
+> > nothing happens; the builds now in linux-firmware do, and then it dies
+> > exactly as reported with no interface at all. Patched, both come up and
+> > scan normally, and the injected limits still show through in the power
+> > table afterwards, so the skip does not lose them.
+> >
+> > With that table still in place and the fix absent, backing out the mt7921
+> > commit on its own also boots clean, so the table is not what causes this.
+> >
+>
+> Thanks for the quick fix!
+>
+> Regards,
+> Tested-by: Klara Modin <klarasmodin@gmail.com>
+>
+> >  drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c | 3 ++-
+> >  1 file changed, 2 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
+> > index 946dd7956e4a..b468051fbe68 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
+> > @@ -323,7 +323,8 @@ int mt792x_init_acpi_sar_power(struct mt792x_phy *phy, bool set_default)
+> >  	const struct cfg80211_sar_capa *capa = phy->mt76->hw->wiphy->sar_capa;
+> >  	int i;
+> >
+> > -	if (!phy->acpisar || !((struct mt792x_acpi_sar *)phy->acpisar)->dyn)
+> > +	if (!capa || !phy->acpisar ||
+> > +	    !((struct mt792x_acpi_sar *)phy->acpisar)->dyn)
+> >  		return 0;
+> >
+> >  	/* When ACPI SAR enabled in HW, we should apply rules for .frp
+> > --
+> > 2.55.0
+> >
 
