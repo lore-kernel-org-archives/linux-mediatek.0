@@ -4,99 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DABCCC61DDA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2026 12:10:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB1C0C61DBD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Aug 2026 13:53:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=l/wCsFq/Zorgy/BqKS/v6a3TdSdfv1vfVKndsRYo1PM=; b=NzHyho2/NUAuAIuT95+G8CdAKP
-	FVAAfoQC5AtDnOMCTf7IKzC7O4b+Hd8x/yeEGYjKy9vKmztQXIWlOlUx20b0cSmFJEN/GxGZRr31R
-	Q10/iKyIZBGReJHA4yrmJmW9GrVF+rNBT9eUFAcuZ2yQusQAZA/EkGywA47WG++r/ooX+NkyNy1a9
-	E9KE7mi5lgTSm40eZnZtGuHoyFsdSV/H5/cVAWxHf+TaoFS4anrY9xkGYlKNaD46adkpGVffkCMHK
-	9g+XfYSA6GPLQdi7ay6c3nXAUlGxteQxPK6GJJu5w+vhN8yb1aE/JYGfGz49polwCLjnoocaG/uSu
-	g2gfRwbg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AmSTT9MXouufQJWGkDRnemigvfWNAFOH7bjz2ZiFIZA=; b=UuliOSSXGf3t1u8OvN/by5Aard
+	zk6Ov4oaIx71cqy6a+WsA9w3c5N9pdtCkPEnQqZSzgayldiv2XBhCLifY/ylJ/epn5WSvwUvbvdFY
+	0WbjqjXW+zVBSDFCrbrhznkHnCq8MVFMmhG8Bt9ZhCQhmI1GqjW2EHHkTCNuaS7kFabEPTOgYeboE
+	iG34IjaxEBV+e/CkvbdK1a/Ox23PzG23ETE0sEWWbGIJwNWSMnoG7qqRpkaKPmkDXTM8DokNIbAaq
+	AvRtg4T6Aqxz0eo8Ce0swrKL016CtIxdARomdBo9f+CdyNYZybGvwZBoUWbITtg/faYO35ce6xvGt
+	lunhq/hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzvQ4-00000005hyn-1UJe;
-	Fri, 28 Aug 2026 12:10:52 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1wzx1E-00000005umA-2x0s;
+	Fri, 28 Aug 2026 13:53:20 +0000
+Received: from sendmail.purelymail.com ([34.202.193.197])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wzvQ1-00000005hxR-2NRZ
+	id 1wzx1C-00000005ukt-3LIf
 	for linux-mediatek@lists.infradead.org;
-	Fri, 28 Aug 2026 12:10:51 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-49a97714f5dso6060365e9.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 28 Aug 2026 05:10:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1787919047; x=1788523847; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=l/wCsFq/Zorgy/BqKS/v6a3TdSdfv1vfVKndsRYo1PM=;
-        b=G2yAP1XiGHCbiG5mDNWZLzPQSZmhvxDdemsSiB5KOPjRwa96lFKoTVLC7hHA2quLm5
-         dlQh/J6aV6yOpRQnANxo9nTCncoW0eNmJPOTs5djA7oXmMj8Pjbldb75qT3bTTHhIptG
-         I8OuqEgFATzTQHc6Zs5ANatJY6Ml2ZK50VgB9zfPBR6FmIUifXBFjM1G6+QWWqKJh2zN
-         Qy2uarLMwDsTuSquXw94Dv8+MbcA9y26qvUVW4o3xT6SVJPOGMkarSrPl3pxPuiUtFrk
-         wyn3mRCkQpdmXK+QB0vrugKWnUPSrUYSvuMDyOXTd09AL1ZDih54LwjfmJQYgSlpuhWC
-         +nmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1787919047; x=1788523847;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=l/wCsFq/Zorgy/BqKS/v6a3TdSdfv1vfVKndsRYo1PM=;
-        b=XcxE1LmNYCAqB+3VOALSkS5ErpD+yMptuCu0pmQQT/vwkQKwE5OPx7PCmexDse2nke
-         MJcHlHiEnq/xnavoLKIpuFfe7zaN+AJwVIZkEK4ir54WYCZwddtgQoLHUEKQ0E3T2EJZ
-         0lYHrKrqFPUv7At6q+A96hPt4LQLfsO762FlMOzy71j/Y20gMfiJwcbByuOyameIDypX
-         AJjrMCQVvQVOE5fjx7OIYSSLZqOnrGAx8zcAgw84KBuklEqlxDdeDaSIiWNqdv5b1sFk
-         FI6hde3AxsJg7zL7KI/HvilPx/QYwYva3zAZ6d0EZvlyL6QVs+j5Mv8sTAX+2zDLC6/S
-         fmSw==
-X-Forwarded-Encrypted: i=1; AHgh+RqWqM4BThrRKGQPENTQ8ZebOcyeY2m5EG3gHGtLYA0JlpUxlixS1aRdYl5dGD8J4712p6IrMTriZczxJZZzjg==@lists.infradead.org
-X-Gm-Message-State: AFuF++lDrYgGTe3gqyboFB2QAH86YVQr+xOX2pNGvnnVIks75eDSSkXU
-	jrJn5XPC/uIG49wMTxbXxzv/mbq+eHDbkGHJru4KcSPdA+gQC93q74JbTD5xtDSZVV0=
-X-Gm-Gg: AR+sD10sEKeC8yEA32+cd0BWBH4o3rT6F+RllaZqLFt2AULEEA+GZW6PPwHZaPh2yPe
-	4DxWBeJEWkKyHUsuVCOo71XmhLpX9HYdUESFtA0T9gXoFaoT48yyScsbjZYpxfVzkR0aydHfYn8
-	NAE547KsDKlRJ5iwTyxJTyttss4b2ed5xJZP7YNOBLd3lgbehaJfpuNEhs1sWqS8JkO+fpvHeLT
-	3jjf3yWKg9LZKyllhkOUb+fYjYuUnLM2EKMLHQLJUXXauPxp5gBc31QHCDJOtNDrUsas3lhsoUT
-	pqNehGJ2N6OvuwAakKh8sdjMzz4RL/oD18kpw/nIJRKzKYbp34cVjYAkOQs4kF66T2AWnC3deww
-	7ClrRxH0+KdR0QCOC+n5bhjsU8pBwTxiK22dXcKL2k9Rk7J3aZAAaeWaW/fmvtNtaviQ48vupNY
-	ge94uHQIHzn7POhtDwoyTsh8YT0M+Ndq30xk8sYIQOXP2nP6PN8uYWiZS+RS41LyPUE4r+WU5Ng
-	6+oetsF0RoQrfF9iMeXzKPaoFm0mjhTSi9v826z2ODT939xb51Fg2Fuw9L6DmSzjv3ku6LtkMNR
-	WJtbAAQaGXw7TAGIbwI8TgbzGI5Wma2lg3TWletf18RO+w==
-X-Received: by 2002:a05:600c:4453:b0:499:8777:ccba with SMTP id 5b1f17b1804b1-49b91c486abmr84183025e9.12.1787919046770;
-        Fri, 28 Aug 2026 05:10:46 -0700 (PDT)
-Received: from [192.168.1.100] (2a02-842a-d52e-6101-6f8f-5617-c4b6-8627.rev.sfr.net. [2a02:842a:d52e:6101:6f8f:5617:c4b6:8627])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49b494228bfsm125368175e9.2.2026.08.28.05.10.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 Aug 2026 05:10:46 -0700 (PDT)
-From: Julien Stephan <jstephan@baylibre.com>
-Date: Fri, 28 Aug 2026 14:10:47 +0200
-Subject: [PATCH] drm/mediatek: mtk_hdmi_v2: fix VID_DOWNSAMPLE_CONFIG
- register offset
+	Fri, 28 Aug 2026 13:53:20 +0000
+Authentication-Results: purelymail.com; auth=pass
+DKIM-Signature: a=rsa-sha256; b=Bb4aJ5Qb4kOZxD736D9iGv6yVSPhK8VULmRQi2enelB9ktsUetMLX7REqTQwNXdvDUq3/PRvvQtspXCdaIVKT+ak9wAWruyKfEiC32rZQ8FY9mg/EsQdq+9S/kfi101Nuyb0Ho5AzigWLxc8s/2AjHUaQAUKSMvDf979PS+w/ScNwQPMlOm8CdjjQKTXqS+0Ji4t36vHMx5i9eL0MLXjIF+H5WUmVx1LDWvE9k/7jXag1jxbMoTKlC+9QntVfMrGpMHNLc4KbRcCKUgp027TpVyl0AFk0+njKQjNldS53nQjriPPNSs69I+8mu1BjnoQ6dviEL7Svvgf42ApVnePhA==; s=purelymail2; d=purelymail.com; v=1; bh=rG2gddjK0mFNccoof/5IKOWP4NxA9PADvpZgCOLr15s=; h=Feedback-ID:Received:From:Date:Subject:To;
+Feedback-ID: 68247:10037:null:purelymail
+X-Pm-Original-To: linux-mediatek@lists.infradead.org
+Received: by smtp.purelymail.com (Purelymail SMTP) with ESMTPSA id -1236780859;
+          (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
+          Fri, 28 Aug 2026 13:52:51 +0000 (UTC)
+From: Igor Belwon <igor.belwon@mentallysanemainliners.org>
+Date: Fri, 28 Aug 2026 15:52:46 +0200
+Subject: [PATCH 1/2] arm64: dts: mediatek: mt6878-pinfunc: Fix pinctrl
+ header path
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260828-mtk-hdmi-v2-fix-register-offset-v1-1-118ad5d7ebe3@baylibre.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXNUQrCMBCE4auUfXahjaDRq4gPMZm0q7SV3ViE0
- rsb9fGD4Z+VDCowOjcrKRYxmaeKbtdQHMLUgyVVk2vdofXO81gePKRReHGc5c2KXqxAec7ZUNg
- fTyHHvY8hdVQrT0Wd/R4u17/tdbsjlm+Wtu0D+/pwJoMAAAA=
-X-Change-ID: 20260828-mtk-hdmi-v2-fix-register-offset-879afc38cad1
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+Message-Id: <20260828-mt6878-header-fix-v1-1-b70dc9b2479c@mentallysanemainliners.org>
+References: <20260828-mt6878-header-fix-v1-0-b70dc9b2479c@mentallysanemainliners.org>
+In-Reply-To: <20260828-mt6878-header-fix-v1-0-b70dc9b2479c@mentallysanemainliners.org>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
- CK Hu <ck.hu@mediatek.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Tommy Chen <tommyyl.chen@mediatek.com>, 
- Julien Stephan <jstephan@baylibre.com>
-X-Mailer: b4 0.15.2
+ Linus Walleij <linusw@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Igor Belwon <igor.belwon@mentallysanemainliners.org>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1787925168; l=921;
+ i=igor.belwon@mentallysanemainliners.org; s=20251104;
+ h=from:subject:message-id; bh=rG2gddjK0mFNccoof/5IKOWP4NxA9PADvpZgCOLr15s=;
+ b=KE6gBW5Hj5eipAueNeLJy8jYk3lPzYk8ps0ZikWrqjP4QTqgVHJN9wEf9tTYwFAdZJ20fl6Ho
+ 1Sl/4/HcOLFCaKPX/3FOJWwrXuLEmBZK11DUpdNdl28aEiRnkmrlauY
+X-Developer-Key: i=igor.belwon@mentallysanemainliners.org; a=ed25519;
+ pk=i9++1bbnBwoyc3uhTaetGXS1TbBJoS0mcxT59GrpYh0=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260828_051049_628328_4FDC416D 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20260828_065318_919261_F89915A0 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,35 +77,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-According to the datasheet, VID_DOWNSAMPLE_CONFIG is at offset 0x8f0;
-0x8d0 is the VID_CSC_COEFF_0 register.
+The header resides in the dt-bindings directory and not in the
+dts/mediatek directory. Fix it as to avoid a build failure.
 
-Fixes: 8d0f79886273 ("drm/mediatek: Introduce HDMI/DDC v2 for MT8195/MT8188")
-Signed-off-by: Julien Stephan <jstephan@baylibre.com>
+Fixes: 07a9bd3079e30 ("arm64: dts: mediatek: Add MT6878 pinmux macro header file")
+Signed-off-by: Igor Belwon <igor.belwon@mentallysanemainliners.org>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h | 2 +-
+ arch/arm64/boot/dts/mediatek/mt6878-pinfunc.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h b/drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h
-index 521b35c7e14d..bf3ebf5492d1 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h
-@@ -173,7 +173,7 @@
- #define  TPI_AUDIO_LOOKUP_EN		BIT(2)
+diff --git a/arch/arm64/boot/dts/mediatek/mt6878-pinfunc.h b/arch/arm64/boot/dts/mediatek/mt6878-pinfunc.h
+index 4e8e475a7454..5aeceb904b18 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6878-pinfunc.h
++++ b/arch/arm64/boot/dts/mediatek/mt6878-pinfunc.h
+@@ -9,7 +9,7 @@
+ #ifndef __MT6878_PINFUNC_H
+ #define __MT6878_PINFUNC_H
  
- /* Video downsampling configuration */
--#define VID_DOWNSAMPLE_CONFIG		0x8d0
-+#define VID_DOWNSAMPLE_CONFIG		0x8f0
- #define  C444_C422_CONFIG_ENABLE	BIT(0)
- #define  C422_C420_CONFIG_ENABLE	BIT(4)
- #define  C422_C420_CONFIG_BYPASS	BIT(5)
+-#include "mt65xx.h"
++#include <dt-bindings/pinctrl/mt65xx.h>
+ 
+ #define PINMUX_GPIO0__FUNC_GPIO0 (MTK_PIN_NO(0) | 0)
+ #define PINMUX_GPIO0__FUNC_TP_GPIO0_AO (MTK_PIN_NO(0) | 1)
 
----
-base-commit: 1b78070aaef63512688aebfbc82365ef9d6660f1
-change-id: 20260828-mtk-hdmi-v2-fix-register-offset-879afc38cad1
-
-Best regards,
---  
-Julien Stephan <jstephan@baylibre.com>
+-- 
+2.55.0
 
 
