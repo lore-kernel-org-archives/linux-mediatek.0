@@ -4,147 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBD7AC61DCB
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Aug 2026 19:39:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C431CC61DCB
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Aug 2026 22:13:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=MG4HiwRAfo4nKnx8mRL+C2bMS7+F3i5QnNncb03Lprk=; b=HGF7JUtb7Pwpda2710htSFgmXA
-	uDqqA1X8vfDbz6uaJX57i5dQEuWUAMRFPFMs+n4wnb/glnLM+XDCRHH9lw2CUEooBJobtNSFtk0Gt
-	/13i0Um7ic8Ac8CyPdUu0tEAUOBmGumKSL8GuwrO4WlyIsSJLwgneTOMYA3BBOPjusuOSIAq8L9M6
-	WuF61b/Ke9HYuKSyoFxhzBOmfhtHr9KVuse6uejDFUm1HfB2VgsmKn2Yiu3V5nRsrhFZkkezdueIO
-	RQHyPK8QO03RlpT+SPuS4IZ7+89LbJOx9wjjDVbbZEIxZOlNqhh5mD/QgAqkYXMWcRMyWD2voFg50
-	Hay40otw==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yEeHLrnYsBvpTM/fHeB1jhya7c/n4Di8M999P+UK9gI=; b=j098H2pBpu1Ws23YE/SShnaJiJ
+	WNHt3uRnD60zsg6/VrwtLez+FNaSqtjoUcUFEjj2D7rMnCWl/rehzVSkbEC+IUZKWVUZfFPUdbCPH
+	ljupSbTIsSIBpn+IOIrOn/4vXw6xGoEwxbjTCfiifNojNZL364zhji38Eh/2+AD2V3DkzFWxr7tcp
+	UECKs5szaTJ3v0Cp6omUlx0YGqST79CZKlSmrFQYpsC5mcSx7/UysiYfmraUObXJlOHugRyD+AQNl
+	e94i5PoXIU/w3Bm/1K4sOJ18QAvZBX/aVNQGXeAkqOWSzuzngOAMF7TFICrHZZ8R+otIh6XjuM50n
+	H9J4Y2yQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x0Otd-00000007Frq-1zld;
-	Sat, 29 Aug 2026 19:39:21 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1x0RIz-00000007MHu-0mbX;
+	Sat, 29 Aug 2026 22:13:41 +0000
+Received: from out-128.mta0.migadu.com ([2001:41d0:1004:224b::80] helo=mta0.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x0Otb-00000007Fr7-1ZBz
+	id 1x0RIv-00000007MGv-1LDn
 	for linux-mediatek@lists.infradead.org;
-	Sat, 29 Aug 2026 19:39:20 +0000
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 67TH01e23456593
-	for <linux-mediatek@lists.infradead.org>; Sat, 29 Aug 2026 19:39:18 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:date:from:message-id:mime-version
-	:subject:to; s=qcppdkim1; bh=MG4HiwRAfo4nKnx8mRL+C2bMS7+F3i5QnNn
-	cb03Lprk=; b=X1C29SI3DG6AfSyUc8eSWJxCrwOq2ijIiIAOi7yP/sIV0wxQRLJ
-	Je6fTeLxeCvSjbhHLkNcKsgWh5BIZdhqwP3qU786gzDoJV6JePIXWh9OVoNy4a2/
-	ufvxlGxt3rep4+tkpbTbkhmFXSvfcQxSsPzd/GJgclnCFLjV/Za1+9n5MhA6aqFf
-	vdimDCUC0rMClMq7T79QAK9K8DYkF0aE2aJGFRY3vy4k5GQv6iG5iH0Jg7KIfrbh
-	2nlcxZL7cjQIisnxiBC9OyJyXknJQqy6ZdjdYmBaKrodmSiFs7q0Ex6D4uabd8sL
-	uhHtnjHqnJuL7cfjcGFuHih58gKkySiQgqw==
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com [209.85.160.198])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gbqhmsn6p-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Sat, 29 Aug 2026 19:39:18 +0000 (GMT)
-Received: by mail-qt1-f198.google.com with SMTP id d75a77b69052e-52ce64c41efso48967631cf.3
-        for <linux-mediatek@lists.infradead.org>; Sat, 29 Aug 2026 12:39:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1788032357; x=1788637157; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=MG4HiwRAfo4nKnx8mRL+C2bMS7+F3i5QnNncb03Lprk=;
-        b=GRF8XJT6e8QZXbpcZ+rM1P+kCOBEZukC6/eoF2lw3Is0dgWrJ55/xH2uYuefbMQEmC
-         WjdPvgd1KSOZYRoFAMMwp4EMZCIM/tXexw/Yw6PMpiy0quGBrXnpdW6+pFMYxmyH8PkP
-         O8p3DQqyTKxIB0jg8/LakyWJDL/bzyQV7oo6z9GFvDv2X7baYlEDdnd4tqyMfeGqmVhv
-         Ac7nQcivPDmfMBL6+8njDLqb4YMEJ7XSnj9mZfM8LEoxBrvXZIZG1yOKQp4MqNdMlOcH
-         IaodwoGGohiJGy0nKXLo2PKEuQISFEcNPZ1cPFVjc6zp5sYFP4baQ1TWassXxEMoTNr9
-         nFdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788032357; x=1788637157;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=MG4HiwRAfo4nKnx8mRL+C2bMS7+F3i5QnNncb03Lprk=;
-        b=ekNiV1x2/SNE8E2rQNRhXq0y++6WwtNp6zKfU14SpUt3JaOBH8qRzQt6wY/u93Kixy
-         xYl3u/vOY3kRCWITmv23zfRdp/CWDrNQmuM9Ld4CiIwOgVHGUuNSNEWfqWS9FbwIxeZG
-         yfhzeyapRJRgzh0m6hZ6THrV5jhEHXH754u8+qUyeHjtvmMPqKlQ69AD2Rn+zv11F4M8
-         5hk9Z3Ifu/FLQWIyaTDSMR+TMdq89M4G8vbAUrbKUh1jgxvbV0DXy2Nd7Z6UuFu0DOzE
-         Tg1FjIIkgPhaOv/tL1YOJ8sehjdr/63UzaLO2BdJvchO5L4RNsBLiaB3ZxnT75O2BWHY
-         gA1Q==
-X-Forwarded-Encrypted: i=1; AHgh+RrbHtkZfGeNbN+sResNx46QE2exki71wospa+qz0VFpS8z75lu0ukpcLGju1hx5V+A3We9rccowYubOcEAjxw==@lists.infradead.org
-X-Gm-Message-State: AFuF++lAyMaYbHsO0Fzzyeo4i3yr6l9BrdPFUqliaDHTNFFy56kIfR8C
-	ajasBC0zmOoHUAoQWSV42JsdSeDPB5ydKME6WHzKz2q1lL/Ifi81VLCyyZJILcOpgmR7eOLqL4H
-	1XnVW3ssI8hDDGJEI/NA1wyVAq8f9zhhHcH2QRmVeT5dmizYXPYaT3WHSl6WmSvMs4wQYZRSLqv
-	4=
-X-Gm-Gg: AR+sD10hpRiOpyIYNTOP+dDHMzn5u/+/VB90pNU1fvMzVt+n/ocpOuDka4TjwHoVk+u
-	2QfryAT1QR4zNuEp/dLNP9vE5eXOreDn6MIWYPjVzr5MZRBo0DCFLN9unsHu5DmbdXEqWqEjwfa
-	+oaXEOlJFmyyb0os0gaVVc0BH2Fan5vUSHRaFAVLXj8ThyZ14H0h/Dndv+sF4soBExgJF/Cb2i3
-	ogO73mYP/x5+5W4lFTuAKQY+7didIPfRc20AvL5FfweUVSeG1jOkr8g/7sR1+WKD7tLn/06DG4R
-	pIuM7ZIoIP0htfKzvSspkdJ4/9GlFg5sIG8dsNSu6aGhsSFp4wrvuZWUtyT7dRzm/7OEkBkA7YC
-	Q/cVJK56i47twkGk=
-X-Received: by 2002:a05:622a:e490:20b0:52f:bdbf:4086 with SMTP id d75a77b69052e-52fbdbf4745mr111562511cf.23.1788032357485;
-        Sat, 29 Aug 2026 12:39:17 -0700 (PDT)
-X-Received: by 2002:a05:622a:e490:20b0:52f:bdbf:4086 with SMTP id d75a77b69052e-52fbdbf4745mr111562341cf.23.1788032357099;
-        Sat, 29 Aug 2026 12:39:17 -0700 (PDT)
-Received: from quoll ([178.197.219.214])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49b497fa9c5sm221100935e9.4.2026.08.29.12.39.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 29 Aug 2026 12:39:16 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Subject: [PATCH] arm64: dts: mediatek: mt8173: Replace spaces indentation with tabs
-Date: Sat, 29 Aug 2026 21:39:11 +0200
-Message-ID: <20260829193910.107418-2-krzysztof.kozlowski@oss.qualcomm.com>
-X-Mailer: git-send-email 2.53.0
+	Sat, 29 Aug 2026 22:13:38 +0000
+X-Envelope-To: linux-mediatek@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=cmGv3INF7CjXFYHoCdz/i7fRZHrlOBuYR43kDH8a1kM=;
+ c=simple/simple; d=justthetip.ca;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1788041613; v=1; x=1788646413;
+ b=K1s0SziR/lV8TeafvK+KC9JEMw0D58FgJB2qxHlWPkwCL3ypPjU09qq/NvPQkwIguJ3zXgA5
+ nz6qPh4bl84vNOClV/KzXL5W8MjqyTwbSWUOekVPTrbyW0NNbfFK+0pq9vNmhZ7jkYw/UNHoZYy
+ U4DkNH9wdY3foe4pj/1lfDtNBtLe/+pgKj5ZL/Vlc53cTX+Gt+N0/vGMEPDuYi5p3uWFWIzmNyU
+ 1UE5D25GHIr7zUd6WN3M5rCZYUaPF301Pm672ssxw9xSeyrRmEqbfqzQagjjypRhSFLCitt9bS3
+ k1PIRrlrOdi71DDaHcaplmONJh+8RpDSNtDkY5egZg6FA==
+X-Envelope-To: linux-mediatek@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id 2d95993bb1fe720b;
+	Sat, 29 Aug 2026 22:13:22 +0000
+X-Mizu-Trace-ID: 2d95993bb1fe720b
+X-Migadu-Flow: FLOW_OUT
+From: Devin Wittmayer <lucid_duck@justthetip.ca>
+To: Jonas Hort <jonas.hort@posteo.de>,
+	Sean Wang <sean.wang@kernel.org>,
+	Thorsten Leemhuis <regressions@leemhuis.info>
+Cc: Sean Wang <sean.wang@mediatek.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	lorenzo.bianconi83@gmail.com,
+	regressions@lists.linux.dev,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [REGRESSION] mt7925: MLO connectivity silently stalls with 6GHz link active
+Date: Sat, 29 Aug 2026 15:13:19 -0700
+Message-ID: <20260829221319.25334-1-lucid_duck@justthetip.ca>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <c9f984c4-e3c4-4e41-a502-99db97ce724b@posteo.de>
+References: <503eb10e-80cf-493e-95fd-04fc0f94ce01@posteo.de> <e4bc5ce3-9a6f-4365-9d36-f6440ded0865@posteo.de> <c64f5fa6-4c61-45b6-a513-b971e59d7723@posteo.de> <476e7721-580e-4a6b-86e5-5ed782a2c7ec@leemhuis.info> <c9f984c4-e3c4-4e41-a502-99db97ce724b@posteo.de>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=984; i=krzysztof.kozlowski@oss.qualcomm.com;
- h=from:subject; bh=sTguRb7ZzQpQAAqmHNbVH8fJafv+ZQqtpDncDKi8RyU=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBqkzVemZt0DvfAr/vLICEjLQkCnCMztHioVx/9D
- 6bi+sDnTy2JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCapM1XgAKCRDBN2bmhouD
- 14q3D/9+DYXiJdw8FRE5dDuxkc+cX29OgqezepRXiMivbAtVx0PhwCEgsithchxNRzjNurDPlIX
- ZxnP1FbvRxgSicU31k0Dg5+89go3KWez7OSCawgQVGEId+rF8EkaTZbmncUc5IWRjpVfhjNQAuQ
- uduXLoc7n+e/ZxjkafituTQ1ZiGfXGLtWVLJp9WFx47H+Di4WruoJJLpzOS7GQc0H2vwaGm/9BL
- yoa67EC6v5v45Ko09MBS88o2EsnIh96rBNqezvcc9n9Xsy36WdMz2DmJcw3NxvziKvRuzpM9ljb
- l96/m48UzWE5n8wOxCZEbuu9VDdriLXeRNaHVDEbIOzRAwgGl7W0PxGJE3r7JUmj+I76Oqqf/5/
- d0kenyrmvc72sifpwgB+VtDKEWkluiJMyH+zm8U0ubX10u/QlT93uU+FXvSvcGyGxEcwpnBxiAY
- VrgEefSGBnptWz1TX7QzvPBvwTsmd/UoQpu4+9I950ejJzjs4E+lOCu4YlmPqWEGjXmUnMiLCkW
- yQW250nEWL02FWJu8t9fxDpIyxLSERkYopITxl6NJXw2+nGVzBBb99QdSplvjNHShIaVmQ2FdeJ
- IUwqF+Deb32gC8p7P1WCp1wdq2n7AJkSin21gMk46+jLVZH6TO3KxoTkqcInsTrjxJF/5fKWCOK iKJcSuZjOE8v2SA==
-X-Developer-Key: i=krzysztof.kozlowski@oss.qualcomm.com; a=openpgp; fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODI5MDE3MCBTYWx0ZWRfX4fQi05AM6myk
- Uit7E8kqAePHCaohbUvVpHd8em/g/JUSw4HB4VBrsn/4yw6bdXm6zxKkoKOC6Y2OoNa7h4YAnea
- vfdoRe9UegzeWdAymvKSpCo8mjszhsMSb6ojwoXWjdCkKzPcYOAsS3jOuWsnBslLX7GcqzUbIs2
- Luy0o9jfCPPHbqGJQtbbTt4rt4peqrMeeeICW01vNHCOfgJU9Ix0vu5T+lca+2a4xENQL87AHXF
- GIb3A9l/JQHgQs7N7YjAYIs/dmKgWJ4Urp6w9buj5C7/LAw4VE8MlSt0DMP+AcmToiCEYv6gtBT
- cTMR3a2oe4jTxtlFXlt2tB5AWM4CoJhYR/vVwqJXcLaItDhPZEqLiWCTA0YW03YsFeuvorGh+im
- 8IGJjIl34nhIqnIGWNhd5Z0jAyNFPbkCf1XTwC9YY/388medUuseu3lzrCENaQMLURRBjRyIw8u
- hZjPTPtKRUo7l8neO1g==
-X-Proofpoint-ORIG-GUID: oHMXPtB8hB_bxVetGbMZw8iY0nsIyLoW
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODI5MDE3MCBTYWx0ZWRfX21TCAr5tYedR
- Ei3FFlXsl9S8xx+vbsq+he9GBh6df+yvk5rhtBBye2CiVgp3kvz6T7EKKvLGEi0Lx5bbi1gzUgg
- S+Cdu3Vbdrb6+YEPjZA2cQ/lFSn7slg=
-X-Proofpoint-GUID: oHMXPtB8hB_bxVetGbMZw8iY0nsIyLoW
-X-Authority-Analysis: v=2.4 cv=bpl8wkai c=1 sm=1 tr=0 ts=6a933566 cx=c_pps
- a=mPf7EqFMSY9/WdsSgAYMbA==:117 a=+bKQE0WJfmhK2875HamI0Q==:17
- a=Sv0fKeRqtYgA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22 a=EUspDBNiAAAA:8
- a=JjGN2f0IYHD0VWcqIQwA:9 a=dawVfQjAaf238kedN5IG:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-29_05,2026-08-27_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 malwarescore=0 suspectscore=0 bulkscore=0 impostorscore=0
- adultscore=0 spamscore=0 priorityscore=1501 lowpriorityscore=0 clxscore=1015
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608290170
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260829_123919_440259_CEA8BE82 
-X-CRM114-Status: GOOD (  13.14  )
+X-CRM114-CacheID: sfid-20260829_151337_763840_77B9F55A 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,29 +77,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace excessive spaces for aligning indentation into tabs.  This will
-be reported by dt-style-check ("[mixed-indent-chars] too many space
-characters in indent (more than 7)").
+On Mon, 2026-08-24 at 08:18 +0000, Jonas Hort wrote:
+> Setup is still up and I can build and test whatever is useful.
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Your bisect holds here, on a different machine and a different access
+point, running your June firmware. Three states, each replicated:
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 8346f0207134..d1faf84b431b 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -1291,7 +1291,7 @@ mutex: mutex@14020000 {
- 			clocks = <&mmsys CLK_MM_MUTEX_32K>;
- 			mediatek,gce-client-reg = <&gce SUBSYS_1402XXXX 0 0x1000>;
- 			mediatek,gce-events = <CMDQ_EVENT_MUTEX0_STREAM_EOF>,
--                                              <CMDQ_EVENT_MUTEX1_STREAM_EOF>;
-+					      <CMDQ_EVENT_MUTEX1_STREAM_EOF>;
- 		};
- 
- 		larb0: larb@14021000 {
--- 
-2.53.0
+  both commits reverted        clean, two runs of six minutes
+  only the later one reverted  stalls, two runs
+  neither reverted             stalls, three runs
 
+Tail welded and head climbing, which is your signature. The tree is
+7.2-rc5 with one unrelated ACPI patch of mine, nowhere near this path.
+
+db134691924f lands fifteen commits after ff643b81bc38, and reverting it
+alone still stalls, so the builder rewrite is the one that matters.
+Reverting the builder on its own is not available either: v7.0's version
+dereferences a link pointer that the later commit leaves unpublished
+until after the firmware call, so it would need a check neither version
+has.
+
+A correction to my last message. I pointed you at the link count, since
+the new code reports one link whenever the update concerns the primary.
+That undercount is real but it's not the cause. Telling firmware one
+link always is clean over two six-minute runs. Skipping the
+undercounting update entirely, so firmware is never told anything wrong,
+stalls on both runs. Writing the entries in v7.0's order stalls on all
+three.
+
+On the August firmware, stock still stalls, twice, the detector firing
+95 and 141 seconds into the run.
+
+The band pair matters. Same driver, same August firmware, two runs each:
+
+  5 GHz + 6 GHz     stalls
+  2.4 GHz + 5 GHz   clean, full duration
+  2.4 GHz + 6 GHz   clean, full duration
+
+Not the channel width. Narrowing the 5 GHz link to 40 MHz, so that pair
+carries the same narrow-plus-wide mix as the clean ones, still stalls on
+both runs.
+
+The sharpest pair there is the two runs where the iperf3 stream never
+established, leaving only the UDP pressure: 5 plus 6 stalled with the
+queue peaking at 187, and 2.4 plus 6 stayed clean at 186. The other
+three clean runs peaked above 1000.
+
+Sean, the two things I can't see from out here: what firmware does with
+a multi-link record naming one link while a second is associated, and
+why 5 plus 6 should differ from 2.4 plus 6.
+
+Jonas, thank you for the bisect. Five steps, every bad verdict confirmed
+on the queue signature.
+
+Devin
 
