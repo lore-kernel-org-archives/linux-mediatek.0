@@ -4,99 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D41AC61DD6
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Aug 2026 11:47:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14A83C61DD6
+	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Aug 2026 15:20:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1vqI14HLIzxZhfuAXP+1goiBkOtG4fYO1VJ85pvQxO8=; b=M2Rloc0GUj8cme4WvVeC3Z79dH
-	8kJtwSSOdAMXVfRqs24tt8gqxgrpXE9oKjNnBt+4+ecuapBGb5o2+nlDhNBIqmC9JGzdl7ksodHSe
-	9p6Ey1cQZ/JQvNtVevOpKp1v5WoikiMfTMKenLekVcNFnS1CjbO8AVukCw2/Bdhdqh73PqpeJVxKZ
-	2PITYek1J3IFF72sAHdssG6vIA1NPL4HQSmD5/WgQ2t2ZDxTs33gCLPoV4R8l7nVg4heuVVmxiEP5
-	pPExqlnfQvJRIy/TVFALyvXbYOc8NiIBazAdjBjuDfJTyh1HqyMMhrFhUphuo/MCdC6/vcAsL9gYk
-	SmKXE6Kw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=521A9KUhtW0cKM/KRBSLU9rkYQy9/A8z8nlm+NiGrho=; b=wjE3PGMv1moGq19JdxRk0F+aWe
+	VvAtM83M9Ah1lFXrKYAUaUQHsqmwtzXj3GAlexJITvO/5PhyWRRd12ILz1uwGsLj1+DZX5FkQNQFZ
+	4yDQsiTzX3OXktqAsvT3yxQizPOwKNfpEc7tCXdkLnDkhHXmD2lDZZSNxM2b1D1q7fSoPQvAK9ykH
+	uIANm4lC5e03VldVJaL2FF9IGsy8VEqP1a07Di0udKPo0Vq2+Rnr+1mjlcJ503vQcTjZXl9DkNaCR
+	chkBVlup1Wr3BMONu0sZTOS4f0f6Dce9Uv+A4TVtTSpmwqDIHxHOCuSVkEMKrnuZ7VCG5HRYeJ6pF
+	D3vQGFOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x0HWj-00000006xn9-4AbG;
-	Sat, 29 Aug 2026 11:47:13 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1x0Kqk-000000073co-31fD;
+	Sat, 29 Aug 2026 15:20:06 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x0HWg-00000006xmn-3BGQ
+	id 1x0Kqh-000000073bi-0jra
 	for linux-mediatek@lists.infradead.org;
-	Sat, 29 Aug 2026 11:47:12 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-398c1101c1bso16158a91.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 29 Aug 2026 04:47:10 -0700 (PDT)
+	Sat, 29 Aug 2026 15:20:05 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-49b0d8bc2aaso18142705e9.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 29 Aug 2026 08:20:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788004030; x=1788608830; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=1vqI14HLIzxZhfuAXP+1goiBkOtG4fYO1VJ85pvQxO8=;
-        b=snzC2+YAshEFFhbWxSdUHK0eQ1WYPo292igIzPTyetRgSMIiqoAm/NVMIiIUgPNOUC
-         U5D4mccYcTvNP4an8aBSLc7CFKnRQoRa9RGo7+z6PjkqaOYfroAaThLJtJ7aFIj0YtKl
-         WWfSrbLQDHK3Sk3vbSX4ZWCQE1xRbHw3EPddcalV5e/sjmnb7+2Pu0rELoHuVK+SVOaA
-         Wqcmiebhhi09vurU6bexHpag/uOE7WZ0B+270sbq6jI9d5t0S8MOIfSy/W/SqmSaXKyL
-         6gIqPxNKOQMaz29Wkr2EzdQHuktY/yOv/KSTbXInIzFi9ajpwHhdVWKXp8qk2MUtPM/Y
-         mAGQ==
+        d=gmail.com; s=20251104; t=1788016800; x=1788621600; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=521A9KUhtW0cKM/KRBSLU9rkYQy9/A8z8nlm+NiGrho=;
+        b=JqjXw0Pisau1t8jZ0b9Tn6/DRIAu5iPEwkWw6Y8Qh+mUSpOl92RzVU9l8qWLnOWb4Z
+         Vzgo39gRXWXPpHfGOaXq26rV9NI4Nj2vuHpg6zmyM4jdzuJkUW82HGsaozSaL75UxrwD
+         325AuVPMfiv4QZTkzSP/z1BXe3mmPlcjfMvEJiIzxo0y//coUNul5Jn2rF+l8dOXABm3
+         CPnBWUeQLllQER0PUGkpukADh62Ekc6pSY9Md6EIBNHI3gZfPP/IMZBHPub+4cBDE8z0
+         SuOesrYQbj9RGI9bYeWkwdopHe5ESLIvNagHzHygfhLkAQCbE430OeIugAkyvkAjsVRU
+         UNFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788004030; x=1788608830;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=1vqI14HLIzxZhfuAXP+1goiBkOtG4fYO1VJ85pvQxO8=;
-        b=PWuL1C/ttvuEfJIGL+8dAiWq8CabxiicnG9H7uAvlvANbYp3m+Me+Y71WEZaNgBeu5
-         +a44nuil9YTnd/IgxDejFEdtznue3JvYmQ63HQBvl8V67oPcgzSAhT3EG3c3AZ7TLI/0
-         H5UF40CcApgVylqSn+mx2z557CXVtYG4sSGvel8XMVkDvIhKdJ3aNsJmO9omAHpFm2ka
-         0oC199PQiyr3ROEZ1wqynB3hgbCF+yhpkSH8cA55UCbxr+Ubv2HDuj+9lS2SI7W6HHUM
-         Sci40N8aG7GKsQ3GZp9gvtECVWzB2pXx+zcpkqsWDSJNdKmGLaQqclCy2IFqeHcfIQR9
-         nfhg==
-X-Forwarded-Encrypted: i=1; AKwUvBxDgs7XtRcuPKWeGh8U3ukl/R8qoJrRIPBQnmMmoAhGjJSwQzuNyWF74IdUrKveGNF4QjAwggUJng/uuniHNg==@lists.infradead.org
-X-Gm-Message-State: AFuF++mUOOHE6thYhJ2W/fYzFwVqfO2WCf48zotjfvlb8T1xcAMKJLCG
-	MLhxXk/R3cQe4syd7HuyEqbsrn0uwLOEJGoKHtrNS4yeHDwR0kbiMY4/
-X-Gm-Gg: AYBFou1HBGFfiIx7iQJD/q4o5B7iKdBWdaaTrqWtd8bC4pTXypsd+lZ4zjUjXuuKAh7
-	S4Fkfw5WPjBy83vQRQ4Qku7HsqF/48Etm5K1V9G7BRDGAQdrVMSf2+LOoFivi6iFCYZgadrFgbJ
-	CsEZTOOZtVoPC3MlEJBJIRsTBNVc8AQjVnKfLUcldr4BSEe/LiypdnIpYewzEV4FRR6uWd5Rc3P
-	jit1O4/RuJEorC1rfEvvkIZ75M4irs4RwOHGftucm2kfnyVBgFla9khie64S8pHVWURl9pFi60O
-	HE9158trIrqePUNhIKbNyPsEfZ8vO4jhzmH2dkRReUIK2A5HUo07jVIPSN5QjWxRgqGKPcE4UNf
-	byp2C56TAEe4zqs4VKRWek5Knv/1mDdTmECgBOf9vN1TM4EITwzqxq44w6A9p08Yida8uXvirLQ
-	EryQTq+gXqsSlGqnnWOnawvKMeghHz8V2mHms37SP6kNWM1wNqCd1G/ahvdPfAQ/Lhec+ulOUot
-	Xaiu7DQ
-X-Received: by 2002:a17:90b:2f0f:b0:380:540:d499 with SMTP id 98e67ed59e1d1-396d0ed0023mr24877699a91.6.1788004029521;
-        Sat, 29 Aug 2026 04:47:09 -0700 (PDT)
-Received: from DESKTOP-TIT0J8O.localdomain ([157.51.208.77])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3286f552473sm16735823eec.0.2026.08.29.04.47.03
+        d=1e100.net; s=20251104; t=1788016800; x=1788621600;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=521A9KUhtW0cKM/KRBSLU9rkYQy9/A8z8nlm+NiGrho=;
+        b=RBVIxE3F5bm7AIuR7QTaqMUJkwWD2gm9/sA58POpqAsFzquc6/mapUQm4xtQVxaziu
+         U2Z1aDhooxi34fIWAmxu43Ui17hdmduKEOSTsKtEtD7Cywv4Nj/F6FKxMQLQjMp4ZCTe
+         NhA1/qVXOWMN4eSQpH6ogtDmOeYlPtBUsj7DN8LFo3MavPg7xrJhHvfsAjbp9JUF/1NO
+         RlRt5rdi/e+e5flhwIqBz23K9uFWKl9T3V3NFYNDZmZpwQzB03NUgUrL7O4IsV6e8sae
+         HfHkFswTeKCyCKUoXZti3grf0bagciSLvPYodmtE7Lmi8blc7QmZtuqgwi1O2MHdZH6x
+         BFbA==
+X-Forwarded-Encrypted: i=1; AHgh+RrZ/PUznM/l5032FSNJTG43NTtVcIuJvJizsn0grODEedw+AkMTV3A7g0tRDiNQ3YjkiyvYOfx5I0VrPUTfyg==@lists.infradead.org
+X-Gm-Message-State: AFuF++kqBQifjL7UHBlaeVWRFm5+HUpFsFvpzTLtYAeEv/FLiW6iqObJ
+	MkNfNQOo3VKZDWJhbV4532UMoROFhC2uBuyZdUH6hvpgarGvfbkUvA4=
+X-Gm-Gg: AR+sD13kblHTgXBSiyT7cYapQ7bfJX1xx3gD1G8m4jfXPQbnFr6a9iPn4vKsu/wZAUM
+	cczEL0kp8Bk8VOkdWVchO+EAtUBS+PTYUmgpVwYD1EXNt4r/8wFXcwPu3mx8LIOxvwlyhcMI/Qh
+	TNm9aW0EuG7/8zc9mkLqg0dGTQIdFxBqjCjo1mysPW53TmTgE06o3/J3Evdfw3Gzh6aISYeLEyL
+	VklYMBu929UCFwerh0ouXk7fPSCOcEI9nlYhsxedNN77cq7XzVpJLKoww+1zc58kpNgPkIn8y66
+	ik5Q2ZFHT2lI6CHm/UWKe47tob6NNZrQwIoYqCBakXMZgbyGCzZYDtcAw+SqLociM/7u5qyDJmo
+	Q+rIZ3FDmCVt2PCuvak3cxaiQGGUBPDyUmov8g7LLrbtiJSRGMsGqlUmVyK53prau6CH9njOqnG
+	3exATTAGgTry4XUMnNJ+4pLXHdtjLri0mt6xxFiLWeE2KamrMReTIsxacOT6ZTazx12x385bBcc
+	Er1K+tTcDiBv3q0gqdRpEspq27wRw+87Kqpsobv
+X-Received: by 2002:a05:600c:3546:b0:499:dbc0:370d with SMTP id 5b1f17b1804b1-49b91c1dad9mr216188385e9.2.1788016799980;
+        Sat, 29 Aug 2026 08:19:59 -0700 (PDT)
+Received: from localhost.localdomain ([193.160.247.68])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49ccea6b814sm38959855e9.0.2026.08.29.08.19.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 29 Aug 2026 04:47:08 -0700 (PDT)
-Date: Sat, 29 Aug 2026 15:47:00 +0400
-From: Ahmed Naseef <naseefkm@gmail.com>
-To: Conor Dooley <conor@kernel.org>
-Cc: Ahmed Naseef <naseefkm@gmail.com>, linux-gpio@vger.kernel.org,
-	Benjamin Larsson <benjamin.larsson@genexis.eu>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Conor Dooley <conor+dt@kernel.org>,
+        Sat, 29 Aug 2026 08:19:59 -0700 (PDT)
+From: Andrea Pesaresi <andreapesaresi82@gmail.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Linus Walleij <linusw@kernel.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
-	Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 2/3] dt-bindings: pinctrl: Add EcoNet EN7528 pin
- controller
-Message-ID: <apLGtCRjCP1j0u5i@DESKTOP-TIT0J8O.localdomain>
-References: <cover.1787931313.git.naseefkm@gmail.com>
- <c20005a81b4069f3ff68311629ff7d4678fa92dd.1787931313.git.naseefkm@gmail.com>
- <20260828-chaos-recovery-c99d547ee1b6@spud>
+	Conor Dooley <conor+dt@kernel.org>,
+	Sam Shih <sam.shih@mediatek.com>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] arm64: dts: mediatek: mt7986: correct timer frequency
+Date: Sat, 29 Aug 2026 17:19:55 +0200
+Message-ID: <20260829151955.3661893-1-andreapesaresi82@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260828-chaos-recovery-c99d547ee1b6@spud>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260829_044710_810985_51F1C5D4 
-X-CRM114-Status: GOOD (  24.96  )
+X-CRM114-CacheID: sfid-20260829_082003_836709_F32293D9 
+X-CRM114-Status: GOOD (  10.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,236 +103,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 28, 2026 at 04:51:27PM +0100, Conor Dooley wrote:
-> On Fri, Aug 28, 2026 at 07:35:14PM +0400, Ahmed Naseef wrote:
-> > Add the binding for the pin controller found on the EcoNet EN7528 MIPS
-> > SoC. It shares the IP with the Airoha pin controllers, but its IOMUX and
-> > pin configuration registers have a different layout, so it gets its own
-> > compatible.
-> > 
-> > The CHIP SCU holding those registers is referenced by the airoha,chip-scu
-> > phandle.
-> > 
-> > Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
-> > ---
-> >  .../pinctrl/econet,en7528-pinctrl.yaml        | 190 ++++++++++++++++++
-> >  1 file changed, 190 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/pinctrl/econet,en7528-pinctrl.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/pinctrl/econet,en7528-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/econet,en7528-pinctrl.yaml
-> > new file mode 100644
-> > index 000000000000..3ce1a5309d09
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/pinctrl/econet,en7528-pinctrl.yaml
-> > @@ -0,0 +1,190 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/pinctrl/econet,en7528-pinctrl.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: EcoNet EN7528 Pin Controller
-> > +
-> > +maintainers:
-> > +  - Lorenzo Bianconi <lorenzo@kernel.org>
-> > +
-> > +description:
-> > +  The EcoNet EN7528 pin controller is used to control SoC pins. It shares the
-> > +  IP with the Airoha pin controllers, but its IOMUX and pin configuration
-> > +  registers have a different layout.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: econet,en7528-pinctrl
-> > +
-> > +  airoha,chip-scu:
-> > +    description: phandle to the chip SCU syscon
-> > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > +
-> > +  interrupts:
-> > +    maxItems: 1
-> > +
-> > +  gpio-controller: true
-> > +
-> > +  '#gpio-cells':
-> > +    const: 2
-> > +
-> > +  gpio-ranges:
-> > +    maxItems: 1
-> > +
-> > +  interrupt-controller: true
-> > +
-> > +  '#interrupt-cells':
-> > +    const: 2
-> > +
-> > +patternProperties:
-> > +  '-pins$':
-> > +    type: object
-> > +
-> > +    patternProperties:
-> > +      '^mux(-|$)':
-> > +        type: object
-> > +
-> > +        description:
-> > +          pinmux configuration nodes.
-> > +
-> > +        $ref: /schemas/pinctrl/pinmux-node.yaml
-> > +
-> > +        properties:
-> > +          function:
-> > +            description:
-> > +              A string containing the name of the function to mux to the group.
-> > +            enum: [gpio, jtag, pcie_reset, pcm, pcm_spi, phy1_led0,
-> > +                   phy1_led1, phy2_led0, phy2_led1, phy3_led0, phy3_led1,
-> > +                   phy4_led0, phy4_led1, pnand, pon, pwm, sipo, spi, uart]
-> > +
-> > +          groups:
-> > +            description:
-> > +              An array of strings. Each string contains the name of a group.
-> > +            items:
-> > +              enum: [pon, sipo, sipo_rclk, uart2, uart2_cts_rts, uart3,
-> > +                     ejtag, pcm1, pcm2, spi_quad, spi_cs1, pcm_spi,
-> > +                     pcm_spi_int, pcm_spi_rst, pcm_spi_cs1, pcm_spi_cs2,
-> > +                     pcm_spi_cs3, pcm_spi_cs4, pcm_spi_cs5, pcm_spi_cs6,
-> > +                     pcm_spi_cs7, pnand, gpio0, gpio1, gpio2, gpio3, gpio4,
-> > +                     gpio5, gpio6, gpio7, gpio8, gpio9, gpio10, gpio11,
-> > +                     gpio12, gpio13, gpio14, gpio15, gpio16, gpio17,
-> > +                     gpio18, gpio19, gpio20, gpio21, gpio22, gpio23,
-> > +                     gpio24, gpio25, gpio26, gpio27, gpio28, gpio29,
-> > +                     gpio30, gpio31, gpio32, gpio33, gpio34, gpio35,
-> > +                     gpio36, gpio37, gpio38, gpio39, gpio40, gpio41,
-> > +                     pcie_reset0, pcie_reset1]
-> > +
-> > +        required:
-> > +          - function
-> > +          - groups
-> > +
-> > +        additionalProperties: false
-> > +
-> > +      '^conf(-|$)':
-> 
-> Why is this needed? Why can you not tell from the group which pins the
-> config applies to?
+The MT7986 architected timer runs at 12,986,200 Hz rather than 13 MHz.
+Firmware reports 13 MHz through CNTFRQ_EL0, causing the system clock to
+run slow by about 1062 ppm. This exceeds the kernel's 500 ppm NTP
+correction limit and leaves clock discipline saturated.
 
-Not for all of them: i2c_sda, i2c_scl, uart_txd and uart_rxd are in no
-group at all. The spi_cs0/clk/mosi/miso pads are only in pnand, which is
-17 pins wide, so no group names them individually either.
+The corrected rate comes from MediaTek's downstream OpenWrt feed, where
+it is applied to both MT7986A and MT7986B. Since upstream mt7986b.dtsi
+includes mt7986a.dtsi, add it once to the common timer node so the
+architected timer driver uses the actual counter rate.
 
-Ahmed
+Fixes: 50137c150f5f ("arm64: dts: mediatek: add basic mt7986 support")
+Cc: stable@vger.kernel.org
+Link: https://github.com/mediatek/mtk-openwrt-feeds/commit/6a4c41c41410cd5042ad10c39da6593ba036283c
+Link: https://github.com/openwrt/openwrt/issues/24789
+Signed-off-by: Andrea Pesaresi <andreapesaresi82@gmail.com>
+---
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+index 9ebc19610..318639a7c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+@@ -657,6 +657,7 @@ cpu_trip_active_low: active-low {
+ 	timer {
+ 		compatible = "arm,armv8-timer";
+ 		interrupt-parent = <&gic>;
++		clock-frequency = <12986200>;
+ 		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
+ 			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
+ 			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
 
-> 
-> Thanks,
-> Conor.
-> 
-> > +        type: object
-> > +
-> > +        description:
-> > +          pinconf configuration nodes.
-> > +
-> > +        $ref: /schemas/pinctrl/pincfg-node.yaml
-> > +
-> > +        properties:
-> > +          pins:
-> > +            description:
-> > +              An array of strings. Each string contains the name of a pin.
-> > +            items:
-> > +              enum: [gpio0, gpio1, gpio2, gpio3, gpio4, gpio5, gpio6,
-> > +                     gpio7, gpio8, gpio9, gpio10, gpio11, gpio12, gpio13,
-> > +                     gpio14, gpio15, gpio16, gpio17, gpio18, gpio19,
-> > +                     gpio20, gpio21, gpio22, gpio23, gpio24, gpio25,
-> > +                     gpio26, gpio27, gpio28, gpio29, gpio30, gpio31,
-> > +                     gpio32, gpio33, gpio34, gpio35, gpio36, gpio37,
-> > +                     gpio38, gpio39, pcie_reset0, pcie_reset1, i2c_sda,
-> > +                     i2c_scl, uart_txd, uart_rxd, spi_cs0, spi_clk,
-> > +                     spi_mosi, spi_miso]
-> > +            minItems: 1
-> > +            maxItems: 50
-> > +
-> > +          bias-disable: true
-> > +
-> > +          bias-pull-up: true
-> > +
-> > +          bias-pull-down: true
-> > +
-> > +          input-enable: true
-> > +
-> > +          output-enable: true
-> > +
-> > +          output-low: true
-> > +
-> > +          output-high: true
-> > +
-> > +          drive-strength:
-> > +            description:
-> > +              Selects the drive strength for the pin, in mA.
-> > +            enum: [2, 4]
-> > +
-> > +        required:
-> > +          - pins
-> > +
-> > +        additionalProperties: false
-> > +
-> > +    additionalProperties: false
-> > +
-> > +required:
-> > +  - compatible
-> > +  - airoha,chip-scu
-> > +  - interrupts
-> > +  - gpio-controller
-> > +  - gpio-ranges
-> > +  - "#gpio-cells"
-> > +  - interrupt-controller
-> > +  - "#interrupt-cells"
-> > +
-> > +allOf:
-> > +  - $ref: pinctrl.yaml#
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/interrupt-controller/mips-gic.h>
-> > +    #include <dt-bindings/interrupt-controller/irq.h>
-> > +
-> > +    pinctrl {
-> > +      compatible = "econet,en7528-pinctrl";
-> > +
-> > +      airoha,chip-scu = <&chip_scu>;
-> > +
-> > +      interrupt-parent = <&gic>;
-> > +      interrupts = <GIC_SHARED 10 IRQ_TYPE_LEVEL_HIGH>;
-> > +
-> > +      gpio-controller;
-> > +      #gpio-cells = <2>;
-> > +
-> > +      interrupt-controller;
-> > +      #interrupt-cells = <2>;
-> > +
-> > +      gpio-ranges = <&pinctrl 0 0 42>;
-> > +
-> > +      uart2-pins {
-> > +        mux {
-> > +          function = "uart";
-> > +          groups = "uart2";
-> > +        };
-> > +
-> > +        conf {
-> > +          pins = "gpio28", "gpio29";
-> > +          bias-pull-up;
-> > +        };
-> > +      };
-> > +
-> > +      pwm-pins {
-> > +        mux {
-> > +          function = "pwm";
-> > +          groups = "gpio30";
-> > +        };
-> > +      };
-> > +    };
-> > -- 
-> > 2.34.1
-> > 
-
+base-commit: cf72cbb39da84b6f02f90c07f33b102fc10b16f0
+-- 
+2.43.0
 
 
