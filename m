@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C265FC61DE2
-	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Aug 2026 07:58:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5100C61DE2
+	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Aug 2026 07:58:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cAJxRQQXvVgRQc+qrTy5F1Tifzrj9A/VOza63N0XwI4=; b=Qz6tAHP4aD8Gv7jTejCwZNQz7E
-	9cQRaP1ZmrmVreOV64xTKNzp7MvEZZzCjTAhRf6WnRiibEu+b9retJ2hOSKVn5TdkdZEvAPxYk5Wh
-	d3fQVc6u0ya8V8HbOBcH//nQGpA0Ukr+DHemD1/NN4Bve4224nSPPLs8p25JSed4YdHs3t49YvZVg
-	vTtqrcD6lqtboBV3NMUtrcGVhh09CQfTWBu41QKUFIiAPThSKdTfBHicavKf9rZCEsADM79auUNFx
-	tVV8PWrMrbqgrMRf8NIJCSLFWEz/7rEY/OkaDcxVj3dal9hZMFBGgVO+fniMHJac3zRKg/EKGkMlu
-	RDZtTzPQ==;
+	bh=+j1AD6ZP4+NwsaE6HRfrB5G8mDdyvb/fqBpbDqu3VZE=; b=O/fod87OtEmSbbWpZQpaTbKjRK
+	CrhMLTASp3wzHEXouCe2/0kkzAkpDgJlxOfFsppvcFgwqVryFneFh5OVunrepbRuCEKFECCnNgG/g
+	wer3UDZj1bZorkRcAgEWcmTkXdp3hiRbqAyI7F5CDKIYLzZmwHUJI6Py0DcMH88xFpjHlJieIp3L2
+	OjCLJ7W/1yZD75/z78dB0OxaipafuNVDwmQ+nAGfkjCwRKqnNC7XUNaYJQuG33mYURV6bnr1IY3LB
+	aEZokClnMc+nJq9LEReCC/b+N0WzkWaSc+JkGGYtV9mmsxqNam/1L3GaoIx3pF+ohYMHvafD+WCAS
+	d6tnj2rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x0aQh-00000007Z2I-320d;
-	Sun, 30 Aug 2026 07:58:15 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1x0aQm-00000007Z60-3heI;
+	Sun, 30 Aug 2026 07:58:20 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x0aQf-00000007Yzk-0phJ
+	id 1x0aQk-00000007Z3a-0Er2
 	for linux-mediatek@lists.infradead.org;
-	Sun, 30 Aug 2026 07:58:14 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-49ccfae359fso4391085e9.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 30 Aug 2026 00:58:12 -0700 (PDT)
+	Sun, 30 Aug 2026 07:58:19 +0000
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-49b392ccaacso32190985e9.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 30 Aug 2026 00:58:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788076691; x=1788681491; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1788076696; x=1788681496; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=cAJxRQQXvVgRQc+qrTy5F1Tifzrj9A/VOza63N0XwI4=;
-        b=olq4rqnmR6ZSQvoghrLutMzkcM0dYzjjCSeYnUr4O1wnqJX/5bb3G80DTYHgVJTTMe
-         dCzgehBDXeYPzYZ6nS395Vvf2AysGSlYP78BIriL5XyjqTR6YXWB+ylDRW029cTMGUeS
-         6PGHae90PzD8wwGeSHvMfXlBn86nYbGyqnnx1m5srKtE91J+DxGME7sRy7tobSd+kGp3
-         67hJ7dabPxT4fCJKbTX9/CpnNe0XYm/DvEWJNueBIruKU8SH+kqR8Fo7loZCKK7wApW5
-         MzQ1maD5g0bkM7fT/M9QOCXCQ9CnxvvKYqPG2ylcqh189oRyhuEdK61SjIHoi65FBMfp
-         0cCA==
+        bh=+j1AD6ZP4+NwsaE6HRfrB5G8mDdyvb/fqBpbDqu3VZE=;
+        b=HanlcURrcDhwhPtRszfmcts2/Ua/DxHGBNO7Spwv0JnWH/+j8k9XwXkOJwWvyteHmy
+         MIbZIcxv89Na/dtlNYoxEedEAACA9jLE4/ATo/Ut88Q7DgMnWeMYMMSuEVqAbgjPgiPi
+         mA73lXZJ2gXl/p/nnDRJtlAciuHqkt4CbrLcWnncQJysAlsK63Dz7OCHRdpQLG0tJDtd
+         U70ND0/sMazStB1N/4GpNQ+bRW/wKtq/ver5+yw1LyQesUjFLuj3ShPj1d9A0xBtVFti
+         jvutcfAd/MExgbAGQCjK8312t3dTu9WCiaNz9O/UlCq9UEL68yquFM0kYnfrrCNDVgCv
+         d6Ww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788076691; x=1788681491;
+        d=1e100.net; s=20251104; t=1788076696; x=1788681496;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=cAJxRQQXvVgRQc+qrTy5F1Tifzrj9A/VOza63N0XwI4=;
-        b=iq0ChcbHXl1Nhv88eqSeMaWoibfu47mYyqi6w4TnnffOpmzVoVCYm5f4sgs1B2S8CR
-         h+jQ/jr+I2sX1rVSHCX+OQYpAQddXVNaCgoOOwfR/PzCzJoktukhPcTY2rRif+AeCR4O
-         /IQda5koKHM4OKiDEXr131lfgiZwyFKxzv/y0fddWHWYYYhgkoI2CVHVJb2vsWe+tsvC
-         b8Ix2LHAm2IED7Bm858EG/DWnP1gtKjcsMfvZHN5WWeL96majqgfS53RoNY57mksxOUB
-         TYKeSNPto0JajNyjQtkZnZyfXLER3qtuSfbWoGPAQmWlWc0t8avgyLFfFTcst76zuQNw
-         ZvOQ==
-X-Forwarded-Encrypted: i=1; AHgh+RrMz10prM2SZZrWD4tHnkX08cUZcyiX1ECwTO8ffUa4GDBE/JnOMlPU+scgyrxnO/NV+SkUaXCdFWz//k63og==@lists.infradead.org
-X-Gm-Message-State: AFuF++kByjEZxRxm19x6yyyxSsO6kuGWYyZPJMEPYV1u8L/kvSTtndtY
-	CPY5wBj9XT6DxEuGfaBHiHUDCGU0SZs4Ril9UKDq15+7TjHOaQT382M=
-X-Gm-Gg: AR+sD11gOmz5Q6+/yHA47pOTSLQhQxuokTTyQwzwpZNXQY+Qd6e0ZeSWJp469MxgEXB
-	PAUlCHtd2m0vhxaTzK8dYP4HO8kk+K9k4XRPrE2GPZvT7X7Iw04pnd4gQhF2Vsn5c1mL9voZ+ty
-	lJZLWT7hK48B9cSLzEeZiSyFD9b4Y/do5bIQzE6lxKTsk73uArQuDQe/MW7VKeblZ+EGOZ+Bn2P
-	GIH99ZAPaUAoXdhzCgBL/2mQE+k4fsgCjFfuXdR/peHNslhP0R1VdItbqMEFJUcJ8tHuCG32Dhy
-	voVvmhQmU2bn31nUPKxtcm71rw6dYSmj5RfWrjVnnQe2zyvXUeNKhJZdLj76uMu2f6BFKP+iKh0
-	/Nv+U0iHysZnDQTjbvkgue1YQ5e+9Kx85bKAIEAsWFXZozVLRZgS81pBbRvZEVM8iYcWIsjRMN3
-	hg7Y7HVcnE6u4j/TDseJyGHB0AAJ/PvDcySlMKupg3ALdpLA945Ck=
-X-Received: by 2002:a05:600c:3546:b0:499:dbc0:370d with SMTP id 5b1f17b1804b1-49b91c1dad9mr266282045e9.2.1788076691084;
-        Sun, 30 Aug 2026 00:58:11 -0700 (PDT)
+        bh=+j1AD6ZP4+NwsaE6HRfrB5G8mDdyvb/fqBpbDqu3VZE=;
+        b=O6/FMcXm/7+P9EPfkVvwenupqMGJPyX2g18DMvjN/TeYZohq8I29vekkny5E0LR0lu
+         iJp+zgeP2zu6CK+uBnNeaL1KReqcqbSwuZhqEm9rI5rblcA487QDi6zzIwIJpsZ4nKFK
+         HsqQoyFNKora5+vetzmX8DRVj0DTf4AwFfys/q5t9+7ojOG/7v/GSNFckngbzMlH3NHz
+         yI8Qog5NhihQkb4GCL2dAla6fPGdcgXPCyC7Yp2C/aTS79yiFa8oAD0YC2i/2jCdFeSQ
+         b2zEdKu9qGdFGCvdu+BQLP2sZOCiiViPQn4o3LxEFfOs1GElROKM/gkT71ur49mfGu9R
+         Qv8g==
+X-Forwarded-Encrypted: i=1; AHgh+RrnhSDdLPNTeN1XiE+OqzGr7MgcUeXv8RWDcnkL6oKDORQJO5bCtJ23WHRdMcQ0gwx9OFVSRYm2Tl1Cftng1w==@lists.infradead.org
+X-Gm-Message-State: AFuF++nDQHv45ryIzWt/Jd33fNbT7b/ZXLOhmGoqaIfo4PrjYNUHO757
+	fSCgTA/FTQxpHdZUtuMMrMpEz3kzaZXlvkTGQ3IwWEyFizxPMRHIZP8=
+X-Gm-Gg: AR+sD13Iz0xZ9M9C9+Y3rFbcE4Yi9uSM/yh9Tj0VAIAf/1OurdHHYm5AVG+3abibTcJ
+	a5TEyGizPHsOcRVM/GTa7idro4OzoxluruK7awv7XWzszC/GQwYHw6zLqxzWHiSDODlH3u+pikN
+	3NpPdx9IboGwqKJfdsIB8pnanckvgJQxI9v35JUmTWB5xHnuWlpQLeyYhi6B3nodL3jeYJ7UhlT
+	FkSmWoaSzONg8yY2xj8q3kwZQNgVcOkVUcDUUTBcwm/Z0RigaSiUvwaOQmipcjYnJoMZfXXr0vF
+	HiIjoV6ZWM4iNCZ4/Gkp9wgCg1cJOxxG+kuFAOAx8702eqs5qkPxoTxaHesjrCvPzpleKS4LiNQ
+	rv/vcyWBVw+Rf/qaX8i3jWbcq9sKxqGf0m69USB2qug5XUhlHivjJQ9eLpWf80rgT3kCPIqRptf
+	yRmN9EMN3BEVz0NIpD4nkaCXGSJEq+Koc9+m0FCz6SJmoKgByASaU=
+X-Received: by 2002:a05:600c:8b35:b0:499:7a19:408b with SMTP id 5b1f17b1804b1-49b91c3b71dmr267281245e9.11.1788076696142;
+        Sun, 30 Aug 2026 00:58:16 -0700 (PDT)
 Received: from fedora ([46.8.219.5])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49cd53a4678sm14757875e9.13.2026.08.30.00.58.09
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49cd53a4678sm14757875e9.13.2026.08.30.00.58.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 30 Aug 2026 00:58:10 -0700 (PDT)
+        Sun, 30 Aug 2026 00:58:15 -0700 (PDT)
 From: Vitaliy Sochnev <sochnev.v.74@gmail.com>
 To: Lorenzo Bianconi <lorenzo@kernel.org>,
 	netdev@vger.kernel.org
@@ -81,17 +81,17 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Vitaliy Sochnev <sochnev.v.74@gmail.com>
-Subject: [PATCH net-next 3/4] net: airoha: add rx_stall_recover ethtool counter
-Date: Sun, 30 Aug 2026 10:57:16 +0100
-Message-ID: <20260830095717.37218-4-sochnev.v.74@gmail.com>
+Subject: [PATCH net-next 4/4] net: airoha: grow RX ring 4 to 128 descriptors
+Date: Sun, 30 Aug 2026 10:57:17 +0100
+Message-ID: <20260830095717.37218-5-sochnev.v.74@gmail.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260830095717.37218-1-sochnev.v.74@gmail.com>
 References: <20260830095717.37218-1-sochnev.v.74@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260830_005813_273665_55946DFB 
-X-CRM114-Status: GOOD (  15.24  )
+X-CRM114-CacheID: sfid-20260830_005818_121211_7EC9A8D3 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,113 +106,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Make the RX-ring hw-stall recovery added by the previous commit
-observable without grepping dmesg for its dev_warn_ratelimited():
-add a custom ethtool -S statistic, rx_stall_recover, incremented once
-per completed recovery.
+Ring 4 is the shared "force to CPU" ring for a wide set of protocols
+(BOOTP, PPPoE Discovery, PPP LCP/IPCP/CHAP/IPv6CP/PAP, ISAKMP, DHCPv6,
+SIP, LLDP, ...) and currently falls into the 16-descriptor default in
+RX_DSCP_NUM(), same as most other non-hashed rings. The hw completion
+race recovered by airoha_qdma_rx_check_stall()/rx_recover_work() in
+the previous commits appears strongly correlated with a ring going
+from idle to receiving its first frame(s) - exactly the access pattern
+this shared ring sees under protocol negotiation bursts. Give it the
+same 128-descriptor allowance already used for rings 2/11/15, matching
+the other rings that see bursty, non-hashed traffic, to reduce how
+often that condition is hit in the first place.
 
-It's tracked per-QDMA-instance rather than per-netdev, since the
-stalled ring can carry traffic for more than one netdev at once (VIP
-classification shares ring 4 across several protocols/ports on this
-hardware) - there's no single netdev to attribute an individual event
-to, so all netdevs behind the same QDMA instance report the same
-aggregate count.
-
-Kept separate from the actual recovery fix since this adds new
-ethtool ABI and has no bearing on correctness; happy to have it queued
-independently if that's preferred.
+Ring 4 and the VIP classification that forces these protocols onto it
+are shared driver-wide, with no DT/hardware property distinguishing
+one chip variant's ring 4 from another's, so this isn't scoped to
+AN7583 specifically even though that's where the race was found and
+reproduced. 24h+ stress runs forcing repeated PPPoE/DHCP renegotiation
+on an AN7581 board, both with and without the two preceding fixes,
+completed 570+ forced reconnect cycles each with no regressions from
+the larger ring.
 
 Signed-off-by: Vitaliy Sochnev <sochnev.v.74@gmail.com>
 ---
- drivers/net/ethernet/airoha/airoha_eth.c | 44 ++++++++++++++++++++++++
- drivers/net/ethernet/airoha/airoha_eth.h |  5 +++
- 2 files changed, 49 insertions(+)
+ drivers/net/ethernet/airoha/airoha_eth.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index b53fe5b17653..efb1dd69cc16 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1000,6 +1000,7 @@ static void airoha_qdma_rx_recover_work(struct work_struct *work)
- 		napi_enable(&q->napi);
- 		napi_schedule(&q->napi);
- 
-+		qdma->rx_recover_count++;
- 		dev_warn_ratelimited(qdma->eth->dev,
- 				     "qid=%d RX ring recovered after hw stall (RX DMA paused for %lld us on this QDMA instance)\n",
- 				     qid, rx_dma_off_us);
-@@ -2600,6 +2601,46 @@ static void airoha_ethtool_get_drvinfo(struct net_device *netdev,
- 	strscpy(info->bus_info, dev_name(eth->dev), sizeof(info->bus_info));
- }
- 
-+static const char airoha_ethtool_stats_str[][ETH_GSTRING_LEN] = {
-+	"rx_stall_recover",
-+};
-+
-+static void airoha_ethtool_get_strings(struct net_device *netdev, u32 sset,
-+				       u8 *data)
-+{
-+	int i;
-+
-+	if (sset != ETH_SS_STATS)
-+		return;
-+
-+	for (i = 0; i < ARRAY_SIZE(airoha_ethtool_stats_str); i++)
-+		ethtool_puts(&data, airoha_ethtool_stats_str[i]);
-+}
-+
-+static int airoha_ethtool_get_sset_count(struct net_device *netdev, int sset)
-+{
-+	return sset == ETH_SS_STATS ?
-+	       ARRAY_SIZE(airoha_ethtool_stats_str) : -EOPNOTSUPP;
-+}
-+
-+static void airoha_ethtool_get_ethtool_stats(struct net_device *netdev,
-+					     struct ethtool_stats *stats,
-+					     u64 *data)
-+{
-+	struct airoha_gdm_dev *dev = netdev_priv(netdev);
-+	struct airoha_qdma *qdma;
-+
-+	rcu_read_lock();
-+	qdma = rcu_dereference(dev->qdma);
-+	/* aggregate recovery count for the whole qdma instance: the
-+	 * stalled ring can carry traffic for more than one netdev (VIP
-+	 * classification shares ring 4 across several protocols/ports),
-+	 * so there's no single netdev to attribute an individual event to
-+	 */
-+	data[0] = qdma ? qdma->rx_recover_count : 0;
-+	rcu_read_unlock();
-+}
-+
- static void airoha_ethtool_get_mac_stats(struct net_device *netdev,
- 					 struct ethtool_eth_mac_stats *stats)
- {
-@@ -3502,6 +3543,9 @@ static const struct net_device_ops airoha_netdev_ops = {
- 
- static const struct ethtool_ops airoha_ethtool_ops = {
- 	.get_drvinfo		= airoha_ethtool_get_drvinfo,
-+	.get_strings		= airoha_ethtool_get_strings,
-+	.get_sset_count		= airoha_ethtool_get_sset_count,
-+	.get_ethtool_stats	= airoha_ethtool_get_ethtool_stats,
- 	.get_eth_mac_stats      = airoha_ethtool_get_mac_stats,
- 	.get_rmon_stats		= airoha_ethtool_get_rmon_stats,
- 	.get_link_ksettings	= phy_ethtool_get_link_ksettings,
 diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 483d6b59c351..d6591a779743 100644
+index d6591a779743..cd75c16d8d0c 100644
 --- a/drivers/net/ethernet/airoha/airoha_eth.h
 +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -582,6 +582,11 @@ struct airoha_qdma {
- 	 */
- 	struct work_struct rx_recover_work;
- 	DECLARE_BITMAP(rx_recover_mask, AIROHA_NUM_RX_RING);
-+	/* count of completed hw-stall recoveries, exposed via ethtool -S
-+	 * so a recovery event (and the packets it drops) is observable
-+	 * without grepping dmesg for the dev_warn_ratelimited() above
-+	 */
-+	u32 rx_recover_count;
- 
- 	DECLARE_BITMAP(qos_channel_map, AIROHA_NUM_QOS_CHANNELS);
- };
+@@ -41,6 +41,7 @@
+ #define TX_DSCP_NUM			1024
+ #define RX_DSCP_NUM(_n)			\
+ 	((_n) ==  2 ? 128 :		\
++	 (_n) ==  4 ? 128 :		\
+ 	 (_n) == 11 ? 128 :		\
+ 	 (_n) == 15 ? 128 :		\
+ 	 (_n) ==  0 ? 1024 : 16)
 -- 
 2.55.0
 
