@@ -4,60 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F285C61DDE
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Aug 2026 23:25:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99FFBC61DD9
+	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Aug 2026 06:42:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Spi6ql7+pWm9by5YwyGx21jV2yBJAja8Rbze3rpbS/E=; b=TyOUvl8FdcMiHm33yQfSq5jO0c
-	rFxYmYfDym4EEzCpI/IWZrLM0wNejJ2uZAuYO8aoMSb/fX1nCuK829txuktZjF9RKo+7/fOHExTJ0
-	XDIv15BgbvcxH418K2kizTJlhQrAlTFT4H8k6kG2NBj6tw4JHQWLF8e7pBFBclRxZgtnzzhkDEPuf
-	8r+oVB5qAYmlZqs+CTqbhFu9RqWbnqhL6AvJHPvMm+RKQ8w3Om/MZGl3ZewXuEXtF6uc2Ks1Tap8U
-	FtILR0obXb4/1Fd5LRrGkD68JN8eWqZ5sVCPDqsOos5FGbdgYhm+Bs49+GNXyCWYGezldCP/Xf1uq
-	1pmr+z0Q==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bPE+U1XTC2rPtpA2+zgnnPhk4X8bJnKcvw9nvU64ML4=; b=35wDkcvu/cH+3a1FLKdApfFNeb
+	5UcB6gpVHl4Mv/dyLOLNcGptJtS+QIIeIEaH8QlFOoaxhvlysYNqrBJbYiEanMB1AlJ1Admfk3w6C
+	78FJE3UNZ7idNi8NxlZqM+iii63NWg6bG3H55EUeJS3ER/+CMTDbdUw70hJ63gmfejk0TuNBD3mwR
+	9JkgeueCl/TdweY31HYZBibZgo5YHeMvSG7jo3t+FElpED0V04FznZYtVrbI0mOuCgPrU/vQcRlyz
+	kXp1/J2haeI5t+VlM2EGktIWGB6Ffqs7+QAxrWacTO+UMUaYZcqDe7xsgAsqWVbQ8FpFYqdf/7aL+
+	nL6plUOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x0SQt-00000007Nbx-1G1q;
-	Sat, 29 Aug 2026 23:25:55 +0000
-Received: from out-218.mta0.migadu.com ([2001:41d0:1004:224b::da] helo=mta0.migadu.com)
+	id 1x0ZF4-00000007Wks-3eGL;
+	Sun, 30 Aug 2026 06:42:10 +0000
+Received: from out-237.mta1.migadu.com ([2001:41d0:203:375::ed] helo=mta1.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x0SQp-00000007NbX-45GT
+	id 1x0ZF1-00000007WkL-20zy
 	for linux-mediatek@lists.infradead.org;
-	Sat, 29 Aug 2026 23:25:53 +0000
+	Sun, 30 Aug 2026 06:42:09 +0000
 X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=vYgvfqVKL+gvqjlecyfRg1/rneQasRvsOFWbVIPsXsQ=;
+DKIM-Signature: a=rsa-sha256; bh=BSvuPWNInRSNN0xT6NPa8YHVirxgprFPCBEG8neHW0I=;
  c=simple/simple; d=justthetip.ca;
  h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1788045949; v=1; x=1788650749;
- b=w0g6S0C//IYLSKgQI6EWkxvY1SbAV1HYKQe9OceKQgs1UMvopIyiRrdbOqfvZRtN9f0B+0GJ
- wt3aEL6NroRsNJqfJ7wTOTp3lCoBOSaEq4fTiyIktS+UnC6GMvqjiIcjaduX+Wm2pqkG1ncJkJ4
- OCZPvSacF7C29Rfjnsq6f1M/89YVRxxTFKW32V4OA1gI2jKZAwLvmVt9QminE1BnHwibwgOB5i5
- LXGYaHjuslZNxoOE9nlz9BXh3h/RHXxNUcmXNsbgKu+iUuCKCQUIH0ctSMNzbNX6gjqeMzKJWc5
- zxfvPmj28GmVLY8dTNl6BO7SS2pko3/OO4mdflQVmFNwg==
+ t=1788072124; v=1; x=1788676924;
+ b=ELPGBrYlBkEjAPxZwNZXI0+WLqCbAhaaTHRoyCjqzlfr+K7t83eNZ1rQc9DLwbtNrPzRZaZ8
+ udPnHL3GgqJ1aHwlQ0OCgwTLFX6UGfaSkWy+iBJcKQ7TqTr50+RtdiP9kH/PHONZLNGFniG/fua
+ 2Ye1rn+AxvZdGzEWlb/kesAQORR+kEpVUwqH4A0uDP/ZzwJzgxs/0SjS441z5GCw7Spcw3DZcR3
+ ZT5XlEah4tW6L3e9NkJYO4OcVuxk58WcEaVEZo+tTDbD/pSVF64cBhOQFuRV0hUd8s50V7yL1Ka
+ eAK7KRbEeQ+1S6jBkxRj59GPLR4h08CCcv/m+YlUoMCiw==
 X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id 22618b5f24637d71;
-	Sat, 29 Aug 2026 23:25:39 +0000
-X-Mizu-Trace-ID: 22618b5f24637d71
+Received: by smtp.migadu.com with ESMTPS id 36d2ef1c74f41eac;
+	Sun, 30 Aug 2026 06:42:04 +0000
+X-Mizu-Trace-ID: 36d2ef1c74f41eac
 X-Migadu-Flow: FLOW_OUT
 From: Devin Wittmayer <lucid_duck@justthetip.ca>
-To: Thomas Hilber <anthrop@enxio.de>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: linux-wireless@vger.kernel.org,
-	ath9k-devel@qca.qualcomm.com,
-	linux-mediatek@lists.infradead.org
-Subject: Re: AP drops STA data frames for ~130-170ms after 4-way handshake
-Date: Sat, 29 Aug 2026 16:25:32 -0700
-Message-ID: <20260829232532.29622-1-lucid_duck@justthetip.ca>
+	linux-mediatek@lists.infradead.org,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Deren Wu <deren.wu@mediatek.com>,
+	Johannes Berg <johannes@sipsolutions.net>
+Subject: [PATCH wireless 0/2] wifi: mt76: the same lock inversion in suspend and resume
+Date: Sat, 29 Aug 2026 23:41:59 -0700
+Message-ID: <20260830064201.92285-1-lucid_duck@justthetip.ca>
 X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260827074442.826644@enxio.de>
-References: <20260827074442.826644@enxio.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260829_162552_443075_F8780773 
-X-CRM114-Status: GOOD (  11.32  )
+X-CRM114-CacheID: sfid-20260829_234207_930518_21D8EA46 
+X-CRM114-Status: UNSURE (   4.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,50 +76,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2026-08-27 at 07:44 +0200, Thomas Hilber wrote:
-> That suggests the pairwise key becomes usable for RX some time after
-> hostapd authorizes the controlled port, rather than atomically with it.
+Follow-up to the config-path fix taken on 10 August. Suspend and resume
+do the same thing and were missed. One word each, four sites.
 
-I think that's right, and I don't think SoftMAC is where it splits.
-I ran your test on two more access points.
+Devin Wittmayer (2):
+  wifi: mt76: mt7921: fix the lock inversion in suspend and resume
+  wifi: mt76: mt7925: fix the lock inversion in suspend and resume
 
-The first had no radio at all, just software. Median 2.8 ms over 91
-associations, not one above 100. That is your FullMAC column, produced
-by a SoftMAC access point.
+ drivers/net/wireless/mediatek/mt76/mt7921/main.c | 16 ++++++++--------
+ drivers/net/wireless/mediatek/mt76/mt7925/main.c | 16 ++++++++--------
+ 2 files changed, 16 insertions(+), 16 deletions(-)
 
-The second was real silicon: a newer MediaTek part on its own driver,
-but the same family you already reported, so corroboration rather than
-a fresh witness.
+-- 
+2.55.0
 
-  35 of 40 associations   5 to 16 ms
-   5 of 40                116, 128, 138, 162, 181 ms
-
-Your range, just not every time. About one in eight, where you were
-seeing nearly all of them.
-
-What separates the fast case from the slow ones isn't SoftMAC, it's
-where decryption happens. In software the key works the instant it is
-set. Everywhere else it has to be shipped out to a chip first.
-
-The port opens on schedule. It's the key that is still in transit.
-
-Your Atheros access point will skip hardware encryption if you ask it
-to, with the nohwcrypt parameter.
-
-If the gap goes with it, that is your answer for the price of a reload.
-The MediaTek one has no such switch.
-
-The reorder buffer is out as well. Anything dropped later, at
-decryption or at the port check, has already been through it and moved
-the window along, so no hole opens and the timer never starts.
-
-Mine differs from yours in three ways: a MediaTek client instead of
-your ESP32, 5 GHz wide instead of 2.4 narrow, and my clock starts at
-the client's end of the handshake rather than the access point's.
-
-Thanks for the pair that were the same box, same kernel, same hostapd,
-differing only in radio and driver. That is what made this worth
-chasing.
-
-Devin
 
