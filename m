@@ -4,57 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FA32C61DB9
-	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Aug 2026 10:43:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9557AC61DB9
+	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Aug 2026 12:10:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xDcnSWqAljHjLDyGS8PAQOnLfSyynIxo4V8cm12n4UE=; b=nolJEs5iZ//FXFyTlvjgPaSPwm
-	scWRZtNB/IRV3ysz22RmM2sV+yBqliW8TCkpSJRZUlbuv28iu+fj9ibRRVCRXDPJUJ3hCn4elMUvM
-	MclIYZda4SQS/m8pIK5gSZIKTnlSrg72wYfHBn5mw+FA3+l2VpYxKSLnBsnY3K8Zv8YJM4UQwCW3s
-	p5VFRLck0QhiQo/uJ/QNQGNPqjMsd+Wx9tUYgEPx5lMsMsW64dfYK/oIrBufrgMJ0miz2zzTst2IX
-	eXCWpnPytOKfI+rDUUFy36mV1aUXHKZYTvRS2ZdF0F3oiIqCX+Zto6DNh7xsMa9LHS18r3QZq9XGe
-	pm2ih/ig==;
+	bh=ub791A4BOmeMS2MciMpwB8pjEJE56jW4Bbfb4aufBFQ=; b=OX34DP1Sgtf99/vFtbtoLx1lTU
+	cIGMlEwKqRLMlV69NP6qkb4nyWjuPuxZaxq0VU5AAomyI9E7YA4cX80GPlktoip6edopeixdgcIZD
+	QUwlEmc91M54tq3IU00QQcYMsCe3T2zUiirbt6rv9teS9BcZ4H63XZ5i3ZpEC8AylqWtRHLJwNdkZ
+	3E9a6eiGFyB+0np3L+1Yfmwrxh9lw/KiEwFfRi5T8zz8rtYPhS7/Jkl3KsIV41Wg9Ho1iTpUjC94a
+	pHdAAiOdhBo0wOO47oQSkoY7lUVt8ddp3XBMPFOxlhNy1stfkBSWHnTd1m6m5T/y3//okdiQGjpGH
+	EAIj3OFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x0d0D-00000007fQg-2oMa;
-	Sun, 30 Aug 2026 10:43:05 +0000
-Received: from enxio.de ([91.210.227.97])
+	id 1x0eMd-00000007hNU-0DqJ;
+	Sun, 30 Aug 2026 12:10:19 +0000
+Received: from mail-m155101.qiye.163.com ([101.71.155.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x0d0A-00000007fQL-42GN
-	for linux-mediatek@lists.infradead.org;
-	Sun, 30 Aug 2026 10:43:04 +0000
-Received: from [95.157.48.181] (helo=roja.toh.cx)
-	by enxio.de with esmtpsa (TLS1.3:ECDHE_SECP256R1__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.98.2)
-	(envelope-from <anthrop@enxio.de>)
-	id 1x0d06-0000000854c-18iz;
-	Sun, 30 Aug 2026 12:42:58 +0200
-Received: from localhost ([127.0.0.1])
-	by roja.toh.cx with esmtp (Exim 4.94.2)
-	(envelope-from <anthrop@enxio.de>)
-	id 1x0d05-002BfQ-M0; Sun, 30 Aug 2026 12:42:57 +0200
-From: Thomas Hilber <anthrop@enxio.de>
-To: Devin Wittmayer <lucid_duck@justthetip.ca>
-Cc: linux-wireless@vger.kernel.org,
-	ath9k-devel@qca.qualcomm.com,
-	linux-mediatek@lists.infradead.org
-Subject: Re: AP drops STA data frames for ~130-170ms after 4-way handshake
- completes (ath9k_htc, mt76; not brcmfmac)
-Date: Sun, 30 Aug 2026 12:42:36 +0200
-Message-ID: <20260830104236.521389@enxio.de>
-In-Reply-To: <20260829232532.29622-1-lucid_duck@justthetip.ca>
-References: <20260827074442.826644@enxio.de>
-	<20260829232532.29622-1-lucid_duck@justthetip.ca>
+	id 1x0eMZ-00000007hMx-0Hyj;
+	Sun, 30 Aug 2026 12:10:17 +0000
+Received: from PC-202605011814.localdomain (unknown [58.241.16.34])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4bd6507d3;
+	Sun, 30 Aug 2026 20:10:01 +0800 (GMT+08:00)
+From: Runyu Xiao <runyu.xiao@seu.edu.cn>
+To: sean.wang@mediatek.com
+Cc: vkoul@kernel.org,
+	Frank.Li@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	dmaengine@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	runyu.xiao@seu.edu.cn,
+	jianhao.xu@seu.edu.cn,
+	stable@vger.kernel.org
+Subject: [PATCH v2] dmaengine: mediatek: initialize tasklets before requesting IRQs
+Date: Sun, 30 Aug 2026 20:09:55 +0800
+Message-Id: <20260830120955.2638359-1-runyu.xiao@seu.edu.cn>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260830060422.2204459-1-runyu.xiao@seu.edu.cn>
+References: <20260830060422.2204459-1-runyu.xiao@seu.edu.cn>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-HM-Tid: 0aa05293a01a03a1kunm00237a53fe57a
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZGRkaVhgaSEgeQxlKGUsYGVYeHw
+	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlOQ1VJT0pVSk1VSE9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpPSE
+	xVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=g4PcaCLHNFM/ofzTYLkAFaUzdqz5oSmW7Y5jjy+t+ZWUo4lJmovp7c42xQxrbNHyaKJUfEm/MPFT+prv4tt2MJeMVY0eQhKaJ0hLABBXsePs/2DV5ulud0fkp+H4Eg8TlHQoKcN4jrc0OpQ/DmmJapceIHSbuWiFYPdegKzpmEA=; s=default; c=relaxed/relaxed; d=seu.edu.cn; v=1;
+	bh=ub791A4BOmeMS2MciMpwB8pjEJE56jW4Bbfb4aufBFQ=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260830_034303_026483_1BC3BC18 
-X-CRM114-Status: GOOD (  13.06  )
+X-CRM114-CacheID: sfid-20260830_051015_800941_8B87A239 
+X-CRM114-Status: GOOD (  14.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,70 +77,166 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 2026-08-29 at 16:25 -0700, Devin Wittmayer wrote:
-> Your Atheros access point will skip hardware encryption if you ask it
-> to, with the nohwcrypt parameter.
->
-> If the gap goes with it, that is your answer for the price of a reload.
+The CQDMA probe registers each physical-channel IRQ before initializing
+the tasklet scheduled by the interrupt handler. A pending interrupt can
+access an uninitialized physical channel or schedule an uninitialized
+tasklet while probe is still running.
 
-It goes with it, and it takes the whole effect with it.
+Initialize all physical channels, including their tasklets, before
+registering any IRQ.
 
-AP4 from my table (AR9271, ath9k_htc, kernel 6.18.39). Same station, same
-hostapd, same channel, same bridge, no other station associated; the two
-arms were alternated and differ only in the module parameter:
+On probe failure, unwind every requested IRQ and initialized tasklet
+before devres releases the physical-channel and virtual-channel objects.
+Also release the OF DMA controller when hardware initialization fails
+after registration.
 
-  ath9k_htc         n     connect attempts   >1 attempt   TCP connect
-  --------------   ---    ----------------   ----------   -----------
-  nohwcrypt=0      216          5.20            97%         134.9 ms
-  nohwcrypt=1      302          1.06             3%           4.1 ms
+Fixes: b1f01e48df5a ("dmaengine: Add MediaTek Command-Queue DMA controller for MT6765 SoC")
+Cc: stable@vger.kernel.org
+Link: https://lore.kernel.org/all/20260830060422.2204459-1-runyu.xiao@seu.edu.cn/
+Assisted-by: Codex:GPT-5
+Signed-off-by: Runyu Xiao <runyu.xiao@seu.edu.cn>
 
-For reference, the AP4 row of my original mail was 105 cycles at 5.04
-attempts and 134 ms, taken 11 days earlier. The hardware-crypto arm above
-reproduces it to within noise, which is the best evidence I have that
-nothing else about the bench moved in between.
+---
+v2:
+- Initialize all physical channels before registering any IRQ, since the
+  interrupt handler scans all channels.
+- Disable requested IRQs before killing physical- and virtual-channel
+  tasklets, then free the IRQs on every probe error path before devres
+  releases channel state.
+- Release the OF DMA controller when hardware initialization fails.
+---
+ drivers/dma/mediatek/mtk-cqdma.c | 59 +++++++++++++++++++++++---------
+ 1 file changed, 43 insertions(+), 16 deletions(-)
 
-Attempt distribution, since the shape matters more than the mean:
+diff --git a/drivers/dma/mediatek/mtk-cqdma.c b/drivers/dma/mediatek/mtk-cqdma.c
+index 80791e30a..741b6325c 100644
+--- a/drivers/dma/mediatek/mtk-cqdma.c
++++ b/drivers/dma/mediatek/mtk-cqdma.c
+@@ -749,7 +749,7 @@ static int mtk_cqdma_probe(struct platform_device *pdev)
+ 	struct mtk_cqdma_vchan *vc;
+ 	struct dma_device *dd;
+ 	int err;
+-	u32 i;
++	u32 i, nr_tasklets = 0, nr_irqs = 0;
+ 
+ 	cqdma = devm_kzalloc(&pdev->dev, sizeof(*cqdma), GFP_KERNEL);
+ 	if (!cqdma)
+@@ -805,41 +805,54 @@ static int mtk_cqdma_probe(struct platform_device *pdev)
+ 	if (!cqdma->pc)
+ 		return -ENOMEM;
+ 
+-	/* initialization for PCs */
++	/* Initialize all PCs before registering any IRQ. */
+ 	for (i = 0; i < cqdma->dma_channels; ++i) {
+ 		cqdma->pc[i] = devm_kcalloc(&pdev->dev, 1,
+ 					    sizeof(**cqdma->pc), GFP_KERNEL);
+-		if (!cqdma->pc[i])
+-			return -ENOMEM;
++		if (!cqdma->pc[i]) {
++			err = -ENOMEM;
++			goto err_tasklets;
++		}
+ 
+ 		INIT_LIST_HEAD(&cqdma->pc[i]->queue);
+ 		spin_lock_init(&cqdma->pc[i]->lock);
+ 		refcount_set(&cqdma->pc[i]->refcnt, 0);
++		tasklet_setup(&cqdma->pc[i]->tasklet, mtk_cqdma_tasklet_cb);
++		nr_tasklets++;
+ 		cqdma->pc[i]->base = devm_platform_ioremap_resource(pdev, i);
+-		if (IS_ERR(cqdma->pc[i]->base))
+-			return PTR_ERR(cqdma->pc[i]->base);
++		if (IS_ERR(cqdma->pc[i]->base)) {
++			err = PTR_ERR(cqdma->pc[i]->base);
++			goto err_tasklets;
++		}
+ 
+ 		/* allocate IRQ resource */
+ 		err = platform_get_irq(pdev, i);
+ 		if (err < 0)
+-			return err;
++			goto err_tasklets;
+ 		cqdma->pc[i]->irq = err;
++	}
+ 
++	/* Register IRQs only after all PCs are initialized. */
++	for (i = 0; i < cqdma->dma_channels; ++i) {
+ 		err = devm_request_irq(&pdev->dev, cqdma->pc[i]->irq,
+ 				       mtk_cqdma_irq, 0, dev_name(&pdev->dev),
+ 				       cqdma);
+ 		if (err) {
+ 			dev_err(&pdev->dev,
+ 				"request_irq failed with err %d\n", err);
+-			return -EINVAL;
++			err = -EINVAL;
++			goto err_tasklets;
+ 		}
++		nr_irqs++;
+ 	}
+ 
+ 	/* allocate resource for VCs */
+ 	cqdma->vc = devm_kcalloc(&pdev->dev, cqdma->dma_requests,
+ 				 sizeof(*cqdma->vc), GFP_KERNEL);
+-	if (!cqdma->vc)
+-		return -ENOMEM;
++	if (!cqdma->vc) {
++		err = -ENOMEM;
++		goto err_tasklets;
++	}
+ 
+ 	for (i = 0; i < cqdma->dma_requests; i++) {
+ 		vc = &cqdma->vc[i];
+@@ -850,7 +863,7 @@ static int mtk_cqdma_probe(struct platform_device *pdev)
+ 
+ 	err = dma_async_device_register(dd);
+ 	if (err)
+-		return err;
++		goto err_tasklets;
+ 
+ 	err = of_dma_controller_register(pdev->dev.of_node,
+ 					 of_dma_xlate_by_chan_id, cqdma);
+@@ -864,22 +877,36 @@ static int mtk_cqdma_probe(struct platform_device *pdev)
+ 	if (err) {
+ 		dev_err(&pdev->dev,
+ 			"MediaTek CQDMA HW initialization failed %d\n", err);
+-		goto err_unregister;
++		goto err_of_unregister;
+ 	}
+ 
+ 	platform_set_drvdata(pdev, cqdma);
+ 
+-	/* initialize tasklet for each PC */
+-	for (i = 0; i < cqdma->dma_channels; ++i)
+-		tasklet_setup(&cqdma->pc[i]->tasklet, mtk_cqdma_tasklet_cb);
+-
+ 	dev_info(&pdev->dev, "MediaTek CQDMA driver registered\n");
+ 
+ 	return 0;
+ 
++err_of_unregister:
++	of_dma_controller_free(pdev->dev.of_node);
++
+ err_unregister:
+ 	dma_async_device_unregister(dd);
+ 
++err_tasklets:
++	/* Prevent IRQ handlers from accessing channel state during cleanup. */
++	for (i = 0; i < nr_irqs; i++)
++		disable_irq(cqdma->pc[i]->irq);
++
++	for (i = 0; i < nr_tasklets; i++)
++		tasklet_kill(&cqdma->pc[i]->tasklet);
++
++	if (cqdma->vc)
++		for (i = 0; i < cqdma->dma_requests; i++)
++			tasklet_kill(&cqdma->vc[i].vc.task);
++
++	for (i = 0; i < nr_irqs; i++)
++		devm_free_irq(&pdev->dev, cqdma->pc[i]->irq, cqdma);
++
+ 	return err;
+ }
+ 
+-- 
+2.34.1
 
-  nohwcrypt=0    1:6   2:27  3:24  4:17  5:71  6:29  7:13  8:7  ... 16:1
-  nohwcrypt=1    1:292 2:6   3:1   4:2   5:1
-
-Under software crypto 292 of 302 associations placed their first frame
-successfully. Under hardware crypto 6 of 216 did.
-
-Two caveats, both of which cut against the result rather than for it.
-Cycles where the station never got a reply at all are excluded above: 33 of
-249 hardware-crypto cycles and 22 of 324 software-crypto cycles. Dropping
-the hardware side's worst cycles understates the gap. And a late arm in the
-session degraded for unrelated local reasons and was discarded whole rather
-than pooled.
-
-One corroboration measured at the AP, which does not depend on the station's
-TCP target at all - completed four-way handshakes in fixed 120s windows,
-with the station associating and deep-sleeping in a loop throughout:
-
-  nohwcrypt=0     64, 65 associations per 120s
-  nohwcrypt=1     87, 86 associations per 120s
-
-About a third more cycles in the same wall time, which is what you would
-expect if every cycle stops losing ~130ms to the dead window.
-
-So the split in my table is not SoftMAC vs FullMAC. It is where the key
-lives, exactly as you said - the same driver, on the same silicon, in the
-same box, lands in either column depending on one module parameter.
-Espressif and brcmfmac looked clean because the key is already in the device
-by the time the port opens; ath9k_htc and mt76 look bad because the port
-opens first and the key is still on its way to the chip.
-
-That also fits your reorder-buffer point: with hardware crypto the frames
-are ACKed, so they have been through the reorder window before they are
-discarded, and no hole ever opens.
-
-I have not instrumented the key-install path itself, so I still cannot say
-whether the right fix is to defer authorization until the key is confirmed
-installed, or to buffer rather than drop in that window. Happy to test
-patches, or to run whatever tracing would distinguish those.
-
-Thanks - that was a good call, and a cheap one.
-
-Thomas
 
