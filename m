@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABEF3C61DB9
-	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Aug 2026 12:37:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B266C61DD9
+	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Aug 2026 13:11:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pay+wine4KUndW90/yEN82tkhjgSFK+TEoNNZrR5CH4=; b=uq7Qktp/TfXCIXHgx+SZ3p77p0
-	TuRPXcIHBSIjKyXSA2wkaZ8SCWp80Teus7ju/qfbjvdFCL/guMXblqpYCbdLeLtBOQCfxAhbqRkYq
-	p/fQfXaR4G87n4AM6w8IvyVYkSFDp8wnpb6eseVuOnij3ADJmh977sutFsYx60Cei8UabNE9/Jj1W
-	eUHyh5CwdVNxt3HVbjRE4HUjGqcwVcPB9ojE0uclBYdJMD7jDlFRqLjzwhMcVFoRVw5ITptWz5ZvP
-	wDaX9cgtzUxqlMaw9DN5rhDA3LGyGqGRbHpHig6XZZfu00syVwHm2vGsCD7ACbem2vS0RPxIJ6JsA
-	vNffQyiQ==;
+	bh=mIqUVQQTZb/RLJKuxYntLusdXEDBGRxBp4SGnd3/Bpo=; b=POolkR5xZSeyOrRqLP636ynWnG
+	+Z1Na5OCZ6aFdQvhCba7H+PnAT0lwCjWKqDFNZu4wrPhN+BBJMPKbLkI0vguqRjL3orv1ukQFJVe2
+	T143Z6h4IJRkFBSzgX9U4pTwRSViyN+1M1ERI4R8YS3e4iRkd5ka4RnnV6fx3/vRF21MqnzERJr/w
+	C82toJ5Ph8/7PkU7iQPLymlYeCM6USGQ7MrhybwkGOQhTx8+T1QIzfKPBrTWUVqtGocEppB/em/LF
+	oYSfWJ38BDuuIEnLwNDzznJaUEoZYY8ff3EwITcPpqyUo4qjdk6tEyqFqMbILeqTTqFxzX8xZx/HZ
+	+F4i86XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x0emz-00000007iEl-2D7f;
-	Sun, 30 Aug 2026 12:37:33 +0000
+	id 1x0fJP-00000007jjs-1ADY;
+	Sun, 30 Aug 2026 13:11:03 +0000
 Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x0emv-00000007iE0-0sfW;
-	Sun, 30 Aug 2026 12:37:32 +0000
+	id 1x0fJL-00000007jj1-3kcP;
+	Sun, 30 Aug 2026 13:11:01 +0000
 Received: from localhost.localdomain (unknown [111.196.241.250])
-	by APP-03 (Coremail) with SMTP id rQCowAAHDDoCJJRq53aaBg--.16982S2;
-	Sun, 30 Aug 2026 20:37:22 +0800 (CST)
+	by APP-03 (Coremail) with SMTP id rQCowACnrjzbK5Rq7N+aBg--.43594S2;
+	Sun, 30 Aug 2026 21:10:52 +0800 (CST)
 From: Pengpeng Hou <pengpeng@iscas.ac.cn>
 To: Felix Fietkau <nbd@nbd.name>
 Cc: Pengpeng Hou <pengpeng@iscas.ac.cn>,
@@ -42,34 +42,35 @@ Cc: Pengpeng Hou <pengpeng@iscas.ac.cn>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH] wifi: mt76: mt7921: validate capability TLV extents
-Date: Sun, 30 Aug 2026 20:37:18 +0800
-Message-ID: <20260830123720.94876-1-pengpeng@iscas.ac.cn>
+Subject: [PATCH] wifi: mt76: mt7615: validate MCU response lengths
+Date: Sun, 30 Aug 2026 21:10:49 +0800
+Message-ID: <20260830131049.2097-1-pengpeng@iscas.ac.cn>
 X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: rQCowAAHDDoCJJRq53aaBg--.16982S2
-X-Coremail-Antispam: 1UD129KBjvJXoWxZr1kZr4kZw1UCr43CF47XFb_yoWrGry8pF
-	WYgrW5G3yUJrsFkwn5Arsxua98tas7trW3Ka45Z3WFq3sFyr18CFsaqFy0vrWak3ykGryf
-	ZFWvv3Z5WrnFqaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUU9Y14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+X-CM-TRANSID: rQCowACnrjzbK5Rq7N+aBg--.43594S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7Zry7CryUJw47uF18Jry5urg_yoW5JFWxpF
+	WjgFyayr4DJrsFga10vw1ku3yaq3s3tFyaqa4DW3s5J3s5C3WrCF4F9a4Fvr1rJFZ8Cr1r
+	Jw4qqrsxuFZ0q3DanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUU9I14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
 	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26r1I6r4UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
-	6F4UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2z280aVCY1x0267AKxVWxJr
-	0_GcWle2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E
-	2Ix0cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r1j6r4UMcvjeVCFs4IE7xkEbVWUJV
-	W8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lFIxGxcIEc7CjxVA2
-	Y2ka0xkIwI1lc7CjxVAaw2AFwI0_Jw0_GFyl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x
-	0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2
-	zVAF1VAY17CE14v26r1q6r43MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF
-	4lIxAIcVC0I7IYx2IY6xkF7I0E14v26r4j6F4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWU
-	CwCI42IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCT
-	nIWIevJa73UjIFyTuYvjfUonmRUUUUU
+	1l84ACjcxK6xIIjxv20xvE14v26r4j6ryUM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4j
+	6r4UJwA2z4x0Y4vEx4A2jsIE14v26F4UJVW0owA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Cr
+	1j6rxdM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj
+	6xIIjxv20xvE14v26r126r1DMcIj6I8E87Iv67AKxVW8JVWxJwAm72CE4IkC6x0Yz7v_Jr
+	0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7M4IIrI8v6xkF7I0E
+	8cxan2IY04v7MxkF7I0En4kS14v26r1q6r43MxAIw28IcxkI7VAKI48JMxC20s026xCaFV
+	Cjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWl
+	x4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1I6r
+	4UMIIF0xvE2Ix0cI8IcVCY1x0267AKxVWxJVW8Jr1lIxAIcVCF04k26cxKx2IYs7xG6r1j
+	6r1xMIIF0xvEx4A2jsIE14v26r4j6F4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr1j6F4UJb
+	IYCTnIWIevJa73UjIFyTuYvjfU5dgADUUUU
 X-Originating-IP: [111.196.241.250]
 X-CM-SenderInfo: pshqw1xhqjqxpvfd2hldfou0/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260830_053729_641647_EF83EEAE 
-X-CRM114-Status: GOOD (  11.63  )
+X-CRM114-CacheID: sfid-20260830_061100_309259_E4BE7C6A 
+X-CRM114-Status: UNSURE (   8.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,157 +85,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The NIC capability walker can accept truncated generic TLV headers or
-payloads, and its type-specific consumers read fixed payloads without
-proving that the current TLV contains those bytes.
+mt7615_mcu_parse_response() reads the common response header before
+checking its size and then consumes command-specific fields after unchecked
+skb_pull() calls. A short firmware response can therefore be read beyond
+its current extent.
 
-Reject malformed generic extents and require every known capability type
-to provide its minimum payload before parsing or copying it.
+Validate the common header and each command-specific payload before reading
+it.
 
-Fixes: dab35009fc1c ("wifi: mt76: mt7921: move connac nic capability handling to mt7921")
+Fixes: 0e6a29e477f3 ("mt76: mt7615: add support to read temperature from mcu")
 Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
 ---
- drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 89 ++++++++++++++++---------
- 1 file changed, 59 insertions(+), 30 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index a118a301564c8..8e6be9f63659a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -515,21 +515,38 @@ static int mt7921_load_clc(struct mt792x_dev *dev, const char *fw_name)
- 	return ret;
- }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+index ff57ede87f717..084949dd3e94e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+@@ -143,18 +143,26 @@ int mt7615_mcu_parse_response(struct mt76_dev *mdev, int cmd,
+ 			cmd, seq);
+ 		return -ETIMEDOUT;
+ 	}
++	if (skb->len < sizeof(*rxd))
++		return -EMSGSIZE;
  
-+struct mt7921_tx_resource {
-+	__le32 version;
-+	__le32 pse_data_quota;
-+	__le32 pse_mcu_quota;
-+	__le32 ple_data_quota;
-+	__le32 ple_mcu_quota;
-+	__le16 pse_page_size;
-+	__le16 ple_page_size;
-+	u8 pp_padding;
-+	u8 pad[3];
-+} __packed;
-+
-+struct mt7921_phy_cap {
-+	u8 ht;
-+	u8 vht;
-+	u8 _5g;
-+	u8 max_bw;
-+	u8 nss;
-+	u8 dbdc;
-+	u8 tx_ldpc;
-+	u8 rx_ldpc;
-+	u8 tx_stbc;
-+	u8 rx_stbc;
-+	u8 hw_path;
-+	u8 he;
-+} __packed;
-+
- static void mt7921_mcu_parse_tx_resource(struct mt76_dev *dev,
- 					 struct sk_buff *skb)
- {
- 	struct mt76_sdio *sdio = &dev->sdio;
--	struct mt7921_tx_resource {
--		__le32 version;
--		__le32 pse_data_quota;
--		__le32 pse_mcu_quota;
--		__le32 ple_data_quota;
--		__le32 ple_mcu_quota;
--		__le16 pse_page_size;
--		__le16 ple_page_size;
--		u8 pp_padding;
--		u8 pad[3];
--	} __packed * tx_res;
-+	struct mt7921_tx_resource *tx_res;
+ 	rxd = (struct mt7615_mcu_rxd *)skb->data;
+ 	if (seq != rxd->seq)
+ 		return -EAGAIN;
  
- 	tx_res = (struct mt7921_tx_resource *)skb->data;
- 	sdio->sched.pse_data_quota = le32_to_cpu(tx_res->pse_data_quota);
-@@ -545,20 +562,7 @@ static void mt7921_mcu_parse_tx_resource(struct mt76_dev *dev,
- static void mt7921_mcu_parse_phy_cap(struct mt76_dev *dev,
- 				     struct sk_buff *skb)
- {
--	struct mt7921_phy_cap {
--		u8 ht;
--		u8 vht;
--		u8 _5g;
--		u8 max_bw;
--		u8 nss;
--		u8 dbdc;
--		u8 tx_ldpc;
--		u8 rx_ldpc;
--		u8 tx_stbc;
--		u8 rx_stbc;
--		u8 hw_path;
--		u8 he;
--	} __packed * cap;
-+	struct mt7921_phy_cap *cap;
+ 	if (cmd == MCU_CMD(PATCH_SEM_CONTROL)) {
++		if (skb->len < sizeof(*rxd) - 4 + sizeof(skb->data[0]))
++			return -EMSGSIZE;
+ 		skb_pull(skb, sizeof(*rxd) - 4);
+ 		ret = *skb->data;
+ 	} else if (cmd == MCU_EXT_CMD(THERMAL_CTRL)) {
++		if (skb->len < sizeof(*rxd) + sizeof(__le32))
++			return -EMSGSIZE;
+ 		skb_pull(skb, sizeof(*rxd));
+ 		ret = le32_to_cpu(*(__le32 *)skb->data);
+ 	} else if (cmd == MCU_EXT_QUERY(RF_REG_ACCESS)) {
++		if (skb->len < sizeof(*rxd) + 8 + sizeof(__le32))
++			return -EMSGSIZE;
+ 		skb_pull(skb, sizeof(*rxd));
+ 		ret = le32_to_cpu(*(__le32 *)&skb->data[8]);
+ 	} else if (cmd == MCU_UNI_CMD(DEV_INFO_UPDATE) ||
+@@ -165,12 +173,16 @@ int mt7615_mcu_parse_response(struct mt76_dev *mdev, int cmd,
+ 		   cmd == MCU_UNI_CMD(SUSPEND)) {
+ 		struct mt76_connac_mcu_uni_event *event;
  
- 	enum {
- 		WF0_24G,
-@@ -603,31 +607,56 @@ static int mt7921_mcu_get_nic_capability(struct mt792x_phy *mphy)
- 		} __packed * tlv = (struct tlv_hdr *)skb->data;
- 		int len;
++		if (skb->len < sizeof(*rxd) + sizeof(*event))
++			return -EMSGSIZE;
+ 		skb_pull(skb, sizeof(*rxd));
+ 		event = (struct mt76_connac_mcu_uni_event *)skb->data;
+ 		ret = le32_to_cpu(event->status);
+ 	} else if (cmd == MCU_CE_QUERY(REG_READ)) {
+ 		struct mt76_connac_mcu_reg_event *event;
  
--		if (skb->len < sizeof(*tlv))
--			break;
-+		if (skb->len < sizeof(*tlv)) {
-+			ret = -EINVAL;
-+			goto out;
-+		}
- 
- 		skb_pull(skb, sizeof(*tlv));
- 
- 		len = le32_to_cpu(tlv->len);
--		if (skb->len < len)
--			break;
-+		if (skb->len < len) {
-+			ret = -EINVAL;
-+			goto out;
-+		}
- 
- 		switch (le32_to_cpu(tlv->type)) {
- 		case MT_NIC_CAP_6G:
-+			if (len < sizeof(skb->data[0])) {
-+				ret = -EINVAL;
-+				goto out;
-+			}
- 			phy->cap.has_6ghz = skb->data[0];
- 			break;
- 		case MT_NIC_CAP_MAC_ADDR:
-+			if (len < ETH_ALEN) {
-+				ret = -EINVAL;
-+				goto out;
-+			}
- 			memcpy(phy->macaddr, (void *)skb->data, ETH_ALEN);
- 			break;
- 		case MT_NIC_CAP_PHY:
-+			if (len < sizeof(struct mt7921_phy_cap)) {
-+				ret = -EINVAL;
-+				goto out;
-+			}
- 			mt7921_mcu_parse_phy_cap(phy->dev, skb);
- 			break;
- 		case MT_NIC_CAP_TX_RESOURCE:
--			if (mt76_is_sdio(phy->dev))
-+			if (mt76_is_sdio(phy->dev)) {
-+				if (len < sizeof(struct mt7921_tx_resource)) {
-+					ret = -EINVAL;
-+					goto out;
-+				}
- 				mt7921_mcu_parse_tx_resource(phy->dev,
- 							     skb);
-+			}
- 			break;
- 		case MT_NIC_CAP_CHIP_CAP:
-+			if (len < sizeof(mphy->chip_cap)) {
-+				ret = -EINVAL;
-+				goto out;
-+			}
- 			memcpy(&mphy->chip_cap, (void *)skb->data, sizeof(u64));
- 			break;
- 		default:
++		if (skb->len < sizeof(*rxd) + sizeof(*event))
++			return -EMSGSIZE;
+ 		skb_pull(skb, sizeof(*rxd));
+ 		event = (struct mt76_connac_mcu_reg_event *)skb->data;
+ 		ret = (int)le32_to_cpu(event->val);
 
 base-commit: 08dbfad3f5040f5bdb6c529da20d6d4e81fefd72
 -- 
