@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24CE7C624A4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 13:48:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07029C624A4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 13:52:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xuv0Qm7I4So6We4T+cPlqW/th5JMFvoaN8vG4g+joF0=; b=eXybanJouKxFebGn5xFSTAueJq
-	rQdnKMntEFaDjh34V0xjbmHa43E5DOuNG/jzD9zg88cg7b0lHmMEFg5VmmXzcXuBZHwQjhNwvrKMf
-	DasnasSHnjta1CRFHE+NNCve+OnzJGjM6FiGXpzTogKD+B/thqjRjxkSwYXGZYRRQdwpHNm7j4fkK
-	z/Rw8neJoNcYWGzotJabL+2sjkx7UBfLBdroFj9DPImqJHl7khMogdPnFU/NgEuylLt0vQi8Epwai
-	GdUWFf86G/yaaA37khFgi3+MRzC8fcaKys7Bi7qjZZg7ZxGGxp7DzW8XNDtjsuVEbxfZ8JbaLaznc
-	UVuyAcZg==;
+	bh=kdNtiSQAnxOoxykdOmKhKtFC3XRXHyDeV1PknoxHvm0=; b=YzEj6ANN2DS+XUgXxZfx4h1o1N
+	grTdTILmk9EnHBtnf0a4FnWk0ayCIPxyLT2SLACSbwKp/j9SOsHJHc80oF4CGxCe9GGWD1CVxjteO
+	D/jffaEb8B7DV4yKK2yMOWykYbxiatqvg6lJiyCyLAUaSQYcfGVVb6Q8137e2fLe7fbF3M+h1X9+L
+	wf6ZA74A8ICBG5NMzmZVqJuV+uvVkgwHmAAMmzek9XfzqZ5Ri1k3ac1rOn/GwAZXpilJ2oGe8t2Vx
+	jqVRwbTpvaTMO38YHMhp+6WlcVRpPMxWXuYX5Ltup0K4UgnvkWoS7vfeG7lsO3/EdCldtSDarR8V5
+	MDaNoX4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x12NN-00000009X2K-35NK;
-	Mon, 31 Aug 2026 13:48:41 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x12R6-00000009Ytb-2olQ;
+	Mon, 31 Aug 2026 13:52:32 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x12NL-00000009X1b-49Nc;
-	Mon, 31 Aug 2026 13:48:40 +0000
+	id 1x12R5-00000009Yrj-0nFj;
+	Mon, 31 Aug 2026 13:52:31 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id B777B40307;
-	Mon, 31 Aug 2026 13:48:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 436DD1F00A3E;
-	Mon, 31 Aug 2026 13:48:38 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 7B904601FD;
+	Mon, 31 Aug 2026 13:52:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6942E1F00A3D;
+	Mon, 31 Aug 2026 13:52:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788184119;
-	bh=xuv0Qm7I4So6We4T+cPlqW/th5JMFvoaN8vG4g+joF0=;
+	s=k20260515; t=1788184350;
+	bh=kdNtiSQAnxOoxykdOmKhKtFC3XRXHyDeV1PknoxHvm0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=ARyuucKJnZtpzg57O2sbs8PszpUY1jtQNLNZtEHFggAbByUxHPuMlp3tNyv7qYJXS
-	 Dj9W4H/IXS4bGkHtabagulko+YnpJHo0/9llFYZ+CxzgSk8Zyj8PEKONbLlBmGPdqr
-	 gg/WFISgHx+NZ1waCb3b7YOlGFHPdQB10yaeZpMAJtyvcka+0rMDHi5BKZPxYk9yXe
-	 xJ0+2ZSxAEhZGkl9fKGbkARvJuU+vIdu6UNT8GXh372xsav5j1yz2HecwH13rTCKTL
-	 lpcsGlZk21iUFjRauXN+ICzpqrShuU9GvPYzQiWdF3ZKi5+O4DdBLzZED3+8lkqUxA
-	 C2EFLAIwFktBg==
+	b=TORyXIPY2BQKwNT3y6cfYQV5nIvFIYJWKZGhvt/yWSe5cGoZ38x1fSnfaHSIHo7t3
+	 J+qMrfxJuyBT/UhbDxH96pJg+AfbyzO+CkPbbOZNvKP5maGPbMHQZx7099wSg49hqv
+	 RCibPzMdaYpMGAcsctFiSYMqnW1TLy/8JkDaJmmWfPkhY0kD52t2Vzx24F117QY8c9
+	 dcMh6fIcSdowfhOqCG3G2RzemDzJ0gztD0oa+bQqAaECUlNUYlD1WMRk8FpdM3mLFK
+	 qebYL+PskEXeE/orisT7UvFL5tx0IsW03J6vw3L4rdlLTawIzO886446rNgKRpt0A7
+	 q2kCTkjGcbiBw==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Rong Zhang <i@rong.moe>,
-	Luiz Augusto von Dentz <luiz.von.dentz@intel.com>,
+Cc: ElXreno <elxreno@gmail.com>,
+	Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
-	marcel@holtmann.org,
-	luiz.dentz@gmail.com,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	linux-bluetooth@vger.kernel.org,
+	linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.18-6.12] Bluetooth: btmtk: Disable remote wakeup for MT7922/MT7925
-Date: Mon, 31 Aug 2026 09:28:51 -0400
-Message-ID: <20260831133314.4125787-503-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.18] wifi: mt76: route TDLS-peer frames as 3-addr non-DS in HW encap
+Date: Mon, 31 Aug 2026 09:31:09 -0400
+Message-ID: <20260831133314.4125787-641-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260831133314.4125787-1-sashal@kernel.org>
 References: <20260831133314.4125787-1-sashal@kernel.org>
@@ -81,89 +81,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rong Zhang <i@rong.moe>
+From: ElXreno <elxreno@gmail.com>
 
-[ Upstream commit e31d761628ad7e96490fc78105ed0a064ec1c1d9 ]
+[ Upstream commit 5b7154f934c4c1b86e0fbfd95ad570a25bd08662 ]
 
-These NICs are often reported to lose their Bluetooth interfaces, i.e,
-their USB interfaces suddenly become completely unresponsive, causing
-the USB core to reset them, only to find that they are no longer
-accessible. A power cycle is required to make the Bluetooth interfaces
-recover.
+With HW TX encap offload enabled, the mt76 firmware builds the 802.11
+header for the 802.3 frame using the per-WCID context. For a STATION
+vif the HDR_TRANS TLV currently sets ToDS=1, which makes the firmware
+default to the BSSID as A1 and emit STA->AP-formatted frames
+regardless of which peer the WCID points to.
 
-After some investigations, I found that their USB autosuspend remote
-wakeup capabilities are so broken that they are precisely the culprit
-behind the issue:
+For TDLS-paired peers this is wrong. Data frames go on air addressed
+to the AP, the AP MAC-ACKs and silently drops them per IEEE 802.11z
+(an AP must not forward to a TDLS-paired peer). Management and
+control frames bypass the HW encap path and still reach the peer;
+only user data fails.
 
-  [27452.608056] hub 3-0:1.0: state 7 ports 5 chg 0000 evt 0020
-  [27452.702018] usb 3-5: usb wakeup-resume
-  [27452.716038] usb 3-5: Waited 0ms for CONNECT
-  [27452.716642] usb 3-5: finish resume
-  /* usbmon showed that the device was completely unresponsive to any
-     URBs after the remote wakeup */
-  [27457.836030] usb 3-5: retry with reset-resume
-  [27457.956046] usb 3-5: reset high-speed USB device number 4 using xhci_hcd
-  [27463.332047] usb 3-5: device descriptor read/64, error -110
-  [27478.948117] usb 3-5: device descriptor read/64, error -110
-  [27479.172430] usb 3-5: reset high-speed USB device number 4 using xhci_hcd
-  [27484.332035] usb 3-5: device descriptor read/64, error -110
-  [27499.940039] usb 3-5: device descriptor read/64, error -110
-  [27500.164060] usb 3-5: reset high-speed USB device number 4 using xhci_hcd
-  [27505.196142] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
-  [27510.576045] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
-  [27510.784038] usb 3-5: device not accepting address 4, error -62
-  [27510.912215] usb 3-5: reset high-speed USB device number 4 using xhci_hcd
-  [27515.948307] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
-  [27521.324380] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
-  [27521.525107] usb 3-5: device not accepting address 4, error -62
-  [27521.525928] usb usb3-port5: logical disconnect
-  [27521.525996] usb 3-5: gone after usb resume? status -19
-  [27521.526230] usb 3-5: can't resume, status -19
-  [27521.526434] usb usb3-port5: logical disconnect
-  [27521.526469] usb usb3-port5: resume, status -19
-  [27521.526493] usb usb3-port5: status 0503, change 0004, 480 Mb/s
-  [27521.526528] usb 3-5: USB disconnect, device number 4
-  [27521.526736] usb 3-5: unregistering device
-  [27521.804029] usb 3-5: new high-speed USB device number 5 using xhci_hcd
-  [27527.076067] usb 3-5: device descriptor read/64, error -110
-  [27542.692027] usb 3-5: device descriptor read/64, error -110
-  [27542.916047] usb 3-5: new high-speed USB device number 6 using xhci_hcd
-  [27548.068043] usb 3-5: device descriptor read/64, error -110
-  [27563.684073] usb 3-5: device descriptor read/64, error -110
-  [27563.792133] usb usb3-port5: attempt power cycle
-  [27563.924381] hub 3-0:1.0: port_wait_reset: err = -11
-  [27563.925213] usb usb3-port5: not enabled, trying reset again...
-  [27564.184398] usb 3-5: new high-speed USB device number 7 using xhci_hcd
-  [27569.196322] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
-  [27574.572040] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
-  [27574.776053] usb 3-5: device not accepting address 7, error -62
-  [27574.900165] usb 3-5: new high-speed USB device number 8 using xhci_hcd
-  [27579.948039] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
-  [27585.324331] xhci_hcd 0000:67:00.0: Timeout while waiting for setup device command
-  [27585.528040] usb 3-5: device not accepting address 8, error -62
-  [27585.528389] usb usb3-port5: unable to enumerate USB device
-  [27585.528424] hub 3-0:1.0: state 7 ports 5 chg 0000 evt 0020
+Add MT_WCID_FLAG_TDLS_PEER, set it in mt7915, mt7921, mt7925 and
+mt7996 sta-add paths when sta->tdls is true, and override the
+HDR_TRANS TLV in mt76_connac_mcu_wtbl_hdr_trans_tlv() (Connac2 -
+mt7915 / mt7921 / mt7922), mt7925_mcu_sta_hdr_trans_tlv() (mt7925)
+and mt7996_mcu_sta_hdr_trans_tlv() (mt7996) to set ToDS=0, FromDS=0
+when the flag is set. The 3-addr non-DS form matches what 802.11z
+uses for direct links; the firmware then constructs the frame with
+A1=peer rather than A1=BSSID. HW encap offload remains enabled for
+AP and any non-TDLS traffic.
 
-To reproduce the issue, these conditions must be met:
-- a noisy radio environment (cafe or office) to cause frequent remote
-  wakeup events
-- no Bluetooth device is connected, so autosuspend is not prohibited
-- the Bluetooth interface is opened, so remote wakeup is enabled when
-  the device runs into autosuspend
+Verified on mt7925e + Samsung S938B over a 5 GHz HE 80 MHz channel
+with iperf3 -t 30 to the TDLS peer:
 
-Then I can reproduce the issue within sereval hours each time.
+  before fix:  over the TDLS direct link, 7 TDLS Setup action
+               frames and 3 RTS frames reach the peer; 0 QoS
+               Data frames make it through (mgmt/control paths
+               bypass HW encap, the data path does not). iperf3
+               stalls.
+  after fix:   2.90 GBytes transferred at 830 Mbit/s sustained,
+               0 TCP retransmits.
 
-Increasing TRSMRCY or setting USB_QUIRK_RESET doesn't help at all.
+mt7915, mt7921, mt7922 and mt7996 are not regression-tested in this
+change for lack of hardware. Their HDR_TRANS handling mirrors the
+verified mt7925 change; the firmware behavior is shared across these
+chips.
 
-Since the remote wakeup capability is super broken, just disable it to
-get rid of the troubles. The device can still be autosuspended when
-the bluetooth interface is closed, which won't break the device as
-remote wakeup is unneeded in this case.
-
-Link: https://bbs.archlinux.org/viewtopic.php?id=308169
-Link: https://bbs.bee-link.com/d/7694-gtr9-pro-ai-max-395-usb-issues
-Signed-off-by: Rong Zhang <i@rong.moe>
-Signed-off-by: Luiz Augusto von Dentz <luiz.von.dentz@intel.com>
+Signed-off-by: ElXreno <elxreno@gmail.com>
+Assisted-by: Claude:claude-opus-4-7 bpftrace tcpdump
+Link: https://patch.msgid.link/20260506-mt7925-tdls-fixes-v2-1-46aa826ba8bb@gmail.com
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
@@ -173,46 +136,46 @@ LLM Generated explanations, may be completely bogus:
 
 **Step 1.1 — Subject line**
 
-Record: **[Bluetooth: btmtk]** **[Disable]** — disable broken USB remote
-wakeup for MT7922/MT7925 MediaTek Bluetooth controllers.
+Record: `[wifi: mt76]` `[route]` — Route TDLS-peer frames as 3-address
+non-distribution-system (non-DS) frames in hardware TX encapsulation
+offload.
 
 **Step 1.2 — Tags**
 
 Record:
-- **Link:** https://bbs.archlinux.org/viewtopic.php?id=308169
-- **Link:** https://bbs.bee-link.com/d/7694-gtr9-pro-ai-max-395-usb-
-  issues
-- **Signed-off-by:** Rong Zhang \<i@rong.moe\> (author)
-- **Signed-off-by:** Luiz Augusto von Dentz \<luiz.von.dentz@intel.com\>
-  (Bluetooth maintainer)
-- No Fixes:, Reported-by:, Tested-by:, Reviewed-by:, Acked-by:, or Cc:
-  stable@vger.kernel.org
-- Notable: maintainer Signed-off-by; two public user forum links
-  documenting widespread hardware issues
+- **Signed-off-by:** ElXreno `<elxreno@gmail.com>` (author)
+- **Assisted-by:** Claude:claude-opus-4-7 bpftrace tcpdump
+- **Link:** https://patch.msgid.link/20260506-mt7925-tdls-
+  fixes-v2-1-46aa826ba8bb@gmail.com
+- **Signed-off-by:** Felix Fietkau `<nbd@nbd.name>` (mt76 maintainer)
+- No `Fixes:` tag
+- No `Cc: stable@vger.kernel.org` on the committed version (author
+  dropped it in v2; see Phase 4)
+- No `Reported-by:`, `Tested-by:`, `Reviewed-by:`, or `Acked-by:`
 
 **Step 1.3 — Body analysis**
 
 Record:
-- **Bug:** MT7922/MT7925 USB Bluetooth interfaces become completely
-  unresponsive after a broken USB remote-wakeup/autosuspend resume
-  cycle.
-- **Symptom:** USB core logs `usb wakeup-resume`, device stops answering
-  URBs, repeated reset-resume failures (`error -110`, `error -62`),
-  logical disconnect, enumeration failure; only a full power cycle
-  recovers Bluetooth.
-- **Root cause (author):** USB autosuspend remote-wakeup on these chips
-  is fundamentally broken.
-- **Trigger:** Noisy RF environment → frequent remote wakeup; no BT
-  connection (autosuspend allowed); HCI interface open
-  (`needs_remote_wakeup` enabled).
-- **Reproducibility:** Author reproduces within hours under those
-  conditions.
+- **Bug:** With HW TX encap offload, the HDR_TRANS TLV sets `ToDS=1` for
+  all STATION vif WCIDs. Firmware therefore builds frames with A1=BSSID
+  even for TDLS-peer WCIDs.
+- **Symptom:** TDLS data frames are sent to the AP, MAC-ACKed, and
+  silently dropped per IEEE 802.11z. Management/control frames still
+  work (they bypass HW encap). iperf3 stalls; 0 QoS Data frames reach
+  the peer.
+- **Root cause:** Incorrect 802.11 header format (STA→AP / ToDS) used
+  for TDLS direct-link peers that require 3-addr non-DS (ToDS=0,
+  FromDS=0, A1=peer).
+- **Fix:** Add `MT_WCID_FLAG_TDLS_PEER`, set on `sta->tdls` in sta-add
+  paths, override HDR_TRANS TLV to ToDS=0/FromDS=0 for flagged peers.
+- **Verification:** mt7925e + Samsung S938B, iperf3: before = 0 data
+  frames; after = 2.90 GBytes at 830 Mbit/s, 0 TCP retransmits.
 
 **Step 1.4 — Hidden bug fix?**
 
-Record: **Yes.** Despite “Disable” wording, this is a hardware quirk
-workaround for a real, user-visible failure — same class as existing
-Bluetooth USB wakeup workarounds.
+Record: **Yes** — despite the subject using "route" rather than "fix",
+this is a clear functional bug fix. TDLS user data is completely non-
+functional under HW encap offload.
 
 ---
 
@@ -221,39 +184,42 @@ Bluetooth USB wakeup workarounds.
 **Step 2.1 — Inventory**
 
 Record:
-- **Files:** `drivers/bluetooth/btmtk.c` (+10 lines, 0 removed)
-- **Function:** `btmtk_usb_setup()`
-- **Scope:** Single-file, surgical change in a `switch (dev_id)` case
-  block
+- **8 files, +28 lines, 0 deletions**
+- `mt76.h`: +1 enum value `MT_WCID_FLAG_TDLS_PEER`
+- `mt76_connac_mcu.c`: +5 lines in
+  `mt76_connac_mcu_wtbl_hdr_trans_tlv()`
+- `mt7915/main.c`, `mt7921/main.c`, `mt7925/main.c`, `mt7996/main.c`: +3
+  lines each in sta-add paths (`set_bit` when `sta->tdls`)
+- `mt7925/mcu.c`, `mt7996/mcu.c`: +5 lines each in per-chip HDR_TRANS
+  TLV helpers
+- **Scope:** Multi-file but surgical; same pattern repeated per chip
+  generation.
 
-**Step 2.2 — Code flow**
+**Step 2.2 — Code flow per hunk**
 
 Record:
-- **Before:** `case 0x7922:` / `case 0x7925:` fall through directly into
-  shared 79xx firmware setup with default USB wakeup capability.
-- **After:** For 7922/7925 only, call
-  `device_set_wakeup_capable(&btmtk_data->udev->dev, false)`, then
-  `fallthrough` into the shared 7961/79xx path.
-- **Path:** Runs during `btmtk_usb_setup()` → `btusb_mtk_setup()` →
-  `hdev->setup` on each HCI open (`HCI_QUIRK_NON_PERSISTENT_SETUP`).
+- **Before:** STATION vif always gets `to_ds=true` in HDR_TRANS TLV →
+  firmware addresses all frames to BSSID.
+- **After:** TDLS-peer WCIDs get `to_ds=false, from_ds=false` → firmware
+  builds 3-addr non-DS frames with A1=peer MAC.
+- **Execution path:** STA add (sets flag) → MCU WTBL/STA_REC update
+  (programs firmware) → every subsequent HW-encapsulated TX data frame
+  to TDLS peer.
 
 **Step 2.3 — Bug mechanism**
 
-Record: **Hardware quirk / PM correctness fix.** USB core enables remote
-wakeup when `intf->needs_remote_wakeup` is set (in `btusb_open()`) and
-`device_can_wakeup()` is true. Broken remote wakeup on MT7922/7925
-leaves the device dead on resume. Disabling wakeup capability prevents
-the broken path while preserving autosuspend when the interface is
-closed.
+Record: **Category (g) — Logic/correctness fix.** Wrong 802.11
+addressing mode programmed into firmware for TDLS-peer WCIDs. Not
+UAF/leak/race; a firmware-facing configuration error causing silent
+packet loss.
 
 **Step 2.4 — Fix quality**
 
-Record:
-- **Quality:** High — mirrors the existing CSR/Barrot workaround in
-  `btusb.c` (`device_set_wakeup_capable(..., false)` at line 2584).
-- **Regression risk:** Low — only affects MT7922/MT7925; trade-off is
-  losing remote wakeup from autosuspend while HCI is open, which the
-  author documents as non-functional on this hardware anyway.
+Record: **Obviously correct** — matches IEEE 802.11z TDLS direct-link
+frame format. Minimal, mirrors existing 4-addr override pattern. **Low
+regression risk** — only affects WCIDs with `sta->tdls` set; AP and
+normal STA traffic unchanged. TDLS override runs after 4-addr check, so
+no conflict.
 
 ---
 
@@ -261,38 +227,42 @@ Record:
 
 **Step 3.1 — Blame**
 
-Record:
-- `case 0x7922:` / `case 0x7925:` introduced in `5c5e8c52e3caf`
-  (2024-07-15) when setup moved to `btmtk.c`.
-- `case 0x7961:` added in `a7208610761ae` (2025-01-10).
-- MT7922 USB support dates to `09a19d6dd974c` (2021); MT7925 to
-  `4c92ae75ea7d4` (2023).
-- Bug has been present since wakeup-capable autosuspend was possible on
-  these chips.
+Record: Buggy `to_ds=true` for STATION vif introduced in `868fe07ee612f`
+("mt76: connac: add missing configuration in
+mt76_connac_mcu_wtbl_hdr_trans_tlv", May 2021). Present in this tree
+since connac2 era. `MT_WCID_FLAG_HDR_TRANS` added Dec 2020
+(`90e3abf07c80a`).
 
 **Step 3.2 — Fixes: tag**
 
-Record: N/A — no Fixes: tag.
+Record: N/A — no `Fixes:` tag in committed version. v1 referenced
+`5c14a5f944b9`; author dropped it in v2 because the approach changed
+entirely.
 
 **Step 3.3 — Related file history**
 
 Record:
-- Active `btmtk.c` maintenance (URB leaks, WMT validation, shutdown
-  fixes).
-- No prior fix for this remote-wakeup issue in this tree.
-- Mainline commit: `e31d761628ad7e96490fc78105ed0a064ec1c1d9`
-  (2026-06-11) — **not** an ancestor of local HEAD.
+- TDLS enabled in mt76 since `dd89a0133c0ce` (May 2020): "mt76: enable
+  TDLS support"
+- Sibling fix from same series already in this tree: `a7cdc384c9c57`
+  ("wifi: mt76: mt7925: don't disable AP BSS when removing TDLS peer") —
+  backported by Greg Kroah-Hartman to 6.18.44
+- Upstream commit: `5b7154f934c4c` (Jun 9, 2026) — **NOT yet in this
+  tree**
+- Part of v2 series "wifi: mt76: fix TDLS direct-link on MediaTek
+  MT7925" (2 patches)
 
 **Step 3.4 — Author context**
 
-Record: Rong Zhang is a regular kernel contributor; patch merged with
-Bluetooth maintainer Luiz von Dentz SOB.
+Record: ElXreno authored both TDLS fixes in the series. Felix Fietkau
+(mt76 maintainer) committed and signed off. MediaTek developers (Sean
+Wang, Shayne Chen, etc.) were CC'd on submission.
 
 **Step 3.5 — Dependencies**
 
-Record: **Standalone.** No series dependencies. Mainline references
-`0x7902`/`0x6639` cases not present in this 6.18.44 tree; adapted
-version applies cleanly (verified).
+Record: **Standalone.** No prerequisite commits required. All target
+functions, `sta->tdls` field, and affected drivers exist in 6.18.44.
+Cherry-pick applies cleanly with zero conflicts.
 
 ---
 
@@ -301,32 +271,45 @@ version applies cleanly (verified).
 **Step 4.1 — Original discussion**
 
 Record:
-- **b4 dig:** https://patch.msgid.link/20260603-btmtk-remote-
-  wakeup-v1-1-5c1006442f36@rong.moe
-- **Revisions:** v1 only (no v2/v3).
-- Lore direct fetch blocked by bot protection; thread metadata obtained
-  via b4.
+- `b4 dig -c 5b7154f934c4c` →
+  https://patch.msgid.link/20260506-mt7925-tdls-
+  fixes-v2-1-46aa826ba8bb@gmail.com
+- Series: v1 (May 3) disabled all HW encap for TDLS; v2 (May 6) per-peer
+  flag approach after Sean Wang's v1 NACK
+- Cover letter CC'd `stable@vger.kernel.org`; patch 1 explicitly dropped
+  `Cc: stable` in v2 ("not realistic for a clean cherry-pick into older
+  stables")
+- Patch 2 retained `Cc: stable@vger.kernel.org` and was backported to
+  this tree
 
 **Step 4.2 — Reviewers**
 
-Record: CC'd Marcel Holtmann, Luiz von Dentz, Matthias Brugger, linux-
-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org.
+Record: `b4 dig -w` — To: Felix Fietkau, Lorenzo Bianconi, Ryder Lee,
+Shayne Chen, Sean Wang, Matthias Brugger, and others. Appropriate
+maintainers and mailing lists included. No explicit `Reviewed-
+by`/`Acked-by` in committed version; maintainer merge + sign-off is the
+quality gate.
 
-**Step 4.3 — Bug reports**
+**Step 4.3 — Bug report**
 
-Record:
-- Arch Linux forum: MT7922 Bluetooth USB failures.
-- Bee-link forum: GTR9 Pro USB/BT issues.
-- Severity: device permanently unusable until power cycle — high
-  functional impact.
+Record: No syzbot/bugzilla. Hardware reproduction documented in commit
+message and cover letter (Samsung phone auto-TDLS, bpftrace/tcpdump
+evidence).
 
-**Step 4.4 — Related patches**
+**Step 4.4 — Series context**
 
-Record: Standalone single patch; not part of a multi-patch series.
+Record: 2-patch series. Patch 1 (this commit) = TDLS data path broken.
+Patch 2 (`a7cdc384c9c57`) = TDLS teardown collapses AP RX rate. **Patch
+2 already backported to 6.18.44 without patch 1** — users get teardown
+fix but TDLS data still fails on HW encap.
 
-**Step 4.5 — Stable list**
+**Step 4.5 — Stable list history**
 
-Record: Not searched (lore blocked); no stable discussion found via b4.
+Record: Cover letter and patch 2 explicitly nominated for stable. Patch
+1's stable nomination was deliberately removed in v2, but stable
+maintainers already accepted the series (patch 2 landed). For 6.18.44
+specifically, cherry-pick is clean (unlike "older stables" the author
+was concerned about).
 
 ---
 
@@ -334,74 +317,82 @@ Record: Not searched (lore blocked); no stable discussion found via b4.
 
 **Step 5.1 — Key functions**
 
-Record: `btmtk_usb_setup()`, called from `btusb_mtk_setup()` in
-`btusb.c`.
+Record: `mt76_connac_mcu_wtbl_hdr_trans_tlv()`,
+`mt7925_mcu_sta_hdr_trans_tlv()`, `mt7996_mcu_sta_hdr_trans_tlv()`,
+`mt7915_mac_sta_add()`, `mt7921_mac_sta_add()`,
+`mt7925_mac_link_sta_add()`, `mt7996_mac_sta_init_link()`.
 
 **Step 5.2 — Callers**
 
 Record:
-- `btusb_mtk_setup()` → `btmtk_usb_setup()` during HCI setup on every
-  open.
-- `btusb_open()` sets `data->intf->needs_remote_wakeup = 1` (line 1948).
-- USB PM in `driver.c` checks `device_can_wakeup()` before enabling
-  `do_remote_wakeup` (line 1970).
+- HDR_TRANS TLV helpers called from MCU STA_REC/WTBL update paths during
+  sta-add and `sta_set_decap_offload()` (when mac80211 toggles HW encap
+  offload via `MT_WCID_FLAG_HDR_TRANS`)
+- Sta-add functions called from mac80211 `sta_state` transitions when
+  TDLS peers are added
+- All affected drivers (mt7915, mt7921, mt7925, mt7996) register
+  `sta_set_decap_offload` callbacks
 
 **Step 5.3 — Callees**
 
-Record: `device_set_wakeup_capable()` — PM helper, already used in
-`btusb.c` for similar purpose.
+Record: `test_bit()`, `set_bit()` on `wcid->flags`; MCU TLV construction
+sent to firmware via `mt76_mcu_skb_send_msg()` /
+`mt76_connac_mcu_sta_update_hdr_trans()`.
 
 **Step 5.4 — Reachability**
 
-Record: **Userspace-reachable** — opening Bluetooth (`bluetoothd`,
-`hciconfig up`, etc.) triggers setup; with
-`CONFIG_BT_HCIBTUSB_AUTOSUSPEND` (or runtime PM), autosuspend + remote
-wakeup is a normal laptop code path.
+Record: **Userspace-reachable** — TDLS setup via standard
+nl80211/cfg80211 (e.g., Samsung phones auto-initiate TDLS on shared
+BSS). Once TDLS link is up and HW encap is enabled, every data frame to
+the TDLS peer hits the buggy path. Trigger requires TDLS-capable peer +
+HW encap offload (default on mt7921/mt7925 with
+`sta_set_decap_offload`).
 
 **Step 5.5 — Similar patterns**
 
-Record: CSR/Barrot clone workaround in `btusb.c` uses identical
-`device_set_wakeup_capable(false)` approach for broken remote wakeup.
+Record: Existing `MT_WCID_FLAG_4ADDR` override in the same functions
+sets `to_ds=true, from_ds=true`. TDLS fix follows identical pattern with
+opposite values. Consistent with driver conventions.
 
 ---
 
-## Phase 6: Cross-Reference Against Local Tree
+## Phase 6: Cross-Referencing Against Local Tree
 
-**Step 6.1 — Buggy code present?**
+**Step 6.1 — Buggy code in tree?**
 
-Record: **YES.** Local tree is **v6.18.44** (`git describe HEAD` →
-`v6.18.44-1-g2736c32da98b9`, `make kernelversion` → `6.18.44`).
-`drivers/bluetooth/btmtk.c` lines 1335–1337 have `case 0x7922:` / `case
-0x7925:` without wakeup disable. Fix commit `e31d761628ad` is **not** in
-this tree.
+Record: **YES.** Local tree is **Linux 6.18.44** (`git describe HEAD` →
+`v6.18.44`). Buggy code at `mt76_connac_mcu.c:480-492`,
+`mt7925/mcu.c:1082-1104`, `mt7996/mcu.c:1930-1948`. No
+`MT_WCID_FLAG_TDLS_PEER` anywhere. `sta->tdls` field exists in
+`mac80211.h`. All four affected drivers present (mt7925 since
+`c948b5da6bbec`, confirmed ancestor of HEAD).
 
 **Step 6.2 — Backport complications**
 
-Record:
-- Mainline patch does **not** apply verbatim (`git apply --check` fails
-  — missing `div class="content"` cases).
-- **Adapted patch applies cleanly** (insert wakeup disable +
-  `fallthrough` before `case 0x7961:`).
-- `fallthrough` already used in this file (lines 417, 966).
+Record: **Clean apply.** `git cherry-pick --no-commit 5b7154f934c4c`
+succeeds with auto-merge on all 8 files, +28 lines, exit 0.
 
 **Step 6.3 — Related fixes already present?**
 
-Record: **No** equivalent fix in `btmtk.c`. `btusb.c` CSR workaround is
-unrelated hardware.
+Record: Sibling fix `a7cdc384c9c57` (patch 2/2) already backported. This
+fix (patch 1/2) is **missing**. No alternate fix for the HDR_TRANS/TDLS
+data path issue.
 
 ---
 
 ## Phase 7: Subsystem and Maintainer Context
 
-**Step 7.1 — Subsystem**
+**Step 7.1 — Subsystem criticality**
 
-Record: **drivers/bluetooth** (btmtk USB) — **IMPORTANT** (common
-laptop/mini-PC hardware, not core kernel but widely deployed).
+Record: **IMPORTANT** — `drivers/net/wireless/mediatek/mt76/` WiFi
+drivers. mt7921 is one of the most common laptop WiFi chips; mt7925 is
+newer WiFi 7. Affects connectivity for TDLS users, not core kernel
+paths.
 
-**Step 7.2 — Activity**
+**Step 7.2 — Subsystem activity**
 
-Record: `btmtk.c` actively maintained in 6.18.y with multiple recent bug
-fixes.
+Record: Actively maintained — recent commits in mt7925/mt7996 in this
+tree (NULL deref fixes, MLO work, etc.).
 
 ---
 
@@ -409,149 +400,271 @@ fixes.
 
 **Step 8.1 — Who is affected**
 
-Record: Users with USB MT7922/MT7925 Bluetooth (`CONFIG_BT_HCIBTUSB` +
-`CONFIG_BT_HCIBTUSB_MTK`) — very common on AMD Ryzen laptops and recent
-mini PCs.
+Record: **Driver-specific, config-specific** — users of
+mt7915/mt7921/mt7922/mt7925/mt7996 with TDLS direct links and HW TX
+encap offload enabled. Not universal, but mt7921/mt7925 have large
+installed base.
 
 **Step 8.2 — Trigger conditions**
 
-Record: Autosuspend + open HCI + noisy RF → remote wakeup events.
-Moderately common on laptops in offices/cafés with Bluetooth scanning
-enabled.
+Record: TDLS peer established (`sta->tdls=true`) + HW encap offload
+active (`MT_WCID_FLAG_HDR_TRANS` set via `sta_set_decap_offload`).
+Samsung phones and other auto-TDLS peers are documented triggers.
+Unprivileged users on same BSS can initiate TDLS with a vulnerable
+station.
 
-**Step 8.3 — Failure severity**
+**Step 8.3 — Failure mode severity**
 
-Record: USB device permanently dead until power cycle; Bluetooth lost
-entirely. **HIGH** functional severity (not a kernel oops, but
-effectively bricks BT until reboot).
+Record: **Complete TDLS data path failure** — 0 user data frames
+delivered; iperf/TCP stalls. Management frames work, so TDLS setup
+appears successful (misleading). Not kernel crash/oops/corruption.
+Severity: **HIGH functional** (not CRITICAL security/crash).
 
-**Step 8.4 — Risk/benefit**
+**Step 8.4 — Risk-benefit**
 
 Record:
-- **Benefit:** High — prevents common, hard-to-recover hardware failure
-  on widely deployed chips.
-- **Risk:** Very low — 10-line quirk, chip-specific, established pattern
-  in same driver stack.
-- **Ratio:** Strongly favors backport.
+- **Benefit: HIGH** for TDLS users — restores entire direct-link data
+  path; verified 830 Mbit/s throughput post-fix
+- **Risk: VERY LOW** — 28 lines, scoped to TDLS-peer WCIDs only,
+  maintainer-reviewed, clean cherry-pick
+- **Ratio: Strongly favorable**
 
 ---
 
 ## Phase 9: Final Synthesis
 
-**Evidence FOR:**
-- Real hardware bug with detailed dmesg and author reproduction
-- Multiple public user reports (Arch Linux, Bee-link)
-- Bluetooth maintainer Signed-off-by
-- Small, surgical, obviously correct quirk workaround
-- Precedent in same subsystem (`btusb.c` CSR workaround)
-- Buggy code present since MT7922/7925 support in this tree
-- Adapted patch applies cleanly to 6.18.44
+**Step 9.1 — Evidence summary**
 
-**Evidence AGAINST:**
-- Mainline patch needs minor context adjustment (no `0x7902`/`0x6639` in
-  this tree) — trivial
-- Loses remote wakeup from autosuspend while HCI open — acceptable since
-  hardware wakeup is broken
-- Trigger requires specific conditions (noisy RF + autosuspend) — but
-  consequences are severe
+**FOR backport:**
+- Real, reproducible bug with hardware verification
+- Complete TDLS data failure (not cosmetic)
+- Small, surgical, obviously correct fix
+- Applies cleanly to 6.18.44
+- Maintainer (Felix Fietkau) signed off and merged
+- Sibling patch from same series already backported to this exact tree
+- Buggy code present since 2021; all prerequisites in tree
+- Follows existing 4-addr override pattern
 
-**Stable rules checklist:**
-1. Obviously correct and tested? **PASS** — maintainer SOB; author
-   reproduced; established pattern
-2. Fixes real bug? **PASS** — documented user-visible device failure
-3. Important issue? **PASS** — device bricking until power cycle
-4. Small and contained? **PASS** — +10 lines, one file
-5. No new features/APIs? **PASS** — hardware quirk workaround
-6. Can apply to local tree? **PASS** — with trivial context adjustment
+**AGAINST backport:**
+- Not crash/security/data-corruption
+- TDLS is a niche feature vs. normal STA→AP traffic
+- Author dropped `Cc: stable` from patch 1 (concern about older trees,
+  not 6.18.y)
+- mt7915/mt7921/mt7996 not hardware-regression-tested (only mt7925
+  verified)
 
-**Exception category:** Hardware quirk/workaround (#2 in stable
-exceptions).
+**Unresolved:** No independent `Tested-by` beyond author.
+mt7915/7921/7996 correctness inferred from shared firmware behavior.
+
+**Step 9.2 — Stable rules checklist**
+
+| Criterion | Result |
+|-----------|--------|
+| 1. Obviously correct and tested? | **PASS** — 802.11z-correct;
+hardware-tested on mt7925e |
+| 2. Fixes real bug affecting users? | **PASS** — TDLS data completely
+non-functional |
+| 3. Important issue? | **PASS** — complete feature breakage on common
+hardware (functional HIGH, not crash-level CRITICAL) |
+| 4. Small and contained? | **PASS** — 28 lines, 8 files, no refactoring
+|
+| 5. No new features/APIs? | **PASS** — internal driver flag only |
+| 6. Can apply to local tree? | **PASS** — clean cherry-pick verified |
+
+**Step 9.3 — Exception categories**
+
+Record: N/A — not device ID, quirk, DT, build fix, or docs fix. Standard
+driver bug fix.
+
+**Step 9.4 — Decision rationale**
+
+This fix should be backported to **Linux 6.18.44**. The buggy HDR_TRANS
+configuration exists in this tree, the upstream fix cherry-picks
+cleanly, and the stable tree already carries patch 2/2 from the same
+TDLS series without patch 1/2 — leaving TDLS data broken even after the
+teardown fix. For users with MediaTek WiFi and TDLS peers (including
+auto-TDLS from phones), HW encap offload produces frames addressed to
+the AP instead of the peer; the result is a silent, total loss of TDLS
+data throughput. The fix is minimal, maintainer-approved, and low-risk.
 
 ---
 
 ## Verification
 
-- [Phase 1] Parsed subject, tags, body from provided commit message and
-  kernel.org patch
-- [Phase 2] Diff analysis: +10 lines in `btmtk_usb_setup()`, adds
-  `device_set_wakeup_capable(false)` + `fallthrough`
-- [Phase 3] `git describe HEAD`: v6.18.44-1-g2736c32da98b9; `make
-  kernelversion`: 6.18.44
-- [Phase 3] `git blame -L 1335,1340 drivers/bluetooth/btmtk.c`:
-  7922/7925 from 5c5e8c52e3caf (2024-07-15)
-- [Phase 3] `git merge-base --is-ancestor e31d761628ad HEAD`: exit 129 —
-  fix NOT in tree
-- [Phase 3] `git log --oneline -20 -- drivers/bluetooth/btmtk.c`: active
-  maintenance, no duplicate fix
-- [Phase 4] `b4 dig -c e31d761628ad`: lore URL found; v1 only
-- [Phase 4] `b4 dig -w`: Marcel Holtmann, Luiz von Dentz CC'd
-- [Phase 5] `grep btmtk_usb_setup`: called from `btusb_mtk_setup()` in
-  `btusb.c:2882`
-- [Phase 5] Read `btusb.c:1948`: `needs_remote_wakeup = 1` on open
-- [Phase 5] Read `driver.c:1970`: `device_can_wakeup()` gates remote
-  wakeup
-- [Phase 5] `btusb.c:2584`: existing `device_set_wakeup_capable(false)`
-  precedent
-- [Phase 6] `grep device_set_wakeup_capable drivers/bluetooth/btmtk.c`:
-  not present — bug exists
-- [Phase 6] `git apply --check` mainline patch: FAIL (context mismatch)
-- [Phase 6] `git apply --check` adapted patch for 6.18.44: PASS
-- [Phase 6] `grep 0x7902|0x6639 drivers/bluetooth/btmtk.c`: no matches
-  in this tree
-- [Phase 8] MT7922 support since 2021 (`09a19d6dd974c`); MT7925 since
-  2023 (`4c92ae75ea7d4`)
+- [Phase 1] Parsed subject, tags, body; no Fixes/Cc:stable/Reported-by
+  on committed version
+- [Phase 1] Confirmed hidden bug fix — functional TDLS data path failure
+- [Phase 2] Diff inventory: 8 files, +28 lines; logic/correctness bug in
+  HDR_TRANS TLV
+- [Phase 3] `git describe HEAD` → v6.18.44
+- [Phase 3] `git blame` → buggy to_ds logic from 868fe07ee612f (May
+  2021)
+- [Phase 3] `git log --grep=TDLS` → TDLS since dd89a0133c0ce (2020);
+  sibling a7cdc384c9c57 in tree
+- [Phase 3] Upstream commit 5b7154f934c4c confirmed NOT in HEAD
+- [Phase 3] Cherry-pick test → clean apply, exit 0, +28 lines
+- [Phase 4] `b4 dig -c 5b7154f934c4c` → lore URL found
+- [Phase 4] `b4 dig -a` → v1→v2 series; v2 per-peer flag after Sean Wang
+  NACK on v1
+- [Phase 4] `b4 dig -w` → Felix Fietkau, Lorenzo Bianconi, MediaTek devs
+  CC'd
+- [Phase 4] Mbox cover letter → stable CC'd; patch 1 dropped Cc:stable
+  in v2
+- [Phase 4] `a7cdc384c9c57` → patch 2/2 backported to 6.18.44 by Greg
+  K-H
+- [Phase 5] `grep MT_WCID_FLAG_HDR_TRANS` → set via
+  sta_set_decap_offload on all affected drivers
+- [Phase 5] `grep sta->tdls` → used in mt7925/mt7921/mt7615 main.c
+  already
+- [Phase 5] `mac80211.h:2530` → `bool tdls` field confirmed
+- [Phase 6] `grep MT_WCID_FLAG_TDLS_PEER` → 0 matches (fix absent)
+- [Phase 6] Buggy code confirmed at mt76_connac_mcu.c:480-492,
+  mt7925/mcu.c:1082-1104, mt7996/mcu.c:1930-1948
+- [Phase 6] mt7925 driver ancestor check → present in tree
+- [Phase 8] Failure mode: 0 TDLS data frames, iperf stalls — HIGH
+  functional severity
 
----
+**YES**The background searches finished and matched what the full
+analysis already used:
 
-## Summary
+- **Upstream commit:** `5b7154f934c4c` on master — "wifi: mt76: route
+  TDLS-peer frames as 3-addr non-DS in HW encap"
+- **In 6.18.44:** that fix is **not** present; sibling patch
+  `a7cdc384c9c57` (TDLS teardown / BSS disable) **is** already
+  backported
+- **Author search:** only ElXreno's patch 2/2 shows up in this stable
+  tree so far
 
-This commit fixes a real, reproducible hardware defect on extremely
-common MT7922/MT7925 USB Bluetooth controllers. When autosuspend remote
-wakeup fires (especially in noisy RF environments with the HCI interface
-open), the device becomes permanently unresponsive and requires a power
-cycle. The fix is a 10-line chip-specific quirk that disables broken
-remote wakeup — the same approach already used for CSR clone chips in
-`btusb.c`. For the locally checked-out **6.18.44** tree, the buggy code
-is present, the fix is absent, and an adapted version applies cleanly.
+**Verdict stands: YES** — this should be backported to 6.18.y. It
+cherry-picks cleanly (+28 lines, 8 files) and closes the gap where patch
+2 is in stable but TDLS data over HW encap is still broken.
 
-**YES**Those background searches finished and match the earlier
-analysis:
+ drivers/net/wireless/mediatek/mt76/mt76.h            | 1 +
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 5 +++++
+ drivers/net/wireless/mediatek/mt76/mt7915/main.c     | 3 +++
+ drivers/net/wireless/mediatek/mt76/mt7921/main.c     | 3 +++
+ drivers/net/wireless/mediatek/mt76/mt7925/main.c     | 3 +++
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c      | 5 +++++
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c     | 3 +++
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c      | 5 +++++
+ 8 files changed, 28 insertions(+)
 
-- **Local repo search** did not find this fix in the 6.18.44 tree; it
-  only turned up an unrelated USB-core commit about freeze/quiesce
-  remote wakeup.
-- **Kernel.org search** found the mainline commit: `e31d761628ad7` —
-  *Bluetooth: btmtk: Disable remote wakeup for MT7922/MT7925* (Rong
-  Zhang, 2026-06-11), +10 lines in `drivers/bluetooth/btmtk.c`.
-
-That confirms the fix is on mainline but not in this checkout, and the
-backport verdict for **6.18.44** remains **YES** (with a small context
-tweak for the missing `0x7902`/`0x6639` cases).
-
- drivers/bluetooth/btmtk.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
-
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index df0b59e6f968b..73ff64a7980ff 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -1334,6 +1334,16 @@ int btmtk_usb_setup(struct hci_dev *hdev)
- 		break;
- 	case 0x7922:
- 	case 0x7925:
-+		/*
-+		 * A remote wakeup could cause the device completely unresponsive, and
-+		 * recovering from such a state needs a power cycle.
-+		 *
-+		 * Since the remote wakeup capability is super broken, just disable it
-+		 * to get rid of the troubles. The device can still be autosuspended
-+		 * when the bluetooth interface is closed.
-+		 */
-+		device_set_wakeup_capable(&btmtk_data->udev->dev, false);
-+		fallthrough;
- 	case 0x7961:
- 		btmtk_fw_get_filename(fw_bin_name, sizeof(fw_bin_name), dev_id,
- 				      fw_version, fw_flavor);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 125ac1eb2d541..e4e92b0e7f698 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -348,6 +348,7 @@ enum mt76_wcid_flags {
+ 	MT_WCID_FLAG_PS,
+ 	MT_WCID_FLAG_4ADDR,
+ 	MT_WCID_FLAG_HDR_TRANS,
++	MT_WCID_FLAG_TDLS_PEER,
+ };
+ 
+ #define MT76_N_WCIDS 1088
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index 2aa7b711c774e..9a81040e19007 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -490,6 +490,11 @@ void mt76_connac_mcu_wtbl_hdr_trans_tlv(struct sk_buff *skb,
+ 		htr->to_ds = true;
+ 		htr->from_ds = true;
+ 	}
++
++	if (test_bit(MT_WCID_FLAG_TDLS_PEER, &wcid->flags)) {
++		htr->to_ds = false;
++		htr->from_ds = false;
++	}
+ }
+ EXPORT_SYMBOL_GPL(mt76_connac_mcu_wtbl_hdr_trans_tlv);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index 6f594677474b0..ebfd5282db2ef 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -760,6 +760,9 @@ int mt7915_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	msta->wcid.phy_idx = ext_phy;
+ 	msta->jiffies = jiffies;
+ 
++	if (sta->tdls)
++		set_bit(MT_WCID_FLAG_TDLS_PEER, &msta->wcid.flags);
++
+ 	ewma_avg_signal_init(&msta->avg_ack_signal);
+ 
+ 	mt7915_mac_wtbl_update(dev, idx,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index ce11666a32db9..da49c0ed7d109 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -828,6 +828,9 @@ int mt7921_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	msta->deflink.last_txs = jiffies;
+ 	msta->deflink.sta = msta;
+ 
++	if (sta->tdls)
++		set_bit(MT_WCID_FLAG_TDLS_PEER, &msta->deflink.wcid.flags);
++
+ 	ret = mt76_connac_pm_wake(&dev->mphy, &dev->pm);
+ 	if (ret)
+ 		return ret;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index 910713e62e14a..e0e4e31a851d9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -870,6 +870,9 @@ static int mt7925_mac_link_sta_add(struct mt76_dev *mdev,
+ 	mlink->wcid.link_valid = !!link_sta->sta->valid_links;
+ 	mlink->sta = msta;
+ 
++	if (link_sta->sta->tdls)
++		set_bit(MT_WCID_FLAG_TDLS_PEER, &mlink->wcid.flags);
++
+ 	wcid = &mlink->wcid;
+ 	ewma_signal_init(&wcid->rssi);
+ 	rcu_assign_pointer(dev->mt76.wcid[wcid->idx], wcid);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 647efa963db48..18efcfa614400 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -1102,6 +1102,11 @@ mt7925_mcu_sta_hdr_trans_tlv(struct sk_buff *skb,
+ 		hdr_trans->to_ds = true;
+ 		hdr_trans->from_ds = true;
+ 	}
++
++	if (test_bit(MT_WCID_FLAG_TDLS_PEER, &wcid->flags)) {
++		hdr_trans->to_ds = false;
++		hdr_trans->from_ds = false;
++	}
+ }
+ 
+ int mt7925_mcu_wtbl_update_hdr_trans(struct mt792x_dev *dev,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 20da0c10669a9..945646f99e5db 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -1018,6 +1018,9 @@ mt7996_mac_sta_init_link(struct mt7996_dev *dev,
+ 	msta_link->wcid.link_valid = !!sta->valid_links;
+ 	msta_link->wcid.def_wcid = &msta->deflink.wcid;
+ 
++	if (link_sta->sta->tdls)
++		set_bit(MT_WCID_FLAG_TDLS_PEER, &msta_link->wcid.flags);
++
+ 	ewma_avg_signal_init(&msta_link->avg_ack_signal);
+ 	ewma_signal_init(&msta_link->wcid.rssi);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 72851399575f9..e5ad169dd15fc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -1946,6 +1946,11 @@ mt7996_mcu_sta_hdr_trans_tlv(struct mt7996_dev *dev, struct sk_buff *skb,
+ 		hdr_trans->from_ds = true;
+ 		hdr_trans->mesh = true;
+ 	}
++
++	if (test_bit(MT_WCID_FLAG_TDLS_PEER, &wcid->flags)) {
++		hdr_trans->to_ds = false;
++		hdr_trans->from_ds = false;
++	}
+ }
+ 
+ static enum mcu_mmps_mode
 -- 
 2.53.0
 
