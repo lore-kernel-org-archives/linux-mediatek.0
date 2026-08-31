@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54C3EC61DD3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 22:50:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 766D8C61DD3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 22:51:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ML5wQ/GS1Kk9O2kkgjdsq7B7FgNtx0tPN9WZYFKffG0=; b=xXfVTC0EN2HuasTfPpN+dwW4Bg
-	Rpr/1kbZXqKSEBpQeTPuejDMd0Njab+UF71aCzTT+AlW1R+FppF/B/wPCnrwQKI6NPZQYDAWxeXtB
-	T/LBkkzj5LeOmFEChVqwDrb79dUIwLmnsHs/5FZ4JbuottKZjdjKNmck6NIGsIqHoNqTwjl6NvXJp
-	YFR9is2eKhM9zXyjtWgc9x3YT0gdtOWK+ABZrIVQrsYInnFPq944JdLBXqqAUycolAQcji4C59E8H
-	qjIZDYRo7p8B47izdacP5sBbiO0gRF7dha82UNV/22y3f6ssFbWHjge9Cq7sSM+FjrHwSlcYlLYYX
-	GSiJL1cQ==;
+	bh=LE1tRsuf20iiZ+MwZN9mRaew+1jtEq4b8AWQ4BS4V60=; b=iMEkw+1NNNI+HtkY4AY6UH2rPp
+	PY7tXI01oS3njSdoNazsXHUXxspmUCZGsYoCcNSsLYDJ2OFnoQTZsV2EJIEEYu67nvrXEHcPdhw5W
+	z8dWNc7DQg/d6KJ1G1agXZ0id4KObnuteOSq9/PkXuYIiVZ8dL/Qgr/0G0wcDbtuSITSfc4R5LG9t
+	BM8ibMtTEdPotYfwsTQqNmCMc9vb+JkwFKw7tgDuvFxufME10dKlQcBmKpyGOnzUDndwCAC+LpZKI
+	YULiPSOcvyGU5I5RtMzhkdDU37yhGgXP1HZlFTsNHZfivWPRlUHvyh25FAMbfl8C+9OhILsh9C3od
+	616+cq8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1Apa-0000000AcCM-2rRW;
-	Mon, 31 Aug 2026 22:50:22 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x1AqI-0000000AcEd-3EYH;
+	Mon, 31 Aug 2026 22:51:06 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1ApZ-0000000AcCE-0HC7
+	id 1x1AqH-0000000AcEX-2SUA
 	for linux-mediatek@lists.infradead.org;
-	Mon, 31 Aug 2026 22:50:21 +0000
+	Mon, 31 Aug 2026 22:51:05 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6414B400D8;
-	Mon, 31 Aug 2026 22:50:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC7BA1F000E9;
-	Mon, 31 Aug 2026 22:50:17 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 1072940345;
+	Mon, 31 Aug 2026 22:51:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B3671F000E9;
+	Mon, 31 Aug 2026 22:51:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788216620;
-	bh=ML5wQ/GS1Kk9O2kkgjdsq7B7FgNtx0tPN9WZYFKffG0=;
+	s=k20260515; t=1788216664;
+	bh=LE1tRsuf20iiZ+MwZN9mRaew+1jtEq4b8AWQ4BS4V60=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=WbG+SprvCGWXQydLTVRiCH4U022X3r3siIUPzyeoemhhNnZF3zUgzsb5Q5nWIcI3a
-	 Yo/WWQt3k6k0l9/RBBemW5KPRHbf/drENFz8xdQI71He9/dM40P18bx0ztjVy8ZIjk
-	 WadCOFZe7DQlagS29gUDnEULNB89T9TopJUB0jhtTng45qQ7RFl9XeE7l1NnYsjV2I
-	 /+tkxbI9Oz6d28cbOjcbqz7+ATFX3SSjTlMRTybFSh9rHqSjTPeMrXY0XCBcophpJl
-	 RzNWvqIeTaeWLFmdAlgm0eXCxTexWO+QwXrOetMixkIDwgYdLJhxWVDp0aCOBlX1gi
-	 JG/azQBmESUww==
-Date: Mon, 31 Aug 2026 23:50:15 +0100
+	b=Q9LcrWoYBDYCJOi2xN4bc0ej3hW9nHMNJ1hmqXl8LSBe+rBvVKDxMVK9NbTHQI6e+
+	 PdjRGO6+WOOcCluEEw7S8wti7AEd24tIbKoQxe1Rdf+FN2BsfOeegjWtuwYbYDtbwv
+	 52V83ZW6uwSEI4hWfsVeFOmf69PPjPH2AVlwiSLo7W29/aS1+4kfz1LXHZEMUBQBYM
+	 tDbuu4BKd4pLwhm6XfBK7kCJYwIEC9U7oYeypF63QZNT1hfuhZsEI0oGbPf6u+Nis4
+	 O0rviqbr+qrx+QdL7hQ+rNxz9Z1ioP/lZnse6vRoPKYvmvk25ZofySk0cMvuDab1yP
+	 FqUEnGJQ4OJiA==
+Date: Mon, 31 Aug 2026 23:51:00 +0100
 From: Conor Dooley <conor@kernel.org>
-To: Benjamin Larsson <benjamin.larsson@genexis.eu>
-Cc: Ahmed Naseef <naseefkm@gmail.com>, linux-gpio@vger.kernel.org,
+To: Ahmed Naseef <naseefkm@gmail.com>
+Cc: linux-gpio@vger.kernel.org,
+	Benjamin Larsson <benjamin.larsson@genexis.eu>,
 	Christian Marangi <ansuelsmth@gmail.com>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -56,18 +57,18 @@ Cc: Ahmed Naseef <naseefkm@gmail.com>, linux-gpio@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH v2 2/3] dt-bindings: pinctrl: Add EcoNet EN7528 pin
  controller
-Message-ID: <20260831-reps-staunch-1522442545a4@spud>
+Message-ID: <20260831-imply-unreeling-a6b527b7fa8e@spud>
 References: <cover.1787931313.git.naseefkm@gmail.com>
  <c20005a81b4069f3ff68311629ff7d4678fa92dd.1787931313.git.naseefkm@gmail.com>
  <20260828-chaos-recovery-c99d547ee1b6@spud>
  <apLGtCRjCP1j0u5i@DESKTOP-TIT0J8O.localdomain>
  <20260831-sibling-isolation-3849a5e4845f@spud>
- <679db287-3cf2-4d29-b690-d87196402378@genexis.eu>
+ <apW7r6IdVx9Cmk4G@DESKTOP-TIT0J8O.localdomain>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="FVu6sS8O0N7Jmwge"
+	protocol="application/pgp-signature"; boundary="YprlfHj1gkHCX4El"
 Content-Disposition: inline
-In-Reply-To: <679db287-3cf2-4d29-b690-d87196402378@genexis.eu>
+In-Reply-To: <apW7r6IdVx9Cmk4G@DESKTOP-TIT0J8O.localdomain>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,13 +83,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---FVu6sS8O0N7Jmwge
+--YprlfHj1gkHCX4El
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Aug 31, 2026 at 08:46:52PM +0200, Benjamin Larsson wrote:
-> On 31/08/2026 18:57, Conor Dooley wrote:
+On Mon, Aug 31, 2026 at 09:36:47PM +0400, Ahmed Naseef wrote:
+> On Mon, Aug 31, 2026 at 05:57:59PM +0100, Conor Dooley wrote:
 > > On Sat, Aug 29, 2026 at 03:47:00PM +0400, Ahmed Naseef wrote:
 > > > On Fri, Aug 28, 2026 at 04:51:27PM +0100, Conor Dooley wrote:
 > > > > On Fri, Aug 28, 2026 at 07:35:14PM +0400, Ahmed Naseef wrote:
@@ -106,11 +107,11 @@ chip-scu
 > > > > >=20
 > > > > > Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
 > > > > > ---
-> > > > >   .../pinctrl/econet,en7528-pinctrl.yaml        | 190 +++++++++++=
-+++++++
-> > > > >   1 file changed, 190 insertions(+)
-> > > > >   create mode 100644 Documentation/devicetree/bindings/pinctrl/ec=
-onet,en7528-pinctrl.yaml
+> > > > >  .../pinctrl/econet,en7528-pinctrl.yaml        | 190 ++++++++++++=
+++++++
+> > > > >  1 file changed, 190 insertions(+)
+> > > > >  create mode 100644 Documentation/devicetree/bindings/pinctrl/eco=
+net,en7528-pinctrl.yaml
 > > > > >=20
 > > > > > diff --git a/Documentation/devicetree/bindings/pinctrl/econet,en7=
 528-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/econet,en7528-=
@@ -234,12 +235,22 @@ the
 > > > group at all.
 > >=20
 > > Why's that? Are they just fixed output pins?
+>=20
+> Fixed-function :  the dedicated I2C and UART pads. The only registers
+> they have are bias and drive strength, there is no mux and no GPIO
+> mode.
+>=20
 > >=20
 > > > The spi_cs0/clk/mosi/miso pads are only in pnand, which is
 > > > 17 pins wide, so no group names them individually either.
 > >=20
 > > That's easily resolved by breaking up pnand though.
 > >=20
+>=20
+> Not as mux groups: pnand is a single register bit, so muxing a
+> sub-group would still switch all 17 pads while pinctrl only claims the
+> subset. As config aliases they would add nothing over pins.
+>=20
 > > Devils advocate thing here might be to say that the dedicated
 > > configuration node should only be for the things that are fixed outputs,
 > > and the muxable ones should get their config from a combined
@@ -247,51 +258,29 @@ the
 > > where someone doesn't have to go figure out what pins are in the group
 > > they just assigned a function to to also set the config properties for
 > > it.
-> >=20
-> > Cheers,
-> > Conor.
-> >=20
-> Hi, I dont fully understand the exact implications but there are at least=
- 2
-> more Econet pinctrl drivers coming. I would prefer it if we could keep th=
-em
-> looking exactly like the other Airoha drivers that are already merged. All
-> the SoCs share the same structure and logic just different pins and
-> addresses.
+>=20
+> The driver would take that as-is (it uses the generic dt_node_to_map,
+> which accepts config properties next to function/groups). I kept the
+> split mux/conf shape to match the other four Airoha bindings on this
+> driver. If you prefer the combined form I would rather do it for the
+> whole family as a follow-up than have en7528 be the odd one out - but
+> can switch this one now if you want.
+>=20
 
-FWIW, "I want to do X cos Y other driver does X" is not really a
-compelling argument in general. In this case, what's being done isn't
-terrible (and I was just about to tell Ahmed that I didn't notice that
-there's actually code reuse going on and his patch was adding 1200 lines
-of definitions rather than functions), but in general this is not an
-acceptable argument.
+Nah, leave it as-is. Read my reply to Benjamin.
+Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+pw-bot: not-applicable
 
-Also, in this case, I amn't overly opposed to what's going on here, I
-just want to be convinced that this isn't trying to shoehorn something
-into an existing model. It looks very clumsy to apply muxing by group
-but config by pin, when a little bit more judicious use of groups could
-get it all done in one go.
-
-I think I have already made similar comments on Airoha pinctrl in the
-past, so I guess I will just let this go as long as this is effectively
-describing the same "IP", or "structure and logic" as you put it, and
-expect that when the mechanism changes (which it will undoubtedly at
-some point) that either pins or groups, not both, is used then. If I
-remember or haven't burnt out and quit...
-
-Cheers,
-Conor.
-
---FVu6sS8O0N7Jmwge
+--YprlfHj1gkHCX4El
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCapYFJwAKCRB4tDGHoIJi
-0rhfAPoCRovzdnvEECViMGN0T4+i78mBqtD0E/djpiikXqh3IAD5ASoX0E4dDq4/
-5FqyGFY9SVasXFPGCiG1oJgr/9hUfAU=
-=I6q4
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCapYFVAAKCRB4tDGHoIJi
+0v3uAQDAIEepPcWZKqwJEspz/XLSLGqfZDW6Zu7tRMPuUszZzAEAvu+0lcpe0TEg
+Noio1LI66OwoFxlIvbtBmZDLsIx4Bg4=
+=GFJo
 -----END PGP SIGNATURE-----
 
---FVu6sS8O0N7Jmwge--
+--YprlfHj1gkHCX4El--
 
