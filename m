@@ -4,109 +4,160 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BC96C624A5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 15:29:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98C3EC624A5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 15:36:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MODz/yvQ0Z27mNvvvXpyLpRUHE/JQSAV0LJ+Rig2AKg=; b=alEWSM1c0vMw3ZCFtjytuDKpDD
-	WpbgW2do0s1L4ZwF3ew67mgbCgt/J4LwWXepPknxYMB+TpVODEih9vsNRk1zelmemQNY9tBvj8qGl
-	lEmAN8uN+eYLzokoxsFTaCsJT4RrnXPnv0EAmbIn957PlNfoUlJ1H7xDSfnr+keCjKNnxp1U9xeCr
-	xqVioOuyW4BKA04TTh8I14XEQvhFD/QIVsJLZb9Ppme8OR9lHyWlzbi8AOunN2vDf/HmWKw5kOtaH
-	wh3G/yoKHRenJewL8yjss53HX0yduNcbHot2ehvVSF0drSTh1qBjvoXRMPz4SXsTWQJNnLkKqK4nH
-	GdX32VoA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:In-Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uVxBilOuJ3eJRjLFViKxIC+i5050iOvt2YALC/2UHq4=; b=cAcdcrf5/ty0sUuLn7nAfiaOhm
+	tBLbqn73rektw/En/C27W46JJ/xvYszjSVapbea7Px4VA1/e3SZAwsaqMZ5VFRWr2LUYNo+x2O0Am
+	TmcU4a+A+M2REbgtMmQ6ltySm+KRjzPZ/CrplMjgCXQSw4G612QN4cv1jp7HeP79H+HZRj7UPlGaK
+	Nr8fO/MX6RgT4vK7aofmBU699KVFu75U0ZfHB4pjH7zEqg5P2tp20MAcCraLevqkcXTz9ao9wxzSp
+	ZrwdwKjezENEo90coguqCXPk8/amTHPFYbvs8fHatxCrDPXhsdxZibcWd4oRLcCCLOv5bL863Qu/O
+	mBp72bRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x13wV-00000009rZW-4BJQ;
-	Mon, 31 Aug 2026 15:29:03 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1x143Q-00000009suo-1cBD;
+	Mon, 31 Aug 2026 15:36:12 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x13wP-00000009rWL-3utS
+	id 1x143O-00000009stU-0gPk
 	for linux-mediatek@lists.infradead.org;
-	Mon, 31 Aug 2026 15:28:59 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-c252e703fa3so536300066b.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 31 Aug 2026 08:28:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1788190136; x=1788794936; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=MODz/yvQ0Z27mNvvvXpyLpRUHE/JQSAV0LJ+Rig2AKg=;
-        b=D/2BOLP8TQcQVJSoMvFKPFmKXqskGNQRhOdn/Bni7b2NK6ERZEDVF9OWBMoFwRV02x
-         67zUioUVjqL/TbbRtJBMzytVOj2mRvZ6ltcqsp3S7YbidOcl5UqB57GrBnB/TLP4yOsP
-         jgtkt2h0mZgeLCCpZP7Plb0EMDKHPhuyaY++g=
+	Mon, 31 Aug 2026 15:36:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1788190567;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=uVxBilOuJ3eJRjLFViKxIC+i5050iOvt2YALC/2UHq4=;
+	b=MllDFC1FBEdnQNrGZhkaDrBpl2tNnlUR3bV0uqNK9YMcEXl+vOOyvlPNsxPaII6K6UZAJc
+	gQFslQcZjRNKSmxLmBwoMkDrJ9RnjvzFNDzdMM/v37r2kYDWSMMsSvkVmjCxsy5YP/E5J1
+	4nA6GLfiOEJVEWgW4RwZ7OZ8H3j6moA=
+Received: from mail-yx1-f71.google.com (mail-yx1-f71.google.com
+ [74.125.224.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-581-858MhGsTNouqJlDkdk2BGQ-1; Mon, 31 Aug 2026 11:36:06 -0400
+X-MC-Unique: 858MhGsTNouqJlDkdk2BGQ-1
+X-Mimecast-MFC-AGG-ID: 858MhGsTNouqJlDkdk2BGQ_1788190565
+Received: by mail-yx1-f71.google.com with SMTP id 956f58d0204a3-66d309b367dso3551848d50.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 31 Aug 2026 08:36:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788190136; x=1788794936;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
+        d=1e100.net; s=20251104; t=1788190565; x=1788795365;
+        h=user-agent:in-reply-to:content-disposition:content-type
+         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=MODz/yvQ0Z27mNvvvXpyLpRUHE/JQSAV0LJ+Rig2AKg=;
-        b=dI5G+fdqVLKE29Tk9ELq7NIftxF4kc//uNtO87h+RRCK3Ys+ex6eZu4UQsxmzBzhqD
-         KAjzxuxCH3HCScDM+QHKjoQknv0aZ+c45yWXA2kRN0CQ4PHIYr1RJAV2Q7wu/s+G77GK
-         hboSqojVg6oWtAiPNyfa27wrMRhQPYmc7pVvEa69FLw0Jf4eatemcuYcCptS8scN6Itf
-         IAVfX7br//IRmi8dZPIMQKKcO27N/rcX4hvpN1iVYO6i8uqNEKXluiSo+t9d48fWGket
-         Lwu7dWRxcSlzgsSEL/kL+4artBLkYnvq64GFrjqxAYOOk79Mz39Ar5cOiKlf2oxomVtH
-         cYsw==
-X-Forwarded-Encrypted: i=1; AHgh+RqzXFoP6f3CMhEQ5Z61vOoRowWAme7Gyy9YJy3LkECNVrCl05Mv7OmqbWR9hES/k8rrfmcM4N6RjyXZlCU7eA==@lists.infradead.org
-X-Gm-Message-State: AFuF++lJGbua+DkINIpLNhBntJs2yvJfoibhumfmbLP+RxJ9OVZdDWfg
-	pmw140D6vLAQgRUv+1ktcLc2PJN2XigDrOcUWkAX8PCm5ihFZOPTvA+4M0Fh8IMEwtFfXSvLukW
-	uHt8IkrvY
-X-Gm-Gg: AR+sD10i26C6g3th/8K+cux93B9iX7LElrPDM9PVCJg9NIrcx/w2mLL9N+sdVQIM7Fp
-	qSngHmpytm3EyRo+6gwOQxP3EUUCZAKdpunQGZ0IqMnHmyOiTkc3vyJQ9SL1UGHdGB2N7HEvKiy
-	blrNUnoQQxXrCM+AktJ2sfeqF/xGwC+9xyIAq6wLm/4+8/QLdxZD8mTXerUcaQMuk7djGcCq26t
-	62U5TfNSrEdYjHuWJ45ObSE+/Q1hev3dahTXXWPJ6vcu13GSo638mn72fShB4K4ZOGms7ta3Jm+
-	+Hd2etsANaa2uNA9fAfV5r7YU5fGNZDcNd/TtSaWQBvt4HbWtshgee9eDYLDaG+gguVB1i6hk0C
-	6cZNYMwUvpAxKWdVpy+N+0X6LUt93xYPR+dRS4ITd4hD52WFWhfcLKmMh5BjUIknS6ds+PLahEg
-	AUtLBSpN1PrMAksiiaswM8MkRqWIPg3PRYb6zyHHQULNWJd4pemJ6YNUi9C/A38nzEJzw58R929
-	zm16BNVWaPII9EMaT+xzSFLB1vU
-X-Received: by 2002:a17:906:b816:b0:c1f:983f:d8a with SMTP id a640c23a62f3a-c25b3d93374mr72232066b.24.1788190135898;
-        Mon, 31 Aug 2026 08:28:55 -0700 (PDT)
-Received: from mail-wr1-f47.google.com (mail-wr1-f47.google.com. [209.85.221.47])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c25ab254f49sm94865266b.10.2026.08.31.08.28.52
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 31 Aug 2026 08:28:55 -0700 (PDT)
-Received: by mail-wr1-f47.google.com with SMTP id ffacd0b85a97d-47f96c5b722so2277001f8f.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 31 Aug 2026 08:28:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AKwUvByNwH+MmmTpYSpU/meKx385uTzTs02XCQLVls/45B5UKrKsrMCihSZ3zMTvxrSpnhsjw/WEFQXbMqhZZ0g8Ug==@lists.infradead.org
-X-Received: by 2002:a05:6000:46cb:b0:484:3600:35b2 with SMTP id
- ffacd0b85a97d-48440fcee03mr2458557f8f.5.1788190129893; Mon, 31 Aug 2026
- 08:28:49 -0700 (PDT)
+        bh=uVxBilOuJ3eJRjLFViKxIC+i5050iOvt2YALC/2UHq4=;
+        b=I389kxCBQ01M06aVLijl4vLwv8rToAv0ett3UmFmOt7oPN2qGxIZ9cVvE827+3wNHX
+         lxMsl03FEvq0YgQaT2EQ6Yq9G/N/sRTKFAHfA1g1eJdDLj9LllfdVCuEot4sEMizNEkT
+         F4oqNJ4FCS2B2I7etjLu85ccT2YYnIL9eZME0kysRZjAkNFiI1OosglFtp+SRRgrvbIq
+         tJ3e1r6V+8JfL8ekSQo0mEZ5rbWjkfG3HMkZzLFjIvtvlFkphNVsHX29j/7uuJrn1KlM
+         q+Gj0ZTbavVDHldlznFgZKvdUYizQSnTGn93TEvpDYnJO1/WViSNIgMTqzQf/iVWiGE1
+         1PvA==
+X-Forwarded-Encrypted: i=1; AKwUvBxw4T493abbZHPv+KWKsMFVSh1LS9xIC5j14kOrw+BPHAocHKW0ofOOUtRzGdEhESJ8vTp76oDTCygFL+j9pA==@lists.infradead.org
+X-Gm-Message-State: AFuF++n9JerdTH1AruyVF+vhva/GhgSs8AQDe8dkfydvRmkWVNdgD5M5
+	f+8vmAIOfx5DcEIcg43TGh8W7ck5UKIGjglZL0PaAzorIMPSmgwFf7MW6KDM3MQjWUBzR0yjjL9
+	FMeiNnx7ge4XNq1TlSz2I3KyvhybufXbE+FhEKfHg34IWCkOA+UkADCnfGt1O/hRo/iLmjgnxpw
+	==
+X-Gm-Gg: AYBFou1wq8jgwCZ2yAAs0RSZq6g9mpH7Q49pBrI/btaVyRgk8bp4sNSDZy9XYo/bzkR
+	QyhL+f3rXIFvjVqN/k7ekdQ1c0U/+Spbd8V28WdaT6kFkrJZyFYGTKBJuEDMpUmmUhfjc03g24A
+	/rBNZsSCu4CmTrXsAZSKDn3rzx23jxgo3xaViKi6TVUKrUHtfgqP5Kzc8tFWLoay8gsbWYw/6d3
+	YKKYsnOxww8Ag+UQQa5v/S/sqYufBeGGORNPovqHLA+ZXDgDSmYN6bECpDNpTR05gPJyf+eAa2V
+	zrW7PNndlVPUY+cHv1DHv9QcuS2pynUAnw9Fq/2W/Bq9y8z7KlIkFvEBj1tHfQgL9d0Vf3c+s60
+	=
+X-Received: by 2002:a05:690e:13c7:b0:66f:8255:9f3d with SMTP id 956f58d0204a3-66f873db9b1mr559410d50.7.1788190565221;
+        Mon, 31 Aug 2026 08:36:05 -0700 (PDT)
+X-Received: by 2002:a05:690e:13c7:b0:66f:8255:9f3d with SMTP id 956f58d0204a3-66f873db9b1mr559344d50.7.1788190564555;
+        Mon, 31 Aug 2026 08:36:04 -0700 (PDT)
+Received: from redhat.com ([2600:382:8519:3f74:ab6c:bb55:e9cb:f8d6])
+        by smtp.gmail.com with ESMTPSA id 956f58d0204a3-66f7efc9dbfsm2062227d50.9.2026.08.31.08.35.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 31 Aug 2026 08:36:03 -0700 (PDT)
+Date: Mon, 31 Aug 2026 11:35:55 -0400
+From: Brian Masney <bmasney@redhat.com>
+To: Geert Uytterhoeven <geert+renesas@glider.be>
+Cc: Ryan Chen <ryan_chen@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Brian Masney <bmasney+clk@redhat.com>,
+	Jerome Brunet <jbrunet+clk@baylibre.com>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Billy Tsai <billy_tsai@aspeedtech.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Taichi Sugaya <sugaya.taichi@socionext.com>,
+	Takao Orito <orito.takao@socionext.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
+	Benjamin Fair <benjaminfair@google.com>,
+	Sudeep Holla <sudeep.holla@kernel.org>,
+	Cristian Marussi <cristian.marussi@arm.com>,
+	David Lechner <david@lechnology.com>,
+	Abel Vesa <abelvesa@kernel.org>, Peng Fan <peng.fan@nxp.com>,
+	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Santosh Shilimkar <ssantosh@kernel.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	Vladimir Zapolskiy <vz@mleia.com>, Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Dinh Nguyen <dinguyen@kernel.org>,
+	Viresh Kumar <vireshk@kernel.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Emilio =?iso-8859-1?Q?L=F3pez?= <emilio@elopez.com.ar>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Prashant Gaikwad <pgaikwad@nvidia.com>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Ulf Hansson <ulfh@kernel.org>, Liviu Dudau <liviu.dudau@arm.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Michal Simek <michal.simek@amd.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-clk@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	openbmc@lists.ozlabs.org, arm-scmi@vger.kernel.org,
+	imx@lists.linux.dev, linux-mips@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 00/45] clk: Make sure clk_init_data is fully initialized
+ (part two)
+Message-ID: <apWfW5ahiYagw0OR@redhat.com>
+References: <cover.1787239813.git.geert+renesas@glider.be>
 MIME-Version: 1.0
-References: <20260825-drm-bridge-drm_panel-cleanup-v2-0-c6c88ba7ffd2@bootlin.com>
- <20260825-drm-bridge-drm_panel-cleanup-v2-8-c6c88ba7ffd2@bootlin.com>
- <CAD=FV=Xdj_foBqt9A9EVVoCA2BxAV3UZNz3SuVPu2ZoNXgnS=w@mail.gmail.com>
- <DL308Z0JXJ31.2V3H29DTG4MSM@bootlin.com> <CAD=FV=UOwWdVc8p1js+28C1u7=iRqRpv86PkwWf5g8yL-Uq5kw@mail.gmail.com>
- <DL38FWMPAVYW.3H964111WXW4T@bootlin.com>
-In-Reply-To: <DL38FWMPAVYW.3H964111WXW4T@bootlin.com>
-From: Doug Anderson <dianders@chromium.org>
-Date: Mon, 31 Aug 2026 08:28:38 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=VPzExBjY6KrNR_cDJTofua1nZtPNOhNciu+Y7awwaCTQ@mail.gmail.com>
-X-Gm-Features: AcwNN1Vw4mO8ILYq4ZDFw7i23F9T4GMkIdNzC_wyAjuyFKPOHb3FlBTxENhm96k
-Message-ID: <CAD=FV=VPzExBjY6KrNR_cDJTofua1nZtPNOhNciu+Y7awwaCTQ@mail.gmail.com>
-Subject: Re: [PATCH v2 08/12] drm/bridge: parade-ps8640: select DRM_PANEL_BRIDGE
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hui Pu <Hui.Pu@gehealthcare.com>, 
-	Ian Ray <ian.ray@gehealthcare.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
-	Pin-yen Lin <treapking@chromium.org>, Enric Balletbo i Serra <eballetbo@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <cover.1787239813.git.geert+renesas@glider.be>
+User-Agent: Mutt/2.4.0 (2026-06-19)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: -netv7qVh_NPyn2JN-QO3j9UwNDsd5GH_11csPd8x2o_1788190565
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260831_082857_996839_E657EDD3 
-X-CRM114-Status: GOOD (  15.13  )
+X-CRM114-CacheID: sfid-20260831_083610_279096_4DF3DB3A 
+X-CRM114-Status: GOOD (  20.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,32 +172,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Geert / all,
 
-On Mon, Aug 31, 2026 at 8:26=E2=80=AFAM Luca Ceresoli <luca.ceresoli@bootli=
-n.com> wrote:
->
-> > Ah, indeed! I missed that since it didn't have "panel" in the name.
-> > FWIW, then I think for this patch:
-> >
-> > Reviewed-by: Douglas Anderson <dianders@chromium.org>
-> >
-> > ...but, ironically, that means that for the other patch I looked at
-> > (ti-sn65dsi86.c) we're missing the "select DRM_PANEL_BRIDGE" since it
-> > uses the same API call, doesn't it?
->
-> Ouch, indeed! Thanks for noticing.
+On Fri, Aug 21, 2026 at 10:53:10AM +0200, Geert Uytterhoeven wrote:
+> 	Hi all,
+> 
+> The clk_init_data structure contains several mutually-exclusive members
+> for different methods to specify the possible parents of a clock,
+> prompting drivers to initialize only the members they need.  However,
+> not initializing all members may cause subtle issues, which are only
+> exposed when CONFIG_INIT_STACK_ALL_PATTERN or CONFIG_INIT_STACK_NONE is
+> enabled.
+> 
+> Hence this series aims to make sure all members are fully initialized,
+> to avoid such bugs, and to prevent future breakage when converting
+> drivers to a different method for specifying the parents.
+> 
+> Part One[1] fixed all cases that I identified to be real bugs, in
+> response to a crash I saw on BeagleBone Black.
+> 
+> This series is the clock subpart of Part Two, which fixes remaining
+> cases that are currently harmless.  These are still fragile, and may
+> cause future breakage when converting drivers to a different method for
+> specifying the parents.
+> 
+> Thanks for your comments!
+> 
+> [1] "[PATCH treewide 0/5] clk: Make sure clk_init_data is fully
+>      initialized (part 1)"
+>     https://lore.kernel.org/cover.1787165329.git.geert+renesas@glider.be
+> 
+> Geert Uytterhoeven (45):
+>   clk: aspeed: Make sure clk_init_data is fully initialized
+>   clk: at91: Make sure clk_init_data is fully initialized
+>   clk: bcm: iproc: Make sure clk_init_data is fully initialized
+>   clk: berlin: Make sure clk_init_data is fully initialized
+>   clk: cdce925: Make sure clk_init_data is fully initialized
+>   clk: clk-axi-clkgen: Make sure clk_init_data is fully initialized
+>   clk: cs2000-cp: Make sure clk_init_data is fully initialized
+>   clk: davinci: Make sure clk_init_data is fully initialized
+>   clk: fractional-divider: Make sure clk_init_data is fully initialized
+>   clk: gemini: Make sure clk_init_data is fully initialized
+>   clk: highbank: Make sure clk_init_data is fully initialized
+>   clk: hisilicon: Make sure clk_init_data is fully initialized
+>   clk: imx: Make sure clk_init_data is fully initialized
+>   clk: ingenic: Make sure clk_init_data is fully initialized
+>   clk: keystone: Make sure clk_init_data is fully initialized
+>   clk: lmk04832: Make sure clk_init_data is fully initialized
+>   clk: mediatek: Make sure clk_init_data is fully initialized
+>   clk: milbeaut: Make sure clk_init_data is fully initialized
+>   clk: mmp: Make sure clk_init_data is fully initialized
+>   clk: mvebu: Make sure clk_init_data is fully initialized
+>   clk: mxs: Make sure clk_init_data is fully initialized
+>   clk: nomadik: Make sure clk_init_data is fully initialized
+>   clk: npcm7xx: Make sure clk_init_data is fully initialized
+>   clk: nxp: Make sure clk_init_data is fully initialized
+>   clk: pistachio: Make sure clk_init_data is fully initialized
+>   clk: pwm: Make sure clk_init_data is fully initialized
+>   clk: renesas: Make sure clk_init_data is fully initialized
+>   clk: rockchip: Make sure clk_init_data is fully initialized
+>   clk: samsung: Make sure clk_init_data is fully initialized
+>   clk: scpi: Make sure clk_init_data is fully initialized
+>   clk: silabs: Make sure clk_init_data is fully initialized
+>   clk: socfpga: Make sure clk_init_data is fully initialized
+>   clk: spear: Make sure clk_init_data is fully initialized
+>   clk: stm32: Make sure clk_init_data is fully initialized
+>   clk: st: Make sure clk_init_data is fully initialized
+>   clk: sunxi: Make sure clk_init_data is fully initialized
+>   clk: tegra: Make sure clk_init_data is fully initialized
+>   clk: uniphier: Make sure clk_init_data is fully initialized
+>   clk: ux500: Make sure clk_init_data is fully initialized
+>   clk: versatile: Make sure clk_init_data is fully initialized
+>   clk: vt8500: Make sure clk_init_data is fully initialized
+>   clk: x86: Make sure clk_init_data is fully initialized
+>   clk: xgene: Make sure clk_init_data is fully initialized
+>   clk: xilinx: Make sure clk_init_data is fully initialized
+>   clk: zynqmp: Make sure clk_init_data is fully initialized
 
-That was part of what confused me initially. I saw one of the drivers
-selecting DRM_PANEL_BRIDGE and the other one not doing so, even though
-(as far as I could tell) whey were both using the same API calls. ;-)
+44 / 45 patches have been added to clk-next. I took it all for simplicity
+rather than everyone trying to cherry pick just their parts.
 
+Geert: The only patch that didn't apply was:
 
-> I will send v3 with that fixed, can I keep your R-by if there's just that
-> change to the sn65dsi86 patch?
+  [PATCH 27/45] clk: renesas: Make sure clk_init_data is fully initialized
 
-Yeah, it's fine to keep my R-b.
+I didn't look into it too much.
 
+Brian
 
--Doug
 
