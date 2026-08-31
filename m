@@ -4,69 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32784C61DD3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 16:58:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5982C61DD3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 17:21:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rA43EeKV8LPRke+CsmGqZ7tixGf/WtDeP6Az63YJjqs=; b=f0HStRQhEIsixxK2V6BWNETpjv
-	S9p6+fjvra3+RqBIPXt3UghkJjpJbw8rlbpCwMq8DA5bRuBKfMaMEGOAyiDe9Ib3wOTCPXoQgBLer
-	e54JG5w3A//4dlVLukMco7JRxZWmzRfJKKPx1In9Eymh27uh0gGxf9Aay4kRSMHL6Wv+FzMiRSQfF
-	ievgMfTaZVS0btIVzbDZoFiZBC0Glz3TzISsBP8t6LsRkRQXYq/Zwdm3fDTwX+pRnIKJkSjM9fhXs
-	V3gTM/oKfXelBAbzFLkxbYcJ4H79XjkMYTHrKsIxlEclaOgEgS2YrkwfJ5xPDwhmkSTjYOUwSZQ8u
-	kadqxUZg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VpEqtD2PxFTkpfP6/JkpSRSjFHyw6Xfi6IrNt7fMuac=; b=zpiviq8oKqs8U4nE8r82CiLPNi
+	HsskFHbCYmjPbmdZQD94XoSWZxNcVcCK3PDD63UZ6ZrBR2fbB6EuX5dMwngS4beWOZ0NhN3+PiAoT
+	uhkZzZ/jBvM3swuwSKgAdacEK6ktw7u/FPX4vV6QfXrvWJfWCev+FZ8wB3iHRPZT59A4xrJV8CwSH
+	ZhUk7B/IEJ+YziVHr25x8DPUUSREb2pbBhjnVAOmSsf3Nk1fRptD6lPWsNdz0Q3WRIrzo11HhOJgi
+	brXdSXeVxkmYYjY9e+keSVPoRxGD4U/bE02bZREsMYwIhZchAryxYDPbIuRr83UmXk+OHlE7muFIf
+	/h4b6BEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x15Kg-0000000A7mI-2Pe1;
-	Mon, 31 Aug 2026 16:58:06 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x15h0-0000000AA5o-1vci;
+	Mon, 31 Aug 2026 17:21:10 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x15Kf-0000000A7mB-0iE4
+	id 1x15gz-0000000AA5c-44l8
 	for linux-mediatek@lists.infradead.org;
-	Mon, 31 Aug 2026 16:58:05 +0000
+	Mon, 31 Aug 2026 17:21:09 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4CC7B60120;
-	Mon, 31 Aug 2026 16:58:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 73A921F000E9;
-	Mon, 31 Aug 2026 16:58:01 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 5A969400FC;
+	Mon, 31 Aug 2026 17:21:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E57B1F000E9;
+	Mon, 31 Aug 2026 17:21:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788195483;
-	bh=rA43EeKV8LPRke+CsmGqZ7tixGf/WtDeP6Az63YJjqs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=NUL7qaZLUENlqitLdG6xODYg1xvVdaMAH0CDe93Vf6HAg5QP8u6tIkyO69lUBPutX
-	 aB2KDI3yyoF64hXXsuT6525XESDW2aCrSYstyG/2IS+uM+pYB1KqEHPnti/WjWbksO
-	 lcGafSPFh+/GEknQWqOudkjP+UmbRSnduR6YqHb6NgPIODKgJ2F7JuuXr163oMuXSq
-	 FJmC5wi1Fq/6jnyQs2S3cnuI6XDSu8CJ43ghFgCBYk9u5+YJNeNpI1TIprFq3t5Gqz
-	 MxUvNsbwgi2Ql6KuNmyrQm4LnJlLiLXCiwuY7u7KGzdEqfgi5/dk89+lY3xAVKAosO
-	 yBTTmYr6otCqA==
-Date: Mon, 31 Aug 2026 17:57:59 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Ahmed Naseef <naseefkm@gmail.com>
-Cc: linux-gpio@vger.kernel.org,
-	Benjamin Larsson <benjamin.larsson@genexis.eu>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Linus Walleij <linusw@kernel.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
-	Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 2/3] dt-bindings: pinctrl: Add EcoNet EN7528 pin
- controller
-Message-ID: <20260831-sibling-isolation-3849a5e4845f@spud>
-References: <cover.1787931313.git.naseefkm@gmail.com>
- <c20005a81b4069f3ff68311629ff7d4678fa92dd.1787931313.git.naseefkm@gmail.com>
- <20260828-chaos-recovery-c99d547ee1b6@spud>
- <apLGtCRjCP1j0u5i@DESKTOP-TIT0J8O.localdomain>
+	s=k20260515; t=1788196869;
+	bh=VpEqtD2PxFTkpfP6/JkpSRSjFHyw6Xfi6IrNt7fMuac=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=j2Y/ar5GiQysvn6C6GMcBv5rynyKA/lfK32/zYjbwmmqx6rPTWYIcYQcuuAO6m2Cd
+	 DP3lTsymk0wR1yF4+OuQ28PHtbiaiAwM/ydD9rjtoj8fCT+aZBPmM/uZxBQ3qtwg7I
+	 anVWj1p/INELvsPYjV4kmZZbesj5AjeKqULNCPMVh/cwHWT4aPAaDAO6irq3abiznN
+	 IfPFgi1NRZGwwqs9YDNlmMjN4g0eD6HehDqhlsK7m8ZbTKLcbJmxWVT0TWCj2O5rFn
+	 q9PJUX7OQ0fWa2DMVi3iMv+s+IAhick9R5YsxS27cHhii1W0sJCWrUR2SaiKm6sgyV
+	 9nt5rLFafYZxA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 939323924458;
+	Mon, 31 Aug 2026 17:20:13 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ormZb02WsNzOKFXG"
-Content-Disposition: inline
-In-Reply-To: <apLGtCRjCP1j0u5i@DESKTOP-TIT0J8O.localdomain>
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH 0/2] Bluetooth: btmtksdio: Stop discarding the hardware
+ device
+ id
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <178819681225.671757.15863608623551543473.git-patchwork-notify@kernel.org>
+Date: Mon, 31 Aug 2026 17:20:12 +0000
+References: <20260825033634.499118-1-chris.lu@mediatek.com>
+In-Reply-To: <20260825033634.499118-1-chris.lu@mediatek.com>
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
+ sean.wang@mediatek.com, will-cy.Lee@mediatek.com, ss.wu@mediatek.com,
+ linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,288 +75,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---ormZb02WsNzOKFXG
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Hello:
 
-On Sat, Aug 29, 2026 at 03:47:00PM +0400, Ahmed Naseef wrote:
-> On Fri, Aug 28, 2026 at 04:51:27PM +0100, Conor Dooley wrote:
-> > On Fri, Aug 28, 2026 at 07:35:14PM +0400, Ahmed Naseef wrote:
-> > > Add the binding for the pin controller found on the EcoNet EN7528 MIPS
-> > > SoC. It shares the IP with the Airoha pin controllers, but its IOMUX =
-and
-> > > pin configuration registers have a different layout, so it gets its o=
-wn
-> > > compatible.
-> > >=20
-> > > The CHIP SCU holding those registers is referenced by the airoha,chip=
--scu
-> > > phandle.
-> > >=20
-> > > Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
-> > > ---
-> > >  .../pinctrl/econet,en7528-pinctrl.yaml        | 190 ++++++++++++++++=
-++
-> > >  1 file changed, 190 insertions(+)
-> > >  create mode 100644 Documentation/devicetree/bindings/pinctrl/econet,=
-en7528-pinctrl.yaml
-> > >=20
-> > > diff --git a/Documentation/devicetree/bindings/pinctrl/econet,en7528-=
-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/econet,en7528-pinc=
-trl.yaml
-> > > new file mode 100644
-> > > index 000000000000..3ce1a5309d09
-> > > --- /dev/null
-> > > +++ b/Documentation/devicetree/bindings/pinctrl/econet,en7528-pinctrl=
-=2Eyaml
-> > > @@ -0,0 +1,190 @@
-> > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > > +%YAML 1.2
-> > > +---
-> > > +$id: http://devicetree.org/schemas/pinctrl/econet,en7528-pinctrl.yam=
-l#
-> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > +
-> > > +title: EcoNet EN7528 Pin Controller
-> > > +
-> > > +maintainers:
-> > > +  - Lorenzo Bianconi <lorenzo@kernel.org>
-> > > +
-> > > +description:
-> > > +  The EcoNet EN7528 pin controller is used to control SoC pins. It s=
-hares the
-> > > +  IP with the Airoha pin controllers, but its IOMUX and pin configur=
-ation
-> > > +  registers have a different layout.
-> > > +
-> > > +properties:
-> > > +  compatible:
-> > > +    const: econet,en7528-pinctrl
-> > > +
-> > > +  airoha,chip-scu:
-> > > +    description: phandle to the chip SCU syscon
-> > > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > > +
-> > > +  interrupts:
-> > > +    maxItems: 1
-> > > +
-> > > +  gpio-controller: true
-> > > +
-> > > +  '#gpio-cells':
-> > > +    const: 2
-> > > +
-> > > +  gpio-ranges:
-> > > +    maxItems: 1
-> > > +
-> > > +  interrupt-controller: true
-> > > +
-> > > +  '#interrupt-cells':
-> > > +    const: 2
-> > > +
-> > > +patternProperties:
-> > > +  '-pins$':
-> > > +    type: object
-> > > +
-> > > +    patternProperties:
-> > > +      '^mux(-|$)':
-> > > +        type: object
-> > > +
-> > > +        description:
-> > > +          pinmux configuration nodes.
-> > > +
-> > > +        $ref: /schemas/pinctrl/pinmux-node.yaml
-> > > +
-> > > +        properties:
-> > > +          function:
-> > > +            description:
-> > > +              A string containing the name of the function to mux to=
- the group.
-> > > +            enum: [gpio, jtag, pcie_reset, pcm, pcm_spi, phy1_led0,
-> > > +                   phy1_led1, phy2_led0, phy2_led1, phy3_led0, phy3_=
-led1,
-> > > +                   phy4_led0, phy4_led1, pnand, pon, pwm, sipo, spi,=
- uart]
-> > > +
-> > > +          groups:
-> > > +            description:
-> > > +              An array of strings. Each string contains the name of =
-a group.
-> > > +            items:
-> > > +              enum: [pon, sipo, sipo_rclk, uart2, uart2_cts_rts, uar=
-t3,
-> > > +                     ejtag, pcm1, pcm2, spi_quad, spi_cs1, pcm_spi,
-> > > +                     pcm_spi_int, pcm_spi_rst, pcm_spi_cs1, pcm_spi_=
-cs2,
-> > > +                     pcm_spi_cs3, pcm_spi_cs4, pcm_spi_cs5, pcm_spi_=
-cs6,
-> > > +                     pcm_spi_cs7, pnand, gpio0, gpio1, gpio2, gpio3,=
- gpio4,
-> > > +                     gpio5, gpio6, gpio7, gpio8, gpio9, gpio10, gpio=
-11,
-> > > +                     gpio12, gpio13, gpio14, gpio15, gpio16, gpio17,
-> > > +                     gpio18, gpio19, gpio20, gpio21, gpio22, gpio23,
-> > > +                     gpio24, gpio25, gpio26, gpio27, gpio28, gpio29,
-> > > +                     gpio30, gpio31, gpio32, gpio33, gpio34, gpio35,
-> > > +                     gpio36, gpio37, gpio38, gpio39, gpio40, gpio41,
-> > > +                     pcie_reset0, pcie_reset1]
-> > > +
-> > > +        required:
-> > > +          - function
-> > > +          - groups
-> > > +
-> > > +        additionalProperties: false
-> > > +
-> > > +      '^conf(-|$)':
-> >=20
-> > Why is this needed? Why can you not tell from the group which pins the
-> > config applies to?
->=20
-> Not for all of them: i2c_sda, i2c_scl, uart_txd and uart_rxd are in no
-> group at all.
+This series was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-Why's that? Are they just fixed output pins?
+On Tue, 25 Aug 2026 11:36:32 +0800 you wrote:
+> btmtksdio_setup() reads the device id from register 0x70010200 and then
+> throws it away twice: an snprintf() overwrites the filename that
+> btmtk_fw_get_filename() derived from it, and mt79xx_setup() passes a
+> hardcoded 0 on to btmtk_setup_firmware_79xx().
+> 
+> Neither matters on supported hardware, since the device ids that would
+> make a difference - 0x6639, 0x7925 and a flavored 0x7961 - all belong to
+> parts with no SDIO interface. So this targets bluetooth-next with no
+> Fixes: tags. What it buys is that the two functions stop silently ignoring
+> their input, which is a trap for the next chip added to this driver.
+> 
+> [...]
 
-> The spi_cs0/clk/mosi/miso pads are only in pnand, which is
-> 17 pins wide, so no group names them individually either.
+Here is the summary with links:
+  - [1/2] Bluetooth: btmtksdio: Remove redundant firmware filename override
+    https://git.kernel.org/bluetooth/bluetooth-next/c/4988456a75ea
+  - [2/2] Bluetooth: btmtksdio: Pass the hardware device id to mt79xx_setup()
+    https://git.kernel.org/bluetooth/bluetooth-next/c/afe439f35546
 
-That's easily resolved by breaking up pnand though.
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-Devils advocate thing here might be to say that the dedicated
-configuration node should only be for the things that are fixed outputs,
-and the muxable ones should get their config from a combined
-pinmux/pincfg node. Personally I think that presents a nicer interface,
-where someone doesn't have to go figure out what pins are in the group
-they just assigned a function to to also set the config properties for
-it.
 
-Cheers,
-Conor.
-
-> > > +        type: object
-> > > +
-> > > +        description:
-> > > +          pinconf configuration nodes.
-> > > +
-> > > +        $ref: /schemas/pinctrl/pincfg-node.yaml
-> > > +
-> > > +        properties:
-> > > +          pins:
-> > > +            description:
-> > > +              An array of strings. Each string contains the name of =
-a pin.
-> > > +            items:
-> > > +              enum: [gpio0, gpio1, gpio2, gpio3, gpio4, gpio5, gpio6,
-> > > +                     gpio7, gpio8, gpio9, gpio10, gpio11, gpio12, gp=
-io13,
-> > > +                     gpio14, gpio15, gpio16, gpio17, gpio18, gpio19,
-> > > +                     gpio20, gpio21, gpio22, gpio23, gpio24, gpio25,
-> > > +                     gpio26, gpio27, gpio28, gpio29, gpio30, gpio31,
-> > > +                     gpio32, gpio33, gpio34, gpio35, gpio36, gpio37,
-> > > +                     gpio38, gpio39, pcie_reset0, pcie_reset1, i2c_s=
-da,
-> > > +                     i2c_scl, uart_txd, uart_rxd, spi_cs0, spi_clk,
-> > > +                     spi_mosi, spi_miso]
-> > > +            minItems: 1
-> > > +            maxItems: 50
-> > > +
-> > > +          bias-disable: true
-> > > +
-> > > +          bias-pull-up: true
-> > > +
-> > > +          bias-pull-down: true
-> > > +
-> > > +          input-enable: true
-> > > +
-> > > +          output-enable: true
-> > > +
-> > > +          output-low: true
-> > > +
-> > > +          output-high: true
-> > > +
-> > > +          drive-strength:
-> > > +            description:
-> > > +              Selects the drive strength for the pin, in mA.
-> > > +            enum: [2, 4]
-> > > +
-> > > +        required:
-> > > +          - pins
-> > > +
-> > > +        additionalProperties: false
-> > > +
-> > > +    additionalProperties: false
-> > > +
-> > > +required:
-> > > +  - compatible
-> > > +  - airoha,chip-scu
-> > > +  - interrupts
-> > > +  - gpio-controller
-> > > +  - gpio-ranges
-> > > +  - "#gpio-cells"
-> > > +  - interrupt-controller
-> > > +  - "#interrupt-cells"
-> > > +
-> > > +allOf:
-> > > +  - $ref: pinctrl.yaml#
-> > > +
-> > > +additionalProperties: false
-> > > +
-> > > +examples:
-> > > +  - |
-> > > +    #include <dt-bindings/interrupt-controller/mips-gic.h>
-> > > +    #include <dt-bindings/interrupt-controller/irq.h>
-> > > +
-> > > +    pinctrl {
-> > > +      compatible =3D "econet,en7528-pinctrl";
-> > > +
-> > > +      airoha,chip-scu =3D <&chip_scu>;
-> > > +
-> > > +      interrupt-parent =3D <&gic>;
-> > > +      interrupts =3D <GIC_SHARED 10 IRQ_TYPE_LEVEL_HIGH>;
-> > > +
-> > > +      gpio-controller;
-> > > +      #gpio-cells =3D <2>;
-> > > +
-> > > +      interrupt-controller;
-> > > +      #interrupt-cells =3D <2>;
-> > > +
-> > > +      gpio-ranges =3D <&pinctrl 0 0 42>;
-> > > +
-> > > +      uart2-pins {
-> > > +        mux {
-> > > +          function =3D "uart";
-> > > +          groups =3D "uart2";
-> > > +        };
-> > > +
-> > > +        conf {
-> > > +          pins =3D "gpio28", "gpio29";
-> > > +          bias-pull-up;
-> > > +        };
-> > > +      };
-> > > +
-> > > +      pwm-pins {
-> > > +        mux {
-> > > +          function =3D "pwm";
-> > > +          groups =3D "gpio30";
-> > > +        };
-> > > +      };
-> > > +    };
-> > > --=20
-> > > 2.34.1
-> > >=20
->=20
->=20
-
---ormZb02WsNzOKFXG
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCapWylwAKCRB4tDGHoIJi
-0s41AP40TrmiqHWo4ntEwgnYCO+jNj4vtpfSHM4hkNL+G/xNjQEAt6iqSvsWsuEM
-i5TxRWXOXtMknOYWdPz27QNgpp6pRgM=
-=iLtR
------END PGP SIGNATURE-----
-
---ormZb02WsNzOKFXG--
 
