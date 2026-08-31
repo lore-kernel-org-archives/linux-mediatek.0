@@ -4,47 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C40AC624CF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 13:43:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BBDCC624C6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 13:43:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uoiUdB65pL39pRygv8E6gcLlcbqoHjqbhN8SRMJbg6U=; b=eJE+DzHW8HtfASWYgPAYkx2Jv5
-	e9sG0jA/G9rdmmkC0ZG/oR9vz74+3yWVnCj8+LptkeTsDNc35010D7wD3zRaHIazbLD3/6nNNe4E+
-	6GG27aE5rbC3UWCuh0zy5jilKGc3OIzmKKp32V3hYOwL0xeMa2P/uqvo0sss8n6nA9tB3JLEHEYuC
-	rWt2BBdL4NGaQbUeaUMsIz8f4Vu1fVn8pDPImknzjqGImU1CuZ+4AdVT5la83O0xPI7KDldJkF1pV
-	UMD85hvAeb9iZhbZULuGR8xtCqj8Kg5wg8AhpOQPbfyMstXPstTyx8ITNGoPaBg8tJdJ8fS6w/ecS
-	3aFgg/8g==;
+	bh=nqh6IQJMFyy0N8GbWvGTs8cWSqQT38lz1Wzeep5i/SE=; b=ei8cDAPoeGT8zYFHaaUApbBzs3
+	IKKgVAkWUaSsTHfFICCsTQvy0LMdGcLQ7l87pcuE0S2yCU+bMmcGJdGRWquBrrKbC0CKb6EaqqToO
+	DBUx3r6jrRGMs+oNZfbyH1dZH2WL/HVuAKBxsN0PC/QjRYDPT4kElCBDbQFD3l+5Pdge/2vwI9oRn
+	hCaBhC3nxt/ZVPzLcc6ZMtzo8sOyQCzX/BO7a7NHFi2IqorFSCX6z5vzwfamgyZQsqb5W0qVKbFSc
+	K3i5IBs0atqVRqXYZyEKBIcHq36D0dLriU+SVe7BhN0pzzzgXYiH3hvWQ25oDbYMjmNoY5TKrqOhM
+	W18E5KXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x12I3-00000009UHc-1kbk;
-	Mon, 31 Aug 2026 13:43:11 +0000
+	id 1x12Il-00000009UWd-01BW;
+	Mon, 31 Aug 2026 13:43:55 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x12I2-00000009UH7-0ciO;
-	Mon, 31 Aug 2026 13:43:10 +0000
+	id 1x12Ij-00000009UVm-1xHY;
+	Mon, 31 Aug 2026 13:43:53 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id CA69F40445;
-	Mon, 31 Aug 2026 13:43:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 534A91F00A3F;
-	Mon, 31 Aug 2026 13:43:08 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 260FB4079A;
+	Mon, 31 Aug 2026 13:43:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7798F1F00A3E;
+	Mon, 31 Aug 2026 13:43:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788183789;
-	bh=uoiUdB65pL39pRygv8E6gcLlcbqoHjqbhN8SRMJbg6U=;
+	s=k20260515; t=1788183833;
+	bh=nqh6IQJMFyy0N8GbWvGTs8cWSqQT38lz1Wzeep5i/SE=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=K6jHC2UpVC49+xxeTISAjHy+FR8tZjbAGcWTH5JB63d9oTgsnCtzSLypuvQ+QeelH
-	 sQWWX/xQzYg3IkiSIibMHN+csJRPndw6MMtr/aqhbjhuh/SgNulgCNvR48iqxcBZmQ
-	 GDh37qCCtShftGM8BsurKjPX9II3BPQ42q0jWbLt4BCmnUNneT2DnSCD27qFXWqAnJ
-	 EjrAmykexD1GPMWbtdn4U6izeol6QgYzk9UW7APBQIz9qC/dg19yb+7eufB4G3b7hq
-	 kHdJT3u5kRHM9rPnduPGPBG14YYLyS6zZzqFQl70pInpUmqO8nkwpYk0tgHi5wnpza
-	 JrSn1QrEEAhyg==
+	b=MBxwbZ6fZN26/SFl2FlA9nDDLKRScjJX35Mgp1BKs5rrb4Zs9WG0b94hdTKLbAy2T
+	 +r4MrdO0N27Bsgrw3ubibcYkojKObze2D7DYjfiqKxkOK0htthhNR+MGu0ymYCkJz1
+	 0uqIJlDWRSqUOMk1Hz2B0BqyRLXrN1oO7QoVxwqkvUfmhKl9rExhp9nVmiIJn6kFCt
+	 HUfXntTkhg1/McqnnHNFDV+orNlV7CDXdLWRQk9tSEq4eAlt67ZCvCclbJryN3KHXo
+	 32bNnY/Uae1lxbEK5hEBROuITVBKmuimwuPMKEgs5Zg2JAuYHXPdyaB9YgOtFsLrs6
+	 rRvp0Ar5v3gTA==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Devin Wittmayer <lucid_duck@justthetip.ca>,
+Cc: Javier Tia <floss@jetm.me>,
+	=?UTF-8?q?=E5=BC=A0=E6=97=AD=E6=B6=B5?= <Loong.0x00@gmail.com>,
+	Marcin FM <marcin@lgic.pl>,
+	Cristian-Florin Radoi <radoi.chris@gmail.com>,
+	George Salukvadze <giosal90@gmail.com>,
+	Evgeny Kapusta <3193631@gmail.com>,
+	Samu Toljamo <samu.toljamo@gmail.com>,
+	Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>,
+	Chapuis Dario <chapuisdario4@gmail.com>,
+	=?UTF-8?q?Thibaut=20Fran=C3=A7ois?= <tibo@humeurlibre.fr>,
+	Sean Wang <sean.wang@mediatek.com>,
 	Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
 	lorenzo@kernel.org,
@@ -55,17 +65,17 @@ Cc: Devin Wittmayer <lucid_duck@justthetip.ca>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.18-6.12] wifi: mt76: mt7925: add Netgear A8500 USB device ID
-Date: Mon, 31 Aug 2026 09:25:33 -0400
-Message-ID: <20260831133314.4125787-305-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.18-6.12] wifi: mt76: mt7925: add 320MHz bandwidth to bss_rlm_tlv
+Date: Mon, 31 Aug 2026 09:25:59 -0400
+Message-ID: <20260831133314.4125787-331-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260831133314.4125787-1-sashal@kernel.org>
 References: <20260831133314.4125787-1-sashal@kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.18.48
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,367 +91,436 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Devin Wittmayer <lucid_duck@justthetip.ca>
+From: Javier Tia <floss@jetm.me>
 
-[ Upstream commit 291b067a02b9c1fd272057ebf47c365260955fd2 ]
+[ Upstream commit efc9a10d1de1763baecd2031c1c6dfe6aac9ac38 ]
 
-Add USB device ID for the Netgear A8500 (0846:9050) which uses
-the mt7925 chipset.
+bss_rlm_tlv() in mt7925_mcu_bss_rlm_tlv() has no case for
+NL80211_CHAN_WIDTH_320. When associated to a 320MHz BSS, the switch
+falls through to default and sends bw=0 (CMD_CBW_20MHZ) to firmware
+via BSS_RLM TLV. Firmware then configures the RX radio for 20MHz
+and cannot decode the AP's 320MHz frames, resulting in complete data
+path failure at 320MHz.
 
-Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
-Link: https://patch.msgid.link/20260527144735.10254-1-lucid_duck@justthetip.ca
+Add the missing NL80211_CHAN_WIDTH_320 case with CMD_CBW_320MHZ and
+center_chan2.
+
+Tested on ASUS RT-BE92U: 320MHz throughput goes from 0 Mbps to
+841 Mbps (iperf3 -t30 -P8), PHY 4803 Mbps EHT-MCS11.
+
+Reported-by: 张旭涵 <Loong.0x00@gmail.com>
+Closes: https://github.com/openwrt/mt76/issues/927
+Tested-by: 张旭涵 <Loong.0x00@gmail.com>
+Tested-by: Marcin FM <marcin@lgic.pl>
+Tested-by: Cristian-Florin Radoi <radoi.chris@gmail.com>
+Tested-by: George Salukvadze <giosal90@gmail.com>
+Tested-by: Evgeny Kapusta <3193631@gmail.com>
+Tested-by: Samu Toljamo <samu.toljamo@gmail.com>
+Tested-by: Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>
+Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
+Tested-by: Thibaut François <tibo@humeurlibre.fr>
+Reviewed-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Javier Tia <floss@jetm.me>
+Link: https://patch.msgid.link/20260425195011.790265-3-sean.wang@kernel.org
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-# Stable Backport Analysis: `wifi: mt76: mt7925: add Netgear A8500 USB
-device ID`
+## Phase 1: Commit Message Forensics
 
-**Local tree:** `v6.18.44` (Linux 6.18.44)
+**Step 1.1 — Subject line**
 
----
+Record: `[wifi: mt76: mt7925]` `[add]` — add missing 320MHz bandwidth
+handling in `bss_rlm_tlv()`.
 
-## PHASE 1: COMMIT MESSAGE FORENSICS
+**Step 1.2 — Tags**
 
-### Step 1.1: Parse the subject line
-**Record:** `[wifi: mt76: mt7925]` `[add]` — Add USB device ID for
-Netgear A8500 (0846:9050) to the existing mt7925u driver.
+Record:
+- **Reported-by:** 张旭涵 \<Loong.0x00@gmail.com\>
+- **Tested-by:** 8 testers (reporter plus Marcin FM, Cristian-Florin
+  Radoi, George Salukvadze, Evgeny Kapusta, Samu Toljamo, Ariel
+  Rosenfeld, Chapuis Dario, Thibaut François)
+- **Reviewed-by:** Sean Wang \<sean.wang@mediatek.com\> (MediaTek
+  maintainer)
+- **Closes:** https://github.com/openwrt/mt76/issues/927
+- **Link:**
+  https://patch.msgid.link/20260425195011.790265-3-sean.wang@kernel.org
+- **Signed-off-by:** Javier Tia, Felix Fietkau
+- No `Fixes:`, no `Cc: stable@vger.kernel.org` (expected for candidate
+  review)
+- Ignore pipeline `Signed-off-by: Sasha Levin` if present in prepared
+  form
 
-### Step 1.2: Parse all commit message tags
-**Record:**
-- **Signed-off-by:** Devin Wittmayer `<lucid_duck@justthetip.ca>`
-  (author)
-- **Link:** https://patch.msgid.link/20260527144735.10254-1-
-  lucid_duck@justthetip.ca
-- **Signed-off-by:** Felix Fietkau `<nbd@nbd.name>` (mt76 maintainer)
-- No `Fixes:`, `Reported-by:`, `Tested-by:`, `Reviewed-by:`, `Acked-
-  by:`, or `Cc: stable@vger.kernel.org`
-- Notable pattern: maintainer (Felix Fietkau) Signed-off-by is a strong
-  quality signal; absence of `Cc: stable` is expected per review
-  pipeline rules.
+Notable: broad real-world testing, maintainer review, public bug tracker
+reference.
 
-### Step 1.3: Analyze commit body
-**Record:**
-- **Bug description:** Netgear A8500 USB WiFi adapter (VID:PID
-  0846:9050) uses the mt7925 chipset but is not recognized by the kernel
-  because its USB ID is missing from `mt7925u_device_table[]`.
-- **Symptom:** Device enumerates as USB hardware but does not bind to
-  `mt7925u` driver; WiFi is non-functional.
-- **Root cause:** Missing entry in the USB device ID table.
-- **Version info:** None stated in commit message.
+**Step 1.3 — Body analysis**
 
-### Step 1.4: Detect hidden bug fixes
-**Record:** Not a hidden bug fix in the traditional sense (no
-crash/UAF/leak). This is an explicit **hardware enablement** fix — a
-device ID addition that allows an existing, fully functional driver to
-bind to real hardware. Falls under the stable exception category for new
-device IDs.
+Record:
+- **Bug:** `mt7925_mcu_bss_rlm_tlv()` has no `NL80211_CHAN_WIDTH_320`
+  case; falls through to `default` and sends `bw=0` (`CMD_CBW_20MHZ`) to
+  firmware via `BSS_RLM` TLV.
+- **Symptom:** firmware configures RX for 20MHz, cannot decode AP 320MHz
+  frames → complete data-path failure (0 Mbps).
+- **Fix:** add `NL80211_CHAN_WIDTH_320` case with `CMD_CBW_320MHZ` and
+  `center_chan2`.
+- **Evidence:** ASUS RT-BE92U test: 0 Mbps → 841 Mbps iperf3 (`-t30
+  -P8`), PHY 4803 Mbps EHT-MCS11.
+- **Root cause:** missing switch case when programming firmware RLM TLV.
 
----
+**Step 1.4 — Hidden bug fix?**
 
-## PHASE 2: DIFF ANALYSIS
-
-### Step 2.1: Inventory the changes
-**Record:**
-- **Files changed:** `drivers/net/wireless/mediatek/mt76/mt7925/usb.c`
-  (+3 lines)
-- **Functions modified:** None functionally; only
-  `mt7925u_device_table[]` static data
-- **Scope:** Single-file, surgical, 3-line addition
-
-### Step 2.2: Code flow change
-**Record:**
-- **Before:** USB core matches 0846:9050 against
-  `mt7925u_device_table[]` → no match → driver does not probe.
-- **After:** USB core matches 0846:9050 → `mt7925u_probe()` is called
-  with `driver_info = MT7925_FIRMWARE_WM` → normal mt7925u
-  initialization path.
-- **Path affected:** USB device enumeration / driver binding at plug-in
-  time.
-
-### Step 2.3: Bug mechanism
-**Record:**
-- **Category:** Hardware workaround / device ID addition (stable
-  exception)
-- **Mechanism:** Without the VID/PID entry, `usb_driver.id_table`
-  matching fails and the adapter is unusable despite the mt7925 driver
-  being present and functional for other devices.
-
-### Step 2.4: Fix quality assessment
-**Record:**
-- **Obviously correct:** Yes — identical pattern to the existing A9000
-  entry (0846:9072) already in this tree.
-- **Minimal/surgical:** Yes — 3 lines, no logic changes.
-- **Regression risk:** Very low — only adds a new match entry; does not
-  alter behavior for existing devices.
+Record: **Yes.** Subject says “add,” but this is a functional bug fix:
+wrong bandwidth programmed to firmware causes total connectivity loss at
+320MHz. Not a style/cleanup change.
 
 ---
 
-## PHASE 3: GIT HISTORY INVESTIGATION
+## Phase 2: Diff Analysis
 
-### Step 3.1: Blame the changed lines
-**Record:**
-- `mt7925u_device_table[]` introduced in `c948b5da6bbec` (Sep 2023, "add
-  Mediatek Wi-Fi7 driver for mt7925 chips")
-- A9000 entry added in `f6159b2051e15` (Jul 2025, Nick Morrow) — already
-  present in this tree
-- A8500 entry (0846:9050) is **not yet** in this tree
+**Step 2.1 — Inventory**
 
-### Step 3.2: Follow Fixes: tag
-**Record:** No `Fixes:` tag present. N/A.
+Record:
+- **Files:** `drivers/net/wireless/mediatek/mt76/mt7925/mcu.c` (+4
+  lines)
+- **Function:** `mt7925_mcu_bss_rlm_tlv()`
+- **Scope:** single-file, surgical fix
 
-### Step 3.3: Related file history
-**Record:**
-- Recent commits to `mt7925/usb.c` include functional fixes (crash, NULL
-  deref, deadlock) and the A9000 ID addition `f6159b2051e15`
-- Similar precedent: `fc6627ca8a5f8` added Netgear A7500 (0846:9065) to
-  `mt7921/usb.c` with `Cc: stable@vger.kernel.org`
-- **Standalone:** Yes — single patch, no series dependency
+**Step 2.2 — Code flow**
 
-### Step 3.4: Author's other commits
-**Record:** Devin Wittmayer has no other commits in this tree (author is
-new contributor). Felix Fietkau is the mt76 maintainer who applied the
-patch.
+Record:
+- **Before:** `chandef->width == NL80211_CHAN_WIDTH_320` hits `default`
+  → `req->bw = CMD_CBW_20MHZ`.
+- **After:** explicit case sets `req->bw = CMD_CBW_320MHZ` and
+  `req->center_chan2` from `freq2` (same pattern as
+  `NL80211_CHAN_WIDTH_80P80`).
+- **Paths affected:** BSS association/channel-context updates via
+  `mt7925_mcu_set_chctx()` and BSS enable path in
+  `__mt7925_mcu_bss_req()`.
 
-### Step 3.5: Prerequisites
-**Record:**
-- Requires `CONFIG_MT7925U` and existing mt7925u driver — both present
-  in v6.18.44
-- Uses `MT7925_FIRMWARE_WM` — already declared via `MODULE_FIRMWARE` in
-  same file
-- **Can apply standalone:** Yes
+**Step 2.3 — Bug mechanism**
 
----
+Record: **Logic/correctness bug** — incomplete switch on channel width.
+Category: driver/firmware configuration mismatch causing total RX
+failure. Not a crash/UAF, but complete loss of throughput at 320MHz.
 
-## PHASE 4: MAILING LIST AND EXTERNAL RESEARCH
+**Step 2.4 — Fix quality**
 
-### Step 4.1: Original patch discussion
-**Record:** `b4 dig -c` could not be run (commit not in local tree). `b4
-dig` with message-id failed (incorrect syntax for message-id lookup).
-WebFetch of patch.msgid.link and lore.kernel.org returned bot-protection
-page. **UNVERIFIED:** Full mailing list review thread not accessible.
-
-### Step 4.2: Reviewers from b4 dig -w
-**Record:** UNVERIFIED — could not retrieve recipient list.
-
-### Step 4.3: Bug report search
-**Record:** No `Reported-by:` or bugzilla/syzbot links in commit
-message. Hardware enablement request from contributor.
-
-### Step 4.4: Related patches/series
-**Record:** Part of a well-established pattern of Netgear USB ID
-additions to mt76 drivers (mt7921 A7500, mt7925 A9000). Standalone one-
-patch submission.
-
-### Step 4.5: Stable mailing list history
-**Record:** UNVERIFIED — lore.kernel.org inaccessible. However, the
-nearly identical A9000 commit (`f6159b2051e15`) in this tree included
-`Cc: stable@vger.kernel.org`, establishing subsystem precedent for such
-patches.
+Record: **Obviously correct.** Mirrors existing `80P80` handling; uses
+`CMD_CBW_320MHZ` already defined in `mt76_connac.h`. Minimal regression
+risk; only affects 320MHz width path.
 
 ---
 
-## PHASE 5: CODE SEMANTIC ANALYSIS
+## Phase 3: Git History Investigation
 
-### Step 5.1: Key functions
-**Record:** No functions modified. Data table `mt7925u_device_table[]`
-consumed by `module_usb_driver(mt7925u_driver)` via `.id_table`.
+**Step 3.1 — Blame**
 
-### Step 5.2: Trace callers
-**Record:** USB core calls `usb_match_device()` against
-`mt7925u_device_table[]` during enumeration → on match, calls
-`mt7925u_probe()` (line 132 of `usb.c`). Triggered when user plugs in
-the USB adapter.
+Record:
+- `mt7925_mcu_bss_rlm_tlv()` introduced in `ca64503a8f06ec` (2024-06-12,
+  merged 2024-07-09): “add mt7925_mcu_bss_rlm_tlv to constitue the RLM
+  TLV”
+- Bandwidth switch written without `NL80211_CHAN_WIDTH_320` from the
+  start
+- `c948b5da6bbec` (2023-09-18) introduced mt7925 driver with
+  `[NL80211_CHAN_WIDTH_320] = 6` elsewhere in `mcu.c`
 
-### Step 5.3: Trace callees
-**Record:** On successful match, `mt7925u_probe()` initializes the
-mt7925 chipset using existing driver infrastructure and
-`MT7925_FIRMWARE_WM` firmware.
+**Step 3.2 — Fixes: tag**
 
-### Step 5.4: Call chain / reachability
-**Record:** USB hotplug during normal desktop/laptop use. Any user with
-this hardware who plugs in the adapter is affected. No privilege
-required to trigger enumeration.
+Record: N/A — no `Fixes:` tag. Bug introduced by omission in
+`ca64503a8f06ec`, which is present in this tree.
 
-### Step 5.5: Similar patterns
-**Record:** Identical pattern in same file for A9000 (0846:9072).
-Similar Netgear IDs in `mt7921/usb.c` (0846:9060, 0846:9065). All use
-same `USB_DEVICE_AND_INTERFACE_INFO` + `MT7925_FIRMWARE_WM` / equivalent
-firmware constant.
+**Step 3.3 — Related file history**
 
----
+Record:
+- `mt7925_mcu_bss_rlm_tlv` added `ca64503a8f06ec`, refined in
+  `22d66ef6653bb`
+- No prior fix for this specific issue in tree
+- Message-ID `-3` suggests patch 3 of a series, but this hunk is self-
+  contained (no new symbols/structs)
 
-## PHASE 6: CROSS-REFERENCING AGAINST LOCAL TREE
+**Step 3.4 — Author context**
 
-### Step 6.1: Does the buggy code exist?
-**Record:** **Yes.** The mt7925u driver and device table exist in
-v6.18.44, but the A8500 entry (0846:9050) is **missing**. Current table
-has only MediaTek reference (0e8d:7925) and Netgear A9000 (0846:9072).
-Driver has been present since `c948b5da6bbec` (confirmed ancestor of
-HEAD).
+Record: Patch authored by Javier Tia; reviewed by Sean Wang (MediaTek).
+Felix Fietkau (mt76 maintainer) committed. Consistent with normal mt76
+review path.
 
-### Step 6.2: Backport complications
-**Record:** **Clean apply expected.** File exists with identical
-structure. Insertion point is between the MediaTek entry and the A9000
-entry (as shown in the candidate diff). Only minor difference: local
-file uses `ISC` license header vs `BSD-3-Clause-Clear` in candidate diff
-— irrelevant to the 3-line ID addition.
+**Step 3.5 — Dependencies**
 
-### Step 6.3: Related fixes already present?
-**Record:** A9000 ID (`f6159b2051e15`) is already in this tree. No
-duplicate A8500 entry found. No alternate fix for A8500.
+Record: **Standalone.** `CMD_CBW_320MHZ`, `freq2`, and
+`NL80211_CHAN_WIDTH_320` already exist in this tree. No prerequisite
+commits required for this hunk to compile or function.
 
 ---
 
-## PHASE 7: SUBSYSTEM AND MAINTAINER CONTEXT
+## Phase 4: Mailing List and External Research
 
-### Step 7.1: Subsystem criticality
-**Record:** `drivers/net/wireless/mediatek/mt76/` — **IMPORTANT**
-(wireless networking driver). Affects users of specific USB WiFi
-hardware, not universal.
+**Step 4.1 — Original discussion**
 
-### Step 7.2: Subsystem activity
-**Record:** mt7925 subsystem is actively maintained in this tree —
-numerous bugfix commits in recent history (NULL deref, deadlock, crash
-fixes), indicating mature driver with ongoing stable fixes.
+Record: `b4 dig` requires `-c COMMITISH`; commit hash not in this tree,
+so direct `b4 dig -c` failed. Lore fetch blocked by bot protection. Link
+points to linux-wireless thread
+`20260425195011.790265-3-sean.wang@kernel.org` (patch 3).
+
+**Step 4.2 — Reviewers**
+
+Record: UNVERIFIED via `b4 dig -w` (no commit hash). Commit message
+itself documents **Reviewed-by: Sean Wang** and **Signed-off-by: Felix
+Fietkau**.
+
+**Step 4.3 — Bug report**
+
+Record: GitHub issue #927 (MT7927/mt76 support) documents 320MHz
+failure. Contributor analysis (jetm, ~line 2620) identifies this exact
+missing `NL80211_CHAN_WIDTH_320` case as root cause: firmware told
+20MHz, negotiates down, 0 throughput. Matches commit message.
+
+**Step 4.4 — Related patches**
+
+Record: Issue thread mentions additional 320MHz work (EHT MCS maps,
+wiphy caps). **This commit is independently valuable** for the RLM TLV
+path; does not depend on those other changes to be correct.
+
+**Step 4.5 — Stable list history**
+
+Record: UNVERIFIED — lore stable search blocked. No in-tree evidence of
+prior stable nomination.
 
 ---
 
-## PHASE 8: IMPACT AND RISK ASSESSMENT
+## Phase 5: Code Semantic Analysis
 
-### Step 8.1: Who is affected
-**Record:** Users of the Netgear A8500 USB WiFi 7 adapter (0846:9050)
-running kernel 6.18.y with `CONFIG_MT7925U` enabled.
+**Step 5.1 — Key functions**
 
-### Step 8.2: Trigger conditions
-**Record:** Plugging in the Netgear A8500 USB adapter. Common,
-deterministic, no special conditions. Unprivileged user can trigger via
-USB device insertion.
+Record: `mt7925_mcu_bss_rlm_tlv()` (modified).
 
-### Step 8.3: Failure mode severity
-**Record:** Without fix: adapter is completely non-functional (no driver
-binding). **Severity: MEDIUM** for affected hardware users (device
-unusable, but not a crash/corruption). With fix: normal WiFi operation.
+**Step 5.2 — Callers**
 
-### Step 8.4: Risk-benefit ratio
-**Record:**
-- **Benefit:** Enables WiFi on a commercially available Netgear USB
-  adapter for stable kernel users
-- **Risk:** Very low — 3-line ID table entry, zero logic change,
-  identical to already-accepted A9000 entry
+Record:
+- `mt7925_mcu_set_chctx()` — channel context changes during STA
+  operation
+- `__mt7925_mcu_bss_req()` — BSS enable during association/setup
+
+Both are normal runtime WiFi paths, not init-only.
+
+**Step 5.3 — Callees**
+
+Record: `mt76_connac_mcu_add_tlv()`, `ieee80211_frequency_to_channel()`,
+standard TLV population. Uses existing `CMD_CBW_*` constants.
+
+**Step 5.4 — Reachability**
+
+Record: Triggered when `chandef->width == NL80211_CHAN_WIDTH_320` during
+association or channel update. Reachable for hardware/firmware paths
+operating at 320MHz (e.g. MT6639/7927-class devices using mt7925 driver,
+tested setups on 6.18.x per GitHub thread). In vanilla tree,
+`mt7925_init_eht_caps()` currently advertises only 80/160 MHz MCS maps,
+so 320MHz association is less common without additional caps work — but
+the buggy code path still exists and is incorrect whenever 320MHz width
+is presented.
+
+**Step 5.5 — Similar patterns**
+
+Record: `mt76_connac_chan_bw()` in `mt76_connac.h` already maps
+`NL80211_CHAN_WIDTH_320 → CMD_CBW_320MHZ`. `mt7996` uses that helper for
+RLM TLV. mt7925’s manual switch was simply incomplete — clear oversight.
+
+---
+
+## Phase 6: Cross-Reference Against Local Tree
+
+**Step 6.1 — Buggy code present?**
+
+Record: **Yes.** Local tree is **v6.18.44** (`make kernelversion` =
+6.18.44). Current `mt7925_mcu_bss_rlm_tlv()` at lines 2325–2350 lacks
+`NL80211_CHAN_WIDTH_320` case. Fix not yet applied (`git log -S "case
+NL80211_CHAN_WIDTH_320" -- mt7925/mcu.c` returns nothing).
+
+**Step 6.2 — Backport difficulty**
+
+Record: **Clean apply expected** — 4-line insertion between
+`NL80211_CHAN_WIDTH_160` and `NL80211_CHAN_WIDTH_5` cases. No
+surrounding churn in that hunk.
+
+**Step 6.3 — Related fixes already present?**
+
+Record: **No** equivalent fix in this tree. Other 320MHz references
+exist (`ch_width[]` at line 2151, `CMD_CBW_320MHZ` in `mt76_connac.h`)
+but not in `bss_rlm_tlv()`.
+
+---
+
+## Phase 7: Subsystem and Maintainer Context
+
+**Step 7.1 — Subsystem criticality**
+
+Record: **IMPORTANT** — `drivers/net/wireless/mediatek/mt76/mt7925` WiFi
+driver. Affects users of MT7925-class hardware (PCI `0x7925`, `0x0717`;
+USB `0x7925`). Not core-kernel, but connectivity failure is user-visible
+and severe for affected hardware.
+
+**Step 7.2 — Subsystem activity**
+
+Record: Actively maintained in 6.18.y — recent stable commits include
+NULL-deref fix, crash fix, MLO fixes, TLV length fixes.
+
+---
+
+## Phase 8: Impact and Risk Assessment
+
+**Step 8.1 — Who is affected**
+
+Record: **Driver-specific** — users of mt7925/mt7925e/mt7925u (and
+related 0x0717 devices) connecting to 320MHz BSS. Growing install base
+on WiFi 7 platforms (motherboards, routers as STA).
+
+**Step 8.2 — Trigger conditions**
+
+Record: Association or channel update at 320MHz width. Requires 320MHz-
+capable hardware and 320MHz AP/network. Not universal, but reproducible
+and documented with concrete iperf numbers. Unprivileged user can
+trigger by connecting to a 320MHz AP.
+
+**Step 8.3 — Failure severity**
+
+Record: **HIGH** — not a kernel oops, but complete data-path failure (0
+Mbps, cannot decode frames). Effectively renders WiFi unusable at
+320MHz.
+
+**Step 8.4 — Risk/benefit**
+
+Record:
+- **Benefit:** HIGH for affected 320MHz users (restores full throughput;
+  0 → 841 Mbps demonstrated)
+- **Risk:** VERY LOW — 4 lines, no API change, only corrects firmware
+  TLV for one width enum
 - **Ratio:** Strongly favorable
 
 ---
 
-## PHASE 9: FINAL SYNTHESIS
+## Phase 9: Final Synthesis
 
-### Step 9.1: Evidence compilation
+**Step 9.1 — Evidence summary**
 
-**FOR backporting:**
-- Classic device ID addition to existing driver (explicit stable
-  exception)
-- Driver fully exists in v6.18.44 (`CONFIG_MT7925U`, probe/remove,
-  firmware)
-- Identical pattern to A9000 entry already in this tree
-- Subsystem precedent: similar Netgear ID patches nominated for stable
-  (`Cc: stable` on A9000, A7500)
-- Maintained by Felix Fietkau (Signed-off-by)
-- 3 lines, zero regression risk to existing devices
-- Enables real hardware for stable users
+**FOR:**
+- Real, reproducible bug with 0 Mbps failure mode
+- Severe functional impact on 320MHz operation
+- Minimal, obviously correct fix (matches `80P80` pattern and
+  `mt76_connac_chan_bw()`)
+- Extensively tested (8 Tested-by)
+- Reviewed by MediaTek maintainer
+- Buggy code present in v6.18.44 tree since `ca64503a8f06ec`
+- Standalone, no dependencies
+- Driver already has partial 320MHz support elsewhere — this completes a
+  missing piece
 
-**AGAINST backporting:**
-- Not a crash/security/corruption fix — hardware enablement only
-- No Tested-by or Reported-by in commit message
-- Mailing list discussion unverified
+**AGAINST:**
+- In-tree `mt7925_init_eht_caps()` does not yet advertise 320MHz MCS
+  maps, so vanilla users may not negotiate 320MHz today without
+  additional upstream work
+- Could be viewed as part of broader 320MHz enablement for MT7927-class
+  hardware
+- Full lore/stable discussion not accessible
 
 **UNRESOLVED:**
-- Full lore review thread not accessible
-- No explicit Tested-by confirmation
+- Exact upstream commit SHA (not in this tree)
+- Whether reviewers explicitly nominated for stable on lore
 
-### Step 9.2: Stable rules checklist
-1. Obviously correct and tested? **PASS** — trivial ID entry,
-   maintainer-applied; Tested-by absent but pattern is standard
-2. Fixes a real bug affecting users? **PASS** — device non-functional
-   without ID
-3. Important issue? **PASS** — hardware enablement for real product
-   (stable exception category)
-4. Small and contained? **PASS** — 3 lines, 1 file
-5. No new features or APIs? **PASS** — device ID only
-6. Can apply to local tree? **PASS** — driver and file present, clean
-   apply expected
+The unresolved items do not outweigh the clear technical bug and fix
+quality.
 
-### Step 9.3: Exception category
-**Record:** **NEW DEVICE ID** — adding PCI/USB ID to existing driver.
-Explicitly listed as a stable exception. The mt7925u driver exists; only
-the ID is new.
+**Step 9.2 — Stable rules checklist**
 
-### Step 9.4: Decision rationale
+1. Obviously correct and tested? **PASS** — 4-line switch case; 8
+   Tested-by; maintainer reviewed
+2. Fixes real bug affecting users? **PASS** — documented 0 Mbps at
+   320MHz
+3. Important issue? **PASS** — complete connectivity failure at
+   supported width enum
+4. Small and contained? **PASS** — 4 lines, one function
+5. No new features/APIs? **PASS** — fixes firmware configuration for
+   existing enum value
+6. Can apply to local tree? **PASS** — buggy code confirmed present in
+   v6.18.44
 
-This commit adds USB VID/PID `0846:9050` for the Netgear A8500 to the
-existing `mt7925u` driver in the v6.18.44 stable tree. The driver is
-fully present; the A9000 sibling device (0846:9072) is already supported
-in this tree via an identical 3-line patch that was nominated for
-stable. Without this entry, the A8500 adapter cannot bind to any driver
-and is completely unusable. The change is minimal, obviously correct,
-introduces no new APIs, and matches established stable backport practice
-for mt76 Netgear USB adapters.
+**Step 9.3 — Exception categories**
+
+Record: Best classified as **hardware/driver quirk completion** —
+completes missing bandwidth handling for hardware/firmware that already
+uses `CMD_CBW_320MHZ` elsewhere in the same driver.
+
+**Step 9.4 — Decision rationale**
+
+For **v6.18.44**, the mt7925 driver is present, the incomplete switch
+has been wrong since `bss_rlm_tlv()` was added, and users connecting at
+320MHz get a completely broken data path. The fix is tiny, safe, well-
+tested, and restores real-world functionality. This meets stable-kernel
+criteria for an important driver bug fix.
 
 ---
 
 ## Verification
 
-- [Phase 1] Parsed subject, tags, body from user-provided commit message
-- [Phase 1] Confirmed: no Fixes/Reported-by/Tested-by/Cc:stable tags;
-  Felix Fietkau Signed-off-by present
-- [Phase 2] Diff analysis: 3 lines added to `mt7925u_device_table[]` in
-  `usb.c`
-- [Phase 3] `git describe HEAD`: v6.18.44
-- [Phase 3] `git blame` on usb.c lines 12-18: table from c948b5da6bbec
-  (2023), A9000 from f6159b2051e15 (2025)
-- [Phase 3] `git merge-base --is-ancestor c948b5da6bbec HEAD`: mt7925
-  driver is in tree
-- [Phase 3] `git show f6159b2051e15`: A9000 precedent with Cc:
-  stable@vger.kernel.org
-- [Phase 3] `git show fc6627ca8a5f8`: mt7921 A7500 precedent with Cc:
-  stable
-- [Phase 4] WebFetch patch.msgid.link: blocked by bot protection —
+- [Phase 1] Parsed commit message, tags, and body from user-provided
+  candidate
+- [Phase 1] Identified 8 Tested-by, 1 Reported-by, Reviewed-by Sean
+  Wang, Closes GitHub #927
+- [Phase 2] Diff: +4 lines in `mt7925_mcu_bss_rlm_tlv()` adding
+  `NL80211_CHAN_WIDTH_320` case
+- [Phase 3] `git describe HEAD` → v6.18.44; `make kernelversion` →
+  6.18.44
+- [Phase 3] `git blame` on lines 2325–2357: switch introduced
+  `ca64503a8f06ec` without 320MHz case
+- [Phase 3] `git show ca64503a8f06ec`: function added June 2024 without
+  320MHz handling
+- [Phase 3] `git show c948b5da6bbec`: mt7925 driver in tree since Sept
+  2023
+- [Phase 3] `git merge-base --is-ancestor c948b5da6bbec HEAD` → driver
+  present
+- [Phase 3] `git merge-base --is-ancestor ca64503a8f06ec HEAD` → buggy
+  function present
+- [Phase 4] `b4 dig` without commit hash failed (needs `-c COMMITISH`)
+- [Phase 4] Lore/patch.msgid.link fetch blocked by bot protection —
   UNVERIFIED
-- [Phase 4] WebFetch lore.kernel.org: blocked — UNVERIFIED
-- [Phase 4] b4 dig: commit not in tree, could not dig by hash —
-  UNVERIFIED
-- [Phase 5] Read `mt7925u_probe()` at line 132: standard USB probe path
-- [Phase 5] `grep 0846` in mt76: A9000 (9072) present, A8500 (9050)
-  absent
-- [Phase 6] Read current `usb.c`: A8500 ID missing, driver fully
-  functional
-- [Phase 6] `Kconfig` confirms `CONFIG_MT7925U` exists
-- [Phase 6] `MODULE_FIRMWARE(MT7925_FIRMWARE_WM)` present in usb.c
-- [Phase 7] `git log --oneline -20 -- mt7925/`: active subsystem with
-  many stable-worthy fixes
-- [Phase 8] Failure mode: no driver binding → device unusable (not
-  crash)
+- [Phase 4] GitHub issue #927 fetched; line ~2620 confirms same root
+  cause and fix
+- [Phase 5] `grep mt7925_mcu_bss_rlm_tlv` → callers at lines 2421, 2867
+  in `mcu.c`
+- [Phase 5] `mt76_connac_chan_bw()` in `mt76_connac.h` lines 283–300
+  maps 320MHz correctly
+- [Phase 5] `CMD_CBW_320MHZ` exists at `mt76_connac.h:59`
+- [Phase 5] Other 320MHz reference at `mcu.c:2151` (`ch_width[]`)
+- [Phase 6] Read current `mcu.c:2325–2350` — missing 320MHz case
+  confirmed
+- [Phase 6] `git log -S "case NL80211_CHAN_WIDTH_320" -- mt7925/mcu.c` →
+  empty (fix not in tree)
+- [Phase 6] PCI IDs `0x7925`, `0x0717` in `pci.c` since `c948b5da6bbec`
+- [Phase 8] `mt7925_init_eht_caps()` (`main.c:231–236`) advertises only
+  80/160 MHz MCS — noted as scope limiter for vanilla 320MHz
+  negotiation, but does not negate the bug in `bss_rlm_tlv()`
 
 **YES**
 
- drivers/net/wireless/mediatek/mt76/mt7925/usb.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
-index bf040f34e4b9f..995a7fcc419fd 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
-@@ -12,6 +12,9 @@
- static const struct usb_device_id mt7925u_device_table[] = {
- 	{ USB_DEVICE_AND_INTERFACE_INFO(0x0e8d, 0x7925, 0xff, 0xff, 0xff),
- 		.driver_info = (kernel_ulong_t)MT7925_FIRMWARE_WM },
-+	/* Netgear, Inc. A8500 */
-+	{ USB_DEVICE_AND_INTERFACE_INFO(0x0846, 0x9050, 0xff, 0xff, 0xff),
-+		.driver_info = (kernel_ulong_t)MT7925_FIRMWARE_WM },
- 	/* Netgear, Inc. A9000 */
- 	{ USB_DEVICE_AND_INTERFACE_INFO(0x0846, 0x9072, 0xff, 0xff, 0xff),
- 		.driver_info = (kernel_ulong_t)MT7925_FIRMWARE_WM },
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 1d63bfa58c437..0e45f9c757351 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -2342,6 +2342,10 @@ void mt7925_mcu_bss_rlm_tlv(struct sk_buff *skb, struct mt76_phy *phy,
+ 	case NL80211_CHAN_WIDTH_160:
+ 		req->bw = CMD_CBW_160MHZ;
+ 		break;
++	case NL80211_CHAN_WIDTH_320:
++		req->bw = CMD_CBW_320MHZ;
++		req->center_chan2 = ieee80211_frequency_to_channel(freq2);
++		break;
+ 	case NL80211_CHAN_WIDTH_5:
+ 		req->bw = CMD_CBW_5MHZ;
+ 		break;
 -- 
 2.53.0
 
