@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34CADC61DD3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 21:47:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAFACC61DFD
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 21:47:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E4N2Z9Nu76llWCIDOn2i9yQBrPhlyiZyTva3R2V2uoo=; b=fQqkkWR1DTKkRPVtDHVsRIudbq
-	FEVa0XsotJJJEETYUCQ8zDau5VPVAfu4jL4RmYcd5ala0J3rQfLT/OF/VonLhtnY+5ELXTbY4R+wy
-	tAWkJOckylcyjB78wTDs/W3Nrkbank8YZfwWPjLE2dDM+Egw0mqj4eDU/zeg4BbM+KByAL1762CNv
-	JleS/FvrmgU3IusvNRNVvYzJq5JmKFTBoisHuhi7ZlGmTz7e9EZhbVu5TrjBrToh+5/FBxwSIkcgL
-	+ylMxjQkObdJJFWlxBE7pMdJU7nvVWIw7/voE62ye04laW/jqXbRF2JpWb0AkOvtmYM4OSgY61a3E
-	ccfrNZig==;
+	bh=T+2f2XHv+af68YmdwG7YdmU8mGG4BCpNERxEZlAskTc=; b=y1/cwpfwFD9TEfG30UNP6F3qk6
+	BK4fOto3iK8FURq0aT4zKywsXf+YNDu1r6vzEdK2jGiDO01g2CPrHwKJ3cD/vDcT/Q924GDcE40cH
+	RveCJA3kcrdrzqOSZO5ff3KI8WnCpMDeasndOUMtlwx7xso1GMiczQKwFBN7PubdSrg7NlK9SQbF2
+	rpYwi+h6HLWWFw6e0NeJNhwx8LpkCdDRCSQyK04dfbM6AcAYxtZm8ZLSETPIfIVGuSZynnYgJJkCq
+	SKpOg2h+qABGXr8rNEcDB/KsaG9inJGiXJuxrg6hJxVFWG3h5WM+r2QCSfnqFA7+1+dO5kBlmQ242
+	Z3YoB5sQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x19qm-0000000AYYn-09qu;
-	Mon, 31 Aug 2026 21:47:32 +0000
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+	id 1x19qz-0000000AYcs-105d;
+	Mon, 31 Aug 2026 21:47:45 +0000
+Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x19qj-0000000AYXo-1Z1V
+	id 1x19qu-0000000AYaK-0bmw
 	for linux-mediatek@lists.infradead.org;
-	Mon, 31 Aug 2026 21:47:30 +0000
-Received: by mail-lj1-x22b.google.com with SMTP id 38308e7fff4ca-39c74c469e8so23986581fa.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 31 Aug 2026 14:47:28 -0700 (PDT)
+	Mon, 31 Aug 2026 21:47:43 +0000
+Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-3a1f628b0afso1054841fa.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 31 Aug 2026 14:47:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788212847; x=1788817647; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1788212858; x=1788817658; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=E4N2Z9Nu76llWCIDOn2i9yQBrPhlyiZyTva3R2V2uoo=;
-        b=YbnM32K+Ba3v+G09T/Ptp0K+GGT9ysV9HhYfzq4uEDrcp+cHRFzNvOPXJ4U5qJ0Dq5
-         f9IV6PWrsqFv7mnt512c8e/LMLeDzJZEqVAUah8rSWKVrPjHKpljONviABhUaAv/e1jM
-         MlwZDgxrOTP0CYaU1hYMs4d/CQjV5K/1T5e5M3P/tcAmb3FJYksfMLCrT/MixRfBZSuN
-         2TR7m5xlmaPXhZc1WS5k3058z8/FTp6eOUcsfCSxRUesiI4+Ypwv9bsor95+Af9X7zgP
-         3EuxQ7ePZDRPs+5IwnYJFh3akiZj9wZUVuUUt2RKLaPHICp2aNrs2oKn9qacvqOLWTWO
-         9szA==
+        bh=T+2f2XHv+af68YmdwG7YdmU8mGG4BCpNERxEZlAskTc=;
+        b=qpdeun3FQcpMfiFiV9nTQSdPZRlN+rhmv3QX+8hwXV/fA/2EKTBUp3xMinhP6Sd9pZ
+         AvmNo4PTsP6hYzxLayNhbTgjWBHv5sGsoj+/wOGJFWLOskRGZQgmYt92IBlT1kiTuSP4
+         KZ1FzhP891zc1pAQcXiy8YA5aIDxKxVBIOOgd+5PMxfgLNkZ9vHpgLOdetJyogZEihFO
+         umtYZulGrVsHNwHySLHAgbpRu+fL4rCCAZ9gKYAUcDz/FkaTEHBT1IYcpiY9pLs1OzgP
+         s8hEMmTv2ZAtSvGIgwA38fzdVN6wdGDYOUJQUxScdwNP9BkOWLeS1la6RYhaXumlmefL
+         KoFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788212847; x=1788817647;
+        d=1e100.net; s=20251104; t=1788212858; x=1788817658;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=E4N2Z9Nu76llWCIDOn2i9yQBrPhlyiZyTva3R2V2uoo=;
-        b=CvDa3I4a2RW+Qh/TQ6nk+9GXlleguaOF8mJC/7uEEcuqJGHKVn6r2XsSOH+fDDX9LS
-         PqVqvvg1AIBTQaoGrI87T7QHL/SgJgH3rtPsid0JTvT7qeMNJKvHGnIXEco0z5upvotb
-         Bxu81JSOijJngpa6Iak6P3RR595LS6HqZXbdUWLlNfEjO2K6TNRGGckvDGNZaLSCQSTZ
-         XjjKyueG36D10U2p/9p76F4Fh+wDRASxgFPqfmn3YWVAyZDLuJQZJi2kLbqRQJ8RcFMY
-         SPSkecN/MTu5j0jDoLq9QLNakEhwHIza87DacR8VP307FjXfTffkaTigBx5qfH7TWBye
-         2znQ==
-X-Forwarded-Encrypted: i=1; AKwUvByk+kyYLBhuqNvOBZky2juLBVSjSJk+opdipbRxmTWmwZEpBluroljHFQb+nWTwUK7rZFMFVx9S5MFYIZDYvw==@lists.infradead.org
-X-Gm-Message-State: AFuF++lPPVcGo4yEYpiiGq3rSoNa4vbXnTPclwIXtmjL37LwTKaBnfPk
-	kkAQLaUxTlSS49h2mPVUV5HfjEIpvMBB7gMFqINgj0/L+qc+XA365Dk=
-X-Gm-Gg: AYBFou2PZCTCpY2pnW/PNHJTGRRYNU7oIEmvzlhkt4PB6WCxuz4Mc+qqXVNRegNQZUD
-	YPi9niNXdxZqS5tgFAs2B7RAUcFAZrt+QQP3fMb/yLFmocCWzChqeGHqNAj32X6j9Mv0pQEQnlp
-	1q1UUS6etd4PJnmJo5AiCSidiUcw2qv4tpExAmxGBurdvVFry0uC8Cv3SkEjl02fDc/Bd2dNG06
-	CfqSwS5BsadcXTD8Uzw2oZYs2MbIf4Okv2H0cao7k7sWvijpvQxJk1cQGShsB7BwM1yMTkmrEEF
-	Cenmr5vL05ju5Yyjz7sMKoKpUg0e5Qe+5E6fT8Oa5KqYWIjvfTWD81iLmjA6VgyGYwne8UYuIP+
-	YQrLAPK/O/WVWAQ0eSqaVy0d8HhU1ELGYz5xzSr5XJ22Ey2vHjGBZh3Vl7fsJYp5tx+Ius32Nmw
-	aZpmhVkxkanuMPbk7s7p8RnMCWvZYa2lpvr3H2yTB61KLdrTwUTogLjPXSvHSi
-X-Received: by 2002:a05:651c:b23:b0:3a3:314:8c8a with SMTP id 38308e7fff4ca-3a3031499camr62394581fa.14.1788212846426;
-        Mon, 31 Aug 2026 14:47:26 -0700 (PDT)
+        bh=T+2f2XHv+af68YmdwG7YdmU8mGG4BCpNERxEZlAskTc=;
+        b=bd7RCQvgNDOrr5CI3MJGoeYxiM71Ag68h5R9AtZ1Hz6SrjH+Ao1Ynt4ky3UuIs8AUv
+         iQrely+nZXJn4Xtfl23qxMGQ0EUXXns6BRJIEizbu7pLh/uIo+4euKEPL1QlXwroynyx
+         jLgNOFGQLQZlAQ8CPM4z2YzTMH2rvUkEle40wFCiDkevJNPmYJEzUF88/NmRnzESGb21
+         4AsY6NW0dzd37Vnrn46z1fqOYBcTepKa0R4dnFJ7APEjzMMSdOZd+LO5YUNvV+TY5Bp0
+         H4612t8SVj6QDXVR8CYX1aQv0hZpD6tALOoz7DP/Ct5qQ5onZUUGOU9phGTev6JY0ffz
+         vw2w==
+X-Forwarded-Encrypted: i=1; AKwUvBz8KuVUg9+p+8TghUh+OjH8ank7YwxBxEDROOUQI/8lm/n7bk94ar7v9eepUOh9SJV89Nd+4YFj4/3KJbbZjg==@lists.infradead.org
+X-Gm-Message-State: AFuF++kucG7iUpximxZoAGe1Ly2KrAwzLyTNESXjlGGKH524SB2GXB6a
+	dgg9z1YOsLf5OZlhysq6RTeSdSlaB0PkcpAu/7uLWKR3s7QrseBW71U=
+X-Gm-Gg: AYBFou0RenPxG1VfZFEVrti7MWh2QmnMCGCm9dRDeJ313Pv792N2nMUiKzs70V9ClVy
+	pLq2HOQOVdj5+/CEwUX37YuDMP+y1rEnTgBlA1rlZdie1O7hMoQWRz9X/6NPWSTi18iUpBG32P2
+	FHmw9Y3m4duz7aIPs4q5Iua4ZLAzNCy6hCbi/KhNkHhm87w+QRNQxmuHU2t66FukomYthFjvc48
+	lKZ64tUGhSSHsCZwczSEvrepCYG456J/M1o4skjxElU3k6mA319GylOGTXYXEdF2WiZuvucSBNx
+	A6AlfuLio5TeIY2TUAuOWqUX5U1xuYsO82aCEmBZe7qxGgNwXaZXzzQLUnTp+xFJ+ilQBGB58HF
+	PccV7zeFTkuhPpEAvImuOYg5QwoRh5HtbRFttsk1SK3MS2Yan68geB7cDODpraxtwVHOqfhW0Jz
+	HLhsmehGgNc6HtPRHYkpYX6wnhfzBVWLT1yZASkbuSaOkBbv4cWg==
+X-Received: by 2002:a05:651c:325a:b0:394:1254:10d2 with SMTP id 38308e7fff4ca-3a30175f2aamr61513991fa.0.1788212857793;
+        Mon, 31 Aug 2026 14:47:37 -0700 (PDT)
 Received: from fedora ([92.36.9.2])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3a31550cefbsm18299201fa.9.2026.08.31.14.47.24
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3a31550cefbsm18299201fa.9.2026.08.31.14.47.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 31 Aug 2026 14:47:26 -0700 (PDT)
+        Mon, 31 Aug 2026 14:47:37 -0700 (PDT)
 From: Vitaliy Sochnev <sochnev.v.74@gmail.com>
 To: Lorenzo Bianconi <lorenzo@kernel.org>,
 	netdev@vger.kernel.org
@@ -82,17 +82,18 @@ Cc: upstream@airoha.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Vitaliy Sochnev <sochnev.v.74@gmail.com>
-Subject: [PATCH net v2 0/3] net: airoha: fix silent RX loss on the shared CPU ring
-Date: Tue,  1 Sep 2026 00:46:58 +0100
-Message-ID: <20260831234701.206021-1-sochnev.v.74@gmail.com>
+Subject: [PATCH net v2 1/3] net: airoha: handle RX_NO_CPU_DSCP interrupt, not just RX_DONE
+Date: Tue,  1 Sep 2026 00:46:59 +0100
+Message-ID: <20260831234701.206021-2-sochnev.v.74@gmail.com>
 X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260830095717.37218-1-sochnev.v.74@gmail.com>
+In-Reply-To: <20260831234701.206021-1-sochnev.v.74@gmail.com>
 References: <20260830095717.37218-1-sochnev.v.74@gmail.com>
+ <20260831234701.206021-1-sochnev.v.74@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260831_144729_445566_45647599 
-X-CRM114-Status: GOOD (  14.30  )
+X-CRM114-CacheID: sfid-20260831_144740_218868_2BB57B47 
+X-CRM114-Status: GOOD (  18.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,69 +108,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-All three target net. v1 split them across net/net-next; with the ring
-size now shown to be load bearing, they belong together.
+airoha_qdma_hw_init() unmasks the per-ring NO_CPU_DSCP interrupt, which
+fires when an RX ring runs out of free CPU descriptors, but
+airoha_irq_handler() only extracts the RX_DONE bits from the same status
+word. The NO_CPU_DSCP bits are acknowledged and dropped.
 
-Answers to the v1 review:
+Once a ring is drained to zero posted descriptors no further RX_DONE can
+fire for it - nothing is left for hw to receive into - so NAPI is never
+rescheduled, airoha_qdma_fill_rx_queue() is never called again, and the
+ring stays dead until the interface is reconfigured.
 
-- "fill_rx_queue() overwrites the DONE bit written by hw" - no. I
-  implemented that check anyway (bail out in fill_rx_queue(), clear the
-  bit in rx_process()) and it never fired once, while the ring was
-  demonstrably stalled: the descriptor at q->head never had
-  QDMA_DESC_DONE_MASK set, so there was nothing to catch. Worse,
-  clearing desc->ctrl outright also wipes QDMA_DESC_LEN_MASK, which
-  fill_rx_queue() writes as the buffer size and hw reads back - RX then
-  delivers poisoned pages. That version is dropped.
+This is reachable on RX ring 4, which airoha_fe_vip_setup() force-routes
+~15 VIP-classified protocols onto (BOOTP, PPPoE Discovery, ISAKMP,
+DHCPv6, SIP, LLDP, PPP LCP/IPCP/CHAP/PAP/IPv6CP, ...) while it sits on
+the 16-descriptor RX_DSCP_NUM() default. A DHCP renewal or a PPPoE
+negotiation burst drains it faster than the CPU reposts, after which all
+of those protocols silently stop being received.
 
-- "have you tried to just increase the queue size" - yes, and that is
-  the fix. Ring 4 at 16 stalls roughly every 35 s under repeated PPPoE
-  dial-up and negotiation never completes; at 128 nothing triggered
-  across 500 forced reconnects over 20 h. Patch 3.
+Treat NO_CPU_DSCP like RX_DONE for scheduling NAPI:
+airoha_qdma_rx_process() already calls airoha_qdma_fill_rx_queue()
+unconditionally at the end of every poll, so scheduling NAPI is enough
+to make an emptied ring refill itself. Re-enable the bit alongside
+RX_DONE in airoha_qdma_rx_napi_poll() so it is not left masked after
+first use.
 
-- "is QDMA_DESC_DROP_MASK set when the issue occurs" - no, never, for
-  the whole duration of the stall.
+Whether NO_CPU_DSCP re-latches while the ring is still empty is not
+documented. If it does, a ring that cannot be refilled (page_pool
+returning NULL) keeps reasserting it. Masking it until a refill succeeds
+is worse: a starved ring never fires RX_DONE either, so it would stay
+dead after the memory pressure clears.
 
-- default RX_DSCP_NUM raised 16 -> 32 per the vendor SDK, as asked.
+Fixes: f252493e1835 ("net: airoha: Enable multiple IRQ lines support in airoha_eth driver.")
+Link: https://github.com/openwrt/openwrt/issues/24715
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Vitaliy Sochnev <sochnev.v.74@gmail.com>
+---
+ drivers/net/ethernet/airoha/airoha_eth.c  | 16 +++++++++++-----
+ drivers/net/ethernet/airoha/airoha_regs.h |  2 ++
+ 2 files changed, 13 insertions(+), 5 deletions(-)
 
-- recovery pause measured at 986-1131 us over 13 events, against the
-  50 ms read_poll_timeout() ceiling.
-
-- style: RCT, verbose comments gone, and the !q->ndesc check dropped -
-  the bit is only set from rx_process(), which cannot run on a ring
-  without descriptors.
-
-One cost worth flagging: the detector adds an uncached REG_RX_DMA_IDX
-read to every rx_process() call that ends on a non-DONE descriptor. airoha_qdma_rx_napi_poll() loops while the last
-pass reaped anything, so that is once or twice per NAPI poll, on every
-ring, not just the one that can stall. Gating it on the previous poll
-having reaped nothing would keep it off busy rings and only delays
-detection by about one poll, since q->tail is frozen from the moment
-the stall begins. I left it ungated as I have no profiling either way -
-happy to add the gate if you prefer it.
-
-A question for the airoha folks: during the stall REG_RX_DMA_IDX keeps advancing while
-REG_RX_CPU_IDX stays put and the consumer never sees another DONE. Is
-there a documented condition under which hw stops writing completions
-back to a ring, or a constraint on RX_CPU_IDX that the driver is
-violating by leaving one descriptor unposted?
-
-The rx_stall_recover ethtool counter from v1 is dropped here - new ABI
-does not belong in a fix - and will follow for net-next.
-
-Tested on Nokia XG-040G-MF (AN7583) on a live PPPoE line, in both
-configurations: as sent, and with stock ring sizes so the recovery path
-actually executes.
-
-Vitaliy Sochnev (3):
-  net: airoha: handle RX_NO_CPU_DSCP interrupt, not just RX_DONE
-  net: airoha: recover RX ring after hw completion stall
-  net: airoha: grow the small RX rings
-
- drivers/net/ethernet/airoha/airoha_eth.c  | 114 ++++++++++++++++++++--
- drivers/net/ethernet/airoha/airoha_eth.h  |  11 ++-
- drivers/net/ethernet/airoha/airoha_regs.h |   2 +
- 3 files changed, 120 insertions(+), 7 deletions(-)
-
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 64619e9a704d..c59201aded26 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -784,13 +784,16 @@ static int airoha_qdma_rx_napi_poll(struct napi_struct *napi, int budget)
+ 		int i, qid = q - &qdma->q_rx[0];
+ 		int intr_reg = qid < RX_DONE_HIGH_OFFSET ? QDMA_INT_REG_IDX1
+ 							 : QDMA_INT_REG_IDX2;
++		u32 irq_id = qid % RX_DONE_HIGH_OFFSET;
++		u32 intr_mask = BIT(irq_id) |
++				BIT(irq_id + RX_NO_CPU_DSCP_LOW_OFFSET);
+ 
+ 		for (i = 0; i < ARRAY_SIZE(qdma->irq_banks); i++) {
+ 			if (!(BIT(qid) & RX_IRQ_BANK_PIN_MASK(i)))
+ 				continue;
+ 
+ 			airoha_qdma_irq_enable(&qdma->irq_banks[i], intr_reg,
+-					       BIT(qid % RX_DONE_HIGH_OFFSET));
++					       intr_mask);
+ 		}
+ 	}
+ 
+@@ -1468,16 +1471,19 @@ static irqreturn_t airoha_irq_handler(int irq, void *dev_instance)
+ 	if (!test_bit(DEV_STATE_INITIALIZED, &qdma->eth->state))
+ 		return IRQ_NONE;
+ 
+-	rx_intr1 = intr[1] & RX_DONE_LOW_INT_MASK;
++	rx_intr1 = intr[1] & (RX_DONE_LOW_INT_MASK | RX_NO_CPU_DSCP_LOW_INT_MASK);
+ 	if (rx_intr1) {
+ 		airoha_qdma_irq_disable(irq_bank, QDMA_INT_REG_IDX1, rx_intr1);
+-		rx_intr_mask |= rx_intr1;
++		rx_intr_mask |= (rx_intr1 & RX_DONE_LOW_INT_MASK) |
++				RX_NO_CPU_DSCP_INT_RX1_MASK(rx_intr1);
+ 	}
+ 
+-	rx_intr2 = intr[2] & RX_DONE_HIGH_INT_MASK;
++	rx_intr2 = intr[2] & (RX_DONE_HIGH_INT_MASK | RX_NO_CPU_DSCP_HIGH_INT_MASK);
+ 	if (rx_intr2) {
+ 		airoha_qdma_irq_disable(irq_bank, QDMA_INT_REG_IDX2, rx_intr2);
+-		rx_intr_mask |= (rx_intr2 << 16);
++		rx_intr_mask |= ((rx_intr2 & RX_DONE_HIGH_INT_MASK) <<
++				 RX_DONE_HIGH_OFFSET) |
++				(rx_intr2 & RX_NO_CPU_DSCP_HIGH_INT_MASK);
+ 	}
+ 
+ 	for (i = 0; rx_intr_mask && i < ARRAY_SIZE(qdma->q_rx); i++) {
+diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethernet/airoha/airoha_regs.h
+index 442b48c9b991..bde3d599d8b7 100644
+--- a/drivers/net/ethernet/airoha/airoha_regs.h
++++ b/drivers/net/ethernet/airoha/airoha_regs.h
+@@ -549,6 +549,8 @@
+ #define INT_RX1_MASK(_n)							\
+ 	((((_n) << RX_NO_CPU_DSCP_LOW_OFFSET) & RX_NO_CPU_DSCP_LOW_INT_MASK) |	\
+ 	 (RX_DONE_LOW_INT_MASK & (_n)))
++#define RX_NO_CPU_DSCP_INT_RX1_MASK(_n)					\
++	(((_n) & RX_NO_CPU_DSCP_LOW_INT_MASK) >> RX_NO_CPU_DSCP_LOW_OFFSET)
+ 
+ /* QDMA_CSR_INT_ENABLE3 */
+ #define RX31_NO_CPU_DSCP_INT_MASK	BIT(31)
 -- 
 2.55.0
 
