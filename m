@@ -4,77 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9097DC624A5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 16:15:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC0D5C61DD3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 16:34:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QLrtm4PjnIPMZjGOBkD2GjpIeV2schSUM6vZ//r0E74=; b=vpIebeNhlAIIrmxWU+TKDHCafT
-	nF2BunVoMVpjyGyShHOozeTolMr9T5logB0dZlJbb3lFXn0/kXHysf6PPR0s/tnraPLc8ulqe538f
-	sSdyJ5TsFEQAKVs4RiggeNSvQrjG9DqS0etIdb8k5Xr6SdX00WAThvnHAevkd1PurMbfTu9qlXEvc
-	DMG/gVEKNzow3OoDeI/+Qxn/azD+chMcL58tCPFrx79YMwvrrOZCHcykWKcn8S6W+80fWCLA3wOmS
-	3vUvszPTxhO1A/zXcLlO+tZdaR2AwcUsYEcOp7scoMw+Zr5wboR8uo/v9sEWMz8giovanusSdy1h0
-	mMHWlobg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=d2dfCgcT9WYoJq3MbnykfoZuENOChAECsgIei3J8DQo=; b=47Fdl2bzdPRICLaaAJi9EdhdLP
+	KV8Y/ZGGQiu5vCsnnVAHZxRN3Te5dDMGR3a1isoL3Cze9uO33bFYid8q4kH3uZW8YrK95Q5v/VUZJ
+	YwlVJf2A9wigVtvy0Pl1uY5NM5fj55qK+i2HGtXRHpU8hvwk1g94GCcCnM7RIlExTS0tYIfhvlS7v
+	KsC3ItWiZo1xlj+pGVihmgFtx8WyH667PWrEe7oi61CrOmxDtarsMVC+Pe0dESUGuiUEOHwLW1QoT
+	ZDcdqTZSl9GWOUbtZFMu0BwfwqwFqsD0JA2uRNR09aqdxgd19d+5M2vOTCOM5pJrUvKrfH/YFljq1
+	ZlIUwNhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x14fT-0000000A0iA-2oV1;
-	Mon, 31 Aug 2026 16:15:31 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1x14xg-0000000A3SR-35As;
+	Mon, 31 Aug 2026 16:34:20 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x14f9-0000000A0RC-2vqg;
-	Mon, 31 Aug 2026 16:15:13 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 0C7814E4147F;
-	Mon, 31 Aug 2026 16:15:10 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id D151360231;
-	Mon, 31 Aug 2026 16:15:09 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 86CCF11C7922B;
-	Mon, 31 Aug 2026 18:15:03 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1788192907; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=QLrtm4PjnIPMZjGOBkD2GjpIeV2schSUM6vZ//r0E74=;
-	b=Ej6u9ZW9pubc1ChmjbF1r7gwKgdbCx8SMZe+c9nMLnjyROr8ln2hFeT8KSNWRnyaGIeCuF
-	hZcu6UjYnhuk63QAB87l4NRBR6LQLOSoLTdOl32t2npOxnMxKkDG1bmbYmbr+HtBXJe+/+
-	2SfVffkTEXLY/dM10s69O7aEImdOsUASybouxPzMUE03CO9jJHjM45FZ99uR3f1U7ZMoDJ
-	fQHl/WJxsX5VDPonJsdgVNtLGKORGy9iBOv8yqC/lJec4mRdIiVU7DzlMHLHNMJqZIE42d
-	/u+MF0gIbk8HKkp8asbNBls6CpIq10blHXkB9t303KwMfqKhoRsH2slyNtNxnw==
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Mon, 31 Aug 2026 18:13:39 +0200
-Subject: [PATCH v3 13/13] drm/bridge: tc358764: select DRM_PANEL_BRIDGE
+	id 1x14xe-0000000A3RT-0TEl;
+	Mon, 31 Aug 2026 16:34:19 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+	 (Exim 4.99)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1x14xL-000000007ih-0eiy;
+	Mon, 31 Aug 2026 16:33:59 +0000
+Date: Mon, 31 Aug 2026 17:33:55 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Allen Chen <allen.chen@ite.com.tw>,
+	Hermes Wu <hermes.wu@ite.com.tw>,
+	Pin-yen Lin <treapking@chromium.org>,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Chen-Yu Tsai <wenst@chromium.org>
+Subject: Re: [PATCH v6 00/13] drm/bridge: it6505: DP audio support +
+ shared-DAI hw_params fix
+Message-ID: <apWs89912pK8qK37@makrotopia.org>
+References: <cover.1784947240.git.daniel@makrotopia.org>
+ <7eebbd9b-3a5e-4d95-bbbb-8ba3a7238383@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260831-drm-bridge-drm_panel-cleanup-v3-13-50efd8168b3e@bootlin.com>
-References: <20260831-drm-bridge-drm_panel-cleanup-v3-0-50efd8168b3e@bootlin.com>
-In-Reply-To: <20260831-drm-bridge-drm_panel-cleanup-v3-0-50efd8168b3e@bootlin.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- Marek Szyprowski <m.szyprowski@samsung.com>, Marek Vasut <marex@denx.de>, 
- Sam Ravnborg <sam@ravnborg.org>, Jagan Teki <jagan@amarulasolutions.com>, 
- sashiko-bot@kernel.org
-X-Mailer: b4 0.16.0
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <7eebbd9b-3a5e-4d95-bbbb-8ba3a7238383@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260831_091511_912216_5B6507C2 
-X-CRM114-Status: UNSURE (   8.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260831_093418_158110_3031BFEB 
+X-CRM114-Status: GOOD (  16.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,38 +80,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This driver uses devm_drm_of_get_bridge(), which is enabled by
-DRM_PANEL_BRIDGE.
+On Mon, Jul 27, 2026 at 01:34:12PM +0200, AngeloGioacchino Del Regno wrote:
+> On 7/25/26 04:57, Daniel Golle wrote:
+> > Revive HDMI/DP audio support for the it6505, originally posted by
+> > Jiaxin Yu [1], rebased onto current -next with the review feedback
+> > addressed: &client->dev is gone (the driver gained it6505->dev) and
+> > "#sound-dai-cells" has since been added by commit 325af1bef5b9
+> > ("dt-bindings: display: bridge: it6505: Add #sound-dai-cells").
+> > 
+> > Patches 1-11 fix pre-existing bugs found during review of earlier
+> > versions of this series; they carry Fixes: tags and are ordered first
+> > so stable trees can pick them.
+> > 
+> > Patch 12 wires up the it6505 audio helpers via hdmi_codec_ops,
+> > unblocking the mt8186-mt6366 sound card which references it6505 as
+> > the I2S3 codec. Patch 13 makes hw_params succeed with no display
+> > attached, needed when the I2S bus is shared with another codec as on
+> > MT8186 "steelix" Chromebooks, where the speaker path must keep
+> > working regardless of the it6505 link state.
+> > 
+> > Tested on a MT8186 (google,steelix) Chromebook: the sound card comes
+> > up, speakers, microphone and headset jack work. HDMI/DP audio output
+> > itself could not be tested for lack of a suitable adapter cable.
+> > 
+> 
+> Whole series is
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Tested-by: AngeloGioachcino Del Regno
+> <angelogioacchino.delregno@collabora.com> # Steelix Chromebook
 
-Cc: Marek Szyprowski <m.szyprowski@samsung.com>
-Cc: Marek Vasut <marex@denx.de>
-Cc: Sam Ravnborg <sam@ravnborg.org>
-Cc: Jagan Teki <jagan@amarulasolutions.com>
-Suggested-by: sashiko-bot@kernel.org
-Link: https://lore.kernel.org/all/20260825103234.3F2B71F000E9@smtp.kernel.org/
-Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
-
----
-
-This patch is new in v3.
----
- drivers/gpu/drm/bridge/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
-index 92938df3b747..f2db7f60d40f 100644
---- a/drivers/gpu/drm/bridge/Kconfig
-+++ b/drivers/gpu/drm/bridge/Kconfig
-@@ -389,6 +389,7 @@ config DRM_TOSHIBA_TC358764
- 	depends on OF
- 	select DRM_MIPI_DSI
- 	select DRM_KMS_HELPER
-+	select DRM_PANEL_BRIDGE
- 	help
- 	  Toshiba TC358764 DSI/LVDS bridge driver.
- 
-
--- 
-2.55.0
-
+Any chance to get this merged in the new cycle now?
 
