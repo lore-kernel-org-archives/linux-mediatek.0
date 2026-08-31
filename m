@@ -4,145 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3E29C61DFD
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 18:47:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34CADC61DD3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 21:47:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O7InJar/qWNocfvyLH6vwbDAH0RSmnc1/tl95Rd2ICg=; b=Z0x97IOBmGUoMQZa001WSc2+OB
-	ecurlpHOhrac9StnVdjCC8CyGm8lLMAXAEOFRstVbEakzPUg62Nlp+cQCLMtP1ziqC4vc9jyaK7zy
-	7ydpoo+9fqSc2muWvftFcl9S6DSuIwrj4hSMkBWh45teyjOuxQGdj3SASXlHjTapY0HOoom30UZjB
-	LjSGcnrz21eBw6OO64ijA+ygmkY7bzDNKkIEanYYy3yLlsopCtoMqUN71QQGB0DQSL2VyK/E3BYoO
-	G2eP57E39yky8dfruJVXRDrBRa+/xcxpPiux/u4CiO9UEPPpRCxNc8LC3FO9/7Rtb8CdqnKnGZ+m9
-	dToDVU4Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=E4N2Z9Nu76llWCIDOn2i9yQBrPhlyiZyTva3R2V2uoo=; b=fQqkkWR1DTKkRPVtDHVsRIudbq
+	FEVa0XsotJJJEETYUCQ8zDau5VPVAfu4jL4RmYcd5ala0J3rQfLT/OF/VonLhtnY+5ELXTbY4R+wy
+	tAWkJOckylcyjB78wTDs/W3Nrkbank8YZfwWPjLE2dDM+Egw0mqj4eDU/zeg4BbM+KByAL1762CNv
+	JleS/FvrmgU3IusvNRNVvYzJq5JmKFTBoisHuhi7ZlGmTz7e9EZhbVu5TrjBrToh+5/FBxwSIkcgL
+	+ylMxjQkObdJJFWlxBE7pMdJU7nvVWIw7/voE62ye04laW/jqXbRF2JpWb0AkOvtmYM4OSgY61a3E
+	ccfrNZig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1729-0000000AJHj-1h8k;
-	Mon, 31 Aug 2026 18:47:05 +0000
-Received: from mail-swedencentralazon11023075.outbound.protection.outlook.com ([52.101.83.75] helo=GVXPR05CU001.outbound.protection.outlook.com)
+	id 1x19qm-0000000AYYn-09qu;
+	Mon, 31 Aug 2026 21:47:32 +0000
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1726-0000000AJHG-1uKt
+	id 1x19qj-0000000AYXo-1Z1V
 	for linux-mediatek@lists.infradead.org;
-	Mon, 31 Aug 2026 18:47:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=vQ6vnjPG/u8XHbOeBgZEXX093Pts7CN9rNiD0nikq7f0vLctVQN5z3NdCygLvFECqE1mxRqkLH2POsHbRiyrMjYlN3w5MpbvzxnTrjHAItqWsU5AgS/C5EyfP2/tWPslRAEwds1iiJudj/ZYcn0rXgWX+kiifKZ00yFFOmcC0jpBk6HIkh/bQhWGDrkmFhuDRyQXdxINLjUX4qXTiHh2KmnQDnPMY00uu/n0okG44oImTGFg5Rc/lUtFna76E8KiShy5Ss5qb0Sn1zL8p9aiHx+qtbNqFrYPjzjOxE/I3udGRqM8qz3Z7jm3UBTEv7yrpKwbvEHJHK+iefAp7mcLuQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=O7InJar/qWNocfvyLH6vwbDAH0RSmnc1/tl95Rd2ICg=;
- b=ei7uEWQ1HqfKAUCapZkly+L4H5CscjZp27D+JjlMEQeKpR31m8OGiunrgG5VGikG6BpTSZkzVoinsSk26lBVd8sEBGQDi/lYc2Dr6iyuLWS5xf45EZq8qcGj3lVfmf1wd7/huz92yApd91TUQe6Yh9AaQgL7W0Bm+5F5GbDP/hMyRQjrdfrZ6+WM0k8XySRq2cyMtxvRE/ODG12+gRCRB/m0327cJ4VSdYZFsbQNbOBMpJAwsKwJTcMyqLBkzYd0D4l4T/nnrNbgWtCJuE2RFnVvz4B4pUxlE5qvSban73rQjmW/xUIdKpg0kTo2tFsYVQ1XiCnxNJYxj9j2zDd80g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=genexis.eu;
- dkim=pass header.d=genexis.eu; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=genexis.eu;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=O7InJar/qWNocfvyLH6vwbDAH0RSmnc1/tl95Rd2ICg=;
- b=rMuXmxG80AI2StfdNcvM87EbLNrTIs/8ZbZGFzYmmcwsK00nru3Feis4AyGNmBkuc8r7JTjnzWe1dFwvfzLWOI6bP0gDupfqir/uQ3AY/fi+x/slBDvn6V6jB6gqq6s5qusbnu/O6fHbye8Laz3X+zgJVlhMDZyPPn/oJI0iIthA86672mVEnG9fiEpVUHpv9aQmFahcwveJnpFEhtCzi6jYXICHegXVqsXZ5ZFPmDqTfOIJyXVHWD4oEjBXVz8W7Y4EJbg6701Yq7J5XibiMKmcbfCCgkUS3Zzt/rQVZYSl2++QWQFP8RvPb1Lq96kh34haeSz9OOVHUN8LpLvpdA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=genexis.eu;
-Received: from DB9PR08MB6697.eurprd08.prod.outlook.com (2603:10a6:10:2ad::14)
- by DU0PR08MB8303.eurprd08.prod.outlook.com (2603:10a6:10:40d::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.382.9; Mon, 31 Aug
- 2026 18:46:54 +0000
-Received: from DB9PR08MB6697.eurprd08.prod.outlook.com
- ([fe80::bdec:3e95:6614:441f]) by DB9PR08MB6697.eurprd08.prod.outlook.com
- ([fe80::bdec:3e95:6614:441f%6]) with mapi id 15.21.0382.007; Mon, 31 Aug 2026
- 18:46:54 +0000
-Message-ID: <679db287-3cf2-4d29-b690-d87196402378@genexis.eu>
-Date: Mon, 31 Aug 2026 20:46:52 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] dt-bindings: pinctrl: Add EcoNet EN7528 pin
- controller
-To: Conor Dooley <conor@kernel.org>, Ahmed Naseef <naseefkm@gmail.com>
-Cc: linux-gpio@vger.kernel.org, Christian Marangi <ansuelsmth@gmail.com>,
- Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Linus Walleij <linusw@kernel.org>,
- Lorenzo Bianconi <lorenzo@kernel.org>,
- Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
- Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <cover.1787931313.git.naseefkm@gmail.com>
- <c20005a81b4069f3ff68311629ff7d4678fa92dd.1787931313.git.naseefkm@gmail.com>
- <20260828-chaos-recovery-c99d547ee1b6@spud>
- <apLGtCRjCP1j0u5i@DESKTOP-TIT0J8O.localdomain>
- <20260831-sibling-isolation-3849a5e4845f@spud>
-Content-Language: en-US
-From: Benjamin Larsson <benjamin.larsson@genexis.eu>
-In-Reply-To: <20260831-sibling-isolation-3849a5e4845f@spud>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: GV2PEPF0001A327.SWEP280.PROD.OUTLOOK.COM
- (2603:10a6:158:401::690) To DB9PR08MB6697.eurprd08.prod.outlook.com
- (2603:10a6:10:2ad::14)
+	Mon, 31 Aug 2026 21:47:30 +0000
+Received: by mail-lj1-x22b.google.com with SMTP id 38308e7fff4ca-39c74c469e8so23986581fa.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 31 Aug 2026 14:47:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1788212847; x=1788817647; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=E4N2Z9Nu76llWCIDOn2i9yQBrPhlyiZyTva3R2V2uoo=;
+        b=YbnM32K+Ba3v+G09T/Ptp0K+GGT9ysV9HhYfzq4uEDrcp+cHRFzNvOPXJ4U5qJ0Dq5
+         f9IV6PWrsqFv7mnt512c8e/LMLeDzJZEqVAUah8rSWKVrPjHKpljONviABhUaAv/e1jM
+         MlwZDgxrOTP0CYaU1hYMs4d/CQjV5K/1T5e5M3P/tcAmb3FJYksfMLCrT/MixRfBZSuN
+         2TR7m5xlmaPXhZc1WS5k3058z8/FTp6eOUcsfCSxRUesiI4+Ypwv9bsor95+Af9X7zgP
+         3EuxQ7ePZDRPs+5IwnYJFh3akiZj9wZUVuUUt2RKLaPHICp2aNrs2oKn9qacvqOLWTWO
+         9szA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788212847; x=1788817647;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=E4N2Z9Nu76llWCIDOn2i9yQBrPhlyiZyTva3R2V2uoo=;
+        b=CvDa3I4a2RW+Qh/TQ6nk+9GXlleguaOF8mJC/7uEEcuqJGHKVn6r2XsSOH+fDDX9LS
+         PqVqvvg1AIBTQaoGrI87T7QHL/SgJgH3rtPsid0JTvT7qeMNJKvHGnIXEco0z5upvotb
+         Bxu81JSOijJngpa6Iak6P3RR595LS6HqZXbdUWLlNfEjO2K6TNRGGckvDGNZaLSCQSTZ
+         XjjKyueG36D10U2p/9p76F4Fh+wDRASxgFPqfmn3YWVAyZDLuJQZJi2kLbqRQJ8RcFMY
+         SPSkecN/MTu5j0jDoLq9QLNakEhwHIza87DacR8VP307FjXfTffkaTigBx5qfH7TWBye
+         2znQ==
+X-Forwarded-Encrypted: i=1; AKwUvByk+kyYLBhuqNvOBZky2juLBVSjSJk+opdipbRxmTWmwZEpBluroljHFQb+nWTwUK7rZFMFVx9S5MFYIZDYvw==@lists.infradead.org
+X-Gm-Message-State: AFuF++lPPVcGo4yEYpiiGq3rSoNa4vbXnTPclwIXtmjL37LwTKaBnfPk
+	kkAQLaUxTlSS49h2mPVUV5HfjEIpvMBB7gMFqINgj0/L+qc+XA365Dk=
+X-Gm-Gg: AYBFou2PZCTCpY2pnW/PNHJTGRRYNU7oIEmvzlhkt4PB6WCxuz4Mc+qqXVNRegNQZUD
+	YPi9niNXdxZqS5tgFAs2B7RAUcFAZrt+QQP3fMb/yLFmocCWzChqeGHqNAj32X6j9Mv0pQEQnlp
+	1q1UUS6etd4PJnmJo5AiCSidiUcw2qv4tpExAmxGBurdvVFry0uC8Cv3SkEjl02fDc/Bd2dNG06
+	CfqSwS5BsadcXTD8Uzw2oZYs2MbIf4Okv2H0cao7k7sWvijpvQxJk1cQGShsB7BwM1yMTkmrEEF
+	Cenmr5vL05ju5Yyjz7sMKoKpUg0e5Qe+5E6fT8Oa5KqYWIjvfTWD81iLmjA6VgyGYwne8UYuIP+
+	YQrLAPK/O/WVWAQ0eSqaVy0d8HhU1ELGYz5xzSr5XJ22Ey2vHjGBZh3Vl7fsJYp5tx+Ius32Nmw
+	aZpmhVkxkanuMPbk7s7p8RnMCWvZYa2lpvr3H2yTB61KLdrTwUTogLjPXSvHSi
+X-Received: by 2002:a05:651c:b23:b0:3a3:314:8c8a with SMTP id 38308e7fff4ca-3a3031499camr62394581fa.14.1788212846426;
+        Mon, 31 Aug 2026 14:47:26 -0700 (PDT)
+Received: from fedora ([92.36.9.2])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3a31550cefbsm18299201fa.9.2026.08.31.14.47.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 31 Aug 2026 14:47:26 -0700 (PDT)
+From: Vitaliy Sochnev <sochnev.v.74@gmail.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	netdev@vger.kernel.org
+Cc: upstream@airoha.com,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Vitaliy Sochnev <sochnev.v.74@gmail.com>
+Subject: [PATCH net v2 0/3] net: airoha: fix silent RX loss on the shared CPU ring
+Date: Tue,  1 Sep 2026 00:46:58 +0100
+Message-ID: <20260831234701.206021-1-sochnev.v.74@gmail.com>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260830095717.37218-1-sochnev.v.74@gmail.com>
+References: <20260830095717.37218-1-sochnev.v.74@gmail.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DB9PR08MB6697:EE_|DU0PR08MB8303:EE_
-X-MS-Office365-Filtering-Correlation-Id: 31bdc009-bff8-42d8-e840-08df07903a2e
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|7416014|366016|23010399003|376014|56012099006|10067099003|5023799004|11063799006|4143699003|6133799003|3023799007|18002099003|22082099003;
-X-Microsoft-Antispam-Message-Info: G5ZWeAmflqS46UT4IQkplzHitay0zc6NF6bVbTBHczQy1oTbrTU0TpHL5hkGv57T4L9a6ztBMa0JsJZkw5MOOxg1qCZPWz32rOqOLhoUHiS0ofcoeyaVmDcVRT5uXSH7fLHR+/VMw5b/BRbHuvzLMase2s8lKWkqd+Mdtdg2SN7PUEhv/pw00h8JZA4+dTUItFKMmEx0AB6Tx0769qB1iozPEeEEPmkOYfUjc8763oIbi36Kw9xhUmlLw1abZpuxrkbRUoz3T/DyanAqq1OFlcxXDilZferqd9y8+Of/ew47l7eP9IeM1/KNXLx5G7vkKskqH12OUMjM2QBFxLrrEUI/lz298hNEithREkC+bFtMUJPVf7U63JNJtGynQxCer2CY+1d37MuZo7ToEi/aB6cQBiZV1mvuFjHtOJMPoc31NAAMTGBUuKWpnACBeDVazKFxt9fQYWAQbfForoO3xMhMkKJUAYI2PHuGMVRRHtakc42uhfR0dfzkpsJhbfNdSeRSjXk+mWB+cx6pxt0mNBUXJ/6AVMIUun6HI3eYBzMCUNwI1ZrNS1khP0PybriVl+4rgdDjAyrwDeZ3FRBTMYDbNoIcmbpGQgvpnDjX020=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DB9PR08MB6697.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(366016)(23010399003)(376014)(56012099006)(10067099003)(5023799004)(11063799006)(4143699003)(6133799003)(3023799007)(18002099003)(22082099003);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?TVAxNjAzV1pRYjIyVDVKbm5KY3B0YWZySkw2dGp5KzBlZ1Q5R1dsVXFQTHZQ?=
- =?utf-8?B?VTBDczllMXNmbXg5dk1seHZBM096Ynh0dDE2ZWxNQVNqUmZQUDhXTTJ5dTNx?=
- =?utf-8?B?WDJtUXFhaWtBM1VRZGpKWm1TTTllK1pXTXVVdkQvS2NFTU16MXN2NUJ3b0lK?=
- =?utf-8?B?SkdWdUJZRVlkNU5rMEZzejFZVmVyUXhhci9pbUVQQlZyYzF0VXlTR1BSZ2M3?=
- =?utf-8?B?Ri9QMGt3LzN3WFViNnJxeFBJaGZxVzNxN0hRWU1rZlBVUGpJS0ZGZUNOYTQ0?=
- =?utf-8?B?OS9zNUxtY2lyQVpiNmx2SHJPdE1UUzRuemlhOWdIUTgyQWQxQXZNZTFqUHVz?=
- =?utf-8?B?ZStld0ZNZFJoUitXR0tHNDJrSUVaTFBhNVJqdlFMQ3RvdzF3dnNYYldKalp4?=
- =?utf-8?B?MnlFSlJYUzFZUGZzT2ZZY0thcStTc0FiSGE5bUNjd3pVVzg0bFJFT1dsdGJm?=
- =?utf-8?B?eEJROTMxSEt1MVhEWWl2aUxWWVNwazYxYWF2cStEOE93SjFzeFBvY1JtbFIr?=
- =?utf-8?B?cWxNclgwZGl4VFlMblgxQXdmSXNTMTNqT2tLT296b2V5WkJXV1FiMnJYRXlJ?=
- =?utf-8?B?cmFnVkVJVmpYb0pnd3dWQTBKZXRZRElKUmtlSXA1ZitXVy9MdlhEL3J5MkY1?=
- =?utf-8?B?ZUR6NHQ2LzVhekVhOXc5SHBZa2wxNTlaWFVHV2lQY2wyTngzL0ZRYzhIeDVs?=
- =?utf-8?B?SDV1RWVGSkdVQXNVV3pEWE9vcGNEWEs3V3lBa3Y5b2pmVWViUllVWWpURFhL?=
- =?utf-8?B?ZXpoZnlPY1R3TE1ISG1WMGExOFdFWHRwUjc1WCtZSlYyNlhwbndlaWRJNEpx?=
- =?utf-8?B?NDUzYnp2bDZxVGxMMjBsaGI5SzlaTW1ITzVyYjNXTldIdHc2U1FmNkFZa1VJ?=
- =?utf-8?B?aUw4ekhZdFArbnJvQTIyYjBRQ2JIZjVUTWNxUk9oS0YrdjJ2TEhSRjlBY1kz?=
- =?utf-8?B?aEdlTWJFMHJmTWhMUTBYajdUQVVBU3BKbmh2bUhDTjBHS3JqeGIwMWk2TGlp?=
- =?utf-8?B?cXpwSktUSmhSd0xabVVIcUY2NTlCbGliaDMvSUtmMDhXakRza1JBblYxWERB?=
- =?utf-8?B?RWMvWjN3Nlg2dGhMRVJIRjJjd1k1QjhIcStHRHB5Z2I1cTRXR1hPRFFHb0Ji?=
- =?utf-8?B?c1VGQStuUkh0dzZiNmsxMFgxY0MralF3cFVtVzR1aW83UUo4cTlRdjl0dC9L?=
- =?utf-8?B?Q3ZXKzlaa08xa09KWEFkUzFtMkhuQ1VYOWVCZ1lMWGpOZUkwMXhIZzIyQllQ?=
- =?utf-8?B?MWE0eVRqejB4c2s1anByQWtJOFNRNm1ONzl5RWRpN2hHT3B1NkN6WU9OQ0sx?=
- =?utf-8?B?UmJsZ1VZY2hXNFdzekxxMXhycnkrbmpFcFRob3VmUzhGcmhJSnNLdFZoUElP?=
- =?utf-8?B?S2tud0lXY2U5dlJDN0NwcmRXM2VKOVdhN2FvZFlmQVpQdGNpdC9INUZ1R09B?=
- =?utf-8?B?VVM4MXc1eDZ2eTUvMExVZGJRRThXNXVxMnoxS1UxeEpvSkNyL0JCSFRTcitr?=
- =?utf-8?B?N1V4a3hGVVpydHl3bzVPb1Rqb3lNc3ZZVHVoVkwxb2s1dVh6bkJ4THFsN0Ro?=
- =?utf-8?B?MkRzd1RsZFdJOWJ4V240S3VBdFR3UVhEdXozM3JldTV3ak1vZ1dWQ21oN0tu?=
- =?utf-8?B?d1h5eXZsMldyd2xVL0dMcW9uNHRaTzJleDFFUEFWSlR0NldpRFk3dWtzZlRn?=
- =?utf-8?B?RGtGeENKR2Z0bDVsSUtwczlPRjNiT2RpUWFTQWE0eEdudndXU3YzNDVPNjFk?=
- =?utf-8?B?S1l0SmhHSXE5K2JmQi82cDAzallhc2tmd1JFcGZjaStwRkFQYXJyMUk3dStP?=
- =?utf-8?B?SEpDS08yanAyL0xoOFJoNjJSSnZMWUdHRG4yRWI1RE41bFBCQ25DejZKUWZN?=
- =?utf-8?B?b0ZzYU9ZZ0t0N3dqNHZTWUVwWG9TNlIycnFjT0NUd015eU1kd3hzS1hxRER2?=
- =?utf-8?B?UVV4SkNSSXFhQ3NwNk5nTE0vclNiTUxxL28reUFBSTgwdzl0eW1RY2pLU1Fk?=
- =?utf-8?B?WmJjM2J3TGtuMWZZM2R0cERmUFVrK0prbGE4S2xlc2w5bjhtZkRSa1EyN1Q2?=
- =?utf-8?B?Z3BKV2I2Z0U2alhJWVlsakJ5QmcrOTNWUFNqVW96TklxUnFBK2JSaXhyY1dx?=
- =?utf-8?B?UDZoTTRwaTZaQmkzeklMUldSZFpBOVEzc3BXMmlsY3BnOXBpWkpXUUZNV0g3?=
- =?utf-8?B?QlIyUmQ4STNEWFd5MTJqTUdWdEhLOENCb3VsK2lsekcvWHpGSkY1VWw3ZlRV?=
- =?utf-8?B?UjdsMUYxNnRZR01QdHJLNGo4U3JrQ3ErUVYvTThsS2lNTGw2VUR5WnNJRDhO?=
- =?utf-8?B?QWNoY2xVaFFGd2tpZHd6ZXV2a2dZOG9GNnNWcFlDaUp5RlVJaGVVV3paV2pN?=
- =?utf-8?Q?iVh7GIvzx7kiZsQM=3D?=
-X-OriginatorOrg: genexis.eu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 31bdc009-bff8-42d8-e840-08df07903a2e
-X-MS-Exchange-CrossTenant-AuthSource: DB9PR08MB6697.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Aug 2026 18:46:54.5601
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: s9e/8cK3qiBxLd3LsqCjrYS00UKqZkDDh0ugSSMvWfjPYQkc68FyU+nWtWPBFMm2mWwvjIyW8BERyW4vq/4cYMZNq9qMIRyMFuxvC8jl1Es=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU0PR08MB8303
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260831_114702_523777_596AEB13 
-X-CRM114-Status: GOOD (  24.94  )
+X-CRM114-CacheID: sfid-20260831_144729_445566_45647599 
+X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,146 +107,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 31/08/2026 18:57, Conor Dooley wrote:
-> On Sat, Aug 29, 2026 at 03:47:00PM +0400, Ahmed Naseef wrote:
->> On Fri, Aug 28, 2026 at 04:51:27PM +0100, Conor Dooley wrote:
->>> On Fri, Aug 28, 2026 at 07:35:14PM +0400, Ahmed Naseef wrote:
->>>> Add the binding for the pin controller found on the EcoNet EN7528 MIPS
->>>> SoC. It shares the IP with the Airoha pin controllers, but its IOMUX and
->>>> pin configuration registers have a different layout, so it gets its own
->>>> compatible.
->>>>
->>>> The CHIP SCU holding those registers is referenced by the airoha,chip-scu
->>>> phandle.
->>>>
->>>> Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
->>>> ---
->>>>   .../pinctrl/econet,en7528-pinctrl.yaml        | 190 ++++++++++++++++++
->>>>   1 file changed, 190 insertions(+)
->>>>   create mode 100644 Documentation/devicetree/bindings/pinctrl/econet,en7528-pinctrl.yaml
->>>>
->>>> diff --git a/Documentation/devicetree/bindings/pinctrl/econet,en7528-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/econet,en7528-pinctrl.yaml
->>>> new file mode 100644
->>>> index 000000000000..3ce1a5309d09
->>>> --- /dev/null
->>>> +++ b/Documentation/devicetree/bindings/pinctrl/econet,en7528-pinctrl.yaml
->>>> @@ -0,0 +1,190 @@
->>>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
->>>> +%YAML 1.2
->>>> +---
->>>> +$id: http://devicetree.org/schemas/pinctrl/econet,en7528-pinctrl.yaml#
->>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->>>> +
->>>> +title: EcoNet EN7528 Pin Controller
->>>> +
->>>> +maintainers:
->>>> +  - Lorenzo Bianconi <lorenzo@kernel.org>
->>>> +
->>>> +description:
->>>> +  The EcoNet EN7528 pin controller is used to control SoC pins. It shares the
->>>> +  IP with the Airoha pin controllers, but its IOMUX and pin configuration
->>>> +  registers have a different layout.
->>>> +
->>>> +properties:
->>>> +  compatible:
->>>> +    const: econet,en7528-pinctrl
->>>> +
->>>> +  airoha,chip-scu:
->>>> +    description: phandle to the chip SCU syscon
->>>> +    $ref: /schemas/types.yaml#/definitions/phandle
->>>> +
->>>> +  interrupts:
->>>> +    maxItems: 1
->>>> +
->>>> +  gpio-controller: true
->>>> +
->>>> +  '#gpio-cells':
->>>> +    const: 2
->>>> +
->>>> +  gpio-ranges:
->>>> +    maxItems: 1
->>>> +
->>>> +  interrupt-controller: true
->>>> +
->>>> +  '#interrupt-cells':
->>>> +    const: 2
->>>> +
->>>> +patternProperties:
->>>> +  '-pins$':
->>>> +    type: object
->>>> +
->>>> +    patternProperties:
->>>> +      '^mux(-|$)':
->>>> +        type: object
->>>> +
->>>> +        description:
->>>> +          pinmux configuration nodes.
->>>> +
->>>> +        $ref: /schemas/pinctrl/pinmux-node.yaml
->>>> +
->>>> +        properties:
->>>> +          function:
->>>> +            description:
->>>> +              A string containing the name of the function to mux to the group.
->>>> +            enum: [gpio, jtag, pcie_reset, pcm, pcm_spi, phy1_led0,
->>>> +                   phy1_led1, phy2_led0, phy2_led1, phy3_led0, phy3_led1,
->>>> +                   phy4_led0, phy4_led1, pnand, pon, pwm, sipo, spi, uart]
->>>> +
->>>> +          groups:
->>>> +            description:
->>>> +              An array of strings. Each string contains the name of a group.
->>>> +            items:
->>>> +              enum: [pon, sipo, sipo_rclk, uart2, uart2_cts_rts, uart3,
->>>> +                     ejtag, pcm1, pcm2, spi_quad, spi_cs1, pcm_spi,
->>>> +                     pcm_spi_int, pcm_spi_rst, pcm_spi_cs1, pcm_spi_cs2,
->>>> +                     pcm_spi_cs3, pcm_spi_cs4, pcm_spi_cs5, pcm_spi_cs6,
->>>> +                     pcm_spi_cs7, pnand, gpio0, gpio1, gpio2, gpio3, gpio4,
->>>> +                     gpio5, gpio6, gpio7, gpio8, gpio9, gpio10, gpio11,
->>>> +                     gpio12, gpio13, gpio14, gpio15, gpio16, gpio17,
->>>> +                     gpio18, gpio19, gpio20, gpio21, gpio22, gpio23,
->>>> +                     gpio24, gpio25, gpio26, gpio27, gpio28, gpio29,
->>>> +                     gpio30, gpio31, gpio32, gpio33, gpio34, gpio35,
->>>> +                     gpio36, gpio37, gpio38, gpio39, gpio40, gpio41,
->>>> +                     pcie_reset0, pcie_reset1]
->>>> +
->>>> +        required:
->>>> +          - function
->>>> +          - groups
->>>> +
->>>> +        additionalProperties: false
->>>> +
->>>> +      '^conf(-|$)':
->>>
->>> Why is this needed? Why can you not tell from the group which pins the
->>> config applies to?
->>
->> Not for all of them: i2c_sda, i2c_scl, uart_txd and uart_rxd are in no
->> group at all.
-> 
-> Why's that? Are they just fixed output pins?
-> 
->> The spi_cs0/clk/mosi/miso pads are only in pnand, which is
->> 17 pins wide, so no group names them individually either.
-> 
-> That's easily resolved by breaking up pnand though.
-> 
-> Devils advocate thing here might be to say that the dedicated
-> configuration node should only be for the things that are fixed outputs,
-> and the muxable ones should get their config from a combined
-> pinmux/pincfg node. Personally I think that presents a nicer interface,
-> where someone doesn't have to go figure out what pins are in the group
-> they just assigned a function to to also set the config properties for
-> it.
-> 
-> Cheers,
-> Conor.
-> 
-Hi, I dont fully understand the exact implications but there are at 
-least 2 more Econet pinctrl drivers coming. I would prefer it if we 
-could keep them looking exactly like the other Airoha drivers that are 
-already merged. All the SoCs share the same structure and logic just 
-different pins and addresses.
+All three target net. v1 split them across net/net-next; with the ring
+size now shown to be load bearing, they belong together.
 
-MvH
-Benjamin Larsson
+Answers to the v1 review:
+
+- "fill_rx_queue() overwrites the DONE bit written by hw" - no. I
+  implemented that check anyway (bail out in fill_rx_queue(), clear the
+  bit in rx_process()) and it never fired once, while the ring was
+  demonstrably stalled: the descriptor at q->head never had
+  QDMA_DESC_DONE_MASK set, so there was nothing to catch. Worse,
+  clearing desc->ctrl outright also wipes QDMA_DESC_LEN_MASK, which
+  fill_rx_queue() writes as the buffer size and hw reads back - RX then
+  delivers poisoned pages. That version is dropped.
+
+- "have you tried to just increase the queue size" - yes, and that is
+  the fix. Ring 4 at 16 stalls roughly every 35 s under repeated PPPoE
+  dial-up and negotiation never completes; at 128 nothing triggered
+  across 500 forced reconnects over 20 h. Patch 3.
+
+- "is QDMA_DESC_DROP_MASK set when the issue occurs" - no, never, for
+  the whole duration of the stall.
+
+- default RX_DSCP_NUM raised 16 -> 32 per the vendor SDK, as asked.
+
+- recovery pause measured at 986-1131 us over 13 events, against the
+  50 ms read_poll_timeout() ceiling.
+
+- style: RCT, verbose comments gone, and the !q->ndesc check dropped -
+  the bit is only set from rx_process(), which cannot run on a ring
+  without descriptors.
+
+One cost worth flagging: the detector adds an uncached REG_RX_DMA_IDX
+read to every rx_process() call that ends on a non-DONE descriptor. airoha_qdma_rx_napi_poll() loops while the last
+pass reaped anything, so that is once or twice per NAPI poll, on every
+ring, not just the one that can stall. Gating it on the previous poll
+having reaped nothing would keep it off busy rings and only delays
+detection by about one poll, since q->tail is frozen from the moment
+the stall begins. I left it ungated as I have no profiling either way -
+happy to add the gate if you prefer it.
+
+A question for the airoha folks: during the stall REG_RX_DMA_IDX keeps advancing while
+REG_RX_CPU_IDX stays put and the consumer never sees another DONE. Is
+there a documented condition under which hw stops writing completions
+back to a ring, or a constraint on RX_CPU_IDX that the driver is
+violating by leaving one descriptor unposted?
+
+The rx_stall_recover ethtool counter from v1 is dropped here - new ABI
+does not belong in a fix - and will follow for net-next.
+
+Tested on Nokia XG-040G-MF (AN7583) on a live PPPoE line, in both
+configurations: as sent, and with stock ring sizes so the recovery path
+actually executes.
+
+Vitaliy Sochnev (3):
+  net: airoha: handle RX_NO_CPU_DSCP interrupt, not just RX_DONE
+  net: airoha: recover RX ring after hw completion stall
+  net: airoha: grow the small RX rings
+
+ drivers/net/ethernet/airoha/airoha_eth.c  | 114 ++++++++++++++++++++--
+ drivers/net/ethernet/airoha/airoha_eth.h  |  11 ++-
+ drivers/net/ethernet/airoha/airoha_regs.h |   2 +
+ 3 files changed, 120 insertions(+), 7 deletions(-)
+
+-- 
+2.55.0
+
 
