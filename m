@@ -4,62 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6065BC624A4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 13:42:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D85DFC624C6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 13:42:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9waQiWmGIRreL2pS/vRF0HC/WvchDTgVV64118m7PDE=; b=3//27SDbD+C09/oFzvbBfQdRE6
-	5GQeIMibWWPNn6T0nx+wH+hw4UmWt9VEJtXk+4yUdwVOayKW1W/SLALofYCk6/me+gZjrP2fxuiQ7
-	1TdzvPFc2OsesuEe2egEgL5WA5KJbJ6oFVNpEll6jcGS/eDJUMZOew/xtrc0HLszK5HNQhqcZhAld
-	5HqaB0nGvK0vyx/9fGkwgUvXDNseFSMbosqOpsNlYDN9D2KjRqjO/B9Dmbo8t14il9E2h/Mk9tYkX
-	pBDVFHjzCPT9gYObs3CEmf4CCHZ3CO4SZ9cIdz8I2KDb8v961IUiERVGy9Z/ewuxMg9Db/sYO3Vtk
-	5K5WgBDA==;
+	bh=SiyEExvIx/kl19F6wk5aTZc+Umy6csgK8vWmJEh4ays=; b=KE2rIpfW37JxhxBNRBAChyHTTn
+	iPVxfERfCUt0lViJuSapOcSocycCJ7vGgT5CQMbR0e36N/eCy+NL9/qNmCxzzIFOk1Y2PGHDS0KUc
+	1sPflFqlZyCLzyzuJe0Wu5hNS8UyQu2QqIh/xj1No0L2Z8muJleu2Tg2f+U0pah6sM0K78j2N7Fyq
+	+MaK10/qR3EJiBwhY2cBaPruSsLI2uzv4jwlLOAup5lJ4c3hZgHFEZVVxMGgTyn4YyV5tXU/OdOaG
+	duWBvXHR+/nStGk7CeKlzgpKkB3kU2KNr9mPN90X5IJiJIZ4y42ln/h0Wed5XOxKQuGFBiWWTYYeO
+	135saeRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x12Gt-00000009TxA-1Gc8;
-	Mon, 31 Aug 2026 13:41:59 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x12Hp-00000009UDU-3fFg;
+	Mon, 31 Aug 2026 13:42:57 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x12Gr-00000009TwE-2Q6b;
-	Mon, 31 Aug 2026 13:41:57 +0000
+	id 1x12Ho-00000009UCn-1zja;
+	Mon, 31 Aug 2026 13:42:56 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id EF6FD60232;
-	Mon, 31 Aug 2026 13:41:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB6821F00A3E;
-	Mon, 31 Aug 2026 13:41:54 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 3975B40445;
+	Mon, 31 Aug 2026 13:42:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A4B2B1F00A3F;
+	Mon, 31 Aug 2026 13:42:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788183716;
-	bh=9waQiWmGIRreL2pS/vRF0HC/WvchDTgVV64118m7PDE=;
+	s=k20260515; t=1788183776;
+	bh=SiyEExvIx/kl19F6wk5aTZc+Umy6csgK8vWmJEh4ays=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=W6tjZme/UAej6dvIG6QuzVr1jWsV90B4VaEnkEcq2Tf8qbmXh290HH01n19CFD4A4
-	 ILrLC1BQaZm1YSoiUVRvqMEOXFw32KuUfn2IFK5q6bhkymzIudVBj8owDBd0J3CNAL
-	 /BqmnbFJWSnnTJ3emtUQAar50ff/lU/OhzHt4ZeHEWKlX1TqzlJd94VZDA6a9YvcjY
-	 2GbCwIBi4KQcLLbWUxoqIrdADLbQjluOr7+++7NtJ3KbxYFH/kKbD/McQyeaxJZack
-	 u44/Z7SinV00sioB/5HoiyfHnJp+tKV2aJqGPjGlmA+/Y+Fwa0+drqDIZQ93HDiKn+
-	 hilyNxLhxitMg==
+	b=RTH9JxapWj5B0vLArtzR5KL9mK765akqUM5nYLpbnAv+wL7ruf7lY2jTjH11MRR7/
+	 kjg14iugqD6yohTiVwrbmMmsDxgBmO3aZHZyUgLiDsn+7t3as8KVyJ0b+Koe9Y+JCN
+	 ovG2dau0yWm8D25cPGIFfz7kgLRRQzY58Y5PF4OU60E0zDQmG6Kk6aJiSm/8inqoEw
+	 AjcTIFbDdYn1tppg6cnQFy0TGO3um0E2uYzD3Bi7iPdrDkVslKlMOAt8VEjUi7/vef
+	 FTNjDu6sPpFeNQngdduVXDriTVSega1SFBL2QRa/peca+1AQSSyQaHNDFN+tHrXjEB
+	 ec7PRApKYxoHg==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	CK Hu <ck.hu@mediatek.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+Cc: Jiajia Liu <liujiajia@kylinos.cn>,
+	Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
-	p.zabel@pengutronix.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
 	matthias.bgg@gmail.com,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
+	angelogioacchino.delregno@collabora.com,
+	linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.18-6.12] drm/mediatek: dsi: Add compatible for mt8167-dsi
-Date: Mon, 31 Aug 2026 09:24:50 -0400
-Message-ID: <20260831133314.4125787-262-sashal@kernel.org>
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.18-5.10] wifi: mt76: transform aspm_conf for pci_disable_link_state
+Date: Mon, 31 Aug 2026 09:25:25 -0400
+Message-ID: <20260831133314.4125787-297-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260831133314.4125787-1-sashal@kernel.org>
 References: <20260831133314.4125787-1-sashal@kernel.org>
@@ -83,391 +81,356 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+From: Jiajia Liu <liujiajia@kylinos.cn>
 
-[ Upstream commit 6428eaf0c1f39815b08d57054895c1934d5782f3 ]
+[ Upstream commit 2dd78856223484895306351df1f903a4b75d213f ]
 
-The mt8167 DSI controller is fully compatible with the one found in
-mt2701. Unfortunately the device tree has a dedicated compatible for
-mt8167 since 2022 and it cannot be changed with a fallback nor removed at
-this point. The only way to get the device to work is to add the
-compatible to the driver.
+commit b478e162f227 ("PCI/ASPM: Consolidate link state defines") changed
+PCIE_LINK_STATE_L0S (1) to (BIT(0) | BIT(1)). PCI_EXP_LNKCTL_ASPM_L0S (1)
+and PCI_EXP_LNKCTL_ASPM_L1 (2) are no longer matched with
+PCIE_LINK_STATE_L0S (3) and PCIE_LINK_STATE_L1 (4).
 
-Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Link: https://patchwork.kernel.org/project/dri-devel/patch/20260505214541.333657-3-l.scorcia@gmail.com/
-Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+On the platform enabling ASPM L0s and L1, mt76_pci_disable_aspm is not able
+to disable L1. Fix this by transforming aspm_conf to pcie link state.
+
+Signed-off-by: Jiajia Liu <liujiajia@kylinos.cn>
+Link: https://patch.msgid.link/20260602054349.42429-1-liujia6264@gmail.com
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-# Stable Backport Analysis: drm/mediatek: dsi: Add compatible for
-mt8167-dsi
+## Phase 1: Commit Message Forensics
 
-**Local tree:** `v6.18.43` (Makefile: 6.18.43)
+### Step 1.1: Subject Line
+**Record:** `[wifi: mt76]` `[transform]` — Convert PCI LNKCTL ASPM
+register bits to `PCIE_LINK_STATE_*` values before calling
+`pci_disable_link_state()`.
+
+### Step 1.2: Commit Message Tags
+**Record:**
+- **Signed-off-by:** Jiajia Liu `<liujiajia@kylinos.cn>` (author)
+- **Link:**
+  https://patch.msgid.link/20260602054349.42429-1-liujia6264@gmail.com
+- **Signed-off-by:** Felix Fietkau `<nbd@nbd.name>` (mt76 maintainer)
+- No `Fixes:`, `Reported-by:`, `Cc: stable`, `Tested-by:`, or `Reviewed-
+  by:` tags
+- References upstream commit `b478e162f227` ("PCI/ASPM: Consolidate link
+  state defines") as the change that broke the existing code
+
+### Step 1.3: Commit Body Analysis
+**Record:**
+- **Bug:** `mt76_pci_disable_aspm()` passes raw `PCI_EXP_LNKCTL`
+  register bits (`aspm_conf`) directly to `pci_disable_link_state()`,
+  but after `b478e162f227` the `PCIE_LINK_STATE_*` constants no longer
+  match those register bit positions.
+- **Symptom:** On platforms with ASPM L0s and L1 enabled, L1 cannot be
+  disabled via `pci_disable_link_state()`; the function returns success
+  and exits early.
+- **Root cause:** `PCIE_LINK_STATE_L0S` changed from `1` to `3`
+  (`BIT(0)|BIT(1)`); `PCIE_LINK_STATE_L1` changed from `2` to `4`
+  (`BIT(2)`). `PCI_EXP_LNKCTL_ASPM_L0S`/`L1` remain `1`/`2`.
+- **Version info:** Regression tied to `b478e162f227` (merged May 2024).
+
+### Step 1.4: Hidden Bug Fix Detection
+**Record:** Yes — despite the neutral "transform" wording, this is a
+functional regression fix. The driver was written to disable ASPM
+because it causes MCU hangs and WiFi instability on mt76 hardware; the
+broken mapping silently leaves L1 active.
 
 ---
 
-## PHASE 1: COMMIT MESSAGE FORENSICS
+## Phase 2: Diff Analysis
 
-### Step 1.1: PARSE THE SUBJECT LINE
-**Record:** `[drm/mediatek: dsi]` `[Add]` — Add `mediatek,mt8167-dsi`
-compatible string to the existing MediaTek DSI platform driver so MT8167
-boards can bind.
-
-### Step 1.2: PARSE ALL COMMIT MESSAGE TAGS
+### Step 2.1: Change Inventory
 **Record:**
-- **Signed-off-by:** Luca Leonardo Scorcia `<l.scorcia@gmail.com>`
-  (author)
-- **Reviewed-by:** AngeloGioacchino Del Regno
-  `<angelogioacchino.delregno@collabora.com>`
-- **Reviewed-by:** CK Hu `<ck.hu@mediatek.com>` (MediaTek maintainer)
-- **Link:** https://patchwork.kernel.org/project/dri-
-  devel/patch/20260505214541.333657-3-l.scorcia@gmail.com/
-- **Signed-off-by:** Chun-Kuang Hu `<chunkuang.hu@kernel.org>` (applied
-  to mediatek-drm-next)
-- No Fixes:, Reported-by:, Cc: stable, or syzbot tags
-- Notable: two subsystem Reviewed-by tags, including MediaTek maintainer
+- **Files:** `drivers/net/wireless/mediatek/mt76/pci.c` only (+7 / -1)
+- **Function modified:** `mt76_pci_disable_aspm()`
+- **Scope:** Single-file surgical fix
 
-### Step 1.3: ANALYZE THE COMMIT BODY TEXT
+### Step 2.2: Code Flow Change
 **Record:**
-- **Bug:** MT8167 DSI hardware is register-compatible with MT2701, but
-  the DSI platform driver’s `of_match` table lacks
-  `mediatek,mt8167-dsi`.
-- **Symptom:** DSI platform device does not probe; display pipeline
-  cannot complete on MT8167 boards whose DT uses `mediatek,mt8167-dsi`.
-- **Root cause:** DT binding has listed `mediatek,mt8167-dsi` since
-  2022; that compatible cannot be removed or replaced with a fallback;
-  driver was never updated to match.
-- **Version info:** Binding present since 2022; fix is May 2026.
+- **Before:** `pci_disable_link_state(pdev, aspm_conf)` where
+  `aspm_conf` holds `PCI_EXP_LNKCTL` bits (e.g. `0x3` for L0s+L1).
+- **After:** Build `state` by mapping register bits to API constants:
+  - `PCI_EXP_LNKCTL_ASPM_L0S` → `PCIE_LINK_STATE_L0S`
+  - `PCI_EXP_LNKCTL_ASPM_L1` → `PCIE_LINK_STATE_L1`
+  - Then call `pci_disable_link_state(pdev, state)`.
+- **Path affected:** Normal probe path when `CONFIG_PCIEASPM` is enabled
+  and the OS has ASPM control.
 
-### Step 1.4: DETECT HIDDEN BUG FIXES
-**Record:** Not disguised as cleanup. This is explicit hardware-
-enablement: a missing `of_device_id` entry leaves DSI non-functional on
-affected hardware. Functionally a driver/DT mismatch bug, not a new
-feature API.
+### Step 2.3: Bug Mechanism
+**Record:** **Logic/correctness fix — API value mismatch regression.**
+
+When `aspm_conf = 0x3` (L0s+L1 in LNKCTL):
+- Broken: `pci_disable_link_state(pdev, 0x3)` sets `link->aspm_disable
+  |= 0x3`
+- In `pcie_config_aspm_link()`: `state &= (link->aspm_capable &
+  ~link->aspm_disable)` — bits 0 and 1 are cleared, but
+  `PCIE_LINK_STATE_L1` is `BIT(2)` = 4, which is **not** cleared
+- Function returns 0 (success) and exits early — L1 remains enabled
+
+When `aspm_conf = 0x2` (L1 only): `aspm_disable |= 2` does not map to
+`PCIE_LINK_STATE_L1` (4) — L1 not disabled.
+
+### Step 2.4: Fix Quality
+**Record:** Obviously correct — matches how every other driver in the
+tree calls `pci_disable_link_state()` (using `PCIE_LINK_STATE_*`
+constants, not register values). Minimal, no new APIs, very low
+regression risk.
 
 ---
 
-## PHASE 2: DIFF ANALYSIS
+## Phase 3: Git History Investigation
 
-### Step 2.1: INVENTORY THE CHANGES
-**Record:**
-- **Files:** `drivers/gpu/drm/mediatek/mtk_dsi.c` (+1 line)
-- **Functions/areas:** `mtk_dsi_of_match[]` static table
-- **Scope:** Single-file, one-line surgical change
+### Step 3.1: Blame
+**Record:** Buggy `pci_disable_link_state(pdev, aspm_conf)` call
+introduced in `f37f05503575c` (Oct 2019, "mt76: mt76x2e: disable
+pcie_aspm by default"). Worked correctly until `b478e162f227` changed
+the `PCIE_LINK_STATE_*` definitions.
 
-### Step 2.2: UNDERSTAND THE CODE FLOW CHANGE
-**Record:**
-- **Before:** `mtk_dsi_probe()` only runs for `mt2701-dsi`,
-  `mt8173-dsi`, `mt8183-dsi`, `mt8186-dsi`, `mt8188-dsi` compatibles.
-- **After:** Also runs for `mediatek,mt8167-dsi`, using
-  `mt2701_dsi_driver_data` (same register offsets as MT2701).
-- **Path affected:** Platform probe → `of_device_get_match_data()` → DSI
-  host/bridge registration → DRM component bind.
+### Step 3.2: Fixes Tag
+**Record:** N/A — no `Fixes:` tag. Referenced commit `b478e162f227` is
+confirmed in this tree (`git merge-base --is-ancestor` succeeds).
 
-### Step 2.3: IDENTIFY THE BUG MECHANISM
-**Record:**
-- **Category:** Logic/correctness — missing hardware identification
-  entry (compatible-string quirk).
-- **Mechanism:** `mtk_drm_drv.c` already recognizes
-  `mediatek,mt8167-dsi` in `mtk_ddp_comp_dt_ids[]` and adds a component
-  match, but `mtk_dsi_driver` never probes the device without a matching
-  `of_match` entry. DRM bind stalls or fails for the DSI component.
+### Step 3.3: Related File History
+**Record:** `pci.c` has only 3 commits in this tree. No related fix
+already applied. The fix commit itself is not yet in
+`stable/linux-6.18.y`.
 
-### Step 2.4: ASSESS THE FIX QUALITY
-**Record:**
-- Obviously correct: reuses existing `mt2701_dsi_driver_data`; author
-  and reviewers confirm hardware identity.
-- Minimal, no unrelated changes.
-- Regression risk: very low — only adds a new match entry pointing at
-  proven driver data.
-- No API, structure, or locking changes.
+### Step 3.4: Author Context
+**Record:** Jiajia Liu has other kernel contributions. Felix Fietkau
+(mt76 maintainer) Signed-off-by on the patch.
+
+### Step 3.5: Dependencies
+**Record:** Requires `b478e162f227` (present in tree). Standalone — no
+series dependencies. Applies cleanly to current `pci.c`.
 
 ---
 
-## PHASE 3: GIT HISTORY INVESTIGATION
+## Phase 4: Mailing List and External Research
 
-### Step 3.1: BLAME THE CHANGED LINES
-**Record:** In this checkout, `git blame` on `mtk_dsi_of_match[]`
-attributes all lines to a single squashed base commit (`a112b91dd6349`);
-per-file history is not useful for dating the omission. The omission is
-the absence of `mt8167-dsi` while other MT8167 compatibles exist
-elsewhere in the same driver tree.
+### Step 4.1: Original Patch Discussion
+**Record:** `b4 am 20260602054349.42429-1-liujia6264@gmail.com` found
+thread at
+https://patch.msgid.link/20260602054349.42429-1-liujia6264@gmail.com.
+Single-message thread (initial submission only); no review replies or
+stable nominations in the mbox.
 
-### Step 3.2: FOLLOW THE FIXES: TAG
-**Record:** N/A — no `Fixes:` tag in the commit message.
+### Step 4.2: Reviewers
+**Record:** `b4 am` reported 0 code-review messages. Felix Fietkau
+maintainer sign-off in the patch itself.
 
-### Step 3.3: CHECK FILE HISTORY FOR RELATED CHANGES
+### Step 4.3: Bug Report
+**Record:** No external bug report or syzbot link. Bug identified via
+code analysis of the `b478e162f227` API change impact.
+
+### Step 4.4: Related Patches
+**Record:** Standalone 1-patch fix. mt76 is the only driver passing raw
+LNKCTL values to `pci_disable_link_state()` (verified via grep).
+
+### Step 4.5: Stable List History
+**Record:** Not searched — no stable discussion found in the patch
+thread. Not applicable as a negative signal.
+
+---
+
+## Phase 5: Code Semantic Analysis
+
+### Step 5.1: Key Functions
+**Record:** `mt76_pci_disable_aspm()` modified.
+
+### Step 5.2: Callers
+**Record:** Called during PCI probe from:
+- `mt76x0/pci.c`, `mt76x2/pci.c` — always
+- `mt7615/pci.c`, `mt7915/pci.c`, `mt7996/pci.c` — always
+- `mt7921/pci.c`, `mt7925/pci.c` — when `disable_aspm` module param is
+  set (default false)
+
+### Step 5.3: Callees
+**Record:** `pci_disable_link_state()` → `__pci_disable_link_state()` →
+sets `link->aspm_disable` and calls `pcie_config_aspm_link()`. Fallback:
+`pcie_capability_clear_word()` on LNKCTL if API call fails.
+
+### Step 5.4: Reachability
+**Record:** Triggered at device probe on systems with `CONFIG_PCIEASPM`
+and ASPM enabled in firmware/BIOS — common on laptops and desktops. Not
+userspace-triggerable, but affects every boot/probe of affected mt76
+hardware.
+
+### Step 5.5: Similar Patterns
+**Record:** All other `pci_disable_link_state()` callers use
+`PCIE_LINK_STATE_*` constants correctly. mt76 is the sole offender.
+
+---
+
+## Phase 6: Cross-Reference Against Local Tree
+
+### Step 6.1: Buggy Code Present?
+**Record:** **Yes.** Local tree is **v6.18.44** (`stable/linux-6.18.y`).
+Buggy code at line 34 of `pci.c`. Regression commit `b478e162f227` is an
+ancestor of HEAD.
+
+### Step 6.2: Backport Complications
+**Record:** Clean apply expected — no conflicting changes to this
+function in 6.18.y.
+
+### Step 6.3: Fix Already Present?
+**Record:** No — fix not in tree. `git log --grep='transform aspm_conf'`
+returns nothing.
+
+---
+
+## Phase 7: Subsystem Context
+
+### Step 7.1: Subsystem Criticality
+**Record:** `drivers/net/wireless/mediatek/mt76` — IMPORTANT (WiFi
+driver, multiple widely-used MediaTek chips).
+
+### Step 7.2: Activity Level
+**Record:** Actively maintained; mt76 is a core WiFi driver family with
+ongoing development.
+
+---
+
+## Phase 8: Impact and Risk Assessment
+
+### Step 8.1: Who Is Affected
+**Record:** Users of mt76x0, mt76x2, mt7615, mt7915, mt7996 PCI WiFi
+devices (always calls ASPM disable). mt7921/mt7925 users who set
+`disable_aspm=1`. Config-dependent on `CONFIG_PCIEASPM` and platform
+ASPM settings.
+
+### Step 8.2: Trigger Conditions
+**Record:** Device probe on platforms with ASPM L0s and/or L1 enabled in
+PCI config — common default on modern systems. Not timing-dependent.
+
+### Step 8.3: Failure Mode Severity
+**Record:** **HIGH** functional impact — ASPM L1 remains active when the
+driver intends to disable it. Original 2019 commit documented this
+causes "continuous mcu hangs and instability" on mt76 hardware. Not a
+kernel oops, but serious WiFi reliability regression.
+
+### Step 8.4: Risk-Benefit
 **Record:**
-- Patch is **v4, 2/2** of series “Add support for mt8167 display
-  blocks”.
-- **v4, 1/2:** `arm64: dts: mediatek: mt8167: Add DRM nodes` (adds DSI
-  and other display nodes to `mt8167.dtsi`).
-- This driver patch is standalone: it only needs a DT node with
-  `mediatek,mt8167-dsi`, which the binding has documented since 2022 and
-  which `mtk_drm_drv.c` already handles.
-
-### Step 3.4: CHECK THE AUTHOR'S OTHER COMMITS
-**Record:** Luca Leonardo Scorcia is an active MT8167 display
-contributor. Maintainer Chun-Kuang Hu applied the patch to `mediatek-
-drm-next`. Git history in this tree is too squashed to enumerate author
-commits locally.
-
-### Step 3.5: CHECK FOR DEPENDENT/PREREQUISITE COMMITS
-**Record:**
-- No kernel-code prerequisites beyond existing `mt2701_dsi_driver_data`
-  and `mtk_dsi` driver (both present in 6.18.43).
-- DTS patch 1/2 is **not** required for the driver fix to apply cleanly;
-  it is required for in-tree `mt8167.dtsi` to expose a DSI node.
-  Vendor/out-of-tree DTS may already use `mediatek,mt8167-dsi`.
-- **Can apply standalone:** PASS for the driver change.
+- **Benefit:** HIGH for affected mt76 users — restores intended ASPM
+  disabling behavior
+- **Risk:** VERY LOW — 6-line mapping fix, maintainer-approved, matches
+  established driver patterns
+- **Ratio:** Strongly favors backport
 
 ---
 
-## PHASE 4: MAILING LIST AND EXTERNAL RESEARCH
+## Phase 9: Final Synthesis
 
-### Step 4.1: FIND THE ORIGINAL PATCH DISCUSSION
-**Record:**
-- `b4 dig -c <sha>` failed (commit not in this repo).
-- Patchwork: https://patchwork.kernel.org/project/dri-
-  devel/patch/20260505214541.333657-3-l.scorcia@gmail.com/
-- Series: v4, 2/2; v4, 1/2 adds DRM DT nodes.
-- Reviewed-by from AngeloGioacchino Del Regno and CK Hu on list.
-- Chun-Kuang Hu: “Applied to mediatek-drm-next”.
-- No stable nomination or NAK found in thread.
-- lore.kernel.org fetch blocked (bot protection).
-
-### Step 4.2: CHECK WHO REVIEWED THE PATCH
-**Record:** CC list included `linux-mediatek`, `dri-devel`,
-`devicetree`, `chunkuang.hu@kernel.org`, `ck.hu@mediatek.com`, and other
-DRM/DT maintainers. MediaTek maintainer reviewed and applied.
-
-### Step 4.3: SEARCH FOR THE BUG REPORT
-**Record:** No formal bug report or syzbot link. Impact inferred from
-incomplete driver/DT binding alignment and partial MT8167 DRM support
-already in-tree.
-
-### Step 4.4: CHECK FOR RELATED PATCHES AND SERIES
-**Record:** Companion patch adds DSI node to `mt8167.dtsi`. In **this**
-tree, `mt8167.dtsi` has mmsys/SMI nodes but **no DSI node**;
-`mt8167-pumpkin.dts` also has no display nodes. Driver fix still matters
-for downstream/vendor DTS and for when patch 1/2 lands.
-
-### Step 4.5: CHECK STABLE MAILING LIST HISTORY
-**Record:** Not searched (lore blocked). No stable discussion found on
-Patchwork.
-
----
-
-## PHASE 5: CODE SEMANTIC ANALYSIS
-
-### Step 5.1: IDENTIFY KEY FUNCTIONS IN THE DIFF
-**Record:** `mtk_dsi_of_match[]`, `mtk_dsi_probe()`, `mtk_dsi_driver`
-(platform driver registration via `mtk_drm_init()`).
-
-### Step 5.2: TRACE CALLERS
-**Record:**
-- `mtk_dsi_driver` registered in `mtk_drm_init()` →
-  `platform_register_drivers()`.
-- `mtk_drm_probe()` iterates MMSYS children, matches
-  `mediatek,mt8167-dsi` via `mtk_ddp_comp_dt_ids[]`, calls
-  `drm_of_component_match_add()` for DSI nodes.
-- Without `mtk_dsi` probe, component bind cannot succeed.
-
-### Step 5.3: TRACE CALLEES
-**Record:** `mtk_dsi_probe()` uses `of_device_get_match_data()`,
-clock/PHY/IRQ setup, `mipi_dsi_host_register()`, DRM bridge setup — all
-standard, unchanged by this patch.
-
-### Step 5.4: FOLLOW THE CALL CHAIN
-**Record:** Boot → DT populates DSI platform device → `mtk_dsi_probe()`
-(needs `of_match`) → component bind in `mtk_drm_bind()` → display
-pipeline. Reachable on any MT8167 board with a DSI DT node; not a
-syscall path, but normal embedded boot/display init.
-
-### Step 5.5: SEARCH FOR SIMILAR PATTERNS
-**Record:** `mtk_drm_drv.c` already lists many `mediatek,mt8167-*`
-compatibles (mmsys, ovl, rdma, **dsi**, etc.) while `mtk_dsi.c` lacked
-the DSI entry — clear inconsistency, same pattern as other SoC-specific
-compat strings in `mtk_dsi_of_match[]`.
-
----
-
-## PHASE 6: CROSS-REFERENCING AGAINST THE LOCAL TREE (6.18.43)
-
-### Step 6.1: DOES THE BUGGY CODE EXIST IN THIS TREE?
-**Record:** **YES.**
-- `mtk_dsi.c` lines 1303–1309: `mtk_dsi_of_match[]` has no `mt8167-dsi`.
-- `mtk_drm_drv.c` line 813: `mediatek,mt8167-dsi` **is** in
-  `mtk_ddp_comp_dt_ids[]`.
-- `Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml`
-  line 28: `mt8167-dsi` documented.
-- `mt2701_dsi_driver_data` exists at line 1271.
-- Partial MT8167 DRM support is already in 6.18.43; DSI driver match is
-  the missing piece.
-
-### Step 6.2: CHECK FOR BACKPORT COMPLICATIONS
-**Record:** **Clean apply** — single line insertion after the
-`mt2701-dsi` entry. No structural conflicts observed; table layout
-matches the upstream diff context.
-
-### Step 6.3: CHECK IF RELATED FIXES ARE ALREADY HERE
-**Record:** No existing commit in this tree adds `mt8167-dsi` to
-`mtk_dsi.c`. `git log --grep="mt8167-dsi"` returned nothing.
-
----
-
-## PHASE 7: SUBSYSTEM AND MAINTAINER CONTEXT
-
-### Step 7.1: IDENTIFY THE SUBSYSTEM AND ITS CRITICALITY
-**Record:** `drivers/gpu/drm/mediatek` — **IMPORTANT** (embedded/display
-on MediaTek SoCs; not core kernel, but user-visible on affected
-hardware).
-
-### Step 7.2: ASSESS SUBSYSTEM ACTIVITY
-**Record:** MT8167 display support is actively being completed (v4
-series, May 2026). 6.18.43 already carries substantial MT8167 DRM driver
-data, indicating the platform is in scope for this stable series.
-
----
-
-## PHASE 8: IMPACT AND RISK ASSESSMENT
-
-### Step 8.1: DETERMINE WHO IS AFFECTED
-**Record:** Users of MT8167-based devices with DSI panels (tablets,
-embedded boards such as Pumpkin, vendor trees using
-`mediatek,mt8167-dsi`). Config-dependent on `CONFIG_DRM_MEDIATEK` and
-MT8167 DT support.
-
-### Step 8.2: DETERMINE THE TRIGGER CONDITIONS
-**Record:** Boot on MT8167 hardware with a DSI node using `compatible =
-"mediatek,mt8167-dsi"`. Common on intended display bring-up; not
-userspace-triggered. Likelihood: **certain** on any such board without
-this fix.
-
-### Step 8.3: DETERMINE THE FAILURE MODE SEVERITY
-**Record:** DSI driver does not probe → display does not work (no
-framebuffer/DRM output). **Severity: MEDIUM** — hardware broken for
-display use, but not a crash, security issue, or data corruption.
-
-### Step 8.4: CALCULATE RISK-BENEFIT RATIO
-**Record:**
-- **Benefit:** Enables DSI display on MT8167; fixes inconsistency with
-  binding and `mtk_drm_drv.c`.
-- **Risk:** One line, existing driver data, maintainer-reviewed — **very
-  low**.
-- **Ratio:** Favorable for stable; fits the “compatible / device ID
-  addition to existing driver” exception.
-
----
-
-## PHASE 9: FINAL SYNTHESIS
-
-### Step 9.1: COMPILE THE EVIDENCE
+### Step 9.1: Evidence Summary
 
 **FOR backport:**
-- Fixes real broken display on MT8167 when DT uses `mediatek,mt8167-dsi`
-- One-line, obviously correct; reviewed by MediaTek maintainer
-- Reuses `mt2701_dsi_driver_data` — no new APIs or logic
-- Binding and `mtk_drm_drv.c` already expect this compatible in 6.18.43
-- Classic stable exception: compatible-string addition to existing
-  driver
-- Very low regression risk
+- Real regression from `b478e162f227` (in tree since v6.9)
+- Prevents ASPM L1 disable on mt76 — known to cause MCU
+  hangs/instability
+- Small, surgical, maintainer-signed fix
+- Buggy code and prerequisite both present in v6.18.44
+- Only driver in tree with this incorrect usage pattern
 
 **AGAINST backport:**
-- Could be framed as “new hardware enablement” rather than crash fix
-- In-tree `mt8167.dtsi` in 6.18.43 still lacks DSI nodes (patch 1/2 not
-  merged)
-- No syzbot/user crash reports
-- Display failure is functional, not a kernel oops
+- No syzbot report or user bug report filed
+- mt7921/mt7925 only affected when module param set
+- Not a security issue or kernel crash
 
-**UNRESOLVED:**
-- Exact mainline commit SHA not in this repo (`b4 dig` failed)
-- lore.kernel.org thread not readable (403)
-- When `mt8167-dsi` first entered the DT binding in mainline history
-  (squashed git in this checkout)
+**Unresolved:** No review-thread discussion beyond initial submission.
 
-Neither unresolved item changes the technical conclusion for 6.18.43.
+### Step 9.2: Stable Rules Checklist
+1. Obviously correct and tested? **PASS** — mapping is verifiably
+   correct; maintainer SOB
+2. Fixes a real bug? **PASS** — regression from PCI API change
+3. Important issue? **PASS** — WiFi instability on affected hardware
+   (HIGH functional)
+4. Small and contained? **PASS** — 7 lines, 1 file
+5. No new features/APIs? **PASS**
+6. Can apply to local tree? **PASS** — prerequisite present, clean apply
 
-### Step 9.2: STABLE RULES CHECKLIST
-| Criterion | Result |
-|-----------|--------|
-| 1. Obviously correct and tested? | **PASS** — maintainer Reviewed-by;
-maps to known-good MT2701 data |
-| 2. Fixes a real bug affecting users? | **PASS** — DSI cannot probe
-without this entry |
-| 3. Important issue? | **PASS (MEDIUM)** — display non-functional on
-affected hardware |
-| 4. Small and contained? | **PASS** — 1 line, 1 file |
-| 5. No new features/APIs? | **PASS** — compatible quirk only; exception
-applies |
-| 6. Can apply to local tree? | **PASS** — clean one-line apply;
-prerequisites present |
+### Step 9.3: Exception Categories
+**Record:** Hardware workaround — restoring ASPM disable that prevents
+known hardware instability. Qualifies under quirk/workaround exception.
 
-### Step 9.3: EXCEPTION CATEGORIES
-**Record:** **Hardware quirk / device compatible addition** — adding
-`mediatek,mt8167-dsi` to an existing driver’s `of_match` table, reusing
-established `mt2701_dsi_driver_data`. Explicitly allowed for stable.
-
-### Step 9.4: DECISION RATIONALE
-
-For **6.18.43**, MT8167 DRM support is already partially merged:
-`mtk_drm_drv.c` recognizes `mediatek,mt8167-dsi` and builds an MT8167
-display pipeline, but `mtk_dsi.c` omits the compatible. That is a clear
-driver bug/oversight, not greenfield feature work. The fix is one line,
-low risk, maintainer-reviewed, and aligns driver behavior with the DT
-binding that has documented `mt8167-dsi` since 2022. Stable trees
-routinely take such compatible-string additions for existing drivers.
+### Step 9.4: Decision Rationale
+This is a clear regression fix for the locally checked-out **6.18.y**
+tree. Commit `b478e162f227` changed `PCIE_LINK_STATE_*` semantics; mt76
+was the only driver still passing raw LNKCTL register values. The result
+is that `pci_disable_link_state()` returns success without actually
+disabling L1, leaving mt76 devices exposed to the exact ASPM-related
+instability the driver was designed to prevent. The fix is minimal,
+correct, and maintainer-approved.
 
 ---
 
 ## Verification
 
-- **[Phase 1]** Parsed subject, tags, body from user-provided commit
-  message and Patchwork
-- **[Phase 2]** Confirmed diff: +1 line in `mtk_dsi_of_match[]` pointing
-  to `mt2701_dsi_driver_data`
-- **[Phase 3]** `git describe HEAD` → `v6.18.43`; `git blame` on
-  `mtk_dsi.c:1303-1310` and `mtk_drm_drv.c:813-814`
-- **[Phase 3]** `git log --grep="mt8167-dsi"` → no results in this tree
-- **[Phase 4]** Patchwork fetch: v4 2/2 series, Reviewed-by, applied to
-  mediatek-drm-next
-- **[Phase 4]** `b4 dig -c 2257966bbaa9a` → commit not found in repo
-- **[Phase 4]** lore.kernel.org → 403 Forbidden
-- **[Phase 5]** Read `mtk_dsi_probe()`, `mtk_drm_probe()`,
-  `mtk_drm_init()` registration path
-- **[Phase 5]** `grep mt8167` in `drivers/gpu/drm/mediatek/` → extensive
-  MT8167 support in `mtk_drm_drv.c`, HDMI in `mtk_hdmi.c`
-- **[Phase 6]** `grep mt8167-dsi` → present in `mtk_drm_drv.c` and
-  binding; **absent** in `mtk_dsi.c`
-- **[Phase 6]** Read `mt8167.dtsi`, `mt8167-pumpkin.dts` → no DSI node
-  in-tree yet
-- **[Phase 6]** Confirmed `mt2701_dsi_driver_data` exists at
-  `mtk_dsi.c:1271-1275`
-- **[Phase 7]** Identified subsystem as DRM/MediaTek display driver
-- **[Phase 8]** Assessed failure as non-probing DSI / no display (MEDIUM
-  severity)
+- [Phase 1] Parsed subject, tags, body; identified regression from
+  `b478e162f227`
+- [Phase 2] Read diff: 7 lines in `mt76_pci_disable_aspm()`, maps LNKCTL
+  bits to `PCIE_LINK_STATE_*`
+- [Phase 2] Verified values: `PCI_EXP_LNKCTL_ASPM_L0S=1`, `L1=2`;
+  `PCIE_LINK_STATE_L0S=3`, `L1=4` in `include/linux/pci.h`
+- [Phase 2] Traced `pcie_config_aspm_link()` line 961: `state &=
+  (capable & ~aspm_disable)` — confirmed L1 (bit 2) not cleared when
+  `aspm_disable=0x3`
+- [Phase 3] `git describe HEAD`: v6.18.44
+- [Phase 3] `git merge-base --is-ancestor b478e162f227 HEAD`: confirmed
+  present
+- [Phase 3] `git show b478e162f227^:include/linux/pci.h`: old
+  `PCIE_LINK_STATE_L0S=BIT(0)`, `L1=BIT(1)` matched register bits
+- [Phase 3] `git blame pci.c:34`: introduced in `f37f05503575c` (2019)
+- [Phase 3] Fix not in tree: `git log --grep='transform aspm_conf'`
+  empty
+- [Phase 4] `b4 am 20260602054349...`: found patch thread, 1 message,
+  Felix Fietkau SOB
+- [Phase 5] `grep mt76_pci_disable_aspm`: 7 call sites across mt76 PCI
+  drivers
+- [Phase 5] `grep pci_disable_link_state`: mt76 is sole driver passing
+  register values
+- [Phase 6] Buggy code confirmed at `pci.c:34` in v6.18.44
+- [Phase 6] `b478e162f227` on `stable/linux-6.18.y` via grep of branch
+  log
+- [Phase 8] Original commit `f37f05503575c` message documents ASPM
+  causes "mcu hangs and instability"
 
-**YES**
+**YES**The background checks finished and match the earlier analysis:
 
- drivers/gpu/drm/mediatek/mtk_dsi.c | 1 +
- 1 file changed, 1 insertion(+)
+- **Stable branch search:** `b478e162f227d` ("PCI/ASPM: Consolidate link
+  state defines") is on `stable/linux-6.18.y`, so the regression this
+  mt76 fix addresses is present in your v6.18.44 tree.
+- **Author history:** Jiajia Liu has other kernel fixes (Bluetooth,
+  mt76, btmtk, i915); Felix Fietkau signed off on this patch.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index acee2227275b7..6845bb8043254 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -1302,6 +1302,7 @@ static const struct mtk_dsi_driver_data mt8188_dsi_driver_data = {
+**Verdict unchanged: YES** — backport the fix to restore correct ASPM
+disabling on mt76 PCI WiFi devices.
+
+ drivers/net/wireless/mediatek/mt76/pci.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/pci.c b/drivers/net/wireless/mediatek/mt76/pci.c
+index b5031ca7f73fb..4c864afefe2f2 100644
+--- a/drivers/net/wireless/mediatek/mt76/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/pci.c
+@@ -30,8 +30,14 @@ void mt76_pci_disable_aspm(struct pci_dev *pdev)
  
- static const struct of_device_id mtk_dsi_of_match[] = {
- 	{ .compatible = "mediatek,mt2701-dsi", .data = &mt2701_dsi_driver_data },
-+	{ .compatible = "mediatek,mt8167-dsi", .data = &mt2701_dsi_driver_data },
- 	{ .compatible = "mediatek,mt8173-dsi", .data = &mt8173_dsi_driver_data },
- 	{ .compatible = "mediatek,mt8183-dsi", .data = &mt8183_dsi_driver_data },
- 	{ .compatible = "mediatek,mt8186-dsi", .data = &mt8186_dsi_driver_data },
+ 	if (IS_ENABLED(CONFIG_PCIEASPM)) {
+ 		int err;
++		int state = 0;
+ 
+-		err = pci_disable_link_state(pdev, aspm_conf);
++		if (aspm_conf & PCI_EXP_LNKCTL_ASPM_L0S)
++			state |= PCIE_LINK_STATE_L0S;
++		if (aspm_conf & PCI_EXP_LNKCTL_ASPM_L1)
++			state |= PCIE_LINK_STATE_L1;
++
++		err = pci_disable_link_state(pdev, state);
+ 		if (!err)
+ 			return;
+ 	}
 -- 
 2.53.0
 
