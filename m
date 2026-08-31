@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCD92C624C6
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7304C61DFD
 	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 21:47:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,63 +12,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HR5w4wu2d/AdbodPVdlLXgyYzkKXoBfBxxBtTecxISQ=; b=2y073VkwJ8bM5wqSWjGz6mZ682
-	THhqF5AcPzQND+K/D41khJNzoDCYxGxrj+G4y2trEAf5p6R31SKk9RIutV2nglipVJiG/Ep13EByv
-	OvqjfLUwxd7q9YuI/ctXGA6QcdirDZg71S61vZsWtAPi7fqtixUFP4T8GOuPekI5JtkbU1YZz+gY+
-	sLlOqN1EIdFRjHsHF9q35CLWzwozQnnZMbjWu7IZ/Ur9czBY0aDvZaLj1KJkY2C44hWW9i2xOcK4V
-	Cci2iHzPgfR0fQ0Slx1DLofC2iIc6JpasKXlaFjs0wtv+Zf4tU+OlYqfyMZSX53lwCbxX8UfAVTcY
-	9qZq28RA==;
+	bh=QXmLTUcCngMrB5jBKoeiBiFNAXXmpHJGCK06GzS0et4=; b=W6ElpqktbZLKYtXyQx6jsopvu0
+	apuq2Bo1mWXaX7KFDLIjNAhzGz6W+Vl5t3NQeXgY9MF4zkTw7LZBh/SMEETAASG/bRacaxmXLhqI5
+	u2ppPqwjaZlifsIPmw1SeyjZC8v8SYRxFlZj7JDRp8YOuoW2878AjT+seoulYugkgG/7p0xK+CPYj
+	F+LhQiYLZgIbKn+OGxctsvExMrWJXaun+W9MkeUI8+k1QBWW336CjDoNy4SVUuCIoQigmiUuexNmN
+	LTW5uhKdRdFygzBgfdqNyjWt39BYjx/9QATOlZMv9NxhoXypW6HOnfopQVkmcX+qCywEVTvbN+VjY
+	gVj1SXOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x19r7-0000000AYh1-2Y2m;
+	id 1x19r7-0000000AYgw-2EHd;
 	Mon, 31 Aug 2026 21:47:53 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x19r2-0000000AYeD-2yiK
+	id 1x19qy-0000000AYbB-30lL
 	for linux-mediatek@lists.infradead.org;
-	Mon, 31 Aug 2026 21:47:49 +0000
-Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-39faa67fab8so31648311fa.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 31 Aug 2026 14:47:48 -0700 (PDT)
+	Mon, 31 Aug 2026 21:47:45 +0000
+Received: by mail-lj1-x22a.google.com with SMTP id 38308e7fff4ca-3a1f75277f3so1263071fa.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 31 Aug 2026 14:47:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788212867; x=1788817667; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1788212863; x=1788817663; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=HR5w4wu2d/AdbodPVdlLXgyYzkKXoBfBxxBtTecxISQ=;
-        b=gTXC9Rg2ualcIMUFmLFNnflQufjPsqXHr39+VHMMx2XpgLDMSQh2MZBfvUXAhDcskK
-         inIJ9X8ZSirAO1EE0QVzeVs4B1860/MXqYZYAbh2tpb4lIngrqBlTa4zQda7pitrrL6T
-         AM7ChNDZbpGrUFoj4kMcbfhNV5K+dH2EkSwlBf/ilIB0jc9d3yYks2KUt3gQjQJrYr86
-         0Jvkwoj5l6P78No1X+1K0X5cOejMmXasNyFm7eemP4ZPQ6UGcXBCL7puHRLrwHWo01l9
-         V1ZcuEdCgmOZ4v+mSt3JMoLUc2JOpRt9GlegJCQMQWhs9tETKHw2nafeI2ajWMfAlMKV
-         k6TA==
+        bh=QXmLTUcCngMrB5jBKoeiBiFNAXXmpHJGCK06GzS0et4=;
+        b=rlIce1uqFGLtlWoZkl4iJKykYsknItQvNDK4+9qCMZjknRXr5KRV860uu8DQmlwaJ0
+         azeJr0wo1Diste9zetY86wmPPor3As2Q214YMN5pZ5BocTS6ubbk89srp8u/9m997shb
+         G2Sy6qnfHJTOmfpwIIdmM+D/jEC3553JF1gqP/poXyNgMn635dH6maJ3UMEbdxNxVn3i
+         KLMOS7l4FkvhjerT/+4vVfzO93yr/r6+sWoGBd0lPbN9N6HaH/14Mq1eXoYbfrwf5ECf
+         lKdxzkfTWFTwLX8cl2hNmgl1bBAVhLQLiGIxsax7S97WXIZPGAWPb4A1hXAeKVlSWlnC
+         /35w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788212867; x=1788817667;
+        d=1e100.net; s=20251104; t=1788212863; x=1788817663;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=HR5w4wu2d/AdbodPVdlLXgyYzkKXoBfBxxBtTecxISQ=;
-        b=QcZbhgRBQ/OSoZdZ0P+cNWNwl6yxnizXFtjJC6YddGaK+UYVKkb/y1SJ88a5OdShpi
-         HneD8ulC9Kv8KRh9VVn6Bp++iVg3O9qvZ4mgaIEphPssfiGdsRPETaogjqqU6Mqjo6KL
-         n1eZ1yeIdZXdJIVlvO2Jr9weXlunOWL8ZGK2rx7Qz9/8/GSm9LbTq1AvACq2xYJdZzHD
-         EZ0e4vyKrfo1PcGzOk0/Mie3gtgX0X3FEJ/n4Wxza0qTsVuPSoOATGg9ua7BrQr4X8Hs
-         HxIOmsuVXkUeRyuxbANrif2aqCmNygj0YmFIbOU/Zg47iEsducm7HCR0INCP30/F3Ju5
-         vB/g==
-X-Forwarded-Encrypted: i=1; AKwUvBzuKnzaz9dhOFykqppC80xUqlbDznh3xIuWKHSdchjwlEf8s2K1DJaquJfCG39DCvwV/PawSwfpJW7ueCwFrA==@lists.infradead.org
-X-Gm-Message-State: AFuF++ki65+KkosxB2X+RwqD6x09ivXQ/3mI9/oUOst4cOiC6prn4e1j
-	4tHlhIPKs3JNmyDfAlqiLXaTqxIC2uCbDCl+Z5B0iohtlvyIkQkobbFdO471Suxzvw==
-X-Gm-Gg: AYBFou34xQ96KO5LRSb8u0blrjsbLFw7rG8bJBmHYFUfApLJXtr9wvVCk6M9hAQtYFS
-	ZqIQ7zwkKJeYQpkxVCtSyZ3cPnADj9QLTHZrRTg3v3xTKJsS2Np+Uz/0sCRzL6X0qCfMslj4/SW
-	Gi70PbXN/xFAmZUnUNttBhrhYBsK69N9niOLu8dhe2PsciufN+qtOpQ672uu8RfPwcZ6zVjSEXk
-	JzSaHrZIHj8a7SWh0yc2kVshfKQUELgNVpTisqxduNX34w2Pg8/879TBeoyV11rqgHMv+sjjTrE
-	fxO7nycpS/98wojKpggx+EFPGnXKeMFXr++rPWH5DZJXjpD5WIjcpBdORXQYRt8xTxzmTdK9mPf
-	UJNLF6My4pgRwoao+Ip76dfnfv52q9nwWsReQdlvdm2Zd1CRStlPN7JLWPlEWhXQslMgsOtIT5I
-	vqhMsXLQpL4NuZVZjx9CLlH/j4+RzCm+xXoZg2UUzS0S4LgvxZAw==
-X-Received: by 2002:a05:651c:30c9:b0:3a1:ab57:ea2c with SMTP id 38308e7fff4ca-3a33948c4e0mr10050771fa.2.1788212866759;
-        Mon, 31 Aug 2026 14:47:46 -0700 (PDT)
+        bh=QXmLTUcCngMrB5jBKoeiBiFNAXXmpHJGCK06GzS0et4=;
+        b=njpCyY3cvdlIfJtx6MTpdF7Lm9C5hvL25Ieq3rhyAMr5oxQ6KW8YZupUSugKkmAmbt
+         NsyRjcHGuuIWOspKUh7H/uKgXUP7nVV08zakdzkhJY7lOWnBNy+n5MXY/oOgAmnAc8yz
+         Fk/dpzAbyfMid03lA3e5HWEa+bF2nCVg47OgZqvyT40mf/Rg+xaXLDW4x+GeSralW7sR
+         xLrCsy44jgHgry5H7xlruzWfT/L5X6YZOnVDwXxD6POFL9CUXc2SdcltUsa2GK958+vC
+         JRhytJDRUcNWrUjS+4LXCWTsX/pvHu6St/w5sEtnjtgp4cWzVcpAzyFad250D2xo5aR9
+         AYPg==
+X-Forwarded-Encrypted: i=1; AKwUvByXGS6SpC8c+kewCJxneiNVMolA7lPXRx8SFXv3UyBZCHrorrj0kLMrvMHg1Ujz6b0Wh/DBnPXfRSIjDDkEWA==@lists.infradead.org
+X-Gm-Message-State: AFuF++lhkI4V7D2EPy537osIBq8joLlhkBtYr3dxD6nCisSFHy8b4QY3
+	CxliV9nrK8HlJbjS1bUlHmjjfg/opjQuLp6T0uabbSB0SMrMGm3W0n8=
+X-Gm-Gg: AYBFou3+4LL6R+CJZZN0gGyKM1+9xuhT/AsXyNQnGhvPN1+c11nNrY4MDWNOg/bPJBI
+	RUNsNMtatFfueLEvHf+vjIaZQkpAoACajBEPsUwJ+qUNBt9Ei5Cx3vCsSeQoKpWGmupwY9H4K0U
+	rWlyx+l9MNNLQFJFGN2iGqYKQi1f6mCDtZ6qA6bC9TNMUwn0vRjDw+JZG76SiyJVocq6rwVwgNS
+	jhTcYRC//QyzZFU4wb4Gdkb8eT3d9izK5IyBocrhxtFtNhWxU9y6jLjbAAXSpSmS5PiRteKpX/e
+	mpZs76w0JjN8rleq5Zw4he86KhnfiGAIhqV/9dBOQYh8ZT1MhXZ82daIXl7cn/1nZS8TWrAI4y5
+	t5YIJcHIFC9nmKr4bxI4PAegKGTyzx7g3R9IGXCttI35z6xrjxS7fxEEnSw0Z1ARKOEmfRnQKGX
+	4nHWkJOntbregr/J0kT+2Pt0KcxlGdKHbtSUbhWeCRI3AGThpeUA==
+X-Received: by 2002:a2e:8696:0:b0:3a1:ffd9:5438 with SMTP id 38308e7fff4ca-3a301ab4102mr53117361fa.1.1788212862381;
+        Mon, 31 Aug 2026 14:47:42 -0700 (PDT)
 Received: from fedora ([92.36.9.2])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3a31550cefbsm18299201fa.9.2026.08.31.14.47.44
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3a31550cefbsm18299201fa.9.2026.08.31.14.47.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 31 Aug 2026 14:47:46 -0700 (PDT)
+        Mon, 31 Aug 2026 14:47:41 -0700 (PDT)
 From: Vitaliy Sochnev <sochnev.v.74@gmail.com>
 To: Lorenzo Bianconi <lorenzo@kernel.org>,
 	netdev@vger.kernel.org
@@ -82,9 +82,9 @@ Cc: upstream@airoha.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Vitaliy Sochnev <sochnev.v.74@gmail.com>
-Subject: [PATCH net v2 3/3] net: airoha: grow the small RX rings
-Date: Tue,  1 Sep 2026 00:47:01 +0100
-Message-ID: <20260831234701.206021-4-sochnev.v.74@gmail.com>
+Subject: [PATCH net v2 2/3] net: airoha: recover RX ring after hw completion stall
+Date: Tue,  1 Sep 2026 00:47:00 +0100
+Message-ID: <20260831234701.206021-3-sochnev.v.74@gmail.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260831234701.206021-1-sochnev.v.74@gmail.com>
 References: <20260830095717.37218-1-sochnev.v.74@gmail.com>
@@ -92,8 +92,8 @@ References: <20260830095717.37218-1-sochnev.v.74@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260831_144748_861297_99F41976 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20260831_144744_806400_878BCD4C 
+X-CRM114-Status: GOOD (  24.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,45 +108,228 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Raise the RX_DSCP_NUM() fallback from 16 to 32, the vendor SDK default,
-and give ring 4 the 128 descriptors already used for rings 2/11/15.
+On AN7583 hw can stop advancing the descriptor the sequential consumer in
+airoha_qdma_rx_process() is waiting on, while its own completion counter
+keeps moving. The ring is then dead: NAPI is scheduled, finds DONE clear
+at q->tail, and does nothing, forever.
 
-Ring 4 is the shared "force to CPU" ring that airoha_fe_vip_setup()
-routes BOOTP, PPPoE Discovery, PPP LCP/IPCP/CHAP/PAP/IPv6CP, ISAKMP,
-DHCPv6, SIP and LLDP onto, so it sees the same bursty non-hashed traffic
-as the rings already on 128 while sitting on the smallest allowance.
+Observed directly on ring 4 at its 16-descriptor default (devmem, qdma0):
+REG_RX_CPU_IDX frozen at 15 for over an hour while REG_RX_DMA_IDX advanced
+29 -> 96, with a 60-byte frame left stranded in the ring.
+QDMA_DESC_DROP_MASK was never set. In practice this is hit during PPPoE
+negotiation bursts on the shared "force to CPU" ring, where it stops the
+dial-up from ever completing.
 
-At 16 descriptors the completion stall handled by the previous patch is
-readily reachable: on a Nokia XG-040G-MF the recovery fires roughly every
-35 s under repeated PPPoE dial-up, and negotiation never completes. At
-128 it did not trigger once across 500 forced PPPoE reconnects over 20 h.
+Detect it without trusting ring content: REG_RX_DMA_IDX is hw's own
+counter, independent of what sw posted. If it advances across polls while
+q->tail does not, hw is making progress the consumer cannot observe. Idle
+rings, where hw does not advance either, are left alone. An earlier
+version scanned the ring for a DONE descriptor and trusted its content;
+that OOMed once it reached uninitialised DMA memory that happened to have
+the bit set. A register cannot misfire that way.
 
-Ring 4 and the VIP classification feeding it are shared driver-wide, with
-no DT or hardware property distinguishing one variant's ring 4 from
-another's, so this is not scoped to a particular SoC.
+Recovery is deferred to a work item, since the register access can sleep.
+It drops what is in flight and re-arms the ring through the existing
+cleanup_rx_queue()/fill_rx_queue() pair, which only touch the sw-owned
+[tail, head) window and rewrite both indices from it. Trying instead to
+identify and keep the descriptor hw used caused a page_pool double free.
+
+GLOBAL_CFG_RX_DMA_EN_MASK is per-QDMA, not per-ring, so this briefly
+pauses every ring behind that instance; there is no per-ring equivalent.
+The measured pause is 986-1131 us over 13 recoveries, not the 50 ms
+read_poll_timeout() ceiling, so the logged value is worth having.
 
 Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
 Signed-off-by: Vitaliy Sochnev <sochnev.v.74@gmail.com>
 ---
- drivers/net/ethernet/airoha/airoha_eth.h | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/airoha/airoha_eth.c | 98 +++++++++++++++++++++++-
+ drivers/net/ethernet/airoha/airoha_eth.h |  8 ++
+ 2 files changed, 105 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index c59201aded26..177a0e10e372 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -3,12 +3,14 @@
+  * Copyright (c) 2024 AIROHA Inc
+  * Author: Lorenzo Bianconi <lorenzo@kernel.org>
+  */
++#include <linux/ktime.h>
+ #include <linux/of.h>
+ #include <linux/of_net.h>
+ #include <linux/of_reserved_mem.h>
+ #include <linux/platform_device.h>
+ #include <linux/tcp.h>
+ #include <linux/u64_stats_sync.h>
++#include <linux/workqueue.h>
+ #include <net/dst_metadata.h>
+ #include <net/page_pool/helpers.h>
+ #include <net/pkt_cls.h>
+@@ -657,6 +659,34 @@ airoha_qdma_get_gdm_dev(struct airoha_eth *eth, struct airoha_qdma_desc *desc)
+ 	return port->devs[d] ? port->devs[d] : ERR_PTR(-ENODEV);
+ }
+ 
++#define AIROHA_RX_STALL_THRESHOLD	3
++
++/* REG_RX_DMA_IDX is hw's own completion counter, independent of what sw has
++ * posted, so comparing it against q->tail spots the stall without trusting
++ * ring content: if hw keeps advancing while the strictly sequential consumer
++ * does not, it is completing descriptors that consumer can never reach.
++ */
++static void airoha_qdma_rx_check_stall(struct airoha_queue *q)
++{
++	struct airoha_qdma *qdma = q->qdma;
++	int qid = q - &qdma->q_rx[0];
++	u32 dma_idx;
++
++	dma_idx = airoha_qdma_get(qdma, REG_RX_DMA_IDX(qid),
++				  RX_RING_DMA_IDX_MASK);
++
++	if (q->stall_tail == q->tail && dma_idx != q->stall_dma_idx) {
++		if (++q->stall_count >= AIROHA_RX_STALL_THRESHOLD &&
++		    !test_and_set_bit(qid, qdma->rx_recover_mask))
++			schedule_work(&qdma->rx_recover_work);
++	} else {
++		q->stall_count = 0;
++	}
++
++	q->stall_tail = q->tail;
++	q->stall_dma_idx = dma_idx;
++}
++
+ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
+ {
+ 	enum dma_data_direction dir = page_pool_get_dma_dir(q->page_pool);
+@@ -675,8 +705,10 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
+ 		struct page *page;
+ 
+ 		desc_ctrl = le32_to_cpu(READ_ONCE(desc->ctrl));
+-		if (!(desc_ctrl & QDMA_DESC_DONE_MASK))
++		if (!(desc_ctrl & QDMA_DESC_DONE_MASK)) {
++			airoha_qdma_rx_check_stall(q);
+ 			break;
++		}
+ 
+ 		dma_rmb();
+ 
+@@ -895,6 +927,56 @@ static void airoha_qdma_cleanup_rx_queue(struct airoha_queue *q)
+ 			FIELD_PREP(RX_RING_DMA_IDX_MASK, q->tail));
+ }
+ 
++static void airoha_qdma_rx_recover_work(struct work_struct *work)
++{
++	struct airoha_qdma *qdma = container_of(work, struct airoha_qdma,
++						rx_recover_work);
++	int qid;
++
++	for_each_set_bit(qid, qdma->rx_recover_mask, AIROHA_NUM_RX_RING) {
++		struct airoha_queue *q = &qdma->q_rx[qid];
++		ktime_t rx_dma_off_ts;
++		s64 rx_dma_off_us;
++		u32 status;
++
++		napi_disable(&q->napi);
++
++		/* per-QDMA, not per-ring: this pauses every RX ring behind
++		 * this instance, hence the measured duration below
++		 */
++		rx_dma_off_ts = ktime_get();
++		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
++				  GLOBAL_CFG_RX_DMA_EN_MASK);
++		if (read_poll_timeout(airoha_qdma_rr, status,
++				      !(status & GLOBAL_CFG_RX_DMA_BUSY_MASK),
++				      USEC_PER_MSEC, 50 * USEC_PER_MSEC, true,
++				      qdma, REG_QDMA_GLOBAL_CFG))
++			dev_warn(qdma->eth->dev,
++				 "qid=%d RX DMA busy timeout during recovery\n",
++				 qid);
++
++		airoha_qdma_cleanup_rx_queue(q);
++		if (q->skb) {
++			dev_kfree_skb(q->skb);
++			q->skb = NULL;
++		}
++		airoha_qdma_fill_rx_queue(q);
++
++		airoha_qdma_set(qdma, REG_QDMA_GLOBAL_CFG,
++				GLOBAL_CFG_RX_DMA_EN_MASK);
++		rx_dma_off_us = ktime_us_delta(ktime_get(), rx_dma_off_ts);
++
++		q->stall_count = 0;
++		napi_enable(&q->napi);
++		napi_schedule(&q->napi);
++
++		dev_warn_ratelimited(qdma->eth->dev,
++				     "qid=%d RX ring recovered after hw stall (RX DMA paused %lld us)\n",
++				     qid, rx_dma_off_us);
++		clear_bit(qid, qdma->rx_recover_mask);
++	}
++}
++
+ static int airoha_qdma_init_rx(struct airoha_qdma *qdma)
+ {
+ 	int i;
+@@ -1582,6 +1664,8 @@ static void airoha_qdma_cleanup(struct airoha_eth *eth,
+ {
+ 	int i;
+ 
++	cancel_work_sync(&qdma->rx_recover_work);
++
+ 	if (test_bit(DEV_STATE_INITIALIZED, &eth->state)) {
+ 		u32 status;
+ 
+@@ -1639,6 +1723,13 @@ static int airoha_hw_init(struct platform_device *pdev,
+ 	if (err)
+ 		return err;
+ 
++	/* init every instance up front: the error path below tears down all
++	 * of eth->qdma[], including entries the init loop never reached
++	 */
++	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
++		INIT_WORK(&eth->qdma[i].rx_recover_work,
++			  airoha_qdma_rx_recover_work);
++
+ 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++) {
+ 		err = airoha_qdma_init(pdev, eth, &eth->qdma[i]);
+ 		if (err)
+@@ -1687,6 +1778,11 @@ static void airoha_qdma_stop_napi(struct airoha_qdma *qdma)
+ {
+ 	int i;
+ 
++	/* must not run or re-arm past this point: the work calls
++	 * napi_disable() too, and doing that twice spins forever
++	 */
++	disable_work_sync(&qdma->rx_recover_work);
++
+ 	for (i = 0; i < ARRAY_SIZE(qdma->q_tx_irq); i++)
+ 		napi_disable(&qdma->q_tx_irq[i].napi);
+ 
 diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index c195dad5ed58..0b7c90940272 100644
+index fa9a8edce22f..c195dad5ed58 100644
 --- a/drivers/net/ethernet/airoha/airoha_eth.h
 +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -41,9 +41,10 @@
- #define TX_DSCP_NUM			1024
- #define RX_DSCP_NUM(_n)			\
- 	((_n) ==  2 ? 128 :		\
-+	 (_n) ==  4 ? 128 :		\
- 	 (_n) == 11 ? 128 :		\
- 	 (_n) == 15 ? 128 :		\
--	 (_n) ==  0 ? 1024 : 16)
-+	 (_n) ==  0 ? 1024 : 32)
+@@ -207,6 +207,11 @@ struct airoha_queue {
+ 	bool txq_stopped;
+ 	bool flushing;
  
- #define PSE_RSV_PAGES			128
- #define PSE_QUEUE_RSV_PAGES		64
++	/* see airoha_qdma_rx_check_stall() */
++	u32 stall_dma_idx;
++	u16 stall_tail;
++	u8 stall_count;
++
+ 	struct napi_struct napi;
+ 	struct page_pool *page_pool;
+ 	struct sk_buff *skb;
+@@ -567,6 +572,9 @@ struct airoha_qdma {
+ 	struct airoha_queue q_tx[AIROHA_NUM_TX_RING];
+ 	struct airoha_queue q_rx[AIROHA_NUM_RX_RING];
+ 
++	struct work_struct rx_recover_work;
++	DECLARE_BITMAP(rx_recover_mask, AIROHA_NUM_RX_RING);
++
+ 	DECLARE_BITMAP(qos_channel_map, AIROHA_NUM_QOS_CHANNELS);
+ };
+ 
 -- 
 2.55.0
 
