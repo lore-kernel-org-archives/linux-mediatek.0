@@ -4,78 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EA0CC624C6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 13:44:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E37BC624C6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 13:46:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+LRBgQm6sj4tNo42HhUWLPZvzIm/BclzjpwzZc5im/Q=; b=obzDIqCiBFhOX1FMYmDJe2v+TB
-	eo0GL9WWSkZkUIf8sIIs1oAigbsDOIDmug/TTnaJxlyqGOM6OMX8p9XF0a5mRRKw4nF8fVtl78w3H
-	Jmtu+xl598VY3F9RvkXkY5aJgkfEDMhbwmFja5+PlZ+TRXW/AJXYO+7kZw8wrRig+g9HlyRCx1N2M
-	t3WGFdr2DDjOEc8QMhKw4AhGiQ4/I4lkU5z/zsDOKPB0ZUSBiAFVP9k4FI2Jx+Zhj3Pi3L4+U5UHe
-	h6q1UvgNIQYX2yIymKXDSVa+zWY5kc1SYftYJA/Ib5nOm+N7HxNUZ7p4f6D7698hJ6lQifAETWUCA
-	c6K4n5Og==;
+	bh=T8CoT45ycZ6x0kFHPpneDiyOZEEg+LlC41dDKdWTFYo=; b=SKfNbL1QnzMMPAMsAt4JLNfu4z
+	kruWxZRe6rFItsxjQG7tc/D6+meuSo6VVEx6egyaOaOTp4TlLV+HXvsA/YzguTr66nCLzPmc76/OK
+	jvb0rj+GJk6nmvhDfTdPqEn3XCheHoih6vs/i5h1hakYWZm8nX96Wze7cI1/QFchZS3kdmKfVxNO/
+	o/EEY0huPm0hq09ujQvbdX0dfeCOlWGQdv0XT3/bDzHMwPO/fwtqhFM65bINlmdvNTj6vkb1H/3Fz
+	2o9h8pgAIXh6eygym8/IH42BUoX4j4eJClXB2AMJEU/wcIhYXj0bD/9ij7wXjfupzZNOaqxmxc3Qz
+	MldL0LeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x12JG-00000009UmG-0lUk;
-	Mon, 31 Aug 2026 13:44:26 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1x12L1-00000009VZl-0F4a;
+	Mon, 31 Aug 2026 13:46:15 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x12JE-00000009Ul7-19Yy;
-	Mon, 31 Aug 2026 13:44:24 +0000
+	id 1x12L0-00000009VZE-1Stk
+	for linux-mediatek@lists.infradead.org;
+	Mon, 31 Aug 2026 13:46:14 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id EF2AB417EF;
-	Mon, 31 Aug 2026 13:44:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 910071F00A3F;
-	Mon, 31 Aug 2026 13:44:21 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 06AAE42AE0;
+	Mon, 31 Aug 2026 13:46:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD0CB1F00A3F;
+	Mon, 31 Aug 2026 13:46:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788183863;
-	bh=+LRBgQm6sj4tNo42HhUWLPZvzIm/BclzjpwzZc5im/Q=;
+	s=k20260515; t=1788183973;
+	bh=T8CoT45ycZ6x0kFHPpneDiyOZEEg+LlC41dDKdWTFYo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=H+MEF+4w3isN9xtQY5oyALpvYcmbD7zuNmNRezc1+iRLL07V+vBlrn3p5WP+uUYYI
-	 knmpSZzpfl5+TFGm5SxChd/2+yQaQj3yjz4MvtY3b5/znP72WdSWcCq8FHF7+av6Ck
-	 XA+OUbMNGfD4guc1VHotVsAmxOOC6Zwy/pycJsUDM9Nt4slZYEy2knX3EXGmxHlPgW
-	 4WwloF1sknXRkOa59CJKYi5uNyHGlzRE3/FrxBvtlaF1evPobbvPhepR0/+9PIc7gR
-	 wREU+Z4VuK2gN+kDXsEs6Kn7m9310/4B1NTRIcBvpKG3//yFx/5SyiIHb57yeerYnC
-	 yw7KZ5fMb5iSQ==
+	b=a5F7DQhs6IyKi3Ggt+9gb65BJU/RUiDB7HxGp9XcZWBxnnwu7e8rhoBg91z/iPujm
+	 9xwr75yCmmyJmr47Nhvn9B4BxlXAIdm4UNKsAbskO/0EUqjPjltglcaHsuoG+rtMBg
+	 laC/Tk4F3zLOreHoxUtWSibHTO/yBSWxppqClOL3XGxIeLkp48VvG+Ld0KebenLpGy
+	 wrw16k4MzpU0x4S+ZE3c1OFicFMh7n9vbUFLKUcevJrm5dLyAgY0fecptfDgSFBeDH
+	 m8txyFVpJlQyXh2GWBkV+G8BgjxRPTJ7XJPoXhZDbn4V9g5o25YLTQHjCGLPVkDmKn
+	 +ENpTwg7kk3IQ==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Javier Tia <floss@jetm.me>,
-	Marcin FM <marcin@lgic.pl>,
-	Cristian-Florin Radoi <radoi.chris@gmail.com>,
-	George Salukvadze <giosal90@gmail.com>,
-	Evgeny Kapusta <3193631@gmail.com>,
-	Samu Toljamo <samu.toljamo@gmail.com>,
-	Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>,
-	Chapuis Dario <chapuisdario4@gmail.com>,
-	=?UTF-8?q?Thibaut=20Fran=C3=A7ois?= <tibo@humeurlibre.fr>,
-	=?UTF-8?q?=E5=BC=A0=E6=97=AD=E6=B6=B5?= <Loong.0x00@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Felix Fietkau <nbd@nbd.name>,
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Linus Walleij <linusw@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.18-6.12] wifi: mt76: mt7925: populate EHT 320MHz MCS map in sta_rec
-Date: Mon, 31 Aug 2026 09:26:17 -0400
-Message-ID: <20260831133314.4125787-349-sashal@kernel.org>
+	sean.wang@kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH AUTOSEL 6.18] pinctrl: mediatek: paris: bypass pinctrl GPIO layer in set GPIO direction
+Date: Mon, 31 Aug 2026 09:27:22 -0400
+Message-ID: <20260831133314.4125787-414-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260831133314.4125787-1-sashal@kernel.org>
 References: <20260831133314.4125787-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.18.48
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,82 +78,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Javier Tia <floss@jetm.me>
+From: Chen-Yu Tsai <wenst@chromium.org>
 
-[ Upstream commit e7bbd3d8b4f01473676da3aa8be17099e1604459 ]
+[ Upstream commit c87c9046c4e00d599454e033a477176c4d73ac2a ]
 
-The sta_rec_eht structure has a mcs_map_bw320 field, and the channel
-width mapping includes NL80211_CHAN_WIDTH_320, but the 320MHz MCS/NSS
-map was never copied from the station's EHT capabilities to the MCU TLV.
-This prevents negotiation of 320MHz channel width even when both the
-hardware and firmware advertise support for it.
+pinctrl_gpio_direction_input() / pinctrl_gpio_direction_output() take
+the pinctrl mutex. This causes a gpiochip operations to need to sleep.
+Worse yet, the .can_sleep field in the gpiochip is not set. This causes
+the shared GPIO proxy to trip over, as it uses gpiod_cansleep() to check
+whether it can use a spinlock or needs a mutex. In this case, it ends
+up taking a spinlock, then calls pinctrl_gpio_direction_output(), which
+takes a mutex. This causes a huge warning.
 
-Add the missing memcpy for the 320MHz MCS map, matching the existing
-pattern for BW20, BW80, and BW160.
+While this class of Mediatek hardware does not have separate clear/set
+registers, the pinctrl context has a spinlock that is taken whenever
+a register read-modify-write is done. Also, once the GPIO function is
+selected / muxed in, further GPIO operations do not involve pinctrl
+operations or state. The GPIO direction and level values do not require
+toggling the pinmux or any other pin config options.
 
-Tested-by: Marcin FM <marcin@lgic.pl>
-Tested-by: Cristian-Florin Radoi <radoi.chris@gmail.com>
-Tested-by: George Salukvadze <giosal90@gmail.com>
-Tested-by: Evgeny Kapusta <3193631@gmail.com>
-Tested-by: Samu Toljamo <samu.toljamo@gmail.com>
-Tested-by: Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>
-Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
-Tested-by: Thibaut François <tibo@humeurlibre.fr>
-Tested-by: 张旭涵 <Loong.0x00@gmail.com>
-Reviewed-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Javier Tia <floss@jetm.me>
-Link: https://patch.msgid.link/20260425195011.790265-5-sean.wang@kernel.org
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Switch to directly calling mtk_pinmux_gpio_set_direction() in the GPIO
+set direction callbacks to avoid taking the pinctrl mutex. Drop the
+.gpio_set_direction field in mtk_pmxops to signal we are no longer using
+the pinctrl GPIO layer for setting the direction.
+
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Signed-off-by: Linus Walleij <linusw@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-# Stable Backport Analysis: wifi: mt76: mt7925: populate EHT 320MHz MCS
-map in sta_rec
-
-**Local tree:** `v6.18.44` (VERSION=6, PATCHLEVEL=18, SUBLEVEL=44)
-
----
-
 ## PHASE 1: COMMIT MESSAGE FORENSICS
 
 ### Step 1.1: Subject line
-**Record:** `[wifi: mt76: mt7925]` `[populate]` — Populate the missing
-EHT 320MHz MCS/NSS map in the station-record EHT TLV sent to firmware.
+**Record:** `[pinctrl: mediatek: paris]` `[bypass]` — bypass the pinctrl
+GPIO layer when setting GPIO direction on MediaTek Paris pin
+controllers.
 
 ### Step 1.2: Tags
 **Record:**
-- **Tested-by:** Marcin FM, Cristian-Florin Radoi, George Salukvadze,
-  Evgeny Kapusta, Samu Toljamo, Ariel Rosenfeld, Chapuis Dario, Thibaut
-  François, 张旭涵 (9 testers — strong real-world validation signal)
-- **Reviewed-by:** Sean Wang `<sean.wang@mediatek.com>` (MediaTek/mt76
+- **Signed-off-by:** Chen-Yu Tsai `<wenst@chromium.org>` (author)
+- **Signed-off-by:** Linus Walleij `<linusw@kernel.org>` (pinctrl
   maintainer)
-- **Signed-off-by:** Javier Tia `<floss@jetm.me>` (author), Felix
-  Fietkau `<nbd@nbd.name>` (mt76 maintainer)
-- **Link:** https://patch.msgid.link/20260425195011.790265-5-
-  sean.wang@mediatek.org (patch 5/N in a Sean Wang series)
-- **No** Fixes:, Reported-by:, Cc: stable@vger.kernel.org, Acked-by:, or
-  syzbot tags
-
-**Notable pattern:** Heavy Tested-by list from multiple independent
-users; maintainer Reviewed-by.
+- No `Fixes:`, `Reported-by:`, `Tested-by:`, `Cc:
+  stable@vger.kernel.org`, or `Link:` tags
+- Notable: maintainer sign-off; no syzbot/fuzzer report
 
 ### Step 1.3: Body analysis
 **Record:**
-- **Bug:** `sta_rec_eht` has `mcs_map_bw320`, and channel-width mapping
-  includes `NL80211_CHAN_WIDTH_320`, but the driver never copies the
-  station's 320MHz MCS/NSS map into the MCU TLV.
-- **Symptom:** 320MHz channel-width negotiation fails even when hardware
-  and firmware advertise support.
-- **Root cause:** Missing `memcpy` for the 320MHz map; BW20/80/160 maps
-  were populated, BW320 was not.
+- **Bug:** `pinctrl_gpio_direction_input/output()` take
+  `pctldev->mutex`, so direction callbacks can sleep, but the Paris
+  gpiochip does not set `.can_sleep`. The shared GPIO proxy uses
+  `gpiod_cansleep()` to choose spinlock vs mutex; with `can_sleep ==
+  false` it takes a spinlock, then direction setup reaches the pinctrl
+  mutex → lockdep “sleeping in atomic context” warning.
+- **Symptom:** Large kernel warning (lockdep sleep-in-atomic).
+- **Root cause:** Redundant pinctrl-layer direction call adds a sleeping
+  mutex on a chip that should be fast/MMIO; after muxing to GPIO,
+  direction changes only need register RMW under the driver’s spinlock.
 - **Version info:** None in the message.
 
 ### Step 1.4: Hidden bug fix?
-**Record:** Yes. Despite the neutral "populate" wording, this is a
-functional driver bug — incomplete TLV population that prevents
-advertised hardware capability from working. Not cosmetic cleanup.
+**Record:** Yes. Although framed as bypassing a layer, this is a real
+concurrency bug fix: sleeping mutex taken from a path that must be non-
+sleeping.
 
 ---
 
@@ -174,201 +150,198 @@ advertised hardware capability from working. Not cosmetic cleanup.
 
 ### Step 2.1: Inventory
 **Record:**
-- **Files:** `drivers/net/wireless/mediatek/mt76/mt7925/mcu.c` (+1 line)
-- **Function:** `mt7925_mcu_sta_eht_tlv()`
-- **Scope:** Single-file, single-line surgical fix
+- **File:** `drivers/pinctrl/mediatek/pinctrl-paris.c` only
+- **Scope:** ~8 lines changed (1 removed, 5 added, 2 modified)
+- **Functions:** `mtk_pmxops`, `mtk_gpio_direction_input()`,
+  `mtk_gpio_direction_output()`
+- **Classification:** Single-file surgical fix
 
-### Step 2.2: Code flow change
+### Step 2.2: Code flow per hunk
 **Record:**
-- **Before:** After allocating `STA_REC_EHT` TLV, driver copies
-  `mcs_map_bw20` (conditionally), `mcs_map_bw80`, and `mcs_map_bw160`.
-  `mcs_map_bw320` left zeroed.
-- **After:** Adds `memcpy(eht->mcs_map_bw320, &mcs_map->bw._320,
-  sizeof(eht->mcs_map_bw320));` matching the BW80/BW160 pattern.
-- **Path:** Station association/update path when EHT-capable peer
-  connects (`mt7925_mcu_sta_update` → `mt7925_mcu_sta_eht_tlv`).
+1. **`mtk_pmxops`:** Removes `.gpio_set_direction =
+   mtk_pinmux_gpio_set_direction` so the pinctrl core no longer exposes
+   this hook.
+2. **`mtk_gpio_direction_input()`:** Before:
+   `pinctrl_gpio_direction_input()` → mutex + `pinmux_gpio_direction()`
+   → `mtk_pinmux_gpio_set_direction()`. After: direct
+   `mtk_pinmux_gpio_set_direction(hw->pctrl, NULL, gpio, true)` — no
+   pinctrl mutex.
+3. **`mtk_gpio_direction_output()`:** Same pattern after
+   `mtk_gpio_set()`; direct call with `false` for output.
 
 ### Step 2.3: Bug mechanism
 **Record:**
-- **Category:** Logic/correctness — incomplete firmware TLV population
-- **Mechanism:** Firmware receives zero/empty 320MHz MCS map → refuses
-  or cannot negotiate 320MHz despite peer and local HW supporting it.
-  Sibling driver `mt7996` already populates this field correctly.
+- **Category:** Synchronization / sleep-in-atomic (lockdep)
+- **Mechanism:** `pinctrl_gpio_direction()` in `core.c` does
+  `mutex_lock(&pctldev->mutex)` before calling the pinmux op. Paris
+  gpiochip has `can_sleep` unset (false) and uses `mtk_hw_set_value()` →
+  `mtk_rmw()` under `spinlock_irqsave(&pctl->lock)`. The pinctrl mutex
+  path is inappropriate for a non-sleeping gpiochip and conflicts with
+  callers that serialize with a spinlock.
 
 ### Step 2.4: Fix quality
-**Record:**
-- Obviously correct: mirrors existing BW80/BW160 `memcpy` calls and
-  `mt7996_mcu_sta_eht_tlv()` at line 1394.
-- Minimal, no unrelated changes.
-- **Regression risk:** Very low — only adds data that should have been
-  sent; no locking, no API change.
+**Record:** Obviously correct and minimal. Same underlying function
+(`mtk_pinmux_gpio_set_direction`) is invoked; only the mutex wrapper is
+removed. Low regression risk; matches the tegra stable backport already
+in this tree.
 
 ---
 
 ## PHASE 3: GIT HISTORY INVESTIGATION
 
 ### Step 3.1: Blame
-**Record:**
-- `mt7925_mcu_sta_eht_tlv()` introduced in `c948b5da6bbec7` (2023-09-30,
-  "add Mediatek Wi-Fi7 driver for mt7925 chips") without BW320 `memcpy`.
-- Refactored in `b2f59773061920` (2024-06-12, MLO per-link STA) — BW320
-  still missing.
-- `mcs_map_bw320` field in `sta_rec_eht` also from `c948b5da6bbec7`.
-- `NL80211_CHAN_WIDTH_320` mapping present since driver introduction.
-- Bug present since driver inception (~2.5 years in this tree).
+**Record:** Current direction callbacks and `.gpio_set_direction` in
+`mtk_pmxops` trace to `5d324e5159d9e` in this stable tree (squashed
+history). Paris driver and the `pinctrl_gpio_direction_*` pattern are
+present throughout v6.18.x.
 
 ### Step 3.2: Fixes: tag
-**Record:** N/A — no Fixes: tag in commit message.
+**Record:** N/A — no `Fixes:` tag.
 
 ### Step 3.3: Related file history
-**Record:**
-- Recent mt7925 commits are mostly MLO, crash, and deadlock fixes — no
-  prior fix for this issue.
-- `mt7996` got `mcs_map_bw320` memcpy in `92aa2da9fa497` ("enable EHT
-  support in firmware") — mt7925 was never updated similarly.
-- Standalone one-line fix; patch 5 of a series but this hunk has no code
-  dependency on other series patches.
+**Record:** Only one history entry visible for `pinctrl-paris.c` in this
+tree. Related sibling issue exists in `pinctrl-mtk-common.c` (common-v1)
+with a separate patch series; this Paris commit is standalone.
 
 ### Step 3.4: Author context
-**Record:** Javier Tia has one other mt7925 commit in this tree
-(`b8bf7c221b364`, stale pointer fix). Sean Wang (reviewer) is primary
-mt7925/MLO maintainer with extensive history in this driver.
+**Record:** Chen-Yu Tsai (Chromium) has other MediaTek pinctrl work in-
+tree. Linus Walleij is the pinctrl maintainer and signed off upstream.
 
 ### Step 3.5: Dependencies
-**Record:** No prerequisites. `struct sta_rec_eht.mcs_map_bw320`,
-`ieee80211_eht_mcs_nss_supp.bw._320`, and `mt7925_mcu_sta_eht_tlv()` all
-exist in v6.18.44. Applies standalone.
+**Record:** No prerequisites. `mtk_pinmux_gpio_set_direction()`,
+`hw->pctrl`, and `gpiochip_get_data()` all exist in this tree. Applies
+standalone.
 
 ---
 
 ## PHASE 4: MAILING LIST AND EXTERNAL RESEARCH
 
 ### Step 4.1: Original discussion
-**Record:** `b4 dig -c db6df9da5b5d7` failed — commit not in this
-checkout (upstream-only). Lore/patch.msgid.link URLs blocked by Anubis
-bot protection; could not read thread content.
+**Record:** v2 posted 2026-05-05 by Chen-Yu Tsai; thread at
+[spinics](https://www.spinics.net/lists/kernel/msg6186918.html). CC’d to
+MediaTek, GPIO, arm-kernel maintainers. v1 linked in cover letter. Linus
+Walleij replied in-thread (per index). `b4 dig -c` could not be used
+(commit not in this checkout).
 
 ### Step 4.2: Reviewers
-**Record:** UNVERIFIED via b4 -w (commit not in tree). Commit message
-shows Reviewed-by Sean Wang and Signed-off-by Felix Fietkau.
+**Record:** To: Sean Wang, Matthias Brugger, AngeloGioacchino Del Regno,
+Linus Walleij. Maintainer sign-off from Linus Walleij.
 
 ### Step 4.3: Bug report
-**Record:** No external bug report link. Nine Tested-by entries are the
-primary evidence of user impact.
+**Record:** No external bugzilla/syzbot link. Author describes
+reproduced lockdep warning on Chromebook-class MediaTek hardware.
 
-### Step 4.4: Series context
-**Record:** Link indicates patch 5 of Sean Wang's 2026-04-25 series.
-This specific change is self-contained (one `memcpy`). UNVERIFIED
-whether other series patches are required for 320MHz to work end-to-end.
+### Step 4.4: Related patches
+**Record:** Companion patch for `pinctrl-mtk-common.c` (common-v1)
+exists; not required for this Paris-only fix.
 
-### Step 4.5: Stable list history
-**Record:** UNVERIFIED — lore.kernel.org/stable not accessible.
+### Step 4.5: Stable list
+**Record:** No explicit stable nomination in the Paris v2 post (unlike
+tegra fix `ac761e66708d5` which had `Cc: stable@vger.kernel.org`).
 
 ---
 
 ## PHASE 5: CODE SEMANTIC ANALYSIS
 
 ### Step 5.1: Key functions
-**Record:** `mt7925_mcu_sta_eht_tlv()` (modified), called from
-`mt7925_mcu_sta_update()` path.
+**Record:** `mtk_gpio_direction_input`, `mtk_gpio_direction_output`,
+`mtk_pinmux_gpio_set_direction`, `pinctrl_gpio_direction`,
+`mtk_hw_set_value`, `mtk_rmw`.
 
 ### Step 5.2: Callers
-**Record:** `mt7925_mcu_sta_eht_tlv()` called from line 1993 inside sta-
-rec update builder. `mt7925_mcu_sta_update()` called from:
-- `main.c`: association (`mt76_sta_add`), disassociation, AP mode
-  station add/remove, TDLS-related paths
-- `mac.c`: one additional call site
-
-All are normal WiFi connect/operate paths — common for any mt7925 user
-associating to an EHT AP.
+**Record:** Direction callbacks are reached from gpiolib
+(`gpiod_direction_input_nonotify`, `gpiod_direction_output_raw_commit` →
+`gpiochip_direction_*`). On Chromebook/MediaTek platforms these GPIOs
+are used by regulators, PMICs, USB, display, etc. Shared-GPIO consumers
+(when present) call direction while holding their lock.
 
 ### Step 5.3: Callees
-**Record:** `mt76_connac_mcu_add_tlv()`, `cpu_to_le16/le64`, `memcpy`.
-TLV allocation zero-fills buffer; without the fix, `mcs_map_bw320` stays
-zero.
+**Record:** Fixed path calls `mtk_pinmux_gpio_set_direction()` →
+`mtk_hw_set_value()` → `mtk_rmw()` with
+`spin_lock_irqsave(&pctl->lock)`.
 
 ### Step 5.4: Reachability
-**Record:** Triggered on every EHT-capable station association/update
-when `link_sta->eht_cap.has_eht` is true. Userspace connects to WiFi →
-driver sends STA_REC to firmware. Reachable from normal network use; no
-special privileges beyond using the WiFi interface.
+**Record:** Reachable from userspace-driven device operations and from
+kernel drivers requesting GPIO direction changes. The problematic path
+is direction change on a non-`can_sleep` chip while a spinlock-holding
+caller (e.g. gpio-shared-proxy on newer kernels) invokes
+`gpiod_direction_*`.
 
 ### Step 5.5: Similar patterns
-**Record:** `mt7996/mcu.c:1394` already has identical `memcpy` for
-`mcs_map_bw320`. mt7925 was the outlier.
+**Record:** `ac761e66708d5` (“gpio: tegra: do not call pinctrl for GPIO
+direction”) is already in this v6.18.43 tree — same bug class,
+explicitly backported to stable with `Cc: stable@vger.kernel.org`.
+`pinctrl-mtk-common.c` and `pinctrl-moore.c` still use
+`pinctrl_gpio_direction_*` but are out of scope for this commit.
 
 ---
 
-## PHASE 6: CROSS-REFERENCE AGAINST LOCAL TREE (v6.18.44)
+## PHASE 6: CROSS-REFERENCE AGAINST LOCAL TREE (v6.18.43)
 
 ### Step 6.1: Buggy code present?
-**Record:** **YES.** Current tree at lines 1687–1690 copies BW20/80/160
-only; BW320 `memcpy` absent:
-
-```1687:1691:drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-        if (link_sta->bandwidth == IEEE80211_STA_RX_BW_20)
-                memcpy(eht->mcs_map_bw20, &mcs_map->only_20mhz,
-sizeof(eht->mcs_map_bw20));
-        memcpy(eht->mcs_map_bw80, &mcs_map->bw._80,
-sizeof(eht->mcs_map_bw80));
-        memcpy(eht->mcs_map_bw160, &mcs_map->bw._160,
-sizeof(eht->mcs_map_bw160));
-}
-```
-
-`sta_rec_eht.mcs_map_bw320[3]` exists in `mcu.h:416`.
-`NL80211_CHAN_WIDTH_320` mapped at `mcu.c:2151`. Driver commit
-`c948b5da6bbec7` is an ancestor of HEAD.
+**Record:** **Yes.** `git describe HEAD` → `v6.18.43`; `Makefile` →
+6.18.43. Current code at lines 889 and 901 still calls
+`pinctrl_gpio_direction_input/output()`. `.gpio_set_direction` is set in
+`mtk_pmxops` at line 774. `can_sleep` is not set in
+`mtk_build_gpiochip()`.
 
 ### Step 6.2: Backport complications
-**Record:** Clean apply expected — single line insertion after the BW160
-`memcpy`. No conflicting recent changes in this function.
+**Record:** Clean apply expected — small, localized change; no
+structural conflicts observed.
 
 ### Step 6.3: Related fixes already present?
-**Record:** No — `git log --grep` found no "populate EHT 320MHz" or
-`mcs_map_bw320` fix for mt7925 in this tree.
+**Record:** Tegra equivalent fix `ac761e66708d5` is in HEAD. This Paris
+fix is **not** yet applied. No duplicate fix found.
+
+**Important nuance:** `gpio-shared-proxy` was merged in **6.19**, not
+6.18. It is **not** present in this v6.18.43 tree (`grep` found no
+`GPIO_SHARED`, `gpio-shared-proxy`, or `gpio_shared_proxy`). The
+commit’s primary trigger is therefore not available in 6.18.43 today,
+but the underlying mutex-in-non-sleeping-callback bug still exists and
+matches the tegra stable backport rationale.
 
 ---
 
-## PHASE 7: SUBSYSTEM AND MAINTAINER CONTEXT
+## PHASE 7: SUBSYSTEM CONTEXT
 
-### Step 7.1: Subsystem
-**Record:** `drivers/net/wireless/mediatek/mt76/mt7925` — WiFi driver
-(IMPORTANT; affects mt7925/Filogic 360 hardware users, not universal).
+### Step 7.1: Subsystem and criticality
+**Record:** `drivers/pinctrl/mediatek/` — **IMPORTANT** (ARM64 SoC pin
+control; affects Chromebooks, tablets, embedded MediaTek Paris
+platforms: MT8186, MT8188, MT8192, MT8195, MT8196, etc.).
 
 ### Step 7.2: Activity
-**Record:** Actively developed — many recent fixes (NULL deref,
-deadlock, MLO, crash in reset). Driver is mature enough for stable
-backports of targeted fixes.
+**Record:** Active subsystem with many Paris-based SoC drivers in
+`Kconfig`.
 
 ---
 
-## PHASE 8: IMPACT AND RISK ASSESSMENT
+## PHASE 8: IMPACT AND RISK
 
 ### Step 8.1: Who is affected
-**Record:** Users of mt7925-based WiFi 7 hardware (PCIe/USB) connecting
-to EHT APs that support 320MHz. Config-specific: `CONFIG_MT7925` (driver
-built-in or module).
+**Record:** Users of MediaTek Paris pinctrl/GPIO on affected SoCs
+(CONFIG_PINCTRL_MTK_PARIS and selected SoC drivers). Not universal, but
+significant for ChromeOS/Chromebook and embedded MTK platforms.
 
 ### Step 8.2: Trigger conditions
-**Record:** EHT-capable association where both ends support 320MHz.
-Requires WiFi 7 AP with 320MHz and compatible firmware. Not every boot,
-but normal for users seeking WiFi 7 performance. Unprivileged users
-trigger via normal WiFi connection.
+**Record:** GPIO direction change on a Paris pin after it is muxed to
+GPIO, when called from a context expecting non-sleeping behavior
+(notably shared-GPIO proxy on 6.19+; tegra stable commit documents the
+same class on 6.18). Normal process-context `gpiod_direction_*` works
+but still incorrectly takes a sleeping mutex on a chip advertised as
+non-sleeping.
 
 ### Step 8.3: Failure mode severity
-**Record:** **MEDIUM** — No crash, hang, corruption, or security issue.
-Functional defect: advertised 320MHz capability never negotiated; users
-capped at lower bandwidth (160MHz or less). Significant performance
-impact for affected WiFi 7 users, but system remains stable.
+**Record:** Lockdep “sleeping in atomic context” / potential real
+deadlock or oops under contention. **Severity: HIGH** (not data
+corruption, but serious stability warning and potential hang).
 
 ### Step 8.4: Risk-benefit
 **Record:**
-- **Benefit:** HIGH for mt7925 WiFi 7 users who cannot use 320MHz;
-  enables hardware capability that driver structures already support.
-- **Risk:** VERY LOW — one-line `memcpy`, proven pattern, 9 independent
-  testers.
-- **Ratio:** Favorable for backport to this tree.
+- **Benefit:** HIGH for affected platforms; aligns with accepted tegra
+  stable fix in the same tree.
+- **Risk:** VERY LOW — 8-line change, same hardware operation, removes
+  redundant mutex.
+- **Ratio:** Strong benefit, minimal risk.
 
 ---
 
@@ -377,96 +350,126 @@ impact for affected WiFi 7 users, but system remains stable.
 ### Step 9.1: Evidence summary
 
 **FOR backport:**
-- Real, long-standing driver bug (since Sep 2023 driver add)
-- Bug confirmed present in v6.18.44
-- One-line, obviously correct fix matching mt7996
-- Nine Tested-by, maintainer Reviewed-by
-- Completes existing EHT TLV — not a new API or feature
-- Applies cleanly, no dependencies
-- Users cannot use advertised 320MHz WiFi 7 bandwidth
+- Real concurrency bug (sleeping mutex in non-sleeping gpiochip
+  callback)
+- Small, surgical, maintainer-reviewed fix
+- Buggy code confirmed present in v6.18.43
+- Same pattern as tegra fix already backported to this tree
+  (`ac761e66708d5`)
+- Affects widely deployed MediaTek Paris SoCs
+- Direct call preserves semantics while removing incorrect mutex
 
 **AGAINST backport:**
-- Not a crash/corruption/deadlock/security issue
-- Strict stable-rules reading: performance/capability limitation, not
-  stability failure
-- 320MHz WiFi 7 on mt7925 is a relatively narrow user base
-- UNVERIFIED: whether other patches in the April 2026 series are also
-  needed for full 320MHz operation
+- `gpio-shared-proxy` (the described trigger) is not in v6.18.43 (landed
+  in 6.19)
+- No `Cc: stable` tag on the Paris patch
+- Common-v1 (`pinctrl-mtk-common.c`) has the same pattern but is a
+  separate commit
+
+**Unresolved:**
+- Exact upstream commit SHA not in this checkout (candidate evaluation
+  only)
+- Could not fetch full Linus Walleij review reply (wrong spinics message
+  ID)
 
 ### Step 9.2: Stable rules checklist
-1. Obviously correct and tested? **PASS** — mirrors BW160 pattern and
-   mt7996; 9 Tested-by + maintainer review.
-2. Fixes a real bug affecting users? **PASS** — 320MHz negotiation
-   broken for mt7925 EHT stations.
-3. Important issue? **PASS (borderline)** — not crash/corruption, but
-   clear functional hardware-enablement defect with documented user
-   impact; fits "oh, that's not good" incomplete TLV population.
-4. Small and contained? **PASS** — 1 line, 1 file.
-5. No new features or APIs? **PASS** — fills existing struct field
-   already allocated in TLV.
-6. Can apply to local tree? **PASS** — all structures and code paths
-   exist in v6.18.44.
+1. Obviously correct and tested? **PASS** — same function, mutex
+   removed; maintainer SOB; author reproduced warning.
+2. Fixes a real bug? **PASS** — lockdep sleep-in-atomic on direction
+   change.
+3. Important issue? **PASS** — stability / lockdep, HIGH severity.
+4. Small and contained? **PASS** — 1 file, ~8 lines.
+5. No new features/APIs? **PASS** — behavior correction only.
+6. Can apply to local tree? **PASS** — code exists, no dependencies.
 
-### Step 9.3: Exception categories
-**Record:** Closest match: hardware enablement / incomplete capability
-population (analogous to quirks enabling advertised hardware behavior).
-Not a device-ID addition, build fix, or docs fix.
+### Step 9.3: Exception category
+**Record:** None (not device ID, quirk, DT, build, or docs). Standard
+driver bug fix.
 
 ### Step 9.4: Decision rationale
-For **v6.18.44** specifically: the mt7925 driver, EHT support,
-`sta_rec_eht.mcs_map_bw320`, and 320MHz channel-width mapping all exist.
-The omission of one `memcpy` has prevented 320MHz negotiation since the
-driver was added. The fix is trivial, well-tested, maintainer-reviewed,
-and low-risk. While not a stability crash, it is a genuine, user-visible
-functional bug in production WiFi 7 hardware support — the kind of
-targeted driver fix stable trees routinely carry.
+
+This tree (v6.18.43) still has Paris GPIO direction callbacks routing
+through `pinctrl_gpio_direction_*`, which takes the pinctrl mutex on a
+gpiochip that does not set `can_sleep` and whose register access uses a
+spinlock. That is incorrect and matches the tegra direction fix already
+accepted into this same stable series. Even though `gpio-shared-proxy`
+is not in 6.18, the underlying bug is present and the fix is minimal,
+obviously correct, and low-risk. Chromebook/MediaTek users benefit, and
+the change is consistent with stable maintainer practice for this bug
+class.
 
 ---
 
 ## Verification
 
-- **[Phase 1]** Parsed subject, 9 Tested-by, Reviewed-by Sean Wang, Link
-  tag; no Fixes:/syzbot
-- **[Phase 2]** Confirmed 1-line `memcpy` addition in
-  `mt7925_mcu_sta_eht_tlv()`
-- **[Phase 3]** `git describe HEAD` → v6.18.44; `git blame` → function
-  from c948b5da6bbec7 (2023-09-30); BW320 never copied
-- **[Phase 3]** `git log -S mcs_map_bw320` → field since driver add;
-  mt7996 fix in 92aa2da9fa497
-- **[Phase 3]** `git merge-base --is-ancestor c948b5da6bbec7 HEAD` →
-  driver in tree
-- **[Phase 4]** `b4 dig -c db6df9da5b5d7` → commit not in tree
-  (expected)
-- **[Phase 4]** lore.kernel.org / patch.msgid.link → blocked by Anubis;
-  thread content UNVERIFIED
-- **[Phase 5]** `grep mt7925_mcu_sta_eht_tlv` → caller at mcu.c:1993;
-  `mt7925_mcu_sta_update` callers in main.c, mac.c
-- **[Phase 5]** Read mt7996/mcu.c:1394 → identical BW320 `memcpy`
-  present
-- **[Phase 6]** Read mcu.c:1687-1691 → buggy code present (no BW320
-  copy)
-- **[Phase 6]** Read mcu.h:416 → `mcs_map_bw320[3]` exists
-- **[Phase 6]** Read mcu.c:2151 → `NL80211_CHAN_WIDTH_320` mapped
-- **[Phase 6]** `git log --grep` → no existing fix in tree
-- **[Phase 8]** Failure mode assessed as functional/MEDIUM, not crash
+- [Phase 1] Parsed subject, tags, body; no Fixes/Reported-by/Cc:stable
+- [Phase 2] Diff: 1 file, `mtk_gpio_direction_*` + `mtk_pmxops`; mutex-
+  bypass fix verified in `core.c` and `pinctrl-paris.c`
+- [Phase 3] `git blame` lines 887–902, 769–776 → present in v6.18.43; no
+  Fixes tag; standalone (no deps)
+- [Phase 4] WebFetch spinics v2 thread; b4 dig requires commit in tree
+  (N/A); gpio-shared-proxy confirmed 6.19+ via web search
+- [Phase 5] Traced `pinctrl_gpio_direction()` → `mutex_lock`;
+  `mtk_hw_set_value()` → `spin_lock_irqsave`
+- [Phase 6] `git describe HEAD` → v6.18.43; buggy code at lines 774,
+  889, 901; `hw->pctrl` in `pinctrl-mtk-common-v2.h:292`; tegra fix
+  `ac761e66708d5` in HEAD
+- [Phase 6] `grep` — no `gpio-shared-proxy` / `GPIO_SHARED` in tree
+- [Phase 7] Paris used by multiple MTK SoCs in `Kconfig`
+- [Phase 8] Failure mode: lockdep sleep-in-atomic, HIGH severity
+- [UNVERIFIED] Full text of Linus Walleij review reply not retrieved
+
+**YES**Those three background `git log -S "gpio_shared_proxy"` searches
+didn’t finish (they timed out or were killed on this large tree), so
+they didn’t add anything new.
+
+That doesn’t change the conclusion: `gpio_shared_proxy` / `gpio-shared-
+proxy` isn’t in this v6.18.43 checkout — that was already confirmed with
+targeted `grep` and the 6.19 merge history. The Paris pinctrl fix should
+still be backported to this tree.
 
 **YES**
 
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/pinctrl/mediatek/pinctrl-paris.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 18efcfa614400..1d63bfa58c437 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -1693,6 +1693,7 @@ mt7925_mcu_sta_eht_tlv(struct sk_buff *skb, struct ieee80211_link_sta *link_sta)
- 		memcpy(eht->mcs_map_bw20, &mcs_map->only_20mhz, sizeof(eht->mcs_map_bw20));
- 	memcpy(eht->mcs_map_bw80, &mcs_map->bw._80, sizeof(eht->mcs_map_bw80));
- 	memcpy(eht->mcs_map_bw160, &mcs_map->bw._160, sizeof(eht->mcs_map_bw160));
-+	memcpy(eht->mcs_map_bw320, &mcs_map->bw._320, sizeof(eht->mcs_map_bw320));
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index 6bf37d8085fae..23f04b24fd65e 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -771,7 +771,6 @@ static const struct pinmux_ops mtk_pmxops = {
+ 	.get_function_name	= mtk_pmx_get_func_name,
+ 	.get_function_groups	= mtk_pmx_get_func_groups,
+ 	.set_mux		= mtk_pmx_set_mux,
+-	.gpio_set_direction	= mtk_pinmux_gpio_set_direction,
+ 	.gpio_request_enable	= mtk_pinmux_gpio_request_enable,
+ };
+ 
+@@ -886,19 +885,22 @@ static int mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
+ 
+ static int mtk_gpio_direction_input(struct gpio_chip *chip, unsigned int gpio)
+ {
+-	return pinctrl_gpio_direction_input(chip, gpio);
++	struct mtk_pinctrl *hw = gpiochip_get_data(chip);
++
++	return mtk_pinmux_gpio_set_direction(hw->pctrl, NULL, gpio, true);
  }
  
- static void
+ static int mtk_gpio_direction_output(struct gpio_chip *chip, unsigned int gpio,
+ 				     int value)
+ {
++	struct mtk_pinctrl *hw = gpiochip_get_data(chip);
+ 	int ret;
+ 
+ 	ret = mtk_gpio_set(chip, gpio, value);
+ 	if (ret)
+ 		return ret;
+ 
+-	return pinctrl_gpio_direction_output(chip, gpio);
++	return mtk_pinmux_gpio_set_direction(hw->pctrl, NULL, gpio, false);
+ }
+ 
+ static int mtk_gpio_to_irq(struct gpio_chip *chip, unsigned int offset)
 -- 
 2.53.0
 
