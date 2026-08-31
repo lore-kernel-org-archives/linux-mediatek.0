@@ -4,96 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7304C61DFD
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 21:47:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54C3EC61DD3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 22:50:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QXmLTUcCngMrB5jBKoeiBiFNAXXmpHJGCK06GzS0et4=; b=W6ElpqktbZLKYtXyQx6jsopvu0
-	apuq2Bo1mWXaX7KFDLIjNAhzGz6W+Vl5t3NQeXgY9MF4zkTw7LZBh/SMEETAASG/bRacaxmXLhqI5
-	u2ppPqwjaZlifsIPmw1SeyjZC8v8SYRxFlZj7JDRp8YOuoW2878AjT+seoulYugkgG/7p0xK+CPYj
-	F+LhQiYLZgIbKn+OGxctsvExMrWJXaun+W9MkeUI8+k1QBWW336CjDoNy4SVUuCIoQigmiUuexNmN
-	LTW5uhKdRdFygzBgfdqNyjWt39BYjx/9QATOlZMv9NxhoXypW6HOnfopQVkmcX+qCywEVTvbN+VjY
-	gVj1SXOw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ML5wQ/GS1Kk9O2kkgjdsq7B7FgNtx0tPN9WZYFKffG0=; b=xXfVTC0EN2HuasTfPpN+dwW4Bg
+	Rpr/1kbZXqKSEBpQeTPuejDMd0Njab+UF71aCzTT+AlW1R+FppF/B/wPCnrwQKI6NPZQYDAWxeXtB
+	T/LBkkzj5LeOmFEChVqwDrb79dUIwLmnsHs/5FZ4JbuottKZjdjKNmck6NIGsIqHoNqTwjl6NvXJp
+	YFR9is2eKhM9zXyjtWgc9x3YT0gdtOWK+ABZrIVQrsYInnFPq944JdLBXqqAUycolAQcji4C59E8H
+	qjIZDYRo7p8B47izdacP5sBbiO0gRF7dha82UNV/22y3f6ssFbWHjge9Cq7sSM+FjrHwSlcYlLYYX
+	GSiJL1cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x19r7-0000000AYgw-2EHd;
-	Mon, 31 Aug 2026 21:47:53 +0000
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+	id 1x1Apa-0000000AcCM-2rRW;
+	Mon, 31 Aug 2026 22:50:22 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x19qy-0000000AYbB-30lL
+	id 1x1ApZ-0000000AcCE-0HC7
 	for linux-mediatek@lists.infradead.org;
-	Mon, 31 Aug 2026 21:47:45 +0000
-Received: by mail-lj1-x22a.google.com with SMTP id 38308e7fff4ca-3a1f75277f3so1263071fa.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 31 Aug 2026 14:47:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788212863; x=1788817663; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=QXmLTUcCngMrB5jBKoeiBiFNAXXmpHJGCK06GzS0et4=;
-        b=rlIce1uqFGLtlWoZkl4iJKykYsknItQvNDK4+9qCMZjknRXr5KRV860uu8DQmlwaJ0
-         azeJr0wo1Diste9zetY86wmPPor3As2Q214YMN5pZ5BocTS6ubbk89srp8u/9m997shb
-         G2Sy6qnfHJTOmfpwIIdmM+D/jEC3553JF1gqP/poXyNgMn635dH6maJ3UMEbdxNxVn3i
-         KLMOS7l4FkvhjerT/+4vVfzO93yr/r6+sWoGBd0lPbN9N6HaH/14Mq1eXoYbfrwf5ECf
-         lKdxzkfTWFTwLX8cl2hNmgl1bBAVhLQLiGIxsax7S97WXIZPGAWPb4A1hXAeKVlSWlnC
-         /35w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788212863; x=1788817663;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=QXmLTUcCngMrB5jBKoeiBiFNAXXmpHJGCK06GzS0et4=;
-        b=njpCyY3cvdlIfJtx6MTpdF7Lm9C5hvL25Ieq3rhyAMr5oxQ6KW8YZupUSugKkmAmbt
-         NsyRjcHGuuIWOspKUh7H/uKgXUP7nVV08zakdzkhJY7lOWnBNy+n5MXY/oOgAmnAc8yz
-         Fk/dpzAbyfMid03lA3e5HWEa+bF2nCVg47OgZqvyT40mf/Rg+xaXLDW4x+GeSralW7sR
-         xLrCsy44jgHgry5H7xlruzWfT/L5X6YZOnVDwXxD6POFL9CUXc2SdcltUsa2GK958+vC
-         JRhytJDRUcNWrUjS+4LXCWTsX/pvHu6St/w5sEtnjtgp4cWzVcpAzyFad250D2xo5aR9
-         AYPg==
-X-Forwarded-Encrypted: i=1; AKwUvByXGS6SpC8c+kewCJxneiNVMolA7lPXRx8SFXv3UyBZCHrorrj0kLMrvMHg1Ujz6b0Wh/DBnPXfRSIjDDkEWA==@lists.infradead.org
-X-Gm-Message-State: AFuF++lhkI4V7D2EPy537osIBq8joLlhkBtYr3dxD6nCisSFHy8b4QY3
-	CxliV9nrK8HlJbjS1bUlHmjjfg/opjQuLp6T0uabbSB0SMrMGm3W0n8=
-X-Gm-Gg: AYBFou3+4LL6R+CJZZN0gGyKM1+9xuhT/AsXyNQnGhvPN1+c11nNrY4MDWNOg/bPJBI
-	RUNsNMtatFfueLEvHf+vjIaZQkpAoACajBEPsUwJ+qUNBt9Ei5Cx3vCsSeQoKpWGmupwY9H4K0U
-	rWlyx+l9MNNLQFJFGN2iGqYKQi1f6mCDtZ6qA6bC9TNMUwn0vRjDw+JZG76SiyJVocq6rwVwgNS
-	jhTcYRC//QyzZFU4wb4Gdkb8eT3d9izK5IyBocrhxtFtNhWxU9y6jLjbAAXSpSmS5PiRteKpX/e
-	mpZs76w0JjN8rleq5Zw4he86KhnfiGAIhqV/9dBOQYh8ZT1MhXZ82daIXl7cn/1nZS8TWrAI4y5
-	t5YIJcHIFC9nmKr4bxI4PAegKGTyzx7g3R9IGXCttI35z6xrjxS7fxEEnSw0Z1ARKOEmfRnQKGX
-	4nHWkJOntbregr/J0kT+2Pt0KcxlGdKHbtSUbhWeCRI3AGThpeUA==
-X-Received: by 2002:a2e:8696:0:b0:3a1:ffd9:5438 with SMTP id 38308e7fff4ca-3a301ab4102mr53117361fa.1.1788212862381;
-        Mon, 31 Aug 2026 14:47:42 -0700 (PDT)
-Received: from fedora ([92.36.9.2])
-        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3a31550cefbsm18299201fa.9.2026.08.31.14.47.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 31 Aug 2026 14:47:41 -0700 (PDT)
-From: Vitaliy Sochnev <sochnev.v.74@gmail.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>,
-	netdev@vger.kernel.org
-Cc: upstream@airoha.com,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Vitaliy Sochnev <sochnev.v.74@gmail.com>
-Subject: [PATCH net v2 2/3] net: airoha: recover RX ring after hw completion stall
-Date: Tue,  1 Sep 2026 00:47:00 +0100
-Message-ID: <20260831234701.206021-3-sochnev.v.74@gmail.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260831234701.206021-1-sochnev.v.74@gmail.com>
-References: <20260830095717.37218-1-sochnev.v.74@gmail.com>
- <20260831234701.206021-1-sochnev.v.74@gmail.com>
+	Mon, 31 Aug 2026 22:50:21 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 6414B400D8;
+	Mon, 31 Aug 2026 22:50:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC7BA1F000E9;
+	Mon, 31 Aug 2026 22:50:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788216620;
+	bh=ML5wQ/GS1Kk9O2kkgjdsq7B7FgNtx0tPN9WZYFKffG0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=WbG+SprvCGWXQydLTVRiCH4U022X3r3siIUPzyeoemhhNnZF3zUgzsb5Q5nWIcI3a
+	 Yo/WWQt3k6k0l9/RBBemW5KPRHbf/drENFz8xdQI71He9/dM40P18bx0ztjVy8ZIjk
+	 WadCOFZe7DQlagS29gUDnEULNB89T9TopJUB0jhtTng45qQ7RFl9XeE7l1NnYsjV2I
+	 /+tkxbI9Oz6d28cbOjcbqz7+ATFX3SSjTlMRTybFSh9rHqSjTPeMrXY0XCBcophpJl
+	 RzNWvqIeTaeWLFmdAlgm0eXCxTexWO+QwXrOetMixkIDwgYdLJhxWVDp0aCOBlX1gi
+	 JG/azQBmESUww==
+Date: Mon, 31 Aug 2026 23:50:15 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Benjamin Larsson <benjamin.larsson@genexis.eu>
+Cc: Ahmed Naseef <naseefkm@gmail.com>, linux-gpio@vger.kernel.org,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Linus Walleij <linusw@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
+	Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 2/3] dt-bindings: pinctrl: Add EcoNet EN7528 pin
+ controller
+Message-ID: <20260831-reps-staunch-1522442545a4@spud>
+References: <cover.1787931313.git.naseefkm@gmail.com>
+ <c20005a81b4069f3ff68311629ff7d4678fa92dd.1787931313.git.naseefkm@gmail.com>
+ <20260828-chaos-recovery-c99d547ee1b6@spud>
+ <apLGtCRjCP1j0u5i@DESKTOP-TIT0J8O.localdomain>
+ <20260831-sibling-isolation-3849a5e4845f@spud>
+ <679db287-3cf2-4d29-b690-d87196402378@genexis.eu>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260831_144744_806400_878BCD4C 
-X-CRM114-Status: GOOD (  24.14  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="FVu6sS8O0N7Jmwge"
+Content-Disposition: inline
+In-Reply-To: <679db287-3cf2-4d29-b690-d87196402378@genexis.eu>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,229 +82,216 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On AN7583 hw can stop advancing the descriptor the sequential consumer in
-airoha_qdma_rx_process() is waiting on, while its own completion counter
-keeps moving. The ring is then dead: NAPI is scheduled, finds DONE clear
-at q->tail, and does nothing, forever.
+--FVu6sS8O0N7Jmwge
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Observed directly on ring 4 at its 16-descriptor default (devmem, qdma0):
-REG_RX_CPU_IDX frozen at 15 for over an hour while REG_RX_DMA_IDX advanced
-29 -> 96, with a 60-byte frame left stranded in the ring.
-QDMA_DESC_DROP_MASK was never set. In practice this is hit during PPPoE
-negotiation bursts on the shared "force to CPU" ring, where it stops the
-dial-up from ever completing.
+On Mon, Aug 31, 2026 at 08:46:52PM +0200, Benjamin Larsson wrote:
+> On 31/08/2026 18:57, Conor Dooley wrote:
+> > On Sat, Aug 29, 2026 at 03:47:00PM +0400, Ahmed Naseef wrote:
+> > > On Fri, Aug 28, 2026 at 04:51:27PM +0100, Conor Dooley wrote:
+> > > > On Fri, Aug 28, 2026 at 07:35:14PM +0400, Ahmed Naseef wrote:
+> > > > > Add the binding for the pin controller found on the EcoNet EN7528=
+ MIPS
+> > > > > SoC. It shares the IP with the Airoha pin controllers, but its IO=
+MUX and
+> > > > > pin configuration registers have a different layout, so it gets i=
+ts own
+> > > > > compatible.
+> > > > >=20
+> > > > > The CHIP SCU holding those registers is referenced by the airoha,=
+chip-scu
+> > > > > phandle.
+> > > > >=20
+> > > > > Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
+> > > > > ---
+> > > > >   .../pinctrl/econet,en7528-pinctrl.yaml        | 190 +++++++++++=
++++++++
+> > > > >   1 file changed, 190 insertions(+)
+> > > > >   create mode 100644 Documentation/devicetree/bindings/pinctrl/ec=
+onet,en7528-pinctrl.yaml
+> > > > >=20
+> > > > > diff --git a/Documentation/devicetree/bindings/pinctrl/econet,en7=
+528-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/econet,en7528-=
+pinctrl.yaml
+> > > > > new file mode 100644
+> > > > > index 000000000000..3ce1a5309d09
+> > > > > --- /dev/null
+> > > > > +++ b/Documentation/devicetree/bindings/pinctrl/econet,en7528-pin=
+ctrl.yaml
+> > > > > @@ -0,0 +1,190 @@
+> > > > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > > > > +%YAML 1.2
+> > > > > +---
+> > > > > +$id: http://devicetree.org/schemas/pinctrl/econet,en7528-pinctrl=
+=2Eyaml#
+> > > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > > > +
+> > > > > +title: EcoNet EN7528 Pin Controller
+> > > > > +
+> > > > > +maintainers:
+> > > > > +  - Lorenzo Bianconi <lorenzo@kernel.org>
+> > > > > +
+> > > > > +description:
+> > > > > +  The EcoNet EN7528 pin controller is used to control SoC pins. =
+It shares the
+> > > > > +  IP with the Airoha pin controllers, but its IOMUX and pin conf=
+iguration
+> > > > > +  registers have a different layout.
+> > > > > +
+> > > > > +properties:
+> > > > > +  compatible:
+> > > > > +    const: econet,en7528-pinctrl
+> > > > > +
+> > > > > +  airoha,chip-scu:
+> > > > > +    description: phandle to the chip SCU syscon
+> > > > > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > > > > +
+> > > > > +  interrupts:
+> > > > > +    maxItems: 1
+> > > > > +
+> > > > > +  gpio-controller: true
+> > > > > +
+> > > > > +  '#gpio-cells':
+> > > > > +    const: 2
+> > > > > +
+> > > > > +  gpio-ranges:
+> > > > > +    maxItems: 1
+> > > > > +
+> > > > > +  interrupt-controller: true
+> > > > > +
+> > > > > +  '#interrupt-cells':
+> > > > > +    const: 2
+> > > > > +
+> > > > > +patternProperties:
+> > > > > +  '-pins$':
+> > > > > +    type: object
+> > > > > +
+> > > > > +    patternProperties:
+> > > > > +      '^mux(-|$)':
+> > > > > +        type: object
+> > > > > +
+> > > > > +        description:
+> > > > > +          pinmux configuration nodes.
+> > > > > +
+> > > > > +        $ref: /schemas/pinctrl/pinmux-node.yaml
+> > > > > +
+> > > > > +        properties:
+> > > > > +          function:
+> > > > > +            description:
+> > > > > +              A string containing the name of the function to mu=
+x to the group.
+> > > > > +            enum: [gpio, jtag, pcie_reset, pcm, pcm_spi, phy1_le=
+d0,
+> > > > > +                   phy1_led1, phy2_led0, phy2_led1, phy3_led0, p=
+hy3_led1,
+> > > > > +                   phy4_led0, phy4_led1, pnand, pon, pwm, sipo, =
+spi, uart]
+> > > > > +
+> > > > > +          groups:
+> > > > > +            description:
+> > > > > +              An array of strings. Each string contains the name=
+ of a group.
+> > > > > +            items:
+> > > > > +              enum: [pon, sipo, sipo_rclk, uart2, uart2_cts_rts,=
+ uart3,
+> > > > > +                     ejtag, pcm1, pcm2, spi_quad, spi_cs1, pcm_s=
+pi,
+> > > > > +                     pcm_spi_int, pcm_spi_rst, pcm_spi_cs1, pcm_=
+spi_cs2,
+> > > > > +                     pcm_spi_cs3, pcm_spi_cs4, pcm_spi_cs5, pcm_=
+spi_cs6,
+> > > > > +                     pcm_spi_cs7, pnand, gpio0, gpio1, gpio2, gp=
+io3, gpio4,
+> > > > > +                     gpio5, gpio6, gpio7, gpio8, gpio9, gpio10, =
+gpio11,
+> > > > > +                     gpio12, gpio13, gpio14, gpio15, gpio16, gpi=
+o17,
+> > > > > +                     gpio18, gpio19, gpio20, gpio21, gpio22, gpi=
+o23,
+> > > > > +                     gpio24, gpio25, gpio26, gpio27, gpio28, gpi=
+o29,
+> > > > > +                     gpio30, gpio31, gpio32, gpio33, gpio34, gpi=
+o35,
+> > > > > +                     gpio36, gpio37, gpio38, gpio39, gpio40, gpi=
+o41,
+> > > > > +                     pcie_reset0, pcie_reset1]
+> > > > > +
+> > > > > +        required:
+> > > > > +          - function
+> > > > > +          - groups
+> > > > > +
+> > > > > +        additionalProperties: false
+> > > > > +
+> > > > > +      '^conf(-|$)':
+> > > >=20
+> > > > Why is this needed? Why can you not tell from the group which pins =
+the
+> > > > config applies to?
+> > >=20
+> > > Not for all of them: i2c_sda, i2c_scl, uart_txd and uart_rxd are in no
+> > > group at all.
+> >=20
+> > Why's that? Are they just fixed output pins?
+> >=20
+> > > The spi_cs0/clk/mosi/miso pads are only in pnand, which is
+> > > 17 pins wide, so no group names them individually either.
+> >=20
+> > That's easily resolved by breaking up pnand though.
+> >=20
+> > Devils advocate thing here might be to say that the dedicated
+> > configuration node should only be for the things that are fixed outputs,
+> > and the muxable ones should get their config from a combined
+> > pinmux/pincfg node. Personally I think that presents a nicer interface,
+> > where someone doesn't have to go figure out what pins are in the group
+> > they just assigned a function to to also set the config properties for
+> > it.
+> >=20
+> > Cheers,
+> > Conor.
+> >=20
+> Hi, I dont fully understand the exact implications but there are at least=
+ 2
+> more Econet pinctrl drivers coming. I would prefer it if we could keep th=
+em
+> looking exactly like the other Airoha drivers that are already merged. All
+> the SoCs share the same structure and logic just different pins and
+> addresses.
 
-Detect it without trusting ring content: REG_RX_DMA_IDX is hw's own
-counter, independent of what sw posted. If it advances across polls while
-q->tail does not, hw is making progress the consumer cannot observe. Idle
-rings, where hw does not advance either, are left alone. An earlier
-version scanned the ring for a DONE descriptor and trusted its content;
-that OOMed once it reached uninitialised DMA memory that happened to have
-the bit set. A register cannot misfire that way.
+FWIW, "I want to do X cos Y other driver does X" is not really a
+compelling argument in general. In this case, what's being done isn't
+terrible (and I was just about to tell Ahmed that I didn't notice that
+there's actually code reuse going on and his patch was adding 1200 lines
+of definitions rather than functions), but in general this is not an
+acceptable argument.
 
-Recovery is deferred to a work item, since the register access can sleep.
-It drops what is in flight and re-arms the ring through the existing
-cleanup_rx_queue()/fill_rx_queue() pair, which only touch the sw-owned
-[tail, head) window and rewrite both indices from it. Trying instead to
-identify and keep the descriptor hw used caused a page_pool double free.
+Also, in this case, I amn't overly opposed to what's going on here, I
+just want to be convinced that this isn't trying to shoehorn something
+into an existing model. It looks very clumsy to apply muxing by group
+but config by pin, when a little bit more judicious use of groups could
+get it all done in one go.
 
-GLOBAL_CFG_RX_DMA_EN_MASK is per-QDMA, not per-ring, so this briefly
-pauses every ring behind that instance; there is no per-ring equivalent.
-The measured pause is 986-1131 us over 13 recoveries, not the 50 ms
-read_poll_timeout() ceiling, so the logged value is worth having.
+I think I have already made similar comments on Airoha pinctrl in the
+past, so I guess I will just let this go as long as this is effectively
+describing the same "IP", or "structure and logic" as you put it, and
+expect that when the mechanism changes (which it will undoubtedly at
+some point) that either pins or groups, not both, is used then. If I
+remember or haven't burnt out and quit...
 
-Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 SoC")
-Signed-off-by: Vitaliy Sochnev <sochnev.v.74@gmail.com>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 98 +++++++++++++++++++++++-
- drivers/net/ethernet/airoha/airoha_eth.h |  8 ++
- 2 files changed, 105 insertions(+), 1 deletion(-)
+Cheers,
+Conor.
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index c59201aded26..177a0e10e372 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -3,12 +3,14 @@
-  * Copyright (c) 2024 AIROHA Inc
-  * Author: Lorenzo Bianconi <lorenzo@kernel.org>
-  */
-+#include <linux/ktime.h>
- #include <linux/of.h>
- #include <linux/of_net.h>
- #include <linux/of_reserved_mem.h>
- #include <linux/platform_device.h>
- #include <linux/tcp.h>
- #include <linux/u64_stats_sync.h>
-+#include <linux/workqueue.h>
- #include <net/dst_metadata.h>
- #include <net/page_pool/helpers.h>
- #include <net/pkt_cls.h>
-@@ -657,6 +659,34 @@ airoha_qdma_get_gdm_dev(struct airoha_eth *eth, struct airoha_qdma_desc *desc)
- 	return port->devs[d] ? port->devs[d] : ERR_PTR(-ENODEV);
- }
- 
-+#define AIROHA_RX_STALL_THRESHOLD	3
-+
-+/* REG_RX_DMA_IDX is hw's own completion counter, independent of what sw has
-+ * posted, so comparing it against q->tail spots the stall without trusting
-+ * ring content: if hw keeps advancing while the strictly sequential consumer
-+ * does not, it is completing descriptors that consumer can never reach.
-+ */
-+static void airoha_qdma_rx_check_stall(struct airoha_queue *q)
-+{
-+	struct airoha_qdma *qdma = q->qdma;
-+	int qid = q - &qdma->q_rx[0];
-+	u32 dma_idx;
-+
-+	dma_idx = airoha_qdma_get(qdma, REG_RX_DMA_IDX(qid),
-+				  RX_RING_DMA_IDX_MASK);
-+
-+	if (q->stall_tail == q->tail && dma_idx != q->stall_dma_idx) {
-+		if (++q->stall_count >= AIROHA_RX_STALL_THRESHOLD &&
-+		    !test_and_set_bit(qid, qdma->rx_recover_mask))
-+			schedule_work(&qdma->rx_recover_work);
-+	} else {
-+		q->stall_count = 0;
-+	}
-+
-+	q->stall_tail = q->tail;
-+	q->stall_dma_idx = dma_idx;
-+}
-+
- static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
- {
- 	enum dma_data_direction dir = page_pool_get_dma_dir(q->page_pool);
-@@ -675,8 +705,10 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
- 		struct page *page;
- 
- 		desc_ctrl = le32_to_cpu(READ_ONCE(desc->ctrl));
--		if (!(desc_ctrl & QDMA_DESC_DONE_MASK))
-+		if (!(desc_ctrl & QDMA_DESC_DONE_MASK)) {
-+			airoha_qdma_rx_check_stall(q);
- 			break;
-+		}
- 
- 		dma_rmb();
- 
-@@ -895,6 +927,56 @@ static void airoha_qdma_cleanup_rx_queue(struct airoha_queue *q)
- 			FIELD_PREP(RX_RING_DMA_IDX_MASK, q->tail));
- }
- 
-+static void airoha_qdma_rx_recover_work(struct work_struct *work)
-+{
-+	struct airoha_qdma *qdma = container_of(work, struct airoha_qdma,
-+						rx_recover_work);
-+	int qid;
-+
-+	for_each_set_bit(qid, qdma->rx_recover_mask, AIROHA_NUM_RX_RING) {
-+		struct airoha_queue *q = &qdma->q_rx[qid];
-+		ktime_t rx_dma_off_ts;
-+		s64 rx_dma_off_us;
-+		u32 status;
-+
-+		napi_disable(&q->napi);
-+
-+		/* per-QDMA, not per-ring: this pauses every RX ring behind
-+		 * this instance, hence the measured duration below
-+		 */
-+		rx_dma_off_ts = ktime_get();
-+		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
-+				  GLOBAL_CFG_RX_DMA_EN_MASK);
-+		if (read_poll_timeout(airoha_qdma_rr, status,
-+				      !(status & GLOBAL_CFG_RX_DMA_BUSY_MASK),
-+				      USEC_PER_MSEC, 50 * USEC_PER_MSEC, true,
-+				      qdma, REG_QDMA_GLOBAL_CFG))
-+			dev_warn(qdma->eth->dev,
-+				 "qid=%d RX DMA busy timeout during recovery\n",
-+				 qid);
-+
-+		airoha_qdma_cleanup_rx_queue(q);
-+		if (q->skb) {
-+			dev_kfree_skb(q->skb);
-+			q->skb = NULL;
-+		}
-+		airoha_qdma_fill_rx_queue(q);
-+
-+		airoha_qdma_set(qdma, REG_QDMA_GLOBAL_CFG,
-+				GLOBAL_CFG_RX_DMA_EN_MASK);
-+		rx_dma_off_us = ktime_us_delta(ktime_get(), rx_dma_off_ts);
-+
-+		q->stall_count = 0;
-+		napi_enable(&q->napi);
-+		napi_schedule(&q->napi);
-+
-+		dev_warn_ratelimited(qdma->eth->dev,
-+				     "qid=%d RX ring recovered after hw stall (RX DMA paused %lld us)\n",
-+				     qid, rx_dma_off_us);
-+		clear_bit(qid, qdma->rx_recover_mask);
-+	}
-+}
-+
- static int airoha_qdma_init_rx(struct airoha_qdma *qdma)
- {
- 	int i;
-@@ -1582,6 +1664,8 @@ static void airoha_qdma_cleanup(struct airoha_eth *eth,
- {
- 	int i;
- 
-+	cancel_work_sync(&qdma->rx_recover_work);
-+
- 	if (test_bit(DEV_STATE_INITIALIZED, &eth->state)) {
- 		u32 status;
- 
-@@ -1639,6 +1723,13 @@ static int airoha_hw_init(struct platform_device *pdev,
- 	if (err)
- 		return err;
- 
-+	/* init every instance up front: the error path below tears down all
-+	 * of eth->qdma[], including entries the init loop never reached
-+	 */
-+	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
-+		INIT_WORK(&eth->qdma[i].rx_recover_work,
-+			  airoha_qdma_rx_recover_work);
-+
- 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++) {
- 		err = airoha_qdma_init(pdev, eth, &eth->qdma[i]);
- 		if (err)
-@@ -1687,6 +1778,11 @@ static void airoha_qdma_stop_napi(struct airoha_qdma *qdma)
- {
- 	int i;
- 
-+	/* must not run or re-arm past this point: the work calls
-+	 * napi_disable() too, and doing that twice spins forever
-+	 */
-+	disable_work_sync(&qdma->rx_recover_work);
-+
- 	for (i = 0; i < ARRAY_SIZE(qdma->q_tx_irq); i++)
- 		napi_disable(&qdma->q_tx_irq[i].napi);
- 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index fa9a8edce22f..c195dad5ed58 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -207,6 +207,11 @@ struct airoha_queue {
- 	bool txq_stopped;
- 	bool flushing;
- 
-+	/* see airoha_qdma_rx_check_stall() */
-+	u32 stall_dma_idx;
-+	u16 stall_tail;
-+	u8 stall_count;
-+
- 	struct napi_struct napi;
- 	struct page_pool *page_pool;
- 	struct sk_buff *skb;
-@@ -567,6 +572,9 @@ struct airoha_qdma {
- 	struct airoha_queue q_tx[AIROHA_NUM_TX_RING];
- 	struct airoha_queue q_rx[AIROHA_NUM_RX_RING];
- 
-+	struct work_struct rx_recover_work;
-+	DECLARE_BITMAP(rx_recover_mask, AIROHA_NUM_RX_RING);
-+
- 	DECLARE_BITMAP(qos_channel_map, AIROHA_NUM_QOS_CHANNELS);
- };
- 
--- 
-2.55.0
+--FVu6sS8O0N7Jmwge
+Content-Type: application/pgp-signature; name=signature.asc
 
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCapYFJwAKCRB4tDGHoIJi
+0rhfAPoCRovzdnvEECViMGN0T4+i78mBqtD0E/djpiikXqh3IAD5ASoX0E4dDq4/
+5FqyGFY9SVasXFPGCiG1oJgr/9hUfAU=
+=I6q4
+-----END PGP SIGNATURE-----
+
+--FVu6sS8O0N7Jmwge--
 
