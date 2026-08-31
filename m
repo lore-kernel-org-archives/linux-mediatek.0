@@ -4,72 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC146C624A4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 15:39:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46826C624A4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 16:14:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z6kFiOyl3mCK6cw9o4LxP6/hgcZuL0FaC5vJyvR8E9U=; b=Q4bflwQ2+UKGyBgs/sh/LhJ7vO
-	pArYfFpS+8x4nwA0P0LYTWTNG62R80c1Ta2S55U1Btw2E3vlSetl5qPkZbgf8UAiav8SWyyVvvGal
-	DfLTFIW2WrllxXMu0Gon9OMxFTn0GHWzttHx7wrXYSfTXwHoBExuHHWXyNai0U/8k/qmBF/twsnww
-	yr6eZLh5bvgcFTOstlkNzEpqvY6BkeFnkSDrnM3ksctAYeCyaZ4lYmW2XEBrj383Mrd0/WkCEmAsN
-	neKRMbQhGJMU9a8M246qmdqVtZJmg0WMOhMWSI6RzkcwBn/eqvNbBdevqjovLS6q6aTVqU5yWdvZW
-	gnBVCZYg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=L47f4WHA0oklyqWY/79F9ARDY2+1ZW1V7S/l3+FjfBE=; b=Cq7dIBaaqXqV5SIaS4KX7RZ8/7
+	6alLztk6+xPQXgVqIRE97DhfDmmJqlKJNC4S0fwdtpw0fQp2HHGj5ibgGVmX+bt8kev5iQdHdQoch
+	BrWbFB1DapAJ0TcDU8tOi2xhqsGi732ATvWxasmmzXtxzTNJyUgG+B59l6mbURvL0DRYCrXBqnRXm
+	/B9FrlFf9WkCKdNjM1cOT1h7YZYWBR6TuYLlQJo33LSOARhYkM0CMLnaLKjEBNVFHfr5krod/b9iP
+	rruUhaDUopgmP2qj1d/85UgKlFRdpM6n4SPB4i1e1HKwSNswOstqHfJ/49OYsLY+pDbAmXF05h3gc
+	PSuhl18w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x146i-00000009uDO-3flI;
-	Mon, 31 Aug 2026 15:39:36 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x14eC-00000009zRk-3PoS;
+	Mon, 31 Aug 2026 16:14:12 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x146i-00000009uCa-0qnQ;
-	Mon, 31 Aug 2026 15:39:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:To:From:Date:Sender:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=z6kFiOyl3mCK6cw9o4LxP6/hgcZuL0FaC5vJyvR8E9U=; b=M/FdZckC/EqvWHITqg7vcvrHTG
-	BqQcuk6bqOlLN90c/Pc5x87mCg/uUTamj2GEBmKW824H8yQedL1EpS+QoEs8FP6+NTK7xwrqpXD51
-	jyxok3idflZbKwRMXqukNq8tPWORoWmqd+ya9lPjDaYLy7PN1PnrJicJ1m3hxPg+eT7jjddJXPcwT
-	+aY0p3AVd1AkN8wQnYlsajTI9HRfoVLbMbZ+vmcap172M9xDUXz19dCapoPBLG99ySEwB2r8m1RBt
-	V2/3gcfU8H01lb/Cl/tTCkNT7Ofx3Wue4nIlkhMSlRBS0IrtPKNMTzRN20K2k2s3WGbly/s1XeDiG
-	YRGs/3xA==;
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x146f-0000000A0gR-0h2z;
-	Mon, 31 Aug 2026 15:39:34 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1x146b-000000007Dl-0Vr2;
-	Mon, 31 Aug 2026 15:39:29 +0000
-Date: Mon, 31 Aug 2026 16:39:26 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: "Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v5 9/9] net: dsa: mt7530: implement
- port_change_conduit op
-Message-ID: <cfc6a478a384a7f309f08d9f76be8fd029c1f202.1788190568.git.daniel@makrotopia.org>
-References: <cover.1788190568.git.daniel@makrotopia.org>
+	id 1x14e8-00000009zQ3-1SGY
+	for linux-mediatek@lists.infradead.org;
+	Mon, 31 Aug 2026 16:14:09 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id CC95D4E4147F;
+	Mon, 31 Aug 2026 16:14:06 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 9F6A560231;
+	Mon, 31 Aug 2026 16:14:06 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id BDE6011C78B96;
+	Mon, 31 Aug 2026 18:14:00 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1788192845; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=L47f4WHA0oklyqWY/79F9ARDY2+1ZW1V7S/l3+FjfBE=;
+	b=zOz/YqpyyzMAIVASK3DCyc995EjsjJSCqlJwWyZc6RGLLfa/U2OTwTUGx9JCtxSe3U/bvb
+	WlWB8Ys2+tqLmPs4+rzjWPgtMN9PInV39Yt4c/cCWLGbdBWHpK1uyicfrDYMjNowfzXdeI
+	HsVwpd2LBhRw1oOKTOJnusp8Y/TTdxVASD00OCnVkGxkX4nR86A5F9Unj32CthHyVdRU6+
+	L/gB7TZdkuE2TSK9PiCgM/k7BoiFk9Dymr+oQuGZJt/ZDbZWLj/pkMblnUGXTAxkLpkkvT
+	UTa8AxgsWu4J5BaBU87ATN845aGhfhtaFdgYghbNwnz5wOFzn1cTQmNpyYzY+Q==
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Date: Mon, 31 Aug 2026 18:13:27 +0200
+Subject: [PATCH v3 01/13] drm/bridge: megachips-stdpxxxx-ge-b850v3-fw:
+ don't select unused DRM_PANEL
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1788190568.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260831-drm-bridge-drm_panel-cleanup-v3-1-50efd8168b3e@bootlin.com>
+References: <20260831-drm-bridge-drm_panel-cleanup-v3-0-50efd8168b3e@bootlin.com>
+In-Reply-To: <20260831-drm-bridge-drm_panel-cleanup-v3-0-50efd8168b3e@bootlin.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Peter Senna Tschudin <peter.senna@gmail.com>, 
+ Martyn Welch <martyn.welch@collabora.co.uk>, Andy Yan <andyshrk@163.com>
+X-Mailer: b4 0.16.0
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260831_163933_395598_B2153695 
-X-CRM114-Status: GOOD (  19.00  )
+X-CRM114-CacheID: sfid-20260831_091408_518547_86BF045C 
+X-CRM114-Status: UNSURE (   9.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,104 +90,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Allow changing the CPU port affinity of user ports at runtime via the
-IFLA_DSA_CONDUIT netlink attribute. This updates the port matrix to
-forward to the new CPU port instead of the old one.
+This driver does not use the drm_panel APIs at all, so no need to select
+DRM_PANEL.
 
-Limit the operation to MT7531. There, trapped link-local frames follow
-the per-port affinity, as the MT7531_CPU_PMAP destination mask is
-further restricted by the port matrix. A conduit change is hence fully
-honoured by the hardware, for regular traffic as well as for trapped
-frames.
-
-The MT7530 switch, including the variant embedded in the MT7621 SoC,
-instead traps frames to the single CPU port set in the CPU_PORT field
-of the MFC register, regardless of the affinity of the inbound user
-port. With user ports affine to different CPU ports there is no
-correct value for that field, so per-port CPU affinity cannot be fully
-implemented for trapped frames. Routing a WAN port via the second SoC
-GMAC is conventionally covered by the PHY muxing feature on these
-switches, which bypasses the switch fabric and does not involve a CPU
-port at all.
-
-The switches on the MT7988, EN7581, AN7583 and EN7528 SoCs only have a
-single CPU port, leaving no other conduit to change to.
-
-As the op lives in the shared mt7530_switch_ops, populate the extack
-when rejecting the unsupported variants instead of returning a bare
--EOPNOTSUPP. Also reject a conduit that belongs to a different switch
-in the tree, whose port index has no meaning in the local port matrix.
-
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Acked-by: Chester A. Unal <chester.a.unal@arinc9.com>
+Cc: Peter Senna Tschudin <peter.senna@gmail.com>
+Cc: Martyn Welch <martyn.welch@collabora.co.uk>
+Cc: Andy Yan <andyshrk@163.com>
+Reviewed-by: Ian Ray <ian.ray@gehealthcare.com>
+Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
-v5: list EN7528, added by commit cf23fcc9437e ("net: dsa: mt7530: add
-    EN7528 support"), among the single-CPU-port switches
-v4: no changes
-v3:
- * populate the netlink extack on rejection
- * refuse a conduit that lives on a different switch
-v2: extend commit message
----
- drivers/net/dsa/mt7530.c | 38 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 38 insertions(+)
+ drivers/gpu/drm/bridge/Kconfig | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 84e0e888f2d0..28f94cd25b95 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -3249,6 +3249,43 @@ static int mt753x_set_mac_eee(struct dsa_switch *ds, int port,
- 	return 0;
- }
- 
-+static int
-+mt753x_port_change_conduit(struct dsa_switch *ds, int port,
-+			   struct net_device *conduit,
-+			   struct netlink_ext_ack *extack)
-+{
-+	struct dsa_port *new_cpu_dp = conduit->dsa_ptr;
-+	struct dsa_port *dp = dsa_to_port(ds, port);
-+	struct mt7530_priv *priv = ds->priv;
-+
-+	if (priv->id != ID_MT7531) {
-+		NL_SET_ERR_MSG_MOD(extack,
-+				   "Changing DSA conduit is only supported on MT7531");
-+		return -EOPNOTSUPP;
-+	}
-+
-+	if (new_cpu_dp->ds != ds) {
-+		NL_SET_ERR_MSG_MOD(extack,
-+				   "Cannot assign a conduit on a different switch");
-+		return -EOPNOTSUPP;
-+	}
-+
-+	mutex_lock(&priv->reg_mutex);
-+
-+	/* dp->cpu_dp still points to the old CPU port */
-+	priv->ports[port].pm &= ~PCR_MATRIX(BIT(dp->cpu_dp->index));
-+	priv->ports[port].pm |= PCR_MATRIX(BIT(new_cpu_dp->index));
-+	if (priv->ports[port].enable)
-+		regmap_update_bits(priv->regmap, MT7530_PCR_P(port),
-+				   PCR_MATRIX_MASK, priv->ports[port].pm);
-+
-+	mutex_unlock(&priv->reg_mutex);
-+
-+	mt7530_port_fast_age(ds, port);
-+
-+	return 0;
-+}
-+
- static void
- mt753x_conduit_state_change(struct dsa_switch *ds,
- 			    const struct net_device *conduit,
-@@ -3361,6 +3398,7 @@ static const struct dsa_switch_ops mt7530_switch_ops = {
- 	.setup			= mt753x_setup,
- 	.teardown		= mt753x_teardown,
- 	.preferred_default_local_cpu_port = mt753x_preferred_default_local_cpu_port,
-+	.port_change_conduit	= mt753x_port_change_conduit,
- 	.get_strings		= mt7530_get_strings,
- 	.get_ethtool_stats	= mt7530_get_ethtool_stats,
- 	.get_sset_count		= mt7530_get_sset_count,
+diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
+index 4a57d49b4c6d..a999e57d0cc1 100644
+--- a/drivers/gpu/drm/bridge/Kconfig
++++ b/drivers/gpu/drm/bridge/Kconfig
+@@ -225,7 +225,6 @@ config DRM_MEGACHIPS_STDPXXXX_GE_B850V3_FW
+ 	tristate "MegaChips stdp4028-ge-b850v3-fw and stdp2690-ge-b850v3-fw"
+ 	depends on OF
+ 	select DRM_KMS_HELPER
+-	select DRM_PANEL
+ 	help
+ 	  This is a driver for the display bridges of
+ 	  GE B850v3 that convert dual channel LVDS
+
 -- 
 2.55.0
+
 
