@@ -4,102 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CCD2C624C6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2026 09:26:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D79AAC61DD3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2026 10:02:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=W02+miOc40enO8Kk7fWVAuXmWTmU4/GB4n7lg/BSofo=; b=f0vFwa+oaR5HdJkfKWOraV4l3e
-	CzvQFJFOVPYzfWr4qfNJDoSgy1JIyY107ma4Wm7qAqS8TE8/edq10gVGnymM5OrDdnA9ycdiH9kHE
-	0B/htMYxk/rT41qM0IyS+2jNnMFTbqD6EnID6lljJc8zy1MjQsgFcoMFQZk9SM6W1c551TYzOSscI
-	4/wleSYXvwe/VpHiNpz0lMcnHMHg9RybpJCyIpK6F7Dx93h4EK2uRqN00FSLbyM0ohek4FVCfGgtr
-	WVKY8Up+th9AwjgCsdRj8qLmktxdDLtXE2SVXGdeS79M3ll5SYPxVaGCPu1zf/zZqYOzbFLzgVfQJ
-	poo2mt/A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qTNTRFksulITxbCKCrKekyh27ztnjvfQBlMPOzze/R0=; b=LTWEUvRKhSH0Ni05Ug2OPA8owT
+	WfHA8zR0SytWp5d8XSnpAPzad50HdEqMTdpucULT7RHvU8IdSggECIeG0zxyHlza0JnhW0b1BpKHI
+	N6aB9uPp47p9XRFZ5FoZkP6jL+Ij8s4zENTVUXNB/m7arkVosae4i4n7Tevmb0Y/7ks462CNdKpTs
+	JFAROB45Ldtaty+AJgT2678AYQQd/+u8dxKFY/bkUyzb70NaiAukVYCfl1cjB8xaIivjQ56wZL5s0
+	R3Fwknj8Cvz1Z8E6SG8ouTAgz5zbZYkQWbNotP6PhttJi6/ctjPlIUYkL9AQK6ZqphBi3cC8SaMRM
+	vuSpyOVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1KlQ-0000000BQPQ-1YDR;
-	Tue, 01 Sep 2026 09:26:44 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1x1LKO-0000000BUnG-2mkV;
+	Tue, 01 Sep 2026 10:02:52 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1KlN-0000000BQNS-3AJt
-	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Sep 2026 09:26:43 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id 4fb4d7f45d1cf-6a611ba5130so6338871a12.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 01 Sep 2026 02:26:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bairaktaris.de; s=google; t=1788254799; x=1788859599; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=W02+miOc40enO8Kk7fWVAuXmWTmU4/GB4n7lg/BSofo=;
-        b=Vy2epx3El2SxtdTkrCC/t9NWl/SKnl2P+W96D7em4cwVnQwui6i+vjbaJCEV39XgcR
-         rkxaF8dpW52T/moAE5VzLbJwwQzsCnoz3RUwIsDJjmEXX5lq4PiZUCstqV0GYVUHtOhK
-         rv4/kdpS0xhBysIT6O6HRjac5gWE7J5/fBHXauWOv+iuhj5S8eLu/IdDEAoCstqe+AED
-         /8VLWQj2OsMv1+iYlgK6fnIuGM5vCQUuE/aRKmiDgjVfY6WAHB+A5POcGIJZYAguPyzp
-         CsqOu82JWN6ylvu4GZOtrt1zzKREB0gkXZniSvqBuYrhVNqAm8D9ZPVPtqg4OzTftMnw
-         6lFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788254799; x=1788859599;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=W02+miOc40enO8Kk7fWVAuXmWTmU4/GB4n7lg/BSofo=;
-        b=HH0O16fAwFIzdymK43tM/+fr7Ep+cJlwUjaMtk9o1hqahd44hka5aykE79IBYTa0nh
-         ifM0N8B+NMFsdXuaqjhsfKqzgbsdDRny8OIyqC3INlSWpW+c8syus12BN20pkVPf5MaZ
-         XRvF2uPFPUKTJ5rbV20dtkUkjEvXom6qm+2cRi1pbGlEupBi+GqpHV9/I8KZHoCLaimr
-         SSenNN+CR2zEVPKRwqGSTqqtp9sD61AbJQ3yvIP9p9XxTEQNjwrnwsWsl4LbZmTW7chg
-         lLhhlJRILijSfqIMK6S/0jyjSB3t/iqhYPCCmhXID5GYsiRoPGfTwOnFNChj5jjoCDu/
-         3Hqw==
-X-Forwarded-Encrypted: i=1; AHgh+RpvLnRnHf/LB4vbEMjmdKh4k/EbXyNNIQdn2nM2T83WHK4ATxbW7l32BjfTy/IVGs5bvFmxmzoxNH6+Q+5oHA==@lists.infradead.org
-X-Gm-Message-State: AFuF++mKBZEpGMCAdL6cx7EXvQGC9hl/o/dqIrppOnoZs4CZ1kQsaoov
-	fQ1lOlDQrAMe2BfFk9+uKIW+4dA9c1dQJ98WY/aIFtH8nuizjnp4lcp1aMOo2NSKwQ==
-X-Gm-Gg: AR+sD13IKvqt+9AV3+L+ba1pBt2OJYH0HOIaCcnuXV98aMaPKKW9PuEZ1olsOg11dxm
-	B4oWGzS15h0wTI0eE4ipkY9DvNMY1VZUHlYbZjryWMmkwNDdrWXjzRkyz1P3uAa67k9kAbjtF5w
-	MblLgmVR0Dp1+hLv9GVz5Tfz4DC7t9198SLwuBpb7h5aGvtQPl0TiaYQX4CIa42nndBF7Z34YSs
-	yyThjrorfAbKSauJLRmvBg8zVbuSYstWEtIV+Oq4to7mGGHOaUHfJEORo9ij9e0TM6aZy3OAsza
-	7ek16Fzc8TTSor4kFU0gVTb2Z+cu1OzAod/XpqiwxCFytnhdqYMFvBHRtG3tXO/uOShGATfysZY
-	gyUTIVY6lr80Eilpxz6jdxXGWvH/oK/Rd/Ac3/rskOjGdPWRbGkWCqN0rSIYyIMX8D94JH7Erod
-	s9I+ypBTzyZJlqcmX/ddMpuMnacYfi+qWZZThNKqyPZrP3dJvMmKujocjlnlHxn0vp2Nor/lfVK
-	Hd3d71jtY/0xWW9xI6NnzHoHj/MSUN5+w7DtouxeQD+KYWjKs+6Zfurc8sFiAv8m09aWLSgih3w
-	qpIw1pelSE33n0dztlO4NJI4lxZrmpMzcVa+3wyO5RLldju07lTCiVRouOjGOAxRElmVN2LJQYX
-	DIDYPhLqH6KSQI3cDRj1U9uwbXzYMrkTrBHWb+qqII5FoJnAHpHqfJTWVscbjl/JOt+0L3LPO
-X-Received: by 2002:a17:907:1c28:b0:c25:2d27:5652 with SMTP id a640c23a62f3a-c25b3cc9a35mr447457466b.11.1788254799343;
-        Tue, 01 Sep 2026 02:26:39 -0700 (PDT)
-Received: from Desktop.fritz.box ([185.181.129.92])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c255f1fb965sm574724766b.49.2026.09.01.02.26.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Sep 2026 02:26:38 -0700 (PDT)
-From: Julius Bairaktaris <julius@bairaktaris.de>
-To: Pablo Neira Ayuso <pablo@netfilter.org>,
-	Florian Westphal <fw@strlen.de>
-Cc: Phil Sutter <phil@nwl.cc>,
-	netfilter-devel@vger.kernel.org,
-	coreteam@netfilter.org,
-	netdev@vger.kernel.org,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Felix Fietkau <nbd@nbd.name>,
+	id 1x1LKN-0000000BUm4-0G6K;
+	Tue, 01 Sep 2026 10:02:51 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 53F6560200;
+	Tue,  1 Sep 2026 10:02:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87FC91F000E9;
+	Tue,  1 Sep 2026 10:02:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788256970;
+	bh=qTNTRFksulITxbCKCrKekyh27ztnjvfQBlMPOzze/R0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=KVDlZDxz3IgiyyMurz47BqcV+W3bJGh5q+Zb23WWjqxabE5OjQGssBjofNL1ag2XZ
+	 HEbYkah4jzDFsPKhduQsWzNpHzISPguk7bJUwSsoT6Hzbq2w7MMSYgpW6HitwbzcPc
+	 8WpL3Pua8GTmPHdFGV6TYAaqk05B0oTpvHS7SFkmJ74vzvT2c7/ZAbxWM5yAiuRJrp
+	 hzIBDB/8+2i8YZGgU8UF+oZnqXokJj5czfGJoQulh+W5QgvNF9L+xi9gtA5c/q6kXS
+	 yVKqBgw9lwSj5QzbjpJN8KFXgJfc7i3bplQpWN9YxoEpNkOztXf5sDXpBYAlL7M3ib
+	 cTeozus6m0WyA==
+Date: Tue, 1 Sep 2026 12:02:47 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Julius Bairaktaris <julius@bairaktaris.de>
+Cc: Pablo Neira Ayuso <pablo@netfilter.org>,
+	Florian Westphal <fw@strlen.de>, Phil Sutter <phil@nwl.cc>,
+	netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
+	netdev@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Simon Horman <horms@kernel.org>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH nf-next] netfilter: flowtable: carry a priority into the offload
-Date: Tue,  1 Sep 2026 11:26:32 +0200
-Message-ID: <20260901092632.369248-1-julius@bairaktaris.de>
-X-Mailer: git-send-email 2.53.0
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Simon Horman <horms@kernel.org>, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH nf-next] netfilter: flowtable: carry a priority into the
+ offload
+Message-ID: <apaix8MjIkRPjHVq@lore-desk>
+References: <20260901092632.369248-1-julius@bairaktaris.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_022641_846477_E655D1D0 
-X-CRM114-Status: GOOD (  18.18  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="/qSlxrVubm3pHBHu"
+Content-Disposition: inline
+In-Reply-To: <20260901092632.369248-1-julius@bairaktaris.de>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,118 +79,158 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A flow rule handed to a driver describes NAT, encapsulation and the
-output device, but not how the flow should be treated on the way out,
-so hardware with priority queues can only fall back on the DSCP the
-packet carries.
+--/qSlxrVubm3pHBHu
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Carry skb->priority of the packet that created the flow and emit it as
-FLOW_ACTION_PRIORITY, the action act_skbedit already emits on the tc
-path. "meta priority set" before "flow add" then reaches the hardware.
-A flow without a priority emits no action; mtk and airoha, the two
-in-tree consumers of these rules, ignore the new one as they do
-FLOW_ACTION_CSUM.
+> A flow rule handed to a driver describes NAT, encapsulation and the
+> output device, but not how the flow should be treated on the way out,
+> so hardware with priority queues can only fall back on the DSCP the
+> packet carries.
+>=20
+> Carry skb->priority of the packet that created the flow and emit it as
+> FLOW_ACTION_PRIORITY, the action act_skbedit already emits on the tc
+> path. "meta priority set" before "flow add" then reaches the hardware.
+> A flow without a priority emits no action; mtk and airoha, the two
+> in-tree consumers of these rules, ignore the new one as they do
+> FLOW_ACTION_CSUM.
+>=20
+> The flowtable holds one flow for both directions and the expression
+> runs once, so the priority applies to both; per-direction
+> classification is not carried.
+>=20
+> Assisted-by: Claude:claude-opus-5
+> Signed-off-by: Julius Bairaktaris <julius@bairaktaris.de>
 
-The flowtable holds one flow for both directions and the expression
-runs once, so the priority applies to both; per-direction
-classification is not carried.
+Hi Julius,
 
-Assisted-by: Claude:claude-opus-5
-Signed-off-by: Julius Bairaktaris <julius@bairaktaris.de>
----
-The consumer of the emitted action is a DSA driver for the IPQ8074 PPE,
-maintained in OpenWrt; measured there, "meta priority set" ahead of
-"flow add" places offloaded flows in the port's hardware priority
-queues. The mtk and airoha hunks are compile-tested only. The new field
-grows struct flow_offload by eight bytes on 64-bit; the entry allocates
-from its own kmem_cache, so no allocation-class change.
+we have already discussed about this kind of approach to offload skb priori=
+ty
+into drivers that support flowtable hw offload. The main blocking point is =
+we
+need the same feature in the flowtable sw path in order to not introduce any
+missing capability in the kernel tx path.
 
- drivers/net/ethernet/airoha/airoha_ppe.c        |  1 +
- drivers/net/ethernet/mediatek/mtk_ppe_offload.c |  1 +
- include/net/netfilter/nf_flow_table.h           |  1 +
- net/netfilter/nf_flow_table_offload.c           | 11 +++++++++++
- net/netfilter/nft_flow_offload.c                |  7 +++++++
- 5 files changed, 21 insertions(+)
+Regards,
+Lorenzo
 
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 92611802801e..2afce76ad131 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -1161,6 +1161,7 @@ static int airoha_ppe_flow_offload_replace(struct airoha_eth *eth,
- 		case FLOW_ACTION_REDIRECT:
- 			odev = act->dev;
- 			break;
-+		case FLOW_ACTION_PRIORITY:
- 		case FLOW_ACTION_CSUM:
- 			break;
- 		case FLOW_ACTION_VLAN_PUSH:
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-index 99b28aaa7cc4..4ee99e8e4a34 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-@@ -378,6 +378,7 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
- 		case FLOW_ACTION_REDIRECT:
- 			odev = act->dev;
- 			break;
-+		case FLOW_ACTION_PRIORITY:
- 		case FLOW_ACTION_CSUM:
- 			break;
- 		case FLOW_ACTION_VLAN_PUSH:
-diff --git a/include/net/netfilter/nf_flow_table.h b/include/net/netfilter/nf_flow_table.h
-index f2e2771f188f..23218c8cbc3d 100644
---- a/include/net/netfilter/nf_flow_table.h
-+++ b/include/net/netfilter/nf_flow_table.h
-@@ -202,6 +202,7 @@ struct flow_offload {
- 	unsigned long				flags;
- 	u16					type;
- 	u32					timeout;
-+	u32					priority;
- 	struct rcu_head				rcu_head;
- };
- 
-diff --git a/net/netfilter/nf_flow_table_offload.c b/net/netfilter/nf_flow_table_offload.c
-index 801a3dd9ceea..caaadffc2563 100644
---- a/net/netfilter/nf_flow_table_offload.c
-+++ b/net/netfilter/nf_flow_table_offload.c
-@@ -696,6 +696,17 @@ nf_flow_rule_route_common(struct net *net, const struct flow_offload *flow,
- 	    flow_offload_eth_dst(net, flow, dir, flow_rule) < 0)
- 		return -1;
- 
-+	if (flow->priority) {
-+		struct flow_action_entry *entry;
-+
-+		entry = flow_action_entry_next(flow_rule);
-+		if (!entry)
-+			return -1;
-+
-+		entry->id = FLOW_ACTION_PRIORITY;
-+		entry->priority = flow->priority;
-+	}
-+
- 	tuple = &flow->tuplehash[dir].tuple;
- 
- 	for (i = 0; i < tuple->encap_num; i++) {
-diff --git a/net/netfilter/nft_flow_offload.c b/net/netfilter/nft_flow_offload.c
-index 32b4281038dd..dd3ac2b9c963 100644
---- a/net/netfilter/nft_flow_offload.c
-+++ b/net/netfilter/nft_flow_offload.c
-@@ -117,6 +117,13 @@ static void nft_flow_offload_eval(const struct nft_expr *expr,
- 	if (tcph)
- 		flow_offload_ct_tcp(ct);
- 
-+	/* Whatever classified this packet before it reached the flowtable also
-+	 * describes every packet the hardware will forward in its place, so
-+	 * carry it into the offload rather than losing it with the software
-+	 * path.
-+	 */
-+	flow->priority = pkt->skb->priority;
-+
- 	__set_bit(NF_FLOW_HW_BIDIRECTIONAL, &flow->flags);
- 	ret = flow_offload_add(flowtable, flow);
- 	if (ret < 0)
+> ---
+> The consumer of the emitted action is a DSA driver for the IPQ8074 PPE,
+> maintained in OpenWrt; measured there, "meta priority set" ahead of
+> "flow add" places offloaded flows in the port's hardware priority
+> queues. The mtk and airoha hunks are compile-tested only. The new field
+> grows struct flow_offload by eight bytes on 64-bit; the entry allocates
+> from its own kmem_cache, so no allocation-class change.
+>=20
+>  drivers/net/ethernet/airoha/airoha_ppe.c        |  1 +
+>  drivers/net/ethernet/mediatek/mtk_ppe_offload.c |  1 +
+>  include/net/netfilter/nf_flow_table.h           |  1 +
+>  net/netfilter/nf_flow_table_offload.c           | 11 +++++++++++
+>  net/netfilter/nft_flow_offload.c                |  7 +++++++
+>  5 files changed, 21 insertions(+)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ether=
+net/airoha/airoha_ppe.c
+> index 92611802801e..2afce76ad131 100644
+> --- a/drivers/net/ethernet/airoha/airoha_ppe.c
+> +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+> @@ -1161,6 +1161,7 @@ static int airoha_ppe_flow_offload_replace(struct a=
+iroha_eth *eth,
+>  		case FLOW_ACTION_REDIRECT:
+>  			odev =3D act->dev;
+>  			break;
+> +		case FLOW_ACTION_PRIORITY:
+>  		case FLOW_ACTION_CSUM:
+>  			break;
+>  		case FLOW_ACTION_VLAN_PUSH:
+> diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/ne=
+t/ethernet/mediatek/mtk_ppe_offload.c
+> index 99b28aaa7cc4..4ee99e8e4a34 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+> @@ -378,6 +378,7 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct =
+flow_cls_offload *f,
+>  		case FLOW_ACTION_REDIRECT:
+>  			odev =3D act->dev;
+>  			break;
+> +		case FLOW_ACTION_PRIORITY:
+>  		case FLOW_ACTION_CSUM:
+>  			break;
+>  		case FLOW_ACTION_VLAN_PUSH:
+> diff --git a/include/net/netfilter/nf_flow_table.h b/include/net/netfilte=
+r/nf_flow_table.h
+> index f2e2771f188f..23218c8cbc3d 100644
+> --- a/include/net/netfilter/nf_flow_table.h
+> +++ b/include/net/netfilter/nf_flow_table.h
+> @@ -202,6 +202,7 @@ struct flow_offload {
+>  	unsigned long				flags;
+>  	u16					type;
+>  	u32					timeout;
+> +	u32					priority;
+>  	struct rcu_head				rcu_head;
+>  };
+> =20
+> diff --git a/net/netfilter/nf_flow_table_offload.c b/net/netfilter/nf_flo=
+w_table_offload.c
+> index 801a3dd9ceea..caaadffc2563 100644
+> --- a/net/netfilter/nf_flow_table_offload.c
+> +++ b/net/netfilter/nf_flow_table_offload.c
+> @@ -696,6 +696,17 @@ nf_flow_rule_route_common(struct net *net, const str=
+uct flow_offload *flow,
+>  	    flow_offload_eth_dst(net, flow, dir, flow_rule) < 0)
+>  		return -1;
+> =20
+> +	if (flow->priority) {
+> +		struct flow_action_entry *entry;
+> +
+> +		entry =3D flow_action_entry_next(flow_rule);
+> +		if (!entry)
+> +			return -1;
+> +
+> +		entry->id =3D FLOW_ACTION_PRIORITY;
+> +		entry->priority =3D flow->priority;
+> +	}
+> +
+>  	tuple =3D &flow->tuplehash[dir].tuple;
+> =20
+>  	for (i =3D 0; i < tuple->encap_num; i++) {
+> diff --git a/net/netfilter/nft_flow_offload.c b/net/netfilter/nft_flow_of=
+fload.c
+> index 32b4281038dd..dd3ac2b9c963 100644
+> --- a/net/netfilter/nft_flow_offload.c
+> +++ b/net/netfilter/nft_flow_offload.c
+> @@ -117,6 +117,13 @@ static void nft_flow_offload_eval(const struct nft_e=
+xpr *expr,
+>  	if (tcph)
+>  		flow_offload_ct_tcp(ct);
+> =20
+> +	/* Whatever classified this packet before it reached the flowtable also
+> +	 * describes every packet the hardware will forward in its place, so
+> +	 * carry it into the offload rather than losing it with the software
+> +	 * path.
+> +	 */
+> +	flow->priority =3D pkt->skb->priority;
+> +
+>  	__set_bit(NF_FLOW_HW_BIDIRECTIONAL, &flow->flags);
+>  	ret =3D flow_offload_add(flowtable, flow);
+>  	if (ret < 0)
+>=20
+> base-commit: 91ec2035134982b98fab0609a9fd8480e8217dc1
+> --=20
+> 2.53.0
+>=20
 
-base-commit: 91ec2035134982b98fab0609a9fd8480e8217dc1
--- 
-2.53.0
+--/qSlxrVubm3pHBHu
+Content-Type: application/pgp-signature; name=signature.asc
 
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCapaixwAKCRA6cBh0uS2t
+rO6BAQDATMMj9psNMDyU5heE/YH01LAOWYjr6ZhqoY+od26axgEAmapqfjkDrUmq
+l70nCQ9+MTNflnFu+hLQGuQ4HGwL3AI=
+=wTb6
+-----END PGP SIGNATURE-----
+
+--/qSlxrVubm3pHBHu--
 
