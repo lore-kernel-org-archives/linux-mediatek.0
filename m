@@ -4,102 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFADCC624D6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2026 19:51:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40710C61DD6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2026 20:31:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xrxj50UPOiAaVvLDQBKaDhxwCp4EpiwnDcNCbB25YKw=; b=4wpkXQY2nCTNzslNLqp9FT/U+v
-	fOM10jFOzQn/d0Qa70jd4XdP3rvLQ1pvzpToiA8YcCGmrAqf2yyS3PYQdpzYogcgIuZjXHCt5Miy0
-	qZE/TH6i+xCK9MI2XNqk+HAZRVs68RjDHN5LhIpBvWegP4Ds0oX8+LlilWKF56BkHb0xga9g6ypb/
-	xlkOGDhlHvovFHlkZFfpfSwcLv6rWukBGOzAmKukeXAdobj5swz1+AMFYDlcsE8wIK1xsvrlH030g
-	ytMcC6Es7pd8l2QdDCxGDSAReH2V0zqem46tRs1OD/3HexcbIVQIqEP45PKIS9H/Y6MgJ7erKRHj9
-	XiDYh7aQ==;
+	bh=Pf6D2QdPe3vyn6eNxdFTAjUb0lCC1yH/tOKj9y52YZk=; b=dsvAnvIYIwaa9Pu/69SwX8m1z2
+	bUx4MckcmiQ+Q3E8rrUwh0jwV9egFXJSJav6pLT9CYe5De4hoFTQaxQGCwpfRkKj5SbcJ8T+jCnqW
+	OiDFYOztOKEkk3dK6E3pyodZLlk/GzCvSvGyT/ppHm5UVEkgCKHu4kR7rAUcrQjpJEBqN0YOFfJGr
+	wIulgYJPMkxMHMTAAULy2icTYRuAB+lpgP1k0vv4MlLDNaMieAuOqfDn1xwsJnHSlspgqKvga3UXZ
+	UYb9T8yrQPG1U7frFcyt+tloXbqtksQj0xbFDcqU7P60OdBu3KaMH7/mq/xfGIDGTxhfWYm82o+m/
+	LzjliTww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1UVx-0000000DG32-1shh;
-	Tue, 01 Sep 2026 19:51:25 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1x1V8M-0000000DKcY-2T6I;
+	Tue, 01 Sep 2026 20:31:06 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1UVu-0000000DG0t-1jBy
-	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Sep 2026 19:51:24 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-495590dde14so2132405e9.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 01 Sep 2026 12:51:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=lex.la; s=google; t=1788292280; x=1788897080; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=Xrxj50UPOiAaVvLDQBKaDhxwCp4EpiwnDcNCbB25YKw=;
-        b=jw5IHllMu9ItFbhbWLZ7zuiytuyhs63OrKlmkwwXnUYXZF9wWbsb0MQu7pGEE9Dt5Z
-         4ymRejP4rjqtJ0itQ8HbBhDDb+G7qnwGtRf01HYtM/k8CDfn85KwTA2ohDhDf6ykycq1
-         KkYzY/hzGCqVH42fXI+kpCaFtaFi6zdQ7DbpFb41Q6IPzIakTKteSK8pXZNsb1ddDdBI
-         tk/jchdogYuwdmwmrjfqdzL4yjKXzj9lCehUP8KAZWsKk1/7XxGts+V65d6RoC+ugicr
-         HkliRnyoVljuwTTHxO68c/yOpFJ3Ys8iE3k4Tv2iyeZWo+uh/BEB6YH+130pjugaPciJ
-         rTiQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788292280; x=1788897080;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=Xrxj50UPOiAaVvLDQBKaDhxwCp4EpiwnDcNCbB25YKw=;
-        b=QO9CoLoxRxXErxb95cot208KlwSySy5W2Fn7kKJkf+OuEglct/0HnD0v4TWKbdtS0q
-         U3vL4t0PQbx8lJVPeEzNrovFoPr71myH7CwCRBk5pmsTh7Yi2M1dl/Xu+AUF36fYLget
-         rfHRGLT1bjCdguBO+IG0pDd7iWe1+q7gphIrxDrezBAZRCTlhZMME2Ua8Tw4mYGwbvv0
-         fWamsWx/o/mpj/3OJ/kLlqLw1dB/NxeSr/Jrla1JsmXrLWsXZzgD9Pfk8yZIXUOfG/hY
-         jW+ioz2cqstURbyR/GY3/pNRSOmieJGaU5HxK9w44iMXlVzbfXWohUtDnv5CHZ6fC77k
-         oUDQ==
-X-Forwarded-Encrypted: i=1; AHgh+RrM+BwAKUs+9HAMpDBZE9J22AEYdxrJBzjjzv1r0NWfo8e1vWD+o4HyvyCpom2GJRl0erYNy639G/ci1W1xJQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++me63iAXN6gNghkIiJcpjocMDtcI02IoB+GxDho15GHGkPJytX0
-	9XdNV09mRx41UMqRUiDtKwRKj4Q/kHt083w3NAS5xcMjd/Fy2ky80ONaun4TLfZJrgE=
-X-Gm-Gg: AR+sD10ff9XyqZhwN6W3btv7pgtiDjuhCI7Eur5VGEUsq4iJ9NTNI29wECWj2QnAvpr
-	AeGjxy9u3H0aMwcWg730BP0GsvauP5ZsYTiO34NRepRaLt6SLwpK9Jxwfg4yIFvAjOid4HehSpf
-	WAAD6HWySGxe8tHh7jD72On1Yh1TB7TifvbGboIUGfdfNmhY63ih0LbPHeLqsGRvRqtDEU4Qtsj
-	MELDnysYP5yXGoPw9S35RVnrVoLB3V8uPwu0tqIaNWTEg9tPJD5iJ2x5BYxTHiOOodH0ndyhtpv
-	zZowiPAjmzNSuncXBuxvuXlid8S3XQ3AentyyGa/3exSS4Pt1h5qUc5ae32PSCgQQxgE63bfsNS
-	j9FXzhJXhTsgYZCXjMWw98rttkBmU5rR45aYLeKKm6rXm4vYZ58AbhIw308k23xarFfu72KnLvN
-	+Dg2EQTsvOfcyaZWwbLzbezB7ij59YYX35xKKAhzQ=
-X-Received: by 2002:a05:600c:4eca:b0:49c:e1f1:3dd5 with SMTP id 5b1f17b1804b1-49ce5816892mr62765e9.4.1788292280497;
-        Tue, 01 Sep 2026 12:51:20 -0700 (PDT)
-Received: from remote-01 ([84.17.55.226])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49cdce3e04csm82484315e9.10.2026.09.01.12.51.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Sep 2026 12:51:20 -0700 (PDT)
-From: Aleksei Sviridkin <f@lex.la>
-To: Paolo Abeni <pabeni@redhat.com>
-Cc: "Chester A . Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	netdev@vger.kernel.org,
-	Russell King <linux@armlinux.org.uk>,
-	Qingfang Deng <dqfext@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net v3 1/2] net: dsa: mt7530: populate lpi_interfaces to fix EEE support
-Date: Tue,  1 Sep 2026 19:51:18 +0000
-Message-ID: <20260901195118.37238-1-f@lex.la>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <d0e8bd80-1798-4840-b388-05206bb72fc6@redhat.com>
-References: <20260827211652.63504-1-f@lex.la> <20260827211652.63504-2-f@lex.la> <d0e8bd80-1798-4840-b388-05206bb72fc6@redhat.com>
+	id 1x1V8K-0000000DKcD-47oM;
+	Tue, 01 Sep 2026 20:31:05 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 05C2A6022E;
+	Tue,  1 Sep 2026 20:31:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AF3B01F000E9;
+	Tue,  1 Sep 2026 20:31:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788294663;
+	bh=Pf6D2QdPe3vyn6eNxdFTAjUb0lCC1yH/tOKj9y52YZk=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=E1QnKl6m5uFvWmenRHuUEL3giM1o2ezbQZRPn9I0OGj1TZL9B1rLbNLQVbXqrwb+3
+	 Z6zK+RMHQVkHbBw+VnKaAhuobVxNgCmEFJ2/KJTuXVZtZoL76lGLRK4xVJ6ZUw+Rnb
+	 6fSUvFFfHuF8IRZ1BJ0xhnwAvrtzja/3Ky/kSkFgtVtBVPAvkEB7qCx5C0A0oSN+A3
+	 I+9hFTaZ/nTXvzy1WalZHXGct3+NxT7LLTHIIhv0f/QpCLyAt7LkotCDWvqHtGw3o8
+	 5doFEY6D50uUPSQ1ocJzLJkK+YudWksyEGqdEeKXXLoMeAHU8sQFd9a6R+zE5aWWRc
+	 YunmKA0rwim3Q==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 5696539253F2;
+	Tue,  1 Sep 2026 20:30:07 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_125122_495552_6CD95148 
-X-CRM114-Status: UNSURE (   9.14  )
-X-CRM114-Notice: Please train this message.
+Subject: Re: [PATCH v3] Bluetooth: Properly disable remote wakeup for
+ MT7922/MT7925 on Ryzen platform
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <178829460590.1836726.11844830813053776119.git-patchwork-notify@kernel.org>
+Date: Tue, 01 Sep 2026 20:30:05 +0000
+References: <20260902-btmtk-ryzen-remote-wakeup-v3-1-8a733d0edd7c@rong.moe>
+In-Reply-To: <20260902-btmtk-ryzen-remote-wakeup-v3-1-8a733d0edd7c@rong.moe>
+To: Rong Zhang <i@rong.moe>
+Cc: marcel@holtmann.org, luiz.dentz@gmail.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, luiz.von.dentz@intel.com,
+ Chris.Lu@mediatek.com, Will-CY.Lee@mediatek.com, ss.wu@mediatek.com,
+ linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ rafael@rcpassos.me
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,17 +75,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Clashiko complains about the above:
->
-> https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260827211652.63504-1-f%40lex.la
->
-> @Andrew: WDYT?
+Hello:
 
-The raw LPI_THRESH plumbing predates the phylink conversion: before
-9cf21773f535, mt753x_set_mac_eee() wrote tx_lpi_timer straight into the
-field with the same 0xFFF bound, so what ethtool showed and set on these
-ports was always the register unit. This patch brings that path back and
-does not change the unit. Settling it needs the MT7531 manual, and the
-EINVAL-vs-clamp mismatch came with the conversion too. Both look like a
-follow-up once someone can confirm the unit.
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+
+On Wed, 02 Sep 2026 02:19:18 +0800 you wrote:
+> It is reported that a remote wakeup could cause MT7922/MT7925's btusb
+> interface completely unresponsive. Resetting the xHCI root hub doesn't
+> help at all, and recovering from such a state needs a power cycle.
+> 
+> All reports seen to be relevant to Ryzen-based laptops. These NICs are
+> usually used as OEM components thanks to some sort of reference designs.
+> Their popularity on other platforms is unclear. While there is still a
+> chance that the quirk may exist on other platforms, be cautious and only
+> apply the quirk to direct children of Ryzen platforms's root hubs for
+> the time being. In most cases the root hub is on the SoC or PCH, which
+> needs the quirk. Unfortunately, this can't distinguish root hubs on PCIe
+> add-in cards. Such roughness should be acceptable, as PCIe USB
+> controller add-in cards are less commonly used nowadays. On the other
+> hand, applying the quirk doesn't hurt any functionalities either, as the
+> device can still be used as a wakeup source if desired. Theoretically,
+> we could retrieve the root hub's PCI vendor ID with some hierarchy
+> magic, but that's too intrusive...
+> 
+> [...]
+
+Here is the summary with links:
+  - [v3] Bluetooth: Properly disable remote wakeup for MT7922/MT7925 on Ryzen platform
+    https://git.kernel.org/bluetooth/bluetooth-next/c/512bf4484766
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
