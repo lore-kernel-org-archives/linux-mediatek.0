@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC36AC624D3
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFADCC624D6
 	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2026 19:51:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,63 +12,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BwLey5dTW4uM292A2Vd7bSxkboLRHGDZjGIzXx+42J8=; b=2MwkVt1EiiA3ynTTUz9Oij5xky
-	fop1ajxCA4R0HutSkR2rDG6DrjVeV8xcKGNB9qommoX5hXhv7WuXyVH6rCUKqa8NaRCuZaUOpq0u9
-	eQ1rI3ijO3nRo1SLde37jAuOZ71iJtaKRctLFFpY//oSpIXT/qLi2QpB/NdsMRmfatq/rom6Qs2Qx
-	CLhSsntvFLVMAgSJHul2iBb3UD72sXtDeTA2gy0/1gUmy1Y4NxqmqROLX+zBMzeznoCXffh6knkeS
-	hJKdaB9qz0vI9c3WyQ4uxzWZr3Qdt1hlpyPvf+MpUbWM+C9ruUhgDgRVHQlGrqAMqo0SM7PXWn0EI
-	xAYi5f5g==;
+	bh=Xrxj50UPOiAaVvLDQBKaDhxwCp4EpiwnDcNCbB25YKw=; b=4wpkXQY2nCTNzslNLqp9FT/U+v
+	fOM10jFOzQn/d0Qa70jd4XdP3rvLQ1pvzpToiA8YcCGmrAqf2yyS3PYQdpzYogcgIuZjXHCt5Miy0
+	qZE/TH6i+xCK9MI2XNqk+HAZRVs68RjDHN5LhIpBvWegP4Ds0oX8+LlilWKF56BkHb0xga9g6ypb/
+	xlkOGDhlHvovFHlkZFfpfSwcLv6rWukBGOzAmKukeXAdobj5swz1+AMFYDlcsE8wIK1xsvrlH030g
+	ytMcC6Es7pd8l2QdDCxGDSAReH2V0zqem46tRs1OD/3HexcbIVQIqEP45PKIS9H/Y6MgJ7erKRHj9
+	XiDYh7aQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1UVx-0000000DG2d-0oH4;
+	id 1x1UVx-0000000DG32-1shh;
 	Tue, 01 Sep 2026 19:51:25 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1UVt-0000000DG0l-3WY8
+	id 1x1UVu-0000000DG0t-1jBy
 	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Sep 2026 19:51:23 +0000
-Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-482fc3327fdso216122f8f.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 01 Sep 2026 12:51:19 -0700 (PDT)
+	Tue, 01 Sep 2026 19:51:24 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-495590dde14so2132405e9.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 01 Sep 2026 12:51:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=lex.la; s=google; t=1788292278; x=1788897078; darn=lists.infradead.org;
+        d=lex.la; s=google; t=1788292280; x=1788897080; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=BwLey5dTW4uM292A2Vd7bSxkboLRHGDZjGIzXx+42J8=;
-        b=HLoPqXAoAYqm/B40st+VRjBzU0pfYwjKCqRAZmxbZ/ovZ2tZiq+TXXnYMy+6Hy/L1I
-         nH+uWpf2OSkCuZ0cQ1cLxaGsnaIchSXjbwRWvxuQ5A+yTOzFclE0zdRopzi27xFGHxmG
-         PvHxMU3W36wSwDStJljBCKAxjZxeMkffmVcAQsh16WBUmLkaeFCq6tX6/YLQ5s0A5zS+
-         ZoVz9vQEiPMteIvysNPFBr3sHcj9qkyhDcIJuQs8YcqumRd16FPEf4qrV/ZeF05dbN37
-         Ye1LiPhl8tqLR7z+QUassfUVOr1rY106GOnrkTgKA3HUXyn5IjLrq87CAvQZsE6eRR4i
-         FY0Q==
+        bh=Xrxj50UPOiAaVvLDQBKaDhxwCp4EpiwnDcNCbB25YKw=;
+        b=jw5IHllMu9ItFbhbWLZ7zuiytuyhs63OrKlmkwwXnUYXZF9wWbsb0MQu7pGEE9Dt5Z
+         4ymRejP4rjqtJ0itQ8HbBhDDb+G7qnwGtRf01HYtM/k8CDfn85KwTA2ohDhDf6ykycq1
+         KkYzY/hzGCqVH42fXI+kpCaFtaFi6zdQ7DbpFb41Q6IPzIakTKteSK8pXZNsb1ddDdBI
+         tk/jchdogYuwdmwmrjfqdzL4yjKXzj9lCehUP8KAZWsKk1/7XxGts+V65d6RoC+ugicr
+         HkliRnyoVljuwTTHxO68c/yOpFJ3Ys8iE3k4Tv2iyeZWo+uh/BEB6YH+130pjugaPciJ
+         rTiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788292278; x=1788897078;
+        d=1e100.net; s=20251104; t=1788292280; x=1788897080;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=BwLey5dTW4uM292A2Vd7bSxkboLRHGDZjGIzXx+42J8=;
-        b=ERrRhV9XF+9CbhiQjDAsAKl+8rHuGn6Jz5uBORUIfQOjkoKm6t+DXQ63j2eUKdT98d
-         BQ0nc1TLL3UFm6KrjP3JS6mq2/C/IsO1r3nC/pM9k3wfOTq+wyqbvXdsmq4YWCG9AAPa
-         csOWk/xhFMpR07xAYhyzWySpbjKhJLJSjjFRYGEJB89GxRNE3UDGxM7yvXVn//0vLaeD
-         njzsqQyqylbsd/AVo0ob9AM9QTeX7lgP+xLNlVxMiHghUykEwXchaPWEM+iUpyqccOrL
-         Frp9KfKb+ryb2r8A1kjouHWPLQkZz0AzNiVrDfAlntaxK8M4Jqw8p0jS/IrSMblSRjHe
-         rK8A==
-X-Forwarded-Encrypted: i=1; AKwUvByojIQ0Vo18cmcY1eOUoYUdMpS4mKWWpNojIm3U6NKON6xO5ZiWWrvBnx99VYnJ+VKtay1egDwNmmg3JCRkeQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++mA0ml1TkyAGQ0iCcHXzbad4l0/boGUSFniEjQfSF4SPIUzQGfC
-	kHnRFsIa4ZgTGMEi/peE4EX3mOc/tW4RtzwDK2cHnSXw4K9bFYK4UIuW95mKrOmGYuI=
-X-Gm-Gg: AYBFou3Yajmrtkn/tczp//vSnsIOBO1VmQu2PoHRO9ERUKhuFWa+L1iUVBtv9VA3rI1
-	A4JCQGIu1OQxhxhN7OWr/zZZVGIopDkJ3plbhr2q2IpPjmaZwAIf16D3IJGGy2uQtaraWut6tF9
-	pnUtuRhB0hl7+YpyixazyWqbRaRrrcF69sKp9uJeiq+S13zmkmXreF2tuQbgu/WRYArr7ehZv9+
-	VQ7V61Z+VmAOjvalhODQfUsyHUjPMcaQrktjfqfYYjXIT+59d6uYyp/CgYM49WCXLSZfsQtR2et
-	JVXglWSbT4nTL6UCrXRndRoliwXFlCdr/uHV/xVjKJDu7yFfJfpvmALewpmbFwaSPO+IlFX0RGj
-	Zi8oXSYCtgiiwGsJRr8v7J3QapPhKGe7+XFTiepXs3jb0nWfjbyFOSIyNva3hRuJq3EonrMB+k9
-	bhOXzyCnPu3mTGCrW+3XLFBdB4sD+0WkT1IULcGnYo9c0h9y0Izg==
-X-Received: by 2002:a05:6000:648:b0:484:4189:6b09 with SMTP id ffacd0b85a97d-48441896b75mr15334529f8f.17.1788292278109;
-        Tue, 01 Sep 2026 12:51:18 -0700 (PDT)
+        bh=Xrxj50UPOiAaVvLDQBKaDhxwCp4EpiwnDcNCbB25YKw=;
+        b=QO9CoLoxRxXErxb95cot208KlwSySy5W2Fn7kKJkf+OuEglct/0HnD0v4TWKbdtS0q
+         U3vL4t0PQbx8lJVPeEzNrovFoPr71myH7CwCRBk5pmsTh7Yi2M1dl/Xu+AUF36fYLget
+         rfHRGLT1bjCdguBO+IG0pDd7iWe1+q7gphIrxDrezBAZRCTlhZMME2Ua8Tw4mYGwbvv0
+         fWamsWx/o/mpj/3OJ/kLlqLw1dB/NxeSr/Jrla1JsmXrLWsXZzgD9Pfk8yZIXUOfG/hY
+         jW+ioz2cqstURbyR/GY3/pNRSOmieJGaU5HxK9w44iMXlVzbfXWohUtDnv5CHZ6fC77k
+         oUDQ==
+X-Forwarded-Encrypted: i=1; AHgh+RrM+BwAKUs+9HAMpDBZE9J22AEYdxrJBzjjzv1r0NWfo8e1vWD+o4HyvyCpom2GJRl0erYNy639G/ci1W1xJQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++me63iAXN6gNghkIiJcpjocMDtcI02IoB+GxDho15GHGkPJytX0
+	9XdNV09mRx41UMqRUiDtKwRKj4Q/kHt083w3NAS5xcMjd/Fy2ky80ONaun4TLfZJrgE=
+X-Gm-Gg: AR+sD10ff9XyqZhwN6W3btv7pgtiDjuhCI7Eur5VGEUsq4iJ9NTNI29wECWj2QnAvpr
+	AeGjxy9u3H0aMwcWg730BP0GsvauP5ZsYTiO34NRepRaLt6SLwpK9Jxwfg4yIFvAjOid4HehSpf
+	WAAD6HWySGxe8tHh7jD72On1Yh1TB7TifvbGboIUGfdfNmhY63ih0LbPHeLqsGRvRqtDEU4Qtsj
+	MELDnysYP5yXGoPw9S35RVnrVoLB3V8uPwu0tqIaNWTEg9tPJD5iJ2x5BYxTHiOOodH0ndyhtpv
+	zZowiPAjmzNSuncXBuxvuXlid8S3XQ3AentyyGa/3exSS4Pt1h5qUc5ae32PSCgQQxgE63bfsNS
+	j9FXzhJXhTsgYZCXjMWw98rttkBmU5rR45aYLeKKm6rXm4vYZ58AbhIw308k23xarFfu72KnLvN
+	+Dg2EQTsvOfcyaZWwbLzbezB7ij59YYX35xKKAhzQ=
+X-Received: by 2002:a05:600c:4eca:b0:49c:e1f1:3dd5 with SMTP id 5b1f17b1804b1-49ce5816892mr62765e9.4.1788292280497;
+        Tue, 01 Sep 2026 12:51:20 -0700 (PDT)
 Received: from remote-01 ([84.17.55.226])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-484492ce236sm1316681f8f.35.2026.09.01.12.51.16
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49cdce3e04csm82484315e9.10.2026.09.01.12.51.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Sep 2026 12:51:17 -0700 (PDT)
+        Tue, 01 Sep 2026 12:51:20 -0700 (PDT)
 From: Aleksei Sviridkin <f@lex.la>
 To: Paolo Abeni <pabeni@redhat.com>
 Cc: "Chester A . Unal" <chester.a.unal@arinc9.com>,
@@ -88,17 +88,17 @@ Cc: "Chester A . Unal" <chester.a.unal@arinc9.com>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net v3 2/2] net: ethernet: mtk_eth_soc: populate lpi_interfaces to fix EEE support
-Date: Tue,  1 Sep 2026 19:51:12 +0000
-Message-ID: <20260901195112.37184-1-f@lex.la>
+Subject: Re: [PATCH net v3 1/2] net: dsa: mt7530: populate lpi_interfaces to fix EEE support
+Date: Tue,  1 Sep 2026 19:51:18 +0000
+Message-ID: <20260901195118.37238-1-f@lex.la>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <68c51086-eb10-4074-8495-b31c8e8a21e0@redhat.com>
-References: <20260827211652.63504-1-f@lex.la> <20260827211652.63504-3-f@lex.la> <68c51086-eb10-4074-8495-b31c8e8a21e0@redhat.com>
+In-Reply-To: <d0e8bd80-1798-4840-b388-05206bb72fc6@redhat.com>
+References: <20260827211652.63504-1-f@lex.la> <20260827211652.63504-2-f@lex.la> <d0e8bd80-1798-4840-b388-05206bb72fc6@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_125121_929093_41DAD03D 
-X-CRM114-Status: UNSURE (   8.76  )
+X-CRM114-CacheID: sfid-20260901_125122_495552_6CD95148 
+X-CRM114-Status: UNSURE (   9.14  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -114,17 +114,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> For a 'net' patch, I think it makes more sense to restrict the lpi
-> interface to the chip revisions with support confirmed.
+> Clashiko complains about the above:
+>
+> https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260827211652.63504-1-f%40lex.la
+>
+> @Andrew: WDYT?
 
-v4 will gate lpi_interfaces on a per-SoC capability bit, so only chips
-with a confirmed LPI exit get it and the rest keep the current
-behaviour.
-
-MT7981 is confirmed on my bench: with tx-lpi armed the PHY's MMD 3.1
-shows Tx LPI asserted by the MAC, and thousands of LPI exits at 1G and
-100M against a BCM5720 lost nothing. Details in the v4 cover.
-
-Qingfang, which SoC did you validate the wake-up values on when adding
-EEE? That would be the second entry.
+The raw LPI_THRESH plumbing predates the phylink conversion: before
+9cf21773f535, mt753x_set_mac_eee() wrote tx_lpi_timer straight into the
+field with the same 0xFFF bound, so what ethtool showed and set on these
+ports was always the register unit. This patch brings that path back and
+does not change the unit. Settling it needs the MT7531 manual, and the
+EINVAL-vs-clamp mismatch came with the conversion too. Both look like a
+follow-up once someone can confirm the unit.
 
