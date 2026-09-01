@@ -4,71 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 766D8C61DD3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 Aug 2026 22:51:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A664C61DFD
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2026 01:19:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LE1tRsuf20iiZ+MwZN9mRaew+1jtEq4b8AWQ4BS4V60=; b=iMEkw+1NNNI+HtkY4AY6UH2rPp
-	PY7tXI01oS3njSdoNazsXHUXxspmUCZGsYoCcNSsLYDJ2OFnoQTZsV2EJIEEYu67nvrXEHcPdhw5W
-	z8dWNc7DQg/d6KJ1G1agXZ0id4KObnuteOSq9/PkXuYIiVZ8dL/Qgr/0G0wcDbtuSITSfc4R5LG9t
-	BM8ibMtTEdPotYfwsTQqNmCMc9vb+JkwFKw7tgDuvFxufME10dKlQcBmKpyGOnzUDndwCAC+LpZKI
-	YULiPSOcvyGU5I5RtMzhkdDU37yhGgXP1HZlFTsNHZfivWPRlUHvyh25FAMbfl8C+9OhILsh9C3od
-	616+cq8w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UIVsOugu84Ado7CneCytr9bUGlnN6yS3G08cw67K9fM=; b=YT7/6Lj0MJa0H4phE1GYpJxwaz
+	DMzoGqab2298ka+HYOh14UjcM5PCDo2TeoFV67pL4AY482iEHT9bajF76G/e1qg4oEuzt1cAnkIWl
+	1piaJTZ7eMWw9e2Zg3TNLLGrJZkv32B5vkcgO+I5vo2cDmGzdR0zYuWgxb7iUtkBXA7nlqAAnytEw
+	ASDNSpLjAM6mZ5NC7zwDHeuPrr3BZIhwjk5fJLNKML7F/hXr/q5AVoEJuVZFaM6fgM0aaU8S0tQAb
+	9HIOfahKsbfgMQZcB97tpnCUnrmWb19eHSRBjEoimuR1MzPS2G9hv5+vYp5iNX4sVdsGRX/NYm/cE
+	inqb4fEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1AqI-0000000AcEd-3EYH;
-	Mon, 31 Aug 2026 22:51:06 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1x1D9N-0000000Ambk-1H8h;
+	Tue, 01 Sep 2026 01:18:57 +0000
+Received: from mgamail.intel.com ([192.198.163.13])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1AqH-0000000AcEX-2SUA
+	id 1x1D9K-0000000Amay-0eYx
 	for linux-mediatek@lists.infradead.org;
-	Mon, 31 Aug 2026 22:51:05 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1072940345;
-	Mon, 31 Aug 2026 22:51:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B3671F000E9;
-	Mon, 31 Aug 2026 22:51:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788216664;
-	bh=LE1tRsuf20iiZ+MwZN9mRaew+1jtEq4b8AWQ4BS4V60=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Q9LcrWoYBDYCJOi2xN4bc0ej3hW9nHMNJ1hmqXl8LSBe+rBvVKDxMVK9NbTHQI6e+
-	 PdjRGO6+WOOcCluEEw7S8wti7AEd24tIbKoQxe1Rdf+FN2BsfOeegjWtuwYbYDtbwv
-	 52V83ZW6uwSEI4hWfsVeFOmf69PPjPH2AVlwiSLo7W29/aS1+4kfz1LXHZEMUBQBYM
-	 tDbuu4BKd4pLwhm6XfBK7kCJYwIEC9U7oYeypF63QZNT1hfuhZsEI0oGbPf6u+Nis4
-	 O0rviqbr+qrx+QdL7hQ+rNxz9Z1ioP/lZnse6vRoPKYvmvk25ZofySk0cMvuDab1yP
-	 FqUEnGJQ4OJiA==
-Date: Mon, 31 Aug 2026 23:51:00 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Ahmed Naseef <naseefkm@gmail.com>
-Cc: linux-gpio@vger.kernel.org,
-	Benjamin Larsson <benjamin.larsson@genexis.eu>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Linus Walleij <linusw@kernel.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
-	Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 2/3] dt-bindings: pinctrl: Add EcoNet EN7528 pin
- controller
-Message-ID: <20260831-imply-unreeling-a6b527b7fa8e@spud>
-References: <cover.1787931313.git.naseefkm@gmail.com>
- <c20005a81b4069f3ff68311629ff7d4678fa92dd.1787931313.git.naseefkm@gmail.com>
- <20260828-chaos-recovery-c99d547ee1b6@spud>
- <apLGtCRjCP1j0u5i@DESKTOP-TIT0J8O.localdomain>
- <20260831-sibling-isolation-3849a5e4845f@spud>
- <apW7r6IdVx9Cmk4G@DESKTOP-TIT0J8O.localdomain>
+	Tue, 01 Sep 2026 01:18:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1788225534; x=1819761534;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=p8nIpbpyiaG388Be9/KJrxTpGbDEHmqCr+KR9sCE9vQ=;
+  b=boOWpUuMartGjwa38uZr1XiyVl/YEkY4GzuyA3TUFrYBzyzqMe7WMvKr
+   I7QFASUlC6Jz2KrWQVznS49sLhyyY2D4pMDsYDTFw4LIEIHTU4XaZldal
+   db1d0LSIVNVSouSdxv1n9VQD9XJMFGKEDZFwClCymxEesPetBGIeFN/Dn
+   ZceJfML/5826RkshmFeipK6ow7KGCuJtQU3Zs2QMD9siJbRvihTnVe0BG
+   juEXZEMdhqEID84hln9lzxW+F8FI2ukochYNSsLUeUg2kpO00vzGxvuan
+   VIbw1HDAuWG9e2yxh5Z2jNR4O1fGgPwW3J+ep3kmXFwim+UCJNLq2pUVS
+   w==;
+X-CSE-ConnectionGUID: ZJB8F37/QcqA8fq7/vfdOA==
+X-CSE-MsgGUID: Oq1deAUyR6Sl6pVLgxEyyA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11892"; a="91155355"
+X-IronPort-AV: E=Sophos;i="6.25,255,1779174000"; 
+   d="scan'208";a="91155355"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Aug 2026 18:18:53 -0700
+X-CSE-ConnectionGUID: mWznGrphRYmgSsFb1fdAAw==
+X-CSE-MsgGUID: pnbh2Y7YS82O+JvYACfT0A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.25,255,1779174000"; 
+   d="scan'208";a="267630766"
+Received: from junjie-desk-dev.bj.intel.com ([10.238.152.71])
+  by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Aug 2026 18:18:50 -0700
+From: Junjie Cao <junjie.cao@intel.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Laxman Acharya Padhya <acharyalaxman8848@gmail.com>,
+	JB Tsai <jb.tsai@mediatek.com>,
+	stable@vger.kernel.org,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] wifi: mt76: mt7921: skip CLC records the driver does not know
+Date: Tue,  1 Sep 2026 09:18:40 +0800
+Message-ID: <20260901011840.416787-1-junjie.cao@intel.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="YprlfHj1gkHCX4El"
-Content-Disposition: inline
-In-Reply-To: <apW7r6IdVx9Cmk4G@DESKTOP-TIT0J8O.localdomain>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260831_181854_236594_CBB07158 
+X-CRM114-Status: GOOD (  13.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,204 +90,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---YprlfHj1gkHCX4El
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+mt7921_load_clc() fails the whole firmware load when a CLC record
+carries an idx beyond phy->clc[].  Record types are added by firmware
+over time: MT7922 firmware 20260724 (linux-firmware 20260810) ships a
+record with idx 3, the slot commit 9b80bd9cab40 ("wifi: mt76: mt7921: add
+regulatory wiphy self manager support") assigns to MT792x_CLC_REGD.  A
+driver without that entry now gets -EINVAL from mt7921_run_firmware()
+and the device never registers.  Every stable branch the validation
+commit is backported to has a three-entry phy->clc[], so this firmware
+takes MT7922 Wi-Fi down there; before the validation the same record was
+written past phy->clc[] into chip_cap instead (UBSAN report in [1]).
 
-On Mon, Aug 31, 2026 at 09:36:47PM +0400, Ahmed Naseef wrote:
-> On Mon, Aug 31, 2026 at 05:57:59PM +0100, Conor Dooley wrote:
-> > On Sat, Aug 29, 2026 at 03:47:00PM +0400, Ahmed Naseef wrote:
-> > > On Fri, Aug 28, 2026 at 04:51:27PM +0100, Conor Dooley wrote:
-> > > > On Fri, Aug 28, 2026 at 07:35:14PM +0400, Ahmed Naseef wrote:
-> > > > > Add the binding for the pin controller found on the EcoNet EN7528=
- MIPS
-> > > > > SoC. It shares the IP with the Airoha pin controllers, but its IO=
-MUX and
-> > > > > pin configuration registers have a different layout, so it gets i=
-ts own
-> > > > > compatible.
-> > > > >=20
-> > > > > The CHIP SCU holding those registers is referenced by the airoha,=
-chip-scu
-> > > > > phandle.
-> > > > >=20
-> > > > > Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
-> > > > > ---
-> > > > >  .../pinctrl/econet,en7528-pinctrl.yaml        | 190 ++++++++++++=
-++++++
-> > > > >  1 file changed, 190 insertions(+)
-> > > > >  create mode 100644 Documentation/devicetree/bindings/pinctrl/eco=
-net,en7528-pinctrl.yaml
-> > > > >=20
-> > > > > diff --git a/Documentation/devicetree/bindings/pinctrl/econet,en7=
-528-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/econet,en7528-=
-pinctrl.yaml
-> > > > > new file mode 100644
-> > > > > index 000000000000..3ce1a5309d09
-> > > > > --- /dev/null
-> > > > > +++ b/Documentation/devicetree/bindings/pinctrl/econet,en7528-pin=
-ctrl.yaml
-> > > > > @@ -0,0 +1,190 @@
-> > > > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > > > > +%YAML 1.2
-> > > > > +---
-> > > > > +$id: http://devicetree.org/schemas/pinctrl/econet,en7528-pinctrl=
-=2Eyaml#
-> > > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > > > +
-> > > > > +title: EcoNet EN7528 Pin Controller
-> > > > > +
-> > > > > +maintainers:
-> > > > > +  - Lorenzo Bianconi <lorenzo@kernel.org>
-> > > > > +
-> > > > > +description:
-> > > > > +  The EcoNet EN7528 pin controller is used to control SoC pins. =
-It shares the
-> > > > > +  IP with the Airoha pin controllers, but its IOMUX and pin conf=
-iguration
-> > > > > +  registers have a different layout.
-> > > > > +
-> > > > > +properties:
-> > > > > +  compatible:
-> > > > > +    const: econet,en7528-pinctrl
-> > > > > +
-> > > > > +  airoha,chip-scu:
-> > > > > +    description: phandle to the chip SCU syscon
-> > > > > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > > > > +
-> > > > > +  interrupts:
-> > > > > +    maxItems: 1
-> > > > > +
-> > > > > +  gpio-controller: true
-> > > > > +
-> > > > > +  '#gpio-cells':
-> > > > > +    const: 2
-> > > > > +
-> > > > > +  gpio-ranges:
-> > > > > +    maxItems: 1
-> > > > > +
-> > > > > +  interrupt-controller: true
-> > > > > +
-> > > > > +  '#interrupt-cells':
-> > > > > +    const: 2
-> > > > > +
-> > > > > +patternProperties:
-> > > > > +  '-pins$':
-> > > > > +    type: object
-> > > > > +
-> > > > > +    patternProperties:
-> > > > > +      '^mux(-|$)':
-> > > > > +        type: object
-> > > > > +
-> > > > > +        description:
-> > > > > +          pinmux configuration nodes.
-> > > > > +
-> > > > > +        $ref: /schemas/pinctrl/pinmux-node.yaml
-> > > > > +
-> > > > > +        properties:
-> > > > > +          function:
-> > > > > +            description:
-> > > > > +              A string containing the name of the function to mu=
-x to the group.
-> > > > > +            enum: [gpio, jtag, pcie_reset, pcm, pcm_spi, phy1_le=
-d0,
-> > > > > +                   phy1_led1, phy2_led0, phy2_led1, phy3_led0, p=
-hy3_led1,
-> > > > > +                   phy4_led0, phy4_led1, pnand, pon, pwm, sipo, =
-spi, uart]
-> > > > > +
-> > > > > +          groups:
-> > > > > +            description:
-> > > > > +              An array of strings. Each string contains the name=
- of a group.
-> > > > > +            items:
-> > > > > +              enum: [pon, sipo, sipo_rclk, uart2, uart2_cts_rts,=
- uart3,
-> > > > > +                     ejtag, pcm1, pcm2, spi_quad, spi_cs1, pcm_s=
-pi,
-> > > > > +                     pcm_spi_int, pcm_spi_rst, pcm_spi_cs1, pcm_=
-spi_cs2,
-> > > > > +                     pcm_spi_cs3, pcm_spi_cs4, pcm_spi_cs5, pcm_=
-spi_cs6,
-> > > > > +                     pcm_spi_cs7, pnand, gpio0, gpio1, gpio2, gp=
-io3, gpio4,
-> > > > > +                     gpio5, gpio6, gpio7, gpio8, gpio9, gpio10, =
-gpio11,
-> > > > > +                     gpio12, gpio13, gpio14, gpio15, gpio16, gpi=
-o17,
-> > > > > +                     gpio18, gpio19, gpio20, gpio21, gpio22, gpi=
-o23,
-> > > > > +                     gpio24, gpio25, gpio26, gpio27, gpio28, gpi=
-o29,
-> > > > > +                     gpio30, gpio31, gpio32, gpio33, gpio34, gpi=
-o35,
-> > > > > +                     gpio36, gpio37, gpio38, gpio39, gpio40, gpi=
-o41,
-> > > > > +                     pcie_reset0, pcie_reset1]
-> > > > > +
-> > > > > +        required:
-> > > > > +          - function
-> > > > > +          - groups
-> > > > > +
-> > > > > +        additionalProperties: false
-> > > > > +
-> > > > > +      '^conf(-|$)':
-> > > >=20
-> > > > Why is this needed? Why can you not tell from the group which pins =
-the
-> > > > config applies to?
-> > >=20
-> > > Not for all of them: i2c_sda, i2c_scl, uart_txd and uart_rxd are in no
-> > > group at all.
-> >=20
-> > Why's that? Are they just fixed output pins?
->=20
-> Fixed-function :  the dedicated I2C and UART pads. The only registers
-> they have are bias and drive strength, there is no mux and no GPIO
-> mode.
->=20
-> >=20
-> > > The spi_cs0/clk/mosi/miso pads are only in pnand, which is
-> > > 17 pins wide, so no group names them individually either.
-> >=20
-> > That's easily resolved by breaking up pnand though.
-> >=20
->=20
-> Not as mux groups: pnand is a single register bit, so muxing a
-> sub-group would still switch all 17 pads while pinctrl only claims the
-> subset. As config aliases they would add nothing over pins.
->=20
-> > Devils advocate thing here might be to say that the dedicated
-> > configuration node should only be for the things that are fixed outputs,
-> > and the muxable ones should get their config from a combined
-> > pinmux/pincfg node. Personally I think that presents a nicer interface,
-> > where someone doesn't have to go figure out what pins are in the group
-> > they just assigned a function to to also set the config properties for
-> > it.
->=20
-> The driver would take that as-is (it uses the generic dt_node_to_map,
-> which accepts config properties next to function/groups). I kept the
-> split mux/conf shape to match the other four Airoha bindings on this
-> driver. If you prefer the combined form I would rather do it for the
-> whole family as a follow-up than have en7528 be the odd one out - but
-> can switch this one now if you want.
->=20
+Keep the length checks and skip unknown record types, as
+mt7925_load_clc() already does.
 
-Nah, leave it as-is. Read my reply to Benjamin.
-Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
-pw-bot: not-applicable
+[1] https://bugzilla.redhat.com/show_bug.cgi?id=2515420
 
---YprlfHj1gkHCX4El
-Content-Type: application/pgp-signature; name=signature.asc
+Fixes: 9417c5818a01 ("wifi: mt76: mt7921: validate CLC firmware records")
+Cc: stable@vger.kernel.org
+Signed-off-by: Junjie Cao <junjie.cao@intel.com>
+---
+Greg: 9417c5818a01 carries a 2022 Fixes: tag and will be picked for
+every stable series with a three-entry phy->clc[]; on its own it turns
+the current MT7922 firmware into a probe failure there. Please take the
+two together or hold the earlier one until this is in.
 
------BEGIN PGP SIGNATURE-----
+ drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCapYFVAAKCRB4tDGHoIJi
-0v3uAQDAIEepPcWZKqwJEspz/XLSLGqfZDW6Zu7tRMPuUszZzAEAvu+0lcpe0TEg
-Noio1LI66OwoFxlIvbtBmZDLsIx4Bg4=
-=GFJo
------END PGP SIGNATURE-----
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index a118a301564c..264f7dbdfa78 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -483,12 +483,15 @@ static int mt7921_load_clc(struct mt792x_dev *dev, const char *fw_name)
+ 
+ 		clc = (const struct mt7921_clc *)(clc_base + offset);
+ 		clc_len = le32_to_cpu(clc->len);
+-		if (clc_len < sizeof(*clc) || clc_len > len - offset ||
+-		    clc->idx >= ARRAY_SIZE(phy->clc)) {
++		if (clc_len < sizeof(*clc) || clc_len > len - offset) {
+ 			ret = -EINVAL;
+ 			goto out;
+ 		}
+ 
++		/* record type newer than this driver */
++		if (clc->idx >= ARRAY_SIZE(phy->clc))
++			continue;
++
+ 		/* do not init buf again if chip reset triggered */
+ 		if (phy->clc[clc->idx])
+ 			continue;
+-- 
+2.43.0
 
---YprlfHj1gkHCX4El--
 
