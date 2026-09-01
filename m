@@ -4,121 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A0E5C624C6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2026 07:22:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D31DC61DD3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2026 07:23:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jx+XoqcBBsA+m2qrM8HxfQHaaz8x8crvSJWq14ITrJ0=; b=GeVdlqFSlWVdB6PnXte9S74L5h
-	jGmsSKFKRMiHZXKWhN0OD2+g2w2ZcU2XSdJgHvUgC27wYoOkjb4nhG3rv9nZHLrpGOrJ16983soci
-	S63Q9p4N3Vcgtj19vP5Z70BqK/ODJyy6arJiLvChPj1Xz1vi5eGdWyQtd8G2IvhUvJ9+84zXuusc/
-	v2M2vrHWXlW+oBaO4Ktv/lTISTClKpeQ4cXtlgjQ9Bich0yYtD5L504wQHqv3DctwHdeBpBPnIjyx
-	aI8dLMjPHwqZVKTnv8AZCNi9ZIVimnksDF++m9opABalCzARKxpMu7KUxYXILc30qe7TeR91qbzYm
-	VuS4RkzA==;
+	bh=qCWCwhm5CYxFm5odxTdtkxLiQAyCBWHpnskP5L4+v2M=; b=lmqEeVGX1fiT2G+eFNHHHRArwr
+	b5nWQNfEulA1BQtBxSe3eIenQxNtB+6wlmM/bj8SL+jRtR3EoXX4de1niJs7hy8EpJBTw8qJJzkWe
+	ugzka9FRFb5LohA7DFJ1wzntpefKHytis7Wp47ikI8Dhx4TIl83+AhKH6KGlEC7Apjx9nTJqg+dwU
+	BDV/tqP7UJBlIqGjehG8jBjgEykXCWgdeKC6ssr2B1vHSD1MLOVSfyRM9W9/fzMPGtO674NV7vtVo
+	HJAQCNkeoqi58aMHBGMhqaZFXVP0/CbUogDYk0XsWpYKRQ9pqkPbahZIbXmcepU8RLhs94lwgoSlN
+	/CGRpsqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1IpO-0000000B6rk-2qJn;
-	Tue, 01 Sep 2026 07:22:42 +0000
-Received: from mail-qv1-f50.google.com ([209.85.219.50])
+	id 1x1Ipw-0000000B6xv-4BmV;
+	Tue, 01 Sep 2026 07:23:17 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1IpM-0000000B6r6-067H
-	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Sep 2026 07:22:41 +0000
-Received: by mail-qv1-f50.google.com with SMTP id 6a1803df08f44-90cc372d6b2so40768706d6.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 01 Sep 2026 00:22:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788247359; x=1788852159;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=jx+XoqcBBsA+m2qrM8HxfQHaaz8x8crvSJWq14ITrJ0=;
-        b=mGx1t9zWrdPSqPyXyShzdpYa/bkd4A0EfwLZV4f4vqptbyqk8t0B4rBOHTE47IkSma
-         WB/zKZ9qr4Anf10yodK8tETB+A5qnvQ9KVBrKAnq4g4W3CLjsbKwQceXiv4CrgNo6dht
-         GaKlTeEryOf+km3kws9ypobg9OUMQCe+n1wKPer8lKkwxN8B/YQ/4LSnnvtDJzw+ENDa
-         blGOOiUAMI/A6RhDlA1l9znBn4I88S/PUyc16w7ZsyAcw+CJmvPUVzGD+HqwLNGaiebx
-         Nj0QjcVMe/gbs/zoJ+lpnJbs54A8yBVs6DOC2wSnHAp8a3WYGdwm2sfQZbOEUbg293S4
-         LC0w==
-X-Forwarded-Encrypted: i=1; AKwUvBwTwFTMrHOv04JTT+qukXJcUjXToPw06flxIOICnvYzlalr7kfk4vyCcfnE/2Uxr02YfUv1LEGswZD0YNMERg==@lists.infradead.org
-X-Gm-Message-State: AFuF++mZsjfKID7WS8ogQN5ttbI3kWdb5LlmPxoY9RJ4NxF4dS75KERr
-	nzwO5ej+k5jlkXvLDYlIQLUu017kXS6elQySdds4TFRwxXt6YqdVoEa5pJy9uVoz
-X-Gm-Gg: AYBFou2bGHw442Am1+Y0Z881chmTvjB2TKkXsQ8JJ8u9i0qGtp1BZ6dgWHHSqMFG2L8
-	2Oscb7sqbbNFGvDCEptCkRH2JiiCOorm5ypNvImmtEdX/wnNgQ8qyjm9NWmDRLc00h+XjqCcbf4
-	W5VfWPcDIaty+Asf/bk5/STVhCyHd6eQ855ryak+7N5kzV3EN65JRSEQV3NU/2+kQJlgYy+HaQC
-	ogM6BP7vCo/fouT9Fg4MuuhBXYYD6DN6BSm2BNRTIXykau4yGql98jL6qdzMP+ls2W+QHq8xxbW
-	ZzMQV3TcRcmmpYf6YBN0eAxHHTvP6g1Apbrs31yxhdCA09KfXBkhP5OMCD0jFEj9I6VVWRP/bm3
-	gAhZTCEmhQTzUK8HAaN+wq3OChb9jG6amCQ93s5aWsQXTnilGP7NKi9WTY7d4m0BlxXTaHahF/A
-	kYp+TTpE9tIvPvqFtD9D8oTr/zEWBMYfbp1o48hSQzyp1xk9OjM3mSm9F3M5D2/9rkVhEXJkF3K
-	JPgqKZeAYpeP+tOESgXvxfdSbkNXw==
-X-Received: by 2002:a05:6214:2342:b0:8c9:c38a:20e1 with SMTP id 6a1803df08f44-90ce0c4dd2cmr327965606d6.10.1788247358578;
-        Tue, 01 Sep 2026 00:22:38 -0700 (PDT)
-Received: from mail-qk1-f178.google.com (mail-qk1-f178.google.com. [209.85.222.178])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-90ce4512dcasm101992556d6.34.2026.09.01.00.22.38
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 01 Sep 2026 00:22:38 -0700 (PDT)
-Received: by mail-qk1-f178.google.com with SMTP id af79cd13be357-9382fbb1208so464737985a.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 01 Sep 2026 00:22:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AHgh+RofaB6qtUD5ejMoAJkUEmsGFkXei9xudGx40Kxl2WTMW0rbjnCz7NEnGAuvvmDDAMLH6BP0Ws+pzwKOEFl2HA==@lists.infradead.org
-X-Received: by 2002:a05:6102:a50:b0:77e:6f90:4aad with SMTP id
- ada2fe7eead31-785962b2f0fmr9912673137.2.1788246874251; Tue, 01 Sep 2026
- 00:14:34 -0700 (PDT)
+	id 1x1Ipv-0000000B6x0-2JDT;
+	Tue, 01 Sep 2026 07:23:15 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 21400410AB;
+	Tue,  1 Sep 2026 07:23:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7BA791F000E9;
+	Tue,  1 Sep 2026 07:23:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788247394;
+	bh=qCWCwhm5CYxFm5odxTdtkxLiQAyCBWHpnskP5L4+v2M=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Utv80bzuMK0AJAjsG5eYLCc1gVmsJqVyUsZ3lAcLPta8DxQxhLUh1JQ50ZWyG7Oqd
+	 elS3XtUkgbqz9vLtwUdgssbvf35teoGgTuBFPPPLs1LDAicf6rErM64xfs/+0vn+1e
+	 0tbUiaaen9FvDZkzN6QcSs6jcVhnQ46S1Zu4icdMzTIFttRkhbtXOGV8IejiVK7pdM
+	 6bXTiSD48lWewI9IttU2NlTghcbKJFxy+7Ck1Xdr2VOVDwYPzJqeH1QqedA6VZ/JIr
+	 g3Fnb6SV2JFtwBVRl3a+hbfCAQeo7ym7MsFzylVlm8BBn4iSEIwNfzds3QL57mP9EZ
+	 fTQiu80XXe56A==
+Date: Tue, 1 Sep 2026 09:23:11 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Vitaliy Sochnev <sochnev.v.74@gmail.com>
+Cc: netdev@vger.kernel.org, upstream@airoha.com,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH net v2 3/3] net: airoha: grow the small RX rings
+Message-ID: <apZ9XxGHbyDBzSW_@lore-desk>
+References: <20260830095717.37218-1-sochnev.v.74@gmail.com>
+ <20260831234701.206021-1-sochnev.v.74@gmail.com>
+ <20260831234701.206021-4-sochnev.v.74@gmail.com>
 MIME-Version: 1.0
-References: <cover.1787239813.git.geert+renesas@glider.be> <apWfW5ahiYagw0OR@redhat.com>
-In-Reply-To: <apWfW5ahiYagw0OR@redhat.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Tue, 1 Sep 2026 09:14:23 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdX8YidsoHudY54RQW4J=G446WNgRG6Q-P5f1YEHd3sHkg@mail.gmail.com>
-X-Gm-Features: AcwNN1V5M0ZQ_v_xaH6RI1jedVGh-HNyKWbpGWR_Rc-YS9IPBF0NOfuHqPh0NM0
-Message-ID: <CAMuHMdX8YidsoHudY54RQW4J=G446WNgRG6Q-P5f1YEHd3sHkg@mail.gmail.com>
-Subject: Re: [PATCH 00/45] clk: Make sure clk_init_data is fully initialized
- (part two)
-To: Brian Masney <bmasney@redhat.com>
-Cc: Ryan Chen <ryan_chen@aspeedtech.com>, Joel Stanley <joel@jms.id.au>, 
-	Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
-	Jerome Brunet <jbrunet+clk@baylibre.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
-	Billy Tsai <billy_tsai@aspeedtech.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Taichi Sugaya <sugaya.taichi@socionext.com>, Takao Orito <orito.takao@socionext.com>, 
-	Linus Walleij <linusw@kernel.org>, Avi Fishman <avifishman70@gmail.com>, 
-	Tomer Maimon <tmaimon77@gmail.com>, Tali Perry <tali.perry1@gmail.com>, 
-	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>, 
-	Benjamin Fair <benjaminfair@google.com>, Sudeep Holla <sudeep.holla@kernel.org>, 
-	Cristian Marussi <cristian.marussi@arm.com>, David Lechner <david@lechnology.com>, 
-	Abel Vesa <abelvesa@kernel.org>, Peng Fan <peng.fan@nxp.com>, Frank Li <Frank.Li@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Paul Cercueil <paul@crapouillou.net>, 
-	Santosh Shilimkar <ssantosh@kernel.org>, Andrew Lunn <andrew@lunn.ch>, 
-	Gregory Clement <gregory.clement@bootlin.com>, 
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Sylwester Nawrocki <s.nawrocki@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
-	Peter Griffin <peter.griffin@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Dinh Nguyen <dinguyen@kernel.org>, Viresh Kumar <vireshk@kernel.org>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	=?UTF-8?Q?Emilio_L=C3=B3pez?= <emilio@elopez.com.ar>, 
-	Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Prashant Gaikwad <pgaikwad@nvidia.com>, 
-	Thierry Reding <thierry.reding@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, 
-	Ulf Hansson <ulfh@kernel.org>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Michal Simek <michal.simek@amd.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, 
-	linux-aspeed@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, openbmc@lists.ozlabs.org, 
-	arm-scmi@vger.kernel.org, imx@lists.linux.dev, linux-mips@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
-	linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_002240_071809_D89FF4CA 
-X-CRM114-Status: GOOD (  30.55  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="iSgGtsf6CDto9yfb"
+Content-Disposition: inline
+In-Reply-To: <20260831234701.206021-4-sochnev.v.74@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,52 +75,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Brian,
+--iSgGtsf6CDto9yfb
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On Mon, 31 Aug 2026 at 17:36, Brian Masney <bmasney@redhat.com> wrote:
-> On Fri, Aug 21, 2026 at 10:53:10AM +0200, Geert Uytterhoeven wrote:
-> > The clk_init_data structure contains several mutually-exclusive members
-> > for different methods to specify the possible parents of a clock,
-> > prompting drivers to initialize only the members they need.  However,
-> > not initializing all members may cause subtle issues, which are only
-> > exposed when CONFIG_INIT_STACK_ALL_PATTERN or CONFIG_INIT_STACK_NONE is
-> > enabled.
-> >
-> > Hence this series aims to make sure all members are fully initialized,
-> > to avoid such bugs, and to prevent future breakage when converting
-> > drivers to a different method for specifying the parents.
-> >
-> > Part One[1] fixed all cases that I identified to be real bugs, in
-> > response to a crash I saw on BeagleBone Black.
-> >
-> > This series is the clock subpart of Part Two, which fixes remaining
-> > cases that are currently harmless.  These are still fragile, and may
-> > cause future breakage when converting drivers to a different method for
-> > specifying the parents.
+> Raise the RX_DSCP_NUM() fallback from 16 to 32, the vendor SDK default,
+> and give ring 4 the 128 descriptors already used for rings 2/11/15.
+>=20
+> Ring 4 is the shared "force to CPU" ring that airoha_fe_vip_setup()
+> routes BOOTP, PPPoE Discovery, PPP LCP/IPCP/CHAP/PAP/IPv6CP, ISAKMP,
+> DHCPv6, SIP and LLDP onto, so it sees the same bursty non-hashed traffic
+> as the rings already on 128 while sitting on the smallest allowance.
+>=20
+> At 16 descriptors the completion stall handled by the previous patch is
+> readily reachable: on a Nokia XG-040G-MF the recovery fires roughly every
+> 35 s under repeated PPPoE dial-up, and negotiation never completes. At
+> 128 it did not trigger once across 500 forced PPPoE reconnects over 20 h.
+>=20
+> Ring 4 and the VIP classification feeding it are shared driver-wide, with
+> no DT or hardware property distinguishing one variant's ring 4 from
+> another's, so this is not scoped to a particular SoC.
+>=20
+> Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 =
+SoC")
+> Signed-off-by: Vitaliy Sochnev <sochnev.v.74@gmail.com>
 
-[...]
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-> 44 / 45 patches have been added to clk-next. I took it all for simplicity
-> rather than everyone trying to cherry pick just their parts.
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.h | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
+net/airoha/airoha_eth.h
+> index c195dad5ed58..0b7c90940272 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> @@ -41,9 +41,10 @@
+>  #define TX_DSCP_NUM			1024
+>  #define RX_DSCP_NUM(_n)			\
+>  	((_n) =3D=3D  2 ? 128 :		\
+> +	 (_n) =3D=3D  4 ? 128 :		\
+>  	 (_n) =3D=3D 11 ? 128 :		\
+>  	 (_n) =3D=3D 15 ? 128 :		\
+> -	 (_n) =3D=3D  0 ? 1024 : 16)
+> +	 (_n) =3D=3D  0 ? 1024 : 32)
+> =20
+>  #define PSE_RSV_PAGES			128
+>  #define PSE_QUEUE_RSV_PAGES		64
+> --=20
+> 2.55.0
+>=20
 
-Thanks!
+--iSgGtsf6CDto9yfb
+Content-Type: application/pgp-signature; name=signature.asc
 
-> Geert: The only patch that didn't apply was:
->
->   [PATCH 27/45] clk: renesas: Make sure clk_init_data is fully initialized
->
-> I didn't look into it too much.
+-----BEGIN PGP SIGNATURE-----
 
-No worries, I have queued it in renesas-clk for v7.4.
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCapZ9XwAKCRA6cBh0uS2t
+rBTsAQC54xl85XXvmJfDDGnSxh3t76bdMZM9J3/7nroYJroTBgEAwWGjnbVtxJcr
+V2ZoukEPId4WHAPImjFYCIq4MGWgjA0=
+=FILA
+-----END PGP SIGNATURE-----
 
-Gr{oetje,eeting}s,
-
-                        Geert
-
--- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+--iSgGtsf6CDto9yfb--
 
