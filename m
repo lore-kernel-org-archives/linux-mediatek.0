@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA2BC61DD3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2026 14:25:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBC8EC61DD3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2026 14:28:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q/aNeRp1M8+W5dq4jHs4weTa/XmaDxsrVyBRxencbn0=; b=3Ex87CrZAtJYq/IYxtn4JJOvl2
-	CyYpOVJ3lOfDCs+xGo0X8sFTf1bEqgptzNEHiFNTqzhtE+SYkjuUkYpvO/Y5l61hEMw9C8yQu/MzK
-	9Dgcz/fOSy+goy9HRsK5OC0Eh5O1Caun9Mk350Wg7NK1eFb7elo81xgKS93pNJwP2SSErfcNBUdS0
-	cqGX4K28wNSUmA9ZU90ZyfZ2tIu87QtXVhHVMJM8gE5v5z1/6G572h9vdjdhSf0GhOaMTeEd1Vmxr
-	dbnxrfyTHq307v+vpwvsftIuc148HWnuGZC8j00Oq8fIIeHCmMX7LX7S432WB6IlGo/tvPR3Z5jls
-	0HGACWPA==;
+	bh=i7lOUejC2tGwB1iXyXMM/XGwV6CJY9bP3bO8Wn1ZS88=; b=ek7ZkIOtRA+39gNjOHtdo+Tryw
+	vKzyQ1j+UR2T+GCZSaEZfIH+VSEeFXZXCWb2ApwovoCD7B8QtBSrXheFAQgOKGYVQf26JswpLA4fV
+	wMToM5UQ2xP3wU99AB5DZrOmEhlwE4OFqh/IOzDmHdITz++wDXEj92QSUXjDD0AmBdovBh7sIByGc
+	hN3xUqKcsbgBCUU55NC8U73HVPgg1RYP6h0/ma1VQnTi0Ohq3UHzAFHuKXmSHwJ+OtD/EYkckpd5V
+	4+3N9ztM2zUMIpH26LlveDedDOVmT2PiAWyPnlGm4qWPKMh149zFl9lA0ifc+t2QuuFdtOoSoApzN
+	mA5bTI+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1PQr-0000000CKhd-0lYm;
-	Tue, 01 Sep 2026 14:25:49 +0000
-Received: from mgamail.intel.com ([198.175.65.21])
+	id 1x1PTA-0000000CKwf-2NKV;
+	Tue, 01 Sep 2026 14:28:12 +0000
+Received: from mgamail.intel.com ([198.175.65.14])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1PQo-0000000CKh6-0boC
+	id 1x1PT6-0000000CKw1-3ryW
 	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Sep 2026 14:25:47 +0000
+	Tue, 01 Sep 2026 14:28:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1788272746; x=1819808746;
+  t=1788272889; x=1819808889;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=q/aNeRp1M8+W5dq4jHs4weTa/XmaDxsrVyBRxencbn0=;
-  b=Gd6jfIM7Wzmw1mBtyG8pXjYVzQfE87Sq5Q/ytTtFeqB61oXur1ML5n/b
-   AbTU11M1xIrNDa+WZAqlZrNXKJixNs9RitUpubzZZlN5Rp6HfM25SWUB0
-   4DRw9B6WaPdBdpmJIs/SOSjnEGKvFi4xdbrdw9w9b4qTJep/oLuPRM/C8
-   RFK4l7WFxGyQYBLFUNHRGV1+7XzGmTsK1uIiiNdfsBGJBBXi7JWJbmwl2
-   fVrQwoRzcp+dCzlprUat26qYyPzSqSMUPTOtodeO3nT7Jnf3Sooh10oq0
-   NXAgIJ0pRq+WBC5rDLZvy1o0J3wbnm0UA4m4kh+DokgIlFPYGIWa/oLHt
-   w==;
-X-CSE-ConnectionGUID: 5OTr7hzoRFaiOtN35ybwRw==
-X-CSE-MsgGUID: gop3sVhuQX2lWPV+29d0xw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11892"; a="88555115"
+  bh=i7lOUejC2tGwB1iXyXMM/XGwV6CJY9bP3bO8Wn1ZS88=;
+  b=bFVCJCFtNWxI4M6O4BpfCvov5weTghQVcR+Y/KBAKuP03BsX695c8POg
+   WLUQo3otMNAnnS5m11EidbNtsrujmFKKjU1ObaUpXsulBVJg+V1W0KC+E
+   NvyvaH+fwYHT0ld/SmR+k20dHpyHUGr8bRaP+u+FiLxQdStwcAiYqOpQL
+   zE7kF1xdeVpHF54sOH0J40wGjxNWLKbjtgSrgYdFbL9+IGPKlYIvZ/vbW
+   yHdJQVpftWkjC9AjokEm/vekmI6f6Xbs56EVjmwaML8jVE09N0rEsIv5m
+   LvpUphwD7iqSVu5IkEN9TsU52X7yV4XQld0RulVAOZZi16/qhM+ZirROC
+   g==;
+X-CSE-ConnectionGUID: DZgnCYCVS1aWD6YWLbXEjw==
+X-CSE-MsgGUID: HYlgud+mRCKItO6LE89MWw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11892"; a="92571268"
 X-IronPort-AV: E=Sophos;i="6.25,256,1779174000"; 
-   d="scan'208";a="88555115"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
-  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Sep 2026 07:25:45 -0700
-X-CSE-ConnectionGUID: tGXYaYE4RqORCSUALmw9AA==
-X-CSE-MsgGUID: QwKAUf1dT6aKM+56SK+k6A==
+   d="scan'208";a="92571268"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Sep 2026 07:28:08 -0700
+X-CSE-ConnectionGUID: gzPAOPuqTl+Tq84be+jC9g==
+X-CSE-MsgGUID: 72cqK8kGQp6DIKZNbhkLDw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.25,256,1779174000"; 
-   d="scan'208";a="292621116"
+   d="scan'208";a="269685089"
 Received: from junjie-desk-dev.bj.intel.com ([10.238.152.71])
-  by fmviesa002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Sep 2026 07:25:42 -0700
+  by orviesa009-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Sep 2026 07:28:06 -0700
 From: Junjie Cao <junjie.cao@intel.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
+To: Laxman Acharya Padhya <acharyalaxman8848@gmail.com>,
+	Felix Fietkau <nbd@nbd.name>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
 	Shayne Chen <shayne.chen@mediatek.com>,
 	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Laxman Acharya Padhya <acharyalaxman8848@gmail.com>,
-	JB Tsai <jb.tsai@mediatek.com>,
+	Deren Wu <deren.wu@mediatek.com>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
 	Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	stable@vger.kernel.org,
 	linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] wifi: mt76: mt7921: skip CLC records the driver does not know
-Date: Tue,  1 Sep 2026 22:25:33 +0800
-Message-ID: <20260901142533.422664-1-junjie.cao@intel.com>
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] wifi: mt76: mt7921: skip unknown CLC firmware records
+Date: Tue,  1 Sep 2026 22:27:57 +0800
+Message-ID: <20260901142757.422688-1-junjie.cao@intel.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260901011840.416787-1-junjie.cao@intel.com>
-References: <20260901011840.416787-1-junjie.cao@intel.com>
+In-Reply-To: <20260816174841.1918-1-acharyalaxman8848@gmail.com>
+References: <20260816174841.1918-1-acharyalaxman8848@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_072546_252759_19879B61 
-X-CRM114-Status: UNSURE (   5.30  )
+X-CRM114-CacheID: sfid-20260901_072808_998840_48BE5DC1 
+X-CRM114-Status: UNSURE (   6.35  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,8 +95,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Laxman posted the same change on Aug 16, with a Tested-by from Mikhail:
-https://lore.kernel.org/linux-wireless/20260816174841.1918-1-acharyalaxman8848@gmail.com/
+On Sun, 16 Aug 2026 23:33:40 +0545, Laxman Acharya Padhya wrote:
+> Treat an out-of-range CLC index as newer firmware rather than a
+> malformed image. linux-firmware 20260810 ships MT7922 records with
+> idx 3, and rejecting them made mt7921e fail to probe.
+[...]
+> Fixes: 9417c5818a01 ("wifi: mt76: mt7921: validate CLC firmware records")
 
-Drop this one; the stable ordering note is repeated on that thread.
+Reviewed-by: Junjie Cao <junjie.cao@intel.com>
+
+This wants Cc: stable, and it must not reach stable after 9417c5818a01
+does. That commit carries Fixes: 23bdc5d8cadf (2022) and is in v7.3-rc1,
+so the Fixes-tag scan can pick it for every series with a three-entry
+phy->clc[]; there this firmware then fails probe. Those trees today read
+the idx 3 record past the array instead (UBSAN at mcu.c:474 on 7.1.12,
+https://bugzilla.redhat.com/show_bug.cgi?id=2515420).
+
+Greg: if 9417c5818a01 gets queued, please take the two together.
+
+My Sep 1 patch duplicates this; withdrawn.
 
