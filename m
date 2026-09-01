@@ -4,99 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72078C61DD6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2026 16:10:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC934C624D3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2026 16:33:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qd8FjjdakEvlndPpogmSOky/bdaCcagMgEJZOrnyBdY=; b=cpMwZjcJagjEdhMd23EAkuw4tM
-	M3DTmy50keVZOaIBHwu7PK3CMKmVKcAude4puQkIiimVVQ88D9eEnsXeYWb1QmDIPz2GvCLxtmBZC
-	2HmEEAnMboIbmRiLmm1CXxNuSoVpPkDPDrJt4LSbnNL9ke6EvanNidcBmeuTdEpJX9VzdcWeCtkLH
-	AutdAqWpIF3KO39xEZMZb7Rpb5jb+Zv+zP6zkuiriuqvI2TkfG1xwWSSK/gY3XDBBAlQnIZ3prYxn
-	2opl3xeLtWX6OFyOrJmDuUYH+U4hRyqUcMI2G70x7H8zrEtsOB3gva/ZnikZlaU9EGxF2+1ct5gOm
-	+7rD6aDA==;
+	bh=Ama4vcz/XSYo4+pHJyqT2hFXL9IvS3KsjPeWoufTaYE=; b=1jmnFeRjx5BLv86BVwEvwNccLp
+	D21BXsJPe5EalOPJxfEAKPuy4uGB2BWcHfrgRhZ2GE5abFMQZoPxLyzmg/KtIM1AiDuCpWVvrfn9H
+	dTnLQc5ahf7xWmYDGJGVVDl+8MDKScQ4SGu1yLb21oNnK4JTDMP+xu3EW6SfmYJKnEFXOiqPSKFvD
+	9GdfALF5Enz2j2fy7n6eiL1eL6Jam4uE2CD5bO2KmqqQiuXBgYgANVGd217Lc4TbW96htpMe2q+HQ
+	NMzygCraVJCElnisuYyYqSTt0YcUGwUhG+Ps8B5lY9xotlA7SK04fiOakUaDGlxcZa5/1qad9exwr
+	CFps9vJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1R4H-0000000Cctr-0zkR;
-	Tue, 01 Sep 2026 16:10:37 +0000
-Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
+	id 1x1RQQ-0000000CfQk-3zjx;
+	Tue, 01 Sep 2026 16:33:30 +0000
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1R4D-0000000Cct8-3u8D
+	id 1x1RQN-0000000CfPi-3uto
 	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Sep 2026 16:10:36 +0000
-Received: by mail-qv1-xf33.google.com with SMTP id 6a1803df08f44-90e8372bba7so344986d6.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 01 Sep 2026 09:10:33 -0700 (PDT)
+	Tue, 01 Sep 2026 16:33:29 +0000
+Received: by mail-lj1-x22b.google.com with SMTP id 38308e7fff4ca-3a33307ecd9so21301fa.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 01 Sep 2026 09:33:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788279032; x=1788883832; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1788280406; x=1788885206; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=qd8FjjdakEvlndPpogmSOky/bdaCcagMgEJZOrnyBdY=;
-        b=fLKEH+haAYodIC+zpJ8b106hRBpILGH2qqk52aOQnLgGisIrPy/1m2Qg+vhgk+gULU
-         DvNai6QU8YkuEDl/l6rwSJwtVuFV9uIC6Vaypo2Gee+FRuY1q6e+Q2lUZGkF6MB18mYi
-         MDxpifskBr5itLZTtTeukw87a6EkwqztBBM7Ic4xFX1LRSj5KAALoPdDj6Kle86s4JW3
-         DCRWlbwvCnTLyjUtnp8E38RXmRpjEqCdOy0SD8tvKusuYfr05wyaQBgFoQxxXx4NcLqi
-         JniMmo7+X6F4L96Jagw6Dq/xFuXMndKklCEBwfpQm91l4TRU2wJFBc2eBLOKaa6A73O3
-         KeNA==
+        bh=Ama4vcz/XSYo4+pHJyqT2hFXL9IvS3KsjPeWoufTaYE=;
+        b=Gzv6QUED+lMdLGS/gilH2IpuvFfrvvHvlPi/3V50ryZZLkcI8j+kqLa9jVpc0wM8Ty
+         rAnDViik9wgox2JVq24Ko7+KTG9Af5BEw812ANtZ7qDCtJDt98wUDJ8xwF0PVOkN+rdr
+         ibs3+JYnsgKXfl5Wsar42eEki2vN5se7iRj7Yg7X455jTFYERhrceiC2KXm7QAA23UC5
+         3ea2GFCp4QRLOIEoLd0TbqxtF85HBQTMX7QqCZu4DBO/rdzMViAFQekL23gIc6bhSSiu
+         V+S9lKTWBgCgpR+YyCzXvv90atulM3hudIrqoYF2oAJDDijoGJtSaIN7qmRilNkjJZfM
+         QrpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788279032; x=1788883832;
+        d=1e100.net; s=20251104; t=1788280406; x=1788885206;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=qd8FjjdakEvlndPpogmSOky/bdaCcagMgEJZOrnyBdY=;
-        b=SYalib0Mh49pQms+C+QD7u5U84+/R1GepVrDRavTuZ98d45bVoxRXaAE49BD0mZl8W
-         fcAW/wsMxp8JaSRvdyOZYwpN8gtR7G6g7OUn8wa21pAyylMcis2c+Q+y2MvCXfFXkh/1
-         KRgM9teDaNexsflFawWC+rLVuq76UMFCpEB/r4uT+3gbD82Bv0BLhQ/lKjAp5lzqZI3y
-         0m32y8thrsXMcpexr2LF0mJ+2d99W0JTxUBkplFQZiAzmL+CZ/3KLR4co6Y1Dt8jTekP
-         2mWzbHSP6W7T7avJdFCD+0MgUyGSu7suEwEPz5mvQrj7HveK5tzoLcqZoTauvgsKVcRv
-         tbcw==
-X-Forwarded-Encrypted: i=1; AHgh+Ro29dwBaNlbfXNsTOzTJpNCwtiuwgbRfhEUrPknlc9CcihA8Y4j+7YiuLhLROCZJsYxW7r2Uqj2F1sca8ezGw==@lists.infradead.org
-X-Gm-Message-State: AFuF++m88n0N/L3bxpzo4JqEk21fstR0/h8I42sBOQvH6kNxVRpgHh/+
-	A06Vh90OqmlsnMMT/tT4IZI7uNZQO30AGjcg93ydzyViRmiWZFKLkcKF
-X-Gm-Gg: AYBFou28teyj2nGGVFUddVnS3c2D05v3llRsym2H98CUeqjHjz/VkfNjjY2dq7t0DPA
-	xInnbFiHBXmkORrehQti9pEUWQ+2Yn+vIYS8oLdcbW5MTPT+vVdWrV9gGFB8enlH9AZOLrHj83x
-	JP56qxeFTdhCqpj0SBFkpZcjH4/a51ttOZFSNkbQhf4blQJiY+vZMqnyIyb7InHFBsI1Pc2xtIX
-	PNmoarLKPyoY04Z12R5IrOMsaZz9NlOYT0VYd8FMytZOk7djv1+2T3gNrff+HiD3j3OYIXR6gcW
-	DBziQyE2N/xyxZXDMSGyJeDLhqOJ178onCG9BA7uRAtKWX7wZ2dPnp1YwWBrrdQaRuiGczZx+Qb
-	3Xejk/GhEgbr9hOiFQjuJOvEnsdWn/fxJEoO4oS6PlFVHKyeyb3b18WLgViGO1uNhc0OehKUXOD
-	QqZZN3l4Au10nFSrLUEhOb2ZWY5tIJepsJvcKakT65mzGwp729ePaXzfQVnpv1ToS0BEBcmsPbY
-	2yJPpJ9qCck2+oIRw3q3ImN3K4PBcQhxgE=
-X-Received: by 2002:a05:6214:2425:b0:90e:95c1:47d3 with SMTP id 6a1803df08f44-90e95c14964mr82027126d6.8.1788279031820;
-        Tue, 01 Sep 2026 09:10:31 -0700 (PDT)
-Received: from Valhalla.lan (50-36-57-116.bng01.ssvl.sc.frontiernet.net. [50.36.57.116])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-90d98d54cfasm92683046d6.40.2026.09.01.09.10.30
+        bh=Ama4vcz/XSYo4+pHJyqT2hFXL9IvS3KsjPeWoufTaYE=;
+        b=CNDoJsOrEaKk02gr8AM6KLGiTHXqEFKUgMJb+sjNc2eZVncz/QSMSwRzJcA1bNmtrP
+         mlqX/72DJyCCl4Cohfx/2HU+GDflvMhq+yWJB++Rwey96wR5iBSxmVU+EJybXcD28BuE
+         ckyJLiI0HjiFB3xPIcFo1srHfpT8dN1B5C62V/IcGy3n1tfMG/I+m8SXnw6VVz7bTiiF
+         RolbmMm1oc07k/whLsk7zNOknKPwNRR0PQRIIvdaUJwiCA0Q37G1NIq1+IJgaTu7Ermv
+         fcoL5MMH5Hh61bvgACSwFlvrwhi7MeSA7J6uQIUYq+eHtqiWhWbz1QKRv3deXK//Oyf3
+         S4BA==
+X-Forwarded-Encrypted: i=1; AKwUvBx5bHxlE2Z6V+aNeHsii5qYSZLsXhglFqcvld4/gMo7yXydZ+/+Rvm8+hkJ+4kMVLIgdh48TshwWwqI2eGPoA==@lists.infradead.org
+X-Gm-Message-State: AFuF++mpz7D71wWDX7OS64QWglbC9iTfzTKiZTCrBdXt4BHSJJ/32+R6
+	G8gFyU0+pTZkJCMmKpOTeLD5Lh4nHGiON5T+HY0bx1FId2xUSvrTNvM=
+X-Gm-Gg: AYBFou3sIJutBmdUnvJx0B9XNdq8xhyg1XfAIC9zoas06VHG3kPOvN6dRAizY5PWrk1
+	xkgiqSUsp9hcRW/+lqmre801zIsRfYRfakcjCrJOTgfwwVe8e7RimeYWY3uA/zdDnB6FaNYMEsz
+	WjGe9/R1A/VRsZWPnHpa+z8vlMfqekEEEOvyv9CpjJAtLp52ITwOoIkXoKHwjKqiKfUgCjwxm2t
+	Ta4tq84aGxVS5Ko11H79GaN/9HeTIauP/VlLtI+a12jozA6KXWRt7R/WqKvXv6e/IACE1/56kB8
+	QeNj/FeBnDYlkJn6JmNIJuLIzR8wFsGBdD1A5i1dR6034NYQgH0fBuLhskUZC0kVQq/259o08NN
+	E6vLrg7XVMri+LnA/Ak1X4ctLWIGTkXqcJxKYXGGP75L72FLAZN55CE0qdgqK/QFC+SR/ubRoDt
+	8jTs9FMrsywV1LEcCAY9x8D/W5u3yWOzYNl1qLp+95UI8WHftximMdYKn11NUrdyo=
+X-Received: by 2002:a05:651c:31d7:b0:39b:128e:ae68 with SMTP id 38308e7fff4ca-3a30175c52amr67573001fa.0.1788280405342;
+        Tue, 01 Sep 2026 09:33:25 -0700 (PDT)
+Received: from fedora ([92.36.3.203])
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3a34a8ed967sm678251fa.7.2026.09.01.09.33.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Sep 2026 09:10:31 -0700 (PDT)
-From: Hans Buchheim <hbuchheim@gmail.com>
-To: Eason Lai <eason.lai@mediatek.com>,
-	linux-wireless@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
+        Tue, 01 Sep 2026 09:33:24 -0700 (PDT)
+From: Vitaliy Sochnev <sochnev.v.74@gmail.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	netdev@vger.kernel.org
+Cc: upstream@airoha.com,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S . Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
 	linux-mediatek@lists.infradead.org,
-	kun.wu@mediatek.com,
-	deren.wu@mediatek.com,
-	Sean Wang <sean.wang@mediatek.com>,
-	quan.zhou@mediatek.com,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	leon.yen@mediatek.com,
-	litien.chang@mediatek.com,
-	jb.tsai@mediatek.com,
-	Devin Wittmayer <lucid_duck@justthetip.ca>,
-	stable@vger.kernel.org
-Subject: Re: [PATCH v4 2/2] wifi: mt76: fix memory leak in USB TX path
-Date: Tue,  1 Sep 2026 12:10:15 -0400
-Message-ID: <20260901161015.607195-1-hbuchheim@gmail.com>
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Vitaliy Sochnev <sochnev.v.74@gmail.com>
+Subject: [PATCH net v3 0/2] net: airoha: fix silent RX loss on the shared CPU ring
+Date: Tue,  1 Sep 2026 19:32:52 +0100
+Message-ID: <cover.1788286284.git.sochnev.v.74@gmail.com>
 X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260827083526.1621600-3-eason.lai@mediatek.com>
-References: <20260827083526.1621600-3-eason.lai@mediatek.com>
+In-Reply-To: <20260831234701.206021-1-sochnev.v.74@gmail.com>
+References: <20260831234701.206021-1-sochnev.v.74@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_091033_997159_0A062DB1 
-X-CRM114-Status: GOOD (  10.03  )
+X-CRM114-CacheID: sfid-20260901_093327_995453_D8196662 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,30 +107,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-I tested this series on another mt7921u USB device and confirmed that it fixes the zero-length WNM-frame skb/socket-charge leak.
+v3: dropped the RX ring stall recovery (v2 2/3) as asked [1]. At 128 the
+stall does not occur - 500 forced PPPoE reconnects over 20 h with the
+detector compiled in and armed, zero triggers - and it did not fix the
+bug on its own anyway. I will resend it if the stall turns up at the
+larger ring.
 
-Hardware and software:
+2/2 keeps its code and its Acked-by; the commit message changed. It now
+cites the register capture taken with no recovery in the tree instead of
+numbers from builds carrying it, states that 1/2 does not cover this
+failure, and quantifies what the bigger rings cost in memory.
 
-  x86_64
-  Netgear USB 0846:9065, mt7921u
-  Linux 7.1.9-arch1-2
-  wpa_supplicant 2.12
-  NetworkManager 1.58.1
-  firmware HW/SW 0x8a108a10, WM build 20260224110949
+v2 [2] answered the v1 review: DONE-bit overwrite hypothesis disproven,
+QDMA_DESC_DROP_MASK never set, RX_DSCP_NUM default raised to the vendor
+SDK's 32.
 
-I applied both v4 changes without semantic modification to the exact Linux 7.1.9 source and built the mt76 module set against matching Arch headers.
+Still open for the airoha folks: in 2/2 hw set DONE on descriptor 15
+while 0-14 were untouched and the driver's consumer sat at 0. Is
+out-of-order completion within an RX ring expected, or is the driver
+violating a constraint on RX_CPU_IDX by leaving one descriptor unposted?
+Growing the ring avoids the symptom; the rule behind it is still unknown.
 
-The reproducer used a nonblocking AF_PACKET/SOCK_DGRAM ETH_P_IP socket to send zero-byte payloads to the associated AP and sampled SIOCOUTQ after each send. This produces the same packet shape as wpa_supplicant's synthetic WNM keep-alive without using the supplicant's socket.
+Tested on Nokia XG-040G-MF (AN7583) on a live PPPoE line. These two
+patches without the recovery are what ran longest here: 508 forced
+reconnects over 20 h 32 min, zero rx_dropped/rx_errors across 39158
+samples.
 
-With the stock modules, eight sends returned success and SIOCOUTQ increased monotonically by 960 bytes per frame:
+[1] https://lore.kernel.org/netdev/apaA5jDYH71F0JaS@lore-desk/
+[2] https://lore.kernel.org/netdev/20260831234701.206021-1-sochnev.v.74@gmail.com/
 
-  960, 1920, 2880, 3840, 4800, 5760, 6720, 7680
+Vitaliy Sochnev (2):
+  net: airoha: handle RX_NO_CPU_DSCP interrupt, not just RX_DONE
+  net: airoha: grow the small RX rings
 
-With v4 applied, 500 identical frames paced 10 ms apart completed with SIOCOUTQ=0 on all 500 samples. Both the immediate and settled final values were zero. An additional unpaced burst created a temporary backlog that drained completely to zero in 1.35 seconds.
+ drivers/net/ethernet/airoha/airoha_eth.c  | 16 +++++++++++-----
+ drivers/net/ethernet/airoha/airoha_eth.h  |  3 ++-
+ drivers/net/ethernet/airoha/airoha_regs.h |  2 ++
+ 3 files changed, 15 insertions(+), 6 deletions(-)
 
-The link remained healthy after the test: 0% gateway and Internet packet loss, and no mt76 pending-TX timeout, firmware reset, warning, or error in the kernel log.
+-- 
+2.55.0
 
-The reproducer and this report were prepared with assistance from OpenAI Codex using GPT-5.6 Sol at x-high reasoning effort. I reviewed the procedure and results and ran the tests on the hardware described above.
-
-Tested-by: Hans Buchheim <hbuchheim@gmail.com>
 
