@@ -4,64 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEB51C61DD6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2026 07:38:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD967C61DD3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2026 07:49:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kGJBTxI0BTFP9qYGYHlSLCXCQCO3O2EtQUjch3HFwi8=; b=cz4P4dvlcnhGUAzx2aflRXoQwh
-	SlUY2kfpOIJw650ay+skDui11MW9h+BlTBezmViDKOOfPQMwoNV7q0XB+koIFhAGKPmTvb5xeLZH1
-	nsP0aQpWJu1Y5pfXNKOgzLhXds7k5/8MaKMF8YG16ldojcgfXwWliE4p3ufOCpLJo48TVgZzJU7ja
-	yLcURJAaO6iSOtL6flQRpdnfDkGRbTZAj4pG8Va3BUDqzG1UwIk0bb8Oz4MrrIypCdv+1dxK1Q3jx
-	t/DwCIDGFfQEwTFJzKROI7xf+eQ+sqJeti3eNZEjXElcqPvc5mUMS9W2joD5AQrSLPh5s2JGHSwlS
-	FJL2aHPA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KfyZyO9Nh/74YiXm8QLieiH5kTcxaWjtqwY5nnPQU9w=; b=R3E+QKrDTHuE17A5Ks3ZeH7/MN
+	C+LXSWoh5RSPo5As0DD76QN9ogsi2ieu61yZmpekpg2SwoJKlj56PJ5lIO0DSQQmikqkPL2tNWT9u
+	BAyz2WgzqPmVSB2RYvbVOTs3J3/DKAI8eRenjyexQinGu+4pqvWsjYWiGuYBWyhpJFBSv10vbFEgl
+	nN+6clkxUZ2u2BH+2CuzE2RonD+XbwjLcVLq3MTYPOmJ1vg+fCWMC+X/oBIR2mA0+yLCWa5K4DqK0
+	kGYgJaWeDi3OaJYb2ViT4BPMH/ge6kHwkh+G2wGhU5f5OlZAF2bhS1DXgGy5VDQLZxjNxVr1iRgrt
+	3xZ76LEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1J4U-0000000B8p3-1cMi;
-	Tue, 01 Sep 2026 07:38:18 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x1JFh-0000000BA08-2p1Y;
+	Tue, 01 Sep 2026 07:49:53 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1J4T-0000000B8ob-0Gpv;
-	Tue, 01 Sep 2026 07:38:17 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 858EB4010B;
-	Tue,  1 Sep 2026 07:38:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DFDC01F000E9;
-	Tue,  1 Sep 2026 07:38:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788248296;
-	bh=kGJBTxI0BTFP9qYGYHlSLCXCQCO3O2EtQUjch3HFwi8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=J/B0TM+qn7Bc6/87PafTXa00ztozqZNvsXgnr5Z5wdK0mUQIqViGzAQrquu4+Rlej
-	 uNvdZTiee3n6L06Qr4N2t2tjJwiBekmH8OwLGpv1fs+wTjDO95HOt/mnrTCipEg9O0
-	 TWtI8iHWAcy/Y9s7oTna14pTlQafb6rC7dYf0FmhddV1Mpj3SoM0d2a93UnUZwLmaf
-	 zLZzKG6o0TBjLu26QbRbCbVU/aL9P5ath/gR5LkDMVzKL2CEz5B2XOB+jMY0CaiEl9
-	 JrQJDQVMG32lCsan1QNse+jfkioI7kV8icktX+tBj2EGTTyBU+MxrUn4h26Bb9oavT
-	 ls6sKrNtoP9mA==
-Date: Tue, 1 Sep 2026 09:38:14 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Vitaliy Sochnev <sochnev.v.74@gmail.com>
-Cc: netdev@vger.kernel.org, upstream@airoha.com,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	id 1x1JFe-0000000B9z6-3G2H
+	for linux-mediatek@lists.infradead.org;
+	Tue, 01 Sep 2026 07:49:53 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2d94c868ea5so10531865ad.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 01 Sep 2026 00:49:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1788248990; x=1788853790; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=KfyZyO9Nh/74YiXm8QLieiH5kTcxaWjtqwY5nnPQU9w=;
+        b=oGqqtxvv9cuYEI2hfCHk4L7fS1iPyvA2cSm8E2EERh8zGPxlyDK1zUC/Dtr2Od/id7
+         HT5gkP0Fx7qFnpSm0Z7cpgrv5bKhtHo6b+9hxVHfZVuV6Br5R9Zhu0UyJyuUVccDdkJe
+         KnGqMTlQ8wbkqhoXgU8YWZaPt2g3+9zAF4l+4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788248990; x=1788853790;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=KfyZyO9Nh/74YiXm8QLieiH5kTcxaWjtqwY5nnPQU9w=;
+        b=DkDO889uJKuRLUh+cuFfkDaBspcKUIRXVADck61k8I0/gTFRdkQzC3tOcMOoK2QbmC
+         5Pwrv7nVcf+RPcxWP45sENA2kxkgZg/8EBurjIN3Q4griHaO6rO/PGwySHx91bjtwfeA
+         b4cituUTDSfjirXqchyGgdUhwWyi1XlAuKOnF2jZ1ZJT6g8rLvjriir1BGg1ZLDST51d
+         QlZOhLw1sLQu6dN4GkkyLUZDV8tM/hzSW2Lhk9vtihtaONCPn32vXA0sBvLlcufMdbHs
+         nhofwR+fQoZ6x1gHmKhF3kd9NuhchrWISx1XovdNfVaCsZKsiDz6GVDbEsvItGvDqvjp
+         tUWw==
+X-Forwarded-Encrypted: i=1; AKwUvBxMDzHR2IpqSoAE84MbWeSRRqwYOrnp+4k8dTHv/i7+z+eQRUNI8OP0piBknpoETjopxN5dS1nhp5kF/Ib0DA==@lists.infradead.org
+X-Gm-Message-State: AFuF++l1pVw88nig/QO2uQdWvtO7ptcV9RGOu/jQ6OnqrnqrW3izCYrv
+	MQd9vXkPyJIRfnngUQ8SXmXKHIrX+SPhupdqC1tipkfwSj3iS3pkSTnwZ6QlM3b0cQ==
+X-Gm-Gg: AYBFou3dK7QxvIHpMrOSt4/g88kSXarqmv6+FnSKOblRUjiKg/tG5ZyjX2SMeb2sKhW
+	QlZM03rbtiRz2rNLh/jr2A9kWcTA8tFvc+hA3G8DNqhVjotHXnQo6NpgmxMqJIjWGXyGKVcDE9o
+	j+LA+cDtXsMVs9HeMx4FyjO+ED4PQ4sznq6jB53sR3zr2HOd0v5GelgA3Z/sJuQxBnGy4mzXem3
+	WzT10sZ/5m5Sio4A7zt+NH3d/GExGPaZqIU8eF6pMGeEmm4DuxT81fdIGl5KXAoG0c+XCxQFyBJ
+	CD7W9W+fkv+qICU6Qy/ZgHY9CZMc+3wL6ny6cAhsSoH7Px+Oi6UoX0nbLB0LUmp6Sf63/BB6kT8
+	2VlooLlNHHstGXUgCg6j4DmEesi7x2kET4oT5TY/hXzc0st54c1A4A0QSS2hOvhwQ53yqHgsQKA
+	jxzkVaiijx0YR+hYEzeDOFwQDZ686VUduTtaIgdv7bkYdlcU9L48Gd/ShQyENgIhRm5XzAjLUEx
+	WqvGE7QM7YIFsuwTmozJ8dnCZOh4ME8Et9f0r3bxCxZYQ==
+X-Received: by 2002:a17:902:fdaf:b0:2d8:d4d0:792b with SMTP id d9443c01a7336-2d8d4d079a6mr348893415ad.15.1788248989697;
+        Tue, 01 Sep 2026 00:49:49 -0700 (PDT)
+Received: from wenst-7875.tpe.corp.google.com ([2a00:79e0:201d:8:8cf:6df0:9c4e:f5e1])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2d75988b699sm48142515ad.59.2026.09.01.00.49.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 01 Sep 2026 00:49:48 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Mark Brown <broonie@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Jiri Kosina <jikos@kernel.org>,
+	Andi Shyti <andi.shyti@kernel.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
 	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH net v2 2/3] net: airoha: recover RX ring after hw
- completion stall
-Message-ID: <apaA5jDYH71F0JaS@lore-desk>
-References: <20260830095717.37218-1-sochnev.v.74@gmail.com>
- <20260831234701.206021-1-sochnev.v.74@gmail.com>
- <20260831234701.206021-3-sochnev.v.74@gmail.com>
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	chrome-platform@lists.linux.dev,
+	linux-input@vger.kernel.org,
+	linux-i2c@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v6 0/8] arm64: mediatek: Chromebook trackpad supply fixes
+Date: Tue,  1 Sep 2026 15:49:18 +0800
+Message-ID: <20260901074930.764550-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.55.0.897.gb25b4bd76c-goog
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="AGYD2yEKCoEXZcmo"
-Content-Disposition: inline
-In-Reply-To: <20260831234701.206021-3-sochnev.v.74@gmail.com>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260901_004950_979072_97E8A8C8 
+X-CRM114-Status: GOOD (  26.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,268 +106,141 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---AGYD2yEKCoEXZcmo
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Hi everyone,
 
-> On AN7583 hw can stop advancing the descriptor the sequential consumer in
-> airoha_qdma_rx_process() is waiting on, while its own completion counter
-> keeps moving. The ring is then dead: NAPI is scheduled, finds DONE clear
-> at q->tail, and does nothing, forever.
->=20
-> Observed directly on ring 4 at its 16-descriptor default (devmem, qdma0):
-> REG_RX_CPU_IDX frozen at 15 for over an hour while REG_RX_DMA_IDX advanced
-> 29 -> 96, with a 60-byte frame left stranded in the ring.
-> QDMA_DESC_DROP_MASK was never set. In practice this is hit during PPPoE
-> negotiation bursts on the shared "force to CPU" ring, where it stops the
-> dial-up from ever completing.
->=20
-> Detect it without trusting ring content: REG_RX_DMA_IDX is hw's own
-> counter, independent of what sw posted. If it advances across polls while
-> q->tail does not, hw is making progress the consumer cannot observe. Idle
-> rings, where hw does not advance either, are left alone. An earlier
-> version scanned the ring for a DONE descriptor and trusted its content;
-> that OOMed once it reached uninitialised DMA memory that happened to have
-> the bit set. A register cannot misfire that way.
->=20
-> Recovery is deferred to a work item, since the register access can sleep.
-> It drops what is in flight and re-arms the ring through the existing
-> cleanup_rx_queue()/fill_rx_queue() pair, which only touch the sw-owned
-> [tail, head) window and rewrite both indices from it. Trying instead to
-> identify and keep the descriptor hw used caused a page_pool double free.
->=20
-> GLOBAL_CFG_RX_DMA_EN_MASK is per-QDMA, not per-ring, so this briefly
-> pauses every ring behind that instance; there is no per-ring equivalent.
-> The measured pause is 986-1131 us over 13 recoveries, not the 50 ms
-> read_poll_timeout() ceiling, so the logged value is worth having.
->=20
-> Fixes: 23020f049327 ("net: airoha: Introduce ethernet support for EN7581 =
-SoC")
-> Signed-off-by: Vitaliy Sochnev <sochnev.v.74@gmail.com>
+This is v6 of my Chromebook trackpad supply fixes and optimization
+series.
 
-IIUC increasing the ring size the issue never occurs again (correct?). If s=
-o, I
-would drop this patch for the moment and add it if it is really necessary.
+Changes since v5:
+- Patch 1 (regulator)
+  - Correctly assign wait_us to all bulk consumers (Sashiko)
+  - Check _regulator_is_enabled() > 0 to check for enabled regulators
+    (Sashiko)
+  - Lock regulator_dev on final _regulator_is_enabled() check in
+    regulator_register() (Sashiko)
+  - Make it clear that _regulator_is_enabled_recursive() assumes that
+    supplies have been resolved (local AI review)
+  - Consider supply's last_on timestamp for regulators that are already
+    enabled or have no .is_enabled() ops (local AI review)
+- Added noautosel tag for some patches
+- Added patch to pass component probe success or not to cleanup callback
+  (patch 5)
+- Only defer regulator disable if a device was found (patch 6)
+- Link to v5:
+  https://lore.kernel.org/all/20260825041628.988369-1-wenst@chromium.org/
 
-Regards,
-Lorenzo
+Changes since v4:
+- Made regulator core try to set last_on timestamp for regulators that
+  were left on by reset default or firmware, but not enabled in kernel
+- Dropped two patches that were merged
+- Link to v4:
+  https://lore.kernel.org/all/20260811122011.3539250-1-wenst@chromium.org/
 
-> ---
->  drivers/net/ethernet/airoha/airoha_eth.c | 98 +++++++++++++++++++++++-
->  drivers/net/ethernet/airoha/airoha_eth.h |  8 ++
->  2 files changed, 105 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
-net/airoha/airoha_eth.c
-> index c59201aded26..177a0e10e372 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> @@ -3,12 +3,14 @@
->   * Copyright (c) 2024 AIROHA Inc
->   * Author: Lorenzo Bianconi <lorenzo@kernel.org>
->   */
-> +#include <linux/ktime.h>
->  #include <linux/of.h>
->  #include <linux/of_net.h>
->  #include <linux/of_reserved_mem.h>
->  #include <linux/platform_device.h>
->  #include <linux/tcp.h>
->  #include <linux/u64_stats_sync.h>
-> +#include <linux/workqueue.h>
->  #include <net/dst_metadata.h>
->  #include <net/page_pool/helpers.h>
->  #include <net/pkt_cls.h>
-> @@ -657,6 +659,34 @@ airoha_qdma_get_gdm_dev(struct airoha_eth *eth, stru=
-ct airoha_qdma_desc *desc)
->  	return port->devs[d] ? port->devs[d] : ERR_PTR(-ENODEV);
->  }
-> =20
-> +#define AIROHA_RX_STALL_THRESHOLD	3
-> +
-> +/* REG_RX_DMA_IDX is hw's own completion counter, independent of what sw=
- has
-> + * posted, so comparing it against q->tail spots the stall without trust=
-ing
-> + * ring content: if hw keeps advancing while the strictly sequential con=
-sumer
-> + * does not, it is completing descriptors that consumer can never reach.
-> + */
-> +static void airoha_qdma_rx_check_stall(struct airoha_queue *q)
-> +{
-> +	struct airoha_qdma *qdma =3D q->qdma;
-> +	int qid =3D q - &qdma->q_rx[0];
-> +	u32 dma_idx;
-> +
-> +	dma_idx =3D airoha_qdma_get(qdma, REG_RX_DMA_IDX(qid),
-> +				  RX_RING_DMA_IDX_MASK);
-> +
-> +	if (q->stall_tail =3D=3D q->tail && dma_idx !=3D q->stall_dma_idx) {
-> +		if (++q->stall_count >=3D AIROHA_RX_STALL_THRESHOLD &&
-> +		    !test_and_set_bit(qid, qdma->rx_recover_mask))
-> +			schedule_work(&qdma->rx_recover_work);
-> +	} else {
-> +		q->stall_count =3D 0;
-> +	}
-> +
-> +	q->stall_tail =3D q->tail;
-> +	q->stall_dma_idx =3D dma_idx;
-> +}
-> +
->  static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
->  {
->  	enum dma_data_direction dir =3D page_pool_get_dma_dir(q->page_pool);
-> @@ -675,8 +705,10 @@ static int airoha_qdma_rx_process(struct airoha_queu=
-e *q, int budget)
->  		struct page *page;
-> =20
->  		desc_ctrl =3D le32_to_cpu(READ_ONCE(desc->ctrl));
-> -		if (!(desc_ctrl & QDMA_DESC_DONE_MASK))
-> +		if (!(desc_ctrl & QDMA_DESC_DONE_MASK)) {
-> +			airoha_qdma_rx_check_stall(q);
->  			break;
-> +		}
-> =20
->  		dma_rmb();
-> =20
-> @@ -895,6 +927,56 @@ static void airoha_qdma_cleanup_rx_queue(struct airo=
-ha_queue *q)
->  			FIELD_PREP(RX_RING_DMA_IDX_MASK, q->tail));
->  }
-> =20
-> +static void airoha_qdma_rx_recover_work(struct work_struct *work)
-> +{
-> +	struct airoha_qdma *qdma =3D container_of(work, struct airoha_qdma,
-> +						rx_recover_work);
-> +	int qid;
-> +
-> +	for_each_set_bit(qid, qdma->rx_recover_mask, AIROHA_NUM_RX_RING) {
-> +		struct airoha_queue *q =3D &qdma->q_rx[qid];
-> +		ktime_t rx_dma_off_ts;
-> +		s64 rx_dma_off_us;
-> +		u32 status;
-> +
-> +		napi_disable(&q->napi);
-> +
-> +		/* per-QDMA, not per-ring: this pauses every RX ring behind
-> +		 * this instance, hence the measured duration below
-> +		 */
-> +		rx_dma_off_ts =3D ktime_get();
-> +		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
-> +				  GLOBAL_CFG_RX_DMA_EN_MASK);
-> +		if (read_poll_timeout(airoha_qdma_rr, status,
-> +				      !(status & GLOBAL_CFG_RX_DMA_BUSY_MASK),
-> +				      USEC_PER_MSEC, 50 * USEC_PER_MSEC, true,
-> +				      qdma, REG_QDMA_GLOBAL_CFG))
-> +			dev_warn(qdma->eth->dev,
-> +				 "qid=3D%d RX DMA busy timeout during recovery\n",
-> +				 qid);
-> +
-> +		airoha_qdma_cleanup_rx_queue(q);
-> +		if (q->skb) {
-> +			dev_kfree_skb(q->skb);
-> +			q->skb =3D NULL;
-> +		}
-> +		airoha_qdma_fill_rx_queue(q);
-> +
-> +		airoha_qdma_set(qdma, REG_QDMA_GLOBAL_CFG,
-> +				GLOBAL_CFG_RX_DMA_EN_MASK);
-> +		rx_dma_off_us =3D ktime_us_delta(ktime_get(), rx_dma_off_ts);
-> +
-> +		q->stall_count =3D 0;
-> +		napi_enable(&q->napi);
-> +		napi_schedule(&q->napi);
-> +
-> +		dev_warn_ratelimited(qdma->eth->dev,
-> +				     "qid=3D%d RX ring recovered after hw stall (RX DMA paused %lld =
-us)\n",
-> +				     qid, rx_dma_off_us);
-> +		clear_bit(qid, qdma->rx_recover_mask);
-> +	}
-> +}
-> +
->  static int airoha_qdma_init_rx(struct airoha_qdma *qdma)
->  {
->  	int i;
-> @@ -1582,6 +1664,8 @@ static void airoha_qdma_cleanup(struct airoha_eth *=
-eth,
->  {
->  	int i;
-> =20
-> +	cancel_work_sync(&qdma->rx_recover_work);
-> +
->  	if (test_bit(DEV_STATE_INITIALIZED, &eth->state)) {
->  		u32 status;
-> =20
-> @@ -1639,6 +1723,13 @@ static int airoha_hw_init(struct platform_device *=
-pdev,
->  	if (err)
->  		return err;
-> =20
-> +	/* init every instance up front: the error path below tears down all
-> +	 * of eth->qdma[], including entries the init loop never reached
-> +	 */
-> +	for (i =3D 0; i < ARRAY_SIZE(eth->qdma); i++)
-> +		INIT_WORK(&eth->qdma[i].rx_recover_work,
-> +			  airoha_qdma_rx_recover_work);
-> +
->  	for (i =3D 0; i < ARRAY_SIZE(eth->qdma); i++) {
->  		err =3D airoha_qdma_init(pdev, eth, &eth->qdma[i]);
->  		if (err)
-> @@ -1687,6 +1778,11 @@ static void airoha_qdma_stop_napi(struct airoha_qd=
-ma *qdma)
->  {
->  	int i;
-> =20
-> +	/* must not run or re-arm past this point: the work calls
-> +	 * napi_disable() too, and doing that twice spins forever
-> +	 */
-> +	disable_work_sync(&qdma->rx_recover_work);
-> +
->  	for (i =3D 0; i < ARRAY_SIZE(qdma->q_tx_irq); i++)
->  		napi_disable(&qdma->q_tx_irq[i].napi);
-> =20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
-net/airoha/airoha_eth.h
-> index fa9a8edce22f..c195dad5ed58 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.h
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-> @@ -207,6 +207,11 @@ struct airoha_queue {
->  	bool txq_stopped;
->  	bool flushing;
-> =20
-> +	/* see airoha_qdma_rx_check_stall() */
-> +	u32 stall_dma_idx;
-> +	u16 stall_tail;
-> +	u8 stall_count;
-> +
->  	struct napi_struct napi;
->  	struct page_pool *page_pool;
->  	struct sk_buff *skb;
-> @@ -567,6 +572,9 @@ struct airoha_qdma {
->  	struct airoha_queue q_tx[AIROHA_NUM_TX_RING];
->  	struct airoha_queue q_rx[AIROHA_NUM_RX_RING];
-> =20
-> +	struct work_struct rx_recover_work;
-> +	DECLARE_BITMAP(rx_recover_mask, AIROHA_NUM_RX_RING);
-> +
->  	DECLARE_BITMAP(qos_channel_map, AIROHA_NUM_QOS_CHANNELS);
->  };
-> =20
-> --=20
-> 2.55.0
->=20
+Changes since v3:
+- Added __private modified to regulator_bulk_data.wait_us field and
+  switched to ACCESS_PRIVATE accessor for the field (Andy)
+- Moved wait outside regulator lock scope (Sashiko)
+- Moved "remaining" value assignment closer to conditional (Andy)
+- Fixed variable unit name in regulator_enable_and_wait() prototype
+  (Andy, Sashiko)
+- Added commit message section showing average delay needed for I2C
+  prober (patch 6) (Andy)
+- Link to v3:
+  https://lore.kernel.org/all/20260721075226.2347933-1-wenst@chromium.org/
 
---AGYD2yEKCoEXZcmo
-Content-Type: application/pgp-signature; name=signature.asc
+Changes since v2:
+- Added new regulator "enable and wait" functions that wait until at
+  least the given amount of time has passed since the regulator was
+  last enabled.
+- Converted patches to use the new functions
+- New header inclusion cleanup patch for elan_i2c driver
 
------BEGIN PGP SIGNATURE-----
+This series fixes the trackpad descriptions on some MediaTek-based
+Chromebooks: either the trackpad's supply was set as always-on to
+workaround missing delays in the driver, or the delay and supply
+are missing from the trackpad's device node.
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCapaA5gAKCRA6cBh0uS2t
-rL7jAP9qEM/opfNLRp7q5R6TRo2Ez9Nid+r3IAynC+NEWoZQ6QEA0fUQT4kWN7Qu
-3xpi2zx+HAETBAl4w32vblKK7tzXeAY=
-=ewuH
------END PGP SIGNATURE-----
+v1 was just the first patch [1]. It has since grown to cover multiple
+drivers and devices.
 
---AGYD2yEKCoEXZcmo--
+
+Patch 1 adds new "enable and wait" functions for single and bulk
+regulator enable.
+
+Patch 2 adds the correct enable delay after enabling the supply regulator
+for the Elan trackpad to initialize. This uses the new "enable and wait"
+regulator enable function.
+
+Patch 3 applies the same logic of skipping the power on delay to the
+i2c-hid-of driver.
+
+Patch 4 applies the same logic of skipping the power on delay to the
+i2c OF component prober library.
+
+Patch 5 makes the I2C component prober let the cleanup callback know
+whether a component was found and enabled. Needed for the next patch
+to only delay calling regulator_disable() if a component was enabled.
+
+Patch 6 adds a delay between when the device node found is enabled and
+when regulator_disable() is called. This gives an asynchronously probing
+driver some time to increment the enable count of their regulator
+reference, thus keeping the device operational and allowing the driver
+to skip the initialization delay.
+
+Patch 7 removes the "always-on" setting from the trackpad supply for
+Elm / Hana and adds the correct delay to the second source trackpad.
+This corrects the hardware description. Should not be backported without
+the other driver patches.
+
+Patch 8 adds the supply and power on delay properties to the Synaptics
+trackpad on the Spherion device. Combined with previous driver changes
+this should cause no actual functional changes or delays.
+
+
+Please take a look. Patches 2, 3, and 4 have build time dependencies
+on patch 1. I suggest placing patch 1 on a separate immutable branch
+or tag for the other maintainers to pull in. The three patches all have
+different maintainers.
+
+The DT changes must go in after all the driver changes land, especially
+patch 2 that adds delays to the Elan trackpad driver. Otherwise the user
+could potentially end up with a non-functional trackpad on the device.
+
+
+Thanks
+ChenYu
+
+[1] https://lore.kernel.org/all/20241001093815.2481899-1-wenst@chromium.org/
+
+Chen-Yu Tsai (8):
+  regulator: core: Add "enable and wait" functions
+  Input: elan_i2c - Wait for initialization after enabling regulator
+    supply
+  HID: i2c-hid-of: skip post-power-on delay if powered on sufficiently
+    long
+  i2c: of-prober: skip post-power-on delay if powered on sufficiently
+    long
+  i2c: of-prober: Let cleanup op know if a device was found
+  i2c: of-prober: Defer regulator_disable() on successful probe in
+    simple helper
+  arm64: dts: mediatek: mt8173-elm-hana: Unmark trackpad supply as
+    always-on
+  arm64: dts: mediatek: mt8192-asurada-spherion: Add Synaptics
+    trackpad's supply
+
+ .../boot/dts/mediatek/mt8173-elm-hana.dtsi    |   8 +-
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi  |   1 -
+ .../mediatek/mt8192-asurada-spherion-r0.dts   |   2 +
+ drivers/hid/i2c-hid/i2c-hid-of.c              |   9 +-
+ drivers/i2c/i2c-core-of-prober.c              |  34 +++--
+ drivers/input/mouse/elan_i2c_core.c           |   7 +-
+ drivers/regulator/core.c                      | 129 ++++++++++++++++--
+ include/linux/i2c-of-prober.h                 |   7 +-
+ include/linux/regulator/consumer.h            |  21 ++-
+ include/linux/regulator/driver.h              |   2 +
+ 10 files changed, 172 insertions(+), 48 deletions(-)
+
+-- 
+2.55.0.897.gb25b4bd76c-goog
+
 
