@@ -4,98 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4F22C61DD3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2026 07:50:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA104C61DD6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Sep 2026 08:23:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3ehsC4fkcGYgZxU5YfTTtJEKH9Dtw/4IjhfNmBesfrM=; b=qBtfCiCrh9yonI/ueHMHn04EJS
-	b43YUzywNmpUP+RY7L1RY8/bYAPSsO9xmsLAMwqPbVeq2k60234686omM8RXtB5mGGeIWkgxE1/Vt
-	HfNWWxBEi6PMH12OdowalnMGBqwoDpiGK7LYlDiU6OC1mwjTZziLvRT/D95vbFYeK28G/2Wq1W51k
-	3kKW6+FkfQWYK0X9Xv3U9cWzo8a4pHToJNSehNzUhbNFus34dtt/cRDhOBq3GxoMVLJledEKgl+cG
-	urTxtNTK0H6dLHDsIQSaIo2UPCvy4RpHNBl/3vCIWkHSWYxp+zdBJkhCl9SQ7YSW5y2FiDeGrexdS
-	07FxwX2w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=X2FS6chP7XdH8eNdzIIj2eLyHHehKHlFVlN1lgbFGhg=; b=Qq+l/JrQo0O+VGCJYrbOCz3BVC
+	9K61kyBFx3vyvtlOyRIUmzs/jLT16JXT5y9oebWO9jsTnts19DPBlXX2reIV/jc+rnVjjmrhycAUD
+	PgSrIu1B5iTAUMcb0a1DOp9johqVMTF3AoIAuNFsd5f6o3cF6z+wfPTA/V8H2ZccNlx52NsrqRjMF
+	5yqek235KccEeOUn/N8dnkZTNDEtHw/h695A/ay4TQnRvh1AO0XkNNQMmZAZpMRtGDqi0oopW0GUV
+	m/47XKKO23LudFstLCym7WlGfa9ge9PBcVWZg9clxugIwXvo2m3CIUtF9Bv4MaxEQRsJVdqDAD4ET
+	8BeRVpmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1JGA-0000000BAXv-3lvP;
-	Tue, 01 Sep 2026 07:50:22 +0000
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+	id 1x1JmB-0000000BFhJ-3a6n;
+	Tue, 01 Sep 2026 08:23:27 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1JG8-0000000BAUR-0Wqh
-	for linux-mediatek@lists.infradead.org;
-	Tue, 01 Sep 2026 07:50:21 +0000
-Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-2d71a50caa9so7542625ad.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 01 Sep 2026 00:50:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1788249019; x=1788853819; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=3ehsC4fkcGYgZxU5YfTTtJEKH9Dtw/4IjhfNmBesfrM=;
-        b=mW5KMc++gmbOUjzso8RDr+rOwo8X5s4Av+Dn4sHOYz/UfsDuNnLB/2qGvKRrYTSX7I
-         GNmLq9r6c2WTICf7ECqXFa26oRABEVLFiETWQC79mycKos1w75r+pgKkGE+zt2y3E0/B
-         fIR8Vk3NAVhIxUMy9zrsJSDwFm0uJ2+UGcpms=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788249019; x=1788853819;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=3ehsC4fkcGYgZxU5YfTTtJEKH9Dtw/4IjhfNmBesfrM=;
-        b=Zko1qGlO+TtwbNr9xElQWA82r82rgefxIbf7Wexanypi9hDdZdifQ38q71PsKW5q0V
-         drSBv4rthjLDsPoN6McZENFJNt9nVY4/xwBxuXgJHh1CfARP1ohL9wcGCTSPxMIaZDer
-         Luz0A2d0XdPqNEt7Qo2x6MsYYPH6aQuOkGAMm8ePkZV4KFFFLXSXt7fxmnp3jbN8wLeF
-         qohb4EK58iZ3sxo1JEkwDmhxrpeP4iKJfCuNaTUUOTzOIYl5Fr6cO96jzVnGA1G6zfFZ
-         BtGGemcb1kyEqTNpaDTHv8h7tAOwkl3iaSfP3OoXxVSkYEOjMQ4K/fzZMjTlXzcdsmV9
-         VRjA==
-X-Forwarded-Encrypted: i=1; AHgh+RqOOof5SJubwRP/rsbbJ/FQUwBt+yBdQar5AYWfnAs2vf0wt5OAIbgqSjUPS827B2Y2TWfe2K7ZWyI0Nq3rcg==@lists.infradead.org
-X-Gm-Message-State: AFuF++n07bHzpL1/BVhGnNElAnE7Fp2/4Eg8/SAFSPaH8lAq8UgrlBeL
-	0Vq0Cs+EFjt/Okxj34yiZXBrmOfDGNCnb17N6pLhq58uogCqDBii+O9ug+/HVY8KkQ==
-X-Gm-Gg: AYBFou1cgis2+3fSJLK3yKaGN92UbbvUetTL7iAc1LbIeofZ+gF0KD6xwZUN5i84sud
-	hlnynTU7dV+SHf/jLYFwpeu3z32RqPkGOFuOzKpDqZt2GwVeAsEoANZFKktHN7dkLkq/7Akxbkm
-	7kdjtvb9xoZHr1hj6JJcOAS/LKlHDF4ot/oP9wrGN7nUo1cv1BsN+cIlku2FOZwhkDsLleap7cl
-	nnK5OvzyOEClq5LH3z0QlT6quMQDP9SthTpcUplqs2ER7D9oAcFywGPMirC6KfRMgpnolV5fGF7
-	gPjeaKMxHx82jlp2StHEGYIauIEpWqR4s+owzh9UlKIpAk+R8cmy1uH/PVH8U5QGfoysr5/AiUe
-	jvNDWE021zHdURFG12XMkazKnjniBuoFtfj4P3Bv2dILVWJbpurFIvlVlAFHM6Kq2Mko5USW1q3
-	hsyj7hBFmfRneutESInFe0nN9VRH2hvbsboyfBVyjs6IX9LtOm8S2xU8uO2Owk1CsLrOlL9j9CC
-	hM9L6MzafdxWeTgnYZ8v4xFHz5YVQRJ/lLLdWrTJtjCu1c=
-X-Received: by 2002:a17:902:f791:b0:2d9:1dee:43db with SMTP id d9443c01a7336-2d91dee456dmr196089085ad.15.1788249019467;
-        Tue, 01 Sep 2026 00:50:19 -0700 (PDT)
-Received: from wenst-7875.tpe.corp.google.com ([2a00:79e0:201d:8:8cf:6df0:9c4e:f5e1])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2d75988b699sm48142515ad.59.2026.09.01.00.50.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Sep 2026 00:50:19 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Mark Brown <broonie@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Jiri Kosina <jikos@kernel.org>,
-	Andi Shyti <andi.shyti@kernel.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	chrome-platform@lists.linux.dev,
-	linux-input@vger.kernel.org,
-	linux-i2c@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	stable+noautosel@kernel.org
-Subject: [PATCH v6 8/8] arm64: dts: mediatek: mt8192-asurada-spherion: Add Synaptics trackpad's supply
-Date: Tue,  1 Sep 2026 15:49:26 +0800
-Message-ID: <20260901074930.764550-9-wenst@chromium.org>
-X-Mailer: git-send-email 2.55.0.897.gb25b4bd76c-goog
-In-Reply-To: <20260901074930.764550-1-wenst@chromium.org>
-References: <20260901074930.764550-1-wenst@chromium.org>
+	id 1x1Jm9-0000000BFgo-3Og2;
+	Tue, 01 Sep 2026 08:23:27 +0000
+X-UUID: 62de9c1ea5de11f1acbe4559397dec65-20260901
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=X2FS6chP7XdH8eNdzIIj2eLyHHehKHlFVlN1lgbFGhg=;
+	b=jhjwxedIUN1TPGSLfgT8rNpVAndLs1AMe3X9v8ujfsTuj7v5NpH2Z7nDpN4yBhWpeXeAUU3AYYKMLBv4tRXU1WHO4f+gckR08ckGWIY2a8Kd7qr214v32PkqlmCpjyUlUCHRKO6Mea2LfdUfVifiiG4GogYcqGtLO5fgzfv3fn4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.19,REQID:23306d9c-ce58-4803-8a3b-08b78891bf2d,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:7db8b62,CLOUDID:35e15d23-5869-48e3-bf78-b0f483615649,B
+	ulkID:nil,BulkQuantity:0,SF:102|123|836|865|888|898,TC:-5,Content:0|15|50|
+	99,EDM:-3,IP:nil,URL:1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 62de9c1ea5de11f1acbe4559397dec65-20260901
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <zhaoping.shu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1386515738; Tue, 01 Sep 2026 01:23:18 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 1 Sep 2026 16:23:16 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 1 Sep 2026 16:23:14 +0800
+From: <zhaoping.shu@mediatek.com>
+To: <edumazet@google.com>, <ncardwell@google.com>, <kuniyu@google.com>,
+	<davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>,
+	<horms@kernel.org>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <dsahern@kernel.org>,
+	<willemb@google.com>, <netdev@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: <haijun.liu@mediatek.com>, <xiayu.zhang@mediatek.com>,
+	<lambert.wang@mediatek.com>, <Iven.Yang@mediatek.com>, <nbd@nbd.name>, HW He
+	<hw.he@mediatek.com>, Zhaoping Shu <zhaoping.shu@mediatek.com>
+Subject: [PATCH net v5] net: gro: Fix nesting of TCP GSO SKBs in skb_gro_receive_list()
+Date: Tue, 1 Sep 2026 16:23:12 +0800
+Message-ID: <20260901082312.14596-1-zhaoping.shu@mediatek.com>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260901_005020_161458_024FD9B1 
-X-CRM114-Status: GOOD (  14.20  )
+X-CRM114-CacheID: sfid-20260901_012325_863752_2FFFCC43 
+X-CRM114-Status: GOOD (  18.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,40 +88,143 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Synaptics trackpad, like the Elan trackpad option, is fed from the
-system 3.3V power rail. Add it to the trackpad device node.
+From: HW He <hw.he@mediatek.com>
 
-Also add the correct post-power-on delay, even though in practice it is
-not required. The Synaptics trackpad requires 100ms after power-on (or
-deasserting the reset, whichever comes later) to fully initialize. The
-power is always on and the reset pin is not routed out, so the
-implementation could try skipping the delay.
+Fraglist GRO and hardware GRO can create an fraglist of
+HW-GRO packets. This cannot be segmented back into
+the original form on TCP tethering scenario.
 
-Cc: <stable+noautosel@kernel.org> # Without driver changes only lengthens probe time
-Fixes: 925ebc0cd55c ("arm64: dts: mt8192-asurada-spherion: Add Synaptics trackpad support")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Avoid constructing such a GSO packet, by flushing an already
+built fraglist GRO packet if a hardware GRO packet arrives.
+
+Scenario (Tethering/Forwarding):
+1.Driver submits a single TCP packet, P1. P1 is kept in the
+gro_list as the first packet.
+
+2. The driver submits a TCP GSO skb, P2. P2 has already aggregated
+multiple TCP packets by HW_GRO, and its non-linear data is stored in
+frags[].
+
+3. P1 and P2 match the GRO rules, and since there is no local socket,
+they are aggregated by skb_gro_receive_list(). The resulting skb,
+P3, has a frag_list entry that still contains frags[]:
+P3: [ Linear Data ] -> frag_list -> [ Linear Data ]
+                                    [ frag[1] ]
+                                    [ frag[2] ]
+                                    ...
+4. Later, tcp4_gso_segment() or tcp6_gso_segment() calls
+skb_segment_list() to segment P3. However, skb_segment_list() only
+segments the entries in frag_list. It does not segment the frags[]
+inside P2, so P3 is not restored to the original packets, which leads
+to IP fragmentation or packet drop in the following path.
+
+Check skb_is_gso(skb) and current GRO method, make sure fraglist GRO
+applies to consecutive non-GSO skb, others adopt regular GRO path.
+
+Fixes: 8d95dc474f85 ("net: add code for TCP fraglist GRO")
+Signed-off-by: Zhaoping Shu <zhaoping.shu@mediatek.com>
+Signed-off-by: HW He <hw.he@mediatek.com>
+
 ---
-I think this shouldn't be backported, as backporting it without the
-driver enhancements just delays the trackpad probing with no real
-gains.
+[4]: https://patchwork.kernel.org/patch/14756974
+[3]: https://patchwork.kernel.org/patch/14747095
+[2]: https://patchwork.kernel.org/patch/14706032
+[1]: https://patchwork.kernel.org/patch/14702209
 ---
- arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts | 2 ++
- 1 file changed, 2 insertions(+)
+ net/ipv4/tcp_offload.c   | 22 ++++++++++++++++------
+ net/ipv6/tcpv6_offload.c | 15 +++++++++++++--
+ 2 files changed, 29 insertions(+), 8 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts b/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts
-index 68caf4c58cfe..8adbfc307fca 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada-spherion-r0.dts
-@@ -94,6 +94,8 @@ trackpad@2c {
- 		hid-descr-addr = <0x20>;
- 		interrupts-extended = <&pio 15 IRQ_TYPE_LEVEL_LOW>;
- 		wakeup-source;
-+		vdd-supply = <&pp3300_u>;
-+		post-power-on-delay-ms = <100>;
- 		status = "fail-needs-probe";
- 	};
- };
+diff --git a/net/ipv4/tcp_offload.c b/net/ipv4/tcp_offload.c
+index 3b1fdcd3cb29..e74d99ca9fac 100644
+--- a/net/ipv4/tcp_offload.c
++++ b/net/ipv4/tcp_offload.c
+@@ -332,6 +332,7 @@ struct sk_buff *tcp_gro_receive(struct list_head *head, struct sk_buff *skb,
+ 		flush |= skb->ip_summed != p->ip_summed;
+ 		flush |= skb->csum_level != p->csum_level;
+ 		flush |= NAPI_GRO_CB(p)->count >= 64;
++		flush |= NAPI_GRO_CB(p)->is_flist != NAPI_GRO_CB(skb)->is_flist;
+ 		skb_set_network_header(skb, skb_gro_receive_network_offset(skb));
+ 
+ 		if (flush || skb_gro_receive_list(p, skb))
+@@ -395,12 +396,20 @@ static void tcp4_check_fraglist_gro(struct list_head *head, struct sk_buff *skb,
+ 	struct net *net;
+ 	int iif, sdif;
+ 
+-	if (likely(!(skb->dev->features & NETIF_F_GRO_FRAGLIST)))
+-		return;
+-
+ 	p = tcp_gro_lookup(head, th);
+ 	if (p) {
+-		NAPI_GRO_CB(skb)->is_flist = NAPI_GRO_CB(p)->is_flist;
++		/* flist GRO applies to consecutive non-GSO skbs */
++		if (!skb_is_gso(skb) || !NAPI_GRO_CB(p)->is_flist) {
++			NAPI_GRO_CB(skb)->is_flist = NAPI_GRO_CB(p)->is_flist;
++			return;
++		}
++
++		/* Fall back to the regular GRO path */
++		if (NAPI_GRO_CB(p)->count == 1)
++			NAPI_GRO_CB(p)->is_flist = 0;
++
++		NAPI_GRO_CB(skb)->is_flist = 0;
++
+ 		return;
+ 	}
+ 
+@@ -410,7 +419,7 @@ static void tcp4_check_fraglist_gro(struct list_head *head, struct sk_buff *skb,
+ 	sk = __inet_lookup_established(net, iph->saddr, th->source,
+ 				       iph->daddr, ntohs(th->dest),
+ 				       iif, sdif);
+-	NAPI_GRO_CB(skb)->is_flist = !sk;
++	NAPI_GRO_CB(skb)->is_flist = !sk && !skb_is_gso(skb);
+ 	if (sk)
+ 		sock_gen_put(sk);
+ }
+@@ -430,7 +439,8 @@ struct sk_buff *tcp4_gro_receive(struct list_head *head, struct sk_buff *skb)
+ 	if (!th)
+ 		goto flush;
+ 
+-	tcp4_check_fraglist_gro(head, skb, th);
++	if (unlikely(skb->dev->features & NETIF_F_GRO_FRAGLIST))
++		tcp4_check_fraglist_gro(head, skb, th);
+ 
+ 	return tcp_gro_receive(head, skb, th);
+ 
+diff --git a/net/ipv6/tcpv6_offload.c b/net/ipv6/tcpv6_offload.c
+index f2a659cd6183..eec3778855eb 100644
+--- a/net/ipv6/tcpv6_offload.c
++++ b/net/ipv6/tcpv6_offload.c
+@@ -26,7 +26,18 @@ static void tcp6_check_fraglist_gro(struct list_head *head, struct sk_buff *skb,
+ 
+ 	p = tcp_gro_lookup(head, th);
+ 	if (p) {
+-		NAPI_GRO_CB(skb)->is_flist = NAPI_GRO_CB(p)->is_flist;
++		/* flist GRO applies to consecutive non-GSO skbs */
++		if (!skb_is_gso(skb) || !NAPI_GRO_CB(p)->is_flist) {
++			NAPI_GRO_CB(skb)->is_flist = NAPI_GRO_CB(p)->is_flist;
++			return;
++		}
++
++		/* Fall back to the regular GRO path */
++		if (NAPI_GRO_CB(p)->count == 1)
++			NAPI_GRO_CB(p)->is_flist = 0;
++
++		NAPI_GRO_CB(skb)->is_flist = 0;
++
+ 		return;
+ 	}
+ 
+@@ -36,7 +47,7 @@ static void tcp6_check_fraglist_gro(struct list_head *head, struct sk_buff *skb,
+ 	sk = __inet6_lookup_established(net, &hdr->saddr, th->source,
+ 					&hdr->daddr, ntohs(th->dest),
+ 					iif, sdif);
+-	NAPI_GRO_CB(skb)->is_flist = !sk;
++	NAPI_GRO_CB(skb)->is_flist = !sk && !skb_is_gso(skb);
+ 	if (sk)
+ 		sock_gen_put(sk);
+ #endif /* IS_ENABLED(CONFIG_IPV6) */
 -- 
-2.55.0.897.gb25b4bd76c-goog
+2.17.0
 
 
