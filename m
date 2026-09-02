@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4A4FC624D4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 20:07:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2470DC624D4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 20:07:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6axdt58sY1DqnmVQsW0ISUurcHhysngabrgAEPT5NAQ=; b=NnxgtmldwblK02v+ulT3wVD4vJ
-	p/hmNkmvgkQ+EAtxRTHayivKgj2DvYW7FIOhqdy4vWyWxK69bpvYOlr4PE6jETG7uE+6/Fc0zHY1Y
-	A+NBwKHUEjZ9vfpM32r1i60eIEjKeg2hDZOKhxi/6olSsWCAhvxWqdyDA/Lci8SLFVhY5FqyT0oeF
-	+d0FrN2hq0fHT9z4ANQQn2mOtFB7xGVKZDSN+/ZTTbX2jQZ8QtXBzHvF2jEykCfPL5BpOWWGzh1dm
-	ixnPfLg3EMYwhkt3FqbEoAV+naRqDyyVtBer4vCEAp3w95H3ooZwmKG2Lar0zPuel72HaB4YUxkls
-	EQXAdn+A==;
+	bh=J9W8P08UQPfJw5C78sAv5RWAvY1aWehRnRIhk1Qi+vw=; b=UDRtlAoDcy6nICIXsyDthzA6HQ
+	R9EtsrAwxj1RhOiqVZL5YLcm+dXVT3T/gbHUz/JCpx9j07Y2t/DIvC6zQEmxl5MukJ04hfMoIf0Zx
+	n4P0yXGoYBE3L96Xf1TCRxFJRBp47l/rxn0/bi2PRCRMZiimtPPVcdSoI3SSDkdMpu70Kxhl7fSA3
+	Icn2p1i7gwxi0+L4zs0yxB2jyS2XPdTIUejczZ9NKwkh8kJZUGJDF5UQfskAbWQKoJ0KnC5blCoWU
+	VvvI6kXLPp8oTmhXswaoYnD2EtsLSgwDx1mXa7IP1NsO/Q3Dg+q3yK/BeOb4pX3oQ2j2bEH6PBW2T
+	tVi4vB+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1rFC-0000000FoxZ-2LNj;
-	Wed, 02 Sep 2026 20:07:38 +0000
+	id 1x1rFM-0000000Fp43-44Ol;
+	Wed, 02 Sep 2026 20:07:48 +0000
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1rF9-0000000FowB-1fYe
+	id 1x1rFJ-0000000Fp1w-3FNm
 	for linux-mediatek@lists.infradead.org;
-	Wed, 02 Sep 2026 20:07:37 +0000
+	Wed, 02 Sep 2026 20:07:47 +0000
 Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 682Hrcjq2483955
-	for <linux-mediatek@lists.infradead.org>; Wed, 2 Sep 2026 20:07:34 GMT
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 682HrXHg2483839
+	for <linux-mediatek@lists.infradead.org>; Wed, 2 Sep 2026 20:07:44 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=qcppdkim1; bh=6axdt58sY1D
-	qnmVQsW0ISUurcHhysngabrgAEPT5NAQ=; b=ROdgvEYDb2UZdpNEhI8RxvnS9DG
-	2OQurEeIzPojM+T0MtsUy8ud0+ePaKsegGa2jZIAz+1/ZoRDfQgUPhsWM5VI8Q8V
-	8njeua6nNI9k3tuL04Wmg+SptShh5D1ZtQpf+Zrhq47/HGQS6EE4cqFFn7skgYwG
-	Z8Pah6EzNrX9zEbaBzGCISZoP7dl2XJBkXOqozZ8Zn62ajG2B3LSVEfCueR2Cs2f
-	upqOVyaMpNKvUQ2R4tfkN7yAo4cStnJcs3FMv3FGzcqkoiO7mcmY639u/FVsvIeW
-	raqcwHlpDp5YDpK9k9328GUmh7ldi700HT5V6eYIPzoxV9f3VRQ2Xz+Btpg==
-Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com [209.85.216.72])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gemjh9p74-1
+	:mime-version:references:subject:to; s=qcppdkim1; bh=J9W8P08UQPf
+	Jw5C78sAv5RWAvY1aWehRnRIhk1Qi+vw=; b=P64iHGeU+wqitnO2yOTz85CPPMC
+	Nh9EN3gs+0SkmrParjRLd3P0cOTDHlUIuwGLTuKjTJxj2CRNpFTYEG6MPoVkvEoN
+	KRHTCcUMHiCjR48T3RBTIkIlHfwEfHUJn8w9LZX6cIPl6V72APy3F7KN8w5EZhOh
+	JmIfKfn1M9o8qLLLslSCCHkih+JlFWsLs5eIut+RLMcZtwCohJ/vch0JdGhdKGlx
+	05ci71hJL1xR4/y/O1dq2OyMXjVfwO3NqnxZVBv4QnG1GPIFy2RU34XcrhpbqbY2
+	dqXpMxp8akRJCDdTl+S71BL///ZwoRsnXT5kuM5vJcaDjuDRWHNG9Ls4ndQ==
+Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com [209.85.216.70])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gemjh9p8e-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2026 20:07:34 +0000 (GMT)
-Received: by mail-pj1-f72.google.com with SMTP id 98e67ed59e1d1-38e475f83a2so2515692a91.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2026 13:07:34 -0700 (PDT)
+	for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2026 20:07:44 +0000 (GMT)
+Received: by mail-pj1-f70.google.com with SMTP id 98e67ed59e1d1-38e1118e4abso2902487a91.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2026 13:07:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1788379653; x=1788984453; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1788379664; x=1788984464; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=6axdt58sY1DqnmVQsW0ISUurcHhysngabrgAEPT5NAQ=;
-        b=Jk54wznO37I2Bo0E0yI9WbXa+D68F5FBJTTcDHEDsCH5jsYo7BxmE0p72UVH6VUSbb
-         0ex9QR4Z64R9jNQglR35YM0AXf3YIuhfKqk8pjBApao7z3CmLaNoWZLX83F6FY1YDUkY
-         ZHemJ47pjMFCaF4h7NVUFTr9FdjhDMaCN+n7BsLDTu7mZUVMutZUSKDRvCOqd/GHSonb
-         0TykC4zD517tuYVh9uAUyvYHVSa5NN7VuqQv4JaqgHslg6AGy/pBokaQfJH+X1fiKgxt
-         G4R8550+El9o85nY0qmuijbLl550ySmdgIHD4YndwCSJae3GQCLmthKKLnX5ystbSYQS
-         cMJA==
+        bh=J9W8P08UQPfJw5C78sAv5RWAvY1aWehRnRIhk1Qi+vw=;
+        b=Xfw5k3XmK054kpFid9USan1OUzOJ8A3NilLDSA4usVsU16hnWANRhVMPibtsU8MCAg
+         fNXQy43hsPMHGnW7AfA5LX1qYE8h+XUFcrKjzi4WpCInAYw000SqLziGoyus79vrYElT
+         fFLxDJi3ElM8xwLCtFxTuuVza72tex97wtS54wSoGf3YPeEwQqXHFvSKqtXKH/Px8UfC
+         ik5lhm3mQuJ+0BA16q2mt0zU4T8CtXcpV/pR6rsl0OJM69ALPvp1es2xYNWNVM6asyfK
+         MCS8R7GVznxZ+eaNAa0wincjTlxvJD/hlw/3O3iq5VvdkJ3ot+dQeNfakZHAVU9EBtrr
+         CdUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788379653; x=1788984453;
+        d=1e100.net; s=20251104; t=1788379664; x=1788984464;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=6axdt58sY1DqnmVQsW0ISUurcHhysngabrgAEPT5NAQ=;
-        b=LqUseQrFamqnZ5OsfwZnOmQBf01BbQ2yBSlyFzN6hstWcPFFDoFKMN6JuTSQFMsSel
-         Xn8p9lG7xIjoO3CFQttE5jgwE66pk8aIHKIISpK0QVmw5oNn/NRVib5B04fmnrT3EZP7
-         7Lv+ikiXyYTTytaLfEimXbCNJdSXkAQ4RX5Bs+vfqb+6Kst8H5hS1PUT43Br8TuFd9DL
-         cmaZaq7JAUJt5/s4bg+dYnVwR3LsnopU256aS9yH9Eex3IuhsVsv04yLQrpfBktao3z1
-         8N4mBhlDHg4c4gMZQ366+NHZp3CVmUWbFxbtTRvrAMVs4Azyl2STt/FS06HuiIz7XyaY
-         VT5A==
-X-Forwarded-Encrypted: i=1; AKwUvBwf08v9akgxPJEmzVDoMJedcu/euHjlvNYJ+ezF1E35F7QN0gr/B6Z+OhajYA2VvjeSqup93KeXMfwc8KfYHw==@lists.infradead.org
-X-Gm-Message-State: AFuF++mDDyCvXI9SBiVRpm+bElVr9s0DBKf5qkEniFsp6Uv6qYFrIa3z
-	mOKWrRSaDQ8+/2smvkN922U06DBaKe7TT/QyuCtVAl6V6HbOKDL0daj5OIfmxqokjSBMbCU6KNb
-	4FjJWmyL1KAEqUEqh+kj5K0HXZZh6HO7MGi2CO5UafZB2JvXkypuLSlqFFeqTVh7hDjYiMr7wYh
-	Y=
-X-Gm-Gg: AYBFou3VL7BFmAUxy2VMXzGpzbKaDGmcwXFVObOtm5HNdo2+qAnTFWO59UShnttPnE2
-	9IbFOD0/zyA8RfHd/JsAibwhAptp7lnPI8P8+oGXAAkk6gbKIVkcPWW2osGsNMeoKxQ4V6zBhhs
-	UVkvQ+VSYnw8YRcuMkz9ZAMRN0pAxpyfDD7mgdpxz7fRk7m+nMIsbaKqbRAShpORshnU7eRKgiI
-	3fKGPEi4vXoHuatAoA73ipu1keRUhWqpQ8a8NWgFBCVDUf6vzJrZnhBPXbZjqfXBdjsUBOBWSON
-	h0nOxRJWpssTx9VncCXfmgKDyQzx2V+e9b93gzfGKMbH7dSxT4k2SNnF7OESYqB2FyYO+U+vP9/
-	v8g3Z9VW9PbwFI1wFotEALxqkQwo=
-X-Received: by 2002:a17:90a:f94f:b0:398:bacb:1137 with SMTP id 98e67ed59e1d1-39aee21a4demr11942910a91.19.1788379653321;
-        Wed, 02 Sep 2026 13:07:33 -0700 (PDT)
-X-Received: by 2002:a17:90a:f94f:b0:398:bacb:1137 with SMTP id 98e67ed59e1d1-39aee21a4demr11942802a91.19.1788379652830;
-        Wed, 02 Sep 2026 13:07:32 -0700 (PDT)
+        bh=J9W8P08UQPfJw5C78sAv5RWAvY1aWehRnRIhk1Qi+vw=;
+        b=Ue+L2cMOEov5DDhW+bAfu6T5W+Sid0ZxeP1cR9vjVDrbu3vln0nTaC2k6OXmS5wIu6
+         hbFkUZhw+hRph4hv5mTap/4MOKtaj5c/A8JB+0+t4/Y7RGvT8XsFLKfFPfci8qhjUuGk
+         fo7E/UkW5WzR8GTkAMW8a6TYiG4hMfvVPhWa8DaTZlQ6jyGWB2kLw8vDj2BQQVgtIVT8
+         G2dYV3R83liJjPyPK1UOy268Ju0HvnKJfPWrs64OmKe0CKOYZFFkZlkY0k4A6Kr+YRU1
+         k6Qln4Jm3EO4FF5x+5DGJqFbkNmpZi/2oYTgMKLyyd7i5GtdWal0zTy0TtimpVKNT6gg
+         OUJA==
+X-Forwarded-Encrypted: i=1; AKwUvBzOV3P3b9Sf1RhOqLKw0D4MEJpiGRlIPLZjO2gRW1FAtReOrkKX/Lv75mY4W+5c/hvrRoD6s7XzuVCmVwh3Mg==@lists.infradead.org
+X-Gm-Message-State: AFuF++mw+mHoo8q7pPdF4wTPKHd293r9kjIf1NkkopzRc3lx2yqO+isu
+	nZPwFGF4h3GfPDsiei7IZzsHnGJQIhcbKdxTvBGSDdE2IPCc0J2EFHI9tTdfrWLs6V4FmTlHNC0
+	5rbabyOlPTSNFqrv+6zvCf3AtBkVsYz/3ASbJFkr0CS2FC+RYGB/A2Nj8Z9vsgEUXufyNZyFvD3
+	U=
+X-Gm-Gg: AYBFou3i/19pVaWZZ/f061qLCrCh76C8TLsCF5wrxb7zY38wQXKIiHRMJxVbpOdzJLi
+	SwtPHMnPR/aWZgg7iOyK0Jy1r9FDP86FV60+nFhU9e4z32Tf+bldUxUKNi8kHCZ27JGXkw7EAbS
+	fDk177aEarO4gxVflQvuoN9Elp/N5nqsJXl4nbeQHqHSZsiB5Sd3p5voIpFAri1q0Rx9x16R50H
+	XW25YrsWhtlJ2vlPtAvMwk05Z1sWIJzks4wboEGTb4Fx425179AsrBXRPinL6CtSd1QgNjwk/nM
+	1GjzyzwmBZioxiL4nEpxvKNxEZ2yFyvGwEHzZsRjEycITqh7oi/CgcmdRHsKfAWKTXAHb4/Zp/G
+	WBu210FKndcWSSIiLUdSyPycqtHU=
+X-Received: by 2002:a17:90b:2644:b0:38e:9045:babe with SMTP id 98e67ed59e1d1-39aedfbd99amr11639280a91.7.1788379663613;
+        Wed, 02 Sep 2026 13:07:43 -0700 (PDT)
+X-Received: by 2002:a17:90b:2644:b0:38e:9045:babe with SMTP id 98e67ed59e1d1-39aedfbd99amr11639151a91.7.1788379662903;
+        Wed, 02 Sep 2026 13:07:42 -0700 (PDT)
 Received: from hu-mojha-hyd.qualcomm.com ([202.46.23.25])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-33255f2981dsm434360eec.19.2026.09.02.13.07.23
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-33255f2981dsm434360eec.19.2026.09.02.13.07.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 02 Sep 2026 13:07:32 -0700 (PDT)
+        Wed, 02 Sep 2026 13:07:42 -0700 (PDT)
 From: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
 To: Daniel Scally <dan.scally@ideasonboard.com>,
         Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
@@ -116,33 +116,33 @@ Cc: Ryan Chen <ryan_chen@aspeedtech.com>,
         linux-mediatek@lists.infradead.org, kernel@collabora.com,
         linux-staging@lists.linux.dev, linux-sunxi@lists.linux.dev,
         Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
-Subject: [PATCH v2 1/6] media: synopsys: hdmirx: Use devm_of_reserved_mem_device_init()
-Date: Thu,  3 Sep 2026 01:36:58 +0530
-Message-ID: <20260902200703.2016410-2-mukesh.ojha@oss.qualcomm.com>
+Subject: [PATCH v2 2/6] media: aspeed: Use devm_of_reserved_mem_device_init()
+Date: Thu,  3 Sep 2026 01:36:59 +0530
+Message-ID: <20260902200703.2016410-3-mukesh.ojha@oss.qualcomm.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260902200703.2016410-1-mukesh.ojha@oss.qualcomm.com>
 References: <20260902200703.2016410-1-mukesh.ojha@oss.qualcomm.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: 0waS9We5Qr-FJV8KUOgMNO6jVEmLl3Wv
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTAyMDE3OCBTYWx0ZWRfX7tyztndOoq1k
- 5+l6GCMQAnBY8TbZL0Yg2i7CC3CDEQhQalNGkIKNhumQKcoxzrw1vHTTbgQ9M2yvBhJl2v6CM30
- OjV737kxb0diuhy8HBIRPAmKywOSYj9PHuACeHnvAgts9c4NKfO0xbyD/Q3iBeMsZC7WtrapocH
- iyASboeA0Cx6CE28p9nJTSHdl6467yivvrS2oZ2GcuknRuHGwjQ6g9aGDc+R/uRt8JLL3goPfss
- IeV3AN3Uw4DxZXIcmZFDvZjTqAznmXXL2jDXNVZFRyucRFiDlUJVA9HN83AlYvNBRJxaBf9KoHi
- AgMXrxAgXo00y134o4JIK8gxO4p9S7DQDgEyq+OW6evzhz7haUp/yIMkWndBG/dRmFJuLt2Up+b
- 9yhiDM9xg+wpPV1ZtpHgdR/MsJICXiN/Yl1XFy93EioGdoeNcBmO49ZAASFhJfD9gJIndHwnARH
- 7ezuqgZ3qbvn469w/RA==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwOTAyMDE3OCBTYWx0ZWRfX3wecG4pTpBKm
- Q8eXq5Ch1eBw860N/zf8e2NbraqzyloobhU8bZNwyY1JTPZim18diRvzZZ2AcsdthEyZeuK4ELp
- mjwMWPLkGpmXU3fxK6Lge5MXTZTlQdc=
-X-Authority-Analysis: v=2.4 cv=ErHiaycA c=1 sm=1 tr=0 ts=6a988206 cx=c_pps
- a=RP+M6JBNLl+fLTcSJhASfg==:117 a=ZePRamnt/+rB5gQjfz0u9A==:17
+X-Proofpoint-GUID: NW_bm-hj5pO0c4IlODboH80rbC2JqMbx
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTAyMDE3OCBTYWx0ZWRfXzIByDSg6lUj0
+ jwTb3S1YJNPS/vnVywhf1z6tPeJ7YTbYdMPBgyL8ti71H1I6TQ/qEi/SCp0Xh4jTN8J78mMzn3W
+ o4mFDLxmCTJn6gmYb4OLBDHnk9+UF8pWpJEwSZ4cBJLIdlI/tk3xiUKC9VRyY1t4JfgCtD1RjQg
+ Mz4Q7OS8uo3M43D7+9engpFhZbqhABThwZxbBBn2VhDT6eOKQ50PiTpJJJS7+eQEF3tmDnc52I6
+ +RZOFfpaivsrEXFqq68QmvRqKEeIDRrQp2lOU9VAg1hN06AuFPQoonyW7nJyUcF7IgI3GNoZuTb
+ ajGiJcvS9FLgfzLsCI3hmKc/y/FBYFY8rTUoyGoDRO9OElFFuxu/zbUu5qu0feh6YP+gqoruyny
+ Lxq+Dbt0v+NvKHx3KQuKVTop8pV4NmganN0yGfcpPBsmkVhCUzOsP0M2kAwHkvThgPuv+odcztO
+ XcES4cqzEMCkTdRvJMw==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTAyMDE3OCBTYWx0ZWRfX0mUb6+11IXRu
+ MLhSJ4HFBpngbzLNGFzOc3tnyVrZ8TEyoSb7UtmU7nKd9FavwilfgxuNBruuPGALsKjH3nq5Sn5
+ nE0kdF9w0UTHkHTEl8NWajVuHCru8dQ=
+X-Authority-Analysis: v=2.4 cv=ErHiaycA c=1 sm=1 tr=0 ts=6a988210 cx=c_pps
+ a=0uOsjrqzRL749jD1oC5vDA==:117 a=ZePRamnt/+rB5gQjfz0u9A==:17
  a=VdqzKS8jKosA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22 a=QX4gbG5DAAAA:8
- a=EUspDBNiAAAA:8 a=wxxTr_YEz1i4iFEBgi8A:9 a=iS9zxrgQBfv6-_F4QbHw:22
- a=AbAUZ8qAyYyZVLSsDulk:22
-X-Proofpoint-ORIG-GUID: 0waS9We5Qr-FJV8KUOgMNO6jVEmLl3Wv
+ a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22 a=EUspDBNiAAAA:8
+ a=gFEuJ_os7HuwQwkCt6UA:9 a=0bXxn9q0MV6snEgNplNhOjQmxlI=:19
+ a=mQ_c8vxmzFEMiUWkPHU9:22
+X-Proofpoint-ORIG-GUID: NW_bm-hj5pO0c4IlODboH80rbC2JqMbx
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-09-02_04,2026-09-02_04,2025-10-01_01
@@ -153,8 +153,8 @@ X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
  route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
  definitions=main-2609020178
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_130735_557994_BA2067F7 
-X-CRM114-Status: GOOD (  16.00  )
+X-CRM114-CacheID: sfid-20260902_130745_922949_76C46091 
+X-CRM114-Status: GOOD (  17.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -169,52 +169,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace the hand-rolled devm_hdmirx_of_reserved_mem_device_release()
-devres action with devm_of_reserved_mem_device_init(), which handles the
-cleanup automatically. This removes both the wrapper function and the
-devm_add_action_or_reset() call.
+Switch to devm_of_reserved_mem_device_init() so the reserved memory
+region is released automatically on probe failure or device removal.
+Remove the three explicit of_reserved_mem_device_release() calls and
+rename the error label from err_release_reserved_mem to
+err_unprepare_vclk to reflect that it now only unwinds clock state.
 
-Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
 ---
- .../media/platform/synopsys/hdmirx/snps_hdmirx.c | 16 ++--------------
- 1 file changed, 2 insertions(+), 14 deletions(-)
+ drivers/media/platform/aspeed/aspeed-video.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-index 25f8ca0d6d94..7c6acc6d7e88 100644
---- a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-+++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
-@@ -2265,11 +2265,6 @@ static const struct hdmirx_cec_ops hdmirx_cec_ops = {
- 	.read = hdmirx_readl,
- };
+diff --git a/drivers/media/platform/aspeed/aspeed-video.c b/drivers/media/platform/aspeed/aspeed-video.c
+index a292275f6b7b..7ba9314fdbd2 100644
+--- a/drivers/media/platform/aspeed/aspeed-video.c
++++ b/drivers/media/platform/aspeed/aspeed-video.c
+@@ -2267,19 +2267,19 @@ static int aspeed_video_init(struct aspeed_video *video)
+ 	if (rc)
+ 		goto err_unprepare_eclk;
  
--static void devm_hdmirx_of_reserved_mem_device_release(void *dev)
--{
--	of_reserved_mem_device_release(dev);
--}
--
- static int hdmirx_parse_dt(struct snps_hdmirx_dev *hdmirx_dev)
- {
- 	struct device *dev = hdmirx_dev->dev;
-@@ -2316,16 +2311,9 @@ static int hdmirx_parse_dt(struct snps_hdmirx_dev *hdmirx_dev)
- 	if (!device_property_read_bool(dev, "hpd-is-active-low"))
- 		hdmirx_dev->hpd_trigger_level_high = true;
+-	of_reserved_mem_device_init(dev);
++	devm_of_reserved_mem_device_init(dev);
  
--	ret = of_reserved_mem_device_init(dev);
--	if (ret) {
-+	ret = devm_of_reserved_mem_device_init(dev);
-+	if (ret)
- 		dev_warn(dev, "no reserved memory for HDMIRX, use default CMA\n");
--	} else {
--		ret = devm_add_action_or_reset(dev,
--					       devm_hdmirx_of_reserved_mem_device_release,
--					       dev);
--		if (ret)
--			return ret;
--	}
+ 	rc = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(32));
+ 	if (rc) {
+ 		dev_err(dev, "Failed to set DMA mask\n");
+-		goto err_release_reserved_mem;
++		goto err_unprepare_vclk;
+ 	}
+ 
+ 	if (!aspeed_video_alloc_buf(video, &video->jpeg,
+ 				    VE_JPEG_HEADER_SIZE)) {
+ 		dev_err(dev, "Failed to allocate DMA for JPEG header\n");
+ 		rc = -ENOMEM;
+-		goto err_release_reserved_mem;
++		goto err_unprepare_vclk;
+ 	}
+ 	dev_info(video->dev, "alloc mem size(%d) at %pad for jpeg header\n",
+ 		 VE_JPEG_HEADER_SIZE, &video->jpeg.dma);
+@@ -2288,8 +2288,7 @@ static int aspeed_video_init(struct aspeed_video *video)
  
  	return 0;
+ 
+-err_release_reserved_mem:
+-	of_reserved_mem_device_release(dev);
++err_unprepare_vclk:
+ 	clk_unprepare(video->vclk);
+ err_unprepare_eclk:
+ 	clk_unprepare(video->eclk);
+@@ -2343,7 +2342,6 @@ static int aspeed_video_probe(struct platform_device *pdev)
+ 	rc = aspeed_video_setup_video(video);
+ 	if (rc) {
+ 		aspeed_video_free_buf(video, &video->jpeg);
+-		of_reserved_mem_device_release(&pdev->dev);
+ 		clk_unprepare(video->vclk);
+ 		clk_unprepare(video->eclk);
+ 		return rc;
+@@ -2374,8 +2372,6 @@ static void aspeed_video_remove(struct platform_device *pdev)
+ 	v4l2_device_unregister(v4l2_dev);
+ 
+ 	aspeed_video_free_buf(video, &video->jpeg);
+-
+-	of_reserved_mem_device_release(dev);
  }
+ 
+ static struct platform_driver aspeed_video_driver = {
 -- 
 2.55.0
 
