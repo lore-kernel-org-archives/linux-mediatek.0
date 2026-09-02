@@ -4,178 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43D4DC61DD6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 08:21:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B813C624D0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 09:50:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Dnr59P3+iBlcT31Fp0AwSssYYYXgV1vPd09iXq96WFY=; b=jwJ8MSXfs+es1r8kEIK2AAyVEc
-	LW61BLn70rBfA7fMnahd/x2tSC2W0EZ2R4T26ViTsHvN9TqjxjJMYfAATcJprl3wf7wdw37odlr4s
-	CksTOjJ5fxWLnSX6VbMUADhIKwJVIPrUCHg3SFTMw0fWM0KWEkEyrcL7pWqP+WX1zlty5KZeMVls2
-	WhPA/Q+YzVl8WvuhXDh/tkwKMwnLdi7zb2iiJB/JWFE7CfC7tuwgsmEurc3TwJlUhx09pQAbIrKVz
-	hlnaXN26x7G1aSV9NbrebDKy/V9Z/IsGQ2zDQdBptbSmV2/DVlmjMZjYDqyH9dfFOsOd+62XLUb9x
-	KobBO+Sw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SlG586REaqGCwTe3f44TG7HZev5qlllhYufaSDUddpM=; b=Ios8e1Mkzey899DCV+yMrDnLWN
+	Onxyyx159+S70dBdtzO+UEwY2QSJbrRZE+1XjIPJqHhRQ2nirS7VkPapCaJhmeoetNBbQwwygic37
+	HhlhMRojRVX69FMgsb12Se+NvCwWVhiPLr1gipSe319plYU2XChPcTwtREPRBlHTlv2hLCG5Mw86I
+	YBngJjh/5RpYDCSMAw28fCBDjBOgAFz6efPriMRuZdvngFAw05AJQ64DC9bznzZqAaZD9DSG9b4Ep
+	iEzHD7/z7m2IVUkm6zXBXaO7U/dZKG+TwQSlKQEkBP8/JX22zCdXAPoO+nMLLyXLELGubqXLc+QEk
+	r1YocPKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1gED-0000000E4c3-0KhG;
-	Wed, 02 Sep 2026 08:21:53 +0000
-Received: from mail-northeuropeazon11010047.outbound.protection.outlook.com ([52.101.84.47] helo=DB3PR0202CU003.outbound.protection.outlook.com)
+	id 1x1hcC-0000000EGQQ-0rrG;
+	Wed, 02 Sep 2026 09:50:44 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1gEA-0000000E4ae-39A0;
-	Wed, 02 Sep 2026 08:21:51 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=FFOKPI1uJG9Ntu2279gUbrbp11wgACDNgkYyIy3AnT5IibxIEOZhloEErtScV4ozZb0p43z7X0UkPu8zi2L/tjo4RJPlZVmwp2QSCoS02sGGscrOyWdJcdG2eK9pGd9zVybU+ieMc0pvo5BLsNbjmTxSxzNz8gCvHX/66yICcX2/tbFJnesBgueekyPT4VcE0yZxviR9UvcFrkhrl8b6QjFVZjcos+rpJ1EF3gSYY4BRyIf1WwwOVrGhmN8R3moKfxfpGBDOXamdMHfQ9GHF+uFdVxUoVB3pXrdcEWJmMoBKr0azHVKyjwqCcAd7FuHgWajyKkGVIzu0HRP/xoZmVg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Dnr59P3+iBlcT31Fp0AwSssYYYXgV1vPd09iXq96WFY=;
- b=RuO4G1jwHq8CACh+VySsF/iPrled9dhclDGEvDHBMDS8dN+xHY6TTzzaBNIe4L4AS5xtCH9ae7B3LuttnT7xTlSUcmOWXCCPH46MZV+lQrkBikvYdxLT/Lb1SLH1Jd8B4t7kE9gOA6z83nTePUf4z7QdOvi8T0vfy3xt6wFM9Jil74jsnliAP4iuAnNT9aNbAI4B9F8dSz43RkVMtLh9Mx3aw1rDwFc10lNouZlrX5JIatYJCh4d/TPDO8jtnuxtou44lEzNh+AXYp4F6U6kXsHgydibUJzHvauFvzuEGqAdPzt2oU/PLM7ueDXHjIyn3l95It0nDpDLtrqdGw/uCA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Dnr59P3+iBlcT31Fp0AwSssYYYXgV1vPd09iXq96WFY=;
- b=gPUIiAhY3aygY7bNXxix8iXl3hvBckJUY5R8nT8fubZS9w9RkvJmEClZRLBFIhHUMJQwAJTixsSkjTo2NmI4+XZSL6ttYQ49t4Xg02tZQwkb2QsvHSeKh7X41KccsCwliPRXc980HA7PoVcx8g7qlvBf468EEdXZYGS1oBxJ/I8dxTpwUBg3yDe4wMuo12WFuMIc4EaHKJiB9zFaJEaYm3wWqg6jWfvaXiFLZTTen4QC9fk50HvJpit/mp+OTitlVv1B8Oeds8ktCyVn2z0+DZfJkSephF7rjIZ0YNGrTdj6zfHiBRN+lF3dJTdDPMcSvyRwa/yipz6mCmmZ2AApDA==
-Received: from ZR6PR04MB375776.eurprd04.prod.outlook.com
- (2603:10a6:910:dc::10) by PA1PR04MB10442.eurprd04.prod.outlook.com
- (2603:10a6:102:44a::22) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.360.13; Wed, 2 Sep
- 2026 08:21:40 +0000
-Received: from ZR6PR04MB375776.eurprd04.prod.outlook.com
- ([fe80::b83a:a0f5:2b29:50de]) by ZR6PR04MB375776.eurprd04.prod.outlook.com
- ([fe80::b83a:a0f5:2b29:50de%4]) with mapi id 15.21.0360.008; Wed, 2 Sep 2026
- 08:21:40 +0000
-From: Peng Fan <peng.fan@nxp.com>
-To: Geert Uytterhoeven <geert+renesas@glider.be>, Ryan Chen
-	<ryan_chen@aspeedtech.com>, Joel Stanley <joel@jms.id.au>, Stephen Boyd
-	<sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, Jerome Brunet
-	<jbrunet+clk@baylibre.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Billy Tsai <billy_tsai@aspeedtech.com>, Nicolas Ferre
-	<nicolas.ferre@microchip.com>, Alexandre Belloni
-	<alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, Broadcom
- internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Taichi
- Sugaya <sugaya.taichi@socionext.com>, Takao Orito
-	<orito.takao@socionext.com>, Linus Walleij <linusw@kernel.org>, Avi Fishman
-	<avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, Tali Perry
-	<tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, Nancy Yuen
-	<yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, Sudeep Holla
-	<sudeep.holla@kernel.org>, Cristian Marussi <cristian.marussi@arm.com>, David
- Lechner <david@lechnology.com>, Abel Vesa <abelvesa@kernel.org>, Frank Li
-	<frank.li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel
- Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Paul
- Cercueil <paul@crapouillou.net>, Santosh Shilimkar <ssantosh@kernel.org>,
-	Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Vladimir Zapolskiy
-	<vz@mleia.com>, Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski
-	<krzk@kernel.org>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Chanwoo Choi
-	<cw00.choi@samsung.com>, Peter Griffin <peter.griffin@linaro.org>, Alim
- Akhtar <alim.akhtar@samsung.com>, Dinh Nguyen <dinguyen@kernel.org>, Viresh
- Kumar <vireshk@kernel.org>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	=?iso-8859-1?Q?Emilio_L=F3pez?= <emilio@elopez.com.ar>, Chen-Yu Tsai
-	<wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland
-	<samuel@sholland.org>, Prashant Gaikwad <pgaikwad@nvidia.com>, Thierry Reding
-	<thierry.reding@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, Kunihiko
- Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu
-	<mhiramat@kernel.org>, Ulf Hansson <ulfh@kernel.org>, Liviu Dudau
-	<liviu.dudau@arm.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, Michal
- Simek <michal.simek@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
-	"linux-aspeed@lists.ozlabs.org" <linux-aspeed@lists.ozlabs.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "openbmc@lists.ozlabs.org"
-	<openbmc@lists.ozlabs.org>, "arm-scmi@vger.kernel.org"
-	<arm-scmi@vger.kernel.org>, "imx@lists.linux.dev" <imx@lists.linux.dev>,
-	"linux-mips@vger.kernel.org" <linux-mips@vger.kernel.org>,
-	"linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>,
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
-	"linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
-	"soc@lists.linux.dev" <soc@lists.linux.dev>,
-	"linux-stm32@st-md-mailman.stormreply.com"
-	<linux-stm32@st-md-mailman.stormreply.com>, "linux-sunxi@lists.linux.dev"
-	<linux-sunxi@lists.linux.dev>, "linux-tegra@vger.kernel.org"
-	<linux-tegra@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>
-Subject: RE: [PATCH 13/45] clk: imx: Make sure clk_init_data is fully
- initialized
-Thread-Topic: [PATCH 13/45] clk: imx: Make sure clk_init_data is fully
- initialized
-Thread-Index: AQHdMUshdAE051jZ4E+/rwVFI0+pQba7BWSA
-Date: Wed, 2 Sep 2026 08:21:40 +0000
-Message-ID: <ZR6PR04MB3757768BD7CFB1176AE69BBA8488B72@ZR6PR04MB375776.eurprd04.prod.outlook.com>
-References: <cover.1787239813.git.geert+renesas@glider.be>
- <7300fde72b6449d2cd7c043e4caec9a6c4171424.1787239813.git.geert+renesas@glider.be>
-In-Reply-To: <7300fde72b6449d2cd7c043e4caec9a6c4171424.1787239813.git.geert+renesas@glider.be>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_0d9c909a-577b-4ba2-96de-69ada94b137a_Enabled=True;MSIP_Label_0d9c909a-577b-4ba2-96de-69ada94b137a_SiteId=686ea1d3-bc2b-4c6f-a92c-d99c5c301635;MSIP_Label_0d9c909a-577b-4ba2-96de-69ada94b137a_SetDate=2026-09-02T08:21:01.0000000Z;MSIP_Label_0d9c909a-577b-4ba2-96de-69ada94b137a_Name=NXP
- Confidential;MSIP_Label_0d9c909a-577b-4ba2-96de-69ada94b137a_ContentBits=3;MSIP_Label_0d9c909a-577b-4ba2-96de-69ada94b137a_Method=Standard
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: ZR6PR04MB375776:EE_|PA1PR04MB10442:EE_
-x-ms-office365-filtering-correlation-id: 3b525e9f-60ff-4b6b-e763-08df08cb36d4
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|366016|19092799006|23010399003|376014|7416014|22082099003|18002099003|56012099006|38070700021|6133799003|11063799006|4143699003|10067099003|921020;
-x-microsoft-antispam-message-info: KS4XAauf8aI2gnt9WAHXQGpLNYyyqLPug6fkCh7BHq9uwa6S7uIV5+GQy6kqhkz5IFEc+KvhuZQUUkf8XTb2e0u+1uZjAUDpoOCnaUcxWiulSrhf2YNhh53DTjWH9pPxFBOkRiv/0CGe34PppvvRJ+EXobVlj+SlQlnxuYo8wDkuMsKSuhAuPZyVpZSqQ0a1+238hSBWDIOQe5qMuguBEw7cugcAMmPr99WWWTCDSOAHcibFf8SaadknuZfADf7R/g261OwHK/IeG2bjZbKJpFQGqzzGeqhuaprlwdAs0+nrNd4BlQtR+AzCqzhIR4Jfyrwfdza5fyu2KeVUS3hyqvIuS51YIpH3JBjbZ6lg0xqqrzALxbUBTRsewW82PIbf6NY7ImU/dHbOGgF6fRHBIwENo5vkOXr/l7/Ms0EFOoKQCK187hXc80A+E7MKrS1WQ3zX8q3zMSSAF6NIf75X0qzoBX4sfWROp3qQKywcA0FFQM8PvxEdDdZwpczvjI1pydoMYEmu+IEcxHFI7XDpiXM6H3lhSWo1LrW4LZubMVAZ2MQgn9CkszvWZoXgFKVk9d1wHMRQaXfvs11FHahTjY7VdqdqT6VTaUaRlh1p78u2Qpbo2bgbJn7Ex5JQI7G45yRx91yMgdpLecKCIr+cn5g3MFPE5V12mD1bBCBDbDfQ/r5OjxCeeF1yCOrOhYsiLYTqpFXMIOPVx71wndh4Pjy71DZ8GNS2qrt9CPKUqUk=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:ZR6PR04MB375776.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(19092799006)(23010399003)(376014)(7416014)(22082099003)(18002099003)(56012099006)(38070700021)(6133799003)(11063799006)(4143699003)(10067099003)(921020);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?lpLwwldFWTBamxk3Jp2hBv22PNzdAAPkFSY7Sc1TbeM5i7xAvgudw50n3s?=
- =?iso-8859-1?Q?/RXyHpbAGiiGQyjLEBcTDW2+SQiUHkPUYLXMsHUsBCoyeQJz5GPnpLRMDR?=
- =?iso-8859-1?Q?l3rgRfjSLodkRR374cZug/4FLdfDvo3q7hJCnX611bQZDsCkNGF1dPMh2F?=
- =?iso-8859-1?Q?mxvpEwczwNfZNHqWx9+zKv7Vsf8G33LQdkcYusLtLZcxGC7AJVS6Q+cbeX?=
- =?iso-8859-1?Q?/h70nWGk8emZul8xxyOubgYMMogEaYuAI1+OGKPfy/yzcteACDP3VGX1JO?=
- =?iso-8859-1?Q?O/A8h+Y7byW7InIIwnZl0q64w5qj/tHB0dOxhc/5yHlsGEcOTMNCmBxvOw?=
- =?iso-8859-1?Q?9MwQmwWIV06rky7BfX4kvF6f+4wb+Er8521iaNIVLsAToRlhdZWwE/jeI0?=
- =?iso-8859-1?Q?UVxD/E1w092ANqMMVzZLaaEJSE092L/zM98XOcEdyTFjrPR+gQ+82fhqnd?=
- =?iso-8859-1?Q?Gk0LYhxpPmJH0elKe9pv9bBjXY3sFls8Z77p4hhPOsrExyXzHhLN95nu7m?=
- =?iso-8859-1?Q?AACSzsbhhsHgxR2VPIixWPfslnTtHWNpkBoHcfV8tnspmjOvhHzeJgpYT3?=
- =?iso-8859-1?Q?3au9sS1OOJbeJFAu12JKgdWIHdOpN1xv6mvbpIaqSKdMWiq2hvGij0gnDo?=
- =?iso-8859-1?Q?pJOjRc91LikcZHeH7t/Nn8vDlpEgzTUPX5IPU2WiV1uBfym8Sog/Axb8nP?=
- =?iso-8859-1?Q?sYT/ZpoSXJtH1rcm3dTnjbfV6apg/kqm0JNAD0RxNed1lxZSP2g3+SgPXX?=
- =?iso-8859-1?Q?k1ojedsgdXHu68qLC7a5fpWzn363IbzEfPwMKCa+AucDlS6KVlm41TpwyR?=
- =?iso-8859-1?Q?aFWERaiYu5sp4wL/kHyN3v5WmIYM1WVL1ZwQiwxqAw5Fxuv374kq7BvqWm?=
- =?iso-8859-1?Q?80inKT0Gogyxfr6NWS/CG3ZDr1XdAQkBnK8InN09tCFjUtv8K2nM8huAo9?=
- =?iso-8859-1?Q?hlEL/I5ZznpIJcVnk0GtpEqJgTMP/EZQtJD+K7OKRiHf0xp6sId+jh5+xv?=
- =?iso-8859-1?Q?nL06JcA7YxzTozxXoIDH9O52oCP9VxOe0PVpHWse0EWaFK27ZGn1Y6Lrhl?=
- =?iso-8859-1?Q?pcB02UGnlRFhS+gy8y9plzhL4aC6qe5Xl0gvnXKD2Bmzv0OeLTQjsFscG8?=
- =?iso-8859-1?Q?obWToIdva62Bs36RU4Ea62j9lGr5iK/7Orj6z4Xd1RoFSvK0ZcDrIWvVha?=
- =?iso-8859-1?Q?vzwMMNJHhDPTjXdT+OxIsK8kZL0zIWqEqZT4CBGDoQeLWHu0SynKY2NhTV?=
- =?iso-8859-1?Q?5Ze/x8okFtYVDeb2RxtdNQ9BdNhlOZKZWU3Hl6iHWJXmI7LOwddyqhJ1CM?=
- =?iso-8859-1?Q?1nEc1oUA9MS0Or/giUopHJSk3nT6j/FoswENmzGTxzhXEz6ospjrsp8btU?=
- =?iso-8859-1?Q?kUsYTH1CTJbfrlO+jjA4T6oQ6tVPN5M7KT1YybibzQAv6aoq/90Pnfw+dB?=
- =?iso-8859-1?Q?fHdv2FAMALvQY7fMx1wiyTqoQZFUYtlJgt3tx1Odo5BBesXGgHXg66+B6G?=
- =?iso-8859-1?Q?zNzhWGT1rH62l8F2WkZKAY+rVbePJt2fyWDk9IU1urJLla7KUc+FRmfKpJ?=
- =?iso-8859-1?Q?aamtyFeZ+0fBaIhFJmYOpDhBWLqoBYLYsoCvxfTFaOq8zdQzRKeShF3MS0?=
- =?iso-8859-1?Q?kOvb1NbEUS+7f9/xjLzcRhsOSxJfQRZKS48kFW4GjYJTA1NQpAkoJA9eVU?=
- =?iso-8859-1?Q?Esln4MdtFXQD99u17JFqo9MCvkVXv7BGO4dBMFkv+eqKWB8E9ycKcIoamZ?=
- =?iso-8859-1?Q?b5sGphJNl8acIk1RyboKm5rNQP2sZKF12c7L6qQnrGaV/v?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+	id 1x1hc7-0000000EGPE-43BT
+	for linux-mediatek@lists.infradead.org;
+	Wed, 02 Sep 2026 09:50:42 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 6BB644E414CF;
+	Wed,  2 Sep 2026 09:50:36 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 363296053C;
+	Wed,  2 Sep 2026 09:50:36 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id E071911C792F3;
+	Wed,  2 Sep 2026 11:50:27 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1788342635; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=SlG586REaqGCwTe3f44TG7HZev5qlllhYufaSDUddpM=;
+	b=cWzAYMLpmucLaUQi6Pjy0yGWfJDQ4mBMCRPCtX9c1WEwiDpfiPIwT5Z2w89NRDl8J79nu7
+	hP0SAeyQuLwwlr6She1sm7n45TnlMKbIOjb8bFbBA7MXJ3lBYBtuj/lLS87XyHdppwhg8E
+	nYVtfOB3L3dMzPUi+NxH9whEJ+oeiKB7yoLn3ATYQi1ytxTfEQVjgWe5AjgF4cdUC8bX5q
+	VFchLkozwdVKdohVQ2kSFF62nqaE/rE3Uu4wuPBbchiZtzGJVhOpUK69AxIhct+FJWaYwI
+	Nk5MlJk6zdowhZaAvDP0CIAYT6LA0CMAtNdwHZL/MXMWcein0vElgZ55dBQ++g==
+Message-ID: <3450830c-1766-4bd5-a777-4bfbfc4c25c7@bootlin.com>
+Date: Wed, 2 Sep 2026 11:50:25 +0200
 MIME-Version: 1.0
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: ZR6PR04MB375776.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3b525e9f-60ff-4b6b-e763-08df08cb36d4
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Sep 2026 08:21:40.0858
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: yw7pZB20bOBDHTI+enJjTq8b3ccF9TOBNYDd2k/sjyNEJPLhGl9ST4FiVF9MUin7FQYppfTzEfjQN/iQSgYr7A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA1PR04MB10442
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net v4 1/2] net: dsa: mt7530: populate lpi_interfaces to
+ fix EEE support
+To: Aleksei Sviridkin <f@lex.la>, chester.a.unal@arinc9.com,
+ daniel@makrotopia.org, andrew@lunn.ch, olteanv@gmail.com, nbd@nbd.name,
+ lorenzo@kernel.org, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, netdev@vger.kernel.org
+Cc: linux@armlinux.org.uk, dqfext@gmail.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260902080519.2211373-1-f@lex.la>
+ <20260902080519.2211373-2-f@lex.la>
+Content-Language: en-US
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
+In-Reply-To: <20260902080519.2211373-2-f@lex.la>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_012150_793975_64F7F6EC 
-X-CRM114-Status: GOOD (  14.05  )
+X-CRM114-CacheID: sfid-20260902_025040_297755_66F1E2E1 
+X-CRM114-Status: GOOD (  30.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -190,23 +82,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Subject: [PATCH 13/45] clk: imx: Make sure clk_init_data is fully
-> initialized
->
-> The clk_init_data structure contains several mutually-exclusive
-> members for different methods to specify the possible parents of a
-> clock, prompting drivers to initialize only the members they need.
-> However, not initializing all members may cause subtle issues, which
-> are only exposed when CONFIG_INIT_STACK_ALL_PATTERN or
-> CONFIG_INIT_STACK_NONE is enabled.
->
-> Make sure all members are fully initialized, to avoid such bugs, and to
-> prevent future breakage when converting drivers to a different method
-> for specifying the parents.
->
-> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+Hi Aleksei,
 
-Reviewed-by: Peng Fan <peng.fan@nxp.com>
+On 9/2/26 10:05, Aleksei Sviridkin wrote:
+> phylink_create() decides once and for all that a MAC supports managed
+> EEE, and it requires the tx_lpi ops plus non-empty lpi_capabilities and
+> lpi_interfaces. mt753x_phylink_get_caps() leaves lpi_interfaces empty.
+> 
+> So ever since the conversion to phylink managed EEE, ethtool has
+> answered "Not supported" on every mt753x port, and phy_disable_eee()
+> has locked userspace out of turning EEE on. That undoes what
+> commit 06dfcd4098cf ("net: dsa: mt7530: fix enabling EEE on MT7531
+> switch on all boards") arranged: EEE off by default, but reachable
+> with ethtool.
+> 
+> Leave the speeds above 1 Gbps out of both bitmaps. PMCR folds
+> SPEED_2500 and SPEED_10000 onto PMCR_FORCE_SPEED_1000, so
+> PMCR_FORCE_EEE1G would govern LPI on such a link, and that is
+> unvalidated rather than known unsupported: MediaTek's SDK driver sets
+> the EEE force bits for 100 Mbps and 1 Gbps only, and the unit of the
+> wakeup timers is undocumented with the port clock at 2.5 times the
+> rate.
+> 
+> LPI stays off until userspace enables it, but the EEE advertisement of
+> a PHY that advertises it out of reset comes back, since phylink stops
+> force-clearing it.
+> 
+> Fixes: 9cf21773f535 ("net: dsa: mt7530: convert to phylink managed EEE")
+> Signed-off-by: Aleksei Sviridkin <f@lex.la>
+> ---
+> Ports that support neither 100 Mbps nor 1 Gbps are skipped because on
+> MT7988, EN7581 and AN7583 port 6 is 10 Gbps only and shares
+> PHY_INTERFACE_MODE_INTERNAL with the user ports, so the interface mask
+> alone cannot tell them apart. MT7531's internal PHYs keep the
+> advertisement mt7531_setup() zeroed and EN7528 keeps both bitmaps
+> empty, so EEE stays fully off there.
+> 
+> Two pre-existing things this patch makes live, neither addressed here:
+> 
+> - The unit of LPI_THRESH is still unspecified, as the comment above
+>   lpi_timer_default says. Before the phylink conversion
+>   mt753x_set_mac_eee() wrote tx_lpi_timer into the field directly, so
+>   the raw unit has always been what ethtool showed on these ports.
+> 
+> - mt753x_phylink_mac_enable_tx_lpi() sets the PMCR force-EEE bits
+>   without checking the resolved speed or interface, relying entirely on
+>   phylink never calling it above 1 Gbps. A check there would make the
+>   driver robust independently of lpi_interfaces being right.
+> 
+> v2, with the full argument for leaving the higher speeds out:
+> https://lore.kernel.org/netdev/20260824024117.46154-2-f@lex.la/
+> 
+> v4: lpi_capabilities is mac_capabilities masked to the two speeds
+> instead of both asserted. Every port that reaches the guard today has
+> both speeds, so nothing changes; it only stops the bitmap from claiming
+> a speed a port cannot link at.
+> 
+>  drivers/net/dsa/mt7530.c | 25 ++++++++++++++++++++-----
+>  1 file changed, 20 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index 2b7be091c056..a188a391b650 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -3172,23 +3172,38 @@ static void mt753x_phylink_get_caps(struct dsa_switch *ds, int port,
+>  
+>  	config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE;
+>  
+> +	priv->info->mac_port_get_caps(ds, port, config);
+> +
+>  	/* The EN7528 GPHYs report EEE capability, but negotiating EEE with
+>  	 * common link partners (e.g. Realtek GbE NICs) results in an unstable
+>  	 * link with dropped frames. Leave the LPI capabilities empty so that
+>  	 * phylink disables EEE on these PHYs and refuses to enable it from
+> -	 * userspace.
+> +	 * userspace. Ports that run at neither 100 Mbps nor 1 Gbps are left
+> +	 * empty too, since LPI above 1 Gbps is unvalidated.
+>  	 */
+> -	if (priv->id != ID_EN7528) {
+> +	if (priv->id != ID_EN7528 &&
+> +	    config->mac_capabilities & (MAC_100FD | MAC_1000FD)) {
+>  		u32 eeecr = mt7530_read(priv, MT753X_PMEEECR_P(port));
+>  
+> -		config->lpi_capabilities = MAC_100FD | MAC_1000FD | MAC_2500FD;
+> +		/* PMCR folds SPEED_2500 and SPEED_10000 onto
+> +		 * PMCR_FORCE_SPEED_1000, so LPI above 1 Gbps would be
+> +		 * governed by PMCR_FORCE_EEE1G and is unvalidated rather than
+> +		 * unsupported. Leave it out of both bitmaps: lpi_capabilities
+> +		 * gates on the media speed a rate matching PHY reports, not
+> +		 * on the speed the MAC runs at.
+> +		 */
 
-NXP Confidential
+This is still too verbose IMO... 2500Mbps LPI isn't uspported, that's all we
+need to know :)
+
+It's very common that 2500 uses the same settings as 1000 with just a random
+register somewhere switching the speed to 2.5x, and also very common that lots
+of features break when using 2500, so no need for the verbosity here. Same
+goes for the next patch as well.
+
+Sorry for nitpicking on this, but comment verbosity overall has been rising-up lately,
+LLMs may have something to do with it, and it doesn't necessarily make things more
+readable :(
+
+The code itself looks fine though,
+
+Maxime
+
+
 
