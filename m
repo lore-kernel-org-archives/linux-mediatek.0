@@ -4,74 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A4F5C61DD6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 10:33:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBD8AC624D0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 11:22:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UyAg+oao2hLSO5MFtf+OUxfyez7940gq4vcJ71Nff6U=; b=DLnVMXd7wJ4/iY6SFgaC9GBSP+
-	Mm6BIm8X00pVZ8gEizekQTwfY7km9gpf7m9GZUW5GVxQzlsfXXLkQTP+4REXcIShdUk+GtfeyQoX1
-	dnJySRyVAYiuTbEk8uxU9tyYNvlQcs9OpIyFiXMBUDltzyhT4mZDb6OE3hRWc2zQf824CLzi9JCJr
-	FUnVVW3HgOFbS5anisGEk/a//0VXEqrCy4i6wzGhq22kv+tmI6Z56JrPxb8ko875/1yITdadKCJ9p
-	7URJKZVo5a3eP/EYZq75WqI9nJjbwGTmjiw+JLNlSb5Zq8VhhODWeTLbkI4VQVuBG5uV6Yln9TwOJ
-	mpdlrnrg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bG2pMm0qwXP8URwYF59N+uYdVu8xUiwyKW9MTQJcAuA=; b=lKCpNb9UyPFJZfWdlt0K+lKloY
+	P9I1IFVX0HciV1EggFVTnl+jgFFj3Z1PupqvuSkxtH+G9I4ATS/Sufgei7xAyJZlh5WeIlZvDITly
+	YiPUAsMLOBzkzAtxc1rQEQCz7l0e1CWS4vbe8aV76zB6ZCAvMhfrANZtRwkyvsqXORIADj8PdBuPL
+	3PD7ywiJVGcS8L+Tz/hV00QHG6QwTZm3jDUTQmoAhsYb4v7VBajU9bx2h0il4/1OiL5Z0kS7otHJA
+	pqop8YMUEvGtMN/5TK4NhnbiAkhqkNqAsASPLAPrq16uQlkLIssRCcIo1sVrkuGMTy3jHCo4ca9AP
+	cAmCU8qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1iHa-0000000EMXF-1NWD;
-	Wed, 02 Sep 2026 10:33:30 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x1j3J-0000000EUR9-3GdJ;
+	Wed, 02 Sep 2026 11:22:49 +0000
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1iHV-0000000EMRT-1c5K;
-	Wed, 02 Sep 2026 10:33:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788345198;
-	bh=Iy+VUNXDXW8cWtqhoAcajkOwEmooMeEJCbxXu8rQQOs=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=POWuk7sdMsPIg1zcWIim2kuet5JxYBmhJG6SFrb9VcEt2CfsK1hM8cI5oK3fJQIvF
-	 5XcgkAR+aYJTiNYVtTHmFcAZtkPj9E4aHvkvs2heFQaBlssCUbTQzIKVIN+J3CUPqg
-	 rlYQqPMqssgCrFzk/kchPsPUGT7lPmqppZ/fd7OOEZg5Lh4KTdxgv6mO74T/DrKdar
-	 yFPEg38BsCY6jhenufqkDlpj0XQx6/S7MMNKaftFCyozJxQGPDXfPraSXaGPeMVBhm
-	 1o2ZWRMsr3y8qEMX4YMFHiz08rs3xNGGq0gloYYZJJZNC3ef86a5SbfQia7ImQqxZz
-	 dPEZDpE3ES/Qw==
-Received: from yukiji.home (unknown [100.64.0.131])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 76D0217E11F5;
-	Wed, 02 Sep 2026 12:33:17 +0200 (CEST)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Wed, 02 Sep 2026 12:32:46 +0200
-Subject: [PATCH 3/3] arm64: dts: mediatek: mt8395-radxa-nio-12l: Complete
- UFS power supplies
+	id 1x1j3H-0000000EUPR-2jow
+	for linux-mediatek@lists.infradead.org;
+	Wed, 02 Sep 2026 11:22:48 +0000
+Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-853c947bfefso882574b3a.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2026 04:22:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1788348166; x=1788952966; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=bG2pMm0qwXP8URwYF59N+uYdVu8xUiwyKW9MTQJcAuA=;
+        b=LNltt7HqgYUgiaHkKIaKEanhJwkfoqVXMuuB1Eqb7Gbs5h5t+dajKlz3upLSOfO56Y
+         rn1CJo+qBaJCnaP//XCdBDveJOwNrxsUtqWXHCRxGsm5up8nfwhvdqRGIfqcAA6E/FFY
+         VyHxNZ4peCoMYtKrz98r8cgptFiUdtvqymEiNWVR1/C/qnMB/Ll3rR9lRIX0/qUITnMV
+         6d5v8NdwLamKb97oA838D3ST5O4GE1oyQKmjy0Gp7usLc8F7jXDFb3deOgflbZKAwfRJ
+         ZFCf8YndmBiHuDRpC7g+ltL9hHnjBEhr41UWrItLSdHIudhCMnpqW4T3GCuRJJVi7EUa
+         jO9g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788348166; x=1788952966;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=bG2pMm0qwXP8URwYF59N+uYdVu8xUiwyKW9MTQJcAuA=;
+        b=DeI9ARxO6jU6p/tmGNG9aLUOGXKmzLBhO78jA9n14D+pwdOzcp+tgTTW6baklyEA4l
+         tVonazXGHYUo2E9opCv5E6a7dvbCsSwm7Wc7VTp1N2TF4aFUjExg4AiKgqMWzmnyLPiC
+         u/PfWY464rkAcVmnB3sr22F1A111RUI1FTfqSP2z/yyaXxsOp/2rnQjsr31oKyb0ztoL
+         5gD15yWdQsJhPzSAeruG5Oz5D9xGnyFdpnJOb5V72CeS8MPRVDXjXV3uVSpzNiTxnbR/
+         8SX0ehZD//4a3x/0Y1LxrhY4Lr/pBm+DGgXldB+yw4g7mhwI1sRZSQx6Ht6L480FxrqT
+         7rUA==
+X-Forwarded-Encrypted: i=1; AKwUvBw2qDbFiK7MweeXgWWQDbtYDOoFpVsf67HMy999YrrP/BGOcOonQSz/qdds6dra3rQIsMb+9lndEeNd8VTqEg==@lists.infradead.org
+X-Gm-Message-State: AFuF++kxdre1hNfrBKna+3Vj2mT2jQ9f1pHisjd/34+3H70khMxT2O95
+	9frNiJ9uBmm0oAbzy2aH02ef4SCK1bTFlHMilk9NHn0Ol4Ya643u5M76
+X-Gm-Gg: AYBFou0FennKIwJSf6azr0GjBIBaOSGREH7Yo+rTmLwIIWyMPgABlqhlNqsbZYDZn5r
+	ctVXmZcQxkYQkYH20kyg14c7KH4XfsWkBwnriC9HC4pzbf/Xpf02mRQviNVw/jDVPSB0zdkMST5
+	Ku42cqFR7YB8jm/lj+PdY+8crSsh/qLt7P2RhKLG3ms3bcTlFw1iP6Lux5AqSccRijRNg18sin9
+	OOncw/1DkfPIVt0JEuG+pOMKLNPDM9SgiHB6yaBIjgBT36HbtH3JlzUVi1KyGt8Rw40c8aGfDzH
+	OaVsnBBbYT95TfL6Vt6xwc5QKFT7bRcKI7AGymUcZt7o8Z6R5gW5ZzUNKFnBCt5Ybf55t/moPdi
+	dhhz9dGKl7fr4S6Ac+c3TbnljcLrkN2QynRt+UnpnisT+QCkHgeSc3Iumy+gwIT1El2uJIaOkWx
+	LYBZpL6fxAKWWX7WWDWAzsek0j1A0DiXvOWBPpkSeFfoD2SHJ96ytfuxbyIvc1XeITawWvqA==
+X-Received: by 2002:a05:6a00:178e:b0:84a:2b96:5986 with SMTP id d2e1a72fcca58-85f42e35709mr1863167b3a.8.1788348165513;
+        Wed, 02 Sep 2026 04:22:45 -0700 (PDT)
+Received: from hnkz-ubuntu-server ([2404:7a80:860:3300:f22f:74ff:feda:3295])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-85dc11f8471sm1167571b3a.58.2026.09.02.04.22.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 02 Sep 2026 04:22:45 -0700 (PDT)
+From: Kazuki Hanai <hnkz.64@gmail.com>
+To: Bin Liu <bin.liu@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Kazuki Hanai <hnkz.64@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hans Verkuil <hverkuil@kernel.org>,
+	Tomasz Figa <tfiga@chromium.org>,
+	Xia Jiang <xia.jiang@mediatek.com>,
+	linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	stable@vger.kernel.org
+Subject: [PATCH] media: mediatek: jpeg: Avoid context access after job finish
+Date: Wed,  2 Sep 2026 20:22:28 +0900
+Message-ID: <20260902112230.452176-1-hnkz.64@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260902-mediatek-ufs-cleanup-dts-v1-3-7876e7a27a9d@collabora.com>
-References: <20260902-mediatek-ufs-cleanup-dts-v1-0-7876e7a27a9d@collabora.com>
-In-Reply-To: <20260902-mediatek-ufs-cleanup-dts-v1-0-7876e7a27a9d@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1788345194; l=1050;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=Iy+VUNXDXW8cWtqhoAcajkOwEmooMeEJCbxXu8rQQOs=;
- b=c940H5zXtUUgCV2sxRtdhKxlcCdgXiSInmQ1m1p15P0fCc6REDVxahRltrLYYFGv6Z/dWMvKJ
- r3EureIi3lSDVQbsIYWdtnhDJS+zxKJXTxYtS3WtfSyJykNR8tRgN3r
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_033325_776784_4DAB8548 
-X-CRM114-Status: GOOD (  10.46  )
+X-CRM114-CacheID: sfid-20260902_042247_705550_41B24500 
+X-CRM114-Status: GOOD (  12.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,34 +105,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8195 UFS host controller dt binding now describes the power supplies
-feeding the host controller, that were previously missing from supply
-description.
+v4l2_m2m_job_finish() publishes job completion and wakes waiters
+before it returns. A concurrent file release can therefore finish
+v4l2_m2m_ctx_release() and free the context while the single-core IRQ
+handler continues with its tail.
 
-So, add in the Radxa NIO-12L board devicetree the regulators used to
-power MT8395 UFS controller on the board.
+Both handlers only need the device for the matching runtime PM put.
+Use the IRQ-owned jpeg pointer instead of dereferencing ctx after
+completion has been published. This preserves the get/put pairing and
+removes the post-completion context access.
 
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Fixes: 45f13a57d813 ("media: platform: Add jpeg enc feature")
+Fixes: 5827e4b14ee7 ("media: platform: Improve power on and power off flow")
+Cc: stable@vger.kernel.org
+Assisted-by: Codex:gpt-5
+Signed-off-by: Kazuki Hanai <hnkz.64@gmail.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-index 9cf0315da035..7e9cabdd2825 100644
---- a/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts
-@@ -1184,6 +1184,9 @@ &uart1 {
- };
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index d147ec4830811..9010e7b1108fa 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1574,7 +1574,7 @@ static irqreturn_t mtk_jpeg_enc_done(struct mtk_jpeg_dev *jpeg)
+ 	v4l2_m2m_buf_done(src_buf, buf_state);
+ 	v4l2_m2m_buf_done(dst_buf, buf_state);
+ 	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+-	pm_runtime_put(ctx->jpeg->dev);
++	pm_runtime_put(jpeg->dev);
+ 	return IRQ_HANDLED;
+ }
  
- &ufshci {
-+	avdd12-supply = <&mt6359_vrf12_ldo_reg>;
-+	avdd12-ckbuf-supply = <&mt6359_vbbck_ldo_reg>;
-+	avdd18-supply = <&mt6359_vio18_ldo_reg>;
- 	vcc-supply = <&mt6359_vemc_1_ldo_reg>;
- 	vccq2-supply = <&mt6359_vufs_ldo_reg>;
- 	status = "okay";
-
+@@ -1855,7 +1855,7 @@ static irqreturn_t mtk_jpeg_dec_irq(int irq, void *priv)
+ 	v4l2_m2m_buf_done(src_buf, buf_state);
+ 	v4l2_m2m_buf_done(dst_buf, buf_state);
+ 	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+-	pm_runtime_put(ctx->jpeg->dev);
++	pm_runtime_put(jpeg->dev);
+ 	return IRQ_HANDLED;
+ }
+ 
 -- 
-2.55.0
-
+2.53.0
 
