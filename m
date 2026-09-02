@@ -4,54 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50078C61DD6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 12:30:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61A35C61DD6
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 12:34:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:From:To:Date:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=YU2mIB835mYw5//qKk+9pqJCWuqJD/Z0SnWodIvE8IM=; b=hJO2AK3hvw87obz1DBHJMI4M24
-	J/lda2phcZcvov7PkIecXA1x5Rqtiurv0TrTnWXAu+lURvC76/IoCmz9S6zrz6KBWnlvCN4NDnIEU
-	tktzm7vm0EYfHLhmUQsAZQImdKlwvEPwJxwVm4z9UD/RIT3MRlFVZaHALPAqxq3GDYlysg7vqYvIQ
-	rFPqc+Tqu/R26IiT6o03aCzOrKz70D/nnkm3qshhx4Evq4lQV14QPNXIGU4cobJ9+19bZ/HBd+p+d
-	7YBlF2vcn9m79IqygxS1T7rguWc8uy9eBl41hG2X0mZjvikagIc3DIc52GozU4+diSrfL272P0gaY
-	QEUWfVoA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DqIr+thPrbep/O0pQIu8oOVm6WAFx0khwrPGH8+faaI=; b=uwdglSyi8Nfp55mRJ04p+Ps14O
+	Ai71qEKspn6J+5vlAjCb7oiDg1nepDfmLrNNcqtq08Mva2M2jWM0VtVJPsJ5nmKAbf6mR08RdajFN
+	ltI91Z0Mr4BgmgqXI1sIQPcuS3qy0hSCY2lqNkEHvYvChnp9Ol5fhj3WMyjFfz2dw74uKDBKb7xZF
+	yNCOWQm5kzO4pTT1QjQdFUI2AaJp9jr/BFy3Li+BKsYFXejZ2hqFpLaspOp7KWFzPjMdiUZpy6gzJ
+	oscM9ZJfSNRdMB+aVIDq98yNer50vrKZzbCbd0DZNMT0ZTvSF+sqNxtIyhF8FPwor/3ZeiVSg4uaZ
+	DCWjQzOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1k6k-0000000EgFU-3oSy;
-	Wed, 02 Sep 2026 12:30:26 +0000
-Received: from mail-10625.protonmail.ch ([79.135.106.25])
+	id 1x1kB1-0000000Eglq-1s9z;
+	Wed, 02 Sep 2026 12:34:51 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1k6h-0000000EgE4-08PJ
-	for linux-mediatek@lists.infradead.org;
-	Wed, 02 Sep 2026 12:30:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=empyreal.works;
-	s=protonmail2; t=1788352217; x=1788611417;
-	bh=YU2mIB835mYw5//qKk+9pqJCWuqJD/Z0SnWodIvE8IM=;
-	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
-	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
-	b=Impi0/5biADa5seEW73LvAATqy5IbbIYSehU5FFVfJGpOp9WnL5VIexSNJ6iKidop
-	 QmL0/uLL1VLb+uBvaan668VUTnBwgvkgIUkPvH7yNq5nNjhbJK7xDYMGb7PsRuhcHc
-	 OTlgeIF4yjdQgYUCsf/2eI4lBf+rU6EOLufPShH8OznB71YovU2lx7zi6yZbR4RtcW
-	 cMoP308WgmzQKcc2w8g5cYHCk5lxAyyat5wvrKz0gjDXzNsZ9ZpI3VN8P/qql2/03n
-	 uXL24965X0RjlGsG/+2gKbfuMQf3ekyHBXpm2TmxL4KUS8cudl5NB2KOxuXUIsL5RY
-	 fgAS61XZMrVhw==
-Date: Wed, 02 Sep 2026 12:30:11 +0000
-To: linux-wireless@vger.kernel.org
-From: Andrei Rusu de Castro <arc@empyreal.works>
-Cc: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com, shayne.chen@mediatek.com, sean.wang@mediatek.com, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH] wifi: mt76: mt7925: stabilize STA_REC_MLD link selection
-Message-ID: <20260902-mt7925-0cbea623@empyreal.works>
-Feedback-ID: 182420409:user:proton
-X-Pm-Message-ID: 024b838ed21db538301af0a81238c1b4034d27bb
+	id 1x1kAz-0000000Egks-0Xxk;
+	Wed, 02 Sep 2026 12:34:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=DqIr+thPrbep/O0pQIu8oOVm6WAFx0khwrPGH8+faaI=; b=hp03u8THC/bL/aO0tZNb/guAdj
+	6JE1X0XikSOzaUI55ijxAp09/JKsp8VYSxaBtCILzK3/necMgjMbyUS8KowWKVI2++f5v2jYh/SFR
+	ft1e9Zn2OCyYQFzftb9gGc0MIseKxQTQiZiDR/nfi2Xv9NdenQD3jOd4KSUxGwsZAgHU=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1x1kAc-002W90-LK; Wed, 02 Sep 2026 14:34:26 +0200
+Date: Wed, 2 Sep 2026 14:34:26 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: "Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next v5 0/9] net: dsa: mt7530: modernise register
+ access and add two DSA ops
+Message-ID: <e3b0d41a-ff23-4dc2-aa8e-3fc279f750fa@lunn.ch>
+References: <cover.1788190568.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1788190568.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_053023_616404_19A1B017 
-X-CRM114-Status: GOOD (  12.71  )
+X-CRM114-CacheID: sfid-20260902_053449_183232_FD09D294 
+X-CRM114-Status: GOOD (  19.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,118 +75,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt7925_mcu_sta_mld_tlv() encodes the primary link and then, as the
-secondary entry, whichever link the current station update happens to
-be for.
+On Mon, Aug 31, 2026 at 04:37:43PM +0100, Daniel Golle wrote:
+> The mt7530 driver carries its own register accessors that predate the
+> regmap conversion and now largely duplicate what regmap already
+> provides, including locking. Most of this series removes that layer.
+> 
+> It first moves the MDIO bus locking into the switch regmap via
+> .lock/.unlock callbacks, matching the PCS regmaps, so any path reaching
+> the regmap is serialised automatically. With the wrappers no longer
+> adding locking, the thin mt7530_mii_* indirection is folded away and the
+> remaining accessors are replaced mechanically with the plain regmap API,
+> using the coccinelle semantic patches included in the commit messages.
+> The two remaining reset polls are converted to
+> regmap_read_poll_timeout() and the then-unused dummy poll machinery is
+> dropped. Open-coded register fields are converted to
+> FIELD_GET/FIELD_PREP. None of this is intended to change behaviour.
+> 
+> The last two patches implement .port_fast_age, which flushes dynamically
+> learned MAC entries on topology changes, and .port_change_conduit, which
+> moves a user port's CPU-port affinity at runtime.
+> 
+> The swallowed MDIO errors Sashiko flagged on v4 5/8 have meanwhile been
+> fixed in tree by "fix swallowed MDIO read errors" and "fix remaining
+> swallowed MDIO access errors", both merged into net-next. This respin is
+> rebased on top of them: regmap_* return values are no longer ignored,
+> which is what most of the semantic patches had to be reworked for.
 
-STA_REC_MLD is a complete record rather than an incremental update:
-every call rewrites primary_id, secondary_id, link_num and link[]. Since
-mt7925_mcu_sta_update() is issued per link, the record left in firmware
-depends on which link was updated last. For a two-link station an update
-for the secondary link leaves both links, while a later update for the
-primary leaves only the primary.
+I only had a quick look at the series, but it seems O.K. to me.
 
-Fill the remaining firmware entries from the station's valid links.
-Keep the primary in entry zero, walk secondary links in link ID order,
-skip links without both station and BSS state, stop at the firmware
-array size, and set link_num from the number of entries written.
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
-A link added through .change_sta_links needs one ordering exception.
-mt7925_mac_link_sta_add() sends the MCU command before publishing the
-new link in msta->link[] and msta->valid_links. Fold that in-flight
-caller link into the local valid-link snapshot and use its passed
-station object when the published slot is still empty. The VIF link
-state is already published and remains the BSS authority.
-
-Commit ff643b81bc38 ("wifi: mt76: mt7925: pass mlink and mconf to
-sta_mld_tlv()") removed the complete link lookups because the caller
-already knew one link. Reintroduce them because that caller context
-cannot otherwise describe the complete two-entry firmware record.
-
-A source and call-graph audit identified the
-trigger-dependent record and the link-add publication window. A
-source-level harness issues the encoder across seven settled layouts
-plus the in-flight add ordering, reproduces the old trigger dependence,
-and passes 90 checks. The exact changed object builds with W=3D1.
-
-Fixes: ff643b81bc38 ("wifi: mt76: mt7925: pass mlink and mconf to sta_mld_t=
-lv()")
-
-Signed-off-by: Andrei Rusu de Castro <arc@empyreal.works>
----
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 49 +++++++++++++++++--
- 1 file changed, 44 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/=
-wireless/mediatek/mt76/mt7925/mcu.c
-index fa29c486a455..d3e1ae4143cb 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -2068,9 +2068,12 @@ mt7925_mcu_sta_mld_tlv(struct sk_buff *skb,
- =09struct mt792x_vif *mvif =3D (struct mt792x_vif *)vif->drv_priv;
- =09struct mt792x_sta *msta =3D (struct mt792x_sta *)sta->drv_priv;
- =09struct mt792x_dev *dev =3D mvif->phy->dev;
-+=09unsigned long valid =3D msta->valid_links;
- =09struct mt792x_bss_conf *mconf_pri;
- =09struct sta_rec_mld *mld;
-+=09unsigned int link_id;
- =09struct tlv *tlv;
-+=09u8 max_links;
- =09u8 cnt =3D 0;
-=20
- =09/* Primary link always uses driver's deflink WCID. */
-@@ -2099,11 +2102,47 @@ mt7925_mcu_sta_mld_tlv(struct sk_buff *skb,
- =09mld->link[cnt].wlan_id =3D cpu_to_le16(msta->deflink.wcid.idx);
- =09mld->link[cnt++].bss_idx =3D mconf_pri->mt76.idx;
-=20
--=09/* Optionally encode the currently-updated secondary link. */
--=09if (mlink && mlink !=3D &msta->deflink && mconf) {
--=09=09mld->secondary_id =3D cpu_to_le16(mlink->wcid.idx);
--=09=09mld->link[cnt].wlan_id =3D cpu_to_le16(mlink->wcid.idx);
--=09=09mld->link[cnt++].bss_idx =3D mconf->mt76.idx;
-+=09/* Encode the remaining valid links of this station, not just the one
-+=09 * this command happens to be updating. STA_REC_MLD is a complete
-+=09 * record: every update rewrites link_num and link[], so selecting the
-+=09 * secondary entry from the caller's link made the record firmware
-+=09 * ends up holding depend on which link was updated last.
-+=09 */
-+=09max_links =3D ARRAY_SIZE(mld->link);
-+
-+=09/* mt7925_mac_link_sta_add() issues this command before publishing
-+=09 * a new link in msta->link[] and msta->valid_links. Include that
-+=09 * in-flight caller link in this record so it is not lost.
-+=09 */
-+=09if (mlink && mconf && mlink !=3D &msta->deflink)
-+=09=09valid |=3D BIT(mlink->wcid.link_id);
-+
-+=09for_each_set_bit(link_id, &valid, IEEE80211_MLD_MAX_NUM_LINKS) {
-+=09=09struct mt792x_link_sta *mlink_sec;
-+=09=09struct mt792x_bss_conf *mconf_sec;
-+
-+=09=09if (cnt =3D=3D max_links)
-+=09=09=09break;
-+
-+=09=09if (link_id =3D=3D msta->deflink_id)
-+=09=09=09continue;
-+
-+=09=09mlink_sec =3D mt792x_sta_to_link(msta, link_id);
-+=09=09if (!mlink_sec && mlink && link_id =3D=3D mlink->wcid.link_id)
-+=09=09=09mlink_sec =3D mlink;
-+=09=09if (!mlink_sec || mlink_sec =3D=3D &msta->deflink)
-+=09=09=09continue;
-+
-+=09=09mconf_sec =3D rcu_dereference_protected(mvif->link_conf[link_id],
-+=09=09=09=09=09=09      lockdep_is_held(&dev->mt76.mutex));
-+=09=09if (!mconf_sec)
-+=09=09=09continue;
-+
-+=09=09if (cnt =3D=3D 1)
-+=09=09=09mld->secondary_id =3D cpu_to_le16(mlink_sec->wcid.idx);
-+
-+=09=09mld->link[cnt].wlan_id =3D cpu_to_le16(mlink_sec->wcid.idx);
-+=09=09mld->link[cnt++].bss_idx =3D mconf_sec->mt76.idx;
- =09}
-=20
- =09mld->link_num =3D cnt;
-
+    Andrew
 
