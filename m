@@ -4,97 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A8B7C624D3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 17:25:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6A1BC624DA
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 19:33:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oBhMzKNJR7pSzKCFhkUKKnjSwPMdvq8s2DMZy0BfhKw=; b=eVuKjBIITtQ2ieqi5FcMNfloJo
-	vXKyjJ/qVSO3FcI9sVif7bU/TcBPAU7kRX9iI2vp9S3g2SgRj/wVHsF6UZWCuMKTLaCvWZOgBanhx
-	P/AeCkbW8M3Uba2g2V3rSE7DQvrmuom22VGAN360NliuP9jnCpn3WhodFTSQhUH6KdbROXsliYIHU
-	PCnTq0O8NMUY1ppLfa4oPehKnZ/P4M+nq9WoX5W1xSEN/+cQCjc9adWnuQa4QM3UqMdxDCWPM0VHX
-	+yXm837J97oZ4uWiBTnPRA3ncnHU7OYq+iZODW0Tzkjcb/1NiFuaOAHxaEtAf61+/R0ddjHWXzJiq
-	6mVkrhjQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=TYnvs+N+CqcW/5DzK7i0UN1RVPBedvN0sJ+WQweM6EI=; b=HBbI2fksbY8FFEFFaHT858+V16
+	bqjBzA2l2iRAisv0UDnrFI3YopzHuAdM1bneOpM5BAs6cfTMMdwyGxofAdYJ25OtHD+CSCXHaY/hF
+	xqxt+G7VnEkl0vCAbfN6Dnx35EDkqHlqK1EBFzWKt/SxTLD7jRuwWd2pRGFcs4uY/3RGVoAXU2GXX
+	FqiSMwXrijCkc3PgFU8XrxvN97UMjEiT0KLDBLmjYWap6b6kG90NoTBYaJUAvEv83uoDmFp/cxrTm
+	Qew78jb5dg/+IMQhSps2WUSSsbGoKGNCwXbNJPNAaj77HS7HvmdiBnuru47nT6kEskirSI3bMLwkl
+	+jb9eI8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1oiR-0000000FQr4-2qmp;
-	Wed, 02 Sep 2026 17:25:39 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1x1qiO-0000000FiMI-0t5K;
+	Wed, 02 Sep 2026 19:33:44 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1oiP-0000000FQpt-1AND
+	id 1x1qiF-0000000FiJT-1Fsb
 	for linux-mediatek@lists.infradead.org;
-	Wed, 02 Sep 2026 17:25:39 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 3EA064E414CA;
-	Wed,  2 Sep 2026 17:25:35 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id E83216053C;
-	Wed,  2 Sep 2026 17:25:34 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 5986D11C795A7;
-	Wed,  2 Sep 2026 19:25:14 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1788369928; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=oBhMzKNJR7pSzKCFhkUKKnjSwPMdvq8s2DMZy0BfhKw=;
-	b=ZKwxDh1tlAGGc3i6jU3XLjy8YKPw+N0F8FsPjVPri1xYMBIC23hY6+ePrHWF5YPWYUBw4V
-	aoVFM4dMJT+27x3XToceR3ddqguAkPI/iLXsVsw04Lvdytg/n1aM9l3g2VvjKYTlgn3gAB
-	cOOcekXCkRgQHE7fh6uXLMjbyLKxcTGfOGz0muDU/BWyJnhgAiyYwJ0CCI0p1RkpDN0bF2
-	FOJPb/fEogIglEmUX1ui3d2MglUQAR+NrqKHGgbVbZkha83jfF7rfga3ZVLr0Szh0cjMWj
-	Y1g8zDDkZY7Qy51nvFcRggd/vq2SJAXJPIp4ygAJrxeO8ZVXw4AC49QzCRu7Cw==
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Peter Senna Tschudin <peter.senna@gmail.com>, 
- Martyn Welch <martyn.welch@collabora.co.uk>, Andy Yan <andyshrk@163.com>, 
- Marek Szyprowski <m.szyprowski@samsung.com>, Marek Vasut <marex@denx.de>, 
- Jagan Teki <jagan@amarulasolutions.com>, 
- Christopher Vollo <chris@renewoutreach.org>, 
- Douglas Anderson <dianders@chromium.org>, 
- Franz Schnyder <franz.schnyder@toradex.com>, 
- John Ripple <john.ripple@keysight.com>, Michael Walle <mwalle@kernel.org>, 
- Sudarshan Shetty <tessolveupstream@gmail.com>, 
- Alexander Stein <alexander.stein@ew.tq-group.com>, 
- Herve Codina <herve.codina@bootlin.com>, Esben Haabendal <esben@geanix.com>, 
- Sean Paul <seanpaul@chromium.org>, Vincent Palatin <vpalatin@chromium.org>, 
- Jitao Shi <jitao.shi@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
- Pin-yen Lin <treapking@chromium.org>, Tony Lindgren <tony@atomide.com>, 
- Vinay Simha BN <simhavcs@gmail.com>, Maoyi Xie <maoyixie.tju@gmail.com>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Andrey Gusakov <andrey.gusakov@cogentembedded.com>, 
- Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
- Peter Ujfalusi <peter.ujfalusi@ti.com>, 
- Svyatoslav Ryhel <clamor95@gmail.com>, Sam Ravnborg <sam@ravnborg.org>, 
- sashiko-bot@kernel.org, Enric Balletbo i Serra <eballetbo@kernel.org>
-In-Reply-To: <20260831-drm-bridge-drm_panel-cleanup-v3-0-50efd8168b3e@bootlin.com>
-References: <20260831-drm-bridge-drm_panel-cleanup-v3-0-50efd8168b3e@bootlin.com>
-Subject: Re: (subset) [PATCH v3 00/13] drm/bridge: Kconfig: cleanup
- DRM_PANEL usage
-Message-Id: <178836991411.1099612.11697667496444228623.b4-ty@b4>
-Date: Wed, 02 Sep 2026 19:25:14 +0200
+	Wed, 02 Sep 2026 19:33:39 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 682Hr0EC1071986
+	for <linux-mediatek@lists.infradead.org>; Wed, 2 Sep 2026 19:33:33 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:date:from:message-id:mime-version
+	:subject:to; s=qcppdkim1; bh=TYnvs+N+CqcW/5DzK7i0UN1RVPBedvN0sJ+
+	WQweM6EI=; b=Ie4TBhiqivgoZgq4A2+TqkqiddEKzO0EVxYDvc3EcNl6frVMCeV
+	SO69XNhP2XGQG9UjNuhFob4KAWMwll+a+avJECXb2hB1v9x7fAKcxE1XRasr73+x
+	5JD+w/LBufHmlaHdwcV9Ngw2sP7aZBgtg/ZaxmqjhDESAUwlCZRuf7GKY+RGn3im
+	DaXy1nrhYVNWfPPmqfJ3XfCZv4J1GggKXDelDr0tmTJr+hwzgRu+KLZD8EdBzkXt
+	2quNT0JNV3ptRDF6GMGJxDFk81QEsaHZjEhIGFhpn75iI8DVIzdQa0raiWvY8grx
+	aS3Ce7K8inSGDyWC6D+HKuZMCaEg20zo5gg==
+Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com [209.85.216.71])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gemja1ngt-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2026 19:33:32 +0000 (GMT)
+Received: by mail-pj1-f71.google.com with SMTP id 98e67ed59e1d1-38f57e31b6eso1735891a91.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2026 12:33:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1788377612; x=1788982412; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=TYnvs+N+CqcW/5DzK7i0UN1RVPBedvN0sJ+WQweM6EI=;
+        b=Om/IkSOg4IeKfizSf8o6vD/yRRc9w0l5skQG/Au4upfO2bsD4wj3gRPw7moF1M/XtE
+         DKIX1weQJ4E9jKYn8Bvyv+5fPJ/L6uhmkQVEGVfFYxSCM7V5MI9BIuIP8yrXS86FPm0A
+         9qKXeHsNlLX7mBH8fNLKLZ/9yJjdM+3PlwLSQwSgwdKBsomeY69usk4DImIbbojEFXIn
+         dvoHEb4W0L/p+g4O6mNlPoLQWtoVIh+ykwnh9qrdgvSwQk/vBqr4/Y6RggjWdzpUiNaa
+         n5Zo2cgaY/A7D0oJeQoF/DcrLe7qeuF8S/2fKVtRVLTE3yz2xU59x9aDcQyGjk8/r11t
+         sAaw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788377612; x=1788982412;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=TYnvs+N+CqcW/5DzK7i0UN1RVPBedvN0sJ+WQweM6EI=;
+        b=CNYjzjOnWvBhKjFVfD1Q3axCIfiKmkARBxJdVuuyQce5bDMkK7R6Ij1cHSakOOtmLP
+         t8nDt5Zk/VsdnMV47UOcW2gcmUmVuQWcmaatYHxmrtaIEhk+BqEFbZR9yKExUKz68cB/
+         d7Kwy0vSx9O7sndTUeT0ErOpnr5OY6Wv9sWVHPp+33tIWeE4eYLtXFAvYyvhEJ2cVIGB
+         ReNZLvQKN1izCG8cBP0Nc1dRBBS5SymSQ9lnZKTFsN6Wo9eX0pFqByzlKw7CxZcdEV3R
+         3pHcjUL/Tu0SSnbl5AAJRSs3FwxxzO3Mu+SfLBHOKyIYYAPdo4MrQjRlfJM1Zjs/vY6i
+         Xqvg==
+X-Forwarded-Encrypted: i=1; AKwUvBz8AHDvfKoa/95A11c8/S6hvHL3VIr4QTmGlhJVOBiIjrqWA2TK8FTy6PiueSWUS+s7PC8bdR8C21R1S7LbHA==@lists.infradead.org
+X-Gm-Message-State: AFuF++lXvwDRi0OEnGaiXuKpMifmkdb4FuFIh54dZQnwQFXhQDxKuUBn
+	4KQFL6dlJqK7U6Apt6Mbj49HiEjMtdW7S/hBKBOiMwGiHO1cozD+DlMgxQXQHx3zQxM9ojs1rJk
+	us661Z7K+FazqE/8cjczVSAUV+yhyYwurU0TogMEuZLauPq2YIjG61acjbWeMKoDHWhAg7wFywy
+	CvBbM4xzc=
+X-Gm-Gg: AYBFou30/WDIDn6rB2FDN9rkw0QgLjpkTdF5OCsAXWkUKfs9ed+S3CH7hqfmOQug/9e
+	PH4y7jqOEV/Axh4iIR6WtMSG2K1o6nnMaYf+VRkohVA7jao9bwUrGUt2sl/WlwWKLcpxn7wT9RI
+	KtrK7XuAPexK+SEcnXRegje7ECzjBp7Q++uiMa3zWme9tEBmPx03lFOikAeGHZcKv1tjr1b0/K/
+	1GPr8KfUMZdUoxadn604UTi1EPCQI9nFZdJpxU9EGzSGx0zoa2Tq0Xj0n4OJkO7nX9IktF/zrNn
+	69PVR58CoFT1h87739FQONspoK+x7yEyV8Y+y3cZQqOEIYle7kO9//p8JJPc2U0zWXk8aqB5Oat
+	mAZ6XdvTl8bJykI4RQrJQHr9ChM4=
+X-Received: by 2002:a17:90a:dfcd:b0:398:ba0e:96f6 with SMTP id 98e67ed59e1d1-39aee1ad8edmr11480490a91.23.1788377612203;
+        Wed, 02 Sep 2026 12:33:32 -0700 (PDT)
+X-Received: by 2002:a17:90a:dfcd:b0:398:ba0e:96f6 with SMTP id 98e67ed59e1d1-39aee1ad8edmr11480435a91.23.1788377611618;
+        Wed, 02 Sep 2026 12:33:31 -0700 (PDT)
+Received: from hu-mojha-hyd.qualcomm.com ([202.46.23.25])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-332501e5447sm518103eec.0.2026.09.02.12.33.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 02 Sep 2026 12:33:31 -0700 (PDT)
+From: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
+To: Bjorn Andersson <andersson@kernel.org>,
+        Mathieu Poirier <mathieu.poirier@linaro.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org,
+        Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
+Subject: [PATCH 0/5] remoteproc: Use devm_of_reserved_mem_device_init()
+Date: Thu,  3 Sep 2026 01:03:13 +0530
+Message-ID: <20260902193318.1996827-1-mukesh.ojha@oss.qualcomm.com>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.16.0
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-GUID: AQLpyqXbNs40QsNJ3knylkuyAYLM7Ebh
+X-Authority-Analysis: v=2.4 cv=FeAHAp+6 c=1 sm=1 tr=0 ts=6a987a0c cx=c_pps
+ a=UNFcQwm+pnOIJct1K4W+Mw==:117 a=ZePRamnt/+rB5gQjfz0u9A==:17
+ a=VdqzKS8jKosA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22 a=prJGSMnC0dN4-z46mKEA:9
+ a=uKXjsCUrEbL0IQVhDsJ9:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTAyMDE3MyBTYWx0ZWRfXzO5efIUzH0aU
+ HkpFQ/s9cwK6JTR9k2KnjeT2E97FhAAh4ZYzv7WWmbL3ahkoJaY78KYtudrz+tFNZASsrBYqFwV
+ cIWSjihlnkMzGtnY05R0FhwQap+6jxM=
+X-Proofpoint-ORIG-GUID: AQLpyqXbNs40QsNJ3knylkuyAYLM7Ebh
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTAyMDE3MyBTYWx0ZWRfXxNtvieDDJXFG
+ rM6TLf4buks91yhU6t0CPhXhCkYMYBukpB28ZBFerBcz2dts6pXeg4ygeoiMiQ9VjD/GPvpEorm
+ 1GfYu1h1LEVtHBJiXPeLcOr4RS0h/8jh/Gw9z/sgEEF58gfMIvjlI4I9TNFfdoiT4OrCIhDhMNe
+ O2h785HYqZaLFaNWyE6Im41NCcRR6dbVPyJSbLWtN97Wj+JnBqEu+869VVc00NhA1T3299NGCgF
+ zwmGi+rqX8O68K81mBTjXnPwahP2s+aQRqbDAaSH68mDqc/i5XWnWdDHBMdAEulMwvA6sZX3mSk
+ bc8x75fKJiNDdg3vqNmBszoOQgZMQU0QkosHFNzKboW+mXOeZiG/1AzM/X8X0L5Dn/udoNAhifR
+ zXlmAo5tu92B6jdwsQ5fJOsuXyghgldBnlNHjgOh+sIbmkfN6MSbCuY2jJ6uytXYsvu4O2Xrwhg
+ xs6rcmcQKb4WRgSmDCw==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-09-02_04,2026-09-02_04,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0 impostorscore=0 malwarescore=0 adultscore=0 lowpriorityscore=0
+ priorityscore=1501 bulkscore=0 phishscore=0 clxscore=1015 spamscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2609020173
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_102537_460561_8C849A69 
-X-CRM114-Status: UNSURE (   7.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260902_123335_414416_0D5A1083 
+X-CRM114-Status: GOOD (  11.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,35 +145,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Several remoteproc drivers manually allocate a reserved memory region via
+of_reserved_mem_device_init() and then pair it with an explicit release in
+the remove path. This is error-prone: if any error path between init and
+release is taken, the region is leaked for the lifetime of the driver, and
+the pattern must be duplicated for every driver that needs this.
 
-On Mon, 31 Aug 2026 18:13:26 +0200, Luca Ceresoli wrote:
-> As a cleanup in preparation for making every drm_panel embed a drm_bridge,
-> fix missing or unnecessary usage of DRM_PANEL and DRM_PANEL_BRIDGE in
-> drivers/gpu/drm/bridge/Kconfig.
-> 
-> == Grand plan
-> 
-> This is part of the work to support hotplug of DRM bridges. The grand plan
-> was discussed in [0].
-> 
-> [...]
+devm_of_reserved_mem_device_init() was recently introduced to handle the
+cleanup automatically via the devres framework. Convert the affected
+remoteproc drivers to use it, removing the manual release calls and any
+wrapper devres actions that were added to work around the missing helper.
 
-Applied, thanks!
+Mukesh Ojha (5):
+  remoteproc: da8xx: Use devm_of_reserved_mem_device_init()
+  remoteproc: keystone: Use devm_of_reserved_mem_device_init()
+  remoteproc: omap: Use devm_of_reserved_mem_device_init()
+  remoteproc: mtk_scp: Use devm_of_reserved_mem_device_init()
+  remoteproc: ti_k3: Use devm_of_reserved_mem_device_init()
 
-[01/13] drm/bridge: megachips-stdpxxxx-ge-b850v3-fw: don't select unused DRM_PANEL
-        commit: b1db84ecf75caca198a464c73f1c4afc88ca10a7
-[04/13] drm/bridge: ti-sn65dsi86: don't select unused DRM_PANEL, select DRM_PANEL_BRIDGE
-        commit: a5c061a3c34c3e2928754f42bce59622b9989871
-[05/13] drm/bridge: ti-sn65dsi83: select DRM_PANEL_BRIDGE
-        commit: 8175ab0c5f13fa862eb7dee25f5a329332b8f437
-[08/13] drm/bridge: parade-ps8640: select DRM_PANEL_BRIDGE, not DRM_PANEL
-        commit: 59113db28546ac8245155960b087502d226fc78a
+ drivers/remoteproc/da8xx_remoteproc.c   | 10 +---------
+ drivers/remoteproc/keystone_remoteproc.c | 16 ++--------------
+ drivers/remoteproc/omap_remoteproc.c    | 13 +------------
+ drivers/remoteproc/mtk_scp.c            |  3 +--
+ drivers/remoteproc/ti_k3_common.c       | 13 +------------
+ drivers/remoteproc/ti_k3_common.h       |  1 -
+ 6 files changed, 6 insertions(+), 50 deletions(-)
 
-Best regards,
--- 
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
-
-
+--
+2.34.1
 
