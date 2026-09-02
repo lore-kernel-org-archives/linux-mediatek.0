@@ -4,70 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B813C624D0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 09:50:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCF48C61DD6
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 10:33:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SlG586REaqGCwTe3f44TG7HZev5qlllhYufaSDUddpM=; b=Ios8e1Mkzey899DCV+yMrDnLWN
-	Onxyyx159+S70dBdtzO+UEwY2QSJbrRZE+1XjIPJqHhRQ2nirS7VkPapCaJhmeoetNBbQwwygic37
-	HhlhMRojRVX69FMgsb12Se+NvCwWVhiPLr1gipSe319plYU2XChPcTwtREPRBlHTlv2hLCG5Mw86I
-	YBngJjh/5RpYDCSMAw28fCBDjBOgAFz6efPriMRuZdvngFAw05AJQ64DC9bznzZqAaZD9DSG9b4Ep
-	iEzHD7/z7m2IVUkm6zXBXaO7U/dZKG+TwQSlKQEkBP8/JX22zCdXAPoO+nMLLyXLELGubqXLc+QEk
-	r1YocPKg==;
+	bh=FFXE0ow+NHAbVFHf1JYlkpT5w06lX7CE26ijM1Wtcd4=; b=hsDWczYIfaTGxx/lTJjOlYDCfu
+	K6uyjXmzCvF+BPOcw8Udhnwg3HjPJVu8QsIXXDcI11U04CK9uO7WrA1Rwgiur6eebHAEC9rv+GYZ4
+	8An0yNedsVtzeg91KGM6lTIxJJMRP4e9BtLS7oyIfoi7lByVpmYYKSnymGE/Hr1FuCaRCpUXJoiEv
+	W/e9iB06de5edXjI+oA4gn0yF4bVfAyncjKvb1Go5t+EMwJVhfTl7uFhuT/lxnMQMNs2wNhSrYjQU
+	MRPBLPrJBHOq1XfIdtYI/odp8r8wpPfRrv3qg1WnTYtwsSfZTo4bvVAAL7l4XaCjA3JoRPSqRugog
+	UrJWylBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1hcC-0000000EGQQ-0rrG;
-	Wed, 02 Sep 2026 09:50:44 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1x1iHU-0000000EMRu-1csl;
+	Wed, 02 Sep 2026 10:33:24 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1hc7-0000000EGPE-43BT
-	for linux-mediatek@lists.infradead.org;
-	Wed, 02 Sep 2026 09:50:42 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 6BB644E414CF;
-	Wed,  2 Sep 2026 09:50:36 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 363296053C;
-	Wed,  2 Sep 2026 09:50:36 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id E071911C792F3;
-	Wed,  2 Sep 2026 11:50:27 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1788342635; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=SlG586REaqGCwTe3f44TG7HZev5qlllhYufaSDUddpM=;
-	b=cWzAYMLpmucLaUQi6Pjy0yGWfJDQ4mBMCRPCtX9c1WEwiDpfiPIwT5Z2w89NRDl8J79nu7
-	hP0SAeyQuLwwlr6She1sm7n45TnlMKbIOjb8bFbBA7MXJ3lBYBtuj/lLS87XyHdppwhg8E
-	nYVtfOB3L3dMzPUi+NxH9whEJ+oeiKB7yoLn3ATYQi1ytxTfEQVjgWe5AjgF4cdUC8bX5q
-	VFchLkozwdVKdohVQ2kSFF62nqaE/rE3Uu4wuPBbchiZtzGJVhOpUK69AxIhct+FJWaYwI
-	Nk5MlJk6zdowhZaAvDP0CIAYT6LA0CMAtNdwHZL/MXMWcein0vElgZ55dBQ++g==
-Message-ID: <3450830c-1766-4bd5-a777-4bfbfc4c25c7@bootlin.com>
-Date: Wed, 2 Sep 2026 11:50:25 +0200
+	id 1x1iHR-0000000EMQP-2lyT;
+	Wed, 02 Sep 2026 10:33:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1788345197;
+	bh=u5hHq0Z8k4K50Ohjh9lwnjaZVf04Xn7H8lsSwUTpb60=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=AtQMhqVaX4vBafLgjq38dnQi+xH3JfKJm7L/JJkdyo9laW+iJbMja+VHNaaLIpkAZ
+	 E1Zko15QCw3xKw4hWCtdn343tZrZfR4lsUnMxO2690e8QPvlTv+cg0eQ+SZQVT5hQ+
+	 bZHZrDUWqNQ/EYmDznXLbNKlcE9bOSlc/UD4Z7xukiHAnXbOPyz063C4h7tev4Ts3X
+	 tg5eN9UCwXKTHG3dig7A8HR+BE/vyyKdDOtI0m0beGdMTAev53/g77MBhh4ytBZia4
+	 0ABT+p/o6mp0hZwNIGNc7bQfMAS8Pt6sKMn2/s98DUsY1BCkWvp436ju+uH6hLgxqt
+	 Zwg1IcsgDuqCA==
+Received: from yukiji.home (unknown [100.64.0.131])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9323517E11E0;
+	Wed, 02 Sep 2026 12:33:16 +0200 (CEST)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Wed, 02 Sep 2026 12:32:45 +0200
+Subject: [PATCH 2/3] arm64: dts: mediatek: mt8395-genio-1200-evk-ufs:
+ Complete UFS power supplies
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net v4 1/2] net: dsa: mt7530: populate lpi_interfaces to
- fix EEE support
-To: Aleksei Sviridkin <f@lex.la>, chester.a.unal@arinc9.com,
- daniel@makrotopia.org, andrew@lunn.ch, olteanv@gmail.com, nbd@nbd.name,
- lorenzo@kernel.org, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, netdev@vger.kernel.org
-Cc: linux@armlinux.org.uk, dqfext@gmail.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20260902080519.2211373-1-f@lex.la>
- <20260902080519.2211373-2-f@lex.la>
-Content-Language: en-US
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-In-Reply-To: <20260902080519.2211373-2-f@lex.la>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
+Message-Id: <20260902-mediatek-ufs-cleanup-dts-v1-2-7876e7a27a9d@collabora.com>
+References: <20260902-mediatek-ufs-cleanup-dts-v1-0-7876e7a27a9d@collabora.com>
+In-Reply-To: <20260902-mediatek-ufs-cleanup-dts-v1-0-7876e7a27a9d@collabora.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1788345194; l=1127;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=u5hHq0Z8k4K50Ohjh9lwnjaZVf04Xn7H8lsSwUTpb60=;
+ b=lFpdvPJzBvklTLiXP2jD/pez1CnBtvueQBfvZSzK6nMVsCJPvYjgbiURCaaBLffnYNr4mr4Ph
+ V0XqDbVqq+ZDv3zkmjuw3fwOtRGJhmRwxbXy2kWMZuAmAyD+8/LqPzz
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_025040_297755_66F1E2E1 
-X-CRM114-Status: GOOD (  30.91  )
+X-CRM114-CacheID: sfid-20260902_033321_865726_89067D9D 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,112 +86,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Aleksei,
+The MT8195 UFS host controller dt binding now describes the power supplies
+feeding the host controller, that were previously missing from supply
+description.
 
-On 9/2/26 10:05, Aleksei Sviridkin wrote:
-> phylink_create() decides once and for all that a MAC supports managed
-> EEE, and it requires the tx_lpi ops plus non-empty lpi_capabilities and
-> lpi_interfaces. mt753x_phylink_get_caps() leaves lpi_interfaces empty.
-> 
-> So ever since the conversion to phylink managed EEE, ethtool has
-> answered "Not supported" on every mt753x port, and phy_disable_eee()
-> has locked userspace out of turning EEE on. That undoes what
-> commit 06dfcd4098cf ("net: dsa: mt7530: fix enabling EEE on MT7531
-> switch on all boards") arranged: EEE off by default, but reachable
-> with ethtool.
-> 
-> Leave the speeds above 1 Gbps out of both bitmaps. PMCR folds
-> SPEED_2500 and SPEED_10000 onto PMCR_FORCE_SPEED_1000, so
-> PMCR_FORCE_EEE1G would govern LPI on such a link, and that is
-> unvalidated rather than known unsupported: MediaTek's SDK driver sets
-> the EEE force bits for 100 Mbps and 1 Gbps only, and the unit of the
-> wakeup timers is undocumented with the port clock at 2.5 times the
-> rate.
-> 
-> LPI stays off until userspace enables it, but the EEE advertisement of
-> a PHY that advertises it out of reset comes back, since phylink stops
-> force-clearing it.
-> 
-> Fixes: 9cf21773f535 ("net: dsa: mt7530: convert to phylink managed EEE")
-> Signed-off-by: Aleksei Sviridkin <f@lex.la>
-> ---
-> Ports that support neither 100 Mbps nor 1 Gbps are skipped because on
-> MT7988, EN7581 and AN7583 port 6 is 10 Gbps only and shares
-> PHY_INTERFACE_MODE_INTERNAL with the user ports, so the interface mask
-> alone cannot tell them apart. MT7531's internal PHYs keep the
-> advertisement mt7531_setup() zeroed and EN7528 keeps both bitmaps
-> empty, so EEE stays fully off there.
-> 
-> Two pre-existing things this patch makes live, neither addressed here:
-> 
-> - The unit of LPI_THRESH is still unspecified, as the comment above
->   lpi_timer_default says. Before the phylink conversion
->   mt753x_set_mac_eee() wrote tx_lpi_timer into the field directly, so
->   the raw unit has always been what ethtool showed on these ports.
-> 
-> - mt753x_phylink_mac_enable_tx_lpi() sets the PMCR force-EEE bits
->   without checking the resolved speed or interface, relying entirely on
->   phylink never calling it above 1 Gbps. A check there would make the
->   driver robust independently of lpi_interfaces being right.
-> 
-> v2, with the full argument for leaving the higher speeds out:
-> https://lore.kernel.org/netdev/20260824024117.46154-2-f@lex.la/
-> 
-> v4: lpi_capabilities is mac_capabilities masked to the two speeds
-> instead of both asserted. Every port that reaches the guard today has
-> both speeds, so nothing changes; it only stops the bitmap from claiming
-> a speed a port cannot link at.
-> 
->  drivers/net/dsa/mt7530.c | 25 ++++++++++++++++++++-----
->  1 file changed, 20 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 2b7be091c056..a188a391b650 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -3172,23 +3172,38 @@ static void mt753x_phylink_get_caps(struct dsa_switch *ds, int port,
->  
->  	config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE;
->  
-> +	priv->info->mac_port_get_caps(ds, port, config);
-> +
->  	/* The EN7528 GPHYs report EEE capability, but negotiating EEE with
->  	 * common link partners (e.g. Realtek GbE NICs) results in an unstable
->  	 * link with dropped frames. Leave the LPI capabilities empty so that
->  	 * phylink disables EEE on these PHYs and refuses to enable it from
-> -	 * userspace.
-> +	 * userspace. Ports that run at neither 100 Mbps nor 1 Gbps are left
-> +	 * empty too, since LPI above 1 Gbps is unvalidated.
->  	 */
-> -	if (priv->id != ID_EN7528) {
-> +	if (priv->id != ID_EN7528 &&
-> +	    config->mac_capabilities & (MAC_100FD | MAC_1000FD)) {
->  		u32 eeecr = mt7530_read(priv, MT753X_PMEEECR_P(port));
->  
-> -		config->lpi_capabilities = MAC_100FD | MAC_1000FD | MAC_2500FD;
-> +		/* PMCR folds SPEED_2500 and SPEED_10000 onto
-> +		 * PMCR_FORCE_SPEED_1000, so LPI above 1 Gbps would be
-> +		 * governed by PMCR_FORCE_EEE1G and is unvalidated rather than
-> +		 * unsupported. Leave it out of both bitmaps: lpi_capabilities
-> +		 * gates on the media speed a rate matching PHY reports, not
-> +		 * on the speed the MAC runs at.
-> +		 */
+So, add in the Mediatek Genio 1200-EVK board devicetree the regulators
+used to power MT8395 UFS controller when the board is configured to use
+its UFS storage as primary.
 
-This is still too verbose IMO... 2500Mbps LPI isn't uspported, that's all we
-need to know :)
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk-ufs.dts | 3 +++
+ 1 file changed, 3 insertions(+)
 
-It's very common that 2500 uses the same settings as 1000 with just a random
-register somewhere switching the speed to 2.5x, and also very common that lots
-of features break when using 2500, so no need for the verbosity here. Same
-goes for the next patch as well.
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk-ufs.dts b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk-ufs.dts
+index e09a3ecd8773..f3d839f31918 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk-ufs.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk-ufs.dts
+@@ -16,6 +16,9 @@ / {
+ 
+ &ufshci {
+ 	status = "okay";
++	avdd12-supply = <&mt6359_vrf12_ldo_reg>;
++	avdd12-ckbuf-supply = <&mt6359_vbbck_ldo_reg>;
++	avdd18-supply = <&mt6359_vio18_ldo_reg>;
+ 	vcc-supply = <&mt6359_vemc_1_ldo_reg>;
+ 	vccq2-supply = <&mt6359_vufs_ldo_reg>;
+ };
 
-Sorry for nitpicking on this, but comment verbosity overall has been rising-up lately,
-LLMs may have something to do with it, and it doesn't necessarily make things more
-readable :(
-
-The code itself looks fine though,
-
-Maxime
-
+-- 
+2.55.0
 
 
