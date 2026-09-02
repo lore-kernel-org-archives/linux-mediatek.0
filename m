@@ -4,60 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7F87C61DD6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 06:46:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F4EEC61DFD
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 07:18:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B7UPSLc11oKfyrOgLlliKH9fMg05j0h2vVmhD/w231c=; b=0py2iyw6L5vN4Fx7uSp3lOMHGA
-	hSkP1P1QMv4Xz9oAghZ35tJi2I3pBtFHyfLocwmZubB1XAlVfFqWKlI8BVjput+u2KrwPq82I8Bgy
-	ubONN6W081zrBBjqzhHycrksTog2yEu6lx9IvFFSDLua8z3V3xif1OHurgmw92VyXQ3d9iRCq8aGE
-	yAbrXwzLu8FiatGkSABSnHQPsosvMrFTS8JTgYxsfTQPEE3guqgDuazN90Y6EaL5s+29GTIVgNvdh
-	nRJHyVL/7rbMESHqBgaZnze7ayoCWS6fiKrBBRgQxk1c2Oos09WJYgwt2tDRgtkxw8T4kF54dYSWw
-	dkXKqqjw==;
+	bh=HL69uD1uJKKHK2MGV9jHTlVdAjJQsXCvWjdRatXtZi8=; b=Pqo5kzdAZCdu4u/6wP9/TwkjUR
+	2N7Zn1pYJcF1cmDmz94IoHtn3ROWCgbEDe3EL0NnjLJT8l4ECTVaWCHth9U0NX9QYJmCiDaahJAGi
+	y9tnJ0wx1IwvC3txkRUs8Rq2gdgLJdXgY8BPWzz4x6NdJJRZIfUEDrk0JSBFlCP46da+uunmx6ovX
+	tmsiRQsCoWCo/Jqu47xH0M2OlYI/dACipCjt2xWE5nWRqdcXu7+lCuU3DdLMn7UhJ14MRcye+q3eE
+	r+mapYlRQnOf6ljAj+vzBsWMvm45iLQGEj1g0jBxenTa/Mid0OvL9wsHL4em6qzfdsrQEcXWBEi8O
+	urYQrqWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1ekG-0000000DsiT-1UXX;
-	Wed, 02 Sep 2026 06:46:52 +0000
+	id 1x1fF4-0000000Duo3-0Ga6;
+	Wed, 02 Sep 2026 07:18:42 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1ekE-0000000Dsi5-3SvW;
-	Wed, 02 Sep 2026 06:46:50 +0000
+	id 1x1fF1-0000000Dunn-41vg;
+	Wed, 02 Sep 2026 07:18:40 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5C47F600C8;
-	Wed,  2 Sep 2026 06:46:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E08FC1F000E9;
-	Wed,  2 Sep 2026 06:46:47 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id BA6DF600C8;
+	Wed,  2 Sep 2026 07:18:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A4871F000E9;
+	Wed,  2 Sep 2026 07:18:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788331609;
-	bh=B7UPSLc11oKfyrOgLlliKH9fMg05j0h2vVmhD/w231c=;
+	s=k20260515; t=1788333518;
+	bh=HL69uD1uJKKHK2MGV9jHTlVdAjJQsXCvWjdRatXtZi8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Ovzwl3VrOuy3uhuXQ2RZbSDLYYTe1Ii9BoP5dQVJhvgTn1GSz3xT2hmg8zJATCtDi
-	 uX0jyf6AVYDRVOBUprOfJtgQ995c024rYYE23SMdUgO4sf/iLWqk1p+juyNZtLrXtt
-	 G7+ajEU4XYF3il3uI55Vge18AwIf/u5OrEBml0DDlKlXB8pImMxN62hMuffRU7Udl5
-	 bfh/9S5/oIHLsvDbbFFlYbNnlzajMxGmpL0snqPYOAE/s7sWBi7g87WmZ+n5abIN02
-	 bPRhnpRJ95k6LrkfesAgVFFpmxsALnr5Kv9I7KjzC8x61muqGTPa4NEibKacBEaKM3
-	 3ces20pbfOz/g==
-Date: Wed, 2 Sep 2026 08:46:45 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Congcong Yao <congcong.yao@mediatek.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	Zhengnan Chen <zhengnan.chen@mediatek.com>
-Subject: Re: [PATCH v4 1/2] dt-bindings: memory-controllers: mtk-smi: Add
- support for mt8189
-Message-ID: <20260902-calm-vivacious-mouse-a7eaac@quoll>
-References: <20260831-8189-smi-support-v4-0-8ae66dd3eeed@mediatek.com>
- <20260831-8189-smi-support-v4-1-8ae66dd3eeed@mediatek.com>
+	b=e7fYUwa67YcCpJQnhksI8s5r9szKITxJpbFfZKbSZEUV+z5uyzc5KVa96Mmcx4OPa
+	 hUt+sVL9z7lmDGS9Suf7Q3aJpKPLexx3a/NMPJiJlaCJDXuxcuxyaxz84pEZBXSEgK
+	 hK46DbJNdrhDH2CyT6tHGkYccEzqAweJqh2ZaX6AlxXN/anm8MKc31fIhLosPvGg2y
+	 U14EJghhLQcVsFrGtCsS5GQ4yKDOMPcYW6i+hSEISmxkgXiK2vroFVIRmVO3euKPgd
+	 Hti3OS6v3ljm1ef3LsRJAnppDgU5JPV1KLX6nlwpvbkA5LtWwoLDgyTDi1QfJ1YQZy
+	 GAmqh7uM9xRJg==
+Date: Wed, 2 Sep 2026 08:18:24 +0100
+From: Sudeep Holla <sudeep.holla@kernel.org>
+To: Geert Uytterhoeven <geert+renesas@glider.be>
+Cc: Ryan Chen <ryan_chen@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Brian Masney <bmasney+clk@redhat.com>,
+	Jerome Brunet <jbrunet+clk@baylibre.com>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Billy Tsai <billy_tsai@aspeedtech.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Taichi Sugaya <sugaya.taichi@socionext.com>,
+	Takao Orito <orito.takao@socionext.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>,
+	Benjamin Fair <benjaminfair@google.com>,
+	Cristian Marussi <cristian.marussi@arm.com>,
+	David Lechner <david@lechnology.com>,
+	Abel Vesa <abelvesa@kernel.org>, Peng Fan <peng.fan@nxp.com>,
+	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Santosh Shilimkar <ssantosh@kernel.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	Vladimir Zapolskiy <vz@mleia.com>, Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Sylwester Nawrocki <s.nawrocki@samsung.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Dinh Nguyen <dinguyen@kernel.org>,
+	Viresh Kumar <vireshk@kernel.org>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Emilio =?iso-8859-1?Q?L=F3pez?= <emilio@elopez.com.ar>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Prashant Gaikwad <pgaikwad@nvidia.com>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Ulf Hansson <ulfh@kernel.org>, Liviu Dudau <liviu.dudau@arm.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Michal Simek <michal.simek@amd.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-clk@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	openbmc@lists.ozlabs.org, arm-scmi@vger.kernel.org,
+	imx@lists.linux.dev, linux-mips@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, soc@lists.linux.dev,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 30/45] clk: scpi: Make sure clk_init_data is fully
+ initialized
+Message-ID: <20260902-tiny-metal-silkworm-ffaadd@sudeepholla>
+References: <cover.1787239813.git.geert+renesas@glider.be>
+ <939f1be93abebc7967a889e9c24c34942df8229a.1787239813.git.geert+renesas@glider.be>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260831-8189-smi-support-v4-1-8ae66dd3eeed@mediatek.com>
+In-Reply-To: <939f1be93abebc7967a889e9c24c34942df8229a.1787239813.git.geert+renesas@glider.be>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,27 +130,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 31, 2026 at 02:52:06PM +0800, Congcong Yao wrote:
-> From: Zhengnan Chen <zhengnan.chen@mediatek.com>
+On Fri, Aug 21, 2026 at 10:53:40AM +0200, Geert Uytterhoeven wrote:
+> The clk_init_data structure contains several mutually-exclusive members
+> for different methods to specify the possible parents of a clock,
+> prompting drivers to initialize only the members they need.  However,
+> not initializing all members may cause subtle issues, which are only
+> exposed when CONFIG_INIT_STACK_ALL_PATTERN or CONFIG_INIT_STACK_NONE is
+> enabled.
 > 
-> Add the SMI LARB, common and sub-common binding descriptions for
-> MT8189.
-> 
-> MT8189 adds an SMI sub-common block. Document this topology in
-> mediatek,smi-common.yaml.
-> 
-> Signed-off-by: Zhengnan Chen <zhengnan.chen@mediatek.com>
-> Signed-off-by: Congcong Yao <congcong.yao@mediatek.com>
-> ---
->  .../memory-controllers/mediatek,smi-common.yaml     | 21 ++++++++++++++++++++-
->  .../memory-controllers/mediatek,smi-larb.yaml       |  3 +++
-> 2 files changed, 23 insertions(+), 1 deletion(-)
+> Make sure all members are fully initialized, to avoid such bugs, and to
+> prevent future breakage when converting drivers to a different method
+> for specifying the parents.
+>
 
-Just to get it out of DT Patchwork:
+FWIW:
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Reviewed-by: Sudeep Holla <sudeep.holla@kernel.org>
 
-Best regards,
-Krzysztof
-
+-- 
+Regards,
+Sudeep
 
