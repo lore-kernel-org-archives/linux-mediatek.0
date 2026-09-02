@@ -4,156 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01081C624D4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 20:08:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 677B5C624D4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 22:19:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a6ghP9glQZIjLasHwBOsrO1uiVG300zETw/KSJymUtA=; b=kOsoKnBYqvmt5SvVx0DyK3bvu2
-	deUCdKILBU7Cm8/qebY44ldYhX/fBkrHgJQEB4byoIliRy4RYXBK0VxTA45eMDpb9uNzmlJ/P2DBU
-	ruo+tAwpEy4LLfua64u97NWSgywWlX482LAcfRdfsKwLs/CzBffwf/0w6WwPPuA9cM3cuLW2I2LcV
-	r+czYVTH/yCFnd0hIzARxFWlYQMcAPavzM7pIDYkeYqfo3kEIy7KxuMuEsQ+3PQZOM445Rc0OAU5u
-	u1HaBRhZe3Nq5Y/pBPRkECP/tYo6eqR6U/yPFM8dRq47Fe9P44Q6FCR6LGK4kcOJlf0I39i/CKH36
-	aqKbxWAg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lEioVwdoyefrd8s9LY1ucPtPBkwOre20r5RlJF5Ydps=; b=ufAn4A0Slh+vtdLe5xA5VwfZAw
+	vi2OTisz31hmd0y3JGrFZghatVUMkD8k/uVoDpQmk5JnJVad8OOJToAQrbvrsHWmF3lzrGu3bi5IS
+	m7bWG3VlASmqx6UjVlCqOElq8nxLvyTO7QasyusucvkTLUlEyyZH73A7aZWwv3Ef9O9Wt84TxqOPk
+	iQiK73xBVrw61NVfNf3Ckw6M8IyhWjoeQT8xyrzdhHfRVNdJraw7bWXHMOB2ZcsJH7myJ+1be9YiH
+	CgjLWDpgGgqBJwmfFE0NoDI3B9EHhfvZPePDdRMm7w1eAzI07cXTHn4+Q5UHZO7F7UtxFy/K7/7Er
+	aPayob9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1rG0-0000000FpTc-0KHi;
-	Wed, 02 Sep 2026 20:08:28 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1x1tIo-0000000FzaK-3WDg;
+	Wed, 02 Sep 2026 22:19:30 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1rFx-0000000FpQy-4Aux
-	for linux-mediatek@lists.infradead.org;
-	Wed, 02 Sep 2026 20:08:27 +0000
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 682Hr7wD3378615
-	for <linux-mediatek@lists.infradead.org>; Wed, 2 Sep 2026 20:08:25 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=qcppdkim1; bh=a6ghP9glQZI
-	jLasHwBOsrO1uiVG300zETw/KSJymUtA=; b=oz/tv1sRl/3WsGWjrvJ22sIWBYb
-	EK44Eaj/gx7eSgTeGrFcBt5xotgqCYwj204u2D0Ndd3sEk1CT566XOJaRzl5VqpC
-	EbEiiC/Sm70Il6ZcpQ1Ov/NdzUMXu1/Qh5WISHG1p9iAn+cPO5nWSkGhU+MTBev2
-	tRFRmXaaICjuberKDCp9omSoB4vhP9evTmwK66S0w45DyWz7Iw8r8xrQISBK1dmi
-	fkEIEA2g/dFwWupDcNawXcQpj0E0Wo9XOuag+STbTcUpHqLyXrUTMbOIJszCF5rK
-	DtB+rd2+Is6sHEHgkmy94RiOKEOgofNKpIiX38htK6gO7L7l+GjQ7AdMY9A==
-Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com [209.85.216.71])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4genrnhg01-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2026 20:08:25 +0000 (GMT)
-Received: by mail-pj1-f71.google.com with SMTP id 98e67ed59e1d1-398e1f7d1a5so2377507a91.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2026 13:08:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1788379705; x=1788984505; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=a6ghP9glQZIjLasHwBOsrO1uiVG300zETw/KSJymUtA=;
-        b=gmbs0YcBiWcbUOadaz63elWpodH8O54SaBOOWiPr90fR3mlGf/5dVtwL+6BFYBF648
-         IsBYcGhwnKyWqBqZIMsjPKEJZ+lgjnoS2b/xa+5AW97CB6gDyh0zcoL7WhHyuPz8a6zH
-         DakB7xvjqfZPcZ7CwjL7b7i8gPj4voCXcFLc2Fh1mKM3GNMdu/hg0udXtGxWyoQLRolD
-         i39RfJ2yxTS2XzH7FAHggcJJw79eRbIcPsmg1LQud4QIFb8+viPyr760hFiwu8hj+X59
-         G1NZHjM67fRhzdNzka/BbYciusy6MhJRqJQ7fwfkSIqzfMBuf8BbmhHm1lCoPM8dZx6h
-         KjsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788379705; x=1788984505;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=a6ghP9glQZIjLasHwBOsrO1uiVG300zETw/KSJymUtA=;
-        b=NTEPXkyK3i1iH7mti33EUXnpctLeRNdjyekpWkXSGWB0VWq4V1BhFKCux/KOfUj3S3
-         zuNi++DcIuwlm3CPw9tY8RGV3KgjW8AHj+FjvW2FY7iVdtYbrNCIYkD5+VQ6DISXlHpl
-         SeQ2AA7dhxWakMLQmt5LLr7ZKsbNjTAhcbsxbbyVXsedv93SvU66Y+jxIuZk6iDKwmgH
-         MfGthy9io4oBqaeQtzExoW9B75d236ZduU3jQIJFlCw4lJ6Vr+I2w5MyEeoMS+f7y7qO
-         HTdWFLuTk8xmcUgwa5hFXak7vp7Nk6ALeQOIuVox66Uf/RTmn2YqlV8VUmUWJtjCS/bp
-         U8rw==
-X-Forwarded-Encrypted: i=1; AKwUvBxiV4WKPBmbhq9qC1eDWrp7KbUuEVSh2hiHuIo8sgKgQ5Y7u4jSI3ckOIjhWvWN24wghJ4qYFYBYi0SJgPDew==@lists.infradead.org
-X-Gm-Message-State: AFuF++limFdawy2/QyWx+Cje2cYWTQs1KT8BwQNP3bruWeG2nbTSWFTL
-	B+9mbQtBjlf8Ls5x7k7YWt+9PfvKwHfpDs+gm6Omch4SVQ9K4OGIuXukOXQygvZMy1/VP1cTOe6
-	t5hM+qcTXwnm8Ff29O27+h9kWL1Wesg7irIKllGLv0/Zlb76h/WR1kVEgYTlbjkImM7A2CLoirO
-	Q=
-X-Gm-Gg: AYBFou0IcTaT34GwbiTDyMtheuXqwrq8qyXN6Zyvg9feW9rtFpH+LSRf1d3/PxQAKE7
-	PzdiSc2m82nfe+e/gvuV90VaK2cv+n33BPbvlIxeVbMd0UCPVK80qqjg+JBN1HuRGYXwS30B9e+
-	06XE+KC34e0eBdIFIzi1aTUePRS3o/WAOGh9PzjhaeDedwrXT5+EpcwGX46vbhpJeT4LphTbbJp
-	H/Ak1KAWHwwT5xuQh6+i8QLAklkE/gSS1pcBEmn2UGaw8ZzPd05ANcBFoMZAdewmPN/pKPr5PmF
-	s/+Q+2MfSTuRYAYzcPS970IIUuBWmHCfDAbHWbh1OBi4P9grPUgcrT56ysThhQhLaHQ3vxTPbl0
-	/bvObfqAnVvvKXP3oxYQjNsbZpU4=
-X-Received: by 2002:a17:90b:2cc8:b0:398:dc16:3c29 with SMTP id 98e67ed59e1d1-39aedf7733emr11293348a91.7.1788379704622;
-        Wed, 02 Sep 2026 13:08:24 -0700 (PDT)
-X-Received: by 2002:a17:90b:2cc8:b0:398:dc16:3c29 with SMTP id 98e67ed59e1d1-39aedf7733emr11293267a91.7.1788379704103;
-        Wed, 02 Sep 2026 13:08:24 -0700 (PDT)
-Received: from hu-mojha-hyd.qualcomm.com ([202.46.23.25])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-33255f2981dsm434360eec.19.2026.09.02.13.08.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 02 Sep 2026 13:08:23 -0700 (PDT)
-From: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
-To: Daniel Scally <dan.scally@ideasonboard.com>,
-        Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
-        Mauro Carvalho Chehab <mchehab@kernel.org>,
-        Eddie James <eajames@linux.ibm.com>, Joel Stanley <joel@jms.id.au>,
-        Andrew Jeffery <andrew@codeconstruct.com.au>,
-        Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-        Houlong Wei <houlong.wei@mediatek.com>,
-        Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-        Tiffany Lin <tiffany.lin@mediatek.com>,
-        Yunfei Dong <yunfei.dong@mediatek.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Joseph Liu <kwliu@nuvoton.com>, Marvin Lin <kflin@nuvoton.com>,
-        Dmitry Osipenko <dmitry.osipenko@collabora.com>,
-        Maxime Ripard <mripard@kernel.org>,
-        Paul Kocialkowski <paulk@sys-base.io>,
-        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-        Chen-Yu Tsai <wens@kernel.org>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Samuel Holland <samuel@sholland.org>
-Cc: Ryan Chen <ryan_chen@aspeedtech.com>,
-        Billy Tsai <billy_tsai@aspeedtech.com>, linux-media@vger.kernel.org,
-        linux-kernel@vger.kernel.org, openbmc@lists.ozlabs.org,
-        linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
-        linux-mediatek@lists.infradead.org, kernel@collabora.com,
-        linux-staging@lists.linux.dev, linux-sunxi@lists.linux.dev,
-        Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
-Subject: [PATCH v2 6/6] staging: media: cedrus: Use devm_of_reserved_mem_device_init()
-Date: Thu,  3 Sep 2026 01:37:03 +0530
-Message-ID: <20260902200703.2016410-7-mukesh.ojha@oss.qualcomm.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260902200703.2016410-1-mukesh.ojha@oss.qualcomm.com>
-References: <20260902200703.2016410-1-mukesh.ojha@oss.qualcomm.com>
+	id 1x1tIn-0000000FzZj-1VZm;
+	Wed, 02 Sep 2026 22:19:29 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 82046600D1;
+	Wed,  2 Sep 2026 22:19:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0A1D1F000E9;
+	Wed,  2 Sep 2026 22:19:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788387568;
+	bh=lEioVwdoyefrd8s9LY1ucPtPBkwOre20r5RlJF5Ydps=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=P8tJ7qpu10YQnhWPtilf7sM7eVKILK4PpC+emKdqXcRQ6mUvfovjWJVurRndYSGDV
+	 VBFFN8wfyMQ8wwxB3dMskfTsh1es7xtyPEYAc0CNSGa+xwht2sffl51qfry1qAGZ6I
+	 tgN1TOrGsYOvAYzMBxfR9PeTuISGO5gA+1RGYGEHYe1V4P7IZ1UMG2ZrsPksChBENC
+	 994Tjn2k7F/Y0G76RqODwgfhcQ3DdehAHQMjYGL7K7ExzlNhxMoPbaD7kKncpH/jRo
+	 NJiXZxtpOSZBuXEfCGVO6rAPh76nv+5IvcLfUwyZkg0jYQ+MPVbGeIuDC2yMOuvtxI
+	 TEn2jF6R8lbWw==
+Date: Thu, 3 Sep 2026 00:19:25 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: netdev-bot+sashiko@kernel.org
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+	kuba@kernel.org, pabeni@redhat.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [net] net: airoha: enable RX_DONE interrupt for RX queue 31
+Message-ID: <apig7UCTvWjKmzQB@lore-desk>
+References: <20260830-airoha-rxdone-rxq31-v1-1-830a91503f2f@kernel.org>
+ <178836297161.3394541.17329602881799623239@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: -tNwBjG-hXFYe7WzK3cls1EDfpCYAXU3
-X-Proofpoint-ORIG-GUID: -tNwBjG-hXFYe7WzK3cls1EDfpCYAXU3
-X-Authority-Analysis: v=2.4 cv=YKuvDxGx c=1 sm=1 tr=0 ts=6a988239 cx=c_pps
- a=UNFcQwm+pnOIJct1K4W+Mw==:117 a=ZePRamnt/+rB5gQjfz0u9A==:17
- a=VdqzKS8jKosA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22 a=EUspDBNiAAAA:8
- a=mTAD4mZO0xO8FHYJIeoA:9 a=uKXjsCUrEbL0IQVhDsJ9:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTAyMDE3OCBTYWx0ZWRfX9RxwyCqcjjC2
- PWCzxnWCjTPcvY9TcSHp4lLdKKKzdCgc0Xk19fCSD6KdAmmwnqM6KXe+FiexCd02AKpmykz6izr
- JIMMx84cKrI+OwL+YMUNJKz8K+eYasofL4x7wlslI2sxyHC4uFEl2p/QuTrdhbIoQZqDibhcRkY
- CYmoZT9h+NzmZzMkm7BF/pFyFJisNt4QCBO+7edq5XZqvgdvrDl0QPXtQan4sL7+eRx7Vko1ce6
- p2z8znBf1NhS85KPaO2H9l+EZxNCRkacSV5ph0Bf/8k47Qbn6wxfGAjwhBmK/UnGQxpI/nPgdt+
- kHoyPi3+7LrG6t3leUGUTyGGDg1WIv3PZ6pyIk3/jyfttApgYk2KB7NPaEa1fZOdc2in6mCNEJu
- 0esuhnWaxLkdOSN+g/q7jLlLQV75452MLDFuYSHR6ErijmZbD/zvzKy9Q7ghBDzn8gSSAS1dLz8
- UMH5j5nG3Vg90ORP/GA==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwOTAyMDE3OCBTYWx0ZWRfX5Aaw/YXLw7QJ
- ZOzKDf4252zgYT2etOQAGmq4ScTa7rzpuoHMrhrsXYz9WI2I9qX6dgjp++xDjtgA0uFuNiqs+Rq
- 9JMKPhumPi/4bNlFzChYfOt8kQBaTUk=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-09-02_04,2026-09-02_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 spamscore=0 adultscore=0 impostorscore=0 malwarescore=0
- phishscore=0 clxscore=1015 priorityscore=1501 lowpriorityscore=0
- suspectscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2609020178
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_130826_049253_BBF2E483 
-X-CRM114-Status: GOOD (  14.22  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="gUSQjzkNCxpYl8at"
+Content-Disposition: inline
+In-Reply-To: <178836297161.3394541.17329602881799623239@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -168,55 +71,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the devres-managed devm_of_reserved_mem_device_init() instead of
-the manual of_reserved_mem_device_init()/of_reserved_mem_device_release()
-pair, letting the device resource manager handle cleanup automatically.
+--gUSQjzkNCxpYl8at
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
----
- drivers/staging/media/sunxi/cedrus/cedrus_hw.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+> Thank you for your contribution! Sashiko AI review found 1 potential
+> issue(s) to consider:
+>=20
+> Critical: 0 =C2=B7 High: 1 =C2=B7 Medium: 0 =C2=B7 Low: 0
+>=20
+> - [High] Incomplete fix: the patch only adds BIT(31) to
+>   RX_IRQ1_BANK_PIN_MASK, so the exact defect the commit message=E2=80=A6
+>=20
+> --
+>=20
+> net: airoha: enable RX_DONE interrupt for RX queue 31
+>=20
+> This adds BIT(31) to RX_IRQ1_BANK_PIN_MASK so that RX queue 31's RX_DONE
+> interrupt is routed to IRQ bank 1.  The stated goal is that the queue gets
+> drained and its buffers returned to the page pool.
+>=20
+> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/eth=
+ernet/airoha/airoha_eth.h
+> > index fa9a8edce22f..8277c1c87bb3 100644
+> > --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> > +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> > @@ -538,7 +538,7 @@ struct airoha_wdma_info {
+> > =20
+> >  /* RX queue to IRQ mapping: BIT(q) in IRQ(n) */
+> >  #define RX_IRQ0_BANK_PIN_MASK			0x839f
+> > -#define RX_IRQ1_BANK_PIN_MASK			0x7fe00000
+> > +#define RX_IRQ1_BANK_PIN_MASK			0xffe00000
+> >  #define RX_IRQ2_BANK_PIN_MASK			0x20
+> >  #define RX_IRQ3_BANK_PIN_MASK			0x40
+>=20
+> [Severity: High]
+> Does this leave the same problem in place for the other RX rings?  After =
+the
+> change the union of the four bank masks is:
+>=20
+>   0x839f | 0xffe00000 | 0x20 | 0x40 =3D 0xffe083ff
+>=20
+> so rings 0-9, 15 and 21-31 are covered, but bits 10-14 and 16-20 are still
+> clear in every bank mask.
 
-diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-index 444fb53878d1..4a15f45ad077 100644
---- a/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-+++ b/drivers/staging/media/sunxi/cedrus/cedrus_hw.c
-@@ -266,7 +266,7 @@ int cedrus_hw_probe(struct cedrus_dev *dev)
- 		return ret;
- 	}
- 
--	ret = of_reserved_mem_device_init(dev->dev);
-+	ret = devm_of_reserved_mem_device_init(dev->dev);
- 	if (ret && ret != -ENODEV) {
- 		dev_err(dev->dev, "Failed to reserve memory\n");
- 
-@@ -277,7 +277,7 @@ int cedrus_hw_probe(struct cedrus_dev *dev)
- 	if (ret) {
- 		dev_err(dev->dev, "Failed to claim SRAM\n");
- 
--		goto err_mem;
-+		return ret;
- 	}
- 
- 	dev->ahb_clk = devm_clk_get(dev->dev, "ahb");
-@@ -340,9 +340,6 @@ int cedrus_hw_probe(struct cedrus_dev *dev)
- 	pm_runtime_disable(dev->dev);
- err_sram:
- 	sunxi_sram_release(dev->dev);
--err_mem:
--	of_reserved_mem_device_release(dev->dev);
--
- 	return ret;
- }
- 
-@@ -353,6 +350,4 @@ void cedrus_hw_remove(struct cedrus_dev *dev)
- 		cedrus_hw_suspend(dev->dev);
- 
- 	sunxi_sram_release(dev->dev);
--
--	of_reserved_mem_device_release(dev->dev);
- }
--- 
-2.55.0
+Here I wanted just to align to the vendor sdk and enable rx queues 24-31 (31
+was missing) in preparation for HW GRO support. The other rx queues are
+out-of-scope.
 
+Regards,
+Lorenzo
+
+>=20
+> Those rings are still allocated and filled, because airoha_qdma_init_rx()=
+ in
+> drivers/net/ethernet/airoha/airoha_eth.c gates only on RX_DONE_INT_MASK:
+>=20
+> 	if (!(RX_DONE_INT_MASK & BIT(i))) {
+> 		/* rx-queue not binded to irq */
+> 		continue;
+> 	}
+>=20
+> 	err =3D airoha_qdma_init_rx_queue(&qdma->q_rx[i], qdma,
+> 					RX_DSCP_NUM(i));
+>=20
+> and in drivers/net/ethernet/airoha/airoha_regs.h RX_DONE_INT_MASK expands=
+ to
+> 0xffffffff:
+>=20
+> 	#define RX_DONE_HIGH_OFFSET	fls(RX_DONE_HIGH_INT_MASK)
+> 	#define RX_DONE_INT_MASK	\
+> 		((RX_DONE_HIGH_INT_MASK << RX_DONE_HIGH_OFFSET) | RX_DONE_LOW_INT_MASK)
+>=20
+> with RX_DONE_HIGH_INT_MASK and RX_DONE_LOW_INT_MASK both 0xffff.  So the
+> "rx-queue not binded to irq" comment filters nothing and all 32 rings get
+> programmed into hardware and filled from the page pool.
+>=20
+> Meanwhile airoha_qdma_hw_init() only unmasks RX_DONE according to the pin
+> masks:
+>=20
+> 	airoha_qdma_irq_enable(&qdma->irq_banks[i], QDMA_INT_REG_IDX1,
+> 			       INT_RX1_MASK(RX_IRQ_BANK_PIN_MASK(i)));
+> 	airoha_qdma_irq_enable(&qdma->irq_banks[i], QDMA_INT_REG_IDX2,
+> 			       INT_RX2_MASK(RX_IRQ_BANK_PIN_MASK(i)));
+>=20
+> and airoha_qdma_rx_napi_poll() re-arms through the same mask:
+>=20
+> 	for (i =3D 0; i < ARRAY_SIZE(qdma->irq_banks); i++) {
+> 		if (!(BIT(qid) & RX_IRQ_BANK_PIN_MASK(i)))
+> 			continue;
+>=20
+> Since rx_intr_mask in airoha_irq_handler() comes from the per-bank irqmas=
+k,
+> rings 10-14 and 16-20 are never passed to napi_schedule(), so
+> airoha_qdma_rx_process() never runs for them and their buffers stay pinned
+> from probe until airoha_qdma_cleanup_rx_queue().  Is that not exactly the
+> behaviour the commit message describes as a bug for ring 31?
+>=20
+> Ring 11 stands out here, since RX_DSCP_NUM() gives it 128 descriptors, the
+> same as rings 2 and 15 which are mapped to bank 0:
+>=20
+> 	#define RX_DSCP_NUM(_n)			\
+> 		((_n) =3D=3D  2 ? 128 :		\
+> 		 (_n) =3D=3D 11 ? 128 :		\
+> 		 (_n) =3D=3D 15 ? 128 :		\
+> 		 (_n) =3D=3D  0 ? 1024 : 16)
+>=20
+> while BIT(11) is absent from all pin masks, and the ring this patch enabl=
+es
+> (31) uses the default 16 descriptors.
+>=20
+> Would it make sense to give airoha_qdma_init_rx() and the pin masks a sin=
+gle
+> source of truth, either by having the masks cover every ring init_rx arms=
+, or
+> by having init_rx key off RX_IRQ_BANK_PIN_MASK()?
+>=20
+> Alternatively, if the sparse mapping is deliberate and those rings are si=
+mply
+> unused by the hardware configuration, does the justification given for
+> BIT(31) still hold?
+>=20
+> --=20
+> Sashiko AI review =C2=B7 https://netdev-ai.bots.linux.dev/sashiko/#/patch=
+set/20260830-airoha-rxdone-rxq31-v1-1-830a91503f2f%40kernel.org
+
+--gUSQjzkNCxpYl8at
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCapig7QAKCRA6cBh0uS2t
+rB64AP9t5OQ0jCXdBGQbh0vfOVWE0Y2Xj4khPZ+DK70eX2CfHQD+P1M+aRumfnx3
+CuT196vj3T966tdxwulRVQsXY/LWNAc=
+=3W28
+-----END PGP SIGNATURE-----
+
+--gUSQjzkNCxpYl8at--
 
