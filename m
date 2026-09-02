@@ -4,103 +4,153 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 371ABC61DD6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 15:52:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FDFEC61DD6
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 16:07:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rYT1wpgmmF4A2seGhMcChmpltzwukxsYVo40VLDCkr4=; b=3sJ0b6ZaBfua+YRpFYA0Hy4lIy
-	h/RF3nKcwZ+va6WjYUPKRhhyTLIven/5Lo838YIHkC/FFi9tUe3jzWdmTmx+/oQ1mWP60VDgT7iEL
-	a9De/ERnI68cj/33e6dCpw6Fy+cnBIwJWvKo9F9oa1Ejy847UhRwsUUlZ1pnTc40ibnCLdEwDJsnN
-	/NIxi0KpAYTsx05OgBnZT1WS+PXSHVGTRpaNLw2hYxVO0bNTFYF5Y3xq0qbkIuRQ4RH+vX5IRRoL1
-	MRDKbe2on+lWF2+Xf2X+8mbN5PiYO1RhF3v549NNpVMzN/om08X/VDnyCnuD4Igtz0lGaC0OiLUx1
-	HYtvSe+Q==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DAPmwpOVMYBIF2IijOmIRShxJK4mqn3MwoKwfXdUyaE=; b=T9N7zkPD0RekIHa8bDk4NCt+CE
+	tX43WO7bvjanGiA6YNARA1EOv22r2VxhaSUfeO/zJQidRHYSfpBLL48C2pi9UmevYpNfFq9DvURNU
+	pCOnMjbEa+qfaYWfPV09FgyESvD3ApBw+tR5C+eiSYhPx/uxFNR+So9DZSHfx85zgtbpeRYv/tUzE
+	crPZtg+lOb3oyzPl8R7+P2VG7o1LAZOtG2UW0PVW8KqOAnvy61jGLD3vvtgYEw44Lj8ESzsy4N2d3
+	Pezh0wOSUc0QgMklRl5D0wNzRVTWeqUUX0PrVy1Fnl6PiHh1FSRfkZOs4M3+F1OxNuh9l6Wuqi4Ko
+	GFRngenw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1nFw-0000000F98g-3pAs;
-	Wed, 02 Sep 2026 15:52:08 +0000
-Received: from mail-ej2-x08.google.com ([2a00:1450:4864:34::8])
+	id 1x1nVE-0000000FAK2-0bXE;
+	Wed, 02 Sep 2026 16:07:56 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1nFu-0000000F97J-1RdM
+	id 1x1nVA-0000000FAIL-1Zuq
 	for linux-mediatek@lists.infradead.org;
-	Wed, 02 Sep 2026 15:52:07 +0000
-Received: by mail-ej2-x08.google.com with SMTP id a640c23a62f3a-c254113e9beso36365566b.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2026 08:52:05 -0700 (PDT)
+	Wed, 02 Sep 2026 16:07:55 +0000
+Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 682FZQmL1409243
+	for <linux-mediatek@lists.infradead.org>; Wed, 2 Sep 2026 16:07:41 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	DAPmwpOVMYBIF2IijOmIRShxJK4mqn3MwoKwfXdUyaE=; b=YsipzOKZ4KL8slmv
+	7lfUIOmUegtvaHe9Q6n5DfrEnbHMetttDM8JsiMptpyFqCWJV5piU+VqF0TpWPGB
+	5aJOWc+CF+houMN3k8AD3259qR5ufX2Sj22hlEhnK5029+0Fipr2pbVM5CDfc+JT
+	nqa/5zGIjLRLEKYM70juFAX9H2/WHygWQNXie65vVEINziPvR602/ktfEG3b1MIH
+	zgniwmAEpQZG7TnGNlJLJ7eQTX7NHKXC26cFpbLMGl3v0NDPsk5OpsZHYrRIueBF
+	+vpUf2iu7tNG9aPCRMduPxXedUwuHUcDu0bHXJmlJj6MCxMOjt134Hp50/yoH7qd
+	TkF4bg==
+Received: from mail-pg1-f199.google.com (mail-pg1-f199.google.com [209.85.215.199])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gemce8rgp-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2026 16:07:41 +0000 (GMT)
+Received: by mail-pg1-f199.google.com with SMTP id 41be03b00d2f7-cb11535e6a1so1426752a12.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2026 09:07:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1788365261; cv=none;
+        d=google.com; s=arc-20260327;
+        b=CRy5uPmhD4nW9JoTfHZpnoLnUseNEmDFwQsU8wasbU7Mw4Gp3LOdrGvlHaq1B1gLrA
+         jqnOlnL3WNooQgwEghnPShP+VxvDWYgN7nZQ3imJb8cKxq9rCHnZ0jCz7UU4JteFJCPT
+         oTqYlNCWQk4ND8uknlggA20TKzWRJavf3GgNaNyZ04TOhjwhGkZ7eDNsuiJ7dyWZyX/3
+         Cuuc7nQkIwDfIL0zRUpcAS/NNAM4qadVpAJIiBm6+ZhrC5Xa9yvVCFncbFf5DLWeJ/QA
+         oQGCjPZM6bagp2NLYp54wAd/Zc29cy74agHkejpnIQ8AweRpuYzUPGWfIphIuKooOigK
+         vPMQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=DAPmwpOVMYBIF2IijOmIRShxJK4mqn3MwoKwfXdUyaE=;
+        fh=9D3dRWSoON05ccXi9n4hDQhbt4GVSR4n1MCq9X1LV6E=;
+        b=EIP6UnUH91QhtdOO0CnT2goTvqLYDlcxxIDqowN2LzysGLKhmEgNljk/QR02mUpmPt
+         ADSrhSamemOINiek+k7zOwm9QNfei3Li+krkPHzKdI2B3NdD1ky010Cr9Rsq2EY7uWbQ
+         ISmA1QPloSLdI+FSXFeuhLmGFDhra4AibymjTkknJGGBJr+3jIIVnBxxyvb56WrtDTEs
+         TcU4PbwVR9D6pawqufa9iEI09PKLG1n1lVukotElZkY23zNIHW3Kas9HFGmvkZ4T1wdR
+         Yq32mnGM4nimCwoDPBkeCzk+IYTOSymkPFC3+Ip7xKmHRge0mYuZllwNF7at5GEeJVS9
+         V8GQ==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bairaktaris.de; s=google; t=1788364324; x=1788969124; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=rYT1wpgmmF4A2seGhMcChmpltzwukxsYVo40VLDCkr4=;
-        b=M1zJuMMqLqpjeaB9eAyxyCnsBCbMan5/vLOhUJA1vqgw4ne6aj9NE1iRA1UDRWU7Am
-         Fdg9ANYQcy6WiDbLuvd9bb6aCAr5Bas5e9sbIxNEfb2IH7duEUME8Vxyv85/5B4I6Aw9
-         mKmInP/5FXUmtevNKQcNOw1HeNOk2KHoqEwrlSSaYYFfr82SnKGIiKYK2MrO1ylarNFY
-         Cy85ZAbKpzlHHni9STsk17Hd9F3eIt4s12U5C4OT4tlDmy08fdkZn+Im8QcFiARqHMbl
-         lZ8XwSscvuxvUnv5jLrYXa2y1T1JhYb8a2WfEyvVukujjt3krdYthEagCJwfqT183Cjl
-         OyDg==
+        d=oss.qualcomm.com; s=google; t=1788365261; x=1788970061; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=DAPmwpOVMYBIF2IijOmIRShxJK4mqn3MwoKwfXdUyaE=;
+        b=juer+Xqri5Muv6WQXuVFv/y/2a3fCSHA+P5q2cX0yiCW5QFGI1meqjjJDGTY1PnXRY
+         hvuYPe3LTA4U8IS+TYK2CyX6aLwtAmckjt0IZss/Jkx/8pohLqqP5yXv7qtYZe8Aq3Uj
+         dO08mHf9JSAv0JkSj3caHH/nnB8W4ZksyckiA0noBYCnwLqtvhSF9fNvZdluU5pliYyo
+         S1pfYB4IXq5plFmXkt434xvCX7sgSeqNY7jQhkAvllkEcxHeJ927XyArMLGakfUbexQa
+         i0WPalYptdla13mRzxXyY1InYQO0ALEYFP+F70Sqqasmq16Ug32MfqYqT0b441tBv+ZK
+         BeQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788364324; x=1788969124;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=rYT1wpgmmF4A2seGhMcChmpltzwukxsYVo40VLDCkr4=;
-        b=H/eBFbcLIq6tONIRakbyga877OYNJVeEJpvkWmPYCQdy3yCTRu8ef8eypOQKHhcZ8/
-         KWtE+/s8VJZAi1cFh2QtkSUi5778UqDgCmwrmapTp1Q8g4qHsUyE50STeoS2hp52b61R
-         bouu0mAt4Ugm+NbzDvPRfiOpGc3Hb8vHyAQlZAqFZWumimqsuKpWm5UEyh5tXS9xrNh1
-         a+ecYEDaso2nTMVG1M2VMcVCyp0aO8UgiWMefl/8WwtlnCWZZfC6u1B3C49Y3Ytdg/K4
-         DXna5SaYB807GefVbSl+vKHtjjYK4fZQ2sMBEOvgF+ryImbuoRMtkLP6s3IOr4PJ6XM2
-         okdg==
-X-Forwarded-Encrypted: i=1; AKwUvByo5ZAhoeAZ+Y7oSGS15XZ9T4fileORioL3fFUuBgeQQ+VkJ5VC8A+5GdwlDGrXkf3QUC9po7VK+8/Dlnt/LA==@lists.infradead.org
-X-Gm-Message-State: AFuF++leXfo0WxPHtdlf3gk3jG2unlYLU0g6lYEMn1OxLiRflERUa5Lq
-	W/c8FJ+5xSYROsnLd2fJPtRiWSFbwpodn1KOOJIx8bVhNnrkFqV3q3OsfvuBovcYfA==
-X-Gm-Gg: AYBFou3jRNuYp7SuPT8vJpCKdUg5N3ATjagFRCGzWHtJEWoDqJgZW1ZctTHoq7QHeta
-	rGDkNq9/1CGVjX4tkrHYOcDqJ9BJVh8nPOnRZ53DasWg65HMEs7kN3XUNZwPyvATtuO2OrpneGE
-	UIsW5eHX7TtoI0+6PsGW6EDUcZlocEsTcGz1lh3S7UfZPUeLXtiq8kWIzIgCvdV6EDnJvq31qD+
-	xSYj/zp9trJVMyUJ064Aa91hF90DGjQlD6JzkDE99nv2kiU7201U2/MYcvZccL5qb3hESwJMrUO
-	NzeBTDtHyW4bjdRv3FItii1InAFjpkFru5XjQ0rR8Yx4dW2LwZMbAi0EKl6g8DAwkUu4bXnzUyT
-	G09fAFuYeMfdgPNglJ/2Pl1NVWyMRec4+EkEkrp48lN89FOf0j+8t+MBlmberf5IcY4MrZRWTb4
-	jfGpZe5w5w6W4v8MfsEWwXzpivyrceo3EwLiC9UchwGm6PNJ1S1AWKL/TBu8Qd0p38foFXQqbvM
-	n+MSmPmQa72T4FaGgzVl1orld8KF8gaHvgdrMYYMJhSnsX9JSaxVa+whSy5OPX3LUXpMWR4tbqV
-	z4qVMKZxlCMhAyG26f861x+6yl2RtuLSyXj5OMjSjTasAZGY/EXto5lOdTjiqQwB8o3j/prMCxP
-	SNZnJ32twwvbyOIQ8s8wwlJEpTKKDPayB8OM9zDjcqTwnl+KdATsvYcftH6pIp5DTw6jzW4+hPG
-	8yeYxYPghNVXM=
-X-Received: by 2002:a17:907:3f88:b0:c21:450d:cd7e with SMTP id a640c23a62f3a-c25d53be168mr376567466b.9.1788364323750;
-        Wed, 02 Sep 2026 08:52:03 -0700 (PDT)
-Received: from Desktop (pd9513d53.dip0.t-ipconnect.de. [217.81.61.83])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c25d03fbb75sm160187366b.49.2026.09.02.08.52.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 02 Sep 2026 08:52:03 -0700 (PDT)
-From: Julius Bairaktaris <julius@bairaktaris.de>
-To: pablo@netfilter.org,
-	fw@strlen.de
-Cc: phil@nwl.cc,
-	netfilter-devel@vger.kernel.org,
-	coreteam@netfilter.org,
-	netdev@vger.kernel.org,
-	lorenzo@kernel.org,
-	nbd@nbd.name,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	andrew+netdev@lunn.ch,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	horms@kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH nf-next v2 1/2] netfilter: flowtable: carry a priority into the offload
-Date: Wed,  2 Sep 2026 17:51:35 +0200
-Message-ID: <20260902155136.4963-1-julius@bairaktaris.de>
-X-Mailer: git-send-email 2.53.0
+        d=1e100.net; s=20251104; t=1788365261; x=1788970061;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=DAPmwpOVMYBIF2IijOmIRShxJK4mqn3MwoKwfXdUyaE=;
+        b=BwlEGguYSz9hi/CD98Dhz6nqnHHMgCD3AjWmwlBcyvVhqFNkQ+Bz3nLuUnGg0GaVwu
+         Aj6zDqtcnb5Uzz3Pr3ys92xB5STkZPnr0K6Ui7Mj03NmAnsH5vUlhtRF6A+hGiuCqdYe
+         Bm1Wj5l/6I+GdpkUtnsHqCJUyMzKRLERE8COtwy7usYNpdIlcLSQ0tQNdqaxxYFxB2xh
+         1A6qjfShjK5zpbU8omPsj7Wu8BcltT/GMckRXcVO/qFp+534jehI5/QK65F00SFgiCIS
+         t2Gyc2ThGI9b0JK6LUexjILFOQca1583Sm8zqulpEHTI2d9VeY9X5tfFikk3eL3k12oz
+         xogw==
+X-Forwarded-Encrypted: i=1; AKwUvByr9DrG5hftlji12Ejk5cLKJAyr+Cszoyumec3G3EvwBl5xtOxe+CbF53jcAvXjm2ja7rCf+cV3lAWWVLL0Sw==@lists.infradead.org
+X-Gm-Message-State: AFuF++mQTg+QeFQekqGgkdywqtOwXzkKcGUkEURTt5+BDdF/dtGd3Qu+
+	RL0rDgNPOlccZlzWx0nNrxo6v62a7uR2/l0T8+8LXfhL8tM6vKkrVWuI/cBE1oSgL2ebVFf8vZB
+	CDmPtzmRT5q890WtOzYjElu1zaGURSpmSQx3rElpZBs+YQa62fgIPp7KnVzcUZGnGG44j+8DzGm
+	nMYkuNFKvd4QBe1sLgFl44SvcjWCqXQRMxyaWC1uwnVecPpR44RQ==
+X-Gm-Gg: AYBFou091D8eTzkxUZckjGghOywZzCGALov4mQ23iNoM/ma6AX5XMCRk3VNBh8XugBj
+	s9klC1RGHVR9sJSbsaqSHp02MxYvbuEulKbMYIdlKIl11MprdAjJV9jaMuB9jFDyjKc8ldvBjFu
+	7Zi2+WYF1pi5eOD3vBwYXeRRR4ctH99QWeJMXmkzvhdo5pKSKZdaFBJFoXjQ==
+X-Received: by 2002:a17:90b:2e50:b0:398:b426:ca4b with SMTP id 98e67ed59e1d1-39aee1a9994mr9843078a91.22.1788365257270;
+        Wed, 02 Sep 2026 09:07:37 -0700 (PDT)
+X-Received: by 2002:a17:90b:2e50:b0:398:b426:ca4b with SMTP id
+ 98e67ed59e1d1-39aee1a9994mr9842890a91.22.1788365256476; Wed, 02 Sep 2026
+ 09:07:36 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20260625003525.22594-1-pengpeng@iscas.ac.cn>
+In-Reply-To: <20260625003525.22594-1-pengpeng@iscas.ac.cn>
+From: Ulf Hansson <ulf.hansson@oss.qualcomm.com>
+Date: Wed, 2 Sep 2026 18:07:23 +0200
+X-Gm-Features: AcwNN1Um-bxia3REdAXf8m-38tcHtMIEpV7_v--sQ-7-GTkWwOc4grrEf97NRUI
+Message-ID: <CAPx+jO_6jWt2YAjzHnD56_LX5mAFkxwOiUy4Ka+BRG9WX2M0PQ@mail.gmail.com>
+Subject: Re: [PATCH] mmc: mtk-sd: report DMA stop timeouts as data errors
+To: Pengpeng Hou <pengpeng@iscas.ac.cn>
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson <ulfh@kernel.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTAyMDE0MiBTYWx0ZWRfXw8ATptZCwNfH
+ yoh1mgUqMT0jkPyiVjltj8V4PfJbz+IXU29zN9NOyn4QGMBtNy4cMtPp2vDxj+lkKvRa+P2aD6i
+ dOSPoYwIF4nzeO4YNstnowCODsNT7X36+5b7irC+BZmwG8iymYxL2HyppCrFoAP9S+hqpBeDeu5
+ r4+/ulhUOXuOdmJ6af2hj7JLJ7BkAwuvcgoKDXYbsEn7fra8rjkXtno0anYWs9ThbsH11wJ3QXa
+ Sn6k5ber+7pJessEB+89T2OGknMhtOCtowHseAzHUFtPIJ8tnoqAPCJNXy912ps7suT9Ps5pDY8
+ aSQnHx5Sq1PjnndH52LRD3XjGLFhv+nGjIn5cZbf/L0fih7xFhiW+tAPM0snCkl9FW/BAlgEJGk
+ +4UilR6TolsHhl/ucI5FSplKl6ih61dIvFBVvSx+oeJQ3RBeLmHu+A49zYy8XMXejZzKmGAuhHh
+ WUJpNY2Najk6yb6jOHg==
+X-Proofpoint-ORIG-GUID: ua9kSM_9qj7ZGF62bob47hoUYAFgT1vT
+X-Authority-Analysis: v=2.4 cv=QfpWeMbv c=1 sm=1 tr=0 ts=6a9849cd cx=c_pps
+ a=Oh5Dbbf/trHjhBongsHeRQ==:117 a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10
+ a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
+ a=_K5XuSEh1TEqbUxoQ0s3:22 a=CBFGLoz9tPvRy0Ij70wA:9 a=QEXdDO2ut3YA:10
+ a=_Vgx9l1VpLgwpw_dHYaR:22
+X-Proofpoint-GUID: ua9kSM_9qj7ZGF62bob47hoUYAFgT1vT
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTAyMDE0MiBTYWx0ZWRfXxuBzbRaPYta5
+ QiMHpjaA1URqUFVGvWNWdTnfjMB4CumhpppOq7vQXeKATtJ/6V3kqs0DrqW8MWiOEAJFKXZUVOU
+ eeWrwee/75Pk/SJOwTMd8G7SpppsICM=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-09-02_04,2026-09-01_03,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 impostorscore=0 bulkscore=0 phishscore=0 suspectscore=0
+ lowpriorityscore=0 malwarescore=0 adultscore=0 clxscore=1015 spamscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2609020142
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_085206_437526_D7BCA259 
-X-CRM114-Status: GOOD (  25.39  )
+X-CRM114-CacheID: sfid-20260902_090752_420349_7A7F8EC5 
+X-CRM114-Status: GOOD (  24.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,180 +165,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The packets the flowtable forwards bypass the rules that classified
-the connection, so a priority set by "meta priority set" ahead of
-"flow add" reaches the qdisc only on the packets that traversed the
-ruleset before the flow existed; the rest keep the priority they
-arrived with, which for a forwarded packet is normally none. A flow
-rule handed to a driver has the same gap: it describes NAT,
-encapsulation and the output device, but not how the flow should be
-treated on the way out, so hardware with priority queues can only
-fall back on the DSCP the packet carries.
+On Thu, Jun 25, 2026 at 2:35=E2=80=AFAM Pengpeng Hou <pengpeng@iscas.ac.cn>=
+ wrote:
+>
+> msdc_data_xfer_done() stops the DMA engine before completing a data
+> request, but it only logs failures from the DMA stop and DMA-inactive
+> polls.
+>
+> When the interrupt status also carries MSDC_INT_XFER_COMPL, the function
+> can still report the full data length as transferred even though the DMA
+> engine did not confirm that it stopped or became inactive.
+>
+> Treat DMA stop/inactive timeouts as data errors.  This reuses the existin=
+g
+> reset/error path and prevents a timed out DMA stop from being reported as=
+ a
+> successful full-length transfer.
+>
+> Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
 
-Store skb->priority of the packet that created the flow. The software
-fast path applies it to the packets it forwards; the hardware path
-emits it as FLOW_ACTION_PRIORITY, the action act_skbedit already
-emits on the tc path, so the rule handed to the driver describes what
-the software path does. A flow without a priority emits no action and
-leaves skb->priority of the packets it forwards alone.
+Hi Pengpeng,
 
-Of the in-tree consumers of these rules, mtk and airoha ignore the new
-action as they do FLOW_ACTION_CSUM. mlx5 has no parser for it and
-rejects the rule, so a flow with a priority stays on the software path
-there, as a flow with PPPoE encapsulation already does.
+Did you verify this on HW? If not, I am leaving this to the mediatek
+folkz to confirm before applying.
 
-The flowtable holds one flow for both directions and the expression
-runs once, so the priority applies to both; per-direction
-classification is not carried.
+Kind regards
+Uffe
 
-Assisted-by: Claude:claude-opus-5
-Signed-off-by: Julius Bairaktaris <julius@bairaktaris.de>
----
-Changes in v2:
-- apply the priority on the software fast path as well, in the IPv4
-  and IPv6 flowtable hooks, so a flow forwarded in software and one
-  forwarded by hardware get the same treatment (Lorenzo Bianconi)
-- describe it in nf_flowtable.rst
-- add the selftest in 2/2
 
-v1: https://lore.kernel.org/netfilter-devel/20260901092632.369248-1-julius@bairaktaris.de/
-
-The consumer of the emitted action is a DSA driver for the IPQ8074 PPE,
-maintained in OpenWrt; measured there, "meta priority set" ahead of
-"flow add" places hardware-offloaded flows in the port's priority
-queues, and with hardware offload disabled a 30 MB IPv4 and a 30 MB
-IPv6 transfer both land in the stamped priority band with only the
-handshake traversing the ruleset. The selftest in 2/2 passes on this
-series and fails on the base commit, x86_64 under QEMU, three runs
-each. The mtk and airoha hunks are compile-tested only. The new field
-grows struct flow_offload by eight bytes on 64-bit; the entry allocates
-from its own kmem_cache, so no allocation-class change.
-
- Documentation/networking/nf_flowtable.rst       |  4 +++-
- drivers/net/ethernet/airoha/airoha_ppe.c        |  1 +
- drivers/net/ethernet/mediatek/mtk_ppe_offload.c |  1 +
- include/net/netfilter/nf_flow_table.h           |  1 +
- net/netfilter/nf_flow_table_ip.c                |  6 ++++++
- net/netfilter/nf_flow_table_offload.c           | 11 +++++++++++
- net/netfilter/nft_flow_offload.c                |  5 +++++
- 7 files changed, 28 insertions(+), 1 deletion(-)
-
-diff --git a/Documentation/networking/nf_flowtable.rst b/Documentation/networking/nf_flowtable.rst
-index d757c21c10f2..5844ab19aec6 100644
---- a/Documentation/networking/nf_flowtable.rst
-+++ b/Documentation/networking/nf_flowtable.rst
-@@ -71,7 +71,9 @@ forwarding path including the Netfilter hooks and the flowtable fastpath bypass.
- 
- The flowtable entry also stores the NAT configuration, so all packets are
- mangled according to the NAT policy that is specified from the classic IP
--forwarding path. The TTL is decremented before calling neigh_xmit(). Fragmented
-+forwarding path. The TTL is decremented before calling neigh_xmit(). The flow
-+also stores the priority of the packet that created it, so a priority set before
-+``flow add`` applies to the packets that the flowtable forwards. Fragmented
- traffic is passed up to follow the classic IP forwarding path given that the
- transport header is missing, in this case, flowtable lookups are not possible.
- TCP RST and FIN packets are also passed up to the classic IP forwarding path to
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 92611802801e..2afce76ad131 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -1161,6 +1161,7 @@ static int airoha_ppe_flow_offload_replace(struct airoha_eth *eth,
- 		case FLOW_ACTION_REDIRECT:
- 			odev = act->dev;
- 			break;
-+		case FLOW_ACTION_PRIORITY:
- 		case FLOW_ACTION_CSUM:
- 			break;
- 		case FLOW_ACTION_VLAN_PUSH:
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-index 99b28aaa7cc4..4ee99e8e4a34 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-@@ -378,6 +378,7 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
- 		case FLOW_ACTION_REDIRECT:
- 			odev = act->dev;
- 			break;
-+		case FLOW_ACTION_PRIORITY:
- 		case FLOW_ACTION_CSUM:
- 			break;
- 		case FLOW_ACTION_VLAN_PUSH:
-diff --git a/include/net/netfilter/nf_flow_table.h b/include/net/netfilter/nf_flow_table.h
-index f2e2771f188f..23218c8cbc3d 100644
---- a/include/net/netfilter/nf_flow_table.h
-+++ b/include/net/netfilter/nf_flow_table.h
-@@ -202,6 +202,7 @@ struct flow_offload {
- 	unsigned long				flags;
- 	u16					type;
- 	u32					timeout;
-+	u32					priority;
- 	struct rcu_head				rcu_head;
- };
- 
-diff --git a/net/netfilter/nf_flow_table_ip.c b/net/netfilter/nf_flow_table_ip.c
-index c8c29a9a1684..c85e2d608c32 100644
---- a/net/netfilter/nf_flow_table_ip.c
-+++ b/net/netfilter/nf_flow_table_ip.c
-@@ -509,6 +509,9 @@ static int nf_flow_offload_forward(struct nf_flowtable_ctx *ctx,
- 	ip_decrease_ttl(iph);
- 	skb_clear_tstamp(skb);
- 
-+	if (flow->priority)
-+		skb->priority = flow->priority;
-+
- 	if (flow_table->flags & NF_FLOWTABLE_COUNTER)
- 		nf_ct_acct_update(flow->ct, tuplehash->tuple.dir, skb->len);
- 
-@@ -1104,6 +1107,9 @@ static int nf_flow_offload_ipv6_forward(struct nf_flowtable_ctx *ctx,
- 	ip6h->hop_limit--;
- 	skb_clear_tstamp(skb);
- 
-+	if (flow->priority)
-+		skb->priority = flow->priority;
-+
- 	if (flow_table->flags & NF_FLOWTABLE_COUNTER)
- 		nf_ct_acct_update(flow->ct, tuplehash->tuple.dir, skb->len);
- 
-diff --git a/net/netfilter/nf_flow_table_offload.c b/net/netfilter/nf_flow_table_offload.c
-index 801a3dd9ceea..caaadffc2563 100644
---- a/net/netfilter/nf_flow_table_offload.c
-+++ b/net/netfilter/nf_flow_table_offload.c
-@@ -696,6 +696,17 @@ nf_flow_rule_route_common(struct net *net, const struct flow_offload *flow,
- 	    flow_offload_eth_dst(net, flow, dir, flow_rule) < 0)
- 		return -1;
- 
-+	if (flow->priority) {
-+		struct flow_action_entry *entry;
-+
-+		entry = flow_action_entry_next(flow_rule);
-+		if (!entry)
-+			return -1;
-+
-+		entry->id = FLOW_ACTION_PRIORITY;
-+		entry->priority = flow->priority;
-+	}
-+
- 	tuple = &flow->tuplehash[dir].tuple;
- 
- 	for (i = 0; i < tuple->encap_num; i++) {
-diff --git a/net/netfilter/nft_flow_offload.c b/net/netfilter/nft_flow_offload.c
-index 32b4281038dd..ca91924b4de3 100644
---- a/net/netfilter/nft_flow_offload.c
-+++ b/net/netfilter/nft_flow_offload.c
-@@ -117,6 +117,11 @@ static void nft_flow_offload_eval(const struct nft_expr *expr,
- 	if (tcph)
- 		flow_offload_ct_tcp(ct);
- 
-+	/* The packets the flow forwards in its place bypass the rules that
-+	 * classified this one; carry the result with the flow.
-+	 */
-+	flow->priority = pkt->skb->priority;
-+
- 	__set_bit(NF_FLOW_HW_BIDIRECTIONAL, &flow->flags);
- 	ret = flow_offload_add(flowtable, flow);
- 	if (ret < 0)
-
-base-commit: 91ec2035134982b98fab0609a9fd8480e8217dc1
--- 
-2.53.0
-
+> ---
+>  drivers/mmc/host/mtk-sd.c | 17 ++++++++++++-----
+>  1 file changed, 12 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index b2680cc05..e3caa9c32 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -1583,7 +1583,7 @@ static void msdc_data_xfer_done(struct msdc_host *h=
+ost, u32 events,
+>              | MSDC_INT_DMA_BDCSERR | MSDC_INT_DMA_GPDCSERR
+>              | MSDC_INT_DMA_PROTECT);
+>         u32 val;
+> -       int ret;
+> +       int dma_err =3D 0, ret;
+>
+>         spin_lock_irqsave(&host->lock, flags);
+>         done =3D !host->data;
+> @@ -1603,18 +1603,23 @@ static void msdc_data_xfer_done(struct msdc_host =
+*host, u32 events,
+>
+>                 ret =3D readl_poll_timeout_atomic(host->base + MSDC_DMA_C=
+TRL, val,
+>                                                 !(val & MSDC_DMA_CTRL_STO=
+P), 1, 20000);
+> -               if (ret)
+> +               if (ret) {
+>                         dev_dbg(host->dev, "DMA stop timed out\n");
+> +                       dma_err =3D ret;
+> +               }
+>
+>                 ret =3D readl_poll_timeout_atomic(host->base + MSDC_DMA_C=
+FG, val,
+>                                                 !(val & MSDC_DMA_CFG_STS)=
+, 1, 20000);
+> -               if (ret)
+> +               if (ret) {
+>                         dev_dbg(host->dev, "DMA inactive timed out\n");
+> +                       dma_err =3D ret;
+> +               }
+>
+>                 sdr_clr_bits(host->base + MSDC_INTEN, data_ints_mask);
+>                 dev_dbg(host->dev, "DMA stop\n");
+>
+> -               if ((events & MSDC_INT_XFER_COMPL) && (!stop || !stop->er=
+ror)) {
+> +               if (!dma_err && (events & MSDC_INT_XFER_COMPL) &&
+> +                   (!stop || !stop->error)) {
+>                         data->bytes_xfered =3D data->blocks * data->blksz=
+;
+>                 } else {
+>                         dev_dbg(host->dev, "interrupt events: %x\n", even=
+ts);
+> @@ -1622,7 +1627,9 @@ static void msdc_data_xfer_done(struct msdc_host *h=
+ost, u32 events,
+>                         host->error |=3D REQ_DAT_ERR;
+>                         data->bytes_xfered =3D 0;
+>
+> -                       if (events & MSDC_INT_DATTMO)
+> +                       if (dma_err)
+> +                               data->error =3D -ETIMEDOUT;
+> +                       else if (events & MSDC_INT_DATTMO)
+>                                 data->error =3D -ETIMEDOUT;
+>                         else if (events & MSDC_INT_DATCRCERR)
+>                                 data->error =3D -EILSEQ;
+> --
+> 2.50.1 (Apple Git-155)
+>
 
