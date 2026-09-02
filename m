@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B3C6C624D4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 19:34:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABD06C624DA
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Sep 2026 19:35:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bt6uMG9PgUYc/XVv1n4ledEppWz4qm8tk4GY6vs/fFQ=; b=uJo/lRrtG7GfitbY7xhX5WSc/v
-	KmhCNQvM0krtJEoEYC/xoNVhx0K6FJErlVKzicv0g/39bL9O3eLsa4/BYpimdF/5B27UbNwkJPTEV
-	CrJX6S4gZ5gMco/inYoTzO/MlHarXyVF3clFJv0YjAeIpnoxf713wbRVrxoo2nQ5lYx5vpyMkCdHg
-	WeL/9DSlasIeapOeTj/MDlJwBOUnBKSiQgQ29ypwodU57ZsvE4HOGqJA7nrmLa7jIkgo5YVuX6v5f
-	p6tfGAyXe6nitBYy5W51Qb8PvkyBTh5cknL/BPwPa5oPq4KNkVIHzb9c0UN+l893zrtffqQcNf3ML
-	HixxB7rQ==;
+	bh=F23t8iLTcn/LXqN2lEEgBTUnPAkeyO0taUnuYVGHe48=; b=N+Yt1OGI6eDqJew9Y38f98AST4
+	alWBgps9tCbJI4Be7PL2CSY5V0BEX+G6lj26DGzEJAtzHKkury19SZLibJPYlvplzBSKSNAeLXYhI
+	dYtC71oNbsNTBSVwIlJWNE4376e5XGmZWnkUDpUJxPb0VotFiajzDvQKmJlhORs+oRYy18dKNrDaU
+	QHWeSj/Piv4as6PuvojHvM9A/ybFsFHUx6YPSSJ0bECWqOeqYPpz1j9ZJodmXuqr8jK3/GLzFoRmK
+	c5HIopEbQT8XTL2w5EIjgvtaAEIWK4fbuqv7KM2WvJFNNDtvbiVw/VpNa/EpnfgoiY68Qu0Ar9T+a
+	QMPRsnaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1qjS-0000000Fj58-14hp;
-	Wed, 02 Sep 2026 19:34:50 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1x1qjs-0000000FjGa-2t22;
+	Wed, 02 Sep 2026 19:35:16 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1qjM-0000000Fizb-1TpB
+	id 1x1qjZ-0000000Fj7C-2F9x
 	for linux-mediatek@lists.infradead.org;
-	Wed, 02 Sep 2026 19:34:48 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-484362f5c4aso1571282f8f.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2026 12:34:43 -0700 (PDT)
+	Wed, 02 Sep 2026 19:35:11 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-49b392ccaacso22176635e9.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2026 12:34:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788377682; x=1788982482; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1788377696; x=1788982496; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=bt6uMG9PgUYc/XVv1n4ledEppWz4qm8tk4GY6vs/fFQ=;
-        b=CDiDtsznp2cy0vTKC+aw3C5/EnVpTf09Q3KazOuiiv26z1Q1yQdb37ZqsoM25KDuGO
-         dS5ObcBZanI4Bi9V4M+766EZVOMFasJWBNnW9Uu5Bn9LWHlsB0kPJwapye3Y2YkalWcX
-         x/G9Dt8tcfMytCsC0fv3bSgUpxuhQOjinrzeg2wEpL0HF6rp++xOG97RLbfWwFzmuXOf
-         rnI30ByNkc2hslY9e98zJFRkTY4H3BVIXOGatgeEpnaSYm2WEgouWmyHt+Iaxni5va4w
-         //AtXvf38BxSSWYwPxvGdurC4Go5iSnr3VXTbxn/SQdYcXqaYM/ElO2oB1VDrXmiCcYP
-         6gzg==
+        bh=F23t8iLTcn/LXqN2lEEgBTUnPAkeyO0taUnuYVGHe48=;
+        b=qmzOX8KCFKKA0CnG0+JxjiPcWgIXmze9pBYvVjnlONUV/f2AEJTJpNTnyQmzSdDjS0
+         c70g++u4ssNitcYUreodvSdU8lj0tMXS2ZfsN1e/ZAvZYfWWmlpUekJI5Gx12lqHS4ia
+         wnjZ07DLnJbP508PEsWhKAhggEYnXs8Mnqukr/fL65SA/Qp4LuGJvvlrc9mzkOpYaxYv
+         SfkDbqSA9G2DLEM55QjazESCupYH9IiITYWCV4X7B7oFH7BetgB+P75U1zmHr/BP0zhW
+         1ISim5e6rpjC06cIllP6rSOQGOrnN087IjtGcdO5afF0JixfUVhOpJRaqb9MK3aPTmPG
+         WBKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788377682; x=1788982482;
+        d=1e100.net; s=20251104; t=1788377696; x=1788982496;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=bt6uMG9PgUYc/XVv1n4ledEppWz4qm8tk4GY6vs/fFQ=;
-        b=ki+0ecuLlTaZTKJdx3t94Ic8eM4j7qWB2jn8uMxYnZ+pbebDVEvuCpYvTFcJJKHd6+
-         3IjCDHrf/+cDFrYFNQrzB6XxdQf5sc3dZMLvuNr4jOTIAlFJuqV+It6Hb5d4xmFdRyGO
-         nKGmhPT+CudAQ3O0/9QnaxJsyJ8L1Ikn63wh+5nuuUWqy2EAJ2fzvld7rOXnIGb78qpD
-         q+92d54KqXhsn2vy2nfrUTxnCN5GZAFDrLTE21VJNjPTimCMMbR0bk1JXzPt1X2w50dm
-         KwDvsf5XxILdKtmNjRsVU96BqsC58OE3mRKhJ66yquvOwCf1tZ8AJoPy1JgSw0BEcXzp
-         hgIg==
-X-Gm-Message-State: AFuF++ng1CbylgR6IGRmucg6WQDw//a5dw72nPvrlR1gWqvBEHj3f2os
-	QFsmZlTJ+Mnx5j2IYvyZz/RRrpS5DdKuer6g0/lNaRq/qw+Gm3JBmKfoaIeFIOnw
-X-Gm-Gg: AYBFou32jvN4ggZKo1OCQJ91aNhvx48iZYmiWZ7Npvt1/X7W0VWGFw1NiyBb9WX79p9
-	n+vhmdmjM2RukrwoCqF5DTXWLZ3IpUa84YC/C3Q4MsxDCFiN4JOq9B8vd57/mDxSPtuKU+FOxhW
-	cmHgkB9vdpFUUt5DkXhQwnL/67yq9jef/rL/ZjZIb2jypOms1d9i0MqEoWfuC+QDRtsP7q+yv55
-	ziaA4u9Vgt6xVXhhkbOpE/upS4V68LyxF8gzS0fJSHXISqnlSBphI0cVk63+tSxzdSXwo+N7wlq
-	BpJXieShd6VIEEmp00qp9Jxba6TbmpAntguflWqzmV0Jd/p6Xw3vJtnL4FrtPOKCJ/LFZDWhBr+
-	Vff3dM/ksFqAO+Ry46lPhNECzkwq/syWDSWCW49mE+vrT/xaxyl3KjhxTI2E04EZLWMJXHQ/chM
-	vfnLep3H7uqfqhSzILPtsZurWLbGK+8hGwQzZh4GDIu7hVppyzpJtBd4hg
-X-Received: by 2002:a05:6000:480a:b0:47f:eac2:6f55 with SMTP id ffacd0b85a97d-48488f2229cmr14997817f8f.19.1788377682430;
-        Wed, 02 Sep 2026 12:34:42 -0700 (PDT)
+        bh=F23t8iLTcn/LXqN2lEEgBTUnPAkeyO0taUnuYVGHe48=;
+        b=WQ1HN1C4ySlkxLuuWhrDluf3JdxkY/5N/c4jqS7CfsERwHAO0M/R2gvmDN0glNxauY
+         b9KH7wvBWlFQEKDD/uR843c7ai5Mr6u6Tnswgb+0bsEzZDE1xx8FUhg4Ho2eQP5+NNTe
+         5Vux79Pd1MYjAOdE/gOMb8Nc07N60xoHZ3dRXC23YEmMWwJqOjnF5sXsUa3u+bNj3HMv
+         2JSb/uo+pGJ/O2fLDLTjIvINAxnjpfiPW0et5DWBiZzWSRGE1lo+wwqzmIyo+TdNjqPQ
+         HcARlkKEDrHlTtCWJsvvLVUDR01e/DVc+QrUaOV7AVoQg50l7j+gmDJMoM6SUClLQKl2
+         Re7A==
+X-Gm-Message-State: AFuF++k+HAlsCrgPRro2mlvMtyW8Q0q86phx+to5qnzmpbUaumTUzXyY
+	HBhOcNogd851Sv3QM4l9tdMpquEkYLVGehy9FAPlYdjTRa2vn6/EAZO8zd4JfuMK
+X-Gm-Gg: AYBFou3ywqMIP8+FGQcrZUXp1XuXvjtaSOIQAxdU9sFAciPbJw2dP8mqpEOWEVBVcat
+	riUYh2W+JOR2qDlD86GyxrpVDko6h0xkyFKK/zEonjnjdvl+WgSB6ldf1EfJS4us0cCjcSEfjrq
+	AHPpwlFDdJBBLnuWvgq7+3F1SjZXimZDRrrWNFn1aeP9zLwVQhfx9v2IAUY+2QIMVVK6aN+tnDJ
+	YkYxxXJOjJy85vDCoTBuqdv48S5EVN+OFjQltSGIWe6s/w3ZZXqI7iP/8YlSuNT9mleYJFM1JYD
+	ZcSl5oSuFKX/jh/dktSEhK+p+T8sqQaESBvlgS3U7Q/wdAYccH4vTFOZ4zMmYDJWgmeWhd5/3q+
+	DYH3s6KbkJEw/kIIPipAM0ChkM62HLXxkeb1BENMJmGKLsYGjkGLOH1DBwWEo9u3NktoVHZxkA9
+	uLMy2ZlWzWsGwU9GmKXkuBkwZJCS/fxoef7kyX9f/V/4z8CWJWkJzicAOU
+X-Received: by 2002:a05:6000:188f:b0:484:3d1b:7871 with SMTP id ffacd0b85a97d-48488f1b05emr14960874f8f.19.1788377695627;
+        Wed, 02 Sep 2026 12:34:55 -0700 (PDT)
 Received: from luca-vm.lan ([154.61.61.58])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-484492cdc37sm8889191f8f.34.2026.09.02.12.34.41
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-484492cdc37sm8889191f8f.34.2026.09.02.12.34.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 02 Sep 2026 12:34:42 -0700 (PDT)
+        Wed, 02 Sep 2026 12:34:55 -0700 (PDT)
 From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 To: linux-mediatek@lists.infradead.org
-Cc: Fabien Parent <parent.f@gmail.com>,
-	Val Packett <val@packett.cool>,
-	Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
 	Rob Herring <robh@kernel.org>,
@@ -86,7 +85,9 @@ Cc: Fabien Parent <parent.f@gmail.com>,
 	Liam Girdwood <lgirdwood@gmail.com>,
 	Mark Brown <broonie@kernel.org>,
 	Linus Walleij <linusw@kernel.org>,
+	Val Packett <val@packett.cool>,
 	Julien Massot <julien.massot@collabora.com>,
+	Fabien Parent <parent.f@gmail.com>,
 	Akari Tsuyukusa <akkun11.open@gmail.com>,
 	Chen Zhong <chen.zhong@mediatek.com>,
 	linux-input@vger.kernel.org,
@@ -96,18 +97,17 @@ Cc: Fabien Parent <parent.f@gmail.com>,
 	mfd@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org,
 	linux-gpio@vger.kernel.org
-Subject: [PATCH v10 2/9] dt-bindings: input: mtk-pmic-keys: Add MT6392 PMIC keys
-Date: Wed,  2 Sep 2026 21:25:38 +0200
-Message-ID: <20260902193351.185771-3-l.scorcia@gmail.com>
+Subject: [PATCH v10 3/9] regulator: dt-bindings: Add MediaTek MT6392 PMIC
+Date: Wed,  2 Sep 2026 21:25:39 +0200
+Message-ID: <20260902193351.185771-4-l.scorcia@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260902193351.185771-1-l.scorcia@gmail.com>
 References: <20260902193351.185771-1-l.scorcia@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_123444_414655_9C88283D 
-X-CRM114-Status: UNSURE (   9.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260902_123505_050135_AAD8F64A 
+X-CRM114-Status: GOOD (  16.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,32 +122,166 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fabien Parent <parent.f@gmail.com>
+Add bindings for the regulators found in the MediaTek MT6392 PMIC,
+usually found in board designs using the MediaTek MT8516/MT8167 SoCs.
 
-Add the binding documentation of mtk-pmic-keys for the MT6392 PMIC.
-
-Signed-off-by: Fabien Parent <parent.f@gmail.com>
-Signed-off-by: Val Packett <val@packett.cool>
 Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ .../regulator/mediatek,mt6392-regulator.yaml  | 112 ++++++++++++++++++
+ .../regulator/mediatek,mt6392-regulator.h     |  23 ++++
+ 2 files changed, 135 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml
+ create mode 100644 include/dt-bindings/regulator/mediatek,mt6392-regulator.h
 
-diff --git a/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml b/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
-index 140a862ecfbe..ff720588128b 100644
---- a/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
-+++ b/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
-@@ -31,6 +31,7 @@ properties:
-           - mediatek,mt6357-keys
-           - mediatek,mt6358-keys
-           - mediatek,mt6359-keys
-+          - mediatek,mt6392-keys
-           - mediatek,mt6397-keys
-       - items:
-           - enum:
+diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml
+new file mode 100644
+index 000000000000..d74721d8f2ff
+--- /dev/null
++++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6392-regulator.yaml
+@@ -0,0 +1,112 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/regulator/mediatek,mt6392-regulator.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek MT6392 regulator
++
++maintainers:
++  - Luca Leonardo Scorcia <l.scorcia@gmail.com>
++
++description:
++  MT6392 is a power management system chip containing three buck converters and
++  23 LDOs. All voltage regulators provided by the PMIC are described as
++  sub-nodes of this node.
++
++properties:
++  compatible:
++    items:
++      - const: mediatek,mt6392-regulator
++
++  vproc-supply:
++    description: Supply for buck regulator vproc
++  vcore-supply:
++    description: Supply for buck regulator vcore
++  vsys-supply:
++    description: Supply for buck regulator vsys
++  avddldo-supply:
++    description:
++      Supply for AVDD LDOs (vm, vio18, vcn18, vcamd, vcamio). According to the data sheet
++      this is an internal supply derived from vsys.
++  ldo1-supply:
++    description: Supply for LDOs group 1 (vaud28, vxo22, vaud22, vadc18, vcama, vrtc)
++  ldo2-supply:
++    description: Supply for LDOs group 2 (vcn35, vio28, vmc, vmch, vefuse, vdig18)
++  ldo3-supply:
++    description: Supply for LDOs group 3 (vusb, vemc3v3, vcamaf, vgp1, vgp2, vm25)
++
++patternProperties:
++  "^v(core|proc|sys)$":
++    description: Buck regulators
++    type: object
++    $ref: regulator.yaml#
++    unevaluatedProperties: false
++    properties:
++      regulator-allowed-modes:
++        description:
++          BUCK regulators can set regulator-allowed-modes to values specified in
++          dt-bindings/regulator/mediatek,mt6392-regulator.h
++        items:
++          enum: [0, 1]
++        minItems: 1
++        maxItems: 2
++      regulator-initial-mode:
++        description:
++          BUCK regulators can set regulator-initial-mode to values specified in
++          dt-bindings/regulator/mediatek,mt6392-regulator.h
++        enum: [0, 1]
++
++  "^v(adc18|camio|cn18|io18|xo22|m25|aud28|io28|usb)$":
++    description: LDOs with fixed output and mode setting
++    type: object
++    $ref: regulator.yaml#
++    unevaluatedProperties: false
++    properties:
++      regulator-allowed-modes:
++        description:
++          LDO regulators can set regulator-allowed-modes to values specified in
++          dt-bindings/regulator/mediatek,mt6392-regulator.h
++        items:
++          enum: [0, 2]
++        minItems: 1
++        maxItems: 2
++      regulator-initial-mode:
++        description:
++          LDO regulators can set regulator-initial-mode to values specified in
++          dt-bindings/regulator/mediatek,mt6392-regulator.h
++        enum: [0, 2]
++
++  "^v(cama|dig18|rtc)$":
++    description: LDOs with fixed output without mode setting
++    type: object
++    $ref: regulator.yaml#
++    unevaluatedProperties: false
++    properties:
++      regulator-allowed-modes: false
++      regulator-initial-mode: false
++
++  "^v(aud22|camaf|camd|cn35|efuse|emc3v3|gp1|gp2|m|mc|mch)$":
++    description: LDOs with adjustable output and mode setting
++    type: object
++    $ref: regulator.yaml#
++    unevaluatedProperties: false
++    properties:
++      regulator-allowed-modes:
++        description:
++          LDO regulators can set regulator-allowed-modes to values specified in
++          dt-bindings/regulator/mediatek,mt6392-regulator.h
++        items:
++          enum: [0, 2]
++        minItems: 1
++        maxItems: 2
++      regulator-initial-mode:
++        description:
++          LDO regulators can set regulator-initial-mode to values specified in
++          dt-bindings/regulator/mediatek,mt6392-regulator.h
++        enum: [0, 2]
++
++required:
++  - compatible
++
++additionalProperties: false
+diff --git a/include/dt-bindings/regulator/mediatek,mt6392-regulator.h b/include/dt-bindings/regulator/mediatek,mt6392-regulator.h
+new file mode 100644
+index 000000000000..2e1f41e0ebfe
+--- /dev/null
++++ b/include/dt-bindings/regulator/mediatek,mt6392-regulator.h
+@@ -0,0 +1,23 @@
++/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
++
++#ifndef _DT_BINDINGS_REGULATOR_MEDIATEK_MT6392_H_
++#define _DT_BINDINGS_REGULATOR_MEDIATEK_MT6392_H_
++
++/*
++ * Buck mode constants which may be used in devicetree properties (eg.
++ * regulator-initial-mode, regulator-allowed-modes).
++ * See the manufacturer's datasheet for more information on these modes.
++ */
++
++#define MT6392_REGULATOR_MODE_NORMAL	0
++#define MT6392_BUCK_MODE_FORCE_PWM	1
++
++/*
++ * LDO mode constants which may be used in devicetree properties (eg.
++ * regulator-initial-mode, regulator-allowed-modes).
++ * See the manufacturer's datasheet for more information on these modes.
++ */
++
++#define MT6392_LDO_MODE_LP		2
++
++#endif
 -- 
 2.43.0
 
