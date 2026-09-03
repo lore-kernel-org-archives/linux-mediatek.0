@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0297C61DD3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2026 23:07:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FD10C61DD3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2026 23:26:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ioqc8RkDjsakiqCBHbEteKP1YeAkhAYQ5O17Lga+EwI=; b=pV4lQdCncbSC+6scdnXV+5Og64
-	Zw8sEEyo9YkY3nv2dCFcDW9LpUtmrF7wFdo/JIhe6fGMpW8PpuKsgjgrykBpgkVTlWit2xOIP48m4
-	dyJ5AuZSrNt6TjuxOQOID77AMrC2o8Hp/cAm/CLazXO6y83iHMB8/L2H6ncwRmSDvF/nBjnBA7Cl0
-	9UZqb1WacH+OR5vm2/JfN7Iq6fCZL+vC/9hxoldcjcaAEfHiYCTghFRFQQ6YtcGz/G5z/P11cIFqJ
-	v6rL0j/Z2VYopV+n+KC4kRVwuoFlRE3Majki12/k7LkesEKA8Vlp+FHcXqPPmHhAXgpcBZcQ8q8NW
-	YGew9idg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EIHDkLIlWv8dC8AntA5JVQgeAcHvFlAslv/XDaxPTPI=; b=xAMdG1AxZaBqSrYJLUFld13vky
+	VHOYqHAxAPGgDSRBR3SV8vafPEEoK9jZjjaXCshS7LkQi/Mva1vzOc5lWRPEOU0FFUVsuHq6I4dKL
+	wMU3SUH9Zg+lz+p0W9v6KvCVpv/ooPwYHLt8/4jKeeBgfy6rDgZXimezkMpLPIIQ4ul3qqxbgzZMs
+	yr613VPvFWpkMVDuUg/c0uWYrrn3Fba8wWqz6nyl8UdqwWNi0zYw22u8sR+LpSu+nzHzHKtSP0KPp
+	zQqXCwOxi8Js/oBRWW6JSIZgXXSIVuFvaeTsVwQ12ZuIC+5Og/UbgrFItdrfwyJoDEqMcaXBaeoOn
+	/AAHmIxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2GWb-00000000kgA-1Eyw;
-	Thu, 03 Sep 2026 23:07:17 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x2Gol-00000000lmv-3guB;
+	Thu, 03 Sep 2026 23:26:03 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2GWZ-00000000kfs-1CCy;
-	Thu, 03 Sep 2026 23:07:15 +0000
+	id 1x2Gok-00000000lmh-1sNC;
+	Thu, 03 Sep 2026 23:26:02 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4F36060234;
-	Thu,  3 Sep 2026 23:07:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64ADA1F000E9;
-	Thu,  3 Sep 2026 23:07:12 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id B62F343866;
+	Thu,  3 Sep 2026 23:25:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 526ED1F000E9;
+	Thu,  3 Sep 2026 23:25:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788476834;
-	bh=Ioqc8RkDjsakiqCBHbEteKP1YeAkhAYQ5O17Lga+EwI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=EaZmvW9aL9zZvVxfd0I3mG8p/GhX7B+++geaN1ceyuSZHwhjnsS+0RACzx8ikPbt9
-	 9G0y3BRU88LIGJVs5e/W5QM5ZDdP5ig0SJ4Hj0JCv2Y5ES7QOMKF1QKP046u6t1cs1
-	 iOc0/3OhjKUNTSBFOH5ve6nHDtaOxbLfvcab54APrnI+oFbP56DqwROlYInPgsLwfg
-	 NP0+mGP3vSlIPcrn9sP907NYV2TX9T36FvUAKyCePZD0zUS+hIyLml/Bd7/qyJA2nE
-	 spaH3ic7gjLXHSM2gOCBQA5pIuGjt9MbiAIU1R+YhGHvM6s+3HHe3dNV70Kcc3DF0U
-	 Wt2OVbXHTSHvw==
-Date: Fri, 4 Sep 2026 00:07:09 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Justin Yeh <justin.yeh@mediatek.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] regulator: core: Export helpers used by regulator
- couplers
-Message-ID: <5f440717-d60e-4c6a-b186-7684700ff47c@sirena.org.uk>
-References: <20260903062056.1024263-1-justin.yeh@mediatek.com>
- <20260903062056.1024263-2-justin.yeh@mediatek.com>
+	s=k20260515; t=1788477959;
+	bh=EIHDkLIlWv8dC8AntA5JVQgeAcHvFlAslv/XDaxPTPI=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=KqAB+jW43Ok7vli8pgIy+nVe5ry10H8KxmZcXIRi2paGbb4bmL5F7MzX1HxsJqhUj
+	 9u7YgX+bSuDPhO7GKNnLndY/ONLfW40SjuL+6MDkC4yHmUsoPtCgYXcYmCwrloG/l/
+	 YSWnCqi20Qac8RsrEtpdIi7oDY2M/klMCxIJP4xlBCmnQj3C1XmOmsMsRciOKEYd/h
+	 rJkumR/DCV9O2M+eO/Nq/kCLLmn/0MDC5npit6CY7WqjaF0uJLh5Szi+UASsx9NJFi
+	 K+j93D3iAo32NtpG92iO90jFSB+nfhMUgIz5pYRZ3Qtuy60XoOgJCaMBi8J2W5NU07
+	 GiZlc6jRfDpDw==
+Date: Thu, 3 Sep 2026 16:25:58 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Paolo Abeni <pabeni@redhat.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Alexander Lobakin <aleksander.lobakin@intel.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, Madhur Agrawal <madhur.agrawal@airoha.com>
+Subject: Re: [PATCH net-next v5] net: airoha: add HW GRO offload support
+Message-ID: <20260903162558.2679c1d1@kernel.org>
+In-Reply-To: <apmWLtgcUXRrOTFj@lore-desk>
+References: <20260831-airoha-eth-lro-v5-1-6b0f50401121@kernel.org>
+	<fce0ee5a-476a-4867-9dd2-08e55993bd90@redhat.com>
+	<aplpllPidmCjhSmA@lore-desk>
+	<1ef90408-99b6-42fb-a7c6-7e5bca20c46d@redhat.com>
+	<apmWLtgcUXRrOTFj@lore-desk>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="PM+9XR2EbSztP8fL"
-Content-Disposition: inline
-In-Reply-To: <20260903062056.1024263-2-justin.yeh@mediatek.com>
-X-Cookie: One picture is worth 128K words.
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,34 +74,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, 3 Sep 2026 17:45:50 +0200 Lorenzo Bianconi wrote:
+> > Lacking more details from the vendor, I think you need to use a
+> > pktdrill-like sender, explicitly sets the segment lengths to some not
+> > mergeable (like, i.e. 200-300-400) but otherwise fitting a GRO packet
+> > (i.e. same hdr except for the sequence number and push flag allowed only
+> > in the last packet), ensure that the aggregation timeout lasts long
+> > enough to receive all of them, and check if the engine really aggregates
+> > them or not.  
+> 
+> I think in the example you pointed out (length 200,300,400) the hw engine will
+> create a single TCP packet composed by 3 segments (with gso_size = 300) while
+> sw GRO will just push sigle skbs. I agree this is just a GRO approximation.
+> If it is not enough I am fine to switch back to LRO implementation.
 
---PM+9XR2EbSztP8fL
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Thu, Sep 03, 2026 at 02:20:46PM +0800, Justin Yeh wrote:
-> regulator_check_voltage(), regulator_check_consumers(),
-> regulator_do_balance_voltage() and regulator_coupler_register() are
-> already declared in include/linux/regulator/coupler.h for regulator
-> coupler implementations to use, but none of them is exported. That
-> limits couplers to being built into the kernel.
-
-Acked-by: Mark Brown <broonie@kernel.org>
-
---PM+9XR2EbSztP8fL
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqZ/Z0ACgkQJNaLcl1U
-h9BokQf/SBNN4qkSup9Zx7/91V4CaMKzlLUJr7RIPR2bjDHlIghIIv3inDHwLWfd
-k0Gw5OggesugAonFDvpW8/xTUreFyEk0VyC/zd+FArzIvDp6Aje2v8gBJrSkpWWx
-PNT9RtmXm9ZVUS8pmDY2y9IOV15VGJCoB+cNT4PA7JTA67CPc9hOKHzsdq+bmNJm
-t+DzRGQnL1t+Y71LciyoAZhQWqhIE3Yi0F9V+NraGgCBODsCxiQu0l3iWiuuOAqQ
-u0sLge5VRmSmhfidF+UrJv5cGyBhkBl75GZFlXagNxcbeLvp9/oqzfgs9vLMNUdY
-/TjfjCys5cCAs8FrrzU4OxFLqe4Szg==
-=P0Wr
------END PGP SIGNATURE-----
-
---PM+9XR2EbSztP8fL--
+FWIW the gro.py test covers that and many more cases..
 
