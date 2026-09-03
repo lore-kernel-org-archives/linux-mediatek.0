@@ -4,72 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01373C624A4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2026 09:04:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38276C61DD3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2026 09:51:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aECgqs6JZ6BZsxQ6mCtynd9VQxvrPgGlkCeCbvLdpQI=; b=Q+LFns+MUJOE5d9RRZ0cED4t46
-	j5d7g2NrOIB0nWToKLd4ZvWsZa7J8RE1aZPpDiTp73HQ7G0uElZye+Ps61Lg4LXSG18NqaExfkHcg
-	n+ye9VL21xxfYCLSV+tUfGE+R4TCm3zGhGEJu+L3oAdfqy2qRwlNpDfnb2CxNtwdiQhjAdZ48YAuA
-	YT8ESvzmpY/xdWAWvzvpaVlLQWAs9YpI8A6o2rSOpc5FgxThLG3oq9EGEGCWbedu2JKbZJ2RW9p3X
-	59kNkbqoqN6KOxiMPXQEBw1//DhOtxpJFmm3qg6WW4r3lZrEwKjO45bAOm93H4NLLJk+dJpV+p4LU
-	Q2vEqPCg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bkxJ54lLa7UyJpsWCW4xrgS9S6PmuGVbCHPuaNKsEG4=; b=XQPLtIE8tU2Rj1Uq+er/jAxsdi
+	okm3d7dzDe21M82ZcHIBzY+ZcJF5z6ZJzTAwanHV+HDoWC20fcZm+NNsf87mzANJ9JaYfTVUjTHzU
+	9dZhAi37O8ub0T57Fa/O+JkixnhD4srb5f8U0S0TrA240q4eUQxtabQEZ82QlMTzh88nB8gwJtZt4
+	3pwuiwJvCgJzRgrfrL89f/FbFZfAsyef+iKPuBQB+Ny/EhIAVigW4BRpycnrIhz8K90O6AFebf/xL
+	EQkzCmzCUoAWqHZye/o5ym6Vks4bHRPhf9WGeaQFfsL7VduxocH9vgLood1emagrcQWwDSwLXRl72
+	MJrTroNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x23Ml-0000000GtCm-2mCT;
-	Thu, 03 Sep 2026 09:04:15 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1x2468-0000000Gzqd-0XxV;
+	Thu, 03 Sep 2026 09:51:08 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x23Mj-0000000GtCG-06XV;
-	Thu, 03 Sep 2026 09:04:14 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1788426249; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=L1MFU3XGjQR3xnEmm/yOzXINoJasZTga1rCeK4laB3qEHzHB/D+vvXXibA7CEPdTDb9oRjRTOaBtA1KU2XoQyKzo3wVAWS0KVy5UvjAG3TUcxoMCEwP7wmZaE28bwbcBPLAVO2gBrCji2LZcTy9IetQw1pq5t7mzN3mrb4Xww58=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1788426249; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=aECgqs6JZ6BZsxQ6mCtynd9VQxvrPgGlkCeCbvLdpQI=; 
-	b=DTpdkBW74euXRal9u1UOinYclu9NIp0dTz+WnXvr+hE/RXmZkW7XSYKCDowWlTkpbJl5CCf+/B7NDXJFqCnvFDjmSlsy7B6SzKg/3gB5ZReOIWwo3caXr+mBeWN/PgBvljrAEzlJKAf7ybitsYIpJU+dyox9oPaLbwFjy0gTaMI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
-	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1788426249;
-	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=aECgqs6JZ6BZsxQ6mCtynd9VQxvrPgGlkCeCbvLdpQI=;
-	b=NtirWF7a0Cc0Lh1qAbupCDbyhSss1cFAHIGDmN0w2pFsGHTLTRxCQLcjd8cF/n49
-	AwqVpUMcmweeNyTf/wqZ5uswcM7EsKaJPczjzMFptgivpiGlKEfz91y2BaKcD8Lw2Aq
-	ui55znASyqR06/I+Tw4rIw5k94afctSVbMdBECAI=
-Received: by mx.zohomail.com with SMTPS id 1788426248393643.0972373499999;
-	Thu, 3 Sep 2026 02:04:08 -0700 (PDT)
-Message-ID: <2c8405eac9e72409154c98bb31b3fbed10be5755.camel@collabora.com>
-Subject: Re: [PATCH] drm/mediatek: mtk_hdmi_v2: fix VID_DOWNSAMPLE_CONFIG
- register offset
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-To: Julien Stephan <jstephan@baylibre.com>, Chun-Kuang Hu	
- <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, David
- Airlie	 <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Matthias
- Brugger	 <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>, CK Hu <ck.hu@mediatek.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Tommy
- Chen	 <tommyyl.chen@mediatek.com>
-Date: Thu, 03 Sep 2026 11:04:03 +0200
-In-Reply-To: <20260828-mtk-hdmi-v2-fix-register-offset-v1-1-118ad5d7ebe3@baylibre.com>
-References: <20260828-mtk-hdmi-v2-fix-register-offset-v1-1-118ad5d7ebe3@baylibre.com>
-Organization: Collabora Ltd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
+	id 1x2467-0000000Gzpl-2MjW;
+	Thu, 03 Sep 2026 09:51:07 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id B0CF2600C8;
+	Thu,  3 Sep 2026 09:51:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 653581F000E9;
+	Thu,  3 Sep 2026 09:51:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788429066;
+	bh=bkxJ54lLa7UyJpsWCW4xrgS9S6PmuGVbCHPuaNKsEG4=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=cCiYQ0kdK+jvzDycJdh7ASVvlsp5IFdadQUlLhoPglE8C4BdzWlC+W6dyDClnDT8b
+	 gO5f8tgNgMSsUqVoEI0TQyGzQ+I1kiV97pLqVtln5YH0s860hf5jVdG8uiAPOQUCyq
+	 Q/ib87eKIcqzgKp+lj9npoqG5Cr27EdPZ8hQ51p+5k7ndaOXrv6VJT2XwLchwxbD9W
+	 NmuSbWoQxO+RZjldfjetbcVrhDGuHAV5eGdxbt/AVHNKGVH7rYlIyNn5fwkaTo718G
+	 YaDkTVgViRzxRthTA0NrKOwdvKGXYg8X5v+D8XFJNFfspbainCxc+Vpf8HKQBeUu10
+	 KfwojBIUgv36A==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 198433811965;
+	Thu,  3 Sep 2026 09:50:09 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260903_020413_147563_3DB9E8F9 
-X-CRM114-Status: GOOD (  10.48  )
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net] net: airoha: enable RX_DONE interrupt for RX queue 31
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <178842900765.3234406.8351313053019359790.git-patchwork-notify@kernel.org>
+Date: Thu, 03 Sep 2026 09:50:07 +0000
+References: <20260830-airoha-rxdone-rxq31-v1-1-830a91503f2f@kernel.org>
+In-Reply-To: <20260830-airoha-rxdone-rxq31-v1-1-830a91503f2f@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,26 +71,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Julien,
+Hello:
 
-On Fri, 2026-08-28 at 14:10 +0200, Julien Stephan wrote:
-> According to the datasheet, VID_DOWNSAMPLE_CONFIG is at offset 0x8f0;
-> 0x8d0 is the VID_CSC_COEFF_0 register.
->=20
-> Fixes: 8d0f79886273 ("drm/mediatek: Introduce HDMI/DDC v2 for
-> MT8195/MT8188")
-> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
-> ---
-> =C2=A0drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h | 2 +-
-> =C2=A01 file changed, 1 insertion(+), 1 deletion(-)
->=20
->=20
-I've checked in the MT8370, MT8390 (MT8188 variants) and MT8395 (MT8195
-variants) datasheets and 0x8f0 offset is indeed the correct one.
+This patch was applied to netdev/net.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
 
-So,
-Reviewed-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+On Sun, 30 Aug 2026 14:28:27 +0200 you wrote:
+> RX queue 31 has always been allocated and filled by airoha_qdma_init_rx()
+> since RX_DONE_INT_MASK spans queues 0-31, but none of the RX_IRQ*
+> _BANK_PIN_MASK values covered BIT(31). As a consequence the RX_DONE
+> interrupt for queue 31 was never enabled, airoha_qdma_rx_process() never
+> ran on that queue and its buffers were never reaped.
+> 
+> Route RX queue 31's RX_DONE interrupt to IRQ bank 1 so that the queue
+> is drained and its buffers returned to the page pool.
+> 
+> [...]
 
-Regards,
-Louis-Alexis
+Here is the summary with links:
+  - [net] net: airoha: enable RX_DONE interrupt for RX queue 31
+    https://git.kernel.org/netdev/net/c/7db28abbea0f
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
