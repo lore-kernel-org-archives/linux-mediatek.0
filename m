@@ -4,108 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BE43C61DD3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2026 15:56:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9890C61DD3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2026 16:43:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fbz/owPnKRrMjXILn4+/+C7V6jFSyrt1XBCIFCXBvC8=; b=zsqQOlj6L/k0kxFi6g5Vah/A0u
-	el7wDVZq4wZAQC5hmIYq6Cduym3VDIXVz//kxM9VOL/uXMkfhoBvbPXeEODV7+wE12fNum+AORDGg
-	KGOryG9zTb5sN2RwpZcnILqgdhycMx31GweqXj4TvPPc+NE9IO0o44blJqJDOm0hLKMqR0JwrfpCb
-	CvGwFr24omPEdCdOeAxVnCqie6bNg1yxr6QgIWXlm9f9iyyVCEARWaJMV/wGNhboJiTnHxkEw/x+9
-	J7si9qt9aAckknUkgSEW6b5XyVdk2LabHMDNoptCGPMDxzl4XzIa/M2RPgCeFbx2C+9ZDRnaV6oxl
-	vlpvyEVw==;
+	bh=V8sg4Ic+uUI0uGmJLbnp+7IK0wyVe9CAzpqU2xH+Oy4=; b=prpGNqeqc/F6g+qKMS7gEGqcU4
+	yr8qlS/9UGHwo9wUrPTm/s1XxraWjJ7xk/Pa3dNfZaDrIgjziDd9W3wHnokPR2Bx5yVOcNJfMLLLp
+	1PvbFUHKIKFXlzW5Lbij5PXBTznO3q6d1zE1++g/fLVIR+Q4Y/QSrXDTxptRvN1Ijr+jJ8uGP1Ovw
+	CFyCZQQ6hHlPBU1QmxaA937tS7cjrEY+vwU1z78exVR6d6nveAR6xLxl37DWAQrTrKndhckjLNaoN
+	7Mk3RujcVhL+mZxR/OT3aOZLsnZ9Az1N8YfKWqI3eMHAbevG8hc6OKB+acu4NUo9dXi1cJAraIGc1
+	w4gpBPGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x29nQ-0000000040r-0cwi;
-	Thu, 03 Sep 2026 15:56:12 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1x2AXB-00000000CMe-1UhQ;
+	Thu, 03 Sep 2026 16:43:29 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x29nO-000000003zy-0FDO
+	id 1x2AX8-00000000CLq-2Zht
 	for linux-mediatek@lists.infradead.org;
-	Thu, 03 Sep 2026 15:56:11 +0000
+	Thu, 03 Sep 2026 16:43:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1788450968;
+	s=mimecast20190719; t=1788453804;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=fbz/owPnKRrMjXILn4+/+C7V6jFSyrt1XBCIFCXBvC8=;
-	b=Z7DkRh35Sm3hAqEQJdY7THKOKbN9mGtEzU9+QRW1gP5u5guZVfM7JKqbNTtG7aevoyNZFX
-	pI7YZQsYdClnM9hwx0BG53fKSsKVsLJjr8pR4HCvMpfPe0X5TOcCvKrNdyciJ9vQo5ZLzB
-	ZUVkRkTFeebJSRyNARq10nO8XaI8nTQ=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=V8sg4Ic+uUI0uGmJLbnp+7IK0wyVe9CAzpqU2xH+Oy4=;
+	b=WZW7XbgpvCr8YnmPjGxQu/Ios6HkyPVzZYA1JjFPIc3J0o/lAE9cSmXdebveaMzHUfehQl
+	jR4MHpSSBHr8GdbZ9dql/5NF3PUPDO2wiMSSgNXBE6iZlR1I/yTMSkgvy99DteNKrXO0+H
+	vr7lFyUpvrXYwsuThzhQnBUPETAAMrA=
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-513-yQQxLBERP8WQwamOw_wC2w-1; Thu, 03 Sep 2026 11:56:07 -0400
-X-MC-Unique: yQQxLBERP8WQwamOw_wC2w-1
-X-Mimecast-MFC-AGG-ID: yQQxLBERP8WQwamOw_wC2w_1788450966
-Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-482e05af072so8583f8f.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 03 Sep 2026 08:56:07 -0700 (PDT)
+ us-mta-18-Mbbe3gInNCG3hIx2_-63SQ-1; Thu, 03 Sep 2026 12:43:22 -0400
+X-MC-Unique: Mbbe3gInNCG3hIx2_-63SQ-1
+X-Mimecast-MFC-AGG-ID: Mbbe3gInNCG3hIx2_-63SQ_1788453802
+Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-9390a2c895bso1072985a.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 03 Sep 2026 09:43:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788450966; x=1789055766;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=fbz/owPnKRrMjXILn4+/+C7V6jFSyrt1XBCIFCXBvC8=;
-        b=GPl3EyKGjkKzYtp6WOb9fdAodlU+t7SFcTwHPINT73lQp635YSHq2ERwHeBN4VYRj3
-         F1I5VOyw7J3a2vXi2kKA+PiQFC9z7kxE50CJeE2f8lU5M8VryRVRrAY+ZBzhB3+yy98c
-         ED02DcYVuVWatqMo4EGAZBWYUGrywfg11mc7wF25UZjcbQXwu/6/ANQgYWZpwlGNW66Z
-         ZnZoC5LONUj5XxGd+zD7HpPaAiOXdIi9DwPh7kKfTRBEDU3BOU4e0eSSVKX0p3MPUM+0
-         v1g5L5LwaMdc1Wuvud0CW6KM7HOYeV3txh+e3Vl+ArEehloYR58gCLHiMC+YY1yayYCX
-         Mx3Q==
-X-Forwarded-Encrypted: i=1; AKwUvBx8fXvNgKFBAap7/9wLBhM9t8awqKmnegFMdHFzsv+dyzgUEXvByD9BoBBH6j+QalBA235eVz443a6E5lXIPQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++m97v6lQqkntpUBBhEO1vrU38vzucXP58Pbrl7FB/Rgc9wLUV54
-	rcPy1Pfn3EXMXXHQgXZQ6eRgoiUoqN8IslDHkAjeaVKKD5DnX+53BLp58VGNIZ+ob3vsBi+9uRM
-	IbZdDhBAyM0oLSrEd9FFvioKCR7YOIfP3+t4JnwOxgBOdcvzRV0UuOH0OrSsq570wNkxcN9Y+PQ
-	XuPDGj2w==
-X-Gm-Gg: AYBFou3QLT+J0+gSuWxZuGEFCRZQlv1hSrffvFEHcPLahylgnawHPILRSckrYItAzpu
-	QAQJmVkl3ZNDrUypz8ES1MZbZZPSmWXxpBYzwhqKe2oJxGi4Fd4J5npT3+qqn2d2NHEjZyK7OAB
-	hXsXSoigD+mFQ7GG1N+935uWfD/BLAIEFMCTPbSZ+l2aY5SbHtMFMYqiIyVHM4QyjzaBoxCBQTf
-	t25BPfVQUku3WxHiQQMV8F1jTXxA6+ym+2ehnG8hD2mHdXR8SuiVCXo4DBx++hExXY9boaTOy5H
-	GiETjdE5lEML370pyV/rW/tChV6EUL57Ve3CDqQi9ipuPtvmWSr4W2acMFqDdwWE53Mp6AnNU/K
-	Ta5JXSy19NDyuj2XR7oj+nsDlV9lLb7PB49zzFlV1UJpIHryDTmNXuHtYp3nfkbujQChEZqRe4Q
-	==
-X-Received: by 2002:a05:600d:4:b0:49c:e9c1:25ca with SMTP id 5b1f17b1804b1-49ce9c12778mr188520415e9.3.1788450966072;
-        Thu, 03 Sep 2026 08:56:06 -0700 (PDT)
-X-Received: by 2002:a05:600d:4:b0:49c:e9c1:25ca with SMTP id 5b1f17b1804b1-49ce9c12778mr188519615e9.3.1788450965620;
-        Thu, 03 Sep 2026 08:56:05 -0700 (PDT)
-Received: from [192.168.188.218] (ip232-47-231-195.pool-bba.aruba.it. [195.231.47.232])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49cee5e589bsm74190425e9.13.2026.09.03.08.56.03
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 03 Sep 2026 08:56:03 -0700 (PDT)
-Message-ID: <0ca33b49-07d9-4cea-a9da-1ccdd6a40cea@redhat.com>
-Date: Thu, 3 Sep 2026 17:56:02 +0200
+        d=1e100.net; s=20251104; t=1788453802; x=1789058602;
+        h=content-transfer-encoding:content-type:mime-version:date:message-id
+         :subject:references:in-reply-to:cc:to:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=V8sg4Ic+uUI0uGmJLbnp+7IK0wyVe9CAzpqU2xH+Oy4=;
+        b=NHize11E3ZobmQRVSKtbu4leL1YVbuDdpL46cC5rAdfwE8eK4M3zRxpPk7JYTFdt6A
+         EYDKTRoKDKsPu8VNOlL7qPa+sLORPa8cKkQap1uSHm8k5/S5vLeGgJ6gTQ5lBGt+jBJP
+         0Zx0jSjBoJKBajKCTGw8KeoB/wMnithRbh1ncUrMgh5g0mVVIdDgCYTHSQ5/YfiORkvf
+         JsKbqe+07qgSwZfyzblDKVC7El6C6tfqoVZdU83nHdxzDhYUNLm9GodcmU1oltZjElDY
+         CrRSo+Pwx84q5VOkhYcwi9FMH+CXXnmnsjLR+NqKeLxK4fMyvUs07Xu6hEtQCkHizpfx
+         EP1A==
+X-Forwarded-Encrypted: i=1; AKwUvBzWP7VGVl9HL1B55tPQhN3wKM8dAF1XlRX5M5hqQmVFtB77/K5MgKFZI0OBeS18a711QUGQ3uR312jUZlGWgA==@lists.infradead.org
+X-Gm-Message-State: AFuF++nCYh9PvvzkeLFAF/M8Px4VM11sq8RIlDnt7fZ/Hz48j554iKgG
+	JD0uNcdloMcBN8H6tOZb7er5czL4uGUpuY3ngvWR/+vvNJjzcJLPaxtCJXZhJNtQDl+0sZEj+/k
+	aLh07Kh3xkpcEfz8Zwv3K6TN6PFEYP01RwHnCgz7MvKqPQHkThzpJRBryW4UcZagAeqO18yqIH7
+	7A7rWi7w==
+X-Gm-Gg: AYBFou3rBhXB0W2AKA48AzZiJC23YWrTODSflQomuzJAKNPeYiiVWAUEwdllYHZTNWJ
+	7Xj7Jh2ykG6v96fCLn7gZJ9YppGMHRV7NNWTa4Xc8zHeK14bYDBXdMqCCGY+FPZ6/908UgF1ZiM
+	m7NfNDCrCfepE/ybm8tcoetZyvUFs37R9ce1MmvmoinJ7wYK+G7FFUet3QYfn2emFgFTk3CGTKn
+	OvTWvqF+Tsc6bJhVj0NB+vocntygfj54+2CS9xjWtGWc76ldqGUCYSAckZn0+grepacfqif3bhK
+	i8TiE8kYxzTFpEg4xc/7HJpYI4z68spUxHqtGY8eeUpOoOW8B37E/b8L6KALxmkddlzbfusWcYC
+	QcUSGkOg0VJ0hvF+MIFJOeJsyiK7DIgAxlhxs+/Q=
+X-Received: by 2002:a05:620a:6187:b0:939:6df3:d7f6 with SMTP id af79cd13be357-9396df3de25mr992394785a.49.1788453801813;
+        Thu, 03 Sep 2026 09:43:21 -0700 (PDT)
+X-Received: by 2002:a05:620a:6187:b0:939:6df3:d7f6 with SMTP id af79cd13be357-9396df3de25mr992386285a.49.1788453801386;
+        Thu, 03 Sep 2026 09:43:21 -0700 (PDT)
+Received: from [192.168.1.3] (c-73-183-53-213.hsd1.pa.comcast.net. [73.183.53.213])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-90e9ee270d0sm47491336d6.18.2026.09.03.09.43.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 03 Sep 2026 09:43:20 -0700 (PDT)
+From: Brian Masney <bmasney@redhat.com>
+To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
+ Jerome Brunet <jbrunet+clk@baylibre.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>, Ricardo Ribalda <ribalda@chromium.org>
+Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ stable@vger.kernel.org
+In-Reply-To: <20260831-common_clk_mt8173-v1-1-2d7241f70379@chromium.org>
+References: <20260831-common_clk_mt8173-v1-1-2d7241f70379@chromium.org>
+Subject: Re: [PATCH] clk: mediatek: Add missing depend for
+ COMMON_CLK_MT8173
+Message-Id: <178845378565.22448.12859439275506649984.b4-ty@b4>
+Date: Thu, 03 Sep 2026 12:43:05 -0400
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v5] net: airoha: add HW GRO offload support
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, Madhur Agrawal <madhur.agrawal@airoha.com>
-References: <20260831-airoha-eth-lro-v5-1-6b0f50401121@kernel.org>
- <fce0ee5a-476a-4867-9dd2-08e55993bd90@redhat.com>
- <aplpllPidmCjhSmA@lore-desk>
- <1ef90408-99b6-42fb-a7c6-7e5bca20c46d@redhat.com>
- <apmWLtgcUXRrOTFj@lore-desk>
-From: Paolo Abeni <pabeni@redhat.com>
-In-Reply-To: <apmWLtgcUXRrOTFj@lore-desk>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=317; i=bmasney@redhat.com;
+ s=20250903; h=from:subject:message-id;
+ bh=Y+oggqG3Z8L+JxkjNpwIvq7dXqEwG7Da2Hajvvt/Msg=;
+ b=owGbwMvMwCW2/dJd9di6A+2Mp9WSGLJmLp4vln/w9uWnFpMnBh3+s5IzyCRo3jTeQ88mBbj8y
+ GR/EvCgvqOUhUGMi0FWTJFlSa5RQUTqKtt7dzRZYOawMoEMYeDiFICJ3Ahg+O86/dGb5RGeNw8x
+ nv+Y6dMhWWrzZE5A6oGlMo+NmKP7Cl8y/PfOydx3s8egMeH7vrvRv2R+z3jEeTuj8P9/m8aGvU3
+ r23kB
+X-Developer-Key: i=bmasney@redhat.com; a=openpgp;
+ fpr=A46D32705865AA3DDEDC2904B7D2DD275D7EC087
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: _vF7KlON1yqbAe5d55cWExplRVYTFIg6QqHsWFaTf6Y_1788450966
+X-Mimecast-MFC-PROC-ID: kCCHB1DDj3bW9gCs3JRYnsqMin5kd0wUu3QDItiVc6E_1788453802
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260903_085610_173884_1C638E05 
-X-CRM114-Status: GOOD (  19.26  )
+X-CRM114-CacheID: sfid-20260903_094326_748003_EFDD1BBF 
+X-CRM114-Status: UNSURE (   6.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,86 +126,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/3/26 5:45 PM, Lorenzo Bianconi wrote:
-> On Sep 03, Paolo Abeni wrote:
->> On 9/3/26 2:35 PM, Lorenzo Bianconi wrote:
->>>> On 8/31/26 8:34 AM, Lorenzo Bianconi wrote:
->>>>> Add hardware GRO offload support to the airoha_eth driver, leveraging
->>>>> the EN7581/AN7583 SoC's 8 dedicated LRO hardware queues mapped to RX
->>>>> queues 24-31. HW GRO offloading does not support Scatter-Gather (SG) so
->>>>> it is required to increase the page_pool allocation order to 2 for RX
->>>>> queues 24-31 (LRO queues).
->>>>> Since HW GRO is configured per-QDMA and shared across all devices using
->>>>> it, HW GRO is mutually exclusive with multiple devices bound to the
->>>>> same QDMA block. Call airoha_update_netdev_features() in
->>>>> airoha_dev_set_qdma() so that NETIF_F_GRO_HW availability is re-evaluated
->>>>> whenever the QDMA user count changes (device registration and runtime QDMA
->>>>> migration).
->>>>> Set CHECKSUM_PARTIAL with pseudo-header checksum on aggregated packets
->>>>> so that L3-forwarded traffic is correctly handled by the GSO/TSO path
->>>>> on the egress device.
->>>>> The HW does not report the per-segment MSS (msg3[31:16] only reports
->>>>> the max aggregated size), so the gso_size of an aggregated packet is
->>>>> just an approximation computed as DIV_ROUND_UP(data_len, agg_count).
->>>>
->>>> What is the <max aggregated size> exactly? I read it as the maximum size
->>>> of the aggregated segments, am I correct?
->>>
->>> Hi Paolo,
->>>
->>> with "max aggregated size" I refer to the length of the aggregated TCP
->>> packet (composed by multiple segments). This value is reported via
->>> QDMA_DESC_LEN_MASK field in the DMA descriptor. Moreover, the hw reports
->>> the exact number of the aggregated segments via QDMA_ETH_RXMSG_AGG_COUNT_MASK
->>> field.
->>>
->>>>
->>>> Also any more details on how the aggregation engine works? i.e. can it
->>>> aggregate "random" segment sizes (i.e. 200 - 300 - 400) or does it
->>>> respect HW_GRO layout? (i.e. all segments except the last one must have
->>>> equal size, the can be smaller).
->>>
->>> The hw engine, for each LRO queue, is configured with:
->>>
->>> - CDM_LRO_AGG_NUM_MASK: max number of segments for each aggregated TCP packet
->>>                         (64 in the current configuration).
->>> - CDM_LRO_AGG_SIZE_MASK: max size of the aggregated TCP packet (composed by
->>>                          multiple segments). 16KB in the current configuration.
->>> - CDM_LRO_AGG_TIME_MASK: max timeout to compose the aggregated TCP packet.
->>>
->>> In order to validate the scenario, I run the following test:
->>>
->>> TCP client:
->>> ------------
->>> - disable TSO/GSO
->>> - set MSS to 256 bytes (iperf3 -M option)
->>>
->>> I can see multiple 310 bytes TCP segments on the wire
->>>
->>> TCP server: (where rx-gro-hw is enabled):
->>> -------------------------------------------
->>> - the engine aggregates ~64 segments in a ~16Kbyes TCP packet
->>>
->>>   so gso_size ~ 16KB / 64 ~ 256B
->>>
->>> I guess this would be the behaviour even if the original packets
->>> have different size (not sure if it is a real use-case).
->> Lacking more details from the vendor, I think you need to use a
->> pktdrill-like sender, explicitly sets the segment lengths to some not
->> mergeable (like, i.e. 200-300-400) but otherwise fitting a GRO packet
->> (i.e. same hdr except for the sequence number and push flag allowed only
->> in the last packet), ensure that the aggregation timeout lasts long
->> enough to receive all of them, and check if the engine really aggregates
->> them or not.
-> 
-> I think in the example you pointed out (length 200,300,400) the hw engine will
-> create a single TCP packet composed by 3 segments (with gso_size = 300) while
-> sw GRO will just push sigle skbs. I agree this is just a GRO approximation.
-> If it is not enough I am fine to switch back to LRO implementation.
-In such a case I think LRO should be needed. I suggest to explicitly
-validate the statement, it should be feasible, and the possible gain
-relevant (should the engine instead do the right thing).
 
-/P
+On Mon, 31 Aug 2026 08:50:56 +0000, Ricardo Ribalda wrote:
+> clk: mediatek: Add missing depend for COMMON_CLK_MT8173
+
+Applied, thanks!
+
+[1/1] clk: mediatek: Add missing depend for COMMON_CLK_MT8173
+      commit: 84964d0ce3faed815e1b8e048ce5ce1c93badb18
+
+Best regards,
+-- 
+Brian Masney <bmasney@redhat.com>
 
 
