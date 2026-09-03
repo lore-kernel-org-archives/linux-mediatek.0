@@ -4,60 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5B04C61DD3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2026 14:21:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A24F6C61DD3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2026 15:12:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yishPGcJ2aBgX8f7/aGf43YSeYKU1vTSOdEz/UOhz0Q=; b=yp5xad3FgipB8edaEhzDN1vC8n
-	H4jdd2xGyq53zPtdhpdlZ9sWvDkpQ/AfM+tf00A/u1KkGK7/+Qmbig91/SwC3b+UpX/m3ngCet/P5
-	qnOHR1Ftc+e409tKVIKb6gn7qdep7DZ1/KHKNSYopwKHAiwWdBZ4F4ZxYZ0iXHqlpAb7MlK2ZL40K
-	3BODisu4PiSsdTL0t3OhZ7VtfscFkoNYAYbO3s3RQDxXMyvsTW/Bv7eYdAc01PEP9kS2n9Gc8c7og
-	v6UolNt4NiSUEWf03lZwbs82/zCy5HdIR8ci+eJ0Kt9gZnmBg7fBR0ww4eAfuMXSiAOYFSvzUOt1l
-	GcpE/oDA==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pjlizrWboIfwnZS2oWukdlINpTQI4dn8vHdtaiT7QzA=; b=LIdzfPhCTEUI4uu2fzvMM1qge7
+	61wj4XnIfxKpemdyoX9S8QjsORN0+VHcL+93/UpEfEieSXTy7gziYrQ/lkcv/+knMaidMRbjYxa6+
+	swPe/Z24GjYt5OLVqfCUh8+PyiDkumWTD/nksm8qGDTLTy7fGATX3dTFFVWUjV7nXi+UHticcee2W
+	b0nipG/nxeFslHxS9T0QNvHdqZ5+SrqF6pKDbq6V0sNo+PK24hoiwW38TDthOI32pB0tC8tT7kOFy
+	hlvJeUx2+Kk0aj6FmwbcgMnzrHrn/M98Ori0hLlmSTWzziefP9lCNFAFK34gVyuAxngOd7gBaEDDu
+	8fMWGGYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x28JY-0000000HV8R-1CEw;
-	Thu, 03 Sep 2026 14:21:16 +0000
-Received: from smtprelay0017.hostedemail.com ([216.40.44.17] helo=relay.hostedemail.com)
+	id 1x296u-0000000HaD2-06Nw;
+	Thu, 03 Sep 2026 15:12:16 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x28JU-0000000HV7V-1FPj;
-	Thu, 03 Sep 2026 14:21:14 +0000
-Received: from omf05.hostedemail.com (lb01a-stub [10.200.18.249])
-	by unirelay09.hostedemail.com (Postfix) with ESMTP id 0EA638028D;
-	Thu,  3 Sep 2026 14:21:08 +0000 (UTC)
-Received: from [HIDDEN] (Authenticated sender: rostedt@goodmis.org) by omf05.hostedemail.com (Postfix) with ESMTPA id 1F52B20010;
-	Thu,  3 Sep 2026 14:21:06 +0000 (UTC)
-Date: Thu, 3 Sep 2026 10:22:09 -0400
-From: Steven Rostedt <rostedt@goodmis.org>
-To: Marek Szyprowski <m.szyprowski@samsung.com>
-Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, Chunfeng
- Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH] USB: mtu3: tracing: fix pointers dereferencing
-Message-ID: <20260903102209.7aa79164@gandalf.local.home>
-In-Reply-To: <20260804100531.88576-1-m.szyprowski@samsung.com>
-References: <CGME20260804100540eucas1p24c59c891e91eeeeea8032d1c80312ea3@eucas1p2.samsung.com>
-	<20260804100531.88576-1-m.szyprowski@samsung.com>
-X-Mailer: Claws Mail 3.20.0git84 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+	id 1x296s-0000000HaC4-0Bef
+	for linux-mediatek@lists.infradead.org;
+	Thu, 03 Sep 2026 15:12:15 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-48433e9562bso581841f8f.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 03 Sep 2026 08:12:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1788448331; x=1789053131; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:message-id:date
+         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=pjlizrWboIfwnZS2oWukdlINpTQI4dn8vHdtaiT7QzA=;
+        b=RB6Sz6HWSdc9WrEK/BwMmz7m/If21+ocOeDya81Q26KqpSlU+KYdK441itUT++GpeM
+         4VpOn6zKvN42w6Q4SrP7vk75lJsBLGZs8Y8m8tZ0B7vRmin4aHqln3RGCAc4Xr+yg74K
+         G4g9S/QTiWSP+S+5I6zwfG1GLKTkiDiGCGummllLl/FXoP9FIYbQv6FprQ3fgPee8NjT
+         5QJO4+zn3IP3QlondfIreQN8qiJggPnDCePCa2ACYWjhRMszPO82Mw3c2O+yQu5RQc1Q
+         LMnibo7qgKnAoNAN/MQS6a8uoNTxffYWu1FrGZDCbFHS1reYZSdbMi7lHFOGzRK4XDIP
+         K9iw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788448331; x=1789053131;
+        h=content-transfer-encoding:content-type:mime-version:message-id:date
+         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=pjlizrWboIfwnZS2oWukdlINpTQI4dn8vHdtaiT7QzA=;
+        b=V8Utu59rpGaFgI5Wzlj0nzuIxPlTxIDauvV2vytXamGnawbphuG5TBi2A7KkzjSSrT
+         Lpqia6uLGo6Vq6LH74GIVt3kQG1jdv8VLXNJ4dL6xEur1fRmj5mXp9clureLmWii8C1B
+         KhRHNAgNX5TB6Ve/NXA4+ccJsOtS34PrA2kFe8xQZSAxWwpj3SSIdv0Ow+fKlqrtRtiU
+         OShOGm/sEx9rU0D8VP5D6I8RKcJ4ox+9PfyVB5vIjyIDr0lsPzDRjRLqo5Ligcnc4eCS
+         fxeYJhJmoRY52c4Rh65a6eImX0HY5shAPpZf+pU3sKx26wqgtMg2JUUFoJUVq6Bdr/Uz
+         EDPA==
+X-Forwarded-Encrypted: i=1; AKwUvByzPxA8ZpqHsUS/CxkfVhKEouoWlM5lxPRmHJLnqZ0iPnLTjoHGMQFbX2UrpUqiMkExlgyjooHCnPYn39S++Q==@lists.infradead.org
+X-Gm-Message-State: AFuF++mEyF/sDnQtiRa9Nj9ST7U6Nvi7uyJfbFWITB7Aa/tS3pzKybCQ
+	sjqTY/x/6GKKK8oi0G/b+KqqYXra1P8TziOiZni+LMHWNMzfMZi9qoQ2
+X-Gm-Gg: AYBFou221TTod3Nqboq6JxWcNZR8uBLT6fqwcXp38PZF1TuBE7lQVv9QVUfa9/qGXOJ
+	gvJnOk+xFttMePvBLRibuq3221UYEraKS+tQhavh/VnJTduZb5xaMAw00ajiLccBEJJhR9WKvsq
+	erDLl+tMd29l7kMOs4BfSKvVGItUTcG+jadDKbg2EzR3woHSTIENkQNXF3rDcJ4HjlS9i3sceop
+	NA0civbVTz1MmsptamuQpQ394o5F4IAg6vOyR5aCMsRKdnWvhIMo3dAKnhckej4YAQvp+Y0bKnN
+	RQJ0clXFzSuZfTUiePYejIAzJA86jv/dF4VFy3SDL1VJEWcxQ9G/Cd5izlHhQd7Dd1LvQn6Weoi
+	rVX7TN09A4qmWHWBEjEJOWeAW0D30W7q8DmgAqPRHyAa8p6ltXMxQASPmpipdxftjl+Gzm197JB
+	sHaOTGoTGk3n980nucTqVf2iqE0K1JRO6Q664VfgNdR1LelUcxYgxbIxLIjos=
+X-Received: by 2002:a05:6000:2f8a:b0:482:e64d:a1f7 with SMTP id ffacd0b85a97d-48488e0371cmr21537891f8f.11.1788448331284;
+        Thu, 03 Sep 2026 08:12:11 -0700 (PDT)
+Received: from localhost ([5.83.201.220])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48448e6f604sm14396587f8f.2.2026.09.03.08.12.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 03 Sep 2026 08:12:10 -0700 (PDT)
+From: Colin Ian King <colin.i.king@gmail.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-wireless@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH][next] wifi: mt76: Fix spelling mistake "dowload" -> "download"
+Date: Thu,  3 Sep 2026 16:10:07 +0100
+Message-ID: <20260903151007.14832-1-colin.i.king@gmail.com>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Rspamd-Queue-Id: 1F52B20010
-X-Stat-Signature: bbffphg7oxa6e7rpsgix55ra4nbtu7w1
-X-Rspamd-Server: rspamout07
-X-Session-Marker: 726F737465647440676F6F646D69732E6F7267
-X-Session-ID: U2FsdGVkX1/iTf2W3ORymql+pkUYrTwc+8yFoyHdvsA=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=goodmis.org; h=date:from:to:cc:subject:message-id:in-reply-to:references:mime-version:content-type:content-transfer-encoding; s=dkim1; bh=yishPGcJ2aBgX8f7/aGf43YSeYKU1vTSOdEz/UOhz0Q=; b=OeTVx8p2lxSQogYJ26E1ZhG3n3KKks5OHbZci2y9SKKWyKD0Rrldj5ZjxLjBpvlDgdpkm5WgLfgbRKajQHCn2eD55bDuEuD4vBO8hpYWi3QdZYLkGtNvz509LeLzEkfa+1qCbnN5wnYFCPj56e/Oqa2C65ipdz0ZqHjz3atyD60=
-X-HE-Tag: 1788445266-583183
-X-HE-Meta: U2FsdGVkX19X7ugC+vbhQ7lmiL4dr1fOYRS9OljPxV5GOhRyMDiZnXFW++NBw5Xkzwgds5f0z5EsyCnNZw8p/UQpt8MK3ohX44nVVlpxESuwo2n6R7Fgm/2eWaSnr5LaeeW5H62kssDdqx/CngttlxmQiA+OszTXiz8C3KLm830NrLGUsrzz6x/lhTlxQelVPtn5U5OM/0SsHPk/JgA93j84x8gXz7D1aHVfOw91L2ostFcRYo3YllfTi9E8odywsm12vTfc5sjM+gXBJ98r4n6PbSsH4uU52wmAIMpo7PcpVh6V1YOjsJ9xHsyola0bEuLv9WGO65W8TKj++sINsyXY6Z3CnGmfY6irKnL0jdnhD1SZD0sSfSX3/ryfM7N9WQenyaqo4uEcsuyuvDlQ2Q==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260903_072112_512996_E7442812 
-X-CRM114-Status: GOOD (  17.06  )
+X-CRM114-CacheID: sfid-20260903_081214_079478_436CAD5B 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,63 +106,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue,  4 Aug 2026 12:05:30 +0200
-Marek Szyprowski <m.szyprowski@samsung.com> wrote:
+There is a spelling mistake in a dev_err message. Fix it.
 
-> Commit b5cc230af5e5 ("tracing: Warn when an event dereferences a pointer
-> in TP_printk()") added a warning then printing an event dereferences
+Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-            s/then/when/
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index 2f925d22b9aa..9552fadbc17b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -3130,7 +3130,7 @@ mt76_connac_mcu_send_phy_ram_firmware(struct mt76_dev *dev,
+ 		err = mt76_connac_mcu_init_download(dev, addr, len, mode);
+ 		if (err) {
+ 			dev_err(dev->dev,
+-				"The request to dowload PHY firmware failed.\n");
++				"The request to download PHY firmware failed.\n");
+ 			return err;
+ 		}
+ 
+-- 
+2.55.0
 
-> a pointer, because it might be already freed that time.
-
-                                        freed at that time
-
-> 
-> MTU3 driver is one of the drivers triggering this warning. Fix it by
-> storing also the DMA address in the event structure to avoid
-
-        s/also//
-
-> dereferencing gpd_ring pointer during event printing.
-> 
-> Fixes: 83374e035b62 ("usb: mtu3: add tracepoints to help debug")
-> Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
-> ---
->  drivers/usb/mtu3/mtu3_trace.h | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
-> index 89870175d635..b24c6411a8cf 100644
-> --- a/drivers/usb/mtu3/mtu3_trace.h
-> +++ b/drivers/usb/mtu3/mtu3_trace.h
-> @@ -224,6 +224,7 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
->  		__field(unsigned int, flags)
->  		__field(unsigned int, direction)
->  		__field(struct mtu3_gpd_ring *, gpd_ring)
-> +		__field(dma_addr_t, gpd_ring_dma)
->  	),
->  	TP_fast_assign(
->  		__assign_str(name);
-> @@ -235,12 +236,13 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
->  		__entry->flags = mep->flags;
->  		__entry->direction = mep->is_in;
->  		__entry->gpd_ring = &mep->gpd_ring;
-> +		__entry->gpd_ring_dma = __entry->gpd_ring->dma;
->  	),
->  	TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p/%pad flags %c:%c%c%c:%c",
->  		__get_str(name), usb_ep_type_string(__entry->type),
->  		__entry->maxp, __entry->slot,
->  		__entry->mult, __entry->maxburst,
-> -		__entry->gpd_ring, &__entry->gpd_ring->dma,
-> +		__entry->gpd_ring, &__entry->gpd_ring_dma,
->  		__entry->flags & MTU3_EP_ENABLED ? 'E' : 'e',
->  		__entry->flags & MTU3_EP_STALL ? 'S' : 's',
->  		__entry->flags & MTU3_EP_WEDGE ? 'W' : 'w',
-
-Reviewed-by: Steven Rostedt <rostedt@goodmis.org>
-
-Thanks for fixing this!
-
--- Steve
 
