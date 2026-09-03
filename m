@@ -4,119 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D9D5C61DD6
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2026 03:08:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A881C624A4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2026 04:52:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SnzwBfRZpBf2cJeykyMmu4E583GVHfgU8A+PMrUbmFE=; b=URWVqaeWwcgSTub7q0bP5rxVdM
-	eSN/6zhJaG6r86+ZdoipXIpYNE0saTQCoIj/WHfPSL4tpcvzyaBE68ZfMRoq0+SWnj7U9LArP332U
-	5gYCWgUJR1Hv6SLYAd1AO+pZCvOaEh5Arr+MeQAI2E7IsMs9APJ905LD3oMiH/BoJhoTN4mb4NlgI
-	iS5YSYQZE4jGgAr+6C4acalFetWukEUz9/PlHCIdQXPwG37uKZWoTAHYMULn63UNLslD6Fdpi979Y
-	1JCtLPscWq+BqWSGnMdtTY6ktllxHtkgZlaqHb587yFczosPq+LRst6b8SB57+gGANVHeWJX5GkVi
-	pDEZA7PA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ESwlNjvZs7Wa/B2Z+WZbhnploP2cGr2N9OS4nSRjKU8=; b=hLs+Dwg6GAat40kGz0gDgKq6or
+	N/x7tq2oJIvB39HXB/H3ZVdj9GS6LhYDEkjt9Lig7dh3B4vFTlfexG1wCqp0LMlInjPaHHM3MpToL
+	8NooT3cRnBPK3IyQE73OYBr8vgjEFCmq+ouS2BWosIUeNPYCm9yBoKyrkWpxD3fH/BdW3DFdhf9Sr
+	U+xgM4DjL2fwJR//S/iBRQnwBrYxFrjNk+BE7LboQJSSAhBLyFgEJOIQv6Jd1JveARSFGaeSidMfh
+	IaWOmjq440Fdwic0qbaf6yrdCxmLgutCs3xEoEBzI3rVqQrSGY5XbjQI8nLYtJYbZu4qiHQ//hhet
+	dl2zJxmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1xoK-0000000GFuR-2ryb;
-	Thu, 03 Sep 2026 03:08:20 +0000
-Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
+	id 1x1zRP-0000000GLWv-3JaU;
+	Thu, 03 Sep 2026 04:52:47 +0000
+Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x1xoG-0000000GFsp-338q
+	id 1x1zRN-0000000GLWA-3Z9Q
 	for linux-mediatek@lists.infradead.org;
-	Thu, 03 Sep 2026 03:08:19 +0000
-Received: by mail-yx1-xb12f.google.com with SMTP id 956f58d0204a3-66f78cba2e1so2019480d50.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2026 20:08:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1788404895; cv=none;
-        d=google.com; s=arc-20260327;
-        b=lguzLeeCD2r/HC1t7AvdVwSFGOkXayg8jWwonZpH21OQfdUXwx/JMgws1CjU+j2LNM
-         uqazjhG83sXAfxhNg9oJKPjSngrbbIEv12xpqhDmaabAOA6xQuaEi6wjAxPEdSATNzda
-         Qpc7DLp3pC76TzVTCs6X8D/PlwFTkMlrrnQuiRI7VPqMdR9opUJKqTr1nyCf80WxfiJF
-         Of6A2BbomB6GHpC99hyi8J99voxouG8s5KnmWdO5AHnHuRBhK7ypXYYJxveBGtUFAc7Z
-         UFa/PpkMYUoSwB/UzgIupCcIDJRqNgU9tLOdbXBT9mZPmyBfzUApHd15O8FqjZLOoTvA
-         6kuQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=SnzwBfRZpBf2cJeykyMmu4E583GVHfgU8A+PMrUbmFE=;
-        fh=tIUdmkuJGz7RF/SimFceUYYCrAWendkZJ7mur4URsXo=;
-        b=DQ/ZlVmlyWUQFnr6IhUfKJivXMy/5HzaZvpqTECWIghYAIdyJcn1sM1SK6c7S4sWzp
-         2wbg/GEiaPdDW7S2L7reJBLCVDmnyH61dopM7Hq26a5/lYTQz3CS0yKXtdZ1MmiWnf8q
-         f7PS+tVpRmHFHKOS1lNGzeSPcdihtOToy+yGQJOYTKOgLP571FJVqvlOBKaqa9Qx2PXZ
-         Oo5DDODOEr53UWXyLh9Ffojh00Nb7t/A+BIHzPBWfA/zM1NuRfUUzEs8EKuE2PkVSlh3
-         MMS+OziM545pPg2sQ3z6JJcMDul7sEPBFkDzVOTUybpKw1wiLQ5O8TNkRW5hohQ/DhgS
-         4v+A==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Thu, 03 Sep 2026 04:52:47 +0000
+Received: by mail-pg1-x52e.google.com with SMTP id 41be03b00d2f7-cc1cb472b76so1766213a12.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 02 Sep 2026 21:52:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1788404895; x=1789009695; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=SnzwBfRZpBf2cJeykyMmu4E583GVHfgU8A+PMrUbmFE=;
-        b=TWVudepD++E/n9uwdnZm/S8Ggbxzl9yFQUYuQRgT+e+2iAF13m7GCQuziviuHrJ+An
-         QhbNcW57xIf6X9bjxiXgMPoIi9Wo75Tt6G1NWnekasvrykt/aaMvGwGPDQIcDlsT3yJZ
-         7I0ToW1U9BXMfb2f8KXobktc+/ZZAE4RPkbiA=
+        d=gmail.com; s=20251104; t=1788411165; x=1789015965; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=ESwlNjvZs7Wa/B2Z+WZbhnploP2cGr2N9OS4nSRjKU8=;
+        b=sYrm27thMMcxTb1Su+vsTtzH7yZz2+yMEhMYH+gvqFHwd6eyB5u3NK+n3SgDO0/cPA
+         dUGD2zGCN4iak6KDb491glL1HF1Bxq2OcIN7Lg8rb8QiarbTIG2Y4Km6qk0V3WRy4fEH
+         v3WsW8UQcIniLB9sWmJ1Eiy3KWxe8AXIpLH/CaRZ+zd956D8b0J0uFi2oWcXxSpaICok
+         a+zfWbKqvfKyT+f5H+Bex1ocIfgZZFAaRdYBhwz7WsCqmX6dTfXPX9jU0aeLAZwf3tjw
+         /EHx+DenXygp6DDZKu0km9WKAJPWFwW0rg3SYLyytyz7VcKDMIdho2YbwEyiPbKMe7vi
+         wFwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788404895; x=1789009695;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=SnzwBfRZpBf2cJeykyMmu4E583GVHfgU8A+PMrUbmFE=;
-        b=MCJXVOQfxi+HcMK5n3J/KrsDLSZqVaNxv55k48Aw1lGd8rPXFgzg4K18uVSGd6dZyT
-         2AyvDaIyu78NGppHb0Dyl8wGs1TV4o0JV7nS1MjTLNjAzHcNyf88+Bz3sRnPahLXUznn
-         011Idtxmzd+0rWUA22Gd5DK28SPu+2b3aVA52nXcGgyCCFxSJ3eblovg3Wjamxh3KpA4
-         5ArKQsru/lGIYOf051Tm9qlaklXOIimhGMnVjl/yfMp09DAO8nrOGcFiVtPQxVbycPYY
-         LCtNWDrLDFHD6O1lbnLbMoKr2DiWjSkm8ZyRX7d27a6O4TqRV9aS669siq+caDt4aEe2
-         NuCg==
-X-Forwarded-Encrypted: i=1; AKwUvBzOOGKuhAKXfc1gRyAq8mu0RA2bhciAQDWTCHePxqZL1m+8osKmFEqsdW7Slg5bjd2KkktwIJPZ6QRZjSyH6A==@lists.infradead.org
-X-Gm-Message-State: AFuF++lyQSCFYEWRwbrhjg8uIoLXBukHSbBNMGK6jZTasGV+qvpS1Oan
-	Bk4Ql2BCkd4IdjTk+sGrkiHhk5pVllnaLRTGHKEaRpMCn0wIGONCS9tBv5qttPtgtl8CaTa421d
-	43HS8lFkv1Lo9EkJk/kGmaOzutMS+i8UAuXiA8t7y
-X-Gm-Gg: AYBFou1weJwyhIrd43y1KdXDiG8B4AhrTdZpLq4lceobGPo2ysdqLNi+PY1rLhUR1uH
-	gomb+VQvvOjhN+hVw7+Z9QSBndZAYDmh9knzimTXkM3vJkwnWYi+8ESQKUUQjoNuEbNAgRbxjUU
-	KjAzd1/fHdftnnaOSgaSk+vDnTsHqMyqGo1IFswKhYkwwgT6PguaN+adNcRVbs8cur3F4U6lE0u
-	rWG3lAY8qjcihIiHwUsAQN2Q2D91577w5TdouojerufZlDAB8Dan9OLX+fxEG01P0YcifSU1hUK
-	VyYgYlw8UbZtk1lUCmc2Hx3w6qRj2IjdrCDep9BKgit5A3B2F3knA/m+fZpGYSogZ9NvDHwGe60
-	=
-X-Received: by 2002:a05:690e:400f:b0:66d:113a:3928 with SMTP id
- 956f58d0204a3-66f9bb6f3famr3574226d50.12.1788404894746; Wed, 02 Sep 2026
- 20:08:14 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1788411165; x=1789015965;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=ESwlNjvZs7Wa/B2Z+WZbhnploP2cGr2N9OS4nSRjKU8=;
+        b=AX4nC4m2pNA7rffTxHq6fNAmR+t5zfsKobNCgmjy2L3/+0VLQBFi6M9nkCigJNqz7w
+         wyNg5zGtDLUnpePH+oqtJ9RVQoDx9jUjUFnwiSG3aBj6LRlYSyzxE9TUUKn+/SOEQzII
+         A8Ioe78uxrQv6OP/64a6RIldmEpvFDD6a9hFFE1Juk6IddY6u+k4uLUr1MWMKAvo86iK
+         ZMZIQ0IaWoRrNt12m35iScQy8Kovb/TOtLrJK+h3auQ/6H0DowIaTNwDYEUZqXTqzbbm
+         hl3eptNC33117Ta+xAlI04jW2EXo5Lwqz+BksX6yu1NF4xWzvf4rmCikhLAMgNzuFOY3
+         d4gw==
+X-Forwarded-Encrypted: i=1; AKwUvBy1I0jIZaU6MkBNVAVZjzqm5Y8aH3rZU6aX5G62LZ/jdZ9yhZ7OKQ/HIkX/A0JkPaWUeiHxwWsY7ItV3015Mg==@lists.infradead.org
+X-Gm-Message-State: AFuF++ka2NOH8Qi0B37QcN9TtDQBR1NK8JimaSOtXsrfyrVfdvF2ijOG
+	hnZY5y2Zb12KDvnx0LsXYSSgP+aJ8/xD0A77CpHmvp5zay9FNnef4RiT
+X-Gm-Gg: AYBFou1uaE2d8jV2Bt1lUjNQH8cerZCgLuYENUn3sCRbeyCiZaqReOfsEWULabAxyla
+	yVohqFlsgzo/ztF3Qp+GnmhnsRHUtGKP8ofr5sGkSoFCniAtFwvCg++4MZtamEcwjujLQu/pq6w
+	HGrfH6I3yd0Xh2aey49DtewfuLPQxW31fMbvi+lz8O6xo9gRrcWS9CbKF2U2xhlYxcNvXJ42o4L
+	762TVgvsjRSLN1lyvg7XCxrJw11Nix6rrTM+OOCKn/pTpMObekAn7Z1QQr8W3NWH31zPjRUOSaM
+	noDk2ePZZSUZYFlXJ/Ci1QCidl41ncv+kFObgpALKnAX8/D48rzP7xtKwJoFu88FI2R/X/NMH4m
+	O+KFAAR1xsDFWnX/1bJ8JlzvWVYiWd93lcmJcX4mKey3JABIZusAjMCcI9/CKmjSszlgXaUT1Ar
+	39DsbWeJn+ecp+pIR55WJW2JK9gbp52uV2WinH3EenlXxpvO349UZor5xgZVSZytwRdrT+x9JFF
+	Ws1qSYaVvSQ/mJj7KspEL32lmgwpCGvoE0V6WwJrrETNrYQS9Irs1LweRShN1XNG6NOar7L0hTn
+	bKcU
+X-Received: by 2002:a17:90b:17cd:b0:38e:67e1:15b with SMTP id 98e67ed59e1d1-39aededf539mr13392201a91.6.1788411165011;
+        Wed, 02 Sep 2026 21:52:45 -0700 (PDT)
+Received: from phuc-desktop.. ([183.91.15.56])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39b08d0d7e8sm2747538a91.16.2026.09.02.21.52.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 02 Sep 2026 21:52:44 -0700 (PDT)
+From: phucduc.bui@gmail.com
+To: Mark Brown <broonie@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Cezary Rojewski <cezary.rojewski@intel.com>,
+	Shunli Wang <shunli.wang@mediatek.com>,
+	cassiogabrielcontato@gmail.com,
+	linux-sound@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	bui duc phuc <phucduc.bui@gmail.com>
+Subject: [PATCH v4 0/5] ASoC: mediatek: mt8183: Fix clock error handling
+Date: Thu,  3 Sep 2026 11:51:58 +0700
+Message-ID: <20260903045203.175337-1-phucduc.bui@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-References: <20260902200703.2016410-1-mukesh.ojha@oss.qualcomm.com> <20260902200703.2016410-6-mukesh.ojha@oss.qualcomm.com>
-In-Reply-To: <20260902200703.2016410-6-mukesh.ojha@oss.qualcomm.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 3 Sep 2026 11:08:02 +0800
-X-Gm-Features: AcwNN1Wn32BWTc7gvrI5NCynGubfvPlrWgUmvLkoMfGnpAB8yTnTJoIOOvbhgBM
-Message-ID: <CAGXv+5E9zs7LsK=d08NB6QcuHkaPw4GcifuDuMDz0CVB6gB=8A@mail.gmail.com>
-Subject: Re: [PATCH v2 5/6] media: mediatek: vpu: Use devm_of_reserved_mem_device_init()
-To: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
-Cc: Daniel Scally <dan.scally@ideasonboard.com>, 
-	Jacopo Mondi <jacopo.mondi@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Eddie James <eajames@linux.ibm.com>, Joel Stanley <joel@jms.id.au>, 
-	Andrew Jeffery <andrew@codeconstruct.com.au>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, 
-	Houlong Wei <houlong.wei@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
-	Tiffany Lin <tiffany.lin@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Joseph Liu <kwliu@nuvoton.com>, 
-	Marvin Lin <kflin@nuvoton.com>, Dmitry Osipenko <dmitry.osipenko@collabora.com>, 
-	Maxime Ripard <mripard@kernel.org>, Paul Kocialkowski <paulk@sys-base.io>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Chen-Yu Tsai <wens@kernel.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Ryan Chen <ryan_chen@aspeedtech.com>, Billy Tsai <billy_tsai@aspeedtech.com>, 
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	openbmc@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, 
-	linux-aspeed@lists.ozlabs.org, linux-mediatek@lists.infradead.org, 
-	kernel@collabora.com, linux-staging@lists.linux.dev, 
-	linux-sunxi@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_200816_820342_C464EDAD 
-X-CRM114-Status: GOOD (  17.63  )
+X-CRM114-CacheID: sfid-20260902_215245_890314_2DFE192E 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,53 +108,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 3, 2026 at 4:08=E2=80=AFAM Mukesh Ojha <mukesh.ojha@oss.qualcom=
-m.com> wrote:
->
-> Use the devres-managed devm_of_reserved_mem_device_init() instead of
-> the manual of_reserved_mem_device_init()/of_reserved_mem_device_release()
-> pair, letting the device resource manager handle cleanup automatically.
->
-> Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
-> ---
->  drivers/media/platform/mediatek/vpu/mtk_vpu.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->
-> diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.c b/drivers/medi=
-a/platform/mediatek/vpu/mtk_vpu.c
-> index 8d8319f0cd22..557bffb2c2f1 100644
-> --- a/drivers/media/platform/mediatek/vpu/mtk_vpu.c
-> +++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.c
-> @@ -888,7 +888,7 @@ static int mtk_vpu_probe(struct platform_device *pdev=
-)
->         dev_info(dev, "4GB mode %u\n", vpu->enable_4GB);
->
->         if (vpu->enable_4GB) {
-> -               ret =3D of_reserved_mem_device_init(dev);
-> +               ret =3D devm_of_reserved_mem_device_init(dev);
+From: bui duc phuc <phucduc.bui@gmail.com>
 
-There are non-devm calls before this. Inserting a devm call in here
-messes up the unwind order and leads to confusion. In other words
-this is a bad idea.
+Hi all,
 
+This series fixes and cleans up clock error handling in the MT8183 ASoC 
+driver.
 
-OOTH, the remove function is missing a release call.
+Compile tested only.
 
->                 if (ret)
->                         dev_info(dev, "init reserved memory failed\n");
->                         /* continue to use dynamic allocation if failed *=
-/
-> @@ -930,7 +930,6 @@ static int mtk_vpu_probe(struct platform_device *pdev=
-)
->  free_d_mem:
->         vpu_free_ext_mem(vpu, D_FW);
->  remove_debugfs:
-> -       of_reserved_mem_device_release(dev);
->  #ifdef CONFIG_DEBUG_FS
->         debugfs_remove(vpu_debugfs);
->  #endif
-> --
-> 2.55.0
->
->
+Link v2:
+https://lore.kernel.org/all/20260821122928.41343-1-phucduc.bui@gmail.com/
+
+Link v3:
+https://lore.kernel.org/all/20260828050526.590761-1-phucduc.bui@gmail.com/
+
+Changes in v2:
+ - Remove the redundant error log for apll1_mux_setting error handling.
+ - Add Fixes tags.
+ - Add a cover letter.
+Changes in v3:
+ - Add a patch to fix clock handling in the mux disable path, 
+   as suggested by Cezary. 
+ - Return directly from apllx_mux_setting() instead of using a goto label, 
+   as suggested by Cezary.
+ - Add a Reviewed-by tag.
+Changes in v4:
+ - Add a Reviewed-by tag from Cezary.
+ - In the mux disable path, remove the goto labels so that all teardown 
+   steps are attempted and any errors are only reported.
+
+Best regards,
+Phuc
+
+bui duc phuc (5):
+  ASoC: mediatek: mt8183: Fix wrong clock cleanup on clk_set_parent()
+    failure
+  ASoC: mediatek: mt8183: Fix clock handling in mux disable path
+  ASoC: mediatek: mt8183: Fix APLL enable error handling
+  ASoC: mediatek: mt8183: Use dev_err_probe() for error handling
+  ASoC: mediatek: mt8183: Drop redundant probe error messages
+
+ sound/soc/mediatek/mt8183/mt8183-afe-clk.c | 31 +++++++++++-----------
+ sound/soc/mediatek/mt8183/mt8183-afe-pcm.c |  8 ++----
+ 2 files changed, 17 insertions(+), 22 deletions(-)
+
+-- 
+2.43.0
+
 
