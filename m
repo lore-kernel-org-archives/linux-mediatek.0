@@ -4,59 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38276C61DD3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2026 09:51:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26AE4C624DA
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2026 10:31:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bkxJ54lLa7UyJpsWCW4xrgS9S6PmuGVbCHPuaNKsEG4=; b=XQPLtIE8tU2Rj1Uq+er/jAxsdi
-	okm3d7dzDe21M82ZcHIBzY+ZcJF5z6ZJzTAwanHV+HDoWC20fcZm+NNsf87mzANJ9JaYfTVUjTHzU
-	9dZhAi37O8ub0T57Fa/O+JkixnhD4srb5f8U0S0TrA240q4eUQxtabQEZ82QlMTzh88nB8gwJtZt4
-	3pwuiwJvCgJzRgrfrL89f/FbFZfAsyef+iKPuBQB+Ny/EhIAVigW4BRpycnrIhz8K90O6AFebf/xL
-	EQkzCmzCUoAWqHZye/o5ym6Vks4bHRPhf9WGeaQFfsL7VduxocH9vgLood1emagrcQWwDSwLXRl72
-	MJrTroNA==;
+	bh=W65ZNRPEmcbNMi7U9IIGGMHb8CAjInAzmkGtNRzRCow=; b=owxODdzVYqrTeC0jF243gWbuIi
+	g2OIpWtJcDX90uI1xBH7mkKN+TQepEMJe6MjeWiLsUp7O0Zizv4EquzEuPiaxEHZBaFwOOY41EIWS
+	XD9+e9Akk0wHDRem4Pmsxn0w7eLKC3wEI89oNx6iVhkscDhhjLlD0pKFUXdD+fs+6rvJng59zPJna
+	bZgRJGfCTp+PGog7igI+HOSuaJTI1zc+OSFUtMRZCaU4qOYkxC3NCV5nrrXBAgVSP5EP6EcsLaVmJ
+	EjMcnAx/H+TNq9zCCBAGX1gVdfIyhdk83tyNKS9bimvjaihmbVgBOZAp3CSB75n5lRTZf6vKjoyLl
+	GQ2zCQug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2468-0000000Gzqd-0XxV;
-	Thu, 03 Sep 2026 09:51:08 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x24io-0000000H66C-3t3G;
+	Thu, 03 Sep 2026 10:31:06 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2467-0000000Gzpl-2MjW;
-	Thu, 03 Sep 2026 09:51:07 +0000
+	id 1x24in-0000000H65I-2AsK;
+	Thu, 03 Sep 2026 10:31:05 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id B0CF2600C8;
-	Thu,  3 Sep 2026 09:51:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 653581F000E9;
-	Thu,  3 Sep 2026 09:51:06 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 10E7F40519;
+	Thu,  3 Sep 2026 10:31:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E55E51F000E9;
+	Thu,  3 Sep 2026 10:31:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788429066;
-	bh=bkxJ54lLa7UyJpsWCW4xrgS9S6PmuGVbCHPuaNKsEG4=;
+	s=k20260515; t=1788431464;
+	bh=W65ZNRPEmcbNMi7U9IIGGMHb8CAjInAzmkGtNRzRCow=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=cCiYQ0kdK+jvzDycJdh7ASVvlsp5IFdadQUlLhoPglE8C4BdzWlC+W6dyDClnDT8b
-	 gO5f8tgNgMSsUqVoEI0TQyGzQ+I1kiV97pLqVtln5YH0s860hf5jVdG8uiAPOQUCyq
-	 Q/ib87eKIcqzgKp+lj9npoqG5Cr27EdPZ8hQ51p+5k7ndaOXrv6VJT2XwLchwxbD9W
-	 NmuSbWoQxO+RZjldfjetbcVrhDGuHAV5eGdxbt/AVHNKGVH7rYlIyNn5fwkaTo718G
-	 YaDkTVgViRzxRthTA0NrKOwdvKGXYg8X5v+D8XFJNFfspbainCxc+Vpf8HKQBeUu10
-	 KfwojBIUgv36A==
+	b=OrgdujeEpZ2zTyi3PEuWNgcwgCV/bmsydX4SxC9rBRTKiSiAzz3wFwlaJpwDHC5Is
+	 tzbpGhMVNjVjP3jT3iXt0Tedg8sfZkhv15HQwe4pHdY8NJbAYpY1zUP5XEJWaXw/dj
+	 toJRQf3Bwmd5GHsZkHo6EcpAUyfi2tBDxY8PwpeDUHBdb3UTW8MsL29UWJQEM4auWE
+	 Eh09q9JJ/Yr06BiF4ft8kE/JI7f2pwgpSktbQprw35J9JfNiGgfc6JDnGoSB3bdWtu
+	 J25N9MGVavgGSDrI+fyRMSey/MIKu3I5IMVlEAbhf+iM+btkXLvbFmLWtJihkkwOy4
+	 jTayLArmL92Kg==
 Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 198433811965;
-	Thu,  3 Sep 2026 09:50:09 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 93A033811967;
+	Thu,  3 Sep 2026 10:30:07 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net] net: airoha: enable RX_DONE interrupt for RX queue 31
+Subject: Re: [PATCH net v5] net: gro: Fix nesting of TCP GSO SKBs in
+ skb_gro_receive_list()
 From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178842900765.3234406.8351313053019359790.git-patchwork-notify@kernel.org>
-Date: Thu, 03 Sep 2026 09:50:07 +0000
-References: <20260830-airoha-rxdone-rxq31-v1-1-830a91503f2f@kernel.org>
-In-Reply-To: <20260830-airoha-rxdone-rxq31-v1-1-830a91503f2f@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Message-Id: <178843140634.3256648.8035373141485573563.git-patchwork-notify@kernel.org>
+Date: Thu, 03 Sep 2026 10:30:06 +0000
+References: <20260901082312.14596-1-zhaoping.shu@mediatek.com>
+In-Reply-To: <20260901082312.14596-1-zhaoping.shu@mediatek.com>
+To: =?utf-8?b?Wmhhb3BpbmcgU2h1ICjoiJLlj6zlubMpIDx6aGFvcGluZy5zaHVAbWVkaWF0ZWsu?=@aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org,
+	=?utf-8?b?Y29tPg==?=@aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org
+Cc: edumazet@google.com, ncardwell@google.com, kuniyu@google.com,
+ davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com, horms@kernel.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ dsahern@kernel.org, willemb@google.com, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ haijun.liu@mediatek.com, xiayu.zhang@mediatek.com, lambert.wang@mediatek.com,
+ Iven.Yang@mediatek.com, nbd@nbd.name, hw.he@mediatek.com
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,21 +82,21 @@ Hello:
 This patch was applied to netdev/net.git (main)
 by Paolo Abeni <pabeni@redhat.com>:
 
-On Sun, 30 Aug 2026 14:28:27 +0200 you wrote:
-> RX queue 31 has always been allocated and filled by airoha_qdma_init_rx()
-> since RX_DONE_INT_MASK spans queues 0-31, but none of the RX_IRQ*
-> _BANK_PIN_MASK values covered BIT(31). As a consequence the RX_DONE
-> interrupt for queue 31 was never enabled, airoha_qdma_rx_process() never
-> ran on that queue and its buffers were never reaped.
+On Tue, 1 Sep 2026 16:23:12 +0800 you wrote:
+> From: HW He <hw.he@mediatek.com>
 > 
-> Route RX queue 31's RX_DONE interrupt to IRQ bank 1 so that the queue
-> is drained and its buffers returned to the page pool.
+> Fraglist GRO and hardware GRO can create an fraglist of
+> HW-GRO packets. This cannot be segmented back into
+> the original form on TCP tethering scenario.
+> 
+> Avoid constructing such a GSO packet, by flushing an already
+> built fraglist GRO packet if a hardware GRO packet arrives.
 > 
 > [...]
 
 Here is the summary with links:
-  - [net] net: airoha: enable RX_DONE interrupt for RX queue 31
-    https://git.kernel.org/netdev/net/c/7db28abbea0f
+  - [net,v5] net: gro: Fix nesting of TCP GSO SKBs in skb_gro_receive_list()
+    https://git.kernel.org/netdev/net/c/66817a979426
 
 You are awesome, thank you!
 -- 
