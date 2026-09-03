@@ -4,80 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C911C61DD3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2026 07:43:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64002C61DD3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2026 08:07:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T0qgcX1mrYnXfG3k8AFOU9fpURS3oirgnGGR+xFMZXM=; b=ST3L87isTu0KWCgEIH230icAHu
-	U6r3LuBRCrOUg6HJTven3hCoV5QXeNQ+y+APxrX+zNvPEzgV+TPhTq6u2x7/B+99M9w60ok3M6ph2
-	JQQkn915G6dKG+XbkZP2ayBB6K1+gYxadpy3jKVwnxJKDJPOmeAb/rvjhRvbIe/s+Qn0FxPN5KWgW
-	csTGPtwy2AAD1uYeYr+/7Wi0duFqZ50duSbGVtg+g/7n0rs67llXPiQiFMrS7D5CUHuZMcAIcHSQG
-	MQo2OcQplnnH84xnXSV/UhKuNgQtssLrWSS0nhvAa59dVxXIG0yvJ2eHJrKOXtwc51m1xh453bRSG
-	KVGYv00g==;
+	bh=VUxWm/z7xLtLP5dz8f8UFkQB4ImA8Yg4bPohYdRPwwA=; b=RcHPd9LTo3xw3yWetz0nmv33Pt
+	Qg0KIBVPUr/NEtLwNvbpVWxp+RvxER4HCQ/sUWe47RglphY8oqXuOnRppsIfGV7MxxgeI5O1HlM/3
+	z1Ykr1YHhGJh7WQCKh1tPY7FIZiozaz8fbEF2qej5qqzC2NZWHSpzmDxn8FFQH2QfaEhSCWxWmBCQ
+	fQ3sYU+/wWaiyWCObCuCbyZTOhp/4xkYoVou0k72Skfb6VdEY4SEZaP5JOJlDDBcy6aYnSt2HGiCP
+	LCaxnxinrgSna951NokWlzv474amr3SdzWPfPJV4rMcnpECDvtgspfZQ1tR7AlZ1W8nbc1a8P4uR/
+	jalPv3XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x226R-0000000GfF4-48Zj;
-	Thu, 03 Sep 2026 07:43:19 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x22To-0000000GkL9-3ozu;
+	Thu, 03 Sep 2026 08:07:28 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x226Q-0000000GfDu-2YjA
-	for linux-mediatek@bombadil.infradead.org;
-	Thu, 03 Sep 2026 07:43:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
-	:Content-Type:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=T0qgcX1mrYnXfG3k8AFOU9fpURS3oirgnGGR+xFMZXM=; b=DEWcAN1OZ0jF7akALMj2ISyjxh
-	1WLaDK//z/oYvAFAyGTIMg0bbexkC8t+nul0j0LZBeovfPhkMWyH0k3JwdajFkLg9leyYFsokBB1h
-	4jECpMk6L0JtT8C5I8EEuBFU83dYrkulfpacj2NWR+okQy3j1yEKV/yTtkGM2B7VxHXvEs15sL00M
-	tvIHMeRPEyLDAyazzvJHB8gbTuy/HWlknQQTVstiJGpPtbihsbB9rN5f7Xi5xW4vNRw5PCMCXJJyt
-	dpiQzymILaDTGY/FMdzmxMFCAI8pKBm0in0PjhXFX1Sikk5xtGRJaOABVGZRzkpV0Ls7OY0jU3p+5
-	tOCdNjVA==;
-Received: from out-228.mta1.migadu.com ([95.215.58.228] helo=mta1.migadu.com)
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x226N-0000000Co3h-3KhY
-	for linux-mediatek@lists.infradead.org;
-	Thu, 03 Sep 2026 07:43:17 +0000
-X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=PsY1iHq2BeSQCINa9gbajP738oZxwRZg3JA5676l0po=;
- c=simple/simple; d=justthetip.ca;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1788421392; v=1; x=1789026192;
- b=OXyk9C1GRMNffJlYf0X1xAAmmUgx+IuZ0wJv5g8GoWn9kh0oiUZA5lvorrgh9qzPNMdZulkb
- 4YZ076NUY8leFk4tVaiy1mUZsoGVJi7IO9Dbf5JMNtmu3+7EAMM+EwQWk9cYQOrLinVjYRCxTgS
- QuuwIbSXvyw32RqTRIOFS11UUUvELS0g1b0E8naMGIR997FJM03n4hHG6gADeH4tRV/+ECHrBGX
- FGP4fSepmQNKQio8V0R2GLXhVwSKnB+kVKHfd7/5elJ+NRFKtnDjBsKQPTNGAKy3HvbJfokP+bk
- sqMeM07useOvPLtCUYGO1RshePgAC6RRsuM/jV4o+D2OQ==
-X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id 2a69e8a19ec4a853;
-	Thu, 03 Sep 2026 07:43:01 +0000
-X-Mizu-Trace-ID: 2a69e8a19ec4a853
-X-Migadu-Flow: FLOW_OUT
-From: Devin Wittmayer <lucid_duck@justthetip.ca>
-To: Thomas Hilber <thomas.hilber@enxio.de>
-Cc: linux-wireless@vger.kernel.org, ath9k-devel@qca.qualcomm.com,
- linux-mediatek@lists.infradead.org
-Subject: Re: AP drops STA data frames for ~130-170ms after 4-way handshake
- completes (ath9k_htc, mt76; not brcmfmac)
-Date: Thu, 03 Sep 2026 00:42:59 -0700
-Message-ID: <178842137902.19372.6968639520035628037@justthetip.ca>
-In-Reply-To: <20260831054740.1543875@enxio.de>
-References: <20260827074442.826644@enxio.de>
- <20260829232532.29622-1-lucid_duck@justthetip.ca>
- <20260830104236.521389@enxio.de>
- <20260830190028.20209-1-lucid_duck@justthetip.ca>
- <20260831054740.1543875@enxio.de>
-X-Mailer: git-send-email 2.55.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+	id 1x22Tm-0000000GkKZ-40zt;
+	Thu, 03 Sep 2026 08:07:28 +0000
+X-UUID: 7c3b4ea0a76e11f1acbe4559397dec65-20260903
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=VUxWm/z7xLtLP5dz8f8UFkQB4ImA8Yg4bPohYdRPwwA=;
+	b=Ia38we6LlI+wABzWxX23BxBJppS59a5DnVbxZewmYM6xkGgTPNJjlAP293x7atIzUG3URT+TIrHlE9YqhgPsNkhN/W18fuxmXMvkTaKeMdi2Xl3c2d4Iq8iUTKzCOh2N+b1qYnaOCArPoq/um9UTfJZrBeeaxQFk91AKMvPsnIM=;
+X-CID-CACHE: Type:Local,Time:202609030057-07,HitQuantity:1
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.19,REQID:359fee17-5616-4df0-a3e8-f72b1c79aaa0,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:7db8b62,CLOUDID:d2596df2-6b5d-4016-ba8d-9f799a78b7e4,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
+	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
+	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 7c3b4ea0a76e11f1acbe4559397dec65-20260903
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <ot_jingcheng.ji@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 842416545; Thu, 03 Sep 2026 01:07:19 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Thu, 3 Sep 2026 16:07:17 +0800
+Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Thu, 3 Sep 2026 16:07:16 +0800
+From: Jingcheng Ji <ot_jingcheng.ji@mediatek.com>
+To: Mark Brown <broonie@kernel.org>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioachino.delregno@collabora.com>, <linux-spi@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Jingcheng Ji
+	<ot_jingcheng.ji@mediatek.com>
+Subject: [PATCH v2] spi: spi-mtk-nor: Get clocks from devicetree in bulk
+Date: Thu, 3 Sep 2026 16:07:09 +0800
+Message-ID: <20260903080709.3049832-1-ot_jingcheng.ji@mediatek.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260821090046.2353986-1-ot_jingcheng.ji@mediatek.com>
+References: <20260821090046.2353986-1-ot_jingcheng.ji@mediatek.com>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260903_084316_073891_E14A907E 
-X-CRM114-Status: GOOD (  13.56  )
+X-CRM114-CacheID: sfid-20260903_010727_032891_BE857AAE 
+X-CRM114-Status: GOOD (  20.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,68 +88,246 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2026-08-31 at 07:47 +0200, Thomas Hilber wrote:
-> Done, and it does not hold here. The window is filled correctly and my
-> stall happens anyway.
+The driver currently gets a fixed set of clock inputs by name. This ties
+the driver to the clock names used by existing devicetrees. It also means
+that a future binding extension which adds controller clock inputs needs a
+matching driver change to enable them.
 
-Welp, that kills it, and TID 0 on its own is enough. I read too much into
-one capture.
+Get every clock described by the devicetree with
+devm_clk_bulk_get_all() and enable the resulting set as a group. Keep
+looking up the "spi" input to derive the transfer rate, and verify that
+the required "sf" input is present. Obtain the clock inputs before
+allocating the SPI controller so a deferred clock probe fails early.
 
-Your question first, and the answer is half unhelpful. I can't check
-whether my slow cycles survive a session where the SSN does arrive,
-because I can't reproduce the slow cycles any more. Cleaning up the
-harness took the effect with it. My traffic had been going over loopback,
-and my timing metric merged the stall into the reassociation gap. Thirty
-five associations on the MT7922 across both bands since, nothing in your
-range at all. So treat my 27-in-95 from the 30th as unreliable until I can
-produce it again.
+For non-DT platform devices, retain the existing named clock lookups so
+clkdev users continue to work.
 
-What I can do is make your window happen deliberately.
+This prepares the driver for future binding extensions without requiring
+another driver change. Existing platforms' behavior is unchanged.
 
-I built stock mt76 with a module parameter that sleeps inside set_key, so
-a key install takes as long as I like. Same binary both arms, the only
-difference is a number I echo into sysfs. The station is on a different
-driver, so the delay only hits the AP.
+Signed-off-by: Jingcheng Ji <ot_jingcheng.ji@mediatek.com>
+---
+v2:
+- Rebase onto current spi/for-next and reuse its existing IRQ error cleanup
+  path.
+- Preserve named clock lookup for non-DT platform devices.
+- Clarify that this prepares for a future binding extension.
 
-  keydelay_ms=0     key install   1.1 ms
-  keydelay_ms=150   key install 155.3 ms
+ drivers/spi/spi-mtk-nor.c | 151 +++++++++++++++++++++++---------------
+ 1 file changed, 91 insertions(+), 60 deletions(-)
 
-With the delay, all nine associations took 103 to 184 ms before traffic
-passed again. Without it, seven of nine were back inside 78 ms.
-
-The reason it works is that mac80211 calls the driver before the key is
-reachable. In ieee80211_key_replace, enable_hw_accel runs first and the
-rcu_assign_pointer that publishes the key to the RX path runs after it. So
-while set_key is blocked, the AP has no key in hardware and none in
-software either. It is deaf, not slow.
-
-And yes, the MT7922 does give me a monitor interface on its own phy with
-hostapd running, same as yours. So I captured air and the AP's netdev
-together through an induced window. Across four windows the station put
-21, 26, 25 and 25 data frames on air and the netdev saw 7, 24, 13 and 24.
-In a quiet 200 ms a second later, nothing is lost at all.
-
-Which says your 22.2 ms isn't evidence against a deaf window. Frames in
-the window are dropped, not delayed, so anything timed at the netdev can
-only be timing the survivors. Yours would look fast for the same reason
-mine does.
-
-So the measurement worth making is your key install.
-
-  echo 1 > /sys/kernel/tracing/events/mac80211/drv_set_key/enable
-  echo 1 > /sys/kernel/tracing/events/mac80211/drv_return_int/enable
-
-Pair each set_key with the next return on the same pid. Near 134 ms and
-it's ath9k_htc's key path. A few ms like mine and it isn't, and your
-two-mechanisms reading is probably right.
-
-Assuming CCMP, two things you can skip. The key writes take the else
-branch in ath_hw_set_keycache_entry and batch into one WMI multi-write,
-not six round trips. And the buffer enable and flush around them are a
-paired inc/dec, so nothing sits unflushed. TKIP takes a different branch.
-
-Thanks for the monitor-on-the-same-phy trick. That'll save people a run.
-
-Devin
-
+diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
+index 63f5139176c8..c0a47f3a8dbd 100644
+--- a/drivers/spi/spi-mtk-nor.c
++++ b/drivers/spi/spi-mtk-nor.c
+@@ -16,6 +16,7 @@
+ #include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
++#include <linux/slab.h>
+ #include <linux/spi/spi.h>
+ #include <linux/spi/spi-mem.h>
+ #include <linux/string.h>
+@@ -116,10 +117,8 @@ struct mtk_nor {
+ 	void __iomem *base;
+ 	u8 *buffer;
+ 	dma_addr_t buffer_dma;
+-	struct clk *spi_clk;
+-	struct clk *ctlr_clk;
+-	struct clk *axi_clk;
+-	struct clk *axi_s_clk;
++	struct clk_bulk_data *clks;
++	int num_clks;
+ 	unsigned int spi_freq;
+ 	bool wbuf_en;
+ 	bool has_irq;
+@@ -703,42 +702,12 @@ static int mtk_nor_transfer_one_message(struct spi_controller *host,
+ 
+ static void mtk_nor_disable_clk(struct mtk_nor *sp)
+ {
+-	clk_disable_unprepare(sp->spi_clk);
+-	clk_disable_unprepare(sp->ctlr_clk);
+-	clk_disable_unprepare(sp->axi_clk);
+-	clk_disable_unprepare(sp->axi_s_clk);
++	clk_bulk_disable_unprepare(sp->num_clks, sp->clks);
+ }
+ 
+ static int mtk_nor_enable_clk(struct mtk_nor *sp)
+ {
+-	int ret;
+-
+-	ret = clk_prepare_enable(sp->spi_clk);
+-	if (ret)
+-		return ret;
+-
+-	ret = clk_prepare_enable(sp->ctlr_clk);
+-	if (ret) {
+-		clk_disable_unprepare(sp->spi_clk);
+-		return ret;
+-	}
+-
+-	ret = clk_prepare_enable(sp->axi_clk);
+-	if (ret) {
+-		clk_disable_unprepare(sp->spi_clk);
+-		clk_disable_unprepare(sp->ctlr_clk);
+-		return ret;
+-	}
+-
+-	ret = clk_prepare_enable(sp->axi_s_clk);
+-	if (ret) {
+-		clk_disable_unprepare(sp->spi_clk);
+-		clk_disable_unprepare(sp->ctlr_clk);
+-		clk_disable_unprepare(sp->axi_clk);
+-		return ret;
+-	}
+-
+-	return 0;
++	return clk_bulk_prepare_enable(sp->num_clks, sp->clks);
+ }
+ 
+ static void mtk_nor_init(struct mtk_nor *sp)
+@@ -807,34 +776,92 @@ static const struct of_device_id mtk_nor_match[] = {
+ };
+ MODULE_DEVICE_TABLE(of, mtk_nor_match);
+ 
++static struct clk *mtk_nor_get_clk(struct clk_bulk_data *clks, int num_clks,
++				   const char *id)
++{
++	int i;
++
++	for (i = 0; i < num_clks; i++) {
++		if (clks[i].id && !strcmp(clks[i].id, id))
++			return clks[i].clk;
++	}
++
++	return NULL;
++}
++
++static int mtk_nor_get_named_clks(struct device *dev,
++				  struct clk_bulk_data **clks)
++{
++	struct clk_bulk_data *bulk;
++	struct clk *clk;
++	int num_clks = 2;
++
++	bulk = devm_kcalloc(dev, 4, sizeof(*bulk), GFP_KERNEL);
++	if (!bulk)
++		return -ENOMEM;
++
++	bulk[0].id = "spi";
++	bulk[0].clk = devm_clk_get(dev, bulk[0].id);
++	if (IS_ERR(bulk[0].clk))
++		return PTR_ERR(bulk[0].clk);
++
++	bulk[1].id = "sf";
++	bulk[1].clk = devm_clk_get(dev, bulk[1].id);
++	if (IS_ERR(bulk[1].clk))
++		return PTR_ERR(bulk[1].clk);
++
++	clk = devm_clk_get_optional(dev, "axi");
++	if (IS_ERR(clk))
++		return PTR_ERR(clk);
++	if (clk) {
++		bulk[num_clks].id = "axi";
++		bulk[num_clks++].clk = clk;
++	}
++
++	clk = devm_clk_get_optional(dev, "axi_s");
++	if (IS_ERR(clk))
++		return PTR_ERR(clk);
++	if (clk) {
++		bulk[num_clks].id = "axi_s";
++		bulk[num_clks++].clk = clk;
++	}
++
++	*clks = bulk;
++
++	return num_clks;
++}
++
+ static int mtk_nor_probe(struct platform_device *pdev)
+ {
+ 	struct spi_controller *ctlr;
+ 	struct mtk_nor *sp;
+ 	struct mtk_nor_caps *caps;
+ 	void __iomem *base;
+-	struct clk *spi_clk, *ctlr_clk, *axi_clk, *axi_s_clk;
+-	int ret, irq;
++	struct clk_bulk_data *clks;
++	struct clk *spi_clk;
++	int num_clks, ret, irq;
+ 
+ 	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
+ 
+-	spi_clk = devm_clk_get(&pdev->dev, "spi");
+-	if (IS_ERR(spi_clk))
+-		return PTR_ERR(spi_clk);
+-
+-	ctlr_clk = devm_clk_get(&pdev->dev, "sf");
+-	if (IS_ERR(ctlr_clk))
+-		return PTR_ERR(ctlr_clk);
+-
+-	axi_clk = devm_clk_get_optional(&pdev->dev, "axi");
+-	if (IS_ERR(axi_clk))
+-		return PTR_ERR(axi_clk);
+-
+-	axi_s_clk = devm_clk_get_optional(&pdev->dev, "axi_s");
+-	if (IS_ERR(axi_s_clk))
+-		return PTR_ERR(axi_s_clk);
++	if (dev_of_node(&pdev->dev))
++		num_clks = devm_clk_bulk_get_all(&pdev->dev, &clks);
++	else
++		num_clks = mtk_nor_get_named_clks(&pdev->dev, &clks);
++	if (num_clks < 0)
++		return dev_err_probe(&pdev->dev, num_clks,
++				     "failed to get clocks\n");
++	if (!num_clks)
++		return dev_err_probe(&pdev->dev, -EINVAL, "no clocks defined\n");
++
++	spi_clk = mtk_nor_get_clk(clks, num_clks, "spi");
++	if (!spi_clk)
++		return dev_err_probe(&pdev->dev, -EINVAL,
++				     "missing \"spi\" clock\n");
++	if (!mtk_nor_get_clk(clks, num_clks, "sf"))
++		return dev_err_probe(&pdev->dev, -EINVAL,
++				     "missing \"sf\" clock\n");
+ 
+ 	caps = (struct mtk_nor_caps *)of_device_get_match_data(&pdev->dev);
+ 
+@@ -867,10 +894,8 @@ static int mtk_nor_probe(struct platform_device *pdev)
+ 	sp->wbuf_en = false;
+ 	sp->ctlr = ctlr;
+ 	sp->dev = &pdev->dev;
+-	sp->spi_clk = spi_clk;
+-	sp->ctlr_clk = ctlr_clk;
+-	sp->axi_clk = axi_clk;
+-	sp->axi_s_clk = axi_s_clk;
++	sp->clks = clks;
++	sp->num_clks = num_clks;
+ 	sp->caps = caps;
+ 	sp->high_dma = caps->dma_bits > 32;
+ 	sp->buffer = dmam_alloc_coherent(&pdev->dev,
+@@ -886,9 +911,15 @@ static int mtk_nor_probe(struct platform_device *pdev)
+ 
+ 	ret = mtk_nor_enable_clk(sp);
+ 	if (ret < 0)
+-		return ret;
+-
+-	sp->spi_freq = clk_get_rate(sp->spi_clk);
++		return dev_err_probe(&pdev->dev, ret,
++				     "failed to enable clocks\n");
++
++	sp->spi_freq = clk_get_rate(spi_clk);
++	if (!sp->spi_freq) {
++		dev_err(&pdev->dev, "invalid spi clock rate\n");
++		ret = -EINVAL;
++		goto err_disable_clk;
++	}
+ 
+ 	mtk_nor_init(sp);
+ 
+-- 
+2.45.2
 
