@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9608EC624D4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2026 06:21:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6982C624D7
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2026 06:21:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=a6pfM6xEo4INvwse6gyrlBAaMdMxHVhvCkb2KpLjGTA=; b=FyrXQ3653RGFSAeFqZRfWtGvIL
-	y2PfF4mJAZKuwEDAe1igtdSvQXoGkJshgy5LcPM51vV6xpyYsvhbTueC+vWK6dwvq8G/VQZ+zkfzv
-	HXHe1CZh1+i0TaJ0X6qPgnbfnOT43mdJ25aQ+hLQcrnPO1yPcexYI3DxETF/BLjGWesvaBo5bbccL
-	KvhIioSUmvpfU56wjdXd0/XnMoiF5/p9HKxWWbAtKAYtLw7ov7d9xWnAbtRvjDyid5cnSWhIl+B+M
-	gRr6yqwyk1sEU18D2P8mxPkIgQCqvaMW9o55x9uo/p+B3ryCZb28V1qT8CsvsALoXrH2Z7D/+/ao9
-	RXz+48fQ==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Qw3W+KwFYdfCK9rOm2VvyF6S/Jc4aivlCkeIo46AHDg=; b=LIF5XRAA9c2GeE/kMkN2y9QEo3
+	uMNPEPBJ+ivgd4hNiNavhA1B41XilSHnufY84aj4BrTJmT6HYGolaxtZxoa4rB1193iFmd7rxIBv2
+	GUHs8fj5cL7/gXH1eWZLeHhnzaijzc6Z6N7yzeMVrR3owtOcA0QcueOLaZn2bB2THbACrI60IyRFm
+	RUthxGwV87GF77HcVo2BToG5ljD2RU87ya5FlqrsEVW/zYjceLhkywQUr5s88e2lbPHaM8WruQYZw
+	SNu4cWlz4cuQ+c3dztytZutNntE8hyrs+DC54TPIv94MZOtRn/873h7K0MKbv9iwjWFydde5/ogiy
+	YPoxCnwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x20p1-0000000GTOT-0x16;
-	Thu, 03 Sep 2026 06:21:15 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1x20p3-0000000GTPk-1gy3;
+	Thu, 03 Sep 2026 06:21:17 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x20oy-0000000GTNI-32s8;
-	Thu, 03 Sep 2026 06:21:13 +0000
-X-UUID: a601d89ea75f11f1acbe4559397dec65-20260902
+	id 1x20p0-0000000GTNu-3exS;
+	Thu, 03 Sep 2026 06:21:16 +0000
+X-UUID: a5e81e36a75f11f1afed4741b24580c9-20260902
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=a6pfM6xEo4INvwse6gyrlBAaMdMxHVhvCkb2KpLjGTA=;
-	b=dyDMGbzChpduyyp3hgO9YdMkrIkQrIfRXn+9v8DU5lf8VMm6AQsV3dlE2iAFOn6LqEAiaJ5uYtsMnZpNi1NmxWSYpNuXUe64xdudGcQYOsDzFssscNXDj37a/WB2G0/IGaCmMBE/KVsnKOjippN0OgrKX9P5GfjoLMyrM7Bcsds=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=Qw3W+KwFYdfCK9rOm2VvyF6S/Jc4aivlCkeIo46AHDg=;
+	b=bKRxhGa7hvi7D+4wta55OEb9Ls8iZ/GO1+eXdtE4NZwK0rKDJ8z4pUCq9oFFXCctAAT9t1Jg8tjMERtU6DG+mTOYGFbL3YAbKUN8MLNyossc3CsqUHvSg80FVq37rQSkToabAV/VUOUxkKi55CygnvYNu9Q17LgNy+Z5jFV1pzs=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:096d36e6-4ccf-4901-839a-41a281912bfa,IP:0,U
+X-CID-O-INFO: VERSION:1.3.19,REQID:a6135f0c-5451-4cdb-bd89-d1530968e761,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:fb4bc50b-079b-435d-86f5-6a8271106506,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
-	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
-	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:7db8b62,CLOUDID:ce6e6cf2-6b5d-4016-ba8d-9f799a78b7e4,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: a601d89ea75f11f1acbe4559397dec65-20260902
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+X-UUID: a5e81e36a75f11f1afed4741b24580c9-20260902
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
 	(envelope-from <justin.yeh@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 65785129; Wed, 02 Sep 2026 23:21:07 -0700
+	with ESMTP id 1799789669; Wed, 02 Sep 2026 23:21:07 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.2562.29; Thu, 3 Sep 2026 14:21:04 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
@@ -61,19 +61,17 @@ To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
 CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
 	<linux-mediatek@lists.infradead.org>, Justin Yeh <justin.yeh@mediatek.com>
-Subject: [PATCH 1/2] regulator: core: Export helpers used by regulator couplers
-Date: Thu, 3 Sep 2026 14:20:46 +0800
-Message-ID: <20260903062056.1024263-2-justin.yeh@mediatek.com>
+Subject: [PATCH 0/2] Allow mtk-regulator-coupler to be built as a module
+Date: Thu, 3 Sep 2026 14:20:45 +0800
+Message-ID: <20260903062056.1024263-1-justin.yeh@mediatek.com>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260903062056.1024263-1-justin.yeh@mediatek.com>
-References: <20260903062056.1024263-1-justin.yeh@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_232112_783522_33BAB80E 
-X-CRM114-Status: GOOD (  11.66  )
+X-CRM114-CacheID: sfid-20260902_232114_941219_5B762E20 
+X-CRM114-Status: GOOD (  10.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,55 +86,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-regulator_check_voltage(), regulator_check_consumers(),
-regulator_do_balance_voltage() and regulator_coupler_register() are
-already declared in include/linux/regulator/coupler.h for regulator
-coupler implementations to use, but none of them is exported. That
-limits couplers to being built into the kernel.
+MTK_REGULATOR_COUPLER can currently only be built into the kernel: it is
+a bool, and its prompt is hidden unless COMPILE_TEST is set, so on real
+MediaTek configurations the symbol has no prompt and is forced to its
+"default ARCH_MEDIATEK" value.
 
-Export them so that coupler drivers can be built as loadable modules.
+Kernels that ship nearly everything as a module (Android GKI style
+kernels, but distro kernels have the same shape) cannot use it that way.
+Two things are in the way:
 
-Signed-off-by: Justin Yeh <justin.yeh@mediatek.com>
----
- drivers/regulator/core.c | 4 ++++
- 1 file changed, 4 insertions(+)
+  - the four helpers the coupler calls are declared in
+    include/linux/regulator/coupler.h for coupler implementations to
+    use, but none of them is exported (patch 1);
 
-diff --git a/drivers/regulator/core.c b/drivers/regulator/core.c
-index 6a4008f387b5..6b7e613fbaaa 100644
---- a/drivers/regulator/core.c
-+++ b/drivers/regulator/core.c
-@@ -462,6 +462,7 @@ int regulator_check_voltage(struct regulator_dev *rdev,
- 
- 	return 0;
- }
-+EXPORT_SYMBOL_GPL(regulator_check_voltage);
- 
- /* return 0 if the state is valid */
- static int regulator_check_states(suspend_state_t state)
-@@ -502,6 +503,7 @@ int regulator_check_consumers(struct regulator_dev *rdev,
- 
- 	return 0;
- }
-+EXPORT_SYMBOL_GPL(regulator_check_consumers);
- 
- /* current constraint check */
- static int regulator_check_current_limit(struct regulator_dev *rdev,
-@@ -4468,6 +4470,7 @@ int regulator_do_balance_voltage(struct regulator_dev *rdev,
- out:
- 	return ret;
- }
-+EXPORT_SYMBOL_GPL(regulator_do_balance_voltage);
- 
- static int regulator_balance_voltage(struct regulator_dev *rdev,
- 				     suspend_state_t state)
-@@ -5797,6 +5800,7 @@ int regulator_coupler_register(struct regulator_coupler *coupler)
- 
- 	return 0;
- }
-+EXPORT_SYMBOL_GPL(regulator_coupler_register);
- 
- static struct regulator_coupler *
- regulator_find_coupler(struct regulator_dev *rdev)
+  - the Kconfig symbol is a bool without a usable prompt (patch 2).
+
+With both patches applied, CONFIG_MTK_REGULATOR_COUPLER=m builds and
+mtk_regulator_coupler.ko loads and registers the coupler. Existing
+configurations are unaffected: "default ARCH_MEDIATEK" is kept, so they
+keep building the coupler in.
+
+Justin Yeh (2):
+  regulator: core: Export helpers used by regulator couplers
+  soc: mediatek: mtk-regulator-coupler: Allow building as a module
+
+ drivers/regulator/core.c     | 4 ++++
+ drivers/soc/mediatek/Kconfig | 6 +++++-
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+
 -- 
 2.45.2
 
