@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B718C624D4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2026 06:21:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5B45C624D7
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Sep 2026 06:50:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=GyYjgTttZtjkAr8NAkvK68j3Vbwf6uVP9KCugF+tJnk=; b=huptEqFoLvluvgIPFfCpDdku3H
-	MNS5Sb02hm9WC1InD23OVaMC2rVovofy5V8HJxdsIi/wWReWNGnLeo0Op9iEH+bpRB3wEZKK7HE2/
-	LDEG4nf9/CTDiQw/WDNQ1Fa2uTbaQkcW9zETQOtNnWBX0Ux6KRMp4H0K1sFUaFsSVuSGzvSG0IZNe
-	k/zMdJj2cLqmJCuFkFuLRLjpB7S7FBW136BLyRqKD0ooJ2n7SgkYaS+606fa8uMNj+/uMcnJ1L0BK
-	5GtYhAF56D4PR6wpC6pMEIwSubgSI9YVvMfzhhDLfuQeQzJjIfSza1bRm9SYRqLv6bSWNSgk3hjwj
-	5oWGx8CQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bVRFysRKvF5JRI0gdedHC+kWors6h80025WFIPu9hMQ=; b=pXwdJIa7peU8lYh0XfPAjmfZct
+	9rkz93dcLuCMmjoZKbCVrWMuzr3DdS3m+4ecRlirZfPyM5owQPNEBZwciDkBfq0KNt7bztCIfL6rp
+	vN6l8sHy30z/cfZlaYctepqbYMkgWN6W8TX2r6lFZKsy6zdxDAC5DWsf0nBcEXZM2s5JA1nP6EQLu
+	I4miyN3RJSV1G+XYpfH3BakqcLmzZECKEMom+YmxlTYHWQ30dnSXpCH7FRRysPEDsWZwcnVRByeIr
+	ZTu0+X7CqlNrHzesf4lfWy3DYrJxetEl0qsB4c94doxeJKfcYpFif9g0YDLy/Kqc4hdoDK/ZvIW/M
+	A+6xFmxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x20pf-0000000GTqD-1MUg;
-	Thu, 03 Sep 2026 06:21:55 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1x21HV-0000000GVgo-1f0P;
+	Thu, 03 Sep 2026 06:50:41 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x20pc-0000000GTpA-3EwP;
-	Thu, 03 Sep 2026 06:21:53 +0000
-X-UUID: bd9dc72ea75f11f1afed4741b24580c9-20260902
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=GyYjgTttZtjkAr8NAkvK68j3Vbwf6uVP9KCugF+tJnk=;
-	b=GbUGAfXmU+37mZ4zAZWcMJXvHO/ChkE3eGs5p/rOkhG4TGA4dLZ33ta1Z0Hy7KuQLNu5C2RFQwX/wQl5vxUQxx72ICYbjRrKSm3AiGGEg6eakdWhvmCF1gK6aRozaMH8rinDHqZLHL4vSNIHvcgtd5GhFWu5dJJw4zMDCO7I37M=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:1cae8596-0564-4207-ba6e-f632967c8785,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:ccbe6296-8382-4d0c-b42c-b0965a0d23b4,B
-	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|50|
-	99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: bd9dc72ea75f11f1afed4741b24580c9-20260902
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
-	(envelope-from <justin.yeh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2043446882; Wed, 02 Sep 2026 23:21:47 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 3 Sep 2026 14:21:44 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Thu, 3 Sep 2026 14:21:44 +0800
-From: Justin Yeh <justin.yeh@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Justin Yeh <justin.yeh@mediatek.com>
-Subject: [PATCH] soc: mediatek: mtk-regulator-coupler: Add support for MT8189
-Date: Thu, 3 Sep 2026 14:21:24 +0800
-Message-ID: <20260903062142.1025443-1-justin.yeh@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1x21HT-0000000GVfm-09BH;
+	Thu, 03 Sep 2026 06:50:40 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1788418227; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Oj5mtDGDWl2NU+yGejaqU6lgE9KyazC8lZoCLTk5ja3vIO7ZRpN92lsAQ5iqSuTgUOafCY+ZumZwWyjFD0jR/dBcrNgVvy4GmirhVb7xAfu3EoxP8m32mUQaj7zAILGpWutfy15hajcI2pwO39s2Ehf6/o00km2DLKcro1OJsEs=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1788418227; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=bVRFysRKvF5JRI0gdedHC+kWors6h80025WFIPu9hMQ=; 
+	b=Aiv6kn8gOaid7M2GJJ9EOvtMe99Q4v2IUuzDE8hadYydJ2OQFb0/DgWuV4mwODUQ5UKZ7UqUkC/NHGHWM0eOcC/vuIYCuB2PPIGUckk2vo5WLx4eX29A9ZLGskc15uDGw54XSD0d9BXFqTfvWcIYzx64fdlzxuCInqdJc925gik=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=benjamin.gaignard@collabora.com;
+	dmarc=pass header.from=<benjamin.gaignard@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1788418227;
+	s=zohomail; d=collabora.com; i=benjamin.gaignard@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=bVRFysRKvF5JRI0gdedHC+kWors6h80025WFIPu9hMQ=;
+	b=iP/mUZg8GwltKlv3vjg4vDNEDTRS7KFqE18GrRc+1KneY3T0Xbm14185s3y1oi5J
+	iMpRdy0q59JIFA5yOf4DE3Mdm0aDRGMN77UCO4U84HJqN8Sw+cwfWRJgoPHwA4OXego
+	eUXnehft3hWOJ6GnZ/gdNx25FWRmyuUZhCCxZqsE=
+Received: by mx.zohomail.com with SMTPS id 1788418225291596.2712766780835;
+	Wed, 2 Sep 2026 23:50:25 -0700 (PDT)
+Message-ID: <14072655-72f2-49bb-bbb2-7d009dc69804@collabora.com>
+Date: Thu, 3 Sep 2026 08:50:20 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/9] media: v4l2-ctrls: validate HEVC tile counts
+To: Michael Bommarito <michael.bommarito@gmail.com>,
+ Hans Verkuil <hverkuil@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Detlev Casanova <detlev.casanova@collabora.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Yunfei Dong <yunfei.dong@mediatek.com>, Jonas Karlman <jonas@kwiboo.se>,
+ Heiko Stuebner <heiko@sntech.de>, Kees Cook <kees@kernel.org>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20260617021906.2746743-1-michael.bommarito@gmail.com>
+ <20260617021906.2746743-2-michael.bommarito@gmail.com>
+Content-Language: en-US
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <20260617021906.2746743-2-michael.bommarito@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260902_232152_829949_6100C420 
-X-CRM114-Status: UNSURE (   9.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260902_235039_135627_0249BD4E 
+X-CRM114-Status: GOOD (  15.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,31 +87,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8189 couples its GPU supply (buck_vgpu) with the GPU SRAM supply
-(ldo_sram_gpu), which is exactly the GPU<->SRAM relationship this
-coupler already handles for MT8183, MT8186, MT8188 and MT8192.
 
-Register the coupler on MT8189 as well so that both supplies stay
-voltage-balanced.
+Le 17/06/2026 à 04:18, Michael Bommarito a écrit :
+> The stateless HEVC decoders read num_tile_columns_minus1 + 1 entries from
+> column_width_minus1[] and num_tile_rows_minus1 + 1 from row_height_minus1[]
+> and use them as tile-loop bounds, but std_validate_compound() does not
+> bound these u8 counts. Reject a V4L2_CTRL_TYPE_HEVC_PPS with tiling
+> enabled whose tile counts exceed the uAPI array capacity, mirroring the
+> existing compound-control range checks.
+>
+> Fixes: 256fa3920874 ("media: v4l: Add definitions for HEVC stateless decoding")
+> Assisted-by: Claude:claude-opus-4-8
+> Signed-off-by: Michael Bommarito <michael.bommarito@gmail.com>
 
-Signed-off-by: Justin Yeh <justin.yeh@mediatek.com>
----
- drivers/soc/mediatek/mtk-regulator-coupler.c | 1 +
- 1 file changed, 1 insertion(+)
+Reviewed-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 
-diff --git a/drivers/soc/mediatek/mtk-regulator-coupler.c b/drivers/soc/mediatek/mtk-regulator-coupler.c
-index 0b6a2884145e..1109e3d9a319 100644
---- a/drivers/soc/mediatek/mtk-regulator-coupler.c
-+++ b/drivers/soc/mediatek/mtk-regulator-coupler.c
-@@ -148,6 +148,7 @@ static int mediatek_regulator_coupler_init(void)
- 	if (!of_machine_is_compatible("mediatek,mt8183") &&
- 	    !of_machine_is_compatible("mediatek,mt8186") &&
- 	    !of_machine_is_compatible("mediatek,mt8188") &&
-+	    !of_machine_is_compatible("mediatek,mt8189") &&
- 	    !of_machine_is_compatible("mediatek,mt8192"))
- 		return 0;
- 
--- 
-2.45.2
-
+> ---
+>   drivers/media/v4l2-core/v4l2-ctrls-core.c | 12 ++++++++++++
+>   1 file changed, 12 insertions(+)
+>
+> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+> index 6b375720e395c..6d478e1a5ef22 100644
+> --- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
+> +++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+> @@ -1242,6 +1242,18 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
+>   
+>   			p_hevc_pps->flags &=
+>   				~V4L2_HEVC_PPS_FLAG_LOOP_FILTER_ACROSS_TILES_ENABLED;
+> +		} else {
+> +			/*
+> +			 * These count the entries the stateless HEVC drivers
+> +			 * read from column_width_minus1[] / row_height_minus1[]
+> +			 * and use as tile-loop bounds.
+> +			 */
+> +			if (p_hevc_pps->num_tile_columns_minus1 >=
+> +			    ARRAY_SIZE(p_hevc_pps->column_width_minus1))
+> +				return -EINVAL;
+> +			if (p_hevc_pps->num_tile_rows_minus1 >=
+> +			    ARRAY_SIZE(p_hevc_pps->row_height_minus1))
+> +				return -EINVAL;
+>   		}
+>   
+>   		if (p_hevc_pps->flags &
 
