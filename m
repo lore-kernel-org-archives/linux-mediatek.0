@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15859C79F82
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 22:36:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A9DCC79F82
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 22:36:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/oXwqSl9Gxhd9ASYzU33CVNwSksmytljDqKt0iBuLvI=; b=xVdwEG/hEsY5caIl1LqSDxXrJv
-	6JKiPLpuHh9ceRhVAubhxaeLcPaGA6RVKYUTyXQAe6aOZckxkXG47ZQYAvGxwxjlsd8RJPyQm9+rc
-	vvhOP93+L9h1dMq6gT3eNKpkxvbBocSvTIYdAbTuLJg6yrgxuURig9OIgRnZ7+JehTPsTGISSDWSN
-	3jRMvlWkzCNB7wakNS567tmoeg3EF7AVp0F1qUhfPCNNnOawzg2ubMK5AiKunDuqKRN+lU38FDwnm
-	9KeyFZOyyNSXda76+qHhrbDferuFkkQyoyL83kTacUv4ZYPME/4NSryj3T5pJmChHmYHOw8UVsFVM
-	9f6l8xpA==;
+	bh=dft8jIKZLyvDmq/LPRhVyMm6r8WW3Y1LCnA91drhmyY=; b=qDyssOclSdGX2jvkzLlbuz+nRj
+	08PqXVWHY6ikRL/U2o8FYxwVwQuaodHf9ltPLPoKCbE00LdMlg0jJwB5nuJPRRHbgC5w6duupHaDB
+	ksE6Bo1/tmi3ZVG9AyVDX8pGaS1UX5wqJXV9eijvm+qBc7o7CXbgYJE+JUGFeAFaubfwcwFvXDWBe
+	TcGAEeGuV3Ys0jmQpFNG1jzA9n9HaQLka3MyDL99ihsbiIr8VZajQtMzZIR3c/Ue5C33uN6PV34Fs
+	HOoB09NPPsOrd+KfpAT5t/IdBS4CJrEvYB5EMtz54aot3EaYDzDTbchLW0+m2WMQCgFNdxODOPfKa
+	WS+VZWjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2cWI-00000003PZ3-3E45;
-	Fri, 04 Sep 2026 22:36:26 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1x2cWa-00000003PfI-3hB4;
+	Fri, 04 Sep 2026 22:36:44 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2cWH-00000003PYV-3iem
+	id 1x2cWZ-00000003PeT-3sBF
 	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Sep 2026 22:36:25 +0000
+	Fri, 04 Sep 2026 22:36:44 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A51B9444ED
-	for <linux-mediatek@lists.infradead.org>; Fri,  4 Sep 2026 22:36:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74F151F01565
-	for <linux-mediatek@lists.infradead.org>; Fri,  4 Sep 2026 22:36:25 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 5F92660A90
+	for <linux-mediatek@lists.infradead.org>; Fri,  4 Sep 2026 22:36:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F23D11F01808
+	for <linux-mediatek@lists.infradead.org>; Fri,  4 Sep 2026 22:36:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788561385;
-	bh=/oXwqSl9Gxhd9ASYzU33CVNwSksmytljDqKt0iBuLvI=;
+	s=k20260515; t=1788561403;
+	bh=dft8jIKZLyvDmq/LPRhVyMm6r8WW3Y1LCnA91drhmyY=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=GlVbCwxddIH2dGDoJPIA/h2Tst/6qBA1KGZqh+6T+wL3wdW8xpNgyzaSqPTvBO3IW
-	 dmWsdWcd/TE+zleN5SMZD9rLM8nV3rxKKRQIlCABrM8elVbNhL6ZG6n1LB+RpwiAMR
-	 mWEEHJ2ijqefgTMOVlyCe6A4bK22tcocp1M1amhMsGRuSaSdQeiKrQjGl8ma2dSnqI
-	 7iGskWVDBlHW02icgqAP7VeQOEbWbRAIUSZMRyRq8VivPjFPHzPGt2yYzma34ys9Tp
-	 2OOnvpmEk8u59IFhysAtgxkO25ylitmXa46S7QuFOChTDJs0sRRb3d7WqqybV3DH0y
-	 vPUw1DQqB7/xA==
-Received: by mail-lf1-f49.google.com with SMTP id 2adb3069b0e04-5b01910b499so1428485e87.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 15:36:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AKwUvByE2/SpfCOmlZEVB1/fVjbhMFno4/Tc8rVFa5RCLCvvx2rK9W8PcOaGpGM+HoqUQ370wPnyJ/BHpUg7egnjag==@lists.infradead.org
-X-Gm-Message-State: AFuF++m93pYCCPysM6xaBbiQsnC981JGqyg/gBTEeZ0vwmb/u8Ymevst
-	+aBZe/h3tsp8+Af46vZ302f6SeevhHALO34Q1GS6YGlaIc+VXO3MTNyjxVXUrfzat32PGVR6jpz
-	4K3NVl6Jo2xSFs1EmMdphi6tZGkcE7ZY=
-X-Received: by 2002:a05:6512:a86:b0:5ae:b7c7:5334 with SMTP id
- 2adb3069b0e04-5b60e8f8b8dmr2291058e87.17.1788561384171; Fri, 04 Sep 2026
- 15:36:24 -0700 (PDT)
+	b=lLtTYf4uxxXxajwhPucCVZnP4cLlC27gVTBtxi3KbE8tvJGytfaXJZPn4dzzuHTf0
+	 /ybspuVH8kciv61euxbEMT3U5Y8HKNkTPtr5aX1NOxzzcWhkww0mRiJnPFGQBf4Zkr
+	 IgFgLNF+Kw9fO41fwehzs1h9eLabrrUdIQCE2uafivdjRtO7MQtOemsGbsJfkItJ+P
+	 m+pb1c/YtLihlXXwVH1xPtA9LH2xw+TDE71prvWTGoOMzEDWZuxc4FhGmdtIg1BfUO
+	 FZ4UgWtT+IYJJcjIvGyEr0LUg1HbDpR94DWXCcxRCZQwIbRCmySpu+mGuRAw3FnVC1
+	 6mpvHNFsbQ4gA==
+Received: by mail-lj1-f175.google.com with SMTP id 38308e7fff4ca-3a1a3bb6c5dso13514061fa.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 15:36:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AKwUvBx00YPd8bGxFzFTz4hH3H4ZgTGF94xVudW50a6Z7ZQI5AhMZv4QcSEH29TZ2hRIwMcJfHObrEggDW7qSIie9w==@lists.infradead.org
+X-Gm-Message-State: AFuF++mMlC9odSNpXQqrUVuyQRQIZRo0UwOcTbA/e1NZQr1LKXAVyUIN
+	zo3YisZA6DEPJxM3n++p8jCtUu55fZbmqf4ctvFpe3rYscEyOEJlGB/6W1gvYpxnMPuYgERjoCF
+	UJiPDJzmOorP+rqTsoWeevbWuwW+Tiy4=
+X-Received: by 2002:a05:6512:250e:b0:5b1:5a2d:55f9 with SMTP id
+ 2adb3069b0e04-5b616f3215dmr1620442e87.21.1788561401588; Fri, 04 Sep 2026
+ 15:36:41 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260904043724.2955444-1-s-vadapalli@ti.com> <20260904043724.2955444-19-s-vadapalli@ti.com>
-In-Reply-To: <20260904043724.2955444-19-s-vadapalli@ti.com>
+References: <20260904043724.2955444-1-s-vadapalli@ti.com> <20260904043724.2955444-22-s-vadapalli@ti.com>
+In-Reply-To: <20260904043724.2955444-22-s-vadapalli@ti.com>
 From: Linus Walleij <linusw@kernel.org>
-Date: Sat, 5 Sep 2026 00:36:12 +0200
-X-Gmail-Original-Message-ID: <CAD++jLn+fsxrH2YvJSnaYhHg2EQiUnjMX5BFE_MDAzvvJjY3Bw@mail.gmail.com>
-X-Gm-Features: AcwNN1WIrbJQES4aWl5_UIygFkf4p6tsLt1aSuz1HDzaVFgsk_a2nVa_8mNAHm8
-Message-ID: <CAD++jLn+fsxrH2YvJSnaYhHg2EQiUnjMX5BFE_MDAzvvJjY3Bw@mail.gmail.com>
-Subject: Re: [PATCH net-next 18/33] net: dsa: mv88e6xxx: Remove comma after
- sentinel-entry in match-table
+Date: Sat, 5 Sep 2026 00:36:29 +0200
+X-Gmail-Original-Message-ID: <CAD++jL=c7Hbfwbngr2HQ_RTUizL=hwQbTa=C-oZNu2BAjLh0yQ@mail.gmail.com>
+X-Gm-Features: AcwNN1U9I_dDB3NJSseFrC3_GFY1Eb30_yQ91aHRnm5hTr_W3IoNAFdaYoLTgAE
+Message-ID: <CAD++jL=c7Hbfwbngr2HQ_RTUizL=hwQbTa=C-oZNu2BAjLh0yQ@mail.gmail.com>
+Subject: Re: [PATCH net-next 21/33] net: dsa: realtek: rtl8366rb: Remove comma
+ after sentinel-entry in match-table
 To: Siddharth Vadapalli <s-vadapalli@ti.com>
 Cc: dario.binacchi@amarulasolutions.com, mkl@pengutronix.de, 
 	mailhol@kernel.org, msp@baylibre.com, florian.fainelli@broadcom.com, 
@@ -99,7 +99,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 4, 2026 at 6:38=E2=80=AFAM Siddharth Vadapalli <s-vadapalli@ti.=
+On Fri, Sep 4, 2026 at 6:39=E2=80=AFAM Siddharth Vadapalli <s-vadapalli@ti.=
 com> wrote:
 
 > Since sentinel is the last entry and we do not expect further entries
