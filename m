@@ -4,108 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 831ECC624DE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 08:44:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12305C79F80
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 09:37:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7ZE0hpHw4voLLfSdVdvFiuLaZ8hcT2SD2vYw6zXNC1k=; b=WYRVq9SQf3w4g7Xb465vCDUWZf
-	kfgBROfY3VkUrDmmg+t7jm05Cd87BHdxPnzMabnJZRGofxIU568x74RW71ivD9MFcQHvIdEpzotjH
-	S1C0oeivV9CZanmuOeBPnZ6sETzGYK9xMPGILOkTt6QcING1EY2N/0wD9V5jJNeKZ7xDuLlwkbMNx
-	m7d2mt0NbGDhH7EqxSTJsTluBhimpDxzZjT9SiYb+N9ncURcegzh63XOjZ8fxykQCsFbw+Sy+mEd3
-	xOdJMe5rec6Y4Z7zA/A7WdKRYNVRYF88+WmpCv/Uhmr1nWZ36bYX84xLbxME1cO7HNN0ejD2yVGDu
-	B3uidhww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hL6oVjdAEtuQykmq5lZLXBAzADSoUMvDEx4ZZnY+K28=; b=t/1m1EcLa7w6h2cgttNuIW2nws
+	mtyGYmYD/KzZN33t+WDR4G60zKY5tRmMhwL8/axwSd8U1Vk0azhPQDQKlRZuT6RkFk9DTqM/o6MoJ
+	sfmMmX/m8kHzeB0a6HsD6OrBPsQgb3SpY7gsCvS9Qkjs/Qutce9yPXnpsXknOCvigix2ou8hgIZnA
+	ipuEQ++wGBDWbMLi37HFLM+aVQ9ypCilNK93AEFDG4LFJLKeJdsMAYMCV/fBf/XcChI31KGIjIDfK
+	nutw+jxYzcNadfBVS/GLTeCs6CbbR85bO1ZKEC72oYOlL5wjgdOpYDjDp9PGqY69F69xz5OPe6AlB
+	zKlh+jXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2PXU-00000001R2a-2qzn;
-	Fri, 04 Sep 2026 08:44:48 +0000
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+	id 1x2QMX-00000001YZ4-2Q5h;
+	Fri, 04 Sep 2026 09:37:33 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2PXQ-00000001QxA-1FMI
-	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Sep 2026 08:44:47 +0000
-Received: by mail-pj1-x102e.google.com with SMTP id 98e67ed59e1d1-382ef647e20so753640a91.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 01:44:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1788511484; x=1789116284; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=7ZE0hpHw4voLLfSdVdvFiuLaZ8hcT2SD2vYw6zXNC1k=;
-        b=Fp9nMwkLhYsIGd8S32TI65rgIg9GyZL0NXAn3QLZkPtLFQUO5vapykZa4ovs53DeIU
-         K2mfKSLvJwveZqfSGF6adsNf7QbnGShCMVsPGDsKMKaLPy+cANjiaj0wWN8bNSISdsF1
-         iBs2WR5AwQ2zMBHjrH5XJSwmUr7sBCuCFrvxA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788511484; x=1789116284;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=7ZE0hpHw4voLLfSdVdvFiuLaZ8hcT2SD2vYw6zXNC1k=;
-        b=n7SRvO6V8HqhJN/4L6hzHjYoYzO3Ff9MDee+UWfFVZPMRfj0VuRtuF+5qEAmYz+ItJ
-         B4ra03kKlXWigmu+k2Gnr7EnZ9/u2V4Eyvy3rxgQa1Lb8fQ8OwesqDkWPIeoZRZKKdZC
-         Om+aVFsmxyJZN60P2xbWLB1fjNDc3V3raHgDn1dlYj/MDfJyVOhLULxhys1x54i9q2lf
-         +QhP2U5QdX+f6Eii1MIi7PNcGGcTwS9HLzLDa6ykFvd60uBdIaokVXd92cAkoUU7BS3D
-         4+shCtlJSq2cdS0gbCA6HgZQ6Lh7A9nD7rlv1PdkUTqYa9QuCpg/UTnTOq4/J7I2F9LJ
-         qrDg==
-X-Forwarded-Encrypted: i=1; AKwUvBx7ya2MovWvbgiAYFeKIzAT96FSDhNLpvaB58d3uigkHRLkl3VTOgmXqknd3nXUNvy45k1+KRYZkugxr1hvTw==@lists.infradead.org
-X-Gm-Message-State: AFuF++lkLnU/7zsqzL5oCJbSBB1t49HRuQ/laRf06uil4RgHfTimKTtc
-	mRasdmZWt94ob0GOuAlRENIreyfV2bSdX4avzrOAdNe6bgsLhRXjHMYUe7Jw9XDLlg==
-X-Gm-Gg: AYBFou2Dvhk4qbIcdnqH+ziUJ+3OP2FbQ3J8tXv3GIHcv1JaKYe2r8InPc+UWnA4T4u
-	e9GbK2JQjgWmdxOQgQCYegL8dbd28zs83FIdAdObXe3LGSuMGOurhjIhDq9kB/q7RLoLP6y0DX0
-	9amNVefHWEEpT/N0B9L6urmmjd/JW6Qik4GVYycwzciI82qNRiAz/fOTTheg9b6YmKevYmo9Or2
-	ZSVa8Vv1xOkffzp/6bVBDcqrhaO8N/Kv54q4hhy4PgPBu6nQcRGmcTLP/RZZy9vSrY8LYucZXJV
-	moj9ejCNt8VwozfC25Ei13ll7AWF4J8OhKkbWUx9o30fpIXxJzcPVzY91iUaIVNhiZMTyfix55g
-	itPkIhLsBHsCyIx8Us5FImMqdh/BjO8tbhgQA//KVnP2E15g9JEWnaAvRrSLWUcyV72o8bOTHA1
-	MIiahjGr1vm6pR6WvsJoEAqJ9euJBocAlPWSajvzG0v5gMiS+f+4YBstIfXyhJwltsdXcVSeB3i
-	d5sIDgDiX3epO47pF+R4vb0TS1AZq2i2DnTqaj3HyQq
-X-Received: by 2002:a17:90b:1c8b:b0:398:9bd5:490c with SMTP id 98e67ed59e1d1-39b26214502mr5922699a91.19.1788511483659;
-        Fri, 04 Sep 2026 01:44:43 -0700 (PDT)
-Received: from wenst-7875.tpe.corp.google.com ([2a00:79e0:201d:8:343:bf21:3095:9c5])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39b260fdf9asm3343538a91.9.2026.09.04.01.44.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Sep 2026 01:44:43 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Bartosz Golaszewski <brgl@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Daniel Scally <djrscally@gmail.com>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Wei Deng <wei.deng@oss.qualcomm.com>,
-	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	linux-acpi@vger.kernel.org,
-	driver-core@lists.linux.dev,
-	linux-pm@vger.kernel.org,
-	linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Alan Stern <stern@rowland.harvard.edu>,
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: [PATCH v8 16/16] arm64: dts: mediatek: mt8188-geralt: Add WiFi/BT as M.2 E-key slot
-Date: Fri,  4 Sep 2026 16:41:55 +0800
-Message-ID: <20260904084158.1341550-17-wenst@chromium.org>
-X-Mailer: git-send-email 2.55.0.979.g7e5102b832-goog
-In-Reply-To: <20260904084158.1341550-1-wenst@chromium.org>
-References: <20260904084158.1341550-1-wenst@chromium.org>
+	id 1x2QMU-00000001YY0-2UcU;
+	Fri, 04 Sep 2026 09:37:31 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1788514637; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=jscAkArNVy2prG9DkPLwU501QfbkBRYa5f8/ckH4UlC4axyv+VoTW/KTxD6EAi1SVq180WO1F/b4+tXTdlbp4wzJSRe6hFm3bc7iaZ8FvlvPBQqhFukYxZcOIOdnoUVpNLjX3WBBdnOmGbWbjQXtQV2zF1vnJXj/KwEUno+/RBw=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1788514637; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=hL6oVjdAEtuQykmq5lZLXBAzADSoUMvDEx4ZZnY+K28=; 
+	b=LN6+I6T8ehQV2BuVLiLvd8dAKFuGgxqdVS+LhHkaXRttpo7ZPrlFElXnWAItvrltkSfKeUR/2f+0gxPSLRw2UwdvCiJ8xrX2Kk7Ei6beLFptOjKs5UFxG9kHO2NqEu+bfEgLrf2BCegRbbEfU8uFszL8mTzmegVeNt8oWDNePj0=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
+	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1788514637;
+	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=hL6oVjdAEtuQykmq5lZLXBAzADSoUMvDEx4ZZnY+K28=;
+	b=ElFKcqmAjqO1OeCCnCiQV7phyy+jTl39SVid2bHyEu1R7Mv4RxlTS5mOGoZTNDN9
+	1PyUIXq0xyYWS6dAgF7iYgDpxuYxHttVZEewBt8zv5fmU6o/DxmWlx62oCwRAbQ+Iv4
+	fPttoE7yknpF5/I/MFzX1Hy5UXF6GM1Fvn3Pvi9E=
+Received: by mx.zohomail.com with SMTPS id 1788514635226600.9423815163698;
+	Fri, 4 Sep 2026 02:37:15 -0700 (PDT)
+Message-ID: <0549545944646a8a02c251b06c81fe25dff6af32.camel@collabora.com>
+Subject: Re: [PATCH v5 16/25] clk: mediatek: Add MT8189 apmixedsys clock
+ support
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+To: Brian Masney <bmasney@redhat.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>,  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,  Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,  Chun-Jie Chen
+ <chun-jie.chen@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Edward-JW Yang	 <edward-jw.yang@mediatek.com>, Richard Cochran
+ <richardcochran@gmail.com>,  Chen-Yu Tsai <wenst@chromium.org>,
+ kernel@collabora.com, linux-clk@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Irving-CH Lin <irving-ch.lin@mediatek.com>
+Date: Fri, 04 Sep 2026 11:37:08 +0200
+In-Reply-To: <anCv0ga226obZg2g@redhat.com>
+References: <20260801-mt8189-clocks-system-base-v5-0-ac4410697cc2@collabora.com>
+	 <20260801-mt8189-clocks-system-base-v5-16-ac4410697cc2@collabora.com>
+	 <anCv0ga226obZg2g@redhat.com>
+Organization: Collabora Ltd
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_014445_240206_7E531CA2 
-X-CRM114-Status: GOOD (  16.61  )
+X-CRM114-CacheID: sfid-20260904_023730_687735_B3B205FC 
+X-CRM114-Status: GOOD (  39.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,185 +91,312 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8188 Geralt design features a chip-on-board WiFi/BT solution. This
-is a M.2 E-key WiFi/BT board layout directly inserted into the mainboard
-design. The connections to the rest of the board are almost the same as
-if it were a separate M.2 card. The only addition is the PMU_EN pin on
-the chip; on M.2 cards this would be tied to the primary power source.
+Hi Brian,
 
-Model the chip-on-board WiFi/BT solution as a M.2 E-key slot with PCIe,
-USB and auxiliary signals. The PMU_EN pin, which enables the internal
-power controls and regulators, is modeled as a regulator fed by the
-pp3300_wlan regulator. Since power sequencing is now correctly modeled
-using the M.2 E-key slot, drop the "regulator-always-on" property one
-pp3300_wlan regulator. Also drop the comment in xhci2 saying "MT7921's
-power is controlled by PCIe".
+On Mon, 2026-08-03 at 11:12 -0400, Brian Masney wrote:
+> On Sat, Aug 01, 2026 at 01:21:02PM +0200, Louis-Alexis Eyraud wrote:
+> > Add support for the MT8189 apmixedsys clock controller, which
+> > provides
+> > PLLs generated from SoC 26m.
+> >=20
+> > Co-developed-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
+> > Signed-off-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
+> > Co-developed-by: AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com>
+> > Signed-off-by: AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com>
+> > Signed-off-by: Louis-Alexis Eyraud
+> > <louisalexis.eyraud@collabora.com>
+> > ---
+> > =C2=A0drivers/clk/mediatek/Kconfig=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 13 ++
+> > =C2=A0drivers/clk/mediatek/Makefile=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0 1 +
+> > =C2=A0drivers/clk/mediatek/clk-mt8189-apmixedsys.c | 203
+> > +++++++++++++++++++++++++++
+> > =C2=A03 files changed, 217 insertions(+)
+> >=20
+> > diff --git a/drivers/clk/mediatek/Kconfig
+> > b/drivers/clk/mediatek/Kconfig
+> > index 2c09fd729bab..f67dfb6cd019 100644
+> > --- a/drivers/clk/mediatek/Kconfig
+> > +++ b/drivers/clk/mediatek/Kconfig
+> > @@ -815,6 +815,19 @@ config COMMON_CLK_MT8188_WPESYS
+> > =C2=A0	help
+> > =C2=A0	=C2=A0 This driver supports MediaTek MT8188 Warp Engine clocks.
+> > =C2=A0
+> > +config COMMON_CLK_MT8189
+> > +	tristate "Clock driver for MediaTek MT8189"
+> > +	depends on ARM64 || COMPILE_TEST
+> > +	select COMMON_CLK_MEDIATEK
+> > +	select COMMON_CLK_MEDIATEK_FHCTL
+> > +	default ARCH_MEDIATEK
+> > +	help
+> > +	=C2=A0 Enable this option to support the clock management for
+> > MediaTek MT8189 SoC. This
+> > +	=C2=A0 includes handling of all primary clock functions and
+> > features specific to the MT8189
+> > +	=C2=A0 platform. Enabling this driver ensures that the system's
+> > clock functionality aligns
+> > +	=C2=A0 with the MediaTek MT8189 hardware capabilities,
+> > providing efficient management of
+> > +	=C2=A0 clock speeds and power consumption.
+> > +
+> > =C2=A0config COMMON_CLK_MT8192
+> > =C2=A0	tristate "Clock driver for MediaTek MT8192"
+> > =C2=A0	depends on ARM64 || COMPILE_TEST
+> > diff --git a/drivers/clk/mediatek/Makefile
+> > b/drivers/clk/mediatek/Makefile
+> > index d8736a060dbd..66577ccb9b93 100644
+> > --- a/drivers/clk/mediatek/Makefile
+> > +++ b/drivers/clk/mediatek/Makefile
+> > @@ -123,6 +123,7 @@ obj-$(CONFIG_COMMON_CLK_MT8188_VDOSYS) +=3D clk-
+> > mt8188-vdo0.o clk-mt8188-vdo1.o
+> > =C2=A0obj-$(CONFIG_COMMON_CLK_MT8188_VENCSYS) +=3D clk-mt8188-venc.o
+> > =C2=A0obj-$(CONFIG_COMMON_CLK_MT8188_VPPSYS) +=3D clk-mt8188-vpp0.o clk=
+-
+> > mt8188-vpp1.o
+> > =C2=A0obj-$(CONFIG_COMMON_CLK_MT8188_WPESYS) +=3D clk-mt8188-wpe.o
+> > +obj-$(CONFIG_COMMON_CLK_MT8189) +=3D clk-mt8189-apmixedsys.o
+> > =C2=A0obj-$(CONFIG_COMMON_CLK_MT8192) +=3D clk-mt8192-apmixedsys.o clk-
+> > mt8192.o
+> > =C2=A0obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) +=3D clk-mt8192-aud.o
+> > =C2=A0obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) +=3D clk-mt8192-cam.o
+> > diff --git a/drivers/clk/mediatek/clk-mt8189-apmixedsys.c
+> > b/drivers/clk/mediatek/clk-mt8189-apmixedsys.c
+> > new file mode 100644
+> > index 000000000000..a50a8979b849
+> > --- /dev/null
+> > +++ b/drivers/clk/mediatek/clk-mt8189-apmixedsys.c
+> > @@ -0,0 +1,203 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/*
+> > + * Copyright (C) 2025-2026 MediaTek Inc.
+> > + *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Qiqi Wang <qiqi.wang@media=
+tek.com>
+> > + *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Irving-CH Lin <irving-ch.l=
+in@mediatek.com>
+> > + * Copyright (C) 2026 Collabora Ltd.
+> > + *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com>
+> > + *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Louis-Alexis Eyraud
+> > <louisalexis.eyraud@collabora.com>
+> > + */
+> > +
+> > +#include <linux/clk-provider.h>
+> > +#include <linux/module.h>
+> > +#include <linux/platform_device.h>
+> > +
+> > +#include "clk-fhctl.h"
+> > +#include "clk-mtk.h"
+> > +#include "clk-pll.h"
+> > +
+> > +#include <dt-bindings/clock/mediatek,mt8189-clk.h>
+> > +
+> > +#define MT8189_PLL_FMAX		(3800UL * MHZ)
+> > +#define MT8189_PLL_FMIN		(1500UL * MHZ)
+> > +#define MT8189_PLLEN_OFS	0x70
+> > +#define MT8189_PLLEN_SET_OFS	0x74
+> > +#define MT8189_PLLEN_CLR_OFS	0x78
+> > +#define MT8189_RSTBAR_OFS	0x80
+> > +#define MT8189_RSTBAR_SET_OFS	0x84
+> > +#define MT8189_RSTBAR_CLR_OFS	0x88
+> > +#define MT8189_INTEGER_BITS	8
+> > +
+> > +#define PLL_SETCLR(_id, _name, _reg, _pwr_reg,
+> > _en_setclr_bit,		\
+> > +			_rstb_setclr_bit, _flags, _pd_reg,	\
+> > +			_pd_shift, _tuner_reg, _tuner_en_reg,	\
+> > +			_tuner_en_bit, _pcw_reg, _pcw_shift,	\
+> > +			_pcwbits) {				\
+> > +		.id =3D _id,					\
+> > +		.name =3D _name,					\
+> > +		.en_reg =3D MT8189_PLLEN_OFS,			\
+> > +		.en_set_reg =3D MT8189_PLLEN_SET_OFS,		\
+> > +		.en_clr_reg =3D MT8189_PLLEN_CLR_OFS,		\
+> > +		.reg =3D _reg,					\
+> > +		.pwr_reg =3D _pwr_reg,				\
+> > +		.pll_en_bit =3D _en_setclr_bit,			\
+> > +		.rst_bar_reg =3D MT8189_RSTBAR_OFS,		\
+> > +		.rst_bar_set_reg =3D MT8189_RSTBAR_SET_OFS,	\
+> > +		.rst_bar_clr_reg =3D MT8189_RSTBAR_CLR_OFS,	\
+> > +		.rst_bar_mask =3D BIT(_rstb_setclr_bit),		\
+> > +		.flags =3D _flags,				\
+> > +		.fmax =3D MT8189_PLL_FMAX,			\
+> > +		.fmin =3D MT8189_PLL_FMIN,			\
+> > +		.pd_reg =3D _pd_reg,				\
+> > +		.pd_shift =3D _pd_shift,				\
+> > +		.tuner_reg =3D _tuner_reg,			\
+> > +		.tuner_en_reg =3D _tuner_en_reg,			\
+> > +		.tuner_en_bit =3D _tuner_en_bit,			\
+> > +		.pcw_reg =3D _pcw_reg,				\
+> > +		.pcw_shift =3D _pcw_shift,			\
+> > +		.pcwbits =3D _pcwbits,				\
+> > +		.pcwibits =3D MT8189_INTEGER_BITS,		\
+> > +		.ops =3D &mtk_pll_setclr_ops,			\
+> > +	}
+> > +
+> > +static const struct mtk_pll_data apmixed_plls[] =3D {
+> > +	PLL_SETCLR(CLK_APMIXED_ARMPLL_LL, "armpll-ll", 0x204,
+> > 0x210, 18,
+> > +		=C2=A0=C2=A0 0, PLL_AO, 0x208, 24, 0, 0, 0, 0x208, 0, 22),
+> > +	PLL_SETCLR(CLK_APMIXED_ARMPLL_BL, "armpll-bl", 0x214,
+> > 0x220, 17,
+> > +		=C2=A0=C2=A0 0, PLL_AO, 0x218, 24, 0, 0, 0, 0x218, 0, 22),
+> > +	PLL_SETCLR(CLK_APMIXED_CCIPLL, "ccipll", 0x224, 0x230, 16,
+> > +		=C2=A0=C2=A0 0, PLL_AO, 0x228, 24, 0, 0, 0, 0x228, 0, 22),
+> > +	PLL_SETCLR(CLK_APMIXED_MAINPLL, "mainpll", 0x304, 0x310,
+> > 15,
+> > +		=C2=A0=C2=A0 2, HAVE_RST_BAR | PLL_AO,
+> > +		=C2=A0=C2=A0 0x308, 24, 0, 0, 0, 0x308, 0, 22),
+> > +	PLL_SETCLR(CLK_APMIXED_UNIVPLL, "univpll", 0x314, 0x320,
+> > 14,
+> > +		=C2=A0=C2=A0 1, HAVE_RST_BAR, 0x318, 24, 0, 0, 0, 0x318, 0,
+> > 22),
+> > +	PLL_SETCLR(CLK_APMIXED_MMPLL, "mmpll", 0x324, 0x330, 13,
+> > +		=C2=A0=C2=A0 0, HAVE_RST_BAR, 0x328, 24, 0, 0, 0, 0x328, 0,
+> > 22),
+> > +	PLL_SETCLR(CLK_APMIXED_MFGPLL, "mfgpll", 0x504, 0x510, 7,
+> > +		=C2=A0=C2=A0 0, 0, 0x508, 24, 0, 0, 0, 0x508, 0, 22),
+> > +	PLL_SETCLR(CLK_APMIXED_APLL1, "apll1", 0x404, 0x414, 11,
+> > +		=C2=A0=C2=A0 0, 0, 0x408, 24, 0x040, 0x00c, 0, 0x40c, 0,
+> > 32),
+> > +	PLL_SETCLR(CLK_APMIXED_APLL2, "apll2", 0x418, 0x428, 10,
+> > +		=C2=A0=C2=A0 0, 0, 0x41c, 24, 0x044, 0x00c, 1, 0x420, 0,
+> > 32),
+> > +	PLL_SETCLR(CLK_APMIXED_EMIPLL, "emipll", 0x334, 0x340, 12,
+> > +		=C2=A0=C2=A0 0, PLL_AO, 0x338, 24, 0, 0, 0, 0x338, 0, 22),
+> > +	PLL_SETCLR(CLK_APMIXED_APUPLL2, "apupll2", 0x614, 0x620,
+> > 2,
+> > +		=C2=A0=C2=A0 0, 0, 0x618, 24, 0, 0, 0, 0x618, 0, 22),
+> > +	PLL_SETCLR(CLK_APMIXED_APUPLL, "apupll", 0x604, 0x610, 3,
+> > +		=C2=A0=C2=A0 0, 0, 0x608, 24, 0, 0, 0, 0x608, 0, 22),
+> > +	PLL_SETCLR(CLK_APMIXED_TVDPLL1, "tvdpll1", 0x42c, 0x438,
+> > 9,
+> > +		=C2=A0=C2=A0 0, 0, 0x430, 24, 0, 0, 0, 0x430, 0, 22),
+> > +	PLL_SETCLR(CLK_APMIXED_TVDPLL2, "tvdpll2", 0x43c,=C2=A0 0x448,
+> > 8,
+> > +		=C2=A0=C2=A0 0, 0, 0x440, 24, 0, 0, 0, 0x440, 0, 22),
+> > +	PLL_SETCLR(CLK_APMIXED_ETHPLL, "ethpll", 0x514, 0x520, 6,
+> > +		=C2=A0=C2=A0 0, 0, 0x518, 24, 0, 0, 0, 0x518, 0, 22),
+> > +	PLL_SETCLR(CLK_APMIXED_MSDCPLL, "msdcpll", 0x524, 0x530,
+> > 5,
+> > +		=C2=A0=C2=A0 0, 0, 0x528, 24, 0, 0, 0, 0x528, 0, 22),
+> > +	PLL_SETCLR(CLK_APMIXED_UFSPLL, "ufspll", 0x534, 0x540, 4,
+> > +		=C2=A0=C2=A0 0, 0, 0x538, 24, 0, 0, 0, 0x538, 0, 22),
+> > +};
+> > +
+> > +#define FH(_pllid, _fhid, _offset) {				\
+> > +		.data =3D {					\
+> > +			.pll_id =3D _pllid,			\
+> > +			.fh_id =3D
+> > _fhid,				\
+> > +			.fh_ver =3D FHCTL_PLLFH_V2,		\
+> > +			.fhx_offset =3D _offset,			\
+> > +			.dds_mask =3D GENMASK(21, 0),		\
+> > +			.slope0_value =3D 0x6003c97,		\
+> > +			.slope1_value =3D 0x6003c97,		\
+> > +			.sfstrx_en =3D BIT(2),			\
+> > +			.frddsx_en =3D BIT(1),			\
+> > +			.fhctlx_en =3D BIT(0),			\
+> > +			.tgl_org =3D BIT(31),			\
+> > +			.dvfs_tri =3D BIT(31),			\
+> > +			.pcwchg =3D BIT(31),			\
+> > +			.dt_val =3D 0x0,				\
+> > +			.df_val =3D 0x9,				\
+> > +			.updnlmt_shft =3D 16,			\
+> > +			.msk_frddsx_dys =3D GENMASK(23, 20),	\
+> > +			.msk_frddsx_dts =3D GENMASK(19, 16),	\
+> > +			.ops =3D &mtk_pllfh_setclr_ops,		\
+> > +		},						\
+> > +	}
+> > +
+> > +static struct mtk_pllfh_data pllfhs[] =3D {
+> > +	FH(CLK_APMIXED_ARMPLL_LL, 0, 0x003C),
+> > +	FH(CLK_APMIXED_ARMPLL_BL, 1, 0x0050),
+> > +	FH(CLK_APMIXED_CCIPLL, 2, 0x0064),
+> > +	FH(CLK_APMIXED_MAINPLL, 3, 0x0078),
+> > +	FH(CLK_APMIXED_MMPLL, 4, 0x008C),
+> > +	FH(CLK_APMIXED_MFGPLL, 5, 0x00A0),
+> > +	FH(CLK_APMIXED_EMIPLL, 6, 0x00B4),
+> > +	FH(CLK_APMIXED_TVDPLL1, 7, 0x00C8),
+> > +	FH(CLK_APMIXED_TVDPLL2, 8, 0x00DC),
+> > +	FH(CLK_APMIXED_MSDCPLL, 9, 0x00F0),
+> > +	FH(CLK_APMIXED_UFSPLL, 10, 0x0104),
+> > +	FH(CLK_APMIXED_APUPLL, 11, 0x0118),
+> > +	FH(CLK_APMIXED_APUPLL2, 12, 0x012c),
+> > +};
+> > +
+> > +static const struct of_device_id of_match_clk_mt8189_apmixed[] =3D {
+> > +	{ .compatible =3D "mediatek,mt8189-apmixedsys" },
+> > +	{ /* sentinel */ }
+> > +};
+> > +MODULE_DEVICE_TABLE(of, of_match_clk_mt8189_apmixed);
+> > +
+> > +static int clk_mt8189_apmixed_probe(struct platform_device *pdev)
+> > +{
+> > +	const u8 *fhctl_node =3D "mediatek,mt8189-fhctl";
+> > +	struct device_node *node =3D pdev->dev.of_node;
+> > +	struct clk_hw_onecell_data *clk_data;
+> > +	int r;
+> > +
+> > +	clk_data =3D mtk_alloc_clk_data(ARRAY_SIZE(apmixed_plls));
+> > +	if (!clk_data)
+> > +		return -ENOMEM;
+> > +
+> > +	fhctl_parse_dt(fhctl_node, pllfhs, ARRAY_SIZE(pllfhs));
+>=20
+> So I know this is how the existing drivers are written. This calls
+> of_iomap(), and the iounmap is called by mtk_clk_unregister_pllfhs().
+> I usually like to see things in pairs to make it easier to review
+> where there's some register, and an unregister with the same name.
+>=20
+> Could the fhctl_parse_dt() call be moved into
+> mtk_clk_register_pllfhs() ?
+>=20
+Thanks for the v5 patches review first.
 
-Also drop the voltage range on the pp3300_wlan regulator. This
-"regulator" is just a load switch and does not provide any regulation.
+It is indeed a good idea to move this function in
+mtk_clk_register_pllfhs.=C2=A0The needed modifications are rather small
+(only 5 calls in the existing mediatek clk drivers) and would make this
+function private to clk-pllfh.c as well. It is also complementary to
+the other cleanup series, that is reworking the probe functions of
+apmixedsys drivers with pllfh support ([1]).
 
-Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
-Changes since v2:
-- Drop default GPIO output state from kill pins pinconfig
----
- .../boot/dts/mediatek/mt8188-geralt.dtsi      | 92 ++++++++++++++++++-
- 1 file changed, 88 insertions(+), 4 deletions(-)
+I'll add a new patch in v6 along the other fixes, and adapt this one.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-index dee946309121..73b5c0fdeae6 100644
---- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-@@ -88,13 +88,11 @@ pp3300_z1: regulator-pp3300-z1 {
- 	pp3300_wlan: regulator-pp3300-wlan {
- 		compatible = "regulator-fixed";
- 		regulator-name = "pp3300_wlan";
--		regulator-always-on;
--		regulator-min-microvolt = <3300000>;
--		regulator-max-microvolt = <3300000>;
- 		enable-active-high;
- 		gpio = <&pio 12 GPIO_ACTIVE_HIGH>;
- 		pinctrl-0 = <&wlan_en>;
- 		pinctrl-names = "default";
-+		/* load switch */
- 		vin-supply = <&pp3300_z1>;
- 	};
- 
-@@ -161,6 +159,17 @@ ppvar_mipi_disp_avee: regulator-ppvar-mipi-disp-avee {
- 		vin-supply = <&pp5000_z1>;
- 	};
- 
-+	/* PMU_EN pin controls internal regulators and power sequence */
-+	wlan_pmu: regulator-wlan-pmu {
-+		compatible = "regulator-fixed";
-+		regulator-name = "wlan-pmu";
-+		enable-active-high;
-+		gpio = <&pio 145 GPIO_ACTIVE_HIGH>;
-+		pinctrl-0 = <&wlan_pmu_en>;
-+		pinctrl-names = "default";
-+		vin-supply = <&pp3300_wlan>;
-+	};
-+
- 	reserved_memory: reserved-memory {
- 		#address-cells = <2>;
- 		#size-cells = <2>;
-@@ -195,6 +204,39 @@ adsp_dma_mem: memory@61000000 {
- 			no-map;
- 		};
- 	};
-+
-+	wifi-bt-connector {
-+		compatible = "pcie-m2-e-connector";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&m2_e_key_kill_pins>;
-+		vpcie1v8-supply = <&mt6359_vcn18_ldo_reg>;
-+		vpcie3v3-supply = <&wlan_pmu>;
-+		w-disable1-gpios = <&pio 13 GPIO_ACTIVE_LOW>;
-+		w-disable2-gpios = <&pio 14 GPIO_ACTIVE_LOW>;
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			/* PCIe for WiFi */
-+			port@0 {
-+				reg = <0>;
-+
-+				wifi_ep: endpoint {
-+					remote-endpoint = <&pcie_ep>;
-+				};
-+			};
-+
-+			/* USB for Bluetooth */
-+			port@2 {
-+				reg = <2>;
-+
-+				bt_ep: endpoint {
-+					remote-endpoint = <&usb2_ep>;
-+				};
-+			};
-+		};
-+	};
- };
- 
- &adsp {
-@@ -659,6 +701,22 @@ &pcie {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pcie_pins>;
- 	status = "okay";
-+
-+	pcie@0 {
-+		compatible = "pciclass,0604";
-+		reg = <0 0 0 0 0>;
-+		device_type = "pci";
-+		num-lanes = <1>;
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		ranges;
-+
-+		port {
-+			pcie_ep: endpoint {
-+				remote-endpoint = <&wifi_ep>;
-+			};
-+		};
-+	};
- };
- 
- &pciephy {
-@@ -1002,6 +1060,13 @@ pins-bus {
- 		};
- 	};
- 
-+	m2_e_key_kill_pins: m2-e-key-kill-pins {
-+		pins-kill {
-+			pinmux = <PINMUX_GPIO13__FUNC_B_GPIO13>,
-+				 <PINMUX_GPIO14__FUNC_B_GPIO14>;
-+		};
-+	};
-+
- 	mipi_disp_avdd_en: mipi-disp-avdd-en-pins {
- 		pins-en-ppvar-mipi-disp {
- 			pinmux = <PINMUX_GPIO3__FUNC_B_GPIO3>;
-@@ -1174,6 +1239,13 @@ pins-bus {
- 		};
- 	};
- 
-+	wlan_pmu_en: wlan-pmu-en-pins {
-+		pins-wlan-pmu-en {
-+			pinmux = <PINMUX_GPIO145__FUNC_B_GPIO145>;
-+			output-low;
-+		};
-+	};
-+
- 	wlan_en: wlan-en-pins {
- 		pins-en-pp3300-wlan {
- 			pinmux = <PINMUX_GPIO12__FUNC_B_GPIO12>;
-@@ -1417,10 +1489,22 @@ vdosys1_ep_ext: endpoint@1 {
- };
- 
- &xhci2 {
--	/* no power supply since MT7921's power is controlled by PCIe */
- 	/* MT7921's USB BT has issues with USB2 LPM */
- 	usb2-lpm-disable;
- 	status = "okay";
-+
-+	ports {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		port@1 {
-+			reg = <1>;
-+
-+			usb2_ep: endpoint {
-+				remote-endpoint = <&bt_ep>;
-+			};
-+		};
-+	};
- };
- 
- #include <arm/cros-ec-keyboard.dtsi>
--- 
-2.55.0.979.g7e5102b832-goog
+[1]:
+https://lore.kernel.org/linux-mediatek/20260803141659.559129-13-akkun11.ope=
+n@gmail.com/
 
+> Additionally fhctl_parse_dt() sets some state variables that are
+> never
+> cleared in the unregister:
+>=20
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 pllfh->state.fh_enable =3D 1;
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 pllfh->state.ssc_rate =3D ssc_rate;
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 pllfh->state.base =3D base;
+>=20
+> Just a quick glance though I think this is fine.
+>=20
+They are indeed never cleared.
+
+Since they are stored in a static variable, it would be best to
+clean them anyway, for instance in mtk_clk_cleanup_pllfhs function,
+that used in both unregister and register (in error path) functions.
+
+I'll also add a new patch in for that.
+
+Regards,
+Louis-Alexis
+
+> Brian
+>=20
 
