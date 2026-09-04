@@ -4,109 +4,176 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0930C624D3
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 11:35:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D631AC624DE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 12:17:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ewfDI1ZgGJ9f7uoMqmTZW/ns6RfSEti1ZKdNzm+2NtA=; b=RrwgvuTHyxBI7BjxyARj6rP7uS
-	wLBJguF6jAQl5zCYaRWikF7Q3qwE6djnoDhNc/hnC3nMrlhV84DfdyHm/l0VeLBDcV3Mx7HljEzlx
-	2okbOh9POWksJxbsfjyHcHSkhrKwdzaMQh/PDJAE06fov3AYf3SkOf+5IcvQ9nWd+xHfuRY5K77qy
-	emMTz+R9+p/5ngZFLRxBb4cw/TbTV011zSwd16akyHzNWh+s+qvZENNjIJHxAGc/srqWql5/KvGmT
-	Y4zUQY+8Nt/jW3QQm+kBTViO4z5leQ2bo1rYxiSpriSkHcFlcbl/fUM2QSOgmf28j9XFrXybGZqe2
-	qmUAZu8Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Sj+5aMY2yuNuOhKyG6wLa892Yt3ZhQuKHFnJY1HFgpI=; b=2LpF5pT26qYdE81WlAupqbEMn+
+	dkq+L/F4VFGvJ2XZLSVojTrk8yRRh10fNRVRxw1ocjGKvMkJuHbfh1sL4Rv3O6kc034T4TqWc+wN6
+	QoQNBtTMF+KTpR5NHcqzVsK7gqNAZFwE2bKE3XShQFrHiuqL/crezYOTUHWnyXxDYBniN7MoICoeI
+	hmARyhig5uwtCYjw/xJ6AiJTI8DibgVtHcrJlmz/Bv1WqMu2pBlZCGAAXdSgdXMlnfKXRIRoHVnf9
+	Xts2EtjCNoNAK60MjItVLq3MACSsPeCINZa5Cu00R2oV06kfIzVvjuxKpNa1pEtpIPkSsbTzRXVuz
+	VUxCjd4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2SCQ-00000001pv3-2I0p;
-	Fri, 04 Sep 2026 11:35:14 +0000
-Received: from mail-oo1-xc2b.google.com ([2607:f8b0:4864:20::c2b])
+	id 1x2SrT-000000020P7-1WWp;
+	Fri, 04 Sep 2026 12:17:39 +0000
+Received: from mx0a-001ae601.pphosted.com ([67.231.149.25] helo=mx0b-001ae601.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2SCJ-00000001prg-0KFX
-	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Sep 2026 11:35:12 +0000
-Received: by mail-oo1-xc2b.google.com with SMTP id 006d021491bc7-6b12942ed04so692876eaf.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 04:35:06 -0700 (PDT)
+	id 1x2SrQ-000000020OK-38Pj;
+	Fri, 04 Sep 2026 12:17:38 +0000
+Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
+	by mx0a-001ae601.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6844HU2p2479378;
+	Fri, 4 Sep 2026 07:16:31 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=PODMain02222019; bh=Sj+5aMY2yuNuOhKyG6
+	wLa892Yt3ZhQuKHFnJY1HFgpI=; b=Qru1NFesv7TxZ/zTTndDpvVJ83qYvx+NWV
+	/n6VXis/5cbDftXesXCW8rOKZlqNfDlHqSMuAcCWzhBCZjToCDlBubxvpRDEaYu8
+	yJonZQKHosU/8An5wJKZV+k7/o6tpSzYYPiH6NC5FeIPOEc20EfPqiYBdyWnldbD
+	iIjHDdLLxL1JeKK01Smo78XLjnsRAvt/WSRcfnB7Bb5SVNJlIas1W+nht016MtUB
+	GpT/R+PCcRhEc4mmo0se9mudn+LJA4CV33DW/U1VKxne2ukAslBp1dHffE3Zzcff
+	SnPM5+0lN0pp/W731bzu7DrRzZpnaqN/L6O5/OQG+ay+nZ4efRfg==
+Received: from sn4pr0501cu005.outbound.protection.outlook.com (mail-southcentralusazhn15011023.outbound.protection.outlook.com [52.102.140.23])
+	by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 4geyrqj92b-1
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+	Fri, 04 Sep 2026 07:16:30 -0500 (CDT)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=CZ+tw183jh9y7Miy+T+ZNneIEB64IT/lK/PA464+eeIyxZSlomLUsb6R67J3W0a9J8uujKRFIk4lwdeaGzeBEWeLUZsRYSZINKaGMM0LOpmuTfbp0MyhHooXgKdos8GYHkuGAtao/ip8q5F3Kc3aAlUdbQ0Z7WeCGI9HN7KMT4yFz/vLT4zJzuSHMPpIdilPzNDs6UWmmYtdwgGq/BdsDF8fEmDySkDcVPQrKTfm62zJjAlzKK904JZoNaAYJneQLHbWmjCW/eRB4rRuqWczNI+TFMhEJCT8KFYjIbDrH4wpMUzbxEWizuUoeCpz+RMPAtRojr3asBcLmZ1AeDexFg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Sj+5aMY2yuNuOhKyG6wLa892Yt3ZhQuKHFnJY1HFgpI=;
+ b=VgIqd6ANDksUtbP0oRc72OS3jBJOWka8AaEUx2Hf/IWVcH6EDPBQQRB9wy/hmKeTglTAEgrkv4st9JFbmQJzImjXB1BvE+3irJ0wJWEimNUwUbBmLYS2M4NIrgdpA5goS4ad+fWgrRztzNPJQfDtCYwKhjE7ttzvRSD7PqJ6r7jemyiK0lSQ+e2uQewlRCxbNQB3ZBoHJKNlslOff2/Fhnhqm7Cc6jyTwoKIf0ryyo+4506myJtyFhLNR2AhEg3SN4io3yAl5ebQ+pT0RUDWwZrNUUJpzhubYMioE9IdHZT6qSTBiPUpvTggRQAuPx716zKjiyIMRd4ZvAXyeN/H1g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=softfail (sender ip
+ is 84.19.233.75) smtp.rcpttodomain=analog.com
+ smtp.mailfrom=opensource.cirrus.com; dmarc=fail (p=reject sp=reject pct=100)
+ action=oreject header.from=opensource.cirrus.com; dkim=none (message not
+ signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788521706; x=1789126506; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=ewfDI1ZgGJ9f7uoMqmTZW/ns6RfSEti1ZKdNzm+2NtA=;
-        b=qj89fW52yuzhjgwbdYymMlPz80cY6eba0jFL/n16SGfSOPs3PfMX7QdYrev4uZgu/d
-         22q95KbCqN+QUCO79JQ+Qe6DyRLbu8phTWsuuINKcL6L9QE3O3SzcAB2N55cV+Q6QhCx
-         5yoVFwkJ65M98WHk8scFls2sVgcT2YYhYanCyPWftFaK7G48bXaYWKrS8vl1UzBS/tZw
-         JgS+jIrgLS6a3Yfp6fqjxH/d2s5MMGerM+MFbLxuC77cFwveQRdpAown/WXSF3Vwyr7n
-         NsdQ25pLi5I/4eyc0tvRQzG0AzAAENUteyBnXCm1KEaeV2KOcDx0i98mV+Pz+cdLJvAZ
-         0R0A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788521706; x=1789126506;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=ewfDI1ZgGJ9f7uoMqmTZW/ns6RfSEti1ZKdNzm+2NtA=;
-        b=HZ3uFL4yjAfn3+5sm8/DrfOrXJSX6ZB49Ku8O4OxALrkYNVU/iVMTz1OTAROjcaQTA
-         McYwX2UqlXgOrSJwz8R0ET9WXcy34wbVc5DJI4LbVhoLQdQrbN+2ZgW9yuRcSllaXgP/
-         5msw0ndXcP/ItKSLIEcmtYf+PfgTBJtwCuS+ND11Td2mUev6iDgSW8c+yzljmcoRvnvl
-         x3XWaQTR7CPdda8wXM8qV8rTcM445VWt4YLbR0KwiPoH0by6UyQGb+x2vU6576ZhleBp
-         8uFwl7sPDSRqnnrchmVCqe2xe5fpM75wUMeEjbxia4llD9GxINZ19lEr2YDp35xq28xB
-         M6Pg==
-X-Forwarded-Encrypted: i=1; AKwUvBx4c9wMpC3wyVADqgwv7zLfg/9bs/gHI2V6ZN/2bcWX6hX61Xv04dfIyxGykqBFzBqxRy2hQAwLAw4ZYR7D5w==@lists.infradead.org
-X-Gm-Message-State: AFuF++mdhi/G9yVkW7NQEV6YYaTV09bR+K1RHrjLOr6+2gZcrxmaJyKd
-	VbI9sEqFfyTPLJLHIZgeXgl7jR3nO+qj8dF/VRmrFGpncksWN9L/K4A2
-X-Gm-Gg: AYBFou0D+sdvA2MTbM3zByVb9+HqqkbBFui/4vHO/PmXYk2O2knR8C31j63W2sIuOJw
-	mpsZhcQtboLqMfGNUXHgvMNH8oCl8y9gCt3mPskd29Ym6gMi/wIHWG00DpFA2VnGRPkHDHGKsks
-	HDhB7TvLKlbQ19UgLNN525riomBxxg2RfjvvL4vqxhQngZMGCYk4xSSEQq+lPdzYP9KNDVMZWCu
-	Qe8tnFDt57C64uhsQi+rDCzR/UkAwAeiJwnMFRsL/DbKB8jd06D9U08aL79xosIQaxqEA5UurXv
-	41/xTQDKIsHf1dLaEkmd7DBFdF1yM76emM77DnRDefIbcC8Bh4fZO2V0cWnr/Xsi3C7LqxhfopF
-	XOEKxEfixaU56529J6SoSpL3zpDxMtg9k9MmTymjLePWX+QHIqlTwNbavrjLDGNTXMTeXI8T4EG
-	PsVU5LWn3BrE4dZauHmFggnL1RZi0G/p4YsVskSboRXP8/5QG2zO48kieHgHfKRwIW1p6/fZSGF
-	Y5/PHFDsnBRAwg=
-X-Received: by 2002:a05:6820:1787:b0:6b7:83c5:fdee with SMTP id 006d021491bc7-6b783c60345mr1409156eaf.47.1788521705811;
-        Fri, 04 Sep 2026 04:35:05 -0700 (PDT)
-Received: from volcano9f6e-hostos.amd.com ([165.204.217.251])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-143243a9388sm6054536c88.10.2026.09.04.04.34.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Sep 2026 04:35:05 -0700 (PDT)
-From: Hemanth Selam <hemanth.selam@gmail.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Jacopo Mondi <jacopo@jmondi.org>,
-	Andy Walls <awalls@md.metrocast.net>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
-	Houlong Wei <houlong.wei@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Tiffany Lin <tiffany.lin@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Eduardo Valentin <edubezval@gmail.com>,
-	Hans de Goede <hansg@kernel.org>,
-	Andy Shevchenko <andy@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-staging@lists.linux.dev
-Subject: [PATCH 1/3] media: fix typos in comments
-Date: Fri,  4 Sep 2026 17:04:42 +0530
-Message-ID: <20260904113450.15838-2-hemanth.selam@gmail.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20260904113450.15838-1-hemanth.selam@gmail.com>
-References: <20260904113450.15838-1-hemanth.selam@gmail.com>
+ d=cirrus4.onmicrosoft.com; s=selector2-cirrus4-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Sj+5aMY2yuNuOhKyG6wLa892Yt3ZhQuKHFnJY1HFgpI=;
+ b=y+mB2nEO3q+E0iavWy77RNm86c6aqEzrQvOTwK2YNBofcQ72IvXC1Mc+6V6WCXojaBUWf8/hnRq8qE8MopdG1vQ+IvN7eL2d+jkWQ8wtf1itFblJgmZSbLCGg1KfRbDSIyWggVI+ePwgBhRzvPzEOWg5zDZo/sCE485xE23YjK0=
+Received: from PH0P220CA0002.NAMP220.PROD.OUTLOOK.COM (2603:10b6:510:d3::14)
+ by PH7PR19MB6088.namprd19.prod.outlook.com (2603:10b6:510:1df::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.360.13; Fri, 4 Sep
+ 2026 12:16:26 +0000
+Received: from BY1PEPF000264B2.namprd02.prod.outlook.com
+ (2603:10b6:510:d3:cafe::39) by PH0P220CA0002.outlook.office365.com
+ (2603:10b6:510:d3::14) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.382.13 via Frontend Transport; Fri, 4
+ Sep 2026 12:16:26 +0000
+X-MS-Exchange-Authentication-Results: spf=softfail (sender IP is 84.19.233.75)
+ smtp.mailfrom=opensource.cirrus.com; dkim=none (message not signed)
+ header.d=none;dmarc=fail action=oreject header.from=opensource.cirrus.com;
+Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
+ opensource.cirrus.com discourages use of 84.19.233.75 as permitted sender)
+Received: from edirelay1.ad.cirrus.com (84.19.233.75) by
+ BY1PEPF000264B2.mail.protection.outlook.com (10.167.242.118) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.382.8
+ via Frontend Transport; Fri, 4 Sep 2026 12:16:24 +0000
+Received: from ediswmail9.ad.cirrus.com (ediswmail9.ad.cirrus.com [198.61.86.93])
+	by edirelay1.ad.cirrus.com (Postfix) with ESMTPS id 09554406543;
+	Fri,  4 Sep 2026 12:16:23 +0000 (UTC)
+Received: from opensource.cirrus.com (ediswmail9.ad.cirrus.com [198.61.86.93])
+	by ediswmail9.ad.cirrus.com (Postfix) with ESMTPSA id DD351820247;
+	Fri,  4 Sep 2026 12:16:22 +0000 (UTC)
+Date: Fri, 4 Sep 2026 13:16:21 +0100
+From: Charles Keepax <ckeepax@opensource.cirrus.com>
+To: Hemanth Selam <hemanth.selam@gmail.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+        Rob Herring <robh@kernel.org>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley <conor+dt@kernel.org>,
+        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+        Andrei Simion <andrei.simion@microchip.com>,
+        Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+        Nicolas Ferre <nicolas.ferre@microchip.com>,
+        Alexandre Belloni <alexandre.belloni@bootlin.com>,
+        Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+        Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+        Lars-Peter Clausen <lars@metafoo.de>,
+        Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+        David Rhodes <david.rhodes@cirrus.com>,
+        Richard Fitzgerald <rf@opensource.cirrus.com>,
+        Support Opensource <support.opensource@diasemi.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Oder Chiou <oder_chiou@realtek.com>,
+        Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
+        Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
+        Cezary Rojewski <cezary.rojewski@intel.com>,
+        Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+        Bard Liao <yung-chuan.liao@linux.intel.com>,
+        Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+        Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
+        Srinivas Kandagatla <srini@kernel.org>,
+        Jarkko Nikula <jarkko.nikula@bitmer.com>,
+        Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+        Masami Hiramatsu <mhiramat@kernel.org>, linux-kernel@vger.kernel.org,
+        linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org, patches@opensource.cirrus.com,
+        linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        linux-omap@vger.kernel.org
+Subject: Re: [PATCH] ASoC: fix typos in comments
+Message-ID: <apq2lVTP6tyymn5r@opensource.cirrus.com>
+References: <20260904110315.11650-1-hemanth.selam@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260904110315.11650-1-hemanth.selam@gmail.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BY1PEPF000264B2:EE_|PH7PR19MB6088:EE_
+X-MS-Office365-Filtering-Correlation-Id: 177a3fc7-82fd-4ade-3488-08df0a7e5705
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700016|23010399003|82310400026|376014|7416014|34020700016|61400799027|22082099003|18002099003|16102099003|56012099006|11063799006|10067099003|12100799066;
+X-Microsoft-Antispam-Message-Info: fHKxuKve1yQOQtOLE+rm2ltXnt1xN006AlWKeOH2hvAfjAX/cBRtL3fLTnxX/FaSilbMATWJRfZQiOBmwHxSB6CtdsdY4og3zExpR74GW/SOTvh6IHJOjuLLt8x44iwRkQjJ/xUUGTYiM0WJ19kFVgFbh4zTieTuPEuSXXlH+uZMFsgiaucbLf/9Kab7xjHV98rWfsNeF4xIDnaSetYoAV27hYKA4OdEz13Pa38sj4tc0enVE7OWDosBzD7kmWCYDKHyi+OuWbOBI7v7kWD7CW2cqcQGAbQEmvEptTIWWiSo1QYu2sQ/tp6NDU37FPs60LWiw/Jb8hRk/1ovkjRlfHzVKkCd+WUn/iw0HuaNsltea3eDHo5y6q94z9nJbCadvnxZJ8GlEj4n8qB6zs4xFIyS3w6VvkIKszjP1ilrGlcDIUMs5GgW44YUo58GinFwA7NzhL7gcjdo9lGzQISaRlwGyiko06B2LqItWa1zl+M7ZZZoKXMTTtIVvL/b4vMD/qOwDcBugR4p9/drQjhZ2gVg3+8iEBvg/cY/nJoZXBWtS6WEiBzSnVjc5DMQmfe/C32SK0x4mNKo6C2U6E/GEycJ/OzR2d5IkImtNYdvmiQUj8A7qUf2x6gjurpkS16SaWw+06GF3iTiiO9Heo0zmW9uNQD3V3ipG2v1JuCXDl0zGvOIeSpdvKwL/JBEanVmQqqOcvJXACHuSh3zvTMX9w==
+X-Forefront-Antispam-Report: CIP:84.19.233.75;CTRY:GB;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:edirelay1.ad.cirrus.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(36860700016)(23010399003)(82310400026)(376014)(7416014)(34020700016)(61400799027)(22082099003)(18002099003)(16102099003)(56012099006)(11063799006)(10067099003)(12100799066);DIR:OUT;SFP:1501;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 4/UATG3P+x7p3Sqog5oWKvtRIEC+C6ZP1GmjUbN1IKdHf5ApdugGsfi94LJgWzP8QXj6fPD3vx5FB9K4LXb25wUsZ/qyaYxVuqsvpZh1FVPIy/WHBOcfoFW1Qg10v7ZaRzeC61F9j5LGk9AlgHzhBtG4O0fO+xSoAUXRszPWqVAz7wmhG8gvELhF5/0MuHZ3IbGI1YZoxtOTWR8CPtQ+tfNuwq6xULCgQN9YmHcdzOZ0/nEEURKF4WIhZGa9nHjvO43sia/BSoU6jSBsGUucwjIlXsow0exUthlfv0DW7FnGEHn7uuwihnTv0rR4SrbPDDU7YyMfm4MeA+KnKzO1GVWTd8Og0xzX3zqU8givTGQ5AvV0OtPsEs/iH+SQMuFosnijmMUCYrYIYAjFaMmDfwubKijEmfU0+CwOZutBjIwuURCorsNw9DsEb3JAxZvE
+X-Exchange-RoutingPolicyChecked: M/byfnsx8hh+JhGTvW+i3nMQRkPVY1593nZlvdnTVKKoC40JyP9LWV/VuZrWA54WgaI9/4h4XYQFLorrv1fN3IuuL0ZeME+ycbc9opGmSJSDchi5YQt0x2vgwieX+I2WyUrzvqwiVa+IIqX8HMP/dqdjEOMRDLZQq5WiuhM65tOyqSHawvxkZQ2atlH551TGTL05aGzUGZw+9VrnxA0u0vnAtj6uEChjpCbE3gnksRXQ8ZSdcxHs0oQHgS9wslZG/Dge9/wIFy4JKvtah646cH7/Sewm6fvhKqjOTqeHIGLPtVFrsRCFzgkPC7/m8JAe2PchP5UsokIRS/xFdXMFHg==
+X-OriginatorOrg: opensource.cirrus.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Sep 2026 12:16:24.9023
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 177a3fc7-82fd-4ade-3488-08df0a7e5705
+X-MS-Exchange-CrossTenant-Id: bec09025-e5bc-40d1-a355-8e955c307de8
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=bec09025-e5bc-40d1-a355-8e955c307de8;Ip=[84.19.233.75];Helo=[edirelay1.ad.cirrus.com]
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TreatMessagesAsInternal-BY1PEPF000264B2.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR19MB6088
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTA0MDExMCBTYWx0ZWRfX/5j9x+xsGmKR
+ n/bacUt0uIwbopKKrxqwsKmnu0EiwvmVzUkZsx6zpCTCCh/QutPkb7yfItSbqm+oWD2CWCBQB28
+ QgAjIQXHFueU+AlNI+zjPayfeyaD3sxK6X4SRG10/aQUzFklkbOAfGeoxDGRBR5QZUKIeRWmXvE
+ tzuiHbYhX5Ejxm7yY+wIDanDwOH6fZNUIb9kXzbkIG+4rkr6jRwF8HFY/iYCoTnEBqTC7aG/VS8
+ 8wxBkrJEqeAqeBP4Z9nPdaZ+Ljx5TusihQriBAxejIaimpXEnjN407yW02WmgfnRfw7ungZ+iEB
+ jQzyhigzVv3RDsQrF4XllMtCk8wyDTRsaATDiR3LxPMG/a/qbF4YXDcu/bto3NrppfbiSEaM0bJ
+ gqRULXTHNzbaEbgTPKjEDsaCScw/kJxxTJR0XUBXHSPBymAT33qSzijAXUwv+O65Bn16nzkwrcA
+ fwpwuKr2IAUFQ+Q63HA==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTA0MDExMCBTYWx0ZWRfX3jZ2QJ111mHm
+ f42G0ic4nucJBGgiY1wPiVuDPo9D68RV2RGId+zMJsT4zt4MWfQ/1plv6Ozf+llZhlo9n8DDBZv
+ Yu0IwYr/vGVgXxJOE2A4RUpm/bHhAkY=
+X-Proofpoint-GUID: g5byBwPivZFQ-pGY8bCAPEq-F02MwuAW
+X-Authority-Analysis: v=2.4 cv=A8Nc+aWG c=1 sm=1 tr=0 ts=6a9ab69f cx=c_pps
+ a=yICVNc/tqHXuIRF/6KaW8A==:117 a=h1hSm8JtM9GN1ddwPAif2w==:17
+ a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
+ a=kj9zAlcOel0A:10 a=VdqzKS8jKosA:10 a=s63m1ICgrNkA:10 a=RWc_ulEos4gA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=iX4cTi3TZMoOKdANLEfx:22 a=Dj2-6B8FqX4mGL0U3gbX:22
+ a=pGLkceISAAAA:8 a=w1d2syhTAAAA:8 a=wbSmXUBKm7kmP3h1SjcA:9 a=CjuIK1q_8ugA:10
+ a=jZz-an6Pvt0H8_Yc_ROU:22
+X-Proofpoint-ORIG-GUID: g5byBwPivZFQ-pGY8bCAPEq-F02MwuAW
+X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_043507_138808_43E85BF6 
-X-CRM114-Status: GOOD (  24.78  )
+X-CRM114-CacheID: sfid-20260904_051736_805647_5F56036D 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,257 +188,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix typos in comments, reported by scripts/checkpatch.pl using the
-misspelling list in scripts/spelling.txt.  Only touches comments, no code
-changes.
+On Fri, Sep 04, 2026 at 04:33:01PM +0530, Hemanth Selam wrote:
+> Fix typos in comments, reported by scripts/checkpatch.pl using the
+> misspelling list in scripts/spelling.txt.  Only touches comments, no code
+> changes.
+> 
+> Assisted-by: Cursor:claude-opus-5
+> Signed-off-by: Hemanth Selam <hemanth.selam@gmail.com>
+> ---
 
-Assisted-by: Cursor:claude-opus-5
-Signed-off-by: Hemanth Selam <hemanth.selam@gmail.com>
----
- drivers/media/dvb-frontends/drxd_map_firm.h                   | 4 ++--
- drivers/media/i2c/ccs/ccs-data.h                              | 4 ++--
- drivers/media/i2c/hi847.c                                     | 2 +-
- drivers/media/i2c/ov772x.c                                    | 2 +-
- drivers/media/i2c/wm8739.c                                    | 2 +-
- drivers/media/pci/cx18/cx23418.h                              | 2 +-
- drivers/media/pci/saa7146/mxb.c                               | 4 ++--
- drivers/media/platform/mediatek/mdp/mtk_mdp_ipi.h             | 2 +-
- drivers/media/platform/mediatek/vcodec/decoder/vdec_ipi_msg.h | 4 ++--
- drivers/media/platform/renesas/rcar_drif.c                    | 2 +-
- drivers/media/radio/si4713/si4713.c                           | 2 +-
- drivers/media/usb/dvb-usb/dib0700_core.c                      | 2 +-
- drivers/media/usb/gspca/w996Xcf.c                             | 2 +-
- .../atomisp/pci/isp/kernels/s3a/s3a_1.0/ia_css_s3a_types.h    | 4 ++--
- drivers/staging/media/av7110/av7110.c                         | 2 +-
- 15 files changed, 20 insertions(+), 20 deletions(-)
+Reviewed-by: Charles Keepax <ckeepax@opensource.cirrus.com>
 
-diff --git a/drivers/media/dvb-frontends/drxd_map_firm.h b/drivers/media/dvb-frontends/drxd_map_firm.h
-index bdcc63576df1..a6585e53d879 100644
---- a/drivers/media/dvb-frontends/drxd_map_firm.h
-+++ b/drivers/media/dvb-frontends/drxd_map_firm.h
-@@ -10,8 +10,8 @@
- 
- /*
-  * Note: originally, this file contained 12000+ lines of data
-- * Probably a few lines for every firwmare assembler instruction. However,
-- * only a few defines were actually used. So, removed all uneeded lines.
-+ * Probably a few lines for every firmware assembler instruction. However,
-+ * only a few defines were actually used. So, removed all unneeded lines.
-  * If ever needed, the other lines can be easily obtained via git history.
-  */
- 
-diff --git a/drivers/media/i2c/ccs/ccs-data.h b/drivers/media/i2c/ccs/ccs-data.h
-index 638df69804ec..522466b81929 100644
---- a/drivers/media/i2c/ccs/ccs-data.h
-+++ b/drivers/media/i2c/ccs/ccs-data.h
-@@ -160,7 +160,7 @@ struct ccs_pdaf_pix_loc_pixel_desc_group {
-  * @main_offset_y: Start Y coordinate of PDAF pixel blocks
-  * @global_pdaf_type: PDAF pattern type
-  * @block_width: Width of a block in pixels
-- * @block_height: Heigth of a block in pixels
-+ * @block_height: Height of a block in pixels
-  * @num_block_desc_groups: Number of block descriptor groups
-  * @block_desc_groups: Block descriptor groups
-  * @num_pixel_desc_grups: Number of pixel descriptor groups
-@@ -197,7 +197,7 @@ struct ccs_pdaf_pix_loc {
-  * @module_rules: Rules for the module
-  * @sensor_pdaf: PDAF data for the sensor
-  * @module_pdaf: PDAF data for the module
-- * @license_length: Lenght of the license data
-+ * @license_length: Length of the license data
-  * @license: License data
-  * @end: Whether or not there's an end block
-  * @backing: Raw data, pointed to from elsewhere so keep it around
-diff --git a/drivers/media/i2c/hi847.c b/drivers/media/i2c/hi847.c
-index def01aa07b2f..710328d7984f 100644
---- a/drivers/media/i2c/hi847.c
-+++ b/drivers/media/i2c/hi847.c
-@@ -2187,7 +2187,7 @@ struct hi847 {
- 	/* Current mode */
- 	const struct hi847_mode *cur_mode;
- 
--	/* To serialize asynchronus callbacks */
-+	/* To serialize asynchronous callbacks */
- 	struct mutex mutex;
- };
- 
-diff --git a/drivers/media/i2c/ov772x.c b/drivers/media/i2c/ov772x.c
-index be3ba284ee0b..041f3b02e222 100644
---- a/drivers/media/i2c/ov772x.c
-+++ b/drivers/media/i2c/ov772x.c
-@@ -122,7 +122,7 @@
- #define LC_COEFB    0x4B /* Lens B channel compensation coefficient */
- #define LC_COEFR    0x4C /* Lens R channel compensation coefficient */
- 
--#define FIXGAIN     0x4D /* Analog fix gain amplifer */
-+#define FIXGAIN     0x4D /* Analog fix gain amplifier */
- #define AREF0       0x4E /* Sensor reference control */
- #define AREF1       0x4F /* Sensor reference current control */
- #define AREF2       0x50 /* Analog reference control */
-diff --git a/drivers/media/i2c/wm8739.c b/drivers/media/i2c/wm8739.c
-index db62bafb447c..9eaf48f1c3a2 100644
---- a/drivers/media/i2c/wm8739.c
-+++ b/drivers/media/i2c/wm8739.c
-@@ -217,7 +217,7 @@ static int wm8739_probe(struct i2c_client *client)
- 
- 	/* reset */
- 	wm8739_write(sd, R15, 0x00);
--	/* filter setting, high path, offet clear */
-+	/* filter setting, high path, offset clear */
- 	wm8739_write(sd, R5, 0x000);
- 	/* ADC, OSC, Power Off mode Disable */
- 	wm8739_write(sd, R6, 0x000);
-diff --git a/drivers/media/pci/cx18/cx23418.h b/drivers/media/pci/cx18/cx23418.h
-index 22486f39bcda..4ee45be757cb 100644
---- a/drivers/media/pci/cx18/cx23418.h
-+++ b/drivers/media/pci/cx18/cx23418.h
-@@ -24,7 +24,7 @@
- #define CX18_CREATE_TASK			(MGR_CMD_MASK | 0x0001)
- 
- /* Description: This command destroys an instance of a task
--   IN[0] - Task handle. Hanlde of the task to destroy
-+   IN[0] - Task handle. Handle of the task to destroy
-    ReturnCode - One of the ERR_SYS_... */
- #define CX18_DESTROY_TASK			(MGR_CMD_MASK | 0x0002)
- 
-diff --git a/drivers/media/pci/saa7146/mxb.c b/drivers/media/pci/saa7146/mxb.c
-index d759e8a87e24..129d41c1862b 100644
---- a/drivers/media/pci/saa7146/mxb.c
-+++ b/drivers/media/pci/saa7146/mxb.c
-@@ -37,7 +37,7 @@
- /* global variable */
- static int mxb_num;
- 
--/* initial frequence the tuner will be tuned to.
-+/* initial frequency the tuner will be tuned to.
-    in verden (lower saxony, germany) 4148 is a
-    channel called "phoenix" */
- static int freq = 4148;
-@@ -429,7 +429,7 @@ static int mxb_init_done(struct saa7146_dev* dev)
- 	/* some stuff is done via direct write to the registers */
- 
- 	/* this is ugly, but because of the fact that this is completely
--	   hardware dependend, it should be done directly... */
-+	   hardware dependent, it should be done directly... */
- 	saa7146_write(dev, DD1_STREAM_B,	0x00000000);
- 	saa7146_write(dev, DD1_INIT,		0x02000200);
- 	saa7146_write(dev, MC2, (MASK_09 | MASK_25 | MASK_10 | MASK_26));
-diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_ipi.h b/drivers/media/platform/mediatek/mdp/mtk_mdp_ipi.h
-index b810c96695c8..9744e00b0066 100644
---- a/drivers/media/platform/mediatek/mdp/mtk_mdp_ipi.h
-+++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_ipi.h
-@@ -56,7 +56,7 @@ struct mdp_ipi_comm {
-  * @ipi_id        : IPI_MDP
-  * @ap_inst       : AP mtk_mdp_vpu address
-  * @vpu_inst_addr : VPU MDP instance address
-- * @status        : VPU exeuction result
-+ * @status        : VPU execution result
-  */
- struct mdp_ipi_comm_ack {
- 	uint32_t msg_id;
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec_ipi_msg.h b/drivers/media/platform/mediatek/vcodec/decoder/vdec_ipi_msg.h
-index 47070be2a991..c2c2a3a63dfd 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/vdec_ipi_msg.h
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec_ipi_msg.h
-@@ -53,7 +53,7 @@ struct vdec_ap_ipi_cmd {
- /**
-  * struct vdec_vpu_ipi_ack - generic VPU to AP ipi command format
-  * @msg_id	: vdec_ipi_msgid
-- * @status	: VPU exeuction result
-+ * @status	: VPU execution result
-  * @ap_inst_addr	: AP video decoder instance address
-  */
- struct vdec_vpu_ipi_ack {
-@@ -98,7 +98,7 @@ struct vdec_ap_ipi_dec_start {
- /**
-  * struct vdec_vpu_ipi_init_ack - for VPU_IPIMSG_DEC_INIT_ACK
-  * @msg_id	: VPU_IPIMSG_DEC_INIT_ACK
-- * @status	: VPU exeuction result
-+ * @status	: VPU execution result
-  * @ap_inst_addr	: AP vcodec_vpu_inst instance address
-  * @vpu_inst_addr	: VPU decoder instance address
-  * @vdec_abi_version:	ABI version of the firmware. Kernel can use it to
-diff --git a/drivers/media/platform/renesas/rcar_drif.c b/drivers/media/platform/renesas/rcar_drif.c
-index 0844934f7aa6..bd67e8e16f53 100644
---- a/drivers/media/platform/renesas/rcar_drif.c
-+++ b/drivers/media/platform/renesas/rcar_drif.c
-@@ -464,7 +464,7 @@ rcar_drif_get_fbuf(struct rcar_drif_sdr *sdr)
- 					rcar_drif_frame_buf, list);
- 	if (!fbuf) {
- 		/*
--		 * App is late in enqueing buffers. Samples lost & there will
-+		 * App is late in enqueuing buffers. Samples lost & there will
- 		 * be a gap in sequence number when app recovers
- 		 */
- 		rdrif_dbg(sdr, "\napp late: prod %u\n", sdr->produced);
-diff --git a/drivers/media/radio/si4713/si4713.c b/drivers/media/radio/si4713/si4713.c
-index 0c0354566b0a..150d07f6b319 100644
---- a/drivers/media/radio/si4713/si4713.c
-+++ b/drivers/media/radio/si4713/si4713.c
-@@ -667,7 +667,7 @@ static int si4713_tx_tune_measure(struct si4713_device *sdev, u16 frequency,
- /*
-  * si4713_tx_tune_status- Returns the status of the tx_tune_freq, tx_tune_mea or
-  *			tx_tune_power commands. This command return the current
-- *			frequency, output voltage in dBuV, the antenna tunning
-+ *			frequency, output voltage in dBuV, the antenna tuning
-  *			capacitance value and the received noise level. The
-  *			command also clears the stcint interrupt bit when the
-  *			first bit of its arguments is high.
-diff --git a/drivers/media/usb/dvb-usb/dib0700_core.c b/drivers/media/usb/dvb-usb/dib0700_core.c
-index 1caabb51ea47..5d2fa7037c00 100644
---- a/drivers/media/usb/dvb-usb/dib0700_core.c
-+++ b/drivers/media/usb/dvb-usb/dib0700_core.c
-@@ -560,7 +560,7 @@ int dib0700_download_firmware(struct usb_device *udev, const struct firmware *fw
- 	fw_version = (buf[8] << 24) | (buf[9] << 16) | (buf[10] << 8) | buf[11];
- 
- 	/* set the buffer size - DVB-USB is allocating URB buffers
--	 * only after the firwmare download was successful */
-+	 * only after the firmware download was successful */
- 	for (i = 0; i < dib0700_device_count; i++) {
- 		for (adap_num = 0; adap_num < dib0700_devices[i].num_adapters;
- 				adap_num++) {
-diff --git a/drivers/media/usb/gspca/w996Xcf.c b/drivers/media/usb/gspca/w996Xcf.c
-index 79baa0c1a031..700c39fe307c 100644
---- a/drivers/media/usb/gspca/w996Xcf.c
-+++ b/drivers/media/usb/gspca/w996Xcf.c
-@@ -407,7 +407,7 @@ static void w9968cf_set_crop_window(struct sd *sd)
- 
- 	if (sd->sensor == SEN_OV7620) {
- 		/*
--		 * Sigh, this is dependend on the clock / framerate changes
-+		 * Sigh, this is dependent on the clock / framerate changes
- 		 * made by the frequency control, sick.
- 		 *
- 		 * Note we cannot use v4l2_ctrl_g_ctrl here, as we get called
-diff --git a/drivers/staging/media/atomisp/pci/isp/kernels/s3a/s3a_1.0/ia_css_s3a_types.h b/drivers/staging/media/atomisp/pci/isp/kernels/s3a/s3a_1.0/ia_css_s3a_types.h
-index b8206d2f3d31..97e63082d254 100644
---- a/drivers/staging/media/atomisp/pci/isp/kernels/s3a/s3a_1.0/ia_css_s3a_types.h
-+++ b/drivers/staging/media/atomisp/pci/isp/kernels/s3a/s3a_1.0/ia_css_s3a_types.h
-@@ -102,8 +102,8 @@ struct ia_css_3a_grid_info {
-  *  awb_lg_*: Thresholds to check the saturated bayer pixels for AWB.
-  *    Condition of effective pixel for AWB level gate check:
-  *      bayer(sensor) <= awb_lg_high_raw &&
-- *      bayer(when AWB statisitcs is calculated) >= awb_lg_low &&
-- *      bayer(when AWB statisitcs is calculated) <= awb_lg_high
-+ *      bayer(when AWB statistics is calculated) >= awb_lg_low &&
-+ *      bayer(when AWB statistics is calculated) <= awb_lg_high
-  *  af_fir*: Coefficients of high pass filter to calculate AF statistics.
-  *
-  *  ISP block: S3A1(ae_y_* for AE/AF, awb_lg_* for AWB)
-diff --git a/drivers/staging/media/av7110/av7110.c b/drivers/staging/media/av7110/av7110.c
-index 06c43b5f8a87..432404eceaea 100644
---- a/drivers/staging/media/av7110/av7110.c
-+++ b/drivers/staging/media/av7110/av7110.c
-@@ -2347,7 +2347,7 @@ static int av7110_attach(struct saa7146_dev *dev,
- 
- 		/* RESET SAA7146 */
- 		saa7146_write(dev, MC1, MASK_31);
--		/* autodetection success seems to be time-dependend after reset */
-+		/* autodetection success seems to be time-dependent after reset */
- 
- 		/* Fix VSYNC level */
- 		saa7146_setgpio(dev, 3, SAA7146_GPIO_OUTLO);
--- 
-2.48.1
-
+Thanks,
+Charles
 
