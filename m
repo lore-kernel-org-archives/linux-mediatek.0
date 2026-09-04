@@ -4,77 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6817C624D3
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Sep 2026 11:32:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0EACC624D6
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Sep 2026 11:59:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u1mCSdap8EpKqZ+b8GT203WeV+0ASGDGtnDxfJT8fAs=; b=dVlsuTI9UAAinxxWtOJ8eF4aNF
-	94WgzLTzYOg4cIvLc7SMH4CkcmzxfwTKY8Q65Zsl38V5+ZINjGBZiyPTZ7zkNHGhOqdGAsZXY7Ip6
-	JJniriLx1SDbbcUHshciH1QwR/16gFBTv6ySX/hcO+YNCfonc6yPmGe8XFX2R4Eie6nmHCtofcglM
-	JeoNe0QYyUFYj7QpXtDObKzsEqrKB6iHXa4tByzsyusYqmEieri79MUk0sqmZdF0AHBcTNGB6+Jo7
-	BW2HUGkDkk1M7aIzgp6+L8VpH79hJnH+VGy5bXOP+EnJKluf4xHO7t0iS5uNOMERIntuc3Xv/VjG6
-	/DcLLrCQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=D51OQaPymGUeRCghX48Gk3kPeHwg7sCjWLRZ+NnuoY0=; b=kn24RsNT1tIfKM1Y2K5WbHxEGE
+	t8lmXCpMWQM610yFWGUQpw/cvbGw2pxpWbtFwAEbZawPCBqCvBsSzkpf6IQgdsN2Wt5TKnlqUpCEA
+	WnTfcPvEHUr0y/kwbyq5jPJjNC0jbLMLmHJVhKNfPVbigfnaMwtLM3eBo+uDDS+q1cJK09DJNTgC/
+	+y3IYwDJjurBz2rtFRiIADAqkFGELrOSkyo6clqyINl1d1c9ot1Gw7R3qHmKKhKkhEvAc/iEZtTqe
+	gDfz+Y8PQVDu7cAe/RiFnFiAOuAji+XFxER0lrPT35bk+ZH46l7acLGNo4P9XPTfhHbzuM7eYWVBM
+	JFrqXjtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2od3-000000041bz-1Axy;
-	Sat, 05 Sep 2026 11:32:13 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x2p3T-000000042xN-0agm;
+	Sat, 05 Sep 2026 11:59:31 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2od1-000000041bl-1SW8;
-	Sat, 05 Sep 2026 11:32:11 +0000
+	id 1x2p3Q-000000042wv-2wvT;
+	Sat, 05 Sep 2026 11:59:29 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4E55460209;
-	Sat,  5 Sep 2026 11:32:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 383661F00A3D;
-	Sat,  5 Sep 2026 11:32:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linuxfoundation.org;
-	s=korg; t=1788607930;
-	bh=u1mCSdap8EpKqZ+b8GT203WeV+0ASGDGtnDxfJT8fAs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=EI1FmdZQETscHvLCnLj3TD8ezP5sTSS0FaYeDegsBiKQEd93ERGxLuzIFoAqmkAxT
-	 QVFYqZmzF2NfEN8L+y6m6ckPbreoexmSsO+1HDG8wxwIg/TcuKsYKqP/Sk0Yko1VnO
-	 caGI/HV1rlAf59FK6aT+GM6UYEhyQC82iyil5fTI=
-Date: Sat, 5 Sep 2026 13:30:24 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Chen-Yu Tsai <wens@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>,
-	Bartosz Golaszewski <brgl@kernel.org>,
-	Daniel Scally <djrscally@gmail.com>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Wei Deng <wei.deng@oss.qualcomm.com>,
-	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
-	linux-acpi@vger.kernel.org, driver-core@lists.linux.dev,
-	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Alan Stern <stern@rowland.harvard.edu>,
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: Re: [PATCH v8 07/16] usb: core: Move struct usb_port and related
- APIs to port.h
-Message-ID: <2026090516-nutshell-handiness-37f9@gregkh>
-References: <20260904084158.1341550-1-wenst@chromium.org>
- <20260904084158.1341550-8-wenst@chromium.org>
- <2026090430-botanist-ungodly-0299@gregkh>
- <CAGb2v65MSxL+r+wqMjPKVSh9aS1gkn8og6oBinSXDdipnoOyCQ@mail.gmail.com>
- <2026090433-chair-tidings-5c99@gregkh>
- <apvQlBEgHOW9MCxN@ashevche-desk.local>
+	by tor.source.kernel.org (Postfix) with ESMTP id 917E06025B;
+	Sat,  5 Sep 2026 11:59:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7910C1F00A3D;
+	Sat,  5 Sep 2026 11:59:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788609567;
+	bh=D51OQaPymGUeRCghX48Gk3kPeHwg7sCjWLRZ+NnuoY0=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=BsbMrz/HgGZhfDPss1emYfP++PCe60dt5hFwzIZGnYzBdISCTYxXvigK5/dFt5wh+
+	 l67nD02jT/yrrKg7OmM0qPQiJQUHB+JWvh0H7QU0YKgkQNtPWlkwIiKeHP1KpyeTc9
+	 Kfzpu5F6fHK6bguTBiY0osvvf5sgWROCEyiIG2ndCOXCPKURjPwIYWPwKF27HfRhCC
+	 wC0CTy4bgRkF+pyY9gWlNV4wE3al50N4LPd08F00Wjc6gs/oWH0kBKlokNpg/OFjoF
+	 GR6etXhfzaiyjDgP7UmegQ5DlVe3JHBzzPATPXRvPtCB7uwlu2TJ1QMToBlJQT+bnm
+	 NiX4Yu+y3lqKA==
+From: Mark Brown <broonie@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Ikjoon Jang <ikjn@chromium.org>, Felix Gu <ustc.gu@gmail.com>
+Cc: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20260904-mtk-nor-v1-1-cefdca098f83@gmail.com>
+References: <20260904-mtk-nor-v1-1-cefdca098f83@gmail.com>
+Subject: Re: [PATCH] spi: mtk-nor: fix runtime PM usage count leak in probe
+ error path
+Message-Id: <178854774645.632048.7126140576103303391.b4-ty@b4>
+Date: Fri, 04 Sep 2026 19:49:06 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <apvQlBEgHOW9MCxN@ashevche-desk.local>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1140; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=uCd0Y2s1ntfPkF8I49DOtN1YzSDetCsyUch43wSRXSg=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqnAQaaY4GiSLKP34zq6mShUvL4Ags9zm8EIUcd
+ TVQl30UFWOJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCapwEGgAKCRAk1otyXVSH
+ 0Ct1B/9PW0ZumOIjwq2XTY3SF8GLJ8lUSYSFQ5+tCw8dj+FJ4IOHjqpq1TTz4TxBhd4LPCDLbtg
+ S1bJyRlP2KYMeBPyi5B2E89PVzLhQs47iDldDu1DuCw6QBQRIH93IcMcFDrv8HADXYjhkMubgDK
+ ZZe5Umaf88kWFs2Wn4d/ITXp3w7/yXcyo6FrjnricbLEAHUMdnw5unjGj0AOD7g+cnTIRRF2bQL
+ DSCzUzfRa1INdV4IkcP9ANHn6Ld4i0D52y+fm2S56vmNjxQWdCwPxxI+rLHYyJUgfLr1cxS6Xtx
+ krWthXEojov5bt8UsQBnTJoIW2fnoy7J2eyQSENdFWhIzxjU
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,36 +82,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Sep 05, 2026 at 11:19:32AM +0300, Andy Shevchenko wrote:
-> On Fri, Sep 04, 2026 at 07:52:37PM +0200, Greg Kroah-Hartman wrote:
-> > On Sat, Sep 05, 2026 at 01:24:20AM +0800, Chen-Yu Tsai wrote:
-> > > On Sat, Sep 5, 2026 at 12:47 AM Greg Kroah-Hartman
-> > > <gregkh@linuxfoundation.org> wrote:
-> > > >
-> > > > On Fri, Sep 04, 2026 at 04:41:46PM +0800, Chen-Yu Tsai wrote:
-> > > > > |struct usb_port| and its matching container_of() macro should live in
-> > > > > its own port.h, matching the split we have for .c files.
-> > > >
-> > > > Why?
-> > > 
-> > > This was requested by Andy. And to me it sort of made sense.
-> > > 
-> > > > > Move them as described. Also move usb_port_is_power_on(), since in the
-> > > > > next change its |struct usb_hub *| parameter will be changed to
-> > > > > |struct usb_port *|, and becomes a non-static function that only
-> > > > > references |struct usb_port|.
-> > > >
-> > > > No, please don't do that unless you have a really good reason.
-> > > 
-> > > Which part? Move the code?
-> > 
-> > Please don't make a new .h file.
-> > 
-> > Moving the function might make sense on its own if you need it in a
-> > different file later on, but do a move only, and then change things if
-> > you really need to do that.
-> 
-> Isn't this file to break possible circular dependencies?
+On Fri, 04 Sep 2026 23:51:29 +0800, Felix Gu wrote:
+> spi: mtk-nor: fix runtime PM usage count leak in probe error path
 
-If so, that was not stated here at all...
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-7.4
+
+Thanks!
+
+[1/1] spi: mtk-nor: fix runtime PM usage count leak in probe error path
+      https://git.kernel.org/broonie/spi/c/4cee1ed13e26
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
