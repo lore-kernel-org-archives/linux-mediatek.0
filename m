@@ -4,68 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A752AC79F82
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 23:49:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A09C5C79F82
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 23:55:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u8J4pfuEqg45wBz2OtxsLmdgWSWNFwt7hzDzefF/UB0=; b=dHln51qOWXAYnRg8N/gFy+xtNe
-	wv8JzMaG5Ir+v8KomwdhUcTnpCJS/p/QN/ozHf6iOIxRqWnF9e2+DRJIZr6NUKWXfBaMjQ7o/1YNM
-	Ld5uk63V3Bd0kvRerawyA1hJpal5QjihEbNzT3d9so/inZ9g59EVxVxERYbq+4md65KSWiUFU9bh2
-	pQLjgl4ItTTV7NDOScKo0z2Y3sPsMR0yoaGqMfZFcTf8jbJmcUEbT/+/s0HlEQs/zwDtOMqhuvROW
-	KOTijA+Lc5UfJyuTVSkGvYOgJlQfhw0Q8D2rdtt7SVwWDkGGxIDQzuuktUiZbX3rJAca4Pin17Q04
-	gQNvtTwg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0c3oGstG3xDxCXANdh3fAEvUFrpWDHb5nmqT1W/Ldvs=; b=eyc4/IZkqMlGRb7L3wc0leHLGE
+	peSaYko0TM7NoeLh8ZH5qXSbtXs19ZavNvCwFGjYwki1eDh8640VfqhSnsIFQN+0P2Zr2I9Asmytm
+	YJu3kJNvAK+bz033WGBrFrvDBknML3iWOgBuWmSFl1dm45/N02K/XQoQ/cmV1h4dOqYcTlBMMOubE
+	feEs7L6Owf/DCEz27x3lqdw64gZNCtzDzSJ5NnG8YxmB9uw99Gy6ymVblqzmeQh/e2RMR0PllQ4BQ
+	z4V0noBpF61CE9R1mS1ojvTYf8Zx4WAQCvPem3IHnMo5Q5DA+V8/0p2B5Q5P84xxCz9WIk6rgD6rK
+	HCjAymlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2dea-00000003UIG-02QA;
-	Fri, 04 Sep 2026 23:49:04 +0000
-Received: from out-54.mta0.migadu.com ([2001:41d0:1004:224b::36] helo=mta0.migadu.com)
+	id 1x2dl8-00000003UTm-2xzV;
+	Fri, 04 Sep 2026 23:55:50 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2deW-00000003UHl-0wU5
-	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Sep 2026 23:49:02 +0000
-X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=Ala5/BLJL1vTZTT5rbnsc1HNb2XPUuq3vvbqNTEsGFM=;
- c=simple/simple; d=justthetip.ca;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1788565735; v=1; x=1789170535;
- b=v0SOakSsLwcrG1+czFK5BX6o+NUDmnmQnkYAQ60LL+W0RvcfH9Y+gobOTuCvnJ9jMRT1PlQ1
- X1Y/UW0jMw8ESWwtM6GAg2jNgSGBqsNDIBjEZtxbCSupJsAT0gCYk2hB5MRX99ZtoDaUh51+6+/
- MAx6KxafXTk0u1/W9/xo7ilY4wjKuH/0lhyNOZZYWT6Al3UujxolEonJjkejK8X57w6N9FPW4In
- TrVrtMjv4yMkfPqQ05TMULzuMb3fhkO6i8zrhRaZ6xtASzG0s6MkdQI7QskHsnKEL6C1aqaf5vl
- RyOY1uIZ607s6+f4NByH70mPwzhHl6NWrRJ62Yy+ksk+w==
-X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id 8d2a338e5845b8b9;
-	Fri, 04 Sep 2026 23:48:45 +0000
-X-Mizu-Trace-ID: 8d2a338e5845b8b9
-X-Migadu-Flow: FLOW_OUT
-From: Devin Wittmayer <lucid_duck@justthetip.ca>
-To: Marco Scardovi <scardracs@disroot.org>
-Cc: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Deren Wu <deren.wu@mediatek.com>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
-	Klara Modin <klarasmodin@gmail.com>,
-	David Gow <david@davidgow.net>,
-	linux-wireless@vger.kernel.org,
+	id 1x2dl7-00000003UTU-0FLA;
+	Fri, 04 Sep 2026 23:55:49 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 83DB1435FC;
+	Fri,  4 Sep 2026 23:55:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 91CF31F00A3D;
+	Fri,  4 Sep 2026 23:55:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788566148;
+	bh=0c3oGstG3xDxCXANdh3fAEvUFrpWDHb5nmqT1W/Ldvs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=l9lUpTGQg78X2IgeMY/eRTQmMCZ6ao7s1+afbEuxXWapwpHDJrA0jp/JvZnXsSeiJ
+	 oS/l3ZJepGUQ/A9ARtwR89mGz1mbWu7+UiJnMmD3gtohKkwWSW1QaTDH0MFlQC7erw
+	 cYbI25bTNd1ic3OFu8s5uHfMcq4zaR+rb5yA+/IJkDrrDLKmvXqjDL7Hu6fcZTR22U
+	 P+9ibFxkOABgyDbXFEfu5uyiFKhRv7UtZj9AoCgcxqhjXHObMUuuZy5v44OnAgubPT
+	 TB8dpYVq14yt98KsWXWWZl0cv4Pjci+PWJ94zdrlPq9K2npgf2jck/dySHPYhdcrui
+	 AtB+7bK7kLNsw==
+Date: Fri, 4 Sep 2026 18:55:45 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Udaya Kiran Challa <challauday369@gmail.com>
+Cc: skhan@linuxfoundation.org, linux-kernel@vger.kernel.org,
+	matthias.bgg@gmail.com, me@brighamcampbell.com, conor+dt@kernel.org,
 	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] wifi: mt76: mt792x: fix NULL pointer dereference in mt792x_init_acpi_sar_power
-Date: Fri,  4 Sep 2026 16:48:38 -0700
-Message-ID: <20260904234838.19342-1-lucid_duck@justthetip.ca>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260904161826.5638-1-scardracs@disroot.org>
-References: <20260904161826.5638-1-scardracs@disroot.org>
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
+	angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org,
+	krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v5] dt-bindings: arm: mediatek: mediatek,g3dsys: Convert
+ to DT schema
+Message-ID: <178856614396.2615846.11646781132094655887.robh@kernel.org>
+References: <20260822093829.46295-1-challauday369@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_164900_919146_30710569 
-X-CRM114-Status: UNSURE (   8.92  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260822093829.46295-1-challauday369@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,29 +72,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 4 Sep 2026 18:18:26 +0200, Marco Scardovi wrote:
-> Fixes: f965333e491e ("mt76: mt7921: introduce ACPI SAR support")
 
-There is a patch for this from 25 August:
+On Sat, 22 Aug 2026 15:08:29 +0530, Udaya Kiran Challa wrote:
+> Convert the MediaTek G3D system controller devicetree binding
+> from the legacy text format to DT schema.
+> 
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+> Signed-off-by: Udaya Kiran Challa <challauday369@gmail.com>
+> ---
+> Changelog:
+> 
+> Changes since v4:
+> - Add Mediatek Soc maintainers in the send list
+> 
+> Link to v4:https://lore.kernel.org/all/20260326181726.64957-1-challauday369@gmail.com/
+> 
+> Changes since v3:
+> - Fix $id path to match new location
+> 
+> Link to v3:https://lore.kernel.org/all/20260325181509.3430-1-challauday369@gmail.com/
+> 
+> Changes since v2:
+> - Move binding to soc/mediatek directory
+> - Rename file to mediatek,mt2701-g3dsys.yaml based on fallback compatible
+> 
+> Link to v2:https://lore.kernel.org/all/20260323180616.23333-1-challauday369@gmail.com/
+> 
+> Changes since v1:
+> - Drop redundant description for reg
+> - Drop redundant description for provider properties
+> 
+> Link to v1:https://lore.kernel.org/all/20260315080302.454233-1-challauday369@gmail.com/
+> ---
+>  .../bindings/arm/mediatek/mediatek,g3dsys.txt | 30 ----------
+>  .../soc/mediatek/mediatek,mt2701-g3dsys.yaml  | 58 +++++++++++++++++++
+>  2 files changed, 58 insertions(+), 30 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,g3dsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,mt2701-g3dsys.yaml
+> 
 
-  https://lore.kernel.org/linux-wireless/20260825181712.28548-1-lucid_duck@justthetip.ca/
+Applied, thanks!
 
-Klara Modin reported it, David Gow confirmed the fix on a Framework 13.
-
-One note on the Fixes tag. The crash needs a regulatory update to run
-before registration, and that only started with these:
-
-  9b80bd9cab40  2026-06-09  mt7921 regulatory wiphy self manager
-  e9f3f1cc133f  2026-06-09  mt7925 regulatory wiphy self manager
-
-Before those it just set flags, so the 2022 commit would reach stable
-kernels that never had the bug.
-
-Your trace enters through the regulatory notifier, mine through
-firmware init. I could not find mt7921_regd_notifier_work in mt76
-here, so if you have a second trigger I would like to see it.
-
-Thanks for taking this one on.
-
-Devin
 
