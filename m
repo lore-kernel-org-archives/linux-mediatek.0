@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9861DC79F83
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 08:44:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CEC4C79F85
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 08:44:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KKk9MsFCuRaE3YN06XOCWIV3dU/ufhZe2dVPkS7i8qI=; b=b8hwHjJo5Jj+zjZILaNv13Du3R
-	egXxeRX7OxlrMm4Cq9y23HDPRMO/hADFOPqQ/MPlUrIEc5laSxqFSmPrJ8nphTK7fYcMCzpwjxeF3
-	wgJd7E+rJ3yTYO8zQ7J70QNHrP6C2qJm1vi7E/iie/cBE5ZX3ZWTTWnjxGKkFfDe05DPpy29+f1+F
-	CqeTzg7fbGX0UzRhL2FN0vrJihM+56fu/u/pLk/z2fNsUhheWSKRdyrdmvVIwoLx5+OHvpE/UKO0K
-	4SI8aTgIuLwVcBxDX2DhjiSMhvbJjdMZlWwnO7Fx9pjNUfDPAlRDGORvgaUlTMhgwS3gvvboTFplA
-	ITdusB7g==;
+	bh=W3sj2cYUAVCTd2rqI36VhEFdVQ+OlkMrPyaumoKtPAY=; b=4Wl0LqYffNsdHQFRMpeTGNTt8a
+	R5W7Gnp2DPCMvJ1fHI8+eLDL4ipyYmjCHMyi8pTM1Pbvn1eZjuKf3EA9COZ8swL1OIPZ4Y2QowEz+
+	zbiQDMWeqS3cTxPstdfZWSSCRvUIxeP4u5qpTDMfJr8qaYqOKmuScrNAPpNp0nBzBSbEN6901ZsVW
+	IVX/uuU2/yRPvqRyjb3Nz6vJDdM2uAuOHQjEUxRkVzZ8ZNmXTTQ++dWSGGUabaYDVF22iyTMrN5+t
+	wOLKQzmjIznFzjQ+P3V/ERovCBxBSc8RvkzkeGlJAiKzXbJQ1sat7PfHacexGVMfhYSYaV4cFa5K/
+	7oCfiGgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2PWk-00000001QAD-28ns;
-	Fri, 04 Sep 2026 08:44:02 +0000
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
+	id 1x2PWm-00000001QCh-3DcS;
+	Fri, 04 Sep 2026 08:44:04 +0000
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2PWf-00000001Q7e-34Lv
+	id 1x2PWl-00000001QAW-0LZ5
 	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Sep 2026 08:44:01 +0000
-Received: by mail-pj1-x1036.google.com with SMTP id 98e67ed59e1d1-398a4dcf289so875951a91.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 01:43:57 -0700 (PDT)
+	Fri, 04 Sep 2026 08:44:04 +0000
+Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-38511175ad3so655771a91.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 01:44:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1788511437; x=1789116237; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1788511442; x=1789116242; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=KKk9MsFCuRaE3YN06XOCWIV3dU/ufhZe2dVPkS7i8qI=;
-        b=PHN3jL3qXyz9rtmTMSgI6t9y7WQNDoQ2aEx4cCJh5RUJLSfwYkNb6/CjPhBvnzlX9d
-         LA3WRzK6WPADMGBVnTYG/7g+Z6zvEgKhpMTZ/Kjl6EwCT5B1Fi57Gvt4TO6ovVB3uBN0
-         sH+5LWGZdy5DZNsDb9Voyves8eKUJA+la9wJw=
+        bh=W3sj2cYUAVCTd2rqI36VhEFdVQ+OlkMrPyaumoKtPAY=;
+        b=a0KvA08CVP3MyiIN7NFByhrpKLCCRw3lUB3eUsUHBqdJgJHl6/6RWoSGbwLKLSPx5R
+         UG4VImPWPoOBicBETumSb8wpldAEhoK7ADVBNv0Mvx+0QuDCqry7HVKO5OYMrL9IQd0J
+         HHlI3xz3jbwUUaynnu+TU1LMye/H0mbitmABw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788511437; x=1789116237;
+        d=1e100.net; s=20251104; t=1788511442; x=1789116242;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=KKk9MsFCuRaE3YN06XOCWIV3dU/ufhZe2dVPkS7i8qI=;
-        b=e6j5XYZyTNG2AiZwNEXbrLdBOvpHxZFGLcEVwQ1VDLhGRkcL3BSbtpIgp1wia+qGpr
-         M52TnL1p0Kd6+ZCx26xOWTqDwSW6f1JVEDAXQxWqwuEql427KakBK2fY8IpigHLUhIH8
-         8e3BlwJIG3GwWfgQsFyTQi1LJYfr5pt1E+u/RBVl5hOpPr72vo8LlXxLT+8D8E1hOS/+
-         siEYcTe/wCqZc6r9wsyJnLldiODDkOsfI6ghiTucM4iEAhtvZfY7R8SeJnQ5QUDgy1Gp
-         zXCFJNN+EBzrniNhTAgNwE4glCyBEek7D2JwuRgCqsmySYjLSiH4//N8D/86f1oFW2lh
-         KbzA==
-X-Forwarded-Encrypted: i=1; AKwUvBygX7Z42firnyR1rxg0Mb1/NMCQZn5DrQ9DhGWWZ1mNSuoFLndZK3uDMIy/YRrtkj2l5A9pweTXfo0wHpZqTA==@lists.infradead.org
-X-Gm-Message-State: AFuF++m+ctCuQKYdvCgfGqTUmKWjBNDJxYewRkIfNl2PP+DW4/xmAPhh
-	JdDqNdGRC5tZceA1JrOYdGr4Ki9zUCoQfZ5txCqsWSqY1SDtYpawrWFjA+3sd83FDw==
-X-Gm-Gg: AYBFou01aYmJ4EXd0As5DnHqTz2O/SEcWcRyplhwscXByMMIG3WUfJm9pztTZARHYrV
-	x4S4Atet6PEIRgyIMPevJnrhGeIs+oujzzBaWn8MHYqQgudo2Klor+butt6d1XbXDY0YGt67JCO
-	z+/BVgEiG/ETrnR3NaSKXKtohuy6w9uHeNapJzq8I6rJgIzIx800B5yrRGMMUKM3Nn1p6vJY0QL
-	rmIvGyzRcTwDPPn7y+65QvW6OE4mxoofHilFQgxVJ4G9/vql2vzHOBEaVLxsFGdj3PtZOKmBaon
-	PHbrC8KneUc09p+RcBz3v2MUvLSTnV5sCHXo6nbhqKjkVNcjO1MynsrbFspBQ3AKNRKa5AGIbCa
-	Cz6/kYPYqnnFADWedqCLf+ihVcKP0Gk77WIXKNhEozlgb6vnjaNn0DH+776KzUk1PhfkJmMOgpO
-	x7jSFp/enH76S0fGeynsQU51oN0tdM1P9wn7gakJr33exBLr71mkSs9Yh+eFYYsppzKGsYqJkvG
-	jLoxxWsx6V20pPn+f2kx9cDVqxBPNkRIxdkowPE/qRp
-X-Received: by 2002:a17:90a:d004:b0:398:c9be:cca8 with SMTP id 98e67ed59e1d1-39b2609f363mr7918987a91.2.1788511436740;
-        Fri, 04 Sep 2026 01:43:56 -0700 (PDT)
+        bh=W3sj2cYUAVCTd2rqI36VhEFdVQ+OlkMrPyaumoKtPAY=;
+        b=hxGepmx2f+qeh471ttLuUjnwB4vhGXTpPeKyDBa+vowXLjZ7uY4l1L2Y8/9nN8KrmC
+         enrJ8A039TEw/LiurqSgjeIToa4hy+bXECqEc+Ni5gAD0QlgSrI9Q4j1Tqr7AC0OWCBg
+         PAB9pjXvNsR69XxnkHy7WpAV0lo3BmfSVfxRIx0gTwlnC48g7LNSTUpBcUAVAU0og95S
+         X/Z8byN/eiNHnPaKRYnD0hgEZQmA2+tnNc5t+nXEpwqfEXA3ihiluqzznNp1N+Rjb0h4
+         Rrz5PWKpSoxUSggKPDAY92iCAHrryHRQHU0FFHRm6o/FSzEo61EIYrja3ywuq21ZTBXt
+         dHPA==
+X-Forwarded-Encrypted: i=1; AKwUvByCt3/fuDoClz050JP2DxdYmXWwpRdKNsryqXR+OTt9Nz5pO3kQFxYNR/ytIAfQx+KyFYd/APCwkF9IuWhPNQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++k+KTLp0GR/T/aVCC4GGFtBVJnKH5v6ENEOhkxkgHg+IjXzfTnr
+	qvIcAQP3Rowumhw2v9alZ8RCHoZBPoHp3VQOSj1YzvtbtuzbMYbaLgs0diTK135iTA==
+X-Gm-Gg: AYBFou0x16s6Ya4qpa+bvUTWgkzyvG50UFePhq0x8eCxKGtXjkp2fB2eiRABMFcS5gF
+	QJ1fsMHTi4igN6RLC0Mz1b5B8d1/JVUSjWOxPIIgOWvYLte1+1v/PdOCEnZswKwMPwy+q9fQ9HT
+	AAZcmUsg+jUltrbcQ0gR3ECgV0STUF0sn+jaFGdBHBcMlJXY4AblH4wGmbEu2+WhqjwoKtrJ4Q4
+	0sdeWkT2AjsFabEiuGqbPhlVnovgqN+F+EMksTfEMU9o7467hSbxmI6RXdyRP3lW8fjxXBEx7bw
+	hFz+Zn8FD4W9XsQ59hEkHWQJbO1BHRvAybgf0EI4KEVl15QwucHPV19gpqup0aZaYrB3RaoT806
+	euYXnRKOETm+wpKn7FcKYx3HM4aYMMfAJ2ctRqBprDWYcApUL3gFXI+sK+sfQIsHygczuQZNXJ7
+	SpNbAqRXI75fiTs+2tlKqXLxwr0JMey6WvyBMqEHpqzw3/NW99sutv9gfEOJjwroYmPR3uSNkvh
+	bjyo6mLox0yqA21jtj117YLFnys0Ldpjf5tgmcve+XR
+X-Received: by 2002:a17:90b:4c51:b0:38e:57a3:f218 with SMTP id 98e67ed59e1d1-39b26204e5bmr5803481a91.13.1788511442063;
+        Fri, 04 Sep 2026 01:44:02 -0700 (PDT)
 Received: from wenst-7875.tpe.corp.google.com ([2a00:79e0:201d:8:343:bf21:3095:9c5])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39b260fdf9asm3343538a91.9.2026.09.04.01.43.51
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39b260fdf9asm3343538a91.9.2026.09.04.01.43.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Sep 2026 01:43:56 -0700 (PDT)
+        Fri, 04 Sep 2026 01:44:01 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Bartosz Golaszewski <brgl@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -95,17 +95,17 @@ Cc: Wei Deng <wei.deng@oss.qualcomm.com>,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Alan Stern <stern@rowland.harvard.edu>,
 	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: [PATCH v8 07/16] usb: core: Move struct usb_port and related APIs to port.h
-Date: Fri,  4 Sep 2026 16:41:46 +0800
-Message-ID: <20260904084158.1341550-8-wenst@chromium.org>
+Subject: [PATCH v8 08/16] usb: hub: Pass |struct usb_port*| to usb_port_is_power_on()
+Date: Fri,  4 Sep 2026 16:41:47 +0800
+Message-ID: <20260904084158.1341550-9-wenst@chromium.org>
 X-Mailer: git-send-email 2.55.0.979.g7e5102b832-goog
 In-Reply-To: <20260904084158.1341550-1-wenst@chromium.org>
 References: <20260904084158.1341550-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_014357_785889_3AC30CDB 
-X-CRM114-Status: GOOD (  25.28  )
+X-CRM114-CacheID: sfid-20260904_014403_126619_8C042229 
+X-CRM114-Status: GOOD (  18.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,241 +120,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-|struct usb_port| and its matching container_of() macro should live in
-its own port.h, matching the split we have for .c files.
+usb_port_is_power_on() currently takes |struct usb_hub*|, but only needs
+it to tell if the hub/port is SuperSpeed or not.
 
-Move them as described. Also move usb_port_is_power_on(), since in the
-next change its |struct usb_hub *| parameter will be changed to
-|struct usb_port *|, and becomes a non-static function that only
-references |struct usb_port|.
+In a subsequent change, usb_port_is_power_on() needs access to a pwrseq
+state tracking field in |struct usb_port|. Either structure can be used
+to identify whether a port/hub is SuperSpeed or not, as the field in
+|struct usb_port| is inherited from the hub:
 
-port.h is only included from hub.h, as a subsequent patch will directly
-use fields from |struct usb_port| in a static inline helper in hub.h.
-The USB internal headers don't have header guards to help with this.
+    port->is_superspeed = hub_is_superspeed(hub)
 
-Also drop 'extern' from the header declaration of usb_port_is_power_on().
-This is not needed in modern C.
+Replace usb_port_is_power_on()'s |struct usb_hub*| parameter with
+|struct usb_port*| so a subsequent change can use it.
 
-Suggested-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
 Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
-Changes since v4:
-- Dropped 'extern' (Andy)
-
 Changes since v3:
-- New patch (Andy)
+- Adapted to move of usb_port_is_power_on() to port.c and port.h
 ---
- drivers/usb/core/hub.c  | 16 ----------
- drivers/usb/core/hub.h  | 48 ++---------------------------
- drivers/usb/core/port.c | 16 ++++++++++
- drivers/usb/core/port.h | 68 +++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 86 insertions(+), 62 deletions(-)
- create mode 100644 drivers/usb/core/port.h
+ drivers/usb/core/hub.c  | 7 ++++---
+ drivers/usb/core/port.c | 6 +++---
+ drivers/usb/core/port.h | 4 +---
+ 3 files changed, 8 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/usb/core/hub.c b/drivers/usb/core/hub.c
-index c19c9912c740..7f58d753d77a 100644
+index 7f58d753d77a..1b891088a653 100644
 --- a/drivers/usb/core/hub.c
 +++ b/drivers/usb/core/hub.c
-@@ -3243,22 +3243,6 @@ static bool hub_port_stop_enumerate(struct usb_hub *hub, int port1, int retries)
- 	return port_dev->ignore_event;
- }
- 
--/* Check if a port is power on */
--int usb_port_is_power_on(struct usb_hub *hub, unsigned int portstatus)
--{
--	int ret = 0;
--
--	if (hub_is_superspeed(hub->hdev)) {
--		if (portstatus & USB_SS_PORT_STAT_POWER)
--			ret = 1;
--	} else {
--		if (portstatus & USB_PORT_STAT_POWER)
--			ret = 1;
--	}
--
--	return ret;
--}
--
- static void usb_lock_port(struct usb_port *port_dev)
- 		__acquires(&port_dev->status_lock)
+@@ -3294,7 +3294,7 @@ static int check_port_resume_type(struct usb_device *udev,
+ 	}
+ 	/* Is the device still present? */
+ 	else if (status || port_is_suspended(hub, portstatus) ||
+-			!usb_port_is_power_on(hub, portstatus)) {
++			!usb_port_is_power_on(port_dev, portstatus)) {
+ 		if (status >= 0)
+ 			status = -ENODEV;
+ 	} else if (!(portstatus & USB_PORT_STAT_CONNECTION)) {
+@@ -3736,12 +3736,13 @@ static int wait_for_connected(struct usb_device *udev,
+ 		struct usb_hub *hub, int port1,
+ 		u16 *portchange, u16 *portstatus)
  {
-diff --git a/drivers/usb/core/hub.h b/drivers/usb/core/hub.h
-index 9ebc5ef54a32..de524c6da9fc 100644
---- a/drivers/usb/core/hub.h
-+++ b/drivers/usb/core/hub.h
-@@ -15,7 +15,9 @@
- #include <linux/usb/ch11.h>
- #include <linux/usb/hcd.h>
- #include <linux/usb/typec.h>
-+
- #include "usb.h"
-+#include "port.h"
++	struct usb_port *port_dev = hub->ports[port1 - 1];
+ 	int status = 0, delay_ms = 0;
  
- struct usb_hub {
- 	struct device		*intfdev;	/* the "interface" device */
-@@ -78,51 +80,6 @@ struct usb_hub {
- 	struct list_head        onboard_devs;
- };
+ 	while (delay_ms < 2000) {
+ 		if (status || *portstatus & USB_PORT_STAT_CONNECTION)
+ 			break;
+-		if (!usb_port_is_power_on(hub, *portstatus)) {
++		if (!usb_port_is_power_on(port_dev, *portstatus)) {
+ 			status = -ENODEV;
+ 			break;
+ 		}
+@@ -5437,7 +5438,7 @@ static void hub_port_connect(struct usb_hub *hub, int port1, u16 portstatus,
+ 		 * but only if the port isn't owned by someone else.
+ 		 */
+ 		if (hub_is_port_power_switchable(hub)
+-				&& !usb_port_is_power_on(hub, portstatus)
++				&& !usb_port_is_power_on(port_dev, portstatus)
+ 				&& !port_dev->port_owner)
+ 			set_port_feature(hdev, port1, USB_PORT_FEAT_POWER);
  
--/**
-- * struct usb port - kernel's representation of a usb port
-- * @child: usb device attached to the port
-- * @dev: generic device interface
-- * @port_owner: port's owner
-- * @peer: related usb2 and usb3 ports (share the same connector)
-- * @connector: USB Type-C connector
-- * @req: default pm qos request for hubs without port power control
-- * @connect_type: port's connect type
-- * @state: device state of the usb device attached to the port
-- * @state_kn: kernfs_node of the sysfs attribute that accesses @state
-- * @location: opaque representation of platform connector location
-- * @status_lock: synchronize port_event() vs usb_port_{suspend|resume}
-- * @portnum: port index num based one
-- * @is_superspeed cache super-speed status
-- * @usb3_lpm_u1_permit: whether USB3 U1 LPM is permitted.
-- * @usb3_lpm_u2_permit: whether USB3 U2 LPM is permitted.
-- * @early_stop: whether port initialization will be stopped earlier.
-- * @ignore_event: whether events of the port are ignored.
-- */
--struct usb_port {
--	struct usb_device *child;
--	struct device dev;
--	struct usb_dev_state *port_owner;
--	struct usb_port *peer;
--	struct typec_connector *connector;
--	struct dev_pm_qos_request *req;
--	enum usb_port_connect_type connect_type;
--	enum usb_device_state state;
--	struct kernfs_node *state_kn;
--	usb_port_location_t location;
--	struct mutex status_lock;
--	u32 over_current_count;
--	u8 portnum;
--	u32 quirks;
--	unsigned int early_stop:1;
--	unsigned int ignore_event:1;
--	unsigned int is_superspeed:1;
--	unsigned int usb3_lpm_u1_permit:1;
--	unsigned int usb3_lpm_u2_permit:1;
--};
--
--#define to_usb_port(_dev) \
--	container_of(_dev, struct usb_port, dev)
--
- extern int usb_hub_create_port_device(struct usb_hub *hub,
- 		int port1);
- extern void usb_hub_remove_port_device(struct usb_hub *hub,
-@@ -138,7 +95,6 @@ extern int usb_clear_port_feature(struct usb_device *hdev,
- 		int port1, int feature);
- extern int usb_hub_port_status(struct usb_hub *hub, int port1,
- 		u16 *status, u16 *change);
--extern int usb_port_is_power_on(struct usb_hub *hub, unsigned int portstatus);
- 
- static inline bool hub_is_port_power_switchable(struct usb_hub *hub)
- {
 diff --git a/drivers/usb/core/port.c b/drivers/usb/core/port.c
-index c0a51d9b06a6..b2e953f137f8 100644
+index b2e953f137f8..8d686d43e996 100644
 --- a/drivers/usb/core/port.c
 +++ b/drivers/usb/core/port.c
-@@ -22,6 +22,22 @@ static int usb_port_block_power_off;
- 
+@@ -23,11 +23,11 @@ static int usb_port_block_power_off;
  static const struct attribute_group *port_dev_group[];
  
-+/* Check if a port is power on */
-+int usb_port_is_power_on(struct usb_hub *hub, unsigned int portstatus)
-+{
-+	int ret = 0;
-+
-+	if (hub_is_superspeed(hub->hdev)) {
-+		if (portstatus & USB_SS_PORT_STAT_POWER)
-+			ret = 1;
-+	} else {
-+		if (portstatus & USB_PORT_STAT_POWER)
-+			ret = 1;
-+	}
-+
-+	return ret;
-+}
-+
- static bool usb_port_allow_power_off(struct usb_device *hdev,
- 				     struct usb_hub *hub,
- 				     struct usb_port *port_dev)
+ /* Check if a port is power on */
+-int usb_port_is_power_on(struct usb_hub *hub, unsigned int portstatus)
++int usb_port_is_power_on(struct usb_port *port, unsigned int portstatus)
+ {
+ 	int ret = 0;
+ 
+-	if (hub_is_superspeed(hub->hdev)) {
++	if (port->is_superspeed) {
+ 		if (portstatus & USB_SS_PORT_STAT_POWER)
+ 			ret = 1;
+ 	} else {
+@@ -114,7 +114,7 @@ static ssize_t disable_show(struct device *dev,
+ 	}
+ 
+ 	usb_hub_port_status(hub, port1, &portstatus, &unused);
+-	disabled = !usb_port_is_power_on(hub, portstatus);
++	disabled = !usb_port_is_power_on(port_dev, portstatus);
+ 
+  out_hdev_lock:
+ 	usb_unlock_device(hdev);
 diff --git a/drivers/usb/core/port.h b/drivers/usb/core/port.h
-new file mode 100644
-index 000000000000..00f7500af336
---- /dev/null
+index 00f7500af336..2f4349b3ce6b 100644
+--- a/drivers/usb/core/port.h
 +++ b/drivers/usb/core/port.h
-@@ -0,0 +1,68 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * usb hub driver head file
-+ *
-+ * Copyright (C) 1999 Linus Torvalds
-+ * Copyright (C) 1999 Johannes Erdfelt
-+ * Copyright (C) 1999 Gregory P. Smith
-+ * Copyright (C) 2001 Brad Hards (bhards@bigpond.net.au)
-+ * Copyright (C) 2012 Intel Corp (tianyu.lan@intel.com)
-+ *
-+ *  move struct usb_port to this file.
-+ */
-+
-+#include <linux/container_of.h>
-+#include <linux/device.h>
-+#include <linux/mutex_types.h>
-+#include <linux/usb.h>
-+
-+#include <uapi/linux/usb/ch9.h>
-+
-+/**
-+ * struct usb port - kernel's representation of a usb port
-+ * @child: usb device attached to the port
-+ * @dev: generic device interface
-+ * @port_owner: port's owner
-+ * @peer: related usb2 and usb3 ports (share the same connector)
-+ * @connector: USB Type-C connector
-+ * @req: default pm qos request for hubs without port power control
-+ * @connect_type: port's connect type
-+ * @state: device state of the usb device attached to the port
-+ * @state_kn: kernfs_node of the sysfs attribute that accesses @state
-+ * @location: opaque representation of platform connector location
-+ * @status_lock: synchronize port_event() vs usb_port_{suspend|resume}
-+ * @portnum: port index num based one
-+ * @is_superspeed cache super-speed status
-+ * @usb3_lpm_u1_permit: whether USB3 U1 LPM is permitted.
-+ * @usb3_lpm_u2_permit: whether USB3 U2 LPM is permitted.
-+ * @early_stop: whether port initialization will be stopped earlier.
-+ * @ignore_event: whether events of the port are ignored.
-+ */
-+struct usb_port {
-+	struct usb_device *child;
-+	struct device dev;
-+	struct usb_dev_state *port_owner;
-+	struct usb_port *peer;
-+	struct typec_connector *connector;
-+	struct dev_pm_qos_request *req;
-+	enum usb_port_connect_type connect_type;
-+	enum usb_device_state state;
-+	struct kernfs_node *state_kn;
-+	usb_port_location_t location;
-+	struct mutex status_lock;
-+	u32 over_current_count;
-+	u8 portnum;
-+	u32 quirks;
-+	unsigned int early_stop:1;
-+	unsigned int ignore_event:1;
-+	unsigned int is_superspeed:1;
-+	unsigned int usb3_lpm_u1_permit:1;
-+	unsigned int usb3_lpm_u2_permit:1;
-+};
-+
-+#define to_usb_port(_dev) \
-+	container_of(_dev, struct usb_port, dev)
-+
-+struct usb_hub;
-+
-+int usb_port_is_power_on(struct usb_hub *hub, unsigned int portstatus);
+@@ -63,6 +63,4 @@ struct usb_port {
+ #define to_usb_port(_dev) \
+ 	container_of(_dev, struct usb_port, dev)
+ 
+-struct usb_hub;
+-
+-int usb_port_is_power_on(struct usb_hub *hub, unsigned int portstatus);
++int usb_port_is_power_on(struct usb_port *port, unsigned int portstatus);
 -- 
 2.55.0.979.g7e5102b832-goog
 
