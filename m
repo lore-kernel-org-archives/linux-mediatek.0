@@ -4,99 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B69AC624DE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 15:06:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69C9FC624DE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 15:51:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7gNCncRwcYB9lWmv5bcgCTAj/WG9KBrvFMQ3voJc5e4=; b=tt1sFLOoIuWkzhyFO/N5XRNvxd
-	aSt2BxSKRzmgQssSCn67sJxMxc8qtINS3ygJUUB9JzVen6RXnEwV61mKGjgpRRStdg1wf49tFwj6D
-	Jp/SPPr40tBf9Zy90u27y5R0k8hJe1YZySTSHLNUxBTDN2rV/39f99/io7fvQVgNy4li1gG6u7J5/
-	9bxRSVIDqFpw3M62j6C7Si+6juhIP81MB5Oib3uzUVyJetAeWX75qyOS44Ddk0j/Ax7GJM8VUILsc
-	A3ZGHw88Jct38KMgGlaFX945iShnrqXca7hPZjGybeWffQJq7T9Bry3B8XEYtXnq0qEma4il3Um3g
-	v9HJ3cBw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1wI7K97Z7sffgIc6844mzrHNbwJsm2GeFEd77pMsddk=; b=kle4GV4jdKjs4pzXsNyCADmDR7
+	7+8qebTso28O+ATyrBZ9ZKKcBmxluS/g1AIRnUnCCbAwzcx4iaPME/KIu4naISGQZ6E+6azAu1XfU
+	znihnpLpQR81rrIsgZoubrw5SZVQP/gNOFwegCDeE+bxHoSzV2bCw0VeCw6oq5a3f/CN+spV2mwQZ
+	MoKONs98QIbLC9IzvKpRGsTLpaXPFYVlm4S+8DJulPp7ivBPhoxeF0sP7ny+v3efm8RYXq18ixIpr
+	QchsqMP67U8g3QgZrzUMBGzzoE2Jwx/bkvDw8rfvkYvYLPTUQLOvpW3gpcBrp7DDqkTbDDt4MRtlv
+	anD5+JBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2VUj-00000002TK1-40Nm;
-	Fri, 04 Sep 2026 15:06:21 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1x2WCb-00000002a7y-0idr;
+	Fri, 04 Sep 2026 15:51:41 +0000
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2VUh-00000002TIU-2pgB
+	id 1x2WCZ-00000002a77-2G6j
 	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Sep 2026 15:06:20 +0000
-Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-5b4afc8465eso1557298e87.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 08:06:18 -0700 (PDT)
+	Fri, 04 Sep 2026 15:51:40 +0000
+Received: by mail-pg1-x534.google.com with SMTP id 41be03b00d2f7-cc149372c14so660464a12.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 08:51:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1788534377; x=1789139177; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=7gNCncRwcYB9lWmv5bcgCTAj/WG9KBrvFMQ3voJc5e4=;
-        b=AAubGdWJC4bFWw2S3bXMkFeNT9f0VYcvAhZUmfxj2pborv1QQO9grJjgltdh1o7wyo
-         IZrK/+4H6tXbqaoH/m5qEx4swfdp2QL/HmRuFiZq7pVEkFKIDB7H0IChtgDgXihpWfG+
-         VI5ZsheIPjkzJjhkeH+PPcL+ON8K1kuH3PhJQ=
+        d=gmail.com; s=20251104; t=1788537098; x=1789141898; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=1wI7K97Z7sffgIc6844mzrHNbwJsm2GeFEd77pMsddk=;
+        b=HcfxoytA1yNP6zg62urS431Tr6TEfefli7XB27dsWrfgAGVYLliy+9QiRqORsb8eSi
+         ca4OyjsglkbZPaSBMgEGEEw8O+rgdaY0cy6vt84lgQbWu+4lsy+L6H+BRLk67troIWkr
+         M67F8n80e+eisNY2WpSjXfxxAkKMJT2v0nVRq2/tpNbSYz3BWZkKYP+234E0zPCXonAE
+         vTHGFXANq6yHxlr8Gi5o2TRSDLlgZ3Cu7nwHZcMEVO20eW7pkgbaEWl8WmWkFA4YKwQA
+         QgbibRjjTPxXeLjRXEaoMmpV1TEAXbQjF62lseax8UFWzUFP6gY8VUgy/g8/2AWe75a9
+         891w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788534377; x=1789139177;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=7gNCncRwcYB9lWmv5bcgCTAj/WG9KBrvFMQ3voJc5e4=;
-        b=lyBY9u5S1eY0KTs2T8XCoI+LAtFMC1W0H2HQ3oZzUjb2dt67G5ANJG2RYE9pNGZ7jw
-         pbddeMSGOaTB73swH2r8EGqufzTDT5RUZ0V+Yw3Z4JEQxtfhPB8boyrBbvjEHKKrHNvY
-         bQ2uTQdPAZkIfEj+7O1/3a/Tdwda5qcDXf08Zfjyp8cAx7rGgDgrtlTdAK55MBZzVqBW
-         uyF+/SixL+KaFxFSDCRgUq64GZGJq2NE69ZzJFHhjzf8YCcdLOsU3tVQpB7OJhVtbGDU
-         JaeI0BpRvZnOv8DUaFo4brx9nthIVwDNi19mWKxTEbMD1yAs5X0uHB2qGCaGcdmL9cl0
-         bpXw==
-X-Forwarded-Encrypted: i=1; AKwUvBxtS1ZcwDPW+cgb2nDjxfvvDrE6qyQE/Nlz3docga1okKVR3GcPAnzYQ36IhTTUae2sAiXy4zdtonILu8nZQg==@lists.infradead.org
-X-Gm-Message-State: AFuF++kqKF1+tPID9I4Nwiyj2Y+4IY8V1S5jeqhAUqdMWzubI6Qk4ln8
-	bh/DxBERIWIiLCNkxtFkZok7wmBQcCK42M0JwmI0B2Tsyx+VVOcDDlCGHl5Xm6u55Sdnr4Bxo3y
-	Xecs=
-X-Gm-Gg: AYBFou2NHCb+Q/9JruklKbMjsbq0vJiaj+8wZmjRx6FgVgLzaRE6VlPrBYe/Oyt29cv
-	RlMAYbN6pB9HUQObNMckRj5godOYvkW3mtq/uTX9STo4XzwInszenaWQheHHmgZ1rPmmzs26QIW
-	8rok+OjLVC4lnw0l4b80xzjbGGWwlcinoPtjUB4ctyWdB7QFRDIb8NdlGjaS17EXmISNOGT7sW1
-	2PYWg3vVAy69DNRZsOwkk1dUlaEArKiv6j2lVOwZmW508AOcyFUuxoFBS7qd5EFIvHryKJTVK0O
-	NcjaJBmbJtVUb3hE9uZ4eaM+VPo7a1rv/tc1TCfXLusRzPO3xoGhevLUHVW/noLvzaTjCawlk1y
-	bJii+eSP9Ean4u2IYJLIyp8SWF32zoyGuA1OJiPaNKhd/Znju5ycbnOCPUUV7/L7DHfnpG9Aiu3
-	Ugg4sdyq/aKmMTstdVRiH/FQ1XLT0P595Xo+ACmXgX3rPH7oZATUkmRqJpM/olKG+wJEi5rAS0G
-	nRhox+nlQaaDV/98WBTK5GAZP8=
-X-Received: by 2002:a05:6512:a356:b0:5b6:1a7c:fd97 with SMTP id 2adb3069b0e04-5b61a7cfe4fmr605144e87.61.1788534377155;
-        Fri, 04 Sep 2026 08:06:17 -0700 (PDT)
-Received: from mail-wr1-f52.google.com (mail-wr1-f52.google.com. [209.85.221.52])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5b616700006sm559442e87.57.2026.09.04.08.06.08
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 04 Sep 2026 08:06:11 -0700 (PDT)
-Received: by mail-wr1-f52.google.com with SMTP id ffacd0b85a97d-482e4998d28so827749f8f.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 08:06:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AKwUvBxJen4RQUGJlKZIFndUQc1ViKqSLmSWfI7h1/jfTQSRuixPHyfTlTf8YQn2HIQ+iovws/tbzRbzC3X6J6W0kw==@lists.infradead.org
-X-Received: by 2002:a05:6000:60e:b0:485:8c16:a355 with SMTP id
- ffacd0b85a97d-4858c16a6c2mr4328911f8f.45.1788534366728; Fri, 04 Sep 2026
- 08:06:06 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1788537098; x=1789141898;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=1wI7K97Z7sffgIc6844mzrHNbwJsm2GeFEd77pMsddk=;
+        b=q035W55L612oozxRBHfHHJ79aeqv/y1LNRXjmlcGFF7ck1MW7n6SuQJXYsATWLsOa0
+         r2Co6D3hW/+ZjrTF8hFDaH0HANCY4fI14zF/Dsr6BQJ5ReWNr5PcvfNPtwziHNbq8UZ4
+         Pbfkp7P0Cd9op024+ZeSkdGgZ9jthal0d/Df/j71RCLCU4E5myUsMrSYduCOXaU3IVbB
+         hW0U6kv/unOff9bkDgzZQfDncJLW5L4hvTyfkYV2Uk4+S3FUENjjtee9YI+v0XFMJHbG
+         3ptg+QojKh3SuN7Rh0f8b8z/WomfQ9EeHezl/thrWfuwvZsb90zTjAgB5sPnw8RzDcYA
+         Uvdw==
+X-Forwarded-Encrypted: i=1; AKwUvBy3hXQgB2hX9k+OzUwdxAeFQLYnssaxQmEFH+fxnXELy7iJp15PpqqoGo45gnBbDJfzMHNCv3zBzoxxBIhdig==@lists.infradead.org
+X-Gm-Message-State: AFuF++lRcfkyC9yFVl5B7CMmjWgy5tTD/erPR0V4OqdPuT5mXwOcv5et
+	UcCeZnTk1eHr0KICpyw7jGwW0jDTN/go35+vfmLZH+OxqleIBXrH9nd4
+X-Gm-Gg: AYBFou0QNuAErZbdf1JJEl3irXsYF6VZoLgwEFtTRxGrZ81TE+UR1FBhFu3IqT2dRqH
+	TG1SizrWl2514Q7dko5f0SP8osumuyFP314FEyI7Rb3JQrXa75iVgabFgzXc+ujJBhm4tJyOB4M
+	oMetXrdHP8F5yJ65ZY5RpBluqcwrTqMZNHpI3EWmzQYN0dNIXtMMSkbTUK12gR/iVMVTnQCuLMG
+	6QbMQW4dSBwl4voj7ilttdC/aygxC+HarEvtFqCE1tG+KcMjVfM012y9Eb5mjyLPhicwef6Vpuu
+	0Z9Ebq2fRRGs4oGkLOHI+wDsEH+htpRUMFL+HwOSWV8KG3GpIH1CJdZKVRyXBWjK0uZVrpEwDA5
+	0wkMgcE1IxAVwkuXtUDrYT0Rn5yaHjtd5+2+LQMlNDH9xrRUgw10XxpPme0A1rOntml2sBnhIan
+	GqMSyYwvELDO9ClTO52SalDqS/8ujhd+BstF7ingQGPGaqL/ueMRfi20Q0d/Ve0lbY4ol5hO106
+	HNDsp+YeqSaKiR4HqlKHD+KgaLok76NsVx2DXlTl2VcH97E+EcqjEtS
+X-Received: by 2002:a17:90b:2749:b0:398:d292:e6d5 with SMTP id 98e67ed59e1d1-39b26304385mr11311044a91.24.1788537097799;
+        Fri, 04 Sep 2026 08:51:37 -0700 (PDT)
+Received: from junjungu-PC.localdomain ([223.166.246.74])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39b083e4fafsm11390320a91.1.2026.09.04.08.51.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 04 Sep 2026 08:51:37 -0700 (PDT)
+From: Felix Gu <ustc.gu@gmail.com>
+Date: Fri, 04 Sep 2026 23:51:29 +0800
+Subject: [PATCH] spi: mtk-nor: fix runtime PM usage count leak in probe
+ error path
 MIME-Version: 1.0
-References: <20260904035009.4114363-1-justin.yeh@mediatek.com>
-In-Reply-To: <20260904035009.4114363-1-justin.yeh@mediatek.com>
-From: Doug Anderson <dianders@chromium.org>
-Date: Fri, 4 Sep 2026 08:05:55 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=Us7FrQ2GYYSfm+freDNTWv8xd260kA2Z3B5jFzw5OBgw@mail.gmail.com>
-X-Gm-Features: AcwNN1U5Q3Et8gbm1HfFEKvqA92RRKLIkp4skB9nrMClbBiYdjjt_11lut00YBI
-Message-ID: <CAD=FV=Us7FrQ2GYYSfm+freDNTWv8xd260kA2Z3B5jFzw5OBgw@mail.gmail.com>
-Subject: Re: [PATCH] HID: i2c-hid: Skip SET_POWER on shutdown for panel followers
-To: Justin Yeh <justin.yeh@mediatek.com>
-Cc: Jiri Kosina <jikos@kernel.org>, Benjamin Tissoires <bentiss@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Maxime Ripard <mripard@kernel.org>, Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260904-mtk-nor-v1-1-cefdca098f83@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXM0QpAMBTG8VfRubY6pDVeRS6YMw4ZbSMl7264/
+ NX/+y7w5Jg8VMkFjg72vNqILE1Aj60dSHAfDTnmEkssxBJmYVcnENGYUndKSQOx3hwZPr+nuvn
+ t924iHd453PcDww0MN2sAAAA=
+X-Change-ID: 20260904-mtk-nor-000ff9cb886f
+To: Mark Brown <broonie@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Ikjoon Jang <ikjn@chromium.org>
+Cc: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Felix Gu <ustc.gu@gmail.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1788537093; l=1008;
+ i=ustc.gu@gmail.com; h=from:subject:message-id;
+ bh=fC8E2y6Z5Q/OrCnge+02KY1tB0zJIUqzvl0v1HTFuJY=;
+ b=Hjljg0NeZLG5gJIKscFNfsTfPBNzmXNZzZZdjt+VFCksVrkMrlsQ8WNQBjn0I6eayViNdBFXR
+ nC28js6qxURAaeHZi6f0vbvRDNT3CXLfJnL8bkidZcn+YRJwCce1Rff
+X-Developer-Key: i=ustc.gu@gmail.com; a=ed25519;
+ pk=fjUXwmjchVN7Ja6KGP55IXOzFeCl9edaHoQIEUA+/hw=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_080619_728810_FA1C9C68 
-X-CRM114-Status: GOOD (  14.45  )
+X-CRM114-CacheID: sfid-20260904_085139_587512_3407F23B 
+X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,30 +115,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+mtk_nor_probe() takes a runtime PM reference with
+pm_runtime_get_noresume() before registering the controller, but the
+error path never drops it.
 
-On Thu, Sep 3, 2026 at 8:50=E2=80=AFPM Justin Yeh <justin.yeh@mediatek.com>=
- wrote:
->
-> When an i2c-hid device is a panel follower, drm_atomic_helper_shutdown()
-> unprepares the panel before device_shutdown() gets around to the i2c
-> client. The panel_unpreparing() callback already calls
-> i2c_hid_core_suspend() with force_poweroff set, which sends
-> SET_POWER(SLEEP) and then drops the device's regulators.
->
-> So by the time i2c_hid_core_shutdown() runs, the controller is unpowered
-> and can no longer complete a transfer. On MT8196 the SET_POWER(SLEEP)
-> issued there burns the full i2c-mt65xx bus timeout before failing,
-> adding two seconds to every reboot.
+Balance the get with pm_runtime_put_noidle() in the error path.
 
-I don't think there is any guarantee here though, is there? In your
-case the panel might have been powered off before
-i2c_hid_core_shutdown(), but is there something that ensures that? I'm
-not aware of it.
+Fixes: 3bfd9103c7af ("spi: spi-mtk-nor: Add power management support")
+Signed-off-by: Felix Gu <ustc.gu@gmail.com>
+---
+ drivers/spi/spi-mtk-nor.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Would it be better to follow in the example of i2c_hid_core_remove()
-and just remove ourselves as a panel follower? That would
-automatically call the power-off functions if needed, right?
+diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
+index 63f5139176c8..6b6e55d68048 100644
+--- a/drivers/spi/spi-mtk-nor.c
++++ b/drivers/spi/spi-mtk-nor.c
+@@ -929,6 +929,7 @@ static int mtk_nor_probe(struct platform_device *pdev)
+ 	return 0;
+ 
+ err_probe:
++	pm_runtime_put_noidle(&pdev->dev);
+ 	pm_runtime_disable(&pdev->dev);
+ 	pm_runtime_set_suspended(&pdev->dev);
+ 	pm_runtime_dont_use_autosuspend(&pdev->dev);
 
--Doug
+---
+base-commit: 9d80aa4617b32f5054c5aa471d06b66704854935
+change-id: 20260904-mtk-nor-000ff9cb886f
+
+Best regards,
+--  
+Felix Gu <ustc.gu@gmail.com>
+
 
