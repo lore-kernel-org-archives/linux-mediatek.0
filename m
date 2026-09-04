@@ -4,85 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E00E3C624DE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 08:31:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22F2CC79F80
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 08:37:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ni8LvFSJr+XgYvhSP5Cdjh+BAaWLohkeApHNkr1D8gg=; b=UaoNoVwckFAouInj6Z6wSdAnF7
-	DnXd5eeAPs9qfr+JeMean2FudsudJUnDhhJPR23V6UX3EEcxGmCZDtvWl5Oc4FfnCKs/abDu9i1Al
-	N4gN29SDpjfeaW0sXknfNCas70urbH0GF/hoDX0wPySEXIbi/M8JKPopL3BqlLFDqCelZg1t5xhb2
-	YhDLAecWcsOZx49ApDIoFaa3Jwni59nDLow/vLZiT/NjIRDoePWxUDnepY+9PwwcJrEYHjUmSU8Pv
-	idzBMplsUR6fkkdWUFcBkhmvnHBHwuszCM3UZPhAS7suRKaSrnPCzaJ/brPM35Edl3/EbTzxvicyp
-	1gb1RDJg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
+	bh=9PIL/kPnMxq3P5cVAkbNzmiNq+J34/FFMbTiuCsg88Q=; b=1v/8qhf7rjF1akkO6M6Xqbiz9p
+	vZH8GizmrCQ5DBAgjnOTlQH97xR7MVPfuBQ3mjFc4gO/lHtur5WHbkvkPA0FI1pXJ5gbl6Ydo+gr5
+	MKdA0SgGEeSamScWsqE1RZiL8MhqonAINl7++C8YDIH1QjWQc/LXImu2os87kga1sc575rDQA/bLa
+	mOQbissc0W0YlGouXjSgIEMB+tbm+sE6GAkippQrQ+laGdYg0Ek43ymcDKFe6GiPqzuNgnzG43JC5
+	5EGe7geiqmxtYX+Y8p6YQAe6uF652xScoCh6GAEd85fNDlc8GRhIrLWtLk2LhXu565B45Pg7+bjMZ
+	gQkeeqMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2PKv-00000001NZ3-2fMA;
-	Fri, 04 Sep 2026 08:31:49 +0000
-Received: from galois.linutronix.de ([193.142.43.55])
+	id 1x2PQ8-00000001OVM-1B4s;
+	Fri, 04 Sep 2026 08:37:12 +0000
+Received: from mailout1.w1.samsung.com ([210.118.77.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2PKs-00000001NYE-0ZUA;
-	Fri, 04 Sep 2026 08:31:47 +0000
-From: Kurt Kanzenbach <kurt@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020; t=1788510701;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ni8LvFSJr+XgYvhSP5Cdjh+BAaWLohkeApHNkr1D8gg=;
-	b=gttbMfVVlEFz0vwmhyl2UM7QFWXHhN7dt7R+1bsEHeKIgAH8sOFUAljmU5Slq8DnBldN/L
-	PbBgAYX5a4HSVVnDtM1YppRAxGVoaGu2rK+qxoXKDYgIWDjMJFj8SHeRufakemijRthssk
-	9l17gITZVrV9eaKKbjNnqO0FkoVBfV2VfrZhGYRZO4l4N+QEwy3MdwUU5w4Uhay1ZfNj53
-	S5jhuW5tSItcx99d9W6hLYaZfQr/KfrQqA30hw5bZhNcTEc4wqfy5upmo5hCqEWiJwX5rF
-	KdRHrK1OWEoXK5hEXJXutHiubCFb8QCfynLbPmFhrPYEdbaiZjmazFu1KNmKRA==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020e; t=1788510701;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ni8LvFSJr+XgYvhSP5Cdjh+BAaWLohkeApHNkr1D8gg=;
-	b=zstC7P9hAO4OqH4XqbNAIJmdq79e8/C2mtXgbCCc+HkMZ99jOLLbrwhGA5OlrpZ5Mt4Mew
-	XxHSfG2uSXSQ5+BQ==
-To: Siddharth Vadapalli <s-vadapalli@ti.com>,
- dario.binacchi@amarulasolutions.com, mkl@pengutronix.de,
- mailhol@kernel.org, msp@baylibre.com, florian.fainelli@broadcom.com,
- jonas.gorski@gmail.com, andrew@lunn.ch, olteanv@gmail.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, hauke@hauke-m.de, chester.a.unal@arinc9.com,
- daniel@makrotopia.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, ansuelsmth@gmail.com,
- linusw@kernel.org, luizluca@gmail.com, alvin.sipraga@analog.com,
- clement.leger@bootlin.com, justin.chen@broadcom.com, dlan@kernel.org,
- rogerq@kernel.org, hkallweit1@gmail.com, linux@armlinux.org.uk,
- rjui@broadcom.com, sbranden@broadcom.com,
- bcm-kernel-feedback-list@broadcom.com, opendmb@gmail.com,
- andrei.botila@oss.nxp.com, wangruikang@iscas.ac.cn, amadeus@jmu.edu.cn,
- kees@kernel.org, tmshlvck@gmail.com, c-vankar@ti.com, horms@kernel.org,
- vadim.fedorenko@linux.dev, daniel.zahka@gmail.com,
- nora.schiffer@ew.tq-group.com, v-singh1@ti.com, oss@vassilevski.com,
- haokexin@gmail.com, alex@sverdlin.org, aleksandr.loktionov@intel.com,
- lgs201920130244@gmail.com
-Cc: linux-can@vger.kernel.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- linux-riscv@lists.infradead.org, spacemit@lists.linux.dev,
- linux-omap@vger.kernel.org, s-vadapalli@ti.com
-Subject: Re: [PATCH net-next 11/33] net: dsa: hellcreek: Remove comma after
- sentinel-entry in match-table
-In-Reply-To: <20260904043724.2955444-12-s-vadapalli@ti.com>
-References: <20260904043724.2955444-1-s-vadapalli@ti.com>
- <20260904043724.2955444-12-s-vadapalli@ti.com>
-Date: Fri, 04 Sep 2026 10:31:38 +0200
-Message-ID: <877bl14dud.fsf@jax.kurt.home>
+	id 1x2PQ2-00000001OS0-0mkH
+	for linux-mediatek@lists.infradead.org;
+	Fri, 04 Sep 2026 08:37:10 +0000
+Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
+	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20260904083658euoutp010152c1fd069203685e556f80392f56b6~SEUuNEAZS2924729247euoutp01I
+	for <linux-mediatek@lists.infradead.org>; Fri,  4 Sep 2026 08:36:58 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20260904083658euoutp010152c1fd069203685e556f80392f56b6~SEUuNEAZS2924729247euoutp01I
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1788511018;
+	bh=9PIL/kPnMxq3P5cVAkbNzmiNq+J34/FFMbTiuCsg88Q=;
+	h=From:To:Cc:Subject:Date:References:From;
+	b=OcL5ju4AonUTzK9Ge087FQnJstUcn0MPleQ4C5m1FRsL1xv6MKilFPklLZISGAADY
+	 4gpQaeGD9E+gXstRDv42+nA4MUmPAU/kNIF7+fyCbT8qb+cNsZM6wa/Nkp/BfymUcQ
+	 yxul+lYmgUZ5emXDZtoZ8dRXV7mfKcON9pdTTr7s=
+Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
+	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
+	20260904083657eucas1p18056c0eacd7ba79401c8fb11150954ea~SEUt8Oz_y2337323373eucas1p1w;
+	Fri,  4 Sep 2026 08:36:57 +0000 (GMT)
+Received: from AMDC4653.digital.local (unknown [106.120.51.32]) by
+	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
+	20260904083657eusmtip28ebc646c943dfc2d88fd5b5d1282e30b~SEUtgfgC_1075010750eusmtip2c;
+	Fri,  4 Sep 2026 08:36:57 +0000 (GMT)
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+To: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Marek Szyprowski <m.szyprowski@samsung.com>, Chunfeng Yun
+	<chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
+	<gregkh@linuxfoundation.org>, Steven Rostedt <rostedt@goodmis.org>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Subject: [PATCH v2] USB: mtu3: tracing: fix pointers dereferencing
+Date: Fri,  4 Sep 2026 10:36:43 +0200
+Message-ID: <20260904083644.2010063-1-m.szyprowski@samsung.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha512; protocol="application/pgp-signature"
+Content-Transfer-Encoding: 8bit
+X-CMS-MailID: 20260904083657eucas1p18056c0eacd7ba79401c8fb11150954ea
+X-Msg-Generator: CA
+Content-Type: text/plain; charset="utf-8"
+X-RootMTR: 20260904083657eucas1p18056c0eacd7ba79401c8fb11150954ea
+X-EPHeader: CA
+X-CMS-RootMailID: 20260904083657eucas1p18056c0eacd7ba79401c8fb11150954ea
+References: <CGME20260904083657eucas1p18056c0eacd7ba79401c8fb11150954ea@eucas1p1.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_013146_325188_65E93348 
-X-CRM114-Status: GOOD (  14.15  )
+X-CRM114-CacheID: sfid-20260904_013706_755097_104A6936 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,53 +83,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---=-=-=
-Content-Type: text/plain
+Commit b5cc230af5e5 ("tracing: Warn when an event dereferences a pointer
+in TP_printk()") added a warning when printing an event dereferences
+a pointer, because it might be already freed at that time.
 
-On Fri Sep 04 2026, Siddharth Vadapalli wrote:
-> Since sentinel is the last entry and we do not expect further entries
-> following it, remove the comma.
->
-> Signed-off-by: Siddharth Vadapalli <s-vadapalli@ti.com>
+MTU3 driver is one of the drivers triggering this warning. Fix it by
+storing the DMA address in the event structure to avoid dereferencing
+gpd_ring pointer during event printing.
 
-Reviewed-by: Kurt Kanzenbach <kurt@linutronix.de>
+Fixes: 83374e035b62 ("usb: mtu3: add tracepoints to help debug")
+Reviewed-by: Steven Rostedt <rostedt@goodmis.org>
+Reviewed-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
+---
+v2:
+- fixed typos in commit description
 
-> ---
->  drivers/net/dsa/hirschmann/hellcreek.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/net/dsa/hirschmann/hellcreek.c b/drivers/net/dsa/hirschmann/hellcreek.c
-> index 2c6cabf61143..aec50414986e 100644
-> --- a/drivers/net/dsa/hirschmann/hellcreek.c
-> +++ b/drivers/net/dsa/hirschmann/hellcreek.c
-> @@ -2093,7 +2093,7 @@ static const struct of_device_id hellcreek_of_match[] = {
->  		.compatible = "hirschmann,hellcreek-de1soc-r1",
->  		.data	    = &de1soc_r1_pdata,
->  	},
-> -	{ /* sentinel */ },
-> +	{ /* sentinel */ }
->  };
->  MODULE_DEVICE_TABLE(of, hellcreek_of_match);
+v1: https://lore.kernel.org/all/20260804100531.88576-1-m.szyprowski@samsung.com/
+---
+ drivers/usb/mtu3/mtu3_trace.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
+index 89870175d635..b24c6411a8cf 100644
+--- a/drivers/usb/mtu3/mtu3_trace.h
++++ b/drivers/usb/mtu3/mtu3_trace.h
+@@ -224,6 +224,7 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+ 		__field(unsigned int, flags)
+ 		__field(unsigned int, direction)
+ 		__field(struct mtu3_gpd_ring *, gpd_ring)
++		__field(dma_addr_t, gpd_ring_dma)
+ 	),
+ 	TP_fast_assign(
+ 		__assign_str(name);
+@@ -235,12 +236,13 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+ 		__entry->flags = mep->flags;
+ 		__entry->direction = mep->is_in;
+ 		__entry->gpd_ring = &mep->gpd_ring;
++		__entry->gpd_ring_dma = __entry->gpd_ring->dma;
+ 	),
+ 	TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p/%pad flags %c:%c%c%c:%c",
+ 		__get_str(name), usb_ep_type_string(__entry->type),
+ 		__entry->maxp, __entry->slot,
+ 		__entry->mult, __entry->maxburst,
+-		__entry->gpd_ring, &__entry->gpd_ring->dma,
++		__entry->gpd_ring, &__entry->gpd_ring_dma,
+ 		__entry->flags & MTU3_EP_ENABLED ? 'E' : 'e',
+ 		__entry->flags & MTU3_EP_STALL ? 'S' : 's',
+ 		__entry->flags & MTU3_EP_WEDGE ? 'W' : 'w',
+-- 
+2.43.0
 
------BEGIN PGP SIGNATURE-----
-
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmqageoTHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzgmpcD/0ZDNE5OcjIaORENBAJWFAfQ8t8cbUh
-WxjiC8fuzfyKdtApGPQhshKlZofeGLdoAehqDcWBUJDl0J3RcQ9Ctr0P8l3MZdsd
-y9/sT1oyBhsd95NPT96hkZILmwnEvQaSsCZSKbGVgNRbbZt/xNkpYuOjIPX8S2hl
-r27yN9gFoVJsLAHISO8qhZo7t5BDC0qS/Qzyz9qht0XQIfv3SFiw4NO8orcRg0KA
-T2fwrgVYmo7Qof2xOvtJ6feG6VrptC8hESQlQlFZJ6n6ceeWwy9lzGE6XsYqIFaN
-23gkwiMHTfhrmFSGbGCZS5XL8xVWhmi52cNCUPfnUIQesxmVjUCiQbccli6qUJac
-HDXlcN61mtTozJ36MTplagiLTRd6E7VemrUOCS8zL102tpoWBBjK/B0q/A7lHP3Q
-eGlbD2OX6pdggFhilV6Ig6w+aggtjQ2aUhY2tQj9uQ/RXRUJcjd+6JVV+ESi4Gw8
-oK6+a1yTbPAccgeRsKfKH33xOOyRLlaLStYp7TsNSTa2tLu5mOv0K+YC1uchFd82
-a3xDgTDaT6l35FoPZZawkcShojIkr1doEiQfbKeg7AbOjUvUI+OYoYnRdpIR81pc
-BhVu/HDfLVb3r8MXb6z8f0pulfgjpvxVAJJatZgmEJxPSkzOeBZvSY8cm+PN5H6k
-WTJGMjW9Vm8MMg==
-=3DPy
------END PGP SIGNATURE-----
---=-=-=--
 
