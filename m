@@ -4,176 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D631AC624DE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 12:17:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F422BC61DD6
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 12:52:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Sj+5aMY2yuNuOhKyG6wLa892Yt3ZhQuKHFnJY1HFgpI=; b=2LpF5pT26qYdE81WlAupqbEMn+
-	dkq+L/F4VFGvJ2XZLSVojTrk8yRRh10fNRVRxw1ocjGKvMkJuHbfh1sL4Rv3O6kc034T4TqWc+wN6
-	QoQNBtTMF+KTpR5NHcqzVsK7gqNAZFwE2bKE3XShQFrHiuqL/crezYOTUHWnyXxDYBniN7MoICoeI
-	hmARyhig5uwtCYjw/xJ6AiJTI8DibgVtHcrJlmz/Bv1WqMu2pBlZCGAAXdSgdXMlnfKXRIRoHVnf9
-	Xts2EtjCNoNAK60MjItVLq3MACSsPeCINZa5Cu00R2oV06kfIzVvjuxKpNa1pEtpIPkSsbTzRXVuz
-	VUxCjd4g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=yCG99e+5QxRQXSuO8zd59u52whzEDFO7RhFXyu9E9Gk=; b=X7DZkbhOttzYnMdGqNvLkmycuP
+	z/2gQdITM09lmK2oNpNYMevMzoMmAkJgnJzECD13LCfiDN2BoLHwfSBoij/gBJXXpBT4FvZZ6WRPG
+	qGUuLNFZet+L0RT5CiO7+rjfqluSetjFYY9g2e4bIQkgd/Dx9hmiAoA1X+VA/Y+ZyEjFG75q3WX0v
+	zOkx9LDF/MuKJtWMBfK9qgQut1NqWI4AiUPvz/PyjdFjIK+UyNfVT9iPv87Mu7KBKBbgFX8MKIWpg
+	Fub76/eg3B3SXpI9nD+WOu96eTEpbr/0NYB0diEITzLMF+qhD0YksXT277nmbQ5Bj3RfaBwC/C7qj
+	FNKHCsFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2SrT-000000020P7-1WWp;
-	Fri, 04 Sep 2026 12:17:39 +0000
-Received: from mx0a-001ae601.pphosted.com ([67.231.149.25] helo=mx0b-001ae601.pphosted.com)
+	id 1x2TP3-0000000252g-2jdg;
+	Fri, 04 Sep 2026 12:52:21 +0000
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2SrQ-000000020OK-38Pj;
-	Fri, 04 Sep 2026 12:17:38 +0000
-Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
-	by mx0a-001ae601.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6844HU2p2479378;
-	Fri, 4 Sep 2026 07:16:31 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=cc
-	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=PODMain02222019; bh=Sj+5aMY2yuNuOhKyG6
-	wLa892Yt3ZhQuKHFnJY1HFgpI=; b=Qru1NFesv7TxZ/zTTndDpvVJ83qYvx+NWV
-	/n6VXis/5cbDftXesXCW8rOKZlqNfDlHqSMuAcCWzhBCZjToCDlBubxvpRDEaYu8
-	yJonZQKHosU/8An5wJKZV+k7/o6tpSzYYPiH6NC5FeIPOEc20EfPqiYBdyWnldbD
-	iIjHDdLLxL1JeKK01Smo78XLjnsRAvt/WSRcfnB7Bb5SVNJlIas1W+nht016MtUB
-	GpT/R+PCcRhEc4mmo0se9mudn+LJA4CV33DW/U1VKxne2ukAslBp1dHffE3Zzcff
-	SnPM5+0lN0pp/W731bzu7DrRzZpnaqN/L6O5/OQG+ay+nZ4efRfg==
-Received: from sn4pr0501cu005.outbound.protection.outlook.com (mail-southcentralusazhn15011023.outbound.protection.outlook.com [52.102.140.23])
-	by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 4geyrqj92b-1
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
-	Fri, 04 Sep 2026 07:16:30 -0500 (CDT)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=CZ+tw183jh9y7Miy+T+ZNneIEB64IT/lK/PA464+eeIyxZSlomLUsb6R67J3W0a9J8uujKRFIk4lwdeaGzeBEWeLUZsRYSZINKaGMM0LOpmuTfbp0MyhHooXgKdos8GYHkuGAtao/ip8q5F3Kc3aAlUdbQ0Z7WeCGI9HN7KMT4yFz/vLT4zJzuSHMPpIdilPzNDs6UWmmYtdwgGq/BdsDF8fEmDySkDcVPQrKTfm62zJjAlzKK904JZoNaAYJneQLHbWmjCW/eRB4rRuqWczNI+TFMhEJCT8KFYjIbDrH4wpMUzbxEWizuUoeCpz+RMPAtRojr3asBcLmZ1AeDexFg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Sj+5aMY2yuNuOhKyG6wLa892Yt3ZhQuKHFnJY1HFgpI=;
- b=VgIqd6ANDksUtbP0oRc72OS3jBJOWka8AaEUx2Hf/IWVcH6EDPBQQRB9wy/hmKeTglTAEgrkv4st9JFbmQJzImjXB1BvE+3irJ0wJWEimNUwUbBmLYS2M4NIrgdpA5goS4ad+fWgrRztzNPJQfDtCYwKhjE7ttzvRSD7PqJ6r7jemyiK0lSQ+e2uQewlRCxbNQB3ZBoHJKNlslOff2/Fhnhqm7Cc6jyTwoKIf0ryyo+4506myJtyFhLNR2AhEg3SN4io3yAl5ebQ+pT0RUDWwZrNUUJpzhubYMioE9IdHZT6qSTBiPUpvTggRQAuPx716zKjiyIMRd4ZvAXyeN/H1g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=softfail (sender ip
- is 84.19.233.75) smtp.rcpttodomain=analog.com
- smtp.mailfrom=opensource.cirrus.com; dmarc=fail (p=reject sp=reject pct=100)
- action=oreject header.from=opensource.cirrus.com; dkim=none (message not
- signed); arc=none (0)
+	id 1x2TOz-0000000250s-1dab
+	for linux-mediatek@lists.infradead.org;
+	Fri, 04 Sep 2026 12:52:20 +0000
+Received: by mail-pj1-x1031.google.com with SMTP id 98e67ed59e1d1-3965d3d9ab8so662694a91.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 05:52:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=cirrus4.onmicrosoft.com; s=selector2-cirrus4-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Sj+5aMY2yuNuOhKyG6wLa892Yt3ZhQuKHFnJY1HFgpI=;
- b=y+mB2nEO3q+E0iavWy77RNm86c6aqEzrQvOTwK2YNBofcQ72IvXC1Mc+6V6WCXojaBUWf8/hnRq8qE8MopdG1vQ+IvN7eL2d+jkWQ8wtf1itFblJgmZSbLCGg1KfRbDSIyWggVI+ePwgBhRzvPzEOWg5zDZo/sCE485xE23YjK0=
-Received: from PH0P220CA0002.NAMP220.PROD.OUTLOOK.COM (2603:10b6:510:d3::14)
- by PH7PR19MB6088.namprd19.prod.outlook.com (2603:10b6:510:1df::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.360.13; Fri, 4 Sep
- 2026 12:16:26 +0000
-Received: from BY1PEPF000264B2.namprd02.prod.outlook.com
- (2603:10b6:510:d3:cafe::39) by PH0P220CA0002.outlook.office365.com
- (2603:10b6:510:d3::14) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.21.382.13 via Frontend Transport; Fri, 4
- Sep 2026 12:16:26 +0000
-X-MS-Exchange-Authentication-Results: spf=softfail (sender IP is 84.19.233.75)
- smtp.mailfrom=opensource.cirrus.com; dkim=none (message not signed)
- header.d=none;dmarc=fail action=oreject header.from=opensource.cirrus.com;
-Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
- opensource.cirrus.com discourages use of 84.19.233.75 as permitted sender)
-Received: from edirelay1.ad.cirrus.com (84.19.233.75) by
- BY1PEPF000264B2.mail.protection.outlook.com (10.167.242.118) with Microsoft
- SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.382.8
- via Frontend Transport; Fri, 4 Sep 2026 12:16:24 +0000
-Received: from ediswmail9.ad.cirrus.com (ediswmail9.ad.cirrus.com [198.61.86.93])
-	by edirelay1.ad.cirrus.com (Postfix) with ESMTPS id 09554406543;
-	Fri,  4 Sep 2026 12:16:23 +0000 (UTC)
-Received: from opensource.cirrus.com (ediswmail9.ad.cirrus.com [198.61.86.93])
-	by ediswmail9.ad.cirrus.com (Postfix) with ESMTPSA id DD351820247;
-	Fri,  4 Sep 2026 12:16:22 +0000 (UTC)
-Date: Fri, 4 Sep 2026 13:16:21 +0100
-From: Charles Keepax <ckeepax@opensource.cirrus.com>
-To: Hemanth Selam <hemanth.selam@gmail.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
-        Rob Herring <robh@kernel.org>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>,
-        Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-        Andrei Simion <andrei.simion@microchip.com>,
-        Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-        Nicolas Ferre <nicolas.ferre@microchip.com>,
-        Alexandre Belloni <alexandre.belloni@bootlin.com>,
-        Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-        Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-        Lars-Peter Clausen <lars@metafoo.de>,
-        Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
-        David Rhodes <david.rhodes@cirrus.com>,
-        Richard Fitzgerald <rf@opensource.cirrus.com>,
-        Support Opensource <support.opensource@diasemi.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Oder Chiou <oder_chiou@realtek.com>,
-        Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
-        Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
-        Cezary Rojewski <cezary.rojewski@intel.com>,
-        Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
-        Bard Liao <yung-chuan.liao@linux.intel.com>,
-        Kai Vehmanen <kai.vehmanen@linux.intel.com>,
-        Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
-        Srinivas Kandagatla <srini@kernel.org>,
-        Jarkko Nikula <jarkko.nikula@bitmer.com>,
-        Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-        Masami Hiramatsu <mhiramat@kernel.org>, linux-kernel@vger.kernel.org,
-        linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org, patches@opensource.cirrus.com,
-        linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-        linux-omap@vger.kernel.org
-Subject: Re: [PATCH] ASoC: fix typos in comments
-Message-ID: <apq2lVTP6tyymn5r@opensource.cirrus.com>
-References: <20260904110315.11650-1-hemanth.selam@gmail.com>
+        d=gmail.com; s=20251104; t=1788526336; x=1789131136; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=yCG99e+5QxRQXSuO8zd59u52whzEDFO7RhFXyu9E9Gk=;
+        b=HjVuLj8X52nNj4xUYbtLDbtzUFpOucprnspa6AmzSNrJ04EF2T+7JUphCz8uAtXACg
+         KoJ8g06MIwjr+fHfUysNvm5toRv1kJI4gYA2fVqRNIrsBSK3PbBdXLcLfWzQu0eheEQW
+         QFPk1Dq0H+kuL9FJV/kfuU7sxOmaLfdoXRVHuM42V9LsOj8V3qQEVay57Vis7SqTDjbq
+         zm/CvvKDjiEc0dLQQZaPH+2zm+5deTFs0GhO6CU/HJIkBe95mS8+hSzI9ciGfUgXVUln
+         z4C1jQPzPhCDEmyAtVlkY4GrMxciLrQjD9+46Ka6asE2slAndh/5krSr/WlhkeB5n7Iv
+         fASA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788526336; x=1789131136;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=yCG99e+5QxRQXSuO8zd59u52whzEDFO7RhFXyu9E9Gk=;
+        b=S4RKnu49jz4GWTdHwwhAsWVjrQE7MV1l4S8Dlysc5QvvAXWKsaW3iAif5Vpe1yIgh5
+         hcK4oNM2p7mY0mEr2Ky6H+NvG4b5oU9K6WbmjmlbpdhqgQ19hVNV5cgJvNX0NRXUqc+A
+         5tr4OXYdUkiy1Q5T24TWnVZtMxG47AtGb3CfPoXo1qA4PdU5tEo1LYPjSs4HZ2jVVE6C
+         SHTObUdaosZL06JZzSnAZOLdmpfOYlyuXn9wjh5NGG4BFA9zlBCavA3JZypVsqmevM8z
+         QhX7L9NClZKeK674jKHmlwgeLBoZ+0c7nMKy8QOfWnjwDmCySHO8u+6K6U4bt7QXu/qh
+         i+9Q==
+X-Forwarded-Encrypted: i=1; AKwUvBwu6q/0QtlHBsgdQ095d6bE0L6tJ3kCfSKgKjw6f9/suBkGIvQK+vITkzvgBdQWVzB/DSVVlLHT2yw0mOuUwA==@lists.infradead.org
+X-Gm-Message-State: AFuF++m7u5KPqVqxkkAv1lNAGiqRkP6pl63mNMFyIQTffeRwKREG+z7+
+	0WFgaJPjNmsppMgtjb2cdobNC0hcbcoOQ4HBDjUzlfYbnInAHbWf0M5v
+X-Gm-Gg: AYBFou3BAaFNrVyRFwFH2ygW7TUN31chc2LQmwXYFOzVVQLPtrHf2gQE16nxyBvrpU9
+	VoA9QlRrSI6bC0I4BuaIcupAtwtMHB0R4kgDntARHWI8wtF6fFK4z8hk1KgMJQATJ6pE3hP5lDO
+	mQj2Be3Kiy4w4IADECWlOnxzutfU2XnjWvmi8x0AX5rem83OqeuEdDMmTDryP44tDvI0HQ54kIm
+	ixTl+ej7WahKdHy4fTECcPIMQmEiQAwGj9SGn2fdPHbfP5ahKV06TIViOzjeHFRM++86u8Ug36D
+	aD6ovfNVuUwUvTL7Ws7WdrwcH5PLXcWo7HGeaOMhnQGoqqKgo3uRxZ4Nca1w2AaPGDaJr5x8Cs9
+	2rPGSpsNXfLkuMKwtIRFLSs8RFZmJ7tC5loRfW93sU7GjZFqv4HNWz7ffmBv/4blFl7Q+tJrYbC
+	GA7ZndRRWE6CZ+1/nwLVfTS0I1LUhBgZN0Au2DEzDuptUbGfQXoSZj6Uf/Ylty8HUo8JnHUtriW
+	X9xdX/yZBmgrgI=
+X-Received: by 2002:a17:90b:1dc3:b0:398:d6f4:c61a with SMTP id 98e67ed59e1d1-39b26207ee4mr9145959a91.17.1788526335895;
+        Fri, 04 Sep 2026 05:52:15 -0700 (PDT)
+Received: from volcano9f6e-hostos.amd.com ([165.204.217.251])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3339af25062sm9816370eec.16.2026.09.04.05.52.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 04 Sep 2026 05:52:15 -0700 (PDT)
+From: Hemanth Selam <hemanth.selam@gmail.com>
+To: Robert Jarzmik <robert.jarzmik@free.fr>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Richard Weinberger <richard@nod.at>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
+	Han Xu <han.xu@nxp.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Pratyush Yadav <pratyush@kernel.org>,
+	Michael Walle <mwalle@kernel.org>,
+	Takahiro Kuwano <takahiro.kuwano@infineon.com>
+Cc: linux-kernel@vger.kernel.org,
+	linux-mtd@lists.infradead.org,
+	imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] mtd: fix typos in comments
+Date: Fri,  4 Sep 2026 18:22:03 +0530
+Message-ID: <20260904125208.12099-1-hemanth.selam@gmail.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260904110315.11650-1-hemanth.selam@gmail.com>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BY1PEPF000264B2:EE_|PH7PR19MB6088:EE_
-X-MS-Office365-Filtering-Correlation-Id: 177a3fc7-82fd-4ade-3488-08df0a7e5705
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700016|23010399003|82310400026|376014|7416014|34020700016|61400799027|22082099003|18002099003|16102099003|56012099006|11063799006|10067099003|12100799066;
-X-Microsoft-Antispam-Message-Info: fHKxuKve1yQOQtOLE+rm2ltXnt1xN006AlWKeOH2hvAfjAX/cBRtL3fLTnxX/FaSilbMATWJRfZQiOBmwHxSB6CtdsdY4og3zExpR74GW/SOTvh6IHJOjuLLt8x44iwRkQjJ/xUUGTYiM0WJ19kFVgFbh4zTieTuPEuSXXlH+uZMFsgiaucbLf/9Kab7xjHV98rWfsNeF4xIDnaSetYoAV27hYKA4OdEz13Pa38sj4tc0enVE7OWDosBzD7kmWCYDKHyi+OuWbOBI7v7kWD7CW2cqcQGAbQEmvEptTIWWiSo1QYu2sQ/tp6NDU37FPs60LWiw/Jb8hRk/1ovkjRlfHzVKkCd+WUn/iw0HuaNsltea3eDHo5y6q94z9nJbCadvnxZJ8GlEj4n8qB6zs4xFIyS3w6VvkIKszjP1ilrGlcDIUMs5GgW44YUo58GinFwA7NzhL7gcjdo9lGzQISaRlwGyiko06B2LqItWa1zl+M7ZZZoKXMTTtIVvL/b4vMD/qOwDcBugR4p9/drQjhZ2gVg3+8iEBvg/cY/nJoZXBWtS6WEiBzSnVjc5DMQmfe/C32SK0x4mNKo6C2U6E/GEycJ/OzR2d5IkImtNYdvmiQUj8A7qUf2x6gjurpkS16SaWw+06GF3iTiiO9Heo0zmW9uNQD3V3ipG2v1JuCXDl0zGvOIeSpdvKwL/JBEanVmQqqOcvJXACHuSh3zvTMX9w==
-X-Forefront-Antispam-Report: CIP:84.19.233.75;CTRY:GB;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:edirelay1.ad.cirrus.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(36860700016)(23010399003)(82310400026)(376014)(7416014)(34020700016)(61400799027)(22082099003)(18002099003)(16102099003)(56012099006)(11063799006)(10067099003)(12100799066);DIR:OUT;SFP:1501;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 4/UATG3P+x7p3Sqog5oWKvtRIEC+C6ZP1GmjUbN1IKdHf5ApdugGsfi94LJgWzP8QXj6fPD3vx5FB9K4LXb25wUsZ/qyaYxVuqsvpZh1FVPIy/WHBOcfoFW1Qg10v7ZaRzeC61F9j5LGk9AlgHzhBtG4O0fO+xSoAUXRszPWqVAz7wmhG8gvELhF5/0MuHZ3IbGI1YZoxtOTWR8CPtQ+tfNuwq6xULCgQN9YmHcdzOZ0/nEEURKF4WIhZGa9nHjvO43sia/BSoU6jSBsGUucwjIlXsow0exUthlfv0DW7FnGEHn7uuwihnTv0rR4SrbPDDU7YyMfm4MeA+KnKzO1GVWTd8Og0xzX3zqU8givTGQ5AvV0OtPsEs/iH+SQMuFosnijmMUCYrYIYAjFaMmDfwubKijEmfU0+CwOZutBjIwuURCorsNw9DsEb3JAxZvE
-X-Exchange-RoutingPolicyChecked: M/byfnsx8hh+JhGTvW+i3nMQRkPVY1593nZlvdnTVKKoC40JyP9LWV/VuZrWA54WgaI9/4h4XYQFLorrv1fN3IuuL0ZeME+ycbc9opGmSJSDchi5YQt0x2vgwieX+I2WyUrzvqwiVa+IIqX8HMP/dqdjEOMRDLZQq5WiuhM65tOyqSHawvxkZQ2atlH551TGTL05aGzUGZw+9VrnxA0u0vnAtj6uEChjpCbE3gnksRXQ8ZSdcxHs0oQHgS9wslZG/Dge9/wIFy4JKvtah646cH7/Sewm6fvhKqjOTqeHIGLPtVFrsRCFzgkPC7/m8JAe2PchP5UsokIRS/xFdXMFHg==
-X-OriginatorOrg: opensource.cirrus.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Sep 2026 12:16:24.9023
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 177a3fc7-82fd-4ade-3488-08df0a7e5705
-X-MS-Exchange-CrossTenant-Id: bec09025-e5bc-40d1-a355-8e955c307de8
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=bec09025-e5bc-40d1-a355-8e955c307de8;Ip=[84.19.233.75];Helo=[edirelay1.ad.cirrus.com]
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TreatMessagesAsInternal-BY1PEPF000264B2.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR19MB6088
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTA0MDExMCBTYWx0ZWRfX/5j9x+xsGmKR
- n/bacUt0uIwbopKKrxqwsKmnu0EiwvmVzUkZsx6zpCTCCh/QutPkb7yfItSbqm+oWD2CWCBQB28
- QgAjIQXHFueU+AlNI+zjPayfeyaD3sxK6X4SRG10/aQUzFklkbOAfGeoxDGRBR5QZUKIeRWmXvE
- tzuiHbYhX5Ejxm7yY+wIDanDwOH6fZNUIb9kXzbkIG+4rkr6jRwF8HFY/iYCoTnEBqTC7aG/VS8
- 8wxBkrJEqeAqeBP4Z9nPdaZ+Ljx5TusihQriBAxejIaimpXEnjN407yW02WmgfnRfw7ungZ+iEB
- jQzyhigzVv3RDsQrF4XllMtCk8wyDTRsaATDiR3LxPMG/a/qbF4YXDcu/bto3NrppfbiSEaM0bJ
- gqRULXTHNzbaEbgTPKjEDsaCScw/kJxxTJR0XUBXHSPBymAT33qSzijAXUwv+O65Bn16nzkwrcA
- fwpwuKr2IAUFQ+Q63HA==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwOTA0MDExMCBTYWx0ZWRfX3jZ2QJ111mHm
- f42G0ic4nucJBGgiY1wPiVuDPo9D68RV2RGId+zMJsT4zt4MWfQ/1plv6Ozf+llZhlo9n8DDBZv
- Yu0IwYr/vGVgXxJOE2A4RUpm/bHhAkY=
-X-Proofpoint-GUID: g5byBwPivZFQ-pGY8bCAPEq-F02MwuAW
-X-Authority-Analysis: v=2.4 cv=A8Nc+aWG c=1 sm=1 tr=0 ts=6a9ab69f cx=c_pps
- a=yICVNc/tqHXuIRF/6KaW8A==:117 a=h1hSm8JtM9GN1ddwPAif2w==:17
- a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
- a=kj9zAlcOel0A:10 a=VdqzKS8jKosA:10 a=s63m1ICgrNkA:10 a=RWc_ulEos4gA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=iX4cTi3TZMoOKdANLEfx:22 a=Dj2-6B8FqX4mGL0U3gbX:22
- a=pGLkceISAAAA:8 a=w1d2syhTAAAA:8 a=wbSmXUBKm7kmP3h1SjcA:9 a=CjuIK1q_8ugA:10
- a=jZz-an6Pvt0H8_Yc_ROU:22
-X-Proofpoint-ORIG-GUID: g5byBwPivZFQ-pGY8bCAPEq-F02MwuAW
-X-Proofpoint-Spam-Reason: safe
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_051736_805647_5F56036D 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20260904_055217_531362_D32A4BFB 
+X-CRM114-Status: GOOD (  21.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -188,17 +109,190 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 04, 2026 at 04:33:01PM +0530, Hemanth Selam wrote:
-> Fix typos in comments, reported by scripts/checkpatch.pl using the
-> misspelling list in scripts/spelling.txt.  Only touches comments, no code
-> changes.
-> 
-> Assisted-by: Cursor:claude-opus-5
-> Signed-off-by: Hemanth Selam <hemanth.selam@gmail.com>
-> ---
+Fix typos in comments, reported by scripts/checkpatch.pl using the
+misspelling list in scripts/spelling.txt.  Only touches comments, no code
+changes.
 
-Reviewed-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+Assisted-by: Cursor:claude-opus-5
+Signed-off-by: Hemanth Selam <hemanth.selam@gmail.com>
+---
+ drivers/mtd/devices/docg3.c                | 4 ++--
+ drivers/mtd/nand/onenand/onenand_base.c    | 2 +-
+ drivers/mtd/nand/raw/fsmc_nand.c           | 2 +-
+ drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c | 2 +-
+ drivers/mtd/nand/raw/mtk_nand.c            | 2 +-
+ drivers/mtd/nand/raw/nand_base.c           | 2 +-
+ drivers/mtd/nand/raw/nand_legacy.c         | 4 ++--
+ drivers/mtd/spi-nor/otp.c                  | 2 +-
+ include/linux/mtd/bbm.h                    | 2 +-
+ include/linux/mtd/rawnand.h                | 2 +-
+ include/linux/mtd/sh_flctl.h               | 4 ++--
+ 11 files changed, 14 insertions(+), 14 deletions(-)
 
-Thanks,
-Charles
+diff --git a/drivers/mtd/devices/docg3.c b/drivers/mtd/devices/docg3.c
+index 603fd0efc2ea..84566997d665 100644
+--- a/drivers/mtd/devices/docg3.c
++++ b/drivers/mtd/devices/docg3.c
+@@ -1884,7 +1884,7 @@ static void doc_release_device(struct mtd_info *mtd)
+ 
+ /**
+  * docg3_resume - Awakens docg3 floor
+- * @pdev: platfrom device
++ * @pdev: platform device
+  *
+  * Returns 0 (always successful)
+  */
+@@ -1963,7 +1963,7 @@ static int docg3_suspend(struct platform_device *pdev, pm_message_t state)
+  * @pdev: platform device
+  *
+  * Probes for a G3 chip at the specified IO space in the platform data
+- * ressources. The floor 0 must be available.
++ * resources. The floor 0 must be available.
+  *
+  * Returns 0 on success, -ENOMEM, -ENXIO on error
+  */
+diff --git a/drivers/mtd/nand/onenand/onenand_base.c b/drivers/mtd/nand/onenand/onenand_base.c
+index d08aeac86f9f..bca5a3bebd41 100644
+--- a/drivers/mtd/nand/onenand/onenand_base.c
++++ b/drivers/mtd/nand/onenand/onenand_base.c
+@@ -3279,7 +3279,7 @@ static void onenand_check_features(struct mtd_info *mtd)
+ 			 *
+ 			 * Now it has as following
+ 			 * KFM4G16Q4M has NOP 4 with version ID 0x0131
+-			 * KFM4G16Q5M has NOP 1 with versoin ID 0x013e
++			 * KFM4G16Q5M has NOP 1 with version ID 0x013e
+ 			 */
+ 			if ((this->version_id & 0xf) == 0xe)
+ 				this->options |= ONENAND_HAS_NOP_1;
+diff --git a/drivers/mtd/nand/raw/fsmc_nand.c b/drivers/mtd/nand/raw/fsmc_nand.c
+index b13b2b0c3f30..08ef4425559c 100644
+--- a/drivers/mtd/nand/raw/fsmc_nand.c
++++ b/drivers/mtd/nand/raw/fsmc_nand.c
+@@ -461,7 +461,7 @@ static int fsmc_correct_ecc1(struct nand_chip *chip,
+ 				      chip->ecc.size, sm_order);
+ }
+ 
+-/* Count the number of 0's in buff upto a max of max_bits */
++/* Count the number of 0's in buff up to a max of max_bits */
+ static int count_written_bits(u8 *buff, int size, int max_bits)
+ {
+ 	int k, written_bits = 0;
+diff --git a/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c b/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c
+index 527165ccc839..c61f3983a713 100644
+--- a/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c
++++ b/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c
+@@ -2271,7 +2271,7 @@ static int nand_boot_init(struct gpmi_nand_data  *this)
+ {
+ 	nand_boot_set_geometry(this);
+ 
+-	/* This is ROM arch-specific initilization before the BBT scanning. */
++	/* This is ROM arch-specific initialization before the BBT scanning. */
+ 	if (GPMI_IS_MX23(this))
+ 		return mx23_boot_init(this);
+ 	return 0;
+diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
+index 21c7e1102746..c439b7814ebb 100644
+--- a/drivers/mtd/nand/raw/mtk_nand.c
++++ b/drivers/mtd/nand/raw/mtk_nand.c
+@@ -42,7 +42,7 @@
+ #define		CON_BRD			BIT(8)  /* burst  read */
+ #define		CON_BWR			BIT(9)	/* burst  write */
+ #define		CON_SEC_SHIFT		(12)
+-/* Timming control register */
++/* Timing control register */
+ #define NFI_ACCCON		(0x0C)
+ #define NFI_INTR_EN		(0x10)
+ #define		INTR_AHB_DONE_EN	BIT(6)
+diff --git a/drivers/mtd/nand/raw/nand_base.c b/drivers/mtd/nand/raw/nand_base.c
+index a5b278ab9384..a225b10f8145 100644
+--- a/drivers/mtd/nand/raw/nand_base.c
++++ b/drivers/mtd/nand/raw/nand_base.c
+@@ -6205,7 +6205,7 @@ static int nand_scan_tail(struct nand_chip *chip)
+ 	/*
+ 	 * FIXME: some NAND manufacturer drivers expect the first die to be
+ 	 * selected when manufacturer->init() is called. They should be fixed
+-	 * to explictly select the relevant die when interacting with the NAND
++	 * to explicitly select the relevant die when interacting with the NAND
+ 	 * chip.
+ 	 */
+ 	nand_select_target(chip, 0);
+diff --git a/drivers/mtd/nand/raw/nand_legacy.c b/drivers/mtd/nand/raw/nand_legacy.c
+index 97700f80d5b8..94d5c7723c5a 100644
+--- a/drivers/mtd/nand/raw/nand_legacy.c
++++ b/drivers/mtd/nand/raw/nand_legacy.c
+@@ -319,7 +319,7 @@ static void nand_command(struct nand_chip *chip, unsigned int command,
+ 				      NAND_CTRL_CLE | NAND_CTRL_CHANGE);
+ 		chip->legacy.cmd_ctrl(chip, NAND_CMD_NONE,
+ 				      NAND_NCE | NAND_CTRL_CHANGE);
+-		/* EZ-NAND can take upto 250ms as per ONFi v4.0 */
++		/* EZ-NAND can take up to 250ms as per ONFi v4.0 */
+ 		nand_wait_status_ready(chip, 250);
+ 		return;
+ 
+@@ -459,7 +459,7 @@ static void nand_command_lp(struct nand_chip *chip, unsigned int command,
+ 				      NAND_NCE | NAND_CLE | NAND_CTRL_CHANGE);
+ 		chip->legacy.cmd_ctrl(chip, NAND_CMD_NONE,
+ 				      NAND_NCE | NAND_CTRL_CHANGE);
+-		/* EZ-NAND can take upto 250ms as per ONFi v4.0 */
++		/* EZ-NAND can take up to 250ms as per ONFi v4.0 */
+ 		nand_wait_status_ready(chip, 250);
+ 		return;
+ 
+diff --git a/drivers/mtd/spi-nor/otp.c b/drivers/mtd/spi-nor/otp.c
+index 7d0b145d78d8..61c55227e15d 100644
+--- a/drivers/mtd/spi-nor/otp.c
++++ b/drivers/mtd/spi-nor/otp.c
+@@ -25,7 +25,7 @@
+  * Read a security register by using the SPINOR_OP_RSECR commands.
+  *
+  * In Winbond/GigaDevice datasheets the term "security register" stands for
+- * an one-time-programmable memory area, consisting of multiple bytes (usually
++ * a one-time-programmable memory area, consisting of multiple bytes (usually
+  * 256). Thus one "security register" maps to one OTP region.
+  *
+  * This method is used on GigaDevice and Winbond flashes.
+diff --git a/include/linux/mtd/bbm.h b/include/linux/mtd/bbm.h
+index d890805f5494..67929fdf2dff 100644
+--- a/include/linux/mtd/bbm.h
++++ b/include/linux/mtd/bbm.h
+@@ -75,7 +75,7 @@ struct nand_bbt_descr {
+  * with NAND_BBT_CREATE.
+  */
+ #define NAND_BBT_CREATE_EMPTY	0x00000400
+-/* Write bbt if neccecary */
++/* Write bbt if necessary */
+ #define NAND_BBT_WRITE		0x00002000
+ /* Read and write back block contents when writing bbt */
+ #define NAND_BBT_SAVECONTENT	0x00004000
+diff --git a/include/linux/mtd/rawnand.h b/include/linux/mtd/rawnand.h
+index 5c70e7bd3ed5..43fefff02025 100644
+--- a/include/linux/mtd/rawnand.h
++++ b/include/linux/mtd/rawnand.h
+@@ -1592,7 +1592,7 @@ void nand_wait_ready(struct nand_chip *chip);
+ 
+ /*
+  * Free resources held by the NAND device, must be called on error after a
+- * sucessful nand_scan().
++ * successful nand_scan().
+  */
+ void nand_cleanup(struct nand_chip *chip);
+ 
+diff --git a/include/linux/mtd/sh_flctl.h b/include/linux/mtd/sh_flctl.h
+index 78fc2d4218c8..15adf2474fa0 100644
+--- a/include/linux/mtd/sh_flctl.h
++++ b/include/linux/mtd/sh_flctl.h
+@@ -60,8 +60,8 @@
+  * Some hardware uses bits called PULSEx instead of FCKSEL_E and QTSEL_E
+  * to control the clock divider used between the High-Speed Peripheral Clock
+  * and the FLCTL internal clock. If so, use CLK_8_BIT_xxx for connecting 8 bit
+- * and CLK_16_BIT_xxx for connecting 16 bit bus bandwith NAND chips. For the 16
+- * bit version the divider is seperate for the pulse width of high and low
++ * and CLK_16_BIT_xxx for connecting 16 bit bus bandwidth NAND chips. For the 16
++ * bit version the divider is separate for the pulse width of high and low
+  * signals.
+  */
+ #define PULSE3	(0x1 << 27)
+-- 
+2.48.1
+
 
