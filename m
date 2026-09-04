@@ -4,97 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F422BC61DD6
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 12:52:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B269C624D3
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 13:55:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yCG99e+5QxRQXSuO8zd59u52whzEDFO7RhFXyu9E9Gk=; b=X7DZkbhOttzYnMdGqNvLkmycuP
-	z/2gQdITM09lmK2oNpNYMevMzoMmAkJgnJzECD13LCfiDN2BoLHwfSBoij/gBJXXpBT4FvZZ6WRPG
-	qGUuLNFZet+L0RT5CiO7+rjfqluSetjFYY9g2e4bIQkgd/Dx9hmiAoA1X+VA/Y+ZyEjFG75q3WX0v
-	zOkx9LDF/MuKJtWMBfK9qgQut1NqWI4AiUPvz/PyjdFjIK+UyNfVT9iPv87Mu7KBKBbgFX8MKIWpg
-	Fub76/eg3B3SXpI9nD+WOu96eTEpbr/0NYB0diEITzLMF+qhD0YksXT277nmbQ5Bj3RfaBwC/C7qj
-	FNKHCsFA==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pkjDjgzDaw86AXoG1909ddrRynkL4ufeKlwmjCrQJhQ=; b=iLOurpzQl+lS1d21i4c2A+jZNU
+	5CYfGIxUcnmj8SEfHBzDQFK/9CL5WeOXpm4TGdZ4F3JzVwzjSZBapkFC/E+EKJnGo6Y3G9YNwByhk
+	CtJJcU+FOMRggD6HxiIMaQ5IXaGN1kvtRdydMrIRLQOWxPMXGLFc6Ryx6EAWSsc10yV3h+Tldcsqd
+	vRrCtSPiDgYe/DO9FHuG+3PDFLqkMyA9SLM6mjgl2vLnMniJonYiAxweenV1m6AJW0hN982J1MvP4
+	cuC3UQRMsL2Eydpx+UTQbhIwccjXUzaSr9PCAWOoMBdqNaL1v6i3IhLj9HXKuj6pZH1t4lcQneqFZ
+	/9ds8ZRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2TP3-0000000252g-2jdg;
-	Fri, 04 Sep 2026 12:52:21 +0000
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+	id 1x2UOJ-00000002IVZ-0QLu;
+	Fri, 04 Sep 2026 13:55:39 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2TOz-0000000250s-1dab
+	id 1x2UOG-00000002IUh-2dLK
 	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Sep 2026 12:52:20 +0000
-Received: by mail-pj1-x1031.google.com with SMTP id 98e67ed59e1d1-3965d3d9ab8so662694a91.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 05:52:16 -0700 (PDT)
+	Fri, 04 Sep 2026 13:55:38 +0000
+Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-6a051b737d8so934903a12.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 06:55:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1788530134; cv=none;
+        d=google.com; s=arc-20260327;
+        b=mG5hHziuoruDKIukMfFjuDMXnWPTyycutW6GWjwrnCrY8LgzCgwzWby7aguqzXsPEW
+         nIiiqFD9K/LEEvpsqeVmWFaDztksNxytGEJlPPSyGRNIsdrzbR51E6xMCzVEjcA9594L
+         fC6zjIdUmh/clo/SHd2515RixBhKq1cahFuNeir53V0qcr05DnEKq9YZdPsiBTA4gSbB
+         WMfa02i9zhyvpbI+EKyJ5GI34oebNohcdSzqTWjbIu8jNHE74do76NuyWC7J6/TChVnJ
+         jJGgQDRr2gRBo9HUnE63BJTqcitU92NWS4gxgBnUfGgcUsDtWKgUyDvNmZNUSE4KHIJZ
+         CeNQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=pkjDjgzDaw86AXoG1909ddrRynkL4ufeKlwmjCrQJhQ=;
+        fh=lM+1LAKE5w8FmVd0rx6ji1SZDvhhtnlULqGwLuahID0=;
+        b=GpDLkecARYXZOKHvJudGxtILJAK3r5hlj6/MOG/3oWqcjtThdBvVFcYg8U4W/3kPuD
+         WwcI+Asu8sR6cNTpCLXnFn7pxkgxzeABB3RAGlCywYMuZ6FzptxFQ1YYDBUEZFmGNDvf
+         8PLg4nGLpkG5yEZxIJM44ZTu9PLRUb5EO3MjSp9TuSWI3DirO5kMXAn+F5Ax9xEUxyiB
+         QxO3EmPS9eiUfO1S/B0L34fGFnt/Pr9clvXfAsCzt0ckhwoAiNoc0ihLiZz1AJpnCZ+v
+         KyGIEJfMrbVay4PMdCGJkp1xuKkcNqo1m9rjsWoCUQ4V2i5sIARVIV3gCM/d+1kjdXGA
+         8nPQ==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788526336; x=1789131136; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=yCG99e+5QxRQXSuO8zd59u52whzEDFO7RhFXyu9E9Gk=;
-        b=HjVuLj8X52nNj4xUYbtLDbtzUFpOucprnspa6AmzSNrJ04EF2T+7JUphCz8uAtXACg
-         KoJ8g06MIwjr+fHfUysNvm5toRv1kJI4gYA2fVqRNIrsBSK3PbBdXLcLfWzQu0eheEQW
-         QFPk1Dq0H+kuL9FJV/kfuU7sxOmaLfdoXRVHuM42V9LsOj8V3qQEVay57Vis7SqTDjbq
-         zm/CvvKDjiEc0dLQQZaPH+2zm+5deTFs0GhO6CU/HJIkBe95mS8+hSzI9ciGfUgXVUln
-         z4C1jQPzPhCDEmyAtVlkY4GrMxciLrQjD9+46Ka6asE2slAndh/5krSr/WlhkeB5n7Iv
-         fASA==
+        d=gmail.com; s=20251104; t=1788530134; x=1789134934; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=pkjDjgzDaw86AXoG1909ddrRynkL4ufeKlwmjCrQJhQ=;
+        b=AlEXy+FJQ/YC0ggrCCOYwjOC7k7SFksnwlMu263Zp+RDqhdxs7FNnIKGEWnwLYE/2o
+         9YjU8+nGPTwLywrRZ5elfGvhnjndWkfdyzykHSAxgtYjnEtM1qb5myUMNtvQFgVLLcYa
+         zkPOrDBIfGm2DcADcp81uYcObNhUbdhBcV4nrHD8qC8arZY3TARuOv41Ko6m9KA7U6SR
+         5gNcGdCIDnz+zOZRvWA1PpDo5Ij08gwn737D82rxPtttIg2Rf1bdttzaLK2aTO5FT/3e
+         M3FlqLhps0cE5OB9C9T2V0fnTC7MDnm4KRNlwHJ3i6m0FwezYbSsCb+1OCMZDH+catiM
+         QN2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788526336; x=1789131136;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=yCG99e+5QxRQXSuO8zd59u52whzEDFO7RhFXyu9E9Gk=;
-        b=S4RKnu49jz4GWTdHwwhAsWVjrQE7MV1l4S8Dlysc5QvvAXWKsaW3iAif5Vpe1yIgh5
-         hcK4oNM2p7mY0mEr2Ky6H+NvG4b5oU9K6WbmjmlbpdhqgQ19hVNV5cgJvNX0NRXUqc+A
-         5tr4OXYdUkiy1Q5T24TWnVZtMxG47AtGb3CfPoXo1qA4PdU5tEo1LYPjSs4HZ2jVVE6C
-         SHTObUdaosZL06JZzSnAZOLdmpfOYlyuXn9wjh5NGG4BFA9zlBCavA3JZypVsqmevM8z
-         QhX7L9NClZKeK674jKHmlwgeLBoZ+0c7nMKy8QOfWnjwDmCySHO8u+6K6U4bt7QXu/qh
-         i+9Q==
-X-Forwarded-Encrypted: i=1; AKwUvBwu6q/0QtlHBsgdQ095d6bE0L6tJ3kCfSKgKjw6f9/suBkGIvQK+vITkzvgBdQWVzB/DSVVlLHT2yw0mOuUwA==@lists.infradead.org
-X-Gm-Message-State: AFuF++m7u5KPqVqxkkAv1lNAGiqRkP6pl63mNMFyIQTffeRwKREG+z7+
-	0WFgaJPjNmsppMgtjb2cdobNC0hcbcoOQ4HBDjUzlfYbnInAHbWf0M5v
-X-Gm-Gg: AYBFou3BAaFNrVyRFwFH2ygW7TUN31chc2LQmwXYFOzVVQLPtrHf2gQE16nxyBvrpU9
-	VoA9QlRrSI6bC0I4BuaIcupAtwtMHB0R4kgDntARHWI8wtF6fFK4z8hk1KgMJQATJ6pE3hP5lDO
-	mQj2Be3Kiy4w4IADECWlOnxzutfU2XnjWvmi8x0AX5rem83OqeuEdDMmTDryP44tDvI0HQ54kIm
-	ixTl+ej7WahKdHy4fTECcPIMQmEiQAwGj9SGn2fdPHbfP5ahKV06TIViOzjeHFRM++86u8Ug36D
-	aD6ovfNVuUwUvTL7Ws7WdrwcH5PLXcWo7HGeaOMhnQGoqqKgo3uRxZ4Nca1w2AaPGDaJr5x8Cs9
-	2rPGSpsNXfLkuMKwtIRFLSs8RFZmJ7tC5loRfW93sU7GjZFqv4HNWz7ffmBv/4blFl7Q+tJrYbC
-	GA7ZndRRWE6CZ+1/nwLVfTS0I1LUhBgZN0Au2DEzDuptUbGfQXoSZj6Uf/Ylty8HUo8JnHUtriW
-	X9xdX/yZBmgrgI=
-X-Received: by 2002:a17:90b:1dc3:b0:398:d6f4:c61a with SMTP id 98e67ed59e1d1-39b26207ee4mr9145959a91.17.1788526335895;
-        Fri, 04 Sep 2026 05:52:15 -0700 (PDT)
-Received: from volcano9f6e-hostos.amd.com ([165.204.217.251])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3339af25062sm9816370eec.16.2026.09.04.05.52.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Sep 2026 05:52:15 -0700 (PDT)
-From: Hemanth Selam <hemanth.selam@gmail.com>
-To: Robert Jarzmik <robert.jarzmik@free.fr>,
-	Miquel Raynal <miquel.raynal@bootlin.com>,
-	Richard Weinberger <richard@nod.at>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Han Xu <han.xu@nxp.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Pratyush Yadav <pratyush@kernel.org>,
-	Michael Walle <mwalle@kernel.org>,
-	Takahiro Kuwano <takahiro.kuwano@infineon.com>
-Cc: linux-kernel@vger.kernel.org,
-	linux-mtd@lists.infradead.org,
-	imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] mtd: fix typos in comments
-Date: Fri,  4 Sep 2026 18:22:03 +0530
-Message-ID: <20260904125208.12099-1-hemanth.selam@gmail.com>
-X-Mailer: git-send-email 2.48.1
+        d=1e100.net; s=20251104; t=1788530134; x=1789134934;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=pkjDjgzDaw86AXoG1909ddrRynkL4ufeKlwmjCrQJhQ=;
+        b=gB/qV4ry/kLI74qSIrd+J06B2182Se8/A4wQJkOkfAhglvOKt5JE0cdOCO3EkcRz8U
+         4kP/EMQKrHml9l4xQTgH986jDOiPO97erahDuIobc12eo24FWgOG0F1N8+H743TTiEVS
+         4eNpNrDGAyZiuH+TwGWKckxlUkkc/2C6uGWtNcsSBwUoVfQORyTGdgJeRD8NKUYyl05D
+         VDNi2r+htyf9fGr5fHK93eO12sKHygcCMmMo7GSR7LIQyMSnFwfZgAwIyHHl211MyQc1
+         2uzmVRZrPHdAos+oY17IaW29asB8rRWFYPQPWyBEBVwO/3llcCwK7ZGUBjtLk/bVmId6
+         X/0Q==
+X-Forwarded-Encrypted: i=1; AKwUvBxO9sH4lYRYdgGsAo263ijsxoJ0jMnOYUBgFVAcOJcbx2Bft7EfkGs+9c4fEf40W6tx52kYhN356PLyTxHUCQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++mZeAvICOYPnqFnrVpIraxSLSGs5ZHqwkAOz16l+nEMM1ga6lbu
+	+5c++EtOvaiSHuQirttqrcUUO+452suhqXXvsIHH27RCngTOhIwCecTs2Fu5Mg8sj7NPa1XCmfP
+	hgi8o/enPDIU5RdrbYsQgvNFFTFGt2Cc=
+X-Gm-Gg: AYBFou1nAfoFPzj+M84NLTdYA2gIE1xD8nQlGf6T0GQUQyhvU7YhuQS+DnShB7YIPtl
+	q2nYUSzsFWQ7T91lDpF0Rx1KOk7dEtoKTXGhoWP/m1dULO84IbpMIKEHZkWowUfLjD3U/rJElpm
+	IwiYzXXdZiau5NH9RifXKus3YEK4oIiqKo3+Qbnby2YRCb/29h12mN7mb9Xvxgnaw+uTFP3SxDd
+	PTjy+Q4he6FJtyvWMTNHN7f6mnYGvwzHUF5eUiJuxrL7EQGI2/JFWL6YH3karmHOjNjaz62U2od
+	LSo/ODoVAxfiaGSzwelhU6WQQLF4L9h64/lLjUrl56DqncD1FKQxEL6nbaoz
+X-Received: by 2002:a17:907:720f:b0:c25:5d2:acf0 with SMTP id
+ a640c23a62f3a-c260c8c21d3mr311924666b.8.1788530134042; Fri, 04 Sep 2026
+ 06:55:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20260904043724.2955444-1-s-vadapalli@ti.com> <20260904043724.2955444-21-s-vadapalli@ti.com>
+In-Reply-To: <20260904043724.2955444-21-s-vadapalli@ti.com>
+From: Luiz Angelo Daros de Luca <luizluca@gmail.com>
+Date: Fri, 4 Sep 2026 10:55:19 -0300
+X-Gm-Features: AcwNN1WkMLBcSKjjx-549nVRZ1ZETkJHm5sDyQYa7o61EdbIDExabOintEMeFfo
+Message-ID: <CAJq09z44PfcEKsoH9eP+c5rxmzQ52hQO33k8sO-e6po1bpE6rQ@mail.gmail.com>
+Subject: Re: [PATCH net-next 20/33] net: dsa: realtek: rtl8365mb: Remove comma
+ after sentinel-entry in match-table
+To: Siddharth Vadapalli <s-vadapalli@ti.com>
+Cc: dario.binacchi@amarulasolutions.com, mkl@pengutronix.de, 
+	mailhol@kernel.org, msp@baylibre.com, florian.fainelli@broadcom.com, 
+	jonas.gorski@gmail.com, andrew@lunn.ch, olteanv@gmail.com, 
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, 
+	kurt@linutronix.de, hauke@hauke-m.de, chester.a.unal@arinc9.com, 
+	daniel@makrotopia.org, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, ansuelsmth@gmail.com, 
+	linusw@kernel.org, alvin.sipraga@analog.com, clement.leger@bootlin.com, 
+	justin.chen@broadcom.com, dlan@kernel.org, rogerq@kernel.org, 
+	hkallweit1@gmail.com, linux@armlinux.org.uk, rjui@broadcom.com, 
+	sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com, 
+	opendmb@gmail.com, andrei.botila@oss.nxp.com, wangruikang@iscas.ac.cn, 
+	amadeus@jmu.edu.cn, kees@kernel.org, tmshlvck@gmail.com, c-vankar@ti.com, 
+	horms@kernel.org, vadim.fedorenko@linux.dev, daniel.zahka@gmail.com, 
+	nora.schiffer@ew.tq-group.com, v-singh1@ti.com, oss@vassilevski.com, 
+	haokexin@gmail.com, alex@sverdlin.org, aleksandr.loktionov@intel.com, 
+	lgs201920130244@gmail.com, linux-can@vger.kernel.org, netdev@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
+	linux-riscv@lists.infradead.org, spacemit@lists.linux.dev, 
+	linux-omap@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_055217_531362_D32A4BFB 
-X-CRM114-Status: GOOD (  21.54  )
+X-CRM114-CacheID: sfid-20260904_065536_707763_BD192ED8 
+X-CRM114-Status: GOOD (  14.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,190 +137,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix typos in comments, reported by scripts/checkpatch.pl using the
-misspelling list in scripts/spelling.txt.  Only touches comments, no code
-changes.
+Em sex., 4 de set. de 2026 =C3=A0s 01:39, Siddharth Vadapalli
+<s-vadapalli@ti.com> escreveu:
+>
+> Since sentinel is the last entry and we do not expect further entries
+> following it, remove the comma.
+>
+> Signed-off-by: Siddharth Vadapalli <s-vadapalli@ti.com>
+> ---
+>  drivers/net/dsa/realtek/rtl8365mb_main.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/net/dsa/realtek/rtl8365mb_main.c b/drivers/net/dsa/r=
+ealtek/rtl8365mb_main.c
+> index 4c305756116c..f8220d832e46 100644
+> --- a/drivers/net/dsa/realtek/rtl8365mb_main.c
+> +++ b/drivers/net/dsa/realtek/rtl8365mb_main.c
+> @@ -3352,7 +3352,7 @@ const struct realtek_variant rtl8365mb_variant =3D =
+{
+>
+>  static const struct of_device_id rtl8365mb_of_match[] =3D {
+>         { .compatible =3D "realtek,rtl8365mb", .data =3D &rtl8365mb_varia=
+nt, },
+> -       { /* sentinel */ },
+> +       { /* sentinel */ }
+>  };
+>  MODULE_DEVICE_TABLE(of, rtl8365mb_of_match);
+>
+> --
+> 2.51.1
+>
 
-Assisted-by: Cursor:claude-opus-5
-Signed-off-by: Hemanth Selam <hemanth.selam@gmail.com>
----
- drivers/mtd/devices/docg3.c                | 4 ++--
- drivers/mtd/nand/onenand/onenand_base.c    | 2 +-
- drivers/mtd/nand/raw/fsmc_nand.c           | 2 +-
- drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c | 2 +-
- drivers/mtd/nand/raw/mtk_nand.c            | 2 +-
- drivers/mtd/nand/raw/nand_base.c           | 2 +-
- drivers/mtd/nand/raw/nand_legacy.c         | 4 ++--
- drivers/mtd/spi-nor/otp.c                  | 2 +-
- include/linux/mtd/bbm.h                    | 2 +-
- include/linux/mtd/rawnand.h                | 2 +-
- include/linux/mtd/sh_flctl.h               | 4 ++--
- 11 files changed, 14 insertions(+), 14 deletions(-)
-
-diff --git a/drivers/mtd/devices/docg3.c b/drivers/mtd/devices/docg3.c
-index 603fd0efc2ea..84566997d665 100644
---- a/drivers/mtd/devices/docg3.c
-+++ b/drivers/mtd/devices/docg3.c
-@@ -1884,7 +1884,7 @@ static void doc_release_device(struct mtd_info *mtd)
- 
- /**
-  * docg3_resume - Awakens docg3 floor
-- * @pdev: platfrom device
-+ * @pdev: platform device
-  *
-  * Returns 0 (always successful)
-  */
-@@ -1963,7 +1963,7 @@ static int docg3_suspend(struct platform_device *pdev, pm_message_t state)
-  * @pdev: platform device
-  *
-  * Probes for a G3 chip at the specified IO space in the platform data
-- * ressources. The floor 0 must be available.
-+ * resources. The floor 0 must be available.
-  *
-  * Returns 0 on success, -ENOMEM, -ENXIO on error
-  */
-diff --git a/drivers/mtd/nand/onenand/onenand_base.c b/drivers/mtd/nand/onenand/onenand_base.c
-index d08aeac86f9f..bca5a3bebd41 100644
---- a/drivers/mtd/nand/onenand/onenand_base.c
-+++ b/drivers/mtd/nand/onenand/onenand_base.c
-@@ -3279,7 +3279,7 @@ static void onenand_check_features(struct mtd_info *mtd)
- 			 *
- 			 * Now it has as following
- 			 * KFM4G16Q4M has NOP 4 with version ID 0x0131
--			 * KFM4G16Q5M has NOP 1 with versoin ID 0x013e
-+			 * KFM4G16Q5M has NOP 1 with version ID 0x013e
- 			 */
- 			if ((this->version_id & 0xf) == 0xe)
- 				this->options |= ONENAND_HAS_NOP_1;
-diff --git a/drivers/mtd/nand/raw/fsmc_nand.c b/drivers/mtd/nand/raw/fsmc_nand.c
-index b13b2b0c3f30..08ef4425559c 100644
---- a/drivers/mtd/nand/raw/fsmc_nand.c
-+++ b/drivers/mtd/nand/raw/fsmc_nand.c
-@@ -461,7 +461,7 @@ static int fsmc_correct_ecc1(struct nand_chip *chip,
- 				      chip->ecc.size, sm_order);
- }
- 
--/* Count the number of 0's in buff upto a max of max_bits */
-+/* Count the number of 0's in buff up to a max of max_bits */
- static int count_written_bits(u8 *buff, int size, int max_bits)
- {
- 	int k, written_bits = 0;
-diff --git a/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c b/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c
-index 527165ccc839..c61f3983a713 100644
---- a/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c
-+++ b/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c
-@@ -2271,7 +2271,7 @@ static int nand_boot_init(struct gpmi_nand_data  *this)
- {
- 	nand_boot_set_geometry(this);
- 
--	/* This is ROM arch-specific initilization before the BBT scanning. */
-+	/* This is ROM arch-specific initialization before the BBT scanning. */
- 	if (GPMI_IS_MX23(this))
- 		return mx23_boot_init(this);
- 	return 0;
-diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
-index 21c7e1102746..c439b7814ebb 100644
---- a/drivers/mtd/nand/raw/mtk_nand.c
-+++ b/drivers/mtd/nand/raw/mtk_nand.c
-@@ -42,7 +42,7 @@
- #define		CON_BRD			BIT(8)  /* burst  read */
- #define		CON_BWR			BIT(9)	/* burst  write */
- #define		CON_SEC_SHIFT		(12)
--/* Timming control register */
-+/* Timing control register */
- #define NFI_ACCCON		(0x0C)
- #define NFI_INTR_EN		(0x10)
- #define		INTR_AHB_DONE_EN	BIT(6)
-diff --git a/drivers/mtd/nand/raw/nand_base.c b/drivers/mtd/nand/raw/nand_base.c
-index a5b278ab9384..a225b10f8145 100644
---- a/drivers/mtd/nand/raw/nand_base.c
-+++ b/drivers/mtd/nand/raw/nand_base.c
-@@ -6205,7 +6205,7 @@ static int nand_scan_tail(struct nand_chip *chip)
- 	/*
- 	 * FIXME: some NAND manufacturer drivers expect the first die to be
- 	 * selected when manufacturer->init() is called. They should be fixed
--	 * to explictly select the relevant die when interacting with the NAND
-+	 * to explicitly select the relevant die when interacting with the NAND
- 	 * chip.
- 	 */
- 	nand_select_target(chip, 0);
-diff --git a/drivers/mtd/nand/raw/nand_legacy.c b/drivers/mtd/nand/raw/nand_legacy.c
-index 97700f80d5b8..94d5c7723c5a 100644
---- a/drivers/mtd/nand/raw/nand_legacy.c
-+++ b/drivers/mtd/nand/raw/nand_legacy.c
-@@ -319,7 +319,7 @@ static void nand_command(struct nand_chip *chip, unsigned int command,
- 				      NAND_CTRL_CLE | NAND_CTRL_CHANGE);
- 		chip->legacy.cmd_ctrl(chip, NAND_CMD_NONE,
- 				      NAND_NCE | NAND_CTRL_CHANGE);
--		/* EZ-NAND can take upto 250ms as per ONFi v4.0 */
-+		/* EZ-NAND can take up to 250ms as per ONFi v4.0 */
- 		nand_wait_status_ready(chip, 250);
- 		return;
- 
-@@ -459,7 +459,7 @@ static void nand_command_lp(struct nand_chip *chip, unsigned int command,
- 				      NAND_NCE | NAND_CLE | NAND_CTRL_CHANGE);
- 		chip->legacy.cmd_ctrl(chip, NAND_CMD_NONE,
- 				      NAND_NCE | NAND_CTRL_CHANGE);
--		/* EZ-NAND can take upto 250ms as per ONFi v4.0 */
-+		/* EZ-NAND can take up to 250ms as per ONFi v4.0 */
- 		nand_wait_status_ready(chip, 250);
- 		return;
- 
-diff --git a/drivers/mtd/spi-nor/otp.c b/drivers/mtd/spi-nor/otp.c
-index 7d0b145d78d8..61c55227e15d 100644
---- a/drivers/mtd/spi-nor/otp.c
-+++ b/drivers/mtd/spi-nor/otp.c
-@@ -25,7 +25,7 @@
-  * Read a security register by using the SPINOR_OP_RSECR commands.
-  *
-  * In Winbond/GigaDevice datasheets the term "security register" stands for
-- * an one-time-programmable memory area, consisting of multiple bytes (usually
-+ * a one-time-programmable memory area, consisting of multiple bytes (usually
-  * 256). Thus one "security register" maps to one OTP region.
-  *
-  * This method is used on GigaDevice and Winbond flashes.
-diff --git a/include/linux/mtd/bbm.h b/include/linux/mtd/bbm.h
-index d890805f5494..67929fdf2dff 100644
---- a/include/linux/mtd/bbm.h
-+++ b/include/linux/mtd/bbm.h
-@@ -75,7 +75,7 @@ struct nand_bbt_descr {
-  * with NAND_BBT_CREATE.
-  */
- #define NAND_BBT_CREATE_EMPTY	0x00000400
--/* Write bbt if neccecary */
-+/* Write bbt if necessary */
- #define NAND_BBT_WRITE		0x00002000
- /* Read and write back block contents when writing bbt */
- #define NAND_BBT_SAVECONTENT	0x00004000
-diff --git a/include/linux/mtd/rawnand.h b/include/linux/mtd/rawnand.h
-index 5c70e7bd3ed5..43fefff02025 100644
---- a/include/linux/mtd/rawnand.h
-+++ b/include/linux/mtd/rawnand.h
-@@ -1592,7 +1592,7 @@ void nand_wait_ready(struct nand_chip *chip);
- 
- /*
-  * Free resources held by the NAND device, must be called on error after a
-- * sucessful nand_scan().
-+ * successful nand_scan().
-  */
- void nand_cleanup(struct nand_chip *chip);
- 
-diff --git a/include/linux/mtd/sh_flctl.h b/include/linux/mtd/sh_flctl.h
-index 78fc2d4218c8..15adf2474fa0 100644
---- a/include/linux/mtd/sh_flctl.h
-+++ b/include/linux/mtd/sh_flctl.h
-@@ -60,8 +60,8 @@
-  * Some hardware uses bits called PULSEx instead of FCKSEL_E and QTSEL_E
-  * to control the clock divider used between the High-Speed Peripheral Clock
-  * and the FLCTL internal clock. If so, use CLK_8_BIT_xxx for connecting 8 bit
-- * and CLK_16_BIT_xxx for connecting 16 bit bus bandwith NAND chips. For the 16
-- * bit version the divider is seperate for the pulse width of high and low
-+ * and CLK_16_BIT_xxx for connecting 16 bit bus bandwidth NAND chips. For the 16
-+ * bit version the divider is separate for the pulse width of high and low
-  * signals.
-  */
- #define PULSE3	(0x1 << 27)
--- 
-2.48.1
-
+Reviewed-by: Luiz Angelo Daros de Luca <luizluca@gmail.com>
 
