@@ -4,69 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1728EC79F83
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 06:39:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD073C79F80
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 07:31:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3d3i5vsIWrW0LnXkTIgLG8qH4rN5A0QE4fwZ0GUTw5k=; b=e8kFUpEYcz5RsULanWBkcMWtY0
-	xSyrJGL7tacXYDGr7wMMuyWSS3wtCOS5aRWQSwoLmkFVXXGRPfvBr8DP6zQ+/0lRS+WGBOAD25m8d
-	1SqKc1TExRT2I/6zXBX7xJjXtjsWqVDTuP8iiVhWjbSy121wlR9jDanxfS75ZHGq0NJdh4lzL9PBY
-	tSmrzrS2jrF3ESp6OmsdR+Pyw6waRqAuJcdxI4Q4+VhQJMKhuL++cnmz+xtLPPQjmsQ2DYIuCb4Mc
-	dzHMSLLPAR8XAt/mTi9tgqkerSlhUWX5GJ63cuRFFnNizO96bUX0G3Kf6tEsL7E/F1d5yUracZxtH
-	7KzTfzQw==;
+	bh=GEbw6WhBSc18ynBt4xgzrCfUhv3c5N66qTBBdIgunPU=; b=yLNEHhKeInWvGCVBhM+bZdMrZV
+	v4i+wMj7TScaoctzRJ2CxKqV/hpyD8wbVvxybC/1F0J78UhaHaOs/S3ywJWgCYhz4oFH74FyKE3yZ
+	Sh5M3ep00f1Jf7PM42pVV+BeAbOQLRCqvdG5XcvZzmJFQVDe3kGQANQEJ5X2o37YyzxjnVHy9fLcj
+	WnrlsZPzlkUjVIqbOMBuIevFqbclYAilQddzzeFMfExVskvhJHG/SFRJlyN8KDTEjTWK+sDj3q+8Y
+	LAGkSmkzaISTSLPsDYJfD8aN/AQBamA4SoW+bmGydUgTRK0uUIXoaLQAZa4KUGphNUFmvN458ws24
+	c2eokDgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2NZv-000000019JS-1EYC;
-	Fri, 04 Sep 2026 06:39:11 +0000
-Received: from out-5.mta0.migadu.com ([2001:41d0:1004:224b::5] helo=mta0.migadu.com)
+	id 1x2OOC-00000001F8o-0iMC;
+	Fri, 04 Sep 2026 07:31:08 +0000
+Received: from sphereful.davidgow.net ([2404:9400:4:0:216:3eff:fee2:5328])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2NZs-000000019Id-0eWQ
-	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Sep 2026 06:39:09 +0000
-X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=YGvx98Tz2FML0LvjF/Dg0WhaeyNHH+kTPvoeQxEpaqE=;
- c=simple/simple; d=justthetip.ca;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1788503946; v=1; x=1789108746;
- b=t9uZ1IAPZDFqe1UQyWDPG0VoXwWLzSyJv0Y6ZqOswUvN+VdGUMPD2KZ8r82NiYGeCUtqxON1
- hxZxyOgfZVt9x32Y2vZiPXFoVtxQ4sVZn6VU8uFAWWqRKPCoZdjm7li1zk5/cl0VcoeGzASQ9i0
- vK2O2OZ1927KifoOoBrl46emPhyadgdHsT/BVCM16mWb1gb7kMal0ku0f7RzKz6uEYTUp5ghvvS
- 9rYPb09M7i/Qql50yCI49Of7v4erppoVX/WUyCKPgfNRp2mKrolOFgKfuwBvlBcQOpqMNVam89c
- 9qnVTn3JqN1YUuMN8TOd3Pbgay0YAg4S3N4h0fkRgVBgw==
-X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id a199b6197a3cee6e;
-	Fri, 04 Sep 2026 06:39:06 +0000
-X-Mizu-Trace-ID: a199b6197a3cee6e
-X-Migadu-Flow: FLOW_OUT
-From: Devin Wittmayer <lucid_duck@justthetip.ca>
-To: Mario Stanski Jr <mario@getscale.com.br>
-Cc: linux-firmware@kernel.org,
-	linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	regressions@lists.linux.dev,
-	jb.tsai@mediatek.com,
-	jwboyer@kernel.org,
-	nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com
-Subject: Re: [REGRESSION] mt7925e: firmware 20260813113118 causes severe low-RSSI 5 GHz loss
-Date: Thu,  3 Sep 2026 23:38:57 -0700
-Message-ID: <20260904063857.55152-1-lucid_duck@justthetip.ca>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <CAJe=AAkCeK=-pVve0Ffw_k0UBp4_AiO5BwQ1d2yG-pVe8B0U4Q@mail.gmail.com>
-References: <CAJe=AAkCeK=-pVve0Ffw_k0UBp4_AiO5BwQ1d2yG-pVe8B0U4Q@mail.gmail.com>
+	id 1x2OO8-00000001F7u-3vtL;
+	Fri, 04 Sep 2026 07:31:06 +0000
+Received: by sphereful.davidgow.net (Postfix, from userid 119)
+	id 21BDF200141; Fri,  4 Sep 2026 15:30:43 +0800 (AWST)
+Received: from [IPV6:2001:8003:8802:7000::41b] (unknown [IPv6:2001:8003:8802:7000::41b])
+	by sphereful.davidgow.net (Postfix) with ESMTPSA id 6205E2000F9;
+	Fri,  4 Sep 2026 15:30:40 +0800 (AWST)
+Message-ID: <bcf1ee9b-97e5-43f9-81eb-67ac6a0a98dc@davidgow.net>
+Date: Fri, 4 Sep 2026 15:30:37 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH wireless] wifi: mt76: mt792x: fix NULL dereference in ACPI
+ SAR init during probe
+To: Devin Wittmayer <lucid_duck@justthetip.ca>, Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Klara Modin <klarasmodin@gmail.com>,
+ Charlie-cy Wu <Charlie-cy.Wu@mediatek.com>, JB Tsai <jb.tsai@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ regressions@lists.linux.dev
+References: <20260825181712.28548-1-lucid_duck@justthetip.ca>
+Content-Language: en-US
+From: David Gow <david@davidgow.net>
+In-Reply-To: <20260825181712.28548-1-lucid_duck@justthetip.ca>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260903_233908_530308_13CE416C 
-X-CRM114-Status: UNSURE (   8.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260904_003105_277855_86622DE4 
+X-CRM114-Status: GOOD (  26.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,33 +71,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thanks for the A/B, and for publishing the hashes. They made this quick
-to set up on my side.
+Le 26/08/2026 à 02:17, Devin Wittmayer a écrit :
+> Some laptops carry a MediaTek power table in their firmware, and the
+> driver reads it to set a transmit limit for each frequency range. It
+> only fills in the ranges themselves when it registers the device.
+> 
+> The startup step that does this existed already, but it never programmed
+> anything. These two commits made it run a regulatory update instead,
+> which sets the limits on the way through, long before registration. So on
+> a machine that has the table the driver reads through an empty pointer
+> and the interface never appears:
+> 
+>    BUG: kernel NULL pointer dereference, address: 0000000000000004
+>    RIP: 0010:mt792x_init_acpi_sar_power
+>    Call Trace:
+>     mt7921_set_tx_sar_pwr
+>     mt7921_mcu_regd_update
+>     mt7921_regd_update
+>     mt7921_run_firmware
+>     mt7921e_mcu_init
+>     mt7921_init_work
+> 
+> Skip it when the ranges are missing. They are applied again once the
+> device is up, which is where they came from before.
+> 
+> Reported-by: Klara Modin <klarasmodin@gmail.com>
+> Closes: https://lore.kernel.org/linux-wireless/aoyxqHYvSuaBeubf@soda.int.kasm.eu/
+> Fixes: 9b80bd9cab40 ("wifi: mt76: mt7921: add regulatory wiphy self manager support")
+> Fixes: e9f3f1cc133f ("wifi: mt76: mt7925: add regulatory wiphy self manager support")
+> Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+> ---
 
-Unfortunately, try as I might, I cannot reproduce it. Same ASIC revision
-79250000 and HW/SW 0x8a108a10 as yours, both firmware pairs hash-matched
-to the SHA-256s you gave, 5 GHz at -70 to -79 dBm against a WPA2 AP on
-5765.
+I can also confirm that this fixes the same NULL pointer dereference in 
+7.3-rc1 here, also on a Framework 13 (Ryzen 7040):
 
-Eight arms: two in-tree kernels, an out-of-tree mt76 from 30 August so
-the driver is 7.3 era, power save off to match yours, idle and loaded,
-and a ten minute soak with a continuous pull underneath.
+BUG: kernel NULL pointer dereference, address: 0000000000000004
+#PF: supervisor read access in kernel mode
+#PF: error_code(0x0000) - not-present page
+PGD 0 P4D 0
+Oops: Oops: 0000 [#1] SMP NOPTI
+CPU: 10 UID: 0 PID: 149 Comm: kworker/10:1 Tainted: G            E 
+7.3.0-rc1-sulix+ #15 PREEMPT(full)  b7f05cce278af6607ac2dcae2fd785935bbe0dc6
+Hardware name: Framework Laptop 13 (AMD Ryzen 7040Series)/FRANMDCP07, 
+BIOS 03.05 03/29/2024
+Workqueue: events mt7921_init_work [mt7921_common]
+RIP: 0010:mt792x_init_acpi_sar_power+0x40/0x1ed [mt792x_lib]
+(...)
 
-  gateway packet loss   0% in every arm, roughly 1000 packets
-  gateway rtt           11 to 121 ms average
-  1 MB HTTPS probes     3 of 3 completed in every arm
-  25 MB pull            1.4 to 2.05 MB/s
 
-None of that argues with your result. You held everything but the blobs
-and got a clean separation, and I would trust that over my negative.
+Tested-by: David Gow <david@davidgow.net>
 
-What it does suggest is that the firmware on its own is not enough on
-this silicon at this signal, so the rest of it is in what I could not
-match. Your board is an AMD RZ717, 14c3:0717, where mine is an AzureWave
-14c3:7925. Your regulatory domain is BR, where mine is pinned to CA by
-the AP's country IE. Your link is VHT40 on 5805 and mine is HE on 5765.
+Thanks,
+-- David
 
-If anyone else on an RZ717 has seen this, that would narrow it quickly.
 
-Devin
+> 
+> Reproduced on both chips before sending, an MT7922 and an MT7925, and the
+> fix clears both. Neither machine here ships a vendor power table, so I
+> supplied one through an ACPI override in the initrd. It also wants recent
+> firmware. The June builds do not turn on self-managed regulatory and
+> nothing happens; the builds now in linux-firmware do, and then it dies
+> exactly as reported with no interface at all. Patched, both come up and
+> scan normally, and the injected limits still show through in the power
+> table afterwards, so the skip does not lose them.
+> 
+> With that table still in place and the fix absent, backing out the mt7921
+> commit on its own also boots clean, so the table is not what causes this.
+> 
+>   drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
+> index 946dd7956e4a..b468051fbe68 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
+> @@ -323,7 +323,8 @@ int mt792x_init_acpi_sar_power(struct mt792x_phy *phy, bool set_default)
+>   	const struct cfg80211_sar_capa *capa = phy->mt76->hw->wiphy->sar_capa;
+>   	int i;
+>   
+> -	if (!phy->acpisar || !((struct mt792x_acpi_sar *)phy->acpisar)->dyn)
+> +	if (!capa || !phy->acpisar ||
+> +	    !((struct mt792x_acpi_sar *)phy->acpisar)->dyn)
+>   		return 0;
+>   
+>   	/* When ACPI SAR enabled in HW, we should apply rules for .frp
+
 
