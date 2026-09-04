@@ -4,79 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20CF0C79F87
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 16:00:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDBFEC79F82
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 16:03:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=llQNvoZIzyeSeaE2LlQs+4VU+7e5N4mAqNZw2O02bGM=; b=e4+Pj5kkWF3vehYmCz/2HV8/Jk
-	HZINa37x0InHy3BQrmdi8K0MB48bxcPAHNFAvAXXXvFtJ5jkSI+JyB2WEk6A6xGvs2ZJJd8hnmyMd
-	nk7Ne7Pj40G2kazfCan+tVdKjAuTH+f58T8iiDMYemxqZj19bAY8JY2sRGMcWjzYfq7YkRAYtOa1s
-	4eC7mS0Bpeuj1HCmeQQ60FMlXCjAxRQZ6e4+f8adBgYXQ+pQpmNl9+Mb4c7a++Rc072GPoxDLjgOr
-	bbpTdZhgAI3M8oLvJnpQOytdKdaEVWqy2+ObAyOFW+Q0H7Yj8z3vylTd8PRbJhcmSd5wjKzUswgAV
-	oZnr9gTQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xeoYE+wP/hZ73/Una2p/BsJnlKVMQwY7i/kdvuSzlz8=; b=RI1hphK9g4kgqVv830l5R7PbNy
+	NCtCvLaDvvoVHeuB+22Qjd0vCjAsNALpd6oSMlzLpiMlcuSbRdB9dPB0p8Xc7Z0F4E0ltVjiMT3iT
+	DYvQuynVRw0vJs5DwM9hR1SyaIVTWKanSJSdx37RvbI9z0zkaaZ7dr/ebkRSgLRIn9FLS1zaqn7/5
+	F2cqgpA5QkBqGMFpadTKfYnKs/zlqJwSe4HdN2CeQHP5nZ/+weDitSqHCPUlBHdDmtDxyeaxpdCCd
+	qzxoLnUzPf8LIf6xNAmT9tzFVKhm07Qc+iEQfhb0WkMH+vUIxPfNHJRlq8f0WLcFj14KBVZSnwEAU
+	jd+G+gpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2WKh-00000002dZt-0Xkw;
-	Fri, 04 Sep 2026 16:00:03 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x2WNv-00000002fHz-3CNg;
+	Fri, 04 Sep 2026 16:03:23 +0000
+Received: from mail-swedencentralazon11013027.outbound.protection.outlook.com ([52.101.83.27] helo=GVXPR05CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2WK2-00000002cBb-2T8v;
-	Fri, 04 Sep 2026 15:59:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788537560;
-	bh=Ay44pYArtbKhsePk0Zo5kYWyEZr8Y2LAZ5HauRRXQSE=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=GWPxfq2nK4Ss8yRwwvg8nar3bMSV3V1vp+4WOiAsMkdLltDOdBL8lnjasxWzkU0Xn
-	 fxFr+0itMLqfWZTcmhg58DtnNn76DzKXTkau2MNFAN3yGcHSZVFxZSo1uz2Hn/sbR9
-	 CxjwMvq6IcA5Afq3nL2duyL0VSZYiRPdW0iGh4vf1f5w+SiHfp7jP6I3q2vUgLxPil
-	 lhl6wrJl+2TucGC8g4J81BBhNOMirhAFg1KMjMtpPOgUQYdszE/Aqesw3i3VG8atPs
-	 jJvRkVGyp2oxGz9bwyUTnIHHHsjWDQxPIRKJQbIFlp7uiTpJst8c+4XfeUGRaVryiG
-	 zm88i5qouKLDA==
-Received: from yukiji.home (unknown [100.64.0.131])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A28D817E0FAA;
-	Fri, 04 Sep 2026 17:59:19 +0200 (CEST)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Fri, 04 Sep 2026 17:58:37 +0200
-Subject: [PATCH v6 26/27] clk: mediatek: Add MT8189 scp clock support
+	id 1x2WNs-00000002fHC-3ESR;
+	Fri, 04 Sep 2026 16:03:21 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Cl06H6+52OV55Ip0lbLLGm0V9VAXMbxuxmXyZuOCbmVWYF2vf8hBk3IE7qhpDR6uOMBlqcQCVM/nGE0iOwvjQGz559v6BFtWi2/94aQ7UOBy0B8krO4ErZ2npiAGyeth0/ZKOMhGnKVS6O4uXIul+ftqa9FzJuybCQB306aWNNm+S846UV+Y76v7L9T+ybm3YAjmjLYAB/vDkg7qzmqjP4pSBSGn+rTCQsvgSsZleHHlXEbXW+IxUVycwaZhQSeYTWQcjTsXBdG60IlsLb8j//dbN2daMy7kdTJx5LXO8UpicKbOmGZvz2PgO6DoSmJZWwBh4GY2z1iPuS5OQU9/Zg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=xeoYE+wP/hZ73/Una2p/BsJnlKVMQwY7i/kdvuSzlz8=;
+ b=jjwj/osQosP5/lvyMwOtJhCBBgb2TA8ABaL7sf1zkmaGjcT8hy4pAVxnqoplMkejbe2DnofaRwJIhYKGtr5Q5x+Y1O+CWfee61Ri39NguHfWdOtGTO7jvTIDIsRq9KeEEILa7QwdUMZHut9UXqhWSZNey0QjrUgsstCgubvbCIV45FD0P/K6CT1TF414Np2FCPi7OQxBuaEBoGheePBiEDL10h8bywAkZnJgxO9jA8WXpufZQHgE0rqyDqv1BdqmocVN+jvTvJXGMnBnQFOzrDdKsKfEZvJejcc8cOpLWen/isyD3BTYHp/VXkeFHZ9zNWDuZ8es1Go+RPghH+GDOA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
+ dkim=pass header.d=oss.nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
+ s=selector1-NXP1-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=xeoYE+wP/hZ73/Una2p/BsJnlKVMQwY7i/kdvuSzlz8=;
+ b=qEFRfD569yYKylGKL7G3YZr9LjakE7IKYC+HWRyrmZUdpDP0T8XQ6t6uD1ZvAv3h24uYbpTOEKmhLl5N00ruQXbE9i69ELItCjOUy+rwdQvnPpatdO+fIdHWt5QZJUTiHjhcS9A1Wzxg1akFRy/Qi/UMVqZwELKGr3IWnHimdOG2n9jCCoOZdZf8WShW+7AijexRPUhN2lCzN4uk/+KWSCF0pr9D9zgBqkMAA24BpXx5YrQ4p5OFVkTUV06ildpguqJug0eEBmls7gSuiaQnWw2LSwhiBfpiJwKNj+3DSI/Nd/8A9c0oEaw6RZMcZCVD1VxltkKZBWOekbD75mJMRw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=oss.nxp.com;
+Received: from GV2PR04MB11799.eurprd04.prod.outlook.com (2603:10a6:150:2cf::9)
+ by PR3PR04MB7353.eurprd04.prod.outlook.com (2603:10a6:102:82::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.360.13; Fri, 4 Sep
+ 2026 16:03:14 +0000
+Received: from GV2PR04MB11799.eurprd04.prod.outlook.com
+ ([fe80::2146:83a2:5329:b7c]) by GV2PR04MB11799.eurprd04.prod.outlook.com
+ ([fe80::2146:83a2:5329:b7c%7]) with mapi id 15.21.0360.008; Fri, 4 Sep 2026
+ 16:03:13 +0000
+Date: Fri, 4 Sep 2026 12:02:58 -0400
+From: Frank Li <Frank.li@oss.nxp.com>
+To: Pan Chuang <panchuang@vivo.com>
+Cc: vkoul@kernel.org, Frank.Li@nxp.com, afaerber@suse.de,
+	alexandre.torgue@foss.st.com, amelie.delaunay@foss.st.com,
+	andersson@kernel.org, angelogioacchino.delregno@collabora.com,
+	baolin.wang@linux.alibaba.com, biju.das.jz@bp.renesas.com,
+	claudiu.beznea.uj@bp.renesas.com,
+	cosmin-gabriel.tanislav.xa@renesas.com, daniel@zonque.org,
+	dmaengine@vger.kernel.org, dmitry.baryshkov@oss.qualcomm.com,
+	geert+renesas@glider.be, haojian.zhuang@gmail.com,
+	hayashi.kunihiko@socionext.com, imx@lists.linux.dev,
+	jernej.skrabec@gmail.com, john.madieu.xa@bp.renesas.com,
+	jonathanh@nvidia.com, kees@kernel.org, keguang.zhang@gmail.com,
+	ldewangan@nvidia.com, linmq006@gmail.com,
+	linux-actions@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-mips@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+	linux-riscv@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	magnus.damm@gmail.com, mani@kernel.org, matthias.bgg@gmail.com,
+	mcoquelin.stm32@gmail.com, mhiramat@kernel.org, orsonzhai@gmail.com,
+	patrice.chotard@foss.st.com, pjw@kernel.org,
+	quic_jseerapu@quicinc.com, robert.jarzmik@free.fr,
+	samuel.holland@sifive.com, sean.wang@mediatek.com,
+	thierry.reding@kernel.org, thomasandreatta2000@gmail.com,
+	vigneshr@ti.com, wens@kernel.org, wsa+renesas@sang-engineering.com,
+	zhang.lyra@gmail.com, zhengxingda@iscas.ac.cn
+Subject: Re: [PATCH 00/26] dmaengine: Remove redundant
+ dev_err()/dev_err_probe() calls
+Message-ID: <aprrssx-LorAEjV4@lizhi-Precision-Tower-5810>
+References: <alYmNl--mxMK1-86@vaman>
+ <20260715064443.525836-1-panchuang@vivo.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260715064443.525836-1-panchuang@vivo.com>
+X-ClientProxiedBy: CY8P220CA0002.NAMP220.PROD.OUTLOOK.COM
+ (2603:10b6:930:46::12) To GV2PR04MB11799.eurprd04.prod.outlook.com
+ (2603:10a6:150:2cf::9)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260904-mt8189-clocks-system-base-v6-26-5df247f56938@collabora.com>
-References: <20260904-mt8189-clocks-system-base-v6-0-5df247f56938@collabora.com>
-In-Reply-To: <20260904-mt8189-clocks-system-base-v6-0-5df247f56938@collabora.com>
-To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
- Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chun-Jie Chen <chun-jie.chen@mediatek.com>, 
- Chen-Yu Tsai <wenst@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
- Edward-JW Yang <edward-jw.yang@mediatek.com>
-Cc: kernel@collabora.com, linux-clk@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Irving-CH Lin <irving-ch.lin@mediatek.com>, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1788537522; l=4970;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=Ay44pYArtbKhsePk0Zo5kYWyEZr8Y2LAZ5HauRRXQSE=;
- b=M01tcSBwTZSCieVUXJ+UZWyJ+cvDOggj2geUli+9isaO60ETk/EqbXbUABAr+YohALGbn1aIg
- 1SwDlhmiProCvIZqqHbgY7SzoYL+2GFzZPVgHPuoDcjxBdQn3xCePGi
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GV2PR04MB11799:EE_|PR3PR04MB7353:EE_
+X-MS-Office365-Filtering-Correlation-Id: f59e165f-29f4-4ff7-267b-08df0a9e0637
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|23010399003|19092799006|376014|7416014|1800799024|6133799003|56012099006|10067099003|4143699003|11063799006|18002099003|22082099003|41080700001;
+X-Microsoft-Antispam-Message-Info: EGNRqNQyr2mcr6anJTdDTVV2gNnqKI4j86N4WO/z6xfq7o7q+jA6BCJxuap/+9HsGECJlTa3PqtRNRUhMg1cbMe6Qvamqd5QqapY1cA4roXVIpvbH+CvrVKIwVkk7aEjdhrT0FwCkrMnR0nzELeAJ9YapngdEAE7P5G+CXSwJDP/n/5HiQ7yyqkAjoqKnPZGTcLez5ig0bsWTyVmo2mESf+tFTAcXxRg5xcvlXBCJHSl+gL2/ZXij2+j3XSsMn95oDP8WU/F9M6GA0yDm5XYR+37WadgOzC5bWAOfiT/+MijMmThC6PHHf7F1yX/n4kJ1UTj4yWnwHM1GYWtrKGCOaocVqe1bZgz8dQdzghhHQDLWwmoSiWKls4JD7dWtzq8QAaz2imnL382Vt0K4iraGoHarOSM/7JAHLGRZJy2okRsclByuXjLesKucFeGRYrsAd5iNHbKzWkv+PJPEix4SWKI48o2uyEuxY4wkmdCb4xcWkaaO0T5wdjnNhYBlFh+eMnkPKINH/f8gy6fqmFR1YFHrNPdn/R+pMlB3Mjt/bOaF6NzGN1Wf6W4UreW/zG0QsUlaQE1aCWcD6LV1XrifK3hgfVqBQGjyOtlGMh0GqnzBJFCUXCr+34WOxhcOSHw6tuhIa228nMPx+XEBTljeLVXet7X7BCZIs+Jk1W/DD7k4L8I2cvHbmVHMt6fwI+LpqovsnyDMfZQrnC7VprAQw23QQWTo3e5jdTFzgOKvtI=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR04MB11799.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(23010399003)(19092799006)(376014)(7416014)(1800799024)(6133799003)(56012099006)(10067099003)(4143699003)(11063799006)(18002099003)(22082099003)(41080700001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?ggZ2y553LUYUNuPjgSSeapu8scrV+1lJzcIp2oUL8pAm7IRgNgBODpk5umWj?=
+ =?us-ascii?Q?nCTwHDEbkuE8Y9JGWvB0R3ScBVtv2ZXaQ7I9icH0Zcvsqg6JHn1EDuKTKm0e?=
+ =?us-ascii?Q?JEAlF9YBCh2IFkmQUzjX4C6mpgSG+RxX4xjEe0LSHyve115zMOMCSCPFU+B8?=
+ =?us-ascii?Q?IkdVYKXxDCB6O/0XYNjVmkNArt9gje1AoKX4Ib0p76F+nrFThZ1RFm106eTv?=
+ =?us-ascii?Q?7FCFFhVz14HpO2uVksv+T4CMDZxjuD5tsV/fQM7d80grESezHk6NYgNCyWks?=
+ =?us-ascii?Q?CzuGX0bF0J4As+eJ6BPcDYA5pNmjfieEl4s6yssfg8WUfIVevmh6zpngy/Rv?=
+ =?us-ascii?Q?GnSzjT/XA+jGt7PlGRsMVe+Fe5219BNb05nVO8GcXjAcCuuOLv9c8bTIRxpC?=
+ =?us-ascii?Q?OtqoiD68yZZ1GuuJc/fgxRo0s1CqDKwCuL/Dg9JVdzQDzFV1X3+6M3ocX5QJ?=
+ =?us-ascii?Q?wPGOp3Pfz9Ub3Hck065UtDvG44FEdS9FPoWGJE/zMtLBbOxqCq09W5jzUERF?=
+ =?us-ascii?Q?XffJMLeaH7AbNGYmwCW+D0moYSA8MbUBb/FC/ChMNuLuEvOQGR9d2vLJgILZ?=
+ =?us-ascii?Q?Fxb5qr82x9aDJc0OqDJdCZBK/frIGY0CZbe5fb2IsoMRFOz7o9UO4hNYjTTb?=
+ =?us-ascii?Q?j//Q+X4vYTjIP6hqUwbPrBgYLm1kn8qaK4Ku0hQF49km66xKoRTzSC2sr4Kn?=
+ =?us-ascii?Q?+FQONmNo/uE0VKIXs/h2uhk5p5gNkuhQZ5PVquvzKdFq4xMhP80dMyhvoVxr?=
+ =?us-ascii?Q?6ZW1terb0VdXYUHcQohPz+lQc+uhkIpv01e5foZzCLRSJuSAviiu8pMrP6QI?=
+ =?us-ascii?Q?HnOmlnKlYx/DLoZwockYW7wlH1OEpLZN3T67uwR5BjMT1DIvjarf00ajFryH?=
+ =?us-ascii?Q?NiWZpPSeYyrNAeKsW2ZX+TnxmZLTLs+l3Xs8YY3DtNoUCI2aMcQBX4rzqsEa?=
+ =?us-ascii?Q?bBpDYV4HNw7FxwScErtGouyInwTAPny5epp/O69QtUQTj1hmnuJO1WQNZwQZ?=
+ =?us-ascii?Q?sJaeTRHYmCQM9wZPq0vKGG4XXs4+ZWQQBu7G2AI1D8YPTFptpO8P+ElC1O7I?=
+ =?us-ascii?Q?mJ6ELpOEwfda+MlwBPb0rN0hHCF57HUKagNnjzPD4J5ioQBRWevfUlEprtGh?=
+ =?us-ascii?Q?fi1Qpj8o9mueaquNS8Ey0VvH+4K5Td+EJGFdmM8breaQzdQocT7z+LqIk+Os?=
+ =?us-ascii?Q?L/r9JW4N5PbbmYCOj4FRR72+vLJxVZHg3WULqSBOMAZ+AEkojo/naKpkyWiH?=
+ =?us-ascii?Q?0qk4R1eFyqTXM969wsyTzziXXTUk6FOTPgescEJFAmuQRnZ+WkO1iC2ds4G4?=
+ =?us-ascii?Q?bQJXxfRCP/8Y85viBCdN4fvKMTXC3M340RwtH7Wlmq5xf5kyAjRH0VSXVlZ4?=
+ =?us-ascii?Q?+PI7vIQQObhG8xC5oFzIyIljVbibzXo10y1/eINJXddbO767rgSGot7c1ivH?=
+ =?us-ascii?Q?QxDpMd/XKluXI+35OtE01u3Ss+vA6HrXGyNrEEQDQAKr2lGMQVKgfDVJ7NL4?=
+ =?us-ascii?Q?M3rlHFSDhkNQ6ShMb9H2FAGfM32+Se+0VB8txg7H/AJJwvdnp5PA4PhrHAS5?=
+ =?us-ascii?Q?Jbq3yYuLQ6lsQwyav4ntd/bk+0DBBJdgiTeHZmoVGPacHG4fvN1QbVhNrEYe?=
+ =?us-ascii?Q?o0f2irfh7b1CoSBX9vtqmovB07ObHcC6x51PKEANH8JQlw/zAz71FKJkar9z?=
+ =?us-ascii?Q?MT5FrClcvtEBGNPlFd+3uMr629s0x7/3wtTLNnQN3Q+YxLbrztIRfspDEnaw?=
+ =?us-ascii?Q?wCucmaGT0cAprs18Zr891xOwiQb0HBsDjcUnroHf39aJ74uvcpBC?=
+X-OriginatorOrg: oss.nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f59e165f-29f4-4ff7-267b-08df0a9e0637
+X-MS-Exchange-CrossTenant-AuthSource: GV2PR04MB11799.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Sep 2026 16:03:13.8534
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: lkRvp47PzUm1lyW3Y4uwQM4s9AwxWFJ7qQ6h4Kw5fqck+VtRbZM36DkftDNrkaUkK6SwT//VbFmMcAkjXtJIferJWN9HlKrsNn5O1yholw3eoa6D8lULmp9Y24F/oz4B
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PR3PR04MB7353
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_085922_840755_0C6CFCD2 
-X-CRM114-Status: GOOD (  17.58  )
+X-CRM114-CacheID: sfid-20260904_090320_832612_A5160C8E 
+X-CRM114-Status: GOOD (  12.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,137 +161,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the MT8189 scp clock controller,
-which provides clock gate control for System Control Processor.
+On Wed, Jul 15, 2026 at 02:44:43PM +0800, Pan Chuang wrote:
+> On 2026-07-14 20:06, Vinod Koul wrote:
+> > On 09-07-26, 16:26, Wolfram Sang wrote:
+> >> On Thu, Jul 09, 2026 at 09:58:04PM +0800, Pan Chuang wrote:
+> >>> Commit 55b48e23f5c4b6f5ca9b7ab09599b17dcf501c10 ("genirq/devres: Add
+> >>> error handling in devm_request_*_irq()") added automatic error logging
+> >>> to devm_request_threaded_irq() and devm_request_any_context_irq() via
+> >>> the new devm_request_result() helper. The helper prints device name,
+> >>> IRQ number, handler functions, and error code on failure.
+> >>>
+> >>> Since devm_request_irq() is a static inline wrapper around
+> >>> devm_request_threaded_irq(), it also benefits from this automatic
+> >>> logging.
+> >>>
+> >>> This series removes the now-redundant dev_err() and dev_err_probe() calls
+> >>> in dmaengine drivers that follow these devm_request_*_irq() functions,
+> >>> as the core now provides more detailed diagnostic information on failure.
+> >>>
+> >>> Pan Chuang (26):
+> >>>   dmaengine: fsl-edma-main: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: fsl-qdma: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: loongson-loongson1-apb-dma: Remove redundant
+> >>>     dev_err()/dev_err_probe()
+> >>>   dmaengine: mediatek-mtk-cqdma: Remove redundant
+> >>>     dev_err()/dev_err_probe()
+> >>>   dmaengine: mediatek-mtk-hsdma: Remove redundant
+> >>>     dev_err()/dev_err_probe()
+> >>>   dmaengine: mmp_pdma: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: moxart-dma: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: owl-dma: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: pxa_dma: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: qcom-gpi: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: sf-pdma-sf-pdma: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: sh-rcar-dmac: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: sh-rz-dmac: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: sh-shdmac: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: sh-usb-dmac: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: sprd-dma: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: st_fdma: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: stm32-stm32-dma: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: stm32-stm32-dma3: Remove redundant
+> >>>     dev_err()/dev_err_probe()
+> >>>   dmaengine: stm32-stm32-mdma: Remove redundant
+> >>>     dev_err()/dev_err_probe()
+> >>>   dmaengine: sun4i-dma: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: sun6i-dma: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: tegra20-apb-dma: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: ti-edma: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: uniphier-xdmac: Remove redundant dev_err()/dev_err_probe()
+> >>>   dmaengine: xgene-dma: Remove redundant dev_err()/dev_err_probe()
+> >>
+> >> One patch per subsystem for such trivial changes, please.
+> >
+> > Yes pretty please
+> >
+> Thanks, I'll merge them in v2.
 
-Co-developed-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
-Signed-off-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
-Co-developed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
----
- drivers/clk/mediatek/Kconfig          | 10 +++++
- drivers/clk/mediatek/Makefile         |  1 +
- drivers/clk/mediatek/clk-mt8189-scp.c | 76 +++++++++++++++++++++++++++++++++++
- 3 files changed, 87 insertions(+)
+Did you post v2?
 
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index 7b3bc27edbe3..17e0bfa695fe 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -882,6 +882,16 @@ config COMMON_CLK_MT8189_IIC
- 	  the MT8189 chipset, improving the overall performance and power
- 	  efficiency of the device.
- 
-+config COMMON_CLK_MT8189_SCP
-+	tristate "Clock driver for MediaTek MT8189 scp"
-+	depends on COMMON_CLK_MT8189
-+	default COMMON_CLK_MT8189
-+	help
-+	  Enable this to support the clock framework for the System Control
-+	  Processor (SCP) in the MediaTek MT8189 SoC. This includes clock
-+	  management for SCP-related features, ensuring proper clock
-+	  distribution and gating for power efficiency and functionality.
-+
- config COMMON_CLK_MT8192
- 	tristate "Clock driver for MediaTek MT8192"
- 	depends on ARM64 || COMPILE_TEST
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 5e35185d23b0..e712815f7572 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -130,6 +130,7 @@ obj-$(CONFIG_COMMON_CLK_MT8189_BUS) += clk-mt8189-bus.o
- obj-$(CONFIG_COMMON_CLK_MT8189_DBGAO) += clk-mt8189-dbgao.o
- obj-$(CONFIG_COMMON_CLK_MT8189_DVFSRC) += clk-mt8189-dvfsrc.o
- obj-$(CONFIG_COMMON_CLK_MT8189_IIC) += clk-mt8189-iic.o
-+obj-$(CONFIG_COMMON_CLK_MT8189_SCP) += clk-mt8189-scp.o
- obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192-apmixedsys.o clk-mt8192.o
- obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
- obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
-diff --git a/drivers/clk/mediatek/clk-mt8189-scp.c b/drivers/clk/mediatek/clk-mt8189-scp.c
-new file mode 100644
-index 000000000000..75f087d819c0
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8189-scp.c
-@@ -0,0 +1,76 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (C) 2025-2026 MediaTek Inc.
-+ *                    Qiqi Wang <qiqi.wang@mediatek.com>
-+ *                    Irving-CH Lin <irving-ch.lin@mediatek.com>
-+ * Copyright (C) 2026 Collabora Ltd.
-+ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ *                    Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-+ */
-+
-+#include <dt-bindings/clock/mediatek,mt8189-clk.h>
-+
-+#include <linux/clk-provider.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+
-+#include "clk-mtk.h"
-+#include "clk-gate.h"
-+
-+static const struct mtk_gate_regs scp_cg_regs = {
-+	.set_ofs = 0x4,
-+	.clr_ofs = 0x8,
-+	.sta_ofs = 0x4,
-+};
-+
-+#define GATE_SCP(_id, _name, _parent, _shift)		\
-+	GATE_MTK(_id, _name, _parent, &scp_cg_regs, _shift, &mtk_clk_gate_ops_setclr_inv)
-+
-+static const struct mtk_gate scp_clks[] = {
-+	GATE_SCP(CLK_SCP_SET_SPI0, "scp_set_spi0", "clk26m", 0),
-+	GATE_SCP(CLK_SCP_SET_SPI1, "scp_set_spi1", "clk26m", 1),
-+};
-+
-+static const struct mtk_clk_desc scp_mcd = {
-+	.clks = scp_clks,
-+	.num_clks = ARRAY_SIZE(scp_clks),
-+};
-+
-+static const struct mtk_gate_regs scp_iic_cg_regs = {
-+	.set_ofs = 0x8,
-+	.clr_ofs = 0x4,
-+	.sta_ofs = 0x0,
-+};
-+
-+#define GATE_SCP_IIC(_id, _name, _parent, _shift)	\
-+	GATE_MTK(_id, _name, _parent, &scp_iic_cg_regs, _shift, &mtk_clk_gate_ops_setclr_inv)
-+
-+static const struct mtk_gate scp_iic_clks[] = {
-+	GATE_SCP_IIC(CLK_SCP_IIC_I2C0_W1S, "scp_iic_i2c0_w1s", "vlp_scp_iic_sel", 0),
-+	GATE_SCP_IIC(CLK_SCP_IIC_I2C1_W1S, "scp_iic_i2c1_w1s", "vlp_scp_iic_sel", 1),
-+};
-+
-+static const struct mtk_clk_desc scp_iic_mcd = {
-+	.clks = scp_iic_clks,
-+	.num_clks = ARRAY_SIZE(scp_iic_clks),
-+};
-+
-+static const struct of_device_id of_match_clk_mt8189_scp[] = {
-+	{ .compatible = "mediatek,mt8189-scp-clk", .data = &scp_mcd },
-+	{ .compatible = "mediatek,mt8189-scp-i2c-clk", .data = &scp_iic_mcd },
-+	{ /* sentinel */ }
-+};
-+MODULE_DEVICE_TABLE(of, of_match_clk_mt8189_scp);
-+
-+static struct platform_driver clk_mt8189_scp_drv = {
-+	.probe = mtk_clk_simple_probe,
-+	.remove = mtk_clk_simple_remove,
-+	.driver = {
-+		.name = "clk-mt8189-scp",
-+		.of_match_table = of_match_clk_mt8189_scp,
-+	},
-+};
-+module_platform_driver(clk_mt8189_scp_drv);
-+
-+MODULE_DESCRIPTION("MediaTek MT8189 scp clocks driver");
-+MODULE_LICENSE("GPL");
+Frank
 
--- 
-2.55.0
-
+>
+> Best Regards,
+> PanChuang
 
