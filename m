@@ -4,183 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12BCDC61DD6
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 04:43:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2825FC61DD3
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 05:30:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/ksTf/K3D7y6EP+WXr7pY+Ba2A5ReQz6ePta7PDpqLo=; b=0+6BKehm0yjxDsYSNK4K39Nl3Z
-	eo07/arihUy9PGEO3wQQ7CrhyM915AOK+R9wsk/row3hMk01qd3zCY4hzLa+QcqcLyHtIAcN/CUVK
-	4e6C/CAtwMfjEuHfiaJEzBc+Fpp70u+3zv7CEH/487xMvCKzgCSYBqofn+T/2Dxtwph+dnU//wi6/
-	YCNNJFuXfiQSe2+wicyOPgHpLnUB/4GLs8y9tXQi2t6NBdNrK7E1InWuC3TTKi7i5uG/hU9LrKDkL
-	0TRBWUP78znooeCHb1OBAzFe0HWfXqf98xnhD4KK8BNo7mn+AOnxqQnf0VriCHsptjAZSr1dWT6JH
-	jZyuHjYg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=s9VeM2Hj9d1CYutblv9K9gniHtTbYGqC7kevoULcpcA=; b=YV7U71WxqbDXCXoaWFp6az+bYU
+	hu9VM0AFNlybv7ykmHpj54892bdIiSKFEfYX4Y4jtx7Ve9A2IJuAuYlRMXe0ow0Rom233MQo9j4SD
+	euLSY4CTIM3Q2DZIEApfbUHXLRM3uq7IDcTEMrzInnUgIXuJAylv00v/jGVds+dFbSryrss2NP50O
+	hbB372XLXGVFtgLOisH4mv0WiNu3r3CZikuq5XvGXSuK50DTuEb1cweRkEtuV1DiJV++Kk9eeoNPT
+	gT85hntZqLKJr8j+1pidkeu6/arRD01omE2UwMMlbOUtdibk5WRXNGWy+5gTpY3hSnLqOoxQ7A+TS
+	G72TEzpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2Llf-000000011yl-2OfZ;
-	Fri, 04 Sep 2026 04:43:12 +0000
-Received: from mx0a-0002e601.pphosted.com ([148.163.150.75])
+	id 1x2MVJ-000000014RE-0IXB;
+	Fri, 04 Sep 2026 05:30:21 +0000
+Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2Llc-000000011xL-1S3z;
-	Fri, 04 Sep 2026 04:43:09 +0000
-Received: from pps.filterd (m0380145.ppops.net [127.0.0.1])
-	by m0380145.ppops.net (8.18.1.11/8.18.1.11) with ESMTP id 6842sTDx2586808;
-	Thu, 3 Sep 2026 23:42:21 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=
-	proofpoint-05-2026; bh=/ksTf/K3D7y6EP+WXr7pY+Ba2A5ReQz6ePta7PDpq
-	Lo=; b=A04+r/yQvFHVZ6yk2ikvmR63QKUIcvPZosvdE87vckDze7nX2oPZLu0KJ
-	501pYyhHwcSVVQ7lpRDDm9vmRZP5kgEoR+kphtHRf8X97udS4N0kH0+i2HGVyE+H
-	dDtZ50FrC4SI9QllOjWTuZm0uFyIJ15bu1QbtmVlDaDtqhY/1Ui2h4fjxUPEaCPv
-	pPGKoGPorUYfZk2pSghxrKP1mIdp1n66Z6yH7XIztR/6Xmi+7uhqG/6uF+5Oc+nK
-	lvSkB30ES1J5GcX1+Djt9Z2K2osVRv4H2aKX4OlnYOuaCWGlNDArmtRlyUY9Uo1d
-	+HVFwPd9ub5Sl3KvSmovjoyxNQSRw==
-Received: from bn8pr05cu002.outbound.protection.outlook.com (mail-eastus2azon11011000.outbound.protection.outlook.com [52.101.57.0])
-	by m0380145.ppops.net (PPS) with ESMTPS id 4gfk4xs9b7-1
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
-	Thu, 03 Sep 2026 23:42:21 -0500 (CDT)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=i5cfsStjqLnjPsqFtIj1mDhRQ1g7AXLD5SS4TCpCcLC8ohtsTyhYN1p6i6MRc1riiUN9rqTNYsZz3Bw4FChJkSS2jLReGtXEzEdAl8tlg99yClpB0mpAD+SlEi2ACavwt2AOsuMF+0YuCpUJIwCrQdk0jJOoRTr0buG0OrbRfJE+CdI0Flytc7ymBZLRMxRSnGUFIneDcsof8tqovrpoXRYmCtmust1ux4vMopibYeEdZjLJcbcHk6m9rkCvP3bzkKQJ5rkvlzDqXvG2iCCbEVCZAFUfPGz7rUKSZccxLBIAb9lt8vHMoP9V5uI1n2WC20buMyveMz5N3R4DCan0Rg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=/ksTf/K3D7y6EP+WXr7pY+Ba2A5ReQz6ePta7PDpqLo=;
- b=krCxEGQoEPlLyyF/0aaQ8RaRHFbf6VLncXIJot0M9/IC6fsxNQDDgvZa9plAN7p1SXeH6HyCNZPnBuCz5EgmJxSaSuyFtzWGWb+ouVYwbDOVkHr0EgEq512gKsc9YXWV7VfaU3sWuX3KoscSY1CHFQDCnq27Rg9T06gGfwhJ9VLBFzqO8pm2aGKeic6cTyAsGBMHweCUuPY5DlYOcd3w5TRZUCRsDSHkdEHgNSBqvVtIHJHx5t0SkIBPfyk0XWtblGzLAy13nsdyoAwNpdTeh7zz7TXwThm639LmTdO9/ciej2H5QGWFZAsQnHi+VKpbbURfp2ZMl0u88dQcPTLg2w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 198.47.21.194) smtp.rcpttodomain=vger.kernel.org smtp.mailfrom=ti.com;
- dmarc=pass (p=quarantine sp=none pct=100) action=none header.from=ti.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/ksTf/K3D7y6EP+WXr7pY+Ba2A5ReQz6ePta7PDpqLo=;
- b=o7F9fOlX5DJglx9El5ca1zmdySBjVQx6OKydlOa3XhjGaUhiQX+Ksx/oVkc0jpWB/YgBAkJBF+wYTraKOKl1EOsRtFEfjb3DdvOC/3pPNhXl9teRmAyJmm6WCPcAbUhrVK5NLQMgapIHwKmVcfNxd9s4q3D9uI3xJxx3My0SPTo=
-Received: from BN0PR10CA0021.namprd10.prod.outlook.com (2603:10b6:408:143::24)
- by DSVPR10MB997961.namprd10.prod.outlook.com (2603:10b6:8:3ad::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.382.10; Fri, 4 Sep
- 2026 04:42:18 +0000
-Received: from BN1PEPF00005FFD.namprd05.prod.outlook.com
- (2603:10b6:408:143:cafe::35) by BN0PR10CA0021.outlook.office365.com
- (2603:10b6:408:143::24) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.21.382.12 via Frontend Transport; Fri, 4
- Sep 2026 04:42:18 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 198.47.21.194)
- smtp.mailfrom=ti.com; dkim=none (message not signed) header.d=none;dmarc=pass
- action=none header.from=ti.com;
-Received-SPF: Pass (protection.outlook.com: domain of ti.com designates
- 198.47.21.194 as permitted sender) receiver=protection.outlook.com;
- client-ip=198.47.21.194; helo=flwvzet200.ext.ti.com; pr=C
-Received: from flwvzet200.ext.ti.com (198.47.21.194) by
- BN1PEPF00005FFD.mail.protection.outlook.com (10.167.243.229) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.21.382.8 via Frontend Transport; Fri, 4 Sep 2026 04:42:16 +0000
-Received: from DFLE205.ent.ti.com (10.64.6.63) by flwvzet200.ext.ti.com
- (10.248.192.31) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.45; Thu, 3 Sep
- 2026 23:41:30 -0500
-Received: from DFLE215.ent.ti.com (10.64.6.73) by DFLE205.ent.ti.com
- (10.64.6.63) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.45; Thu, 3 Sep
- 2026 23:41:30 -0500
-Received: from lelvem-mr05.itg.ti.com (10.180.75.9) by DFLE215.ent.ti.com
- (10.64.6.73) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.45 via Frontend
- Transport; Thu, 3 Sep 2026 23:41:30 -0500
-Received: from toolbox.dhcp.ti.com (uda0492258.dhcp.ti.com [10.24.68.110])
-	by lelvem-mr05.itg.ti.com (8.18.1/8.18.1) with ESMTP id 6844Xh1l3831572;
-	Thu, 3 Sep 2026 23:41:16 -0500
-From: Siddharth Vadapalli <s-vadapalli@ti.com>
-To: <dario.binacchi@amarulasolutions.com>, <mkl@pengutronix.de>,
-        <mailhol@kernel.org>, <msp@baylibre.com>,
-        <florian.fainelli@broadcom.com>, <jonas.gorski@gmail.com>,
-        <andrew@lunn.ch>, <olteanv@gmail.com>, <davem@davemloft.net>,
-        <edumazet@google.com>, <kuba@kernel.org>, <pabeni@redhat.com>,
-        <kurt@linutronix.de>, <hauke@hauke-m.de>, <chester.a.unal@arinc9.com>,
-        <daniel@makrotopia.org>, <matthias.bgg@gmail.com>,
-        <angelogioacchino.delregno@collabora.com>, <ansuelsmth@gmail.com>,
-        <linusw@kernel.org>, <luizluca@gmail.com>, <alvin.sipraga@analog.com>,
-        <clement.leger@bootlin.com>, <justin.chen@broadcom.com>,
-        <dlan@kernel.org>, <rogerq@kernel.org>, <hkallweit1@gmail.com>,
-        <linux@armlinux.org.uk>, <rjui@broadcom.com>, <sbranden@broadcom.com>,
-        <bcm-kernel-feedback-list@broadcom.com>, <opendmb@gmail.com>,
-        <andrei.botila@oss.nxp.com>, <wangruikang@iscas.ac.cn>,
-        <amadeus@jmu.edu.cn>, <kees@kernel.org>, <tmshlvck@gmail.com>,
-        <c-vankar@ti.com>, <horms@kernel.org>, <vadim.fedorenko@linux.dev>,
-        <daniel.zahka@gmail.com>, <nora.schiffer@ew.tq-group.com>,
-        <v-singh1@ti.com>, <oss@vassilevski.com>, <haokexin@gmail.com>,
-        <alex@sverdlin.org>, <aleksandr.loktionov@intel.com>,
-        <lgs201920130244@gmail.com>
-CC: <linux-can@vger.kernel.org>, <netdev@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-        <linux-mediatek@lists.infradead.org>,
-        <linux-renesas-soc@vger.kernel.org>, <linux-riscv@lists.infradead.org>,
-        <spacemit@lists.linux.dev>, <linux-omap@vger.kernel.org>,
-        <s-vadapalli@ti.com>
-Subject: [PATCH net-next 31/33] net: pcs: xpcs-plat: Remove comma after sentinel-entry in match-table
-Date: Fri, 4 Sep 2026 10:06:37 +0530
-Message-ID: <20260904043724.2955444-32-s-vadapalli@ti.com>
-X-Mailer: git-send-email 2.51.1
-In-Reply-To: <20260904043724.2955444-1-s-vadapalli@ti.com>
-References: <20260904043724.2955444-1-s-vadapalli@ti.com>
+	id 1x2MVF-000000014QJ-3vTS
+	for linux-mediatek@lists.infradead.org;
+	Fri, 04 Sep 2026 05:30:19 +0000
+Received: from mail-pf1-f200.google.com (mail-pf1-f200.google.com [209.85.210.200])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id BFCD244BAA
+	for <linux-mediatek@lists.infradead.org>; Fri,  4 Sep 2026 05:30:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+	s=20251003; t=1788499812;
+	bh=s9VeM2Hj9d1CYutblv9K9gniHtTbYGqC7kevoULcpcA=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version;
+	b=kPoyCHgruozjzrQzIrWZpv6LdfuNlNZSU0XUzk4pBYZgBcPqw8UC+CBAe4PLY9qMD
+	 EkTMyLWpXDsYCZhTzISiV6e8GzXoows5Zm87tKGAAxAH1WaYPmTRjr/KMe7aU6XRmj
+	 6qhdj1lB2CQ8yTy26DoAL7i+M0o2Y8r3Tt5qJLZ/qsWW88MGs6UwznWNkZqHGUP5ma
+	 Asezl2BmluU2GoOIP4EDliBZfB0b3Gn/hz2ulqHEB5+YQJr73u4HTHUIwQrEJBxuFm
+	 ONF58gjhY+mX8TSjDZDOkcf2CZCYdB0w6x3dSe765AarVG3WcD9TZKu2/QLO34r/ZK
+	 bJBDUKxxKxm8hFq8JErjemUKSFj6bV9T9+BaFKwvgLQ+K91agXVAnSsIE2xC7e6jHJ
+	 FEIHT1AwaP9CyO8j0psaaUeSrgkshdzBx2Dh+FEejpB+jHrjL025/0ukVFujva9H2b
+	 ByH76eXIVZNJovbt3HXTKEdwrDCyfGelItY9MQELhu84N2MpvEa4ZhOeZk6QZyWa2C
+	 b6FV+oB2LRMI+/2gI2dJ5GAhBk126zOErPy/xBR5faSGJIVFoF6MffUubsMtP8yMJ0
+	 Clovb7GzJPdurot6TYn4ap60DprVjFKeGXytNmNuMm6HoVHKy/JWpMA4P5TSkWYzGW
+	 a9J6jo+sYSlcSfNQwNz2so+g=
+Received: by mail-pf1-f200.google.com with SMTP id d2e1a72fcca58-84e048a801dso723216b3a.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 03 Sep 2026 22:30:12 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788499811; x=1789104611;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=s9VeM2Hj9d1CYutblv9K9gniHtTbYGqC7kevoULcpcA=;
+        b=XXA9ew3FM7n4qzYizh+YApVxVaGKW1Wk7170oBdOW7KoQy5offJ2RcTE4Rq++0ajeL
+         Su61dpaHUJYFJANWqJXc6CwBtf2L24WnK0hC0em0GwGxO/rRt48B68m1HhEcCSRcmhcw
+         IKOVLe+ak3BlxNQIykoInIXyHHQfFAluoRiG7biJDuIKgvCD/qZszR0M/33MbK/gpYWm
+         25nfnneD2wTqBdXNSXxDSka0TrhhGS8x3ZfW3i3KAWX57WTRZwXsv1obvo6s7rRss8GI
+         3JDv2+Z7CF7Il3RXRH0lmdY0cBzm0JgAX1YgyXfQaK2MR8YvNz57a5zIU4afMIu+Cabn
+         zrvw==
+X-Forwarded-Encrypted: i=1; AKwUvBzi3QCy0i9e47omXTQRN+Vfo+HYMR589unN0JYAwifW+2SG/9YkgUMtS2Et/suWdNQ6U2wCSZBWg2OJPt6Ieg==@lists.infradead.org
+X-Gm-Message-State: AFuF++mhsumK4fVokmpu8nEgJerKpO7XSGKcvgnyps7E0Z5H+lA6WAz6
+	2XGvcw29JiIYcgNs6VKuwHVrKns20/dDQw3xiyQCbvZz6K16OgFhfBPIdMCwUVuETHgLXkcu+8c
+	OrwNMvnBVlAzT61eTanx3LCqargBNHvMH2BHRBvQ7k71e0DZcTZFb/7eN1GPTPk18KYU5gTu+y0
+	VVe4Vzpxl42Icbmw==
+X-Gm-Gg: AYBFou1KPCkmim0F6y4mTB4YgPMHFwd+Sx/+jEB5w64ih8TOGvm/29MJAUWs3XFT+y4
+	nBzRp83Jon1vTf/tdZv1XLe9r4fijkQ2CxlUwnOOgDuyCIZXmotBlt9au7rdW7ecNJjwRcJu4I1
+	0qYYvjAE0MgrTDw7Eq3wS+TKBoIyHWrHjDGAIXS5COJ2+ghPLmdxsCIzsMigxdxyeyzxuIocXQ0
+	st+6PP1Xnb5+qNq/w//Ob5otN+mS76Jpgqbz6IblQlXRsXB3fEN3K24evGXdIhCggcc7HAKyqgz
+	7bIcTPUoiX9swi+U0Q66LBsFM1PNZWihyau6VhIUqjFeP1MQHYbbhIRq8FQ/vBgz4srTm2sdIRo
+	04YlWJqUr1WQkTeSl0sAKpgWj20z91jxfoNlAmKDv
+X-Received: by 2002:a05:6a00:8d8d:b0:855:eb7b:5804 with SMTP id d2e1a72fcca58-861662d4c0fmr5800148b3a.4.1788499811036;
+        Thu, 03 Sep 2026 22:30:11 -0700 (PDT)
+X-Received: by 2002:a05:6a00:8d8d:b0:855:eb7b:5804 with SMTP id d2e1a72fcca58-861662d4c0fmr5800075b3a.4.1788499810579;
+        Thu, 03 Sep 2026 22:30:10 -0700 (PDT)
+Received: from canonical.com (118-163-61-247.hinet-ip.hinet.net. [118.163.61.247])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-86152d29654sm711385b3a.33.2026.09.03.22.30.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 03 Sep 2026 22:30:10 -0700 (PDT)
+From: Ivan Hu <ivan.hu@canonical.com>
+To: marcel@holtmann.org,
+	luiz.dentz@gmail.com,
+	peter.tsao@mediatek.com
+Cc: matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-bluetooth@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] Bluetooth: btmtk: Declare MT7920 (MT7961 1a) Bluetooth firmware
+Date: Fri,  4 Sep 2026 13:30:07 +0800
+Message-ID: <20260904053007.667472-1-ivan.hu@canonical.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN1PEPF00005FFD:EE_|DSVPR10MB997961:EE_
-X-MS-Office365-Filtering-Correlation-Id: 59ccb684-85b4-424d-76d7-08df0a3ee5c6
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700016|7416014|23010399003|82310400026|1800799024|376014|921020|10067099003|18002099003|22082099003|56012099006;
-X-Microsoft-Antispam-Message-Info: X6VN56PmM4jc2jKtsGnfsfCFjLzUIPX8emzl5k46nzI936faXAKxgWwyunl8jswYa0v3QoGyySqpwxOvaftaOXHTTa7z1LcFt3HxoeeCICgkN0r3JsaglPuu/xSEwa/E0w3CSA26+7bSAkP5elUXXnKBKNsqOkSNO8Y916YjLFjB2EZ4DJvUcvNJgf6sq3Unjo/xPI0m0mINqDJCtqH/ASpHkwURGVe2IZql8CxnyGfWfT5YQEhoMjUl8A7qR+nW4DchwRhctW4hNwB5khZdI05P1ZeinCV+2ktLfyMSHj5eUBEoWqIeNNcJNEgHCL19fYqwTRpNvE/hS3GCwAPvaDKJ3WHT8RQrqq2ygkQu3ALIqYQ8ohyjwzhr0p+A+GJvQYQV9V6ukP/5FOLDzHrB1h9ENF2SUhLJikaCdPRKwa7xl6Z8VGV0/aFAFZTdaHKR8A8U3WSqWcphWGYkRncDqQlyfPcHwYBIzYiz67xqXkXQFYyfgMdsFDBgYlQU5zuuJ23CZhK+1t2xk0mDrPEON5AeJpdHckHF3xmqGEr7NKbnvwx6L0ePB8JDROs3mYyz17+Q3b9r1ft9ekV06iR1ODefl3ejwD4pNMjTd0omwl9+GM2OGrHFqK4jR9hNCVPnffR6kfrQzyLwjFr/4i+5Vf0358Avm32pJLJtbo2/vfS1MKGtCWf1KOHZ5+O/IV7CYidoEe+uno72dL/bD9CxDC3hf2HyVbo9gvgE6mYYtci9BQMoTcigBHaHvWZLnZgj
-X-Forefront-Antispam-Report: CIP:198.47.21.194;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:flwvzet200.ext.ti.com;PTR:ErrorRetry;CAT:NONE;SFS:(13230040)(36860700016)(7416014)(23010399003)(82310400026)(1800799024)(376014)(921020)(10067099003)(18002099003)(22082099003)(56012099006);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: t2sdRXMCvobiel1TV3ujcyKnVxWeHCqS1yudjphAdRuKJbZIdyjQ4oizuSiQRZWiOI/0QHxKnbijRFZcHKfidn7LowwUvNE++KVhgge5aPtDvnC0rVYHa1exrxY/vwgDa9VhISf3cbe82ocglpJ65sq8wLPs997WR6Dzs171IGk0S7iEa7DIKutKIgv4N/F+DWXMk+2tIl46DCpLodcOnifNm+BLc6i5BSjja/xiDfQJvf4BlWfSINry0grOEHs2b+jBnG2uMV0DwTBxIANf8G/XmTIGf8fR7+OlzkLH4wNmg4YAUc/hih5bOL7Tc6i5szneYr13MqQ0WctsD1Zh1GQaMQIdh1T6v3sgqf5uMna8ePulpVHAaZT0I9S1+ceexWo/aR6LtMhvNKmo0aMN7Ojk9j7MaMr1E3/T1INOiulaLvqhaf0OPTcfWmFnr0aw
-X-Exchange-RoutingPolicyChecked: VbGyyZ0AO7px6nsSQGdaDR+UXLuAXcqzW7hgPBIDRZ6q7KL7xJyl8BSrfyHvzVfasIttz57czUft9bOkk49kd9NRNtxCxE840X5M1BLQW2qBp003kkmYaQbHNiOJT/JxELYE+oHbdxdeeig5LD2L06rR3/GomFwVlvFyIaDqlMDM28MbRQ0rvsGj6E4mKB/gKHTQYHhZQDw06TliMkcKmnZBX3Vz2p/ur+fE2KYx5I5HN+2syE2dA6gpybg5L//0tRF6d9Y9n4MTXMDhaMKwLMaYFG+iQeJoSVtFgWfHnkb7mKKS3kgXaTscInOtwV9nfwXZKXmNky66rbEOFsz8vQ==
-X-OriginatorOrg: ti.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Sep 2026 04:42:16.8326
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 59ccb684-85b4-424d-76d7-08df0a3ee5c6
-X-MS-Exchange-CrossTenant-Id: e5b49634-450b-4709-8abb-1e2b19b982b7
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=e5b49634-450b-4709-8abb-1e2b19b982b7;Ip=[198.47.21.194];Helo=[flwvzet200.ext.ti.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN1PEPF00005FFD.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DSVPR10MB997961
-X-Proofpoint-Spam-Info: AW1haW4tMjYwOTA0MDA0MSBTYWx0ZWRfXwSht/n7mzas8
- yeOgRltccWTHXRch7Nfj151jebaxGKhaTxSNLm0Qa30IMrdjtCvwpMJJvh3LPAgRDR49BtzE4PT
- I2zC10X6Sy5/1uTu9tWR+Ot5h9JBwhk=
-X-Authority-Analysis: v=2.4 cv=TKd1jVla c=1 sm=1 tr=0 ts=6a9a4c2d cx=c_pps
- a=3ImmgSqUqdqu0AlmHxYeZg==:117 a=iwqwCZQqcuTv3JOpYdM7/Q==:17
- a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=VdqzKS8jKosA:10 a=V5UXEbMT0ywA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=Z8NIEmU8O1QQgoT56wFK:22 a=gO1vWkAQAl3rybz1DQOp:22
- a=sozttTNsAAAA:8 a=YpTJUd8zm14dbW4r80wA:9
-X-Proofpoint-GUID: 0YfXuMUuP-7DBqbhOgJTKsoRTcnp_a2u
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTA0MDA0MSBTYWx0ZWRfX0SwFlfe4PPj1
- xpwLiOhr0WhVEfilhLtmk4rH5NLu/07SPcAFBdTSqgdHu5LSSdYvra33o6xrQgalW/NOGqSbomD
- XU35XSXgV5aCqRRsAiXBOr6P2nQ1YYtH0vSgpTqRBX8F3TsmXLIiRQCKJyzJntt3VJg6Fh2lvLu
- /AcRT1RkJku4gJVOhhHMgTWbPKYMdq0oad/024lKAIVWWHEN5vVIMwW1UJ3JrC/5JorrTLge9rG
- jJji1NQrdvSw0+kZkXLwV7S7F73upO0VI6URWBIgHY+MEPfDAnDbEDWDfEe78+HxBnT8ve9J/28
- uriNWzNQDpHNANfqt/51H8yYEnL6WtsfLDC8+5IBc8xFuolNInx2FHQeVetuT4vhjCKHSeV2tIF
- XPx8JxxcfQSS/I07hldFi+OCoKt/kyPRKFLFDL7+7hHVnrybI2F7O/Ho4kgTK6ykr2sE+z1vOf8
- E45mK7AkJOuD45u7lJQ==
-X-Proofpoint-ORIG-GUID: 0YfXuMUuP-7DBqbhOgJTKsoRTcnp_a2u
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-09-04_01,2026-09-03_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 adultscore=0 impostorscore=0 spamscore=0 bulkscore=0
- suspectscore=0 clxscore=1015 phishscore=0 lowpriorityscore=0
- priorityscore=1501 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2609040041
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260903_214308_387715_1CE43E45 
-X-CRM114-Status: GOOD (  13.07  )
+X-CRM114-CacheID: sfid-20260903_223018_366469_CC966D9B 
+X-CRM114-Status: GOOD (  10.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -195,28 +114,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since sentinel is the last entry and we do not expect further entries
-following it, remove the comma.
+btmtk_fw_get_filename() constructs the firmware name at runtime, so for
+the MT7920 variant (dev_id 0x7961 with fw_flavor set) it requests
+"mediatek/BT_RAM_CODE_MT7961_1a_2_hdr.bin" without ever declaring it via
+MODULE_FIRMWARE(). Tools that select firmware from module metadata (e.g.
+"modinfo -F firmware") therefore omit this blob, so request_firmware()
+fails and Bluetooth does not initialise on MT7920, even though the file
+is present in linux-firmware.
 
-Signed-off-by: Siddharth Vadapalli <s-vadapalli@ti.com>
+Declare it with MODULE_FIRMWARE(), as the mt76 driver already does for
+the corresponding MT7920 wifi firmware.
+
+Fixes: 1cb63d80fff6 ("Bluetooth: btusb: Add support Mediatek MT7920")
+Signed-off-by: Ivan Hu <ivan.hu@canonical.com>
 ---
- drivers/net/pcs/pcs-xpcs-plat.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/bluetooth/btmtk.c | 1 +
+ drivers/bluetooth/btmtk.h | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/drivers/net/pcs/pcs-xpcs-plat.c b/drivers/net/pcs/pcs-xpcs-plat.c
-index f4b1b8246ce9..e669a7b248ac 100644
---- a/drivers/net/pcs/pcs-xpcs-plat.c
-+++ b/drivers/net/pcs/pcs-xpcs-plat.c
-@@ -438,7 +438,7 @@ static const struct of_device_id xpcs_of_ids[] = {
- 	{ .compatible = "snps,dw-xpcs-gen4-6g", .data = &xpcs_pma_gen4_6g },
- 	{ .compatible = "snps,dw-xpcs-gen5-10g", .data = &xpcs_pma_gen5_10g },
- 	{ .compatible = "snps,dw-xpcs-gen5-12g", .data = &xpcs_pma_gen5_12g },
--	{ /* sentinel */ },
-+	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, xpcs_of_ids);
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index ea0c320f9827..911aba5c134e 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -1581,5 +1581,6 @@ MODULE_FIRMWARE(FIRMWARE_MT7663);
+ MODULE_FIRMWARE(FIRMWARE_MT7668);
+ MODULE_FIRMWARE(FIRMWARE_MT7922);
+ MODULE_FIRMWARE(FIRMWARE_MT7961);
++MODULE_FIRMWARE(FIRMWARE_MT7920);
+ MODULE_FIRMWARE(FIRMWARE_MT7925);
+ MODULE_FIRMWARE(FIRMWARE_MT7927);
+diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+index c83c24897c95..bc26148ec544 100644
+--- a/drivers/bluetooth/btmtk.h
++++ b/drivers/bluetooth/btmtk.h
+@@ -7,6 +7,7 @@
+ #define FIRMWARE_MT7922		"mediatek/BT_RAM_CODE_MT7922_1_1_hdr.bin"
+ #define FIRMWARE_MT7902		"mediatek/BT_RAM_CODE_MT7902_1_1_hdr.bin"
+ #define FIRMWARE_MT7961		"mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin"
++#define FIRMWARE_MT7920		"mediatek/BT_RAM_CODE_MT7961_1a_2_hdr.bin"
+ #define FIRMWARE_MT7925		"mediatek/mt7925/BT_RAM_CODE_MT7925_1_1_hdr.bin"
+ #define FIRMWARE_MT7927		"mediatek/mt7927/BT_RAM_CODE_MT6639_2_1_hdr.bin"
  
 -- 
-2.51.1
+2.53.0
 
 
