@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7153DC79F89
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 16:40:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 405C5C79F80
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 16:44:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1nkJa0DEiZl3J7FyRvj4qHDW8diym9PfM40Ci/vpZoM=; b=4T7zWEbiUye1mtU+RgNXlmPC2r
-	GwDkzXfV0i3NonpKYgS//EL6rDI/JAulHXWiH/T+SCe4fDjypJyk6JZl/fFv36Zst/Kri6OA/1mtU
-	YMzz9oeukimwtkSggwppa53G4G9cY+pLzBAyIPWAFrDi/ozOUSZv4o5XRfR3f8mt/zAOCvdedEwIE
-	Fc09gZQGVqbOEPMKbHaQOvL5IGvcWDrR1IcPRYldCH/h49BY0iGcy6F9G5ezj4w0YyyktmMDg35rg
-	lL4F8PNveBG7NsfTgNK2Bu/t1braXGnwq6Z8Tbrmmj58hrfzj2eOqFXyDzGskrYvhpX5aFQlxtfwB
-	5VWYBTtg==;
+	bh=w/3GNXQSGCY34ByWxnrlCAFhsDJSzJ5v9o2W5RmLNQI=; b=PfxRXasQkKfTup+ObHjvRr5Iac
+	lLKfh+RvtFU6SOcOdJSCuvAEJInwu5yDzZcCJGH7CYqLYn04Thrz+5UBbuIv27vD/JwgOQk/ngS4Y
+	VBkJIiXQog8/NfTQ3Fvs2f6tJo8JiMglTtdQbZzImrMdYmtecB7Vw04bCFoNin6YtmeX85dO6M0Aw
+	hHjwPXzoxiY3+1ZvQI4ADI+DHaqWawdCdjwjB4fuk+libs036UGELTOzQVIF0QwuElrvHBMioIbDo
+	/m2mJPxDMLkTdj/Ve9K0dAk/y1znU1txUP3V6FKTfpmfH6yGJ5JJOm1WTqqY5edZevPxVV9C4ozXo
+	ztTSeZEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2Wxp-00000002ksJ-3fh7;
-	Fri, 04 Sep 2026 16:40:30 +0000
-Received: from mail-qv1-xf2a.google.com ([2607:f8b0:4864:20::f2a])
+	id 1x2X1g-00000002lYy-0O7V;
+	Fri, 04 Sep 2026 16:44:28 +0000
+Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2Wxl-00000002kqH-3mCk
+	id 1x2X1c-00000002lXx-1nRX
 	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Sep 2026 16:40:28 +0000
-Received: by mail-qv1-xf2a.google.com with SMTP id 6a1803df08f44-90e7d9c747eso16189366d6.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 09:40:24 -0700 (PDT)
+	Fri, 04 Sep 2026 16:44:26 +0000
+Received: by mail-qv1-xf2c.google.com with SMTP id 6a1803df08f44-90cdffe8e3eso13575186d6.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 09:44:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=rowland.harvard.edu; s=google; t=1788540023; x=1789144823; darn=lists.infradead.org;
+        d=rowland.harvard.edu; s=google; t=1788540263; x=1789145063; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:content-type:mime-version
          :references:message-id:subject:cc:to:from:date:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=1nkJa0DEiZl3J7FyRvj4qHDW8diym9PfM40Ci/vpZoM=;
-        b=lFQzTKY2HzpwXrfP1OuqT3/XLyz8QxJa6+j18jZYAQEdsvnMlmrPZTNkCqkQLpx+H/
-         ORpbLd2AFtsC/G93iAe3gyAD6Yas2NzkZRRCMxHAqk20CENAOEDat7wNyjWfGDh85dI1
-         oIseyHnDdJIGAd3CfJliPa2Ju7SJkvKQtUfxeY9E54t/aKOrP6nmniKrkPuL4JQ7aydX
-         1DSKFXZJ4FB74qhY02OVpF5t6Es76H3+jwplnnkt28w5peTV2kTCu31kY8NgkuTfiiNb
-         xD52kKhqbQOlHiM41ZZqB0azvHbXr6u22noT6LPqzlj68joSofcrmXYZfIPqKvbce7Rh
-         GnJQ==
+        bh=w/3GNXQSGCY34ByWxnrlCAFhsDJSzJ5v9o2W5RmLNQI=;
+        b=b7dAybaXKgKyN5btegm/dY1wPQ8dEEUL5MVQmCk/6hNSuMD9FWNNVY/lkbrmcOFwpz
+         lZheptkqa0xbCi0f2C7os/P5uaylVa3WLsfmhDKemCIRz9XE7GnN+kwkM2MapipR2q30
+         JxraZxEJRh57l11SpdF57J1AYR58Nyzn0O48srhzX3cQtfC+wbJ7GUdBRH7h3HV0mWA5
+         hC3J4ly9moYuJO+A0i4ywBADtt/Ew2fHm9PdpkTFdBFHKiHk9arPfxhUxAvXNM5MSMK8
+         Qe9d5ZqYhSPNCwXZN6o4YjhDoywatjs0lmWeGgDS1RVqLs4/XYedZTGB3nXK5Hzx+1yE
+         kh9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788540023; x=1789144823;
+        d=1e100.net; s=20251104; t=1788540263; x=1789145063;
         h=in-reply-to:content-disposition:content-type:mime-version
          :references:message-id:subject:cc:to:from:date:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=1nkJa0DEiZl3J7FyRvj4qHDW8diym9PfM40Ci/vpZoM=;
-        b=qXz9O616buz7yXpjKAe11cxloyOgV2nvfx5CEwra5xK7YlZM2sdcI02c7S1MGzTYEg
-         xnd9Sn/eYL84RoWOfuUu4GU4GeW607AIrkdwkSVuU4Bm24a1xPIKF/+zTIIYnfjMz1sj
-         3/SEgpAKHXfmw7RCSuTSg1OnJphQvrvZB5hnk6fX8sb14SuOtJXTTc9siO1XH1ukmqVz
-         ScRpnJcaBmGr4rXjtxAAuIX1VW26I2SLtGCUokCBaaditqXoS4VDIduJL3l94MH5mNnR
-         1uvXhEldCmF1cZa6OGVqZ9gVdXfPl2qip6g3YHShGPfd7Ew9sIRvw6+zOIrHMhMIyCPh
-         8ZWw==
-X-Forwarded-Encrypted: i=1; AKwUvBxrNd9YYaCuu+68Fc9iR6bABAVz84WhIomUk6waUOxgCwIm08M4QTQ2hZC/dSXA2nY6MOo8rQMkbyjpq04MnQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++lI/4rl7PmDodk37r7wIvVY4fr29GZfhCxZf15w/HMBtX+L5sk2
-	/sNxmR2wuJrakLLB5zJa5rgHqZRFlAzAAW/dJgcZnMQNNlIld8HelhVeleuKRNeucg==
-X-Gm-Gg: AYBFou2LPUcT/kM8RnhdUF/QKSoZFVEGsr+DHAssdu6lpBWfd/cgnLXvyGzpaVqy0kz
-	wnAv90ITl1EJ8KFplp+4MMCfJo4hhm9/WU7ykD+GkrZdnP4O+J+UPr+GLNaPvoCIZboDFDU+HXe
-	hVA0BSkMpxOw7vzLUzsHpOrsB6IjOrR1JDUJ/AleboVkRUgh6zMlDiuGUDuwIGzgZjAfck0TlP+
-	WWW6keM6hDJqLNfKmzF3mu+0rEnSI5aBkOEMEca2OWDw5BPPDv24ta48S2AqB+2JZyRnrNGAZmv
-	pvjZXAPJDF3a13qLHv5VoUW/ksZ/cz/Y2tx0DcYgLewTHB9psZciOsFd83dUK5Kz9u2KxwRujvw
-	mj1T9EHtSqL2h+UwiQdibdlP3hKeiKe7S865l6yTc9AcEWx0cdN1IuNGIqR4OTNBm+0FVLC9afe
-	xIafm0F4vn1O1hxl2u+IIbhvswBwZ13ehkNFziz0GFY3j74+baXJ8pQID+DGzelQ==
-X-Received: by 2002:a05:620a:8017:b0:939:6ec8:6928 with SMTP id af79cd13be357-9398037ac44mr706361285a.16.1788540023360;
-        Fri, 04 Sep 2026 09:40:23 -0700 (PDT)
+        bh=w/3GNXQSGCY34ByWxnrlCAFhsDJSzJ5v9o2W5RmLNQI=;
+        b=kna2O1JDNbn6cCebPJuQzXqF5s9Ym7UqHs9CU+xsoPoAVmX9ni6WzWva8I+jSiJqKZ
+         iC6nqtenC4NTa7bPzTa644k5+6qwJf3vnBcumIOPoSyVWj8g60+2uB8Nq5fyC9a+tFYe
+         Ko15NXo/hXgK7yxSkfxLndc8bLA2oUMuAKqkF5a30tM/Gze5785Ctjip4UbPJOktrCNk
+         Bky0/8xTIkd3o+ociCrzpEHSSKIsY/q+C4kkOupTI6iBIJJGPgSFRbkLlDGaqeP16hYf
+         IgmpmNekdpqYCEcg6spTPZ6U2GiONeCVxLiQ3fVKH7N0EU4bcTavNuNlx0H/qAesNnkn
+         VOtw==
+X-Forwarded-Encrypted: i=1; AKwUvByGR1lpfsC1BSZuSnCV9YTjLiF4PscstUShnjPerydopf+Y06df7vWddZkCWHctbp6KT5AmiSTWtnDni6Sjsg==@lists.infradead.org
+X-Gm-Message-State: AFuF++nyK4RBZB/OnsaOuQTOhQ2/RncIPTlBvA93zC8eYPuq9VVKia9d
+	dN+fp7GDaZOhjbE81bFWBmR5P5wjRIke1Q0Ee493RaDMPfS/ae0xgemx/FYvAI5IqQ==
+X-Gm-Gg: AYBFou1FyLLtsWa2h6z+TawtUFz+J4Ii07h+VNRz1N6Q63+/HJZaj5TGxn2UVPTGg2A
+	gftwggTj/6Wz54tJYPoAuLtCPw9xuW1FEFNN99lbarOiRQnSy7roZudKlaT+/vWx09FC6VmQqCl
+	eqb0bIXw7AZchgkXv+QuT9HBXXTKDnhzKpHOOqkz0/FqefPTlRKTGgoyTlRXZS0lHqw98qAuhSt
+	T+Wy4SFJVsmY2ENsqxoIKldPHgTQ345jQ+96BY01NnXIeZrpXcxDwzLHk4h96Y3zwkBNSlTU04f
+	/F6GAOAyQw8f4xSfY/nFZdtZfHxAcmEOOwcWFvWZuCYcaf4C3Zl0IET/PsUPmsr9K2QEP41o7oJ
+	h6i1+T0O9t+fKfSVuBL+/I8EFaTmx8ZHToHoLZ9E7PisdBIsZdczTVCaFkRyB5hCt8ZIQGyHFfF
+	mVHeQQA2I2GuECAd4jY8/veZi+EpItaSj7j3uORAwUboPqRv1QXxc8e2gVQgKFCQ==
+X-Received: by 2002:a05:6214:3003:b0:910:3d6e:ed46 with SMTP id 6a1803df08f44-9103f0db656mr78478096d6.31.1788540263010;
+        Fri, 04 Sep 2026 09:44:23 -0700 (PDT)
 Received: from rowland.harvard.edu ([2601:19b:d01:d210::7544])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-9397fafc3a7sm246420885a.14.2026.09.04.09.40.21
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-91040646d64sm24672736d6.14.2026.09.04.09.44.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Sep 2026 09:40:22 -0700 (PDT)
-Date: Fri, 4 Sep 2026 12:40:20 -0400
+        Fri, 04 Sep 2026 09:44:22 -0700 (PDT)
+Date: Fri, 4 Sep 2026 12:44:19 -0400
 From: Alan Stern <stern@rowland.harvard.edu>
 To: Chen-Yu Tsai <wenst@chromium.org>
 Cc: Bartosz Golaszewski <brgl@kernel.org>,
@@ -93,18 +93,18 @@ Cc: Bartosz Golaszewski <brgl@kernel.org>,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: Re: [PATCH v8 07/16] usb: core: Move struct usb_port and related
- APIs to port.h
-Message-ID: <6bc3c29d-aa38-4e59-a4f5-2c480ef9c748@rowland.harvard.edu>
+Subject: Re: [PATCH v8 08/16] usb: hub: Pass |struct usb_port*| to
+ usb_port_is_power_on()
+Message-ID: <c3740c4f-6ae8-4c6e-8f80-105f1607ef55@rowland.harvard.edu>
 References: <20260904084158.1341550-1-wenst@chromium.org>
- <20260904084158.1341550-8-wenst@chromium.org>
+ <20260904084158.1341550-9-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260904084158.1341550-8-wenst@chromium.org>
+In-Reply-To: <20260904084158.1341550-9-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_094026_198706_9B55C481 
-X-CRM114-Status: GOOD (  19.00  )
+X-CRM114-CacheID: sfid-20260904_094424_470287_C2A549C8 
+X-CRM114-Status: GOOD (  13.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,47 +119,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 04, 2026 at 04:41:46PM +0800, Chen-Yu Tsai wrote:
-> |struct usb_port| and its matching container_of() macro should live in
-> its own port.h, matching the split we have for .c files.
+On Fri, Sep 04, 2026 at 04:41:47PM +0800, Chen-Yu Tsai wrote:
+> usb_port_is_power_on() currently takes |struct usb_hub*|, but only needs
+> it to tell if the hub/port is SuperSpeed or not.
 > 
-> Move them as described. Also move usb_port_is_power_on(), since in the
-> next change its |struct usb_hub *| parameter will be changed to
-> |struct usb_port *|, and becomes a non-static function that only
-> references |struct usb_port|.
+> In a subsequent change, usb_port_is_power_on() needs access to a pwrseq
+> state tracking field in |struct usb_port|. Either structure can be used
+> to identify whether a port/hub is SuperSpeed or not, as the field in
+> |struct usb_port| is inherited from the hub:
 > 
-> port.h is only included from hub.h, as a subsequent patch will directly
-> use fields from |struct usb_port| in a static inline helper in hub.h.
-> The USB internal headers don't have header guards to help with this.
+>     port->is_superspeed = hub_is_superspeed(hub)
 > 
-> Also drop 'extern' from the header declaration of usb_port_is_power_on().
-> This is not needed in modern C.
-> 
-> Suggested-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
+> Replace usb_port_is_power_on()'s |struct usb_hub*| parameter with
+> |struct usb_port*| so a subsequent change can use it.
 
-> diff --git a/drivers/usb/core/port.h b/drivers/usb/core/port.h
-> new file mode 100644
-> index 000000000000..00f7500af336
-> --- /dev/null
-> +++ b/drivers/usb/core/port.h
-> @@ -0,0 +1,68 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/*
-> + * usb hub driver head file
-> + *
-> + * Copyright (C) 1999 Linus Torvalds
-> + * Copyright (C) 1999 Johannes Erdfelt
-> + * Copyright (C) 1999 Gregory P. Smith
-> + * Copyright (C) 2001 Brad Hards (bhards@bigpond.net.au)
-> + * Copyright (C) 2012 Intel Corp (tianyu.lan@intel.com)
+Minor complaint (not referring to anything you're doing here): 
+port->is_superspeed really should have a better name, more like
 
-These copyright notices are entirely inappropriate for this file.  As 
-far as I know, none of these people wrote any of the code you moved 
-here.
+	port->is_superspeed_capable
+
+or
+
+	port->is_usb3.
+
+As it stands, the name is ambiguous.  It might refer to the speed of 
+devices that the port could connect to, or it might refer to the speed 
+of the device the port is currently connected to.
 
 Alan Stern
 
