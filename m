@@ -4,59 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09CDAC61DD6
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 14:28:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B69AC624DE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 15:06:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:Message-Id:Date:MIME-Version:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=r41Xe1mrwIPlvXiNA3j++3Eu8PLXhMgnYzML5OVQBWE=; b=Vqpr/HODrSVxB5zOmKwX2V2jGd
-	1gtLaz9nsz9YUJEGTPnBQWB3FsDUEYaXOhTi7ktnQ3jCgUtBohB3/PX7/OJeKSDp6Dp3CoaOmi7UK
-	iGE0YNIYW8zvceUN3K3Zkt6ax1OMCcC5889qTkWbDLpxoDuMxuQxhntLu1L1kxLPXXAl/kygjI9ZP
-	OlytjPG+krayG5jZ5HVwgPgGmsgOh3KmV0TB2ejjbwpRLmIVW4adV+LIcIkYJEbXhCkyTOyzk/DJl
-	UwzhHrWZk7LwQWQACiigS7+hoY7Ne8pEPPZn2T182tJA3G8/ONuU0gJNshi4vBsGSZV2Oalqpxt0x
-	Hq/NsD6w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7gNCncRwcYB9lWmv5bcgCTAj/WG9KBrvFMQ3voJc5e4=; b=tt1sFLOoIuWkzhyFO/N5XRNvxd
+	aSt2BxSKRzmgQssSCn67sJxMxc8qtINS3ygJUUB9JzVen6RXnEwV61mKGjgpRRStdg1wf49tFwj6D
+	Jp/SPPr40tBf9Zy90u27y5R0k8hJe1YZySTSHLNUxBTDN2rV/39f99/io7fvQVgNy4li1gG6u7J5/
+	9bxRSVIDqFpw3M62j6C7Si+6juhIP81MB5Oib3uzUVyJetAeWX75qyOS44Ddk0j/Ax7GJM8VUILsc
+	A3ZGHw88Jct38KMgGlaFX945iShnrqXca7hPZjGybeWffQJq7T9Bry3B8XEYtXnq0qEma4il3Um3g
+	v9HJ3cBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2Uu4-00000002Njj-3w1Q;
-	Fri, 04 Sep 2026 14:28:28 +0000
-Received: from forward101a.mail.yandex.net ([178.154.239.84])
+	id 1x2VUj-00000002TK1-40Nm;
+	Fri, 04 Sep 2026 15:06:21 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2Uu0-00000002Ni8-1xZM
+	id 1x2VUh-00000002TIU-2pgB
 	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Sep 2026 14:28:27 +0000
-Received: from mail-nwsmtp-mxback-production-main-691.iva.yp-c.yandex.net (mail-nwsmtp-mxback-production-main-691.iva.yp-c.yandex.net [IPv6:2a02:6b8:c0c:1589:0:640:596:0])
-	by forward101a.mail.yandex.net (postfix) with ESMTPS id 94DCF80D17;
-	Fri, 04 Sep 2026 17:28:15 +0300 (MSK)
-Received: from mail.yandex.ru (2a02:6b8:c0c:752d:0:640:91d2:0 [2a02:6b8:c0c:752d:0:640:91d2:0])
-	by mail-nwsmtp-mxback-production-main-691.iva.yp-c.yandex.net (mxback) with HTTPS id vRKeX66vl0U0-DQkt58Xi;
-	Fri, 04 Sep 2026 17:28:15 +0300
-X-Yandex-Fwd: 1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0upti.me; s=mail;
-	t=1788532095; bh=r41Xe1mrwIPlvXiNA3j++3Eu8PLXhMgnYzML5OVQBWE=;
-	h=Message-Id:Date:Subject:To:From:Cc;
-	b=VaauQKUqGzQ1uzeeGxwIZrsB18rEkZZ5dw2BBYqpNRy1skJpkrub9fnN5xgRkoh7R
-	 +U1KSZyCpuD3yEajTYVd0aHkTV4OLvSw++4naxtL2jC7wTWnLd0VNxiHF8tFlSF4Jm
-	 Xo45Nn+JadGrsLHThQAAgIEmoo8KyuVFfTqeN1To=
-Authentication-Results: mail-nwsmtp-mxback-production-main-691.iva.yp-c.yandex.net; dkim=pass header.i=@0upti.me
-Received: by mail-sendbernar-production-main-68.iva.yp-c.yandex.net (sendbernar) with HTTPS id 59ee03733a089c59512294a09661e3f4;
-	Fri, 04 Sep 2026 17:28:14 +0300
-From: Ilya K <me@0upti.me>
-To: linux-mediatek@lists.infradead.org
-Cc: linux-wireless@vger.kernel.org,
-	netdev@vger.kernel.org
-Subject: [bug] Triple whammy of mt7996e bugs on 7.2+
+	Fri, 04 Sep 2026 15:06:20 +0000
+Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-5b4afc8465eso1557298e87.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 08:06:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1788534377; x=1789139177; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=7gNCncRwcYB9lWmv5bcgCTAj/WG9KBrvFMQ3voJc5e4=;
+        b=AAubGdWJC4bFWw2S3bXMkFeNT9f0VYcvAhZUmfxj2pborv1QQO9grJjgltdh1o7wyo
+         IZrK/+4H6tXbqaoH/m5qEx4swfdp2QL/HmRuFiZq7pVEkFKIDB7H0IChtgDgXihpWfG+
+         VI5ZsheIPjkzJjhkeH+PPcL+ON8K1kuH3PhJQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788534377; x=1789139177;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=7gNCncRwcYB9lWmv5bcgCTAj/WG9KBrvFMQ3voJc5e4=;
+        b=lyBY9u5S1eY0KTs2T8XCoI+LAtFMC1W0H2HQ3oZzUjb2dt67G5ANJG2RYE9pNGZ7jw
+         pbddeMSGOaTB73swH2r8EGqufzTDT5RUZ0V+Yw3Z4JEQxtfhPB8boyrBbvjEHKKrHNvY
+         bQ2uTQdPAZkIfEj+7O1/3a/Tdwda5qcDXf08Zfjyp8cAx7rGgDgrtlTdAK55MBZzVqBW
+         uyF+/SixL+KaFxFSDCRgUq64GZGJq2NE69ZzJFHhjzf8YCcdLOsU3tVQpB7OJhVtbGDU
+         JaeI0BpRvZnOv8DUaFo4brx9nthIVwDNi19mWKxTEbMD1yAs5X0uHB2qGCaGcdmL9cl0
+         bpXw==
+X-Forwarded-Encrypted: i=1; AKwUvBxtS1ZcwDPW+cgb2nDjxfvvDrE6qyQE/Nlz3docga1okKVR3GcPAnzYQ36IhTTUae2sAiXy4zdtonILu8nZQg==@lists.infradead.org
+X-Gm-Message-State: AFuF++kqKF1+tPID9I4Nwiyj2Y+4IY8V1S5jeqhAUqdMWzubI6Qk4ln8
+	bh/DxBERIWIiLCNkxtFkZok7wmBQcCK42M0JwmI0B2Tsyx+VVOcDDlCGHl5Xm6u55Sdnr4Bxo3y
+	Xecs=
+X-Gm-Gg: AYBFou2NHCb+Q/9JruklKbMjsbq0vJiaj+8wZmjRx6FgVgLzaRE6VlPrBYe/Oyt29cv
+	RlMAYbN6pB9HUQObNMckRj5godOYvkW3mtq/uTX9STo4XzwInszenaWQheHHmgZ1rPmmzs26QIW
+	8rok+OjLVC4lnw0l4b80xzjbGGWwlcinoPtjUB4ctyWdB7QFRDIb8NdlGjaS17EXmISNOGT7sW1
+	2PYWg3vVAy69DNRZsOwkk1dUlaEArKiv6j2lVOwZmW508AOcyFUuxoFBS7qd5EFIvHryKJTVK0O
+	NcjaJBmbJtVUb3hE9uZ4eaM+VPo7a1rv/tc1TCfXLusRzPO3xoGhevLUHVW/noLvzaTjCawlk1y
+	bJii+eSP9Ean4u2IYJLIyp8SWF32zoyGuA1OJiPaNKhd/Znju5ycbnOCPUUV7/L7DHfnpG9Aiu3
+	Ugg4sdyq/aKmMTstdVRiH/FQ1XLT0P595Xo+ACmXgX3rPH7oZATUkmRqJpM/olKG+wJEi5rAS0G
+	nRhox+nlQaaDV/98WBTK5GAZP8=
+X-Received: by 2002:a05:6512:a356:b0:5b6:1a7c:fd97 with SMTP id 2adb3069b0e04-5b61a7cfe4fmr605144e87.61.1788534377155;
+        Fri, 04 Sep 2026 08:06:17 -0700 (PDT)
+Received: from mail-wr1-f52.google.com (mail-wr1-f52.google.com. [209.85.221.52])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5b616700006sm559442e87.57.2026.09.04.08.06.08
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 04 Sep 2026 08:06:11 -0700 (PDT)
+Received: by mail-wr1-f52.google.com with SMTP id ffacd0b85a97d-482e4998d28so827749f8f.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 08:06:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AKwUvBxJen4RQUGJlKZIFndUQc1ViKqSLmSWfI7h1/jfTQSRuixPHyfTlTf8YQn2HIQ+iovws/tbzRbzC3X6J6W0kw==@lists.infradead.org
+X-Received: by 2002:a05:6000:60e:b0:485:8c16:a355 with SMTP id
+ ffacd0b85a97d-4858c16a6c2mr4328911f8f.45.1788534366728; Fri, 04 Sep 2026
+ 08:06:06 -0700 (PDT)
 MIME-Version: 1.0
-X-Mailer: Yamail [ http://yandex.ru ] 5.0
-Date: Fri, 04 Sep 2026 17:28:14 +0300
-Message-Id: <1767631788532094@64c4e675-cd08-4a74-816f-886742f9bfcd>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain
+References: <20260904035009.4114363-1-justin.yeh@mediatek.com>
+In-Reply-To: <20260904035009.4114363-1-justin.yeh@mediatek.com>
+From: Doug Anderson <dianders@chromium.org>
+Date: Fri, 4 Sep 2026 08:05:55 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=Us7FrQ2GYYSfm+freDNTWv8xd260kA2Z3B5jFzw5OBgw@mail.gmail.com>
+X-Gm-Features: AcwNN1U5Q3Et8gbm1HfFEKvqA92RRKLIkp4skB9nrMClbBiYdjjt_11lut00YBI
+Message-ID: <CAD=FV=Us7FrQ2GYYSfm+freDNTWv8xd260kA2Z3B5jFzw5OBgw@mail.gmail.com>
+Subject: Re: [PATCH] HID: i2c-hid: Skip SET_POWER on shutdown for panel followers
+To: Justin Yeh <justin.yeh@mediatek.com>
+Cc: Jiri Kosina <jikos@kernel.org>, Benjamin Tissoires <bentiss@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Maxime Ripard <mripard@kernel.org>, Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	linux-arm-kernel@lists.infradead.org, linux-input@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_072825_333638_FD820EE1 
-X-CRM114-Status: GOOD (  15.62  )
+X-CRM114-CacheID: sfid-20260904_080619_728810_FA1C9C68 
+X-CRM114-Status: GOOD (  14.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,37 +111,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hey folks,
+Hi,
 
-Not really sure where to report this, but I've encountered some "interesting" issues on my bpi-r4 running kernel 7.2 and up.
+On Thu, Sep 3, 2026 at 8:50=E2=80=AFPM Justin Yeh <justin.yeh@mediatek.com>=
+ wrote:
+>
+> When an i2c-hid device is a panel follower, drm_atomic_helper_shutdown()
+> unprepares the panel before device_shutdown() gets around to the i2c
+> client. The panel_unpreparing() callback already calls
+> i2c_hid_core_suspend() with force_poweroff set, which sends
+> SET_POWER(SLEEP) and then drops the device's regulators.
+>
+> So by the time i2c_hid_core_shutdown() runs, the controller is unpowered
+> and can no longer complete a transfer. On MT8196 the SET_POWER(SLEEP)
+> issued there burns the full i2c-mt65xx bus timeout before failing,
+> adding two seconds to every reboot.
 
-The first issue is that after a while the firmware on the mt7996e sometimes seemingly just locks up. 
-As it usually is with those things, there's not much debug info available, so all I get is
+I don't think there is any guarantee here though, is there? In your
+case the panel might have been powered off before
+i2c_hid_core_shutdown(), but is there something that ensures that? I'm
+not aware of it.
 
-[58764.004954] mt7996e 0000:01:00.0: Message 00130022 (seq 12) timeout
+Would it be better to follow in the example of i2c_hid_core_remove()
+and just remove ourselves as a panel follower? That would
+automatically call the power-off functions if needed, right?
 
-This has happened before, but very rarely, and now it seems to happen consistently at least once a day or so, on
-the exact same setup that is stable for weeks on end with 7.1. I have not attempted a bisect yet because
-1) I kinda need my network to actually work reliably and 2) it happens so inconsistently that it's hard to
-pin down a good commit.
-
-The other issue is that the kernel then fully explodes trying to recover from this, in two different ways 
-depending on whether WED is enabled or disabled: with WED on, it tries to double free a page somewhere on the 
-teardown path, and with WED off it just wedges seemingly all of nl80211 and any process that happened to be talking to it.
-
-I'm attaching the logs for both cases, hopefully this helps figure out what's going on, and happy to do more testing if
-needed.
-
-For posterity, my current kernel tree is basically vanilla + just enough changes to get bpi-r4 10G ports working on NixOS:
-- 7.1 branch: https://github.com/K900/linux/tree/bpi-r4-71
-- 7.2 branch: https://github.com/K900/linux/tree/bpi-r4-72
-
-(there are exactly zero *80211/mt76/mt7996e changes).
-
-Oh, I've also tried pulling the latest firmware from vendor OpenWRT feed and that did not help matters at all.
-
-Any help in figuring this out would be greatly appreciated!
-
-- Ilya
-
+-Doug
 
