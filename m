@@ -4,73 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BDE9C624D3
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 10:00:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE160C61DD6
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 10:31:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D3ZDNZuwLBYYUJaypoIthhBgqLX74axE6YBn4AHc59c=; b=gEvK3+qXx0iB6kl4uwy4npm1Zj
-	Mz4TCa8wU6gK819eiVmBajP+BoYTbLgRQ7wAFFjoCOBJKR32Zudo8bMJTwqt1rMrPFVGTQNUAAm6a
-	eTrj3Aro/I5dXoN690J9I/0wLSKsYzCzCPY0NeRs7ktVy8tavm6YWgcslm2OrknnCzgpBqfarcvii
-	hLA0XmhkO8SSdSEShLxcjytlO/yaIG+aDzCTu0qckgZUVM+LBGIEpA7mxN/v3w3RUIsgVDepPdC+p
-	1tw0/VYZDfWBZMTt5njLfOXDVmhkfHnZA9u8bGfupGygndC1ZKwRL+2bbmxotr14tz3po6rW3Jr/C
-	CBuRQd+Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Ak3IEV5EuNPQAh0ybs3J8IV2WjKmGgfXZ4hNk/xxyjM=; b=aJwBEnL3fFmSYV
+	5VdQ4OWAyM+OKUPY6muKOI61hWf/Si6DCz+/SUCwh501vpOSzqZOONIbGtW4JgG1Y6Md0m85nugpX
+	z9toZpOV6P71p1e2nZWRmyDGeaDAXYG8dslpBjRJSk7tisTGLPV0ejH1FSACFwCX6nTVrLCWGHQ8Z
+	Qo8Z2y/HZFZPdHkdflmrUBbdM1dmHK/Ac2XfYuZTl+flu+R4UoVphfJgjdYbWCccFBSTySClILejT
+	bWFGYMVVDAZxJKomFvPeQVc0FJITOUiNtnWSXrfc097TU6LC9nJ8liblFoeTyRWmKnK55cx6S1WJM
+	VHHT/Vkr1NLNNrJSJDCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2QiP-00000001bgG-3FIS;
-	Fri, 04 Sep 2026 10:00:09 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1x2RCG-00000001fXs-2Pjw;
+	Fri, 04 Sep 2026 10:31:00 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2QiM-00000001beo-2zy4;
-	Fri, 04 Sep 2026 10:00:08 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256:X25519MLKEM768)
-	 (Exim 4.100)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1x2Qhj-000000001se-1EmA;
-	Fri, 04 Sep 2026 09:59:27 +0000
-Date: Fri, 4 Sep 2026 10:59:21 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Siddharth Vadapalli <s-vadapalli@ti.com>
-Cc: dario.binacchi@amarulasolutions.com, mkl@pengutronix.de,
-	mailhol@kernel.org, msp@baylibre.com, florian.fainelli@broadcom.com,
-	jonas.gorski@gmail.com, andrew@lunn.ch, olteanv@gmail.com,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, kurt@linutronix.de, hauke@hauke-m.de,
-	chester.a.unal@arinc9.com, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, ansuelsmth@gmail.com,
-	linusw@kernel.org, luizluca@gmail.com, alvin.sipraga@analog.com,
-	clement.leger@bootlin.com, justin.chen@broadcom.com,
-	dlan@kernel.org, rogerq@kernel.org, hkallweit1@gmail.com,
-	linux@armlinux.org.uk, rjui@broadcom.com, sbranden@broadcom.com,
-	bcm-kernel-feedback-list@broadcom.com, opendmb@gmail.com,
-	andrei.botila@oss.nxp.com, wangruikang@iscas.ac.cn,
-	amadeus@jmu.edu.cn, kees@kernel.org, tmshlvck@gmail.com,
-	c-vankar@ti.com, horms@kernel.org, vadim.fedorenko@linux.dev,
-	daniel.zahka@gmail.com, nora.schiffer@ew.tq-group.com,
-	v-singh1@ti.com, oss@vassilevski.com, haokexin@gmail.com,
-	alex@sverdlin.org, aleksandr.loktionov@intel.com,
-	lgs201920130244@gmail.com, linux-can@vger.kernel.org,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
-	spacemit@lists.linux.dev, linux-omap@vger.kernel.org
-Subject: Re: [PATCH net-next 14/33] net: dsa: mxl-gsw1xx: Remove comma after
- sentinel-entry in match-table
-Message-ID: <apqWeTNBFzOJptkf@makrotopia.org>
-References: <20260904043724.2955444-1-s-vadapalli@ti.com>
- <20260904043724.2955444-15-s-vadapalli@ti.com>
+	id 1x2RCF-00000001fXE-0Up2
+	for linux-mediatek@lists.infradead.org;
+	Fri, 04 Sep 2026 10:30:59 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 7D2AD60219
+	for <linux-mediatek@lists.infradead.org>; Fri,  4 Sep 2026 10:30:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3441A1F00A3E
+	for <linux-mediatek@lists.infradead.org>; Fri,  4 Sep 2026 10:30:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788517858;
+	bh=Ak3IEV5EuNPQAh0ybs3J8IV2WjKmGgfXZ4hNk/xxyjM=;
+	h=References:In-Reply-To:Reply-To:From:Date:Subject:To:Cc;
+	b=mUbo86UXxBWE6CTcj70Nt+yzfQL8JPBmPwGRVX2JHufpjDw8QX02IMe5OhvQgptjM
+	 SwShFyYg4okprAeRMJouUbFefoRObxsWzgcKk46mZOJNjgBCYSn0Thhoyva09oRCGZ
+	 oJwnkhQ1qzXwGqTSwBzA8Zr1LzAlg3Ybw+HJcn/+FdH8RxXotFSyH3GhWmE7XVhdF3
+	 JgWIV77yI16EZy6cPlqHQauKysmSHQ1IetZ1LGwnDZT6EhBp/NMi9ozCI/ik2cD8eY
+	 o1uJOoRRgYULksn1fhY/vdzg+SEiuLW/Q8EnU9yO3lbMUIeTE9T0rZ6HCMPZFagkxR
+	 4T+Ka5P7ZGClQ==
+Received: by mail-lj1-f173.google.com with SMTP id 38308e7fff4ca-3a1f628b1d1so7638571fa.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 03:30:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AKwUvBzozbM5v1Axc3AEbdZx8dRn2C3G/e232ZwSu22vb5OrmpBhg3u27Elcuf8PBfd1bVAOlw74oLI0O/nvexGqDg==@lists.infradead.org
+X-Gm-Message-State: AFuF++k1lp5dXqoTUlsaOSUFkztYGvjXXuDqlZPYsYEOnzXXIh1Xh6kq
+	rzCMwR5CBWaDrmaroWqOJ7Qexho/a48gbUj5Piirc8y1zS51bsjZgG5GS+A5IN9I5caZaAqPDM4
+	MkPuQ6viM5IgZ1DWdBUrAI357KVamong=
+X-Received: by 2002:a2e:a7ca:0:b0:3a3:34:865 with SMTP id 38308e7fff4ca-3a371b6dd76mr9445761fa.5.1788517856421;
+ Fri, 04 Sep 2026 03:30:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260904043724.2955444-15-s-vadapalli@ti.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_030006_753855_760B5D19 
-X-CRM114-Status: GOOD (  14.61  )
+References: <20260721065413.2306137-1-wenst@chromium.org> <20260721065413.2306137-7-wenst@chromium.org>
+ <c6526ba0-be08-46c6-a501-1b161939657c@oss.qualcomm.com>
+In-Reply-To: <c6526ba0-be08-46c6-a501-1b161939657c@oss.qualcomm.com>
+From: Chen-Yu Tsai <wens@kernel.org>
+Date: Fri, 4 Sep 2026 18:30:43 +0800
+X-Gmail-Original-Message-ID: <CAGb2v66c8L20yNNmvj6TaQbS7LnqAyuv0tMQfj+0PSjMUcSByA@mail.gmail.com>
+X-Gm-Features: AcwNN1Xat96btOTDTzU9PGXAhyQrjVXT5ZP9qiHi9N7dj1ScKDZ_5SK_K-nNAtc
+Message-ID: <CAGb2v66c8L20yNNmvj6TaQbS7LnqAyuv0tMQfj+0PSjMUcSByA@mail.gmail.com>
+Subject: Re: [PATCH v6 06/16] usb: hub: Associate port@ fwnode with USB port device
+To: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Bartosz Golaszewski <brgl@kernel.org>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Daniel Scally <djrscally@gmail.com>, 
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-acpi@vger.kernel.org, 
+	driver-core@lists.linux.dev, linux-pm@vger.kernel.org, 
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Manivannan Sadhasivam <mani@kernel.org>, 
+	Alan Stern <stern@rowland.harvard.edu>, 
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,29 +89,131 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: wens@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 04, 2026 at 10:06:20AM +0530, Siddharth Vadapalli wrote:
-> Since sentinel is the last entry and we do not expect further entries
-> following it, remove the comma.
-> 
-> Signed-off-by: Siddharth Vadapalli <s-vadapalli@ti.com>
-> ---
->  drivers/net/dsa/lantiq/mxl-gsw1xx.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/dsa/lantiq/mxl-gsw1xx.c b/drivers/net/dsa/lantiq/mxl-gsw1xx.c
-> index a1104b2f92a9..347e16e9fdc1 100644
-> --- a/drivers/net/dsa/lantiq/mxl-gsw1xx.c
-> +++ b/drivers/net/dsa/lantiq/mxl-gsw1xx.c
-> @@ -918,7 +918,7 @@ static const struct of_device_id gsw1xx_of_match[] = {
->  	{ .compatible = "maxlinear,gsw140", .data = &gsw140_data },
->  	{ .compatible = "maxlinear,gsw141", .data = &gsw141_data },
->  	{ .compatible = "maxlinear,gsw145", .data = &gsw140_data },
-> -	{ /* sentinel */ },
-> +	{ /* sentinel */ }
->  };
+(dug this out of my kernel.org email)
 
-Reviewed-by: Daniel Golle <daniel@makrotopia.org>
+On Fri, Jul 31, 2026 at 10:44=E2=80=AFPM Konrad Dybcio
+<konrad.dybcio@oss.qualcomm.com> wrote:
+>
+> On 7/21/26 8:54 AM, Chen-Yu Tsai wrote:
+> > When a USB hub port is connected to a connector in a firmware node
+> > graph, the port itself has a node in the graph.
+> >
+> > Associate the port's firmware node with the USB port's device,
+> > usb_port::dev. This is used in later changes for the M.2 slot power
+> > sequencing provider to match against the requesting port.
+> >
+> > To avoid potential conflicts with ACPI firmware nodes and then causing
+> > power management issues, only assign the firmware node if the hub's
+> > firmware node is not an ACPI firmware node.
+> >
+> > Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> > Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> > ---
+>
+> [...]
+>
+> > +     /*
+> > +      * ACPI FW nodes are associated later when device_register() happ=
+ens.
+> > +      * Skip assigning one here to avoid potential conflicts.
+> > +      */
+> > +     if (!is_acpi_node(fwnode)) {
+> > +             struct fwnode_handle *port;
+> > +
+> > +             /*
+> > +              * fwnode_graph_get_port_by_id() returns either a valid f=
+wnode handle
+> > +              * or NULL. Passing NULL to device_set_node() clears any =
+associated
+> > +              * fwnode. It is effectively a no-op here, since no fwnod=
+e has been
+> > +              * assigned to the newly created device yet.
+> > +              */
+> > +             port =3D fwnode_graph_get_port_by_id(fwnode, port1, FWNOD=
+E_GRAPH_DEVICE_DISABLED);
+>
+> This works if the node at the other end of the graph is a
+> USB hub, e.g. from qcom/lemans-evk.dts:
+>
+> usb_hub_3_x: hub@2 {
+>         compatible =3D "usb5e3,625";
+>         reg =3D <2>;
+>
+>         peer-hub =3D <&usb_hub_2_x>;
+>
+>         ports {
+>                 #address-cells =3D <1>;
+>                 #size-cells =3D <0>;
+>
+>                 port@1 {
+>                         reg =3D <1>;
+>
+>                         usb_hub_3_1: endpoint {
+>                                 remote-endpoint =3D <&hd3ss3220_1_out_ep>=
+;
+>                         };
+>                 };
+>
+>                 port@4 {
+>                         reg =3D <4>;
+>
+>                         usb_hub_3_4: endpoint {
+>                         };
+>                 };
+>         };
+> };
+>
+> But something I faced when I was poking at USB4 was that dt-bindings
+> currently assume every controller is effectively single-port and the
+> of_graph ports under it represent HS/SS lanes, i.e. the entire
+> "ports" subnode represents a single USB port
+
+Which controller is this? AFAIK for xHCI hosts there currently is no
+"ports" node specified in the common usb-hcd.yaml binding. I plan to
+add this separately, as it can already be used for USB A connectors.
+
+The kernel maps every downstream port of the root hub to a separate
+node. On the XHCI it is more complicated because it has two root hubs,
+one for HS and one for SS. I'm not familiar with the hardware specifics
+but they seem to map into one common namespace, so you probably get
+ports 1~8 for HS and then 9~12 for SS. Note the number of ports is
+different. This is just an example from my x86 workstation. And on
+x86 each port is mapped to a different ACPI node.
+
+> I think the solution here would be to do ports {} under the controller
+> and have every one of them have 2 endpoints (for HS and SS
+> respectively) - then, each DT-port would correspond to a USB port
+> (sorta like in the hub case, minus the hubs are split for HS/SS so
+> they have just a single endpoint under each port)
+
+But the hardware descriptors actually give two ports, one for HS and one
+for SS. And in the case of dwc3, I suspect that they always come with
+one downstream HS port and (optionally) one downstream SS port. So the
+binding is actually correct, except for the numbering.
+
+I'm looking into the dwc3 case. Changing the numbering might actually
+not break anything. Linux seems to just need one *a* graph connection,
+but doesn't care about the number. I looked through some other projects:
+
+- FreeBSD doesn't use the OF graph for anything
+- U-boot doesn't use the OF graph for USB
+- OpenBSD doesn't support dwc3, only the XHCI in dwc3, and doesn't use the
+  OF graph for USB
+- coreboot doesn't use the OF graph for anything
+- Zephyr doesn't support dwc3
+- TF-A doesn't use the OF graph for anything
+- EDK2 doesn't support dwc3 and doesn't support OF graph
+- OP-TEE doesn't support dwc3 and doesn't support OF graph
+
+> But that comes with a big breakage, as always..
+
+As I mentioned, it probably isn't as large of a breakage.
+
+
+ChenYu
 
