@@ -4,71 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22F2CC79F80
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 08:37:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A72EC79F80
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 08:42:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
-	bh=9PIL/kPnMxq3P5cVAkbNzmiNq+J34/FFMbTiuCsg88Q=; b=1v/8qhf7rjF1akkO6M6Xqbiz9p
-	vZH8GizmrCQ5DBAgjnOTlQH97xR7MVPfuBQ3mjFc4gO/lHtur5WHbkvkPA0FI1pXJ5gbl6Ydo+gr5
-	MKdA0SgGEeSamScWsqE1RZiL8MhqonAINl7++C8YDIH1QjWQc/LXImu2os87kga1sc575rDQA/bLa
-	mOQbissc0W0YlGouXjSgIEMB+tbm+sE6GAkippQrQ+laGdYg0Ek43ymcDKFe6GiPqzuNgnzG43JC5
-	5EGe7geiqmxtYX+Y8p6YQAe6uF652xScoCh6GAEd85fNDlc8GRhIrLWtLk2LhXu565B45Pg7+bjMZ
-	gQkeeqMQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NOL5R0SJrxWsGHji42XgvQwAqz+BPG+L9IvuYCKkAns=; b=FsIgksqBZHlNXmGWThAi/97cFk
+	1zLeA5TxH+b4mXcjv6VDaZ5x6qcO5oVff0Ht6SQsXZL/sDH6412HF6L3MhM8U32yHzT86mD8DTV2j
+	90We11ECjgUIO2nWuawNN5MLC24TWx23wnl2BazcgT2oxN0vnsvmZ0sObeXSkaGGxM2rNE8YsPze/
+	vXq3AWy9MQdEqMz7eL27xe+BuElCCxgODTAYKMh2YrBrRBYC5Kax+/qL7mLR8B+kwSZ7mo4xpLKn9
+	MF4eTRxlIn0b0XG9n5kh+ZAIbXmO756oEuDONP1IpE688k9q6A/extqcrIR0+sW57LaxVLdleaQwU
+	nJFRycog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2PQ8-00000001OVM-1B4s;
-	Fri, 04 Sep 2026 08:37:12 +0000
-Received: from mailout1.w1.samsung.com ([210.118.77.11])
+	id 1x2PV0-00000001POm-0Kgd;
+	Fri, 04 Sep 2026 08:42:14 +0000
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2PQ2-00000001OS0-0mkH
+	id 1x2PUy-00000001PNr-0lQ8
 	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Sep 2026 08:37:10 +0000
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
-	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20260904083658euoutp010152c1fd069203685e556f80392f56b6~SEUuNEAZS2924729247euoutp01I
-	for <linux-mediatek@lists.infradead.org>; Fri,  4 Sep 2026 08:36:58 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20260904083658euoutp010152c1fd069203685e556f80392f56b6~SEUuNEAZS2924729247euoutp01I
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1788511018;
-	bh=9PIL/kPnMxq3P5cVAkbNzmiNq+J34/FFMbTiuCsg88Q=;
-	h=From:To:Cc:Subject:Date:References:From;
-	b=OcL5ju4AonUTzK9Ge087FQnJstUcn0MPleQ4C5m1FRsL1xv6MKilFPklLZISGAADY
-	 4gpQaeGD9E+gXstRDv42+nA4MUmPAU/kNIF7+fyCbT8qb+cNsZM6wa/Nkp/BfymUcQ
-	 yxul+lYmgUZ5emXDZtoZ8dRXV7mfKcON9pdTTr7s=
-Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
-	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
-	20260904083657eucas1p18056c0eacd7ba79401c8fb11150954ea~SEUt8Oz_y2337323373eucas1p1w;
-	Fri,  4 Sep 2026 08:36:57 +0000 (GMT)
-Received: from AMDC4653.digital.local (unknown [106.120.51.32]) by
-	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
-	20260904083657eusmtip28ebc646c943dfc2d88fd5b5d1282e30b~SEUtgfgC_1075010750eusmtip2c;
-	Fri,  4 Sep 2026 08:36:57 +0000 (GMT)
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-To: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Marek Szyprowski <m.szyprowski@samsung.com>, Chunfeng Yun
-	<chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
-	<gregkh@linuxfoundation.org>, Steven Rostedt <rostedt@goodmis.org>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-Subject: [PATCH v2] USB: mtu3: tracing: fix pointers dereferencing
-Date: Fri,  4 Sep 2026 10:36:43 +0200
-Message-ID: <20260904083644.2010063-1-m.szyprowski@samsung.com>
-X-Mailer: git-send-email 2.43.0
+	Fri, 04 Sep 2026 08:42:13 +0000
+Received: by mail-pj1-x102b.google.com with SMTP id 98e67ed59e1d1-3964e480f76so934761a91.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 01:42:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1788511331; x=1789116131; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=NOL5R0SJrxWsGHji42XgvQwAqz+BPG+L9IvuYCKkAns=;
+        b=A8kToHTQCfR2P0DkarUm0Ri1e3ge7hKzZvUR39kdq4JvRURFEoxEa6WIZBXTi7TUw1
+         ZWXod0pNVv5jdP6/vhoJEW4BK6EOLObTB2rjgyOtjwI5I9IZWluQSnNGjKXOVY0WQlY5
+         h+XO8Pf+mPUjmpQC8HH5K5vMfHfEB/D5TBlaI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788511331; x=1789116131;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=NOL5R0SJrxWsGHji42XgvQwAqz+BPG+L9IvuYCKkAns=;
+        b=laEZCqEfCEw5MX2Bb6pt2+EEQCIegkZ19qBwwo7tyKPZHBL3kkiGCdp9e+22cfNC7/
+         OzgSmkb8plnWHfk4bF1yseX4yICp8VEG95QdQZDTEu862kB0NyomvbTMRjutYR/KwSW0
+         I15gMkDrtNsZ6tlRVxaday/uL+a/KAR/ttjNk4lvZn+AdkuEgbB876n1mZXh6mL6ivCG
+         ZjFKWFOwpwalUIvXKHwz3K9XEmWDGbUFqjJ7xrQTlsYpY/rRVLPMDXtfV2HH8Fn6KdWg
+         GR4MB+jXZjMHcwwdV72u3jxwVTVcIrghVXf+dhD6Fp4XoyGHTAe53FropHSl6NmZcaLd
+         L9vQ==
+X-Forwarded-Encrypted: i=1; AKwUvBxtfNIEsIdvzqi21JQaWTrToAskNG9kpfJA1umEg5BUbXL/OLdHOh63n3aW8b0PXO7EpoqaPQCbpgPbzv77hQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++k/2LUYEME4AjR2uRaMz4rukpMM/CA75zMtXrxNj564JjK9Glvu
+	7XpDRxXjJojJxdSj2is9zx3feFHyTJd6MpwJo5eOCltJvKl98P8vLazWL9011DrX4A==
+X-Gm-Gg: AYBFou0UZuXNdjhdeEf6tCmeh8S44XGiRz7jSxkNC44KHgMqkq3xpnmVCL3jK/2QEgT
+	wxki8IlfrVlAWiwO1H32wDuYud2EuSNtnjqtLX0ncBeWA1XhMUAkMmQGmlpAXahm+nHykPUmbBn
+	99URDUQc3gTWySXHD/G42uXzIds/Kq0d1suNIbYf5pKXdhSFQ7VfJVnTh0ycEixZ3T00jLNUYja
+	57ogad7WkbsuPI3VNJBB1tsEwT8CewmyTTGw2tsiPoRVz8qUlOhIDnc5QGDBb2Gn4wDnwb54cjG
+	6K1B1tU2Y1nanGHMXMqXbTGXynWOhuYqVAMmLgcdYgcC6mHsBc+//6R5w1JMaGdqYju4cwUVvGV
+	KkmiNy8VBh/A9dzTn5NU6l3cK1ORVrKJoRO+N1Kdly+aIwOuMnQwzn32LphI/ST+uINB8goA/Y1
+	mdfl96P4lx6vDMjPpxqejO1wHrBDuir1FKKeoL0pSJOaoZ1EHC/ZSjkJMjiLOvZfsXIHe0CbBOG
+	S0HMVgdsZPbbRXB87T2iPWuaFnFpkjBnT3IktoOP7qa
+X-Received: by 2002:a17:90b:1d84:b0:396:4cbf:45a2 with SMTP id 98e67ed59e1d1-39b261e3b7fmr6052421a91.14.1788511330394;
+        Fri, 04 Sep 2026 01:42:10 -0700 (PDT)
+Received: from wenst-7875.tpe.corp.google.com ([2a00:79e0:201d:8:343:bf21:3095:9c5])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39b260fdf9asm3343538a91.9.2026.09.04.01.42.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 04 Sep 2026 01:42:09 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Bartosz Golaszewski <brgl@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Wei Deng <wei.deng@oss.qualcomm.com>,
+	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	linux-acpi@vger.kernel.org,
+	driver-core@lists.linux.dev,
+	linux-pm@vger.kernel.org,
+	linux-usb@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Alan Stern <stern@rowland.harvard.edu>
+Subject: [PATCH v8 00/16] arm64: mediatek: Add M.2 E-key slot on Chromebooks
+Date: Fri,  4 Sep 2026 16:41:39 +0800
+Message-ID: <20260904084158.1341550-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.55.0.979.g7e5102b832-goog
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CMS-MailID: 20260904083657eucas1p18056c0eacd7ba79401c8fb11150954ea
-X-Msg-Generator: CA
-Content-Type: text/plain; charset="utf-8"
-X-RootMTR: 20260904083657eucas1p18056c0eacd7ba79401c8fb11150954ea
-X-EPHeader: CA
-X-CMS-RootMailID: 20260904083657eucas1p18056c0eacd7ba79401c8fb11150954ea
-References: <CGME20260904083657eucas1p18056c0eacd7ba79401c8fb11150954ea@eucas1p1.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_013706_755097_104A6936 
-X-CRM114-Status: GOOD (  11.51  )
+X-CRM114-CacheID: sfid-20260904_014212_259272_15B4D6FB 
+X-CRM114-Status: GOOD (  39.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,55 +116,288 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Commit b5cc230af5e5 ("tracing: Warn when an event dereferences a pointer
-in TP_printk()") added a warning when printing an event dereferences
-a pointer, because it might be already freed at that time.
+Hi everyone,
 
-MTU3 driver is one of the drivers triggering this warning. Fix it by
-storing the DMA address in the event structure to avoid dereferencing
-gpd_ring pointer during event printing.
+This is v8 of my attempt at integrating the power sequencing API into
+the USB core to support the USB connection on M.2 E-key slots. M.2
+E-key was enabled in v7.1-rc1 with just PCIe and UART supported [1].
+Hopefully this is the last revision. The fwnode patches need a reviewed-by
+from the fwnode owners.
 
-Fixes: 83374e035b62 ("usb: mtu3: add tracepoints to help debug")
-Reviewed-by: Steven Rostedt <rostedt@goodmis.org>
-Reviewed-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
----
-v2:
-- fixed typos in commit description
+As for Sashiko's comment about fwnode_get_next_*() not putting the
+reference to @prev when @node is NULL, I plan to update the kernel-doc
+for all the functions in a separate patch later.
 
-v1: https://lore.kernel.org/all/20260804100531.88576-1-m.szyprowski@samsung.com/
----
- drivers/usb/mtu3/mtu3_trace.h | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Another one of Sashiko's comments is related to dropping the wakeup-source
+property from the PCIe node. AFAIK there is no alternative as there is
+no longer a node to put it in.
 
-diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
-index 89870175d635..b24c6411a8cf 100644
---- a/drivers/usb/mtu3/mtu3_trace.h
-+++ b/drivers/usb/mtu3/mtu3_trace.h
-@@ -224,6 +224,7 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
- 		__field(unsigned int, flags)
- 		__field(unsigned int, direction)
- 		__field(struct mtu3_gpd_ring *, gpd_ring)
-+		__field(dma_addr_t, gpd_ring_dma)
- 	),
- 	TP_fast_assign(
- 		__assign_str(name);
-@@ -235,12 +236,13 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
- 		__entry->flags = mep->flags;
- 		__entry->direction = mep->is_in;
- 		__entry->gpd_ring = &mep->gpd_ring;
-+		__entry->gpd_ring_dma = __entry->gpd_ring->dma;
- 	),
- 	TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p/%pad flags %c:%c%c%c:%c",
- 		__get_str(name), usb_ep_type_string(__entry->type),
- 		__entry->maxp, __entry->slot,
- 		__entry->mult, __entry->maxburst,
--		__entry->gpd_ring, &__entry->gpd_ring->dma,
-+		__entry->gpd_ring, &__entry->gpd_ring_dma,
- 		__entry->flags & MTU3_EP_ENABLED ? 'E' : 'e',
- 		__entry->flags & MTU3_EP_STALL ? 'S' : 's',
- 		__entry->flags & MTU3_EP_WEDGE ? 'W' : 'w',
+Last, one comment from Qualcomm folks is that the port numbering
+conflicts with what the dwc3 bindings specify. IMHO the dwc3 bindings
+should be fixed, as the dwc3 controller embeds a XHCI for host mode,
+and XHCI port numbering should follow standard USB host hardware port
+numbering. I will send separate RFC patches for this.
+
+
+Changes since v7:
+- Mention in kernel-doc that the function does not return ports that
+  have no endpoints (Sakari) (patch 1)
+- Adapted to pwrseq_enable/disable() rename
+- Link to v7:
+  https://lore.kernel.org/all/20260724084328.3943997-1-wenst@chromium.org/
+
+Changes since v6:
+- Patch 3 (power: sequencing: Add pwrseq_get_state())
+  - Adopted enum for valid return codes (Bartosz)
+- Patch 10 (usb hub pwrseq integration)
+  - Added braces ("{}") to for loop in hub_is_port_power_switchable() (Andy)
+  - Adapted usb_port_is_power_on() to new pwrseq_get_state() function
+    return values (Bartosz)
+- Link to v6:
+  https://lore.kernel.org/all/20260721065413.2306137-1-wenst@chromium.org/
+
+Changes since v5:
+- Patch 1 (device property: Add fwnode_graph_get_port_by_id())
+  - Dropped left-over declaration in header (Sashiko)
+- Patch 3 (power: sequencing: Add pwrseq_power_is_on())
+  - Reverted back to returning -EINVAL if descriptor is NULL (Andy /
+    Bartosz)
+- Patch 6 (usb: hub: Associate port@ fwnode with USB port device)
+  - Added extra |struct fwnode_handle *| local variables to shorten lines (Andy)
+  - Added comment about passing fwnode_graph_get_port_by_id() return value 
+    directly to device_set_node() (Andy)
+- Patch 10 (usb hub pwrseq integration)
+  - Only assign port_dev->pwrseq if successfully retrieved pwrseq
+    descriptor (Andy)
+  - Dropped the pwrseq error pointer check in the release function
+    (Andy)
+  - Added check for port->pwrseq != NULL before calling
+    pwrseq_is_power_on() (API change from patch 3)
+- Link to v5:
+  https://lore.kernel.org/all/20260715085348.3457359-1-wenst@chromium.org/
+
+Changes since v4:
+- Added flags parameter to fwnode_graph_get_port_by_id() so users can
+  specify whether incomplete ports are returned or not (Sashiko)
+- Made pwrseq_power_is_on() return 1 if descriptor is NULL, i.e. if
+  the descriptor is optional, matching the other pwrseq consumer APIs
+- Added patch to swap out conditional set_bit()/clear_bit() with
+  assign_bit() (split out from "usb: hub: Power on connected M.2 E-key
+  connectors with power sequencing API") (Andy)
+- Call fwnode_graph_get_port_by_id() with FWNODE_GRAPH_DEVICE_DISABLED
+  so that even incomplete ports can be connected (Sashiko)
+- Dropped unused |hdev| variable from usb_hub_remove_port_device()
+  (Greg / Sashiko)
+- Dropped 'extern' from usb_port_is_power_on() header declaration (Andy)
+
+- Patch 10 (usb hub pwrseq integration)
+  - Rewrote usb_port_is_power_on() to better express intent and
+    restrictions of pwrseq API (Andy)
+  - Switched to dev_fwnode() in port_pwrseq_is_supported() (Andy)
+  - Added blank line separating normal variable declarations and __free()
+    type declarations (Andy)
+  - Split out assign_bit() rewrite (Andy)
+  - Moved pwrseq_put() to release function to avoid UAF (Sashiko)
+  - Added back pwrseq_power_off() call in usb_hub_remove_port_device();
+    otherwise power off could be delayed to object release
+  - Don't clear hub->ports[port1 - 1] in main error path;
+    by that time the port device is registered and sysfs attributes are
+    available to userspace (Sashiko)
+
+- Dropped blank line between __free() variable declaration and
+  subsequent use of the variable in conditional (Andy)
+- Added patch to split Bluetooth pwrseq units (Wei)
+- Link to v4:
+  https://lore.kernel.org/all/20260709095726.704448-1-wenst@chromium.org/
+
+Changes since v3:
+- Added missing stub function for !POWER_SEQUENCING (patch 3) (Sashiko)
+- Added missing fwnode_handle_put() (patch 5) (Sashiko)
+- Added new patch to move |struct usb_port| related declarations to
+  separate header (patch 6) (Andy)
+- Patch 9 (usb hub pwrseq integration)
+  - Adapted to move of usb_port_is_power_on() to port.c and port.h
+  - Simplified usb_hub_set_port_pwrseq() (Andy)
+  - Renamed usb_hub_set_port_pwrseq()'s "set" parameter to "on"
+  - Dropped usb_hub_restore_port_pwrseq() (use usb_hub_set_port_pwrseq()
+    with inverted argument)
+  - Fixed off-by-one access in hub_is_port_power_switchable() (Sashiko)
+  - Assign retval from dev_err_probe() instead of the other way around (Andy)
+  - Clear hub->ports[port1 - 1] in USB port error and remove paths to
+    avoid other threads from accidental UAF while the USB hub device is
+    being unwound (Sashiko)
+  - Short-circuit out of helpers if !IS_ENABLED(CONFIG_POWER_SEQUENCING)
+    to avoid errors from stub functions (Sashiko)
+- Drop redundant device node validity check; device_match_of_node()
+  does it internally (patch 11) (Andy)
+- Link to v3:
+  https://lore.kernel.org/all/20260703110317.1283411-1-wenst@chromium.org/
+
+Major changes since v2:
+- Removed changes for MT8192 Asurada family: one of the device is
+  shipped with RTL8822CE-VR, which is PCIe + UART and needs more work.
+- Removed changes for USB A ports: VBUS one the type A ports on
+  Chromebooks are not directly controllable from the OS and VBUS is
+  modeled as always on. As such the changes I made don't actually
+  change how the system works.
+- Added new pwrseq_power_is_on() function
+- Make new pwrseq integration effectively OF only by not assigning the
+  port fwnode if the hub's fwnode is an ACPI node
+- Added patch to convert remaining instances of directly setting/clearing
+  USB_PORT_FEAT_POWER to usb_hub_set_port_power()
+- Power sequencing state removed again in favor of state tracking by
+  pwrseq subsystem
+- Power sequencing descriptor again separately requested for HS and SS
+  ports
+- Dropped pwrseq_power_off() call before pwrseq_put(); the latter calls
+  the former implicitly if the power state was left on
+- Squashed DT binding revert and addition into one patch
+- Link to v2:
+  https://lore.kernel.org/all/20260610084053.2059858-1-wenst@chromium.org/
+
+
+Major changes since v1:
+- No longer adding the "index" parameter the power sequencing API
+- Switched from OF graph to fwnode graph APIs
+- Tie "port@" node to usb_port device, and use this device as consumer
+  to acquire power sequencing descriptor
+- Power sequencing descriptor now only tied to USB 2.0 port to avoid
+  double reference
+- Power sequencing state tracking added
+- Link to v1
+  https://lore.kernel.org/all/20260515090149.3169406-1-wenst@chromium.org/
+
+The series is based on next-20260901.
+
+
+Patch 1 and 2 add new fwnode graph helpers. These are used by the patch
+5 and 8, respectively.
+
+Patch 3 adds a new pwrseq_get_state() for power sequencer consumers
+to query the current request state. Note that this is not the _actual_
+state.
+
+Patch 4 swaps out the existing conditional set_bit()/clear_bit() with
+assign_bit(), which does the same thing.
+
+Patch 5 reworks the USB hub driver to return the actual error code from
+hub_configure() in hub_probe(). This is needed in the next patch to
+correctly return -EPROBE_DEFER returned by pwrseq_get() in patch 9.
+
+Patch 6 makes the USB port device associated with a "port@" fwnode if
+available. This depends on patch 1.
+
+Patch 7 moves some |struct usb_port| related stuff from hub.c and hub.h
+to port.c and port.h. No actual code or functionality is changed.
+
+Patch 8 changes usb_port_is_power_on() so that |struct usb_port*| is
+passed in instead of |struct usb_hub*|. This patch does not change any
+functionality.
+
+Patch 9 changes some USB hub port power control code that directly
+toggles USB_PORT_FEAT_POWER to use usb_hub_set_port_power().
+
+Patch 10 lets the USB hub driver look for power sequencers for each port.
+Currently this only works for M.2 E-key connections, but it could be
+extended to cover other cases. It should also make port reset via turning
+off the port VBUS work, even when VBUS is not directly controlled by the
+hub. This depends on patch 2 and 3 for the new helpers.
+
+Patch 11 reverts an incorrectly modeled OF graph connection for the
+MediaTek XHCI controller and adds a proper representation.
+
+Patch 12 adds matching pwrseq consumer by "port@" node to the M.2 slot
+driver. This is only used for the USB target, but there is no attempt
+to differentiate the connection type. The driver simply tries matching
+the "port@" node first, then falling back to the port parent or device's
+node.
+
+Patch 13 reworks the power sequencing targets for the E-key connector in
+the pcie-m2 driver to add targets for USB and SDIO. The former is used
+later on in this series.
+
+Patch 14 splits the Bluetooth power sequencing unit so that the USB and
+serdev consumers can separately toggle the actual state of W_DISABLE#2.
+This patch is purposefully not squashed into the previous one to provide
+a clear target for discussions.
+
+Patches 15 and 16 enable the M.2 E-key slots (or slot-like integration)
+found on MT8195 and MT8188 MediaTek-based Chromebooks. 
+
+
+This series unfortunately spans multiple trees. The way I see it:
+
+  - Patches 1 and 2 go through the driver core, and an immutable tag is
+    provided to be merged together with the USB patches.
+
+  - Patch 3 has an ack from Bartosz, and goes through the USB tree. But
+    Bartosz also wants an immutable branch/tag to have a copy in the
+    pwrseq tree.
+
+  - Patches 4 through 11 (all the USB related ones) go through the USB
+    tree, along with the dependencies above.
+
+  - Patches 12 through 14 go through the power sequencing tree.
+
+  - Patches 15 and 16 (device tree only) go through the soc tree via the
+    mediatek tree.
+
+Some of us discussed v1 at Embedded Recipes, and I believe Bartosz, Mani
+and I agree on this approach. The debate is likely going to be on
+whether this should be integrated into the USB core or not. I believe it
+should, so that the power sequencing timing is tied to the USB port
+being brought up. I do have a fallback option of just enabling the USB
+power sequencing target inside the M.2 slot driver if a valid OF graph
+connection is seen. But this is less desired for the reason given above.
+
+I hope we can get this merged in this cycle for v7.4.
+
+
+Thanks
+ChenYu
+
+
+[1] https://lore.kernel.org/all/20260326-pci-m2-e-v7-0-43324a7866e6@oss.qualcomm.com/
+
+Chen-Yu Tsai (16):
+  device property: Add fwnode_graph_get_port_by_id()
+  device property: Add fwnode_graph_get_next_port_endpoint()
+  power: sequencing: Add pwrseq_get_state()
+  usb: hub: Use assign_bit() in usb_hub_set_port_power()
+  usb: hub: Return actual error from hub_configure() in hub_probe()
+  usb: hub: Associate port@ fwnode with USB port device
+  usb: core: Move struct usb_port and related APIs to port.h
+  usb: hub: Pass |struct usb_port*| to usb_port_is_power_on()
+  usb: hub: Use usb_hub_set_port_power() to control port power
+    everywhere
+  usb: hub: Power on connected M.2 E-key connectors with power
+    sequencing API
+  dt-bindings: usb: mediatek,mtk-xhci: Switch to ports for USB
+    connections
+  power: sequencing: pcie-m2: support matching on remote "port" node
+  power: sequencing: pcie-m2: Add usb and sdio targets for E-key
+    connector
+  power: sequencing: pcie-m2: Split Bluetooth unit based on interface
+  arm64: dts: mediatek: mt8195-cherry: Add M.2 E-key slot
+  arm64: dts: mediatek: mt8188-geralt: Add WiFi/BT as M.2 E-key slot
+
+ .../bindings/usb/mediatek,mtk-xhci.yaml       |  17 ++-
+ .../boot/dts/mediatek/mt8188-geralt.dtsi      |  92 +++++++++++++++-
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      |  73 ++++++++++++-
+ drivers/base/property.c                       |  56 ++++++++++
+ drivers/power/sequencing/core.c               |  19 ++++
+ drivers/power/sequencing/pwrseq-pcie-m2.c     |  64 ++++++++---
+ drivers/usb/Kconfig                           |   1 +
+ drivers/usb/core/hub.c                        |  72 ++++++------
+ drivers/usb/core/hub.h                        |  58 ++--------
+ drivers/usb/core/port.c                       | 103 +++++++++++++++++-
+ drivers/usb/core/port.h                       |  68 ++++++++++++
+ include/linux/property.h                      |   4 +
+ include/linux/pwrseq/consumer.h               |  12 ++
+ 13 files changed, 527 insertions(+), 112 deletions(-)
+ create mode 100644 drivers/usb/core/port.h
+
 -- 
-2.43.0
+2.55.0.979.g7e5102b832-goog
 
 
