@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1F0DC79F82
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 22:36:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15859C79F82
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 22:36:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/oXwqSl9Gxhd9ASYzU33CVNwSksmytljDqKt0iBuLvI=; b=c7j06tXgLqaeyv6pO+aOYU2XJn
-	MGx5nX170sXGhwOWHluK2rXpP/9SXJdoKxb6a239KFm18INs+4/bUHHoXiDLde6gjiwCjvBZxNOYk
-	uD6wMPeIaSGcrLZ9za5khRDXEbwum/JdfVf2hqM6qCg0TxbVznPEoZxc21cpPyNvuzSS3mTH+mJFj
-	Dy4MAMd4lBlwiqQ7qrfoWqo55bKgZFjcGNCYVtVvt8rwJ2buMCdSLZ6jF45yh97WzfUJdIuBkP54/
-	Q79BILvcy+S15KNtEBsQoN0t69mYuY1i+dCHZbLYTOvzYL0q2vzF6cyM+B6jG4AdxJTIqIGaPja9G
-	Ekybr9Ng==;
+	bh=/oXwqSl9Gxhd9ASYzU33CVNwSksmytljDqKt0iBuLvI=; b=xVdwEG/hEsY5caIl1LqSDxXrJv
+	6JKiPLpuHh9ceRhVAubhxaeLcPaGA6RVKYUTyXQAe6aOZckxkXG47ZQYAvGxwxjlsd8RJPyQm9+rc
+	vvhOP93+L9h1dMq6gT3eNKpkxvbBocSvTIYdAbTuLJg6yrgxuURig9OIgRnZ7+JehTPsTGISSDWSN
+	3jRMvlWkzCNB7wakNS567tmoeg3EF7AVp0F1qUhfPCNNnOawzg2ubMK5AiKunDuqKRN+lU38FDwnm
+	9KeyFZOyyNSXda76+qHhrbDferuFkkQyoyL83kTacUv4ZYPME/4NSryj3T5pJmChHmYHOw8UVsFVM
+	9f6l8xpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2cW4-00000003PUA-2hCQ;
-	Fri, 04 Sep 2026 22:36:12 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x2cWI-00000003PZ3-3E45;
+	Fri, 04 Sep 2026 22:36:26 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2cW2-00000003PTL-2WVt
+	id 1x2cWH-00000003PYV-3iem
 	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Sep 2026 22:36:10 +0000
+	Fri, 04 Sep 2026 22:36:25 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9908860A8B
-	for <linux-mediatek@lists.infradead.org>; Fri,  4 Sep 2026 22:36:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2CF801F01575
-	for <linux-mediatek@lists.infradead.org>; Fri,  4 Sep 2026 22:36:08 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A51B9444ED
+	for <linux-mediatek@lists.infradead.org>; Fri,  4 Sep 2026 22:36:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74F151F01565
+	for <linux-mediatek@lists.infradead.org>; Fri,  4 Sep 2026 22:36:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788561368;
+	s=k20260515; t=1788561385;
 	bh=/oXwqSl9Gxhd9ASYzU33CVNwSksmytljDqKt0iBuLvI=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=ml6ZPbdicpCTCGRsa4fruA8q/UpjUgIWf/z1j3+dK9X3uiutTe0Gl0W9Lye+gyHVj
-	 8YmhHW8o3E5cvDD7BLuj2wEtwXOUvyv04hlKcGfZAbXiQJ/LOeLdCD+tUA+VGQVvFB
-	 gmbCoxnTcLMl2erVHI1WMv20AhSU7ZLcp+yLOFH6iat052BEu/i84vxzZhJIUu0oy9
-	 P7+8EJnGgIc7YQx9NQOdfRTN6gX0Q1EY7UbO+HN5y37jJceCICC6QEbK1be07F1FzD
-	 DjwZ9SGW8JDK0WHPnhvmq1CH55jWjHQ0iSSlLt318rSpCiSaTGyvgyAYR5YRruMwQZ
-	 BIo2SADVEtdig==
-Received: by mail-lf1-f48.google.com with SMTP id 2adb3069b0e04-5b5e1340faeso1358602e87.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 15:36:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AKwUvByFe+vooN0dOjhLI1nlZ9/qKSPMeWbAxp1uXKoRF9WAwiXh/gtFYYxIQ/cdAcFcPx8GqxBe/VhP9uQgtnFs/g==@lists.infradead.org
-X-Gm-Message-State: AFuF++mbgkUT5bvCoc9OAKuS2vCYnYPSiD1e679kMJpzB+Z2ogQrBMPf
-	j7wLTmQ5V7D32CYu0zsIYj5UpeCygzpFqVyiMKpqlsb94Z6Vnk1gB+ZhCNqH1g4YEjaC81o+Zph
-	cQ7WIL7qt0YWnvuZY+ksBMKCXidkyT4Q=
-X-Received: by 2002:a05:6512:61b3:b0:5b4:583f:9f32 with SMTP id
- 2adb3069b0e04-5b616f324a3mr1360069e87.20.1788561366767; Fri, 04 Sep 2026
- 15:36:06 -0700 (PDT)
+	b=GlVbCwxddIH2dGDoJPIA/h2Tst/6qBA1KGZqh+6T+wL3wdW8xpNgyzaSqPTvBO3IW
+	 dmWsdWcd/TE+zleN5SMZD9rLM8nV3rxKKRQIlCABrM8elVbNhL6ZG6n1LB+RpwiAMR
+	 mWEEHJ2ijqefgTMOVlyCe6A4bK22tcocp1M1amhMsGRuSaSdQeiKrQjGl8ma2dSnqI
+	 7iGskWVDBlHW02icgqAP7VeQOEbWbRAIUSZMRyRq8VivPjFPHzPGt2yYzma34ys9Tp
+	 2OOnvpmEk8u59IFhysAtgxkO25ylitmXa46S7QuFOChTDJs0sRRb3d7WqqybV3DH0y
+	 vPUw1DQqB7/xA==
+Received: by mail-lf1-f49.google.com with SMTP id 2adb3069b0e04-5b01910b499so1428485e87.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 04 Sep 2026 15:36:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AKwUvByE2/SpfCOmlZEVB1/fVjbhMFno4/Tc8rVFa5RCLCvvx2rK9W8PcOaGpGM+HoqUQ370wPnyJ/BHpUg7egnjag==@lists.infradead.org
+X-Gm-Message-State: AFuF++m93pYCCPysM6xaBbiQsnC981JGqyg/gBTEeZ0vwmb/u8Ymevst
+	+aBZe/h3tsp8+Af46vZ302f6SeevhHALO34Q1GS6YGlaIc+VXO3MTNyjxVXUrfzat32PGVR6jpz
+	4K3NVl6Jo2xSFs1EmMdphi6tZGkcE7ZY=
+X-Received: by 2002:a05:6512:a86:b0:5ae:b7c7:5334 with SMTP id
+ 2adb3069b0e04-5b60e8f8b8dmr2291058e87.17.1788561384171; Fri, 04 Sep 2026
+ 15:36:24 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260904043724.2955444-1-s-vadapalli@ti.com> <20260904043724.2955444-18-s-vadapalli@ti.com>
-In-Reply-To: <20260904043724.2955444-18-s-vadapalli@ti.com>
+References: <20260904043724.2955444-1-s-vadapalli@ti.com> <20260904043724.2955444-19-s-vadapalli@ti.com>
+In-Reply-To: <20260904043724.2955444-19-s-vadapalli@ti.com>
 From: Linus Walleij <linusw@kernel.org>
-Date: Sat, 5 Sep 2026 00:35:54 +0200
-X-Gmail-Original-Message-ID: <CAD++jLkfg0tRxDc7B2-TJqRmqxFxUFkFPwHya-gvGZ1OeytoYA@mail.gmail.com>
-X-Gm-Features: AcwNN1VqRxubfaJ8mQrA8mitm0PwyRWyXr5M0LUGIuqfl4J37AtzKVm3Hf5r70E
-Message-ID: <CAD++jLkfg0tRxDc7B2-TJqRmqxFxUFkFPwHya-gvGZ1OeytoYA@mail.gmail.com>
-Subject: Re: [PATCH net-next 17/33] net: dsa: mv88e6060: Remove comma after
+Date: Sat, 5 Sep 2026 00:36:12 +0200
+X-Gmail-Original-Message-ID: <CAD++jLn+fsxrH2YvJSnaYhHg2EQiUnjMX5BFE_MDAzvvJjY3Bw@mail.gmail.com>
+X-Gm-Features: AcwNN1WIrbJQES4aWl5_UIygFkf4p6tsLt1aSuz1HDzaVFgsk_a2nVa_8mNAHm8
+Message-ID: <CAD++jLn+fsxrH2YvJSnaYhHg2EQiUnjMX5BFE_MDAzvvJjY3Bw@mail.gmail.com>
+Subject: Re: [PATCH net-next 18/33] net: dsa: mv88e6xxx: Remove comma after
  sentinel-entry in match-table
 To: Siddharth Vadapalli <s-vadapalli@ti.com>
 Cc: dario.binacchi@amarulasolutions.com, mkl@pengutronix.de, 
