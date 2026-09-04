@@ -4,71 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B752C624D3
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 18:05:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 805CCC79F82
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 20:18:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zmnzVywuJ36UYza4cGKzEYOf2ze4aJrDgWLkLYA0zhw=; b=ctm3YgC+7MtKd6eFF+sRw3ai4z
-	6TVra3grX78+VfyyQtF4q3/v3jMEPbL5JhV6+go8Fp2xzYkJmsjtQpY9cilnkVcJotV3FZYKhd/Do
-	pTAvUs6WriCLBTtZtzERIEpjRwXr3/PaZoXOdzGCDgBDqCI6rIMEt9F7kXxp4H7LlszwuEibCYPEg
-	8GWoUhkoUhggZLMUJqDbEiap90og5UfOw1KTR2XhLJ8sri8Z+fFTvpRZWmdwD3nNFJ7Zj1BRQd0Cs
-	YV5k0q5rYDvREN9U70abEJGzISzzAlpW9rxZ8zpcCGmeN8haVi3bAuIY+ycOkzH4Kt9YlGDUQSgso
-	PIy3PDoA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sHzO1vK007onq7ZRRCVcxMaeaee0HBq8s8LCu+NpiCs=; b=KOV9/lySWWuNitR0hYmeKV1CDQ
+	q5oev0LNzy+Q5jb9qtwSEPwwSd2jkMJ5+SqZk1zPYTMYa00thN7k4XpbI7bFhyP1wJbSOu5Obj3m4
+	6hCSYkCkiiS80DZXY6X9Mr4U5NpOAsLWQDdPEWFmOPhjxIc1ZoyNmK5Fyj2abIN/HwdMpurCArvBL
+	sbRpDbbIXWjIGfWlwGSjJp1iqUn9FKRNZX1tfZuZDPtWR4d3S0K8uRap39xSWWBo/fx5tQ2hR0PDD
+	wXKCW3wR9N4aQSWi/RfcLo4bt93s75MZYsX7N/3Cc3NuDirhoGJ6k6NJ3KhMRoCtuKF7OkS6G9p0a
+	34kts0dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2YIE-00000002yBX-3Nns;
-	Fri, 04 Sep 2026 18:05:38 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1x2aMi-00000003FeO-1UkU;
+	Fri, 04 Sep 2026 20:18:24 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2YIB-00000002yAx-3I4Z;
-	Fri, 04 Sep 2026 18:05:37 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id DD56C4E41521;
-	Fri,  4 Sep 2026 18:05:32 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 9B7A26057F;
-	Fri,  4 Sep 2026 18:05:32 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 9CFCC11C79351;
-	Fri,  4 Sep 2026 20:05:14 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1788545127; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=zmnzVywuJ36UYza4cGKzEYOf2ze4aJrDgWLkLYA0zhw=;
-	b=tH+vmgtvwgcX7d6mOJyu5ufzIcqG+iDtAXzIxhAzsodtwjNDtQOC4vXx6+f/o0epJN9ynN
-	GNiw/GAZ5H9nbki+HkwrYR95hmCHbDDnIo+z+i8ia7j2JNYJcVavyAbecFSUuv1+UPGjHk
-	zpQJyzXBuWpT1IkJ3mAG6w+B3jryoT/hDCarrjGJeXTyOccbsHSVclLgWD0lXcFtAvvxff
-	6fIf1QQoFfoc+5fV0IULTLCZjJnuRTYn4isOk75D46Qe9XxHgqOtba49hn+2YddZGAhv5b
-	ZeB0DclH1pUwgRmetb0jLmzqjQqTgm/8uvyosw9X52Ig2+LLragbdiZ5CRrsvA==
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Robert Jarzmik <robert.jarzmik@free.fr>, 
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, Han Xu <han.xu@nxp.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Pratyush Yadav <pratyush@kernel.org>, Michael Walle <mwalle@kernel.org>, 
- Takahiro Kuwano <takahiro.kuwano@infineon.com>, 
- Hemanth Selam <hemanth.selam@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-mtd@lists.infradead.org, 
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20260904125208.12099-1-hemanth.selam@gmail.com>
-References: <20260904125208.12099-1-hemanth.selam@gmail.com>
-Subject: Re: [PATCH] mtd: fix typos in comments
-Message-Id: <178854511430.1515959.5653817613132272975.b4-ty@bootlin.com>
-Date: Fri, 04 Sep 2026 20:05:14 +0200
+	id 1x2aMf-00000003FdA-1Gif;
+	Fri, 04 Sep 2026 20:18:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1788553100; x=1820089100;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=z5rgzC2ZXtEFFsyI/mhG8YgT7oVtGQudZOzxj795Sog=;
+  b=N5SzOXnmwvWUqKv7G27CwXfG6CIAnVtv8tROpMnw6O8YgHWbqupLB5/P
+   CkrIjBgUpWmsQrzwJdz7kgncDuJyq9AFa6a4CL/q67vptYO7mEk2f1j/u
+   W/Af1UbhgTYkGOY21SyS7rl6/cG4tzlHHhvz+RadSM0X0ueILJbZYvD7h
+   sCKpiloL5VgMEddmM43MDbFqwrKrkPuJfmeedsmEd11jdPDS+k2Tv9/14
+   BcbEU7oWhFsAT7aZ+dULIXODbQ8r41H4Ej88HRWb5T9QkqoSiL9eWKSwt
+   MsybLQYKOrmKLvkRSEqQBawVuo+RTVkvXW05cq56AF3+Y6Or+Dl3IcJ11
+   w==;
+X-CSE-ConnectionGUID: nDhIAkm1Tju+VmfeThF+cQ==
+X-CSE-MsgGUID: zJqtKgECTjGKNa3PcmGnVA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11896"; a="89093871"
+X-IronPort-AV: E=Sophos;i="6.25,262,1779174000"; 
+   d="scan'208";a="89093871"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Sep 2026 13:18:19 -0700
+X-CSE-ConnectionGUID: UK+p2y7PRwKlW144I7lA6A==
+X-CSE-MsgGUID: nfqpePWmQhiaLID+A3JNeA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.25,262,1779174000"; 
+   d="scan'208";a="295011246"
+Received: from ettammin-mobl3.ger.corp.intel.com (HELO kekkonen.fi.intel.com) ([10.245.245.86])
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Sep 2026 13:18:15 -0700
+Received: from kekkonen.localdomain (localhost [IPv6:::1])
+	by kekkonen.fi.intel.com (Postfix) with SMTP id EAC3911F7F4;
+	Fri, 04 Sep 2026 23:18:13 +0300 (EEST)
+Date: Fri, 4 Sep 2026 23:18:13 +0300
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6 krs, Bertel Jungin Aukio 5, 02600 Espoo
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Bartosz Golaszewski <brgl@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Daniel Scally <djrscally@gmail.com>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wei Deng <wei.deng@oss.qualcomm.com>,
+	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
+	linux-acpi@vger.kernel.org, driver-core@lists.linux.dev,
+	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Alan Stern <stern@rowland.harvard.edu>,
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Subject: Re: [PATCH v8 01/16] device property: Add
+ fwnode_graph_get_port_by_id()
+Message-ID: <apsnhbsN1ENl31JX@kekkonen.localdomain>
+References: <20260904084158.1341550-1-wenst@chromium.org>
+ <20260904084158.1341550-2-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.14.3
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260904084158.1341550-2-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_110535_963165_E96BFF9D 
-X-CRM114-Status: UNSURE (   5.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260904_131821_378148_D6850C03 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,22 +106,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 04 Sep 2026 18:22:03 +0530, Hemanth Selam wrote:
-> Fix typos in comments, reported by scripts/checkpatch.pl using the
-> misspelling list in scripts/spelling.txt.  Only touches comments, no code
-> changes.
+On Fri, Sep 04, 2026 at 04:41:40PM +0800, Chen-Yu Tsai wrote:
+> In some cases the driver needs a reference to the port firmware node.
+> Once such case is the upcoming USB power sequencing integration. The
+> USB hub port is tied to the corresponding port firmware node if it
+> exists.
 > 
+> Provide a helper for this.
 > 
+> Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+> Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Applied to mtd/next, thanks!
+Reviewed-by: Sakari Ailus <sakari.ailus@linux.intel.com>
 
-[1/1] mtd: fix typos in comments
-      commit: 90936c3c790ec22b02c6d8611a9df0aecb8139bb
-
-Patche(s) should be available on mtd/linux.git and will be
-part of the next PR (provided that no robot complains by then).
-
-Kind regards,
-Miquèl
-
+-- 
+Sakari Ailus
 
