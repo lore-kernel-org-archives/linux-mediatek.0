@@ -4,66 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C181C624D6
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 03:18:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9758C624D3
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 03:50:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sm4kHrNe/yjdETK817y9Ij2OrxOv+3jcTfn0MYRkQ0A=; b=2exmCC1QTb6IRvk95aVODenpOj
-	U8O7KA97ZMBHNX8gEb4DWmKEGjk5hQXDj0M+SRs/QfZzMhxdhYRWQd6z8s3kMc/ci7Z2V5cH3NpYC
-	LuG5vlyFYxS7l/rmxZsU80BMVhmXvst8ipxD3UweuvK8uWF2EX/PDuR2V/xghJHloM4MQmK16/d5y
-	AR1kv5DZdkTxLDzBPy0Cgq17QSeOqnq1lCz2MKEtDCsbibb8wAKm91pbl39jTkKNoBvFl0X9OAbZK
-	q/+oQNISMVFhEs0GrE+/Q1lo0UpmiN7KlPCr2Pfc/VbtEfMm6CKlfGQhDDHLQrUdhII8TRJwdbGTx
-	CWCos4Rg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=f/lMlDVWYpAH/dp1lGoT+o/qCqrGW19Qk0/3sL3d8SE=; b=DVTe/drBw9j4jdzflei6mtsqLc
+	HG40mQgoZ+yl98BaDvCF9RD1ZdFeNtupn4GMIQy7WFtBKSQes7hEIqzjvtlalS1EieczWWpUV3fOS
+	pbRAClBozTPcxi/Ek3H6gA2dk4ahcE0OdrJ8c7xzNnvG0+TadLZvXhzSKMFHx+4nc4+wahK6Y3svb
+	m3SOl8m8KazRFMCGzxO2I4ROnDbyxRylsX9smoBr15er0Dd4J/Z96y/CkEDLDnYSiuCsD4Jg9WPa3
+	nqwoTWeH6/sgp80mkgnzyYdpJQk4YT4LuDkGoT9mXarI6AKPyHecLtYYQOYdakq5VDlYvE7Fz9KAd
+	DEyJqNrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2KRe-00000000v76-1l2P;
-	Fri, 04 Sep 2026 03:18:26 +0000
-Received: from out-132.mta1.migadu.com ([95.215.58.132] helo=mta1.migadu.com)
+	id 1x2Kwb-00000000wj7-0CHZ;
+	Fri, 04 Sep 2026 03:50:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2KRb-00000000v6m-2EE5
-	for linux-mediatek@lists.infradead.org;
-	Fri, 04 Sep 2026 03:18:24 +0000
-X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=BL3B4T82/efkjC6zGEvMDESDZ5EgHGgoG1FS7HzSxEs=;
- c=simple/simple; d=justthetip.ca;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1788491901; v=1; x=1789096701;
- b=COureHemhRTKgc5sSr+6lN2D+Bijx467D6ZfAK3qUiOZ1FDwLwOD3LgtU9+qA90azzQCJ5xT
- rp/Ki/uQKEj8ccSsUqUcuWIjS9kcBRBedmhTd3zI3WVk3JnOOAZwswLwaJVsvjmD/BE7jZwUpgY
- goyCTkiuLHm9+RwSGopLayHBnSSwfezLH1bw/4u69VbCyQwTtYVsnVjS8ezLYqcozcDI73ka+SP
- O5SCd6dhk3YWGhaxS1SIX4o7PT7lW+SxzMWfSeOn7nF5F35+ttEcLfPdZlqZzJba97z3mobP3cd
- +UST/EaIw37E8IOdlR45G1YjbdWTEUzlpz0okUEYuMOuQ==
-X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id c0f2672226896a05;
-	Fri, 04 Sep 2026 03:18:11 +0000
-X-Mizu-Trace-ID: c0f2672226896a05
-X-Migadu-Flow: FLOW_OUT
-From: Devin Wittmayer <lucid_duck@justthetip.ca>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Deren Wu <deren.wu@mediatek.com>,
-	Sagun Kayastha <sgn.kayastha@gmail.com>
-Subject: Re: [PATCH wireless] wifi: mt76: mt792x: validate ACPI SAR table length before parsing
-Date: Thu,  3 Sep 2026 20:18:04 -0700
-Message-ID: <20260904031804.45272-1-lucid_duck@justthetip.ca>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260811232839.515463-1-lucid_duck@justthetip.ca>
-References: <20260811232839.515463-1-lucid_duck@justthetip.ca>
+	id 1x2KwY-00000000wih-1phc;
+	Fri, 04 Sep 2026 03:50:23 +0000
+X-UUID: bd246bf4a81311f1afed4741b24580c9-20260903
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=f/lMlDVWYpAH/dp1lGoT+o/qCqrGW19Qk0/3sL3d8SE=;
+	b=sXfGs63rhiyd38+4YXy151g4JwYCD3nz24eU3sx5LrKaB/4AEaenBR3XQ89/anWKxiHzdvyHou4jFTbKtmkXPlHKYu240ZZ++f5N32iGSOATFVKeERq1EquS/byCkdnwK6vnmSQ76hQpOyKJ4Ef1+C8kI8MmCzj9d2bt2QEL1vw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.19,REQID:aee87354-ea1d-4a7b-8ac0-26a7f0d5983d,IP:0,U
+	RL:0,TC:0,Content:47,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:47
+X-CID-META: VersionHash:7db8b62,CLOUDID:29dd6c96-8382-4d0c-b42c-b0965a0d23b4,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:4|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: bd246bf4a81311f1afed4741b24580c9-20260903
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <justin.yeh@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 756380356; Thu, 03 Sep 2026 20:50:15 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Fri, 4 Sep 2026 11:50:12 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Fri, 4 Sep 2026 11:50:12 +0800
+From: Justin Yeh <justin.yeh@mediatek.com>
+To: Jiri Kosina <jikos@kernel.org>, Benjamin Tissoires <bentiss@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Douglas Anderson
+	<dianders@chromium.org>, Maxime Ripard <mripard@kernel.org>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-input@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Justin
+ Yeh <justin.yeh@mediatek.com>
+Subject: [PATCH] HID: i2c-hid: Skip SET_POWER on shutdown for panel followers
+Date: Fri, 4 Sep 2026 11:50:02 +0800
+Message-ID: <20260904035009.4114363-1-justin.yeh@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260903_201823_945599_DE471CED 
-X-CRM114-Status: UNSURE (   6.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260903_205022_529623_FA80E4C1 
+X-CRM114-Status: GOOD (  11.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,33 +88,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-I've been back through the GA503RM's bytes since sending this, and
-calling those tables malformed isn't right. Both are version 2, and MTCL
-is what declares version 1 for all three, so they get read as v1 and
-every field shifts a byte:
+When an i2c-hid device is a panel follower, drm_atomic_helper_shutdown()
+unprepares the panel before device_shutdown() gets around to the i2c
+client. The panel_unpreparing() callback already calls
+i2c_hid_core_suspend() with force_poweroff set, which sends
+SET_POWER(SLEEP) and then drops the device's regulators.
 
-  MTGS  28 bytes   as v1: (28-6) % 5 = 2, nr_tbl 0, count 4
-                   as v2: (28-7) % 7 = 0, nr_tbl 3, count 3
-  MTDS  19 bytes   as v1: (19-6) % 6 = 1, nr_tbl 0, count 2
-                   as v2: (19-7) % 12 = 0, nr_tbl 1, count 1
+So by the time i2c_hid_core_shutdown() runs, the controller is unpowered
+and can no longer complete a transfer. On MT8196 the SET_POWER(SLEEP)
+issued there burns the full i2c-mt65xx bus timeout before failing,
+adding two seconds to every reboot.
 
-Read as version 2 they're an ordinary SAR table:
+Skip the redundant SET_POWER for panel followers, matching how
+i2c_hid_core_pm_suspend() and friends already bail out for them.
+free_irq() and the shutdown_tail() hook are unaffected.
 
-  MTGS, FCC   2.4 GHz 14 dBm    5 GHz 14.5 dBm    6 GHz 8.5 dBm
-  MTDS        8 to 14.5 dBm across the range
+Fixes: 96a37bfd232a ("HID: i2c-hid: Support being a panel follower")
+Signed-off-by: Justin Yeh <justin.yeh@mediatek.com>
+---
+ drivers/hid/i2c-hid/i2c-hid-core.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-So this patch rejects two good tables and leaves the machine with no SAR
-limit at all. The reporter measured 23 dBm afterwards, on a laptop whose
-own tables ask for 14.5.
+diff --git a/drivers/hid/i2c-hid/i2c-hid-core.c b/drivers/hid/i2c-hid/i2c-hid-core.c
+index 0ff07fdab442..2e787c17256d 100644
+--- a/drivers/hid/i2c-hid/i2c-hid-core.c
++++ b/drivers/hid/i2c-hid/i2c-hid-core.c
+@@ -1355,7 +1355,9 @@ void i2c_hid_core_shutdown(struct i2c_client *client)
+ {
+ 	struct i2c_hid *ihid = i2c_get_clientdata(client);
+ 
+-	i2c_hid_set_power(ihid, I2C_HID_PWR_SLEEP);
++	if (!ihid->is_panel_follower)
++		i2c_hid_set_power(ihid, I2C_HID_PWR_SLEEP);
++
+ 	free_irq(client->irq, ihid);
+ 
+ 	i2c_hid_core_shutdown_tail(ihid);
+-- 
+2.45.2
 
-The layouts are 6 + 5n and 7 + 7n bytes with the count declared inside,
-so they never collide at any accepted size and the right one falls out
-of the shape. I have that written: it applies 14.5 dBm where this patch
-applies nothing.
-
-I think parsing them is the better answer, since it gives the machine
-what it asks for. Rejecting is safer if you'd sooner not have the driver
-guess at a layout.
-
-Devin
 
