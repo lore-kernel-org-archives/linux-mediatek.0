@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 085EEC79F82
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DE28C79F88
 	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Sep 2026 15:59:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,45 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YxC1M/tdYdJGtRmXFQtTEmCh3s7ouo0vpWRbZF137vk=; b=qlXrgET+l5H6STWVs+xxb6jczv
-	0iOT2g1YZl9RlDHwo0kUXzpMwgdskDvuyP9PyTvBDxI1p9js582ViM5kWDROPRzuAXmmZkVtuRSnn
-	okfwlQNHDsTZHH5B+pjK2Iiojh66Fn9xqBSXFoKnRGm5KpnFCLWYKIsCxuUwEmc6p0TPvZqoD1GJf
-	G1N8qMKfkGX21umXutJAxisnDCB1T9W40Q/+VWZQqwzUqMbzmrQBPuBIKWRICuisVwwn6LU+uXfF4
-	n1WR64lMBqpC6wUD1YRpdrYoakF5x1xm70EOTGlhxq0UZGVW4Smsuyqsj1W9NlJ/uZodPgQqnzKTe
-	j+nGxiDA==;
+	bh=s6P+Ix1HMsH3IeVzY4gyAl8zWgQXvrhsMQGZ3RmXD5Y=; b=dSKVLIJKQGQ6knxsB1aWWa5EKi
+	ZjhrU64fD6Rep/AWcW6tSNTXadfADwfpt5dnGqIO04bDEmaG8FTZSeEVC+I3H9Ass2Nq0ARRWo3J3
+	9MfCoKwPWkbNmbroBSc26/pLrNxtDEBw0NP/eX7Ps6x6DYYCi7hdxc60VMyaT+RaKo1Nf5YqRS3OT
+	E9ykJrqux0LKcgp+XVhQ3PYCe+lv5Ott6mLQZRe0jgIw/WpJw5aP1kvnRbS1DKHBZrjcICfRj/qz/
+	HOgmShCgQ5EZJZsbOvfv7uT34l0rfyjyakEQ1lUpAT2lrXwR886XGYvitEC0I0NMN3xeQeBzDAt6O
+	PVwDQ7RQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2WJf-00000002bTt-1RLZ;
+	id 1x2WJf-00000002bVS-41F2;
 	Fri, 04 Sep 2026 15:58:59 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2WJa-00000002bNC-12vr;
-	Fri, 04 Sep 2026 15:58:56 +0000
+	id 1x2WJc-00000002bOi-0ycO;
+	Fri, 04 Sep 2026 15:58:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788537530;
-	bh=3HvR2i0TeyW7ntE6wt26ah4Fl34lpJceNTjjoyWnRHM=;
+	s=mail; t=1788537527;
+	bh=fUUtXLDjBk6CCgOqNBHxohDsqafdXykxd3de6nmxpT8=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=F3m8KujjfJNu0fwavo6x1ysLwaLG619sUz1zuNSWuvJhvjyK5R+ml9pL/8MV6tlLw
-	 NKjSH4Ptfz3n+VtjCAKRvLuvQamc/9cFQzRygPxcYissnPLEphSOcbJDwhkaULt6OF
-	 jC1md+yxFAXMBbWf64ehDFQY2sfs4+HC1c74ZI3oKNnIKxTFNAMbcUnYfEn5djNzN/
-	 Wk8lVjGHj4UZeU/r75jlX+FPYhz4opfV0Zp2Apqyn9dcnrR8edledYY82SAinghUva
-	 Xsp2BZEeeo/jClnnmuBSeJlMJ3pjQJqZc4p9XORCBS6WGf1ObXHahmkTyLFtkVhEll
-	 AiEitpi5zsLZA==
+	b=FwBFTgZsrCQ8+9v+T/DcwETuqZIHruGK/eJ77f9A33rqiLbh1ht5kzi65uObRciDx
+	 aLP8pc0ggeWzSpOU4NP+JSiglFBY+k+Ru4dSQJpemiI2PonzM9TnHSrYgeSzLCbfKF
+	 kMX7mcGq3GhWjVaxOqtslA1TWnRd3htvuZcrhTAJsPI+0FuSP4NLSm5rtBvY76omtS
+	 76XYkG2mxWJpEB9jEI92JJFwFKf0Yx8hZnyf8INFJRt4FHQORM/u/CWFmV/6lzzwZs
+	 nTMYon1T20xpD88U09omGmlJuCH3SDXphIy3/sV+KlE1BB8LlD2Kq/5KIZ1+hTvRy9
+	 HR7stSvG1yrTw==
 Received: from yukiji.home (unknown [100.64.0.131])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C8A4617E0FAA;
-	Fri, 04 Sep 2026 17:58:48 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E3FB117E0C10;
+	Fri, 04 Sep 2026 17:58:45 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Fri, 04 Sep 2026 17:58:15 +0200
-Subject: [PATCH v6 04/27] dt-bindings: clock: mediatek: reorder MT8186
- compatibles
+Date: Fri, 04 Sep 2026 17:58:13 +0200
+Subject: [PATCH v6 02/27] dt-bindings: clock: mediatek: Make '#clock-cells'
+ required for MT8192
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260904-mt8189-clocks-system-base-v6-4-5df247f56938@collabora.com>
+Message-Id: <20260904-mt8189-clocks-system-base-v6-2-5df247f56938@collabora.com>
 References: <20260904-mt8189-clocks-system-base-v6-0-5df247f56938@collabora.com>
 In-Reply-To: <20260904-mt8189-clocks-system-base-v6-0-5df247f56938@collabora.com>
 To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
@@ -68,17 +68,16 @@ Cc: kernel@collabora.com, linux-clk@vger.kernel.org,
  Conor Dooley <conor.dooley@microchip.com>, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1788537522; l=2561;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1788537522; l=1753;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=3HvR2i0TeyW7ntE6wt26ah4Fl34lpJceNTjjoyWnRHM=;
- b=JcSw7/T9WbgeIvjqLLJHHfsNPqiszR8pn1ru20c5LJ4e21e40j1MdE++e9MvdmX2hDSUeTTv+
- v+NVjpBs/3qA8/NKWx7FLGk3ymELYIhquT0AW71P9yetI/ZgmXOdVPn
+ bh=fUUtXLDjBk6CCgOqNBHxohDsqafdXykxd3de6nmxpT8=;
+ b=aIjdsMEJzpueS6yVC7oUO/t9uSAatzb9wyY6+aXyIKgHKwk4Ql9sH6cN5up6Kmyuc3cj4qTNj
+ 2KyFZeGz15QAtHZbsgi7ENriN7cA5fDt9qeyDucJimKKXUN1JMHVQwx
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260904_085854_450001_71FED29A 
-X-CRM114-Status: UNSURE (   9.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260904_085856_428725_FA560BD3 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,67 +92,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to prepare regrouping several Mediatek SoC clock controller
-dt-bindings files into the MT8186 ones, reorder the MT8186 clock
-controller compatibles so they are sorted alphanumerically.
+Both MT8192 clock controllers dt-bindings (clock and sys-clock)
+document the '#clock-cells' property but do not enforce it as required
+property.
+As clock provider nodes should define this property in devicetrees, add
+it to the required property list in both its dt-bindings files.
 
+Fixes: 4a803990aeb1 ("dt-bindings: ARM: Mediatek: Add new document bindings of MT8192 clock")
 Acked-by: Conor Dooley <conor.dooley@microchip.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- .../bindings/clock/mediatek,mt8186-clock.yaml           | 17 +++++++++--------
- .../bindings/clock/mediatek,mt8186-sys-clock.yaml       |  4 ++--
- 2 files changed, 11 insertions(+), 10 deletions(-)
+ Documentation/devicetree/bindings/clock/mediatek,mt8192-clock.yaml     | 1 +
+ Documentation/devicetree/bindings/clock/mediatek,mt8192-sys-clock.yaml | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8186-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8186-clock.yaml
-index 539149c945d0..756b937bb7c4 100644
---- a/Documentation/devicetree/bindings/clock/mediatek,mt8186-clock.yaml
-+++ b/Documentation/devicetree/bindings/clock/mediatek,mt8186-clock.yaml
-@@ -23,18 +23,19 @@ properties:
-   compatible:
-     items:
-       - enum:
--          - mediatek,mt8186-imp_iic_wrap
--          - mediatek,mt8186-mfgsys
--          - mediatek,mt8186-wpesys
--          - mediatek,mt8186-imgsys1
--          - mediatek,mt8186-imgsys2
--          - mediatek,mt8186-vdecsys
--          - mediatek,mt8186-vencsys
-           - mediatek,mt8186-camsys
-           - mediatek,mt8186-camsys_rawa
-           - mediatek,mt8186-camsys_rawb
--          - mediatek,mt8186-mdpsys
-+          - mediatek,mt8186-imgsys1
-+          - mediatek,mt8186-imgsys2
-+          - mediatek,mt8186-imp_iic_wrap
-           - mediatek,mt8186-ipesys
-+          - mediatek,mt8186-mdpsys
-+          - mediatek,mt8186-mfgsys
-+          - mediatek,mt8186-vdecsys
-+          - mediatek,mt8186-vencsys
-+          - mediatek,mt8186-wpesys
-+
-   reg:
-     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8192-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8192-clock.yaml
+index b8d690e28bdc..65e4c2fddf5b 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,mt8192-clock.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,mt8192-clock.yaml
+@@ -46,6 +46,7 @@ properties:
+ required:
+   - compatible
+   - reg
++  - '#clock-cells'
  
-diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8186-sys-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8186-sys-clock.yaml
-index f8acc02cafee..6733dafbde16 100644
---- a/Documentation/devicetree/bindings/clock/mediatek,mt8186-sys-clock.yaml
-+++ b/Documentation/devicetree/bindings/clock/mediatek,mt8186-sys-clock.yaml
-@@ -27,10 +27,10 @@ properties:
-   compatible:
-     items:
-       - enum:
-+          - mediatek,mt8186-apmixedsys
-+          - mediatek,mt8186-infracfg_ao
-           - mediatek,mt8186-mcusys
-           - mediatek,mt8186-topckgen
--          - mediatek,mt8186-infracfg_ao
--          - mediatek,mt8186-apmixedsys
-       - const: syscon
+ additionalProperties: false
  
-   reg:
+diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8192-sys-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8192-sys-clock.yaml
+index bf8c9aacdf1e..0ebd0d60e2f6 100644
+--- a/Documentation/devicetree/bindings/clock/mediatek,mt8192-sys-clock.yaml
++++ b/Documentation/devicetree/bindings/clock/mediatek,mt8192-sys-clock.yaml
+@@ -35,6 +35,7 @@ properties:
+ required:
+   - compatible
+   - reg
++  - '#clock-cells'
+ 
+ additionalProperties: false
+ 
 
 -- 
 2.55.0
