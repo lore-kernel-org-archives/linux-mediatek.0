@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA423C79F8C
-	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Sep 2026 06:29:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77194C79F99
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Sep 2026 06:30:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VKVjfeyjSEphdS/S7H4LmR3lrklRud9v5DENy/GPjzc=; b=OVALCO4zNfAlE4Q8mutx3zhkAC
-	D647y7pOC7MUtAzUXzwgLCqlj3/IjojVkQ4w4ONjMFB1x6SQ6LIhJXGgpCZ1R/4zSS04YecSJ67/J
-	RXRPEunZMuD6AUc/rp6ZpxdMwbyynKLnqdUguucnBh13a42fWiyW6gtpuP1NU6N6I8etolGTCrH7C
-	B4Y7bJfKnPtGZbT5LrCbOMt5uCG/tHv2DiBTXu5EPwqom0smPxOA0QF6k7GO7vZH+GX/sT0nmxa87
-	abgkzU4cqmaM0g372qo0nvFPEfwQLUxFdk7i2o6ElXjl4t9asQEOOn5V3ubQ3SHlRADgS3KuCf6oG
-	d6vXGZ4A==;
+	bh=VuX1GRUEgGjtN5YWB8TzrOnwdSd1o6ffi/4kYrdL20w=; b=KsGIErsqVf+XdBsspQ8akTPj6y
+	2gSBWJx/OCwALxmcGkcq5W5lhS/7N/+pCy6Cw6aKT1RlKWkg+LQj+JpYFFMkXz87d3A7CBiHbOBHT
+	toUThBEshRve1v+wuyrUmjajDkVSAMsnhzoS7XGkWt8CAHW75EJQNkWLnS9ZbU1m3AiVKEJGMvA8+
+	pwWXiTuNdcjVg/oH6aNH6KyvRHms/Yapmod7OE5Z4+NMqIYH5ouyj7G6eP712wmciS2JJ+JoTOHvV
+	pOSc14NaHZvsUG01JvRO/AETOypg9u2d8kzpP262UPFiz92mJrZmBScyEPifDni6TwuRAfZYdrH6M
+	il/RfYMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x36Na-00000004l0S-2vlQ;
-	Sun, 06 Sep 2026 06:29:26 +0000
+	id 1x36OX-00000004lB9-0mOn;
+	Sun, 06 Sep 2026 06:30:25 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x36NZ-00000004kzx-0moy;
-	Sun, 06 Sep 2026 06:29:25 +0000
+	id 1x36OV-00000004lAn-4A5U;
+	Sun, 06 Sep 2026 06:30:24 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9D2FB60DA1;
-	Sun,  6 Sep 2026 06:29:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BA63B1F00A3A;
-	Sun,  6 Sep 2026 06:29:13 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 6E47D60DA5;
+	Sun,  6 Sep 2026 06:30:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D7DD01F00A3A;
+	Sun,  6 Sep 2026 06:30:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788676164;
-	bh=VKVjfeyjSEphdS/S7H4LmR3lrklRud9v5DENy/GPjzc=;
+	s=k20260515; t=1788676223;
+	bh=VuX1GRUEgGjtN5YWB8TzrOnwdSd1o6ffi/4kYrdL20w=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=lOzjWQD4YvHEue3+AWmlk5phwixkAb6LaEfcuWqqqZ7z771GfN4sS76t3zqKhCUW4
-	 MusPAJN7asMtIVi7xT/1u+64wlP1w0X3YUio/P+zpeG+N9v5OwaZGk+wpPDLNk1cXg
-	 JtvfDjCEhOl7Z2qare5KKLwo6VPrqruPkRyAgwLdslW1v02l5ClWw1zos+an9So5dy
-	 8u3pmYdW6UG7/WIDqYDFtB3SoYdzKtIDMDLKFQ9SfkbKlgLnlc6RFl0EKbskWGixOf
-	 W/H5JcJuctLHDb/gXheDDMGIJDUs2DosYXuyTBy30LA83vf2WEsPc3U47vswYk06d3
-	 Uo5tx0ypPE54w==
-Message-ID: <738c61f1-3075-405f-9c52-56ad5496d7f7@kernel.org>
-Date: Sun, 6 Sep 2026 08:29:11 +0200
+	b=n0U3qbG+7oTuJOiiFwzmEkne0fUxiaBBuEp2GJZT7klt9NtqRlHjtrhVp7L7eS7JA
+	 8Qmzz4KDv6DKhYRy81fML452jr9LmbVXGeyW/cMi6qLhAuKCxkHMZ79Nw9ZaqxTEIG
+	 WQ5sDHvgY/PRD0Ojn3f5Pwmt5YmeT9ELf8IcIU/Q5ExWaWvnrjKxcHlTOVaKYHXPqg
+	 cKoLEcEe5jr6dgXa4oQu3vpAPxUHJTUQeJ+p+nvSeEngwjYO6HdUpurmAcPbJ5uwgW
+	 M9t07BZbufSGhpQ6S8y9znXnk+gonfpcO8tiM1dmH7ea20G6h/Hykbb2nSnWTd73ke
+	 OLDTBrKdcIL6Q==
+Message-ID: <1a5fb9bb-d057-4579-8b2c-b81aa16a61cb@kernel.org>
+Date: Sun, 6 Sep 2026 08:30:07 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/5] thermal: Use %pe to print error pointers symbolically
+Subject: Re: [PATCH 5/5] power: Use %pe to print error pointers symbolically
 To: Sumeet Pawnikar <sumeet4linux@gmail.com>, rafael@kernel.org,
  amit.kachhap@gmail.com, daniel.lezcano@kernel.org, thara.gopinath@gmail.com,
  talel@amazon.com, hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
@@ -62,7 +62,7 @@ Cc: bcm-kernel-feedback-list@broadcom.com, linux-samsung-soc@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, linux-pm@vger.kernel.org,
  linux-kernel@vger.kernel.org
 References: <20260906061755.5103-1-sumeet4linux@gmail.com>
- <20260906061755.5103-3-sumeet4linux@gmail.com>
+ <20260906061755.5103-6-sumeet4linux@gmail.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -108,7 +108,7 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  K9bCVaboTA2T77QYkRcRJYSsO1alGX0ome/hMLD1daXlkrNUp1HWa3K4iytLRXjCSIorWiGs
  n+q3krnpXu3TFkA8qtOFZMdnIiFuiq1yLT8hptsV5xh1TA2nsVvSYiaCr3q4s4BKjS/KrLDb
  qoxzw8ISjdUp4pA85vb6YLCmb39NgidD+7PmAr65lBNveIFynTgsja1rRQ4=
-In-Reply-To: <20260906061755.5103-3-sumeet4linux@gmail.com>
+In-Reply-To: <20260906061755.5103-6-sumeet4linux@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -126,20 +126,24 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 06/09/2026 08:17, Sumeet Pawnikar wrote:
-> +++ b/drivers/thermal/thermal_mmio.c
-> @@ -71,8 +71,7 @@ static int thermal_mmio_probe(struct platform_device *pdev)
->  						     &thermal_mmio_ops);
->  	if (IS_ERR(thermal_zone)) {
->  		dev_err(&pdev->dev,
-> -			"failed to register sensor (%ld)\n",
-> -			PTR_ERR(thermal_zone));
-> +			"failed to register sensor (%pe)\n", thermal_zone);
->  		return PTR_ERR(thermal_zone);
+>  	}
+> diff --git a/drivers/power/supply/cw2015_battery.c b/drivers/power/supply/cw2015_battery.c
+> index 1bcb60cf763d..48643f7bf503 100644
+> --- a/drivers/power/supply/cw2015_battery.c
+> +++ b/drivers/power/supply/cw2015_battery.c
+> @@ -658,8 +658,8 @@ static int cw_bat_probe(struct i2c_client *client)
+>  
+>  	cw_bat->regmap = devm_regmap_init_i2c(client, &cw2015_regmap_config);
+>  	if (IS_ERR(cw_bat->regmap)) {
+> -		dev_err(cw_bat->dev, "Failed to allocate regmap: %ld\n",
+> -			PTR_ERR(cw_bat->regmap));
+> +		dev_err(cw_bat->dev, "Failed to allocate regmap: %pe\n",
+> +			cw_bat->regmap);
+>  		return PTR_ERR(cw_bat->regmap);
 
+return dev_err_probe
 
-Same comments. Syntax is just return dev_err_probe. When making such
-changes, you should not do them blindly, but replace the code into
-really the correct one.
+Instead you should use dev_err_probe and drop the last argument.
 
 Best regards,
 Krzysztof
