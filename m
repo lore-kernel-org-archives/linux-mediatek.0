@@ -4,139 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1832EC624DB
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Sep 2026 20:48:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A15F3C79F82
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Sep 2026 01:34:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Tegd1GECJ9D1sJrLs/B9DOHmTKY2wOxS7gCgv9dsjag=; b=LE64CHpdQVzwunCyaxxRI03Db8
-	KFFhG7FVe8/tFM+B15iX7WLBafQF+gr6280qxz4UxNp8vnkN9ThUmo1Su4h/i8LIdtWSpccfdzF80
-	tQb8sfFNLa5uxjLIiejcMp9YTZJAhQ3p9ZTU6uaU3FBOSVO6BehSBU1WqJ3/WEaLzQMV/jYuFsyk4
-	5ZpfzR++qh+RbcEvDbdrZR2ITsN12x+FwbpskE8sD94cwmO8eS+qhJPvd+fuzL1IcKlLXWdRcjlfD
-	0PDKPZMybGa+tCC+XeL7lqISxAgE3Hb9h0lYMyyUMss9tKOwOLYqiHlLBAaza2883LnsZozTE+Rmt
-	KwyoDC2Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ik/5vYpLnC43rMJ94CAnAt0vjohGb4d5FflUF+lDJlQ=; b=2n6S8ts0VKpeOttKy+cw4dW2zp
+	jA4LlWuf+Wr5lZNqoIIpsI8DPYc4pAaSwO6hatN6pL8/EF9BNdthKuJLhwk01dCoV9go8cO+o0QjX
+	yI+mGPFnHORlgRNOwrh+FrqJSt89nlVZTfo93hDPMZKcCOme/zPu5VmKdk0+2UwiusOHHygcxxh8W
+	AWTnw/3yiPfthaV/N9CUmxosjJRiW8KhRyuP+KrtBgs9n4CJFt1sTHBk2lkQaggxAmXgaq+1i9SKL
+	2ufKbp7qmnVbkRy+bKa+DxivUAnoL6X+iBkyx/vp9CS7XKQvrkC6nSDuruIzVjpc6EFHyoFniiS/n
+	jGkl9JUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2xJk-00000004PaC-3u0r;
-	Sat, 05 Sep 2026 20:48:52 +0000
-Received: from mail-northeuropeazolkn19012042.outbound.protection.outlook.com ([52.103.32.42] helo=DUZPR83CU001.outbound.protection.outlook.com)
+	id 1x31mK-00000004XxA-00OE;
+	Sun, 06 Sep 2026 01:34:40 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x2xJj-00000004PZU-1Jvg;
-	Sat, 05 Sep 2026 20:48:52 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=avTVLb0h+Nis2iaNvbl+pPH5iSwlFPVUeIWWtybvgg6SPuyG+0CjNkPxQKaGONEZamWQ3z8IQ0SuBaKAg596QzkZKZ29PRQ4GlVexZiy8W5qYoKwPVKGbKmvum3+ckROsepYn85uLJ1DA0IitvhZhNUDNGype0Nl0OnXNTt+BCm1y2UUardqJ/1NaNQ4mppngGPGbLWegxOYxiUiKQw4RLnMcV2Y8n2z3dkXgRiZvdMqBg12xOqfa2lppW6TnkdHUKM+x4jNVWFYmGFdXOSgIVHjMPaXgO59IC1ybYddp9WxqsXQYV2BdDDI6bz4+WBThEvuYX0FclTCD3FBknldpg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Tegd1GECJ9D1sJrLs/B9DOHmTKY2wOxS7gCgv9dsjag=;
- b=iwAugbwkJtWepU08PiFp5j07X5QCNcv67y/MyiRvI7pzrOKLKUPn1RzXMFxkiSm20/hunGNBllSr+rXJv4xLGmzuc223ahiPwko8Uad2Ek5W9o0ycS53KHuZDlGOZQi446Ty9euN1H+8PA1R770U1bbYQzrT1v78NOE4olEN2FsHWzZ6Nsc6SMVh9lAPXoWGHkLLmQjVGbojIoLqYdydo0JB2Y4J+ItF4THQV8oZLUm6px+KVoxKB8MjalW2MKjGjLw8u49bmIhdHq9UKX/XTTyyubStCrrBHXPPw+BvfLRnvvjAfKRPoyJbE05iDnTLMgM9nvSQH2XQzqZ4EcfF9A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=HOTMAIL.CO.UK;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Tegd1GECJ9D1sJrLs/B9DOHmTKY2wOxS7gCgv9dsjag=;
- b=Ek4POoISXWT4xgpdaGp/Wiu9nB+R2C+B4pDBU5eXf3/w2B+Ksl8HCpX8q/QKvWPhSvHc6VjmlUyvbTtyLuYOZ3q5+zlM/HGpoodPmZCWxvVoLV5JD0G9ODQ11VAbwZp4VDIAelqfFREzH2d31+scNJbFtY0g0HLCNDhoS9Y/23PJthgEtGNLhtVCXQnliuPJ2WZTLUMByyIVcSTJVgKGgdzGuTzPTUIa2Tm+E9msJe0g/UGC118oe9eRU3PvPvMyOeAVyaTRG0opG4jRG0LxukxUpjmfmUsOlgt15nWW40XjLCI1FWyYTVAs74E0HPlK/fZ2p2njDBcbWVYyvrBmPg==
-Received: from AS8P251MB0001.EURP251.PROD.OUTLOOK.COM (2603:10a6:20b:344::22)
- by PA1PPF75DB7739D.EURP251.PROD.OUTLOOK.COM (2603:10a6:108:1::21b) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.382.10; Sat, 5 Sep
- 2026 20:48:48 +0000
-Received: from AS8P251MB0001.EURP251.PROD.OUTLOOK.COM
- ([fe80::2952:d4d0:4ba:8352]) by AS8P251MB0001.EURP251.PROD.OUTLOOK.COM
- ([fe80::2952:d4d0:4ba:8352%6]) with mapi id 15.21.0382.012; Sat, 5 Sep 2026
- 20:48:48 +0000
-From: Aamir Ahmed <elb12345@hotmail.co.uk>
-To: Georgi Djakov <djakov@kernel.org>
-Cc: linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	Kees Cook <kees@kernel.org>,
-	"Gustavo A . R . Silva" <gustavoars@kernel.org>,
-	linux-hardening@vger.kernel.org,
-	Aamir Ahmed <elb12345@hotmail.co.uk>,
-	stable@vger.kernel.org
-Subject: [PATCH] interconnect: mediatek: Assign .num_nodes before accessing .nodes
-Date: Sat,  5 Sep 2026 21:48:46 +0100
-Message-ID: <AS8P251MB00010F5EE7878E15AF0E49F3C8B42@AS8P251MB0001.EURP251.PROD.OUTLOOK.COM>
-X-Mailer: git-send-email 2.55.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: LO4P123CA0218.GBRP123.PROD.OUTLOOK.COM
- (2603:10a6:600:1a6::7) To AS8P251MB0001.EURP251.PROD.OUTLOOK.COM
- (2603:10a6:20b:344::22)
-X-Microsoft-Original-Message-ID: <20260905204846.31973-1-elb12345@hotmail.co.uk>
+	id 1x31mI-00000004Xw5-1KHn;
+	Sun, 06 Sep 2026 01:34:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 39BFF43778;
+	Sun,  6 Sep 2026 01:34:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 059C9C2BCFA;
+	Sun,  6 Sep 2026 01:34:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1788658476;
+	bh=d9wUPYj1fcxFp3gWDGtuJ2V5k7ePRRGkBzD7EqpEMCE=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=L46D8KSsPQ6m5RQJrGzyVbUOq5P33crp9YIgw61zIpSiF3SJPONOe+eR6eUzpBFGf
+	 zsndtsZ3wQa+g4u52bi55E1d2ehoAkeFhV4jT4htV32QY8Vqbn48Xw3/AoZpqBKIt0
+	 HF8URTVCzJOMG26l6VttxDEtsceUXJfY6aoqwLQ+M+6GJ70CkEKShRx/G6I5fw2UG4
+	 jUXAPViFpw+hpRV9bb2v0jBb2GTNnO/OwIrqTQfp4sKJXuDK2uErNeyEPs7mj25n3X
+	 BbMzr0+je5pIftnTL3yxJjamT+eaxRUZA88F+YSgqNB8n7BF2Gst0AlDDa5Dy8BjrQ
+	 Xa41deH5cFS6Q==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DAA58C624DB;
+	Sun,  6 Sep 2026 01:34:35 +0000 (UTC)
+From: Ryan Brue via B4 Relay <devnull+ryanbrue.dev.gmail.com@kernel.org>
+Date: Sat, 05 Sep 2026 20:34:34 -0500
+Subject: [PATCH 1/2] dt-bindings: display: panel: add Novatek NT51021
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AS8P251MB0001:EE_|PA1PPF75DB7739D:EE_
-X-MS-Office365-Filtering-Correlation-Id: b178d9a2-bc90-494e-bdd1-08df0b8f15d8
-X-Microsoft-Antispam: BCL:0;ARA:14566002|24021099003|5062599005|23021999003|5072599009|15080799012|25031999004|37011999003|41001999006|8060799015|19110799012|25010399006|4140399003|52005399003|40105399003|2607281247196008|3412199025|440099028|26104999009|19061999003|1710799026;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?cRAdEVm7dvy6vtTfHRcjqDruyTrqHOCCEcFq1cs5q2dPpZc1c2JuZuQ+/FyC?=
- =?us-ascii?Q?N+maEEfC6GwD2GfZP5NMYIt3PKm0VSqT0swHvOi5sjdiM364Rk2iIT4p22ZH?=
- =?us-ascii?Q?pGbwQSaWLQSph9lFCKVxB3LXjPOnjJzrcV6FnoDZfQOIrAK7bDOq5XvPnrA8?=
- =?us-ascii?Q?vFwXDNKdt8IJftvvHNYCzMfSRWUh4U87EdR9hx24Iozad/zN7Ih/nEQJKmN0?=
- =?us-ascii?Q?QqluHBeca3bkWefJPLLWS/TMsTYl4YVjalv5wD1GaKqZVqrR6UJ1XCWE/AA+?=
- =?us-ascii?Q?oYuVsZMXRNN7051sVrK+L1S0HB7zMNM7uGkMsi6kyc/aQ4jg8TcFra6Fs263?=
- =?us-ascii?Q?+XiSiTsJeRC53Kd6jDBElmB/jigt5vyt6KbBk0rih93XWBdvUmUpiD3uEIAW?=
- =?us-ascii?Q?1K8BsP4wHxrb2DgzX2BjT4CrfgUqThD1w9G49WFAa6ZATwc83Dur1dzpjyGr?=
- =?us-ascii?Q?e1vFleYPbjl1yQTz3WTZBK+yUeGnKcMW/MPVi6H7SlhSLB0ISQy4TU1Wvsww?=
- =?us-ascii?Q?Ia3mvOOvLJyHUlb/MQYKIoFxncDdAbk/iUatR8f4s3/AJanX8C1r+Q0mfHr+?=
- =?us-ascii?Q?70aCbmUYD/N/RlaPh2Qf+2QwONFkvM2Q/9jUBSmp12ExmcJhP4mbeCeXyHL7?=
- =?us-ascii?Q?73OnVxkxChgWXS1kD/tvi8bWn+4XiIQOR9IJpnz8B99HgFNYZMltzZQIyPLJ?=
- =?us-ascii?Q?D4w85rzUzgQUEkfWs32ZJUxU091mi2/rvGZTWs6SLHJr5HhQtaqhB1Z5+vry?=
- =?us-ascii?Q?NFyZbLFK57R+SpQSHh1FQ8lrQA06RmKJ2iqj1lTx+tfpNjN2/6fiSzcJI7uM?=
- =?us-ascii?Q?rBl1aquRBFgDaSl2lYaJX4awfctKMk40KHEWco27Pxsc3SuTtTnpC8OLYx3a?=
- =?us-ascii?Q?YfxEzB1UlOBVfN7YqtNzUCPa4ffZCjYKQw8dDtJAjHrc1DwR09Xy+7WVtAdB?=
- =?us-ascii?Q?MF0i6BW8Yxg/KlY7TWP6MTBedVqu49d3Xddip1JqwJ5Yrc/zUD8Qjk7aNlRz?=
- =?us-ascii?Q?6D8mYpuYO0yjg1LifwEFYd0vCz8NZzfXNHO5Zb7Zdu2STr2go1sOJ6/XGeVw?=
- =?us-ascii?Q?1Keo0AcjXU+O1rLlFXEOCIzIYmyyrvOOh4DlTG+PjfCBs7gT8QZcYrZ7vZWd?=
- =?us-ascii?Q?SaEdW9aM/3c4?=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?FOIXuVMssia3Ye0nemadkTpN0guVfP3row4pc4NYJ8zPAk42AfMbafforJEr?=
- =?us-ascii?Q?qw+q+8m0qqRELiKaQVh62hjsH5VCF9GAvfWPGK2CTmTxavFKrJGTOqgt3E0O?=
- =?us-ascii?Q?RWMZjVQ86x2heyVAuvOf9DmVVcDQ5Yal+cbuPbn6SjBJUiafIVSDdpkrYVfn?=
- =?us-ascii?Q?iWiM9euBHvDgPp0C9c3gAlgg0AqBafJuwpc2NVPqf0gOxrIzSV8SDxHK2XRa?=
- =?us-ascii?Q?i2wqrMQ/vo1r8+D6nyGGs9+a1vsnnAV4V3/nq2h9bkojJ2lFOLIU1Davu6Eq?=
- =?us-ascii?Q?P514hl2sKvsdDX5uPnBhb5dYA/1ktF/tM+Tqmdew341ss7pAJqY2430HuTXA?=
- =?us-ascii?Q?NDDz0wL6srpfkNhThwdtt+Re+8mj9ddiByAUJAlSeUwtdz9PvprNw7CZ/8/F?=
- =?us-ascii?Q?eyqDMXNA2EGIF7r/3xwf2GXZJ1i9jERnziaZ8qVyfwK/D53ByqJmllr089cg?=
- =?us-ascii?Q?i3yq9ihn9vctQphg8ARlvRG3X6wFL3bXj7mvX9GtAl9rRc8+5wG1LsWX7Dh/?=
- =?us-ascii?Q?VnWh/7a6qFy3wVCB4lt2mEQNzt/AFR90d/0L+VXdCPvcYVLf/+wFhbuLWsi1?=
- =?us-ascii?Q?EUv7IA5CjeE5iT87lj6bbJo50DLaCtMZC9S23NAEgNVmFFTSNcPLzwshEalo?=
- =?us-ascii?Q?RVOV8ZKImWnLfqBisX5XyjR9UnKGW/x2lmly54z/7LTBXgKhPqP0tC0aPh6C?=
- =?us-ascii?Q?MSexNS74Zv9h9ueWZN61QDGemRZwYNWSyo12y3AR3e3ZgbNFsyD15VF192pi?=
- =?us-ascii?Q?bweo2lprILqozVrQfxtAfpNAinRF3OvKkGbx2Al/motJr7nDy/rYWP8lmNbW?=
- =?us-ascii?Q?BOpN84Na6l7K5V36eTZXEKaD6/us8D9afM5eT9VPizJlqDD8XHNwjdiqMMIi?=
- =?us-ascii?Q?+IysTjzfuNXj9YL1YKv1v/rFaES9Xs126E3/OEx7OKVrtyfG/YisGRmkSE35?=
- =?us-ascii?Q?ur/0DZAq5ns9esmbPRT8ggnEbIOccfpcZknfKyibVmQthxmFg6KUwZzmi+C4?=
- =?us-ascii?Q?DQNqNwxAKhXocJCSZtM5BEJLGPgrh5c+wfPeyIQ6BNW3ud6A3Ln5WC2n92XU?=
- =?us-ascii?Q?lipUiS7inOCx/hyj+Jeiv/V6LNyEfzpdRnsLuVUJuaRf51T0/zE2rZeT1Vrz?=
- =?us-ascii?Q?njPUSS94rI4zQFAf1l1MsjwJpU2y/+J+sWKvMKjrbI6/lKWqZc/CI54rI9wg?=
- =?us-ascii?Q?sl6KLX0Vi7XB4lq5Al0j2unedDOxaVGymzdqRlsdPBvf6T/PrDvxJtNncYrm?=
- =?us-ascii?Q?SHS/nyklhre8pGQh1Olb58iqAMCzcJvBtMe53a/Yj95U/tZU2nrMpQ1/+nt8?=
- =?us-ascii?Q?jkWTZOclIpVrsD63soMCMOuBWpFTFr0bOlJ+wSVb+CdvzTEUVR1Je8Bo5Op+?=
- =?us-ascii?Q?Dk3Zj4zEchsQ3iIswR+DKQVjb96u/mWo0RHio5nMmDXiNh+KYJ3evmyiBNL+?=
- =?us-ascii?Q?rHn0C7062BRGDK1nWhA1UJYLfn3Gr8rA?=
-X-OriginatorOrg: sct-15-20-9412-3-msonline-outlook-fe3f5.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: b178d9a2-bc90-494e-bdd1-08df0b8f15d8
-X-MS-Exchange-CrossTenant-AuthSource: AS8P251MB0001.EURP251.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Sep 2026 20:48:48.7656
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA1PPF75DB7739D
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260905_134851_384505_486E45CF 
-X-CRM114-Status: GOOD (  14.22  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260905-rbrue-drm-panel-add-novatek-nt51021-v1-1-939f59e89fc9@gmail.com>
+References: <20260905-rbrue-drm-panel-add-novatek-nt51021-v1-0-939f59e89fc9@gmail.com>
+In-Reply-To: <20260905-rbrue-drm-panel-add-novatek-nt51021-v1-0-939f59e89fc9@gmail.com>
+To: Neil Armstrong <neil.armstrong@linaro.org>, 
+ Jessica Zhang <jesszhan0024@gmail.com>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Ryan Brue <ryanbrue.dev@gmail.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1788658475; l=3260;
+ i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
+ bh=OucYPSbkdRKOXX71YqLEkAw3zmqM74CD8sy3ta2ahmU=;
+ b=PO5JgYFHpu6BgI2fM/vrLk1wZB4hZ/5rErx2tt+ZqYUIvvlMj4yP4Y3HrLUwAg2A2X3qX421g
+ G7XEq9T+aibC7+rL8hQK6/c9TtzLqO+v9sA48rNGBPQuNi3i5JUuimW
+X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
+ pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
+X-Endpoint-Received: by B4 Relay for ryanbrue.dev@gmail.com/20260906 with
+ auth_id=1007
+X-Original-From: Ryan Brue <ryanbrue.dev@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,81 +87,114 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: ryanbrue.dev@gmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Commit dd4904f3b924 ("interconnect: qcom: Annotate struct
-icc_onecell_data with __counted_by") annotated the nodes member of
-'struct icc_onecell_data' with __counted_by, which informs the bounds
-sanitizer (UBSAN_BOUNDS) about the number of elements in .nodes[], so
-that it can warn when .nodes[] is accessed out of bounds. As noted in
-that change, the __counted_by member must be initialized with the number
-of elements before the first array access happens, otherwise there will
-be a warning from each access prior to the initialization because the
-number of elements is zero.
+From: Ryan Brue <ryanbrue.dev@gmail.com>
 
-This occurs in mtk_emi_icc_probe() due to .num_nodes being assigned only
-after every node has been stored in .nodes[]. With CONFIG_UBSAN_BOUNDS
-and a compiler that implements __counted_by (GCC 15.1+ or Clang 20.1+),
-this triggers an array-index-out-of-bounds report during probe, and with
-CONFIG_UBSAN_TRAP the first store traps so the interconnect provider is
-never registered.
+The Novatek NT51021 is a DSI panel controller driving 1200x1920 WUXGA
+panels over four lanes in video mode. It is fitted in the Amazon Fire HD 10
+(2017), on a module carrying BOE glass.
 
-Move the .num_nodes initialization to right after the allocation. The
-value assigned is unchanged, and the other users of struct
-icc_onecell_data already initialize it there.
+The controller has no readable panel identity. MediaTek's LCM framework
+identifies panels through a .compare_id callback and the vendor's driver
+for this one leaves it unset, and the glass part number is not recorded
+anywhere in the vendor tree -- it names the module only "BOE". I had the
+compatible name the module after the board it ships in, the way
+xiaomi,elish-boe-nt36523 and lenovo,j606f-boe-nt36523w do for this
+situation.
 
-Cc: stable@vger.kernel.org
-Fixes: b45293799f75 ("interconnect: mediatek: Add MediaTek MT8183/8195 EMI Interconnect driver")
+The vendor's bootloader and kernel both carry a second register sequence
+for Innolux glass, selected from two board ID straps, so a second module
+exists as far as the vendor firmware is concerned. I didn't have an
+Innolux unit to test with, and I don't know its part number, so it is not
+described here. Naming the glass in the compatible leaves room for it as
+a second compatible should someone have the hardware and the need.
+
+The rest is panel-common: a power supply, a reset GPIO, an optional
+backlight and the DSI port.
+
 Assisted-by: LLM
-Signed-off-by: Aamir Ahmed <elb12345@hotmail.co.uk>
+Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
 ---
-Found by a tree-wide audit of every __counted_by annotated flexible
-array whose counter is assigned after the array is first written. This
-was the only remaining user of struct icc_onecell_data with that
-ordering; the same class was fixed earlier in clk-s2mps11
-(3e14c7207a97), exynos-clkout (cf33f0b7df13) and clk-raspberrypi
-(6dc445c19050). The audit, the fix and this changelog were drafted with
-an LLM assistant and reviewed by hand.
+ .../bindings/display/panel/novatek,nt51021.yaml    | 65 ++++++++++++++++++++++
+ 1 file changed, 65 insertions(+)
 
-Compile-tested only (W=1, no warnings), on x86_64 with GCC 13.3, with
-CONFIG_INTERCONNECT_MTK_DVFSRC_EMI=m forced on the make command line
-because the driver depends on MTK_DVFSRC, which has no COMPILE_TEST
-option. GCC 13.3 does not implement __counted_by (CC_HAS_COUNTED_BY
-needs GCC 15.1+ or Clang 20.1+), so the build only confirms that the
-change compiles; the sanitizer path was not exercised. I do not have the
-hardware, so this is not runtime-tested and no UBSAN report was
-captured.
-
-Based on v7.3-rc1.
-
- drivers/interconnect/mediatek/icc-emi.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/interconnect/mediatek/icc-emi.c b/drivers/interconnect/mediatek/icc-emi.c
-index dfa3a9cd939..c4aa0ab566d 100644
---- a/drivers/interconnect/mediatek/icc-emi.c
-+++ b/drivers/interconnect/mediatek/icc-emi.c
-@@ -100,6 +100,8 @@ int mtk_emi_icc_probe(struct platform_device *pdev)
- 	if (!data)
- 		return -ENOMEM;
- 
-+	data->num_nodes = desc->num_nodes;
+diff --git a/Documentation/devicetree/bindings/display/panel/novatek,nt51021.yaml b/Documentation/devicetree/bindings/display/panel/novatek,nt51021.yaml
+new file mode 100644
+index 000000000000..ee3adc88ec9b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/panel/novatek,nt51021.yaml
+@@ -0,0 +1,65 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/panel/novatek,nt51021.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
- 	provider->dev = dev;
- 	provider->set = mtk_emi_icc_set;
- 	provider->aggregate = mtk_emi_icc_aggregate;
-@@ -126,7 +128,6 @@ int mtk_emi_icc_probe(struct platform_device *pdev)
- 
- 		data->nodes[i] = node;
- 	}
--	data->num_nodes = desc->num_nodes;
- 
- 	ret = icc_provider_register(provider);
- 	if (ret)
++title: Novatek NT51021 based 1200x1920 DSI display panels
++
++maintainers:
++  - Ryan Brue <ryanbrue.dev@gmail.com>
++
++description:
++  The Novatek NT51021 is a DSI panel controller driving 1200x1920 WUXGA
++  panels over four lanes in video mode. The controller carries no readable
++  panel identity, so each panel module it is fitted to needs its own
++  compatible naming the module.
++
++allOf:
++  - $ref: panel-common.yaml#
++
++properties:
++  compatible:
++    items:
++      - const: amazon,suez-boe-nt51021
++      - const: novatek,nt51021
++
++  reg:
++    maxItems: 1
++
++  power-supply: true
++  reset-gpios: true
++  backlight: true
++  port: true
++
++required:
++  - compatible
++  - reg
++  - power-supply
++  - reset-gpios
++  - port
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/gpio/gpio.h>
++
++    dsi {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        panel@0 {
++            compatible = "amazon,suez-boe-nt51021", "novatek,nt51021";
++            reg = <0>;
++            backlight = <&backlight_lcd>;
++            power-supply = <&vgp6>;
++            reset-gpios = <&pio 105 GPIO_ACTIVE_LOW>;
++
++            port {
++                endpoint {
++                    remote-endpoint = <&dsi_out>;
++                };
++            };
++        };
++    };
 
-base-commit: 654ae5d73c05bd2943d65636ce6cd0aa46e62f18
 -- 
-2.53.0.windows.1
+2.55.0
+
 
 
