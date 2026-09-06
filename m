@@ -4,119 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 635E1C79F99
-	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Sep 2026 06:19:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1402C79F99
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Sep 2026 06:28:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xSBnT3FwZUixZgWDq520Ci5om1V2mRpux1OuDBHI5/I=; b=EIcEcQ+4rAXvJOkCrYTpKoT75p
-	WRu3uWJCyM1lwhmFZ1+1ttMTs5UgvuY6n20ajYWGd3Giw2+kGRsQtgQA2cxr99P3Vhh2uB89QnmOc
-	5VrTnmorXJfaPJuzjI9GfwuJ2cAFt8Ze8R0GsgEaXDpD9kC6oZTCkZvtRRfX4afA8McTetLj1Djmr
-	3fZ2y/HYgbjKbgBw9wnkTjWk6svjgGtSwO87Xe/VxnKgkBjSoRHrdgsixREcH4tp/Uw9JzraOTLW9
-	kqxx9gDcRSCnv7OmhD7aaVftFxXVWM9N0BUlNvWz/pd6buvdTvtx9PPlrC4Br/G6jWlYoxMpChNr5
-	ZLcFL/lQ==;
+	bh=cDeuKp5WsdI0dDzfnIPbj0wB79lzDGMn/xQx1duKG/o=; b=lFR3cdqO/mIyP7JQNVN35OX5wW
+	hxsNb2KGydgxwWmfMZh1sGFZJm/+8Vp//8jgSCyhFE9nELzJeTEfgV9CkTrN7sjZpclHMBaROg4us
+	MtndSXl//h1VIVbdozlpufNgvOOmHRyaooekpwuP5PCFseBfLrLuxjKkYhoyrzGk6NE8zr76HUwoX
+	jX0S9HBwsvYPNbmEaATYOWX5W172yaUmBpFR1EXZPvVHnzltnvyCOpKPLlFuxFZoe4iMxz/CsmFBs
+	9cPUxYT3tyZjnA0YsXYtyQyJDVSIlDFkLWzpc+T7slMtjS86o05IWKgN4q17BweXXQcp21tMutoHR
+	vPUOmUZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x36Dk-00000004kOx-0q4M;
-	Sun, 06 Sep 2026 06:19:16 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1x36Md-00000004ktB-1p1c;
+	Sun, 06 Sep 2026 06:28:27 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x36Di-00000004kNy-3KK8
-	for linux-mediatek@lists.infradead.org;
-	Sun, 06 Sep 2026 06:19:15 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2caced6038eso23740785ad.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 05 Sep 2026 23:19:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788675554; x=1789280354; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=xSBnT3FwZUixZgWDq520Ci5om1V2mRpux1OuDBHI5/I=;
-        b=XcWEfa79I3g3VYJ3uuIl6sXwczCsO3vGopWfAtey9FSOLQjyjl3T04/IyixcsSdqow
-         MMkrp2u4LUVCTgMSsvMZN2FhIIoZIxiduCs3uIRJQKuuRP/mjLFcolw8S9PU3QdnZah/
-         J4gROJPEGUyLLF9Q0qeDTub/uylG40pcG+9j/L9dKdykm24jJEnV/vGylrnFxaV+x4AN
-         T2YZv9oRFV2IRehAsJKz5OuIC94X+vhzjZAT8asMqf+kHCaIIxDQ9TKQy4hlAbdJAjVZ
-         DTTKW4M+TzOx8DZfOWTkYe1NqSRvBCDVSSrxo44W0hWTHlzWUT6j1UWgn4WRt4vT/LSs
-         RX1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788675554; x=1789280354;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=xSBnT3FwZUixZgWDq520Ci5om1V2mRpux1OuDBHI5/I=;
-        b=j8n4OQf0gvUONqwiou88fk22P291kFEMV8woPNPaiXEisxKWIFfUA6Pv0JExkdZrtd
-         QuoDzlwVRatBjc/WpPVEiugJ+iMenvdRCk2yWlbKGiV9+GcMysqEUkVuYpc9gTxv0fzJ
-         WvgWJnrADYz+cwBWkBp3ZHUQef6XrpYdnQN2kbT8xdLNHgTugzhxhgL4Wee/ZuStW41T
-         m7boByOd8x89AWkMjL2dZFRd4Tvl5hrOxeGB71GB8HHocVCho2uMXGYTtiHAocUlbWMZ
-         UeP2mg640N7MbjRU3b3G4FfbBMOlPC1zANLTU06o6b95I9xA6lzg84+6JqoBj3Zn2oiH
-         lTqQ==
-X-Forwarded-Encrypted: i=1; AKwUvBz+HVqJpbUhtuMPHtgW/aM66tQIRlC8VOKBLVDF3wr8edYlqC9bx4fGa6gjTiBJCyujvlgFphq087/jt3m8Cw==@lists.infradead.org
-X-Gm-Message-State: AFuF++lewQ9eWsOYzJ+kUzb1Fl0aJp2iK0e+CpIXK4QGXJk60TslSCX5
-	GGk8Yj7b358musVkl60TrtyTaQTYDaDCPELXGCsNexFiJV6Cs5MLx09K
-X-Gm-Gg: AYBFou2pIBjbuMG8uavlcvgUr4ULZWN9CpFb/MLpe6mnSfEnY76TPD9HQ4EAx68Vjfc
-	Ro7+HXDV35PEugLXpR4RGZ8N9AC2+WAPAomNoGo5Yxe5rI1/6GpMJLruwyC+VI1S9QUx2vxUr//
-	FkqE99IKPTD70dIWBH2GN4KRw+dxDkZL8CBlLmRAlNo06vhq8w50cTuYK7Kpe844X8cqFpSHpD3
-	m5PKImpv0DrGR7VJZs1ctPRWpVYTAON1fUtSXhKV4pLbXEaIqTVPdQTDsZ1CWEqW+gza69LNVzR
-	UV4PxOOn8cXXN+4YU2thIs0VUIngbM0oE37xe204YltgDiQZPWRB6XeYd7RBi19x7o0kGh3kFi5
-	1iznY/gbYCdlQKcxYUsyRWwKljWQMXAPWIqp0JCi6MylO/nQnTQPr4TZIMXk2XprkFmOws1Ux3i
-	/M2WRS7CRtHQHhimxEcbj5F3gCvXFJdiyw0OSA+1L+DZ6FqgzI4OtpKsHkzmw=
-X-Received: by 2002:a17:902:da85:b0:2bd:2c3a:2a36 with SMTP id d9443c01a7336-2dafad14a8fmr205668835ad.0.1788675553947;
-        Sat, 05 Sep 2026 23:19:13 -0700 (PDT)
-Received: from gmail.com ([58.84.62.227])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3339aa33e96sm18280405eec.12.2026.09.05.23.19.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 05 Sep 2026 23:19:13 -0700 (PDT)
-From: Sumeet Pawnikar <sumeet4linux@gmail.com>
-To: rafael@kernel.org,
-	amit.kachhap@gmail.com,
-	daniel.lezcano@kernel.org,
-	thara.gopinath@gmail.com,
-	talel@amazon.com,
-	hayashi.kunihiko@socionext.com,
-	mhiramat@kernel.org,
-	mmayer@broadcom.com,
-	viresh.kumar@linaro.org,
-	sumitg@nvidia.com,
-	krzk@kernel.org,
-	peter.griffin@linaro.org,
-	myungjoo.ham@samsung.com,
-	kyungmin.park@samsung.com,
-	cw00.choi@samsung.com,
-	Frank.Li@nxp.com,
-	s.hauer@pengutronix.de,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	sven@kernel.org,
-	j@jannau.net,
-	marcan@marcan.st,
-	casey.connolly@linaro.org,
-	sre@kernel.org,
-	wens@kernel.org,
-	t.schramm@manjaro.org
-Cc: bcm-kernel-feedback-list@broadcom.com,
-	linux-samsung-soc@vger.kernel.org,
-	kernel@pengutronix.de,
-	imx@lists.linux.dev,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	sumeet4linux@gmail.com
-Subject: [PATCH 5/5] power: Use %pe to print error pointers symbolically
-Date: Sun,  6 Sep 2026 11:47:54 +0530
-Message-ID: <20260906061755.5103-6-sumeet4linux@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260906061755.5103-1-sumeet4linux@gmail.com>
-References: <20260906061755.5103-1-sumeet4linux@gmail.com>
+	id 1x36Mb-00000004ksJ-3iHE;
+	Sun, 06 Sep 2026 06:28:25 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id ABB9960D9E;
+	Sun,  6 Sep 2026 06:28:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0DE01F00A3A;
+	Sun,  6 Sep 2026 06:28:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788676104;
+	bh=cDeuKp5WsdI0dDzfnIPbj0wB79lzDGMn/xQx1duKG/o=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=gzfB8gTVhGtKWpkJn8A+QuhUVmXiDk6fguQf8cN7pf5JcE6UwgadZUyM/kzqwSIeE
+	 gXyjE17glwAhcYJ46amDOoy0fbIkQPcbiAbzFsBFPvSYIG2BX+BThyTux7QznLNOKG
+	 VJS0+G9TXXrEHM4ncIxUMrXQfOqrMYy1KMIWVcf74vWeBR+c/dTQ6c1msQIlPc41GP
+	 2XgacG6Ta1yemBKGgf4Zpu/nc2E/xKvIXEAHNRCmytRp4sKidI+Xr9EcHg726GGJsN
+	 ++2RMlVe2NC34lOm/BVV6CSXWQjf+x9Cf4PGuW/1xzmm+hzR89B3YILOhMGJ2xShyN
+	 uKofVOe+N80Yg==
+Message-ID: <224d01a0-805b-41c8-bc90-435024706dc3@kernel.org>
+Date: Sun, 6 Sep 2026 08:28:10 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260905_231914_841070_1BD900D0 
-X-CRM114-Status: GOOD (  13.32  )
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/5] powercap: intel_rapl: Use %pe to print error pointers
+ symbolically
+To: Sumeet Pawnikar <sumeet4linux@gmail.com>, rafael@kernel.org,
+ amit.kachhap@gmail.com, daniel.lezcano@kernel.org, thara.gopinath@gmail.com,
+ talel@amazon.com, hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
+ mmayer@broadcom.com, viresh.kumar@linaro.org, sumitg@nvidia.com,
+ peter.griffin@linaro.org, myungjoo.ham@samsung.com,
+ kyungmin.park@samsung.com, cw00.choi@samsung.com, Frank.Li@nxp.com,
+ s.hauer@pengutronix.de, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, sven@kernel.org, j@jannau.net,
+ marcan@marcan.st, casey.connolly@linaro.org, sre@kernel.org,
+ wens@kernel.org, t.schramm@manjaro.org
+Cc: bcm-kernel-feedback-list@broadcom.com, linux-samsung-soc@vger.kernel.org,
+ kernel@pengutronix.de, imx@lists.linux.dev,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+References: <20260906061755.5103-1-sumeet4linux@gmail.com>
+ <20260906061755.5103-2-sumeet4linux@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <20260906061755.5103-2-sumeet4linux@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,110 +126,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace PTR_ERR() and %ld/%li with %pe and pass the original pointer
-directly to dev_info(), dev_warn(), dev_err() and dev_dbg(). The %pe
-format specifier prints a symbolic error name (e.g. -ENOMEM) when
-CONFIG_SYMBOLIC_ERRNAME is enabled, otherwise it falls back gracefully
-and prints the raw integer value. This makes messages more readable
-without any functional change.
+On 06/09/2026 08:17, Sumeet Pawnikar wrote:
+>  	trp->rp = rapl_add_package(info->package_id, &trp->priv, false);
+>  	if (IS_ERR(trp->rp)) {
+> -		dev_err(&auxdev->dev, "Failed to add RAPL Domain for Package%d, %ld\n",
+> -			info->package_id, PTR_ERR(trp->rp));
+> +		dev_err(&auxdev->dev, "Failed to add RAPL Domain for Package%d, %pe\n",
+> +			info->package_id, trp->rp);
 
-Signed-off-by: Sumeet Pawnikar <sumeet4linux@gmail.com>
----
- drivers/power/reset/macsmc-reboot.c        | 4 ++--
- drivers/power/supply/axp20x_battery.c      | 4 ++--
- drivers/power/supply/cpcap-charger.c       | 4 ++--
- drivers/power/supply/cw2015_battery.c      | 4 ++--
- drivers/power/supply/intel_dc_ti_battery.c | 2 +-
- drivers/power/supply/qcom_smbx.c           | 2 +-
- 6 files changed, 10 insertions(+), 10 deletions(-)
+Instead you should use dev_err_probe and drop the last argument.
 
-diff --git a/drivers/power/reset/macsmc-reboot.c b/drivers/power/reset/macsmc-reboot.c
-index 9fc36fa68676..7b8460a55e9d 100644
---- a/drivers/power/reset/macsmc-reboot.c
-+++ b/drivers/power/reset/macsmc-reboot.c
-@@ -221,8 +221,8 @@ static int macsmc_reboot_probe(struct platform_device *pdev)
- 		if (IS_ERR(cell)) {
- 			if (PTR_ERR(cell) == -EPROBE_DEFER)
- 				return -EPROBE_DEFER;
--			dev_warn(&pdev->dev, "Missing NVMEM cell %s (%ld)\n",
--				 nvmem_names[i], PTR_ERR(cell));
-+			dev_warn(&pdev->dev, "Missing NVMEM cell %s (%pe)\n",
-+				 nvmem_names[i], cell);
- 			/* Non fatal, we'll deal with it */
- 			cell = NULL;
- 		}
-diff --git a/drivers/power/supply/axp20x_battery.c b/drivers/power/supply/axp20x_battery.c
-index ee8701a6e907..915b6f6881db 100644
---- a/drivers/power/supply/axp20x_battery.c
-+++ b/drivers/power/supply/axp20x_battery.c
-@@ -1123,8 +1123,8 @@ static int axp20x_power_probe(struct platform_device *pdev)
- 						       axp20x_batt->data->bat_ps_desc,
- 						       &psy_cfg);
- 	if (IS_ERR(axp20x_batt->batt)) {
--		dev_err(&pdev->dev, "failed to register power supply: %ld\n",
--			PTR_ERR(axp20x_batt->batt));
-+		dev_err(&pdev->dev, "failed to register power supply: %pe\n",
-+			axp20x_batt->batt);
- 		return PTR_ERR(axp20x_batt->batt);
- 	}
- 
-diff --git a/drivers/power/supply/cpcap-charger.c b/drivers/power/supply/cpcap-charger.c
-index 34a57dd5c3cf..d423a8bdc0c2 100644
---- a/drivers/power/supply/cpcap-charger.c
-+++ b/drivers/power/supply/cpcap-charger.c
-@@ -808,8 +808,8 @@ static void cpcap_charger_init_optional_gpios(struct cpcap_charger_ddata *ddata)
- 		ddata->gpio[i] = devm_gpiod_get_index(ddata->dev, "mode",
- 						      i, GPIOD_OUT_HIGH);
- 		if (IS_ERR(ddata->gpio[i])) {
--			dev_info(ddata->dev, "no mode change GPIO%i: %li\n",
--				 i, PTR_ERR(ddata->gpio[i]));
-+			dev_info(ddata->dev, "no mode change GPIO%i: %pe\n",
-+				 i, ddata->gpio[i]);
- 			ddata->gpio[i] = NULL;
- 		}
- 	}
-diff --git a/drivers/power/supply/cw2015_battery.c b/drivers/power/supply/cw2015_battery.c
-index 1bcb60cf763d..48643f7bf503 100644
---- a/drivers/power/supply/cw2015_battery.c
-+++ b/drivers/power/supply/cw2015_battery.c
-@@ -658,8 +658,8 @@ static int cw_bat_probe(struct i2c_client *client)
- 
- 	cw_bat->regmap = devm_regmap_init_i2c(client, &cw2015_regmap_config);
- 	if (IS_ERR(cw_bat->regmap)) {
--		dev_err(cw_bat->dev, "Failed to allocate regmap: %ld\n",
--			PTR_ERR(cw_bat->regmap));
-+		dev_err(cw_bat->dev, "Failed to allocate regmap: %pe\n",
-+			cw_bat->regmap);
- 		return PTR_ERR(cw_bat->regmap);
- 	}
- 
-diff --git a/drivers/power/supply/intel_dc_ti_battery.c b/drivers/power/supply/intel_dc_ti_battery.c
-index cb6fa8d88b43..5819df23a543 100644
---- a/drivers/power/supply/intel_dc_ti_battery.c
-+++ b/drivers/power/supply/intel_dc_ti_battery.c
-@@ -349,7 +349,7 @@ static int dc_ti_battery_probe(struct platform_device *pdev)
- 
- 	chip->vbat_channel = devm_iio_channel_get(dev, "VBAT");
- 	if (IS_ERR(chip->vbat_channel)) {
--		dev_dbg(dev, "devm_iio_channel_get() ret %ld\n", PTR_ERR(chip->vbat_channel));
-+		dev_dbg(dev, "devm_iio_channel_get() ret %pe\n", chip->vbat_channel);
- 		return dev_err_probe(dev, -EPROBE_DEFER, "Waiting for VBAT IIO channel\n");
- 	}
- 
-diff --git a/drivers/power/supply/qcom_smbx.c b/drivers/power/supply/qcom_smbx.c
-index 67fdb4335338..c8e242341d04 100644
---- a/drivers/power/supply/qcom_smbx.c
-+++ b/drivers/power/supply/qcom_smbx.c
-@@ -613,7 +613,7 @@ static int smb_get_iio_chan(struct smb_chip *chip, struct iio_channel *chan,
- 	}
- 
- 	if (IS_ERR(chan)) {
--		dev_err(chip->dev, "Failed to chan, err = %li", PTR_ERR(chan));
-+		dev_err(chip->dev, "Failed to chan, err = %pe", chan);
- 		return PTR_ERR(chan);
- 	}
- 
--- 
-2.43.0
-
+Best regards,
+Krzysztof
 
