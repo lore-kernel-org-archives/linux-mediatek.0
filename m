@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 829A6C79F8C
-	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Sep 2026 06:18:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6E55C79F99
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Sep 2026 06:18:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=86ZMXQ7rWbd5+Kz4WmVDnIj3yBwaLGUiWHIv6rRn9PQ=; b=2pdD4F25muALAESuw72rmgic8H
-	+i6LNfqFGbqycCak45Fxs+s11JkKZSLMw2UlaJ6L8AGdl5L6U7YQ8ZoQTNr+2dFpDMpxT8hNw3Gqt
-	CfVMbnoS54132PqG6oyfHDrDZ2sjH96t/FL/Sy0unLB0AoeiYHtMRtIAjxs+g6IBKHkgtlbyMx7rY
-	g2HN0sGbxEmP7CBHn2SCQwSLL5vpV70MFycXBNWSt0ZOLaL1Z3jyu9hFpdaKTaE12wjSL5TQADKXx
-	d7dMKpiSOc/W4VqRZwbXy+w315oEpDSHpoOjtYmpXcoA2cbLOO6DalInJEMrrWw/EzTKol0Q//uyE
-	8kxRsHCw==;
+	bh=hstsV69fzA6quKQkqDKfuqXm3E+lvYW6BhdgjeUuEU8=; b=jdbwD1FBE9wBlAlYGCQAN2ig53
+	Tdx0oMV1oNQIyk9Wja28m+c9sIPxyC3+lSq25GDrcM9c82vtn9AUsXG7QyT+eEivDm+vYJ5kalqFm
+	yU38BaZ22Ez0dYz72ipq2/bqbVxAjcxMP3VgcGlmPlQF0oCK9oEkHEiVr4LxdLEtN6kiuIaYGT9BP
+	SBslQxj34bJ6mWceuhCSVtoJh7K4ZFFL150bEJkd4z2g4cMKpcxth9QIrPvVD7THb+wUbBaf8YQkr
+	8lSBGUddgPGjUv+xTKx/EyE+Itj+S2aZbqMvo8vbv3WpodfA0vZ5WOlaZr3G+Mq4iyNYkARPWAS2D
+	AalGPKFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x36D5-00000004k22-1Jb7;
-	Sun, 06 Sep 2026 06:18:35 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1x36DC-00000004k5s-3748;
+	Sun, 06 Sep 2026 06:18:42 +0000
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x36Cx-00000004k0Q-1JpW
+	id 1x36D9-00000004k4H-3fsQ
 	for linux-mediatek@lists.infradead.org;
-	Sun, 06 Sep 2026 06:18:33 +0000
-Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-2d9004f39d3so30007725ad.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 05 Sep 2026 23:18:27 -0700 (PDT)
+	Sun, 06 Sep 2026 06:18:40 +0000
+Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-2caced6038eso23738635ad.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 05 Sep 2026 23:18:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788675506; x=1789280306; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1788675519; x=1789280319; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=86ZMXQ7rWbd5+Kz4WmVDnIj3yBwaLGUiWHIv6rRn9PQ=;
-        b=b0IwIOQlcEc9MqVA/NsomIJsRzEzCNW9lsOaFQA4qjotvbQjtwy9RJIVs/w93ffqf7
-         lYL7Ng78WvQhFat5VYU5Eeu6vaWLFfrAR7bCajqTbclmk+yTCm2PAf53y2HR0BK2rcb1
-         ok06B2L3rJK4jl33/urzhy2H2xHykKOeQpv1Ub1K5bQjchib6IVsJ6vHmvNNUMnqd3MX
-         GSQRh7yDFxCEqWfK+1oPJnxUoTPdsV0gEFXOlkQ44SyNDlYhr8Y5nSEZwfPm+bVmrRx+
-         rgex1ND5N6cVXLDrtZ/5cK+qHwXbcpVC4Ax8Mi2Trtl+XyspynulRE8irOX/bBCYxmXg
-         Q2dw==
+        bh=hstsV69fzA6quKQkqDKfuqXm3E+lvYW6BhdgjeUuEU8=;
+        b=ksPZ7Kh/BPhxMz/pcVhk9rV2lavktkyzgoxAYJ1CCAiCcGSFlkeV3LgxcxdIi4CHU1
+         nR5/HWyiysmoACWORa4+dSFg477J3sL0qEwRJyniPPpm/vSKj/bFkDsFzyLeKkWAF5l1
+         T5pmcW8MMboBtKL8MJn+i+Fy4G1WlnV4esUy3tos/zjeRaTQiM4QItxRWMJo5H68azZx
+         Cc+iZPedPBLUJ+iKXwwdpZXte9ZeVHUSwxE0uu28kNqPCZWW0C//dts7HAlB20QnCxB5
+         yeb7hsdpCV98OpORyXSt3oUkTwbzZ5XOVVuhGXn2934ApADq6vpwEdVPpYWnOyFc8EdV
+         xRwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788675506; x=1789280306;
+        d=1e100.net; s=20251104; t=1788675519; x=1789280319;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=86ZMXQ7rWbd5+Kz4WmVDnIj3yBwaLGUiWHIv6rRn9PQ=;
-        b=dXhW7FYsT/lfr7ziNTMcp+XAr/ahPVPfrdkOr+oa1+XGfqOtTGXCZiB05uKutqyVyM
-         y+uEonL1HNAqBIqNEXGCQIyUbZCsAtdwVuIo61aVNeNaem2Sfv0cXkt+LWWoV0Vzt/Jk
-         5LL2TuE1V/xUB7wT+KHOcoBW903dV5gIJhjVSrjJtFcXKHSy5FfkFGvgCLAv1EoWhj5D
-         7aHK5QVpChlkeNXMAlS0n1ezhyPEiMNISeu0uzSd+zrLTUwaikALkJQdqtsX4gKfFltf
-         uwZaJOfdPwrFylXv9UGVhZ4V7boRJuTH4o1315emdEOsv1eDvcXiakmzkTzkdBw265qS
-         FW8g==
-X-Forwarded-Encrypted: i=1; AKwUvBy77WBfaQ27bKzKSnQwN7BqSgDT/lcLJ2OxWGYSJ6FNeo90Qq6k11TmTT0i6TKmSy3mq14QjMeZ+6OFILAYSg==@lists.infradead.org
-X-Gm-Message-State: AFuF++k7/Kpt6kNHBmB87VHggh42ol/mHSdlBhngp9D5LUi9RRQE8lor
-	BQtlEEGGvxq6KnFIEYnBghE9CkCWjXgWie8KAcQu8BetXR9v/4Ps3RJS
-X-Gm-Gg: AYBFou1M5+03rVUkZWexUfwwHkTO7+VwblUGIxS969p1nO4iVrvThvylk8JSemRhB+7
-	hHfRNKWlevMzKjntxjrcjeMbAznJarF4R/H8Wb0CvtMOpdO38f6p57QBXjoXDVSK78K2/Rkm9P4
-	wLWif+zoPpMHNAJkoFbSr56Dgbl4OqOI71sM4h82wz9SW1ZXnPbLOU6p6P2/io3nhNNeLo+KvXR
-	v5hj8FQFe+WshqZCy6m0r9813rrdC1qYp4XY9j4NS2cxgScvTxbhkuwM9AhCjDhX2Zs1klBj6He
-	SnCd9NH1eM3dT7UNdwQCfNBRZvvOAr7PeaHuu2aBgngHpqHAus/nWZqjkjvEQYwPlIzOw/4gvEt
-	2V5YDdAD2jiG7QzfrCB/pMBlEkXIbPVoQzcO9kEXmac93bpL9mcQ7YeBiKvhQS7DUNSby7bs+Y0
-	D0PZsrh/jx7fJBUF7umP6H4MzqQZgz3DzV9kwa/8ElG0ngMAaagRbqLpytS2s=
-X-Received: by 2002:a17:90b:4c4a:b0:398:bc52:825b with SMTP id 98e67ed59e1d1-39b2624c32amr22181806a91.21.1788675506361;
-        Sat, 05 Sep 2026 23:18:26 -0700 (PDT)
+        bh=hstsV69fzA6quKQkqDKfuqXm3E+lvYW6BhdgjeUuEU8=;
+        b=hE8ehNm03vr7RbAfQq824aqUz/3Nf8DCcFABxCM6XHrOmh2OE6PPlEyWWcLH2TtiQc
+         88MGx/lqf6Qw5sz1EWdsZf8OCjPRMQg+jUwpJe8Jx8Cof4xIx/NshQdv0sh6qmdmqD9q
+         tSvgpymLnZZXlPdq+w63jQeKzWyLCaqb7StzUmRmwUPTVdg1hgK/3l4XFAZnU1SXeOid
+         uXKtTATKh/pGgBXdnTW2o2/PntVxJ6dU3A8G5ly2S6oeHOoY18HsaZDqixSYJR/zLw77
+         GPdGAdtHXuGkIWk+pW8DukSKsrsSbaOrqbZCtoTbanIdpQJy5meLsN8liNY75M2WDG2v
+         2Asw==
+X-Forwarded-Encrypted: i=1; AKwUvBwxQfAnRUjmIw4WMo2QuZdEVPZZvvH72VAOF21vXwulgnY3qeFUu7uBuEb3ofWIKGogdue4Eb/UFV6TwPlhOA==@lists.infradead.org
+X-Gm-Message-State: AFuF++nqllbo/dm2C9v4UeUOh9JkTtvk8TBE9onmVRzuF1mXjgjC2wZQ
+	LgnElCKXmP5Sxpskz2XRViLWeXBDGSCTHSNjXtNasajU+9pQy69MucPk
+X-Gm-Gg: AYBFou35WJgOA6gdzW+UWY8S41JFccx5+VuSY20F6vjiPELTIztDBdScemvOE4stBUK
+	w5hpXSbTGbipce2vCnFJ2eZFq4jP+UjVsb/to5MJuer6PO/QfCMpTwWEi25cG4iqkV12NPF5CJz
+	vEbKnIgLnwVwN5Wi28KyHidvfO++5/Nsg5BaDl2jiL6Bz9dvt97ju+e3kSbLeMchblMra4yT7P1
+	n2mgi0mGe7dDHioVzUzXKfGxReLOtdXRV2ai64e65YRDORzFxcr4gv4R8qazIU8MjNoEzoljrQ4
+	N+AbWLZnP4XnMo/+hHPaL6orj31qJCxSDdvT6s8yMYzkKBej+jyw2zhXDbH3JT5t3IBO43zo6SR
+	rR7N+88k26gVDr3kcVk3auNQwl95AlJDwxL7wLH0j0ACZ9DLF/zDwdnY5gmWBNfRALcyD1TUbZe
+	dQlcqOwrrtbj+RrF0UkdrLEtV4CyWyS9Lahbp9bB6/45GvvN+Csd5kVCFjwPo=
+X-Received: by 2002:a17:903:1247:b0:2d8:d4d2:d137 with SMTP id d9443c01a7336-2dafb136bd7mr193207445ad.19.1788675518720;
+        Sat, 05 Sep 2026 23:18:38 -0700 (PDT)
 Received: from gmail.com ([58.84.62.227])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3339aa33e96sm18280405eec.12.2026.09.05.23.18.16
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3339aa33e96sm18280405eec.12.2026.09.05.23.18.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 05 Sep 2026 23:18:25 -0700 (PDT)
+        Sat, 05 Sep 2026 23:18:38 -0700 (PDT)
 From: Sumeet Pawnikar <sumeet4linux@gmail.com>
 To: rafael@kernel.org,
 	amit.kachhap@gmail.com,
@@ -106,17 +106,17 @@ Cc: bcm-kernel-feedback-list@broadcom.com,
 	linux-pm@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	sumeet4linux@gmail.com
-Subject: [PATCH 1/5] powercap: intel_rapl: Use %pe to print error pointers symbolically
-Date: Sun,  6 Sep 2026 11:47:50 +0530
-Message-ID: <20260906061755.5103-2-sumeet4linux@gmail.com>
+Subject: [PATCH 2/5] thermal: Use %pe to print error pointers symbolically
+Date: Sun,  6 Sep 2026 11:47:51 +0530
+Message-ID: <20260906061755.5103-3-sumeet4linux@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260906061755.5103-1-sumeet4linux@gmail.com>
 References: <20260906061755.5103-1-sumeet4linux@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260905_231828_064688_1461F8D1 
-X-CRM114-Status: GOOD (  11.51  )
+X-CRM114-CacheID: sfid-20260905_231839_922597_C0895780 
+X-CRM114-Status: GOOD (  13.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,47 +132,93 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Replace PTR_ERR() and %ld with %pe and pass the original pointer directly
-to pr_debug() and dev_err(). The %pe format specifier prints a symbolic
-error name (e.g. -ENOMEM) when CONFIG_SYMBOLIC_ERRNAME is enabled,
-otherwise it falls back gracefully and prints the raw integer value.
-This makes messages more readable without any functional change.
+to pr_err() and dev_err(). The %pe format specifier prints a symbolic error
+name (e.g. -ENOMEM) when CONFIG_SYMBOLIC_ERRNAME is enabled, otherwise it
+falls back gracefully and prints the raw integer value. This makes messages
+more readable without any functional change.
 
 Signed-off-by: Sumeet Pawnikar <sumeet4linux@gmail.com>
 ---
- drivers/powercap/intel_rapl_msr.c  | 4 ++--
- drivers/powercap/intel_rapl_tpmi.c | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ drivers/thermal/cpufreq_cooling.c        | 4 ++--
+ drivers/thermal/devfreq_cooling.c        | 4 ++--
+ drivers/thermal/qcom/qcom-spmi-adc-tm5.c | 4 ++--
+ drivers/thermal/thermal_mmio.c           | 3 +--
+ drivers/thermal/uniphier_thermal.c       | 3 +--
+ 5 files changed, 8 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/powercap/intel_rapl_msr.c b/drivers/powercap/intel_rapl_msr.c
-index a34543e66446..46972ee1ff84 100644
---- a/drivers/powercap/intel_rapl_msr.c
-+++ b/drivers/powercap/intel_rapl_msr.c
-@@ -582,8 +582,8 @@ static int intel_rapl_msr_init(void)
- 	rapl_msr_platdev = platform_device_register_data(NULL, "intel_rapl_msr", 0, def,
- 							 sizeof(*def));
- 	if (IS_ERR(rapl_msr_platdev))
--		pr_debug("intel_rapl_msr device register failed, ret:%ld\n",
--			 PTR_ERR(rapl_msr_platdev));
-+		pr_debug("intel_rapl_msr device register failed, ret:%pe\n",
-+			 rapl_msr_platdev);
+diff --git a/drivers/thermal/cpufreq_cooling.c b/drivers/thermal/cpufreq_cooling.c
+index 768859a7aed0..856d619370db 100644
+--- a/drivers/thermal/cpufreq_cooling.c
++++ b/drivers/thermal/cpufreq_cooling.c
+@@ -661,8 +661,8 @@ of_cpufreq_cooling_register(struct cpufreq_policy *policy)
  
- 	return 0;
- }
-diff --git a/drivers/powercap/intel_rapl_tpmi.c b/drivers/powercap/intel_rapl_tpmi.c
-index 73f36d9c09b1..6baaad3c59ef 100644
---- a/drivers/powercap/intel_rapl_tpmi.c
-+++ b/drivers/powercap/intel_rapl_tpmi.c
-@@ -408,8 +408,8 @@ static int intel_rapl_tpmi_probe(struct auxiliary_device *auxdev,
- 
- 	trp->rp = rapl_add_package(info->package_id, &trp->priv, false);
- 	if (IS_ERR(trp->rp)) {
--		dev_err(&auxdev->dev, "Failed to add RAPL Domain for Package%d, %ld\n",
--			info->package_id, PTR_ERR(trp->rp));
-+		dev_err(&auxdev->dev, "Failed to add RAPL Domain for Package%d, %pe\n",
-+			info->package_id, trp->rp);
- 		ret = PTR_ERR(trp->rp);
- 		goto err;
+ 		cdev = __cpufreq_cooling_register(np, policy, em);
+ 		if (IS_ERR(cdev)) {
+-			pr_err("cpufreq_cooling: cpu%d failed to register as cooling device: %ld\n",
+-			       policy->cpu, PTR_ERR(cdev));
++			pr_err("cpufreq_cooling: cpu%d failed to register as cooling device: %pe\n",
++			       policy->cpu, cdev);
+ 			cdev = NULL;
+ 		}
  	}
+diff --git a/drivers/thermal/devfreq_cooling.c b/drivers/thermal/devfreq_cooling.c
+index 0330a8112832..9ada52cbf7dd 100644
+--- a/drivers/thermal/devfreq_cooling.c
++++ b/drivers/thermal/devfreq_cooling.c
+@@ -156,8 +156,8 @@ static unsigned long get_voltage(struct devfreq *df, unsigned long freq)
+ 		opp = dev_pm_opp_find_freq_exact(dev, freq, false);
+ 
+ 	if (IS_ERR(opp)) {
+-		dev_err_ratelimited(dev, "Failed to find OPP for frequency %lu: %ld\n",
+-				    freq, PTR_ERR(opp));
++		dev_err_ratelimited(dev, "Failed to find OPP for frequency %lu: %pe\n",
++				    freq, opp);
+ 		return 0;
+ 	}
+ 
+diff --git a/drivers/thermal/qcom/qcom-spmi-adc-tm5.c b/drivers/thermal/qcom/qcom-spmi-adc-tm5.c
+index af72db6299cd..4554a6fa55d1 100644
+--- a/drivers/thermal/qcom/qcom-spmi-adc-tm5.c
++++ b/drivers/thermal/qcom/qcom-spmi-adc-tm5.c
+@@ -680,8 +680,8 @@ static int adc_tm5_register_tzd(struct adc_tm5_chip *adc_tm)
+ 				continue;
+ 			}
+ 
+-			dev_err(adc_tm->dev, "Error registering TZ zone for channel %d: %ld\n",
+-				adc_tm->channels[i].channel, PTR_ERR(tzd));
++			dev_err(adc_tm->dev, "Error registering TZ zone for channel %d: %pe\n",
++				adc_tm->channels[i].channel, tzd);
+ 			return PTR_ERR(tzd);
+ 		}
+ 		adc_tm->channels[i].tzd = tzd;
+diff --git a/drivers/thermal/thermal_mmio.c b/drivers/thermal/thermal_mmio.c
+index 6845756ad5e7..b34e70991d3d 100644
+--- a/drivers/thermal/thermal_mmio.c
++++ b/drivers/thermal/thermal_mmio.c
+@@ -71,8 +71,7 @@ static int thermal_mmio_probe(struct platform_device *pdev)
+ 						     &thermal_mmio_ops);
+ 	if (IS_ERR(thermal_zone)) {
+ 		dev_err(&pdev->dev,
+-			"failed to register sensor (%ld)\n",
+-			PTR_ERR(thermal_zone));
++			"failed to register sensor (%pe)\n", thermal_zone);
+ 		return PTR_ERR(thermal_zone);
+ 	}
+ 
+diff --git a/drivers/thermal/uniphier_thermal.c b/drivers/thermal/uniphier_thermal.c
+index 1a04294effea..e451674d9709 100644
+--- a/drivers/thermal/uniphier_thermal.c
++++ b/drivers/thermal/uniphier_thermal.c
+@@ -286,8 +286,7 @@ static int uniphier_tm_probe(struct platform_device *pdev)
+ 	regmap = syscon_node_to_regmap(parent);
+ 	of_node_put(parent);
+ 	if (IS_ERR(regmap)) {
+-		dev_err(dev, "failed to get regmap (error %ld)\n",
+-			PTR_ERR(regmap));
++		dev_err(dev, "failed to get regmap (error %pe)\n", regmap);
+ 		return PTR_ERR(regmap);
+ 	}
+ 	tdev->regmap = regmap;
 -- 
 2.43.0
 
