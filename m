@@ -4,92 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1808FC79F9E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2026 06:53:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99A2FC79F89
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2026 09:11:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0YpADwP/mkKyGO+EKdZI2bBLv0b75u6CTO5qSfwEOn4=; b=zqlMoadWdIH/oAnEiNwW247GA7
-	aQEGeMkNisUMo0zcl2m1/SQsAGhBTkdKBj3NVz6NfgXFi5kyt9N2gYZ2Ivn3W0VJ+KPEjplhSnhnN
-	GOsTkjLIgzC/r5iIQX1b1KYHsfsT+YhZuxnB+e0Vpj0wOyPpx3TqOY9w32gKBC3YQvC3Xa0M/7KFQ
-	WpXlGzsbV5/mE6ozCt2rUCOoErxg3YfkyQQ7jUPkhEacWzbZOpqQjJAquG+RB3F692UZoLqsz0W0v
-	YVTj/N4zoZQYlr4YDULXT8U7DfANaFTV+ggkf9yoAKxzG1Q2wqDvg5W5aa9xpA37tJXxi52OaquAt
-	kSPK6sqA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wG0WmAyOO3ymA3aJN2xgzJ3JTR+4gP9o+6XF/2CnAYs=; b=At8yI39YJSIw7A
+	OkwDUFhfZ+xFU2LejjafYZeljdXnXM5ohVcbAqAQ/V8L/lb5o0X1y4lggM4jtFQatP4jUqbqxwdTb
+	HdsCC2KPY6rXRPVD4ohZRTUGmfCGASRiGcuhj5ekbr84UPrKYWtGrrSl4WvJ3W2/W1FrWLiZogdAd
+	mmsa5Uw3uZQSMiSa7dxOFiVIpWR+leFkqi6Rc3SQeyXWOkxyxLlp9mB02vlgC8u0+W15FJog3S6dT
+	wx6kk+LM7LnxWC/WiEF1EK5cwNXCXyjsuqmJTvO4lkq5G+SCIDX59Gp52nyGkE94bQKfzMJiLIW+x
+	nRi+TPCKM/YdmZhlS1Pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3TEZ-000000064Mc-33S3;
-	Mon, 07 Sep 2026 06:53:39 +0000
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+	id 1x3VNq-00000006LIk-1wcM;
+	Mon, 07 Sep 2026 09:11:22 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3TEW-000000064LG-0nmF
+	id 1x3VNp-00000006LID-2T4O
 	for linux-mediatek@lists.infradead.org;
-	Mon, 07 Sep 2026 06:53:38 +0000
-Received: by mail-pg1-x536.google.com with SMTP id 41be03b00d2f7-cc1cf287ef8so2787714a12.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 06 Sep 2026 23:53:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788764015; x=1789368815; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=0YpADwP/mkKyGO+EKdZI2bBLv0b75u6CTO5qSfwEOn4=;
-        b=PsH2DVrf4yLxVUH/J/UgJ5mxKmOl6ujVzTXA0Zgv3DM9PIs9QDOdZxrMo92XprdNq9
-         kiI2stOs1lcPpbYuqKQPYUA7nfyZy1Ky2+r9Ej33vdvIRSnsDATrkrHmUnodivF7WLos
-         5BEghFcgpuov6UylGAG97SUxg0mJVk1xdswPLFlDs85litINGz4nSAElG6GjUmI0/gUa
-         PiEj14fuDf50soUyXShynPTx5pmk5YGDtzfxZ4ou0YYSMh6HqgPgo4xzE++1O32Rr0Lj
-         kjZtyWNwWfaO6BiAsO4uzydvq+3/svvl7gdsWr1OR9+q9yefS/9Ix1djlJZkhJEK8Vov
-         5faQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788764015; x=1789368815;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=0YpADwP/mkKyGO+EKdZI2bBLv0b75u6CTO5qSfwEOn4=;
-        b=jyhPycehmwoBdwgn15qTSpoVzzgJxD2bgzi9RvYQ9V8CJOrIykJ5hgcBwWUnePq60C
-         28HpGY1r8OLybkWKv1wzDBKKE5AvWSK7pnSnhsSeMecfow9wMqh2+NFkMhA61wx0BdcR
-         FMskHHkeGHk053tVp8TheDr+5yUmpUxu0Bz7Hj3l0fOVWZmzlMbvwgx2+doy0HXkYOtd
-         xc0eMCL9/qi5VN2mVElTjNbHOo2r27/MDlKIMwZg6d8DqFZvbld91PcMR8b3w4PnoqLh
-         +G+dIRDEZ8JVmEgJOFCMcjNni2xdYOU/qkYepPCBTL+AHc5qxUU0TJ5Vw5NNNh89qY5I
-         1tmA==
-X-Forwarded-Encrypted: i=1; AKwUvByNj12YJ4WMlkQm8WVMYwxX/O/PZ1KsXipvs2g5mt2GEwHR+XNu0u+0Jtd7iauSjH7E3h8HRrT95c/akhF1RQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++lDBQ5/SMOSDKpOcsoxAFLh0iqsrifMWeE5cVNu0XSGetjpGcZZ
-	bfIHcLq/gCaUAtITrvvlFm9m3WZ99aScoxd178+OzcSkEFMhXy4D1P1i
-X-Gm-Gg: AYBFou2mlpJ7lxtsuNxGsHbhQKANCW80cnTozdrGb9Dylk+I9XPLhdNy7Pvrsc1/Yox
-	S14Iz9zzvcwhuC2uu8iqr+8pdMydlyp1gxjvC70EiNR2CozC+EMHdRiNdTAvdo2BT9YT7puL4kP
-	ylce14Y8UR4blB0/0S46urlgWTSVqWCKSZzoGh8Dhfc3gZhIXQlp8DFL76D7SgntptS2g2Wluu8
-	hc67R2M80W2abcLd/oR+R+qkfAGs5ktsbi+NxKJJOhaYmiuuAue56QIK5Gxq4LsgTWnmoy6k5iL
-	CBvjCpLI5YEXdvoAWDC000rKX1NBEc3uVVutuA2YIKMB3P1oV1S8z2+klfCy4M5+T6uLCTv75Uj
-	NDKaRS2oxGvDFoYtxIUS2U8jJUEugBLtR+s6uO6mQWRUdFTrs41SQyiI0hPKssUmIaPQNg4jS99
-	j1v3DNpEWqihgfkKF9kHfcKv2CB+WvvUn0z5uan+pgg089q2VnZPlAaUJHmUIcd6JJxLSCNhhK/
-	VJ1DUujOdj2/w==
-X-Received: by 2002:a05:6a20:e607:b0:3d3:ae0f:5267 with SMTP id adf61e73a8af0-3da3a152a11mr33125804637.19.1788764015179;
-        Sun, 06 Sep 2026 23:53:35 -0700 (PDT)
-Received: from volcano9f6e-hostos.amd.com ([165.204.217.251])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3339aa33e96sm24822574eec.12.2026.09.06.23.53.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 06 Sep 2026 23:53:34 -0700 (PDT)
-From: Hemanth Selam <hemanth.selam@gmail.com>
-To: Thomas Gleixner <tglx@kernel.org>,
-	Radu Rendec <radu@rendec.net>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Paul Walmsley <pjw@kernel.org>,
-	Samuel Holland <samuel.holland@sifive.com>,
-	Linus Walleij <linusw@kernel.org>
-Cc: linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-riscv@lists.infradead.org
-Subject: [PATCH 02/14] irqchip: fix typos in comments
-Date: Mon,  7 Sep 2026 12:23:28 +0530
-Message-ID: <20260907065328.32009-1-hemanth.selam@gmail.com>
-X-Mailer: git-send-email 2.48.1
+	Mon, 07 Sep 2026 09:11:21 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id E938543DF2
+	for <linux-mediatek@lists.infradead.org>; Mon,  7 Sep 2026 09:11:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D12D71F00ACF
+	for <linux-mediatek@lists.infradead.org>; Mon,  7 Sep 2026 09:11:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788772280;
+	bh=wG0WmAyOO3ymA3aJN2xgzJ3JTR+4gP9o+6XF/2CnAYs=;
+	h=References:In-Reply-To:Reply-To:From:Date:Subject:To:Cc;
+	b=IdTgscoFwSDPguPFeYOAZsoliELN9y/GF39IzGQLF/4nwW++it3mr7PIzvXofvAMw
+	 +dkXfLDdAp6XgtFAdcnXt3jBjOzv4qYLFqLWFRpAqc0qRpSeOAGxeOJd+lVw53rTh2
+	 QW5uZJVzZanhOeRFp76ORNitYKMlckRFeXPSdMDRCcUkG8tPFheiGoL73PQ3EFEuQK
+	 2gI3QcJVvxm9aEM8RqarGoh4l27/S5tun2i9oJjx1O52I3KS+W6qV8XsUpY0AqYHoM
+	 KPr+pi3kyTBeDg3rGBydm2nUDz1EZLTztYLfBR1Ov++a5qd3+o/KqGvssaTj2lEGAe
+	 j7qU+MQ7yT3DA==
+Received: by mail-lj1-f176.google.com with SMTP id 38308e7fff4ca-3a20dec69f9so26233661fa.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 07 Sep 2026 02:11:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AKwUvBwMd1SNoV++UuY9/XblluiAID8bigsCeAgqbPnyUBXQq9tTScnqMYAJH3xazxiVWjcmPxiPGwuEJ2SRlirpug==@lists.infradead.org
+X-Gm-Message-State: AFuF++kfB3OH4YUMzhyYiPo0E3C4n0gYFXRsOXt9Qj6GnzvmvkRASoba
+	7d5JN9iSS2wwSaIh5K3XwGBnniCkop93Lg42sRm2dQBBfUOGXIkqa2xVdWouMIFsigBm3nTGb2d
+	4zs5G/CQVP8dw0qGQXoWdotNuyebq5es=
+X-Received: by 2002:a05:651c:43cc:20b0:3a3:7681:6d69 with SMTP id
+ 38308e7fff4ca-3a376817499mr13635561fa.18.1788772279038; Mon, 07 Sep 2026
+ 02:11:19 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260906_235336_232389_7185F0AB 
-X-CRM114-Status: GOOD (  14.32  )
+References: <20260904084158.1341550-1-wenst@chromium.org> <20260904084158.1341550-8-wenst@chromium.org>
+ <2026090430-botanist-ungodly-0299@gregkh> <CAGb2v65MSxL+r+wqMjPKVSh9aS1gkn8og6oBinSXDdipnoOyCQ@mail.gmail.com>
+ <2026090433-chair-tidings-5c99@gregkh> <apvQlBEgHOW9MCxN@ashevche-desk.local> <2026090516-nutshell-handiness-37f9@gregkh>
+In-Reply-To: <2026090516-nutshell-handiness-37f9@gregkh>
+From: Chen-Yu Tsai <wens@kernel.org>
+Date: Mon, 7 Sep 2026 17:11:06 +0800
+X-Gmail-Original-Message-ID: <CAGb2v64QQ1OsQ0hEw+hrYuG2bEpBFf6AWNnbJB-O3qr3on_X5Q@mail.gmail.com>
+X-Gm-Features: AcwNN1Wpt14dNKe4B6humzooduMblAi6GFxjh3D2jQuOPYxWMei9coTZFdaWUGw
+Message-ID: <CAGb2v64QQ1OsQ0hEw+hrYuG2bEpBFf6AWNnbJB-O3qr3on_X5Q@mail.gmail.com>
+Subject: Re: [PATCH v8 07/16] usb: core: Move struct usb_port and related APIs
+ to port.h
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Bartosz Golaszewski <brgl@kernel.org>, 
+	Daniel Scally <djrscally@gmail.com>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Wei Deng <wei.deng@oss.qualcomm.com>, Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>, 
+	linux-acpi@vger.kernel.org, driver-core@lists.linux.dev, 
+	linux-pm@vger.kernel.org, linux-usb@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Manivannan Sadhasivam <mani@kernel.org>, Alan Stern <stern@rowland.harvard.edu>, 
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,58 +92,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: wens@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix typos in comments, reported by scripts/checkpatch.pl using the
-misspelling list in scripts/spelling.txt.  Only touches comments, no code
-changes.
+On Sat, Sep 5, 2026 at 7:32=E2=80=AFPM Greg Kroah-Hartman
+<gregkh@linuxfoundation.org> wrote:
+>
+> On Sat, Sep 05, 2026 at 11:19:32AM +0300, Andy Shevchenko wrote:
+> > On Fri, Sep 04, 2026 at 07:52:37PM +0200, Greg Kroah-Hartman wrote:
+> > > On Sat, Sep 05, 2026 at 01:24:20AM +0800, Chen-Yu Tsai wrote:
+> > > > On Sat, Sep 5, 2026 at 12:47=E2=80=AFAM Greg Kroah-Hartman
+> > > > <gregkh@linuxfoundation.org> wrote:
+> > > > >
+> > > > > On Fri, Sep 04, 2026 at 04:41:46PM +0800, Chen-Yu Tsai wrote:
+> > > > > > |struct usb_port| and its matching container_of() macro should =
+live in
+> > > > > > its own port.h, matching the split we have for .c files.
+> > > > >
+> > > > > Why?
+> > > >
+> > > > This was requested by Andy. And to me it sort of made sense.
+> > > >
+> > > > > > Move them as described. Also move usb_port_is_power_on(), since=
+ in the
+> > > > > > next change its |struct usb_hub *| parameter will be changed to
+> > > > > > |struct usb_port *|, and becomes a non-static function that onl=
+y
+> > > > > > references |struct usb_port|.
+> > > > >
+> > > > > No, please don't do that unless you have a really good reason.
+> > > >
+> > > > Which part? Move the code?
+> > >
+> > > Please don't make a new .h file.
+> > >
+> > > Moving the function might make sense on its own if you need it in a
+> > > different file later on, but do a move only, and then change things i=
+f
+> > > you really need to do that.
+> >
+> > Isn't this file to break possible circular dependencies?
+>
+> If so, that was not stated here at all...
 
-Assisted-by: Cursor:claude-opus-5
-Signed-off-by: Hemanth Selam <hemanth.selam@gmail.com>
----
- drivers/irqchip/irq-mtk-cirq.c    | 2 +-
- drivers/irqchip/irq-sifive-plic.c | 2 +-
- drivers/irqchip/irq-vic.c         | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+No. The code movement was purely done out of request by Andy [1]:
 
-diff --git a/drivers/irqchip/irq-mtk-cirq.c b/drivers/irqchip/irq-mtk-cirq.c
-index 914d1d639fe3..d30c34ce0f56 100644
---- a/drivers/irqchip/irq-mtk-cirq.c
-+++ b/drivers/irqchip/irq-mtk-cirq.c
-@@ -247,7 +247,7 @@ static int mtk_cirq_suspend(void *data)
- 		writel_relaxed(mask, reg);
- 	}
- 
--	/* set edge_only mode, record edge-triggerd interrupts */
-+	/* set edge_only mode, record edge-triggered interrupts */
- 	/* enable cirq */
- 	reg = mtk_cirq_reg(cirq_data, CIRQ_CONTROL);
- 	value = readl_relaxed(reg);
-diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
-index 5b0dac104814..a7cddadddf40 100644
---- a/drivers/irqchip/irq-sifive-plic.c
-+++ b/drivers/irqchip/irq-sifive-plic.c
-@@ -452,7 +452,7 @@ static irq_hw_number_t cp100_get_hwirq(struct plic_handler *handler, void __iome
- 		return 0;
- 
- 	/*
--	 * Interrupts delievered to hardware still become pending, but only
-+	 * Interrupts delivered to hardware still become pending, but only
- 	 * interrupts that are both pending and enabled can be claimed.
- 	 * Clearing the enable bit for all interrupts but the first pending
- 	 * one avoids a hardware bug that occurs during read from the claim
-diff --git a/drivers/irqchip/irq-vic.c b/drivers/irqchip/irq-vic.c
-index e38104c5064e..607e3284f700 100644
---- a/drivers/irqchip/irq-vic.c
-+++ b/drivers/irqchip/irq-vic.c
-@@ -478,7 +478,7 @@ static void __init __vic_init(void __iomem *base, int parent_irq, int irq_start,
- /**
-  * vic_init() - initialise a vectored interrupt controller
-  * @base: iomem base address
-- * @irq_start: starting interrupt number, must be muliple of 32
-+ * @irq_start: starting interrupt number, must be multiple of 32
-  * @vic_sources: bitmask of interrupt sources to allow
-  * @resume_sources: bitmask of interrupt sources to allow for resume
-  */
+    At a brief look this will be the only function that takes usb_port
+    instead of usb_hub in the entire hub.h (I don't count container_of()
+    as a function). With that being said I would rather see it to be moved
+    to port.c altogether (yes, it's more invasive change, but looks more
+    consistent).  I would even dare to move struct usb_port (and container_=
+of()
+    accompanied with that) and this function to port.h. This might require
+    a separate patch, though.
+
+Putting the function in either .c file works, as it is referenced in both
+files. Possible circular dependencies was the result, not the cause, of
+the code movement.
+
+And the main changes to usb_port_is_power_on() are in the next patch.
+This one just moves the code and drops the "external".
+
+If the maintainers feel that the code movement or header addition is
+undesired, I will drop the movement. Or we can discuss reorganizing the
+code in a separate series.
+
+
+ChenYu
+
+[1] https://lore.kernel.org/all/ake09vk4fEv1D9QC@ashevche-desk.local/
 
