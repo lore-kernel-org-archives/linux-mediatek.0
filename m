@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B4F1C79FAB
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CBF4C79FA0
 	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2026 18:05:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
@@ -12,46 +12,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FVhWlI3yDCtr7iW/mgTMnrLzWl9X7PoLQmYc/unX0tw=; b=13lbR1g1mwQG6fQHPrCRxrslZi
-	JNg5wytW5/NgBCI3M0ju6wCxBbidxUaN6Yy+C/j/H2g0jZqH+9WCH1zy5Qvds5NKlA/6nnsb+hHVw
-	LWK3tG5VT8yy33xxab00GP5GsosNlFkXIZgH+8xnMrHkcRfvpfBjDK58ShbbhXijbrDrsnMJuI97X
-	1U4MEwrHwcyCi/2wf1BjxY/bsWiO0EZVQ9FJNG3P/pGdJXLlcqdeF6zqmwmqOOB1XI47CTi/FNo/3
-	2GM8zPaselKNlzg/sNoYGhZJQjseMmJCF+NDVlIZONy3oLv9Ms3eSYsb8iOoj3ERpJ4Hb2XHGlVUC
-	D8fg4zAg==;
+	bh=S2NEzC2UGMBZ09SuEYn9EY1/OHQmZiixCQ4+5zdRg7w=; b=4J+JUtjp0p9BLnS2L8WxzLVHi7
+	r2iT1QutHt6Bi6HTlG8B/k7fPErxuMuS4aXD/DTUshPAjYXoq/KVAvzuL9FzDwL6jA16O9Z8g0UZt
+	rzY/nbtLMpCaB3A0DPktcETcEtaR64Ly5xliaep57A83rOWN/wCXVLK58NZz5qgrHzkE7IUnubk9W
+	SIAy+5OGQGtW0UKjkTg+CqM+rvZW8vhWU1QhjjdyTSjYtNp3xTmQ8qp31xwX8VwfHxMiONSMZuiFF
+	RnDkwjjZ0ZmpUlJtkMdvAxp/TY3Bp4whHW1aiMhZi1yEcZ6sLJvLNLqqhv2euc3f8fabcH1OQn381
+	LnZlhSYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3diS-00000007XlK-3yhU;
+	id 1x3diS-00000007Xl8-3hXa;
 	Mon, 07 Sep 2026 18:05:12 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3diO-00000007XhL-0mO6;
+	id 1x3diO-00000007XhM-0zig;
 	Mon, 07 Sep 2026 18:05:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B63C14119E;
+	by tor.source.kernel.org (Postfix) with ESMTP id AEEAB60213;
 	Mon,  7 Sep 2026 18:05:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 65D11C2BCFD;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 544F8C2BCFC;
 	Mon,  7 Sep 2026 18:05:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1788804307;
-	bh=jz1YYHTKBXvQwwbmdKRil+VbegnbS6yrMzLj3JzOLPM=;
+	bh=HRKfDnU7fpe4hKYsO1qj++xJuTiGlwZYM7a7gsCq21Q=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=Q+UOjU4O830yvA5yRRsyWV0K0UlpAKnYieatc9t6AOW89sU3UlRz6KseAXqpCuQQs
-	 QIFYDdtv1cOvdK96ZJR6hFms0+l9xAd29CF4tiVkRqfP+8lzFcdm8TkigVWGEjgBv1
-	 ZmBLJuBW2KHf5eyfOvtDpARmPtp5bbjAVuBPxtPrsqpFdlqDMCznMKQJopv7o728Nx
-	 Gkw/WSCYHLZKjhEINVozDvthBGQ3QhkMY5fIaUyL111AswE1vABRWtuHHoT9lakCeM
-	 FL0s6D0e+SyssSSUZAT0Fye258Fodwzv9UD3jA9jgGPx+oWbrrzxINSPWmgL2vomXe
-	 PMGSG8lwC7bgg==
+	b=Q6w8fsQREm1eCpIPHDmn+hdFxAHEh88vOFEOJaFm5Niv3iB+YTyiPwVIwkHFlZU7z
+	 nKvaNlzGixY7NJOQuOHDzu0YraARtU5Q1JK//7vG+77TqN7qIBYGNxpkJogsDySee8
+	 irL8lp/MIaDXeQ8Un8Ei98cm6Gggb6173PJajhIWe7nnpbNL/IR4hdWivHQBEupdih
+	 8Q/zB3lnp1wl+UARMyr5lNhi5nPS+DrsBUEdPG3Bx18tjsuiqtl+SAnD+XyWCEQOa2
+	 DM4Kx4fna2SvaS11aLvQxg4ynQRrSvgaN9jWdnGqdu3dg37LOKQ9QcC3hju3ZVC8Ny
+	 p9Um2+3NKsL0w==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 47A87C79F9F;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3052BC79F99;
 	Mon,  7 Sep 2026 18:05:07 +0000 (UTC)
 From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Mon, 07 Sep 2026 21:03:06 +0300
-Subject: [PATCH v2 2/3] soc: mediatek: cmdq-helper: add legacy GCE ISA
- support
+Date: Mon, 07 Sep 2026 21:03:05 +0300
+Subject: [PATCH v2 1/3] dt-bindings: mailbox: mediatek,gce-mailbox: add
+ mt6572
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260907-6572-gce-v2-2-412a5b037290@protonmail.com>
+Message-Id: <20260907-6572-gce-v2-1-412a5b037290@protonmail.com>
 References: <20260907-6572-gce-v2-0-412a5b037290@protonmail.com>
 In-Reply-To: <20260907-6572-gce-v2-0-412a5b037290@protonmail.com>
 To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>, 
@@ -64,11 +64,11 @@ Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Roman Vivchar <rva333@protonmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1788804305; l=3889;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1788804305; l=2822;
  i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=Uu3P5wuRY5/ZH17+b4JdmrxQxerJafFFRwJH5TYZehQ=;
- b=op39buDZAmJXgQKhtDaF+BBWSb5/59ftXLIn4uk1/rRHSDVAcd2MP8LZBqLZo5x0gvsWCF3RI
- QYmIsKafIvgAeYjaZyc3uedOWfGMF47v0yrrO2G/mQ82kf/6JSmXgii
+ bh=/tLOb7ev/WM/LwpIpJ2zPo9FlE7c2orfGWi2CVoRzjw=;
+ b=3Oxrmkyz4/yIStLEu203OBakaNbk1L4OkD0Yt892uXJuGpzqi8MbwMB6NCflV2Xjl3WBtwYlF
+ N27vLwsUqavD26aiumMKqa2lhGVhXtZSqXSAgMboSAIksIKr1WuTUG6
 X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
  pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
 X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
@@ -91,138 +91,88 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Roman Vivchar <rva333@protonmail.com>
 
-Some SoCs, such as mt6572, have different WRITE and POLL instruction
-encoding. Instead of 16-bit offset and 8-bit subsystem ID, old GCEs have
-22-bit offset and 2-bit subsystem ID.
-
-Extend cmdq_instruction struct with additional union and struct to hold
-the legacy format of instruction encoding. Add legacy_isa to select
-legacy GCE ISA when writing instruction. Finally, add special handing
-for legacy_isa cases.
-
-Also correct comment about PA writes, because it's incorrect for legacy
-ISA. Only v2 (mt8167, 8173) and v3 (mt8168, 6768, 6779, 6785, etc) have
-GPRs and SPRs for PA writes.
-
-While mt6572 GCE supports 22-bit offsets, the parameter type for offset
-remains 16 bit, because all mt6572 GCE mmsys consumers are in the 0xffff
-range.
+Add a compatible string and a header for the GCE constants.
 
 Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
-This change doesn't bring any functional change for mt6572. mt6572 uses
-subsystem ID 0 for display, alongside with 16-bit offsets, so layout is
-still compatible with v2/v3 GCEs. However, it's better to properly
-describe layout.
+There's also 'other' subsystem which covers 0x16XXXXXX range, however
+mt6572 doesn't seem to have any MMIO there. It's not included in this
+patch.
 ---
- drivers/soc/mediatek/mtk-cmdq-helper.c   | 57 ++++++++++++++++++++++----------
- include/linux/mailbox/mtk-cmdq-mailbox.h |  1 +
- 2 files changed, 40 insertions(+), 18 deletions(-)
+ .../bindings/mailbox/mediatek,gce-mailbox.yaml     |  1 +
+ include/dt-bindings/mailbox/mediatek,mt6572-gce.h  | 52 ++++++++++++++++++++++
+ 2 files changed, 53 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-index f8ee6c9ade89..fb82f2a85a21 100644
---- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-+++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-@@ -31,18 +31,27 @@ struct cmdq_instruction {
- 		};
- 	};
- 	union {
--		u16 offset;
--		u16 event;
--		u16 reg_dst;
--	};
--	union {
--		u8 subsys;
- 		struct {
--			u8 sop:5;
--			u8 arg_c_t:1;
--			u8 src_t:1;
--			u8 dst_t:1;
--		};
-+			union {
-+				u16 offset;
-+				u16 event;
-+				u16 reg_dst;
-+			};
-+			union {
-+				u8 subsys;
-+				struct {
-+					u8 sop:5;
-+					u8 arg_c_t:1;
-+					u8 src_t:1;
-+					u8 dst_t:1;
-+				};
-+			};
-+		} __packed;
+diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+index 587126d03fc6..d6e93010bb94 100644
+--- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
++++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
+@@ -18,6 +18,7 @@ properties:
+   compatible:
+     oneOf:
+       - enum:
++          - mediatek,mt6572-gce
+           - mediatek,mt6779-gce
+           - mediatek,mt8173-gce
+           - mediatek,mt8183-gce
+diff --git a/include/dt-bindings/mailbox/mediatek,mt6572-gce.h b/include/dt-bindings/mailbox/mediatek,mt6572-gce.h
+new file mode 100644
+index 000000000000..94eb6ea97542
+--- /dev/null
++++ b/include/dt-bindings/mailbox/mediatek,mt6572-gce.h
+@@ -0,0 +1,52 @@
++/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
++/*
++ * Copyright (c) 2026 Roman Vivchar
++ */
 +
-+		struct {
-+			u32 offset_legacy:22;
-+			u32 subsys_legacy:2;
-+		} __packed;
- 	};
- 	u8 op;
- };
-@@ -86,7 +95,7 @@ int cmdq_dev_get_client_reg(struct device *dev,
- 		client_reg->subsys = CMDQ_SUBSYS_INVALID;
- 
- 		/*
--		 * All GCEs support writing register PA with mask without subsys,
-+		 * GCE v2/v3 support writing register PA with mask without subsys,
- 		 * but this requires extra GCE instructions to convert the PA into
- 		 * a format that GCE can handle, which is less performance than
- 		 * directly using subsys. Therefore, when subsys is available,
-@@ -219,10 +228,16 @@ int cmdq_pkt_write(struct cmdq_pkt *pkt, u8 subsys, u16 offset, u32 value)
- {
- 	struct cmdq_instruction inst = {
- 		.op = CMDQ_CODE_WRITE,
--		.value = value,
--		.offset = offset,
--		.subsys = subsys
-+		.value = value
- 	};
++#ifndef _DT_BINDINGS_GCE_MT6572_H
++#define _DT_BINDINGS_GCE_MT6572_H
 +
-+	if (pkt->priv.legacy_isa) {
-+		inst.offset_legacy = offset;
-+		inst.subsys_legacy = subsys;
-+	} else {
-+		inst.offset = offset;
-+		inst.subsys = subsys;
-+	}
- 	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_write);
-@@ -459,10 +474,16 @@ int cmdq_pkt_poll(struct cmdq_pkt *pkt, u8 subsys,
- {
- 	struct cmdq_instruction inst = {
- 		.op = CMDQ_CODE_POLL,
--		.value = value,
--		.offset = offset,
--		.subsys = subsys
-+		.value = value
- 	};
++/* GCE HW thread priority */
++#define CMDQ_THR_PRIO_NORMAL		0
++#define CMDQ_THR_PRIO_HIGHEST		1
 +
-+	if (pkt->priv.legacy_isa) {
-+		inst.offset_legacy = offset;
-+		inst.subsys_legacy = subsys;
-+	} else {
-+		inst.offset = offset;
-+		inst.subsys = subsys;
-+	}
- 	return cmdq_pkt_append_command(pkt, inst);
- }
- EXPORT_SYMBOL(cmdq_pkt_poll);
-diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
-index 07c1bfbdb8c4..9fcebc4ca864 100644
---- a/include/linux/mailbox/mtk-cmdq-mailbox.h
-+++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
-@@ -72,6 +72,7 @@ struct cmdq_cb_data {
- 
- struct cmdq_mbox_priv {
- 	u8 shift_pa;
-+	bool legacy_isa;
- 	dma_addr_t mminfra_offset;
- };
- 
++/* GCE SUBSYS */
++#define SUBSYS_14XXXXXX			0
++#define SUBSYS_15XXXXXX			1
++
++/* GCE HW EVENT */
++#define CMDQ_EVENT_MUTEX0		0
++#define CMDQ_EVENT_MUTEX1		1
++#define CMDQ_EVENT_MUTEX2		2
++#define CMDQ_EVENT_MUTEX3		3
++#define CMDQ_EVENT_MUTEX4		4
++#define CMDQ_EVENT_MUTEX5		5
++#define CMDQ_EVENT_MUTEX6		6
++#define CMDQ_EVENT_MUTEX7		7
++
++#define CMDQ_EVENT_DISP_WDMA_EOF	12
++#define CMDQ_EVENT_DISP_RDMA_EOF	13
++#define CMDQ_EVENT_DISP_BLS_EOF		14
++#define CMDQ_EVENT_DISP_COLOR_EOF	15
++#define CMDQ_EVENT_DISP_OVL_EOF		16
++#define CMDQ_EVENT_MDP_TDSHP_EOF	17
++#define CMDQ_EVENT_MDP_RSZ1_EOF		18
++#define CMDQ_EVENT_MDP_RSZ0_EOF		19
++#define CMDQ_EVENT_MDP_RDMA_EOF		20
++#define CMDQ_EVENT_MDP_WDMA_EOF		21
++#define CMDQ_EVENT_MDP_WROT_EOF		22
++
++#define CMDQ_EVENT_MDP_WROT_SOF		24
++#define CMDQ_EVENT_MDP_RSZ0_SOF		25
++#define CMDQ_EVENT_MDP_RSZ1_SOF		26
++#define CMDQ_EVENT_DISP_OVL_SOF		27
++#define CMDQ_EVENT_MDP_WDMA_SOF		28
++#define CMDQ_EVENT_MDP_RDMA_SOF		29
++#define CMDQ_EVENT_DISP_WDMA_SOF	30
++#define CMDQ_EVENT_DISP_COLOR_SOF	31
++#define CMDQ_EVENT_MDP_TDSHP_SOF	32
++#define CMDQ_EVENT_DISP_BLS_SOF		33
++#define CMDQ_EVENT_DISP_RDMA_SOF	34
++#define CMDQ_EVENT_CAM_MDP		35
++
++#endif
 
 -- 
 2.55.0
