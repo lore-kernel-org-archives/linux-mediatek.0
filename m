@@ -4,78 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5190CC79F99
-	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Sep 2026 21:42:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0232EC79F8C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2026 02:35:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Y+QrVwM73Wzip3uoJP4bnyA7+SWhW5qCUOru0QiwwtE=; b=SYxJoB3BljSON3UQhewmmiIxx6
-	RWoIujLN/TfV5CkeLnKBRj775ZaT+VzBTbV/w3dL4kXj1eqnuWpi4JFV8kYn6PGXzlaN95tWd9xQL
-	/c6Vq7wHzO4WiMNIjRf7iuBg6jb7+AA0NKS3GIRAWnOAa6xF0RXJnEfMGYbf55Vb0CqCBR0IAKp5k
-	NHc5bdC5ffbI/3d9IzMVlbEt3X0Ye7sP6DFxdGi7YUxkl3rcFhhAGW1v6efegJkjWvsDXAHK4moh6
-	adIQBgAtSpDk0D9PKBvWXAffJ1Qocjbpwc1Dc0qCPDCD3BpNFXOFp/SCK+fKScQn6KFN1l7yYYpyo
-	DPdhqHEQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:
+	From:Subject:Cc:Message-Id:Date:Content-Type:Mime-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/n3xihmU93G11KDPuXpxUGjTF/aZtrqDlguEa+obsXQ=; b=TMFVQm1udoI38s7Ctsl+TB+o4S
+	R6xu22H4gb9nF81Uk8Dn6UAFDIzwvDqQekyA1fs1hfoPyp6zfC68toH7xUFe7M0aWX5YO0EvMAwls
+	29/8clkZ3XmcB7IxxW3RozLf5ADixiYzk86uDzUg+S1vezx2D2sCk4hrxWWv6phtGMDbut3vV4ZAn
+	vEGnoqpbcFb58gKNqALU6plwNVfJuWlE8UCnApPyAtejVB6tzXJe0qOY5OezyZ/0YyGwdANhMKJXX
+	EyHx9JZ7r/o2QIYwuW1mp0VAQszwNG/t47cY6u+ok7Qn3foD4ROyEnk08nVSpzjLxoTyrz2XlnuI2
+	WZH+e5zA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3Kcy-00000005aqE-23l3;
-	Sun, 06 Sep 2026 21:42:16 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x3PD1-00000005itM-3bwc;
+	Mon, 07 Sep 2026 02:35:47 +0000
+Received: from smtpbgau2.qq.com ([54.206.34.216])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3Kcw-00000005aq1-0UDS;
-	Sun, 06 Sep 2026 21:42:14 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2425C601F9;
-	Sun,  6 Sep 2026 21:42:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 93B42C2BCB8;
-	Sun,  6 Sep 2026 21:42:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1788730932;
-	bh=VDyD8iz27wa8NflmbwW9hSRSzq083qvoKr4XfLGVGsI=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=HQ/eXign/Grhh0PdGupiqE1shMHQ839pzqGbBb+OehVwes9/jQa4DQYYcfYsduwh4
-	 fFY34HYh7XmYBvjitzo3DQxcK0vdc4A4hNI6VffPNyFthUtYBhIh7ujhkbRA9BLwqX
-	 kminqD97H5sydabRSwtiErTWLx92IFmCYRF0Wo3RL+BlwfvEIlRbqHBfHPxsuoLiXg
-	 zLHBNAb2q8sJmXrWHrXeFu1yL20lzxHqdzpk+lsBsDlkZcEvk+uQazkcEc/j5rJARa
-	 +aJztckUeA0M53W0ooV2vZRa3mt4HzAzqBOTMPQxh7dgKSR24rHrwdwCDwxPVVGTBe
-	 snEzGBJE4XIBw==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7CBF7C79F8C;
-	Sun,  6 Sep 2026 21:42:12 +0000 (UTC)
-From: Ryan Leung via B4 Relay <devnull+untilscour.protonmail.com@kernel.org>
-Date: Sun, 06 Sep 2026 21:42:06 +0000
-Subject: [PATCH mt76 v3] wifi: mt76: mt7915: fix thermal zone
- use-after-free and cooling device leak
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260906-mt7915-unregister-thermal-v3-1-efb2d06e61f4@protonmail.com>
-X-B4-Tracking: v=1; b=H4sIAC3enWoC/42OQQ6DIBBFr2JYlwawIHbVezRdII5Ko2AATRvj3
- Yu6bNJ0+Sf/vzcLCuANBHTNFuRhNsE4m0J+ypDulG0BmzplxAgTRJISD7EoKceT9dCaEMHj2IE
- fVI8lA0m4FlQqgdJ+9NCY186+ozQT6HFcw1Q9QccNu/W6hHH+vb8w07192Cj5YZsppliLmhfVR
- Ve5kLfRu+jsoEx/1m7YZTP7G8cSjinScKrqhovmC7eu6wdbFVLDLgEAAA==
-X-Change-ID: 20260809-mt7915-unregister-thermal-82e805c618a6
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
- Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Ryan Leung <untilscour@protonmail.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1788730934; l=3446;
- i=untilscour@protonmail.com; s=20260906; h=from:subject:message-id;
- bh=jg+VrZXwazJVrct69E59ekan8eJXBrNoBIRKgj68l10=;
- b=x0FHS3zeNHr8A2J5GkukmZc+dv0Tf0y/xb73NXQoLHXl+rMbmkLv3Ip73CTp8uRdJ87MOUzDI
- 6LOHGLHUKcRBQjZ36TG1u1kk3G9PC4jq4R2mfU36LyzCQZS0BvQnaVt
-X-Developer-Key: i=untilscour@protonmail.com; a=ed25519;
- pk=eCaNcoQNRWYKZ9D7KbOGKvQVK2YFguJXZxglTtAR7Xk=
-X-Endpoint-Received: by B4 Relay for untilscour@protonmail.com/20260906
- with auth_id=1011
-X-Original-From: Ryan Leung <untilscour@protonmail.com>
+	id 1x3PCy-00000005iqn-3B9S;
+	Mon, 07 Sep 2026 02:35:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.spacemit.com;
+	s=mxsw2412; t=1788748493;
+	bh=/n3xihmU93G11KDPuXpxUGjTF/aZtrqDlguEa+obsXQ=;
+	h=Mime-Version:Date:Message-Id:Subject:From:To;
+	b=kPpcBlqQEvSQBLI78Elo7gnb72DI8U8o36Fu/XYO7mpZHO+3awF+8TvtUj89a4ct/
+	 YWAvRlyhjEAnlLhC9Z9Wk8oST5FPFoRByvZc7e+cgSyRAkmEB/eWb5J/OQeK7DrAbv
+	 j5M8k6zCQdCD+Hkh8++lzkcSbdQ0W/7xBr3vPstU=
+X-QQ-mid: zesmtpgz3t1788748484t9bf26c94
+X-QQ-Originating-IP: 7jcO50RqRIZxPHY/moH8hgYnotivvrpyVTcywJ9C5gY=
+Received: from = ( [120.237.158.181])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Mon, 07 Sep 2026 10:34:39 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 9707735077275929228
+EX-QQ-RecipientCnt: 59
+Mime-Version: 1.0
+Content-Type: multipart/signed;
+ boundary=c3446b7a882d909a1fb5e6c3d06e6abafc7af191330f8ccc8edf46454865;
+ micalg=pgp-sha512; protocol="application/pgp-signature"
+Date: Mon, 07 Sep 2026 10:34:37 +0800
+Message-Id: <DL8QEYABXVMN.2CF6XXBXZ1X6U@linux.spacemit.com>
+Cc: <linux-can@vger.kernel.org>, <netdev@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-renesas-soc@vger.kernel.org>,
+ <linux-riscv@lists.infradead.org>, <spacemit@lists.linux.dev>,
+ <linux-omap@vger.kernel.org>, "Troy Mitchell"
+ <troy.mitchell@linux.spacemit.com>
+Subject: Re: [PATCH net-next 25/33] net: spacemit: k1_emac: Remove comma
+ after sentinel-entry in match-table
+From: "Troy Mitchell" <troy.mitchell@linux.spacemit.com>
+To: "Siddharth Vadapalli" <s-vadapalli@ti.com>,
+ <dario.binacchi@amarulasolutions.com>, <mkl@pengutronix.de>,
+ <mailhol@kernel.org>, <msp@baylibre.com>, <florian.fainelli@broadcom.com>,
+ <jonas.gorski@gmail.com>, <andrew@lunn.ch>, <olteanv@gmail.com>,
+ <davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>,
+ <pabeni@redhat.com>, <kurt@linutronix.de>, <hauke@hauke-m.de>,
+ <chester.a.unal@arinc9.com>, <daniel@makrotopia.org>,
+ <matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
+ <ansuelsmth@gmail.com>, <linusw@kernel.org>, <luizluca@gmail.com>,
+ <alvin.sipraga@analog.com>, <clement.leger@bootlin.com>,
+ <justin.chen@broadcom.com>, <dlan@kernel.org>, <rogerq@kernel.org>,
+ <hkallweit1@gmail.com>, <linux@armlinux.org.uk>, <rjui@broadcom.com>,
+ <sbranden@broadcom.com>, <bcm-kernel-feedback-list@broadcom.com>,
+ <opendmb@gmail.com>, <andrei.botila@oss.nxp.com>,
+ <wangruikang@iscas.ac.cn>, <amadeus@jmu.edu.cn>, <kees@kernel.org>,
+ <tmshlvck@gmail.com>, <c-vankar@ti.com>, <horms@kernel.org>,
+ <vadim.fedorenko@linux.dev>, <daniel.zahka@gmail.com>,
+ <nora.schiffer@ew.tq-group.com>, <v-singh1@ti.com>, <oss@vassilevski.com>,
+ <haokexin@gmail.com>, <alex@sverdlin.org>, <aleksandr.loktionov@intel.com>,
+ <lgs201920130244@gmail.com>
+X-Mailer: aerc 0.21.0-0-g5549850facc2
+References: <20260904043724.2955444-1-s-vadapalli@ti.com>
+ <20260904043724.2955444-26-s-vadapalli@ti.com>
+In-Reply-To: <20260904043724.2955444-26-s-vadapalli@ti.com>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpgz:linux.spacemit.com:qybglogicsvrgz:qybglogicsvrgz3a-0
+X-QQ-XMAILINFO: OOjPmw7/kYvNFpziBHOUgvSDVse/N8sfvrEHT1vw+v143DBev3KaNj9K
+	d0nc6lq5/8DlPcBkYDQm+JZAaDtphg49BWIPlNHRnJn8/BjjDeuYNqDsZNC/zhFK0nDpoK/
+	SOGxqGPaVOfmALdiL5CqYgw6t3Kibs2jaKxWXUShsO0Qne4RGa3c6Ls75NV1bwR920RpEjm
+	wnmHfVh3wokVV8MInzZVVvZeAwOtLKsfF2yhnQwy3Gu6t4beamsZqVDWzBhFusmhonKYROo
+	DV56CnAremtB9uzPJRoRekVzyYBS7ASO0mrz2hmvE0Ciwt7HhiUR6g6au+WjiJ9ZeodzaWK
+	wR/sZ8y0d7jt4FCsKcqmmrQdDZTi8D8RZKnP4zDO5PpLWrra3+UZSlr2QpJ3kyYj6O+Dw/6
+	8e4fb1nTfzmflhzCdIPWhbaItBa5lahfp/an2jrl17tjg6rZbe/6SbULjeR5YteQtpxN8ui
+	9XwmbzARqEWr1JhWrQT5r+MoEoPHG5BOlSW7G2OF+TwEIjqfYyVu2WHjqbkICADGZocc+BX
+	j9APOhiR8BSAJz0zo8GKRcM3z3HsNqobFR6ukTpPOOG0k9yqLBnn+dKSeT+zTnidT26l8/N
+	h6jr181CgTsKct8+GJjK66z9206FAft9Mdw3TZ7PvMDxu25lM5vvIkG9kgV/rywyX74tWBQ
+	u2b//1lIOSIaCZAURdPzrXsJBvyLUFDETQibjN6XQuQnlDhRsIfEyr6q6ZV/hCchMBlJit/
+	TUelKWbjCMm8DJpXHmwDAPLSZQrkvWaQn0UqVNVPIPI8M8H1/8LGPymX9j8VgATWPRCcYoi
+	dhFomeGb+n/VPULa5Yz3+ILzmkIIpIoMycsRzubAvSsYBfEL4wqi+Ajl4nz+q/R5iVfqSrJ
+	3d0Vr7r8EkamzeqBw7PB8iMShVjEWH17H8fzvPs0wsefvQaP1/H0NPZ1t6yaLWXEjSfNXP7
+	EPwCTR4oLnJ3D+G2dxQYrunCCTzwG8bHQrJz3IrR+mSIdWNZnzAi2WYUk5aFWfCKjBUti3G
+	MxjgPTqCRiU4Vxsd0/C1+Zzloh0Dwx6ZWI008MZtiGOVMm+wdndaF19H9PyX2s6lF0PIdkT
+	uKQY7yDKRQH
+X-QQ-XMRINFO: NS+P29fieYNwqS3WCnRCOn9D1NpZuCnCRA==
+X-QQ-RECHKSPAM: 0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260906_193545_713221_DF4752FF 
+X-CRM114-Status: UNSURE (   5.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,103 +117,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: untilscour@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ryan Leung <untilscour@protonmail.com>
+--c3446b7a882d909a1fb5e6c3d06e6abafc7af191330f8ccc8edf46454865
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
 
-The thermal zone registered against the parent device is never torn
-down when the phy is unregistered, so it can still be dereferenced
-by the thermal core after the phy is freed. The thermal zone and
-cooling device are also left registered if a later hwmon
-registration step fails during init, leaking both.
+On Fri Sep 4, 2026 at 12:36 PM +08, Siddharth Vadapalli wrote:
+> Since sentinel is the last entry and we do not expect further entries
+> following it, remove the comma.
+>
+> Signed-off-by: Siddharth Vadapalli <s-vadapalli@ti.com>
+Reviewed-by: Troy Mitchell <troy.mitchell@linux.spacemit.com>
 
-Unregister the thermal zone alongside the cooling device on both the
-regular unregister path and the init failure path. Also clear
-phy->tzone and phy->cdev after unregistering so that a future caller
-invoking the function twice doesn't unregister already-freed objects.
-
-While at it, include the band index in the thermal zone registration
-warning to help identify which band failed on multi-band chips.
-
-Fixes: 313f1a27ebcb ("wifi: mt76: mt7915: add thermal zone device registration")
-Signed-off-by: Ryan Leung <untilscour@protonmail.com>
----
-Changes in v3:
-- Clear phy->tzone/phy->cdev in mt7915_unregister_thermal() after
-  unregistering, making it idempotent.
-- Link to v2: https://patch.msgid.link/20260810-mt7915-unregister-thermal-v2-1-2a0f51adf56f@protonmail.com
-
-Changes in v2:
-- Unwind cdev/tzone registration in mt7915_thermal_init() on hwmon registration failure.
-- Link to v1: https://patch.msgid.link/20260810-mt7915-unregister-thermal-v1-1-c6d57b4cb368@protonmail.com
----
- drivers/net/wireless/mediatek/mt76/mt7915/init.c | 17 ++++++++++++++---
- 1 file changed, 14 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index ca46a203aa48..e5285d1a1f9d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -200,11 +200,17 @@ static void mt7915_unregister_thermal(struct mt7915_phy *phy)
- {
- 	struct wiphy *wiphy = phy->mt76->hw->wiphy;
- 
-+	if (phy->tzone) {
-+		devm_thermal_of_zone_unregister(phy->dev->mt76.dev, phy->tzone);
-+		phy->tzone = NULL;
-+	}
-+
- 	if (!phy->cdev)
- 		return;
- 
- 	sysfs_remove_link(&wiphy->dev.kobj, "cooling_device");
- 	thermal_cooling_device_unregister(phy->cdev);
-+	phy->cdev = NULL;
- }
- 
- static int mt7915_thermal_init(struct mt7915_phy *phy)
-@@ -213,6 +219,7 @@ static int mt7915_thermal_init(struct mt7915_phy *phy)
- 	struct thermal_cooling_device *cdev;
- 	struct device *hwmon;
- 	const char *name;
-+	int ret;
- 
- 	name = devm_kasprintf(&wiphy->dev, GFP_KERNEL, "mt7915_%s",
- 			      wiphy_name(wiphy));
-@@ -238,8 +245,8 @@ static int mt7915_thermal_init(struct mt7915_phy *phy)
- 	if (IS_ERR(phy->tzone)) {
- 		if (PTR_ERR(phy->tzone) != -ENODEV)
- 			dev_warn(phy->dev->mt76.dev,
--				 "failed to register thermal zone: %ld\n",
--				 PTR_ERR(phy->tzone));
-+				 "failed to register thermal zone %d: %ld\n",
-+				 phy->mt76->band_idx, PTR_ERR(phy->tzone));
- 		phy->tzone = NULL;
- 	}
- 
-@@ -248,7 +255,11 @@ static int mt7915_thermal_init(struct mt7915_phy *phy)
- 
- 	hwmon = devm_hwmon_device_register_with_groups(&wiphy->dev, name, phy,
- 						       mt7915_hwmon_groups);
--	return PTR_ERR_OR_ZERO(hwmon);
-+	ret = PTR_ERR_OR_ZERO(hwmon);
-+	if (ret)
-+		mt7915_unregister_thermal(phy);
-+
-+	return ret;
- }
- 
- static void mt7915_led_set_config(struct led_classdev *led_cdev,
-
----
-base-commit: 1b60ed34f712e9f606d80951f1586f4274ebadf1
-change-id: 20260809-mt7915-unregister-thermal-82e805c618a6
-
-Best regards,
---  
-Ryan Leung <untilscour@protonmail.com>
+--=20
+Troy Mitchell
 
 
+--c3446b7a882d909a1fb5e6c3d06e6abafc7af191330f8ccc8edf46454865
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iIMEABYKACsWIQSL4Ay2cExaPXAQcU2YCe+A+TM0LwUCap4ivQ0caUB0cm95LXku
+b3JnAAoJEJgJ74D5MzQvrKoA/jq66no0m3AM6WPip5A8SiOQeVPyie/PjbmRqO4w
+PamfAQCtuus+o1dOGS/PPW44oBGtqifxJT5WcMspAw/AJH0KCQ==
+=xCA3
+-----END PGP SIGNATURE-----
+
+--c3446b7a882d909a1fb5e6c3d06e6abafc7af191330f8ccc8edf46454865--
 
