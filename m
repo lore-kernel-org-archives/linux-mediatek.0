@@ -4,76 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CBF4C79FA0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2026 18:05:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FFCAC79F9E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2026 21:48:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S2NEzC2UGMBZ09SuEYn9EY1/OHQmZiixCQ4+5zdRg7w=; b=4J+JUtjp0p9BLnS2L8WxzLVHi7
-	r2iT1QutHt6Bi6HTlG8B/k7fPErxuMuS4aXD/DTUshPAjYXoq/KVAvzuL9FzDwL6jA16O9Z8g0UZt
-	rzY/nbtLMpCaB3A0DPktcETcEtaR64Ly5xliaep57A83rOWN/wCXVLK58NZz5qgrHzkE7IUnubk9W
-	SIAy+5OGQGtW0UKjkTg+CqM+rvZW8vhWU1QhjjdyTSjYtNp3xTmQ8qp31xwX8VwfHxMiONSMZuiFF
-	RnDkwjjZ0ZmpUlJtkMdvAxp/TY3Bp4whHW1aiMhZi1yEcZ6sLJvLNLqqhv2euc3f8fabcH1OQn381
-	LnZlhSYw==;
+	bh=FKBbhFVa059S4cyouWrgkTaUmVbQMUrd/Wmoh8VXRiI=; b=HU6nEzNdIv7GIo8LHGsG1r/JjB
+	TGIjefQBlSGYGscwmXG1Qo0muFLh/RsqakWeT/nUktF8WuA7spKdKVxYZRvYpWcv0Hzw76o8cPmVw
+	LgYjbn2B20rgMBZyBM9e8vHdd57h1+ZWm9L91RIW4pi6B9ogIPjlPyJHfd6bDe5VfGS4FlHGVAWzs
+	AfgVc44Sgr6neHsGSnPX59fC0GmjYbSxnNJucsSKkvpxewqj1kH7uQ6LGZqzlgqKJCvX33t70N/2r
+	2mITHfHv0tyP4zvu94d/ej7gntXbFq50J+RlmT2TmYZXUcMXg+/f/g+UUNQutlDdFKi/94JhS2igy
+	ix2lT0bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3diS-00000007Xl8-3hXa;
-	Mon, 07 Sep 2026 18:05:12 +0000
+	id 1x3hC3-00000007mpF-3S3h;
+	Mon, 07 Sep 2026 21:47:59 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3diO-00000007XhM-0zig;
-	Mon, 07 Sep 2026 18:05:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id AEEAB60213;
-	Mon,  7 Sep 2026 18:05:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 544F8C2BCFC;
-	Mon,  7 Sep 2026 18:05:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1788804307;
-	bh=HRKfDnU7fpe4hKYsO1qj++xJuTiGlwZYM7a7gsCq21Q=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=Q6w8fsQREm1eCpIPHDmn+hdFxAHEh88vOFEOJaFm5Niv3iB+YTyiPwVIwkHFlZU7z
-	 nKvaNlzGixY7NJOQuOHDzu0YraARtU5Q1JK//7vG+77TqN7qIBYGNxpkJogsDySee8
-	 irL8lp/MIaDXeQ8Un8Ei98cm6Gggb6173PJajhIWe7nnpbNL/IR4hdWivHQBEupdih
-	 8Q/zB3lnp1wl+UARMyr5lNhi5nPS+DrsBUEdPG3Bx18tjsuiqtl+SAnD+XyWCEQOa2
-	 DM4Kx4fna2SvaS11aLvQxg4ynQRrSvgaN9jWdnGqdu3dg37LOKQ9QcC3hju3ZVC8Ny
-	 p9Um2+3NKsL0w==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3052BC79F99;
-	Mon,  7 Sep 2026 18:05:07 +0000 (UTC)
-From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Mon, 07 Sep 2026 21:03:05 +0300
-Subject: [PATCH v2 1/3] dt-bindings: mailbox: mediatek,gce-mailbox: add
- mt6572
+	id 1x3hC2-00000007moW-3MA5;
+	Mon, 07 Sep 2026 21:47:58 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id ABC5F601FB;
+	Mon,  7 Sep 2026 21:47:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5D4551F00A3A;
+	Mon,  7 Sep 2026 21:47:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788817677;
+	bh=FKBbhFVa059S4cyouWrgkTaUmVbQMUrd/Wmoh8VXRiI=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=Ixu1xORodadWwi/1XFRNAhlOiK3hz2ID/uCTSrrn1ZAQ7BM6fCzTUG2AcWv01QHRJ
+	 1hpketZND3mj0Q2DNeo9Nq07+GHiPz4GFCL1TfS6uKJ0o9U6sm+/1uGxhWVSfKJIXZ
+	 JjnE0fSO/gJla807G+WttOfNP1OnqXR/MbV89cNZ2C0oCcM8uZ0IHe8usOJJF2zW+j
+	 S1/Ilr3i+NaoHHJonBr+G7WMZLbi1uUwhCTftEFjA1x3mh7Cs6ncI5I+Uf6KOb9qVV
+	 MRnwQHMbo5GOE7ky2qJ4rMAV0OwaEZaSJ1hoDPOuMTU7CPTU94u0VdW3ovlr4K2nnp
+	 N9Owo3NOgs+Ag==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, "hpp.iscas" <hppiscas@163.com>
+Cc: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Kai Chieh Chuang <kaichieh.chuang@mediatek.com>
+In-Reply-To: <20260905133210.63803-1-hppiscas@163.com>
+References: <20260905133210.63803-1-hppiscas@163.com>
+Subject: Re: [PATCH] ASoC: mt6351: Publish the OF module alias
+Message-Id: <178880730290.118202.3003996533999491750.b4-ty@b4>
+Date: Mon, 07 Sep 2026 19:55:02 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260907-6572-gce-v2-1-412a5b037290@protonmail.com>
-References: <20260907-6572-gce-v2-0-412a5b037290@protonmail.com>
-In-Reply-To: <20260907-6572-gce-v2-0-412a5b037290@protonmail.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Houlong Wei <houlong.wei@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Roman Vivchar <rva333@protonmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1788804305; l=2822;
- i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=/tLOb7ev/WM/LwpIpJ2zPo9FlE7c2orfGWi2CVoRzjw=;
- b=3Oxrmkyz4/yIStLEu203OBakaNbk1L4OkD0Yt892uXJuGpzqi8MbwMB6NCflV2Xjl3WBtwYlF
- N27vLwsUqavD26aiumMKqa2lhGVhXtZSqXSAgMboSAIksIKr1WuTUG6
-X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
- pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
-X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
- auth_id=777
-X-Original-From: Roman Vivchar <rva333@protonmail.com>
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1097; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=HXWAokHFgJeO1B9vW0w+sCrmC95999arTMjNFJAR6yI=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqnzEIcuBe9d/xYsCjxZOdBv1mqeJTu7OhGl0qN
+ I7sM5tkaemJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCap8xCAAKCRAk1otyXVSH
+ 0D8FB/40FRMYjNrvXYNR3VAn93IMc/gprjYD8QYyYiJo0cIiW/1pgqKrSnb8ndluSt3Y0Xk9dhu
+ FpHO2AFUcMPrcBI28PNypbcS4nfscT0DtOpzJ1rcz2As60H7MFRItBwX+53k9wN28uW6PJMkKvt
+ F8ENYsI/3K6ZO7ViVchdMdnjuapXWKOunAu+5cjHxiD5A0j5PWzgtVe5IUbYmDz9nMgs+1jB6kE
+ 9Cw35/AIswztZRkH/9sLoeVBOE1CW/SH0JIzq9/tNBTmZoi1SV6QPzHGYbfBdjMXXkFBsojZe1g
+ SgoI3YytVb8NJXFeuCmKVBa4+igGuauMhBEinhKe8dqR4OCR
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,97 +80,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Roman Vivchar <rva333@protonmail.com>
+On Sat, 05 Sep 2026 21:32:10 +0800, hpp.iscas wrote:
+> ASoC: mt6351: Publish the OF module alias
 
-Add a compatible string and a header for the GCE constants.
+Applied to
 
-Signed-off-by: Roman Vivchar <rva333@protonmail.com>
----
-There's also 'other' subsystem which covers 0x16XXXXXX range, however
-mt6572 doesn't seem to have any MMIO there. It's not included in this
-patch.
----
- .../bindings/mailbox/mediatek,gce-mailbox.yaml     |  1 +
- include/dt-bindings/mailbox/mediatek,mt6572-gce.h  | 52 ++++++++++++++++++++++
- 2 files changed, 53 insertions(+)
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.3
 
-diff --git a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
-index 587126d03fc6..d6e93010bb94 100644
---- a/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
-+++ b/Documentation/devicetree/bindings/mailbox/mediatek,gce-mailbox.yaml
-@@ -18,6 +18,7 @@ properties:
-   compatible:
-     oneOf:
-       - enum:
-+          - mediatek,mt6572-gce
-           - mediatek,mt6779-gce
-           - mediatek,mt8173-gce
-           - mediatek,mt8183-gce
-diff --git a/include/dt-bindings/mailbox/mediatek,mt6572-gce.h b/include/dt-bindings/mailbox/mediatek,mt6572-gce.h
-new file mode 100644
-index 000000000000..94eb6ea97542
---- /dev/null
-+++ b/include/dt-bindings/mailbox/mediatek,mt6572-gce.h
-@@ -0,0 +1,52 @@
-+/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-+/*
-+ * Copyright (c) 2026 Roman Vivchar
-+ */
-+
-+#ifndef _DT_BINDINGS_GCE_MT6572_H
-+#define _DT_BINDINGS_GCE_MT6572_H
-+
-+/* GCE HW thread priority */
-+#define CMDQ_THR_PRIO_NORMAL		0
-+#define CMDQ_THR_PRIO_HIGHEST		1
-+
-+/* GCE SUBSYS */
-+#define SUBSYS_14XXXXXX			0
-+#define SUBSYS_15XXXXXX			1
-+
-+/* GCE HW EVENT */
-+#define CMDQ_EVENT_MUTEX0		0
-+#define CMDQ_EVENT_MUTEX1		1
-+#define CMDQ_EVENT_MUTEX2		2
-+#define CMDQ_EVENT_MUTEX3		3
-+#define CMDQ_EVENT_MUTEX4		4
-+#define CMDQ_EVENT_MUTEX5		5
-+#define CMDQ_EVENT_MUTEX6		6
-+#define CMDQ_EVENT_MUTEX7		7
-+
-+#define CMDQ_EVENT_DISP_WDMA_EOF	12
-+#define CMDQ_EVENT_DISP_RDMA_EOF	13
-+#define CMDQ_EVENT_DISP_BLS_EOF		14
-+#define CMDQ_EVENT_DISP_COLOR_EOF	15
-+#define CMDQ_EVENT_DISP_OVL_EOF		16
-+#define CMDQ_EVENT_MDP_TDSHP_EOF	17
-+#define CMDQ_EVENT_MDP_RSZ1_EOF		18
-+#define CMDQ_EVENT_MDP_RSZ0_EOF		19
-+#define CMDQ_EVENT_MDP_RDMA_EOF		20
-+#define CMDQ_EVENT_MDP_WDMA_EOF		21
-+#define CMDQ_EVENT_MDP_WROT_EOF		22
-+
-+#define CMDQ_EVENT_MDP_WROT_SOF		24
-+#define CMDQ_EVENT_MDP_RSZ0_SOF		25
-+#define CMDQ_EVENT_MDP_RSZ1_SOF		26
-+#define CMDQ_EVENT_DISP_OVL_SOF		27
-+#define CMDQ_EVENT_MDP_WDMA_SOF		28
-+#define CMDQ_EVENT_MDP_RDMA_SOF		29
-+#define CMDQ_EVENT_DISP_WDMA_SOF	30
-+#define CMDQ_EVENT_DISP_COLOR_SOF	31
-+#define CMDQ_EVENT_MDP_TDSHP_SOF	32
-+#define CMDQ_EVENT_DISP_BLS_SOF		33
-+#define CMDQ_EVENT_DISP_RDMA_SOF	34
-+#define CMDQ_EVENT_CAM_MDP		35
-+
-+#endif
+Thanks!
 
--- 
-2.55.0
+[1/1] ASoC: mt6351: Publish the OF module alias
+      https://git.kernel.org/broonie/sound/c/9c3882ec1039
 
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
