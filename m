@@ -4,73 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A4AEC79FA7
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2026 16:30:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D143C79FA0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2026 16:35:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MYM5k0cT2N2UhpzxiCFOEacW12X9/VsuAy9xIeYsId4=; b=4vwngktucJtIvSiFs9pvOT8CVD
-	6aoSkXzLOv9+xAoqGaVrlasr9E1SVgNZAkHlo3oM8Q8RF1URw8fkBv7/xkXrYXGiFc8tcYssBLmtx
-	e92K6hlYTteB4K/fZtRZGYXuDRI1MY2Wg0Ens6kR5kPrs0yoDbXlBZ+VRPGD2bko1J5ao1+rAbDeg
-	iD9nezFp6p8BwXo0ARLiiTiFDvfhuRO5eWVgBrx6naMGmTLlvDf2412jttW9ebxK5aEEhrDC781KU
-	D7ZxxZ0r1IOncVmVaC8ghVVU4DenXKxYssBisUB5+HKuoV1EHLLMXyUYZ8GpFBvGIX1da26vMaoeH
-	sd9g0C0A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:MIME-Version:Subject:References:
+	In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sGAKvqenzy8j1ZHINkd1Kv/3zHBjEuus0R262brpzj4=; b=sHh+4bww6f9YBSSmxUcqjYEJHM
+	sYismvAImJgq9iOEXvOQ/oW0GKTDaha8aiX+vnmvnLMwLiBodHRPMGEusaUPuIONraTo6o/gQqh3I
+	7m0FSu36NuakP0fSN2mhpHPLd7VYhwowRjeE0NA4U7nw9dp+JKdqzrEbUko9HqtbFVOcw6gIIaa9G
+	qV6jhbPabIPdjEvmxKDTTzAfOMbbmdGDj78QZs7HbYgoil74ddv+fTKJWoP1ZRVJ4/G4hJtfTt5u/
+	15kWS+nKVS2jmSEolWSNqVO2bJhKAJUgucNwWw5Bsd8aWwdbAA06lJj2+kz65hv+NW0SybbZBIQF/
+	lozqq2rQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3cEx-00000007Id0-3HbR;
-	Mon, 07 Sep 2026 16:30:39 +0000
-Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.48])
+	id 1x3cK5-00000007JXy-30PN;
+	Mon, 07 Sep 2026 16:35:57 +0000
+Received: from forward501b.mail.yandex.net ([178.154.239.145])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3cEu-00000007IbI-2aXZ
+	id 1x3cJz-00000007JRI-2bfw
 	for linux-mediatek@lists.infradead.org;
-	Mon, 07 Sep 2026 16:30:38 +0000
-X-Virus-Scanned: Proofpoint Essentials engine
-Received: from mail3.candelatech.com (mail.candelatech.com [208.74.158.173])
-	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id 2B1851C0077;
-	Mon,  7 Sep 2026 16:30:33 +0000 (UTC)
-Received: from [192.168.3.187] (unknown [98.97.32.46])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by mail3.candelatech.com (Postfix) with ESMTPSA id 5ED3513C2B0;
-	Mon,  7 Sep 2026 09:30:32 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 5ED3513C2B0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
-	s=default; t=1788798632;
-	bh=0jap3ZDKcYB9NpovB34NodaYGLRQNOA87oMfzixSoDc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=b+M1y5rE1xdBy4i+oy/zYD3L+1rBaAApiScuYqt3tHSlzIEfZlgXml5O9c3e7gkcA
-	 3oakjFv806GSgyFouKq4nKfhvvthUnqFUmvsJ93Fuxp5Fiv95VNKDvu6cERfy1MtsN
-	 efVNc7bmb3Fj80bC/OmvinGynRJv2Zebkj7688Gk=
-Message-ID: <eb405366-6574-4e4c-a89d-363751ed848b@candelatech.com>
-Date: Mon, 7 Sep 2026 09:30:31 -0700
+	Mon, 07 Sep 2026 16:35:54 +0000
+Received: from mail-nwsmtp-mxback-production-main-77.sas.yp-c.yandex.net (mail-nwsmtp-mxback-production-main-77.sas.yp-c.yandex.net [IPv6:2a02:6b8:c23:4aa0:0:640:afcd:0])
+	by forward501b.mail.yandex.net (postfix) with ESMTPS id 030C58293A;
+	Mon, 07 Sep 2026 19:35:41 +0300 (MSK)
+Received: from mail.yandex.ru (2a02:6b8:c23:4a89:0:640:86c8:0 [2a02:6b8:c23:4a89:0:640:86c8:0])
+	by mail-nwsmtp-mxback-production-main-77.sas.yp-c.yandex.net (mxback) with HTTPS id QZPX8wJxveA0-6WSaPnpw;
+	Mon, 07 Sep 2026 19:35:40 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0upti.me; s=mail;
+	t=1788798940; bh=sGAKvqenzy8j1ZHINkd1Kv/3zHBjEuus0R262brpzj4=;
+	h=Message-Id:References:Date:Cc:Subject:In-Reply-To:To:From;
+	b=SPo/3ll19Q8/4H3pWFnFi+ZEgrqm1XoY2qMUgAq8m8rq1Na/Hzs9o1ub4kPUkBR2C
+	 b5dL1y/C9ffLeQ+Eak3fa8lroc8mxp95e9ZIdprhni0r3UfrXlycm7fNoB121QZhT9
+	 YKzJt6vrzWUUzh4M/P7GtNlvCiLfwDzgRuJowo/8=
+Authentication-Results: mail-nwsmtp-mxback-production-main-77.sas.yp-c.yandex.net; dkim=pass header.i=@0upti.me
+Received: by mail-sendbernar-production-main-68.sas.yp-c.yandex.net (sendbernar) with HTTPS id aab837aab8c70eda14295aa211673652;
+	Mon, 07 Sep 2026 19:35:39 +0300
+From: Ilya K <me@0upti.me>
+To: Ben Greear <greearb@candelatech.com>
+Cc: linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+In-Reply-To: <eb405366-6574-4e4c-a89d-363751ed848b@candelatech.com>
+References: <1767631788532094@64c4e675-cd08-4a74-816f-886742f9bfcd> <529a79bc-dab7-aa41-00bd-c47ecbefaa00@candelatech.com> <471221788538289@323ca970-5bd2-4c6b-b52d-2b863a718615> <3acf531c-bcc7-412b-b3bb-665069260e46@candelatech.com> <2028561788553569@f088f4ec-f441-47a1-b7e4-75a1052aa4df> <2418461788691106@84aa39c5-f501-4e64-8418-6a8b6eb88e21> <eb405366-6574-4e4c-a89d-363751ed848b@candelatech.com>
+Subject: Re:[bug] Triple whammy of mt7996e bugs on 7.2+
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [bug] Triple whammy of mt7996e bugs on 7.2+
-To: Ilya K <me@0upti.me>
-Cc: linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <1767631788532094@64c4e675-cd08-4a74-816f-886742f9bfcd>
- <529a79bc-dab7-aa41-00bd-c47ecbefaa00@candelatech.com>
- <471221788538289@323ca970-5bd2-4c6b-b52d-2b863a718615>
- <3acf531c-bcc7-412b-b3bb-665069260e46@candelatech.com>
- <2028561788553569@f088f4ec-f441-47a1-b7e4-75a1052aa4df>
- <2418461788691106@84aa39c5-f501-4e64-8418-6a8b6eb88e21>
-Content-Language: en-MW
-From: Ben Greear <greearb@candelatech.com>
-Organization: Candela Technologies
-In-Reply-To: <2418461788691106@84aa39c5-f501-4e64-8418-6a8b6eb88e21>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Mailer: Yamail [ http://yandex.ru ] 5.0
+Date: Mon, 07 Sep 2026 19:35:39 +0300
+Message-Id: <4175721788798939@f00554c7-d809-471c-9bcf-78e5d8eceab4>
 Content-Transfer-Encoding: 7bit
-X-MDID: 1788798634-Qedb_RYpJlvj
-X-PPE-STACK: {"stack":"us5"}
-X-MDID-O: us5;ut7;1788798634;Qedb_RYpJlvj;<greearb@candelatech.com>;6f76c88c2c731de9ad886e575864f8cc
-X-PPE-TRUSTED: V=1;DIR=OUT;
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260907_093036_682661_22715981 
-X-CRM114-Status: GOOD (  12.80  )
+X-CRM114-CacheID: sfid-20260907_093551_850173_CBA431EA 
+X-CRM114-Status: UNSURE (   5.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,27 +75,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/6/26 3:38 AM, Ilya K wrote:
->> This abomination is now booted on my hardware and I'll get back to you if it explodes again, which I'd expect to happen at some point
-> during the weekend at worst (and if it survives longer, that's already an improvement).
-> 
-> OK so it's been over a day with no explosions which is already better than its previous best. The question now I guess is: which one of the patches actually fixes it? And do the teardown paths still need fixing?
-> 
+> We do have some mt7996 tx-hang work arounds, but that bug was reproduced in STA mode in a fairly weird
+> test case with lots of virtual STA vdevs, so not sure it applies to your case.
 
-I don't know why your kernel wasn't working to begin with, so not sure exactly what in our tree would
-fix it.  We do have some mt7996 tx-hang work arounds, but that bug was reproduced in STA mode in a fairly weird
-test case with lots of virtual STA vdevs, so not sure it applies to your case.
+Yeah that's definitely not it then.
 
-Possibly too it is something we pulled in from Felix's tree that will likely be in 7.3
-kernel.
+> Possibly too it is something we pulled in from Felix's tree that will likely be in 7.3
 
-As a note, we found a regression in our current 7.2 tree, MLMR has regressed with scan failure being the
-symptom, hopefully we'll get that fixed this week.
-
-Thanks,
-Ben
-
--- 
-Ben Greear <greearb@candelatech.com>
-Candela Technologies Inc  http://www.candelatech.com
+I've tried just cherry-picking all the mt76 changes from Felix's current mt76-fixes (minus the AQL/PS stuff that does needs 7.3 bits in mac80211), booted it just now, jt hasn't exploded yet, so we'll see.
 
