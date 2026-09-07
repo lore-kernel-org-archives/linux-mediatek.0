@@ -4,66 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A54C9C79F9E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2026 06:17:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1808FC79F9E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2026 06:53:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7Q2+48t1wSiZJUybl6pivADZo58b0sHhnIp8KamQgA0=; b=NbC0YXzRYWtSlbcDd+unDrI6ol
-	/VXLmz37gJXxCZ1SujVgL3LrjkxK+BMmZVn067RSdT9VSYMZIgQvqbMvJaafuznlhGBx7fSLSQIyJ
-	2WF213aTF5aPhNuJMtANXU4mUuoaoiyBVXnzxctuiQwR89FOCPyt0Ocdj/PrxLVQgUHaBQyvK829L
-	VQ+5lpRC3yp9FWQOOaKO/cRkIX5Wltkgmv8y15lIrrztZKcz5MgEcPE3DOR8/M0pL4jjGaRUa5y9E
-	cLCTW4SiY/xsgSGpXI+4gHRvgUywJq2vv/MISWIoQk6xtJslwLHW+f9tfb7ZVHAAtOPnthxVEL0VW
-	ro5JvXmA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0YpADwP/mkKyGO+EKdZI2bBLv0b75u6CTO5qSfwEOn4=; b=zqlMoadWdIH/oAnEiNwW247GA7
+	aQEGeMkNisUMo0zcl2m1/SQsAGhBTkdKBj3NVz6NfgXFi5kyt9N2gYZ2Ivn3W0VJ+KPEjplhSnhnN
+	GOsTkjLIgzC/r5iIQX1b1KYHsfsT+YhZuxnB+e0Vpj0wOyPpx3TqOY9w32gKBC3YQvC3Xa0M/7KFQ
+	WpXlGzsbV5/mE6ozCt2rUCOoErxg3YfkyQQ7jUPkhEacWzbZOpqQjJAquG+RB3F692UZoLqsz0W0v
+	YVTj/N4zoZQYlr4YDULXT8U7DfANaFTV+ggkf9yoAKxzG1Q2wqDvg5W5aa9xpA37tJXxi52OaquAt
+	kSPK6sqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3Sf5-000000060Pg-1F3z;
-	Mon, 07 Sep 2026 06:16:59 +0000
-Received: from out-170.mta1.migadu.com ([2001:41d0:203:375::aa] helo=mta1.migadu.com)
+	id 1x3TEZ-000000064Mc-33S3;
+	Mon, 07 Sep 2026 06:53:39 +0000
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3Sf2-000000060OY-1Sb9
+	id 1x3TEW-000000064LG-0nmF
 	for linux-mediatek@lists.infradead.org;
-	Mon, 07 Sep 2026 06:16:57 +0000
-X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=um/5G4Ktg5bYB4/JmYOtP+jNUERGAJTRJYD0oR1JWK0=;
- c=simple/simple; d=linux.dev;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1788761809; v=1; x=1789366609;
- b=NjLpTG1JlRw2/g0gx8leRwJWDpdI75WLX1LsXFajbv2ihaF8Lj31ry8kzdH9QrTgbeVEr2a+
- 0K8a1XX2CBfNsV4+zV51j37mszE0ErfPSiMrVFKmIZuCzksM8SXXPuIFiHvuiSHcknbfIkJc88F
- 8I0/0hOSHyQhF3UdT6hazDWg=
-X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id a8b123c8c6109945;
-	Mon, 07 Sep 2026 06:16:49 +0000
-X-Mizu-Trace-ID: a8b123c8c6109945
-X-Migadu-Flow: FLOW_OUT
-Message-ID: <55e5864b-a292-476f-a6c4-20f89412abae@linux.dev>
-Date: Mon, 7 Sep 2026 14:16:39 +0800
+	Mon, 07 Sep 2026 06:53:38 +0000
+Received: by mail-pg1-x536.google.com with SMTP id 41be03b00d2f7-cc1cf287ef8so2787714a12.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 06 Sep 2026 23:53:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1788764015; x=1789368815; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=0YpADwP/mkKyGO+EKdZI2bBLv0b75u6CTO5qSfwEOn4=;
+        b=PsH2DVrf4yLxVUH/J/UgJ5mxKmOl6ujVzTXA0Zgv3DM9PIs9QDOdZxrMo92XprdNq9
+         kiI2stOs1lcPpbYuqKQPYUA7nfyZy1Ky2+r9Ej33vdvIRSnsDATrkrHmUnodivF7WLos
+         5BEghFcgpuov6UylGAG97SUxg0mJVk1xdswPLFlDs85litINGz4nSAElG6GjUmI0/gUa
+         PiEj14fuDf50soUyXShynPTx5pmk5YGDtzfxZ4ou0YYSMh6HqgPgo4xzE++1O32Rr0Lj
+         kjZtyWNwWfaO6BiAsO4uzydvq+3/svvl7gdsWr1OR9+q9yefS/9Ix1djlJZkhJEK8Vov
+         5faQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788764015; x=1789368815;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=0YpADwP/mkKyGO+EKdZI2bBLv0b75u6CTO5qSfwEOn4=;
+        b=jyhPycehmwoBdwgn15qTSpoVzzgJxD2bgzi9RvYQ9V8CJOrIykJ5hgcBwWUnePq60C
+         28HpGY1r8OLybkWKv1wzDBKKE5AvWSK7pnSnhsSeMecfow9wMqh2+NFkMhA61wx0BdcR
+         FMskHHkeGHk053tVp8TheDr+5yUmpUxu0Bz7Hj3l0fOVWZmzlMbvwgx2+doy0HXkYOtd
+         xc0eMCL9/qi5VN2mVElTjNbHOo2r27/MDlKIMwZg6d8DqFZvbld91PcMR8b3w4PnoqLh
+         +G+dIRDEZ8JVmEgJOFCMcjNni2xdYOU/qkYepPCBTL+AHc5qxUU0TJ5Vw5NNNh89qY5I
+         1tmA==
+X-Forwarded-Encrypted: i=1; AKwUvByNj12YJ4WMlkQm8WVMYwxX/O/PZ1KsXipvs2g5mt2GEwHR+XNu0u+0Jtd7iauSjH7E3h8HRrT95c/akhF1RQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++lDBQ5/SMOSDKpOcsoxAFLh0iqsrifMWeE5cVNu0XSGetjpGcZZ
+	bfIHcLq/gCaUAtITrvvlFm9m3WZ99aScoxd178+OzcSkEFMhXy4D1P1i
+X-Gm-Gg: AYBFou2mlpJ7lxtsuNxGsHbhQKANCW80cnTozdrGb9Dylk+I9XPLhdNy7Pvrsc1/Yox
+	S14Iz9zzvcwhuC2uu8iqr+8pdMydlyp1gxjvC70EiNR2CozC+EMHdRiNdTAvdo2BT9YT7puL4kP
+	ylce14Y8UR4blB0/0S46urlgWTSVqWCKSZzoGh8Dhfc3gZhIXQlp8DFL76D7SgntptS2g2Wluu8
+	hc67R2M80W2abcLd/oR+R+qkfAGs5ktsbi+NxKJJOhaYmiuuAue56QIK5Gxq4LsgTWnmoy6k5iL
+	CBvjCpLI5YEXdvoAWDC000rKX1NBEc3uVVutuA2YIKMB3P1oV1S8z2+klfCy4M5+T6uLCTv75Uj
+	NDKaRS2oxGvDFoYtxIUS2U8jJUEugBLtR+s6uO6mQWRUdFTrs41SQyiI0hPKssUmIaPQNg4jS99
+	j1v3DNpEWqihgfkKF9kHfcKv2CB+WvvUn0z5uan+pgg089q2VnZPlAaUJHmUIcd6JJxLSCNhhK/
+	VJ1DUujOdj2/w==
+X-Received: by 2002:a05:6a20:e607:b0:3d3:ae0f:5267 with SMTP id adf61e73a8af0-3da3a152a11mr33125804637.19.1788764015179;
+        Sun, 06 Sep 2026 23:53:35 -0700 (PDT)
+Received: from volcano9f6e-hostos.amd.com ([165.204.217.251])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3339aa33e96sm24822574eec.12.2026.09.06.23.53.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 06 Sep 2026 23:53:34 -0700 (PDT)
+From: Hemanth Selam <hemanth.selam@gmail.com>
+To: Thomas Gleixner <tglx@kernel.org>,
+	Radu Rendec <radu@rendec.net>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Paul Walmsley <pjw@kernel.org>,
+	Samuel Holland <samuel.holland@sifive.com>,
+	Linus Walleij <linusw@kernel.org>
+Cc: linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-riscv@lists.infradead.org
+Subject: [PATCH 02/14] irqchip: fix typos in comments
+Date: Mon,  7 Sep 2026 12:23:28 +0530
+Message-ID: <20260907065328.32009-1-hemanth.selam@gmail.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net v3] net: phy: mediatek-ge: disable EEE on the MT7530
- PHY
-To: Vladislav Karmanov <vladislav.karmanov.dev@gmail.com>,
- netdev@vger.kernel.org
-Cc: andrew@lunn.ch, daniel@makrotopia.org, dqfext@gmail.com,
- SkyLake.Huang@mediatek.com, hkallweit1@gmail.com, linux@armlinux.org.uk,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, chester.a.unal@arinc9.com,
- sean.wang@mediatek.com, olteanv@gmail.com, yangshiji66@outlook.com,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20260904202800.3410838-1-vladislav.karmanov.dev@gmail.com>
-From: Qingfang Deng <qingfang.deng@linux.dev>
-In-Reply-To: <20260904202800.3410838-1-vladislav.karmanov.dev@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260906_231656_527395_436AAAAB 
-X-CRM114-Status: GOOD (  15.10  )
+X-CRM114-CacheID: sfid-20260906_235336_232389_7185F0AB 
+X-CRM114-Status: GOOD (  14.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,42 +104,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2026/9/5 4:28, Vladislav Karmanov wrote:
-> The MT7530 internal GE PHY advertises EEE by hardware default, but its
-> EEE support is defective: with EEE advertised, some link partners fail
-> to establish a stable link. On a 2-pair (4-wire) cable where both ends
-> advertise gigabit, 1000BASE-T training cannot succeed, and instead of
-> falling back to 100 Mbps the port loops, so no link or DHCP lease is
-> ever obtained. MediaTek confirms the hardware is the root cause (Landen
-> Chao, 2021): "EEE of the 10-year-old MT7530 internal gephy has many IOT
-> problems, so it is recommended to disable its EEE."
->
-> mtk_gephy_config_init() used to clear the EEE advertisement early, but
-> commit af3b4b0e59de ("net: phy: mediatek-ge: do not disable EEE
-> advertisement") removed that on the rationale that the DSA subdriver
-> already performs an early disable. That holds for MT7531, whose
-> mt7531_setup() clears MDIO_AN_EEE_ADV on each switch PHY, but not for
-> the MT7530 PHY: neither the MT7621 integrated switch nor the dedicated
-> MT7530 IC ever had such a loop, so removing it left those boards
-> without any working early EEE disable and the link flapping came back.
->
-> Since the broken hardware is the PHY, fix it in the PHY driver so it
-> covers all users of this PHY, integrated in a switch or standalone:
->
->    - clear MDIO_AN_EEE_ADV in probe(), before anything can negotiate
->      EEE with the link partner;
->    - call phy_disable_eee() so phylib does not write the advertisement
->      back on later renegotiations and userspace cannot re-enable EEE.
->
-> Auto-negotiation then falls back to a stable 100 Mbps link instead of
-> looping at gigabit. Tested on ASUS RT-AX53U (MT7621): with a 2-pair
-> cable on the WAN port, a single clean 100 Mbps link comes up and a
-> DHCP lease is obtained, where the unpatched driver loops.
->
-> Fixes: af3b4b0e59de ("net: phy: mediatek-ge: do not disable EEE advertisement")
-> Suggested-by: Andrew Lunn <andrew@lunn.ch>
-> Signed-off-by: Vladislav Karmanov <vladislav.karmanov.dev@gmail.com>
+Fix typos in comments, reported by scripts/checkpatch.pl using the
+misspelling list in scripts/spelling.txt.  Only touches comments, no code
+changes.
 
-Acked-by: Qingfang Deng <qingfang.deng@linux.dev>
+Assisted-by: Cursor:claude-opus-5
+Signed-off-by: Hemanth Selam <hemanth.selam@gmail.com>
+---
+ drivers/irqchip/irq-mtk-cirq.c    | 2 +-
+ drivers/irqchip/irq-sifive-plic.c | 2 +-
+ drivers/irqchip/irq-vic.c         | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
+diff --git a/drivers/irqchip/irq-mtk-cirq.c b/drivers/irqchip/irq-mtk-cirq.c
+index 914d1d639fe3..d30c34ce0f56 100644
+--- a/drivers/irqchip/irq-mtk-cirq.c
++++ b/drivers/irqchip/irq-mtk-cirq.c
+@@ -247,7 +247,7 @@ static int mtk_cirq_suspend(void *data)
+ 		writel_relaxed(mask, reg);
+ 	}
+ 
+-	/* set edge_only mode, record edge-triggerd interrupts */
++	/* set edge_only mode, record edge-triggered interrupts */
+ 	/* enable cirq */
+ 	reg = mtk_cirq_reg(cirq_data, CIRQ_CONTROL);
+ 	value = readl_relaxed(reg);
+diff --git a/drivers/irqchip/irq-sifive-plic.c b/drivers/irqchip/irq-sifive-plic.c
+index 5b0dac104814..a7cddadddf40 100644
+--- a/drivers/irqchip/irq-sifive-plic.c
++++ b/drivers/irqchip/irq-sifive-plic.c
+@@ -452,7 +452,7 @@ static irq_hw_number_t cp100_get_hwirq(struct plic_handler *handler, void __iome
+ 		return 0;
+ 
+ 	/*
+-	 * Interrupts delievered to hardware still become pending, but only
++	 * Interrupts delivered to hardware still become pending, but only
+ 	 * interrupts that are both pending and enabled can be claimed.
+ 	 * Clearing the enable bit for all interrupts but the first pending
+ 	 * one avoids a hardware bug that occurs during read from the claim
+diff --git a/drivers/irqchip/irq-vic.c b/drivers/irqchip/irq-vic.c
+index e38104c5064e..607e3284f700 100644
+--- a/drivers/irqchip/irq-vic.c
++++ b/drivers/irqchip/irq-vic.c
+@@ -478,7 +478,7 @@ static void __init __vic_init(void __iomem *base, int parent_irq, int irq_start,
+ /**
+  * vic_init() - initialise a vectored interrupt controller
+  * @base: iomem base address
+- * @irq_start: starting interrupt number, must be muliple of 32
++ * @irq_start: starting interrupt number, must be multiple of 32
+  * @vic_sources: bitmask of interrupt sources to allow
+  * @resume_sources: bitmask of interrupt sources to allow for resume
+  */
 
