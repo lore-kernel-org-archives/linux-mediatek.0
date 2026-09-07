@@ -4,101 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA65BC79F89
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2026 12:04:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF86FC79F89
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Sep 2026 13:29:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O7h2S3qXgjH0d2/zuTeGXDlTjAza128Ox3NWLM9is1c=; b=fGUZcw/MSdTyyYkdr3ZuGqu9kH
-	zzl9M1wWkj8uS096cWQMCAVfB1rp5eTKMFbCAnm42fhKlcfIbibcORXqkJMfmejf7LHHyk8llVH/Z
-	P/pfXuT75fl1q+ZJ5sBl9Iz03BYxOp1mAja1j5s4WUVLrSx8t6t+rExCmVvAcPIDoy0G40TQomySX
-	0KzzmsQU7nbcKCdBDz8FDbbmaREBFNKB+uJAJxPBwlKTJhxWg364LDpa5Qrvz2RvTYd2ChqvJ7tzS
-	URjdTZCpmcj2bwdzQ0gUzQnaee1U5IgyIP4HRwK1bll0xu4X9zPhmI6Wh/kDDh1kiIJ1U7uDZ/BX2
-	khqxkP2A==;
+	bh=IBVf7GNwiAue4dehfynxHKxKXcAJS2MErbg19828qsg=; b=tMnRNvwMSm3sSA58yq7evAeGVz
+	tlwpT81h42wdnrzyJaR09oJq/MN5dtnqYeZBYk93PfK//3Y5ZKU48UBSRwhZKuSWTJbLDBwKYoqdZ
+	aot4y0Du4oAaQWgCyMjKIKxfGCCT+yfeijJtYtaZ4xWInrA9+iAZsLWUtIVPSgAZ7DeJbSbwx9BVd
+	y3WANZVGe3XklxIor9Y+S1vy6PFBbbONCeOYrUmKI2X3VSAYAwvqXVJRCNzFknv0+X7ISF1WLSwoK
+	g+PC8OAvavofAppkr25rBFDSfXPSYOZxvgTwtP6ilrHNoa+/HW3RFgsWWOfltNOKijTb/fg3ak5I2
+	qPy2GgGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3Y5B-00000006klH-2chC;
-	Mon, 07 Sep 2026 12:04:17 +0000
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3Y56-00000006khj-3sNw
-	for linux-mediatek@lists.infradead.org;
-	Mon, 07 Sep 2026 12:04:15 +0000
-Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-2d8f265cbe6so25757275ad.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 07 Sep 2026 05:04:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788782652; x=1789387452; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=O7h2S3qXgjH0d2/zuTeGXDlTjAza128Ox3NWLM9is1c=;
-        b=PVch0mF8Tyt1ivRvxlXAaR3ibL+f956MpUOrYSIREwWpCee6HAz6hCnwEUiT1mnwde
-         fbnRHPCq7TZLtFaq2N0RwAY+VkgeYfjEnQ47Y/ak+cjcjIVnwwqkWvspw5fCbQUs4R6c
-         60nh4LapgGzkpXNd2ZRr7CkdfXishlAcAPExpIicu9VOx2ySamtHbOC+zgBYQYFcwM7F
-         VMEfkeiRzHn4jNugib+eQlocHScWxOHoEOT9f80JmGUYYa4dS5KKr4kpI3wgomb4+t6r
-         Xhzah8dCiH0hxOjRpuGjQMk1YGjBpLy3K0aHW0kj/a4bqDQkEsS0jPI48RTeNXc0AW5j
-         FYQA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788782652; x=1789387452;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=O7h2S3qXgjH0d2/zuTeGXDlTjAza128Ox3NWLM9is1c=;
-        b=JanXrYQjPPxoajZAFR0GBZMtsstIM7x/xF3lBAvsdD2HwN1P9v7CypfUXZqRnzS50b
-         Q2TDzXDzn+9DNwrkPBv0WqxbJQZtNGMSloW53nNuQxzvsvObqLNSdCk1eJV+EKhRAyRZ
-         ZXfYSLbGt1faJsZVNLQQEAmCMor28owSODSful60LGu12kbNU0A35PPDce0dhO69KvDT
-         VuAu63TbMGA7mZgTXSdxipiqMsw3mCYkuzhZ5OHd698NLRoB2FtJWfqMwUqXCcCvh80o
-         NWz0a3fmeG5hAJCr9XOm5T5DB5q7jB0np+uCgTmkRYDCC8FBnMviA+lp1siO5wwpUPKj
-         MK2Q==
-X-Forwarded-Encrypted: i=1; AKwUvByqVQjLpOnnavBjd1yc+FFCrpk3Lf4HdSlFGPpYzNnKxQ2jAmXoDUPeTiQHldwkaIQIrAPisSv/pOmwMOeAqA==@lists.infradead.org
-X-Gm-Message-State: AFuF++neDFMOxaiqgbJ8yjHGWRzrv2iGH8rhfKwoby6CJk0cmiIwo7/E
-	NCNKMUt1NjFrmwvFwh12MWd/ImBhDhafAqXxa2dekVslrPo8s/hUxtDh
-X-Gm-Gg: AYBFou2XBJs6LlpxgF8sq1irEwwYNMXJrZPa6RCSI6jPKgghGfKbvdyH/jf7fiSC3v4
-	Cl/DzIHX4sYiTcEEGKhTOr/ZWamFTYMQPL4BKtW+FIlvTr9GBYbO0IXeIPV/lA+XA/ZWuiln9Kr
-	gu8P1W+11GvvpelW/cH/aRWqOf2cMTYzCTsi7+pcZl2xoGtETC5vwWJpOGzsEasJHEX1+F8FNRY
-	+WDvlatg1v5cFZgV5Fst6QCrgJYjnc5U18cCws1tEA+mxtw6q+p1kGhwpSU6rAzs0VLruRWu8Gi
-	fWSADhS5Znj9TfxeiZBLzHsMHb07kizly/j3YotDE5CGmtWgkR1G2vskrXTFCsOlouoGQMCgseP
-	dYR/H8TTwGJfvujMXoIgENMO5gP3K3EIMqgsYel2iNM8hxROrKuTy2TtG9BwpwWhW9Id9pwzy9g
-	td0XIKNNOyxcxywlhkGlo4RtrSt5LN0sHzA33HsyRNi2mK7J9gQpPgDOgqpPvX4/Fuf1tonfr0o
-	FwlVUKkUzD4Gr1yB2ZACnyz7I1qnZAcVhxqeYkTOPPflLle0zT97D8HzjROavpBEQ1rx+P3P0DY
-	WPnE
-X-Received: by 2002:a17:902:ed8b:b0:2c8:2808:3ec9 with SMTP id d9443c01a7336-2db126d8fc2mr211708425ad.12.1788782652165;
-        Mon, 07 Sep 2026 05:04:12 -0700 (PDT)
-Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2db14ae85eesm43064815ad.82.2026.09.07.05.04.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Sep 2026 05:04:11 -0700 (PDT)
-From: phucduc.bui@gmail.com
-To: Mark Brown <broonie@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Cezary Rojewski <cezary.rojewski@intel.com>,
-	Kees Cook <kees@kernel.org>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	Trevor Wu <trevor.wu@mediatek.com>,
-	Douglas Anderson <dianders@chromium.org>,
-	linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH 7/7] ASoC: mediatek: mt8188: fix clk leak on error in audsys_clk_register
-Date: Mon,  7 Sep 2026 19:03:10 +0700
-Message-ID: <20260907120310.135693-8-phucduc.bui@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260907120310.135693-1-phucduc.bui@gmail.com>
-References: <20260907120310.135693-1-phucduc.bui@gmail.com>
+	id 1x3ZP7-00000006wOb-1jwi;
+	Mon, 07 Sep 2026 13:28:57 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1x3ZP4-00000006wNh-1wX1;
+	Mon, 07 Sep 2026 13:28:55 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B49641476;
+	Mon,  7 Sep 2026 06:28:47 -0700 (PDT)
+Received: from [10.0.152.207] (unknown [10.0.152.207])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 893583F7D8;
+	Mon,  7 Sep 2026 06:28:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
+	t=1788787731; bh=Q43zjFngUH4CVRm0yM8HzVAnPDiw5923YGyUdTIL2X8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=iDqy+gXdsbWjQJPd91C1nM1zZ+xgWeS11WliE9Osu1N/a3Fjgd/2p2Xx/8MhgRZLR
+	 ucE++QR5nAlr8Qq4g07e9u7HQKvsSBNE2oaru/6qRuQM+o3PTaTePwbVhyW9QXlP4A
+	 f0nPXWjg8bGVTYGo8ofymc0I7B9rALdmwVs+EelI=
+Message-ID: <d7bb2cf4-11c3-468c-8749-99cc408299c7@arm.com>
+Date: Mon, 7 Sep 2026 14:28:47 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [BUG/PATCH] drivers/usb/mtu3: Work around mtu3_log_ep
+ double-indirection issue
+To: paulmck@kernel.org, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, rostedt@goodmis.org
+Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <a3ee0655-d818-48e0-84d1-475e6c16c991@paulmck-laptop>
+Content-Language: en-GB
+From: Vladimir Murzin <vladimir.murzin@arm.com>
+In-Reply-To: <a3ee0655-d818-48e0-84d1-475e6c16c991@paulmck-laptop>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260907_050412_966653_091F94F9 
-X-CRM114-Status: GOOD (  14.63  )
+X-CRM114-CacheID: sfid-20260907_062854_581270_AA92DCE9 
+X-CRM114-Status: GOOD (  16.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,68 +71,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: bui duc phuc <phucduc.bui@gmail.com>
+On 9/4/26 00:59, Paul E. McKenney wrote:
+> This is more bug report than patch, but this patch does suppress the
+> splat, so there is that.  ;-)
+> 
+> Kernels built with either KASAN or KCSAN produce this splat:
+> 
 
-devm_add_action_or_reset() is called after the loop that registers gate
-clocks. If kzalloc() fails mid-loop, the function returns -ENOMEM before
-that call, so cleanup is never registered and all previously registered
-clocks leak permanently.
+I see it on kernel w/o KASAN or KCSAN. IIUC, this is new check introduced
+by b5cc230af5e5 ("tracing: Warn when an event dereferences a pointer in TP_printk()")
+so adding Steven :)
 
-Move devm_add_action_or_reset() before the loop so cleanup is always
-scheduled. The clock from the current (failing) iteration is not yet
-stored in afe_priv->lookup[i], so it still needs an explicit
-clk_unregister_gate() call.
+> [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
+> [    0.000000] ------------[ cut here ]------------
+> [    0.000000] Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
+> [    0.000000] WARNING: kernel/trace/trace_events.c:420 at test_double_dereference+0x144/0x14c, CPU#0: swapper/0/0
+> [    0.000000] Modules linked in:
+> [    0.000000] CPU: 0 UID: 0 PID: 0 Comm: swapper/0 Not tainted 7.3.0-rc1 #15247 PREEMPT
+> [    0.000000] Hardware name: linux,dummy-virt (DT)
+> [    0.000000] pstate: 600000c5 (nZCv daIF -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> [    0.000000] pc : test_double_dereference+0x144/0x14c
+> [    0.000000] lr : test_double_dereference+0x144/0x14c
+> [    0.000000] sp : ffffc80aa7633bf0
+> [    0.000000] x29: ffffc80aa7633bf0 x28: ffffc80aa7c0f047 x27: 000508b58019388f
+> [    0.000000] x26: 0000000000000003 x25: 0000000000000007 x24: ffffc80aa5fceff8
+> [    0.000000] x23: ffffc80aa7c0f05a x22: ffffc80aa64edfe8 x21: ffffc80aa7c0fce8
+> [    0.000000] x20: ffffc80aa7c0f047 x19: 0000000000000013 x18: 0000000000000001
+> [    0.000000] x17: 6572656420656c62 x16: 756f642073616820 x15: 746c61685f746573
+> [    0.000000] x14: 0000000000000000 x13: ffff000139d90000 x12: 0000000000000045
+> [    0.000000] x11: 00000000000000cf x10: ffff00013f546428 x9 : ffff000139d90000
+> [    0.000000] x8 : 3fffffffffffc000 x7 : 0000000000000001 x6 : 0000000000000001
+> [    0.000000] x5 : ffff00013f4e6440 x4 : 0000000000000000 x3 : 0000000000000000
+> [    0.000000] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffffc80aa764a700
+> [    0.000000] Call trace:
+> [    0.000000]  test_double_dereference+0x144/0x14c (P)
+> [    0.000000]  trace_event_raw_init+0x37c/0x5d8
+> [    0.000000]  event_init+0x34/0xc0
+> [    0.000000]  trace_event_init+0xec/0x588
+> [    0.000000]  trace_init+0x24/0x6e0
+> [    0.000000]  start_kernel+0x4a0/0x8ec
+> [    0.000000]  __primary_switched+0x88/0x90
+> [    0.000000] irq event stamp: 0
+> [    0.000000] hardirqs last  enabled at (0): [<0000000000000000>] 0x0
+> [    0.000000] hardirqs last disabled at (0): [<0000000000000000>] 0x0
+> [    0.000000] softirqs last  enabled at (0): [<0000000000000000>] 0x0
+> [    0.000000] softirqs last disabled at (0): [<0000000000000000>] 0x0
+> [    0.000000] ---[ end trace 0000000000000000 ]---
+> [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_disable has double dereference in TP_printk: &REC->gpd_ring->dma
+> [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_enable has double dereference in TP_printk: &REC->gpd_ring->dma
+> 
+> Apparently, the code should instead create another entry in
+> TP_STRUCT__entry(), and do the double-indirection TP_fast_assign() instead
+> of TP_printk().  But simply removing the offending double indirection
+> in TP_printk() gets this splat out of the way of other debugging.
+> 
 
-Fixes: fd67a7a1a22c ("ASoC: mediatek: mt8188: fix use-after-free in driver remove path")
-Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
----
- sound/soc/mediatek/mt8188/mt8188-audsys-clk.c | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+Indeed, splat has gone after applying the patch.
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c b/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
-index 972f097a13ca..9f3b3a777577 100644
---- a/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-audsys-clk.c
-@@ -170,7 +170,7 @@ int mt8188_audsys_clk_register(struct mtk_base_afe *afe)
- 	struct mt8188_afe_private *afe_priv = afe->platform_priv;
- 	struct clk *clk;
- 	struct clk_lookup *cl;
--	int i;
-+	int i, ret;
- 
- 	afe_priv->lookup = devm_kcalloc(afe->dev, CLK_AUD_NR_CLK,
- 					sizeof(*afe_priv->lookup),
-@@ -179,6 +179,10 @@ int mt8188_audsys_clk_register(struct mtk_base_afe *afe)
- 	if (!afe_priv->lookup)
- 		return -ENOMEM;
- 
-+	ret = devm_add_action_or_reset(afe->dev, mt8188_audsys_clk_unregister, afe);
-+	if (ret)
-+		return ret;
-+
- 	for (i = 0; i < ARRAY_SIZE(aud_clks); i++) {
- 		const struct afe_gate *gate = &aud_clks[i];
- 
-@@ -194,8 +198,10 @@ int mt8188_audsys_clk_register(struct mtk_base_afe *afe)
- 
- 		/* add clk_lookup for devm_clk_get(SND_SOC_DAPM_CLOCK_SUPPLY) */
- 		cl = kzalloc_obj(*cl);
--		if (!cl)
-+		if (!cl) {
-+			clk_unregister_gate(clk);
- 			return -ENOMEM;
-+		}
- 
- 		cl->clk = clk;
- 		cl->con_id = gate->name;
-@@ -206,5 +212,5 @@ int mt8188_audsys_clk_register(struct mtk_base_afe *afe)
- 		afe_priv->lookup[i] = cl;
- 	}
- 
--	return devm_add_action_or_reset(afe->dev, mt8188_audsys_clk_unregister, afe);
-+	return 0;
- }
--- 
-2.43.0
+Thanks
+Vladimir
+
+> Signed-off-by: Paul E. McKenney <paulmck@kernel.org>
+> Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> Cc: <linux-usb@vger.kernel.org>
+> Cc: <linux-arm-kernel@lists.infradead.org>
+> Cc: <linux-mediatek@lists.infradead.org>
+> 
+> diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
+> index 89870175d63561..7c414e196d5871 100644
+> --- a/drivers/usb/mtu3/mtu3_trace.h
+> +++ b/drivers/usb/mtu3/mtu3_trace.h
+> @@ -236,11 +236,11 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+>  		__entry->direction = mep->is_in;
+>  		__entry->gpd_ring = &mep->gpd_ring;
+>  	),
+> -	TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p/%pad flags %c:%c%c%c:%c",
+> +	TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p flags %c:%c%c%c:%c",
+>  		__get_str(name), usb_ep_type_string(__entry->type),
+>  		__entry->maxp, __entry->slot,
+>  		__entry->mult, __entry->maxburst,
+> -		__entry->gpd_ring, &__entry->gpd_ring->dma,
+> +		__entry->gpd_ring,
+>  		__entry->flags & MTU3_EP_ENABLED ? 'E' : 'e',
+>  		__entry->flags & MTU3_EP_STALL ? 'S' : 's',
+>  		__entry->flags & MTU3_EP_WEDGE ? 'W' : 'w',
+> 
 
 
