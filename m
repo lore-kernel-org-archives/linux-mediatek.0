@@ -4,221 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91B59C79FAE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2026 13:33:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 022E2C79F82
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2026 14:40:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oBFNVj2kLlU69sIJYvOKKWz0Sx+Dkf5W3Wxl62ossz8=; b=O9pOkm89JVaoazZfQIKDhEl85D
-	EyJcxsWhNt060qoRX798AXUqIoFdO5zZYLftUPHGWrApXs3f8DGhRWH1DCzWgx+zwa4rdP/DquvEj
-	Rd5P7s9egQDN26ZCXMypZmds7e90cTnOYA6HNCPVrqDa2QHA+kfSbW2NEoB1uw6CYtMUjvgAGCAit
-	iUfgeDUrWxC8BqVJ8KP3m4L+ux38w9XCq69ZGEiOQuU07STrp6z8E2kPTJmhzhgDDYfYaCMCiAmMm
-	LyzrLIF3Dkb5UhNjS/rz+pH4+Hl999bdKH7kPfnLvNKAOEHZCgjtIj6fc6hTENHqXmhIfNHp74HLq
-	gs+1TJQQ==;
+	bh=Miv8sjNJdTG6Gu0+wUlQ27sQKF6CmSEymk2ANPK2DPg=; b=cvPbR6NnRL02DwQ/gaz64fXf50
+	bC1W9i3Of5YZD9tRW3jHiEy0mhsFIJBltmoRpS+Qv+XF3Ggkq/jq9kgC6RXw+GETAbBgVto1pGECt
+	YG4dDVU8jEVO8MR2U4Ko4FvHdyZXvh6xErUIOafuQ0Tc4d1sgPwtG3ersCsZzct8mh0hgTmFmep8N
+	JWk0VyGvGEtFfaecH7d36EhmyhJ+iWaP4Xp5jJ4NnksrgOfzcNVNNKxELdbQdNN3X195Z4aw+KCr4
+	VJcqI8VS34uvGUaVc0zddF1kpCEs93LuAFSuUFgn7bgx0j3L1AM3ovLhx9TxINEqONT4W+ognR43K
+	V20kPGDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3vxR-00000009A7Y-0UvT;
-	Tue, 08 Sep 2026 13:33:55 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x3x0H-00000009IXi-3tHC;
+	Tue, 08 Sep 2026 14:40:55 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3vxL-00000009A6Y-2t5F;
-	Tue, 08 Sep 2026 13:33:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
-	:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=oBFNVj2kLlU69sIJYvOKKWz0Sx+Dkf5W3Wxl62ossz8=; b=AL3Px2UXv8J60x4uqn3BAUsgKA
-	GoYVXLhL6cGLH3YFA6fKcus6CEXsVhUSoV4W2xkalHzysyJs/UCOFHbJt1lqV0ik9KcyAG8x3g+6m
-	heYxdFjGXhHiUeJWAdSfO/ChX0+6wkXgEZ8k0YOdt95/H6wu6H6HRb5KYCAiKksO2L/iLxC84BTTx
-	TyMW+1BGmHpJw97sR/mjTPZso/0wama2zauQM9wuMXjMOSxVkJEAVQLhvn+xQe8Y2eSYWapeZ1BPR
-	MACCwUEOeOPr7fswOlFvhLb16Y/2smZQt3hcuf/qDOUcp35eUQ/Q/2mVWiwSkS10I3qWjXEd/iojX
-	7YIfZw3w==;
-Received: from mgamail.intel.com ([192.198.163.17])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x3vxF-0000000HTQq-0rJg;
-	Tue, 08 Sep 2026 13:33:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1788874421; x=1820410421;
-  h=from:to:cc:subject:date:message-id:references:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=w037SQnPopZStC335sgre0FdEchqYHc3VfbeT/VaBlk=;
-  b=HDBDk89PSYso3utahA7dBi4xybe5MxmjvGiwSfFROJcigyMYpyUbPVb+
-   xCDM7rP971GUB4DmLQhW5msrKmlbK99vg2hYx2ty1lWT6KJRmulStVJKX
-   MWh3b6RUFNyjQ2MJmTnbY5OQM6HwEUrvjTWM6FKECGbKzvxuoDkXCjVw/
-   QiiCXXa94wSUlhQQZkNZ42s9TM/rZHS3geIaoaMmqmUW1luewF+moILz1
-   yJgwtt+KKG9YcI6Z0RCXE15qKzPJpB8NaqgRQ/OsfJxfmKuBDqA/9BPY1
-   YIZV8TE+vJLET5pi9cDKb/Y6mWYNoxYQkBTZHxwmyscNXNsT7VdrWGTLy
-   w==;
-X-CSE-ConnectionGUID: Vj2vwU7fTgaV+tSHPehSog==
-X-CSE-MsgGUID: Pw5kzNs0To2Un4Um/wHJdQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11899"; a="89148913"
-X-IronPort-AV: E=Sophos;i="6.25,269,1779174000"; 
-   d="scan'208";a="89148913"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Sep 2026 06:33:32 -0700
-X-CSE-ConnectionGUID: 0gQuASwsS+ilsuf6DStnWg==
-X-CSE-MsgGUID: 8uIPbpYkTQuBYCe5TzzDHg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,269,1779174000"; 
-   d="scan'208";a="267755251"
-Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
-  by fmviesa007.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Sep 2026 06:33:31 -0700
-Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.46; Tue, 8 Sep 2026 06:33:31 -0700
-Received: from ORSEDG901.ED.cps.intel.com (10.7.248.11) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.46 via Frontend Transport; Tue, 8 Sep 2026 06:33:31 -0700
-Received: from SA9PR02CU001.outbound.protection.outlook.com (40.93.196.10) by
- edgegateway.intel.com (134.134.137.111) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.46; Tue, 8 Sep 2026 06:33:20 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=ZVZ4aFphJC1zvZnLfp0y5u71hN/JV6SNhqPJ6xQsBOZgsKBIFKiagRKSKGYNZHwbmxL/3JxjxDd7J1/12EQ8vUBPZGVvOuIWiQptz/7PqKjD8S9jL9vtf8MG0rT8Atse6ygylN6VRxa0HT7XRSQa5QygFkgrJ8kGyEomFjPbfy6JHQzZY1NiGCGSnaIqmANO8ehHFLqODuZ4SBskQ962QJx3LDd1L5ZtYOaHynUA7wpxmAX3GO+oes7OG472cF63cg8teVy0veM6oFj0pJ7vjR4lZWWxu6k1U0N3d/4+/Mcc0CFzLlem3/sapvYuIz1aNBcmtUjvWyWajOccOgA47A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=oBFNVj2kLlU69sIJYvOKKWz0Sx+Dkf5W3Wxl62ossz8=;
- b=PrxlAt1lVVVjvPGd/vPCd3JcQ3zps1cPit/+P3GzrCODuUiQAL3+uiUw0YqyJgEih03q4qwSzfu9r53yVRvomFUw9QEeV96uar+WHfZ4ZMIQRZXQNKLhMED/JLlNF0GUkIBC8z0FmLMuYMZL8INxVC9/3qJkey3FhTZjYGSQgKd09MLRuGIyl0w4JBvY5nhmIvlad2iFKd5beo2yL5mBJrsaH12Zf260oV7lQfgRdJNskMVzhwQIdXOjSZBGwlYPA7I7V3ymLhSYio5TyNe6nZm8hnYwCXfikPyYKBIZxAsr+1qXTNaxiMMNikhIedKVg0tDsvB3NelyIDN9uEQVHA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
- by DS0PR11MB7832.namprd11.prod.outlook.com (2603:10b6:8:f5::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.382.15; Tue, 8 Sep
- 2026 13:33:12 +0000
-Received: from IA3PR11MB8986.namprd11.prod.outlook.com
- ([fe80::e6f0:6afb:6ef9:ab5c]) by IA3PR11MB8986.namprd11.prod.outlook.com
- ([fe80::e6f0:6afb:6ef9:ab5c%6]) with mapi id 15.21.0406.005; Tue, 8 Sep 2026
- 13:33:11 +0000
-From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
-To: Siddharth Vadapalli <s-vadapalli@ti.com>,
-	"dario.binacchi@amarulasolutions.com" <dario.binacchi@amarulasolutions.com>,
-	"mkl@pengutronix.de" <mkl@pengutronix.de>, "mailhol@kernel.org"
-	<mailhol@kernel.org>, "msp@baylibre.com" <msp@baylibre.com>,
-	"florian.fainelli@broadcom.com" <florian.fainelli@broadcom.com>,
-	"jonas.gorski@gmail.com" <jonas.gorski@gmail.com>, "andrew@lunn.ch"
-	<andrew@lunn.ch>, "olteanv@gmail.com" <olteanv@gmail.com>,
-	"davem@davemloft.net" <davem@davemloft.net>, "edumazet@google.com"
-	<edumazet@google.com>, "kuba@kernel.org" <kuba@kernel.org>,
-	"pabeni@redhat.com" <pabeni@redhat.com>, "kurt@linutronix.de"
-	<kurt@linutronix.de>, "hauke@hauke-m.de" <hauke@hauke-m.de>,
-	"chester.a.unal@arinc9.com" <chester.a.unal@arinc9.com>,
-	"daniel@makrotopia.org" <daniel@makrotopia.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>, "ansuelsmth@gmail.com"
-	<ansuelsmth@gmail.com>, "linusw@kernel.org" <linusw@kernel.org>,
-	"luizluca@gmail.com" <luizluca@gmail.com>, "alvin.sipraga@analog.com"
-	<alvin.sipraga@analog.com>, "clement.leger@bootlin.com"
-	<clement.leger@bootlin.com>, "justin.chen@broadcom.com"
-	<justin.chen@broadcom.com>, "dlan@kernel.org" <dlan@kernel.org>,
-	"rogerq@kernel.org" <rogerq@kernel.org>, "hkallweit1@gmail.com"
-	<hkallweit1@gmail.com>, "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"rjui@broadcom.com" <rjui@broadcom.com>, "sbranden@broadcom.com"
-	<sbranden@broadcom.com>, "bcm-kernel-feedback-list@broadcom.com"
-	<bcm-kernel-feedback-list@broadcom.com>, "opendmb@gmail.com"
-	<opendmb@gmail.com>, "andrei.botila@oss.nxp.com" <andrei.botila@oss.nxp.com>,
-	"wangruikang@iscas.ac.cn" <wangruikang@iscas.ac.cn>, "amadeus@jmu.edu.cn"
-	<amadeus@jmu.edu.cn>, "kees@kernel.org" <kees@kernel.org>,
-	"tmshlvck@gmail.com" <tmshlvck@gmail.com>, "c-vankar@ti.com"
-	<c-vankar@ti.com>, "horms@kernel.org" <horms@kernel.org>,
-	"vadim.fedorenko@linux.dev" <vadim.fedorenko@linux.dev>,
-	"daniel.zahka@gmail.com" <daniel.zahka@gmail.com>,
-	"nora.schiffer@ew.tq-group.com" <nora.schiffer@ew.tq-group.com>,
-	"v-singh1@ti.com" <v-singh1@ti.com>, "oss@vassilevski.com"
-	<oss@vassilevski.com>, "haokexin@gmail.com" <haokexin@gmail.com>,
-	"alex@sverdlin.org" <alex@sverdlin.org>, "lgs201920130244@gmail.com"
-	<lgs201920130244@gmail.com>
-CC: "linux-can@vger.kernel.org" <linux-can@vger.kernel.org>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-renesas-soc@vger.kernel.org"
-	<linux-renesas-soc@vger.kernel.org>, "linux-riscv@lists.infradead.org"
-	<linux-riscv@lists.infradead.org>, "spacemit@lists.linux.dev"
-	<spacemit@lists.linux.dev>, "linux-omap@vger.kernel.org"
-	<linux-omap@vger.kernel.org>
-Subject: RE: [PATCH net-next 24/33] net: bcmasp: Remove comma after
- sentinel-entry in match-table
-Thread-Topic: [PATCH net-next 24/33] net: bcmasp: Remove comma after
- sentinel-entry in match-table
-Thread-Index: AQHdPCeKBSwgpc1pS06aFMpAiLgvX7bEtGPg
-Date: Tue, 8 Sep 2026 13:33:11 +0000
-Message-ID: <IA3PR11MB8986ECEFACA574777AADC435E5B12@IA3PR11MB8986.namprd11.prod.outlook.com>
-References: <20260904043724.2955444-1-s-vadapalli@ti.com>
- <20260904043724.2955444-25-s-vadapalli@ti.com>
-In-Reply-To: <20260904043724.2955444-25-s-vadapalli@ti.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|DS0PR11MB7832:EE_
-x-ms-office365-filtering-correlation-id: ae12aab5-b457-4c03-6621-08df0dadba70
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|23010399003|7416014|366016|1800799024|376014|10067099003|6133799003|18002099003|22082099003|56012099006|4143699003|11063799006|921020|38070700021;
-x-microsoft-antispam-message-info: hw8kdjPtnPPZG3Y3T1H6o/QF0gzBz+xN9XDHV4anfVfFcuLJxKQ/TlhmmMLuy8x5vtdPbr2fQvoLlXEZ1mC87LA65eJmmNhzSoZZpAEjJeR8/sRighdmwDWlTpwhH8iWzVH5VgAs8AxEdXOFzVO04PfxOeUqw+qQZzSOPCo6GF1VLf/AbwabXWSLExHA2bf7ZrZ9olzFDI8VFGX+8GcZa8vbynubSRoXSnfx5Fyci6SYOiekyoZicSQkuAtKhwl6Mt90ZBMtyu6dd4TYAWfCIiUEmZbrVP8LPlIohP0vnDpgk/QYl4yu9P9M+Z0GQPuo1uk+p+1btdz5G2+wCAAHWZkpc9oolSsgnbcKB9mXshvsLZsDTWBdNBKJ3sbHEvyscD5NgxNu2WiSdLk7bcblee9Fh/KwOYSyZ2Bh8M5gsuwqKiNhib8VKV711WaXpbPuFkSS2JyO3XGE5twzp9bCM+a+xdLWHrcp1lCDcH2qCl1UxPB+HvhMkTk3VCCHpCvDtM01f4zc5mxBZbFtp2MyrLUODg21+hx38hP9VPzWYyirFnzt99WrSdKoOkF/anySrrkyLx0+jun9VIsH+tGvZjs847IFrM4BRz5FrFnxw+CdltVZVa0G58nAPridSDKpb/oCEId6sCgzO5v4sXolK7ziDPWkd5DWMut8myTf4PO9DXWCLoou+FHbuU2BaElzSgPIU2K7iAV1CZI0zXCZCAvyHlIheHp3sw4EJoXjgiBKdd6RJFwMIhWYuujVQfgg
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:IA3PR11MB8986.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(7416014)(366016)(1800799024)(376014)(10067099003)(6133799003)(18002099003)(22082099003)(56012099006)(4143699003)(11063799006)(921020)(38070700021);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?5x4VDUIPtziJ+lyRqm7W0MXB7T68QKBc+6ZVDDvDjm8kAmmZR8FZzirgfZ59?=
- =?us-ascii?Q?bi65sE60iAhLJaKMwoTkBjlJ8FD2c1bPnwQwuEOpoBuq8WHvOxs7HFQ1XZIZ?=
- =?us-ascii?Q?HvT7YHeI+Pc+IK1zzFYQ8PN0nrd51f16wafhKYfSVmyOFJV892LI77RYQcGn?=
- =?us-ascii?Q?xwpM9pggsJ0/rbk9ApJv6oSTZxlDz76ATDhr1EEgWVTt1u929fpSlaNoJa6I?=
- =?us-ascii?Q?JycBD/tW4RgumOMIrlXv6wWhApw+MoF2k+veF4lt+dcHlh4Le+zLOuZuM+4C?=
- =?us-ascii?Q?B3JajVY+0R9w+zk7+0X+s+3GfaFnFQssP+fgy/bpnhZjLqFMVym+9yIJS6Cy?=
- =?us-ascii?Q?qLMZ00MHmROb28GpfFEFccKuaL+0Vp3ejCMNLBuxC8xA5k1xArijN8KYyWAP?=
- =?us-ascii?Q?e2szXKVMkMxJoCPuqnEzMPY4axSmKNPRD2qapZd6RHucSPSSk1m1a16nrnGb?=
- =?us-ascii?Q?FAjUOvoRdK8msfx7Pgz4zr/h0bpmupNMXTkLJSr/x18T6J7FzBkU+pMdJuag?=
- =?us-ascii?Q?ZeTIt19VCP69PCev9N5iiE+tJTqersuhyM7Cfsul0wWxGRslr4HHZ9rxy5We?=
- =?us-ascii?Q?Ed1dEI1I5ZYxb2CP/4Q9nokPuzSQJSIUsSGmuzdljayZlgCnfFG+WV5JV30P?=
- =?us-ascii?Q?6GIAbtFrUe9II6kS39BMX0XQTxr4NleqchWYXJv1jCoz7HfJp9hNuEcDWWuF?=
- =?us-ascii?Q?bTV/q6kagp5QGrdP/LAonQHZr3qfTc0wuyrDNbXygHYCfzzcVC7QDiRLKXpI?=
- =?us-ascii?Q?k7uo+l/n+Y60CW7aEJDQHieWkWyQ0pL3rkXm+61/B6XjAoRWQVCkCM1AXyom?=
- =?us-ascii?Q?7N0GteaVymo/Qw/Aw02vQqZka+2QJv1tCJuFr3A1z0XC4fhWeHRud73/3Au6?=
- =?us-ascii?Q?IeqF4MO66QInAzOSVVkqIGaiCmDt+AHFpaOMZMBJ7+pL3FqK331I7r+eGT/M?=
- =?us-ascii?Q?b7YiNhHpw0jjatOcmFzPB5QAvbzy12BGxpPBmG9Boq91IovxAGsmrWqKhJbZ?=
- =?us-ascii?Q?+xoT93gw+8SIHXflafBo1oJ7c1inFf8X9Tbu1mqECQ+WJS1w94+KV+PpRAk+?=
- =?us-ascii?Q?Ul+zA0njLmJrUKsNuWdJyJ9BAhxpe7pCr5iNjn06XlZtLMQIubzxBWOwrAm6?=
- =?us-ascii?Q?M/m5c+IRwSj0b34+cuP0P0Z/jwHypo5O0jwOCo+kxgIpj6rROJHsPRu4b4/b?=
- =?us-ascii?Q?oe3cyHawXFsHHl/UKeQKizVjZIY0Yzu8bPzB58JW5OCClsO/m3ouo9wUyFSN?=
- =?us-ascii?Q?scq55gbXj73KykJqv0Cr3TvIk2+hLM6pEimv2T8iCJenlVkRBEyJOlDZkrNI?=
- =?us-ascii?Q?hienSJCAFH2pE+sTcyDuzpwJ6UD6Ewaf5hTMctqUcn7C0j7u5+Zfn+UM17D4?=
- =?us-ascii?Q?nGKUvJr+GtSfUzZXKSCnyC/XvCQ7+xZVRQvT4QBuklcc37cZ7hvFlLdWY7sf?=
- =?us-ascii?Q?wPnovXWcOdN/LSJS1EFwtpv82lk0PXlipGO3GS1bJGQTAGkf5/hOB0/YACc1?=
- =?us-ascii?Q?IL6nr5gwX31eaPre4t9I7gY7t/rj/PxTa329ka0oMKS9rd/CFnDL/1ADrnU4?=
- =?us-ascii?Q?XJsIldpONZ1JloiUVPsM8HNnm7LoJ8IsgTKfm0F3CKRlTMH3cczIoxWmjF88?=
- =?us-ascii?Q?7p6f0o+GJMESEh1l43PMjCVdxLR9ysjpgAljEVlZI6+Sx10E0WFkG9nCkpAw?=
- =?us-ascii?Q?edrbA4P9XrvGDUAICAJIqifTPLplmdL+2lJr+7Sd0xvvIMbuMUDM6tXFQA+E?=
- =?us-ascii?Q?hl3oH+7d0YRxwXanj1AcZGyAo46zDNo=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	id 1x3x0F-00000009IWy-1uu1
+	for linux-mediatek@lists.infradead.org;
+	Tue, 08 Sep 2026 14:40:52 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-482ea739de2so3221383f8f.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 08 Sep 2026 07:40:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1788878449; x=1789483249; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:subject:to:from:date:message-id:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=Miv8sjNJdTG6Gu0+wUlQ27sQKF6CmSEymk2ANPK2DPg=;
+        b=HPycdrGtydCnceO+RPqPTRQxhckjww04rDd7Jo2vvnLy2vTkhZCIN9le9/2OUBlvSi
+         JGavPPozUIHgIRIKu4xw80oMGS73iMVbKL7+GWIt6ryXEpgGISaaBkqlAo7PBwzbMWwn
+         Hsn7zGRrAXZCy5gxH02OprMWX7UW9icV7YEMmf9nPDcT5e/hrUIQmBvIpLAWwD2c83K6
+         iNuCWr5fLFSWBq3+TZj/Wz3VYUBm+vDla7Q2pmmKm21XKIXx/Mb7r4bYh59BdciIB4Lx
+         06+Ym9TbJTIo3Y6JQJFgEnJlYTaKCocEio7uhBjW0Tig67CByQX4jwo5ejo6tvEOhHRk
+         69sg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788878449; x=1789483249;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:subject:to:from:date:message-id:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=Miv8sjNJdTG6Gu0+wUlQ27sQKF6CmSEymk2ANPK2DPg=;
+        b=Q1njVMeeXa9ryN9orG/GfeHLqg2wTfpuTgjIf6IrCDZ00yHRIJ4DAgsZ4NKdtmyh8M
+         bkoq88FMYiA0ne6SIK415Ad7P8uMwyQ1EhMXUSBHm2EiiFfugfj6SRIukMXj6+x9mHhc
+         XW6ja03oo4ZdYPPbynIYf4bOAqudkF/KsM9doVQt+yaS7nDg+wHkZC9aMOXkCeXpsnD8
+         SEVrrlRoyMD+R0VYHLPelQjb3XquSQEczEGYFV+FQSb33QTKDpHW8SEHWtbECybYACc/
+         3SKjCqspm/Jo+ph2EQ+cuhzKFN9U5xlDmLPU3AZ4aqwYe8CoD9k8FftVsmaexVeq8IU1
+         gSww==
+X-Forwarded-Encrypted: i=1; AKwUvBxPyaEyKydyREdd0/O6HVRx9W4HN8rGW+Hv64PArbUOe+PsvkxtXlaWaDiK/AQlj5PW2WtepG9O1UD6gOcVeA==@lists.infradead.org
+X-Gm-Message-State: AFuF++lV/6F1pgDT3rLCrWwNgkdB+LVUlMYoTvIxumBWX+IIlN15nKZq
+	X/IV4FCtyFdr/zglnQvT+xZCcrx0zxB8MmB1+VkIQcNHRzfrZvyc2kh/
+X-Gm-Gg: AYBFou1AVJxDOZtwJmAxhky4Eg5puqhEVnXySbFWtnAkAbfzL/Y3rhBmsrpTBCAQVJB
+	ortR8u9PNEqVX3X6pOdTnfbQUbkBadCiwzkCfSQWzJXyG1B1+MJ4xaFmK77rRVIdVDF1DWvN8Vl
+	sn9veFnINZiB5NL04gXT4IUccuNif9tijJHiRZyLimGuDCW2zT50VO3Z36n8jkT+TQGqzIuBAy9
+	WqJ8z3JwHO/IRWcbUORif3j5QjZbXa4b4cvQasH4hyqy5WM7jsZGL0uwaH7bXK6A40A3bhSYI3d
+	/uxKpELsUr+Ya+QR3SPsKntxGyfVHIwqLcd2gE2wnXRkbTzPUsbdMWdUNBzO2sgm4ES3IU6z0LO
+	eJi99qkKmxA1Balwp2E10VoqFLmUR77OHPTjQKg5SaqH0dsbRplMvaakYfDj1COnhm9mWJamIYj
+	1A8PI1DGesFLnXZ8lvpNmPGUw+cDzrJjh9gFFzfnQCQGH1rBHxSVae8Yu4ff4mf9zwjDxVetGqE
+	QEHz6ly8EQJJLiHTrAd/0xzc5Milt/aMLrW
+X-Received: by 2002:a05:6000:46c2:b0:484:4769:18a4 with SMTP id ffacd0b85a97d-485872cd677mr23543135f8f.14.1788878449028;
+        Tue, 08 Sep 2026 07:40:49 -0700 (PDT)
+Received: from Ansuel-XPS. (host-79-26-252-140.retail.telecomitalia.it. [79.26.252.140])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-485883959f0sm39338196f8f.10.2026.09.08.07.40.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 08 Sep 2026 07:40:48 -0700 (PDT)
+Message-ID: <6aa01e70.ebbd881c.32bd35.196e@mx.google.com>
+X-Google-Original-Message-ID: <aqAebOgm5w4VILoS@Ansuel-XPS.>
+Date: Tue, 8 Sep 2026 16:40:44 +0200
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Shuah Khan <skhan@linuxfoundation.org>,
+	Randy Dunlap <rdunlap@infradead.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Nick Desaulniers <ndesaulniers@google.com>,
+	Bill Wendling <morbo@google.com>,
+	Justin Stitt <justinstitt@google.com>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
+Subject: Re: [PATCH net-next v15 00/12] net: pcs: Introduce support for
+ fwnode PCS
+References: <20260901083001.8044-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: wlcc5ISkoypEYVAtCOrg5CDhXGmgp9fFaAA0SrTAhh7YDuoG4LPk+dcarx1vmh2jx9d3SF363/i/woAYg4oTRN/VXUgt5ddMzrNrirDHtGrZDMarFS48bjrnmx8gnSBkppGwlrZyA6p+1tlZXen0PC0yOKyH44NYW17Js0vV+rMit0mwgTiqMYVpZKCFGgmMRg7zqHzOHyPYC2Cyqs5vp4T4zgzYRv6fMxT1Lm+ELsMA3TmZuByaNcHKGPX2EJ6LOi82w+osUMOn38OOadi/+m0f+1r4Eyl6qjztjjY5QO+jwLqHjb9NXJ81wnscQumPLXgdAeIzzPW3C3BQgLUt1A==
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ae12aab5-b457-4c03-6621-08df0dadba70
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Sep 2026 13:33:11.7963
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: VR1ptsVnR/Wv6wi69lFixfUtSZA1M8c3Gmdl7MBIvpgpIxU3cMEzYncdJjjaDe3dk3aciGl72eGFpztrpkoGhBITYWgDEw+zS40fKEZUBSI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7832
-X-OriginatorOrg: intel.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260901083001.8044-1-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260908_143341_886349_EB424B2C 
-X-CRM114-Status: GOOD (  15.45  )
+X-CRM114-CacheID: sfid-20260908_074051_533682_B06786B3 
+X-CRM114-Status: GOOD (  41.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -233,76 +121,126 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-> -----Original Message-----
-> From: Siddharth Vadapalli <s-vadapalli@ti.com>
-> Sent: Friday, September 4, 2026 6:37 AM
-> To: dario.binacchi@amarulasolutions.com; mkl@pengutronix.de;
-> mailhol@kernel.org; msp@baylibre.com; florian.fainelli@broadcom.com;
-> jonas.gorski@gmail.com; andrew@lunn.ch; olteanv@gmail.com;
-> davem@davemloft.net; edumazet@google.com; kuba@kernel.org;
-> pabeni@redhat.com; kurt@linutronix.de; hauke@hauke-m.de;
-> chester.a.unal@arinc9.com; daniel@makrotopia.org;
-> matthias.bgg@gmail.com; angelogioacchino.delregno@collabora.com;
-> ansuelsmth@gmail.com; linusw@kernel.org; luizluca@gmail.com;
-> alvin.sipraga@analog.com; clement.leger@bootlin.com;
-> justin.chen@broadcom.com; dlan@kernel.org; rogerq@kernel.org;
-> hkallweit1@gmail.com; linux@armlinux.org.uk; rjui@broadcom.com;
-> sbranden@broadcom.com; bcm-kernel-feedback-list@broadcom.com;
-> opendmb@gmail.com; andrei.botila@oss.nxp.com; wangruikang@iscas.ac.cn;
-> amadeus@jmu.edu.cn; kees@kernel.org; tmshlvck@gmail.com; c-
-> vankar@ti.com; horms@kernel.org; vadim.fedorenko@linux.dev;
-> daniel.zahka@gmail.com; nora.schiffer@ew.tq-group.com; v-
-> singh1@ti.com; oss@vassilevski.com; haokexin@gmail.com;
-> alex@sverdlin.org; Loktionov, Aleksandr
-> <aleksandr.loktionov@intel.com>; lgs201920130244@gmail.com
-> Cc: linux-can@vger.kernel.org; netdev@vger.kernel.org; linux-
-> kernel@vger.kernel.org; linux-arm-kernel@lists.infradead.org; linux-
-> mediatek@lists.infradead.org; linux-renesas-soc@vger.kernel.org;
-> linux-riscv@lists.infradead.org; spacemit@lists.linux.dev; linux-
-> omap@vger.kernel.org; s-vadapalli@ti.com
-> Subject: [PATCH net-next 24/33] net: bcmasp: Remove comma after
-> sentinel-entry in match-table
->=20
-> Since sentinel is the last entry and we do not expect further entries
-> following it, remove the comma.
->=20
-> Signed-off-by: Siddharth Vadapalli <s-vadapalli@ti.com>
+On Tue, Sep 01, 2026 at 10:29:15AM +0200, Christian Marangi wrote:
+> This series introduce a most awaited feature that is correctly
+> provide PCS with fwnode without having to use specific export symbol
+> and additional handling of PCS in phylink.
+> 
+> At times there were 2 different implementation (this and the one
+> from Sean) but Sean agreed that this can be picked and used in favor
+> of his implementation as long as his case with race condition is
+> correctly handled.
+> 
 > ---
->  drivers/net/ethernet/broadcom/asp2/bcmasp.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/broadcom/asp2/bcmasp.c
-> b/drivers/net/ethernet/broadcom/asp2/bcmasp.c
-> index 972474893a6b..3393b5dcbc9a 100644
-> --- a/drivers/net/ethernet/broadcom/asp2/bcmasp.c
-> +++ b/drivers/net/ethernet/broadcom/asp2/bcmasp.c
-> @@ -1209,7 +1209,7 @@ static const struct of_device_id
-> bcmasp_of_match[] =3D {
->  	{ .compatible =3D "brcm,asp-v2.1", .data =3D &v21_plat_data },
->  	{ .compatible =3D "brcm,asp-v2.2", .data =3D &v22_plat_data },
->  	{ .compatible =3D "brcm,asp-v3.0", .data =3D &v30_plat_data },
-> -	{ /* sentinel */ },
-> +	{ /* sentinel */ }
->  };
->  MODULE_DEVICE_TABLE(of, bcmasp_of_match);
->=20
-> @@ -1217,7 +1217,7 @@ static const struct of_device_id
-> bcmasp_mdio_of_match[] =3D {
->  	{ .compatible =3D "brcm,asp-v2.1-mdio", },
->  	{ .compatible =3D "brcm,asp-v2.2-mdio", },
->  	{ .compatible =3D "brcm,asp-v3.0-mdio", },
-> -	{ /* sentinel */ },
-> +	{ /* sentinel */ }
->  };
->  MODULE_DEVICE_TABLE(of, bcmasp_mdio_of_match);
->=20
-> --
-> 2.51.1
+> First the PCS fwnode:
+> 
+> The concept is to implement a producer-consumer API similar to other
+> subsystem like clock or PHY.
+> 
+> That seems to be the best solution to the problem as PCS driver needs
+> to be detached from phylink and implement a simple way to provide a
+> PCS while maintaining support for probe defer or driver removal.
+> 
+> To keep the implementation simple, the PCS driver devs needs some
+> collaboration to correctly implement this. This is O.K. as helper
+> to correctly implement this are provided hence it's really a matter
+> of following a pattern to correct follow removal of a PCS driver.
+> 
+> A PCS provider have to implement and call fwnode_pcs_add_provider() in
+> probe function and define an xlate function to define how the PCS
+> should be provided based on the requested interface and phandle spec
+> defined in fwnode (based on the #pcs-cells)
+> 
+> fwnode_pcs_get() is provided to provide a specific PCS declared in
+> fwnode at index.
+> 
+> A simple xlate function is provided for simple single PCS
+> implementation, fwnode_pcs_simple_xlate.
+> 
+> A PCS provider on driver removal must call fwnode_pcs_del_provider()
+> to delete itself as a provider.
+> 
+> ---
+> Second PCS handling in phylink:
+> 
+> We have the PCS problem for the only reason that in initial
+> implementation, we permitted way too much flexibility to MAC driver
+> and things started to deviate. At times we couldn't think SoC
+> would start to put PCS outside the MAC hence it was OK to assume
+> they would live in the same driver. With the introduction of
+> 10g in more consumer devices, we are observing a rapid growth
+> of this pattern with multiple PCS external to MAC.
+> 
+> To put a stop on this, the only solution is to give back to phylink
+> control on PCS handling and enforce more robust supported interface
+> definition from both MAC and PCS side.
+> 
+> It's suggested to read patch 0003 of this series for more info, here
+> a brief explaination of the idea:
+> 
+> This series introduce handling of PCS in phylink and try to deprecate
+> .mac_select_pcs.
+> 
+> Phylink now might contain a linked list of available PCS and
+> those will be used for PCS selection on phylink_major_config.
+> 
+> MAC driver needs to define pcs_interfaces mask in phylink_config
+> for every interface that needs a dedicated PCS.
+> 
+> These PCS needs to be provided to phylink at phylink_create time
+> by setting the .fill_available_pcs and .num_possible_pcs in phylink_config.
+> Helpers to parse PCS from fwnode are provided
+> fwnode_phylink_pcs_count() that will return the count of PCS entries
+> described in the firmware node and fwnode_phylink_pcs_parse() that will
+> fill a preallocated array of PCS pointer with the actual available PCS
+> (ignoring the one that still needs to be probed).
+> 
+> phylink_create() will fill the internal PCS list with the passed
+> array of PCS. phylink_major_config and other user of .mac_select_pcs
+> are adapted to make use of this new PCS list.
+> 
+> The supported interface value is also moved internally to phylink
+> struct. This is to handle late removal and addition of PCS.
+> (the bonus effect to this is giving phylink a clear idea of what
+> is actually supported by the MAC and his constraint with PCS)
+> 
+> The supported interface mask in phylink is done by OR the
+> supported_interfaces in phylink_config with every PCS in PCS list.
+> 
+> PCS removal is supported by forcing a mac_config, refresh the
+> supported interfaces and run a phy_resolve().
+> 
+> PCS late addition is supported by introducing a global notifier
+> for PCS provider. If a phylink have the pcs_interfaces mask not
+> zero, it's registered to this notifier.
+> 
+> PCS provider will emit a global PCS add event to signal any
+> interface that a new PCS might be available.
+> 
+> The function will then check if the PCS is related to the MAC
+> fwnode and add it accordingly.
+> 
+> A user for this new implementation is provided as an Airoha PCS
+> driver. This was also tested downstream with the IPQ95xx QCOM SoC
+> and with the help of Daniel also on the various Mediatek MT7988
+> SoC with both SFP cage implementation and DSA attached.
+> 
+> Lots of tests were done with driver unbind/bind and with interface
+> up/down also by adding print to make sure major_config_fail gets
+> correctly triggered and reset once the PCS comes back.
+> 
+> The dedicated commits have longer description on the implementation
+> so it's suggested to also check there for additional info.
+> 
+> It's worth to mention that OpenWrt is currently using this on
+> Mediatek SoC and QCOM ipq807x/ipq60xx/ipq50xx and Airoha are
+> already ported in staging tree for testing.
+> 
 
-For me it looks like this PR doesn't clean up anything meaningful.
-Is there a different opinion?
+Any news of this? I feel this version is now very mature and wonder if an
+human review is possible or any feedback of any needed change to make any
+progress?
 
-
+-- 
+	Ansuel
 
