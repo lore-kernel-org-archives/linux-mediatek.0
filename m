@@ -4,68 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2F14C79F82
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2026 18:52:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95390C79FA1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2026 21:59:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DOKPmpWRmdDBglqf84YkB3HAz/fgt7fFnGQ4z3lV4J8=; b=K3VIPyYMOsT7Xg7qNFyNLOipnY
-	oIbUOPv3lZIytL8xgEwaoxAJwqe+nL+P0VZ0n6wVvIIKUT1waEpFTF85xQHf22pdsNjCZaCsLu2e2
-	DxBpthgC9hZrUBHoF3pbDDTqhsNNhRkNg077OZa9Qaw4IMNx/LedJ9Zo7NY8slJaQP4yPTYpHIoPC
-	kr+n4FeKOX3ToMkg4OzjkBwnXAuMzaU3qrF98CbQjz3AFUC848FYzOKNjbyRBO4kP2jCIkfU2hbEB
-	H3+5KnKKIG1GXeIexnQ2icwgsYL5MJzDQqgIqqfROWOKRN/PK33dzOB4ysi85q0mQHNa1fk6Ybrd6
-	/33AOW8g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Zg9L8LQRRNZLCjisnb/q9GCfoyH62wte+Jsk9lrCgGk=; b=0J5ZzBbpx1o0+QVufsl9s8PhTD
+	lfEoYfu9uLSvJEw32kclshqdI94bqQ2+q/gN/QmVDLdarys40NhpvtQBJb1MTcy+wlkW3eEWVgKoE
+	Rm9wVzDPP1LM6FfBC0SvnL8yBalka1nX3Coes/9tDWzJhlsP89U1n+M/OCqjh95EYH+PsTuYqJC7n
+	0avDHCzRIkME+LqNd2kKebbI7h3zj+cIpPpVGgXRCr3F/O7YUqHM2z7eol45QQLWFJRoGNnTG99Q6
+	Qxyd6KhHZ4zUyQXN2OkUxoct1JRcJtelFzeMPc7i5rqRPqqmvjP+sVnLCsLbigqhtRhlJyS3wCPCx
+	Ph5j++6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x40w0-0000000A0dX-2Un3;
-	Tue, 08 Sep 2026 18:52:44 +0000
+	id 1x43qr-0000000ALwK-3er6;
+	Tue, 08 Sep 2026 21:59:37 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x40vy-0000000A0dJ-2wh5;
-	Tue, 08 Sep 2026 18:52:42 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id AC796437F3;
-	Tue,  8 Sep 2026 18:52:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2CE51F00A3D;
-	Tue,  8 Sep 2026 18:52:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788893561;
-	bh=DOKPmpWRmdDBglqf84YkB3HAz/fgt7fFnGQ4z3lV4J8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Ieq4JLaRtlT92Yg0dCEjo4VFE7X1234dNn5s2zUPIZ7NiNXSGmSkQQFccLQBYWHhr
-	 RYN3F1nROxCUN1B3nbU1qcvdS/fARGMxeXIBC0M3xsXKUfhNOP0y0lBj7ZuD80FyrO
-	 YYD7Eni5KPI+8MP7nSsd/ANAyvZKOVnW4XlIQFXohh/yW3P/gwqVMp9XgrgrpIWGrM
-	 Kvwmv2mW3Zn7/utqqBEybj89h+2cbzaTqGwYaRW9WfZl62QybKty/KBfX+89QKf8dg
-	 YhnfVAqb1MqfylRhqRxXbuWa/SWl5KK5X12z097zGYHnCehSs1UY4qQ+WS+B8L/Nly
-	 Fclmqr2A1t+eA==
-Date: Tue, 8 Sep 2026 19:52:36 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Cezary Rojewski <cezary.rojewski@intel.com>
-Cc: phucduc.bui@gmail.com, Liam Girdwood <lgirdwood@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Kees Cook <kees@kernel.org>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	Trevor Wu <trevor.wu@mediatek.com>,
-	Douglas Anderson <dianders@chromium.org>,
-	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH 3/7] ASoC: mediatek: mt8188: mt8188-afe-clk: Propagate
- regmap update errors
-Message-ID: <a88fbf17-faac-4902-bd39-ff0a616a7d2d@sirena.org.uk>
-References: <20260907120310.135693-1-phucduc.bui@gmail.com>
- <20260907120310.135693-4-phucduc.bui@gmail.com>
- <e011cd74-7c5a-4cd1-b412-ad11765ad11c@intel.com>
+	id 1x43qp-0000000ALvI-0lNI;
+	Tue, 08 Sep 2026 21:59:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 886E64402F;
+	Tue,  8 Sep 2026 21:59:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 38CB4C2BD01;
+	Tue,  8 Sep 2026 21:59:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1788904774;
+	bh=eVriJrMeYp3XHPG8ed08fiWSUJ0t9VB3iX+On7WM94M=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=TwY+C3AdgCDls57rUa/PozYUtsrtfKnz5mZYzYMH8Hb3KpCoat0TROhM4+bRGi56A
+	 tC+pLzvJDMiKHvaJYO3cy7LbAJ3caCL7rxDjiRHIlJsSCgs2vCdKsqgGEWkqZ42GgD
+	 5TxUEf8PxsCa35dvqpmnwbilsdL2keKR+rghecGW4WF7bGg+o1XG1djCPE2/hAFSVd
+	 WIXFh/xkFPwbzw2CMMk5eZ+B1gNOxIszqMCj7EYR21sSXtknea4Ox/tFtqSguqAk4t
+	 07BmMYvK3t+joilbGtcfCnQaSmLEXoC7t9ekyj3cpoFLEnJ8JBuiGyUtx84sjVZsPh
+	 VlqcD17f152hg==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 251BAC79FAF;
+	Tue,  8 Sep 2026 21:59:34 +0000 (UTC)
+From: Zakariya Hadrami via B4 Relay <devnull+zkh.mailbox.org@kernel.org>
+Date: Tue, 08 Sep 2026 23:59:16 +0200
+Subject: [PATCH v3 3/4] ARM: dts: mediatek: mt8127: Add watchdog support
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="JWy8Wwp5/yGMiUOU"
-Content-Disposition: inline
-In-Reply-To: <e011cd74-7c5a-4cd1-b412-ad11765ad11c@intel.com>
-X-Cookie: The world is not octal despite DEC.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260908-mt8127-amazon-ford-basic-v3-3-fc46bf1b6cb2@mailbox.org>
+References: <20260908-mt8127-amazon-ford-basic-v3-0-fc46bf1b6cb2@mailbox.org>
+In-Reply-To: <20260908-mt8127-amazon-ford-basic-v3-0-fc46bf1b6cb2@mailbox.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, 
+ Wim Van Sebroeck <wim@linux-watchdog.org>, 
+ Guenter Roeck <linux@roeck-us.net>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-watchdog@vger.kernel.org, zkh1@proton.me, 
+ Zakariya Hadrami <zkh@mailbox.org>
+X-Mailer: b4 0.15.1
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1788904772; l=862;
+ i=zkh@mailbox.org; s=20260908; h=from:subject:message-id;
+ bh=AX2u3pZcnaoS6OSYF7vpbl8cAzsMvrof+x8jgtKD7wE=;
+ b=Opgq1eRNAB4cK7JQilkoPnwcoXZFYTGmYcBGlkjFC1OFvAMRP5q2EhPKrdxSrISHmf9msNqIX
+ +e9tnhwKeAIBKXxb/aeZQFcTtOuzfWsroQR3pgkMPdnNC8tpBXyFjir
+X-Developer-Key: i=zkh@mailbox.org; a=ed25519;
+ pk=up24Xn4ScFKugfT4EJru/UQAS7JOIN+DSQqro+a05T4=
+X-Endpoint-Received: by B4 Relay for zkh@mailbox.org/20260908 with
+ auth_id=1015
+X-Original-From: Zakariya Hadrami <zkh@mailbox.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,37 +85,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: zkh@mailbox.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Zakariya Hadrami <zkh@mailbox.org>
 
---JWy8Wwp5/yGMiUOU
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Add watchdog node and disable it by default as it was not present
+initially.
 
-On Tue, Sep 08, 2026 at 07:49:00PM +0200, Cezary Rojewski wrote:
+Signed-off-by: Zakariya Hadrami <zkh@mailbox.org>
+---
+ arch/arm/boot/dts/mediatek/mt8127.dtsi | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-> I'd expect someone from Mediatek to verify this.  While I agree with the
-> change, some drivers follow "ignore register update result" arch and,
-> what was previously ignored will now cause basic operations to fail.
+diff --git a/arch/arm/boot/dts/mediatek/mt8127.dtsi b/arch/arm/boot/dts/mediatek/mt8127.dtsi
+index bd61ec7e70c0..3e23673e7a9e 100644
+--- a/arch/arm/boot/dts/mediatek/mt8127.dtsi
++++ b/arch/arm/boot/dts/mediatek/mt8127.dtsi
+@@ -99,6 +99,13 @@ soc {
+ 		compatible = "simple-bus";
+ 		ranges;
+ 
++		watchdog: watchdog@10007000 {
++			compatible = "mediatek,mt8127-wdt","mediatek,mt6589-wdt";
++			reg = <0 0x10007000 0 0x100>;
++			interrupts = <GIC_SPI 88 IRQ_TYPE_LEVEL_LOW>;
++			status = "disabled";
++		};
++
+ 		timer: timer@10008000 {
+ 			compatible = "mediatek,mt8127-timer",
+ 					"mediatek,mt6577-timer";
 
-We don't really get any review from Mediatek, AngeloGioacchino used to
-try to cover things but it seems he got busy recently :(
+-- 
+2.54.0
 
---JWy8Wwp5/yGMiUOU
-Content-Type: application/pgp-signature; name="signature.asc"
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqgWXMACgkQJNaLcl1U
-h9Ccvgf9Ggr9gv/6qkfKjZsgCMk8lQLLYxhJ/1oG28aS2ODQznEVI0n/o3onhTSp
-9sWz6l6XoSuTlM0+U+89WVv2HZFTcs0wsaA+pE+OGa7diIQxlVE2+V5AgbbdLPHJ
-h5Lhk2fB/Qubw+9taoXc8pT2Jmt/L89dCkVTgysWcDBJ+t0/2zhRB5YHSrsYiqbQ
-fgbnFPbf6JVIOqaCm20N1AAPm0cqbXi3+/TAqVmuHXpIOccFDiy/NrwG5BZj2JDk
-LySiLFKawdzJBIRjeP9EO46fau/vwCeJQbtsD0qdS4HAzi2FAtj+WZGjwS2Y9kJf
-Muc8BwBg69bA6BnfHttIdruciJ41Bw==
-=1Y36
------END PGP SIGNATURE-----
-
---JWy8Wwp5/yGMiUOU--
 
