@@ -4,62 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92F72C79FA0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2026 08:31:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6FF3C79F82
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2026 09:05:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
-	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XRyoCgDmBInYuoL+EEo9VItygSlD5zki+crpNhx0V/M=; b=hXq9NQ12OLlZiVuRkoCBZFRruO
-	2Arl/CzD7KHZJNeq/21ItJCjKZw3QfTJtopJbIXtf7OI5ZA9P9Eij20cVaXKWFbseVAYKpbXyPMLJ
-	WXMOnNIinIfXWo0QfyXA8rJ4PWTOj0acCETTa8MhtE6hPJlevD5rSctsBsKbuyZDpo9a2q8M8vFuF
-	9A21YInzM0i7CDOk+ZNPFredhJVNU0k0vyOQfkk1hd6f14I0pqn6048kGlh1HVAqQjGK+UiDTUqNA
-	hDSC2WMbEpz4MRbhkmoYc68AquSkuIf/F3lJAM332yW89FSm3lLQzSjijrwuMQ9d36G5UpVNjh6LU
-	HWu38ZQA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=eIZ+kUaFwJKaLRLpyngmxMQG27w+758uZsHUvhX4A7o=; b=lOOd4QOmgLbYodkC/RbidFLiXP
+	HRiPnEoFTUQw8kWpjfWEyvsZPJuUj2XrmsSvgeZHendFHF3b3+X6yawyf/QW8N7yQRB12nGtV+rJ3
+	BS9UIvlz2c66kKdLyaNiMqQkNoW0CrlLZVSlo7FniPh3n//ABJu0MMhAXZWyssGdZivxnhvn8ks3y
+	XfGhZ/1taSZ+PAbIWnGF3ge7Yz1RxXaEiOcARtFv1B6KcsBBxvvM96Zse3yoorZVZXZk5/9KnMrwB
+	uZCevmBL05habJRnMSpvc06bfvhOf5ZrJzXviNvMZARaoJEIeF/M8DEu8mxROnh7Qj2Ou5tXheavf
+	+rT4XF1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3rEM-00000008PSz-0QYj;
-	Tue, 08 Sep 2026 08:31:02 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x3rlE-00000008V7B-27Aq;
+	Tue, 08 Sep 2026 09:05:00 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3rEJ-00000008PRf-1JqI;
-	Tue, 08 Sep 2026 08:30:59 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id BF18C601DB;
-	Tue,  8 Sep 2026 08:30:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6EC081F00A3A;
-	Tue,  8 Sep 2026 08:30:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788856258;
-	bh=XRyoCgDmBInYuoL+EEo9VItygSlD5zki+crpNhx0V/M=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=aHyAKrYaWMjznjzNlsUJmc5ukzaoOS6Xv2gpvMGd/2Op9BHteSDDkSSl/CZvyTNxE
-	 B+UDWFpQeAYADTggfc266BLePQeFe0BimBU74DQzHN3R5VsmqCLFMGjnxxRjpH0T6C
-	 PSRx54LVkSx0K8CHbihFNoQcrztC+7697PmhPuXAXMHZ1EpD/mcNiNk3Nmd9+6OTze
-	 bQlUBCI37Qz3CRUIeitpxSL7AHKwp9OeCbgRS68djkMwQ3QTi0hR2gF1lvVUDrUusa
-	 /Z8uWk1J3vRVqhakH9NEDGinScyXi0Z+WFEYC9A+eTgv/stZs3i8qtziZfqtL3GOo9
-	 2TdZiIk1r/lOg==
-Subject: Re: [PATCH net v3] net: phy: mediatek-ge: disable EEE on the MT7530 PHY
-From: netdev-bot+sashiko@kernel.org
-To: vladislav.karmanov.dev@gmail.com
-Cc: netdev@vger.kernel.org, andrew@lunn.ch, daniel@makrotopia.org,
- dqfext@gmail.com, SkyLake.Huang@mediatek.com, hkallweit1@gmail.com,
- linux@armlinux.org.uk, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, chester.a.unal@arinc9.com,
- sean.wang@mediatek.com, olteanv@gmail.com, yangshiji66@outlook.com,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Date: Tue, 08 Sep 2026 08:30:57 +0000
-Message-ID: <178885625700.219967.7168072838761125406@kernel.org>
-In-Reply-To: <20260904202800.3410838-1-vladislav.karmanov.dev@gmail.com>
-References: <20260904202800.3410838-1-vladislav.karmanov.dev@gmail.com>
-X-sashiko-severity: High
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1x3rlC-00000008V5w-1VZl
+	for linux-mediatek@lists.infradead.org;
+	Tue, 08 Sep 2026 09:04:59 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-4858303de5dso5400072f8f.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 08 Sep 2026 02:04:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1788858296; x=1789463096; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=eIZ+kUaFwJKaLRLpyngmxMQG27w+758uZsHUvhX4A7o=;
+        b=KkzF63N2fNoOi55ymDrHIg3ur7SCroT0/GKk0c9az5L3IA1qUds6PdwVct9WyBuW81
+         QjEAdnGc3SyUsluEAaJ+W/iypnkGyBF1ZgSjP2EBz2AmXluRd8/n5riSOxPJcIkNqhyY
+         MBUU/rTEdIWH8wM5E4xwPa6cvY+pQx0m/OProSIVkTTXrXYpLr5odQhYCwdINgbmvQJc
+         FGtBd6QXU6085zJpj+NPniI3sLRcUryCibLZ20wq1KZ17ad0KnfKORFppH4JuUeyKht/
+         DyC06NpaYdll2k4YPeF501OOPCOo/TehD/5s+7egtjRDvzOPR0145yMUbD9g8pm3JM+o
+         nhKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788858296; x=1789463096;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=eIZ+kUaFwJKaLRLpyngmxMQG27w+758uZsHUvhX4A7o=;
+        b=CkxIWaSt9QEnb4iodMma77VqFfxJ2S+eJn+SgJ7x7rWExBb5BuCe7YzSUqYUw62GOY
+         7gNt1dlhUsXRKW+zjROA7xV77TtQ1GLgwAPjOq2Jpt5hu4oAgumM+c9zrKHygryCvCxb
+         9kYRFNCCku2thtK81XofBQynEP495qwWenxsIV3BdmkhLdL/bWfdJeO+CNY8CMWsRIwO
+         p3Z6Lt75uL846hkjHkrSeaSZnbZfZ1khY6zJ7PtnZ8NTodYQ+P4t8lY0wMfEizsnv0Cl
+         cVrZabU45MHwpywB6hh0g2Tim7HRhZDbHAeVZEo1w9nhK/njWyIurIUL9qHOzNm42e0u
+         2FzQ==
+X-Forwarded-Encrypted: i=1; AKwUvBzrStAsDdvFnYNZoN3ggF+9jFacqt1/4G8Q92yi6trgWL/hfaUBdAdlAA8cy8zNsueeiM1Z0YA2HhMM7K+xRQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++lYT8rBwgIpse/ocEqsH0uCtJK1VE+ZZq24qLLl/h2xBQivNjES
+	8MMmR8A09YO7Xos+UDyDZn/UjehEyDuaCbJo0kHF3M9PsFH7lpNBKd3Y
+X-Gm-Gg: AYBFou1a+il+P/3hwF498oxeGJhATqGPNDD/VAlaN237DPX6EwCQkmvFNMUoONt6ove
+	gL1x16Vq+VHaqQmTA0uVjeRh+QDM/lsCn8p5p8RD0ruMw3ofmUevIOILq/mQ+TxVcssEVU6XJsj
+	wOP0AfnBuyX3niNI+Wy5Dv5dtRTqc319xiwRuxB3Em0GJV4QJgj4c6RihOLOcogX6kqeFqpuPje
+	1sRn8GHh+5cKBmoncLJx1MZ5cusNNKpboD2DJUydkuWje366pQt3bHSPiacTpIPQMkteNzpELJ8
+	w7/LSj6ZqSZ2oEhs1z+djPK+A/HFPrgI+90wlavfEZWk/X51ci/bHE9b5Ff6LF8JV//cNZvXx5T
+	vOj0szsy7KvhCEa0KpZAyYs7d49amD4W5dGbfjiMV/RR1teDQg2a2Kxcewevu9PiAXjlyAoCFUy
+	MoYbLGsyhQ0yhWBiuGJifvLNp1whZAi2corlzmtwUwPv7xmk8X5lquaSfmINKdReWAOaLYcNZNY
+	TvJSBMKoljAusgw2c5EDF55DBO4L+3picJIRl3OEbqZ4H3faSxh
+X-Received: by 2002:a05:6000:2602:b0:485:8c16:a33b with SMTP id ffacd0b85a97d-4858c16a5b3mr26273747f8f.48.1788858295822;
+        Tue, 08 Sep 2026 02:04:55 -0700 (PDT)
+Received: from Ansuel-XPS24.localdomain (host-79-26-252-140.retail.telecomitalia.it. [79.26.252.140])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-485881353e8sm34767945f8f.1.2026.09.08.02.04.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 08 Sep 2026 02:04:55 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Christian Marangi <ansuelsmth@gmail.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Cyril Chao <Cyril.Chao@mediatek.com>,
+	Darren Ye <darren.ye@mediatek.com>,
+	Rosen Penev <rosenp@gmail.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	bui duc phuc <phucduc.bui@gmail.com>,
+	linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v6 0/5] ASoC: Add support for Airoha AN7581
+Date: Tue,  8 Sep 2026 11:04:42 +0200
+Message-ID: <20260908090448.3332-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260908_020458_408899_71F950A7 
+X-CRM114-Status: GOOD (  16.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,162 +114,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thank you for your contribution! Sashiko AI review found 2 potential
-issue(s) to consider:
+Add all the patch and documentation to support Airoha AN7581
+sound driver.
 
-Critical: 0 · High: 1 · Medium: 1 · Low: 0
+The card follows similar implementation with Mediatek with
+the codec present on i2c but with a simplified implementation
+register wise and additional frequency supported.
 
-- [High] mt7530_phy_probe() (drivers/net/phy/mediatek/mtk-ge.c:65-84)
-  calls phy_disable_eee() from the driver's .probe callback, but phylib…
-- [Medium] The hardware write that clears the EEE advertisement,
-  phy_write_mmd(phydev, MDIO_MMD_AN, MDIO_AN_EEE_ADV, 0) at…
+Changes v6:
+- Fix PCM probe allocation logic
+- Split driver patch to dedicated PCM/ETDM patch and machine driver
+Changes v5:
+- Address comments from bot
+- Better handle concurrent irq status bit
+- Protect enable etdm
+- Add Review tag for documentation patch
+- Address formal comments from Cezary
+Changes v4:
+- Improve Documentation YAML
+- Move IRQ regmap to mtk_base_afe_irq
+- Use mutex for user tracking in ETDM
+- Register IRQ after memif allocation
+- Address suggestion from bot
+Changes v3:
+- Major fix to the ETDM code
+- Add duplex support
+- Improve Kconfig setup
+- Rework and improve YAML schema
+Changes v2:
+- Fix wrong edit in MAINTAINERS file
 
---
+Christian Marangi (5):
+  ASoC: dt-bindings: Add Airoha AN7581 AFE Sound card
+  ASoC: dt-bindings: Add Airoha AN7581 AFE with WM8960 Codec schema
+  ASoC: mediatek: common: permit to provide dedicated regmap for irq
+  ASoC: airoha: Add AFE driver for Airoha AN7581
+  ASoC: airoha: Add machine driver for Airoha AN7581
 
-net: phy: mediatek-ge: disable EEE on the MT7530 PHY
-
-This adds an mt7530_phy_probe() callback to the mediatek-ge driver which
-clears MDIO_AN_EEE_ADV in hardware and then calls phy_disable_eee(), with
-the stated goal that neither phylib nor userspace can re-enable EEE on the
-MT7530 internal GE PHY.
-
-> diff --git a/drivers/net/phy/mediatek/mtk-ge.c b/drivers/net/phy/mediatek/mtk-ge.c
-> index 73d9b72f9d9e2..35600c70cab90 100644
-> --- a/drivers/net/phy/mediatek/mtk-ge.c
-> +++ b/drivers/net/phy/mediatek/mtk-ge.c
-> @@ -62,6 +62,27 @@ static void mtk_gephy_config_init(struct phy_device *phydev)
->  		       FIELD_PREP(MTK_MCC_NEARECHO_OFFSET_MASK, 0x3));
->  }
->  
-> +static int mt7530_phy_probe(struct phy_device *phydev)
-> +{
-> +	int ret;
-> +
-> +	/* The MT7530 internal GE PHY has broken EEE: with EEE advertised,
-> +	 * some link partners fail to establish a stable link (on a 2-pair
-> +	 * cable, 1000BASE-T training fails and the port loops instead of
-> +	 * falling back). MediaTek recommends disabling EEE on this PHY.
-> +	 * Clear the EEE advertisement early and mark EEE disabled, so
-> +	 * that neither phylib nor userspace can re-enable it.
-> +	 */
-> +
-> +	ret = phy_write_mmd(phydev, MDIO_MMD_AN, MDIO_AN_EEE_ADV, 0);
-> +	if (ret)
-> +		return ret;
-
-[Severity: Medium]
-Should this register write also live in mt7530_phy_config_init()?  This is
-the only place where MDIO_AN_EEE_ADV is cleared in hardware, and ->probe is
-the one callback phylib never replays.  phy_init_hw() deasserts the reset
-line, optionally soft-resets, and then re-runs only ->config_init and
-->config_intr:
-
-drivers/net/phy/phy_device.c:phy_init_hw() {
-	...
-	if (phydev->drv->config_init) {
-		ret = phydev->drv->config_init(phydev);
-		if (ret < 0)
-			return ret;
-	}
-	...
-}
-
-mt7530_phy_config_init() does not touch MDIO_AN_EEE_ADV, so after a PHY
-register reset the register is back at its EEE-advertising hardware default
-while phydev->advertising_eee stays empty and eee_cfg.eee_enabled stays
-false, i.e. software and hardware state disagree.
-
-Two paths that re-init without ->probe:
-
-  - phy_detach() asserts the PHY reset signal and a later
-    phy_attach_direct() -> phy_init_hw() only replays config_init.
-  - the SIOCSMIIREG BMCR_RESET case in phy_mii_ioctl():
-
-drivers/net/phy/phy.c:phy_mii_ioctl() {
-	...
-		if (prtad == phydev->mdio.addr &&
-		    devad == MII_BMCR &&
-		    val & BMCR_RESET)
-			return phy_init_hw(phydev);
-	...
-}
-
-which returns without any aneg reconfiguration, so nothing rewrites the
-advertisement to zero.  __genphy_config_aneg() ->
-genphy_c45_an_config_eee_aneg() covers the usual renegotiation case, but it
-returns early without writing when phydev->autoneg == AUTONEG_DISABLE.  The
-equivalent in-tree quirk issues the disable from the replayed callback,
-dp83867_config_init() -> phy_disable_eee().
-
-> +
-> +	phy_disable_eee(phydev);
-
-[Severity: High]
-Does the phy_disable_eee() state survive the rest of phy_probe()?  The
-linkmode_fill(phydev->eee_disabled_modes) done inside phy_disable_eee() is
-what makes the disable permanent, but phylib clears that set later in the
-same probe flow:
-
-drivers/net/phy/phy_device.c:phy_probe() {
-	...
-	if (phydev->drv->probe) {
-		err = phydev->drv->probe(phydev);
-	...
-	/* Get the EEE modes we want to prohibit. */
-	of_set_phy_eee_broken(phydev);
-	...
-}
-
-drivers/net/phy/phy-core.c:of_set_phy_eee_broken() {
-	struct device_node *node = phydev->mdio.dev.of_node;
-	unsigned long *modes = phydev->eee_disabled_modes;
-
-	if (!IS_ENABLED(CONFIG_OF_MDIO) || !node)
-		return;
-
-	linkmode_zero(modes);
-	...
-}
-
-So for any MT7530 PHY that has an of_node, eee_disabled_modes ends up empty
-again unless the DT carries eee-broken-* properties.  An of_node is present
-in a documented configuration: mt7530_setup_mdio() registers the internal
-bus with the switch's "mdio" child node,
-
-drivers/net/dsa/mt7530.c:mt7530_setup_mdio() {
-	...
-	mnp = of_get_child_by_name(np, "mdio");
-	...
-	ret = devm_of_mdiobus_register(dev, bus, mnp);
-	...
-}
-
-and mediatek,mt7530.yaml documents that node, so ethernet-phy children
-described there get an of_node.
-
-With eee_disabled_modes empty, can userspace re-enable EEE again through
-dsa_user_set_eee() -> phylink_ethtool_set_eee() -> phy_ethtool_set_eee() ->
-genphy_c45_ethtool_set_eee()?
-
-drivers/net/phy/phy-c45.c:genphy_c45_ethtool_set_eee() {
-	...
-		} else if (linkmode_empty(phydev->advertising_eee)) {
-			phy_advertise_eee_all(phydev);
-		}
-	...
-}
-
-That repopulates advertising_eee with supported_eee, then
-genphy_c45_an_config_eee_aneg() rewrites MDIO_AN_EEE_ADV and
-phy_restart_aneg() renegotiates, which looks like it brings back exactly the
-1000BASE-T training loop described in the commit message.
-
-Would moving the disable into mt7530_phy_config_init(), which runs after
-of_set_phy_eee_broken(), address both this and the reset case above?  That
-is the placement dp83867_config_init() uses for the same kind of quirk.
-
-[ ... ]
+ .../bindings/sound/airoha,an7581-afe.yaml     |  41 ++
+ .../bindings/sound/airoha,an7581-wm8960.yaml  |  71 +++
+ MAINTAINERS                                   |   8 +
+ sound/soc/mediatek/Kconfig                    |  27 +-
+ sound/soc/mediatek/Makefile                   |   1 +
+ sound/soc/mediatek/an7581/Makefile            |   9 +
+ sound/soc/mediatek/an7581/an7581-afe-common.h |  49 ++
+ sound/soc/mediatek/an7581/an7581-afe-pcm.c    | 515 ++++++++++++++++++
+ sound/soc/mediatek/an7581/an7581-dai-etdm.c   | 433 +++++++++++++++
+ sound/soc/mediatek/an7581/an7581-reg.h        | 114 ++++
+ sound/soc/mediatek/an7581/an7581-wm8960.c     | 161 ++++++
+ sound/soc/mediatek/common/mtk-afe-fe-dai.c    |  14 +-
+ sound/soc/mediatek/common/mtk-base-afe.h      |   2 +
+ 13 files changed, 1439 insertions(+), 6 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/airoha,an7581-afe.yaml
+ create mode 100644 Documentation/devicetree/bindings/sound/airoha,an7581-wm8960.yaml
+ create mode 100644 sound/soc/mediatek/an7581/Makefile
+ create mode 100644 sound/soc/mediatek/an7581/an7581-afe-common.h
+ create mode 100644 sound/soc/mediatek/an7581/an7581-afe-pcm.c
+ create mode 100644 sound/soc/mediatek/an7581/an7581-dai-etdm.c
+ create mode 100644 sound/soc/mediatek/an7581/an7581-reg.h
+ create mode 100644 sound/soc/mediatek/an7581/an7581-wm8960.c
 
 -- 
-Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260904202800.3410838-1-vladislav.karmanov.dev%40gmail.com
+2.53.0
+
 
