@@ -4,57 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56B7CC79FA1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2026 09:52:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38908C79F82
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2026 12:43:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/lYRpbphz5d0VWM774kHqDgOjW789EXt/riQZS0iTBI=; b=0jlOWE//V4Y9NIj92Xzm3+iop+
-	xpB/+cWFQjjWDizyrUpZlYOKrD3Eq5yA/b2zEJyuJ8UNnTZ4UTC5YhuS3yd15oMHZPKUF1Yp6dOLj
-	RPzPxt59oveekngR8UmrjyxePQqdDfmDdkv30E4+2GDAZ7RiS8WUwcqVerYW3soD6bQVguvZYo+cG
-	hL5dMgFjzIFIlwKvpYm6r6j6HKu+uMukgASKtx9RMFtiu8pflGQWs5cdncgwgVIZbaYDQI0x+mKpA
-	28mzdqt7yHHshDNib6r7vDKT4tRSErJ2D8RLpzvsVwVawOcB+TB/c2hvXRMcUa5QKYWGm6u4w7OLX
-	QlAWIDZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UJSjgFhs32spsSbz3nbqM96IYqNhxGGxV940WNPjSmk=; b=QuuXEdKhiqn6BfghZzOlc7OXF6
+	8omydP6uhGum3APuUbxYxP/2/JTDzkZ8g+L/5wUbpPpZ6AWYUn1UtGbQUOA6Ap0RuCTKZxxoH2mh1
+	IBTAWJqpiMMNPDI86haSpXKpJb5wew2tVyGMlizj9wk3bBnhDGxd2T25a+ge1pCxc2w6waKSX9dxT
+	mmT5y3kO2RsDMTbWWZHvswJkGUKeC8vTdZhoFi82HQrQKXclQ82Ng0mjJ+kUyAVXwGRqJ2IGpMhLT
+	Sh6Kl2tS1lTzHucqVdZwGUq1UQifPmxf0LhAeEl7XOCSoKz4eGNM3Vnb5k3lLcUwQYZCfnjffuXqW
+	3h6rw8dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3sVC-00000008gQC-1BS8;
-	Tue, 08 Sep 2026 09:52:30 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x3vAt-000000093DL-2gUR;
+	Tue, 08 Sep 2026 12:43:43 +0000
+Received: from mail-43167.protonmail.ch ([185.70.43.167])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x3sVA-00000008gPf-3vXW;
-	Tue, 08 Sep 2026 09:52:29 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with UTF8SMTP id 629B0601DB;
-	Tue,  8 Sep 2026 09:52:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with UTF8SMTPSA id 8DC0C1F00A3A;
-	Tue,  8 Sep 2026 09:52:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788861148;
-	bh=/lYRpbphz5d0VWM774kHqDgOjW789EXt/riQZS0iTBI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Tm6zRzmXUseZ+aS9UzB1+ZLcFMe9HmnJ2BjPhrPUR1F6NMyvI5YVVA2YptyDktxRR
-	 +j183vcLquwhBFxcEVFDVhTDJSj4OV7ej/FzGuYldqHTk3d5c0/XfKWZcOkoKDqc/0
-	 nov4CiEon7xNnP+PwbULARjV8fhMS2ivrjcIJrf15ilKupZHN3OsvMiL2Hqda4lrqi
-	 ZrWrnVhFEGhjuy0Uboa7SahsKH7nJpuvzFVtqr0dd/bIOn+wjA3vgSpqI7jjxA80ga
-	 dgXBFNlEIDDmp9l5ANf9H6fqTKh8mt+aRkRloFQS4H8KjOFV188Il0g8B9IJTbt4E5
-	 yZUVnizXl54hw==
-Date: Tue, 8 Sep 2026 11:52:25 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pwm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>
-Subject: Re: [PATCH] pwm: mtk-disp: Fix period readback
-Message-ID: <ap_Zslo-dTKtsvfi@monoceros>
-References: <20260827105738.8570-1-wenst@chromium.org>
+	id 1x3vAq-000000093By-2Fzu;
+	Tue, 08 Sep 2026 12:43:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1788871415; x=1789130615;
+	bh=UJSjgFhs32spsSbz3nbqM96IYqNhxGGxV940WNPjSmk=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=I8GKxt+4AZwRUYSxuDSeZW+bx2VdPBQpQx6MCOgAPMoyegYxzYC2bSAB77qHdacB7
+	 u1hR7INWFLurEv2MhCUc/USgQjpJEN7yrkaoAgIj4oDAZTVdgvo/8Yw4AMOdAlBWhc
+	 KOE6JsLl4YSoU+VirPSvJ4IdYydVpXKywvjyo1650+uL0bKjDRcWqPV/qCxmxWEM5t
+	 MLkqawmub0hKX7dI4KTQkd7ugm3bAbxVQKw59ggttMd1PBaTmZukBfHAVUy6d454rP
+	 3WH1Nh03P9hPVvyTHuizwoIJz76N2ZW0ZYSz062l2W4BskrnPGMpaJZ3IMgCDB+jSa
+	 jBOwNRqfvdAlg==
+Date: Tue, 08 Sep 2026 12:43:29 +0000
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+From: Roman Vivchar <rva333@protonmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Flora Fu <flora.fu@mediatek.com>, Alexandre Mergnat <amergnat@baylibre.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, "moderated list:ARM SUB-ARCHITECTURES" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v2 3/3] soc: mediatek: pwrap: add mt6572 support
+Message-ID: <hbDKbnlOf7yqJYJuWVg6P8y7T2ltx6kphF6V0jho-1Z1KNKWNxqD0ffPp6rhjGDfXW88hP4ynycDkZF_1VQZj1PpRHekJqeorEijupq4GRY=@protonmail.com>
+In-Reply-To: <27cdcc55-b9b1-49ad-82f3-25e38e3e0e50@collabora.com>
+References: <20260715-6572-pwrap-v2-0-bea1d801c81b@protonmail.com> <20260715-6572-pwrap-v2-3-bea1d801c81b@protonmail.com> <27cdcc55-b9b1-49ad-82f3-25e38e3e0e50@collabora.com>
+Feedback-ID: 173184497:user:proton
+X-Pm-Message-ID: 6ad0deee7d7c11f91a563fe03d94143783dac5a4
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="j2zvo2wdfghwgivo"
-Content-Disposition: inline
-In-Reply-To: <20260827105738.8570-1-wenst@chromium.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260908_054340_726112_BF36258F 
+X-CRM114-Status: GOOD (  10.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,74 +68,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Angelo,
 
---j2zvo2wdfghwgivo
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH] pwm: mtk-disp: Fix period readback
-MIME-Version: 1.0
+On Wednesday, July 15th, 2026 at 4:23 PM, AngeloGioacchino Del Regno <angel=
+ogioacchino.delregno@collabora.com> wrote:
 
-Hello,
+> On 7/15/26 14:26, Roman Vivchar via B4 Relay wrote:
+> > From: Roman Vivchar <rva333@protonmail.com>
+> >
+> > Add mt6572 registers and platform data for the pmic wrapper.
+> >
+> > While vendor kernel source code suggests that mt6572 can be paired with
+> > the mt6320 PMIC, no such devices have been found yet. Hence, registers
+> > that not included in the mt2701 array are omitted.
+> >
+> > The mt2701 SoC-specific initialization function is used because they
+> > share the same GPS_INTF settings.
+> >
+> > Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
 
-On Thu, Aug 27, 2026 at 06:57:36PM +0800, Chen-Yu Tsai wrote:
-> The period value stored in the register is the number of clock cycles - 1.
->=20
-> Account for the offset when calculating the period in nanoseconds. This
-> fixes the discrepancy reported by the pwm core when CONFIG_PWM_DEBUG=3D1:
->=20
->     mediatek-disp-pwm 1100e000.pwm: .apply is not idempotent
->     	(ena=3D1 pol=3D0 281500/499875) -> (ena=3D1 pol=3D0 281500/499750)
->=20
-> Calculation discrepancy in the driver was found by AI run by a colleague
-> while debugging another PWM related issue. Check against SoC datasheet
-> and fix done by the author.
->=20
-> Fixes: 3f2b16734914 ("pwm: mtk-disp: Implement atomic API .get_state()")
-> Cc: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Could you please take a look at this series? It has ack for dt-bindings pat=
+ch and your reviews for the rest.
 
-Applied with the R-b tags by AngeloGioacchino Del Regno and Fei Shao and
-
-diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
-index 68a4512e821a..56d10cde5b46 100644
---- a/drivers/pwm/pwm-mtk-disp.c
-+++ b/drivers/pwm/pwm-mtk-disp.c
-@@ -210,7 +210,7 @@ static int mtk_disp_pwm_get_state(struct pwm_chip *chip,
- 	period =3D FIELD_GET(PWM_PERIOD_MASK, con1);
- 	/*
- 	 * period has 12 bits, clk_div 11 and NSEC_PER_SEC has 30,
--	 * so period * (clk_div + 1) * NSEC_PER_SEC doesn't overflow.
-+	 * so (period + 1) * (clk_div + 1) * NSEC_PER_SEC doesn't overflow.
- 	 */
- 	state->period =3D DIV64_U64_ROUND_UP((period + 1) * (clk_div + 1) * NSEC_=
-PER_SEC, rate);
- 	high_width =3D FIELD_GET(PWM_HIGH_WIDTH_MASK, con1);
-
-squashed in to
-
-https://git.kernel.org/pub/scm/linux/kernel/git/ukleinek/linux.git pwm/for-=
-next
-
-=2E
-
-Thanks
-Uwe
-
---j2zvo2wdfghwgivo
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmqf2tcACgkQj4D7WH0S
-/k7N2wgAihLhQXDL9Cax4wf5Ty8D6JUSMvcK81wXU2CWnzA7RzNxyg4Xrm7sHdTk
-V2DWl3w7pJaos4ItmlGALGe6cAZAbeHJIvw3Y7BhWJM88gZqm3ceM9nL2d3pT0Iz
-GC2O6pTdoj1VoAqcpgS1JrVn4aqdzkRU52+AH1O3GoqggwBZ9IIzlrmQcLHfqncm
-YQb9Mfgf6E9VpTusJxQJetR6Q88nzzGSVsc92jr+V5Cf7uZrSQPFupYAz8hL1eI9
-2FaEB0XW8TU3a/pgHN8YEJJ2ICXLzJQGkhLTMQ562RvLKD+aEZrou/65q7SUtjcR
-UL1sWd9q3hJZGetdK3ZnCJmpZLebzg==
-=oDez
------END PGP SIGNATURE-----
-
---j2zvo2wdfghwgivo--
+Thanks,
+Roman
 
