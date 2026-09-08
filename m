@@ -4,62 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F847C79F82
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2026 18:08:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 875E0C79F99
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Sep 2026 18:41:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vOKYRCw54rTmlJbeP91fGLk+vpGUvA0hvgwiBiK9J8U=; b=QbY8WfiZt4pupjY8huiOYTC8lX
-	h4/8S8k/Kc+4Qcmyn/xbkwW5N1a1ssdAGuOCGTkqGGeHpLWciU/m7N7aG8otG+h7cGOyodcAWG33P
-	in9lAGa1H7cntNTMPaKPylw5T529iFfpDNCvqXHZBzu+BzEVxkBqneIAMT03ASsmHPW3MqqjlPImY
-	dhrtXgbOH0JiUyP++zFY7FRzxWUZ6918bA32K0JaUmEpFNymK41H+E7g+qCxH8hirYnm+Luc4GxVf
-	DjbzDrmKODdidRZUix/whLkSN0Vt7ZxRFXoL3GfxQP5tHOsvZNS1vZJ9OkWm0DWJbXeJwNtxbB5pL
-	1bk8DBgg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Cr8h1Yq/NnZMM4WE8/4qnlK3saUP4YTKFSQMTgTF9Wk=; b=IKb6Feq/rOGp9titiP6cSfGHET
+	Ex8wu+VSj+PmCN0Nwg6IShzbmVwXLn01sLkLQY9p6mPsaeqQ2ZB85uBSjNMflU7LGkaWeuTjTF4p9
+	SDvtuyc4bWl5d2AWs2FLkGV3DfPPgBmg6hOueVnCRJCf2Gk64jk5BbMmo+g8XUYbH99zPJ6ZkoGsc
+	f0WNGNGqiJK5ihnHng/B8DH7Pj2qxB+wqQw0HQ6jrSl/4ooinA6QUrlccZSy8s/8zM5garlES4MNf
+	JukIyQFUiyZ42C+O13I2BYjBeWO2MwZx4bkAlgmKtyLhDuDAjctAQz2pl/Tit0/zJ11JTqwylbLpO
+	rSJiOXWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x40FH-00000009wQj-237U;
-	Tue, 08 Sep 2026 18:08:35 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1x40lK-00000009zlJ-4Bdk;
+	Tue, 08 Sep 2026 18:41:43 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x40FG-00000009wQ4-29RD;
-	Tue, 08 Sep 2026 18:08:34 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 231584091A;
-	Tue,  8 Sep 2026 18:08:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0724E1F00A3A;
-	Tue,  8 Sep 2026 18:08:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788890914;
-	bh=vOKYRCw54rTmlJbeP91fGLk+vpGUvA0hvgwiBiK9J8U=;
-	h=Date:From:To:Cc:Subject:Reply-To:References:In-Reply-To;
-	b=dFWN4L0Wa240iNqj9HLS/cbcF5ztCdRLp1LHs6WPSl354OvwVdj99OQGMShaO5CtV
-	 5LQ3VPQTV0gn5B8o8IHNbrB6NimrIC/7uWa5OvXWSztzbMQOcSCcp85PS7qUla1H+s
-	 +IWO6SgtxCqlHV57zWLg7YIrZNIaqTAtlQSLHBhLubvA99X5s8ayG0lldcpihYnA0y
-	 pFcO0WQD4rloUxcVXeujgJfjnJg292ZYuMUwKwKIrImKD70bsAcXhRhdUoJ5xZryA+
-	 2ZZT8OjlhTn5SpDliYWgxc7+/JWCui6iPTJGxNBrRoh9Q8X+0K3mIzoEzvpvbc+Ecc
-	 U3A9yZMjE1A6g==
-Received: by paulmck-ThinkPad-P17-Gen-1.home (Postfix, from userid 1000)
-	id C39C8CE1902; Tue,  8 Sep 2026 11:08:33 -0700 (PDT)
-Date: Tue, 8 Sep 2026 11:08:33 -0700
-From: "Paul E. McKenney" <paulmck@kernel.org>
-To: Vladimir Murzin <vladimir.murzin@arm.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	rostedt@goodmis.org, linux-usb@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [BUG/PATCH] drivers/usb/mtu3: Work around mtu3_log_ep
- double-indirection issue
-Message-ID: <b6c621eb-6d20-4e00-ac05-af122b630ca5@paulmck-laptop>
-References: <a3ee0655-d818-48e0-84d1-475e6c16c991@paulmck-laptop>
- <d7bb2cf4-11c3-468c-8749-99cc408299c7@arm.com>
+	id 1x40lH-00000009zkV-2Y8E
+	for linux-mediatek@lists.infradead.org;
+	Tue, 08 Sep 2026 18:41:40 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-49b8e527d63so60109185e9.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 08 Sep 2026 11:41:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1788892898; x=1789497698; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=Cr8h1Yq/NnZMM4WE8/4qnlK3saUP4YTKFSQMTgTF9Wk=;
+        b=m4CMcTwSmSsrADGP9Hogxse6VTy6Ugg3Q/WWq9+kVOCr/TUF3MGuPho40mFnoxM+am
+         c1UH3tk8do9d4ZoD3nAoyc6YZeP6ZUYJhW4h87W06dw0Bzu3BrsFcJmoY7AFmmmOv6eE
+         KsZDDa+eoplctR4ydXnkWcKhlg/bdLmhpoN7h6xOrnJISTJ1J90lSIlHTuKd+h5tJ5bB
+         ggVTbP4pKQMXhr/+V/ivclN9Ff4OnJJexBIxgBolKpOW1ieZ9QmrbuNao0DZW/zq1VH3
+         5QgEfh7cQRQ5EYQ5uLiALGsNARJNaRgvsjM0doVfOkTkbiIWwkr/xgz4Orao2aBgvr7m
+         +wSA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788892898; x=1789497698;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=Cr8h1Yq/NnZMM4WE8/4qnlK3saUP4YTKFSQMTgTF9Wk=;
+        b=n4fi2W+Hxy0Wk+TWYbl5wDbLSdEOUmICeUXltbza49L+Mk1T+f913aD88/Po7k8Txo
+         +MoJSuAltjlsVCLcs2lm+iYQlnIUExQ0jxldrFA7fPiHYHtl1vb4aePnU3e4O9aR+OJ9
+         BcIwOvt113Ebh8krYDmwcc7NtKL83MOhKT2FnxKS2CPWvjkj9UcCmMQ+Z8nM/S7XZ4f5
+         nJYEvsz6seq+RufJHWbKQlxpgbctd6XccdFpkTY9ldPspS91h68f6KtbpcnXG3CASxnx
+         AGyo9ztRSJnQEnld5aZhRIvWWny4motyeook4Ni8qam/+V/HfV/xL6Z2dq2fJPABddTI
+         9hAQ==
+X-Gm-Message-State: AFuF++m/AImfgmHo6nlpbQyVjTSA23/ZfQPr1C/RFAwddgAkFT6221L7
+	uS8fQk7LBYBmHh/H8a/IYsMeiqca5JcUOPOxFTuk/ylNywugC+7F+QAn8zzxTcMC
+X-Gm-Gg: AYBFou3FS156ckIPl+IjPWsNd44IcgHi2BEmoB7jyznq1FTsAkqR1ncnqQnOn50Fs6z
+	4aV+AuBFMIEUc4MfFlTXeWNqioAFpRKovzHeVY6RnULwuHzhkp6tPgwtbrSzbTQQ8rK9Kl1UK6X
+	YWS3N1Hh6k5iEvbRZVKg3x6ybtPxpDaN37oZHYHQXr/05rQat5+L9RZEDHwk+OjpVc95epemF6i
+	GEhI5Hool+PTGp7WK7sE6o2DUBAg97ImoR3OPSuymqAtTRv9DoRsMvdUn1p3sEkDsfMDVAqJfwY
+	ExMszvQrY305hpCL0QIEo8eLj+4uaPnWoemUtbVh4SOiaz6bdr10uwlUDdgM/Si95/w+Q3a/v5b
+	CpUS+Kc9PDikYHWsOClLFsj9xqCNTWYSWdL4aC2m40LUkeMx3Zh6L5czCYJM3r5OwNo2L3PScP9
+	ouzKSij6bAHz+kfTivcqeFKabGW7gKpO73efrDQSw2ZQR79S9JJDEIw/rr
+X-Received: by 2002:a05:600c:1da8:b0:49c:cf18:494e with SMTP id 5b1f17b1804b1-49cf825a530mr371178485e9.12.1788892897552;
+        Tue, 08 Sep 2026 11:41:37 -0700 (PDT)
+Received: from luca-vm.lan ([154.61.61.58])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-485883c81c3sm38558775f8f.26.2026.09.08.11.41.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 08 Sep 2026 11:41:37 -0700 (PDT)
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+To: linux-mediatek@lists.infradead.org
+Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	CK Hu <ck.hu@mediatek.com>,
+	Jitao shi <jitao.shi@mediatek.com>,
+	dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH RESEND v2] dt-bindings: mediatek: hdmi-ddc: Correct the compatibles for mt7623-mt8167
+Date: Tue,  8 Sep 2026 20:41:05 +0200
+Message-ID: <20260908184125.10916-1-l.scorcia@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <d7bb2cf4-11c3-468c-8749-99cc408299c7@arm.com>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260908_114139_665512_EA035FF6 
+X-CRM114-Status: UNSURE (   8.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,158 +110,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: paulmck@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 07, 2026 at 02:28:47PM +0100, Vladimir Murzin wrote:
-> On 9/4/26 00:59, Paul E. McKenney wrote:
-> > This is more bug report than patch, but this patch does suppress the
-> > splat, so there is that.  ;-)
-> > 
-> > Kernels built with either KASAN or KCSAN produce this splat:
-> > 
-> 
-> I see it on kernel w/o KASAN or KCSAN. IIUC, this is new check introduced
-> by b5cc230af5e5 ("tracing: Warn when an event dereferences a pointer in TP_printk()")
-> so adding Steven :)
-> 
-> > [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
-> > [    0.000000] ------------[ cut here ]------------
-> > [    0.000000] Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
-> > [    0.000000] WARNING: kernel/trace/trace_events.c:420 at test_double_dereference+0x144/0x14c, CPU#0: swapper/0/0
-> > [    0.000000] Modules linked in:
-> > [    0.000000] CPU: 0 UID: 0 PID: 0 Comm: swapper/0 Not tainted 7.3.0-rc1 #15247 PREEMPT
-> > [    0.000000] Hardware name: linux,dummy-virt (DT)
-> > [    0.000000] pstate: 600000c5 (nZCv daIF -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-> > [    0.000000] pc : test_double_dereference+0x144/0x14c
-> > [    0.000000] lr : test_double_dereference+0x144/0x14c
-> > [    0.000000] sp : ffffc80aa7633bf0
-> > [    0.000000] x29: ffffc80aa7633bf0 x28: ffffc80aa7c0f047 x27: 000508b58019388f
-> > [    0.000000] x26: 0000000000000003 x25: 0000000000000007 x24: ffffc80aa5fceff8
-> > [    0.000000] x23: ffffc80aa7c0f05a x22: ffffc80aa64edfe8 x21: ffffc80aa7c0fce8
-> > [    0.000000] x20: ffffc80aa7c0f047 x19: 0000000000000013 x18: 0000000000000001
-> > [    0.000000] x17: 6572656420656c62 x16: 756f642073616820 x15: 746c61685f746573
-> > [    0.000000] x14: 0000000000000000 x13: ffff000139d90000 x12: 0000000000000045
-> > [    0.000000] x11: 00000000000000cf x10: ffff00013f546428 x9 : ffff000139d90000
-> > [    0.000000] x8 : 3fffffffffffc000 x7 : 0000000000000001 x6 : 0000000000000001
-> > [    0.000000] x5 : ffff00013f4e6440 x4 : 0000000000000000 x3 : 0000000000000000
-> > [    0.000000] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffffc80aa764a700
-> > [    0.000000] Call trace:
-> > [    0.000000]  test_double_dereference+0x144/0x14c (P)
-> > [    0.000000]  trace_event_raw_init+0x37c/0x5d8
-> > [    0.000000]  event_init+0x34/0xc0
-> > [    0.000000]  trace_event_init+0xec/0x588
-> > [    0.000000]  trace_init+0x24/0x6e0
-> > [    0.000000]  start_kernel+0x4a0/0x8ec
-> > [    0.000000]  __primary_switched+0x88/0x90
-> > [    0.000000] irq event stamp: 0
-> > [    0.000000] hardirqs last  enabled at (0): [<0000000000000000>] 0x0
-> > [    0.000000] hardirqs last disabled at (0): [<0000000000000000>] 0x0
-> > [    0.000000] softirqs last  enabled at (0): [<0000000000000000>] 0x0
-> > [    0.000000] softirqs last disabled at (0): [<0000000000000000>] 0x0
-> > [    0.000000] ---[ end trace 0000000000000000 ]---
-> > [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_disable has double dereference in TP_printk: &REC->gpd_ring->dma
-> > [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_enable has double dereference in TP_printk: &REC->gpd_ring->dma
-> > 
-> > Apparently, the code should instead create another entry in
-> > TP_STRUCT__entry(), and do the double-indirection TP_fast_assign() instead
-> > of TP_printk().  But simply removing the offending double indirection
-> > in TP_printk() gets this splat out of the way of other debugging.
-> 
-> Indeed, splat has gone after applying the patch.
-> 
-> Thanks
-> Vladimir
+The HDMI DDC driver for both mt7623 and mt8167 is actually the same as
+mt8173-hdmi-ddc and the mt7623n.dtsi board include file already uses
+mt8173-hdmi-ddc compatible as a fallback, but the documentation lists
+them as separate entries. Correct the binding by adding the correct
+fallback.
 
-Does this less hacky patch do the trick?
+Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+---
+Fixes the following dtbs_check error in mt7623n-rfb-emmc.dts and
+mt7623n-bananapi-bpi-r2.dts:
 
-							Thanx, Paul
+i2c@11013000 (mediatek,mt7623-hdmi-ddc): compatible:
+  ['mediatek,mt7623-hdmi-ddc', 'mediatek,mt8173-hdmi-ddc'] is too long
 
-------------------------------------------------------------------------
+ .../bindings/display/mediatek/mediatek,hdmi-ddc.yaml  | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
 
-commit afda2321e6e93a5bcc28bfb4717fbc3a1768446c
-Author: Paul E. McKenney <paulmck@kernel.org>
-Date:   Thu Sep 3 16:48:09 2026 -0700
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi-ddc.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi-ddc.yaml
+index bd8f7b8ae0ff..966127e1ee63 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi-ddc.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi-ddc.yaml
+@@ -15,10 +15,13 @@ description: |
+ 
+ properties:
+   compatible:
+-    enum:
+-      - mediatek,mt7623-hdmi-ddc
+-      - mediatek,mt8167-hdmi-ddc
+-      - mediatek,mt8173-hdmi-ddc
++    oneOf:
++      - const: mediatek,mt8173-hdmi-ddc
++      - items:
++          - enum:
++              - mediatek,mt7623-hdmi-ddc
++              - mediatek,mt8167-hdmi-ddc
++          - const: mediatek,mt8173-hdmi-ddc
+ 
+   reg:
+     maxItems: 1
+-- 
+2.43.0
 
-    EXP drivers/usb/mtu3: Work around mtu3_log_ep double-indirection issue
-    
-    Kernels built with either KASAN or KCSAN produce this splat:
-    
-    [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
-    [    0.000000] ------------[ cut here ]------------
-    [    0.000000] Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
-    [    0.000000] WARNING: kernel/trace/trace_events.c:420 at test_double_dereference+0x144/0x14c, CPU#0: swapper/0/0
-    [    0.000000] Modules linked in:
-    [    0.000000] CPU: 0 UID: 0 PID: 0 Comm: swapper/0 Not tainted 7.3.0-rc1 #15247 PREEMPT
-    [    0.000000] Hardware name: linux,dummy-virt (DT)
-    [    0.000000] pstate: 600000c5 (nZCv daIF -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-    [    0.000000] pc : test_double_dereference+0x144/0x14c
-    [    0.000000] lr : test_double_dereference+0x144/0x14c
-    [    0.000000] sp : ffffc80aa7633bf0
-    [    0.000000] x29: ffffc80aa7633bf0 x28: ffffc80aa7c0f047 x27: 000508b58019388f
-    [    0.000000] x26: 0000000000000003 x25: 0000000000000007 x24: ffffc80aa5fceff8
-    [    0.000000] x23: ffffc80aa7c0f05a x22: ffffc80aa64edfe8 x21: ffffc80aa7c0fce8
-    [    0.000000] x20: ffffc80aa7c0f047 x19: 0000000000000013 x18: 0000000000000001
-    [    0.000000] x17: 6572656420656c62 x16: 756f642073616820 x15: 746c61685f746573
-    [    0.000000] x14: 0000000000000000 x13: ffff000139d90000 x12: 0000000000000045
-    [    0.000000] x11: 00000000000000cf x10: ffff00013f546428 x9 : ffff000139d90000
-    [    0.000000] x8 : 3fffffffffffc000 x7 : 0000000000000001 x6 : 0000000000000001
-    [    0.000000] x5 : ffff00013f4e6440 x4 : 0000000000000000 x3 : 0000000000000000
-    [    0.000000] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffffc80aa764a700
-    [    0.000000] Call trace:
-    [    0.000000]  test_double_dereference+0x144/0x14c (P)
-    [    0.000000]  trace_event_raw_init+0x37c/0x5d8
-    [    0.000000]  event_init+0x34/0xc0
-    [    0.000000]  trace_event_init+0xec/0x588
-    [    0.000000]  trace_init+0x24/0x6e0
-    [    0.000000]  start_kernel+0x4a0/0x8ec
-    [    0.000000]  __primary_switched+0x88/0x90
-    [    0.000000] irq event stamp: 0
-    [    0.000000] hardirqs last  enabled at (0): [<0000000000000000>] 0x0
-    [    0.000000] hardirqs last disabled at (0): [<0000000000000000>] 0x0
-    [    0.000000] softirqs last  enabled at (0): [<0000000000000000>] 0x0
-    [    0.000000] softirqs last disabled at (0): [<0000000000000000>] 0x0
-    [    0.000000] ---[ end trace 0000000000000000 ]---
-    [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_disable has double dereference in TP_printk: &REC->gpd_ring->dma
-    [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_enable has double dereference in TP_printk: &REC->gpd_ring->dma
-    
-    Therefore, work around this restriction by creating another entry in
-    TP_STRUCT__entry(), and do the double-indirection TP_fast_assign()
-    instead of TP_printk().
-    
-    Signed-off-by: Paul E. McKenney <paulmck@kernel.org>
-    Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>
-    Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-    Cc: <linux-usb@vger.kernel.org>
-    Cc: <linux-arm-kernel@lists.infradead.org>
-    Cc: <linux-mediatek@lists.infradead.org>
-
-diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
-index 89870175d63561..6477ad3ddc66f6 100644
---- a/drivers/usb/mtu3/mtu3_trace.h
-+++ b/drivers/usb/mtu3/mtu3_trace.h
-@@ -224,6 +224,7 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
- 		__field(unsigned int, flags)
- 		__field(unsigned int, direction)
- 		__field(struct mtu3_gpd_ring *, gpd_ring)
-+		__field(dma_addr_t *, gpd_ring_dma)
- 	),
- 	TP_fast_assign(
- 		__assign_str(name);
-@@ -235,12 +236,13 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
- 		__entry->flags = mep->flags;
- 		__entry->direction = mep->is_in;
- 		__entry->gpd_ring = &mep->gpd_ring;
-+		__entry->gpd_ring_dma = &mep->gpd_ring->dma;
- 	),
- 	TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p/%pad flags %c:%c%c%c:%c",
- 		__get_str(name), usb_ep_type_string(__entry->type),
- 		__entry->maxp, __entry->slot,
- 		__entry->mult, __entry->maxburst,
--		__entry->gpd_ring, &__entry->gpd_ring->dma,
-+		__entry->gpd_ring, __entry->gpd_ring_dma,
- 		__entry->flags & MTU3_EP_ENABLED ? 'E' : 'e',
- 		__entry->flags & MTU3_EP_STALL ? 'S' : 's',
- 		__entry->flags & MTU3_EP_WEDGE ? 'W' : 'w',
 
