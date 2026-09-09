@@ -4,67 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76B89C79FAD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 09:58:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82F53C79FAD
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 10:31:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VFYlcyORIFs8zabeR7NUL7zR8wkb27uaRiAiMOJ9v8E=; b=4ZSsQzNrqVUnyLdQB2cPCCybbV
-	39FSqV150kS41cWcmOC6qQn1TAGPfkE9LB8hpgLep5Y6MBmWVa6bfMIDHY7bIXBbTnJiwoOSuW0aK
-	hDddaZ+cinyQFf87yjDojCCnDcktLWYKFFE0UIsgnP/3Ze0p5TaN0Yj1aET0WB24XfIBD2ssd0Q25
-	l/IJgo4f9ZEawSY7bPA2E3X+4ooQk8lzmcHuixoqYWdAeiF5tmGGLU8Sg6XmWAPwXfmWs5a7AWJ59
-	9L56QFy712uSm8r34pE/a9jsC9+snW0WbrVNkbkf8oXNcUcxYC0C5hwsyItQHt++2VJQducXKvxSn
-	Fp4xUeew==;
+	bh=jYdxtyabllQo0gRB4vuWzyyrbxq77Gibo2vkmBaesXM=; b=uNxtoQntvrUXLwzQIxRkg9ZI7m
+	rVKIKKMiKgHPW5Y++ED3+xoqGk7/t0wdTBui0sFMKirwmmjdHxyNefrfDVyIcwH5+M7Ds9PGrUCdt
+	0Ezq9CYhgRVgNvyahTwvliWQcaZZihLkDLABXhGVyHM9fcXb2rnYJabAYS6+pwtnB7Lx5ZqOrgnnR
+	GxayRJZHlaAeoAHkoVB35kKwPcrqR284M+QhO367yWnr+tINtxEtgBpPuTGNF5aR6hX2vq4XE1zQX
+	jPteyDnUbefnY9YuW1Y34BknmcYLNIC0v/fnlEy1XOnWanSVEA/cNB/BeYmsfgBAg3QI+y3kspO3X
+	9P7KjTAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4F48-0000000BMn5-0qn1;
-	Wed, 09 Sep 2026 09:58:04 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4F44-0000000BMlp-0NMX;
-	Wed, 09 Sep 2026 09:58:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788947877;
-	bh=yViiyIOoTETpn5qLLltYZZ+RjGHj/8+ZFoZNJ7YZagg=;
+	id 1x4Fab-0000000BRAr-1Mce;
+	Wed, 09 Sep 2026 10:31:37 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1x4FaX-0000000BR9b-3e7T;
+	Wed, 09 Sep 2026 10:31:36 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9D93F1691;
+	Wed,  9 Sep 2026 03:31:28 -0700 (PDT)
+Received: from [10.0.152.207] (unknown [10.0.152.207])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 9A9A23F528;
+	Wed,  9 Sep 2026 03:31:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
+	t=1788949892; bh=5E47bZgRKjBRNclJ8DR81hhTpJpELXhRn6CHOb6SHMc=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=hUjJd9lUgZoybA2t3pdx3sN2JlpK4D+sHHWgF5lPqA3qGYVV/Zy0vZGrfrXv6krzf
-	 twkLwSMygFoUaAVxZnSYhHs5iOtQ62Mt8Dtc4bs8NBGu933AUbrpQf0lLsMOmwe5jX
-	 MwzwDJS7frXeF/Iuwd+YMgImlK/IE4MK8QVcWpRUwnPeDZ02SNsm9x9xqQGYtwYBFt
-	 xluYmpwBYM/9jWVUxXBvFSKUy94t1s3QpA/+4wy5Vd+ev6ZWGSVeDflPgyTwtWQ5I3
-	 8zB91b3anH5aiPA5rzZlItcr4Y1xZOECxQcef7zgYdbo+46lPVCFdSW0PHNpo4eDTi
-	 IhBnHZJiDYIUQ==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2B4DC17E0945;
-	Wed, 09 Sep 2026 11:57:57 +0200 (CEST)
-Message-ID: <39494ea2-7fb5-4414-8560-47ddd40260cf@collabora.com>
-Date: Wed, 9 Sep 2026 11:57:56 +0200
+	b=iq86NCY8O/8lqxNe1OcBEE7/9YosqThM66BP8GIanhyHffPcCTIC8g9LlQiB7QEjo
+	 8ppUgNPOkfdFZjjPvRxhYnOEa3nfHpk0LpHCUeqgWAP0eA70DtnmDTun6J15IpdSLx
+	 c3ZjyBwmp3tm2LHB2kr1nty5szyOWCgnigG5j30k=
+Message-ID: <aae79c1c-8738-4b97-b1b9-d82d19d82d49@arm.com>
+Date: Wed, 9 Sep 2026 11:31:28 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] soc: mediatek: cmdq-helper: add legacy GCE ISA
- support
-To: rva333@protonmail.com, Jassi Brar <jassisinghbrar@gmail.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Houlong Wei <houlong.wei@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20260907-6572-gce-v2-0-412a5b037290@protonmail.com>
- <20260907-6572-gce-v2-2-412a5b037290@protonmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260907-6572-gce-v2-2-412a5b037290@protonmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Subject: Re: [BUG/PATCH] drivers/usb/mtu3: Work around mtu3_log_ep
+ double-indirection issue
+To: paulmck@kernel.org
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, rostedt@goodmis.org,
+ linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <a3ee0655-d818-48e0-84d1-475e6c16c991@paulmck-laptop>
+ <d7bb2cf4-11c3-468c-8749-99cc408299c7@arm.com>
+ <b6c621eb-6d20-4e00-ac05-af122b630ca5@paulmck-laptop>
+Content-Language: en-GB
+From: Vladimir Murzin <vladimir.murzin@arm.com>
+In-Reply-To: <b6c621eb-6d20-4e00-ac05-af122b630ca5@paulmck-laptop>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260909_025800_316982_50B19BA7 
-X-CRM114-Status: GOOD (  23.98  )
+X-CRM114-CacheID: sfid-20260909_033135_218464_40C2C709 
+X-CRM114-Status: GOOD (  22.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,154 +74,207 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/7/26 20:03, Roman Vivchar via B4 Relay wrote:
-> From: Roman Vivchar <rva333@protonmail.com>
+On 9/8/26 19:08, Paul E. McKenney wrote:
+> On Mon, Sep 07, 2026 at 02:28:47PM +0100, Vladimir Murzin wrote:
+>> On 9/4/26 00:59, Paul E. McKenney wrote:
+>>> This is more bug report than patch, but this patch does suppress the
+>>> splat, so there is that.  ;-)
+>>>
+>>> Kernels built with either KASAN or KCSAN produce this splat:
+>>>
+>> I see it on kernel w/o KASAN or KCSAN. IIUC, this is new check introduced
+>> by b5cc230af5e5 ("tracing: Warn when an event dereferences a pointer in TP_printk()")
+>> so adding Steven :)
+>>
+>>> [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
+>>> [    0.000000] ------------[ cut here ]------------
+>>> [    0.000000] Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
+>>> [    0.000000] WARNING: kernel/trace/trace_events.c:420 at test_double_dereference+0x144/0x14c, CPU#0: swapper/0/0
+>>> [    0.000000] Modules linked in:
+>>> [    0.000000] CPU: 0 UID: 0 PID: 0 Comm: swapper/0 Not tainted 7.3.0-rc1 #15247 PREEMPT
+>>> [    0.000000] Hardware name: linux,dummy-virt (DT)
+>>> [    0.000000] pstate: 600000c5 (nZCv daIF -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+>>> [    0.000000] pc : test_double_dereference+0x144/0x14c
+>>> [    0.000000] lr : test_double_dereference+0x144/0x14c
+>>> [    0.000000] sp : ffffc80aa7633bf0
+>>> [    0.000000] x29: ffffc80aa7633bf0 x28: ffffc80aa7c0f047 x27: 000508b58019388f
+>>> [    0.000000] x26: 0000000000000003 x25: 0000000000000007 x24: ffffc80aa5fceff8
+>>> [    0.000000] x23: ffffc80aa7c0f05a x22: ffffc80aa64edfe8 x21: ffffc80aa7c0fce8
+>>> [    0.000000] x20: ffffc80aa7c0f047 x19: 0000000000000013 x18: 0000000000000001
+>>> [    0.000000] x17: 6572656420656c62 x16: 756f642073616820 x15: 746c61685f746573
+>>> [    0.000000] x14: 0000000000000000 x13: ffff000139d90000 x12: 0000000000000045
+>>> [    0.000000] x11: 00000000000000cf x10: ffff00013f546428 x9 : ffff000139d90000
+>>> [    0.000000] x8 : 3fffffffffffc000 x7 : 0000000000000001 x6 : 0000000000000001
+>>> [    0.000000] x5 : ffff00013f4e6440 x4 : 0000000000000000 x3 : 0000000000000000
+>>> [    0.000000] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffffc80aa764a700
+>>> [    0.000000] Call trace:
+>>> [    0.000000]  test_double_dereference+0x144/0x14c (P)
+>>> [    0.000000]  trace_event_raw_init+0x37c/0x5d8
+>>> [    0.000000]  event_init+0x34/0xc0
+>>> [    0.000000]  trace_event_init+0xec/0x588
+>>> [    0.000000]  trace_init+0x24/0x6e0
+>>> [    0.000000]  start_kernel+0x4a0/0x8ec
+>>> [    0.000000]  __primary_switched+0x88/0x90
+>>> [    0.000000] irq event stamp: 0
+>>> [    0.000000] hardirqs last  enabled at (0): [<0000000000000000>] 0x0
+>>> [    0.000000] hardirqs last disabled at (0): [<0000000000000000>] 0x0
+>>> [    0.000000] softirqs last  enabled at (0): [<0000000000000000>] 0x0
+>>> [    0.000000] softirqs last disabled at (0): [<0000000000000000>] 0x0
+>>> [    0.000000] ---[ end trace 0000000000000000 ]---
+>>> [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_disable has double dereference in TP_printk: &REC->gpd_ring->dma
+>>> [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_enable has double dereference in TP_printk: &REC->gpd_ring->dma
+>>>
+>>> Apparently, the code should instead create another entry in
+>>> TP_STRUCT__entry(), and do the double-indirection TP_fast_assign() instead
+>>> of TP_printk().  But simply removing the offending double indirection
+>>> in TP_printk() gets this splat out of the way of other debugging.
+>> Indeed, splat has gone after applying the patch.
+>>
+>> Thanks
+>> Vladimir
+> Does this less hacky patch do the trick?
 > 
-> Some SoCs, such as mt6572, have different WRITE and POLL instruction
-> encoding. Instead of 16-bit offset and 8-bit subsystem ID, old GCEs have
-> 22-bit offset and 2-bit subsystem ID.
+
+
+Not quite :(
+
+
+> 							Thanx, Paul
 > 
-> Extend cmdq_instruction struct with additional union and struct to hold
-> the legacy format of instruction encoding. Add legacy_isa to select
-> legacy GCE ISA when writing instruction. Finally, add special handing
-> for legacy_isa cases.
+> ------------------------------------------------------------------------
 > 
-> Also correct comment about PA writes, because it's incorrect for legacy
-> ISA. Only v2 (mt8167, 8173) and v3 (mt8168, 6768, 6779, 6785, etc) have
-> GPRs and SPRs for PA writes.
+> commit afda2321e6e93a5bcc28bfb4717fbc3a1768446c
+> Author: Paul E. McKenney <paulmck@kernel.org>
+> Date:   Thu Sep 3 16:48:09 2026 -0700
 > 
-> While mt6572 GCE supports 22-bit offsets, the parameter type for offset
-> remains 16 bit, because all mt6572 GCE mmsys consumers are in the 0xffff
-> range.
+>     EXP drivers/usb/mtu3: Work around mtu3_log_ep double-indirection issue
+
+What is EXP?
+
+>     
+>     Kernels built with either KASAN or KCSAN produce this splat:
+>     
+
+Like I said in my other reply I hit the splat with neither KASAN or KCSAN are enabled.
+
+>     [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
+>     [    0.000000] ------------[ cut here ]------------
+>     [    0.000000] Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
+>     [    0.000000] WARNING: kernel/trace/trace_events.c:420 at test_double_dereference+0x144/0x14c, CPU#0: swapper/0/0
+>     [    0.000000] Modules linked in:
+>     [    0.000000] CPU: 0 UID: 0 PID: 0 Comm: swapper/0 Not tainted 7.3.0-rc1 #15247 PREEMPT
+>     [    0.000000] Hardware name: linux,dummy-virt (DT)
+>     [    0.000000] pstate: 600000c5 (nZCv daIF -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+>     [    0.000000] pc : test_double_dereference+0x144/0x14c
+>     [    0.000000] lr : test_double_dereference+0x144/0x14c
+>     [    0.000000] sp : ffffc80aa7633bf0
+>     [    0.000000] x29: ffffc80aa7633bf0 x28: ffffc80aa7c0f047 x27: 000508b58019388f
+>     [    0.000000] x26: 0000000000000003 x25: 0000000000000007 x24: ffffc80aa5fceff8
+>     [    0.000000] x23: ffffc80aa7c0f05a x22: ffffc80aa64edfe8 x21: ffffc80aa7c0fce8
+>     [    0.000000] x20: ffffc80aa7c0f047 x19: 0000000000000013 x18: 0000000000000001
+>     [    0.000000] x17: 6572656420656c62 x16: 756f642073616820 x15: 746c61685f746573
+>     [    0.000000] x14: 0000000000000000 x13: ffff000139d90000 x12: 0000000000000045
+>     [    0.000000] x11: 00000000000000cf x10: ffff00013f546428 x9 : ffff000139d90000
+>     [    0.000000] x8 : 3fffffffffffc000 x7 : 0000000000000001 x6 : 0000000000000001
+>     [    0.000000] x5 : ffff00013f4e6440 x4 : 0000000000000000 x3 : 0000000000000000
+>     [    0.000000] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffffc80aa764a700
+>     [    0.000000] Call trace:
+>     [    0.000000]  test_double_dereference+0x144/0x14c (P)
+>     [    0.000000]  trace_event_raw_init+0x37c/0x5d8
+>     [    0.000000]  event_init+0x34/0xc0
+>     [    0.000000]  trace_event_init+0xec/0x588
+>     [    0.000000]  trace_init+0x24/0x6e0
+>     [    0.000000]  start_kernel+0x4a0/0x8ec
+>     [    0.000000]  __primary_switched+0x88/0x90
+>     [    0.000000] irq event stamp: 0
+>     [    0.000000] hardirqs last  enabled at (0): [<0000000000000000>] 0x0
+>     [    0.000000] hardirqs last disabled at (0): [<0000000000000000>] 0x0
+>     [    0.000000] softirqs last  enabled at (0): [<0000000000000000>] 0x0
+>     [    0.000000] softirqs last disabled at (0): [<0000000000000000>] 0x0
+>     [    0.000000] ---[ end trace 0000000000000000 ]---
+>     [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_disable has double dereference in TP_printk: &REC->gpd_ring->dma
+>     [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_enable has double dereference in TP_printk: &REC->gpd_ring->dma
+>     
+>     Therefore, work around this restriction by creating another entry in
+>     TP_STRUCT__entry(), and do the double-indirection TP_fast_assign()
+>     instead of TP_printk().
+>     
+>     Signed-off-by: Paul E. McKenney <paulmck@kernel.org>
+>     Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>
+>     Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+>     Cc: <linux-usb@vger.kernel.org>
+>     Cc: <linux-arm-kernel@lists.infradead.org>
+>     Cc: <linux-mediatek@lists.infradead.org>
 > 
-> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+> diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
+> index 89870175d63561..6477ad3ddc66f6 100644
+> --- a/drivers/usb/mtu3/mtu3_trace.h
+> +++ b/drivers/usb/mtu3/mtu3_trace.h
+> @@ -224,6 +224,7 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+>  		__field(unsigned int, flags)
+>  		__field(unsigned int, direction)
+>  		__field(struct mtu3_gpd_ring *, gpd_ring)
+> +		__field(dma_addr_t *, gpd_ring_dma)
+>  	),
+>  	TP_fast_assign(
+>  		__assign_str(name);
+> @@ -235,12 +236,13 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+>  		__entry->flags = mep->flags;
+>  		__entry->direction = mep->is_in;
+>  		__entry->gpd_ring = &mep->gpd_ring;
+> +		__entry->gpd_ring_dma = &mep->gpd_ring->dma;
 
-Verified in the lab on multiple MediaTek boards.
+This doesn't build for me
 
-... but I either need an ack on patch 3/3 from mailbox maintainers, or they need
-an ack from me on this patch to pick everything.
-
-I'm fine with anyone picking this, so...
-
-Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Cheers,
-Angelo
+./drivers/usb/mtu3/./mtu3_trace.h:239:55: error: invalid type argument of ‘->’ (have ‘struct mtu3_gpd_ring’)
+  239 |                 __entry->gpd_ring_dma = &mep->gpd_ring->dma;
+      |                                                       ^~
 
 
-> ---
-> This change doesn't bring any functional change for mt6572. mt6572 uses
-> subsystem ID 0 for display, alongside with 16-bit offsets, so layout is
-> still compatible with v2/v3 GCEs. However, it's better to properly
-> describe layout.
-> ---
->   drivers/soc/mediatek/mtk-cmdq-helper.c   | 57 ++++++++++++++++++++++----------
->   include/linux/mailbox/mtk-cmdq-mailbox.h |  1 +
->   2 files changed, 40 insertions(+), 18 deletions(-)
+>  	),
+>  	TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p/%pad flags %c:%c%c%c:%c",
+>  		__get_str(name), usb_ep_type_string(__entry->type),
+>  		__entry->maxp, __entry->slot,
+>  		__entry->mult, __entry->maxburst,
+> -		__entry->gpd_ring, &__entry->gpd_ring->dma,
+> +		__entry->gpd_ring, __entry->gpd_ring_dma,
+>  		__entry->flags & MTU3_EP_ENABLED ? 'E' : 'e',
+>  		__entry->flags & MTU3_EP_STALL ? 'S' : 's',
+>  		__entry->flags & MTU3_EP_WEDGE ? 'W' : 'w',
 > 
-> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> index f8ee6c9ade89..fb82f2a85a21 100644
-> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> @@ -31,18 +31,27 @@ struct cmdq_instruction {
->   		};
->   	};
->   	union {
-> -		u16 offset;
-> -		u16 event;
-> -		u16 reg_dst;
-> -	};
-> -	union {
-> -		u8 subsys;
->   		struct {
-> -			u8 sop:5;
-> -			u8 arg_c_t:1;
-> -			u8 src_t:1;
-> -			u8 dst_t:1;
-> -		};
-> +			union {
-> +				u16 offset;
-> +				u16 event;
-> +				u16 reg_dst;
-> +			};
-> +			union {
-> +				u8 subsys;
-> +				struct {
-> +					u8 sop:5;
-> +					u8 arg_c_t:1;
-> +					u8 src_t:1;
-> +					u8 dst_t:1;
-> +				};
-> +			};
-> +		} __packed;
-> +
-> +		struct {
-> +			u32 offset_legacy:22;
-> +			u32 subsys_legacy:2;
-> +		} __packed;
->   	};
->   	u8 op;
->   };
-> @@ -86,7 +95,7 @@ int cmdq_dev_get_client_reg(struct device *dev,
->   		client_reg->subsys = CMDQ_SUBSYS_INVALID;
->   
->   		/*
-> -		 * All GCEs support writing register PA with mask without subsys,
-> +		 * GCE v2/v3 support writing register PA with mask without subsys,
->   		 * but this requires extra GCE instructions to convert the PA into
->   		 * a format that GCE can handle, which is less performance than
->   		 * directly using subsys. Therefore, when subsys is available,
-> @@ -219,10 +228,16 @@ int cmdq_pkt_write(struct cmdq_pkt *pkt, u8 subsys, u16 offset, u32 value)
->   {
->   	struct cmdq_instruction inst = {
->   		.op = CMDQ_CODE_WRITE,
-> -		.value = value,
-> -		.offset = offset,
-> -		.subsys = subsys
-> +		.value = value
->   	};
-> +
-> +	if (pkt->priv.legacy_isa) {
-> +		inst.offset_legacy = offset;
-> +		inst.subsys_legacy = subsys;
-> +	} else {
-> +		inst.offset = offset;
-> +		inst.subsys = subsys;
-> +	}
->   	return cmdq_pkt_append_command(pkt, inst);
->   }
->   EXPORT_SYMBOL(cmdq_pkt_write);
-> @@ -459,10 +474,16 @@ int cmdq_pkt_poll(struct cmdq_pkt *pkt, u8 subsys,
->   {
->   	struct cmdq_instruction inst = {
->   		.op = CMDQ_CODE_POLL,
-> -		.value = value,
-> -		.offset = offset,
-> -		.subsys = subsys
-> +		.value = value
->   	};
-> +
-> +	if (pkt->priv.legacy_isa) {
-> +		inst.offset_legacy = offset;
-> +		inst.subsys_legacy = subsys;
-> +	} else {
-> +		inst.offset = offset;
-> +		inst.subsys = subsys;
-> +	}
->   	return cmdq_pkt_append_command(pkt, inst);
->   }
->   EXPORT_SYMBOL(cmdq_pkt_poll);
-> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> index 07c1bfbdb8c4..9fcebc4ca864 100644
-> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
-> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> @@ -72,6 +72,7 @@ struct cmdq_cb_data {
->   
->   struct cmdq_mbox_priv {
->   	u8 shift_pa;
-> +	bool legacy_isa;
->   	dma_addr_t mminfra_offset;
->   };
->   
-> 
+
+I've done a little bit massaging and here is what worked for me
+
+
+diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
+index 89870175d635..4d4bae25fa1f 100644
+--- a/drivers/usb/mtu3/mtu3_trace.h
++++ b/drivers/usb/mtu3/mtu3_trace.h
+@@ -224,6 +224,7 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+                __field(unsigned int, flags)
+                __field(unsigned int, direction)
+                __field(struct mtu3_gpd_ring *, gpd_ring)
++               __field(dma_addr_t, gpd_ring_dma)
+        ),
+        TP_fast_assign(
+                __assign_str(name);
+@@ -235,12 +236,13 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+                __entry->flags = mep->flags;
+                __entry->direction = mep->is_in;
+                __entry->gpd_ring = &mep->gpd_ring;
++               __entry->gpd_ring_dma = mep->gpd_ring.dma;
+        ),
+        TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p/%pad flags %c:%c%c%c:%c",
+                __get_str(name), usb_ep_type_string(__entry->type),
+                __entry->maxp, __entry->slot,
+                __entry->mult, __entry->maxburst,
+-               __entry->gpd_ring, &__entry->gpd_ring->dma,
++               __entry->gpd_ring, &__entry->gpd_ring_dma,
+                __entry->flags & MTU3_EP_ENABLED ? 'E' : 'e',
+                __entry->flags & MTU3_EP_STALL ? 'S' : 's',
+                __entry->flags & MTU3_EP_WEDGE ? 'W' : 'w',
+
+Cheers
+Vladimir
+
 
