@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49E02C79FBE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 10:49:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F381C79FAD
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 10:49:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xGGdfJqGLxmL+l/+Zw0i9CDtRwIkFkCEgtvhfab4zQI=; b=Y9o/FjAEBGhMVtwdncu6NdSWR3
-	CG0RZX0viTi/OLr/ow/zEnLHZdjKBspukrIUoTPJd31ROQW3KX+7QQfbmoOHEQ77DaM9oqpI3nA/S
-	HpHuTwFLv1iZmWbah4vg5HX6pCMyA6ZwrzgnA2fyPS1TQXq45rtQBqEll+9KYXI35QkNoRI3MpICq
-	wRI0hc1ucsVdXAIaq0fZZXc3wh6ltt9IBl+F22eeEvX6B8soC2h9U4KwBG1srlXeNB1rRL5pXcDfh
-	n8wy1VENBfXsxZkBkPrGWSE67W9XnchJWHXX31p5WgFiUZ0bl9Rf3yukDkCuqgYhf3y5Q1GstgccE
-	XhgLXDGw==;
+	bh=CDfo5hhrnudGHNXZvlvxctBv/iDSQARsu1jc+aa/YKc=; b=lUbBwlTZfKpz5jYEtX70D6Fk7T
+	+Zz9voYP3waCGIcBMDdxuh1eQUDumaSFi2UrIfSlO7NpDOYRpcb1HWpDwiqVL/xt4jT4jeNouO8U3
+	NKZMCIRdBgjJtmhpL80MBiKrlzF36zZVCQL6vahKOtTRE8svxSmv7g033Bjl7F9EH4M1PZM2lybE9
+	BHIpciUhwEAeshVNDyIdi8NDaild5GQ2iQi9vyYfOirLqwwUjhLp9lEF2mXrhYY17BUWii45aUQRz
+	sFKHxzutEjTt8sis82SzwPGJ8vwJ2YJOuJ9DZIZnJcsR4z95ezqd6TEnBWBbP4ojQViIkCafsAs0C
+	GlOBGt/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4FsC-0000000BTh5-0Bht;
-	Wed, 09 Sep 2026 10:49:48 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x4FsE-0000000BTjF-0P1z;
+	Wed, 09 Sep 2026 10:49:51 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4Fs8-0000000BTeT-0DoY;
+	id 1x4Fs7-0000000BTeG-3EGF;
 	Wed, 09 Sep 2026 10:49:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6CA2C60219;
+	by sea.source.kernel.org (Postfix) with ESMTP id 56BA643B66;
 	Wed,  9 Sep 2026 10:49:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 11957C2BCF5;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 30685C2BD00;
 	Wed,  9 Sep 2026 10:49:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1788950983;
-	bh=OselYV9Z79ga+Tc9lAyWGhBokVgW3jNj53PuyfqBRz8=;
+	bh=z/IHrbK6Kmc41Oj/Z168GnVdZNmfWEF1Ga3MCPTNHZk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=pVFabxpeuid4J1XDLcZ8yOhWwD1/XLnDCbhlC1MT9qAQ0FDMHgtQK8OivDatQ1q4j
-	 NEbabWkF9dm9tePDd8VGGhdOiR8MZRwQdCr7ECWY31IrxIEFYeBTl3kKgLCMSgn5at
-	 GcCqvwCfTUw27Cl0H1c343pAHSacObNy8RE7t2t1clzxn4qEifslrCx89mG10ZSW8Z
-	 BDQsImbM3oKZvtjDm5slSClAkSdGnd0h6qF0Fk7KarnNIZiqAg612d2qo8KwKiTzSB
-	 DddMCr+843lxBv4591jU66WKAMZ9WpyvE6jOL4IFWjAG8n1nJPSP//KGxEwUTyw7Nd
-	 mDf2LMookHh2g==
+	b=Ta+yhd+Fzo3eja/mzuoxXhx5v8ITsZQMzMcXjgFK6tOpH7M/HM72DAFPCu/URs1KS
+	 avcVL/dzSr782ZG+WrUaanqv9uXgkccm7wtbpuy4nWJaAdvb2kZ/RpU0E8CFebSYBX
+	 c8xr/usgF5/xzJ0E55mQOIZMD4v28+CQ7MFW52ZCGKqA6BxCYr7DLyJnF+TwIbKNtb
+	 a7vwupFqldQmzfYTxwZYL5RKmJ++ZgIo/BR88InR2kq6rlUaOMwBDW8l4h2dCMeBpP
+	 QJ2f8lQTb47hF1N1jWgaErJZ9UMnduxTAaT0tgMhJuuQTtjV1mqfsfqeVkhCEZoMI+
+	 KtS9uZBgyq5tA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E69FFC79FB6;
-	Wed,  9 Sep 2026 10:49:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 12E34C79FBE;
+	Wed,  9 Sep 2026 10:49:43 +0000 (UTC)
 From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Wed, 09 Sep 2026 13:48:50 +0300
-Subject: [PATCH v3 1/3] dt-bindings: nvmem: mediatek: efuse: add mt6572
+Date: Wed, 09 Sep 2026 13:48:52 +0300
+Subject: [PATCH v3 3/3] nvmem: mtk-efuse: add mt6572 support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260909-6572-nvmem-v3-1-c0c441656431@protonmail.com>
+Message-Id: <20260909-6572-nvmem-v3-3-c0c441656431@protonmail.com>
 References: <20260909-6572-nvmem-v3-0-c0c441656431@protonmail.com>
 In-Reply-To: <20260909-6572-nvmem-v3-0-c0c441656431@protonmail.com>
 To: Srinivas Kandagatla <srini@kernel.org>, Rob Herring <robh@kernel.org>, 
@@ -64,11 +64,11 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Roman Vivchar <rva333@protonmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1788950981; l=1057;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1788950981; l=1270;
  i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=t4yY7jNJW5Ruu7MkWUJRRcVwM0ArbnLdvtu2KDe4Mvo=;
- b=YvUkqieMw0zQ/HK0FnVLCruW13b9WxcWXKDU9gpaJfUQTM6+gZ3se4/2+kmSWJdnOxUpBsjmE
- 3JB1XTr2O8jB/Sa4+zik77Z6vLNrvdJYig0Nn9s0keEaoE4wiavkAGH
+ bh=j/0pkhNqmD2kWRqTyBoB6Qy34fCNHrTMKNnHg2hhmLk=;
+ b=5t1b0Kn5gUv3X47QncGs0iNVDDFmY67ZSD/Uqr1Nmr+N+pCIziA96GyYNqqRczjvwl7pVCkpG
+ EzAZSKelSYdD46PQ0cDr5qFZcaB4HxSJHyx6WkGe/TSY/vZ9rzeu1g4
 X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
  pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
 X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
@@ -91,36 +91,38 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Roman Vivchar <rva333@protonmail.com>
 
-Add a compatible string for the mt6572 SoC efuse controller.
+Add a platform data struct for the efuse controller.
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
- Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/nvmem/mtk-efuse.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-index f9323b3ecfc8..e10947164941 100644
---- a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-@@ -24,13 +24,16 @@ properties:
+diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
+index 178b9d85f813..99d061eef6e3 100644
+--- a/drivers/nvmem/mtk-efuse.c
++++ b/drivers/nvmem/mtk-efuse.c
+@@ -132,6 +132,11 @@ static int mtk_efuse_probe(struct platform_device *pdev)
+ 	return 0;
+ }
  
-   compatible:
-     oneOf:
-+      - enum:
-+          - mediatek,mt6572-efuse
-+          - mediatek,mt8186-efuse
++static const struct mtk_efuse_pdata mtk_mt6572_efuse_pdata = {
++	.uses_post_processing = false,
++	.needs_aligned_read = true,
++};
 +
-       - items:
-           - enum:
-               - mediatek,mt8188-efuse
-               - mediatek,mt8189-efuse
-               - mediatek,mt8196-efuse
-           - const: mediatek,mt8186-efuse
--      - const: mediatek,mt8186-efuse
+ static const struct mtk_efuse_pdata mtk_mt8186_efuse_pdata = {
+ 	.uses_post_processing = true,
+ 	.needs_aligned_read = false,
+@@ -143,6 +148,7 @@ static const struct mtk_efuse_pdata mtk_efuse_pdata = {
+ };
  
-       - items:
-           - enum:
+ static const struct of_device_id mtk_efuse_of_match[] = {
++	{ .compatible = "mediatek,mt6572-efuse", .data = &mtk_mt6572_efuse_pdata },
+ 	{ .compatible = "mediatek,mt8173-efuse", .data = &mtk_efuse_pdata },
+ 	{ .compatible = "mediatek,mt8186-efuse", .data = &mtk_mt8186_efuse_pdata },
+ 	{ .compatible = "mediatek,efuse", .data = &mtk_efuse_pdata },
 
 -- 
 2.55.0
