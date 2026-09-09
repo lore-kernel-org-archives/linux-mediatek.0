@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FFD2C79FBF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 16:52:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13D67C79FBD
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 17:03:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GmlMljZT/6fO26V/fEoR8ernMpnUFy1iAPY7wr0dQNs=; b=PllsrUjblkSgvFrnHVlF4lWuad
-	zMr9L1L3KBoo5pE9VN6DrKxpuyv2EVXI7T4iOzUwTGhdpXxkoI4zszXTWviY+2P5m0O0o+ULmwbtX
-	VHwbQE+fwiAGxGU0qTd99PTCmBGu4trwiwJ8r0UcqlhOy0s1xu0i8aJrwzkZ05W2Vz4ialFMins9L
-	M88Cw4KE+HDTGb2nDcf0BQP/gIxZiFkMk7lAulpEqH4AVsHSxPoiMWvwJzyl7qy1mbipJt40qt6hK
-	JsQx9Ik8dRwzAx8MQu/yStl6VTUM4mrFmWt+rY4Xed185n4qA/HopeAntzy0VdKg78+6Hde4rD71G
-	K7Sg7u9Q==;
+	bh=p2s8uYoBSnPRtzrtxy84WXDVLveffRjaRrPrEHzO3Eg=; b=jZLDRnAX04GZbr7SQJ28hpM2KW
+	/atqBxGBKErhHOkFlBwYMKkq72kD7j+LXzcohcFoplPb7cvvnTjsSy1Mz3Ax/KVI/WANY0nAUdIiU
+	f/w7ZjbuWRc9ApicsPiaoTOwW+wfo/3PQetd4sqTlCbzHAsrltAi0LmKesZlqvIFr11wAmMQ5rW98
+	DGGpNmqmt9UN42ufmBOhns0vxHRMPhQRYSeUypXTAC0r1I9c4EGqBnEZOCsQM917jsGt3rtGibyfa
+	eenwqf9pHH7gERR2bFS/c2SrU7Yi+852Bo6PF7NcKToCkye+wY0t9w2/29WxXSBdFUZwWPScTLXbA
+	0eKKA/DA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4LXd-0000000COeF-37rL;
-	Wed, 09 Sep 2026 16:52:57 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x4Lhg-0000000CQ8O-2Qui;
+	Wed, 09 Sep 2026 17:03:20 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4LXc-0000000COde-0Rv6;
-	Wed, 09 Sep 2026 16:52:56 +0000
+	id 1x4Lhf-0000000CQ7Z-17Qf;
+	Wed, 09 Sep 2026 17:03:19 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 86590600CB;
-	Wed,  9 Sep 2026 16:52:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B32791F000FF;
-	Wed,  9 Sep 2026 16:52:49 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id E6FCB405F7;
+	Wed,  9 Sep 2026 17:03:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C0C281F000FF;
+	Wed,  9 Sep 2026 17:03:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788972775;
-	bh=GmlMljZT/6fO26V/fEoR8ernMpnUFy1iAPY7wr0dQNs=;
+	s=k20260515; t=1788973397;
+	bh=p2s8uYoBSnPRtzrtxy84WXDVLveffRjaRrPrEHzO3Eg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=KkhMoR6Gs7IooOaJd6DKs7tUqWc1jCblWwWBcebrdQphPcJfx9IHywVG0VVdPQcZr
-	 Ujc+1ZiZDZsZBo0BrfVxc7W0Z7wbJxsVToSLW6b854TSdi/sJPu6STLcXEmkiKy4TS
-	 3nkPhpQ1Bl7Z4P9RYdUWzulpKKMbSG40E8yaol2K0HHfVSpDN1gMbN6cbgpBTs9QIy
-	 VDePMdyerGmnffIQvv6WecoqTTaLEzerfhfu6+Vu58/WBqIxA/6IEgxAWNKrGKLnDG
-	 JgHQbPwgWlMwEFPoMtfE1bMTTELWNN7XggB/FHAP+91OztVhKa6hS689YxKChFNb7r
-	 SkgQHw+GkfxQA==
-Date: Wed, 9 Sep 2026 18:52:45 +0200
+	b=XkVQ0vIuB6RQIRTUzSey3nGs+UX/fU73qGe5rLJyVH74queEPlJAnPabs0WWtPtc2
+	 AxwFcbtRNCukAPEqEW7rAq4WamRm6e5w76DIxmlGofvrUfKd0d4x75v7u9tRtkcbDC
+	 JOTgcuqnOx117t79O/6qN0+IE/2TJ9rK8MLBBsHqfRu8ueC01Gs12akCoHc+tPQTpu
+	 R85FtifAhbIUhJFuE5Xt77KmJDvQv+HKr6+Q5nDAcNzmAfny9H3TMDj7eeyFonpnuq
+	 tDHH4fZvp9tjRevl4BB7ecdS22L6GBeX2minc5iWSMTNe7DbPL8JP52sSmaZFVZSqc
+	 7XoXLn9sP/kQA==
+Date: Wed, 9 Sep 2026 19:03:08 +0200
 From: Manivannan Sadhasivam <mani@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: chunfeng.yun@mediatek.com, vkoul@kernel.org, neil.armstrong@linaro.org, 
@@ -50,16 +50,16 @@ Cc: chunfeng.yun@mediatek.com, vkoul@kernel.org, neil.armstrong@linaro.org,
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
 	linux-phy@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	dri-devel@lists.freedesktop.org, kernel@collabora.com
-Subject: Re: [PATCH v3 02/12] phy: phy-mtk-dp: Rename regs to regmap in
- struct mtk_dp_phy
-Message-ID: <wvjid3xethoskbttbgy3oy3j7fxnonrnzqg7pqndn32skzp4bt@2q7svyz6ojr7>
+Subject: Re: [PATCH v3 03/12] phy: phy-mtk-dp: Allow probing with devicetree
+ match
+Message-ID: <bkx46kvsmovy2rbjnqwov65whmwnbkoig27iihk7w4qcosqoqf@jymp7vcu3ezi>
 References: <20260707154245.198361-1-angelogioacchino.delregno@collabora.com>
- <20260707154245.198361-3-angelogioacchino.delregno@collabora.com>
+ <20260707154245.198361-4-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260707154245.198361-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260707154245.198361-4-angelogioacchino.delregno@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,11 +74,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 07, 2026 at 05:42:35PM +0200, AngeloGioacchino Del Regno wrote:
-> In preparation to perform further cleanups and to extend the
-> driver to support more SoCs, rename the `regs` member to `regmap`
-> to improve readability, as this is a common name across many
-> kernel drivers for a struct regmap.
+On Tue, Jul 07, 2026 at 05:42:36PM +0200, AngeloGioacchino Del Regno wrote:
+> Make it possible to decouple the registration of the DisplayPort
+> PHY driver from the DisplayPort IP driver by adding a devicetree
+> match to probe the PHY, registering an OF PHY provider and this
+> device's own MMIO regmap - if, and only if, this PHY driver was
+> registered with an OF match.
+> 
+> In order to retain compatibility with older devicetrees that are
+> not declaring the DisplayPort PHY as a separate node, the legacy
+> code was moved in a `mtk_dp_phy_legacy_probe()` function, which
+> gets called if the driver was registered by the DisplayPort one.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
