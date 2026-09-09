@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 371B1C79FBF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 15:06:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78623C79FB6
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 15:10:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E9ytG7kb5dbrGiKhe0oxqCTTvFC6jYjdhibOnVV1Go8=; b=0fttpASmqjT35hZ/v8fLOV/LVw
-	lJ6a1CkcGPoae7JRtyjqQZVSicM5npLz7iKfoy8LbzysfqaiOxguaP5Pjd9CPi2KG9ELBU6qLIyrR
-	0VnA3aX9bHDTcH/9pMHdUdV5Jd98f2ityl6d2Gdv1gJo8vEpv0uw4PvoDRlH0KwXGzGQ4WqgNUSh4
-	Erv3msjr1+qQDQXqZDIdisqbOJZzY3Eh6Qcfo+BCyB5UUwCTTlZSrjj99TYzkTWW27uqV/2atj/Wr
-	fI6jDo2iNgsILWNF5ccaD7iQ7R81xLSD3Ovv2yrHnWTYjAATPqxrRnVIVoqr8V+wfSiW+l4GR6hxM
-	Er6/srpg==;
+	bh=Ps4txA8yulxz+H1CKcCcyIHdAlFgi+8pO1Fx1PzdrZ4=; b=2Dc9trLEK4H81R8GR2aPTdmtWf
+	/l6YXxcZCWYCaV9ixfcpBA69UG6C2VYuXDN6YvRUPJnw2tJA6J/E2yZbfvhmeClNINjc0PajzFC4s
+	GzMdx8Rdvh3KQ0LQ1axyuRgB9EN+jtgbD6k0Wwagnq6z1AYhso0c+fFUekllS8ZGcOlJeiZvBA7zL
+	iAY1V2G6NdvB7MKC6KNSCo2it8/USCWeJQQXL8elQ9j1ffHPZuTYA6QxbTo1XM//e/NyMg3qkTaLU
+	N7PR1lgR86yfZ2UsV0A0meZh4iDR0f49yT5/Uhn0W0WYtHzNP3kD9rhc9UsQE9Gax+1Wl9+WieEUc
+	ACmUBqNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4Jsh-0000000C5Vr-2Kgz;
-	Wed, 09 Sep 2026 15:06:35 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x4JwO-0000000C63F-12Qy;
+	Wed, 09 Sep 2026 15:10:24 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4Jsg-0000000C5VM-2I7L;
-	Wed, 09 Sep 2026 15:06:34 +0000
+	id 1x4JwN-0000000C62h-1dRm;
+	Wed, 09 Sep 2026 15:10:23 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id A55B26020C;
-	Wed,  9 Sep 2026 15:06:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AE3D81F00A3A;
-	Wed,  9 Sep 2026 15:06:27 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id CA01240495;
+	Wed,  9 Sep 2026 15:10:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 182901F00A3A;
+	Wed,  9 Sep 2026 15:10:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788966392;
-	bh=E9ytG7kb5dbrGiKhe0oxqCTTvFC6jYjdhibOnVV1Go8=;
+	s=k20260515; t=1788966622;
+	bh=Ps4txA8yulxz+H1CKcCcyIHdAlFgi+8pO1Fx1PzdrZ4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=mQ8HP/RaMQKuI/HcIUaifGof6tg3xWV3kT6LI8eYb9rgbpsVWzV+ByXU0riskHILH
-	 i0JmeE6OALfZX8nSlHLj3RT5ls0hI/TW0WkTL7/grJm0KzHlKvABBvZlGU9NKbXRQi
-	 AKpwJXKS2VMOXoeUdMgfSQwVPg7wyMfjHnv4RQYP8tuY1y9LTvmb/iNrGa+cDvMeVh
-	 WlidRBgitZb7XcL/ODNZi9TqIoC5WWTzvN62bsZwe2rcG4qUsETYMI9E0ITvSOPhYc
-	 MJP0B5yuO6qm/JyAD8dBlT1mETJEfIRbjxpVnD93WpIpLh8HojMepFQPLK0RpbXtlM
-	 nJtyhY/CYFlow==
-Date: Wed, 9 Sep 2026 17:06:23 +0200
+	b=E0eUjy9U1WelmB5b8fbXhgJZ7f4PHeAMYS1RMPk1Djb2tBXQxprgaRbBJC/JE4BEG
+	 MLuXVb1TDVAHoN9VloKqWH1KXnFM9384urAMajSDTJsSx/LLzCI+D9ZY5cf7JYzHa8
+	 6GuqgNOPOKNSdEZK58ST5n9oof8BJWYxwaAR3SdWyzaiFtM/0qh2vg/cZ/3mky7f0E
+	 fExYtiqcbzxkqa5+S2buBB/Y3QvRKOz/8NZHHNbzKmQalyjVPn1J+rEIXHhshXK6Xg
+	 wP5zkz+M8NKvvwPO35n5d9xE8Gk9FQHX6aQ1iy1SFCXYJcFBdzsyquebQCc86O+YkG
+	 HjFjG5VDpe0rg==
+Date: Wed, 9 Sep 2026 17:10:12 +0200
 From: Manivannan Sadhasivam <mani@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunfeng.yun@mediatek.com, p.zabel@pengutronix.de, 
-	chunkuang.hu@kernel.org, vkoul@kernel.org, neil.armstrong@linaro.org, 
-	matthias.bgg@gmail.com, granquet@baylibre.com, justin.yeh@mediatek.com, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	kernel@collabora.com
-Subject: Re: [PATCH 2/2] phy: mediatek: phy-mtk-hdmi-mt8195: Fix TMDS clk bit
- ratio setting
-Message-ID: <5bmxa4pcwkiemubwfjun3dti4szu66gnxe6yw2pudq3wplpc23@inyswc2bdlhw>
-References: <20260701121936.19407-1-angelogioacchino.delregno@collabora.com>
- <20260701121936.19407-3-angelogioacchino.delregno@collabora.com>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+	Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] dt-bindings: phy: mediatek,tphy: Add support for MT8189
+ SoC
+Message-ID: <h3b5r5wm5pey65jauir32ciw3lskbrlbcuyqa2xwaxqx2q3kz5@nxqjientp4dq>
+References: <20260701-mt8189-dt-bindings-tphy-v1-1-5848a2be8303@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260701121936.19407-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260701-mt8189-dt-bindings-tphy-v1-1-5848a2be8303@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,33 +74,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 01, 2026 at 02:19:36PM +0200, AngeloGioacchino Del Regno wrote:
-> The comment in the mtk_phy_tmds_clk_ratio() function clearly and
-> correctly explains that the TMDS ratio has to be 1/10 for data
-> rates under 3.4Gbps, and 1/40 over that.
+On Wed, Jul 01, 2026 at 05:36:49PM +0200, Louis-Alexis Eyraud wrote:
+> Add a compatible string for the MediaTek MT8189 SoC, that integrates a
+> MediaTek generic T-PHY version 3.
 > 
-> Unfortunately though, the TXC_DIV register setting was wrong, as
-> in value 3 means to divide by 8 and, in order to achieve the in
-> spec 1/40 (tmds) data rate, this has to divide by 4 instead!
-> In order to achieve the correct 1/40 (tmds) data rate, this has
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
-This statement is cut-off!
-
-> 
-> Add definitions for the TXC_DIV register values clearly explaining
-> the meanings (DIV2, DIV4, DIV8), and program the correct, DIV 4,
-> value to the register in mtk_phy_tmds_clk_ratio().
-> 
-> This fixes out of spec clocking and, with this change, SoCs using
-> the MT8195 class HDMI PHYs can now successfully be configured to
-> output 3840x2160@60Hz over HDMI.
-> 
-> Fixes: 45810d486bb4 ("phy: mediatek: add support for phy-mtk-hdmi-mt8195")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-With above comment addressed,
-
-Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+Acked-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
 
 - Mani
 
