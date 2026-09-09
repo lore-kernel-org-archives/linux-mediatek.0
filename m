@@ -4,74 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0242C79F8C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 05:58:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 220D8C79F8C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 06:11:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=UVPcEqdvMw0odJtdzU41jB5q01uD8558jbITbPIqW1c=; b=vgoRfyrthqRzQ5c8Cyain0Rccp
-	1v6C1gdhPh6SgQKxJ9HcrtcVW8fSA5J0M5jyVerPq3egFSU/hoP2FloKEk9Sn0lP8ERzF1bAwOlWt
-	bNuaxBfv6Np1ZpWJhwxhLpVOjJ4tTd47Q/q9ibekSpPbHEw76s45iM62KF6cR8halx9qEfyurcqs8
-	89cvIh9N93Zy2FpDK4B+Vs1lNb8aGKgK4rfoKfCge2pSDrwlFEetgq8zgkogwVzQ9A0nynptmvSCn
-	rzOUSLonpQD5u5j25cs/LvgD6eix0mPlt1DHVoHcyMPBPKzu0nBWAO6HMLOcuhHrhGh+Awohsst0o
-	d9E5lsQw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wKVzZ3DXomIuSaP/EgVD76UrmtWu9SrVhn2lBA4cc7k=; b=DBEDAQLiXhHnwe2cwUbnRT8Bg1
+	VMKC7FllMP8YEq9fqwExdDwBn7SXUwY8Ol22T/O5L97Xr55QLtXIudKEjxw1CyiUThL1po/Xk/YNY
+	Kg8xJDj61RLPb2Kp338juRBMAD0KPnhD5hJrI9We7qnrFNYdL/kjTaFRYYPI1E/APatyfpMekkx0Y
+	tWY6I4UE1HIojO5HiSvaLugdFMrUXy1534F5TotdE1IqvIUZeaPHx2aaljSLoNGbk8PmIBnBaCA1U
+	sUqjpWciH/VWfB6BkkwYLvU65KTqH+bdLTYE+86un9pQPly784bYA83wyRwJZNyoWBfTli4veUjw4
+	+xVi49Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4BJs-0000000ApUe-0hpz;
-	Wed, 09 Sep 2026 05:58:04 +0000
-Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
+	id 1x4BX4-0000000Ar7G-14l5;
+	Wed, 09 Sep 2026 06:11:42 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4BJp-0000000ApTF-1aDc
+	id 1x4BX2-0000000Ar6g-07Ws
 	for linux-mediatek@lists.infradead.org;
-	Wed, 09 Sep 2026 05:58:02 +0000
-X-UUID: 65d202b8ac1311f1acbe4559397dec65-20260908
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=UVPcEqdvMw0odJtdzU41jB5q01uD8558jbITbPIqW1c=;
-	b=rKXgeSB3BTk+rn1vMYl4yOYOIpvD3VpGu2SeBo1zSCn1Wd2nDBw3IArauOTfcb8xr+QE5A7vhmO2RcDgdUdIvkARxIDgCRhdC/8nhhn8k9AoYJlYJhreiJy37vy1ZZ1GkFARIErRb0ONwt+iKDMdio/ZFYpulqHBSd8D9d3nJj0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:8d05e879-ee3f-4ede-ba6b-fb7bfe2f5524,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:66d01328-9ebf-4787-bb42-3cd26eee85aa,B
-	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
-	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 65d202b8ac1311f1acbe4559397dec65-20260908
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <jb.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1971835196; Tue, 08 Sep 2026 22:57:53 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 9 Sep 2026 13:57:51 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 9 Sep 2026 13:57:51 +0800
-From: JB Tsai <jb.tsai@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<Sean.Wang@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<litien.chang@mediatek.com>, <Charlie-cy.Wu@mediatek.com>,
-	<jb.tsai@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7928: only do CLC hw type sanity check on MT7925
-Date: Wed, 9 Sep 2026 13:57:50 +0800
-Message-ID: <20260909055750.929102-1-jb.tsai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	Wed, 09 Sep 2026 06:11:40 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 508C9601FB;
+	Wed,  9 Sep 2026 06:11:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86B4B1F00A3A;
+	Wed,  9 Sep 2026 06:11:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788934299;
+	bh=wKVzZ3DXomIuSaP/EgVD76UrmtWu9SrVhn2lBA4cc7k=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=koO1jTZdY8lUmp8ZIlLpM90UDSszO2+fNjIIL8oOLPp6yYIZ9zwkkDPUNwu/czmmd
+	 0jgjB+zPzqrQTa+8Try6aE55cVpJ12vSylOoS2jCIgIlOalhMzcojIruawC7K6fpdM
+	 JzwmL0HmircrECSv1Ozk9OpZkAnc/tRfcrz+pKr1PucClnBotMW5Wx5s5pSVAVrO7j
+	 V9rvbMmV1mk3gGv/g4uss/ohBF6bVJ3/uKBtr247YVtj1EcmSBrf99MQb8OWr/Q64c
+	 G4N0HvCL4fsrg4pu1koYH4vL66Odli4Xb/0aHAS/zmGkKHJkBNOVJ4eRKj8pdzjkhO
+	 wMJHKN/9pxvDw==
+Message-ID: <219e88c6-5f49-4db3-8a30-54d387711fcc@kernel.org>
+Date: Wed, 9 Sep 2026 08:11:29 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260908_225801_437527_99158B06 
-X-CRM114-Status: GOOD (  14.21  )
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/3] dt-bindings: pinctrl: Add EcoNet EN7528 pin
+ controller
+To: Ahmed Naseef <naseefkm@gmail.com>
+Cc: linux-gpio@vger.kernel.org, Benjamin Larsson
+ <benjamin.larsson@genexis.eu>, Christian Marangi <ansuelsmth@gmail.com>,
+ Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Linus Walleij <linusw@kernel.org>,
+ Lorenzo Bianconi <lorenzo@kernel.org>,
+ Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
+ Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <cover.1786262697.git.naseefkm@gmail.com>
+ <7e6150b186c2d16820d7382bce065596a0854a47.1786262697.git.naseefkm@gmail.com>
+ <20260828-adorable-bug-from-arcadia-fcad00@quoll>
+ <apGcOAUpb6XZ2Iud@DESKTOP-TIT0J8O.localdomain>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGPBBMBCgA5AhsDBgsJCAcDAgYVCAIJCgsE
+ FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJp2mE8AAoJEBuTQ307QWKbeaIP
+ /ihHTkTW4KsN/DQ945JJbyu5tI0J80Wue7QyyLPglyKfhgb5cLLNPpOC8cCIJsc7+W3i2P38
+ s2c1cOH6CYGE7E9ur3Vfme8NW2S2I/Z8VC7bZnzyS23wT17LrsdS/qCpx4o8U+pt/xdXDKph
+ EGRYrIEmMpUWvyYzyYKGIe25FtaayIIKpq8eZYyFcp2f/sG5IkOW5uZzHPMPdcm87jU7fyuQ
+ rAU2vx9r+ulUfQ/q9Z2roC/ode3l7t2pN7BCBCsUDp6JCrUyZrtT1e7EbA0ZRP3aOBNk2P2E
+ DQOgJGjGdO5Yx2Y9LFtltu6JbsBJHi1syGRX3AtQYOMc4Y1WGoeZJmMlvKj2ZqqXNkcWi2DS
+ IQEWB0uW6CqFsBBIMGDa+6OzdaVO/uAVXWDWml02Men3CILdI1MbVjoh8ECqYUY7OQ+JJvNN
+ vnliuq5WM3Ghd3jg/LZZrxXjdIginRHFQCjIJYLKpLZWm1/iDFedcfzqRNYmTtqscdCNHW41
+ oT3Z7BmO9xwdjuwBS6nmS6JJwkbf5Ot2QR4pB/DRU7ZwjT1qHe+9r9gF32wXVQatHNGK/VVu
+ sfwOnkdxCWkp/qb2gdQRmZh+SedStWshigH6sNfuHBloF/q+hjMRc8b2m326OZdrbSHwY1Sz
+ vti8Hn7n8NjdHO9LKB7BIdjkA9DA5WsqOuVCzsFNBFVDXDQBEADNkrQYSREUL4D3Gws46JEo
+ Z9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLueMNsWLJBv
+ BaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6eiOMheesVS
+ 5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wAGldWsRxb
+ f3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA6z6lBZn0
+ WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9YegxWKvX
+ XHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt91pFzBSO
+ IpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gUBLHFTg2h
+ YnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/JoFzZ4B0
+ p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu4vXVFBYI
+ GmpyNPYzRm0QPwARAQABwsF2BBgBCgAgAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtBYpsFAmna
+ YUkACgkQG5NDfTtBYptX+BAApg32CkxwNucNEi8WfWA8oKkW0y8YDuY6ORMo9FWNGiT/OTy0
+ vyJrLocrpn86zwfjVp+eCrssPYh8eqJfnWqmYv6ACQtHPYzPZQ3mSo8H97Z01oUxITzCxpXm
+ ZkLgPIqtDPcC2E3dPM/fVxcyowM8XsaMA9wcsaUYrta8toOq2b9tKcjleKMfMrm0gQ9u7wUc
+ QbLkwj6TCLOwucb07GXzLTNF9PZmaDUpKAZjMjmrW+le+SFvQbhamx0rxLWPR0NWntXpbCn+
+ +ACch03p/JyTBVktxFsFyCt7pTPE1kEaeuXBTe/a2D9iQvRxRW19LvuO2e59/u1wYUiH/orz
+ wbIC2S4dBsPAPihL3ztOU1yE86GPyQtSE0kU+/7snnLt4QGi6PChf3t5gnNjAzjUUovO8rgI
+ c+5yN5heq5loYHgK6OQ9OlHzsPHO9e9MOQcKlFycs1pyijFGzDwdNUm/SchK8iWT2QApTx4A
+ K9bCVaboTA2T77QYkRcRJYSsO1alGX0ome/hMLD1daXlkrNUp1HWa3K4iytLRXjCSIorWiGs
+ n+q3krnpXu3TFkA8qtOFZMdnIiFuiq1yLT8hptsV5xh1TA2nsVvSYiaCr3q4s4BKjS/KrLDb
+ qoxzw8ISjdUp4pA85vb6YLCmb39NgidD+7PmAr65lBNveIFynTgsja1rRQ4=
+In-Reply-To: <apGcOAUpb6XZ2Iud@DESKTOP-TIT0J8O.localdomain>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,68 +123,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Charlie-cy Wu <Charlie-cy.Wu@mediatek.com>
+On 28/08/2026 16:33, Ahmed Naseef wrote:
+> On Fri, Aug 28, 2026 at 08:59:57AM +0200, Krzysztof Kozlowski wrote:
+>> On Sun, Aug 09, 2026 at 12:04:59PM +0400, Ahmed Naseef wrote:
+>>> +maintainers:
+>>> +  - Lorenzo Bianconi <lorenzo@kernel.org>
+>>> +
+>>> +description:
+>>> +  The EcoNet EN7528 pin controller is used to control SoC pins. It shares the
+>>> +  IP with the Airoha pin controllers, but its IOMUX and pin configuration
+>>> +  registers have a different layout.
+>>> +
+>>> +properties:
+>>> +  compatible:
+>>> +    const: econet,en7528-pinctrl
+>>> +
+>>> +  airoha,chip-scu:
+>>> +    description: phandle to the chip SCU syscon
+>>> +    $ref: /schemas/types.yaml#/definitions/phandle
+>>
+>> If the entire address space is part of the SCU, then this device should
+>> be part of the SCU, e.g. its subnode.
+> 
+> It is not: the registers are split over two blocks. The GPIO, interrupt
+> and PWM flash-mode registers are in the block the node sits under, and
+> the IOMUX and pin configuration registers are in the SCU. Both are
+> needed, so whichever of the two is the parent, the other one has to come
+> in by phandle.
 
-mt7925_load_clc() is shared by MT7925, MT7927 and MT7928 (0x7935 is
-folded into 0x7928 in pci.c). The hw type sanity check it does on every
-CLC region is MT7925-specific twice over: the encap bits live at
-efuse offset MT_EE_HW_TYPE (0xa71) in the MT7925 layout, and only
-MT7925 CLC blobs carry that hw type in their t0/t2 header. On
-MT7927/MT7928 the driver therefore reads a byte that means nothing on
-those parts and compares it against a header field that was never
-populated, so a mismatch silently skips every CLC region and leaves
-phy->clc[] empty - no country/regd table gets installed at all.
+Sure, one is parent and other is sibling. This is standard. But
+non-standard is to claim to have no MMIO but then get that MMIO from
+someone else...
 
-Gate both the efuse read and the two header checks on is_mt7925(), so
-MT7927/MT7928 accept the CLC regions from their own firmware as-is.
-No functional change for MT7925: PCIe still reads 0xa71 and filters by
-encap type, USB still runs with hw_encap = 0 as before.
 
-Fixes: 356b39285559 ("wifi: mt76: connac3: refactor CLC header type validation logic")
-
-Signed-off-by: Charlie-cy Wu <Charlie-cy.Wu@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7925/mcu.c    | 18 ++++++++++--------
- 1 file changed, 10 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index bd63789ab8f7..bf2cb6172cc8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -855,7 +855,7 @@ static int mt7925_load_clc(struct mt792x_dev *dev, const char *fw_name)
- 	if (!mt7925_regd_clc_supported(dev))
- 		return 0;
- 
--	if (mt76_is_mmio(&dev->mt76)) {
-+	if (is_mt7925(&dev->mt76) && mt76_is_mmio(&dev->mt76)) {
- 		ret = mt7925_mcu_read_eeprom(dev, MT_EE_HW_TYPE, &hw_encap);
- 		if (ret)
- 			return ret;
-@@ -906,14 +906,16 @@ static int mt7925_load_clc(struct mt792x_dev *dev, const char *fw_name)
- 		if (phy->clc[clc->idx])
- 			continue;
- 
--		/* header content sanity */
--		if ((clc->idx == MT792x_CLC_BE_CTRL || clc->idx == MT792x_CLC_REGD) &&
--		    u8_get_bits(clc->t2.type, MT_EE_HW_TYPE_ENCAP) != hw_encap)
--			continue;
-+		/* header content sanity, only MT7925 encodes hw type in CLC */
-+		if (is_mt7925(&dev->mt76)) {
-+			if ((clc->idx == MT792x_CLC_BE_CTRL || clc->idx == MT792x_CLC_REGD) &&
-+			    u8_get_bits(clc->t2.type, MT_EE_HW_TYPE_ENCAP) != hw_encap)
-+				continue;
- 
--		if (clc->idx != MT792x_CLC_BE_CTRL && clc->idx != MT792x_CLC_REGD &&
--		    u8_get_bits(clc->t0.type, MT_EE_HW_TYPE_ENCAP) != hw_encap)
--			continue;
-+			if (clc->idx != MT792x_CLC_BE_CTRL && clc->idx != MT792x_CLC_REGD &&
-+			    u8_get_bits(clc->t0.type, MT_EE_HW_TYPE_ENCAP) != hw_encap)
-+				continue;
-+		}
- 
- 		phy->clc[clc->idx] = devm_kmemdup(mdev->dev, clc,
- 						  le32_to_cpu(clc->len),
--- 
-2.18.0
-
+Best regards,
+Krzysztof
 
