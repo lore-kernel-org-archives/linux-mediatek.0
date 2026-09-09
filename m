@@ -4,90 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01065C79F8C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 07:21:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90973C79FAA
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 07:36:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Psx5izFz/CT47tzHifey69nrknoh0GX9iQboe2Wpy28=; b=p5W4Gz+fVj4sOZFrqkGO9vwbsb
-	RG5WboJsMoxaXlJN+wIiirXKMEpWI/R4yd8D9BUR73InKDt/AZGZNfjkStugG2y36m/+DbEWxdhhR
-	hmSUpzN/y5WDuKWxcOqP0q0dWjrWBDFFR1AMO55vxfQrG+2ulIrx8XYyYhSZLmq2suylmL++4KW+i
-	Eg6UuB0Z5FyrdjeYfPCGZm1uSVh4wjhndYE9vJ2uLVDG1H89lptlBMTjcaM8/3sfV4ORMV+x0lasK
-	NRc/yJJ7phL2PHAYd1Q7jNF4mVLb0k78nTfEM/Lzs49LqfXaIAm3Yo96Ercf7M4SaMuTE6IPP0o94
-	8wiF73gQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9w4NFg9faVW5eV7iVVa1tzxXUY7v774ABj4yQO4DEJg=; b=BY1s/+sa5udmD/bfj7JEvgYaER
+	3u31QxEZhR7CKRRuadZlEdfAro9S2CX53wBvoZhwoK48yE8PdG9M3z0Hq6x4EmG5IfVBW37eExQUQ
+	LuK7xjSQEuyHxqv3JEC92ZH0u7sSZ8m0rv4oSe6TFCkOEWvavl2i+94YACj/fBJHMxwpkfk5ZUdkg
+	h3CeTyCwTE5i6o7ihdkNWwL4iGtjbPl3Wh9gzCyLkgGqknDT2zCrVckYa08DR56ha0bwr858byjwO
+	uG3LZplkbrZ2NVeA4UPe+z9DDxoEv4Pmfy0qh+H+N6WMCW89tCrJAPeQgv2wNtJEqddULSn4oEfXp
+	k/FFCvHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4Cck-0000000AxyS-3rN9;
-	Wed, 09 Sep 2026 07:21:38 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1x4Cqm-0000000B029-0ht6;
+	Wed, 09 Sep 2026 07:36:08 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4Cch-0000000Axwl-3UOw
-	for linux-mediatek@lists.infradead.org;
-	Wed, 09 Sep 2026 07:21:37 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-49d0b98d6d0so34788295e9.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 09 Sep 2026 00:21:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788938494; x=1789543294; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=Psx5izFz/CT47tzHifey69nrknoh0GX9iQboe2Wpy28=;
-        b=d0K6YDsWwEd5CeS1V9sfzwjtxULtOq7OckN1BLFdpUmsdzJtqTPRfiFx3D/ZSrHbFe
-         0GE+h0NNaLfq68eE0Qk9XdlDgPJstqO/3FDS/qX+nFwHnQX5QUGrUgGHUH/Oi5zjoDBV
-         hXjL49U3apw6lsYkPg4aUQaFffPb9d6urFxCOJyzWbR0njdwAh/sYRPWAN5wDffEn8d5
-         bIaWL/xlWV6PWSjLYsJ2klQWuyBv53ooarKE1nHucCqQsOINLYxD4t+Lq6dG7jHRXClK
-         fkt8umACyu37eJA3wT5SC7NqqVKM67vbUC37EfKsf12Lc8g59jzGtDKcCkPJbwyneTzc
-         4D8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788938494; x=1789543294;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=Psx5izFz/CT47tzHifey69nrknoh0GX9iQboe2Wpy28=;
-        b=VsO4ivDSt2kK9eDR08tRE2kYuDtMYbnDKbIO65PpwxDb3PBkHFZMC8CHWvpjoWqJs9
-         Qp8SuAlzEyxM6TBBip5LrJwwayYLnWdOxZ/f/thTudqC0ObY5E8GSfPqVk29p/sq8m2r
-         Ae4spapcDVHpds4bmuDUT2bqcrIgqlVplFEg8jxRfjZQaAB4ogEi9nZ6J/lA1t+N0dK4
-         eJ2TclThRf35aUfybdf4opEyOV3FyMm1EzlvFHf+O4JvYLtUhk/lZWNDUJPrNTAcfn56
-         wBLZ1aJeNlGdLsPeomWZjM8AjJdhLrPArpPGMmTdGJkG5r2eXyNF9T/iGZKLHcYxQUlr
-         Bd6A==
-X-Gm-Message-State: AFuF++nKLcmIYHPwPZboQEkBIi3cfrGrzyZb0TI7cs/zgft8I+5Le+W/
-	XkKZdFZjhr5b0f6fz9RUrBfyugLuY9B7rFr+fdL/ekrgR409mO5M/p+gnI44iU8X
-X-Gm-Gg: AYBFou2v8Q4gyAIKnEcY9sgEMfzp37q8/EJ0+ynkShL7ZBfM2fSBQw5fQvufSTQtzFE
-	7bgYeVUmxeUUbE6BCatkqPhCc0jo4ssCJAzz98z7rL1nB4WI3cU/R1GSBsiA1HUEgNHjbC1ez/s
-	NabpjGqTza9a2cf6KBmk43nYGGxpCDFD3anBZSYOc1JFe1EXJMjVsgMBzOtPxbCrYWhSo2pYOtF
-	+7muzqAkemKnP9sfTvEaODnSqSeAolb3FAGiRa3Hz60kVRjEFthaHQtGaKQmX5lzpJ/koYeH6vX
-	m6jhEJzGgjjuF9W0WrynJ2acH2aELuE7/LAYtY89QfLG9q1usI93Pp1LUXBG7Vi7BreIeC9WJDE
-	VxLDzdHeOk3ikcj3LKPGbtedHZ11gj5KcrZ6VimVGGvuFdhNg0GagullCXAqyXEB0j20wTjIZjA
-	4YMcSB66uxJS/4j9IY9dEHdD9Ze/w0IIgkcxSGf7FfgG/GZ9SkYxgfu6ooVIuG9yDpXfw=
-X-Received: by 2002:a05:600c:3511:b0:49c:fa21:1c86 with SMTP id 5b1f17b1804b1-49cfa211cd7mr325233275e9.27.1788938493693;
-        Wed, 09 Sep 2026 00:21:33 -0700 (PDT)
-Received: from luca-vm.lan ([154.61.61.58])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-485883c6ba4sm46703902f8f.25.2026.09.09.00.21.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Sep 2026 00:21:33 -0700 (PDT)
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-To: linux-mediatek@lists.infradead.org
-Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Fabien Parent <fparent@baylibre.com>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH RESEND] arm64: dts: mediatek: mt8516: remove cpu3 armpll clock-name
-Date: Wed,  9 Sep 2026 09:20:14 +0200
-Message-ID: <20260909072051.4627-1-l.scorcia@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1x4Cqk-0000000B01U-24JT;
+	Wed, 09 Sep 2026 07:36:06 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 748F560207;
+	Wed,  9 Sep 2026 07:36:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A08401F00A3D;
+	Wed,  9 Sep 2026 07:36:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788939365;
+	bh=9w4NFg9faVW5eV7iVVa1tzxXUY7v774ABj4yQO4DEJg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=gGNs9N+ZIhCHGYvWHcYWC6dZPuZeJjxsDtuww3pG+tF3e0Ah42XuOdvnjK+Q72RuO
+	 P4bRtReLxeccMflJUuCRlbTzTuy9PqbhdlFQxDU3G3JyVoKahT4hT6Opz+bB5SjjEC
+	 aP0je3N/qPqlxSO1bbISHCYwNXe4KXNWOq9Uvu4RRxezpOOok2zFdFQaDWgw58YsbK
+	 8+xshmStRfBx9thRo70mLrC+bkZkD24r+OKZJXz8PEt0n9OiiOu9fQtfrLJdDf2fZF
+	 RLFfJimI0iIEo2lFWMY50MBwYBl2uwP2HnUWiqjVQkl44hDHwC26ghgDl6bgFz4qoh
+	 vBHLmOVpAgb3Q==
+Date: Wed, 9 Sep 2026 09:36:02 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: netdev-bot+sashiko@kernel.org
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+	kuba@kernel.org, pabeni@redhat.com, aleksander.lobakin@intel.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	madhur.agrawal@airoha.com, horms@kernel.org
+Subject: Re: [PATCH net-next v6] net: airoha: add LRO offload support
+Message-ID: <aqEMYubcWlQiuAwR@lore-desk>
+References: <20260906-airoha-eth-lro-v6-1-a6cc5179a8c5@kernel.org>
+ <178893579710.219967.7015031895402367364@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260909_002135_869876_E26BABE9 
-X-CRM114-Status: GOOD (  11.96  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="UmsGRNl06GTcbpNQ"
+Content-Disposition: inline
+In-Reply-To: <178893579710.219967.7015031895402367364@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,30 +72,245 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The armpll clock in cpu3 clock-names property comes from MediaTek sources,
-but it's unused in the kernel and not populated in the clocks property.
-Let's remove it and align the node with other cpu nodes of the same SoC.
+--UmsGRNl06GTcbpNQ
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Fixes: 5236347bde42 ("arm64: dts: mediatek: add dtsi for MT8516")
-Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
----
- arch/arm64/boot/dts/mediatek/mt8516.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Thank you for your contribution! Sashiko AI review found 4 potential
+> issue(s) to consider:
+>=20
+> Critical: 0 =C2=B7 High: 0 =C2=B7 Medium: 1 =C2=B7 Low: 3
+>=20
+> - [Medium] The new LRO drop path in `airoha_qdma_rx_process()` increments
+>   `netdev->stats.rx_dropped` (the legacy `struct net_device_stats`=E2=80=
+=A6
+> - [Low] The commit message claims "aggregated skbs are marked
+>   SKB_GSO_DODGY so that the stack does not rely on gso_size and does not=
+=E2=80=A6
+> - [Low] Teardown asymmetry for the shared FE/CDM LRO state:
+>   `airoha_dev_set_features()` arms the per-QDMA LRO block via=E2=80=A6
+> - [Low] The new LRO error path performs a plain, non-atomic read-modify-
+>   write of the shared per-netdev counter `netdev->stats.rx_dropped++`=E2=
+=80=A6
+>=20
+> --
+>=20
+> net: airoha: add LRO offload support
+>=20
+> This adds LRO offload to airoha_eth using the 8 dedicated LRO hardware
+> queues mapped to RX queues 24-31, bumping those queues' page_pool order
+> since LRO cannot use scatter-gather.  Aggregated skbs get GSO metadata
+> and a pseudo-header checksum so forwarded traffic can be re-segmented,
+> and NETIF_F_LRO is only offered while a single device uses the QDMA.
+>=20
+> Link: https://lore.kernel.org/r/20260831-airoha-eth-lro-v5-1-6b0f50401121=
+@kernel.org
+>=20
+> A few questions below.
+>=20
+> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/eth=
+ernet/airoha/airoha_eth.c
+> > index 64619e9a704dd..7035b269a7c34 100644
+> > --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+>=20
+> [ ... ]
+>=20
+> > @@ -657,13 +742,146 @@ airoha_qdma_get_gdm_dev(struct airoha_eth *eth, =
+struct airoha_qdma_desc *desc)
+> >  	return port->devs[d] ? port->devs[d] : ERR_PTR(-ENODEV);
+> >  }
+> > =20
+> > +static int airoha_qdma_lro_rx_skb(struct airoha_queue *q,
+> > +				  struct airoha_qdma_desc *desc,
+> > +				  u32 msg1, u32 len)
+> > +{
+>=20
+> [ ... ]
+>=20
+> > +	shinfo =3D skb_shinfo(skb);
+> > +	shinfo->gso_type =3D ipv4 ? SKB_GSO_TCPV4 : SKB_GSO_TCPV6;
+> > +	shinfo->gso_type |=3D SKB_GSO_DODGY;
+> > +	shinfo->gso_size =3D DIV_ROUND_UP(len - data_off, agg_count);
+> > +	shinfo->gso_segs =3D agg_count;
+>=20
+> [Severity: Low]
+> Is the commit message description of SKB_GSO_DODGY the right way round?
+> It says:
+>=20
+>     "aggregated skbs are marked SKB_GSO_DODGY so that the stack does not
+>      rely on gso_size and does not merge the aggregate into the GRO
+>      engine"
+>=20
+> SKB_GSO_DODGY means the opposite for gso_segs: it tells the stack that
+> gso_segs is untrusted and must be recomputed from gso_size.  In
+> qdisc_pkt_len_segs_init() in net/core/dev.c:
+>=20
+> 	if (unlikely(shinfo->gso_type & SKB_GSO_DODGY)) {
+> 		int payload =3D skb->len - hdr_len;
+> 		...
+> 		gso_segs =3D DIV_ROUND_UP(payload, shinfo->gso_size);
+>=20
+> and the TCP GSO output path uses gso_size as the MSS when re-segmenting,
+> so the approximated gso_size is authoritative rather than advisory.
+>=20
+> The scheme still looks workable, since DIV_ROUND_UP(sum, agg_count) can
+> never exceed the largest merged segment and the re-segmented packets only
+> come out smaller.  Could the commit message state that rationale instead
+> of saying the stack does not rely on gso_size?
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8516.dtsi b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-index b5e753759465..596f673a0d88 100644
---- a/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-@@ -95,7 +95,7 @@ cpu3: cpu@3 {
- 				<&CPU_SLEEP_0_0 &CPU_SLEEP_0_0 &CPU_SLEEP_0_0>;
- 			clocks = <&infracfg CLK_IFR_MUX1_SEL>,
- 				 <&topckgen CLK_TOP_MAINPLL_D2>;
--			clock-names = "cpu", "intermediate", "armpll";
-+			clock-names = "cpu", "intermediate";
- 			operating-points-v2 = <&cluster0_opp>;
- 		};
- 
--- 
-2.43.0
+ack, I will fix it.
 
+>=20
+> [ ... ]
+>=20
+> > @@ -707,9 +927,17 @@ static int airoha_qdma_rx_process(struct airoha_qu=
+eue *q, int budget)
+> >  			__skb_put(q->skb, len);
+> >  			skb_mark_for_recycle(q->skb);
+> >  			q->skb->dev =3D netdev;
+> > -			q->skb->protocol =3D eth_type_trans(q->skb, netdev);
+> >  			q->skb->ip_summed =3D CHECKSUM_UNNECESSARY;
+> >  			skb_record_rx_queue(q->skb, qid);
+> > +
+> > +			if (airoha_qdma_lro_rx_skb(q, desc, msg1, len)) {
+> > +				netdev->stats.rx_dropped++;
+>                                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+>=20
+> [Severity: Medium]
+> Does this counter ever reach userspace?  This driver registers
+> .ndo_get_stats64 =3D airoha_dev_get_stats64, and that callback assigns
+> rx_dropped from its own MIB-derived stats:
+>=20
+> 	storage->rx_dropped =3D dev->stats.rx_drops;
+>=20
+> dev_get_stats() in net/core/dev.c memsets storage and calls
+> ndo_get_stats64 when it exists, only falling back to
+> netdev_stats_to_stats64(storage, &dev->stats) when there is no
+> ndo_get_stats64/ndo_get_stats, and afterwards only adds dev->core_stats.
+>=20
+> So every packet dropped here (agg_count above
+> AIROHA_RXQ_LRO_MAX_AGG_COUNT, IPv6 with extension headers so nexthdr is
+> not NEXTHDR_TCP, iph->ihl below 5, th->doff below 5, or a frame shorter
+> than the headers) appears nowhere in ip -s link or rtnetlink.
+>=20
+> Would dev_core_stats_rx_dropped_inc(netdev), or the driver's own
+> dev->stats.rx_drops under its u64_stats syncp, be the better sink here?
+>=20
+> [Severity: Low]
+> Separately, can this increment lose counts?  netdev->stats.rx_dropped is
+> a plain unsigned long shared per netdev, and this is a non-atomic
+> read-modify-write from NAPI context.
+>=20
+> Each RX ring has its own NAPI instance (q->napi, 32 rings across the IRQ
+> banks) and the target netdev is resolved per descriptor by
+> airoha_qdma_get_gdm_dev(), so two pollers on different CPUs, for example
+> LRO rings 24 and 31 both resolving to the same airoha_gdm_dev, can reach:
+>=20
+> 	airoha_qdma_rx_napi_poll()
+> 	  airoha_qdma_rx_process()
+> 	    netdev->stats.rx_dropped++;
+>=20
+> concurrently with no lock and no per-CPU separation, which also tears on
+> 32-bit.
+
+ack, I will fix it.
+
+>=20
+> > +				dev_kfree_skb(q->skb);
+> > +				q->skb =3D NULL;
+> > +				continue;
+> > +			}
+> > +
+> > +			q->skb->protocol =3D eth_type_trans(q->skb, netdev);
+> >  		} else { /* scattered frame */
+> >  			struct skb_shared_info *shinfo =3D skb_shinfo(q->skb);
+> >  			int nr_frags =3D shinfo->nr_frags;
+>=20
+> [ ... ]
+>=20
+> > @@ -2288,6 +2582,32 @@ int airoha_get_fe_port(struct airoha_gdm_dev *de=
+v)
+> >  	}
+> >  }
+> > =20
+> > +static netdev_features_t airoha_dev_fix_features(struct net_device *ne=
+tdev,
+> > +						 netdev_features_t features)
+> > +{
+> > +	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+> > +	struct airoha_qdma *qdma;
+> > +
+> > +	qdma =3D airoha_qdma_deref(dev);
+> > +	if (qdma->users > 1)
+> > +		features &=3D ~NETIF_F_LRO;
+> > +
+> > +	return features;
+> > +}
+> > +
+> > +static int airoha_dev_set_features(struct net_device *netdev,
+> > +				   netdev_features_t features)
+> > +{
+> > +	struct airoha_gdm_dev *dev =3D netdev_priv(netdev);
+> > +
+> > +	if (features & NETIF_F_LRO)
+> > +		airoha_dev_lro_enable(dev);
+> > +	else
+> > +		airoha_dev_lro_disable(dev);
+> > +
+> > +	return 0;
+> > +}
+>=20
+> [Severity: Low]
+> Should the enable path here be gated on netif_running()?  There is no
+> admin-state check, so ethtool -K ethX lro on arms the shared FE/CDM LRO
+> block of the QDMA while the interface is still down.
+>=20
+> The only teardown sites for that hardware state are ndo_stop and a later
+> ndo_set_features.  unregister_netdev() does not call ndo_stop for an
+> already-closed device, and neither airoha_qdma_cleanup() nor
+> airoha_hw_cleanup() touches REG_CDM_LRO_EN, REG_CDM_LRO_RXQ or
+> REG_CDM_LRO_LIMIT, so after this sequence:
+>=20
+> 	ethtool -K ethX lro on      # link down, LRO armed anyway
+> 	rmmod airoha_eth
+>=20
+> the CDM LRO engine stays enabled and mapped to RX queues 24-31 after
+> those rings, descriptors and page pools are gone.
+>=20
+> This looks like leftover hardware state rather than something worse:
+> airoha_qdma_cleanup() clears GLOBAL_CFG_RX_DMA_EN_MASK and polls
+> GLOBAL_CFG_RX_DMA_BUSY_MASK before the RX buffers are released, so no DMA
+> into freed pages, and airoha_hw_init() asserts and deasserts the fe reset
+> on the next probe before airoha_fe_init(), so the stale enable bits do not
+> survive a rebind and cannot make airoha_dev_open() return -EBUSY forever.
+>=20
+> Would it make sense to call airoha_dev_lro_disable() from the remove path
+> as well, so enable and disable are symmetric?
+
+I do not think this is necessary since during module probe we reset the dev=
+ice,
+disabling LRO.
+
+Regards,
+Lorenzo
+
+>=20
+> --=20
+> Sashiko AI review =C2=B7 https://netdev-ai.bots.linux.dev/sashiko/#/patch=
+set/20260906-airoha-eth-lro-v6-1-a6cc5179a8c5%40kernel.org
+
+--UmsGRNl06GTcbpNQ
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaqEMYgAKCRA6cBh0uS2t
+rEZIAQCD2qwAMaKckbztHY+IfkzQZcYbJhZzwtapM57LKJaAwgD9EhxdkotcKzn1
+vguxeUvD7zxVvXUlGH47iYjAwQ/3OQ8=
+=pyKu
+-----END PGP SIGNATURE-----
+
+--UmsGRNl06GTcbpNQ--
 
