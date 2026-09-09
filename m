@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A416C79FB7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E9A6C79FBD
 	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 19:38:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
@@ -12,45 +12,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EUuW0uVZnmmFYfzlADyUpYwUcDsqPHnRtqJHTrYOEMA=; b=FbIO97a7ZCODOIrfVAlzbmvaTO
-	FbM1qsRK6T/msVIuq2uD7AHhFBWsf0CzJEQoaw95vgM7npj7NDx6d8kIFwcml2d9U0qJotAxSBFei
-	RAUn8RBNM9l6sOTGQST6fWC9lid/Tez4akZGFsqU9hgl9/WsiKF63Vl94BbACm6krkTw6xbqmwpJ5
-	Hs86s+Nm67R39naQ2IoSClMZ+9AXSxpZj1Fyu29q+8hCwJcuWpeU6mfsmifaIvAzqvImuFWGukKMr
-	p0XCI96OTVW7Lq+ttqVWWj9J1emDiuDNpoKUNluZOWiXRPsVGpDLM+UQOwR2SKkltmpTdY9juZqoi
-	cWhE2/bQ==;
+	bh=ubFHADmlLVKqs5BslICeZs6JKqKqZm5q7u7Y8+hXSOE=; b=uZE84JgA8gowwqmPLF5I10R25D
+	szYSILe6o1QGpSUCXqD2oATVCZTpowmsS86bY/SQeWa+IzaxTBZkxCp2McearQEze3Nkc0ykUha/i
+	7UMGVQ71SqQc2shbi+xum/E6Ywu09fTte7Yp5V+7dEfXdVwZeBt71sPRVlihCzHNGYP1IpIEkyeAW
+	67Ti7ZhQ3feTvsjbJHrt1V+sKkGSD/yqOe+cDHmy2F57e+/mZtCCFEEkV9u0AAMfd46LRn4ErYlqa
+	dLHwS1/xBGf6hWpAoEjJFI4KXKpbH0Wb082x9Jsqqyvxy4lK5Xo7KABzIr81JVV5FFjaHZCFZIweZ
+	MutZAapw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4O7Z-0000000CjQK-08rl;
+	id 1x4O7Z-0000000CjQt-0qoX;
 	Wed, 09 Sep 2026 19:38:13 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4O7X-0000000CjOG-43ex;
-	Wed, 09 Sep 2026 19:38:11 +0000
+	id 1x4O7X-0000000CjOI-43Tr;
+	Wed, 09 Sep 2026 19:38:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E17B443D1B;
-	Wed,  9 Sep 2026 19:38:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id BBFFBC2BCF5;
+	by sea.source.kernel.org (Postfix) with ESMTP id 191334479C;
+	Wed,  9 Sep 2026 19:38:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id E3A15C2BCFF;
 	Wed,  9 Sep 2026 19:38:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1788982690;
-	bh=XNvMPjZX0+WXpT4mWFJChE+oCnrBaMYSvQo6qFGzXNw=;
+	bh=OmLxNhwIEeGHYJj3Y2qiAiLAo8DjCGsOiITKuTiyw48=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=KljriqbOZ9h6iBKiEI5uUOhHf1aXYEQauA9cpkNln+QyTSsu6owH1kLK23Y0rAOdG
-	 dq4I0+uMo6wPAIjl3J7SwXqUd+w1WwMZwTaAK/RgH7p5EB2ftUdLoeFXFApa5BZnTH
-	 ADDZeskYEpwMm3nbVFwPyT77gUD268/nTnLvBbKBr7chk+I7x3oAh1RzCHVc1Tc7e0
-	 yZokg4dyx31bn03VzedB8+iLxhcky1xxd/sjIepZR+AHlEawl4CwwTlc+ZrCeFJnrk
-	 VIDkYmEx5ERYvbO27AiIL7IU49zjJ2yLdgnkzjCrdr4N/t6YyPiFtRun4x06XgoXdw
-	 zfago7OqBobOQ==
+	b=ruwBtuB08FvUpDWjmLZHBPIjeCFnETC4h7L4QFwMacWp/FSVNUCx+qaIhsDlH7I5I
+	 boir9XRUHidOLMY4GL8CrAQg6OoKnfNMdsxCS+L4x9x+O18gykVE6GtDOZtFYjhD1r
+	 WeC2TpRjzWvKD9WH9Vgs+JpLEav+4v0Rf6VQy1hY7Ot6cglnBmjgYMFYCFAhdi3sd2
+	 q6n9WdVkER0n0JYl0el9aWDzp+fTyUHP4sgxdke6YFdVutuUPRYoHCDYXPNYrLGbws
+	 ZaIyuNbMnFJnww6CUUAkJ3FZOr5iLzhfsoJgF25lW9Zr8khRfdcVjOCSF4MWy6xTGh
+	 xFoM0uStMH6Dw==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 97760C79FB6;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CA4D0C88E41;
 	Wed,  9 Sep 2026 19:38:10 +0000 (UTC)
 From: Zakariya Hadrami via B4 Relay <devnull+zkh.mailbox.org@kernel.org>
-Date: Wed, 09 Sep 2026 21:38:00 +0200
-Subject: [PATCH v4 1/4] dt-bindings: watchdog: mediatek: Add MT8127
+Date: Wed, 09 Sep 2026 21:38:03 +0200
+Subject: [PATCH v4 4/4] ARM: dts: mediatek: Add basic support for Amazon
+ ford board
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260909-mt8127-amazon-ford-basic-v4-1-e9af5c420ab1@mailbox.org>
+Message-Id: <20260909-mt8127-amazon-ford-basic-v4-4-e9af5c420ab1@mailbox.org>
 References: <20260909-mt8127-amazon-ford-basic-v4-0-e9af5c420ab1@mailbox.org>
 In-Reply-To: <20260909-mt8127-amazon-ford-basic-v4-0-e9af5c420ab1@mailbox.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -62,14 +63,13 @@ To: Matthias Brugger <matthias.bgg@gmail.com>,
 Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
  linux-watchdog@vger.kernel.org, zkh1@proton.me, 
- Zakariya Hadrami <zkh@mailbox.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+ Zakariya Hadrami <zkh@mailbox.org>
 X-Mailer: b4 0.15.1
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1788982689; l=1002;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1788982689; l=2117;
  i=zkh@mailbox.org; s=20260908; h=from:subject:message-id;
- bh=W+fYT6FEZ+BsGX4xaHNPJY7m/vM9qOAG6TkfJVwh8eg=;
- b=RO0NOexUOQYrZNLa23zzQi2txgyiSv65tHeLLA4wRx8ItAsbTC49OnXWOb+MlWL+Ux6G9DNOx
- ztGz/sAG2e8AzaFPAc2pqzxQbvLgLX/GAhzoggVEj1Q2iYvlc8rgPQy
+ bh=ArzZhvqbaHzkwMRg8G+mxS9/RyxJ5FW/7LRvsjsHapo=;
+ b=GLHETlbpi5XIYO5QxABxqgKWx4PFuSTFhmt6Oyla2JeDqArgYfJ4Jzy/6UZPNy3TTgT8Z5D9j
+ HHjkqdWyeIBBP2EZtQFQZSvXX4vK0efzQFHYK3qZtMuidLgqks4qiAs
 X-Developer-Key: i=zkh@mailbox.org; a=ed25519;
  pk=up24Xn4ScFKugfT4EJru/UQAS7JOIN+DSQqro+a05T4=
 X-Endpoint-Received: by B4 Relay for zkh@mailbox.org/20260908 with
@@ -92,28 +92,87 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Zakariya Hadrami <zkh@mailbox.org>
 
-Add entry for MT8127 SoC's watchdog which is compatible with MT6589's
-one.
+This tablet uses a MediaTek MT8127 system-on-chip with 1GB of RAM.
+It can currently boot into initramfs with a working UART and
+Simple Framebuffer using already initialized panel by the bootloader.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Acked-by: Guenter Roeck <linux@roeck-us.net>
 Signed-off-by: Zakariya Hadrami <zkh@mailbox.org>
 ---
- Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm/boot/dts/mediatek/Makefile               |  1 +
+ arch/arm/boot/dts/mediatek/mt8127-amazon-ford.dts | 54 +++++++++++++++++++++++
+ 2 files changed, 55 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
-index 953629cb9558..e6e4546da0aa 100644
---- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
-@@ -40,6 +40,7 @@ properties:
-               - mediatek,mt7622-wdt
-               - mediatek,mt7623-wdt
-               - mediatek,mt7629-wdt
-+              - mediatek,mt8127-wdt
-               - mediatek,mt8173-wdt
-               - mediatek,mt8188-wdt
-               - mediatek,mt8189-wdt
+diff --git a/arch/arm/boot/dts/mediatek/Makefile b/arch/arm/boot/dts/mediatek/Makefile
+index 37c4cded0eae..a610bc75c7d9 100644
+--- a/arch/arm/boot/dts/mediatek/Makefile
++++ b/arch/arm/boot/dts/mediatek/Makefile
+@@ -14,5 +14,6 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += \
+ 	mt7623n-rfb-emmc.dtb \
+ 	mt7623n-bananapi-bpi-r2.dtb \
+ 	mt7629-rfb.dtb \
++	mt8127-amazon-ford.dtb \
+ 	mt8127-moose.dtb \
+ 	mt8135-evbp1.dtb
+diff --git a/arch/arm/boot/dts/mediatek/mt8127-amazon-ford.dts b/arch/arm/boot/dts/mediatek/mt8127-amazon-ford.dts
+new file mode 100644
+index 000000000000..8edad5482de2
+--- /dev/null
++++ b/arch/arm/boot/dts/mediatek/mt8127-amazon-ford.dts
+@@ -0,0 +1,54 @@
++// SPDX-License-Identifier: GPL-2.0
++
++/dts-v1/;
++#include "mt8127.dtsi"
++
++/ {
++	model = "MediaTek MT8127 Amazon Ford";
++	compatible = "amazon,ford", "mediatek,mt8127";
++	chassis-type = "tablet";
++
++	aliases {
++		serial0 = &uart0;
++	};
++
++	chosen {
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++		stdout-path = "serial0:921600n8";
++
++		framebuffer0: framebuffer@b7a00000 {
++			compatible = "simple-framebuffer";
++			memory-region = <&framebuffer_reserved>;
++			width = <1024>;
++			height = <600>;
++			stride = <(1024 * 2)>;
++			format = "r5g6b5";
++		};
++	};
++
++	memory@80000000 {
++		device_type = "memory";
++		reg = <0 0x80000000 0 0x40000000>;
++	};
++
++	reserved-memory {
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++
++		framebuffer_reserved: framebuffer@b7a00000 {
++			reg = <0 0xb7a00000 0 0x1000000>;
++			no-map;
++		};
++	};
++};
++
++&uart0 {
++	status = "okay";
++};
++
++&watchdog {
++	status = "okay";
++};
 
 -- 
 2.54.0
