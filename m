@@ -4,66 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB638C79FB6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 12:09:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4688CC79FB6
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 13:33:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pb+Cd5IgGea0eXdqyQvmcNckUrJaN5+ETzXKU1C6/Cw=; b=lBhw2OcfQU6+qNpYSGjHUf16qp
-	WYokcbywQAYQWJzTaXZ+dtzo/zF06TYulnvFj+O+feUi2ic27/gAY8SyF1mGqvzbTUOiXD2ry+QMk
-	Uutbdfa8e3fxOtuDk4OMuOVyjqx/jshG/Yj80pshYf+RUErg34N0DfuSE2RQhu13QczcqP1LK3O6E
-	4oJm4TB24Zw5usM39sSEtyH/gmcny4vO/vkN+QbYOpuHv/h0h6reuNjXmqjxovU/JqBL8yXfJnvVu
-	4gDZJt/VfbmFLSgEcdGJyZyDTQN5dmuie7TOVXOjEtO/7S4GJGl7n4p2K4nKk005s7q5ckHqbadhZ
-	yvS7ST/w==;
+	bh=Lat+kLIoSC3PF+K12F2gYq7T2bw5eZWy3BBymoZ7v6Q=; b=j9Xxd6ref6CWU283NSBYq6YT1R
+	NCSpM1aP/Ki+trz6B6jNTwzxiozGxk7qwCEFVITCBt5BwZTH18uhjjSnHUX8d124XLvYRvVTamiWQ
+	B2brKeuuYcsOFTCuecd/4naFPKXx+trnVwRaisHQlSCre50znj8+IPk23q1pX+s6toITpEbO7JWu1
+	P3mWGa5hViC7WVeFh2Ro1p/A7+TNobuiSXMUhm7fKFnxDHY5pJpMve9anpET14nAxNwigQmkzS9nI
+	miHuKSOl7hDsA4/4bXd5AwDLLVWOPZMn4wiy1iT7pA1NyvXK828cRQoGsl7xwMFYFvg4N0FlcvXeA
+	FDqtNvIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4H7D-0000000Be7c-2Tx3;
-	Wed, 09 Sep 2026 12:09:23 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x4IQK-0000000BoQo-37IO;
+	Wed, 09 Sep 2026 13:33:12 +0000
+Received: from smtprelay0015.hostedemail.com ([216.40.44.15] helo=relay.hostedemail.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4H7A-0000000Be6U-3Pke;
-	Wed, 09 Sep 2026 12:09:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788955758;
-	bh=16YZ5IC+HdCfW9Gv2q6DSRPBc4Oo6oiTFsl55l+7LW0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Dq/LWjKq9R7Sc7+ktwF2/dCAxf7uVwelpU4kJG7OWO8q/vs2qZE9yJsTGg3QG/A9D
-	 iBcwmO17Jx7yt0fWIkI+mySR4HpnZT8xOpmNp22llHfXm8z8PcK2U6ZXPUEktcA4E+
-	 Tv8uN+ELQCatigLdTx03hb3k8vipZiNKI6JlIxtg2FeWS4rG+hq6HPy++fspHDGK3v
-	 WmC8bxF0SYlM3Xu1gAINU86Duj6xZIAocLqM8Votoavdn2KM7tG5q4gF1nTju/8LPq
-	 GwZvAT1FqN5ilphJEQARtHCX/xyPhZaW2CtFmftDRmc/8FHPS9vaFrsS4aOBL4sKqN
-	 oWY6U79N7Uzfg==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7D94917E0D02;
-	Wed, 09 Sep 2026 14:09:18 +0200 (CEST)
-Message-ID: <5d22e425-1299-4c81-94d1-6ff766432463@collabora.com>
-Date: Wed, 9 Sep 2026 14:09:18 +0200
+	id 1x4IQH-0000000BoQ6-1fcV;
+	Wed, 09 Sep 2026 13:33:10 +0000
+Received: from omf15.hostedemail.com (lb01a-stub [10.200.18.249])
+	by unirelay08.hostedemail.com (Postfix) with ESMTP id 3A8951401D7;
+	Wed,  9 Sep 2026 13:33:03 +0000 (UTC)
+Received: from [HIDDEN] (Authenticated sender: rostedt@goodmis.org) by omf15.hostedemail.com (Postfix) with ESMTPA id 416CB17;
+	Wed,  9 Sep 2026 13:33:01 +0000 (UTC)
+Date: Wed, 9 Sep 2026 09:34:17 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: "Paul E. McKenney" <paulmck@kernel.org>
+Cc: Vladimir Murzin <vladimir.murzin@arm.com>, Chunfeng Yun
+ <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [BUG/PATCH] drivers/usb/mtu3: Work around mtu3_log_ep
+ double-indirection issue
+Message-ID: <20260909093417.4880999e@gandalf.local.home>
+In-Reply-To: <b6c621eb-6d20-4e00-ac05-af122b630ca5@paulmck-laptop>
+References: <a3ee0655-d818-48e0-84d1-475e6c16c991@paulmck-laptop>
+	<d7bb2cf4-11c3-468c-8749-99cc408299c7@arm.com>
+	<b6c621eb-6d20-4e00-ac05-af122b630ca5@paulmck-laptop>
+X-Mailer: Claws Mail 3.20.0git84 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/3] nvmem: mtk-efuse: mt6572 support
-To: rva333@protonmail.com, Srinivas Kandagatla <srini@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Lala Lin <lala.lin@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20260909-6572-nvmem-v3-0-c0c441656431@protonmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260909-6572-nvmem-v3-0-c0c441656431@protonmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
+X-Rspamd-Server: rspamout01
+X-Rspamd-Queue-Id: 416CB17
+X-Stat-Signature: ucw1wfijz1nyu7w3kdiubbb4pkxth68c
+X-Session-Marker: 726F737465647440676F6F646D69732E6F7267
+X-Session-ID: U2FsdGVkX19a3meWRnz42A6ERwxaHbVQ+a4s7tr1NQo=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=goodmis.org; h=date:from:to:cc:subject:message-id:in-reply-to:references:mime-version:content-type:content-transfer-encoding; s=dkim1; bh=Lat+kLIoSC3PF+K12F2gYq7T2bw5eZWy3BBymoZ7v6Q=; b=nBKNU3ziaeHVl/53ridU2Pt8tb3C707obqZqeVDCZdZVt4k+nPpWiyTlLgR30ehkcZIz6S56b8RI1xscglemO2dgZC/ggqZguNYfWI/G6bNLUguluXR7YvxiRWisrWpcajkn0d/pVTspeVoQKdk2ti7I73DsZ6DqqvAqRdB99Ug=
+X-HE-Tag: 1788960781-683136
+X-HE-Meta: U2FsdGVkX1/qTTl/bHqRqkmbLb44FYq4tDTYnMJRiEpawvBcvaU2GcA2veKGHVK5HEpsXJZqeqcdk+SUQILB1mOsh1rhfokpE3FKPLzeQnStq8L0mo9f1zsaSYexb2G21IFz76PBv2sYJmFxqhQERtK1cgaMrNE6qpCpqq1NbhdgL7Oqy7tAf5VVEtFrsNA3DAbeRN3QRI8cxSZtEXM9LwqJbaEpeqFBqzaTri8hdrjogpT1YYVKYI7MjFVbZSKwusoSxit4iqhNpW2Z6C+wx9UR6CS2owmnUCZdV3q+fCpR8F9/VasHLTO5j6uKcKN3HcKCboP1+Ft/AQILDBZzX3I65JZfU3e5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260909_050921_031866_1B817C96 
-X-CRM114-Status: GOOD (  16.93  )
+X-CRM114-CacheID: sfid-20260909_063309_613328_A9D058F0 
+X-CRM114-Status: GOOD (  19.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,75 +75,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/9/26 12:48, Roman Vivchar via B4 Relay wrote:
-> This patch series adds MediaTek mt6572 efuse support. Unlike newer SoCs,
-> its efuse controller doesn't work properly with 8-bit reads, leading to
-> invalid data with current mtk-efuse driver implementation.
-> 
+On Tue, 8 Sep 2026 11:08:33 -0700
+"Paul E. McKenney" <paulmck@kernel.org> wrote:
 
-Series is
+> > > Apparently, the code should instead create another entry in
+> > > TP_STRUCT__entry(), and do the double-indirection TP_fast_assign() instead
+> > > of TP_printk().  But simply removing the offending double indirection
+> > > in TP_printk() gets this splat out of the way of other debugging.  
+> > 
+> > Indeed, splat has gone after applying the patch.
+> > 
+> > Thanks
+> > Vladimir  
+> 
+> Does this less hacky patch do the trick?
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Cheers,
-Angelo
+Nope!
 
 
-> This behavior can be observed with devmem (0x10009174 and 0x10009178 are
-> thermal calibration cells):
-> ~ # devmem 0x10009174 32
-> 0x00CDD4CD
-> ~ # devmem 0x10009178 32
-> 0x0F76865D
-> ~ # devmem 0x10009174 8
-> 0xCD
-> ~ # devmem 0x10009175 8
-> 0x00
-> ~ # devmem 0x10009176 8
-> 0x00
-> ~ # devmem 0x10009177 8
-> 0x00
-> ~ # devmem 0x10009178 8
-> 0x5D
-> ~ # devmem 0x10009179 8
-> 0x00
-> ~ # devmem 0x1000917a 8
-> 0x00
-> ~ # devmem 0x1000917b 8
-> 0x00
-> 
-> Patch 1 adds dt-bindings compatible for the mt6572,
-> Patch 2 adds platform data option to use aligned 32-bit reads instead
-> of plain readb().
-> Patch 3 adds platform data for mt6572 SoC.
-> 
-> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-> ---
-> Changes in v3:
-> - Pick up Rob's r-b tag for dt-bindings
-> - Patch 2 and 3 unchanged, for some reason cover letter and patch 1 were
-> missing on the web mirror...
-> - Link to v2: https://patch.msgid.link/20260724-6572-nvmem-v2-0-e58d16a29621@protonmail.com
-> 
-> Changes in v2:
-> - dt-bindings: make mediatek,mt6572-efuse standalone compatible
-> - Driver: add 'mtk_reg_read_aligned' helper instead of modifying 'mtk_reg_read'
-> - Link to v1: https://patch.msgid.link/20260715-6572-nvmem-v1-0-9c13be99d077@protonmail.com
-> 
-> ---
-> Roman Vivchar (3):
->        dt-bindings: nvmem: mediatek: efuse: add mt6572
->        nvmem: mtk-efuse: add support for 32-bit aligned reads
->        nvmem: mtk-efuse: add mt6572 support
-> 
->   .../devicetree/bindings/nvmem/mediatek,efuse.yaml  |  5 ++-
->   drivers/nvmem/mtk-efuse.c                          | 41 +++++++++++++++++++++-
->   2 files changed, 44 insertions(+), 2 deletions(-)
-> ---
-> base-commit: 8cd9520d35a6c38db6567e97dd93b1f11f185dc6
-> change-id: 20260710-6572-nvmem-eb98c7a73351
-> 
-> Best regards,
-> --
-> Roman Vivchar <rva333@protonmail.com>
+> diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
+> index 89870175d63561..6477ad3ddc66f6 100644
+> --- a/drivers/usb/mtu3/mtu3_trace.h
+> +++ b/drivers/usb/mtu3/mtu3_trace.h
+> @@ -224,6 +224,7 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+>  		__field(unsigned int, flags)
+>  		__field(unsigned int, direction)
+>  		__field(struct mtu3_gpd_ring *, gpd_ring)
+> +		__field(dma_addr_t *, gpd_ring_dma)
+>  	),
+>  	TP_fast_assign(
+>  		__assign_str(name);
+> @@ -235,12 +236,13 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+>  		__entry->flags = mep->flags;
+>  		__entry->direction = mep->is_in;
+>  		__entry->gpd_ring = &mep->gpd_ring;
+> +		__entry->gpd_ring_dma = &mep->gpd_ring->dma;
+
+You are still saving the address of some memory into the ring buffer.
+
+
+>  	),
+>  	TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p/%pad flags %c:%c%c%c:%c",
+                                                                        ^^^^
+
+That %pad dereferences the pointer passed to it.
+
+>  		__get_str(name), usb_ep_type_string(__entry->type),
+>  		__entry->maxp, __entry->slot,
+>  		__entry->mult, __entry->maxburst,
+> -		__entry->gpd_ring, &__entry->gpd_ring->dma,
+> +		__entry->gpd_ring, __entry->gpd_ring_dma,
+
+That will read the address saved in the ring buffer and dereference it.
+
+Remember, the above TP_fast_assign() logic gets executed when the
+tracepoint is triggered. The TP_printk() is executed when the user reads
+the trace buffer. That could be seconds, minutes, hours, days, even months
+later!
+
+You can't trust that the memory you are dereferencing will not be freed
+when the user reads the trace.
+
+The original patch is not hacky. It is actually the correct way of handling
+this.
+
+-- Steve
+
+
+>  		__entry->flags & MTU3_EP_ENABLED ? 'E' : 'e',
+>  		__entry->flags & MTU3_EP_STALL ? 'S' : 's',
+>  		__entry->flags & MTU3_EP_WEDGE ? 'W' : 'w',
+
 
