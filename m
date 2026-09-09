@@ -4,177 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2CADC79F8C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 06:16:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68C22C79FAA
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 06:36:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
+	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t7/dCfxNJRvWHhtV0pq4mJPMTtGBRxNXo1El/nz3lNQ=; b=aDFHD1qSUnZPAi9BtsQdVCeO5o
-	SNBo9XQy3OZv3ASKtsPFbyoSgEL1qVie7tuaQxJ0Wvh9RvqZHYvNsan/S28bJI/YLrz9G1afPRXr9
-	BhEaPvRuUyrGrQGFEfynI9P7M+9HML97+ztvASHvPexjfiXu1DSuuj4PhqnZbYcHlhJkDLvbFvnVa
-	7xqos8IyTTvleDD/dDS7f+AlZWuSMIjw235CDFLIpasf/Nr2/nlrntize4454xQGWIE53a7Pg1Ylm
-	1VNbNS0hcyZVIZCpsZcAPMX6HJSgKZgaN8ugUGRMSax7P2b9Bf6GBqLmkBhhp22/2I6rkfdAkKr1c
-	G2uf2Gnw==;
+	bh=LQqBI6ejBvDRlBhzvGR9su9GPpCHzF1qILQIojgm5Mw=; b=SHAs2ht6tswiUkwn4re9R4FKIj
+	uPS62liZBvEsXi1Tj7Oexn6YKYUB/FIHk9WG37KGEhcBAw8JxKT4maSXLYI4zpL+JNI+hIKmRXlEy
+	naRAnmfWzZN8J14DYIzjMOGsRQ7mu8OcHwIu0TTuAnvf0b8c9P+wVaVB1gNtUZ0ytDc4nrHogC5K8
+	xjy96qiXj4ih5Z4Fb22N5pl1OD/HzAdP6Hx7ZvRiqnr26DqegeqHD+UGQ2wZ463hvHslkTTgLUnjD
+	wbidUwz19tO+Hw2qaSBEoqDJH2ai7PS4/aBSnCntvMNyTxarBz6dHX7pMWo5U47m1j7OwHK2QaNtj
+	+Iob26UQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4Bby-0000000ArXV-3xCJ;
-	Wed, 09 Sep 2026 06:16:46 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1x4BvG-0000000Atmj-1FUl;
+	Wed, 09 Sep 2026 06:36:42 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4Bbw-0000000ArX1-2GrF;
-	Wed, 09 Sep 2026 06:16:45 +0000
-X-UUID: 03adee8cac1611f1acbe4559397dec65-20260908
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=t7/dCfxNJRvWHhtV0pq4mJPMTtGBRxNXo1El/nz3lNQ=;
-	b=dcR7tgdA3MLCGgC33R1Ik031yhDBppquQPhaI2tusSkBAb4wFMKddJkGsUNt4BUpw33WUnBXTAcm3DKEBE7KniCVAp9d5dxV29Xx6GYyb+exZ0d6D0dwF8fhmuZzSz/C+2HvcREMVqwtrn6OsZWkAJNHEZPT2dwziwAtn+zYfgE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:9392b897-c473-4ea6-a907-cc12d4b2cb94,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:c6101428-9ebf-4787-bb42-3cd26eee85aa,B
-	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|110|111|136|836|865|888|898,TC
-	:-5,Content:0|15|50|99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:
-	nil,BEC:-1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC
-	:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 03adee8cac1611f1acbe4559397dec65-20260908
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <yong.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 332227898; Tue, 08 Sep 2026 23:16:37 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 9 Sep 2026 14:16:35 +0800
-Received: from SI4PR04CU002.outbound.protection.outlook.com (172.21.101.237)
- by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 9 Sep 2026 14:16:35 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=vOw10F618WPjV1Db+Atb8ePlSd4s8um+fSa9JsLOgK1DyKPt/FhdQXaz9v8d6wElaeOkYzetKAw971wiPgdvckyneFNqcaFtbLbyR4eHhTA25tyFUgfLkUHtmJwIsKsQaaoFXoZnY7HvLG98JQUA7NfSLDjvovJgTyHpBZ4avERHypZRJqv/ZkuTxiYelvYK2I+oIvWxqvl+uMAF/4gCQAZxVpqcsVmCFEZXYfn2atGgDdMe7i50Q4smeJl9fzu9EECJ+hyvmlDtK74e5n4ch/hDsNP6nvHnP8JbSliYOjdr5x06Qz0C/GgiA9+NpKpAYRqG2e7eS4v+d2YrvnXYHg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=t7/dCfxNJRvWHhtV0pq4mJPMTtGBRxNXo1El/nz3lNQ=;
- b=FDTF8jktMrOFFaRduJJBlxqeqJuIdXIFlE6nGL4WyQoC47Qimf/PTU1NQSHfnCadZx2kWOj/ZDbr0jyKE4+NbOmTX6kHPEfJfN3NsK+O+3kURukg/MkvCaxbCaVA2A4d3QBRz4E43oFubEDKi3QKn4iufbfpLGYE9hlxv9FE/BV34cNJZTYkUgB3SfVtzSIw5LldLx7hZDZzMmw6aj0Sh8g/aJEJC8FXUBDcyLuZ+v/yg2bpmcblGGEpcUlckfAQ0KSj/WyBFWrX1dMWSEGkayr6EPma9Awiy59WooJ/wvrtG9BL9WBK5Smkh06phKoFEjqAh07dZ9WagDey4o1tAg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
- dkim=pass header.d=mediatek.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=t7/dCfxNJRvWHhtV0pq4mJPMTtGBRxNXo1El/nz3lNQ=;
- b=MwlbN/NKO3n27qJUVrgj20o5EfAEjYOXEGZqqFvyBpErO2NerayNWkdOcaQWlZtToIX1kthCAmHVp9ba7HvXcmehJIwgWa8YEgzRKv94kVg78W2fyrpverHH/io54yhbXf8SkbPCBjX1GwigiEFIB0LiG6Jdh31n2OKhccvWv1w=
-Received: from SI2PR03MB5885.apcprd03.prod.outlook.com (2603:1096:4:142::7) by
- SE3PR03MB9436.apcprd03.prod.outlook.com (2603:1096:101:2e8::9) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.21.406.7; Wed, 9 Sep 2026 06:16:32 +0000
-Received: from SI2PR03MB5885.apcprd03.prod.outlook.com
- ([fe80::3dee:7e1:7d2:c310]) by SI2PR03MB5885.apcprd03.prod.outlook.com
- ([fe80::3dee:7e1:7d2:c310%6]) with mapi id 15.21.0406.005; Wed, 9 Sep 2026
- 06:16:32 +0000
-From: =?utf-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>
-To: "robh@kernel.org" <robh@kernel.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-	=?utf-8?B?Q29uZ2NvbmcgWWFvICjlp5rogarogaop?= <Congcong.Yao@mediatek.com>,
-	"krzk@kernel.org" <krzk@kernel.org>, "conor+dt@kernel.org"
-	<conor+dt@kernel.org>
-CC: "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>,
-	=?utf-8?B?WmhlbmduYW4gQ2hlbiAo6ZmI5b6B5Y2XKQ==?=
-	<Zhengnan.Chen@mediatek.com>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>
-Subject: Re: [PATCH v4 2/2] memory: mtk-smi: Add MT8189 support
-Thread-Topic: [PATCH v4 2/2] memory: mtk-smi: Add MT8189 support
-Thread-Index: AQHdORVOS4wXb4yeqke3OIiD/MSeb7bF01iA
-Date: Wed, 9 Sep 2026 06:16:32 +0000
-Message-ID: <e7f1eef29e6ce08f87b9bc82389a4a51f5d2e9ae.camel@mediatek.com>
-References: <20260831-8189-smi-support-v4-0-8ae66dd3eeed@mediatek.com>
-	 <20260831-8189-smi-support-v4-2-8ae66dd3eeed@mediatek.com>
-In-Reply-To: <20260831-8189-smi-support-v4-2-8ae66dd3eeed@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=mediatek.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR03MB5885:EE_|SE3PR03MB9436:EE_
-x-ms-office365-filtering-correlation-id: c3f68a59-2338-4f6a-cf58-08df0e39e4a5
-x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|23010399003|376014|1800799024|366016|4143699003|56012099006|11063799006|38070700021|10067099003|6133799003|22082099003|18002099003;
-x-microsoft-antispam-message-info: drFAgMFlS1zWOmBzxHr8fDNmjoYoPpKzc5Wc3gAjq8oADdFnbxf2n9xU8bmNV3i7EZoG2B1+z0NPa8mcC9QsBbgE0GunM1lJYsblHBhgh5LKHbQwyBqIfSoqc48fOJaI8soqFVpSfgbuWFiMW3KxRfnKt/NK2b5WpM9H9jtOSTKRejzyvWqrBaVR9Om+QqrS0yUXZJGY65oTezD5BE+jD51Yth3RFR4c47gu5MhiFThm0kOke7DPObhE3XWyZiBUBTHFpPdSxXnxR/3cTkLEivW0v/h2XhGkTxON4bhA//WCMNZ7PjTSIMJWG35Pz41iCZkSjHzHgZWaZbNG+QK+XiZ7lq5TbkjJOtTh0296TSFDXWEEZEeU3WPJ6xWZ4Hznq7p2dLn1Pv1pg7/71F8qLwzalCscft5ZAE22PFjJAy83nyPMmEUR3IazEDgwcnTojC3CaOcPEcL9XRq1LYiS5tWsWyA7mJYgZNsiY+c29lo/PC+qMB1BHrwIRYfbTt/ZNFqtSS3qS/eY52jB9dPuVF4JGOLI0nlpSs0Fwdap56A5qfDSwyYypttlPnIKF2WRJRqXNUqPD+ZoPMII/l8Jtp6Lc15wzDx/Q1L4irvsajn51VNmUOZ/1ioAQjiqdStGQU2wWPiC/0n8NhopfdNDjuzpa8ini/F3vkg6RyvcHV3Ru6H5Rw5DI4d3oT3ZUzKAP9iQWmd7vRQ2BQ9Qu/FlAuh4kQ5NUSO19V1vExwUwz8=
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB5885.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(376014)(1800799024)(366016)(4143699003)(56012099006)(11063799006)(38070700021)(10067099003)(6133799003)(22082099003)(18002099003);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Q0JpU2RqQ3BuY1NUVG91RXVsTkh3Y3F1bGwvWU1rK2toRXgvVVVJcXpZZUVB?=
- =?utf-8?B?a1d5MWFDU25NKzluU2thcm93OXF2ZmJtbjdiZDdkK1Q3OXJXdWdubHVHU20x?=
- =?utf-8?B?VVV3cDdxc25CNUpZOUVHbmJVTUJQWi9WQTdvdVhLZ0YrNFFrbWNrNHRxOFhT?=
- =?utf-8?B?d09waUdKRUJZc2VqMURQcjJ0ODYwSE9nYlpMOWN6YThUamtEcUdHelAzZWEz?=
- =?utf-8?B?SUpmZW9oY2FVU0pxKzJySEMzNGlsU1N3TUowclhzaTNlbXpkVTIyQ3ZvTHlr?=
- =?utf-8?B?VHVEQS9YdW5tb3RmNDJpc3NCVXRwNzZzMlNvbUhkK0pLUzlEODFtQUxkVDhD?=
- =?utf-8?B?TFFSKzI5NGhjR1AxMDU0SzAyZ3N1YWV4VFRDM3RnNENyZ3RralBGdkx6TjVn?=
- =?utf-8?B?LzZFZm84Qi9EM01wcVFEWkhZVGl3ZHRDR1R5dC85MXZvR2VmWkxnZkFEak50?=
- =?utf-8?B?NVhxeDJoYXhvY3NJc1dWeXpRQUo2MnRTR25zeHYrYlJsQ2dxejlnRkYyOEg1?=
- =?utf-8?B?ZGlTT3pXeVFNT2NEMU9HRDZrc2Mrclgza1ozeENERCt3dEdlNDg4MHB5UEs1?=
- =?utf-8?B?TkFVbVNJcHBBVFA0M1RWSis2K3Y1NWNBZlRaVFp6TU0rUHh2V2owM3djTTZ3?=
- =?utf-8?B?TjN0NTBUNzQ0K1BhMGNINDBuTVlNUHdEUk1uVVRQOSs4eWltcDVXVWNlN1Yz?=
- =?utf-8?B?NitQTVlvQW9nc2pKR2M4a2Z3YmozT1FxeXkydStadzlUa3VMdmhJejZ4b3VB?=
- =?utf-8?B?bEdHT1ArdlJ6QXZTUDhDY29qMkQwQUtKeDNZSVVXQ2x5ZXVNQzJPUXBMNHA1?=
- =?utf-8?B?NmhOc1dZN1doT2d3eldGQ2tSUjJtdU9obzVWTzF6b0VLeGZ0bnhldkEzN2h2?=
- =?utf-8?B?Rnl2eE81a2ZhdTVCaGwwZnJCYjhCRmhhYmVxc1MvbURsVGc2a0NKY01GdmdW?=
- =?utf-8?B?cDJFT2JyTDJwUXZYcUd3UUJPN3lBZWoyUTJuRFFFbXFRY0kwb2ZqQmJXc1VK?=
- =?utf-8?B?VldwYTJaVklkandKT0ZlcjBGb2FJYXVtajJNa3A5cmh1dnZDTHVkWnFXNStY?=
- =?utf-8?B?cFhEbUVtc2Izck9kM1UrKzJtOEowODN0YjlpUVhDbkVMTFJkcGd0T3hkcXU4?=
- =?utf-8?B?WFprUmx3bTdMK1ZadDhxZ1ZQRnA4WlVVR095NjhTK1dWUVYrbVFwQmV0ai9k?=
- =?utf-8?B?SFh3WTRVOTR0WkFoTFRPMTdYSDRYNFJ1QkQ5WE5xemtidmJacEc0b2RhZEd1?=
- =?utf-8?B?WE9aTXNDTm54b1BiQjdMZSt2ZHl0U2tYNkdRNUVBckkwWTQrY05IcU05UFRs?=
- =?utf-8?B?N0UxK3QvS0d2dlNOOWZJL0tTTWtXendDL1NZbFE3YitJSWE5MzdaQkpRRm9E?=
- =?utf-8?B?Nk9idWNiTG1uVUp2R1pzUjgwTXlnWlpZWWtLV2ZuRk4xTjFaZmVLMk9yRXh5?=
- =?utf-8?B?bHQ3NmQvZTluL0JzQU1yKzExWjJhQ3FHWnpLUFBVbFNGaU1RdGJYNS8vMEtt?=
- =?utf-8?B?N2ZQN1RpVUxRQ05maU5UUks0MWVvY0svV0h4RW1ScHlySXZiQTNQYXhHSis4?=
- =?utf-8?B?VkpabXJjTkloQlVwYllqelRxT094NW4xRTZTbWlPTmRrL0t4dXo1a3RSQXow?=
- =?utf-8?B?dXBOLzNIZUtnTHl1a05nRFVERDhwTERIT1YrMzRJMWNBUm4rOVp3aE9ZQlE2?=
- =?utf-8?B?QWROU2xvTHhOQkNsbDhMbEQxVy9GT1hoSkJqV1FWZ0Vpd3VmOHFJOTZXbnVq?=
- =?utf-8?B?M3JDc0hoc2tsZEFLWFU0a0dLOFl3aXBYV2FFV21pTkFiWlhnOVB5eXliTGZu?=
- =?utf-8?B?Zno1b0NsR3NpaGgwaUFMUVFBaHFDcFBOZHB0SElUR0RYN2RSM240TVBNTTY5?=
- =?utf-8?B?Rks2MzB0T1FPNjBJVUxONlRMYWtsMkZQSjc1dzRXL2RzZVFpRUhQVG1na25p?=
- =?utf-8?B?ZGswN1piYXBweEdZVHFqSU1wSDVIaTdCc1RZNVVHWHByTFBzNU1WaytGZWZD?=
- =?utf-8?B?NUU1Qm16WTdhcHJiQkswSnYvVHV5SmZNanlJVGFQK3JWdFF4dEFsblk3K3A3?=
- =?utf-8?B?aUJWd0oxdUFleTVCMTNpeEYxaHdvcVhJTEExQld5ZW5YR3FEdUZBdC9JZzFC?=
- =?utf-8?B?ckpCSFU0aVRZamk1RGdxcEQxYkUrcnF3eml2VTRXQmFUYWxJT0FpeVpzSit6?=
- =?utf-8?B?ay9KczBxSitabTBNTzlyc3FORW5JdGQ3QlE2dnRuSVdKY0FybEFZMjdGUEVk?=
- =?utf-8?B?bVpKT1I2c3FsN3pkUzY3V29xRGRmS1pzL0Q4NGJESUhkMzZPOW5HeTlrVmox?=
- =?utf-8?B?T1Nkb09sY2paNjNtY21HU2RpMjdNMmF3NkJRbGhMNDV5aDJEOHdidz09?=
+	id 1x4BvE-0000000Atm8-2axK;
+	Wed, 09 Sep 2026 06:36:40 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 52D9F40C39;
+	Wed,  9 Sep 2026 06:36:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8FBF81F00A3A;
+	Wed,  9 Sep 2026 06:36:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1788935798;
+	bh=LQqBI6ejBvDRlBhzvGR9su9GPpCHzF1qILQIojgm5Mw=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=jS1LRARqld8kZtl5I+TQJdUBa1Z2QlN+Nc+u3Mdd/oFYDN//Eozw1kpqPRG214O5Q
+	 U+WFPBFrC7Vzs6w6F5wp803eZSRPfMAkgQU0xjW88EgmdHGTFaix86H+YTnCtQANVZ
+	 99d68lIQd/mG+P+uN+QvkrZ7617CBdyYgKeDgNl5MK4mLENSOwx0kKDQ2LlADOMutZ
+	 zVMkqDmj/6F++hTwiNMtUIdEXB8svcAZ26anNMsK+eG8S65YS29ObspgrRD3O1YeCy
+	 bLSVze/K2UCpZUu0ZNEDZZMwfaZ2P2A/lmDHyITiNmd9iwdbb+Z1llsCIci1C216IT
+	 HKUiFQ1z6dK5w==
+Subject: Re: [PATCH net-next v6] net: airoha: add LRO offload support
+From: netdev-bot+sashiko@kernel.org
+To: lorenzo@kernel.org
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, aleksander.lobakin@intel.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, madhur.agrawal@airoha.com, horms@kernel.org
+Date: Wed, 09 Sep 2026 06:36:37 +0000
+Message-ID: <178893579710.219967.7015031895402367364@kernel.org>
+In-Reply-To: <20260906-airoha-eth-lro-v6-1-a6cc5179a8c5@kernel.org>
+References: <20260906-airoha-eth-lro-v6-1-a6cc5179a8c5@kernel.org>
+X-sashiko-severity: Medium
 Content-Type: text/plain; charset="utf-8"
-Content-ID: <1DB65B51765A28469202A2890C3C1220@apcprd03.prod.outlook.com>
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: 0YXgRZIMAjMNf/ME8fONRY0NNtuZHgCUJgOBnuAh1cvLY5NYtrX4Q5fXB7TZQ18quzopToWFocbFgzLQZPO3c5+J00gXTPZroVwGgLabGE9QZMJYnVXb1P5Tj8rXlocNsGiwYw6/QhVAeJH7x5r3KEAuwwJWzS+AfAKrEfDxsAq3nq9rYHEYyuplHfD2I587fEHm5/570fng3aEQu1s0bf7Z9XEHT4cK7S4vjZ1NHGMUhupESURIHi0svLMZx4UD1uOgv89tAzrNWjibGvE3jVNU4gqGoI5p630XV2IRBehiNrQ26RNHF+ItpibjIjh10lnrGKKk5DO34mBe2IkkGA==
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB5885.apcprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c3f68a59-2338-4f6a-cf58-08df0e39e4a5
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Sep 2026 06:16:32.1343
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: hIwmZD51OG/6OMgscwpZMYbhL13D4z1f4Tam/x7Y5/lSQqGtphVLGBpad3GZwNP2cw8HlQ0EkjhauLIgFeQcng==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SE3PR03MB9436
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260908_231644_604469_371669E0 
-X-CRM114-Status: GOOD (  11.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -189,14 +70,203 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDI2LTA4LTMxIGF0IDE0OjUyICswODAwLCBDb25nY29uZyBZYW8gdmlhIEI0IFJl
-bGF5IHdyb3RlOg0KPiBGcm9tOiBaaGVuZ25hbiBDaGVuIDx6aGVuZ25hbi5jaGVuQG1lZGlhdGVr
-LmNvbT4NCj4gDQo+IEFkZCB0aGUgTVQ4MTg5IFNNSSBjb21tb24sIHN1Yi1jb21tb24gYW5kIExB
-UkIgcGxhdGZvcm0gZGF0YS4NCj4gDQo+IEVuYWJsZSB0aGUgR0FMUyBjbG9jayBmb3IgdGhlIE1U
-ODE4OSBTTUkgc3ViLWNvbW1vbi4NCj4gDQo+IFNpZ25lZC1vZmYtYnk6IFpoZW5nbmFuIENoZW4g
-PHpoZW5nbmFuLmNoZW5AbWVkaWF0ZWsuY29tPg0KPiBTaWduZWQtb2ZmLWJ5OiBDb25nY29uZyBZ
-YW8gPGNvbmdjb25nLnlhb0BtZWRpYXRlay5jb20+DQo+IC0tLQ0KPiAgZHJpdmVycy9tZW1vcnkv
-bXRrLXNtaS5jIHwgNDUNCj4gKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrDQo+ICAxIGZpbGUgY2hhbmdlZCwgNDUgaW5zZXJ0aW9ucygrKQ0KDQpSZXZpZXdlZC1i
-eTogWW9uZyBXdSA8eW9uZy53dUBtZWRpYXRlay5jb20+DQoNCg0K
+Thank you for your contribution! Sashiko AI review found 4 potential
+issue(s) to consider:
+
+Critical: 0 · High: 0 · Medium: 1 · Low: 3
+
+- [Medium] The new LRO drop path in `airoha_qdma_rx_process()` increments
+  `netdev->stats.rx_dropped` (the legacy `struct net_device_stats`…
+- [Low] The commit message claims "aggregated skbs are marked
+  SKB_GSO_DODGY so that the stack does not rely on gso_size and does not…
+- [Low] Teardown asymmetry for the shared FE/CDM LRO state:
+  `airoha_dev_set_features()` arms the per-QDMA LRO block via…
+- [Low] The new LRO error path performs a plain, non-atomic read-modify-
+  write of the shared per-netdev counter `netdev->stats.rx_dropped++`…
+
+--
+
+net: airoha: add LRO offload support
+
+This adds LRO offload to airoha_eth using the 8 dedicated LRO hardware
+queues mapped to RX queues 24-31, bumping those queues' page_pool order
+since LRO cannot use scatter-gather.  Aggregated skbs get GSO metadata
+and a pseudo-header checksum so forwarded traffic can be re-segmented,
+and NETIF_F_LRO is only offered while a single device uses the QDMA.
+
+Link: https://lore.kernel.org/r/20260831-airoha-eth-lro-v5-1-6b0f50401121@kernel.org
+
+A few questions below.
+
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+> index 64619e9a704dd..7035b269a7c34 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+
+[ ... ]
+
+> @@ -657,13 +742,146 @@ airoha_qdma_get_gdm_dev(struct airoha_eth *eth, struct airoha_qdma_desc *desc)
+>  	return port->devs[d] ? port->devs[d] : ERR_PTR(-ENODEV);
+>  }
+>  
+> +static int airoha_qdma_lro_rx_skb(struct airoha_queue *q,
+> +				  struct airoha_qdma_desc *desc,
+> +				  u32 msg1, u32 len)
+> +{
+
+[ ... ]
+
+> +	shinfo = skb_shinfo(skb);
+> +	shinfo->gso_type = ipv4 ? SKB_GSO_TCPV4 : SKB_GSO_TCPV6;
+> +	shinfo->gso_type |= SKB_GSO_DODGY;
+> +	shinfo->gso_size = DIV_ROUND_UP(len - data_off, agg_count);
+> +	shinfo->gso_segs = agg_count;
+
+[Severity: Low]
+Is the commit message description of SKB_GSO_DODGY the right way round?
+It says:
+
+    "aggregated skbs are marked SKB_GSO_DODGY so that the stack does not
+     rely on gso_size and does not merge the aggregate into the GRO
+     engine"
+
+SKB_GSO_DODGY means the opposite for gso_segs: it tells the stack that
+gso_segs is untrusted and must be recomputed from gso_size.  In
+qdisc_pkt_len_segs_init() in net/core/dev.c:
+
+	if (unlikely(shinfo->gso_type & SKB_GSO_DODGY)) {
+		int payload = skb->len - hdr_len;
+		...
+		gso_segs = DIV_ROUND_UP(payload, shinfo->gso_size);
+
+and the TCP GSO output path uses gso_size as the MSS when re-segmenting,
+so the approximated gso_size is authoritative rather than advisory.
+
+The scheme still looks workable, since DIV_ROUND_UP(sum, agg_count) can
+never exceed the largest merged segment and the re-segmented packets only
+come out smaller.  Could the commit message state that rationale instead
+of saying the stack does not rely on gso_size?
+
+[ ... ]
+
+> @@ -707,9 +927,17 @@ static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
+>  			__skb_put(q->skb, len);
+>  			skb_mark_for_recycle(q->skb);
+>  			q->skb->dev = netdev;
+> -			q->skb->protocol = eth_type_trans(q->skb, netdev);
+>  			q->skb->ip_summed = CHECKSUM_UNNECESSARY;
+>  			skb_record_rx_queue(q->skb, qid);
+> +
+> +			if (airoha_qdma_lro_rx_skb(q, desc, msg1, len)) {
+> +				netdev->stats.rx_dropped++;
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[Severity: Medium]
+Does this counter ever reach userspace?  This driver registers
+.ndo_get_stats64 = airoha_dev_get_stats64, and that callback assigns
+rx_dropped from its own MIB-derived stats:
+
+	storage->rx_dropped = dev->stats.rx_drops;
+
+dev_get_stats() in net/core/dev.c memsets storage and calls
+ndo_get_stats64 when it exists, only falling back to
+netdev_stats_to_stats64(storage, &dev->stats) when there is no
+ndo_get_stats64/ndo_get_stats, and afterwards only adds dev->core_stats.
+
+So every packet dropped here (agg_count above
+AIROHA_RXQ_LRO_MAX_AGG_COUNT, IPv6 with extension headers so nexthdr is
+not NEXTHDR_TCP, iph->ihl below 5, th->doff below 5, or a frame shorter
+than the headers) appears nowhere in ip -s link or rtnetlink.
+
+Would dev_core_stats_rx_dropped_inc(netdev), or the driver's own
+dev->stats.rx_drops under its u64_stats syncp, be the better sink here?
+
+[Severity: Low]
+Separately, can this increment lose counts?  netdev->stats.rx_dropped is
+a plain unsigned long shared per netdev, and this is a non-atomic
+read-modify-write from NAPI context.
+
+Each RX ring has its own NAPI instance (q->napi, 32 rings across the IRQ
+banks) and the target netdev is resolved per descriptor by
+airoha_qdma_get_gdm_dev(), so two pollers on different CPUs, for example
+LRO rings 24 and 31 both resolving to the same airoha_gdm_dev, can reach:
+
+	airoha_qdma_rx_napi_poll()
+	  airoha_qdma_rx_process()
+	    netdev->stats.rx_dropped++;
+
+concurrently with no lock and no per-CPU separation, which also tears on
+32-bit.
+
+> +				dev_kfree_skb(q->skb);
+> +				q->skb = NULL;
+> +				continue;
+> +			}
+> +
+> +			q->skb->protocol = eth_type_trans(q->skb, netdev);
+>  		} else { /* scattered frame */
+>  			struct skb_shared_info *shinfo = skb_shinfo(q->skb);
+>  			int nr_frags = shinfo->nr_frags;
+
+[ ... ]
+
+> @@ -2288,6 +2582,32 @@ int airoha_get_fe_port(struct airoha_gdm_dev *dev)
+>  	}
+>  }
+>  
+> +static netdev_features_t airoha_dev_fix_features(struct net_device *netdev,
+> +						 netdev_features_t features)
+> +{
+> +	struct airoha_gdm_dev *dev = netdev_priv(netdev);
+> +	struct airoha_qdma *qdma;
+> +
+> +	qdma = airoha_qdma_deref(dev);
+> +	if (qdma->users > 1)
+> +		features &= ~NETIF_F_LRO;
+> +
+> +	return features;
+> +}
+> +
+> +static int airoha_dev_set_features(struct net_device *netdev,
+> +				   netdev_features_t features)
+> +{
+> +	struct airoha_gdm_dev *dev = netdev_priv(netdev);
+> +
+> +	if (features & NETIF_F_LRO)
+> +		airoha_dev_lro_enable(dev);
+> +	else
+> +		airoha_dev_lro_disable(dev);
+> +
+> +	return 0;
+> +}
+
+[Severity: Low]
+Should the enable path here be gated on netif_running()?  There is no
+admin-state check, so ethtool -K ethX lro on arms the shared FE/CDM LRO
+block of the QDMA while the interface is still down.
+
+The only teardown sites for that hardware state are ndo_stop and a later
+ndo_set_features.  unregister_netdev() does not call ndo_stop for an
+already-closed device, and neither airoha_qdma_cleanup() nor
+airoha_hw_cleanup() touches REG_CDM_LRO_EN, REG_CDM_LRO_RXQ or
+REG_CDM_LRO_LIMIT, so after this sequence:
+
+	ethtool -K ethX lro on      # link down, LRO armed anyway
+	rmmod airoha_eth
+
+the CDM LRO engine stays enabled and mapped to RX queues 24-31 after
+those rings, descriptors and page pools are gone.
+
+This looks like leftover hardware state rather than something worse:
+airoha_qdma_cleanup() clears GLOBAL_CFG_RX_DMA_EN_MASK and polls
+GLOBAL_CFG_RX_DMA_BUSY_MASK before the RX buffers are released, so no DMA
+into freed pages, and airoha_hw_init() asserts and deasserts the fe reset
+on the next probe before airoha_fe_init(), so the stale enable bits do not
+survive a rebind and cannot make airoha_dev_open() return -EBUSY forever.
+
+Would it make sense to call airoha_dev_lro_disable() from the remove path
+as well, so enable and disable are symmetric?
+
+-- 
+Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260906-airoha-eth-lro-v6-1-a6cc5179a8c5%40kernel.org
 
