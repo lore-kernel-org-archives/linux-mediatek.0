@@ -4,63 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 220D8C79F8C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 06:11:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82BD7C79FAD
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 06:12:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wKVzZ3DXomIuSaP/EgVD76UrmtWu9SrVhn2lBA4cc7k=; b=DBEDAQLiXhHnwe2cwUbnRT8Bg1
-	VMKC7FllMP8YEq9fqwExdDwBn7SXUwY8Ol22T/O5L97Xr55QLtXIudKEjxw1CyiUThL1po/Xk/YNY
-	Kg8xJDj61RLPb2Kp338juRBMAD0KPnhD5hJrI9We7qnrFNYdL/kjTaFRYYPI1E/APatyfpMekkx0Y
-	tWY6I4UE1HIojO5HiSvaLugdFMrUXy1534F5TotdE1IqvIUZeaPHx2aaljSLoNGbk8PmIBnBaCA1U
-	sUqjpWciH/VWfB6BkkwYLvU65KTqH+bdLTYE+86un9pQPly784bYA83wyRwJZNyoWBfTli4veUjw4
-	+xVi49Rw==;
+	bh=Tuo6rdwril8NyFt+etJBWA6GYuyVXoxg2ngoy/Jex/s=; b=jxC1OxiC9RVkgsFRHJyx//T3Tz
+	F00s8fIxrd7YLBG5yy9qTaeJ3abockc57t7ORKsLrXdSQOZHdsZU7akWmr3FLf+JpuYCNakvwwStx
+	cBpbYhBgnmcRRZkmmrVJES9et9hPeTGNe5KbUgzCEGe5T8tIcjB8Y1UfdL3L4ZdpFzdunNIDO5bXJ
+	nmQDTOIYYcqGwXI8oAdi/kKPUgJnuUJBb0I7DgtJMybvKX60JivZDtc4ZHST9PGiUPkGqZnKi9SIf
+	BnUeAyc8KtmCGwAE8p0SJh/Ht3Elzu7pz87Xyob3+aYJjmUreZrP1OD6Pcu+S3zrvGEkcCNYcVwU3
+	j8Yylbaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4BX4-0000000Ar7G-14l5;
-	Wed, 09 Sep 2026 06:11:42 +0000
+	id 1x4BY2-0000000ArEX-1yOO;
+	Wed, 09 Sep 2026 06:12:42 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4BX2-0000000Ar6g-07Ws
+	id 1x4BY1-0000000ArEQ-0RlJ
 	for linux-mediatek@lists.infradead.org;
-	Wed, 09 Sep 2026 06:11:40 +0000
+	Wed, 09 Sep 2026 06:12:41 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 508C9601FB;
-	Wed,  9 Sep 2026 06:11:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86B4B1F00A3A;
-	Wed,  9 Sep 2026 06:11:33 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 898E0601FB;
+	Wed,  9 Sep 2026 06:12:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC03D1F00A3A;
+	Wed,  9 Sep 2026 06:12:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788934299;
-	bh=wKVzZ3DXomIuSaP/EgVD76UrmtWu9SrVhn2lBA4cc7k=;
+	s=k20260515; t=1788934360;
+	bh=Tuo6rdwril8NyFt+etJBWA6GYuyVXoxg2ngoy/Jex/s=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=koO1jTZdY8lUmp8ZIlLpM90UDSszO2+fNjIIL8oOLPp6yYIZ9zwkkDPUNwu/czmmd
-	 0jgjB+zPzqrQTa+8Try6aE55cVpJ12vSylOoS2jCIgIlOalhMzcojIruawC7K6fpdM
-	 JzwmL0HmircrECSv1Ozk9OpZkAnc/tRfcrz+pKr1PucClnBotMW5Wx5s5pSVAVrO7j
-	 V9rvbMmV1mk3gGv/g4uss/ohBF6bVJ3/uKBtr247YVtj1EcmSBrf99MQb8OWr/Q64c
-	 G4N0HvCL4fsrg4pu1koYH4vL66Odli4Xb/0aHAS/zmGkKHJkBNOVJ4eRKj8pdzjkhO
-	 wMJHKN/9pxvDw==
-Message-ID: <219e88c6-5f49-4db3-8a30-54d387711fcc@kernel.org>
-Date: Wed, 9 Sep 2026 08:11:29 +0200
+	b=EKq3aF7Q5LnnBMLA67gOq2o/dsQkGLOyyWndkBM6ecjSwc5k5GWJfqr+ef1FrEg0f
+	 pUSAQp9m5U1pL+Ba1RcJi027ETNGVHgAsR0kROOLSBa0fATcSK7YJsFCYGZvjjbbu0
+	 dqEOmSdmAT9Csb0quHcLr1xQEHko4UoV4r5M6OTkEXLw8HU/r/LUJO0Q9azxJgPm9i
+	 L0qlXa91WM0P8+ujnKde2eRh5CVFzPM9nIiqOLYjMFFyzsvmxe7gHZjpg4nBY9hUZz
+	 QcUVpOeVfXnSLrs8OKe5va0VmbV5zvSGTl2GvjiHZ9D+GVcK3NO2fTX+1qsN8kvgVH
+	 i5TmKj8JsZZGg==
+Message-ID: <27d56d43-0959-40b8-be5c-693c074a49f5@kernel.org>
+Date: Wed, 9 Sep 2026 08:12:32 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] dt-bindings: pinctrl: Add EcoNet EN7528 pin
+Subject: Re: [PATCH v2 2/3] dt-bindings: pinctrl: Add EcoNet EN7528 pin
  controller
-To: Ahmed Naseef <naseefkm@gmail.com>
-Cc: linux-gpio@vger.kernel.org, Benjamin Larsson
- <benjamin.larsson@genexis.eu>, Christian Marangi <ansuelsmth@gmail.com>,
- Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Linus Walleij <linusw@kernel.org>,
- Lorenzo Bianconi <lorenzo@kernel.org>,
+To: Ahmed Naseef <naseefkm@gmail.com>, linux-gpio@vger.kernel.org
+Cc: Benjamin Larsson <benjamin.larsson@genexis.eu>,
+ Christian Marangi <ansuelsmth@gmail.com>, Conor Dooley
+ <conor+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Linus Walleij <linusw@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>,
  Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
  Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <cover.1786262697.git.naseefkm@gmail.com>
- <7e6150b186c2d16820d7382bce065596a0854a47.1786262697.git.naseefkm@gmail.com>
- <20260828-adorable-bug-from-arcadia-fcad00@quoll>
- <apGcOAUpb6XZ2Iud@DESKTOP-TIT0J8O.localdomain>
+References: <cover.1787931313.git.naseefkm@gmail.com>
+ <c20005a81b4069f3ff68311629ff7d4678fa92dd.1787931313.git.naseefkm@gmail.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -106,7 +103,7 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  K9bCVaboTA2T77QYkRcRJYSsO1alGX0ome/hMLD1daXlkrNUp1HWa3K4iytLRXjCSIorWiGs
  n+q3krnpXu3TFkA8qtOFZMdnIiFuiq1yLT8hptsV5xh1TA2nsVvSYiaCr3q4s4BKjS/KrLDb
  qoxzw8ISjdUp4pA85vb6YLCmb39NgidD+7PmAr65lBNveIFynTgsja1rRQ4=
-In-Reply-To: <apGcOAUpb6XZ2Iud@DESKTOP-TIT0J8O.localdomain>
+In-Reply-To: <c20005a81b4069f3ff68311629ff7d4678fa92dd.1787931313.git.naseefkm@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -123,38 +120,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 28/08/2026 16:33, Ahmed Naseef wrote:
-> On Fri, Aug 28, 2026 at 08:59:57AM +0200, Krzysztof Kozlowski wrote:
->> On Sun, Aug 09, 2026 at 12:04:59PM +0400, Ahmed Naseef wrote:
->>> +maintainers:
->>> +  - Lorenzo Bianconi <lorenzo@kernel.org>
->>> +
->>> +description:
->>> +  The EcoNet EN7528 pin controller is used to control SoC pins. It shares the
->>> +  IP with the Airoha pin controllers, but its IOMUX and pin configuration
->>> +  registers have a different layout.
->>> +
->>> +properties:
->>> +  compatible:
->>> +    const: econet,en7528-pinctrl
->>> +
->>> +  airoha,chip-scu:
->>> +    description: phandle to the chip SCU syscon
->>> +    $ref: /schemas/types.yaml#/definitions/phandle
->>
->> If the entire address space is part of the SCU, then this device should
->> be part of the SCU, e.g. its subnode.
+On 28/08/2026 17:35, Ahmed Naseef wrote:
+> Add the binding for the pin controller found on the EcoNet EN7528 MIPS
+> SoC. It shares the IP with the Airoha pin controllers, but its IOMUX and
+> pin configuration registers have a different layout, so it gets its own
+> compatible.
 > 
-> It is not: the registers are split over two blocks. The GPIO, interrupt
-> and PWM flash-mode registers are in the block the node sits under, and
-> the IOMUX and pin configuration registers are in the SCU. Both are
-> needed, so whichever of the two is the parent, the other one has to come
-> in by phandle.
+> The CHIP SCU holding those registers is referenced by the airoha,chip-scu
+> phandle.
+> 
+> Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
+> ---
+>  .../pinctrl/econet,en7528-pinctrl.yaml        | 190 ++++++++++++++++++
+>  1 file changed, 190 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/econet,en7528-pinctrl.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/pinctrl/econet,en7528-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/econet,en7528-pinctrl.yaml
+> new file mode 100644
+> index 000000000000..3ce1a5309d09
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pinctrl/econet,en7528-pinctrl.yaml
+> @@ -0,0 +1,190 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/pinctrl/econet,en7528-pinctrl.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: EcoNet EN7528 Pin Controller
+> +
+> +maintainers:
+> +  - Lorenzo Bianconi <lorenzo@kernel.org>
+> +
+> +description:
+> +  The EcoNet EN7528 pin controller is used to control SoC pins. It shares the
+> +  IP with the Airoha pin controllers, but its IOMUX and pin configuration
+> +  registers have a different layout.
+> +
+> +properties:
+> +  compatible:
+> +    const: econet,en7528-pinctrl
+> +
+> +  airoha,chip-scu:
+> +    description: phandle to the chip SCU syscon
+> +    $ref: /schemas/types.yaml#/definitions/phandle
 
-Sure, one is parent and other is sibling. This is standard. But
-non-standard is to claim to have no MMIO but then get that MMIO from
-someone else...
 
+For the record, same comments here. It seems I was discussing v1.
 
 Best regards,
 Krzysztof
