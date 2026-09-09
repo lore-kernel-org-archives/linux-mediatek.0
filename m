@@ -4,68 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48ED5C79FAD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 09:42:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7977EC79FAD
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 09:53:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V2ShFLz2yJCKPxXXZobT4YdME5qB9wl46Ue1Mjyxi/g=; b=E4leuswMgEXoaFH1eavfEUqTAz
-	Xwtd1IldPs+wI9OsN2fEOOW231TafJrVuLQwPwuqLRh3z91jC/vOv02VmFMheJZxcZgEDuK70S5y8
-	agFCTYHGJoWCq9knk+NTLygoMD2LASY3UzVRe9ebjFj8k/TlS713HOSKdDBXpu+ORb743UWuO1XO1
-	F1y2DPY8/t9DACj5k9cf4fy32miQeYWpjvoq6gBl2BIE2LYEATZciyGIGnL+wG6MMdNEbLMdGlri6
-	vcoknR4jogNABZ85a6vpfttPuG2IBTga2yRMpoo0PBj7pGo6RFByF/IvFAZXydZuzTWjNpBP6+LNX
-	TKGnQDsQ==;
+	bh=+Z9QqY8nW5wxQiyUux8nuGtspp5zSIH5OgC/3UhaUeY=; b=KKoYPmZBHnDC0Xm1zZCVN/30s/
+	TkJQRuePPjcbzIYWVxz45nbmyrCWQ1Vu/kNl3zW/0KS76TzhF4+SSvjWudavMUqw2PVQa9/vR7ZfJ
+	ZKGQm+D5thGExMGEjzQfCfZx1SYyB6a7dr+OOPiPPqyioU0pzmw47Yk7Qet/lwZbM0yUcHHQ1CFir
+	QaABnPu3QHeyl7cPg+8YmeAtFL0nSXenc1jJ+Yhs+VSfub9OMLUhnMXXDojBaYlHCFYAL77G8Xz2R
+	P0XuYNQqowpJYUgZ7iiLTLJeI6PT/5jYIbq0TRQLJgokHaCnkqe39QqUBZ3afXn5aAkMvxqnxQ12Q
+	P86gc6uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4Eom-0000000BKJG-3ZDH;
-	Wed, 09 Sep 2026 09:42:12 +0000
+	id 1x4EzX-0000000BM42-21KZ;
+	Wed, 09 Sep 2026 09:53:19 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4Eoj-0000000BKIc-1YNJ;
-	Wed, 09 Sep 2026 09:42:10 +0000
+	id 1x4EzO-0000000BM0u-25f1;
+	Wed, 09 Sep 2026 09:53:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1788946927;
-	bh=RlquV2qEWjV+inAs1mB0hDuB0wfVFPu3WzBSbEbDSP4=;
+	s=mail; t=1788947587;
+	bh=ZoLRYrhsi0rsdSeaR+606R03qSLubwt7gfupiCo9cfQ=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jnOJ3Xo9TUxGgqRwcdLIyZ6ln+F4/SN/xIoK8efS/zB+lcAcCqY7BxfY1ew6r7Vrr
-	 ytlTtrzrTIE8NHHm3tAX5uIgvBthOQH548iAjYlDTY91jX3yZUGy7a5v7a8zDOHWNF
-	 l2TUceV4RBarZ8UXG0Vo5TGYK/eMqMjddCkJCnL1Dw1YSsNuNdjC8W4we2647Zm0+E
-	 N7TeOVKYM6y1uh28q5D+K7tdzapc84R/cDJEJoPMgFQAYFiixA+/0yHl5kp4FlXj7D
-	 heJQ+K7sQYxq0+1Hdksa5YduKxqEMnA5JfIDi3cH5+m/2WqCmcBRVxwiPV3J16JfO2
-	 AX43Jork0HVYQ==
+	b=FNhYyLcYk+pHG+NuCEBoN9Z9qL4DcRhrU+huzWhiidgEmeCWxspJXn7VJwZ/n0TJt
+	 hBnfmuUwE3ybYGY6GXbQD3iq2Q/ucPpom3qJSpa4w8ax2CP5F8lkk7VKIPj5QC2YQp
+	 +1Wr1BER27HnNb02KA28QvzTOz6zudDz1haVx88h08HrPtMMRT2RsvE9RKR3g3nXLN
+	 RpHf52dq9yke72Y+icPpIfFhsemJllPUfUz1TGqCHcBTB3qTLaiG1bB6J9W1fY3GpT
+	 Fa2jCs+2feOqQGIP1gNJhJfuvqW2cSgGw/DqWhZ50k4SSyNFndlDABnEj1WZLjTlWb
+	 cfVO5CvVgAKIA==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8998C17E0260;
-	Wed, 09 Sep 2026 11:42:06 +0200 (CEST)
-Message-ID: <f57e326d-50f1-4ca3-a61d-d7de4723f7cf@collabora.com>
-Date: Wed, 9 Sep 2026 11:42:06 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BA1F017E093B;
+	Wed, 09 Sep 2026 11:53:06 +0200 (CEST)
+Message-ID: <637ff670-1d12-479a-b35f-9d54b153a832@collabora.com>
+Date: Wed, 9 Sep 2026 11:53:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 0/8] Add support for mt8167 toprgu and mmsys resets
+Subject: Re: [PATCH RESEND v2] dt-bindings: mediatek: hdmi-ddc: Correct the
+ compatibles for mt7623-mt8167
 To: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
  linux-mediatek@lists.infradead.org
-Cc: Wim Van Sebroeck <wim@linux-watchdog.org>,
- Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-watchdog@vger.kernel.org,
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>,
+ Jitao shi <jitao.shi@mediatek.com>, dri-devel@lists.freedesktop.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org
-References: <20260908174259.9009-1-l.scorcia@gmail.com>
+References: <20260908184125.10916-1-l.scorcia@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260908174259.9009-1-l.scorcia@gmail.com>
+In-Reply-To: <20260908184125.10916-1-l.scorcia@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260909_024209_600845_EC0000FC 
-X-CRM114-Status: GOOD (  24.69  )
+X-CRM114-CacheID: sfid-20260909_025311_021340_2DAA684C 
+X-CRM114-Status: GOOD (  13.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,90 +86,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/8/26 19:38, Luca Leonardo Scorcia wrote:
-> Currently mt8167 inherits its watchdog from the included mt8516 dtsi,
-> which in turn falls back on mt6589-wdt, which does not support toprgu
-> resets yet. In the first two patches we add support for the 12 mt6589
-> toprgu resets.
+On 9/8/26 20:41, Luca Leonardo Scorcia wrote:
+> The HDMI DDC driver for both mt7623 and mt8167 is actually the same as
+> mt8173-hdmi-ddc and the mt7623n.dtsi board include file already uses
+> mt8173-hdmi-ddc compatible as a fallback, but the documentation lists
+> them as separate entries. Correct the binding by adding the correct
+> fallback.
 > 
-> However, according to its data sheet, mt8167 has 14 sw resets instead of
-> 12, and its reset bits are non-contiguous. This is currently unsupported
-> by the mtk-wdt driver and it caused confusion between reset IDs and reset
-> bits in other mtk SoCs device tree includes.
-> 
-> Therefore we introduce a dedicated mediatek,mt8167-wdt compatible for the
-> watchdog driver that describes correctly this SoC's resets. Since its
-> reset bits are non-contiguous, we add support for a watchdog reset table
-> to accommodate the distinction between device tree reset IDs and the
-> actual bits in the registers. Code is inspired by the reset table
-> currently implemented in the mmsys driver. There should be no effect
-> on existing sequential wdt resets.
-> 
-> In the last three patches we describe the mmsys reset table for the SoC.
-> According to the datasheet there are 28 mmsys reset bits divided across
-> two adjacent registers.
-> 
-> The series has been tested on a Sony PlayStation Classic Mini, on a Xiaomi
-> Mi Smart Clock and on a Lenovo Smart Clock 2.
-> 
-
-Whole series is
+> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
+> ---
+> Fixes the following dtbs_check error in mt7623n-rfb-emmc.dts and
+> mt7623n-bananapi-bpi-r2.dts:
+> 
+> i2c@11013000 (mediatek,mt7623-hdmi-ddc): compatible:
+>    ['mediatek,mt7623-hdmi-ddc', 'mediatek,mt8173-hdmi-ddc'] is too long
+> 
+>   .../bindings/display/mediatek/mediatek,hdmi-ddc.yaml  | 11 +++++++----
+>   1 file changed, 7 insertions(+), 4 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi-ddc.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi-ddc.yaml
+> index bd8f7b8ae0ff..966127e1ee63 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi-ddc.yaml
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi-ddc.yaml
+> @@ -15,10 +15,13 @@ description: |
+>   
+>   properties:
+>     compatible:
+> -    enum:
+> -      - mediatek,mt7623-hdmi-ddc
+> -      - mediatek,mt8167-hdmi-ddc
+> -      - mediatek,mt8173-hdmi-ddc
+> +    oneOf:
+> +      - const: mediatek,mt8173-hdmi-ddc
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt7623-hdmi-ddc
+> +              - mediatek,mt8167-hdmi-ddc
+> +          - const: mediatek,mt8173-hdmi-ddc
+>   
+>     reg:
+>       maxItems: 1
 
-> Changes in v5:
-> - Dropped the binding header for mt6589 reset IDs;
-> - Moved the definition of the number of resets for mt6589 inside
->    mtk-wdt driver;
-> - Separated the mmsys related changes to the last three commits.
-> 
-> Changes in v4 [4]:
-> - Squashed the reset IDs includes together with the bindings change;
-> - Added support for a reset table to the mtk-wdt driver. This allows us
->    to decouple reset IDs from device trees from reset bits and lets us
->    describe correctly the non-contiguous reset bits of mt8167;
-> - Improved explanations in commit messages.
-> 
-> Changes in v3 [3]:
-> - Improved explanations in the commit messages;
-> - Added the #reset-cells property to mt6589 watchdog node;
-> - Included the mediatek,mt6589-resets.h file in mt6589.dtsi;
-> - Included the mediatek,mt8167-resets.h file in mt8167.dtsi;
-> - Moved the mmsys reset table from the mt8167-mmsys.h header file to
->    the mmsys driver implementation.
-> 
-> Changes in v2 [2]:
-> - Sashiko pointed out correctly a missing entry in the mmsys reset table
->    in the last patch.
-> 
-> Initial version: [1]
-> 
-> [1] https://lore.kernel.org/linux-mediatek/20260717151134.678839-1-l.scorcia@gmail.com/
-> [2] https://lore.kernel.org/linux-mediatek/20260717163959.714561-1-l.scorcia@gmail.com/
-> [3] https://lore.kernel.org/linux-mediatek/20260809160643.33991-1-l.scorcia@gmail.com/
-> [4] https://lore.kernel.org/linux-mediatek/20260819101853.44681-1-l.scorcia@gmail.com/
-> 
-> Luca Leonardo Scorcia (8):
->    watchdog: mediatek: Add wdt/toprgu resets for mt6589
->    arm: dts: mediatek: mt6589: Enable toprgu reset controller
->    dt-bindings: watchdog: Add compatible for MediaTek mt8167
->    watchdog: mediatek: Add support for mt8167 toprgu/watchdog
->    arm64: dts: mt8167: Properly describe the SoC watchdog resets
->    dt-bindings: reset: Add mmsys reset ids for mt8167
->    soc: mediatek: mtk-mmsys: Add resets for mt8167
->    arm64: dts: mt8167: Add support for mmsys resets
-> 
->   .../bindings/watchdog/mediatek,mtk-wdt.yaml   |  1 +
->   arch/arm/boot/dts/mediatek/mt6589.dtsi        |  1 +
->   arch/arm64/boot/dts/mediatek/mt8167.dtsi      |  9 ++++
->   drivers/soc/mediatek/mt8167-mmsys.h           |  3 ++
->   drivers/soc/mediatek/mtk-mmsys.c              | 38 +++++++++++++
->   drivers/watchdog/mtk_wdt.c                    | 54 +++++++++++++++++--
->   .../dt-bindings/reset/mediatek,mt8167-mmsys.h | 35 ++++++++++++
->   .../dt-bindings/reset/mediatek,mt8167-wdt.h   | 21 ++++++++
->   8 files changed, 157 insertions(+), 5 deletions(-)
->   create mode 100644 include/dt-bindings/reset/mediatek,mt8167-mmsys.h
->   create mode 100644 include/dt-bindings/reset/mediatek,mt8167-wdt.h
-> 
 
