@@ -4,62 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2763BC79FB7
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 20:01:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 600DCC79FB6
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 20:29:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bVBsQziOCe6FlhZ7FOhLXPVigWP9VPum8a09dM9B1yA=; b=fScHf1eML3OvBl6ALAb+/TNb+X
-	laLSGCMbxmJBPwbCiOZmocUG/OAnKQ1XQWgfsadzx6sL8rAjggSf4jVZu1CEIZ696Lbw6h+Rf7cvk
-	F8eUqXIY5qI4tLYKMb//NFRT0Mz0qrpyB0idJOOoYMLzOPH0RotlpgMEh0PFl+kL/Edb3eaTlMgzb
-	VYQ1hyqaZpR9FRWVCdTKL9HLY8P+oYZO1jKlzlg/Ub2NK3hYiGsx6rBlhlOSnRazd3MYJeZkSz+SU
-	M1tGiegb7jO7uFW0aJ9eqzfgWGrjBjulkMAMNeEo4afTdDs99PaAmuASr3HWn96QcVLx3sYZ3gP7E
-	rjjqc1Xg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qckaQ07GIjAycth+WTbJjXIHu8VJsW0kggwIpsbAbME=; b=0YQAva4lQzZmfO+u5muFxf+BcT
+	Ik+PeNN+YwEmA/i5/xlnVKZGcqgHrYfOtFWqvut69464Un69tcBhLDOczUnBz5scId+2yP+JutALy
+	xPrQyktZ9MBZb6sHI/U/tVoUPNhEjtOs0at03Gewdh58AYPBruGIfV/gWNYYK64E3sHVYmC0V5r8G
+	fb967cUPsB2abH56Pi9JNdGU0EfA/GYpos6y9pFYIY3ecfnpOm3X9jq3D7zjem1+eisUTRNWt83Ps
+	rY++kpzwgofpdKj8WI/jt5e/qtyV/NWtM4vjVOBb3DpfUZWW9BanidHI6xnKZ0xzWjM1E9fagPDD3
+	a8IBowug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4OTo-0000000CmHh-1f6a;
-	Wed, 09 Sep 2026 20:01:12 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x4OvQ-0000000Co6l-05wa;
+	Wed, 09 Sep 2026 20:29:44 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4OTn-0000000CmHa-1ibY
+	id 1x4OvN-0000000Co5a-2eac
 	for linux-mediatek@lists.infradead.org;
-	Wed, 09 Sep 2026 20:01:11 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id B4452601F0;
-	Wed,  9 Sep 2026 20:01:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69C261F000FF;
-	Wed,  9 Sep 2026 20:01:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788984070;
-	bh=bVBsQziOCe6FlhZ7FOhLXPVigWP9VPum8a09dM9B1yA=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=m4UeDj1B7G91HQS0eZdqF49gYa9L23JR9ZXcVGtJVNjYN5Jp8aMWME3NaiErkVxNz
-	 um73vM1eQ8sDJHozb1LYD8YkxZTYl860ydUN0kJIFvNb42bkH/QFsPbZJehhvDvy6d
-	 t4LK5bfl15QXBfya92kjm4YBgc9g3gzKf4xGdac5FxoNaB1B1PWLrv+FNm4yVED3+D
-	 VPB2mK1jn3E37fLJf86/SfPCfqrrRMR7LGc+kM6LCCBWcUMlpH7MTGjtDvaeamEP9O
-	 lO5RQ0SfSJOfrCYDle7I/dMU4KHoBFGgM1dQ+zrZW/yzX+y/rVzbKx3Dlm39DiwnZs
-	 Wo40p4VPhO7LQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 93B39380AA74;
-	Wed,  9 Sep 2026 20:00:09 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	Wed, 09 Sep 2026 20:29:42 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-49ccfbe062eso62130625e9.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 09 Sep 2026 13:29:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1788985779; x=1789590579; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:message-id:date
+         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=qckaQ07GIjAycth+WTbJjXIHu8VJsW0kggwIpsbAbME=;
+        b=TBTCZBQVXY7o1z/k5lO6NKcH1fETaBAFpNw4/d98mEnKPGkp/+2D/1dO6bENuDCnuF
+         AddhEXoPXAYaLBqvwcDgBQZ82lzOF9P3kFpgJyOzhdE3DdEZmA3O8GjrfyO9yyTuL05D
+         cVGKXhrxlVbQJA7r8v8vauFrS6NBYpUDw5aQ5O5zxaSbX8fhhx1cfOwCqIQW4ufqhFbu
+         bV1hAYCa+VelxVGYCqZwbpPuhEZa8m+HU8YdzzAFI2ndU/QMoPmWePkpz/KwDQ2LTJkb
+         Ei3YLOQ83Q52ElxX12xxq3RbJwyTBBakdZVL4fabxuuL+pWrsP+5kSia6UyJAtZowStt
+         ZNXQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1788985779; x=1789590579;
+        h=content-transfer-encoding:content-type:mime-version:message-id:date
+         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=qckaQ07GIjAycth+WTbJjXIHu8VJsW0kggwIpsbAbME=;
+        b=jvbWmgS76nx5B1Tmv/ltXX4k0KOTQUIpkJHaidRa5gmax/Prc7VSHTJNHaKXB9S0M9
+         /qxvc6ipNT0cGctZfAUH2AC5JRv2MmmajOJ0sL5HKkp7bPT5MHGHDGTYTIvUfFG2DNw0
+         /HUbsMGb3qvcpKLFYA/zlWAQZmVXCQmgeRvNT3yccvjt3BiaAOIZui1Rvo2NEyTvIdYP
+         nS1YNHEqbB047x8xg5kqop5SJU3ySVtD5qE90LkW6Uf9RijkTj7oa1EbFjBDXGq8s3UJ
+         o7IrzmAFFt5wR8ATBNbbF65Vr3MQ9rwDmo/XO/4jHyEhQYLiO7MNSvJWYenFzitmNPOO
+         bR/Q==
+X-Forwarded-Encrypted: i=1; AKwUvBwWkIgCR6BBPVXOh0q0B9qJAedO111YzEvnGbSB3m/qcf140plbx8TgdwgPXV0FrQ5dSzj+mcyvgdz5p3/C2g==@lists.infradead.org
+X-Gm-Message-State: AFuF++kDGMFbRPK4GRANmrplJmW4wFvceTZfXg7Q6gcsmuRnwD5JTxXp
+	1/7weExczYqimy/yW8drJfAc9GwctTuudk3Jds4qhEftAlhmkXYq8A2w
+X-Gm-Gg: AYBFou3xM7m2PcSv0ENCPXWsfuBvoskh+C2chrPQ2wuBZX1LUxBfDRKMN6wp54swhZy
+	6yeCg/41gbPLvF6ZjCxEDYkLWSluyMKIbFmu4iBb+ZmLEscFaF6Gyy83zVwCRqCEx0byBahZ/mC
+	OSKL8lT3Bazm4FRagFDVXktqmxYtsReAmGYNXY35VBQeMZJ9DaTbfmSynXDDJ/3Ec1I6K7W2rdB
+	bLEbmxIzVBsBXJF867cQFA+PY6YBlySEjOJisRYu64l5oPrrTKzXBJ8u4nRDsELfUaIin/Y1qZj
+	aRoSHsm4pdRMkFf8Wqnq5Si9iLHu2GaEefEdL9XUrlNa/6psHtSW6jCmnBjmugcCho+ktvSx/Oi
+	/kL0sGxyC2/3phQTiKyYuq98iWM4ptvwfr5yQKWwI8hLlJOPnXOPQIUS6UJrFF4DvurC62hNumX
+	HOk0WRaOS1ohTfX9YVZEh0ROe3i+nxn45DUyI/XaIdRTxurbYaEYH+ZgGGFr12So93mU8Qd+9kr
+	0iDoSBrZ6FFGiRvDig5ztaJLF6Gyy1UsiMMSXKHMwJLrsJPum1PlwZ0ptT6SAL82zrSmVFScyTt
+	RzXbSTpMw/ypE7hK8rS5Yp0GhivlhMI7LpdVLzW49O17Ltb5JpcgDOG8jVQr8ttjEAZGHNvyska
+	mm/SoYiiA0IiA47gO
+X-Received: by 2002:a05:600c:628b:b0:49d:2856:fcf6 with SMTP id 5b1f17b1804b1-49d2856fe91mr2796585e9.15.1788985778747;
+        Wed, 09 Sep 2026 13:29:38 -0700 (PDT)
+Received: from workstation ([85.186.165.159])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49d26b7332asm16723565e9.0.2026.09.09.13.29.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 09 Sep 2026 13:29:38 -0700 (PDT)
+From: =?UTF-8?q?=C8=98tefan=20Ghe=C8=9Bu?= <stefanghetu9@gmail.com>
+To: Liam Girdwood <lgirdwood@gmail.com>,
+	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+	Bard Liao <yung-chuan.liao@linux.intel.com>,
+	Daniel Baluta <daniel.baluta@nxp.com>,
+	Mark Brown <broonie@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
+	Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+	Guennadi Liakhovetski <guennadi.liakhovetski@linux.intel.com>,
+	Rander Wang <rander.wang@intel.com>,
+	sound-open-firmware@alsa-project.org,
+	linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	=?UTF-8?q?=C8=98tefan=20Ghe=C8=9Bu?= <stefanghetu9@gmail.com>
+Subject: [PATCH v2 0/2] ASoC: SOF: xtensa: prevent stack OOB read on DSP panic
+Date: Wed,  9 Sep 2026 23:29:31 +0300
+Message-ID: <20260909202934.37644-1-stefanghetu9@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH 0/3] Bluetooth: btmtk: Harden firmware parsing and improve
- logging
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <178898400812.1032931.449738913453021907.git-patchwork-notify@kernel.org>
-Date: Wed, 09 Sep 2026 20:00:08 +0000
-References: <20260909120011.1198001-1-chris.lu@mediatek.com>
-In-Reply-To: <20260909120011.1198001-1-chris.lu@mediatek.com>
-To: Chris Lu <chris.lu@mediatek.com>
-Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
- sean.wang@mediatek.com, will-cy.Lee@mediatek.com, ss.wu@mediatek.com,
- linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260909_132941_689463_ABD86A8F 
+X-CRM114-Status: GOOD (  10.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,41 +118,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+This series fixes a stack out-of-bounds read affecting all platforms
+that dump DSP oops/panic info via sof_print_oops_and_stack() (i.MX,
+AMD, Intel atom/bdw/hda-dsp, MediaTek).
 
-This series was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
+Commit 58bb5081cba1 ("ASoC: SOF: Xtensa: dump ar registers to restore
+call stack") added a loop that walks the flexible array member ar[]
+in struct sof_ipc_dsp_oops_xtensa, using plat_hdr.numaregs (a
+firmware-supplied, unbounded count) as the element count. This only
+works correctly for callers that allocate room for ar[], such as the
+Intel IPC4 path. The IPC3 callers listed below allocate xoops on the
+stack with no room for ar[], and were not updated when the loop was
+added, so numaregs walks past the buffer.
 
-On Wed, 9 Sep 2026 20:00:08 +0800 you wrote:
-> Three changes to the shared btmtk firmware download path, all in
-> preparation for MT7928 support but useful on their own.
-> 
-> Patch 1 bounds-checks the firmware image before the section map walk in
-> btmtk_setup_firmware_79xx(). Today the section count, the section map
-> array and each section's offset/length come straight out of the file and
-> are never compared against fw->size, so a truncated or corrupted file
-> makes the driver read past the end of request_firmware()'s buffer. The
-> section count is a __le32 from the file, so on 32-bit builds multiplying
-> it by the 64-byte map size wraps a size_t and a bound computed without an
-> overflow check would come out small enough to accept the file; both
-> helpers order their arithmetic so nothing can wrap. A section count of
-> zero is rejected too, since it passes every size check but would leave
-> the download loop with nothing to do and still report success.
-> 
-> [...]
+Patch 1/2 fixes the i.MX handler (previously sent standalone; this v2
+includes it in the series after an automated review pass flagged the
+same pattern in five other handlers).
 
-Here is the summary with links:
-  - [1/3] Bluetooth: btmtk: Validate the firmware layout before parsing it
-    https://git.kernel.org/bluetooth/bluetooth-next/c/71147d59cb23
-  - [2/3] Bluetooth: btmtk: Improve BT firmware logging
-    https://git.kernel.org/bluetooth/bluetooth-next/c/4a7b93f08d13
-  - [3/3] Bluetooth: btmtk: Replace magic numbers with WMT packet flag enum
-    https://git.kernel.org/bluetooth/bluetooth-next/c/1b737f2ef168
+Patch 2/2 applies the identical fix to amd_get_registers(),
+atom_get_registers(), bdw_get_registers(), hda_dsp_get_registers()
+and mtk_adsp_get_registers().
 
-You are awesome, thank you!
+Ștefan Ghețu (2):
+  ASoC: SOF: imx: Prevent stack OOB read in DSP panic dump
+  ASoC: SOF: Prevent stack OOB read in the remaining DSP panic dumps
+
+ sound/soc/sof/amd/acp-common.c           | 1 +
+ sound/soc/sof/imx/imx-common.c           | 1 +
+ sound/soc/sof/intel/atom.c               | 1 +
+ sound/soc/sof/intel/bdw.c                | 1 +
+ sound/soc/sof/intel/hda-dsp.c            | 1 +
+ sound/soc/sof/mediatek/mtk-adsp-common.c | 1 +
+ 6 files changed, 6 insertions(+)
+
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.53.0
 
 
