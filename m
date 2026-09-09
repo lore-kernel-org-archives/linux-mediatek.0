@@ -4,62 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78623C79FB6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 15:10:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 069D2C79FB6
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 15:14:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ps4txA8yulxz+H1CKcCcyIHdAlFgi+8pO1Fx1PzdrZ4=; b=2Dc9trLEK4H81R8GR2aPTdmtWf
-	/l6YXxcZCWYCaV9ixfcpBA69UG6C2VYuXDN6YvRUPJnw2tJA6J/E2yZbfvhmeClNINjc0PajzFC4s
-	GzMdx8Rdvh3KQ0LQ1axyuRgB9EN+jtgbD6k0Wwagnq6z1AYhso0c+fFUekllS8ZGcOlJeiZvBA7zL
-	iAY1V2G6NdvB7MKC6KNSCo2it8/USCWeJQQXL8elQ9j1ffHPZuTYA6QxbTo1XM//e/NyMg3qkTaLU
-	N7PR1lgR86yfZ2UsV0A0meZh4iDR0f49yT5/Uhn0W0WYtHzNP3kD9rhc9UsQE9Gax+1Wl9+WieEUc
-	ACmUBqNQ==;
+	bh=SWWl36l+kSSIfXjjs43bn9G6WA3Ypw8Y0smzTmvKDFk=; b=ES2RKGXVhF3K4LllgkOEpQfwxq
+	Hmj6SBcRSG9CRn8PFw79FwDuBAOkKNEABnP32pUVeSHH1Jmwx+uEpZ7mKESwP5OR7U3jb/7HJKM8a
+	ci1AAnuaG0HiTXPAwmBTHgyz0/1+EtoyZhbtOc0XJplUhyU4df0FGxMfi3mDDXKGkI9zJ1chRmqc9
+	gdWdf8mQ4pCkfgFRSST0ToA+cKA85T4z0bdKJoFpfpzmvBWpQRSazX9T7uPHOssylHh4D3irbYAHm
+	E95MVwHWNY+YU24dhvECVztKlFJIhVKhwPTWCis5HZqAxguerc0yQh6Gnx6LbeHaPLZPRPSld3kT7
+	a1SvJ//Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4JwO-0000000C63F-12Qy;
-	Wed, 09 Sep 2026 15:10:24 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1x4K0Z-0000000C6hJ-1ytY;
+	Wed, 09 Sep 2026 15:14:43 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4JwN-0000000C62h-1dRm;
-	Wed, 09 Sep 2026 15:10:23 +0000
+	id 1x4K0X-0000000C6g5-1Xmg;
+	Wed, 09 Sep 2026 15:14:41 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id CA01240495;
-	Wed,  9 Sep 2026 15:10:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 182901F00A3A;
-	Wed,  9 Sep 2026 15:10:17 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C8FC9601EF;
+	Wed,  9 Sep 2026 15:14:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7F1311F00A3A;
+	Wed,  9 Sep 2026 15:14:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1788966622;
-	bh=Ps4txA8yulxz+H1CKcCcyIHdAlFgi+8pO1Fx1PzdrZ4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=E0eUjy9U1WelmB5b8fbXhgJZ7f4PHeAMYS1RMPk1Djb2tBXQxprgaRbBJC/JE4BEG
-	 MLuXVb1TDVAHoN9VloKqWH1KXnFM9384urAMajSDTJsSx/LLzCI+D9ZY5cf7JYzHa8
-	 6GuqgNOPOKNSdEZK58ST5n9oof8BJWYxwaAR3SdWyzaiFtM/0qh2vg/cZ/3mky7f0E
-	 fExYtiqcbzxkqa5+S2buBB/Y3QvRKOz/8NZHHNbzKmQalyjVPn1J+rEIXHhshXK6Xg
-	 wP5zkz+M8NKvvwPO35n5d9xE8Gk9FQHX6aQ1iy1SFCXYJcFBdzsyquebQCc86O+YkG
-	 HjFjG5VDpe0rg==
-Date: Wed, 9 Sep 2026 17:10:12 +0200
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, 
-	Vinod Koul <vkoul@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] dt-bindings: phy: mediatek,tphy: Add support for MT8189
- SoC
-Message-ID: <h3b5r5wm5pey65jauir32ciw3lskbrlbcuyqa2xwaxqx2q3kz5@nxqjientp4dq>
-References: <20260701-mt8189-dt-bindings-tphy-v1-1-5848a2be8303@collabora.com>
+	s=k20260515; t=1788966880;
+	bh=SWWl36l+kSSIfXjjs43bn9G6WA3Ypw8Y0smzTmvKDFk=;
+	h=Date:From:To:Cc:Subject:Reply-To:References:In-Reply-To;
+	b=fvP3xlxOqrifu76NmZO+YiYlUB2RhQulCVFW4MwwwwErLJsE20TGGcMoSMbDRT4et
+	 hfsOTdOwuCswBL9oBjrqq5eTZwmtrWp1IwbKLxz/zeu48S6zSBwyVfFJd6H/SZfhoY
+	 SdwAeLboV3BtSWW8L+xSH6SvdXBGeFIBAhyqTRNVDEwd1tj2QBC2tgLEveywRhxunQ
+	 c6wSgnawqWxr0A1QOofuXLNbBRw6g+f/xbGyOc/OlKceDnw5nDxyJSEgmMPlyMta2T
+	 Hyb5vfiER9UdQrZDRMeojskYlF0SVYQRAC7zuaEUQMegi86Pn7l/aArvLIr88/3c3i
+	 hSD3V62ornSOw==
+Received: by paulmck-ThinkPad-P17-Gen-1.home (Postfix, from userid 1000)
+	id 4ED71CE0850; Wed,  9 Sep 2026 08:14:40 -0700 (PDT)
+Date: Wed, 9 Sep 2026 08:14:40 -0700
+From: "Paul E. McKenney" <paulmck@kernel.org>
+To: Steven Rostedt <rostedt@goodmis.org>
+Cc: Vladimir Murzin <vladimir.murzin@arm.com>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [BUG/PATCH] drivers/usb/mtu3: Work around mtu3_log_ep
+ double-indirection issue
+Message-ID: <0e929dba-7ff9-4d3e-800e-4a77dbd84c8b@paulmck-laptop>
+References: <a3ee0655-d818-48e0-84d1-475e6c16c991@paulmck-laptop>
+ <d7bb2cf4-11c3-468c-8749-99cc408299c7@arm.com>
+ <b6c621eb-6d20-4e00-ac05-af122b630ca5@paulmck-laptop>
+ <20260909093417.4880999e@gandalf.local.home>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260701-mt8189-dt-bindings-tphy-v1-1-5848a2be8303@collabora.com>
+In-Reply-To: <20260909093417.4880999e@gandalf.local.home>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,19 +73,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: paulmck@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 01, 2026 at 05:36:49PM +0200, Louis-Alexis Eyraud wrote:
-> Add a compatible string for the MediaTek MT8189 SoC, that integrates a
-> MediaTek generic T-PHY version 3.
+On Wed, Sep 09, 2026 at 09:34:17AM -0400, Steven Rostedt wrote:
+> On Tue, 8 Sep 2026 11:08:33 -0700
+> "Paul E. McKenney" <paulmck@kernel.org> wrote:
 > 
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> > > > Apparently, the code should instead create another entry in
+> > > > TP_STRUCT__entry(), and do the double-indirection TP_fast_assign() instead
+> > > > of TP_printk().  But simply removing the offending double indirection
+> > > > in TP_printk() gets this splat out of the way of other debugging.  
+> > > 
+> > > Indeed, splat has gone after applying the patch.
+> > > 
+> > > Thanks
+> > > Vladimir  
+> > 
+> > Does this less hacky patch do the trick?
+> 
+> Nope!
+> 
+> 
+> > diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
+> > index 89870175d63561..6477ad3ddc66f6 100644
+> > --- a/drivers/usb/mtu3/mtu3_trace.h
+> > +++ b/drivers/usb/mtu3/mtu3_trace.h
+> > @@ -224,6 +224,7 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+> >  		__field(unsigned int, flags)
+> >  		__field(unsigned int, direction)
+> >  		__field(struct mtu3_gpd_ring *, gpd_ring)
+> > +		__field(dma_addr_t *, gpd_ring_dma)
+> >  	),
+> >  	TP_fast_assign(
+> >  		__assign_str(name);
+> > @@ -235,12 +236,13 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+> >  		__entry->flags = mep->flags;
+> >  		__entry->direction = mep->is_in;
+> >  		__entry->gpd_ring = &mep->gpd_ring;
+> > +		__entry->gpd_ring_dma = &mep->gpd_ring->dma;
+> 
+> You are still saving the address of some memory into the ring buffer.
+> 
+> 
+> >  	),
+> >  	TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p/%pad flags %c:%c%c%c:%c",
+>                                                                         ^^^^
+> 
+> That %pad dereferences the pointer passed to it.
+> 
+> >  		__get_str(name), usb_ep_type_string(__entry->type),
+> >  		__entry->maxp, __entry->slot,
+> >  		__entry->mult, __entry->maxburst,
+> > -		__entry->gpd_ring, &__entry->gpd_ring->dma,
+> > +		__entry->gpd_ring, __entry->gpd_ring_dma,
+> 
+> That will read the address saved in the ring buffer and dereference it.
+> 
+> Remember, the above TP_fast_assign() logic gets executed when the
+> tracepoint is triggered. The TP_printk() is executed when the user reads
+> the trace buffer. That could be seconds, minutes, hours, days, even months
+> later!
+> 
+> You can't trust that the memory you are dereferencing will not be freed
+> when the user reads the trace.
+> 
+> The original patch is not hacky. It is actually the correct way of handling
+> this.
 
-Acked-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+Very well, "git revert" followed by "git cherry-pick" of the original.
+Or someone can feel free to pull in the original from earlier in this
+thread.
 
-- Mani
+Either way, thank you!
 
--- 
-மணிவண்ணன் சதாசிவம்
+							Thanx, Paul
+
+> -- Steve
+> 
+> 
+> >  		__entry->flags & MTU3_EP_ENABLED ? 'E' : 'e',
+> >  		__entry->flags & MTU3_EP_STALL ? 'S' : 's',
+> >  		__entry->flags & MTU3_EP_WEDGE ? 'W' : 'w',
+> 
 
