@@ -4,106 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 600DCC79FB6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 20:29:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FCACC79FB7
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 20:43:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=qckaQ07GIjAycth+WTbJjXIHu8VJsW0kggwIpsbAbME=; b=0YQAva4lQzZmfO+u5muFxf+BcT
-	Ik+PeNN+YwEmA/i5/xlnVKZGcqgHrYfOtFWqvut69464Un69tcBhLDOczUnBz5scId+2yP+JutALy
-	xPrQyktZ9MBZb6sHI/U/tVoUPNhEjtOs0at03Gewdh58AYPBruGIfV/gWNYYK64E3sHVYmC0V5r8G
-	fb967cUPsB2abH56Pi9JNdGU0EfA/GYpos6y9pFYIY3ecfnpOm3X9jq3D7zjem1+eisUTRNWt83Ps
-	rY++kpzwgofpdKj8WI/jt5e/qtyV/NWtM4vjVOBb3DpfUZWW9BanidHI6xnKZ0xzWjM1E9fagPDD3
-	a8IBowug==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WShcmBXFwgNzgoPR80LHtqAmSPW10etwWYZcOuhMszU=; b=2/cXdXvzBELLzcmvUHuLpdeYov
+	swgSV7tvjL+XuloJ4Dp1WJQFeVa/GdKznQInZ+ON1Zeno1BboAFcoobyVOJAyNeDCQf7eeOaE7XRp
+	t+9wSw0JO/CsFq6IguPVqItyk8OLloonv/VdBY9Q53kTFGt5XMNyVEFSBnlGmPU8Wocf0mAU0aUuP
+	mUR+bRxyAI32h64JhB4Zx8SUOkRK11HyDuHVrcVvU2zm6lJ3Zithf8GtEAWGt1xZKmiYkaLdUMkXL
+	Hnj3hKgofc7zob6RrGo/awuuwyMBCw9wGL+cI5rDa97UG/L91XvzmBeK0x6ngmCBLvlWQbeafkMKA
+	9/zSebiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4OvQ-0000000Co6l-05wa;
-	Wed, 09 Sep 2026 20:29:44 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1x4P8F-0000000CpPY-49IS;
+	Wed, 09 Sep 2026 20:43:00 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4OvN-0000000Co5a-2eac
+	id 1x4P8E-0000000CpOy-1lFG
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 09 Sep 2026 20:42:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=WShcmBXFwgNzgoPR80LHtqAmSPW10etwWYZcOuhMszU=; b=NQrs5PNu08DEsvqA8QAeMljemv
+	d2upHmfFxfIyVBGgRtcNjG0ilCfG9Ul4mZUlztoQ9tD2JScbXRN5JpIDbNXOflrsfh4UPZlAqxrdv
+	S/R1pGWXXePOfcBEXzU44NgNdnuJqRkmmQMr0u+tv9qFoyEe1JvuWxs3CaMDiljw+PG1dhlQRrNgd
+	Sl4xvvWCE5Gt9t74OwJQM/M3/oqOYWDZsOsMetXgiAIXsd7k16ufn8mLzuLl7qHQ8cauwHpsqIoxM
+	yR/53+LhBZ+lAqXP3j0vsP78T6gCQuFF7ZHSvzLj+e3hKGJ2Ow9//xa/2n8ejyCvCyVV7Mt1zzRX7
+	GhkzX7HQ==;
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x4P87-00000001ep4-1M9H
 	for linux-mediatek@lists.infradead.org;
-	Wed, 09 Sep 2026 20:29:42 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-49ccfbe062eso62130625e9.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 09 Sep 2026 13:29:40 -0700 (PDT)
+	Wed, 09 Sep 2026 20:42:55 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id 98e67ed59e1d1-383b4a3755fso5930954a91.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 09 Sep 2026 13:42:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1788985779; x=1789590579; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:message-id:date
-         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=qckaQ07GIjAycth+WTbJjXIHu8VJsW0kggwIpsbAbME=;
-        b=TBTCZBQVXY7o1z/k5lO6NKcH1fETaBAFpNw4/d98mEnKPGkp/+2D/1dO6bENuDCnuF
-         AddhEXoPXAYaLBqvwcDgBQZ82lzOF9P3kFpgJyOzhdE3DdEZmA3O8GjrfyO9yyTuL05D
-         cVGKXhrxlVbQJA7r8v8vauFrS6NBYpUDw5aQ5O5zxaSbX8fhhx1cfOwCqIQW4ufqhFbu
-         bV1hAYCa+VelxVGYCqZwbpPuhEZa8m+HU8YdzzAFI2ndU/QMoPmWePkpz/KwDQ2LTJkb
-         Ei3YLOQ83Q52ElxX12xxq3RbJwyTBBakdZVL4fabxuuL+pWrsP+5kSia6UyJAtZowStt
-         ZNXQ==
+        d=gmail.com; s=20251104; t=1788986569; x=1789591369; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:sender:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=WShcmBXFwgNzgoPR80LHtqAmSPW10etwWYZcOuhMszU=;
+        b=G/IxzWEYE27ZGM4GLQX+JaZ9y6v6wRtw9stSOOG6i321uK2ddZkSBzySf6Y/U/CNMW
+         Ou0jL9legyL922GenJ9A6/LziJQ3zQIA2sFsSE5e7WdtIncDzGxZ0/xpP0aEStVnt8MR
+         n9vyYeToZ3gVjn3m0o/AUkQ6HGf2iXjQ8UixNV5RhJgfZ88rgf46cPIuSJy3WVtQo8rQ
+         E+akID7QrtwUta8yVQRggpKu6Qam5vZTzFF9w4FhBIPYRVsyhBv7TKWfVxhLqyNGr21C
+         9DjEIe5rvMV/oHmzu4EEL6+/OBv46oRH9AdYA6nBVqbtG8FTxIeeIhIx6wOVVi7PHY/a
+         W2kw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1788985779; x=1789590579;
-        h=content-transfer-encoding:content-type:mime-version:message-id:date
-         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=qckaQ07GIjAycth+WTbJjXIHu8VJsW0kggwIpsbAbME=;
-        b=jvbWmgS76nx5B1Tmv/ltXX4k0KOTQUIpkJHaidRa5gmax/Prc7VSHTJNHaKXB9S0M9
-         /qxvc6ipNT0cGctZfAUH2AC5JRv2MmmajOJ0sL5HKkp7bPT5MHGHDGTYTIvUfFG2DNw0
-         /HUbsMGb3qvcpKLFYA/zlWAQZmVXCQmgeRvNT3yccvjt3BiaAOIZui1Rvo2NEyTvIdYP
-         nS1YNHEqbB047x8xg5kqop5SJU3ySVtD5qE90LkW6Uf9RijkTj7oa1EbFjBDXGq8s3UJ
-         o7IrzmAFFt5wR8ATBNbbF65Vr3MQ9rwDmo/XO/4jHyEhQYLiO7MNSvJWYenFzitmNPOO
-         bR/Q==
-X-Forwarded-Encrypted: i=1; AKwUvBwWkIgCR6BBPVXOh0q0B9qJAedO111YzEvnGbSB3m/qcf140plbx8TgdwgPXV0FrQ5dSzj+mcyvgdz5p3/C2g==@lists.infradead.org
-X-Gm-Message-State: AFuF++kDGMFbRPK4GRANmrplJmW4wFvceTZfXg7Q6gcsmuRnwD5JTxXp
-	1/7weExczYqimy/yW8drJfAc9GwctTuudk3Jds4qhEftAlhmkXYq8A2w
-X-Gm-Gg: AYBFou3xM7m2PcSv0ENCPXWsfuBvoskh+C2chrPQ2wuBZX1LUxBfDRKMN6wp54swhZy
-	6yeCg/41gbPLvF6ZjCxEDYkLWSluyMKIbFmu4iBb+ZmLEscFaF6Gyy83zVwCRqCEx0byBahZ/mC
-	OSKL8lT3Bazm4FRagFDVXktqmxYtsReAmGYNXY35VBQeMZJ9DaTbfmSynXDDJ/3Ec1I6K7W2rdB
-	bLEbmxIzVBsBXJF867cQFA+PY6YBlySEjOJisRYu64l5oPrrTKzXBJ8u4nRDsELfUaIin/Y1qZj
-	aRoSHsm4pdRMkFf8Wqnq5Si9iLHu2GaEefEdL9XUrlNa/6psHtSW6jCmnBjmugcCho+ktvSx/Oi
-	/kL0sGxyC2/3phQTiKyYuq98iWM4ptvwfr5yQKWwI8hLlJOPnXOPQIUS6UJrFF4DvurC62hNumX
-	HOk0WRaOS1ohTfX9YVZEh0ROe3i+nxn45DUyI/XaIdRTxurbYaEYH+ZgGGFr12So93mU8Qd+9kr
-	0iDoSBrZ6FFGiRvDig5ztaJLF6Gyy1UsiMMSXKHMwJLrsJPum1PlwZ0ptT6SAL82zrSmVFScyTt
-	RzXbSTpMw/ypE7hK8rS5Yp0GhivlhMI7LpdVLzW49O17Ltb5JpcgDOG8jVQr8ttjEAZGHNvyska
-	mm/SoYiiA0IiA47gO
-X-Received: by 2002:a05:600c:628b:b0:49d:2856:fcf6 with SMTP id 5b1f17b1804b1-49d2856fe91mr2796585e9.15.1788985778747;
-        Wed, 09 Sep 2026 13:29:38 -0700 (PDT)
-Received: from workstation ([85.186.165.159])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49d26b7332asm16723565e9.0.2026.09.09.13.29.36
+        d=1e100.net; s=20251104; t=1788986569; x=1789591369;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:sender:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=WShcmBXFwgNzgoPR80LHtqAmSPW10etwWYZcOuhMszU=;
+        b=c/zVf0gblVe1n9YtiCqAfINkXLaznmxaN5N0IVnIq1juD5BsE3fNYMMkht3sDIPa3m
+         9vDAF22LBcL7oLAl94oPwDNMX6BSQuNxSieAyJVnNiIQmpEWl9tlH7QMpDbpUUtMehLv
+         jkCrlvAHqc0v0R0Php/EvzwUZXnEp7I46znZ2+swZw51sK5u00KgAKwkJBULDzTSRJiF
+         b0AZg6lJJSEsHmgf5tQeHcVHG828ZcrADrtTmMHrm4t6ttUNBTYeeJkhTtTkImhbZKRW
+         AHeFqanKQ/l7nNtr44fmwYSYIDwnNq49AxS9z8Nhu4k5xLmyNxF+SjtGVZUhJYXDsMlj
+         shAQ==
+X-Forwarded-Encrypted: i=1; AKwUvBxcd3mEmWA32KanpgyszH6eYM9VQz37AHlpSoiovhfjU5t2jaReePycCYPdJLq8B+rtfZoh4+b0yjLpBnErng==@lists.infradead.org
+X-Gm-Message-State: AFuF++kpGCRPDD2Rg84a8QW3Be8p9CTlBgoMljukwe1GZUCLdfJRiJRH
+	TB805WgR8gyUNaZYRLI7Av2VFSNoJmSGOQMAhrEPE9h0zqF4dfEa/WJKlaotHQ==
+X-Gm-Gg: AYBFou0b0cbhRPdJOuOGGdODo00xpn7bDdNegNiNy/n8AG/WyOKimIwB7wOOvDajlEx
+	QwYH65d+cWhK8dMqQyL+eL6+5nvCnvBRtw9eN469YSc/yPW/DwbDZcG5WnMk34/K463kl094tpx
+	AeLQjtDk5TIj8EViorhIzLw5XOeQHZSvxtFExUuWd3X+7vtWOS8KF+1TIvQmgmpJHG3TbjJl8LV
+	cGW2U7Rl+gMFqAHJJ0AySTaEwri6uACo8IL+1PStfRj4l3rnXbC2h+c4WdrTu20Nj5+9doHiH6s
+	uzwtmFguKT6IA+Pr6K3wR3tPNju1Q4apd1l0aVqbIGfJd3KdRYxBj3p7TLkzWRi14Dbxev4aGVp
+	KPP/sdqKCViTq2OeWRDag7mfvV49KD/r59Pr2OmgamPFYc1U4RtPQQlhEayhwmyY7ZFzHuqAvQR
+	amqmeRoMgI7PsGNHRL/OP1EjNx5SZdIfeudf+UOQz5xi389/In4PSTMJVP+AhCmRNQyKfYHwfX6
+	nXpG+cpO6i2
+X-Received: by 2002:a17:90b:2f46:b0:396:6344:3b63 with SMTP id 98e67ed59e1d1-39b260de5c6mr59642710a91.2.1788986569020;
+        Wed, 09 Sep 2026 13:42:49 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39d774197c4sm1220340a91.8.2026.09.09.13.42.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Sep 2026 13:29:38 -0700 (PDT)
-From: =?UTF-8?q?=C8=98tefan=20Ghe=C8=9Bu?= <stefanghetu9@gmail.com>
-To: Liam Girdwood <lgirdwood@gmail.com>,
-	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
-	Bard Liao <yung-chuan.liao@linux.intel.com>,
-	Daniel Baluta <daniel.baluta@nxp.com>,
-	Mark Brown <broonie@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Kai Vehmanen <kai.vehmanen@linux.intel.com>,
-	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
-	Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
-	Guennadi Liakhovetski <guennadi.liakhovetski@linux.intel.com>,
-	Rander Wang <rander.wang@intel.com>,
-	sound-open-firmware@alsa-project.org,
-	linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	=?UTF-8?q?=C8=98tefan=20Ghe=C8=9Bu?= <stefanghetu9@gmail.com>
-Subject: [PATCH v2 0/2] ASoC: SOF: xtensa: prevent stack OOB read on DSP panic
-Date: Wed,  9 Sep 2026 23:29:31 +0300
-Message-ID: <20260909202934.37644-1-stefanghetu9@gmail.com>
-X-Mailer: git-send-email 2.53.0
+        Wed, 09 Sep 2026 13:42:48 -0700 (PDT)
+Date: Wed, 9 Sep 2026 13:42:47 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Zakariya Hadrami <zkh@mailbox.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-watchdog@vger.kernel.org, zkh1@proton.me,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: Re: [PATCH v4 1/4] dt-bindings: watchdog: mediatek: Add MT8127
+Message-ID: <6a212071-3b1a-4dcd-8d9c-8df6352813b9@roeck-us.net>
+References: <20260909-mt8127-amazon-ford-basic-v4-0-e9af5c420ab1@mailbox.org>
+ <20260909-mt8127-amazon-ford-basic-v4-1-e9af5c420ab1@mailbox.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260909-mt8127-amazon-ford-basic-v4-1-e9af5c420ab1@mailbox.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260909_132941_689463_ABD86A8F 
-X-CRM114-Status: GOOD (  10.54  )
+X-CRM114-CacheID: sfid-20260909_214253_735246_404B6E92 
+X-CRM114-Status: UNSURE (   9.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,40 +126,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series fixes a stack out-of-bounds read affecting all platforms
-that dump DSP oops/panic info via sof_print_oops_and_stack() (i.MX,
-AMD, Intel atom/bdw/hda-dsp, MediaTek).
+On Wed, Sep 09, 2026 at 09:38:00PM +0200, Zakariya Hadrami wrote:
+> From: Zakariya Hadrami <zkh@mailbox.org>
+> 
+> Add entry for MT8127 SoC's watchdog which is compatible with MT6589's
+> one.
+> 
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+> Signed-off-by: Zakariya Hadrami <zkh@mailbox.org>
 
-Commit 58bb5081cba1 ("ASoC: SOF: Xtensa: dump ar registers to restore
-call stack") added a loop that walks the flexible array member ar[]
-in struct sof_ipc_dsp_oops_xtensa, using plat_hdr.numaregs (a
-firmware-supplied, unbounded count) as the element count. This only
-works correctly for callers that allocate room for ar[], such as the
-Intel IPC4 path. The IPC3 callers listed below allocate xoops on the
-stack with no room for ar[], and were not updated when the loop was
-added, so numaregs walks past the buffer.
+Applied.
 
-Patch 1/2 fixes the i.MX handler (previously sent standalone; this v2
-includes it in the series after an automated review pass flagged the
-same pattern in five other handlers).
-
-Patch 2/2 applies the identical fix to amd_get_registers(),
-atom_get_registers(), bdw_get_registers(), hda_dsp_get_registers()
-and mtk_adsp_get_registers().
-
-Ștefan Ghețu (2):
-  ASoC: SOF: imx: Prevent stack OOB read in DSP panic dump
-  ASoC: SOF: Prevent stack OOB read in the remaining DSP panic dumps
-
- sound/soc/sof/amd/acp-common.c           | 1 +
- sound/soc/sof/imx/imx-common.c           | 1 +
- sound/soc/sof/intel/atom.c               | 1 +
- sound/soc/sof/intel/bdw.c                | 1 +
- sound/soc/sof/intel/hda-dsp.c            | 1 +
- sound/soc/sof/mediatek/mtk-adsp-common.c | 1 +
- 6 files changed, 6 insertions(+)
-
--- 
-2.53.0
-
+Thanks,
+Guenter
 
