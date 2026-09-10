@@ -4,69 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F6AEC79FB9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 09:07:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB14DC79FB9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 09:20:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=85V6AxDobuh7+s/NLZ3B1iJeX8fNAbX7eyVc144CvSY=; b=zENm552CDpt+uo5kRoPsyVNJ1G
-	XZi7ecDJ/FeJvZfrkG8HmmQvsrR19GN2YF6cU1uK4wXPidtSiv/2WSsdbYw1dvk8FW5aWyjJQ7jcp
-	j+4WIaiuUvvTqqMfQFQzoGwOE/kqKUUEZ3cDjoXqmfgZoGyLh/drBp16pWF28Wl/gCm6snK7xlit7
-	f7geeaW4RtBl0X+KZEkKLn68CMRdoD8J8D1/sbS14AZ0t9U8bPCBFion51+9XI5AE9nPdKOHbuhIX
-	FOHYkdg5YaZIOz8fgcJFcvnhUYosYUEamv3AiMkEL3lvPf99Kvdz7T0UAsu8cHx0kQWR4CSH5x80D
-	GCm5DIwA==;
+	bh=AN16EbXTRCCdvXhfgeei4hue5zfOaq15aJePe9k5Zpg=; b=ZX7e6GNz9uYhFPoMz7e7cuYyxJ
+	OsgliDVCkzzH31/gAVVKc1/fkDzBhxurGwJDaJ9H/gESYtrDv2warjWa9e0NvWDnPAfffUhZ7C+0w
+	JWFu1MqsvxFb3QQsaq4FK8/sApPN8CzxcuskE0KbaeKczdoJebf90xcv5ut82sEWZwXY1zJP94Z6I
+	5O9VJxgGpoC8o6BMJ1ZS2UJKkQ4nn9XZKFDBPVowFBJ2YTurQbdWA0qOX+XTOljyuPRUfu/XMRr4+
+	bpJTl20D2AhDnngHPTAJjRrUcCbMxYvx/VaAFegsQhoQXsqrtLnT+CXIKx0rq2LyuDYzPMkuFdnXw
+	0xB5NRiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4akJ-0000000DpS6-1x3F;
-	Thu, 10 Sep 2026 09:07:03 +0000
-Received: from mail.cjdns.fr ([5.135.140.105])
+	id 1x4axc-0000000Dqb9-0yss;
+	Thu, 10 Sep 2026 09:20:48 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4akG-0000000DpRC-4C62;
-	Thu, 10 Sep 2026 09:07:02 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 4A8FA404F10;
-	Thu, 10 Sep 2026 11:06:39 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1789031217; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=85V6AxDobuh7+s/NLZ3B1iJeX8fNAbX7eyVc144CvSY=;
-	b=hrdsPiDpzVbRlzWKtPLqK536p0zGK3+mvHhW3oTJlnHDJ28PlphioJqxtLOWZTM57E8TLb
-	7OtJz3WbW10CztsvjxiQG6+gBXTPke3CmhOxDrTtiFf5mQQfPLVeqfK1/+SMFhkMaY4CtK
-	cJPjALlZFoznPBY/YhKCt9Nd8bAy/RXwYPud72HviN942TfT63vmfHMn8BDMVA9pRXNF/i
-	yLp9b2L/TQpdyR5jSoq0qcM4HKuPPJ61ZtUQG8y9b8wVRKpBWEV1QeO5f5GgjOvj5YRmKx
-	k3uxb0WOsNEpj9XEerlHhSSvs66ibzR+eBh2ettq7oaSM9Yx2vgq17AG+joeHg==
-Message-ID: <de010064-a574-4da7-8307-30bd6359e506@cjdns.fr>
-Date: Thu, 10 Sep 2026 11:06:38 +0200
+	id 1x4axZ-0000000DqYg-3W6N;
+	Thu, 10 Sep 2026 09:20:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1789032043;
+	bh=3T1bI55DxPKUxrkKbaXUdzwvIf7IgcntNDx2QtDpXe8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=C4oj1QqGfpW70EK+8nkaMyUbjYlaYjaM0XyaSUVOc51wD+Y8B0dhQDfJpqNbL65n4
+	 L0+tXVYa8lB9ZSm5YslAhr3INTzLcruGD7eo/e+WKd5t1VTwjLgDFRa1zZuATN84qb
+	 75WwwwzRXGBD1pXhlVj6uYfvv+Qg7O2q9QfTw3WtWyF1ZQGsqsGJU5Hk55mgP/oANH
+	 ojXC/dxgTy7ohJsR+x+DmLwZbwHguNY7+3YvENzE+gZK00Cr5PqicbPTk90xyleZGC
+	 3JsQ+JTdop5tliS3lNmdyvtEvI+XnoTIiO8lVYVWqTeoI1BIpyRPgHaLXUmpK+7Qxe
+	 UIgMa7LSUZ/GA==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A523117E0945;
+	Thu, 10 Sep 2026 11:20:42 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: mani@kernel.org
+Cc: chunfeng.yun@mediatek.com,
+	vkoul@kernel.org,
+	neil.armstrong@linaro.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	chunkuang.hu@kernel.org,
+	p.zabel@pengutronix.de,
+	justin.yeh@mediatek.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	kernel@collabora.com,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+Subject: [PATCH v4 01/12] dt-bindings: phy: Document MT8195 and MT8196 DisplayPort PHYs
+Date: Thu, 10 Sep 2026 11:20:27 +0200
+Message-ID: <20260910092038.48291-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260910092038.48291-1-angelogioacchino.delregno@collabora.com>
+References: <20260910092038.48291-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird Beta
-Subject: Re: [PATCH net-next 1/2] dt-bindings: net: econet: add EN751221
- ethernet
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: netdev@vger.kernel.org, andrew+netdev@lunn.ch, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, p.zabel@pengutronix.de,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- vadim.fedorenko@linux.dev, maxime.chevallier@bootlin.com, dong100@mucse.com,
- wangruikang@iscas.ac.cn, 25181214217@stu.xidian.edu.cn,
- hkallweit1@gmail.com, han.junyang@zte.com.cn, xuanzhuo@linux.alibaba.com,
- enelsonmoore@gmail.com, jes@trained-monkey.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, naseefkm@gmail.com, b.larsson@gmx.com
-References: <20260909212146.3184077-1-cjd@cjdns.fr>
- <20260909212146.3184077-2-cjd@cjdns.fr>
- <a9eac625-f0f3-47db-ac2c-26c7df66f52a@lunn.ch>
-Content-Language: en-US
-From: Caleb James DeLisle <cjd@cjdns.fr>
-In-Reply-To: <a9eac625-f0f3-47db-ac2c-26c7df66f52a@lunn.ch>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_020701_244865_FE178F5B 
-X-CRM114-Status: UNSURE (   8.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260910_022046_033972_32E0B429 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,34 +90,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This adds bindings for the DisplayPort and Embedded DisplayPort
+PHYs found in the MediaTek MT8195 SoC (and variants of) and for
+the Embedded DisplayPort found in the MT8196 SoC (and variants).
 
-On 10/09/2026 04:11, Andrew Lunn wrote:
->> +        gmac1: mac@1 {
->> +          compatible = "econet,eth-mac";
->> +          reg = <1>;
->> +          status = "disabled";
->> +          phy-mode = "rgmii-rxid";
-> That is a very unusual phy-mode. Is there a reason this is used in the
-> example?
+This PHY supports varying impedance calibrations for the various
+signals to reach an optimal EYE signal pattern for any specific
+board(s), especially useful for very high bitrates such as HBR3
+and higher, depending on board design.
 
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Acked-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../bindings/phy/mediatek,mt8195-dp-phy.yaml  | 77 +++++++++++++++++++
+ 1 file changed, 77 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/mediatek,mt8195-dp-phy.yaml
 
-Mac 1 connects to an xPON or xDSL subsystem depending on chip package. 
-The phy-mode is not used by the driver and when the driver was written 6 
-months ago this was the best guess about the electrical protocol, left 
-for documentation purposes.
+diff --git a/Documentation/devicetree/bindings/phy/mediatek,mt8195-dp-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,mt8195-dp-phy.yaml
+new file mode 100644
+index 000000000000..1c2dc4f03cd6
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/mediatek,mt8195-dp-phy.yaml
+@@ -0,0 +1,77 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/phy/mediatek,mt8195-dp-phy.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek SoC DisplayPort Transmitter PHY
++
++maintainers:
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt8195-dp-phy
++      - mediatek,mt8196-edp-phy
++
++  reg:
++    maxItems: 1
++
++  "#phy-cells":
++    const: 0
++
++  nvmem-cells:
++    description: PHY calibrations from eFuse for optimal EYE signal pattern
++    items:
++      - description: PHY-Global Reference Bias trim
++      - description: PHY-Global AUX Transmitter clock impedance adjustment
++      - description: Lane 0 Transmitter impedance selection (P-MOSFET)
++      - description: Lane 0 Transmitter impedance selection (N-MOSFET)
++      - description: Lane 1 Transmitter impedance selection (P-MOSFET)
++      - description: Lane 1 Transmitter impedance selection (N-MOSFET)
++      - description: Lane 2 Transmitter impedance selection (P-MOSFET)
++      - description: Lane 2 Transmitter impedance selection (N-MOSFET)
++      - description: Lane 3 Transmitter impedance selection (P-MOSFET)
++      - description: Lane 3 Transmitter impedance selection (N-MOSFET)
++
++  nvmem-cell-names:
++    items:
++      - const: rbias-trim
++      - const: impedance-txclk
++      - const: impedance-lane0p
++      - const: impedance-lane0n
++      - const: impedance-lane1p
++      - const: impedance-lane1n
++      - const: impedance-lane2p
++      - const: impedance-lane2n
++      - const: impedance-lane3p
++      - const: impedance-lane3n
++
++  power-domains:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - "#phy-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    phy@1c500000 {
++        compatible = "mediatek,mt8195-dp-phy";
++        reg = <0x1c500000 0x2000>;
++        #phy-cells = <0>;
++        nvmem-cells = <&edp_glb_bias_trim>, <&edp_clktx_impsel>,
++                      <&edp_imp_ln0_pmos>, <&edp_imp_ln0_nmos>,
++                      <&edp_imp_ln1_pmos>, <&edp_imp_ln1_nmos>,
++                      <&edp_imp_ln2_pmos>, <&edp_imp_ln2_nmos>,
++                      <&edp_imp_ln3_pmos>, <&edp_imp_ln3_nmos>;
++        nvmem-cell-names = "rbias-trim", "impedance-txclk",
++                           "impedance-lane0p", "impedance-lane0n",
++                           "impedance-lane1p", "impedance-lane1n",
++                           "impedance-lane2p", "impedance-lane2n",
++                           "impedance-lane3p", "impedance-lane3n";
++    };
+-- 
+2.55.0
 
-Your question made me re-investigate this, and I now note that both the 
-xPON and xDSL "upper halves" as well as the switch on gmac0 are all 
-on-die, so I think phy-mode = "internal" is more appropriate and I will 
-re-send as such, and with some light documentation about what this 
-ethernet connects to - since it's on the die so it'll always be the same.
-
-
-Thanks,
-
-Caleb
-
-
->
-> 	Andrew
 
