@@ -4,82 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69BC6C79FB7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 02:12:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6562AC79FB6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 03:30:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jGsz/AIlg5zkRhqib8+rxPKlP5FHVXhKZMGyojJ8N8M=; b=QmFTOqkYTZZl7b/e8mxJYc/XmE
-	oxDNjx3hTi6X0E2u+DQRX3PAgFHwXlLtoox+o4HOAwz/cTuD6pzwyzitHsMEqDJ0EJzXYEYsXPmKT
-	pslcHGQjKxi3s8ATaf958wKXjyl4UHIBf0OhlEoj6RrAY0TKamvk2BdcyyDLinMaOnnxvAH7Su2s4
-	b39flxVSYUXt/WUzEtoQAvxo5sgl94EpZ9Pw560Hqv1Bh1SS+0LK9cqe+gb8Eo12cgFxtT/AFCvrO
-	t32IjzwsHcvVW8JliZLDC6cPkzE2mCYtlzyD7EhzQKBPmTrkMDUW7BbVoWZNEv+mxqyLj49TkL1SC
-	DWQMXKfQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=YKJjaLrDLwATiTkeesDmHnGi32ozSCfkATjDcADW814=; b=XaezWz7Rr1TE+uOBd38KX848wJ
+	5Aefic7+f15Cs3rf0K40boy+/7x7CXJRcPM+HO+pLkitPzpTY5axi2ZVp8xTvXp/r1gu3/R90kTeG
+	C1m1q72aVUJLNuGHodgD/lwIh7gRkXL2s9ozTLhfLKMnCuB/+qRzoSFGrPeZSMcVrA4KSjAD5YpLx
+	AB3RKI2SnIVTo+KhpxHlgMHAfRhUvPc/ForOiYoy68gCqjgAb/Lf88Ekp+A19WuHwm2URzs3OrHlM
+	sd0qdvsQoUjRvjJwcaBIc5hO0B/UcwYOl0F4CMudpBkoY4MSwcNQSgOKSl3+KYoq7RyY4bfrrh4b4
+	mayo1xyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4UH4-0000000DESB-2up4;
-	Thu, 10 Sep 2026 02:12:26 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x4VUG-0000000DHpY-3X0N;
+	Thu, 10 Sep 2026 03:30:08 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4UH3-0000000DERw-2ml2;
-	Thu, 10 Sep 2026 02:12:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=jGsz/AIlg5zkRhqib8+rxPKlP5FHVXhKZMGyojJ8N8M=; b=j55YJcybmcGZIPMfXbgdVN7TJm
-	CmtzA7bR4AxBqvDcQPKIf38Ipil/DqW8mvjFA8ta07AGgEPoyc2P4yFIfsalYYZVGTREC2rRdtG2/
-	7ZtDy8G6WW5gvnVGqeXD9/nMiO4f/AcbbyoxfbqP11XhVI1ULa/nTpZRWz5uzcdAdYi/LO0wwmPBf
-	y4LLCj/wM5Cin8SyDeE1yTDdhQMLb3CNOe3Bc0/P0W/fjj0CYybw3FZIIYxHTR08v+/ZtSD194Nih
-	5P8RvwzuunRTcrrGuL7sE/08NYXm35cfiBmfTUgZpJrHvrpfMceuv3LyBxmNQuJ25TpPKULnGDFsU
-	/paoe+gg==;
-Received: from vps0.lunn.ch ([156.67.10.101])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x4UH0-00000001uEl-2hN9;
-	Thu, 10 Sep 2026 02:12:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=jGsz/AIlg5zkRhqib8+rxPKlP5FHVXhKZMGyojJ8N8M=; b=KscgrVCZFZYlw91Zfay36req7N
-	H+xB8J5nRlxqnmO4DJyEFdZk7QSJlpNFWMTLkzfQskL/eaUn53hrCUrEd1l/PLzmmytAPjQ2g/ZZE
-	ljxyu8D0D96bMzqDP6vHjAbBbQ/75IJQ1Xf5uCjVHBlwmuAhBfXF5MwP3LxLcibuME24=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1x4UGP-004Pzi-CH; Thu, 10 Sep 2026 04:11:45 +0200
-Date: Thu, 10 Sep 2026 04:11:45 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Caleb James DeLisle <cjd@cjdns.fr>
-Cc: netdev@vger.kernel.org, andrew+netdev@lunn.ch, davem@davemloft.net,
-	edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-	p.zabel@pengutronix.de, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, vadim.fedorenko@linux.dev,
-	maxime.chevallier@bootlin.com, dong100@mucse.com,
-	wangruikang@iscas.ac.cn, 25181214217@stu.xidian.edu.cn,
-	hkallweit1@gmail.com, han.junyang@zte.com.cn,
-	xuanzhuo@linux.alibaba.com, enelsonmoore@gmail.com,
-	jes@trained-monkey.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, naseefkm@gmail.com,
-	b.larsson@gmx.com
-Subject: Re: [PATCH net-next 1/2] dt-bindings: net: econet: add EN751221
- ethernet
-Message-ID: <a9eac625-f0f3-47db-ac2c-26c7df66f52a@lunn.ch>
-References: <20260909212146.3184077-1-cjd@cjdns.fr>
- <20260909212146.3184077-2-cjd@cjdns.fr>
+	id 1x4VUD-0000000DHoS-3bcR
+	for linux-mediatek@lists.infradead.org;
+	Thu, 10 Sep 2026 03:30:07 +0000
+Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-48441a2ba1bso4741205f8f.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 09 Sep 2026 20:30:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1789011004; x=1789615804; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=YKJjaLrDLwATiTkeesDmHnGi32ozSCfkATjDcADW814=;
+        b=I+7QM6yex88wECCB9jE64nopLtevXp5aP0XqEy2uQ58XCeR+4CvjIpokzG7AOX25QG
+         6XPrNZYX5kIPHXTPxkCtWIOmp2LtHMCF64HG3MhcHboZO9yUZ+zysGiXYaFIj/cQmRon
+         /H1T7iG1jmJsfJiDN6imX2bCRf50uFS2PmoXk5ghMnJissZCQbZlCJShpmTh2OiGZuY5
+         Ick0pojxAC/DN8z2p4D62/AhVPMt0PZij4R4C3/vFFE28Lj89VSEMJp8fVOGsssctnAU
+         JQgsDZWvrBLToqyqSWqnyxc5x8MdickO/21tn+5x5CLb3DTdqznse0s77rECMtL2LxWU
+         cODg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1789011004; x=1789615804;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=YKJjaLrDLwATiTkeesDmHnGi32ozSCfkATjDcADW814=;
+        b=JGPI41MQ4BwbOoYjys6nrqygAP/vLL6rV/TyiURwytyYTGAI5K1oI3UeDE20q1Y1yK
+         tgCZT6RaPw4u35aSyHifDb+z7WPWUZ8ySxHnBC4gPlXMUhEN9RIlE9h6KsQR6WZdtDaa
+         raWaxr0cft4kXlUzSRuFE/e3uyOF/Dvtcn/PhA2lez8LEnFeGFtwB+w8oidBGa44WBsh
+         2h518RIa7xPanV6m+WvJ9JpqJKjhxfHD5+wf5OCWVRmkhP/MH0xt2oPQMfOfM4XJYCxz
+         lqup8kcm1ITKrLh+WjaYQNt3uctbBcJ7xjJ1Eh+LGVIoGID6caum+igYHAvvo596rW3g
+         8W4Q==
+X-Forwarded-Encrypted: i=1; AKwUvByo0eAnhY/E9wC2EJsej3Yp8zLS7DTjHysXwFkcVs5Kr2ylRnstWlqiAJVDWfbIRnny0eFDMqPQ21fSr3jrDA==@lists.infradead.org
+X-Gm-Message-State: AFuF++mXB7SmWx548ZXmkXjgvCAf20bXP/7O/4An3lGvu2Dqjg9R5gzc
+	kM4K1D4qp4aWuLRUspGZfRWqTniig4Cyd3J+x5VzYBUoK8oiaLFaxJWM
+X-Gm-Gg: AYBFou2aM2m0ivpIDzkxCa5UAHNCn9tGX9SXnaC1xYXetJKj3YUn2LuPqU/HKlfNOsa
+	yoPGmRiF+CkaCo0tblVSYzfok7C/pCXFAkzgUuUkd2r1pEovHtOxWnhm9bq98NLbdvxMLFkH0Qz
+	ZEM8aprB+803OboItftSIrw0587SPSgCx7/D13BdsAMXcM/65mFo6BNgWF9b/mY9Y31GaX0UVNB
+	oNYEjMgzvVCczeSr2iouDRw6xua7lJaB2azZiCT6XcNim8FisZ3afBMRjvWNZ2sMcZZwol5kp4t
+	wcM14Q8lyOa40UYhIbMlGi0s+5MFRY6DoQ2wUooam/ccII9SOo9mHwrJjP6ETACdA6acDZxK4Ox
+	NDxbV5M5u2Ger5P7VD714YDJWm2tG5GMvG1aWRGJ2W/PKzZ+qiQhR9/AEDlANNetJUKXe81/xmL
+	lE9wGID+/Tivzu4DdZx3EVILdGti8hedHiyUP4+Ih29B/tAtWU5CKJ6BPQSOQdzz7DNffaY0800
+	IG4WgP3YyLabDqtcnkoNJnU+wcvR50rkDuP2E3vn6ag+1ufKT4G6hpOfl/PVS55dlvDte/JnwT5
+	ZnFEefiIrp9vUhaummVqKWqw5nfBIZEKmndqetwh0SYZNSOlB9t7D5JU7P9ZiqE8RkIfNwOrllA
+	=
+X-Received: by 2002:a05:6000:46c2:b0:484:4769:18a4 with SMTP id ffacd0b85a97d-485872cd677mr30353937f8f.14.1789011003718;
+        Wed, 09 Sep 2026 20:30:03 -0700 (PDT)
+Received: from localhost.localdomain (dynamic-2a02-3100-b3d9-b901-0402-5aad-0ef4-88ac.310.pool.telefonica.de. [2a02:3100:b3d9:b901:402:5aad:ef4:88ac])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4858e239862sm42468266f8f.9.2026.09.09.20.30.02
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Wed, 09 Sep 2026 20:30:03 -0700 (PDT)
+From: Karl Mehltretter <kmehltretter@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Karl Mehltretter <kmehltretter@gmail.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Brian Masney <bmasney+clk@redhat.com>,
+	Jerome Brunet <jbrunet+clk@baylibre.com>,
+	Rex-BC Chen <rex-bc.chen@mediatek.com>,
+	linux-clk@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] clk: mediatek: reset: Fix device registration kernel-doc
+Date: Thu, 10 Sep 2026 05:30:00 +0200
+Message-Id: <20260910033000.15926-1-kmehltretter@gmail.com>
+X-Mailer: git-send-email 2.39.5 (Apple Git-154)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260909212146.3184077-2-cjd@cjdns.fr>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_031222_964107_E5A5F458 
-X-CRM114-Status: UNSURE (   5.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260909_203005_938637_82A60CDB 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,14 +106,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> +        gmac1: mac@1 {
-> +          compatible = "econet,eth-mac";
-> +          reg = <1>;
-> +          status = "disabled";
-> +          phy-mode = "rgmii-rxid";
+The comment for mtk_register_reset_controller_with_dev() names the
+older helper and documents np rather than dev. The new helper takes
+a struct device and obtains its device node internally.
 
-That is a very unusual phy-mode. Is there a reason this is used in the
-example?
+Use the actual function and parameter names and clarify that failures
+return negative error codes.
 
-	Andrew
+Fixes: 761bc64003e3 ("clk: mediatek: reset: Add new register reset function with device")
+Assisted-by: LLM
+Signed-off-by: Karl Mehltretter <kmehltretter@gmail.com>
+---
+ drivers/clk/mediatek/reset.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/clk/mediatek/reset.h b/drivers/clk/mediatek/reset.h
+index 562ffd290a22..b09cdcab0c4b 100644
+--- a/drivers/clk/mediatek/reset.h
++++ b/drivers/clk/mediatek/reset.h
+@@ -60,11 +60,11 @@ struct mtk_clk_rst_data {
+ };
+ 
+ /**
+- * mtk_register_reset_controller - Register mediatek clock reset controller with device
+- * @np: Pointer to device.
++ * mtk_register_reset_controller_with_dev - Register a MediaTek reset controller
++ * @dev: Device used to manage the reset controller resources.
+  * @desc: Constant pointer to description of clock reset.
+  *
+- * Return: 0 on success and errorno otherwise.
++ * Return: 0 on success, negative errno otherwise.
+  */
+ int mtk_register_reset_controller_with_dev(struct device *dev,
+ 					   const struct mtk_clk_rst_desc *desc);
+
+base-commit: 50d05c7c76c96b90462f24debacca971d2e86713
+-- 
+2.39.5 (Apple Git-154)
+
 
