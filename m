@@ -4,78 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6835C79FB6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 01:23:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D207CC79FB6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 01:56:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AAsqTJ7CKnx+oG0rSIucqIZneZ4vMWBTkfsllnhaszE=; b=fwUDTi8V26mkEOymXTzIVV0LbR
-	ookCTv9qUe+0QiFcipNPkQRvcxfrcHGvI0SalLKYI3ER78+87ibY0uvCKcOxBBY5VcoBtlMIIkWit
-	sgJwm2ZYq/z/r5q7YHRPWzbqHjN1O4L8dVPg2ICfP/ZVcmQJW6mmRito0xbWh0QdOuoXNgGiZFF+k
-	ALD9hHSniafa0WKdqqyZXwHQg6nEe98eqtBYBuZmVXcqrd490+jl4ESRsFEDUxfQnWlivtUYGt4rL
-	PmyJYFTBa4/y8LwITGkX0oWLsKZKMORefkIVgxsprPCgB7WNJB1nbfdMUkkVnqJl7U3dStqnPuSnS
-	ZLgyFzUg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xm/Gc1cC8N6IsTXyCFpfd0jD8c/83rvPSOAorHLZHHU=; b=NCeOxYTJXtJAIbUZBBkCp5Ou7S
+	aLMQTfv4ZT8qTnx4rzm3rvj5l03csF8SHMBOs6wA0Kc6U9vdtZXvWiwWVvlytbdJ98RNuQrSO9X5+
+	gxODjuhumiFHhIijZgx5zpU9nLoq/TBtXET5bt7oQwAqy5w00lbDPtQ2iuyF4agWmBlfGK/ywO9JT
+	wJja1NkBm1ecz9Ef4MR1HTWqRQme9ZQyNs5IJnMRnOpCqq0WM6LI+JIa8xVlPnx/brYEJ1uXFfQYj
+	zfD1knpCTSusbQsDTOynGpTAfY7AyP3+GCKidFfm2xV6PVCZmKMULAq5y0WnXqRe3wgCn/HtJYp16
+	FmoHBnYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4TVU-0000000DBBS-3K7h;
-	Thu, 10 Sep 2026 01:23:16 +0000
-Received: from mgamail.intel.com ([192.198.163.8])
+	id 1x4U19-0000000DDkW-1V67;
+	Thu, 10 Sep 2026 01:55:59 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4TVR-0000000DBAz-3zSr;
-	Thu, 10 Sep 2026 01:23:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1789003393; x=1820539393;
-  h=from:to:cc:subject:date:message-id:mime-version:
-   content-transfer-encoding;
-  bh=lRjClYP9yC3grhG0ovnCW4em2hdKxrj5BgNviM/1uQY=;
-  b=O59NA7n2/yCTRKCeYoEqy9OZrppkM29UAIEFw1KoPmJAAXZK3HBLPDHq
-   O3a9P0Fz1xox41t5EnCrgMVqc5QHs5YkEeJD4LmfP50QjNjdOIuZDoAlt
-   BTTowUyvWZBVwN4OVie2rkBM8f6955FzvVcs0f/EATdrLoTTJ8tP1VINA
-   SYzDbc/+x9eEeAmePsECtowf79dfDpYpo3fyGqv/q0dGzb1ZuUhx9Owxe
-   1VTY6i49sdp2bIs/NVxkeCSh1qfxWs6oTdy0zSfBdZl4EFFjtJ88ralE3
-   N+toKJBodBCnvOeBUMVCDOWLU3CBujZdnJvaKxnC8QMyjj+AwfAzZwh8J
-   A==;
-X-CSE-ConnectionGUID: nGGckVHoSO2gGNvV2UNxfw==
-X-CSE-MsgGUID: 9wpgoWffTOuyPQQjyndHbQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11900"; a="106958979"
-X-IronPort-AV: E=Sophos;i="6.25,271,1779174000"; 
-   d="scan'208";a="106958979"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Sep 2026 18:23:12 -0700
-X-CSE-ConnectionGUID: 92O01xzpT7azHbVodMzk+g==
-X-CSE-MsgGUID: xoEUSTzkTmqTtucpQdEIbA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,271,1779174000"; 
-   d="scan'208";a="276720893"
-Received: from junjie-desk-dev.bj.intel.com ([10.238.152.71])
-  by fmviesa005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Sep 2026 18:23:09 -0700
-From: Junjie Cao <junjie.cao@intel.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Huy Nguyen Dinh Quang <huynguyendinhquang@gmail.com>,
-	Devin Wittmayer <lucid_duck@justthetip.ca>,
-	linux-wireless@vger.kernel.org,
+	id 1x4U16-0000000DDjZ-0IUP;
+	Thu, 10 Sep 2026 01:55:57 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256:X25519MLKEM768)
+	 (Exim 4.100)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1x4U0t-000000006Qn-0xnF;
+	Thu, 10 Sep 2026 01:55:43 +0000
+Date: Thu, 10 Sep 2026 02:55:38 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Caleb James DeLisle <cjd@cjdns.fr>
+Cc: netdev@vger.kernel.org, dqfext@gmail.com, SkyLake.Huang@mediatek.com,
+	andrew@lunn.ch, hkallweit1@gmail.com, linux@armlinux.org.uk,
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+	pabeni@redhat.com, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH wireless] wifi: mt76: mt792x: treat 0xff ACPI SAR entries as no limit
-Date: Thu, 10 Sep 2026 09:23:00 +0800
-Message-ID: <acb947435fc78d5c06039c7bd5609c735468b0ee.1789002236.git.junjie.cao@intel.com>
-X-Mailer: git-send-email 2.43.0
+	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
+Subject: Re: [PATCH net-next] net: phy: mediatek: support MT7530 PHYs on
+ EN71221 MCM
+Message-ID: <aqIOGgVujIKT7H2H@makrotopia.org>
+References: <20260909213250.3184238-1-cjd@cjdns.fr>
+ <aqHlfmYa249e3HRM@makrotopia.org>
+ <7a3479c8-45cc-4b88-b111-c35d59f370e1@cjdns.fr>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <7a3479c8-45cc-4b88-b111-c35d59f370e1@cjdns.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260909_182314_036360_7675BDED 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20260909_185556_107343_A8B39A8A 
+X-CRM114-Status: GOOD (  26.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,75 +70,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some ASUS firmware carries 0xff in MTGS power slots. The driver narrows
-the byte to s8, so the slot reads as -1 in its 0.5 dBm units, wins the
-min() against the regulatory limit and caps every rate the driver
-programs. On an ASUS Zenbook 14 UM3406HA (MT7922) all six MTGS tables
-hold 0xff in every power byte, and txpower_sku shows tmac 3 on every
-supported OFDM/HT/VHT/HE rate against EEPROM entries of 25-39, under
-both the FR and the world regulatory domain. Huy Nguyen Dinh Quang saw
-the same clamp on a Vivobook S 14 M5406WA, with 5 GHz TX at ~40 Mbps,
-and proposed skipping the geo entry.
+On Thu, Sep 10, 2026 at 01:26:14AM +0200, Caleb James DeLisle wrote:
+> 
+> On 10/09/2026 01:02, Daniel Golle wrote:
+> > On Wed, Sep 09, 2026 at 09:32:50PM +0000, Caleb James DeLisle wrote:
+> > > The EcoNet EN751221 multi-chip module implementation of the MT7530
+> > > requires some additional configuration of the PHYs on startup.
+> > > The reason for this is not known, but it is possible that it has
+> > > to do with the fact that the EN751221 MCM implementation of the
+> > > MT7530 runs at an abnormal PLL frequency (362.5Mhz).
+> > > 
+> > > Detect whether the MT7530 PHY is attached to the MDIO bus of an
+> > > EcoNet EN751221 switch and if so, apply the necessary register
+> > > updates.
+> > > 
+> > > Co-developed-by: Matheus Sampaio Queiroga <srherobrine20@gmail.com>
+> > > Signed-off-by: Matheus Sampaio Queiroga <srherobrine20@gmail.com>
+> > > Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
+> > > ---
+> > >   drivers/net/phy/mediatek/mtk-ge.c | 61 +++++++++++++++++++++++++++++++
+> > >   1 file changed, 61 insertions(+)
+> > > 
+> > > diff --git a/drivers/net/phy/mediatek/mtk-ge.c b/drivers/net/phy/mediatek/mtk-ge.c
+> > > index 73d9b72f9d9e..42b06c40d703 100644
+> > > --- a/drivers/net/phy/mediatek/mtk-ge.c
+> > > +++ b/drivers/net/phy/mediatek/mtk-ge.c
+> > > [...]
+> > >   static int mt7530_phy_config_init(struct phy_device *phydev)
+> > >   {
+> > > +	int ret;
+> > > +
+> > > +	if (mt7530_phy_is_en751221_companion(phydev)) {
+> > Please introduce a `.match_phy_device` operation for both, actual
+> > MT7530 and EN751221, similar eg. to `ksz8051_match_phy_device` in
+> > micrel.c.
+> 
+> Sounds good, since this will certainly collide with
+> https://lore.kernel.org/netdev/20260827065930.2618729-2-cjd@cjdns.fr/ would
+> you prefer them in the same patch, or as a patch set? If you'd like I can do
+> this and the FE phy as a common patch set. Let me know what you prefer.
 
-Skip a geo entry whose power byte is 0xff. The MTDS entry is narrowed
-the same way on its way into the geo lookup, so give it the same
-treatment, and clamp the dynamic value plus offset at 127 so a no-limit
-entry cannot wrap.
+I'd do it one driver at a time, starting with mtk-ge.c, already adding
+the .match_phy_device logic so it would also avoid binding the MT7530
+driver to an ECONET_FEPHY.
 
-Fixes: f965333e491e ("mt76: mt7921: introduce ACPI SAR support")
-Link: https://bugzilla.redhat.com/show_bug.cgi?id=2515420
-Reported-by: Huy Nguyen Dinh Quang <huynguyendinhquang@gmail.com>
-Closes: https://lore.kernel.org/linux-wireless/20260827134820.2607530-1-huynguyendinhquang@gmail.com/
-Signed-off-by: Junjie Cao <junjie.cao@intel.com>
----
-Fed the Zenbook's MTGS bytes through the two lookups in a host build of
-these functions, once with a sane v2 MTDS and once with one full of
-0xff. Before: -1 on every range in every region, -2 under ETSI with
-the padded MTDS. After: the MTDS values with the sane table, 127 with
-the padded one. No MT7922 here; the Zenbook reporter has offered to
-test.
+The econet-fe-soc.c driver is much larger and may require more rounds
+to make all bots and humans happy, so I'd not have the independently
+useful mtk-ge.c changes depend on that.
 
- .../wireless/mediatek/mt76/mt792x_acpi_sar.c   | 18 ++++++++++++++----
- 1 file changed, 14 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
-index 946dd7956e4a..9f0ea3d23e0f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
-@@ -279,10 +279,18 @@ mt792x_asar_get_geo_pwr(struct mt792x_phy *phy,
- 	if (idx >= max)
- 		return dyn_power;
- 
--	geo_power = (band_pwr + idx)->pwr;
--	dyn_power += (band_pwr + idx)->offset;
-+	band_pwr += idx;
- 
--	return min(geo_power, dyn_power);
-+	/* Some OEM tables carry 0xff here; narrowed to s8 that is -1 and
-+	 * wins the min() below. Take it as no limit.
-+	 */
-+	if (band_pwr->pwr == 0xff)
-+		return dyn_power;
-+
-+	geo_power = band_pwr->pwr;
-+
-+	return min_t(int, geo_power,
-+		     min_t(int, dyn_power + band_pwr->offset, 127));
- }
- 
- static s8
-@@ -315,7 +323,9 @@ mt792x_asar_range_pwr(struct mt792x_phy *phy,
- 	else
- 		band = NL80211_BAND_2GHZ;
- 
--	return mt792x_asar_get_geo_pwr(phy, band, limit[idx]);
-+	/* 0xff: no dynamic limit, see mt792x_asar_get_geo_pwr() */
-+	return mt792x_asar_get_geo_pwr(phy, band,
-+				       limit[idx] == 0xff ? 127 : limit[idx]);
- }
- 
- int mt792x_init_acpi_sar_power(struct mt792x_phy *phy, bool set_default)
--- 
-2.43.0
-
+Dumping the PHY register space and comparing it with MT7530 could also
+help to indentify any better way than relying on the parent DT
+compatible which *is* a bit of a stretch (but could well be
+unavoidable, of course).
 
