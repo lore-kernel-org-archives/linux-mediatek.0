@@ -4,88 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CD59C79FBF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 16:53:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CD09C79FBF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 17:23:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=G/vbQHAhPT31Mmibdc9NJTWNHdvmxIIchs3BB/8irg8=; b=eMTHQT5l1l7zOPpn3I9ZVjUry6
-	ewRbeekysofiRgFcMW2fy7nbXpWQhbjqFV3RTTgjrBQKL1GIZdBkjNNJvrQzCy6x/txUVyyRFo0tY
-	BdrMszx1tEtmbvd79OhEYYfYHZe74qMcghkG1l65uIeRJAtknwIEDE7B+mRUULPfI2PXm9NMJ96fS
-	xdqLe70LUXT1W7BSlGnitzlDNAYjBFAULYl8SO8P594msxyN6JZPTsuT3U9xmFEs+IXMG2oGhc7pS
-	WRpdXFM5u0AuLxYLX335L8a9G/EG3nQAAvybghE2/5du6S/XLCaY6Qmc1J0hzHN49eTC/3EYk9DFJ
-	rFLyNQSQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QXCYnu9lQkfFUVZPWLXmxfPVjc+5rvAy8d0P0u627xU=; b=Uu5RO13ZyIlZ8rPa36+CrYMRsZ
+	5VYkIVdPIDvmQ0RpuiaT0Lpz8wktJq8slQSSCX9xRn1DObc6hXTLtjGWDT1OIQ7Noz+x/CG/c33H/
+	Z3LJEnGLT3K6xHVIMtz9U5TSwMw5p+Tyipc0Z+otU5WYamxpHEAqprTIwm9gf4VQ/dLexCtqPwNPY
+	XQlfp3UqhJTXBW9Dm1MhjFgCnafRZq7c/Trcjo2wR49yGJ99RsSp2g9KuYp2CnT2WR+epbTJnmKXU
+	z7Ac0RhRVB0loogch+3p0+I1P20rKTa6NJQvdyL3QICeoxpdJ0ZI7qiYLHDL65ENzQZxwJ1PJdBNN
+	ztx4gH4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4i1T-0000000F0Cp-2hxZ;
-	Thu, 10 Sep 2026 16:53:15 +0000
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+	id 1x4iUq-0000000F3rL-2lHx;
+	Thu, 10 Sep 2026 17:23:36 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4i1R-0000000F0C9-0Adn
-	for linux-mediatek@lists.infradead.org;
-	Thu, 10 Sep 2026 16:53:14 +0000
-Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-8534d507f59so7289884b3a.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 10 Sep 2026 09:53:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789059192; x=1789663992; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=G/vbQHAhPT31Mmibdc9NJTWNHdvmxIIchs3BB/8irg8=;
-        b=Z6e202R0M1aktL4LpPSJT25aANyJrvRrS+fVmEgYvnX5ZXXwfaxhXan8gypeCbbBHo
-         aVISD9iW44Eer6Dik1PCsJRcALbnADM4MRDP9cKQSZEarIr2LUDQIJPQav1DEs96QV/+
-         csFMB4JaxYtBdFhgGajn0RJJ7Xctdz8MKlB7IxAb5ifO2vO4mOEtFOzxM7NMnynAtZ+3
-         rvfEL7psDIZXGTesF7b3Ocqo7U73NyNOpo1b9ONYL+1TQlNahfWYb4BdVKMsDh3ZEHx5
-         SGPfTJTHof0r6qy+zFuznhMAeqVYOxpfnkIaMcIJdl6xCaxV5IzNXOVTtsia0L7xusgw
-         eQnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1789059192; x=1789663992;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=G/vbQHAhPT31Mmibdc9NJTWNHdvmxIIchs3BB/8irg8=;
-        b=Il+yDfs0MRWTM+D0dHh/vbVRQblawqzCUAfETlX4x81hlcN1rXtmZkbZtTWXbBGoGf
-         odBKcerMQqAamw1LMTVr0tcZ1/P2YDtp3i11x0PRSazDxdptFAqcQmsfleSmC2WHhXGX
-         wKs7fdiDIgrYCSo1yvPaU23M2X9LMdALd8iGD0z8EegyF/Oi7TbSucfulfFOAm8wsIGR
-         /pDxuO27+Woj/ky41uiMAAi27y3PI7e4cIXXTnm5AgNifbzn9F7wtiworptwYiK4yVUD
-         f9d/JYy9raELoaC2v93x6XijV0YcGG5J6RrfKVeSJr5HsOI6nDjfxj4JUHh/vyAVOSI1
-         eFsg==
-X-Forwarded-Encrypted: i=1; AKwUvBzE/4VrImK6rtqxWun3fsJY0v9weFi33CkDPKVZ3cVQxoAi0F1SpAVE8JXPwwGy6G6gCfj2YD4Tcu2EkyhuLw==@lists.infradead.org
-X-Gm-Message-State: AFuF++mxvzDSh7GswjKtzwwQJygFu05D9F7S4VwggJy7vEQaX++Ih0Tu
-	TN36+iTyBLSyM9xpgJRxvCDbU2YjiCvAq72v6mFszrSLjiUubWgzcWDQkstIOQ==
-X-Gm-Gg: AYBFou2dFWcSbuz7OnUTe7RkCAZuYRWGbnoW35SY7qXeSwxNiVM1A9S7rTCVPZA6Hew
-	YhWGN6OX018Y+zALZvW76nEmW0VQg2YhVADoRfnifwR2PMqAlcbGCx/uCEuGqFqoCN0GbgwQNmh
-	lXXN580zlZBx/h3Ynx/uQPrbHbEud7hAlIM6YNib3AkvfsQcI+2rluisnECq9PO6oYCaw35vEE3
-	jwUnz9SNWDUJJtDo9hiiaF2f7T3VE1FIjmMVOXe9F2HLFGD6G5j2i2cXKDRTBLUaW9SbEPGRNzs
-	bk4b2xPPiPtkOcfUZ7saO4JNZYtktDXzpe1UDeNtfT4FBX8SCv5SfTCYmBL0yuLroc7K//+WBXs
-	C6loVKPaR99tVK3qOFk+NzWDrqDPFX74MntB0eGB8MVcc0EfoLGjEv9t0R2QFcFglDiNS1AIjkO
-	blGnni3Vm6NCqzAlKKjXvogDRtBFzU3Mf85PxNINcWAMPeSTh7XCvEkEsL27pJ7AORWelP14m8y
-	4yNLZLUSrYE8Bf6z86zo40nKp9P
-X-Received: by 2002:a05:6a00:6d43:b0:869:201b:7386 with SMTP id d2e1a72fcca58-869201b7831mr9536931b3a.1.1789059191831;
-        Thu, 10 Sep 2026 09:53:11 -0700 (PDT)
-Received: from buffalo-ssd.taila54753.ts.net ([240b:253:4760:f400:1ebf:ceff:fe7f:5e0b])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-86153e3ac21sm8425743b3a.55.2026.09.10.09.53.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Sep 2026 09:53:11 -0700 (PDT)
-From: Akari Tsuyukusa <akkun11.open@gmail.com>
-To: matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: james.lo@mediatek.com,
-	linux-kernel@vger.kernel.org,
+	id 1x4iUo-0000000F3qg-2jQK;
+	Thu, 10 Sep 2026 17:23:34 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 274E1418EF;
+	Thu, 10 Sep 2026 17:23:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 469241F000FF;
+	Thu, 10 Sep 2026 17:23:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789061014;
+	bh=QXCYnu9lQkfFUVZPWLXmxfPVjc+5rvAy8d0P0u627xU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=E7+Y6Ka6Nk57kLrhxFXEi4lqtDIj42F6cFLdquLIJHRU3BJwdIl5V0ZIEKxF78yuT
+	 ygGgCU/Nf2GEDYamHUWHmWpPzd548bc7aOq2XIKfIgWuFgKCccHv2SFEKBOirMVB4J
+	 kNITA2qnZ29pb9Ba6A1dVLvO61W8x9RQTPgG6Dq8LeBwIJ7qE/0OuzUpv2mrWU1zJ3
+	 UcAdtUHCWQGw/gKu5YH7BdmnOIqNRBLqwiMMw2xSSORXDw0oggTagqKdfeVtwR+4RA
+	 v3C/d4cOwwS3614QJ7tGn1/G5IkfibO/8ojeAOmqVzH4IPPlTlEEfm0Q+TsHbL1AxO
+	 LQq2XCSthuphQ==
+Date: Thu, 10 Sep 2026 18:23:28 +0100
+From: Mark Brown <broonie@kernel.org>
+To: phucduc.bui@gmail.com
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Cezary Rojewski <cezary.rojewski@intel.com>,
+	Cyril Chao <Cyril.Chao@mediatek.com>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	Darren Ye <darren.ye@mediatek.com>, linux-sound@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Akari Tsuyukusa <akkun11.open@gmail.com>
-Subject: [PATCH v2 RESEND] soc: mediatek: pwrap: Remove obsolete NEED CONFIRM comments
-Date: Fri, 11 Sep 2026 01:52:53 +0900
-Message-ID: <20260910165253.378212-1-akkun11.open@gmail.com>
-X-Mailer: git-send-email 2.55.0
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] ASoC: mediatek: common: Propagate control and DAPM
+ errors
+Message-ID: <2a553332-735e-4372-8d75-2ed7d095bfc0@sirena.org.uk>
+References: <20260910114338.142682-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_095313_077436_51802109 
-X-CRM114-Status: GOOD (  11.05  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="FojIabTh4PEnaq7B"
+Content-Disposition: inline
+In-Reply-To: <20260910114338.142682-1-phucduc.bui@gmail.com>
+X-Cookie: Gravity brings me down.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,34 +78,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove the obsolete "/* NEED CONFIRM */" comments from the MT8195
-configuration. These values were previously confirmed during review,
-but the placeholder comments were accidentally left behind.
 
-Link: https://lore.kernel.org/all/2a117e5fe9fe0ece39e9165a463082ef42be973f.camel@mediatek.com/
-Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
-Link to
-v1: https://lore.kernel.org/all/20260522134522.368073-1-akkun11.open@gmail.com/
-v2: https://lore.kernel.org/all/20260525092437.29313-1-akkun11.open@gmail.com/
----
- drivers/soc/mediatek/mtk-pmic-wrap.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+--FojIabTh4PEnaq7B
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-index 0bcd8582637550..87bcbfa2d5f122 100644
---- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-+++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-@@ -2396,8 +2396,8 @@ static const struct pmic_wrapper_type pwrap_mt8183 = {
- static const struct pmic_wrapper_type pwrap_mt8195 = {
- 	.regs = mt8195_regs,
- 	.type = PWRAP_MT8195,
--	.arb_en_all = 0x777f, /* NEED CONFIRM */
--	.int_en_all = 0x180000, /* NEED CONFIRM */
-+	.arb_en_all = 0x777f,
-+	.int_en_all = 0x180000,
- 	.int1_en_all = 0,
- 	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
- 	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
+On Thu, Sep 10, 2026 at 06:43:37PM +0700, phucduc.bui@gmail.com wrote:
+> From: bui duc phuc <phucduc.bui@gmail.com>
+>=20
+> mtk_afe_add_sub_dai_control() currently ignores errors from
+> ASoC control and DAPM setup functions.
+>=20
+> Propagate these errors to the caller.
+
+mt8365-afe-pcm.c has:
+
+    {"HW_GAIN1_IN_CH1", "CONNSYS_I2S_CH1", "Hostless FM DL"},
+
+missing a Switch from the control.  I suspect there's other errors; this
+really needs to be tested before it can be applied.  Given the general
+quality of the driver here and the lack of anything constructive we're
+doing with the errors changes like this have high risk and low reward
+unless we're actually running the code.
+
+--FojIabTh4PEnaq7B
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqi548ACgkQJNaLcl1U
+h9ByLAf/YRDHKFMWDL4rpTtoEIQrI5nafwSGaOyH6yCyA57y9aVezzqFFkaQj7S8
++zrOPtx0U5/6ynt0fWoazqHxihGIJ7CswnlrQCYja9CC9YpsF7chr1d1rbWk6Np4
++MhIKL7+B44k4Tl1z5CHhjJwqvGMcgCIcPBYDWD3gQTIm3dMzTGyFTSUFmsgLAHK
+uqBPjvRq/gshHEM5VdTMFiBekdkYTJ63uHOHYtj0rSBd4sLc+M7txiLeUfPPyBF/
+rvqdMN6YVyWwG5Yn6aGyG3b2Y0W1r6nYaA62uSnIoeHvVdoTkpYaK0QiIEix0lls
+GzAaBBQIrJgchPzqh+Och5hH+bFFIA==
+=S+uQ
+-----END PGP SIGNATURE-----
+
+--FojIabTh4PEnaq7B--
 
