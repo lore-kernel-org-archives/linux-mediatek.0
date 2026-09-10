@@ -4,90 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F22F7C88E52
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 09:21:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A4C6C79FB9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 09:24:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eHMQBfB5CmorHjmhOruJ1owFc0hJtwTR38zIzgW0ppQ=; b=HiEsw9sZEaCVCNpKzM5r3PIvqA
-	sYT2rQrN+WSTJQURU5OG9ipCB1p6oCsQ0PNKskAq3vvJz143t5VbGDX2EEr9F7mDfzIYvM3PkfR8z
-	JFZdsxxwuL7sTE7GGjWZ6jqHDDKyh7VO+MIBb63dk87FRjQYgU5ezw+QPfXaAB7ofIwrenygcm/dA
-	shwCc5u+VA/tcsS03gVwoW8t8FwiCHyE5uKEvYXeJJXODzyDOccpGNiZR9JOF3WXAqbFyKMvrIUo6
-	n+DmpT0Vgysk+FIzl6+U/IpbJpQgflJPqfgpCIL1ct/LGjPWK+jJDhVzY+P0ZCO9HfSlD9CPjI90a
-	yAvtnHWg==;
+	bh=w5IUBekPAZ/2NT0M17tr2Jg2W82UzrBIpWtB1EfZbzQ=; b=fbCHoejpWvO9XksLfXZDr5xkoR
+	oL/03d26VbnQ+OT8EOA/iAyV0mabqYezg7MwEjekbTN5WJxbtBpPTWh4fe6tp5ev98v2BWIAY/eoy
+	lkAXNkr1n4TM4Uf2aig9HeWyY9TBM+iQ/CjD9pULpyx8xCv2ArAkYA88wnNR6EpsVMcjCvogfle4t
+	K0/NWRqWGFV9Dgyp27wpZiOEG/wwie4cS6/JVhzqplkryNrLNBCWmUsjit+xM09D8S3gqYsnLOnTV
+	UuQgz5Rl+jX3T9jf7jWXa/RxXEA46avovqn0HeAl/raeS+KOXgI6OpN5F9BzqoH7lDFz6hZBksdUd
+	ngQj9uKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4axz-0000000DrDt-33oc;
-	Thu, 10 Sep 2026 09:21:11 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x4b0l-0000000DsNL-13Il;
+	Thu, 10 Sep 2026 09:24:03 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4axk-0000000Dqky-4C6e;
-	Thu, 10 Sep 2026 09:20:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=eHMQBfB5CmorHjmhOruJ1owFc0hJtwTR38zIzgW0ppQ=; b=XBRBpSOyVqfVDIPlXHADYZM2FA
-	YuBwJeQMR+mn1hEls1RVCXfl1Q2hOVmM1P49jPTvepwEi0jYEKV52gGGQX64+4vknIhvWreQKITUs
-	OVExoZSv1frgSXi+X6GXyQPztYSjGzHuXlb///tDceWQ6zMS06sy/egH1WG0qOtvNyPi9kFg+d2O+
-	477JO1IYNjYs7Wj4pX5TP+NGVUgN/Xrl4MrNQVtGkZYyZdB6xSL1HXl5tUlCwUTOwtrVGkVYUTCLY
-	7UeU5lP+Z+6UtlTKYXnWDL3pEgP1I91GrkZfxLJic0udjaCtMjN/2iiXT2ErG4+IRIiQp472VgN5n
-	wGAT+2gg==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x4axi-00000002FkP-0h2r;
-	Thu, 10 Sep 2026 09:20:56 +0000
+	id 1x4b0j-0000000DsMQ-0jcq;
+	Thu, 10 Sep 2026 09:24:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789032052;
-	bh=ldi6Shky0O6c0vEROLxXRj05CZhkaRERiTZ6JwZW9KI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=IHfc3naU2sTdrlLccr5+DCLCIjJoWe0kUxXNXNQjEMoLK9PD0lsRO/puVNMdMO4Li
-	 RvFRmLy2MO/fxxmLdsyr03MYursnj9MsQdFhxeVPoXzsPPnopCcEVwL45ScuLkDVtV
-	 OhNFjYXPfb48P35ThW4YS7KZGzcWnm/JxoIRuD7o3keHKCC0ktpJx1D3qVcw8McO6K
-	 GdfMa4E5sFvUbFtmjc7rpt0Iv71jcPB6S0mC3rTP45vltbY1pl1DWqEwNTRE9FXOqh
-	 gqXOUJXfLyg/dvViu2Un13X3Cm586lJFmAcITHgPQ8pQKBT0Sr9I5tUw4pKZxF5aRj
-	 aE5rf0pgW2/ZQ==
-Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1789032239;
+	bh=lO8k/xsn9vJJ5dce2sGr/gdsViGjIJvXorKknr/5sps=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Az8d1rhUo17uOQhc71dhaEE2/xhUuVqKZFU2jsJXGj6zzmdUu0vv5IfPqtIn2uXEa
+	 PuGN14rcs/Nho2CLKqI5UbCVOuag1aft5jwFM4oyKSwR0wUTKdECpDJozQXuG80A5C
+	 GYzozCqc6/FLZj+45aO1o11ddToNbIJYL0FjwQpnCDILwBC6AbKidD5yG3bO4Bvkwt
+	 hqGPytp8V5855AXO6bPOF65il6//9ZX1/Qk3C8Qe6sPbdweJj3DZZkBocnDcNfFG2w
+	 l84/tKQpDr0qRjxKgVZz8WVoV7HSjdjzppuyAYJ8mnZDyTeBEIrZ+aHZzc6Bpc2nsp
+	 Wcp3VTZyTFu1Q==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 986C117E0D7F;
-	Thu, 10 Sep 2026 11:20:51 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: mani@kernel.org
-Cc: chunfeng.yun@mediatek.com,
-	vkoul@kernel.org,
-	neil.armstrong@linaro.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de,
-	justin.yeh@mediatek.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	kernel@collabora.com
-Subject: [PATCH v4 11/12] phy: phy-mtk-dp: Add PHYD Lane EN register mask to SoC data
-Date: Thu, 10 Sep 2026 11:20:37 +0200
-Message-ID: <20260910092038.48291-12-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260910092038.48291-1-angelogioacchino.delregno@collabora.com>
-References: <20260910092038.48291-1-angelogioacchino.delregno@collabora.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CFFA517E0CA6;
+	Thu, 10 Sep 2026 11:23:58 +0200 (CEST)
+Message-ID: <0c117dbc-facc-4465-a5e0-8fbb822d86a7@collabora.com>
+Date: Thu, 10 Sep 2026 11:23:58 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] clk: mediatek: reset: Fix device registration kernel-doc
+To: Karl Mehltretter <kmehltretter@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>,
+ Jerome Brunet <jbrunet+clk@baylibre.com>,
+ Rex-BC Chen <rex-bc.chen@mediatek.com>, linux-clk@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20260910033000.15926-1-kmehltretter@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260910033000.15926-1-kmehltretter@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_102054_447065_1E171CE3 
-X-CRM114-Status: GOOD (  13.19  )
+X-CRM114-CacheID: sfid-20260910_022401_366454_5414C415 
+X-CRM114-Status: GOOD (  16.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,77 +78,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation for adding support for the eDP PHY found in newer
-SoCs, transfer the register mask for PHYD_TX_LN_EN to SoC specific
-data.
+On 9/10/26 05:30, Karl Mehltretter wrote:
+> The comment for mtk_register_reset_controller_with_dev() names the
+> older helper and documents np rather than dev. The new helper takes
+> a struct device and obtains its device node internally.
+> 
+> Use the actual function and parameter names and clarify that failures
+> return negative error codes.
+> 
+> Fixes: 761bc64003e3 ("clk: mediatek: reset: Add new register reset function with device")
+> Assisted-by: LLM
+> Signed-off-by: Karl Mehltretter <kmehltretter@gmail.com>
+> ---
+>   drivers/clk/mediatek/reset.h | 6 +++---
+>   1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/clk/mediatek/reset.h b/drivers/clk/mediatek/reset.h
+> index 562ffd290a22..b09cdcab0c4b 100644
+> --- a/drivers/clk/mediatek/reset.h
+> +++ b/drivers/clk/mediatek/reset.h
+> @@ -60,11 +60,11 @@ struct mtk_clk_rst_data {
+>   };
+>   
+>   /**
+> - * mtk_register_reset_controller - Register mediatek clock reset controller with device
+> - * @np: Pointer to device.
+> + * mtk_register_reset_controller_with_dev - Register a MediaTek reset controller
+> + * @dev: Device used to manage the reset controller resources.
+>    * @desc: Constant pointer to description of clock reset.
+>    *
+> - * Return: 0 on success and errorno otherwise.
+> + * Return: 0 on success, negative errno otherwise.
+>    */
+>   int mtk_register_reset_controller_with_dev(struct device *dev,
+>   					   const struct mtk_clk_rst_desc *desc);
+> 
+> base-commit: 50d05c7c76c96b90462f24debacca971d2e86713
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/phy/mediatek/phy-mtk-dp.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
+Hey, thanks for the patch!
+It's almost perfect - just change the first line with:
 
-diff --git a/drivers/phy/mediatek/phy-mtk-dp.c b/drivers/phy/mediatek/phy-mtk-dp.c
-index 643666c454f4..30f9fa6e6b9b 100644
---- a/drivers/phy/mediatek/phy-mtk-dp.c
-+++ b/drivers/phy/mediatek/phy-mtk-dp.c
-@@ -220,6 +220,7 @@ struct mtk_dp_phya_imp_sel {
-  * @regs_ana_lane:  Register (layout) offsets for ana_lan
-  * @regs_dig_glb:   Register (layout) offsets for dig_glb
-  * @regs_dig_lane:  Register (layout) offsets for dig_lan
-+ * @mask_dig_tx_ln: Register mask for PHYD_TX_LN_EN field
-  * @val_dig_bitrate:IP Version specific register values for Bit Rate setting
-  * @ana_bias_r:     Internal resistance "R" Selection Settings (global)
-  * @ana_cktx_imp:   TX Clock Impedance Selection Settings (global)
-@@ -239,6 +240,9 @@ struct mtk_dp_phy_pdata {
- 	const u8 *regs_dig_glb;
- 	const u8 *regs_dig_lane;
- 
-+	/* Register masks */
-+	u32 mask_dig_tx_ln;
-+
- 	/* IP-Version specific register value arrays */
- 	const u8 *val_dig_bitrate;
- 
-@@ -355,10 +359,10 @@ static int mtk_dp_phy_configure(struct phy *phy, union phy_configure_opts *opts)
- 
- 		val = 0;
- 		for (i = 0; i < opts->dp.lanes; i++)
--			val |= FIELD_PREP(PHYD_TX_LN_EN, BIT(i));
-+			val |= field_prep(pdata->mask_dig_tx_ln, BIT(i));
- 
- 		regmap_update_bits(dp_phy->regmap, pdata->off_dig_glb + reg_dig_tx_ctl,
--				   PHYD_TX_LN_EN, val);
-+				   pdata->mask_dig_tx_ln, val);
- 	}
- 
- 	if (opts->dp.set_voltages) {
-@@ -422,7 +426,7 @@ static int mtk_dp_phy_disable_all_lanes(struct mtk_dp_phy *dp_phy)
- 
- 	/* Get mask of currently enabled lane */
- 	regmap_read(dp_phy->regmap, pdata->off_dig_glb + regs[DP_PHYD_TX_CTL_0], &val);
--	val = FIELD_GET(PHYD_TX_LN_EN, val);
-+	val = field_get(pdata->mask_dig_tx_ln, val);
- 	if (val == 0)
- 		return 0;
- 
-@@ -433,7 +437,7 @@ static int mtk_dp_phy_disable_all_lanes(struct mtk_dp_phy *dp_phy)
- 
- 		regmap_clear_bits(dp_phy->regmap,
- 				  pdata->off_dig_glb + regs[DP_PHYD_TX_CTL_0],
--				  FIELD_PREP(PHYD_TX_LN_EN, BIT(lane_num)));
-+				  field_prep(pdata->mask_dig_tx_ln, BIT(lane_num)));
- 	} while (val);
- 
- 	return 0;
-@@ -730,6 +734,7 @@ static const struct mtk_dp_phy_pdata mt8195_dp_phy_data = {
- 	.regs_ana_lane = mt8195_phy_ana_lane_regs,
- 	.regs_dig_glb = mt8195_phy_dig_glb_regs,
- 	.regs_dig_lane = mt8195_phy_dig_lane_regs,
-+	.mask_dig_tx_ln = PHYD_TX_LN_EN,
- 	.val_dig_bitrate = mt8195_phy_dig_bitrate_val,
- 	.ana_bias_r = 15,
- 	.ana_cktx_imp = 8,
--- 
-2.55.0
+* mtk_register_reset_controller_with_dev() - Register a MediaTek reset controller
 
+After which,
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Cheers,
+Angelo
 
