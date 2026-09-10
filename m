@@ -4,65 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33D9FC79FB9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 12:51:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C38ADC79FB9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 12:58:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wdDuwrNT5nqbnggT94bNnBal0P0MT94FqQjiRpDuoes=; b=jquKPYGNFTkmh++C1dbLaLSeCV
-	bAgNECsxBhyQPngb1kLz1IRS2ijCmpPLBk1pQZc7SRchJKGVCEAUu5nZ5YC6kg1fFRyppxrwv6MwX
-	pHaeX8m6L2HncuRoYPvwL3ZkDWlLi3UD0/exY+1WrcfJr2JW67lHCJO7Ye0O6isKtZ4DrKdDk1jD4
-	mzoNtKjHFrWkm5ASjAnRmmvHyX4FpYCkL2gQ8T2RMinKS1V2Coz1cOWg3/yclqXH+0PjpMrQHI/tu
-	oolvi3yIS4zCvtu2ziNVhQlFZcAJRssZRKnvlGujqGZGyKQt3QB0VcGJYfBYFxz8/s8MspwQ1wI6v
-	envCvjAQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4NZ9nNqE+pb8sFgTxYUMCE97tLV2sG+CG+J95kQTKcM=; b=4uNUj41TtFomr3wgdOtuK02qlz
+	7F2cckxpo0bz0rdjJ7zN+b6OFxqyYfuvWx3fRJPT0FBHFIA1jq/u6GfH6Ak/mnoUlfSe5++9Rzzhg
+	X9KYkBJet8p2y0En29eqcFSKUa7wI81YYSuyDDl5hmKXkH85phKIMHA4v98xLLTDpTrOZqEVh00XY
+	SnsPHIhHFoD+H2ODkihnIAt7CbZKY0xP45QTysRaVHHEALLkCRls16/TwTL/Oz152y6JpKiqyh+GU
+	sxkebkoPogIVIP63YOz9yqjG7/9MrUabUKCHFOMA0W+BGIXS8ywPXJl754JInx8W2zeej6LrTZ3TN
+	h1Yu2Qug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4eFP-0000000ENUi-02h7;
-	Thu, 10 Sep 2026 12:51:23 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x4eLs-0000000EOJZ-1krZ;
+	Thu, 10 Sep 2026 12:58:04 +0000
+Received: from mail-pj2-x10.google.com ([2607:f8b0:4864:39::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4eFN-0000000ENU9-3ULO;
-	Thu, 10 Sep 2026 12:51:21 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3D00F434BF;
-	Thu, 10 Sep 2026 12:51:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E1B91F00893;
-	Thu, 10 Sep 2026 12:51:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789044681;
-	bh=wdDuwrNT5nqbnggT94bNnBal0P0MT94FqQjiRpDuoes=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=k4BBfE6N9JhgZmKsYJCrLKT/4Kamlq6xyP9VaFLhV/nWH+q4kAcV8GbMRy2B28mEF
-	 4j1HBYtvEdO0cDfHz5p6MJ9dipXxOOFpV5GR/P9lE/uR9gzg42ib9Wy96guE6ScnEb
-	 ZCbGT18R+cZxOlNcG5R7U/7XiRQC+RsVMPvMs4ig5TAd/N3FOgV12yRpRfptAEK52I
-	 rZgPZBCl1tvaJvF0K0MrFFrRW/m93+0N3qFOgN2tT7p2H7nwgMdkx99AiLFwDnz+p6
-	 EGqtK0VvftGy6WjM06VGIz26Cv8kb3C3gAMuWM22koJbFbrysXNhxpw7gD+G9GFmZA
-	 JlH/1Zy66QQRw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id D0A04380CFEE;
-	Thu, 10 Sep 2026 12:50:19 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1x4eLp-0000000EOJC-10AC
+	for linux-mediatek@lists.infradead.org;
+	Thu, 10 Sep 2026 12:58:02 +0000
+Received: by mail-pj2-x10.google.com with SMTP id 98e67ed59e1d1-396ccafb74fso2368660a91.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 10 Sep 2026 05:58:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1789045080; x=1789649880; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=4NZ9nNqE+pb8sFgTxYUMCE97tLV2sG+CG+J95kQTKcM=;
+        b=KizNr/Rr3qWYvK7Rf5p9XpAppKxY4iPHjFlDb2ukDV9WI+M3H67MwZcAIVV6rtNEU+
+         Fx9GHG4VpYCy+6oa80hnJbVFVKXkcI2JESTwUd1pVd8XFGDaTr2C0f5HE8ix6M7ATMt/
+         kwI+hBqvMWCZxwfIA9hP0ai9Pf4ItKBKqzNfa5nuH0p+ZNZiNWdMt+bZCTYFr0X+gKPo
+         PAx7t0FToFtmw0CnvtS2rxcGlR6/wLGOctVzHC5IFxoPK1hCSN8X/50UO2zpj5J8p0sZ
+         nCwLP6XnYI8+8Q57z9sXqMtNmZFkquhII1Fqfya2Db9WignDjzsH3veGdUpzo5nHdC/i
+         7crQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1789045080; x=1789649880;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=4NZ9nNqE+pb8sFgTxYUMCE97tLV2sG+CG+J95kQTKcM=;
+        b=VNwM0XTbLUm/Tmu4LUhjVBTZQktTK3FWTzeMjnaSTXklsTrWqwdo2jPZNHUMhYeBxE
+         /kq2PNTVSKSEZvCdIshWVcjp3mJ4VEEvZ0UDn4CsvH/V6pu/iwndyUvbVakiFmjpjxPL
+         r4nqLUR0YB2TIKJjCef87zpShs+uU7EQfY/ElfO+xUO9EtDe51pvMAzon2bFx4hQ4Qzq
+         Jf7Kk8Cqxu7Z4meeXVhSU+zP7X5PPTLJBK67kndiy2y1daOIoHKcExJh+V33zc9VJqXH
+         tv5yFts9JdGzthCBZqMsU/FC4IXD7jNyHUNx09x9E3i1IuMATSTAYXV8neDSPr7wEXYW
+         +y0Q==
+X-Forwarded-Encrypted: i=1; AKwUvBx5PvKm48Y6GlyR5HYNIOsH0IqgSi5kq4vcQjuaEZeRJ9FIykbGFG/IctNG7BE+44bUSkAcOzCmEQ0pgtBgyg==@lists.infradead.org
+X-Gm-Message-State: AFuF++mpZyNBI7HPt2LhZxspkhJpSCtsZYfhMtuTit/6qK7rCWV+RKM4
+	3+/gGOr9qHH/Inq5DE7W1NRiePgMLi0IesLNiYaqjp1ZAvwYrMGdhdA/
+X-Gm-Gg: AYBFou2iWzLCsTslsSqePiBz1T/+KGuxH1WM6427axhoy3aXLxSDlpAQN+mHoQj+bvK
+	ld3acXrTVD/Ne7P6V9xo4VUqf7WUtMe12GCk1gUTnrYPjyBKWFsnHwh/uPRfuaIR5nOgoD7PHDh
+	G4Hm7G8L2jXgvkkPGGQhUZf+Z9brv2vg8vm9eZ4AjaB0LLP9LsvFATuhcHyEfQhiZy/7g5z+8IC
+	wxCuLuExbJeDH0MDMumo2bllMpQEo5gQEquKZeSPpXOkdKFbHLP7dbZTVzKzzaz+WS7JdaZgf5z
+	xIGltBhlyKGmi9mgJwsZBysTZcKuwJQmB46GVjw0v4hPt94s8UvOUoIY827anzJVo71Gnttktgg
+	JSRMmRhI3poQAniNAUhYbda+HquVmUP2H9g6KFcqUWyZc8tGtH/Bchs/S9ggy2XmgrgmIPCKxkX
+	tXWyedgCayVYGTLXbm1vlpe0NDKImCx4V4YUudDKs4kayZoWBDYb7HsfzoEByWY74N7b33+02h5
+	0SH5Fx+sOTDdna7UA4oz+CBUjxfLjZUVZBTvswL9rR15AyFGDrbyc3AIjQ9uETlMavQsgZbeN++
+	YzTml5H1g39u+aE=
+X-Received: by 2002:a17:90b:1d45:b0:38f:2168:b9cb with SMTP id 98e67ed59e1d1-39bac1d89b4mr18062671a91.9.1789045080229;
+        Thu, 10 Sep 2026 05:58:00 -0700 (PDT)
+Received: from phuc-desktop.. ([183.91.15.56])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39d7e77b1afsm4891592a91.5.2026.09.10.05.57.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Sep 2026 05:57:59 -0700 (PDT)
+From: phucduc.bui@gmail.com
+To: Mark Brown <broonie@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Cezary Rojewski <cezary.rojewski@intel.com>,
+	Cyril Chao <Cyril.Chao@mediatek.com>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	Dan Carpenter <error27@gmail.com>,
+	cassiogabrielcontato@gmail.com,
+	linux-sound@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	bui duc phuc <phucduc.bui@gmail.com>
+Subject: [PATCH 00/13] ASoC: mediatek: mt8189: Improve error handling
+Date: Thu, 10 Sep 2026 19:57:29 +0700
+Message-ID: <20260910125742.150902-1-phucduc.bui@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net v4] net: phy: mediatek-ge: disable EEE on the MT7530
- PHY
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178904461843.1411984.6387257251091474222.git-patchwork-notify@kernel.org>
-Date: Thu, 10 Sep 2026 12:50:18 +0000
-References: <20260908145213.3976508-1-vladislav.karmanov.dev@gmail.com>
-In-Reply-To: <20260908145213.3976508-1-vladislav.karmanov.dev@gmail.com>
-To: Vladislav Karmanov <vladislav.karmanov.dev@gmail.com>
-Cc: netdev@vger.kernel.org, andrew@lunn.ch, daniel@makrotopia.org,
- dqfext@gmail.com, SkyLake.Huang@mediatek.com, hkallweit1@gmail.com,
- linux@armlinux.org.uk, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, arinc.unal@arinc9.com,
- sean.wang@mediatek.com, olteanv@gmail.com, yangshiji66@outlook.com,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260910_055801_278565_D0303FFA 
+X-CRM114-Status: UNSURE (   6.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,31 +111,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+From: bui duc phuc <phucduc.bui@gmail.com>
 
-This patch was applied to netdev/net.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
+Hi all,
 
-On Tue,  8 Sep 2026 17:52:13 +0300 you wrote:
-> The MT7530 internal GE PHY advertises EEE by hardware default, but its
-> EEE support is defective: with EEE advertised, some link partners fail
-> to establish a stable link. On a 2-pair (4-wire) cable where both ends
-> advertise gigabit, 1000BASE-T training cannot succeed, and instead of
-> falling back to 100 Mbps the port loops, so no link or DHCP lease is
-> ever obtained. MediaTek confirms the hardware is the root cause (Landen
-> Chao, 2021): "EEE of the 10-year-old MT7530 internal gephy has many IOT
-> problems, so it is recommended to disable its EEE."
-> 
-> [...]
+This series addresses part of the error handling in the MT8189 AFE driver.
 
-Here is the summary with links:
-  - [net,v4] net: phy: mediatek-ge: disable EEE on the MT7530 PHY
-    https://git.kernel.org/netdev/net/c/ccbe7540e4aa
+It propagates errors from clock operations and runtime resume, validates
+clock parameters, and removes redundant error messages.
 
-You are awesome, thank you!
+Compile-tested only.
+
+Best regards,
+Phuc
+
+bui duc phuc (13):
+  ASoC: mediatek: mt8189: Return error for missing regmap
+  ASoC: mediatek: mt8189: Propagate APLL enable errors
+  ASoC: mediatek: mt8189: Propagate MCK enable errors
+  ASoC: mediatek: mt8189: Validate MCK ID
+  ASoC: mediatek: mt8189: Propagate reg_rw clock errors
+  ASoC: mediatek: mt8189: Use dev_err_probe() for clock errors
+  ASoC: mediatek: mt8189: Propagate runtime resume errors
+  ASoC: mediatek: mt8189: Remove redundant error message
+  ASoC: mediatek: mt8189: Propagate APLL errors
+  ASoC: mediatek: mt8189: Propagate MCLK errors
+  ASoC: mediatek: mt8189: Validate sysclk frequency
+  ASoC: mediatek: mt8189: Propagate TDM clock errors
+  ASoC: mediatek: mt8189: Validate TDM MCLK frequency
+
+ sound/soc/mediatek/mt8189/mt8189-afe-clk.c | 136 +++++++++++++++------
+ sound/soc/mediatek/mt8189/mt8189-afe-pcm.c |  49 +++++---
+ sound/soc/mediatek/mt8189/mt8189-dai-i2s.c |  17 ++-
+ sound/soc/mediatek/mt8189/mt8189-dai-tdm.c |  17 ++-
+ 4 files changed, 155 insertions(+), 64 deletions(-)
+
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.43.0
 
 
