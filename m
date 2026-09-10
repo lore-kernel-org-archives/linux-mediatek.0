@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 169C3C79FBF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 09:20:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 622D0C79FB9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 09:20:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8lRmt2FF1YGj6+uuGzHWbmBj1AnRO1YcE+HrRaa1fS8=; b=NlTACJkUihMjSFNOy3v15DsfdC
-	HoiI1hyu7Qg03rg87wm3AQqOIKxYQFyPeDiNt7BN2Gf0n6HoUrBhvst8+YyGf5fYBD2i8bFXKu9sJ
-	0ZxbYaTmmNYFa8u4cKaIarzuSrOboWkEeNXsvtseHNn/yA9/Kb+fkg7DR6F+QjMUipX1uyIhqfDuC
-	aRXAwhZmRt6Oyh4AL8QSgLtPNbC2Oy1GzynC0+lYYStCxuIX5X468k6/TYlrON3KCh3Sb719t1TFJ
-	j6sDAF/QBuhO9pqzj+F8jBJfL0/nXReBVhSQ+nYgrTEfIXpUPk/fhyDGXkKpsgSwy15wc2PCZiFut
-	fsuAntXw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KQSmtkir2nPtNoSUedUIRbl1m78o17ChN5qqTLjhAfk=; b=tP/+wu0sElCZpYEnBFeW+OGRVb
+	tSnJnxFC7C2jkScGPO6nh4HDlhq005Rzj0LeMaqhSCFsCeiKPBFs8BoTKERIh39dHBagISIrvWIBl
+	8xfuCxHJiEhXj+sr/s6kzG+UkJPlYXIJBlHUUFT9FAm//9QrNG6QCBBypMATenkvDCoI/MtPtmHZ6
+	X/c2dJSLMEH3zzmY2JnkgWkc7TMwuMhTrn4puBpxH1LuvbyfXgOBSKZXSdykH5kFONmVfRTB0CWoo
+	AVFIRzc4P8K7dMDCDDzBrem0DU8RbwkjMp8tWQfgI4C43D6Fn0YDc7lDeMoOw2mln6RJHQd+MoueO
+	DQDNH6zA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4axg-0000000DqfW-2eHU;
-	Thu, 10 Sep 2026 09:20:52 +0000
+	id 1x4axk-0000000DqkM-0WKH;
+	Thu, 10 Sep 2026 09:20:56 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4axb-0000000DqZ7-0oUS;
+	id 1x4axZ-0000000DqYb-3fzW;
 	Thu, 10 Sep 2026 09:20:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789032044;
-	bh=7M4OyRRdXWN6zlejUXbLoDyxatY4nV5UlDgs/bPRF7M=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=bST5GSzmW7BUAxxZaeGpUVPKMjDiBZKD+oadn6oJIrbx3J2296otc0TYjV1xieetp
-	 TbZbpeVNZW12iGbPZVrIpzRhj1/h4vbeIDzLJPVmEvbb5v5wyU3Nf+ANW6ni/fCMAl
-	 0RHmJ5QjGDVSlHGcC24bweCXi1aGPiCm7JVSD3pptbFuM+q4XuY9E+WQ5ht4Dv0mZx
-	 P0XCq2kDbWp28kJhtWe5IGrqd1HU+v4u6+P/27J+ljwDZxP4z9+Ld0Z+UZwCIdIFjV
-	 hTIZ9mVKzYY+5AdqIRqum309jNzzKn//lv7MDP4e7ChwPnD525xXs2A04/S8SZL8tE
-	 PWwjbtOWtzxsw==
+	s=mail; t=1789032042;
+	bh=kOX7qxdoIaNGQlJqEVTvsO2lJxLSfimYQdTf/38st6Y=;
+	h=From:To:Cc:Subject:Date:From;
+	b=U3LPU7FqStDtB5+V9vaGVzVRaJJnMV+/gztlnhvBraOeJ5ARio0gSxVaS8fvoKFUx
+	 Ib26O6Y6fOcJWuL6ex/ERGRqSX/iKmGy9mMf52YJPm6Cnd09WkVpDJXk/76UPnThTS
+	 AQi69cyYEwjx72nD7iXDDJnzH80GJk6onXFMmTrgEvnvubTCF2x+hhn1G0mMHhLMax
+	 a0f41u1W3zvt8YGYGE9eU0cjCQ6RwjhepjaaEPkA921oUF06rFqSp44GhldlotjPyU
+	 P0NO8e1D7SblJQbPC5ctg0ZW156gmzc8zcHRWIlssJXYF+Uml2OcXPrWeW300w6GbG
+	 F8h6Rxf12Kl6g==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 946E817E0C7E;
-	Thu, 10 Sep 2026 11:20:43 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C168D17E0917;
+	Thu, 10 Sep 2026 11:20:41 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: mani@kernel.org
 Cc: chunfeng.yun@mediatek.com,
@@ -62,19 +62,16 @@ Cc: chunfeng.yun@mediatek.com,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	dri-devel@lists.freedesktop.org,
-	kernel@collabora.com,
-	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
-Subject: [PATCH v4 02/12] phy: phy-mtk-dp: Rename regs to regmap in struct mtk_dp_phy
-Date: Thu, 10 Sep 2026 11:20:28 +0200
-Message-ID: <20260910092038.48291-3-angelogioacchino.delregno@collabora.com>
+	kernel@collabora.com
+Subject: [PATCH v4 00/12] PHY: MediaTek DP PHY refactor and MT8196 eDP
+Date: Thu, 10 Sep 2026 11:20:26 +0200
+Message-ID: <20260910092038.48291-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260910092038.48291-1-angelogioacchino.delregno@collabora.com>
-References: <20260910092038.48291-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_022047_381343_94E6206E 
-X-CRM114-Status: GOOD (  11.39  )
+X-CRM114-CacheID: sfid-20260910_022046_350548_D672564B 
+X-CRM114-Status: GOOD (  18.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,83 +86,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation to perform further cleanups and to extend the
-driver to support more SoCs, rename the `regs` member to `regmap`
-to improve readability, as this is a common name across many
-kernel drivers for a struct regmap.
+Changes in v4:
+ - Removed error checking from all regmap_(bulk_){read,write} calls
+   as those are on MMIO and can't fail (Mani)
+ - Changed some of the error prints in mtk_dp_phy_get_one_cal_para()
+   to dev_err_probe() (Mani, Sashiko)
 
-Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/phy/mediatek/phy-mtk-dp.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+Changes in v3:
+ - Added missing bitfield.h, pm_runtime.h includes (Sashiko)
+ - Set calibration data before registering PHY (Sashiko)
+ - Enable PM Runtime before creating PHY device (Sashiko)
+ - Continue poweroff if some write fails, but still return failure
+   as that would be a partial poweroff anyway (Sashiko)
+ - Added zero driving params to fix default calibration data setting (Sashiko)
+ - Added NULL check on device_Get_match_data (Sashiko)
 
-diff --git a/drivers/phy/mediatek/phy-mtk-dp.c b/drivers/phy/mediatek/phy-mtk-dp.c
-index d7024a144335..bf7b3a95e72d 100644
---- a/drivers/phy/mediatek/phy-mtk-dp.c
-+++ b/drivers/phy/mediatek/phy-mtk-dp.c
-@@ -79,7 +79,7 @@
- 				 XTP_LN_TX_LCTXCP1_SW3_PRE0_DEFAULT)
- 
- struct mtk_dp_phy {
--	struct regmap *regs;
-+	struct regmap *regmap;
- };
- 
- static int mtk_dp_phy_init(struct phy *phy)
-@@ -94,13 +94,13 @@ static int mtk_dp_phy_init(struct phy *phy)
- 		DRIVING_PARAM_8_DEFAULT
- 	};
- 
--	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE0_DRIVING_PARAM_3,
-+	regmap_bulk_write(dp_phy->regmap, MTK_DP_LANE0_DRIVING_PARAM_3,
- 			  driving_params, ARRAY_SIZE(driving_params));
--	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE1_DRIVING_PARAM_3,
-+	regmap_bulk_write(dp_phy->regmap, MTK_DP_LANE1_DRIVING_PARAM_3,
- 			  driving_params, ARRAY_SIZE(driving_params));
--	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE2_DRIVING_PARAM_3,
-+	regmap_bulk_write(dp_phy->regmap, MTK_DP_LANE2_DRIVING_PARAM_3,
- 			  driving_params, ARRAY_SIZE(driving_params));
--	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE3_DRIVING_PARAM_3,
-+	regmap_bulk_write(dp_phy->regmap, MTK_DP_LANE3_DRIVING_PARAM_3,
- 			  driving_params, ARRAY_SIZE(driving_params));
- 
- 	return 0;
-@@ -131,10 +131,10 @@ static int mtk_dp_phy_configure(struct phy *phy, union phy_configure_opts *opts)
- 			val = BIT_RATE_HBR3;
- 			break;
- 		}
--		regmap_write(dp_phy->regs, MTK_DP_PHY_DIG_BIT_RATE, val);
-+		regmap_write(dp_phy->regmap, MTK_DP_PHY_DIG_BIT_RATE, val);
- 	}
- 
--	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_PLL_CTL_1,
-+	regmap_update_bits(dp_phy->regmap, MTK_DP_PHY_DIG_PLL_CTL_1,
- 			   TPLL_SSC_EN, opts->dp.ssc ? TPLL_SSC_EN : 0);
- 
- 	return 0;
-@@ -144,10 +144,10 @@ static int mtk_dp_phy_reset(struct phy *phy)
- {
- 	struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
- 
--	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_SW_RST,
-+	regmap_update_bits(dp_phy->regmap, MTK_DP_PHY_DIG_SW_RST,
- 			   DP_GLB_SW_RST_PHYD, 0);
- 	usleep_range(50, 200);
--	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_SW_RST,
-+	regmap_update_bits(dp_phy->regmap, MTK_DP_PHY_DIG_SW_RST,
- 			   DP_GLB_SW_RST_PHYD, 1);
- 
- 	return 0;
-@@ -176,7 +176,7 @@ static int mtk_dp_phy_probe(struct platform_device *pdev)
- 	if (!dp_phy)
- 		return -ENOMEM;
- 
--	dp_phy->regs = regs;
-+	dp_phy->regmap = regs;
- 	phy = devm_phy_create(dev, NULL, &mtk_dp_phy_dev_ops);
- 	if (IS_ERR(phy))
- 		return dev_err_probe(dev, PTR_ERR(phy),
+Changes in v2:
+ - Fixed register offsets for ANA phy in MT8196
+ - Set/clear FORCE_VOLT_SWING_EN bit when configuring and resetting
+   the voltage swing registers
+ - Fixed endianness issue in call to nvmem_read_u16 (Sashiko)
+ - Added early exit during lanes disablement if none are enabled to
+   avoid out-of-bounds bitwise shift (Sashiko)
+ - Removed useless call to pm_runtime_get_sync() in probe(), which
+   also fixes issues pointed out by Sashiko
+ - Fixed wrong dig vs ana register array usage in power_on/off (Sashiko)
+
+
+This series performs major refactoring on the MediaTek DisplayPort PHY
+driver, makes it probe with devicetree instead of getting registered
+by the mtk_dp DRM driver, adds power_on/off() callbacks, and honors
+the phy configure opts' set_lanes and set_voltages for, respectively,
+varying the number of lanes and setting the voltage pre-emphasis and
+swing on the PHY, for each lane.
+
+This driver now also properly gets the PHY (EYE) Calibration Data from
+NVMEM (eFuse array) if provided, instead of getting it (improperly)
+injected by the mtk_dp driver.
+
+Additionally, all of the driving parameters calculations and most of
+the other register definitions were refactored to greatly enhance the
+human readability of this code.
+
+As a last step, this also transfers the register offsets for both the
+digital and analog phy registers in arrays assigned to soc specific
+data, in an effort to both introduce support for new minor revisions
+of the MediaTek DisplayPort PHY and to have a clearer view of the
+register related differences between those (for example, it is easily
+understandable that the analog part remained exactly the same between
+MT8195 and MT8196, but the digital part gets a slight update).
+
+Speaking of which, as a last step, this also adds support for the
+MT8196 SoC (and its derivatives), which uses this PHY only for its
+Embedded DisplayPort (eDP) IP (spoiler: the DP one seems to be way
+too different and requiring an entirely new PHY driver).
+
+In this state, this driver can also easily support the MT8189 SoC
+with a few lines of code: even though I do have clean code to add
+support for this one, I was not (*yet*) able to test it on upstream
+based kernels, and for this reason I decided to leave that one out
+for now (but it's coming later for sure).
+
+NOTE!
+Despite all the apparently breaking changes in the refactoring, full
+compatibility with older MTK_DP driver and with old devicetrees was
+retained and carefully tested on multiple platforms!
+
+P.S.: I am aware of the BUILD_DRIVING_PARAM_0( 0, 2, 4, 7) checkpatch
+warning and I didn't fix it in bigger favor of human readability.
+
+AngeloGioacchino Del Regno (12):
+  dt-bindings: phy: Document MT8195 and MT8196 DisplayPort PHYs
+  phy: phy-mtk-dp: Rename regs to regmap in struct mtk_dp_phy
+  phy: phy-mtk-dp: Allow probing with devicetree match
+  phy: phy-mtk-dp: Migrate register offsets to SoC specific pdata
+  phy: phy-mtk-dp: Implement power_on and power_off PHY callbacks
+  phy: phy-mtk-dp: Support set_lanes in configure and properly cleanup
+  phy: phy-mtk-dp: Support setting volt swing and preemphasis values
+  phy: phy-mtk-dp: Add support for digital and analog calibration
+  phy: phy-mtk-dp: Rewrite and document default driving param macros
+  phy: phy-mtk-dp: Add bitrate register val definitions to SoC data
+  phy: phy-mtk-dp: Add PHYD Lane EN register mask to SoC data
+  phy: phy-mtk-dp: Add support for MT8196 eDP PHY
+
+ .../bindings/phy/mediatek,mt8195-dp-phy.yaml  |  77 ++
+ drivers/phy/mediatek/phy-mtk-dp.c             | 832 ++++++++++++++++--
+ 2 files changed, 812 insertions(+), 97 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/phy/mediatek,mt8195-dp-phy.yaml
+
 -- 
 2.55.0
 
