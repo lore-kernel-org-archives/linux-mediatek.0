@@ -4,77 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54AE8C79FB9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 13:30:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FA81C79FB9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 13:32:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lTPH6qWe594p9gs6pEEJP8z1idhrLKnyX6qfHun7fqM=; b=Fk+MLFh6dHTvHC2+MnrcwR7mq+
-	QOKnA+TZInpVl+p0hM9RiI48PMIjqEDywTFpcVV19l4GqyPi7zeioB905MkbOv7Ll0Q4SlWItADME
-	jNlTzj6uqxmVcXbBE/r80pck0XiDf5zWG1FF8bt8ZjM+zza/F/wQzvQz2odNRtpwSwFh4o/887B8C
-	1/LM1/62JzXxatpcfPmYjbBtgkcSEewVUK3hWkKa9THcLZp869eq05KeFy1MysGUivUI41WgD7i5S
-	swfEj7l+kRWY5n2YEyPOl2HJgopepNRNLd/766xRlnNAxSbWaPFsXDZ62wmS52mh4nmo/xKXcmm6C
-	FDgZCtyQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/ndI1o0tF4rBbBQihF/KpyjTjK7B3nvas+X0LJj+FFg=; b=v19u28ud/41+Wk/6nxRlvKXFOm
+	3bqe+eO8XCY/ksvkHKLRWIypYUUQWFnXZSecsF7RGD2dLUrl9ht62dkj0llkxV5qbEsAQApAc1PDh
+	tMc/hGTeuCQlAbwkxLdnQ7us5UcWdW4zSaveB+9+UhjGvYMaTfP6YNP/DqElZ0bARZFEG4q5+hik0
+	uNxaMzOo02/bZC1v7P/uoTCZJCYUtPza9v8vAP/8emyrPW5J+fAY7kgtYFSMbu2O8cVNQiuUCR8Vx
+	N4rfrg4Y4Ru7UtKSlCmpK4CZg+h66QMyH1VAFbFLf3m5MVzSe1dy6usJPbOjIlim5InYevinUUxMo
+	c/cKVUiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4erO-0000000ET9O-26CS;
-	Thu, 10 Sep 2026 13:30:38 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x4etH-0000000ETgP-0DO5;
+	Thu, 10 Sep 2026 13:32:35 +0000
+Received: from mail-ed2-x10.google.com ([2a00:1450:4864:33::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4erC-0000000ET09-28La;
-	Thu, 10 Sep 2026 13:30:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id AE97C447B8;
-	Thu, 10 Sep 2026 13:30:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 927C6C2BCFA;
-	Thu, 10 Sep 2026 13:30:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1789047025;
-	bh=Xln+3KgYAhViUK6FrJlzb7tWSxGhjzGMjzeQxcxn7yw=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=W+Ol8hOhhuvQ6UiPosVefOjLDMPXo02Njz0JOKz9LX810vCoXcGlTctOGjOAL+WF8
-	 ga0834qK8NEgGSqpuv8PCT6sijpjPYShBdTUJfpmbcW3R/YQziIrqqIUD7ivrX03Z8
-	 DuF9F+I4Sp6QkKqFtyXetr32+MRgKuTTnUlMfgHCRDXBLrA5cOZ60er3SqQhVfl7Bs
-	 1SwMbWztKBNZRcO08jCDpEXWpMcVqx6M2ss4bfTUG6jX85jCH14VaY3ZnU57qYTmhD
-	 DRQFhhoQBvy5CdaoYkW6/fVAZYVWLoye2NiWxLyQE08dJi/WW5c2W5ranA6ozE6sdq
-	 pjUzu0OqDjmIg==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7E326C88E45;
-	Thu, 10 Sep 2026 13:30:25 +0000 (UTC)
-From: Zakariya Hadrami via B4 Relay <devnull+zkh.mailbox.org@kernel.org>
-Date: Thu, 10 Sep 2026 15:29:15 +0200
-Subject: [PATCH v5 4/4] ARM: dts: mediatek: Add basic support for Amazon
- ford board
+	id 1x4etE-0000000ETeG-0fVC
+	for linux-mediatek@lists.infradead.org;
+	Thu, 10 Sep 2026 13:32:33 +0000
+Received: by mail-ed2-x10.google.com with SMTP id 4fb4d7f45d1cf-6a6249b76a8so2315909a12.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 10 Sep 2026 06:32:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1789047150; x=1789651950; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=/ndI1o0tF4rBbBQihF/KpyjTjK7B3nvas+X0LJj+FFg=;
+        b=it3ga0la+xdnGRVIzv443xdbDVkBDg/jneDHrOilWLkGGnQEH6p50M4jT8oF9qgWju
+         9j+zB3NoEmb3RidC/NhFgASPWvcNFvQMiX1Mu2eq2xFFSvsuS81yj3uUa+pwa1O0wbT9
+         BqW2lu/PBSRKsnFCy31SNnFs89w4Wu587/d9dCm7ROMPlEJAOSwU7qK5N6OAST1ZDegZ
+         rGaxCg97VvN+Rdp+FuGE6Vqr7rJsaTa2SRCoB4d7a/Jwpm/MIpgm3Z2CeWBTtIWjrKan
+         CAR/JEOg3tq1kHpyvRPWzWAQh4J9a3SBSSIMIVo5oa2icIJUrjXk6VI9ceaWzIgb5JuJ
+         v8fg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1789047150; x=1789651950;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=/ndI1o0tF4rBbBQihF/KpyjTjK7B3nvas+X0LJj+FFg=;
+        b=Wkf+LCr/nwDN7swzyx6o/q4aqKqp8KcbRnPkAP2ZFSHprCvmMEkNGqwKMwmV8ctRro
+         fq8hJ5LC6m3NNypVgc2CeTK99I5rf22XaLw8ddWDYifpRHg/GXPTFs5HOVP9LMxam8dT
+         FXCVfwBA2IV0r+o4F1I0p1h06X09sEHaZ09qQOC1upaeLVI4y7ZOa7jZs5bk3xw1c4UQ
+         61GIhgdK0sfbIFHn0HO2Sjv2/q4RA8l2R1/W+t+769mUJveacipUgz0j12xlMo0/aigT
+         FPbOG8nqtTcfBaUvdkFWaX6+Zaj2CFhXNhz7mS+8wIjZ9/v8J3q5X6FiB0Bw1pZyUjtk
+         NdjQ==
+X-Forwarded-Encrypted: i=1; AKwUvBw5YeZFbQk05T5X2bz3eTsCC0X17VNvi4bzQ4KE5USqnW1uu7C3PeNmzzCHxc3F8lYQ9k8zkwT3wcBTQsnBDw==@lists.infradead.org
+X-Gm-Message-State: AFuF++kXlA4tl3Ssl8+nyS7c+fuZus4vKyFQFssRy84vkp/a7xg4w0YU
+	AiXbCnpmnJx6puakbBH2CfECgNToXeQU+bI2D236m4ZY+ivgFndl/6uU
+X-Gm-Gg: AYBFou3a/gPbiRqh1zqY9Ekyl2kHvQJ0ug5TA82o7cEp8e0fGe9Zdxg8TFwV/fWVwYf
+	XI4AwVD5gcTRpc1fXBJpm3FzQ9D+6w+vqBmId1fKut4SS93P/7Id5FCJEGjvRuZ0W1KgYM04sSg
+	2wwRf21IGm4Gm6DERNNL/a8y0Cb9hasQCFR9CKfoWNm6DFffsG2/KQmgtwR2z8uU9dBK4fM478o
+	QZl/9bmlHBiSgpdz/zG8BCJatiBDtKfypgzmBLwP54DsZclaClC7mbtW/ZzicNlNjn0MLUjuCnt
+	3oNBLW6owv3x+Ep80WvuRg3yZHrImaudixPn3aFEdeRnNAUZu21GgASrB/2huEWSPcspNacegEv
+	DjQQVBJg+lx5e9sSbyTqWdrKi/PvyJXTsmvWLhVNp27QzFcyicN7Bn++lL64GhKl//xBdgEBruf
+	b7sdKrxSNuCqYLu6ZmeXYgV9qDF2eV3JWIUQ1TP0P2S0XJUVUGTZxA0g5flfRl/65QSF8=
+X-Received: by 2002:a17:906:99cb:b0:c25:62db:772b with SMTP id a640c23a62f3a-c2941868ad6mr336284266b.7.1789047149946;
+        Thu, 10 Sep 2026 06:32:29 -0700 (PDT)
+Received: from localhost ([2c0f:3d00:6be:8900:ce5e:9212:ea4b:f30])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c260d581f51sm945616266b.42.2026.09.10.06.32.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Sep 2026 06:32:29 -0700 (PDT)
+Date: Thu, 10 Sep 2026 16:32:25 +0300
+From: Dan Carpenter <error27@gmail.com>
+To: phucduc.bui@gmail.com
+Cc: Mark Brown <broonie@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Cezary Rojewski <cezary.rojewski@intel.com>,
+	Cyril Chao <Cyril.Chao@mediatek.com>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	cassiogabrielcontato@gmail.com, linux-sound@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 02/13] ASoC: mediatek: mt8189: Propagate APLL enable
+ errors
+Message-ID: <aqKxadkfX9Tqx8JR@stanley.mountain>
+References: <20260910125742.150902-1-phucduc.bui@gmail.com>
+ <20260910125742.150902-3-phucduc.bui@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260910-mt8127-amazon-ford-basic-v5-4-3cb9eeaffd5c@mailbox.org>
-References: <20260910-mt8127-amazon-ford-basic-v5-0-3cb9eeaffd5c@mailbox.org>
-In-Reply-To: <20260910-mt8127-amazon-ford-basic-v5-0-3cb9eeaffd5c@mailbox.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, 
- Wim Van Sebroeck <wim@linux-watchdog.org>, 
- Guenter Roeck <linux@roeck-us.net>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-watchdog@vger.kernel.org, zkh1@proton.me, 
- Zakariya Hadrami <zkh@mailbox.org>
-X-Mailer: b4 0.15.1
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1789047024; l=2198;
- i=zkh@mailbox.org; s=20260908; h=from:subject:message-id;
- bh=DKMWzeIWrDdE5NxRFxhkopW7K+NuB7yjRCdlYC4XOK8=;
- b=vJS8OzFINpJOzA+dvIdsjqg2jAzrd/LlslT+hjVdFBKY17l7Mpm3LMA+KfGvey69miiTyqSl/
- fWmKfqr+KAUAozAz6KDR9PKFrNt/LVlLRgX3+fVnTNbylEDo8Nvfi64
-X-Developer-Key: i=zkh@mailbox.org; a=ed25519;
- pk=up24Xn4ScFKugfT4EJru/UQAS7JOIN+DSQqro+a05T4=
-X-Endpoint-Received: by B4 Relay for zkh@mailbox.org/20260908 with
- auth_id=1015
-X-Original-From: Zakariya Hadrami <zkh@mailbox.org>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260910125742.150902-3-phucduc.bui@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260910_063232_231772_EFC5F4A8 
+X-CRM114-Status: GOOD (  17.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,97 +107,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: zkh@mailbox.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Zakariya Hadrami <zkh@mailbox.org>
+On Thu, Sep 10, 2026 at 07:57:31PM +0700, phucduc.bui@gmail.com wrote:
+>  sound/soc/mediatek/mt8189/mt8189-afe-clk.c | 78 ++++++++++++++++------
+>  1 file changed, 56 insertions(+), 22 deletions(-)
+> 
+> diff --git a/sound/soc/mediatek/mt8189/mt8189-afe-clk.c b/sound/soc/mediatek/mt8189/mt8189-afe-clk.c
+> index 63e03a40dbbe..a901be97e75f 100644
+> --- a/sound/soc/mediatek/mt8189/mt8189-afe-clk.c
+> +++ b/sound/soc/mediatek/mt8189/mt8189-afe-clk.c
+> @@ -454,30 +454,47 @@ int mt8189_apll1_enable(struct mtk_base_afe *afe)
+>  
+>  	ret = mt8189_afe_enable_top_cg(afe, MT8189_CG_APLL1_CK);
+>  	if (ret)
+> -		return ret;
+> +		goto err_apll1_ck;
 
-This tablet uses a MediaTek MT8127 system-on-chip with 1GB of RAM.
-It can currently boot into initramfs with a working UART and
-Simple Framebuffer using already initialized panel by the bootloader.
+I shouldn't complain about this, but I am going to...  I don't like
+ComeFrom label names at all.  Imagine if we named functions that
+way, there would be a thousand functions named called_from_probe().
+We already are looking at the goto so we know where the goto is, but
+what we want to know is what the goto does.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Zakariya Hadrami <zkh@mailbox.org>
----
- arch/arm/boot/dts/mediatek/Makefile               |  1 +
- arch/arm/boot/dts/mediatek/mt8127-amazon-ford.dts | 54 +++++++++++++++++++++++
- 2 files changed, 55 insertions(+)
+Better to name it err_clear_mux_setting or something.
 
-diff --git a/arch/arm/boot/dts/mediatek/Makefile b/arch/arm/boot/dts/mediatek/Makefile
-index 37c4cded0eae..a610bc75c7d9 100644
---- a/arch/arm/boot/dts/mediatek/Makefile
-+++ b/arch/arm/boot/dts/mediatek/Makefile
-@@ -14,5 +14,6 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += \
- 	mt7623n-rfb-emmc.dtb \
- 	mt7623n-bananapi-bpi-r2.dtb \
- 	mt7629-rfb.dtb \
-+	mt8127-amazon-ford.dtb \
- 	mt8127-moose.dtb \
- 	mt8135-evbp1.dtb
-diff --git a/arch/arm/boot/dts/mediatek/mt8127-amazon-ford.dts b/arch/arm/boot/dts/mediatek/mt8127-amazon-ford.dts
-new file mode 100644
-index 000000000000..4b138e832795
---- /dev/null
-+++ b/arch/arm/boot/dts/mediatek/mt8127-amazon-ford.dts
-@@ -0,0 +1,54 @@
-+// SPDX-License-Identifier: GPL-2.0
-+
-+/dts-v1/;
-+#include "mt8127.dtsi"
-+
-+/ {
-+	model = "Amazon Fire 7 2015 (Ford)";
-+	compatible = "amazon,ford", "mediatek,mt8127";
-+	chassis-type = "tablet";
-+
-+	aliases {
-+		serial0 = &uart0;
-+	};
-+
-+	chosen {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+		stdout-path = "serial0:921600n8";
-+
-+		framebuffer0: framebuffer@b7a00000 {
-+			compatible = "simple-framebuffer";
-+			memory-region = <&framebuffer_reserved>;
-+			width = <1024>;
-+			height = <600>;
-+			stride = <(1024 * 2)>;
-+			format = "r5g6b5";
-+		};
-+	};
-+
-+	memory@80000000 {
-+		device_type = "memory";
-+		reg = <0 0x80000000 0 0x40000000>;
-+	};
-+
-+	reserved-memory {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+
-+		framebuffer_reserved: framebuffer@b7a00000 {
-+			reg = <0 0xb7a00000 0 0x1000000>;
-+			no-map;
-+		};
-+	};
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
-+
-+&watchdog {
-+	status = "okay";
-+};
+>  
+>  	ret = mt8189_afe_enable_top_cg(afe, MT8189_PDN_APLL_TUNER1);
+>  	if (ret)
+> -		return ret;
+> +		goto err_apll_tuner1;
+>  
+>  	/* sel 44.1kHz:1, apll_div:7, upper bound:3 */
+> -	regmap_update_bits(afe->regmap, AFE_APLL1_TUNER_CFG,
+> -			   XTAL_EN_128FS_SEL_MASK_SFT | APLL_DIV_MASK_SFT |
+> -			   UPPER_BOUND_MASK_SFT,
+> -			   (0x1 << XTAL_EN_128FS_SEL_SFT) | (7 << APLL_DIV_SFT) |
+> -			   (3 << UPPER_BOUND_SFT));
+> +	ret = regmap_update_bits(afe->regmap, AFE_APLL1_TUNER_CFG,
+> +				 XTAL_EN_128FS_SEL_MASK_SFT | APLL_DIV_MASK_SFT |
+> +				 UPPER_BOUND_MASK_SFT,
+> +				 (0x1 << XTAL_EN_128FS_SEL_SFT) | (7 << APLL_DIV_SFT) |
+> +				 (3 << UPPER_BOUND_SFT));
 
--- 
-2.54.0
+Since you can't test it, it's a bit risky to start caring about
+errors.
 
+regards,
+dan carpener
 
 
