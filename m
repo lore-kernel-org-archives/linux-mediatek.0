@@ -4,69 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 202D6C88E40
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 14:41:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CD59C79FBF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 16:53:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OXPPn9tlwNb8+IWe2bNCfwjQ82EFPAzHyWLZ359hzmA=; b=oQ5O6OOIPqiyhqwrT/kj/OKLJU
-	y5pEEU6XfMcXkG57oerixs4a/YkdfhK1EBySRrVpqKUKc9WRHD2F4VjwO5PiNyyxcbqL5+b2VDsK5
-	uG5X1Vtxg9Cm65qpe35ut/R2SzfsO9cXlukXJ3Hz1HrT30Zi3nv8zLMgZ6wsWhuQxqNDmS4oHHOqn
-	GjTk23Pdum4K8wqmh8hEq9z0rd1u4QeMLGs41IQq9TmHcndLHqps8sSGJjI1DH8wPphuPbQPvVLjN
-	ksLsvDan/q4LodVycalj8um+lrbxZSH923hF9OeRDRhPPlXfhS6R+wyWDGu8PIR2SNNr2vvLFuXaB
-	7YSkk4wg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=G/vbQHAhPT31Mmibdc9NJTWNHdvmxIIchs3BB/8irg8=; b=eMTHQT5l1l7zOPpn3I9ZVjUry6
+	ewRbeekysofiRgFcMW2fy7nbXpWQhbjqFV3RTTgjrBQKL1GIZdBkjNNJvrQzCy6x/txUVyyRFo0tY
+	BdrMszx1tEtmbvd79OhEYYfYHZe74qMcghkG1l65uIeRJAtknwIEDE7B+mRUULPfI2PXm9NMJ96fS
+	xdqLe70LUXT1W7BSlGnitzlDNAYjBFAULYl8SO8P594msxyN6JZPTsuT3U9xmFEs+IXMG2oGhc7pS
+	WRpdXFM5u0AuLxYLX335L8a9G/EG3nQAAvybghE2/5du6S/XLCaY6Qmc1J0hzHN49eTC/3EYk9DFJ
+	rFLyNQSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4fy9-0000000Eeo3-46ax;
-	Thu, 10 Sep 2026 14:41:41 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x4i1T-0000000F0Cp-2hxZ;
+	Thu, 10 Sep 2026 16:53:15 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4fy6-0000000EemK-3CNZ;
-	Thu, 10 Sep 2026 14:41:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789051295;
-	bh=NQhEknJQA8Ya6L5zdIqdUOsD85jIBAx1y0eYH103iRE=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=l/3pZbarrLBIxC/Bgeh0sOVvNAHiwRlpACyCd/tvr6a1aDM1yE39N2cpwZK+VQkVE
-	 MgyWtOO0Dc/G1ZYcB3Qm2E1JLOY5QbBZm9ZMoR9VGyxl8WU4ADu2K1EFkl5j0Iad/6
-	 XiSMMocF2vJVEhsJ1ZOcck/zDrlzfTgL8Y4/YjcB/mFxDppjKilV/UtDKUyEpZP31Q
-	 mTKYy9+55otmsuxQ4ciXEEflpRBMZuFFQOBurS1VbeCxTqCCwf68d/vmE7JBrSXGzi
-	 NWXbHAsrvc2mgBb8+DDl0wZsc62pBjWjXdb1zlMM5WGG2NQrb7qk2p8HS+ZRws6USc
-	 ICkrBPI187SkA==
-Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D79DB17E05D3;
-	Thu, 10 Sep 2026 16:41:34 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, 
- Wim Van Sebroeck <wim@linux-watchdog.org>, 
- Guenter Roeck <linux@roeck-us.net>, Zakariya Hadrami <zkh@mailbox.org>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-watchdog@vger.kernel.org, zkh1@proton.me, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-In-Reply-To: <20260910-mt8127-amazon-ford-basic-v5-0-3cb9eeaffd5c@mailbox.org>
-References: <20260910-mt8127-amazon-ford-basic-v5-0-3cb9eeaffd5c@mailbox.org>
-Subject: Re: (subset) [PATCH v5 0/4] ARM: Basic support for Amazon ford
- tablet (MT8127)
-Message-Id: <178905129482.89344.17321319958555136692.b4-ty@b4>
-Date: Thu, 10 Sep 2026 16:41:34 +0200
+	id 1x4i1R-0000000F0C9-0Adn
+	for linux-mediatek@lists.infradead.org;
+	Thu, 10 Sep 2026 16:53:14 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-8534d507f59so7289884b3a.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 10 Sep 2026 09:53:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1789059192; x=1789663992; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=G/vbQHAhPT31Mmibdc9NJTWNHdvmxIIchs3BB/8irg8=;
+        b=Z6e202R0M1aktL4LpPSJT25aANyJrvRrS+fVmEgYvnX5ZXXwfaxhXan8gypeCbbBHo
+         aVISD9iW44Eer6Dik1PCsJRcALbnADM4MRDP9cKQSZEarIr2LUDQIJPQav1DEs96QV/+
+         csFMB4JaxYtBdFhgGajn0RJJ7Xctdz8MKlB7IxAb5ifO2vO4mOEtFOzxM7NMnynAtZ+3
+         rvfEL7psDIZXGTesF7b3Ocqo7U73NyNOpo1b9ONYL+1TQlNahfWYb4BdVKMsDh3ZEHx5
+         SGPfTJTHof0r6qy+zFuznhMAeqVYOxpfnkIaMcIJdl6xCaxV5IzNXOVTtsia0L7xusgw
+         eQnQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1789059192; x=1789663992;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=G/vbQHAhPT31Mmibdc9NJTWNHdvmxIIchs3BB/8irg8=;
+        b=Il+yDfs0MRWTM+D0dHh/vbVRQblawqzCUAfETlX4x81hlcN1rXtmZkbZtTWXbBGoGf
+         odBKcerMQqAamw1LMTVr0tcZ1/P2YDtp3i11x0PRSazDxdptFAqcQmsfleSmC2WHhXGX
+         wKs7fdiDIgrYCSo1yvPaU23M2X9LMdALd8iGD0z8EegyF/Oi7TbSucfulfFOAm8wsIGR
+         /pDxuO27+Woj/ky41uiMAAi27y3PI7e4cIXXTnm5AgNifbzn9F7wtiworptwYiK4yVUD
+         f9d/JYy9raELoaC2v93x6XijV0YcGG5J6RrfKVeSJr5HsOI6nDjfxj4JUHh/vyAVOSI1
+         eFsg==
+X-Forwarded-Encrypted: i=1; AKwUvBzE/4VrImK6rtqxWun3fsJY0v9weFi33CkDPKVZ3cVQxoAi0F1SpAVE8JXPwwGy6G6gCfj2YD4Tcu2EkyhuLw==@lists.infradead.org
+X-Gm-Message-State: AFuF++mxvzDSh7GswjKtzwwQJygFu05D9F7S4VwggJy7vEQaX++Ih0Tu
+	TN36+iTyBLSyM9xpgJRxvCDbU2YjiCvAq72v6mFszrSLjiUubWgzcWDQkstIOQ==
+X-Gm-Gg: AYBFou2dFWcSbuz7OnUTe7RkCAZuYRWGbnoW35SY7qXeSwxNiVM1A9S7rTCVPZA6Hew
+	YhWGN6OX018Y+zALZvW76nEmW0VQg2YhVADoRfnifwR2PMqAlcbGCx/uCEuGqFqoCN0GbgwQNmh
+	lXXN580zlZBx/h3Ynx/uQPrbHbEud7hAlIM6YNib3AkvfsQcI+2rluisnECq9PO6oYCaw35vEE3
+	jwUnz9SNWDUJJtDo9hiiaF2f7T3VE1FIjmMVOXe9F2HLFGD6G5j2i2cXKDRTBLUaW9SbEPGRNzs
+	bk4b2xPPiPtkOcfUZ7saO4JNZYtktDXzpe1UDeNtfT4FBX8SCv5SfTCYmBL0yuLroc7K//+WBXs
+	C6loVKPaR99tVK3qOFk+NzWDrqDPFX74MntB0eGB8MVcc0EfoLGjEv9t0R2QFcFglDiNS1AIjkO
+	blGnni3Vm6NCqzAlKKjXvogDRtBFzU3Mf85PxNINcWAMPeSTh7XCvEkEsL27pJ7AORWelP14m8y
+	4yNLZLUSrYE8Bf6z86zo40nKp9P
+X-Received: by 2002:a05:6a00:6d43:b0:869:201b:7386 with SMTP id d2e1a72fcca58-869201b7831mr9536931b3a.1.1789059191831;
+        Thu, 10 Sep 2026 09:53:11 -0700 (PDT)
+Received: from buffalo-ssd.taila54753.ts.net ([240b:253:4760:f400:1ebf:ceff:fe7f:5e0b])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-86153e3ac21sm8425743b3a.55.2026.09.10.09.53.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Sep 2026 09:53:11 -0700 (PDT)
+From: Akari Tsuyukusa <akkun11.open@gmail.com>
+To: matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: james.lo@mediatek.com,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Akari Tsuyukusa <akkun11.open@gmail.com>
+Subject: [PATCH v2 RESEND] soc: mediatek: pwrap: Remove obsolete NEED CONFIRM comments
+Date: Fri, 11 Sep 2026 01:52:53 +0900
+Message-ID: <20260910165253.378212-1-akkun11.open@gmail.com>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.16.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_074138_955355_B148EF54 
-X-CRM114-Status: UNSURE (   6.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260910_095313_077436_51802109 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,21 +100,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 10 Sep 2026 15:29:11 +0200, Zakariya Hadrami wrote:
-> This series of patches adds basic support for MT8127 SoC based Amazon ford
-> tablet.
+Remove the obsolete "/* NEED CONFIRM */" comments from the MT8195
+configuration. These values were previously confirmed during review,
+but the placeholder comments were accidentally left behind.
 
-Applied to v7.3-next/dts32, thanks!
+Link: https://lore.kernel.org/all/2a117e5fe9fe0ece39e9165a463082ef42be973f.camel@mediatek.com/
+Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+Link to
+v1: https://lore.kernel.org/all/20260522134522.368073-1-akkun11.open@gmail.com/
+v2: https://lore.kernel.org/all/20260525092437.29313-1-akkun11.open@gmail.com/
+---
+ drivers/soc/mediatek/mtk-pmic-wrap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-[2/4] dt-bindings: arm: mediatek: Add MT8127 Amazon ford
-      commit: f97be0d722ebef4de65a39813778f6ba62c2ac1e
-[3/4] ARM: dts: mediatek: mt8127: Add watchdog support
-      commit: 5e23e7d730c6e984e4f03c3b25e2188de9f4ba99
-[4/4] ARM: dts: mediatek: Add basic support for Amazon ford board
-      commit: 2e195497fc9fc0dd89cf95dab80a2d0486dab65b
-
-Cheers,
-Angelo
-
-
+diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+index 0bcd8582637550..87bcbfa2d5f122 100644
+--- a/drivers/soc/mediatek/mtk-pmic-wrap.c
++++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+@@ -2396,8 +2396,8 @@ static const struct pmic_wrapper_type pwrap_mt8183 = {
+ static const struct pmic_wrapper_type pwrap_mt8195 = {
+ 	.regs = mt8195_regs,
+ 	.type = PWRAP_MT8195,
+-	.arb_en_all = 0x777f, /* NEED CONFIRM */
+-	.int_en_all = 0x180000, /* NEED CONFIRM */
++	.arb_en_all = 0x777f,
++	.int_en_all = 0x180000,
+ 	.int1_en_all = 0,
+ 	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
+ 	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
 
