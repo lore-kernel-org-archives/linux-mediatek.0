@@ -4,64 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17BDDC79FB9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 11:41:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 195AFC79FB9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 11:44:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DeGR29QlguE5S6672UQs1iNNz/omuVwEQS0a1AuP0ro=; b=LFbkxVpGseGRXVuUlvhj8PVJGU
-	Oz8xAMrjDgcQr9Mt+6vuOOIwbNBqIJdaLZU8WF6p7ngB54f+M1CvGV0jtpGLbxUqy3YEeVVKe/Bfs
-	Yl3AIruxlx6cqVYOz7Dtz1X7Q4J41yEN2tE5PjkOwG5WYDf302iYQjlUk1RD8rPafe7wShnHVo0Aq
-	pjptGJJbGh5/agHiOyrb9D9Wm1O6NKqBf1TWYFcp0UeEAPAHzBd2y+U23gt0I7CGyplZieNG5yp3K
-	iFETbD2RdlJJMTTLbvu9qRqjJk9R+4JUlBE1IQAqnbhuLDKGtkR68umODW6lWAPGM34KfAIXTmWLQ
-	WoLk81iw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=OAl4R63i7nP2kPOGdri8Gsnk69LVzRCygwjUC9I3Ijw=; b=yiYAb/H3a/tvBa9rRRhXSxOw2W
+	Res08l8uWtv7IArd0c6gf8q6xDHhG+W8KemOcoq8SeRgYdEjqIgQLDRMgvfPPmrIgDA+LEjjEPs0x
+	NwaJXxcJiHuNq0fcDJ+h8FsbPkpQJiF9PFo7Tp4EuOTJ9Qz0nzVQCVKrttwP4v4cdVr9d/T7QSJu9
+	Y4VK3bp/oCOLrkrsMz1gq7+ruR7nBSopRv8QO1rRGsrC+ZqIgaONR8Fb4xSe4Ox2a6F0dKpD57Sqb
+	bLy0SY65DO9gYYl1bcqBWxqG5ZycQ6kx1P4cVQt5WbWHNqIQwUJyXowoD3NiHH6oNGbMGkcBqhFOb
+	PYLUew/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4d9Q-0000000EEqU-36Io;
-	Thu, 10 Sep 2026 11:41:08 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x4dCC-0000000EFKo-0EBJ;
+	Thu, 10 Sep 2026 11:44:00 +0000
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4d9P-0000000EEq3-3BMp;
-	Thu, 10 Sep 2026 11:41:07 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 30FDE419B8;
-	Thu, 10 Sep 2026 11:41:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 125131F00893;
-	Thu, 10 Sep 2026 11:41:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789040467;
-	bh=DeGR29QlguE5S6672UQs1iNNz/omuVwEQS0a1AuP0ro=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=Q+OrbAjNSXS69kLu7KxVfyL/qqSP2DU2RcajzTEaPC6mZp5xAgpWLz1DYvjdA85x4
-	 +LrMq1+C9Su34aX0n9RbYgH3P/sd++76kAljR08YCDtlPHTjCi5l8vqRh6iZPLbR5D
-	 BGABrbyATxWkAWd+RkJFGOA6tifIkX83hk3WVei1JeMoMTb0+1zfG7xP+M091at1yy
-	 Dl/g1R1DRGC+m+BLE9ev+4FNVeAu43nxecmosw1zYWN1ErszZN8iylPoa0EgzHTKM0
-	 l43FdpiAajGB7N3FPHjwBCiZ3s0evwx5nMm6yPwwT5mvWVuXdGoSOdQSqJdUU1sk4B
-	 9rSibZxFhu13w==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id D0A8A380CFEC;
-	Thu, 10 Sep 2026 11:40:05 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1x4dCA-0000000EFK7-0o2T
+	for linux-mediatek@lists.infradead.org;
+	Thu, 10 Sep 2026 11:43:59 +0000
+Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-2d942c7cc2fso59258545ad.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 10 Sep 2026 04:43:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1789040637; x=1789645437; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=OAl4R63i7nP2kPOGdri8Gsnk69LVzRCygwjUC9I3Ijw=;
+        b=nGKKuek9+mgnsGMVWmEm+W4cgMAXajhE9An6NWnqdkDE721WMtTQlNt5qeXfU6bvpN
+         6k7ftFW9W078T/HvbNXuBKQZoQxpP8s78g87d3ftkpxeL8EkMNC6mX4eHj51nUKS9LPG
+         v+qJuLzUiQx6MUF5P5A7zd8YzbtV/t8ihYCYgRF1fX/ZbU+FmH64CRfpVSZmaxrm6Zol
+         K80DY2v1n7DwwwITIyF0TRPqqgpknvw+4nV/FvKDsqBBPa7SAOuhZkIRuRz0Czh79CxI
+         t8qW+E6m0LRQ1I+cp2P5vikdHeOGt8UGtYUB2Fn6ZQiIf7Hab/lvrQKCNJk1QjwmsAmt
+         N6Bw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1789040637; x=1789645437;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=OAl4R63i7nP2kPOGdri8Gsnk69LVzRCygwjUC9I3Ijw=;
+        b=AdQkbMCBo5wrf/ZenheXH4e7122Euv7YiSU+lLUCmvowVurNwyEvJRfzTcVGYvhItD
+         +c292gktIHQDZxRsvcvZGi4WnM/u8P7VqSzD7CaviLLls/1kfXYQXu2zUmOT/yuhoJ/f
+         rh3fbnLc/BZx4L/4MrRDRCJsL5FUbOOhS0LW31YhgglH6KE3quwNaKt8nU0NitvJw05F
+         IWuEKPyFk3qY2Tu6eVmyszCvoukZfS8SGSkCR0NF1ttCHWJ/UAoclcbBPspkxuo01HCp
+         07WJWjMiWVLRsjzovXZ9ruK5rXKSD0pGGjYBz4ss27+rLicBvNWNrAG+paW05UoA9gh+
+         yhsA==
+X-Forwarded-Encrypted: i=1; AKwUvBwJGzh2gJ3PP/YwUFF9uj/0PFFsTkeIi/um8lbIB7BEcSNqTPbtb2V4nk7dI9vqtlj9HAny3HzZxhWEJfVnDA==@lists.infradead.org
+X-Gm-Message-State: AFuF++mzGXWv2ZMHUqJX91fBMEdXpXMHRVw6RH19XtYDZliG7JlAJO1r
+	QleMT3rezu7LOSqgwbRQNsMgznCViIg2HQMS7ht6FTt47iCcykvIXwgB
+X-Gm-Gg: AYBFou080aXWWSrc5aYyXN0DPntG15zW/2aDB1Vlcv7A79xoW1WyxRyjhQKgDYESrgn
+	c0Hm6n8/n5pjU8jVbgwLP8zXJkAU23NCD3OztFUroLuMPiieWA4ddrbi+2JJBBM7aY9OJ26FT32
+	LEH6NRnaP1900SGhbhGXpyt/QkvyCMKyuTPA8nw1D/wkAANR4e9OZ/SdX1D4HFn8QM1FlqZGj3N
+	b2ghShbwrg8LTiEAvxowzb3/fqjJNJ7Xbsdu75cgCVQL1aqRzrLykUJs+Kn3jey8ixNwO0i35YX
+	vw878NlUdSczizSSpqvsvhSE39O+L3K/h7ZwOU1NHiVoTBKSXxvBEa5GDqBxPikNKQFspiex1wt
+	zLMucBLE6BnFviHXUEb6LcRdFQFJWUIT8hVrbCWLLAqMRA4VWHEIPSTd2zMwWhMIi9ZdGmeO+2Q
+	9+R4UOBYsj4YW2dSy0Vl37OGFau/vcznpMBM12LH8vGDtTxWuewyoo95fjonY56+fqGEj8xNBge
+	m1K0quuCfuifFTeRnf4v9sdS6+W+W3rjCngZnbeHtWBaJjshhe6UiexRvqSwoD1HYBUnIYaWOtr
+	+ECUTp5fwlO6lWo=
+X-Received: by 2002:a17:903:22c8:b0:2d7:5ebe:a588 with SMTP id d9443c01a7336-2db126d6e31mr572534875ad.13.1789040637106;
+        Thu, 10 Sep 2026 04:43:57 -0700 (PDT)
+Received: from phuc-desktop.. ([183.91.15.56])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2db14959fd2sm87427155ad.23.2026.09.10.04.43.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Sep 2026 04:43:56 -0700 (PDT)
+From: phucduc.bui@gmail.com
+To: Mark Brown <broonie@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Cezary Rojewski <cezary.rojewski@intel.com>,
+	Cyril Chao <Cyril.Chao@mediatek.com>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	Darren Ye <darren.ye@mediatek.com>,
+	linux-sound@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	bui duc phuc <phucduc.bui@gmail.com>
+Subject: [PATCH 1/2] ASoC: mediatek: common: Propagate control and DAPM errors
+Date: Thu, 10 Sep 2026 18:43:37 +0700
+Message-ID: <20260910114338.142682-1-phucduc.bui@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net v5 0/2] net: restore EEE on MediaTek switches and SoC
- MACs
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178904040463.1380647.8328651784613064419.git-patchwork-notify@kernel.org>
-Date: Thu, 10 Sep 2026 11:40:04 +0000
-References: <20260903123644.23800-1-f@lex.la>
-In-Reply-To: <20260903123644.23800-1-f@lex.la>
-To: Aleksei Sviridkin <f@lex.la>
-Cc: chester.a.unal@arinc9.com, daniel@makrotopia.org, andrew@lunn.ch,
- olteanv@gmail.com, nbd@nbd.name, lorenzo@kernel.org, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- netdev@vger.kernel.org, linux@armlinux.org.uk, dqfext@gmail.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260910_044358_234151_AA177937 
+X-CRM114-Status: GOOD (  10.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,34 +109,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+From: bui duc phuc <phucduc.bui@gmail.com>
 
-This series was applied to netdev/net.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
+mtk_afe_add_sub_dai_control() currently ignores errors from
+ASoC control and DAPM setup functions.
 
-On Thu,  3 Sep 2026 12:36:42 +0000 you wrote:
-> Both drivers fill in phylink_config.lpi_capabilities and
-> lpi_timer_default but never lpi_interfaces. phylink treats a MAC as
-> supporting managed EEE only when the tx_lpi methods are implemented and
-> BOTH bitmaps are non-empty, which phylink_create() decides once and for
-> all, so EEE has been off on every mt753x port and on every mtk_eth_soc
-> MAC that uses mtk_phylink_ops since the two commits named in the
-> Fixes: tags. Because the tx_lpi methods ARE implemented, phylink takes
-> the other branch and calls phy_disable_eee(), which fills
-> eee_disabled_modes - so userspace cannot enable EEE either.
-> 
-> [...]
+Propagate these errors to the caller.
 
-Here is the summary with links:
-  - [net,v5,1/2] net: dsa: mt7530: populate lpi_interfaces to fix EEE support
-    https://git.kernel.org/netdev/net/c/3c18e3c9a54e
-  - [net,v5,2/2] net: ethernet: mtk_eth_soc: populate lpi_interfaces to fix EEE support
-    https://git.kernel.org/netdev/net/c/d876c9cb2d16
+Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
+---
+ .../mediatek/common/mtk-afe-platform-driver.c | 38 ++++++++++++-------
+ 1 file changed, 24 insertions(+), 14 deletions(-)
 
-You are awesome, thank you!
+diff --git a/sound/soc/mediatek/common/mtk-afe-platform-driver.c b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
+index 477284e12396..c1869b38c9e7 100644
+--- a/sound/soc/mediatek/common/mtk-afe-platform-driver.c
++++ b/sound/soc/mediatek/common/mtk-afe-platform-driver.c
+@@ -51,29 +51,39 @@ int mtk_afe_add_sub_dai_control(struct snd_soc_component *component)
+ 	struct snd_soc_dapm_context *dapm = snd_soc_component_to_dapm(component);
+ 	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
+ 	struct mtk_base_afe_dai *dai;
++	int ret;
+ 
+ 	list_for_each_entry(dai, &afe->sub_dais, list) {
+-		if (dai->controls)
+-			snd_soc_add_component_controls(component,
+-						       dai->controls,
+-						       dai->num_controls);
++		if (dai->controls) {
++			ret = snd_soc_add_component_controls(component,
++							     dai->controls,
++							     dai->num_controls);
++			if (ret)
++				return ret;
++		}
+ 
+-		if (dai->dapm_widgets)
+-			snd_soc_dapm_new_controls(dapm,
+-						  dai->dapm_widgets,
+-						  dai->num_dapm_widgets);
++		if (dai->dapm_widgets) {
++			ret = snd_soc_dapm_new_controls(dapm,
++							dai->dapm_widgets,
++							dai->num_dapm_widgets);
++			if (ret)
++				return ret;
++		}
+ 	}
+ 	/* add routes after all widgets are added */
+ 	list_for_each_entry(dai, &afe->sub_dais, list) {
+-		if (dai->dapm_routes)
+-			snd_soc_dapm_add_routes(dapm,
+-						dai->dapm_routes,
+-						dai->num_dapm_routes);
++		if (dai->dapm_routes) {
++			ret = snd_soc_dapm_add_routes(dapm,
++						      dai->dapm_routes,
++						      dai->num_dapm_routes);
++			if (ret)
++				return ret;
++		}
+ 	}
+ 
+-	snd_soc_dapm_new_widgets(component->card);
++	ret = snd_soc_dapm_new_widgets(component->card);
+ 
+-	return 0;
++	return ret;
+ 
+ }
+ EXPORT_SYMBOL_GPL(mtk_afe_add_sub_dai_control);
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.43.0
 
 
