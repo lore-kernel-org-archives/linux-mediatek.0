@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C711C79FB9
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9102EC79F9F
 	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 13:30:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
@@ -12,45 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K6LALh33H60DfQTGEPsCcojG8hxhs271R8nFenuDi8Y=; b=s+kreUbu8spmBq/jNt9rt2+PBQ
-	1YSW306xft4qGNGUv5wA02RNAQdnWYPSUrW1oCEbaNZiHtFV9l277KdR8DyW53bhKHbBCuNfcbI1a
-	znmwR2wDVqktoOCHz5CZxuVJeP2NihrSMxX7FcbUbD4aCorTq4xev/O2fPmEq6kXLcOLJQwgqWffK
-	x76ANaBCwmQkTBnW0fcfyQNVjjTOo6RmoOCrXqzDmOhg4tBIRgOhcMyJ2+aBRZQGQsf3C+7FSnTf/
-	fSJevJ33kXkJ2KQyW+i8BhbZW/seYEbQTRevaTdLF/W2NY6H7UV+eV8ykd98WXVK7rV4j5e81eWF9
-	OpxP08rA==;
+	bh=40bPzhuosFx+jxEhKwDK62X7bAtikPrDDN9VlWVtBHw=; b=cUna+ZGAk28B+wsZaNMRz8UX7l
+	x5EtaS3w33O9z4cOBHFon7K4jObkJGblc3tw+B0+YWdBoz0E9BVChkiKtj7NSjUZq9R7TyH+WgajL
+	3rQ5yVK7wxPU8TZzhRv/DFUSmwYoaW3YF0SiEn0sTSrDm/UmaGRHaQc0PWbIoL0xL1v8SFsf2zRaa
+	UfLEkn8bv2nvh7CoiWfKgaeiUVcSTdYLlYPBCmw2OV59me2ljF8MBh5JDfUiF/42ZCwkzIYDpZmOS
+	pOSRSplnKGNRQJp/Cb+j/+dt/u3gLzlXfafiMNYsEs4IZFgLu5jik1ewVd0qxAKvN8e2wIKCyy+89
+	AV7jRxnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4erC-0000000ET0r-3bT0;
+	id 1x4erC-0000000ET0v-3ru4;
 	Thu, 10 Sep 2026 13:30:26 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4erC-0000000ET03-0Uw0;
+	id 1x4erC-0000000ET02-0Uua;
 	Thu, 10 Sep 2026 13:30:26 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9896E447AF;
+	by sea.source.kernel.org (Postfix) with ESMTP id 8BEAA444F6;
 	Thu, 10 Sep 2026 13:30:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 763A8C2BCF5;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 66915C2BCF6;
 	Thu, 10 Sep 2026 13:30:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1789047025;
-	bh=VWlC7n5SUM9DtFOBPFoA8GByTAAgalb/ZLqc2nBu+mg=;
+	bh=G+GpNyZ3b9TKiMP7cNnhhFlFP84K4fw/zV3su+ptBrk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=niv1dyqyLuz6blBL6bh6N6ldSuwNFZfqM2YhnECq9Mx5DQA9H0LATKZXS+5ighZs3
-	 yGucoAyqk6sAbDERaqKn7BO9cKR0ztn5TvWCGdTAy6HnCwXXlT82jWqoy1wB8dBZ0i
-	 QDEBYdXPBQEi/G3UceW90H+NBIng0z7mvl5kOT5ik11ZJLzXJLmz5paOKk/TnNYjw5
-	 PLPoOIqgOs6VdAa/nztbrlS5Q200iK3LwWNF1qlNN6rJC5Urfv0qHBa+iGknmAJSiS
-	 I9rZ3Td5lV2xE8jb3tHuBzPXvL4ocpzcyytieZ2s7uHOWFIRRMMai+/CdqUYv9NN81
-	 6gOTHhnPDsLyg==
+	b=s1t6Z9wccxhkoXYVSOovEaeRSOxmP2g+7msqEQOgK+SzjCf2zueGFTaYYl24TNvJD
+	 5Cvr3XlquHvQCY0FVQyFXgMFkLeF9NvQlEEGb7HbnO1GmE0c1pnUGcp36EXQL4kg29
+	 sqcMwLqmLkfUrRDDBrVDjaShaBIDXCqBYQRF3s19RaWofBzwbHqPImg+XqJwVPaXLm
+	 NJJj5hs7grQ6O04gJyEHbONMz9PbeA4zxnUkODt7AyBSP45JpIeFTIDVUmAWGKMhbH
+	 B4ZMgxrCE2qwArYy2OJVv9mRXjX5fXfmw7hNIkVQwWnkuvDGh88mmXSCzQAV55tGRb
+	 CTZp/qdC/2/Tg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 564A7C88E40;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 42C6BC79FB9;
 	Thu, 10 Sep 2026 13:30:25 +0000 (UTC)
 From: Zakariya Hadrami via B4 Relay <devnull+zkh.mailbox.org@kernel.org>
-Date: Thu, 10 Sep 2026 15:29:13 +0200
-Subject: [PATCH v5 2/4] dt-bindings: arm: mediatek: Add MT8127 Amazon ford
+Date: Thu, 10 Sep 2026 15:29:12 +0200
+Subject: [PATCH v5 1/4] dt-bindings: watchdog: mediatek: Add MT8127
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260910-mt8127-amazon-ford-basic-v5-2-3cb9eeaffd5c@mailbox.org>
+Message-Id: <20260910-mt8127-amazon-ford-basic-v5-1-3cb9eeaffd5c@mailbox.org>
 References: <20260910-mt8127-amazon-ford-basic-v5-0-3cb9eeaffd5c@mailbox.org>
 In-Reply-To: <20260910-mt8127-amazon-ford-basic-v5-0-3cb9eeaffd5c@mailbox.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -65,11 +65,11 @@ Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Zakariya Hadrami <zkh@mailbox.org>, 
  Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 X-Mailer: b4 0.15.1
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1789047024; l=940;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1789047024; l=1085;
  i=zkh@mailbox.org; s=20260908; h=from:subject:message-id;
- bh=6nQiaYGOKfITeaTuR+B1GCX01jYN4Tqbt4wScWriW9U=;
- b=Sj28nnhxHpArEkTLyWakRCNV540MPZXTEhT//VpZVifjCRiFq3DGcO4Uca9lpsqkhTxMmmCO4
- JL4fipZHsZDDNwStnX5k2DKqSjJYsJWoU935VC089jxS1Kmun9xhSqC
+ bh=l284B/Dwa1uNqUeDmkdnI4eqix70fVEu1j83lsoUYFE=;
+ b=BK/u/Ml/n+dTOzTt148t2f4N0sPqOz2u0dKvpbmaV9yoLqUZUbRUFHqIh8mQ+V8Q2fkAY54/S
+ p2ClCYKpmBOCVCSZCQw63DmxCAhI9f6yY7LnPaGFN4T5zs5iKADArE5
 X-Developer-Key: i=zkh@mailbox.org; a=ed25519;
  pk=up24Xn4ScFKugfT4EJru/UQAS7JOIN+DSQqro+a05T4=
 X-Endpoint-Received: by B4 Relay for zkh@mailbox.org/20260908 with
@@ -92,28 +92,29 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Zakariya Hadrami <zkh@mailbox.org>
 
-Add entry for the MT8127 based Amazon ford tablet.
+Add entry for MT8127 SoC's watchdog which is compatible with MT6589's
+one.
 
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Acked-by: Guenter Roeck <linux@roeck-us.net>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 Signed-off-by: Zakariya Hadrami <zkh@mailbox.org>
 ---
- Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
+ Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index cd4040ad3437..180e6e4948e7 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -122,6 +122,7 @@ properties:
-           - const: mediatek,mt7988a
-       - items:
-           - enum:
-+              - amazon,ford
-               - mediatek,mt8127-moose
-           - const: mediatek,mt8127
-       - items:
+diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+index 953629cb9558..e6e4546da0aa 100644
+--- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
++++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+@@ -40,6 +40,7 @@ properties:
+               - mediatek,mt7622-wdt
+               - mediatek,mt7623-wdt
+               - mediatek,mt7629-wdt
++              - mediatek,mt8127-wdt
+               - mediatek,mt8173-wdt
+               - mediatek,mt8188-wdt
+               - mediatek,mt8189-wdt
 
 -- 
 2.54.0
