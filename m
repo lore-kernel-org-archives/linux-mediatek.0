@@ -4,51 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3030AC79F9F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 08:10:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5F07C79F9F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 08:39:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r6Zm/H/Lmzh0U1M//5cp7HJj5u5E9gqYg7yfdLufV4U=; b=hrMF/XKV+DSTkj8xZiNOYnn1l7
-	hHCYreshcHaVv6GD36PrgyyKvraVs9sJMSD1gMDavBlZWHI7tBrAtrrK/ATQD2oCKd9RerCRv+fMT
-	d2Pg9em0vvkDzODLSmlP1zQr+yAKFh9ucZXcT9gEnadq+XSZ0VUnhMmWAJVDQpPQc81fFGrzqpNq5
-	IRaOAC0v36ho3Z9UHrrKmldwYGmMBGFcfWIP2T9IQWhZWQissrxQMx34kRhSFc9xzaAFmqB/p5kbr
-	3QZWiDVyLpg1KEDrnxk9aOXJ1JubrUV4DqOzWKglGBxOsscRMKshapkdZ6ZK/kW3S6pJgpOUk7Ou7
-	BKCPWqxg==;
+	bh=V/XhZzgLcSPvcTAeVmchQSSAeVbt7+imS8y+E/0mNY4=; b=yTb2kY6k4Vt5BmIguy/WKW+Pkg
+	mYPYZ4P8GXtTDzASRNmHchYHH3VGpAx7kHWqIy8FJcQ7qMlXIPdFybJkFkEs9Pmhh4IbQGfyE+05s
+	hYtgIgnvxCmkrnce/2DWyDY1lm8OhFxbxmC7oGC8C/KVxkIjtsoW8mP+UFbCuIoSUh6VJLWdE7D3A
+	Lrq09UTnzLcdpvB2d3Bmn44KXJxNbGDYeL9Jiqc/XqFyRclQ2ICWzLJn7I7HlTaAkGYi18q5lHgfa
+	pcB1JBMTC4OeY/y1NI4YnCZxaDTnp417QtJYJhsJhW1CZ6/Gn9bI1xrTZ6riqXSrlGzW6awBW9c4g
+	u3Zj594A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4Zro-0000000DhLo-0Rh4;
-	Thu, 10 Sep 2026 08:10:44 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x4aJM-0000000Dm2F-3Aqt;
+	Thu, 10 Sep 2026 08:39:12 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4Zrm-0000000DhK5-1kXY;
-	Thu, 10 Sep 2026 08:10:42 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id D6F2A60200;
-	Thu, 10 Sep 2026 08:10:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AE3701F000FF;
-	Thu, 10 Sep 2026 08:10:37 +0000 (UTC)
-From: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
-To: ryder.lee@mediatek.com, lpieralisi@kernel.org, kwilczynski@kernel.org, 
- mani@kernel.org, bhelgaas@google.com, 
- Sreeraj S Kurup <sreekuttan2156239@gmail.com>
-Cc: robh@kernel.org, matthias.bgg@gmail.com, 
- angelogioacchino.delregno@collabora.com, linux-pci@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <20260728122810.3475-1-sreekuttan2156239@gmail.com>
-References: <20260728122810.3475-1-sreekuttan2156239@gmail.com>
-Subject: Re: [PATCH v3] PCI: mediatek-gen3: Fix 64-bit type truncation in
- mtk_pcie_set_trans_table()
-Message-Id: <178902783731.2684.801323745956768589.b4-ty@b4>
-Date: Thu, 10 Sep 2026 10:10:37 +0200
+	id 1x4aJK-0000000Dm13-0b26;
+	Thu, 10 Sep 2026 08:39:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1789029547;
+	bh=SiT1KDjlCQxg3SPpGnO4slKadQA03M3dNbnhOGR63yg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=R2s0wZeeGzlnMvAx9MIhuWw8oPIAKtAakw4b/WmlnFndxmywHJ4IK1Q0A77sO9h6b
+	 QWGEPwCjOB/TQdvdnTqtmBYOO9CCm0Wdrgpj6zNfasuTNf3ZuIvZ2jFoNu5466sAJo
+	 vX9Y/pnCvAZTHq04QrLQH0/aKhpZMuyEOWItNQgdA6H106HvixPmo/5Acz1/HTfB2u
+	 K4A9A4tuHYZ4Fo69UZrk5XU5uYXwpTERx1bpkrIvV0cX9N1UfdrR8m8yy/ENoITuTU
+	 oWCveip499+7Nbyz5IONwMHt58+wi2QczhgMPGFhL3h3fcRqKFlHy/EWR2l8QINn0C
+	 sSAN8vA+RQdRg==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 87CC117E05D3;
+	Thu, 10 Sep 2026 10:39:06 +0200 (CEST)
+Message-ID: <cb72ff50-b62f-47fe-af40-d38558bdff6e@collabora.com>
+Date: Thu, 10 Sep 2026 10:39:06 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.15.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] phy: mediatek: phy-mtk-hdmi-mt8195: Fix TMDS clk bit
+ ratio setting
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: chunfeng.yun@mediatek.com, p.zabel@pengutronix.de,
+ chunkuang.hu@kernel.org, vkoul@kernel.org, neil.armstrong@linaro.org,
+ matthias.bgg@gmail.com, granquet@baylibre.com, justin.yeh@mediatek.com,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+References: <20260701121936.19407-1-angelogioacchino.delregno@collabora.com>
+ <20260701121936.19407-3-angelogioacchino.delregno@collabora.com>
+ <5bmxa4pcwkiemubwfjun3dti4szu66gnxe6yw2pudq3wplpc23@inyswc2bdlhw>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <5bmxa4pcwkiemubwfjun3dti4szu66gnxe6yw2pudq3wplpc23@inyswc2bdlhw>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260910_013910_336149_DA14BBCB 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,25 +81,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Tue, 28 Jul 2026 12:28:10 +0000, Sreeraj S Kurup wrote:
-> The variables cpu_addr, pci_addr, and remaining in
-> mtk_pcie_set_trans_table() are of type resource_size_t, which is 64-bit
-> on 64-bit architectures.
+On 9/9/26 17:06, Manivannan Sadhasivam wrote:
+> On Wed, Jul 01, 2026 at 02:19:36PM +0200, AngeloGioacchino Del Regno wrote:
+>> The comment in the mtk_phy_tmds_clk_ratio() function clearly and
+>> correctly explains that the TMDS ratio has to be 1/10 for data
+>> rates under 3.4Gbps, and 1/40 over that.
+>>
+>> Unfortunately though, the TXC_DIV register setting was wrong, as
+>> in value 3 means to divide by 8 and, in order to achieve the in
+>> spec 1/40 (tmds) data rate, this has to divide by 4 instead!
+>> In order to achieve the correct 1/40 (tmds) data rate, this has
 > 
-> Using 32-bit helpers fls(), ffs(), and BIT() causes 64-bit integer
-> truncation when computing window sizes and address alignments above 4GB.
+> This statement is cut-off!
 > 
-> [...]
 
-Applied, thanks!
+Oh oops. It's just a forgotten line that has to be removed....
 
-[1/1] PCI: mediatek-gen3: Fix 64-bit type truncation in mtk_pcie_set_trans_table()
-      commit: 13335fca4c23b1a6736ec9c7efc3750154a2ca24
+Should I resend or can you simply remove the line
+"In order to achieve the correct 1/40 (tmds) data rate, this has"
+while applying?
 
-Best regards,
--- 
-மணிவண்ணன் சதாசிவம்
+Thanks,
+Angelo
+
+>>
+>> Add definitions for the TXC_DIV register values clearly explaining
+>> the meanings (DIV2, DIV4, DIV8), and program the correct, DIV 4,
+>> value to the register in mtk_phy_tmds_clk_ratio().
+>>
+>> This fixes out of spec clocking and, with this change, SoCs using
+>> the MT8195 class HDMI PHYs can now successfully be configured to
+>> output 3840x2160@60Hz over HDMI.
+>>
+>> Fixes: 45810d486bb4 ("phy: mediatek: add support for phy-mtk-hdmi-mt8195")
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> 
+> With above comment addressed,
+> 
+> Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+> 
+> - Mani
+> 
+
 
 
 
