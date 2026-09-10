@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DCC6C79F9F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 09:05:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F6AEC79FB9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 09:07:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BypE/vyVxUuJITnV/wf5vbKYIrm9rN2H5s8yZM+WULk=; b=PrEAYa/t+Tjx5KtNW6WoIlx7+4
-	t+3tnDmeuclfn+zAPX190uhDGJdDun5kQpfFAi4gGJHV9a1GJQNCM44K79ymlAfXnECEg3ONKNRR8
-	NrYk1QrPdz0fKLFjhnsAt0KYtTTp5JtOIDx9gmmnFwxA+8XubChW17nsH+kPK/MKRqZs1RO+KLmTb
-	6pCRc9/sAGS4dq1uWWrT9Lg3ioRtSNQ5Dg5R3prxWy4HYChmEBpAJOP8i2s2/pMMzSZ5M0Mvg60Y4
-	uAZ+d3vm4EzCJ5U4E6EBu1554k+Vzn+bhuAjEEAc/qbwMpfMSa8houiaiDRNP1Z+Fb2C2TiFum55H
-	MGMCR7fw==;
+	bh=85V6AxDobuh7+s/NLZ3B1iJeX8fNAbX7eyVc144CvSY=; b=zENm552CDpt+uo5kRoPsyVNJ1G
+	XZi7ecDJ/FeJvZfrkG8HmmQvsrR19GN2YF6cU1uK4wXPidtSiv/2WSsdbYw1dvk8FW5aWyjJQ7jcp
+	j+4WIaiuUvvTqqMfQFQzoGwOE/kqKUUEZ3cDjoXqmfgZoGyLh/drBp16pWF28Wl/gCm6snK7xlit7
+	f7geeaW4RtBl0X+KZEkKLn68CMRdoD8J8D1/sbS14AZ0t9U8bPCBFion51+9XI5AE9nPdKOHbuhIX
+	FOHYkdg5YaZIOz8fgcJFcvnhUYosYUEamv3AiMkEL3lvPf99Kvdz7T0UAsu8cHx0kQWR4CSH5x80D
+	GCm5DIwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4aj4-0000000DpI8-0rtX;
-	Thu, 10 Sep 2026 09:05:46 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x4akJ-0000000DpS6-1x3F;
+	Thu, 10 Sep 2026 09:07:03 +0000
+Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4aj1-0000000DpGt-1ESC;
-	Thu, 10 Sep 2026 09:05:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789031140;
-	bh=ENZtiC11cN8l9AXK3zwCWvbeBdYrcIe4dNlUeqoNVa4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Hpwx1d6KkcuuuuFphNt/pZ/VR8BjoOH5fv8MXS0R+5rm9HjX1Cd2liAZ6onBYK+la
-	 UCLg7HGxELLEciRfhop14a1zKwPvk4B1xFRtWouRB3QLlfH2jhCvXyDVRwRHOiQLvh
-	 uwUxJuCEdaRV/rfQnFmoZtEbxu3712xOozfhdI5whCMvB+k1i0Uzoe9LYbsdP9jq4o
-	 e70XRYF4vOLRWRqNCenNscEKPoAXHCqW5DN8G8npBiSAmWZr0RXmhT30HttnlubQwn
-	 aT0JDEf88wFwKzfSR1HiWUZlDIGJ0hdVnAA6cREzbbhtn1EpOwH3f4ra3pYe2PwY/l
-	 kgC7V9GLK8t0g==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C301817E05D3;
-	Thu, 10 Sep 2026 11:05:39 +0200 (CEST)
-Message-ID: <4e658914-7a17-444b-b20b-8d8b647238b5@collabora.com>
-Date: Thu, 10 Sep 2026 11:05:39 +0200
+	id 1x4akG-0000000DpRC-4C62;
+	Thu, 10 Sep 2026 09:07:02 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 4A8FA404F10;
+	Thu, 10 Sep 2026 11:06:39 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
+	t=1789031217; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=85V6AxDobuh7+s/NLZ3B1iJeX8fNAbX7eyVc144CvSY=;
+	b=hrdsPiDpzVbRlzWKtPLqK536p0zGK3+mvHhW3oTJlnHDJ28PlphioJqxtLOWZTM57E8TLb
+	7OtJz3WbW10CztsvjxiQG6+gBXTPke3CmhOxDrTtiFf5mQQfPLVeqfK1/+SMFhkMaY4CtK
+	cJPjALlZFoznPBY/YhKCt9Nd8bAy/RXwYPud72HviN942TfT63vmfHMn8BDMVA9pRXNF/i
+	yLp9b2L/TQpdyR5jSoq0qcM4HKuPPJ61ZtUQG8y9b8wVRKpBWEV1QeO5f5GgjOvj5YRmKx
+	k3uxb0WOsNEpj9XEerlHhSSvs66ibzR+eBh2ettq7oaSM9Yx2vgq17AG+joeHg==
+Message-ID: <de010064-a574-4da7-8307-30bd6359e506@cjdns.fr>
+Date: Thu, 10 Sep 2026 11:06:38 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 11/12] phy: phy-mtk-dp: Add PHYD Lane EN register mask
- to SoC data
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: chunfeng.yun@mediatek.com, vkoul@kernel.org, neil.armstrong@linaro.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
- justin.yeh@mediatek.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, kernel@collabora.com
-References: <20260707154245.198361-1-angelogioacchino.delregno@collabora.com>
- <20260707154245.198361-12-angelogioacchino.delregno@collabora.com>
- <cydeh263kd5o2un27oeplqx2phe7vzhxvk53kr7dbvtplazafv@rs37qtkhguhj>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+User-Agent: Mozilla Thunderbird Beta
+Subject: Re: [PATCH net-next 1/2] dt-bindings: net: econet: add EN751221
+ ethernet
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: netdev@vger.kernel.org, andrew+netdev@lunn.ch, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, p.zabel@pengutronix.de,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ vadim.fedorenko@linux.dev, maxime.chevallier@bootlin.com, dong100@mucse.com,
+ wangruikang@iscas.ac.cn, 25181214217@stu.xidian.edu.cn,
+ hkallweit1@gmail.com, han.junyang@zte.com.cn, xuanzhuo@linux.alibaba.com,
+ enelsonmoore@gmail.com, jes@trained-monkey.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, naseefkm@gmail.com, b.larsson@gmx.com
+References: <20260909212146.3184077-1-cjd@cjdns.fr>
+ <20260909212146.3184077-2-cjd@cjdns.fr>
+ <a9eac625-f0f3-47db-ac2c-26c7df66f52a@lunn.ch>
 Content-Language: en-US
-In-Reply-To: <cydeh263kd5o2un27oeplqx2phe7vzhxvk53kr7dbvtplazafv@rs37qtkhguhj>
+From: Caleb James DeLisle <cjd@cjdns.fr>
+In-Reply-To: <a9eac625-f0f3-47db-ac2c-26c7df66f52a@lunn.ch>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_020543_505510_3E022304 
-X-CRM114-Status: GOOD (  14.21  )
+X-CRM114-CacheID: sfid-20260910_020701_244865_FE178F5B 
+X-CRM114-Status: UNSURE (   8.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,67 +81,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/9/26 19:25, Manivannan Sadhasivam wrote:
-> On Tue, Jul 07, 2026 at 05:42:44PM +0200, AngeloGioacchino Del Regno wrote:
->> In preparation for adding support for the eDP PHY found in newer
->> SoCs, transfer the register mask for PHYD_TX_LN_EN to SoC specific
->> data.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/phy/mediatek/phy-mtk-dp.c | 13 +++++++++----
->>   1 file changed, 9 insertions(+), 4 deletions(-)
->>
->> diff --git a/drivers/phy/mediatek/phy-mtk-dp.c b/drivers/phy/mediatek/phy-mtk-dp.c
->> index 4603f28d1466..f5aadc5fdc42 100644
->> --- a/drivers/phy/mediatek/phy-mtk-dp.c
->> +++ b/drivers/phy/mediatek/phy-mtk-dp.c
->> @@ -220,6 +220,7 @@ struct mtk_dp_phya_imp_sel {
->>    * @regs_ana_lane:  Register (layout) offsets for ana_lan
->>    * @regs_dig_glb:   Register (layout) offsets for dig_glb
->>    * @regs_dig_lane:  Register (layout) offsets for dig_lan
->> + * @mask_dig_tx_ln: Register mask for PHYD_TX_LN_EN field
->>    * @val_dig_bitrate:IP Version specific register values for Bit Rate setting
->>    * @ana_bias_r:     Internal resistance "R" Selection Settings (global)
->>    * @ana_cktx_imp:   TX Clock Impedance Selection Settings (global)
->> @@ -239,6 +240,9 @@ struct mtk_dp_phy_pdata {
->>   	const u8 *regs_dig_glb;
->>   	const u8 *regs_dig_lane;
->>   
->> +	/* Register masks */
-> 
-> Duplicate comment. With this removed,
-> 
 
-Sorry but I think you didn't understand what the comments are there: the kerneldoc
-is used to describe the structure, of course, but the comments in between are used
-as a way to describe (and kind of enforce) the order of members.
-
-/* Register offsets */
-u16 member1;
-u16 member2;
-....
-
-/* Register maps */
-const u8 *regs1;
-const u8 *regs2;
-...
-
-/* Register masks */
-u32 mask1;
-u32 mask2;
-....
-
-etc.
-
-Does that make sense now? :-)
-
-Cheers,
-Angelo
+On 10/09/2026 04:11, Andrew Lunn wrote:
+>> +        gmac1: mac@1 {
+>> +          compatible = "econet,eth-mac";
+>> +          reg = <1>;
+>> +          status = "disabled";
+>> +          phy-mode = "rgmii-rxid";
+> That is a very unusual phy-mode. Is there a reason this is used in the
+> example?
 
 
-> Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
-> 
-> - Mani
-> 
+Mac 1 connects to an xPON or xDSL subsystem depending on chip package. 
+The phy-mode is not used by the driver and when the driver was written 6 
+months ago this was the best guess about the electrical protocol, left 
+for documentation purposes.
+
+Your question made me re-investigate this, and I now note that both the 
+xPON and xDSL "upper halves" as well as the switch on gmac0 are all 
+on-die, so I think phy-mode = "internal" is more appropriate and I will 
+re-send as such, and with some light documentation about what this 
+ethernet connects to - since it's on the die so it'll always be the same.
+
+
+Thanks,
+
+Caleb
+
+
+>
+> 	Andrew
 
