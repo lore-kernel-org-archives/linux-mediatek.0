@@ -4,64 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDCC7C79FB7
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Sep 2026 23:26:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55368C79FB7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 00:40:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KjFa+0tDikevuBm4q9CtkZnRLbUXGml043SLQjo4Y20=; b=QKnupC/Y0zrbunH51y0Ov0G7Na
-	Rb7rbHl/aAg56ZVyR7dSpRdLMRjUouJZzZytdGjU4T6n+FsyimajiaF2nYiAphy07r2JSkC8vSyDg
-	1t5tmpoJxOOpya+T8Jw5PDSwpdH+GHpPCPKaymMoolByW6TTsn04LURyk3c1RDe8wZfFCjI3oHYlj
-	akf3XjuRVccjfXwLUHFmQ5TYTYbWLkTY+RJslCh0uaSLA12q7OLk1ExkggpCl1mWqIITnb5tNqzOt
-	VISj6TBRA3so5ROvxBHIGq3QSFAojOdAJnNNbEI1U8RgfaGCpXzkKfmLjWqLloI5kRq+36gIIoGxq
-	KhUtyLYQ==;
+	bh=LB4xOGwX5zRvsIqTiz17TCA8SFZm8FpI7B2jc9dy2MY=; b=WQEJsebGKvgNs63od0GQ4fsWMc
+	69VEsYdaFLb+KKyPwskzIxtQSXbygLbjq2Y23C98KEvZC6kr3j0XEBVfjitrbHHcYFoF75LTsRVIp
+	kfarjNdSK9hKrHj3W65xjZ5+fyFYERNo7KtztT1DdEprlQ306XBkFVnuVew8iwcSPMuuFie005kvy
+	cmrFzmYKN7A1sinO41B95X2o6ZrXOCW2NRfxxPprdH+ocwReulUv2lB8zRCot2pHp2hFQrLHu4UH+
+	ss7JrD6KNwHk/B6OFXNaPpUfipX+h0tyfUcocHlVOzNPS78YdxKjLeKr/IXcMDrGbz+OcSJEyU0TX
+	LFEp0+aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4RgT-0000000D5Qh-22Zg;
-	Wed, 09 Sep 2026 23:26:29 +0000
+	id 1x4Sq8-0000000D8wj-0K0i;
+	Thu, 10 Sep 2026 00:40:32 +0000
 Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4RgP-0000000D5Pw-3zyi;
-	Wed, 09 Sep 2026 23:26:27 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 1C0FB40B4DE;
-	Thu, 10 Sep 2026 01:26:15 +0200 (CEST)
+	id 1x4Sq5-0000000D8vy-0RvD;
+	Thu, 10 Sep 2026 00:40:30 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id ADACC40E58E;
+	Thu, 10 Sep 2026 02:40:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1788996382; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1789000824; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=KjFa+0tDikevuBm4q9CtkZnRLbUXGml043SLQjo4Y20=;
-	b=ZLh6GYtZUSHDlwpxATWxSRb0oIeM79jebqM94lRLuSLBRuSzFe+0Sjb2tO757S5xxuC/+2
-	m4F4Vr/g8nnHJDp2fSovK1GqrGWMfe+F8u/syXv7tXb1Qtxm+YAfBf03HnA/LrlSE74vGG
-	mnvRI7XoQM/iBrcnzoGTalHnKFDzyOdmJSDDx47B81xQaJuoBuxcc0CGeliOGm9bhBkkFF
-	mqwDCeBQhSofPD9ULpjm2FLK22l3cVpCNZcw7otqLF2uqb/xJ1hAoyLM4TzKX/zCbcyDZb
-	Ij+ryUfcMd+4FnInUtOsKwS+2z0qeCvmMRYkj770MUoVt/lOsTkDn9lUrzToHQ==
-Message-ID: <7a3479c8-45cc-4b88-b111-c35d59f370e1@cjdns.fr>
-Date: Thu, 10 Sep 2026 01:26:14 +0200
+	bh=LB4xOGwX5zRvsIqTiz17TCA8SFZm8FpI7B2jc9dy2MY=;
+	b=W2e0+R+j5MhtDmDdh4jEQPXtRn2UQUSpSayn4MrW/NP39/u/IvlpGWcZWJY4zwClYDQUzv
+	CVsbJXXCxEis6yeZPP8PhS628sxtAa6o2kSnhGKVTtHwpdxRpQz28T3jHfdNRl91JpJK17
+	j3zVTIrdKBxvtCCAe7rM1lZN6NChxCMcvus84hPhVafJRaSRoRAMD5QyaxC0qJKBFs3QpL
+	MIW5cpvlvw6UP9JuRNeY2KhE9XCW0Uo7HIwB/iO3ntqfdJ0G7GLezv3sWjJCW5gApBps7G
+	TYuqkcPWYJ0oE1S4QfMMEUd2tW284zNPKoiTo2oCEPB7vIC9GX4Nipve6uqmsg==
+Message-ID: <508e083a-2bee-4003-8ee9-e9b269b2821d@cjdns.fr>
+Date: Thu, 10 Sep 2026 02:40:08 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird Beta
-Subject: Re: [PATCH net-next] net: phy: mediatek: support MT7530 PHYs on
- EN71221 MCM
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, dqfext@gmail.com, SkyLake.Huang@mediatek.com,
- andrew@lunn.ch, hkallweit1@gmail.com, linux@armlinux.org.uk,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Matheus Sampaio Queiroga <srherobrine20@gmail.com>
-References: <20260909213250.3184238-1-cjd@cjdns.fr>
- <aqHlfmYa249e3HRM@makrotopia.org>
+Subject: Re: [PATCH net-next 1/2] dt-bindings: net: econet: add EN751221
+ ethernet
+To: Matheus Sampaio Queiroga <srherobrine20@gmail.com>, lorenzo@kernel.org
+Cc: 25181214217@stu.xidian.edu.cn, andrew+netdev@lunn.ch,
+ angelogioacchino.delregno@collabora.com, b.larsson@gmx.com,
+ conor+dt@kernel.org, davem@davemloft.net, devicetree@vger.kernel.org,
+ dong100@mucse.com, edumazet@google.com, enelsonmoore@gmail.com,
+ han.junyang@zte.com.cn, hkallweit1@gmail.com, jes@trained-monkey.org,
+ krzk+dt@kernel.org, kuba@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, maxime.chevallier@bootlin.com, naseefkm@gmail.com,
+ netdev@vger.kernel.org, p.zabel@pengutronix.de, pabeni@redhat.com,
+ robh@kernel.org, vadim.fedorenko@linux.dev, wangruikang@iscas.ac.cn,
+ xuanzhuo@linux.alibaba.com
+References: <20260909212146.3184077-2-cjd@cjdns.fr>
+ <45cb6035-4d15-426d-bb3f-45d20b4201da@gmail.com>
 Content-Language: en-US
 From: Caleb James DeLisle <cjd@cjdns.fr>
-In-Reply-To: <aqHlfmYa249e3HRM@makrotopia.org>
+In-Reply-To: <45cb6035-4d15-426d-bb3f-45d20b4201da@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260909_162626_275079_89B048D4 
-X-CRM114-Status: GOOD (  15.05  )
+X-CRM114-CacheID: sfid-20260909_174029_338157_F9876FF2 
+X-CRM114-Status: GOOD (  15.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,47 +81,43 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On 10/09/2026 01:02, Daniel Golle wrote:
-> On Wed, Sep 09, 2026 at 09:32:50PM +0000, Caleb James DeLisle wrote:
->> The EcoNet EN751221 multi-chip module implementation of the MT7530
->> requires some additional configuration of the PHYs on startup.
->> The reason for this is not known, but it is possible that it has
->> to do with the fact that the EN751221 MCM implementation of the
->> MT7530 runs at an abnormal PLL frequency (362.5Mhz).
->>
->> Detect whether the MT7530 PHY is attached to the MDIO bus of an
->> EcoNet EN751221 switch and if so, apply the necessary register
->> updates.
->>
->> Co-developed-by: Matheus Sampaio Queiroga <srherobrine20@gmail.com>
->> Signed-off-by: Matheus Sampaio Queiroga <srherobrine20@gmail.com>
->> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
->> ---
->>   drivers/net/phy/mediatek/mtk-ge.c | 61 +++++++++++++++++++++++++++++++
->>   1 file changed, 61 insertions(+)
->>
->> diff --git a/drivers/net/phy/mediatek/mtk-ge.c b/drivers/net/phy/mediatek/mtk-ge.c
->> index 73d9b72f9d9e..42b06c40d703 100644
->> --- a/drivers/net/phy/mediatek/mtk-ge.c
->> +++ b/drivers/net/phy/mediatek/mtk-ge.c
->> [...]
->>   static int mt7530_phy_config_init(struct phy_device *phydev)
->>   {
->> +	int ret;
->> +
->> +	if (mt7530_phy_is_en751221_companion(phydev)) {
-> Please introduce a `.match_phy_device` operation for both, actual
-> MT7530 and EN751221, similar eg. to `ksz8051_match_phy_device` in
-> micrel.c.
+On 10/09/2026 01:09, Matheus Sampaio Queiroga wrote:
+> Hello everyone, please excuse this email.
+>
+> In my opinion, the Ethernet driver for the Econet/Airoha MIPS SoCs 
+> should be merged with the existing Airoha driver.
+> i get PPE and xPON to start and work on the en7523, en751221, and en7528.
 
-Sounds good, since this will certainly collide with 
-https://lore.kernel.org/netdev/20260827065930.2618729-2-cjd@cjdns.fr/ 
-would you prefer them in the same patch, or as a patch set? If you'd 
-like I can do this and the FE phy as a common patch set. Let me know 
-what you prefer.
+
+For my part, I don't agree with that opinion. When I first began 
+developing this driver, I first began trying to work on that driver and 
+I couldn't find a way that didn't lead to code which I consider ugly.
+
+The main differences in hardware are the number of RX/TX chains in the 
+QDMA, number of IRQ banks (we only have 1), QDMA register layout is very 
+different and we have fewer features, and we have two GDMs rather than 
+four. Also as I recall we have fewer channels available so QoS logic is 
+not drop-in.
+
+If someone proposed to me to add Airoha support to this driver, I 
+wouldn't want the same econet_qdma.c file supporting both platforms, and 
+in the Airoha driver the QDMA subsystem is more tightly coupled - so if 
+I maintained that driver, I would not want them merged at all.
+
+I added Lorenzo Bianconi the Airoha maintainer to this thread in case he 
+may have some thoughts on the topic.
+
 
 Thanks,
 
 Caleb
 
+
+>
+> With a discussion on the Openwrt forum,
+> it is said that integrating the en751627, en7528, and en7580 Ethernet 
+> drivers into the new EcoNet Ethernet driver.
+> These families are closer to what we already have in the Aiorha driver.
+>
+>
 
