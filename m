@@ -4,96 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 219A1C79FBB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 21:06:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30D5BC79FBB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 21:54:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zC/TwPpzsaghSj/8QRD9k+IasDdKbL8GKT8smkkknMk=; b=YXCwNwADOEegGpS1221Oh/vnW1
-	inOW+kW2TYuT2AGvFI5Q7RJ0kT82HqkFJbl0g0a55Wkl3P8fLfY3phNmH8s/tixXiiS8gX/WLumSK
-	xTxjEHs6t7nbLtd81i3JVWb3yzI8Y0wl6ZJlJJouMOqruo+Isn2zs/HtU5PvuraCeeVGdidTlJ/vy
-	n0cwwgKnt3IEHZYfKe6rV4gJPv12kEQlo+y8zp4kl3DPQ4PW/iPx5sEs3iBPOs23qbYT3dcn4eu5J
-	3LK4W9sYO95U9EQdVNUw2DV8LHc9bVZNMwjnWyK7BqhBiTJsCiU+KK4/Q/r7atfUTwIDdoIV9SJkL
-	aeWk9LWA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5yA1J/Oc/mv6lA/Q/2/0pN8xrLK69dfWL8b6vtP2vm0=; b=vSy6r3wUM3ihjA+fOb+d4sjd/A
+	d3l5/JFXLYDAFGxEeYyZUuqJmbkmQuvTddAwnUr4n0caBXk5igCHkPGRScQw6/CQ+ekWwM2GHI5X3
+	OkAZpeHr5NQuneecNG1kcBksB1vQSpOR3AROttelGWI6nJG3NBfkv1ngX3r4CaBFPZK9uPkCLiFkH
+	artaTRaPGiEWTcjBPHnR+g+loDWAFezw0ycqBcfxJhnj3TFxQ5aXrQ4UK5lgWHAU0AG6giFLvGstG
+	dPVRZ+dDelcDlR0njzfmhcpJYn1MmxKeq3uJN0sJUQd934M90uqInN1RZlCS+EkYReAYaT/Sdx3Ui
+	tYLtkCeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4lyd-0000000FOTs-2Wic;
-	Thu, 10 Sep 2026 21:06:35 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1x4mjR-0000000FS4u-2Qdr;
+	Thu, 10 Sep 2026 21:54:57 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4lyb-0000000FOSr-2H1n
+	id 1x4mjQ-0000000FS3x-0OH9
+	for linux-mediatek@bombadil.infradead.org;
+	Thu, 10 Sep 2026 21:54:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=5yA1J/Oc/mv6lA/Q/2/0pN8xrLK69dfWL8b6vtP2vm0=; b=SzVdxpyogS3cLxs8Mox/1vc+vY
+	QHDfEWQ89Edg416QLN+GN1MpfaeFwcAZ22KpgZX1co1anqkLpS9KRKrHRxonKDZWzsovJd0K3CKli
+	JqXf4uPT/C3LyWwuepteZjda/udDiIVkutsd6QHJmHrsnynZMgTIPpEtQXdrHuPKKesjfioPvT+AX
+	qhtiFQETKimClD/zEW44AXA1c0OEIwVNVDpKgo06aT6wEtsjVPOaZRTvPT8dSQlRF2woJp0AaoxfZ
+	+vXQsmi+ftBLaMbne1xD8oI8+ArpgQZlH/9yOWSJXoYjzgaShR1BEKmG2ar7qWje57ZiwfAy+jBl3
+	pZduTL7w==;
+Received: from mail-qv2-x10.google.com ([2607:f8b0:4864:33::10])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x4mjN-00000002zHr-0c7P
 	for linux-mediatek@lists.infradead.org;
-	Thu, 10 Sep 2026 21:06:34 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-4858303de5dso192492f8f.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 10 Sep 2026 14:06:32 -0700 (PDT)
+	Thu, 10 Sep 2026 21:54:54 +0000
+Received: by mail-qv2-x10.google.com with SMTP id 6a1803df08f44-90cdfc6db09so2108326d6.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 10 Sep 2026 14:54:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789074391; x=1789679191; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=zC/TwPpzsaghSj/8QRD9k+IasDdKbL8GKT8smkkknMk=;
-        b=XvF32akUcmrWKIen3+UMqJaxy7L1DZqcOqUjs33csZDrKlIdnwAAxYG0oRPhfjS0QW
-         qaGWEXpvhREJL5wnLIK4jX97N2h2DbtEDn6RLlKPh9VT1jZ1MAQgFpjUEHQ3Y2QQ4h5B
-         gYkiDDGHyJMYSCtKSQAG828Kk0Bvr84QCVlq6aV9na8Q/GTM6Voxd4NOrSuv//o2OEwu
-         UdDNv9T7qqS4j4PgWBhYotbJBVnvvhYMtajYVtln/Taxoj6Ii1NGT8EiAmkNBj1zhJvQ
-         DIQ3j45aas2eYMU8GBJXr5P8q90qj0vVn6XiUIGxZ51bTyx9X1sSH60KfhoqPU+porZL
-         5wbg==
+        d=gmail.com; s=20251104; t=1789077290; x=1789682090; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=5yA1J/Oc/mv6lA/Q/2/0pN8xrLK69dfWL8b6vtP2vm0=;
+        b=nY9SCpwelAsGDZzJiGP+WGXYaYsnmUFoQUfJ6/eVorwR6hoS8hD2BYPl9vF28ACeWV
+         5VrQoryxCKh55Xb1uRZ/YFSwxrmAPLyt1ENpUNAFyhcdG20nstSeBhSD+QmEeY+sLU5N
+         qMsrP9LOaJSs2KkdJQBrP7cTidsZvEpREWfCCO4Z3xECAIAVYzgKt8eYgvbOBZHfmTYR
+         X/SuW0PXvu1aMQZTVLM43c5FjEHpKCCwdjdsSOc1UScHwqlRjl4dTCrZDjtQswihg341
+         zBttLBnEr6uO6O+mgJP3OJixooZsoLY1XTjIbnhgy6vJHrl6sv6vT0Yi7cl6GDof7/2o
+         j0BQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1789074391; x=1789679191;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=zC/TwPpzsaghSj/8QRD9k+IasDdKbL8GKT8smkkknMk=;
-        b=UexiXbuL2APAM/q7M0wAgwzlm4i3tGvwWgW+NV6W3n2rvlJ7t45pnJvSXUJdS2X40h
-         nARPUh/tMF2tZ2LRylbgOa5F0iXrV1CgOQJ0Kapm9vys1Lyk37AR0OEMouQSMKIwevLm
-         qmeM9L9NN9zOER1O5lsIJJFJGvjon2fYRq6uK4ww12t4/Km72PKGR75vcYBjvJSmsTtb
-         zeXU+ZVBeW/4kVfQTfQsEXgDNAyChbHBwzTO2JEHP2icsPKehaTwdi67dTyowiVsN/8V
-         yO+isjy9x/zRgWeSvio0p52wTf1uFlJjOee7LjYesS/CTh0Jq0UKg+Ja9oGYQ3X4RNQq
-         eJyA==
-X-Forwarded-Encrypted: i=1; AKwUvBxaJrSvzulmwminnPX10GArdTutTRxWkFY+nwQ5y9YNEPLOl+5QDt4/Vom5ctlh9JWw+jJfS4yFFx+mJL2b5A==@lists.infradead.org
-X-Gm-Message-State: AFuF++k1Dax6zogwo6YL92ncO96nI+858IXGkQaM/lhFnIAa7qbVekNn
-	ok9SMqio+jajnpRB2Q4Aywy0eGVTBxLaIzEAl4/qg1iBLfrGmvSnHZ4=
-X-Gm-Gg: AYBFou2ej3iDvlHKnjEwtj7TRWqyH7kr3XAjIck0Mbym+8ThnpyEeFTMlMi1P2VYdwT
-	+aucZgLMXh8r1rEAFIc+x298HBLRBkU5g7Eh3o9cjcutJKIbGxnGt/tXYdBd/hPO8Xo+nrEsQqA
-	PAZkLlBVgtTXb4Z6nCDxa/C5DT+ZLiKUNfr4BEgHfoTqX2uHI+V3TEM1vquvIpPs85AkVPFVLzc
-	y14fIqucdWA2S7gAtjNQKcG+nlTvQKIVZ0IjBMeRfr49vDBWp8DT7BrqKwHdXG67+xloiEVsJG2
-	nKGF4RsLdRknb73NNwM/dcoUz4fTdEnMeBvIgKn3Aud2jdRdj6o19i1ctKSopWdKlcRhWbiGaTQ
-	wqUTOSb8rgOxR3jenbIpP2+suULMod1J2N0qHLuAPrLqiwqWfmsm5EVa+pTsdYOXHJoWWi1EmRx
-	/2W4lHfBIkfXLa3FcDYz2j6dLM5CuoUxhcmChjP3WKj5AJp4JbWhq8IMFtcKq0KhXeFhGlfYxE
-X-Received: by 2002:a05:6000:2f86:b0:486:e73e:abe5 with SMTP id ffacd0b85a97d-486eb2e269amr1118040f8f.10.1789074390922;
-        Thu, 10 Sep 2026 14:06:30 -0700 (PDT)
-Received: from fedora ([46.8.219.5])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-486eb330bdcsm1196375f8f.13.2026.09.10.14.06.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Sep 2026 14:06:30 -0700 (PDT)
-From: Vitaliy Sochnev <sochnev.v.74@gmail.com>
-To: Jakub Kicinski <kuba@kernel.org>,
+        d=1e100.net; s=20251104; t=1789077290; x=1789682090;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=5yA1J/Oc/mv6lA/Q/2/0pN8xrLK69dfWL8b6vtP2vm0=;
+        b=UXK8taXuoNYstqkUocLZWdbxpvfMSkexQjLDjAqFmCWPQhLQCIdMZMfFyJZAZqgyuy
+         9VRCLlMiu1z7OOtAgLXOWxDVPAdiC7bH9Id+yzbJD491bL0oaMy29+7EmNnD/Pf3tN6X
+         VmSDeosWX15qu2M8P9dh7dzWLVZuf6zTQq6Px97n3gmo/0CxFvHOdzxsUUUw2BqFgrSm
+         PTmmCsFyKZY3/cF6afi95xHPLcvR+HRIf83IeXC8qsQhp2x/KF8Es3IWHJ5t7pi/Wt0l
+         cyVVsCtVLVQHRfMLtvtXw1R+H9Ecm8q4qv7vOvKUOslaHHaRW4K2sRNUBqYUNGUk3ZrY
+         8zjw==
+X-Forwarded-Encrypted: i=1; AKwUvByaV5iX1UP3K+UWv/6WUtUUeCxy5x/S6r2UJyk9xdDcRqEUwsPgR7Lm7cl3WAMzG06Ze+tXTByBxpMjD1TZ4g==@lists.infradead.org
+X-Gm-Message-State: AFuF++mzbY+gxVGB3MuTVJRHLqtX78IvVMD7WNFgpY6dXRxFlCVCdvyG
+	U4j/pfpRoYk2yrOmtj1X0REZLxo9G509VV3NWLvYmmDdjlHXjS0NwUA=
+X-Gm-Gg: AYBFou01aondB//p4PpeTZULIvaYe/alnmhxz5tyOrwHfys0ldt7mVttVTo/J/3LRGF
+	XFtgD135yTF8XYCnNmtOZoPb3WQs1QGVHkNGkHocCZ/dw59MFsVDBcpX6M6n3kbV+SNqGEm5jA8
+	94ha7pTv778VYZCHaI0kagkqWfaDCYtl0ErzPCIOGYBQKXp7hxl70dA8F5iR67lOdlhUCzPzBFw
+	4JiHOkNShnqb5wEm618dWSNTyyhO4fNHgXK9CyuGrORdxOcIimbJg8wrVihFLQfQaYYe/8yalEP
+	7HWpdkF0M6y9ruNuu5V2bO2FGJTd9dGt9y7/vf/2laik7SPKjSq10kr8n9q9ZqdhiIFyPz/DHus
+	odyy5BVYE39MZeoRZaqAaJoXKqGg942PWyMCZ/Dn9U7mbzqTABA67I26ZpXYsy0ddF8XxuaYTNI
+	wlkX2wZrelsDuhavYidskEzexIhmjCvSGuis8IKwyUsMfnLY6FIkYrSc6NnwnheflvW9jpzwayx
+	nyuyOeR6QV7VI3iMq2g46Y3JAAm8S/CjYiTGqUBSs6u+LWs4RM/xtkRN2CMErlguNRFm0YyfX/V
+	aaUhOb98eVCD9oQv12qlTlplieqX
+X-Received: by 2002:a05:6214:3d9b:b0:90e:93b2:3205 with SMTP id 6a1803df08f44-912120d689emr17573146d6.22.1789077290445;
+        Thu, 10 Sep 2026 14:54:50 -0700 (PDT)
+Received: from localhost.localdomain ([104.39.73.78])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-9120f496598sm5826736d6.35.2026.09.10.14.54.48
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Thu, 10 Sep 2026 14:54:49 -0700 (PDT)
+From: Myeonghun Pak <mhun512@gmail.com>
+To: Felix Fietkau <nbd@nbd.name>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
-	netdev@vger.kernel.org
-Cc: upstream@airoha.com,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Paolo Abeni <pabeni@redhat.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
+	Ryder Lee <ryder.lee@mediatek.com>
+Cc: Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	Vitaliy Sochnev <sochnev.v.74@gmail.com>
-Subject: Re: [PATCH net v3 1/2] net: airoha: handle RX_NO_CPU_DSCP interrupt, not just RX_DONE
-Date: Fri, 11 Sep 2026 00:06:21 +0100
-Message-ID: <20260910230621.730983-1-sochnev.v.74@gmail.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260903173355.62780188@kicinski-fedora-PF5CM1Y0>
-References: <cover.1788286284.git.sochnev.v.74@gmail.com> <17f1beec505b87a4acf16557386a978c98f94b97.1788286284.git.sochnev.v.74@gmail.com> <20260903173355.62780188@kicinski-fedora-PF5CM1Y0>
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	stable@vger.kernel.org,
+	Ijae Kim <ae878000@gmail.com>
+Subject: [PATCH] wifi: mt76: mt7615: restore DBDC state after ext PHY failure
+Date: Thu, 10 Sep 2026 17:54:41 -0400
+Message-ID: <20260910215441.76683-1-mhun512@gmail.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_140633_581227_6A3C2E88 
-X-CRM114-Status: UNSURE (   9.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260910_225453_429964_005BC751 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,25 +122,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Since you're not sure you should probably add a timer to retry
-> later? Maybe the IRQ is not needed at all, you could just check 
-> on allocation failure if the right is completely drained or have 
-> a periodic task a'la fbnic_napi_depletion_check()
+mt7615_register_ext_phy() limits the primary PHY to DBDC capabilities
+before allocating and registering the secondary PHY. If allocation,
+EEPROM override, or PHY registration fails, it returns without restoring
+the primary PHY capabilities. The EEPROM override failure also leaks the
+newly allocated ieee80211_hw.
 
-No timer either: the depletion path is not the one being hit. Please drop
-this patch.
+Route all failures through common labels that free the secondary hardware
+when it was allocated and restore the primary PHY capabilities.
 
-Instrumented builds logged zero NO_CPU_DSCP events across every run, with
-REG_INT_ENABLE(bank0, 1) reading 0x839F839F, so the bit was unmasked for
-ring 4. page_pool_dev_alloc_frag() never failed and q->queued never
-reached zero, so the ring never enters the state this patch handles.
-Images with and without it stalled identically.
+This issue was identified during our ongoing static-analysis research while
+reviewing kernel code.
 
-The stall was RX rings smaller than 32 descriptors, fixed by 2/2 of this
-series, e84b89f17a12 ("net: airoha: grow the small RX rings"). Details in
-my report on the cover thread.
+Fixes: 0f2173f093b3 ("mt76: mt7615: add support for registering a second wiphy via debugfs")
+Cc: stable@vger.kernel.org
+Co-developed-by: Ijae Kim <ae878000@gmail.com>
+Signed-off-by: Ijae Kim <ae878000@gmail.com>
+Signed-off-by: Myeonghun Pak <mhun512@gmail.com>
+---
+ .../net/wireless/mediatek/mt76/mt7615/init.c    | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
 
-airoha_irq_handler() does discard the NO_CPU_DSCP bits, so handling them
-may still be right, but I have no measurement showing it matters and will
-not claim one.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+index 42e11ba1206ee..02e51b2d42ed8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+@@ -542,8 +542,10 @@ int mt7615_register_ext_phy(struct mt7615_dev *dev)
+ 
+ 	mt7615_cap_dbdc_enable(dev);
+ 	mphy = mt76_alloc_phy(&dev->mt76, sizeof(*phy), &mt7615_ops, MT_BAND1);
+-	if (!mphy)
+-		return -ENOMEM;
++	if (!mphy) {
++		ret = -ENOMEM;
++		goto error;
++	}
+ 
+ 	phy = mphy->priv;
+ 	phy->dev = dev;
+@@ -573,7 +575,7 @@ int mt7615_register_ext_phy(struct mt7615_dev *dev)
+ 
+ 	ret = mt76_eeprom_override(mphy);
+ 	if (ret)
+-		return ret;
++		goto error_free_hw;
+ 
+ 	/* second phy can only handle 5 GHz */
+ 	mphy->cap.has_5ghz = true;
+@@ -591,7 +593,14 @@ int mt7615_register_ext_phy(struct mt7615_dev *dev)
+ 	ret = mt76_register_phy(mphy, true, mt76_rates,
+ 				ARRAY_SIZE(mt76_rates));
+ 	if (ret)
+-		ieee80211_free_hw(mphy->hw);
++		goto error_free_hw;
++
++	return 0;
++
++error_free_hw:
++	ieee80211_free_hw(mphy->hw);
++error:
++	mt7615_cap_dbdc_disable(dev);
+ 
+ 	return ret;
+ }
+-- 
+2.47.1
 
