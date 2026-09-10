@@ -4,113 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67C7AC79F9F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 13:27:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C711C79FB9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 13:30:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EvtswLvPiQHbO1nAALeYzwdSCfuCoM47IC0JhG2+bnc=; b=H88ghyWKEekQoXP3MiXiPpvdGY
-	xbDfvWsyM1+nDfjHxNWkywwQaKRICgSEARmaseMfdB+0lYPD9IsKtra7Z1WbmfvodE9QL1d6W0C8D
-	UUpwhjK+s/DLcBad7ArpA2m/tWXTjt+MpMDd89jTUnBUFvtD61/rfRFMHGxx4bg8MLH5QL6V0lHxV
-	akmGEsxE+RlrExWD72Dg8u0ohLBLJcd58ofptBqLUzdEVxnnIU1tuDe3oaTb1YEPiXflTDqC+zC20
-	uCupRa0BU1n5iv6VcqGQM4kqunaYLSdNgx2QiN2+4MQHSWjrbraZB4L+VbaJ21kSOaHgCflxCbVx+
-	ctfE8sIQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=K6LALh33H60DfQTGEPsCcojG8hxhs271R8nFenuDi8Y=; b=s+kreUbu8spmBq/jNt9rt2+PBQ
+	1YSW306xft4qGNGUv5wA02RNAQdnWYPSUrW1oCEbaNZiHtFV9l277KdR8DyW53bhKHbBCuNfcbI1a
+	znmwR2wDVqktoOCHz5CZxuVJeP2NihrSMxX7FcbUbD4aCorTq4xev/O2fPmEq6kXLcOLJQwgqWffK
+	x76ANaBCwmQkTBnW0fcfyQNVjjTOo6RmoOCrXqzDmOhg4tBIRgOhcMyJ2+aBRZQGQsf3C+7FSnTf/
+	fSJevJ33kXkJ2KQyW+i8BhbZW/seYEbQTRevaTdLF/W2NY6H7UV+eV8ykd98WXVK7rV4j5e81eWF9
+	OpxP08rA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4ent-0000000EScn-41zK;
-	Thu, 10 Sep 2026 13:27:02 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x4erC-0000000ET0r-3bT0;
+	Thu, 10 Sep 2026 13:30:26 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4ens-0000000EScL-1IpE
-	for linux-mediatek@bombadil.infradead.org;
-	Thu, 10 Sep 2026 13:27:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=EvtswLvPiQHbO1nAALeYzwdSCfuCoM47IC0JhG2+bnc=; b=DlODEUxbyT+yvlhlgLcdYRV9Xo
-	8etfsOfqlMLBhXey7XpHo5wSmWGM9J1TQIvmanFFrq8PScwdWLnLsQLMSVIxOZQ7hNXwNX6mBXKLX
-	BOcq3IZ9M8edaIUdRNUNSlVLI0WGf449vNMXkup94ibTPBCaKALxjBuoX6EMoVQR+SVgLQNf4yoLK
-	2A7cHfaHI+JnuHVmOV1X/1eTSsAaxKnc0jbjtdZJI9tjBfxPUuikZCUb/VLxyf3hJtmT+wSeatLTc
-	V9tGDobrsQTaEwwEougq2J7DyFnDSbzM9R1xU6pDC0WEXN36beID7Ae6b6lLYwJCKqVyB+FOoDIkk
-	ScbvEj3Q==;
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x4enp-00000002Wrl-1Ku7
-	for linux-mediatek@lists.infradead.org;
-	Thu, 10 Sep 2026 13:26:59 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id a640c23a62f3a-c2946dc8dbfso143548866b.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 10 Sep 2026 06:26:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789046815; x=1789651615; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=EvtswLvPiQHbO1nAALeYzwdSCfuCoM47IC0JhG2+bnc=;
-        b=iZvmmvd4zIak5JDVw1Y34XPDlSUQFt/o/4w+EfkOgnAWqqhuPw6ACvPtqYtSoMwmIp
-         uKlvGjVhTnAguMGM/zs43hMdYD4vc4Ziw9XTTTgv77SM/hmTcx9cxgAdEKAfEzaO0Cf9
-         LXe5hfV9eJOwa+liAYZj62/Ya9Phdo3AwBJG/uskQ8vxJ7MxeWMZTDTb9n5JzDM/WoWN
-         DzkGQgx/WX+35PBwOuXMvJ5z4nftpYtluVD8MqDAk0QKjt/noh4SQh/HK2VgifZfUzw+
-         ABw5wAs1BUxfwHoUap+V/tLKJa7ER6dnpj1TNa/yprwD8W5QrfiTcheqY6HZkvQOnATK
-         8GfA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1789046815; x=1789651615;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=EvtswLvPiQHbO1nAALeYzwdSCfuCoM47IC0JhG2+bnc=;
-        b=GwqckN64243d5i/102dLvMpmQNG7IaWm/SwHR9vqMMrg6O8dBbg0p7wrkGnpyvm7n4
-         YUllUFjyvmQ+uTW7/44nDhQfesTANocCSVr/2GDctaExtjWafG95+IbENN6vEHxY+gU5
-         5N15BydIVo1gyXW6UmQv0JbTtXR/d0I7vmj6HTHcZJ9bRvSeGVXmOXlRWEIYRgKJ9Faz
-         12pWM7uM2MLtJTHAS8+U2E8rQ+1Un63th3etapPhLZUfCaXmy4R/0C08ofXk4o7Jn7OW
-         UErYaFJcU1W+EogxUzTV6qyDIZYbY3kgtNaNUjSgC+uJTULh9qvxxPu3Nikrh0pyPpNl
-         UdhA==
-X-Forwarded-Encrypted: i=1; AKwUvBxWe+eESU2DR3o6FafOQb2BM5T1j5CSdmKJKua4OTt1xtwMUrT3xqfDscZGisEWYqflURIhCIgbo7kVErjTLw==@lists.infradead.org
-X-Gm-Message-State: AFuF++n1Lh12KYGosjQZnPw6NMV+2XcmJkBg44XLZegpOEteuJsECyl9
-	cUGDoLHUf29miCV18+Jo1CnrwfEciiJ48h3hCR9nRziafNPc9OBrv+rH
-X-Gm-Gg: AYBFou2uGxlM/c9oeaHBkuUyODOVoKMYYDyHViWl/NBLahkAv5E6vgSF8M27QhK60fq
-	mrI/2fxgcCF4rfEea1TC3Vy+6hDJWu9q/h5YKS1e4awBgjpoQAzuVE5jZf+Q8K3tM03wUWEUMlS
-	BI/SqRGu4+NEbmOS+ehmAJieMpewwIiJm8t7umQLDL1OgnO+6eYlHqdiPYRNGEWC/aFYuuyVCnG
-	PVv4ssVOacyYr/oJ23ySvqo+3tLzdFgRaX7UbjxfeQqKAJ3RWu1G2frZF3X/bKGP6GcunicMuzH
-	n/AXu+S/QgEfkjEjAV8aD4/Dip085Xb/DhZQTMdfrhR/i5CPrqty7P9r7wYbwH829zSY4GPnGlz
-	7UTqwK2DiLjb23RBVfs1B7Y5MBGFwMJW1jAoE6yUxdzX5pKdGiebnVwTS4YVQpUsomAsGvTJrUX
-	kWJFenwNUtOU/BdzEJl4fkoHEJFRnrtpD42NDZhHnSA289gzfm4kgVw0Idsd+g1XiJiXSSMucZW
-	heprHg=
-X-Received: by 2002:a17:907:a893:b0:c29:286e:2e3e with SMTP id a640c23a62f3a-c29286e30e9mr574563466b.38.1789046815001;
-        Thu, 10 Sep 2026 06:26:55 -0700 (PDT)
-Received: from localhost ([2c0f:3d00:6be:8900:ce5e:9212:ea4b:f30])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c260d6e1c93sm912526366b.63.2026.09.10.06.26.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Sep 2026 06:26:53 -0700 (PDT)
-Date: Thu, 10 Sep 2026 16:26:49 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: phucduc.bui@gmail.com
-Cc: Mark Brown <broonie@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Cezary Rojewski <cezary.rojewski@intel.com>,
-	Cyril Chao <Cyril.Chao@mediatek.com>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	cassiogabrielcontato@gmail.com, linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 11/13] ASoC: mediatek: mt8189: Validate sysclk frequency
-Message-ID: <aqKwGQDkB_HruLyQ@stanley.mountain>
-References: <20260910125742.150902-1-phucduc.bui@gmail.com>
- <20260910125742.150902-12-phucduc.bui@gmail.com>
+	id 1x4erC-0000000ET03-0Uw0;
+	Thu, 10 Sep 2026 13:30:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 9896E447AF;
+	Thu, 10 Sep 2026 13:30:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 763A8C2BCF5;
+	Thu, 10 Sep 2026 13:30:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1789047025;
+	bh=VWlC7n5SUM9DtFOBPFoA8GByTAAgalb/ZLqc2nBu+mg=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=niv1dyqyLuz6blBL6bh6N6ldSuwNFZfqM2YhnECq9Mx5DQA9H0LATKZXS+5ighZs3
+	 yGucoAyqk6sAbDERaqKn7BO9cKR0ztn5TvWCGdTAy6HnCwXXlT82jWqoy1wB8dBZ0i
+	 QDEBYdXPBQEi/G3UceW90H+NBIng0z7mvl5kOT5ik11ZJLzXJLmz5paOKk/TnNYjw5
+	 PLPoOIqgOs6VdAa/nztbrlS5Q200iK3LwWNF1qlNN6rJC5Urfv0qHBa+iGknmAJSiS
+	 I9rZ3Td5lV2xE8jb3tHuBzPXvL4ocpzcyytieZ2s7uHOWFIRRMMai+/CdqUYv9NN81
+	 6gOTHhnPDsLyg==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 564A7C88E40;
+	Thu, 10 Sep 2026 13:30:25 +0000 (UTC)
+From: Zakariya Hadrami via B4 Relay <devnull+zkh.mailbox.org@kernel.org>
+Date: Thu, 10 Sep 2026 15:29:13 +0200
+Subject: [PATCH v5 2/4] dt-bindings: arm: mediatek: Add MT8127 Amazon ford
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260910125742.150902-12-phucduc.bui@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_142657_670163_92D35A18 
-X-CRM114-Status: GOOD (  15.74  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260910-mt8127-amazon-ford-basic-v5-2-3cb9eeaffd5c@mailbox.org>
+References: <20260910-mt8127-amazon-ford-basic-v5-0-3cb9eeaffd5c@mailbox.org>
+In-Reply-To: <20260910-mt8127-amazon-ford-basic-v5-0-3cb9eeaffd5c@mailbox.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, 
+ Wim Van Sebroeck <wim@linux-watchdog.org>, 
+ Guenter Roeck <linux@roeck-us.net>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-watchdog@vger.kernel.org, zkh1@proton.me, 
+ Zakariya Hadrami <zkh@mailbox.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+X-Mailer: b4 0.15.1
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1789047024; l=940;
+ i=zkh@mailbox.org; s=20260908; h=from:subject:message-id;
+ bh=6nQiaYGOKfITeaTuR+B1GCX01jYN4Tqbt4wScWriW9U=;
+ b=Sj28nnhxHpArEkTLyWakRCNV540MPZXTEhT//VpZVifjCRiFq3DGcO4Uca9lpsqkhTxMmmCO4
+ JL4fipZHsZDDNwStnX5k2DKqSjJYsJWoU935VC089jxS1Kmun9xhSqC
+X-Developer-Key: i=zkh@mailbox.org; a=ed25519;
+ pk=up24Xn4ScFKugfT4EJru/UQAS7JOIN+DSQqro+a05T4=
+X-Endpoint-Received: by B4 Relay for zkh@mailbox.org/20260908 with
+ auth_id=1015
+X-Original-From: Zakariya Hadrami <zkh@mailbox.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,41 +86,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: zkh@mailbox.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 10, 2026 at 07:57:40PM +0700, phucduc.bui@gmail.com wrote:
-> From: bui duc phuc <phucduc.bui@gmail.com>
-> 
-> mtk_dai_i2s_set_sysclk() accepts zero or negative frequencies.
-                                           ^^^^^^^^^^^^^^^^^^^^
-It's unsigned int so it can't be negative.
+From: Zakariya Hadrami <zkh@mailbox.org>
 
-regards,
-dan carpenter
+Add entry for the MT8127 based Amazon ford tablet.
 
-> Reject invalid frequencies before configuring the I2S clock.
-> 
-> Fixes: 7eb153585598 ("ASoC: mediatek: mt8189: add platform driver")
-> Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
-> ---
->  sound/soc/mediatek/mt8189/mt8189-dai-i2s.c | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/sound/soc/mediatek/mt8189/mt8189-dai-i2s.c b/sound/soc/mediatek/mt8189/mt8189-dai-i2s.c
-> index f20dbb410223..ca7d786cdeff 100644
-> --- a/sound/soc/mediatek/mt8189/mt8189-dai-i2s.c
-> +++ b/sound/soc/mediatek/mt8189/mt8189-dai-i2s.c
-> @@ -1286,6 +1286,9 @@ static int mtk_dai_i2s_set_sysclk(struct snd_soc_dai *dai,
->  	    dir != SND_SOC_CLOCK_OUT)
->  		return -EINVAL;
->  
-> +	if (freq <= 0)
-> +		return -EINVAL;
-> +
->  	i2s_priv = afe_priv->dai_priv[dai->id];
->  	if (!i2s_priv)
->  		return -EINVAL;
-> -- 
-> 2.43.0
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Zakariya Hadrami <zkh@mailbox.org>
+---
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index cd4040ad3437..180e6e4948e7 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -122,6 +122,7 @@ properties:
+           - const: mediatek,mt7988a
+       - items:
+           - enum:
++              - amazon,ford
+               - mediatek,mt8127-moose
+           - const: mediatek,mt8127
+       - items:
+
+-- 
+2.54.0
+
+
 
