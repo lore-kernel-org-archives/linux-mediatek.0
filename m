@@ -4,64 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61591C79FB9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 08:52:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DCC6C79F9F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 09:05:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tLiTrkBEtyzQyZ+38aToH0yy/G9IJIyyAE5EniGunF4=; b=LJkFJQpud9/31A04JpFmDQgvIX
-	WG9eEwZ/C/ENa+0ujvMLR6hwz92T5u0bClU21ouBw7LgsOoLvX8R245xD1gtY9UldvC/7a77ZKJ/7
-	dFNRrLXr48i4lrxUTyC9S6ufiVEMjDsGgXtfWOMnJSklIH61nwpYtA2A+F42J7+Ck6+C4x0Zjfttz
-	Pa/w2A451qA28QUGDbNP6TGXopgzaVZww0+KzyKu73aovOn3CSEEpvCfC+bJkML8OG7irdby2kGk9
-	AKNi7LOpijn7jEqHwGr2JcR5BKdqwq5UoMXkZ4y5uNCkxFTriTpbT73G2k3M6M9SpCIFDKMYMfcOm
-	RD7Cx/IA==;
+	bh=BypE/vyVxUuJITnV/wf5vbKYIrm9rN2H5s8yZM+WULk=; b=PrEAYa/t+Tjx5KtNW6WoIlx7+4
+	t+3tnDmeuclfn+zAPX190uhDGJdDun5kQpfFAi4gGJHV9a1GJQNCM44K79ymlAfXnECEg3ONKNRR8
+	NrYk1QrPdz0fKLFjhnsAt0KYtTTp5JtOIDx9gmmnFwxA+8XubChW17nsH+kPK/MKRqZs1RO+KLmTb
+	6pCRc9/sAGS4dq1uWWrT9Lg3ioRtSNQ5Dg5R3prxWy4HYChmEBpAJOP8i2s2/pMMzSZ5M0Mvg60Y4
+	uAZ+d3vm4EzCJ5U4E6EBu1554k+Vzn+bhuAjEEAc/qbwMpfMSa8houiaiDRNP1Z+Fb2C2TiFum55H
+	MGMCR7fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4aWZ-0000000Dnsr-0bL4;
-	Thu, 10 Sep 2026 08:52:51 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x4aj4-0000000DpI8-0rtX;
+	Thu, 10 Sep 2026 09:05:46 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4aWY-0000000Dnsd-1NKw;
-	Thu, 10 Sep 2026 08:52:50 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id B867C400A8;
-	Thu, 10 Sep 2026 08:52:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E4081F000FF;
-	Thu, 10 Sep 2026 08:52:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789030369;
-	bh=tLiTrkBEtyzQyZ+38aToH0yy/G9IJIyyAE5EniGunF4=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=PqgNvKtaZx1jLV0SiljzoiZoUlzyRmiENK+lVU7ul3+izJaEGjhIx5jqtdaFCfiWp
-	 Fo0LhGZKY5YFfQ5aqwyV5MWtHsuywAnOxHaoRdaYrmBOpkd3Aq4auX90K+1NMi6tcf
-	 d72lq157Razf0KfaLWqiUOT4NndYfwP1dW1QvollBP+wkpna6miya3lEfvWkanyNHg
-	 LCTw/rmscstPJg0KN+4PAu1xHxh1co42SWkD0yBm2gG6lq9ppY0ofJu3mR/VMXiytt
-	 jA4WlEJV2kBR1v6hns+U0s2kDzCO9J8h+62tuU8gUjLFFD54ftheBI3ZGnXZmI651q
-	 SV2ZKKoK+UhPA==
-From: matthias.bgg@kernel.org
-To: kmehltretter@gmail.com
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Brian Masney <bmasney+clk@redhat.com>,
-	Jerome Brunet <jbrunet+clk@baylibre.com>,
-	Rex-BC Chen <rex-bc.chen@mediatek.com>,
-	linux-clk@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Matthias Brugger <matthis.bgg@gmail.com>
-Subject: Re: clk: mediatek: reset: Fix device registration kernel-doc
-Date: Thu, 10 Sep 2026 10:52:27 +0200
-Message-ID: <20260910085227.45992-1-matthias.bgg@kernel.org>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260910033000.15926-1-kmehltretter@gmail.com>
-References: 
+	id 1x4aj1-0000000DpGt-1ESC;
+	Thu, 10 Sep 2026 09:05:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1789031140;
+	bh=ENZtiC11cN8l9AXK3zwCWvbeBdYrcIe4dNlUeqoNVa4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Hpwx1d6KkcuuuuFphNt/pZ/VR8BjoOH5fv8MXS0R+5rm9HjX1Cd2liAZ6onBYK+la
+	 UCLg7HGxELLEciRfhop14a1zKwPvk4B1xFRtWouRB3QLlfH2jhCvXyDVRwRHOiQLvh
+	 uwUxJuCEdaRV/rfQnFmoZtEbxu3712xOozfhdI5whCMvB+k1i0Uzoe9LYbsdP9jq4o
+	 e70XRYF4vOLRWRqNCenNscEKPoAXHCqW5DN8G8npBiSAmWZr0RXmhT30HttnlubQwn
+	 aT0JDEf88wFwKzfSR1HiWUZlDIGJ0hdVnAA6cREzbbhtn1EpOwH3f4ra3pYe2PwY/l
+	 kgC7V9GLK8t0g==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C301817E05D3;
+	Thu, 10 Sep 2026 11:05:39 +0200 (CEST)
+Message-ID: <4e658914-7a17-444b-b20b-8d8b647238b5@collabora.com>
+Date: Thu, 10 Sep 2026 11:05:39 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 11/12] phy: phy-mtk-dp: Add PHYD Lane EN register mask
+ to SoC data
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: chunfeng.yun@mediatek.com, vkoul@kernel.org, neil.armstrong@linaro.org,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
+ justin.yeh@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, kernel@collabora.com
+References: <20260707154245.198361-1-angelogioacchino.delregno@collabora.com>
+ <20260707154245.198361-12-angelogioacchino.delregno@collabora.com>
+ <cydeh263kd5o2un27oeplqx2phe7vzhxvk53kr7dbvtplazafv@rs37qtkhguhj>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <cydeh263kd5o2un27oeplqx2phe7vzhxvk53kr7dbvtplazafv@rs37qtkhguhj>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260910_020543_505510_3E022304 
+X-CRM114-Status: GOOD (  14.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,43 +82,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> The comment for mtk_register_reset_controller_with_dev() names the
-> older helper and documents np rather than dev. The new helper takes
-> a struct device and obtains its device node internally.
+On 9/9/26 19:25, Manivannan Sadhasivam wrote:
+> On Tue, Jul 07, 2026 at 05:42:44PM +0200, AngeloGioacchino Del Regno wrote:
+>> In preparation for adding support for the eDP PHY found in newer
+>> SoCs, transfer the register mask for PHYD_TX_LN_EN to SoC specific
+>> data.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   drivers/phy/mediatek/phy-mtk-dp.c | 13 +++++++++----
+>>   1 file changed, 9 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/drivers/phy/mediatek/phy-mtk-dp.c b/drivers/phy/mediatek/phy-mtk-dp.c
+>> index 4603f28d1466..f5aadc5fdc42 100644
+>> --- a/drivers/phy/mediatek/phy-mtk-dp.c
+>> +++ b/drivers/phy/mediatek/phy-mtk-dp.c
+>> @@ -220,6 +220,7 @@ struct mtk_dp_phya_imp_sel {
+>>    * @regs_ana_lane:  Register (layout) offsets for ana_lan
+>>    * @regs_dig_glb:   Register (layout) offsets for dig_glb
+>>    * @regs_dig_lane:  Register (layout) offsets for dig_lan
+>> + * @mask_dig_tx_ln: Register mask for PHYD_TX_LN_EN field
+>>    * @val_dig_bitrate:IP Version specific register values for Bit Rate setting
+>>    * @ana_bias_r:     Internal resistance "R" Selection Settings (global)
+>>    * @ana_cktx_imp:   TX Clock Impedance Selection Settings (global)
+>> @@ -239,6 +240,9 @@ struct mtk_dp_phy_pdata {
+>>   	const u8 *regs_dig_glb;
+>>   	const u8 *regs_dig_lane;
+>>   
+>> +	/* Register masks */
 > 
-> Use the actual function and parameter names and clarify that failures
-> return negative error codes.
+> Duplicate comment. With this removed,
 > 
-> Fixes: 761bc64003e3 ("clk: mediatek: reset: Add new register reset function with device")
-> Assisted-by: LLM
-> Signed-off-by: Karl Mehltretter <kmehltretter@gmail.com>
 
-Reviewed-by: Matthias Brugger <matthis.bgg@gmail.com>
+Sorry but I think you didn't understand what the comments are there: the kerneldoc
+is used to describe the structure, of course, but the comments in between are used
+as a way to describe (and kind of enforce) the order of members.
 
-> ---
->  drivers/clk/mediatek/reset.h | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+/* Register offsets */
+u16 member1;
+u16 member2;
+....
+
+/* Register maps */
+const u8 *regs1;
+const u8 *regs2;
+...
+
+/* Register masks */
+u32 mask1;
+u32 mask2;
+....
+
+etc.
+
+Does that make sense now? :-)
+
+Cheers,
+Angelo
+
+
+> Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
 > 
-> 
-> base-commit: 50d05c7c76c96b90462f24debacca971d2e86713
-> diff --git a/drivers/clk/mediatek/reset.h b/drivers/clk/mediatek/reset.h
-> index 562ffd290a22..b09cdcab0c4b 100644
-> --- a/drivers/clk/mediatek/reset.h
-> +++ b/drivers/clk/mediatek/reset.h
-> @@ -60,11 +60,11 @@ struct mtk_clk_rst_data {
->  };
->  
->  /**
-> - * mtk_register_reset_controller - Register mediatek clock reset controller with device
-> - * @np: Pointer to device.
-> + * mtk_register_reset_controller_with_dev - Register a MediaTek reset controller
-> + * @dev: Device used to manage the reset controller resources.
->   * @desc: Constant pointer to description of clock reset.
->   *
-> - * Return: 0 on success and errorno otherwise.
-> + * Return: 0 on success, negative errno otherwise.
->   */
->  int mtk_register_reset_controller_with_dev(struct device *dev,
->  					   const struct mtk_clk_rst_desc *desc);
+> - Mani
 > 
 
