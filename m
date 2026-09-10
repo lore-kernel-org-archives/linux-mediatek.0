@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5F07C79F9F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 08:39:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61591C79FB9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 08:52:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V/XhZzgLcSPvcTAeVmchQSSAeVbt7+imS8y+E/0mNY4=; b=yTb2kY6k4Vt5BmIguy/WKW+Pkg
-	mYPYZ4P8GXtTDzASRNmHchYHH3VGpAx7kHWqIy8FJcQ7qMlXIPdFybJkFkEs9Pmhh4IbQGfyE+05s
-	hYtgIgnvxCmkrnce/2DWyDY1lm8OhFxbxmC7oGC8C/KVxkIjtsoW8mP+UFbCuIoSUh6VJLWdE7D3A
-	Lrq09UTnzLcdpvB2d3Bmn44KXJxNbGDYeL9Jiqc/XqFyRclQ2ICWzLJn7I7HlTaAkGYi18q5lHgfa
-	pcB1JBMTC4OeY/y1NI4YnCZxaDTnp417QtJYJhsJhW1CZ6/Gn9bI1xrTZ6riqXSrlGzW6awBW9c4g
-	u3Zj594A==;
+	bh=tLiTrkBEtyzQyZ+38aToH0yy/G9IJIyyAE5EniGunF4=; b=LJkFJQpud9/31A04JpFmDQgvIX
+	WG9eEwZ/C/ENa+0ujvMLR6hwz92T5u0bClU21ouBw7LgsOoLvX8R245xD1gtY9UldvC/7a77ZKJ/7
+	dFNRrLXr48i4lrxUTyC9S6ufiVEMjDsGgXtfWOMnJSklIH61nwpYtA2A+F42J7+Ck6+C4x0Zjfttz
+	Pa/w2A451qA28QUGDbNP6TGXopgzaVZww0+KzyKu73aovOn3CSEEpvCfC+bJkML8OG7irdby2kGk9
+	AKNi7LOpijn7jEqHwGr2JcR5BKdqwq5UoMXkZ4y5uNCkxFTriTpbT73G2k3M6M9SpCIFDKMYMfcOm
+	RD7Cx/IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4aJM-0000000Dm2F-3Aqt;
-	Thu, 10 Sep 2026 08:39:12 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x4aWZ-0000000Dnsr-0bL4;
+	Thu, 10 Sep 2026 08:52:51 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4aJK-0000000Dm13-0b26;
-	Thu, 10 Sep 2026 08:39:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789029547;
-	bh=SiT1KDjlCQxg3SPpGnO4slKadQA03M3dNbnhOGR63yg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=R2s0wZeeGzlnMvAx9MIhuWw8oPIAKtAakw4b/WmlnFndxmywHJ4IK1Q0A77sO9h6b
-	 QWGEPwCjOB/TQdvdnTqtmBYOO9CCm0Wdrgpj6zNfasuTNf3ZuIvZ2jFoNu5466sAJo
-	 vX9Y/pnCvAZTHq04QrLQH0/aKhpZMuyEOWItNQgdA6H106HvixPmo/5Acz1/HTfB2u
-	 K4A9A4tuHYZ4Fo69UZrk5XU5uYXwpTERx1bpkrIvV0cX9N1UfdrR8m8yy/ENoITuTU
-	 oWCveip499+7Nbyz5IONwMHt58+wi2QczhgMPGFhL3h3fcRqKFlHy/EWR2l8QINn0C
-	 sSAN8vA+RQdRg==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 87CC117E05D3;
-	Thu, 10 Sep 2026 10:39:06 +0200 (CEST)
-Message-ID: <cb72ff50-b62f-47fe-af40-d38558bdff6e@collabora.com>
-Date: Thu, 10 Sep 2026 10:39:06 +0200
+	id 1x4aWY-0000000Dnsd-1NKw;
+	Thu, 10 Sep 2026 08:52:50 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id B867C400A8;
+	Thu, 10 Sep 2026 08:52:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E4081F000FF;
+	Thu, 10 Sep 2026 08:52:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789030369;
+	bh=tLiTrkBEtyzQyZ+38aToH0yy/G9IJIyyAE5EniGunF4=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=PqgNvKtaZx1jLV0SiljzoiZoUlzyRmiENK+lVU7ul3+izJaEGjhIx5jqtdaFCfiWp
+	 Fo0LhGZKY5YFfQ5aqwyV5MWtHsuywAnOxHaoRdaYrmBOpkd3Aq4auX90K+1NMi6tcf
+	 d72lq157Razf0KfaLWqiUOT4NndYfwP1dW1QvollBP+wkpna6miya3lEfvWkanyNHg
+	 LCTw/rmscstPJg0KN+4PAu1xHxh1co42SWkD0yBm2gG6lq9ppY0ofJu3mR/VMXiytt
+	 jA4WlEJV2kBR1v6hns+U0s2kDzCO9J8h+62tuU8gUjLFFD54ftheBI3ZGnXZmI651q
+	 SV2ZKKoK+UhPA==
+From: matthias.bgg@kernel.org
+To: kmehltretter@gmail.com
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Brian Masney <bmasney+clk@redhat.com>,
+	Jerome Brunet <jbrunet+clk@baylibre.com>,
+	Rex-BC Chen <rex-bc.chen@mediatek.com>,
+	linux-clk@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Matthias Brugger <matthis.bgg@gmail.com>
+Subject: Re: clk: mediatek: reset: Fix device registration kernel-doc
+Date: Thu, 10 Sep 2026 10:52:27 +0200
+Message-ID: <20260910085227.45992-1-matthias.bgg@kernel.org>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260910033000.15926-1-kmehltretter@gmail.com>
+References: 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] phy: mediatek: phy-mtk-hdmi-mt8195: Fix TMDS clk bit
- ratio setting
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: chunfeng.yun@mediatek.com, p.zabel@pengutronix.de,
- chunkuang.hu@kernel.org, vkoul@kernel.org, neil.armstrong@linaro.org,
- matthias.bgg@gmail.com, granquet@baylibre.com, justin.yeh@mediatek.com,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com
-References: <20260701121936.19407-1-angelogioacchino.delregno@collabora.com>
- <20260701121936.19407-3-angelogioacchino.delregno@collabora.com>
- <5bmxa4pcwkiemubwfjun3dti4szu66gnxe6yw2pudq3wplpc23@inyswc2bdlhw>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <5bmxa4pcwkiemubwfjun3dti4szu66gnxe6yw2pudq3wplpc23@inyswc2bdlhw>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_013910_336149_DA14BBCB 
-X-CRM114-Status: GOOD (  11.77  )
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,48 +76,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/9/26 17:06, Manivannan Sadhasivam wrote:
-> On Wed, Jul 01, 2026 at 02:19:36PM +0200, AngeloGioacchino Del Regno wrote:
->> The comment in the mtk_phy_tmds_clk_ratio() function clearly and
->> correctly explains that the TMDS ratio has to be 1/10 for data
->> rates under 3.4Gbps, and 1/40 over that.
->>
->> Unfortunately though, the TXC_DIV register setting was wrong, as
->> in value 3 means to divide by 8 and, in order to achieve the in
->> spec 1/40 (tmds) data rate, this has to divide by 4 instead!
->> In order to achieve the correct 1/40 (tmds) data rate, this has
+> The comment for mtk_register_reset_controller_with_dev() names the
+> older helper and documents np rather than dev. The new helper takes
+> a struct device and obtains its device node internally.
 > 
-> This statement is cut-off!
+> Use the actual function and parameter names and clarify that failures
+> return negative error codes.
 > 
+> Fixes: 761bc64003e3 ("clk: mediatek: reset: Add new register reset function with device")
+> Assisted-by: LLM
+> Signed-off-by: Karl Mehltretter <kmehltretter@gmail.com>
 
-Oh oops. It's just a forgotten line that has to be removed....
+Reviewed-by: Matthias Brugger <matthis.bgg@gmail.com>
 
-Should I resend or can you simply remove the line
-"In order to achieve the correct 1/40 (tmds) data rate, this has"
-while applying?
-
-Thanks,
-Angelo
-
->>
->> Add definitions for the TXC_DIV register values clearly explaining
->> the meanings (DIV2, DIV4, DIV8), and program the correct, DIV 4,
->> value to the register in mtk_phy_tmds_clk_ratio().
->>
->> This fixes out of spec clocking and, with this change, SoCs using
->> the MT8195 class HDMI PHYs can now successfully be configured to
->> output 3840x2160@60Hz over HDMI.
->>
->> Fixes: 45810d486bb4 ("phy: mediatek: add support for phy-mtk-hdmi-mt8195")
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  drivers/clk/mediatek/reset.h | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
-> With above comment addressed,
 > 
-> Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+> base-commit: 50d05c7c76c96b90462f24debacca971d2e86713
+> diff --git a/drivers/clk/mediatek/reset.h b/drivers/clk/mediatek/reset.h
+> index 562ffd290a22..b09cdcab0c4b 100644
+> --- a/drivers/clk/mediatek/reset.h
+> +++ b/drivers/clk/mediatek/reset.h
+> @@ -60,11 +60,11 @@ struct mtk_clk_rst_data {
+>  };
+>  
+>  /**
+> - * mtk_register_reset_controller - Register mediatek clock reset controller with device
+> - * @np: Pointer to device.
+> + * mtk_register_reset_controller_with_dev - Register a MediaTek reset controller
+> + * @dev: Device used to manage the reset controller resources.
+>   * @desc: Constant pointer to description of clock reset.
+>   *
+> - * Return: 0 on success and errorno otherwise.
+> + * Return: 0 on success, negative errno otherwise.
+>   */
+>  int mtk_register_reset_controller_with_dev(struct device *dev,
+>  					   const struct mtk_clk_rst_desc *desc);
 > 
-> - Mani
-> 
-
-
-
 
