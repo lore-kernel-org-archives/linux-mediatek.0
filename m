@@ -4,68 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55368C79FB7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 00:40:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6835C79FB6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 01:23:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LB4xOGwX5zRvsIqTiz17TCA8SFZm8FpI7B2jc9dy2MY=; b=WQEJsebGKvgNs63od0GQ4fsWMc
-	69VEsYdaFLb+KKyPwskzIxtQSXbygLbjq2Y23C98KEvZC6kr3j0XEBVfjitrbHHcYFoF75LTsRVIp
-	kfarjNdSK9hKrHj3W65xjZ5+fyFYERNo7KtztT1DdEprlQ306XBkFVnuVew8iwcSPMuuFie005kvy
-	cmrFzmYKN7A1sinO41B95X2o6ZrXOCW2NRfxxPprdH+ocwReulUv2lB8zRCot2pHp2hFQrLHu4UH+
-	ss7JrD6KNwHk/B6OFXNaPpUfipX+h0tyfUcocHlVOzNPS78YdxKjLeKr/IXcMDrGbz+OcSJEyU0TX
-	LFEp0+aA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=AAsqTJ7CKnx+oG0rSIucqIZneZ4vMWBTkfsllnhaszE=; b=fwUDTi8V26mkEOymXTzIVV0LbR
+	ookCTv9qUe+0QiFcipNPkQRvcxfrcHGvI0SalLKYI3ER78+87ibY0uvCKcOxBBY5VcoBtlMIIkWit
+	sgJwm2ZYq/z/r5q7YHRPWzbqHjN1O4L8dVPg2ICfP/ZVcmQJW6mmRito0xbWh0QdOuoXNgGiZFF+k
+	ALD9hHSniafa0WKdqqyZXwHQg6nEe98eqtBYBuZmVXcqrd490+jl4ESRsFEDUxfQnWlivtUYGt4rL
+	PmyJYFTBa4/y8LwITGkX0oWLsKZKMORefkIVgxsprPCgB7WNJB1nbfdMUkkVnqJl7U3dStqnPuSnS
+	ZLgyFzUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4Sq8-0000000D8wj-0K0i;
-	Thu, 10 Sep 2026 00:40:32 +0000
-Received: from mail.cjdns.fr ([5.135.140.105])
+	id 1x4TVU-0000000DBBS-3K7h;
+	Thu, 10 Sep 2026 01:23:16 +0000
+Received: from mgamail.intel.com ([192.198.163.8])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4Sq5-0000000D8vy-0RvD;
-	Thu, 10 Sep 2026 00:40:30 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id ADACC40E58E;
-	Thu, 10 Sep 2026 02:40:09 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1789000824; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=LB4xOGwX5zRvsIqTiz17TCA8SFZm8FpI7B2jc9dy2MY=;
-	b=W2e0+R+j5MhtDmDdh4jEQPXtRn2UQUSpSayn4MrW/NP39/u/IvlpGWcZWJY4zwClYDQUzv
-	CVsbJXXCxEis6yeZPP8PhS628sxtAa6o2kSnhGKVTtHwpdxRpQz28T3jHfdNRl91JpJK17
-	j3zVTIrdKBxvtCCAe7rM1lZN6NChxCMcvus84hPhVafJRaSRoRAMD5QyaxC0qJKBFs3QpL
-	MIW5cpvlvw6UP9JuRNeY2KhE9XCW0Uo7HIwB/iO3ntqfdJ0G7GLezv3sWjJCW5gApBps7G
-	TYuqkcPWYJ0oE1S4QfMMEUd2tW284zNPKoiTo2oCEPB7vIC9GX4Nipve6uqmsg==
-Message-ID: <508e083a-2bee-4003-8ee9-e9b269b2821d@cjdns.fr>
-Date: Thu, 10 Sep 2026 02:40:08 +0200
+	id 1x4TVR-0000000DBAz-3zSr;
+	Thu, 10 Sep 2026 01:23:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1789003393; x=1820539393;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=lRjClYP9yC3grhG0ovnCW4em2hdKxrj5BgNviM/1uQY=;
+  b=O59NA7n2/yCTRKCeYoEqy9OZrppkM29UAIEFw1KoPmJAAXZK3HBLPDHq
+   O3a9P0Fz1xox41t5EnCrgMVqc5QHs5YkEeJD4LmfP50QjNjdOIuZDoAlt
+   BTTowUyvWZBVwN4OVie2rkBM8f6955FzvVcs0f/EATdrLoTTJ8tP1VINA
+   SYzDbc/+x9eEeAmePsECtowf79dfDpYpo3fyGqv/q0dGzb1ZuUhx9Owxe
+   1VTY6i49sdp2bIs/NVxkeCSh1qfxWs6oTdy0zSfBdZl4EFFjtJ88ralE3
+   N+toKJBodBCnvOeBUMVCDOWLU3CBujZdnJvaKxnC8QMyjj+AwfAzZwh8J
+   A==;
+X-CSE-ConnectionGUID: nGGckVHoSO2gGNvV2UNxfw==
+X-CSE-MsgGUID: 9wpgoWffTOuyPQQjyndHbQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11900"; a="106958979"
+X-IronPort-AV: E=Sophos;i="6.25,271,1779174000"; 
+   d="scan'208";a="106958979"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Sep 2026 18:23:12 -0700
+X-CSE-ConnectionGUID: 92O01xzpT7azHbVodMzk+g==
+X-CSE-MsgGUID: xoEUSTzkTmqTtucpQdEIbA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.25,271,1779174000"; 
+   d="scan'208";a="276720893"
+Received: from junjie-desk-dev.bj.intel.com ([10.238.152.71])
+  by fmviesa005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Sep 2026 18:23:09 -0700
+From: Junjie Cao <junjie.cao@intel.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Huy Nguyen Dinh Quang <huynguyendinhquang@gmail.com>,
+	Devin Wittmayer <lucid_duck@justthetip.ca>,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH wireless] wifi: mt76: mt792x: treat 0xff ACPI SAR entries as no limit
+Date: Thu, 10 Sep 2026 09:23:00 +0800
+Message-ID: <acb947435fc78d5c06039c7bd5609c735468b0ee.1789002236.git.junjie.cao@intel.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird Beta
-Subject: Re: [PATCH net-next 1/2] dt-bindings: net: econet: add EN751221
- ethernet
-To: Matheus Sampaio Queiroga <srherobrine20@gmail.com>, lorenzo@kernel.org
-Cc: 25181214217@stu.xidian.edu.cn, andrew+netdev@lunn.ch,
- angelogioacchino.delregno@collabora.com, b.larsson@gmx.com,
- conor+dt@kernel.org, davem@davemloft.net, devicetree@vger.kernel.org,
- dong100@mucse.com, edumazet@google.com, enelsonmoore@gmail.com,
- han.junyang@zte.com.cn, hkallweit1@gmail.com, jes@trained-monkey.org,
- krzk+dt@kernel.org, kuba@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, maxime.chevallier@bootlin.com, naseefkm@gmail.com,
- netdev@vger.kernel.org, p.zabel@pengutronix.de, pabeni@redhat.com,
- robh@kernel.org, vadim.fedorenko@linux.dev, wangruikang@iscas.ac.cn,
- xuanzhuo@linux.alibaba.com
-References: <20260909212146.3184077-2-cjd@cjdns.fr>
- <45cb6035-4d15-426d-bb3f-45d20b4201da@gmail.com>
-Content-Language: en-US
-From: Caleb James DeLisle <cjd@cjdns.fr>
-In-Reply-To: <45cb6035-4d15-426d-bb3f-45d20b4201da@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260909_174029_338157_F9876FF2 
-X-CRM114-Status: GOOD (  15.02  )
+X-CRM114-CacheID: sfid-20260909_182314_036360_7675BDED 
+X-CRM114-Status: GOOD (  12.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,44 +90,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Some ASUS firmware carries 0xff in MTGS power slots. The driver narrows
+the byte to s8, so the slot reads as -1 in its 0.5 dBm units, wins the
+min() against the regulatory limit and caps every rate the driver
+programs. On an ASUS Zenbook 14 UM3406HA (MT7922) all six MTGS tables
+hold 0xff in every power byte, and txpower_sku shows tmac 3 on every
+supported OFDM/HT/VHT/HE rate against EEPROM entries of 25-39, under
+both the FR and the world regulatory domain. Huy Nguyen Dinh Quang saw
+the same clamp on a Vivobook S 14 M5406WA, with 5 GHz TX at ~40 Mbps,
+and proposed skipping the geo entry.
 
-On 10/09/2026 01:09, Matheus Sampaio Queiroga wrote:
-> Hello everyone, please excuse this email.
->
-> In my opinion, the Ethernet driver for the Econet/Airoha MIPS SoCs 
-> should be merged with the existing Airoha driver.
-> i get PPE and xPON to start and work on the en7523, en751221, and en7528.
+Skip a geo entry whose power byte is 0xff. The MTDS entry is narrowed
+the same way on its way into the geo lookup, so give it the same
+treatment, and clamp the dynamic value plus offset at 127 so a no-limit
+entry cannot wrap.
 
+Fixes: f965333e491e ("mt76: mt7921: introduce ACPI SAR support")
+Link: https://bugzilla.redhat.com/show_bug.cgi?id=2515420
+Reported-by: Huy Nguyen Dinh Quang <huynguyendinhquang@gmail.com>
+Closes: https://lore.kernel.org/linux-wireless/20260827134820.2607530-1-huynguyendinhquang@gmail.com/
+Signed-off-by: Junjie Cao <junjie.cao@intel.com>
+---
+Fed the Zenbook's MTGS bytes through the two lookups in a host build of
+these functions, once with a sane v2 MTDS and once with one full of
+0xff. Before: -1 on every range in every region, -2 under ETSI with
+the padded MTDS. After: the MTDS values with the sane table, 127 with
+the padded one. No MT7922 here; the Zenbook reporter has offered to
+test.
 
-For my part, I don't agree with that opinion. When I first began 
-developing this driver, I first began trying to work on that driver and 
-I couldn't find a way that didn't lead to code which I consider ugly.
+ .../wireless/mediatek/mt76/mt792x_acpi_sar.c   | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
 
-The main differences in hardware are the number of RX/TX chains in the 
-QDMA, number of IRQ banks (we only have 1), QDMA register layout is very 
-different and we have fewer features, and we have two GDMs rather than 
-four. Also as I recall we have fewer channels available so QoS logic is 
-not drop-in.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
+index 946dd7956e4a..9f0ea3d23e0f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
+@@ -279,10 +279,18 @@ mt792x_asar_get_geo_pwr(struct mt792x_phy *phy,
+ 	if (idx >= max)
+ 		return dyn_power;
+ 
+-	geo_power = (band_pwr + idx)->pwr;
+-	dyn_power += (band_pwr + idx)->offset;
++	band_pwr += idx;
+ 
+-	return min(geo_power, dyn_power);
++	/* Some OEM tables carry 0xff here; narrowed to s8 that is -1 and
++	 * wins the min() below. Take it as no limit.
++	 */
++	if (band_pwr->pwr == 0xff)
++		return dyn_power;
++
++	geo_power = band_pwr->pwr;
++
++	return min_t(int, geo_power,
++		     min_t(int, dyn_power + band_pwr->offset, 127));
+ }
+ 
+ static s8
+@@ -315,7 +323,9 @@ mt792x_asar_range_pwr(struct mt792x_phy *phy,
+ 	else
+ 		band = NL80211_BAND_2GHZ;
+ 
+-	return mt792x_asar_get_geo_pwr(phy, band, limit[idx]);
++	/* 0xff: no dynamic limit, see mt792x_asar_get_geo_pwr() */
++	return mt792x_asar_get_geo_pwr(phy, band,
++				       limit[idx] == 0xff ? 127 : limit[idx]);
+ }
+ 
+ int mt792x_init_acpi_sar_power(struct mt792x_phy *phy, bool set_default)
+-- 
+2.43.0
 
-If someone proposed to me to add Airoha support to this driver, I 
-wouldn't want the same econet_qdma.c file supporting both platforms, and 
-in the Airoha driver the QDMA subsystem is more tightly coupled - so if 
-I maintained that driver, I would not want them merged at all.
-
-I added Lorenzo Bianconi the Airoha maintainer to this thread in case he 
-may have some thoughts on the topic.
-
-
-Thanks,
-
-Caleb
-
-
->
-> With a discussion on the Openwrt forum,
-> it is said that integrating the en751627, en7528, and en7580 Ethernet 
-> drivers into the new EcoNet Ethernet driver.
-> These families are closer to what we already have in the Aiorha driver.
->
->
 
