@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D13EC79FB9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 13:39:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 202D6C88E40
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 14:41:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KUX5+gLyZAnP+hET6uf/pLlFw8Zwibdi/KIZTVJajXU=; b=1r/2Ww04+yw+cgJGY5i3vpNkiY
-	rf5z1hc+A4lyjfMKy+7d8isFhkyYvAuzarLh0QjL+Bm+uwKqG+2dgy90gjF9efmQqlQ1dQ/ue9Qzu
-	kKT5e/33I+Nu7kNhlPUDVTXzFLdmf1rkFsYQsHYMWwteEoYOa3hs8gCq2HRHe7PTXA3Oe1SDi5Deo
-	RzYzC0Odh61UU5FH9fKui3jwmusKIo3RNStwtJaVCRYUMFUtHjWjCsEj7VP4kR6d09MwSN6XmreXK
-	40hMoABoLMfdwfTUZcRTQURrkPZ9UtUvEEHpxDuphdYe0Qhzy0IYuJUaZuUePR5IjHToZzFwh1I4r
-	x7prYbjg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OXPPn9tlwNb8+IWe2bNCfwjQ82EFPAzHyWLZ359hzmA=; b=oQ5O6OOIPqiyhqwrT/kj/OKLJU
+	y5pEEU6XfMcXkG57oerixs4a/YkdfhK1EBySRrVpqKUKc9WRHD2F4VjwO5PiNyyxcbqL5+b2VDsK5
+	uG5X1Vtxg9Cm65qpe35ut/R2SzfsO9cXlukXJ3Hz1HrT30Zi3nv8zLMgZ6wsWhuQxqNDmS4oHHOqn
+	GjTk23Pdum4K8wqmh8hEq9z0rd1u4QeMLGs41IQq9TmHcndLHqps8sSGJjI1DH8wPphuPbQPvVLjN
+	ksLsvDan/q4LodVycalj8um+lrbxZSH923hF9OeRDRhPPlXfhS6R+wyWDGu8PIR2SNNr2vvLFuXaB
+	7YSkk4wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4ezU-0000000EW9W-1kJy;
-	Thu, 10 Sep 2026 13:39:00 +0000
-Received: from mout-p-103.mailbox.org ([80.241.56.161])
+	id 1x4fy9-0000000Eeo3-46ax;
+	Thu, 10 Sep 2026 14:41:41 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4ezR-0000000EW8V-32hf;
-	Thu, 10 Sep 2026 13:38:59 +0000
-Received: from smtp202.mailbox.org (smtp202.mailbox.org [10.196.197.202])
+	id 1x4fy6-0000000EemK-3CNZ;
+	Thu, 10 Sep 2026 14:41:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1789051295;
+	bh=NQhEknJQA8Ya6L5zdIqdUOsD85jIBAx1y0eYH103iRE=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=l/3pZbarrLBIxC/Bgeh0sOVvNAHiwRlpACyCd/tvr6a1aDM1yE39N2cpwZK+VQkVE
+	 MgyWtOO0Dc/G1ZYcB3Qm2E1JLOY5QbBZm9ZMoR9VGyxl8WU4ADu2K1EFkl5j0Iad/6
+	 XiSMMocF2vJVEhsJ1ZOcck/zDrlzfTgL8Y4/YjcB/mFxDppjKilV/UtDKUyEpZP31Q
+	 mTKYy9+55otmsuxQ4ciXEEflpRBMZuFFQOBurS1VbeCxTqCCwf68d/vmE7JBrSXGzi
+	 NWXbHAsrvc2mgBb8+DDl0wZsc62pBjWjXdb1zlMM5WGG2NQrb7qk2p8HS+ZRws6USc
+	 ICkrBPI187SkA==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mout-p-103.mailbox.org (Postfix) with ESMTPS id 4hgf0B2FPgzKnVM;
-	Thu, 10 Sep 2026 15:38:50 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailbox.org; s=mail20150812;
-	t=1789047530;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=KUX5+gLyZAnP+hET6uf/pLlFw8Zwibdi/KIZTVJajXU=;
-	b=AVM5p1SVJTMybgY83sDrM8ghcdxBl9w7DmaxUYlPh5qWX7HHkdbzsQylsQRLzy0cOFPU9D
-	+Bxff/k8aRv7Ddt0x0in+04pTa5VfvYDCoVn3EhR4+kB6a0ZEtIFNK8YCjbuYY3GCVuS3n
-	yESj7lYVCqsYZ/mI2Sup5xhke19KMsez3MoRrNHaH6m6LRaaeF2EfEg8LqT1sPQXLhNgY5
-	L6smBxrBrwnnSIpfNAHRa5cWybNrhb9S6bkh8KH+4lU7z9dzhvVkqvG0tn4UEBQen5953v
-	tEYxajEOSWBdZF9rOTAMhbsHH6HTepUZl4s26b8y4ZDR1vp5K81HXruopDqxGw==
-Date: Thu, 10 Sep 2026 15:38:43 +0200
-From: Zakariya Hadrami <zkh@mailbox.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, 
-	Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-watchdog@vger.kernel.org, zkh1@proton.me
-Subject: Re: [PATCH v4 4/4] ARM: dts: mediatek: Add basic support for Amazon
- ford board
-Message-ID: <aqKxMgAI4bPNx78kzjYD05-zkh@mailbox.org>
-References: <20260909-mt8127-amazon-ford-basic-v4-0-e9af5c420ab1@mailbox.org>
- <20260909-mt8127-amazon-ford-basic-v4-4-e9af5c420ab1@mailbox.org>
- <ab00e8c8-cbc2-4fe1-8900-f169aeab5a98@collabora.com>
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D79DB17E05D3;
+	Thu, 10 Sep 2026 16:41:34 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Sean Wang <sean.wang@mediatek.com>, 
+ Wim Van Sebroeck <wim@linux-watchdog.org>, 
+ Guenter Roeck <linux@roeck-us.net>, Zakariya Hadrami <zkh@mailbox.org>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-watchdog@vger.kernel.org, zkh1@proton.me, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+In-Reply-To: <20260910-mt8127-amazon-ford-basic-v5-0-3cb9eeaffd5c@mailbox.org>
+References: <20260910-mt8127-amazon-ford-basic-v5-0-3cb9eeaffd5c@mailbox.org>
+Subject: Re: (subset) [PATCH v5 0/4] ARM: Basic support for Amazon ford
+ tablet (MT8127)
+Message-Id: <178905129482.89344.17321319958555136692.b4-ty@b4>
+Date: Thu, 10 Sep 2026 16:41:34 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ab00e8c8-cbc2-4fe1-8900-f169aeab5a98@collabora.com>
-X-MBO-RS-META: bxmk3mkmxrb34g5mrb17nipnddazm3fu
-X-MBO-RS-ID: d3b653577f41815733c
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.16.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_063857_913039_A81C944F 
-X-CRM114-Status: GOOD (  11.47  )
+X-CRM114-CacheID: sfid-20260910_074138_955355_B148EF54 
+X-CRM114-Status: UNSURE (   6.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,45 +81,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 10, 2026 at 11:29:55AM +0200, AngeloGioacchino Del Regno wrote:
-> >diff --git a/arch/arm/boot/dts/mediatek/mt8127-amazon-ford.dts b/arch/arm/boot/dts/mediatek/mt8127-amazon-ford.dts
-> >new file mode 100644
-> >index 000000000000..8edad5482de2
-> >--- /dev/null
-> >+++ b/arch/arm/boot/dts/mediatek/mt8127-amazon-ford.dts
-> >@@ -0,0 +1,54 @@
-> >+// SPDX-License-Identifier: GPL-2.0
-> >+
-> >+/dts-v1/;
-> >+#include "mt8127.dtsi"
-> >+
-> >+/ {
-> >+	model = "MediaTek MT8127 Amazon Ford";
-> 
-> Please be friendlier with whoever reads this model string :-)
-> 
-> 	model = "Amazon Fire 7 2015 (Ford)";
-> 
-> that's better, isn't it?
+On Thu, 10 Sep 2026 15:29:11 +0200, Zakariya Hadrami wrote:
+> This series of patches adds basic support for MT8127 SoC based Amazon ford
+> tablet.
 
-My bad, sorry!
+Applied to v7.3-next/dts32, thanks!
 
-This and the missing space in watchdog compatible fixed in v5.
-Link to v5: https://patch.msgid.link/20260910-mt8127-amazon-ford-basic-v5-0-3cb9eeaffd5c@mailbox.org
+[2/4] dt-bindings: arm: mediatek: Add MT8127 Amazon ford
+      commit: f97be0d722ebef4de65a39813778f6ba62c2ac1e
+[3/4] ARM: dts: mediatek: mt8127: Add watchdog support
+      commit: 5e23e7d730c6e984e4f03c3b25e2188de9f4ba99
+[4/4] ARM: dts: mediatek: Add basic support for Amazon ford board
+      commit: 2e195497fc9fc0dd89cf95dab80a2d0486dab65b
 
-Thank you very much!
+Cheers,
+Angelo
 
-> 
-> After applying the proposed change,
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> 
-> Cheers,
-> Angelo
-> 
-> >+	compatible = "amazon,ford", "mediatek,mt8127";
-> >+	chassis-type = "tablet";
 
--- 
-Best regards,
-Zakariya
 
