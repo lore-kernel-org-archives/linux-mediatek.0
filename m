@@ -4,64 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25DBBC79FB9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 07:02:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D3BFC79FB7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 07:39:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vJp4rYGfCyVBSJ4qRp4Dvdioa41fPP8ClB9wWTWCzjw=; b=AJ5lCLAAE7p+gUKKZPniqBYvIb
-	Uy1TkbB0fHxEzFwq+GTJO8ZnyfAElwcsq/lYr35OhIDUvoZVRdolNFps4f/2ZKx0MbLnrS+Ern+p+
-	55/K+K1iQhxJSs0lBjNJcSVKNVgRnz0AGETA0R0yKadlDGVeko59fcBkJvQdv47Ej4XBN3cUmoWfE
-	UmpKkuknKi7iPsGJxWHQg16S9apTf4HZa1+axegtPQ6YsM4RVNlOdxAo7/OjhREVW77EMl1/FDRiN
-	/esZFhBIj8JRNnvxRvjMhKo3NSj9lRvegl/XvQSnNB27lL7DvdBMD7juxLzrSxtHLBdIyDX7DlUSF
-	iQrFa+lg==;
+	bh=D/P0j07m+Qlt1v63D3zWfA/yHhsEyVYHVaSNplYJ+Mw=; b=UdxllzhX4KSuCpcVh61PvZ2vvN
+	9NyBLiyEYGkLDiGwJEsFBVfklDtSYxroxwveeZymD6z5H8v/4p1asnon2mHxWZxWWx+uom/5ZmfN5
+	eXyEgi+jFXTExElc3dv8PbFOtBzu1erX1xAVhjeDw8/joIQbarULoTx1xu3ccKnPWaZmCGcIFLHbn
+	hkVIPvcCOpzUBn71Rllkb/X9wQOadCvniI/cq9mKSzqBe3OMyQqsU2veTdFo0apSz5Z+NInKjhu6u
+	gIPXKJrG5oukV6Swh12T1do/+FqFe7UZZo1TAYbN0p3md7YO2/skwFOCK+QSxRbw4cPOY/WSPO2jb
+	NWN3AkUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4YnR-0000000Da6y-2Jls;
-	Thu, 10 Sep 2026 07:02:09 +0000
-Received: from mail.cjdns.fr ([5.135.140.105])
+	id 1x4ZNf-0000000DeTb-2Vb3;
+	Thu, 10 Sep 2026 07:39:35 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4YnO-0000000Da5a-1Lgo;
-	Thu, 10 Sep 2026 07:02:07 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 2F0D140002A;
-	Thu, 10 Sep 2026 09:01:51 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1789023721; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=vJp4rYGfCyVBSJ4qRp4Dvdioa41fPP8ClB9wWTWCzjw=;
-	b=HkcLTc9Pv7shqY6xnM1fnVqUKoJ5NSzhnAZHVtmRA8vJ5pSbMF34oxJL340E7LmN64xgyx
-	HK8PueNvZEw2Dkr9O6sMYuLf5L4qryshGLuJo0maVUyl4rP4S4Yt4OV9XzOYHXZ6oqTm4/
-	qB8ALVLDe27vfHr8pK05B3/rjUaqhaTGSV7ndSjLm6j1pEQqBB+Ii9ChgwPHOW3t1OmDo5
-	nCkCPsG5f7ZbMiuBe142X7UoTa4KH7jPCOncSP3vZiskGNez5XMUnKCnOeCg5ujhlcAfOQ
-	EB0/i8fHXKXbBPQLOy2U0d15S152FntkJMeQ3jWspQ2MVCbd4SYJXXKCFObKMg==
-Message-ID: <34c4739b-1d10-4bf9-b8b9-c09e023908b8@cjdns.fr>
-Date: Thu, 10 Sep 2026 09:01:50 +0200
+	id 1x4ZNb-0000000DeSL-40o1;
+	Thu, 10 Sep 2026 07:39:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1789025967;
+	bh=tX6eZXyL6wR23wIOq22oMAc/5Xx3m3IlWphVaszhixw=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=OnM02PA8Q4X5YFLl4fntpBgfc6QewEsP8gvuDAqM3IIEBNlgT2voZjdBZ5eWSMzKx
+	 07uN47sV6TgZM+V9ECbVecXtewsYMPzbHX95oDQ3mmxJbgIMArB5dMFQ0dyixmuKDc
+	 0j1iB0vQfQh5Vxtxd5P4a6RN4HjyDlnHZO7dO5U6H8RsTRnVpW4PtiPdq9Qyvk7q+/
+	 Pey1ntGjWcBYA4rPnRLSLdUlzyA714xWITtbIQHltmRBQ2Yf9hOS5PuYgZeBL9/3hV
+	 uDg6pRRr6V64c7V71RXo1OrU8YKjU55/x2nsc+OT21fREUuieH3hb9ulxLL9V5jHMl
+	 Bk3f5qalBtXQQ==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B01F717E08A1;
+	Thu, 10 Sep 2026 09:39:26 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>, Fei Shao <fshao@chromium.org>, 
+ Justin Yeh <justin.yeh@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+In-Reply-To: <20260824090409.203230-1-justin.yeh@mediatek.com>
+References: <20260824090409.203230-1-justin.yeh@mediatek.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8188-geralt: Enlarge SCP core0
+ memory region
+Message-Id: <178902596657.11066.1913117561872715668.b4-ty@b4>
+Date: Thu, 10 Sep 2026 09:39:26 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird Beta
-Subject: Re: [PATCH net-next] net: phy: mediatek: support MT7530 PHYs on
- EN71221 MCM
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: netdev@vger.kernel.org, daniel@makrotopia.org, dqfext@gmail.com,
- SkyLake.Huang@mediatek.com, hkallweit1@gmail.com, linux@armlinux.org.uk,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Matheus Sampaio Queiroga <srherobrine20@gmail.com>
-References: <20260909213250.3184238-1-cjd@cjdns.fr>
- <746ebc26-e4ad-4988-a839-c5805d7ab319@lunn.ch>
-Content-Language: en-US
-From: Caleb James DeLisle <cjd@cjdns.fr>
-In-Reply-To: <746ebc26-e4ad-4988-a839-c5805d7ab319@lunn.ch>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
+X-Mailer: b4 0.16.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_000206_652527_130159A8 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20260910_003932_158916_0766AB01 
+X-CRM114-Status: UNSURE (   8.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,40 +80,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, 24 Aug 2026 17:04:00 +0800, Justin Yeh wrote:
+> The SCP firmware in linux-firmware for this platform
+> (mediatek/mt8188/scp_c0.img) supports MDP, which the mdp3-rdma node
+> drives through scp_c0. On top of the segments it loads, the firmware
+> allocates a 1 MiB DMA region at 0x50800000 at run time. That lies
+> outside the 8 MiB reserved for SCP core0, so Linux is free to allocate
+> over memory the firmware uses.
+> 
+> [...]
 
-On 10/09/2026 04:03, Andrew Lunn wrote:
->> +	/* Clause 22 local data. */
->> +	ret = phy_write(phydev, MII_CTRL1000, 0x1e00);
-> Please express this using
->
-> /* 1000BASE-T Control register */
-> #define ADVERTISE_1000FULL	0x0200  /* Advertise 1000BASE-T full duplex */
-> #define ADVERTISE_1000HALF	0x0100  /* Advertise 1000BASE-T half duplex */
-> #define CTL1000_PREFER_MASTER	0x0400  /* prefer to operate as master */
-> #define CTL1000_AS_MASTER	0x0800
-> #define CTL1000_ENABLE_MASTER	0x1000
->
-> Once we have symbolic names, it might be obvious what this is doing,
-> and if there is a better way to do it.
->
->
->> +	/* Vendor profile disables 100/1000BASE-T EEE advertisement. */
->> +	ret = phy_write_mmd(phydev, MDIO_MMD_AN, 0x003c, 0x0000);
->> +	if (ret < 0)
->> +		return ret;
-> Any idea why? Is EEE broken? If it is, phy_disable_eee().
+Applied to v7.3-next/dts64, thanks!
+
+[1/1] arm64: dts: mediatek: mt8188-geralt: Enlarge SCP core0 memory region
+      commit: 868297e3ebcc5c9b0e7cada19c82b11068faf4bf
+
+Cheers,
+Angelo
 
 
-I am so sorry, we had this entire conversation about the other PHY and I 
-did not check carefully enough that this one is doing the same thing. I 
-will test and submit the same solution we arrived at over there.
-
-
-Thanks,
-
-Caleb
-
-
->
->      Andrew
 
