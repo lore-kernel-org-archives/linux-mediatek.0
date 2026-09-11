@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EB59C88E42
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 05:11:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA948C88E42
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 05:15:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q4i87onUuq9wqHpMEQ4jHZbbyUTENMsVIDfpzRkAdN0=; b=y80UYrzX14MGDPHgCb6KmS56tP
-	zAVpW9j9EmVJ9UtDH4t8EFgZEhOGr3N1j8pCN2PDbAZbVq4vmy4sdGrg7Dm1KqnbjbIbLOnAA8QjB
-	/V0l9rVGWUY6lIjDRRFzymxtTKtnQcHbVQVKVvg79SSSKwsLnfZm6WzRROt7JQzCeVqohChwSOh7y
-	bZZV788tZLJkpL4pRipqiZqdJyx6ImCSx86eh4h8aM5BRCpMHX14Ij+sgatRSKAIfF9B7fLc3ih6D
-	RilYj/msW3wWMOpZYTRf57Wv4wSRBe00yBGD0noj45MLxdALYZaB3RdoMJFH5HQB2XV+/bIsqbLv6
-	Vz1R69tg==;
+	bh=Re4OuRwLxErTc9uR7CpD1jNt1FFENy/RKFyXLL/LfjI=; b=Sa6NSWPuSQNmQGvDXLPsVKwmfW
+	1yO/cNAsdFXAkHO3hLhm0MLqzbTLOe+jkqT7m3IYlxMTaEs4aozjnmZwPUPbj8bOClH6H6jcguTa7
+	8tsWrLG3bpefPosS1JaVwpFlIEQe9m4Yrd2NDDQsZ/t3kjy9Wn6QHvH4xu1XYSgTHEnNSLakSJJAo
+	sULT0QYD5+AmLFoV/AsIpEmB4gwrkV/9AxrMgcaSHmsTmB57yx66ZFk0gVWrTVq9u006rNUw2minu
+	9U/Ui3Hi2da6rZaziRPTBkamV5QkHmNnC+tEyMKW4HYRm8KdKxWNLrvDPZQUFj8+gpLb3pXr0uJSu
+	5YgSBYWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4tXj-0000000FqMt-1K1z;
-	Fri, 11 Sep 2026 05:11:19 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x4tbt-0000000Fqhb-2a6r;
+	Fri, 11 Sep 2026 05:15:37 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4tXi-0000000FqMI-0p0R;
-	Fri, 11 Sep 2026 05:11:18 +0000
+	id 1x4tbs-0000000Fqh3-3N3C;
+	Fri, 11 Sep 2026 05:15:36 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6119F601EF;
-	Fri, 11 Sep 2026 05:11:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84A321F000FF;
-	Fri, 11 Sep 2026 05:11:12 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id D612A409FE;
+	Fri, 11 Sep 2026 05:15:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4014D1F000FF;
+	Fri, 11 Sep 2026 05:15:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789103477;
-	bh=Q4i87onUuq9wqHpMEQ4jHZbbyUTENMsVIDfpzRkAdN0=;
+	s=k20260515; t=1789103735;
+	bh=Re4OuRwLxErTc9uR7CpD1jNt1FFENy/RKFyXLL/LfjI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=lOJcDAiue7cyP0WKuq94zT/BOctqQE9OG04LJueetSK3L5RRibv+eF0uGpHU9MHkn
-	 qrx5b0k+xH56P3HYQuR8CldIjVs3jDwyXbzEtKZjjrY0x6FOX1ztsTfvTw9edvSaUJ
-	 RRxHb6BSyyMpR2rtsqSYBpovIp2plvhOj736ARNLRH/ZsY5BSRVdFN8cjcFWAIVs1I
-	 It/eGS0IhiOuaPdW/uTIE1cPtOXqD3IIB77pnflyu2Pn6wlqsAoHcwsT9gnwqJMuGw
-	 77+i8CI+O/A8j9182rLn4YsObYGm1XiCKB1TYLDLPG8qLJ+yWkaBbwUirORQf+V0yZ
-	 EwIfijIsGHGHQ==
-Date: Fri, 11 Sep 2026 07:11:07 +0200
+	b=IJUV/GsKHHvt9HrUKFv1KLSB1qHKzOiUQX8PYVGxYjP+6GKODDx7yyMP2zHhC8/SW
+	 pczlz20cM18LzibHOMKTJJ8JMfBfaa2hBQDetiD/d6mwq3/zOQ0fxw0D++FV7Ln9r6
+	 +/8mdx3vSyGNbwTtqZIV30bThMaYlkK3LpH8vX7btR4mqJJwU53jOgnmFNMp0CyvlY
+	 cPS5nP6kVuu7BGd5lWQx+YM8Ou8zQUPN0jwZ7XBBXaxFJ51Q/JLhf+QKzF4MpDWD2k
+	 zTnR69WtvBkinYcgt51aN5lJ87ZtRqhRwjJM3oyJeM4UOvtEXGa+bkzfnH+AAMXdzb
+	 6A53O1yu12W8Q==
+Date: Fri, 11 Sep 2026 07:15:26 +0200
 From: Manivannan Sadhasivam <mani@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunfeng.yun@mediatek.com, p.zabel@pengutronix.de, 
-	chunkuang.hu@kernel.org, vkoul@kernel.org, neil.armstrong@linaro.org, 
-	matthias.bgg@gmail.com, granquet@baylibre.com, justin.yeh@mediatek.com, 
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	kernel@collabora.com
-Subject: Re: [PATCH 2/2] phy: mediatek: phy-mtk-hdmi-mt8195: Fix TMDS clk bit
- ratio setting
-Message-ID: <pptwnkay4jvyom2ihwtice7usgndsw2fnffkbenkg7gyjejure@4y2znrvtmbtg>
-References: <20260701121936.19407-1-angelogioacchino.delregno@collabora.com>
- <20260701121936.19407-3-angelogioacchino.delregno@collabora.com>
- <5bmxa4pcwkiemubwfjun3dti4szu66gnxe6yw2pudq3wplpc23@inyswc2bdlhw>
- <cb72ff50-b62f-47fe-af40-d38558bdff6e@collabora.com>
+Cc: chunfeng.yun@mediatek.com, vkoul@kernel.org, neil.armstrong@linaro.org, 
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
+	chunkuang.hu@kernel.org, p.zabel@pengutronix.de, justin.yeh@mediatek.com, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-phy@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, kernel@collabora.com
+Subject: Re: [PATCH v3 11/12] phy: phy-mtk-dp: Add PHYD Lane EN register mask
+ to SoC data
+Message-ID: <m3fpa2igwmsnsxhhxtg5hubsmxbn2vmzcpo4hwacs66z52x5ll@xrl5kac2qmtk>
+References: <20260707154245.198361-1-angelogioacchino.delregno@collabora.com>
+ <20260707154245.198361-12-angelogioacchino.delregno@collabora.com>
+ <cydeh263kd5o2un27oeplqx2phe7vzhxvk53kr7dbvtplazafv@rs37qtkhguhj>
+ <4e658914-7a17-444b-b20b-8d8b647238b5@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <cb72ff50-b62f-47fe-af40-d38558bdff6e@collabora.com>
+In-Reply-To: <4e658914-7a17-444b-b20b-8d8b647238b5@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,30 +76,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 10, 2026 at 10:39:06AM +0200, AngeloGioacchino Del Regno wrote:
-> On 9/9/26 17:06, Manivannan Sadhasivam wrote:
-> > On Wed, Jul 01, 2026 at 02:19:36PM +0200, AngeloGioacchino Del Regno wrote:
-> > > The comment in the mtk_phy_tmds_clk_ratio() function clearly and
-> > > correctly explains that the TMDS ratio has to be 1/10 for data
-> > > rates under 3.4Gbps, and 1/40 over that.
+On Thu, Sep 10, 2026 at 11:05:39AM +0200, AngeloGioacchino Del Regno wrote:
+> On 9/9/26 19:25, Manivannan Sadhasivam wrote:
+> > On Tue, Jul 07, 2026 at 05:42:44PM +0200, AngeloGioacchino Del Regno wrote:
+> > > In preparation for adding support for the eDP PHY found in newer
+> > > SoCs, transfer the register mask for PHYD_TX_LN_EN to SoC specific
+> > > data.
 > > > 
-> > > Unfortunately though, the TXC_DIV register setting was wrong, as
-> > > in value 3 means to divide by 8 and, in order to achieve the in
-> > > spec 1/40 (tmds) data rate, this has to divide by 4 instead!
-> > > In order to achieve the correct 1/40 (tmds) data rate, this has
+> > > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > > ---
+> > >   drivers/phy/mediatek/phy-mtk-dp.c | 13 +++++++++----
+> > >   1 file changed, 9 insertions(+), 4 deletions(-)
+> > > 
+> > > diff --git a/drivers/phy/mediatek/phy-mtk-dp.c b/drivers/phy/mediatek/phy-mtk-dp.c
+> > > index 4603f28d1466..f5aadc5fdc42 100644
+> > > --- a/drivers/phy/mediatek/phy-mtk-dp.c
+> > > +++ b/drivers/phy/mediatek/phy-mtk-dp.c
+> > > @@ -220,6 +220,7 @@ struct mtk_dp_phya_imp_sel {
+> > >    * @regs_ana_lane:  Register (layout) offsets for ana_lan
+> > >    * @regs_dig_glb:   Register (layout) offsets for dig_glb
+> > >    * @regs_dig_lane:  Register (layout) offsets for dig_lan
+> > > + * @mask_dig_tx_ln: Register mask for PHYD_TX_LN_EN field
+> > >    * @val_dig_bitrate:IP Version specific register values for Bit Rate setting
+> > >    * @ana_bias_r:     Internal resistance "R" Selection Settings (global)
+> > >    * @ana_cktx_imp:   TX Clock Impedance Selection Settings (global)
+> > > @@ -239,6 +240,9 @@ struct mtk_dp_phy_pdata {
+> > >   	const u8 *regs_dig_glb;
+> > >   	const u8 *regs_dig_lane;
+> > > +	/* Register masks */
 > > 
-> > This statement is cut-off!
+> > Duplicate comment. With this removed,
 > > 
 > 
-> Oh oops. It's just a forgotten line that has to be removed....
+> Sorry but I think you didn't understand what the comments are there: the kerneldoc
+> is used to describe the structure, of course, but the comments in between are used
+> as a way to describe (and kind of enforce) the order of members.
 > 
-> Should I resend or can you simply remove the line
-> "In order to achieve the correct 1/40 (tmds) data rate, this has"
-> while applying?
+> /* Register offsets */
+> u16 member1;
+> u16 member2;
+> ....
+> 
+> /* Register maps */
+> const u8 *regs1;
+> const u8 *regs2;
+> ...
+> 
+> /* Register masks */
+> u32 mask1;
+> u32 mask2;
+> ....
+> 
+> etc.
+> 
+> Does that make sense now? :-)
 > 
 
-I do not apply the patches, only Vinod does. It would help if you can just
-send a next version with this change and tags.
+Yes it does. Sorry for the oversight
 
 - Mani
 
