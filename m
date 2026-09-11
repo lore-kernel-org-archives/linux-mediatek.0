@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B7B2C79FA1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 06:09:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8085CC88E41
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 06:14:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=J+7QTnVPPPZMqiCYBuyFWOTTKbazKI3hnsP8vEZJOS0=; b=uNpzoEnVMdL463PWsUXD7H0Ln4
-	2TZg4sYhXmAgKCcUuNU+J99nj+KiucOFNgRZHWSNQ0v2PV84h8kLJeYoqfZnSf87hrB4wcX54rM0l
-	PuPNy2By/DXzD/oKP6jG53WNHnZx29NXMdn0VeBPOYGoJSGPovOKdNqcIo/rGeJ51bvDtYsY4QyVv
-	eOzuxsbhInVsN2KSqki9r12JMy+jHMWnEoAzVGTl1qOu3PwehYdKh0EPqQey4F+8azrfPKP+v0ZoV
-	ZS3hEMEZc5M3k5n7JWE1yKud4MU7H6fmn8voR001nqTGRWt2Es1HYne5sdR+sM3OqxhyUvIye+No/
-	VY9twbqw==;
+	bh=9qPNY3Uu4k+FecCTTTG7VYnLoe6+q61r76rTHiKu0vo=; b=2fSjJjjz3KbpVAfV0aFtpEvWQb
+	iQcRT2E3p9tVVPiWVSI15pLTDZc6FxK52ttK+FkVTRwMygxWR6MWHDZnK1qsUZCFF6iRagkvi9cbk
+	4+L3qnF3Fd2dbM4Rx03I6xdTql6QxgLD0GZm+HrYeu6wxxZDU86UAypMvDRVBgn1dnCh1CGKCHv7Q
+	D5BnAC+9uPgWHk3k2LfGB+tkd7Bb0Oer0h572P4fOlvh3ziSZL5mYrtOYCAibt/0rQPZNczdPUQwJ
+	SP/7MSlaRYcYsBp5jYD/7l+nPdxnx+7Wf1Z71kr4KQ3+WaCqSrAMm8LqSgkjTLN5OnDXNHohPoPG3
+	dW4D4zsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4uRy-0000000FusH-3CrH;
-	Fri, 11 Sep 2026 06:09:26 +0000
+	id 1x4uWt-0000000FvGO-2ldE;
+	Fri, 11 Sep 2026 06:14:31 +0000
 Received: from mail-m155101.qiye.163.com ([101.71.155.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4uRv-0000000FurV-09xf;
-	Fri, 11 Sep 2026 06:09:25 +0000
-Received: from seu.edu.cn (unknown [221.228.238.82])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4d62c4fad;
-	Fri, 11 Sep 2026 14:09:14 +0800 (GMT+08:00)
+	id 1x4uWo-0000000FvF4-1fhY;
+	Fri, 11 Sep 2026 06:14:29 +0000
+Received: from seu.edu.cn (unknown [222.191.246.242])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4d62c4fb7;
+	Fri, 11 Sep 2026 14:09:23 +0800 (GMT+08:00)
 From: Slavin Liu <bolin.liu@seu.edu.cn>
-To: tiffany.lin@mediatek.com,
-	andrew-ct.chen@mediatek.com,
-	yunfei.dong@mediatek.com,
-	mchehab@kernel.org,
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com
-Cc: linux-media@vger.kernel.org,
+Cc: shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	bolin.liu@seu.edu.cn
-Subject: [PATCH RFC] media: mediatek: vcodec: avoid accessing a failed control
-Date: Fri, 11 Sep 2026 14:09:13 +0800
-Message-Id: <20260911060913.94267-1-bolin.liu@seu.edu.cn>
+Subject: [PATCH RFC net] wifi: mt76: mt7996: guard station-only MLO TX handling
+Date: Fri, 11 Sep 2026 14:09:22 +0800
+Message-Id: <20260911060922.94383-1-bolin.liu@seu.edu.cn>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-HM-Tid: 0aa08f159fd703a1kunmfc8dba361c732f
+X-HM-Tid: 0aa08f15c19903a1kunm3f9087f41c7355
 X-HM-MType: 10
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaTk1OVkhJHxpJQxhIGUpMTVYeHw
-	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlJSUpVSUlDVUlIQ1VDSVlXWRYaDxIVHRRZQVlPS0hVSktJQk
-	NDTFVKS0tVS1kG
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDGUtIVklKGE1IThpDTk9IHlYeHw
+	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlJSUlVSkJKVUlPTVVJT0lZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	hOQ0NVSktLVUtZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=SXKGo9ZDCA1zjna9TjRkb7NvxJTUpiZrTqan5RWB91f30zvivz1H5npatBgq1ukX6WQp1igV921ufnKolrgZj1xaOnx6wYy1QUntNrzmcy8mlWboClWgLbP2A7H75KyuGed+4keSruomttWCLcxVPK2PVbnwufYyjIctL5JL9NU=; c=relaxed/relaxed; s=default; d=seu.edu.cn; v=1;
-	bh=J+7QTnVPPPZMqiCYBuyFWOTTKbazKI3hnsP8vEZJOS0=;
+	b=KmpRcIo4HhataD46neMm5mjBpxhLA7cwHRwITzsoQngB8Q1+TReXPqBFyaGZFTPgqSRbkVVrbg1vrq0+2+FY7zL3yA5cifwzEo9cn43y+8+dqpZO2kizTH4Yc4oQl+wQi/yYR+j+qOJ4ljV0JSj/Mhl1jwg9z25jf1SaGhQltDs=; c=relaxed/relaxed; s=default; d=seu.edu.cn; v=1;
+	bh=9qPNY3Uu4k+FecCTTTG7VYnLoe6+q61r76rTHiKu0vo=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_230923_737575_EB78BE6B 
-X-CRM114-Status: UNSURE (   7.69  )
+X-CRM114-CacheID: sfid-20260910_231428_525374_48E6DECA 
+X-CRM114-Status: UNSURE (   9.61  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,30 +76,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Set the volatile flag only if the control was created. The existing
-handler error path remains responsible for reporting allocation errors.
+Pending frames can be retried after their station is no longer
+available. Require a station for both MLO-specific branches and retain
+the existing non-station transmission path for valid vif traffic.
 
 Detected by static analysis and reviewed with AI-assisted source auditing.
 
-Fixes: 590577a4e525 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video Decoder Driver")
+Fixes: 7ef0c7ad735b ("wifi: mt76: mt7996: Implement MLD address translation for EAPOL")
+Fixes: 85cd5534a3f2 ("wifi: mt76: mt7996: use correct link_id when filling TXD and TXP")
 Assisted-by: LLM
 Signed-off-by: Slavin Liu <bolin.liu@seu.edu.cn>
 ---
- .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateful.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateful.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateful.c
-index aa9bdee7a96c..8441f1d69d2f 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateful.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateful.c
-@@ -555,7 +555,8 @@ static int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_dec_ctx *ctx)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+index 1cba381a78b8..e24dd530486c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+@@ -1057,7 +1057,7 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+ 	if (!wcid)
+ 		wcid = &dev->mt76.global_wcid;
  
- 	ctrl = v4l2_ctrl_new_std(&ctx->ctrl_hdl, &mtk_vcodec_dec_ctrl_ops,
- 				 V4L2_CID_MIN_BUFFERS_FOR_CAPTURE, 0, 32, 1, 1);
--	ctrl->flags |= V4L2_CTRL_FLAG_VOLATILE;
-+	if (ctrl)
-+		ctrl->flags |= V4L2_CTRL_FLAG_VOLATILE;
- 	v4l2_ctrl_new_std_menu(&ctx->ctrl_hdl, &mtk_vcodec_dec_ctrl_ops,
- 			       V4L2_CID_MPEG_VIDEO_VP9_PROFILE,
- 			       V4L2_MPEG_VIDEO_VP9_PROFILE_0, 0,
+-	if ((is_8023 || ieee80211_is_data_qos(hdr->frame_control)) && sta->mlo &&
++	if (sta && (is_8023 || ieee80211_is_data_qos(hdr->frame_control)) && sta->mlo &&
+ 	    likely(tx_info->skb->protocol != cpu_to_be16(ETH_P_PAE))) {
+ 		u8 tid = tx_info->skb->priority & IEEE80211_QOS_CTL_TID_MASK;
+ 
+@@ -1097,7 +1097,7 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+ 	 * compatible with 802.11 EAPOL frame, we do the translation by
+ 	 * software
+ 	 */
+-	if (tx_info->skb->protocol == cpu_to_be16(ETH_P_PAE) && sta->mlo) {
++	if (sta && tx_info->skb->protocol == cpu_to_be16(ETH_P_PAE) && sta->mlo) {
+ 		struct ieee80211_hdr *hdr = (void *)tx_info->skb->data;
+ 		struct ieee80211_bss_conf *link_conf;
+ 		struct ieee80211_link_sta *link_sta;
 
